@@ -169,6 +169,15 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .pet-h button{background:none;border:0;color:var(--ink-3);font:inherit;font-size:.82rem;cursor:pointer;text-decoration:underline;padding:4px}
 .addpet{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border:1.5px dashed var(--o);border-radius:16px;background:var(--o-l);color:var(--o-d);font:inherit;font-weight:800;cursor:pointer;margin-bottom:18px}
 .addpet[hidden]{display:none}
+.dt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.dt input{grid-column:1/-1}
+@media(min-width:600px){.dt{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr)}.dt input{grid-column:auto}}
+.via-box[hidden],.pet-hint[hidden]{display:none}
+.via-box{margin-top:10px}
+.pet-hint{font-size:.86rem;color:var(--ink-3);background:#f7f4f1;border-radius:14px;padding:14px 16px;margin-bottom:18px}
+.restore{display:none;background:var(--o-l);color:var(--o-d);border-radius:14px;padding:14px 16px;margin-bottom:22px;font-size:.88rem;font-weight:600}
+.restore button{background:none;border:0;color:var(--ink-3);font:inherit;font-size:.82rem;text-decoration:underline;cursor:pointer;padding:0 0 0 6px}
+.f .note{display:block;font-size:.8rem;color:var(--ink-3);margin-top:6px}
 .agree{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--ink-2);background:#f7f4f1;border-radius:14px;padding:14px 16px;margin-bottom:20px;cursor:pointer}
 .agree input{accent-color:var(--o);width:18px;height:18px;margin:3px 0 0;flex:none}
 #err{display:none;color:#c62828;font-size:.88rem;text-align:center;margin-bottom:12px}

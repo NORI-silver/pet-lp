@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ペットタクシー｜犬・猫のタクシーを無料で一括手配 東京・神奈川・千葉・埼玉・大阪・兵庫・福岡</title>
-<meta name="description" content="東京・横浜・千葉・埼玉・大阪・神戸・福岡のペットタクシーを手配料0円でおまかせ手配。犬のタクシー、猫のタクシーをお探しなら、フォーム1回で空いている専門の車を探し、お迎え時間と料金の目安をLINE・メール・お電話でお知らせします。多頭での移動、動物病院への通院、夜間救急、大型犬、介護中の子にも。">
+<meta name="description" content="東京・横浜・千葉・埼玉・大阪・神戸・福岡のペットタクシーを手配料0円でおまかせ手配。犬のタクシー、猫のタクシーをお探しなら、フォーム1回で空いている専門の車を探し、お迎え時間と料金の目安をメールでお知らせします。多頭での移動、動物病院への通院、夜間救急、大型犬、介護中の子にも。">
 <link rel="canonical" href="https://pet.shiokonbu.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ペットタクシー｜犬・猫のタクシーを無料で一括手配 東京・神奈川・千葉・埼玉・大阪・兵庫・福岡">
 <meta property="og:site_name" content="おまかせペットタクシー">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:description" content="うちの子の移動、まるっとおまかせ。フォーム1回、手配料0円。">
+<meta property="og:description" content="家族だから、移動もやさしく。フォーム1回、手配料0円。">
 <meta property="og:url" content="https://pet.shiokonbu.com/">
 <meta property="og:image" content="https://pet.shiokonbu.com/img/hero.jpg">
 <meta property="og:image:width" content="1200">
@@ -196,6 +196,15 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .pet-h button{background:none;border:0;color:var(--ink-3);font:inherit;font-size:.82rem;cursor:pointer;text-decoration:underline;padding:4px}
 .addpet{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border:1.5px dashed var(--o);border-radius:16px;background:var(--o-l);color:var(--o-d);font:inherit;font-weight:800;cursor:pointer;margin-bottom:18px}
 .addpet[hidden]{display:none}
+.dt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.dt input{grid-column:1/-1}
+@media(min-width:600px){.dt{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr)}.dt input{grid-column:auto}}
+.via-box[hidden],.pet-hint[hidden]{display:none}
+.via-box{margin-top:10px}
+.pet-hint{font-size:.86rem;color:var(--ink-3);background:#f7f4f1;border-radius:14px;padding:14px 16px;margin-bottom:18px}
+.restore{display:none;background:var(--o-l);color:var(--o-d);border-radius:14px;padding:14px 16px;margin-bottom:22px;font-size:.88rem;font-weight:600}
+.restore button{background:none;border:0;color:var(--ink-3);font:inherit;font-size:.82rem;text-decoration:underline;cursor:pointer;padding:0 0 0 6px}
+.f .note{display:block;font-size:.8rem;color:var(--ink-3);margin-top:6px}
 .agree{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--ink-2);background:#f7f4f1;border-radius:14px;padding:14px 16px;margin-bottom:20px;cursor:pointer}
 .agree input{accent-color:var(--o);width:18px;height:18px;margin:3px 0 0;flex:none}
 #err{display:none;color:#c62828;font-size:.88rem;text-align:center;margin-bottom:12px}
@@ -309,12 +318,12 @@ footer a{color:var(--ink-2)}
   {"@type":"Question","name":"Uber Petとなにが違うの？","acceptedAnswer":{"@type":"Answer","text":"Uber Petは一般のタクシーにペットを同乗させるサービスで、飼い主さんの同乗が前提です。こちらでお探しするのはペット専門のタクシーなので、飼い主さんが乗らない送迎、大型犬、ケージやスロープの用意、動物病院での待ち時間、夜間の急な通院にも対応できるところを選べます。"}},
   {"@type":"Question","name":"ケージやキャリーがなくても大丈夫？","acceptedAnswer":{"@type":"Answer","text":"大丈夫です。ケージを車に積んでいるペットタクシーがあります。フォームで「持っていない」を選んでいただければ、ケージを用意できるところをお探しします。"}},
   {"@type":"Question","name":"大型犬でも乗れますか？","acceptedAnswer":{"@type":"Answer","text":"はい。大型犬が乗れる車とスロープのあるペットタクシーをお探しします。体重と犬種を入力してください。歩くのがつらい子は「介護」の欄で「必要」を選んでください。"}},
-  {"@type":"Question","name":"2匹以上いっしょに乗れますか？","acceptedAnswer":{"@type":"Answer","text":"はい。フォームの「もう1匹追加する」から、5匹まで一度にお申し込みいただけます。頭数と大きさに合う車をお探しします。"}},
+  {"@type":"Question","name":"2匹以上いっしょに乗れますか？","acceptedAnswer":{"@type":"Answer","text":"はい。フォームで頭数を選ぶと、その数だけ入力欄が出ます。5匹まで一度にお申し込みいただけます。頭数と大きさに合う車をお探しします。"}},
   {"@type":"Question","name":"猫だけでも使えますか？","acceptedAnswer":{"@type":"Answer","text":"もちろんです。通院、お引っ越し、ペットホテルへの送り迎えなどにどうぞ。キャリーに入った状態での乗車が基本です。"}},
   {"@type":"Question","name":"今日すぐに乗れますか？","acceptedAnswer":{"@type":"Answer","text":"当日のご依頼も受け付けています。24時間動いているペットタクシーもあります。空き状況によってご希望に合わない場合もあるので、お急ぎのときはメモ欄に「至急」とご希望の時間を書いてください。"}},
   {"@type":"Question","name":"本当に無料ですか？","acceptedAnswer":{"@type":"Answer","text":"はい、手配料は0円です。お支払いはペットタクシーの運賃だけで、当日ドライバーさんに直接お支払いください。"}},
   {"@type":"Question","name":"料金は乗る前に分かりますか？","acceptedAnswer":{"@type":"Answer","text":"お迎え時間と一緒に、料金の目安を先にお伝えします。ただし多くのペットタクシーは距離や時間で料金が決まるため、最終的な金額は乗車後に確定します。深夜の割増、病院での待ち時間、高速代や駐車場代が加わることがあります。"}},
-  {"@type":"Question","name":"連絡はLINEですか？電話もできますか？","acceptedAnswer":{"@type":"Answer","text":"フォームで、LINE・メール・お電話からご希望の連絡方法を選べます。キャンセルなど大事なご連絡は、記録が残るようLINEかメールでお願いしています。"}},
+  {"@type":"Question","name":"連絡はどうやって届きますか？","acceptedAnswer":{"@type":"Answer","text":"受付番号、お迎えの時間と料金の目安は、すべてメールでお送りします。記録が残るので、あとから見返せて安心です。メールが届かないときは、迷惑メールのフォルダもご確認ください。"}},
   {"@type":"Question","name":"大阪・神戸・福岡でも使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい。大阪府・兵庫県・福岡県にも対応しています。関東にくらべてペットタクシーの数が少ないため、ご希望に合わない場合は早めにお知らせします。"}},
   {"@type":"Question","name":"犬のタクシーと普通のタクシーはなにが違うの？","acceptedAnswer":{"@type":"Answer","text":"普通のタクシーはペットの乗車を断られたり、ケージ必須だったりすることがあります。ペットタクシーはペット専用の車で、大型犬やケージなしの子、毛や汚れを気にせず乗れます。ペットの扱いに慣れたドライバーが運転します。"}},
   {"@type":"Question","name":"24時間いつでも頼めますか？","acceptedAnswer":{"@type":"Answer","text":"フォームは24時間いつでも送れます。夜間・早朝に動けるペットタクシーもあるので、夜の急な通院もご相談ください。空き状況によってはご希望に添えないこともあります。"}}
@@ -362,7 +371,7 @@ footer a{color:var(--ink-2)}
     <div>
       <h1>
         <span class="kicker">ペットタクシー 東京・神奈川・千葉・埼玉・大阪・兵庫・福岡 <b>一括無料手配</b></span>
-        <span class="catch">うちの子の移動、<br><em>まるっとおまかせ。</em></span>
+        <span class="catch">家族だから、<br><em>移動もやさしく。</em></span>
       </h1>
       <p class="lede">犬のタクシーも、猫のタクシーも。動物病院、お引っ越し、夜の急な通院に。フォームに入力するだけで、その子にぴったりのペットタクシーを探して、お迎えの時間をお知らせします。</p>
       <ul class="pills">
@@ -431,7 +440,7 @@ footer a{color:var(--ink-2)}
     <ol class="steps">
       <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span class="no">01</span><h3>フォームに入力</h3><p>どこからどこへ、何日に、どんな子か。2匹以上でも、まとめて3分で入力できます。</p></li>
       <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span><span class="no">02</span><h3>ぴったりの車をお探し</h3><p>エリアやその子の大きさ、頭数、ケージの有無に合わせて、空いているペットタクシーを私たちが探します。</p></li>
-      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/></svg></span><span class="no">03</span><h3>お迎え時間をお知らせ</h3><p>お迎えの時間と料金の目安を、LINE・メール・お電話のうちご希望の方法でお伝えします。あとは当日、お迎えを待つだけ。</p></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/></svg></span><span class="no">03</span><h3>お迎え時間をお知らせ</h3><p>お迎えの時間と料金の目安を、メールでお伝えします。あとは当日、お迎えを待つだけ。</p></li>
     </ol>
   </div>
 </section>
@@ -550,29 +559,39 @@ footer a{color:var(--ink-2)}
 <!-- 6. フォーム -->
 <section class="form-sec" id="form">
   <div class="wrap">
-    <div class="sh"><span class="eyebrow">REQUEST</span><h2>無料でおまかせする</h2><p>3分で入力できます。送信後、お迎えの時間と料金の目安をご希望の方法でお知らせします。</p></div>
+    <div class="sh"><span class="eyebrow">REQUEST</span><h2>無料でおまかせする</h2><p>3分で入力できます。送信後、お迎えの時間と料金の目安をメールでお知らせします。</p></div>
 
     <div class="form-card">
       <form id="petForm" novalidate>
         <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
         <div class="group">
-          <div class="group-h"><span>1</span>どこへ行きますか？</div>
+          <div class="group-h"><span>1</span>いつ、どこへ行きますか？</div>
           <div class="f"><label for="pref">お迎えの都府県</label>
             <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>千葉県</option><option>埼玉県</option><option>大阪府</option><option>兵庫県</option><option>福岡県</option></select></div>
           <div class="f"><label for="pickup">お迎えの場所</label>
-            <input type="text" id="pickup" name="pickup" placeholder="例：世田谷区三軒茶屋2丁目" required autocomplete="street-address"></div>
+            <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="street-address"></div>
+          <div class="f"><span class="lbl">経由地<span class="any">任意</span></span>
+            <div class="seg"><label><input type="radio" name="via_on" value="なし" checked><span>なし</span></label><label><input type="radio" name="via_on" value="あり"><span>あり（途中で寄る）</span></label></div>
+            <div class="via-box" id="viaBox" hidden><input type="text" id="via" name="via" placeholder="例：〇〇トリミングサロン（渋谷区）" aria-label="経由地"></div></div>
           <div class="f"><label for="dropoff">行き先</label>
-            <input type="text" id="dropoff" name="dropoff" placeholder="例：〇〇動物病院（目黒区）" required></div>
-          <div class="f"><label for="date">希望の日</label>
-            <input type="date" id="date" name="date" required></div>
+            <input type="text" id="dropoff" name="dropoff" placeholder="例：代々木公園／〇〇動物病院（目黒区）" required></div>
+          <div class="f"><label for="date">お迎えの希望日時</label>
+            <div class="dt">
+              <input type="date" id="date" name="date" required aria-label="日付">
+              <select id="hour" name="hour" required aria-label="時"><option value="">時</option><option value="00">0時</option><option value="01">1時</option><option value="02">2時</option><option value="03">3時</option><option value="04">4時</option><option value="05">5時</option><option value="06">6時</option><option value="07">7時</option><option value="08">8時</option><option value="09">9時</option><option value="10">10時</option><option value="11">11時</option><option value="12">12時</option><option value="13">13時</option><option value="14">14時</option><option value="15">15時</option><option value="16">16時</option><option value="17">17時</option><option value="18">18時</option><option value="19">19時</option><option value="20">20時</option><option value="21">21時</option><option value="22">22時</option><option value="23">23時</option></select>
+              <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
+            </div></div>
           <div class="f"><span class="lbl">片道・往復</span>
             <div class="seg"><label><input type="radio" name="trip" value="片道" required><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復</span></label><label><input type="radio" name="trip" value="往復（病院で待機）"><span>往復（待っててほしい）</span></label></div></div>
         </div>
 
         <div class="group">
           <div class="group-h"><span>2</span>どんな子ですか？</div>
+          <div class="f"><label for="petCount">一緒に乗る子の数</label>
+            <select id="petCount" required><option value="">選んでください</option><option value="1">1匹</option><option value="2">2匹</option><option value="3">3匹</option><option value="4">4匹</option><option value="5">5匹</option></select></div>
+          <p class="pet-hint" id="petHint">頭数を選ぶと、1匹ずつの入力欄が出ます。</p>
           <div id="pets"></div>
-          <button type="button" class="addpet" id="addPet"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg>もう1匹追加する</button>
           <div class="f"><label for="riders">一緒に乗る人数</label>
             <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option>1人</option><option>2人</option><option>3人</option></select></div>
         </div>
@@ -582,15 +601,15 @@ footer a{color:var(--ink-2)}
           <div class="f"><label for="name">お名前</label>
             <input type="text" id="name" name="name" placeholder="例：山田 花子" required autocomplete="name"></div>
           <div class="two">
-            <div class="f"><label for="tel">電話番号</label>
-              <input type="tel" id="tel" name="tel" placeholder="例：09012345678" required autocomplete="tel" inputmode="tel"></div>
             <div class="f"><label for="email">メールアドレス</label>
-              <input type="email" id="email" name="email" placeholder="例：hanako@example.com" required autocomplete="email"></div>
+              <input type="email" id="email" name="email" placeholder="例：hanako@example.com" required autocomplete="email">
+              <span class="note">ご連絡はすべてこちらのメールにお送りします。</span></div>
+            <div class="f"><label for="tel">電話番号</label>
+              <input type="tel" id="tel" name="tel" placeholder="例：09012345678" required autocomplete="tel" inputmode="tel">
+              <span class="note">当日、ドライバーがお迎えの連絡に使います。</span></div>
           </div>
-          <div class="f"><span class="lbl">ご希望の連絡方法</span>
-            <div class="seg"><label><input type="radio" name="contact" value="LINE" required><span>LINE</span></label><label><input type="radio" name="contact" value="メール"><span>メール</span></label><label><input type="radio" name="contact" value="電話"><span>電話</span></label></div></div>
           <div class="f"><label for="notes">メモ<span class="any">なんでもどうぞ</span></label>
-            <textarea id="notes" name="notes" placeholder="例：午前中だとうれしい／急ぎです／病院で1時間待っててほしい"></textarea></div>
+            <textarea id="notes" name="notes" placeholder="例：急ぎです／病院で1時間待っててほしい／大きな声で鳴くことがあります"></textarea></div>
         </div>
 
         <label class="agree"><input type="checkbox" id="agree" required><span>ページ下の「キャンセルについて」「ご利用にあたって」「<a href="#privacy">個人情報の取り扱い</a>」を確認し、同意します。</span></label>
@@ -604,8 +623,6 @@ footer a{color:var(--ink-2)}
         <h3>受け付けました！</h3>
         <p>ぴったりのペットタクシーを探しています。<br>受付番号をメールでお送りしました。決まりしだい、お迎えの時間と料金の目安をお知らせしますね。</p>
         <p style="font-size:.85rem">メールが届かないときは、迷惑メールのフォルダもご確認ください。</p>
-        <a id="lineAdd" class="btn center" href="#" style="display:none;background:#06c755;box-shadow:none;margin-top:16px">LINEで友だち追加する</a>
-        <p id="lineNote" style="display:none;font-size:.85rem">友だち追加して、メールの受付番号を送ると、LINEでもお知らせが届きます。</p>
       </div>
     </div>
   </div>
@@ -660,12 +677,12 @@ footer a{color:var(--ink-2)}
       <details><summary>Uber Petとなにが違うの？</summary><div class="a">Uber Petは一般のタクシーにペットを同乗させるサービスで、飼い主さんの同乗が前提です。こちらでお探しするのはペット専門のタクシーなので、飼い主さんが乗らない送迎、大型犬、ケージやスロープの用意、動物病院での待ち時間、夜間の急な通院にも対応できるところを選べます。</div></details>
       <details><summary>ケージやキャリーがなくても大丈夫？</summary><div class="a">大丈夫です。ケージを車に積んでいるペットタクシーがあります。フォームで「持っていない」を選んでいただければ、ケージを用意できるところをお探しします。</div></details>
       <details><summary>大型犬でも乗れますか？</summary><div class="a">はい。大型犬が乗れる車とスロープのあるペットタクシーをお探しします。体重と犬種を入力してください。歩くのがつらい子は「介護」の欄で「必要」を選んでください。</div></details>
-      <details><summary>2匹以上いっしょに乗れますか？</summary><div class="a">はい。フォームの「もう1匹追加する」から、5匹まで一度にお申し込みいただけます。頭数と大きさに合う車をお探しします。</div></details>
+      <details><summary>2匹以上いっしょに乗れますか？</summary><div class="a">はい。フォームで頭数を選ぶと、その数だけ入力欄が出ます。5匹まで一度にお申し込みいただけます。頭数と大きさに合う車をお探しします。</div></details>
       <details><summary>猫だけでも使えますか？</summary><div class="a">もちろんです。通院、お引っ越し、ペットホテルへの送り迎えなどにどうぞ。キャリーに入った状態での乗車が基本です。</div></details>
       <details><summary>今日すぐに乗れますか？</summary><div class="a">当日のご依頼も受け付けています。24時間動いているペットタクシーもあります。空き状況によってご希望に合わない場合もあるので、お急ぎのときはメモ欄に「至急」とご希望の時間を書いてください。</div></details>
       <details><summary>本当に無料ですか？</summary><div class="a">はい、手配料は0円です。お支払いはペットタクシーの運賃だけで、当日ドライバーさんに直接お支払いください。</div></details>
       <details><summary>料金は乗る前に分かりますか？</summary><div class="a">お迎え時間と一緒に、料金の目安を先にお伝えします。ただし多くのペットタクシーは距離や時間で料金が決まるため、最終的な金額は乗車後に確定します。深夜の割増、病院での待ち時間、高速代や駐車場代が加わることがあります。</div></details>
-      <details><summary>連絡はLINEですか？電話もできますか？</summary><div class="a">フォームで、LINE・メール・お電話からご希望の連絡方法を選べます。キャンセルなど大事なご連絡は、記録が残るようLINEかメールでお願いしています。</div></details>
+      <details><summary>連絡はどうやって届きますか？</summary><div class="a">受付番号、お迎えの時間と料金の目安は、すべてメールでお送りします。記録が残るので、あとから見返せて安心です。メールが届かないときは、迷惑メールのフォルダもご確認ください。</div></details>
       <details><summary>大阪・神戸・福岡でも使えますか？</summary><div class="a">はい。大阪府・兵庫県・福岡県にも対応しています。関東にくらべてペットタクシーの数が少ないため、ご希望に合わない場合は早めにお知らせします。</div></details>
       <details><summary>犬のタクシーと普通のタクシーはなにが違うの？</summary><div class="a">普通のタクシーはペットの乗車を断られたり、ケージ必須だったりすることがあります。ペットタクシーはペット専用の車で、大型犬やケージなしの子、毛や汚れを気にせず乗れます。ペットの扱いに慣れたドライバーが運転します。</div></details>
       <details><summary>24時間いつでも頼めますか？</summary><div class="a">フォームは24時間いつでも送れます。夜間・早朝に動けるペットタクシーもあるので、夜の急な通院もご相談ください。空き状況によってはご希望に添えないこともあります。</div></details>
@@ -681,7 +698,7 @@ footer a{color:var(--ink-2)}
         <h3>キャンセルについて</h3>
         <ul>
           <li>お迎えが決まる前なら、いつでも無料で取り消せます。</li>
-          <li>決まったあとのキャンセルは、お迎え時間をお知らせした連絡先（LINEまたはメール）へご連絡ください。記録が残るよう、お電話でのキャンセルは受け付けていません。</li>
+          <li>決まったあとのキャンセルは、お迎え時間をお知らせしたメールからご連絡ください。記録が残るよう、お電話でのキャンセルは受け付けていません。</li>
           <li>お迎え時刻の2時間前までなら、当サイトへのキャンセル料はかかりません。</li>
           <li>2時間前を過ぎてからのキャンセルや、ご連絡なしで乗られなかった場合は、次回からのご利用をお断りすることがあります。ペットタクシー側のキャンセル料がある場合は、直接お支払いください。</li>
         </ul>
@@ -693,7 +710,7 @@ footer a{color:var(--ink-2)}
           <li>運送契約はご利用者さまと各ペットタクシー事業者との間で結ばれます。料金のお支払い、送迎中の対応、トラブルの補償は各事業者が行います。</li>
           <li>ご乗車中の事故やケガなどは、各事業者の約款と保険にもとづいて対応されます。</li>
           <li>掲載している料金と事前にお伝えする料金は目安です。最終的な金額は乗車後に各事業者が確定します。</li>
-          <li>空き状況により、ご希望の日にお応えできない場合があります。そのときはご希望の連絡方法でお知らせします。</li>
+          <li>空き状況により、ご希望の日時にお応えできない場合があります。そのときはメールでお知らせします。メールのリンクから、日時だけ変えてもう一度お申し込みいただけます。</li>
           <li>ペットの体調の急変など、移動中の健康状態について当サイトは判断や保証ができません。体調が心配な子は、事前にかかりつけの獣医師にご相談ください。</li>
         </ul>
       </div>
@@ -701,7 +718,7 @@ footer a{color:var(--ink-2)}
         <h3>個人情報の取り扱い</h3>
         <p>おまかせペットタクシー（運営：shiokonbu.com、以下「当サイト」）は、お預かりする個人情報を次のとおり取り扱います。</p>
         <h4>1. お預かりする情報</h4>
-        <ul><li>お名前、電話番号、メールアドレス、ご希望の連絡方法、LINEでやりとりした場合のLINEの表示名とメッセージ</li><li>お迎えの場所、行き先、希望の日、ペットの種類・体重・年齢などの情報、メモ欄の内容</li></ul>
+        <ul><li>お名前、電話番号、メールアドレス</li><li>お迎えの場所、経由地、行き先、希望の日時、ペットの種類・体重・年齢などの情報、メモ欄の内容</li></ul>
         <h4>2. 使う目的</h4>
         <ul><li>ペットタクシーの空き確認と手配、お迎え時間・料金の目安のご連絡</li><li>キャンセルやお問い合わせへの対応</li><li>サービスの改善（個人が特定できない形の集計に限ります）</li></ul>
         <h4>3. ペットタクシー事業者へのお伝え</h4>
@@ -719,7 +736,7 @@ footer a{color:var(--ink-2)}
 <section style="padding-top:0">
   <div class="wrap">
     <div class="last">
-      <h2>うちの子の移動、まるっとおまかせ。</h2>
+      <h2>大切な家族の移動に、やさしい一台を。</h2>
       <p>手配料0円。3分の入力で、あとは待つだけ。</p>
       <a class="btn center" href="#form">無料でおまかせする<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
     </div>
@@ -741,51 +758,59 @@ footer a{color:var(--ink-2)}
 <div class="sticky"><a class="btn" href="#form">無料でおまかせする</a></div>
 
 <script>
-/* フォーム送信先の設定。
-   Google Apps Script をウェブアプリとして公開したら、そのURL（https://script.google.com/macros/s/〇〇/exec）を GAS_URL に入れてください。
-   空の間は送信されません。 */
+/* フォーム送信先（Google Apps Script のウェブアプリURL）。空の間は送信されません。 */
 var GAS_URL = "https://script.google.com/macros/s/AKfycbyxsd8L8g_5Nt3HnApx2ZQnXFyPBsNfuHSvBlJKRVDtAIVr0EnqB-0raxwMPNOVl_Jg/exec";
-/* LINE公式アカウントの友だち追加URL（例：https://lin.ee/xxxx）。入れると、LINEを選んだ人に送信後ボタンが出ます。 */
-var LINE_ADD_URL = "";
 var MAX_PETS = 5;
+/* 前回の入力をこの端末に残す日数（日時以外をもう一度入れ直さなくてよいように） */
+var KEEP_DAYS = 30, SAVE_KEY = "petReq";
 
 (function(){
   var form = document.getElementById("petForm");
   var err = document.getElementById("err");
   var petsBox = document.getElementById("pets");
-  var addBtn = document.getElementById("addPet");
+  var countSel = document.getElementById("petCount");
+  var $ = function(id){ return document.getElementById(id); };
 
   var today = new Date(); today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
-  document.getElementById("date").min = today.toISOString().slice(0,10);
+  $("date").min = today.toISOString().slice(0,10);
 
   // エリアページから来たとき（?pref=東京都）は、お迎えの都府県を選んでおく
-  try {
-    var pp = new URLSearchParams(location.search).get("pref");
-    var ps = document.getElementById("pref");
-    if (pp && Array.prototype.some.call(ps.options, function(o){ return o.value === pp; })) ps.value = pp;
-  } catch (e) {}
+  var qs = new URLSearchParams(location.search);
+  function setSelect(el, v){
+    if (v && Array.prototype.some.call(el.options, function(o){ return o.value === v; })) el.value = v;
+  }
+  setSelect($("pref"), qs.get("pref"));
 
   // 入力欄が見えている間は下部の固定ボタンを隠す
   var sticky = document.querySelector(".sticky");
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function(es){
       sticky.style.visibility = es[0].isIntersecting ? "hidden" : "visible";
-    }).observe(document.getElementById("form"));
+    }).observe($("form"));
   }
 
-  // ペットの入力欄（1匹ずつカード）
-  var seq = 0;
+  // 経由地（ありを選んだときだけ入力欄を出す）
+  function syncVia(){
+    var on = form.querySelector("input[name=via_on]:checked").value === "あり";
+    $("viaBox").hidden = !on;
+    $("via").required = on;
+    if (on && !$("via").value) $("via").focus();
+  }
+  form.querySelectorAll("input[name=via_on]").forEach(function(r){ r.addEventListener("change", syncVia); });
+
+  // ペットの入力欄（頭数を選ぶと、その数だけカードを出す）
   function seg(name, items, req){
     return '<div class="seg">' + items.map(function(it, i){
       return '<label><input type="radio" name="' + name + '" value="' + it[0] + '"' + (req && i === 0 ? ' required' : '') + '><span>' + it[1] + '</span></label>';
     }).join('') + '</div>';
   }
-  function addPet(){
-    var n = ++seq, k = "p" + n;
+  function petCard(n){
+    var k = "p" + n;
     var el = document.createElement("div");
     el.className = "pet";
+    el.dataset.key = k;
     el.innerHTML =
-      '<div class="pet-h"><b></b><button type="button" class="rm">この子を外す</button></div>' +
+      '<div class="pet-h"><b></b></div>' +
       '<div class="f"><span class="lbl">種類</span>' + seg(k + "_species", [["犬","わんちゃん"],["猫","ねこちゃん"],["その他","その他"]], true) + '</div>' +
       '<div class="two">' +
         '<div class="f"><label for="' + k + '_breed">犬種・猫種<span class="any">わかれば</span></label><input type="text" id="' + k + '_breed" name="' + k + '_breed" placeholder="例：柴犬"></div>' +
@@ -795,25 +820,20 @@ var MAX_PETS = 5;
       '</div>' +
       '<div class="f"><span class="lbl">ケージ・キャリー</span>' + seg(k + "_cage", [["持っている","持っている"],["持っていない","持っていない"]], true) + '</div>' +
       '<div class="f"><span class="lbl">介護は必要ですか？</span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true) + '</div>';
-    el.dataset.key = k;
-    el.querySelector(".rm").addEventListener("click", function(){ el.remove(); renumber(); });
-    petsBox.appendChild(el);
-    renumber();
     return el;
   }
-  function renumber(){
+  // 入力済みのカードは残したまま、数だけ増やす・減らす
+  function setPetCount(n){
+    n = Math.max(0, Math.min(MAX_PETS, Number(n) || 0));
     var cards = petsBox.querySelectorAll(".pet");
-    cards.forEach(function(c, i){
-      c.querySelector(".pet-h b").textContent = cards.length > 1 ? (i + 1) + "匹目" : "ペットの情報";
-      c.querySelector(".rm").style.display = cards.length > 1 ? "" : "none";
+    for (var i = cards.length; i > n; i--) cards[i - 1].remove();
+    for (var j = cards.length; j < n; j++) petsBox.appendChild(petCard(j + 1));
+    petsBox.querySelectorAll(".pet").forEach(function(c, i){
+      c.querySelector(".pet-h b").textContent = n > 1 ? (i + 1) + "匹目" : "ペットの情報";
     });
-    addBtn.hidden = cards.length >= MAX_PETS;
+    $("petHint").hidden = n > 0;
   }
-  addBtn.addEventListener("click", function(){
-    var el = addPet();
-    el.scrollIntoView({behavior:"smooth", block:"start"});
-  });
-  addPet();
+  countSel.addEventListener("change", function(){ setPetCount(countSel.value); });
 
   function readPets(){
     var fd = new FormData(form);
@@ -827,30 +847,99 @@ var MAX_PETS = 5;
       p.cage === "持っている" ? "キャリーあり" : "キャリーなし", p.care === "必要" ? "介助必要" : "介助いらない"].filter(String).join("・");
   }
 
+  // ── 前回の内容を入れる（日時以外）──
+  var TEXT = ["pickup","via","dropoff","name","tel","email","notes"];
+  function setRadio(name, v){
+    var r = form.querySelector('input[name="' + name + '"][value="' + String(v || "").replace(/"/g, "") + '"]');
+    if (r) r.checked = true;
+  }
+  function fill(o){
+    setSelect($("pref"), o.pref);
+    TEXT.forEach(function(k){ if (o[k] != null) $(k).value = String(o[k]); });
+    setRadio("via_on", o.via ? "あり" : "なし"); syncVia();
+    setRadio("trip", o.trip);
+    setSelect($("riders"), o.riders);
+    var pets = o.pets || o.pets_json || [];
+    if (typeof pets === "string") { try { pets = JSON.parse(pets); } catch (e) { pets = []; } }
+    if (!Array.isArray(pets)) pets = [];
+    var n = pets.length || Number(o.pet_count) || 0;
+    if (n) { countSel.value = String(Math.min(n, MAX_PETS)); setPetCount(countSel.value); }
+    petsBox.querySelectorAll(".pet").forEach(function(c, i){
+      var p = pets[i]; if (!p) return;
+      var k = c.dataset.key;
+      ["breed","weight","age"].forEach(function(f){ if (p[f] != null) $(k + "_" + f).value = p[f]; });
+      ["species","sex","cage","care"].forEach(function(f){ setRadio(k + "_" + f, p[f]); });
+    });
+  }
+  function collect(){
+    var fd = new FormData(form), o = { pets: readPets(), pet_count: countSel.value };
+    ["pref","trip","riders"].forEach(function(k){ o[k] = String(fd.get(k) || ""); });
+    TEXT.forEach(function(k){ o[k] = String(fd.get(k) || "").trim(); });
+    if (form.querySelector("input[name=via_on]:checked").value !== "あり") o.via = "";
+    return o;
+  }
+  function showRestore(msg){
+    $("restoreMsg").textContent = msg;
+    $("restore").style.display = "block";
+  }
+  $("restoreClear").addEventListener("click", function(){
+    try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
+    form.reset(); setPetCount(0); syncVia();
+    $("restore").style.display = "none";
+  });
+  function restoreLocal(){
+    try {
+      var saved = JSON.parse(localStorage.getItem(SAVE_KEY) || "null");
+      if (!saved || !saved.data) return;
+      if (Date.now() - saved.at > KEEP_DAYS * 864e5) { localStorage.removeItem(SAVE_KEY); return; }
+      fill(saved.data);
+      showRestore("前回の内容を入れておきました。日時を選んで、ほかに変わったところがあれば直してください。");
+    } catch (e) {}
+  }
+  // お詫びメールの「日時だけ変えてもう一度」リンク（?r=受付番号&k=署名）
+  var rid = qs.get("r"), rk = qs.get("k");
+  if (rid && rk && GAS_URL) {
+    fetch(GAS_URL + "?a=prefill&id=" + encodeURIComponent(rid) + "&k=" + encodeURIComponent(rk))
+      .then(function(res){ return res.json(); })
+      .then(function(o){
+        if (!o || !o.ok) throw 0;
+        fill(o);
+        showRestore("前回のご依頼（受付番号 " + rid + "）の内容を入れておきました。日時を選び直して送ってください。");
+        $("date").focus({preventScroll:true});
+      })
+      .catch(restoreLocal);
+  } else {
+    restoreLocal();
+  }
+
   form.addEventListener("submit", function(e){
     e.preventDefault();
     err.style.display = "none";
+    function fail(msg, el){
+      err.textContent = msg; err.style.display = "block";
+      if (el) { el.focus(); el.scrollIntoView({block:"center"}); }
+    }
     if (!form.checkValidity()) {
       var bad = form.querySelector(":invalid");
-      err.textContent = bad && bad.id === "agree" ? "確認のチェックを入れてください。" : "まだ入力されていない項目があります。";
-      err.style.display = "block";
-      if (bad) { bad.focus(); bad.scrollIntoView({block:"center"}); }
-      return;
+      return fail(bad && bad.id === "agree" ? "確認のチェックを入れてください。" : "まだ入力されていない項目があります。", bad);
     }
-    if (!GAS_URL) {
-      err.textContent = "ただいまフォームを準備中です。少し時間をおいてお試しください。";
-      err.style.display = "block";
-      return;
-    }
-    var fd = new FormData(form), body = new URLSearchParams();
-    ["website","pref","pickup","dropoff","date","trip","riders","name","tel","email","contact"].forEach(function(k){ body.append(k, fd.get(k) || ""); });
+    var fd = new FormData(form);
+    var when = fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute");
+    var at = new Date(when + ":00+09:00");
+    if (!(at > new Date())) return fail("お迎えの日時が過ぎています。これから先の日時を選んでください。", $("hour"));
+    if (!GAS_URL) return fail("ただいまフォームを準備中です。少し時間をおいてお試しください。");
 
-    var pets = readPets(), many = pets.length > 1;
-    var lines = pets.map(petLine).join("\n");
+    var body = new URLSearchParams();
+    ["website","pref","pickup","dropoff","trip","riders","name","tel","email"].forEach(function(k){ body.append(k, fd.get(k) || ""); });
+    var o = collect();
+    body.append("via", o.via);
+    body.append("contact", "メール");
+    body.append("datetime", when);
+
+    var pets = o.pets, many = pets.length > 1;
     var count = {};
     pets.forEach(function(p){ count[p.species] = (count[p.species] || 0) + 1; });
     // 受付の仕組み（Code.gs）が読む項目。2匹以上のときは、まとめた値と pets（1行1匹）を送る
-    body.append("datetime", fd.get("date") + "T23:59");
     body.append("species", many ? Object.keys(count).map(function(s){ return s + count[s] + "匹"; }).join("・") : pets[0].species);
     body.append("breed", many ? "" : pets[0].breed);
     body.append("weight", String(Math.max.apply(null, pets.map(function(p){ return Number(p.weight) || 0; }))));
@@ -859,26 +948,23 @@ var MAX_PETS = 5;
     body.append("cage", pets.some(function(p){ return p.cage === "持っていない"; }) ? "持っていない" : "持っている");
     body.append("care", pets.some(function(p){ return p.care === "必要"; }) ? "必要" : "不要");
     body.append("pet_count", String(pets.length));
-    body.append("pets", lines);
-    body.append("notes", fd.get("notes") || "");
+    body.append("pets", pets.map(petLine).join("\n"));
+    body.append("pets_json", JSON.stringify(pets));
+    body.append("notes", o.notes);
 
     var btn = form.querySelector("button[type=submit]");
     btn.disabled = true;
     fetch(GAS_URL, {method:"POST", mode:"no-cors", body: body})
       .then(function(){
+        try { localStorage.setItem(SAVE_KEY, JSON.stringify({at: Date.now(), data: o})); } catch (e) {}
         form.style.display = "none";
-        document.getElementById("thanks").style.display = "block";
-        if (LINE_ADD_URL && fd.get("contact") === "LINE") {
-          var la = document.getElementById("lineAdd"); la.href = LINE_ADD_URL; la.style.display = "flex";
-          document.getElementById("lineNote").style.display = "block";
-        }
-        document.getElementById("form").scrollIntoView({behavior:"smooth"});
+        $("thanks").style.display = "block";
+        $("form").scrollIntoView({behavior:"smooth"});
         if (window.gtag) gtag("event", "generate_lead");
       })
       .catch(function(){
         btn.disabled = false;
-        err.textContent = "うまく送れませんでした。電波の良いところで、もう一度お試しください。";
-        err.style.display = "block";
+        fail("うまく送れませんでした。電波の良いところで、もう一度お試しください。");
       });
   });
 })();
