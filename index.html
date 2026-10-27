@@ -209,6 +209,12 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est .t{font-size:.82rem;font-weight:700;color:var(--o-d)}
 .est .v{font-family:var(--round);font-size:1.5rem;font-weight:800;color:var(--ink);line-height:1.3;margin:2px 0 6px}
 .est p{font-size:.8rem;color:var(--ink-2);margin:0;line-height:1.7}
+.cb{position:relative}
+.cb-list{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 4px);max-height:260px;overflow-y:auto;margin:0;padding:6px;list-style:none;background:#fff;border:1.5px solid var(--line);border-radius:14px;box-shadow:0 12px 28px rgba(28,26,24,.12)}
+.cb-list[hidden]{display:none}
+.cb-list li{padding:11px 12px;border-radius:10px;font-size:.94rem;cursor:pointer}
+.cb-list li:hover,.cb-list li.on{background:var(--o-l);color:var(--o-d)}
+.cb-list li.none{color:var(--ink-3);cursor:default;background:none}
 .f .note{display:block;font-size:.8rem;color:var(--ink-3);margin-top:6px}
 .agree{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--ink-2);background:#f7f4f1;border-radius:14px;padding:14px 16px;margin-bottom:20px;cursor:pointer}
 .agree input{accent-color:var(--o);width:18px;height:18px;margin:3px 0 0;flex:none}
@@ -821,7 +827,7 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
       '<div class="pet-h"><b></b></div>' +
       '<div class="f"><span class="lbl">種類</span>' + seg(k + "_species", [["犬","わんちゃん"],["猫","ねこちゃん"],["その他","その他"]], true) + '</div>' +
       '<div class="two">' +
-        '<div class="f"><label for="' + k + '_breed">犬種・猫種<span class="any">わかれば</span></label><input type="text" id="' + k + '_breed" name="' + k + '_breed" placeholder="例：柴犬"></div>' +
+        '<div class="f"><label for="' + k + '_breed">犬種・猫種<span class="any">わかれば</span></label><div class="cb"><input type="text" id="' + k + '_breed" name="' + k + '_breed" class="breed" placeholder="選ぶか、入力してしぼりこみ" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><ul class="cb-list" role="listbox" hidden></ul></div></div>' +
         '<div class="f"><label for="' + k + '_weight">体重（kg）</label><input type="number" id="' + k + '_weight" name="' + k + '_weight" min="0" max="120" step="0.1" inputmode="decimal" placeholder="例：8" required></div>' +
         '<div class="f"><label for="' + k + '_age">年齢<span class="any">わかれば</span></label><input type="number" id="' + k + '_age" name="' + k + '_age" min="0" max="40" inputmode="numeric" placeholder="例：12"></div>' +
         '<div class="f"><span class="lbl">性別<span class="any">わかれば</span></span>' + seg(k + "_sex", [["オス","男の子"],["メス","女の子"]], false) + '</div>' +
@@ -842,6 +848,69 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     $("petHint").hidden = n > 0;
   }
   countSel.addEventListener("change", function(){ setPetCount(countSel.value); });
+
+  // ── 犬種・猫種：一覧から選ぶか、入力するとしぼりこみ（一覧にない種類はそのまま入力できる）──
+  var BREEDS = {
+    "犬": ["ミックス（雑種）|ざっしゅ","トイ・プードル","チワワ","柴犬|しばいぬ","豆柴|まめしば","ミニチュア・ダックスフンド","カニーンヘン・ダックスフンド","ポメラニアン","ミニチュア・シュナウザー","ヨークシャー・テリア","フレンチ・ブルドッグ","マルチーズ","シー・ズー","パピヨン","ゴールデン・レトリーバー","ラブラドール・レトリーバー","ウェルシュ・コーギー・ペンブローク","ジャック・ラッセル・テリア","パグ","キャバリア・キング・チャールズ・スパニエル","ミニチュア・ピンシャー","ビション・フリーゼ","ボーダー・コリー","シェットランド・シープドッグ","ペキニーズ","イタリアン・グレーハウンド","ボストン・テリア","ビーグル","ウエスト・ハイランド・ホワイト・テリア","アメリカン・コッカー・スパニエル","狆|ちん","日本スピッツ|にほん","秋田犬|あきたいぬ","甲斐犬|かいけん","北海道犬|ほっかいどういぬ","紀州犬|きしゅういぬ","四国犬|しこくけん","シベリアン・ハスキー","サモエド","バーニーズ・マウンテン・ドッグ","グレート・ピレニーズ","セント・バーナード","グレート・デーン","ドーベルマン","ジャーマン・シェパード・ドッグ","ボクサー","ブルドッグ","スタンダード・プードル","ミディアム・プードル","ボルゾイ","ウィペット"],
+    "猫": ["ミックス（雑種）|ざっしゅ","スコティッシュ・フォールド","マンチカン","ラグドール","ブリティッシュ・ショートヘア","アメリカン・ショートヘア","ノルウェージャン・フォレスト・キャット","メインクーン","ロシアンブルー","ベンガル","エキゾチック・ショートヘア","ペルシャ","ヒマラヤン","ミヌエット","サイベリアン","アビシニアン","ソマリ","シャム","シンガプーラ","ラガマフィン","バーマン","トンキニーズ","セルカーク・レックス","デボン・レックス","スフィンクス","ターキッシュアンゴラ","エジプシャン・マウ","オリエンタル"],
+    "その他": ["うさぎ","フェレット","モルモット","ハムスター","チンチラ","ハリネズミ","デグー","インコ","オウム","文鳥|ぶんちょう","カメ","トカゲ・ヘビなど|はちゅうるい"]
+  };
+  // ひらがな・カタカナ、「・」や空白、全角・半角の違いを気にせずしぼりこむ
+  function norm(t){
+    return String(t || "").normalize("NFKC").toLowerCase()
+      .replace(/[ぁ-ゖ]/g, function(c){ return String.fromCharCode(c.charCodeAt(0) + 0x60); })
+      .replace(/[・･\s\-ー（）()]/g, "");
+  }
+  function breedList(card){
+    var sp = card.querySelector("input[name$=_species]:checked");
+    return BREEDS[sp ? sp.value : "犬"].concat(sp ? [] : BREEDS["猫"].slice(1));
+  }
+  function openList(inp){
+    var card = inp.closest(".pet"), ul = inp.parentNode.querySelector(".cb-list"), q = norm(inp.value);
+    var items = breedList(card).filter(function(b){ return !q || norm(b).indexOf(q) >= 0; });
+    ul.innerHTML = items.length ? items.map(function(b){ return '<li role="option">' + b.split("|")[0] + '</li>'; }).join("")
+      : '<li class="none">一覧にありません。このまま入力してください</li>';
+    ul.hidden = false; inp.setAttribute("aria-expanded", "true");
+  }
+  function closeList(inp){
+    var ul = inp.parentNode.querySelector(".cb-list");
+    ul.hidden = true; inp.setAttribute("aria-expanded", "false");
+  }
+  petsBox.addEventListener("focusin", function(e){ if (e.target.classList.contains("breed")) openList(e.target); });
+  petsBox.addEventListener("input", function(e){ if (e.target.classList.contains("breed")) openList(e.target); });
+  petsBox.addEventListener("focusout", function(e){
+    if (e.target.classList.contains("breed")) { var t = e.target; setTimeout(function(){ closeList(t); }, 150); }
+  });
+  // 選んだら入力欄に入れる（スマホでもタップ1回で決まるよう mousedown で拾う）
+  petsBox.addEventListener("mousedown", function(e){
+    var li = e.target.closest(".cb-list li");
+    if (!li || li.classList.contains("none")) return;
+    e.preventDefault();
+    var inp = li.closest(".cb").querySelector(".breed");
+    inp.value = li.textContent; closeList(inp);
+  });
+  petsBox.addEventListener("keydown", function(e){
+    if (!e.target.classList.contains("breed")) return;
+    var ul = e.target.parentNode.querySelector(".cb-list");
+    if (ul.hidden) return;
+    var lis = Array.prototype.slice.call(ul.querySelectorAll("li:not(.none)")), i = lis.findIndex(function(l){ return l.classList.contains("on"); });
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault(); if (!lis.length) return;
+      if (i >= 0) lis[i].classList.remove("on");
+      i = e.key === "ArrowDown" ? Math.min(lis.length - 1, i + 1) : Math.max(0, i - 1);
+      lis[i].classList.add("on"); lis[i].scrollIntoView({block:"nearest"});
+    } else if (e.key === "Enter" && i >= 0) {
+      e.preventDefault(); e.target.value = lis[i].textContent; closeList(e.target);
+    } else if (e.key === "Escape") closeList(e.target);
+  });
+  // 種類を変えたら、合わない犬種・猫種は消す
+  petsBox.addEventListener("change", function(e){
+    if (!/_species$/.test(e.target.name)) return;
+    var card = e.target.closest(".pet"), inp = card.querySelector(".breed");
+    var names = function(l){ return l.map(function(b){ return b.split("|")[0]; }); };
+    if (inp.value && names(breedList(card)).indexOf(inp.value) < 0 && Object.keys(BREEDS).some(function(k){ return names(BREEDS[k]).indexOf(inp.value) >= 0; })) inp.value = "";
+  });
+
 
   function readPets(){
     var fd = new FormData(form);
