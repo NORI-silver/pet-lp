@@ -341,6 +341,10 @@ footer a{color:var(--ink-2)}
 .more{text-align:center;margin-top:22px}
 .more a{color:var(--o-d);font-weight:700}
 @media (min-width:760px){.gcards{grid-template-columns:repeat(3,1fr)}.story h2{font-size:2.1rem}.story .facts{grid-template-columns:repeat(3,1fr)}}
+.op{margin:0}
+.op div{display:grid;grid-template-columns:8.5em 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.op dt{font-weight:700;color:var(--ink)}
+.op dd{margin:0}
 </style>
 <script type="application/ld+json">
 {
@@ -379,7 +383,7 @@ footer a{color:var(--ink-2)}
 {
  "@context":"https://schema.org",
  "@graph":[
-  {"@type":"Organization","@id":"https://pet.shiokonbu.com/#org","name":"おまかせペットタクシー","url":"https://pet.shiokonbu.com/","logo":"https://pet.shiokonbu.com/apple-touch-icon.png","parentOrganization":{"@type":"Organization","name":"shiokonbu.com","url":"https://shiokonbu.com/"}},
+  {"@type":"Organization","@id":"https://pet.shiokonbu.com/#org","name":"おまかせペットタクシー","url":"https://pet.shiokonbu.com/","logo":"https://pet.shiokonbu.com/apple-touch-icon.png"},
   {"@type":"WebSite","@id":"https://pet.shiokonbu.com/#website","name":"おまかせペットタクシー","url":"https://pet.shiokonbu.com/","inLanguage":"ja","publisher":{"@id":"https://pet.shiokonbu.com/#org"}}
  ]
 }
@@ -787,7 +791,7 @@ footer a{color:var(--ink-2)}
       </div>
       <div class="rule fine" id="privacy">
         <h3>個人情報の取り扱い</h3>
-        <p>おまかせペットタクシー（運営：shiokonbu.com、以下「当サイト」）は、お預かりする個人情報を次のとおり取り扱います。</p>
+        <p>おまかせペットタクシー（以下「当サイト」）は、お預かりする個人情報を次のとおり取り扱います。</p>
         <h4>1. お預かりする情報</h4>
         <ul><li>お名前、電話番号、メールアドレス</li><li>お迎えの場所、経由地、行き先、希望の日時、ペットの種類・体重・年齢などの情報、メモ欄の内容</li></ul>
         <h4>2. 使う目的</h4>
@@ -799,6 +803,16 @@ footer a{color:var(--ink-2)}
         <h4>5. 確認・訂正・削除のご依頼</h4>
         <ul><li>ご自身の情報の確認・訂正・削除をご希望の場合は、受付時にお送りしたメールにご返信ください。ご本人であることを確認したうえで対応します。</li></ul>
         <p>この内容は、必要に応じて見直すことがあります。変更したときはこのページでお知らせします。（2026年10月制定）</p>
+      </div>
+      <div class="rule fine" id="operator">
+        <h3>運営者情報</h3>
+        <dl class="op">
+          <div><dt>運営者</dt><dd>おまかせペットタクシー</dd></div>
+          <div><dt>サイト</dt><dd>https://pet.shiokonbu.com/</dd></div>
+          <div><dt>対応エリア</dt><dd>東京都・神奈川県・千葉県・埼玉県</dd></div>
+          <div><dt>サービス内容</dt><dd>ペットタクシーの空き確認と手配（手配料無料）。送迎は各ペットタクシー事業者が行います。</dd></div>
+          <div><dt>お問い合わせ</dt><dd>受付時にお送りしたメールにご返信ください。</dd></div>
+        </dl>
       </div>
     </div>
   </div>
@@ -819,10 +833,10 @@ footer a{color:var(--ink-2)}
 <!-- 11. フッター -->
 <footer>
   <div class="wrap">
-    <nav><a href="#how">使い方</a><a href="#area">対応エリア</a><a href="#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="#faq">よくある質問</a><a href="#policy">キャンセルについて</a><a href="#privacy">個人情報の取り扱い</a></nav>
+    <nav><a href="#how">使い方</a><a href="#area">対応エリア</a><a href="#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="#faq">よくある質問</a><a href="#policy">キャンセルについて</a><a href="#privacy">個人情報の取り扱い</a><a href="#operator">運営者情報</a></nav>
     <nav><a href="/tokyo/">東京のペットタクシー</a><a href="/chiba/">千葉のペットタクシー</a><a href="/kanagawa/">神奈川・横浜のペットタクシー</a><a href="/saitama/">埼玉のペットタクシー</a></nav>
-    <p>おまかせペットタクシー（東京・神奈川・千葉・埼玉）<br>運営：<a href="https://shiokonbu.com/">shiokonbu.com</a></p>
-    <p>&copy; 2026 shiokonbu.com</p>
+    <p>おまかせペットタクシー（東京・神奈川・千葉・埼玉）</p>
+    <p>&copy; 2026 おまかせペットタクシー</p>
   </div>
 </footer>
 

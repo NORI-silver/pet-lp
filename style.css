@@ -313,6 +313,10 @@ footer a{color:var(--ink-2)}
 .more{text-align:center;margin-top:22px}
 .more a{color:var(--o-d);font-weight:700}
 @media (min-width:760px){.gcards{grid-template-columns:repeat(3,1fr)}.story h2{font-size:2.1rem}.story .facts{grid-template-columns:repeat(3,1fr)}}
+.op{margin:0}
+.op div{display:grid;grid-template-columns:8.5em 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.op dt{font-weight:700;color:var(--ink)}
+.op dd{margin:0}
 /* エリア別ページ */
 .crumb{font-size:.78rem;color:var(--ink-3);padding:14px 0 0}
 .crumb a{color:var(--ink-3);text-decoration:none}
