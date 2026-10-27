@@ -231,8 +231,8 @@ details[open] summary::after{transform:rotate(45deg)}
 details .a{padding:0 20px 18px;color:var(--ink-2);font-size:.94rem}
 
 /* rules */
-.rules{display:grid;gap:16px;max-width:780px;margin:0 auto}
-.rule{border:1px solid var(--line);border-radius:var(--r);padding:22px 22px 10px}
+.rules{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;max-width:780px;margin:0 auto}
+.rule{border:1px solid var(--line);border-radius:var(--r);padding:22px 22px 10px;overflow-wrap:anywhere}
 .rule h3{font-size:1rem;margin-bottom:12px}
 .rule h4{font-size:.86rem;margin:14px 0 6px;color:var(--ink-2)}
 .rule ul{margin:0;padding:0;list-style:none}

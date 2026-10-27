@@ -259,8 +259,8 @@ details[open] summary::after{transform:rotate(45deg)}
 details .a{padding:0 20px 18px;color:var(--ink-2);font-size:.94rem}
 
 /* rules */
-.rules{display:grid;gap:16px;max-width:780px;margin:0 auto}
-.rule{border:1px solid var(--line);border-radius:var(--r);padding:22px 22px 10px}
+.rules{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;max-width:780px;margin:0 auto}
+.rule{border:1px solid var(--line);border-radius:var(--r);padding:22px 22px 10px;overflow-wrap:anywhere}
 .rule h3{font-size:1rem;margin-bottom:12px}
 .rule h4{font-size:.86rem;margin:14px 0 6px;color:var(--ink-2)}
 .rule ul{margin:0;padding:0;list-style:none}
@@ -577,22 +577,22 @@ footer a{color:var(--ink-2)}
     <div class="price-wrap">
       <div class="free"><div class="t"><b>手配料</b>何度使っても</div><div class="v">0<small>円</small></div></div>
       <div class="fare">
-        <h3>距離ごとの目安</h3>
+<!--FARE_TABLE-->        <h3>距離ごとの目安</h3>
         <dl>
-          <div class="row"><dt>5kmまで</dt><dd>2,860円〜</dd></div>
-          <div class="row"><dt>10km</dt><dd>3,960円〜</dd></div>
-          <div class="row"><dt>20km</dt><dd>6,160円〜</dd></div>
-          <div class="row"><dt>30km</dt><dd>8,360円〜</dd></div>
-          <div class="row"><dt>50km</dt><dd>12,760円〜</dd></div>
+          <div class="row"><dt>5km</dt><dd>2,000〜2,860円</dd></div>
+          <div class="row"><dt>10km</dt><dd>3,000〜3,960円</dd></div>
+          <div class="row"><dt>20km</dt><dd>5,000〜6,160円</dd></div>
+          <div class="row"><dt>30km</dt><dd>7,000〜8,360円</dd></div>
+          <div class="row"><dt>50km</dt><dd>11,000〜12,760円</dd></div>
         </dl>
         <h3>たとえば</h3>
         <dl>
-          <div class="row"><dt>世田谷区 → 羽田空港<br>（約18km）</dt><dd>5,720円〜</dd></div>
-          <div class="row"><dt>近所の動物病院（3km）</dt><dd>2,860円〜</dd></div>
+          <div class="row"><dt>世田谷区 → 羽田空港<br>（約18km）</dt><dd>4,600〜5,720円</dd></div>
+          <div class="row"><dt>松戸市 → 柏市<br>（約8km）</dt><dd>2,600円〜</dd></div>
         </dl>
       </div>
     </div>
-    <p class="small">片道の目安です。依頼先のペットタクシーの料金表（乗車料金は5kmまで2,200円、その先1kmごとに220円。お迎え料金と帰りの回送料金はそれぞれ3kmまで330円）で計算しています。お店から遠い場所ではお迎え・回送料金が増えることがあるため「〜」としています。往復は乗車料金が2倍になります。夕方18時〜朝8時は乗車料金が2割増しです。病院での待ち時間は10分まで無料、30分まで660円、その後は10分ごとに220円です。高速代・駐車場代は別にかかります。実際の料金は、引き受けた会社からご案内します。</p>
+    <p class="small">片道の目安です。依頼先のペットタクシー2社の料金表で計算していて、どの会社が引き受けるかで変わります。東京・世田谷の会社は、乗車料金が5kmまで2,200円、その先は1kmごとに220円（101km〜は165円、201km〜は110円）。お迎え料金と帰りの回送料金がそれぞれ3kmまで330円かかり、お店から遠いと増えます。夕方18時〜朝8時は乗車料金が2割増し、往復は乗車料金が2倍です。病院での待ち時間は10分まで無料、30分まで660円、その後10分ごとに220円です。千葉・松戸の会社は、乗車料金が5km未満1,800円、5km以上は1kmごとに200円（101km〜は150円、201km〜は100円）。往復は10kmまで3,300円（病院での待ち時間30分込み）で、その後の待ち時間は30分ごとに500円です。長い距離や長い待ち時間は、その会社のお見積りになります。高速代・駐車場代は別にかかります。実際の料金は、引き受けた会社からご案内します。エリアごとの目安は、各エリアのページにまとめています。</p><!--/FARE_TABLE-->
   </div>
 </section>
 
@@ -996,9 +996,10 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
 
 
   // ── 概算料金（お迎え場所 → 経由地 → 行き先 の距離から計算）──
-  // 依頼先（ペットエクスプレス）の料金表：乗車 5kmまで2,200円、6〜100kmは1kmごとに220円、101〜200kmは165円、201km〜は110円。
-  // お迎え・回送はそれぞれ3kmまで330円。18時〜8時は乗車料金が2割増。エリアページの表（tools/gen_areas.py の ride）と同じ計算。
-  var FARE = {base_km:5, base:2200, tiers:[[100,220],[200,165],[Infinity,110]], pick:330, back:330, night:1.2, road:1.3};
+  // 提携先ごとの料金表と、都県ごとの依頼先。tools/fares.json から gen_areas.py が書き込む（ここは手で直さない）。
+  /*FARES*/var FARES = {"petexpress": {"base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null}, "kuriki": {"base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300]}};
+  var AREA_FARES = {"東京都": ["petexpress", "kuriki"], "神奈川県": ["petexpress", "kuriki"], "千葉県": ["kuriki"], "埼玉県": ["petexpress", "kuriki"]};/*/FARES*/
+  var ROAD = 1.3; // 直線距離 → 道のりの目安
   var est = $("est"), geoCache = {}, estSeq = 0, lastKm = 0, lastFare = "", lastFareNum = 0;
   function yen(n){ return n.toLocaleString("ja-JP") + "円"; }
   function geocode(q){
@@ -1017,10 +1018,17 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     var h = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(a.lat*t) * Math.cos(b.lat*t) * Math.sin(dLng/2) * Math.sin(dLng/2);
     return 2 * R * Math.asin(Math.sqrt(h));
   }
-  function ride(km){
-    var f = FARE.base, from = FARE.base_km;
-    FARE.tiers.forEach(function(t){ if (km > from) { f += t[1] * (Math.min(km, t[0]) - from); } from = t[0]; });
+  function ride(c, km){
+    var f = c.base, from = c.base_km;
+    c.tiers.forEach(function(t){ var to = t[0] == null ? Infinity : t[0]; if (km > from) { f += t[1] * (Math.min(km, to) - from); } from = to; });
     return f;
+  }
+  // 1社ぶんの目安（夜間割増・往復を含む）
+  function fareOf(c, km, round, night){
+    if (round && c.round_flat && km <= c.round_flat[0]) return c.round_flat[1] + c.pick + c.back;
+    var r = ride(c, km);
+    if (night && c.night > 1) r = Math.round(r * c.night / 10) * 10;
+    return r * (round ? 2 : 1) + c.pick + c.back;
   }
   function showEstimate(){
     var seq = ++estSeq;
@@ -1036,18 +1044,21 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
         return;
       }
       var km = 0;
-      for (var i = 1; i < cs.length; i++) km += kmBetween(cs[i-1], cs[i]) * FARE.road;
+      for (var i = 1; i < cs.length; i++) km += kmBetween(cs[i-1], cs[i]) * ROAD;
       km = Math.max(1, Math.round(km));
       var trip = (form.querySelector("input[name=trip]:checked") || {}).value || "片道";
       var round = trip !== "片道", h = Number($("hour").value), night = $("hour").value !== "" && (h >= 18 || h < 8);
-      var r = ride(km);
-      if (night) r = Math.round(r * FARE.night / 10) * 10;
-      var total = r * (round ? 2 : 1) + FARE.pick + FARE.back;
-      lastKm = km; lastFareNum = total; lastFare = yen(total) + "〜";
+      var keys = AREA_FARES[$("pref").value] || Object.keys(FARES);
+      var vals = keys.map(function(k){ return fareOf(FARES[k], km, round, night); }).sort(function(a, b){ return a - b; });
+      var lo = vals[0], hi = vals[vals.length - 1];
+      // 受付の仕組みには数字1つで送るので、高いほう（少なめに伝えない）を送る
+      lastKm = km; lastFareNum = hi;
+      lastFare = lo === hi ? yen(lo) + "〜" : lo.toLocaleString("ja-JP") + "〜" + yen(hi);
       var notes = ["道のり約" + km + "kmで計算した" + (round ? "往復" : "片道") + "の目安です。"];
-      notes.push("お迎え・回送料金（それぞれ3kmまで330円）を含みます。");
-      if (night) notes.push("夕方18時〜朝8時の2割増しを含めています。");
-      if (trip === "往復（病院で待機）") notes.push("待ち時間は10分まで無料、30分まで660円、その後10分ごとに220円かかります。");
+      if (lo !== hi) notes.push("このエリアの依頼先" + keys.length + "社の料金表で計算していて、どの会社が引き受けるかで変わります。");
+      if (keys.some(function(k){ return FARES[k].pick; })) notes.push("お迎え・回送料金を含みます。");
+      if (night && keys.some(function(k){ return FARES[k].night > 1; })) notes.push("夜間の割増を含めています。");
+      if (trip === "往復（病院で待機）") notes.push("病院での待ち時間の料金は会社ごとに違い、別にかかることがあります（くわしくは<a href=\"#price\">料金の目安</a>）。");
       notes.push("高速代・駐車場代は別です。実際の料金は、引き受けた会社からご案内します。");
       est.innerHTML = '<div class="t">料金の目安（' + (round ? "往復" : "片道") + '）</div><div class="v">' + lastFare + '</div><p>' + notes.join("") + '</p>';
     });
