@@ -1000,7 +1000,7 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
   // 依頼先（ペットエクスプレス）の料金表：乗車 5kmまで2,200円、6〜100kmは1kmごとに220円、101〜200kmは165円、201km〜は110円。
   // お迎え・回送はそれぞれ3kmまで330円。18時〜8時は乗車料金が2割増。エリアページの表（tools/gen_areas.py の ride）と同じ計算。
   var FARE = {base_km:5, base:2200, tiers:[[100,220],[200,165],[Infinity,110]], pick:330, back:330, night:1.2, road:1.3};
-  var est = $("est"), geoCache = {}, estSeq = 0, lastKm = 0, lastFare = "";
+  var est = $("est"), geoCache = {}, estSeq = 0, lastKm = 0, lastFare = "", lastFareNum = 0;
   function yen(n){ return n.toLocaleString("ja-JP") + "円"; }
   function geocode(q){
     q = q.trim();
@@ -1027,12 +1027,12 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     var seq = ++estSeq;
     var viaOn = form.querySelector("input[name=via_on]:checked").value === "あり";
     var pts = [$("pickup").value].concat(viaOn ? [$("via").value] : [], [$("dropoff").value]);
-    if (!$("pickup").value.trim() || !$("dropoff").value.trim()) { est.hidden = true; lastKm = 0; lastFare = ""; return; }
+    if (!$("pickup").value.trim() || !$("dropoff").value.trim()) { est.hidden = true; lastKm = 0; lastFare = ""; lastFareNum = 0; return; }
     Promise.all(pts.map(geocode)).then(function(cs){
       if (seq !== estSeq) return;
       est.hidden = false;
       if (cs.some(function(c){ return !c; })) {
-        lastKm = 0; lastFare = "";
+        lastKm = 0; lastFare = ""; lastFareNum = 0;
         est.innerHTML = '<div class="t">料金の目安</div><p>場所から距離を計算できませんでした。「〇〇区〇〇1丁目」のように住所で入れると計算できます。<a href="#price">距離ごとの目安</a>もご覧ください。</p>';
         return;
       }
@@ -1044,7 +1044,7 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
       var r = ride(km);
       if (night) r = Math.round(r * FARE.night / 10) * 10;
       var total = r * (round ? 2 : 1) + FARE.pick + FARE.back;
-      lastKm = km; lastFare = yen(total) + "〜";
+      lastKm = km; lastFareNum = total; lastFare = yen(total) + "〜";
       var notes = ["道のり約" + km + "kmで計算した" + (round ? "往復" : "片道") + "の目安です。"];
       notes.push("お迎え・回送料金（それぞれ3kmまで330円）を含みます。");
       if (night) notes.push("夕方18時〜朝8時の2割増しを含めています。");
@@ -1164,7 +1164,7 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     body.append("pets_json", JSON.stringify(pets));
     body.append("notes", o.notes);
     body.append("est_km", lastKm ? String(lastKm) : "");
-    body.append("est_fare", lastFare);
+    body.append("est_fare", lastFareNum ? String(lastFareNum) : "");
 
     var btn = form.querySelector("button[type=submit]");
     btn.disabled = true;
