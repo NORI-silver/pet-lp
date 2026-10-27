@@ -600,6 +600,8 @@ footer a{color:var(--ink-2)}
           <div id="pets"></div>
           <div class="f"><label for="riders">一緒に乗る人数</label>
             <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option>1人</option><option>2人</option><option>3人</option></select></div>
+          <div class="f"><label for="luggage">荷物の量</label>
+            <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
         <div class="group">
@@ -925,6 +927,7 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     setRadio("via_on", o.via ? "あり" : "なし"); syncVia();
     setRadio("trip", o.trip);
     setSelect($("riders"), o.riders);
+    setSelect($("luggage"), o.luggage);
     var pets = o.pets || o.pets_json || [];
     if (typeof pets === "string") { try { pets = JSON.parse(pets); } catch (e) { pets = []; } }
     if (!Array.isArray(pets)) pets = [];
@@ -940,7 +943,7 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
   }
   function collect(){
     var fd = new FormData(form), o = { pets: readPets(), pet_count: countSel.value };
-    ["pref","trip","riders"].forEach(function(k){ o[k] = String(fd.get(k) || ""); });
+    ["pref","trip","riders","luggage"].forEach(function(k){ o[k] = String(fd.get(k) || ""); });
     TEXT.forEach(function(k){ o[k] = String(fd.get(k) || "").trim(); });
     if (form.querySelector("input[name=via_on]:checked").value !== "あり") o.via = "";
     return o;
@@ -997,7 +1000,7 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     if (!GAS_URL) return fail("ただいまフォームを準備中です。少し時間をおいてお試しください。");
 
     var body = new URLSearchParams();
-    ["website","pref","pickup","dropoff","trip","riders","name","tel","email"].forEach(function(k){ body.append(k, fd.get(k) || ""); });
+    ["website","pref","pickup","dropoff","trip","riders","luggage","name","tel","email"].forEach(function(k){ body.append(k, fd.get(k) || ""); });
     var o = collect();
     body.append("via", o.via);
     body.append("contact", "メール");
