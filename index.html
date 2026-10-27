@@ -320,6 +320,26 @@ footer a{color:var(--ink-2)}
   .last h2{font-size:2.1rem}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+.gcards{display:grid;gap:14px;list-style:none;padding:0;margin:0}
+.gcards a{display:block;background:#fff;border-radius:var(--r);box-shadow:var(--shadow);padding:20px;text-decoration:none;color:var(--ink);height:100%}
+.gcards b{display:block;font-family:var(--round);font-size:1.02rem;line-height:1.5;margin-bottom:6px}
+.gcards span{font-size:.84rem;color:var(--ink-2);line-height:1.7}
+.gcards a:hover b{color:var(--o-d)}
+.story{background:var(--ink);color:#fff}
+.story .wrap{max-width:860px}
+.story .eyebrow{color:#ffb27f}
+.story h2{color:#fff;font-size:1.6rem;line-height:1.5;margin:10px 0 22px}
+.story p{color:rgba(255,255,255,.82);margin:0 0 16px}
+.story .facts{display:grid;gap:12px;margin:26px 0;list-style:none;padding:0}
+.story .facts li{background:rgba(255,255,255,.07);border-radius:18px;padding:16px 18px;font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.7}
+.story .facts b{display:block;font-family:var(--round);font-size:1.3rem;color:#ffb27f;margin-bottom:2px}
+.story .facts small{display:block;color:rgba(255,255,255,.5);font-size:.72rem;margin-top:4px}
+.story .end{font-family:var(--round);font-size:1.25rem;font-weight:800;color:#fff;margin-top:26px}
+.story-img{border-radius:24px;overflow:hidden;margin:0 0 26px;aspect-ratio:16/9}
+.story-img img{width:100%;height:100%;object-fit:cover;display:block}
+.more{text-align:center;margin-top:22px}
+.more a{color:var(--o-d);font-weight:700}
+@media (min-width:760px){.gcards{grid-template-columns:repeat(3,1fr)}.story h2{font-size:2.1rem}.story .facts{grid-template-columns:repeat(3,1fr)}}
 </style>
 <script type="application/ld+json">
 {
@@ -369,7 +389,7 @@ footer a{color:var(--ink-2)}
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="6" cy="9" r="2.2"/><circle cx="10" cy="5.5" r="2.2"/><circle cx="14" cy="5.5" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M12 11c-3 0-6 3.6-6 6.2 0 1.8 1.5 2.8 3 2.8 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.5 0 3-1 3-2.8C18 14.6 15 11 12 11z"/></svg></i>おまかせペットタクシー</a>
-    <nav><a href="#how">使い方</a><a href="#area">エリア</a><a href="#price">料金</a><a href="#faq">よくある質問</a></nav>
+    <nav><a href="#how">使い方</a><a href="#area">エリア</a><a href="#price">料金</a><a href="/guide/">ガイド</a><a href="#faq">よくある質問</a></nav>
     <a class="mini" href="#form">無料で頼む</a>
   </div>
 </header>
@@ -444,6 +464,25 @@ footer a{color:var(--ink-2)}
   </div>
 </section>
 
+<!-- 想い -->
+<section class="story" id="story">
+  <div class="wrap">
+    <span class="eyebrow">OUR WISH</span>
+    <h2>家族なのに、<br><span style="white-space:nowrap">一緒に出かけるのが</span><span style="white-space:nowrap">むずかしい。</span></h2>
+    <figure class="story-img"><img src="/img/story.jpg" alt="玄関で、キャリーに入った猫と散歩用のリードをつけた犬を連れて出かける家族" width="1600" height="900" loading="lazy" onerror="this.parentNode.remove()"></figure>
+    <p>具合が悪そうなのに、どうやって病院へ連れて行けばいいかわからない。電車には大きな子は乗せられないし、ふつうのタクシーは断られるかもしれない。車がない、運転できない、運転しながら様子を見られない。</p>
+    <p>犬や猫と暮らす人なら、一度はこんな夜を過ごしたことがあるのではないでしょうか。</p>
+    <ul class="facts">
+      <li><b>ケース込み10kgまで</b>電車に乗せられるのは、ケースに入る小さな子だけ。<small>JR東日本の手回り品のきまり</small></li>
+      <li><b>1世帯 0.405台</b>東京では、車を持たない家庭がめずらしくありません。<small>自動車検査登録情報協会（2025年3月末）</small></li>
+      <li><b>「様子を見よう」</b>連れて行くのが大変で受診を先のばしにすると、重症化するおそれがあると獣医師も書いています。<small>片川優子（獣医師）・現代ビジネス</small></li>
+    </ul>
+    <p>ペットタクシーは、そんなときのためにあります。家の前から行き先の前まで、乗り換えなし。飼い主は運転せず、すぐそばで声をかけていられます。</p>
+    <p>でも、ペットタクシーは小さなお店が多く、電話がつながらない、空いていない、料金がわからない、ということもよくあります。だから私たちは、その子に合う車を、代わりに探すことにしました。</p>
+    <p class="end"><span style="white-space:nowrap">移動を理由に、</span><span style="white-space:nowrap">あきらめないでほしい。</span><br><span style="white-space:nowrap">大切な家族のために、</span><span style="white-space:nowrap">やさしい一台を。</span></p>
+  </div>
+</section>
+
 <!-- 3. 3ステップ -->
 <section id="how">
   <div class="wrap">
@@ -498,6 +537,7 @@ footer a{color:var(--ink-2)}
       <div class="scene"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></div><b>飼い主さんが乗れない日</b><span>ペットだけの送迎にも対応</span></div>
       <div class="scene"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16l20-6-3-3-6 2-6-4-2 1 4 5-4 1-2-2-1 1z"/><path d="M3 21h18"/></svg></div><b>お引っ越し・空港へ</b><span>羽田・成田・伊丹、長距離も</span></div>
     </div>
+    <p class="more"><a href="#guide">場面ごとのくわしいガイドを見る</a></p>
   </div>
 </section>
 
@@ -645,11 +685,14 @@ footer a{color:var(--ink-2)}
 <!-- 7. 選ばれる理由 -->
 <section id="why">
   <div class="wrap">
-    <div class="sh"><span class="eyebrow">WHY</span><h2>何社も電話しなくて、いい。</h2><p>ペットタクシーは小さなお店が多く、電話がつながらない、空いていない、料金がわからない、がよくあります。</p></div>
+    <div class="sh"><span class="eyebrow">WHY</span><h2>おまかせペットタクシーならでは。</h2><p>ペットタクシーは小さなお店が多く、電話がつながらない、空いていない、料金がわからない、がよくあります。</p></div>
     <div class="reasons">
       <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8L3.5 9.2l5.9-.9z"/></svg></div><h3>空いている車を、私たちが探す</h3><p>フォーム1回で、エリアのペットタクシーに空きを確かめて、お迎えまで決めておきます。</p></div>
-      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/></svg></div><h3>その子に合う車だけ</h3><p>大型犬、多頭、ケージなし、介護が必要、飼い主さんが乗れない日。条件に合うところだけをお探しします。</p></div>
-      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4M12 17h.01"/></svg></div><h3>料金がわかってから乗れる</h3><p>手配料は0円。料金の目安を先にお伝えするので、乗ってから驚くことはありません。</p></div>
+      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/></svg></div><h3>その子に合う車だけ</h3><p>一緒に乗る人数、頭数、体重、荷物の量、介護が必要かどうか。条件に合う車の会社にだけ、お声がけします。</p></div>
+      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4M12 17h.01"/></svg></div><h3>料金の目安がその場でわかる</h3><p>お迎え場所と行き先を入れると、その区間の料金の目安がフォームに出ます。手配料は0円です。</p></div>
+      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0115.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 01-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></svg></div><h3>決まらなくても、すぐにもう一度</h3><p>空いている車が見つからなかったときは、メールのリンクから日時だけ変えて頼み直せます。入力し直しはいりません。</p></div>
+      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><h3>やりとりはメールで、記録が残る</h3><p>受付番号、お迎えの時間、料金の目安はすべてメールでお届け。あとから見返せて、言った・言わないの心配がありません。</p></div>
+      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></div><h3>ペットのことを、1回だけ</h3><p>犬種・猫種、体重、性格、介護のことは、フォームに1回書くだけ。何社にも同じ説明をくり返さなくて大丈夫です。</p></div>
     </div>
     <div class="vs">
       <table>
@@ -680,6 +723,22 @@ footer a{color:var(--ink-2)}
       <li><b>ポウズ</b><span>富里市</span></li>
     </ul>
     <p class="cos-note">掲載は手配先の一例で、各社が当サイトをおすすめしているという意味ではありません。</p>
+  </div>
+</section>
+
+<!-- ガイド -->
+<section id="guide" style="padding-top:0">
+  <div class="wrap">
+    <div class="sh"><span class="eyebrow">GUIDE</span><h2>ペットの移動ガイド</h2><p>通院、夜間救急、猫の移動、シニアの子、大型犬、引っ越しや空港へ。場面ごとの困りごとと、その解決のしかたをまとめました。</p></div>
+    <ul class="gcards">
+      <li><a href="/guide/what-is-pet-taxi/"><b>ペットタクシーとは？電車・タクシー・マイカーとの違い</b><span>電車はケース込み10kgまで。どんなときにペットタクシーが頼りになるのか。</span></a></li>
+      <li><a href="/guide/hospital/"><b>動物病院への通院・夜間救急にペットタクシーを</b><span>「連れて行くのが大変」で受診を先のばしにしないために。</span></a></li>
+      <li><a href="/guide/cat/"><b>猫の移動をやさしく。キャリーの慣らし方と車での過ごし方</b><span>キャリーを「怖い箱」から「安心できる場所」に。</span></a></li>
+      <li><a href="/guide/senior/"><b>シニア犬・シニア猫、介護中の子の移動</b><span>寝たまま、寄り添って。長く一緒に暮らした子のために。</span></a></li>
+      <li><a href="/guide/large-dog/"><b>大型犬の移動に、ペットタクシーという選択</b><span>電車に乗れない大きな子の通院やお出かけに。</span></a></li>
+      <li><a href="/guide/airport-moving/"><b>引っ越し・空港への送迎。ペットと一緒の大移動</b><span>飛行機の預け入れのきまりと、夏の車内の暑さ。</span></a></li>
+    </ul>
+    <p class="more"><a href="/guide/">ペットの移動ガイドをすべて見る</a></p>
   </div>
 </section>
 
@@ -762,7 +821,7 @@ footer a{color:var(--ink-2)}
 <!-- 11. フッター -->
 <footer>
   <div class="wrap">
-    <nav><a href="#how">使い方</a><a href="#area">対応エリア</a><a href="#price">料金の目安</a><a href="#faq">よくある質問</a><a href="#policy">キャンセルについて</a><a href="#privacy">個人情報の取り扱い</a></nav>
+    <nav><a href="#how">使い方</a><a href="#area">対応エリア</a><a href="#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="#faq">よくある質問</a><a href="#policy">キャンセルについて</a><a href="#privacy">個人情報の取り扱い</a></nav>
     <nav><a href="/tokyo/">東京のペットタクシー</a><a href="/chiba/">千葉のペットタクシー</a><a href="/kanagawa/">神奈川・横浜のペットタクシー</a><a href="/saitama/">埼玉のペットタクシー</a><a href="/osaka/">大阪のペットタクシー</a><a href="/hyogo/">兵庫・神戸のペットタクシー</a><a href="/fukuoka/">福岡のペットタクシー</a></nav>
     <p>おまかせペットタクシー（東京・神奈川・千葉・埼玉・大阪・兵庫・福岡）<br>運営：<a href="https://shiokonbu.com/">shiokonbu.com</a></p>
     <p>&copy; 2026 shiokonbu.com</p>
