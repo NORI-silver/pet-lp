@@ -1065,9 +1065,10 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
 
   // ── 概算料金（お迎え場所 → 経由地 → 行き先 の距離から計算）──
   // 提携先ごとの料金表と、都県ごとの依頼先。tools/fares.json から gen_areas.py が書き込む（ここは手で直さない）。
-  /*FARES*/var FARES = {"petexpress": {"base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null, "wait": {"30": 660, "60": 1320, "120": 2640}}, "kuriki": {"base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300], "wait": {"30": 0, "60": 500, "120": 1500}}};
+  /*FARES*/var FARES = {"petexpress": {"base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null, "wait": {"30": 660, "60": 1320, "120": 2640}, "shop": [35.6339, 139.6697], "pick_free_km": 3, "pick_over": 220}, "kuriki": {"base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300], "wait": {"30": 0, "60": 500, "120": 1500}, "shop": null, "pick_free_km": null, "pick_over": null}};
   var AREA_FARES = {"東京都": ["petexpress", "kuriki"], "神奈川県": ["petexpress", "kuriki"], "千葉県": ["kuriki"], "埼玉県": ["petexpress", "kuriki"]};/*/FARES*/
-  var ROAD = 1.3; // 直線距離 → 道のりの目安
+  // 実際の料金が目安を超えないよう、上限側で計算する（道のりは直線の1.5倍、1km単位で切り上げ、最後に100円単位で切り上げ）
+  var ROAD = 1.5;
   var est = $("est"), geoCache = {}, estSeq = 0, lastKm = 0, lastFare = "", lastFareNum = 0;
   function yen(n){ return n.toLocaleString("ja-JP") + "円"; }
   function geocode(q){
@@ -1092,11 +1093,19 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     return f;
   }
   // 1社ぶんの目安（夜間割増・往復を含む）
-  function fareOf(c, km, round, night){
-    if (round && c.round_flat && km <= c.round_flat[0]) return c.round_flat[1] + c.pick + c.back;
+  // お店からの距離で迎車・回送を出す（3km超の単価が非公開の会社は高めに見る）
+  function pickFee(c, base, at){
+    if (!c.shop || !at) return base;
+    var km = Math.ceil(kmBetween({lat:c.shop[0], lng:c.shop[1]}, at) * ROAD);
+    return base + Math.max(0, km - (c.pick_free_km || 0)) * (c.pick_over || 0);
+  }
+  // from＝最初に乗る場所、to＝最後に降りる場所（迎車・回送の計算用）
+  function fareOf(c, km, round, night, from, to){
+    var pb = pickFee(c, c.pick, from) + pickFee(c, c.back, to);
+    if (round && c.round_flat && km <= c.round_flat[0]) return c.round_flat[1] + pb;
     var r = ride(c, km);
-    if (night && c.night > 1) r = Math.round(r * c.night / 10) * 10;
-    return r * (round ? 2 : 1) + c.pick + c.back;
+    if (night && c.night > 1) r = Math.ceil(r * c.night / 10) * 10;
+    return r * (round ? 2 : 1) + pb;
   }
   function isNight(hourId){ var v = $(hourId).value, h = Number(v); return v !== "" && (h >= 18 || h < 8); }
   function showEstimate(){
@@ -1119,7 +1128,7 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
       function dist(list){
         var d = 0;
         for (var i = 1; i < list.length; i++) d += kmBetween(list[i-1], list[i]) * ROAD;
-        return Math.max(1, Math.round(d));
+        return Math.max(1, Math.ceil(d));
       }
       var km = dist(cs.slice(0, pts.length));
       var km2 = retOther ? dist(cs.slice(pts.length)) : km;
@@ -1130,13 +1139,15 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
         var v = keys.map(function(k){
           var c = FARES[k];
           // あとで迎え＝行きと帰りを1回ずつ、待っててほしい＝往復料金＋待ち時間
-          if (mode === "later") return fareOf(c, km, false, night) + fareOf(c, km2, false, $("retHour").value !== "" ? night2 : night);
-          if (mode === "wait") return fareOf(c, km, true, night) + ((c.wait || {})[w] || 0);
-          return fareOf(c, km, false, night);
-        }).sort(function(a, b){ return a - b; });
+          var a = cs[0], b = cs[pts.length - 1], ra = retOther ? cs[pts.length] : b, rb = retOther ? cs[pts.length + 1] : a;
+          if (mode === "later") return fareOf(c, km, false, night, a, b) + fareOf(c, km2, false, $("retHour").value !== "" ? night2 : night, ra, rb);
+          if (mode === "wait") return fareOf(c, km, true, night, a, a) + ((c.wait || {})[w] || 0);
+          return fareOf(c, km, false, night, a, b);
+        }).map(function(v){ return Math.ceil(v / 100) * 100; }).sort(function(a, b){ return a - b; });
         return [v[0], v[v.length - 1]];
       }
-      function rtext(r){ return r[0] === r[1] ? yen(r[0]) + "〜" : r[0].toLocaleString("ja-JP") + "〜" + yen(r[1]); }
+      // 依頼先のうち高いほうを「◯円まで」で見せる（確定料金がこれより安くなるように）
+      function rtext(r){ return yen(r[1]) + "まで"; }
       // 往復を選んだら、帰りの2つのやり方の目安を並べて見せる（待ち時間は選んだもの、未選択なら1時間）
       var kind = (form.querySelector("input[name=trip_kind]:checked") || {}).value;
       var w = wait && wait !== "不明" ? wait : "60";
@@ -1147,16 +1158,16 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
         est.innerHTML = '<div class="t">料金の目安（往復）</div><p>帰りのやり方を選ぶと、料金の目安が出ます。</p>';
         return;
       }
-      var r = range(later ? "later" : waiting ? "wait" : "one", wait), lo = r[0], hi = r[1];
+      var r = range(later ? "later" : waiting ? "wait" : "one", wait === "不明" ? "120" : wait), lo = r[0], hi = r[1];
       // 受付の仕組みには数字1つで送るので、高いほう（少なめに伝えない）を送る
       lastKm = later ? km + km2 : km; lastFareNum = hi;
-      lastFare = lo === hi ? yen(lo) + "〜" : lo.toLocaleString("ja-JP") + "〜" + yen(hi);
+      lastFare = rtext(r);
       var round = trip !== "片道";
       var notes = [later ? "行き約" + km + "km・帰り約" + km2 + "kmで計算した往復の目安です。" : "道のり約" + km + "kmで計算した" + (round ? "往復" : "片道") + "の目安です。"];
-      if (lo !== hi) notes.push("このエリアの依頼先" + keys.length + "社の料金表で計算していて、どの会社が引き受けるかで変わります。");
+      notes.push("このエリアの依頼先" + (keys.length > 1 ? keys.length + "社のどこが引き受けても" : "が引き受けたときに") + "この金額までに収まるよう、道のりを長めに見て高めに計算しています。実際は、これより安くなることがあります。");
       if (keys.some(function(k){ return FARES[k].pick; })) notes.push("お迎え・回送料金を含みます。");
       if ((night || (later && night2)) && keys.some(function(k){ return FARES[k].night > 1; })) notes.push("夜間の割増を含めています。");
-      if (waiting) notes.push(wait && wait !== "不明" ? "待ち時間の料金を含めています。" : "待ち時間の料金は含んでいません。目安を選ぶと計算に入ります。");
+      if (waiting) notes.push(wait === "不明" ? "待ち時間がわからないときは、2時間として計算しています。" : wait ? "待ち時間の料金を含めています。" : "待ち時間の料金は含んでいません。目安を選ぶと計算に入ります。");
       notes.push("高速代・駐車場代は含みません。確定料金（税込）は、お迎えが決まったときに引き受けた会社から、一般道の場合と高速道路を使う場合の両方をお知らせします。");
       est.innerHTML = '<div class="t">料金の目安（' + (round ? "往復" : "片道") + '）</div><div class="v">' + lastFare + '</div><p>' + notes.join("") + '</p>';
     });
