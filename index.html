@@ -205,6 +205,17 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 @media(min-width:600px){.dt{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr)}.dt input{grid-column:auto}}
 .via-box[hidden],.pet-hint[hidden],#retPlaces[hidden],#retRoute[hidden]{display:none}
 .via-box{margin-top:10px}
+.back-opts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:6px}
+@media (max-width:480px){.back-opts{grid-template-columns:minmax(0,1fr)}}
+.back-opt{position:relative;cursor:pointer}
+.back-opt input{position:absolute;opacity:0;pointer-events:none}
+.back-opt span{display:flex;flex-direction:column;gap:4px;height:100%;box-sizing:border-box;padding:12px;border:1.5px solid var(--line);border-radius:14px;background:#fbfaf9}
+.back-opt b{font-size:.9rem}
+.back-opt small{font-size:.74rem;color:var(--ink-3);line-height:1.5}
+.back-opt em{white-space:pre-line;font-style:normal;font-weight:800;color:var(--o-d);font-size:.9rem;line-height:1.4}
+.back-opt em:empty{display:none}
+.back-opt input:checked+span{background:var(--o-l);border-color:var(--o)}
+.back-opt input:focus-visible+span{outline:2px solid var(--o);outline-offset:2px}
 .via-box .lbl{display:block;margin-top:4px}
 .via-box .note{display:block;font-size:.8rem;color:var(--ink-3);margin:6px 0 0}
 .via-box .chk{display:flex;gap:8px;align-items:center;font-size:.88rem;margin:8px 0}
@@ -487,7 +498,13 @@ footer a{color:var(--ink-2)}
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
           <div class="f"><span class="lbl">片道・往復</span>
-            <div class="seg"><label><input type="radio" name="trip" value="片道" required><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復（あとで迎えに来てほしい）</span></label><label><input type="radio" name="trip" value="往復（病院で待機）"><span>往復（待っててほしい）</span></label></div>
+            <div class="seg"><label><input type="radio" name="trip_kind" value="片道" required><span>片道</span></label><label><input type="radio" name="trip_kind" value="往復"><span>往復</span></label></div>
+            <input type="radio" name="trip" value="片道" id="tripOneWay" hidden tabindex="-1" aria-hidden="true">
+            <div class="via-box" id="backBox" hidden><span class="lbl">帰りはどうしますか？</span>
+              <div class="back-opts">
+                <label class="back-opt"><input type="radio" name="trip" value="往復（病院で待機）" required><span><b>待っていてもらう</b><small>行き先で待ってもらい、そのまま帰る</small><em id="bpWait"></em></span></label>
+                <label class="back-opt"><input type="radio" name="trip" value="往復"><span><b>あとで迎えに来てもらう</b><small>帰りの時刻にあらためてお迎え</small><em id="bpLater"></em></span></label>
+              </div></div>
             <div class="via-box" id="waitBox" hidden><label for="waitTime" class="lbl">待ち時間の目安</label>
               <select id="waitTime" name="wait_time"><option value="">選んでください</option><option value="30">30分まで</option><option value="60">1時間まで</option><option value="120">2時間まで</option><option value="不明">わからない</option></select>
               <span class="note">待ち時間の料金は会社ごとに決まっています。</span></div>
@@ -907,6 +924,10 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
   $("retHour").innerHTML = $("hour").innerHTML;
   $("retMinute").innerHTML = $("minute").innerHTML;
   function syncTrip(){
+    var kind = (form.querySelector("input[name=trip_kind]:checked") || {}).value || "";
+    if (kind === "片道") $("tripOneWay").checked = true;
+    if (kind === "往復" && $("tripOneWay").checked) $("tripOneWay").checked = false;
+    $("backBox").hidden = kind !== "往復";
     var t = (form.querySelector("input[name=trip]:checked") || {}).value || "";
     var wait = t === "往復（病院で待機）", later = t === "往復";
     $("waitBox").hidden = !wait; $("waitTime").required = wait;
@@ -925,7 +946,7 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     $("retRoute").hidden = other;
     $("retRoute").textContent = "帰りは、" + (to ? "「" + to + "」" : "行き先") + "でお迎えして、" + (from ? "「" + from + "」" : "お迎えの場所") + "までお送りします。";
   }
-  form.querySelectorAll("input[name=trip]").forEach(function(r){ r.addEventListener("change", syncTrip); });
+  form.querySelectorAll("input[name=trip],input[name=trip_kind]").forEach(function(r){ r.addEventListener("change", syncTrip); });
   ["retOther","pickup","dropoff","date"].forEach(function(id){ $(id).addEventListener("change", syncTrip); });
 
   // ペットの入力欄（頭数を選ぶと、その数だけカードを出す）
@@ -1104,14 +1125,28 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
       var night = isNight("hour"), night2 = isNight("retHour");
       var wait = $("waitTime").value;
       var keys = AREA_FARES[$("pref").value] || Object.keys(FARES);
-      var vals = keys.map(function(k){
-        var c = FARES[k];
-        // あとで迎え＝行きと帰りを1回ずつ、待っててほしい＝往復料金＋待ち時間
-        if (later) return fareOf(c, km, false, night) + fareOf(c, km2, false, night2);
-        if (waiting) return fareOf(c, km, true, night) + ((c.wait || {})[wait] || 0);
-        return fareOf(c, km, false, night);
-      }).sort(function(a, b){ return a - b; });
-      var lo = vals[0], hi = vals[vals.length - 1];
+      function range(mode, w){
+        var v = keys.map(function(k){
+          var c = FARES[k];
+          // あとで迎え＝行きと帰りを1回ずつ、待っててほしい＝往復料金＋待ち時間
+          if (mode === "later") return fareOf(c, km, false, night) + fareOf(c, km2, false, $("retHour").value !== "" ? night2 : night);
+          if (mode === "wait") return fareOf(c, km, true, night) + ((c.wait || {})[w] || 0);
+          return fareOf(c, km, false, night);
+        }).sort(function(a, b){ return a - b; });
+        return [v[0], v[v.length - 1]];
+      }
+      function rtext(r){ return r[0] === r[1] ? yen(r[0]) + "〜" : r[0].toLocaleString("ja-JP") + "〜" + yen(r[1]); }
+      // 往復を選んだら、帰りの2つのやり方の目安を並べて見せる（待ち時間は選んだもの、未選択なら1時間）
+      var kind = (form.querySelector("input[name=trip_kind]:checked") || {}).value;
+      var w = wait && wait !== "不明" ? wait : "60";
+      $("bpWait").textContent = (w === "30" ? "30分" : w === "60" ? "1時間" : "2時間") + "待って\n" + rtext(range("wait", w));
+      $("bpLater").textContent = rtext(range("later"));
+      if (kind === "往復" && !later && !waiting) {
+        lastKm = 0; lastFare = ""; lastFareNum = 0;
+        est.innerHTML = '<div class="t">料金の目安（往復）</div><p>帰りのやり方を選ぶと、料金の目安が出ます。</p>';
+        return;
+      }
+      var r = range(later ? "later" : waiting ? "wait" : "one", wait), lo = r[0], hi = r[1];
       // 受付の仕組みには数字1つで送るので、高いほう（少なめに伝えない）を送る
       lastKm = later ? km + km2 : km; lastFareNum = hi;
       lastFare = lo === hi ? yen(lo) + "〜" : lo.toLocaleString("ja-JP") + "〜" + yen(hi);
@@ -1128,7 +1163,7 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
 
   ["pickup","via","dropoff"].forEach(function(id){ $(id).addEventListener("change", showEstimate); });
   ["pref","hour","retHour","waitTime","retOther","retPickup","retDropoff"].forEach(function(id){ $(id).addEventListener("change", showEstimate); });
-  form.querySelectorAll("input[name=trip],input[name=via_on]").forEach(function(r){ r.addEventListener("change", showEstimate); });
+  form.querySelectorAll("input[name=trip],input[name=trip_kind],input[name=via_on]").forEach(function(r){ r.addEventListener("change", showEstimate); });
 
   // ── 前回の内容を入れる（日時以外）──
   var TEXT = ["pickup","via","dropoff","name","tel","email","notes"];
@@ -1141,7 +1176,13 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     TEXT.forEach(function(k){ if (o[k] != null) $(k).value = String(o[k]); });
     setRadio("via_on", o.via ? "あり" : "なし"); syncVia();
     setRadio("trip", o.trip);
-    setSelect($("waitTime"), o.wait_time);
+    if (o.trip) setRadio("trip_kind", o.trip === "片道" ? "片道" : "往復");
+    // 再依頼リンク（受付の仕組み）からは return_pickup / return_dropoff で届く。行きの逆と同じなら「変える」にしない
+    if (o.return_pickup || o.return_dropoff) {
+      o.ret_other = (o.return_pickup || "") !== (o.dropoff || "") || (o.return_dropoff || "") !== (o.pickup || "");
+      o.ret_pickup = o.return_pickup; o.ret_dropoff = o.return_dropoff;
+    }
+    setSelect($("waitTime"), String(o.wait_time || ""));
     $("retOther").checked = !!o.ret_other; $("retPickup").value = o.ret_pickup || ""; $("retDropoff").value = o.ret_dropoff || "";
     syncTrip();
     setSelect($("riders"), o.riders);
