@@ -216,6 +216,7 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est .v{font-family:var(--round);font-size:1.5rem;font-weight:800;color:var(--ink);line-height:1.3;margin:2px 0 6px}
 .est p{font-size:.8rem;color:var(--ink-2);margin:0;line-height:1.7}
 .est-rows{margin:6px 0 10px}
+.est-rows b small.nt{display:block;text-align:right;font-size:.74rem;color:#3b47a8;font-weight:700}
 .pref-fix{margin:8px 0 0;background:#fff4e5;border:2px solid var(--o);border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
 .pref-fix[hidden]{display:none}
 .est-flag,.fare-flag{background:#fff;border:2px solid var(--o);border-radius:12px;padding:9px 12px;margin:8px 0;font-size:.84rem;line-height:1.6;color:var(--ink)}

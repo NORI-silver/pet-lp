@@ -245,6 +245,7 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est .v{font-family:var(--round);font-size:1.5rem;font-weight:800;color:var(--ink);line-height:1.3;margin:2px 0 6px}
 .est p{font-size:.8rem;color:var(--ink-2);margin:0;line-height:1.7}
 .est-rows{margin:6px 0 10px}
+.est-rows b small.nt{display:block;text-align:right;font-size:.74rem;color:#3b47a8;font-weight:700}
 .pref-fix{margin:8px 0 0;background:#fff4e5;border:2px solid var(--o);border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
 .pref-fix[hidden]{display:none}
 .est-flag,.fare-flag{background:#fff;border:2px solid var(--o);border-radius:12px;padding:9px 12px;margin:8px 0;font-size:.84rem;line-height:1.6;color:var(--ink)}
@@ -1343,6 +1344,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       }
       // km＝行き、km2＝帰りの距離で、依頼先ごとの目安を出して [安い, 高い] を返す
       function range(km, km2){
+        var by = {};
         var v = keys.map(function(k){
           var c = FARES[k];
           var night = isNightFor(c, "hour"), night2 = $("retHour").value !== "" ? isNightFor(c, "retHour") : night;
@@ -1352,13 +1354,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           var wk = waitKey(km);
           if (retOther || !wk || !c.wait) return sep;
           return Math.min(sep, fareOf(c, km, true, night, a, a) + c.wait[wk]);
-        }).map(function(v){ return Math.ceil(v / 100) * 100; }).sort(function(x, y){ return x - y; });
-        return [v[0], v[v.length - 1]];
+        }).map(function(v, i){ return by[keys[i]] = Math.ceil(v / 100) * 100; }).sort(function(x, y){ return x - y; });
+        return [v[0], v[v.length - 1], by];
       }
       // 依頼先が2社以上なら幅で見せる（上限ではなく目安）
       function rtext(r){ return r[0] === r[1] ? yen(r[0]) : r[0].toLocaleString("ja-JP") + "〜" + yen(r[1]); }
       // 画面では、幅が広すぎるとき（お迎えに来る会社が遠いとき）は安いほうを出して、高いほうは下に書き添える
-      function stext(r){ return r[1] > r[0] * 1.8 ? yen(r[0]) + "〜" : rtext(r); }
+      // ただし夜間割増がかかるときは、割増で上がった金額が見えるよう幅で出す
+      function stext(r){ return r[1] > r[0] * 1.8 && !nightOn ? yen(r[0]) + "〜" : rtext(r); }
       var kmL = kmOf(rs[0], go), kmH = kmOf(rs[1], go), kmL2 = kmOf(rs[2], back), kmH2 = kmOf(rs[3], back);
       // 4都県の中の移動でこの距離を超えるのは場所の取り違えなので、目安を出さない
       if (Math.max(kmL, kmL2) > 250) {
@@ -1375,8 +1378,31 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       lastFare = "一般道（約" + lastKm + "km）" + rtext(rL) + (hasHigh ? "／高速あり（約" + lastKmHigh + "km）" + rtext(rH) + "＋高速代" : "");
       // 所要時間（片道）。道路データの時間は空いているときの値なので、3割増しにして5分単位で切り上げる
       function mins(rt){ return rt ? "・" + (later ? "片道" : "") + "約" + Math.ceil(rt.min * 1.3 / 5) * 5 + "分" : ""; }
-      var rows = '<div class="row"><span>一般道<small>約' + lastKm + 'km' + mins(rs[0]) + '</small></span><b>' + stext(rL) + '</b></div>' +
-        (hasHigh ? '<div class="row"><span>高速あり<small>約' + lastKmHigh + 'km' + mins(rs[1]) + '</small></span><b>' + stext(rH) + '<small>＋高速代</small></b></div>' : "");
+      // 夜間・早朝の割増：かかる会社ごとに、何時から・何割・この区間でいくら増えるかを出す
+      var nightLines = [], nightOn = false, noNight = [];
+      keys.forEach(function(k){
+        var c = FARES[k];
+        if (!(c.night > 1 && c.night_hours)) { noNight.push(c); return; }
+        var nh = c.night_hours, pct = Math.round((c.night - 1) * 10), r = ride(c, kmL);
+        var add = Math.ceil(r * c.night / 10) * 10 - r;
+        var on1 = isNightFor(c, "hour"), on2 = later && $("retHour").value !== "" && isNightFor(c, "retHour");
+        if (on1 || on2) {
+          nightOn = true;
+          nightLines.push(c.label + "は、" + nh[0] + "時〜朝" + nh[1] + "時のお迎えで乗車料金が" + pct + "割増し（" +
+            (later ? (on1 && on2 ? "行きも帰りも" : on1 ? "行き" : "帰り") + "が対象、" : "") + "一般道で片道＋" + yen(add) + "）。" +
+            "この会社の目安は、割増込みで" + yen(rL[2][k]) + (hasHigh ? "（高速ありは" + yen(rH[2][k]) + "＋高速代）" : "") + "です。");
+        } else {
+          nightLines.push(c.label + "は、" + nh[0] + "時〜朝" + nh[1] + "時のお迎えだと乗車料金が" + pct + "割増し（この区間で片道＋" + yen(add) + "）になります。");
+        }
+      });
+      noNight.forEach(function(c){
+        var k = Object.keys(FARES).filter(function(x){ return FARES[x] === c; })[0];
+        nightLines.push(c.label + "は、夜間の割増が料金表にありません" + (nightOn ? "（目安は" + yen(rL[2][k]) + "のまま）" : "") + "。");
+      });
+      var nightBox = nightLines.length ? '<div class="est-night"><b>🌙 ' + (nightOn ? "夜間・早朝の割増を含みます" : "夜間・早朝の割増") + '</b>' + nightLines.join("") + '</div>' : "";
+      if (nightOn) lastFare += "（夜間割増込み）";
+      var rows = '<div class="row"><span>一般道<small>約' + lastKm + 'km' + mins(rs[0]) + '</small></span><b>' + stext(rL) + (nightOn ? '<small class="nt">🌙 夜間割増込み</small>' : "") + '</b></div>' +
+        (hasHigh ? '<div class="row"><span>高速あり<small>約' + lastKmHigh + 'km' + mins(rs[1]) + '</small></span><b>' + stext(rH) + '<small>＋高速代</small>' + (nightOn ? '<small class="nt">🌙 夜間割増込み</small>' : "") + '</b></div>' : "");
       var notes = [round ? "行きと帰りを合わせた往復の目安です。" : "片道の目安です。"];
       if (!rs[0]) notes.push("道のりが調べられなかったため、直線の距離から長めに見て計算しています。");
       else notes.push("所要時間は目安で、道の混み具合で変わります。");
@@ -1385,26 +1411,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (rL[1] > rL[0] * 1.8) notes.push("お迎えに来る会社が遠いと、お迎えの料金が加わって" + yen(rL[1]) + (hasHigh ? "（高速ありは" + yen(rH[1]) + "＋高速代）" : "") + "になることもあります。");
       if (later) notes.push("待っていてもらう場合とあらためて迎えに来る場合の、安いほうで計算しています。");
       notes.push("駐車場代は含みません。確定料金は、一般道の場合と高速道路を使う場合の両方をお知らせします。");
-      // 夜間・早朝の割増：かかる会社ごとに、何時から・何割・この区間でいくら増えるかを出す
-      var nightLines = [], nightOn = false;
-      keys.forEach(function(k){
-        var c = FARES[k];
-        if (!(c.night > 1 && c.night_hours)) { nightLines.push(c.label + "は、夜間の割増が料金表にありません。"); return; }
-        var nh = c.night_hours, pct = Math.round((c.night - 1) * 10), r = ride(c, kmL);
-        var add = Math.ceil(r * c.night / 10) * 10 - r;
-        var on1 = isNightFor(c, "hour"), on2 = later && $("retHour").value !== "" && isNightFor(c, "retHour");
-        if (on1 || on2) {
-          nightOn = true;
-          nightLines.push(c.label + "は" + nh[0] + "時〜朝" + nh[1] + "時のお迎えで乗車料金が" + pct + "割増し。" +
-            (later ? (on1 && on2 ? "行きも帰りも" : on1 ? "行きが" : "帰りが") + "この時間帯なので、" : "") +
-            "一般道で片道あたり＋" + yen(add) + "を含めています。");
-        } else {
-          nightLines.push(c.label + "は、" + nh[0] + "時〜朝" + nh[1] + "時のお迎えだと乗車料金が" + pct + "割増し（この区間で片道＋" + yen(add) + "）になります。");
-        }
-      });
-      var nightBox = nightLines.length ? '<div class="est-night"><b>🌙 ' + (nightOn ? "夜間・早朝の割増を含みます" : "夜間・早朝の割増") + '</b>' + nightLines.join("") + '</div>' : "";
+      if (nightOn) notes = notes.filter(function(n){ return n.indexOf("お迎えに来る会社が遠いと") < 0; }); // 幅で出すので不要
       var flag = '<div class="est-flag"><b>確定料金ではありません</b>これは目安です。確定料金（税込）は、お迎えが決まったときに引き受けた会社からメールでお知らせします。</div>';
-      est.innerHTML = '<div class="t">料金の目安（' + (round ? "往復" : "片道") + '）</div><div class="est-rows">' + rows + '</div>' + flag + nightBox +
+      est.innerHTML = '<div class="t">料金の目安（' + (round ? "往復" : "片道") + (nightOn ? "・夜間割増込み" : "") + '）</div><div class="est-rows">' + rows + '</div>' + flag + nightBox +
         (rs[0] ? '<div class="est-map" id="estMap" role="img" aria-label="ルートの地図"></div><p class="legend"><i class="l1"></i>ルート' + (hasHigh ? "（高速道路を使う道順です）" : "") + '</p>' : "") +
         '<p>' + notes.join("") + '</p>';
       if (rs[1]) drawMap($("estMap"), rs[1], null, go);
