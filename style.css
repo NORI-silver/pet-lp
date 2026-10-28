@@ -34,7 +34,9 @@ p{margin:0 0 1em}
 .logo i{display:grid;place-items:center;width:32px;height:32px;border-radius:11px;background:var(--o);color:#fff}
 .logo i svg{width:19px;height:19px}
 .top nav{display:none}
-.top .mini{background:var(--ink);color:#fff;text-decoration:none;font-weight:700;font-size:.82rem;padding:10px 18px;border-radius:999px}
+.top .mini{background:var(--ink);color:#fff;text-decoration:none;font-weight:700;font-size:.82rem;padding:10px 18px;border-radius:999px;white-space:nowrap}
+.logo{white-space:nowrap}
+@media (max-width:400px){.logo{font-size:.9rem;letter-spacing:0;gap:7px}.logo i{width:28px;height:28px}.top .mini{padding:9px 14px}}
 
 /* photo frames（写真が無いときはイラストを表示） */
 .photo{position:relative;overflow:hidden;border-radius:var(--r);background:linear-gradient(160deg,#ffe9d8,#ffd5b8)}
