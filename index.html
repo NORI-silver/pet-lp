@@ -1133,13 +1133,29 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var pb = PREF_BOX[$("pref").value];
     return list.filter(function(c){ return pb && inBox(c, pb); })[0] || list.filter(function(c){ return inBox(c, BOX4); })[0] || null;
   }
+  // 住所の検索はあいまいに当てはめるので（「東京駅」で各地の「〇〇東」が出る）、入れた住所と頭から一致するものだけ使う
+  var KNUM = {"一":1,"二":2,"三":3,"四":4,"五":5,"六":6,"七":7,"八":8,"九":9,"十":10};
+  function normAddr(t){
+    return String(t).replace(/[\s　]/g, "").replace(/[０-９]/g, function(d){ return String.fromCharCode(d.charCodeAt(0) - 0xFEE0); })
+      .replace(/[ヶヵが]/g, "ケ").replace(/([一二三四五六七八九十]+)丁目/g, function(m, k){
+        var n = 0, cur = 0; k.split("").forEach(function(ch){ var v = KNUM[ch]; if (v === 10) { cur = (cur || 1) * 10; } else { cur += v; } }); n = cur; return n + "丁目"; });
+  }
+  function addrMatch(q, title){
+    var a = normAddr(q), t = normAddr(title), t2 = t.replace(/^(東京都|神奈川県|千葉県|埼玉県)/, "");
+    var ok = function(x){ var m = x.match(/^.*?[区市町村]/); return m && (a.indexOf(x) === 0 || (x.indexOf(a) === 0 && a.length >= m[0].length)); };
+    return ok(t) || (t2 !== t && ok(t2));
+  }
+  function looksAddress(q){ return /[区市町村郡]|丁目|番地|\d|[０-９]/.test(q); }
   function gsi(q){
     return fetch("https://msearch.gsi.go.jp/address-search/AddressSearch?q=" + encodeURIComponent(q))
       .then(function(r){ return r.json(); })
-      .then(function(a){ return pickIn((a || []).map(function(x){ var c = x.geometry.coordinates; return {lng: c[0], lat: c[1]}; })); })
+      .then(function(a){
+        return pickIn((a || []).filter(function(x){ return addrMatch(q, (x.properties || {}).title || ""); })
+          .map(function(x){ var c = x.geometry.coordinates; return {lng: c[0], lat: c[1]}; }));
+      })
       .catch(function(){ return null; });
   }
-  // 駅や公園などの名前は住所の検索で見つからないことがあるので、地図データの検索でも探す（4都県の範囲だけ）
+  // 駅・公園・病院などの名前は、地図データの検索で探す（4都県の範囲だけ）
   function osm(q){
     return fetch("https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=jp&accept-language=ja&bounded=1&viewbox=" +
         [BOX4[1], BOX4[2], BOX4[3], BOX4[0]].join(",") + "&q=" + encodeURIComponent(q))
@@ -1151,11 +1167,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     q = q.trim();
     if (!q) return Promise.resolve(null);
     var pref = $("pref").value;
-    var key = (q.indexOf(pref.replace(/[都府県]$/, "")) >= 0 ? "" : pref) + q;
+    var key = (!pref || /^(東京|神奈川|千葉|埼玉)/.test(q) ? "" : pref) + q;
     if (key in geoCache) return Promise.resolve(geoCache[key]);
-    return gsi(key).then(function(c){ return c || (key !== q ? gsi(q) : null); })
-      .then(function(c){ return c || osm(key).then(function(c2){ return c2 || (key !== q ? osm(q) : null); }); })
-      .then(function(c){ return geoCache[key] = c; });
+    // 順に試して、最初に見つかったものを使う
+    var tries = looksAddress(q) ? [[gsi, key], [gsi, q], [osm, key], [osm, q]] : [[osm, key], [osm, q], [gsi, key], [gsi, q]];
+    var seen = {};
+    tries = tries.filter(function(t){ var k = t[0] === gsi ? "g" + t[1] : "o" + t[1]; if (seen[k]) return false; return seen[k] = true; });
+    var p = Promise.resolve(null);
+    tries.forEach(function(t){ p = p.then(function(c){ return c || t[0](t[1]); }); });
+    return p.then(function(c){ return geoCache[key] = c; });
   }
   function kmBetween(a, b){
     var R = 6371, t = Math.PI / 180, dLat = (b.lat - a.lat) * t, dLng = (b.lng - a.lng) * t;
@@ -1177,23 +1197,37 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // from＝最初に乗る場所、to＝最後に降りる場所（迎車・回送の計算用）
   function fareOf(c, km, round, night, from, to){
     var pb = pickFee(c, c.pick, from) + pickFee(c, c.back, to);
-    if (round && c.round_flat && km <= c.round_flat[0]) return c.round_flat[1] + pb;
+    if (round && c.round_flat && km * 2 <= c.round_flat[0]) return c.round_flat[1] + pb; // 「往復10kmまで」は行きと帰りの合計で見る
     var r = ride(c, km);
     if (night && c.night > 1) r = Math.ceil(r * c.night / 10) * 10;
     return r * (round ? 2 : 1) + pb;
   }
   function isNight(hourId){ var v = $(hourId).value, h = Number(v); return v !== "" && (h >= 18 || h < 8); }
-  // ── 道のり（道路データで一般道と高速ありの2通り。取れないときは直線×ROADで代わりに計算）──
+  // ── 道のり（道路データで調べる。取れないときは直線×ROADで代わりに計算）──
+  // 道路データの経路は高速道路も使う。高速の区間の長さを数えて、一般道だけで行くときは
+  // その区間を1.15倍の道のり・1kmあたり1分長くかかるとみて出す（一般道のほうが高めに出る）
   var ROUTER = "https://router.project-osrm.org/route/v1/driving/", routeCache = {};
-  function routeOf(cs, noHighway){
-    var url = ROUTER + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") +
-      "?overview=full&geometries=geojson" + (noHighway ? "&exclude=motorway" : "");
+  var HW_NAME = /高速|自動車道|有料道路|首都高|アクアライン/;
+  function routeOf(cs){
+    var url = ROUTER + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?overview=full&geometries=geojson&steps=true";
     if (url in routeCache) return Promise.resolve(routeCache[url]);
     return fetch(url).then(function(r){ return r.json(); }).then(function(j){
-      var rt = j && j.code === "Ok" && j.routes[0];
-      return routeCache[url] = rt ? {km: rt.distance / 1000, min: rt.duration / 60, line: rt.geometry.coordinates} : null;
+      var rt = j && j.code === "Ok" && j.routes && j.routes[0];
+      if (!rt) return routeCache[url] = null;
+      var hw = 0;
+      (rt.legs || []).forEach(function(leg){
+        var prevHw = false;
+        (leg.steps || []).forEach(function(st){
+          var cls = ((st.intersections || [])[0] || {}).classes || [];
+          var on = HW_NAME.test(st.name || "") || HW_NAME.test(st.ref || "") || cls.indexOf("motorway") >= 0 || (!st.name && prevHw && st.distance < 3000);
+          if (on) hw += st.distance;
+          prevHw = on;
+        });
+      });
+      return routeCache[url] = {km: rt.distance / 1000, min: rt.duration / 60, hw: hw / 1000, line: rt.geometry.coordinates};
     }).catch(function(){ return routeCache[url] = null; }); // 失敗も覚えて、同じ道のりを何度も聞かない
   }
+  function localOf(rt){ return rt && {km: rt.km + rt.hw * 0.15, min: rt.min + rt.hw * 1.0, line: rt.line}; }
   function straightKm(list){
     var d = 0;
     for (var i = 1; i < list.length; i++) d += kmBetween(list[i-1], list[i]) * ROAD;
@@ -1232,6 +1266,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
 
   function showEstimate(){
     var seq = ++estSeq;
+    lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0; // 計算が終わるまでは前の目安を送らない
     var viaOn = form.querySelector("input[name=via_on]:checked").value === "あり";
     var trip = (form.querySelector("input[name=trip]:checked") || {}).value || "片道";
     var later = trip === "往復";
@@ -1249,7 +1284,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       }
       var go = cs.slice(0, pts.length), back = retOther ? cs.slice(pts.length) : go.slice().reverse();
       est.innerHTML = '<div class="t">料金の目安</div><p>道のりを調べています…</p>';
-      Promise.all([routeOf(go, true), routeOf(go, false), routeOf(back, true), routeOf(back, false)]).then(function(rs){
+      Promise.all([routeOf(go), routeOf(back)]).then(function(r2){
+        var rs = [localOf(r2[0]), r2[0], localOf(r2[1]), r2[1]];
         if (seq !== estSeq) return;
         render(cs, go, back, rs);
       });
@@ -1291,7 +1327,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       }
       var rL = range(kmL, kmL2), rH = range(kmH, kmH2);
       // 高速を使っても距離がほとんど変わらないときは、一般道だけを出す
-      var hasHigh = rs[0] && rs[1] && rs[0].km - rs[1].km > 1;
+      var hasHigh = !!(rs[1] && rs[1].hw >= 1 || later && rs[3] && rs[3].hw >= 1);
       var round = later;
       lastKm = later ? kmL + kmL2 : kmL; lastFareNum = rL[1];
       lastKmHigh = hasHigh ? (later ? kmH + kmH2 : kmH) : 0;
@@ -1310,15 +1346,27 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (later) notes.push("待っていてもらう場合とあらためて迎えに来る場合の、安いほうで計算しています。");
       notes.push("駐車場代は含みません。確定料金（税込）は、お迎えが決まったときに引き受けた会社から、一般道の場合と高速道路を使う場合の両方をお知らせします。");
       est.innerHTML = '<div class="t">料金の目安（' + (round ? "往復" : "片道") + '）</div><div class="est-rows">' + rows + '</div>' +
-        (rs[0] ? '<div class="est-map" id="estMap" role="img" aria-label="ルートの地図"></div><p class="legend"><i class="l1"></i>一般道' + (hasHigh ? '<i class="l2"></i>高速あり' : "") + '</p>' : "") +
+        (rs[0] ? '<div class="est-map" id="estMap" role="img" aria-label="ルートの地図"></div><p class="legend"><i class="l1"></i>ルート' + (hasHigh ? "（高速道路を使う道順です）" : "") + '</p>' : "") +
         '<p>' + notes.join("") + '</p>';
-      if (rs[0]) drawMap($("estMap"), rs[0], hasHigh ? rs[1] : null, go);
+      if (rs[1]) drawMap($("estMap"), rs[1], null, go);
     }
   }
 
-  ["pickup","via","dropoff"].forEach(function(id){ $(id).addEventListener("change", showEstimate); });
-  ["pref","date","hour","minute","retDate","retHour","retMinute","retOther","retPickup","retDropoff"].forEach(function(id){ $(id).addEventListener("change", showEstimate); });
-  form.querySelectorAll("input[name=trip],input[name=via_on]").forEach(function(r){ r.addEventListener("change", showEstimate); });
+  // 入力を変えたら、前の結果はすぐ消して、手が止まってから計算し直す（遅れて届いた前の結果は estSeq で捨てる）
+  var estTimer = 0;
+  function estSoon(){
+    clearTimeout(estTimer); estSeq++;
+    lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
+    if (!est.hidden) est.innerHTML = '<div class="t">料金の目安</div><p>入力に合わせて計算し直しています…</p>';
+    estTimer = setTimeout(showEstimate, 1000);
+  }
+  function estNow(){ clearTimeout(estTimer); showEstimate(); }
+  ["pickup","via","dropoff","retPickup","retDropoff"].forEach(function(id){
+    $(id).addEventListener("input", estSoon);
+    $(id).addEventListener("change", estNow);
+  });
+  ["pref","date","hour","minute","retDate","retHour","retMinute","retOther"].forEach(function(id){ $(id).addEventListener("change", estNow); });
+  form.querySelectorAll("input[name=trip],input[name=via_on]").forEach(function(r){ r.addEventListener("change", estNow); });
 
   // ── 前回の内容を入れる（日時以外）──
   var TEXT = ["pickup","via","dropoff","name","tel","email","notes"];
