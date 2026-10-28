@@ -203,8 +203,12 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .dt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
 .dt input{grid-column:1/-1}
 @media(min-width:600px){.dt{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr)}.dt input{grid-column:auto}}
-.via-box[hidden],.pet-hint[hidden]{display:none}
+.via-box[hidden],.pet-hint[hidden],#retPlaces[hidden],#retRoute[hidden]{display:none}
 .via-box{margin-top:10px}
+.via-box .lbl{display:block;margin-top:4px}
+.via-box .note{display:block;font-size:.8rem;color:var(--ink-3);margin:6px 0 0}
+.via-box .chk{display:flex;gap:8px;align-items:center;font-size:.88rem;margin:8px 0}
+.via-box .chk input{width:auto}
 .pet-hint{font-size:.86rem;color:var(--ink-3);background:#f7f4f1;border-radius:14px;padding:14px 16px;margin-bottom:18px}
 .restore{display:none;background:var(--o-l);color:var(--o-d);border-radius:14px;padding:14px 16px;margin-bottom:22px;font-size:.88rem;font-weight:600}
 .restore button{background:none;border:0;color:var(--ink-3);font:inherit;font-size:.82rem;text-decoration:underline;cursor:pointer;padding:0 0 0 6px}
@@ -483,7 +487,24 @@ footer a{color:var(--ink-2)}
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
           <div class="f"><span class="lbl">片道・往復</span>
-            <div class="seg"><label><input type="radio" name="trip" value="片道" required><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復</span></label><label><input type="radio" name="trip" value="往復（病院で待機）"><span>往復（待っててほしい）</span></label></div></div>
+            <div class="seg"><label><input type="radio" name="trip" value="片道" required><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復（あとで迎えに来てほしい）</span></label><label><input type="radio" name="trip" value="往復（病院で待機）"><span>往復（待っててほしい）</span></label></div>
+            <div class="via-box" id="waitBox" hidden><label for="waitTime" class="lbl">待ち時間の目安</label>
+              <select id="waitTime" name="wait_time"><option value="">選んでください</option><option value="30">30分まで</option><option value="60">1時間まで</option><option value="120">2時間まで</option><option value="不明">わからない</option></select>
+              <span class="note">待ち時間の料金は会社ごとに決まっています。</span></div>
+            <div class="via-box" id="retBox" hidden><label for="retDate" class="lbl">帰りのお迎え日時</label>
+              <div class="dt">
+                <input type="date" id="retDate" name="ret_date" aria-label="帰りの日付">
+                <select id="retHour" name="ret_hour" aria-label="帰りの時"></select>
+                <select id="retMinute" name="ret_minute" aria-label="帰りの分"></select>
+              </div>
+              <p class="note" id="retRoute">帰りは、行き先でお迎えして、お迎えの場所までお送りします。</p>
+              <label class="chk"><input type="checkbox" id="retOther" name="ret_other" value="1"> 帰りの場所を変える</label>
+              <div id="retPlaces" hidden>
+                <label for="retPickup" class="lbl">帰りのお迎えの場所</label>
+                <input type="text" id="retPickup" name="ret_pickup" placeholder="例：〇〇動物病院（目黒区）">
+                <label for="retDropoff" class="lbl">帰りの行き先</label>
+                <input type="text" id="retDropoff" name="ret_dropoff" placeholder="例：〇〇ペットホテル（目黒区）">
+              </div></div></div>
           <div class="est" id="est" hidden aria-live="polite"></div>
         </div>
 
@@ -882,6 +903,31 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
   }
   form.querySelectorAll("input[name=via_on]").forEach(function(r){ r.addEventListener("change", syncVia); });
 
+  // 往復のときの帰り（待っててほしい＝待ち時間、あとで迎え＝帰りの日時と行き先）
+  $("retHour").innerHTML = $("hour").innerHTML;
+  $("retMinute").innerHTML = $("minute").innerHTML;
+  function syncTrip(){
+    var t = (form.querySelector("input[name=trip]:checked") || {}).value || "";
+    var wait = t === "往復（病院で待機）", later = t === "往復";
+    $("waitBox").hidden = !wait; $("waitTime").required = wait;
+    $("retBox").hidden = !later;
+    ["retDate","retHour","retMinute"].forEach(function(id){ $(id).required = later; });
+    if (later && !$("retDate").value) $("retDate").value = $("date").value;
+    var other = later && $("retOther").checked;
+    var to = $("dropoff").value.trim(), from = $("pickup").value.trim();
+    // 変えるを押したときは、行きの逆向きを入れておいて、そこから直してもらう
+    if (other && $("retPlaces").hidden) {
+      if (!$("retPickup").value) $("retPickup").value = to;
+      if (!$("retDropoff").value) $("retDropoff").value = from;
+    }
+    $("retPlaces").hidden = !other;
+    $("retPickup").required = other; $("retDropoff").required = other;
+    $("retRoute").hidden = other;
+    $("retRoute").textContent = "帰りは、" + (to ? "「" + to + "」" : "行き先") + "でお迎えして、" + (from ? "「" + from + "」" : "お迎えの場所") + "までお送りします。";
+  }
+  form.querySelectorAll("input[name=trip]").forEach(function(r){ r.addEventListener("change", syncTrip); });
+  ["retOther","pickup","dropoff","date"].forEach(function(id){ $(id).addEventListener("change", syncTrip); });
+
   // ペットの入力欄（頭数を選ぶと、その数だけカードを出す）
   function seg(name, items, req){
     return '<div class="seg">' + items.map(function(it, i){
@@ -997,7 +1043,7 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
 
   // ── 概算料金（お迎え場所 → 経由地 → 行き先 の距離から計算）──
   // 提携先ごとの料金表と、都県ごとの依頼先。tools/fares.json から gen_areas.py が書き込む（ここは手で直さない）。
-  /*FARES*/var FARES = {"petexpress": {"base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null}, "kuriki": {"base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300]}};
+  /*FARES*/var FARES = {"petexpress": {"base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null, "wait": {"30": 660, "60": 1320, "120": 2640}}, "kuriki": {"base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300], "wait": {"30": 0, "60": 500, "120": 1500}}};
   var AREA_FARES = {"東京都": ["petexpress", "kuriki"], "神奈川県": ["petexpress", "kuriki"], "千葉県": ["kuriki"], "埼玉県": ["petexpress", "kuriki"]};/*/FARES*/
   var ROAD = 1.3; // 直線距離 → 道のりの目安
   var est = $("est"), geoCache = {}, estSeq = 0, lastKm = 0, lastFare = "", lastFareNum = 0;
@@ -1030,12 +1076,17 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     if (night && c.night > 1) r = Math.round(r * c.night / 10) * 10;
     return r * (round ? 2 : 1) + c.pick + c.back;
   }
+  function isNight(hourId){ var v = $(hourId).value, h = Number(v); return v !== "" && (h >= 18 || h < 8); }
   function showEstimate(){
     var seq = ++estSeq;
     var viaOn = form.querySelector("input[name=via_on]:checked").value === "あり";
+    var trip = (form.querySelector("input[name=trip]:checked") || {}).value || "片道";
+    var later = trip === "往復", waiting = trip === "往復（病院で待機）";
+    var retOther = later && $("retOther").checked && $("retPickup").value.trim() && $("retDropoff").value.trim();
     var pts = [$("pickup").value].concat(viaOn ? [$("via").value] : [], [$("dropoff").value]);
+    var rpts = retOther ? [$("retPickup").value, $("retDropoff").value] : [];
     if (!$("pickup").value.trim() || !$("dropoff").value.trim()) { est.hidden = true; lastKm = 0; lastFare = ""; lastFareNum = 0; return; }
-    Promise.all(pts.map(geocode)).then(function(cs){
+    Promise.all(pts.concat(rpts).map(geocode)).then(function(cs){
       if (seq !== estSeq) return;
       est.hidden = false;
       if (cs.some(function(c){ return !c; })) {
@@ -1043,28 +1094,40 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
         est.innerHTML = '<div class="t">料金の目安</div><p>場所から距離を計算できませんでした。「〇〇区〇〇1丁目」のように住所で入れると計算できます。<a href="#price">距離ごとの目安</a>もご覧ください。</p>';
         return;
       }
-      var km = 0;
-      for (var i = 1; i < cs.length; i++) km += kmBetween(cs[i-1], cs[i]) * ROAD;
-      km = Math.max(1, Math.round(km));
-      var trip = (form.querySelector("input[name=trip]:checked") || {}).value || "片道";
-      var round = trip !== "片道", h = Number($("hour").value), night = $("hour").value !== "" && (h >= 18 || h < 8);
+      function dist(list){
+        var d = 0;
+        for (var i = 1; i < list.length; i++) d += kmBetween(list[i-1], list[i]) * ROAD;
+        return Math.max(1, Math.round(d));
+      }
+      var km = dist(cs.slice(0, pts.length));
+      var km2 = retOther ? dist(cs.slice(pts.length)) : km;
+      var night = isNight("hour"), night2 = isNight("retHour");
+      var wait = $("waitTime").value;
       var keys = AREA_FARES[$("pref").value] || Object.keys(FARES);
-      var vals = keys.map(function(k){ return fareOf(FARES[k], km, round, night); }).sort(function(a, b){ return a - b; });
+      var vals = keys.map(function(k){
+        var c = FARES[k];
+        // あとで迎え＝行きと帰りを1回ずつ、待っててほしい＝往復料金＋待ち時間
+        if (later) return fareOf(c, km, false, night) + fareOf(c, km2, false, night2);
+        if (waiting) return fareOf(c, km, true, night) + ((c.wait || {})[wait] || 0);
+        return fareOf(c, km, false, night);
+      }).sort(function(a, b){ return a - b; });
       var lo = vals[0], hi = vals[vals.length - 1];
       // 受付の仕組みには数字1つで送るので、高いほう（少なめに伝えない）を送る
-      lastKm = km; lastFareNum = hi;
+      lastKm = later ? km + km2 : km; lastFareNum = hi;
       lastFare = lo === hi ? yen(lo) + "〜" : lo.toLocaleString("ja-JP") + "〜" + yen(hi);
-      var notes = ["道のり約" + km + "kmで計算した" + (round ? "往復" : "片道") + "の目安です。"];
+      var round = trip !== "片道";
+      var notes = [later ? "行き約" + km + "km・帰り約" + km2 + "kmで計算した往復の目安です。" : "道のり約" + km + "kmで計算した" + (round ? "往復" : "片道") + "の目安です。"];
       if (lo !== hi) notes.push("このエリアの依頼先" + keys.length + "社の料金表で計算していて、どの会社が引き受けるかで変わります。");
       if (keys.some(function(k){ return FARES[k].pick; })) notes.push("お迎え・回送料金を含みます。");
-      if (night && keys.some(function(k){ return FARES[k].night > 1; })) notes.push("夜間の割増を含めています。");
-      if (trip === "往復（病院で待機）") notes.push("病院での待ち時間の料金は会社ごとに違い、別にかかることがあります（くわしくは<a href=\"#price\">料金の目安</a>）。");
+      if ((night || (later && night2)) && keys.some(function(k){ return FARES[k].night > 1; })) notes.push("夜間の割増を含めています。");
+      if (waiting) notes.push(wait && wait !== "不明" ? "待ち時間の料金を含めています。" : "待ち時間の料金は含んでいません。目安を選ぶと計算に入ります。");
       notes.push("高速代・駐車場代は別です。実際の料金は、引き受けた会社からご案内します。");
       est.innerHTML = '<div class="t">料金の目安（' + (round ? "往復" : "片道") + '）</div><div class="v">' + lastFare + '</div><p>' + notes.join("") + '</p>';
     });
   }
+
   ["pickup","via","dropoff"].forEach(function(id){ $(id).addEventListener("change", showEstimate); });
-  ["pref","hour"].forEach(function(id){ $(id).addEventListener("change", showEstimate); });
+  ["pref","hour","retHour","waitTime","retOther","retPickup","retDropoff"].forEach(function(id){ $(id).addEventListener("change", showEstimate); });
   form.querySelectorAll("input[name=trip],input[name=via_on]").forEach(function(r){ r.addEventListener("change", showEstimate); });
 
   // ── 前回の内容を入れる（日時以外）──
@@ -1078,6 +1141,9 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     TEXT.forEach(function(k){ if (o[k] != null) $(k).value = String(o[k]); });
     setRadio("via_on", o.via ? "あり" : "なし"); syncVia();
     setRadio("trip", o.trip);
+    setSelect($("waitTime"), o.wait_time);
+    $("retOther").checked = !!o.ret_other; $("retPickup").value = o.ret_pickup || ""; $("retDropoff").value = o.ret_dropoff || "";
+    syncTrip();
     setSelect($("riders"), o.riders);
     setSelect($("luggage"), o.luggage);
     var pets = o.pets || o.pets_json || [];
@@ -1100,6 +1166,10 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     ["pref","trip","riders","luggage"].forEach(function(k){ o[k] = String(fd.get(k) || ""); });
     TEXT.forEach(function(k){ o[k] = String(fd.get(k) || "").trim(); });
     if (form.querySelector("input[name=via_on]:checked").value !== "あり") o.via = "";
+    o.wait_time = o.trip === "往復（病院で待機）" ? String(fd.get("wait_time") || "") : "";
+    o.ret_other = o.trip === "往復" && $("retOther").checked;
+    o.ret_pickup = o.ret_other ? $("retPickup").value.trim() : "";
+    o.ret_dropoff = o.ret_other ? $("retDropoff").value.trim() : "";
     return o;
   }
   function showRestore(msg){
@@ -1108,7 +1178,7 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
   }
   $("restoreClear").addEventListener("click", function(){
     try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
-    form.reset(); setPetCount(0); syncVia();
+    form.reset(); setPetCount(0); syncVia(); syncTrip();
     $("restore").style.display = "none";
   });
   function restoreLocal(){
@@ -1151,6 +1221,11 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     var when = fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute");
     var at = new Date(when + ":00+09:00");
     if (!(at > new Date())) return fail("お迎えの日時が過ぎています。これから先の日時を選んでください。", $("hour"));
+    var trip = String(fd.get("trip") || ""), retWhen = "";
+    if (trip === "往復") {
+      retWhen = fd.get("ret_date") + "T" + fd.get("ret_hour") + ":" + fd.get("ret_minute");
+      if (!(new Date(retWhen + ":00+09:00") > at)) return fail("帰りのお迎え日時は、行きのお迎えより後にしてください。", $("retHour"));
+    }
     if (!GAS_URL) return fail("ただいまフォームを準備中です。少し時間をおいてお試しください。");
 
     var body = new URLSearchParams();
@@ -1174,7 +1249,19 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     body.append("pet_count", String(pets.length));
     body.append("pets", pets.map(petLine).join("\n"));
     body.append("pets_json", JSON.stringify(pets));
-    body.append("notes", o.notes);
+    // 帰りの情報。受付の仕組みが専用の項目を読めるようになるまでは、メモにも書いて会社に伝わるようにする
+    var back = "";
+    if (trip === "往復") {
+      body.append("return_datetime", retWhen);
+      var rFrom = o.ret_other ? o.ret_pickup : o.dropoff, rTo = o.ret_other ? o.ret_dropoff : o.pickup;
+      body.append("return_pickup", rFrom);
+      body.append("return_dropoff", rTo);
+      back = "【帰り】" + retWhen.replace("T", " ") + "に「" + rFrom + "」でお迎え →「" + rTo + "」まで";
+    } else if (trip === "往復（病院で待機）") {
+      body.append("wait_time", o.wait_time);
+      back = "【待ち時間の目安】" + (o.wait_time === "不明" ? "わからない" : (o.wait_time === "30" ? "30分" : o.wait_time === "60" ? "1時間" : "2時間") + "まで");
+    }
+    body.append("notes", back ? back + (o.notes ? "\n" + o.notes : "") : o.notes);
     body.append("est_km", lastKm ? String(lastKm) : "");
     body.append("est_fare", lastFareNum ? String(lastFareNum) : "");
 

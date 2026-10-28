@@ -175,8 +175,12 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .dt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
 .dt input{grid-column:1/-1}
 @media(min-width:600px){.dt{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr)}.dt input{grid-column:auto}}
-.via-box[hidden],.pet-hint[hidden]{display:none}
+.via-box[hidden],.pet-hint[hidden],#retPlaces[hidden],#retRoute[hidden]{display:none}
 .via-box{margin-top:10px}
+.via-box .lbl{display:block;margin-top:4px}
+.via-box .note{display:block;font-size:.8rem;color:var(--ink-3);margin:6px 0 0}
+.via-box .chk{display:flex;gap:8px;align-items:center;font-size:.88rem;margin:8px 0}
+.via-box .chk input{width:auto}
 .pet-hint{font-size:.86rem;color:var(--ink-3);background:#f7f4f1;border-radius:14px;padding:14px 16px;margin-bottom:18px}
 .restore{display:none;background:var(--o-l);color:var(--o-d);border-radius:14px;padding:14px 16px;margin-bottom:22px;font-size:.88rem;font-weight:600}
 .restore button{background:none;border:0;color:var(--ink-3);font:inherit;font-size:.82rem;text-decoration:underline;cursor:pointer;padding:0 0 0 6px}
