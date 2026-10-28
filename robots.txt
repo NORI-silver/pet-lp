@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /tools/
+Disallow: /booking/
+Disallow: /docs/
 
 Sitemap: https://pet.shiokonbu.com/sitemap.xml
