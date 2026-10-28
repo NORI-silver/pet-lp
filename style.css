@@ -177,6 +177,8 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 @media(min-width:600px){.dt{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr)}.dt input{grid-column:auto}}
 .via-box[hidden],.pet-hint[hidden],#retPlaces[hidden],#retRoute[hidden]{display:none}
 .via-box{margin-top:10px}
+.hist-clear{background:none;border:0;padding:6px 0 0;font:inherit;font-size:.75rem;color:var(--ink-3);text-decoration:underline;cursor:pointer}
+.hist-clear[hidden]{display:none}
 .via-box .lbl{display:block;margin-top:4px}
 .via-box .note{display:block;font-size:.8rem;color:var(--ink-3);margin:6px 0 0}
 .via-box .chk{display:flex;gap:8px;align-items:center;font-size:.88rem;margin:8px 0}
@@ -189,6 +191,17 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est .t{font-size:.82rem;font-weight:700;color:var(--o-d)}
 .est .v{font-family:var(--round);font-size:1.5rem;font-weight:800;color:var(--ink);line-height:1.3;margin:2px 0 6px}
 .est p{font-size:.8rem;color:var(--ink-2);margin:0;line-height:1.7}
+.est-rows{margin:6px 0 10px}
+.est-rows .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:6px 0;border-bottom:1px dashed rgba(226,86,10,.25)}
+.est-rows .row:last-child{border-bottom:0}
+.est-rows span{font-size:.88rem;font-weight:700}
+.est-rows span small{display:block;font-weight:400;color:var(--ink-3);font-size:.76rem}
+.est-rows b{font-family:var(--round);font-size:1.2rem;white-space:nowrap}
+.est-rows b small{font-size:.75rem;font-weight:700;margin-left:2px}
+.est-map{height:220px;border-radius:14px;overflow:hidden;margin:4px 0 6px;background:#efe9e3;z-index:0}
+.est .legend{display:flex;gap:6px;align-items:center;font-size:.75rem;margin-bottom:8px}
+.est .legend i{display:inline-block;width:22px;height:0;border-top:4px solid #ff6a1a;margin-left:6px}
+.est .legend i.l2{border-top:4px dashed #5b5650}
 .cb{position:relative}
 .cb-list{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 4px);max-height:260px;overflow-y:auto;margin:0;padding:6px;list-style:none;background:#fff;border:1.5px solid var(--line);border-radius:14px;box-shadow:0 12px 28px rgba(28,26,24,.12)}
 .cb-list[hidden]{display:none}
