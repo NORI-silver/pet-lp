@@ -222,6 +222,9 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .emg-none{font-size:.86rem;background:var(--cream);border-radius:14px;padding:12px 14px;margin:8px 0 0}
 .hist-clear{background:none;border:0;padding:6px 0 0;font:inherit;font-size:.75rem;color:var(--ink-3);text-decoration:underline;cursor:pointer}
 .hist-clear[hidden]{display:none}
+.geo-btn{margin-top:8px;background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;font:inherit;font-size:.84rem;font-weight:700;color:var(--ink);cursor:pointer}
+.geo-btn[hidden]{display:none}.geo-btn:disabled{opacity:.6}
+.geo-msg{margin:6px 0 0;font-size:.8rem;color:var(--ink-3)}.geo-msg:empty{display:none}.geo-msg.ng{color:#c0392b}
 .partner-band{background:var(--cream);padding:28px 0}
 .partner-band .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
 .partner-band p{margin:0;font-size:.88rem;color:var(--ink-2);flex:1 1 280px}
@@ -521,7 +524,8 @@ footer a{color:var(--ink-2)}
           <div class="f"><label for="pref">お迎えの都県</label>
             <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>千葉県</option><option>埼玉県</option></select></div>
           <div class="f"><label for="pickup">お迎えの場所</label>
-            <input type="text" id="pickup" list="placeHist" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off"></div>
+            <input type="text" id="pickup" list="placeHist" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
+            <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button><p class="geo-msg" id="geoMsg" aria-live="polite"></p></div>
           <div class="f"><span class="lbl">経由地<span class="any">任意</span></span>
             <div class="seg"><label><input type="radio" name="via_on" value="なし" checked><span>なし</span></label><label><input type="radio" name="via_on" value="あり"><span>あり（途中で寄る）</span></label></div>
             <div class="via-box" id="viaBox" hidden><input type="text" id="via" list="placeHist" autocomplete="off" name="via" placeholder="例：〇〇トリミングサロン（渋谷区）" aria-label="経由地"></div></div>
@@ -862,7 +866,7 @@ footer a{color:var(--ink-2)}
         <h4>3. ペットタクシー事業者へのお伝え</h4>
         <ul><li>空きを確認する段階では、お迎えの場所・行き先・日・ペットの情報だけを、エリアのペットタクシー事業者にお伝えします。お名前と連絡先はお伝えしません。</li><li>お迎えを引き受けた1社にだけ、送迎のためにお名前と連絡先をお伝えします。</li><li>法令にもとづく場合を除き、ご本人の同意なくそれ以外の第三者に提供することはありません。</li></ul>
         <h4>4. 安全な管理</h4>
-        <ul><li>フォームの送信内容は、暗号化された通信（HTTPS）でお送りいただきます。</li><li>お預かりした情報は、セキュリティ対策の整った大手クラウドサービス上で保管し、見られるのは運営者だけに限っています。</li><li>なくしたり、漏れたり、勝手に使われたりしないよう、アクセスの制限やログインの保護などの安全管理に努めます。</li><li>情報は手配とご連絡に必要な期間だけ保管し、必要がなくなったら速やかに削除します。</li><li>送ったことのある場所は、次に入力するときの候補として、お使いの端末のブラウザの中だけに保存します（当サイトには届きません）。フォームの「場所の候補を消す」でいつでも消せます。</li></ul>
+        <ul><li>フォームの送信内容は、暗号化された通信（HTTPS）でお送りいただきます。</li><li>お預かりした情報は、セキュリティ対策の整った大手クラウドサービス上で保管し、見られるのは運営者だけに限っています。</li><li>なくしたり、漏れたり、勝手に使われたりしないよう、アクセスの制限やログインの保護などの安全管理に努めます。</li><li>情報は手配とご連絡に必要な期間だけ保管し、必要がなくなったら速やかに削除します。</li><li>料金の目安を出すため、入力した場所（「いまいる場所を入れる」を使ったときは端末の位置）を地図の検索サービスに送り、距離を調べます。端末の位置は、ボタンを押してご自身で許可したときだけ使い、当サイトには保存しません。</li><li>送ったことのある場所は、次に入力するときの候補として、お使いの端末のブラウザの中だけに保存します（当サイトには届きません）。フォームの「場所の候補を消す」でいつでも消せます。</li></ul>
         <h4>5. 確認・訂正・削除のご依頼</h4>
         <ul><li>ご自身の情報の確認・訂正・削除をご希望の場合は、受付時にお送りしたメールにご返信ください。ご本人であることを確認したうえで対応します。</li></ul>
         <p>この内容は、必要に応じて見直すことがあります。変更したときはこのページでお知らせします。（2026年10月制定）</p>
@@ -1386,9 +1390,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   /*EMG*/var EMG = {"東京都": [], "神奈川県": [], "千葉県": [], "埼玉県": []};/*/EMG*/
   (function(){
     var any = Object.keys(EMG).some(function(k){ return EMG[k].length; });
-    if (!any) return;
     var tabs = $("modeTabs"), box = $("emgBox");
     tabs.hidden = false;
+    // 番号がまだ1つもない間は、場所を選ばせずに「準備中」とだけ出す
+    if (!any) {
+      $("emgPref").closest(".f").hidden = true;
+      $("emgList").innerHTML = '<a class="emg-tel" aria-disabled="true"><div><b>緊急用の電話番号</b><small>東京・神奈川・千葉・埼玉</small></div><span>準備中</span></a>' +
+        '<p class="emg-none">いまは電話での受付を準備しています。急ぐときは、まずかかりつけや夜間の動物病院にご相談ください。</p>';
+      box.querySelector(".emg-lead").textContent = "一刻を争う症状のときは、まずかかりつけや夜間の動物病院に電話してください。病院への移動の手段がないときに、そのエリアで緊急対応しているペットタクシーに電話でつながる番号を、いま準備しています。";
+    }
     function setMode(m){
       tabs.querySelectorAll("button").forEach(function(b){ b.setAttribute("aria-selected", String(b.dataset.mode === m)); });
       box.hidden = m !== "emg";
@@ -1409,6 +1419,44 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       });
     });
     if (location.hash === "#emergency") setMode("emg");
+  })();
+
+  // いまいる場所：ボタンを押して許可されたときだけ端末の位置を読み、住所の文字にしてお迎えの場所に入れる（位置そのものは送らない）
+  (function(){
+    var btn = $("geoBtn"), msg = $("geoMsg");
+    if (!navigator.geolocation) return;
+    btn.hidden = false;
+    var PREF_CODE = {"JP-13": "東京都", "JP-14": "神奈川県", "JP-12": "千葉県", "JP-11": "埼玉県"};
+    function say(t, ng){ msg.textContent = t; msg.className = "geo-msg" + (ng ? " ng" : ""); }
+    btn.addEventListener("click", function(){
+      btn.disabled = true; say("いまいる場所を調べています…");
+      navigator.geolocation.getCurrentPosition(function(pos){
+        var c = {lat: pos.coords.latitude, lng: pos.coords.longitude};
+        if (!inBox(c, BOX4)) { btn.disabled = false; say("いまいる場所は、対応エリア（東京・神奈川・千葉・埼玉）の外のようです。お迎えの場所を入力してください。", true); return; }
+        fetch("https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&accept-language=ja&lat=" + c.lat.toFixed(6) + "&lon=" + c.lng.toFixed(6))
+          .then(function(r){ return r.json(); })
+          .then(function(j){
+            var a = (j && j.address) || {}, pref = PREF_CODE[a["ISO3166-2-lvl4"]] || a.province || a.state || "";
+            if (!PREF_CODE[a["ISO3166-2-lvl4"]] && ["東京都","神奈川県","千葉県","埼玉県"].indexOf(pref) < 0) throw 0;
+            var parts = [];
+            [a.city, a.town, a.village, a.city_district, a.suburb, a.quarter, a.neighbourhood].forEach(function(x){
+              if (!x || parts.join("").indexOf(x) >= 0) return;
+              if (parts.length && x.indexOf(parts[parts.length - 1]) === 0) parts.pop(); // 「神南」→「神南一丁目」は詳しいほうだけ
+              parts.push(x);
+            });
+            if (!parts.length) throw 0;
+            var text = pref + parts.join("") + (a.house_number ? a.house_number : "") + "付近";
+            geoCache[text] = c; // 距離の計算は、端末の位置そのままで行う
+            setSelect($("pref"), pref); $("pref").dispatchEvent(new Event("change"));
+            $("pickup").value = text; $("pickup").dispatchEvent(new Event("change"));
+            btn.disabled = false; say("入れました。建物の名前や目印があれば書き足してください。");
+          })
+          .catch(function(){ btn.disabled = false; say("住所に直せませんでした。お迎えの場所を入力してください。", true); });
+      }, function(e){
+        btn.disabled = false;
+        say(e.code === 1 ? "位置情報が許可されませんでした。使うときはブラウザの設定で許可するか、お迎えの場所を入力してください。" : "いまいる場所がわかりませんでした。お迎えの場所を入力してください。", true);
+      }, {enableHighAccuracy: true, timeout: 15000, maximumAge: 60000});
+    });
   })();
 
   // 以前の版でブラウザに残した入力は使わないので消しておく
