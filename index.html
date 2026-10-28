@@ -245,6 +245,8 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est .v{font-family:var(--round);font-size:1.5rem;font-weight:800;color:var(--ink);line-height:1.3;margin:2px 0 6px}
 .est p{font-size:.8rem;color:var(--ink-2);margin:0;line-height:1.7}
 .est-rows{margin:6px 0 10px}
+.pref-fix{margin:8px 0 0;background:#fff4e5;border:2px solid var(--o);border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
+.pref-fix[hidden]{display:none}
 .est-flag,.fare-flag{background:#fff;border:2px solid var(--o);border-radius:12px;padding:9px 12px;margin:8px 0;font-size:.84rem;line-height:1.6;color:var(--ink)}
 .est-flag b,.fare-flag b{color:var(--o-d);display:block;font-size:.92rem}
 .est-night,.fare-night{background:#eef0fb;border-radius:12px;padding:9px 12px;margin:8px 0;font-size:.82rem;line-height:1.6;color:var(--ink)}
@@ -526,7 +528,8 @@ footer a{color:var(--ink-2)}
         <div class="group">
           <div class="group-h"><span>1</span>いつ、どこへ行きますか？</div>
           <div class="f"><label for="pref">お迎えの都県</label>
-            <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>千葉県</option><option>埼玉県</option></select></div>
+            <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>千葉県</option><option>埼玉県</option></select>
+            <p class="pref-fix" id="prefFix" role="status" hidden></p></div>
           <div class="f"><label for="pickup">お迎えの場所</label>
             <input type="text" id="pickup" list="placeHist" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button><p class="geo-msg" id="geoMsg" aria-live="polite"></p></div>
@@ -1183,6 +1186,16 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     tries.forEach(function(t){ p = p.then(function(c){ return c || t[0](t[1]); }); });
     return p.then(function(c){ return geoCache[key] = c; });
   }
+  // 位置から都県を調べる（市区町村コードの頭2桁）。4都県の外なら "out"、調べられなければ null
+  var PREF_CD = {"13": "東京都", "14": "神奈川県", "12": "千葉県", "11": "埼玉県"}, prefCache = {};
+  function prefOf(c){
+    var k = c.lat.toFixed(4) + "," + c.lng.toFixed(4);
+    if (k in prefCache) return Promise.resolve(prefCache[k]);
+    return fetch("https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress?lat=" + c.lat.toFixed(6) + "&lon=" + c.lng.toFixed(6))
+      .then(function(r){ return r.json(); })
+      .then(function(j){ var cd = j && j.results && String(j.results.muniCd || ""); return prefCache[k] = cd ? (PREF_CD[cd.slice(0, 2)] || "out") : null; })
+      .catch(function(){ return null; });
+  }
   function kmBetween(a, b){
     var R = 6371, t = Math.PI / 180, dLat = (b.lat - a.lat) * t, dLng = (b.lng - a.lng) * t;
     var h = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(a.lat*t) * Math.cos(b.lat*t) * Math.sin(dLng/2) * Math.sin(dLng/2);
@@ -1294,10 +1307,28 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       }
       var go = cs.slice(0, pts.length), back = retOther ? cs.slice(pts.length) : go.slice().reverse();
       est.innerHTML = '<div class="t">料金の目安</div><p>道のりを調べています…</p>';
-      Promise.all([routeOf(go), routeOf(back)]).then(function(r2){
-        var rs = [localOf(r2[0]), r2[0], localOf(r2[1]), r2[1]];
+      // お迎えの都県は、選んだ欄よりお迎えの場所を優先する（依頼する会社は都県で決まるため）。食い違ったら欄を直して知らせる
+      prefOf(cs[0]).then(function(pp){
         if (seq !== estSeq) return;
-        render(cs, go, back, rs);
+        if (pp === "out") {
+          lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
+          est.innerHTML = '<div class="t">料金の目安</div><p>場所を確かめてください。お迎えの場所が、東京・神奈川・千葉・埼玉の外のようです。</p>';
+          return;
+        }
+        if (pp && pp !== $("pref").value) {
+          var was = $("pref").value;
+          setSelect($("pref"), pp);
+          var fx = $("prefFix");
+          fx.textContent = "お迎えの場所が" + pp + "のようなので、お迎えの都県を" + (was ? "「" + was + "」から" : "") + "「" + pp + "」に直しました。違うときは、お迎えの場所をくわしく入れてください。";
+          fx.hidden = false;
+          estNow();
+          return;
+        }
+        Promise.all([routeOf(go), routeOf(back)]).then(function(r2){
+          var rs = [localOf(r2[0]), r2[0], localOf(r2[1]), r2[1]];
+          if (seq !== estSeq) return;
+          render(cs, go, back, rs);
+        });
       });
     });
     function render(cs, go, back, rs){
@@ -1389,6 +1420,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     estTimer = setTimeout(showEstimate, 1000);
   }
   function estNow(){ clearTimeout(estTimer); showEstimate(); }
+  $("pickup").addEventListener("input", function(){ $("prefFix").hidden = true; });
+  $("pref").addEventListener("change", function(e){ if (e.isTrusted) $("prefFix").hidden = true; });
   ["pickup","via","dropoff","retPickup","retDropoff"].forEach(function(id){
     $(id).addEventListener("input", estSoon);
     $(id).addEventListener("change", estNow);
@@ -1577,6 +1610,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (!(new Date(retWhen + ":00+09:00") > at)) return fail("帰りのお迎え日時は、行きのお迎えより後にしてください。", $("retHour"));
     }
     if (!GAS_URL) return fail("ただいまフォームを準備中です。少し時間をおいてお試しください。");
+    // お迎えの場所と都県が食い違ったまま送らない（依頼する会社は都県で決まる）
+    var pq = $("pickup").value.trim(), pv = $("pref").value;
+    var pc = geoCache[(!pv || /^(東京|神奈川|千葉|埼玉)/.test(pq) ? "" : pv) + pq];
+    var pp = pc && prefCache[pc.lat.toFixed(4) + "," + pc.lng.toFixed(4)];
+    if (pp === "out") return fail("お迎えの場所が、東京・神奈川・千葉・埼玉の外のようです。お迎えの場所を確かめてください。", $("pickup"));
+    if (pp && pp !== pv) {
+      setSelect($("pref"), pp); estNow();
+      return fail("お迎えの場所が" + pp + "のようなので、お迎えの都県を「" + pp + "」に直しました。料金の目安を確かめてから、もう一度送信してください。", $("pref"));
+    }
 
     var body = new URLSearchParams();
     ["website","pref","pickup","dropoff","trip","riders","luggage","name","tel","email"].forEach(function(k){ body.append(k, fd.get(k) || ""); });
