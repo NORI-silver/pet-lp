@@ -222,6 +222,13 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .emg-none{font-size:.86rem;background:var(--cream);border-radius:14px;padding:12px 14px;margin:8px 0 0}
 .hist-clear{background:none;border:0;padding:6px 0 0;font:inherit;font-size:.75rem;color:var(--ink-3);text-decoration:underline;cursor:pointer}
 .hist-clear[hidden]{display:none}
+.partner-band{background:var(--cream);padding:28px 0}
+.partner-band .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.partner-band p{margin:0;font-size:.88rem;color:var(--ink-2);flex:1 1 280px}
+.partner-band b{display:block;color:var(--ink);font-size:1rem}
+.partner-band a{display:inline-flex;align-items:center;border:1.5px solid var(--ink);border-radius:999px;padding:10px 20px;font-weight:700;font-size:.9rem;color:var(--ink);text-decoration:none;white-space:nowrap;background:#fff}
+.plist{margin:0;padding-left:1.2em}.plist li{margin:4px 0;color:var(--ink-2)}
+.f .checks{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.92rem}.f .checks label{display:flex;align-items:center;gap:6px;font-weight:400;margin:0}
 .via-box .lbl{display:block;margin-top:4px}
 .via-box .note{display:block;font-size:.8rem;color:var(--ink-3);margin:6px 0 0}
 .via-box .chk{display:flex;gap:8px;align-items:center;font-size:.88rem;margin:8px 0}
@@ -887,9 +894,10 @@ footer a{color:var(--ink-2)}
 </main>
 
 <!-- 11. フッター -->
+<aside class="partner-band"><div class="wrap"><p><b>ペットタクシー会社の方へ</b>東京・神奈川・千葉・埼玉で、いっしょにペットと飼い主さんをお迎えしてくださる会社を探しています。</p><a href="/partner/">提携のご案内</a></div></aside>
 <footer>
   <div class="wrap">
-    <nav><a href="#how">使い方</a><a href="#area">対応エリア</a><a href="#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="#faq">よくある質問</a><a href="#policy">キャンセルについて</a><a href="#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="#operator">運営者情報</a><a href="/contact/">お問い合わせ</a></nav>
+    <nav><a href="#how">使い方</a><a href="#area">対応エリア</a><a href="#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="#faq">よくある質問</a><a href="#policy">キャンセルについて</a><a href="#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav><a href="/tokyo/">東京のペットタクシー</a><a href="/chiba/">千葉のペットタクシー</a><a href="/kanagawa/">神奈川・横浜のペットタクシー</a><a href="/saitama/">埼玉のペットタクシー</a></nav>
     <p>おまかせペットタクシー（東京・神奈川・千葉・埼玉）</p>
     <p>&copy; 2026 おまかせペットタクシー</p>
@@ -1113,16 +1121,37 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var ROAD = 1.5;
   var est = $("est"), geoCache = {}, estSeq = 0, lastKm = 0, lastKmHigh = 0, lastFare = "", lastFareNum = 0;
   function yen(n){ return n.toLocaleString("ja-JP") + "円"; }
+  // 場所の検索は4都県の中だけで探す（遠くの同じ名前の場所を拾わないように）。選んだ都県の中の候補を優先する
+  var BOX4 = [34.85, 138.6, 36.35, 140.95];
+  var PREF_BOX = {"東京都": [35.48, 138.9, 35.9, 139.93], "神奈川県": [35.12, 138.9, 35.68, 139.8], "千葉県": [34.88, 139.73, 36.11, 140.9], "埼玉県": [35.74, 138.7, 36.29, 139.91]};
+  function inBox(c, b){ return c && c.lat >= b[0] && c.lat <= b[2] && c.lng >= b[1] && c.lng <= b[3]; }
+  function pickIn(list){
+    var pb = PREF_BOX[$("pref").value];
+    return list.filter(function(c){ return pb && inBox(c, pb); })[0] || list.filter(function(c){ return inBox(c, BOX4); })[0] || null;
+  }
+  function gsi(q){
+    return fetch("https://msearch.gsi.go.jp/address-search/AddressSearch?q=" + encodeURIComponent(q))
+      .then(function(r){ return r.json(); })
+      .then(function(a){ return pickIn((a || []).map(function(x){ var c = x.geometry.coordinates; return {lng: c[0], lat: c[1]}; })); })
+      .catch(function(){ return null; });
+  }
+  // 駅や公園などの名前は住所の検索で見つからないことがあるので、地図データの検索でも探す（4都県の範囲だけ）
+  function osm(q){
+    return fetch("https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=jp&accept-language=ja&bounded=1&viewbox=" +
+        [BOX4[1], BOX4[2], BOX4[3], BOX4[0]].join(",") + "&q=" + encodeURIComponent(q))
+      .then(function(r){ return r.json(); })
+      .then(function(a){ return pickIn((a || []).map(function(x){ return {lng: Number(x.lon), lat: Number(x.lat)}; })); })
+      .catch(function(){ return null; });
+  }
   function geocode(q){
     q = q.trim();
     if (!q) return Promise.resolve(null);
     var pref = $("pref").value;
     var key = (q.indexOf(pref.replace(/[都府県]$/, "")) >= 0 ? "" : pref) + q;
     if (key in geoCache) return Promise.resolve(geoCache[key]);
-    return fetch("https://msearch.gsi.go.jp/address-search/AddressSearch?q=" + encodeURIComponent(key))
-      .then(function(r){ return r.json(); })
-      .then(function(a){ var c = a && a[0] && a[0].geometry.coordinates; return geoCache[key] = c ? {lng:c[0], lat:c[1]} : null; })
-      .catch(function(){ return null; });
+    return gsi(key).then(function(c){ return c || (key !== q ? gsi(q) : null); })
+      .then(function(c){ return c || osm(key).then(function(c2){ return c2 || (key !== q ? osm(q) : null); }); })
+      .then(function(c){ return geoCache[key] = c; });
   }
   function kmBetween(a, b){
     var R = 6371, t = Math.PI / 180, dLat = (b.lat - a.lat) * t, dLng = (b.lng - a.lng) * t;
@@ -1211,7 +1240,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       est.hidden = false;
       if (cs.some(function(c){ return !c; })) {
         lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
-        est.innerHTML = '<div class="t">料金の目安</div><p>場所から距離を計算できませんでした。「〇〇区〇〇1丁目」のように住所で入れると計算できます。<a href="#price">距離ごとの目安</a>もご覧ください。</p>';
+        est.innerHTML = '<div class="t">料金の目安</div><p>場所を確かめてください。東京・神奈川・千葉・埼玉の中で、場所が見つかりませんでした。「〇〇区〇〇1丁目」のように住所で入れると計算できます。<a href="#price">距離ごとの目安</a>もご覧ください。</p>';
         return;
       }
       var go = cs.slice(0, pts.length), back = retOther ? cs.slice(pts.length) : go.slice().reverse();
@@ -1247,7 +1276,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       }
       // 依頼先が2社以上なら幅で見せる（上限ではなく目安）
       function rtext(r){ return r[0] === r[1] ? yen(r[0]) : r[0].toLocaleString("ja-JP") + "〜" + yen(r[1]); }
+      // 画面では、幅が広すぎるとき（お迎えに来る会社が遠いとき）は安いほうを出して、高いほうは下に書き添える
+      function stext(r){ return r[1] > r[0] * 1.8 ? yen(r[0]) + "〜" : rtext(r); }
       var kmL = kmOf(rs[0], go), kmH = kmOf(rs[1], go), kmL2 = kmOf(rs[2], back), kmH2 = kmOf(rs[3], back);
+      // 4都県の中の移動でこの距離を超えるのは場所の取り違えなので、目安を出さない
+      if (Math.max(kmL, kmL2) > 250) {
+        lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
+        est.innerHTML = '<div class="t">料金の目安</div><p>場所を確かめてください。距離がうまく計算できませんでした。「〇〇区〇〇1丁目」のように住所で入れると計算できます。</p>';
+        return;
+      }
       var rL = range(kmL, kmL2), rH = range(kmH, kmH2);
       // 高速を使っても距離がほとんど変わらないときは、一般道だけを出す
       var hasHigh = rs[0] && rs[1] && rs[0].km - rs[1].km > 1;
@@ -1257,13 +1294,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       lastFare = "一般道（約" + lastKm + "km）" + rtext(rL) + (hasHigh ? "／高速あり（約" + lastKmHigh + "km）" + rtext(rH) + "＋高速代" : "");
       // 所要時間（片道）。道路データの時間は空いているときの値なので、3割増しにして5分単位で切り上げる
       function mins(rt){ return rt ? "・" + (later ? "片道" : "") + "約" + Math.ceil(rt.min * 1.3 / 5) * 5 + "分" : ""; }
-      var rows = '<div class="row"><span>一般道<small>約' + lastKm + 'km' + mins(rs[0]) + '</small></span><b>' + rtext(rL) + '</b></div>' +
-        (hasHigh ? '<div class="row"><span>高速あり<small>約' + lastKmHigh + 'km' + mins(rs[1]) + '</small></span><b>' + rtext(rH) + '<small>＋高速代</small></b></div>' : "");
+      var rows = '<div class="row"><span>一般道<small>約' + lastKm + 'km' + mins(rs[0]) + '</small></span><b>' + stext(rL) + '</b></div>' +
+        (hasHigh ? '<div class="row"><span>高速あり<small>約' + lastKmHigh + 'km' + mins(rs[1]) + '</small></span><b>' + stext(rH) + '<small>＋高速代</small></b></div>' : "");
       var notes = [round ? "行きと帰りを合わせた往復の目安です。" : "片道の目安です。"];
       if (!rs[0]) notes.push("道のりが調べられなかったため、直線の距離から長めに見て計算しています。");
       else notes.push("所要時間は目安で、道の混み具合で変わります。");
       if (keys.length > 1) notes.push("このエリアの依頼先" + keys.length + "社の料金表で計算していて、どの会社が引き受けるかで変わります。");
       if (keys.some(function(k){ return FARES[k].pick; })) notes.push("お迎え・回送料金を含みます。");
+      if (rL[1] > rL[0] * 1.8) notes.push("お迎えに来る会社が遠いと、お迎えの料金が加わって" + yen(rL[1]) + (hasHigh ? "（高速ありは" + yen(rH[1]) + "＋高速代）" : "") + "になることもあります。");
       if ((night || (later && night2)) && keys.some(function(k){ return FARES[k].night > 1; })) notes.push("夜間の割増を含めています。");
       if (later) notes.push("待っていてもらう場合とあらためて迎えに来る場合の、安いほうで計算しています。");
       notes.push("駐車場代は含みません。確定料金（税込）は、お迎えが決まったときに引き受けた会社から、一般道の場合と高速道路を使う場合の両方をお知らせします。");
