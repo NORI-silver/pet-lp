@@ -177,17 +177,6 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 @media(min-width:600px){.dt{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr)}.dt input{grid-column:auto}}
 .via-box[hidden],.pet-hint[hidden],#retPlaces[hidden],#retRoute[hidden]{display:none}
 .via-box{margin-top:10px}
-.back-opts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:6px}
-@media (max-width:480px){.back-opts{grid-template-columns:minmax(0,1fr)}}
-.back-opt{position:relative;cursor:pointer}
-.back-opt input{position:absolute;opacity:0;pointer-events:none}
-.back-opt span{display:flex;flex-direction:column;gap:4px;height:100%;box-sizing:border-box;padding:12px;border:1.5px solid var(--line);border-radius:14px;background:#fbfaf9}
-.back-opt b{font-size:.9rem}
-.back-opt small{font-size:.74rem;color:var(--ink-3);line-height:1.5}
-.back-opt em{white-space:pre-line;font-style:normal;font-weight:800;color:var(--o-d);font-size:.9rem;line-height:1.4}
-.back-opt em:empty{display:none}
-.back-opt input:checked+span{background:var(--o-l);border-color:var(--o)}
-.back-opt input:focus-visible+span{outline:2px solid var(--o);outline-offset:2px}
 .via-box .lbl{display:block;margin-top:4px}
 .via-box .note{display:block;font-size:.8rem;color:var(--ink-3);margin:6px 0 0}
 .via-box .chk{display:flex;gap:8px;align-items:center;font-size:.88rem;margin:8px 0}
