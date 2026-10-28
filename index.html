@@ -245,6 +245,10 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est .v{font-family:var(--round);font-size:1.5rem;font-weight:800;color:var(--ink);line-height:1.3;margin:2px 0 6px}
 .est p{font-size:.8rem;color:var(--ink-2);margin:0;line-height:1.7}
 .est-rows{margin:6px 0 10px}
+.est-flag,.fare-flag{background:#fff;border:2px solid var(--o);border-radius:12px;padding:9px 12px;margin:8px 0;font-size:.84rem;line-height:1.6;color:var(--ink)}
+.est-flag b,.fare-flag b{color:var(--o-d);display:block;font-size:.92rem}
+.est-night,.fare-night{background:#eef0fb;border-radius:12px;padding:9px 12px;margin:8px 0;font-size:.82rem;line-height:1.6;color:var(--ink)}
+.est-night b,.fare-night b{display:block;font-size:.88rem}
 .est-rows .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:6px 0;border-bottom:1px dashed rgba(226,86,10,.25)}
 .est-rows .row:last-child{border-bottom:0}
 .est-rows span{font-size:.88rem;font-weight:700}
@@ -664,6 +668,8 @@ footer a{color:var(--ink-2)}
         </dl>
       </div>
     </div>
+    <p class="fare-flag"><b>確定料金ではありません。</b>上の金額は目安です。確定料金（税込）は、お迎えが決まったときに引き受けた会社からメールでお知らせします。</p>
+    <p class="fare-night"><b>🌙 夜間・早朝の割増</b>上の目安は昼間の料金です。東京・世田谷の会社は、18時〜朝8時のお迎えで乗車料金が2割増し、千葉・松戸の会社は、夜間の割増が料金表にありません。</p>
     <p class="small">片道の目安です。依頼先のペットタクシー2社の料金表で計算していて、どの会社が引き受けるかで変わります。東京・世田谷の会社は、乗車料金が5kmまで2,200円、その先は1kmごとに220円（101km〜は165円、201km〜は110円）。お迎え料金と帰りの回送料金がそれぞれ3kmまで330円かかり、お店から遠いと増えます。夕方18時〜朝8時は乗車料金が2割増し、往復は乗車料金が2倍です。病院での待ち時間は10分まで無料、30分まで660円、その後10分ごとに220円です。千葉・松戸の会社は、乗車料金が5km未満1,800円、5km以上は1kmごとに200円（101km〜は150円、201km〜は100円）。往復は10kmまで3,300円（病院での待ち時間30分込み）で、その後の待ち時間は30分ごとに500円です。長い距離や長い待ち時間は、その会社のお見積りになります。目安には高速代・駐車場代は入っていません。確定料金（税込）は、お迎えが決まったときに引き受けた会社から、一般道の場合と高速道路を使う場合の両方をお知らせします。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。東京・世田谷の会社は、現金で降りるときにお支払いです。千葉・松戸の会社は、お支払い方法を決まったときのメールでご案内します。エリアごとの目安は、各エリアのページにまとめています。</p><!--/FARE_TABLE-->
   </div>
 </section>
@@ -1119,7 +1125,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
 
   // ── 概算料金（お迎え場所 → 経由地 → 行き先 の距離から計算）──
   // 提携先ごとの料金表と、都県ごとの依頼先。tools/fares.json から gen_areas.py が書き込む（ここは手で直さない）。
-  /*FARES*/var FARES = {"petexpress": {"base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null, "wait": {"30": 660, "60": 1320, "120": 2640}, "shop": [35.6339, 139.6697], "pick_free_km": 3, "pick_over": 220}, "kuriki": {"base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300], "wait": {"30": 0, "60": 500, "120": 1500}, "shop": null, "pick_free_km": null, "pick_over": null}};
+  /*FARES*/var FARES = {"petexpress": {"label": "東京・世田谷の会社", "base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "night_hours": [18, 8], "round_flat": null, "wait": {"30": 660, "60": 1320, "120": 2640}, "shop": [35.6339, 139.6697], "pick_free_km": 3, "pick_over": 220}, "kuriki": {"label": "千葉・松戸の会社", "base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "night_hours": null, "round_flat": [10, 3300], "wait": {"30": 0, "60": 500, "120": 1500}, "shop": null, "pick_free_km": null, "pick_over": null}};
   var AREA_FARES = {"東京都": ["petexpress", "kuriki"], "神奈川県": ["petexpress", "kuriki"], "千葉県": ["kuriki"], "埼玉県": ["petexpress", "kuriki"]};/*/FARES*/
   // 実際の料金が目安を超えないよう、上限側で計算する（道のりは直線の1.5倍、1km単位で切り上げ、最後に100円単位で切り上げ）
   var ROAD = 1.5;
@@ -1202,7 +1208,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (night && c.night > 1) r = Math.ceil(r * c.night / 10) * 10;
     return r * (round ? 2 : 1) + pb;
   }
-  function isNight(hourId){ var v = $(hourId).value, h = Number(v); return v !== "" && (h >= 18 || h < 8); }
+  // 夜間・早朝の割増は会社ごとの時間帯で判定（night_hours = [何時から, 朝何時まで]）
+  function isNightFor(c, hourId){
+    var v = $(hourId).value, h = Number(v), nh = c.night_hours;
+    return v !== "" && !!nh && c.night > 1 && (h >= nh[0] || h < nh[1]);
+  }
   // ── 道のり（道路データで調べる。取れないときは直線×ROADで代わりに計算）──
   // 道路データの経路は高速道路も使う。高速の区間の長さを数えて、一般道だけで行くときは
   // その区間を1.15倍の道のり・1kmあたり1分長くかかるとみて出す（一般道のほうが高めに出る）
@@ -1291,7 +1301,6 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       });
     });
     function render(cs, go, back, rs){
-      var night = isNight("hour"), night2 = isNight("retHour");
       var keys = AREA_FARES[$("pref").value] || Object.keys(FARES);
       var a = go[0], b = go[go.length - 1], ra = back[0], rb = back[back.length - 1];
       // 行きのお迎えから帰りのお迎えまでの間で、待ち時間の区分（30分・1時間・2時間）を決める。わからないときは2時間
@@ -1305,9 +1314,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       function range(km, km2){
         var v = keys.map(function(k){
           var c = FARES[k];
+          var night = isNightFor(c, "hour"), night2 = $("retHour").value !== "" ? isNightFor(c, "retHour") : night;
           if (!later) return fareOf(c, km, false, night, a, b);
           // 往復は、あらためて迎えに来る場合と、待っている場合（帰りの場所が同じで2時間以内）の安いほう
-          var sep = fareOf(c, km, false, night, a, b) + fareOf(c, km2, false, $("retHour").value !== "" ? night2 : night, ra, rb);
+          var sep = fareOf(c, km, false, night, a, b) + fareOf(c, km2, false, night2, ra, rb);
           var wk = waitKey(km);
           if (retOther || !wk || !c.wait) return sep;
           return Math.min(sep, fareOf(c, km, true, night, a, a) + c.wait[wk]);
@@ -1342,10 +1352,28 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (keys.length > 1) notes.push("このエリアの依頼先" + keys.length + "社の料金表で計算していて、どの会社が引き受けるかで変わります。");
       if (keys.some(function(k){ return FARES[k].pick; })) notes.push("お迎え・回送料金を含みます。");
       if (rL[1] > rL[0] * 1.8) notes.push("お迎えに来る会社が遠いと、お迎えの料金が加わって" + yen(rL[1]) + (hasHigh ? "（高速ありは" + yen(rH[1]) + "＋高速代）" : "") + "になることもあります。");
-      if ((night || (later && night2)) && keys.some(function(k){ return FARES[k].night > 1; })) notes.push("夜間の割増を含めています。");
       if (later) notes.push("待っていてもらう場合とあらためて迎えに来る場合の、安いほうで計算しています。");
-      notes.push("駐車場代は含みません。確定料金（税込）は、お迎えが決まったときに引き受けた会社から、一般道の場合と高速道路を使う場合の両方をお知らせします。");
-      est.innerHTML = '<div class="t">料金の目安（' + (round ? "往復" : "片道") + '）</div><div class="est-rows">' + rows + '</div>' +
+      notes.push("駐車場代は含みません。確定料金は、一般道の場合と高速道路を使う場合の両方をお知らせします。");
+      // 夜間・早朝の割増：かかる会社ごとに、何時から・何割・この区間でいくら増えるかを出す
+      var nightLines = [], nightOn = false;
+      keys.forEach(function(k){
+        var c = FARES[k];
+        if (!(c.night > 1 && c.night_hours)) { nightLines.push(c.label + "は、夜間の割増が料金表にありません。"); return; }
+        var nh = c.night_hours, pct = Math.round((c.night - 1) * 10), r = ride(c, kmL);
+        var add = Math.ceil(r * c.night / 10) * 10 - r;
+        var on1 = isNightFor(c, "hour"), on2 = later && $("retHour").value !== "" && isNightFor(c, "retHour");
+        if (on1 || on2) {
+          nightOn = true;
+          nightLines.push(c.label + "は" + nh[0] + "時〜朝" + nh[1] + "時のお迎えで乗車料金が" + pct + "割増し。" +
+            (later ? (on1 && on2 ? "行きも帰りも" : on1 ? "行きが" : "帰りが") + "この時間帯なので、" : "") +
+            "一般道で片道あたり＋" + yen(add) + "を含めています。");
+        } else {
+          nightLines.push(c.label + "は、" + nh[0] + "時〜朝" + nh[1] + "時のお迎えだと乗車料金が" + pct + "割増し（この区間で片道＋" + yen(add) + "）になります。");
+        }
+      });
+      var nightBox = nightLines.length ? '<div class="est-night"><b>🌙 ' + (nightOn ? "夜間・早朝の割増を含みます" : "夜間・早朝の割増") + '</b>' + nightLines.join("") + '</div>' : "";
+      var flag = '<div class="est-flag"><b>確定料金ではありません</b>これは目安です。確定料金（税込）は、お迎えが決まったときに引き受けた会社からメールでお知らせします。</div>';
+      est.innerHTML = '<div class="t">料金の目安（' + (round ? "往復" : "片道") + '）</div><div class="est-rows">' + rows + '</div>' + flag + nightBox +
         (rs[0] ? '<div class="est-map" id="estMap" role="img" aria-label="ルートの地図"></div><p class="legend"><i class="l1"></i>ルート' + (hasHigh ? "（高速道路を使う道順です）" : "") + '</p>' : "") +
         '<p>' + notes.join("") + '</p>';
       if (rs[1]) drawMap($("estMap"), rs[1], null, go);
