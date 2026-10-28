@@ -1146,8 +1146,8 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
         }).map(function(v){ return Math.ceil(v / 100) * 100; }).sort(function(a, b){ return a - b; });
         return [v[0], v[v.length - 1]];
       }
-      // 依頼先のうち高いほうを「◯円まで」で見せる（確定料金がこれより安くなるように）
-      function rtext(r){ return yen(r[1]) + "まで"; }
+      // 依頼先が2社以上なら幅で見せる（上限ではなく目安）
+      function rtext(r){ return r[0] === r[1] ? yen(r[0]) : r[0].toLocaleString("ja-JP") + "〜" + yen(r[1]); }
       // 往復を選んだら、帰りの2つのやり方の目安を並べて見せる（待ち時間は選んだもの、未選択なら1時間）
       var kind = (form.querySelector("input[name=trip_kind]:checked") || {}).value;
       var w = wait && wait !== "不明" ? wait : "60";
@@ -1164,7 +1164,8 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
       lastFare = rtext(r);
       var round = trip !== "片道";
       var notes = [later ? "行き約" + km + "km・帰り約" + km2 + "kmで計算した往復の目安です。" : "道のり約" + km + "kmで計算した" + (round ? "往復" : "片道") + "の目安です。"];
-      notes.push("このエリアの依頼先" + (keys.length > 1 ? keys.length + "社のどこが引き受けても" : "が引き受けたときに") + "この金額までに収まるよう、道のりを長めに見て高めに計算しています。実際は、これより安くなることがあります。");
+      if (keys.length > 1) notes.push("このエリアの依頼先" + keys.length + "社の料金表で計算していて、どの会社が引き受けるかで変わります。");
+      notes.push("道のりは長めに見て計算しています。");
       if (keys.some(function(k){ return FARES[k].pick; })) notes.push("お迎え・回送料金を含みます。");
       if ((night || (later && night2)) && keys.some(function(k){ return FARES[k].night > 1; })) notes.push("夜間の割増を含めています。");
       if (waiting) notes.push(wait === "不明" ? "待ち時間がわからないときは、2時間として計算しています。" : wait ? "待ち時間の料金を含めています。" : "待ち時間の料金は含んでいません。目安を選ぶと計算に入ります。");
