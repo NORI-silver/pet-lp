@@ -53,7 +53,8 @@
 | `tools/` | 生成スクリプトとデータ：`gen_areas.py`、`guides.py`、`terms.py`、`fares.json`、`emergency.json` |
 | `booking/Code.gs` | 予約の仕組み（Apps Script）。**リポジトリにあっても本番には自動で反映されません**（下記） |
 | `booking/accept-preview.html` | 会社の引き受け画面の見た目確認用 |
-| `docs/` | 手順書（Codexの使い方など） |
+| `docs/` | 手順書（`codex.md`＝Codexの使い方、`ai-backup.md`＝GitHubで動く予備のAI） |
+| `.github/workflows/ai-backup.yml` | Issue にラベル「ai」を付けるとAIが作業してPRを作る予備のしくみ |
 
 `CNAME`・`.nojekyll` は GitHub Pages 用なので消さない。
 

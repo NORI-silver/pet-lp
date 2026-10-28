@@ -8,7 +8,7 @@ Codex もこのリポジトリの `AGENTS.md` を読むので、同じルール�
 1. パソコンかスマホで https://chatgpt.com/codex を開く（ChatGPTアプリなら左のメニューの「Codex」）。
 2. 「GitHub を接続」を押して、GitHub にログインし、`NORI-silver/pet-lp` へのアクセスを許可する（「Only select repositories」で pet-lp だけ選べばOK）。
 3. 「環境を作成（Create environment）」で `NORI-silver/pet-lp` を選んで保存する。設定は初期のままで大丈夫です（Python 3 があれば動きます）。
-4. もし Codex のメニューが出ない・使えないと表示されたら、Claude に「Codexが使えなかった」と伝えてください。別の予備（GitHub上で別のAIを動かすしくみ）を用意します。
+4. もし Codex のメニューが出ない・使えないと表示されたら、Claude に「Codexが使えなかった」と伝えてください。別の予備（GitHub上で別のAIを動かすしくみ）を使います。手順は `docs/ai-backup.md` です。
 
 ## 頼むとき（毎回）
 

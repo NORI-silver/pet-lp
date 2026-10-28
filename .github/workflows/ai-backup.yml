@@ -1,0 +1,103 @@
+# Claude も Codex も使えないときの予備。
+# Issue に「ai」ラベルを付けると、AI が Issue の内容どおりにリポジトリを直して PR を作る（マージは人が行う）。
+# モデルはリポジトリの変数 AI_MODEL だけで差し替えられる（OpenRouter の名前に「openrouter/」を付けたもの）。
+# 他のリポジトリでも、このファイルをそのまま置けば使える（AGENTS.md があれば読み込む）。
+name: AI backup
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: ai-backup-${{ github.event.issue.number }}
+
+jobs:
+  work:
+    # ラベルを付けられるのは書き込み権限のある人だけ。念のためリポジトリの持ち主に限る
+    if: github.event.label.name == 'ai' && github.event.sender.login == github.repository_owner
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      AI_MODEL: ${{ vars.AI_MODEL || 'openrouter/anthropic/claude-sonnet-4.5' }}
+      ISSUE: ${{ github.event.issue.number }}
+      TITLE: ${{ github.event.issue.title }}
+      BODY: ${{ github.event.issue.body }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check key
+        run: |
+          if [ -z "$OPENROUTER_API_KEY" ]; then
+            echo "OPENROUTER_API_KEY が登録されていません（docs/ai-backup.md）"
+            exit 1
+          fi
+
+      - name: Install aider
+        run: pip install --quiet aider-chat==0.86.2
+
+      - name: Run AI
+        run: |
+          set -o pipefail
+          git config user.name "ai-backup[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          BRANCH="ai/issue-$ISSUE-$GITHUB_RUN_NUMBER"
+          echo "BRANCH=$BRANCH" >> "$GITHUB_ENV"
+          git checkout -b "$BRANCH"
+          {
+            echo "次の依頼どおりにこのリポジトリを直してください。AGENTS.md のルールを必ず守ってください。"
+            echo "料金・エリア・ガイド・規約などを変えるときは tools/ の元ファイルを直してください（生成されたファイルはあとで自動で作り直します）。"
+            echo
+            echo "# $TITLE"
+            echo
+            echo "$BODY"
+          } > "$RUNNER_TEMP/request.md"
+          READ=""
+          [ -f AGENTS.md ] && READ="--read AGENTS.md"
+          aider --model "$AI_MODEL" $READ \
+            --message-file "$RUNNER_TEMP/request.md" \
+            --yes-always --no-check-update --no-show-model-warnings \
+            --no-gitignore --no-analytics --no-stream \
+            --auto-commits --no-dirty-commits 2>&1 | tee "$RUNNER_TEMP/aider.log"
+
+      - name: Regenerate pages
+        run: |
+          if [ -f tools/gen_areas.py ]; then
+            python3 tools/gen_areas.py .
+            rm -rf tools/__pycache__
+            git add -A
+            git diff --cached --quiet || git commit -m "生成ファイルを作り直し（gen_areas.py）"
+          fi
+
+      - name: Open PR
+        run: |
+          if [ -z "$(git log origin/${{ github.event.repository.default_branch }}..HEAD --oneline)" ]; then
+            gh issue comment "$ISSUE" --body "AIは何も変更しませんでした。依頼の書き方を具体的にして、ラベル「ai」を外して付け直すともう一度動きます。（ログ: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID）"
+            exit 0
+          fi
+          git push -u origin "$BRANCH"
+          NOTE=""
+          git diff --name-only origin/${{ github.event.repository.default_branch }}..HEAD | grep -q '^booking/Code.gs$' && \
+            NOTE=$'\n\n**booking/Code.gs が変わっています。マージ後に Apps Script への貼り直しが必要です。**'
+          URL=$(gh pr create --head "$BRANCH" --title "$TITLE" \
+            --body "Issue #$ISSUE の依頼をAI（$AI_MODEL）が作業しました。中身を確認してからマージしてください。$NOTE
+
+          Closes #$ISSUE")
+          gh issue comment "$ISSUE" --body "PRを作りました: $URL"
+
+      - name: Report failure
+        if: failure()
+        run: |
+          gh issue comment "$ISSUE" --body "AIの作業が途中で止まりました。鍵（OPENROUTER_API_KEY）の登録・残高と、モデル名（AI_MODEL）を確かめてください。ログ: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
