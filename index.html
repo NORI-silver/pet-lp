@@ -206,6 +206,20 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 @media(min-width:600px){.dt{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr)}.dt input{grid-column:auto}}
 .via-box[hidden],.pet-hint[hidden],#retPlaces[hidden],#retRoute[hidden]{display:none}
 .via-box{margin-top:10px}
+.mode-tabs{display:flex;gap:6px;max-width:560px;margin:0 auto 14px;background:#fff;border-radius:999px;padding:5px;box-shadow:0 2px 8px rgba(28,26,24,.06)}
+.mode-tabs[hidden],.emg[hidden]{display:none}
+.mode-tabs button{flex:1;border:0;background:none;font:inherit;font-weight:800;padding:11px;border-radius:999px;cursor:pointer;color:var(--ink-2)}
+.mode-tabs button[aria-selected=true]{background:var(--o);color:#fff}
+.mode-tabs button[data-mode=emg][aria-selected=true]{background:#c0392b}
+.emg{background:#fff;border:2px solid #c0392b;border-radius:24px;padding:22px 20px;margin:0 auto 18px;max-width:760px}
+.emg h3{color:#c0392b;font-size:1.15rem;margin:0 0 8px}
+.emg-lead,.emg-note{font-size:.86rem;color:var(--ink-2);margin:0 0 12px}
+.emg-note{margin:12px 0 0;font-size:.8rem;color:var(--ink-3)}
+.emg-tel{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fdecea;border-radius:16px;padding:14px 16px;margin-top:8px;text-decoration:none;color:var(--ink)}
+.emg-tel b{display:block;font-size:.92rem}
+.emg-tel small{display:block;font-size:.76rem;color:var(--ink-3)}
+.emg-tel span{font-family:var(--round);font-weight:800;font-size:1.15rem;color:#c0392b;white-space:nowrap}
+.emg-none{font-size:.86rem;background:var(--cream);border-radius:14px;padding:12px 14px;margin:8px 0 0}
 .hist-clear{background:none;border:0;padding:6px 0 0;font:inherit;font-size:.75rem;color:var(--ink-3);text-decoration:underline;cursor:pointer}
 .hist-clear[hidden]{display:none}
 .via-box .lbl{display:block;margin-top:4px}
@@ -478,6 +492,18 @@ footer a{color:var(--ink-2)}
   <div class="wrap">
     <div class="sh"><span class="eyebrow">REQUEST</span><h2>ペットタクシーを予約する</h2><p>空いている車をお探しし、決まったらお迎えの時間と確定料金をメールでお知らせします。</p></div>
 
+    <div class="mode-tabs" id="modeTabs" role="tablist" hidden>
+      <button type="button" role="tab" aria-selected="true" data-mode="normal">予約する</button>
+      <button type="button" role="tab" aria-selected="false" data-mode="emg">緊急のとき</button>
+    </div>
+    <div class="emg" id="emgBox" hidden>
+      <h3>緊急のときは、お電話で</h3>
+      <p class="emg-lead">一刻を争う症状のときは、まずかかりつけや夜間の動物病院に電話してください。病院への移動の手段がないときは、いまいる場所を選ぶと、そのエリアで緊急対応しているペットタクシーに電話がつながります。</p>
+      <div class="f"><label for="emgPref">いまいる場所</label>
+        <select id="emgPref"><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>千葉県</option><option>埼玉県</option></select></div>
+      <div id="emgList" aria-live="polite"></div>
+      <p class="emg-note">緊急対応の料金は通常の予約と違い、電話でペットタクシーからご案内します。急ぎでなければ、下のフォームからご予約ください（お迎えは3時間後から）。</p>
+    </div>
     <div class="form-card">
       <p class="yoyaku"><b>完全予約制</b>送信した時点では、まだ予約は確定していません。車が決まったことをお知らせするメールが届いたら、予約確定です。</p>
       <form id="petForm" novalidate>
@@ -1318,6 +1344,35 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       })
       .catch(function(){});
   }
+  // ── 緊急タブ：tools/emergency.json から gen_areas.py が書き込む（ここは手で直さない）。番号が1件もなければタブを出さない ──
+  /*EMG*/var EMG = {"東京都": [], "神奈川県": [], "千葉県": [], "埼玉県": []};/*/EMG*/
+  (function(){
+    var any = Object.keys(EMG).some(function(k){ return EMG[k].length; });
+    if (!any) return;
+    var tabs = $("modeTabs"), box = $("emgBox");
+    tabs.hidden = false;
+    function setMode(m){
+      tabs.querySelectorAll("button").forEach(function(b){ b.setAttribute("aria-selected", String(b.dataset.mode === m)); });
+      box.hidden = m !== "emg";
+    }
+    tabs.addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) setMode(b.dataset.mode); });
+    $("emgPref").addEventListener("change", function(){
+      var list = EMG[this.value] || [], el = $("emgList");
+      el.innerHTML = "";
+      if (!this.value) return;
+      if (!list.length) { el.innerHTML = '<p class="emg-none">いま、このエリアで電話で受けられる緊急対応のペットタクシーはありません。まず動物病院にご相談ください。</p>'; return; }
+      list.forEach(function(x){
+        var a = document.createElement("a"); a.className = "emg-tel"; a.href = "tel:" + x.tel.replace(/[^\d+]/g, "");
+        a.innerHTML = "<div><b></b><small></small></div><span></span>";
+        a.querySelector("b").textContent = x.label;
+        a.querySelector("small").textContent = [x.hours, x.note].filter(Boolean).join("・");
+        a.querySelector("span").textContent = x.tel;
+        el.appendChild(a);
+      });
+    });
+    if (location.hash === "#emergency") setMode("emg");
+  })();
+
   // 以前の版でブラウザに残した入力は使わないので消しておく
   try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
 
