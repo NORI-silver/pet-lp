@@ -1417,7 +1417,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         if (!r || !r.ok) {
           var e = String(r && r.error || "");
           if (e === "area") return retry("お迎えの場所が東京・神奈川・千葉・埼玉の外のようです。いまはこの4都県からのお迎えだけ受け付けています。");
-          if (e === "datetime") return retry("お迎えの日時が読み取れませんでした。日付と時刻を選び直してください。");
+          if (e === "datetime") return retry("お迎えの日時が近すぎるか、読み取れませんでした。いまから3時間後より先の日時を選び直してください。");
           return retry("受け付けできませんでした。入力内容はそのまま残っています。少し時間をおいて、もう一度送ってください。");
         }
         if (r.id) { $("thanks-id").querySelector("b").textContent = r.id; $("thanks-id").style.display = "block"; }
