@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>読み込んでいます｜おまかせペットタクシー</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#ff6a1a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+/* 受付の仕組みから届く画面（引き受け・取り消し・手配ページ）をLPのデザインで表示する */
+.go{padding:28px 0 56px}
+.go .wrap{max-width:560px}
+.go h1{font-family:var(--round);font-size:1.4rem;line-height:1.5;margin:0 0 14px}
+.go .card{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);padding:22px 20px;overflow-wrap:anywhere}
+.go .card h2{font-size:1.05rem;margin:22px 0 4px}
+.go .card p{margin:0 0 10px}
+.go .box{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+.go .pt{border-top:1px solid var(--line);padding:12px 0}
+.go .note{font-size:.85rem;color:var(--ink-3)}
+.go label{display:block;font-weight:700;margin:14px 0 4px}
+.go input,.go textarea,.go select{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:12px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.go input:focus,.go textarea:focus,.go select:focus{outline:none;border-color:var(--o)}
+.go input[type=checkbox],.go input[type=radio]{display:inline-block;width:auto;margin-right:6px}
+.go button{display:block;width:100%;margin-top:20px;background:var(--o);color:#fff;border:0;border-radius:999px;padding:16px;font:inherit;font-weight:800;cursor:pointer}
+.go button:disabled{opacity:.6}
+.go button.gray{background:var(--ink-2)}
+.go a.line{display:block;text-align:center;background:#06c755;color:#fff;border-radius:999px;padding:12px;font-weight:800;margin:8px 0;text-decoration:none}
+.go .msg{text-align:center;color:var(--ink-3);padding:24px 0}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="6" cy="9" r="2.2"/><circle cx="10" cy="5.5" r="2.2"/><circle cx="14" cy="5.5" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M12 11c-3 0-6 3.6-6 6.2 0 1.8 1.5 2.8 3 2.8 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.5 0 3-1 3-2.8C18 14.6 15 11 12 11z"/></svg></i>おまかせペットタクシー</a>
+  </div>
+</header>
+<main class="go">
+  <div class="wrap">
+    <h1 id="title" hidden></h1>
+    <div class="card" id="body" aria-live="polite"><p class="msg">読み込んでいます…</p></div>
+  </div>
+</main>
+<footer>
+  <div class="wrap"><p>&copy; 2026 おまかせペットタクシー</p></div>
+</footer>
+<script>
+(function(){
+  // 受付の仕組み（Code.gs の CONFIG.WEB_APP_URL）。トップの GAS_URL と同じ
+  var API = "https://script.google.com/macros/s/AKfycbyxsd8L8g_5Nt3HnApx2ZQnXFyPBsNfuHSvBlJKRVDtAIVr0EnqB-0raxwMPNOVl_Jg/exec";
+  var body = document.getElementById("body"), title = document.getElementById("title");
+  var q = new URLSearchParams(location.search);
+  q.set("fmt", "json");
+  function fail(){
+    body.innerHTML = '<p class="msg">うまく表示できませんでした。時間をおいてもう一度お試しください。</p>';
+  }
+  fetch(API + "?" + q.toString())
+    .then(function(r){ return r.json(); })
+    .then(function(r){
+      if (!r || !r.ok || typeof r.html !== "string") return fail();
+      if (r.title) {
+        title.textContent = r.title; title.hidden = false;
+        document.title = r.title + "｜おまかせペットタクシー";
+      }
+      body.innerHTML = r.html;
+    })
+    .catch(fail);
+})();
+</script>
+</body>
+</html>
