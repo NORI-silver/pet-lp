@@ -1318,6 +1318,7 @@ var KEEP_DAYS = 30, SAVE_KEY = "petReq";
     body.append("notes", back ? back + (o.notes ? "\n" + o.notes : "") : o.notes);
     body.append("est_km", lastKm ? String(lastKm) : "");
     body.append("est_fare", lastFareNum ? String(lastFareNum) : "");
+    body.append("est_fare_text", lastFare); // フォームに出したとおりの表示（例：11,300〜13,900円）
 
     // 同じ内容の送り直しで二重受付にならないよう、入力が変わらないかぎり同じ合言葉（req_key）を使う
     var sig = body.toString();
