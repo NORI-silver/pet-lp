@@ -206,6 +206,8 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 @media(min-width:600px){.dt{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr)}.dt input{grid-column:auto}}
 .via-box[hidden],.pet-hint[hidden],#retPlaces[hidden],#retRoute[hidden]{display:none}
 .via-box{margin-top:10px}
+.hist-clear{background:none;border:0;padding:6px 0 0;font:inherit;font-size:.75rem;color:var(--ink-3);text-decoration:underline;cursor:pointer}
+.hist-clear[hidden]{display:none}
 .via-box .lbl{display:block;margin-top:4px}
 .via-box .note{display:block;font-size:.8rem;color:var(--ink-3);margin:6px 0 0}
 .via-box .chk{display:flex;gap:8px;align-items:center;font-size:.88rem;margin:8px 0}
@@ -486,12 +488,14 @@ footer a{color:var(--ink-2)}
           <div class="f"><label for="pref">お迎えの都県</label>
             <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>千葉県</option><option>埼玉県</option></select></div>
           <div class="f"><label for="pickup">お迎えの場所</label>
-            <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="street-address"></div>
+            <input type="text" id="pickup" list="placeHist" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off"></div>
           <div class="f"><span class="lbl">経由地<span class="any">任意</span></span>
             <div class="seg"><label><input type="radio" name="via_on" value="なし" checked><span>なし</span></label><label><input type="radio" name="via_on" value="あり"><span>あり（途中で寄る）</span></label></div>
-            <div class="via-box" id="viaBox" hidden><input type="text" id="via" name="via" placeholder="例：〇〇トリミングサロン（渋谷区）" aria-label="経由地"></div></div>
+            <div class="via-box" id="viaBox" hidden><input type="text" id="via" list="placeHist" autocomplete="off" name="via" placeholder="例：〇〇トリミングサロン（渋谷区）" aria-label="経由地"></div></div>
           <div class="f"><label for="dropoff">行き先</label>
-            <input type="text" id="dropoff" name="dropoff" placeholder="例：代々木公園／〇〇動物病院（目黒区）" required></div>
+            <input type="text" id="dropoff" list="placeHist" autocomplete="off" name="dropoff" placeholder="例：代々木公園／〇〇動物病院（目黒区）" required>
+            <datalist id="placeHist"></datalist>
+            <button type="button" class="hist-clear" id="histClear" hidden>この端末に残っている場所の候補を消す</button></div>
           <div class="f"><label for="date">お迎えの希望日時</label>
             <div class="dt">
               <input type="date" id="date" name="date" required aria-label="日付">
@@ -511,9 +515,9 @@ footer a{color:var(--ink-2)}
               <label class="chk"><input type="checkbox" id="retOther" name="ret_other" value="1"> 帰りの場所を変える</label>
               <div id="retPlaces" hidden>
                 <label for="retPickup" class="lbl">帰りのお迎えの場所</label>
-                <input type="text" id="retPickup" name="ret_pickup" placeholder="例：〇〇動物病院（目黒区）">
+                <input type="text" id="retPickup" list="placeHist" autocomplete="off" name="ret_pickup" placeholder="例：〇〇動物病院（目黒区）">
                 <label for="retDropoff" class="lbl">帰りの行き先</label>
-                <input type="text" id="retDropoff" name="ret_dropoff" placeholder="例：〇〇ペットホテル（目黒区）">
+                <input type="text" id="retDropoff" list="placeHist" autocomplete="off" name="ret_dropoff" placeholder="例：〇〇ペットホテル（目黒区）">
               </div></div></div>
           <div class="est" id="est" hidden aria-live="polite"></div>
         </div>
@@ -825,7 +829,7 @@ footer a{color:var(--ink-2)}
         <h4>3. ペットタクシー事業者へのお伝え</h4>
         <ul><li>空きを確認する段階では、お迎えの場所・行き先・日・ペットの情報だけを、エリアのペットタクシー事業者にお伝えします。お名前と連絡先はお伝えしません。</li><li>お迎えを引き受けた1社にだけ、送迎のためにお名前と連絡先をお伝えします。</li><li>法令にもとづく場合を除き、ご本人の同意なくそれ以外の第三者に提供することはありません。</li></ul>
         <h4>4. 安全な管理</h4>
-        <ul><li>フォームの送信内容は、暗号化された通信（HTTPS）でお送りいただきます。</li><li>お預かりした情報は、セキュリティ対策の整った大手クラウドサービス上で保管し、見られるのは運営者だけに限っています。</li><li>なくしたり、漏れたり、勝手に使われたりしないよう、アクセスの制限やログインの保護などの安全管理に努めます。</li><li>情報は手配とご連絡に必要な期間だけ保管し、必要がなくなったら速やかに削除します。</li></ul>
+        <ul><li>フォームの送信内容は、暗号化された通信（HTTPS）でお送りいただきます。</li><li>お預かりした情報は、セキュリティ対策の整った大手クラウドサービス上で保管し、見られるのは運営者だけに限っています。</li><li>なくしたり、漏れたり、勝手に使われたりしないよう、アクセスの制限やログインの保護などの安全管理に努めます。</li><li>情報は手配とご連絡に必要な期間だけ保管し、必要がなくなったら速やかに削除します。</li><li>送ったことのある場所は、次に入力するときの候補として、お使いの端末のブラウザの中だけに保存します（当サイトには届きません）。フォームの「場所の候補を消す」でいつでも消せます。</li></ul>
         <h4>5. 確認・訂正・削除のご依頼</h4>
         <ul><li>ご自身の情報の確認・訂正・削除をご希望の場合は、受付時にお送りしたメールにご返信ください。ご本人であることを確認したうえで対応します。</li></ul>
         <p>この内容は、必要に応じて見直すことがあります。変更したときはこのページでお知らせします。（2026年10月制定）</p>
@@ -1316,6 +1320,24 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 以前の版でブラウザに残した入力は使わないので消しておく
   try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
 
+  // 場所の候補：送ったことのある場所を、この端末のブラウザの中だけに覚えて、入力欄の候補に出す（自動では入れない）
+  var HIST_KEY = "petPlaces", HIST_MAX = 10;
+  function readHist(){ try { var h = JSON.parse(localStorage.getItem(HIST_KEY) || "[]"); return Array.isArray(h) ? h : []; } catch (e) { return []; } }
+  function showHist(){
+    var h = readHist(), dl = $("placeHist");
+    dl.innerHTML = "";
+    h.forEach(function(v){ var o = document.createElement("option"); o.value = v; dl.appendChild(o); });
+    $("histClear").hidden = !h.length;
+  }
+  function addHist(list){
+    var h = readHist();
+    list.forEach(function(v){ v = String(v || "").trim(); if (!v) return; h = h.filter(function(x){ return x !== v; }); h.unshift(v); });
+    try { localStorage.setItem(HIST_KEY, JSON.stringify(h.slice(0, HIST_MAX))); } catch (e) {}
+    showHist();
+  }
+  $("histClear").addEventListener("click", function(){ try { localStorage.removeItem(HIST_KEY); } catch (e) {} showHist(); });
+  showHist();
+
   form.addEventListener("submit", function(e){
     e.preventDefault();
     err.style.display = "none";
@@ -1398,6 +1420,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           return retry("受け付けできませんでした。入力内容はそのまま残っています。少し時間をおいて、もう一度送ってください。");
         }
         if (r.id) { $("thanks-id").querySelector("b").textContent = r.id; $("thanks-id").style.display = "block"; }
+        addHist([o.pickup, o.via, o.dropoff, o.ret_pickup, o.ret_dropoff]);
         if (at - new Date() < 3 * 3600 * 1000) $("thanks-min").textContent = "30分";
         form.style.display = "none";
         $("thanks").style.display = "block";
