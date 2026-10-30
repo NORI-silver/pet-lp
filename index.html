@@ -1285,11 +1285,18 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       .catch(function(){ return null; });
   }
   // 駅・公園・病院などの名前は、地図データの検索で探す（4都県の範囲だけ）
+  function placeMatch(q, result){
+    if (!/空港/.test(q)) return true;
+    function airportName(t){return normAddr(t).replace(/東京国際空港/g,"羽田空港").replace(/成田国際空港/g,"成田空港").replace(/^(東京都|神奈川県|千葉県|埼玉県)/,"");}
+    var query = airportName(q).match(/.*?空港/);
+    var airport = result.category === "aeroway" || result.class === "aeroway" || /^(aerodrome|terminal)$/.test(result.type || "");
+    return !!(airport && query && airportName(result.display_name || result.name || "").indexOf(query[0]) >= 0);
+  }
   function osm(q){
     return fetch("https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=jp&accept-language=ja&bounded=1&viewbox=" +
         [BOX4[1], BOX4[2], BOX4[3], BOX4[0]].join(",") + "&q=" + encodeURIComponent(q))
       .then(function(r){ return r.json(); })
-      .then(function(a){ return pickIn((a || []).map(function(x){ return {lng: Number(x.lon), lat: Number(x.lat)}; })); })
+      .then(function(a){ return pickIn((a || []).filter(function(x){return placeMatch(q,x);}).map(function(x){ return {lng: Number(x.lon), lat: Number(x.lat)}; })); })
       .catch(function(){ return null; });
   }
   function geocode(q){
@@ -1299,7 +1306,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var key = (!pref || /^(東京|神奈川|千葉|埼玉)/.test(q) ? "" : pref) + q;
     if (key in geoCache) return Promise.resolve(geoCache[key]);
     // 順に試して、最初に見つかったものを使う
-    var tries = looksAddress(q) ? [[gsi, key], [gsi, q], [osm, key], [osm, q]] : [[osm, key], [osm, q], [gsi, key], [gsi, q]];
+    var tries = looksAddress(q) ? [[gsi, key], [gsi, q], [osm, key], [osm, q]] : [[osm, q], [osm, key], [gsi, q], [gsi, key]];
     var seen = {};
     tries = tries.filter(function(t){ var k = t[0] === gsi ? "g" + t[1] : "o" + t[1]; if (seen[k]) return false; return seen[k] = true; });
     var p = Promise.resolve(null);

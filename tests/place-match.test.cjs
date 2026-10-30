@@ -1,0 +1,10 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync('index.html','utf8');
+const match=source.slice(source.indexOf('  function placeMatch('),source.indexOf('  function osm('));
+const ctx=vm.createContext({normAddr:t=>String(t).replace(/\s/g,'')});vm.runInContext(match,ctx);
+assert.equal(ctx.placeMatch('成田空港',{display_name:'東京都北区',category:'place'}),false);
+assert.equal(ctx.placeMatch('成田空港',{display_name:'成田国際空港, 成田市, 千葉県',category:'aeroway',type:'aerodrome'}),true);
+assert.equal(ctx.placeMatch('羽田空港',{display_name:'東京国際空港, 東京都',class:'aeroway',type:'aerodrome'}),true);
+assert.equal(ctx.placeMatch('成田空港',{display_name:'成田空港行きバス',category:'highway',type:'bus_stop'}),false);
+assert.equal(ctx.placeMatch('目黒駅',{display_name:'目黒駅'}),true);
+console.log('PASS: airport-name lookup rejects unrelated places and bus stops; Narita/Haneda aliases match');
