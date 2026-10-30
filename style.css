@@ -190,9 +190,7 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .emg-note{margin:12px 0 0;font-size:.8rem;color:var(--ink-3)}
 .emg h4{font-size:.95rem;margin:18px 0 6px}
 .emg-free{font-size:.84rem;background:var(--cream);border-radius:14px;padding:10px 14px;margin:0 0 14px}
-.emg-pref{display:flex;flex-wrap:wrap;gap:8px}
-.emg-pref button{border:2px solid #c0392b;background:#fff;color:#c0392b;border-radius:999px;padding:7px 16px;font-weight:700;font-size:.9rem;cursor:pointer}
-.emg-pref button[aria-pressed=true]{background:#c0392b;color:#fff}
+.emg-none{font-size:.84rem;background:var(--cream);border-radius:14px;padding:10px 14px;margin:8px 0 0}
 .emg-item{display:block;background:#fdecea;border-radius:16px;padding:12px 16px;margin-top:8px;text-decoration:none;color:var(--ink)}
 .emg-item b{display:block;font-size:.92rem;text-decoration:underline;text-underline-offset:3px}
 .emg-item small{display:block;font-size:.78rem;color:var(--ink-2);margin-top:2px}
@@ -401,6 +399,12 @@ footer a{color:var(--ink-2)}
 .partner-card .partner-note{color:var(--ink-2);font-size:.78rem}
 .partner-review{align-self:flex-start;font-size:.84rem;font-weight:700;color:var(--o-d);text-decoration:underline;text-underline-offset:3px}
 .partner-review:hover{color:var(--ink)}
+.partner-card .partner-score{display:flex;align-items:center;gap:6px;font-size:.86rem;color:var(--ink-2)}
+.partner-score b{font-size:1rem;color:var(--ink)}
+.partner-score .stars{position:relative;display:inline-block;font-size:1rem;letter-spacing:1px;line-height:1;color:#ddd5cc}
+.partner-score .stars::before{content:"★★★★★"}
+.partner-score .stars::after{content:"★★★★★";position:absolute;left:0;top:0;width:var(--fill);overflow:hidden;white-space:nowrap;color:#f2a516}
+.partner-card a.partner-review,.partner-card span.partner-review{font-size:.76rem;font-weight:600}
 .partner-card:hover,.partner-card:focus-within{border-color:var(--o);box-shadow:0 0 0 3px #fff1e6}
 #partnerStatus{font-size:.9rem;line-height:1.7}
 [hidden]#sendSelected{display:none}

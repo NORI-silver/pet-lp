@@ -55,7 +55,11 @@ var CONFIG = {
 
   // LINE公式アカウント（作ったら入れる。空ならメールだけで動きます）
   LINE_CHANNEL_ACCESS_TOKEN: '',
-  LINE_ADD_URL: '' // 友だち追加URL（https://lin.ee/〇〇）
+  LINE_ADD_URL: '', // 友だち追加URL（https://lin.ee/〇〇）
+
+  // 会社カードの口コミの点数（地図サービスから正式に取り寄せる。規約で書き写し・保存はできない）
+  // キーはここに書かず、スクリプトのプロパティ PLACES_API_KEY に入れる。空なら点数は出さず「口コミを見る」リンクだけ
+  REVIEW_MONTHLY_LIMIT: 900 // 1か月に取り寄せる回数の上限（無料の範囲 1,000回に収める。超えたら月末までリンクだけ）
 };
 
 var TZ = 'Asia/Tokyo';
@@ -1154,7 +1158,7 @@ function testRequest() {
   Logger.log(JSON.stringify(res));
 }
 
-/*SELECTION_FARES*/var SELECTION_FARES = {"petexpress": {"名前": "ペットエクスプレス（世田谷）", "出典": "https://pettaxi.tokyo/ 2026-10-27", "base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null, "note": "東京・世田谷の会社は、乗車料金が5kmまで2,200円、その先は1kmごとに220円（101km〜は165円、201km〜は110円）。お迎え料金と帰りの回送料金がそれぞれ3kmまで330円かかり、お店から遠いと増えます。夕方18時〜朝8時は乗車料金が2割増し、往復は乗車料金が2倍です。病院での待ち時間は10分まで無料、30分まで660円、その後10分ごとに220円です。", "wait": {"30": 660, "60": 1320, "120": 2640}, "pay": "東京・世田谷の会社は、現金で降りるときにお支払いです。", "shop": [35.6339, 139.6697], "pick_free_km": 3, "pick_over": 220, "_迎車メモ": "迎車・回送の3km超の単価は非公開のため、1kmごとに220円として高めに計算（お店：世田谷区上馬1丁目）", "label": "東京・世田谷の会社", "night_hours": [18, 8], "partner_id": "P002"}, "kuriki": {"名前": "くりき（松戸）", "出典": "https://pet-kuriki.com/taxi 2026-10-27", "base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300], "note": "千葉・松戸の会社は、乗車料金が5km未満1,800円、5km以上は1kmごとに200円（101km〜は150円、201km〜は100円）。往復は10kmまで3,300円（病院での待ち時間30分込み）で、その後の待ち時間は30分ごとに500円です。長い距離や長い待ち時間は、その会社のお見積りになります。", "wait": {"30": 0, "60": 500, "120": 1500}, "pay": "千葉・松戸の会社は、お支払い方法を決まったときのメールでご案内します。", "label": "千葉・松戸の会社", "night_hours": null, "partner_id": "P003"}};/*/SELECTION_FARES*/
+/*SELECTION_FARES*/var SELECTION_FARES = {"petexpress": {"名前": "ペットエクスプレス（世田谷）", "出典": "https://pettaxi.tokyo/ 2026-10-27", "base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null, "note": "東京・世田谷の会社は、乗車料金が5kmまで2,200円、その先は1kmごとに220円（101km〜は165円、201km〜は110円）。お迎え料金と帰りの回送料金がそれぞれ3kmまで330円かかり、お店から遠いと増えます。夕方18時〜朝8時は乗車料金が2割増し、往復は乗車料金が2倍です。病院での待ち時間は10分まで無料、30分まで660円、その後10分ごとに220円です。", "wait": {"30": 660, "60": 1320, "120": 2640}, "pay": "東京・世田谷の会社は、現金で降りるときにお支払いです。", "shop": [35.6339, 139.6697], "pick_free_km": 3, "pick_over": 220, "_迎車メモ": "迎車・回送の3km超の単価は非公開のため、1kmごとに220円として高めに計算（お店：世田谷区上馬1丁目）", "label": "東京・世田谷の会社", "night_hours": [18, 8], "partner_id": "P002", "review_query": "ペットエクスプレス 世田谷区上馬"}, "kuriki": {"名前": "くりき（松戸）", "出典": "https://pet-kuriki.com/taxi 2026-10-27", "base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300], "note": "千葉・松戸の会社は、乗車料金が5km未満1,800円、5km以上は1kmごとに200円（101km〜は150円、201km〜は100円）。往復は10kmまで3,300円（病院での待ち時間30分込み）で、その後の待ち時間は30分ごとに500円です。長い距離や長い待ち時間は、その会社のお見積りになります。", "wait": {"30": 0, "60": 500, "120": 1500}, "pay": "千葉・松戸の会社は、お支払い方法を決まったときのメールでご案内します。", "label": "千葉・松戸の会社", "night_hours": null, "partner_id": "P003", "review_query": "ペットタクシー くりき 松戸"}};/*/SELECTION_FARES*/
 /* 事業者の検索は予約の保存・メール送信をしない。料金は上の生成データを使う。 */
 var QUOTE_FIELDS = ['pref', 'pickup', 'via', 'dropoff', 'datetime', 'trip', 'riders', 'luggage', 'species', 'weight', 'cage', 'care', 'pet_count', 'pets_json', 'return_datetime', 'return_pickup', 'return_dropoff', 'route_details'];
 
@@ -1253,9 +1257,44 @@ function selectionQuotes_(p) {
     if (!price) return null;
     return { id:pt.id, label:pt.name, car:pt.car || '車の詳細は引き受け時に確認',
       payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は引き受け時にご案内',
-      price:price, expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
+      price:price, review:selectionReview_(pt), expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
   }).filter(Boolean);
   return {ok:true,selection_version:1,cards:cards};
+}
+
+// 口コミの点数と件数。場所のIDだけは規約上保存してよいので覚えておき、点数は毎回取り寄せる
+function selectionReview_(pt) {
+  var props = PropertiesService.getScriptProperties(), apiKey = props.getProperty('PLACES_API_KEY');
+  var key = Object.keys(SELECTION_FARES).filter(function(k) { return SELECTION_FARES[k].partner_id === pt.id; })[0];
+  var query = key && SELECTION_FARES[key].review_query;
+  if (!apiKey || !query) return null;
+  try {
+    var placeId = props.getProperty('PLACE_ID_' + pt.id + '_' + query);
+    if (!placeId) {
+      // IDだけの検索は無料
+      var found = JSON.parse(UrlFetchApp.fetch('https://places.googleapis.com/v1/places:searchText', {
+        method:'post', contentType:'application/json', muteHttpExceptions:true,
+        headers:{'X-Goog-Api-Key':apiKey,'X-Goog-FieldMask':'places.id'},
+        payload:JSON.stringify({textQuery:query,languageCode:'ja',regionCode:'JP'})
+      }).getContentText());
+      placeId = found.places && found.places[0] && found.places[0].id;
+      if (!placeId) { log_('口コミ：場所が見つからない ' + pt.id + ' ' + query); return null; }
+      props.setProperty('PLACE_ID_' + pt.id + '_' + query, placeId);
+    }
+    var month = 'REVIEW_COUNT_' + Utilities.formatDate(new Date(), TZ, 'yyyyMM'), used = Number(props.getProperty(month)) || 0;
+    if (used >= CONFIG.REVIEW_MONTHLY_LIMIT) return null;
+    props.setProperty(month, String(used + 1));
+    var res = UrlFetchApp.fetch('https://places.googleapis.com/v1/places/' + encodeURIComponent(placeId) + '?languageCode=ja', {
+      muteHttpExceptions:true, headers:{'X-Goog-Api-Key':apiKey,'X-Goog-FieldMask':'rating,userRatingCount,googleMapsUri'}
+    });
+    if (res.getResponseCode() !== 200) { log_('口コミ：取り寄せ失敗 ' + pt.id + ' ' + res.getResponseCode()); return null; }
+    var v = JSON.parse(res.getContentText());
+    if (!(v.rating > 0)) return null;
+    return {rating:v.rating, count:Number(v.userRatingCount) || 0, url:v.googleMapsUri || ''};
+  } catch (e) {
+    log_('口コミ：エラー ' + pt.id + ' ' + e);
+    return null;
+  }
 }
 
 function validateSelection_(p) {
