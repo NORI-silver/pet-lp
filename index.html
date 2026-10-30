@@ -478,7 +478,7 @@ footer a{color:var(--ink-2)}
 .review-who a,.review-who span{font-weight:700;color:var(--ink)}
 .review-who small{color:var(--ink-3)}
 .review-item p{font-size:.8rem!important;margin:4px 0!important;white-space:pre-wrap}
-.review-link{font-size:.72rem;color:var(--ink-3)}
+.review-link{display:block;text-align:right;font-size:.66rem;color:var(--ink-3);text-decoration:none;opacity:.8}
 .review-panel .partner-review-src{display:block;text-align:right;margin-top:6px}
 .price-details dl{display:grid;grid-template-columns:1fr auto;gap:5px 12px;margin:10px 0 0}
 .price-details dt,.price-details dd{margin:0}
@@ -1146,7 +1146,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var meta = document.createElement("small"); meta.textContent = "★" + v.rating + (v.when ? "・" + v.when : "");
         who.append(name, meta); item.appendChild(who);
         if (v.text) { var t = document.createElement("p"); t.textContent = v.text; item.appendChild(t); }
-        if (v.url) { var a = document.createElement("a"); a.className = "review-link"; a.href = v.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = "元の口コミを見る"; item.appendChild(a); }
+        if (v.url) { var a = document.createElement("a"); a.className = "review-link"; a.href = v.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = "元の口コミ ↗"; item.appendChild(a); } // 規約で口コミごとに必要なリンク。目立たないよう小さく、別のタブで開く
         panel.appendChild(item);
       });
       var src = document.createElement("p"); src.className = "partner-review-src"; src.textContent = "Google Maps"; panel.appendChild(src);
