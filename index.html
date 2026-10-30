@@ -225,7 +225,7 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .emg-item small{display:block;font-size:.78rem;color:var(--ink-2);margin-top:2px}
 .hist-clear{background:none;border:0;padding:6px 0 0;font:inherit;font-size:.75rem;color:var(--ink-3);text-decoration:underline;cursor:pointer}
 .hist-clear[hidden]{display:none}
-.geo-btn{margin-top:8px;background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;font:inherit;font-size:.84rem;font-weight:700;color:var(--ink);cursor:pointer}
+.geo-btn{margin:0 0 8px;background:#fff;border:2px solid var(--o);border-radius:999px;padding:9px 16px;font:inherit;font-size:.9rem;font-weight:700;color:var(--o-d);cursor:pointer}
 .geo-btn[hidden]{display:none}.geo-btn:disabled{opacity:.6}
 .geo-msg{margin:6px 0 0;font-size:.8rem;color:var(--ink-3)}.geo-msg:empty{display:none}.geo-msg.ng{color:#c0392b}
 .partner-band{background:var(--cream);padding:28px 0}
@@ -589,8 +589,9 @@ footer a{color:var(--ink-2)}
             <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>千葉県</option><option>埼玉県</option></select>
             <p class="pref-fix" id="prefFix" role="status" hidden></p></div>
           <div class="f"><label for="pickup">お迎えの場所</label>
+            <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button>
             <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
-            <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button><p class="geo-msg" id="geoMsg" aria-live="polite"></p></div>
+            <p class="geo-msg" id="geoMsg" aria-live="polite"></p></div>
           <div class="f"><span class="lbl">経由地<span class="any">任意</span></span>
             <div class="seg"><label><input type="radio" name="via_on" value="なし" checked><span>なし</span></label><label><input type="radio" name="via_on" value="あり"><span>あり（途中で寄る）</span></label></div>
             <div class="via-box" id="viaBox" hidden><input type="text" id="via" autocomplete="off" name="via" placeholder="例：〇〇トリミングサロン（渋谷区）" aria-label="経由地"></div></div>
@@ -1909,7 +1910,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     function update(){
       var q = inp.value.trim(), my = ++seq, hist = histFor(q);
       clearTimeout(timer);
-      if (q.length < 2) { draw(hist); return; }
+      if (q.length < 2) { draw((id === "pickup" && !$("geoBtn").hidden ? [{label: "📍 いまいる場所を入れる", sub: "この端末の位置情報を使います", geo: true}] : []).concat(hist)); return; }
       draw(hist, true);
       timer = setTimeout(function(){
         suggestPlaces(q).then(function(list){
@@ -1921,6 +1922,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     function pick(i){
       var x = items[i];
       if (!x) return;
+      if (x.geo) { close(); $("geoBtn").click(); return; }
       var text = x.hist ? x.label : placeText(x); seq++;
       inp.value = text; close();
       var done = function(c){
@@ -1942,7 +1944,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     inp.addEventListener("input", update);
     inp.addEventListener("blur", function(){ seq++; setTimeout(function(){ close(); check(); }, 150); });
     inp.addEventListener("input", function(){ inp.classList.remove("picked"); note.hidden = true; });
-    inp.addEventListener("change", function(){ if (document.activeElement !== inp) check(); });
+    inp.addEventListener("change", check);
     // スマホでもタップ1回で決まるよう mousedown で拾う
     ul.addEventListener("mousedown", function(e){
       var li = e.target.closest("li[data-i]");
