@@ -210,7 +210,7 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .via-box[hidden],.pet-hint[hidden],#retPlaces[hidden],#retRoute[hidden]{display:none}
 .via-box{margin-top:10px}
 .mode-tabs{display:flex;gap:6px;max-width:560px;margin:0 auto 14px;background:#fff;border-radius:999px;padding:5px;box-shadow:0 2px 8px rgba(28,26,24,.06)}
-.mode-tabs[hidden],.emg[hidden]{display:none}
+.mode-tabs[hidden],.emg[hidden],main>section[hidden],.form-sec .sh[hidden]{display:none}
 .mode-tabs button{flex:1;border:0;background:none;font:inherit;font-weight:800;padding:11px;border-radius:999px;cursor:pointer;color:var(--ink-2)}
 .mode-tabs button[aria-selected=true]{background:var(--o);color:#fff}
 .mode-tabs button[data-mode=emg][aria-selected=true]{background:#c0392b}
@@ -2037,6 +2037,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       tabs.querySelectorAll("button").forEach(function(b){ b.setAttribute("aria-selected", String(b.dataset.mode === m)); });
       box.hidden = m !== "emg";
       document.querySelector(".form-sec .form-card").hidden = m === "emg";
+      // 緊急タブでは、予約の見出しと、その下の予約の案内（頼み方・料金・よくある質問など）を隠して、緊急の情報だけにする
+      var sh = document.querySelector(".form-sec .sh"), after = false;
+      if (sh) sh.hidden = m === "emg";
+      document.querySelectorAll("main > section").forEach(function(sec){
+        if (after) sec.hidden = m === "emg";
+        if (sec.id === "form") after = true;
+      });
     }
     tabs.addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) setMode(b.dataset.mode); });
     // 都道府県を選びなおしたら、場所の欄は空にして都道府県の一覧に戻す
