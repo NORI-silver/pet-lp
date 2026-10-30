@@ -8,6 +8,7 @@ const call = (fn,...args) => JSON.parse(JSON.stringify(ctx[fn](...args)));
 ctx.sign_ = s => crypto.createHmac('sha256','test-secret').update(s).digest('hex');
 ctx.Utilities = { formatDate(d,tz,format) { return new Date(d.getTime()+9*3600000).toISOString().slice(0,16); } };
 ctx.CONFIG.DEFAULT_PARTNER_HOURS='0-24';
+ctx.PropertiesService={getScriptProperties:()=>({getProperty:()=>null,setProperty(){}})}; // 口コミのキーなし＝点数は出さない
 const partner = (id,extra={}) => ({id,name:'確認用 '+id,areas:['東京'],active:true,email:'test@example.invalid',careOk:true,big:true,luggage:true,riders:3,pets:5,cageMust:'不要',cageLend:true,lead:3,hours:'0-24',car:'ワンボックス',...extra});
 let partners=[partner('P002'),partner('P003'),partner('P099'),partner('inactive',{active:false}),partner('unreachable',{email:''}),partner('wrong-area',{areas:['大阪']}),partner('small',{big:false}),partner('no-rental',{cageLend:false}),partner('no-care',{careOk:false}),partner('too-late',{lead:999})];
 ctx.partners_ = () => partners;
@@ -68,6 +69,7 @@ const receiveCtx=vm.createContext({Date,JSON,Math,Number,String,Object,Array,isF
 vm.runInContext(fs.readFileSync('booking/Code.gs','utf8'),receiveCtx);
 receiveCtx.sign_=ctx.sign_;
 receiveCtx.Utilities=ctx.Utilities;
+receiveCtx.PropertiesService=ctx.PropertiesService;
 receiveCtx.partners_=()=>partners;
 let saved=[],receipts=0,waves=0,cache=new Map();
 receiveCtx.LockService=ctx.LockService;

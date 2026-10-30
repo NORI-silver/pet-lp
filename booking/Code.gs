@@ -142,6 +142,9 @@ function doPost(e) {
   if ((e.parameter || {}).kind === 'quotes') {
     try { return json_(selectionQuotes_(e.parameter)); } catch (err) { return json_({ok:false,error:'quotes_unavailable'}); }
   }
+  if ((e.parameter || {}).kind === 'reviews') {
+    try { return json_(selectionReviews_(String(e.parameter.partner_id || ''))); } catch (err) { return json_({ok:false,error:'reviews_unavailable'}); }
+  }
   try {
     if ((e.parameter || {}).kind === 'contact') return json_(contact_(e.parameter));
     return json_(receive_(e.parameter || {}));
@@ -1264,36 +1267,59 @@ function selectionQuotes_(p) {
 
 // 口コミの点数と件数。場所のIDだけは規約上保存してよいので覚えておき、点数は毎回取り寄せる
 function selectionReview_(pt) {
-  var props = PropertiesService.getScriptProperties(), apiKey = props.getProperty('PLACES_API_KEY');
-  var key = Object.keys(SELECTION_FARES).filter(function(k) { return SELECTION_FARES[k].partner_id === pt.id; })[0];
-  var query = key && SELECTION_FARES[key].review_query;
-  if (!apiKey || !query) return null;
   try {
-    var placeId = props.getProperty('PLACE_ID_' + pt.id + '_' + query);
-    if (!placeId) {
-      // IDだけの検索は無料
-      var found = JSON.parse(UrlFetchApp.fetch('https://places.googleapis.com/v1/places:searchText', {
-        method:'post', contentType:'application/json', muteHttpExceptions:true,
-        headers:{'X-Goog-Api-Key':apiKey,'X-Goog-FieldMask':'places.id'},
-        payload:JSON.stringify({textQuery:query,languageCode:'ja',regionCode:'JP'})
-      }).getContentText());
-      placeId = found.places && found.places[0] && found.places[0].id;
-      if (!placeId) { log_('口コミ：場所が見つからない ' + pt.id + ' ' + query); return null; }
-      props.setProperty('PLACE_ID_' + pt.id + '_' + query, placeId);
-    }
-    var month = 'REVIEW_COUNT_' + Utilities.formatDate(new Date(), TZ, 'yyyyMM'), used = Number(props.getProperty(month)) || 0;
-    if (used >= CONFIG.REVIEW_MONTHLY_LIMIT) return null;
-    props.setProperty(month, String(used + 1));
-    var res = UrlFetchApp.fetch('https://places.googleapis.com/v1/places/' + encodeURIComponent(placeId) + '?languageCode=ja', {
-      muteHttpExceptions:true, headers:{'X-Goog-Api-Key':apiKey,'X-Goog-FieldMask':'rating,userRatingCount,googleMapsUri'}
-    });
-    if (res.getResponseCode() !== 200) { log_('口コミ：取り寄せ失敗 ' + pt.id + ' ' + res.getResponseCode()); return null; }
-    var v = JSON.parse(res.getContentText());
-    if (!(v.rating > 0)) return null;
-    return {rating:v.rating, count:Number(v.userRatingCount) || 0, url:v.googleMapsUri || ''};
+    var v = reviewPlace_(pt.id, 'rating,userRatingCount');
+    if (!v || !(v.rating > 0)) return null;
+    return {rating:v.rating, count:Number(v.userRatingCount) || 0};
   } catch (e) {
     log_('口コミ：エラー ' + pt.id + ' ' + e);
     return null;
+  }
+}
+
+// 口コミの場所の情報を取り寄せる（fields は取り寄せる項目）。月の回数の上限は点数と口コミ本文で共通
+function reviewPlace_(partnerId, fields) {
+  var props = PropertiesService.getScriptProperties(), apiKey = props.getProperty('PLACES_API_KEY');
+  var key = Object.keys(SELECTION_FARES).filter(function(k) { return SELECTION_FARES[k].partner_id === partnerId; })[0];
+  var query = key && SELECTION_FARES[key].review_query;
+  if (!apiKey || !query) return null;
+  var placeId = props.getProperty('PLACE_ID_' + partnerId + '_' + query);
+  if (!placeId) {
+    // IDだけの検索は無料
+    var found = JSON.parse(UrlFetchApp.fetch('https://places.googleapis.com/v1/places:searchText', {
+      method:'post', contentType:'application/json', muteHttpExceptions:true,
+      headers:{'X-Goog-Api-Key':apiKey,'X-Goog-FieldMask':'places.id'},
+      payload:JSON.stringify({textQuery:query,languageCode:'ja',regionCode:'JP'})
+    }).getContentText());
+    placeId = found.places && found.places[0] && found.places[0].id;
+    if (!placeId) { log_('口コミ：場所が見つからない ' + partnerId + ' ' + query); return null; }
+    props.setProperty('PLACE_ID_' + partnerId + '_' + query, placeId);
+  }
+  var month = 'REVIEW_COUNT_' + Utilities.formatDate(new Date(), TZ, 'yyyyMM'), used = Number(props.getProperty(month)) || 0;
+  if (used >= CONFIG.REVIEW_MONTHLY_LIMIT) return null;
+  props.setProperty(month, String(used + 1));
+  var res = UrlFetchApp.fetch('https://places.googleapis.com/v1/places/' + encodeURIComponent(placeId) + '?languageCode=ja', {
+    muteHttpExceptions:true, headers:{'X-Goog-Api-Key':apiKey,'X-Goog-FieldMask':fields}
+  });
+  if (res.getResponseCode() !== 200) { log_('口コミ：取り寄せ失敗 ' + partnerId + ' ' + res.getResponseCode()); return null; }
+  return JSON.parse(res.getContentText());
+}
+
+// 候補カードの「口コミを見る」：口コミ本文（地図サービスが関連度の高い順に返す最大5件）をサイトの中で見せる。
+// 規約により、書いた人（名前・アイコン・プロフィールへのリンク）と、口コミそれぞれの元のページへのリンクを一緒に返す。保存はしない
+function selectionReviews_(partnerId) {
+  if (!SELECTION_FARES || !Object.keys(SELECTION_FARES).some(function(k) { return SELECTION_FARES[k].partner_id === partnerId; })) return {ok:false,error:'unknown'};
+  try {
+    var v = reviewPlace_(partnerId, 'rating,userRatingCount,reviews');
+    if (!v) return {ok:false,error:'reviews_unavailable'};
+    return {ok:true, rating:v.rating || 0, count:Number(v.userRatingCount) || 0, reviews:(v.reviews || []).slice(0, 5).map(function(x) {
+      var a = x.authorAttribution || {};
+      return {rating:x.rating || 0, when:x.relativePublishTimeDescription || '', text:((x.text || x.originalText || {}).text || '').slice(0, 2000),
+        author:a.displayName || '', authorUrl:a.uri || '', photo:a.photoUri || '', url:x.googleMapsUri || ''};
+    })};
+  } catch (e) {
+    log_('口コミ本文：エラー ' + partnerId + ' ' + e);
+    return {ok:false,error:'reviews_unavailable'};
   }
 }
 
