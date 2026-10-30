@@ -59,7 +59,8 @@ var CONFIG = {
 
   // 会社カードの口コミの点数（地図サービスから正式に取り寄せる。規約で書き写し・保存はできない）
   // キーはここに書かず、スクリプトのプロパティ PLACES_API_KEY に入れる。空なら点数は出さず「口コミを見る」リンクだけ
-  REVIEW_MONTHLY_LIMIT: 900 // 1か月に取り寄せる回数の上限（無料の範囲 1,000回に収める。超えたら月末までリンクだけ）
+  REVIEW_MONTHLY_LIMIT: 900, // 1か月に取り寄せる回数の上限（無料の範囲 1,000回に収める。超えたら月末までリンクだけ）
+  REVIEW_EMG_MONTHLY_LIMIT: 300 // そのうち緊急タブの搬送の会社に使ってよい回数（予約の候補カードのぶんを残すため）
 };
 
 var TZ = 'Asia/Tokyo';
@@ -141,6 +142,9 @@ function doPost(e) {
   }
   if ((e.parameter || {}).kind === 'quotes') {
     try { return json_(selectionQuotes_(e.parameter)); } catch (err) { return json_({ok:false,error:'quotes_unavailable'}); }
+  }
+  if ((e.parameter || {}).kind === 'emg_scores') {
+    try { return json_(emgScores_(String(e.parameter.ids || ''))); } catch (err) { return json_({ok:false,error:'reviews_unavailable'}); }
   }
   if ((e.parameter || {}).kind === 'reviews') {
     try { return json_(selectionReviews_(String(e.parameter.partner_id || ''))); } catch (err) { return json_({ok:false,error:'reviews_unavailable'}); }
@@ -1277,26 +1281,47 @@ function selectionReview_(pt) {
   }
 }
 
+// 緊急タブの搬送の会社（提携先ではない）の口コミ用：id → 場所を探すことばと、見つかった場所の名前に含まれるはずのことば
+// tools/emergency.json から gen_areas.py が書き込む（ここは手で直さない）
+/*EMG_REVIEWS*/var EMG_REVIEWS = {"E01": {"query": "動物救急車 大田区", "name": "動物救急車"}, "E02": {"query": "ペットドクターカー", "name": "ペットドクターカー"}, "E04": {"query": "ペットタクシー Animals 横浜市港南区", "name": "Animals"}, "E05": {"query": "コインペットタクシー シエロ", "name": "シエロ"}, "E06": {"query": "ペットタクシー パールのしっぽ 千葉市", "name": "パールのしっぽ"}, "E07": {"query": "COCOタク さいたま南店", "name": "COCOタク"}, "E08": {"query": "COCOタク 埼玉川越店", "name": "COCOタク"}, "E09": {"query": "COCOタク 埼玉春日部", "name": "COCOタク"}, "E10": {"query": "ペットレスキュー 夜間救急搬送", "name": "ペットレスキュー"}};/*/EMG_REVIEWS*/
+
 // 口コミの場所の情報を取り寄せる（fields は取り寄せる項目）。月の回数の上限は点数と口コミ本文で共通
 function reviewPlace_(partnerId, fields) {
   var props = PropertiesService.getScriptProperties(), apiKey = props.getProperty('PLACES_API_KEY');
   var key = Object.keys(SELECTION_FARES).filter(function(k) { return SELECTION_FARES[k].partner_id === partnerId; })[0];
-  var query = key && SELECTION_FARES[key].review_query;
+  var emg = !key && EMG_REVIEWS[partnerId];
+  var query = key ? SELECTION_FARES[key].review_query : emg && emg.query;
   if (!apiKey || !query) return null;
   var placeId = props.getProperty('PLACE_ID_' + partnerId + '_' + query);
+  if (placeId === '-') return null; // 前に探して見つからなかった
   if (!placeId) {
-    // IDだけの検索は無料
+    // IDだけの検索は無料。緊急タブの会社は、違う場所を拾わないよう名前も確かめる
     var found = JSON.parse(UrlFetchApp.fetch('https://places.googleapis.com/v1/places:searchText', {
       method:'post', contentType:'application/json', muteHttpExceptions:true,
-      headers:{'X-Goog-Api-Key':apiKey,'X-Goog-FieldMask':'places.id'},
+      headers:{'X-Goog-Api-Key':apiKey,'X-Goog-FieldMask':emg ? 'places.id,places.displayName' : 'places.id'},
       payload:JSON.stringify({textQuery:query,languageCode:'ja',regionCode:'JP'})
     }).getContentText());
-    placeId = found.places && found.places[0] && found.places[0].id;
-    if (!placeId) { log_('口コミ：場所が見つからない ' + partnerId + ' ' + query); return null; }
+    var hit = (found.places || []).filter(function(x) {
+      if (!emg) return true;
+      var n = String((x.displayName || {}).text || '').replace(/\s/g, '').toLowerCase();
+      return n.indexOf(String(emg.name).replace(/\s/g, '').toLowerCase()) >= 0;
+    })[0];
+    placeId = hit && hit.id;
+    if (!placeId) {
+      log_('口コミ：場所が見つからない ' + partnerId + ' ' + query);
+      if (emg) props.setProperty('PLACE_ID_' + partnerId + '_' + query, '-');
+      return null;
+    }
     props.setProperty('PLACE_ID_' + partnerId + '_' + query, placeId);
   }
-  var month = 'REVIEW_COUNT_' + Utilities.formatDate(new Date(), TZ, 'yyyyMM'), used = Number(props.getProperty(month)) || 0;
+  var ym = Utilities.formatDate(new Date(), TZ, 'yyyyMM');
+  var month = 'REVIEW_COUNT_' + ym, used = Number(props.getProperty(month)) || 0;
   if (used >= CONFIG.REVIEW_MONTHLY_LIMIT) return null;
+  if (emg) {
+    var emgMonth = 'REVIEW_EMG_COUNT_' + ym, emgUsed = Number(props.getProperty(emgMonth)) || 0;
+    if (emgUsed >= CONFIG.REVIEW_EMG_MONTHLY_LIMIT) return null;
+    props.setProperty(emgMonth, String(emgUsed + 1));
+  }
   props.setProperty(month, String(used + 1));
   var res = UrlFetchApp.fetch('https://places.googleapis.com/v1/places/' + encodeURIComponent(placeId) + '?languageCode=ja', {
     muteHttpExceptions:true, headers:{'X-Goog-Api-Key':apiKey,'X-Goog-FieldMask':fields}
@@ -1308,7 +1333,7 @@ function reviewPlace_(partnerId, fields) {
 // 候補カードの「口コミを見る」：口コミ本文（地図サービスが関連度の高い順に返す最大5件）をサイトの中で見せる。
 // 規約により、書いた人（名前・アイコン・プロフィールへのリンク）と、口コミそれぞれの元のページへのリンクを一緒に返す。保存はしない
 function selectionReviews_(partnerId) {
-  if (!SELECTION_FARES || !Object.keys(SELECTION_FARES).some(function(k) { return SELECTION_FARES[k].partner_id === partnerId; })) return {ok:false,error:'unknown'};
+  if (!EMG_REVIEWS[partnerId] && (!SELECTION_FARES || !Object.keys(SELECTION_FARES).some(function(k) { return SELECTION_FARES[k].partner_id === partnerId; }))) return {ok:false,error:'unknown'};
   try {
     var v = reviewPlace_(partnerId, 'rating,userRatingCount,reviews');
     if (!v) return {ok:false,error:'reviews_unavailable'};
@@ -1321,6 +1346,16 @@ function selectionReviews_(partnerId) {
     log_('口コミ本文：エラー ' + partnerId + ' ' + e);
     return {ok:false,error:'reviews_unavailable'};
   }
+}
+
+// 緊急タブの搬送の会社の星と件数（ids はカンマ区切り。表示しているその県の会社だけ）。点数は保存せず毎回取り寄せる
+function emgScores_(ids) {
+  var out = {};
+  ids.split(',').filter(function(id, i, a) { return EMG_REVIEWS[id] && a.indexOf(id) === i; }).slice(0, 12).forEach(function(id) {
+    var v = selectionReview_({id:id});
+    if (v) out[id] = v;
+  });
+  return {ok:true, scores:out};
 }
 
 function validateSelection_(p) {

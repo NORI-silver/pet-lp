@@ -54,6 +54,9 @@ FARE_JS = "var FARES = " + json.dumps({k: {x: c.get(x) for x in ("label","base_k
 booking_path = os.path.join(ROOT, "booking", "Code.gs")
 booking_src = open(booking_path, encoding="utf-8").read()
 booking_src = re.sub(r"/\*SELECTION_FARES\*/.*?/\*/SELECTION_FARES\*/", lambda m: "/*SELECTION_FARES*/var SELECTION_FARES = " + json.dumps({k: {x: v for x, v in c.items() if x != "review_url"} for k, c in CO.items()}, ensure_ascii=False) + ";/*/SELECTION_FARES*/", booking_src, count=1, flags=re.S)
+# 緊急タブの搬送の会社の口コミ：場所を探すことばを予約のしくみに渡す（tools/emergency.json の taxis）
+_EMG_RV = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "emergency.json"), encoding="utf-8"))["taxis"]
+booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG_REVIEWS*/var EMG_REVIEWS = " + json.dumps({t["id"]: {"query": t["review_query"], "name": t["review_name"]} for t in _EMG_RV if t.get("review_query")}, ensure_ascii=False) + ";/*/EMG_REVIEWS*/", booking_src, count=1, flags=re.S)
 open(booking_path, "w", encoding="utf-8").write(booking_src)
 
 src = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
