@@ -60,7 +60,8 @@ var CONFIG = {
   // 会社カードの口コミの点数（地図サービスから正式に取り寄せる。規約で書き写し・保存はできない）
   // キーはここに書かず、スクリプトのプロパティ PLACES_API_KEY に入れる。空なら点数は出さず「口コミを見る」リンクだけ
   REVIEW_MONTHLY_LIMIT: 900, // 1か月に取り寄せる回数の上限（無料の範囲 1,000回に収める。超えたら月末までリンクだけ）
-  REVIEW_EMG_MONTHLY_LIMIT: 300 // そのうち緊急タブの搬送の会社に使ってよい回数（予約の候補カードのぶんを残すため）
+  REVIEW_EMG_MONTHLY_LIMIT: 300, // そのうち緊急タブの搬送の会社に使ってよい回数（予約の候補カードのぶんを残すため）
+  REVIEW_DASH_MONTHLY_LIMIT: 200 // そのうち社内用の事業者一覧（a=dash）で使ってよい回数
 };
 
 var TZ = 'Asia/Tokyo';
@@ -502,6 +503,7 @@ function doGet(e) {
     if (q.a === 'cancel') return cancelPage_(q);
     if (q.a === 'admin') return adminPage_(q);
     if (q.a === 'prefill') return prefill_(q);
+    if (q.a === 'dash') return dashPage_(q);
   } catch (err) {
     log_('ページエラー: ' + err);
     return page_('エラー', '<p>うまく表示できませんでした。時間をおいてもう一度お試しください。</p>');
@@ -1151,6 +1153,181 @@ function page_(title, inner) {
   return HtmlService.createHtmlOutput(html).setTitle(title + '｜' + CONFIG.SERVICE_NAME)
     .addMetaTag('viewport', 'width=device-width, initial-scale=1');
 }
+
+/* ───────── 社内用：全国の事業者一覧（a=dash） ───────── */
+// 各社の公式サイトで調べた一覧を表で見せる。リンク（k=sign_('dash')）を知っている人だけが開ける。
+// 口コミの星と件数は規約で保存できないので、押したときだけ地図サービスから取り寄せる（場所のIDだけ覚える）
+
+function dashKey_() { return sign_('dash'); }
+function dashLink() { Logger.log(CONFIG.WEB_APP_URL + '?a=dash&k=' + dashKey_()); } // エディタから実行するとリンクが出る
+
+// 一覧のデータは別のファイル DashData.gs の DASH_DATA（公開リポジトリには置かない。Noriさんの Mac の ~/pet-taxi-gas にだけある）
+function dashRows_() { return typeof DASH_DATA === 'undefined' ? [] : DASH_DATA; }
+
+function dashPage_(q) {
+  if (q.k !== dashKey_()) {
+    if (q.send === '1') {
+      var props = PropertiesService.getScriptProperties(), last = Number(props.getProperty('DASH_LINK_SENT')) || 0;
+      if (Date.now() - last > 10 * 60000) {
+        props.setProperty('DASH_LINK_SENT', String(Date.now()));
+        var link = CONFIG.WEB_APP_URL + '?a=dash&k=' + dashKey_();
+        [adminEmail_(), Session.getEffectiveUser().getEmail()].filter(function(m, i, a) { return m && a.indexOf(m) === i; }).forEach(function(m) {
+          MailApp.sendEmail({ to: m, name: CONFIG.SERVICE_NAME, subject: '【社内用】全国の事業者一覧のリンク',
+            body: '社内用の事業者一覧のリンクです。ほかの人には送らないでください。\n\n' + link + '\n' });
+        });
+      }
+      return page_('リンクを送りました', '<p>運営者のメールに一覧のリンクを送りました。</p>');
+    }
+    return page_('リンクが正しくありません', '<p>運営者に届いたリンクから開いてください。</p>');
+  }
+  var data = JSON.stringify(dashRows_()).replace(/</g, '\\u003c');
+  var html = '<!doctype html><html><head><meta charset="utf-8"><base target="_blank"><style>' + DASH_CSS + '</style></head><body>' +
+    DASH_BODY + '<script>var DASH=' + data + ',DASH_KEY=' + JSON.stringify(q.k) + ';' + DASH_JS + '</script></body></html>';
+  return HtmlService.createHtmlOutput(html).setTitle('全国ペットタクシー事業者一覧（社内用）')
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1');
+}
+
+// 一覧の「星を見る」から呼ばれる（google.script.run）。ids は最大20社
+function dashScores(k, ids) {
+  if (k !== dashKey_()) return { ok: false, error: 'key' };
+  var rows = dashRows_(), out = {};
+  [].concat(ids || []).slice(0, 20).forEach(function(id) {
+    var r = rows.filter(function(x) { return x.id === id; })[0];
+    if (!r) return;
+    try { out[id] = dashPlace_(r); } catch (e) { log_('一覧の口コミ：エラー ' + id + ' ' + e); out[id] = { error: 'failed' }; }
+  });
+  return { ok: true, scores: out };
+}
+
+function dashPlace_(r) {
+  var props = PropertiesService.getScriptProperties(), apiKey = props.getProperty('PLACES_API_KEY');
+  var query = r.review_q || r.name;
+  if (!apiKey || !query) return { error: 'unavailable' };
+  var idKey = 'PLACE_ID_D_' + r.id + '_' + query, placeId = props.getProperty(idKey);
+  if (placeId === '-') return { error: 'notfound' };
+  if (!placeId) {
+    var found = JSON.parse(UrlFetchApp.fetch('https://places.googleapis.com/v1/places:searchText', {
+      method:'post', contentType:'application/json', muteHttpExceptions:true,
+      headers:{'X-Goog-Api-Key':apiKey,'X-Goog-FieldMask':'places.id,places.displayName'},
+      payload:JSON.stringify({textQuery:query,languageCode:'ja',regionCode:'JP'})
+    }).getContentText());
+    var norm = function(t) { return String(t).normalize('NFKC').replace(/\s/g, '').toLowerCase(); };
+    var words = String(r.review_name || '').split(/[\s、,]+/).filter(String);
+    var hit = (found.places || []).filter(function(x) {
+      var n = norm((x.displayName || {}).text || '');
+      return words.length > 0 && words.every(function(w) { return n.indexOf(norm(w)) >= 0; });
+    })[0];
+    placeId = hit ? hit.id : '-';
+    props.setProperty(idKey, placeId);
+    if (placeId === '-') return { error: 'notfound' };
+  }
+  var ym = Utilities.formatDate(new Date(), TZ, 'yyyyMM');
+  var month = 'REVIEW_COUNT_' + ym, used = Number(props.getProperty(month)) || 0;
+  var dashMonth = 'REVIEW_DASH_COUNT_' + ym, dashUsed = Number(props.getProperty(dashMonth)) || 0;
+  if (used >= CONFIG.REVIEW_MONTHLY_LIMIT || dashUsed >= CONFIG.REVIEW_DASH_MONTHLY_LIMIT) return { error: 'limit' };
+  props.setProperty(month, String(used + 1));
+  props.setProperty(dashMonth, String(dashUsed + 1));
+  var res = UrlFetchApp.fetch('https://places.googleapis.com/v1/places/' + encodeURIComponent(placeId) + '?languageCode=ja', {
+    muteHttpExceptions:true, headers:{'X-Goog-Api-Key':apiKey,'X-Goog-FieldMask':'displayName,rating,userRatingCount,googleMapsUri'}
+  });
+  if (res.getResponseCode() !== 200) return { error: 'failed' };
+  var v = JSON.parse(res.getContentText());
+  return { rating: v.rating || 0, count: Number(v.userRatingCount) || 0, place: (v.displayName || {}).text || '', url: v.googleMapsUri || '' };
+}
+
+var DASH_CSS = 'body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;background:#f6f4f1;color:#1d1b19;margin:0;padding:20px 16px;line-height:1.5;font-size:14px}' +
+  'h1{font-size:1.35rem;margin:0 0 4px;font-weight:600}.lede{color:#5f5a54;margin:0 0 14px;max-width:72ch}' +
+  '.ctl{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 10px}.ctl label{font-size:.85rem;color:#5f5a54;display:inline-flex;gap:6px;align-items:center}' +
+  'select,input[type=search]{font:inherit;padding:6px 8px;border:1px solid #d9d2c9;border-radius:8px;background:#fff}' +
+  'button{font:inherit;font-size:.85rem;padding:6px 12px;border:1px solid #d9d2c9;border-radius:999px;background:#fff;cursor:pointer}button.on{background:#1d1b19;color:#fff;border-color:#1d1b19}button:disabled{opacity:.5;cursor:default}' +
+  '.wrap{overflow:auto;max-height:78vh;border:1px solid #e3ddd5;border-radius:10px;background:#fff}' +
+  'table{border-collapse:separate;border-spacing:0;font-size:.82rem}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid #eee8e1;min-width:9rem;max-width:18rem}' +
+  'th{position:sticky;top:0;background:#fbf9f7;z-index:2;white-space:nowrap;font-weight:600}th:nth-child(2),td:nth-child(2){position:sticky;left:0;background:#fff;z-index:1;border-right:1px solid #eee8e1}th:nth-child(2){z-index:3;background:#fbf9f7}' +
+  'td:first-child,th:first-child{min-width:5rem}a{color:inherit}.unk{color:#9a938b}.star{color:#b86e00;font-weight:600}.src{font-size:.75rem;color:#7a736b}' +
+  '.hide-fare .g-fare,.hide-service .g-service,.hide-company .g-company{display:none}.note{font-size:.78rem;color:#6f6862;max-width:80ch;margin:10px 0 0}.msg{font-size:.82rem;color:#6f6862}';
+
+var DASH_BODY = '<h1>全国ペットタクシー事業者一覧</h1><p class="lede">社内用です。各社の公式サイトに書いてあることだけを載せ、書いていないことは「不明」にしています。料金は各社サイトの表示どおりで、確定料金ではありません。</p>' +
+  '<div class="ctl"><label>都道府県 <select id="pref"></select></label><label>さがす <input id="q" type="search" placeholder="名前・地域・メモ"></label>' +
+  '<label>並び順 <select id="sort"><option value="pref">都道府県順</option><option value="fare">5kmの料金が安い順</option><option value="trust">信頼度が高い順</option></select></label>' +
+  '<label><input id="emg" type="checkbox"> 緊急に対応だけ</label><label><input id="fare" type="checkbox"> 5kmの料金がわかる会社だけ</label></div>' +
+  '<div class="ctl"><span class="msg">表示する列：</span><button class="on" data-g="fare">料金</button><button class="on" data-g="service">サービス</button><button class="on" data-g="company">会社・許可・出典</button>' +
+  '<button id="bulk">表示中の会社の星をまとめて見る（最大20社）</button><span class="msg" id="count"></span></div>' +
+  '<div class="wrap" id="wrap"><table><thead><tr id="head"></tr></thead><tbody id="body"></tbody></table></div>' +
+  '<p class="note">口コミの星と件数は、押したときに地図サービスから取り寄せます（規約で保存できないため、ページを開き直すと消えます）。月' + CONFIG.REVIEW_DASH_MONTHLY_LIMIT + '回まで。違う場所を拾わないよう、地図での名前が会社名と合うときだけ出し、地図での名前も一緒に表示します。信頼度は提携先シートの5点採点（緑4〜5・黄2〜3・赤は閉鎖や停止、「—」は未採点）です。</p>';
+
+var DASH_JS = String(function() {
+  var COLS = [['pref','都道府県'],['name','名前（公式サイト）'],['area','対応エリア'],['ch','受付方法'],['gbp','口コミ（Google Maps）'],
+    ['km5','5kmの料金','fare'],['perkm','1kmあたり','fare'],['pick','迎車・送迎代','fare'],['wait','待機代','fare'],['cancel','キャンセルポリシー','fare'],['night','夜間・早朝の割増','fare'],['pay','お支払い','fare'],
+    ['hours','営業時間','service'],['emg','緊急搬送','service'],['hotel','ホテル・サロン送迎だけか','service'],['care','介護サポート','service'],['cage','ケージ','service'],['cap','乗車キャパ','service'],['ride','飼い主の同乗','service'],['animals','乗せられる動物','service'],['lead','予約の期限','service'],
+    ['staff','従業員数','company'],['cars','車両（台数・車種）','company'],['op','運営会社・所在地','company'],['lic','許可・ナンバー','company'],['ins','保険','company'],['trust','信頼度（5点）','company'],['partner','うちとの関係','company'],['note','メモ','company'],['src','出典','company'],['checked','確認日','company']];
+  var ORDER = ['北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県','茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県','新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県','滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県','鳥取県','島根県','岡山県','広島県','山口県','徳島県','香川県','愛媛県','高知県','福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県','全国'];
+  var scores = {}, st = { pref: '', q: '', sort: 'pref', emg: false, fare: false };
+  var $ = function(id) { return document.getElementById(id); };
+  var el = function(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  var pidx = function(p) { var i = ORDER.indexOf(p); return i < 0 ? 99 : i; };
+  var trust = function(t) { t = String(t || ''); var n = parseInt(t.replace(/\D/g, ''), 10) || 0; return (t.charAt(0) === '緑' ? 30 : t.charAt(0) === '黄' ? 20 : t.charAt(0) === '赤' ? 10 : 0) + n; };
+  var prefs = DASH.map(function(r) { return r.pref; }).filter(function(p, i, a) { return a.indexOf(p) === i; }).sort(function(a, b) { return pidx(a) - pidx(b); });
+  $('pref').appendChild(new Option('すべて（' + DASH.length + '社）', ''));
+  prefs.forEach(function(p) { $('pref').appendChild(new Option(p + '（' + DASH.filter(function(r) { return r.pref === p; }).length + '）', p)); });
+  COLS.forEach(function(c) { $('head').appendChild(el('th', c[2] ? 'g-' + c[2] : '', c[1])); });
+  function shown() {
+    var q = st.q.trim().toLowerCase();
+    var rows = DASH.filter(function(r) {
+      return (!st.pref || r.pref === st.pref) && (!st.emg || r.emg_yes === 'はい') && (!st.fare || r.km5_yen !== '') &&
+        (!q || [r.name, r.area, r.note, r.op, r.ch].join(' ').toLowerCase().indexOf(q) >= 0);
+    });
+    if (st.sort === 'fare') rows.sort(function(a, b) { return (Number(a.km5_yen) || 1e9) - (Number(b.km5_yen) || 1e9); });
+    else if (st.sort === 'trust') rows.sort(function(a, b) { return trust(b.trust) - trust(a.trust); });
+    else rows.sort(function(a, b) { return pidx(a.pref) - pidx(b.pref) || a.name.localeCompare(b.name, 'ja'); });
+    return rows;
+  }
+  function gbpCell(td, r) {
+    var s = scores[r.id];
+    if (s === 'loading') { td.appendChild(el('span', 'msg', '取り寄せ中…')); return; }
+    if (s && s.rating > 0) {
+      var a = el('a', 'star', '★' + s.rating.toFixed(1) + '（' + s.count + '件）'); a.href = s.url || '#'; td.appendChild(a);
+      td.appendChild(el('div', 'src', 'Google Maps：' + s.place)); return;
+    }
+    if (s && s.error) {
+      td.appendChild(el('div', 'msg', { notfound: '地図で見つかりませんでした', limit: '今月の上限に届きました', key: 'リンクが古くなっています' }[s.error] || '取り寄せできませんでした'));
+    } else if (s && s.rating === 0) td.appendChild(el('div', 'msg', '口コミはまだありません'));
+    var b = el('button', '', '星を見る'); b.onclick = function() { fetchScores([r.id]); }; td.appendChild(b);
+  }
+  function draw() {
+    var rows = shown(), body = $('body');
+    body.innerHTML = '';
+    rows.forEach(function(r) {
+      var tr = el('tr');
+      COLS.forEach(function(c) {
+        var td = el('td', c[2] ? 'g-' + c[2] : ''), v = r[c[0]];
+        if (c[0] === 'gbp') gbpCell(td, r);
+        else if (c[0] === 'name' && /^https?:\/\//.test(r.url)) { var a = el('a', '', v); a.href = r.url; td.appendChild(a); }
+        else { td.textContent = v; if (!v || v === '不明') td.classList.add('unk'); }
+        tr.appendChild(td);
+      });
+      body.appendChild(tr);
+    });
+    $('count').textContent = rows.length + '社を表示中';
+  }
+  function fetchScores(ids) {
+    ids = ids.filter(function(id) { return !scores[id] || scores[id].error; }).slice(0, 20);
+    if (!ids.length) return;
+    ids.forEach(function(id) { scores[id] = 'loading'; }); draw();
+    google.script.run.withSuccessHandler(function(res) {
+      ids.forEach(function(id) { scores[id] = res && res.ok && res.scores[id] ? res.scores[id] : { error: res && res.error || 'failed' }; }); draw();
+    }).withFailureHandler(function() { ids.forEach(function(id) { scores[id] = { error: 'failed' }; }); draw(); }).dashScores(DASH_KEY, ids);
+  }
+  $('pref').onchange = function() { st.pref = this.value; draw(); };
+  $('q').oninput = function() { st.q = this.value; draw(); };
+  $('sort').onchange = function() { st.sort = this.value; draw(); };
+  $('emg').onchange = function() { st.emg = this.checked; draw(); };
+  $('fare').onchange = function() { st.fare = this.checked; draw(); };
+  $('bulk').onclick = function() { fetchScores(shown().map(function(r) { return r.id; })); };
+  Array.prototype.forEach.call(document.querySelectorAll('[data-g]'), function(b) {
+    b.onclick = function() { b.classList.toggle('on'); $('wrap').classList.toggle('hide-' + b.getAttribute('data-g'), !b.classList.contains('on')); };
+  });
+  draw();
+}).replace(/^function\s*\(\)\s*\{|\}$/g, '');
 
 /* ───────── テスト用（エディタから実行） ───────── */
 
