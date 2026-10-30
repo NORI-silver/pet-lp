@@ -211,6 +211,10 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .via-box{margin-top:10px}
 .mode-tabs{display:flex;gap:6px;max-width:560px;margin:0 auto 14px;background:#fff;border-radius:999px;padding:5px;box-shadow:0 2px 8px rgba(28,26,24,.06)}
 .mode-tabs[hidden],.emg[hidden],main>section[hidden],.form-sec .sh[hidden]{display:none}
+.emg-item[hidden],.emg-pref[hidden],.emg-region[hidden]{display:none}
+.emg h2.emg-h{color:#c0392b;font-size:1.1rem;margin:22px 0 6px}
+.emg h3.emg-region{color:var(--ink);font-size:1rem;margin:22px 0 0}
+.emg-all{font-size:.86rem;margin:0 0 14px}
 .mode-tabs button{flex:1;border:0;background:none;font:inherit;font-weight:800;padding:11px;border-radius:999px;cursor:pointer;color:var(--ink-2)}
 .mode-tabs button[aria-selected=true]{background:var(--o);color:#fff}
 .mode-tabs button[data-mode=emg][aria-selected=true]{background:#c0392b}
@@ -628,6 +632,7 @@ footer a{color:var(--ink-2)}
       <h3>緊急のときの連絡先</h3>
       <p class="emg-lead">一刻を争う症状のときは、まずかかりつけや夜間・救急の動物病院に電話して、受け入れてもらえるか確かめてください。病院への移動の手段がないときは、緊急の搬送をしている会社に直接ご連絡ください。</p>
       <p class="emg-free">このページの一覧は無料の情報です。当サイトへのお申し込みやお支払いはありません。料金や受付は、それぞれの会社・病院に直接おたずねください。</p>
+      <p class="emg-all"><a href="/emergency/">全国の一覧を1つのページで見る</a></p>
       <div class="f"><label for="emgPref">都道府県でしぼりこむ</label>
         <select id="emgPref"><optgroup label="北海道・東北"><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option></optgroup><optgroup label="関東"><option selected>東京都</option><option>神奈川県</option><option>埼玉県</option><option>千葉県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option></optgroup><optgroup label="中部"><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option><option>静岡県</option><option>愛知県</option></optgroup><optgroup label="近畿"><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option></optgroup><optgroup label="中国・四国"><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option></optgroup><optgroup label="九州・沖縄"><option>福岡県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option></optgroup></select></div>
       <div class="f emg-near"><label for="emgWhere">現在地<span class="any">書きかえられます</span></label>
@@ -1072,7 +1077,7 @@ footer a{color:var(--ink-2)}
 <aside class="partner-band"><div class="wrap"><p><b>ペットタクシー会社の方へ</b>東京・神奈川・千葉・埼玉で、いっしょにペットと飼い主さんをお迎えしてくださる会社を探しています。</p><a href="/partner/">提携のご案内</a></div></aside>
 <footer>
   <div class="wrap">
-    <nav><a href="#how">使い方</a><a href="#area">対応エリア</a><a href="#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="#faq">よくある質問</a><a href="#policy">キャンセルについて</a><a href="#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
+    <nav><a href="#how">使い方</a><a href="#area">対応エリア</a><a href="#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="#policy">キャンセルについて</a><a href="#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav><a href="/tokyo/">東京のペットタクシー</a><a href="/chiba/">千葉のペットタクシー</a><a href="/kanagawa/">神奈川・横浜のペットタクシー</a><a href="/saitama/">埼玉のペットタクシー</a></nav>
     <p>ペットタクシー予約窓口（東京・神奈川・千葉・埼玉）</p>
     <p>&copy; 2026 ペットタクシー予約窓口</p>

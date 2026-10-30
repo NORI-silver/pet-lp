@@ -246,7 +246,7 @@ PARTNER_BAND = '''<aside class="partner-band"><div class="wrap"><p><b>ペット�
 def foot(cta_href, band=True):
     return (PARTNER_BAND if band else '') + f'''<footer>
   <div class="wrap">
-    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
+    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav>{''.join(f'<a href="/{a["slug"]}/">{e(a["short"])}</a>' for a in AREAS)}</nav>
     <p>ペットタクシー予約窓口（東京・神奈川・千葉・埼玉）</p>
     <p>&copy; 2026 ペットタクシー予約窓口</p>
@@ -621,8 +621,82 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 os.makedirs(os.path.join(ROOT, "partner"), exist_ok=True)
 open(os.path.join(ROOT, "partner", "index.html"), "w", encoding="utf-8").write(pp)
 
+# 緊急のときの連絡先（/emergency/）：トップの緊急タブと同じ tools/emergency.json から作る。県ごとの件数は数えない（近くの県の病院も入っているため）
+emg_url = SITE + "/emergency/"
+top_src = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+emg_sel = re.search(r'<select id="emgPref">(.*?)</select>', top_src, re.S).group(1)
+emg_regions = [(lab, re.findall(r'<option[^>]*>([^<]+)</option>', body)) for lab, body in re.findall(r'<optgroup label="([^"]+)">(.*?)</optgroup>', emg_sel, re.S)]
+emg_tips = re.search(r'<div class="emg-tips">.*?<p class="emg-tips-note">.*?</p>\s*</div>', top_src, re.S).group(0)
+def emg_company(x):
+    tel = ''.join(f'<a class="emg-tel" href="tel:{t[1].replace("-", "")}">📞 {e(t[1])}{"（" + e(t[0]) + "）" if t[0] else ""}</a>' for t in x.get("tel", []))
+    if not tel: tel = '<small>電話番号はリンク先の公式サイトでご確認ください。</small>'
+    return (f'<div class="emg-item emg-co" data-prefs="{e(" ".join(x["prefs"]))}"><a href="{e(x["url"])}" target="_blank" rel="noopener"><b>{e(x["name"])}</b></a>'
+            f'<small>対応エリア：{e(x["area"])}。{e(x["note"])}</small>{tel}</div>')
+def emg_hosp(x):
+    return f'<a class="emg-item" href="{e(x["url"])}" target="_blank" rel="noopener"><b>{e(x["name"])}</b><small>{e(x["city"])}・{e(x["hours"])}</small></a>'
+emg_prefs_html = ''
+for lab, prefs in emg_regions:
+    emg_prefs_html += f'<h3 class="emg-region">{e(lab)}</h3>\n'
+    for pf in prefs:
+        hs = EMG["hospitals"].get(pf, [])
+        inner = ''.join(emg_hosp(h) for h in hs) or '<p class="emg-none">この都道府県の夜間・救急の動物病院は、まだ載せていません。かかりつけの病院におたずねください。</p>'
+        emg_prefs_html += f'<section class="emg-pref" data-pref="{e(pf)}"><h4>{e(pf)}</h4>{inner}</section>\n'
+emg_opts = '<option value="">すべての都道府県</option>' + ''.join(f'<optgroup label="{e(lab)}">' + ''.join(f'<option>{e(pf)}</option>' for pf in prefs) + '</optgroup>' for lab, prefs in emg_regions)
+emg_ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
+  {"@type":"ListItem","position":2,"name":"緊急のときの連絡先","item":emg_url}]}, ensure_ascii=False, indent=1) + '\n</script>'
+ep = head("ペットの緊急搬送・動物救急車と夜間の動物病院｜全国の一覧｜ペットタクシー予約窓口",
+  "ペットの具合が急に悪くなったときの連絡先。緊急の搬送をしている会社と、夜間・救急の動物病院を、全国47都道府県から探せます。名前と公式サイトへのリンク、受付時間をまとめた無料の一覧です。", emg_url, emg_ld) + f"""
+<main>
+<section class="area-hero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › 緊急のときの連絡先</nav>
+    <h1><small>ペットの具合が急に悪くなったら</small>緊急の搬送と、夜間・救急の動物病院</h1>
+    <p class="lede">一刻を争う症状のときは、まずかかりつけや夜間・救急の動物病院に電話して、受け入れてもらえるか確かめてください。病院への移動の手段がないときは、緊急の搬送をしている会社に直接ご連絡ください。</p>
+  </div>
+</section>
+<section style="padding-top:8px">
+  <div class="wrap">
+    <div class="emg">
+      <p class="emg-free">この一覧は無料の情報です。当サイトへのお申し込みやお支払いはありません。料金や受付は、それぞれの会社・病院に直接おたずねください。</p>
+      <div class="f"><label for="emgPrefAll">都道府県でしぼりこむ</label><select id="emgPrefAll">{emg_opts}</select></div>
+      <p class="emg-sum"><a href="/#emergency">現在地から近い病院を、車で行く時間と一緒にさがす</a></p>
+      <h2 class="emg-h">緊急の搬送をしている会社</h2>
+      <div id="emgTaxiAll">{''.join(emg_company(t) for t in EMG["taxis"])}</div>
+      <p class="emg-none" id="emgTaxiNone" hidden>この都道府県で緊急の搬送をしている会社は、まだ載せていません。</p>
+      <h2 class="emg-h">夜間・救急の動物病院</h2>
+      <p class="emg-sum">夜間の病院が見つからない県には、近くの県の病院を（県名）つきで載せています。</p>
+      {emg_prefs_html}
+      {emg_tips}
+      <p class="emg-note">当サイトとは別の会社・病院です（{e(EMG["checked"])}時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。</p>
+    </div>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sh"><h2>急ぎでない移動は、予約制のペットタクシーで</h2><p>通院や退院のお迎えなど、前もって決まっている移動は、ペットタクシーを予約できます。お迎えはお申し込みから3時間後以降で、東京・神奈川・埼玉・千葉からのお迎えだけ受け付けています。</p></div>
+    {area_links()}
+  </div>
+</section>
+</main>
+<script>
+(function(){{
+  var sel = document.getElementById("emgPrefAll");
+  sel.addEventListener("change", function(){{
+    var v = sel.value, n = 0;
+    document.querySelectorAll(".emg-pref").forEach(function(s){{ s.hidden = !!v && s.dataset.pref !== v; }});
+    document.querySelectorAll(".emg-region").forEach(function(h){{ h.hidden = !!v; }});
+    document.querySelectorAll("#emgTaxiAll .emg-co").forEach(function(d){{ var ok = !v || d.dataset.prefs.split(" ").indexOf(v) >= 0; d.hidden = !ok; if (ok) n++; }});
+    document.getElementById("emgTaxiNone").hidden = n > 0;
+  }});
+}})();
+</script>
+""" + re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))  # 緊急のページでは予約ボタンを画面下に固定しない
+os.makedirs(os.path.join(ROOT, "emergency"), exist_ok=True)
+open(os.path.join(ROOT, "emergency", "index.html"), "w", encoding="utf-8").write(ep)
+
 # sitemap / robots / 404
-urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [terms_url, contact_url, partner_url]
+urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url, terms_url, contact_url, partner_url]
 open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   "".join(f'  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>\n' for u in urls) + '</urlset>\n')
