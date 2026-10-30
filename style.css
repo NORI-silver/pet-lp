@@ -232,7 +232,19 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est-rows span small{display:block;font-weight:400;color:var(--ink-3);font-size:.76rem}
 .est-rows b{font-family:var(--round);font-size:1.2rem;white-space:nowrap}
 .est-rows b small{font-size:.75rem;font-weight:700;margin-left:2px}
-.est-map{height:220px;border-radius:14px;overflow:hidden;margin:4px 0 6px;background:#efe9e3;z-index:0}
+.est-map{height:300px;border-radius:14px;overflow:hidden;margin:4px 0 6px;background:#efe9e3;z-index:0}
+.est-pin{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--o);border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.est-pin b{transform:rotate(45deg);color:#fff;font-size:.78rem;font-weight:800;line-height:1}
+.est-pin.to{background:#1c1a18}.est-pin.via{background:#3b47a8}
+.est-wrap{position:relative}
+.est-info{position:absolute;top:10px;right:10px;z-index:800;background:rgba(255,255,255,.96);border-radius:12px;padding:8px 12px;box-shadow:0 2px 10px rgba(0,0,0,.18);font-size:.8rem;line-height:1.45;color:var(--ink)}
+.est-info small{display:block;font-size:.7rem;color:var(--ink-3)}
+.est-info div{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
+.est-info span{color:var(--ink-2)}
+.est-info b{font-family:var(--round);font-size:1.02rem;font-weight:800}
+.est-legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.8rem;color:var(--ink-2);margin:6px 2px 0}
+.est-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px;background:var(--o)}
+.est-legend i.to{background:#1c1a18}.est-legend i.via{background:#3b47a8}
 .est .legend{display:flex;gap:6px;align-items:center;font-size:.75rem;margin-bottom:8px}
 .est .legend i{display:inline-block;width:22px;height:0;border-top:4px solid #ff6a1a;margin-left:6px}
 .est .legend i.l2{border-top:4px dashed #5b5650}
@@ -242,6 +254,13 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .cb-list li{padding:11px 12px;border-radius:10px;font-size:.94rem;cursor:pointer}
 .cb-list li:hover,.cb-list li.on{background:var(--o-l);color:var(--o-d)}
 .cb-list li.none{color:var(--ink-3);cursor:default;background:none}
+.cb-list li small{display:block;font-size:.76rem;color:var(--ink-3);margin-top:1px}
+.cb-list li.hist b::before{content:"🕘 "}
+.cb-list li b{font-weight:700}
+.cb-list li.g-attr{text-align:right;font-size:.72rem;padding:4px 10px 2px;font-family:Roboto,Arial,sans-serif;color:#5f6368}
+.place-note{font-size:.78rem;color:#b4421a;margin:4px 2px 0;line-height:1.6}
+.place-note[hidden]{display:none}
+input.picked{border-color:#3d9a5b;background:#f3fbf5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%233d9a5b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center/18px;padding-right:38px}
 .f .note{display:block;font-size:.8rem;color:var(--ink-3);margin-top:6px}
 .agree{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--ink-2);background:#f7f4f1;border-radius:14px;padding:14px 16px;margin-bottom:20px;cursor:pointer}
 .agree input{accent-color:var(--o);width:18px;height:18px;margin:3px 0 0;flex:none}
@@ -391,8 +410,8 @@ footer a{color:var(--ink-2)}
 #partnerStatus{font-size:.9rem;line-height:1.7}
 [hidden]#sendSelected{display:none}
 .price-reason{background:var(--cream);padding:12px 14px;border-radius:12px;font-size:.84rem;line-height:1.8}
-.price-details{border-top:1px solid var(--line);padding:10px 0;font-size:.82rem}
-.price-details summary{cursor:pointer;font-weight:700}
+.price-details{border-top:1px solid var(--line);padding:6px 0;font-size:.72rem;color:var(--ink-3)}
+.price-details summary{cursor:pointer;font-weight:400}
 .price-details dl{display:grid;grid-template-columns:1fr auto;gap:5px 12px;margin:10px 0 0}
 .price-details dt,.price-details dd{margin:0}
 .partner-highway,.partner-surcharge{font-weight:700}

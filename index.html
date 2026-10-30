@@ -261,7 +261,19 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est-rows span small{display:block;font-weight:400;color:var(--ink-3);font-size:.76rem}
 .est-rows b{font-family:var(--round);font-size:1.2rem;white-space:nowrap}
 .est-rows b small{font-size:.75rem;font-weight:700;margin-left:2px}
-.est-map{height:220px;border-radius:14px;overflow:hidden;margin:4px 0 6px;background:#efe9e3;z-index:0}
+.est-map{height:300px;border-radius:14px;overflow:hidden;margin:4px 0 6px;background:#efe9e3;z-index:0}
+.est-pin{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--o);border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.est-pin b{transform:rotate(45deg);color:#fff;font-size:.78rem;font-weight:800;line-height:1}
+.est-pin.to{background:#1c1a18}.est-pin.via{background:#3b47a8}
+.est-wrap{position:relative}
+.est-info{position:absolute;top:10px;right:10px;z-index:800;background:rgba(255,255,255,.96);border-radius:12px;padding:8px 12px;box-shadow:0 2px 10px rgba(0,0,0,.18);font-size:.8rem;line-height:1.45;color:var(--ink)}
+.est-info small{display:block;font-size:.7rem;color:var(--ink-3)}
+.est-info div{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
+.est-info span{color:var(--ink-2)}
+.est-info b{font-family:var(--round);font-size:1.02rem;font-weight:800}
+.est-legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.8rem;color:var(--ink-2);margin:6px 2px 0}
+.est-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px;background:var(--o)}
+.est-legend i.to{background:#1c1a18}.est-legend i.via{background:#3b47a8}
 .est .legend{display:flex;gap:6px;align-items:center;font-size:.75rem;margin-bottom:8px}
 .est .legend i{display:inline-block;width:22px;height:0;border-top:4px solid #ff6a1a;margin-left:6px}
 .est .legend i.l2{border-top:4px dashed #5b5650}
@@ -271,6 +283,13 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .cb-list li{padding:11px 12px;border-radius:10px;font-size:.94rem;cursor:pointer}
 .cb-list li:hover,.cb-list li.on{background:var(--o-l);color:var(--o-d)}
 .cb-list li.none{color:var(--ink-3);cursor:default;background:none}
+.cb-list li small{display:block;font-size:.76rem;color:var(--ink-3);margin-top:1px}
+.cb-list li.hist b::before{content:"🕘 "}
+.cb-list li b{font-weight:700}
+.cb-list li.g-attr{text-align:right;font-size:.72rem;padding:4px 10px 2px;font-family:Roboto,Arial,sans-serif;color:#5f6368}
+.place-note{font-size:.78rem;color:#b4421a;margin:4px 2px 0;line-height:1.6}
+.place-note[hidden]{display:none}
+input.picked{border-color:#3d9a5b;background:#f3fbf5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%233d9a5b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center/18px;padding-right:38px}
 .f .note{display:block;font-size:.8rem;color:var(--ink-3);margin-top:6px}
 .agree{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--ink-2);background:#f7f4f1;border-radius:14px;padding:14px 16px;margin-bottom:20px;cursor:pointer}
 .agree input{accent-color:var(--o);width:18px;height:18px;margin:3px 0 0;flex:none}
@@ -420,8 +439,8 @@ footer a{color:var(--ink-2)}
 #partnerStatus{font-size:.9rem;line-height:1.7}
 [hidden]#sendSelected{display:none}
 .price-reason{background:var(--cream);padding:12px 14px;border-radius:12px;font-size:.84rem;line-height:1.8}
-.price-details{border-top:1px solid var(--line);padding:10px 0;font-size:.82rem}
-.price-details summary{cursor:pointer;font-weight:700}
+.price-details{border-top:1px solid var(--line);padding:6px 0;font-size:.72rem;color:var(--ink-3)}
+.price-details summary{cursor:pointer;font-weight:400}
 .price-details dl{display:grid;grid-template-columns:1fr auto;gap:5px 12px;margin:10px 0 0}
 .price-details dt,.price-details dd{margin:0}
 .partner-highway,.partner-surcharge{font-weight:700}
@@ -434,7 +453,7 @@ footer a{color:var(--ink-2)}
  "@type":"FAQPage",
  "mainEntity":[
   {"@type":"Question","name":"Uber Petとなにが違うの？","acceptedAnswer":{"@type":"Answer","text":"Uber Petは一般のタクシーにペットを同乗させるサービスで、飼い主さんの同乗が前提です。こちらでお探しするのはペット専門のタクシーなので、飼い主さんが乗らない送迎、大型犬、ケージやスロープの用意、動物病院での待ち時間、夜間の急な通院にも対応できるところを選べます。"}},
-  {"@type":"Question","name":"ケージやキャリーがなくても大丈夫？","acceptedAnswer":{"@type":"Answer","text":"大丈夫です。フォームで1匹ずつ「持っていく」「なしで乗りたい」「借りたい」から選べます。「なしで乗りたい」「借りたい」を選んだときは、それに対応している会社にだけお声がけします。"}},
+  {"@type":"Question","name":"ケージやキャリーがなくても大丈夫？","acceptedAnswer":{"@type":"Answer","text":"大丈夫です。フォームで1匹ずつ「持っていく」「なしで乗りたい」「借りたい」「あり・なし どちらでもいい」から選べます。「なしで乗りたい」「借りたい」を選んだときは、それに対応している会社だけをご案内します。「あり・なし どちらでもいい」なら、ケージの条件ではしぼりこみません。"}},
   {"@type":"Question","name":"大型犬でも乗れますか？","acceptedAnswer":{"@type":"Answer","text":"はい。大型犬が乗れる車とスロープのあるペットタクシーをお探しします。体重と犬種を入力してください。歩くのがつらい子は「介護」の欄で「必要」を選んでください。"}},
   {"@type":"Question","name":"2匹以上いっしょに乗れますか？","acceptedAnswer":{"@type":"Answer","text":"はい。フォームで頭数を選ぶと、その数だけ入力欄が出ます。5匹まで一度にお申し込みいただけます。頭数と大きさに合う車をお探しします。"}},
   {"@type":"Question","name":"猫だけでも使えますか？","acceptedAnswer":{"@type":"Answer","text":"もちろんです。通院、お引っ越し、ペットホテルへの送り迎えなどにどうぞ。キャリーに入った状態での乗車が基本です。"}},
@@ -570,14 +589,13 @@ footer a{color:var(--ink-2)}
             <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>千葉県</option><option>埼玉県</option></select>
             <p class="pref-fix" id="prefFix" role="status" hidden></p></div>
           <div class="f"><label for="pickup">お迎えの場所</label>
-            <input type="text" id="pickup" list="placeHist" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
+            <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button><p class="geo-msg" id="geoMsg" aria-live="polite"></p></div>
           <div class="f"><span class="lbl">経由地<span class="any">任意</span></span>
             <div class="seg"><label><input type="radio" name="via_on" value="なし" checked><span>なし</span></label><label><input type="radio" name="via_on" value="あり"><span>あり（途中で寄る）</span></label></div>
-            <div class="via-box" id="viaBox" hidden><input type="text" id="via" list="placeHist" autocomplete="off" name="via" placeholder="例：〇〇トリミングサロン（渋谷区）" aria-label="経由地"></div></div>
+            <div class="via-box" id="viaBox" hidden><input type="text" id="via" autocomplete="off" name="via" placeholder="例：〇〇トリミングサロン（渋谷区）" aria-label="経由地"></div></div>
           <div class="f"><label for="dropoff">行き先</label>
-            <input type="text" id="dropoff" list="placeHist" autocomplete="off" name="dropoff" placeholder="例：代々木公園／〇〇動物病院（目黒区）" required>
-            <datalist id="placeHist"></datalist>
+            <input type="text" id="dropoff" autocomplete="off" name="dropoff" placeholder="例：代々木公園／〇〇動物病院（目黒区）" required>
             <button type="button" class="hist-clear" id="histClear" hidden>この端末に残っている場所の候補を消す</button></div>
           <div class="f"><label for="date">お迎えの希望日時</label>
             <div class="dt">
@@ -598,9 +616,9 @@ footer a{color:var(--ink-2)}
               <label class="chk"><input type="checkbox" id="retOther" name="ret_other" value="1"> 帰りの場所を変える</label>
               <div id="retPlaces" hidden>
                 <label for="retPickup" class="lbl">帰りのお迎えの場所</label>
-                <input type="text" id="retPickup" list="placeHist" autocomplete="off" name="ret_pickup" placeholder="例：〇〇動物病院（目黒区）">
+                <input type="text" id="retPickup" autocomplete="off" name="ret_pickup" placeholder="例：〇〇動物病院（目黒区）">
                 <label for="retDropoff" class="lbl">帰りの行き先</label>
-                <input type="text" id="retDropoff" list="placeHist" autocomplete="off" name="ret_dropoff" placeholder="例：〇〇ペットホテル（目黒区）">
+                <input type="text" id="retDropoff" autocomplete="off" name="ret_dropoff" placeholder="例：〇〇ペットホテル（目黒区）">
               </div></div></div>
           <div class="est" id="est" hidden aria-live="polite"></div>
         </div>
@@ -860,7 +878,7 @@ footer a{color:var(--ink-2)}
     <div class="sh"><span class="eyebrow">FAQ</span><h2>ペットタクシーのよくある質問</h2></div>
     <div class="faq-list">
       <details><summary>Uber Petとなにが違うの？</summary><div class="a">Uber Petは一般のタクシーにペットを同乗させるサービスで、飼い主さんの同乗が前提です。こちらでお探しするのはペット専門のタクシーなので、飼い主さんが乗らない送迎、大型犬、ケージやスロープの用意、動物病院での待ち時間、夜間の急な通院にも対応できるところを選べます。</div></details>
-      <details><summary>ケージやキャリーがなくても大丈夫？</summary><div class="a">大丈夫です。フォームで1匹ずつ「持っていく」「なしで乗りたい」「借りたい」から選べます。「なしで乗りたい」「借りたい」を選んだときは、それに対応している会社にだけお声がけします。</div></details>
+      <details><summary>ケージやキャリーがなくても大丈夫？</summary><div class="a">大丈夫です。フォームで1匹ずつ「持っていく」「なしで乗りたい」「借りたい」「あり・なし どちらでもいい」から選べます。「なしで乗りたい」「借りたい」を選んだときは、それに対応している会社だけをご案内します。「あり・なし どちらでもいい」なら、ケージの条件ではしぼりこみません。</div></details>
       <details><summary>大型犬でも乗れますか？</summary><div class="a">はい。大型犬が乗れる車とスロープのあるペットタクシーをお探しします。体重と犬種を入力してください。歩くのがつらい子は「介護」の欄で「必要」を選んでください。</div></details>
       <details><summary>2匹以上いっしょに乗れますか？</summary><div class="a">はい。フォームで頭数を選ぶと、その数だけ入力欄が出ます。5匹まで一度にお申し込みいただけます。頭数と大きさに合う車をお探しします。</div></details>
       <details><summary>猫だけでも使えますか？</summary><div class="a">もちろんです。通院、お引っ越し、ペットホテルへの送り迎えなどにどうぞ。キャリーに入った状態での乗車が基本です。</div></details>
@@ -1184,7 +1202,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         '<div class="f"><label for="' + k + '_age">年齢<span class="any">わかれば</span></label><input type="number" id="' + k + '_age" name="' + k + '_age" min="0" max="40" inputmode="numeric" placeholder="例：12"></div>' +
         '<div class="f"><span class="lbl">性別<span class="any">わかれば</span></span>' + seg(k + "_sex", [["オス","男の子"],["メス","女の子"]], false) + '</div>' +
       '</div>' +
-      '<div class="f"><span class="lbl">ケージ・キャリー</span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"]], true) + '</div>' +
+      '<div class="f"><span class="lbl">ケージ・キャリー</span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true) + '</div>' +
       '<div class="f"><span class="lbl">介護は必要ですか？</span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true) + '</div>';
     return el;
   }
@@ -1273,7 +1291,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   function petLine(p, i){
     return (i + 1) + "匹目：" + [p.species, p.breed, p.weight ? p.weight + "kg" : "", p.age ? p.age + "歳" : "", p.sex,
-      ({"持ち込む":"ケージ持ち込み","なし":"ケージなし希望","借りたい":"ケージを借りたい"})[p.cage] || p.cage, p.care === "必要" ? "介助必要" : "介助いらない"].filter(String).join("・");
+      ({"持ち込む":"ケージ持ち込み","なし":"ケージなし希望","借りたい":"ケージを借りたい","どれでも":"ケージはあり・なしどちらでも"})[p.cage] || p.cage, p.care === "必要" ? "介助必要" : "介助いらない"].filter(String).join("・");
   }
 
 
@@ -1284,7 +1302,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var AREA_FARES = {"東京都": ["petexpress", "kuriki"], "神奈川県": ["petexpress", "kuriki"], "千葉県": ["kuriki"], "埼玉県": ["petexpress", "kuriki"]};/*/FARES*/
   // 実際の料金が目安を超えないよう、上限側で計算する（道のりは直線の1.5倍、1km単位で切り上げ、最後に100円単位で切り上げ）
   var ROAD = 1.5;
-  var est = $("est"), geoCache = {}, estSeq = 0, lastKm = 0, lastKmHigh = 0, lastFare = "", lastFareNum = 0;
+  var est = $("est"), geoCache = {}, pickedPlace = {}, estSeq = 0, lastKm = 0, lastKmHigh = 0, lastFare = "", lastFareNum = 0;
   function yen(n){ return n.toLocaleString("ja-JP") + "円"; }
   // 場所の検索は4都県の中だけで探す（遠くの同じ名前の場所を拾わないように）。選んだ都県の中の候補を優先する
   var BOX4 = [34.85, 138.6, 36.35, 140.95];
@@ -1334,6 +1352,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   function geocode(q){
     q = q.trim();
     if (!q) return Promise.resolve(null);
+    if (pickedPlace[q]) return Promise.resolve(pickedPlace[q]); // 候補から選んだ場所は、その位置をそのまま使う
     var pref = $("pref").value;
     var key = (!pref || /^(東京|神奈川|千葉|埼玉)/.test(q) ? "" : pref) + q;
     if (key in geoCache) return Promise.resolve(geoCache[key]);
@@ -1434,15 +1453,21 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (estMap) { estMap.remove(); estMap = null; }
       estMap = L.map(el, {attributionControl: false, scrollWheelZoom: false, dragging: !L.Browser.mobile, tap: false});
       L.control.attribution({prefix: false}).addAttribution('<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">地理院タイル</a>／経路 &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>').addTo(estMap);
-      L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png", {maxZoom: 18}).addTo(estMap);
+      // 地名や道路が読みやすい「標準地図」（淡色地図より文字と道がはっきり見える）
+      L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {maxZoom: 18}).addTo(estMap);
       var ll = function(line){ return line.map(function(p){ return [p[1], p[0]]; }); };
       var group = [];
       if (high) group.push(L.polyline(ll(high.line), {color: "#5b5650", weight: 4, opacity: .7, dashArray: "6 6"}).addTo(estMap));
-      if (local) group.push(L.polyline(ll(local.line), {color: "#ff6a1a", weight: 5, opacity: .9}).addTo(estMap));
+      if (local) {
+        L.polyline(ll(local.line), {color: "#fff", weight: 9, opacity: .95}).addTo(estMap); // 白いふちで、地図の上でも線が見えやすいように
+        group.push(L.polyline(ll(local.line), {color: "#ff6a1a", weight: 5, opacity: 1}).addTo(estMap));
+      }
       stops.forEach(function(c, i){
-        group.push(L.circleMarker([c.lat, c.lng], {radius: 7, color: "#fff", weight: 2, fillColor: i === 0 ? "#ff6a1a" : "#1c1a18", fillOpacity: 1}).addTo(estMap));
+        var last = i === stops.length - 1, kind = i === 0 ? "" : last ? "to" : "via", txt = i === 0 ? "迎" : last ? "着" : "経";
+        var icon = L.divIcon({className: "", html: '<div class="est-pin ' + kind + '"><b>' + txt + '</b></div>', iconSize: [30, 30], iconAnchor: [15, 30]});
+        group.push(L.marker([c.lat, c.lng], {icon: icon, keyboard: false}).addTo(estMap));
       });
-      estMap.fitBounds(L.featureGroup(group).getBounds(), {padding: [18, 18]});
+      estMap.fitBounds(L.featureGroup(group).getBounds(), {paddingTopLeft: [24, 84], paddingBottomRight: [24, 24]}); // 右上の距離の表示とピンが重ならないよう上をあける
     }).catch(function(){ el.remove(); });
   }
 
@@ -1504,7 +1529,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         routeEstimated:!rs[0],localEstimated:hasHigh};
       lastKm = later ? kmL+kmL2 : kmL; lastKmHigh = hasHigh ? (later ? kmH+kmH2 : kmH) : 0;
       lastFare = ""; lastFareNum = 0;
-      est.innerHTML = '<div class="est-map" id="estMap" role="img" aria-label="お迎え場所から行き先までの地図"></div>';
+      // 地図の右上に、行きの道のりと所要時間を出す（一般道。高速を使える道なら高速ありも）
+      var mins = function(m){ m = Math.max(5, Math.ceil(m / 5) * 5); return m >= 60 ? Math.floor(m / 60) + "時間" + (m % 60 ? m % 60 + "分" : "") : m + "分"; };
+      var km1 = function(k){ return (Math.round(k * 10) / 10).toFixed(1); };
+      var info = rs[0] ? '<div><span>一般道</span><b>' + km1(rs[0].km) + 'km・' + mins(rs[0].min) + '</b></div>' +
+          (rs[1] && rs[1].hw >= 1 ? '<div><span>高速あり</span><b>' + km1(rs[1].km) + 'km・' + mins(rs[1].min) + '</b></div>' : '')
+        : '<div><span>道のり</span><b>' + kmL + 'km</b></div>';
+      est.innerHTML = '<div class="est-wrap"><div class="est-map" id="estMap" role="img" aria-label="お迎え場所から行き先までの地図"></div>' +
+        '<div class="est-info"><small>' + (later ? "行き" : "片道") + 'の目安</small>' + info + '</div></div>' +
+        '<div class="est-legend"><span><i></i>お迎え</span>' + (go.length > 2 ? '<span><i class="via"></i>経由地</span>' : '') + '<span><i class="to"></i>行き先</span><span>時間は道の混み具合で変わります</span></div>';
       drawMap($("estMap"), rs[1], null, go);
       queuePartners();
     }
@@ -1653,7 +1686,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
             });
             if (!parts.length) throw 0;
             var text = pref + parts.join("") + (a.house_number ? a.house_number : "") + "付近";
-            geoCache[text] = c; // 距離の計算は、端末の位置そのままで行う
+            geoCache[text] = pickedPlace[text] = c; // 距離の計算は、端末の位置そのままで行う
             setSelect($("pref"), pref); $("pref").dispatchEvent(new Event("change"));
             $("pickup").value = text; $("pickup").dispatchEvent(new Event("change"));
             btn.disabled = false; say("入れました。建物の名前や目印があれば書き足してください。");
@@ -1672,12 +1705,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 場所の候補：送ったことのある場所を、この端末のブラウザの中だけに覚えて、入力欄の候補に出す（自動では入れない）
   var HIST_KEY = "petPlaces", HIST_MAX = 10;
   function readHist(){ try { var h = JSON.parse(localStorage.getItem(HIST_KEY) || "[]"); return Array.isArray(h) ? h : []; } catch (e) { return []; } }
-  function showHist(){
-    var h = readHist(), dl = $("placeHist");
-    dl.innerHTML = "";
-    h.forEach(function(v){ var o = document.createElement("option"); o.value = v; dl.appendChild(o); });
-    $("histClear").hidden = !h.length;
-  }
+  function showHist(){ $("histClear").hidden = !readHist().length; }
   function addHist(list){
     var h = readHist();
     list.forEach(function(v){ v = String(v || "").trim(); if (!v) return; h = h.filter(function(x){ return x !== v; }); h.unshift(v); });
@@ -1686,6 +1714,253 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   $("histClear").addEventListener("click", function(){ try { localStorage.removeItem(HIST_KEY); } catch (e) {} showHist(); });
   showHist();
+
+  // ── 場所の候補：入力すると、駅・施設・住所の候補を出す（4都県の中だけ）。送ったことのある場所も上に出す ──
+  // 候補の取り寄せは suggestPlaces だけ。別の地図サービスに替えるときは、ここだけ差し替える
+  function photon(q){
+    return fetch("https://photon.komoot.io/api/?limit=8&lang=default&bbox=" + [BOX4[1], BOX4[0], BOX4[3], BOX4[2]].join(",") + "&q=" + encodeURIComponent(q))
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        return ((j && j.features) || []).map(function(f){
+          var g = f.properties || {}, c = f.geometry.coordinates;
+          var area = [g.state, g.city, g.district, g.locality].filter(function(x, i, a){ return x && a.indexOf(x) === i; }).join("");
+          var addr = (g.street || "") + (g.housenumber || "");
+          var name = g.name || addr;
+          if (!name) return null;
+          // 地図データの駅名は「東京」のように「駅」がないので付ける
+          if (/^(railway|public_transport)$/.test(g.osm_key) && /^(station|halt|stop_area)$/.test(g.osm_value) && !/駅$/.test(name)) name += "駅";
+          return {label: name, sub: area + (g.name && addr ? addr : ""), area: g.city || g.district || "", c: {lat: c[1], lng: c[0]}};
+        }).filter(function(x){ return x && inBox(x.c, BOX4); });
+      })
+      .catch(function(){ return []; });
+  }
+  function gsiList(q){
+    return fetch("https://msearch.gsi.go.jp/address-search/AddressSearch?q=" + encodeURIComponent(q))
+      .then(function(r){ return r.json(); })
+      .then(function(a){
+        return (a || []).slice(0, 30).map(function(x){
+          var c = x.geometry.coordinates, t = (x.properties || {}).title || "";
+          return {label: t, sub: "住所", c: {lat: c[1], lng: c[0]}};
+        }).filter(function(x){ return x.label && /^(東京都|神奈川県|千葉県|埼玉県)/.test(x.label) && inBox(x.c, BOX4); }).slice(0, 5);
+      })
+      .catch(function(){ return []; });
+  }
+  // 主な駅は改札口・出口まで、空港はターミナルまで候補に出す（駅の出口の位置は駅の位置、ターミナルはそれぞれの位置）
+  // 名前: [読み, 緯度, 経度, 区市町村, [出口…]]。空港の出口は [名前, 緯度, 経度]
+  var STATION_EXITS = {
+    "東京": ["とうきょう", 35.6812, 139.7671, "千代田区", ["丸の内北口","丸の内中央口","丸の内南口","八重洲北口","八重洲中央口","八重洲南口","日本橋口"]],
+    "有楽町": ["ゆうらくちょう", 35.6750, 139.7630, "千代田区", ["中央口","京橋口","日比谷口"]],
+    "新橋": ["しんばし", 35.6662, 139.7583, "港区", ["汐留口","銀座口","烏森口","日比谷口"]],
+    "浜松町": ["はままつちょう", 35.6554, 139.7571, "港区", ["北口","南口"]],
+    "品川": ["しながわ", 35.6285, 139.7388, "港区", ["高輪口","港南口"]],
+    "大崎": ["おおさき", 35.6197, 139.7286, "品川区", ["北改札","南改札"]],
+    "五反田": ["ごたんだ", 35.6260, 139.7236, "品川区", ["東口","西口"]],
+    "目黒": ["めぐろ", 35.6337, 139.7158, "品川区", ["東口","西口"]],
+    "恵比寿": ["えびす", 35.6467, 139.7101, "渋谷区", ["東口","西口"]],
+    "渋谷": ["しぶや", 35.6580, 139.7016, "渋谷区", ["ハチ公口","南口","東口","西口","新南改札"]],
+    "原宿": ["はらじゅく", 35.6702, 139.7027, "渋谷区", ["表参道口","竹下口"]],
+    "代々木": ["よよぎ", 35.6830, 139.7020, "渋谷区", ["東口","西口","北口"]],
+    "新宿": ["しんじゅく", 35.6896, 139.7006, "新宿区", ["東口","西口","南口","東南口","新南改札"]],
+    "高田馬場": ["たかだのばば", 35.7126, 139.7038, "新宿区", ["早稲田口","戸山口"]],
+    "池袋": ["いけぶくろ", 35.7295, 139.7109, "豊島区", ["東口","西口","北口"]],
+    "大塚": ["おおつか", 35.7317, 139.7286, "豊島区", ["北口","南口"]],
+    "日暮里": ["にっぽり", 35.7281, 139.7710, "荒川区", ["北改札","南改札"]],
+    "上野": ["うえの", 35.7138, 139.7773, "台東区", ["中央改札","公園口","浅草口","不忍口","入谷口"]],
+    "御徒町": ["おかちまち", 35.7075, 139.7748, "台東区", ["北口","南口"]],
+    "秋葉原": ["あきはばら", 35.6984, 139.7731, "千代田区", ["電気街口","昭和通り口","中央改札"]],
+    "神田": ["かんだ", 35.6918, 139.7709, "千代田区", ["北口","南口","東口","西口"]],
+    "飯田橋": ["いいだばし", 35.7020, 139.7450, "千代田区", ["東口","西口"]],
+    "四ツ谷": ["よつや", 35.6860, 139.7302, "新宿区", ["麹町口","赤坂口","四ツ谷口"]],
+    "中野": ["なかの", 35.7056, 139.6657, "中野区", ["北口","南口"]],
+    "吉祥寺": ["きちじょうじ", 35.7031, 139.5798, "武蔵野市", ["北口","南口"]],
+    "三鷹": ["みたか", 35.7027, 139.5609, "三鷹市", ["北口","南口"]],
+    "立川": ["たちかわ", 35.6980, 139.4137, "立川市", ["北口","南口"]],
+    "八王子": ["はちおうじ", 35.6556, 139.3389, "八王子市", ["北口","南口"]],
+    "町田": ["まちだ", 35.5423, 139.4455, "町田市", ["中央口","ターミナル口"]],
+    "二子玉川": ["ふたこたまがわ", 35.6115, 139.6268, "世田谷区", ["東口","西口"]],
+    "自由が丘": ["じゆうがおか", 35.6076, 139.6688, "目黒区", ["正面口","南口"]],
+    "下北沢": ["しもきたざわ", 35.6614, 139.6680, "世田谷区", ["東口","西口","南西口"]],
+    "錦糸町": ["きんしちょう", 35.6969, 139.8140, "墨田区", ["北口","南口"]],
+    "北千住": ["きたせんじゅ", 35.7493, 139.8048, "足立区", ["東口","西口"]],
+    "赤羽": ["あかばね", 35.7779, 139.7209, "北区", ["東口","西口"]],
+    "蒲田": ["かまた", 35.5626, 139.7161, "大田区", ["東口","西口"]],
+    "川崎": ["かわさき", 35.5313, 139.6969, "川崎市川崎区", ["東口","西口"]],
+    "武蔵小杉": ["むさしこすぎ", 35.5764, 139.6597, "川崎市中原区", ["北口","南口","横須賀線口"]],
+    "横浜": ["よこはま", 35.4658, 139.6223, "横浜市西区", ["東口","西口","きた東口","きた西口"]],
+    "新横浜": ["しんよこはま", 35.5068, 139.6175, "横浜市港北区", ["北口","篠原口"]],
+    "藤沢": ["ふじさわ", 35.3389, 139.4874, "藤沢市", ["北口","南口"]],
+    "大船": ["おおふな", 35.3540, 139.5310, "鎌倉市", ["東口","西口"]],
+    "鎌倉": ["かまくら", 35.3190, 139.5505, "鎌倉市", ["東口","西口"]],
+    "小田原": ["おだわら", 35.2564, 139.1554, "小田原市", ["東口","西口"]],
+    "大宮": ["おおみや", 35.9064, 139.6238, "さいたま市大宮区", ["東口","西口"]],
+    "浦和": ["うらわ", 35.8587, 139.6574, "さいたま市浦和区", ["東口","西口"]],
+    "川口": ["かわぐち", 35.8018, 139.7173, "川口市", ["東口","西口"]],
+    "川越": ["かわごえ", 35.9073, 139.4826, "川越市", ["東口","西口"]],
+    "所沢": ["ところざわ", 35.7872, 139.4730, "所沢市", ["東口","西口"]],
+    "千葉": ["ちば", 35.6130, 140.1135, "千葉市中央区", ["東口","西口"]],
+    "船橋": ["ふなばし", 35.7017, 139.9853, "船橋市", ["北口","南口"]],
+    "津田沼": ["つだぬま", 35.6912, 140.0204, "習志野市", ["北口","南口"]],
+    "海浜幕張": ["かいひんまくはり", 35.6485, 140.0420, "千葉市美浜区", ["北口","南口"]],
+    "舞浜": ["まいはま", 35.6363, 139.8838, "浦安市", ["北口","南口"]],
+    "松戸": ["まつど", 35.7843, 139.9006, "松戸市", ["東口","西口"]],
+    "柏": ["かしわ", 35.8620, 139.9711, "柏市", ["東口","西口"]],
+    "羽田空港": ["はねだくうこう", 0, 0, "大田区", [["第1ターミナル", 35.5490, 139.7840],["第2ターミナル", 35.5505, 139.7880],["第3ターミナル", 35.5440, 139.7690]]],
+    "成田空港": ["なりたくうこう", 0, 0, "成田市", [["第1ターミナル", 35.7647, 140.3864],["第2ターミナル", 35.7727, 140.3929],["第3ターミナル", 35.7768, 140.3958]]]
+  };
+  // ひらがなで入れてもしぼりこめるように、出口の言葉の読みも持つ（長い言葉から先に置きかえる）
+  var KANA = {"八重洲":"やえす","丸の内":"まるのうち","日本橋":"にほんばし","ハチ公":"はちこう","高輪":"たかなわ","港南":"こうなん","電気街":"でんきがい","昭和通り":"しょうわどおり",
+    "汐留":"しおどめ","銀座":"ぎんざ","烏森":"からすもり","日比谷":"ひびや","京橋":"きょうばし","表参道":"おもてさんどう","竹下":"たけした","早稲田":"わせだ","戸山":"とやま",
+    "麹町":"こうじまち","赤坂":"あかさか","四ツ谷":"よつや","横須賀線":"よこすかせん","篠原":"しのはら","正面":"しょうめん","南西":"なんせい",
+    "公園":"こうえん","浅草":"あさくさ","不忍":"しのばず","入谷":"いりや","中央":"ちゅうおう","新南":"しんみなみ","東南":"とうなん","きた":"きた",
+    "東":"ひがし","西":"にし","南":"みなみ","北":"きた","改札":"かいさつ","口":"ぐち","第":"だい"};
+  function kana(t){ Object.keys(KANA).forEach(function(k){ t = t.split(k).join(KANA[k]); }); return norm(t); }
+  function stationExits(q){
+    var n = norm(q).replace(/駅|エキ/, ""), out = [];
+    Object.keys(STATION_EXITS).forEach(function(st){
+      var d = STATION_EXITS[st], head = [norm(st), norm(d[0])].filter(function(h){ return n.indexOf(h) === 0; })[0];
+      if (head == null && n.length >= 2 && (norm(st).indexOf(n) === 0 || norm(d[0]).indexOf(n) === 0)) head = n; // 「羽田」→羽田空港 のように途中まででも
+      if (head == null) return;
+      var rest = n.slice(head.length), air = /空港$/.test(st);
+      d[4].forEach(function(ex){
+        var name = air ? ex[0] : ex, k = kana(name);
+        if (rest && norm(name).indexOf(rest) < 0 && k.indexOf(rest) < 0 && k.indexOf(rest.replace(/クチ$/, "グチ")) < 0) return;
+        out.push({label: st + (air ? " " : "駅 ") + name, sub: d[3] + (air ? "・空港のターミナル" : "・駅の出口"), area: d[3],
+          c: air ? {lat: ex[1], lng: ex[2]} : {lat: d[1], lng: d[2]}});
+      });
+    });
+    return out.slice(0, 8);
+  }
+  // 大手の地図サービスの候補（ブラウザ用のキー。このサイトからしか使えないように制限してある）。
+  // 空のとき・エラーや回数の上限で使えないときは、その場で無料の候補に切り替える
+  var PLACES_KEY = "AIzaSyDq6ZmPburL0C8lqSdOggncPQ66EBdcxjg";
+  var gOff = !PLACES_KEY, gSession = "";
+  function gToken(){ return gSession || (gSession = window.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now() + "-" + Math.random().toString(36).slice(2)); }
+  function gArea(t){ var m = String(t || "").replace(/^日本、?/, "").match(/^(?:東京都|神奈川県|千葉県|埼玉県)?(.+?[市区町村])/); return m ? m[1].replace(/^(.+?市)(.+区)$/, "$1$2") : ""; }
+  function google(q){
+    if (gOff) return Promise.resolve(null);
+    return fetch("https://places.googleapis.com/v1/places:autocomplete", {method: "POST",
+        headers: {"Content-Type": "application/json", "X-Goog-Api-Key": PLACES_KEY},
+        body: JSON.stringify({input: q, sessionToken: gToken(), languageCode: "ja", regionCode: "jp", includedRegionCodes: ["jp"],
+          locationRestriction: {rectangle: {low: {latitude: BOX4[0], longitude: BOX4[1]}, high: {latitude: BOX4[2], longitude: BOX4[3]}}}})})
+      .then(function(r){ if (!r.ok) throw r.status; return r.json(); })
+      .then(function(j){
+        return ((j && j.suggestions) || []).map(function(s){ return s.placePrediction; }).filter(Boolean).map(function(p){
+          var f = p.structuredFormat || {}, main = (f.mainText || {}).text || (p.text || {}).text || "", sub = ((f.secondaryText || {}).text || "").replace(/^日本、?/, "");
+          return {label: main, sub: sub, area: gArea(sub), gid: p.placeId, google: true};
+        }).filter(function(x){ return x.label && x.gid; });
+      })
+      .catch(function(){ gOff = true; return null; });
+  }
+  // 選んだ候補の位置を調べる（選んだときの1回だけ）
+  function googlePlace(id){
+    var t = gSession; gSession = "";
+    return fetch("https://places.googleapis.com/v1/places/" + encodeURIComponent(id) + "?languageCode=ja" + (t ? "&sessionToken=" + encodeURIComponent(t) : ""),
+        {headers: {"X-Goog-Api-Key": PLACES_KEY, "X-Goog-FieldMask": "location"}})
+      .then(function(r){ if (!r.ok) throw r.status; return r.json(); })
+      .then(function(j){ var c = j && j.location && {lat: j.location.latitude, lng: j.location.longitude}; return inBox(c, BOX4) ? c : null; })
+      .catch(function(){ return null; });
+  }
+  var suggCache = {};
+  function suggestPlaces(q){
+    if (q in suggCache) return Promise.resolve(suggCache[q]);
+    return google(q).then(function(g){
+      if (!g) return freePlaces(q);
+      return suggCache[q] = g.slice(0, 1).concat(stationExits(q), g.slice(1)).slice(0, 10); // 駅そのものの次に出口
+    });
+  }
+  function freePlaces(q){
+    var jobs = [photon(q).then(function(list){ return list.slice(0, 1).concat(stationExits(q), list.slice(1)); })]; // 駅そのものの次に出口
+    if (looksAddress(q)) jobs.unshift(gsiList(q));
+    return Promise.all(jobs).then(function(rs){
+      var seen = {}, out = [];
+      rs.forEach(function(list){ list.forEach(function(x){ var k = x.label + "|" + x.sub; if (!seen[k]) { seen[k] = 1; out.push(x); } }); });
+      // 選んだ都県の中の候補を先に
+      var pb = PREF_BOX[$("pref").value];
+      if (pb) out.sort(function(a, b){ return (inBox(b.c, pb) ? 1 : 0) - (inBox(a.c, pb) ? 1 : 0); });
+      return suggCache[q] = out.slice(0, 10);
+    });
+  }
+  // 入力欄に入れる文字：施設や駅は「名前（区市町村）」、住所はそのまま
+  function placeText(x){ return x.area && x.label.indexOf(x.area) < 0 && x.sub !== "住所" ? x.label + "（" + x.area + "）" : x.label; }
+  function esc(t){ return String(t).replace(/[&<>"]/g, function(ch){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]; }); }
+  ["pickup","via","dropoff","retPickup","retDropoff"].forEach(function(id){
+    var inp = $(id), wrap = document.createElement("div"), ul = document.createElement("ul"), items = [], seq = 0, timer = 0;
+    wrap.className = "cb"; ul.className = "cb-list"; ul.setAttribute("role", "listbox"); ul.id = id + "List"; ul.hidden = true;
+    inp.parentNode.insertBefore(wrap, inp); wrap.appendChild(inp); wrap.appendChild(ul);
+    var note = document.createElement("p"); note.className = "place-note"; note.hidden = true;
+    wrap.parentNode.insertBefore(note, wrap.nextSibling);
+    inp.setAttribute("role", "combobox"); inp.setAttribute("aria-autocomplete", "list"); inp.setAttribute("aria-expanded", "false"); inp.setAttribute("aria-controls", ul.id);
+    function close(){ ul.hidden = true; inp.setAttribute("aria-expanded", "false"); }
+    function draw(list, loading){
+      items = list;
+      var html = list.map(function(x, i){
+        return '<li role="option" data-i="' + i + '"' + (x.hist ? ' class="hist"' : '') + '><b>' + esc(x.label) + '</b>' + (x.sub ? '<small>' + esc(x.sub) + '</small>' : '') + '</li>';
+      }).join("");
+      if (loading) html += '<li class="none">候補を探しています…</li>';
+      else if (list.some(function(x){ return x.google; })) html += '<li class="none g-attr" aria-hidden="true">Google Maps</li>'; // 候補の提供元の表示（決まりで必要）
+      else if (!list.length && inp.value.trim().length >= 2) html = '<li class="none">候補が見つかりません。このまま入力するか、住所で入れてください</li>';
+      ul.innerHTML = html;
+      ul.hidden = !html; inp.setAttribute("aria-expanded", String(!!html));
+    }
+    function histFor(q){
+      var n = norm(q);
+      return readHist().filter(function(v){ return !n || norm(v).indexOf(n) >= 0; }).slice(0, q ? 3 : 5).map(function(v){ return {label: v, sub: "前に使った場所", hist: true}; });
+    }
+    function update(){
+      var q = inp.value.trim(), my = ++seq, hist = histFor(q);
+      clearTimeout(timer);
+      if (q.length < 2) { draw(hist); return; }
+      draw(hist, true);
+      timer = setTimeout(function(){
+        suggestPlaces(q).then(function(list){
+          if (my !== seq || document.activeElement !== inp) return;
+          draw(hist.concat(list.filter(function(x){ return hist.every(function(h){ return h.label !== placeText(x); }); })));
+        });
+      }, 350);
+    }
+    function pick(i){
+      var x = items[i];
+      if (!x) return;
+      var text = x.hist ? x.label : placeText(x); seq++;
+      inp.value = text; close();
+      var done = function(c){
+        if (c) pickedPlace[text] = c;
+        if (inp.value !== text) return; // 待つあいだに書きかえられたら何もしない
+        check(); inp.dispatchEvent(new Event("change", {bubbles: true}));
+      };
+      if (x.gid) { pickedPlace[text] = null; check(); googlePlace(x.gid).then(function(c){ if (!c) delete pickedPlace[text]; done(c); }); }
+      else done(x.c);
+    }
+    // 打ち間違い防止：候補から選んでいない場所には、ひとこと添える（そのままでも送れる）
+    function check(){
+      var v = inp.value.trim(), ok = !v || v in pickedPlace || readHist().indexOf(v) >= 0;
+      inp.classList.toggle("picked", !!v && ok);
+      note.hidden = ok;
+      note.textContent = ok ? "" : "候補から選ばれていません。打ち間違いがないか確かめるか、もう一度入力して候補から選んでください。";
+    }
+    inp.addEventListener("focus", update);
+    inp.addEventListener("input", update);
+    inp.addEventListener("blur", function(){ seq++; setTimeout(function(){ close(); check(); }, 150); });
+    inp.addEventListener("input", function(){ inp.classList.remove("picked"); note.hidden = true; });
+    inp.addEventListener("change", function(){ if (document.activeElement !== inp) check(); });
+    // スマホでもタップ1回で決まるよう mousedown で拾う
+    ul.addEventListener("mousedown", function(e){
+      var li = e.target.closest("li[data-i]");
+      if (!li) return;
+      e.preventDefault(); pick(Number(li.dataset.i));
+    });
+    inp.addEventListener("keydown", function(e){
+      if (ul.hidden) return;
+      var lis = Array.prototype.slice.call(ul.querySelectorAll("li[data-i]")), i = lis.findIndex(function(l){ return l.classList.contains("on"); });
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault(); if (!lis.length) return;
+        if (i >= 0) lis[i].classList.remove("on");
+        i = e.key === "ArrowDown" ? Math.min(lis.length - 1, i + 1) : Math.max(0, i - 1);
+        lis[i].classList.add("on"); lis[i].scrollIntoView({block: "nearest"});
+      } else if (e.key === "Enter" && lis.length) { e.preventDefault(); pick(Number(lis[Math.max(0, i)].dataset.i)); } // Enterでいちばん上の候補を入れる
+      else if (e.key === "Escape") close();
+    });
+  });
 
   function requestPayload(){
     var fd = new FormData(form);
@@ -1708,7 +1983,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     body.append("weight", String(Math.max.apply(null, pets.map(function(p){ return Number(p.weight) || 0; }))));
     body.append("age", many ? "" : pets[0].age);
     body.append("sex", many ? "" : pets[0].sex);
-    body.append("cage", ["借りたい","なし","持ち込む"].filter(function(v){ return pets.some(function(p){ return p.cage === v; }); }).join("・"));
+    body.append("cage", ["借りたい","なし","持ち込む","どれでも"].filter(function(v){ return pets.some(function(p){ return p.cage === v; }); }).join("・"));
     body.append("care", pets.some(function(p){ return p.care === "必要"; }) ? "必要" : "不要");
     body.append("pet_count", String(pets.length));
     body.append("pets", pets.map(petLine).join("\n"));
