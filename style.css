@@ -384,8 +384,9 @@ footer a{color:var(--ink-2)}
 .price-reason{background:var(--cream);padding:12px 14px;border-radius:12px;font-size:.84rem;line-height:1.8}
 .price-details{border-top:1px solid var(--line);padding:10px 0;font-size:.82rem}
 .price-details summary{cursor:pointer;font-weight:700}
-.price-details dl{display:grid;grid-template-columns:1fr auto;gap:5px 12px;margin:10px 0 0}
+.price-details dl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5px 12px;margin:10px 0 0}
 .price-details dt,.price-details dd{margin:0}
+.price-details dd{text-align:right}
 .partner-highway,.partner-surcharge{font-weight:700}
 .est{padding:0;overflow:hidden;background:transparent;border:0}
 .est .est-map{margin:0;border-radius:14px}
