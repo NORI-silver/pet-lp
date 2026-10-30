@@ -50,6 +50,12 @@ def fare_note(pref=None):
 # フォームの概算（index.html）に渡す料金データ
 FARE_JS = "var FARES = " + json.dumps({k: {x: c.get(x) for x in ("label","base_km","base","tiers","pick","back","night","night_hours","round_flat","wait","shop","pick_free_km","pick_over")} for k, c in CO.items()}, ensure_ascii=False) + ";\n  var AREA_FARES = " + json.dumps(FARES["areas"], ensure_ascii=False) + ";"
 
+# 予約側も同じ料金データを使う（Code.gs を貼り直すときに含まれる）。
+booking_path = os.path.join(ROOT, "booking", "Code.gs")
+booking_src = open(booking_path, encoding="utf-8").read()
+booking_src = re.sub(r"/\*SELECTION_FARES\*/.*?/\*/SELECTION_FARES\*/", lambda m: "/*SELECTION_FARES*/var SELECTION_FARES = " + json.dumps(CO, ensure_ascii=False) + ";/*/SELECTION_FARES*/", booking_src, count=1, flags=re.S)
+open(booking_path, "w", encoding="utf-8").write(booking_src)
+
 src = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
 # トップの料金表とフォームの概算を fares.json から書き込む
 TOP_TABLE = f"""        <h3>距離ごとの目安</h3>

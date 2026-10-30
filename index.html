@@ -395,6 +395,20 @@ footer a{color:var(--ink-2)}
 .op dd{margin:0}
 .yoyaku{background:#f7f4f1;border-radius:16px;padding:14px 16px;font-size:.86rem;color:var(--ink-2);margin:0 0 22px;line-height:1.7}
 .yoyaku b{display:inline-block;background:var(--ink);color:#fff;border-radius:999px;padding:2px 10px;font-size:.76rem;margin-right:8px}
+/* 条件に合う事業者を選ぶ */
+.partner-results{padding:0;margin:24px 0;scroll-margin-top:100px}
+.partner-results[hidden]{display:none}
+.partner-results h3{font-size:1.2rem;margin:0 0 8px}
+.partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:18px}
+.partner-card{cursor:pointer;border:1.5px solid var(--line);border-radius:18px;padding:22px;background:#fff;display:flex;flex-direction:column;gap:10px}
+.partner-card h4{font-size:1.08rem;margin:0}
+.partner-card p{margin:0;font-size:.86rem;line-height:1.7}
+.partner-card .partner-price{font-size:1.65rem;font-weight:800;color:var(--o-d)}
+.partner-card .partner-price small{display:block;font-size:.75rem;font-weight:600;color:var(--ink-2)}
+.partner-card .btn{margin-top:auto;font-size:.92rem;width:100%}
+.partner-card .partner-note{color:var(--ink-2);font-size:.78rem}
+.partner-card:hover,.partner-card:focus-within{border-color:var(--o);box-shadow:0 0 0 3px #fff1e6}
+#partnerStatus{font-size:.9rem;line-height:1.7}
 </style>
 <script type="application/ld+json">
 {
@@ -459,7 +473,7 @@ footer a{color:var(--ink-2)}
         <span class="kicker">ペットタクシー 東京・神奈川・千葉・埼玉 <b>完全予約制</b></span>
         <span class="catch">家族だから、<br><em>移動もやさしく。</em></span>
       </h1>
-      <p class="lede">犬のタクシーも、猫のタクシーも。動物病院への通院、お引っ越し、空港への送迎に。フォームに入力するだけで、その子にぴったりのペットタクシーを探して、お迎えの時間をお知らせします。</p>
+      <p class="lede">犬のタクシーも、猫のタクシーも。動物病院への通院、お引っ越し、空港への送迎に。フォームに入力すると、条件に合う事業者と料金の目安が見られます。お願いしたい1社を選んで、予約を依頼できます。</p>
       <ul class="pills">
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>手配料 0円</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>完全予約制</li>
@@ -509,7 +523,7 @@ footer a{color:var(--ink-2)}
 <!-- 6. フォーム -->
 <section class="form-sec" id="form">
   <div class="wrap">
-    <div class="sh"><span class="eyebrow">REQUEST</span><h2>ペットタクシーを予約する</h2><p>空いている車をお探しし、決まったらお迎えの時間と確定料金をメールでお知らせします。</p></div>
+    <div class="sh"><span class="eyebrow">REQUEST</span><h2>ペットタクシーを予約する</h2><p>条件を入力して、料金の目安を見ながら事業者を選べます。引き受けが決まったら、お迎えの時間と確定料金をメールでお知らせします。</p></div>
 
     <div class="mode-tabs" id="modeTabs" role="tablist" hidden>
       <button type="button" role="tab" aria-selected="true" data-mode="normal">予約する</button>
@@ -524,7 +538,7 @@ footer a{color:var(--ink-2)}
       <p class="emg-note">緊急対応の料金は通常の予約と違い、電話でペットタクシーからご案内します。急ぎでなければ、下のフォームからご予約ください（お迎えは3時間後から）。</p>
     </div>
     <div class="form-card">
-      <p class="yoyaku"><b>完全予約制</b>送信した時点では、まだ予約は確定していません。車が決まったことをお知らせするメールが届いたら、予約確定です。</p>
+      <p class="yoyaku"><b>完全予約制</b>事業者に依頼した時点では、まだ予約は確定していません。車が決まったことをお知らせするメールが届いたら、予約確定です。</p>
       <form id="petForm" novalidate>
         <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
@@ -599,15 +613,20 @@ footer a{color:var(--ink-2)}
 
         <label class="agree"><input type="checkbox" id="agree" required><span>「<a href="/terms/" target="_blank">利用規約</a>」とページ下の「キャンセルについて」「ご利用にあたって」「<a href="#privacy">個人情報の取り扱い</a>」を確認し、同意します。</span></label>
         <p id="err" role="alert"></p>
-        <button class="btn" type="submit">この内容で予約を申し込む<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
-        <p class="form-foot">手配料0円・送ったあとでも、決まる前ならいつでも取り消せます</p>
+        <button class="btn" id="findPartners" type="submit">条件に合う事業者を見る<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
+        <p class="form-foot">ここではまだ依頼は送信されません。事業者を選んでから予約を申し込みます。</p>
+        <section class="partner-results" id="partnerResults" aria-labelledby="partnerTitle" hidden>
+          <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
+          <p id="partnerStatus" role="status" aria-live="polite"></p>
+          <div class="partner-grid" id="partnerCards"></div>
+        </section>
       </form>
 
       <div id="thanks">
         <div class="ok"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
         <h3>受け付けました！</h3>
         <p id="thanks-id" style="display:none">受付番号 <b></b></p>
-        <p>まだ予約は決まっていません。いま、ぴったりのペットタクシーを探しています。<br><b id="thanks-min">60分</b>以内に、決まったかどうかをメールでお知らせします。</p>
+        <p>まだ予約は確定していません。<span id="thanksPartner"></span>に、空き状況を確認しています。ほかの事業者には依頼しません。<br><b id="thanks-min">60分</b>以内に、決まったかどうかをメールでお知らせします。</p>
         <p style="font-size:.85rem">受付のメールが数分たっても届かないときは、迷惑メールのフォルダもご確認ください。取り消すときは、受付メールのリンクからどうぞ。</p>
       </div>
     </div>
@@ -620,7 +639,7 @@ footer a{color:var(--ink-2)}
     <div class="sh"><span class="eyebrow">HOW IT WORKS</span><h2>ペットタクシーの頼み方は、<br>3ステップだけ。</h2><p>アプリのダウンロードも会員登録もいりません。</p></div>
     <ol class="steps">
       <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span class="no">01</span><h3>フォームに入力</h3><p>どこからどこへ、何日に、どんな子か。2匹以上でも、まとめて1回で入力できます。</p></li>
-      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span><span class="no">02</span><h3>ぴったりの車をお探し</h3><p>エリアやその子の大きさ、頭数、ケージの有無に合わせて、空いているペットタクシーを私たちが探します。</p></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span><span class="no">02</span><h3>料金を見て事業者を選ぶ</h3><p>エリアやその子の大きさ、頭数、ケージの希望に合う事業者を表示します。料金の目安を比べて、お願いしたい1社を選んでください。</p></li>
       <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/></svg></span><span class="no">03</span><h3>お迎え時間をお知らせ</h3><p>引き受ける会社が決まったら、会社名・お迎えの時間・確定料金（税込）をメールでお伝えします。このメールが届いたら予約成立です。</p></li>
     </ol>
   </div>
@@ -631,16 +650,16 @@ footer a{color:var(--ink-2)}
   <div class="wrap">
     <div class="sh"><span class="eyebrow">WHY</span><h2>ペットタクシー予約窓口ならでは。</h2><p>ペットタクシーは小さなお店が多く、電話がつながらない、空いていない、料金がわからない、がよくあります。</p></div>
     <div class="reasons">
-      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8L3.5 9.2l5.9-.9z"/></svg></div><h3>空いている車を、私たちが探す</h3><p>フォーム1回で、エリアのペットタクシーに空きを確かめます。引き受ける会社が見つかれば、お迎えの時間まで決めてお知らせします。</p></div>
-      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/></svg></div><h3>その子に合う車だけ</h3><p>一緒に乗る人数、頭数、体重、荷物の量、介護が必要かどうか。条件に合う車の会社にだけ、お声がけします。</p></div>
+      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8L3.5 9.2l5.9-.9z"/></svg></div><h3>お願いしたい1社を選べる</h3><p>フォームの条件に合う事業者を、料金の目安と一緒に表示します。選んだ1社に空き状況を確認し、引き受けが決まったらお知らせします。</p></div>
+      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/></svg></div><h3>その子に合う車だけ</h3><p>一緒に乗る人数、頭数、体重、荷物の量、介護が必要かどうか。条件に合う候補から、お客さまが選んだ1社に依頼します。</p></div>
       <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4M12 17h.01"/></svg></div><h3>料金の目安がその場でわかる</h3><p>お迎え場所と行き先を入れると、その区間の料金の目安がフォームに出ます。手配料は0円です。</p></div>
-      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0115.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 01-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></svg></div><h3>決まらなくても、かんたんに、もう一度</h3><p>空いている車が見つからなかったときは、メールのリンクから日時だけ変えて頼み直せます。入力し直しはいりません。</p></div>
+      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0115.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 01-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></svg></div><h3>決まらなくても、かんたんに、もう一度</h3><p>選んだ事業者が引き受けられなかったときは、メールのリンクから条件を見直し、事業者を選んで頼み直せます。</p></div>
       <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><h3>やりとりはメールで、記録が残る</h3><p>受付番号、お迎えの時間、料金の目安はすべてメールでお届け。あとから見返せて、言った・言わないの心配がありません。</p></div>
       <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></div><h3>ペットのことを、1回だけ</h3><p>犬種・猫種、体重、性格、介護のことは、フォームに1回書くだけ。何社にも同じ説明をくり返さなくて大丈夫です。</p></div>
     </div>
     <div class="vs">
       <table>
-        <thead><tr><th></th><th>自分で探す</th><th class="us">おまかせ</th></tr></thead>
+        <thead><tr><th></th><th>自分で探す</th><th class="us">当サイト</th></tr></thead>
         <tbody>
           <tr><td>連絡する回数</td><td>お店の数だけ電話</td><td class="us">フォーム1回</td></tr>
           <tr><td>空きの確認</td><td>1社ずつ聞く</td><td class="us">私たちが確認</td></tr>
@@ -839,8 +858,8 @@ footer a{color:var(--ink-2)}
       <div class="rule">
         <h3>予約が決まるまで</h3>
         <ul>
-          <li>フォームを送った時点では、まだ予約は決まっていません（受付のみ）。</li>
-          <li>当サイトがペットタクシーに空きを確認し、引き受ける会社が決まったら「お迎えが決まりました」のメールで、会社名・お迎えの時間・確定料金（税込）をお知らせします。このメールが届いた時点で予約成立です。</li>
+          <li>候補を見るだけでは依頼は送信されません。事業者を選んで依頼しても、その時点ではまだ予約は決まっていません（受付のみ）。</li>
+          <li>当サイトが選んだ1社に空きを確認し、引き受ける会社が決まったら「お迎えが決まりました」のメールで、会社名・お迎えの時間・確定料金（税込）をお知らせします。このメールが届いた時点で予約成立です。</li>
           <li>お申し込みから60分たっても見つからないときは、その旨をメールでお知らせします。この場合、料金は一切かかりません。</li>
           <li>運賃はペットタクシーへ直接お支払いください。当サイトの手配料は0円です。</li>
         </ul>
@@ -876,7 +895,7 @@ footer a{color:var(--ink-2)}
         <ul><li>ペットタクシーの空き確認と手配、お迎え時間・料金のご連絡</li><li>キャンセルやお問い合わせへの対応</li><li>サービスの改善（個人が特定できない形の集計に限ります）</li></ul>
         <p>ご本人の同意なく、この目的のほかに使うことはありません。</p>
         <h4>3. ペットタクシー事業者へのお伝え</h4>
-        <ul><li>空きを確認する段階では、お迎えの場所・行き先・日・ペットの情報だけを、エリアのペットタクシー事業者にお伝えします。お名前と連絡先はお伝えしません。</li><li>お迎えを引き受けた1社にだけ、送迎のためにお名前と連絡先をお伝えします。</li><li>法令にもとづく場合を除き、ご本人の同意なくそれ以外の第三者に提供することはありません。</li></ul>
+        <ul><li>空きを確認する段階では、お迎えの場所・行き先・日・ペットの情報だけを、お客さまが選んだ1社にお伝えします。お名前と連絡先はお伝えしません。</li><li>お迎えを引き受けた1社にだけ、送迎のためにお名前と連絡先をお伝えします。</li><li>法令にもとづく場合を除き、ご本人の同意なくそれ以外の第三者に提供することはありません。</li></ul>
         <h4>4. 安全な管理</h4>
         <ul><li>フォームの送信内容は、暗号化された通信（HTTPS）でお送りいただきます。</li><li>お預かりした情報は、セキュリティ対策の整った大手クラウドサービス上で保管し、見られるのは運営者だけに限っています。</li><li>なくしたり、漏れたり、勝手に使われたりしないよう、アクセスの制限やログインの保護などの安全管理に努めます。</li><li>情報は手配とご連絡に必要な期間だけ保管し、必要がなくなったら速やかに削除します。</li><li>料金の目安を出すため、入力した場所（「いまいる場所を入れる」を使ったときは端末の位置）を地図の検索サービスに送り、距離を調べます。端末の位置は、ボタンを押してご自身で許可したときだけ使い、当サイトには保存しません。</li><li>送ったことのある場所は、次に入力するときの候補として、お使いの端末のブラウザの中だけに保存します（当サイトには届きません）。フォームの「場所の候補を消す」でいつでも消せます。</li></ul>
         <h4>5. 確認・訂正・削除のご依頼</h4>
@@ -901,7 +920,7 @@ footer a{color:var(--ink-2)}
   <div class="wrap">
     <div class="last">
       <h2>大切な家族の移動に、やさしい一台を。</h2>
-      <p>完全予約制・手配料0円。フォームを送ったら、あとは決まるのを待つだけ。</p>
+      <p>完全予約制・手配料0円。条件を入力して、お願いしたい事業者を選べます。</p>
       <a class="btn center" href="#form">ペットタクシーを予約する<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
     </div>
   </div>
@@ -936,6 +955,37 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var petsBox = document.getElementById("pets");
   var countSel = document.getElementById("petCount");
   var $ = function(id){ return document.getElementById(id); };
+
+  var routeDetails = null, quoteCards = [], chosenQuote = null, quoteSeq = 0, sending = false;
+  function clearPartners(){
+    quoteSeq++; quoteCards = []; chosenQuote = null;
+    $("partnerResults").hidden = true; $("partnerCards").replaceChildren();
+    $("findPartners").disabled = false;
+    $("findPartners").textContent = "条件に合う事業者を見る";
+  }
+  form.addEventListener("input", clearPartners);
+  form.addEventListener("change", clearPartners);
+  function paintPartners(cards){
+    quoteCards = cards; $("partnerCards").replaceChildren();
+    $("partnerResults").hidden = false;
+    $("partnerStatus").textContent = cards.length ? cards.length + "社が候補です。空き状況は未確認です。料金は確定料金ではありません。選んだ1社だけに予約を依頼します。" : "この条件でご案内できる事業者が見つかりませんでした。日時・人数・ペットの条件を変えて、もう一度お試しください。依頼は送信されていません。";
+    cards.forEach(function(card){
+      var article = document.createElement("article"); article.className = "partner-card";
+      function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
+      text("h4", card.label);
+      var price = text("p", card.price.text, "partner-price");
+      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、引き受け時に金額をご案内" : "一般道・" + ((form.querySelector("input[name=trip]:checked") || {}).value || "片道") + "の目安（税込）"; price.appendChild(cap);
+      if (card.price.night) text("p", card.price.night);
+      text("p", card.car); text("p", card.payment);
+      text("p", "確定料金ではありません。高速代・駐車場代は含みません。対応の詳細と空き状況は事業者が確認します。", "partner-note");
+      var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn";
+      btn.textContent = "この事業者に予約を依頼する"; btn.setAttribute("aria-label", card.label + "に予約を依頼する");
+      btn.addEventListener("click", function(){ if (sending) return; chosenQuote = card; form.requestSubmit(); });
+      article.addEventListener("click", function(event){ if (!event.target.closest("button")) btn.click(); });
+      article.appendChild(btn); $("partnerCards").appendChild(article);
+    });
+    $("partnerTitle").focus(); $("partnerResults").scrollIntoView({behavior:"smooth",block:"start"});
+  }
 
   var today = new Date(); today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
   $("date").min = today.toISOString().slice(0,10);
@@ -1291,6 +1341,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
 
   function showEstimate(){
+    routeDetails = null; clearPartners();
     var seq = ++estSeq;
     lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0; // 計算が終わるまでは前の目安を送らない
     var viaOn = form.querySelector("input[name=via_on]:checked").value === "あり";
@@ -1371,6 +1422,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         est.innerHTML = '<div class="t">料金の目安</div><p>場所を確かめてください。距離がうまく計算できませんでした。「〇〇区〇〇1丁目」のように住所で入れると計算できます。</p>';
         return;
       }
+      routeDetails = {km:kmL,backKm:kmL2,from:{lat:a.lat,lng:a.lng},to:{lat:b.lat,lng:b.lng},backFrom:{lat:ra.lat,lng:ra.lng},backTo:{lat:rb.lat,lng:rb.lng}};
       var rL = range(kmL, kmL2), rH = range(kmH, kmH2);
       // 高速を使っても距離がほとんど変わらないときは、一般道だけを出す
       var hasHigh = !!(rs[1] && rs[1].hw >= 1 || later && rs[3] && rs[3].hw >= 1);
@@ -1408,7 +1460,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var notes = [round ? "行きと帰りを合わせた往復の目安です。" : "片道の目安です。"];
       if (!rs[0]) notes.push("道のりが調べられなかったため、直線の距離から長めに見て計算しています。");
       else notes.push("所要時間は目安で、道の混み具合で変わります。");
-      if (keys.length > 1) notes.push("このエリアの依頼先" + keys.length + "社の料金表で計算していて、どの会社が引き受けるかで変わります。");
+      if (keys.length > 1) notes.push("このエリアの料金表が登録されている" + keys.length + "社から計算した目安です。条件を入力すると、事業者ごとの目安が見られます。");
       if (keys.some(function(k){ return FARES[k].pick; })) notes.push("お迎え・回送料金を含みます。");
       if (rL[1] > rL[0] * 1.8) notes.push("お迎えに来る会社が遠いと、お迎えの料金が加わって" + yen(rL[1]) + (hasHigh ? "（高速ありは" + yen(rH[1]) + "＋高速代）" : "") + "になることもあります。");
       if (later) notes.push("待っていてもらう場合とあらためて迎えに来る場合の、安いほうで計算しています。");
@@ -1425,6 +1477,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 入力を変えたら、前の結果はすぐ消して、手が止まってから計算し直す（遅れて届いた前の結果は estSeq で捨てる）
   var estTimer = 0;
   function estSoon(){
+    routeDetails = null; clearPartners();
     clearTimeout(estTimer); estSeq++;
     lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
     if (!est.hidden) est.innerHTML = '<div class="t">料金の目安</div><p>入力に合わせて計算し直しています…</p>';
@@ -1602,6 +1655,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
 
   form.addEventListener("submit", function(e){
     e.preventDefault();
+    if (sending) return;
     err.style.display = "none";
     function fail(msg, el){
       err.textContent = msg; err.style.display = "block";
@@ -1667,16 +1721,44 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     body.append("est_fare", lastFareNum ? String(lastFareNum) : "");
     body.append("est_fare_text", lastFare); // フォームに出したとおりの表示（例：11,300〜13,900円）
 
+    if (!routeDetails) return fail("料金の目安を計算しています。お迎えと行き先の場所を確かめて、計算が終わってからもう一度押してください。", $("pickup"));
+    body.append("route_details", JSON.stringify(routeDetails));
+    if (!chosenQuote) {
+      $("partnerResults").hidden = true; $("partnerCards").replaceChildren();
+      var searchSeq = ++quoteSeq, search = new URLSearchParams(body);
+      // 候補検索では連絡先を送らず、予約の保存・メール送信もしない。
+      ["name","tel","email","notes","contact","website","pets","breed","age","sex","est_fare","est_fare_text"].forEach(function(k){ search.delete(k); });
+      search.set("kind", "quotes");
+      $("findPartners").disabled = true; $("findPartners").textContent = "候補を確認しています…";
+      fetch(GAS_URL, {method:"POST",body:search}).then(function(res){return res.json();}).then(function(result){
+        if (searchSeq !== quoteSeq) return;
+        if (!result || !result.ok || result.selection_version !== 1 || !Array.isArray(result.cards)) throw new Error("quotes");
+        $("findPartners").disabled = false; $("findPartners").textContent = "候補をもう一度確認する";
+        paintPartners(result.cards);
+      }).catch(function(){
+        if (searchSeq !== quoteSeq) return;
+        clearPartners(); fail("候補を確認できませんでした。依頼は送信されていません。時間をおいて、もう一度お試しください。");
+      });
+      return;
+    }
+    if (Date.now() >= chosenQuote.expires) { clearPartners(); return fail("候補の有効時間が過ぎました。もう一度、条件に合う事業者を確認してください。"); }
+    body.append("partner_id", chosenQuote.id);
+    body.append("quote_token", chosenQuote.token);
+    body.append("quote_expires", String(chosenQuote.expires));
+    var selectedLabel = chosenQuote.label;
     // 同じ内容の送り直しで二重受付にならないよう、入力が変わらないかぎり同じ合言葉（req_key）を使う
-    var sig = body.toString();
+    var identity = new URLSearchParams(body); identity.delete("quote_token"); identity.delete("quote_expires");
+    var sig = identity.toString();
     if (sig !== lastSig) { lastSig = sig; reqKey = Date.now().toString(36) + Math.random().toString(36).slice(2, 10); }
     body.append("req_key", reqKey);
 
-    var btn = form.querySelector("button[type=submit]");
+    var btn = $("findPartners");
     var label = btn.innerHTML;
+    quoteSeq++; sending = true; form.inert = true;
     btn.disabled = true;
-    btn.textContent = "送信しています…";
+    btn.textContent = "選んだ事業者へ依頼しています…";
     function retry(msg){
+      sending = false; form.inert = false;
       btn.disabled = false; btn.innerHTML = label;
       fail(msg);
     }
@@ -1686,10 +1768,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       .then(function(r){
         if (!r || !r.ok) {
           var e = String(r && r.error || "");
+          if (e.indexOf("selection_") === 0 || e === "missing") { clearPartners(); return retry("候補の条件が変わったか、有効時間が過ぎました。もう一度、条件に合う事業者を確認してください。"); }
           if (e === "area") return retry("お迎えの場所が東京・神奈川・千葉・埼玉の外のようです。いまはこの4都県からのお迎えだけ受け付けています。");
           if (e === "datetime") return retry("お迎えの日時が近すぎるか、読み取れませんでした。いまから3時間後より先の日時を選び直してください。");
           return retry("受け付けできませんでした。入力内容はそのまま残っています。少し時間をおいて、もう一度送ってください。");
         }
+        form.inert = false; sending = false;
+        $("thanksPartner").textContent = selectedLabel;
         if (r.id) { $("thanks-id").querySelector("b").textContent = r.id; $("thanks-id").style.display = "block"; }
         addHist([o.pickup, o.via, o.dropoff, o.ret_pickup, o.ret_dropoff]);
         form.style.display = "none";
@@ -1698,7 +1783,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         if (window.gtag) gtag("event", "generate_lead");
       })
       .catch(function(){
-        retry("受け付けできたか確認できませんでした。数分たっても受付メールが届かなければ、このまま「この内容で予約を申し込む」をもう一度押してください。入力内容はそのまま残っています。");
+        retry("受け付けできたか確認できませんでした。数分たっても受付メールが届かなければ、同じ事業者の「この事業者に予約を依頼する」をもう一度押してください。入力内容はそのまま残っています。");
       });
   });
 })();
