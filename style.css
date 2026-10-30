@@ -294,6 +294,9 @@ input.picked{border-color:#3d9a5b;background:#f3fbf5 url("data:image/svg+xml,%3C
 #err .need-list{justify-content:center}
 .missing{border-color:#c62828!important;box-shadow:0 0 0 3px rgba(198,40,40,.15)!important}
 .seg.missing{border-radius:12px}
+.partner-empty{display:block;background:#fdecea;border:2px solid #c62828;border-radius:14px;padding:14px 16px;color:#5f1d1d;font-size:.86rem;line-height:1.7}
+.partner-empty b{display:block;color:#c62828;font-size:1.05rem;margin-bottom:4px}
+.partner-empty b::before{content:"⚠️ "}
 .partner-loading{display:flex;gap:12px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:700}
 .partner-loading small{display:block;font-weight:400;font-size:.78rem;color:var(--ink-3)}
 .spin{flex:none;width:30px;height:30px;border-radius:50%;border:4px solid #ffe2cc;border-top-color:var(--o);animation:spin .8s linear infinite}
