@@ -1189,45 +1189,58 @@ function quoteSignature_(p, id, expires, price) {
 
 function selectionPrice_(pt, p) {
   var key = Object.keys(SELECTION_FARES).filter(function(k) { return SELECTION_FARES[k].partner_id === pt.id; })[0];
-  if (!key) return { amount: null, text: '料金はお見積もり', night: '' };
+  if (!key) return { amount:null,text:'料金はお見積もり',night:'' };
   var c = SELECTION_FARES[key], d;
   try { d = JSON.parse(p.route_details); } catch (e) { return null; }
-  if (!d || !['km', 'backKm'].every(function(k) { return typeof d[k] === 'number' && isFinite(d[k]) && d[k] >= 1 && d[k] <= 250; })) return null;
-  if (!['from', 'to', 'backFrom', 'backTo'].every(function(k) {
-    return d[k] && isFinite(d[k].lat) && isFinite(d[k].lng) && d[k].lat >= 20 && d[k].lat <= 46 && d[k].lng >= 122 && d[k].lng <= 154;
+  function validKm(v) { return typeof v === 'number' && isFinite(v) && v >= 1 && v <= 250; }
+  if (!d || !validKm(d.km) || !validKm(d.backKm)) return null;
+  if (!['from','to','backFrom','backTo'].every(function(k) {
+    return d[k] && isFinite(d[k].lat) && isFinite(d[k].lng) && d[k].lat>=20 && d[k].lat<=46 && d[k].lng>=122 && d[k].lng<=154;
   })) return null;
-  function distance(a, b) {
-    var t = Math.PI / 180, h = Math.pow(Math.sin((b.lat-a.lat)*t/2),2) + Math.cos(a.lat*t)*Math.cos(b.lat*t)*Math.pow(Math.sin((b.lng-a.lng)*t/2),2);
+  function distance(a,b) {
+    var t=Math.PI/180, h=Math.pow(Math.sin((b.lat-a.lat)*t/2),2)+Math.cos(a.lat*t)*Math.cos(b.lat*t)*Math.pow(Math.sin((b.lng-a.lng)*t/2),2);
     return 6371*2*Math.asin(Math.sqrt(Math.min(1,h)));
   }
-  function fee(base, at) {
-    return base + (c.shop ? Math.max(0, Math.ceil(distance({lat:c.shop[0],lng:c.shop[1]},at)*1.5)-(c.pick_free_km||0))*(c.pick_over||0) : 0);
+  function fee(base,at) {
+    return base+(c.shop?Math.max(0,Math.ceil(distance({lat:c.shop[0],lng:c.shop[1]},at)*1.5)-(c.pick_free_km||0))*(c.pick_over||0):0);
   }
-  function night(s) {
-    var at = parseJst_(s), h = at ? (at.getUTCHours()+9)%24 : 0;
-    return c.night_hours && c.night > 1 && (h >= c.night_hours[0] || h < c.night_hours[1]);
+  function night(at) {
+    var dt=parseJst_(at),h=dt?(dt.getUTCHours()+9)%24:0;
+    return !!(c.night_hours && c.night>1 && (h>=c.night_hours[0] || h<c.night_hours[1]));
   }
-  function fare(km, round, nt, from, to) {
-    var pb = fee(c.pick, from)+fee(c.back,to);
-    if (round && c.round_flat && km*2 <= c.round_flat[0]) return c.round_flat[1]+pb;
-    var amount = c.base, start = c.base_km;
-    c.tiers.forEach(function(t) { var end = t[0] == null ? Infinity : t[0]; if (km>start) amount += t[1]*(Math.min(km,end)-start); start=end; });
-    if (nt) amount = Math.ceil(amount*c.night/10)*10;
-    return amount*(round?2:1)+pb;
+  function ride(km) {
+    var amount=c.base,start=c.base_km;
+    c.tiers.forEach(function(t){var end=t[0]==null?Infinity:t[0];if(km>start)amount+=t[1]*(Math.min(km,end)-start);start=end;});
+    return amount;
   }
-  function total(n1, n2) {
-    var amount = fare(d.km,false,n1,d.from,d.to);
-    if (p.trip === '往復') {
-      amount += fare(d.backKm,false,n2,d.backFrom,d.backTo);
-      var gap = (parseJst_(p.return_datetime)-parseJst_(p.datetime))/60000-d.km*3;
-      var wk = gap<=30?'30':gap<=60?'60':gap<=120?'120':'';
-      if (wk && p.return_pickup === p.dropoff && p.return_dropoff === p.pickup && c.wait) amount = Math.min(amount,fare(d.km,true,n1,d.from,d.from)+c.wait[wk]);
+  var nt=night(p.datetime),nt2=night(p.return_datetime),round=p.trip==='往復';
+  function nightFee(amount,on){return on?Math.ceil(amount*c.night/10)*10-amount:0;}
+  function total(km,backKm) {
+    var r1=ride(km),r2=round?ride(backKm):0;
+    var separate={ride:r1+r2,pickup:fee(c.pick,d.from)+(round?fee(c.pick,d.backFrom):0),
+      returnFee:fee(c.back,d.to)+(round?fee(c.back,d.backTo):0),nightExtra:nightFee(r1,nt)+(round?nightFee(r2,nt2):0),wait:0,method:round?'帰りにあらためてお迎え':'片道'};
+    function sum(x){return x.ride+x.pickup+x.returnFee+x.nightExtra+x.wait;}
+    var chosen=separate;
+    if(round && p.return_pickup===p.dropoff && p.return_dropoff===p.pickup && c.wait){
+      var gap=(parseJst_(p.return_datetime)-parseJst_(p.datetime))/60000-km*3;
+      var wk=gap<=30?'30':gap<=60?'60':gap<=120?'120':'';
+      if(wk){
+        var waiting={ride:r1+r2,pickup:fee(c.pick,d.from),returnFee:fee(c.back,d.backTo),
+          nightExtra:nightFee(r1,nt)+nightFee(r2,nt2),wait:Number(c.wait[wk])||0,method:'待っていてもらう往復'};
+        if(c.round_flat && km+backKm<=c.round_flat[0]){waiting.ride=c.round_flat[1];waiting.nightExtra=0;}
+        if(sum(waiting)<=sum(separate))chosen=waiting;
+      }
     }
-    return Math.ceil(amount/100)*100;
+    var raw=sum(chosen);chosen.amount=Math.ceil(raw/100)*100;chosen.rounding=chosen.amount-raw;
+    return chosen;
   }
-  var nt = night(p.datetime), nt2 = night(p.return_datetime), amount = total(nt,nt2);
-  var extra = amount-total(false,false);
-  return { amount: amount, text: yen_(amount), night: nt || (p.trip === '往復' && nt2) ? '夜間・早朝の割増 ' + yen_(extra) + 'を含みます' : c.night_hours ? '指定時刻は夜間・早朝の割増対象外です' : '料金表に夜間・早朝の割増はありません' };
+  var local=total(d.km,d.backKm),highway=validKm(d.highKm)&&validKm(d.highBackKm)?total(d.highKm,d.highBackKm):null;
+  var feePoints=round?[d.from,d.to,d.backFrom,d.backTo]:[d.from,d.to];
+  var pickupExtra=c.shop && feePoints.some(function(at){return distance({lat:c.shop[0],lng:c.shop[1]},at)*1.5>c.pick_free_km;});
+  return {amount:local.amount,text:yen_(local.amount),local:local,highway:highway,
+    night:nt || (round&&nt2)?'夜間・早朝の割増 '+yen_(local.nightExtra)+'を含みます':c.night_hours?'指定時刻は夜間・早朝の割増対象外です':'料金表に夜間・早朝の割増はありません',
+    pickupNote:pickupExtra?'迎車・回送の3km超は単価が非公開のため、1kmにつき220円として仮計算しています。実際の料金は事業者が確認します。':!c.shop&&c.pick===0&&c.back===0?'迎車・回送は料金表に別記がないため、この概算では0円で計算しています。無料の確約ではありません。':'迎車・回送の距離は営業所からの概算です。',
+    routeNote:d.routeEstimated?'道のりを取得できなかったため、距離は直線距離からの概算です。':d.localEstimated?'一般道の距離は、高速区間から長めに推定しています。':''};
 }
 
 function selectionQuotes_(p) {

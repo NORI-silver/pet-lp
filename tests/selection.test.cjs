@@ -94,3 +94,22 @@ assert.equal(saved.length,1);assert.equal(receipts,1);assert.equal(waves,1);
 assert.equal(receiveCtx.receive_({...reservation,req_key:'new-request',quote_expires:1}).ok,false);
 assert.equal(saved.length,1);
 console.log('PASS: reservation persists selected provider and server price once; retries do not duplicate storage or mail');
+// Both route options include the component amounts; tolls are deliberately not invented.
+const highRequest={...p,route_details:JSON.stringify({km:20,backKm:20,highKm:15,highBackKm:15,from:point,to:point,backFrom:point,backTo:point,localEstimated:true})};
+const detailed=call('selectionQuotes_',highRequest).cards[0].price;
+assert.equal(detailed.local.amount,6200);
+assert.equal(detailed.highway.amount,5100);
+for(const fare of [detailed.local,detailed.highway]){
+ assert.equal(fare.amount,fare.ride+fare.pickup+fare.returnFee+fare.nightExtra+fare.wait+fare.rounding);
+ assert.equal(fare.pickup,330);assert.equal(fare.returnFee,330);
+}
+assert.ok(detailed.routeNote.includes('推定'));
+const nightDetailed=call('selectionQuotes_',{...highRequest,datetime:when.replace('12:00','20:00')}).cards[0].price;
+assert.ok(nightDetailed.local.nightExtra>0);assert.ok(nightDetailed.highway.nightExtra>0);
+const noHighway=call('selectionQuotes_',p).cards[0].price;
+assert.equal(noHighway.highway,null);
+const unknownPickup=call('selectionQuotes_',p).cards[1].price;
+assert.ok(unknownPickup.pickupNote.includes('無料の確約ではありません'));
+const farRequest={...p,route_details:JSON.stringify({km:10,backKm:10,from:{lat:35.8,lng:139.9},to:point,backFrom:point,backTo:point})};
+assert.ok(call('selectionQuotes_',farRequest).cards[0].price.pickupNote.includes('単価が非公開'));
+console.log('PASS: local/highway itemization sums to totals; surcharge and uncertain pickup fees are disclosed');

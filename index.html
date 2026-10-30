@@ -409,6 +409,15 @@ footer a{color:var(--ink-2)}
 .partner-card .partner-note{color:var(--ink-2);font-size:.78rem}
 .partner-card:hover,.partner-card:focus-within{border-color:var(--o);box-shadow:0 0 0 3px #fff1e6}
 #partnerStatus{font-size:.9rem;line-height:1.7}
+[hidden]#sendSelected{display:none}
+.price-reason{background:var(--cream);padding:12px 14px;border-radius:12px;font-size:.84rem;line-height:1.8}
+.price-details{border-top:1px solid var(--line);padding:10px 0;font-size:.82rem}
+.price-details summary{cursor:pointer;font-weight:700}
+.price-details dl{display:grid;grid-template-columns:1fr auto;gap:5px 12px;margin:10px 0 0}
+.price-details dt,.price-details dd{margin:0}
+.partner-highway,.partner-surcharge{font-weight:700}
+.est{padding:0;overflow:hidden;background:transparent;border:0}
+.est .est-map{margin:0;border-radius:14px}
 </style>
 <script type="application/ld+json">
 {
@@ -595,6 +604,14 @@ footer a{color:var(--ink-2)}
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
+        <p class="form-foot">条件が揃うと、合う事業者と料金の目安が自動で表示されます。カードを押すまで依頼は送信されません。</p>
+        <section class="partner-results" id="partnerResults" aria-labelledby="partnerTitle" hidden>
+          <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
+          <p id="partnerStatus" role="status" aria-live="polite"></p>
+          <p class="price-reason">料金が違うのは、各社の基本運賃・距離単価・お迎えに来る距離・夜間割増の決まりが違うためです。金額の差だけで、サービスの良し悪しは判断できません。</p>
+          <div class="partner-grid" id="partnerCards"></div>
+        </section>
+
         <div class="group">
           <div class="group-h"><span>3</span>ご連絡先</div>
           <div class="f"><label for="name">お名前</label>
@@ -613,12 +630,7 @@ footer a{color:var(--ink-2)}
 
         <label class="agree"><input type="checkbox" id="agree" required><span>「<a href="/terms/" target="_blank">利用規約</a>」とページ下の「キャンセルについて」「ご利用にあたって」「<a href="#privacy">個人情報の取り扱い</a>」を確認し、同意します。</span></label>
         <p id="err" role="alert"></p>
-        <p class="form-foot">条件が揃うと、合う事業者と料金の目安が自動で表示されます。カードを押すまで依頼は送信されません。</p>
-        <section class="partner-results" id="partnerResults" aria-labelledby="partnerTitle" hidden>
-          <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
-          <p id="partnerStatus" role="status" aria-live="polite"></p>
-          <div class="partner-grid" id="partnerCards"></div>
-        </section>
+        <button class="btn" id="sendSelected" type="submit" hidden>選んだ事業者に予約を依頼する</button>
       </form>
 
       <div id="thanks">
@@ -960,6 +972,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   function clearPartners(){
     quoteSeq++; quoteCards = []; chosenQuote = null;
     $("partnerResults").hidden = true; $("partnerCards").replaceChildren();
+    $("sendSelected").hidden = true;
     clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
   }
   function conditionsChanged(event){
@@ -1008,13 +1021,33 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
       text("h4", card.label);
       var price = text("p", card.price.text, "partner-price");
-      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、引き受け時に金額をご案内" : "一般道・" + ((form.querySelector("input[name=trip]:checked") || {}).value || "片道") + "の目安（税込）"; price.appendChild(cap);
-      if (card.price.night) text("p", card.price.night);
+      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + ((form.querySelector("input[name=trip]:checked") || {}).value || "片道") + "の合計目安（税込）"; price.appendChild(cap);
+      function breakdown(title, value){
+        var box = document.createElement("details"); box.className = "price-details";
+        var summary = document.createElement("summary"); summary.textContent = title; box.appendChild(summary);
+        var list = document.createElement("dl");
+        [["乗車運賃",value.ride],["迎車代",value.pickup],["回送代",value.returnFee],["夜間・早朝の割増",value.nightExtra],["待機料金",value.wait],["概算の端数調整",value.rounding]].forEach(function(row){
+          var dt = document.createElement("dt"), dd = document.createElement("dd"); dt.textContent=row[0]; dd.textContent=yen(row[1]); list.appendChild(dt); list.appendChild(dd);
+        });
+        box.appendChild(list); article.appendChild(box);
+      }
+      if (card.price.local) {
+        text("p", "迎車 " + yen(card.price.local.pickup) + "・回送 " + yen(card.price.local.returnFee) + "を含む", "partner-note");
+        if (card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
+        breakdown("一般道の料金内訳",card.price.local);
+        if (card.price.highway) {
+          text("p", "高速利用時 " + yen(card.price.highway.amount) + " ＋ 通行料の実費", "partner-highway");
+          breakdown("高速利用時の料金内訳",card.price.highway);
+        } else text("p", "高速利用時：経路・通行料を含めてお見積もり", "partner-highway");
+        if (card.price.pickupNote) text("p",card.price.pickupNote,"partner-note");
+        if (card.price.routeNote) text("p",card.price.routeNote,"partner-note");
+      }
+      if (card.price.night && !(card.price.local && card.price.local.nightExtra)) text("p",card.price.night,"partner-note");
       text("p", card.car); text("p", card.payment);
-      text("p", "確定料金ではありません。高速代・駐車場代は含みません。対応の詳細と空き状況は事業者が確認します。", "partner-note");
+      text("p", "確定料金ではありません。通行料・駐車場代は別途実費です。高速利用時の総額は、事業者の確認後にお知らせします。", "partner-note");
       var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn";
       btn.textContent = "この事業者に予約を依頼する"; btn.setAttribute("aria-label", card.label + "に予約を依頼する");
-      btn.addEventListener("click", function(){ if (sending) return; chosenQuote = card; form.requestSubmit(); });
+      btn.addEventListener("click", function(){ if (sending) return; chosenQuote = card; $("sendSelected").hidden = false; $("sendSelected").textContent = card.label + "に予約を依頼する"; form.requestSubmit(); });
       article.addEventListener("click", function(event){ if (!event.target.closest("button")) btn.click(); });
       article.appendChild(btn); $("partnerCards").appendChild(article);
     });
@@ -1390,17 +1423,17 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       est.hidden = false;
       if (cs.some(function(c){ return !c; })) {
         lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
-        est.innerHTML = '<div class="t">料金の目安</div><p>場所を確かめてください。東京・神奈川・千葉・埼玉の中で、場所が見つかりませんでした。「〇〇区〇〇1丁目」のように住所で入れると計算できます。<a href="#price">距離ごとの目安</a>もご覧ください。</p>';
+        est.innerHTML = '<div class="t">ルートの地図</div><p>場所を確かめてください。東京・神奈川・千葉・埼玉の中で、場所が見つかりませんでした。「〇〇区〇〇1丁目」のように住所で入れると計算できます。<a href="#price">距離ごとの目安</a>もご覧ください。</p>';
         return;
       }
       var go = cs.slice(0, pts.length), back = retOther ? cs.slice(pts.length) : go.slice().reverse();
-      est.innerHTML = '<div class="t">料金の目安</div><p>道のりを調べています…</p>';
+      est.innerHTML = '<div class="t">ルートの地図</div><p>道のりを調べています…</p>';
       // お迎えの都県は、選んだ欄よりお迎えの場所を優先する（依頼する会社は都県で決まるため）。食い違ったら欄を直して知らせる
       prefOf(cs[0]).then(function(pp){
         if (seq !== estSeq) return;
         if (pp === "out") {
           lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
-          est.innerHTML = '<div class="t">料金の目安</div><p>場所を確かめてください。お迎えの場所が、東京・神奈川・千葉・埼玉の外のようです。</p>';
+          est.innerHTML = '<div class="t">ルートの地図</div><p>場所を確かめてください。お迎えの場所が、東京・神奈川・千葉・埼玉の外のようです。</p>';
           return;
         }
         if (pp && pp !== $("pref").value) {
@@ -1420,91 +1453,20 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       });
     });
     function render(cs, go, back, rs){
-      var keys = AREA_FARES[$("pref").value] || Object.keys(FARES);
-      var a = go[0], b = go[go.length - 1], ra = back[0], rb = back[back.length - 1];
-      // 行きのお迎えから帰りのお迎えまでの間で、待ち時間の区分（30分・1時間・2時間）を決める。わからないときは2時間
-      function waitKey(km){
-        var t0 = new Date($("date").value + "T" + $("hour").value + ":" + $("minute").value + ":00+09:00");
-        var t1 = new Date($("retDate").value + "T" + $("retHour").value + ":" + $("retMinute").value + ":00+09:00");
-        var gap = isNaN(t0) || isNaN(t1) ? 120 : (t1 - t0) / 60000 - km * 3; // 移動は時速20kmで見る
-        return gap <= 30 ? "30" : gap <= 60 ? "60" : gap <= 120 ? "120" : "";
+      var a = go[0], b = go[go.length-1], ra = back[0], rb = back[back.length-1];
+      var kmL = kmOf(rs[0],go), kmL2 = kmOf(rs[2],back);
+      var kmH = kmOf(rs[1],go), kmH2 = kmOf(rs[3],back);
+      if (Math.max(kmL,kmL2)>250) {
+        est.innerHTML = '<p>場所を確かめてください。距離がうまく計算できませんでした。</p>'; return;
       }
-      // km＝行き、km2＝帰りの距離で、依頼先ごとの目安を出して [安い, 高い] を返す
-      function range(km, km2){
-        var by = {};
-        var v = keys.map(function(k){
-          var c = FARES[k];
-          var night = isNightFor(c, "hour"), night2 = $("retHour").value !== "" ? isNightFor(c, "retHour") : night;
-          if (!later) return fareOf(c, km, false, night, a, b);
-          // 往復は、あらためて迎えに来る場合と、待っている場合（帰りの場所が同じで2時間以内）の安いほう
-          var sep = fareOf(c, km, false, night, a, b) + fareOf(c, km2, false, night2, ra, rb);
-          var wk = waitKey(km);
-          if (retOther || !wk || !c.wait) return sep;
-          return Math.min(sep, fareOf(c, km, true, night, a, a) + c.wait[wk]);
-        }).map(function(v, i){ return by[keys[i]] = Math.ceil(v / 100) * 100; }).sort(function(x, y){ return x - y; });
-        return [v[0], v[v.length - 1], by];
-      }
-      // 依頼先が2社以上なら幅で見せる（上限ではなく目安）
-      function rtext(r){ return r[0] === r[1] ? yen(r[0]) : r[0].toLocaleString("ja-JP") + "〜" + yen(r[1]); }
-      // 画面では、幅が広すぎるとき（お迎えに来る会社が遠いとき）は安いほうを出して、高いほうは下に書き添える
-      // ただし夜間割増がかかるときは、割増で上がった金額が見えるよう幅で出す
-      function stext(r){ return r[1] > r[0] * 1.8 && !nightOn ? yen(r[0]) + "〜" : rtext(r); }
-      var kmL = kmOf(rs[0], go), kmH = kmOf(rs[1], go), kmL2 = kmOf(rs[2], back), kmH2 = kmOf(rs[3], back);
-      // 4都県の中の移動でこの距離を超えるのは場所の取り違えなので、目安を出さない
-      if (Math.max(kmL, kmL2) > 250) {
-        lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
-        est.innerHTML = '<div class="t">料金の目安</div><p>場所を確かめてください。距離がうまく計算できませんでした。「〇〇区〇〇1丁目」のように住所で入れると計算できます。</p>';
-        return;
-      }
-      routeDetails = {km:kmL,backKm:kmL2,from:{lat:a.lat,lng:a.lng},to:{lat:b.lat,lng:b.lng},backFrom:{lat:ra.lat,lng:ra.lng},backTo:{lat:rb.lat,lng:rb.lng}};
-      var rL = range(kmL, kmL2), rH = range(kmH, kmH2);
-      // 高速を使っても距離がほとんど変わらないときは、一般道だけを出す
       var hasHigh = !!(rs[1] && rs[1].hw >= 1 || later && rs[3] && rs[3].hw >= 1);
-      var round = later;
-      lastKm = later ? kmL + kmL2 : kmL; lastFareNum = rL[1];
-      lastKmHigh = hasHigh ? (later ? kmH + kmH2 : kmH) : 0;
-      lastFare = "一般道（約" + lastKm + "km）" + rtext(rL) + (hasHigh ? "／高速あり（約" + lastKmHigh + "km）" + rtext(rH) + "＋高速代" : "");
-      // 所要時間（片道）。道路データの時間は空いているときの値なので、3割増しにして5分単位で切り上げる
-      function mins(rt){ return rt ? "・" + (later ? "片道" : "") + "約" + Math.ceil(rt.min * 1.3 / 5) * 5 + "分" : ""; }
-      // 夜間・早朝の割増：かかる会社ごとに、何時から・何割・この区間でいくら増えるかを出す
-      var nightLines = [], nightOn = false, noNight = [];
-      keys.forEach(function(k){
-        var c = FARES[k];
-        if (!(c.night > 1 && c.night_hours)) { noNight.push(c); return; }
-        var nh = c.night_hours, pct = Math.round((c.night - 1) * 10), r = ride(c, kmL);
-        var add = Math.ceil(r * c.night / 10) * 10 - r;
-        var on1 = isNightFor(c, "hour"), on2 = later && $("retHour").value !== "" && isNightFor(c, "retHour");
-        if (on1 || on2) {
-          nightOn = true;
-          nightLines.push(c.label + "は、" + nh[0] + "時〜朝" + nh[1] + "時のお迎えで乗車料金が" + pct + "割増し（" +
-            (later ? (on1 && on2 ? "行きも帰りも" : on1 ? "行き" : "帰り") + "が対象、" : "") + "一般道で片道＋" + yen(add) + "）。" +
-            "この会社の目安は、割増込みで" + yen(rL[2][k]) + (hasHigh ? "（高速ありは" + yen(rH[2][k]) + "＋高速代）" : "") + "です。");
-        } else {
-          nightLines.push(c.label + "は、" + nh[0] + "時〜朝" + nh[1] + "時のお迎えだと乗車料金が" + pct + "割増し（この区間で片道＋" + yen(add) + "）になります。");
-        }
-      });
-      noNight.forEach(function(c){
-        var k = Object.keys(FARES).filter(function(x){ return FARES[x] === c; })[0];
-        nightLines.push(c.label + "は、夜間の割増が料金表にありません" + (nightOn ? "（目安は" + yen(rL[2][k]) + "のまま）" : "") + "。");
-      });
-      var nightBox = nightLines.length ? '<div class="est-night"><b>🌙 ' + (nightOn ? "夜間・早朝の割増を含みます" : "夜間・早朝の割増") + '</b>' + nightLines.join("") + '</div>' : "";
-      if (nightOn) lastFare += "（夜間割増込み）";
-      var rows = '<div class="row"><span>一般道<small>約' + lastKm + 'km' + mins(rs[0]) + '</small></span><b>' + stext(rL) + (nightOn ? '<small class="nt">🌙 夜間割増込み</small>' : "") + '</b></div>' +
-        (hasHigh ? '<div class="row"><span>高速あり<small>約' + lastKmHigh + 'km' + mins(rs[1]) + '</small></span><b>' + stext(rH) + '<small>＋高速代</small>' + (nightOn ? '<small class="nt">🌙 夜間割増込み</small>' : "") + '</b></div>' : "");
-      var notes = [round ? "行きと帰りを合わせた往復の目安です。" : "片道の目安です。"];
-      if (!rs[0]) notes.push("道のりが調べられなかったため、直線の距離から長めに見て計算しています。");
-      else notes.push("所要時間は目安で、道の混み具合で変わります。");
-      if (keys.length > 1) notes.push("このエリアの料金表が登録されている" + keys.length + "社から計算した目安です。条件を入力すると、事業者ごとの目安が見られます。");
-      if (keys.some(function(k){ return FARES[k].pick; })) notes.push("お迎え・回送料金を含みます。");
-      if (rL[1] > rL[0] * 1.8) notes.push("お迎えに来る会社が遠いと、お迎えの料金が加わって" + yen(rL[1]) + (hasHigh ? "（高速ありは" + yen(rH[1]) + "＋高速代）" : "") + "になることもあります。");
-      if (later) notes.push("待っていてもらう場合とあらためて迎えに来る場合の、安いほうで計算しています。");
-      notes.push("駐車場代は含みません。確定料金は、一般道の場合と高速道路を使う場合の両方をお知らせします。");
-      if (nightOn) notes = notes.filter(function(n){ return n.indexOf("お迎えに来る会社が遠いと") < 0; }); // 幅で出すので不要
-      var flag = '<div class="est-flag"><b>確定料金ではありません</b>これは目安です。確定料金（税込）は、お迎えが決まったときに引き受けた会社からメールでお知らせします。</div>';
-      est.innerHTML = '<div class="t">料金の目安（' + (round ? "往復" : "片道") + (nightOn ? "・夜間割増込み" : "") + '）</div><div class="est-rows">' + rows + '</div>' + flag + nightBox +
-        (rs[0] ? '<div class="est-map" id="estMap" role="img" aria-label="ルートの地図"></div><p class="legend"><i class="l1"></i>ルート' + (hasHigh ? "（高速道路を使う道順です）" : "") + '</p>' : "") +
-        '<p>' + notes.join("") + '</p>';
-      if (rs[1]) drawMap($("estMap"), rs[1], null, go);
+      routeDetails = {km:kmL,backKm:kmL2,highKm:hasHigh?kmH:null,highBackKm:hasHigh?kmH2:null,
+        from:{lat:a.lat,lng:a.lng},to:{lat:b.lat,lng:b.lng},backFrom:{lat:ra.lat,lng:ra.lng},backTo:{lat:rb.lat,lng:rb.lng},
+        routeEstimated:!rs[0],localEstimated:hasHigh};
+      lastKm = later ? kmL+kmL2 : kmL; lastKmHigh = hasHigh ? (later ? kmH+kmH2 : kmH) : 0;
+      lastFare = ""; lastFareNum = 0;
+      est.innerHTML = '<div class="est-map" id="estMap" role="img" aria-label="お迎え場所から行き先までの地図"></div>';
+      drawMap($("estMap"), rs[1], null, go);
       queuePartners();
     }
   }
@@ -1515,7 +1477,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     routeDetails = null; clearPartners();
     clearTimeout(estTimer); estSeq++;
     lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
-    if (!est.hidden) est.innerHTML = '<div class="t">料金の目安</div><p>入力に合わせて計算し直しています…</p>';
+    if (!est.hidden) est.innerHTML = '<p>入力に合わせて地図を更新しています…</p>';
     estTimer = setTimeout(showEstimate, 1000);
   }
   function estNow(){ clearTimeout(estTimer); showEstimate(); }
@@ -1779,7 +1741,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (sig !== lastSig) { lastSig = sig; reqKey = Date.now().toString(36) + Math.random().toString(36).slice(2, 10); }
     body.append("req_key", reqKey);
 
-    var btn = $("partnerCards").querySelectorAll("button")[quoteCards.indexOf(chosenQuote)];
+    var btn = $("sendSelected");
     var label = btn.textContent;
     clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
     quoteSeq++; sending = true; form.inert = true;
