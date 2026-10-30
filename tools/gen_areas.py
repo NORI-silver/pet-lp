@@ -48,12 +48,12 @@ def fare_note(pref=None):
     tail = "目安には高速代・駐車場代は入っていません。確定料金（税込）は、お迎えが決まったときに引き受けた会社から、一般道の場合と高速道路を使う場合の両方をお知らせします。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。" + "".join(c.get("pay", "") for c in cs)
     return head + "".join(c["note"] for c in cs) + FARES.get("area_note", {}).get(pref or "", "") + tail
 # フォームの概算（index.html）に渡す料金データ
-FARE_JS = "var FARES = " + json.dumps({k: {x: c.get(x) for x in ("label","base_km","base","tiers","pick","back","night","night_hours","round_flat","wait","shop","pick_free_km","pick_over")} for k, c in CO.items()}, ensure_ascii=False) + ";\n  var AREA_FARES = " + json.dumps(FARES["areas"], ensure_ascii=False) + ";"
+FARE_JS = "var FARES = " + json.dumps({k: {x: c.get(x) for x in ("label","base_km","base","tiers","pick","back","night","night_hours","round_flat","wait","shop","pick_free_km","pick_over")} for k, c in CO.items()}, ensure_ascii=False) + ";\n  var REVIEWS = " + json.dumps({c["partner_id"]: c["review_url"] for c in CO.values() if c.get("partner_id") and c.get("review_url")}, ensure_ascii=False) + ";\n  var AREA_FARES = " + json.dumps(FARES["areas"], ensure_ascii=False) + ";"
 
 # 予約側も同じ料金データを使う（Code.gs を貼り直すときに含まれる）。
 booking_path = os.path.join(ROOT, "booking", "Code.gs")
 booking_src = open(booking_path, encoding="utf-8").read()
-booking_src = re.sub(r"/\*SELECTION_FARES\*/.*?/\*/SELECTION_FARES\*/", lambda m: "/*SELECTION_FARES*/var SELECTION_FARES = " + json.dumps(CO, ensure_ascii=False) + ";/*/SELECTION_FARES*/", booking_src, count=1, flags=re.S)
+booking_src = re.sub(r"/\*SELECTION_FARES\*/.*?/\*/SELECTION_FARES\*/", lambda m: "/*SELECTION_FARES*/var SELECTION_FARES = " + json.dumps({k: {x: v for x, v in c.items() if x != "review_url"} for k, c in CO.items()}, ensure_ascii=False) + ";/*/SELECTION_FARES*/", booking_src, count=1, flags=re.S)
 open(booking_path, "w", encoding="utf-8").write(booking_src)
 
 src = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
