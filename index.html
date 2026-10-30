@@ -613,8 +613,7 @@ footer a{color:var(--ink-2)}
 
         <label class="agree"><input type="checkbox" id="agree" required><span>「<a href="/terms/" target="_blank">利用規約</a>」とページ下の「キャンセルについて」「ご利用にあたって」「<a href="#privacy">個人情報の取り扱い</a>」を確認し、同意します。</span></label>
         <p id="err" role="alert"></p>
-        <button class="btn" id="findPartners" type="submit">条件に合う事業者を見る<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
-        <p class="form-foot">ここではまだ依頼は送信されません。事業者を選んでから予約を申し込みます。</p>
+        <p class="form-foot">条件が揃うと、合う事業者と料金の目安が自動で表示されます。カードを押すまで依頼は送信されません。</p>
         <section class="partner-results" id="partnerResults" aria-labelledby="partnerTitle" hidden>
           <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
           <p id="partnerStatus" role="status" aria-live="polite"></p>
@@ -957,14 +956,49 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var $ = function(id){ return document.getElementById(id); };
 
   var routeDetails = null, quoteCards = [], chosenQuote = null, quoteSeq = 0, sending = false;
+  var quoteTimer = 0, quoteRefreshTimer = 0;
   function clearPartners(){
     quoteSeq++; quoteCards = []; chosenQuote = null;
     $("partnerResults").hidden = true; $("partnerCards").replaceChildren();
-    $("findPartners").disabled = false;
-    $("findPartners").textContent = "条件に合う事業者を見る";
+    clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
   }
-  form.addEventListener("input", clearPartners);
-  form.addEventListener("change", clearPartners);
+  function conditionsChanged(event){
+    if (["name","tel","email","notes","agree","website"].indexOf(event.target.id || event.target.name) >= 0) return;
+    clearPartners(); queuePartners();
+  }
+  form.addEventListener("input", conditionsChanged);
+  form.addEventListener("change", conditionsChanged);
+  function queuePartners(){
+    clearTimeout(quoteTimer);
+    if (!sending) quoteTimer = setTimeout(loadPartners, 650);
+  }
+  function loadPartners(){
+    if (sending || !routeDetails || !GAS_URL) return;
+    var required = ["pref","pickup","dropoff","date","hour","minute","petCount","riders","luggage"];
+    if (required.some(function(id){return !$(id).value || !$(id).checkValidity();})) return;
+    if (!petsBox.children.length || Array.prototype.some.call(petsBox.querySelectorAll("input"),function(el){return !el.checkValidity();})) return;
+    var fd = new FormData(form), when = fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute");
+    var at = new Date(when + ":00+09:00"), round = fd.get("trip") === "往復";
+    if (!fd.get("trip") || !(at > new Date(Date.now() + MIN_LEAD_H * 3600e3))) return;
+    if (round) {
+      if (["retDate","retHour","retMinute","retPickup","retDropoff"].some(function(id){return !$(id).checkValidity();})) return;
+      if (!(new Date(fd.get("ret_date") + "T" + fd.get("ret_hour") + ":" + fd.get("ret_minute") + ":00+09:00") > at)) return;
+    }
+    var searchSeq = ++quoteSeq, search = requestPayload().body;
+    ["name","tel","email","notes","contact","website","pets","breed","age","sex","est_fare","est_fare_text"].forEach(function(k){search.delete(k);});
+    search.set("kind", "quotes");
+    $("partnerResults").hidden = false; $("partnerCards").replaceChildren();
+    $("partnerStatus").textContent = "条件に合う事業者と料金を確認しています…";
+    fetch(GAS_URL,{method:"POST",body:search}).then(function(res){return res.json();}).then(function(result){
+      if (searchSeq !== quoteSeq || sending) return;
+      if (!result || !result.ok || result.selection_version !== 1 || !Array.isArray(result.cards)) throw new Error("quotes");
+      paintPartners(result.cards);
+      quoteRefreshTimer = setTimeout(function(){clearPartners();queuePartners();}, 14*60000);
+    }).catch(function(){
+      if (searchSeq !== quoteSeq || sending) return;
+      $("partnerStatus").textContent = "候補を確認できませんでした。少し待っても表示されない場合は、日時や条件を入れ直してください。依頼は送信されていません。";
+    });
+  }
   function paintPartners(cards){
     quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
@@ -984,7 +1018,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       article.addEventListener("click", function(event){ if (!event.target.closest("button")) btn.click(); });
       article.appendChild(btn); $("partnerCards").appendChild(article);
     });
-    $("partnerTitle").focus(); $("partnerResults").scrollIntoView({behavior:"smooth",block:"start"});
+    // 自動更新では入力中のフォーカスやスクロール位置を動かさない。
   }
 
   var today = new Date(); today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
@@ -1471,6 +1505,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         (rs[0] ? '<div class="est-map" id="estMap" role="img" aria-label="ルートの地図"></div><p class="legend"><i class="l1"></i>ルート' + (hasHigh ? "（高速道路を使う道順です）" : "") + '</p>' : "") +
         '<p>' + notes.join("") + '</p>';
       if (rs[1]) drawMap($("estMap"), rs[1], null, go);
+      queuePartners();
     }
   }
 
@@ -1653,38 +1688,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   $("histClear").addEventListener("click", function(){ try { localStorage.removeItem(HIST_KEY); } catch (e) {} showHist(); });
   showHist();
 
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-    if (sending) return;
-    err.style.display = "none";
-    function fail(msg, el){
-      err.textContent = msg; err.style.display = "block";
-      if (el) { el.focus(); el.scrollIntoView({block:"center"}); }
-    }
-    if (!form.checkValidity()) {
-      var bad = form.querySelector(":invalid");
-      return fail(bad && bad.id === "agree" ? "確認のチェックを入れてください。" : "まだ入力されていない項目があります。", bad);
-    }
+  function requestPayload(){
     var fd = new FormData(form);
     var when = fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute");
-    var at = new Date(when + ":00+09:00");
-    if (!(at > new Date(Date.now() + MIN_LEAD_H * 3600e3))) return fail("お迎えは、いまから" + MIN_LEAD_H + "時間後より先の日時を選んでください。", $("hour"));
-    var trip = String(fd.get("trip") || ""), retWhen = "";
-    if (trip === "往復") {
-      retWhen = fd.get("ret_date") + "T" + fd.get("ret_hour") + ":" + fd.get("ret_minute");
-      if (!(new Date(retWhen + ":00+09:00") > at)) return fail("帰りのお迎え日時は、行きのお迎えより後にしてください。", $("retHour"));
-    }
-    if (!GAS_URL) return fail("ただいまフォームを準備中です。少し時間をおいてお試しください。");
-    // お迎えの場所と都県が食い違ったまま送らない（依頼する会社は都県で決まる）
-    var pq = $("pickup").value.trim(), pv = $("pref").value;
-    var pc = geoCache[(!pv || /^(東京|神奈川|千葉|埼玉)/.test(pq) ? "" : pv) + pq];
-    var pp = pc && prefCache[pc.lat.toFixed(4) + "," + pc.lng.toFixed(4)];
-    if (pp === "out") return fail("お迎えの場所が、東京・神奈川・千葉・埼玉の外のようです。お迎えの場所を確かめてください。", $("pickup"));
-    if (pp && pp !== pv) {
-      setSelect($("pref"), pp); estNow();
-      return fail("お迎えの場所が" + pp + "のようなので、お迎えの都県を「" + pp + "」に直しました。料金の目安を確かめてから、もう一度送信してください。", $("pref"));
-    }
-
+    var trip = String(fd.get("trip") || "");
+    var retWhen = trip === "往復" ? fd.get("ret_date") + "T" + fd.get("ret_hour") + ":" + fd.get("ret_minute") : "";
     var body = new URLSearchParams();
     ["website","pref","pickup","dropoff","trip","riders","luggage","name","tel","email"].forEach(function(k){ body.append(k, fd.get(k) || ""); });
     var o = collect();
@@ -1721,27 +1729,46 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     body.append("est_fare", lastFareNum ? String(lastFareNum) : "");
     body.append("est_fare_text", lastFare); // フォームに出したとおりの表示（例：11,300〜13,900円）
 
-    if (!routeDetails) return fail("料金の目安を計算しています。お迎えと行き先の場所を確かめて、計算が終わってからもう一度押してください。", $("pickup"));
     body.append("route_details", JSON.stringify(routeDetails));
-    if (!chosenQuote) {
-      $("partnerResults").hidden = true; $("partnerCards").replaceChildren();
-      var searchSeq = ++quoteSeq, search = new URLSearchParams(body);
-      // 候補検索では連絡先を送らず、予約の保存・メール送信もしない。
-      ["name","tel","email","notes","contact","website","pets","breed","age","sex","est_fare","est_fare_text"].forEach(function(k){ search.delete(k); });
-      search.set("kind", "quotes");
-      $("findPartners").disabled = true; $("findPartners").textContent = "候補を確認しています…";
-      fetch(GAS_URL, {method:"POST",body:search}).then(function(res){return res.json();}).then(function(result){
-        if (searchSeq !== quoteSeq) return;
-        if (!result || !result.ok || result.selection_version !== 1 || !Array.isArray(result.cards)) throw new Error("quotes");
-        $("findPartners").disabled = false; $("findPartners").textContent = "候補をもう一度確認する";
-        paintPartners(result.cards);
-      }).catch(function(){
-        if (searchSeq !== quoteSeq) return;
-        clearPartners(); fail("候補を確認できませんでした。依頼は送信されていません。時間をおいて、もう一度お試しください。");
-      });
-      return;
+    return {body:body,o:o};
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if (sending) return;
+    err.style.display = "none";
+    function fail(msg, el){
+      err.textContent = msg; err.style.display = "block";
+      if (el) { el.focus(); el.scrollIntoView({block:"center"}); }
     }
-    if (Date.now() >= chosenQuote.expires) { clearPartners(); return fail("候補の有効時間が過ぎました。もう一度、条件に合う事業者を確認してください。"); }
+    if (!form.checkValidity()) {
+      var bad = form.querySelector(":invalid");
+      return fail(bad && bad.id === "agree" ? "確認のチェックを入れてください。" : "まだ入力されていない項目があります。", bad);
+    }
+    var fd = new FormData(form);
+    var when = fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute");
+    var at = new Date(when + ":00+09:00");
+    if (!(at > new Date(Date.now() + MIN_LEAD_H * 3600e3))) return fail("お迎えは、いまから" + MIN_LEAD_H + "時間後より先の日時を選んでください。", $("hour"));
+    var trip = String(fd.get("trip") || ""), retWhen = "";
+    if (trip === "往復") {
+      retWhen = fd.get("ret_date") + "T" + fd.get("ret_hour") + ":" + fd.get("ret_minute");
+      if (!(new Date(retWhen + ":00+09:00") > at)) return fail("帰りのお迎え日時は、行きのお迎えより後にしてください。", $("retHour"));
+    }
+    if (!GAS_URL) return fail("ただいまフォームを準備中です。少し時間をおいてお試しください。");
+    // お迎えの場所と都県が食い違ったまま送らない（依頼する会社は都県で決まる）
+    var pq = $("pickup").value.trim(), pv = $("pref").value;
+    var pc = geoCache[(!pv || /^(東京|神奈川|千葉|埼玉)/.test(pq) ? "" : pv) + pq];
+    var pp = pc && prefCache[pc.lat.toFixed(4) + "," + pc.lng.toFixed(4)];
+    if (pp === "out") return fail("お迎えの場所が、東京・神奈川・千葉・埼玉の外のようです。お迎えの場所を確かめてください。", $("pickup"));
+    if (pp && pp !== pv) {
+      setSelect($("pref"), pp); estNow();
+      return fail("お迎えの場所が" + pp + "のようなので、お迎えの都県を「" + pp + "」に直しました。料金の目安を確かめてから、もう一度送信してください。", $("pref"));
+    }
+
+    if (!chosenQuote) { queuePartners(); return; }
+    if (!routeDetails) return fail("料金の目安を計算しています。計算が終わるまでお待ちください。", $("pickup"));
+    var payload = requestPayload(), body = payload.body, o = payload.o;
+    if (Date.now() >= chosenQuote.expires) { clearPartners(); queuePartners(); return fail("候補を更新しています。表示されたら、もう一度事業者を選んでください。"); }
     body.append("partner_id", chosenQuote.id);
     body.append("quote_token", chosenQuote.token);
     body.append("quote_expires", String(chosenQuote.expires));
@@ -1752,14 +1779,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (sig !== lastSig) { lastSig = sig; reqKey = Date.now().toString(36) + Math.random().toString(36).slice(2, 10); }
     body.append("req_key", reqKey);
 
-    var btn = $("findPartners");
-    var label = btn.innerHTML;
+    var btn = $("partnerCards").querySelectorAll("button")[quoteCards.indexOf(chosenQuote)];
+    var label = btn.textContent;
+    clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
     quoteSeq++; sending = true; form.inert = true;
     btn.disabled = true;
     btn.textContent = "選んだ事業者へ依頼しています…";
     function retry(msg){
       sending = false; form.inert = false;
-      btn.disabled = false; btn.innerHTML = label;
+      if (btn.isConnected) { btn.disabled = false; btn.textContent = label; }
       fail(msg);
     }
     // 受付の仕組みが保存できたと返してきたときだけ、完了画面にする
@@ -1768,7 +1796,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       .then(function(r){
         if (!r || !r.ok) {
           var e = String(r && r.error || "");
-          if (e.indexOf("selection_") === 0 || e === "missing") { clearPartners(); return retry("候補の条件が変わったか、有効時間が過ぎました。もう一度、条件に合う事業者を確認してください。"); }
+          if (e.indexOf("selection_") === 0 || e === "missing") { clearPartners(); retry("候補を更新しています。表示されたら、もう一度事業者を選んでください。"); queuePartners(); return; }
           if (e === "area") return retry("お迎えの場所が東京・神奈川・千葉・埼玉の外のようです。いまはこの4都県からのお迎えだけ受け付けています。");
           if (e === "datetime") return retry("お迎えの日時が近すぎるか、読み取れませんでした。いまから3時間後より先の日時を選び直してください。");
           return retry("受け付けできませんでした。入力内容はそのまま残っています。少し時間をおいて、もう一度送ってください。");
