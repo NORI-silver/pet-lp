@@ -15,7 +15,7 @@ window.fetch=function(url,options){
  if(u.includes('msearch.gsi.go.jp')) { const q=new URL(u).searchParams.get('q'); data=[{properties:{title:q},geometry:{coordinates:q.includes('目黒')?[139.698,35.641]:[139.67,35.63]}}]; }
  else if(u.includes('nominatim.openstreetmap.org')) data=[{lat:'35.63',lon:'139.67'}];
  else if(u.includes('mreversegeocoder.gsi.go.jp')) data={results:{muniCd:'13112'}};
- else if(u.includes('router.project-osrm.org')) data={code:'NoRoute'};
+ else if(u.includes('router.project-osrm.org')) data={code:'Ok',routes:[{distance:10000,duration:1200,legs:[{steps:[{name:'確認用高速道路',distance:5000}]}],geometry:{coordinates:[[139.67,35.63],[139.698,35.641]]}}]};
  if(data!==undefined) return Promise.resolve(new Response(JSON.stringify(data),{headers:{'Content-Type':'application/json'}}));
  return originalFetch(url,options);
 };
@@ -38,4 +38,4 @@ http.createServer(async(req,res)=>{
  const ext=path.extname(filename);res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.jpg':'image/jpeg','.webp':'image/webp','.png':'image/png','.svg':'image/svg+xml'})[ext]||'application/octet-stream');
  if(filename===path.join(root,'index.html'))body=body.toString().replace('var GAS_URL = "https://script.google.com/macros/s/AKfycbyxsd8L8g_5Nt3HnApx2ZQnXFyPBsNfuHSvBlJKRVDtAIVr0EnqB-0raxwMPNOVl_Jg/exec";','var GAS_URL = "/demo-api";').replace('</head>',fixtures+'</head>').replace('<body>','<body><div style="padding:12px;background:#fff1b8;text-align:center;font-weight:bold">動作確認用：表示データはサンプルです。予約保存・メール送信は行いません。</div>');
  res.end(body);
-}).listen(8765,'127.0.0.1',()=>console.log('Preview: http://127.0.0.1:8765/#form'));
+}).listen(Number(process.env.PET_PREVIEW_PORT)||8765,'127.0.0.1',()=>console.log('Preview: http://127.0.0.1:8765/#form'));
