@@ -1584,7 +1584,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   (function(){
     var tabs = $("modeTabs"), box = $("emgBox");
     tabs.hidden = false;
-    $("emgNote").textContent = "当サイトとは別の会社・病院です（" + EMG.checked + "に各公式サイトで確認）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。急ぎでなければ、下のフォームからご予約ください（お迎えは3時間後から）。";
+    $("emgNote").textContent = "当サイトとは別の会社・病院です（" + EMG.checked + "に各公式サイトで確認）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。急ぎでなければ、「予約する」タブからご予約ください（お迎えは3時間後から）。";
     function item(x, sub){
       var a = document.createElement("a"); a.className = "emg-item"; a.href = x.url; a.target = "_blank"; a.rel = "noopener";
       a.innerHTML = "<b></b><small></small>";
@@ -1602,6 +1602,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     function setMode(m){
       tabs.querySelectorAll("button").forEach(function(b){ b.setAttribute("aria-selected", String(b.dataset.mode === m)); });
       box.hidden = m !== "emg";
+      document.querySelector(".form-sec .form-card").hidden = m === "emg";
     }
     tabs.addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) setMode(b.dataset.mode); });
     $("emgPref").addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) show(b.dataset.p); });
