@@ -1832,7 +1832,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   // 大手の地図サービスの候補（ブラウザ用のキー。このサイトからしか使えないように制限してある）。
   // 空のとき・エラーや回数の上限で使えないときは、その場で無料の候補に切り替える
-  var PLACES_KEY = "";
+  var PLACES_KEY = "AIzaSyDq6ZmPburL0C8lqSdOggncPQ66EBdcxjg";
   var gOff = !PLACES_KEY, gSession = "";
   function gToken(){ return gSession || (gSession = window.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now() + "-" + Math.random().toString(36).slice(2)); }
   function gArea(t){ var m = String(t || "").replace(/^日本、?/, "").match(/^(?:東京都|神奈川県|千葉県|埼玉県)?(.+?[市区町村])/); return m ? m[1].replace(/^(.+?市)(.+区)$/, "$1$2") : ""; }
