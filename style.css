@@ -234,7 +234,7 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est-rows b small{font-size:.75rem;font-weight:700;margin-left:2px}
 .est-map{height:300px;border-radius:14px;overflow:hidden;margin:4px 0 6px;background:#efe9e3;z-index:0}
 .est-pin{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--o);border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
-.est-pin b{transform:rotate(45deg);color:#fff;font-size:.78rem;font-weight:800;line-height:1}
+.est-pin b{transform:rotate(45deg);color:#fff;font-family:var(--round);font-size:.78rem;font-weight:800;line-height:1}
 .est-pin.to{background:#1c1a18}.est-pin.via{background:#3b47a8}
 .est-wrap{position:relative}
 .est-info{position:absolute;top:10px;right:10px;z-index:800;background:rgba(255,255,255,.96);border-radius:12px;padding:8px 12px;box-shadow:0 2px 10px rgba(0,0,0,.18);font-size:.8rem;line-height:1.45;color:var(--ink)}
@@ -400,7 +400,7 @@ footer a{color:var(--ink-2)}
 .partner-card .partner-note{color:var(--ink-2);font-size:.78rem}
 .partner-review{align-self:flex-start;font-size:.84rem;font-weight:700;color:var(--o-d);text-decoration:underline;text-underline-offset:3px}
 .partner-review:hover{color:var(--ink)}
-.partner-card .partner-score{display:flex;align-items:center;gap:6px;font-size:.86rem;color:var(--ink-2)}
+.partner-card .partner-score{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:.86rem;color:var(--ink-2)}
 .partner-score b{font-size:1rem;color:var(--ink)}
 .partner-score .stars{position:relative;display:inline-block;font-size:1rem;letter-spacing:1px;line-height:1;color:#ddd5cc}
 .partner-score .stars::before{content:"★★★★★"}
@@ -410,8 +410,28 @@ footer a{color:var(--ink-2)}
 #partnerStatus{font-size:.9rem;line-height:1.7}
 [hidden]#sendSelected{display:none}
 .price-reason{background:var(--cream);padding:12px 14px;border-radius:12px;font-size:.84rem;line-height:1.8}
-.price-details{border-top:1px solid var(--line);padding:6px 0;font-size:.72rem;color:var(--ink-3)}
-.price-details summary{cursor:pointer;font-weight:400}
+.partner-card .price-details{font-size:.78rem;color:var(--ink-2);background:none;box-shadow:none;border-radius:0;margin:0;padding:0}
+.partner-card .price-details summary{font-weight:400;font-size:.78rem;padding:0;line-height:1.7;text-decoration:underline dotted;text-underline-offset:3px}
+.partner-card .price-details summary::after{content:" 内訳▸";white-space:nowrap;position:static;display:inline;width:auto;height:auto;margin:0;background:none;border-radius:0;transform:none}
+.partner-card .price-details[open] summary::after{content:" 内訳▾";transform:none}
+.partner-card .price-details[open]{background:var(--cream);border-radius:10px;padding:6px 10px}
+.partner-card .price-details.hw summary{font-weight:700}
+.price-details dl{font-size:.76rem}
+.partner-caution{background:#fff4ec;border:1.5px solid var(--o);border-radius:12px;padding:9px 12px;font-size:.8rem!important;line-height:1.6!important;color:var(--ink)}
+.partner-caution b{display:block;color:var(--o-d);font-size:.92rem}
+.partner-review-open{background:none;border:0;padding:0;font:inherit;font-size:.82rem;color:var(--o-d);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.partner-review-src{font-family:Roboto,Arial,sans-serif;font-size:.7rem;color:#5f6368;margin-left:auto;white-space:nowrap}
+.review-panel{background:var(--cream);border-radius:12px;padding:10px 12px;font-size:.8rem;cursor:default}
+.review-panel[hidden]{display:none}
+.review-head{font-size:.74rem!important;color:var(--ink-3)}
+.review-item{border-top:1px solid var(--line);padding:8px 0}
+.review-who{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.review-who img{border-radius:50%}
+.review-who a,.review-who span{font-weight:700;color:var(--ink)}
+.review-who small{color:var(--ink-3)}
+.review-item p{font-size:.8rem!important;margin:4px 0!important;white-space:pre-wrap}
+.review-link{font-size:.72rem;color:var(--ink-3)}
+.review-panel .partner-review-src{display:block;text-align:right;margin-top:6px}
 .price-details dl{display:grid;grid-template-columns:1fr auto;gap:5px 12px;margin:10px 0 0}
 .price-details dt,.price-details dd{margin:0}
 .partner-highway,.partner-surcharge{font-weight:700}

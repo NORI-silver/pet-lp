@@ -263,7 +263,7 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est-rows b small{font-size:.75rem;font-weight:700;margin-left:2px}
 .est-map{height:300px;border-radius:14px;overflow:hidden;margin:4px 0 6px;background:#efe9e3;z-index:0}
 .est-pin{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--o);border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
-.est-pin b{transform:rotate(45deg);color:#fff;font-size:.78rem;font-weight:800;line-height:1}
+.est-pin b{transform:rotate(45deg);color:#fff;font-family:var(--round);font-size:.78rem;font-weight:800;line-height:1}
 .est-pin.to{background:#1c1a18}.est-pin.via{background:#3b47a8}
 .est-wrap{position:relative}
 .est-info{position:absolute;top:10px;right:10px;z-index:800;background:rgba(255,255,255,.96);border-radius:12px;padding:8px 12px;box-shadow:0 2px 10px rgba(0,0,0,.18);font-size:.8rem;line-height:1.45;color:var(--ink)}
@@ -429,7 +429,7 @@ footer a{color:var(--ink-2)}
 .partner-card .partner-note{color:var(--ink-2);font-size:.78rem}
 .partner-review{align-self:flex-start;font-size:.84rem;font-weight:700;color:var(--o-d);text-decoration:underline;text-underline-offset:3px}
 .partner-review:hover{color:var(--ink)}
-.partner-card .partner-score{display:flex;align-items:center;gap:6px;font-size:.86rem;color:var(--ink-2)}
+.partner-card .partner-score{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:.86rem;color:var(--ink-2)}
 .partner-score b{font-size:1rem;color:var(--ink)}
 .partner-score .stars{position:relative;display:inline-block;font-size:1rem;letter-spacing:1px;line-height:1;color:#ddd5cc}
 .partner-score .stars::before{content:"★★★★★"}
@@ -439,8 +439,28 @@ footer a{color:var(--ink-2)}
 #partnerStatus{font-size:.9rem;line-height:1.7}
 [hidden]#sendSelected{display:none}
 .price-reason{background:var(--cream);padding:12px 14px;border-radius:12px;font-size:.84rem;line-height:1.8}
-.price-details{border-top:1px solid var(--line);padding:6px 0;font-size:.72rem;color:var(--ink-3)}
-.price-details summary{cursor:pointer;font-weight:400}
+.partner-card .price-details{font-size:.78rem;color:var(--ink-2);background:none;box-shadow:none;border-radius:0;margin:0;padding:0}
+.partner-card .price-details summary{font-weight:400;font-size:.78rem;padding:0;line-height:1.7;text-decoration:underline dotted;text-underline-offset:3px}
+.partner-card .price-details summary::after{content:" 内訳▸";white-space:nowrap;position:static;display:inline;width:auto;height:auto;margin:0;background:none;border-radius:0;transform:none}
+.partner-card .price-details[open] summary::after{content:" 内訳▾";transform:none}
+.partner-card .price-details[open]{background:var(--cream);border-radius:10px;padding:6px 10px}
+.partner-card .price-details.hw summary{font-weight:700}
+.price-details dl{font-size:.76rem}
+.partner-caution{background:#fff4ec;border:1.5px solid var(--o);border-radius:12px;padding:9px 12px;font-size:.8rem!important;line-height:1.6!important;color:var(--ink)}
+.partner-caution b{display:block;color:var(--o-d);font-size:.92rem}
+.partner-review-open{background:none;border:0;padding:0;font:inherit;font-size:.82rem;color:var(--o-d);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.partner-review-src{font-family:Roboto,Arial,sans-serif;font-size:.7rem;color:#5f6368;margin-left:auto;white-space:nowrap}
+.review-panel{background:var(--cream);border-radius:12px;padding:10px 12px;font-size:.8rem;cursor:default}
+.review-panel[hidden]{display:none}
+.review-head{font-size:.74rem!important;color:var(--ink-3)}
+.review-item{border-top:1px solid var(--line);padding:8px 0}
+.review-who{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.review-who img{border-radius:50%}
+.review-who a,.review-who span{font-weight:700;color:var(--ink)}
+.review-who small{color:var(--ink-3)}
+.review-item p{font-size:.8rem!important;margin:4px 0!important;white-space:pre-wrap}
+.review-link{font-size:.72rem;color:var(--ink-3)}
+.review-panel .partner-review-src{display:block;text-align:right;margin-top:6px}
 .price-details dl{display:grid;grid-template-columns:1fr auto;gap:5px 12px;margin:10px 0 0}
 .price-details dt,.price-details dd{margin:0}
 .partner-highway,.partner-surcharge{font-weight:700}
@@ -1044,6 +1064,34 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       $("partnerStatus").textContent = "候補を確認できませんでした。少し待っても表示されない場合は、日時や条件を入れ直してください。依頼は送信されていません。";
     });
   }
+  // 口コミ本文：押したときだけ取り寄せる（毎回取り寄せ、保存しない）
+  function toggleReviews(id, panel, btn){
+    if (!panel.hidden) { panel.hidden = true; btn.setAttribute("aria-expanded", "false"); return; }
+    panel.hidden = false; btn.setAttribute("aria-expanded", "true");
+    if (panel.dataset.done) return;
+    panel.textContent = "口コミを読み込んでいます…";
+    var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
+    fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
+      if (!j || !j.ok || !Array.isArray(j.reviews)) throw 0;
+      panel.dataset.done = "1"; panel.replaceChildren();
+      var head = document.createElement("p"); head.className = "review-head";
+      head.textContent = "関連度の高い順に、最大5件を表示しています（全" + j.count + "件）。";
+      panel.appendChild(head);
+      j.reviews.forEach(function(v){
+        var item = document.createElement("div"); item.className = "review-item";
+        var who = document.createElement("div"); who.className = "review-who";
+        if (v.photo) { var img = document.createElement("img"); img.src = v.photo; img.alt = ""; img.width = 28; img.height = 28; img.loading = "lazy"; img.referrerPolicy = "no-referrer"; who.appendChild(img); }
+        var name = document.createElement(v.authorUrl ? "a" : "span"); name.textContent = v.author || "投稿者";
+        if (v.authorUrl) { name.href = v.authorUrl; name.target = "_blank"; name.rel = "noopener"; }
+        var meta = document.createElement("small"); meta.textContent = "★" + v.rating + (v.when ? "・" + v.when : "");
+        who.append(name, meta); item.appendChild(who);
+        if (v.text) { var t = document.createElement("p"); t.textContent = v.text; item.appendChild(t); }
+        if (v.url) { var a = document.createElement("a"); a.className = "review-link"; a.href = v.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = "元の口コミを見る"; item.appendChild(a); }
+        panel.appendChild(item);
+      });
+      var src = document.createElement("p"); src.className = "partner-review-src"; src.textContent = "Google Maps"; panel.appendChild(src);
+    }).catch(function(){ panel.textContent = "口コミを読み込めませんでした。時間をおいてもう一度お試しください。"; });
+  }
   function paintPartners(cards){
     quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
@@ -1059,12 +1107,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var stars = document.createElement("span"); stars.className = "stars"; stars.setAttribute("aria-hidden", "true");
         stars.style.setProperty("--fill", Math.max(0, Math.min(5, rv.rating)) / 5 * 100 + "%");
         var num = document.createElement("b"); num.textContent = Number(rv.rating).toFixed(1);
-        score.append(stars, num, "（口コミ " + rv.count + "件）");
         score.setAttribute("aria-label", "口コミの評価 5点中" + Number(rv.rating).toFixed(1) + "点、" + rv.count + "件");
+        // 口コミの件数を押すと、このページの中で口コミを読める（出どころの表示「Google Maps」は規約で必要。訳さずそのまま出す）
+        var open = document.createElement("button"); open.type = "button"; open.className = "partner-review-open";
+        open.textContent = "口コミ" + rv.count + "件を見る";
+        var src = document.createElement("span"); src.className = "partner-review-src"; src.textContent = "Google Maps";
+        score.append(stars, num, open, src);
         article.appendChild(score);
-        var src = document.createElement(rv.url ? "a" : "span"); src.className = "partner-review";
-        if (rv.url) { src.href = rv.url; src.target = "_blank"; src.rel = "noopener"; }
-        src.textContent = "Google マップの口コミ"; article.appendChild(src);
+        var panel = document.createElement("div"); panel.className = "review-panel"; panel.hidden = true; article.appendChild(panel);
+        open.addEventListener("click", function(){ toggleReviews(card.id, panel, open); });
       } else if (REVIEWS[card.id]) {
         var review = document.createElement("a"); review.className = "partner-review"; review.href = REVIEWS[card.id];
         review.target = "_blank"; review.rel = "noopener"; review.textContent = "この会社の口コミを見る（外部サイト）";
@@ -1072,8 +1123,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       }
       var price = text("p", card.price.text, "partner-price");
       var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + ((form.querySelector("input[name=trip]:checked") || {}).value || "片道") + "の合計目安（税込）"; price.appendChild(cap);
-      function breakdown(title, value){
-        var box = document.createElement("details"); box.className = "price-details";
+      // 内訳は小さな文字の1行にして、押すと開く
+      function breakdown(title, value, cls){
+        var box = document.createElement("details"); box.className = "price-details" + (cls ? " " + cls : "");
         var summary = document.createElement("summary"); summary.textContent = title; box.appendChild(summary);
         var list = document.createElement("dl");
         [["乗車運賃",value.ride],["迎車代",value.pickup],["回送代",value.returnFee],["夜間・早朝の割増",value.nightExtra],["待機料金",value.wait],["概算の端数調整",value.rounding]].forEach(function(row){
@@ -1082,23 +1134,22 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         box.appendChild(list); article.appendChild(box);
       }
       if (card.price.local) {
-        text("p", "迎車 " + yen(card.price.local.pickup) + "・回送 " + yen(card.price.local.returnFee) + "を含む", "partner-note");
+        breakdown("迎車 " + yen(card.price.local.pickup) + "・回送 " + yen(card.price.local.returnFee) + "を含む", card.price.local);
         if (card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
-        breakdown("一般道の料金内訳",card.price.local);
-        if (card.price.highway) {
-          text("p", "高速利用時 " + yen(card.price.highway.amount) + " ＋ 通行料の実費", "partner-highway");
-          breakdown("高速利用時の料金内訳",card.price.highway);
-        } else text("p", "高速利用時：経路・通行料を含めてお見積もり", "partner-highway");
+        if (card.price.highway) breakdown("高速利用時 " + yen(card.price.highway.amount) + " ＋ 通行料の実費", card.price.highway, "hw");
+        else text("p", "高速利用時：経路・通行料を含めてお見積もり", "partner-note");
         if (card.price.pickupNote) text("p",card.price.pickupNote,"partner-note");
         if (card.price.routeNote) text("p",card.price.routeNote,"partner-note");
       }
       if (card.price.night && !(card.price.local && card.price.local.nightExtra)) text("p",card.price.night,"partner-note");
       text("p", card.car); text("p", card.payment);
-      text("p", "確定料金ではありません。通行料・駐車場代は別途実費です。高速利用時の総額は、事業者の確認後にお知らせします。", "partner-note");
+      var caution = text("p", "", "partner-caution");
+      var cb = document.createElement("b"); cb.textContent = "確定料金ではありません";
+      caution.append(cb, "通行料・駐車場代は別途実費です。高速利用時の総額は、事業者の確認後にお知らせします。");
       var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn";
       btn.textContent = "この事業者に予約を依頼する"; btn.setAttribute("aria-label", card.label + "に予約を依頼する");
       btn.addEventListener("click", function(){ if (sending) return; chosenQuote = card; $("sendSelected").hidden = false; $("sendSelected").textContent = card.label + "に予約を依頼する"; form.requestSubmit(); });
-      article.addEventListener("click", function(event){ if (!event.target.closest("button,a")) btn.click(); });
+      article.addEventListener("click", function(event){ if (!event.target.closest("button,a,details,.review-panel")) btn.click(); });
       article.appendChild(btn); $("partnerCards").appendChild(article);
     });
     // 自動更新では入力中のフォーカスやスクロール位置を動かさない。
@@ -1439,7 +1490,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   function kmOf(rt, list){ return Math.max(1, Math.ceil(rt ? rt.km * 1.05 : straightKm(list))); }
 
   // ── 地図（ルートを線で表示。地図の部品は使うときだけ読み込む）──
-  var mapLib = null, estMap = null;
+  var mapLib = null, mlLib = null, estMap = null;
+  // 地図は、地名や店の名前を消したシンプルな地図（OpenFreeMap の Positron）。WebGL が使えないときは、淡色の地理院地図で出す
+  var MAP_STYLE = "https://tiles.openfreemap.org/styles/positron";
   function loadMapLib(){
     if (mapLib) return mapLib;
     var css = document.createElement("link"); css.rel = "stylesheet"; css.href = "/lib/leaflet.css"; document.head.appendChild(css);
@@ -1448,24 +1501,72 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       document.head.appendChild(js);
     });
   }
+  function loadML(){
+    if (mlLib) return mlLib;
+    var css = document.createElement("link"); css.rel = "stylesheet"; css.href = "/lib/maplibre-gl.css"; document.head.appendChild(css);
+    return mlLib = new Promise(function(ok, ng){
+      var js = document.createElement("script"); js.src = "/lib/maplibre-gl.js"; js.onload = function(){ window.maplibregl ? ok(window.maplibregl) : ng(); }; js.onerror = ng;
+      document.head.appendChild(js);
+    });
+  }
+  function canWebGL(){
+    try { var c = document.createElement("canvas"); return !!(window.WebGLRenderingContext && (c.getContext("webgl") || c.getContext("experimental-webgl"))); } catch (e) { return false; }
+  }
+  function pinEl(i, n){
+    var last = i === n - 1, d = document.createElement("div");
+    d.className = "est-pin " + (i === 0 ? "" : last ? "to" : "via");
+    d.innerHTML = "<b>" + (i === 0 ? "迎" : last ? "着" : "経") + "</b>";
+    return d;
+  }
+  function clearMap(){ if (estMap) { try { estMap.remove(); } catch (e) {} estMap = null; } }
   function drawMap(el, local, high, stops){
+    if (!canWebGL()) { drawLeaflet(el, local, stops); return; }
+    var line = local ? local.line : stops.map(function(c){ return [c.lng, c.lat]; });
+    loadML().then(function(ml){
+      if (!el.isConnected) return;
+      clearMap();
+      var lo = [Infinity, Infinity], hi = [-Infinity, -Infinity];
+      line.concat(stops.map(function(c){ return [c.lng, c.lat]; })).forEach(function(p){
+        lo = [Math.min(lo[0], p[0]), Math.min(lo[1], p[1])]; hi = [Math.max(hi[0], p[0]), Math.max(hi[1], p[1])];
+      });
+      var failed = false, map = estMap = new ml.Map({container: el, style: MAP_STYLE, bounds: [lo, hi],
+        fitBoundsOptions: {padding: {top: 90, bottom: 30, left: 30, right: 30}, maxZoom: 16},
+        attributionControl: {compact: true}, dragRotate: false, pitchWithRotate: false, touchPitch: false, cooperativeGestures: true,
+        locale: {"CooperativeGesturesHandler.WindowsHelpText": "Ctrl キーを押しながらスクロールで拡大・縮小", "CooperativeGesturesHandler.MacHelpText": "⌘ キーを押しながらスクロールで拡大・縮小",
+          "CooperativeGesturesHandler.MobileHelpText": "2本の指で地図を動かせます", "NavigationControl.ZoomIn": "拡大", "NavigationControl.ZoomOut": "縮小"}});
+      map.touchZoomRotate.disableRotation();
+      map.addControl(new ml.NavigationControl({showCompass: false}), "top-left");
+      // 地図が読めないとき（地図の配信が止まっているなど）は、地理院地図に切り替える
+      map.on("error", function(e){
+        if (failed || map.isStyleLoaded()) return;
+        failed = true; if (estMap === map) { clearMap(); drawLeaflet(el, local, stops); }
+      });
+      map.on("load", function(){
+        // 地名・道路名・お店の名前などの文字は消す
+        map.getStyle().layers.forEach(function(l){ if (l.type === "symbol") map.setLayoutProperty(l.id, "visibility", "none"); });
+        map.addSource("route", {type: "geojson", data: {type: "Feature", geometry: {type: "LineString", coordinates: line}}});
+        map.addLayer({id: "route-casing", type: "line", source: "route", layout: {"line-cap": "round", "line-join": "round"}, paint: {"line-color": "#ffffff", "line-width": 10}});
+        map.addLayer({id: "route", type: "line", source: "route", layout: {"line-cap": "round", "line-join": "round"}, paint: {"line-color": "#ff6a1a", "line-width": 5}});
+      });
+      // 地図の部品が目印の要素を動かす（transform を上書きする）ので、外側の箱に入れて渡す
+      stops.forEach(function(c, i){ var w = document.createElement("div"); w.appendChild(pinEl(i, stops.length)); new ml.Marker({element: w, anchor: "bottom", offset: [0, -4]}).setLngLat([c.lng, c.lat]).addTo(map); });
+    }).catch(function(){ drawLeaflet(el, local, stops); });
+  }
+  function drawLeaflet(el, local, stops){
     loadMapLib().then(function(L){
       if (!el.isConnected) return;
-      if (estMap) { estMap.remove(); estMap = null; }
+      clearMap();
       estMap = L.map(el, {attributionControl: false, scrollWheelZoom: false, dragging: !L.Browser.mobile, tap: false});
       L.control.attribution({prefix: false}).addAttribution('<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">地理院タイル</a>／経路 &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>').addTo(estMap);
-      // 地名や道路が読みやすい「標準地図」（淡色地図より文字と道がはっきり見える）
-      L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {maxZoom: 18}).addTo(estMap);
+      L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png", {maxZoom: 18}).addTo(estMap);
       var ll = function(line){ return line.map(function(p){ return [p[1], p[0]]; }); };
       var group = [];
-      if (high) group.push(L.polyline(ll(high.line), {color: "#5b5650", weight: 4, opacity: .7, dashArray: "6 6"}).addTo(estMap));
       if (local) {
         L.polyline(ll(local.line), {color: "#fff", weight: 9, opacity: .95}).addTo(estMap); // 白いふちで、地図の上でも線が見えやすいように
         group.push(L.polyline(ll(local.line), {color: "#ff6a1a", weight: 5, opacity: 1}).addTo(estMap));
       }
       stops.forEach(function(c, i){
-        var last = i === stops.length - 1, kind = i === 0 ? "" : last ? "to" : "via", txt = i === 0 ? "迎" : last ? "着" : "経";
-        var icon = L.divIcon({className: "", html: '<div class="est-pin ' + kind + '"><b>' + txt + '</b></div>', iconSize: [30, 30], iconAnchor: [15, 30]});
+        var icon = L.divIcon({className: "", html: pinEl(i, stops.length).outerHTML, iconSize: [30, 30], iconAnchor: [15, 30]});
         group.push(L.marker([c.lat, c.lng], {icon: icon, keyboard: false}).addTo(estMap));
       });
       estMap.fitBounds(L.featureGroup(group).getBounds(), {paddingTopLeft: [24, 84], paddingBottomRight: [24, 24]}); // 右上の距離の表示とピンが重ならないよう上をあける
