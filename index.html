@@ -313,6 +313,18 @@ input.picked{border-color:#3d9a5b;background:#f3fbf5 url("data:image/svg+xml,%3C
 .agree{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--ink-2);background:#f7f4f1;border-radius:14px;padding:14px 16px;margin-bottom:20px;cursor:pointer}
 .agree input{accent-color:var(--o);width:18px;height:18px;margin:3px 0 0;flex:none}
 #err{display:none;color:#c62828;font-size:.88rem;text-align:center;margin-bottom:12px}
+.need-box{background:#fff5ec;border:1.5px solid var(--o);border-radius:12px;padding:10px 12px;font-size:.85rem;line-height:1.6;margin:10px 0}
+.need-box[hidden]{display:none}
+.need-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.need-list button{background:#fff;border:1.5px solid var(--o);color:var(--o-d);border-radius:999px;padding:4px 12px;font:inherit;font-size:.82rem;font-weight:700;cursor:pointer}
+#err .need-list{justify-content:center}
+.missing{border-color:#c62828!important;box-shadow:0 0 0 3px rgba(198,40,40,.15)!important}
+.seg.missing{border-radius:12px}
+.partner-loading{display:flex;gap:12px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:700}
+.partner-loading small{display:block;font-weight:400;font-size:.78rem;color:var(--ink-3)}
+.spin{flex:none;width:30px;height:30px;border-radius:50%;border:4px solid #ffe2cc;border-top-color:var(--o);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation-duration:2.4s}}
 .form-card .btn{max-width:none}
 .form-foot{text-align:center;font-size:.78rem;color:var(--ink-3);margin-top:12px}
 #thanks{display:none;text-align:center;padding:24px 0}
@@ -712,6 +724,7 @@ footer a{color:var(--ink-2)}
         </div>
 
         <p class="form-foot">条件が揃うと、合う事業者と料金の目安が自動で表示されます。カードを押すまで依頼は送信されません。</p>
+        <div class="need-box" id="partnerNeed" hidden></div>
         <section class="partner-results" id="partnerResults" aria-labelledby="partnerTitle" hidden>
           <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
           <p id="partnerStatus" role="status" aria-live="polite"></p>
@@ -1088,6 +1101,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   function conditionsChanged(event){
     if (["name","tel","email","notes","agree","website"].indexOf(event.target.id || event.target.name) >= 0) return;
     clearPartners(); queuePartners();
+    if (!$("partnerNeed").hidden) showNeed(); // 出ている一覧は、入れたらすぐ減らす
   }
   form.addEventListener("input", conditionsChanged);
   form.addEventListener("change", conditionsChanged);
@@ -1095,7 +1109,57 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     clearTimeout(quoteTimer);
     if (!sending) quoteTimer = setTimeout(loadPartners, 650);
   }
+  // 入っていない項目：名前（ラベル）と欄。ラジオは1つにまとめる
+  function fieldName(el){
+    var lb = el.labels && el.labels[0] && !el.labels[0].contains(el) ? el.labels[0] : null, f = el.closest(".f");
+    if (!lb && f) lb = f.querySelector("label[for], .lbl");
+    var t = lb ? lb.cloneNode(true) : null;
+    if (t) t.querySelectorAll(".any").forEach(function(x){ x.remove(); });
+    var name = (t ? t.textContent : el.getAttribute("aria-label") || "").trim();
+    var pet = el.closest(".pet"), many = petsBox.querySelectorAll(".pet").length > 1;
+    return pet && many ? pet.querySelector(".pet-h b").textContent + "の" + name : name;
+  }
+  function missingFields(before){
+    var seen = {}, out = [];
+    Array.prototype.forEach.call(form.querySelectorAll("input,select,textarea"), function(el){
+      if (el.name === "website" || el.disabled || el.checkValidity()) return;
+      if (before && !(el.compareDocumentPosition(before) & Node.DOCUMENT_POSITION_FOLLOWING)) return;
+      var name = fieldName(el);
+      if (!name || seen[name]) return;
+      seen[name] = 1; out.push({el: el, name: name});
+    });
+    return out;
+  }
+  // その欄までスクロールして、選びやすいようにする
+  function jumpTo(el){
+    var target = el.type === "radio" ? el.closest(".seg") || el : el;
+    target.scrollIntoView({block: "center", behavior: "smooth"});
+    try { el.focus({preventScroll: true}); } catch (e) { el.focus(); }
+  }
+  function markMissing(list){
+    list.forEach(function(x){ (x.el.type === "radio" ? x.el.closest(".seg") || x.el : x.el).classList.add("missing"); });
+  }
+  function needButtons(list){
+    var box = document.createElement("div"); box.className = "need-list";
+    list.forEach(function(x){
+      var b = document.createElement("button"); b.type = "button"; b.textContent = x.name;
+      b.addEventListener("click", function(){ jumpTo(x.el); });
+      box.appendChild(b);
+    });
+    return box;
+  }
+  form.addEventListener("input", function(e){ var t = e.target.type === "radio" ? e.target.closest(".seg") : e.target; if (t) t.classList.remove("missing"); });
+  form.addEventListener("change", function(e){ var t = e.target.type === "radio" ? e.target.closest(".seg") : e.target; if (t) t.classList.remove("missing"); });
+  // 事業者のカードを出すのに足りない項目を、カードの場所に出す（入力を始めてから）
+  function showNeed(){
+    var box = $("partnerNeed"), list = missingFields($("partnerResults"));
+    var started = ["pickup","dropoff","date","petCount"].some(function(id){ return $(id).value; });
+    box.hidden = !started || !list.length;
+    if (box.hidden) return;
+    box.replaceChildren(document.createTextNode("事業者と料金を出すには、あと次の項目を入れてください（押すとその場所へ移ります）。"), needButtons(list));
+  }
   function loadPartners(){
+    showNeed();
     if (sending || !routeDetails || !GAS_URL) return;
     var required = ["pref","pickup","dropoff","date","hour","minute","petCount","riders","luggage"];
     if (required.some(function(id){return !$(id).value || !$(id).checkValidity();})) return;
@@ -1111,7 +1175,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     ["name","tel","email","notes","contact","website","pets","breed","age","sex","est_fare","est_fare_text"].forEach(function(k){search.delete(k);});
     search.set("kind", "quotes");
     $("partnerResults").hidden = false; $("partnerCards").replaceChildren();
-    $("partnerStatus").textContent = "条件に合う事業者と料金を確認しています…";
+    $("partnerStatus").innerHTML = '<span class="partner-loading"><span class="spin" aria-hidden="true"></span><span>ぴったりの事業者を選んでいます…<small>条件に合う会社と料金の目安を調べています。10秒ほどかかることがあります。</small></span></span>';
     fetch(GAS_URL,{method:"POST",body:search}).then(function(res){return res.json();}).then(function(result){
       if (searchSeq !== quoteSeq || sending) return;
       if (!result || !result.ok || result.selection_version !== 1 || !Array.isArray(result.cards)) throw new Error("quotes");
@@ -2435,11 +2499,16 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     err.style.display = "none";
     function fail(msg, el){
       err.textContent = msg; err.style.display = "block";
-      if (el) { el.focus(); el.scrollIntoView({block:"center"}); }
+      if (el) jumpTo(el);
     }
     if (!form.checkValidity()) {
-      var bad = form.querySelector(":invalid");
-      return fail(bad && bad.id === "agree" ? "確認のチェックを入れてください。" : "まだ入力されていない項目があります。", bad);
+      var miss = missingFields(null);
+      if (!miss.length) return fail("まだ入力されていない項目があります。");
+      markMissing(miss);
+      if (miss.length === 1 && miss[0].el.id === "agree") return fail("確認のチェックを入れてください。", miss[0].el);
+      fail("まだ入力されていない項目があります（押すとその場所へ移ります）。", miss[0].el);
+      err.appendChild(needButtons(miss));
+      return;
     }
     var fd = new FormData(form);
     var when = fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute");
