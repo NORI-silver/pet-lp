@@ -267,6 +267,12 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est-pin{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--o);border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
 .est-pin b{transform:rotate(45deg);color:#fff;font-size:.78rem;font-weight:800;line-height:1}
 .est-pin.to{background:#1c1a18}.est-pin.via{background:#3b47a8}
+.est-wrap{position:relative}
+.est-info{position:absolute;top:10px;right:10px;z-index:800;background:rgba(255,255,255,.96);border-radius:12px;padding:8px 12px;box-shadow:0 2px 10px rgba(0,0,0,.18);font-size:.8rem;line-height:1.45;color:var(--ink)}
+.est-info small{display:block;font-size:.7rem;color:var(--ink-3)}
+.est-info div{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
+.est-info span{color:var(--ink-2)}
+.est-info b{font-family:var(--round);font-size:1.02rem;font-weight:800}
 .est-legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.8rem;color:var(--ink-2);margin:6px 2px 0}
 .est-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px;background:var(--o)}
 .est-legend i.to{background:#1c1a18}.est-legend i.via{background:#3b47a8}
@@ -282,6 +288,9 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .cb-list li small{display:block;font-size:.76rem;color:var(--ink-3);margin-top:1px}
 .cb-list li.hist b::before{content:"🕘 "}
 .cb-list li b{font-weight:700}
+.place-note{font-size:.78rem;color:#b4421a;margin:4px 2px 0;line-height:1.6}
+.place-note[hidden]{display:none}
+input.picked{border-color:#3d9a5b;background:#f3fbf5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%233d9a5b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center/18px;padding-right:38px}
 .f .note{display:block;font-size:.8rem;color:var(--ink-3);margin-top:6px}
 .agree{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--ink-2);background:#f7f4f1;border-radius:14px;padding:14px 16px;margin-bottom:20px;cursor:pointer}
 .agree input{accent-color:var(--o);width:18px;height:18px;margin:3px 0 0;flex:none}
@@ -425,8 +434,8 @@ footer a{color:var(--ink-2)}
 #partnerStatus{font-size:.9rem;line-height:1.7}
 [hidden]#sendSelected{display:none}
 .price-reason{background:var(--cream);padding:12px 14px;border-radius:12px;font-size:.84rem;line-height:1.8}
-.price-details{border-top:1px solid var(--line);padding:10px 0;font-size:.82rem}
-.price-details summary{cursor:pointer;font-weight:700}
+.price-details{border-top:1px solid var(--line);padding:6px 0;font-size:.72rem;color:var(--ink-3)}
+.price-details summary{cursor:pointer;font-weight:400}
 .price-details dl{display:grid;grid-template-columns:1fr auto;gap:5px 12px;margin:10px 0 0}
 .price-details dt,.price-details dd{margin:0}
 .partner-highway,.partner-surcharge{font-weight:700}
@@ -439,7 +448,7 @@ footer a{color:var(--ink-2)}
  "@type":"FAQPage",
  "mainEntity":[
   {"@type":"Question","name":"Uber Petとなにが違うの？","acceptedAnswer":{"@type":"Answer","text":"Uber Petは一般のタクシーにペットを同乗させるサービスで、飼い主さんの同乗が前提です。こちらでお探しするのはペット専門のタクシーなので、飼い主さんが乗らない送迎、大型犬、ケージやスロープの用意、動物病院での待ち時間、夜間の急な通院にも対応できるところを選べます。"}},
-  {"@type":"Question","name":"ケージやキャリーがなくても大丈夫？","acceptedAnswer":{"@type":"Answer","text":"大丈夫です。フォームで1匹ずつ「持っていく」「なしで乗りたい」「借りたい」「どれでも大丈夫」から選べます。「なしで乗りたい」「借りたい」を選んだときは、それに対応している会社だけをご案内します。「どれでも大丈夫」なら、会社のやり方に合わせられるので、ケージの条件でしぼりこみません。"}},
+  {"@type":"Question","name":"ケージやキャリーがなくても大丈夫？","acceptedAnswer":{"@type":"Answer","text":"大丈夫です。フォームで1匹ずつ「持っていく」「なしで乗りたい」「借りたい」「あり・なし どちらでもいい」から選べます。「なしで乗りたい」「借りたい」を選んだときは、それに対応している会社だけをご案内します。「あり・なし どちらでもいい」なら、ケージの条件ではしぼりこみません。"}},
   {"@type":"Question","name":"大型犬でも乗れますか？","acceptedAnswer":{"@type":"Answer","text":"はい。大型犬が乗れる車とスロープのあるペットタクシーをお探しします。体重と犬種を入力してください。歩くのがつらい子は「介護」の欄で「必要」を選んでください。"}},
   {"@type":"Question","name":"2匹以上いっしょに乗れますか？","acceptedAnswer":{"@type":"Answer","text":"はい。フォームで頭数を選ぶと、その数だけ入力欄が出ます。5匹まで一度にお申し込みいただけます。頭数と大きさに合う車をお探しします。"}},
   {"@type":"Question","name":"猫だけでも使えますか？","acceptedAnswer":{"@type":"Answer","text":"もちろんです。通院、お引っ越し、ペットホテルへの送り迎えなどにどうぞ。キャリーに入った状態での乗車が基本です。"}},
@@ -865,7 +874,7 @@ footer a{color:var(--ink-2)}
     <div class="sh"><span class="eyebrow">FAQ</span><h2>ペットタクシーのよくある質問</h2></div>
     <div class="faq-list">
       <details><summary>Uber Petとなにが違うの？</summary><div class="a">Uber Petは一般のタクシーにペットを同乗させるサービスで、飼い主さんの同乗が前提です。こちらでお探しするのはペット専門のタクシーなので、飼い主さんが乗らない送迎、大型犬、ケージやスロープの用意、動物病院での待ち時間、夜間の急な通院にも対応できるところを選べます。</div></details>
-      <details><summary>ケージやキャリーがなくても大丈夫？</summary><div class="a">大丈夫です。フォームで1匹ずつ「持っていく」「なしで乗りたい」「借りたい」「どれでも大丈夫」から選べます。「なしで乗りたい」「借りたい」を選んだときは、それに対応している会社だけをご案内します。「どれでも大丈夫」なら、会社のやり方に合わせられるので、ケージの条件でしぼりこみません。</div></details>
+      <details><summary>ケージやキャリーがなくても大丈夫？</summary><div class="a">大丈夫です。フォームで1匹ずつ「持っていく」「なしで乗りたい」「借りたい」「あり・なし どちらでもいい」から選べます。「なしで乗りたい」「借りたい」を選んだときは、それに対応している会社だけをご案内します。「あり・なし どちらでもいい」なら、ケージの条件ではしぼりこみません。</div></details>
       <details><summary>大型犬でも乗れますか？</summary><div class="a">はい。大型犬が乗れる車とスロープのあるペットタクシーをお探しします。体重と犬種を入力してください。歩くのがつらい子は「介護」の欄で「必要」を選んでください。</div></details>
       <details><summary>2匹以上いっしょに乗れますか？</summary><div class="a">はい。フォームで頭数を選ぶと、その数だけ入力欄が出ます。5匹まで一度にお申し込みいただけます。頭数と大きさに合う車をお探しします。</div></details>
       <details><summary>猫だけでも使えますか？</summary><div class="a">もちろんです。通院、お引っ越し、ペットホテルへの送り迎えなどにどうぞ。キャリーに入った状態での乗車が基本です。</div></details>
@@ -1176,7 +1185,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         '<div class="f"><label for="' + k + '_age">年齢<span class="any">わかれば</span></label><input type="number" id="' + k + '_age" name="' + k + '_age" min="0" max="40" inputmode="numeric" placeholder="例：12"></div>' +
         '<div class="f"><span class="lbl">性別<span class="any">わかれば</span></span>' + seg(k + "_sex", [["オス","男の子"],["メス","女の子"]], false) + '</div>' +
       '</div>' +
-      '<div class="f"><span class="lbl">ケージ・キャリー</span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","どれでも大丈夫"]], true) + '</div>' +
+      '<div class="f"><span class="lbl">ケージ・キャリー</span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true) + '</div>' +
       '<div class="f"><span class="lbl">介護は必要ですか？</span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true) + '</div>';
     return el;
   }
@@ -1265,7 +1274,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   function petLine(p, i){
     return (i + 1) + "匹目：" + [p.species, p.breed, p.weight ? p.weight + "kg" : "", p.age ? p.age + "歳" : "", p.sex,
-      ({"持ち込む":"ケージ持ち込み","なし":"ケージなし希望","借りたい":"ケージを借りたい","どれでも":"ケージはどれでも大丈夫"})[p.cage] || p.cage, p.care === "必要" ? "介助必要" : "介助いらない"].filter(String).join("・");
+      ({"持ち込む":"ケージ持ち込み","なし":"ケージなし希望","借りたい":"ケージを借りたい","どれでも":"ケージはあり・なしどちらでも"})[p.cage] || p.cage, p.care === "必要" ? "介助必要" : "介助いらない"].filter(String).join("・");
   }
 
 
@@ -1441,7 +1450,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var icon = L.divIcon({className: "", html: '<div class="est-pin ' + kind + '"><b>' + txt + '</b></div>', iconSize: [30, 30], iconAnchor: [15, 30]});
         group.push(L.marker([c.lat, c.lng], {icon: icon, keyboard: false}).addTo(estMap));
       });
-      estMap.fitBounds(L.featureGroup(group).getBounds(), {padding: [18, 18]});
+      estMap.fitBounds(L.featureGroup(group).getBounds(), {paddingTopLeft: [24, 84], paddingBottomRight: [24, 24]}); // 右上の距離の表示とピンが重ならないよう上をあける
     }).catch(function(){ el.remove(); });
   }
 
@@ -1503,8 +1512,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         routeEstimated:!rs[0],localEstimated:hasHigh};
       lastKm = later ? kmL+kmL2 : kmL; lastKmHigh = hasHigh ? (later ? kmH+kmH2 : kmH) : 0;
       lastFare = ""; lastFareNum = 0;
-      est.innerHTML = '<div class="est-map" id="estMap" role="img" aria-label="お迎え場所から行き先までの地図"></div>' +
-        '<div class="est-legend"><span><i></i>お迎え</span>' + (go.length > 2 ? '<span><i class="via"></i>経由地</span>' : '') + '<span><i class="to"></i>行き先</span><span>「＋」「−」で拡大・縮小できます</span></div>';
+      // 地図の右上に、行きの道のりと所要時間を出す（一般道。高速を使える道なら高速ありも）
+      var mins = function(m){ m = Math.max(5, Math.ceil(m / 5) * 5); return m >= 60 ? Math.floor(m / 60) + "時間" + (m % 60 ? m % 60 + "分" : "") : m + "分"; };
+      var km1 = function(k){ return (Math.round(k * 10) / 10).toFixed(1); };
+      var info = rs[0] ? '<div><span>一般道</span><b>' + km1(rs[0].km) + 'km・' + mins(rs[0].min) + '</b></div>' +
+          (rs[1] && rs[1].hw >= 1 ? '<div><span>高速あり</span><b>' + km1(rs[1].km) + 'km・' + mins(rs[1].min) + '</b></div>' : '')
+        : '<div><span>道のり</span><b>' + kmL + 'km</b></div>';
+      est.innerHTML = '<div class="est-wrap"><div class="est-map" id="estMap" role="img" aria-label="お迎え場所から行き先までの地図"></div>' +
+        '<div class="est-info"><small>' + (later ? "行き" : "片道") + 'の目安</small>' + info + '</div></div>' +
+        '<div class="est-legend"><span><i></i>お迎え</span>' + (go.length > 2 ? '<span><i class="via"></i>経由地</span>' : '') + '<span><i class="to"></i>行き先</span><span>時間は道の混み具合で変わります</span></div>';
       drawMap($("estMap"), rs[1], null, go);
       queuePartners();
     }
@@ -1651,7 +1667,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
             });
             if (!parts.length) throw 0;
             var text = pref + parts.join("") + (a.house_number ? a.house_number : "") + "付近";
-            geoCache[text] = c; // 距離の計算は、端末の位置そのままで行う
+            geoCache[text] = pickedPlace[text] = c; // 距離の計算は、端末の位置そのままで行う
             setSelect($("pref"), pref); $("pref").dispatchEvent(new Event("change"));
             $("pickup").value = text; $("pickup").dispatchEvent(new Event("change"));
             btn.disabled = false; say("入れました。建物の名前や目印があれば書き足してください。");
@@ -1692,6 +1708,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           var addr = (g.street || "") + (g.housenumber || "");
           var name = g.name || addr;
           if (!name) return null;
+          // 地図データの駅名は「東京」のように「駅」がないので付ける
+          if (/^(railway|public_transport)$/.test(g.osm_key) && /^(station|halt|stop_area)$/.test(g.osm_value) && !/駅$/.test(name)) name += "駅";
           return {label: name, sub: area + (g.name && addr ? addr : ""), area: g.city || g.district || "", c: {lat: c[1], lng: c[0]}};
         }).filter(function(x){ return x && inBox(x.c, BOX4); });
       })
@@ -1708,10 +1726,40 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       })
       .catch(function(){ return []; });
   }
+  // 大きな駅は、改札口・出口まで候補に出す（位置は駅の位置）
+  var STATION_EXITS = {
+    "東京": [35.6812, 139.7671, "千代田区", ["丸の内北口","丸の内中央口","丸の内南口","八重洲北口","八重洲中央口","八重洲南口","日本橋口"]],
+    "新宿": [35.6896, 139.7006, "新宿区", ["東口","西口","南口","東南口","新南改札"]],
+    "渋谷": [35.6580, 139.7016, "渋谷区", ["ハチ公口","南口","東口","西口","新南改札"]],
+    "品川": [35.6285, 139.7388, "港区", ["高輪口","港南口"]],
+    "池袋": [35.7295, 139.7109, "豊島区", ["東口","西口","北口"]],
+    "上野": [35.7138, 139.7773, "台東区", ["中央改札","公園口","浅草口","不忍口","入谷口"]],
+    "秋葉原": [35.6984, 139.7731, "千代田区", ["電気街口","昭和通り口","中央改札"]],
+    "横浜": [35.4658, 139.6223, "横浜市西区", ["東口","西口","きた東口","きた西口"]],
+    "大宮": [35.9064, 139.6238, "さいたま市大宮区", ["東口","西口"]]
+  };
+  // ひらがなで入れてもしぼりこめるように、読みも持つ
+  var KANA = {"東京":"とうきょう","新宿":"しんじゅく","渋谷":"しぶや","品川":"しながわ","池袋":"いけぶくろ","上野":"うえの","秋葉原":"あきはばら","横浜":"よこはま","大宮":"おおみや",
+    "八重洲":"やえす","丸の内":"まるのうち","日本橋":"にほんばし","ハチ公":"はちこう","高輪":"たかなわ","港南":"こうなん","電気街":"でんきがい","昭和通り":"しょうわどおり",
+    "公園":"こうえん","浅草":"あさくさ","不忍":"しのばず","入谷":"いりや","中央":"ちゅうおう","新南":"しんみなみ","東南":"とうなん","東":"ひがし","西":"にし","南":"みなみ","北":"きた","改札":"かいさつ","口":"ぐち"};
+  function kana(t){ Object.keys(KANA).forEach(function(k){ t = t.split(k).join(KANA[k]); }); return norm(t); }
+  function stationExits(q){
+    var n = norm(q).replace(/駅|エキ/, ""), out = [];
+    Object.keys(STATION_EXITS).forEach(function(st){
+      var head = [norm(st), kana(st)].filter(function(h){ return n.indexOf(h) === 0; })[0];
+      if (head == null) return;
+      var rest = n.slice(head.length), d = STATION_EXITS[st];
+      d[3].forEach(function(ex){
+        if (rest && norm(ex).indexOf(rest) < 0 && kana(ex).indexOf(rest) < 0 && kana(ex).indexOf(rest.replace(/クチ$/, "グチ")) < 0) return;
+        out.push({label: st + "駅 " + ex, sub: d[2] + "・駅の出口", area: d[2], c: {lat: d[0], lng: d[1]}});
+      });
+    });
+    return out;
+  }
   var suggCache = {};
   function suggestPlaces(q){
     if (q in suggCache) return Promise.resolve(suggCache[q]);
-    var jobs = [photon(q)];
+    var jobs = [photon(q).then(function(list){ return list.slice(0, 1).concat(stationExits(q), list.slice(1)); })]; // 駅そのものの次に出口
     if (looksAddress(q)) jobs.unshift(gsiList(q));
     return Promise.all(jobs).then(function(rs){
       var seen = {}, out = [];
@@ -1719,7 +1767,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 選んだ都県の中の候補を先に
       var pb = PREF_BOX[$("pref").value];
       if (pb) out.sort(function(a, b){ return (inBox(b.c, pb) ? 1 : 0) - (inBox(a.c, pb) ? 1 : 0); });
-      return suggCache[q] = out.slice(0, 7);
+      return suggCache[q] = out.slice(0, 10);
     });
   }
   // 入力欄に入れる文字：施設や駅は「名前（区市町村）」、住所はそのまま
@@ -1729,6 +1777,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var inp = $(id), wrap = document.createElement("div"), ul = document.createElement("ul"), items = [], seq = 0, timer = 0;
     wrap.className = "cb"; ul.className = "cb-list"; ul.setAttribute("role", "listbox"); ul.id = id + "List"; ul.hidden = true;
     inp.parentNode.insertBefore(wrap, inp); wrap.appendChild(inp); wrap.appendChild(ul);
+    var note = document.createElement("p"); note.className = "place-note"; note.hidden = true;
+    wrap.parentNode.insertBefore(note, wrap.nextSibling);
     inp.setAttribute("role", "combobox"); inp.setAttribute("aria-autocomplete", "list"); inp.setAttribute("aria-expanded", "false"); inp.setAttribute("aria-controls", ul.id);
     function close(){ ul.hidden = true; inp.setAttribute("aria-expanded", "false"); }
     function draw(list, loading){
@@ -1762,12 +1812,21 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (!x) return;
       var text = x.hist ? x.label : placeText(x);
       if (x.c) pickedPlace[text] = x.c;
-      inp.value = text; seq++; close();
+      inp.value = text; seq++; close(); check();
       inp.dispatchEvent(new Event("change", {bubbles: true}));
+    }
+    // 打ち間違い防止：候補から選んでいない場所には、ひとこと添える（そのままでも送れる）
+    function check(){
+      var v = inp.value.trim(), ok = !v || v in pickedPlace || readHist().indexOf(v) >= 0;
+      inp.classList.toggle("picked", !!v && ok);
+      note.hidden = ok;
+      note.textContent = ok ? "" : "候補から選ばれていません。打ち間違いがないか確かめるか、もう一度入力して候補から選んでください。";
     }
     inp.addEventListener("focus", update);
     inp.addEventListener("input", update);
-    inp.addEventListener("blur", function(){ seq++; setTimeout(close, 150); });
+    inp.addEventListener("blur", function(){ seq++; setTimeout(function(){ close(); check(); }, 150); });
+    inp.addEventListener("input", function(){ inp.classList.remove("picked"); note.hidden = true; });
+    inp.addEventListener("change", function(){ if (document.activeElement !== inp) check(); });
     // スマホでもタップ1回で決まるよう mousedown で拾う
     ul.addEventListener("mousedown", function(e){
       var li = e.target.closest("li[data-i]");
@@ -1782,7 +1841,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         if (i >= 0) lis[i].classList.remove("on");
         i = e.key === "ArrowDown" ? Math.min(lis.length - 1, i + 1) : Math.max(0, i - 1);
         lis[i].classList.add("on"); lis[i].scrollIntoView({block: "nearest"});
-      } else if (e.key === "Enter" && i >= 0) { e.preventDefault(); pick(Number(lis[i].dataset.i)); }
+      } else if (e.key === "Enter" && lis.length) { e.preventDefault(); pick(Number(lis[Math.max(0, i)].dataset.i)); } // Enterでいちばん上の候補を入れる
       else if (e.key === "Escape") close();
     });
   });
