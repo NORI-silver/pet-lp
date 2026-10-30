@@ -42,7 +42,8 @@
       "night_hours": [
         18,
         8
-      ]
+      ],
+      "partner_id": "P002"
     },
     "kuriki": {
       "名前": "くりき（松戸）",
@@ -78,7 +79,8 @@
       },
       "pay": "千葉・松戸の会社は、お支払い方法を決まったときのメールでご案内します。",
       "label": "千葉・松戸の会社",
-      "night_hours": null
+      "night_hours": null,
+      "partner_id": "P003"
     }
   },
   "areas": {

@@ -77,7 +77,7 @@ var REQ_HEADERS = [
   '種類', '犬種・猫種', '体重kg', '年齢', '性別', 'キャリー', '介助', '同乗人数',
   'お名前', '電話番号', 'メール', '連絡方法', 'メモ',
   '通知段階', '通知した提携先', '決定した提携先ID', '決定した提携先', 'お迎え予定', '料金の目安', '提携先から一言', '決定日時',
-  'お客さまLINE', '終了日時', 'ペット数', 'ペット詳細', '日付のみ', '経由地', 'ペットJSON', '概算km', '概算料金', '荷物', '高速利用時の料金', '帰りの日時', '帰りのお迎え', '帰りの行き先', '待ち時間（分）', '概算料金の表示', '帰りのやり方'
+  'お客さまLINE', '終了日時', 'ペット数', 'ペット詳細', '日付のみ', '経由地', 'ペットJSON', '概算km', '概算料金', '荷物', '高速利用時の料金', '帰りの日時', '帰りのお迎え', '帰りの行き先', '待ち時間（分）', '概算料金の表示', '帰りのやり方', '指定した提携先ID', '指定した提携先'
 ];
 var PARTNER_HEADERS = [
   'ID', '事業者名', '担当者名', '対応エリア', 'メール', '電話番号', 'LINE公式ID（先方）', '受付中', '大型犬OK', '介助OK',
@@ -135,6 +135,9 @@ function doPost(e) {
     try { handleLine_(JSON.parse(body)); } catch (err) { log_('LINEエラー: ' + err); }
     return json_({ ok: true });
   }
+  if ((e.parameter || {}).kind === 'quotes') {
+    try { return json_(selectionQuotes_(e.parameter)); } catch (err) { return json_({ok:false,error:'quotes_unavailable'}); }
+  }
   try {
     if ((e.parameter || {}).kind === 'contact') return json_(contact_(e.parameter));
     return json_(receive_(e.parameter || {}));
@@ -179,6 +182,7 @@ function receive_(p) {
   if (!when) return { ok: false, error: 'datetime' };
   if (!p.date && when.getTime() - Date.now() < (CONFIG.MIN_LEAD_HOURS * 60 - 15) * 60000) return { ok: false, error: 'datetime' };
 
+  var selection;
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
   var r;
@@ -189,6 +193,8 @@ function receive_(p) {
       var dup = cache.get('req_' + key);
       if (dup) return { ok: true, id: dup };
     }
+    selection = validateSelection_(p);
+    if (!selection.ok) return selection;
     var sh = sheet_(SHEET_REQ);
     var id = newId_(sh);
     r = {
@@ -200,9 +206,10 @@ function receive_(p) {
       'メモ': clip_(p.notes, 1000), '通知段階': 0, '通知した提携先': '',
       'ペット数': Number(p.pet_count) || 1, 'ペット詳細': clip_(p.pets, 1000), '日付のみ': p.date ? '○' : '',
       '経由地': clip_(p.via), 'ペットJSON': clip_(p.pets_json, 5000),
-      '概算km': Number(p.est_km) || '', '概算料金': Number(String(p.est_fare || '').replace(/[^\d.]/g, '')) || '', '荷物': clip_(p.luggage),
+      '概算km': Number(p.est_km) || '', '概算料金': selection.price.amount || '', '荷物': clip_(p.luggage),
       '帰りの日時': parseJst_(p.return_datetime) || '', '帰りのお迎え': clip_(p.return_pickup), '帰りの行き先': clip_(p.return_dropoff),
-      '待ち時間（分）': clip_(p.wait_time, 20), '概算料金の表示': clip_(p.est_fare_text, 160)
+      '待ち時間（分）': clip_(p.wait_time, 20),
+      '概算料金の表示': selection.price.text, '指定した提携先ID': selection.partner.id, '指定した提携先': selection.partner.name
     };
     var head = ensureReqHeaders_(sh);
     sh.appendRow(head.map(function (h) { return r[h] === undefined ? '' : r[h]; }));
@@ -236,9 +243,12 @@ function sendWave_(id, stage) {
   if (!row || row.data['状態'] !== ST.OPEN) return '';
   var r = row.data;
   var already = String(r['通知した提携先'] || '').split(',').filter(String);
-  var targets = pickPartners_(r, stage).filter(function (pt) { return already.indexOf(pt.id) < 0; });
+  var selected = r['指定した提携先ID'];
+  if (selected && stage !== 1) return '';
+  var pool = selected ? selectionCandidates_(r).filter(function(pt) { return pt.id === selected; }) : pickPartners_(r, stage);
+  var targets = pool.filter(function (pt) { return already.indexOf(pt.id) < 0; });
   // 第1段で誰もいなければ、すぐ第2段の相手にも送る
-  if (stage === 1 && targets.length === 0) {
+  if (!selected && stage === 1 && targets.length === 0) {
     stage = 2;
     targets = pickPartners_(r, 2).filter(function (pt) { return already.indexOf(pt.id) < 0; });
   }
@@ -538,6 +548,7 @@ function accept_(id, pt, at, fare, msg, fareHw, retWay) {
       var mine = row && row.data['状態'] === ST.DONE && row.data['決定した提携先ID'] === pt.id;
       return { ok: false, msg: mine ? 'このご依頼はすでにこの会社に決まっています。' : '申し訳ありません、ほかの方が先に引き受けたか、受付が終わりました。' };
     }
+    if (row.data['指定した提携先ID'] && row.data['指定した提携先ID'] !== pt.id) return {ok:false,msg:'お客さまが選んだ会社と異なるため引き受けできません。'};
     setReq_(row.rowIndex, {
       '状態': ST.DONE, '決定した提携先ID': pt.id, '決定した提携先': pt.name, 'お迎え予定': at,
       '料金の目安': fare, '高速利用時の料金': fareHw, '帰りのやり方': retWay || '', '提携先から一言': msg, '決定日時': new Date()
@@ -610,7 +621,7 @@ function adminPage_(q) {
         lineAction_(pt, 'LINEで依頼を送る' + (auto(pt) ? '（任意）' : ''), requestText_(r, pt)) + '</div>';
     });
     if (!asked.length) html += '<p class="note">まだどこにも送れていません。</p>';
-    if (Number(r['通知段階']) < 2) {
+    if (!r['指定した提携先ID'] && Number(r['通知段階']) < 2) {
       html += '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'admin') + hidden_('id', q.id) + hidden_('k', q.k) + hidden_('wave', '2') +
         '<button type="submit" class="gray">近くのエリア・全国対応の会社にも今すぐ送る</button></form>';
     }
@@ -738,7 +749,7 @@ function checkPending() {
     var k = (r['日付のみ'] ? today : until < CONFIG.URGENT_HOURS) ? 0.5 : 1;
     if (age >= CONFIG.GIVE_UP_MIN * k || until < 0) {
       giveUp_(r['受付番号']);
-    } else if (age >= CONFIG.WAVE2_MIN * k && Number(r['通知段階']) < 2) {
+    } else if (!r['指定した提携先ID'] && age >= CONFIG.WAVE2_MIN * k && Number(r['通知段階']) < 2) {
       var sent = sendWave_(r['受付番号'], 2);
       notifyAdmin_('まだ決まっていません ' + r['受付番号'], Math.round(age) + '分たっても決まっていません。近くのエリア・全国対応の提携先にも送りました：' + (sent || 'なし') +
         '\nこのまま決まらなければ、' + Math.round(CONFIG.GIVE_UP_MIN * k) + '分でお客さまにお詫びを自動で送ります。\n\n' + rideText_(r));
@@ -761,7 +772,7 @@ function giveUp_(id) {
   log_(id + ' 見つからず');
   closeOthers_(r, '');
   toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】申し訳ありません、空いている車が見つかりませんでした（受付番号 ' + id + '）',
-    r['お名前'] + ' 様\n\nご依頼ありがとうございました。\n' + whenText_(r) + ' のお迎えについて、エリアのペットタクシーにお声がけしましたが、あいにく空いている車が見つかりませんでした。\nお力になれず、申し訳ありません。\n\n' +
+    r['お名前'] + ' 様\n\nご依頼ありがとうございました。\n' + whenText_(r) + ' のお迎えについて、' + (r['指定した提携先'] ? r['指定した提携先'] + 'に確認しましたが、あいにくお引き受けできませんでした。' : 'エリアのペットタクシーにお声がけしましたが、あいにく空いている車が見つかりませんでした。') + '\nお力になれず、申し訳ありません。\n\n' +
     '時間を少しずらすと見つかることがあります。下のリンクから開くと、前回の内容が入った状態になるので、日時だけ変えてもう一度お送りいただけます。\n' + retryUrl_(id));
   notifyAdmin_('見つからず ' + id, 'お客さまにお詫びを送りました。\n\n' + rideText_(r) + '\n\nお名前：' + r['お名前'] + '\n電話：' + r['電話番号']);
 }
@@ -774,7 +785,7 @@ function sendReceipt_(r) {
     lineNote = '\n\n▼ LINEでもお知らせを受け取れます\n友だち追加して、受付番号「' + r['受付番号'] + '」を送ってください。\n' + CONFIG.LINE_ADD_URL;
   }
   toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】受け付けました（受付番号 ' + r['受付番号'] + '）',
-    r['お名前'] + ' 様\n\nご依頼ありがとうございます。受け付けました。\nいま、空いているペットタクシーを探しています。決まりしだい、お迎えの時間と料金をお送りします。\n\n' +
+    r['お名前'] + ' 様\n\nご依頼ありがとうございます。受け付けました。\n' + (r['指定した提携先'] ? '選んだ会社「' + r['指定した提携先'] + '」に空き状況を確認しています。ほかの会社には依頼しません。' : 'いま、空いているペットタクシーを探しています。') + '引き受けが決まりしだい、お迎えの時間と確定料金をお送りします。\n\n' +
     '受付番号：' + r['受付番号'] + '\n' + rideText_(r) +
     (num_(r['概算料金']) ? '\n■ 料金の目安（概算）：' + estShown_(r) + '\n　※実際の料金は、決まったペットタクシーからお知らせします' : '') + lineNote +
     '\n\n▼ 取り消す場合はこちら（決まる前ならいつでも無料です）\n' + cancelUrl_(r['受付番号']) +
@@ -1140,4 +1151,107 @@ function testRequest() {
     cage: '持っている', care: '不要', riders: '1人', name: 'テスト 花子', tel: '09000000000', email: adminEmail_(), contact: 'メール', notes: 'これはテストです'
   });
   Logger.log(JSON.stringify(res));
+}
+
+/*SELECTION_FARES*/var SELECTION_FARES = {"petexpress": {"名前": "ペットエクスプレス（世田谷）", "出典": "https://pettaxi.tokyo/ 2026-10-27", "base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null, "note": "東京・世田谷の会社は、乗車料金が5kmまで2,200円、その先は1kmごとに220円（101km〜は165円、201km〜は110円）。お迎え料金と帰りの回送料金がそれぞれ3kmまで330円かかり、お店から遠いと増えます。夕方18時〜朝8時は乗車料金が2割増し、往復は乗車料金が2倍です。病院での待ち時間は10分まで無料、30分まで660円、その後10分ごとに220円です。", "wait": {"30": 660, "60": 1320, "120": 2640}, "pay": "東京・世田谷の会社は、現金で降りるときにお支払いです。", "shop": [35.6339, 139.6697], "pick_free_km": 3, "pick_over": 220, "_迎車メモ": "迎車・回送の3km超の単価は非公開のため、1kmごとに220円として高めに計算（お店：世田谷区上馬1丁目）", "label": "東京・世田谷の会社", "night_hours": [18, 8], "partner_id": "P002"}, "kuriki": {"名前": "くりき（松戸）", "出典": "https://pet-kuriki.com/taxi 2026-10-27", "base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300], "note": "千葉・松戸の会社は、乗車料金が5km未満1,800円、5km以上は1kmごとに200円（101km〜は150円、201km〜は100円）。往復は10kmまで3,300円（病院での待ち時間30分込み）で、その後の待ち時間は30分ごとに500円です。長い距離や長い待ち時間は、その会社のお見積りになります。", "wait": {"30": 0, "60": 500, "120": 1500}, "pay": "千葉・松戸の会社は、お支払い方法を決まったときのメールでご案内します。", "label": "千葉・松戸の会社", "night_hours": null, "partner_id": "P003"}};/*/SELECTION_FARES*/
+/* 事業者の検索は予約の保存・メール送信をしない。料金は上の生成データを使う。 */
+var QUOTE_FIELDS = ['pref', 'pickup', 'via', 'dropoff', 'datetime', 'trip', 'riders', 'luggage', 'species', 'weight', 'cage', 'care', 'pet_count', 'pets_json', 'return_datetime', 'return_pickup', 'return_dropoff', 'route_details'];
+
+function selectionRide_(p) {
+  return {
+    '都府県': shortPref_(p.pref), '希望日時': parseJst_(p.datetime), '片道・往復': String(p.trip || ''),
+    '体重kg': Number(p.weight), '同乗人数': String(p.riders || ''), 'ペット数': Number(p.pet_count),
+    'キャリー': String(p.cage || ''), '介助': String(p.care || ''), '荷物': String(p.luggage || '')
+  };
+}
+
+function selectionValid_(p) {
+  var at = parseJst_(p.datetime), ret = parseJst_(p.return_datetime);
+  if (PREFS.indexOf(shortPref_(p.pref)) < 0) return 'area';
+  if (!at || !isFinite(at.getTime()) || at.getTime() < Date.now() + CONFIG.MIN_LEAD_HOURS * 3600000 ||
+      (p.trip === '往復' && (!ret || !(ret > at)))) return 'datetime';
+  if (['片道', '往復'].indexOf(p.trip) < 0 || !String(p.pickup || '').trim() || !String(p.dropoff || '').trim()) return 'missing';
+  if (!(Number(p.weight) > 0) || !(Number(p.pet_count) >= 1 && Number(p.pet_count) <= 5) || !p.cage || !p.care || !p.riders) return 'missing';
+  return '';
+}
+
+function selectionCandidates_(r) {
+  // 同じ都県、または全国対応の会社。近隣都県だけの会社には依頼しない。
+  return partners_().filter(function(pt) {
+    return pt.active && reachable_(pt) && (pt.areas.indexOf(r['都府県']) >= 0 || pt.areas.indexOf('全国') >= 0) &&
+      fitsCar_(pt, r) && fitsCage_(pt, r) && inTime_(pt, r) && (r['介助'] !== '必要' || pt.careOk);
+  });
+}
+
+function quoteSignature_(p, id, expires, price) {
+  return sign_('selection:' + JSON.stringify(QUOTE_FIELDS.map(function(k) { return String(p[k] || ''); })) + ':' + id + ':' + expires + ':' + JSON.stringify(price));
+}
+
+function selectionPrice_(pt, p) {
+  var key = Object.keys(SELECTION_FARES).filter(function(k) { return SELECTION_FARES[k].partner_id === pt.id; })[0];
+  if (!key) return { amount: null, text: '料金はお見積もり', night: '' };
+  var c = SELECTION_FARES[key], d;
+  try { d = JSON.parse(p.route_details); } catch (e) { return null; }
+  if (!d || !['km', 'backKm'].every(function(k) { return typeof d[k] === 'number' && isFinite(d[k]) && d[k] >= 1 && d[k] <= 250; })) return null;
+  if (!['from', 'to', 'backFrom', 'backTo'].every(function(k) {
+    return d[k] && isFinite(d[k].lat) && isFinite(d[k].lng) && d[k].lat >= 20 && d[k].lat <= 46 && d[k].lng >= 122 && d[k].lng <= 154;
+  })) return null;
+  function distance(a, b) {
+    var t = Math.PI / 180, h = Math.pow(Math.sin((b.lat-a.lat)*t/2),2) + Math.cos(a.lat*t)*Math.cos(b.lat*t)*Math.pow(Math.sin((b.lng-a.lng)*t/2),2);
+    return 6371*2*Math.asin(Math.sqrt(Math.min(1,h)));
+  }
+  function fee(base, at) {
+    return base + (c.shop ? Math.max(0, Math.ceil(distance({lat:c.shop[0],lng:c.shop[1]},at)*1.5)-(c.pick_free_km||0))*(c.pick_over||0) : 0);
+  }
+  function night(s) {
+    var at = parseJst_(s), h = at ? (at.getUTCHours()+9)%24 : 0;
+    return c.night_hours && c.night > 1 && (h >= c.night_hours[0] || h < c.night_hours[1]);
+  }
+  function fare(km, round, nt, from, to) {
+    var pb = fee(c.pick, from)+fee(c.back,to);
+    if (round && c.round_flat && km*2 <= c.round_flat[0]) return c.round_flat[1]+pb;
+    var amount = c.base, start = c.base_km;
+    c.tiers.forEach(function(t) { var end = t[0] == null ? Infinity : t[0]; if (km>start) amount += t[1]*(Math.min(km,end)-start); start=end; });
+    if (nt) amount = Math.ceil(amount*c.night/10)*10;
+    return amount*(round?2:1)+pb;
+  }
+  function total(n1, n2) {
+    var amount = fare(d.km,false,n1,d.from,d.to);
+    if (p.trip === '往復') {
+      amount += fare(d.backKm,false,n2,d.backFrom,d.backTo);
+      var gap = (parseJst_(p.return_datetime)-parseJst_(p.datetime))/60000-d.km*3;
+      var wk = gap<=30?'30':gap<=60?'60':gap<=120?'120':'';
+      if (wk && p.return_pickup === p.dropoff && p.return_dropoff === p.pickup && c.wait) amount = Math.min(amount,fare(d.km,true,n1,d.from,d.from)+c.wait[wk]);
+    }
+    return Math.ceil(amount/100)*100;
+  }
+  var nt = night(p.datetime), nt2 = night(p.return_datetime), amount = total(nt,nt2);
+  var extra = amount-total(false,false);
+  return { amount: amount, text: yen_(amount), night: nt || (p.trip === '往復' && nt2) ? '夜間・早朝の割増 ' + yen_(extra) + 'を含みます' : c.night_hours ? '指定時刻は夜間・早朝の割増対象外です' : '料金表に夜間・早朝の割増はありません' };
+}
+
+function selectionQuotes_(p) {
+  var error = selectionValid_(p);
+  if (error) return {ok:false,error:error};
+  var expires = Date.now()+15*60000, r = selectionRide_(p);
+  var cards = selectionCandidates_(r).map(function(pt) {
+    var price = selectionPrice_(pt,p);
+    if (!price) return null;
+    return { id:pt.id, label:pt.name, car:pt.car || '車の詳細は引き受け時に確認',
+      payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は引き受け時にご案内',
+      price:price, expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
+  }).filter(Boolean);
+  return {ok:true,selection_version:1,cards:cards};
+}
+
+function validateSelection_(p) {
+  var error = selectionValid_(p);
+  if (error) return {ok:false,error:error};
+  var expires = Number(p.quote_expires);
+  if (!(expires > Date.now() && expires <= Date.now()+15*60000)) return {ok:false,error:'selection_expired'};
+  var pt = selectionCandidates_(selectionRide_(p)).filter(function(x) { return x.id === p.partner_id; })[0];
+  if (!pt) return {ok:false,error:'selection_unavailable'};
+  var price = selectionPrice_(pt,p);
+  if (!price || p.quote_token !== quoteSignature_(p,pt.id,expires,price)) return {ok:false,error:'selection_changed'};
+  return {ok:true,partner:pt,price:price};
 }
