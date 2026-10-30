@@ -378,6 +378,8 @@ footer a{color:var(--ink-2)}
 .partner-card .partner-price small{display:block;font-size:.75rem;font-weight:600;color:var(--ink-2)}
 .partner-card .btn{margin-top:auto;font-size:.92rem;width:100%}
 .partner-card .partner-note{color:var(--ink-2);font-size:.78rem}
+.partner-review{align-self:flex-start;font-size:.84rem;font-weight:700;color:var(--o-d);text-decoration:underline;text-underline-offset:3px}
+.partner-review:hover{color:var(--ink)}
 .partner-card:hover,.partner-card:focus-within{border-color:var(--o);box-shadow:0 0 0 3px #fff1e6}
 #partnerStatus{font-size:.9rem;line-height:1.7}
 [hidden]#sendSelected{display:none}

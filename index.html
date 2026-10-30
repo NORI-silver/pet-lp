@@ -407,6 +407,8 @@ footer a{color:var(--ink-2)}
 .partner-card .partner-price small{display:block;font-size:.75rem;font-weight:600;color:var(--ink-2)}
 .partner-card .btn{margin-top:auto;font-size:.92rem;width:100%}
 .partner-card .partner-note{color:var(--ink-2);font-size:.78rem}
+.partner-review{align-self:flex-start;font-size:.84rem;font-weight:700;color:var(--o-d);text-decoration:underline;text-underline-offset:3px}
+.partner-review:hover{color:var(--ink)}
 .partner-card:hover,.partner-card:focus-within{border-color:var(--o);box-shadow:0 0 0 3px #fff1e6}
 #partnerStatus{font-size:.9rem;line-height:1.7}
 [hidden]#sendSelected{display:none}
@@ -1020,6 +1022,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var article = document.createElement("article"); article.className = "partner-card";
       function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
       text("h4", card.label);
+      if (REVIEWS[card.id]) {
+        var review = document.createElement("a"); review.className = "partner-review"; review.href = REVIEWS[card.id];
+        review.target = "_blank"; review.rel = "noopener"; review.textContent = "この会社の口コミを見る（外部サイト）";
+        article.appendChild(review);
+      }
       var price = text("p", card.price.text, "partner-price");
       var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + ((form.querySelector("input[name=trip]:checked") || {}).value || "片道") + "の合計目安（税込）"; price.appendChild(cap);
       function breakdown(title, value){
@@ -1048,7 +1055,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn";
       btn.textContent = "この事業者に予約を依頼する"; btn.setAttribute("aria-label", card.label + "に予約を依頼する");
       btn.addEventListener("click", function(){ if (sending) return; chosenQuote = card; $("sendSelected").hidden = false; $("sendSelected").textContent = card.label + "に予約を依頼する"; form.requestSubmit(); });
-      article.addEventListener("click", function(event){ if (!event.target.closest("button")) btn.click(); });
+      article.addEventListener("click", function(event){ if (!event.target.closest("button,a")) btn.click(); });
       article.appendChild(btn); $("partnerCards").appendChild(article);
     });
     // 自動更新では入力中のフォーカスやスクロール位置を動かさない。
@@ -1249,6 +1256,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // ── 概算料金（お迎え場所 → 経由地 → 行き先 の距離から計算）──
   // 提携先ごとの料金表と、都県ごとの依頼先。tools/fares.json から gen_areas.py が書き込む（ここは手で直さない）。
   /*FARES*/var FARES = {"petexpress": {"label": "東京・世田谷の会社", "base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "night_hours": [18, 8], "round_flat": null, "wait": {"30": 660, "60": 1320, "120": 2640}, "shop": [35.6339, 139.6697], "pick_free_km": 3, "pick_over": 220}, "kuriki": {"label": "千葉・松戸の会社", "base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "night_hours": null, "round_flat": [10, 3300], "wait": {"30": 0, "60": 500, "120": 1500}, "shop": null, "pick_free_km": null, "pick_over": null}};
+  var REVIEWS = {"P002": "https://www.google.com/maps/search/?api=1&query=%E3%83%9A%E3%83%83%E3%83%88%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%97%E3%83%AC%E3%82%B9%20%E4%B8%96%E7%94%B0%E8%B0%B7%E5%8C%BA%E4%B8%8A%E9%A6%AC", "P003": "https://www.google.com/maps/search/?api=1&query=%E3%83%9A%E3%83%83%E3%83%88%E3%82%BF%E3%82%AF%E3%82%B7%E3%83%BC%20%E3%81%8F%E3%82%8A%E3%81%8D%20%E6%9D%BE%E6%88%B8"};
   var AREA_FARES = {"東京都": ["petexpress", "kuriki"], "神奈川県": ["petexpress", "kuriki"], "千葉県": ["kuriki"], "埼玉県": ["petexpress", "kuriki"]};/*/FARES*/
   // 実際の料金が目安を超えないよう、上限側で計算する（道のりは直線の1.5倍、1km単位で切り上げ、最後に100円単位で切り上げ）
   var ROAD = 1.5;
