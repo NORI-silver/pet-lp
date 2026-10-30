@@ -1,7 +1,7 @@
 // アクセス解析：見られたページと、よく使われる操作の数を集計する（お名前・連絡先・場所などの入力内容は送らない）。
 // ID が空のときと、本番の pet.shiokonbu.com 以外（手元での確認など）では何もしない。
 (function(){
-  var ID = "";
+  var ID = "G-ZYX17VBTWB";
   if (!ID || location.hostname !== "pet.shiokonbu.com") return;
   window.dataLayer = window.dataLayer || [];
   window.gtag = function(){ dataLayer.push(arguments); };
