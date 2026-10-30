@@ -23,6 +23,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" as="image" href="img/hero.webp" type="image/webp" fetchpriority="high">
 <meta name="theme-color" content="#ff6a1a">
+<script src="/ga.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&display=swap" rel="stylesheet">
@@ -971,7 +972,7 @@ footer a{color:var(--ink-2)}
         <h4>3. ペットタクシー事業者へのお伝え</h4>
         <ul><li>空きを確認する段階では、お迎えの場所・行き先・日・ペットの情報だけを、お客さまが選んだ1社にお伝えします。お名前と連絡先はお伝えしません。</li><li>お迎えを引き受けた1社にだけ、送迎のためにお名前と連絡先をお伝えします。</li><li>法令にもとづく場合を除き、ご本人の同意なくそれ以外の第三者に提供することはありません。</li></ul>
         <h4>4. 安全な管理</h4>
-        <ul><li>フォームの送信内容は、暗号化された通信（HTTPS）でお送りいただきます。</li><li>お預かりした情報は、セキュリティ対策の整った大手クラウドサービス上で保管し、見られるのは運営者だけに限っています。</li><li>なくしたり、漏れたり、勝手に使われたりしないよう、アクセスの制限やログインの保護などの安全管理に努めます。</li><li>情報は手配とご連絡に必要な期間だけ保管し、必要がなくなったら速やかに削除します。</li><li>料金の目安を出すため、入力した場所（「いまいる場所を入れる」を使ったときは端末の位置）を地図の検索サービスに送り、距離を調べます。端末の位置は、ボタンを押してご自身で許可したときだけ使い、当サイトには保存しません。</li><li>送ったことのある場所は、次に入力するときの候補として、お使いの端末のブラウザの中だけに保存します（当サイトには届きません）。フォームの「場所の候補を消す」でいつでも消せます。</li></ul>
+        <ul><li>フォームの送信内容は、暗号化された通信（HTTPS）でお送りいただきます。</li><li>お預かりした情報は、セキュリティ対策の整った大手クラウドサービス上で保管し、見られるのは運営者だけに限っています。</li><li>なくしたり、漏れたり、勝手に使われたりしないよう、アクセスの制限やログインの保護などの安全管理に努めます。</li><li>情報は手配とご連絡に必要な期間だけ保管し、必要がなくなったら速やかに削除します。</li><li>料金の目安を出すため、入力した場所（「いまいる場所を入れる」を使ったときは端末の位置）を地図の検索サービスに送り、距離を調べます。端末の位置は、ボタンを押してご自身で許可したときだけ使い、当サイトには保存しません。</li><li>サイトをよりよくするため、大手の解析サービスを使って、見られたページや「緊急のとき」タブ・予約の依頼などの操作の回数を、個人が特定できない形で集計しています。このためにクッキーなどを使います。お名前・連絡先・場所などの入力内容は送りません。集計を止めたいときは、ブラウザの設定でクッキーを止めるか、<a href="https://tools.google.com/dlpage/gaoptout?hl=ja" target="_blank" rel="noopener">解析を止める追加機能</a>をお使いください（解析サービスによる情報の扱いは<a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener">こちら</a>）。</li><li>送ったことのある場所は、次に入力するときの候補として、お使いの端末のブラウザの中だけに保存します（当サイトには届きません）。フォームの「場所の候補を消す」でいつでも消せます。</li></ul>
         <h4>5. 確認・訂正・削除のご依頼</h4>
         <ul><li>ご自身の情報の確認・訂正・削除をご希望の場合は、受付時にお送りしたメールにご返信ください。ご本人であることを確認したうえで対応します。</li></ul>
         <p>この内容は、必要に応じて見直すことがあります。変更したときはこのページでお知らせします。（2026年10月制定）</p>
@@ -1018,6 +1019,9 @@ footer a{color:var(--ink-2)}
 <script>
 /* フォーム送信先（Google Apps Script のウェブアプリURL）。空の間は送信されません。 */
 var GAS_URL = "https://script.google.com/macros/s/AKfycbyxsd8L8g_5Nt3HnApx2ZQnXFyPBsNfuHSvBlJKRVDtAIVr0EnqB-0raxwMPNOVl_Jg/exec";
+/* アクセス解析に操作の回数だけを送る（入力内容は送らない）。ga.js が動いていないときは何もしない */
+function track(name, params){ if (window.gtag) gtag("event", name, params || {}); }
+var partnersTracked = false;
 var MAX_PETS = 5;
 var lastSig = "", reqKey = "";
 /* 前回の入力をこの端末に残す日数（日時以外をもう一度入れ直さなくてよいように） */
@@ -1069,6 +1073,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (searchSeq !== quoteSeq || sending) return;
       if (!result || !result.ok || result.selection_version !== 1 || !Array.isArray(result.cards)) throw new Error("quotes");
       paintPartners(result.cards);
+      if (!partnersTracked) { partnersTracked = true; track("view_partners", {count: result.cards.length}); }
       quoteRefreshTimer = setTimeout(function(){clearPartners();queuePartners();}, 14*60000);
     }).catch(function(){
       if (searchSeq !== quoteSeq || sending) return;
@@ -1079,6 +1084,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   function toggleReviews(id, panel, btn){
     if (!panel.hidden) { panel.hidden = true; btn.setAttribute("aria-expanded", "false"); return; }
     panel.hidden = false; btn.setAttribute("aria-expanded", "true");
+    track("open_reviews");
     if (panel.dataset.done) return;
     panel.textContent = "口コミを読み込んでいます…";
     var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
@@ -1753,6 +1759,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       a.innerHTML = "<b></b><small></small>";
       a.querySelector("b").textContent = x.name;
       a.querySelector("small").textContent = sub;
+      a.addEventListener("click", function(){ track("emergency_link", {link_text: x.name, link_url: x.url}); });
       return a;
     }
     // 都道府県で見せる（場所が入っていないとき）
@@ -1911,13 +1918,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       });
     }
     function setMode(m){
+      if (m === "emg" && box.hidden) track("emergency_open");
       tabs.querySelectorAll("button").forEach(function(b){ b.setAttribute("aria-selected", String(b.dataset.mode === m)); });
       box.hidden = m !== "emg";
       document.querySelector(".form-sec .form-card").hidden = m === "emg";
     }
     tabs.addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) setMode(b.dataset.mode); });
     // 都道府県を選びなおしたら、場所の欄は空にして都道府県の一覧に戻す
-    $("emgPref").addEventListener("change", function(){ inp.value = ""; say(""); ++whereSeq; here = null; ++nearSeq; show(this.value); });
+    $("emgPref").addEventListener("change", function(){ track("emergency_pref", {pref: this.value}); inp.value = ""; say(""); ++whereSeq; here = null; ++nearSeq; show(this.value); });
     show("東京都");
     if (location.hash === "#emergency") setMode("emg");
   })();
@@ -2350,7 +2358,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         form.style.display = "none";
         $("thanks").style.display = "block";
         $("form").scrollIntoView({behavior:"smooth"});
-        if (window.gtag) gtag("event", "generate_lead");
+        track("generate_lead");
       })
       .catch(function(){
         retry("受け付けできたか確認できませんでした。数分たっても受付メールが届かなければ、同じ事業者の「この事業者に予約を依頼する」をもう一度押してください。入力内容はそのまま残っています。");

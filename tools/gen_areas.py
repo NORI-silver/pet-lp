@@ -224,6 +224,7 @@ def head(title, desc, url, extra_ld, og_img="/img/hero.jpg", og_w=1200, og_h=900
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
+<script src="/ga.js"></script>
 {extra_ld}
 </head>
 <body>
