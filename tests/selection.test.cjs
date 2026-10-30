@@ -8,6 +8,10 @@ const call = (fn,...args) => JSON.parse(JSON.stringify(ctx[fn](...args)));
 ctx.sign_ = s => crypto.createHmac('sha256','test-secret').update(s).digest('hex');
 ctx.Utilities = { formatDate(d,tz,format) { return new Date(d.getTime()+9*3600000).toISOString().slice(0,16); } };
 ctx.CONFIG.DEFAULT_PARTNER_HOURS='0-24';
+// 口コミの点数：キーがなければ取り寄せない（UrlFetchApp は呼ばれない）
+let props={};
+ctx.PropertiesService={getScriptProperties:()=>({getProperty:k=>props[k]??null,setProperty:(k,v)=>{props[k]=v;}})};
+ctx.log_=()=>{};
 const partner = (id,extra={}) => ({id,name:'確認用 '+id,areas:['東京'],active:true,email:'test@example.invalid',careOk:true,big:true,luggage:true,riders:3,pets:5,cageMust:'不要',cageLend:true,lead:3,hours:'0-24',car:'ワンボックス',...extra});
 let partners=[partner('P002'),partner('P003'),partner('P099'),partner('inactive',{active:false}),partner('unreachable',{email:''}),partner('wrong-area',{areas:['大阪']}),partner('small',{big:false}),partner('no-rental',{cageLend:false}),partner('no-care',{careOk:false}),partner('too-late',{lead:999})];
 ctx.partners_ = () => partners;
@@ -18,6 +22,22 @@ let cards=call('selectionQuotes_',p).cards;
 assert.deepEqual(cards.map(c=>c.id),['P002','P003','P099']);
 assert.equal(cards[0].price.amount,4000); // 3,300 + 迎車・回送660, 100円単位切上げ
 assert.equal(cards[1].price.amount,3000);
+assert.ok(cards.every(c=>c.review===null));
+// キーがあるときは点数と件数を取り寄せ、場所IDだけ覚えて月の回数を数える
+props.PLACES_API_KEY='test-key';
+const fetched=[];
+ctx.UrlFetchApp={fetch(url){fetched.push(url);return url.endsWith(':searchText')
+  ?{getResponseCode:()=>200,getContentText:()=>JSON.stringify({places:[{id:'place-'+fetched.length}]})}
+  :{getResponseCode:()=>200,getContentText:()=>JSON.stringify({rating:4.5,userRatingCount:12,googleMapsUri:'https://maps.example/x'})};}};
+cards=call('selectionQuotes_',p).cards;
+assert.deepEqual(cards.find(c=>c.id==='P002').review,{rating:4.5,count:12,url:'https://maps.example/x'});
+assert.equal(cards.find(c=>c.id==='P099').review,null); // 料金表のない会社は取り寄せない
+const searches=fetched.filter(u=>u.endsWith(':searchText')).length;
+call('selectionQuotes_',p);
+assert.equal(fetched.filter(u=>u.endsWith(':searchText')).length,searches); // 場所IDは使い回す
+props[Object.keys(props).find(k=>k.startsWith('REVIEW_COUNT_'))]=String(ctx.CONFIG.REVIEW_MONTHLY_LIMIT);
+assert.ok(call('selectionQuotes_',p).cards.every(c=>c.review===null)); // 月の上限を超えたらリンクだけ
+props={};
 assert.equal(cards[2].price.amount,null);
 assert.equal(cards[2].price.text,'料金はお見積もり');
 assert.ok(!JSON.stringify(cards).includes('example.invalid'));
@@ -69,6 +89,7 @@ vm.runInContext(fs.readFileSync('booking/Code.gs','utf8'),receiveCtx);
 receiveCtx.sign_=ctx.sign_;
 receiveCtx.Utilities=ctx.Utilities;
 receiveCtx.partners_=()=>partners;
+receiveCtx.PropertiesService=ctx.PropertiesService;
 let saved=[],receipts=0,waves=0,cache=new Map();
 receiveCtx.LockService=ctx.LockService;
 receiveCtx.CacheService={getScriptCache:()=>({get:k=>cache.get(k),put:(k,v)=>cache.set(k,v)})};
