@@ -1257,10 +1257,10 @@ var DASH_BODY = '<h1>全国ペットタクシー事業者一覧</h1><p class="le
 
 var DASH_JS = String(function() {
   var COLS = [['pref','都道府県'],['name','名前（公式サイト）'],['area','対応エリア'],['ch','受付方法'],['gbp','口コミ（Google Maps）'],
-    ['km5','5kmの料金','fare'],['perkm','1kmあたり','fare'],['pick','迎車・送迎代','fare'],['wait','待機代','fare'],['cancel','キャンセルポリシー','fare'],['night','夜間・早朝の割増','fare'],['pay','お支払い','fare'],
-    ['hours','営業時間','service'],['emg','緊急搬送','service'],['hotel','ホテル・サロン送迎だけか','service'],['care','介護サポート','service'],['cage','ケージ','service'],['cap','乗車キャパ','service'],['ride','飼い主の同乗','service'],['animals','乗せられる動物','service'],['lead','予約の期限','service'],
-    ['staff','従業員数','company'],['cars','車両（台数・車種）','company'],['op','運営会社・所在地','company'],['lic','許可・ナンバー','company'],['ins','保険','company'],['trust','信頼度（5点）','company'],['partner','うちとの関係','company'],['note','メモ','company'],['src','出典','company'],['checked','確認日','company']];
-  var ORDER = ['北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県','茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県','新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県','滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県','鳥取県','島根県','岡山県','広島県','山口県','徳島県','香川県','愛媛県','高知県','福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県','全国'];
+    ['km5','5kmの料金','fare'],['perkm','1kmあたり','fare'],['pick','迎車・送迎代','fare'],['wait','待機代','fare'],['cancel','キャンセルポリシー','fare'],['rt_cancel','往復の帰りだけキャンセル','fare'],['night','夜間・早朝の割増','fare'],['night_span','割増のまたぎ方','fare'],['toll','高速・駐車場','fare'],['extra_fees','書いていない料金','fare'],['pay','お支払い','fare'],['pay_timing','支払いの時期','fare'],['rt_fare','往復の料金（待つ／迎え直し）','fare'],['rt_pay','往復の支払い','fare'],
+    ['hours','営業時間','service'],['emg','緊急搬送','service'],['hotel','ホテル・サロン送迎だけか','service'],['care','介護サポート','service'],['cage','ケージ','service'],['cap','乗車キャパ','service'],['large_dog','大型犬（kg・頭数）','service'],['pet_only','ペットだけの乗車','service'],['ride','飼い主の同乗','service'],['animals','乗せられる動物','service'],['lead','予約の期限','service'],
+    ['staff','従業員数','company'],['cars','車両（台数・車種）','company'],['op','運営会社・所在地','company'],['lic','許可・ナンバー','company'],['ins','保険','company'],['trust','信頼度（5点）','company'],['partner','うちとの関係','company'],['reply','返事の速さ（問い合わせ）','company'],['note','メモ','company'],['src','出典','company'],['checked','確認日','company']];
+  var ORDER = ['東京都','神奈川県','埼玉県','千葉県','茨城県','栃木県','群馬県','北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県','新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県','滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県','鳥取県','島根県','岡山県','広島県','山口県','徳島県','香川県','愛媛県','高知県','福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県','全国'];
   var scores = {}, st = { pref: '', q: '', sort: 'pref', emg: false, fare: false };
   var $ = function(id) { return document.getElementById(id); };
   var el = function(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
@@ -1302,7 +1302,7 @@ var DASH_JS = String(function() {
         var td = el('td', c[2] ? 'g-' + c[2] : ''), v = r[c[0]];
         if (c[0] === 'gbp') gbpCell(td, r);
         else if (c[0] === 'name' && /^https?:\/\//.test(r.url)) { var a = el('a', '', v); a.href = r.url; td.appendChild(a); }
-        else { td.textContent = v; if (!v || v === '不明') td.classList.add('unk'); }
+        else { td.textContent = v; if (!v || v === '不明' || v === '未問い合わせ') td.classList.add('unk'); }
         tr.appendChild(td);
       });
       body.appendChild(tr);
