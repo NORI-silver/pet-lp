@@ -218,6 +218,15 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .emg h3{color:#c0392b;font-size:1.15rem;margin:0 0 8px}
 .emg-lead,.emg-note{font-size:.86rem;color:var(--ink-2);margin:0 0 12px}
 .emg-note{margin:12px 0 0;font-size:.8rem;color:var(--ink-3)}
+.emg-tips{background:var(--cream);border-radius:18px;padding:16px 18px;margin-top:20px}
+.emg-tips h4{margin:0 0 6px;color:#c0392b}
+.emg-tips-lead{font-size:.86rem;color:var(--ink-2);margin:0 0 8px}
+.emg-tips dl{margin:0}
+.emg-tips dt{font-weight:700;font-size:.9rem;margin:12px 0 4px}
+.emg-tips dd{margin:0;font-size:.84rem;line-height:1.75;color:var(--ink-2)}
+.emg-tips ul{margin:0;padding-left:1.2em}
+.emg-tips li{margin:2px 0}
+.emg-tips-note{font-size:.78rem;color:var(--ink-3);margin:12px 0 0}
 .emg h4{font-size:.95rem;margin:18px 0 6px}
 .emg-free{font-size:.84rem;background:var(--cream);border-radius:14px;padding:10px 14px;margin:0 0 14px}
 .emg-none{font-size:.84rem;background:var(--cream);border-radius:14px;padding:10px 14px;margin:8px 0 0}
@@ -612,6 +621,36 @@ footer a{color:var(--ink-2)}
       <h4>夜間・救急の動物病院</h4>
       <p class="emg-sum" id="emgSum" hidden></p>
       <div id="emgHosp" aria-live="polite"></div>
+      <div class="emg-tips">
+        <h4>緊急で病院へ行くときに気をつけること</h4>
+        <p class="emg-tips-lead">あわてるのは当たり前です。ひと呼吸おいて、できることから順に進めましょう。</p>
+        <dl>
+          <dt>1. 出かける前に、必ず電話を</dt>
+          <dd>夜間や救急の病院は、手術中や混み合っていて受け入れられないことがあります。電話で「どんな様子か・いつからか・種類と体重・年齢」を伝え、受け入れてもらえるか、着くまでにしておくことがないかを聞いてから出かけてください。</dd>
+          <dt>2. 持っていくもの</dt>
+          <dd><ul>
+            <li>ふだん飲んでいる薬（薬の袋や説明書でも大丈夫です）</li>
+            <li>かかりつけの病院の名前、ワクチンの記録があればそれも</li>
+            <li>飲みこんだかもしれない物や、その袋・箱・残り</li>
+            <li>吐いたものや便の写真（持っていけるなら、袋に入れて実物も）</li>
+            <li>タオル・ペットシーツ（汚れたときや、体を支えるのに使えます）</li>
+            <li>お金（夜間の診察は、昼間より高くなることが多いです。カードが使えるかは電話のときに聞いておくと安心です）</li>
+          </ul></dd>
+          <dt>3. 運ぶときは</dt>
+          <dd><ul>
+            <li>猫や小さな犬は、キャリーやケージに入れて運びます。急に飛び出すことがあるので、抱っこだけで運ぶのは避けましょう。</li>
+            <li>けがをしているときや動けないときは、体をなるべく動かさないように、タオルや毛布で全体を包んで平らに支えます。</li>
+            <li>痛いときは、ふだん優しい子でも思わずかむことがあります。顔のまわりに手を近づけすぎないよう気をつけてください。</li>
+            <li>暑さでぐったりしているときは、車の中を涼しくして運びます。</li>
+            <li>運転する人と、そばで見守る人を分けられると安心です。</li>
+          </ul></dd>
+          <dt>4. 伝えるためにメモしておくこと</dt>
+          <dd>いつから、どんな様子か。何をどれくらい食べた（飲みこんだ）か、それは何時ごろか。吐いた回数やけいれんの長さなど。様子を動画で撮っておくと、言葉より伝わりやすいことがあります。</dd>
+          <dt>5. 自分の判断でしないこと</dt>
+          <dd>人の薬を飲ませたり、無理に吐かせようとしたりはしないでください。かえって具合が悪くなることがあります。どうしたらいいか迷ったら、電話で病院にたずねましょう。</dd>
+        </dl>
+        <p class="emg-tips-note">ここに書いたのは、一般的な心がけです。ペットの様子にあわせて、病院の指示にしたがってください。</p>
+      </div>
       <p class="emg-note" id="emgNote"></p>
     </div>
     <div class="form-card">
