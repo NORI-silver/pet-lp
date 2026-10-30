@@ -72,7 +72,8 @@ TOP_TABLE = f"""        <h3>距離ごとの目安</h3>
     <p class="fare-night"><b>🌙 夜間・早朝の割増</b>上の目安は昼間の料金です。{night_text()}</p>
     <p class="small">{fare_note()}エリアごとの目安は、各エリアのページにまとめています。</p>"""
 src = re.sub(r"<!--FARE_TABLE-->.*?<!--/FARE_TABLE-->", lambda m: "<!--FARE_TABLE-->" + TOP_TABLE + "<!--/FARE_TABLE-->", src, count=1, flags=re.S)
-EMG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "emergency.json"), encoding="utf-8"))["areas"]
+EMG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "emergency.json"), encoding="utf-8"))
+EMG = {"checked": EMG["checked"], "taxis": EMG["taxis"], "hospitals": EMG["hospitals"]}
 src = re.sub(r"/\*EMG\*/.*?/\*/EMG\*/", lambda m: "/*EMG*/var EMG = " + json.dumps(EMG, ensure_ascii=False) + ";/*/EMG*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*FARES\*/.*?/\*/FARES\*/", lambda m: "/*FARES*/" + FARE_JS + "/*/FARES*/", src, count=1, flags=re.S)
 open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(src)

@@ -217,11 +217,14 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .emg h3{color:#c0392b;font-size:1.15rem;margin:0 0 8px}
 .emg-lead,.emg-note{font-size:.86rem;color:var(--ink-2);margin:0 0 12px}
 .emg-note{margin:12px 0 0;font-size:.8rem;color:var(--ink-3)}
-.emg-tel{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fdecea;border-radius:16px;padding:14px 16px;margin-top:8px;text-decoration:none;color:var(--ink)}
-.emg-tel b{display:block;font-size:.92rem}
-.emg-tel small{display:block;font-size:.76rem;color:var(--ink-3)}
-.emg-tel span{font-family:var(--round);font-weight:800;font-size:1.15rem;color:#c0392b;white-space:nowrap}
-.emg-none{font-size:.86rem;background:var(--cream);border-radius:14px;padding:12px 14px;margin:8px 0 0}
+.emg h4{font-size:.95rem;margin:18px 0 6px}
+.emg-free{font-size:.84rem;background:var(--cream);border-radius:14px;padding:10px 14px;margin:0 0 14px}
+.emg-pref{display:flex;flex-wrap:wrap;gap:8px}
+.emg-pref button{border:2px solid #c0392b;background:#fff;color:#c0392b;border-radius:999px;padding:7px 16px;font-weight:700;font-size:.9rem;cursor:pointer}
+.emg-pref button[aria-pressed=true]{background:#c0392b;color:#fff}
+.emg-item{display:block;background:#fdecea;border-radius:16px;padding:12px 16px;margin-top:8px;text-decoration:none;color:var(--ink)}
+.emg-item b{display:block;font-size:.92rem;text-decoration:underline;text-underline-offset:3px}
+.emg-item small{display:block;font-size:.78rem;color:var(--ink-2);margin-top:2px}
 .hist-clear{background:none;border:0;padding:6px 0 0;font:inherit;font-size:.75rem;color:var(--ink-3);text-decoration:underline;cursor:pointer}
 .hist-clear[hidden]{display:none}
 .geo-btn{margin-top:8px;background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;font:inherit;font-size:.84rem;font-weight:700;color:var(--ink);cursor:pointer}
@@ -539,12 +542,17 @@ footer a{color:var(--ink-2)}
       <button type="button" role="tab" aria-selected="false" data-mode="emg">緊急のとき</button>
     </div>
     <div class="emg" id="emgBox" hidden>
-      <h3>緊急のときは、お電話で</h3>
-      <p class="emg-lead">一刻を争う症状のときは、まずかかりつけや夜間の動物病院に電話してください。病院への移動の手段がないときは、いまいる場所を選ぶと、そのエリアで緊急対応しているペットタクシーに電話がつながります。</p>
-      <div class="f"><label for="emgPref">いまいる場所</label>
-        <select id="emgPref"><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>千葉県</option><option>埼玉県</option></select></div>
-      <div id="emgList" aria-live="polite"></div>
-      <p class="emg-note">緊急対応の料金は通常の予約と違い、電話でペットタクシーからご案内します。急ぎでなければ、下のフォームからご予約ください（お迎えは3時間後から）。</p>
+      <h3>緊急のときの連絡先</h3>
+      <p class="emg-lead">一刻を争う症状のときは、まずかかりつけや夜間・救急の動物病院に電話して、受け入れてもらえるか確かめてください。病院への移動の手段がないときは、緊急の搬送をしている会社に直接ご連絡ください。</p>
+      <p class="emg-free">このページの一覧は無料の情報です。当サイトへのお申し込みやお支払いはありません。料金や受付は、それぞれの会社・病院に直接おたずねください。</p>
+      <div class="emg-pref" id="emgPref" role="group" aria-label="地域でしぼりこむ">
+        <button type="button" data-p="東京都" aria-pressed="true">東京</button><button type="button" data-p="神奈川県" aria-pressed="false">神奈川</button><button type="button" data-p="埼玉県" aria-pressed="false">埼玉</button><button type="button" data-p="千葉県" aria-pressed="false">千葉</button>
+      </div>
+      <h4>夜間・救急の動物病院</h4>
+      <div id="emgHosp" aria-live="polite"></div>
+      <h4>緊急の搬送をしている会社</h4>
+      <div id="emgTaxi" aria-live="polite"></div>
+      <p class="emg-note" id="emgNote"></p>
     </div>
     <div class="form-card">
       <p class="yoyaku"><b>完全予約制</b>事業者に依頼した時点では、まだ予約は確定していません。車が決まったことをお知らせするメールが届いたら、予約確定です。</p>
@@ -1563,38 +1571,33 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       })
       .catch(function(){});
   }
-  // ── 緊急タブ：tools/emergency.json から gen_areas.py が書き込む（ここは手で直さない）。番号が1件もなければタブを出さない ──
-  /*EMG*/var EMG = {"東京都": [], "神奈川県": [], "千葉県": [], "埼玉県": []};/*/EMG*/
+  // ── 緊急タブ：tools/emergency.json から gen_areas.py が書き込む（ここは手で直さない）。電話番号は出さず、各社・各病院の公式サイトへのリンクだけ ──
+  /*EMG*/var EMG = {"checked": "2026年10月30日", "taxis": [{"name": "動物救急車", "prefs": ["東京都", "神奈川県"], "area": "東京・大田区（田園調布）から30kmほど。東京・神奈川が中心", "note": "平日・休日・夜間も搬送。予約制", "url": "https://j-119.com/"}, {"name": "ペットドクターカー", "prefs": ["東京都", "埼玉県", "神奈川県"], "area": "東京23区と周辺の市、埼玉南部、川崎北部", "note": "夜間に獣医師が車で来て、車の中で診察・処置をするサービス（電話受付 20時〜翌3時）", "url": "https://petdoctorcar.net/"}, {"name": "三和交通 ペットタクシー", "prefs": ["神奈川県", "東京都", "埼玉県"], "area": "横浜市北部、東京の多摩地域の一部、埼玉の和光・朝霞・志木・新座・富士見など", "note": "急な体調不良の「ペット119番」に対応", "url": "https://www.sanwakoutsu.co.jp/special/pet/"}, {"name": "ペットタクシー Animals", "prefs": ["神奈川県"], "area": "横浜市港南区の会社。神奈川が中心", "note": "深夜の救急搬送に対応（営業時間外は相談）", "url": "https://h12150825.wixsite.com/taxi-animals"}, {"name": "コインペットタクシー シエロ", "prefs": ["千葉県", "東京都", "埼玉県"], "area": "千葉の松戸・市川・流山・柏、東京の葛飾・江戸川・足立など、埼玉の八潮・三郷", "note": "緊急・救急に対応（夜間・深夜・早朝は別料金）", "url": "https://pettaxi.jp/"}, {"name": "ペットタクシー パールのしっぽ", "prefs": ["千葉県"], "area": "千葉市が中心", "note": "営業時間外でも緊急のときは相談可。早朝・深夜の緊急搬送に対応", "url": "https://pearlno-shippo.com/"}, {"name": "COCOタク さいたま南店", "prefs": ["埼玉県", "東京都"], "area": "さいたま市が中心。埼玉南部と東京の一部", "note": "24時間・年中無休。夜間の送迎にも対応", "url": "https://cocotaxi-saitama.com/"}, {"name": "COCOタク 埼玉川越店", "prefs": ["埼玉県"], "area": "川越市が中心。所沢・入間・狭山・飯能・熊谷など", "note": "急な体調不良や夜間の緊急に対応（20時〜朝8時はLINEで受付）", "url": "https://pet-taxi-saitama-kawagoe.jp/"}, {"name": "COCOタク 埼玉春日部", "prefs": ["埼玉県", "千葉県"], "area": "春日部市が中心。越谷・久喜など、千葉の野田・柏・流山", "note": "救急病院への送迎に24時間対応（できる限り）", "url": "https://pet-taxi-kasukabe.com/"}], "hospitals": {"東京都": [{"name": "港区動物救急医療センター 芝アニマルクリニック", "city": "港区", "hours": "24時間", "url": "https://shiba-animalclinic.com/"}, {"name": "ライフメイト動物医療センター文京", "city": "文京区", "hours": "24時間受付", "url": "https://er-animal.jp/er_bunkyo/"}, {"name": "夜間救急動物病院 目黒", "city": "目黒区", "hours": "20時〜翌5時", "url": "https://www.yakan-99.com/"}, {"name": "TRVA動物医療センター", "city": "世田谷区", "hours": "20時〜翌6時", "url": "https://trva.jp/emergency/"}, {"name": "杉並動物夜間救急医療センター", "city": "杉並区", "hours": "電話受付 20時〜翌2時", "url": "https://ah.aeonpet.com/tokyo-yakan-emergency/"}, {"name": "ライフメイト動物救急センター練馬", "city": "練馬区", "hours": "24時間受付", "url": "https://er-animal.jp/er_nerima/"}, {"name": "ひがし東京夜間救急動物医療センター", "city": "江東区", "hours": "19時〜翌7時", "url": "https://mc.aeonpet.com/higashi-tokyo/"}, {"name": "武蔵野動物・救急救命センター", "city": "武蔵野市", "hours": "20時〜翌9時（予約制）", "url": "http://center99.intellectual-japan.com/index.html"}, {"name": "ライフメイト動物医療センター府中", "city": "府中市", "hours": "24時間受付", "url": "https://er-animal.jp/er_fuchu/"}, {"name": "サムズアップアニマルケアセンター", "city": "立川市", "hours": "夜間 19時30分〜翌9時", "url": "https://samsupvets.jp/"}, {"name": "ライフメイト動物救命救急センター八王子", "city": "八王子市", "hours": "24時間受付", "url": "https://er-animal.jp/er_hachioji/"}], "神奈川県": [{"name": "DVMsどうぶつ医療センター横浜", "city": "横浜市神奈川区", "hours": "20時〜翌3時", "url": "https://yokohama-dvms.com/"}, {"name": "横浜動物救急診療センター VECCS横浜", "city": "横浜市南区", "hours": "24時間", "url": "https://veccs-yokohama.jp/"}, {"name": "アニマルメディカルセンター", "city": "川崎市中原区", "hours": "24時間", "url": "https://amc-japan.com/"}, {"name": "川崎市獣医師会 夜間動物病院", "city": "川崎市高津区", "hours": "21時〜24時（診療日が限られています）", "url": "https://kvma9950.com/"}, {"name": "ペテモどうぶつ医療センター相模原", "city": "相模原市南区", "hours": "21時〜翌8時", "url": "https://mc.aeonpet.com/sagamihara/"}, {"name": "藤沢夜間救急動物病院", "city": "藤沢市", "hours": "19時〜翌8時30分", "url": "https://www.fujisawa-vet-er.com/"}, {"name": "横須賀夜間救急動物病院", "city": "横須賀市", "hours": "21時〜翌5時（犬・猫）", "url": "https://yokosukayakan.jimdofree.com/"}], "埼玉県": [{"name": "夜間救急動物病院 さいたま大宮 SONAC", "city": "さいたま市大宮区", "hours": "電話受付 20時〜翌0時30分", "url": "https://www.sonac.co.jp/"}, {"name": "どうぶつの総合病院 専門医療＆救急センター", "city": "川口市", "hours": "救急 9時〜翌1時", "url": "https://vsec.jp/mp/yakan_1"}, {"name": "ミライノ動物病院 夜間救急", "city": "草加市", "hours": "19時〜翌1時30分（犬・猫）", "url": "https://milainoanimal.jp/yakan/"}, {"name": "日本小動物医療センター 夜間救急", "city": "所沢市", "hours": "夜間救急", "url": "https://jsamc.jp/services/yakan.html"}, {"name": "久喜夜間救急どうぶつ病院", "city": "久喜市", "hours": "19時30分〜翌2時", "url": "https://kuki-er-ah.com/"}, {"name": "熊谷夜間救急動物病院", "city": "熊谷市", "hours": "19時〜翌5時（犬・猫）", "url": "https://www.kumagaya-er.com/"}], "千葉県": [{"name": "ペテモどうぶつ医療センター幕張新都心", "city": "千葉市美浜区", "hours": "20時〜翌8時", "url": "https://mc.aeonpet.com/makuharishin/"}, {"name": "JPB動物医療センター千葉", "city": "千葉市緑区", "hours": "夜間救急", "url": "https://jpbvet.com/"}, {"name": "京葉夜間どうぶつ病院", "city": "八千代市", "hours": "20時〜翌2時30分", "url": "https://kettlevet.com/"}, {"name": "柏流山夜間どうぶつ病院", "city": "柏市", "hours": "20時30分〜翌1時（日・月曜は休み）", "url": "https://kn-yakan.com/"}, {"name": "とうかつ夜間どうぶつ病院", "city": "柏市", "hours": "夜間救急", "url": "https://www.tokatu4699.com/"}, {"name": "千葉どうぶつ総合病院", "city": "流山市", "hours": "救急 24時間", "url": "https://www.chiba-ah.com/clinical-services/emergency-services/"}, {"name": "千葉動物医療センター", "city": "袖ケ浦市", "hours": "24時間", "url": "https://99chiba.com/"}]}};/*/EMG*/
   (function(){
-    var any = Object.keys(EMG).some(function(k){ return EMG[k].length; });
     var tabs = $("modeTabs"), box = $("emgBox");
     tabs.hidden = false;
-    // 番号がまだ1つもない間は、場所を選ばせずに「準備中」とだけ出す
-    if (!any) {
-      $("emgPref").closest(".f").hidden = true;
-      $("emgList").innerHTML = '<a class="emg-tel" aria-disabled="true"><div><b>緊急用の電話番号</b><small>東京・神奈川・千葉・埼玉</small></div><span>準備中</span></a>' +
-        '<p class="emg-none">いまは電話での受付を準備しています。急ぐときは、まずかかりつけや夜間の動物病院にご相談ください。</p>';
-      box.querySelector(".emg-lead").textContent = "一刻を争う症状のときは、まずかかりつけや夜間の動物病院に電話してください。病院への移動の手段がないときに、そのエリアで緊急対応しているペットタクシーに電話でつながる番号を、いま準備しています。";
+    $("emgNote").textContent = "当サイトとは別の会社・病院です（" + EMG.checked + "に各公式サイトで確認）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。急ぎでなければ、下のフォームからご予約ください（お迎えは3時間後から）。";
+    function item(x, sub){
+      var a = document.createElement("a"); a.className = "emg-item"; a.href = x.url; a.target = "_blank"; a.rel = "noopener";
+      a.innerHTML = "<b></b><small></small>";
+      a.querySelector("b").textContent = x.name;
+      a.querySelector("small").textContent = sub;
+      return a;
+    }
+    function show(p){
+      $("emgPref").querySelectorAll("button").forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.p === p)); });
+      var h = $("emgHosp"), t = $("emgTaxi");
+      h.innerHTML = ""; t.innerHTML = "";
+      (EMG.hospitals[p] || []).forEach(function(x){ h.appendChild(item(x, x.city + "・" + x.hours)); });
+      EMG.taxis.filter(function(x){ return x.prefs.indexOf(p) >= 0; }).forEach(function(x){ t.appendChild(item(x, "対応エリア：" + x.area + "。" + x.note)); });
     }
     function setMode(m){
       tabs.querySelectorAll("button").forEach(function(b){ b.setAttribute("aria-selected", String(b.dataset.mode === m)); });
       box.hidden = m !== "emg";
     }
     tabs.addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) setMode(b.dataset.mode); });
-    $("emgPref").addEventListener("change", function(){
-      var list = EMG[this.value] || [], el = $("emgList");
-      el.innerHTML = "";
-      if (!this.value) return;
-      if (!list.length) { el.innerHTML = '<p class="emg-none">いま、このエリアで電話で受けられる緊急対応のペットタクシーはありません。まず動物病院にご相談ください。</p>'; return; }
-      list.forEach(function(x){
-        var a = document.createElement("a"); a.className = "emg-tel"; a.href = "tel:" + x.tel.replace(/[^\d+]/g, "");
-        a.innerHTML = "<div><b></b><small></small></div><span></span>";
-        a.querySelector("b").textContent = x.label;
-        a.querySelector("small").textContent = [x.hours, x.note].filter(Boolean).join("・");
-        a.querySelector("span").textContent = x.tel;
-        el.appendChild(a);
-      });
-    });
+    $("emgPref").addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) show(b.dataset.p); });
+    show("東京都");
     if (location.hash === "#emergency") setMode("emg");
   })();
 
