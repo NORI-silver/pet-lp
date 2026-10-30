@@ -1283,7 +1283,7 @@ function selectionReview_(pt) {
 
 // 緊急タブの搬送の会社（提携先ではない）の口コミ用：id → 場所を探すことばと、見つかった場所の名前に含まれるはずのことば
 // tools/emergency.json から gen_areas.py が書き込む（ここは手で直さない）
-/*EMG_REVIEWS*/var EMG_REVIEWS = {"E01": {"query": "動物救急車 大田区", "name": "動物救急車"}, "E02": {"query": "ペットドクターカー", "name": "ペットドクターカー"}, "E04": {"query": "ペットタクシー Animals 横浜市港南区", "name": "Animals"}, "E05": {"query": "コインペットタクシー シエロ", "name": "シエロ"}, "E06": {"query": "ペットタクシー パールのしっぽ 千葉市", "name": "パールのしっぽ"}, "E07": {"query": "COCOタク さいたま南店", "name": "COCOタク"}, "E08": {"query": "COCOタク 埼玉川越店", "name": "COCOタク"}, "E09": {"query": "COCOタク 埼玉春日部", "name": "COCOタク"}, "E10": {"query": "ペットレスキュー 夜間救急搬送", "name": "ペットレスキュー"}};/*/EMG_REVIEWS*/
+/*EMG_REVIEWS*/var EMG_REVIEWS = {"E01": {"query": "動物救急車 大田区", "name": "動物救急車"}, "E02": {"query": "ペットドクターカー", "name": "ペットドクターカー"}, "E04": {"query": "ペットタクシー Animals 横浜市港南区", "name": "Animals"}, "E05": {"query": "コインペットタクシー シエロ", "name": "シエロ"}, "E06": {"query": "ペットタクシー パールのしっぽ 千葉市", "name": "パールのしっぽ"}, "E07": {"query": "ペットタクシー COCOタク さいたま南店", "name": ["COCO", "さいたま"]}, "E08": {"query": "ペットタクシー COCOタク 埼玉川越店", "name": ["COCO", "川越"]}, "E09": {"query": "ペットタクシー COCOタク 埼玉春日部", "name": ["COCO", "春日部"]}, "E10": {"query": "ペットレスキュー 夜間救急搬送", "name": "ペットレスキュー"}};/*/EMG_REVIEWS*/
 
 // 口コミの場所の情報を取り寄せる（fields は取り寄せる項目）。月の回数の上限は点数と口コミ本文で共通
 function reviewPlace_(partnerId, fields) {
@@ -1303,8 +1303,10 @@ function reviewPlace_(partnerId, fields) {
     }).getContentText());
     var hit = (found.places || []).filter(function(x) {
       if (!emg) return true;
-      var n = String((x.displayName || {}).text || '').replace(/\s/g, '').toLowerCase();
-      return n.indexOf(String(emg.name).replace(/\s/g, '').toLowerCase()) >= 0;
+      // 名前のことばが全部入っているか（支店がある会社は支店名も。全角・半角の違いは気にしない）
+      var norm = function(t) { return String(t).normalize('NFKC').replace(/\s/g, '').toLowerCase(); };
+      var n = norm((x.displayName || {}).text || '');
+      return [].concat(emg.name).every(function(w) { return n.indexOf(norm(w)) >= 0; });
     })[0];
     placeId = hit && hit.id;
     if (!placeId) {
