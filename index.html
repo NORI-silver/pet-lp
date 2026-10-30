@@ -1380,6 +1380,19 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 場所の検索は4都県の中だけで探す（遠くの同じ名前の場所を拾わないように）。選んだ都県の中の候補を優先する
   var BOX4 = [34.85, 138.6, 36.35, 140.95];
   var BOXJP = [20, 122, 46, 154]; // 緊急タブの場所の欄は全国で探す
+  // 端末の位置：まず速い方法（Wi-Fiなど・数分以内に調べた位置も使う）で読み、だめなときだけ時間のかかるGPSで読み直す
+  function getPos(ok, ng){
+    navigator.geolocation.getCurrentPosition(ok, function(e){
+      if (e.code === 1) { ng(e); return; } // 許可されなかったときは読み直さない
+      navigator.geolocation.getCurrentPosition(ok, ng, {enableHighAccuracy: true, timeout: 12000, maximumAge: 0});
+    }, {enableHighAccuracy: false, timeout: 5000, maximumAge: 300000});
+  }
+  // 位置を住所の文字に直す（待ちすぎないよう6秒で打ち切る）
+  function reverseOsm(c, zoom){
+    var ac = window.AbortController ? new AbortController() : null, t = ac && setTimeout(function(){ ac.abort(); }, 6000);
+    return fetch("https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=" + zoom + "&accept-language=ja&lat=" + c.lat.toFixed(6) + "&lon=" + c.lng.toFixed(6), ac ? {signal: ac.signal} : {})
+      .then(function(r){ clearTimeout(t); return r.json(); });
+  }
   var PREF_BOX = {"東京都": [35.48, 138.9, 35.9, 139.93], "神奈川県": [35.12, 138.9, 35.68, 139.8], "千葉県": [34.88, 139.73, 36.11, 140.9], "埼玉県": [35.74, 138.7, 36.29, 139.91]};
   function inBox(c, b){ return c && c.lat >= b[0] && c.lat <= b[2] && c.lng >= b[1] && c.lng <= b[3]; }
   function pickIn(list){
@@ -1955,10 +1968,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       gb.hidden = false;
       gb.addEventListener("click", function(){
         gb.disabled = true; say("現在地を調べています…");
-        navigator.geolocation.getCurrentPosition(function(pos){
+        getPos(function(pos){
           var c = {lat: pos.coords.latitude, lng: pos.coords.longitude};
-          fetch("https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=16&accept-language=ja&lat=" + c.lat.toFixed(6) + "&lon=" + c.lng.toFixed(6))
-            .then(function(r){ return r.json(); })
+          reverseOsm(c, 16)
             .catch(function(){ return null; })
             .then(function(j){
               var a = (j && j.address) || {}, code = String(a["ISO3166-2-lvl4"] || "").match(/^JP-(\d\d)$/), pref = code ? PREF47[Number(code[1]) - 1] : (a.province || a.state || "");
@@ -1978,7 +1990,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         }, function(e){
           gb.disabled = false;
           say(e.code === 1 ? "位置情報が許可されませんでした。使うときはブラウザの設定で許可するか、場所を入力してください。" : "現在地がわかりませんでした。場所を入力してください。", true);
-        }, {enableHighAccuracy: true, timeout: 15000, maximumAge: 60000});
+        });
       });
     }
     function setMode(m){
@@ -2003,11 +2015,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     function say(t, ng){ msg.textContent = t; msg.className = "geo-msg" + (ng ? " ng" : ""); }
     btn.addEventListener("click", function(){
       btn.disabled = true; say("いまいる場所を調べています…");
-      navigator.geolocation.getCurrentPosition(function(pos){
+      getPos(function(pos){
         var c = {lat: pos.coords.latitude, lng: pos.coords.longitude};
         if (!inBox(c, BOX4)) { btn.disabled = false; say("いまいる場所は、対応エリア（東京・神奈川・千葉・埼玉）の外のようです。お迎えの場所を入力してください。", true); return; }
-        fetch("https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&accept-language=ja&lat=" + c.lat.toFixed(6) + "&lon=" + c.lng.toFixed(6))
-          .then(function(r){ return r.json(); })
+        say("住所に直しています…");
+        reverseOsm(c, 18)
           .then(function(j){
             var a = (j && j.address) || {}, pref = PREF_CODE[a["ISO3166-2-lvl4"]] || a.province || a.state || "";
             if (!PREF_CODE[a["ISO3166-2-lvl4"]] && ["東京都","神奈川県","千葉県","埼玉県"].indexOf(pref) < 0) throw 0;
@@ -2028,7 +2040,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       }, function(e){
         btn.disabled = false;
         say(e.code === 1 ? "位置情報が許可されませんでした。使うときはブラウザの設定で許可するか、お迎えの場所を入力してください。" : "いまいる場所がわかりませんでした。お迎えの場所を入力してください。", true);
-      }, {enableHighAccuracy: true, timeout: 15000, maximumAge: 60000});
+      });
     });
   })();
 
@@ -2186,6 +2198,24 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       })
       .catch(function(){ gOff = true; return null; });
   }
+  // 「幕張 動物病院」のような一般的なことばでは名前の候補が少ないので、そのときだけ施設をことばで探して足す（位置も一緒に届く）
+  var tOff = !PLACES_KEY;
+  function googleText(q, wide){
+    if (tOff) return Promise.resolve([]);
+    var bx = wide ? BOXJP : BOX4;
+    return fetch("https://places.googleapis.com/v1/places:searchText", {method: "POST",
+        headers: {"Content-Type": "application/json", "X-Goog-Api-Key": PLACES_KEY, "X-Goog-FieldMask": "places.id,places.displayName,places.formattedAddress,places.location"},
+        body: JSON.stringify({textQuery: q, languageCode: "ja", regionCode: "jp", pageSize: 6,
+          locationRestriction: {rectangle: {low: {latitude: bx[0], longitude: bx[1]}, high: {latitude: bx[2], longitude: bx[3]}}}})})
+      .then(function(r){ if (!r.ok) throw r.status; return r.json(); })
+      .then(function(j){
+        return ((j && j.places) || []).map(function(p){
+          var sub = String(p.formattedAddress || "").replace(/^日本、?/, "").replace(/^〒\d{3}-?\d{4}\s*/, ""), c = p.location && {lat: p.location.latitude, lng: p.location.longitude};
+          return {label: (p.displayName || {}).text || "", sub: sub, area: gArea(sub), c: c, gid: p.id, google: true};
+        }).filter(function(x){ return x.label && inBox(x.c, bx); });
+      })
+      .catch(function(){ tOff = true; return []; });
+  }
   // 選んだ候補の位置を調べる（選んだときの1回だけ）
   function googlePlace(id, wide){
     var t = gSession; gSession = "";
@@ -2201,7 +2231,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (ck in suggCache) return Promise.resolve(suggCache[ck]);
     return google(q, wide).then(function(g){
       if (!g) return freePlaces(q, wide);
-      return suggCache[ck] = g.slice(0, 1).concat(stationExits(q), g.slice(1)).slice(0, 10); // 駅そのものの次に出口
+      var list = g.slice(0, 1).concat(stationExits(q), g.slice(1));
+      if (list.length >= 3) return suggCache[ck] = list.slice(0, 10); // 駅そのものの次に出口
+      return googleText(q, wide).then(function(t){
+        var seen = {};
+        list.forEach(function(x){ seen[x.gid || x.label] = 1; });
+        return suggCache[ck] = list.concat(t.filter(function(x){ return !seen[x.gid]; })).slice(0, 10);
+      });
     });
   }
   function freePlaces(q, wide){
@@ -2267,7 +2303,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         if (inp.value !== text) return; // 待つあいだに書きかえられたら何もしない
         check(); inp.dispatchEvent(new Event("change", {bubbles: true}));
       };
-      if (x.gid) { pickedPlace[text] = null; check(); googlePlace(x.gid, wide).then(function(c){ if (!c) delete pickedPlace[text]; done(c); }); }
+      if (x.gid && !x.c) { pickedPlace[text] = null; check(); googlePlace(x.gid, wide).then(function(c){ if (!c) delete pickedPlace[text]; done(c); }); }
       else done(x.c);
     }
     // 打ち間違い防止：候補から選んでいない場所には、ひとこと添える（そのままでも送れる）
