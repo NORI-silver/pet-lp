@@ -245,6 +245,8 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est-pin.to{background:#1c1a18}.est-pin.via{background:#3b47a8}
 .est-wrap{position:relative}
 .est-info{position:absolute;top:10px;right:10px;z-index:800;background:rgba(255,255,255,.96);border-radius:12px;padding:8px 12px;box-shadow:0 2px 10px rgba(0,0,0,.18);font-size:.8rem;line-height:1.45;color:var(--ink)}
+.est-time{background:#1559c4;color:#fff;font-weight:800;font-size:.85rem;padding:4px 10px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,.25);white-space:nowrap;margin-bottom:8px;position:relative}
+.est-time::after{content:"";position:absolute;left:50%;bottom:-6px;margin-left:-6px;border:6px solid transparent;border-bottom:0;border-top-color:#1559c4}
 .est-info small{display:block;font-size:.7rem;color:var(--ink-3)}
 .est-info div{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
 .est-info span{color:var(--ink-2)}

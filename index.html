@@ -275,6 +275,8 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est-pin.to{background:#1c1a18}.est-pin.via{background:#3b47a8}
 .est-wrap{position:relative}
 .est-info{position:absolute;top:10px;right:10px;z-index:800;background:rgba(255,255,255,.96);border-radius:12px;padding:8px 12px;box-shadow:0 2px 10px rgba(0,0,0,.18);font-size:.8rem;line-height:1.45;color:var(--ink)}
+.est-time{background:#1559c4;color:#fff;font-weight:800;font-size:.85rem;padding:4px 10px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,.25);white-space:nowrap;margin-bottom:8px;position:relative}
+.est-time::after{content:"";position:absolute;left:50%;bottom:-6px;margin-left:-6px;border:6px solid transparent;border-bottom:0;border-top-color:#1559c4}
 .est-info small{display:block;font-size:.7rem;color:var(--ink-3)}
 .est-info div{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
 .est-info span{color:var(--ink-2)}
@@ -1511,7 +1513,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
 
   // ── 地図（ルートを線で表示。地図の部品は使うときだけ読み込む）──
   var mapLib = null, mlLib = null, estMap = null;
-  // 地図は、地名や店の名前を消したシンプルな地図（OpenFreeMap の Positron）。WebGL が使えないときは、淡色の地理院地図で出す
+  // 地図は、地名や店の名前を消し駅の名前だけ残した、見やすい色の地図（OpenFreeMap の Positron をもとに色を変える）。WebGL が使えないときは、淡色の地理院地図で出す
   var MAP_STYLE = "https://tiles.openfreemap.org/styles/positron";
   function loadMapLib(){
     if (mapLib) return mapLib;
@@ -1538,9 +1540,47 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     d.innerHTML = "<b>" + (i === 0 ? "迎" : last ? "着" : "経") + "</b>";
     return d;
   }
+  // 地図の色（グレーの地に白い道、緑の公園、青い川、点線の線路）
+  function tintMap(map){
+    var set = function(id, k, v){ if (map.getLayer(id)) map.setPaintProperty(id, k, v); };
+    set("background", "background-color", "#eef0f2");
+    set("landuse_residential", "fill-color", "#eceef1");
+    set("park", "fill-color", "#cdebd3");
+    set("landcover_wood", "fill-color", "#d3ecd6");
+    set("water", "fill-color", "#a9d3f5");
+    set("waterway", "line-color", "#a9d3f5");
+    set("building", "fill-color", "#e1e4e8"); set("building", "fill-outline-color", "#d4d8dd");
+    set("highway_minor", "line-color", "#ffffff"); set("highway_minor", "line-opacity", 1);
+    set("highway_path", "line-color", "#f8f9fa");
+    ["highway_major_casing", "highway_motorway_casing", "highway_motorway_bridge_casing", "tunnel_motorway_casing"].forEach(function(id){ set(id, "line-color", "#c4c9d0"); });
+    ["highway_motorway_inner", "highway_motorway_bridge_inner"].forEach(function(id){ set(id, "line-color", "#fbd38a"); });
+    set("highway_major_inner", "line-color", "#ffffff");
+    ["railway", "railway_transit", "railway_service"].forEach(function(id){ set(id, "line-color", "#a3a9b1"); });
+    if (map.getLayer("railway")) map.setLayerZoomRange("railway", 9, 24);
+    if (map.getLayer("railway_dashline")) map.setLayerZoomRange("railway_dashline", 9, 24);
+    if (map.getSource("openmaptiles")) map.addLayer({id: "station-name", type: "symbol", source: "openmaptiles", "source-layer": "poi", minzoom: 12,
+      filter: ["all", ["==", ["get", "class"], "railway"], ["==", ["get", "subclass"], "station"]],
+      layout: {"text-field": ["coalesce", ["get", "name:ja"], ["get", "name"]], "text-font": ["Noto Sans Regular"], "text-size": 12, "text-max-width": 8},
+      paint: {"text-color": "#4b5563", "text-halo-color": "#ffffff", "text-halo-width": 1.5}});
+  }
+  function midOf(line){
+    var tot = 0, seg = [];
+    for (var i = 1; i < line.length; i++) { var d = Math.hypot(line[i][0] - line[i-1][0], line[i][1] - line[i-1][1]); seg.push(d); tot += d; }
+    for (var j = 0, run = 0; j < seg.length; j++) {
+      if (run + seg[j] >= tot / 2) { var t = seg[j] ? (tot / 2 - run) / seg[j] : 0, a = line[j], b = line[j + 1]; return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; }
+      run += seg[j];
+    }
+    return line[Math.floor(line.length / 2)];
+  }
+  function timeTag(min){
+    var m = Math.max(5, Math.ceil(min / 5) * 5), d = document.createElement("div");
+    d.className = "est-time";
+    d.textContent = "🚗 " + (m >= 60 ? Math.floor(m / 60) + "時間" + (m % 60 ? m % 60 + "分" : "") : m + "分");
+    return d;
+  }
   function clearMap(){ if (estMap) { try { estMap.remove(); } catch (e) {} estMap = null; } }
-  function drawMap(el, local, high, stops){
-    if (!canWebGL()) { drawLeaflet(el, local, stops); return; }
+  function drawMap(el, local, plain, stops){
+    if (!canWebGL()) { drawLeaflet(el, local, plain, stops); return; }
     var line = local ? local.line : stops.map(function(c){ return [c.lng, c.lat]; });
     loadML().then(function(ml){
       if (!el.isConnected) return;
@@ -1559,20 +1599,23 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 地図が読めないとき（地図の配信が止まっているなど）は、地理院地図に切り替える
       map.on("error", function(e){
         if (failed || map.isStyleLoaded()) return;
-        failed = true; if (estMap === map) { clearMap(); drawLeaflet(el, local, stops); }
+        failed = true; if (estMap === map) { clearMap(); drawLeaflet(el, local, plain, stops); }
       });
       map.on("load", function(){
-        // 地名・道路名・お店の名前などの文字は消す
+        // 地名・道路名などの文字は消し、駅の名前だけ出す。道・線路・公園・川は見分けやすい色にする
         map.getStyle().layers.forEach(function(l){ if (l.type === "symbol") map.setLayoutProperty(l.id, "visibility", "none"); });
+        tintMap(map);
         map.addSource("route", {type: "geojson", data: {type: "Feature", geometry: {type: "LineString", coordinates: line}}});
-        map.addLayer({id: "route-casing", type: "line", source: "route", layout: {"line-cap": "round", "line-join": "round"}, paint: {"line-color": "#ffffff", "line-width": 10}});
-        map.addLayer({id: "route", type: "line", source: "route", layout: {"line-cap": "round", "line-join": "round"}, paint: {"line-color": "#ff6a1a", "line-width": 5}});
+        map.addLayer({id: "route-casing", type: "line", source: "route", layout: {"line-cap": "round", "line-join": "round"}, paint: {"line-color": "#1559c4", "line-width": 9}});
+        map.addLayer({id: "route", type: "line", source: "route", layout: {"line-cap": "round", "line-join": "round"}, paint: {"line-color": "#3b82f6", "line-width": 6}});
       });
+      // ルートの線の上に、車での時間をふきだしで出す
+      if (local) new ml.Marker({element: timeTag((plain || local).min), anchor: "bottom"}).setLngLat(midOf(line)).addTo(map);
       // 地図の部品が目印の要素を動かす（transform を上書きする）ので、外側の箱に入れて渡す
       stops.forEach(function(c, i){ var w = document.createElement("div"); w.appendChild(pinEl(i, stops.length)); new ml.Marker({element: w, anchor: "bottom", offset: [0, -4]}).setLngLat([c.lng, c.lat]).addTo(map); });
-    }).catch(function(){ drawLeaflet(el, local, stops); });
+    }).catch(function(){ drawLeaflet(el, local, plain, stops); });
   }
-  function drawLeaflet(el, local, stops){
+  function drawLeaflet(el, local, plain, stops){
     loadMapLib().then(function(L){
       if (!el.isConnected) return;
       clearMap();
@@ -1582,8 +1625,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var ll = function(line){ return line.map(function(p){ return [p[1], p[0]]; }); };
       var group = [];
       if (local) {
-        L.polyline(ll(local.line), {color: "#fff", weight: 9, opacity: .95}).addTo(estMap); // 白いふちで、地図の上でも線が見えやすいように
-        group.push(L.polyline(ll(local.line), {color: "#ff6a1a", weight: 5, opacity: 1}).addTo(estMap));
+        L.polyline(ll(local.line), {color: "#1559c4", weight: 9, opacity: .95}).addTo(estMap); // 白いふちで、地図の上でも線が見えやすいように
+        group.push(L.polyline(ll(local.line), {color: "#3b82f6", weight: 6, opacity: 1}).addTo(estMap));
+        var mid = midOf(local.line);
+        L.marker([mid[1], mid[0]], {icon: L.divIcon({className: "", html: '<div style="position:absolute;transform:translate(-50%,-100%)">' + timeTag((plain || local).min).outerHTML + '</div>', iconSize: [0, 0]}), keyboard: false, interactive: false}).addTo(estMap);
       }
       stops.forEach(function(c, i){
         var icon = L.divIcon({className: "", html: pinEl(i, stops.length).outerHTML, iconSize: [30, 30], iconAnchor: [15, 30]});
@@ -1660,7 +1705,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       est.innerHTML = '<div class="est-wrap"><div class="est-map" id="estMap" role="img" aria-label="お迎え場所から行き先までの地図"></div>' +
         '<div class="est-info"><small>' + (later ? "行き" : "片道") + 'の目安</small>' + info + '</div></div>' +
         '<div class="est-legend"><span><i></i>お迎え</span>' + (go.length > 2 ? '<span><i class="via"></i>経由地</span>' : '') + '<span><i class="to"></i>行き先</span><span>時間は道の混み具合で変わります</span></div>';
-      drawMap($("estMap"), rs[1], null, go);
+      drawMap($("estMap"), rs[1], rs[0], go); // 線は実際の道のり、ふきだしの時間は右上の「一般道」とそろえる
       queuePartners();
     }
   }
