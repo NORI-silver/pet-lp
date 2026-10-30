@@ -286,6 +286,7 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .cb-list li small{display:block;font-size:.76rem;color:var(--ink-3);margin-top:1px}
 .cb-list li.hist b::before{content:"🕘 "}
 .cb-list li b{font-weight:700}
+.cb-list li.g-attr{text-align:right;font-size:.72rem;padding:4px 10px 2px;font-family:Roboto,Arial,sans-serif;color:#5f6368}
 .place-note{font-size:.78rem;color:#b4421a;margin:4px 2px 0;line-height:1.6}
 .place-note[hidden]{display:none}
 input.picked{border-color:#3d9a5b;background:#f3fbf5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%233d9a5b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center/18px;padding-right:38px}
@@ -1351,7 +1352,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   function geocode(q){
     q = q.trim();
     if (!q) return Promise.resolve(null);
-    if (q in pickedPlace) return Promise.resolve(pickedPlace[q]); // 候補から選んだ場所は、その位置をそのまま使う
+    if (pickedPlace[q]) return Promise.resolve(pickedPlace[q]); // 候補から選んだ場所は、その位置をそのまま使う
     var pref = $("pref").value;
     var key = (!pref || /^(東京|神奈川|千葉|埼玉)/.test(q) ? "" : pref) + q;
     if (key in geoCache) return Promise.resolve(geoCache[key]);
@@ -1829,9 +1830,45 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     });
     return out.slice(0, 8);
   }
+  // 大手の地図サービスの候補（ブラウザ用のキー。このサイトからしか使えないように制限してある）。
+  // 空のとき・エラーや回数の上限で使えないときは、その場で無料の候補に切り替える
+  var PLACES_KEY = "";
+  var gOff = !PLACES_KEY, gSession = "";
+  function gToken(){ return gSession || (gSession = window.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now() + "-" + Math.random().toString(36).slice(2)); }
+  function gArea(t){ var m = String(t || "").replace(/^日本、?/, "").match(/^(?:東京都|神奈川県|千葉県|埼玉県)?(.+?[市区町村])/); return m ? m[1].replace(/^(.+?市)(.+区)$/, "$1$2") : ""; }
+  function google(q){
+    if (gOff) return Promise.resolve(null);
+    return fetch("https://places.googleapis.com/v1/places:autocomplete", {method: "POST",
+        headers: {"Content-Type": "application/json", "X-Goog-Api-Key": PLACES_KEY},
+        body: JSON.stringify({input: q, sessionToken: gToken(), languageCode: "ja", regionCode: "jp", includedRegionCodes: ["jp"],
+          locationRestriction: {rectangle: {low: {latitude: BOX4[0], longitude: BOX4[1]}, high: {latitude: BOX4[2], longitude: BOX4[3]}}}})})
+      .then(function(r){ if (!r.ok) throw r.status; return r.json(); })
+      .then(function(j){
+        return ((j && j.suggestions) || []).map(function(s){ return s.placePrediction; }).filter(Boolean).map(function(p){
+          var f = p.structuredFormat || {}, main = (f.mainText || {}).text || (p.text || {}).text || "", sub = ((f.secondaryText || {}).text || "").replace(/^日本、?/, "");
+          return {label: main, sub: sub, area: gArea(sub), gid: p.placeId, google: true};
+        }).filter(function(x){ return x.label && x.gid; });
+      })
+      .catch(function(){ gOff = true; return null; });
+  }
+  // 選んだ候補の位置を調べる（選んだときの1回だけ）
+  function googlePlace(id){
+    var t = gSession; gSession = "";
+    return fetch("https://places.googleapis.com/v1/places/" + encodeURIComponent(id) + "?languageCode=ja" + (t ? "&sessionToken=" + encodeURIComponent(t) : ""),
+        {headers: {"X-Goog-Api-Key": PLACES_KEY, "X-Goog-FieldMask": "location"}})
+      .then(function(r){ if (!r.ok) throw r.status; return r.json(); })
+      .then(function(j){ var c = j && j.location && {lat: j.location.latitude, lng: j.location.longitude}; return inBox(c, BOX4) ? c : null; })
+      .catch(function(){ return null; });
+  }
   var suggCache = {};
   function suggestPlaces(q){
     if (q in suggCache) return Promise.resolve(suggCache[q]);
+    return google(q).then(function(g){
+      if (!g) return freePlaces(q);
+      return suggCache[q] = g.slice(0, 1).concat(stationExits(q), g.slice(1)).slice(0, 10); // 駅そのものの次に出口
+    });
+  }
+  function freePlaces(q){
     var jobs = [photon(q).then(function(list){ return list.slice(0, 1).concat(stationExits(q), list.slice(1)); })]; // 駅そのものの次に出口
     if (looksAddress(q)) jobs.unshift(gsiList(q));
     return Promise.all(jobs).then(function(rs){
@@ -1860,6 +1897,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         return '<li role="option" data-i="' + i + '"' + (x.hist ? ' class="hist"' : '') + '><b>' + esc(x.label) + '</b>' + (x.sub ? '<small>' + esc(x.sub) + '</small>' : '') + '</li>';
       }).join("");
       if (loading) html += '<li class="none">候補を探しています…</li>';
+      else if (list.some(function(x){ return x.google; })) html += '<li class="none g-attr" aria-hidden="true">Google Maps</li>'; // 候補の提供元の表示（決まりで必要）
       else if (!list.length && inp.value.trim().length >= 2) html = '<li class="none">候補が見つかりません。このまま入力するか、住所で入れてください</li>';
       ul.innerHTML = html;
       ul.hidden = !html; inp.setAttribute("aria-expanded", String(!!html));
@@ -1883,10 +1921,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     function pick(i){
       var x = items[i];
       if (!x) return;
-      var text = x.hist ? x.label : placeText(x);
-      if (x.c) pickedPlace[text] = x.c;
-      inp.value = text; seq++; close(); check();
-      inp.dispatchEvent(new Event("change", {bubbles: true}));
+      var text = x.hist ? x.label : placeText(x); seq++;
+      inp.value = text; close();
+      var done = function(c){
+        if (c) pickedPlace[text] = c;
+        if (inp.value !== text) return; // 待つあいだに書きかえられたら何もしない
+        check(); inp.dispatchEvent(new Event("change", {bubbles: true}));
+      };
+      if (x.gid) { pickedPlace[text] = null; check(); googlePlace(x.gid).then(function(c){ if (!c) delete pickedPlace[text]; done(c); }); }
+      else done(x.c);
     }
     // 打ち間違い防止：候補から選んでいない場所には、ひとこと添える（そのままでも送れる）
     function check(){
