@@ -324,6 +324,9 @@ input.picked{border-color:#3d9a5b;background:#f3fbf5 url("data:image/svg+xml,%3C
 #err .need-list{justify-content:center}
 .missing{border-color:#c62828!important;box-shadow:0 0 0 3px rgba(198,40,40,.15)!important}
 .seg.missing{border-radius:12px}
+.partner-empty{display:block;background:#fdecea;border:2px solid #c62828;border-radius:14px;padding:14px 16px;color:#5f1d1d;font-size:.86rem;line-height:1.7}
+.partner-empty b{display:block;color:#c62828;font-size:1.05rem;margin-bottom:4px}
+.partner-empty b::before{content:"⚠️ "}
 .partner-loading{display:flex;gap:12px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:700}
 .partner-loading small{display:block;font-weight:400;font-size:.78rem;color:var(--ink-3)}
 .spin{flex:none;width:30px;height:30px;border-radius:50%;border:4px solid #ffe2cc;border-top-color:var(--o);animation:spin .8s linear infinite}
@@ -1112,7 +1115,28 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   form.addEventListener("change", conditionsChanged);
   function queuePartners(){
     clearTimeout(quoteTimer);
-    if (!sending) quoteTimer = setTimeout(loadPartners, 650);
+    if (sending) return;
+    if (partnerBlock() === "") showLoading(); // 条件がそろっていれば、待つあいだもすぐ「探しています」を出す
+    quoteTimer = setTimeout(loadPartners, 650);
+  }
+  function showLoading(){
+    $("partnerResults").hidden = false; $("partnerCards").replaceChildren();
+    $("partnerStatus").innerHTML = '<span class="partner-loading"><span class="spin" aria-hidden="true"></span><span>ぴったりの事業者を選んでいます…<small>条件に合う会社と料金の目安を調べています。10秒ほどかかることがあります。</small></span></span>';
+  }
+  // カードを出せない理由。"fields"＝入っていない項目がある、"time"＝お迎えが近すぎる・帰りが行きより前、""＝そろっている
+  function partnerBlock(){
+    if (!GAS_URL) return "off";
+    var required = ["pref","pickup","dropoff","date","hour","minute","petCount","riders","luggage"];
+    if (required.some(function(id){return !$(id).value || !$(id).checkValidity();})) return "fields";
+    if (!petsBox.children.length || Array.prototype.some.call(petsBox.querySelectorAll("input"),function(el){return !el.checkValidity();})) return "fields";
+    var fd = new FormData(form), at = new Date(fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute") + ":00+09:00");
+    if (!fd.get("trip")) return "fields";
+    if (fd.get("trip") === "往復") {
+      if (["retDate","retHour","retMinute","retPickup","retDropoff"].some(function(id){return !$(id).checkValidity();})) return "fields";
+      if (!(new Date(fd.get("ret_date") + "T" + fd.get("ret_hour") + ":" + fd.get("ret_minute") + ":00+09:00") > at)) return "time";
+    }
+    if (!(at > new Date(Date.now() + MIN_LEAD_H * 3600e3))) return "time";
+    return "";
   }
   // 入っていない項目：名前（ラベル）と欄。ラジオは1つにまとめる
   function fieldName(el){
@@ -1165,22 +1189,19 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   function loadPartners(){
     showNeed();
-    if (sending || !routeDetails || !GAS_URL) return;
-    var required = ["pref","pickup","dropoff","date","hour","minute","petCount","riders","luggage"];
-    if (required.some(function(id){return !$(id).value || !$(id).checkValidity();})) return;
-    if (!petsBox.children.length || Array.prototype.some.call(petsBox.querySelectorAll("input"),function(el){return !el.checkValidity();})) return;
-    var fd = new FormData(form), when = fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute");
-    var at = new Date(when + ":00+09:00"), round = fd.get("trip") === "往復";
-    if (!fd.get("trip") || !(at > new Date(Date.now() + MIN_LEAD_H * 3600e3))) return;
-    if (round) {
-      if (["retDate","retHour","retMinute","retPickup","retDropoff"].some(function(id){return !$(id).checkValidity();})) return;
-      if (!(new Date(fd.get("ret_date") + "T" + fd.get("ret_hour") + ":" + fd.get("ret_minute") + ":00+09:00") > at)) return;
+    if (sending) return;
+    var block = partnerBlock();
+    if (block === "fields" || block === "off") { $("partnerResults").hidden = true; return; }
+    if (block === "time") {
+      $("partnerResults").hidden = false; $("partnerCards").replaceChildren();
+      $("partnerStatus").textContent = "お迎えは、いまから" + MIN_LEAD_H + "時間後より先の日時を選んでください（往復のときは、帰りを行きより後に）。";
+      return;
     }
+    if (!routeDetails) { showLoading(); return; } // 道のりを調べ終わったら、もう一度呼ばれる
     var searchSeq = ++quoteSeq, search = requestPayload().body;
     ["name","tel","email","notes","contact","website","pets","breed","age","sex","est_fare","est_fare_text"].forEach(function(k){search.delete(k);});
     search.set("kind", "quotes");
-    $("partnerResults").hidden = false; $("partnerCards").replaceChildren();
-    $("partnerStatus").innerHTML = '<span class="partner-loading"><span class="spin" aria-hidden="true"></span><span>ぴったりの事業者を選んでいます…<small>条件に合う会社と料金の目安を調べています。10秒ほどかかることがあります。</small></span></span>';
+    showLoading();
     fetch(GAS_URL,{method:"POST",body:search}).then(function(res){return res.json();}).then(function(result){
       if (searchSeq !== quoteSeq || sending) return;
       if (!result || !result.ok || result.selection_version !== 1 || !Array.isArray(result.cards)) throw new Error("quotes");
@@ -1224,7 +1245,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   function paintPartners(cards){
     quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
-    $("partnerStatus").textContent = cards.length ? cards.length + "社が候補です。空き状況は未確認です。料金は確定料金ではありません。選んだ1社だけに予約を依頼します。" : "この条件でご案内できる事業者が見つかりませんでした。日時・人数・ペットの条件を変えて、もう一度お試しください。依頼は送信されていません。";
+    if (cards.length) $("partnerStatus").textContent = cards.length + "社が候補です。空き状況は未確認です。料金は確定料金ではありません。選んだ1社だけに予約を依頼します。";
+    else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。予約の依頼は送信されていません。</span>';
     cards.forEach(function(card){
       var article = document.createElement("article"); article.className = "partner-card";
       function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
@@ -1488,6 +1510,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 場所の検索は4都県の中だけで探す（遠くの同じ名前の場所を拾わないように）。選んだ都県の中の候補を優先する
   var BOX4 = [34.85, 138.6, 36.35, 140.95];
   var BOXJP = [20, 122, 46, 154]; // 緊急タブの場所の欄は全国で探す
+  var BOXNEAR = [34.5, 137.4, 37.3, 141.2]; // 行き先・経由地・帰りの場所は、4都県のまわり（茨城・栃木・群馬・山梨・静岡など）も入れられる
+  function boxOf(w){ return w === true ? BOXJP : w === "near" ? BOXNEAR : BOX4; }
   // 端末の位置：まず速い方法（Wi-Fiなど・数分以内に調べた位置も使う）で読み、だめなときだけ時間のかかるGPSで読み直す
   function getPos(ok, ng){
     navigator.geolocation.getCurrentPosition(ok, function(e){
@@ -1503,9 +1527,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   var PREF_BOX = {"東京都": [35.48, 138.9, 35.9, 139.93], "神奈川県": [35.12, 138.9, 35.68, 139.8], "千葉県": [34.88, 139.73, 36.11, 140.9], "埼玉県": [35.74, 138.7, 36.29, 139.91]};
   function inBox(c, b){ return c && c.lat >= b[0] && c.lat <= b[2] && c.lng >= b[1] && c.lng <= b[3]; }
-  function pickIn(list){
+  function pickIn(list, box){
     var pb = PREF_BOX[$("pref").value];
-    return list.filter(function(c){ return pb && inBox(c, pb); })[0] || list.filter(function(c){ return inBox(c, BOX4); })[0] || null;
+    return list.filter(function(c){ return pb && inBox(c, pb); })[0] || list.filter(function(c){ return inBox(c, BOX4); })[0] || (box && list.filter(function(c){ return inBox(c, box); })[0]) || null;
   }
   // 住所の検索はあいまいに当てはめるので（「東京駅」で各地の「〇〇東」が出る）、入れた住所と頭から一致するものだけ使う
   var KNUM = {"一":1,"二":2,"三":3,"四":4,"五":5,"六":6,"七":7,"八":8,"九":9,"十":10};
@@ -1537,27 +1561,32 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var airport = result.category === "aeroway" || result.class === "aeroway" || /^(aerodrome|terminal)$/.test(result.type || "");
     return !!(airport && query && airportName(result.display_name || result.name || "").indexOf(query[0]) >= 0);
   }
-  function osm(q){
+  function osm(q, box){
+    var b = box || BOX4;
     return fetch("https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=jp&accept-language=ja&bounded=1&viewbox=" +
-        [BOX4[1], BOX4[2], BOX4[3], BOX4[0]].join(",") + "&q=" + encodeURIComponent(q))
+        [b[1], b[2], b[3], b[0]].join(",") + "&q=" + encodeURIComponent(q))
       .then(function(r){ return r.json(); })
-      .then(function(a){ return pickIn((a || []).filter(function(x){return placeMatch(q,x);}).map(function(x){ return {lng: Number(x.lon), lat: Number(x.lat)}; })); })
+      .then(function(a){ return pickIn((a || []).filter(function(x){return placeMatch(q,x);}).map(function(x){ return {lng: Number(x.lon), lat: Number(x.lat)}; }), box); })
       .catch(function(){ return null; });
   }
-  function geocode(q){
+  function geocode(q, near){
     q = q.trim();
     if (!q) return Promise.resolve(null);
     if (pickedPlace[q]) return Promise.resolve(pickedPlace[q]); // 候補から選んだ場所は、その位置をそのまま使う
     var pref = $("pref").value;
     var key = (!pref || /^(東京|神奈川|千葉|埼玉)/.test(q) ? "" : pref) + q;
-    if (key in geoCache) return Promise.resolve(geoCache[key]);
+    if (key in geoCache && (geoCache[key] || !near)) return Promise.resolve(geoCache[key]);
+    if (near && ("~" + key) in geoCache) return Promise.resolve(geoCache["~" + key]);
     // 順に試して、最初に見つかったものを使う
     var tries = looksAddress(q) ? [[gsi, key], [gsi, q], [osm, key], [osm, q]] : [[osm, q], [osm, key], [gsi, q], [gsi, key]];
     var seen = {};
     tries = tries.filter(function(t){ var k = t[0] === gsi ? "g" + t[1] : "o" + t[1]; if (seen[k]) return false; return seen[k] = true; });
     var p = Promise.resolve(null);
     tries.forEach(function(t){ p = p.then(function(c){ return c || t[0](t[1]); }); });
-    return p.then(function(c){ return geoCache[key] = c; });
+    // 行き先などは、4都県で見つからなければ、まわりの県まで広げて探す（施設の名前は大手の地図の検索も使う）
+    if (near) p = p.then(function(c){ return c || googleText(q, "near").then(function(l){ return (l[0] || {}).c || null; }); })
+      .then(function(c){ return c || osm(q, BOXNEAR); });
+    return p.then(function(c){ return geoCache[(near ? "~" : "") + key] = c; });
   }
   // 位置から都県を調べる（市区町村コードの頭2桁）。4都県の外なら "out"、調べられなければ null
   var PREF_CD = {"13": "東京都", "14": "神奈川県", "12": "千葉県", "11": "埼玉県"}, prefCache = {};
@@ -1761,6 +1790,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
 
   function showEstimate(){
     routeDetails = null; clearPartners();
+    if (partnerBlock() === "") showLoading(); // 道のりを調べるあいだも「探しています」を出す
     var seq = ++estSeq;
     lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0; // 計算が終わるまでは前の目安を送らない
     var viaOn = form.querySelector("input[name=via_on]:checked").value === "あり";
@@ -1770,12 +1800,12 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var pts = [$("pickup").value].concat(viaOn ? [$("via").value] : [], [$("dropoff").value]);
     var rpts = retOther ? [$("retPickup").value, $("retDropoff").value] : [];
     if (!$("pickup").value.trim() || !$("dropoff").value.trim()) { est.hidden = true; lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0; return; }
-    Promise.all(pts.concat(rpts).map(geocode)).then(function(cs){
+    Promise.all(pts.concat(rpts).map(function(q, i){ return geocode(q, i > 0); })).then(function(cs){
       if (seq !== estSeq) return;
       est.hidden = false;
       if (cs.some(function(c){ return !c; })) {
         lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
-        est.innerHTML = '<div class="t">ルートの地図</div><p>場所を確かめてください。東京・神奈川・千葉・埼玉の中で、場所が見つかりませんでした。「〇〇区〇〇1丁目」のように住所で入れると計算できます。<a href="#price">距離ごとの目安</a>もご覧ください。</p>';
+        $("partnerResults").hidden = true; est.innerHTML = '<div class="t">ルートの地図</div><p>場所を確かめてください。見つからない場所があります。候補から選ぶか、「〇〇市〇〇1丁目」のように住所で入れると計算できます。<a href="#price">距離ごとの目安</a>もご覧ください。</p>';
         return;
       }
       var go = cs.slice(0, pts.length), back = retOther ? cs.slice(pts.length) : go.slice().reverse();
@@ -1785,7 +1815,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         if (seq !== estSeq) return;
         if (pp === "out") {
           lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
-          est.innerHTML = '<div class="t">ルートの地図</div><p>場所を確かめてください。お迎えの場所が、東京・神奈川・千葉・埼玉の外のようです。</p>';
+          $("partnerResults").hidden = true; est.innerHTML = '<div class="t">ルートの地図</div><p>場所を確かめてください。お迎えの場所が、東京・神奈川・千葉・埼玉の外のようです。</p>';
           return;
         }
         if (pp && pp !== $("pref").value) {
@@ -1809,7 +1839,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var kmL = kmOf(rs[0],go), kmL2 = kmOf(rs[2],back);
       var kmH = kmOf(rs[1],go), kmH2 = kmOf(rs[3],back);
       if (Math.max(kmL,kmL2)>250) {
-        est.innerHTML = '<p>場所を確かめてください。距離がうまく計算できませんでした。</p>'; return;
+        $("partnerResults").hidden = true; est.innerHTML = '<p>場所を確かめてください。距離がうまく計算できませんでした。</p>'; return;
       }
       var hasHigh = !!(rs[1] && rs[1].hw >= 1 || later && rs[3] && rs[3].hw >= 1);
       routeDetails = {km:kmL,backKm:kmL2,highKm:hasHigh?kmH:null,highBackKm:hasHigh?kmH2:null,
@@ -1835,6 +1865,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var estTimer = 0;
   function estSoon(){
     routeDetails = null; clearPartners();
+    if (partnerBlock() === "") showLoading();
     clearTimeout(estTimer); estSeq++;
     lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
     if (!est.hidden) est.innerHTML = '<p>入力に合わせて地図を更新しています…</p>';
@@ -2220,7 +2251,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // ── 場所の候補：入力すると、駅・施設・住所の候補を出す（4都県の中だけ）。送ったことのある場所も上に出す ──
   // 候補の取り寄せは suggestPlaces だけ。別の地図サービスに替えるときは、ここだけ差し替える
   function photon(q, wide){
-    var bx = wide ? BOXJP : BOX4;
+    var bx = boxOf(wide);
     return fetch("https://photon.komoot.io/api/?limit=8&lang=default&bbox=" + [bx[1], bx[0], bx[3], bx[2]].join(",") + "&q=" + encodeURIComponent(q))
       .then(function(r){ return r.json(); })
       .then(function(j){
@@ -2244,7 +2275,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         return (a || []).slice(0, 30).map(function(x){
           var c = x.geometry.coordinates, t = (x.properties || {}).title || "";
           return {label: t, sub: "住所", c: {lat: c[1], lng: c[0]}};
-        }).filter(function(x){ return x.label && (wide || /^(東京都|神奈川県|千葉県|埼玉県)/.test(x.label) && inBox(x.c, BOX4)); }).slice(0, 5);
+        }).filter(function(x){ return x.label && (wide ? inBox(x.c, boxOf(wide)) : /^(東京都|神奈川県|千葉県|埼玉県)/.test(x.label) && inBox(x.c, BOX4)); }).slice(0, 5);
       })
       .catch(function(){ return []; });
   }
@@ -2341,7 +2372,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   function gArea(t){ var m = String(t || "").replace(/^日本、?/, "").match(/^(?:東京都|神奈川県|千葉県|埼玉県)?(.+?[市区町村])/); return m ? m[1].replace(/^(.+?市)(.+区)$/, "$1$2") : ""; }
   function google(q, wide){
     if (gOff) return Promise.resolve(null);
-    var bx = wide ? BOXJP : BOX4;
+    var bx = boxOf(wide);
     return fetch("https://places.googleapis.com/v1/places:autocomplete", {method: "POST",
         headers: {"Content-Type": "application/json", "X-Goog-Api-Key": PLACES_KEY},
         body: JSON.stringify({input: q, sessionToken: gToken(), languageCode: "ja", regionCode: "jp", includedRegionCodes: ["jp"],
@@ -2359,7 +2390,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var tOff = !PLACES_KEY;
   function googleText(q, wide){
     if (tOff) return Promise.resolve([]);
-    var bx = wide ? BOXJP : BOX4;
+    var bx = boxOf(wide);
     return fetch("https://places.googleapis.com/v1/places:searchText", {method: "POST",
         headers: {"Content-Type": "application/json", "X-Goog-Api-Key": PLACES_KEY, "X-Goog-FieldMask": "places.id,places.displayName,places.formattedAddress,places.location"},
         body: JSON.stringify({textQuery: q, languageCode: "ja", regionCode: "jp", pageSize: 6,
@@ -2379,12 +2410,12 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     return fetch("https://places.googleapis.com/v1/places/" + encodeURIComponent(id) + "?languageCode=ja" + (t ? "&sessionToken=" + encodeURIComponent(t) : ""),
         {headers: {"X-Goog-Api-Key": PLACES_KEY, "X-Goog-FieldMask": "location"}})
       .then(function(r){ if (!r.ok) throw r.status; return r.json(); })
-      .then(function(j){ var c = j && j.location && {lat: j.location.latitude, lng: j.location.longitude}; return inBox(c, wide ? BOXJP : BOX4) ? c : null; })
+      .then(function(j){ var c = j && j.location && {lat: j.location.latitude, lng: j.location.longitude}; return inBox(c, boxOf(wide)) ? c : null; })
       .catch(function(){ return null; });
   }
   var suggCache = {};
   function suggestPlaces(q, wide){
-    var ck = (wide ? "*" : "") + q;
+    var ck = String(wide) + q;
     if (ck in suggCache) return Promise.resolve(suggCache[ck]);
     return google(q, wide).then(function(g){
       if (!g) return freePlaces(q, wide);
@@ -2404,16 +2435,16 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var seen = {}, out = [];
       rs.forEach(function(list){ list.forEach(function(x){ var k = x.label + "|" + x.sub; if (!seen[k]) { seen[k] = 1; out.push(x); } }); });
       // 選んだ都県の中の候補を先に
-      var pb = !wide && PREF_BOX[$("pref").value];
+      var pb = wide !== true && PREF_BOX[$("pref").value];
       if (pb) out.sort(function(a, b){ return (inBox(b.c, pb) ? 1 : 0) - (inBox(a.c, pb) ? 1 : 0); });
-      return suggCache[(wide ? "*" : "") + q] = out.slice(0, 10);
+      return suggCache[String(wide) + q] = out.slice(0, 10);
     });
   }
   // 入力欄に入れる文字：施設や駅は「名前（区市町村）」、住所はそのまま
   function placeText(x){ return x.area && x.label.indexOf(x.area) < 0 && x.sub !== "住所" ? x.label + "（" + x.area + "）" : x.label; }
   function esc(t){ return String(t).replace(/[&<>"]/g, function(ch){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]; }); }
   ["pickup","via","dropoff","retPickup","retDropoff","emgWhere"].forEach(function(id){
-    var wide = id === "emgWhere"; // 緊急タブの現在地の欄：全国で探し、予約で使った場所は出さない
+    var wide = id === "emgWhere" ? true : id === "pickup" ? false : "near"; // 緊急タブ：全国。お迎え：4都県。行き先など：4都県のまわりまで
     var inp = $(id), wrap = document.createElement("div"), ul = document.createElement("ul"), items = [], seq = 0, timer = 0;
     wrap.className = "cb"; ul.className = "cb-list"; ul.setAttribute("role", "listbox"); ul.id = id + "List"; ul.hidden = true;
     inp.parentNode.insertBefore(wrap, inp); wrap.appendChild(inp); wrap.appendChild(ul);
@@ -2434,7 +2465,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     }
     function histFor(q){
       var n = norm(q);
-      if (wide) return [];
+      if (wide === true) return [];
       return readHist().filter(function(v){ return !n || norm(v).indexOf(n) >= 0; }).slice(0, q ? 3 : 5).map(function(v){ return {label: v, sub: "前に使った場所", hist: true}; });
     }
     function update(){
@@ -2460,18 +2491,23 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         if (inp.value !== text) return; // 待つあいだに書きかえられたら何もしない
         check(); inp.dispatchEvent(new Event("change", {bubbles: true}));
       };
-      if (x.gid && !x.c) { pickedPlace[text] = null; check(); googlePlace(x.gid, wide).then(function(c){ if (!c) delete pickedPlace[text]; done(c); }); }
+      if (x.gid && !x.c) {
+        pickedPlace[text] = null; check();
+        googlePlace(x.gid, wide)
+          .then(function(c){ return c || googleText(x.label + " " + x.sub, wide).then(function(l){ return (l[0] || {}).c || null; }); }) // 位置が取れなかったら、名前と住所で探し直す
+          .then(function(c){ if (!c) delete pickedPlace[text]; done(c); });
+      }
       else done(x.c);
     }
     // 打ち間違い防止：候補から選んでいない場所には、ひとこと添える（そのままでも送れる）
     function check(){
-      if (wide) return; // 緊急タブは、見つからないときに欄の下でお知らせする
+      if (wide === true) return; // 緊急タブは、見つからないときに欄の下でお知らせする
       var v = inp.value.trim(), ok = !v || v in pickedPlace || readHist().indexOf(v) >= 0;
       inp.classList.toggle("picked", !!v && ok);
       note.hidden = ok;
       note.textContent = ok ? "" : "候補から選ばれていません。打ち間違いがないか確かめるか、もう一度入力して候補から選んでください。";
     }
-    inp.addEventListener("focus", update);
+    inp.addEventListener("focus", function(){ if (!pickedPlace[inp.value.trim()]) update(); }); // 候補から選んだあとは、もう一度一覧を開かない
     inp.addEventListener("input", update);
     inp.addEventListener("blur", function(){ seq++; setTimeout(function(){ close(); check(); }, 150); });
     inp.addEventListener("input", function(){ inp.classList.remove("picked"); note.hidden = true; });
