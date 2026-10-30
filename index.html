@@ -412,6 +412,12 @@ footer a{color:var(--ink-2)}
 .partner-card .partner-note{color:var(--ink-2);font-size:.78rem}
 .partner-review{align-self:flex-start;font-size:.84rem;font-weight:700;color:var(--o-d);text-decoration:underline;text-underline-offset:3px}
 .partner-review:hover{color:var(--ink)}
+.partner-card .partner-score{display:flex;align-items:center;gap:6px;font-size:.86rem;color:var(--ink-2)}
+.partner-score b{font-size:1rem;color:var(--ink)}
+.partner-score .stars{position:relative;display:inline-block;font-size:1rem;letter-spacing:1px;line-height:1;color:#ddd5cc}
+.partner-score .stars::before{content:"★★★★★"}
+.partner-score .stars::after{content:"★★★★★";position:absolute;left:0;top:0;width:var(--fill);overflow:hidden;white-space:nowrap;color:#f2a516}
+.partner-card a.partner-review,.partner-card span.partner-review{font-size:.76rem;font-weight:600}
 .partner-card:hover,.partner-card:focus-within{border-color:var(--o);box-shadow:0 0 0 3px #fff1e6}
 #partnerStatus{font-size:.9rem;line-height:1.7}
 [hidden]#sendSelected{display:none}
@@ -1030,7 +1036,20 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var article = document.createElement("article"); article.className = "partner-card";
       function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
       text("h4", card.label);
-      if (REVIEWS[card.id]) {
+      var rv = card.review;
+      if (rv && rv.rating > 0) {
+        // 口コミの点数は規約上、出どころ（Google マップ）の表示が必要
+        var score = document.createElement("p"); score.className = "partner-score";
+        var stars = document.createElement("span"); stars.className = "stars"; stars.setAttribute("aria-hidden", "true");
+        stars.style.setProperty("--fill", Math.max(0, Math.min(5, rv.rating)) / 5 * 100 + "%");
+        var num = document.createElement("b"); num.textContent = Number(rv.rating).toFixed(1);
+        score.append(stars, num, "（口コミ " + rv.count + "件）");
+        score.setAttribute("aria-label", "口コミの評価 5点中" + Number(rv.rating).toFixed(1) + "点、" + rv.count + "件");
+        article.appendChild(score);
+        var src = document.createElement(rv.url ? "a" : "span"); src.className = "partner-review";
+        if (rv.url) { src.href = rv.url; src.target = "_blank"; src.rel = "noopener"; }
+        src.textContent = "Google マップの口コミ"; article.appendChild(src);
+      } else if (REVIEWS[card.id]) {
         var review = document.createElement("a"); review.className = "partner-review"; review.href = REVIEWS[card.id];
         review.target = "_blank"; review.rel = "noopener"; review.textContent = "この会社の口コミを見る（外部サイト）";
         article.appendChild(review);

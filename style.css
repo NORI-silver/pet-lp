@@ -383,6 +383,12 @@ footer a{color:var(--ink-2)}
 .partner-card .partner-note{color:var(--ink-2);font-size:.78rem}
 .partner-review{align-self:flex-start;font-size:.84rem;font-weight:700;color:var(--o-d);text-decoration:underline;text-underline-offset:3px}
 .partner-review:hover{color:var(--ink)}
+.partner-card .partner-score{display:flex;align-items:center;gap:6px;font-size:.86rem;color:var(--ink-2)}
+.partner-score b{font-size:1rem;color:var(--ink)}
+.partner-score .stars{position:relative;display:inline-block;font-size:1rem;letter-spacing:1px;line-height:1;color:#ddd5cc}
+.partner-score .stars::before{content:"★★★★★"}
+.partner-score .stars::after{content:"★★★★★";position:absolute;left:0;top:0;width:var(--fill);overflow:hidden;white-space:nowrap;color:#f2a516}
+.partner-card a.partner-review,.partner-card span.partner-review{font-size:.76rem;font-weight:600}
 .partner-card:hover,.partner-card:focus-within{border-color:var(--o);box-shadow:0 0 0 3px #fff1e6}
 #partnerStatus{font-size:.9rem;line-height:1.7}
 [hidden]#sendSelected{display:none}
