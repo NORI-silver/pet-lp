@@ -39,7 +39,8 @@ var CONFIG = {
   TEST_MODE: false,
 
   // 候補カードに、提携先シートの会社に加えて「掲載候補」の会社（tools/display_companies.json）も表示だけで出す（Nori 2026-10-31）
-  // 表示だけの会社には予約の依頼を送れない（ボタンは押せず、サーバーでも断る）。false にすると今までの提携先だけに戻る
+  // true のあいだは、提携先シートの会社（P002・P003）も含めて全社「準備中」：予約の依頼は誰にも送れない（ボタンは押せず、サーバーでも断る。Nori「その2社もまだ準備中。送信はできないように」）
+  // false にすると今までの状態（提携先の2社だけ・依頼できる）に戻る
   SHOW_ALL_CANDIDATES: true,
 
   // 決まらないときの待ち時間（分）。会社が動いている時間（OPEN_HOURS）だけ数える。夜の依頼は朝から数え始める
@@ -372,7 +373,7 @@ function pickPartners_(r, stage) {
   var care = r['介助'] === '必要';
   return partners_().filter(function (pt) {
     if (!pt.active) return false;
-    if (isDisplayOnly_(pt.id)) return false; // 表示だけの会社には送らない
+    if (CONFIG.SHOW_ALL_CANDIDATES || isDisplayOnly_(pt.id)) return false; // 全社準備中のあいだ・表示だけの会社には送らない
     if (!fitsCar_(pt, r)) return false;
     if (!fitsCage_(pt, r)) return false;
     if (!inTime_(pt, r)) return false;
@@ -1603,8 +1604,8 @@ function selectionQuotes_(p) {
   var error = selectionValid_(p);
   if (error) return {ok:false,error:error};
   var out = {ok:true,selection_version:1,cards:quoteCards_(p)};
-  // 往復は、行きと帰りをそれぞれ別の会社に頼めるように、片道ずつの候補も返す（Nori 2026-10-31）
-  if (p.trip === '往復') out.legs = {go:quoteCards_(legParams_(p,'go')), back:quoteCards_(legParams_(p,'back'))};
+  // 往復は、行きと帰りをそれぞれ別の会社に頼めるように、片道ずつの候補も返す（Nori 2026-10-31）。全社準備中のあいだは出さない
+  if (p.trip === '往復' && !CONFIG.SHOW_ALL_CANDIDATES) out.legs = {go:quoteCards_(legParams_(p,'go')), back:quoteCards_(legParams_(p,'back'))};
   return out;
 }
 
@@ -1631,6 +1632,10 @@ function quoteCards_(p) {
   return selectionCandidates_(r).filter(function(pt) { return !isDisplayOnly_(pt.id); }).map(function(pt) {
     var price = selectionPrice_(pt,p);
     if (!price) return null;
+    // 全社準備中のあいだは、提携先の会社も表示だけ（トークンを出さない＝依頼できない）
+    if (CONFIG.SHOW_ALL_CANDIDATES) return { id:pt.id, label:pt.name, display_only:true, car:pt.car || '車の詳細は確認中です',
+      payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は確認中です',
+      price:price, review:selectionReview_(pt), check:[] };
     return { id:pt.id, label:pt.name, car:pt.car || '車の詳細は引き受け時に確認',
       payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は引き受け時にご案内',
       price:price, review:selectionReview_(pt), check:checks_(pt, r).ask, expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
@@ -1747,7 +1752,7 @@ function validateSelection_(p) {
   if (error) return {ok:false,error:error};
   var expires = Number(p.quote_expires);
   if (!(expires > Date.now() && expires <= Date.now()+15*60000)) return {ok:false,error:'selection_expired'};
-  if (isDisplayOnly_(p.partner_id)) return {ok:false,error:'selection_unavailable'}; // 表示だけの会社には依頼できない
+  if (CONFIG.SHOW_ALL_CANDIDATES || isDisplayOnly_(p.partner_id)) return {ok:false,error:'selection_unavailable'}; // 全社準備中のあいだ・表示だけの会社には依頼できない
   var pt = selectionCandidates_(selectionRide_(p)).filter(function(x) { return x.id === p.partner_id && !isDisplayOnly_(x.id); })[0];
   if (!pt) return {ok:false,error:'selection_unavailable'};
   var price = selectionPrice_(pt,p);

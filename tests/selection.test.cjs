@@ -68,6 +68,7 @@ console.log('PASS: filtering, per-company prices, unknown prices, night/return f
 // A selected reservation is persisted once, and a retry still returns its ID after quote expiry.
 const receiveCtx=vm.createContext({Date,JSON,Math,Number,String,Object,Array,isFinite});
 vm.runInContext(fs.readFileSync('booking/Code.gs','utf8'),receiveCtx);
+receiveCtx.CONFIG.SHOW_ALL_CANDIDATES=false;
 receiveCtx.sign_=ctx.sign_;
 receiveCtx.Utilities=ctx.Utilities;
 receiveCtx.PropertiesService=ctx.PropertiesService;
