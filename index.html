@@ -517,6 +517,7 @@ footer a{color:var(--ink-2)}
 .review-panel .partner-review-src{display:block;text-align:right;margin-top:6px}
 .price-details dl{display:grid;grid-template-columns:1fr auto;gap:5px 12px;margin:10px 0 0}
 .price-details dt,.price-details dd{margin:0}
+.price-details dd{text-align:right}
 .partner-highway,.partner-surcharge{font-weight:700}
 .est{padding:0;overflow:hidden;background:transparent;border:0}
 .est .est-map{margin:0;border-radius:14px}
@@ -1303,21 +1304,22 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         article.appendChild(chk);
       }
       var price = text("p", card.price.text, "partner-price");
-      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + ((form.querySelector("input[name=trip]:checked") || {}).value || "片道") + "の合計目安（税込）"; price.appendChild(cap);
+      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + ((form.querySelector("input[name=trip]:checked") || {}).value || "片道") + (card.price.incompleteFees ? "の概算（税込・未確認費用は別途）" : "の合計目安（税込）"); price.appendChild(cap);
       // 内訳は小さな文字の1行にして、押すと開く
       function breakdown(title, value, cls){
         var box = document.createElement("details"); box.className = "price-details" + (cls ? " " + cls : "");
         var summary = document.createElement("summary"); summary.textContent = title; box.appendChild(summary);
         var list = document.createElement("dl");
-        [["乗車運賃",value.ride],["迎車代",value.pickup],["回送代",value.returnFee],["夜間・早朝の割増",value.nightExtra],["待機料金",value.wait],["概算の端数調整",value.rounding]].forEach(function(row){
-          var dt = document.createElement("dt"), dd = document.createElement("dd"); dt.textContent=row[0]; dd.textContent=yen(row[1]); list.appendChild(dt); list.appendChild(dd);
+        [["乗車運賃",value.ride],["迎車代",value.pickup,value.pickupUnknown],["回送代",value.returnFee,value.returnUnknown],["夜間・早朝の割増",value.nightExtra],["待機料金",value.wait],["概算の端数調整",value.rounding]].forEach(function(row){
+          var dt = document.createElement("dt"), dd = document.createElement("dd"); dt.textContent=row[0]; dd.textContent=row[2]?(row[1]?yen(row[1])+"〜（追加分は要確認）":"要確認（合計に未算入）"):yen(row[1]); list.appendChild(dt); list.appendChild(dd);
         });
         box.appendChild(list); article.appendChild(box);
       }
       if (card.price.local) {
-        breakdown("迎車 " + yen(card.price.local.pickup) + "・回送 " + yen(card.price.local.returnFee) + "を含む", card.price.local);
-        if (card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
-        if (card.price.highway) breakdown("高速利用時 " + yen(card.price.highway.amount) + " ＋ 通行料の実費", card.price.highway, "hw");
+        var lp = card.price.local, fy = function(v, unknown){ return v ? yen(v) + (unknown ? "〜" : "") : unknown ? "要確認" : "0円"; };
+        breakdown("迎車 " + fy(lp.pickup, lp.pickupUnknown) + "・回送 " + fy(lp.returnFee, lp.returnUnknown) + (lp.pickupUnknown || lp.returnUnknown ? "（追加分は要確認）" : "を含む"), lp);
+        if (lp.nightExtra) text("p", "夜間・早朝の割増 " + yen(lp.nightExtra) + "を含む", "partner-surcharge");
+        if (card.price.highway) breakdown("高速利用時 " + yen(card.price.highway.amount) + (card.price.highway.pickupUnknown || card.price.highway.returnUnknown ? "〜" : "") + " ＋ 通行料の実費", card.price.highway, "hw");
         else text("p", "高速利用時：経路・通行料を含めてお見積もり", "partner-note");
         if (card.price.pickupNote) text("p",card.price.pickupNote,"partner-note");
         if (card.price.routeNote) text("p",card.price.routeNote,"partner-note");

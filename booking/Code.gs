@@ -1457,7 +1457,7 @@ function testRequest() {
   Logger.log(JSON.stringify(res));
 }
 
-/*SELECTION_FARES*/var SELECTION_FARES = {"petexpress": {"名前": "ペットエクスプレス（世田谷）", "出典": "https://pettaxi.tokyo/ 2026-10-27", "base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null, "note": "東京・世田谷の会社は、乗車料金が5kmまで2,200円、その先は1kmごとに220円（101km〜は165円、201km〜は110円）。お迎え料金と帰りの回送料金がそれぞれ3kmまで330円かかり、お店から遠いと増えます。夕方18時〜朝8時は乗車料金が2割増し、往復は乗車料金が2倍です。病院での待ち時間は10分まで無料、30分まで660円、その後10分ごとに220円です。", "wait": {"30": 660, "60": 1320, "120": 2640}, "pay": "東京・世田谷の会社は、現金で降りるときにお支払いです。", "shop": [35.6339, 139.6697], "pick_free_km": 3, "pick_over": 220, "_迎車メモ": "迎車・回送の3km超の単価は非公開のため、1kmごとに220円として高めに計算（お店：世田谷区上馬1丁目）", "label": "東京・世田谷の会社", "night_hours": [18, 8], "partner_id": "P002", "review_query": "ペットエクスプレス 世田谷区上馬"}, "kuriki": {"名前": "くりき（松戸）", "出典": "https://pet-kuriki.com/taxi 2026-10-27", "base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300], "note": "千葉・松戸の会社は、乗車料金が5km未満1,800円、5km以上は1kmごとに200円（101km〜は150円、201km〜は100円）。往復は10kmまで3,300円（病院での待ち時間30分込み）で、その後の待ち時間は30分ごとに500円です。長い距離や長い待ち時間は、その会社のお見積りになります。", "wait": {"30": 0, "60": 500, "120": 1500}, "pay": "千葉・松戸の会社は、お支払い方法を決まったときのメールでご案内します。", "label": "千葉・松戸の会社", "night_hours": null, "partner_id": "P003", "review_query": "ペットタクシー くりき 松戸"}};/*/SELECTION_FARES*/
+/*SELECTION_FARES*/var SELECTION_FARES = {"petexpress": {"名前": "ペットエクスプレス（世田谷）", "出典": "https://pettaxi.tokyo/ 2026-10-27", "base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null, "note": "東京・世田谷の会社は、乗車料金が5kmまで2,200円、その先は1kmごとに220円（101km〜は165円、201km〜は110円）。お迎え料金と帰りの回送料金がそれぞれ3kmまで330円かかり、お店から遠いと増えます。夕方18時〜朝8時は乗車料金が2割増し、往復は乗車料金が2倍です。病院での待ち時間は10分まで無料、30分まで660円、その後10分ごとに220円です。", "wait": {"30": 660, "60": 1320, "120": 2640}, "pay": "東京・世田谷の会社は、現金で降りるときにお支払いです。", "shop": [35.6339, 139.6697], "pick_free_km": 3, "pick_over": 220, "_迎車メモ": "迎車・回送の3km超の単価は非公開。候補カードでは仮の単価で足さず「330円〜（追加分は要確認）」と出す。pick_over は旧フォーム概算用の仮の値（お店：世田谷区上馬1丁目）", "label": "東京・世田谷の会社", "night_hours": [18, 8], "partner_id": "P002", "review_query": "ペットエクスプレス 世田谷区上馬"}, "kuriki": {"名前": "くりき（松戸）", "出典": "https://pet-kuriki.com/taxi 2026-10-27", "base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300], "note": "千葉・松戸の会社は、乗車料金が5km未満1,800円、5km以上は1kmごとに200円（101km〜は150円、201km〜は100円）。往復は10kmまで3,300円（病院での待ち時間30分込み）で、その後の待ち時間は30分ごとに500円です。長い距離や長い待ち時間は、その会社のお見積りになります。", "wait": {"30": 0, "60": 500, "120": 1500}, "pay": "千葉・松戸の会社は、お支払い方法を決まったときのメールでご案内します。", "label": "千葉・松戸の会社", "night_hours": null, "partner_id": "P003", "review_query": "ペットタクシー くりき 松戸"}};/*/SELECTION_FARES*/
 /* 事業者の検索は予約の保存・メール送信をしない。料金は上の生成データを使う。 */
 var QUOTE_FIELDS = ['pref', 'pickup', 'via', 'dropoff', 'datetime', 'trip', 'riders', 'luggage', 'species', 'weight', 'cage', 'care', 'pet_count', 'pets_json', 'return_datetime', 'return_pickup', 'return_dropoff', 'route_details'];
 
@@ -1507,8 +1507,9 @@ function selectionPrice_(pt, p) {
     return 6371*2*Math.asin(Math.sqrt(Math.min(1,h)));
   }
   function fee(base,at) {
-    return base+(c.shop?Math.max(0,Math.ceil(distance({lat:c.shop[0],lng:c.shop[1]},at)*1.5)-(c.pick_free_km||0))*(c.pick_over||0):0);
+    return base; // 公開されている基本額だけ。3km超の非公開単価は仮置きしない。
   }
+  function feeUnknown(at){return !c.shop || distance({lat:c.shop[0],lng:c.shop[1]},at)*1.5>c.pick_free_km;}
   function night(at) {
     var dt=parseJst_(at),h=dt?(dt.getUTCHours()+9)%24:0;
     return !!(c.night_hours && c.night>1 && (h>=c.night_hours[0] || h<c.night_hours[1]));
@@ -1523,7 +1524,7 @@ function selectionPrice_(pt, p) {
   function total(km,backKm) {
     var r1=ride(km),r2=round?ride(backKm):0;
     var separate={ride:r1+r2,pickup:fee(c.pick,d.from)+(round?fee(c.pick,d.backFrom):0),
-      returnFee:fee(c.back,d.to)+(round?fee(c.back,d.backTo):0),nightExtra:nightFee(r1,nt)+(round?nightFee(r2,nt2):0),wait:0,method:round?'帰りにあらためてお迎え':'片道'};
+      returnFee:fee(c.back,d.to)+(round?fee(c.back,d.backTo):0),nightExtra:nightFee(r1,nt)+(round?nightFee(r2,nt2):0),wait:0,pickupUnknown:feeUnknown(d.from)||(round&&feeUnknown(d.backFrom)),returnUnknown:feeUnknown(d.to)||(round&&feeUnknown(d.backTo)),method:round?'帰りにあらためてお迎え':'片道'};
     function sum(x){return x.ride+x.pickup+x.returnFee+x.nightExtra+x.wait;}
     var chosen=separate;
     if(round && p.return_pickup===p.dropoff && p.return_dropoff===p.pickup && c.wait){
@@ -1531,7 +1532,7 @@ function selectionPrice_(pt, p) {
       var wk=gap<=30?'30':gap<=60?'60':gap<=120?'120':'';
       if(wk){
         var waiting={ride:r1+r2,pickup:fee(c.pick,d.from),returnFee:fee(c.back,d.backTo),
-          nightExtra:nightFee(r1,nt)+nightFee(r2,nt2),wait:Number(c.wait[wk])||0,method:'待っていてもらう往復'};
+          nightExtra:nightFee(r1,nt)+nightFee(r2,nt2),wait:Number(c.wait[wk])||0,pickupUnknown:feeUnknown(d.from),returnUnknown:feeUnknown(d.backTo),method:'待っていてもらう往復'};
         if(c.round_flat && km+backKm<=c.round_flat[0]){waiting.ride=c.round_flat[1];waiting.nightExtra=0;}
         if(sum(waiting)<=sum(separate))chosen=waiting;
       }
@@ -1542,9 +1543,9 @@ function selectionPrice_(pt, p) {
   var local=total(d.km,d.backKm),highway=validKm(d.highKm)&&validKm(d.highBackKm)?total(d.highKm,d.highBackKm):null;
   var feePoints=round?[d.from,d.to,d.backFrom,d.backTo]:[d.from,d.to];
   var pickupExtra=c.shop && feePoints.some(function(at){return distance({lat:c.shop[0],lng:c.shop[1]},at)*1.5>c.pick_free_km;});
-  return {amount:local.amount,text:yen_(local.amount),local:local,highway:highway,
+  return {amount:local.amount,text:yen_(local.amount)+(local.pickupUnknown||local.returnUnknown?'〜':''),local:local,highway:highway,incompleteFees:local.pickupUnknown||local.returnUnknown,
     night:nt || (round&&nt2)?'夜間・早朝の割増 '+yen_(local.nightExtra)+'を含みます':c.night_hours?'指定時刻は夜間・早朝の割増対象外です':'料金表に夜間・早朝の割増はありません',
-    pickupNote:pickupExtra?'迎車・回送の3km超は単価が非公開のため、1kmにつき220円として仮計算しています。実際の料金は事業者が確認します。':!c.shop&&c.pick===0&&c.back===0?'迎車・回送は料金表に別記がないため、この概算では0円で計算しています。無料の確約ではありません。':'迎車・回送の距離は営業所からの概算です。',
+    pickupNote:pickupExtra?'迎車・回送はそれぞれ'+c.pick_free_km+'kmまで'+yen_(c.pick)+'を含みます。3km超は単価が非公開のため追加分を含めず、事業者のお見積もりで確認します。':!c.shop&&c.pick===0&&c.back===0?'迎車・回送は料金表に別記がないため、この概算では0円で計算しています。無料の確約ではありません。':'迎車・回送の距離は営業所からの概算です。',
     routeNote:d.routeEstimated?'道のりを取得できなかったため、距離は直線距離からの概算です。':d.localEstimated?'一般道の距離は、高速区間から長めに推定しています。':''};
 }
 

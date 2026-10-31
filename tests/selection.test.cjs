@@ -115,3 +115,7 @@ assert.ok(unknownPickup.pickupNote.includes('無料の確約ではありませ�
 const farRequest={...p,route_details:JSON.stringify({km:10,backKm:10,from:{lat:35.8,lng:139.9},to:point,backFrom:point,backTo:point})};
 assert.ok(call('selectionQuotes_',farRequest).cards[0].price.pickupNote.includes('単価が非公開'));
 console.log('PASS: local/highway itemization sums to totals; surcharge and uncertain pickup fees are disclosed');
+
+const farPrice=call('selectionQuotes_',farRequest).cards[0].price;
+assert.equal(farPrice.local.pickup,330);assert.equal(farPrice.local.pickupUnknown,true);assert.equal(farPrice.incompleteFees,true);assert.ok(farPrice.text.endsWith('〜'));
+console.log('PASS: unpublished pickup/return rates are excluded instead of using invented per-km prices');
