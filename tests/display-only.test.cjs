@@ -23,23 +23,32 @@ const when = new Date(Date.now()+48*3600000+9*3600000).toISOString().slice(0,10)
 const p={pref:'東京都',pickup:'世田谷区',dropoff:'目黒区',datetime:when,trip:'片道',riders:'2人',luggage:'少なめ',species:'犬',weight:'5',cage:'持っている',care:'不要',pet_count:'1',pets_json:'[]',route_details:JSON.stringify({km:10,backKm:10,from:point,to:point,backFrom:point,backTo:point})};
 let cards=call('selectionQuotes_',p).cards;
 assert.equal(cards[0].id,'P002');
-assert.ok(!cards[0].display_only);
-const shown=cards.filter(c=>c.display_only);
+// 全社準備中：提携先の会社もトークンなし・表示だけ（料金の目安は出す）
+assert.ok(cards[0].display_only); assert.equal(cards[0].token,undefined); assert.equal(cards[0].price.amount,4000);
+assert.ok(cards.every(c=>c.display_only && c.token===undefined));
+const shown=cards.filter(c=>c.id!=='P002');
 assert.equal(shown.length, disp.filter(c=>c.areas.includes('東京')).length);
 shown.forEach(c=>{ assert.equal(c.token,undefined); assert.equal(c.review,null); assert.equal(c.price.amount,null); });
 assert.equal(cards.filter(c=>c.id===D).length,1);
-assert.ok(cards.find(c=>c.id===D).display_only);
+// 提携先の会社に正しいトークンを作って依頼しても断る
+const exp0=Date.now()+60000;
+const price0=ctx.selectionPrice_(partners[0],p);
+assert.equal(call('validateSelection_',{...p,partner_id:'P002',quote_expires:String(exp0),quote_token:ctx.quoteSignature_(p,'P002',exp0,price0)}).error,'selection_unavailable');
 // 依頼しようとしても断る（トークンを作っても）
 const exp=Date.now()+60000;
 assert.equal(call('validateSelection_',{...p,partner_id:D,quote_expires:String(exp),quote_token:ctx.quoteSignature_(p,D,exp,{amount:null,text:'料金はお見積もり',night:''})}).error,'selection_unavailable');
-// 一斉のお知らせにも入らない
+// 一斉のお知らせにも、どの会社も入らない
 const r={...ctx.selectionRide_(p)};
-assert.deepEqual(call('pickPartners_',r,1).map(x=>x.id),['P002']);
-// 往復の行き・帰りの候補には出さない
+assert.deepEqual(call('pickPartners_',r,1).map(x=>x.id),[]);
+assert.deepEqual(call('pickPartners_',r,2).map(x=>x.id),[]);
+// 往復の行き・帰りを別の会社にする候補は出さない
 const round={...p,trip:'往復',return_datetime:when.replace('12:00','15:00'),return_pickup:p.dropoff,return_dropoff:p.pickup};
-const q=call('selectionQuotes_',round);
-assert.ok(!q.legs.go.some(c=>c.display_only) && !q.legs.back.some(c=>c.display_only));
-// スイッチを切ると今の提携先だけに戻る
+assert.equal(call('selectionQuotes_',round).legs,undefined);
+// スイッチを切ると今の状態（提携先だけ・依頼できる）に戻る。表示だけの会社は同じIDがシートにあっても送らない
 ctx.CONFIG.SHOW_ALL_CANDIDATES=false;
-assert.deepEqual(call('selectionQuotes_',p).cards.map(c=>c.id),['P002']);
+const back=call('selectionQuotes_',p).cards;
+assert.deepEqual(back.map(c=>c.id),['P002']); assert.ok(!back[0].display_only && back[0].token);
+assert.deepEqual(call('pickPartners_',r,1).map(x=>x.id),['P002']);
+const q=call('selectionQuotes_',round);
+assert.ok(q.legs && !q.legs.go.some(c=>c.id===D));
 console.log('display-only ok', shown.length);
