@@ -27,10 +27,16 @@ assert.equal(cards[0].id,'P002');
 assert.ok(cards[0].display_only); assert.equal(cards[0].token,undefined); assert.equal(cards[0].price.amount,4000);
 assert.ok(cards.every(c=>c.display_only && c.token===undefined));
 const shown=cards.filter(c=>c.id!=='P002');
-assert.equal(shown.length, disp.filter(c=>ctx.displayInTime_(c,ctx.selectionRide_(p)['希望日時'],new Date())).length); // エリアでは絞らない（営業時間・当日予約だけでしぼる）
-const isT=c=>disp.find(d=>d.id===c.id).areas.includes('東京'), nTokyo=shown.filter(isT).length;
-assert.ok(shown.slice(0,nTokyo).every(isT)); // 対応していそうな会社が先
-shown.forEach(c=>{ assert.equal(c.token,undefined); assert.equal(c.review,null); assert.equal(c.price.amount,null); });
+// お迎えの都道府県に対応している会社だけ（Nori 2026-10-31「大阪の住所で全国の会社が出た」）。お店が遠すぎる会社も外す
+const inT=c=>disp.find(d=>d.id===c.id).areas.includes('東京');
+assert.ok(shown.length>0 && shown.every(inT));
+assert.equal(shown.length, disp.filter(c=>ctx.displayServes_(c,'東京',point)&&ctx.displayInTime_(c,ctx.selectionRide_(p)['希望日時'],new Date())).length);
+shown.forEach(c=>{ assert.equal(c.token,undefined); assert.equal(c.review,null); });
+// 料金表がある会社は料金の目安を出す（安い順、お見積もりの会社はあと）
+const priced=shown.filter(c=>c.price.amount!=null);
+assert.ok(priced.length>=5, '料金つきの会社がある');
+const amts=shown.map(c=>c.price.amount==null?Infinity:c.price.amount);
+assert.deepEqual(amts,[...amts].sort((a,b)=>a-b));
 assert.equal(cards.filter(c=>c.id===D).length,1);
 // 提携先の会社に正しいトークンを作って依頼しても断る
 const exp0=Date.now()+60000;
@@ -46,9 +52,74 @@ assert.deepEqual(call('pickPartners_',r,2).map(x=>x.id),[]);
 // 往復の行き・帰りを別の会社にする候補は出さない
 const round={...p,trip:'往復',return_datetime:when.replace('12:00','15:00'),return_pickup:p.dropoff,return_dropoff:p.pickup};
 assert.equal(call('selectionQuotes_',round).legs,undefined);
-// 全国のお迎えでも候補を出す（Nori「全国にして」）。依頼はできない
-const osaka=call('selectionQuotes_',{...p,pref:'大阪府'});
-assert.ok(osaka.ok && osaka.cards.length>=shown.length && osaka.cards.every(c=>c.display_only));
+// 大阪のお迎えでは大阪に対応している会社だけ。料金も出る（Nori 2026-10-31）
+const sakai={lat:34.573,lng:135.483}, umeda={lat:34.702,lng:135.496};
+const osaka=call('selectionQuotes_',{...p,pref:'大阪府',pickup:'堺市堺区',dropoff:'大阪市北区',route_details:JSON.stringify({km:16,backKm:16,from:sakai,to:umeda,backFrom:umeda,backTo:sakai})});
+assert.ok(osaka.ok && osaka.cards.length>0 && osaka.cards.every(c=>c.display_only));
+assert.ok(osaka.cards.every(c=>disp.find(d=>d.id===c.id).areas.includes('大阪')), osaka.cards.map(c=>c.label).join(','));
+assert.ok(!osaka.cards.some(c=>/東京|神奈川|札幌|福岡|広島/.test(disp.find(d=>d.id===c.id).pref)));
+assert.ok(osaka.cards.some(c=>c.price.amount>0), '大阪でも料金が出る');
+// 料金の計算（決まった式）：COCOタク 東京小平店 3,300円（5kmまで）＋165円/km、お迎え 165円/km（お店から）、回送なし、21〜8時は3,300円
+const coco=disp.find(c=>c.id==='D400f012');
+const at=(h)=>new Date(Date.now()+48*3600000+9*3600000).toISOString().slice(0,10)+'T'+h;
+const shopPt={lat:coco.shop[0],lng:coco.shop[1]}, dest={lat:35.70,lng:139.40};
+const rd=(km)=>JSON.stringify({km,backKm:km,from:shopPt,to:dest,backFrom:dest,backTo:shopPt});
+let pr=call('displayPrice_',coco,{...p,datetime:at('12:00'),route_details:rd(10)});
+assert.equal(pr.local.ride,3300+5*165); assert.equal(pr.local.pickup,0); assert.equal(pr.local.returnFee,0); assert.equal(pr.local.nightExtra,0);
+assert.equal(pr.amount,Math.ceil((3300+5*165)/100)*100);
+pr=call('displayPrice_',coco,{...p,datetime:at('22:00'),route_details:rd(10)});
+assert.equal(pr.local.nightExtra,3300);
+// お店から離れた場所のお迎えは迎車代がかかる（直線×1.3を1km単位で切り上げ）
+const far={lat:coco.shop[0]+0.05,lng:coco.shop[1]};
+pr=call('displayPrice_',coco,{...p,datetime:at('12:00'),route_details:JSON.stringify({km:10,backKm:10,from:far,to:dest,backFrom:dest,backTo:far})});
+assert.equal(pr.local.pickup,Math.ceil(ctx.kmBetween_(shopPt,far)*1.3)*165);
+// 税抜の料金表は消費税10%を足す
+const tx={id:'X',fare:{base:[2000,5],tiers:[[6,null,200]],tax:'税抜'}};
+pr=call('displayPrice_',tx,{...p,route_details:rd(10)});
+assert.equal(pr.local.ride,Math.ceil(3000*1.1)); assert.ok(/税抜/.test(pr.planNote));
+// 会社ごとの式（Nori 2026-10-31「全ての事業所で違う計算式でもいい」）
+const byId=id=>disp.find(c=>c.id===id);
+const rd2=(km,a,b)=>JSON.stringify({km,backKm:km,from:a||dest,to:b||dest,backFrom:b||dest,backTo:a||dest});
+// 時間制：木谷わんわんタクシー 1時間6,280円・以降30分ごと3,140円（1kmを3分）。25km＝75分→6,280＋3,140
+const kt=byId('Dfc6c94f'), ktp={lat:kt.shop[0],lng:kt.shop[1]};
+assert.equal(call('displayPrice_',kt,{...p,route_details:rd2(25,ktp,ktp)}).local.ride,6280+3140);
+assert.equal(call('displayPrice_',kt,{...p,route_details:rd2(10,ktp,ktp)}).local.ride,6280);
+// 料金表：レゴラスハウス 15kmまで6,050円、50km超はお見積もり
+const lg=byId('De65cb2d');
+assert.equal(call('displayPrice_',lg,{...p,route_details:rd2(12)}).local.ride,6050);
+assert.equal(ctx.displayPrice_(lg,{...p,route_details:rd2(60)}),null);
+// 定額：福岡わんわんエクスプレス 福岡市内→市内 片道3,000円。市の外はお見積もり
+const fk=byId('Db28bc5b'), fkp={lat:fk.shop[0],lng:fk.shop[1]};
+assert.equal(call('displayPrice_',fk,{...p,pickup:'福岡県福岡市中央区',dropoff:'福岡県福岡市博多区',route_details:rd2(5,fkp,fkp)}).local.ride,3000);
+assert.equal(ctx.displayPrice_(fk,{...p,pickup:'福岡県福岡市中央区',dropoff:'福岡県久留米市',route_details:rd2(5,fkp,fkp)}),null);
+// 10kmごとの単価：PetTAXI24 3,300円（20kmまで）、21kmから10kmごと110円 → 35km＝3,300＋220
+assert.equal(call('displayPrice_',byId('Dc9d8a2b'),{...p,route_details:rd2(35)}).local.ride,3520);
+// 区間の定額：キャリーワン 枚方市〜高槻市 5,500円、表にない区間はお見積もり
+const co=byId('Da9518d0'), cop={lat:co.shop[0],lng:co.shop[1]};
+assert.equal(call('displayPrice_',co,{...p,pickup:'大阪府枚方市',dropoff:'大阪府高槻市',route_details:rd2(15,cop,cop)}).local.ride,5500);
+assert.equal(ctx.displayPrice_(co,{...p,pickup:'大阪府枚方市',dropoff:'奈良県奈良市',route_details:rd2(15,cop,cop)}),null);
+// 5kmごとの加算：アズール 12km＝2,000＋500（6〜10km）＋1,000（11〜12km）
+const az=byId('Dbe5cb84'), azp={lat:az.shop[0],lng:az.shop[1]};
+assert.equal(call('displayPrice_',az,{...p,route_details:rd2(12,azp,azp)}).local.ride,3500);
+// 合計による割引：ペットタクシー東京 10km＝迎車2,000＋500×10、7,000円から10%引き
+const pt=byId('D7138c0d'), ptp={lat:pt.shop[0],lng:pt.shop[1]};
+let pr2=call('displayPrice_',pt,{...p,route_details:rd2(10,ptp,ptp)});
+assert.equal(pr2.local.discount,700); assert.equal(pr2.amount,6300);
+// 時間帯ごとの夜間：シエロ 21時は1,100円
+const ce=byId('De3f35f2'), cep={lat:ce.shop[0],lng:ce.shop[1]};
+assert.equal(call('displayPrice_',ce,{...p,datetime:at('21:00'),route_details:rd2(15,cep,cep)}).local.nightExtra,1100);
+// 割増の金額が書いていない時間は「〜」：かるたく 20時
+assert.ok(/〜$/.test(call('displayPrice_',byId('Da5a2701'),{...p,datetime:at('20:00'),route_details:rd2(10)}).text));
+// 公式サイトの料金サンプルと同じになる：COCOタク湘南 例1（お迎え5km・自宅⇔病院5km・待機30分）＝5,390円、HAKAタク 博多駅→西新 7km＝3,310円
+const sh=byId('D0d611b0'), shp={lat:sh.shop[0],lng:sh.shop[1]};
+const home5={lat:shp.lat+4.9/1.3/111,lng:shp.lng}, hosp={lat:home5.lat+0.02,lng:home5.lng};
+const ex1=call('displayPrice_',sh,{...p,trip:'往復',pickup:'自宅',dropoff:'病院',return_pickup:'病院',return_dropoff:'自宅',datetime:at('12:00'),return_datetime:at('12:45'),
+  route_details:JSON.stringify({km:5,backKm:5,from:home5,to:hosp,backFrom:hosp,backTo:home5})});
+assert.equal(ex1.local.ride+ex1.local.pickup+ex1.local.wait,5390, JSON.stringify(ex1.local));
+const hk=byId('D7847612'), hkp={lat:hk.shop[0],lng:hk.shop[1]};
+assert.equal(call('displayPrice_',hk,{...p,route_details:rd2(7,hkp,hkp)}).local.ride,3310);
+// 料金表がない会社はお見積もり
+assert.equal(ctx.displayPrice_({id:'Y'},p),null);
 // 営業時間・当日予約でしぼる（Nori 2026-10-31）。日本時間で日時を作る
 const J=(d,h)=>new Date(Date.UTC(2026,10,d,h-9,0)); // 2026-11-d h時（11/2は月曜）
 const T=(o)=>({hours:'',flex:false,closed:[],lead_days:null,cut:null,...o});
