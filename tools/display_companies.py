@@ -29,6 +29,39 @@ def pay(c):
     t = c.get('pay', '')
     return '' if not t or re.search(r'不明|未転記|見積', t) else t
 
+# 営業時間・当日予約（Nori 2026-10-31「翌日以降対応の事業者や営業時間が終わっている事業者は候補に上がらないように」）
+# hours：受け付け・送迎の時間（"8-20"。24時間は "0-24"。分からなければ ""）。flex：時間外も相談できると書いてある（お迎えの時刻では外さない）
+# closed：定休日（0=日〜6=土）。lead_days：何日前までの予約か（0=当日も可、1=前日まで、null=分からない）。cut：当日予約の締め切り時刻
+WD = {'日': 0, '月': 1, '火': 2, '水': 3, '木': 4, '金': 5, '土': 6}
+FIX = {  # 文の形がまちまちなものは、ダッシュボードの記載を見て手で直す
+    'Dd8c07a8': {'hours': '8-18'},                      # 8〜12時・13〜18時
+    'D3c85024': {'hours': '9-21', 'closed': [4]},       # 曜日で少し違う。木曜定休
+    'D1f53c72': {'hours': '9-19', 'closed': [0, 6]},    # 当面は月〜金のみ
+    'Daf1e25b': {'closed': [0, 6]},                     # 平日のみ
+    'D1c2a5e3': {'closed': [0, 6]},                     # 平日のみ
+    'D7847612': {'lead_days': None},                    # 平日は当日もありうる。日祝は前日まで
+    'D8001263': {'lead_days': None},                    # 前日までは「ペットだけのとき」だけ
+    'De3f35f2': {'lead_days': None},                    # 当日は「難しいことが多い」（できないとは書いていない）
+    'Dcda25a4': {'lead_days': 1},                       # 原則前日まで
+}
+
+def schedule(c, did):
+    h, l = c.get('hours', ''), c.get('lead', '')
+    out = {'hours': '', 'flex': bool(re.search(r'相談|依頼で|事前予約で可|依頼があれば', h)), 'closed': [], 'lead_days': None, 'cut': None}
+    if re.search(r'24時間', h) and not re.search(r'電話受付24時間|Web予約は24時間|緊急は24時間', h): out['hours'] = '0-24'
+    else:
+        m = re.search(r'(\d{1,2}):?(\d{2})?\s*[〜~-]\s*(\d{1,2}):?(\d{2})?', h)
+        if m: out['hours'] = '%d-%d' % (int(m.group(1)), int(m.group(3)) + (1 if m.group(4) and m.group(4) != '00' else 0))
+    for w in re.findall(r'([日月火水木金土])曜定休', h): out['closed'].append(WD[w])
+    if re.search(r'当日[^。、]*?(可|対応|あり|相談)', l + h) and not re.search(r'不可|難しい', l): out['lead_days'] = 0
+    if re.search(r'前日まで(に|の)?予約|^前日まで$|前日まで必須', l): out['lead_days'] = 1
+    m = re.search(r'(\d)日前まで', l)
+    if m: out['lead_days'] = int(m.group(1))
+    m = re.search(r'当日[^）]*?(\d{1,2})時まで', l + h)
+    if m: out['cut'] = int(m.group(1)); out['lead_days'] = 0
+    out.update(FIX.get(did, {}))
+    return out
+
 def main(master, comp):
     ms = json.load(open(master, encoding='utf-8'))
     cs = {c['id']: c for c in json.load(open(comp, encoding='utf-8'))}
@@ -37,6 +70,7 @@ def main(master, comp):
         if m['status'] != '掲載候補' or m['id'] in SKIP: continue  # 全国の掲載候補（Nori 2026-10-31「全国にして。絞らないで」）
         c = cs.get(m['id'], {})
         row = {'id': m['id'], 'name': m['name'], 'pref': m['pref'], 'areas': areas(c, m) if m['book_area'] else [], 'pay': pay(c)}
+        row.update(schedule(c, m['id']))
         assert not re.search(r'\d{2,4}-\d{2,4}-\d{3,4}|@', json.dumps(row, ensure_ascii=False)), row  # 電話番号・メールは入れない
         out.append(row)
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'display_companies.json')
