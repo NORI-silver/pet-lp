@@ -20,10 +20,10 @@ assert.deepEqual(f1.f.overnight, [20, 5]);
 assert.ok(f1.gaps.some(g => /日をまたぐ/.test(g[1])));
 assert.equal(derive(c({ animals: '飼育が認められた動物（ワクチン接種済み）' })).f.vacMust, true);
 
-// 分からない会社：大人3人は checks_ では「確かめる」なのに、軽バン扱いで黙って外れる
+// 分からない会社：前は大人3人・荷物多め・貸しケージが軽バン扱いで黙って外れていた。2026-10-31 に直したので、外れずに「確かめる」になる
 const blank = { id: 'X', riders: null, pets: null, big: null, luggage: null, cageMust: '', cageLend: null, careTri: null, careOk: true, hours: '', rideHours: '', maxKg: null, maxBig: null, lendKg: null, petOnly: null, vacMust: null };
 const res = auditCompany(blank, derive(c({ animals: '犬（ほかは不明）' })).f);
-assert.ok(res.d['人数'].drop > 0 && res.d['荷物'].drop > 0 && res.d['貸しケージの大きさ'].drop > 0);
+assert.equal(res.d['人数'].drop + res.d['荷物'].drop + res.d['貸しケージの大きさ'].drop, 0);
 // 犬だけの会社に猫の依頼が出てしまう（しくみは種類を見ない）
 assert.ok(res.d['動物の種類'].miss > 0);
 assert.ok(res.ex.some(x => x.kind === 'miss' && /猫は乗せていない/.test(x.why)));

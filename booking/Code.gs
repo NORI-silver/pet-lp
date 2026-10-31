@@ -51,7 +51,7 @@ var CONFIG = {
 
   LARGE_DOG_KG: 20, // この体重以上は「大型犬OK」の提携先にだけ送る
   // 提携先シートの車の情報が空欄のときは、いちばん小さい車（軽バン）とみなす
-  DEFAULT_CAR: { riders: 2, pets: 2, big: true, luggage: false },
+  DEFAULT_CAR: { riders: 2, pets: 2, big: true, luggage: false }, // 使っていない（空欄は外さず、引き受けるときに会社が確かめる。2026-10-31）
 
   // LINE公式アカウント（作ったら入れる。空ならメールだけで動きます）
   LINE_CHANNEL_ACCESS_TOKEN: '',
@@ -413,13 +413,13 @@ function needs_(r) {
 }
 
 // ケージの希望に合うか（お客さまの「キャリー」欄：持ち込む／なし／借りたい、「・」区切りで複数あり）
-// ・借りたい → 「ケージ貸し出し」が○の会社だけ（空欄は用意なしとみなす）
+// ・借りたい → 「ケージ貸し出し」が×の会社は対象外（空欄は外さず、checks_ で会社が確かめる）
 // ・なし     → 「ケージ必須」が○の会社は対象外。「ペットだけ」の会社は、飼い主さんが乗らないときだけ対象外
 // ・どれでも → 会社のやり方に合わせられるので、しぼりこまない
 function fitsCage_(pt, r) {
   var c = String(r['キャリー'] || '');
   var rent = /借り|持っていない/.test(c), none = /なし/.test(c);
-  if (rent && pt.cageLend !== true) return false;
+  if (rent && pt.cageLend === false) return false;
   if (none) {
     var must = pt.cageMust;
     if (must !== '' && !/^(×|✕|x|X|いいえ|不要|NG)$/.test(must)) {
@@ -430,7 +430,6 @@ function fitsCage_(pt, r) {
   return true;
 }
 
-// 車に乗るか。空欄の項目は軽バン（CONFIG.DEFAULT_CAR）とみなす
 // 間に合うか：メールを読めるのは営業時間だけ。読める時刻からお迎えまで「何時間前まで」以上あること
 function inTime_(pt, r, now) {
   var lead = pt.lead === null || pt.lead === undefined ? CONFIG.DEFAULT_LEAD_HOURS : pt.lead;
@@ -440,17 +439,21 @@ function inTime_(pt, r, now) {
   return at.getTime() - seen.getTime() >= lead * 3600000;
 }
 
-// 「8-18」「8:00〜18:00」→ [8, 18]
+// 「8-18」「8:00〜18:00」→ [8, 18]。日をまたぐ「20-5」「20時〜翌5時」→ [20, 5]
 function hoursOf_(v) {
-  var m = toHalf_(v).match(/(\d{1,2})(?::\d{2})?\s*[-~〜～]\s*(\d{1,2})/);
+  var m = toHalf_(v).match(/(\d{1,2})(?::\d{2})?\s*時?\s*[-~〜～]\s*翌?\s*(\d{1,2})/);
   return m ? [Number(m[1]), Number(m[2])] : [0, 24];
+}
+// hr（0〜24の時刻）が時間帯 h に入っているか（日をまたぐ時間帯も）
+function inHours_(hr, h) {
+  return h[0] <= h[1] ? hr >= h[0] && hr < h[1] : hr >= h[0] || hr < h[1];
 }
 
 // その時刻が営業時間ならそのまま、外なら次に開く時刻（日本時間）
 function nextOpen_(d, hours) {
   var h = hoursOf_(hours), j = new Date(d.getTime() + 9 * 3600000), hr = j.getUTCHours() + j.getUTCMinutes() / 60;
-  if (hr >= h[0] && hr < h[1]) return d;
-  var day = Date.UTC(j.getUTCFullYear(), j.getUTCMonth(), j.getUTCDate()) + (hr >= h[1] ? 86400000 : 0);
+  if (inHours_(hr, h)) return d;
+  var day = Date.UTC(j.getUTCFullYear(), j.getUTCMonth(), j.getUTCDate()) + (h[0] <= h[1] && hr >= h[1] ? 86400000 : 0);
   return new Date(day + (h[0] - 9) * 3600000);
 }
 
@@ -468,13 +471,14 @@ function openMinutes_(from, to, hours) {
   return min;
 }
 
+// 車に乗るか。分かっている値だけで外す（空欄は外さず、checks_ の「確かめること」で会社が引き受けるときに確かめる。
+// 前は空欄を軽バンとみなして黙って外していたので、3匹以上・荷物多めで受けられる会社も出なかった。2026-10-31）
 function fitsCar_(pt, r) {
-  var n = needs_(r), d = CONFIG.DEFAULT_CAR;
-  var pick = function (v, dv) { return v === null ? dv : v; };
-  if (n.riders > pick(pt.riders, d.riders)) return false;
-  if (n.pets > pick(pt.pets, d.pets)) return false;
-  if (n.big && !pick(pt.big, d.big)) return false;
-  if (n.luggage && !pick(pt.luggage, d.luggage)) return false;
+  var n = needs_(r);
+  if (pt.riders !== null && n.riders > pt.riders) return false;
+  if (pt.pets !== null && n.pets > pt.pets) return false;
+  if (n.big && pt.big === false) return false;
+  if (n.luggage && pt.luggage === false) return false;
   return true;
 }
 
@@ -484,10 +488,11 @@ function petsOf_(r) {
   var a;
   try { a = JSON.parse(r['ペットJSON'] || '[]'); } catch (e) { a = []; }
   if (!Array.isArray(a) || !a.length) a = [{ weight: r['体重kg'], care: r['介助'] }];
-  return a.map(function (p) { return { kg: Number(p.weight) || 0, care: p.care || '', vac: p.vaccine === '済', need: (p.care_need || []).concat(p.care_note ? [p.care_note] : []) }; });
+  if (a.length === 1 && !a[0].species) a[0].species = r['種類'];
+  return a.map(function (p) { return { kg: Number(p.weight) || 0, care: p.care || '', vac: p.vaccine === '済', sp: String(p.species || ''), breed: String(p.breed || ''), need: (p.care_need || []).concat(p.care_note ? [p.care_note] : []) }; });
 }
 function checks_(pt, r) {
-  var ng = [], ask = [], n = needs_(r), pets = petsOf_(r), d = CONFIG.DEFAULT_CAR;
+  var ng = [], ask = [], n = needs_(r), pets = petsOf_(r);
   var bigs = pets.filter(function (p) { return p.kg >= CONFIG.LARGE_DOG_KG; }), maxKg = Math.max.apply(null, pets.map(function (p) { return p.kg; }));
   // 時間：お迎え（往復なら帰りも）が送迎できる時間に入っているか
   [r['希望日時'], r['帰りの日時']].forEach(function (t, i) {
@@ -495,8 +500,8 @@ function checks_(pt, r) {
     if (!at || !isFinite(at.getTime()) || (i === 0 && r['日付のみ'])) return;
     var j = new Date(at.getTime() + 9 * 3600000), hr = j.getUTCHours() + j.getUTCMinutes() / 60;
     var label = (i ? '帰りの' : '') + 'お迎え ' + j.getUTCHours() + ':' + ('0' + j.getUTCMinutes()).slice(-2);
-    if (pt.rideHours) { var h = hoursOf_(pt.rideHours); if (hr < h[0] || hr >= h[1]) ng.push(label + '（送迎できる時間の外）'); }
-    else { var h2 = hoursOf_(pt.hours || CONFIG.DEFAULT_PARTNER_HOURS); if (hr < h2[0] || hr >= h2[1]) ask.push(label + 'に送迎できる'); }
+    if (pt.rideHours) { if (!inHours_(hr, hoursOf_(pt.rideHours))) ng.push(label + '（送迎できる時間の外）'); }
+    else if (!inHours_(hr, hoursOf_(pt.hours || CONFIG.DEFAULT_PARTNER_HOURS))) ask.push(label + 'に送迎できる');
   });
   // 人数・頭数・荷物
   if (pt.riders !== null && n.riders > pt.riders) ng.push('大人' + n.riders + '人');
@@ -505,6 +510,10 @@ function checks_(pt, r) {
   else if (pt.pets === null && n.pets >= 2) ask.push(n.pets + '匹が一緒に乗れる');
   if (n.luggage && pt.luggage === false) ng.push('荷物が多い');
   else if (n.luggage && pt.luggage === null) ask.push('多めの荷物（スーツケース・大きなケージなど）が載る');
+  // 種類：犬・猫のほかの子は、乗せられるかを会社ごとに確かめる
+  pets.filter(function (p) { return p.sp && !/犬|猫/.test(p.sp); }).forEach(function (p) {
+    ask.push('犬・猫のほかの子（' + (p.breed || p.sp) + '）を乗せられる');
+  });
   // 大きさ
   if (bigs.length) {
     if (pt.big === false) ng.push('大型犬');
@@ -519,7 +528,8 @@ function checks_(pt, r) {
   else {
     var c = String(r['キャリー'] || '');
     if (/借り|持っていない/.test(c)) {
-      if (pt.lendKg !== null && maxKg > pt.lendKg) ng.push(maxKg + 'kgの子が入るケージの貸し出し');
+      if (pt.cageLend === null) ask.push('ケージを貸し出せる' + (maxKg ? '（' + maxKg + 'kgの子が入るもの）' : '')); // 貸し出しがあるか分からない会社
+      else if (pt.lendKg !== null && maxKg > pt.lendKg) ng.push(maxKg + 'kgの子が入るケージの貸し出し');
       else if (pt.lendKg === null && maxKg >= 10) ask.push(maxKg + 'kgの子が入るケージを貸し出せる'); // 小さい子のケージはどこでも用意できる
     }
     if (/なし/.test(c) && pt.cageMust === '') ask.push('ケージなしで乗れる');
