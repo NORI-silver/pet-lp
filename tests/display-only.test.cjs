@@ -46,10 +46,14 @@ assert.deepEqual(call('pickPartners_',r,2).map(x=>x.id),[]);
 // 往復の行き・帰りを別の会社にする候補は出さない
 const round={...p,trip:'往復',return_datetime:when.replace('12:00','15:00'),return_pickup:p.dropoff,return_dropoff:p.pickup};
 assert.equal(call('selectionQuotes_',round).legs,undefined);
+// 全国のお迎えでも候補を出す（Nori「全国にして」）。依頼はできない
+const osaka=call('selectionQuotes_',{...p,pref:'大阪府'});
+assert.ok(osaka.ok && osaka.cards.length>=disp.length && osaka.cards.every(c=>c.display_only));
 // スイッチを切ると今の状態（提携先だけ・依頼できる）に戻る。表示だけの会社は同じIDがシートにあっても送らない
 ctx.CONFIG.SHOW_ALL_CANDIDATES=false;
 const back=call('selectionQuotes_',p).cards;
-assert.deepEqual(back.map(c=>c.id),['P002']); assert.ok(!back[0].display_only && back[0].token);
+assert.deepEqual(back.map(c=>c.id),['P002']);
+assert.equal(call('selectionQuotes_',{...p,pref:'大阪府'}).error,'area'); assert.ok(!back[0].display_only && back[0].token);
 assert.deepEqual(call('pickPartners_',r,1).map(x=>x.id),['P002']);
 const q=call('selectionQuotes_',round);
 assert.ok(q.legs && !q.legs.go.some(c=>c.id===D));
