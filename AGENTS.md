@@ -50,7 +50,7 @@
 | `style.css` | 共通CSS（`index.html` の `<style>` から生成） |
 | `tokyo/` `kanagawa/` `saitama/` `chiba/` | エリアページ（生成） |
 | `guide/` | ガイド記事（生成。本文は `tools/guides.py`） |
-| `area/` | 4都県のほかの43道府県の情報ページと全国の一覧（生成。データは `tools/prefs.py`）。予約は4都県のお迎えだけなので「その県から予約できる」と読める書き方はしない。料金の例は提携していない会社の公式サイトの料金で、社名は出さない。料金の例がない県は noindex・サイトマップから外す（Nori 2026-10-31）。`tools/prefs.py` の FARES に足すと自動で検索に出る |
+| `area/` | 4都県のほかの43道府県の情報ページと全国の一覧（生成。データは `tools/prefs.py`）。予約は4都県のお迎えだけなので「その県から予約できる」と読める書き方はしない。料金の例は提携していない会社の公式サイトの料金で、社名は出さない |
 | `terms/` `contact/` `partner/` | 利用規約・お問い合わせ・提携のご案内（生成。規約本文は `tools/terms.py`） |
 | `go/index.html` | メールのリンクを開くページ（手書き、生成の対象外、noindex） |
 | `sitemap.xml` `robots.txt` `404.html` | 生成 |
