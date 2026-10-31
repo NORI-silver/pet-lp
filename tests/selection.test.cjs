@@ -122,3 +122,7 @@ assert.ok(lw.local.method.startsWith('半日貸切') && lw.local.ride === 13200 
 const shortTrip = call('selectionQuotes_',p).cards[0].price;
 assert.ok(!/貸切/.test(shortTrip.local.method) && shortTrip.planNote === '');
 console.log('PASS: local/highway itemization sums to totals; surcharge and uncertain pickup fees are disclosed');
+
+const farPrice=call('selectionQuotes_',farRequest).cards[0].price;
+assert.equal(farPrice.local.pickup,330);assert.equal(farPrice.local.pickupUnknown,true);assert.equal(farPrice.incompleteFees,true);assert.ok(farPrice.text.endsWith('〜'));
+console.log('PASS: unpublished pickup/return rates are excluded instead of using invented per-km prices');
