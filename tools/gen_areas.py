@@ -120,6 +120,8 @@ extra_css = """
 .art .btn{margin:8px 0 18px}
 .art-img{margin:0 0 8px;border-radius:24px;overflow:hidden;aspect-ratio:3/2;background:var(--cream)}
 .art-img img{width:100%;height:100%;object-fit:cover;display:block}
+.art .emg h3.emg-h{color:#c0392b;font-size:1.05rem;margin:18px 0 6px}
+.art .emg h3.emg-h:first-child{margin-top:0}
 .src{font-size:.8rem;color:var(--ink-3);border-top:1px solid var(--line);margin-top:36px;padding-top:16px}
 .src ul{padding-left:1.2em}
 .src a{color:var(--ink-3)}
@@ -198,7 +200,7 @@ e = html.escape
 
 def area_links(cur=None):
     return '<ul class="other">' + ''.join(
-        f'<li><a href="/{a["slug"]}/">{e(a["short"])}のペットタクシー</a></li>' for a in AREAS if a["slug"] != cur) + '</ul>'
+        f'<li><a href="/{a["slug"]}/">{e(a["short"])}のペットタクシー</a></li>' for a in AREAS if a["slug"] != cur) + '<li><a href="/area/">ほかの道府県（全国）</a></li></ul>'
 
 def head(title, desc, url, extra_ld, og_img="/img/hero.jpg", og_w=1200, og_h=900):
     return f'''<!doctype html>
@@ -246,7 +248,7 @@ PARTNER_BAND = '''<aside class="partner-band"><div class="wrap"><p><b>ペット�
 def foot(cta_href, band=True):
     return (PARTNER_BAND if band else '') + f'''<footer>
   <div class="wrap">
-    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
+    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav>{''.join(f'<a href="/{a["slug"]}/">{e(a["short"])}</a>' for a in AREAS)}</nav>
     <p>ペットタクシー予約窓口（東京・神奈川・千葉・埼玉）</p>
     <p>&copy; 2026 ペットタクシー予約窓口</p>
@@ -695,8 +697,161 @@ ep = head("ペットの緊急搬送・動物救急車と夜間の動物病院｜
 os.makedirs(os.path.join(ROOT, "emergency"), exist_ok=True)
 open(os.path.join(ROOT, "emergency", "index.html"), "w", encoding="utf-8").write(ep)
 
+# 4都県のほかの道府県（/area/<slug>/）と全国の一覧（/area/）。データは tools/prefs.py。
+# 予約の受付は4都県のお迎えだけなので、ここでは「その県から予約できる」と読める書き方はしない。料金の例は提携していない会社のものなので社名は出さない。
+from prefs import PREFS, FARES as PREF_FARES, FARES_CHECKED
+PREF_SLUG = {x[1]: x[0] for x in PREFS}
+PREF_SLUG.update({a["pref"]: a["slug"] for a in AREAS})
+AREA_SHORT = {a["pref"]: a["short"] for a in AREAS}
+def pref_href(pf):
+    return f'/{PREF_SLUG[pf]}/' if pf in AREA_SHORT else f'/area/{PREF_SLUG[pf]}/'
+pref_hub_url = SITE + "/area/"
+# 4都県から行き先にできる県（index.html の BOXNEAR の範囲に主な市が入るところ）。ほかの県は「4都県から◯◯へ」も書かない
+NEAR_PREFS = ["茨城県", "栃木県", "群馬県", "山梨県", "長野県", "静岡県"]
+NOT_YET = "当サイトでのペットタクシーの予約は、いまは東京・神奈川・埼玉・千葉からのお迎えだけ受け付けています。"
+PREF_CHECKS = [
+  ("お迎えに来てもらえる場所か", "会社ごとに対応する地域が決まっていて、地域の外はお迎え料金が増えたり、受けてもらえなかったりします。", "what-is-pet-taxi"),
+  ("料金の決まり方", "乗る距離の料金のほかに、お迎え料金・待ち時間の料金・夜間や早朝の割増・高速代がかかることがあります。どこまでが基本料金に入っているかは会社ごとに違います。", "what-is-pet-taxi"),
+  ("ケージやキャリー", "持っていくのか、借りられるのか、なしでも乗れるのか。猫はキャリーに入れて乗るのが基本です。", "cat"),
+  ("大きさと頭数", "大型犬や多頭のときは、車の広さやスロープの有無を前もって伝えておくと安心です。", "large-dog"),
+  ("飼い主さんが一緒に乗るか", "ペットだけの送迎を受けるかどうかは会社によって違います。", "hospital"),
+  ("支払い方法とキャンセル", "現金だけの会社もあります。払うのが乗る前か降りるときか、キャンセル料がいつからかかるかも確かめましょう。", "what-is-pet-taxi"),
+]
+def pref_fare_html(pf):
+    rows = PREF_FARES.get(pf)
+    if not rows:
+        return (f'<p>{e(pf)}のペットタクシーの料金は、当サイトではまだ確かめられていません。料金は会社ごとに決まっていて、多くは乗る距離で計算します。'
+                'そのほかに、お迎え料金や待ち時間の料金、夜間・早朝の割増がかかることがあります。頼む前に、どこまでが基本料金に入っているかを確かめてください。</p>')
+    return ('<p>' + e(pf) + 'のペットタクシー会社が公式サイトに書いている料金の例です。同じ「基本料金」でも、含まれる距離やお迎え・待ち時間の扱いは会社ごとに違います。</p>'
+            '<div class="tbl"><table><thead><tr><th>会社のある場所</th><th>乗る料金</th><th>お迎えなど</th></tr></thead><tbody>' +
+            ''.join(f'<tr><th>{e(w)}</th><td>{e(f)}</td><td>{e(pk)}</td></tr>' for w, f, pk in rows) + '</tbody></table></div>'
+            f'<p class="fare-flag"><b>確定料金ではありません。</b>{FARES_CHECKED}に各社の公式サイトで確かめた料金の例で、当サイトの依頼先の料金ではありません。夜間・早朝の割増や高速代は入っていません。料金は変わることがあるので、頼む前に必ず各社にご確認ください。</p>')
+def other_pref(h, pf):  # 近くの県の病院は city の終わりに（◯◯県）が付いている
+    m = re.search(r"（([^（）]+[都道府県])）$", h["city"])
+    return bool(m) and m.group(1) != pf
+def pref_hosp_html(pf):
+    hs = EMG["hospitals"].get(pf, [])
+    if not hs:
+        return '<p class="emg-none">この都道府県の夜間・救急の動物病院は、まだ載せていません。かかりつけの病院におたずねください。</p>'
+    inside = [h for h in hs if not other_pref(h, pf)]
+    lead = '' if inside else f'<p class="emg-sum">{e(pf)}の中で夜間に診てもらえる病院が見つからなかったため、近くの県の病院を載せています。</p>'
+    return lead + ''.join(emg_hosp(h) for h in hs)
+for slug, pf, short, cities in PREFS:
+    url = f'{SITE}/area/{slug}/'
+    has_fare = pf in PREF_FARES
+    taxis = [t for t in EMG["taxis"] if pf in t["prefs"]]
+    hs = EMG["hospitals"].get(pf, [])
+    hcities = []
+    for h in hs:
+        c = h["city"] if other_pref(h, pf) else re.sub(r"（.*?）", "", h["city"])
+        if c not in hcities: hcities.append(c)
+    title = (f"{short}のペットタクシー｜料金の例・夜間の動物病院・ペットの緊急搬送" if has_fare else f"{short}のペットタクシーの探し方｜夜間の動物病院・ペットの緊急搬送") + "｜ペットタクシー予約窓口"
+    desc = (f"{pf}（{'・'.join(cities[:3])}など）で犬・猫のペットタクシーを探す方へ。" + ("公式サイトに書かれた料金の例、" if has_fare else "料金の決まり方、") +
+            "頼む前に確かめること、夜間・救急の動物病院とペットの緊急搬送の連絡先をまとめました。当サイトの予約は東京・神奈川・埼玉・千葉からのお迎えだけです。")
+    ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
+      {"@type":"ListItem","position":2,"name":"全国のペットタクシー情報","item":pref_hub_url},
+      {"@type":"ListItem","position":3,"name":short+"のペットタクシー","item":url}]}, ensure_ascii=False, indent=1) + '\n</script>'
+    region = next(lab for lab, ps in emg_regions if pf in ps)
+    near = [p for p in next(ps for lab, ps in emg_regions if lab == region) if p != pf]
+    hosp_lead = (f"{e(pf)}の夜間・救急の動物病院として、{e('・'.join(hcities[:4]))}の病院を載せています。" if hcities else "")
+    taxi_html = (''.join(emg_company(t) for t in taxis) if taxis else
+                 f'<p class="emg-none">{e(pf)}で緊急の搬送をしている会社は、まだ載せていません。まずは動物病院に電話して、受け入れと行き方をご相談ください。</p>')
+    last = (f'''<div class="last">
+      <h2>東京・神奈川・埼玉・千葉から{e(pf)}へ</h2>
+      <p>お迎えの場所が4都県なら、行き先が{e(pf)}でもお申し込みいただけます。完全予約制・手配料0円で、お迎えはお申し込みから3時間後以降です。引き受けが決まったメールが届いた時点で予約成立です。</p>
+      <a class="btn center" href="/#form">4都県からのお迎えを予約する{ARROW}</a>
+    </div>''' if pf in NEAR_PREFS else f'''<div class="last">
+      <h2>{e(pf)}は準備中です</h2>
+      <p>当サイトの予約は、いまは東京・神奈川・埼玉・千葉からのお迎えで、行き先はそのまわりの県までです。{e(pf)}でも使えるように準備を進めています。</p>
+      <a class="btn center" href="/guide/">ペットの移動ガイドを読む{ARROW}</a>
+    </div>''')
+    checks = ''.join(f'<h3>{e(h)}</h3><p>{e(t)} <a href="/guide/{g}/">{e(GBY[g]["title"])}</a></p>' for h, t, g in PREF_CHECKS)
+    page = head(title, desc, url, ld) + f'''
+<main>
+<section class="area-hero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/area/">全国のペットタクシー情報</a> › {e(short)}</nav>
+    <h1><small>{"料金の例・" if has_fare else ""}夜間の動物病院・緊急の搬送</small>{e(short)}のペットタクシー</h1>
+    <p class="lede">{e(pf)}（{e("・".join(cities))}など）で、犬や猫の移動の手段を探している方のための情報です。ペットタクシーを頼む前に確かめたいことと、急ぐときの連絡先をまとめました。</p>
+    <p class="fare-flag"><b>{e(pf)}からのお迎えは、当サイトではまだ予約できません。</b>{NOT_YET}{f"東京・神奈川・埼玉・千葉から{e(pf)}への移動なら、お申し込みいただけます。" if pf in NEAR_PREFS else ""}</p>
+    <p class="small">ペットタクシー予約窓口　更新 {TODAY.replace("-", ".")}</p>
+  </div>
+</section>
+
+<section style="padding-top:8px">
+  <div class="wrap"><article class="art">
+    <h2>{e(short)}のペットタクシーの料金{"の例" if has_fare else ""}</h2>
+    {pref_fare_html(pf)}
+    <p><a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・マイカーとの違い</a>では、料金のしくみをくわしく説明しています。キャリーに入る小さな子なら、<a href="/guide/taxi-with-pet/">ふつうのタクシーに乗れることもあります</a>。</p>
+
+    <h2>ペットタクシーを頼む前に確かめること</h2>
+    {checks}
+
+    <h2>{e(pf)}の夜間・救急の動物病院と、緊急の搬送</h2>
+    <p>一刻を争う症状のときは、まずかかりつけや夜間・救急の動物病院に電話して、受け入れてもらえるか確かめてください。{hosp_lead}</p>
+    <div class="emg">
+      <h3 class="emg-h">緊急の搬送をしている会社</h3>
+      {taxi_html}
+      <h3 class="emg-h">夜間・救急の動物病院</h3>
+      {pref_hosp_html(pf)}
+      <p class="emg-note">当サイトとは別の会社・病院です（{e(EMG["checked"])}時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。</p>
+    </div>
+    <p><a href="/emergency/">全国の緊急の連絡先の一覧</a>から、現在地から近い病院も探せます。</p>
+  </article></div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sh"><h2>{e(region)}のペットタクシー情報</h2></div>
+    <ul class="other">{"".join(f'<li><a href="{pref_href(p)}">{e(AREA_SHORT.get(p) or next(x[2] for x in PREFS if x[1] == p))}</a></li>' for p in near)}<li><a href="/area/">全国の一覧</a></li></ul>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    {last}
+  </div>
+</section>
+</main>
+''' + re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))  # 予約できない県なので予約ボタンを画面下に固定しない
+    os.makedirs(os.path.join(ROOT, "area", slug), exist_ok=True)
+    open(os.path.join(ROOT, "area", slug, "index.html"), "w", encoding="utf-8").write(page)
+
+hub_ld2 = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
+  {"@type":"ListItem","position":2,"name":"全国のペットタクシー情報","item":pref_hub_url}]}, ensure_ascii=False, indent=1) + '\n</script>'
+hub_regions = ""
+for lab, ps in emg_regions:
+    lis = "".join(f'<li><a href="{pref_href(p)}">{e(AREA_SHORT.get(p) or next(x[2] for x in PREFS if x[1] == p))}{"（予約受付中）" if p in AREA_SHORT else ""}</a></li>' for p in ps)
+    hub_regions += f'<h3 class="emg-region" style="text-align:center">{e(lab)}</h3><ul class="other">{lis}</ul>'
+ph = head("全国のペットタクシー情報｜都道府県ごとの料金の例・夜間の動物病院｜ペットタクシー予約窓口",
+  "47都道府県ごとに、ペットタクシーの料金の例や頼む前に確かめること、夜間・救急の動物病院とペットの緊急搬送の連絡先をまとめました。予約の受付は東京・神奈川・埼玉・千葉からのお迎えです。", pref_hub_url, hub_ld2) + f"""
+<main>
+<section class="area-hero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › 全国のペットタクシー情報</nav>
+    <h1><small>都道府県からさがす</small>全国のペットタクシー情報</h1>
+    <p class="lede">犬や猫の移動にペットタクシーを考えている方へ。都道府県ごとに、料金の例、頼む前に確かめること、夜間・救急の動物病院と緊急の搬送の連絡先をまとめています。</p>
+    <p class="fare-flag"><b>予約の受付は4都県だけです。</b>{NOT_YET}ほかの道府県は準備中で、ページでは情報だけをご案内しています。</p>
+  </div>
+</section>
+<section style="padding-top:8px">
+  <div class="wrap">{hub_regions}</div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sh"><h2>ペットの移動ガイド</h2></div>
+    {guide_cards(["what-is-pet-taxi", "taxi-with-pet", "hospital"])}
+  </div>
+</section>
+</main>
+""" + foot("/#form")
+os.makedirs(os.path.join(ROOT, "area"), exist_ok=True)
+open(os.path.join(ROOT, "area", "index.html"), "w", encoding="utf-8").write(ph)
+
 # sitemap / robots / 404
-urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url, terms_url, contact_url, partner_url]
+urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url, pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url]
 open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   "".join(f'  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>\n' for u in urls) + '</urlset>\n')
@@ -708,4 +863,4 @@ nf = head("ページが見つかりません｜ペットタクシー予約窓口
 <section><div class="wrap"><div class="sh"><h2>エリアからさがす</h2></div>{area_links()}</div></section></main>
 ''' + foot("/#form")
 open(os.path.join(ROOT, "404.html"), "w", encoding="utf-8").write(nf)
-print("ok", len(AREAS), "areas")
+print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
