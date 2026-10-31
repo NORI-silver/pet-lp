@@ -307,6 +307,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from guides import GUIDES
 GBY = {g["slug"]: g for g in GUIDES}
 
+GUIDE_STYLE = '<link rel="stylesheet" href="/guide/guide.css">'
+os.makedirs(os.path.join(ROOT,"guide"),exist_ok=True)
+open(os.path.join(ROOT,"guide","guide.css"),"w",encoding="utf-8").write('.art th,.art td{text-align:left;vertical-align:top}\n.art-img{border-radius:0;overflow:visible;aspect-ratio:auto;background:transparent}\n.art-img picture{display:block;border-radius:24px;overflow:hidden;aspect-ratio:3/2;background:var(--cream)}\n.art-img figcaption{padding:8px 4px;line-height:1.6}\n.art-status{padding:12px 16px;border:1px solid var(--line);border-radius:12px;margin:16px 0}\n.art-toc ol{margin-bottom:0}\n')
+
 def guide_cards(slugs, cls=""):
     return f'<ul class="gcards {cls}">' + "".join(
         f'<li><a href="/guide/{s}/"><b>{e(GBY[s]["title"])}</b><span>{e(GBY[s]["lede"])}</span></a></li>' for s in slugs) + '</ul>'
@@ -396,8 +400,8 @@ def block(b):
     if k == "cta": return f'<a class="btn" href="/#form">{e(v)}{ARROW}</a>'
     if k == "table":
         h, *rows = v
-        return '<div class="tbl"><table><thead><tr>' + "".join(f"<th>{e(x)}</th>" for x in h) + '</tr></thead><tbody>' + \
-          "".join("<tr>" + "".join((f"<th>{e(x)}</th>" if i == 0 else f"<td>{e(x)}</td>") for i, x in enumerate(r)) + "</tr>" for r in rows) + '</tbody></table></div>'
+        return '<div class="tbl"><table><thead><tr>' + "".join(f'<th scope="col">{e(x)}</th>' for x in h) + '</tr></thead><tbody>' + \
+          "".join("<tr>" + "".join((f'<th scope="row">{e(x)}</th>' if i == 0 else f"<td>{e(x)}</td>") for i, x in enumerate(r)) + "</tr>" for r in rows) + '</tbody></table></div>'
     raise ValueError(k)
 
 for g in GUIDES:
@@ -413,25 +417,28 @@ for g in GUIDES:
         {"@type":"ListItem","position":3,"name":g["title"],"item":url}]},
       {"@context":"https://schema.org","@type":"Article","headline":g["title"],"description":g["desc"],"url":url,
        "image":f'{SITE}/img/guide/{g["img"]}',"datePublished":published,"dateModified":modified,"inLanguage":"ja",
-       "author":{"@id":SITE+"/#org"},"publisher":{"@id":SITE+"/#org"},"mainEntityOfPage":url},
+       "author":{"@type":"Organization","@id":SITE+"/#org","name":"ペットタクシー予約窓口","url":SITE+"/"},
+       "publisher":{"@type":"Organization","@id":SITE+"/#org","name":"ペットタクシー予約窓口","url":SITE+"/"},
+       "citation":[u for _,u in g["sources"]],"mainEntityOfPage":url},
     ]
     if g.get("faq"):
         ld.append({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
           {"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":ans}} for q,ans in g["faq"]]})
     ld_html = "\n".join('<script type="application/ld+json">\n' + json.dumps(x, ensure_ascii=False, indent=1) + '\n</script>' for x in ld)
-    if g.get("category") == "facility":
+    if g.get("category") == "facility" or g.get("toc"):
         toc = '<nav class="tip art-toc" aria-label="この記事の目次"><b>この記事で分かること</b><ol>' + "".join(
             f'<li><a href="#section-{i}">{e(h)}</a></li>' for i, (h, _) in enumerate(g["sections"], 1)) + '</ol></nav>'
         body = toc + "".join(f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b) for b in bs)
                               for i, (h, bs) in enumerate(g["sections"], 1))
-        body += f'<p class="small">{e(g["facility_note"])}</p>'
+        if g.get("facility_note"):
+            body += f'<p class="small">{e(g["facility_note"])}</p>'
     else:
         body = "".join(f'<h2>{e(h)}</h2>' + "".join(block(b) for b in bs) for h, bs in g["sections"])
     faq = ""
     if g.get("faq"):
         faq = '<h2>よくある質問</h2><div class="faq-list">' + "".join(f'<details><summary>{e(q)}</summary><div class="a">{e(ans)}</div></details>' for q,ans in g["faq"]) + '</div>'
-    src = '<div class="src"><b>参考にした情報</b><ul>' + "".join(f'<li><a href="{e(u)}" rel="noopener" target="_blank">{e(n)}</a></li>' for n,u in g["sources"]) + '</ul><p>内容は公開日時点のものです。ルールや料金は変わることがあるため、ご利用の前に各社の案内をご確認ください。</p></div>' if g["sources"] else ""
-    page = head(g["seo_title"] + "｜ペットタクシー予約窓口", g["desc"], url, ld_html, f'/img/guide/{g["img"]}', 1200, 800) + f"""
+    src = '<div class="src"><b>参考にした情報</b><ul>' + "".join(f'<li><a href="{e(u)}" rel="noopener" target="_blank">{e(n)}</a></li>' for n,u in g["sources"]) + '</ul><p>施設の公式案内や公表資料をもとに、移動の判断材料として編集しています。体験談や利用実績を示すものではありません。ルール・料金・受け入れは、ご利用前に各施設・会社の最新案内でご確認ください。</p></div>' if g["sources"] else ""
+    page = head(g["seo_title"] + "｜ペットタクシー予約窓口", g["desc"], url, ld_html + GUIDE_STYLE, f'/img/guide/{g["img"]}', 1200, 800) + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">
@@ -444,6 +451,7 @@ for g in GUIDES:
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
+    <aside class="art-status" aria-label="当窓口の受付状況"><b>現在は候補の表示のみです。</b>すべての会社への予約依頼を停止しています。候補表示では車は確保されません。<a href="/#form">掲載候補を見る</a></aside>
     {body}
     {faq}
     {checked}{src}
@@ -472,9 +480,9 @@ for g in GUIDES:
 </section>
 </main>
 """ + foot("/#form")
-    if g.get("category") == "facility":
-        page = page.replace("ペットタクシーを予約する", "掲載候補を見る").replace(">予約する<", ">掲載候補を見る<")
-        page = page.replace("完全予約制・手配料0円。お申し込みだけでは予約は決まりません。引き受けが決まったメールが届いた時点で予約成立です。",
+    # 全ガイド共通：依頼送信は停止中
+    page = page.replace("ペットタクシーを予約する", "掲載候補を見る").replace(">予約する<", ">掲載候補を見る<")
+    page = page.replace("完全予約制・手配料0円。お申し込みだけでは予約は決まりません。引き受けが決まったメールが届いた時点で予約成立です。",
                             "現在は候補の表示のみです。すべての会社への予約依頼を停止しています。")
     os.makedirs(os.path.join(ROOT, "guide", g["slug"]), exist_ok=True)
     open(os.path.join(ROOT, "guide", g["slug"], "index.html"), "w", encoding="utf-8").write(page)
@@ -483,8 +491,13 @@ hub_url = SITE + "/guide/"
 hub_ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
   {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
   {"@type":"ListItem","position":2,"name":"ペットの移動ガイド","item":hub_url}]}, ensure_ascii=False, indent=1) + '\n</script>'
-hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、空港への移動とペットタクシー｜ペットタクシー予約窓口",
-  "犬や猫と一緒に移動するときの悩みと、その解決のしかたをまとめたガイドです。動物病院への通院、猫のキャリーの慣らし方、シニア・介護中の子、大型犬、引っ越しや空港への送迎まで。", hub_url, hub_ld) + f"""
+hub_ld += '<script type="application/ld+json">\n' + json.dumps({
+  "@context":"https://schema.org","@type":"ItemList","name":"ペットの移動ガイド",
+  "numberOfItems":len(GUIDES),"itemListElement":[
+    {"@type":"ListItem","position":i,"name":g["title"],"url":SITE+"/guide/"+g["slug"]+"/"}
+    for i,g in enumerate(GUIDES,1)]},ensure_ascii=False,indent=1)+'\n</script>'
+hub = head("ペットタクシーの使い方ガイド｜料金比較・通院・老犬介護・犬連れ旅行",
+  "普通のタクシー・レンタカーとの料金比較、犬猫の通院、老犬デイケアの準備と利用頻度、犬連れ旅行、病院・施設別の行き方を調べるガイド一覧。動物の種類や移動の目的から記事を選べます。", hub_url, hub_ld + GUIDE_STYLE) + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">
@@ -495,11 +508,23 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
+    <nav class="tip" aria-label="移動の目的から記事を選ぶ"><b>知りたいことから選ぶ</b><ul>
+      <li><a href="/guide/pet-taxi-round-trip-cost/">普通のタクシーとどちらが安い？</a></li>
+      <li><a href="/guide/dog-trip-without-car/">レンタカー・カーシェアと旅行の費用を比べたい</a></li>
+      <li><a href="/guide/hospital/">車なしで動物病院へ行きたい</a></li>
+      <li><a href="/guide/senior-daycare-first/">初めて老犬を預ける準備をしたい</a></li>
+      <li><a href="/guide/senior-daycare-frequency/">デイケアの頻度と月額を知りたい</a></li>
+    </ul></nav>
+    <div class="sh"><h2>介護と、家族の暮らしを支える</h2></div>
+    <p>預ける準備、使う頻度、家族が休む時間。送迎も含めた使い方を考える記事です。</p>
+    {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "care"])}
+    <div class="sh"><h2>通院・旅行の使い方と料金を比べる</h2></div>
+    {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "use"])}
     <div class="sh"><h2>病院・施設名から移動を調べる</h2></div>
     <p>通院先や宿泊先ごとの行き方、受付・乗降場所、帰りの手配で確かめたいことをまとめました。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "facility"])}
     <div class="sh"><h2>移動の困りごとから調べる</h2></div>
-    {guide_cards([g["slug"] for g in GUIDES if g.get("category") != "facility"])}
+    {guide_cards([g["slug"] for g in GUIDES if g.get("category") not in ("facility", "care", "use")])}
   </div>
 </section>
 <section style="padding-top:0">
@@ -510,6 +535,7 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
 </section>
 </main>
 """ + foot("/#form")
+hub = hub.replace("ペットタクシーを予約する", "掲載候補を見る").replace(">予約する<", ">掲載候補を見る<")
 open(os.path.join(ROOT, "guide", "index.html"), "w", encoding="utf-8").write(hub)
 
 # 利用規約（/terms/）
@@ -808,7 +834,7 @@ for slug, pf, short, cities in PREFS:
       <p>当サイトの予約は、いまは東京・神奈川・埼玉・千葉からのお迎えで、行き先はそのまわりの県までです。{e(pf)}でも使えるように準備を進めています。</p>
       <a class="btn center" href="/guide/">ペットの移動ガイドを読む{ARROW}</a>
     </div>''')
-    checks = ''.join(f'<h3>{e(h)}</h3><p>{e(t)} <a href="/guide/{g}/">{e(GBY[g]["title"])}</a></p>' for h, t, g in PREF_CHECKS)
+    checks = ''.join(f'<h3>{e(h)}</h3><p>{e(t)} <a href="/guide/{g}/">{e(GBY[g].get("link_title", GBY[g]["title"]))}</a></p>' for h, t, g in PREF_CHECKS)
     area_html = f'''<!-- 地域の説明（gen_areas.py の PREFS） -->
 <section id="area-info" style="padding-top:8px">
   <div class="wrap"><article class="art">
@@ -952,7 +978,7 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
 # sitemap / robots / 404
 urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url, pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url]
 guide_modified = {f'{SITE}/guide/{g["slug"]}/': g.get("modified", TODAY) for g in GUIDES}
-guide_modified[hub_url] = "2026-10-31"
+guide_modified[hub_url] = "2026-11-01"
 open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   "".join(f'  <url><loc>{u}</loc><lastmod>{guide_modified.get(u, TODAY)}</lastmod></url>\n' for u in urls) + '</urlset>\n')

@@ -1,0 +1,6 @@
+.art th,.art td{text-align:left;vertical-align:top}
+.art-img{border-radius:0;overflow:visible;aspect-ratio:auto;background:transparent}
+.art-img picture{display:block;border-radius:24px;overflow:hidden;aspect-ratio:3/2;background:var(--cream)}
+.art-img figcaption{padding:8px 4px;line-height:1.6}
+.art-status{padding:12px 16px;border:1px solid var(--line);border-radius:12px;margin:16px 0}
+.art-toc ol{margin-bottom:0}
