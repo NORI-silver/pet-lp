@@ -85,6 +85,7 @@ EMG = {"checked": EMG["checked"], "taxis": EMG["taxis"], "hospitals": EMG["hospi
 src = re.sub(r"/\*EMG\*/.*?/\*/EMG\*/", lambda m: "/*EMG*/var EMG = " + json.dumps(EMG, ensure_ascii=False) + ";/*/EMG*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*FARES\*/.*?/\*/FARES\*/", lambda m: "/*FARES*/" + FARE_JS + "/*/FARES*/", src, count=1, flags=re.S)
 open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(src)
+TOP_HTML = src  # 地域ページの元（下の clone_top）。src はあとで別の用途に使われるので写しておく
 css = re.search(r"<style>(.*?)</style>", src, re.S).group(1)
 extra_css = """
 /* エリア別ページ */
@@ -135,6 +136,41 @@ extra_css = """
 @media (min-width:760px){.area-hero{padding:32px 0 80px}.area-hero h1{font-size:2.5rem}.prose h2{font-size:1.7rem}}
 """
 open(os.path.join(ROOT, "style.css"), "w", encoding="utf-8").write(css.strip() + "\n" + extra_css.strip() + "\n")
+
+# ── 地域ページ＝トップと同じページ（Nori 2026-10-31「ペットタクシー 神奈川 で検索されたページもトップと同じに」）──
+# トップの index.html をそのまま写し、title・説明文・canonical・h1・リード文・構造化データだけ地域ごとに変え、
+# フォームのお迎えの都道府県を最初から選んだ状態にする。地域の説明（料金の目安・主な市区・よくある質問など）は
+# フォームのすぐ後ろに差し込む。トップの中身を直せば、地域ページも gen_areas.py の実行でそろう。
+def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
+    t = TOP_HTML
+    t = re.sub(r"<title>.*?</title>", lambda m: f"<title>{e(title)}</title>", t, count=1, flags=re.S)
+    t = re.sub(r'<meta name="description" content="[^"]*">', lambda m: f'<meta name="description" content="{e(desc)}">', t, count=1)
+    t = re.sub(r'<link rel="canonical" href="[^"]*">', lambda m: f'<link rel="canonical" href="{url}">', t, count=1)
+    t = re.sub(r'<meta property="og:title" content="[^"]*">', lambda m: f'<meta property="og:title" content="{e(title)}">', t, count=1)
+    t = re.sub(r'<meta property="og:description" content="[^"]*">', lambda m: f'<meta property="og:description" content="{e(desc)}">', t, count=1)
+    t = re.sub(r'<meta property="og:url" content="[^"]*">', lambda m: f'<meta property="og:url" content="{url}">', t, count=1)
+    # 構造化データ：トップの FAQ・サービスは外し、地域のものに入れ替える（運営者・サイトの @graph は残す）
+    blocks = re.findall(r'<script type="application/ld\+json">.*?</script>\n?', t, re.S)
+    for b in blocks:
+        if '"@graph"' not in b: t = t.replace(b, "", 1)
+    t = t.replace("</head>", ld_html + "\n</head>", 1)
+    # 相対パス（img/…）とロゴの「#」を、どの階層でも動く形に
+    t = re.sub(r'(src|srcset|href)="img/', r'\1="/img/', t)
+    t = t.replace('<a class="logo" href="#">', '<a class="logo" href="/">', 1)
+    # h1 とリード文
+    t = re.sub(r'(<span class="kicker">).*?(<b )', lambda m: m.group(1) + e(kicker) + " " + m.group(2), t, count=1, flags=re.S)
+    t = re.sub(r'(<section class="hero">.*?<p class="lede">).*?(</p>)', lambda m: m.group(1) + e(lede) + m.group(2), t, count=1, flags=re.S)
+    t = t.replace('<section class="hero">', f'<div class="wrap"><nav class="crumb" aria-label="パンくずリスト">{crumb}</nav></div>\n<section class="hero">', 1)
+    # フォームのお迎えの都道府県・緊急タブの都道府県を最初から選んでおく
+    t = re.sub(r'(<select id="pref"[^>]*>.*?)<option>' + re.escape(pref) + '</option>', lambda m: m.group(1) + f'<option selected>{pref}</option>', t, count=1, flags=re.S)
+    t = re.sub(r'(<select id="emgPref"[^>]*>.*?)<option>' + re.escape(pref) + '</option>', lambda m: m.group(1) + f'<option selected>{pref}</option>', t, count=1, flags=re.S)
+    # 地域の説明はフォームの後ろ（「使い方」の前）に
+    t = t.replace('<section id="how">', area_html + '\n<section id="how">', 1)
+    # エリアページ用のCSS（.crumb .prose など）を足す
+    t = t.replace("</style>", extra_css.strip() + "\n</style>", 1)
+    assert t.count(f"<option selected>{pref}</option>") == 2, pref
+    assert f"<title>{e(title)}</title>" in t, title
+    return t
 
 AREAS = [
  dict(slug="tokyo", pref="東京都", short="東京", count=17,
@@ -291,19 +327,8 @@ for a in AREAS:
     ]
     ld_html = "\n".join('<script type="application/ld+json">\n' + json.dumps(x, ensure_ascii=False, indent=1) + '\n</script>' for x in ld)
     body = "".join(f'<h2>{e(h)}</h2><p>{e(p)}</p>' if i == 0 else f'<h3>{e(h)}</h3><p>{e(p)}</p>' for i,(h,p) in enumerate(a["body"]))
-    page = head(a["title"], a["desc"], url, ld_html) + f'''
-<main>
-<section class="area-hero">
-  <div class="wrap">
-    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › {e(a["short"])}のペットタクシー</nav>
-    <h1><small>犬のタクシー・猫のタクシー</small><span style="white-space:nowrap">{e(a.get("h1", a["short"]))}の</span><span style="white-space:nowrap">ペットタクシー。</span><br>手配料0円で予約。</h1>
-    <p class="lede">{e(a["lede"])}</p>
-    <ul class="pills"><li>{CHECK}手配料 0円</li><li>{CHECK}完全予約制</li><li>{CHECK}多頭もOK</li><li>{CHECK}アプリ不要</li></ul>
-    <a class="btn" href="{cta}">{e(a["short"])}でペットタクシーを予約する{ARROW}</a>
-  </div>
-</section>
-
-<section>
+    area_html = f'''<!-- 地域の説明（gen_areas.py の AREAS） -->
+<section id="area-info">
   <div class="wrap prose">
     {body}
     <div class="count"><b>0<small style="font-size:.9rem">円</small></b><span>当サイトの手配料です。完全予約制で、引き受ける会社が決まったらメールでお知らせします。運賃はペットタクシーへ直接お支払いください。</span></div>
@@ -347,36 +372,18 @@ for a in AREAS:
     <div class="faq-list">
       {''.join(f'<details><summary>{e(q)}</summary><div class="a">{e(ans)}</div></details>' for q,ans in a["faq"])}
     </div>
-    <p style="text-align:center;margin-top:20px"><a href="/#faq">そのほかのよくある質問を見る</a></p>
   </div>
 </section>
 
 <section style="padding-top:0">
-  <div class="wrap">
-    <div class="sh"><h2>ペットの移動ガイド</h2></div>
-    {guide_cards(["what-is-pet-taxi", "hospital", "airport-moving"])}
-    <p class="more"><a href="/guide/">ほかのガイドも見る</a></p>
-  </div>
-</section>
-
-<section>
   <div class="wrap">
     <div class="sh"><h2>ほかのエリアのペットタクシー</h2></div>
     {area_links(a["slug"])}
   </div>
 </section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="last">
-      <h2>{e(a["short"])}で、大切な家族の移動にやさしい一台を。</h2>
-      <p>完全予約制・手配料0円。お申し込みだけでは予約は決まりません。引き受けが決まったメールが届いた時点で予約成立です。</p>
-      <a class="btn center" href="{cta}">ペットタクシーを予約する{ARROW}</a>
-    </div>
-  </div>
-</section>
-</main>
-''' + foot(cta)
+'''
+    page = clone_top(a["title"], a["desc"], url, ld_html, f'{a.get("h1", a["short"])}のペットタクシー予約', a["lede"], a["pref"], area_html,
+                     f'<a href="/">ペットタクシー予約窓口</a> › {e(a["short"])}のペットタクシー')
     os.makedirs(os.path.join(ROOT, a["slug"]), exist_ok=True)
     open(os.path.join(ROOT, a["slug"], "index.html"), "w", encoding="utf-8").write(page)
 
@@ -802,20 +809,11 @@ for slug, pf, short, cities in PREFS:
       <a class="btn center" href="/guide/">ペットの移動ガイドを読む{ARROW}</a>
     </div>''')
     checks = ''.join(f'<h3>{e(h)}</h3><p>{e(t)} <a href="/guide/{g}/">{e(GBY[g]["title"])}</a></p>' for h, t, g in PREF_CHECKS)
-    page = head(title, desc, url, ld) + f'''
-<main>
-<section class="area-hero">
-  <div class="wrap">
-    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/area/">全国のペットタクシー情報</a> › {e(short)}</nav>
-    <h1><small>{"料金の例・" if has_fare else ""}夜間の動物病院・緊急の搬送</small>{e(short)}のペットタクシー</h1>
-    <p class="lede">{e(pf)}（{e("・".join(cities))}など）で、犬や猫の移動の手段を探している方のための情報です。ペットタクシーを頼む前に確かめたいことと、急ぐときの連絡先をまとめました。</p>
+    area_html = f'''<!-- 地域の説明（gen_areas.py の PREFS） -->
+<section id="area-info" style="padding-top:8px">
+  <div class="wrap"><article class="art">
     <p class="fare-flag"><b>{e(pf)}からのお迎えは、当サイトではまだ予約できません。</b>{NOT_YET}{f"東京・神奈川・埼玉・千葉から{e(pf)}への移動なら、お申し込みいただけます。" if pf in NEAR_PREFS else ""}</p>
     <p class="small">ペットタクシー予約窓口　更新 {TODAY.replace("-", ".")}</p>
-  </div>
-</section>
-
-<section style="padding-top:8px">
-  <div class="wrap"><article class="art">
     <h2>{e(short)}のペットタクシーの料金{"の例" if has_fare else ""}</h2>
     {pref_fare_html(pf)}
     <p><a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・マイカーとの違い</a>では、料金のしくみをくわしく説明しています。キャリーに入る小さな子なら、<a href="/guide/taxi-with-pet/">ふつうのタクシーに乗れることもあります</a>。</p>
@@ -830,7 +828,7 @@ for slug, pf, short, cities in PREFS:
       {taxi_html}
       <h3 class="emg-h">夜間・救急の動物病院</h3>
       {pref_hosp_html(pf)}
-      <p class="emg-note">当サイトとは別の会社・病院です（{e(EMG["checked"])}時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。</p>
+      <p class="emg-note">当サイトとは別の会社・病院です（{e(EMG["checked"])}時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。口コミはページ上の「緊急」タブで見られます。</p>
     </div>
     <p><a href="/emergency/">全国の緊急の連絡先の一覧</a>から、現在地から近い病院も探せます。</p>
   </article></div>
@@ -840,17 +838,14 @@ for slug, pf, short, cities in PREFS:
   <div class="wrap">
     <div class="sh"><h2>{e(region)}のペットタクシー情報</h2></div>
     <ul class="other">{"".join(f'<li><a href="{pref_href(p)}">{e(AREA_SHORT.get(p) or next(x[2] for x in PREFS if x[1] == p))}</a></li>' for p in near)}<li><a href="/area/">全国の一覧</a></li></ul>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
     {last}
   </div>
 </section>
-</main>
-<script src="/reviews.js" defer></script>
-''' + re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))  # 予約できない県なので予約ボタンを画面下に固定しない
+'''
+    area_html = re.sub(r'<div class="emg-score" data-id="[^"]*"></div>', "", area_html)  # 口コミはトップの緊急タブの仕組みで見る（二重に読み込まない）
+    lede = f"{pf}（{'・'.join(cities[:4])}など）で、犬や猫の移動の手段を探している方へ。フォームに入力すると、条件に合う事業者と料金の目安が見られます。急ぐときの連絡先は「緊急」タブにまとめています。"
+    page = clone_top(title, desc, url, ld, f"{short}のペットタクシー", lede, pf, area_html,
+                     f'<a href="/">ペットタクシー予約窓口</a> › <a href="/area/">全国のペットタクシー情報</a> › {e(short)}')
     os.makedirs(os.path.join(ROOT, "area", slug), exist_ok=True)
     open(os.path.join(ROOT, "area", slug, "index.html"), "w", encoding="utf-8").write(page)
 
