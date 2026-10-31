@@ -238,3 +238,20 @@ dict(slug="airport-moving",
           ("JAF Mate「夏の車内温度」", "https://jafmate.jp/safety/sp_20260804_1199517.html")],
  related=["large-dog", "what-is-pet-taxi", "cat"]),
 ]
+
+# 施設別の記事も同じ生成・出典管理の対象にする。
+from facility_guides import FACILITY_GUIDES
+GUIDES.extend(FACILITY_GUIDES)
+
+for guide in GUIDES:
+    if guide["slug"] == "hospital":
+        guide["sections"].append(("病院名から行き方と移動の準備を調べる", [("links", [
+            (g["title"], "/guide/" + g["slug"] + "/") for g in FACILITY_GUIDES
+            if g["slug"] in {"jarmec-kawasaki-taxi", "jarmec-tokyo-taxi", "jsamc-tokorozawa-taxi", "jamc-shibuya-taxi"}
+        ])]))
+        guide["modified"] = "2026-10-31"
+    if guide["slug"] == "senior":
+        guide["sections"].append(("介護ケア施設への移動を調べる", [("links", [
+            ("WANCOTT（ワンコット）への移動と施設の有料送迎", "/guide/wancott-taxi/")
+        ])]))
+        guide["modified"] = "2026-10-31"
