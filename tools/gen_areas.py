@@ -59,6 +59,9 @@ _EMG_J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
 # 搬送の会社（E01〜）と病院（H001〜。いくつかの県に載っている病院も id は1つ）
 _EMG_RV = _EMG_J["taxis"] + [h for l in _EMG_J["hospitals"].values() for h in l]
 booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG_REVIEWS*/var EMG_REVIEWS = " + json.dumps({t["id"]: {"query": t["review_query"], "name": t["review_name"]} for t in _EMG_RV if t.get("review_query")}, ensure_ascii=False) + ";/*/EMG_REVIEWS*/", booking_src, count=1, flags=re.S)
+# 候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る
+_DISP = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))["companies"]
+booking_src = re.sub(r"/\*DISPLAY_COMPANIES\*/.*?/\*/DISPLAY_COMPANIES\*/", lambda m: "/*DISPLAY_COMPANIES*/var DISPLAY_COMPANIES = " + json.dumps(_DISP, ensure_ascii=False) + ";/*/DISPLAY_COMPANIES*/", booking_src, count=1, flags=re.S)
 open(booking_path, "w", encoding="utf-8").write(booking_src)
 
 src = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
