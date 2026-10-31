@@ -28,6 +28,10 @@ http.createServer(async(req,res)=>{
   let raw='';for await(const chunk of req)raw+=chunk;
   const p=Object.fromEntries(new URLSearchParams(raw)); let result;
   if(p.kind==='quotes'){searches++;result=ctx.selectionQuotes_(p);}
+  else if(p.split==='1'){ // 往復を行き・帰りで別の会社に
+   const g=ctx.validateSelection_(ctx.legParams_(p,'go')), b=ctx.validateSelection_(ctx.withPick_(ctx.legParams_(p,'back'),p.back_partner_id,p.back_quote_token,p.back_quote_expires));
+   if(g.ok&&b.ok){requests++;lastPartner=p.partner_id+'+'+p.back_partner_id;result={ok:true,id:'DEMO-GO',back_id:'DEMO-BACK'};} else result={ok:false,error:(g.ok?b:g).error};
+  }
   else {result=ctx.validateSelection_(p);if(result.ok){requests++;lastPartner=p.partner_id;result={ok:true,id:'DEMO-ONLY'};}}
   res.setHeader('Content-Type','application/json');return res.end(JSON.stringify(result));
  }

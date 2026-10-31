@@ -85,7 +85,7 @@ var REQ_HEADERS = [
   '種類', '犬種・猫種', '体重kg', '年齢', '性別', 'キャリー', '介助', '同乗人数',
   'お名前', '電話番号', 'メール', '連絡方法', 'メモ',
   '通知段階', '通知した提携先', '決定した提携先ID', '決定した提携先', 'お迎え予定', '料金の目安', '提携先から一言', '決定日時',
-  'お客さまLINE', '終了日時', 'ペット数', 'ペット詳細', '日付のみ', '経由地', 'ペットJSON', '概算km', '概算料金', '荷物', '高速利用時の料金', '帰りの日時', '帰りのお迎え', '帰りの行き先', '待ち時間（分）', '概算料金の表示', '帰りのやり方', '指定した提携先ID', '指定した提携先'
+  'お客さまLINE', '終了日時', 'ペット数', 'ペット詳細', '日付のみ', '経由地', 'ペットJSON', '概算km', '概算料金', '荷物', '高速利用時の料金', '帰りの日時', '帰りのお迎え', '帰りの行き先', '待ち時間（分）', '概算料金の表示', '帰りのやり方', '指定した提携先ID', '指定した提携先', '区間', 'ペアの受付番号'
 ];
 var PARTNER_HEADERS = [
   'ID', '事業者名', '担当者名', '対応エリア', 'メール', '電話番号', 'LINE公式ID（先方）', '受付中', '大型犬OK', '介助OK',
@@ -198,56 +198,79 @@ function receive_(p) {
   if (!when) return { ok: false, error: 'datetime' };
   if (!p.date && when.getTime() - Date.now() < (CONFIG.MIN_LEAD_HOURS * 60 - 15) * 60000) return { ok: false, error: 'datetime' };
 
-  var selection;
+  // 往復を行きと帰りで別の会社に頼むとき（split=1）は、片道の依頼を2件つくる。それぞれ選んだ会社にだけ送る
+  var split = p.split === '1' && p.trip === '往復';
+  var legs = split ? [
+    { p: legParams_(p, 'go'), label: '行き（往復の1/2）' },
+    { p: withPick_(legParams_(p, 'back'), p.back_partner_id, p.back_quote_token, p.back_quote_expires), label: '帰り（往復の2/2）' }
+  ] : [{ p: p, label: '' }];
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
-  var r;
+  var rows = [];
   // 二重送信よけ：LPは入力が同じなら同じ req_key を送る。6時間以内の同じ key には同じ受付番号を返す
   var key = String(p.req_key || '').slice(0, 200), cache = key ? CacheService.getScriptCache() : null;
   try {
     if (cache) {
       var dup = cache.get('req_' + key);
-      if (dup) return { ok: true, id: dup };
+      if (dup) { var ids = dup.split(','); return ids.length > 1 ? { ok: true, id: ids[0], back_id: ids[1] } : { ok: true, id: dup }; }
     }
-    selection = validateSelection_(p);
-    if (!selection.ok) return selection;
+    var sels = legs.map(function (l) { return validateSelection_(l.p); });
+    for (var k = 0; k < sels.length; k++) {
+      if (!sels[k].ok) return split ? { ok: false, error: sels[k].error, leg: k ? 'back' : 'go' } : sels[k];
+    }
     var sh = sheet_(SHEET_REQ);
-    var id = newId_(sh);
-    r = {
-      '受付番号': id, '受付日時': new Date(), '状態': ST.OPEN, '都府県': pref,
-      'お迎えの場所': clip_(p.pickup), '行き先': clip_(p.dropoff), '希望日時': when, '片道・往復': clip_(p.trip),
-      '種類': clip_(p.species), '犬種・猫種': clip_(p.breed), '体重kg': Number(p.weight) || '', '年齢': clip_(p.age),
-      '性別': clip_(p.sex), 'キャリー': clip_(p.cage), '介助': clip_(p.care), '同乗人数': clip_(p.riders),
-      'お名前': clip_(p.name), '電話番号': "'" + clip_(p.tel), 'メール': clip_(p.email).trim(), '連絡方法': clip_(p.contact),
-      'メモ': clip_(p.notes, 1000), '通知段階': 0, '通知した提携先': '',
-      'ペット数': Number(p.pet_count) || 1, 'ペット詳細': clip_(p.pets, 1000), '日付のみ': p.date ? '○' : '',
-      '経由地': clip_(p.via), 'ペットJSON': clip_(p.pets_json, 5000),
-      '概算km': Number(p.est_km) || '', '概算料金': selection.price.amount || '', '荷物': clip_(p.luggage),
-      '帰りの日時': parseJst_(p.return_datetime) || '', '帰りのお迎え': clip_(p.return_pickup), '帰りの行き先': clip_(p.return_dropoff),
-      '待ち時間（分）': clip_(p.wait_time, 20),
-      '概算料金の表示': selection.price.text, '指定した提携先ID': selection.partner.id, '指定した提携先': selection.partner.name
-    };
     var head = ensureReqHeaders_(sh);
-    sh.appendRow(head.map(function (h) { return r[h] === undefined ? '' : r[h]; }));
-    // 数字の列が「日付」の書式になっていると、読み出したときに日付になってしまうので、書式を数字に固定する
-    var last = sh.getLastRow();
-    [['体重kg', '0.#'], ['ペット数', '0'], ['概算km', '0.0'], ['概算料金', '#,##0'], ['待ち時間（分）', '@'], ['概算料金の表示', '@']].forEach(function (f) {
-      var c = head.indexOf(f[0]);
-      if (c >= 0) sh.getRange(last, c + 1).setNumberFormat(f[1]);
+    var ids = legs.map(function () { return newId_(sh); });
+    for (var t = 0; ids[1] && ids[1] === ids[0] && t < 20; t++) ids[1] = newId_(sh); // 2件が同じ番号にならないように
+    legs.forEach(function (l, n) {
+      var q = l.p, selection = sels[n], at = n ? parseJst_(q.datetime) : when;
+      var r = {
+        '受付番号': ids[n], 'ペアの受付番号': split ? ids[1 - n] : '', '受付日時': new Date(), '状態': ST.OPEN, '都府県': pref,
+        'お迎えの場所': clip_(q.pickup), '行き先': clip_(q.dropoff), '希望日時': at, '片道・往復': clip_(q.trip),
+        '種類': clip_(p.species), '犬種・猫種': clip_(p.breed), '体重kg': Number(p.weight) || '', '年齢': clip_(p.age),
+        '性別': clip_(p.sex), 'キャリー': clip_(p.cage), '介助': clip_(p.care), '同乗人数': clip_(p.riders),
+        'お名前': clip_(p.name), '電話番号': "'" + clip_(p.tel), 'メール': clip_(p.email).trim(), '連絡方法': clip_(p.contact),
+        'メモ': clip_(p.notes, 1000), '通知段階': 0, '通知した提携先': '',
+        'ペット数': Number(p.pet_count) || 1, 'ペット詳細': clip_(p.pets, 1000), '日付のみ': p.date && !split ? '○' : '',
+        '経由地': clip_(q.via), 'ペットJSON': clip_(p.pets_json, 5000),
+        '概算km': split ? '' : Number(p.est_km) || '', '概算料金': selection.price.amount || '', '荷物': clip_(p.luggage),
+        '帰りの日時': parseJst_(q.return_datetime) || '', '帰りのお迎え': clip_(q.return_pickup), '帰りの行き先': clip_(q.return_dropoff),
+        '待ち時間（分）': clip_(p.wait_time, 20),
+        '概算料金の表示': selection.price.text, '指定した提携先ID': selection.partner.id, '指定した提携先': selection.partner.name,
+        '区間': l.label
+      };
+      sh.appendRow(head.map(function (h) { return r[h] === undefined ? '' : r[h]; }));
+      // 数字の列が「日付」の書式になっていると、読み出したときに日付になってしまうので、書式を数字に固定する
+      var last = sh.getLastRow();
+      [['体重kg', '0.#'], ['ペット数', '0'], ['概算km', '0.0'], ['概算料金', '#,##0'], ['待ち時間（分）', '@'], ['概算料金の表示', '@']].forEach(function (f) {
+        var c = head.indexOf(f[0]);
+        if (c >= 0) sh.getRange(last, c + 1).setNumberFormat(f[1]);
+      });
+      SpreadsheetApp.flush();
+      rows.push(r);
     });
-    SpreadsheetApp.flush();
-    if (cache) cache.put('req_' + key, id, 21600);
+    if (cache) cache.put('req_' + key, rows.map(function (r) { return r['受付番号']; }).join(','), 21600);
   } finally {
     lock.releaseLock();
   }
-  r['電話番号'] = String(r['電話番号']).replace(/^'/, '');
+  rows.forEach(function (r) {
+    r['電話番号'] = String(r['電話番号']).replace(/^'/, '');
+    sendReceipt_(r);
+    var sent = sendWave_(r['受付番号'], 1);
+    notifyAdmin_((isTest_(r) ? '【テスト】' : '') + '新しいご依頼 ' + r['受付番号'] + (r['区間'] ? '・' + r['区間'] : '') + '（' + pref + '・' + whenText_(r) + '）',
+      rideText_(r) + '\n\nお名前：' + r['お名前'] + '\n電話：' + r['電話番号'] + '\nメール：' + r['メール'] + '\n連絡方法：' + r['連絡方法'] +
+      '\n\nお知らせした提携先：' + (sent || 'なし（このエリアの提携先がいません）') + '\n\n▼ 手配ページ（LINEで送る・決定の入力）\n' + adminUrl_(r['受付番号']));
+  });
+  return split ? { ok: true, id: rows[0]['受付番号'], back_id: rows[1]['受付番号'] } : { ok: true, id: rows[0]['受付番号'] };
+}
 
-  sendReceipt_(r);
-  var sent = sendWave_(r['受付番号'], 1);
-  notifyAdmin_((isTest_(r) ? '【テスト】' : '') + '新しいご依頼 ' + r['受付番号'] + '（' + pref + '・' + whenText_(r) + '）',
-    rideText_(r) + '\n\nお名前：' + r['お名前'] + '\n電話：' + r['電話番号'] + '\nメール：' + r['メール'] + '\n連絡方法：' + r['連絡方法'] +
-    '\n\nお知らせした提携先：' + (sent || 'なし（このエリアの提携先がいません）') + '\n\n▼ 手配ページ（LINEで送る・決定の入力）\n' + adminUrl_(r['受付番号']));
-  return { ok: true, id: r['受付番号'] };
+// 往復を2社に分けた依頼の件名につける印（「・行き」「・帰り」）
+function legTag_(r) { return r && r['区間'] ? '・' + String(r['区間']).replace(/（.*$/, '') : ''; }
+
+// 帰りの選択（back_*）を、片道の依頼として確かめる形（partner_id など）に入れ替える
+function withPick_(q, id, token, expires) {
+  q.partner_id = id; q.quote_token = token; q.quote_expires = expires;
+  return q;
 }
 
 /* ───────── 提携先へのお知らせ ───────── */
@@ -686,7 +709,7 @@ function accept_(id, pt, at, fare, msg, fareHw, retWay) {
   log_(id + ' 決定: ' + pt.id);
 
   var cancelUrl = cancelUrl_(id);
-  toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】お迎えが決まりました（受付番号 ' + id + '）',
+  toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】お迎えが決まりました（受付番号 ' + id + '）' + legTag_(r),
     r['お名前'] + ' 様\n\nペットタクシーが決まりました！\n\n' +
     '■ ペットタクシー：' + pt.name + '\n' +
     '■ お迎え予定：' + fmt_(at) + '\n' +
@@ -895,8 +918,9 @@ function giveUp_(id) {
   var r = findReq_(id).data;
   log_(id + ' 見つからず');
   closeOthers_(r, '');
-  toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】申し訳ありません、空いている車が見つかりませんでした（受付番号 ' + id + '）',
+  toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】申し訳ありません、空いている車が見つかりませんでした（受付番号 ' + id + '）' + legTag_(r),
     r['お名前'] + ' 様\n\nご依頼ありがとうございました。\n' + whenText_(r) + ' のお迎えについて、' + (r['指定した提携先'] ? r['指定した提携先'] + 'に確認しましたが、あいにくお引き受けできませんでした。' : 'エリアのペットタクシーにお声がけしましたが、あいにく空いている車が見つかりませんでした。') + '\nお力になれず、申し訳ありません。\n\n' +
+    (r['ペアの受付番号'] ? 'これは往復の' + legTag_(r).slice(1) + 'のご依頼です。もう片方（受付番号 ' + r['ペアの受付番号'] + '）は、そのまま手配を続けています。取り消す場合は、そちらのメールのリンクからどうぞ。\n\n' : '') +
     '時間を少しずらすと見つかることがあります。下のリンクから開くと、前回の内容が入った状態になるので、日時だけ変えてもう一度お送りいただけます。\n' + retryUrl_(id));
   notifyAdmin_('見つからず ' + id, 'お客さまにお詫びを送りました。\n\n' + rideText_(r) + '\n\nお名前：' + r['お名前'] + '\n電話：' + r['電話番号']);
 }
@@ -908,7 +932,7 @@ function sendReceipt_(r) {
   if (CONFIG.LINE_CHANNEL_ACCESS_TOKEN && CONFIG.LINE_ADD_URL) {
     lineNote = '\n\n▼ LINEでもお知らせを受け取れます\n友だち追加して、受付番号「' + r['受付番号'] + '」を送ってください。\n' + CONFIG.LINE_ADD_URL;
   }
-  toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】受け付けました（受付番号 ' + r['受付番号'] + '）',
+  toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】受け付けました（受付番号 ' + r['受付番号'] + '）' + legTag_(r),
     r['お名前'] + ' 様\n\nご依頼ありがとうございます。受け付けました。\n' + (r['指定した提携先'] ? '選んだ会社「' + r['指定した提携先'] + '」に空き状況を確認しています。ほかの会社には依頼しません。' : 'いま、空いているペットタクシーを探しています。') + '引き受けが決まりしだい、お迎えの時間と確定料金をお送りします。\n\n' +
     '受付番号：' + r['受付番号'] + '\n' + rideText_(r) +
     (num_(r['概算料金']) ? '\n■ 料金の目安（概算）：' + estShown_(r) + '\n　※実際の料金は、決まったペットタクシーからお知らせします' : '') + lineNote +
@@ -1083,6 +1107,7 @@ function rideText_(r) {
     : [r['種類'], r['犬種・猫種'], r['体重kg'] ? r['体重kg'] + 'kg' : '', r['年齢'] ? r['年齢'] + '歳' : '', r['性別']].filter(String).join(' ');
   return [
     '■ 希望日時：' + whenText_(r) + '（' + r['片道・往復'] + '）',
+    r['区間'] ? '■ 区間：' + r['区間'] + (r['ペアの受付番号'] ? '。' + (/^行き/.test(r['区間']) ? '帰り' : '行き') + 'は別のご依頼です（受付番号 ' + r['ペアの受付番号'] + '）' : '') : '',
     '■ お迎え：' + PREF_FULL[r['都府県']] + ' ' + r['お迎えの場所'],
     r['経由地'] ? '■ 経由地：' + r['経由地'] : '',
     '■ 行き先：' + r['行き先'],
@@ -1466,7 +1491,7 @@ function testRequest() {
 
 /*SELECTION_FARES*/var SELECTION_FARES = {"petexpress": {"名前": "ペットエクスプレス（世田谷）", "出典": "https://pettaxi.tokyo/ 2026-10-27", "base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null, "note": "東京・世田谷の会社は、乗車料金が5kmまで2,200円、その先は1kmごとに220円（101km〜は165円、201km〜は110円）。お迎え料金と帰りの回送料金がそれぞれ3kmまで330円かかり、お店から遠いと増えます。夕方18時〜朝8時は乗車料金が2割増し、往復は乗車料金が2倍です。病院での待ち時間は10分まで無料、30分まで660円、その後10分ごとに220円です。長い待ち時間の往復や遠くへの移動は、半日貸切（6時間・70kmまで13,200円）や1日貸切（12時間・160kmまで26,400円）のほうが安ければ、そちらで計算します。", "wait": {"30": 660, "60": 1320, "120": 2640}, "pay": "東京・世田谷の会社は、現金で降りるときにお支払いです。", "shop": [35.6339, 139.6697], "pick_free_km": 3, "pick_over": 220, "_迎車メモ": "迎車・回送の3km超の単価は非公開。候補カードでは仮の単価で足さず「330円〜（追加分は要確認）」と出す。pick_over は旧フォーム概算用の仮の値（お店：世田谷区上馬1丁目）", "label": "東京・世田谷の会社", "night_hours": [18, 8], "partner_id": "P002", "review_query": "ペットエクスプレス 世田谷区上馬", "charter": [{"name": "半日貸切", "hours": 6, "km": 70, "price": 13200, "over30": 1100}, {"name": "1日貸切", "hours": 12, "km": 160, "price": 26400, "over30": 880}], "_貸切メモ": "https://pettaxi.tokyo/ 2026-10-31：半日（6時間・70kmまで）13,200円、全日（12時間・160kmまで）26,400円、超過は30分ごと1,100円／880円、有料道路は別。表は税込だが『別途消費税を加算』の記載もあり、迎車・待機・夜間の扱いは書いていない（問い合わせで確かめる）。距離・時間はお店からの行き帰りも含めて計算する"}, "kuriki": {"名前": "くりき（松戸）", "出典": "https://pet-kuriki.com/taxi 2026-10-27", "base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300], "note": "千葉・松戸の会社は、乗車料金が5km未満1,800円、5km以上は1kmごとに200円（101km〜は150円、201km〜は100円）。往復は10kmまで3,300円（病院での待ち時間30分込み）で、その後の待ち時間は30分ごとに500円です。長い距離や長い待ち時間は、その会社のお見積りになります。", "wait": {"30": 0, "60": 500, "120": 1500}, "pay": "千葉・松戸の会社は、お支払い方法を決まったときのメールでご案内します。", "label": "千葉・松戸の会社", "night_hours": null, "partner_id": "P003", "review_query": "ペットタクシー くりき 松戸"}};/*/SELECTION_FARES*/
 /* 事業者の検索は予約の保存・メール送信をしない。料金は上の生成データを使う。 */
-var QUOTE_FIELDS = ['pref', 'pickup', 'via', 'dropoff', 'datetime', 'trip', 'riders', 'luggage', 'species', 'weight', 'cage', 'care', 'pet_count', 'pets_json', 'return_datetime', 'return_pickup', 'return_dropoff', 'route_details'];
+var QUOTE_FIELDS = ['leg', 'pref', 'pickup', 'via', 'dropoff', 'datetime', 'trip', 'riders', 'luggage', 'species', 'weight', 'cage', 'care', 'pet_count', 'pets_json', 'return_datetime', 'return_pickup', 'return_dropoff', 'route_details'];
 
 function selectionRide_(p) {
   return {
@@ -1572,15 +1597,39 @@ function selectionPrice_(pt, p) {
 function selectionQuotes_(p) {
   var error = selectionValid_(p);
   if (error) return {ok:false,error:error};
+  var out = {ok:true,selection_version:1,cards:quoteCards_(p)};
+  // 往復は、行きと帰りをそれぞれ別の会社に頼めるように、片道ずつの候補も返す（Nori 2026-10-31）
+  if (p.trip === '往復') out.legs = {go:quoteCards_(legParams_(p,'go')), back:quoteCards_(legParams_(p,'back'))};
+  return out;
+}
+
+// 往復の片方を片道の依頼として見たときの入力（go＝行き、back＝帰り）。料金・署名・候補の判定はこれで片道として計算する
+function legParams_(p, leg) {
+  var q = {}, d = {};
+  Object.keys(p).forEach(function(k) { q[k] = p[k]; });
+  try { d = JSON.parse(p.route_details) || {}; } catch (e) {}
+  var b = leg === 'back';
+  var km = b ? d.backKm : d.km, high = b ? d.highBackKm : d.highKm, from = b ? d.backFrom : d.from, to = b ? d.backTo : d.to;
+  q.route_details = JSON.stringify({km:km, backKm:km, highKm:high, highBackKm:high, from:from, to:to, backFrom:from, backTo:to,
+    routeEstimated:d.routeEstimated, localEstimated:d.localEstimated});
+  q.trip = '片道';
+  if (b) {
+    q.datetime = p.return_datetime; q.pickup = p.return_pickup || p.dropoff; q.dropoff = p.return_dropoff || p.pickup; q.via = '';
+  }
+  q.return_datetime = ''; q.return_pickup = ''; q.return_dropoff = '';
+  q.leg = leg;
+  return q;
+}
+
+function quoteCards_(p) {
   var expires = Date.now()+15*60000, r = selectionRide_(p);
-  var cards = selectionCandidates_(r).map(function(pt) {
+  return selectionCandidates_(r).map(function(pt) {
     var price = selectionPrice_(pt,p);
     if (!price) return null;
     return { id:pt.id, label:pt.name, car:pt.car || '車の詳細は引き受け時に確認',
       payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は引き受け時にご案内',
       price:price, review:selectionReview_(pt), check:checks_(pt, r).ask, expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
   }).filter(Boolean);
-  return {ok:true,selection_version:1,cards:cards};
 }
 
 // 口コミの点数と件数。場所のIDだけは規約上保存してよいので覚えておき、点数は毎回取り寄せる
