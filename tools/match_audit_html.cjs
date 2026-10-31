@@ -1,15 +1,17 @@
 // マッチング検査（tools/match_audit.cjs）の結果を、1枚の表のページにする。社内用（会社名・ツール名を出してよい）
 'use strict';
+// 組み合わせの結果：サイトの情報で動かした分と、予約シートの今の値で動かした分を足す（どちらかで起きれば抜け）
+const cd = r => { const o = {}; Object.keys(r.combos.d).forEach(k => { const a = r.combos.d[k], b = r.sheetCombos ? r.sheetCombos.d[k] : {}; o[k] = {}; ['ng', 'ask', 'drop', 'miss'].forEach(t => o[k][t] = (a[t] || 0) + (b[t] || 0)); }); return o; };
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 // しくみ全体の抜け。count は当てはまる会社の数（候補・輸送・緊急の会社だけ数える）
 const SYS = [
   { t: '分からない人数・頭数・荷物を「軽バン」とみなして、黙って外している', where: 'booking/Code.gs の fitsCar_（CONFIG.DEFAULT_CAR：大人2人・2匹・荷物少なめ）',
-    d: 'checks_ は「分からないので会社が確かめる」としているのに、その前の fitsCar_ が大人3人・3匹以上・荷物多めの依頼を外す。会社は候補に出ず、お客さまには「見つかりません」と出る。', fix: '空欄は外さずに「確かめる」に回す（checks_ に任せる）。', hit: r => ['人数', '頭数', '荷物'].some(k => r.combos.d[k].drop) },
+    d: 'checks_ は「分からないので会社が確かめる」としているのに、その前の fitsCar_ が大人3人・3匹以上・荷物多めの依頼を外す。会社は候補に出ず、お客さまには「見つかりません」と出る。', fix: '空欄は外さずに「確かめる」に回す（checks_ に任せる）。', hit: r => ['人数', '頭数', '荷物'].some(k => cd(r)[k].drop) },
   { t: 'ケージの貸し出しが分からない会社を「用意なし」とみなして外している', where: 'fitsCage_（「借りたい」は ケージ貸し出し=○ の会社だけ）',
-    d: '貸し出しの欄が空欄の会社は、「借りたい」を選んだお客さまの候補に一度も出ない。', fix: '空欄は「確かめる」に回し、大きさ（何kgの子まで）も一緒に確かめる。', hit: r => r.combos.d['貸しケージの大きさ'].drop },
+    d: '貸し出しの欄が空欄の会社は、「借りたい」を選んだお客さまの候補に一度も出ない。', fix: '空欄は「確かめる」に回し、大きさ（何kgの子まで）も一緒に確かめる。', hit: r => cd(r)['貸しケージの大きさ'].drop },
   { t: '動物の種類を見ていない（うさぎ・鳥、猫を乗せない会社）', where: 'checks_・QUOTE_FIELDS（species を受け取っていない）',
-    d: 'フォームで「その他」や「猫」を選んでも、犬だけの会社や種類が分からない会社がそのまま候補に出る。犬と猫を一緒に乗せられるかも見ていない。', fix: '予約シートに「乗せられる動物」（犬・猫・その他）の列を足し、分からない会社は確かめる項目にする。', hit: r => r.combos.d['動物の種類'].miss },
+    d: 'フォームで「その他」や「猫」を選んでも、犬だけの会社や種類が分からない会社がそのまま候補に出る。犬と猫を一緒に乗せられるかも見ていない。', fix: '予約シートに「乗せられる動物」（犬・猫・その他）の列を足し、分からない会社は確かめる項目にする。', hit: r => cd(r)['動物の種類'].miss },
   { t: 'エリアを都県でしか見ていない', where: 'selectionCandidates_（pt.areas に都県が入っているか）',
     d: '多摩の店に江戸川のお迎えが、松戸の店に八王子のお迎えが候補として出る。帰りのお迎えの場所（往復で「ちがう場所」）のエリアも見ていない。', fix: '予約シートに「お店の場所」と「何kmまで」を足し、迎車料金の計算にすでにある距離（shop）で判定する。', hit: r => r.company.some(x => x.dim === 'エリア' && x.level === 'gap') },
   { t: '日をまたぐ営業時間（例 20〜翌5時）を書けない', where: 'hoursOf_・checks_（開始 < 終了 の前提）',
@@ -19,10 +21,10 @@ const SYS = [
   { t: '割増は「倍率」「1つの時間帯」「乗る時刻だけ」でしか計算できない', where: 'selectionPrice_ の night()・tools/fares.json の night / night_hours',
     d: '「21〜8時 +3,300円」のような固定額、「21〜5時・5〜8時」のような2つの時間帯、割増の時間をまたぐ乗車（乗った時刻／着いた時刻／走った分）の決まりが入らない。COCOタクの各店は固定額。', fix: 'fares.json に固定額・複数の時間帯・またぎ方を足し、問い合わせの答えで埋める。', hit: r => r.company.some(x => x.dim === '料金' && /固定額|2つ/.test(x.text)) },
   { t: '持参のケージが車に入るかを聞いていない', where: 'checks_（ケージは「必須」と「貸し出し」だけ）',
-    d: '25kg以上の子を自分のケージで乗せるとき、軽バンや車種の分からない会社にそのまま依頼が行く。人数が多いと特に入らない。', fix: '予約シートに車の荷室の大きさ（大型ケージが載るか）を足すか、大型犬＋持参ケージは「確かめる」に入れる。', hit: r => r.combos.d['持参ケージと車'].miss },
+    d: '25kg以上の子を自分のケージで乗せるとき、軽バンや車種の分からない会社にそのまま依頼が行く。人数が多いと特に入らない。', fix: '予約シートに車の荷室の大きさ（大型ケージが載るか）を足すか、大型犬＋持参ケージは「確かめる」に入れる。', hit: r => cd(r)['持参ケージと車'].miss },
   { t: 'ワクチンが必須の会社なのに、予約シートに入っていない', where: '予約シート「ワクチン必須」',
-    d: 'サイトに「ワクチン接種済みの動物」と書いてある会社でも、予約シートの欄が空欄だと、未接種の子の依頼を聞かずに出す。', fix: 'サイトの情報から「ワクチン必須」を○にする。', hit: r => r.combos.d['ワクチン'].miss },
-  { t: '締切「前日◯時まで」を書けない', where: '予約シート「何時間前まで」（数字1つ）', d: '朝早い便は前日◯時まで、のような締切は「何時間前」に直せない。', fix: '「前日の締切時刻」の列を足す。', hit: r => r.gaps.some(x => x.dim === '締切') || r.company.some(x => x.dim === '締切') },
+    d: 'サイトに「ワクチン接種済みの動物」と書いてある会社でも、予約シートの欄が空欄だと、未接種の子の依頼を聞かずに出す。', fix: 'サイトの情報から「ワクチン必須」を○にする。', hit: r => cd(r)['ワクチン'].miss },
+  { t: '締切「前日◯時まで」を書けない', where: '予約シート「何時間前まで」（数字1つ）', d: '朝早い便は前日◯時まで、のような締切は「何時間前」に直せない（数字だけ拾うと、18時が18時間として読まれる）。締切が分からない会社は3時間前とみなしている。', fix: '「前日の締切時刻」の列を足す。', hit: r => r.gaps.some(x => x.dim === '締切') },
   { t: '料金表に入っているのは2社だけ', where: 'tools/fares.json', d: 'ほかの会社は候補カードが「料金はお見積もり」になる。お迎え料金がkm制の会社は、お店の位置がないと計算できない。待ち時間・高速代・追加料金（大型犬・多頭・介助・ケージ）も多くの会社で分からない。', fix: '提携したら fares.json に足す。問い合わせの答えで待ち時間・追加料金を埋める。', hit: r => r.company.some(x => /fares\.json）に入っていない/.test(x.text)) },
   { t: 'キャンセルの決まり・往復の支払いが候補カードに出ていない', where: '候補カード（selectionQuotes_ は支払い方法・時期だけ）', d: '会社ごとに「前日12時まで無料、当日50%」などちがうのに、お客さまが選ぶときに見えない。往復の支払い（別々かまとめてか）も分からない。', fix: 'キャンセルの決まりを予約シートに入れ、カードに出す。', hit: r => r.status !== '除外' },
   { t: '返事の速さをまだ測っていない', where: '問い合わせの記録（reply 列）', d: 'すべての会社が「未問い合わせ」。メールを読める時間（営業時間）から間に合うかは計算しているが、実際に何時間で返事が来るかは分からない。', fix: '問い合わせの返事が来た時刻を記録して、遅い会社は候補の順番を下げるか外す。', hit: r => r.status !== '除外' }
@@ -31,7 +33,7 @@ const LV = { miss: ['見落とし', 'miss'], drop: ['黙って除外', 'drop'], 
 const SHORT = { 'エリア': 'エリア', '時間': '時間', '大型犬': '大型犬', '大型犬のkg': 'kg', '頭数': '頭数', '大型犬の頭数': '大型頭数', '人数': '人数', '頭数×人数': '頭×人', '荷物': '荷物', 'ケージ必須': 'ケージ', '貸しケージの大きさ': '貸ケージ', '持参ケージと車': '持参×車', 'ペットだけ': 'ペットだけ', 'ワクチン': 'ワクチン', '動物の種類': '種類', '介護の中身': '介護', '割増のまたぎ': '割増', '料金': '料金', '支払い': '支払い', '締切': '締切', 'キャンセル': 'キャンセル', '返事の速さ': '返事' };
 
 function level(r, k) {
-  const v = r.combos.d[k], lv = new Set(r.company.filter(x => x.dim === k).map(x => x.level));
+  const v = cd(r)[k], lv = new Set(r.company.filter(x => x.dim === k).map(x => x.level));
   if (r.gaps.some(x => x.dim === k)) lv.add('gap');
   if (v.miss || lv.has('miss')) return 'miss';
   if (v.drop) return 'drop';
@@ -168,7 +170,7 @@ function render(){
   $('tb').innerHTML=rows.map((r,i)=>{
     const t=r.typ;
     const bar='<div class="bar" title="そのまま '+t.clean+'%／確認 '+t.ask+'%／除外 '+t.ng+'%／黙って除外 '+t.drop+'%／見落とし '+t.miss+'%"><span class="ok" style="width:'+t.clean+'%;background:var(--ok)"></span><span style="width:'+t.ask+'%;background:var(--ask)"></span><span style="width:'+t.ng+'%;background:var(--sub);opacity:.35"></span><span style="width:'+t.drop+'%;background:var(--drop)"></span><span style="width:'+t.miss+'%;background:var(--miss)"></span></div>';
-    const cells=r.lv.map((l,j)=>'<td class="c"><i class="'+l+'" title="'+e(D.dimsFull[j])+'：'+D.LV[l][0]+'">'+(l==='ok'?'':D.LV[l][0][0])+'</i></td>').join('');
+    const cells=r.lv.map((l,j)=>'<td class="c"><i class="'+l+'" title="'+e(D.dimsFull[j])+'：'+D.LV[l][0]+'">'+({miss:'見',drop:'黙',gap:'外',ask:'要',ok:''}[l])+'</i></td>').join('');
     return '<tr class="row" tabindex="0" data-i="'+D.rows.indexOf(r)+'"><td class="name"><a href="'+e(r.url)+'" target="_blank" rel="noopener">'+e(r.name)+'</a><small>'+e(r.pref)+(r.sheet?' ・予約シート '+e(r.sheet.id)+(r.sheet.active?'（受付中）':''):'')+(r.status!=='候補'?' ・'+e(r.status):'')+'</small></td><td>'+bar+'<small class="mono" style="color:var(--sub)">'+t.clean+'% / '+t.ask+'%</small></td>'+cells+'</tr>';
   }).join('');
 }
