@@ -37,7 +37,7 @@ SHOP = {
     'D7e284b0': [34.540, 135.560], 'D01478c8': [34.705, 135.498], 'Da9518d0': [34.814, 135.651], 'D66c4625': [34.540, 135.610], 'D874b316': [34.820, 135.610],
     'D1c2a5e3': [34.540, 135.470], 'D9f338ec': [34.705, 135.205], 'D154d458': [34.677, 135.835], 'D0a999a3': [34.680, 135.750], 'D0ff488e': [34.650, 133.910],
     'D225080e': [34.335, 132.528], 'D678e01f': [34.385, 132.420], 'D8001263': [34.374, 132.448], 'D7c41c5f': [34.135, 134.580], 'Df31960d': [33.645, 130.690],
-    'Dbffb89d': [33.640, 130.805], 'D06b72ea': [35.354, 139.531], 'Db28bc5b': [33.584, 130.402], 'D7847612': [33.590, 130.420],
+    'Dbffb89d': [33.640, 130.805], 'D06b72ea': [35.354, 139.531], 'D72024d3': [34.735, 135.385], 'Db28bc5b': [33.584, 130.402], 'D7847612': [33.590, 130.420],
 }
 
 def areas(c, m):
@@ -72,6 +72,12 @@ PICK = {  # 文で書かれた迎車・回送を形にしたもの（tariffs.jso
 # 距離制の形に当てはまらない会社の料金のしくみ（会社ごとの式。Nori 2026-10-31「全ての事業所で違う計算式でもいい。正しい料金が出ることが一番」）
 # 公式サイトの数字がはっきりしている会社だけ入れる。区切りや単価が読み取れない会社（レゴラスハウス・ZERO・冨士タクシーなど）は入れない
 CUSTOM = {
+    # ラッキーペットサービス（2026-10-31 公式サイトの「エリア・送迎料金」をNoriのMacで確認。税抜「合計金額に別途消費税」）
+    # 5kmまで2,500円、6〜19km 1kmごと250円、20〜100km 200円、101km〜 150円。お迎え料金は西宮600円・芦屋800円・宝塚/尼崎/伊丹/東灘1,200円、
+    # それ以外は尼崎市南武庫之荘から1kmごと150円 → 地域の定額は形にせず、お店からの距離×150円で計算（unsure）。待ち時間は20分無料、10分ごと250円。夜間の割増の記載なし（営業8:30-19:00）
+    'D72024d3': {'base': [2500, 5], 'tiers': [[6, 19, 250], [20, 100, 200], [101, None, 150]], 'tax': '税抜',
+                 'pick': {'per': 150, 'unsure': True}, 'wait': {'free': 20, 'unit': 10, 'yen': 250},
+                 'src': 'https://lucky-pettaxi.jimdosite.com/%E3%82%A8%E3%83%AA%E3%82%A2%E3%83%BB%E9%80%81%E8%BF%8E%E6%96%99%E9%87%91/'},
     'Dc9d8a2b': {'base': [3300, 20], 'tiers': [[21, None, 110, 10]], 'tax': '税込', 'night': {'from': 21, 'to': 6, 'flat': 3300},
                  'src': 'https://j-pettaxi.com/'},  # 基本料金3,300円（20km・1時間以内）、21kmから10kmごと110円、21〜6時 3,300円
     'Dfc6c94f': {'kind': 'time', 'time': {'first': [60, 6280], 'unit': [30, 3140]}, 'tax': '税込',
@@ -224,6 +230,36 @@ def animals(f):
     out.update(ANIMAL_FIX.get(f.get('_id'), {}))
     return out
 
+# カードのアピールポイント（Nori 2026-10-31「各事業者のアピールポイントをカード内に」）。
+# 公式サイトの文（facts.json の by=site／会社の返事 by=reply、あいまい印なし）に書いてあることだけを短いことばにする。作らない・盛らない。最大4つ
+POINT_RULES = [
+    ('hours', r'24時間', r'電話受付24時間|Web予約は24時間|緊急は24時間', '24時間受付'),
+    ('hours', r'(深夜|早朝)[^。]*(相談|対応)', r'不可', '深夜・早朝も相談可'),
+    ('night', r'割増(なし|はありません|無し)', None, '深夜・早朝の割増なし'),
+    ('riders', r'同乗[^。]*無料|無料[^。]*同乗', None, '飼い主さんの同乗無料'),
+    ('care', r'介護資格|ヘルパー|介助|担架', r'お断り', '介助のサポートあり'),
+    ('large', r'大型犬', r'不可|お断り|できません', '大型犬OK'),
+    ('large', r'スロープ', None, 'スロープつき'),
+    ('cage', r'ケージ[^。]*無料|無料[^。]*ケージ', None, 'ケージを無料で使える'),
+    ('pets', r'多頭', r'不可', '多頭OK'),
+    ('cancel', r'前日[^。]*(キャンセル料は発生しません|キャンセルは無料|無料)', None, '前日までキャンセル無料'),
+    ('vac', r'証明は不要|証明不要', None, 'ワクチン証明は不要'),
+    ('pay', r'クレジット|カード', r'取り扱いは致しておりません|使えません|不可', 'カード払い可'),
+    ('pay', r'PayPay', None, 'PayPay可'),
+    ('extra', r'追加料金なし', None, '追加料金なし'),
+    ('roundtrip', r'割引', None, '往復の割引あり'),
+    ('cars', r'黒ナンバー|緑ナンバー', None, '運送の許可あり'),
+]
+def points(f):
+    out = []
+    for key, ok, ng, label in POINT_RULES:
+        v = f.get(key) or {}
+        if v.get('by') not in ('site', 'reply') or v.get('vague'): continue
+        t = str(v.get('v') or '')
+        if re.search(ok, t) and not (ng and re.search(ng, t)) and label not in out: out.append(label)
+    return out[:4]
+PARTNER_SAME = {'P002': 'Dbcb8b8d', 'P003': 'Da968571'}  # 提携先シートの会社と、事業者マスターの同じ会社
+
 def main(master, comp, tariffs=None, facts_path=None):
     ms = json.load(open(master, encoding='utf-8'))
     cs = {c['id']: c for c in json.load(open(comp, encoding='utf-8'))}
@@ -240,10 +276,13 @@ def main(master, comp, tariffs=None, facts_path=None):
         if c.get('review_q') and c.get('review_name'): row['review_q'], row['review_name'] = c['review_q'], c['review_name']
         row.update(schedule(c, m['id']))
         row['animals'] = animals(dict(facts.get(m['id'], {}), _id=m['id']))
+        pts = points(facts.get(m['id'], {}))
+        if pts: row['points'] = pts
         assert not re.search(r'\d{2,4}-\d{2,4}-\d{3,4}|@', json.dumps(row, ensure_ascii=False)), row  # 電話番号・メールは入れない
         out.append(row)
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'display_companies.json')
-    json.dump({'_説明': '予約の候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る。出すかどうかは booking/Code.gs の CONFIG.SHOW_ALL_CANDIDATES', 'companies': out},
+    json.dump({'_説明': '予約の候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る。出すかどうかは booking/Code.gs の CONFIG.SHOW_ALL_CANDIDATES', 'companies': out,
+               'partner_points': {pid: points(facts.get(did, {})) for pid, did in PARTNER_SAME.items() if points(facts.get(did, {}))}},
               open(path, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(len(out), '社', '料金つき', sum(1 for r in out if r['fare']), {p: sum(p in r['areas'] for r in out) for p in PREF47 if any(p in r['areas'] for r in out)})
     print('犬・猫のほか', {k: sum(r['animals']['all'] or k in r['animals']['ok'] for r in out) for k in KINDS}, '犬・猫のみ', sum(r['animals']['only'] for r in out))

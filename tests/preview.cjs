@@ -5,6 +5,7 @@ const root=path.resolve(__dirname,'..');
 const ctx=vm.createContext({Date,JSON,Math,Number,String,Object,Array,isFinite});
 vm.runInContext(fs.readFileSync(path.join(root,'booking/Code.gs'),'utf8'),ctx);
 ctx.selectionReview_=()=>null; // 口コミは外へ取りに行かない
+if(process.env.PREVIEW_BOOKABLE)ctx.CONFIG.SHOW_ALL_CANDIDATES=false; // 依頼できる会社のカード（複数社の選択）を確かめるとき
 ctx.sign_=s=>crypto.createHmac('sha256','local-preview-only').update(s).digest('hex');
 ctx.Utilities={formatDate(d){return new Date(d.getTime()+9*3600000).toISOString().slice(0,16);}};
 ctx.partners_=()=>['P002','P003','DEMO'].map((id,i)=>({id,name:['ペットエクスプレス','くりき','表示確認用の事業者'][i],active:true,areas:['東京'],email:'demo@example.invalid',big:true,careOk:true,cageMust:'不要',cageLend:true,riders:3,pets:5,luggage:true,hours:'0-24',lead:0,car:'ワンボックス',payMethod:'現地で直接お支払い',payWhen:''}));
