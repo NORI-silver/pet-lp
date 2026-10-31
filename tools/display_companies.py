@@ -34,9 +34,9 @@ def main(master, comp):
     cs = {c['id']: c for c in json.load(open(comp, encoding='utf-8'))}
     out = []
     for m in ms:
-        if m['status'] != '掲載候補' or not m['book_area'] or m['id'] in SKIP: continue
+        if m['status'] != '掲載候補' or m['id'] in SKIP: continue  # 全国の掲載候補（Nori 2026-10-31「全国にして。絞らないで」）
         c = cs.get(m['id'], {})
-        row = {'id': m['id'], 'name': m['name'], 'areas': areas(c, m), 'pay': pay(c)}
+        row = {'id': m['id'], 'name': m['name'], 'pref': m['pref'], 'areas': areas(c, m) if m['book_area'] else [], 'pay': pay(c)}
         assert not re.search(r'\d{2,4}-\d{2,4}-\d{3,4}|@', json.dumps(row, ensure_ascii=False)), row  # 電話番号・メールは入れない
         out.append(row)
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'display_companies.json')

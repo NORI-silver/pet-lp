@@ -11,7 +11,7 @@ ctx.Utilities = { formatDate(d) { return new Date(d.getTime()+9*3600000).toISOSt
 ctx.CONFIG.DEFAULT_PARTNER_HOURS='0-24';
 ctx.PropertiesService={getScriptProperties:()=>({getProperty:()=>null,setProperty(){}})};
 const disp = ctx.DISPLAY_COMPANIES;
-assert.ok(disp.length >= 30, '掲載候補が入っている');
+assert.ok(disp.length >= 70, '全国の掲載候補が入っている');
 assert.ok(!JSON.stringify(disp).match(/@|\d{2,4}-\d{2,4}-\d{3,4}/), '連絡先は入れない');
 const D = disp.find(c => c.areas.includes('東京')).id;
 const partner = (id,extra={}) => ({id,name:'確認用 '+id,areas:['東京'],active:true,email:'test@example.invalid',careOk:true,big:true,luggage:true,riders:3,pets:5,cageMust:'不要',cageLend:true,lead:3,hours:'0-24',car:'ワンボックス',...extra});
@@ -27,7 +27,9 @@ assert.equal(cards[0].id,'P002');
 assert.ok(cards[0].display_only); assert.equal(cards[0].token,undefined); assert.equal(cards[0].price.amount,4000);
 assert.ok(cards.every(c=>c.display_only && c.token===undefined));
 const shown=cards.filter(c=>c.id!=='P002');
-assert.equal(shown.length, disp.filter(c=>c.areas.includes('東京')).length);
+assert.equal(shown.length, disp.length); // 絞らない
+const nTokyo=disp.filter(c=>c.areas.includes('東京')).length;
+assert.ok(shown.slice(0,nTokyo).every(c=>disp.find(d=>d.id===c.id).areas.includes('東京'))); // 対応していそうな会社が先
 shown.forEach(c=>{ assert.equal(c.token,undefined); assert.equal(c.review,null); assert.equal(c.price.amount,null); });
 assert.equal(cards.filter(c=>c.id===D).length,1);
 // 提携先の会社に正しいトークンを作って依頼しても断る
