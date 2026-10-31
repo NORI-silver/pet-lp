@@ -23,8 +23,8 @@ ctx.UrlFetchApp = {fetchAll:(reqs)=>reqs.map(q=>{ calls.push(q.url);
 })};
 let r = JSON.parse(JSON.stringify(ctx.selectionScores_([a.id,b.id,'NOPE',a.id].join(','))));
 assert.deepEqual(r.scores, {[a.id]:{rating:4.2,count:12}});
-assert.equal(props['PLACE_ID_D_'+a.id+'_'+a.review_q], 'PA');     // 名前の合う場所を選ぶ
-assert.equal(props['PLACE_ID_D_'+b.id+'_'+b.review_q], '-');      // 合わなければ星を出さない
+assert.equal(props['PLACE_ID_D2_'+a.id+'_'+a.review_q], 'PA');     // 名前の合う場所を選ぶ
+assert.equal(props['PLACE_ID_D2_'+b.id+'_'+b.review_q], '-');      // 合わなければ星を出さない
 assert.equal(props.REVIEW_COUNT_202610, '1');                       // 点数の取り寄せだけを数える
 calls = [];
 ctx.selectionScores_(a.id);
@@ -35,3 +35,11 @@ r = JSON.parse(JSON.stringify(ctx.selectionScores_(a.id)));
 assert.deepEqual(r.scores, {}); assert.equal(calls.length, 0);      // 月の上限を超えたら取り寄せない
 assert.equal(ctx.selectionReviews_(a.id).ok !== undefined, true);   // 表示だけの会社も口コミ本文を見られる
 console.log('PASS: scores fetched in one batch, place names checked, monthly cap kept');
+// 地図の名前が少し違っても、ブランド名と支店名の中心が合えば同じ場所とみなす。ほかの支店は取り違えない
+const ok = (w, n) => ctx.placeNameOk_({words:w.split(' '), loose:true}, {displayName:{text:n}});
+assert.equal(ok('COCOタク 東京小平店', 'ペットタクシー COCOタク 小平店'), true);
+assert.equal(ok('COCOタク 東京小平店', 'COCOタク 江戸川店'), false);
+assert.equal(ok('PETTA東京', 'ペットタクシー PETTA（ペッタ）'), true);
+assert.equal(ok('cocoタク 大田・田園調布店', 'COCOタク 田園調布店'), true);
+assert.equal(ok('かるたく', 'ちがうお店'), false);
+console.log('PASS: loose place-name matching keeps chains apart');

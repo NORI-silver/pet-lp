@@ -1929,28 +1929,46 @@ function reviewTarget_(id) {
   if (emg && emg.query) return {query:emg.query, words:[].concat(emg.name), idKey:'PLACE_ID_' + id + '_' + emg.query, emg:true};
   var dc = DISPLAY_COMPANIES.filter(function(c) { return c.id === id; })[0];
   // 社内用の事業者一覧（dashPlace_）と同じ場所IDを使う
-  if (dc && dc.review_q && dc.review_name) return {query:dc.review_q, words:String(dc.review_name).split(/[\s、,]+/).filter(String), idKey:'PLACE_ID_D_' + id + '_' + dc.review_q};
+  // 地図の名前は「COCOタク 小平店」のように登録名と少し違うことが多いので、ブランド名＋支店名の中心のことばで照らし合わせる（loose）。
+  // 前の厳しい照らし合わせで「見つからない」と覚えた会社も探し直すよう、覚える場所を D2 に変えた（2026-10-31）
+  if (dc && dc.review_q && dc.review_name) return {query:dc.review_q, query2:dc.review_name + ' ペットタクシー', words:String(dc.review_name).split(/[\s、,]+/).filter(String), loose:true, idKey:'PLACE_ID_D2_' + id + '_' + dc.review_q};
   return null;
+}
+var PLACE_PREF_RE = /^(北海道|青森|岩手|宮城|秋田|山形|福島|茨城|栃木|群馬|埼玉|千葉|東京|神奈川|新潟|富山|石川|福井|山梨|長野|岐阜|静岡|愛知|三重|滋賀|京都|大阪|兵庫|奈良|和歌山|鳥取|島根|岡山|広島|山口|徳島|香川|愛媛|高知|福岡|佐賀|長崎|熊本|大分|宮崎|鹿児島|沖縄)[都道府県]?/;
+function placeNorm_(x) { return String(x).normalize('NFKC').replace(/[\s　（）()「」『』・\-ー－]/g, '').toLowerCase(); }
+// loose のときの照らし合わせのことば：brand＝最初のことば（後ろの都道府県名は外す。例 PETTA東京→petta）、
+// branch＝残り（前の都道府県名と後ろの「店・支店・営業所」を外し、「・」で分ける。例 東京小平店→小平、大田・田園調布店→大田／田園調布）
+function placeKeys_(words) {
+  var brand = String(words[0] || '').replace(/(北海道|東京|神奈川|埼玉|千葉|大阪|京都|兵庫|愛知|福岡)[都道府県]?$/, '') || String(words[0] || '');
+  var branch = words.slice(1).join(' ').replace(PLACE_PREF_RE, '').replace(/(支店|営業所|店)$/, '');
+  return {brand:placeNorm_(brand), branch:branch ? branch.split(/[・\s]+/).map(placeNorm_).filter(function(b) { return b.length >= 2; }) : []};
 }
 function placeNameOk_(t, place) {
   if (!t.words) return true;
+  var name = ((place || {}).displayName || {}).text || '';
+  if (t.loose) {
+    var k = placeKeys_(t.words), n = placeNorm_(name);
+    if (!k.brand || n.indexOf(k.brand) < 0) return false;
+    return !k.branch.length || k.branch.some(function(b) { return n.indexOf(b) >= 0; }); // チェーンは支店名も合うときだけ（ほかの店と取り違えない）
+  }
   // 名前のことばが全部入っているか（支店がある会社は支店名も。全角・半角の違いは気にしない）
   var norm = function(x) { return String(x).normalize('NFKC').replace(/\s/g, '').toLowerCase(); };
-  var n = norm(((place || {}).displayName || {}).text || '');
-  return t.words.length > 0 && t.words.every(function(w) { return n.indexOf(norm(w)) >= 0; });
+  var nn = norm(name);
+  return t.words.length > 0 && t.words.every(function(w) { return nn.indexOf(norm(w)) >= 0; });
 }
-function placeSearchRequest_(t, apiKey) { // IDだけの検索は無料
+function placeSearchRequest_(t, apiKey, second) { // IDだけの検索は無料（名前も見るときは場所1件ごとに一度だけ）
   return {url:'https://places.googleapis.com/v1/places:searchText', method:'post', contentType:'application/json', muteHttpExceptions:true,
     headers:{'X-Goog-Api-Key':apiKey,'X-Goog-FieldMask':t.words ? 'places.id,places.displayName' : 'places.id'},
-    payload:JSON.stringify({textQuery:t.query,languageCode:'ja',regionCode:'JP'})};
+    payload:JSON.stringify({textQuery:second ? t.query2 : t.query,languageCode:'ja',regionCode:'JP'})};
 }
 // 検索の結果から場所のIDを決めて覚える（規約上、場所のIDだけは保存してよい）。見つからなければ '-' を覚える（提携先は覚えずに次も探す）
-function placeFromSearch_(id, t, text, props) {
+function placeFromSearch_(id, t, text, props, keepTrying) {
   var found = {};
   try { found = JSON.parse(text) || {}; } catch (e) {}
   var hit = (found.places || []).filter(function(x) { return placeNameOk_(t, x); })[0];
   if (!hit || !hit.id) {
-    log_('口コミ：場所が見つからない ' + id + ' ' + t.query);
+    if (keepTrying) return null; // もうひとつの探し方を試す
+    log_('口コミ：場所が見つからない ' + id + ' ' + t.query + ' 候補：' + (found.places || []).slice(0, 5).map(function(x) { return (x.displayName || {}).text || ''; }).join('／'));
     if (t.words) props.setProperty(t.idKey, '-');
     return null;
   }
@@ -1971,7 +1989,11 @@ function reviewPlace_(partnerId, fields) {
   if (placeId === '-') return null; // 前に探して見つからなかった
   if (!placeId) {
     var q = placeSearchRequest_(t, apiKey), url = q.url; delete q.url;
-    placeId = placeFromSearch_(partnerId, t, UrlFetchApp.fetch(url, q).getContentText(), props);
+    placeId = placeFromSearch_(partnerId, t, UrlFetchApp.fetch(url, q).getContentText(), props, !!t.query2);
+    if (!placeId && t.query2) {
+      var q2 = placeSearchRequest_(t, apiKey, true); delete q2.url;
+      placeId = placeFromSearch_(partnerId, t, UrlFetchApp.fetch(url, q2).getContentText(), props);
+    }
     if (!placeId) return null;
   }
   var ym = Utilities.formatDate(new Date(), TZ, 'yyyyMM');
@@ -2000,7 +2022,13 @@ function selectionScores_(ids) {
   var need = list.filter(function(x) { return !x.place; });
   if (need.length) {
     var res = UrlFetchApp.fetchAll(need.map(function(x) { return placeSearchRequest_(x.t, apiKey); }));
-    need.forEach(function(x, i) { x.place = placeFromSearch_(x.id, x.t, res[i].getContentText(), props) || '-'; });
+    need.forEach(function(x, i) { x.place = placeFromSearch_(x.id, x.t, res[i].getContentText(), props, !!x.t.query2) || null; });
+    var again = need.filter(function(x) { return !x.place && x.t.query2; }); // 見つからなければ「名前＋ペットタクシー」でもう一度
+    if (again.length) {
+      var res2 = UrlFetchApp.fetchAll(again.map(function(x) { return placeSearchRequest_(x.t, apiKey, true); }));
+      again.forEach(function(x, i) { x.place = placeFromSearch_(x.id, x.t, res2[i].getContentText(), props) || '-'; });
+    }
+    need.forEach(function(x) { if (!x.place) x.place = '-'; });
   }
   list = list.filter(function(x) { return x.place && x.place !== '-'; });
   var ym = Utilities.formatDate(new Date(), TZ, 'yyyyMM'), month = 'REVIEW_COUNT_' + ym, used = Number(props.getProperty(month)) || 0;
