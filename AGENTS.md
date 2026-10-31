@@ -60,7 +60,8 @@
 | `tools/match_audit.cjs` | マッチング検査。フォームの全組み合わせを全国の事業者に当て、しぼりこめない点（黙って除外・見落とし・しくみ外・要確認）を事業者ごとに出す。`node tools/match_audit.cjs --companies <ダッシュボードの companies.json> --sheet <提携先タブの写し> --out <フォルダ>`。事業者データは公開リポジトリに置かない。何も送らない |
 | `booking/Code.gs` | 予約の仕組み（Apps Script）。**リポジトリにあっても本番には自動で反映されません**（下記） |
 | `booking/accept-preview.html` | 会社の引き受け画面の見た目確認用 |
-| `docs/` | 手順書（`codex.md`＝Codexの使い方、`ai-backup.md`＝GitHubで動く予備のAI） |
+| `docs/` | 手順書（`codex.md`＝Codexの使い方、`ai-backup.md`＝GitHubで動く予備のAI、`seo-agents.md`＝エリア担当のSEO Agent（担当・順番・手順）、`seo-agents/`＝担当ごとの候補、`seo-log.md`＝SEOの作業メモ） |
+| `tools/seo_check.py` | SEOと文言ルールの自動チェック（title・説明文・canonical・h1・電話番号・ツール名など）。PRごとに `.github/workflows/seo-check.yml` で動く |
 | `.github/workflows/ai-backup.yml` | Issue にラベル「ai」を付けるとAIが作業してPRを作る予備のしくみ |
 
 `CNAME`・`.nojekyll` は GitHub Pages 用なので消さない。

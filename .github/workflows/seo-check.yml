@@ -1,0 +1,27 @@
+# PRごとに SEO と文言ルールを自動で確かめる（docs/seo-agents.md）。お金はかかりません（公開リポジトリ）。
+name: SEO check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 生成ファイルが元ファイルと合っているか
+        run: |
+          python3 tools/gen_areas.py .
+          rm -rf tools/__pycache__
+          git diff --stat --exit-code || (echo "tools/ を直したら python3 tools/gen_areas.py . を実行して、生成ファイルもコミットしてください"; exit 1)
+      - name: SEO と文言のチェック
+        run: python3 tools/seo_check.py .
