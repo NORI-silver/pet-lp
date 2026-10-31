@@ -202,13 +202,13 @@ def area_links(cur=None):
     return '<ul class="other">' + ''.join(
         f'<li><a href="/{a["slug"]}/">{e(a["short"])}のペットタクシー</a></li>' for a in AREAS if a["slug"] != cur) + '<li><a href="/area/">ほかの道府県（全国）</a></li></ul>'
 
-def head(title, desc, url, extra_ld, og_img="/img/hero.jpg", og_w=1200, og_h=900):
+def head(title, desc, url, extra_ld, og_img="/img/hero.jpg", og_w=1200, og_h=900, robots="max-image-preview:large"):
     return f'''<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="max-image-preview:large">
+<meta name="robots" content="{robots}">
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{url}">
@@ -767,7 +767,8 @@ for slug, pf, short, cities in PREFS:
       <a class="btn center" href="/guide/">ペットの移動ガイドを読む{ARROW}</a>
     </div>''')
     checks = ''.join(f'<h3>{e(h)}</h3><p>{e(t)} <a href="/guide/{g}/">{e(GBY[g]["title"])}</a></p>' for h, t, g in PREF_CHECKS)
-    page = head(title, desc, url, ld) + f'''
+    # 料金の例がまだない県は中身が薄いので、データがそろうまで検索に出さない（Nori 2026-10-31）。サイトマップからも外す
+    page = head(title, desc, url, ld, robots="max-image-preview:large" if has_fare else "noindex, follow") + f'''
 <main>
 <section class="area-hero">
   <div class="wrap">
@@ -851,7 +852,7 @@ os.makedirs(os.path.join(ROOT, "area"), exist_ok=True)
 open(os.path.join(ROOT, "area", "index.html"), "w", encoding="utf-8").write(ph)
 
 # sitemap / robots / 404
-urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url, pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url]
+urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url, pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS if x[1] in PREF_FARES] + [terms_url, contact_url, partner_url]
 open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   "".join(f'  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>\n' for u in urls) + '</urlset>\n')
