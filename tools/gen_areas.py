@@ -55,7 +55,9 @@ booking_path = os.path.join(ROOT, "booking", "Code.gs")
 booking_src = open(booking_path, encoding="utf-8").read()
 booking_src = re.sub(r"/\*SELECTION_FARES\*/.*?/\*/SELECTION_FARES\*/", lambda m: "/*SELECTION_FARES*/var SELECTION_FARES = " + json.dumps({k: {x: v for x, v in c.items() if x != "review_url"} for k, c in CO.items()}, ensure_ascii=False) + ";/*/SELECTION_FARES*/", booking_src, count=1, flags=re.S)
 # 緊急タブの搬送の会社の口コミ：場所を探すことばを予約のしくみに渡す（tools/emergency.json の taxis）
-_EMG_RV = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "emergency.json"), encoding="utf-8"))["taxis"]
+_EMG_J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "emergency.json"), encoding="utf-8"))
+# 搬送の会社（E01〜）と病院（H001〜。いくつかの県に載っている病院も id は1つ）
+_EMG_RV = _EMG_J["taxis"] + [h for l in _EMG_J["hospitals"].values() for h in l]
 booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG_REVIEWS*/var EMG_REVIEWS = " + json.dumps({t["id"]: {"query": t["review_query"], "name": t["review_name"]} for t in _EMG_RV if t.get("review_query")}, ensure_ascii=False) + ";/*/EMG_REVIEWS*/", booking_src, count=1, flags=re.S)
 open(booking_path, "w", encoding="utf-8").write(booking_src)
 
@@ -636,7 +638,11 @@ def emg_company(x):
             f'<small>対応エリア：{e(x["area"])}。{e(x["note"])}</small>{tel}'
             + (f'<div class="emg-score" data-id="{e(x["id"])}"></div>' if x.get("review_query") else '') + '</div>')
 def emg_hosp(x):
-    return f'<a class="emg-item" href="{e(x["url"])}" target="_blank" rel="noopener"><b>{e(x["name"])}</b><small>{e(x["city"])}・{e(x["hours"])}</small></a>'
+    # 名前は公式サイトへのリンク。どんな病院か・所在地（公式サイトで確かめたものだけ）と、口コミの星（予約の候補カードと同じしくみ）
+    meta = (f'<small class="emg-spec">{e(x["spec"])}</small>' if x.get("spec") else '') + (f'<small>所在地：{e(x["addr"])}</small>' if x.get("addr") else '')
+    return (f'<div class="emg-item emg-co"><a href="{e(x["url"])}" target="_blank" rel="noopener"><b>{e(x["name"])}</b></a>'
+            f'<small>{e(x["city"])}・{e(x["hours"])}</small>{meta}'
+            + (f'<div class="emg-score" data-id="{e(x["id"])}"></div>' if x.get("review_query") else '') + '</div>')
 emg_prefs_html = ''
 for lab, prefs in emg_regions:
     emg_prefs_html += f'<h3 class="emg-region">{e(lab)}</h3>\n'

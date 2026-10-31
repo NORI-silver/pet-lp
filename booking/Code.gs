@@ -51,7 +51,7 @@ var CONFIG = {
 
   LARGE_DOG_KG: 20, // この体重以上は「大型犬OK」の提携先にだけ送る
   // 提携先シートの車の情報が空欄のときは、いちばん小さい車（軽バン）とみなす
-  DEFAULT_CAR: { riders: 2, pets: 2, big: true, luggage: false },
+  DEFAULT_CAR: { riders: 2, pets: 2, big: true, luggage: false }, // 使っていない（空欄は外さず、引き受けるときに会社が確かめる。2026-10-31）
 
   // LINE公式アカウント（作ったら入れる。空ならメールだけで動きます）
   LINE_CHANNEL_ACCESS_TOKEN: '',
@@ -60,7 +60,7 @@ var CONFIG = {
   // 会社カードの口コミの点数（地図サービスから正式に取り寄せる。規約で書き写し・保存はできない）
   // キーはここに書かず、スクリプトのプロパティ PLACES_API_KEY に入れる。空なら点数は出さず「口コミを見る」リンクだけ
   REVIEW_MONTHLY_LIMIT: 900, // 1か月に取り寄せる回数の上限（無料の範囲 1,000回に収める。超えたら月末までリンクだけ）
-  REVIEW_EMG_MONTHLY_LIMIT: 300, // そのうち緊急タブの搬送の会社に使ってよい回数（予約の候補カードのぶんを残すため）
+  REVIEW_EMG_MONTHLY_LIMIT: 500, // そのうち緊急タブの搬送の会社・病院に使ってよい回数（予約の候補カードのぶんを残すため）
   REVIEW_DASH_MONTHLY_LIMIT: 200 // そのうち社内用の事業者一覧（a=dash）で使ってよい回数
 };
 
@@ -413,13 +413,13 @@ function needs_(r) {
 }
 
 // ケージの希望に合うか（お客さまの「キャリー」欄：持ち込む／なし／借りたい、「・」区切りで複数あり）
-// ・借りたい → 「ケージ貸し出し」が○の会社だけ（空欄は用意なしとみなす）
+// ・借りたい → 「ケージ貸し出し」が×の会社は対象外（空欄は外さず、checks_ で会社が確かめる）
 // ・なし     → 「ケージ必須」が○の会社は対象外。「ペットだけ」の会社は、飼い主さんが乗らないときだけ対象外
 // ・どれでも → 会社のやり方に合わせられるので、しぼりこまない
 function fitsCage_(pt, r) {
   var c = String(r['キャリー'] || '');
   var rent = /借り|持っていない/.test(c), none = /なし/.test(c);
-  if (rent && pt.cageLend !== true) return false;
+  if (rent && pt.cageLend === false) return false;
   if (none) {
     var must = pt.cageMust;
     if (must !== '' && !/^(×|✕|x|X|いいえ|不要|NG)$/.test(must)) {
@@ -430,7 +430,6 @@ function fitsCage_(pt, r) {
   return true;
 }
 
-// 車に乗るか。空欄の項目は軽バン（CONFIG.DEFAULT_CAR）とみなす
 // 間に合うか：メールを読めるのは営業時間だけ。読める時刻からお迎えまで「何時間前まで」以上あること
 function inTime_(pt, r, now) {
   var lead = pt.lead === null || pt.lead === undefined ? CONFIG.DEFAULT_LEAD_HOURS : pt.lead;
@@ -440,17 +439,21 @@ function inTime_(pt, r, now) {
   return at.getTime() - seen.getTime() >= lead * 3600000;
 }
 
-// 「8-18」「8:00〜18:00」→ [8, 18]
+// 「8-18」「8:00〜18:00」→ [8, 18]。日をまたぐ「20-5」「20時〜翌5時」→ [20, 5]
 function hoursOf_(v) {
-  var m = toHalf_(v).match(/(\d{1,2})(?::\d{2})?\s*[-~〜～]\s*(\d{1,2})/);
+  var m = toHalf_(v).match(/(\d{1,2})(?::\d{2})?\s*時?\s*[-~〜～]\s*翌?\s*(\d{1,2})/);
   return m ? [Number(m[1]), Number(m[2])] : [0, 24];
+}
+// hr（0〜24の時刻）が時間帯 h に入っているか（日をまたぐ時間帯も）
+function inHours_(hr, h) {
+  return h[0] <= h[1] ? hr >= h[0] && hr < h[1] : hr >= h[0] || hr < h[1];
 }
 
 // その時刻が営業時間ならそのまま、外なら次に開く時刻（日本時間）
 function nextOpen_(d, hours) {
   var h = hoursOf_(hours), j = new Date(d.getTime() + 9 * 3600000), hr = j.getUTCHours() + j.getUTCMinutes() / 60;
-  if (hr >= h[0] && hr < h[1]) return d;
-  var day = Date.UTC(j.getUTCFullYear(), j.getUTCMonth(), j.getUTCDate()) + (hr >= h[1] ? 86400000 : 0);
+  if (inHours_(hr, h)) return d;
+  var day = Date.UTC(j.getUTCFullYear(), j.getUTCMonth(), j.getUTCDate()) + (h[0] <= h[1] && hr >= h[1] ? 86400000 : 0);
   return new Date(day + (h[0] - 9) * 3600000);
 }
 
@@ -468,13 +471,14 @@ function openMinutes_(from, to, hours) {
   return min;
 }
 
+// 車に乗るか。分かっている値だけで外す（空欄は外さず、checks_ の「確かめること」で会社が引き受けるときに確かめる。
+// 前は空欄を軽バンとみなして黙って外していたので、3匹以上・荷物多めで受けられる会社も出なかった。2026-10-31）
 function fitsCar_(pt, r) {
-  var n = needs_(r), d = CONFIG.DEFAULT_CAR;
-  var pick = function (v, dv) { return v === null ? dv : v; };
-  if (n.riders > pick(pt.riders, d.riders)) return false;
-  if (n.pets > pick(pt.pets, d.pets)) return false;
-  if (n.big && !pick(pt.big, d.big)) return false;
-  if (n.luggage && !pick(pt.luggage, d.luggage)) return false;
+  var n = needs_(r);
+  if (pt.riders !== null && n.riders > pt.riders) return false;
+  if (pt.pets !== null && n.pets > pt.pets) return false;
+  if (n.big && pt.big === false) return false;
+  if (n.luggage && pt.luggage === false) return false;
   return true;
 }
 
@@ -484,10 +488,11 @@ function petsOf_(r) {
   var a;
   try { a = JSON.parse(r['ペットJSON'] || '[]'); } catch (e) { a = []; }
   if (!Array.isArray(a) || !a.length) a = [{ weight: r['体重kg'], care: r['介助'] }];
-  return a.map(function (p) { return { kg: Number(p.weight) || 0, care: p.care || '', vac: p.vaccine === '済', need: (p.care_need || []).concat(p.care_note ? [p.care_note] : []) }; });
+  if (a.length === 1 && !a[0].species) a[0].species = r['種類'];
+  return a.map(function (p) { return { kg: Number(p.weight) || 0, care: p.care || '', vac: p.vaccine === '済', sp: String(p.species || ''), breed: String(p.breed || ''), need: (p.care_need || []).concat(p.care_note ? [p.care_note] : []) }; });
 }
 function checks_(pt, r) {
-  var ng = [], ask = [], n = needs_(r), pets = petsOf_(r), d = CONFIG.DEFAULT_CAR;
+  var ng = [], ask = [], n = needs_(r), pets = petsOf_(r);
   var bigs = pets.filter(function (p) { return p.kg >= CONFIG.LARGE_DOG_KG; }), maxKg = Math.max.apply(null, pets.map(function (p) { return p.kg; }));
   // 時間：お迎え（往復なら帰りも）が送迎できる時間に入っているか
   [r['希望日時'], r['帰りの日時']].forEach(function (t, i) {
@@ -495,8 +500,8 @@ function checks_(pt, r) {
     if (!at || !isFinite(at.getTime()) || (i === 0 && r['日付のみ'])) return;
     var j = new Date(at.getTime() + 9 * 3600000), hr = j.getUTCHours() + j.getUTCMinutes() / 60;
     var label = (i ? '帰りの' : '') + 'お迎え ' + j.getUTCHours() + ':' + ('0' + j.getUTCMinutes()).slice(-2);
-    if (pt.rideHours) { var h = hoursOf_(pt.rideHours); if (hr < h[0] || hr >= h[1]) ng.push(label + '（送迎できる時間の外）'); }
-    else { var h2 = hoursOf_(pt.hours || CONFIG.DEFAULT_PARTNER_HOURS); if (hr < h2[0] || hr >= h2[1]) ask.push(label + 'に送迎できる'); }
+    if (pt.rideHours) { if (!inHours_(hr, hoursOf_(pt.rideHours))) ng.push(label + '（送迎できる時間の外）'); }
+    else if (!inHours_(hr, hoursOf_(pt.hours || CONFIG.DEFAULT_PARTNER_HOURS))) ask.push(label + 'に送迎できる');
   });
   // 人数・頭数・荷物
   if (pt.riders !== null && n.riders > pt.riders) ng.push('大人' + n.riders + '人');
@@ -505,6 +510,10 @@ function checks_(pt, r) {
   else if (pt.pets === null && n.pets >= 2) ask.push(n.pets + '匹が一緒に乗れる');
   if (n.luggage && pt.luggage === false) ng.push('荷物が多い');
   else if (n.luggage && pt.luggage === null) ask.push('多めの荷物（スーツケース・大きなケージなど）が載る');
+  // 種類：犬・猫のほかの子は、乗せられるかを会社ごとに確かめる
+  pets.filter(function (p) { return p.sp && !/犬|猫/.test(p.sp); }).forEach(function (p) {
+    ask.push('犬・猫のほかの子（' + (p.breed || p.sp) + '）を乗せられる');
+  });
   // 大きさ
   if (bigs.length) {
     if (pt.big === false) ng.push('大型犬');
@@ -519,7 +528,8 @@ function checks_(pt, r) {
   else {
     var c = String(r['キャリー'] || '');
     if (/借り|持っていない/.test(c)) {
-      if (pt.lendKg !== null && maxKg > pt.lendKg) ng.push(maxKg + 'kgの子が入るケージの貸し出し');
+      if (pt.cageLend === null) ask.push('ケージを貸し出せる' + (maxKg ? '（' + maxKg + 'kgの子が入るもの）' : '')); // 貸し出しがあるか分からない会社
+      else if (pt.lendKg !== null && maxKg > pt.lendKg) ng.push(maxKg + 'kgの子が入るケージの貸し出し');
       else if (pt.lendKg === null && maxKg >= 10) ask.push(maxKg + 'kgの子が入るケージを貸し出せる'); // 小さい子のケージはどこでも用意できる
     }
     if (/なし/.test(c) && pt.cageMust === '') ask.push('ケージなしで乗れる');
@@ -1564,9 +1574,9 @@ function selectionReview_(pt) {
   }
 }
 
-// 緊急タブの搬送の会社（提携先ではない）の口コミ用：id → 場所を探すことばと、見つかった場所の名前に含まれるはずのことば
+// 緊急タブの搬送の会社と夜間の病院（提携先ではない）の口コミ用：id → 場所を探すことばと、見つかった場所の名前に含まれるはずのことば
 // tools/emergency.json から gen_areas.py が書き込む（ここは手で直さない）
-/*EMG_REVIEWS*/var EMG_REVIEWS = {"E01": {"query": "動物救急車 大田区", "name": "動物救急車"}, "E02": {"query": "ペットドクターカー", "name": "ペットドクターカー"}, "E04": {"query": "ペットタクシー Animals 横浜市港南区", "name": "Animals"}, "E05": {"query": "コインペットタクシー シエロ", "name": "シエロ"}, "E06": {"query": "ペットタクシー パールのしっぽ 千葉市", "name": "パールのしっぽ"}, "E07": {"query": "ペットタクシー COCOタク さいたま南店", "name": ["COCO", "さいたま"]}, "E08": {"query": "ペットタクシー COCOタク 埼玉川越店", "name": ["COCO", "川越"]}, "E09": {"query": "ペットタクシー COCOタク 埼玉春日部", "name": ["COCO", "春日部"]}, "E10": {"query": "ペットレスキュー 夜間救急搬送", "name": "ペットレスキュー"}};/*/EMG_REVIEWS*/
+/*EMG_REVIEWS*/var EMG_REVIEWS = {"E01": {"query": "動物救急車 大田区", "name": "動物救急車"}, "E02": {"query": "ペットドクターカー", "name": "ペットドクターカー"}, "E04": {"query": "ペットタクシー Animals 横浜市港南区", "name": "Animals"}, "E05": {"query": "コインペットタクシー シエロ", "name": "シエロ"}, "E06": {"query": "ペットタクシー パールのしっぽ 千葉市", "name": "パールのしっぽ"}, "E07": {"query": "ペットタクシー COCOタク さいたま南店", "name": ["COCO", "さいたま"]}, "E08": {"query": "ペットタクシー COCOタク 埼玉川越店", "name": ["COCO", "川越"]}, "E09": {"query": "ペットタクシー COCOタク 埼玉春日部", "name": ["COCO", "春日部"]}, "E10": {"query": "ペットレスキュー 夜間救急搬送", "name": "ペットレスキュー"}, "E12": {"query": "ペット専用タクシー aiai 札幌市白石区", "name": "aiai"}, "E13": {"query": "ペットタクシー COCOタク 仙台東店", "name": ["COCO", "仙台東"]}, "E14": {"query": "ペットタクシー COCOタク長岡", "name": ["COCO", "長岡"]}, "E15": {"query": "ZEROペットタクシー 栗東市", "name": "ZERO"}, "E16": {"query": "ペットタクシー Comasuke 茨木", "name": "Comasuke"}, "E17": {"query": "PetTaxi けいわん 堺市", "name": "けいわん"}, "E18": {"query": "ペットタクシー マイファミリー 高槻市", "name": "マイファミリー"}, "E19": {"query": "ペットサポートてんりん 京都市東山区", "name": "てんりん"}, "E20": {"query": "ペットタクシー COCOタク ならまち店", "name": ["COCO", "ならまち"]}, "E21": {"query": "ペッタク ペットタクシー 広島市安芸区", "name": "ペッタク"}, "E22": {"query": "福岡わんわんエクスプレス", "name": "わんわんエクスプレス"}, "E23": {"query": "福岡ペットタクシー HAKAタク", "name": "HAKA"}, "E24": {"query": "ペットタクシー COCOタク 福岡空港店", "name": ["COCO", "福岡空港"]}, "E25": {"query": "東京ペット救急車 なごみ", "name": "ペット救急車"}, "E26": {"query": "ペットタクシー シアンシャ 厚木", "name": ["シアンシャ", "厚木"]}, "E27": {"query": "ペットタクシー シアンシャ 鎌倉", "name": ["シアンシャ", "鎌倉"]}, "E28": {"query": "ペトタクファインド", "name": "ペトタクファインド"}, "H001": {"query": "札幌夜間動物病院 札幌市西区", "name": "札幌夜間動物病院"}, "H002": {"query": "アネス動物病院 札幌円山動物麻酔センター 札幌市中央区", "name": ["アネス動物病院", "札幌円山動物麻酔センター"]}, "H003": {"query": "ペテモどうぶつ医療センター 札幌月寒 札幌市豊平区", "name": ["ペテモどうぶつ医療センター", "札幌月寒"]}, "H004": {"query": "北海道大学動物医療センター 札幌市北区", "name": "北海道大学動物医療センター"}, "H005": {"query": "江別白樺通りアニマルクリニック 江別市", "name": "江別白樺通りアニマルクリニック"}, "H006": {"query": "仙台獣医師会 夜間救急動物病院 仙台市宮城野区", "name": ["仙台獣医師会", "夜間救急動物病院"]}, "H007": {"query": "長町南動物病院 仙台市太白区", "name": "長町南動物病院"}, "H008": {"query": "動物夜間急患センター新潟 新潟市中央区", "name": "動物夜間急患センター新潟"}, "H009": {"query": "ふくしま夜間救急動物病院 郡山市", "name": "ふくしま夜間救急動物病院"}, "H010": {"query": "つくば夜間動物病院 つくば市", "name": "つくば夜間動物病院"}, "H011": {"query": "水戸夜間動物救急センター 水戸市", "name": "水戸夜間動物救急センター"}, "H012": {"query": "つくば動物高度医療センター つくば市", "name": "つくば動物高度医療センター"}, "H013": {"query": "宇都宮夜間どうぶつ病院 宇都宮市", "name": "宇都宮夜間どうぶつ病院"}, "H014": {"query": "宇都宮白沢動物病院 宇都宮市", "name": "宇都宮白沢動物病院"}, "H015": {"query": "しもつけVETセンター 下野市", "name": "しもつけVETセンター"}, "H016": {"query": "小山夜間救急 あかりの森どうぶつ病院 小山市", "name": ["小山夜間救急", "あかりの森どうぶつ病院"]}, "H017": {"query": "群馬夜間救急動物病院 前橋市", "name": "群馬夜間救急動物病院"}, "H018": {"query": "伊勢崎動物医療センター 伊勢崎市", "name": "伊勢崎動物医療センター"}, "H019": {"query": "さいとう動物病院 富岡総合医療センター 富岡市", "name": ["さいとう動物病院", "富岡総合医療センター"]}, "H020": {"query": "夜間救急動物病院 さいたま大宮 SONAC さいたま市大宮区", "name": ["夜間救急動物病院", "さいたま大宮", "SONAC"]}, "H021": {"query": "どうぶつの総合病院 専門医療＆救急センター 川口市", "name": ["どうぶつの総合病院", "専門医療＆救急センター"]}, "H022": {"query": "ミライノ動物病院 草加市", "name": "ミライノ動物病院"}, "H023": {"query": "日本小動物医療センター 所沢市", "name": "日本小動物医療センター"}, "H024": {"query": "久喜夜間救急どうぶつ病院 久喜市", "name": "久喜夜間救急どうぶつ病院"}, "H025": {"query": "熊谷夜間救急動物病院 熊谷市", "name": "熊谷夜間救急動物病院"}, "H026": {"query": "ペテモどうぶつ医療センター幕張新都心 千葉市美浜区", "name": "ペテモどうぶつ医療センター幕張新都心"}, "H027": {"query": "JPB動物医療センター千葉 千葉市緑区", "name": "JPB動物医療センター千葉"}, "H028": {"query": "京葉夜間どうぶつ病院 八千代市", "name": "京葉夜間どうぶつ病院"}, "H029": {"query": "柏流山夜間どうぶつ病院 柏市", "name": "柏流山夜間どうぶつ病院"}, "H030": {"query": "とうかつ夜間どうぶつ病院 柏市", "name": "とうかつ夜間どうぶつ病院"}, "H031": {"query": "千葉どうぶつ総合病院 流山市", "name": "千葉どうぶつ総合病院"}, "H032": {"query": "千葉動物医療センター 袖ケ浦市", "name": "千葉動物医療センター"}, "H033": {"query": "港区動物救急医療センター 芝アニマルクリニック 港区", "name": ["港区動物救急医療センター", "芝アニマルクリニック"]}, "H034": {"query": "ライフメイト動物医療センター文京 文京区", "name": "ライフメイト動物医療センター文京"}, "H035": {"query": "夜間救急動物病院 目黒 目黒区", "name": ["夜間救急動物病院", "目黒"]}, "H036": {"query": "TRVA動物医療センター 世田谷区", "name": "TRVA動物医療センター"}, "H037": {"query": "杉並動物夜間救急医療センター 杉並区", "name": "杉並動物夜間救急医療センター"}, "H038": {"query": "ライフメイト動物救急センター練馬 練馬区", "name": "ライフメイト動物救急センター練馬"}, "H039": {"query": "ペテモどうぶつ医療センター ひがし東京 江東区", "name": ["ペテモ", "ひがし東京"]}, "H040": {"query": "武蔵野動物・救急救命センター 武蔵野市", "name": "武蔵野動物・救急救命センター"}, "H041": {"query": "ライフメイト動物医療センター府中 府中市", "name": "ライフメイト動物医療センター府中"}, "H042": {"query": "サムズアップアニマルケアセンター 立川市", "name": "サムズアップアニマルケアセンター"}, "H043": {"query": "ライフメイト動物救命救急センター八王子 八王子市", "name": "ライフメイト動物救命救急センター八王子"}, "H044": {"query": "DVMsどうぶつ医療センター横浜 横浜市神奈川区", "name": "DVMsどうぶつ医療センター横浜"}, "H045": {"query": "横浜動物救急診療センター VECCS横浜 横浜市南区", "name": ["横浜動物救急診療センター", "VECCS横浜"]}, "H046": {"query": "アニマルメディカルセンター 川崎市中原区", "name": "アニマルメディカルセンター"}, "H047": {"query": "川崎市獣医師会 夜間動物病院 川崎市高津区", "name": ["川崎市獣医師会", "夜間動物病院"]}, "H048": {"query": "ペテモどうぶつ医療センター相模原 相模原市南区", "name": "ペテモどうぶつ医療センター相模原"}, "H049": {"query": "藤沢夜間救急動物病院 藤沢市", "name": "藤沢夜間救急動物病院"}, "H050": {"query": "横須賀夜間救急動物病院 横須賀市", "name": "横須賀夜間救急動物病院"}, "H051": {"query": "夜間救急動物医療センター NEAMeC 平塚市", "name": ["夜間救急動物医療センター", "NEAMeC"]}, "H053": {"query": "北陸よつや動物医療センター 高岡市", "name": "北陸よつや動物医療センター"}, "H054": {"query": "チェルシーアニマルクリニック 富山市", "name": "チェルシーアニマルクリニック"}, "H055": {"query": "かなざわ夜間救急動物病院 金沢市", "name": "かなざわ夜間救急動物病院"}, "H056": {"query": "京都夜間動物救急センター 京都市南区", "name": "京都夜間動物救急センター"}, "H057": {"query": "ノア動物病院 城東センター病院 甲府市", "name": ["ノア動物病院", "城東センター病院"]}, "H058": {"query": "きらら動物病院 千塚分院 甲府市", "name": ["きらら動物病院", "千塚分院"]}, "H059": {"query": "長野夜間どうぶつ病院 千曲市", "name": "長野夜間どうぶつ病院"}, "H060": {"query": "佐久・軽井沢夜間どうぶつ病院 佐久市", "name": "佐久・軽井沢夜間どうぶつ病院"}, "H061": {"query": "こやま動物病院 長野市", "name": "こやま動物病院"}, "H062": {"query": "岐阜県獣医師会 夜間救急動物病院 岐阜市", "name": ["岐阜県獣医師会", "夜間救急動物病院"]}, "H063": {"query": "静岡市夜間救急動物病院 静岡市駿河区", "name": "静岡市夜間救急動物病院"}, "H064": {"query": "浜松夜間救急動物病院 浜松市中央区", "name": "浜松夜間救急動物病院"}, "H065": {"query": "VCJ動物医療センター駿河病院 御殿場市", "name": "VCJ動物医療センター駿河病院"}, "H066": {"query": "名古屋夜間動物救急センター 名古屋市中区", "name": "名古屋夜間動物救急センター"}, "H067": {"query": "名古屋西動物夜間救急医療センター 名古屋市西区", "name": "名古屋西動物夜間救急医療センター"}, "H068": {"query": "もりやま犬と猫の病院 名古屋市守山区", "name": "もりやま犬と猫の病院"}, "H069": {"query": "こざわ犬猫病院 名古屋市千種区", "name": "こざわ犬猫病院"}, "H070": {"query": "あいち犬猫医療センター 安城市", "name": "あいち犬猫医療センター"}, "H071": {"query": "ハート動物クリニック 犬猫医療センター 豊橋市", "name": ["ハート動物クリニック", "犬猫医療センター"]}, "H072": {"query": "大阪どうぶつ夜間急病センター 大阪市東成区", "name": "大阪どうぶつ夜間急病センター"}, "H073": {"query": "長浜どうぶつ病院 長浜市", "name": "長浜どうぶつ病院"}, "H074": {"query": "大阪・北摂夜間救急どうぶつ病院 箕面市", "name": "大阪・北摂夜間救急どうぶつ病院"}, "H075": {"query": "京都夜間どうぶつ診療所 久世郡久御山町", "name": "京都夜間どうぶつ診療所"}, "H076": {"query": "右京動物病院 京都市右京区", "name": "右京動物病院"}, "H077": {"query": "大阪夜間ペットクリニック 大阪市東成区", "name": "大阪夜間ペットクリニック"}, "H078": {"query": "堺動物夜間救急クリニック 堺市中区", "name": "堺動物夜間救急クリニック"}, "H079": {"query": "大阪守口夜間どうぶつ診療所 守口市", "name": "大阪守口夜間どうぶつ診療所"}, "H080": {"query": "りんくう動物救急医療協会 泉佐野市", "name": "りんくう動物救急医療協会"}, "H082": {"query": "神戸夜間動物救急センター 神戸市西区", "name": "神戸夜間動物救急センター"}, "H083": {"query": "兵庫ペット医療センター 尼崎本院 尼崎市", "name": ["兵庫ペット医療センター", "尼崎本院"]}, "H084": {"query": "大蔵海岸ペットクリニック 明石市", "name": "大蔵海岸ペットクリニック"}, "H085": {"query": "エルザ動物医療センター 姫路市", "name": "エルザ動物医療センター"}, "H086": {"query": "奈良動物医療センター 奈良市", "name": "奈良動物医療センター"}, "H088": {"query": "岡山夜間どうぶつ救急病院 岡山市南区", "name": "岡山夜間どうぶつ救急病院"}, "H089": {"query": "広島夜間救急動物病院 広島市東区", "name": "広島夜間救急動物病院"}, "H090": {"query": "倉敷夜間ペットクリニック 倉敷市", "name": "倉敷夜間ペットクリニック"}, "H091": {"query": "konomi動物病院 広島市東区", "name": "konomi動物病院"}, "H092": {"query": "竹田動物病院 岩国市", "name": "竹田動物病院"}, "H093": {"query": "北九州夜間救急動物病院 北九州市八幡東区", "name": "北九州夜間救急動物病院"}, "H094": {"query": "おおしま動物病院 板野郡藍住町", "name": "おおしま動物病院"}, "H098": {"query": "福岡夜間救急動物病院 福岡市博多区", "name": "福岡夜間救急動物病院"}, "H099": {"query": "一二三ペットクリニック 熊本市東区", "name": "一二三ペットクリニック"}, "H100": {"query": "きらてとあにまるほすぴたる 熊本市南区", "name": "きらてとあにまるほすぴたる"}, "H102": {"query": "大塚どうぶつ病院 宮崎市", "name": "大塚どうぶつ病院"}, "H103": {"query": "鹿児島大学 共同獣医学部附属動物病院 鹿児島市", "name": ["鹿児島大学", "共同獣医学部附属動物病院"]}, "H105": {"query": "沖縄夜間動物病院 那覇市", "name": "沖縄夜間動物病院"}, "H106": {"query": "動物病院なは 夜間救急医療センター 島尻郡南風原町", "name": ["動物病院なは", "夜間救急医療センター"]}};/*/EMG_REVIEWS*/
 
 // 口コミの場所の情報を取り寄せる（fields は取り寄せる項目）。月の回数の上限は点数と口コミ本文で共通
 function reviewPlace_(partnerId, fields) {
@@ -1633,7 +1643,7 @@ function selectionReviews_(partnerId) {
   }
 }
 
-// 緊急タブの搬送の会社の星と件数（ids はカンマ区切り。表示しているその県の会社だけ）。点数は保存せず毎回取り寄せる
+// 緊急タブの搬送の会社・病院の星と件数（ids はカンマ区切り。画面に出てきたところだけ、1回に12件まで）。点数は保存せず毎回取り寄せる
 function emgScores_(ids) {
   var out = {};
   ids.split(',').filter(function(id, i, a) { return EMG_REVIEWS[id] && a.indexOf(id) === i; }).slice(0, 12).forEach(function(id) {
