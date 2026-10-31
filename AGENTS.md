@@ -57,6 +57,7 @@
 | `lib/` | 地図（Leaflet 1.9.4） |
 | `img/` | 写真（jpg と webp） |
 | `tools/` | 生成スクリプトとデータ：`gen_areas.py`、`guides.py`、`terms.py`、`prefs.py`、`fares.json`、`emergency.json` |
+| `tools/match_audit.cjs` | マッチング検査。フォームの全組み合わせを全国の事業者に当て、しぼりこめない点（黙って除外・見落とし・しくみ外・要確認）を事業者ごとに出す。`node tools/match_audit.cjs --companies <ダッシュボードの companies.json> --sheet <提携先タブの写し> --out <フォルダ>`。事業者データは公開リポジトリに置かない。何も送らない |
 | `booking/Code.gs` | 予約の仕組み（Apps Script）。**リポジトリにあっても本番には自動で反映されません**（下記） |
 | `booking/accept-preview.html` | 会社の引き受け画面の見た目確認用 |
 | `docs/` | 手順書（`codex.md`＝Codexの使い方、`ai-backup.md`＝GitHubで動く予備のAI） |
