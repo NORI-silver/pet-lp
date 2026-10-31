@@ -50,12 +50,13 @@
 | `style.css` | 共通CSS（`index.html` の `<style>` から生成） |
 | `tokyo/` `kanagawa/` `saitama/` `chiba/` | エリアページ（生成） |
 | `guide/` | ガイド記事（生成。本文は `tools/guides.py`） |
+| `area/` | 4都県のほかの43道府県の情報ページと全国の一覧（生成。データは `tools/prefs.py`）。予約は4都県のお迎えだけなので「その県から予約できる」と読める書き方はしない。料金の例は提携していない会社の公式サイトの料金で、社名は出さない |
 | `terms/` `contact/` `partner/` | 利用規約・お問い合わせ・提携のご案内（生成。規約本文は `tools/terms.py`） |
 | `go/index.html` | メールのリンクを開くページ（手書き、生成の対象外、noindex） |
 | `sitemap.xml` `robots.txt` `404.html` | 生成 |
 | `lib/` | 地図（Leaflet 1.9.4） |
 | `img/` | 写真（jpg と webp） |
-| `tools/` | 生成スクリプトとデータ：`gen_areas.py`、`guides.py`、`terms.py`、`fares.json`、`emergency.json` |
+| `tools/` | 生成スクリプトとデータ：`gen_areas.py`、`guides.py`、`terms.py`、`prefs.py`、`fares.json`、`emergency.json` |
 | `booking/Code.gs` | 予約の仕組み（Apps Script）。**リポジトリにあっても本番には自動で反映されません**（下記） |
 | `booking/accept-preview.html` | 会社の引き受け画面の見た目確認用 |
 | `docs/` | 手順書（`codex.md`＝Codexの使い方、`ai-backup.md`＝GitHubで動く予備のAI） |
