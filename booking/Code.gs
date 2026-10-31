@@ -89,7 +89,9 @@ var PARTNER_HEADERS = [
   'ID', '事業者名', '担当者名', '対応エリア', 'メール', '電話番号', 'LINE公式ID（先方）', '受付中', '大型犬OK', '介助OK',
   'LINE登録コード', 'LINE userId', '引き受け件数', 'メモ',
   '車のタイプ', '同乗できる人数', '乗せられるペット数', '荷物多めOK',
-  'ケージ必須', 'ケージ貸し出し', '支払い方法', '支払いのタイミング', '営業時間', '何時間前まで'
+  'ケージ必須', 'ケージ貸し出し', '支払い方法', '支払いのタイミング', '営業時間', '何時間前まで',
+  // 2026-10-31 追加（空欄＝まだ分からない。分からない条件は候補に出し、引き受けるときに会社がチェックして確かめる）
+  '送迎できる時間', '大型犬の最大kg', '大型犬の最大頭数', '貸し出しケージの最大kg', 'ペットだけOK', 'ワクチン必須'
 ];
 
 var ST = { OPEN: '手配中', DONE: '決定', NONE: '見つからず', CANCEL: '取り消し' };
@@ -286,13 +288,19 @@ function requestText_(r, pt) {
   return pt.name + ' ' + (pt.person ? pt.person + '様' : 'ご担当者さま') + '\n\n' +
     'ペットタクシーの手配サービス「' + CONFIG.SERVICE_NAME + '」です。お客さまに代わって、送迎のご相談です。\n' +
     '★お客さまのお名前・ご連絡先は、引き受けが決まった時点でお知らせします（リンクから引き受けた場合はその場で表示されます）。\n\n' +
-    rideText_(r) + retAsk_(r) + estText_(r) + '\n■ お支払い：' + payForPartner_(pt) + '\n\n' +
+    rideText_(r) + retAsk_(r) + estText_(r) + '\n■ お支払い：' + payForPartner_(pt) + askText_(pt, r) + '\n\n' +
     'お受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです。先着1社）。\n' + acceptUrl_(r['受付番号'], pt.id) +
     '\n\nご返信でお答えいただく場合は、次のどちらかでお願いします。\n' +
     '・受けられる：お迎え時刻〇時〇分・一般道〇円・高速を使う場合〇円（高速代込み。使わないなら「なし」）' + (isRound_(r) ? '・帰りは「待つ」か「あとで迎え」か' : '') + '\n' +
     '・難しい\n\n' +
     '※ご質問（ペットの様子・建物の入り方など）は、決まったあとにお客さまへ直接お聞きください。\n' +
     '※ご都合が合わない場合、お返事は不要です。';
+}
+
+// 引き受ける前に確かめてほしいこと（会社の答えがまだ分からない条件）
+function askText_(pt, r) {
+  var a = checks_(pt, r).ask;
+  return a.length ? '\n\n■ 引き受ける前にご確認ください（できない場合はお受けにならないでください）\n' + a.map(function (x) { return '・' + x; }).join('\n') : '';
 }
 
 // お客さまに表示した料金の目安（LPの概算）。無いときは何も足さない
@@ -339,6 +347,7 @@ function pickPartners_(r, stage) {
     if (!fitsCage_(pt, r)) return false;
     if (!inTime_(pt, r)) return false;
     if (care && !pt.careOk) return false;
+    if (checks_(pt, r).ng.length) return false;
     if (!reachable_(pt)) return false; // 自動で届けられない提携先は対象外
     if (stage === 2 && pt.areas.indexOf(pref) >= 0) return false; // 第1段の相手
     return pt.areas.some(function (a) { return areas.indexOf(a) >= 0; });
@@ -379,7 +388,9 @@ function partners_() {
       car: cell('車のタイプ'),
       cageMust: cell('ケージ必須'), cageLend: tri('ケージ貸し出し'),
       payMethod: cell('支払い方法'), payWhen: cell('支払いのタイミング'),
-      hours: cell('営業時間'), lead: num('何時間前まで')
+      hours: cell('営業時間'), lead: num('何時間前まで'),
+      careTri: tri('介助OK'), rideHours: cell('送迎できる時間'), maxKg: num('大型犬の最大kg'), maxBig: num('大型犬の最大頭数'),
+      lendKg: num('貸し出しケージの最大kg'), petOnly: tri('ペットだけOK'), vacMust: tri('ワクチン必須')
     });
   }
   return out;
@@ -467,6 +478,77 @@ function fitsCar_(pt, r) {
   return true;
 }
 
+// 依頼の条件を会社ごとに1つずつ確かめる。ng＝受けられないと分かっている（候補に出さない）、
+// ask＝会社の答えがまだ分からない、または組み合わせ次第の条件（候補には出し、引き受けるときに会社がチェックして確かめる。Nori 2026-10-31）
+function petsOf_(r) {
+  var a;
+  try { a = JSON.parse(r['ペットJSON'] || '[]'); } catch (e) { a = []; }
+  if (!Array.isArray(a) || !a.length) a = [{ weight: r['体重kg'], care: r['介助'] }];
+  return a.map(function (p) { return { kg: Number(p.weight) || 0, care: p.care || '', vac: p.vaccine === '済', need: (p.care_need || []).concat(p.care_note ? [p.care_note] : []) }; });
+}
+function checks_(pt, r) {
+  var ng = [], ask = [], n = needs_(r), pets = petsOf_(r), d = CONFIG.DEFAULT_CAR;
+  var bigs = pets.filter(function (p) { return p.kg >= CONFIG.LARGE_DOG_KG; }), maxKg = Math.max.apply(null, pets.map(function (p) { return p.kg; }));
+  // 時間：お迎え（往復なら帰りも）が送迎できる時間に入っているか
+  [r['希望日時'], r['帰りの日時']].forEach(function (t, i) {
+    var at = t ? new Date(t) : null;
+    if (!at || !isFinite(at.getTime()) || (i === 0 && r['日付のみ'])) return;
+    var j = new Date(at.getTime() + 9 * 3600000), hr = j.getUTCHours() + j.getUTCMinutes() / 60;
+    var label = (i ? '帰りの' : '') + 'お迎え ' + j.getUTCHours() + ':' + ('0' + j.getUTCMinutes()).slice(-2);
+    if (pt.rideHours) { var h = hoursOf_(pt.rideHours); if (hr < h[0] || hr >= h[1]) ng.push(label + '（送迎できる時間の外）'); }
+    else { var h2 = hoursOf_(pt.hours || CONFIG.DEFAULT_PARTNER_HOURS); if (hr < h2[0] || hr >= h2[1]) ask.push(label + 'に送迎できる'); }
+  });
+  // 人数・頭数・荷物
+  if (pt.riders !== null && n.riders > pt.riders) ng.push('大人' + n.riders + '人');
+  else if (pt.riders === null && n.riders > d.riders) ask.push('大人' + n.riders + '人が一緒に乗れる');
+  if (pt.pets !== null && n.pets > pt.pets) ng.push(n.pets + '匹');
+  else if (pt.pets === null && n.pets >= 2) ask.push(n.pets + '匹が一緒に乗れる');
+  if (n.luggage && pt.luggage === false) ng.push('荷物が多い');
+  else if (n.luggage && pt.luggage === null) ask.push('多めの荷物（スーツケース・大きなケージなど）が載る');
+  // 大きさ
+  if (bigs.length) {
+    if (pt.big === false) ng.push('大型犬');
+    else if (pt.maxKg !== null && maxKg > pt.maxKg) ng.push(maxKg + 'kgの子（' + pt.maxKg + 'kgまで）');
+    else if (pt.maxKg === null) ask.push(maxKg + 'kgの子が乗れる');
+    if (pt.maxBig !== null && bigs.length > pt.maxBig) ng.push('大型犬' + bigs.length + '頭');
+    else if (pt.maxBig === null && bigs.length >= 2) ask.push('大型犬' + bigs.length + '頭が一緒に乗れる');
+    if (n.riders + bigs.length >= 3) ask.push('大型犬' + bigs.length + '頭と大人' + n.riders + '人が一緒に乗れる');
+  }
+  // ケージ
+  if (!fitsCage_(pt, r)) ng.push('ケージの条件');
+  else {
+    var c = String(r['キャリー'] || '');
+    if (/借り|持っていない/.test(c)) {
+      if (pt.lendKg !== null && maxKg > pt.lendKg) ng.push(maxKg + 'kgの子が入るケージの貸し出し');
+      else if (pt.lendKg === null) ask.push(maxKg + 'kgの子が入るケージを貸し出せる');
+    }
+    if (/なし/.test(c) && pt.cageMust === '') ask.push('ケージなしで乗れる');
+  }
+  // 介護
+  var careNeed = r['介助'] === '必要' || pets.some(function (p) { return p.care === '必要'; });
+  if (careNeed) {
+    if (pt.careTri === false) ng.push('介護が必要な子');
+    var what = [].concat.apply([], pets.map(function (p) { return p.need; }));
+    ask.push('介護が必要な子の送迎' + (what.length ? '（' + what.join('／') + '）' : '') + 'ができる');
+  }
+  // ペットだけ
+  if (n.riders === 0) {
+    if (pt.petOnly === false) ng.push('ペットだけの送迎');
+    else if (pt.petOnly === null) ask.push('飼い主さんが乗らない、ペットだけの送迎ができる');
+  }
+  // 夜間・早朝の割増の境目の近く（1時間以内）に乗るときは、またいだ分の料金の決まりが会社ごとに違うので確かめてもらう
+  var fk = typeof SELECTION_FARES !== 'undefined' && SELECTION_FARES ? Object.keys(SELECTION_FARES).filter(function (k) { return SELECTION_FARES[k].partner_id === pt.id; })[0] : null;
+  var nh = fk && SELECTION_FARES[fk].night > 1 && SELECTION_FARES[fk].night_hours;
+  if (nh && [r['希望日時'], r['帰りの日時']].some(function (t) {
+    var at = t ? new Date(t) : null; if (!at || !isFinite(at.getTime())) return false;
+    var j = new Date(at.getTime() + 9 * 3600000), hr = j.getUTCHours() + j.getUTCMinutes() / 60;
+    return nh.some(function (b) { var dlt = b - hr; return dlt > 0 && dlt <= 1; });
+  })) ask.push('割増の時間（' + nh[0] + '時〜' + nh[1] + '時）をまたぐ分も、確定料金に入れる');
+  // ワクチン
+  if (pt.vacMust === true && pets.some(function (p) { return !p.vac; })) ask.push('混合ワクチンの接種が記入されていない子がいるが、乗れる');
+  return { ng: ng, ask: ask };
+}
+
 // 「@ID」ではなく line.me のURL（個人アカウントなど）が書かれている場合。文面の入力済みでは開けないので、コピーして貼る
 function lineUrlOf_(v) {
   var s = String(v || '').trim();
@@ -522,6 +604,8 @@ function acceptPage_(q) {
     var fare = Number(String(q.fare || '').replace(/[^\d]/g, ''));
     var at = parseJst_(q.at);
     var way = retWayOf_(q.ret_way);
+    var asks = checks_(pt, r).ask;
+    if (asks.some(function (x, i) { return q['ok' + i] !== '1'; })) return page_('確認が終わっていません', '<p>「引き受ける前にご確認ください」の項目に、すべてチェックを入れてください。できない項目があるときは、お受けにならないでください。</p><p><a href="javascript:history.back()">戻る</a></p>');
     if (!fare || !at || (isRound_(r) && !way)) return page_('入力が足りません', '<p>お迎え時刻・確定料金（円）' + (isRound_(r) ? '・帰りのやり方' : '') + 'を入れてください。</p><p><a href="javascript:history.back()">戻る</a></p>');
     var res = accept_(q.id, pt, at, fare, clip_(q.msg, 300), yenNum_(q.fare_hw), way);
     if (!res.ok) return page_('締め切りました', '<p>' + esc_(res.msg) + '</p>');
@@ -540,6 +624,7 @@ function acceptPage_(q) {
     '<div class="box">' + nl2br_(esc_(rideText_(r) + retAsk_(r) + '\n■ お支払い：' + payForPartner_(pt))) + '</div>' +
     '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' +
     hidden_('a', 'accept') + hidden_('id', q.id) + hidden_('p', q.p) + hidden_('k', q.k) + hidden_('go', '1') +
+    askBoxes_(pt, r) +
     '<label>お迎え予定の時刻<input type="datetime-local" name="at" value="' + def + '" required></label>' +
     (isRound_(r) ? retSelect_() : '') +
     '<label>確定料金・一般道で行く場合（円・税込' + (isRound_(r) ? '、往復の合計' : '') + '）<input type="number" name="fare" inputmode="numeric" min="0" step="10" placeholder="例：4800" required></label>' +
@@ -549,6 +634,14 @@ function acceptPage_(q) {
     '<button type="submit">この内容で引き受ける</button></form>' +
     '';
   return page_('ご依頼を引き受けますか？', html);
+}
+
+// 引き受け画面のチェック欄（すべてにチェックしないと引き受けられない）
+function askBoxes_(pt, r) {
+  var a = checks_(pt, r).ask;
+  if (!a.length) return '';
+  return '<div class="box"><b>引き受ける前にご確認ください</b>（できない項目があるときは、お受けにならないでください）' +
+    a.map(function (x, i) { return '<label style="display:flex;gap:8px;align-items:flex-start;font-weight:400"><input type="checkbox" name="ok' + i + '" value="1" required style="width:auto;margin-top:4px"> ' + esc_(x) + '</label>'; }).join('') + '</div>';
 }
 
 function accept_(id, pt, at, fare, msg, fareHw, retWay) {
@@ -1362,7 +1455,8 @@ function selectionRide_(p) {
   return {
     '都府県': shortPref_(p.pref), '希望日時': parseJst_(p.datetime), '片道・往復': String(p.trip || ''),
     '体重kg': Number(p.weight), '同乗人数': String(p.riders || ''), 'ペット数': Number(p.pet_count),
-    'キャリー': String(p.cage || ''), '介助': String(p.care || ''), '荷物': String(p.luggage || '')
+    'キャリー': String(p.cage || ''), '介助': String(p.care || ''), '荷物': String(p.luggage || ''),
+    'ペットJSON': String(p.pets_json || ''), '帰りの日時': p.trip === '往復' ? parseJst_(p.return_datetime) : ''
   };
 }
 
@@ -1380,7 +1474,7 @@ function selectionCandidates_(r) {
   // 同じ都県、または全国対応の会社。近隣都県だけの会社には依頼しない。
   return partners_().filter(function(pt) {
     return pt.active && reachable_(pt) && (pt.areas.indexOf(r['都府県']) >= 0 || pt.areas.indexOf('全国') >= 0) &&
-      fitsCar_(pt, r) && fitsCage_(pt, r) && inTime_(pt, r) && (r['介助'] !== '必要' || pt.careOk);
+      fitsCar_(pt, r) && fitsCage_(pt, r) && inTime_(pt, r) && (r['介助'] !== '必要' || pt.careOk) && !checks_(pt, r).ng.length;
   });
 }
 
@@ -1453,7 +1547,7 @@ function selectionQuotes_(p) {
     if (!price) return null;
     return { id:pt.id, label:pt.name, car:pt.car || '車の詳細は引き受け時に確認',
       payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は引き受け時にご案内',
-      price:price, review:selectionReview_(pt), expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
+      price:price, review:selectionReview_(pt), check:checks_(pt, r).ask, expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
   }).filter(Boolean);
   return {ok:true,selection_version:1,cards:cards};
 }
