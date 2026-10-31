@@ -770,7 +770,7 @@ footer a{color:var(--ink-2)}
         <div class="group">
           <div class="group-h"><span>1</span>どちらにしますか？</div>
           <div class="f"><div class="seg req-type"><label><input type="radio" name="req_type" value="予約" checked><span>予約を依頼する</span></label><label><input type="radio" name="req_type" value="見積もり"><span>見積もりを依頼する</span></label></div>
-            <p class="note" id="reqTypeNote">選んだ会社のうち、先に引き受けた1社で決まります。決定のメールが届いたら予約成立です。</p></div>
+            <p class="note" id="reqTypeNote">1社なら、引き受けた時点で決まります。2社以上なら、引き受けた会社の確定料金がメールで届き、1社を選んだときに決まります。</p></div>
         </div>
         <div class="group">
           <div class="group-h"><span>2</span>いつ、どこへ行きますか？</div>
@@ -839,7 +839,7 @@ footer a{color:var(--ink-2)}
           <p class="price-reason">料金が違うのは、各社の基本運賃・距離単価・お迎えに来る距離・夜間割増の決まりが違うためです。金額の差だけで、サービスの良し悪しは判断できません。</p>
           <div class="req-mode" id="reqModeBox" hidden>
             <p class="req-mode-h">依頼のしかた（最大5社まで選べます）</p>
-            <label><input type="radio" name="req_mode" value="book" checked> <b>予約を依頼する</b><span>選んだ会社のうち、先に引き受けた1社で決まります。ほかの会社への依頼は自動で取り消します。</span></label>
+            <label><input type="radio" name="req_mode" value="book" checked> <b>予約を依頼する</b><span>1社なら、引き受けた時点で決まります。2社以上なら、引き受けた会社の確定料金がメールで届き、1社を選んだときに決まります。</span></label>
             <label><input type="radio" name="req_mode" value="quote"> <b>見積もりを依頼する</b><span>選んだ会社から確定料金がメールで届きます。くらべて1社を選んだときに決まります。</span></label>
           </div>
           <div class="partner-sort" id="partnerSortBox"><label for="partnerSort">並び順</label>
@@ -1277,7 +1277,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 予約か見積もりか（フォームの最初）。送るときは req_type として一緒に送る
   function reqTypeNote(){
     var v = (form.querySelector("input[name=req_type]:checked") || {}).value;
-    $("reqTypeNote").textContent = v === "見積もり" ? "選んだ会社から確定料金がメールで届きます。くらべて1社を選んだときに決まります。" : "選んだ会社のうち、先に引き受けた1社で決まります。決定のメールが届いたら予約成立です。";
+    $("reqTypeNote").textContent = v === "見積もり" ? "選んだ会社から確定料金がメールで届きます。くらべて1社を選んだときに決まります。" : "1社なら、引き受けた時点で決まります。2社以上なら、引き受けた会社の確定料金がメールで届き、1社を選んだときに決まります。";
   }
   form.addEventListener("change", function(e){ if (e.target.name === "req_type") reqTypeNote(); });
   reqTypeNote();
@@ -3101,7 +3101,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         }
         form.inert = false; sending = false;
         $("thanksPartner").textContent = selectedLabel; $("thanksQuotePartner").textContent = selectedLabel;
-        $("thanksFirst").textContent = picks.length > 1 ? "先に引き受けた1社で決まり、ほかの会社への依頼は自動で取り消します。" : "";
+        $("thanksFirst").textContent = picks.length > 1 ? "引き受けた会社の確定料金がメールで届くので、1社を選んでください。選んだときに予約が決まります。" : "";
         $("thanksBook").hidden = quoteMode; $("thanksQuote").hidden = !quoteMode;
         if (r.id) { $("thanks-id").querySelector("b").textContent = r.back_id ? r.id + "（行き）・" + r.back_id + "（帰り）" : r.id; $("thanks-id").style.display = "block"; }
         addHist([o.pickup, o.via, o.dropoff, o.ret_pickup, o.ret_dropoff]);
