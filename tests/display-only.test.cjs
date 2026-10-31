@@ -94,6 +94,22 @@ assert.equal(call('displayPrice_',fk,{...p,pickup:'福岡県福岡市中央区',
 assert.equal(ctx.displayPrice_(fk,{...p,pickup:'福岡県福岡市中央区',dropoff:'福岡県久留米市',route_details:rd2(5,fkp,fkp)}),null);
 // 10kmごとの単価：PetTAXI24 3,300円（20kmまで）、21kmから10kmごと110円 → 35km＝3,300＋220
 assert.equal(call('displayPrice_',byId('Dc9d8a2b'),{...p,route_details:rd2(35)}).local.ride,3520);
+// 区間の定額：キャリーワン 枚方市〜高槻市 5,500円、表にない区間はお見積もり
+const co=byId('Da9518d0'), cop={lat:co.shop[0],lng:co.shop[1]};
+assert.equal(call('displayPrice_',co,{...p,pickup:'大阪府枚方市',dropoff:'大阪府高槻市',route_details:rd2(15,cop,cop)}).local.ride,5500);
+assert.equal(ctx.displayPrice_(co,{...p,pickup:'大阪府枚方市',dropoff:'奈良県奈良市',route_details:rd2(15,cop,cop)}),null);
+// 5kmごとの加算：アズール 12km＝2,000＋500（6〜10km）＋1,000（11〜12km）
+const az=byId('Dbe5cb84'), azp={lat:az.shop[0],lng:az.shop[1]};
+assert.equal(call('displayPrice_',az,{...p,route_details:rd2(12,azp,azp)}).local.ride,3500);
+// 合計による割引：ペットタクシー東京 10km＝迎車2,000＋500×10、7,000円から10%引き
+const pt=byId('D7138c0d'), ptp={lat:pt.shop[0],lng:pt.shop[1]};
+let pr2=call('displayPrice_',pt,{...p,route_details:rd2(10,ptp,ptp)});
+assert.equal(pr2.local.discount,700); assert.equal(pr2.amount,6300);
+// 時間帯ごとの夜間：シエロ 21時は1,100円
+const ce=byId('De3f35f2'), cep={lat:ce.shop[0],lng:ce.shop[1]};
+assert.equal(call('displayPrice_',ce,{...p,datetime:at('21:00'),route_details:rd2(15,cep,cep)}).local.nightExtra,1100);
+// 割増の金額が書いていない時間は「〜」：かるたく 20時
+assert.ok(/〜$/.test(call('displayPrice_',byId('Da5a2701'),{...p,datetime:at('20:00'),route_details:rd2(10)}).text));
 // 料金表がない会社はお見積もり
 assert.equal(ctx.displayPrice_({id:'Y'},p),null);
 // 営業時間・当日予約でしぼる（Nori 2026-10-31）。日本時間で日時を作る
