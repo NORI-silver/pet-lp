@@ -497,6 +497,10 @@ footer a{color:var(--ink-2)}
 .price-details dl{font-size:.76rem}
 .partner-caution{background:#fff4ec;border:1.5px solid var(--o);border-radius:12px;padding:9px 12px;font-size:.8rem!important;line-height:1.6!important;color:var(--ink)}
 .partner-caution b{display:block;color:var(--o-d);font-size:.92rem}
+.partner-check{font-size:.78rem;color:var(--ink-2);background:#fff8e6;border-radius:10px;padding:6px 10px;margin:6px 0}
+.partner-check summary{cursor:pointer;font-weight:700;color:#8a5a00}
+.partner-check ul{margin:6px 0 4px;padding-left:1.2em}
+.partner-check p{margin:0;font-size:.74rem}
 .partner-review-open{background:none;border:0;padding:0;font:inherit;font-size:.82rem;color:var(--o-d);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .partner-review-src{font-family:Roboto,Arial,sans-serif;font-size:.7rem;color:#5f6368;margin-left:auto;white-space:nowrap}
 .review-panel{background:var(--cream);border-radius:12px;padding:10px 12px;font-size:.8rem;cursor:default}
@@ -1287,6 +1291,16 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var panel = document.createElement("div"); panel.className = "review-panel"; panel.hidden = true; article.appendChild(panel);
         open.addEventListener("click", function(){ toggleReviews(card.id, panel, open); });
       } // 点数が取れないときは何も出さない（外部の口コミページへは飛ばさない。Nori 2026-10-31）
+      // この会社でまだ確かめられていない条件。引き受けるときに会社がチェックして確かめる（できなければ引き受けない）
+      if (card.check && card.check.length) {
+        var chk = document.createElement("details"); chk.className = "partner-check";
+        var cs = document.createElement("summary"); cs.textContent = "引き受けるときに会社が確かめること（" + card.check.length + "つ）"; chk.appendChild(cs);
+        var ul = document.createElement("ul");
+        card.check.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; ul.appendChild(li); });
+        chk.appendChild(ul);
+        var cn = document.createElement("p"); cn.textContent = "できない場合、その会社は引き受けません。そのときはメールでお知らせします。"; chk.appendChild(cn);
+        article.appendChild(chk);
+      }
       var price = text("p", card.price.text, "partner-price");
       var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + ((form.querySelector("input[name=trip]:checked") || {}).value || "片道") + "の合計目安（税込）"; price.appendChild(cap);
       // 内訳は小さな文字の1行にして、押すと開く
