@@ -791,7 +791,46 @@
     35.352,
     139.497
    ],
-   "fare": null,
+   "fare": {
+    "base": [
+     3300,
+     5
+    ],
+    "tiers": [
+     [
+      6,
+      100,
+      165
+     ],
+     [
+      101,
+      200,
+      132
+     ],
+     [
+      201,
+      null,
+      110
+     ]
+    ],
+    "pick": {
+     "per": 165
+    },
+    "back": {},
+    "roundContinuous": true,
+    "wait": {
+     "free": 10,
+     "unit": 10,
+     "yen": 220
+    },
+    "night": {
+     "from": 22,
+     "to": 8,
+     "flat": 3300
+    },
+    "tax": "",
+    "src": "https://www.cocotaku-shonan.com/料金プラン"
+   },
    "pay": "",
    "hours": "0-24",
    "flex": false,
@@ -1555,8 +1594,34 @@
     "神奈川"
    ],
    "area_text": "",
-   "shop": null,
-   "fare": null,
+   "shop": [
+    35.354,
+    139.531
+   ],
+   "fare": {
+    "base": [
+     660,
+     0
+    ],
+    "tiers": [
+     [
+      1,
+      null,
+      300
+     ]
+    ],
+    "perkmFromStart": true,
+    "pick": {
+     "per": 300
+    },
+    "night": {
+     "from": 21,
+     "to": 9,
+     "unknown": true
+    },
+    "tax": "",
+    "src": "https://pets-taxi.net/ja/kamakurapettaxi"
+   },
    "pay": "",
    "hours": "",
    "flex": false,
@@ -4231,7 +4296,41 @@
     33.59,
     130.42
    ],
-   "fare": null,
+   "fare": {
+    "base": [
+     2980,
+     5
+    ],
+    "tiers": [
+     [
+      6,
+      100,
+      165
+     ],
+     [
+      101,
+      null,
+      132
+     ]
+    ],
+    "pick": {
+     "per": 100
+    },
+    "back": {},
+    "wait": {
+     "free": 60,
+     "unit": 10,
+     "yen": 200,
+     "cap": 1000
+    },
+    "night": {
+     "from": 21,
+     "to": 8,
+     "flat": 3300
+    },
+    "tax": "",
+    "src": "https://pettaxi-hakataku.wepage.com/"
+   },
    "pay": "現金・カード・交通系IC・QR・iD・QUICPay",
    "hours": "9-19",
    "flex": false,
