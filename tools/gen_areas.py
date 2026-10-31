@@ -287,7 +287,7 @@ def head(title, desc, url, extra_ld, og_img="/img/hero.jpg", og_w=1200, og_h=900
 </header>
 '''
 
-PARTNER_BAND = '''<aside class="partner-band"><div class="wrap"><p><b>ペットタクシー会社の方へ</b>東京・神奈川・千葉・埼玉で、いっしょにペットと飼い主さんをお迎えしてくださる会社を探しています。</p><a href="/partner/">提携のご案内</a></div></aside>
+PARTNER_BAND = '''<aside class="partner-band"><div class="wrap"><p><b>ペットタクシー会社の方へ</b>いっしょにペットと飼い主さんをお迎えしてくださる会社を探しています。</p><a href="/partner/">提携のご案内</a></div></aside>
 '''
 
 def foot(cta_href, band=True):
@@ -295,7 +295,7 @@ def foot(cta_href, band=True):
   <div class="wrap">
     <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav>{''.join(f'<a href="/{a["slug"]}/">{e(a["short"])}</a>' for a in AREAS)}</nav>
-    <p>ペットタクシー予約窓口（東京・神奈川・千葉・埼玉）</p>
+    <p>ペットタクシー予約窓口</p>
     <p>&copy; 2026 ペットタクシー予約窓口</p>
   </div>
 </footer>
@@ -521,7 +521,7 @@ def terms_block(v):
     if isinstance(v, tuple) and v[0] == "html": return f"<p>{v[1]}</p>"
     return f"<p>{e(v)}</p>"
 terms_url = SITE + "/terms/"
-tp = head("利用規約｜ペットタクシー予約窓口", "ペットタクシー予約窓口（東京・神奈川・千葉・埼玉のペットタクシー手配）の利用規約です。サービスの内容、予約の成立、料金とお支払い、キャンセル、責任の範囲などを定めています。", terms_url, "") + f"""
+tp = head("利用規約｜ペットタクシー予約窓口", "ペットタクシー予約窓口（ペットタクシーの手配）の利用規約です。サービスの内容、予約の成立、料金とお支払い、キャンセル、責任の範囲などを定めています。", terms_url, "") + f"""
 <main>
 <section class="area-hero"><div class="wrap"><h1>利用規約</h1><p class="lede">ペットタクシー予約窓口をご利用いただく前に、お読みください。</p></div></section>
 <section><div class="wrap prose terms">
@@ -585,9 +585,9 @@ open(os.path.join(ROOT, "contact", "index.html"), "w", encoding="utf-8").write(c
 partner_url = SITE + "/partner/"
 PREFS4 = ["東京都", "神奈川県", "千葉県", "埼玉県"]
 PAYS = ["現金", "クレジットカード", "電子マネー・QR決済", "請求書・振込"]
-pp = head("ペットタクシー会社の方へ 提携のご案内｜ペットタクシー予約窓口", "東京・神奈川・千葉・埼玉のペットタクシー会社さま向けの提携のご案内です。飼い主さんからのご予約の依頼をメールでお届けします。お申し込みはこのページのフォームからどうぞ。", partner_url, "") + f"""
+pp = head("ペットタクシー会社の方へ 提携のご案内｜ペットタクシー予約窓口", "ペットタクシー会社さま向けの提携のご案内です。飼い主さんからのご予約の依頼をメールでお届けします。お申し込みはこのページのフォームからどうぞ。", partner_url, "") + f"""
 <main>
-<section class="area-hero"><div class="wrap"><h1>ペットタクシー会社の方へ<br>提携のご案内</h1><p class="lede">ペットタクシー予約窓口は、ペットの移動に困っている飼い主さんと、近くのペットタクシー会社をおつなぎしています。東京・神奈川・千葉・埼玉で、いっしょにお迎えしてくださる会社を探しています。</p></div></section>
+<section class="area-hero"><div class="wrap"><h1>ペットタクシー会社の方へ<br>提携のご案内</h1><p class="lede">ペットタクシー予約窓口は、ペットの移動に困っている飼い主さんと、近くのペットタクシー会社をおつなぎしています。各地で、いっしょにお迎えしてくださる会社を探しています。</p></div></section>
 <section><div class="wrap" style="max-width:640px">
 <h2 style="font-size:1.2rem">ご予約の依頼が届く流れ</h2>
 <ol class="plist">
@@ -719,7 +719,7 @@ ep = head("ペットの緊急搬送・動物救急車と夜間の動物病院｜
 </section>
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sh"><h2>急ぎでない移動は、予約制のペットタクシーで</h2><p>通院や退院のお迎えなど、前もって決まっている移動は、ペットタクシーを予約できます。お迎えはお申し込みから3時間後以降で、東京・神奈川・埼玉・千葉からのお迎えだけ受け付けています。</p></div>
+    <div class="sh"><h2>急ぎでない移動は、予約制のペットタクシーで</h2><p>通院や退院のお迎えなど、前もって決まっている移動は、ペットタクシーを予約できます。お迎えはお申し込みから3時間後以降です。</p></div>
     {area_links()}
   </div>
 </section>
@@ -742,7 +742,7 @@ os.makedirs(os.path.join(ROOT, "emergency"), exist_ok=True)
 open(os.path.join(ROOT, "emergency", "index.html"), "w", encoding="utf-8").write(ep)
 
 # 4都県のほかの道府県（/area/<slug>/）と全国の一覧（/area/）。データは tools/prefs.py。
-# 予約の受付は4都県のお迎えだけなので、ここでは「その県から予約できる」と読める書き方はしない。料金の例は提携していない会社のものなので社名は出さない。
+# 2026-10-31 Nori「東京、神奈川、千葉、埼玉、みたいになってるのを取っ払って」で、4都県だけと読める書き方は外した。料金の例は提携していない会社のものなので社名は出さない。
 from prefs import PREFS, FARES as PREF_FARES, FARES_CHECKED
 PREF_SLUG = {x[1]: x[0] for x in PREFS}
 PREF_SLUG.update({a["pref"]: a["slug"] for a in AREAS})
@@ -752,7 +752,7 @@ def pref_href(pf):
 pref_hub_url = SITE + "/area/"
 # 4都県から行き先にできる県（index.html の BOXNEAR の範囲に主な市が入るところ）。ほかの県は「4都県から◯◯へ」も書かない
 NEAR_PREFS = ["茨城県", "栃木県", "群馬県", "山梨県", "長野県", "静岡県"]
-NOT_YET = "当サイトでのペットタクシーの予約は、いまは東京・神奈川・埼玉・千葉からのお迎えだけ受け付けています。"
+NOT_YET = "お迎えの都道府県は全国から選べます。お迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。"
 PREF_CHECKS = [
   ("お迎えに来てもらえる場所か", "会社ごとに対応する地域が決まっていて、地域の外はお迎え料金が増えたり、受けてもらえなかったりします。", "what-is-pet-taxi"),
   ("料金の決まり方", "乗る距離の料金のほかに、お迎え料金・待ち時間の料金・夜間や早朝の割増・高速代がかかることがあります。どこまでが基本料金に入っているかは会社ごとに違います。", "what-is-pet-taxi"),
@@ -791,7 +791,7 @@ for slug, pf, short, cities in PREFS:
         if c not in hcities: hcities.append(c)
     title = (f"{short}のペットタクシー｜料金の例・夜間の動物病院・ペットの緊急搬送" if has_fare else f"{short}のペットタクシーの探し方｜夜間の動物病院・ペットの緊急搬送") + "｜ペットタクシー予約窓口"
     desc = (f"{pf}（{'・'.join(cities[:3])}など）で犬・猫のペットタクシーを探す方へ。" + ("公式サイトに書かれた料金の例、" if has_fare else "料金の決まり方、") +
-            "頼む前に確かめること、夜間・救急の動物病院とペットの緊急搬送の連絡先をまとめました。当サイトの予約は東京・神奈川・埼玉・千葉からのお迎えだけです。")
+            "頼む前に確かめること、夜間・救急の動物病院とペットの緊急搬送の連絡先をまとめました。")
     ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
       {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
       {"@type":"ListItem","position":2,"name":"全国のペットタクシー情報","item":pref_hub_url},
@@ -801,20 +801,16 @@ for slug, pf, short, cities in PREFS:
     hosp_lead = (f"{e(pf)}の夜間・救急の動物病院として、{e('・'.join(hcities[:4]))}の病院を載せています。" if hcities else "")
     taxi_html = (''.join(emg_company(t) for t in taxis) if taxis else
                  f'<p class="emg-none">{e(pf)}で緊急の搬送をしている会社は、まだ載せていません。まずは動物病院に電話して、受け入れと行き方をご相談ください。</p>')
-    last = (f'''<div class="last">
-      <h2>東京・神奈川・埼玉・千葉から{e(pf)}へ</h2>
-      <p>お迎えの場所が4都県なら、行き先が{e(pf)}でもお申し込みいただけます。完全予約制・手配料0円で、お迎えはお申し込みから3時間後以降です。引き受けが決まったメールが届いた時点で予約成立です。</p>
-      <a class="btn center" href="/#form">4都県からのお迎えを予約する{ARROW}</a>
-    </div>''' if pf in NEAR_PREFS else f'''<div class="last">
-      <h2>{e(pf)}は準備中です</h2>
-      <p>当サイトの予約は、いまは東京・神奈川・埼玉・千葉からのお迎えで、行き先はそのまわりの県までです。{e(pf)}でも使えるように準備を進めています。</p>
-      <a class="btn center" href="/guide/">ペットの移動ガイドを読む{ARROW}</a>
-    </div>''')
+    last = f'''<div class="last">
+      <h2>{e(pf)}からのお迎えをさがす</h2>
+      <p>上のフォームにお迎えの場所と行き先を入れると、来てもらえる会社と料金の目安が出ます。完全予約制・手配料0円で、お迎えはお申し込みから3時間後以降です。引き受けが決まったメールが届いた時点で予約成立です。</p>
+      <a class="btn center" href="#form">予約・見積もりのフォームへ{ARROW}</a>
+    </div>'''
     checks = ''.join(f'<h3>{e(h)}</h3><p>{e(t)} <a href="/guide/{g}/">{e(GBY[g]["title"])}</a></p>' for h, t, g in PREF_CHECKS)
     area_html = f'''<!-- 地域の説明（gen_areas.py の PREFS） -->
 <section id="area-info" style="padding-top:8px">
   <div class="wrap"><article class="art">
-    <p class="fare-flag"><b>{e(pf)}からのお迎えは、当サイトではまだ予約できません。</b>{NOT_YET}{f"東京・神奈川・埼玉・千葉から{e(pf)}への移動なら、お申し込みいただけます。" if pf in NEAR_PREFS else ""}</p>
+    <p class="fare-flag"><b>{e(pf)}からのお迎えも、上のフォームでさがせます。</b>{NOT_YET}会社ごとに対応する地域が違うので、近くに会社が見つからないこともあります。</p>
     <p class="small">ペットタクシー予約窓口　更新 {TODAY.replace("-", ".")}</p>
     <h2>{e(short)}のペットタクシーの料金{"の例" if has_fare else ""}</h2>
     {pref_fare_html(pf)}
@@ -859,14 +855,14 @@ for lab, ps in emg_regions:
     lis = "".join(f'<li><a href="{pref_href(p)}">{e(AREA_SHORT.get(p) or next(x[2] for x in PREFS if x[1] == p))}{"（予約受付中）" if p in AREA_SHORT else ""}</a></li>' for p in ps)
     hub_regions += f'<h3 class="emg-region" style="text-align:center">{e(lab)}</h3><ul class="other">{lis}</ul>'
 ph = head("全国のペットタクシー情報｜都道府県ごとの料金の例・夜間の動物病院｜ペットタクシー予約窓口",
-  "47都道府県ごとに、ペットタクシーの料金の例や頼む前に確かめること、夜間・救急の動物病院とペットの緊急搬送の連絡先をまとめました。予約の受付は東京・神奈川・埼玉・千葉からのお迎えです。", pref_hub_url, hub_ld2) + f"""
+  "47都道府県ごとに、ペットタクシーの料金の例や頼む前に確かめること、夜間・救急の動物病院とペットの緊急搬送の連絡先をまとめました。", pref_hub_url, hub_ld2) + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › 全国のペットタクシー情報</nav>
     <h1><small>都道府県からさがす</small>全国のペットタクシー情報</h1>
     <p class="lede">犬や猫の移動にペットタクシーを考えている方へ。都道府県ごとに、料金の例、頼む前に確かめること、夜間・救急の動物病院と緊急の搬送の連絡先をまとめています。</p>
-    <p class="fare-flag"><b>予約の受付は4都県だけです。</b>{NOT_YET}ほかの道府県は準備中で、ページでは情報だけをご案内しています。</p>
+    <p class="fare-flag"><b>お迎えの場所から会社をさがせます。</b>{NOT_YET}会社ごとに対応する地域が違うので、近くに会社が見つからないこともあります。</p>
   </div>
 </section>
 <section style="padding-top:8px">
