@@ -484,6 +484,18 @@ footer a{color:var(--ink-2)}
 .partner-card .partner-price small{display:block;font-size:.75rem;font-weight:600;color:var(--ink-2)}
 .partner-card .btn{margin-top:auto;font-size:.92rem;width:100%}
 .partner-card .partner-note{color:var(--ink-2);font-size:.78rem}
+.partner-rest-btn{display:block;width:100%;margin:14px 0 0;padding:14px;border:1.5px dashed var(--o);border-radius:14px;background:#fff;color:var(--o-d);font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}
+.partner-rest-btn:hover{background:#fff4ec}
+#partnerRest{margin-top:14px}
+.partner-sort{display:flex;align-items:center;gap:8px;justify-content:flex-end;margin:4px 0 10px;font-size:.86rem}
+.partner-sort label{font-weight:700;color:var(--ink-2)}
+.partner-sort select{width:auto;min-width:12em;padding:8px 10px;font-size:.88rem}
+.partner-card .partner-more{font-size:.8rem;color:var(--ink-2);border-top:1px dashed var(--line);padding:8px 0 0;margin:0;background:none;box-shadow:none;border-radius:0}
+.partner-card .partner-more>summary{font-weight:700;color:var(--o-d);font-size:.84rem;padding:0}
+.partner-card .partner-more>summary::after{content:" ▸";position:static;display:inline;width:auto;height:auto;margin:0;background:none;border-radius:0;transform:none}
+.partner-card .partner-more[open]>summary::after{content:" ▾";transform:none}
+.partner-card .partner-more[open]{display:flex;flex-direction:column;gap:8px}
+.partner-card .partner-noscore{font-size:.76rem;color:var(--ink-3)}
 .partner-review{align-self:flex-start;font-size:.84rem;font-weight:700;color:var(--o-d);text-decoration:underline;text-underline-offset:3px}
 .partner-review:hover{color:var(--ink)}
 .partner-card .partner-score{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:.86rem;color:var(--ink-2)}
@@ -859,7 +871,11 @@ footer a{color:var(--ink-2)}
           <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
           <p id="partnerStatus" role="status" aria-live="polite"></p>
           <p class="price-reason">料金が違うのは、各社の基本運賃・距離単価・お迎えに来る距離・夜間割増の決まりが違うためです。金額の差だけで、サービスの良し悪しは判断できません。</p>
+          <div class="partner-sort" id="partnerSortBox"><label for="partnerSort">並び順</label>
+            <select id="partnerSort"><option value="review_desc" selected>口コミの評価が高い順</option><option value="review_asc">口コミの評価が低い順</option><option value="price_asc">料金が安い順</option><option value="price_desc">料金が高い順</option></select></div>
           <div class="partner-grid" id="partnerCards"></div>
+          <button type="button" class="partner-rest-btn" id="partnerRestBtn" aria-expanded="false" aria-controls="partnerRest" hidden></button>
+          <div class="partner-grid" id="partnerRest" hidden></div>
           <div class="leg-split" id="legSplit" hidden>
             <button type="button" class="leg-toggle" id="legToggle" aria-expanded="false" aria-controls="legBox">行きと帰りで別の会社に頼む</button>
             <div id="legBox" hidden>
@@ -1291,13 +1307,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var quoteTimer = 0, quoteRefreshTimer = 0;
   function clearPartners(){
     quoteSeq++; quoteCards = []; chosenQuote = null; quoteLegs = null; chosenGo = null; chosenBack = null;
-    $("partnerResults").hidden = true; $("partnerCards").replaceChildren();
+    $("partnerResults").hidden = true; $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren(); $("partnerRestBtn").hidden = true; restOpen = false;
     $("legSplit").hidden = true; $("legGo").replaceChildren(); $("legBack").replaceChildren();
     $("sendSelected").hidden = true;
     clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
   }
   function conditionsChanged(event){
-    if (["name","tel","email","notes","agree","website"].indexOf(event.target.id || event.target.name) >= 0) return;
+    if (["name","tel","email","notes","agree","website","partnerSort"].indexOf(event.target.id || event.target.name) >= 0) return; // 並び順を変えても、候補は取り直さない
     clearPartners(); queuePartners();
     if (!$("partnerNeed").hidden) showNeed(); // 出ている一覧は、入れたらすぐ減らす
   }
@@ -1310,7 +1326,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     quoteTimer = setTimeout(loadPartners, 650);
   }
   function showLoading(){
-    $("partnerResults").hidden = false; $("partnerCards").replaceChildren();
+    $("partnerResults").hidden = false; $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren(); $("partnerRestBtn").hidden = true;
     $("partnerStatus").innerHTML = '<span class="partner-loading"><span class="spin" aria-hidden="true"></span><span>ぴったりの事業者を選んでいます…<small>条件に合う会社と料金の目安を調べています。10秒ほどかかることがあります。</small></span></span>';
   }
   // カードを出せない理由。"fields"＝入っていない項目がある、"time"＝お迎えが近すぎる・帰りが行きより前、""＝そろっている
@@ -1383,7 +1399,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var block = partnerBlock();
     if (block === "fields" || block === "off") { $("partnerResults").hidden = true; return; }
     if (block === "time") {
-      $("partnerResults").hidden = false; $("partnerCards").replaceChildren();
+      $("partnerResults").hidden = false; $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren(); $("partnerRestBtn").hidden = true;
       $("partnerStatus").textContent = "お迎えは、いまから" + MIN_LEAD_H + "時間後より先の日時を選んでください（往復のときは、帰りを行きより後に）。";
       return;
     }
@@ -1395,7 +1411,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     fetch(GAS_URL,{method:"POST",body:search}).then(function(res){return res.json();}).then(function(result){
       if (searchSeq !== quoteSeq || sending) return;
       if (!result || !result.ok || result.selection_version !== 1 || !Array.isArray(result.cards)) throw new Error("quotes");
-      quoteLegs = result.legs || null;
+      quoteLegs = result.legs || null; scoresReady = result.scores === 1; // 予約のしくみが新しい版のときだけ星をまとめて取り寄せる
       paintPartners(result.cards);
       if (!partnersTracked) { partnersTracked = true; track("view_partners", {count: result.cards.length}); }
       quoteRefreshTimer = setTimeout(function(){clearPartners();queuePartners();}, 14*60000);
@@ -1439,9 +1455,63 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var ready = cards.filter(function(c){ return !c.display_only; }).length, later = cards.length - ready;
     if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。どの会社もいまは準備中のため、まだ予約を依頼できません。料金は確定料金ではありません。" : (later ? cards.length + "社が候補です（うち" + later + "社は準備中のため、まだ予約を依頼できません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。選んだ1社だけに予約を依頼します。");
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。予約の依頼は送信されていません。</span>';
-    cards.forEach(function(card){ $("partnerCards").appendChild(buildCard(card, "")); });
+    $("partnerSortBox").hidden = cards.length < 2;
+    drawCards();
     paintLegs();
+    loadScores();
     // 自動更新では入力中のフォーカスやスクロール位置を動かさない。
+  }
+  // 並べ替え（Nori 2026-10-31「価格の安い・高い順、口コミが高い・低い順でソートできるように。デフォルトは安い順」）
+  // 料金が出ない会社・口コミの点数がない会社は、どの並び順でも後ろ。同じなら元の順
+  var scoresReady = false, scoreMemo = {}; // 口コミの星：このページを開いているあいだだけ覚える（保存はしない）
+  function withScore(c){ return Object.prototype.hasOwnProperty.call(scoreMemo, c.id) ? Object.assign({}, c, {review: scoreMemo[c.id]}) : c; }
+  function sortCards(list){
+    var mode = $("partnerSort").value || "review_desc";
+    var key = function(c){ return mode.indexOf("price") === 0 ? (c.price && c.price.amount != null ? c.price.amount : null) : (c.review && c.review.rating > 0 ? c.review.rating : null); };
+    var down = /_desc$/.test(mode);
+    return list.map(withScore).map(function(c, i){ return {c: c, i: i, k: key(c)}; }).sort(function(a, b){
+      if ((a.c.display_only ? 1 : 0) !== (b.c.display_only ? 1 : 0)) return a.c.display_only ? 1 : -1; // 予約を依頼できる会社を先に
+      if ((a.k == null) !== (b.k == null)) return a.k == null ? 1 : -1;
+      if (a.k != null && a.k !== b.k) return down ? b.k - a.k : a.k - b.k;
+      if (mode.indexOf("review") === 0 && a.k != null) { var n = (b.c.review.count || 0) - (a.c.review.count || 0); if (n) return down ? n : -n; }
+      return a.i - b.i;
+    }).map(function(x){ return x.c; });
+  }
+  // 最初は上の3社だけ。残りはボタンを押すと開く（Nori 2026-10-31「表示はトップ3社。あとは折りたたみ」）
+  var TOP_CARDS = 3, restOpen = false;
+  function drawCards(){
+    $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren();
+    var list = sortCards(quoteCards), rest = list.length - TOP_CARDS;
+    list.forEach(function(card, i){ $(i < TOP_CARDS ? "partnerCards" : "partnerRest").appendChild(buildCard(card, "")); });
+    $("partnerRestBtn").hidden = rest <= 0;
+    $("partnerRest").hidden = rest <= 0 || !restOpen;
+    $("partnerRestBtn").setAttribute("aria-expanded", restOpen ? "true" : "false");
+    $("partnerRestBtn").textContent = restOpen ? "ほかの会社をたたむ ▴" : "ほかの" + rest + "社も見る ▾";
+  }
+  $("partnerRestBtn").addEventListener("click", function(){
+    restOpen = !restOpen; if (restOpen) track("open_more_partners");
+    drawCards();
+  });
+  $("partnerSort").addEventListener("change", function(){
+    track("sort_partners", {mode: $("partnerSort").value});
+    drawCards();
+    if (!chosenGo && !chosenBack) paintLegs();
+  });
+  // 口コミの星は、カードを出したあとにまとめて取り寄せる（まだ取り寄せていない会社だけ）
+  function loadScores(){
+    var all = quoteCards.concat(quoteLegs && quoteLegs.go || [], quoteLegs && quoteLegs.back || []);
+    if (!scoresReady) return;
+    var ids = all.map(function(c){ return c.id; }).filter(function(id, i, a){ return id && a.indexOf(id) === i && !Object.prototype.hasOwnProperty.call(scoreMemo, id); });
+    if (!ids.length) return;
+    var seq = quoteSeq, body = new URLSearchParams(); body.set("kind", "scores"); body.set("ids", ids.join(","));
+    fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
+      if (!j || !j.ok) return;
+      ids.forEach(function(id){ scoreMemo[id] = (j.scores || {})[id] || null; });
+      if (seq !== quoteSeq || sending) return;
+      var open = $("partnerResults").querySelector("#partnerCards .review-panel:not([hidden]),#partnerCards details[open],#partnerRest .review-panel:not([hidden]),#partnerRest details[open]");
+      if (!open) drawCards(); // 口コミや詳しい情報を開いている途中なら、並べ直さない（次に並び順を変えたときに反映）
+      if (!chosenGo && !chosenBack && !$("legSplit").querySelector(".review-panel:not([hidden]),details[open]")) paintLegs();
+    }).catch(function(){});
   }
   // 事業者のカード1枚。leg は ""（ふつう）／"go"（往復の行きだけ）／"back"（帰りだけ）
   function buildCard(card, leg){
@@ -1465,6 +1535,18 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var panel = document.createElement("div"); panel.className = "review-panel"; panel.hidden = true; article.appendChild(panel);
         open.addEventListener("click", function(){ toggleReviews(card.id, panel, open); });
       } // 点数が取れないときは何も出さない（外部の口コミページへは飛ばさない。Nori 2026-10-31）
+      // 料金（概算見積もり）。口コミと料金のほかの詳しい情報は、最初はたたんでおく（Nori 2026-10-31）
+      var price = text("p", card.price.text, "partner-price");
+      var tripName = leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道";
+      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + tripName + "の概算見積もり" + (card.price.taxUnknown ? (card.price.incompleteFees ? "（税の扱いは確認中・未確認の費用は別途）" : "（税の扱いは確認中）") : card.price.incompleteFees ? "（税込・未確認の費用は別途）" : "（税込）"); price.appendChild(cap);
+      if (card.price.local && card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
+      var caution = text("p", "", "partner-caution");
+      var cb = document.createElement("b"); cb.textContent = card.price.amount == null ? "確定料金ではありません" : "概算見積もりです（確定料金ではありません）";
+      caution.append(cb, (card.price.amount == null ? "" : "公式サイトの料金表と道のりから計算した目安で、実際の料金とは異なる場合があります。") + "確定料金は、引き受けた会社からお知らせします。通行料・駐車場代は別途実費です。");
+      var more = document.createElement("details"); more.className = "partner-more";
+      var ms = document.createElement("summary"); ms.textContent = "料金の内訳・車・お支払いなどを見る"; more.appendChild(ms);
+      article.appendChild(more);
+      function add(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; more.appendChild(el); return el; }
       // この会社でまだ確かめられていない条件。引き受けるときに会社がチェックして確かめる（できなければ引き受けない）
       if (card.check && card.check.length) {
         var chk = document.createElement("details"); chk.className = "partner-check";
@@ -1473,10 +1555,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         card.check.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; ul.appendChild(li); });
         chk.appendChild(ul);
         var cn = document.createElement("p"); cn.textContent = "できない場合、その会社は引き受けません。そのときはメールでお知らせします。"; chk.appendChild(cn);
-        article.appendChild(chk);
+        more.appendChild(chk);
       }
-      var price = text("p", card.price.text, "partner-price");
-      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + (leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道") + (card.price.taxUnknown ? (card.price.incompleteFees ? "の概算（税の扱いは確認中・未確認費用は別途）" : "の合計目安（税の扱いは確認中）") : card.price.incompleteFees ? "の概算（税込・未確認費用は別途）" : "の合計目安（税込）"); price.appendChild(cap);
       // 内訳は小さな文字の1行にして、押すと開く
       function breakdown(title, value, cls){
         var box = document.createElement("details"); box.className = "price-details" + (cls ? " " + cls : "");
@@ -1485,23 +1565,20 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         [["乗車運賃",value.ride],["迎車代",value.pickup,value.pickupUnknown],["回送代",value.returnFee,value.returnUnknown],["夜間・早朝の割増",value.nightExtra],["待機料金",value.wait],["概算の端数調整",value.rounding]].forEach(function(row){
           var dt = document.createElement("dt"), dd = document.createElement("dd"); dt.textContent=row[0]; dd.textContent=row[2]?(row[1]?yen(row[1])+"〜（追加分は要確認）":"要確認（合計に未算入）"):yen(row[1]); list.appendChild(dt); list.appendChild(dd);
         });
-        box.appendChild(list); article.appendChild(box);
+        box.appendChild(list); more.appendChild(box);
       }
       if (card.price.local) {
         var lp = card.price.local, fy = function(v, unknown){ return v ? yen(v) + (unknown ? "〜" : "") : unknown ? "要確認" : "0円"; };
         breakdown("迎車 " + fy(lp.pickup, lp.pickupUnknown) + "・回送 " + fy(lp.returnFee, lp.returnUnknown) + (lp.pickupUnknown || lp.returnUnknown ? "（追加分は要確認）" : "を含む"), lp);
-        if (lp.nightExtra) text("p", "夜間・早朝の割増 " + yen(lp.nightExtra) + "を含む", "partner-surcharge");
         if (card.price.highway) breakdown("高速利用時 " + yen(card.price.highway.amount) + (card.price.highway.pickupUnknown || card.price.highway.returnUnknown ? "〜" : "") + " ＋ 通行料の実費", card.price.highway, "hw");
-        else text("p", "高速利用時：経路・通行料を含めてお見積もり", "partner-note");
-        if (card.price.pickupNote) text("p",card.price.pickupNote,"partner-note");
-        if (card.price.routeNote) text("p",card.price.routeNote,"partner-note");
-        if (card.price.planNote) text("p",card.price.planNote,"partner-note");
+        else add("p", "高速利用時：経路・通行料を含めてお見積もり", "partner-note");
+        if (card.price.pickupNote) add("p",card.price.pickupNote,"partner-note");
+        if (card.price.routeNote) add("p",card.price.routeNote,"partner-note");
+        if (card.price.planNote) add("p",card.price.planNote,"partner-note");
       }
-      if (card.price.night && !(card.price.local && card.price.local.nightExtra)) text("p",card.price.night,"partner-note");
-      text("p", card.car); text("p", card.payment);
-      var caution = text("p", "", "partner-caution");
-      var cb = document.createElement("b"); cb.textContent = "確定料金ではありません";
-      caution.append(cb, "通行料・駐車場代は別途実費です。高速利用時の総額は、事業者の確認後にお知らせします。");
+      if (card.price.night && !(card.price.local && card.price.local.nightExtra)) add("p",card.price.night,"partner-note");
+      add("p", card.car); add("p", card.payment);
+      add("p", "高速道路を使うときの総額は、事業者の確認後にお知らせします。", "partner-note");
       // 表示だけの会社（準備中）。予約の依頼はできない（サーバーでも断る）
       if (card.display_only) {
         article.classList.add("partner-later");
@@ -1522,8 +1599,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     $("legSplit").hidden = !on;
     $("legGo").replaceChildren(); $("legBack").replaceChildren();
     if (!on) return;
-    quoteLegs.go.forEach(function(c){ $("legGo").appendChild(buildCard(c, "go")); });
-    quoteLegs.back.forEach(function(c){ $("legBack").appendChild(buildCard(c, "back")); });
+    sortCards(quoteLegs.go).forEach(function(c){ $("legGo").appendChild(buildCard(c, "go")); });
+    sortCards(quoteLegs.back).forEach(function(c){ $("legBack").appendChild(buildCard(c, "back")); });
     chosenGo = null; chosenBack = null; showLegPick();
   }
   function showLegPick(){
