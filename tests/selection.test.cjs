@@ -7,6 +7,7 @@ vm.runInContext(fs.readFileSync('booking/Code.gs','utf8'),ctx);
 const call = (fn,...args) => JSON.parse(JSON.stringify(ctx[fn](...args)));
 ctx.sign_ = s => crypto.createHmac('sha256','test-secret').update(s).digest('hex');
 ctx.Utilities = { formatDate(d,tz,format) { return new Date(d.getTime()+9*3600000).toISOString().slice(0,16); } };
+ctx.CONFIG.SHOW_ALL_CANDIDATES=false; // 表示だけの会社は tests/display-only.test.cjs で確かめる
 ctx.CONFIG.DEFAULT_PARTNER_HOURS='0-24';
 ctx.PropertiesService={getScriptProperties:()=>({getProperty:()=>null,setProperty(){}})}; // 口コミのキーなし＝点数は出さない
 const partner = (id,extra={}) => ({id,name:'確認用 '+id,areas:['東京'],active:true,email:'test@example.invalid',careOk:true,big:true,luggage:true,riders:3,pets:5,cageMust:'不要',cageLend:true,lead:3,hours:'0-24',car:'ワンボックス',...extra});

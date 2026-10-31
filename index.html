@@ -471,6 +471,7 @@ footer a{color:var(--ink-2)}
 .partner-results h3{font-size:1.2rem;margin:0 0 8px}
 .partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:18px}
 .partner-card{cursor:pointer;border:1.5px solid var(--line);border-radius:18px;padding:22px;background:#fff;display:flex;flex-direction:column;gap:10px}
+.partner-card.partner-later{cursor:default;background:#fafafa}.partner-later .btn:disabled{cursor:not-allowed;background:#9a9a9a;opacity:1}
 .partner-card.picked{border-color:var(--o);box-shadow:0 0 0 3px rgba(255,106,26,.18)}
 .leg-split{margin-top:22px;border-top:1px dashed var(--line);padding-top:18px}
 .leg-toggle{font:inherit;font-weight:700;background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:10px 18px;cursor:pointer}
@@ -1288,7 +1289,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   function paintPartners(cards){
     quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
-    if (cards.length) $("partnerStatus").textContent = cards.length + "社が候補です。空き状況は未確認です。料金は確定料金ではありません。選んだ1社だけに予約を依頼します。";
+    var ready = cards.filter(function(c){ return !c.display_only; }).length, later = cards.length - ready;
+    if (cards.length) $("partnerStatus").textContent = (later ? cards.length + "社が候補です（うち" + later + "社は準備中のため、まだ予約を依頼できません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。選んだ1社だけに予約を依頼します。";
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。予約の依頼は送信されていません。</span>';
     cards.forEach(function(card){ $("partnerCards").appendChild(buildCard(card, "")); });
     paintLegs();
@@ -1353,6 +1355,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var caution = text("p", "", "partner-caution");
       var cb = document.createElement("b"); cb.textContent = "確定料金ではありません";
       caution.append(cb, "通行料・駐車場代は別途実費です。高速利用時の総額は、事業者の確認後にお知らせします。");
+      // 表示だけの会社（準備中）。予約の依頼はできない（サーバーでも断る）
+      if (card.display_only) {
+        article.classList.add("partner-later");
+        var later = document.createElement("button"); later.type = "button"; later.className = "btn"; later.disabled = true;
+        later.textContent = "準備中のため、まだ予約を依頼できません";
+        article.appendChild(later); return article;
+      }
       var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn";
       var legName = leg === "go" ? "行き" : leg === "back" ? "帰り" : "";
       btn.textContent = legName ? legName + "をこの事業者にする" : "この事業者に予約を依頼する"; btn.setAttribute("aria-label", legName ? legName + "を" + card.label + "にする" : card.label + "に予約を依頼する");

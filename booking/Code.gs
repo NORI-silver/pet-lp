@@ -38,6 +38,10 @@ var CONFIG = {
   // false のままでも、お名前が「テスト」で始まる依頼／メールが運営者と同じ依頼はテスト扱いになる
   TEST_MODE: false,
 
+  // 候補カードに、提携先シートの会社に加えて「掲載候補」の会社（tools/display_companies.json）も表示だけで出す（Nori 2026-10-31）
+  // 表示だけの会社には予約の依頼を送れない（ボタンは押せず、サーバーでも断る）。false にすると今までの提携先だけに戻る
+  SHOW_ALL_CANDIDATES: true,
+
   // 決まらないときの待ち時間（分）。会社が動いている時間（OPEN_HOURS）だけ数える。夜の依頼は朝から数え始める
   OPEN_HOURS: '8-20',
   WAVE2_MIN: 20,   // これを過ぎたら、近くのエリア・全国対応の提携先にも送る
@@ -368,6 +372,7 @@ function pickPartners_(r, stage) {
   var care = r['介助'] === '必要';
   return partners_().filter(function (pt) {
     if (!pt.active) return false;
+    if (isDisplayOnly_(pt.id)) return false; // 表示だけの会社には送らない
     if (!fitsCar_(pt, r)) return false;
     if (!fitsCage_(pt, r)) return false;
     if (!inTime_(pt, r)) return false;
@@ -1623,13 +1628,27 @@ function legParams_(p, leg) {
 
 function quoteCards_(p) {
   var expires = Date.now()+15*60000, r = selectionRide_(p);
-  return selectionCandidates_(r).map(function(pt) {
+  return selectionCandidates_(r).filter(function(pt) { return !isDisplayOnly_(pt.id); }).map(function(pt) {
     var price = selectionPrice_(pt,p);
     if (!price) return null;
     return { id:pt.id, label:pt.name, car:pt.car || '車の詳細は引き受け時に確認',
       payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は引き受け時にご案内',
       price:price, review:selectionReview_(pt), check:checks_(pt, r).ask, expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
-  }).filter(Boolean);
+  }).filter(Boolean).concat(p.leg ? [] : displayCards_(r));
+}
+
+/*DISPLAY_COMPANIES*/var DISPLAY_COMPANIES = [{"id": "D400f012", "name": "COCOタク 東京小平店", "areas": ["東京", "埼玉"], "pay": "現金・カード・電子マネー"}, {"id": "Dea620d5", "name": "COCOタク 江戸川店", "areas": ["東京", "千葉"], "pay": "現金・カード・交通系IC・PayPay・iD・QUICPay・Apple Pay"}, {"id": "D3661eb1", "name": "PETTA東京（ペッタ）", "areas": ["東京", "神奈川", "埼玉", "千葉"], "pay": ""}, {"id": "D1e44e13", "name": "cocoタク 大田・田園調布店", "areas": ["東京"], "pay": "現金・カード・交通系IC・PayPay・iD・QUICPay・Apple Pay"}, {"id": "Da5a2701", "name": "かるたく", "areas": ["東京"], "pay": ""}, {"id": "D355c31f", "name": "サポっ人 中目黒店", "areas": ["東京"], "pay": ""}, {"id": "D7c32399", "name": "ペットタクシー こうのとり（AirLine Haneda）", "areas": ["東京", "神奈川"], "pay": "現金のみ・降りるとき"}, {"id": "Dbe5cb84", "name": "ペットタクシー アズール", "areas": ["東京"], "pay": "キャッシュレス可・降りるとき"}, {"id": "D0d1c8b4", "name": "ペットタクシー ワンネス", "areas": ["東京", "埼玉", "千葉"], "pay": "カード・交通系IC・QR"}, {"id": "D692c9a6", "name": "ペットタクシー ワンハウス", "areas": ["東京", "埼玉", "千葉"], "pay": ""}, {"id": "D7138c0d", "name": "ペットタクシー東京", "areas": ["東京", "神奈川"], "pay": "現金・カード・電子マネー・コード決済／着いたとき"}, {"id": "D7922e74", "name": "ペトタクファインド", "areas": ["東京", "神奈川", "埼玉", "千葉"], "pay": "現金・カード・電子マネー・QR／到着後"}, {"id": "D0d611b0", "name": "COCOタク 湘南店", "areas": ["神奈川"], "pay": ""}, {"id": "De65cb2d", "name": "Legolas House（レゴラスハウス）", "areas": ["神奈川"], "pay": ""}, {"id": "D63b09f7", "name": "TJD（TJドライブ）", "areas": ["神奈川"], "pay": ""}, {"id": "D945f580", "name": "ikimono care（イキモノケア）", "areas": ["東京", "神奈川"], "pay": ""}, {"id": "D5598693", "name": "ふわふわペットタクシー", "areas": ["東京", "神奈川", "埼玉", "千葉"], "pay": "現金・カード・電子マネー・QR（フェリー長距離は事前決済）"}, {"id": "D5604536", "name": "やこうDogはうす", "areas": ["東京", "神奈川", "埼玉", "千葉"], "pay": ""}, {"id": "Dc7b4703", "name": "わんにゃんハイヤー Angel Buggy", "areas": ["神奈川"], "pay": ""}, {"id": "Dc46d194", "name": "ペッタクん", "areas": ["神奈川"], "pay": ""}, {"id": "D68f9d95", "name": "ペットタクシー Animals", "areas": ["東京", "神奈川", "埼玉", "千葉"], "pay": ""}, {"id": "D8da1ced", "name": "ペットタクシー わんだにゃー", "areas": ["東京", "神奈川", "埼玉", "千葉"], "pay": "JCBタクシーチケット取扱"}, {"id": "Daed391e", "name": "ペットタクシー シアンシャ 厚木店", "areas": ["神奈川"], "pay": "現金・カード／終わったあと"}, {"id": "D0437ae3", "name": "ペットタクシー シアンシャ 鎌倉店", "areas": ["神奈川"], "pay": "現金・カード／終わったあと"}, {"id": "D5f32b1e", "name": "三和交通 ペットタクシー", "areas": ["東京", "神奈川", "埼玉"], "pay": ""}, {"id": "Daf1e25b", "name": "湘南Dog Life College（ペットタクシー）", "areas": ["神奈川"], "pay": ""}, {"id": "D0b50c1a", "name": "湘南ペットハイヤー", "areas": ["東京", "神奈川", "埼玉", "千葉"], "pay": ""}, {"id": "D06b72ea", "name": "鎌倉ペットタクシー", "areas": ["神奈川"], "pay": ""}, {"id": "D40a4aa0", "name": "COCOタク さいたま南店", "areas": ["東京", "埼玉"], "pay": "現金・カード・PayPay等"}, {"id": "Dfcb8480", "name": "COCOタク 埼玉川越店", "areas": ["東京", "神奈川", "埼玉", "千葉"], "pay": "現金・カード・QR"}, {"id": "D853ae97", "name": "COCOタク 埼玉春日部店", "areas": ["埼玉", "千葉"], "pay": "現金・カード・QR"}, {"id": "D3cc1cce", "name": "ペットケア151A", "areas": ["東京", "埼玉"], "pay": ""}, {"id": "De3f35f2", "name": "コインペットタクシー シエロ", "areas": ["東京", "埼玉", "千葉"], "pay": ""}, {"id": "Dd8c07a8", "name": "ペットタクシー しっぽ", "areas": ["千葉"], "pay": ""}, {"id": "D3c85024", "name": "ペットタクシー パールのしっぽ", "areas": ["千葉"], "pay": ""}, {"id": "Dedcfcd2", "name": "動物苑（ペット送迎）", "areas": ["千葉"], "pay": ""}, {"id": "D68a3be6", "name": "東葛ペットタクシー", "areas": ["東京", "神奈川", "埼玉", "千葉"], "pay": ""}];/*/DISPLAY_COMPANIES*/
+function isDisplayOnly_(id) {
+  return DISPLAY_COMPANIES.some(function(c) { return c.id === id; });
+}
+// 表示だけの会社のカード（依頼できない）。料金表・空き・条件はまだ確かめていないので出さない。口コミの点数も取り寄せない（回数の上限を本物の候補に残す）
+function displayCards_(r) {
+  if (!CONFIG.SHOW_ALL_CANDIDATES) return [];
+  return DISPLAY_COMPANIES.filter(function(c) { return c.areas.indexOf(r['都府県']) >= 0; }).map(function(c) {
+    return { id:c.id, label:c.name, display_only:true, car:'車の詳細はまだ確認中です',
+      payment:c.pay ? 'お支払い：' + c.pay + '（公式サイトの記載）' : 'お支払い方法はまだ確認中です',
+      price:{amount:null,text:'料金はお見積もり',night:''}, review:null, check:[] };
+  });
 }
 
 // 口コミの点数と件数。場所のIDだけは規約上保存してよいので覚えておき、点数は毎回取り寄せる
@@ -1728,7 +1747,8 @@ function validateSelection_(p) {
   if (error) return {ok:false,error:error};
   var expires = Number(p.quote_expires);
   if (!(expires > Date.now() && expires <= Date.now()+15*60000)) return {ok:false,error:'selection_expired'};
-  var pt = selectionCandidates_(selectionRide_(p)).filter(function(x) { return x.id === p.partner_id; })[0];
+  if (isDisplayOnly_(p.partner_id)) return {ok:false,error:'selection_unavailable'}; // 表示だけの会社には依頼できない
+  var pt = selectionCandidates_(selectionRide_(p)).filter(function(x) { return x.id === p.partner_id && !isDisplayOnly_(x.id); })[0];
   if (!pt) return {ok:false,error:'selection_unavailable'};
   var price = selectionPrice_(pt,p);
   if (!price || p.quote_token !== quoteSignature_(p,pt.id,expires,price)) return {ok:false,error:'selection_changed'};

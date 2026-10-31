@@ -41,6 +41,7 @@
 
 - **会社への送信は停止中**（Nori さん 2026-10-28「危険なので事業者に連絡いかないように」）。予約シートの「設定」タブ B1 が「止める」のあいだは、会社あての連絡はすべて運営者あてに届きます。
 - Nori さんが「再開して」と言うまで、送信を再開する変更（B1を「送る」にする、TEST_MODE や宛先の仕組みを変えて会社に届くようにする等）はしない。
+- **候補カードの「表示だけ」の会社**（Nori 2026-10-31「候補の事業者全てを出して。依頼の送信は絶対にできないように。絞ってと言ったら今の状態に戻せるように」）：事業者マスターの掲載候補（1都3県）を `tools/display_companies.json`（`tools/display_companies.py` で作る）から候補カードに出す。ボタンは「準備中のため、まだ予約を依頼できません」で押せず、`validateSelection_`・`pickPartners_` でも断る。今の提携先だけに戻すときは `booking/Code.gs` の `CONFIG.SHOW_ALL_CANDIDATES` を `false` にして反映する。
 - フォームの短縮（3画面化・項目削減）は保留中。候補カードから1社を選ぶ変更は2026-10-30にユーザーが依頼済み。
 
 ## ファイル構成
@@ -57,7 +58,7 @@
 | `sitemap.xml` `robots.txt` `404.html` | 生成 |
 | `lib/` | 地図（Leaflet 1.9.4） |
 | `img/` | 写真（jpg と webp） |
-| `tools/` | 生成スクリプトとデータ：`gen_areas.py`、`guides.py`、`terms.py`、`prefs.py`、`fares.json`、`emergency.json` |
+| `tools/` | 生成スクリプトとデータ：`gen_areas.py`、`guides.py`、`terms.py`、`prefs.py`、`fares.json`、`emergency.json`、`display_companies.json`（候補カードに表示だけする会社） |
 | `tools/match_audit.cjs` | マッチング検査。フォームの全組み合わせを全国の事業者に当て、しぼりこめない点（黙って除外・見落とし・しくみ外・要確認）を事業者ごとに出す。`node tools/match_audit.cjs --companies <ダッシュボードの companies.json> --sheet <提携先タブの写し> --out <フォルダ>`。事業者データは公開リポジトリに置かない。何も送らない |
 | `booking/Code.gs` | 予約の仕組み（Apps Script）。**リポジトリにあっても本番には自動で反映されません**（下記） |
 | `booking/accept-preview.html` | 会社の引き受け画面の見た目確認用 |
