@@ -264,6 +264,13 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .via-box .note{display:block;font-size:.8rem;color:var(--ink-3);margin:6px 0 0}
 .via-box .chk{display:flex;gap:8px;align-items:center;font-size:.88rem;margin:8px 0}
 .via-box .chk input{width:auto}
+.chk{display:flex;gap:8px;align-items:center;font-size:.88rem;margin:8px 0;font-weight:600}
+.chk input{width:auto;flex:none}
+.chk[hidden]{display:none}
+.chks{display:flex;flex-wrap:wrap;gap:4px 16px}
+.chks .chk{margin:4px 0;font-weight:500}
+.care-box,.only-box{background:var(--cream);border-radius:14px;padding:10px 14px;margin-top:8px}
+.care-box[hidden],.only-box[hidden]{display:none}
 .pet-hint{font-size:.86rem;color:var(--ink-3);background:#f7f4f1;border-radius:14px;padding:14px 16px;margin-bottom:18px}
 .restore{display:none;background:var(--o-l);color:var(--o-d);border-radius:14px;padding:14px 16px;margin-bottom:22px;font-size:.88rem;font-weight:600}
 .restore button{background:none;border:0;color:var(--ink-3);font:inherit;font-size:.82rem;text-decoration:underline;cursor:pointer;padding:0 0 0 6px}
@@ -729,7 +736,13 @@ footer a{color:var(--ink-2)}
             <select id="petCount" required><option value="">選んでください</option><option value="1">1匹</option><option value="2">2匹</option><option value="3">3匹</option><option value="4">4匹</option><option value="5">5匹</option></select></div>
           <p class="pet-hint" id="petHint">頭数を選ぶと、1匹ずつの入力欄が出ます。</p>
           <div id="pets"></div>
-          <div class="f"><label for="riders">一緒に乗る人数</label>
+          <label class="chk"><input type="checkbox" id="petOnly" name="pet_only" value="1"> ペットだけで乗る（飼い主さんは乗らない）</label>
+          <div class="only-box" id="onlyBox" hidden>
+            <p class="small" style="margin:0 0 6px">ペットだけの送迎を受けるかは会社によって違います。会社が引き受けたら、決まったメールでお知らせします。</p>
+            <div class="f"><label for="handFrom">お迎えでペットを渡す人</label><input type="text" id="handFrom" name="hand_from" maxlength="100" placeholder="例：家族（母）・ペットホテルの受付"></div>
+            <div class="f"><label for="handTo">行き先で受け取る人</label><input type="text" id="handTo" name="hand_to" maxlength="100" placeholder="例：動物病院の受付・祖父"></div>
+          </div>
+          <div class="f" id="ridersF"><label for="riders">一緒に乗る人数</label>
             <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option>1人</option><option>2人</option><option>3人</option></select></div>
           <div class="f"><label for="luggage">荷物の量</label>
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
@@ -1273,11 +1286,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         article.appendChild(score);
         var panel = document.createElement("div"); panel.className = "review-panel"; panel.hidden = true; article.appendChild(panel);
         open.addEventListener("click", function(){ toggleReviews(card.id, panel, open); });
-      } else if (REVIEWS[card.id]) {
-        var review = document.createElement("a"); review.className = "partner-review"; review.href = REVIEWS[card.id];
-        review.target = "_blank"; review.rel = "noopener"; review.textContent = "この会社の口コミを見る（外部サイト）";
-        article.appendChild(review);
-      }
+      } // 点数が取れないときは何も出さない（外部の口コミページへは飛ばさない。Nori 2026-10-31）
       var price = text("p", card.price.text, "partner-price");
       var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + ((form.querySelector("input[name=trip]:checked") || {}).value || "片道") + "の合計目安（税込）"; price.appendChild(cap);
       // 内訳は小さな文字の1行にして、押すと開く
@@ -1397,6 +1406,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       return '<label><input type="radio" name="' + name + '" value="' + it[0] + '"' + (req && i === 0 ? ' required' : '') + '><span>' + it[1] + '</span></label>';
     }).join('') + '</div>';
   }
+  // 介護が必要なときに出す選択肢（会社によって受けられるかが変わるもの）
+  var CARE_OPTS = ["歩けない（抱っこで運ぶ）", "寝たきり（担架やマットで運ぶ）", "階段で運び出す（エレベーターなし）", "酸素や点滴などの医療機器がある", "カートやバギーごと乗りたい"];
+  function syncPetCard(card){
+    var sp = card.querySelector("input[name$=_species]:checked"), care = card.querySelector("input[name$=_care]:checked");
+    card.querySelector(".rabies").hidden = !!sp && sp.value !== "犬"; // 狂犬病の予防注射は犬だけ
+    card.querySelector(".care-box").hidden = !care || care.value !== "必要";
+  }
   function petCard(n){
     var k = "p" + n;
     var el = document.createElement("div");
@@ -1412,7 +1428,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         '<div class="f"><span class="lbl">性別<span class="any">わかれば</span></span>' + seg(k + "_sex", [["オス","男の子"],["メス","女の子"]], false) + '</div>' +
       '</div>' +
       '<div class="f"><span class="lbl">ケージ・キャリー</span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true) + '</div>' +
-      '<div class="f"><span class="lbl">介護は必要ですか？</span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true) + '</div>';
+      '<div class="f"><span class="lbl">予防接種<span class="any">済んでいるものにチェック</span></span><div class="chks">' +
+        '<label class="chk"><input type="checkbox" name="' + k + '_vac" value="1"> 混合ワクチン</label>' +
+        '<label class="chk rabies"><input type="checkbox" name="' + k + '_rabies" value="1"> 狂犬病の予防注射</label></div></div>' +
+      '<div class="f"><span class="lbl">介護は必要ですか？</span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true) +
+        '<div class="care-box" hidden><span class="lbl">どんな手助けが必要ですか？<span class="any">あてはまるものすべて</span></span><div class="chks">' +
+        CARE_OPTS.map(function(c){ return '<label class="chk"><input type="checkbox" name="' + k + '_care_need" value="' + c + '"> ' + c + '</label>'; }).join('') + '</div>' +
+        '<label for="' + k + '_care_note" class="lbl" style="margin-top:6px">くわしいこと<span class="any">わかれば</span></label><input type="text" id="' + k + '_care_note" name="' + k + '_care_note" maxlength="200" placeholder="例：後ろ足が立たない。3階でエレベーターなし"></div></div>';
     return el;
   }
   // 入力済みのカードは残したまま、数だけ増やす・減らす
@@ -1427,6 +1449,16 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     $("petHint").hidden = n > 0;
   }
   countSel.addEventListener("change", function(){ setPetCount(countSel.value); });
+  // 「ペットだけで乗る」：人数は0人にして、渡す人・受け取る人をたずねる
+  function syncOnly(){
+    var on = $("petOnly").checked;
+    $("onlyBox").hidden = !on; $("ridersF").hidden = on;
+    $("handFrom").required = on; $("handTo").required = on;
+    if (on) $("riders").value = "0人（ペットだけ）";
+    else if (/^0/.test($("riders").value)) $("riders").value = "";
+  }
+  $("petOnly").addEventListener("change", function(){ syncOnly(); $("riders").dispatchEvent(new Event("change", {bubbles: true})); });
+  $("riders").addEventListener("change", function(){ if (/^0/.test($("riders").value) && !$("petOnly").checked) { $("petOnly").checked = true; syncOnly(); } });
 
   // ── 犬種・猫種：一覧から選ぶか、入力するとしぼりこみ（一覧にない種類はそのまま入力できる）──
   var BREEDS = {
@@ -1484,6 +1516,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   });
   // 種類を変えたら、合わない犬種・猫種は消す
   petsBox.addEventListener("change", function(e){
+    if (/_(species|care)$/.test(e.target.name)) syncPetCard(e.target.closest(".pet"));
     if (!/_species$/.test(e.target.name)) return;
     var card = e.target.closest(".pet"), inp = card.querySelector(".breed");
     var names = function(l){ return l.map(function(b){ return b.split("|")[0]; }); };
@@ -1495,12 +1528,17 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var fd = new FormData(form);
     return Array.prototype.map.call(petsBox.querySelectorAll(".pet"), function(c){
       var k = c.dataset.key, g = function(f){ return String(fd.get(k + "_" + f) || "").trim(); };
-      return { species:g("species"), breed:g("breed"), weight:g("weight"), age:g("age"), sex:g("sex"), cage:g("cage"), care:g("care") };
+      var care = g("care"), dog = !g("species") || g("species") === "犬";
+      return { species:g("species"), breed:g("breed"), weight:g("weight"), age:g("age"), sex:g("sex"), cage:g("cage"), care:care,
+        vaccine: g("vac") ? "済" : "", rabies: dog && g("rabies") ? "済" : "",
+        care_need: care === "必要" ? fd.getAll(k + "_care_need").map(String) : [], care_note: care === "必要" ? g("care_note") : "" };
     });
   }
   function petLine(p, i){
     return (i + 1) + "匹目：" + [p.species, p.breed, p.weight ? p.weight + "kg" : "", p.age ? p.age + "歳" : "", p.sex,
-      ({"持ち込む":"ケージ持ち込み","なし":"ケージなし希望","借りたい":"ケージを借りたい","どれでも":"ケージはあり・なしどちらでも"})[p.cage] || p.cage, p.care === "必要" ? "介助必要" : "介助いらない"].filter(String).join("・");
+      ({"持ち込む":"ケージ持ち込み","なし":"ケージなし希望","借りたい":"ケージを借りたい","どれでも":"ケージはあり・なしどちらでも"})[p.cage] || p.cage,
+      p.vaccine ? "混合ワクチン済み" : "", p.rabies ? "狂犬病予防注射済み" : "",
+      p.care === "必要" ? "介助必要" + ((p.care_need || []).length || p.care_note ? "（" + (p.care_need || []).concat(p.care_note ? [p.care_note] : []).join("／") + "）" : "") : "介助いらない"].filter(String).join("・");
   }
 
 
@@ -1888,7 +1926,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   form.querySelectorAll("input[name=trip],input[name=via_on]").forEach(function(r){ r.addEventListener("change", estNow); });
 
   // ── 前回の内容を入れる（日時以外）──
-  var TEXT = ["pickup","via","dropoff","name","tel","email","notes"];
+  var TEXT = ["pickup","via","dropoff","name","tel","email","notes","hand_from","hand_to"];
   function setRadio(name, v){
     var r = form.querySelector('input[name="' + name + '"][value="' + String(v || "").replace(/"/g, "") + '"]');
     if (r) r.checked = true;
@@ -1906,6 +1944,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     $("retOther").checked = !!o.ret_other; $("retPickup").value = o.ret_pickup || ""; $("retDropoff").value = o.ret_dropoff || "";
     syncTrip();
     setSelect($("riders"), o.riders);
+    $("petOnly").checked = /^0/.test(o.riders || ""); $("handFrom").value = o.hand_from || ""; $("handTo").value = o.hand_to || ""; syncOnly();
     setSelect($("luggage"), o.luggage);
     var pets = o.pets || o.pets_json || [];
     if (typeof pets === "string") { try { pets = JSON.parse(pets); } catch (e) { pets = []; } }
@@ -1920,6 +1959,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var old = {"持っている":"持ち込む","持っていない":"借りたい"};
       if (old[p.cage]) p.cage = old[p.cage];
       ["species","sex","cage","care"].forEach(function(f){ setRadio(k + "_" + f, p[f]); });
+      c.querySelector("input[name$=_vac]").checked = p.vaccine === "済";
+      c.querySelector("input[name$=_rabies]").checked = p.rabies === "済";
+      c.querySelectorAll("input[name$=_care_need]").forEach(function(x){ x.checked = (p.care_need || []).indexOf(x.value) >= 0; });
+      if (p.care_note != null) $(k + "_care_note").value = p.care_note;
+      syncPetCard(c);
     });
   }
   function collect(){
@@ -2003,12 +2047,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var panel = document.createElement("div"); panel.className = "review-panel"; panel.hidden = true;
         open.addEventListener("click", function(){ toggleReviews(el.dataset.id, panel, open); });
         el.append(score, panel);
-      } else {
-        var a = document.createElement("a"); a.className = "partner-review"; a.target = "_blank"; a.rel = "noopener";
-        a.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(el.dataset.q);
-        a.textContent = "この会社の口コミを見る（外部サイト）";
-        el.appendChild(a);
-      }
+      } // 点数が取れないときは何も出さない（外部の口コミページへは飛ばさない）
     }
     function emgScores(){
       if (box.hidden) return;
@@ -2572,7 +2611,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       body.append("return_dropoff", rTo);
       back = "【帰り】" + retWhen.replace("T", " ") + "に「" + rFrom + "」でお迎え →「" + rTo + "」まで";
     }
-    body.append("notes", back ? back + (o.notes ? "\n" + o.notes : "") : o.notes);
+    // ペットだけで乗るときの渡す人・受け取る人は、メモの先頭に書いて会社に伝える
+    var only = /^0/.test(o.riders) ? "【ペットだけで乗る】お迎えで渡す人：" + (o.hand_from || "未記入") + "／行き先で受け取る人：" + (o.hand_to || "未記入") : "";
+    body.append("notes", [only, back, o.notes].filter(String).join("\n"));
     body.append("est_km", lastKm ? String(lastKm) : "");
     body.append("est_km_highway", lastKmHigh ? String(lastKmHigh) : "");
     body.append("est_fare", lastFareNum ? String(lastFareNum) : "");

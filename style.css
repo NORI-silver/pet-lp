@@ -234,6 +234,13 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .via-box .note{display:block;font-size:.8rem;color:var(--ink-3);margin:6px 0 0}
 .via-box .chk{display:flex;gap:8px;align-items:center;font-size:.88rem;margin:8px 0}
 .via-box .chk input{width:auto}
+.chk{display:flex;gap:8px;align-items:center;font-size:.88rem;margin:8px 0;font-weight:600}
+.chk input{width:auto;flex:none}
+.chk[hidden]{display:none}
+.chks{display:flex;flex-wrap:wrap;gap:4px 16px}
+.chks .chk{margin:4px 0;font-weight:500}
+.care-box,.only-box{background:var(--cream);border-radius:14px;padding:10px 14px;margin-top:8px}
+.care-box[hidden],.only-box[hidden]{display:none}
 .pet-hint{font-size:.86rem;color:var(--ink-3);background:#f7f4f1;border-radius:14px;padding:14px 16px;margin-bottom:18px}
 .restore{display:none;background:var(--o-l);color:var(--o-d);border-radius:14px;padding:14px 16px;margin-bottom:22px;font-size:.88rem;font-weight:600}
 .restore button{background:none;border:0;color:var(--ink-3);font:inherit;font-size:.82rem;text-decoration:underline;cursor:pointer;padding:0 0 0 6px}
