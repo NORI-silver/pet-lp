@@ -471,6 +471,12 @@ footer a{color:var(--ink-2)}
 .partner-results h3{font-size:1.2rem;margin:0 0 8px}
 .partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:18px}
 .partner-card{cursor:pointer;border:1.5px solid var(--line);border-radius:18px;padding:22px;background:#fff;display:flex;flex-direction:column;gap:10px}
+.partner-card.picked{border-color:var(--o);box-shadow:0 0 0 3px rgba(255,106,26,.18)}
+.leg-split{margin-top:22px;border-top:1px dashed var(--line);padding-top:18px}
+.leg-toggle{font:inherit;font-weight:700;background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:10px 18px;cursor:pointer}
+.leg-note{font-size:.88rem;margin:12px 0 0}
+.leg-h{margin:20px 0 0}
+.leg-pick{font-weight:700;margin-top:14px}
 .partner-card h4{font-size:1.08rem;margin:0}
 .partner-card p{margin:0;font-size:.86rem;line-height:1.7}
 .partner-card .partner-price{font-size:1.65rem;font-weight:800;color:var(--o-d)}
@@ -761,6 +767,15 @@ footer a{color:var(--ink-2)}
           <p id="partnerStatus" role="status" aria-live="polite"></p>
           <p class="price-reason">料金が違うのは、各社の基本運賃・距離単価・お迎えに来る距離・夜間割増の決まりが違うためです。金額の差だけで、サービスの良し悪しは判断できません。</p>
           <div class="partner-grid" id="partnerCards"></div>
+          <div class="leg-split" id="legSplit" hidden>
+            <button type="button" class="leg-toggle" id="legToggle" aria-expanded="false" aria-controls="legBox">行きと帰りで別の会社に頼む</button>
+            <div id="legBox" hidden>
+              <p class="leg-note">行きと帰りを、それぞれ片道の予約として、選んだ会社に別々に依頼します。同じ会社を選んでもかまいません。往復割引や待っていてもらうプランは使えないので、1社で往復のほうが安いこともあります。</p>
+              <h4 class="leg-h">行き</h4><div class="partner-grid" id="legGo"></div>
+              <h4 class="leg-h">帰り</h4><div class="partner-grid" id="legBack"></div>
+              <p class="leg-pick" id="legPick" role="status" aria-live="polite"></p>
+            </div>
+          </div>
         </section>
 
         <div class="group">
@@ -1124,10 +1139,12 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var $ = function(id){ return document.getElementById(id); };
 
   var routeDetails = null, quoteCards = [], chosenQuote = null, quoteSeq = 0, sending = false;
+  var quoteLegs = null, chosenGo = null, chosenBack = null; // 往復を行き・帰りで別の会社に頼むとき
   var quoteTimer = 0, quoteRefreshTimer = 0;
   function clearPartners(){
-    quoteSeq++; quoteCards = []; chosenQuote = null;
+    quoteSeq++; quoteCards = []; chosenQuote = null; quoteLegs = null; chosenGo = null; chosenBack = null;
     $("partnerResults").hidden = true; $("partnerCards").replaceChildren();
+    $("legSplit").hidden = true; $("legGo").replaceChildren(); $("legBack").replaceChildren();
     $("sendSelected").hidden = true;
     clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
   }
@@ -1230,6 +1247,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     fetch(GAS_URL,{method:"POST",body:search}).then(function(res){return res.json();}).then(function(result){
       if (searchSeq !== quoteSeq || sending) return;
       if (!result || !result.ok || result.selection_version !== 1 || !Array.isArray(result.cards)) throw new Error("quotes");
+      quoteLegs = result.legs || null;
       paintPartners(result.cards);
       if (!partnersTracked) { partnersTracked = true; track("view_partners", {count: result.cards.length}); }
       quoteRefreshTimer = setTimeout(function(){clearPartners();queuePartners();}, 14*60000);
@@ -1272,7 +1290,12 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     $("partnerResults").hidden = false;
     if (cards.length) $("partnerStatus").textContent = cards.length + "社が候補です。空き状況は未確認です。料金は確定料金ではありません。選んだ1社だけに予約を依頼します。";
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。予約の依頼は送信されていません。</span>';
-    cards.forEach(function(card){
+    cards.forEach(function(card){ $("partnerCards").appendChild(buildCard(card, "")); });
+    paintLegs();
+    // 自動更新では入力中のフォーカスやスクロール位置を動かさない。
+  }
+  // 事業者のカード1枚。leg は ""（ふつう）／"go"（往復の行きだけ）／"back"（帰りだけ）
+  function buildCard(card, leg){
       var article = document.createElement("article"); article.className = "partner-card";
       function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
       text("h4", card.label);
@@ -1304,7 +1327,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         article.appendChild(chk);
       }
       var price = text("p", card.price.text, "partner-price");
-      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + ((form.querySelector("input[name=trip]:checked") || {}).value || "片道") + (card.price.incompleteFees ? "の概算（税込・未確認費用は別途）" : "の合計目安（税込）"); price.appendChild(cap);
+      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + (leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道") + (card.price.incompleteFees ? "の概算（税込・未確認費用は別途）" : "の合計目安（税込）"); price.appendChild(cap);
       // 内訳は小さな文字の1行にして、押すと開く
       function breakdown(title, value, cls){
         var box = document.createElement("details"); box.className = "price-details" + (cls ? " " + cls : "");
@@ -1331,13 +1354,40 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var cb = document.createElement("b"); cb.textContent = "確定料金ではありません";
       caution.append(cb, "通行料・駐車場代は別途実費です。高速利用時の総額は、事業者の確認後にお知らせします。");
       var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn";
-      btn.textContent = "この事業者に予約を依頼する"; btn.setAttribute("aria-label", card.label + "に予約を依頼する");
-      btn.addEventListener("click", function(){ if (sending) return; chosenQuote = card; $("sendSelected").hidden = false; $("sendSelected").textContent = card.label + "に予約を依頼する"; form.requestSubmit(); });
+      var legName = leg === "go" ? "行き" : leg === "back" ? "帰り" : "";
+      btn.textContent = legName ? legName + "をこの事業者にする" : "この事業者に予約を依頼する"; btn.setAttribute("aria-label", legName ? legName + "を" + card.label + "にする" : card.label + "に予約を依頼する");
+      btn.addEventListener("click", function(){ if (sending) return; if (leg) return pickLeg(leg, card, article); chosenGo = null; chosenBack = null; chosenQuote = card; $("sendSelected").hidden = false; $("sendSelected").textContent = card.label + "に予約を依頼する"; form.requestSubmit(); });
       article.addEventListener("click", function(event){ if (!event.target.closest("button,a,details,.review-panel")) btn.click(); });
-      article.appendChild(btn); $("partnerCards").appendChild(article);
-    });
-    // 自動更新では入力中のフォーカスやスクロール位置を動かさない。
+      article.appendChild(btn); return article;
   }
+  // 往復のとき：行きと帰りをそれぞれ別の会社に頼むための片道の候補（Nori 2026-10-31）
+  function paintLegs(){
+    var on = !!(quoteLegs && quoteLegs.go && quoteLegs.back && quoteLegs.go.length && quoteLegs.back.length);
+    $("legSplit").hidden = !on;
+    $("legGo").replaceChildren(); $("legBack").replaceChildren();
+    if (!on) return;
+    quoteLegs.go.forEach(function(c){ $("legGo").appendChild(buildCard(c, "go")); });
+    quoteLegs.back.forEach(function(c){ $("legBack").appendChild(buildCard(c, "back")); });
+    chosenGo = null; chosenBack = null; showLegPick();
+  }
+  function showLegPick(){
+    $("legPick").textContent = "行き：" + (chosenGo ? chosenGo.label : "まだ選んでいません") + "／帰り：" + (chosenBack ? chosenBack.label : "まだ選んでいません");
+  }
+  function pickLeg(leg, card, article){
+    if (leg === "go") chosenGo = card; else chosenBack = card;
+    chosenQuote = null;
+    Array.prototype.forEach.call(article.parentNode.children, function(a){ a.classList.toggle("picked", a === article); });
+    showLegPick();
+    if (!(chosenGo && chosenBack)) { $("sendSelected").hidden = true; return; }
+    $("sendSelected").hidden = false;
+    $("sendSelected").textContent = "行き：" + chosenGo.label + "／帰り：" + chosenBack.label + "に予約を依頼する";
+    form.requestSubmit();
+  }
+  $("legToggle").addEventListener("click", function(){
+    var open = $("legBox").hidden;
+    $("legBox").hidden = !open; this.setAttribute("aria-expanded", String(open));
+    if (!open) { chosenGo = null; chosenBack = null; showLegPick(); $("sendSelected").hidden = !chosenQuote; Array.prototype.forEach.call(document.querySelectorAll("#legBox .picked"), function(a){ a.classList.remove("picked"); }); }
+  });
 
   var today = new Date(); today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
   $("date").min = today.toISOString().slice(0,10);
@@ -2616,7 +2666,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     });
   });
 
-  function requestPayload(){
+  function requestPayload(split){
     var fd = new FormData(form);
     var when = fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute");
     var trip = String(fd.get("trip") || "");
@@ -2653,7 +2703,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     }
     // ペットだけで乗るときの渡す人・受け取る人は、メモの先頭に書いて会社に伝える
     var only = /^0/.test(o.riders) ? "【ペットだけで乗る】お迎えで渡す人：" + (o.hand_from || "未記入") + "／行き先で受け取る人：" + (o.hand_to || "未記入") : "";
-    body.append("notes", [only, back, o.notes].filter(String).join("\n"));
+    body.append("notes", [only, split ? "" : back, o.notes].filter(String).join("\n")); // 行き・帰りを別の会社に頼むときは、それぞれの会社に自分の区間だけ伝える
     body.append("est_km", lastKm ? String(lastKm) : "");
     body.append("est_km_highway", lastKmHigh ? String(lastKmHigh) : "");
     body.append("est_fare", lastFareNum ? String(lastFareNum) : "");
@@ -2700,16 +2750,24 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       return fail("お迎えの場所が" + pp + "のようなので、お迎えの都県を「" + pp + "」に直しました。料金の目安を確かめてから、もう一度送信してください。", $("pref"));
     }
 
-    if (!chosenQuote) { queuePartners(); return; }
+    var splitPick = !chosenQuote && trip === "往復" && chosenGo && chosenBack;
+    if (!chosenQuote && !splitPick) { queuePartners(); return; }
     if (!routeDetails) return fail("料金の目安を計算しています。計算が終わるまでお待ちください。", $("pickup"));
-    var payload = requestPayload(), body = payload.body, o = payload.o;
-    if (Date.now() >= chosenQuote.expires) { clearPartners(); queuePartners(); return fail("候補を更新しています。表示されたら、もう一度事業者を選んでください。"); }
-    body.append("partner_id", chosenQuote.id);
-    body.append("quote_token", chosenQuote.token);
-    body.append("quote_expires", String(chosenQuote.expires));
-    var selectedLabel = chosenQuote.label;
+    var payload = requestPayload(splitPick), body = payload.body, o = payload.o;
+    var first = splitPick ? chosenGo : chosenQuote;
+    if (Date.now() >= first.expires || (splitPick && Date.now() >= chosenBack.expires)) { clearPartners(); queuePartners(); return fail("候補を更新しています。表示されたら、もう一度事業者を選んでください。"); }
+    body.append("partner_id", first.id);
+    body.append("quote_token", first.token);
+    body.append("quote_expires", String(first.expires));
+    if (splitPick) {
+      body.append("split", "1");
+      body.append("back_partner_id", chosenBack.id);
+      body.append("back_quote_token", chosenBack.token);
+      body.append("back_quote_expires", String(chosenBack.expires));
+    }
+    var selectedLabel = splitPick ? "行きは" + chosenGo.label + "、帰りは" + chosenBack.label : first.label;
     // 同じ内容の送り直しで二重受付にならないよう、入力が変わらないかぎり同じ合言葉（req_key）を使う
-    var identity = new URLSearchParams(body); identity.delete("quote_token"); identity.delete("quote_expires");
+    var identity = new URLSearchParams(body); ["quote_token","quote_expires","back_quote_token","back_quote_expires"].forEach(function(k){ identity.delete(k); });
     var sig = identity.toString();
     if (sig !== lastSig) { lastSig = sig; reqKey = Date.now().toString(36) + Math.random().toString(36).slice(2, 10); }
     body.append("req_key", reqKey);
@@ -2738,7 +2796,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         }
         form.inert = false; sending = false;
         $("thanksPartner").textContent = selectedLabel;
-        if (r.id) { $("thanks-id").querySelector("b").textContent = r.id; $("thanks-id").style.display = "block"; }
+        if (r.id) { $("thanks-id").querySelector("b").textContent = r.back_id ? r.id + "（行き）・" + r.back_id + "（帰り）" : r.id; $("thanks-id").style.display = "block"; }
         addHist([o.pickup, o.via, o.dropoff, o.ret_pickup, o.ret_dropoff]);
         form.style.display = "none";
         $("thanks").style.display = "block";
