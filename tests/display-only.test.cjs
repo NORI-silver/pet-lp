@@ -110,6 +110,14 @@ const ce=byId('De3f35f2'), cep={lat:ce.shop[0],lng:ce.shop[1]};
 assert.equal(call('displayPrice_',ce,{...p,datetime:at('21:00'),route_details:rd2(15,cep,cep)}).local.nightExtra,1100);
 // 割増の金額が書いていない時間は「〜」：かるたく 20時
 assert.ok(/〜$/.test(call('displayPrice_',byId('Da5a2701'),{...p,datetime:at('20:00'),route_details:rd2(10)}).text));
+// 公式サイトの料金サンプルと同じになる：COCOタク湘南 例1（お迎え5km・自宅⇔病院5km・待機30分）＝5,390円、HAKAタク 博多駅→西新 7km＝3,310円
+const sh=byId('D0d611b0'), shp={lat:sh.shop[0],lng:sh.shop[1]};
+const home5={lat:shp.lat+4.9/1.3/111,lng:shp.lng}, hosp={lat:home5.lat+0.02,lng:home5.lng};
+const ex1=call('displayPrice_',sh,{...p,trip:'往復',pickup:'自宅',dropoff:'病院',return_pickup:'病院',return_dropoff:'自宅',datetime:at('12:00'),return_datetime:at('12:45'),
+  route_details:JSON.stringify({km:5,backKm:5,from:home5,to:hosp,backFrom:hosp,backTo:home5})});
+assert.equal(ex1.local.ride+ex1.local.pickup+ex1.local.wait,5390, JSON.stringify(ex1.local));
+const hk=byId('D7847612'), hkp={lat:hk.shop[0],lng:hk.shop[1]};
+assert.equal(call('displayPrice_',hk,{...p,route_details:rd2(7,hkp,hkp)}).local.ride,3310);
 // 料金表がない会社はお見積もり
 assert.equal(ctx.displayPrice_({id:'Y'},p),null);
 // 営業時間・当日予約でしぼる（Nori 2026-10-31）。日本時間で日時を作る
