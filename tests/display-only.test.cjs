@@ -27,9 +27,9 @@ assert.equal(cards[0].id,'P002');
 assert.ok(cards[0].display_only); assert.equal(cards[0].token,undefined); assert.equal(cards[0].price.amount,4000);
 assert.ok(cards.every(c=>c.display_only && c.token===undefined));
 const shown=cards.filter(c=>c.id!=='P002');
-assert.equal(shown.length, disp.length); // 絞らない
-const nTokyo=disp.filter(c=>c.areas.includes('東京')).length;
-assert.ok(shown.slice(0,nTokyo).every(c=>disp.find(d=>d.id===c.id).areas.includes('東京'))); // 対応していそうな会社が先
+assert.equal(shown.length, disp.filter(c=>ctx.displayInTime_(c,ctx.selectionRide_(p)['希望日時'],new Date())).length); // エリアでは絞らない（営業時間・当日予約だけでしぼる）
+const isT=c=>disp.find(d=>d.id===c.id).areas.includes('東京'), nTokyo=shown.filter(isT).length;
+assert.ok(shown.slice(0,nTokyo).every(isT)); // 対応していそうな会社が先
 shown.forEach(c=>{ assert.equal(c.token,undefined); assert.equal(c.review,null); assert.equal(c.price.amount,null); });
 assert.equal(cards.filter(c=>c.id===D).length,1);
 // 提携先の会社に正しいトークンを作って依頼しても断る
@@ -48,7 +48,24 @@ const round={...p,trip:'往復',return_datetime:when.replace('12:00','15:00'),re
 assert.equal(call('selectionQuotes_',round).legs,undefined);
 // 全国のお迎えでも候補を出す（Nori「全国にして」）。依頼はできない
 const osaka=call('selectionQuotes_',{...p,pref:'大阪府'});
-assert.ok(osaka.ok && osaka.cards.length>=disp.length && osaka.cards.every(c=>c.display_only));
+assert.ok(osaka.ok && osaka.cards.length>=shown.length && osaka.cards.every(c=>c.display_only));
+// 営業時間・当日予約でしぼる（Nori 2026-10-31）。日本時間で日時を作る
+const J=(d,h)=>new Date(Date.UTC(2026,10,d,h-9,0)); // 2026-11-d h時（11/2は月曜）
+const T=(o)=>({hours:'',flex:false,closed:[],lead_days:null,cut:null,...o});
+const f=(c,at,now)=>ctx.displayInTime_(T(c),at,now);
+assert.equal(f({},J(2,12),J(2,8)),true); // 分からない会社は出す
+assert.equal(f({hours:'8-20'},J(3,21),J(2,8)),false); // お迎えが営業時間の外
+assert.equal(f({hours:'8-20',flex:true},J(3,21),J(2,8)),true); // 時間外も相談できる会社は出す
+assert.equal(f({closed:[1]},J(2,12),J(1,8)),false); // 月曜定休
+assert.equal(f({lead_days:1},J(2,15),J(2,9)),false); // 前日までの会社は当日に出さない
+assert.equal(f({lead_days:1},J(3,15),J(2,9)),true);
+assert.equal(f({lead_days:3},J(4,15),J(2,9)),false); // 3日前まで
+assert.equal(f({lead_days:0,cut:16},J(2,20),J(2,17)),false); // 当日予約は16時まで
+assert.equal(f({lead_days:0,cut:16},J(2,20),J(2,13)),true);
+assert.equal(f({hours:'8-19'},J(2,23),J(2,20)),false); // 当日：今日の営業が終わっている
+assert.equal(f({hours:'8-20'},J(2,12),J(2,7)),true); // 当日：8時に開いて12時のお迎えは間に合う
+assert.equal(f({hours:'8-20'},J(2,10),J(2,6)),false); // 当日：8時に開いてから10時のお迎えまで3時間ない
+assert.equal(f({hours:'0-24'},J(2,23),J(2,20)),true);
 // スイッチを切ると今の状態（提携先だけ・依頼できる）に戻る。表示だけの会社は同じIDがシートにあっても送らない
 ctx.CONFIG.SHOW_ALL_CANDIDATES=false;
 const back=call('selectionQuotes_',p).cards;

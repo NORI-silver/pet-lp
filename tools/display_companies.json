@@ -9,7 +9,12 @@
     "東京",
     "埼玉"
    ],
-   "pay": "現金・カード・電子マネー"
+   "pay": "現金・カード・電子マネー",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Dea620d5",
@@ -19,7 +24,12 @@
     "東京",
     "千葉"
    ],
-   "pay": "現金・カード・交通系IC・PayPay・iD・QUICPay・Apple Pay"
+   "pay": "現金・カード・交通系IC・PayPay・iD・QUICPay・Apple Pay",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D3661eb1",
@@ -31,7 +41,12 @@
     "埼玉",
     "千葉"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "8-21",
+   "flex": true,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D1e44e13",
@@ -40,7 +55,12 @@
    "areas": [
     "東京"
    ],
-   "pay": "現金・カード・交通系IC・PayPay・iD・QUICPay・Apple Pay"
+   "pay": "現金・カード・交通系IC・PayPay・iD・QUICPay・Apple Pay",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Da5a2701",
@@ -49,7 +69,12 @@
    "areas": [
     "東京"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D355c31f",
@@ -58,7 +83,12 @@
    "areas": [
     "東京"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D7c32399",
@@ -68,7 +98,12 @@
     "東京",
     "神奈川"
    ],
-   "pay": "現金のみ・降りるとき"
+   "pay": "現金のみ・降りるとき",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Dbe5cb84",
@@ -77,7 +112,12 @@
    "areas": [
     "東京"
    ],
-   "pay": "キャッシュレス可・降りるとき"
+   "pay": "キャッシュレス可・降りるとき",
+   "hours": "9-19",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D0d1c8b4",
@@ -88,7 +128,12 @@
     "埼玉",
     "千葉"
    ],
-   "pay": "カード・交通系IC・QR"
+   "pay": "カード・交通系IC・QR",
+   "hours": "8-20",
+   "flex": false,
+   "closed": [],
+   "lead_days": 0,
+   "cut": null
   },
   {
    "id": "D692c9a6",
@@ -99,7 +144,12 @@
     "埼玉",
     "千葉"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "8-20",
+   "flex": true,
+   "closed": [],
+   "lead_days": 0,
+   "cut": null
   },
   {
    "id": "D7138c0d",
@@ -109,7 +159,12 @@
     "東京",
     "神奈川"
    ],
-   "pay": "現金・カード・電子マネー・コード決済／着いたとき"
+   "pay": "現金・カード・電子マネー・コード決済／着いたとき",
+   "hours": "8-22",
+   "flex": false,
+   "closed": [],
+   "lead_days": 0,
+   "cut": null
   },
   {
    "id": "D7922e74",
@@ -121,7 +176,12 @@
     "埼玉",
     "千葉"
    ],
-   "pay": "現金・カード・電子マネー・QR／到着後"
+   "pay": "現金・カード・電子マネー・QR／到着後",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": 0,
+   "cut": null
   },
   {
    "id": "D0d611b0",
@@ -130,7 +190,12 @@
    "areas": [
     "神奈川"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "De65cb2d",
@@ -139,7 +204,12 @@
    "areas": [
     "神奈川"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D63b09f7",
@@ -148,7 +218,12 @@
    "areas": [
     "神奈川"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D945f580",
@@ -158,7 +233,12 @@
     "東京",
     "神奈川"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "8-20",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D5598693",
@@ -170,7 +250,12 @@
     "埼玉",
     "千葉"
    ],
-   "pay": "現金・カード・電子マネー・QR（フェリー長距離は事前決済）"
+   "pay": "現金・カード・電子マネー・QR（フェリー長距離は事前決済）",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D5604536",
@@ -182,7 +267,12 @@
     "埼玉",
     "千葉"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Dc7b4703",
@@ -191,7 +281,12 @@
    "areas": [
     "神奈川"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "8-19",
+   "flex": false,
+   "closed": [],
+   "lead_days": 0,
+   "cut": 16
   },
   {
    "id": "Dc46d194",
@@ -200,7 +295,12 @@
    "areas": [
     "神奈川"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D68f9d95",
@@ -212,7 +312,12 @@
     "埼玉",
     "千葉"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "8-20",
+   "flex": true,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D8da1ced",
@@ -224,7 +329,12 @@
     "埼玉",
     "千葉"
    ],
-   "pay": "JCBタクシーチケット取扱"
+   "pay": "JCBタクシーチケット取扱",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Daed391e",
@@ -233,7 +343,12 @@
    "areas": [
     "神奈川"
    ],
-   "pay": "現金・カード／終わったあと"
+   "pay": "現金・カード／終わったあと",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D0437ae3",
@@ -242,7 +357,12 @@
    "areas": [
     "神奈川"
    ],
-   "pay": "現金・カード／終わったあと"
+   "pay": "現金・カード／終わったあと",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D5f32b1e",
@@ -253,7 +373,12 @@
     "神奈川",
     "埼玉"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": 1,
+   "cut": null
   },
   {
    "id": "Daf1e25b",
@@ -262,7 +387,15 @@
    "areas": [
     "神奈川"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "9-18",
+   "flex": false,
+   "closed": [
+    0,
+    6
+   ],
+   "lead_days": 3,
+   "cut": null
   },
   {
    "id": "D0b50c1a",
@@ -274,7 +407,12 @@
     "埼玉",
     "千葉"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D06b72ea",
@@ -283,7 +421,12 @@
    "areas": [
     "神奈川"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D40a4aa0",
@@ -293,7 +436,12 @@
     "東京",
     "埼玉"
    ],
-   "pay": "現金・カード・PayPay等"
+   "pay": "現金・カード・PayPay等",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": 0,
+   "cut": null
   },
   {
    "id": "Dfcb8480",
@@ -305,7 +453,12 @@
     "埼玉",
     "千葉"
    ],
-   "pay": "現金・カード・QR"
+   "pay": "現金・カード・QR",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D853ae97",
@@ -315,7 +468,12 @@
     "埼玉",
     "千葉"
    ],
-   "pay": "現金・カード・QR"
+   "pay": "現金・カード・QR",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D3cc1cce",
@@ -325,7 +483,12 @@
     "東京",
     "埼玉"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "De3f35f2",
@@ -336,7 +499,12 @@
     "埼玉",
     "千葉"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Dd8c07a8",
@@ -345,7 +513,12 @@
    "areas": [
     "千葉"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "8-18",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D3c85024",
@@ -354,7 +527,14 @@
    "areas": [
     "千葉"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "9-21",
+   "flex": false,
+   "closed": [
+    4
+   ],
+   "lead_days": 0,
+   "cut": null
   },
   {
    "id": "Dedcfcd2",
@@ -363,7 +543,12 @@
    "areas": [
     "千葉"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D68a3be6",
@@ -375,280 +560,490 @@
     "埼玉",
     "千葉"
    ],
-   "pay": ""
+   "pay": "",
+   "hours": "8-20",
+   "flex": true,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Dc28c19e",
    "name": "ワンワンハウス（ペットタクシー）",
    "pref": "群馬県",
    "areas": [],
-   "pay": "現金・カード・電子マネー・交通系IC・QR"
+   "pay": "現金・カード・電子マネー・交通系IC・QR",
+   "hours": "9-19",
+   "flex": false,
+   "closed": [
+    4
+   ],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Db405639",
    "name": "D-RIDE（ペットタクシー）",
    "pref": "北海道",
    "areas": [],
-   "pay": "現金・カード・電子決済"
+   "pay": "現金・カード・電子決済",
+   "hours": "8-18",
+   "flex": true,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D44948b6",
    "name": "ぺトタク（札幌・小樽）",
    "pref": "北海道",
    "areas": [],
-   "pay": "カード・現金・コンビニ後払い"
+   "pay": "カード・現金・コンビニ後払い",
+   "hours": "8-20",
+   "flex": true,
+   "closed": [],
+   "lead_days": 0,
+   "cut": null
   },
   {
    "id": "D13b7c6f",
    "name": "ペット専用タクシー aiai",
    "pref": "北海道",
    "areas": [],
-   "pay": "現金・PayPay（カード・QRの記載も）／送迎後"
+   "pay": "現金・PayPay（カード・QRの記載も）／送迎後",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": 0,
+   "cut": null
   },
   {
    "id": "D1f53c72",
    "name": "COCOタク岩手盛岡店",
    "pref": "岩手県",
    "areas": [],
-   "pay": "現金のみ（キャッシュレスは順次）"
+   "pay": "現金のみ（キャッシュレスは順次）",
+   "hours": "9-19",
+   "flex": false,
+   "closed": [
+    0,
+    6
+   ],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D4adf70b",
    "name": "PETRIP",
    "pref": "宮城県",
    "areas": [],
-   "pay": "現金・PayPay"
+   "pay": "現金・PayPay",
+   "hours": "6-23",
+   "flex": false,
+   "closed": [],
+   "lead_days": 0,
+   "cut": null
   },
   {
    "id": "D30e1838",
    "name": "ニャンワンクラブ（ペットタクシー）",
    "pref": "宮城県",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "9-18",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D59e83ab",
    "name": "万代タクシー（ペットタクシー）",
    "pref": "新潟県",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D1132ff9",
    "name": "冨士タクシー（ペットタクシー）",
    "pref": "石川県",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": 1,
+   "cut": null
   },
   {
    "id": "Da40f372",
    "name": "ペットタクシー With☆（ウィズ）",
    "pref": "山梨県",
    "areas": [],
-   "pay": "前払い（振込・メールで届くカード決済）"
+   "pay": "前払い（振込・メールで届くカード決済）",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Dd472236",
    "name": "ペットタクシー COCOタク静岡",
    "pref": "静岡県",
    "areas": [],
-   "pay": "カード・PayPay"
+   "pay": "カード・PayPay",
+   "hours": "8-21",
+   "flex": true,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D44cfd16",
    "name": "HAPPY WITH（ペットタクシー）",
    "pref": "愛知県",
    "areas": [],
-   "pay": "現金（降りるとき）・事前の振込。カード・QRは不可"
+   "pay": "現金（降りるとき）・事前の振込。カード・QRは不可",
+   "hours": "8-20",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Dcda25a4",
    "name": "ペットタクシー パウパウ",
    "pref": "愛知県",
    "areas": [],
-   "pay": "現金・カード・PayPay"
+   "pay": "現金・カード・PayPay",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": 1,
+   "cut": null
   },
   {
    "id": "D1834601",
    "name": "ZEROペットタクシー",
    "pref": "滋賀県",
    "areas": [],
-   "pay": "現金・カード・交通系IC・QR"
+   "pay": "現金・カード・交通系IC・QR",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": 0,
+   "cut": null
   },
   {
    "id": "Dc9d8a2b",
    "name": "PetTAXI24",
    "pref": "京都府",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D25bac67",
    "name": "ペットサポート てんりん",
    "pref": "京都府",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "9-21",
+   "flex": true,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Dfc6c94f",
    "name": "木谷わんわんタクシー",
    "pref": "京都府",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D7d574bf",
    "name": "ARC（アルク）Pet Taxi & Pet Sitter",
    "pref": "大阪府",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Db8bafea",
    "name": "Comasuke（コマスケ）",
    "pref": "大阪府",
    "areas": [],
-   "pay": "現金・カード・電子マネー・QR"
+   "pay": "現金・カード・電子マネー・QR",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D6125f28",
    "name": "DOG HAIR STUDIO KEN（ペットタクシー）",
    "pref": "大阪府",
    "areas": [],
-   "pay": "カード・電子マネー・交通系IC"
+   "pay": "カード・電子マネー・交通系IC",
+   "hours": "10-18",
+   "flex": false,
+   "closed": [
+    3
+   ],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D7e284b0",
    "name": "PetTaxi けいわん堺",
    "pref": "大阪府",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D01478c8",
    "name": "アイアールサービス（ペットタクシー）",
    "pref": "大阪府",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Da9518d0",
    "name": "キャリーワン",
    "pref": "大阪府",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D66c4625",
    "name": "ペットタクシー アイボウ（相棒）",
    "pref": "大阪府",
    "areas": [],
-   "pay": "カード可"
+   "pay": "カード可",
+   "hours": "8-18",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D874b316",
    "name": "ペットタクシー マイファミリー",
    "pref": "大阪府",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D1c2a5e3",
    "name": "ミントペットタクシー",
    "pref": "大阪府",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "9-17",
+   "flex": false,
+   "closed": [
+    0,
+    6
+   ],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D9f338ec",
    "name": "ペットタクシー アニマルプラス",
    "pref": "兵庫県",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "8-19",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D72024d3",
    "name": "ラッキーペットサービス",
    "pref": "兵庫県",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D154d458",
    "name": "COCOタク ならまち店",
    "pref": "奈良県",
    "areas": [],
-   "pay": "現金・カード・QRコード決済"
+   "pay": "現金・カード・QRコード決済",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D0a999a3",
    "name": "ペットタクシー COCOタク奈良",
    "pref": "奈良県",
    "areas": [],
-   "pay": "現金・カード・QRコード決済"
+   "pay": "現金・カード・QRコード決済",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D0ff488e",
    "name": "わんニャンMOB（Heiwa Taxi）",
    "pref": "岡山県",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": true,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D225080e",
    "name": "ペッタク（PETTAXI）",
    "pref": "広島県",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D678e01f",
    "name": "ペットタクシー 響",
    "pref": "広島県",
    "areas": [],
-   "pay": "カード・PayPay・d払いなど"
+   "pay": "カード・PayPay・d払いなど",
+   "hours": "6-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D8001263",
    "name": "吉島タクシー（ペットタクシー）",
    "pref": "広島県",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D7c41c5f",
    "name": "トップスター（ペットタクシー）",
    "pref": "徳島県",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "10-17",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Df31960d",
    "name": "ペットタクシー Happy",
    "pref": "福岡県",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Dbffb89d",
    "name": "ペットタクシー RinRin",
    "pref": "福岡県",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "Db28bc5b",
    "name": "福岡わんわんエクスプレス",
    "pref": "福岡県",
    "areas": [],
-   "pay": ""
+   "pay": "",
+   "hours": "0-24",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   },
   {
    "id": "D7847612",
    "name": "福岡ペットタクシー HAKAタク",
    "pref": "福岡県",
    "areas": [],
-   "pay": "現金・カード・交通系IC・QR・iD・QUICPay"
+   "pay": "現金・カード・交通系IC・QR・iD・QUICPay",
+   "hours": "9-19",
+   "flex": false,
+   "closed": [],
+   "lead_days": null,
+   "cut": null
   }
  ]
 }
