@@ -758,7 +758,7 @@ footer a{color:var(--ink-2)}
         <div class="group">
           <div class="group-h"><span>1</span>いつ、どこへ行きますか？</div>
           <div class="f"><label for="pref">お迎えの都県</label>
-            <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>千葉県</option><option>埼玉県</option><optgroup label="そのほかの道府県"><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option selected>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option></optgroup></select>
+            <select id="pref" name="pref" required><option value="">選んでください</option><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option><option>東京都</option><option>神奈川県</option><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option selected>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option></select>
             <p class="pref-fix" id="prefFix" role="status" hidden></p></div>
           <div class="f"><label for="pickup">お迎えの場所</label>
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button>
@@ -1165,6 +1165,7 @@ footer a{color:var(--ink-2)}
         <p>ペットタクシー予約窓口（以下「当サイト」）は、お預かりする個人情報を次のとおり取り扱います。</p>
         <h4>1. お預かりする情報</h4>
         <ul><li>お名前、電話番号、メールアドレス</li><li>お迎えの場所、経由地、行き先、希望の日時、ペットの種類・体重・年齢などの情報、メモ欄の内容</li></ul>
+        <p>フォームのお迎えの都道府県を近い順に並べるため、通信の情報（IPアドレス）から大まかな地域を推定することがあります。並び順にだけ使い、保存はしません。</p>
         <h4>2. 使う目的</h4>
         <ul><li>ペットタクシーの空き確認と手配、お迎え時間・料金のご連絡</li><li>キャンセルやお問い合わせへの対応</li><li>サービスの改善（個人が特定できない形の集計に限ります）</li></ul>
         <p>ご本人の同意なく、この目的のほかに使うことはありません。</p>
@@ -1809,6 +1810,48 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       navigator.geolocation.getCurrentPosition(ok, ng, {enableHighAccuracy: true, timeout: 12000, maximumAge: 0});
     }, {enableHighAccuracy: false, timeout: 5000, maximumAge: 300000});
   }
+  // お迎えの都道府県の並び順（Nori 2026-10-31「ユーザの所在地に合わせて近いところが上に。あとは北海道から順に」）
+  // 近い順の元：エリアページなどで選ばれている都道府県 → 位置の利用がすでに許可されていれば端末の位置 → 通信の情報からの大まかな地域。
+  // 許可の確認は新しく出さない。分からないときは北海道から順のまま。選んでいる値は変えない
+  var PREF_LL = [[43.06,141.35],[40.82,140.74],[39.70,141.15],[38.27,140.87],[39.72,140.10],[38.24,140.36],[37.75,140.47],[36.34,140.45],[36.57,139.88],[36.39,139.06],[35.86,139.65],[35.61,140.12],[35.69,139.69],[35.45,139.64],[37.90,139.02],[36.70,137.21],[36.59,136.63],[36.07,136.22],[35.66,138.57],[36.65,138.18],[35.39,136.72],[34.98,138.38],[35.18,136.91],[34.73,136.51],[35.00,135.87],[35.02,135.76],[34.69,135.52],[34.69,135.18],[34.69,135.83],[34.23,135.17],[35.50,134.24],[35.47,133.05],[34.66,133.93],[34.40,132.46],[34.19,131.47],[34.07,134.56],[34.34,134.04],[33.84,132.77],[33.56,133.53],[33.61,130.42],[33.25,130.30],[32.74,129.87],[32.79,130.74],[33.24,131.61],[31.91,131.42],[31.56,130.56],[26.21,127.68]];
+  var PREF_NEAR_N = 6; // 上に出す数（その都道府県を含む）
+  function llDist(a, b){ var dy = a[0] - b[0], dx = (a[1] - b[1]) * Math.cos((a[0] + b[0]) * Math.PI / 360); return dx * dx + dy * dy; }
+  function prefAt(lat, lng){
+    var best = -1, bd = Infinity;
+    PREF_LL.forEach(function(p, i){ var d = llDist([lat, lng], p); if (d < bd) { bd = d; best = i; } });
+    return best >= 0 && bd < 4 ? PREF_NAMES[best] : ""; // 日本の外（2度より遠い）なら使わない
+  }
+  function sortPrefs(base){
+    var sel = $("pref"), i0 = PREF_NAMES.indexOf(base);
+    if (!sel || i0 < 0) return;
+    if (document.activeElement === sel) { sel.addEventListener("blur", function(){ sortPrefs(base); }, {once: true}); return; }
+    var have = {}; Array.prototype.forEach.call(sel.querySelectorAll("option"), function(o){ if (o.value) have[o.value] = 1; });
+    var near = PREF_NAMES.filter(function(n){ return have[n]; }).sort(function(a, b){
+      return llDist(PREF_LL[PREF_NAMES.indexOf(a)], PREF_LL[i0]) - llDist(PREF_LL[PREF_NAMES.indexOf(b)], PREF_LL[i0]);
+    }).slice(0, PREF_NEAR_N);
+    var rest = PREF_NAMES.filter(function(n){ return have[n] && near.indexOf(n) < 0; });
+    if (!rest.length) near.sort(function(a, b){ return PREF_NAMES.indexOf(a) - PREF_NAMES.indexOf(b); });
+    var v = sel.value, h = '<option value="">選んでください</option>';
+    function opts(list){ return list.map(function(n){ return "<option>" + n + "</option>"; }).join(""); }
+    h += rest.length ? '<optgroup label="近くの都道府県">' + opts(near) + '</optgroup><optgroup label="そのほか（北海道から順）">' + opts(rest) + '</optgroup>' : opts(near);
+    sel.innerHTML = h; sel.value = v;
+  }
+  (function(){
+    if ($("pref").value) { sortPrefs($("pref").value); return; }
+    function byNet(){
+      var ac = window.AbortController ? new AbortController() : null, t = ac && setTimeout(function(){ ac.abort(); }, 4000);
+      fetch("https://get.geojs.io/v1/ip/geo.json", ac ? {signal: ac.signal} : {}).then(function(r){ return r.json(); }).then(function(d){
+        clearTimeout(t);
+        if (d && d.country_code === "JP" && !$("pref").value) sortPrefs(prefAt(+d.latitude, +d.longitude));
+      }).catch(function(){});
+    }
+    if (navigator.permissions && navigator.geolocation) {
+      navigator.permissions.query({name: "geolocation"}).then(function(s){
+        if (s.state !== "granted") { byNet(); return; }
+        navigator.geolocation.getCurrentPosition(function(pos){ if (!$("pref").value) sortPrefs(prefAt(pos.coords.latitude, pos.coords.longitude)); }, byNet, {enableHighAccuracy: false, timeout: 5000, maximumAge: 600000});
+      }, byNet);
+    } else byNet();
+  })();
   // 位置を住所の文字に直す（待ちすぎないよう6秒で打ち切る）
   function reverseOsm(c, zoom){
     var ac = window.AbortController ? new AbortController() : null, t = ac && setTimeout(function(){ ac.abort(); }, 6000);
