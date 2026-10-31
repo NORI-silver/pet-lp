@@ -27,6 +27,8 @@ assert.ok(ctx.checks_({ ...blank, luggage:false }, req({ '荷物':'多め（ス�
 // ケージ：貸し出しの大きさ
 assert.ok(ctx.checks_({ ...blank, cageLend:true, lendKg:20 }, req({ 'キャリー':'借りたい', '体重kg':30 })).ng[0].includes('30kg'));
 assert.ok(ctx.checks_({ ...blank, cageLend:true }, req({ 'キャリー':'借りたい', '体重kg':30 })).ask.some(x => x.includes('30kgの子が入るケージ')));
+assert.equal(ctx.checks_({ ...blank, cageLend:true }, req({ 'キャリー':'借りたい', '体重kg':4 })).ask.length, 0);
+assert.ok(ctx.checks_(blank, req({ '同乗人数':'2人' })).ask.some(x => x.includes('大人2人')));
 assert.ok(ctx.checks_({ ...blank, cageMust:'○' }, req({ 'キャリー':'なし' })).ng.includes('ケージの条件'));
 // 介護の中身・ペットだけ・ワクチン
 const care = req({ '介助':'必要', 'ペットJSON': pets([{weight:'8', care:'必要', care_need:['寝たきり（担架やマットで運ぶ）'], care_note:'3階'}]) });

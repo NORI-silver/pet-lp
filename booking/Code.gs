@@ -500,7 +500,7 @@ function checks_(pt, r) {
   });
   // 人数・頭数・荷物
   if (pt.riders !== null && n.riders > pt.riders) ng.push('大人' + n.riders + '人');
-  else if (pt.riders === null && n.riders > d.riders) ask.push('大人' + n.riders + '人が一緒に乗れる');
+  else if (pt.riders === null && n.riders >= 2) ask.push('大人' + n.riders + '人が一緒に乗れる'); // 定員が分からない会社は2人から確かめる
   if (pt.pets !== null && n.pets > pt.pets) ng.push(n.pets + '匹');
   else if (pt.pets === null && n.pets >= 2) ask.push(n.pets + '匹が一緒に乗れる');
   if (n.luggage && pt.luggage === false) ng.push('荷物が多い');
@@ -520,7 +520,7 @@ function checks_(pt, r) {
     var c = String(r['キャリー'] || '');
     if (/借り|持っていない/.test(c)) {
       if (pt.lendKg !== null && maxKg > pt.lendKg) ng.push(maxKg + 'kgの子が入るケージの貸し出し');
-      else if (pt.lendKg === null) ask.push(maxKg + 'kgの子が入るケージを貸し出せる');
+      else if (pt.lendKg === null && maxKg >= 10) ask.push(maxKg + 'kgの子が入るケージを貸し出せる'); // 小さい子のケージはどこでも用意できる
     }
     if (/なし/.test(c) && pt.cageMust === '') ask.push('ケージなしで乗れる');
   }
