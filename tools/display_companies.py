@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """予約の候補カードに「表示だけ」で出す会社の一覧を作る（Nori 2026-10-31「候補の事業者を全部出して。依頼は送れないように」）。
 
-  python3 tools/display_companies.py <事業者マスター master.json> <ダッシュボード companies.json> [<料金表 tariffs.json>]
+  python3 tools/display_companies.py <事業者マスター master.json> <ダッシュボード companies.json> [<料金表 tariffs.json>] [<出典つきマスター facts.json>]
   → tools/display_companies.json を書き直す。そのあと python3 tools/gen_areas.py . で Code.gs に入る。
 
 ここに入る会社は予約の依頼を受けられない（提携先シートに無いので、送信の対象にならない）。
@@ -119,10 +119,29 @@ def schedule(c, did):
     out.update(FIX.get(did, {}))
     return out
 
-def main(master, comp, tariffs=None):
+# 犬・猫のほかの動物（Nori 2026-10-31「犬、猫以外の動物の利用もできる事業者さんがいると思うから、それにフォームも対応する」）
+# facts.json の animals（公式サイトの文）から読む。ok＝乗せられると書いてある種類、no＝断ると書いてある種類、
+# all＝「種類を問わず」などと書いてある、only＝「犬・猫のみ」と書いてある。どれも無ければ分からない（候補には出して「確認中」と書く）
+KINDS = {'small': r'小動物|うさぎ|ウサギ|ハムスター|フェレット|モルモット|リス|りす|チンチラ',
+         'bird': r'鳥|インコ|オウム|文鳥', 'reptile': r'爬虫類|亀|カメ|両生類|トカゲ|ヘビ', 'fish': r'魚|錦鯉|金魚'}
+ALL_OK = r'種類を問わず|どんな種類|法的に問題ない|飼育が認められている|あらゆるペット|ほとんどのペット|犬猫に限らず|出来る限りのご要望'
+ANIMAL_FIX = {  # 文の形で読み違えるものは手で直す
+    'Dc9d8a2b': {'ok': ['small'], 'no': ['bird', 'reptile']},   # 「※爬虫類と小鳥などは、お断りしております」
+}
+
+def animals(f):
+    a = f.get('animals') or {}
+    t = '' if a.get('vague') else a.get('v', '')
+    out = {'all': bool(re.search(ALL_OK, t)), 'only': bool(re.search(r'犬・猫のみ|ワンちゃん・ネコちゃんのみ|犬猫のみ', t)),
+           'ok': [k for k, r in KINDS.items() if re.search(r, t)], 'no': []}
+    out.update(ANIMAL_FIX.get(f.get('_id'), {}))
+    return out
+
+def main(master, comp, tariffs=None, facts_path=None):
     ms = json.load(open(master, encoding='utf-8'))
     cs = {c['id']: c for c in json.load(open(comp, encoding='utf-8'))}
     ts = json.load(open(tariffs, encoding='utf-8')) if tariffs else {}
+    facts = json.load(open(facts_path, encoding='utf-8')) if facts_path else {}
     out = []
     for m in ms:
         if m['status'] != '掲載候補' or m['id'] in SKIP: continue  # 全国の掲載候補（Nori 2026-10-31「全国にして。絞らないで」）
@@ -131,12 +150,14 @@ def main(master, comp, tariffs=None):
         row = {'id': m['id'], 'name': m['name'], 'pref': m['pref'], 'areas': areas(c, m), 'area_text': '' if at.startswith('不明') else at[:70],
                'shop': SHOP.get(m['id']), 'fare': fare(ts.get(m['id']), m['id']), 'pay': pay(c)}
         row.update(schedule(c, m['id']))
+        row['animals'] = animals(dict(facts.get(m['id'], {}), _id=m['id']))
         assert not re.search(r'\d{2,4}-\d{2,4}-\d{3,4}|@', json.dumps(row, ensure_ascii=False)), row  # 電話番号・メールは入れない
         out.append(row)
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'display_companies.json')
     json.dump({'_説明': '予約の候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る。出すかどうかは booking/Code.gs の CONFIG.SHOW_ALL_CANDIDATES', 'companies': out},
               open(path, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(len(out), '社', '料金つき', sum(1 for r in out if r['fare']), {p: sum(p in r['areas'] for r in out) for p in PREF47 if any(p in r['areas'] for r in out)})
+    print('犬・猫のほか', {k: sum(r['animals']['all'] or k in r['animals']['ok'] for r in out) for k in KINDS}, '犬・猫のみ', sum(r['animals']['only'] for r in out))
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else None)
+    main(*sys.argv[1:5])
