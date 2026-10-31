@@ -672,7 +672,100 @@
     35.513,
     139.433
    ],
-   "fare": null,
+   "fare": {
+    "kind": "table",
+    "table": [
+     [
+      5,
+      3850
+     ],
+     [
+      10,
+      4950
+     ],
+     [
+      15,
+      6050
+     ],
+     [
+      20,
+      7150
+     ],
+     [
+      25,
+      8250
+     ],
+     [
+      30,
+      9350
+     ],
+     [
+      35,
+      10450
+     ],
+     [
+      40,
+      11550
+     ],
+     [
+      45,
+      12650
+     ],
+     [
+      50,
+      13750
+     ]
+    ],
+    "roundTable": [
+     [
+      5,
+      6160
+     ],
+     [
+      10,
+      7920
+     ],
+     [
+      15,
+      9680
+     ],
+     [
+      20,
+      11440
+     ],
+     [
+      25,
+      13200
+     ],
+     [
+      30,
+      14960
+     ],
+     [
+      35,
+      16720
+     ],
+     [
+      40,
+      18480
+     ],
+     [
+      45,
+      20240
+     ],
+     [
+      50,
+      22000
+     ]
+    ],
+    "wait": {
+     "free": 0,
+     "unit": 30,
+     "yen": 550
+    },
+    "tax": "",
+    "src": "https://www.legolashouse.com/price"
+   },
    "pay": "",
    "hours": "0-24",
    "flex": false,
@@ -725,7 +818,37 @@
     35.42,
     139.66
    ],
-   "fare": null,
+   "fare": {
+    "kind": "time",
+    "time": {
+     "first": [
+      90,
+      5720
+     ],
+     "unit": [
+      15,
+      1430
+     ],
+     "discount": {
+      "min": 120,
+      "rate": 0.05
+     }
+    },
+    "pick": {
+     "km": 10,
+     "yen": 0,
+     "per": 825,
+     "unit": 10
+    },
+    "back": {
+     "km": 10,
+     "yen": 0,
+     "per": 825,
+     "unit": 10
+    },
+    "tax": "税込",
+    "src": "https://www.ikimonocare.com/"
+   },
    "pay": "",
    "hours": "8-20",
    "flex": false,
@@ -1287,7 +1410,40 @@
     35.846,
     139.66
    ],
-   "fare": null,
+   "fare": {
+    "base": [
+     3300,
+     5
+    ],
+    "tiers": [
+     [
+      6,
+      100,
+      165
+     ],
+     [
+      101,
+      200,
+      132
+     ],
+     [
+      201,
+      null,
+      110
+     ]
+    ],
+    "pick": {
+     "per": 165,
+     "unsure": true
+    },
+    "wait": {
+     "free": 10,
+     "unit": 10,
+     "yen": 220
+    },
+    "tax": "税込",
+    "src": "https://cocotaxi-saitama.com/"
+   },
    "pay": "現金・カード・PayPay等",
    "hours": "0-24",
    "flex": false,
@@ -1313,7 +1469,34 @@
     35.981,
     139.479
    ],
-   "fare": null,
+   "fare": {
+    "base": [
+     3300,
+     5
+    ],
+    "tiers": [
+     [
+      6,
+      100,
+      165
+     ],
+     [
+      101,
+      200,
+      132
+     ],
+     [
+      201,
+      null,
+      110
+     ]
+    ],
+    "pick": {
+     "per": 165
+    },
+    "tax": "",
+    "src": "https://pet-taxi-saitama-kawagoe.jp/"
+   },
    "pay": "現金・カード・QR",
    "hours": "0-24",
    "flex": false,
@@ -1561,7 +1744,26 @@
     35.607,
     140.106
    ],
-   "fare": null,
+   "fare": {
+    "base": [
+     1500,
+     5
+    ],
+    "tiers": [
+     [
+      6,
+      null,
+      200
+     ]
+    ],
+    "pick": {
+     "km": 5,
+     "yen": 0,
+     "per": 100
+    },
+    "tax": "",
+    "src": "https://pearlno-shippo.com/"
+   },
    "pay": "",
    "hours": "9-21",
    "flex": false,
@@ -2169,7 +2371,32 @@
     35.135,
     136.84
    ],
-   "fare": null,
+   "fare": {
+    "kind": "time",
+    "time": {
+     "first": [
+      20,
+      4400
+     ],
+     "unit": [
+      10,
+      550
+     ],
+     "maxKm": 20
+    },
+    "off": {
+     "from": 9,
+     "to": 18,
+     "perHour": 1650
+    },
+    "pick": {
+     "km": 3,
+     "yen": 0,
+     "per": 280
+    },
+    "tax": "税込",
+    "src": "https://happywith.pet/price/"
+   },
    "pay": "現金（降りるとき）・事前の振込。カード・QRは不可",
    "hours": "8-20",
    "flex": false,
@@ -2256,7 +2483,27 @@
     34.737,
     135.82
    ],
-   "fare": null,
+   "fare": {
+    "base": [
+     3300,
+     20
+    ],
+    "tiers": [
+     [
+      21,
+      null,
+      110,
+      10
+     ]
+    ],
+    "tax": "税込",
+    "night": {
+     "from": 21,
+     "to": 6,
+     "flat": 3300
+    },
+    "src": "https://j-pettaxi.com/"
+   },
    "pay": "",
    "hours": "",
    "flex": false,
@@ -2313,7 +2560,21 @@
     35.03,
     135.75
    ],
-   "fare": null,
+   "fare": {
+    "kind": "time",
+    "time": {
+     "first": [
+      60,
+      6280
+     ],
+     "unit": [
+      30,
+      3140
+     ]
+    },
+    "tax": "税込",
+    "src": "https://kitani11taxi.com/"
+   },
    "pay": "",
    "hours": "",
    "flex": false,
@@ -2433,7 +2694,30 @@
     34.794,
     135.452
    ],
-   "fare": null,
+   "fare": {
+    "base": [
+     4000,
+     10
+    ],
+    "tiers": [
+     [
+      11,
+      null,
+      200
+     ]
+    ],
+    "pick": {
+     "yen": 0,
+     "unknownOver": 5
+    },
+    "wait": {
+     "free": 0,
+     "unit": 10,
+     "yen": 300
+    },
+    "tax": "税込",
+    "src": "https://doghairstudioken.jp/"
+   },
    "pay": "カード・電子マネー・交通系IC",
    "hours": "10-18",
    "flex": false,
@@ -3208,7 +3492,30 @@
     33.584,
     130.402
    ],
-   "fare": null,
+   "fare": {
+    "kind": "zone",
+    "zone": {
+     "city": "福岡市",
+     "one": 3000,
+     "round": 5000
+    },
+    "wait": {
+     "free": 15,
+     "unit": 15,
+     "yen": 1000
+    },
+    "night": {
+     "from": 20,
+     "to": 8,
+     "flat": 5000
+    },
+    "pick": {
+     "yen": 0
+    },
+    "back": {},
+    "tax": "",
+    "src": "https://wanwan.pet/"
+   },
    "pay": "",
    "hours": "0-24",
    "flex": false,

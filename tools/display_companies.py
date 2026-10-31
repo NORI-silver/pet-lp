@@ -69,7 +69,36 @@ PICK = {  # 文で書かれた迎車・回送を形にしたもの（tariffs.jso
     'D9f338ec': {'back': {'km': 10, 'yen': 0, 'over': 500}},                     # お店からご自宅まで10kmを超えると回送500円
     'D7e284b0': {'pick': {'per': 280}},                                          # お迎えの距離にも1kmごと280円
 }
+# 距離制の形に当てはまらない会社の料金のしくみ（会社ごとの式。Nori 2026-10-31「全ての事業所で違う計算式でもいい。正しい料金が出ることが一番」）
+# 公式サイトの数字がはっきりしている会社だけ入れる。区切りや単価が読み取れない会社（レゴラスハウス・ZERO・冨士タクシーなど）は入れない
+CUSTOM = {
+    'Dc9d8a2b': {'base': [3300, 20], 'tiers': [[21, None, 110, 10]], 'tax': '税込', 'night': {'from': 21, 'to': 6, 'flat': 3300},
+                 'src': 'https://j-pettaxi.com/'},  # 基本料金3,300円（20km・1時間以内）、21kmから10kmごと110円、21〜6時 3,300円
+    'Dfc6c94f': {'kind': 'time', 'time': {'first': [60, 6280], 'unit': [30, 3140]}, 'tax': '税込',
+                 'src': 'https://kitani11taxi.com/'},  # 時間貸切 1時間6,280円（最少1時間）、以降30分ごと3,140円
+    'D44cfd16': {'kind': 'time', 'time': {'first': [20, 4400], 'unit': [10, 550], 'maxKm': 20}, 'off': {'from': 9, 'to': 18, 'perHour': 1650},
+                 'pick': {'km': 3, 'yen': 0, 'per': 280}, 'tax': '税込',
+                 'src': 'https://happywith.pet/price/'},  # 20分4,400円＋10分ごと550円（20kmまで）、9〜18時の外は1時間ごと1,650円、配車3kmまで無料・そのあと1kmごと280円
+    'Db28bc5b': {'kind': 'zone', 'zone': {'city': '福岡市', 'one': 3000, 'round': 5000}, 'wait': {'free': 15, 'unit': 15, 'yen': 1000},
+                 'night': {'from': 20, 'to': 8, 'flat': 5000}, 'pick': {'yen': 0}, 'back': {}, 'tax': '',
+                 'src': 'https://wanwan.pet/'},  # 福岡市内→福岡市内 片道3,000円・往復5,000円、待ち15分無料・そのあと15分ごと1,000円、20〜8時 5,000円
+    'De65cb2d': {'kind': 'table', 'table': [[5, 3850], [10, 4950], [15, 6050], [20, 7150], [25, 8250], [30, 9350], [35, 10450], [40, 11550], [45, 12650], [50, 13750]],
+                 'roundTable': [[5, 6160], [10, 7920], [15, 9680], [20, 11440], [25, 13200], [30, 14960], [35, 16720], [40, 18480], [45, 20240], [50, 22000]],
+                 'wait': {'free': 0, 'unit': 30, 'yen': 550}, 'tax': '', 'src': 'https://www.legolashouse.com/price'},  # 片道・往復の距離ごとの料金表（50kmまで）、待ち30分ごと550円
+    'D945f580': {'kind': 'time', 'time': {'first': [90, 5720], 'unit': [15, 1430], 'discount': {'min': 120, 'rate': 0.05}},
+                 'pick': {'km': 10, 'yen': 0, 'per': 825, 'unit': 10}, 'back': {'km': 10, 'yen': 0, 'per': 825, 'unit': 10}, 'tax': '税込',
+                 'src': 'https://www.ikimonocare.com/'},  # 90分5,720円、15分ごと1,430円、2時間以上5%引き。移動は片道30分まで無料・そのあと30分ごと825円（1kmを3分とみて10km）
+    'D6125f28': {'base': [4000, 10], 'tiers': [[11, None, 200]], 'pick': {'yen': 0, 'unknownOver': 5}, 'wait': {'free': 0, 'unit': 10, 'yen': 300}, 'tax': '税込',
+                 'src': 'https://doghairstudioken.jp/'},  # 基本4,000円（お迎えと10kmまで込み）、そのあと1kmごと200円、待ち10分ごと300円。お店から5km超のお迎えは別料金（金額なし）
+    'D40a4aa0': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165, 'unsure': True}, 'wait': {'free': 10, 'unit': 10, 'yen': 220}, 'tax': '税込',
+                 'src': 'https://cocotaxi-saitama.com/'},  # お迎え165円/km（いまは50%OFFのセール中と書いてある→「〜」）
+    'Dfcb8480': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'tax': '',
+                 'src': 'https://pet-taxi-saitama-kawagoe.jp/'},
+    'D3c85024': {'base': [1500, 5], 'tiers': [[6, None, 200]], 'pick': {'km': 5, 'yen': 0, 'per': 100}, 'tax': '',
+                 'src': 'https://pearlno-shippo.com/'},  # 基本1,500円（5kmまで）・そのあと1kmごと200円、お迎え5kmまで無料・そのあと1kmごと100円、待ち30分まで無料
+}
 def fare(T, did):
+    if did in CUSTOM: return CUSTOM[did]
     if not T or not T.get('base') or not T.get('tiers'): return None
     P, out = T.get('pick'), {'base': T['base'], 'tiers': T['tiers'], 'tax': T.get('tax') or '', 'src': T.get('src', '')}
     if P and 'perkm' in P: out['pick'] = {'per': P['perkm']}

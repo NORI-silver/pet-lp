@@ -77,6 +77,23 @@ assert.equal(pr.local.pickup,Math.ceil(ctx.kmBetween_(shopPt,far)*1.3)*165);
 const tx={id:'X',fare:{base:[2000,5],tiers:[[6,null,200]],tax:'税抜'}};
 pr=call('displayPrice_',tx,{...p,route_details:rd(10)});
 assert.equal(pr.local.ride,Math.ceil(3000*1.1)); assert.ok(/税抜/.test(pr.planNote));
+// 会社ごとの式（Nori 2026-10-31「全ての事業所で違う計算式でもいい」）
+const byId=id=>disp.find(c=>c.id===id);
+const rd2=(km,a,b)=>JSON.stringify({km,backKm:km,from:a||dest,to:b||dest,backFrom:b||dest,backTo:a||dest});
+// 時間制：木谷わんわんタクシー 1時間6,280円・以降30分ごと3,140円（1kmを3分）。25km＝75分→6,280＋3,140
+const kt=byId('Dfc6c94f'), ktp={lat:kt.shop[0],lng:kt.shop[1]};
+assert.equal(call('displayPrice_',kt,{...p,route_details:rd2(25,ktp,ktp)}).local.ride,6280+3140);
+assert.equal(call('displayPrice_',kt,{...p,route_details:rd2(10,ktp,ktp)}).local.ride,6280);
+// 料金表：レゴラスハウス 15kmまで6,050円、50km超はお見積もり
+const lg=byId('De65cb2d');
+assert.equal(call('displayPrice_',lg,{...p,route_details:rd2(12)}).local.ride,6050);
+assert.equal(ctx.displayPrice_(lg,{...p,route_details:rd2(60)}),null);
+// 定額：福岡わんわんエクスプレス 福岡市内→市内 片道3,000円。市の外はお見積もり
+const fk=byId('Db28bc5b'), fkp={lat:fk.shop[0],lng:fk.shop[1]};
+assert.equal(call('displayPrice_',fk,{...p,pickup:'福岡県福岡市中央区',dropoff:'福岡県福岡市博多区',route_details:rd2(5,fkp,fkp)}).local.ride,3000);
+assert.equal(ctx.displayPrice_(fk,{...p,pickup:'福岡県福岡市中央区',dropoff:'福岡県久留米市',route_details:rd2(5,fkp,fkp)}),null);
+// 10kmごとの単価：PetTAXI24 3,300円（20kmまで）、21kmから10kmごと110円 → 35km＝3,300＋220
+assert.equal(call('displayPrice_',byId('Dc9d8a2b'),{...p,route_details:rd2(35)}).local.ride,3520);
 // 料金表がない会社はお見積もり
 assert.equal(ctx.displayPrice_({id:'Y'},p),null);
 // 営業時間・当日予約でしぼる（Nori 2026-10-31）。日本時間で日時を作る
