@@ -278,3 +278,16 @@ for guide in GUIDES:
             ("電車・レンタカー・ペットタクシーの比較", "/guide/dog-trip-without-car/")
         ])]))
         guide["modified"] = "2026-10-31"
+
+
+# 記事写真は記事ごとに管理し、同じ写真の使い回しを防ぐ。
+import json as _json
+from pathlib import Path as _Path
+_article_images = _json.loads((_Path(__file__).with_name("article_images.json")).read_text(encoding="utf-8"))
+if set(_article_images) != {g["slug"] for g in GUIDES}:
+    raise ValueError("記事と写真の登録が一致していません")
+if len({v["img"] for v in _article_images.values()}) != len(GUIDES):
+    raise ValueError("記事写真が重複しています")
+for guide in GUIDES:
+    guide.update(_article_images[guide["slug"]])
+    guide["modified"] = "2026-10-31"
