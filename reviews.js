@@ -1,6 +1,6 @@
 // 生成ファイル（tools/gen_areas.py）。手で直さない
 (function(){
-  var GAS_URL = "https://script.google.com/macros/s/AKfycbyxsd8L8g_5Nt3HnApx2ZQnXFyPBsNfuHSvBlJKRVDtAIVr0EnqB-0raxwMPNOVl_Jg/exec", memo = {}, queue = [], timer = 0;
+  var GAS_URL = "https://script.google.com/macros/s/AKfycbyy-cTvD-t8DFGhEyA2IbFiXWoB50kl_2_97WiVdMlXec8sIbI2NVUkkyn-45VkIMc_5g/exec", memo = {}, queue = [], timer = 0;
   function el(tag, cls, text){ var x = document.createElement(tag); if (cls) x.className = cls; if (text != null) x.textContent = text; return x; }
   function toggle(id, panel, btn){
     if (!panel.hidden) { panel.hidden = true; btn.setAttribute("aria-expanded", "false"); return; }

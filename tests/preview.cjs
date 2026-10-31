@@ -41,6 +41,6 @@ http.createServer(async(req,res)=>{
  if(!fs.existsSync(filename)){res.statusCode=404;return res.end();}
  let body=fs.readFileSync(filename);
  const ext=path.extname(filename);res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.jpg':'image/jpeg','.webp':'image/webp','.png':'image/png','.svg':'image/svg+xml'})[ext]||'application/octet-stream');
- if(filename===path.join(root,'index.html'))body=body.toString().replace('var GAS_URL = "https://script.google.com/macros/s/AKfycbyxsd8L8g_5Nt3HnApx2ZQnXFyPBsNfuHSvBlJKRVDtAIVr0EnqB-0raxwMPNOVl_Jg/exec";','var GAS_URL = "/demo-api";').replace('</head>',fixtures+'</head>').replace('<body>','<body><div style="padding:12px;background:#fff1b8;text-align:center;font-weight:bold">動作確認用：表示データはサンプルです。予約保存・メール送信は行いません。</div>');
+ if(filename===path.join(root,'index.html'))body=body.toString().replace('var GAS_URL = "https://script.google.com/macros/s/AKfycbyy-cTvD-t8DFGhEyA2IbFiXWoB50kl_2_97WiVdMlXec8sIbI2NVUkkyn-45VkIMc_5g/exec";','var GAS_URL = "/demo-api";').replace('</head>',fixtures+'</head>').replace('<body>','<body><div style="padding:12px;background:#fff1b8;text-align:center;font-weight:bold">動作確認用：表示データはサンプルです。予約保存・メール送信は行いません。</div>');
  res.end(body);
 }).listen(Number(process.env.PET_PREVIEW_PORT)||8765,'127.0.0.1',()=>console.log('Preview: http://127.0.0.1:8765/#form'));

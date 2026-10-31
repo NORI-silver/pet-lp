@@ -24,7 +24,7 @@ var CONFIG = {
   PAGE_URL: 'https://pet.shiokonbu.com/go/',
 
   // ウェブアプリとして公開したあとのURL（https://script.google.com/macros/s/〇〇/exec）
-  WEB_APP_URL: 'https://script.google.com/macros/s/AKfycbyxsd8L8g_5Nt3HnApx2ZQnXFyPBsNfuHSvBlJKRVDtAIVr0EnqB-0raxwMPNOVl_Jg/exec',
+  WEB_APP_URL: 'https://script.google.com/macros/s/AKfycbyy-cTvD-t8DFGhEyA2IbFiXWoB50kl_2_97WiVdMlXec8sIbI2NVUkkyn-45VkIMc_5g/exec',
 
   // 運営者（Noriさん）のメール。空なら、このスクリプトを動かしているGoogleアカウント
   ADMIN_EMAIL: 'pettaxi.yoyaku@gmail.com',
