@@ -1329,7 +1329,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         article.appendChild(chk);
       }
       var price = text("p", card.price.text, "partner-price");
-      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + (leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道") + (card.price.incompleteFees ? "の概算（税込・未確認費用は別途）" : "の合計目安（税込）"); price.appendChild(cap);
+      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + (leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道") + (card.price.taxUnknown ? (card.price.incompleteFees ? "の概算（税の扱いは確認中・未確認費用は別途）" : "の合計目安（税の扱いは確認中）") : card.price.incompleteFees ? "の概算（税込・未確認費用は別途）" : "の合計目安（税込）"); price.appendChild(cap);
       // 内訳は小さな文字の1行にして、押すと開く
       function breakdown(title, value, cls){
         var box = document.createElement("details"); box.className = "price-details" + (cls ? " " + cls : "");
