@@ -110,11 +110,12 @@ extra_css = """
 .other a:hover{border-color:var(--o);color:var(--o-d)}
 /* ガイド */
 .art{max-width:760px;margin:0 auto}
-.art h2{font-size:1.35rem;margin:44px 0 14px;padding-left:14px;border-left:5px solid var(--o);line-height:1.45}
+.art h2{scroll-margin-top:90px;font-size:1.35rem;margin:44px 0 14px;padding-left:14px;border-left:5px solid var(--o);line-height:1.45}
 .art p{color:var(--ink-2);margin:0 0 16px}
 .art ul,.art ol{color:var(--ink-2);padding-left:1.4em;margin:0 0 18px}
 .art li{margin:6px 0}
 .art .tip{background:var(--o-l);border-radius:18px;padding:16px 18px;color:var(--ink);font-weight:600;margin:0 0 18px}
+.art nav.art-toc::before{display:none}
 .art .tip::before{content:"POINT";display:block;font-size:.72rem;letter-spacing:.12em;color:var(--o-d);font-weight:800;margin-bottom:4px}
 .art .tbl{overflow-x:auto;margin:0 0 18px}
 .art table{border-collapse:collapse;width:100%;font-size:.78rem;line-height:1.5;background:#fff}
@@ -383,6 +384,7 @@ def block(b):
     if isinstance(b, str): return f"<p>{e(b)}</p>"
     k, v = b
     if k in ("ul", "ol"): return f"<{k}>" + "".join(f"<li>{e(x)}</li>" for x in v) + f"</{k}>"
+    if k == "links": return '<ul>' + "".join(f'<li><a href="{e(u)}">{e(n)}</a></li>' for n, u in v) + '</ul>'
     if k == "tip": return f'<p class="tip">{e(v)}</p>'
     if k == "cta": return f'<a class="btn" href="/#form">{e(v)}{ARROW}</a>'
     if k == "table":
@@ -393,20 +395,31 @@ def block(b):
 
 for g in GUIDES:
     url = f'{SITE}/guide/{g["slug"]}/'
+    published = g.get("published", PUBLISHED)
+    modified = g.get("modified", TODAY)
+    caption = f'<figcaption class="small">{e(g["img_caption"])}</figcaption>' if g.get("img_caption") else ""
+    checked = f'<p class="small">公式情報の確認日：{e(g["checked"])}</p>\n    ' if g.get("checked") else ""
     ld = [
       {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
         {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
         {"@type":"ListItem","position":2,"name":"ペットの移動ガイド","item":SITE+"/guide/"},
         {"@type":"ListItem","position":3,"name":g["title"],"item":url}]},
       {"@context":"https://schema.org","@type":"Article","headline":g["title"],"description":g["desc"],"url":url,
-       "image":f'{SITE}/img/guide/{g["img"]}',"datePublished":PUBLISHED,"dateModified":TODAY,"inLanguage":"ja",
+       "image":f'{SITE}/img/guide/{g["img"]}',"datePublished":published,"dateModified":modified,"inLanguage":"ja",
        "author":{"@id":SITE+"/#org"},"publisher":{"@id":SITE+"/#org"},"mainEntityOfPage":url},
     ]
     if g.get("faq"):
         ld.append({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
           {"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":ans}} for q,ans in g["faq"]]})
     ld_html = "\n".join('<script type="application/ld+json">\n' + json.dumps(x, ensure_ascii=False, indent=1) + '\n</script>' for x in ld)
-    body = "".join(f'<h2>{e(h)}</h2>' + "".join(block(b) for b in bs) for h, bs in g["sections"])
+    if g.get("category") == "facility":
+        toc = '<nav class="tip art-toc" aria-label="この記事の目次"><b>この記事で分かること</b><ol>' + "".join(
+            f'<li><a href="#section-{i}">{e(h)}</a></li>' for i, (h, _) in enumerate(g["sections"], 1)) + '</ol></nav>'
+        body = toc + "".join(f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b) for b in bs)
+                              for i, (h, bs) in enumerate(g["sections"], 1))
+        body += f'<p class="small">{e(g["facility_note"])}</p>'
+    else:
+        body = "".join(f'<h2>{e(h)}</h2>' + "".join(block(b) for b in bs) for h, bs in g["sections"])
     faq = ""
     if g.get("faq"):
         faq = '<h2>よくある質問</h2><div class="faq-list">' + "".join(f'<details><summary>{e(q)}</summary><div class="a">{e(ans)}</div></details>' for q,ans in g["faq"]) + '</div>'
@@ -418,15 +431,15 @@ for g in GUIDES:
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/guide/">ペットの移動ガイド</a> › {e(g["title"])}</nav>
     <h1>{e(g["title"])}</h1>
     <p class="lede">{e(g["lede"])}</p>
-    <p class="small">ペットタクシー予約窓口　公開 {PUBLISHED.replace("-", ".")}・更新 {TODAY.replace("-", ".")}</p>
-    <figure class="art-img"><picture><source srcset="/img/guide/{g["img"][:-4]}.webp" type="image/webp"><img src="/img/guide/{g["img"]}" alt="{e(g["img_alt"])}" width="1200" height="800" fetchpriority="high" onerror="this.closest('figure').remove()"></picture></figure>
+    <p class="small">ペットタクシー予約窓口　公開 {published.replace("-", ".")}・更新 {modified.replace("-", ".")}</p>
+    <figure class="art-img"><picture><source srcset="/img/guide/{g["img"][:-4]}.webp" type="image/webp"><img src="/img/guide/{g["img"]}" alt="{e(g["img_alt"])}" width="1200" height="800" fetchpriority="high" onerror="this.closest('figure').remove()"></picture>{caption}</figure>
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
     {body}
     {faq}
-    {src}
+    {checked}{src}
   </article></div>
 </section>
 <section style="padding-top:0">
@@ -452,6 +465,10 @@ for g in GUIDES:
 </section>
 </main>
 """ + foot("/#form")
+    if g.get("category") == "facility":
+        page = page.replace("ペットタクシーを予約する", "掲載候補を見る").replace(">予約する<", ">掲載候補を見る<")
+        page = page.replace("完全予約制・手配料0円。お申し込みだけでは予約は決まりません。引き受けが決まったメールが届いた時点で予約成立です。",
+                            "現在は候補の表示のみです。すべての会社への予約依頼を停止しています。")
     os.makedirs(os.path.join(ROOT, "guide", g["slug"]), exist_ok=True)
     open(os.path.join(ROOT, "guide", g["slug"], "index.html"), "w", encoding="utf-8").write(page)
 
@@ -470,7 +487,13 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
   </div>
 </section>
 <section style="padding-top:8px">
-  <div class="wrap">{guide_cards([g["slug"] for g in GUIDES])}</div>
+  <div class="wrap">
+    <div class="sh"><h2>病院・施設名から移動を調べる</h2></div>
+    <p>通院先や宿泊先ごとの行き方、受付・乗降場所、帰りの手配で確かめたいことをまとめました。</p>
+    {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "facility"])}
+    <div class="sh"><h2>移動の困りごとから調べる</h2></div>
+    {guide_cards([g["slug"] for g in GUIDES if g.get("category") != "facility"])}
+  </div>
 </section>
 <section style="padding-top:0">
   <div class="wrap">
@@ -933,9 +956,11 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
 
 # sitemap / robots / 404
 urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url, pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url]
+guide_modified = {f'{SITE}/guide/{g["slug"]}/': g.get("modified", TODAY) for g in GUIDES}
+guide_modified[hub_url] = "2026-10-31"
 open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-  "".join(f'  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>\n' for u in urls) + '</urlset>\n')
+  "".join(f'  <url><loc>{u}</loc><lastmod>{guide_modified.get(u, TODAY)}</lastmod></url>\n' for u in urls) + '</urlset>\n')
 open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /booking/\nDisallow: /docs/\n\nSitemap: {SITE}/sitemap.xml\n")
 nf = head("ページが見つかりません｜ペットタクシー予約窓口", "お探しのページは見つかりませんでした。", SITE + "/404.html", '<meta name="robots" content="noindex">') + f'''
 <main><section class="area-hero"><div class="wrap" style="text-align:center">
