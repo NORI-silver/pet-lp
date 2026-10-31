@@ -1406,7 +1406,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         article.appendChild(chk);
       }
       var price = text("p", card.price.text, "partner-price");
-      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + (leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道") + (card.price.incompleteFees ? "の概算（税込・未確認費用は別途）" : "の合計目安（税込）"); price.appendChild(cap);
+      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + (leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道") + (card.price.taxUnknown ? (card.price.incompleteFees ? "の概算（税の扱いは確認中・未確認費用は別途）" : "の合計目安（税の扱いは確認中）") : card.price.incompleteFees ? "の概算（税込・未確認費用は別途）" : "の合計目安（税込）"); price.appendChild(cap);
       // 内訳は小さな文字の1行にして、押すと開く
       function breakdown(title, value, cls){
         var box = document.createElement("details"); box.className = "price-details" + (cls ? " " + cls : "");
@@ -1566,7 +1566,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var sp = card.querySelector("input[name$=_species]:checked"), care = card.querySelector("input[name$=_care]:checked");
     card.querySelector(".rabies").hidden = !!sp && sp.value !== "犬"; // 狂犬病の予防注射は犬だけ
     card.querySelector(".care-box").hidden = !care || care.value !== "必要";
+    // 「その他」のときは、どんな動物かを選んでもらう（会社によって乗せられる動物が違う）
+    var other = !!sp && sp.value === "その他", kind = card.querySelector(".kind-box");
+    kind.hidden = !other; kind.querySelector("select").required = other;
+    card.querySelector(".breed-lbl").textContent = other ? "くわしい種類" : "犬種・猫種";
   }
+  // 犬・猫のほかの動物（ここで選んだものが「種類」として届く）
+  var KINDS = [["うさぎ","うさぎ"],["フェレット","フェレット"],["ハムスター・モルモットなどの小動物","ハムスター・モルモットなど"],["鳥","鳥（インコ・文鳥など）"],["爬虫類・両生類","爬虫類・両生類（カメ・ヘビなど）"],["魚","魚（熱帯魚・金魚など）"],["そのほかの動物","そのほかの動物"]];
   function petCard(n){
     var k = "p" + n;
     var el = document.createElement("div");
@@ -1574,10 +1580,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     el.dataset.key = k;
     el.innerHTML =
       '<div class="pet-h"><b></b></div>' +
-      '<div class="f"><span class="lbl">種類</span>' + seg(k + "_species", [["犬","わんちゃん"],["猫","ねこちゃん"],["その他","その他"]], true) + '</div>' +
+      '<div class="f"><span class="lbl">種類</span>' + seg(k + "_species", [["犬","わんちゃん"],["猫","ねこちゃん"],["その他","そのほかの動物"]], true) +
+        '<div class="kind-box" hidden><label for="' + k + '_kind" class="lbl" style="margin-top:10px;font-weight:700">どんな動物ですか？</label><select id="' + k + '_kind" name="' + k + '_kind"><option value="">選んでください</option>' +
+        KINDS.map(function(o){ return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('') + '</select>' +
+        '<p style="margin:6px 0 0;font-size:.8rem;color:var(--ink-3)">乗せられる動物は会社ごとに違います。乗せられると公式サイトに書いてある会社を先に出します。</p></div></div>' +
       '<div class="two">' +
-        '<div class="f"><label for="' + k + '_breed">犬種・猫種<span class="any">わかれば</span></label><div class="cb"><input type="text" id="' + k + '_breed" name="' + k + '_breed" class="breed" placeholder="選ぶか、入力してしぼりこみ" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><ul class="cb-list" role="listbox" hidden></ul></div></div>' +
-        '<div class="f"><label for="' + k + '_weight">体重（kg）</label><input type="number" id="' + k + '_weight" name="' + k + '_weight" min="0" max="120" step="0.1" inputmode="decimal" placeholder="例：8" required></div>' +
+        '<div class="f"><label for="' + k + '_breed"><span class="breed-lbl">犬種・猫種</span><span class="any">わかれば</span></label><div class="cb"><input type="text" id="' + k + '_breed" name="' + k + '_breed" class="breed" placeholder="選ぶか、入力してしぼりこみ" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><ul class="cb-list" role="listbox" hidden></ul></div></div>' +
+        '<div class="f"><label for="' + k + '_weight">体重（kg）</label><input type="number" id="' + k + '_weight" name="' + k + '_weight" min="0.01" max="120" step="any" inputmode="decimal" placeholder="例：8（小さな子は 0.3 など）" required></div>' +
         '<div class="f"><label for="' + k + '_age">年齢<span class="any">わかれば</span></label><input type="number" id="' + k + '_age" name="' + k + '_age" min="0" max="40" inputmode="numeric" placeholder="例：12"></div>' +
         '<div class="f"><span class="lbl">性別<span class="any">わかれば</span></span>' + seg(k + "_sex", [["オス","男の子"],["メス","女の子"]], false) + '</div>' +
       '</div>' +
@@ -1618,7 +1627,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var BREEDS = {
     "犬": ["ミックス（雑種）|ざっしゅ","トイ・プードル","チワワ","柴犬|しばいぬ","豆柴|まめしば","ミニチュア・ダックスフンド","カニーンヘン・ダックスフンド","ポメラニアン","ミニチュア・シュナウザー","ヨークシャー・テリア","フレンチ・ブルドッグ","マルチーズ","シー・ズー","パピヨン","ゴールデン・レトリーバー","ラブラドール・レトリーバー","ウェルシュ・コーギー・ペンブローク","ジャック・ラッセル・テリア","パグ","キャバリア・キング・チャールズ・スパニエル","ミニチュア・ピンシャー","ビション・フリーゼ","ボーダー・コリー","シェットランド・シープドッグ","ペキニーズ","イタリアン・グレーハウンド","ボストン・テリア","ビーグル","ウエスト・ハイランド・ホワイト・テリア","アメリカン・コッカー・スパニエル","狆|ちん","日本スピッツ|にほん","秋田犬|あきたいぬ","甲斐犬|かいけん","北海道犬|ほっかいどういぬ","紀州犬|きしゅういぬ","四国犬|しこくけん","シベリアン・ハスキー","サモエド","バーニーズ・マウンテン・ドッグ","グレート・ピレニーズ","セント・バーナード","グレート・デーン","ドーベルマン","ジャーマン・シェパード・ドッグ","ボクサー","ブルドッグ","スタンダード・プードル","ミディアム・プードル","ボルゾイ","ウィペット"],
     "猫": ["ミックス（雑種）|ざっしゅ","スコティッシュ・フォールド","マンチカン","ラグドール","ブリティッシュ・ショートヘア","アメリカン・ショートヘア","ノルウェージャン・フォレスト・キャット","メインクーン","ロシアンブルー","ベンガル","エキゾチック・ショートヘア","ペルシャ","ヒマラヤン","ミヌエット","サイベリアン","アビシニアン","ソマリ","シャム","シンガプーラ","ラガマフィン","バーマン","トンキニーズ","セルカーク・レックス","デボン・レックス","スフィンクス","ターキッシュアンゴラ","エジプシャン・マウ","オリエンタル"],
-    "その他": ["うさぎ","フェレット","モルモット","ハムスター","チンチラ","ハリネズミ","デグー","インコ","オウム","文鳥|ぶんちょう","カメ","トカゲ・ヘビなど|はちゅうるい"]
+    "その他": ["うさぎ","フェレット","モルモット","ハムスター","チンチラ","ハリネズミ","デグー","リス","インコ","オウム","文鳥|ぶんちょう","カナリア","カメ","トカゲ","ヘビ","カエル","熱帯魚","金魚","メダカ"]
   };
   // ひらがな・カタカナ、「・」や空白、全角・半角の違いを気にせずしぼりこむ
   function norm(t){
@@ -1683,7 +1692,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     return Array.prototype.map.call(petsBox.querySelectorAll(".pet"), function(c){
       var k = c.dataset.key, g = function(f){ return String(fd.get(k + "_" + f) || "").trim(); };
       var care = g("care"), dog = !g("species") || g("species") === "犬";
-      return { species:g("species"), breed:g("breed"), weight:g("weight"), age:g("age"), sex:g("sex"), cage:g("cage"), care:care,
+      return { species:g("species") === "その他" && g("kind") ? g("kind") : g("species"), breed:g("breed"), weight:g("weight"), age:g("age"), sex:g("sex"), cage:g("cage"), care:care,
         vaccine: g("vac") ? "済" : "", rabies: dog && g("rabies") ? "済" : "",
         care_need: care === "必要" ? fd.getAll(k + "_care_need").map(String) : [], care_note: care === "必要" ? g("care_note") : "" };
     });
@@ -2118,6 +2127,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       ["breed","weight","age"].forEach(function(f){ if (p[f] != null) $(k + "_" + f).value = p[f]; });
       var old = {"持っている":"持ち込む","持っていない":"借りたい"};
       if (old[p.cage]) p.cage = old[p.cage];
+      if (p.species && !/^(犬|猫|その他)$/.test(p.species)) { $(k + "_kind").value = p.species; p = Object.assign({}, p, {species:"その他"}); }
       ["species","sex","cage","care"].forEach(function(f){ setRadio(k + "_" + f, p[f]); });
       c.querySelector("input[name$=_vac]").checked = p.vaccine === "済";
       c.querySelector("input[name$=_rabies]").checked = p.rabies === "済";

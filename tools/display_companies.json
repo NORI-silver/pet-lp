@@ -58,7 +58,15 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small"
+    ],
+    "no": []
+   }
   },
   {
    "id": "Dea620d5",
@@ -117,7 +125,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D3661eb1",
@@ -170,7 +184,13 @@
    "flex": true,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D1e44e13",
@@ -228,7 +248,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "Da5a2701",
@@ -248,7 +274,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D355c31f",
@@ -295,7 +327,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D7c32399",
@@ -344,7 +382,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "Dbe5cb84",
@@ -364,7 +408,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": true,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D0d1c8b4",
@@ -419,7 +469,16 @@
    "flex": false,
    "closed": [],
    "lead_days": 0,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small",
+     "bird"
+    ],
+    "no": []
+   }
   },
   {
    "id": "D692c9a6",
@@ -474,7 +533,13 @@
    "flex": true,
    "closed": [],
    "lead_days": 0,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D7138c0d",
@@ -495,7 +560,13 @@
    "flex": false,
    "closed": [],
    "lead_days": 0,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D7922e74",
@@ -555,7 +626,13 @@
    "flex": false,
    "closed": [],
    "lead_days": 0,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D0d611b0",
@@ -575,7 +652,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "De65cb2d",
@@ -595,7 +678,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D63b09f7",
@@ -615,7 +704,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D945f580",
@@ -636,7 +731,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D5598693",
@@ -698,7 +799,16 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [
+     "small",
+     "bird"
+    ],
+    "no": []
+   }
   },
   {
    "id": "D5604536",
@@ -759,7 +869,15 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small"
+    ],
+    "no": []
+   }
   },
   {
    "id": "Dc7b4703",
@@ -797,7 +915,13 @@
    "flex": false,
    "closed": [],
    "lead_days": 0,
-   "cut": 16
+   "cut": 16,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "Dc46d194",
@@ -817,7 +941,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D68f9d95",
@@ -878,7 +1008,17 @@
    "flex": true,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small",
+     "bird",
+     "fish"
+    ],
+    "no": []
+   }
   },
   {
    "id": "D8da1ced",
@@ -899,7 +1039,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": true,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "Daed391e",
@@ -941,7 +1087,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D0437ae3",
@@ -983,7 +1135,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D5f32b1e",
@@ -1002,7 +1160,15 @@
    "flex": false,
    "closed": [],
    "lead_days": 1,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small"
+    ],
+    "no": []
+   }
   },
   {
    "id": "Daf1e25b",
@@ -1044,7 +1210,13 @@
     6
    ],
    "lead_days": 3,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D0b50c1a",
@@ -1067,7 +1239,17 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "bird",
+     "reptile",
+     "fish"
+    ],
+    "no": []
+   }
   },
   {
    "id": "D06b72ea",
@@ -1084,7 +1266,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D40a4aa0",
@@ -1105,7 +1293,13 @@
    "flex": false,
    "closed": [],
    "lead_days": 0,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "Dfcb8480",
@@ -1125,7 +1319,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D853ae97",
@@ -1187,7 +1387,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D3cc1cce",
@@ -1247,7 +1453,17 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small",
+     "reptile",
+     "fish"
+    ],
+    "no": []
+   }
   },
   {
    "id": "De3f35f2",
@@ -1269,7 +1485,17 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [
+     "small",
+     "bird",
+     "reptile"
+    ],
+    "no": []
+   }
   },
   {
    "id": "Dd8c07a8",
@@ -1312,7 +1538,16 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "bird",
+     "reptile"
+    ],
+    "no": []
+   }
   },
   {
    "id": "D3c85024",
@@ -1334,7 +1569,13 @@
     4
    ],
    "lead_days": 0,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "Dedcfcd2",
@@ -1374,7 +1615,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D68a3be6",
@@ -1397,7 +1644,16 @@
    "flex": true,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [
+     "small",
+     "bird"
+    ],
+    "no": []
+   }
   },
   {
    "id": "Dc28c19e",
@@ -1463,7 +1719,13 @@
     4
    ],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "Db405639",
@@ -1511,7 +1773,13 @@
    "flex": true,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D44948b6",
@@ -1556,7 +1824,13 @@
    "flex": true,
    "closed": [],
    "lead_days": 0,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D13b7c6f",
@@ -1614,7 +1888,13 @@
    "flex": false,
    "closed": [],
    "lead_days": 0,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D1f53c72",
@@ -1670,7 +1950,13 @@
     6
    ],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D4adf70b",
@@ -1687,7 +1973,13 @@
    "flex": false,
    "closed": [],
    "lead_days": 0,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D30e1838",
@@ -1707,7 +1999,16 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small",
+     "bird"
+    ],
+    "no": []
+   }
   },
   {
    "id": "D59e83ab",
@@ -1727,7 +2028,15 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small"
+    ],
+    "no": []
+   }
   },
   {
    "id": "D1132ff9",
@@ -1744,7 +2053,17 @@
    "flex": false,
    "closed": [],
    "lead_days": 1,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small",
+     "bird",
+     "reptile"
+    ],
+    "no": []
+   }
   },
   {
    "id": "Da40f372",
@@ -1764,7 +2083,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "Dd472236",
@@ -1822,7 +2147,15 @@
    "flex": true,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small"
+    ],
+    "no": []
+   }
   },
   {
    "id": "D44cfd16",
@@ -1842,7 +2175,15 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small"
+    ],
+    "no": []
+   }
   },
   {
    "id": "Dcda25a4",
@@ -1862,7 +2203,17 @@
    "flex": false,
    "closed": [],
    "lead_days": 1,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small",
+     "bird",
+     "reptile"
+    ],
+    "no": []
+   }
   },
   {
    "id": "D1834601",
@@ -1882,7 +2233,16 @@
    "flex": false,
    "closed": [],
    "lead_days": 0,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small",
+     "bird"
+    ],
+    "no": []
+   }
   },
   {
    "id": "Dc9d8a2b",
@@ -1902,7 +2262,18 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small"
+    ],
+    "no": [
+     "bird",
+     "reptile"
+    ]
+   }
   },
   {
    "id": "D25bac67",
@@ -1922,7 +2293,13 @@
    "flex": true,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "Dfc6c94f",
@@ -1942,7 +2319,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D7d574bf",
@@ -1996,7 +2379,16 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small",
+     "bird"
+    ],
+    "no": []
+   }
   },
   {
    "id": "Db8bafea",
@@ -2021,7 +2413,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D6125f28",
@@ -2043,7 +2441,15 @@
     3
    ],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small"
+    ],
+    "no": []
+   }
   },
   {
    "id": "D7e284b0",
@@ -2094,7 +2500,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D01478c8",
@@ -2134,7 +2546,18 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small",
+     "bird",
+     "reptile",
+     "fish"
+    ],
+    "no": []
+   }
   },
   {
    "id": "Da9518d0",
@@ -2154,7 +2577,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D66c4625",
@@ -2202,7 +2631,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D874b316",
@@ -2227,7 +2662,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D1c2a5e3",
@@ -2250,7 +2691,13 @@
     6
    ],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D9f338ec",
@@ -2309,7 +2756,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D72024d3",
@@ -2327,7 +2780,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D154d458",
@@ -2390,7 +2849,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D0a999a3",
@@ -2453,7 +2918,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D0ff488e",
@@ -2473,7 +2944,13 @@
    "flex": true,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D225080e",
@@ -2521,7 +2998,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D678e01f",
@@ -2541,7 +3024,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "D8001263",
@@ -2561,7 +3050,15 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small"
+    ],
+    "no": []
+   }
   },
   {
    "id": "D7c41c5f",
@@ -2604,7 +3101,16 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": true,
+    "only": false,
+    "ok": [
+     "small",
+     "bird"
+    ],
+    "no": []
+   }
   },
   {
    "id": "Df31960d",
@@ -2653,7 +3159,16 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small",
+     "bird"
+    ],
+    "no": []
+   }
   },
   {
    "id": "Dbffb89d",
@@ -2673,7 +3188,13 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   }
   },
   {
    "id": "Db28bc5b",
@@ -2693,7 +3214,16 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small",
+     "bird"
+    ],
+    "no": []
+   }
   },
   {
    "id": "D7847612",
@@ -2713,7 +3243,15 @@
    "flex": false,
    "closed": [],
    "lead_days": null,
-   "cut": null
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [
+     "small"
+    ],
+    "no": []
+   }
   }
  ]
 }
