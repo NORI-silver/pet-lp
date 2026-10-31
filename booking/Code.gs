@@ -956,6 +956,17 @@ function cageText_(v) {
   return String(v || '').split('・').map(function (x) { x = x.trim(); return map[x] || x; }).filter(String).join('／');
 }
 
+// 1匹のときの予防接種と介護のくわしいこと（ペットJSON から。2匹以上はペット詳細の行に入っている）
+function petExtraText_(r) {
+  var p;
+  try { p = JSON.parse(r['ペットJSON'] || '[]')[0]; } catch (e) { p = null; }
+  if (!p) return '';
+  var vac = [p.vaccine === '済' ? '混合ワクチン' : '', p.rabies === '済' ? '狂犬病の予防注射' : ''].filter(String);
+  var care = (p.care_need || []).concat(p.care_note ? [p.care_note] : []);
+  return [vac.length ? '■ 予防接種：' + vac.join('・') + ' 済み' : '',
+          care.length ? '■ 介護のようす：' + care.join('／') : ''].filter(String).join('\n');
+}
+
 function rideText_(r) {
   var many = Number(r['ペット数']) >= 2 && r['ペット詳細'];
   var pet = many ? r['ペット数'] + '匹\n' + String(r['ペット詳細']).split('\n').map(function (l) { return '　' + l; }).join('\n')
@@ -968,6 +979,7 @@ function rideText_(r) {
     '■ ペット：' + pet,
     '■ ケージ：' + cageText_(r['キャリー']),
     many ? '■ 同乗：' + r['同乗人数'] : '■ 介助：' + r['介助'] + '　同乗：' + r['同乗人数'],
+    many ? '' : petExtraText_(r),
     r['荷物'] ? '■ 荷物：' + r['荷物'] : '',
     r['帰りの日時'] || r['帰りのお迎え'] ? '■ 帰り：' + (r['帰りの日時'] instanceof Date ? fmt_(r['帰りの日時']) + ' ' : '') +
       (r['帰りのお迎え'] || r['行き先']) + ' → ' + (r['帰りの行き先'] || r['お迎えの場所']) : '',

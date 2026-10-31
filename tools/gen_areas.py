@@ -633,7 +633,8 @@ def emg_company(x):
     tel = ''.join(f'<a class="emg-tel" href="tel:{t[1].replace("-", "")}">📞 {e(t[1])}{"（" + e(t[0]) + "）" if t[0] else ""}</a>' for t in x.get("tel", []))
     if not tel: tel = '<small>電話番号はリンク先の公式サイトでご確認ください。</small>'
     return (f'<div class="emg-item emg-co" data-prefs="{e(" ".join(x["prefs"]))}"><a href="{e(x["url"])}" target="_blank" rel="noopener"><b>{e(x["name"])}</b></a>'
-            f'<small>対応エリア：{e(x["area"])}。{e(x["note"])}</small>{tel}</div>')
+            f'<small>対応エリア：{e(x["area"])}。{e(x["note"])}</small>{tel}'
+            + (f'<div class="emg-score" data-id="{e(x["id"])}"></div>' if x.get("review_query") else '') + '</div>')
 def emg_hosp(x):
     return f'<a class="emg-item" href="{e(x["url"])}" target="_blank" rel="noopener"><b>{e(x["name"])}</b><small>{e(x["city"])}・{e(x["hours"])}</small></a>'
 emg_prefs_html = ''
@@ -693,6 +694,7 @@ ep = head("ペットの緊急搬送・動物救急車と夜間の動物病院｜
   }});
 }})();
 </script>
+<script src="/reviews.js" defer></script>
 """ + re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))  # 緊急のページでは予約ボタンを画面下に固定しない
 os.makedirs(os.path.join(ROOT, "emergency"), exist_ok=True)
 open(os.path.join(ROOT, "emergency", "index.html"), "w", encoding="utf-8").write(ep)
@@ -814,6 +816,7 @@ for slug, pf, short, cities in PREFS:
   </div>
 </section>
 </main>
+<script src="/reviews.js" defer></script>
 ''' + re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))  # 予約できない県なので予約ボタンを画面下に固定しない
     os.makedirs(os.path.join(ROOT, "area", slug), exist_ok=True)
     open(os.path.join(ROOT, "area", slug, "index.html"), "w", encoding="utf-8").write(page)
@@ -849,6 +852,74 @@ ph = head("全国のペットタクシー情報｜都道府県ごとの料金の
 """ + foot("/#form")
 os.makedirs(os.path.join(ROOT, "area"), exist_ok=True)
 open(os.path.join(ROOT, "area", "index.html"), "w", encoding="utf-8").write(ph)
+
+# 緊急の搬送の会社の口コミ（/emergency/ と /area/）：トップの緊急タブ・予約の候補カードと同じ見せ方。星と件数を出し、口コミはページの中で開く。
+# 外部の口コミページへのリンクは出さない（Nori 2026-10-31）。画面に入った会社のぶんだけ取り寄せる（取り寄せの回数を抑えるため）
+GAS = re.search(r'var GAS_URL = "([^"]+)"', top_src).group(1)
+open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成ファイル（tools/gen_areas.py）。手で直さない
+(function(){
+  var GAS_URL = %s, memo = {}, queue = [], timer = 0;
+  function el(tag, cls, text){ var x = document.createElement(tag); if (cls) x.className = cls; if (text != null) x.textContent = text; return x; }
+  function toggle(id, panel, btn){
+    if (!panel.hidden) { panel.hidden = true; btn.setAttribute("aria-expanded", "false"); return; }
+    panel.hidden = false; btn.setAttribute("aria-expanded", "true");
+    if (window.gtag) gtag("event", "open_reviews", {});
+    if (panel.dataset.done) return;
+    panel.textContent = "口コミを読み込んでいます…";
+    var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
+    fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
+      if (!j || !j.ok || !Array.isArray(j.reviews)) throw 0;
+      panel.dataset.done = "1"; panel.replaceChildren();
+      panel.appendChild(el("p", "review-head", "関連度の高い順に、最大5件を表示しています（全" + j.count + "件）。"));
+      j.reviews.forEach(function(v){
+        var item = el("div", "review-item"), who = el("div", "review-who");
+        if (v.photo) { var img = document.createElement("img"); img.src = v.photo; img.alt = ""; img.width = 28; img.height = 28; img.loading = "lazy"; img.referrerPolicy = "no-referrer"; who.appendChild(img); }
+        var name = el(v.authorUrl ? "a" : "span", "", v.author || "投稿者");
+        if (v.authorUrl) { name.href = v.authorUrl; name.target = "_blank"; name.rel = "noopener"; }
+        who.append(name, el("small", "", "★" + v.rating + (v.when ? "・" + v.when : ""))); item.appendChild(who);
+        if (v.text) item.appendChild(el("p", "", v.text));
+        if (v.url) { var a = el("a", "review-link", "元の口コミ ↗"); a.href = v.url; a.target = "_blank"; a.rel = "noopener"; item.appendChild(a); } // 規約で口コミごとに必要なリンク
+        panel.appendChild(item);
+      });
+      panel.appendChild(el("p", "partner-review-src", "Google Maps"));
+    }).catch(function(){ panel.textContent = "口コミを読み込めませんでした。時間をおいてもう一度お試しください。"; });
+  }
+  function paint(box, rv){
+    box.replaceChildren();
+    if (!rv || !(rv.rating > 0)) return; // 点数が取れないときは何も出さない（外部のページへは飛ばさない）
+    var r = Math.max(0, Math.min(5, rv.rating)), score = el("p", "partner-score");
+    var stars = el("span", "stars"); stars.setAttribute("aria-hidden", "true"); stars.style.setProperty("--fill", r / 5 * 100 + "%%");
+    score.setAttribute("aria-label", "口コミの評価 5点中" + Number(rv.rating).toFixed(1) + "点、" + rv.count + "件");
+    var open = el("button", "partner-review-open", "口コミ" + rv.count + "件を見る"); open.type = "button"; open.setAttribute("aria-expanded", "false");
+    score.append(stars, el("b", "", Number(rv.rating).toFixed(1)), open, el("span", "partner-review-src", "Google Maps")); // 出どころの表示（規約で必要）
+    var panel = el("div", "review-panel"); panel.hidden = true;
+    open.addEventListener("click", function(){ toggle(box.dataset.id, panel, open); });
+    box.append(score, panel);
+  }
+  function flush(){
+    timer = 0;
+    var need = queue.filter(function(id, i, a){ return a.indexOf(id) === i && !(id in memo); }); queue = [];
+    if (!need.length) return;
+    need.forEach(function(id){ memo[id] = null; });
+    var body = new URLSearchParams(); body.set("kind", "emg_scores"); body.set("ids", need.join(","));
+    fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).catch(function(){ return null; }).then(function(j){
+      var sc = (j && j.ok && j.scores) || {};
+      need.forEach(function(id){ memo[id] = sc[id] || null; });
+      document.querySelectorAll(".emg-score").forEach(function(b){ if (need.indexOf(b.dataset.id) >= 0) paint(b, memo[b.dataset.id]); });
+    });
+  }
+  function want(box){
+    if (box.dataset.id in memo) { if (memo[box.dataset.id]) paint(box, memo[box.dataset.id]); return; }
+    queue.push(box.dataset.id); if (!timer) timer = setTimeout(flush, 300);
+  }
+  var boxes = document.querySelectorAll(".emg-score[data-id]");
+  if (!boxes.length) return;
+  if (!("IntersectionObserver" in window)) { boxes.forEach(want); return; }
+  // 口コミの欄は空のあいだ見えないので、会社の枠が画面に入ったら取り寄せる（しぼりこみで隠れている会社は取り寄せない）
+  var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting && x.target.offsetParent) { io.unobserve(x.target); want(x.target.querySelector(".emg-score")); } }); }, {rootMargin: "200px"});
+  boxes.forEach(function(b){ io.observe(b.parentElement); });
+})();
+""" % json.dumps(GAS))
 
 # sitemap / robots / 404
 urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url, pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url]
