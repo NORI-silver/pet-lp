@@ -41,6 +41,14 @@ assert.ok(ctx.checks_({ ...blank, vacMust:true }, req({ 'ペットJSON': pets([{
 // 割増の境目の近く（東京・世田谷の会社は18時から）
 assert.ok(ctx.checks_({ ...blank, id:'P002', rideHours:'0-24' }, req({ '希望日時': at(17) })).ask.some(x => x.includes('割増')));
 assert.equal(ctx.checks_({ ...blank, id:'P002', rideHours:'0-24' }, req({ '希望日時': at(14) })).ask.length, 0);
+// 軽バンは大型犬2頭まで・20〜29kgは聞かない・30kg以上は確かめる（Nori 2026-10-31）
+const van = { ...blank, car:'軽バン（スズキ エブリイ）' };
+const big = (kgs, o = {}) => req({ 'ペット数':kgs.length, '体重kg':Math.max(...kgs), 'ペットJSON': pets(kgs.map(k => ({ weight:String(k) }))), ...o });
+assert.ok(!ctx.checks_(van, big([25, 22])).ask.some(x => /kgの子が乗れる|頭が一緒/.test(x)));
+assert.ok(ctx.checks_(van, big([30, 25, 22])).ng.some(x => x.includes('軽バンは2頭まで')));
+assert.ok(ctx.checks_(van, big([32])).ask.includes('32kgの子が乗れる'));
+assert.ok(ctx.checks_(blank, big([25, 22])).ask.includes('大型犬2頭が一緒に乗れる')); // 車が分からない会社は確かめる
+assert.ok(ctx.checks_(van, big([28], { 'キャリー':'どれでも' })).ask.some(x => x.includes('28kgの子が入る大きさのケージ')));
 // 引き受け画面：確かめることの数だけチェック欄が出る
 assert.equal((ctx.askBoxes_(blank, two).match(/type="checkbox"/g) || []).length, ctx.checks_(blank, two).ask.length);
 assert.equal(ctx.askBoxes_(blank, req()), '');

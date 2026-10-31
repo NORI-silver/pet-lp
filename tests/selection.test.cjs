@@ -114,4 +114,11 @@ const unknownPickup=call('selectionQuotes_',p).cards[1].price;
 assert.ok(unknownPickup.pickupNote.includes('無料の確約ではありません'));
 const farRequest={...p,route_details:JSON.stringify({km:10,backKm:10,from:{lat:35.8,lng:139.9},to:point,backFrom:point,backTo:point})};
 assert.ok(call('selectionQuotes_',farRequest).cards[0].price.pickupNote.includes('単価が非公開'));
+// 貸切プラン：長い待ち時間の往復は、半日貸切（6時間・70kmまで13,200円）のほうが安ければそちらで計算する
+const ret4h = new Date(Date.parse(when + ':00Z') + 4 * 3600000).toISOString().slice(0, 16);
+const longWait = {...p,trip:'往復',return_datetime:ret4h,return_pickup:p.dropoff,return_dropoff:p.pickup,route_details:JSON.stringify({km:25,backKm:25,from:point,to:point,backFrom:point,backTo:point})};
+const lw = call('selectionQuotes_',longWait).cards[0].price;
+assert.ok(lw.local.method.startsWith('半日貸切') && lw.local.ride === 13200 && lw.planNote.includes('半日貸切'));
+const shortTrip = call('selectionQuotes_',p).cards[0].price;
+assert.ok(!/貸切/.test(shortTrip.local.method) && shortTrip.planNote === '');
 console.log('PASS: local/highway itemization sums to totals; surcharge and uncertain pickup fees are disclosed');

@@ -50,6 +50,8 @@ var CONFIG = {
   DEFAULT_LEAD_HOURS: 3,
 
   LARGE_DOG_KG: 20, // この体重以上は「大型犬OK」の提携先にだけ送る
+  ASK_KG: 30, // この体重以上の子は、上限が分からない会社に乗れるかを引き受けるときに確かめる（Nori 2026-10-31「30kg以上は予約時に要確認」）
+  VAN_BIG_DOGS: 2, // 軽バン（エブリイ・N-VAN など）は大型犬2頭まで乗れる（Nori 2026-10-31）
   // 提携先シートの車の情報が空欄のときは、いちばん小さい車（軽バン）とみなす
   DEFAULT_CAR: { riders: 2, pets: 2, big: true, luggage: false }, // 使っていない（空欄は外さず、引き受けるときに会社が確かめる。2026-10-31）
 
@@ -491,6 +493,8 @@ function petsOf_(r) {
   if (a.length === 1 && !a[0].species) a[0].species = r['種類'];
   return a.map(function (p) { return { kg: Number(p.weight) || 0, care: p.care || '', vac: p.vaccine === '済', sp: String(p.species || ''), breed: String(p.breed || ''), need: (p.care_need || []).concat(p.care_note ? [p.care_note] : []) }; });
 }
+// 軽バン（スズキ エブリイ・ホンダ N-VAN・ダイハツ ハイゼット/アトレー など）か。予約シート「車のタイプ」から読む
+function isVan_(pt) { return /軽バン|エブリ|N-?VAN|ハイゼット|アトレー|クリッパー/i.test(String(pt.car || '')); }
 function checks_(pt, r) {
   var ng = [], ask = [], n = needs_(r), pets = petsOf_(r);
   var bigs = pets.filter(function (p) { return p.kg >= CONFIG.LARGE_DOG_KG; }), maxKg = Math.max.apply(null, pets.map(function (p) { return p.kg; }));
@@ -518,9 +522,10 @@ function checks_(pt, r) {
   if (bigs.length) {
     if (pt.big === false) ng.push('大型犬');
     else if (pt.maxKg !== null && maxKg > pt.maxKg) ng.push(maxKg + 'kgの子（' + pt.maxKg + 'kgまで）');
-    else if (pt.maxKg === null) ask.push(maxKg + 'kgの子が乗れる');
-    if (pt.maxBig !== null && bigs.length > pt.maxBig) ng.push('大型犬' + bigs.length + '頭');
-    else if (pt.maxBig === null && bigs.length >= 2) ask.push('大型犬' + bigs.length + '頭が一緒に乗れる');
+    else if (pt.maxKg === null && maxKg >= CONFIG.ASK_KG) ask.push(maxKg + 'kgの子が乗れる'); // 20〜29kgは軽バンでも乗れるので聞かない
+    var maxBig = pt.maxBig !== null ? pt.maxBig : isVan_(pt) ? CONFIG.VAN_BIG_DOGS : null;
+    if (maxBig !== null && bigs.length > maxBig) ng.push('大型犬' + bigs.length + '頭' + (pt.maxBig === null ? '（軽バンは' + maxBig + '頭まで）' : ''));
+    else if (maxBig === null && bigs.length >= 2) ask.push('大型犬' + bigs.length + '頭が一緒に乗れる');
     if (n.riders + bigs.length >= 3) ask.push('大型犬' + bigs.length + '頭と大人' + n.riders + '人が一緒に乗れる');
   }
   // ケージ
@@ -533,6 +538,8 @@ function checks_(pt, r) {
       else if (pt.lendKg === null && maxKg >= 10) ask.push(maxKg + 'kgの子が入るケージを貸し出せる'); // 小さい子のケージはどこでも用意できる
     }
     if (/なし/.test(c) && pt.cageMust === '') ask.push('ケージなしで乗れる');
+    // 「どちらでもいい」でも、会社がケージを使うなら大型犬が入る大きさを持っているか確かめる（Nori 2026-10-31）
+    if (/どれでも/.test(c) && bigs.length && pt.cageLend !== false && pt.lendKg === null) ask.push('ケージを使う場合、' + maxKg + 'kgの子が入る大きさのケージを用意できる');
   }
   // 介護
   var careNeed = r['介助'] === '必要' || pets.some(function (p) { return p.care === '必要'; });
@@ -1457,7 +1464,7 @@ function testRequest() {
   Logger.log(JSON.stringify(res));
 }
 
-/*SELECTION_FARES*/var SELECTION_FARES = {"petexpress": {"名前": "ペットエクスプレス（世田谷）", "出典": "https://pettaxi.tokyo/ 2026-10-27", "base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null, "note": "東京・世田谷の会社は、乗車料金が5kmまで2,200円、その先は1kmごとに220円（101km〜は165円、201km〜は110円）。お迎え料金と帰りの回送料金がそれぞれ3kmまで330円かかり、お店から遠いと増えます。夕方18時〜朝8時は乗車料金が2割増し、往復は乗車料金が2倍です。病院での待ち時間は10分まで無料、30分まで660円、その後10分ごとに220円です。", "wait": {"30": 660, "60": 1320, "120": 2640}, "pay": "東京・世田谷の会社は、現金で降りるときにお支払いです。", "shop": [35.6339, 139.6697], "pick_free_km": 3, "pick_over": 220, "_迎車メモ": "迎車・回送の3km超の単価は非公開のため、1kmごとに220円として高めに計算（お店：世田谷区上馬1丁目）", "label": "東京・世田谷の会社", "night_hours": [18, 8], "partner_id": "P002", "review_query": "ペットエクスプレス 世田谷区上馬"}, "kuriki": {"名前": "くりき（松戸）", "出典": "https://pet-kuriki.com/taxi 2026-10-27", "base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300], "note": "千葉・松戸の会社は、乗車料金が5km未満1,800円、5km以上は1kmごとに200円（101km〜は150円、201km〜は100円）。往復は10kmまで3,300円（病院での待ち時間30分込み）で、その後の待ち時間は30分ごとに500円です。長い距離や長い待ち時間は、その会社のお見積りになります。", "wait": {"30": 0, "60": 500, "120": 1500}, "pay": "千葉・松戸の会社は、お支払い方法を決まったときのメールでご案内します。", "label": "千葉・松戸の会社", "night_hours": null, "partner_id": "P003", "review_query": "ペットタクシー くりき 松戸"}};/*/SELECTION_FARES*/
+/*SELECTION_FARES*/var SELECTION_FARES = {"petexpress": {"名前": "ペットエクスプレス（世田谷）", "出典": "https://pettaxi.tokyo/ 2026-10-27", "base_km": 5, "base": 2200, "tiers": [[100, 220], [200, 165], [null, 110]], "pick": 330, "back": 330, "night": 1.2, "round_flat": null, "note": "東京・世田谷の会社は、乗車料金が5kmまで2,200円、その先は1kmごとに220円（101km〜は165円、201km〜は110円）。お迎え料金と帰りの回送料金がそれぞれ3kmまで330円かかり、お店から遠いと増えます。夕方18時〜朝8時は乗車料金が2割増し、往復は乗車料金が2倍です。病院での待ち時間は10分まで無料、30分まで660円、その後10分ごとに220円です。長い待ち時間の往復や遠くへの移動は、半日貸切（6時間・70kmまで13,200円）や1日貸切（12時間・160kmまで26,400円）のほうが安ければ、そちらで計算します。", "wait": {"30": 660, "60": 1320, "120": 2640}, "pay": "東京・世田谷の会社は、現金で降りるときにお支払いです。", "shop": [35.6339, 139.6697], "pick_free_km": 3, "pick_over": 220, "_迎車メモ": "迎車・回送の3km超の単価は非公開のため、1kmごとに220円として高めに計算（お店：世田谷区上馬1丁目）", "label": "東京・世田谷の会社", "night_hours": [18, 8], "partner_id": "P002", "review_query": "ペットエクスプレス 世田谷区上馬", "charter": [{"name": "半日貸切", "hours": 6, "km": 70, "price": 13200, "over30": 1100}, {"name": "1日貸切", "hours": 12, "km": 160, "price": 26400, "over30": 880}], "_貸切メモ": "https://pettaxi.tokyo/ 2026-10-31：半日（6時間・70kmまで）13,200円、全日（12時間・160kmまで）26,400円、超過は30分ごと1,100円／880円、有料道路は別。表は税込だが『別途消費税を加算』の記載もあり、迎車・待機・夜間の扱いは書いていない（問い合わせで確かめる）。距離・時間はお店からの行き帰りも含めて計算する"}, "kuriki": {"名前": "くりき（松戸）", "出典": "https://pet-kuriki.com/taxi 2026-10-27", "base_km": 4, "base": 1800, "tiers": [[100, 200], [200, 150], [null, 100]], "pick": 0, "back": 0, "night": 1.0, "round_flat": [10, 3300], "note": "千葉・松戸の会社は、乗車料金が5km未満1,800円、5km以上は1kmごとに200円（101km〜は150円、201km〜は100円）。往復は10kmまで3,300円（病院での待ち時間30分込み）で、その後の待ち時間は30分ごとに500円です。長い距離や長い待ち時間は、その会社のお見積りになります。", "wait": {"30": 0, "60": 500, "120": 1500}, "pay": "千葉・松戸の会社は、お支払い方法を決まったときのメールでご案内します。", "label": "千葉・松戸の会社", "night_hours": null, "partner_id": "P003", "review_query": "ペットタクシー くりき 松戸"}};/*/SELECTION_FARES*/
 /* 事業者の検索は予約の保存・メール送信をしない。料金は上の生成データを使う。 */
 var QUOTE_FIELDS = ['pref', 'pickup', 'via', 'dropoff', 'datetime', 'trip', 'riders', 'luggage', 'species', 'weight', 'cage', 'care', 'pet_count', 'pets_json', 'return_datetime', 'return_pickup', 'return_dropoff', 'route_details'];
 
@@ -1536,6 +1543,18 @@ function selectionPrice_(pt, p) {
         if(sum(waiting)<=sum(separate))chosen=waiting;
       }
     }
+    // 貸切プラン（半日・1日）のほうが安ければ使う。お店からの行き帰りも距離と時間に入れる。1kmを3分で走るとみる（Nori 2026-10-31「貸し切りのプラン、安いよ」）
+    if(c.charter&&c.shop){
+      var shop={lat:c.shop[0],lng:c.shop[1]},last=round?d.backTo:d.to;
+      var legKm=Math.ceil(distance(shop,d.from)*1.5)+Math.ceil(distance(shop,last)*1.5),allKm=km+(round?backKm:0)+legKm;
+      var hours=(round?(parseJst_(p.return_datetime)-parseJst_(p.datetime))/3600000+backKm*3/60:km*3/60)+legKm*3/60;
+      c.charter.forEach(function(pl){
+        if(allKm>pl.km)return;
+        var over=Math.max(0,Math.ceil((hours-pl.hours)*2))*pl.over30;
+        var ch={ride:pl.price+over,pickup:0,returnFee:0,nightExtra:0,wait:0,method:pl.name+'（'+pl.hours+'時間・'+pl.km+'kmまで'+(over?'、超過'+yen_(over)+'を含む':'')+'）'};
+        if(sum(ch)<sum(chosen))chosen=ch;
+      });
+    }
     var raw=sum(chosen);chosen.amount=Math.ceil(raw/100)*100;chosen.rounding=chosen.amount-raw;
     return chosen;
   }
@@ -1545,6 +1564,7 @@ function selectionPrice_(pt, p) {
   return {amount:local.amount,text:yen_(local.amount),local:local,highway:highway,
     night:nt || (round&&nt2)?'夜間・早朝の割増 '+yen_(local.nightExtra)+'を含みます':c.night_hours?'指定時刻は夜間・早朝の割増対象外です':'料金表に夜間・早朝の割増はありません',
     pickupNote:pickupExtra?'迎車・回送の3km超は単価が非公開のため、1kmにつき220円として仮計算しています。実際の料金は事業者が確認します。':!c.shop&&c.pick===0&&c.back===0?'迎車・回送は料金表に別記がないため、この概算では0円で計算しています。無料の確約ではありません。':'迎車・回送の距離は営業所からの概算です。',
+    planNote:/貸切/.test(local.method)?local.method+'で計算しています（通常の料金より安いため）。お迎え・回送・待ち時間・夜間の扱いと税は、事業者が確認します。':'',
     routeNote:d.routeEstimated?'道のりを取得できなかったため、距離は直線距離からの概算です。':d.localEstimated?'一般道の距離は、高速区間から長めに推定しています。':''};
 }
 
