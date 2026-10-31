@@ -255,3 +255,26 @@ for guide in GUIDES:
             ("WANCOTT（ワンコット）への移動と施設の有料送迎", "/guide/wancott-taxi/")
         ])]))
         guide["modified"] = "2026-10-31"
+
+
+# 介護と利用シーンの記事。施設の案内と、利用する理由・費用の説明をつなぐ。
+from care_guides import CARE_GUIDES
+GUIDES.extend(CARE_GUIDES)
+for guide in GUIDES:
+    if guide["slug"] in {"senior", "wancott-taxi"}:
+        guide["sections"].append(("介護サービスの使い方を調べる", [("links", [
+            ("初めてのデイケア：準備と持ち物", "/guide/senior-daycare-first/"),
+            ("利用頻度と、送迎も含めた月の予算", "/guide/senior-daycare-frequency/"),
+            ("家族が休むための一時預かり", "/guide/senior-care-respite/")
+        ])]))
+        guide["modified"] = "2026-10-31"
+    if guide["slug"] in {"hospital", "taxi-with-pet"}:
+        guide["sections"].append(("料金と往復の使い方を比べる", [("links", [
+            ("一般タクシーとの料金比較・病院での待機と往復", "/guide/pet-taxi-round-trip-cost/")
+        ])]))
+        guide["modified"] = "2026-10-31"
+    if guide["slug"] == "airport-moving":
+        guide["sections"].append(("車なしの旅行を計画する", [("links", [
+            ("電車・レンタカー・ペットタクシーの比較", "/guide/dog-trip-without-car/")
+        ])]))
+        guide["modified"] = "2026-10-31"

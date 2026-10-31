@@ -412,12 +412,13 @@ for g in GUIDES:
         ld.append({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
           {"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":ans}} for q,ans in g["faq"]]})
     ld_html = "\n".join('<script type="application/ld+json">\n' + json.dumps(x, ensure_ascii=False, indent=1) + '\n</script>' for x in ld)
-    if g.get("category") == "facility":
+    if g.get("category") == "facility" or g.get("toc"):
         toc = '<nav class="tip art-toc" aria-label="この記事の目次"><b>この記事で分かること</b><ol>' + "".join(
             f'<li><a href="#section-{i}">{e(h)}</a></li>' for i, (h, _) in enumerate(g["sections"], 1)) + '</ol></nav>'
         body = toc + "".join(f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b) for b in bs)
                               for i, (h, bs) in enumerate(g["sections"], 1))
-        body += f'<p class="small">{e(g["facility_note"])}</p>'
+        if g.get("facility_note"):
+            body += f'<p class="small">{e(g["facility_note"])}</p>'
     else:
         body = "".join(f'<h2>{e(h)}</h2>' + "".join(block(b) for b in bs) for h, bs in g["sections"])
     faq = ""
@@ -465,7 +466,7 @@ for g in GUIDES:
 </section>
 </main>
 """ + foot("/#form")
-    if g.get("category") == "facility":
+    if g.get("category") == "facility" or g.get("display_only"):
         page = page.replace("ペットタクシーを予約する", "掲載候補を見る").replace(">予約する<", ">掲載候補を見る<")
         page = page.replace("完全予約制・手配料0円。お申し込みだけでは予約は決まりません。引き受けが決まったメールが届いた時点で予約成立です。",
                             "現在は候補の表示のみです。すべての会社への予約依頼を停止しています。")
@@ -488,11 +489,16 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
+    <div class="sh"><h2>介護と、家族の暮らしを支える</h2></div>
+    <p>預ける準備、使う頻度、家族が休む時間。送迎も含めた使い方を考える記事です。</p>
+    {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "care"])}
+    <div class="sh"><h2>通院・旅行の使い方と料金を比べる</h2></div>
+    {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "use"])}
     <div class="sh"><h2>病院・施設名から移動を調べる</h2></div>
     <p>通院先や宿泊先ごとの行き方、受付・乗降場所、帰りの手配で確かめたいことをまとめました。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "facility"])}
     <div class="sh"><h2>移動の困りごとから調べる</h2></div>
-    {guide_cards([g["slug"] for g in GUIDES if g.get("category") != "facility"])}
+    {guide_cards([g["slug"] for g in GUIDES if g.get("category") not in ("facility", "care", "use")])}
   </div>
 </section>
 <section style="padding-top:0">
