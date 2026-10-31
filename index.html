@@ -705,7 +705,7 @@ footer a{color:var(--ink-2)}
         <div class="group">
           <div class="group-h"><span>1</span>いつ、どこへ行きますか？</div>
           <div class="f"><label for="pref">お迎えの都県</label>
-            <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>千葉県</option><option>埼玉県</option></select>
+            <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>千葉県</option><option>埼玉県</option><optgroup label="そのほかの道府県"><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option></optgroup></select>
             <p class="pref-fix" id="prefFix" role="status" hidden></p></div>
           <div class="f"><label for="pickup">お迎えの場所</label>
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button>
@@ -1629,9 +1629,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var est = $("est"), geoCache = {}, pickedPlace = {}, estSeq = 0, lastKm = 0, lastKmHigh = 0, lastFare = "", lastFareNum = 0;
   function yen(n){ return n.toLocaleString("ja-JP") + "円"; }
   // 場所の検索は4都県の中だけで探す（遠くの同じ名前の場所を拾わないように）。選んだ都県の中の候補を優先する
-  var BOX4 = [34.85, 138.6, 36.35, 140.95];
+  // 全国のお迎えも入れられる（Nori 2026-10-31「全国にして。絞らないで」）。予約の依頼は全社準備中のため送れない（Code.gs の CONFIG.SHOW_ALL_CANDIDATES）
+  // 1都3県だけに戻すときは false にする
+  var ALL_JAPAN = true;
   var BOXJP = [20, 122, 46, 154]; // 緊急タブの場所の欄は全国で探す
-  var BOXNEAR = [34.5, 137.4, 37.3, 141.2]; // 行き先・経由地・帰りの場所は、4都県のまわり（茨城・栃木・群馬・山梨・静岡など）も入れられる
+  var BOX4 = ALL_JAPAN ? BOXJP : [34.85, 138.6, 36.35, 140.95];
+  var BOXNEAR = ALL_JAPAN ? BOXJP : [34.5, 137.4, 37.3, 141.2]; // 行き先・経由地・帰りの場所は、4都県のまわり（茨城・栃木・群馬・山梨・静岡など）も入れられる
+  var PREF_NAMES = ["北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"];
+  var PREF_HEAD = new RegExp("^(" + PREF_NAMES.join("|") + ")");
   function boxOf(w){ return w === true ? BOXJP : w === "near" ? BOXNEAR : BOX4; }
   // 端末の位置：まず速い方法（Wi-Fiなど・数分以内に調べた位置も使う）で読み、だめなときだけ時間のかかるGPSで読み直す
   function getPos(ok, ng){
@@ -1660,7 +1665,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var n = 0, cur = 0; k.split("").forEach(function(ch){ var v = KNUM[ch]; if (v === 10) { cur = (cur || 1) * 10; } else { cur += v; } }); n = cur; return n + "丁目"; });
   }
   function addrMatch(q, title){
-    var a = normAddr(q), t = normAddr(title), t2 = t.replace(/^(東京都|神奈川県|千葉県|埼玉県)/, "");
+    var a = normAddr(q), t = normAddr(title), t2 = t.replace(PREF_HEAD, "");
     var ok = function(x){ var m = x.match(/^.*?[区市町村]/); return m && (a.indexOf(x) === 0 || (x.indexOf(a) === 0 && a.length >= m[0].length)); };
     return ok(t) || (t2 !== t && ok(t2));
   }
@@ -1677,7 +1682,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 駅・公園・病院などの名前は、地図データの検索で探す（4都県の範囲だけ）
   function placeMatch(q, result){
     if (!/空港/.test(q)) return true;
-    function airportName(t){return normAddr(t).replace(/東京国際空港/g,"羽田空港").replace(/成田国際空港/g,"成田空港").replace(/^(東京都|神奈川県|千葉県|埼玉県)/,"");}
+    function airportName(t){return normAddr(t).replace(/東京国際空港/g,"羽田空港").replace(/成田国際空港/g,"成田空港").replace(PREF_HEAD,"");}
     var query = airportName(q).match(/.*?空港/);
     var airport = result.category === "aeroway" || result.class === "aeroway" || /^(aerodrome|terminal)$/.test(result.type || "");
     return !!(airport && query && airportName(result.display_name || result.name || "").indexOf(query[0]) >= 0);
@@ -1695,7 +1700,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (!q) return Promise.resolve(null);
     if (pickedPlace[q]) return Promise.resolve(pickedPlace[q]); // 候補から選んだ場所は、その位置をそのまま使う
     var pref = $("pref").value;
-    var key = (!pref || /^(東京|神奈川|千葉|埼玉)/.test(q) ? "" : pref) + q;
+    var key = (!pref || PREF_HEAD.test(q) || /^(東京|神奈川|千葉|埼玉|大阪|京都)/.test(q) ? "" : pref) + q;
     if (key in geoCache && (geoCache[key] || !near)) return Promise.resolve(geoCache[key]);
     if (near && ("~" + key) in geoCache) return Promise.resolve(geoCache["~" + key]);
     // 順に試して、最初に見つかったものを使う
@@ -1710,7 +1715,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     return p.then(function(c){ return geoCache[(near ? "~" : "") + key] = c; });
   }
   // 位置から都県を調べる（市区町村コードの頭2桁）。4都県の外なら "out"、調べられなければ null
-  var PREF_CD = {"13": "東京都", "14": "神奈川県", "12": "千葉県", "11": "埼玉県"}, prefCache = {};
+  var PREF_CD = ALL_JAPAN ? {} : {"13": "東京都", "14": "神奈川県", "12": "千葉県", "11": "埼玉県"}, prefCache = {};
+  if (ALL_JAPAN) PREF_NAMES.forEach(function(n, i){ PREF_CD[(i < 9 ? "0" : "") + (i + 1)] = n; });
   function prefOf(c){
     var k = c.lat.toFixed(4) + "," + c.lng.toFixed(4);
     if (k in prefCache) return Promise.resolve(prefCache[k]);
@@ -2344,6 +2350,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (!navigator.geolocation) return;
     btn.hidden = false;
     var PREF_CODE = {"JP-13": "東京都", "JP-14": "神奈川県", "JP-12": "千葉県", "JP-11": "埼玉県"};
+    if (ALL_JAPAN) PREF_NAMES.forEach(function(n, i){ PREF_CODE["JP-" + (i < 9 ? "0" : "") + (i + 1)] = n; });
     function say(t, ng){ msg.textContent = t; msg.className = "geo-msg" + (ng ? " ng" : ""); }
     btn.addEventListener("click", function(){
       btn.disabled = true; say("いまいる場所を調べています…");
@@ -2354,7 +2361,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         reverseOsm(c, 18)
           .then(function(j){
             var a = (j && j.address) || {}, pref = PREF_CODE[a["ISO3166-2-lvl4"]] || a.province || a.state || "";
-            if (!PREF_CODE[a["ISO3166-2-lvl4"]] && ["東京都","神奈川県","千葉県","埼玉県"].indexOf(pref) < 0) throw 0;
+            if (!PREF_CODE[a["ISO3166-2-lvl4"]] && (ALL_JAPAN ? PREF_NAMES : ["東京都","神奈川県","千葉県","埼玉県"]).indexOf(pref) < 0) throw 0;
             var parts = [];
             [a.city, a.town, a.village, a.city_district, a.suburb, a.quarter, a.neighbourhood].forEach(function(x){
               if (!x || parts.join("").indexOf(x) >= 0) return;

@@ -1510,7 +1510,7 @@ function selectionRide_(p) {
 
 function selectionValid_(p) {
   var at = parseJst_(p.datetime), ret = parseJst_(p.return_datetime);
-  if (PREFS.indexOf(shortPref_(p.pref)) < 0) return 'area';
+  if (PREFS.indexOf(shortPref_(p.pref)) < 0 && !CONFIG.SHOW_ALL_CANDIDATES) return 'area'; // 全社準備中のあいだは全国のお迎えでも候補を出す（Nori「全国にして」）。依頼は validateSelection_ で断る
   if (!at || !isFinite(at.getTime()) || at.getTime() < Date.now() + CONFIG.MIN_LEAD_HOURS * 3600000 ||
       (p.trip === '往復' && (!ret || !(ret > at)))) return 'datetime';
   if (['片道', '往復'].indexOf(p.trip) < 0 || !String(p.pickup || '').trim() || !String(p.dropoff || '').trim()) return 'missing';
