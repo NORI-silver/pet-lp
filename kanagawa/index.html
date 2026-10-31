@@ -470,7 +470,7 @@ footer a{color:var(--ink-2)}
 .partner-results[hidden]{display:none}
 .partner-results h3{font-size:1.2rem;margin:0 0 8px}
 .partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:18px}
-.partner-card{cursor:pointer;border:1.5px solid var(--line);border-radius:18px;padding:22px;background:#fff;display:flex;flex-direction:column;gap:10px}
+.partner-card{cursor:pointer;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;display:flex;flex-direction:column;gap:6px}
 .partner-card.partner-later{cursor:default;background:#fafafa}.partner-later .btn:disabled{cursor:not-allowed;background:#9a9a9a;opacity:1}
 .partner-card.picked{border-color:var(--o);box-shadow:0 0 0 3px rgba(255,106,26,.18)}
 .leg-split{margin-top:22px;border-top:1px dashed var(--line);padding-top:18px}
@@ -478,15 +478,23 @@ footer a{color:var(--ink-2)}
 .leg-note{font-size:.88rem;margin:12px 0 0}
 .leg-h{margin:20px 0 0}
 .leg-pick{font-weight:700;margin-top:14px}
-.partner-card h4{font-size:1.08rem;margin:0}
+.partner-card h4{font-size:1rem;margin:0}
 .partner-card p{margin:0;font-size:.86rem;line-height:1.7}
-.partner-card .partner-price{font-size:1.65rem;font-weight:800;color:var(--o-d)}
+.partner-card .partner-price{font-size:1.3rem;font-weight:800;color:var(--o-d);line-height:1.3}
 .partner-card .partner-price small{display:block;font-size:.75rem;font-weight:600;color:var(--ink-2)}
-.partner-card .btn{margin-top:auto;font-size:.92rem;width:100%}
+.partner-card .btn{margin-top:auto;font-size:.86rem;width:100%;padding:10px 14px;min-height:0;box-shadow:none}
 .partner-card .partner-note{color:var(--ink-2);font-size:.78rem}
 .partner-rest-btn{display:block;width:100%;margin:14px 0 0;padding:14px;border:1.5px dashed var(--o);border-radius:14px;background:#fff;color:var(--o-d);font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}
 .partner-rest-btn:hover{background:#fff4ec}
 #partnerRest{margin-top:14px}
+.partner-points{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0}
+.partner-points li{font-size:.72rem;background:#eef6ee;color:#2f5d34;border-radius:999px;padding:2px 8px;line-height:1.5}
+.req-mode{background:var(--cream);border-radius:14px;padding:10px 12px;margin:8px 0 4px;font-size:.84rem}
+.req-mode[hidden]{display:none}
+.req-mode-h{font-weight:700;margin:0 0 4px}
+.req-mode label{display:block;padding:4px 0;cursor:pointer}
+.req-mode label span{display:block;font-size:.76rem;color:var(--ink-2);margin-left:1.6em}
+.partner-card .btn.pick-on{background:var(--o-d)}
 #partnerRest[hidden],.partner-sort[hidden]{display:none}
 .partner-sort{display:flex;align-items:center;gap:8px;justify-content:flex-end;margin:4px 0 10px;font-size:.86rem}
 .partner-sort label{font-weight:700;color:var(--ink-2)}
@@ -516,8 +524,8 @@ footer a{color:var(--ink-2)}
 .partner-card .price-details[open]{background:var(--cream);border-radius:10px;padding:6px 10px}
 .partner-card .price-details.hw summary{font-weight:700}
 .price-details dl{font-size:.76rem}
-.partner-caution{background:#fff4ec;border:1.5px solid var(--o);border-radius:12px;padding:9px 12px;font-size:.8rem!important;line-height:1.6!important;color:var(--ink)}
-.partner-caution b{display:block;color:var(--o-d);font-size:.92rem}
+.partner-caution{background:#fff4ec;border-left:3px solid var(--o);border-radius:6px;padding:5px 9px;font-size:.74rem!important;line-height:1.5!important;color:var(--ink-2)}
+.partner-caution b{color:var(--o-d);font-size:.8rem;margin-right:4px}
 .partner-check{font-size:.78rem;color:var(--ink-2);background:#fff8e6;border-radius:10px;padding:6px 10px;margin:6px 0}
 .partner-check summary{cursor:pointer;font-weight:700;color:#8a5a00}
 .partner-check ul{margin:6px 0 4px;padding-left:1.2em}
@@ -880,6 +888,11 @@ footer a{color:var(--ink-2)}
           <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
           <p id="partnerStatus" role="status" aria-live="polite"></p>
           <p class="price-reason">料金が違うのは、各社の基本運賃・距離単価・お迎えに来る距離・夜間割増の決まりが違うためです。金額の差だけで、サービスの良し悪しは判断できません。</p>
+          <div class="req-mode" id="reqModeBox" hidden>
+            <p class="req-mode-h">依頼のしかた（最大5社まで選べます）</p>
+            <label><input type="radio" name="req_mode" value="book" checked> <b>予約を依頼する</b><span>選んだ会社のうち、先に引き受けた1社で決まります。ほかの会社への依頼は自動で取り消します。</span></label>
+            <label><input type="radio" name="req_mode" value="quote"> <b>見積もりを依頼する</b><span>選んだ会社から確定料金がメールで届きます。くらべて1社を選んだときに決まります。</span></label>
+          </div>
           <div class="partner-sort" id="partnerSortBox"><label for="partnerSort">並び順</label>
             <select id="partnerSort"><option value="review_desc" selected>口コミの評価が高い順</option><option value="review_asc">口コミの評価が低い順</option><option value="price_asc">料金が安い順</option><option value="price_desc">料金が高い順</option></select></div>
           <div class="partner-grid" id="partnerCards"></div>
@@ -921,7 +934,8 @@ footer a{color:var(--ink-2)}
         <div class="ok"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
         <h3>受け付けました！</h3>
         <p id="thanks-id" style="display:none">受付番号 <b></b></p>
-        <p>まだ予約は確定していません。<span id="thanksPartner"></span>に、空き状況を確認しています。ほかの事業者には依頼しません。<br><b id="thanks-min">60分</b>以内に、決まったかどうかをメールでお知らせします。</p>
+        <p id="thanksBook">まだ予約は確定していません。<span id="thanksPartner"></span>に、空き状況を確認しています。<span id="thanksFirst"></span>ほかの事業者には依頼しません。<br><b id="thanks-min">60分</b>以内に、決まったかどうかをメールでお知らせします。</p>
+        <p id="thanksQuote" hidden>まだ予約は確定していません。<span id="thanksQuotePartner"></span>にお見積もりを依頼しました。届いたお見積もりはメールでお送りします。くらべて、決める会社のリンクを押したときに予約が決まります。</p>
         <p style="font-size:.85rem">受付のメールが数分たっても届かないときは、迷惑メールのフォルダもご確認ください。取り消すときは、受付メールのリンクからどうぞ。</p>
       </div>
     </div>
@@ -1311,18 +1325,18 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var countSel = document.getElementById("petCount");
   var $ = function(id){ return document.getElementById(id); };
 
-  var routeDetails = null, quoteCards = [], chosenQuote = null, quoteSeq = 0, sending = false;
+  var routeDetails = null, quoteCards = [], chosenQuote = null, chosenPicks = [], quoteSeq = 0, sending = false; // chosenPicks：複数社に依頼するとき選んだ会社（最大5社）
   var quoteLegs = null, chosenGo = null, chosenBack = null; // 往復を行き・帰りで別の会社に頼むとき
   var quoteTimer = 0, quoteRefreshTimer = 0;
   function clearPartners(){
-    quoteSeq++; quoteCards = []; chosenQuote = null; quoteLegs = null; chosenGo = null; chosenBack = null;
+    quoteSeq++; quoteCards = []; chosenQuote = null; chosenPicks = []; quoteLegs = null; chosenGo = null; chosenBack = null; $("reqModeBox").hidden = true;
     $("partnerResults").hidden = true; $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren(); $("partnerRestBtn").hidden = true; restOpen = false;
     $("legSplit").hidden = true; $("legGo").replaceChildren(); $("legBack").replaceChildren();
     $("sendSelected").hidden = true;
     clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
   }
   function conditionsChanged(event){
-    if (["name","tel","email","notes","agree","website","partnerSort"].indexOf(event.target.id || event.target.name) >= 0) return; // 並び順を変えても、候補は取り直さない
+    if (["name","tel","email","notes","agree","website","partnerSort","req_mode","req_type"].indexOf(event.target.id || event.target.name) >= 0) return; // 並び順を変えても、候補は取り直さない
     clearPartners(); queuePartners();
     if (!$("partnerNeed").hidden) showNeed(); // 出ている一覧は、入れたらすぐ減らす
   }
@@ -1462,9 +1476,12 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
     var ready = cards.filter(function(c){ return !c.display_only; }).length, later = cards.length - ready;
-    if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。どの会社もいまは準備中のため、まだ予約を依頼できません。料金は確定料金ではありません。" : (later ? cards.length + "社が候補です（うち" + later + "社は準備中のため、まだ予約を依頼できません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。選んだ1社だけに予約を依頼します。");
+    if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。どの会社もいまは準備中のため、まだ予約を依頼できません。料金は確定料金ではありません。" : (later ? cards.length + "社が候補です（うち" + later + "社は準備中のため、まだ予約を依頼できません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。選んだ会社だけに依頼します（最大" + MAX_PICKS + "社）。");
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。予約の依頼は送信されていません。</span>';
     $("partnerSortBox").hidden = cards.length < 2;
+    $("reqModeBox").hidden = !ready || !!form.querySelector("input[name=req_type]"); // 予約を依頼できる会社があるときだけ。フォームの最初で選ぶときは出さない
+    chosenPicks = chosenPicks.filter(function(c){ return cards.some(function(x){ return x.id === c.id && !x.display_only; }); }).map(function(c){ return cards.filter(function(x){ return x.id === c.id; })[0]; });
+    chosenQuote = chosenPicks[0] || null; showPickButton();
     drawCards();
     paintLegs();
     loadScores();
@@ -1544,6 +1561,12 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var panel = document.createElement("div"); panel.className = "review-panel"; panel.hidden = true; article.appendChild(panel);
         open.addEventListener("click", function(){ toggleReviews(card.id, panel, open); });
       } // 点数が取れないときは何も出さない（外部の口コミページへは飛ばさない。Nori 2026-10-31）
+      // アピールポイント（公式サイトに書いてあることだけ。Nori 2026-10-31）
+      if (card.points && card.points.length) {
+        var pts = document.createElement("ul"); pts.className = "partner-points"; pts.setAttribute("aria-label", "公式サイトに書いてある特長");
+        card.points.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; pts.appendChild(li); });
+        article.appendChild(pts);
+      }
       // 料金（概算見積もり）。口コミと料金のほかの詳しい情報は、最初はたたんでおく（Nori 2026-10-31）
       var price = text("p", card.price.text, "partner-price");
       var tripName = leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道";
@@ -1551,7 +1574,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (card.price.local && card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
       var caution = text("p", "", "partner-caution");
       var cb = document.createElement("b"); cb.textContent = card.price.amount == null ? "確定料金ではありません" : "概算見積もりです（確定料金ではありません）";
-      caution.append(cb, (card.price.amount == null ? "" : "公式サイトの料金表と道のりから計算した目安で、実際の料金とは異なる場合があります。") + "確定料金は、引き受けた会社からお知らせします。通行料・駐車場代は別途実費です。");
+      caution.append(cb, card.price.amount == null ? "確定料金は会社からお知らせします。" : "実際の料金と異なる場合があります。");
       var more = document.createElement("details"); more.className = "partner-more";
       var ms = document.createElement("summary"); ms.textContent = "料金の内訳・車・お支払いなどを見る"; more.appendChild(ms);
       article.appendChild(more);
@@ -1587,7 +1610,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       }
       if (card.price.night && !(card.price.local && card.price.local.nightExtra)) add("p",card.price.night,"partner-note");
       add("p", card.car); add("p", card.payment);
-      add("p", "高速道路を使うときの総額は、事業者の確認後にお知らせします。", "partner-note");
+      add("p", (card.price.amount == null ? "" : "公式サイトの料金表と道のりから計算した目安です。確定料金は、引き受けた会社からお知らせします。") + "通行料・駐車場代は別途実費です。高速道路を使うときの総額は、事業者の確認後にお知らせします。", "partner-note");
       // 表示だけの会社（準備中）。予約の依頼はできない（サーバーでも断る）
       if (card.display_only) {
         article.classList.add("partner-later");
@@ -1597,11 +1620,38 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       }
       var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn";
       var legName = leg === "go" ? "行き" : leg === "back" ? "帰り" : "";
-      btn.textContent = legName ? legName + "をこの事業者にする" : "この事業者に予約を依頼する"; btn.setAttribute("aria-label", legName ? legName + "を" + card.label + "にする" : card.label + "に予約を依頼する");
-      btn.addEventListener("click", function(){ if (sending) return; if (leg) return pickLeg(leg, card, article); chosenGo = null; chosenBack = null; chosenQuote = card; $("sendSelected").hidden = false; $("sendSelected").textContent = card.label + "に予約を依頼する"; form.requestSubmit(); });
+      // 複数社を選べる（Nori 2026-10-31）。押すたびに選ぶ・外す。送るのは下の「選んだ◯社に…」ボタン
+      var on = !leg && chosenPicks.some(function(c){ return c.id === card.id; });
+      if (on) { article.classList.add("picked"); btn.classList.add("pick-on"); }
+      btn.textContent = legName ? legName + "をこの事業者にする" : on ? "✓ 選んでいます（押すと外す）" : "この会社を選ぶ"; btn.setAttribute("aria-label", legName ? legName + "を" + card.label + "にする" : card.label + (on ? "を外す" : "を選ぶ"));
+      if (!leg) btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.addEventListener("click", function(){ if (sending) return; if (leg) return pickLeg(leg, card, article); togglePick(card); });
       article.addEventListener("click", function(event){ if (!event.target.closest("button,a,details,.review-panel")) btn.click(); });
       article.appendChild(btn); return article;
   }
+  function togglePick(card){
+    chosenGo = null; chosenBack = null;
+    var i = chosenPicks.map(function(c){ return c.id; }).indexOf(card.id);
+    if (i >= 0) chosenPicks.splice(i, 1);
+    else if (chosenPicks.length >= MAX_PICKS) { $("err").textContent = "選べるのは" + MAX_PICKS + "社までです。ほかの会社を外してから選んでください。"; return; }
+    else chosenPicks.push(card);
+    $("err").textContent = "";
+    chosenQuote = chosenPicks[0] || null;
+    drawCards(); showPickButton();
+  }
+  var MAX_PICKS = 5;
+  // 予約か見積もりか。フォームの最初の選択（req_type）があればそれを使う。無いときだけカードの上の選択（req_mode）
+  function reqMode(){
+    var t = form.querySelector("input[name=req_type]:checked");
+    if (t) return /見積/.test(t.value) ? "quote" : "book";
+    return (form.querySelector("input[name=req_mode]:checked") || {}).value === "quote" ? "quote" : "book";
+  }
+  function showPickButton(){
+    var b = $("sendSelected"), n = chosenPicks.length;
+    b.hidden = !n;
+    if (n) b.textContent = (n === 1 ? chosenPicks[0].label + "に" : "選んだ" + n + "社に") + (reqMode() === "quote" ? "見積もりを依頼する" : "予約を依頼する");
+  }
+  Array.prototype.forEach.call(form.querySelectorAll("input[name=req_mode],input[name=req_type]"), function(r){ r.addEventListener("change", showPickButton); });
   // 往復のとき：行きと帰りをそれぞれ別の会社に頼むための片道の候補（Nori 2026-10-31）
   function paintLegs(){
     var on = !!(quoteLegs && quoteLegs.go && quoteLegs.back && quoteLegs.go.length && quoteLegs.back.length);
@@ -1617,7 +1667,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   function pickLeg(leg, card, article){
     if (leg === "go") chosenGo = card; else chosenBack = card;
-    chosenQuote = null;
+    chosenQuote = null; chosenPicks = []; drawCards();
     Array.prototype.forEach.call(article.parentNode.children, function(a){ a.classList.toggle("picked", a === article); });
     showLegPick();
     if (!(chosenGo && chosenBack)) { $("sendSelected").hidden = true; return; }
@@ -3014,19 +3064,25 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (!routeDetails) return fail("料金の目安を計算しています。計算が終わるまでお待ちください。", $("pickup"));
     var payload = requestPayload(splitPick), body = payload.body, o = payload.o;
     var first = splitPick ? chosenGo : chosenQuote;
-    if (Date.now() >= first.expires || (splitPick && Date.now() >= chosenBack.expires)) { clearPartners(); queuePartners(); return fail("候補を更新しています。表示されたら、もう一度事業者を選んでください。"); }
+    var picks = splitPick ? [] : chosenPicks.slice();
+    if (picks.some(function(c){ return Date.now() >= c.expires; }) || Date.now() >= first.expires || (splitPick && Date.now() >= chosenBack.expires)) { clearPartners(); queuePartners(); return fail("候補を更新しています。表示されたら、もう一度事業者を選んでください。"); }
     body.append("partner_id", first.id);
     body.append("quote_token", first.token);
     body.append("quote_expires", String(first.expires));
+    if (!splitPick) {
+      body.append("picks", JSON.stringify(picks.map(function(c){ return {id: c.id, token: c.token, expires: c.expires}; })));
+      body.append("mode", reqMode());
+    }
     if (splitPick) {
       body.append("split", "1");
       body.append("back_partner_id", chosenBack.id);
       body.append("back_quote_token", chosenBack.token);
       body.append("back_quote_expires", String(chosenBack.expires));
     }
-    var selectedLabel = splitPick ? "行きは" + chosenGo.label + "、帰りは" + chosenBack.label : first.label;
+    var selectedLabel = splitPick ? "行きは" + chosenGo.label + "、帰りは" + chosenBack.label : picks.map(function(c){ return c.label; }).join("、");
+    var quoteMode = !splitPick && reqMode() === "quote";
     // 同じ内容の送り直しで二重受付にならないよう、入力が変わらないかぎり同じ合言葉（req_key）を使う
-    var identity = new URLSearchParams(body); ["quote_token","quote_expires","back_quote_token","back_quote_expires"].forEach(function(k){ identity.delete(k); });
+    var identity = new URLSearchParams(body); ["quote_token","quote_expires","back_quote_token","back_quote_expires","picks"].forEach(function(k){ identity.delete(k); });
     var sig = identity.toString();
     if (sig !== lastSig) { lastSig = sig; reqKey = Date.now().toString(36) + Math.random().toString(36).slice(2, 10); }
     body.append("req_key", reqKey);
@@ -3036,7 +3092,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
     quoteSeq++; sending = true; form.inert = true;
     btn.disabled = true;
-    btn.textContent = "選んだ事業者へ依頼しています…";
+    btn.textContent = "選んだ会社へ依頼しています…";
     function retry(msg){
       sending = false; form.inert = false;
       if (btn.isConnected) { btn.disabled = false; btn.textContent = label; }
@@ -3054,7 +3110,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           return retry("受け付けできませんでした。入力内容はそのまま残っています。少し時間をおいて、もう一度送ってください。");
         }
         form.inert = false; sending = false;
-        $("thanksPartner").textContent = selectedLabel;
+        $("thanksPartner").textContent = selectedLabel; $("thanksQuotePartner").textContent = selectedLabel;
+        $("thanksFirst").textContent = picks.length > 1 ? "先に引き受けた1社で決まり、ほかの会社への依頼は自動で取り消します。" : "";
+        $("thanksBook").hidden = quoteMode; $("thanksQuote").hidden = !quoteMode;
         if (r.id) { $("thanks-id").querySelector("b").textContent = r.back_id ? r.id + "（行き）・" + r.back_id + "（帰り）" : r.id; $("thanks-id").style.display = "block"; }
         addHist([o.pickup, o.via, o.dropoff, o.ret_pickup, o.ret_dropoff]);
         form.style.display = "none";
