@@ -707,7 +707,7 @@ footer a{color:var(--ink-2)}
 <!-- 6. フォーム -->
 <section class="form-sec" id="form">
   <div class="wrap">
-    <div class="sh"><span class="eyebrow">REQUEST</span><h2>ペットタクシーの予約・見積もり依頼</h2><p>条件を入力して、料金の目安を見ながら事業者を選べます。引き受けが決まったら、お迎えの時間と確定料金をメールでお知らせします。</p></div>
+    <div class="sh"><span class="eyebrow">REQUEST</span><h2>ペットタクシーの予約・見積もり依頼</h2><p>条件を入力して、料金の目安を見ながら事業者を選べます（最大5社）。予約が決まったら、お迎えの時間と確定料金をメールでお知らせします。</p><!--PREP: 依頼の送信を再開したら消す--><p style="font-size:.86rem;background:#fff4e5;border-radius:12px;padding:10px 14px;margin-top:10px">いまはすべての会社が準備中のため、候補の会社と料金の目安は見られますが、予約や見積もりの依頼はまだ送れません。</p><!--/PREP--></div>
 
     <div class="mode-tabs" id="modeTabs" role="tablist" hidden>
       <button type="button" role="tab" aria-selected="true" data-mode="normal">予約・見積もり</button>
@@ -763,7 +763,7 @@ footer a{color:var(--ink-2)}
       <p class="emg-note" id="emgNote"></p>
     </div>
     <div class="form-card">
-      <p class="yoyaku"><b>完全予約制</b>事業者に依頼した時点では、まだ予約は確定していません。車が決まったことをお知らせするメールが届いたら、予約確定です。</p>
+      <p class="yoyaku"><b>完全予約制</b>事業者に依頼した時点では、まだ予約は確定していません。予約が決まったことをお知らせするメールが届いたら、予約確定です。</p>
       <form id="petForm" novalidate>
         <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
@@ -831,7 +831,7 @@ footer a{color:var(--ink-2)}
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
-        <p class="form-foot">条件が揃うと、合う事業者と料金の目安が自動で表示されます。カードを押すまで依頼は送信されません。</p>
+        <p class="form-foot">条件が揃うと、合う事業者と料金の目安が自動で表示されます。会社を選んで依頼するまで、どこにも送信されません。</p>
         <div class="need-box" id="partnerNeed" hidden></div>
         <section class="partner-results" id="partnerResults" aria-labelledby="partnerTitle" hidden>
           <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
@@ -883,7 +883,7 @@ footer a{color:var(--ink-2)}
         <div class="ok"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
         <h3>受け付けました！</h3>
         <p id="thanks-id" style="display:none">受付番号 <b></b></p>
-        <p id="thanksBook">まだ予約は確定していません。<span id="thanksPartner"></span>に、空き状況を確認しています。<span id="thanksFirst"></span>ほかの事業者には依頼しません。<br><b id="thanks-min">60分</b>以内に、決まったかどうかをメールでお知らせします。</p>
+        <p id="thanksBook">まだ予約は確定していません。<span id="thanksPartner"></span>に、空き状況を確認しています。<span id="thanksFirst"></span>ほかの事業者には依頼しません。<br>決まったかどうかは、メールでお知らせします。</p>
         <p id="thanksQuote" hidden>まだ予約は確定していません。<span id="thanksQuotePartner"></span>にお見積もりを依頼しました。届いたお見積もりはメールでお送りします。くらべて、決める会社のリンクを押したときに予約が決まります。</p>
         <p style="font-size:.85rem">受付のメールが数分たっても届かないときは、迷惑メールのフォルダもご確認ください。取り消すときは、受付メールのリンクからどうぞ。</p>
       </div>
@@ -923,7 +923,7 @@ footer a{color:var(--ink-2)}
     <ul class="other"><li><a href="/area/hokkaido/">北海道・札幌</a></li><li><a href="/area/aomori/">青森</a></li><li><a href="/area/iwate/">岩手</a></li><li><a href="/area/miyagi/">宮城・仙台</a></li><li><a href="/area/akita/">秋田</a></li><li><a href="/area/yamagata/">山形</a></li><li><a href="/area/">全国の一覧</a></li></ul>
     <div class="last">
       <h2>福島県からのお迎えをさがす</h2>
-      <p>上のフォームにお迎えの場所と行き先を入れると、来てもらえる会社と料金の目安が出ます。完全予約制・手配料0円で、お迎えはお申し込みから3時間後以降です。引き受けが決まったメールが届いた時点で予約成立です。</p>
+      <p>上のフォームにお迎えの場所と行き先を入れると、来てもらえる会社と料金の目安が出ます。完全予約制・手配料0円で、お迎えはお申し込みから3時間後以降です。予約が決まったメールが届いた時点で予約成立です。</p>
       <a class="btn center" href="#form">予約・見積もりのフォームへ<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
     </div>
   </div>
@@ -934,8 +934,8 @@ footer a{color:var(--ink-2)}
     <div class="sh"><span class="eyebrow">HOW IT WORKS</span><h2>ペットタクシーの頼み方は、<br>3ステップだけ。</h2><p>アプリのダウンロードも会員登録もいりません。</p></div>
     <ol class="steps">
       <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span class="no">01</span><h3>フォームに入力</h3><p>どこからどこへ、何日に、どんな子か。2匹以上でも、まとめて1回で入力できます。</p></li>
-      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span><span class="no">02</span><h3>料金を見て事業者を選ぶ</h3><p>エリアやその子の大きさ、頭数、ケージの希望に合う事業者を表示します。料金の目安を比べて、お願いしたい1社を選んでください。</p></li>
-      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/></svg></span><span class="no">03</span><h3>お迎え時間をお知らせ</h3><p>引き受ける会社が決まったら、会社名・お迎えの時間・確定料金（税込）をメールでお伝えします。このメールが届いたら予約成立です。</p></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span><span class="no">02</span><h3>料金を見て事業者を選ぶ</h3><p>エリアやその子の大きさ、頭数、ケージの希望に合う事業者を表示します。料金の目安を比べて、お願いしたい会社を選んでください（最大5社）。</p></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/></svg></span><span class="no">03</span><h3>お迎え時間をお知らせ</h3><p>予約する会社が決まったら、会社名・お迎えの時間・確定料金（税込）をメールでお伝えします。このメールが届いたら予約成立です。</p></li>
     </ol>
   </div>
 </section>
@@ -945,11 +945,11 @@ footer a{color:var(--ink-2)}
   <div class="wrap">
     <div class="sh"><span class="eyebrow">WHY</span><h2>ペットタクシー予約窓口ならでは。</h2><p>ペットタクシーは小さなお店が多く、電話がつながらない、空いていない、料金がわからない、がよくあります。</p></div>
     <div class="reasons">
-      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8L3.5 9.2l5.9-.9z"/></svg></div><h3>お願いしたい1社を選べる</h3><p>フォームの条件に合う事業者を、料金の目安と一緒に表示します。選んだ1社に空き状況を確認し、引き受けが決まったらお知らせします。</p></div>
-      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/></svg></div><h3>その子に合う車だけ</h3><p>一緒に乗る人数、頭数、体重、荷物の量、介護が必要かどうか。条件に合う候補から、お客さまが選んだ1社に依頼します。</p></div>
+      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8L3.5 9.2l5.9-.9z"/></svg></div><h3>最大5社に、まとめて見積もり依頼</h3><p>フォームの条件に合う事業者を、料金の目安と一緒に表示します。気になる会社を最大5社まで選んで、予約や見積もりをまとめて依頼できます。届いた確定料金をくらべて、1社を選べます。</p></div>
+      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/></svg></div><h3>その子に合う車だけ</h3><p>一緒に乗る人数、頭数、体重、荷物の量、介護が必要かどうか。条件に合う候補から、お客さまが選んだ会社だけに依頼します。</p></div>
       <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4M12 17h.01"/></svg></div><h3>料金の目安がその場でわかる</h3><p>お迎え場所と行き先を入れると、その区間の料金の目安がフォームに出ます。手配料は0円です。</p></div>
       <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0115.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 01-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></svg></div><h3>決まらなくても、かんたんに、もう一度</h3><p>選んだ事業者が引き受けられなかったときは、メールのリンクから条件を見直し、事業者を選んで頼み直せます。</p></div>
-      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><h3>やりとりはメールで、記録が残る</h3><p>受付番号、お迎えの時間、料金の目安はすべてメールでお届け。あとから見返せて、言った・言わないの心配がありません。</p></div>
+      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><h3>やりとりはメールで、記録が残る</h3><p>受付番号、お迎えの時間、確定料金はすべてメールでお届け。あとから見返せて、言った・言わないの心配がありません。</p></div>
       <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></div><h3>ペットのことを、1回だけ</h3><p>犬種・猫種、体重、性格、介護のことは、フォームに1回書くだけ。何社にも同じ説明をくり返さなくて大丈夫です。</p></div>
     </div>
     <div class="vs">
@@ -957,7 +957,7 @@ footer a{color:var(--ink-2)}
         <thead><tr><th></th><th>自分で探す</th><th class="us">当サイト</th></tr></thead>
         <tbody>
           <tr><td>連絡する回数</td><td>お店の数だけ電話</td><td class="us">フォーム1回</td></tr>
-          <tr><td>空きの確認</td><td>1社ずつ聞く</td><td class="us">私たちが確認</td></tr>
+          <tr><td>空きの確認・見積もり</td><td>1社ずつ聞く</td><td class="us">最大5社にまとめて</td></tr>
           <tr><td>その子の説明</td><td>毎回する</td><td class="us">1回だけ</td></tr>
           <tr><td>手配料</td><td>0円</td><td class="us">0円</td></tr>
         </tbody>
@@ -981,16 +981,11 @@ footer a{color:var(--ink-2)}
           <div class="row"><dt>30km</dt><dd>7,000〜8,360円</dd></div>
           <div class="row"><dt>50km</dt><dd>11,000〜12,760円</dd></div>
         </dl>
-        <h3>たとえば</h3>
-        <dl>
-          <div class="row"><dt>世田谷区 → 羽田空港<br>（約18km）</dt><dd>4,600〜5,720円</dd></div>
-          <div class="row"><dt>松戸市 → 柏市<br>（約8km）</dt><dd>2,600円〜</dd></div>
-        </dl>
       </div>
     </div>
     <p class="fare-flag"><b>確定料金ではありません。</b>上の金額は目安です。確定料金（税込）は、お迎えが決まったときに引き受けた会社からメールでお知らせします。</p>
     <p class="fare-night"><b>🌙 夜間・早朝の割増</b>上の目安は昼間の料金です。東京・世田谷の会社は、18時〜朝8時のお迎えで乗車料金が2割増し、千葉・松戸の会社は、夜間の割増が料金表にありません。</p>
-    <p class="small">片道の目安です。依頼先のペットタクシー2社の料金表で計算していて、どの会社が引き受けるかで変わります。東京・世田谷の会社は、乗車料金が5kmまで2,200円、その先は1kmごとに220円（101km〜は165円、201km〜は110円）。お迎え料金と帰りの回送料金がそれぞれ3kmまで330円かかり、お店から遠いと増えます。夕方18時〜朝8時は乗車料金が2割増し、往復は乗車料金が2倍です。病院での待ち時間は10分まで無料、30分まで660円、その後10分ごとに220円です。長い待ち時間の往復や遠くへの移動は、半日貸切（6時間・70kmまで13,200円）や1日貸切（12時間・160kmまで26,400円）のほうが安ければ、そちらで計算します。千葉・松戸の会社は、乗車料金が5km未満1,800円、5km以上は1kmごとに200円（101km〜は150円、201km〜は100円）。往復は10kmまで3,300円（病院での待ち時間30分込み）で、その後の待ち時間は30分ごとに500円です。長い距離や長い待ち時間は、その会社のお見積りになります。目安には高速代・駐車場代は入っていません。確定料金（税込）は、お迎えが決まったときに引き受けた会社から、一般道の場合と高速道路を使う場合の両方をお知らせします。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。東京・世田谷の会社は、現金で降りるときにお支払いです。千葉・松戸の会社は、お支払い方法を決まったときのメールでご案内します。エリアごとの目安は、各エリアのページにまとめています。</p><!--/FARE_TABLE-->
+    <p class="small">片道の目安です。当サイトとやりとりのあるペットタクシー2社の料金表で計算した例で、会社によって変わります。フォームでは、候補の会社ごとに料金表から計算した目安が出ます。東京・世田谷の会社は、乗車料金が5kmまで2,200円、その先は1kmごとに220円（101km〜は165円、201km〜は110円）。お迎え料金と帰りの回送料金がそれぞれ3kmまで330円かかり、お店から遠いと増えます。夕方18時〜朝8時は乗車料金が2割増し、往復は乗車料金が2倍です。病院での待ち時間は10分まで無料、30分まで660円、その後10分ごとに220円です。長い待ち時間の往復や遠くへの移動は、半日貸切（6時間・70kmまで13,200円）や1日貸切（12時間・160kmまで26,400円）のほうが安ければ、そちらで計算します。千葉・松戸の会社は、乗車料金が5km未満1,800円、5km以上は1kmごとに200円（101km〜は150円、201km〜は100円）。往復は10kmまで3,300円（病院での待ち時間30分込み）で、その後の待ち時間は30分ごとに500円です。長い距離や長い待ち時間は、その会社のお見積りになります。目安には高速代・駐車場代は入っていません。確定料金（税込）は、お迎えが決まったときに引き受けた会社から、一般道の場合と高速道路を使う場合の両方をお知らせします。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。東京・世田谷の会社は、現金で降りるときにお支払いです。千葉・松戸の会社は、お支払い方法を決まったときのメールでご案内します。都道府県ごとの料金の例は、<a href="/area/">全国のペットタクシー情報</a>にまとめています。</p><!--/FARE_TABLE-->
   </div>
 </section>
 
@@ -1000,10 +995,10 @@ footer a{color:var(--ink-2)}
     <div class="grid">
       <div class="stat"><div class="n">47<small>都道府県</small></div><div class="l">からお迎えの場所を<br>選べます</div></div>
       <div class="stat"><div class="n">0<small>円</small></div><div class="l">当サイトの手配料<br>運賃は乗った車へ</div></div>
-      <div class="stat"><div class="n">60<small>分</small></div><div class="l">以内に結果をメール<br>（お迎えは3時間後から）</div></div>
+      <div class="stat"><div class="n">5<small>社</small></div><div class="l">まで、まとめて<br>見積もり・予約の依頼</div></div>
       <div class="stat"><div class="n">5<small>匹</small></div><div class="l">まで、一度に<br>お申し込みOK</div></div>
     </div>
-    <p class="src">お手配するのは、当サイトとやりとりのあるペットタクシーです。60分は、お申し込みから空き状況の結果をお知らせするまでの目安で、お迎えまでの時間ではありません。</p>
+    <p class="src">完全予約制です。お迎えは、お申し込みから3時間後以降で選べます。対応する地域や料金は会社ごとに違います。</p>
   </div>
 </section>
 
@@ -1066,7 +1061,7 @@ footer a{color:var(--ink-2)}
       <div class="scene"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div><b>大型犬のおでかけ</b><span>大型犬に対応した会社をご案内</span></div>
       <div class="scene"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M11 20c0-3 2.5-5 5-5s5 2 5 5"/></svg></div><b>2匹・3匹いっしょに</b><span>多頭の移動もまとめて手配</span></div>
       <div class="scene"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></div><b>飼い主さんが乗れない日</b><span>ペットだけの送迎もご相談を</span></div>
-      <div class="scene"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16l20-6-3-3-6 2-6-4-2 1 4 5-4 1-2-2-1 1z"/><path d="M3 21h18"/></svg></div><b>お引っ越し・空港へ</b><span>羽田・成田、長距離も</span></div>
+      <div class="scene"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16l20-6-3-3-6 2-6-4-2 1 4 5-4 1-2-2-1 1z"/><path d="M3 21h18"/></svg></div><b>お引っ越し・空港へ</b><span>空港への送迎、長距離も</span></div>
     </div>
     <p class="more"><a href="#guide">場面ごとのくわしいガイドを見る</a></p>
   </div>
@@ -1105,7 +1100,7 @@ footer a{color:var(--ink-2)}
       <div class="area"><h3><a href="/kanagawa/" style="color:inherit">神奈川・横浜のペットタクシー</a></h3><ul class="chips"><li>横浜市</li><li>川崎市</li><li>相模原市</li><li>藤沢市</li><li>横須賀市</li><li>鎌倉市</li><li>茅ヶ崎市</li><li>大和市</li><li>厚木市</li></ul></div>
       <div class="area"><h3><a href="/saitama/" style="color:inherit">埼玉のペットタクシー</a></h3><ul class="chips"><li>さいたま市</li><li>川口市</li><li>越谷市</li><li>所沢市</li><li>川越市</li><li>草加市</li><li>春日部市</li><li>戸田市</li></ul></div>
     </div>
-    <p class="area-note">エリアごとの料金の目安やよくある質問は、各エリアのページにまとめています。<br>世田谷・墨田などの東京23区から、横浜・川崎、佐倉・船橋・松戸・成田などの千葉、さいたま市まで。羽田空港・成田空港への送迎や、県をまたぐ長距離移動もご相談ください。<br><a href="/area/">ほかの道府県のペットタクシー情報（料金の例・夜間の動物病院）</a></p>
+    <p class="area-note">料金の例・夜間の動物病院・よくある質問は、都道府県ごとのページにまとめています。空港への送迎や、県をまたぐ長距離移動もご相談ください。<br><a href="/area/">全国47都道府県のペットタクシー情報を見る</a></p>
   </div>
 </section>
 
@@ -1155,8 +1150,8 @@ footer a{color:var(--ink-2)}
         <h3>予約が決まるまで</h3>
         <ul>
           <li>候補を見るだけでは依頼は送信されません。事業者を選んで依頼しても、その時点ではまだ予約は決まっていません（受付のみ）。</li>
-          <li>当サイトが選んだ1社に空きを確認し、引き受ける会社が決まったら「お迎えが決まりました」のメールで、会社名・お迎えの時間・確定料金（税込）をお知らせします。このメールが届いた時点で予約成立です。</li>
-          <li>お申し込みから60分たっても見つからないときは、その旨をメールでお知らせします。この場合、料金は一切かかりません。</li>
+          <li>お客さまが選んだ会社（最大5社）にだけ依頼します。1社への予約の依頼は、その会社が引き受けた時点で決まります。2社以上への依頼や見積もりの依頼は、届いた確定料金をくらべて、お客さまが1社を選んだ時点で決まります。</li><li>決まったら「お迎えが決まりました」のメールで、会社名・お迎えの時間・確定料金（税込）をお知らせします。このメールが届いた時点で予約成立です。</li>
+          <li>選んだ会社が引き受けられないときは、その旨をメールでお知らせします。この場合、料金は一切かかりません。</li>
           <li>運賃はペットタクシーへ直接お支払いください。当サイトの手配料は0円です。</li>
         </ul>
       </div>
@@ -1193,7 +1188,7 @@ footer a{color:var(--ink-2)}
         <ul><li>ペットタクシーの空き確認と手配、お迎え時間・料金のご連絡</li><li>キャンセルやお問い合わせへの対応</li><li>サービスの改善（個人が特定できない形の集計に限ります）</li></ul>
         <p>ご本人の同意なく、この目的のほかに使うことはありません。</p>
         <h4>3. ペットタクシー事業者へのお伝え</h4>
-        <ul><li>空きを確認する段階では、お迎えの場所・行き先・日・ペットの情報だけを、お客さまが選んだ1社にお伝えします。お名前と連絡先はお伝えしません。</li><li>お迎えを引き受けた1社にだけ、送迎のためにお名前と連絡先をお伝えします。</li><li>法令にもとづく場合を除き、ご本人の同意なくそれ以外の第三者に提供することはありません。</li></ul>
+        <ul><li>空きを確認する段階では、お迎えの場所・行き先・日・ペットの情報だけを、お客さまが選んだ会社（最大5社）にだけお伝えします。お名前と連絡先はお伝えしません。</li><li>予約が決まった1社にだけ、送迎のためにお名前と連絡先をお伝えします。</li><li>法令にもとづく場合を除き、ご本人の同意なくそれ以外の第三者に提供することはありません。</li></ul>
         <h4>4. 安全な管理</h4>
         <ul><li>フォームの送信内容は、暗号化された通信（HTTPS）でお送りいただきます。</li><li>お預かりした情報は、セキュリティ対策の整った大手クラウドサービス上で保管し、見られるのは運営者だけに限っています。</li><li>なくしたり、漏れたり、勝手に使われたりしないよう、アクセスの制限やログインの保護などの安全管理に努めます。</li><li>情報は手配とご連絡に必要な期間だけ保管し、必要がなくなったら速やかに削除します。</li><li>料金の目安を出すため、入力した場所（「いまいる場所を入れる」を使ったときは端末の位置）を地図の検索サービスに送り、距離を調べます。端末の位置は、ボタンを押してご自身で許可したときだけ使い、当サイトには保存しません。</li><li>サイトをよりよくするため、大手の解析サービスを使って、見られたページや「緊急のとき」タブ・予約の依頼などの操作の回数を、個人が特定できない形で集計しています。このためにクッキーなどを使います。お名前・連絡先・場所などの入力内容は送りません。集計を止めたいときは、ブラウザの設定でクッキーを止めるか、<a href="https://tools.google.com/dlpage/gaoptout?hl=ja" target="_blank" rel="noopener">解析を止める追加機能</a>をお使いください（解析サービスによる情報の扱いは<a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener">こちら</a>）。</li><li>送ったことのある場所は、次に入力するときの候補として、お使いの端末のブラウザの中だけに保存します（当サイトには届きません）。フォームの「場所の候補を消す」でいつでも消せます。</li></ul>
         <h4>5. 確認・訂正・削除のご依頼</h4>
@@ -1206,7 +1201,7 @@ footer a{color:var(--ink-2)}
           <div><dt>運営者</dt><dd>ペットタクシー予約窓口</dd></div>
           <div><dt>サイト</dt><dd>https://pet.shiokonbu.com/</dd></div>
           <div><dt>対応エリア</dt><dd>会社ごとに異なります（お迎えの場所に来てもらえる会社をご案内します）</dd></div>
-          <div><dt>サービス内容</dt><dd>ペットタクシーの空き確認と手配（手配料無料）。送迎は各ペットタクシー事業者が行います。</dd></div>
+          <div><dt>サービス内容</dt><dd>ペットタクシーの空き確認・見積もりの取り次ぎと手配（手配料無料）。送迎は各ペットタクシー事業者が行います。</dd></div>
           <div><dt>お問い合わせ</dt><dd><a href="/contact/">お問い合わせフォーム</a>からどうぞ。ご予約中の方は、受付メールにご返信いただいてもかまいません。</dd></div>
         </dl>
       </div>
@@ -1231,7 +1226,7 @@ footer a{color:var(--ink-2)}
 <footer>
   <div class="wrap">
     <nav><a href="#how">使い方</a><a href="#area">対応エリア</a><a href="#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="#policy">キャンセルについて</a><a href="#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
-    <nav><a href="/tokyo/">東京のペットタクシー</a><a href="/chiba/">千葉のペットタクシー</a><a href="/kanagawa/">神奈川・横浜のペットタクシー</a><a href="/saitama/">埼玉のペットタクシー</a></nav>
+    <nav><a href="/area/">全国のペットタクシー情報</a><a href="/tokyo/">東京のペットタクシー</a><a href="/chiba/">千葉のペットタクシー</a><a href="/kanagawa/">神奈川・横浜のペットタクシー</a><a href="/saitama/">埼玉のペットタクシー</a></nav>
     <p>ペットタクシー予約窓口</p>
     <p>&copy; 2026 ペットタクシー予約窓口</p>
   </div>
