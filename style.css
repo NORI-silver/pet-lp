@@ -457,6 +457,7 @@ footer a{color:var(--ink-2)}
 .partner-rest-btn{display:block;width:100%;margin:14px 0 0;padding:14px;border:1.5px dashed var(--o);border-radius:14px;background:#fff;color:var(--o-d);font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}
 .partner-rest-btn:hover{background:#fff4ec}
 #partnerRest{margin-top:14px}
+#partnerRest[hidden],.partner-sort[hidden]{display:none}
 .partner-sort{display:flex;align-items:center;gap:8px;justify-content:flex-end;margin:4px 0 10px;font-size:.86rem}
 .partner-sort label{font-weight:700;color:var(--ink-2)}
 .partner-sort select{width:auto;min-width:12em;padding:8px 10px;font-size:.88rem}
