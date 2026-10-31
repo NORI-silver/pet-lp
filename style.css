@@ -521,11 +521,12 @@ footer a{color:var(--ink-2)}
 .other a:hover{border-color:var(--o);color:var(--o-d)}
 /* ガイド */
 .art{max-width:760px;margin:0 auto}
-.art h2{font-size:1.35rem;margin:44px 0 14px;padding-left:14px;border-left:5px solid var(--o);line-height:1.45}
+.art h2{scroll-margin-top:90px;font-size:1.35rem;margin:44px 0 14px;padding-left:14px;border-left:5px solid var(--o);line-height:1.45}
 .art p{color:var(--ink-2);margin:0 0 16px}
 .art ul,.art ol{color:var(--ink-2);padding-left:1.4em;margin:0 0 18px}
 .art li{margin:6px 0}
 .art .tip{background:var(--o-l);border-radius:18px;padding:16px 18px;color:var(--ink);font-weight:600;margin:0 0 18px}
+.art nav.art-toc::before{display:none}
 .art .tip::before{content:"POINT";display:block;font-size:.72rem;letter-spacing:.12em;color:var(--o-d);font-weight:800;margin-bottom:4px}
 .art .tbl{overflow-x:auto;margin:0 0 18px}
 .art table{border-collapse:collapse;width:100%;font-size:.78rem;line-height:1.5;background:#fff}

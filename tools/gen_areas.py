@@ -110,11 +110,12 @@ extra_css = """
 .other a:hover{border-color:var(--o);color:var(--o-d)}
 /* ガイド */
 .art{max-width:760px;margin:0 auto}
-.art h2{font-size:1.35rem;margin:44px 0 14px;padding-left:14px;border-left:5px solid var(--o);line-height:1.45}
+.art h2{scroll-margin-top:90px;font-size:1.35rem;margin:44px 0 14px;padding-left:14px;border-left:5px solid var(--o);line-height:1.45}
 .art p{color:var(--ink-2);margin:0 0 16px}
 .art ul,.art ol{color:var(--ink-2);padding-left:1.4em;margin:0 0 18px}
 .art li{margin:6px 0}
 .art .tip{background:var(--o-l);border-radius:18px;padding:16px 18px;color:var(--ink);font-weight:600;margin:0 0 18px}
+.art nav.art-toc::before{display:none}
 .art .tip::before{content:"POINT";display:block;font-size:.72rem;letter-spacing:.12em;color:var(--o-d);font-weight:800;margin-bottom:4px}
 .art .tbl{overflow-x:auto;margin:0 0 18px}
 .art table{border-collapse:collapse;width:100%;font-size:.78rem;line-height:1.5;background:#fff}
@@ -411,7 +412,14 @@ for g in GUIDES:
         ld.append({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
           {"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":ans}} for q,ans in g["faq"]]})
     ld_html = "\n".join('<script type="application/ld+json">\n' + json.dumps(x, ensure_ascii=False, indent=1) + '\n</script>' for x in ld)
-    body = "".join(f'<h2>{e(h)}</h2>' + "".join(block(b) for b in bs) for h, bs in g["sections"])
+    if g.get("category") == "facility":
+        toc = '<nav class="tip art-toc" aria-label="この記事の目次"><b>この記事で分かること</b><ol>' + "".join(
+            f'<li><a href="#section-{i}">{e(h)}</a></li>' for i, (h, _) in enumerate(g["sections"], 1)) + '</ol></nav>'
+        body = toc + "".join(f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b) for b in bs)
+                              for i, (h, bs) in enumerate(g["sections"], 1))
+        body += f'<p class="small">{e(g["facility_note"])}</p>'
+    else:
+        body = "".join(f'<h2>{e(h)}</h2>' + "".join(block(b) for b in bs) for h, bs in g["sections"])
     faq = ""
     if g.get("faq"):
         faq = '<h2>よくある質問</h2><div class="faq-list">' + "".join(f'<details><summary>{e(q)}</summary><div class="a">{e(ans)}</div></details>' for q,ans in g["faq"]) + '</div>'
@@ -457,6 +465,10 @@ for g in GUIDES:
 </section>
 </main>
 """ + foot("/#form")
+    if g.get("category") == "facility":
+        page = page.replace("ペットタクシーを予約する", "掲載候補を見る").replace(">予約する<", ">掲載候補を見る<")
+        page = page.replace("完全予約制・手配料0円。お申し込みだけでは予約は決まりません。引き受けが決まったメールが届いた時点で予約成立です。",
+                            "現在は候補の表示のみです。すべての会社への予約依頼を停止しています。")
     os.makedirs(os.path.join(ROOT, "guide", g["slug"]), exist_ok=True)
     open(os.path.join(ROOT, "guide", g["slug"], "index.html"), "w", encoding="utf-8").write(page)
 
