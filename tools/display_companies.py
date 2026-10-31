@@ -236,6 +236,8 @@ def main(master, comp, tariffs=None, facts_path=None):
         at = re.sub(r'（[^）]*シートより）', '', c.get('area', ''))
         row = {'id': m['id'], 'name': m['name'], 'pref': m['pref'], 'areas': areas(c, m), 'area_text': '' if at.startswith('不明') else at[:70],
                'shop': SHOP.get(m['id']), 'fare': fare(ts.get(m['id']), m['id']), 'pay': pay(c)}
+        # 口コミの星を取り寄せるための、地図で場所を探すことばと、見つかった場所の名前に入っているはずのことば（ダッシュボードと同じ。点数そのものは入れない）
+        if c.get('review_q') and c.get('review_name'): row['review_q'], row['review_name'] = c['review_q'], c['review_name']
         row.update(schedule(c, m['id']))
         row['animals'] = animals(dict(facts.get(m['id'], {}), _id=m['id']))
         assert not re.search(r'\d{2,4}-\d{2,4}-\d{3,4}|@', json.dumps(row, ensure_ascii=False)), row  # 電話番号・メールは入れない

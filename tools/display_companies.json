@@ -54,6 +54,8 @@
     }
    },
    "pay": "現金・カード・電子マネー",
+   "review_q": "COCOタク 東京小平店 東京",
+   "review_name": "COCOタク 東京小平店",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -121,6 +123,8 @@
     }
    },
    "pay": "現金・カード・交通系IC・PayPay・iD・QUICPay・Apple Pay",
+   "review_q": "COCOタク 江戸川店 東京",
+   "review_name": "COCOタク 江戸川店",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -180,6 +184,8 @@
     }
    },
    "pay": "",
+   "review_q": "PETTA東京 東京",
+   "review_name": "PETTA東京",
    "hours": "8-21",
    "flex": true,
    "closed": [],
@@ -244,6 +250,8 @@
     }
    },
    "pay": "現金・カード・交通系IC・PayPay・iD・QUICPay・Apple Pay",
+   "review_q": "cocoタク 大田・田園調布店 東京",
+   "review_name": "cocoタク 大田・田園調布店",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -312,6 +320,8 @@
     "src": "https://pet-taxikarubi.com/"
    },
    "pay": "",
+   "review_q": "かるたく 東京",
+   "review_name": "かるたく",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -365,6 +375,8 @@
     }
    },
    "pay": "",
+   "review_q": "サポっ人 中目黒店 東京",
+   "review_name": "サポっ人 中目黒店",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -420,6 +432,8 @@
     }
    },
    "pay": "現金のみ・降りるとき",
+   "review_q": "ペットタクシー こうのとり 東京",
+   "review_name": "こうのとり",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -508,6 +522,8 @@
     "src": "https://azul.fivedogs.jp/"
    },
    "pay": "キャッシュレス可・降りるとき",
+   "review_q": "ペットタクシー アズール 東京",
+   "review_name": "アズール",
    "hours": "9-19",
    "flex": false,
    "closed": [],
@@ -569,6 +585,8 @@
     }
    },
    "pay": "カード・交通系IC・QR",
+   "review_q": "ペットタクシー ワンネス 東京",
+   "review_name": "ワンネス",
    "hours": "8-20",
    "flex": false,
    "closed": [],
@@ -633,6 +651,8 @@
     }
    },
    "pay": "",
+   "review_q": "ペットタクシー ワンハウス 東京",
+   "review_name": "ワンハウス",
    "hours": "8-20",
    "flex": true,
    "closed": [],
@@ -701,6 +721,8 @@
     "src": "https://pettaxi-tokyo.jp/"
    },
    "pay": "現金・カード・電子マネー・コード決済／着いたとき",
+   "review_q": "ペットタクシー東京 東京",
+   "review_name": "ペットタクシー東京",
    "hours": "8-22",
    "flex": false,
    "closed": [],
@@ -767,6 +789,8 @@
     }
    },
    "pay": "現金・カード・電子マネー・QR／到着後",
+   "review_q": "ペトタクファインド 東京",
+   "review_name": "ペトタクファインド",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -832,6 +856,8 @@
     "src": "https://www.cocotaku-shonan.com/料金プラン"
    },
    "pay": "",
+   "review_q": "COCOタク 湘南店 神奈川",
+   "review_name": "COCOタク 湘南店",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -951,33 +977,9 @@
     "src": "https://www.legolashouse.com/price"
    },
    "pay": "",
+   "review_q": "Legolas House 神奈川",
+   "review_name": "Legolas House",
    "hours": "0-24",
-   "flex": false,
-   "closed": [],
-   "lead_days": null,
-   "cut": null,
-   "animals": {
-    "all": false,
-    "only": false,
-    "ok": [],
-    "no": []
-   }
-  },
-  {
-   "id": "D63b09f7",
-   "name": "TJD（TJドライブ）",
-   "pref": "神奈川県",
-   "areas": [
-    "神奈川"
-   ],
-   "area_text": "川崎市麻生区・新百合ヶ丘",
-   "shop": [
-    35.604,
-    139.507
-   ],
-   "fare": null,
-   "pay": "",
-   "hours": "",
    "flex": false,
    "closed": [],
    "lead_days": null,
@@ -1034,6 +1036,8 @@
     "src": "https://www.ikimonocare.com/"
    },
    "pay": "",
+   "review_q": "ikimono care 神奈川",
+   "review_name": "ikimono care",
    "hours": "8-20",
    "flex": false,
    "closed": [],
@@ -1102,6 +1106,8 @@
     }
    },
    "pay": "現金・カード・電子マネー・QR（フェリー長距離は事前決済）",
+   "review_q": "ふわふわペットタクシー 神奈川",
+   "review_name": "ふわふわペットタクシー",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -1172,6 +1178,8 @@
     }
    },
    "pay": "",
+   "review_q": "やこうDogはうす 神奈川",
+   "review_name": "やこうDogはうす",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -1218,6 +1226,8 @@
     }
    },
    "pay": "",
+   "review_q": "わんにゃんハイヤー Angel Buggy 神奈川",
+   "review_name": "わんにゃんハイヤー Angel",
    "hours": "8-19",
    "flex": false,
    "closed": [],
@@ -1272,6 +1282,8 @@
     "src": "https://pettakun.com/service"
    },
    "pay": "",
+   "review_q": "ペッタクん 神奈川",
+   "review_name": "ペッタクん",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -1339,6 +1351,8 @@
     }
    },
    "pay": "",
+   "review_q": "ペットタクシー Animals 神奈川",
+   "review_name": "Animals",
    "hours": "8-20",
    "flex": true,
    "closed": [],
@@ -1370,6 +1384,8 @@
    ],
    "fare": null,
    "pay": "JCBタクシーチケット取扱",
+   "review_q": "ペットタクシー わんだにゃー 神奈川",
+   "review_name": "わんだにゃー",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -1418,6 +1434,8 @@
     }
    },
    "pay": "現金・カード／終わったあと",
+   "review_q": "ペットタクシー シアンシャ 厚木店 神奈川",
+   "review_name": "シアンシャ 厚木店",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -1466,6 +1484,8 @@
     }
    },
    "pay": "現金・カード／終わったあと",
+   "review_q": "ペットタクシー シアンシャ 鎌倉店 神奈川",
+   "review_name": "シアンシャ 鎌倉店",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -1491,6 +1511,8 @@
    "shop": null,
    "fare": null,
    "pay": "",
+   "review_q": "三和交通 ペットタクシー 神奈川",
+   "review_name": "三和交通",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -1538,6 +1560,8 @@
     }
    },
    "pay": "",
+   "review_q": "湘南Dog Life College 神奈川",
+   "review_name": "湘南Dog Life",
    "hours": "9-18",
    "flex": false,
    "closed": [
@@ -1570,6 +1594,8 @@
    ],
    "fare": null,
    "pay": "",
+   "review_q": "湘南ペットハイヤー 神奈川",
+   "review_name": "湘南ペットハイヤー",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -1623,6 +1649,8 @@
     "src": "https://pets-taxi.net/ja/kamakurapettaxi"
    },
    "pay": "",
+   "review_q": "鎌倉ペットタクシー 神奈川",
+   "review_name": "鎌倉ペットタクシー",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -1683,6 +1711,8 @@
     "src": "https://cocotaxi-saitama.com/"
    },
    "pay": "現金・カード・PayPay等",
+   "review_q": "COCOタク さいたま南店 埼玉",
+   "review_name": "COCOタク さいたま南店",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -1736,6 +1766,8 @@
     "src": "https://pet-taxi-saitama-kawagoe.jp/"
    },
    "pay": "現金・カード・QR",
+   "review_q": "COCOタク 埼玉川越店 埼玉",
+   "review_name": "COCOタク 埼玉川越店",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -1804,6 +1836,8 @@
     }
    },
    "pay": "現金・カード・QR",
+   "review_q": "COCOタク 埼玉春日部店 埼玉",
+   "review_name": "COCOタク 埼玉春日部店",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -1870,6 +1904,8 @@
     }
    },
    "pay": "",
+   "review_q": "ペットケア151A 埼玉",
+   "review_name": "ペットケア151A",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -1976,6 +2012,8 @@
     "src": "https://pettaxi.jp/"
    },
    "pay": "",
+   "review_q": "コインペットタクシー シエロ 千葉",
+   "review_name": "コインペットタクシー シエロ",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -2029,6 +2067,8 @@
     }
    },
    "pay": "",
+   "review_q": "ペットタクシー しっぽ 千葉",
+   "review_name": "しっぽ",
    "hours": "8-18",
    "flex": false,
    "closed": [],
@@ -2077,6 +2117,8 @@
     "src": "https://pearlno-shippo.com/"
    },
    "pay": "",
+   "review_q": "ペットタクシー パールのしっぽ 千葉",
+   "review_name": "パールのしっぽ",
    "hours": "9-21",
    "flex": false,
    "closed": [
@@ -2125,6 +2167,8 @@
     }
    },
    "pay": "",
+   "review_q": "動物苑 千葉",
+   "review_name": "動物苑",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -2188,6 +2232,8 @@
     "src": "https://pet-taxi.jp/charge/"
    },
    "pay": "",
+   "review_q": "東葛ペットタクシー 千葉",
+   "review_name": "東葛ペットタクシー",
    "hours": "8-20",
    "flex": true,
    "closed": [],
@@ -2261,6 +2307,8 @@
     }
    },
    "pay": "現金・カード・電子マネー・交通系IC・QR",
+   "review_q": "ワンワンハウス 群馬",
+   "review_name": "ワンワンハウス",
    "hours": "9-19",
    "flex": false,
    "closed": [
@@ -2317,6 +2365,8 @@
     }
    },
    "pay": "現金・カード・電子決済",
+   "review_q": "D-RIDE 北海道",
+   "review_name": "D-RIDE",
    "hours": "8-18",
    "flex": true,
    "closed": [],
@@ -2368,6 +2418,8 @@
     }
    },
    "pay": "カード・現金・コンビニ後払い",
+   "review_q": "ぺトタク 北海道",
+   "review_name": "ぺトタク",
    "hours": "8-20",
    "flex": true,
    "closed": [],
@@ -2432,6 +2484,8 @@
     }
    },
    "pay": "現金・PayPay（カード・QRの記載も）／送迎後",
+   "review_q": "ペット専用タクシー aiai 北海道",
+   "review_name": "ペット専用タクシー aiai",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -2491,6 +2545,8 @@
     }
    },
    "pay": "現金のみ（キャッシュレスは順次）",
+   "review_q": "COCOタク岩手盛岡店 岩手",
+   "review_name": "COCOタク岩手盛岡店",
    "hours": "9-19",
    "flex": false,
    "closed": [
@@ -2551,6 +2607,8 @@
     "src": "https://petrip.co.jp/"
    },
    "pay": "現金・PayPay",
+   "review_q": "PETRIP 宮城",
+   "review_name": "PETRIP",
    "hours": "6-23",
    "flex": false,
    "closed": [],
@@ -2577,6 +2635,8 @@
    ],
    "fare": null,
    "pay": "",
+   "review_q": "ニャンワンクラブ 宮城",
+   "review_name": "ニャンワンクラブ",
    "hours": "9-18",
    "flex": false,
    "closed": [],
@@ -2606,6 +2666,8 @@
    ],
    "fare": null,
    "pay": "",
+   "review_q": "万代タクシー 新潟",
+   "review_name": "万代タクシー",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -2631,6 +2693,8 @@
    "shop": null,
    "fare": null,
    "pay": "",
+   "review_q": "冨士タクシー 石川",
+   "review_name": "冨士タクシー",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -2661,6 +2725,8 @@
    ],
    "fare": null,
    "pay": "前払い（振込・メールで届くカード決済）",
+   "review_q": "ペットタクシー With☆ 山梨",
+   "review_name": "With☆",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -2725,6 +2791,8 @@
     }
    },
    "pay": "カード・PayPay",
+   "review_q": "ペットタクシー COCOタク静岡 静岡",
+   "review_name": "COCOタク静岡",
    "hours": "8-21",
    "flex": true,
    "closed": [],
@@ -2778,6 +2846,8 @@
     "src": "https://happywith.pet/price/"
    },
    "pay": "現金（降りるとき）・事前の振込。カード・QRは不可",
+   "review_q": "HAPPY WITH 愛知",
+   "review_name": "HAPPY WITH",
    "hours": "8-20",
    "flex": false,
    "closed": [],
@@ -2806,6 +2876,8 @@
    ],
    "fare": null,
    "pay": "現金・カード・PayPay",
+   "review_q": "ペットタクシー パウパウ 愛知",
+   "review_name": "パウパウ",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -2836,6 +2908,8 @@
    ],
    "fare": null,
    "pay": "現金・カード・交通系IC・QR",
+   "review_q": "ZEROペットタクシー 滋賀",
+   "review_name": "ZEROペットタクシー",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -2885,6 +2959,8 @@
     "src": "https://j-pettaxi.com/"
    },
    "pay": "",
+   "review_q": "PetTAXI24 京",
+   "review_name": "PetTAXI24",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -2955,6 +3031,8 @@
     "src": "https://ten-rin.jp/taxi/"
    },
    "pay": "",
+   "review_q": "ペットサポート てんりん 京",
+   "review_name": "ペットサポート てんりん",
    "hours": "9-21",
    "flex": true,
    "closed": [],
@@ -2995,6 +3073,8 @@
     "src": "https://kitani11taxi.com/"
    },
    "pay": "",
+   "review_q": "木谷わんわんタクシー 京",
+   "review_name": "木谷わんわんタクシー",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -3055,6 +3135,8 @@
     }
    },
    "pay": "",
+   "review_q": "ARCPet Taxi & Pet Sitter 大阪",
+   "review_name": "ARCPet Taxi",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -3117,6 +3199,8 @@
     "src": "https://comasuke.com/"
    },
    "pay": "現金・カード・電子マネー・QR",
+   "review_q": "Comasuke 大阪",
+   "review_name": "Comasuke",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -3166,6 +3250,8 @@
     "src": "https://doghairstudioken.jp/"
    },
    "pay": "カード・電子マネー・交通系IC",
+   "review_q": "DOG HAIR STUDIO KEN 大阪",
+   "review_name": "DOG HAIR",
    "hours": "10-18",
    "flex": false,
    "closed": [
@@ -3227,6 +3313,8 @@
     }
    },
    "pay": "",
+   "review_q": "PetTaxi けいわん堺 大阪",
+   "review_name": "PetTaxi けいわん堺",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -3273,6 +3361,8 @@
     }
    },
    "pay": "",
+   "review_q": "アイアールサービス 大阪",
+   "review_name": "アイアールサービス",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -3383,6 +3473,8 @@
     "src": "https://carry-one.net/priceandflow/"
    },
    "pay": "",
+   "review_q": "キャリーワン 大阪",
+   "review_name": "キャリーワン",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -3437,6 +3529,8 @@
     }
    },
    "pay": "カード可",
+   "review_q": "ペットタクシー アイボウ 大阪",
+   "review_name": "アイボウ",
    "hours": "8-18",
    "flex": false,
    "closed": [],
@@ -3521,6 +3615,8 @@
     "src": "https://my-family-takatsuki.com/price.html"
    },
    "pay": "",
+   "review_q": "ペットタクシー マイファミリー 大阪",
+   "review_name": "マイファミリー",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -3547,6 +3643,8 @@
    ],
    "fare": null,
    "pay": "",
+   "review_q": "ミントペットタクシー 大阪",
+   "review_name": "ミントペットタクシー",
    "hours": "9-17",
    "flex": false,
    "closed": [
@@ -3615,6 +3713,8 @@
     }
    },
    "pay": "",
+   "review_q": "ペットタクシー アニマルプラス 兵庫",
+   "review_name": "アニマルプラス",
    "hours": "8-19",
    "flex": false,
    "closed": [],
@@ -3639,6 +3739,8 @@
    "shop": null,
    "fare": null,
    "pay": "",
+   "review_q": "ラッキーペットサービス 兵庫",
+   "review_name": "ラッキーペットサービス",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -3708,6 +3810,8 @@
     }
    },
    "pay": "現金・カード・QRコード決済",
+   "review_q": "COCOタク ならまち店 奈良",
+   "review_name": "COCOタク ならまち店",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -3777,6 +3881,8 @@
     }
    },
    "pay": "現金・カード・QRコード決済",
+   "review_q": "ペットタクシー COCOタク奈良 奈良",
+   "review_name": "COCOタク奈良",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -3803,6 +3909,8 @@
    ],
    "fare": null,
    "pay": "",
+   "review_q": "わんニャンMOB 岡山",
+   "review_name": "わんニャンMOB",
    "hours": "",
    "flex": true,
    "closed": [],
@@ -3857,6 +3965,8 @@
     }
    },
    "pay": "",
+   "review_q": "ペッタク 広島",
+   "review_name": "ペッタク",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -3950,6 +4060,8 @@
     "src": "https://pettaxihibiki.hp.peraichi.com/"
    },
    "pay": "カード・PayPay・d払いなど",
+   "review_q": "ペットタクシー 響 広島",
+   "review_name": "響",
    "hours": "6-24",
    "flex": false,
    "closed": [],
@@ -3976,6 +4088,8 @@
    ],
    "fare": null,
    "pay": "",
+   "review_q": "吉島タクシー 広島",
+   "review_name": "吉島タクシー",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -4027,6 +4141,8 @@
     }
    },
    "pay": "",
+   "review_q": "トップスター 徳島",
+   "review_name": "トップスター",
    "hours": "10-17",
    "flex": false,
    "closed": [],
@@ -4085,6 +4201,8 @@
     }
    },
    "pay": "",
+   "review_q": "ペットタクシー Happy 福岡",
+   "review_name": "Happy",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -4220,6 +4338,8 @@
     "src": "https://npet.jp/rinrin-t/price.html"
    },
    "pay": "",
+   "review_q": "ペットタクシー RinRin 福岡",
+   "review_name": "RinRin",
    "hours": "",
    "flex": false,
    "closed": [],
@@ -4269,6 +4389,8 @@
     "src": "https://wanwan.pet/"
    },
    "pay": "",
+   "review_q": "福岡わんわんエクスプレス 福岡",
+   "review_name": "福岡わんわんエクスプレス",
    "hours": "0-24",
    "flex": false,
    "closed": [],
@@ -4332,6 +4454,8 @@
     "src": "https://pettaxi-hakataku.wepage.com/"
    },
    "pay": "現金・カード・交通系IC・QR・iD・QUICPay",
+   "review_q": "福岡ペットタクシー HAKAタク 福岡",
+   "review_name": "福岡ペットタクシー HAKAタク",
    "hours": "9-19",
    "flex": false,
    "closed": [],
