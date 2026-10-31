@@ -68,14 +68,30 @@ open(booking_path, "w", encoding="utf-8").write(booking_src)
 
 src = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
 # トップの料金表とフォームの概算を fares.json から書き込む
-TOP_TABLE = f"""        <h3>距離ごとの目安</h3>
+# トップの料金表は全国版（Nori 2026-10-31「全国版にしよう」）：表示だけの会社を含む全国の公式の料金表（display_companies.json の fare）で、
+# 乗った距離の運賃を Code.gs の displayPrice_ と同じ決まりで計算し、まんなかの会社の金額と、安い会社〜高い会社を出す
+def _nat_ride(F, km):
+    a, bk = F["base"]
+    for t in F["tiers"]:
+        lo = max(t[0], bk + 1); hi = min(km, t[1] if t[1] is not None else 10**9)
+        if hi >= lo: a += -(-(hi - lo + 1) // (t[3] if len(t) > 3 else 1)) * t[2]
+    if re.search("税抜|税別", F.get("tax") or "") and "税込" not in (F.get("tax") or ""): a = -(-a * 11 // 10)
+    return a
+_NAT = [c for c in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))["companies"]
+        if c.get("fare") and c["fare"].get("kind", "dist") == "dist" and c["fare"].get("base")]
+_NAT_PREFS = len({c["pref"] for c in _NAT})
+def _nat_row(km):
+    v = sorted(_nat_ride(c["fare"], km) for c in _NAT)
+    mid = v[(len(v) - 1) // 2]
+    return f'<div class="row"><dt>{km}km</dt><dd>{mid:,}円<br><small style="font-weight:400">{v[0]:,}〜{v[-1]:,}円</small></dd></div>'
+TOP_TABLE = f"""        <h3>距離ごとの目安（全国{len(_NAT)}社の料金表から）</h3>
         <dl>
-""" + "".join(f'          <div class="row"><dt>{k}km</dt><dd>{fare_text(k)}</dd></div>\n' for k in (5, 10, 20, 30, 50)) + f"""        </dl>
+""" + "".join(f"          {_nat_row(k)}\n" for k in (5, 10, 20, 30, 50)) + f"""        </dl>
       </div>
     </div>
     <p class="fare-flag"><b>確定料金ではありません。</b>上の金額は目安です。確定料金（税込）は、お迎えが決まったときに引き受けた会社からメールでお知らせします。</p>
-    <p class="fare-night"><b>🌙 夜間・早朝の割増</b>上の目安は昼間の料金です。{night_text()}</p>
-    <p class="small">{fare_note()}都道府県ごとの料金の例は、<a href="/area/">全国のペットタクシー情報</a>にまとめています。</p>"""
+    <p class="fare-night"><b>🌙 夜間・早朝の割増</b>上の目安は昼間の料金です。夜間・早朝の割増は、かかるかどうかも金額も会社ごとに違います。フォームの候補には、会社ごとの割増を入れた目安が出ます。</p>
+    <p class="small">全国{_NAT_PREFS}都道府県・{len(_NAT)}社のペットタクシーが公式サイトにのせている料金表で、乗った距離の運賃（片道）を計算しました。大きい数字はまんなかの会社の金額で、その下は安い会社〜高い会社です。お迎え料金・待ち時間・夜間の割増・高速代・駐車場代は入っていません。フォームにお迎えの場所と行き先を入れると、来てもらえる会社ごとに、お迎え料金なども入れた目安が出ます。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。都道府県ごとの料金の例は、<a href="/area/">全国のペットタクシー情報</a>にまとめています。</p>"""
 src = re.sub(r"<!--FARE_TABLE-->.*?<!--/FARE_TABLE-->", lambda m: "<!--FARE_TABLE-->" + TOP_TABLE + "<!--/FARE_TABLE-->", src, count=1, flags=re.S)
 EMG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "emergency.json"), encoding="utf-8"))
 EMG = {"checked": EMG["checked"], "taxis": EMG["taxis"], "hospitals": EMG["hospitals"]}
