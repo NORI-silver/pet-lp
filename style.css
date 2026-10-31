@@ -487,6 +487,7 @@ footer a{color:var(--ink-2)}
 .review-panel .partner-review-src{display:block;text-align:right;margin-top:6px}
 .price-details dl{display:grid;grid-template-columns:1fr auto;gap:5px 12px;margin:10px 0 0}
 .price-details dt,.price-details dd{margin:0}
+.price-details dd{text-align:right}
 .partner-highway,.partner-surcharge{font-weight:700}
 .est{padding:0;overflow:hidden;background:transparent;border:0}
 .est .est-map{margin:0;border-radius:14px}
