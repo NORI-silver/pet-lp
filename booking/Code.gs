@@ -1027,6 +1027,7 @@ function retryUrl_(id) { return CONFIG.SITE_URL + '?r=' + encodeURIComponent(id)
 
 function checkPending() {
   var sh = sheet_(SHEET_REQ);
+  ensureReqHeaders_(sh); // 「送迎確認」の列がないと何度も送ってしまうので、先に足しておく
   var vals = sh.getDataRange().getValues();
   var h = vals[0];
   var now = Date.now();
@@ -1074,7 +1075,7 @@ function giveUp_(id) {
 
 // 決まった予約で、お迎え予定から RIDE_CHECK_AFTER_HOURS たち、まだ聞いていない、いまが送ってよい時間帯
 function rideCheckDue_(r, now) {
-  if (r['状態'] !== ST.DONE || r['送迎確認'] || !r['メール']) return false;
+  if (!('送迎確認' in r) || r['状態'] !== ST.DONE || r['送迎確認'] || !r['メール']) return false; // 列がない古いシートでは送らない（同じメールをくり返さないため）
   var at = new Date(r['お迎え予定']).getTime();
   if (!isFinite(at) || now - at < CONFIG.RIDE_CHECK_AFTER_HOURS * 3600000) return false;
   if (now - at > 14 * 24 * 3600000) return false; // 古すぎる予約には聞かない

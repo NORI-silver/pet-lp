@@ -35,3 +35,5 @@ ctx.ridePage_({ a: 'ride', id: 'PT1', k, go: '1', ans: 'cancel' });
 assert.equal(saved['送迎確認'], 'キャンセル（お客さま回答）');
 assert.match(admin, /キャンセル/);
 console.log('ride-check ok');
+const noCol = r(); delete noCol['送迎確認'];
+assert.equal(ctx.rideCheckDue_(noCol, noonJst), false); // 列がないシートでは送らない（くり返し送らないため）
