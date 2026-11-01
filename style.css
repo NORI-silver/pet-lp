@@ -453,6 +453,8 @@ footer a{color:var(--ink-2)}
 .partner-results h3{font-size:1.2rem;margin:0 0 8px}
 .partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:18px}
 .partner-card{cursor:pointer;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;display:flex;flex-direction:column;gap:6px}
+.btn.btn-all{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink);margin-top:10px}
+.btn.btn-all[hidden]{display:none}
 .partner-card.partner-later{cursor:default;background:#fafafa}.partner-later .btn:disabled{cursor:not-allowed;background:#9a9a9a;opacity:1}
 .partner-card.picked{border-color:var(--o);box-shadow:0 0 0 3px rgba(255,106,26,.18)}
 .leg-split{margin-top:22px;border-top:1px dashed var(--line);padding-top:18px}

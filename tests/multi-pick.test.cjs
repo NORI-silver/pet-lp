@@ -89,7 +89,7 @@ assert.equal(obj(rows[0])['決定した提携先ID'], 'P002');
 assert.equal(obj(rows[0])['料金の目安'], 4800);
 assert.equal(ctx.quote_(id, partners[1], at, 3000, '', '', '').ok, false, '決まったあとは見積もりを受け付けない');
 
-// 選んでいない会社や6社以上は断る
+// 選んでいない会社や、署名の合わない会社は断る（社数の上限はない。Nori 2026-11-01）
 assert.equal(ctx.receive_({ ...base, picks: JSON.stringify([{ id: 'P999', token: 'x', expires: Date.now() + 60000 }]) }).ok, false);
 assert.equal(ctx.receive_({ ...base, picks: JSON.stringify([1,2,3,4,5,6].map(i => ({ id: 'P00' + i, token: 'x', expires: 1 }))) }).ok, false);
 console.log('PASS: every request is an inquiry; the customer confirms the booking after the company replies');
