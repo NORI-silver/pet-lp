@@ -11,7 +11,7 @@ ctx.Utilities = { formatDate(d) { return new Date(d.getTime()+9*3600000).toISOSt
 ctx.CONFIG.DEFAULT_PARTNER_HOURS='0-24';
 ctx.PropertiesService={getScriptProperties:()=>({getProperty:()=>null,setProperty(){}})};
 const disp = ctx.DISPLAY_COMPANIES;
-assert.ok(disp.length >= 70, '全国の掲載候補が入っている');
+assert.ok(disp.length >= 60, '全国の掲載候補が入っている');
 assert.ok(!JSON.stringify(disp).match(/@|\d{2,4}-\d{2,4}-\d{3,4}/), '連絡先は入れない');
 const D = disp.find(c => c.areas.includes('東京')).id;
 const partner = (id,extra={}) => ({id,name:'確認用 '+id,areas:['東京'],active:true,email:'test@example.invalid',careOk:true,big:true,luggage:true,riders:3,pets:5,cageMust:'不要',cageLend:true,lead:3,hours:'0-24',car:'ワンボックス',...extra});
@@ -66,7 +66,7 @@ const shopPt={lat:coco.shop[0],lng:coco.shop[1]}, dest={lat:35.70,lng:139.40};
 const rd=(km)=>JSON.stringify({km,backKm:km,from:shopPt,to:dest,backFrom:dest,backTo:shopPt});
 let pr=call('displayPrice_',coco,{...p,datetime:at('12:00'),route_details:rd(10)});
 assert.equal(pr.local.ride,3300+5*165); assert.equal(pr.local.pickup,0); assert.equal(pr.local.returnFee,0); assert.equal(pr.local.nightExtra,0);
-assert.equal(pr.amount,Math.ceil((3300+5*165)/100)*100);
+assert.equal(pr.amount,3300+5*165);  // 100円単位に丸めない（PR#93）
 pr=call('displayPrice_',coco,{...p,datetime:at('22:00'),route_details:rd(10)});
 assert.equal(pr.local.nightExtra,3300);
 // お店から離れた場所のお迎えは迎車代がかかる（直線×1.3を1km単位で切り上げ）
@@ -78,7 +78,9 @@ const tx={id:'X',fare:{base:[2000,5],tiers:[[6,null,200]],tax:'税抜'}};
 pr=call('displayPrice_',tx,{...p,route_details:rd(10)});
 assert.equal(pr.local.ride,Math.ceil(3000*1.1)); assert.ok(/税抜/.test(pr.planNote));
 // 会社ごとの式（Nori 2026-10-31「全ての事業所で違う計算式でもいい」）
-const byId=id=>disp.find(c=>c.id===id);
+// 2026-11-01 にサイトから外した会社（電話・LINEだけ）は、計算の確認用に写しを使う
+const FIX=JSON.parse(fs.readFileSync('tests/fixtures/excluded-companies.json','utf8'));
+const byId=id=>disp.find(c=>c.id===id)||FIX.find(c=>c.id===id);
 const rd2=(km,a,b)=>JSON.stringify({km,backKm:km,from:a||dest,to:b||dest,backFrom:b||dest,backTo:a||dest});
 // 時間制：木谷わんわんタクシー 1時間6,280円・以降30分ごと3,140円（1kmを3分）。25km＝75分→6,280＋3,140
 const kt=byId('Dfc6c94f'), ktp={lat:kt.shop[0],lng:kt.shop[1]};
