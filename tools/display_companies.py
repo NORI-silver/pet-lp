@@ -321,6 +321,29 @@ def limits(f):
     if re.search(r'現金(のみ|にて|で)', py) and not re.search(r'クレジット|カード|クレカ|PayPay|paypay|QR|電子|振込|振り込み', py): out.append('現金のみ')
     elif re.search(r'クレジットカードの取り扱いは致しておりません', py): out.append('カード払い不可')
     return out[:3]
+# 車のカテゴリ（Nori 2026-11-01「車種はセダンとかそのレベルのカテゴリをカードに書く」）。
+# 公式サイトの文・会社の返事（facts の cars）を優先し、なければ「黒ナンバー（貨物軽自動車運送事業）」とはっきり書いてある会社を軽自動車にする（黒ナンバーは軽自動車だけ）。
+# 「黒ナンバーとみられる」のような推測は使わない。一覧の列（by=dashboard）は最後。どれにも当たらなければ出さない
+def car_type(f):
+    def cls(t):
+        t = t.replace('バンタイプではない', '')
+        if re.search(r'セダン|普通タクシー', t): return 'セダン・ワゴン' if 'ワゴン' in t else 'セダン'
+        if re.search(r'ハイエース', t): return '大きめのワゴン（ハイエース）'
+        if re.search(r'軽', t) and re.search(r'ミニバン', t): return '軽自動車またはミニバン'
+        # 軽は形まで書く（Nori 2026-11-01「軽バンとかの書き方がいい」「軽自動車の2種類は分けなくていい」）。軽バンとそれ以外の軽自動車の2つ。バンは後ろが広く大型犬やケージを置きやすい、軽の乗用車は狭い
+        if re.search(r'N-?VAN|Nvan|エブリ|クリッパー|バモス', t, re.I) or (re.search(r'軽', t) and re.search(r'バン|ワンボックス', t)): return '軽バン'
+        if re.search(r'軽', t): return '軽自動車'
+        if re.search(r'ミニバン|ワゴン', t): return 'ミニバン・ワゴン'
+        return ''
+    c = f.get('cars') or {}
+    if c.get('by') in ('site', 'reply') and not c.get('vague') and cls(str(c.get('v') or '')): return cls(str(c['v']))
+    pl = str((f.get('plate') or {}).get('v') or '')
+    if pl.startswith('黒ナンバー') and 'みられる' not in pl: return '軽自動車'
+    if c.get('by') == 'dashboard': return cls(str(c.get('v') or ''))
+    return ''
+def car_tags(f):
+    ct = car_type(f)
+    return (['車：' + ct] if ct else []) + limits(f)
 PARTNER_SAME = {'P002': 'Dbcb8b8d', 'P003': 'Da968571'}  # 提携先シートの会社と、事業者マスターの同じ会社
 
 def main(master, comp, tariffs=None, facts_path=None):
@@ -340,7 +363,8 @@ def main(master, comp, tariffs=None, facts_path=None):
         row.update(schedule(c, m['id']))
         row['animals'] = animals(dict(facts.get(m['id'], {}), _id=m['id']))
         pts = points(facts.get(m['id'], {}))
-        lim = limits(facts.get(m['id'], {}))
+        lim = car_tags(facts.get(m['id'], {}))
+        if car_type(facts.get(m['id'], {})): row['car_type'] = car_type(facts.get(m['id'], {}))
         if lim: row['limits'] = lim
         if any(x.startswith('大型犬') for x in lim): pts = [x for x in pts if x != '大型犬OK']  # 頭数つきのほうを出す
         if any('頭' in x and not x.startswith('大型犬') for x in lim): pts = [x for x in pts if x != '多頭OK']
@@ -350,7 +374,7 @@ def main(master, comp, tariffs=None, facts_path=None):
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'display_companies.json')
     json.dump({'_説明': '予約の候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る。出すかどうかは booking/Code.gs の CONFIG.SHOW_ALL_CANDIDATES', 'companies': out,
                'partner_points': {pid: points(facts.get(did, {})) for pid, did in PARTNER_SAME.items() if points(facts.get(did, {}))},
-               'partner_limits': {pid: limits(facts.get(did, {})) for pid, did in PARTNER_SAME.items() if limits(facts.get(did, {}))}},
+               'partner_limits': {pid: car_tags(facts.get(did, {})) for pid, did in PARTNER_SAME.items() if car_tags(facts.get(did, {}))}},
               open(path, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(len(out), '社', '料金つき', sum(1 for r in out if r['fare']), {p: sum(p in r['areas'] for r in out) for p in PREF47 if any(p in r['areas'] for r in out)})
     print('犬・猫のほか', {k: sum(r['animals']['all'] or k in r['animals']['ok'] for r in out) for k in KINDS}, '犬・猫のみ', sum(r['animals']['only'] for r in out))
