@@ -77,78 +77,6 @@
    ]
   },
   {
-   "id": "Dea620d5",
-   "name": "COCOタク 江戸川店",
-   "pref": "東京都",
-   "areas": [
-    "千葉",
-    "東京"
-   ],
-   "area_text": "江戸川・葛飾・江東・足立・台東・墨田・荒川・千葉下総",
-   "shop": [
-    35.684,
-    139.876
-   ],
-   "fare": {
-    "base": [
-     3300,
-     5
-    ],
-    "tiers": [
-     [
-      6,
-      100,
-      165
-     ],
-     [
-      101,
-      200,
-      132
-     ],
-     [
-      201,
-      null,
-      110
-     ]
-    ],
-    "tax": "税込",
-    "src": "https://g-holding.taxi/",
-    "pick": {
-     "per": 165
-    },
-    "back": {},
-    "wait": {
-     "free": 10,
-     "unit": 10,
-     "yen": 220
-    },
-    "night": {
-     "from": 21,
-     "to": 8,
-     "flat": 3300
-    }
-   },
-   "pay": "現金・カード・交通系IC・PayPay・iD・QUICPay・Apple Pay",
-   "review_q": "COCOタク 江戸川店 東京",
-   "review_name": "COCOタク 江戸川店",
-   "hours": "0-24",
-   "flex": false,
-   "closed": [],
-   "lead_days": null,
-   "cut": null,
-   "animals": {
-    "all": true,
-    "only": false,
-    "ok": [],
-    "no": []
-   },
-   "points": [
-    "24時間受付",
-    "前日までキャンセル無料",
-    "カード払い可"
-   ]
-  },
-  {
    "id": "D3661eb1",
    "name": "PETTA東京（ペッタ）",
    "pref": "東京都",
@@ -288,76 +216,6 @@
    ]
   },
   {
-   "id": "Da5a2701",
-   "name": "かるたく",
-   "pref": "東京都",
-   "areas": [
-    "東京"
-   ],
-   "area_text": "",
-   "shop": [
-    35.688,
-    139.787
-   ],
-   "fare": {
-    "base": [
-     1299,
-     1
-    ],
-    "tiers": [
-     [
-      2,
-      5,
-      650
-     ],
-     [
-      6,
-      100,
-      338
-     ],
-     [
-      101,
-      200,
-      156
-     ],
-     [
-      201,
-      null,
-      130
-     ]
-    ],
-    "pick": {
-     "per": 150
-    },
-    "wait": {
-     "free": 0,
-     "unit": 10,
-     "yen": 250
-    },
-    "night": {
-     "from": 19,
-     "to": 5,
-     "unknown": true
-    },
-    "tax": "",
-    "src": "https://pet-taxikarubi.com/"
-   },
-   "pay": "",
-   "review_q": "かるたく 東京",
-   "review_name": "かるたく",
-   "hours": "",
-   "flex": false,
-   "closed": [],
-   "lead_days": null,
-   "cut": null,
-   "animals": {
-    "all": false,
-    "only": false,
-    "ok": [],
-    "no": []
-   }
-  },
-  {
    "id": "D355c31f",
    "name": "サポっ人 中目黒店",
    "pref": "東京都",
@@ -477,96 +335,6 @@
    "animals": {
     "all": false,
     "only": false,
-    "ok": [],
-    "no": []
-   }
-  },
-  {
-   "id": "Dbe5cb84",
-   "name": "ペットタクシー アズール",
-   "pref": "東京都",
-   "areas": [
-    "東京"
-   ],
-   "area_text": "",
-   "shop": [
-    35.659,
-    139.684
-   ],
-   "fare": {
-    "base": [
-     2000,
-     5
-    ],
-    "tiers": [
-     [
-      6,
-      10,
-      500,
-      5
-     ],
-     [
-      11,
-      100,
-      1000,
-      5
-     ],
-     [
-      101,
-      200,
-      170
-     ],
-     [
-      201,
-      null,
-      130
-     ]
-    ],
-    "pick": {
-     "base": [
-      500,
-      5
-     ],
-     "tiers": [
-      [
-       6,
-       15,
-       1000,
-       5
-      ],
-      [
-       16,
-       100,
-       500,
-       5
-      ],
-      [
-       101,
-       null,
-       300,
-       5
-      ]
-     ]
-    },
-    "wait": {
-     "free": 30,
-     "unit": 30,
-     "yen": 500
-    },
-    "tax": "税込",
-    "src": "https://azul.fivedogs.jp/"
-   },
-   "pay": "キャッシュレス可・降りるとき",
-   "review_q": "ペットタクシー アズール 東京",
-   "review_name": "アズール",
-   "hours": "9-19",
-   "flex": false,
-   "closed": [],
-   "lead_days": null,
-   "cut": null,
-   "animals": {
-    "all": false,
-    "only": true,
     "ok": [],
     "no": []
    }
@@ -698,76 +466,6 @@
    "cut": null,
    "animals": {
     "all": false,
-    "only": false,
-    "ok": [],
-    "no": []
-   }
-  },
-  {
-   "id": "D7138c0d",
-   "name": "ペットタクシー東京",
-   "pref": "東京都",
-   "areas": [
-    "東京",
-    "神奈川"
-   ],
-   "area_text": "東京16区市（目黒・渋谷・品川など）、川崎・横浜の一部。乗るか降りるかがエリア内なら可",
-   "shop": [
-    35.616,
-    139.653
-   ],
-   "fare": {
-    "base": [
-     0,
-     0
-    ],
-    "tiers": [
-     [
-      1,
-      null,
-      500
-     ]
-    ],
-    "pick": {
-     "yen": 2000
-    },
-    "wait": {
-     "free": 0,
-     "unit": 15,
-     "yen": 300
-    },
-    "night": {
-     "from": 22,
-     "to": 8,
-     "rate": 0.2
-    },
-    "longDiscount": [
-     [
-      5000,
-      0.1
-     ],
-     [
-      10000,
-      0.2
-     ],
-     [
-      15000,
-      0.3
-     ]
-    ],
-    "tax": "税込",
-    "src": "https://pettaxi-tokyo.jp/"
-   },
-   "pay": "現金・カード・電子マネー・コード決済／着いたとき",
-   "review_q": "ペットタクシー東京 東京",
-   "review_name": "ペットタクシー東京",
-   "hours": "8-22",
-   "flex": false,
-   "closed": [],
-   "lead_days": 0,
-   "cut": null,
-   "animals": {
-    "all": true,
     "only": false,
     "ok": [],
     "no": []
@@ -1296,62 +994,6 @@
    "closed": [],
    "lead_days": 0,
    "cut": 16,
-   "animals": {
-    "all": false,
-    "only": false,
-    "ok": [],
-    "no": []
-   }
-  },
-  {
-   "id": "Dc46d194",
-   "name": "ペッタクん",
-   "pref": "神奈川県",
-   "areas": [
-    "神奈川"
-   ],
-   "area_text": "横須賀・三浦・逗子・鎌倉・葉山・横浜。神奈川全域・遠方は相談",
-   "shop": [
-    35.307,
-    139.622
-   ],
-   "fare": {
-    "kind": "table",
-    "table": [
-     [
-      5,
-      3000
-     ]
-    ],
-    "pick": {
-     "per": 160
-    },
-    "back": {
-     "km": 30,
-     "yen": 0,
-     "over": 3000
-    },
-    "wait": {
-     "free": 20,
-     "unit": 10,
-     "yen": 200
-    },
-    "night": {
-     "from": 20,
-     "to": 6,
-     "flat": 4000
-    },
-    "tax": "",
-    "src": "https://pettakun.com/service"
-   },
-   "pay": "",
-   "review_q": "ペッタクん 神奈川",
-   "review_name": "ペッタクん",
-   "hours": "0-24",
-   "flex": false,
-   "closed": [],
-   "lead_days": null,
-   "cut": null,
    "animals": {
     "all": false,
     "only": false,
@@ -2126,60 +1768,6 @@
    }
   },
   {
-   "id": "Dd8c07a8",
-   "name": "ペットタクシー しっぽ",
-   "pref": "千葉県",
-   "areas": [
-    "千葉"
-   ],
-   "area_text": "",
-   "shop": [
-    35.67,
-    140.168
-   ],
-   "fare": {
-    "base": [
-     1500,
-     3
-    ],
-    "tiers": [
-     [
-      4,
-      null,
-      100
-     ]
-    ],
-    "tax": "税抜",
-    "src": "https://co90p-sippo.crayonsite.info/",
-    "pick": {
-     "yen": 500,
-     "unsure": false
-    },
-    "wait": {
-     "free": 20,
-     "unit": 10,
-     "yen": 150
-    }
-   },
-   "pay": "",
-   "review_q": "ペットタクシー しっぽ 千葉",
-   "review_name": "しっぽ",
-   "hours": "8-18",
-   "flex": false,
-   "closed": [],
-   "lead_days": null,
-   "cut": null,
-   "animals": {
-    "all": false,
-    "only": false,
-    "ok": [
-     "bird",
-     "reptile"
-    ],
-    "no": []
-   }
-  },
-  {
    "id": "D3c85024",
    "name": "ペットタクシー パールのしっぽ",
    "pref": "千葉県",
@@ -2276,74 +1864,6 @@
     "all": false,
     "only": false,
     "ok": [],
-    "no": []
-   }
-  },
-  {
-   "id": "D68a3be6",
-   "name": "東葛ペットタクシー",
-   "pref": "千葉県",
-   "areas": [
-    "埼玉",
-    "千葉",
-    "東京",
-    "神奈川"
-   ],
-   "area_text": "東京近郊全域、千葉・埼玉・神奈川など首都圏。全国輸送も",
-   "shop": [
-    35.868,
-    139.976
-   ],
-   "fare": {
-    "base": [
-     2200,
-     5
-    ],
-    "tiers": [
-     [
-      6,
-      100,
-      220
-     ],
-     [
-      101,
-      200,
-      170
-     ],
-     [
-      201,
-      null,
-      130
-     ]
-    ],
-    "pick": {
-     "yen": 1000,
-     "unsure": true
-    },
-    "back": {},
-    "wait": {
-     "free": 0,
-     "unit": 10,
-     "yen": 300
-    },
-    "tax": "税込",
-    "src": "https://pet-taxi.jp/charge/"
-   },
-   "pay": "",
-   "review_q": "東葛ペットタクシー 千葉",
-   "review_name": "東葛ペットタクシー",
-   "hours": "8-20",
-   "flex": true,
-   "closed": [],
-   "lead_days": null,
-   "cut": null,
-   "animals": {
-    "all": true,
-    "only": false,
-    "ok": [
-     "small",
-     "bird"
-    ],
     "no": []
    }
   },
@@ -2782,36 +2302,6 @@
    ]
   },
   {
-   "id": "D59e83ab",
-   "name": "万代タクシー（ペットタクシー）",
-   "pref": "新潟県",
-   "areas": [
-    "新潟"
-   ],
-   "area_text": "",
-   "shop": [
-    37.915,
-    139.058
-   ],
-   "fare": null,
-   "pay": "",
-   "review_q": "万代タクシー 新潟",
-   "review_name": "万代タクシー",
-   "hours": "",
-   "flex": false,
-   "closed": [],
-   "lead_days": null,
-   "cut": null,
-   "animals": {
-    "all": false,
-    "only": false,
-    "ok": [
-     "small"
-    ],
-    "no": []
-   }
-  },
-  {
    "id": "D1132ff9",
    "name": "冨士タクシー（ペットタクシー）",
    "pref": "石川県",
@@ -3003,38 +2493,6 @@
    "points": [
     "ワクチン証明は不要"
    ]
-  },
-  {
-   "id": "Dcda25a4",
-   "name": "ペットタクシー パウパウ",
-   "pref": "愛知県",
-   "areas": [
-    "愛知"
-   ],
-   "area_text": "名古屋市内が基本（市外のお迎えは別料金）",
-   "shop": [
-    35.15,
-    136.932
-   ],
-   "fare": null,
-   "pay": "現金・カード・PayPay",
-   "review_q": "ペットタクシー パウパウ 愛知",
-   "review_name": "パウパウ",
-   "hours": "",
-   "flex": false,
-   "closed": [],
-   "lead_days": 1,
-   "cut": null,
-   "animals": {
-    "all": false,
-    "only": false,
-    "ok": [
-     "small",
-     "bird",
-     "reptile"
-    ],
-    "no": []
-   }
   },
   {
    "id": "D1834601",
@@ -3432,70 +2890,6 @@
     ],
     "no": []
    }
-  },
-  {
-   "id": "D7e284b0",
-   "name": "PetTaxi けいわん堺",
-   "pref": "大阪府",
-   "areas": [
-    "大阪"
-   ],
-   "area_text": "大阪府全域（府外は相談）",
-   "shop": [
-    34.54,
-    135.56
-   ],
-   "fare": {
-    "base": [
-     280,
-     1
-    ],
-    "tiers": [
-     [
-      2,
-      null,
-      280
-     ]
-    ],
-    "tax": "",
-    "src": "https://keionetp-sakai.com/price/",
-    "pick": {
-     "per": 280
-    },
-    "wait": {
-     "free": 30,
-     "first": [
-      60,
-      1000
-     ],
-     "unit": 30,
-     "yen": 500
-    },
-    "night": {
-     "from": 22,
-     "to": 8,
-     "rate": 0.2
-    }
-   },
-   "pay": "",
-   "review_q": "PetTaxi けいわん堺 大阪",
-   "review_name": "PetTaxi けいわん堺",
-   "hours": "0-24",
-   "flex": false,
-   "closed": [],
-   "lead_days": null,
-   "cut": null,
-   "animals": {
-    "all": false,
-    "only": false,
-    "ok": [],
-    "no": []
-   },
-   "points": [
-    "24時間受付",
-    "前日までキャンセル無料",
-    "カード払い可"
-   ]
   },
   {
    "id": "D01478c8",
@@ -4131,34 +3525,6 @@
    ]
   },
   {
-   "id": "D0ff488e",
-   "name": "わんニャンMOB（Heiwa Taxi）",
-   "pref": "岡山県",
-   "areas": [
-    "岡山"
-   ],
-   "area_text": "岡山（倉敷地区は除く）",
-   "shop": [
-    34.65,
-    133.91
-   ],
-   "fare": null,
-   "pay": "",
-   "review_q": "わんニャンMOB 岡山",
-   "review_name": "わんニャンMOB",
-   "hours": "",
-   "flex": true,
-   "closed": [],
-   "lead_days": null,
-   "cut": null,
-   "animals": {
-    "all": false,
-    "only": false,
-    "ok": [],
-    "no": []
-   }
-  },
-  {
    "id": "D225080e",
    "name": "ペッタク（PETTAXI）",
    "pref": "広島県",
@@ -4332,36 +3698,6 @@
    ]
   },
   {
-   "id": "D8001263",
-   "name": "吉島タクシー（ペットタクシー）",
-   "pref": "広島県",
-   "areas": [
-    "広島"
-   ],
-   "area_text": "",
-   "shop": [
-    34.374,
-    132.448
-   ],
-   "fare": null,
-   "pay": "",
-   "review_q": "吉島タクシー 広島",
-   "review_name": "吉島タクシー",
-   "hours": "",
-   "flex": false,
-   "closed": [],
-   "lead_days": null,
-   "cut": null,
-   "animals": {
-    "all": false,
-    "only": false,
-    "ok": [
-     "small"
-    ],
-    "no": []
-   }
-  },
-  {
    "id": "D7c41c5f",
    "name": "トップスター（ペットタクシー）",
    "pref": "徳島県",
@@ -4480,140 +3816,6 @@
    "points": [
     "渋滞でも追加料金なし"
    ]
-  },
-  {
-   "id": "Dbffb89d",
-   "name": "ペットタクシー RinRin",
-   "pref": "福岡県",
-   "areas": [
-    "福岡"
-   ],
-   "area_text": "筑豊（飯塚・田川・直方）だけ",
-   "shop": [
-    33.64,
-    130.805
-   ],
-   "fare": {
-    "kind": "table",
-    "table": [
-     [
-      3,
-      1800
-     ],
-     [
-      5,
-      2400
-     ],
-     [
-      10,
-      3500
-     ],
-     [
-      15,
-      4000
-     ],
-     [
-      20,
-      4500
-     ],
-     [
-      25,
-      5500
-     ],
-     [
-      30,
-      6000
-     ],
-     [
-      35,
-      6500
-     ],
-     [
-      40,
-      7000
-     ],
-     [
-      45,
-      7500
-     ],
-     [
-      50,
-      8500
-     ]
-    ],
-    "roundTable": [
-     [
-      3,
-      2800
-     ],
-     [
-      5,
-      3800
-     ],
-     [
-      10,
-      5600
-     ],
-     [
-      15,
-      6400
-     ],
-     [
-      20,
-      7200
-     ],
-     [
-      25,
-      8800
-     ],
-     [
-      30,
-      9600
-     ],
-     [
-      35,
-      10400
-     ],
-     [
-      40,
-      11200
-     ],
-     [
-      45,
-      12000
-     ],
-     [
-      50,
-      13600
-     ]
-    ],
-    "tableOver": 150,
-    "pick": {
-     "per": 30
-    },
-    "back": {},
-    "wait": {
-     "free": 30,
-     "unit": 30,
-     "yen": 550
-    },
-    "tax": "",
-    "src": "https://npet.jp/rinrin-t/price.html"
-   },
-   "pay": "",
-   "review_q": "ペットタクシー RinRin 福岡",
-   "review_name": "RinRin",
-   "hours": "",
-   "flex": false,
-   "closed": [],
-   "lead_days": null,
-   "cut": null,
-   "animals": {
-    "all": false,
-    "only": false,
-    "ok": [],
-    "no": []
-   }
   },
   {
    "id": "Db28bc5b",

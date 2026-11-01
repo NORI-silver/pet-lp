@@ -1,0 +1,232 @@
+[
+ {
+  "id": "Da5a2701",
+  "name": "かるたく",
+  "pref": "東京都",
+  "areas": [
+   "東京"
+  ],
+  "area_text": "",
+  "shop": [
+   35.688,
+   139.787
+  ],
+  "fare": {
+   "base": [
+    1299,
+    1
+   ],
+   "tiers": [
+    [
+     2,
+     5,
+     650
+    ],
+    [
+     6,
+     100,
+     338
+    ],
+    [
+     101,
+     200,
+     156
+    ],
+    [
+     201,
+     null,
+     130
+    ]
+   ],
+   "pick": {
+    "per": 150
+   },
+   "wait": {
+    "free": 0,
+    "unit": 10,
+    "yen": 250
+   },
+   "night": {
+    "from": 19,
+    "to": 5,
+    "unknown": true
+   },
+   "tax": "",
+   "src": "https://pet-taxikarubi.com/"
+  },
+  "pay": "",
+  "review_q": "かるたく 東京",
+  "review_name": "かるたく",
+  "hours": "",
+  "flex": false,
+  "closed": [],
+  "lead_days": null,
+  "cut": null,
+  "animals": {
+   "all": false,
+   "only": false,
+   "ok": [],
+   "no": []
+  }
+ },
+ {
+  "id": "Dbe5cb84",
+  "name": "ペットタクシー アズール",
+  "pref": "東京都",
+  "areas": [
+   "東京"
+  ],
+  "area_text": "",
+  "shop": [
+   35.659,
+   139.684
+  ],
+  "fare": {
+   "base": [
+    2000,
+    5
+   ],
+   "tiers": [
+    [
+     6,
+     10,
+     500,
+     5
+    ],
+    [
+     11,
+     100,
+     1000,
+     5
+    ],
+    [
+     101,
+     200,
+     170
+    ],
+    [
+     201,
+     null,
+     130
+    ]
+   ],
+   "pick": {
+    "base": [
+     500,
+     5
+    ],
+    "tiers": [
+     [
+      6,
+      15,
+      1000,
+      5
+     ],
+     [
+      16,
+      100,
+      500,
+      5
+     ],
+     [
+      101,
+      null,
+      300,
+      5
+     ]
+    ]
+   },
+   "wait": {
+    "free": 30,
+    "unit": 30,
+    "yen": 500
+   },
+   "tax": "税込",
+   "src": "https://azul.fivedogs.jp/"
+  },
+  "pay": "キャッシュレス可・降りるとき",
+  "review_q": "ペットタクシー アズール 東京",
+  "review_name": "アズール",
+  "hours": "9-19",
+  "flex": false,
+  "closed": [],
+  "lead_days": null,
+  "cut": null,
+  "animals": {
+   "all": false,
+   "only": true,
+   "ok": [],
+   "no": []
+  }
+ },
+ {
+  "id": "D7138c0d",
+  "name": "ペットタクシー東京",
+  "pref": "東京都",
+  "areas": [
+   "東京",
+   "神奈川"
+  ],
+  "area_text": "東京16区市（目黒・渋谷・品川など）、川崎・横浜の一部。乗るか降りるかがエリア内なら可",
+  "shop": [
+   35.616,
+   139.653
+  ],
+  "fare": {
+   "base": [
+    0,
+    0
+   ],
+   "tiers": [
+    [
+     1,
+     null,
+     500
+    ]
+   ],
+   "pick": {
+    "yen": 2000
+   },
+   "wait": {
+    "free": 0,
+    "unit": 15,
+    "yen": 300
+   },
+   "night": {
+    "from": 22,
+    "to": 8,
+    "rate": 0.2
+   },
+   "longDiscount": [
+    [
+     5000,
+     0.1
+    ],
+    [
+     10000,
+     0.2
+    ],
+    [
+     15000,
+     0.3
+    ]
+   ],
+   "tax": "税込",
+   "src": "https://pettaxi-tokyo.jp/"
+  },
+  "pay": "現金・カード・電子マネー・コード決済／着いたとき",
+  "review_q": "ペットタクシー東京 東京",
+  "review_name": "ペットタクシー東京",
+  "hours": "8-22",
+  "flex": false,
+  "closed": [],
+  "lead_days": 0,
+  "cut": null,
+  "animals": {
+   "all": true,
+   "only": false,
+   "ok": [],
+   "no": []
+  }
+ }
+]
