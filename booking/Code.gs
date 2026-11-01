@@ -1922,8 +1922,11 @@ function displayCards_(r, p) {
   var kinds = petsOf_(r).map(animalKind_).filter(function(k, i, a) { return k && a.indexOf(k) === i; });
   var animalOk = function(c) { return kinds.map(function(k) { return displayAnimalOk_(c, k); }); };
   var kindText = kinds.map(function(k) { return ANIMAL_LABEL[k]; }).join('・');
-  try { from = JSON.parse((p || {}).route_details || '{}').from; } catch (e) {}
-  return DISPLAY_COMPANIES.filter(function(c) { return displayServes_(c, r['都府県'], from) && displayInTime_(c, r['希望日時'], now) && animalOk(c).indexOf(false) < 0; }).map(function(c) {
+  var rd = {};
+  try { rd = JSON.parse((p || {}).route_details || '{}') || {}; from = rd.from; } catch (e) {}
+  var list = DISPLAY_COMPANIES.filter(function(c) { return displayServes_(c, r['都府県'], from) && displayInTime_(c, r['希望日時'], now) && animalOk(c).indexOf(false) < 0; });
+  if (p) loadRoadKm_(list.filter(function(c) { return c.shop && c.fare; }).map(function(c) { return {lat:c.shop[0], lng:c.shop[1]}; }), [rd.from, rd.to, rd.backFrom, rd.backTo]);
+  return list.map(function(c) {
     var unsure = same && c.lead_days !== 0 ? '当日の予約ができるかは確認中です。' : '', unknown = animalOk(c).indexOf(null) >= 0;
     if (kinds.length) unsure += unknown ? kindText + 'を乗せられるかは確認中です。' : '公式サイトに' + kindText + 'も乗せられると書いてあります。';
     var price = p && displayPrice_(c, p) || {amount:null,text:'料金はお見積もり',night:''};
@@ -1950,8 +1953,46 @@ function kmBetween_(a, b) {
   var t = Math.PI / 180, h = Math.pow(Math.sin((b.lat - a.lat) * t / 2), 2) + Math.cos(a.lat * t) * Math.cos(b.lat * t) * Math.pow(Math.sin((b.lng - a.lng) * t / 2), 2);
   return 6371 * 2 * Math.asin(Math.sqrt(Math.min(1, h)));
 }
-// お店→お迎えの場所（降りた場所→お店）の道のりの概算（直線×1.3）
-function legKm_(shop, at) { return kmBetween_(shop, at) * 1.3; }
+// お店→お迎えの場所、降りた場所→お店の車の道のり（km）。Nori 2026-11-01「直線距離はやめて。車での最短距離にして」
+// displayCards_ が道路データ（ページの地図と同じ OSRM）にまとめて聞いて ROAD_KM に入れる。取れなかったときだけ直線×1.3の概算（カードにそう書く）
+var ROAD_KM = null;
+function roadKey_(a, b) { return [a.lat, a.lng, b.lat, b.lng].map(function(v) { return Number(v).toFixed(4); }).join(','); }
+function roadKm_(shop, at, back) {
+  var v = ROAD_KM && ROAD_KM[back ? roadKey_(at, shop) : roadKey_(shop, at)];
+  return typeof v === 'number' && isFinite(v) ? v : null;
+}
+function legKm_(shop, at, back) { var r = roadKm_(shop, at, back); return r != null ? r : kmBetween_(shop, at) * 1.3; }
+// お店たち×場所たちの車の道のりを1回でまとめて聞く（お店→場所と場所→お店の両方）。場所は約10mに丸める。結果は6時間覚えておく
+function loadRoadKm_(shops, pts) {
+  ROAD_KM = ROAD_KM || {};
+  var ok = function(v) { return v && isFinite(v.lat) && isFinite(v.lng); }, seen = {};
+  pts = pts.filter(function(v) { var k = ok(v) && roadKey_(v, v); if (!k || seen[k]) return false; seen[k] = 1; return true; });
+  shops = shops.filter(function(v) { var k = ok(v) && 's' + roadKey_(v, v); if (!k || seen[k]) return false; seen[k] = 1; return true; });
+  for (var i = 0; i < shops.length; i += 90) (function(part) {
+    var todo = part.filter(function(sp) { return pts.some(function(pt) { return roadKm_(sp, pt) == null || roadKm_(sp, pt, true) == null; }); });
+    if (!todo.length || !pts.length) return;
+    var all = pts.concat(todo), n = pts.length;
+    var url = 'https://router.project-osrm.org/table/v1/driving/' + all.map(function(v) { return Number(v.lng).toFixed(5) + ',' + Number(v.lat).toFixed(5); }).join(';') + '?annotations=distance';
+    try {
+      var cache = null, key = '', j = null;
+      try { cache = CacheService.getScriptCache(); key = 'road:' + Utilities.base64Encode(Utilities.computeDigest(Utilities.DigestAlgorithm.MD5, url)); var hit = cache.get(key); if (hit) j = JSON.parse(hit); } catch (e) { cache = null; }
+      if (!j) {
+        var res = UrlFetchApp.fetch(url, {muteHttpExceptions:true});
+        if (res.getResponseCode() !== 200) throw new Error('HTTP ' + res.getResponseCode());
+        j = JSON.parse(res.getContentText());
+        if (j.code !== 'Ok' || !j.distances) throw new Error(j.code);
+        try { if (cache) cache.put(key, JSON.stringify({code:j.code, distances:j.distances}), 21600); } catch (e) {}
+      }
+      todo.forEach(function(sp, k) {
+        pts.forEach(function(pt, q) {
+          var go = j.distances[n + k] && j.distances[n + k][q], back = j.distances[q] && j.distances[q][n + k];
+          if (go != null && isFinite(go)) ROAD_KM[roadKey_(sp, pt)] = go / 1000;
+          if (back != null && isFinite(back)) ROAD_KM[roadKey_(pt, sp)] = back / 1000;
+        });
+      });
+    } catch (e) { try { log_('車の道のり：取れない ' + e); } catch (e2) {} }
+  })(shops.slice(i, i + 90));
+}
 // お迎えの都道府県に対応しているか。お店の位置が分かる会社は、お迎えの場所が遠すぎる（直線で DISPLAY_MAX_KM 超）ときも外す
 function displayServes_(c, pref, from) {
   if ((c.areas || []).indexOf(pref) < 0) return false;
@@ -1991,12 +2032,14 @@ function displayPrice_(c, p) {
     return Math.floor(amount); // 小数の距離のときは円未満を切り捨て
   }
   // 迎車（お店→乗る場所）・回送（降りた場所→お店）。お店からの距離は直線×1.3の概算
-  function leg(rule, at, rideYen) {
+  var legGuess = false; // お迎え・回送の距離を、車の道のりが取れず直線×1.3で出したか
+  function leg(rule, at, rideYen, back) {
     if (rule === undefined) return {yen:0, unknown:false, missing:true}; // 料金表に書いていない
     if (rule.unsure && rule.per == null && rule.yen == null) return {yen:0, unknown:true};
     if (rule.per == null && rule.over == null && rule.unknownOver == null && !rule.tiers && !rule.bands) return {yen:rule.yen || 0, unknown:!!rule.unsure};
     if (!shop) return {yen:rule.yen || 0, unknown:true};
-    var km = kmOf(legKm_(shop, at)), free = rule.km || 0, yen = rule.yen || 0;
+    if (roadKm_(shop, at, back) == null) legGuess = true;
+    var km = kmOf(legKm_(shop, at, back)), free = rule.km || 0, yen = rule.yen || 0;
     if (rule.freeWithin != null && km <= rule.freeWithin) return {yen:0, unknown:!!rule.unsure}; // お店の近くはお迎え無料（返事で分かった会社）
     if (rule.unknownOver != null) return {yen:yen, unknown:km > rule.unknownOver}; // その距離を超えると別料金（金額は非公開）
     if (rule.tiers) { // 距離の段階で変わる迎車（base＝[円, 含まれるkm]、tiers は乗車と同じ形）
@@ -2089,8 +2132,8 @@ function displayPrice_(c, p) {
   function total(km, backKm) {
     var r1 = ride(km, p.datetime), r2 = round ? ride(backKm, p.return_datetime) : 0;
     if (!round && F.oneWayRate) r1 = Math.floor(r1 * (1 + F.oneWayRate)); // 片道（乗り捨て）の割増（返事で分かった会社）
-    var pk = [leg(F.pick, d.from)], bk = [leg(F.back, d.to, r1)];
-    if (round) { pk.push(leg(F.pick, d.backFrom)); bk.push(leg(F.back, d.backTo, r2)); }
+    var pk = [leg(F.pick, d.from)], bk = [leg(F.back, d.to, r1, true)];
+    if (round) { pk.push(leg(F.pick, d.backFrom)); bk.push(leg(F.back, d.backTo, r2, true)); }
     var nAll = F.night && F.night.onAll; // 割増を迎車・回送にもかける会社
     var n1 = nightExtra(r1 + (nAll ? pk[0].yen + bk[0].yen : 0), p.datetime, km), n2 = round ? nightExtra(r2 + (nAll ? pk[1].yen + bk[1].yen : 0), p.return_datetime, backKm) : 0;
     function add(list) { return list.reduce(function(s, x) { return s + x.yen; }, 0); }
@@ -2145,7 +2188,7 @@ function displayPrice_(c, p) {
   return {amount:local.amount, text:yen_(local.amount) + (local.pickupUnknown || local.returnUnknown || nightUnknown ? '〜' : ''), local:local, highway:highway,
     incompleteFees:local.pickupUnknown || local.returnUnknown || nightUnknown, taxUnknown:!F.tax,
     night:nt ? '夜間・早朝の割増 ' + yen_(local.nightExtra) + 'を含みます' : F.night ? '指定時刻は夜間・早朝の割増対象外です' : '料金表に夜間・早朝の割増の記載はありません',
-    pickupNote:F.pick && F.pick.per != null ? (shop ? '迎車・回送の距離は、お店のある市区町村からの概算です。' : 'お店の場所が分からないため、迎車の距離の分は含めていません。') : '',
+    pickupNote:F.pick && F.pick.per != null ? (!shop ? 'お店の場所が分からないため、迎車の距離の分は含めていません。' : legGuess ? '迎車・回送の距離は、道路データが取れなかったため、お店のある市区町村からの直線距離をもとにした概算です。' : '迎車・回送の距離は、お店のある市区町村から車の道のりで計算しています。') : '',
     planNote:('公式サイトの料金表から計算した目安です。' + notes.join('')),
     routeNote:d.routeEstimated ? '道のりを取得できなかったため、距離は直線距離からの概算です。' : d.localEstimated ? '一般道の距離は、高速区間から長めに推定しています。' : ''};
 }
