@@ -25,3 +25,8 @@ jobs:
           git diff --stat --exit-code || (echo "tools/ を直したら python3 tools/gen_areas.py . を実行して、生成ファイルもコミットしてください"; exit 1)
       - name: SEO と文言のチェック
         run: python3 tools/seo_check.py .
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 予約のしくみと料金計算のテスト（何も送らない）
+        run: for f in tests/*.test.cjs; do echo "== $f"; node "$f" || exit 1; done

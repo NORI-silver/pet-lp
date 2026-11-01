@@ -514,7 +514,7 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="sh"><h2>病院・施設名から移動を調べる</h2></div>
-    <p>通院先や宿泊先ごとの行き方、受付・乗降場所、帰りの手配で確かめたいことをまとめました。</p>
+    <p>通院先や宿泊先ごとの行き方、受付・乗降場所、帰りの車で確かめたいことをまとめました。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "facility"])}
     <div class="sh"><h2>移動の困りごとから調べる</h2></div>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") != "facility"])}
