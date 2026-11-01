@@ -53,6 +53,8 @@ var CONFIG = {
   // （何日もたってから「予約する」を押され、会社の空きがもう無い、を防ぐ。2026-11-01 法的な点検）
   QUOTE_VALID_HOURS: 24,
   QUOTE_CUTOFF_MIN: 60,
+  // 個人情報を残す期間（日）。お迎えの日（なければ受付日）からこれだけたったら、お名前・連絡先・場所を消す（手数料の計算に要る日時・会社・料金は残す）。個人情報の取り扱いの文と合わせる
+  KEEP_PERSONAL_DAYS: 365,
   MIN_LEAD_HOURS: 3, // お迎えは受付から3時間より先だけ（LPと同じ。入力にかかる時間を見て15分は大目に見る）
   URGENT_HOURS: 3, // 希望時刻まで3時間を切っている依頼は、待ち時間を半分にする
   // 送迎のあと、飼い主さんに「無事に送迎できましたか？」を聞く（お迎え予定からこの時間たったら。送るのは RIDE_CHECK_SEND_HOURS の時間帯だけ）
@@ -1072,9 +1074,49 @@ function prefill_(q) {
 
 function retryUrl_(id) { return CONFIG.SITE_URL + '?r=' + encodeURIComponent(id) + '&k=' + sign_(id + ':prefill') + '#form'; }
 
+/* ───────── 古い個人情報を消す（1日1回。個人情報の取り扱い「お迎えの日から1年」） ───────── */
+
+var PERSONAL_REQ_COLS = ['お名前', '電話番号', 'メール', '連絡方法', 'メモ', 'お迎えの場所', '行き先', '経由地', '帰りのお迎え', '帰りの行き先', 'お客さまLINE'];
+var PERSONAL_CONTACT_COLS = ['お名前', 'メール', '内容'];
+var PURGED = '（削除済み）';
+
+// 消してよい行か：基準の日（お迎え予定→希望日時→帰りの日時→受付日時のいちばん遅い日）から days 日たっている
+function purgeDue_(r, now, days) {
+  var t = ['お迎え予定', '希望日時', '帰りの日時', '受付日時'].map(function (k) { var d = r[k] ? new Date(r[k]).getTime() : NaN; return isNaN(d) ? 0 : d; });
+  var base = Math.max.apply(null, t);
+  return base > 0 && now - base > days * 86400000;
+}
+
+function purgeSheet_(sh, cols, now, days) {
+  if (!sh) return 0;
+  var rng = sh.getDataRange(), vals = rng.getValues(), h = vals[0], n = 0;
+  var idx = cols.map(function (c) { return h.indexOf(c); }).filter(function (i) { return i >= 0; });
+  for (var i = 1; i < vals.length; i++) {
+    var r = toObj_(h, vals[i]);
+    if (!purgeDue_(r, now, days)) continue;
+    var changed = false;
+    idx.forEach(function (j) { if (vals[i][j] !== '' && vals[i][j] !== PURGED) { vals[i][j] = PURGED; changed = true; } });
+    if (changed) { sh.getRange(i + 1, 1, 1, h.length).setValues([vals[i]]); n++; }
+  }
+  return n;
+}
+
+function purgeOldPersonal_() {
+  var day = Utilities.formatDate(new Date(), TZ, 'yyyyMMdd'), props = PropertiesService.getScriptProperties();
+  if (props.getProperty('purge_day') === day) return;
+  props.setProperty('purge_day', day);
+  var now = Date.now(), days = CONFIG.KEEP_PERSONAL_DAYS;
+  var n = purgeSheet_(sheet_(SHEET_REQ), PERSONAL_REQ_COLS, now, days) + purgeSheet_(sheet_('問い合わせ'), PERSONAL_CONTACT_COLS, now, days);
+  // このアカウントの送信済みに残る控え（運営者あての通知・お客さまあてのメール）も、同じ期間をこえたらごみ箱へ（30日で消える）。運営者の受信箱の通知は別のアカウントなので、そちらで消す
+  var q = ['in:sent subject:"[運営]" older_than:' + days + 'd', 'in:sent subject:"【' + CONFIG.SERVICE_NAME + '】" older_than:' + days + 'd'];
+  q.forEach(function (s) { try { var th = GmailApp.search(s, 0, 100); if (th.length) GmailApp.moveThreadsToTrash(th); n += th.length; } catch (e) {} });
+  if (n) log_('古い個人情報を消しました：' + n + '件');
+}
+
 /* ───────── 決まらないときの自動対応（5分ごとに実行） ───────── */
 
 function checkPending() {
+  try { purgeOldPersonal_(); } catch (err) { log_('個人情報の削除でエラー: ' + err); } // 1日1回だけ動く
   var sh = sheet_(SHEET_REQ);
   try { ensureReqHeaders_(sh); } catch (err) {} // 「送迎確認」の列を先に足しておく（足せなくても rideCheckDue_ が列のない行には送らない）
   var vals = sh.getDataRange().getValues();
