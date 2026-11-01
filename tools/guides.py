@@ -660,6 +660,14 @@ dict(slug="fare",
  related=["what-is-pet-taxi", "taxi-with-pet", "hospital"]),
 ]
 
+# 全国の会社のルールを数えたデータ記事と、今ある記事に足す節（tools/guides_data.py）。
+from guides_data import DATA_GUIDES, EXTRA_SECTIONS
+GUIDES.extend(DATA_GUIDES)
+for guide in GUIDES:
+    if guide["slug"] in EXTRA_SECTIONS:
+        guide["sections"].extend(EXTRA_SECTIONS[guide["slug"]])
+        guide["modified"] = "2026-11-01"
+
 # 施設別の記事も同じ生成・出典管理の対象にする。
 from facility_guides import FACILITY_GUIDES
 GUIDES.extend(FACILITY_GUIDES)
