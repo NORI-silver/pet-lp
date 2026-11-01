@@ -45,37 +45,46 @@ ctx.page_ = (t) => t;
 let res = ctx.receive_({ ...base, picks, mode: 'book' });
 assert.equal(res.ok, true);
 let r = obj(rows[0]);
-assert.equal(r['指定した提携先ID'], 'P002,P003'); assert.equal(r['依頼の種類'], '予約');
+assert.equal(r['指定した提携先ID'], 'P002,P003'); assert.equal(r['依頼の種類'], '問い合わせ', '予約と見積もりを分けない（Nori 2026-11-01）');
 assert.equal(ctx.needsChoice_(r), true);
 rows[0][H.indexOf('通知した提携先')] = 'P002,P003'; // sendWave_ が記録するもの
 const ak = id => ctx.sign_('ID1:' + id);
-assert.equal(ctx.acceptPage_({ id: 'ID1', p: 'P003', k: ak('P003'), go: '1', fare: '5000', at: day + 'T10:00' }), '引き受けのお返事を送りました');
+assert.equal(ctx.acceptPage_({ id: 'ID1', p: 'P003', k: ak('P003'), go: '1', fare: '5000', at: day + 'T10:00' }), 'お返事を送りました');
 assert.equal(obj(rows[0])['状態'], ctx.ST.OPEN, '引き受けただけでは決まらない');
-assert.ok(mails.some(m => m.subject.includes('引き受けのお返事が届きました')));
-assert.equal(ctx.choosePage_({ id: 'ID1', p: 'P003', k: ctx.sign_('ID1:P003:choose'), go: '1' }), '決まりました');
+assert.ok(mails.some(m => m.subject.includes('空き状況と料金のお返事が届きました') && m.text.includes('この内容で予約する')));
+assert.equal(ctx.choosePage_({ id: 'ID1', p: 'P003', k: ctx.sign_('ID1:P003:choose'), go: '1' }), 'ご予約が確定しました');
 assert.equal(obj(rows[0])['決定した提携先ID'], 'P003');
 assert.ok(delivered.some(d => d.startsWith('P002 【締め切り】')), 'ほかの会社には締め切りを知らせる');
-// 1社だけの予約依頼は、今までどおり引き受けた時点で決まる
-rows = []; n = 10;
+// 1社だけでも、会社のお返事を見てお客さまが「この内容で予約する」を押すまで決まらない（Nori 2026-11-01）
+rows = []; mails = []; n = 10;
 ctx.receive_({ ...base, picks: JSON.stringify([JSON.parse(picks)[0]]), mode: 'book' });
-assert.equal(ctx.needsChoice_(obj(rows[0])), false);
+assert.equal(ctx.needsChoice_(obj(rows[0])), true);
+rows[0][H.indexOf('通知した提携先')] = 'P002';
+assert.equal(ctx.acceptPage_({ id: 'ID11', p: 'P002', k: ctx.sign_('ID11:P002'), go: '1', fare: '4800', at: day + 'T10:00' }), 'お返事を送りました');
+assert.equal(obj(rows[0])['状態'], ctx.ST.OPEN, '1社でも、会社のお返事だけでは決まらない');
+assert.ok(!mails[0].text.includes('ほかの会社'), '1社だけのときは「ほかの会社」と書かない');
+assert.equal(ctx.choosePage_({ id: 'ID11', p: 'P002', k: ctx.sign_('ID11:P002:choose') }), 'この内容で予約しますか？');
+assert.equal(ctx.choosePage_({ id: 'ID11', p: 'P002', k: ctx.sign_('ID11:P002:choose'), go: '1' }), 'ご予約が確定しました');
+assert.equal(obj(rows[0])['状態'], ctx.ST.DONE);
+// 前の形の行（1社だけの予約依頼）は、今までどおり引き受けた時点で決まる
+assert.equal(ctx.needsChoice_({ '依頼の種類': '予約', '指定した提携先ID': 'P002' }), false);
 
 // 見積もり依頼：会社の見積もりはお客さまに届くだけで決まらない。お客さまが選んだら決まる
 rows = []; mails = []; delivered = []; n = 0;
 res = ctx.receive_({ ...base, picks, mode: 'quote', req_key: '' });
 assert.equal(res.ok, true);
 const id = res.id;
-assert.equal(obj(rows[0])['依頼の種類'], '見積もり');
+assert.equal(obj(rows[0])['依頼の種類'], '問い合わせ');
 assert.equal(ctx.quote_(id, partners[0], at, 4800, '', '', '').ok, true);
 assert.equal(ctx.quote_(id, partners[1], at, 5200, '', '', '').ok, true);
 assert.equal(obj(rows[0])['状態'], ctx.ST.OPEN, '見積もりだけでは決まらない');
 assert.equal(ctx.quotesOf_(obj(rows[0])).length, 2);
-assert.ok(mails.filter(m => m.subject.includes('お見積もりが届きました')).length === 2);
+assert.ok(mails.filter(m => m.subject.includes('空き状況と料金のお返事が届きました')).length === 2);
 assert.ok(mails[0].text.includes('a=choose'), 'この会社に決めるリンク');
 assert.ok(!mails[0].text.includes('c@example.invalid'));
 const k = ctx.sign_(id + ':P002:choose');
 assert.equal(ctx.choosePage_({ id, p: 'P002', k: 'bad' }), 'リンクが正しくありません');
-assert.equal(ctx.choosePage_({ id, p: 'P002', k, go: '1' }), '決まりました');
+assert.equal(ctx.choosePage_({ id, p: 'P002', k, go: '1' }), 'ご予約が確定しました');
 assert.equal(obj(rows[0])['決定した提携先ID'], 'P002');
 assert.equal(obj(rows[0])['料金の目安'], 4800);
 assert.equal(ctx.quote_(id, partners[1], at, 3000, '', '', '').ok, false, '決まったあとは見積もりを受け付けない');
@@ -83,4 +92,4 @@ assert.equal(ctx.quote_(id, partners[1], at, 3000, '', '', '').ok, false, '決�
 // 選んでいない会社や6社以上は断る
 assert.equal(ctx.receive_({ ...base, picks: JSON.stringify([{ id: 'P999', token: 'x', expires: Date.now() + 60000 }]) }).ok, false);
 assert.equal(ctx.receive_({ ...base, picks: JSON.stringify([1,2,3,4,5,6].map(i => ({ id: 'P00' + i, token: 'x', expires: 1 }))) }).ok, false);
-console.log('PASS: multi-company booking (first accept wins) and quote requests (customer chooses)');
+console.log('PASS: every request is an inquiry; the customer confirms the booking after the company replies');
