@@ -1107,8 +1107,8 @@ function purgeOldPersonal_() {
   props.setProperty('purge_day', day);
   var now = Date.now(), days = CONFIG.KEEP_PERSONAL_DAYS;
   var n = purgeSheet_(sheet_(SHEET_REQ), PERSONAL_REQ_COLS, now, days) + purgeSheet_(sheet_('問い合わせ'), PERSONAL_CONTACT_COLS, now, days);
-  // このアカウントの送信済みに残る控え（運営者あての通知・お客さまあてのメール）も、同じ期間をこえたらごみ箱へ（30日で消える）。運営者の受信箱の通知は別のアカウントなので、そちらで消す
-  var q = ['in:sent subject:"[運営]" older_than:' + days + 'd', 'in:sent subject:"【' + CONFIG.SERVICE_NAME + '】" older_than:' + days + 'd'];
+  // 運営者あての通知（送信済み・受信箱とも）と、お客さまあてのメールの控えも、同じ期間をこえたらごみ箱へ（30日で消える）。トリガーは pettaxi のアカウントで動かす（ほかのアカウントで動かすとそのアカウントのメールが対象になる）
+  var q = ['subject:"[運営]" older_than:' + days + 'd', 'in:sent subject:"【' + CONFIG.SERVICE_NAME + '】" older_than:' + days + 'd'];
   q.forEach(function (s) { try { var th = GmailApp.search(s, 0, 100); if (th.length) GmailApp.moveThreadsToTrash(th); n += th.length; } catch (e) {} });
   if (n) log_('古い個人情報を消しました：' + n + '件');
 }
