@@ -1759,8 +1759,8 @@ function quoteCards_(p) {
     // 全社準備中のあいだは、提携先の会社も表示だけ（トークンを出さない＝依頼できない）
     if (CONFIG.SHOW_ALL_CANDIDATES) return { id:pt.id, label:pt.name, display_only:true, car:pt.car || '車の詳細は確認中です',
       payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は確認中です',
-      price:price, review:null, check:[], points:PARTNER_POINTS[pt.id] || [], dist_km:shopDistKm_(partnerShop_(pt.id), p) };
-    return { id:pt.id, label:pt.name, car:pt.car || '車の詳細は引き受け時に確認', points:PARTNER_POINTS[pt.id] || [], dist_km:shopDistKm_(partnerShop_(pt.id), p),
+      price:price, review:null, check:[], points:PARTNER_POINTS[pt.id] || [], shop:partnerShop_(pt.id) };
+    return { id:pt.id, label:pt.name, car:pt.car || '車の詳細は引き受け時に確認', points:PARTNER_POINTS[pt.id] || [], shop:partnerShop_(pt.id),
       payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は引き受け時にご案内',
       price:price, review:null, check:checks_(pt, r).ask, expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
   }).filter(Boolean).concat(p.leg ? [] : displayCards_(r, p));
@@ -1810,7 +1810,7 @@ function displayCards_(r, p) {
     var unsure = same && c.lead_days !== 0 ? '当日の予約ができるかは確認中です。' : '', unknown = animalOk(c).indexOf(null) >= 0;
     if (kinds.length) unsure += unknown ? kindText + 'を乗せられるかは確認中です。' : '公式サイトに' + kindText + 'も乗せられると書いてあります。';
     var price = p && displayPrice_(c, p) || {amount:null,text:'料金はお見積もり',night:''};
-    return { id:c.id, label:c.name, display_only:true, animal_unknown:unknown, points:c.points || [], dist_km:shopDistKm_(c.shop, p),
+    return { id:c.id, label:c.name, display_only:true, animal_unknown:unknown, points:c.points || [], shop:c.shop || null,
       car:'所在地：' + c.pref + (c.area_text ? '。対応エリア：' + c.area_text + '（公式サイトの記載）' : '（対応エリアは確認中です）') + '。車の詳細はまだ確認中です。' + unsure,
       payment:c.pay ? 'お支払い：' + c.pay + '（公式サイトの記載）' : 'お支払い方法はまだ確認中です',
       price:price, review:null, check:[] };
@@ -1820,14 +1820,8 @@ function displayCards_(r, p) {
   });
 }
 
-// お店からお迎えの場所までの直線距離（km、小数1けた）。お店の場所かお迎えの場所が分からないときは null
-// 候補カードを近い順に並べたり、距離でしぼったりするのに使う（Nori 2026-11-01「事業所からお迎えポイントとの距離を裏側で計算して、短い順で表示。フィルターにも距離」）
-function shopDistKm_(shop, p) {
-  var from = null;
-  try { from = JSON.parse((p || {}).route_details || '{}').from; } catch (e) {}
-  if (!shop || !from || !isFinite(from.lat) || !isFinite(from.lng)) return null;
-  return Math.round(kmBetween_({lat:shop[0], lng:shop[1]}, from) * 10) / 10;
-}
+// カードの shop（お店の位置）：ページが道路データでお店→お迎えの場所の車の道のりを調べ、近い順に並べたり距離でしぼったりする
+// （Nori 2026-11-01「直線で出すのやめて。クルマでの最短ルートでだして」）。分からなければ null
 // 提携先のお店の位置（tools/fares.json の shop）。分からなければ null
 function partnerShop_(id) {
   if (typeof SELECTION_FARES === 'undefined' || !SELECTION_FARES) return null;

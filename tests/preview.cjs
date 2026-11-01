@@ -17,6 +17,7 @@ window.fetch=function(url,options){
  if(u.includes('msearch.gsi.go.jp')) { const q=new URL(u).searchParams.get('q'); data=[{properties:{title:q},geometry:{coordinates:q.includes('目黒')?[139.698,35.641]:[139.67,35.63]}}]; }
  else if(u.includes('nominatim.openstreetmap.org')) data=[{lat:'35.63',lon:'139.67'}];
  else if(u.includes('mreversegeocoder.gsi.go.jp')) data={results:{muniCd:'13112'}};
+ else if(u.includes('router.project-osrm.org/table')) { const pts=new URL(u).pathname.split('/').pop().split(';').map(x=>x.split(',').map(Number)); const src=new URL(u).searchParams.get('sources').split(';').map(Number); const R=Math.PI/180,km=(a,b)=>6371*2*Math.asin(Math.sqrt(Math.sin((b[1]-a[1])*R/2)**2+Math.cos(a[1]*R)*Math.cos(b[1]*R)*Math.sin((b[0]-a[0])*R/2)**2)); data={code:'Ok',distances:src.map(i=>[Math.round(km(pts[i],pts[0])*1000*(1.2+(i%3)*0.2))])}; } // 確認用：直線×1.2〜1.6を道のりとして返す
  else if(u.includes('router.project-osrm.org')) data={code:'Ok',routes:[{distance:10000,duration:1200,legs:[{steps:[{name:'確認用高速道路',distance:5000}]}],geometry:{coordinates:[[139.67,35.63],[139.698,35.641]]}}]};
  if(data!==undefined) return Promise.resolve(new Response(JSON.stringify(data),{headers:{'Content-Type':'application/json'}}));
  return originalFetch(url,options);
