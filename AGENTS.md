@@ -79,6 +79,8 @@
 
 `CNAME`・`.nojekyll` は GitHub Pages 用なので消さない。
 
+サイトの公開は `.github/workflows/pages.yml`（GitHub Actions）で行う（2026-11-01、標準の公開が「途中」のまま止まって詰まったため）。同時に1つだけ動き、あとの公開は順番に待つ。止まったときは `pages-unstick` で取り消してから、`pages` を手で動かす（Run workflow）。
+
 ## 変更のしかた
 
 1. 変更は必ずブランチを作って **PR** で出す。`main` にマージすると GitHub Pages で本番サイトにすぐ反映されるので、**マージは Nori さんの確認後**。

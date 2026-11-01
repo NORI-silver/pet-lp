@@ -45,7 +45,7 @@ def fare_text(km, pref=None, round_trip=False):
 def fare_note(pref=None):
     cs = cos_for(pref)
     head = "片道の目安です。" + ("当サイトとやりとりのあるペットタクシーの料金表で計算した例です。" if len(cs) == 1 else f"当サイトとやりとりのあるペットタクシー{len(cs)}社の料金表で計算した例で、会社によって変わります。") + "フォームでは、候補の会社ごとに料金表から計算した目安が出ます。"
-    tail = "目安には高速代・駐車場代は入っていません。確定料金（税込）は、お迎えが決まったときに引き受けた会社から、一般道の場合と高速道路を使う場合の両方をお知らせします。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。" + "".join(c.get("pay", "") for c in cs)
+    tail = "目安には高速代・駐車場代は入っていません。確定料金（税込）は、問い合わせた会社から、空き状況と一緒に、一般道の場合と高速道路を使う場合の両方をお知らせします。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。" + "".join(c.get("pay", "") for c in cs)
     return head + "".join(c["note"] for c in cs) + FARES.get("area_note", {}).get(pref or "", "") + tail
 # フォームの概算（index.html）に渡す料金データ
 FARE_JS = "var FARES = " + json.dumps({k: {x: c.get(x) for x in ("label","base_km","base","tiers","pick","back","night","night_hours","round_flat","wait","shop","pick_free_km","pick_over")} for k, c in CO.items()}, ensure_ascii=False) + ";\n  var REVIEWS = " + json.dumps({c["partner_id"]: c["review_url"] for c in CO.values() if c.get("partner_id") and c.get("review_url")}, ensure_ascii=False) + ";\n  var AREA_FARES = " + json.dumps(FARES["areas"], ensure_ascii=False) + ";"
@@ -90,7 +90,7 @@ def _nat_row(km):
 def nat_text(km):
     v = sorted(_nat_ride(c["fare"], km) for c in _NAT)
     return f"{v[(len(v) - 1) // 2]:,}円（{v[0]:,}〜{v[-1]:,}円）"
-NAT_NOTES = f"""    <p class="fare-flag"><b>確定料金ではありません。</b>上の金額は目安です。確定料金（税込）は、お迎えが決まったときに引き受けた会社からメールでお知らせします。</p>
+NAT_NOTES = f"""    <p class="fare-flag"><b>確定料金ではありません。</b>上の金額は目安です。確定料金（税込）は、問い合わせた会社から、空き状況と一緒にメールでお知らせします。</p>
     <p class="fare-night"><b>🌙 夜間・早朝の割増</b>上の目安は昼間の料金です。夜間・早朝の割増は、かかるかどうかも金額も会社ごとに違います。フォームの候補には、会社ごとの割増を入れた目安が出ます。</p>
     <p class="small">全国{_NAT_PREFS}都道府県・{len(_NAT)}社のペットタクシーが公式サイトにのせている料金表で、乗った距離の運賃（片道）を計算しました。大きい数字はまんなかの会社の金額で、その下は安い会社〜高い会社です。お迎え料金・待ち時間・夜間の割増・高速代・駐車場代は入っていません。フォームにお迎えの場所と行き先を入れると、来てもらえる会社ごとに、お迎え料金なども入れた目安が出ます。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。都道府県ごとの料金の例は、<a href="/area/">全国のペットタクシー情報</a>にまとめています。</p>"""
 TOP_TABLE = f"""        <h3>距離ごとの目安（全国{len(_NAT)}社の料金表から）</h3>
@@ -251,7 +251,7 @@ AREAS = [
   route=("大宮駅周辺 → 新宿区", 30),
   faq=[
    ("さいたま市から都内まで頼めますか？", f"はい。大宮周辺から新宿までの約30kmなら、{nat_text(30)}が片道の目安です。"),
-   ("飼い主が乗らずにペットだけ運んでもらえますか？", "フォームの「一緒に乗る人数」で「0人（ペットだけ）」を選んでください。ペットだけの送迎を受けるかは会社によるため、引き受けが決まったメールでご確認ください。"),
+   ("飼い主が乗らずにペットだけ運んでもらえますか？", "フォームの「一緒に乗る人数」で「0人（ペットだけ）」を選んでください。ペットだけの送迎を受けるかは会社によるため、会社からの返事のメールでご確認ください。"),
    ("埼玉の北部（熊谷など）でも使えますか？", "はい、お迎えの場所に入れられます。会社ごとに対応する地域が違うため、場所によってはお迎え料金が増えたり、来てもらえる会社が見つからなかったりすることがあります。日にちに余裕をもってご依頼ください。"),
   ]),
 ]
@@ -493,7 +493,7 @@ for g in GUIDES:
     if g.get("category") == "facility":
         page = page.replace("空き状況と料金を問い合わせる（無料）", "掲載候補を見る").replace(">問い合わせる<span class=\"lg\">（無料）</span><", ">掲載候補を見る<")
         page = page.replace("無料で使えます。問い合わせただけでは予約は確定しません。会社の返事を見て「この内容で予約する」を押した時点で予約が確定します。",
-                            "現在は候補の表示のみです。すべての会社への予約依頼を停止しています。")
+                            "現在は候補の表示のみです。すべての会社への問い合わせを停止しています。")
     os.makedirs(os.path.join(ROOT, "guide", g["slug"]), exist_ok=True)
     open(os.path.join(ROOT, "guide", g["slug"], "index.html"), "w", encoding="utf-8").write(page)
 
