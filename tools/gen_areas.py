@@ -549,6 +549,23 @@ tp = head("利用規約｜ペットタクシー予約窓口", "ペットタク�
 os.makedirs(os.path.join(ROOT, "terms"), exist_ok=True)
 open(os.path.join(ROOT, "terms", "index.html"), "w", encoding="utf-8").write(tp)
 
+# 提携規約（/partner/terms/）。本文は tools/partner_terms.py
+from partner_terms import PTERMS, PTERMS_DATE
+pterms_url = SITE + "/partner/terms/"
+ptp = head("提携規約（ペットタクシー会社さま向け）｜ペットタクシー予約窓口", "ペットタクシー予約窓口と提携してくださるペットタクシー会社さま向けの規約です。問い合わせとお返事、予約の確定、手数料（予約が確定して送迎した分だけ）、個人情報、提携の終了などを定めています。", pterms_url, "") + f"""
+<main>
+<section class="area-hero"><div class="wrap"><h1>提携規約<small style="display:block;font-size:.95rem;color:var(--o-d)">ペットタクシー会社さま向け</small></h1><p class="lede">当サイトと提携してくださる会社さまとの約束です。お申し込みのあと、この規約をメールでお送りし、同意のお返事をいただいてから提携が始まります。</p></div></section>
+<section><div class="wrap prose terms">
+{''.join(f'<h2>{e(h)}</h2>' + ''.join(terms_block(v) for v in body) for h, body in PTERMS)}
+<p class="small">{PTERMS_DATE} 制定</p>
+<p><a href="/partner/">提携のご案内にもどる</a></p>
+</div></section>
+</main>
+""" + foot("/partner/#apply", band=False)
+ptp = ptp.replace('<div class="sticky"><a class="btn" href="/partner/#apply">空き状況と料金を問い合わせる（無料）</a></div>', '<div class="sticky"><a class="btn" href="/partner/#apply">提携を申し込む（無料）</a></div>')
+os.makedirs(os.path.join(ROOT, "partner", "terms"), exist_ok=True)
+open(os.path.join(ROOT, "partner", "terms", "index.html"), "w", encoding="utf-8").write(ptp)
+
 # お問い合わせ（/contact/）。送り先はトップのフォームと同じ受付の仕組み（kind=contact）
 gas = re.search(r'var GAS_URL = "([^"]+)"', open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()).group(1)
 contact_url = SITE + "/contact/"
@@ -602,7 +619,7 @@ partner_url = SITE + "/partner/"
 PREFS47 = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"]
 PAYS = ["現金", "クレジットカード", "電子マネー・QR決済", "請求書・振込"]
 # 手数料の書き方（Nori の決定しだいで直す。2026-11-01 案：成約時15%・開始まで無料）
-FEE_RATE = 15
+from partner_terms import FEE_RATE
 PT_CSS = """<style>
 .pt-sec{padding:56px 0}.pt-sec.alt{background:var(--cream)}
 .pt-sec h2{font-size:1.4rem;font-weight:800;text-align:center;margin-bottom:10px}
@@ -664,7 +681,7 @@ PT_FAQ = [
  ("本当に電話は使わなくていいですか？", "はい。当サイトからのご連絡は、すべてメールです。予約が確定したあと、飼い主さんとの打ち合わせで会社さまが電話を使うのは自由です。"),
  ("料金表は変えないといけませんか？", "いいえ。いまの料金表のままで大丈夫です。サイトでは会社さまの料金表から目安を計算し、「確定料金ではありません」と添えて表示します。確定料金は会社さまがお返事で決めます。"),
  ("飼い主さんが何社にも問い合わせることはありますか？", "あります。飼い主さんは1社だけに問い合わせることも、条件に合う会社にまとめて問い合わせることもできます。何社かに問い合わせたときは、届いたお返事をくらべて飼い主さんが1社を選びます。選ばれなかったときは「締め切り」のお知らせをお送りします。"),
- ("手数料はいつ、何にかかりますか？", f"予約が確定し、送迎をした1件だけにかかります。確定料金（税込）の{FEE_RATE}%を、月末にまとめてご請求する予定です。お問い合わせを受け取っただけ、お返事しただけ、選ばれなかったときには一切かかりません。いまは無料で、始める前にメールでお知らせし、ご同意をいただいてからにします。"),
+ ("手数料はいつ、何にかかりますか？", f"予約が確定し、送迎をした1件だけにかかります。確定料金（税込）の{FEE_RATE}%を、月末にまとめてご請求する予定です。お問い合わせを受け取っただけ、お返事しただけ、選ばれなかったときには一切かかりません。いまは無料です。始める日は、30日前までにメールでお知らせします（くわしくは提携規約の第8条）。"),
  ("キャンセルになったら手数料はどうなりますか？", "送迎をしなかったときは、手数料はいただきません。キャンセル料は会社さまのキャンセル規定のとおりで、キャンセル料に手数料をかけることはありません。"),
  ("ほかの予約サイトや自社の予約と一緒に使えますか？", "はい。いまの予約の受け方はそのままで、当サイトのお問い合わせを一つの窓口として足していただくイメージです。"),
  ("もう候補の一覧に名前が出ているのはなぜですか？", "当サイトでは、公式サイトに公開されている料金表と営業時間をもとに、各地の会社を候補として表示しています（問い合わせは送れない「準備中」の表示です）。載せ方の修正や、掲載をやめたいご希望は、お問い合わせからいつでもお知らせください。"),
@@ -712,7 +729,7 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 <tr><th>キャンセルで送迎しなかったとき</th><td><b>0円</b>（キャンセル料には手数料をかけません）</td></tr>
 </table>
 <p class="ex">例：確定料金 5,000円の送迎が1件あった月は、手数料 {5000*FEE_RATE//100:,}円です。</p>
-<p class="now">いまは準備中のため、手数料はいただいていません。手数料を始める前に、ご請求のしかたと一緒にメールでお知らせし、ご同意をいただいてからにします。それより前の送迎にさかのぼってご請求することはありません。</p>
+<p class="now">いまは準備中のため、手数料はいただいていません。始める日は、30日前までにメールでお知らせします。それより前に確定した予約にさかのぼってご請求することはありません。くわしくは<a href="/partner/terms/">提携規約</a>の第8条をご覧ください。</p>
 </div>
 </div></section>
 
@@ -721,7 +738,7 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 <ol class="pt-steps">
 <li><b>このページから申し込む</b><span>下のフォームに、エリア・時間帯・料金などを入れて送ってください（5分ほど）。</span></li>
 <li><b>内容の確認</b><span>当サイトで公式サイトなどを拝見し、数日以内にメールでご連絡します。わからない点はメールでおたずねします。</span></li>
-<li><b>提携の内容に同意</b><span>手数料やご請求のしかた、個人情報の扱いなどの約束を、メールでお送りします。ご確認のうえ、お返事ください。</span></li>
+<li><b>提携規約に同意</b><span>手数料やご請求のしかた、個人情報の扱いなどを定めた<a href="/partner/terms/">提携規約</a>をメールでお送りします。ご確認のうえ、同意のお返事をください。</span></li>
 <li><b>お問い合わせのお届け開始</b><span>候補の一覧で問い合わせできる状態になり、条件に合うお問い合わせがメールで届きはじめます。</span></li>
 </ol>
 </div></section>
@@ -759,7 +776,7 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
   <div class="f"><label for="p_cxl">キャンセル規定<span class="any">わかれば</span></label><input type="text" id="p_cxl" data-k="キャンセル規定" placeholder="例：前日まで無料、当日は基本料金の50%。URLだけでも大丈夫です"></div>
   <div class="f"><label for="p_url">ホームページ<span class="any">あれば</span></label><input type="url" id="p_url" data-k="ホームページ" placeholder="https://"></div>
   <div class="f"><label for="p_msg">ほかに伝えたいこと<span class="any">あれば</span></label><textarea id="p_msg" data-k="そのほか" rows="4" maxlength="1000"></textarea></div>
-  <label class="agree"><input type="checkbox" id="p_agree" required><span><a href="/#privacy">個人情報の取り扱い</a>を確認し、同意します。</span></label>
+  <label class="agree"><input type="checkbox" id="p_agree" required><span><a href="/#privacy">個人情報の取り扱い</a>を確認し、同意します。提携の内容は<a href="/partner/terms/">提携規約</a>をご覧ください（同意は内容の確認のあと、メールでいただきます）。</span></label>
   <p id="p_err" role="alert" style="display:none;color:#c0392b;font-size:.88rem"></p>
   <button class="btn" type="submit">申し込む{ARROW}</button>
   <p class="form-foot">内容を確認して、数日以内にメールでご連絡します。</p>
@@ -1132,7 +1149,7 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
 """ % json.dumps(GAS))
 
 # sitemap / robots / 404
-urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url, pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url]
+urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url, pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url, pterms_url]
 guide_modified = {f'{SITE}/guide/{g["slug"]}/': g.get("modified", TODAY) for g in GUIDES}
 guide_modified[hub_url] = "2026-10-31"
 open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
