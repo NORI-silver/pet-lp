@@ -51,6 +51,9 @@ var CONFIG = {
   GIVE_UP_MIN: 60, // これを過ぎたら、お客さまにお詫びを送って終了
   MIN_LEAD_HOURS: 3, // お迎えは受付から3時間より先だけ（LPと同じ。入力にかかる時間を見て15分は大目に見る）
   URGENT_HOURS: 3, // 希望時刻まで3時間を切っている依頼は、待ち時間を半分にする
+  // 送迎のあと、飼い主さんに「無事に送迎できましたか？」を聞く（お迎え予定からこの時間たったら。送るのは RIDE_CHECK_SEND_HOURS の時間帯だけ）
+  RIDE_CHECK_AFTER_HOURS: 12,
+  RIDE_CHECK_SEND_HOURS: '9-20',
 
   // 提携先シートの「営業時間」「何時間前まで」が空欄のとき。メールは営業時間に読まれる前提で、読める時刻からお迎えまでこれだけ必要
   DEFAULT_PARTNER_HOURS: '8-18',
@@ -94,7 +97,9 @@ var REQ_HEADERS = [
   '通知段階', '通知した提携先', '決定した提携先ID', '決定した提携先', 'お迎え予定', '料金の目安', '提携先から一言', '決定日時',
   'お客さまLINE', '終了日時', 'ペット数', 'ペット詳細', '日付のみ', '経由地', 'ペットJSON', '概算km', '概算料金', '荷物', '高速利用時の料金', '帰りの日時', '帰りのお迎え', '帰りの行き先', '待ち時間（分）', '概算料金の表示', '帰りのやり方', '指定した提携先ID', '指定した提携先', '区間', 'ペアの受付番号',
   // 2026-10-31 Nori「複数社に予約・見積もりを依頼できるように。どちらかはお客さまが選ぶ」。依頼の種類＝予約／見積もり、見積もりJSON＝届いた見積もり
-  '依頼の種類', '見積もりJSON'
+  '依頼の種類', '見積もりJSON',
+  // 2026-11-01 Nori「キャンセルを直接事業者に伝えられたら、こっちは判断できない」→ 送迎のあとに飼い主さんにも確かめる（手数料の照らし合わせ用）
+  '送迎確認', '送迎確認日時'
 ];
 var PARTNER_HEADERS = [
   'ID', '事業者名', '担当者名', '対応エリア', 'メール', '電話番号', 'LINE公式ID（先方）', '受付中', '大型犬OK', '介助OK',
@@ -691,6 +696,7 @@ function doGet(e) {
     if (q.a === 'accept') return acceptPage_(q);
     if (q.a === 'cancel') return cancelPage_(q);
     if (q.a === 'choose') return choosePage_(q);
+    if (q.a === 'ride') return ridePage_(q);
     if (q.a === 'admin') return adminPage_(q);
     if (q.a === 'prefill') return prefill_(q);
     if (q.a === 'dash') return dashPage_(q);
@@ -1026,6 +1032,7 @@ function checkPending() {
   var now = Date.now();
   for (var i = 1; i < vals.length; i++) {
     var r = toObj_(h, vals[i]);
+    if (rideCheckDue_(r, now)) { sendRideCheck_(r['受付番号']); continue; }
     if (r['状態'] !== ST.OPEN) continue;
     var age = openMinutes_(r['受付日時'], now, CONFIG.OPEN_HOURS); // 会社が動いている時間だけ数える
     var until = (new Date(r['希望日時']).getTime() - now) / 3600000;
@@ -1061,6 +1068,52 @@ function giveUp_(id) {
     (r['ペアの受付番号'] ? 'これは往復の' + legTag_(r).slice(1) + 'のご依頼です。もう片方（受付番号 ' + r['ペアの受付番号'] + '）は、そのまま手配を続けています。取り消す場合は、そちらのメールのリンクからどうぞ。\n\n' : '') +
     '時間を少しずらすと見つかることがあります。下のリンクから開くと、前回の内容が入った状態になるので、日時だけ変えてもう一度お送りいただけます。\n' + retryUrl_(id));
   notifyAdmin_('見つからず ' + id, 'お客さまにお詫びを送りました。\n\n' + rideText_(r) + '\n\nお名前：' + r['お名前'] + '\n電話：' + r['電話番号']);
+}
+
+/* ───────── 送迎のあとの確認（飼い主さんに聞いて、会社の月末の申告と照らし合わせる） ───────── */
+
+// 決まった予約で、お迎え予定から RIDE_CHECK_AFTER_HOURS たち、まだ聞いていない、いまが送ってよい時間帯
+function rideCheckDue_(r, now) {
+  if (r['状態'] !== ST.DONE || r['送迎確認'] || !r['メール']) return false;
+  var at = new Date(r['お迎え予定']).getTime();
+  if (!isFinite(at) || now - at < CONFIG.RIDE_CHECK_AFTER_HOURS * 3600000) return false;
+  if (now - at > 14 * 24 * 3600000) return false; // 古すぎる予約には聞かない
+  return inHours_(Number(Utilities.formatDate(new Date(now), TZ, 'H')), hoursOf_(CONFIG.RIDE_CHECK_SEND_HOURS));
+}
+
+function rideUrl_(id) { return linkBase_() + '?a=ride&id=' + encodeURIComponent(id) + '&k=' + sign_(id + ':ride'); }
+
+function sendRideCheck_(id) {
+  var row = findReq_(id);
+  if (!row || row.data['送迎確認']) return;
+  setReq_(row.rowIndex, { '送迎確認': '確認中' });
+  var r = row.data;
+  toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】無事に送迎できましたか？（受付番号 ' + id + '）' + legTag_(r),
+    r['お名前'] + ' 様\n\n先日はご利用ありがとうございました。\n' + fmt_(r['お迎え予定']) + ' の「' + r['決定した提携先'] + '」の送迎について、ひとつだけ教えてください。\n\n' +
+    '▼ 送迎できたか・キャンセルしたかを答える（1回押すだけです）\n' + rideUrl_(id) + '\n\n' +
+    'サービスをよくするため、また提携の会社との確認のために使います。お答えいただいた内容が会社とのやり取りに影響することはありません。');
+  log_(id + ' 送迎の確認を送った');
+}
+
+function ridePage_(q) {
+  if (!q.id || q.k !== sign_(q.id + ':ride')) return page_('リンクが正しくありません', '<p>お手数ですが、届いたメールのリンクからもう一度開いてください。</p>');
+  var row = findReq_(q.id);
+  if (!row) return page_('見つかりません', '<p>このご依頼は見つかりませんでした。</p>');
+  var r = row.data;
+  var ANS = { done: '送迎あり', cancel: 'キャンセル（お客さま回答）', other: '予定と違った（お客さま回答）' };
+  if (q.go === '1' && ANS[q.ans]) {
+    setReq_(row.rowIndex, { '送迎確認': ANS[q.ans], '送迎確認日時': new Date() });
+    log_(q.id + ' 送迎の確認：' + ANS[q.ans]);
+    if (q.ans !== 'done') notifyAdmin_('送迎の確認：' + ANS[q.ans] + ' ' + q.id, '飼い主さんの答え：' + ANS[q.ans] + '\n会社：' + r['決定した提携先'] + '\n\n' + rideText_(r));
+    return page_('ありがとうございました', '<p>お答えを受け付けました。またいつでもご利用ください。</p>');
+  }
+  if (r['送迎確認'] && r['送迎確認'] !== '確認中') return page_('お答えいただいています', '<p>「' + esc_(r['送迎確認']) + '」で受け付けています。ありがとうございました。</p>');
+  function btn(ans, label, gray) {
+    return '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'ride') + hidden_('id', q.id) + hidden_('k', q.k) + hidden_('go', '1') + hidden_('ans', ans) +
+      '<button type="submit"' + (gray ? ' class="gray"' : '') + '>' + esc_(label) + '</button></form>';
+  }
+  return page_('無事に送迎できましたか？', '<div class="box">' + nl2br_(esc_('受付番号：' + q.id + '\nペットタクシー：' + r['決定した提携先'] + '\nお迎え予定：' + fmt_(r['お迎え予定']))) + '</div>' +
+    btn('done', 'はい、送迎してもらいました') + btn('cancel', 'キャンセルしました', true) + btn('other', '日時や内容が予定と違いました', true));
 }
 
 /* ───────── お客さまへのメール ───────── */
