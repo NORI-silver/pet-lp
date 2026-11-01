@@ -73,6 +73,7 @@
 | `booking/Code.gs` | 予約の仕組み（Apps Script）。**リポジトリにあっても本番には自動で反映されません**（下記） |
 | `booking/accept-preview.html` | 会社の引き受け画面の見た目確認用 |
 | `docs/` | 手順書（`codex.md`＝Codexの使い方、`ai-backup.md`＝GitHubで動く予備のAI、`seo-agents.md`＝エリア担当のSEO Agent（担当・順番・手順）、`seo-agents/`＝担当ごとの候補、`seo-log.md`＝SEOの作業メモ） |
+| `tools/partner_shots.cjs` | 提携のご案内ページの「画面の見本」（`img/partner/`）を、`booking/Code.gs` の本物の文面・画面と架空の依頼で撮り直す（`node tools/partner_shots.cjs`）。会社あてのメールや引き受け画面を変えたら撮り直す。何も送らない |
 | `tools/seo_check.py` | SEOと文言ルールの自動チェック（title・説明文・canonical・h1・電話番号・ツール名など）。PRごとに `.github/workflows/seo-check.yml` で動く |
 | `.github/workflows/ai-backup.yml` | Issue にラベル「ai」を付けるとAIが作業してPRを作る予備のしくみ |
 
