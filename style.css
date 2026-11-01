@@ -473,6 +473,12 @@ footer a{color:var(--ink-2)}
 .partner-sort{display:flex;align-items:center;gap:8px;justify-content:flex-end;margin:4px 0 10px;font-size:.86rem}
 .partner-sort label{font-weight:700;color:var(--ink-2)}
 .partner-sort select{width:auto;min-width:12em;padding:8px 10px;font-size:.88rem}
+.partner-sort{flex-wrap:wrap;row-gap:8px;column-gap:14px}
+.partner-sort .ps-item{display:flex;align-items:center;gap:8px}
+.partner-sort #partnerDist{min-width:7em}
+.partner-dist-note[hidden]{display:none}
+.partner-dist-note{margin:0 0 10px;font-size:.82rem;color:var(--ink-2);text-align:right}
+.partner-dist{margin:-2px 0 6px;font-size:.8rem;color:var(--ink-2)}
 .partner-card .partner-more{font-size:.8rem;color:var(--ink-2);border-top:1px dashed var(--line);padding:8px 0 0;margin:0;background:none;box-shadow:none;border-radius:0}
 .partner-card .partner-more>summary{font-weight:700;color:var(--o-d);font-size:.84rem;padding:0}
 .partner-card .partner-more>summary::after{content:" ▸";position:static;display:inline;width:auto;height:auto;margin:0;background:none;border-radius:0;transform:none}
