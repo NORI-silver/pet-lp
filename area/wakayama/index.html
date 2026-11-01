@@ -505,6 +505,7 @@ footer a{color:var(--ink-2)}
 .partner-sort select{width:auto;min-width:12em;padding:8px 10px;font-size:.88rem}
 .partner-sort{flex-wrap:wrap;row-gap:8px;column-gap:14px}
 .partner-sort .ps-item{display:flex;align-items:center;gap:8px}
+.partner-sort .ps-item[hidden]{display:none}
 .partner-sort #partnerDist{min-width:7em}
 .partner-dist-note[hidden]{display:none}
 .partner-dist-note{margin:0 0 10px;font-size:.82rem;color:var(--ink-2);text-align:right}
@@ -1423,6 +1424,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。どの会社もいまは準備中のため、まだ予約を依頼できません。料金は確定料金ではありません。" : (later ? cards.length + "社が候補です（うち" + later + "社は準備中のため、まだ予約を依頼できません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。選んだ会社だけに依頼します（最大" + MAX_PICKS + "社）。");
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。予約の依頼は送信されていません。</span>';
     $("partnerSortBox").hidden = cards.length < 2;
+    var hasDist = cards.some(function(c){ return c.dist_km != null; }); // 予約のしくみが古い版のあいだは距離が来ないので、距離のしぼり込みを出さない
+    $("partnerDist").parentNode.hidden = !hasDist; if (!hasDist) $("partnerDist").value = "";
     $("reqModeBox").hidden = !ready || !!form.querySelector("input[name=req_type]"); // 予約を依頼できる会社があるときだけ。フォームの最初で選ぶときは出さない
     chosenPicks = chosenPicks.filter(function(c){ return cards.some(function(x){ return x.id === c.id && !x.display_only; }); }).map(function(c){ return cards.filter(function(x){ return x.id === c.id; })[0]; });
     chosenQuote = chosenPicks[0] || null; showPickButton();
@@ -1503,7 +1506,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
       text("h4", card.label);
       // お店からお迎えの場所までの直線距離（裏側で計算。Nori 2026-11-01）
-      text("p", card.dist_km != null ? "お店からお迎えの場所まで 直線" + Number(card.dist_km).toFixed(1) + "km" : "お店の場所は確認中です", "partner-dist");
+      if ("dist_km" in card) text("p", card.dist_km != null ? "お店からお迎えの場所まで 直線" + Number(card.dist_km).toFixed(1) + "km" : "お店の場所は確認中です", "partner-dist");
       var rv = card.review;
       if (rv && rv.rating > 0) {
         // 口コミの点数は規約上、出どころ（Google マップ）の表示が必要

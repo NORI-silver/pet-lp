@@ -475,6 +475,7 @@ footer a{color:var(--ink-2)}
 .partner-sort select{width:auto;min-width:12em;padding:8px 10px;font-size:.88rem}
 .partner-sort{flex-wrap:wrap;row-gap:8px;column-gap:14px}
 .partner-sort .ps-item{display:flex;align-items:center;gap:8px}
+.partner-sort .ps-item[hidden]{display:none}
 .partner-sort #partnerDist{min-width:7em}
 .partner-dist-note[hidden]{display:none}
 .partner-dist-note{margin:0 0 10px;font-size:.82rem;color:var(--ink-2);text-align:right}
