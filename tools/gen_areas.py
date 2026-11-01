@@ -549,6 +549,23 @@ tp = head("利用規約｜ペットタクシー予約窓口", "ペットタク�
 os.makedirs(os.path.join(ROOT, "terms"), exist_ok=True)
 open(os.path.join(ROOT, "terms", "index.html"), "w", encoding="utf-8").write(tp)
 
+# 提携規約（/partner/terms/）。本文は tools/partner_terms.py
+from partner_terms import PTERMS, PTERMS_DATE
+pterms_url = SITE + "/partner/terms/"
+ptp = head("提携規約（ペットタクシー会社さま向け）｜ペットタクシー予約窓口", "ペットタクシー予約窓口と提携してくださるペットタクシー会社さま向けの規約です。問い合わせとお返事、予約の確定、手数料（予約が確定して送迎した分だけ）、個人情報、提携の終了などを定めています。", pterms_url, "") + f"""
+<main>
+<section class="area-hero"><div class="wrap"><h1>提携規約<small style="display:block;font-size:.95rem;color:var(--o-d)">ペットタクシー会社さま向け</small></h1><p class="lede">当サイトと提携してくださる会社さまとの約束です。お申し込みのあと、この規約をメールでお送りし、同意のお返事をいただいてから提携が始まります。</p></div></section>
+<section><div class="wrap prose terms">
+{''.join(f'<h2>{e(h)}</h2>' + ''.join(terms_block(v) for v in body) for h, body in PTERMS)}
+<p class="small">{PTERMS_DATE} 制定</p>
+<p><a href="/partner/">提携のご案内にもどる</a></p>
+</div></section>
+</main>
+""" + foot("/partner/#apply", band=False)
+ptp = ptp.replace('<div class="sticky"><a class="btn" href="/partner/#apply">空き状況と料金を問い合わせる（無料）</a></div>', '<div class="sticky"><a class="btn" href="/partner/#apply">提携を申し込む（無料）</a></div>')
+os.makedirs(os.path.join(ROOT, "partner", "terms"), exist_ok=True)
+open(os.path.join(ROOT, "partner", "terms", "index.html"), "w", encoding="utf-8").write(ptp)
+
 # お問い合わせ（/contact/）。送り先はトップのフォームと同じ受付の仕組み（kind=contact）
 gas = re.search(r'var GAS_URL = "([^"]+)"', open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()).group(1)
 contact_url = SITE + "/contact/"
@@ -601,19 +618,144 @@ open(os.path.join(ROOT, "contact", "index.html"), "w", encoding="utf-8").write(c
 partner_url = SITE + "/partner/"
 PREFS47 = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"]
 PAYS = ["現金", "クレジットカード", "電子マネー・QR決済", "請求書・振込"]
-pp = head("ペットタクシー会社の方へ 提携のご案内｜ペットタクシー予約窓口", "ペットタクシー会社さま向けの提携のご案内です。飼い主さんからの空き状況と料金のお問い合わせをメールでお届けします。お申し込みはこのページのフォームからどうぞ。", partner_url, "") + f"""
+# 手数料の書き方（Nori の決定しだいで直す。2026-11-01 案：成約時15%・開始まで無料）
+from partner_terms import FEE_RATE
+PT_CSS = """<style>
+.pt-sec{padding:56px 0}.pt-sec.alt{background:var(--cream)}
+.pt-sec h2{font-size:1.4rem;font-weight:800;text-align:center;margin-bottom:10px}
+.pt-sec .sub{color:var(--ink-2);text-align:center;max-width:640px;margin:0 auto 28px}
+.pt-hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.pt-hero-cta a{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:800;text-decoration:none;font-family:var(--round)}
+.pt-hero-cta .p{background:var(--o);color:#fff}.pt-hero-cta .s{background:#fff;color:var(--o-d);border:2px solid var(--o-l)}
+.pt-badges{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;padding:0;list-style:none}
+.pt-badges li{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:.88rem;font-weight:700}
+.pt-merits{display:grid;grid-template-columns:1fr;gap:14px;max-width:980px;margin:0 auto}
+.pt-merit{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow)}
+.pt-merit svg{width:44px;height:44px;display:block;margin-bottom:10px}
+.pt-merit h3{font-size:1.05rem;margin-bottom:6px}.pt-merit p{color:var(--ink-2);font-size:.94rem;margin:0}
+.pt-flow{list-style:none;margin:0 auto;padding:0;max-width:760px;counter-reset:f}
+.pt-flow li{position:relative;padding:0 0 26px 64px;counter-increment:f}
+.pt-flow li::before{content:counter(f);position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;background:var(--o);color:#fff;font-weight:800;font-family:var(--round);display:flex;align-items:center;justify-content:center;font-size:1.15rem}
+.pt-flow li::after{content:"";position:absolute;left:21px;top:48px;bottom:4px;width:2px;background:var(--o-l)}
+.pt-flow li:last-child::after{display:none}
+.pt-flow .who{display:inline-block;font-size:.74rem;font-weight:800;border-radius:6px;padding:1px 8px;margin-right:6px;vertical-align:2px}
+.who.c{background:#e8f3ff;color:#1b5fa8}.who.y{background:var(--o-l);color:var(--o-d)}.who.s{background:#eef7ee;color:#2f7d32}
+.pt-flow h3{font-size:1.05rem;display:inline}.pt-flow p{color:var(--ink-2);font-size:.94rem;margin:6px 0 0}
+.pt-flow .lock{display:inline-block;margin-top:8px;font-size:.84rem;background:#fff;border:1px dashed var(--ink-3);border-radius:10px;padding:4px 10px;color:var(--ink-2)}
+.pt-money{display:grid;grid-template-columns:1fr;gap:10px;max-width:760px;margin:0 auto;align-items:center;text-align:center}
+.pt-money .box{background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 10px;font-weight:800}
+.pt-money .box small{display:block;font-weight:400;color:var(--ink-2);font-size:.84rem}
+.pt-money .arw{color:var(--o-d);font-weight:800;font-size:.9rem;line-height:1.4}
+.pt-money .arw::after{content:"↓";display:block;font-size:1.3rem}
+.pt-fee{max-width:760px;margin:24px auto 0;background:#fff;border-radius:20px;border:2px solid var(--o-l);padding:22px}
+.pt-fee table{width:100%;border-collapse:collapse;font-size:.95rem}
+.pt-fee th,.pt-fee td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.pt-fee th{width:42%;font-weight:700}.pt-fee td b{color:var(--o-d);font-size:1.05rem}
+.pt-fee .ex{margin:14px 0 0;font-size:.92rem;color:var(--ink-2)}
+.pt-fee .now{margin:14px 0 0;background:var(--o-l);border-radius:12px;padding:10px 14px;font-size:.92rem}
+.pt-steps{display:grid;grid-template-columns:1fr;gap:12px;max-width:980px;margin:0 auto;counter-reset:s;list-style:none;padding:0}
+.pt-steps li{background:#fff;border-radius:18px;padding:18px;border:1px solid var(--line);counter-increment:s}
+.pt-steps li::before{content:"STEP " counter(s);display:block;font-size:.74rem;font-weight:800;letter-spacing:.12em;color:var(--o)}
+.pt-steps b{display:block;font-family:var(--round);font-size:1.02rem;margin:2px 0 4px}
+.pt-steps span{color:var(--ink-2);font-size:.92rem}
+.pt-need{max-width:760px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:12px}
+.pt-need div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.pt-need h3{font-size:1rem;margin-bottom:6px}.pt-need ul{margin:0;padding-left:1.2em;color:var(--ink-2);font-size:.93rem}
+.pt-faq{max-width:760px;margin:0 auto}
+.pt-faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:10px}
+.pt-faq summary{font-weight:700;cursor:pointer}.pt-faq details p{color:var(--ink-2);font-size:.94rem;margin:8px 0 0}
+@media (min-width:760px){.pt-merits{grid-template-columns:repeat(3,1fr)}.pt-steps{grid-template-columns:repeat(4,1fr)}.pt-need{grid-template-columns:1fr 1fr}
+ .pt-money{grid-template-columns:1fr auto 1fr auto 1fr}.pt-money .arw::after{content:"→"}.pt-sec h2{font-size:1.7rem}}
+</style>"""
+def _ic(path):  # メリットのアイコン（線の絵）
+    return '<svg viewBox="0 0 48 48" fill="none" stroke="#ff6a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#fff1e6" stroke="none"/>' + path + '</svg>'
+PT_MERITS = [
+ (_ic('<path d="M15 24h18M24 15v18"/><circle cx="24" cy="24" r="12"/>'), "はじめる費用は0円", "登録料・月額料金・掲載料はいただきません。お問い合わせを受け取るのも、お返事するのも無料です。"),
+ (_ic('<rect x="12" y="15" width="24" height="18" rx="3"/><path d="M12 18l12 8 12-8"/>'), "電話の対応はいりません", "お問い合わせはメールで届きます。リンクを開いて、お迎え時刻と確定料金（税込）を入れるだけでお返事できます。"),
+ (_ic('<path d="M14 16h20l-7 9v8l-6 3V25z"/>'), "条件に合うお問い合わせだけ", "お迎えの都道府県・営業時間・ペットの体重や頭数・ケージなど、会社さまの条件に合うときだけ候補に出ます。"),
+ (_ic('<path d="M16 32V20l8-5 8 5v12z"/><path d="M21 32v-6h6v6"/>'), "料金は会社さまが決めます", "サイトの料金は目安です。確定料金はいつも会社さまがお返事で決めます。当サイトが値引きをお願いすることはありません。"),
+ (_ic('<path d="M17 25l5 5 10-11"/>'), "受けられないときは返事不要", "空いていないときや条件が合わないときは、そのままにしておいてください。お断りのご連絡もいりません。"),
+ (_ic('<circle cx="19" cy="21" r="4"/><circle cx="29" cy="21" r="4"/><path d="M13 33c1-4 4-6 6-6s5 2 6 6M23 33c1-4 4-6 6-6s5 2 6 6"/>'), "決まってからつながる", "飼い主さんのお名前と連絡先は、予約が確定してからお伝えします。運賃のお支払いは、これまでどおり飼い主さんから会社さまへ直接です。"),
+]
+PT_FAQ = [
+ ("本当に電話は使わなくていいですか？", "はい。当サイトからのご連絡は、すべてメールです。予約が確定したあと、飼い主さんとの打ち合わせで会社さまが電話を使うのは自由です。"),
+ ("料金表は変えないといけませんか？", "いいえ。いまの料金表のままで大丈夫です。サイトでは会社さまの料金表から目安を計算し、「確定料金ではありません」と添えて表示します。確定料金は会社さまがお返事で決めます。"),
+ ("飼い主さんが何社にも問い合わせることはありますか？", "あります。飼い主さんは1社だけに問い合わせることも、条件に合う会社にまとめて問い合わせることもできます。何社かに問い合わせたときは、届いたお返事をくらべて飼い主さんが1社を選びます。選ばれなかったときは「締め切り」のお知らせをお送りします。"),
+ ("手数料はいつ、何にかかりますか？", f"予約が確定し、送迎をした1件だけにかかります。確定料金（税込）の{FEE_RATE}%を、月末にまとめてご請求する予定です。お問い合わせを受け取っただけ、お返事しただけ、選ばれなかったときには一切かかりません。いまは無料です。始める日は、30日前までにメールでお知らせします（くわしくは提携規約の第8条）。"),
+ ("キャンセルになったら手数料はどうなりますか？", "送迎をしなかったときは、手数料はいただきません。キャンセル料は会社さまのキャンセル規定のとおりで、キャンセル料に手数料をかけることはありません。"),
+ ("ほかの予約サイトや自社の予約と一緒に使えますか？", "はい。いまの予約の受け方はそのままで、当サイトのお問い合わせを一つの窓口として足していただくイメージです。"),
+ ("もう候補の一覧に名前が出ているのはなぜですか？", "当サイトでは、公式サイトに公開されている料金表と営業時間をもとに、各地の会社を候補として表示しています（問い合わせは送れない「準備中」の表示です）。載せ方の修正や、掲載をやめたいご希望は、お問い合わせからいつでもお知らせください。"),
+ ("やめたいときはどうすればいいですか？", "メールでお知らせいただければ、いつでも止められます。違約金などはありません。すでに確定している予約は、最後までお願いします。"),
+]
+PT_NEED = [
+ ("お申し込みでうかがうこと", ["会社名・屋号、ご担当者のお名前、メールアドレス", "お迎えできる都道府県・市区町村", "車の台数と種類、受けられる曜日・時間帯", "料金（料金ページのURLだけでも大丈夫です）", "お支払い方法（現金・カードなど）"]),
+ ("わかればうかがうこと", ["動物取扱業の登録番号", "お持ちの事業の許可・届出（旅客の許可、貨物軽自動車運送事業の届出など）", "飼い主さんが同乗できるか、何人までか", "加入している保険（対人・対物、ペットのケガ）", "キャンセル規定・当日の依頼の締め切り"]),
+]
+pt_merits = "".join(f'<div class="pt-merit">{ic}<h3>{e(t)}</h3><p>{e(d)}</p></div>' for ic, t, d in PT_MERITS)
+pt_faq = "".join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in PT_FAQ)
+pt_need = "".join(f'<div><h3>{e(h)}</h3><ul>' + "".join(f"<li>{e(x)}</li>" for x in xs) + '</ul></div>' for h, xs in PT_NEED)
+pt_ld = '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in PT_FAQ]}, ensure_ascii=False) + '</script>'
+pp = head("ペットタクシー会社の方へ 提携のご案内｜ペットタクシー予約窓口", "ペットタクシー会社さま向けの提携のご案内です。登録料・月額0円、電話対応なし。飼い主さんからの空き状況と料金のお問い合わせをメールでお届けし、予約が決まってからお名前と連絡先をお伝えします。", partner_url, pt_ld + PT_CSS) + f"""
 <main>
-<section class="area-hero"><div class="wrap"><h1>ペットタクシー会社の方へ<br>提携のご案内</h1><p class="lede">ペットタクシー予約窓口は、ペットの移動に困っている飼い主さんと、近くのペットタクシー会社をおつなぎしています。各地で、いっしょにお迎えしてくださる会社を探しています。</p></div></section>
-<section><div class="wrap" style="max-width:640px">
-<h2 style="font-size:1.2rem">お問い合わせが届く流れ</h2>
-<ol class="plist">
-  <li>飼い主さんがこのサイトで会社を選んで依頼すると、選ばれた会社さまへ、空き状況と料金のお問い合わせのメールが届きます。この段階では、飼い主さんのお名前と連絡先はお伝えしません。</li>
-  <li>受けられるときは、メールのリンクから確定の料金（一般道のとき・高速を使うとき）を入れて「引き受ける」を押してください。</li>
-  <li>会社さまは、空いていればお迎え時刻と確定料金（税込）を入れてお返事ください。飼い主さんがその内容を見て「この内容で予約する」を押した時点で予約が確定します（何社かに問い合わせたときは、くらべて1社を選びます）。選ばれなかったときはそのことをお知らせします。</li><li>決まると、飼い主さんのお名前と連絡先が届きます。そのあとのやり取りとお支払いは、会社さまと飼い主さんで直接お願いします。</li>
-  <li>受けられないときは、返信するか、そのままにしておいてください。</li>
+<section class="area-hero"><div class="wrap"><h1>ペットタクシー会社の方へ<br>提携のご案内</h1><p class="lede">ペットタクシー予約窓口は、ペットの移動に困っている飼い主さんと、近くのペットタクシー会社さまをおつなぎするサイトです。全国で、いっしょにペットと飼い主さんをお迎えしてくださる会社さまを探しています。</p>
+<ul class="pt-badges"><li>登録料・月額 0円</li><li>電話の対応なし</li><li>メールのリンクでお返事</li><li>料金は会社さまが決める</li></ul>
+<div class="pt-hero-cta"><a class="p" href="#apply">提携を申し込む</a><a class="s" href="#flow">しくみを見る</a></div></div></section>
+
+<section class="pt-sec"><div class="wrap">
+<h2>提携のメリット</h2><p class="sub">いまの営業のしかたはそのままに、メールで届くお問い合わせの窓口を一つ足していただくイメージです。</p>
+<div class="pt-merits">{pt_merits}</div>
+</div></section>
+
+<section class="pt-sec alt" id="flow"><div class="wrap">
+<h2>お問い合わせから予約までの流れ</h2><p class="sub">飼い主さんは、空き状況と確定料金を見てから予約を決めます。会社さまのお返事だけでは予約は決まりません。</p>
+<ol class="pt-flow">
+<li><span class="who c">飼い主さん</span><h3>候補から会社を選んで問い合わせ</h3><p>お迎えの場所・日時・ペットの情報を入れると、条件に合う会社さまが料金の目安と一緒に並びます。飼い主さんは1社だけ、または条件に合う会社にまとめて問い合わせます。</p></li>
+<li><span class="who s">当サイト</span><h3>会社さまへメールでお届け</h3><p>日時・お迎えの場所・行き先・同乗する人数・ペットの種類や体重・頭数・ケージの有無と、料金の目安をお届けします。</p><span class="lock">🔒 この段階では、飼い主さんのお名前と連絡先はお伝えしません</span></li>
+<li><span class="who y">会社さま</span><h3>空いていればお返事</h3><p>メールのリンクを開き、お迎え時刻と確定料金（税込・一般道のとき／高速を使うとき）を入れて送るだけです。受けられないときは、何もしなくて大丈夫です。</p></li>
+<li><span class="who c">飼い主さん</span><h3>内容を見て予約を確定</h3><p>飼い主さんが「この内容で予約する」を押した時点で予約が確定します。何社かに問い合わせたときは、くらべて1社を選びます。選ばれなかった会社さまには「締め切り」のお知らせが届きます。</p></li>
+<li><span class="who y">会社さま</span><h3>飼い主さんと直接やり取りして送迎</h3><p>確定すると、飼い主さんのお名前と連絡先をメールでお知らせします。そのあとの打ち合わせ・送迎・運賃のお受け取りは、会社さまと飼い主さんで直接お願いします。</p></li>
 </ol>
-<p style="color:var(--ink-2);font-size:.92rem">お電話の対応はいりません。メールが受け取れれば大丈夫です。費用や細かい条件は、お申し込みのあとメールでご案内します。</p>
-<h2 style="font-size:1.2rem;margin-top:36px">提携のお申し込み</h2>
+</div></section>
+
+<section class="pt-sec" id="fee"><div class="wrap">
+<h2>費用とお金の流れ</h2><p class="sub">当サイトが運賃をお預かりすることはありません。お金の流れはいまと同じです。</p>
+<div class="pt-money" role="img" aria-label="飼い主さんは運賃を会社さまへ直接支払い、会社さまは予約が確定した送迎の分だけ手数料を月末に当サイトへ支払います">
+<div class="box">飼い主さん<small>当サイトの利用は無料</small></div><div class="arw">運賃を<br>当日直接</div><div class="box">会社さま<small>これまでどおり受け取り</small></div><div class="arw">確定した分だけ<br>月末にまとめて</div><div class="box">当サイト<small>確定料金の{FEE_RATE}%</small></div>
+</div>
+<div class="pt-fee"><table>
+<tr><th>登録料・月額料金・掲載料</th><td><b>0円</b></td></tr>
+<tr><th>お問い合わせの受け取り・お返事</th><td><b>0円</b>（選ばれなかったときも0円）</td></tr>
+<tr><th>予約が確定し、送迎をしたとき</th><td>確定料金（税込）の<b>{FEE_RATE}%</b>を月末にまとめてご請求（予定）</td></tr>
+<tr><th>キャンセルで送迎しなかったとき</th><td><b>0円</b>（キャンセル料には手数料をかけません）</td></tr>
+</table>
+<p class="ex">例：確定料金 5,000円の送迎が1件あった月は、手数料 {5000*FEE_RATE//100:,}円です。</p>
+<p class="now">いまは準備中のため、手数料はいただいていません。始める日は、30日前までにメールでお知らせします。それより前に確定した予約にさかのぼってご請求することはありません。くわしくは<a href="/partner/terms/">提携規約</a>の第8条をご覧ください。</p>
+</div>
+</div></section>
+
+<section class="pt-sec alt"><div class="wrap">
+<h2>提携までの4ステップ</h2>
+<ol class="pt-steps">
+<li><b>このページから申し込む</b><span>下のフォームに、エリア・時間帯・料金などを入れて送ってください（5分ほど）。</span></li>
+<li><b>内容の確認</b><span>当サイトで公式サイトなどを拝見し、数日以内にメールでご連絡します。わからない点はメールでおたずねします。</span></li>
+<li><b>提携規約に同意</b><span>手数料やご請求のしかた、個人情報の扱いなどを定めた<a href="/partner/terms/">提携規約</a>をメールでお送りします。ご確認のうえ、同意のお返事をください。</span></li>
+<li><b>お問い合わせのお届け開始</b><span>候補の一覧で問い合わせできる状態になり、条件に合うお問い合わせがメールで届きはじめます。</span></li>
+</ol>
+</div></section>
+
+<section class="pt-sec"><div class="wrap">
+<h2>お申し込みでうかがうこと</h2><p class="sub">飼い主さんに安心してお選びいただくため、次のことをうかがいます。わからない項目は空けたままで大丈夫です。</p>
+<div class="pt-need">{pt_need}</div>
+</div></section>
+
+<section class="pt-sec alt"><div class="wrap">
+<h2>よくあるご質問</h2>
+<div class="pt-faq">{pt_faq}</div>
+<p class="sub" style="margin-top:18px">ほかにご不明な点は、<a href="/contact/">お問い合わせ</a>からお気軽にどうぞ（お返事はメールです）。</p>
+</div></section>
+
+<section class="pt-sec" id="apply"><div class="wrap" style="max-width:640px">
+<h2>提携のお申し込み</h2>
 <div class="form-card">
 <form id="partnerForm" novalidate>
   <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
@@ -628,9 +770,13 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
   <div class="f"><label for="p_emg">夜間や急ぎの依頼</label><select id="p_emg" data-k="夜間・急ぎ"><option>受けていない</option><option>夜間なら受けられる</option><option>当日の依頼も受けられる</option><option>24時間受けられる</option></select></div>
   <div class="f"><span class="lbl">お支払い方法</span><div class="checks" id="p_pays">{''.join(f'<label><input type="checkbox" value="{p}">{p}</label>' for p in PAYS)}</div></div>
   <div class="f"><label for="p_reg">動物取扱業の登録番号<span class="any">わかれば</span></label><input type="text" id="p_reg" data-k="動物取扱業の登録番号" autocomplete="off"></div>
+  <div class="f"><label for="p_lic">事業の許可・届出<span class="any">わかれば</span></label><select id="p_lic" data-k="事業の許可・届出"><option value="">選んでください</option><option>一般乗用旅客自動車運送事業の許可（緑ナンバー）</option><option>貨物軽自動車運送事業の届出（黒ナンバー）</option><option>両方</option><option>そのほか・わからない</option></select></div>
+  <div class="f"><label for="p_ride">飼い主さんの同乗<span class="any">わかれば</span></label><input type="text" id="p_ride" data-k="飼い主さんの同乗" placeholder="例：2人まで同乗できます"></div>
+  <div class="f"><label for="p_ins">加入している保険<span class="any">わかれば</span></label><input type="text" id="p_ins" data-k="保険" placeholder="例：対人・対物無制限、ペットのケガの補償あり"></div>
+  <div class="f"><label for="p_cxl">キャンセル規定<span class="any">わかれば</span></label><input type="text" id="p_cxl" data-k="キャンセル規定" placeholder="例：前日まで無料、当日は基本料金の50%。URLだけでも大丈夫です"></div>
   <div class="f"><label for="p_url">ホームページ<span class="any">あれば</span></label><input type="url" id="p_url" data-k="ホームページ" placeholder="https://"></div>
   <div class="f"><label for="p_msg">ほかに伝えたいこと<span class="any">あれば</span></label><textarea id="p_msg" data-k="そのほか" rows="4" maxlength="1000"></textarea></div>
-  <label class="agree"><input type="checkbox" id="p_agree" required><span><a href="/#privacy">個人情報の取り扱い</a>を確認し、同意します。</span></label>
+  <label class="agree"><input type="checkbox" id="p_agree" required><span><a href="/#privacy">個人情報の取り扱い</a>を確認し、同意します。提携の内容は<a href="/partner/terms/">提携規約</a>をご覧ください（同意は内容の確認のあと、メールでいただきます）。</span></label>
   <p id="p_err" role="alert" style="display:none;color:#c0392b;font-size:.88rem"></p>
   <button class="btn" type="submit">申し込む{ARROW}</button>
   <p class="form-foot">内容を確認して、数日以内にメールでご連絡します。</p>
@@ -675,6 +821,7 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 </script>
 """ + foot("/#form", band=False)
 os.makedirs(os.path.join(ROOT, "partner"), exist_ok=True)
+pp = pp.replace('<div class="sticky"><a class="btn" href="/#form">空き状況と料金を問い合わせる（無料）</a></div>', '<div class="sticky"><a class="btn" href="#apply">提携を申し込む（無料）</a></div>')
 open(os.path.join(ROOT, "partner", "index.html"), "w", encoding="utf-8").write(pp)
 
 # 緊急のときの連絡先（/emergency/）：トップの緊急タブと同じ tools/emergency.json から作る。県ごとの件数は数えない（近くの県の病院も入っているため）
@@ -1002,7 +1149,7 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
 """ % json.dumps(GAS))
 
 # sitemap / robots / 404
-urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url, pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url]
+urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url, pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url, pterms_url]
 guide_modified = {f'{SITE}/guide/{g["slug"]}/': g.get("modified", TODAY) for g in GUIDES}
 guide_modified[hub_url] = "2026-10-31"
 open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
