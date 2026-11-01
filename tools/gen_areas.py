@@ -62,8 +62,11 @@ booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG
 # 候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る
 _DISP = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))["companies"]
 booking_src = re.sub(r"/\*DISPLAY_COMPANIES\*/.*?/\*/DISPLAY_COMPANIES\*/", lambda m: "/*DISPLAY_COMPANIES*/var DISPLAY_COMPANIES = " + json.dumps(_DISP, ensure_ascii=False) + ";/*/DISPLAY_COMPANIES*/", booking_src, count=1, flags=re.S)
-_PPTS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8")).get("partner_points", {})
+_DCJ = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))
+_PPTS = _DCJ.get("partner_points", {})
+_PLIM = _DCJ.get("partner_limits", {})
 booking_src = re.sub(r"/\*PARTNER_POINTS\*/.*?/\*/PARTNER_POINTS\*/", lambda m: "/*PARTNER_POINTS*/var PARTNER_POINTS = " + json.dumps(_PPTS, ensure_ascii=False) + ";/*/PARTNER_POINTS*/", booking_src, count=1, flags=re.S)
+booking_src = re.sub(r"/\*PARTNER_LIMITS\*/.*?/\*/PARTNER_LIMITS\*/", lambda m: "/*PARTNER_LIMITS*/var PARTNER_LIMITS = " + json.dumps(_PLIM, ensure_ascii=False) + ";/*/PARTNER_LIMITS*/", booking_src, count=1, flags=re.S)
 open(booking_path, "w", encoding="utf-8").write(booking_src)
 
 src = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
@@ -793,8 +796,38 @@ def pref_hosp_html(pf):
     inside = [h for h in hs if not other_pref(h, pf)]
     lead = '' if inside else f'<p class="emg-sum">{e(pf)}の中で夜間に診てもらえる病院が見つからなかったため、近くの県の病院を載せています。</p>'
     return lead + ''.join(emg_hosp(h) for h in hs)
+
+# 県ごとのデータ（2026-11-01）：公式サイトの対応エリアにその県がある会社の数と、料金表から計算した運賃。会社名は出さない。
+PREF_AIRPORT = {"北海道": "新千歳空港", "宮城県": "仙台空港", "愛知県": "中部国際空港（セントレア）や県営名古屋空港", "大阪府": "伊丹空港（大阪国際空港）や関西国際空港",
+                "兵庫県": "神戸空港や伊丹空港", "広島県": "広島空港", "福岡県": "福岡空港や北九州空港", "沖縄県": "那覇空港"}
+def pref_data_html(pf, short):
+    key = pf if pf == "北海道" else pf[:-1]
+    cs = [x for x in _DISP if key in x.get("areas", [])]
+    fs = [x for x in cs if x.get("fare") and x["fare"].get("kind", "dist") == "dist" and x["fare"].get("base")]
+    out = f'<h2>{e(short)}のお迎えに対応しているペットタクシー</h2>'
+    if not cs:
+        out += f'<p>当サイトで公式サイトを確かめた会社の中には、対応エリアに{e(pf)}を書いている会社はまだありません（{FARES_CHECKED}時点）。お迎えの場所によっては、となりの県の会社が来られることもあるので、フォームでさがしてみてください。</p>'
+    else:
+        out += f'<p>当サイトで公式サイトを確かめた全国の会社のうち、対応エリアに{e(pf)}を書いている会社は<b>{len(cs)}社</b>でした（{FARES_CHECKED}時点。同じチェーンのお店は1社ずつ数えています）。対応エリアは「市内だけ」「県の一部だけ」の会社もあるので、お迎えの場所で来てもらえるかは、フォームでさがすと確かめられます。</p>'
+    if fs:
+        rows = ""
+        for km in (5, 10, 20):
+            v = sorted(_nat_ride(x["fare"], km) for x in fs)
+            mid = v[(len(v) - 1) // 2]
+            rows += (f'<tr><th>{km}km</th><td>{mid:,}円</td><td>{v[0]:,}〜{v[-1]:,}円</td></tr>' if len(v) >= 3 else
+                     f'<tr><th>{km}km</th><td colspan="2">' + "・".join(f"{x:,}円" for x in v) + '</td></tr>')
+        head = '<tr><th>乗った距離</th><th>まんなかの会社</th><th>安い会社〜高い会社</th></tr>' if len(fs) >= 3 else '<tr><th>乗った距離</th><th colspan="2">各社の運賃</th></tr>'
+        out += (f'<p>そのうち料金表をのせている{len(fs)}社の料金表で、乗った距離の運賃（片道）を計算すると次のとおりです。</p>'
+                f'<div class="tbl"><table><thead>{head}</thead><tbody>{rows}</tbody></table></div>'
+                '<p class="fare-flag"><b>確定料金ではありません。</b>お迎え料金・待ち時間・夜間や早朝の割増・高速代は入っていません。フォームにお迎えの場所と行き先を入れると、会社ごとにお迎え料金なども入れた目安が出ます。</p>')
+    if pf in PREF_AIRPORT:
+        out += f'<p>{e(PREF_AIRPORT[pf])}への送迎は、飛行機の預け入れの受付時間に合わせて、お迎えの時刻を決めておくことが大切です。<a href="/guide/airport-moving/">ペットと引っ越し・空港送迎</a>に、航空会社の決まりと準備をまとめています。</p>'
+    out += '<p>同乗できる人数、ペットだけの送迎、ワクチン、キャンセル料、夜間の割増は会社ごとに違います。<a href="/guide/choose/">ペットタクシーの選び方（全国の会社のルールをくらべました）</a>もあわせてご覧ください。</p>'
+    return out, len(cs)
+
 for slug, pf, short, cities in PREFS:
     url = f'{SITE}/area/{slug}/'
+    data_html, n_cos = pref_data_html(pf, short)
     has_fare = pf in PREF_FARES
     taxis = [t for t in EMG["taxis"] if pf in t["prefs"]]
     hs = EMG["hospitals"].get(pf, [])
@@ -802,13 +835,14 @@ for slug, pf, short, cities in PREFS:
     for h in hs:
         c = h["city"] if other_pref(h, pf) else re.sub(r"（.*?）", "", h["city"])
         if c not in hcities: hcities.append(c)
-    title = (f"{short}のペットタクシー｜料金の例・夜間の動物病院・ペットの緊急搬送" if has_fare else f"{short}のペットタクシーの探し方｜夜間の動物病院・ペットの緊急搬送") + "｜ペットタクシー予約窓口"
+    title = (f"{short}のペットタクシー｜対応する{n_cos}社の料金・夜間の動物病院・ペットの緊急搬送" if n_cos >= 3 else
+             f"{short}のペットタクシー｜料金の例・夜間の動物病院・ペットの緊急搬送" if has_fare else f"{short}のペットタクシーの探し方｜夜間の動物病院・ペットの緊急搬送") + "｜ペットタクシー予約窓口"
     dcities = []  # 説明文用：その県の中の病院の市（政令市の区はまとめる）
     for h in hs:
         if other_pref(h, pf): continue
         c = re.sub(r"^(.+?市).+区$", r"\1", re.sub(r"（.*?）", "", h["city"]))
         if c not in dcities: dcities.append(c)
-    desc = (f"{pf}（{'・'.join(cities[:3])}など）で犬・猫のペットタクシーを探す方へ。" + ("公式サイトに書かれた料金の例、" if has_fare else "料金の決まり方、") +
+    desc = (f"{pf}（{'・'.join(cities[:3])}など）で犬・猫のペットタクシーを探す方へ。" + (f"お迎えに対応する{n_cos}社と料金の例、" if n_cos >= 2 else ("公式サイトに書かれた料金の例、" if has_fare else "料金の決まり方、")) +
             "頼む前に確かめること、" + (f"夜間・救急の動物病院（{'・'.join(dcities[:2])}など）" if dcities else ("近くの県の夜間・救急の動物病院" if hs else "夜間・救急の動物病院")) + "とペットの緊急搬送の連絡先をまとめました。")
     ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
       {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
@@ -833,6 +867,8 @@ for slug, pf, short, cities in PREFS:
     <h2>{e(short)}のペットタクシーの料金{"の例" if has_fare else ""}</h2>
     {pref_fare_html(pf)}
     <p><a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・マイカーとの違い</a>では、料金のしくみをくわしく説明しています。キャリーに入る小さな子なら、<a href="/guide/taxi-with-pet/">ふつうのタクシーに乗れることもあります</a>。</p>
+
+    {data_html}
 
     <h2>ペットタクシーを頼む前に確かめること</h2>
     {checks}

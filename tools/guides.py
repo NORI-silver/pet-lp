@@ -71,7 +71,7 @@ dict(slug="what-is-pet-taxi",
 
 dict(slug="taxi-with-pet",
  title="ふつうのタクシーに犬・猫は乗れる？",
- seo_title="タクシーに犬・猫は乗れる？ペットを乗せるときの決まりと、断られやすい場合",
+ seo_title="タクシーに犬・猫は乗れる？犬連れ・ペット同乗の決まりと、ケージなしで断られやすい場合",
  desc="ふつうのタクシーに犬や猫を乗せられるかは、タクシー会社や運転手さんの判断になります。国の決まりで持ち込みが認められている「愛玩用の小動物」の考え方、キャリーやケージがないとき・大型犬のときの考え方、ペットタクシーとの違いをまとめました。",
  lede="「犬を連れてタクシーに乗りたいけれど、断られないかな」。そんなときに知っておきたいことをまとめました。",
  img="what-is-pet-taxi.jpg", img_alt="ペットタクシーの後部座席でキャリーに入って休む犬と、そばに座る飼い主",
@@ -446,7 +446,7 @@ dict(slug="discharge-transfer",
 
 dict(slug="grooming-hotel",
  title="トリミング・ペットホテルの送り迎え",
- seo_title="トリミングサロン・ペットホテルの送迎に｜毎月の送り迎えや旅行前の預け入れをペットタクシーで",
+ seo_title="トリミング・ペットホテルの送迎に｜送迎ありのお店が近くにないときはペットタクシーで（ペットだけの送迎も）",
  desc="毎月のトリミング、旅行や出張の前のペットホテル。お店まで連れて行く時間がとれないときに、ペットタクシーで送り迎えを頼む方法と、頼むときに伝えたいことをまとめました。",
  lede="いつものお店へ、いつもの時間に。家族が付きそえない日でも、送り迎えをお願いできます。",
  img="grooming-hotel.jpg", img_alt="お店の前で、リードをつけたトイ・プードルが車の後部座席に乗り込もうとしている様子",
@@ -659,6 +659,14 @@ dict(slug="fare",
           ("大阪府「府内のタクシー運賃について」", "https://www.pref.osaka.lg.jp/o090020/chiikifukushi/yuso/applicant5.html")],
  related=["what-is-pet-taxi", "taxi-with-pet", "hospital"]),
 ]
+
+# 全国の会社のルールを数えたデータ記事と、今ある記事に足す節（tools/guides_data.py）。
+from guides_data import DATA_GUIDES, EXTRA_SECTIONS
+GUIDES.extend(DATA_GUIDES)
+for guide in GUIDES:
+    if guide["slug"] in EXTRA_SECTIONS:
+        guide["sections"].extend(EXTRA_SECTIONS[guide["slug"]])
+        guide["modified"] = "2026-11-01"
 
 # 施設別の記事も同じ生成・出典管理の対象にする。
 from facility_guides import FACILITY_GUIDES

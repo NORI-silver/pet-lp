@@ -493,6 +493,7 @@ footer a{color:var(--ink-2)}
 #partnerRest{margin-top:14px}
 .partner-points{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0}
 .partner-points li{font-size:.72rem;background:#eef6ee;color:#2f5d34;border-radius:999px;padding:2px 8px;line-height:1.5}
+.partner-points li.lim{background:#f1f0ee;color:#55504a}
 .req-mode{background:var(--cream);border-radius:14px;padding:10px 12px;margin:8px 0 4px;font-size:.84rem}
 .req-mode[hidden]{display:none}
 .req-mode-h{font-weight:700;margin:0 0 4px}
@@ -911,6 +912,8 @@ footer a{color:var(--ink-2)}
     <h2>鳥取のペットタクシーの料金</h2>
     <p>鳥取県のペットタクシーの料金は、当サイトではまだ確かめられていません。料金は会社ごとに決まっていて、多くは乗る距離で計算します。そのほかに、お迎え料金や待ち時間の料金、夜間・早朝の割増がかかることがあります。頼む前に、どこまでが基本料金に入っているかを確かめてください。</p>
     <p><a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・マイカーとの違い</a>では、料金のしくみをくわしく説明しています。キャリーに入る小さな子なら、<a href="/guide/taxi-with-pet/">ふつうのタクシーに乗れることもあります</a>。</p>
+
+    <h2>鳥取のお迎えに対応しているペットタクシー</h2><p>当サイトで公式サイトを確かめた会社の中には、対応エリアに鳥取県を書いている会社はまだありません（2026年10月30日時点）。お迎えの場所によっては、となりの県の会社が来られることもあるので、フォームでさがしてみてください。</p><p>同乗できる人数、ペットだけの送迎、ワクチン、キャンセル料、夜間の割増は会社ごとに違います。<a href="/guide/choose/">ペットタクシーの選び方（全国の会社のルールをくらべました）</a>もあわせてご覧ください。</p>
 
     <h2>ペットタクシーを頼む前に確かめること</h2>
     <h3>お迎えに来てもらえる場所か</h3><p>会社ごとに対応する地域が決まっていて、地域の外はお迎え料金が増えたり、受けてもらえなかったりします。 <a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・レンタカー・カーシェアとの違い</a></p><h3>料金の決まり方</h3><p>乗る距離の料金のほかに、お迎え料金・待ち時間の料金・夜間や早朝の割増・高速代がかかることがあります。どこまでが基本料金に入っているかは会社ごとに違います。 <a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・レンタカー・カーシェアとの違い</a></p><h3>ケージやキャリー</h3><p>持っていくのか、借りられるのか、なしでも乗れるのか。猫はキャリーに入れて乗るのが基本です。 <a href="/guide/cat/">猫の移動をやさしく。キャリーの慣らし方と車での過ごし方</a></p><h3>大きさと頭数</h3><p>大型犬や多頭のときは、車の広さやスロープの有無を前もって伝えておくと安心です。 <a href="/guide/large-dog/">大型犬の移動に、ペットタクシーという選択</a></p><h3>飼い主さんが一緒に乗るか</h3><p>ペットだけの送迎を受けるかどうかは会社によって違います。 <a href="/guide/hospital/">動物病院への通院にペットタクシーを</a></p><h3>支払い方法とキャンセル</h3><p>現金だけの会社もあります。払うのが乗る前か降りるときか、キャンセル料がいつからかかるかも確かめましょう。 <a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・レンタカー・カーシェアとの違い</a></p>
@@ -1576,9 +1579,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         open.addEventListener("click", function(){ toggleReviews(card.id, panel, open); });
       } // 点数が取れないときは何も出さない（外部の口コミページへは飛ばさない。Nori 2026-10-31）
       // アピールポイント（公式サイトに書いてあることだけ。Nori 2026-10-31）
-      if (card.points && card.points.length) {
-        var pts = document.createElement("ul"); pts.className = "partner-points"; pts.setAttribute("aria-label", "公式サイトに書いてある特長");
-        card.points.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; pts.appendChild(li); });
+      // 条件のタグ（同乗の人数・頭数・お支払いの決まり。灰色。Nori 2026-11-01）
+      if ((card.points && card.points.length) || (card.limits && card.limits.length)) {
+        var pts = document.createElement("ul"); pts.className = "partner-points"; pts.setAttribute("aria-label", "公式サイトに書いてある特長と条件");
+        (card.points || []).forEach(function(x){ var li = document.createElement("li"); li.textContent = x; pts.appendChild(li); });
+        (card.limits || []).forEach(function(x){ var li = document.createElement("li"); li.className = "lim"; li.textContent = x; pts.appendChild(li); });
         article.appendChild(pts);
       }
       // 料金（概算見積もり）。口コミと料金のほかの詳しい情報は、最初はたたんでおく（Nori 2026-10-31）
