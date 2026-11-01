@@ -1109,7 +1109,9 @@ function purgeOldPersonal_() {
   var n = purgeSheet_(sheet_(SHEET_REQ), PERSONAL_REQ_COLS, now, days) + purgeSheet_(sheet_('問い合わせ'), PERSONAL_CONTACT_COLS, now, days);
   // 運営者あての通知（送信済み・受信箱とも）と、お客さまあてのメールの控えも、同じ期間をこえたらごみ箱へ（30日で消える）。トリガーは pettaxi のアカウントで動かす（ほかのアカウントで動かすとそのアカウントのメールが対象になる）
   var q = ['subject:"[運営]" older_than:' + days + 'd', 'in:sent subject:"【' + CONFIG.SERVICE_NAME + '】" older_than:' + days + 'd'];
-  q.forEach(function (s) { try { var th = GmailApp.search(s, 0, 100); if (th.length) GmailApp.moveThreadsToTrash(th); n += th.length; } catch (e) {} });
+  // 検索は記号を無視して広く当たるので、件名がこのしくみのメールの形で始まるスレッドだけにしぼる（「サイト運営について」など他人のメールは消さない）
+  var mine = function (t) { var sub = String(t.getFirstMessageSubject() || ''); return sub.indexOf('[運営] ') === 0 || sub.indexOf('【' + CONFIG.SERVICE_NAME + '】') === 0; };
+  q.forEach(function (s) { try { var th = GmailApp.search(s, 0, 100).filter(mine); if (th.length) GmailApp.moveThreadsToTrash(th); n += th.length; } catch (e) {} });
   if (n) log_('古い個人情報を消しました：' + n + '件');
 }
 
