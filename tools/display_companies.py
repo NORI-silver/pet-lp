@@ -283,6 +283,38 @@ def points(f):
         if re.search(ok, t) and not (ng and re.search(ng, t)) and label not in out: out.append(label)
     if '渋滞でも追加料金なし' in out and '追加料金なし' in out: out.remove('追加料金なし')  # 同じことを2つ出さない
     return out[:4]
+# 条件のタグ（Nori 2026-11-01「大型犬2頭までOKとか、多頭OKとか、逆に飼い主様1人まで、2人までとか、現金のみとか、そういうのも入れていって」）
+# 良いことに限らず、乗れる人数・頭数・お支払いの決まりを短く書く。公式サイトの文（by=site／reply）から数字を拾うだけ。最大3つ。カードでは灰色で出す
+Z2H = str.maketrans('０１２３４５６７８９～〜', '0123456789~~')
+def _t(f, key):
+    v = f.get(key) or {}
+    if v.get('by') not in ('site', 'reply') or v.get('vague'): return ''
+    return str(v.get('v') or '').translate(Z2H)
+def limits(f):
+    out = []
+    # 大型犬の頭数
+    lg, pe = _t(f, 'large'), _t(f, 'pets')
+    m = re.search(r'大型犬[^。]*?(\d)頭(には)?対応していない', lg)
+    if m and m.group(1) != '1': out.append('大型犬は%d頭まで' % (int(m.group(1)) - 1))
+    elif '食い違い' not in lg:
+        ms = re.findall(r'大型犬[^。（]*?(\d)\s*(?:頭|匹)(まで)?', lg + '。' + pe)
+        if ms:
+            n, upto = max(ms, key=lambda x: int(x[0]))
+            out.append('大型犬%s頭%s' % (n, 'まで' if upto else 'OK'))
+    # 頭数
+    m = re.search(r'(\d)\s*~\s*(\d)\s*頭', pe)
+    if m: out.append('%s〜%s頭OK' % (m.group(1), m.group(2)))
+    elif re.search(r'(\d)\s*頭(でも|を一度に)', pe): out.append('%s頭OK' % re.search(r'(\d)\s*頭(でも|を一度に)', pe).group(1))
+    elif re.search(r'何頭でも|頭数(に関係なく|による追加料金はありません)|複数でも追加料金|多頭飼いも追加料金なし|匹数[^。]*関係なく', pe): out.append('頭数で料金は変わらない')
+    # 同乗の人数
+    r = _t(f, 'riders')
+    ns = [int(x) for x in re.findall(r'(\d)\s*(?:名|人)(?:様)?(?:まで|迄)', r) + re.findall(r'定員\s*(\d)\s*名', r) + re.findall(r'(\d)\s*名様?まで', r)]
+    if ns: out.append('同乗は%d人まで' % max(ns))
+    # お支払い
+    py = _t(f, 'pay')
+    if re.search(r'現金(のみ|にて|で)', py) and not re.search(r'クレジット|カード|クレカ|PayPay|paypay|QR|電子|振込|振り込み', py): out.append('現金のみ')
+    elif re.search(r'クレジットカードの取り扱いは致しておりません', py): out.append('カード払い不可')
+    return out[:3]
 PARTNER_SAME = {'P002': 'Dbcb8b8d', 'P003': 'Da968571'}  # 提携先シートの会社と、事業者マスターの同じ会社
 
 def main(master, comp, tariffs=None, facts_path=None):
@@ -302,12 +334,17 @@ def main(master, comp, tariffs=None, facts_path=None):
         row.update(schedule(c, m['id']))
         row['animals'] = animals(dict(facts.get(m['id'], {}), _id=m['id']))
         pts = points(facts.get(m['id'], {}))
+        lim = limits(facts.get(m['id'], {}))
+        if lim: row['limits'] = lim
+        if any(x.startswith('大型犬') for x in lim): pts = [x for x in pts if x != '大型犬OK']  # 頭数つきのほうを出す
+        if any('頭' in x and not x.startswith('大型犬') for x in lim): pts = [x for x in pts if x != '多頭OK']
         if pts: row['points'] = pts
         assert not re.search(r'\d{2,4}-\d{2,4}-\d{3,4}|@', json.dumps(row, ensure_ascii=False)), row  # 電話番号・メールは入れない
         out.append(row)
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'display_companies.json')
     json.dump({'_説明': '予約の候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る。出すかどうかは booking/Code.gs の CONFIG.SHOW_ALL_CANDIDATES', 'companies': out,
-               'partner_points': {pid: points(facts.get(did, {})) for pid, did in PARTNER_SAME.items() if points(facts.get(did, {}))}},
+               'partner_points': {pid: points(facts.get(did, {})) for pid, did in PARTNER_SAME.items() if points(facts.get(did, {}))},
+               'partner_limits': {pid: limits(facts.get(did, {})) for pid, did in PARTNER_SAME.items() if limits(facts.get(did, {}))}},
               open(path, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(len(out), '社', '料金つき', sum(1 for r in out if r['fare']), {p: sum(p in r['areas'] for r in out) for p in PREF47 if any(p in r['areas'] for r in out)})
     print('犬・猫のほか', {k: sum(r['animals']['all'] or k in r['animals']['ok'] for r in out) for k in KINDS}, '犬・猫のみ', sum(r['animals']['only'] for r in out))
