@@ -189,6 +189,7 @@ p{margin:0 0 1em}
 .f{margin-bottom:18px}
 .f>label,.f>.lbl{display:block;font-weight:700;font-size:.9rem;margin-bottom:8px}
 .f .any{font-weight:500;font-size:.76rem;color:var(--ink-3);margin-left:6px}
+.need{display:inline-block;vertical-align:2px;font-weight:700;font-size:.68rem;line-height:1;padding:3px 6px;border-radius:6px;background:var(--o);color:#fff;margin-left:6px;letter-spacing:.04em}
 input[type=text],input[type=tel],input[type=email],input[type=number],input[type=date],select,textarea{width:100%;font:inherit;font-size:16px;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;background:#fbfaf9;color:var(--ink);transition:border-color .15s,background .15s;-webkit-appearance:none;appearance:none;min-height:52px}
 select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235b5650' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
 textarea{min-height:110px;resize:vertical}
@@ -782,29 +783,29 @@ footer a{color:var(--ink-2)}
         </div>
         <div class="group">
           <div class="group-h"><span>2</span>いつ、どこへ行きますか？</div>
-          <div class="f"><label for="pref">お迎えの都道府県</label>
+          <div class="f"><label for="pref">お迎えの都道府県<span class="need">必須</span></label>
             <select id="pref" name="pref" required><option value="">選んでください</option><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option><option>茨城県</option><option selected>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option><option>東京都</option><option>神奈川県</option><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option></select>
             <p class="pref-fix" id="prefFix" role="status" hidden></p></div>
-          <div class="f"><label for="pickup">お迎えの場所</label>
+          <div class="f"><label for="pickup">お迎えの場所<span class="need">必須</span></label>
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button>
             <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
             <p class="geo-msg" id="geoMsg" aria-live="polite"></p></div>
           <div class="f"><span class="lbl">経由地<span class="any">任意</span></span>
             <div class="seg"><label><input type="radio" name="via_on" value="なし" checked><span>なし</span></label><label><input type="radio" name="via_on" value="あり"><span>あり（途中で寄る）</span></label></div>
             <div class="via-box" id="viaBox" hidden><input type="text" id="via" autocomplete="off" name="via" placeholder="例：〇〇トリミングサロン（渋谷区）" aria-label="経由地"></div></div>
-          <div class="f"><label for="dropoff">行き先</label>
+          <div class="f"><label for="dropoff">行き先<span class="need">必須</span></label>
             <input type="text" id="dropoff" autocomplete="off" name="dropoff" placeholder="例：代々木公園／〇〇動物病院（目黒区）" required>
             <button type="button" class="hist-clear" id="histClear" hidden>この端末に残っている場所の候補を消す</button></div>
-          <div class="f"><label for="date">お迎えの希望日時</label>
+          <div class="f"><label for="date">お迎えの希望日時<span class="need">必須</span></label>
             <div class="dt">
               <input type="date" id="date" name="date" required aria-label="日付">
               <select id="hour" name="hour" required aria-label="時"><option value="">時</option><option value="00">0時</option><option value="01">1時</option><option value="02">2時</option><option value="03">3時</option><option value="04">4時</option><option value="05">5時</option><option value="06">6時</option><option value="07">7時</option><option value="08">8時</option><option value="09">9時</option><option value="10">10時</option><option value="11">11時</option><option value="12">12時</option><option value="13">13時</option><option value="14">14時</option><option value="15">15時</option><option value="16">16時</option><option value="17">17時</option><option value="18">18時</option><option value="19">19時</option><option value="20">20時</option><option value="21">21時</option><option value="22">22時</option><option value="23">23時</option></select>
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
           <p class="note">当日の依頼もできます（空いていて間に合う会社だけ候補に出ます）。会社にメールで確認するため、お迎えの時刻は、いまから3時間以上あとで選んでください。</p>
-          <div class="f"><span class="lbl">片道・往復</span>
+          <div class="f"><span class="lbl">片道・往復<span class="need">必須</span></span>
             <div class="seg"><label><input type="radio" name="trip" value="片道" required><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復</span></label></div>
-            <div class="via-box" id="retBox" hidden><label for="retDate" class="lbl">帰りのお迎え日時（用事が終わる時刻）</label>
+            <div class="via-box" id="retBox" hidden><label for="retDate" class="lbl">帰りのお迎え日時（用事が終わる時刻）<span class="need">必須</span></label>
               <div class="dt">
                 <input type="date" id="retDate" name="ret_date" aria-label="帰りの日付">
                 <select id="retHour" name="ret_hour" aria-label="帰りの時"></select>
@@ -814,9 +815,9 @@ footer a{color:var(--ink-2)}
               <p class="note">待っていてもらうか、あらためて迎えに来てもらうかは、安くなるほうを引き受けた会社がご案内します。</p>
               <label class="chk"><input type="checkbox" id="retOther" name="ret_other" value="1"> 帰りの場所を変える</label>
               <div id="retPlaces" hidden>
-                <label for="retPickup" class="lbl">帰りのお迎えの場所</label>
+                <label for="retPickup" class="lbl">帰りのお迎えの場所<span class="need">必須</span></label>
                 <input type="text" id="retPickup" autocomplete="off" name="ret_pickup" placeholder="例：〇〇動物病院（目黒区）">
-                <label for="retDropoff" class="lbl">帰りの行き先</label>
+                <label for="retDropoff" class="lbl">帰りの行き先<span class="need">必須</span></label>
                 <input type="text" id="retDropoff" autocomplete="off" name="ret_dropoff" placeholder="例：〇〇ペットホテル（目黒区）">
               </div></div></div>
           <div class="est" id="est" hidden aria-live="polite"></div>
@@ -824,19 +825,19 @@ footer a{color:var(--ink-2)}
 
         <div class="group">
           <div class="group-h"><span>3</span>どんな子ですか？</div>
-          <div class="f"><label for="petCount">一緒に乗る子の数</label>
+          <div class="f"><label for="petCount">一緒に乗る子の数<span class="need">必須</span></label>
             <select id="petCount" required><option value="">選んでください</option><option value="1">1匹</option><option value="2">2匹</option><option value="3">3匹</option><option value="4">4匹</option><option value="5">5匹</option></select></div>
           <p class="pet-hint" id="petHint">頭数を選ぶと、1匹ずつの入力欄が出ます。</p>
           <div id="pets"></div>
           <label class="chk"><input type="checkbox" id="petOnly" name="pet_only" value="1"> ペットだけで乗る（飼い主さんは乗らない）</label>
           <div class="only-box" id="onlyBox" hidden>
             <p class="small" style="margin:0 0 6px">ペットだけの送迎を受けるかは会社によって違います。会社が引き受けたら、決まったメールでお知らせします。</p>
-            <div class="f"><label for="handFrom">お迎えでペットを渡す人</label><input type="text" id="handFrom" name="hand_from" maxlength="100" placeholder="例：家族（母）・ペットホテルの受付"></div>
-            <div class="f"><label for="handTo">行き先で受け取る人</label><input type="text" id="handTo" name="hand_to" maxlength="100" placeholder="例：動物病院の受付・祖父"></div>
+            <div class="f"><label for="handFrom">お迎えでペットを渡す人<span class="need">必須</span></label><input type="text" id="handFrom" name="hand_from" maxlength="100" placeholder="例：家族（母）・ペットホテルの受付"></div>
+            <div class="f"><label for="handTo">行き先で受け取る人<span class="need">必須</span></label><input type="text" id="handTo" name="hand_to" maxlength="100" placeholder="例：動物病院の受付・祖父"></div>
           </div>
-          <div class="f" id="ridersF"><label for="riders">一緒に乗る人数</label>
+          <div class="f" id="ridersF"><label for="riders">一緒に乗る人数<span class="need">必須</span></label>
             <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option>1人</option><option>2人</option><option>3人</option></select></div>
-          <div class="f"><label for="luggage">荷物の量</label>
+          <div class="f"><label for="luggage">荷物の量<span class="need">必須</span></label>
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
@@ -872,13 +873,13 @@ footer a{color:var(--ink-2)}
 
         <div class="group">
           <div class="group-h"><span>4</span>ご連絡先</div>
-          <div class="f"><label for="name">お名前</label>
+          <div class="f"><label for="name">お名前<span class="need">必須</span></label>
             <input type="text" id="name" name="name" placeholder="例：山田 花子" required autocomplete="name"></div>
           <div class="two">
-            <div class="f"><label for="email">メールアドレス</label>
+            <div class="f"><label for="email">メールアドレス<span class="need">必須</span></label>
               <input type="email" id="email" name="email" placeholder="例：hanako@example.com" required autocomplete="email">
               <span class="note">ご連絡はすべてこちらのメールにお送りします。</span></div>
-            <div class="f"><label for="tel">電話番号</label>
+            <div class="f"><label for="tel">電話番号<span class="need">必須</span></label>
               <input type="tel" id="tel" name="tel" placeholder="例：09012345678" required autocomplete="tel" inputmode="tel">
               <span class="note">当日、ドライバーがお迎えの連絡に使います。</span></div>
           </div>
@@ -886,7 +887,7 @@ footer a{color:var(--ink-2)}
             <textarea id="notes" name="notes" placeholder="例：急ぎです／病院で1時間待っててほしい／大きな声で鳴くことがあります"></textarea></div>
         </div>
 
-        <label class="agree"><input type="checkbox" id="agree" required><span>「<a href="/terms/" target="_blank">利用規約</a>」とページ下の「キャンセルについて」「ご利用にあたって」「<a href="#privacy">個人情報の取り扱い</a>」を確認し、同意します。</span></label>
+        <label class="agree"><input type="checkbox" id="agree" required><span><span class="need" style="margin:0 6px 0 0">必須</span>「<a href="/terms/" target="_blank">利用規約</a>」とページ下の「キャンセルについて」「ご利用にあたって」「<a href="#privacy">個人情報の取り扱い</a>」を確認し、同意します。</span></label>
         <p id="err" role="alert"></p>
         <button class="btn" id="sendSelected" type="submit" hidden>選んだ事業者に予約を依頼する</button>
       </form>
@@ -1321,7 +1322,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var lb = el.labels && el.labels[0] && !el.labels[0].contains(el) ? el.labels[0] : null, f = el.closest(".f");
     if (!lb && f) lb = f.querySelector("label[for], .lbl");
     var t = lb ? lb.cloneNode(true) : null;
-    if (t) t.querySelectorAll(".any").forEach(function(x){ x.remove(); });
+    if (t) t.querySelectorAll(".any, .need").forEach(function(x){ x.remove(); });
     var name = (t ? t.textContent : el.getAttribute("aria-label") || "").trim();
     var pet = el.closest(".pet"), many = petsBox.querySelectorAll(".pet").length > 1;
     return pet && many ? pet.querySelector(".pet-h b").textContent + "の" + name : name;
@@ -1805,21 +1806,21 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     el.dataset.key = k;
     el.innerHTML =
       '<div class="pet-h"><b></b></div>' +
-      '<div class="f"><span class="lbl">種類</span>' + seg(k + "_species", [["犬","わんちゃん"],["猫","ねこちゃん"],["その他","そのほかの動物"]], true) +
-        '<div class="kind-box" hidden><label for="' + k + '_kind" class="lbl" style="margin-top:10px;font-weight:700">どんな動物ですか？</label><select id="' + k + '_kind" name="' + k + '_kind"><option value="">選んでください</option>' +
+      '<div class="f"><span class="lbl">種類<span class="need">必須</span></span>' + seg(k + "_species", [["犬","わんちゃん"],["猫","ねこちゃん"],["その他","そのほかの動物"]], true) +
+        '<div class="kind-box" hidden><label for="' + k + '_kind" class="lbl" style="margin-top:10px;font-weight:700">どんな動物ですか？<span class="need">必須</span></label><select id="' + k + '_kind" name="' + k + '_kind"><option value="">選んでください</option>' +
         KINDS.map(function(o){ return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('') + '</select>' +
         '<p style="margin:6px 0 0;font-size:.8rem;color:var(--ink-3)">乗せられる動物は会社ごとに違います。乗せられると公式サイトに書いてある会社を先に出します。</p></div></div>' +
       '<div class="two">' +
         '<div class="f"><label for="' + k + '_breed"><span class="breed-lbl">犬種・猫種</span><span class="any">わかれば</span></label><div class="cb"><input type="text" id="' + k + '_breed" name="' + k + '_breed" class="breed" placeholder="選ぶか、入力してしぼりこみ" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><ul class="cb-list" role="listbox" hidden></ul></div></div>' +
-        '<div class="f"><label for="' + k + '_weight">体重（kg）</label><input type="number" id="' + k + '_weight" name="' + k + '_weight" min="0.01" max="120" step="any" inputmode="decimal" placeholder="例：8（小さな子は 0.3 など）" required></div>' +
+        '<div class="f"><label for="' + k + '_weight">体重（kg）<span class="need">必須</span></label><input type="number" id="' + k + '_weight" name="' + k + '_weight" min="0.01" max="120" step="any" inputmode="decimal" placeholder="例：8（小さな子は 0.3 など）" required></div>' +
         '<div class="f"><label for="' + k + '_age">年齢<span class="any">わかれば</span></label><input type="number" id="' + k + '_age" name="' + k + '_age" min="0" max="40" inputmode="numeric" placeholder="例：12"></div>' +
         '<div class="f"><span class="lbl">性別<span class="any">わかれば</span></span>' + seg(k + "_sex", [["オス","男の子"],["メス","女の子"]], false) + '</div>' +
       '</div>' +
-      '<div class="f"><span class="lbl">ケージ・キャリー</span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true) + '</div>' +
+      '<div class="f"><span class="lbl">ケージ・キャリー<span class="need">必須</span></span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true) + '</div>' +
       '<div class="f"><span class="lbl">予防接種<span class="any">済んでいるものにチェック</span></span><div class="chks">' +
         '<label class="chk"><input type="checkbox" name="' + k + '_vac" value="1"> 混合ワクチン</label>' +
         '<label class="chk rabies"><input type="checkbox" name="' + k + '_rabies" value="1"> 狂犬病の予防注射</label></div></div>' +
-      '<div class="f"><span class="lbl">介護は必要ですか？</span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true) +
+      '<div class="f"><span class="lbl">介護は必要ですか？<span class="need">必須</span></span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true) +
         '<div class="care-box" hidden><span class="lbl">どんな手助けが必要ですか？<span class="any">あてはまるものすべて</span></span><div class="chks">' +
         CARE_OPTS.map(function(c){ return '<label class="chk"><input type="checkbox" name="' + k + '_care_need" value="' + c + '"> ' + c + '</label>'; }).join('') + '</div>' +
         '<label for="' + k + '_care_note" class="lbl" style="margin-top:6px">くわしいこと<span class="any">わかれば</span></label><input type="text" id="' + k + '_care_note" name="' + k + '_care_note" maxlength="200" placeholder="例：後ろ足が立たない。3階でエレベーターなし"></div></div>';
