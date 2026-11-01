@@ -9,7 +9,7 @@ from html.parser import HTMLParser
 ROOT = sys.argv[1] if len(sys.argv) > 1 else "."
 SITE = "https://pet.shiokonbu.com"
 # 画面に出してはいけない言葉（AGENTS.md）。「Google Maps」は口コミ・候補の出どころ表示として例外。
-BAN = ["Gmail", "スプレッドシート", "Apps Script", "まるっと", "代理予約", "空いている車をさがす", "空いている車をお探し"]
+BAN = ["Gmail", "スプレッドシート", "Apps Script", "まるっと", "代理予約", "取り次", "お取次", "手配サービス", "お客さまに代わって", "空いている車をさがす", "空いている車をお探し"]
 TEL_OK = ("emergency/", "area/")  # 緊急の搬送会社の電話だけ例外（tools/emergency.json の tel）
 PHONE = re.compile(r"0\d{1,4}-\d{1,4}-\d{3,4}|0120-?\d{3}-?\d{3}")
 
