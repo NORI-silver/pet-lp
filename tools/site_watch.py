@@ -38,12 +38,34 @@ def fetch(url):
     t = raw.decode(cs, 'replace')
     t = re.sub(r'(?s)<!--.*?-->', ' ', t)
     vis = re.sub(r'(?is)<(script|style|noscript)[^>]*>.*?</\1>', ' ', t)
+    global CHUNKS
+    # 近い文をさがすための、ページの文のかたまり（タグや改行で区切ったもの）
+    CHUNKS = [c for c in (norm(html.unescape(x)) for x in re.split(r'<[^>]+>|\n', vis)) if len(c) >= 4]
     vis = norm(html.unescape(re.sub(r'<[^>]+>', ' ', vis)))
     # 画面を後から作るページ（Wix など）は、本文が script の中のデータに入っているので、そこも見る
     data = ' '.join(re.findall(r'(?is)<script[^>]*>(.*?)</script>', t))
     data = re.sub(r'\\u([0-9a-fA-F]{4})', lambda m: chr(int(m.group(1), 16)), data)
     data = norm(html.unescape(re.sub(r'<[^>]+>', ' ', data.replace('\\n', ' ').replace('\\/', '/'))))
     return vis, data
+
+CHUNKS = []
+
+def nearest(q):
+    # データベースの文にいちばん近いページの文（となりの2つまでつなげて見る）。直すときの参考に Issue に出す
+    q = norm(q)
+    qg = {q[i:i + 2] for i in range(len(q) - 1)}
+    if not qg: return ''
+    best, score = '', 0.0
+    for i in range(len(CHUNKS)):
+        for j in range(i + 1, min(i + 4, len(CHUNKS) + 1)):
+            c = ''.join(CHUNKS[i:j])
+            if len(c) > 200: break
+            cg = {c[k:k + 2] for k in range(len(c) - 1)}
+            hit = len(qg & cg)
+            if not hit: continue
+            f = 2 * hit / (len(qg) + len(cg))
+            if f > score: best, score = c, f
+    return best if score >= 0.3 else ''
 
 NUM = re.compile(r'\d[\d,]*(?:\.\d+)?')
 
@@ -88,10 +110,12 @@ def main():
             if 'quote' in c:
                 good, miss = quote_ok(c['quote'], text)
                 if good: here_ok += 1
-                else: here_bad.append((p, c, '文が見つからない：「%s」' % (miss[:60] or c['quote'][:60])))
+                else:
+                    near = nearest(miss or c['quote'])
+                    here_bad.append((p, c, '文が見つからない：「%s」' % (miss[:60] or c['quote'][:60]), near[:120]))
             else:
                 miss = [n for n in c['nums'] if not yen_ok(n, text)]
-                if miss: here_bad.append((p, c, '料金の数字が見つからない：' + '、'.join('{:,}円'.format(n) for n in miss)))
+                if miss: here_bad.append((p, c, '料金の数字が見つからない：' + '、'.join('{:,}円'.format(n) for n in miss), ''))
                 else: here_ok += 1
         if here_bad and not here_ok and len(p['checks']) >= 2:
             # 1つも合わないページは、サイトが変わったより、ページの中身を読めていない（後から画面を作る等）ことが多い
@@ -101,8 +125,8 @@ def main():
     lines = ['# 公式サイトとデータベースの照合', '', '確かめた日：%s（日本時間）' % time.strftime('%Y-%m-%d %H:%M', time.gmtime(time.time() + 9 * 3600)), '',
              '- 合っていた：%d 件' % ok, '- 公式サイトから消えた・変わった：%d 件' % len(bad), '- ページを読めなかった：%d ページ' % len(noread), '']
     if bad:
-        lines += ['## 公式サイトから消えた・変わったもの（データベースを直す候補）', '', '| 会社 | 項目 | 見つからないもの | ページ |', '|---|---|---|---|']
-        lines += ['| %s | %s | %s | %s |' % (c['name'], c['key'], why.replace('|', '／'), p['url']) for p, c, why in bad]
+        lines += ['## 公式サイトから消えた・変わったもの（データベースを直す候補）', '', '| 会社 | 項目 | 見つからないもの | ページにある近い文 | ページ |', '|---|---|---|---|---|']
+        lines += ['| %s | %s | %s | %s | %s |' % (c['name'], c['key'], why.replace('|', '／'), near.replace('|', '／'), p['url']) for p, c, why, near in bad]
         lines.append('')
     if noread:
         lines += ['## 読めなかったページ（人の目で確かめる）', '', '| ページ | 理由 | 会社 |', '|---|---|---|']
