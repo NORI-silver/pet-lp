@@ -706,7 +706,7 @@ emg_opts = '<option value="">すべての都道府県</option>' + ''.join(f'<opt
 emg_ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
   {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
   {"@type":"ListItem","position":2,"name":"緊急のときの連絡先","item":emg_url}]}, ensure_ascii=False, indent=1) + '\n</script>'
-ep = head("ペットの緊急搬送・動物救急車と夜間の動物病院｜全国の一覧｜ペットタクシー予約窓口",
+ep = head("ペットの緊急搬送・動物救急車（緊急のペットタクシー）と夜間の動物病院｜全国の一覧｜ペットタクシー予約窓口",
   "ペットの具合が急に悪くなったときの連絡先。緊急の搬送をしている会社と、夜間・救急の動物病院を、全国47都道府県から探せます。名前と公式サイトへのリンク、受付時間をまとめた無料の一覧です。", emg_url, emg_ld) + f"""
 <main>
 <section class="area-hero">
