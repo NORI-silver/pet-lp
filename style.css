@@ -469,7 +469,7 @@ footer a{color:var(--ink-2)}
 .req-mode label{display:block;padding:4px 0;cursor:pointer}
 .req-mode label span{display:block;font-size:.76rem;color:var(--ink-2);margin-left:1.6em}
 .partner-card .btn.pick-on{background:var(--o-d)}
-#partnerRest[hidden],.partner-sort[hidden]{display:none}
+#partnerRest[hidden],.partner-rest-btn[hidden],.partner-sort[hidden]{display:none}
 .partner-sort{display:flex;align-items:center;gap:8px;justify-content:flex-end;margin:4px 0 10px;font-size:.86rem}
 .partner-sort label{font-weight:700;color:var(--ink-2)}
 .partner-sort select{width:auto;min-width:12em;padding:8px 10px;font-size:.88rem}

@@ -499,7 +499,7 @@ footer a{color:var(--ink-2)}
 .req-mode label{display:block;padding:4px 0;cursor:pointer}
 .req-mode label span{display:block;font-size:.76rem;color:var(--ink-2);margin-left:1.6em}
 .partner-card .btn.pick-on{background:var(--o-d)}
-#partnerRest[hidden],.partner-sort[hidden]{display:none}
+#partnerRest[hidden],.partner-rest-btn[hidden],.partner-sort[hidden]{display:none}
 .partner-sort{display:flex;align-items:center;gap:8px;justify-content:flex-end;margin:4px 0 10px;font-size:.86rem}
 .partner-sort label{font-weight:700;color:var(--ink-2)}
 .partner-sort select{width:auto;min-width:12em;padding:8px 10px;font-size:.88rem}
@@ -1265,6 +1265,7 @@ footer a{color:var(--ink-2)}
         <h4>1. お預かりする情報</h4>
         <ul><li>お名前、電話番号、メールアドレス</li><li>お迎えの場所、経由地、行き先、希望の日時、ペットの種類・体重・年齢などの情報、メモ欄の内容</li></ul>
         <p>フォームのお迎えの都道府県を近い順に並べるため、通信の情報（IPアドレス）から大まかな地域を推定することがあります。並び順にだけ使い、保存はしません。</p>
+        <p>場所の候補や道のり（料金の目安・お店からの距離）を調べるため、入力した場所の位置を地図・道路データのサービスに送ることがあります。お名前や連絡先は送りません。</p>
         <h4>2. 使う目的</h4>
         <ul><li>ペットタクシーの空き確認と手配、お迎え時間・料金のご連絡</li><li>キャンセルやお問い合わせへの対応</li><li>サービスの改善（個人が特定できない形の集計に限ります）</li></ul>
         <p>ご本人の同意なく、この目的のほかに使うことはありません。</p>
@@ -1536,7 +1537,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren();
     var list = sortCards(quoteCards, ""), rest = list.length - TOP_CARDS, cut = quoteCards.length - list.length;
     $("partnerDistNote").hidden = !cut;
-    $("partnerDistNote").textContent = !cut ? "" : list.length ? "お店からの車の道のりが" + $("partnerDist").value + "kmより長い会社・お店の場所が分からない会社（" + cut + "社）を外しています。" : "お店からの車の道のりが" + $("partnerDist").value + "km以内の会社は見つかりませんでした（" + cut + "社を外しています）。距離を広げてください。";
+    $("partnerDistNote").textContent = !cut ? "" : "候補" + quoteCards.length + "社のうち、お店からの車の道のりが" + $("partnerDist").value + "km以内は" + list.length + "社です" + (list.length ? "（お店の場所が分からない会社も外しています）。" : "。距離を広げてください。");
     list.forEach(function(card, i){ $(i < TOP_CARDS ? "partnerCards" : "partnerRest").appendChild(buildCard(card, "")); });
     $("partnerRestBtn").hidden = rest <= 0;
     $("partnerRest").hidden = rest <= 0 || !restOpen;
@@ -1582,10 +1583,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       });
     });
     Object.keys(points).forEach(function(pk){
-      var g = points[pk], keys = Object.keys(g.shops);
+      var g = points[pk], keys = Object.keys(g.shops); // お迎えの場所は約100mの細かさに丸めて送る（お客さまの位置を細かく出さない）
       for (var i = 0; i < keys.length; i += 90) (function(part){
         part.forEach(function(k){ roadBusy[k] = 1; });
-        var cs = [g.at].concat(part.map(function(k){ return {lat: g.shops[k][0], lng: g.shops[k][1]}; }));
+        var cs = [{lat: Math.round(g.at.lat * 1000) / 1000, lng: Math.round(g.at.lng * 1000) / 1000}].concat(part.map(function(k){ return {lat: g.shops[k][0], lng: g.shops[k][1]}; }));
         var src = part.map(function(k, j){ return j + 1; }).join(";");
         fetch("https://router.project-osrm.org/table/v1/driving/" + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?sources=" + src + "&destinations=0&annotations=distance")
           .then(function(r){ return r.json(); })
