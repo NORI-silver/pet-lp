@@ -624,6 +624,7 @@ PT_CSS = """<style>
 .pt-shots figure{margin:0}.pt-shots .ph{border:8px solid #1c1a18;border-radius:30px;overflow:auto;max-height:560px;background:#fff;max-width:320px;margin:0 auto;-webkit-overflow-scrolling:touch}
 .pt-shots img{display:block;width:100%;height:auto}
 .pt-shots figcaption{font-size:.92rem;color:var(--ink-2);margin:14px auto 0;max-width:320px}.pt-shots figcaption b{display:block;color:var(--ink);font-size:1rem;margin-bottom:2px}
+.pt-owner{max-width:680px;margin:0 auto;background:#fff;border:1px solid var(--line,#eee5dc);border-radius:20px;padding:28px 24px}.pt-owner h2{margin-bottom:14px}.pt-owner p{color:var(--ink-2);margin:0 0 12px;line-height:1.9}.pt-owner .blog{font-size:.9rem;margin:0}
 .pt-sec{padding:56px 0}.pt-sec.alt{background:var(--cream)}
 .pt-sec h2{font-size:1.4rem;font-weight:800;text-align:center;margin-bottom:10px}
 .pt-sec .sub{color:var(--ink-2);text-align:center;max-width:640px;margin:0 auto 28px}
@@ -675,7 +676,7 @@ def _ic(path):  # メリットのアイコン（線の絵）
 PT_MERITS = [
  (_ic('<path d="M15 24h18M24 15v18"/><circle cx="24" cy="24" r="12"/>'), "はじめる費用は0円", "登録料・月額料金・掲載料はいただきません。お問い合わせを受け取るのも、お返事するのも無料です。"),
  (_ic('<rect x="12" y="15" width="24" height="18" rx="3"/><path d="M12 18l12 8 12-8"/>'), "電話の対応はいりません", "お問い合わせはメールで届きます。リンクを開いて、お迎え時刻と確定料金（税込）を入れるだけでお返事できます。"),
- (_ic('<path d="M14 16h20l-7 9v8l-6 3V25z"/>'), "条件に合うお問い合わせだけ", "お迎えの都道府県・営業時間・ペットの体重や頭数・ケージなど、会社さまの条件に合うときだけ候補に出ます。"),
+ (_ic('<path d="M14 16h20l-7 9v8l-6 3V25z"/>'), "条件に合うお問い合わせだけ届きます", "お迎えできるエリア・乗せられる動物・送迎できる時間・ペットの体重や頭数・ケージなど、会社さまの条件に合うお問い合わせだけをお届けします。たとえば犬・猫だけの会社さまに、うさぎや鳥のお問い合わせは届きません。"),
  (_ic('<path d="M16 32V20l8-5 8 5v12z"/><path d="M21 32v-6h6v6"/>'), "料金は会社さまが決めます", "サイトの料金は目安です。確定料金はいつも会社さまがお返事で決めます。当サイトが値引きをお願いすることはありません。"),
  (_ic('<path d="M17 25l5 5 10-11"/>'), "受けられないときは返事不要", "空いていないときや条件が合わないときは、そのままにしておいてください。お断りのご連絡もいりません。"),
  (_ic('<circle cx="19" cy="21" r="4"/><circle cx="29" cy="21" r="4"/><path d="M13 33c1-4 4-6 6-6s5 2 6 6M23 33c1-4 4-6 6-6s5 2 6 6"/>'), "決まってからつながる", "飼い主さんのお名前と連絡先は、予約が確定してからお伝えします。運賃のお支払いは、これまでどおり飼い主さんから会社さまへ直接です。"),
@@ -686,12 +687,13 @@ PT_FAQ = [
  ("飼い主さんが何社にも問い合わせることはありますか？", "あります。飼い主さんは1社だけに問い合わせることも、条件に合う会社にまとめて問い合わせることもできます。何社かに問い合わせたときは、届いたお返事をくらべて飼い主さんが1社を選びます。選ばれなかったときは「締め切り」のお知らせをお送りします。"),
  ("手数料はいつ、何にかかりますか？", f"予約が確定し、送迎をした1件だけにかかります。確定料金に応じた手数料を、月末にまとめてご請求する予定です。手数料の率は、お申し込みのあとメールでご案内します。お問い合わせを受け取っただけ、お返事しただけ、選ばれなかったときには一切かかりません。いまは無料です。始める日は、30日前までにメールでお知らせします（くわしくは提携規約の第8条）。"),
  ("キャンセルになったら手数料はどうなりますか？", "送迎をしなかったときは、手数料はいただきません。キャンセル料は会社さまのキャンセル規定のとおりで、キャンセル料に手数料をかけることはありません。なお、送迎があったかどうかは、送迎のあとに飼い主さんにも確かめ、月末のご報告と照らし合わせます（提携規約の第9条）。"),
+ ("条件に合わないお問い合わせが届くことはありますか？", "お申し込みでうかがった条件（お迎えできるエリア、乗せられる動物、送迎できる時間、大型犬の体重や頭数、同乗の人数、ケージ）に合わないお問い合わせはお届けしません。たとえば犬・猫だけの会社さまにうさぎのお問い合わせは届かず、エリアの外のお問い合わせも届きません。条件がまだ分からない項目があるときは、メールに「引き受ける前にご確認ください」と書いてお届けしますので、できないときはお受けにならないでください。条件はメールでいつでも変えられます。"),
  ("ほかの予約サイトや自社の予約と一緒に使えますか？", "はい。いまの予約の受け方はそのままで、当サイトのお問い合わせを一つの窓口として足していただくイメージです。"),
  ("もう候補の一覧に名前が出ているのはなぜですか？", "当サイトでは、公式サイトに公開されている料金表と営業時間をもとに、各地の会社を候補として表示しています（問い合わせは送れない「準備中」の表示です）。載せ方の修正や、掲載をやめたいご希望は、お問い合わせからいつでもお知らせください。"),
  ("やめたいときはどうすればいいですか？", "メールでお知らせいただければ、いつでも止められます。違約金などはありません。すでに確定している予約は、最後までお願いします。"),
 ]
 PT_NEED = [
- ("お申し込みでうかがうこと", ["会社名・屋号、ご担当者のお名前、メールアドレス", "お迎えできる都道府県・市区町村", "車の台数と種類、受けられる曜日・時間帯", "料金（料金ページのURLだけでも大丈夫です）", "お支払い方法（現金・カードなど）"]),
+ ("お申し込みでうかがうこと", ["会社名・屋号、ご担当者のお名前", "お問い合わせを受け取るメールアドレス（窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスをお知らせください）", "お迎えできる都道府県・市区町村", "乗せられる動物（犬・猫だけ、うさぎや鳥も、など）", "車の台数と種類、受けられる曜日・時間帯", "料金（料金ページのURLだけでも大丈夫です）", "お支払い方法（現金・カードなど）"]),
  ("わかればうかがうこと", ["動物取扱業の登録番号", "お持ちの事業の許可・届出（旅客の許可、貨物軽自動車運送事業の届出など）", "飼い主さんが同乗できるか、何人までか", "加入している保険（対人・対物、ペットのケガ）", "キャンセル規定・当日の依頼の締め切り"]),
 ]
 pt_merits = "".join(f'<div class="pt-merit">{ic}<h3>{e(t)}</h3><p>{e(d)}</p></div>' for ic, t, d in PT_MERITS)
@@ -703,6 +705,15 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 <section class="area-hero"><div class="wrap"><h1>ペットタクシー会社の方へ<br>提携のご案内</h1><p class="lede">ペットタクシー予約窓口は、ペットの移動に困っている飼い主さんと、近くのペットタクシー会社さまをおつなぎするサイトです。全国で、いっしょにペットと飼い主さんをお迎えしてくださる会社さまを探しています。</p>
 <ul class="pt-badges"><li>登録料・月額 0円</li><li>電話の対応なし</li><li>メールのリンクでお返事</li><li>料金は会社さまが決める</li></ul>
 <div class="pt-hero-cta"><a class="p" href="#apply">提携を申し込む</a><a class="s" href="#flow">しくみを見る</a></div></div></section>
+
+<section class="pt-sec" id="owner"><div class="wrap">
+<div class="pt-owner">
+<h2>運営者より</h2>
+<p>ペットタクシー予約窓口の運営者は、ラブラドールの「こんぶ」、セントバーナードの「なむる」、ハチワレ猫の「ちゃーはん」と暮らしています。大きな犬2頭と猫との毎日はにぎやかで、かわいくて仕方がありません。</p>
+<p>犬や猫をはじめ、動物たちのために何かできることはないか。そう考えて始めたのが、このサービスです。病院へ行くとき、引っ越しのとき、お出かけのとき。家族である動物たちと飼い主さんが、安心して移動できるように。そのために、心をこめて送迎をされている会社さまと、いっしょに取り組んでいきたいと考えています。</p>
+<p class="blog">運営者のブログ：<a href="https://shiokonbu.com/" target="_blank" rel="noopener">shiokonbu.com</a>（大型犬とのお出かけや暮らしの記録）</p>
+</div>
+</div></section>
 
 <section class="pt-sec"><div class="wrap">
 <h2>提携のメリット</h2><p class="sub">いまの営業のしかたはそのままに、メールで届くお問い合わせの窓口を一つ足していただくイメージです。</p>
@@ -747,7 +758,7 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 <h2>提携までの4ステップ</h2>
 <ol class="pt-steps">
 <li><b>このページから申し込む</b><span>下のフォームに、エリア・時間帯・料金などを入れて送ってください（5分ほど）。</span></li>
-<li><b>内容の確認</b><span>当サイトで公式サイトなどを拝見し、数日以内にメールでご連絡します。わからない点はメールでおたずねします。</span></li>
+<li><b>内容の確認</b><span>当サイトで公式サイトなどを拝見し、数日以内にメールでご連絡します。わからない点はメールでおたずねします。お問い合わせを受け取るメールアドレスには確認のメールをお送りし、届くこと・お返事できることを確かめます。</span></li>
 <li><b>提携規約に同意</b><span>手数料やご請求のしかた、個人情報の扱いなどを定めた<a href="/partner/terms/">提携規約</a>をメールでお送りします。ご確認のうえ、同意のお返事をください。</span></li>
 <li><b>お問い合わせのお届け開始</b><span>候補の一覧で問い合わせできる状態になり、条件に合うお問い合わせがメールで届きはじめます。</span></li>
 </ol>
@@ -771,8 +782,10 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
   <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
   <div class="f"><label for="p_co">会社名・屋号</label><input type="text" id="p_co" data-k="会社名・屋号" required autocomplete="organization"></div>
   <div class="f"><label for="p_name">ご担当者のお名前</label><input type="text" id="p_name" name="name" required autocomplete="name"></div>
-  <div class="f"><label for="p_email">メールアドレス<span class="any">飼い主さんからのお問い合わせもここに届きます</span></label><input type="email" id="p_email" name="email" required autocomplete="email"></div>
+  <div class="f"><label for="p_email">お問い合わせを受け取るメールアドレス<span class="any">飼い主さんからのお問い合わせがここに届きます。窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスを入れてください</span></label><input type="email" id="p_email" name="email" required autocomplete="email"></div>
+  <div class="f"><label for="p_email2">メールアドレス（確認のため、もう一度）</label><input type="email" id="p_email2" required autocomplete="email"></div>
   <div class="f"><span class="lbl">お迎えできる都道府県</span><div class="checks" id="p_prefs">{''.join(f'<label><input type="checkbox" value="{p}">{p}</label>' for p in PREFS47)}</div></div>
+  <div class="f"><span class="lbl">乗せられる動物</span><div class="checks" id="p_animals">{''.join(f'<label><input type="checkbox" value="{a}">{a}</label>' for a in ["犬", "猫", "うさぎ・フェレットなどの小動物", "鳥", "爬虫類・両生類", "魚"])}</div></div>
   <div class="f"><label for="p_city">お迎えできる市区町村など<span class="any">わかれば</span></label><input type="text" id="p_city" data-k="市区町村など" placeholder="例：市内全域と、となりの市まで"></div>
   <div class="f"><label for="p_car">車の台数と種類</label><input type="text" id="p_car" data-k="車" required placeholder="例：2台（ワンボックス、軽バン）"></div>
   <div class="f"><label for="p_fare">料金</label><textarea id="p_fare" data-k="料金" required rows="4" placeholder="例：初乗り5kmまで2,200円、以降1kmごとに220円、深夜2割増。料金ページがあればURLだけでも大丈夫です。"></textarea></div>
@@ -804,12 +817,15 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
     e.preventDefault(); err.style.display = "none";
     var bad = f.querySelector(":invalid");
     if (!bad && !picked("p_prefs").length) bad = document.querySelector("#p_prefs input");
-    if (bad) {{ err.textContent = bad.id === "p_agree" ? "確認のチェックを入れてください。" : bad.type === "checkbox" ? "お迎えできる都道府県を選んでください。" : bad.type === "url" && bad.value ? "ホームページはhttps://から入れてください。" : "まだ入力されていない項目があります。"; err.style.display = "block"; bad.focus(); return; }}
+    if (!bad && !picked("p_animals").length) bad = document.querySelector("#p_animals input");
+    var mismatch = !bad && document.getElementById("p_email").value.trim() !== document.getElementById("p_email2").value.trim();
+    if (mismatch) bad = document.getElementById("p_email2");
+    if (bad) {{ err.textContent = mismatch ? "メールアドレスが2つの欄で違っています。" : bad.id === "p_agree" ? "確認のチェックを入れてください。" : bad.type === "checkbox" ? (bad.closest("#p_animals") ? "乗せられる動物を選んでください。" : "お迎えできる都道府県を選んでください。") : bad.type === "url" && bad.value ? "ホームページはhttps://から入れてください。" : "まだ入力されていない項目があります。"; err.style.display = "block"; bad.focus(); return; }}
     var lines = [], co = "";
     f.querySelectorAll("[data-k]").forEach(function(x){{
       if (x.id === "p_co") co = x.value.trim();
       if (x.value.trim()) lines.push("【" + x.dataset.k + "】" + x.value.trim());
-      if (x.id === "p_city") lines.splice(lines.length - (x.value.trim() ? 1 : 0), 0, "【都道府県】" + picked("p_prefs").join("・"));
+      if (x.id === "p_city") lines.splice(lines.length - (x.value.trim() ? 1 : 0), 0, "【都道府県】" + picked("p_prefs").join("・"), "【乗せられる動物】" + picked("p_animals").join("・"));
       if (x.id === "p_emg") lines.push("【お支払い方法】" + (picked("p_pays").join("・") || "未選択"));
     }});
     var body = new URLSearchParams();
