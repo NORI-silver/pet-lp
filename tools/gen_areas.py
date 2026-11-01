@@ -338,7 +338,7 @@ for a in AREAS:
       {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
         {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
         {"@type":"ListItem","position":2,"name":a["short"]+"のペットタクシー","item":url}]},
-      {"@context":"https://schema.org","@type":"Service","name":a["short"]+"のペットタクシー手配","serviceType":"ペットタクシーの手配（犬のタクシー・猫のタクシー）","url":url,
+      {"@context":"https://schema.org","@type":"Service","name":a["short"]+"のペットタクシー検索","serviceType":"ペットタクシーの検索と問い合わせ（犬のタクシー・猫のタクシー）","url":url,
        "description":a["desc"],"provider":{"@type":"Organization","@id":SITE+"/#org","name":"ペットタクシー予約窓口","url":SITE+"/"},
        "areaServed":{"@type":"AdministrativeArea","name":a["pref"]},
        "offers":{"@type":"Offer","price":"0","priceCurrency":"JPY","description":"無料（運賃は事業者へ直接お支払い）"}},
@@ -537,12 +537,12 @@ def terms_block(v):
     if isinstance(v, tuple) and v[0] == "html": return f"<p>{v[1]}</p>"
     return f"<p>{e(v)}</p>"
 terms_url = SITE + "/terms/"
-tp = head("利用規約｜ペットタクシー予約窓口", "ペットタクシー予約窓口（ペットタクシーの手配）の利用規約です。サービスの内容、予約の成立、料金とお支払い、キャンセル、責任の範囲などを定めています。", terms_url, "") + f"""
+tp = head("利用規約｜ペットタクシー予約窓口", "ペットタクシー予約窓口（ペットタクシーの検索と問い合わせ）の利用規約です。サービスの内容、予約の成立、料金とお支払い、キャンセル、責任の範囲などを定めています。", terms_url, "") + f"""
 <main>
 <section class="area-hero"><div class="wrap"><h1>利用規約</h1><p class="lede">ペットタクシー予約窓口をご利用いただく前に、お読みください。</p></div></section>
 <section><div class="wrap prose terms">
 {''.join(f'<h2>{e(h)}</h2>' + ''.join(terms_block(v) for v in body) for h, body in TERMS)}
-<p class="small">{TERMS_DATE} 制定・2026年10月31日 改定</p>
+<p class="small">{TERMS_DATE} 制定・2026年11月1日 改定</p>
 </div></section>
 </main>
 """ + foot("/#form")
@@ -624,7 +624,6 @@ PT_CSS = """<style>
 .pt-shots figure{margin:0}.pt-shots .ph{border:8px solid #1c1a18;border-radius:30px;overflow:auto;max-height:560px;background:#fff;max-width:320px;margin:0 auto;-webkit-overflow-scrolling:touch}
 .pt-shots img{display:block;width:100%;height:auto}
 .pt-shots figcaption{font-size:.92rem;color:var(--ink-2);margin:14px auto 0;max-width:320px}.pt-shots figcaption b{display:block;color:var(--ink);font-size:1rem;margin-bottom:2px}
-.pt-owner{max-width:680px;margin:0 auto;background:#fff;border:1px solid var(--line,#eee5dc);border-radius:20px;padding:28px 24px}.pt-owner h2{margin-bottom:14px}.pt-owner p{color:var(--ink-2);margin:0 0 12px;line-height:1.9}.pt-owner .blog{font-size:.9rem;margin:0}
 .pt-sec{padding:56px 0}.pt-sec.alt{background:var(--cream)}
 .pt-sec h2{font-size:1.4rem;font-weight:800;text-align:center;margin-bottom:10px}
 .pt-sec .sub{color:var(--ink-2);text-align:center;max-width:640px;margin:0 auto 28px}
@@ -705,15 +704,6 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 <section class="area-hero"><div class="wrap"><h1>ペットタクシー会社の方へ<br>提携のご案内</h1><p class="lede">ペットタクシー予約窓口は、ペットの移動に困っている飼い主さんと、近くのペットタクシー会社さまをおつなぎするサイトです。全国で、いっしょにペットと飼い主さんをお迎えしてくださる会社さまを探しています。</p>
 <ul class="pt-badges"><li>登録料・月額 0円</li><li>電話の対応なし</li><li>メールのリンクでお返事</li><li>料金は会社さまが決める</li></ul>
 <div class="pt-hero-cta"><a class="p" href="#apply">提携を申し込む</a><a class="s" href="#flow">しくみを見る</a></div></div></section>
-
-<section class="pt-sec" id="owner"><div class="wrap">
-<div class="pt-owner">
-<h2>運営者より</h2>
-<p>ペットタクシー予約窓口の運営者は、ラブラドールの「こんぶ」、セントバーナードの「なむる」、ハチワレ猫の「ちゃーはん」と暮らしています。大きな犬2頭と猫との毎日はにぎやかで、かわいくて仕方がありません。</p>
-<p>犬や猫をはじめ、動物たちのために何かできることはないか。そう考えて始めたのが、このサービスです。病院へ行くとき、引っ越しのとき、お出かけのとき。家族である動物たちと飼い主さんが、安心して移動できるように。そのために、心をこめて送迎をされている会社さまと、いっしょに取り組んでいきたいと考えています。</p>
-<p class="blog">運営者のブログ：<a href="https://shiokonbu.com/" target="_blank" rel="noopener">shiokonbu.com</a>（大型犬とのお出かけや暮らしの記録）</p>
-</div>
-</div></section>
 
 <section class="pt-sec"><div class="wrap">
 <h2>提携のメリット</h2><p class="sub">いまの営業のしかたはそのままに、メールで届くお問い合わせの窓口を一つ足していただくイメージです。</p>
