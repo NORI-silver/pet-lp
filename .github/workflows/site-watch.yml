@@ -1,0 +1,28 @@
+# 公式サイトとデータベースの照合（週1回）。tools/site_watch.py が各社の公式サイトを開いて、
+# データベースのもとにした文・料金の数字がいまもあるかを確かめ、結果を Issue「公式サイトとデータベースの照合」にまとめる。何も送らない。
+name: site-watch
+on:
+  schedule:
+    - cron: '0 0 * * 1' # 毎週月曜 9:00（日本時間）
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: site-watch
+  cancel-in-progress: false
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: 公式サイトを確かめる
+        run: python3 tools/site_watch.py report.md
+      - name: Issue にまとめる
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create site-watch --color BFD4F2 --description "公式サイトとデータベースの照合" 2>/dev/null || true
+          n=$(gh issue list --label site-watch --state open --json number --jq '.[0].number')
+          if [ -n "$n" ]; then gh issue edit "$n" --body-file report.md; gh issue comment "$n" --body "$(head -n 9 report.md)"; else gh issue create --title "公式サイトとデータベースの照合" --label site-watch --body-file report.md; fi
