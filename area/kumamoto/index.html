@@ -503,6 +503,13 @@ footer a{color:var(--ink-2)}
 .partner-sort{display:flex;align-items:center;gap:8px;justify-content:flex-end;margin:4px 0 10px;font-size:.86rem}
 .partner-sort label{font-weight:700;color:var(--ink-2)}
 .partner-sort select{width:auto;min-width:12em;padding:8px 10px;font-size:.88rem}
+.partner-sort{flex-wrap:wrap;row-gap:8px;column-gap:14px}
+.partner-sort .ps-item{display:flex;align-items:center;gap:8px}
+.partner-sort .ps-item[hidden]{display:none}
+.partner-sort #partnerDist{min-width:7em}
+.partner-dist-note[hidden]{display:none}
+.partner-dist-note{margin:0 0 10px;font-size:.82rem;color:var(--ink-2);text-align:right}
+.partner-dist{margin:-2px 0 6px;font-size:.8rem;color:var(--ink-2)}
 .partner-card .partner-more{font-size:.8rem;color:var(--ink-2);border-top:1px dashed var(--line);padding:8px 0 0;margin:0;background:none;box-shadow:none;border-radius:0}
 .partner-card .partner-more>summary{font-weight:700;color:var(--o-d);font-size:.84rem;padding:0}
 .partner-card .partner-more>summary::after{content:" ▸";position:static;display:inline;width:auto;height:auto;margin:0;background:none;border-radius:0;transform:none}
@@ -843,8 +850,11 @@ footer a{color:var(--ink-2)}
             <label><input type="radio" name="req_mode" value="book" checked> <b>予約を依頼する</b><span>1社なら、引き受けた時点で決まります。2社以上なら、引き受けた会社の確定料金がメールで届き、1社を選んだときに決まります。</span></label>
             <label><input type="radio" name="req_mode" value="quote"> <b>見積もりを依頼する</b><span>選んだ会社から確定料金がメールで届きます。くらべて1社を選んだときに決まります。</span></label>
           </div>
-          <div class="partner-sort" id="partnerSortBox"><label for="partnerSort">並び順</label>
-            <select id="partnerSort"><option value="review_desc" selected>口コミの評価が高い順</option><option value="review_asc">口コミの評価が低い順</option><option value="price_asc">料金が安い順</option><option value="price_desc">料金が高い順</option></select></div>
+          <div class="partner-sort" id="partnerSortBox"><span class="ps-item"><label for="partnerSort">並び順</label>
+            <select id="partnerSort"><option value="dist_asc" selected>お店が近い順</option><option value="review_desc">口コミの評価が高い順</option><option value="review_asc">口コミの評価が低い順</option><option value="price_asc">料金が安い順</option><option value="price_desc">料金が高い順</option></select></span>
+            <span class="ps-item"><label for="partnerDist">お店からの距離</label>
+            <select id="partnerDist"><option value="" selected>すべて</option><option value="5">5km以内</option><option value="10">10km以内</option><option value="15">15km以内</option><option value="20">20km以内</option><option value="30">30km以内</option></select></span></div>
+          <p class="partner-dist-note" id="partnerDistNote" hidden></p>
           <div class="partner-grid" id="partnerCards"></div>
           <button type="button" class="partner-rest-btn" id="partnerRestBtn" aria-expanded="false" aria-controls="partnerRest" hidden></button>
           <div class="partner-grid" id="partnerRest" hidden></div>
@@ -1264,7 +1274,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
   }
   function conditionsChanged(event){
-    if (["name","tel","email","notes","agree","website","partnerSort","req_mode","req_type"].indexOf(event.target.id || event.target.name) >= 0) return; // 並び順を変えても、候補は取り直さない
+    if (["name","tel","email","notes","agree","website","partnerSort","partnerDist","req_mode","req_type"].indexOf(event.target.id || event.target.name) >= 0) return; // 並び順を変えても、候補は取り直さない
     clearPartners(); queuePartners();
     if (!$("partnerNeed").hidden) showNeed(); // 出ている一覧は、入れたらすぐ減らす
   }
@@ -1414,6 +1424,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。どの会社もいまは準備中のため、まだ予約を依頼できません。料金は確定料金ではありません。" : (later ? cards.length + "社が候補です（うち" + later + "社は準備中のため、まだ予約を依頼できません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。選んだ会社だけに依頼します（最大" + MAX_PICKS + "社）。");
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。予約の依頼は送信されていません。</span>';
     $("partnerSortBox").hidden = cards.length < 2;
+    var hasDist = cards.some(function(c){ return c.dist_km != null; }); // 予約のしくみが古い版のあいだは距離が来ないので、距離のしぼり込みを出さない
+    $("partnerDist").parentNode.hidden = !hasDist; if (!hasDist) $("partnerDist").value = "";
     $("reqModeBox").hidden = !ready || !!form.querySelector("input[name=req_type]"); // 予約を依頼できる会社があるときだけ。フォームの最初で選ぶときは出さない
     chosenPicks = chosenPicks.filter(function(c){ return cards.some(function(x){ return x.id === c.id && !x.display_only; }); }).map(function(c){ return cards.filter(function(x){ return x.id === c.id; })[0]; });
     chosenQuote = chosenPicks[0] || null; showPickButton();
@@ -1422,13 +1434,20 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     loadScores();
     // 自動更新では入力中のフォーカスやスクロール位置を動かさない。
   }
-  // 並べ替え（Nori 2026-10-31「価格の安い・高い順、口コミが高い・低い順でソートできるように。デフォルトは安い順」）
+  // 並べ替え（Nori 2026-10-31「価格の安い・高い順、口コミが高い・低い順」、2026-11-01「お店からお迎えまでの距離が短い順で表示」＝デフォルト）
   // 料金が出ない会社・口コミの点数がない会社は、どの並び順でも後ろ。同じなら元の順
   var scoresReady = false, scoreMemo = {}; // 口コミの星：このページを開いているあいだだけ覚える（保存はしない）
   function withScore(c){ return Object.prototype.hasOwnProperty.call(scoreMemo, c.id) ? Object.assign({}, c, {review: scoreMemo[c.id]}) : c; }
+  // お店からの距離でしぼる（Nori 2026-11-01「フィルターにも事業所との距離」）。お店の場所が分からない会社も外す。選んだ会社は外さない
+  function distOk(c){
+    var max = Number($("partnerDist").value || 0);
+    if (!max || chosenPicks.some(function(x){ return x.id === c.id; })) return true;
+    return c.dist_km != null && c.dist_km <= max;
+  }
   function sortCards(list){
-    var mode = $("partnerSort").value || "review_desc";
-    var key = function(c){ return mode.indexOf("price") === 0 ? (c.price && c.price.amount != null ? c.price.amount : null) : (c.review && c.review.rating > 0 ? c.review.rating : null); };
+    var mode = $("partnerSort").value || "dist_asc";
+    var key = function(c){ return mode.indexOf("price") === 0 ? (c.price && c.price.amount != null ? c.price.amount : null) : mode.indexOf("dist") === 0 ? (c.dist_km != null ? c.dist_km : null) : (c.review && c.review.rating > 0 ? c.review.rating : null); };
+    list = list.filter(distOk);
     var down = /_desc$/.test(mode);
     return list.map(withScore).map(function(c, i){ return {c: c, i: i, k: key(c)}; }).sort(function(a, b){
       if ((a.c.display_only ? 1 : 0) !== (b.c.display_only ? 1 : 0)) return a.c.display_only ? 1 : -1; // 予約を依頼できる会社を先に
@@ -1442,7 +1461,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var TOP_CARDS = 3, restOpen = false;
   function drawCards(){
     $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren();
-    var list = sortCards(quoteCards), rest = list.length - TOP_CARDS;
+    var list = sortCards(quoteCards), rest = list.length - TOP_CARDS, cut = quoteCards.length - list.length;
+    $("partnerDistNote").hidden = !cut;
+    $("partnerDistNote").textContent = !cut ? "" : list.length ? "お店が" + $("partnerDist").value + "kmより遠い会社・お店の場所が分からない会社（" + cut + "社）を外しています。" : "お店が" + $("partnerDist").value + "km以内の会社は見つかりませんでした（" + cut + "社を外しています）。距離を広げてください。";
     list.forEach(function(card, i){ $(i < TOP_CARDS ? "partnerCards" : "partnerRest").appendChild(buildCard(card, "")); });
     $("partnerRestBtn").hidden = rest <= 0;
     $("partnerRest").hidden = rest <= 0 || !restOpen;
@@ -1455,6 +1476,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   });
   $("partnerSort").addEventListener("change", function(){
     track("sort_partners", {mode: $("partnerSort").value});
+    drawCards();
+    if (!chosenGo && !chosenBack) paintLegs();
+  });
+  $("partnerDist").addEventListener("change", function(){
+    track("filter_partners_distance", {km: $("partnerDist").value || "all"});
     drawCards();
     if (!chosenGo && !chosenBack) paintLegs();
   });
@@ -1479,6 +1505,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var article = document.createElement("article"); article.className = "partner-card";
       function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
       text("h4", card.label);
+      // お店からお迎えの場所までの直線距離（裏側で計算。Nori 2026-11-01）
+      if ("dist_km" in card) text("p", card.dist_km != null ? "お店からお迎えの場所まで 直線" + Number(card.dist_km).toFixed(1) + "km" : "お店の場所は確認中です", "partner-dist");
       var rv = card.review;
       if (rv && rv.rating > 0) {
         // 口コミの点数は規約上、出どころ（Google マップ）の表示が必要
