@@ -1,0 +1,35 @@
+# サイトの公開（GitHub Pages）。main に入ると、このワークフローがサイトを公開する。
+# 2026-11-01 Nori「GITHUBがなんか詰まってるみたい。適切に対処して」：
+#   GitHub 標準の公開（pages build and deployment）は、前の公開が「途中」のまま残ると、あとの公開が全部
+#   「in progress deployment」で断られて止まっていた。ここでは同時に1つだけ動かし、あとから来た公開は
+#   前の公開が終わるまで順番に待つ（concurrency）。待っている古い公開は新しいものに置きかわるので、最後は必ず最新の main が出る。
+# 使うには、GitHub の Settings → Pages → Build and deployment の Source を「GitHub Actions」にする（1回だけ）。
+name: pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          timeout: 600000
