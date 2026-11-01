@@ -493,6 +493,7 @@ footer a{color:var(--ink-2)}
 #partnerRest{margin-top:14px}
 .partner-points{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0}
 .partner-points li{font-size:.72rem;background:#eef6ee;color:#2f5d34;border-radius:999px;padding:2px 8px;line-height:1.5}
+.partner-points li.lim{background:#f1f0ee;color:#55504a}
 .req-mode{background:var(--cream);border-radius:14px;padding:10px 12px;margin:8px 0 4px;font-size:.84rem}
 .req-mode[hidden]{display:none}
 .req-mode-h{font-weight:700;margin:0 0 4px}
@@ -1659,9 +1660,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         open.addEventListener("click", function(){ toggleReviews(card.id, panel, open); });
       } // 点数が取れないときは何も出さない（外部の口コミページへは飛ばさない。Nori 2026-10-31）
       // アピールポイント（公式サイトに書いてあることだけ。Nori 2026-10-31）
-      if (card.points && card.points.length) {
-        var pts = document.createElement("ul"); pts.className = "partner-points"; pts.setAttribute("aria-label", "公式サイトに書いてある特長");
-        card.points.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; pts.appendChild(li); });
+      // 条件のタグ（同乗の人数・頭数・お支払いの決まり。灰色。Nori 2026-11-01）
+      if ((card.points && card.points.length) || (card.limits && card.limits.length)) {
+        var pts = document.createElement("ul"); pts.className = "partner-points"; pts.setAttribute("aria-label", "公式サイトに書いてある特長と条件");
+        (card.points || []).forEach(function(x){ var li = document.createElement("li"); li.textContent = x; pts.appendChild(li); });
+        (card.limits || []).forEach(function(x){ var li = document.createElement("li"); li.className = "lim"; li.textContent = x; pts.appendChild(li); });
         article.appendChild(pts);
       }
       // 料金（概算見積もり）。口コミと料金のほかの詳しい情報は、最初はたたんでおく（Nori 2026-10-31）

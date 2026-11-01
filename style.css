@@ -463,6 +463,7 @@ footer a{color:var(--ink-2)}
 #partnerRest{margin-top:14px}
 .partner-points{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0}
 .partner-points li{font-size:.72rem;background:#eef6ee;color:#2f5d34;border-radius:999px;padding:2px 8px;line-height:1.5}
+.partner-points li.lim{background:#f1f0ee;color:#55504a}
 .req-mode{background:var(--cream);border-radius:14px;padding:10px 12px;margin:8px 0 4px;font-size:.84rem}
 .req-mode[hidden]{display:none}
 .req-mode-h{font-weight:700;margin:0 0 4px}
