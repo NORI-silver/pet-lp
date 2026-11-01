@@ -772,7 +772,7 @@ footer a{color:var(--ink-2)}
 <!-- 6. フォーム -->
 <section class="form-sec" id="form">
   <div class="wrap">
-    <div class="sh"><span class="eyebrow">REQUEST</span><h2>空き状況と料金を問い合わせる（無料）</h2><p>条件を入力して、料金の目安を見ながら事業者を選べます。会社から空き状況と確定料金がメールで届いたら、納得してから予約を確定してください。</p><!--PREP: 依頼の送信を再開したら消す--><p style="font-size:.86rem;background:#fff4e5;border-radius:12px;padding:10px 14px;margin-top:10px">いまはすべての会社が準備中のため、候補の会社と料金の目安は見られますが、問い合わせはまだ送れません。</p><!--/PREP--></div>
+    <div class="sh"><span class="eyebrow">REQUEST</span><h2>空き状況と料金を問い合わせる（無料）</h2><p>条件を入力して、料金の目安を見ながら事業者を選べます。会社から空き状況と確定料金がメールで届いたら、納得してから予約を確定してください。</p><!--PREP: 依頼の送信を再開したら消す--><p style="font-size:.86rem;background:#fff4e5;border-radius:12px;padding:10px 14px;margin-top:10px">いまはサイトの準備中のため、候補の会社と料金の目安は見られますが、問い合わせはまだ送れません。</p><!--/PREP--></div>
 
     <div class="mode-tabs" id="modeTabs" role="tablist" hidden>
       <button type="button" role="tab" aria-selected="true" data-mode="normal">空き状況・料金の問い合わせ</button>
@@ -886,7 +886,7 @@ footer a{color:var(--ink-2)}
             <div class="f"><label for="handFrom">お迎えでペットを渡す人</label><input type="text" id="handFrom" name="hand_from" maxlength="100" placeholder="例：家族（母）・ペットホテルの受付"></div>
             <div class="f"><label for="handTo">行き先で受け取る人</label><input type="text" id="handTo" name="hand_to" maxlength="100" placeholder="例：動物病院の受付・祖父"></div>
           </div>
-          <div class="f" id="ridersF"><label for="riders">一緒に乗る人数</label>
+          <div class="f" id="ridersF"><label for="riders">一緒に乗る人数<span class="any">飼い主さんは付き添いとして同乗します。同乗できる人数は会社によって違います</span></label>
             <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option>1人</option><option>2人</option><option>3人</option></select></div>
           <div class="f"><label for="luggage">荷物の量</label>
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
@@ -897,6 +897,7 @@ footer a{color:var(--ink-2)}
         <section class="partner-results" id="partnerResults" aria-labelledby="partnerTitle" hidden>
           <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
           <p id="partnerStatus" role="status" aria-live="polite"></p>
+          <p class="partner-dist-note">ここに出る会社は、各社の公式サイトで公開されている料金表・営業時間などをもとに当サイトが載せています（2026年10〜11月に確認）。当サイトと提携していない会社も含みます。最新の料金・営業時間は各社にご確認ください。並び順は選んだ条件だけで決めていて、掲載料などで順番が変わることはありません。載せ方の修正や掲載をやめたいご希望は<a href="/contact/">お問い合わせ</a>からどうぞ。</p>
           <p class="price-reason">料金が違うのは、各社の基本運賃・距離単価・お迎えに来る距離・夜間割増の決まりが違うためです。金額の差だけで、サービスの良し悪しは判断できません。</p>
           <div class="partner-sort" id="partnerSortBox"><span class="ps-item"><label for="partnerSort">並び順</label>
             <select id="partnerSort"><option value="dist_asc" selected>お店が近い順</option><option value="review_desc">口コミの評価が高い順</option><option value="review_asc">口コミの評価が低い順</option><option value="price_asc">料金が安い順</option><option value="price_desc">料金が高い順</option></select></span>
@@ -1268,7 +1269,7 @@ footer a{color:var(--ink-2)}
         <p>フォームのお迎えの都道府県を近い順に並べるため、通信の情報（IPアドレス）から大まかな地域を推定することがあります。並び順にだけ使い、保存はしません。</p>
         <p>場所の候補や道のり（料金の目安・お店からの距離）を調べるため、入力した場所の位置を地図・道路データのサービスに送ることがあります。お名前や連絡先は送りません。</p>
         <h4>2. 使う目的</h4>
-        <ul><li>ペットタクシーの空き確認と手配、お迎え時間・料金のご連絡</li><li>キャンセルやお問い合わせへの対応</li><li>サービスの改善（個人が特定できない形の集計に限ります）</li></ul>
+        <ul><li>ペットタクシーの空き確認と手配、お迎え時間・料金のご連絡</li><li>キャンセルやお問い合わせへの対応</li><li>送迎のあとに、送迎があったかどうかをおたずねするご連絡（提携の会社とのご利用の確認に使います）</li><li>サービスの改善（個人が特定できない形の集計に限ります）</li></ul>
         <p>ご本人の同意なく、この目的のほかに使うことはありません。</p>
         <h4>3. ペットタクシー事業者へのお伝え</h4>
         <ul><li>空きを確認する段階では、お迎えの場所・行き先・日・ペットの情報だけを、お客さまが選んだ会社にだけお伝えします。お名前と連絡先はお伝えしません。</li><li>お客さまが予約を確定した1社にだけ、送迎のためにお名前と連絡先をお伝えします。</li><li>法令にもとづく場合を除き、ご本人の同意なくそれ以外の第三者に提供することはありません。</li></ul>
@@ -1486,7 +1487,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
     var ready = cards.filter(function(c){ return !c.display_only; }).length, later = cards.length - ready;
-    if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。どの会社もいまは準備中のため、まだ問い合わせできません。料金は確定料金ではありません。" : (later ? cards.length + "社が候補です（うち" + later + "社は準備中のため、まだ問い合わせできません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。問い合わせたい会社を選ぶか、いちばん下の「全社に問い合わせる」でまとめて送れます。");
+    if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。いまはどの会社にも、このサイトからはまだ問い合わせできません。料金は確定料金ではありません。" : (later ? cards.length + "社が候補です（うち" + later + "社は、このサイトからはまだ問い合わせできません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。問い合わせたい会社を選ぶか、いちばん下の「全社に問い合わせる」でまとめて送れます。");
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。問い合わせは送信されていません。</span>';
     $("partnerSortBox").hidden = cards.length < 2;
     var hasDist = cards.some(function(c){ return !!c.shop; }); // 予約のしくみが古い版のあいだはお店の位置が来ないので、距離のしぼり込みを出さない
@@ -1695,7 +1696,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (card.display_only) {
         article.classList.add("partner-later");
         var later = document.createElement("button"); later.type = "button"; later.className = "btn"; later.disabled = true;
-        later.textContent = "準備中のため、まだ問い合わせできません";
+        later.textContent = "この会社には、このサイトからはまだ問い合わせできません";
         article.appendChild(later); return article;
       }
       var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn";

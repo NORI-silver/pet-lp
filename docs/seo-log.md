@@ -8,3 +8,4 @@
 2026-11-01 | A | データ記事4本（/guide/choose/ 選び方・/guide/pet-only/ ペットだけ・/guide/same-day/ 当日・夜間・キャンセル料・/guide/multi-pet/ 多頭）を追加。taxi-with-pet・large-dog・senior に事業者データの節、hospital・grooming-hotel・what-is-pet-taxi から内部リンク | Nori「SEOを徹底的に。ニーズごとにユニークで厚みのある記事」 | PR#98
 2026-11-01 | A・E | キーワードプランナーで検索数を取り、戦略キーワードの表を追加。43道府県ページに「お迎えに対応する◯社」と県ごとの運賃の計算・空港の案内を追加（大阪1,300回/月）。/guide/long-distance/ を追加、taxi-with-pet・grooming-hotel のtitleを検索語に合わせた | Nori「キーワードプランナーでボリュームも見きわめて」 | PR#100
 2026-11-01 | A | 新しい記事を見直し（言い過ぎ・根拠の弱い文を直す、各記事の最初に「まとめ」）。猫の記事に節を追加しtitleを「猫のタクシー」に、料金ガイドのtitleに「安い会社」、緊急ページのtitleに「緊急のペットタクシー」 | Nori「新しく作ったものを批判的に見直して」「どんどんやって」 | PR#102
+2026-11-01 18:43 | 定期 | grooming-hotel に「送迎ありのお店とペットタクシー」「待ち時間の料金（73社）」の節。grooming-hotel・farewell の「3時間後以降」をAGENTS.mdどおり外した | 戦略キーワード：トリミング 送迎 あり 170・ペットホテル 送迎 あり 90 | PR
