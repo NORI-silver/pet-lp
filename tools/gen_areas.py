@@ -620,6 +620,10 @@ PREFS47 = ["北海道","青森県","岩手県","宮城県","秋田県","山形�
 PAYS = ["現金", "クレジットカード", "電子マネー・QR決済", "請求書・振込"]
 # 手数料の率はサイトに出さない（Nori 2026-11-01）。率はお申し込みのあとメールで案内する
 PT_CSS = """<style>
+.pt-shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;max-width:720px;margin:0 auto}
+.pt-shots figure{margin:0}.pt-shots .ph{border:8px solid #1c1a18;border-radius:30px;overflow:auto;max-height:560px;background:#fff;max-width:320px;margin:0 auto;-webkit-overflow-scrolling:touch}
+.pt-shots img{display:block;width:100%;height:auto}
+.pt-shots figcaption{font-size:.92rem;color:var(--ink-2);margin:14px auto 0;max-width:320px}.pt-shots figcaption b{display:block;color:var(--ink);font-size:1rem;margin-bottom:2px}
 .pt-sec{padding:56px 0}.pt-sec.alt{background:var(--cream)}
 .pt-sec h2{font-size:1.4rem;font-weight:800;text-align:center;margin-bottom:10px}
 .pt-sec .sub{color:var(--ink-2);text-align:center;max-width:640px;margin:0 auto 28px}
@@ -710,10 +714,18 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 <ol class="pt-flow">
 <li><span class="who c">飼い主さん</span><h3>候補から会社を選んで問い合わせ</h3><p>お迎えの場所・日時・ペットの情報を入れると、条件に合う会社さまが料金の目安と一緒に並びます。飼い主さんは1社だけ、または条件に合う会社にまとめて問い合わせます。</p></li>
 <li><span class="who s">当サイト</span><h3>会社さまへメールでお届け</h3><p>日時・お迎えの場所・行き先・同乗する人数・ペットの種類や体重・頭数・ケージの有無と、料金の目安をお届けします。</p><span class="lock">🔒 この段階では、飼い主さんのお名前と連絡先はお伝えしません</span></li>
-<li><span class="who y">会社さま</span><h3>空いていればお返事</h3><p>メールのリンクを開き、お迎え時刻と確定料金（税込・一般道のとき／高速を使うとき）を入れて送るだけです。受けられないときは、何もしなくて大丈夫です。</p></li>
+<li><span class="who y">会社さま</span><h3>空いていればお返事</h3><p>メールのリンクを開き、お迎え時刻と確定料金（税込・一般道のとき／高速を使うとき）を入れて送るだけです。受けられないときは、何もしなくて大丈夫です。<a href="#screens">画面の見本を見る</a></p></li>
 <li><span class="who c">飼い主さん</span><h3>内容を見て予約を確定</h3><p>飼い主さんが「この内容で予約する」を押した時点で予約が確定します。何社かに問い合わせたときは、くらべて1社を選びます。選ばれなかった会社さまには「締め切り」のお知らせが届きます。</p></li>
 <li><span class="who y">会社さま</span><h3>飼い主さんと直接やり取りして送迎</h3><p>確定すると、飼い主さんのお名前と連絡先をメールでお知らせします。そのあとの打ち合わせ・送迎・運賃のお受け取りは、会社さまと飼い主さんで直接お願いします。</p></li>
 </ol>
+</div></section>
+
+<section class="pt-sec" id="screens"><div class="wrap">
+<h2>届くメールとお返事の画面（見本）</h2><p class="sub">実際に会社さまへ届くメールと、お返事の画面です。内容は架空のお問い合わせです。画面の中はスクロールできます。</p>
+<div class="pt-shots">
+<figure><div class="ph"><img src="/img/partner/mail.webp" width="390" height="1120" loading="lazy" alt="当サイトから届く「空き状況と料金のお問い合わせ」メールの見本。日時・お迎えの場所・行き先・ペット・同乗人数が書かれ、お名前と連絡先は伏せてある"></div><figcaption><b>1. メールが届く</b>日時・場所・ペットの様子が届きます。お名前と連絡先はまだ伏せています。受けられないときは何もしなくて大丈夫です。</figcaption></figure>
+<figure><div class="ph"><img src="/img/partner/reply.webp" width="390" height="839" loading="lazy" alt="メールのリンクから開くお返事の画面の見本。お迎え時刻と確定料金を入れて「この内容でお返事する」を押す"></div><figcaption><b>2. リンクを開いて数字を入れる</b>お迎え時刻と確定料金を入れて「この内容でお返事する」を押すだけです。ログインやアプリは要りません（見本では、メールと同じ依頼の内容の部分を省いています）。</figcaption></figure>
+</div>
 </div></section>
 
 <section class="pt-sec" id="fee"><div class="wrap">
