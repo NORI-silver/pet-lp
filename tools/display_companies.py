@@ -162,7 +162,25 @@ CUSTOM = {
     'D06b72ea': {'base': [660, 0], 'tiers': [[1, None, 300]], 'perkmFromStart': True, 'pick': {'per': 300}, 'night': {'from': 21, 'to': 9, 'unknown': True}, 'tax': '',
                  'src': 'https://pets-taxi.net/ja/kamakurapettaxi'},  # 初乗り660円＋運搬300円/km、送迎300円/km（大船駅から）、9時前・21時以降は割増（金額なし）
 }
+# 見積もりの返事（2026-11-01 答え合わせ）で分かった、公式サイトにない計算のしかた。fare に上書きする（Nori 2026-11-01「料金回答あった会社はいけるんじゃない？」）
+# night.by='start'＝乗る時刻だけで判定（ふつうは乗っているあいだに少しでも入れば全部にかける）、round＝10円未満切り捨て、kmMode＝距離の数え方
+REPLY_FIX = {
+    'Db405639': {'round': 10, 'pick': {'yen': 0}},                                   # D-RIDE：(2,980＋16km×150)×1.2＝6,456→6,450。お迎え料金なし
+    'Db8bafea': {'round': 10},                                                       # Comasuke：②5,520×1.1＝6,072→6,070
+    'D40a4aa0': {'pick': {'per': 165, 'rate': 0.5}},                                 # COCOタク さいたま南：お迎え半額セール（25km 1,875円＋税）。早朝料金は取っていない
+    'D13b7c6f': {'night': {'from': 21, 'to': 9, 'flat': 3300, 'by': 'start'}},       # aiai：早朝（〜9時）も3,300円。20:50乗車は割増なし
+    'D0a999a3': {'base': [3300, 0], 'tiers': [[1, 100, 165], [101, 200, 132], [201, None, 110]], 'night': {'from': 21, 'to': 8, 'flat': 3300, 'by': 'start'}},  # COCOタク奈良：基本3,300円＋お迎えと乗車の全km×165円。20:50乗車は割増なし
+    'D355c31f': {'kmMode': 'exact', 'pick': {'per': 198, 'freeWithin': 3},           # サポっ人 中目黒：13.1km×198＝2,593円のように小数の距離。お店の近くはお迎え無料
+                 'night': {'from': 22, 'to': 8, 'rate': 0.5, 'onAll': True}},        # 8時前・22時過ぎは50%増し
+    'D225080e': {'night': {'from': 21, 'to': 7, 'flat': 3000}},                       # ペッタク：21〜7時は深夜料金3,000円
+    'D678e01f': {'oneWayRate': 0.2, 'kmMode': 'floor', 'night': {'from': 22, 'to': 6, 'rate': 0.2}},  # 響：片道（乗り捨て）2割増し、25.9kmは25kmの料金、22〜6時2割増し
+    'D44cfd16': {'time': {'first': [20, 4400], 'unit': [10, 550], 'maxKm': 20, 'maxTotalKm': 20}},  # HAPPY WITH：迎車と乗車で20km超は距離プラン（「18,000円〜」）→お見積もり
+}
 def fare(T, did):
+    out = fare0(T, did)
+    if out and did in REPLY_FIX: out = dict(out, **REPLY_FIX[did])
+    return out
+def fare0(T, did):
     if did in CUSTOM: return CUSTOM[did]
     if not T or not T.get('base') or not T.get('tiers'): return None
     P, out = T.get('pick'), {'base': T['base'], 'tiers': T['tiers'], 'tax': T.get('tax') or '', 'src': T.get('src', '')}

@@ -394,7 +394,15 @@
     "tax": "税込",
     "src": "https://seikatsunosupport.com/pettaxi/",
     "pick": {
-     "per": 198
+     "per": 198,
+     "freeWithin": 3
+    },
+    "kmMode": "exact",
+    "night": {
+     "from": 22,
+     "to": 8,
+     "rate": 0.5,
+     "onAll": true
     }
    },
    "pay": "",
@@ -1773,7 +1781,7 @@
     ],
     "pick": {
      "per": 165,
-     "unsure": true
+     "rate": 0.5
     },
     "wait": {
      "free": 10,
@@ -2445,8 +2453,7 @@
     "tax": "税込",
     "src": "https://d-ride.jp/pettaxi.html",
     "pick": {
-     "yen": 0,
-     "unsure": true
+     "yen": 0
     },
     "wait": {
      "free": 30,
@@ -2457,7 +2464,8 @@
      "from": 22,
      "to": 7,
      "rate": 0.2
-    }
+    },
+    "round": 10
    },
    "pay": "現金・カード・電子決済",
    "review_q": "D-RIDE 北海道",
@@ -2581,8 +2589,9 @@
     },
     "night": {
      "from": 21,
-     "to": 5,
-     "flat": 3300
+     "to": 9,
+     "flat": 3300,
+     "by": "start"
     }
    },
    "pay": "現金・PayPay（カード・QRの記載も）／送迎後",
@@ -2959,7 +2968,8 @@
       10,
       550
      ],
-     "maxKm": 20
+     "maxKm": 20,
+     "maxTotalKm": 20
     },
     "off": {
      "from": 9,
@@ -3344,7 +3354,8 @@
      "flat": 4500
     },
     "tax": "税抜",
-    "src": "https://comasuke.com/"
+    "src": "https://comasuke.com/",
+    "round": 10
    },
    "pay": "現金・カード・電子マネー・QR",
    "review_q": "Comasuke 大阪",
@@ -4063,11 +4074,11 @@
    "fare": {
     "base": [
      3300,
-     5
+     0
     ],
     "tiers": [
      [
-      6,
+      1,
       100,
       165
      ],
@@ -4096,7 +4107,8 @@
     "night": {
      "from": 21,
      "to": 8,
-     "flat": 3300
+     "flat": 3300,
+     "by": "start"
     }
    },
    "pay": "現金・カード・QRコード決済",
@@ -4185,6 +4197,11 @@
      "free": 10,
      "unit": 10,
      "yen": 300
+    },
+    "night": {
+     "from": 21,
+     "to": 7,
+     "flat": 3000
     }
    },
    "pay": "",
@@ -4284,7 +4301,14 @@
      "yen": 220
     },
     "tax": "",
-    "src": "https://pettaxihibiki.hp.peraichi.com/"
+    "src": "https://pettaxihibiki.hp.peraichi.com/",
+    "oneWayRate": 0.2,
+    "kmMode": "floor",
+    "night": {
+     "from": 22,
+     "to": 6,
+     "rate": 0.2
+    }
    },
    "pay": "カード・PayPay・d払いなど",
    "review_q": "ペットタクシー 響 広島",
