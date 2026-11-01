@@ -234,6 +234,7 @@ def animals(f):
 # カードのアピールポイント（Nori 2026-10-31「各事業者のアピールポイントをカード内に」）。
 # 公式サイトの文（facts.json の by=site／会社の返事 by=reply、あいまい印なし）に書いてあることだけを短いことばにする。作らない・盛らない。最大4つ
 POINT_RULES = [
+    ('jutai', r'見積もりどおり', None, '渋滞でも追加料金なし'),  # Nori 2026-11-01「渋滞などが起こっても追加料金なしはアピールポイント」。公式サイトに渋滞で加算しないと書いてある会社だけ
     ('hours', r'24時間', r'電話受付24時間|Web予約は24時間|緊急は24時間', '24時間受付'),
     ('hours', r'(深夜|早朝)[^。]*(相談|対応)', r'不可', '深夜・早朝も相談可'),
     ('night', r'割増(なし|はありません|無し)', None, '深夜・早朝の割増なし'),
@@ -258,6 +259,7 @@ def points(f):
         if v.get('by') not in ('site', 'reply') or v.get('vague'): continue
         t = str(v.get('v') or '')
         if re.search(ok, t) and not (ng and re.search(ng, t)) and label not in out: out.append(label)
+    if '渋滞でも追加料金なし' in out and '追加料金なし' in out: out.remove('追加料金なし')  # 同じことを2つ出さない
     return out[:4]
 PARTNER_SAME = {'P002': 'Dbcb8b8d', 'P003': 'Da968571'}  # 提携先シートの会社と、事業者マスターの同じ会社
 
