@@ -5,4 +5,5 @@
 2026-10-31 | 設計 | エリア担当のSEO Agent 5つと順番を決め、tools/seo_check.py と SEO check を追加 | トラフィック最大化（Nori） | （このPR）
 2026-11-01 | A・B | トップ・4都県のtitleを「料金の目安と無料の予約・見積もり」に、説明文から「完全予約制」を外し「最大5社にまとめて」「当日の依頼もできる」を入れた | GSC 10/26〜30：表示20・クリック0・平均15.9位（トップ9.5位、/kanagawa/ 20位）。まだ1〜2ページ目の下なのでクリックが出ないのはふつう。順位を上げるのが本筋 | （このPR）
 2026-11-01 | B・C・D・E | 4都県のtitle・説明文に地域でよくある行き先（日本動物高度医療センター東京・川崎、日本小動物医療センター所沢、羽田・成田空港、ドギーズアイランド）を入れ、各ページに施設ガイドと場面別ガイドへのリンクを追加。43道府県の説明文に夜間の病院がある市を入れた | Nori「エリアごとのニーズやユーザの興味をふんだんに」 | PR#92
-2026-11-01 | A | データ記事4本（/guide/choose/ 選び方・/guide/pet-only/ ペットだけ・/guide/same-day/ 当日・夜間・キャンセル料・/guide/multi-pet/ 多頭）を追加。taxi-with-pet・large-dog・senior に事業者データの節、hospital・grooming-hotel・what-is-pet-taxi から内部リンク | Nori「SEOを徹底的に。ニーズごとにユニークで厚みのある記事」 | PR#93
+2026-11-01 | A | データ記事4本（/guide/choose/ 選び方・/guide/pet-only/ ペットだけ・/guide/same-day/ 当日・夜間・キャンセル料・/guide/multi-pet/ 多頭）を追加。taxi-with-pet・large-dog・senior に事業者データの節、hospital・grooming-hotel・what-is-pet-taxi から内部リンク | Nori「SEOを徹底的に。ニーズごとにユニークで厚みのある記事」 | PR#98
+2026-11-01 | A・E | キーワードプランナーで検索数を取り、戦略キーワードの表を追加。43道府県ページに「お迎えに対応する◯社」と県ごとの運賃の計算・空港の案内を追加（大阪1,300回/月）。/guide/long-distance/ を追加、taxi-with-pet・grooming-hotel のtitleを検索語に合わせた | Nori「キーワードプランナーでボリュームも見きわめて」 | PR#99
