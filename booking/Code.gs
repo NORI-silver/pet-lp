@@ -49,6 +49,10 @@ var CONFIG = {
   OPEN_HOURS: '8-20',
   WAVE2_MIN: 20,   // これを過ぎたら、近くのエリア・全国対応の提携先にも送る
   GIVE_UP_MIN: 60, // これを過ぎたら、お客さまにお詫びを送って終了
+  // 会社のお返事（空き状況と確定料金）で予約できる期限：お返事から QUOTE_VALID_HOURS 時間、ただしお迎えの QUOTE_CUTOFF_MIN 分前まで
+  // （何日もたってから「予約する」を押され、会社の空きがもう無い、を防ぐ。2026-11-01 法的な点検）
+  QUOTE_VALID_HOURS: 24,
+  QUOTE_CUTOFF_MIN: 60,
   MIN_LEAD_HOURS: 3, // お迎えは受付から3時間より先だけ（LPと同じ。入力にかかる時間を見て15分は大目に見る）
   URGENT_HOURS: 3, // 希望時刻まで3時間を切っている依頼は、待ち時間を半分にする
   // 送迎のあと、飼い主さんに「無事に送迎できましたか？」を聞く（お迎え予定からこの時間たったら。送るのは RIDE_CHECK_SEND_HOURS の時間帯だけ）
@@ -109,7 +113,9 @@ var PARTNER_HEADERS = [
   // 2026-10-31 追加（空欄＝まだ分からない。分からない条件は候補に出し、引き受けるときに会社がチェックして確かめる）
   '送迎できる時間', '大型犬の最大kg', '大型犬の最大頭数', '貸し出しケージの最大kg', 'ペットだけOK', 'ワクチン必須',
   // 2026-11-01 追加：「犬・猫」「犬・猫・うさぎ・鳥」「すべて」など。書いてあればそれ以外の動物の依頼は送らない（列がなくても動く。空欄＝確かめてもらう）
-  '乗せられる動物'
+  '乗せられる動物',
+  // 2026-11-01 追加：確定のあとのキャンセル料など（例「前日まで無料・当日は運賃の50%」）。書いてあれば予約する前のお客さまに見せる
+  'キャンセル規定'
 ];
 
 var ST = { OPEN: '手配中', DONE: '決定', NONE: '見つからず', CANCEL: '取り消し' };
@@ -123,6 +129,17 @@ function isQuoteReq_(r) { return r['依頼の種類'] === '見積もり'; }
 function isAsk_(r) { return r['依頼の種類'] === '問い合わせ'; }
 // お客さまがあとで決める依頼：問い合わせ（いまの依頼すべて）と、前の形の見積もり依頼・複数社への予約依頼。前の形の1社だけの予約依頼は、引き受けた時点で決まる
 function needsChoice_(r) { return isAsk_(r) || isQuoteReq_(r) || pickedIds_(r).length > 1; }
+// お返事で予約できる期限（ミリ秒）。お返事から QUOTE_VALID_HOURS 時間か、お迎えの QUOTE_CUTOFF_MIN 分前の早いほう
+function cutoffText_() { var m = CONFIG.QUOTE_CUTOFF_MIN; return m % 60 ? m + '分' : (m / 60) + '時間'; }
+function quoteUntil_(qt) {
+  var t = Number(qt && qt.time) || Date.now(), at = Number(qt && qt.at) || Infinity;
+  return Math.min(t + CONFIG.QUOTE_VALID_HOURS * 3600000, at - CONFIG.QUOTE_CUTOFF_MIN * 60000);
+}
+// 予約する前のお客さまに見せるキャンセルの決まり（当サイトはキャンセル料をいただかない）
+function cancelRuleText_(pt) {
+  var c = String((pt && pt.cancelRule) || '').trim();
+  return c ? c + '（' + pt.name + 'の規定）' : pt.name + 'のキャンセル規定によります。予約の前に、' + pt.name + 'の公式サイトなどでご確認ください';
+}
 function quotesOf_(r) { try { return JSON.parse(r['見積もりJSON'] || '[]') || []; } catch (e) { return []; } }
 // 複数社を選んだとき：picks＝[{id, token, expires}]（LPのカードの見積もりの署名）。1社のときは partner_id などをそのまま使う
 function picksOf_(p) {
@@ -362,7 +379,7 @@ function sendWave_(id, stage) {
 function requestText_(r, pt) {
   return pt.name + ' ' + (pt.person ? pt.person + '様' : 'ご担当者さま') + '\n\n' +
     'ペットタクシーの検索サイト「' + CONFIG.SERVICE_NAME + '」です。飼い主さんから、送迎のお問い合わせが届きました。\n' +
-    (isAsk_(r) ? '★飼い主さんのお名前・ご連絡先は、飼い主さんが予約を確定した時点でお知らせします。\n\n' : '★お客さまのお名前・ご連絡先は、引き受けが決まった時点でお知らせします（リンクから引き受けた場合はその場で表示されます）。\n\n') +
+    (isAsk_(r) ? '★飼い主さんのお名前・ご連絡先は、飼い主さんが予約を確定した時点でお知らせします。\n★お返事の内容（お迎え時刻・確定料金）は、お返事から' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。そのあいだに飼い主さんが予約を確定したときは、お引き受けください。\n\n' : '★お客さまのお名前・ご連絡先は、引き受けが決まった時点でお知らせします（リンクから引き受けた場合はその場で表示されます）。\n\n') +
     rideText_(r) + retAsk_(r) + estText_(r) + '\n■ お支払い：' + payForPartner_(pt) + askText_(pt, r) + '\n\n' +
     (isAsk_(r) ? '空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。お受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです）。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。\n'
       : isQuoteReq_(r) ? 'お見積もりのご依頼です。お客さまは、ほかの会社のお見積もりとくらべて1社を選びます。\nお受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです）。お客さまが貴社を選んだら、お名前・ご連絡先をお知らせします。\n'
@@ -466,7 +483,7 @@ function partners_() {
       active: !no(v[col('受付中')]), careOk: !no(v[col('介助OK')]),
       lineCode: String(v[col('LINE登録コード')]).trim(), lineId: String(v[col('LINE userId')]).trim(),
       animals: animalsOf_(cell('乗せられる動物')), big: tri('大型犬OK'), luggage: tri('荷物多めOK'), riders: num('同乗できる人数'), pets: num('乗せられるペット数'),
-      car: cell('車のタイプ'),
+      car: cell('車のタイプ'), cancelRule: cell('キャンセル規定'),
       cageMust: cell('ケージ必須'), cageLend: tri('ケージ貸し出し'),
       payMethod: cell('支払い方法'), payWhen: cell('支払いのタイミング'),
       hours: cell('営業時間'), lead: num('何時間前まで'),
@@ -753,7 +770,7 @@ function acceptPage_(q) {
     if (needsChoice_(r)) {
       var qr = quote_(q.id, pt, at, fare, clip_(q.msg, 300), yenNum_(q.fare_hw), way);
       if (!qr.ok) return page_('締め切りました', '<p>' + esc_(qr.msg) + '</p>');
-      if (isAsk_(r)) return page_('お返事を送りました', '<p>お客さまに、空き状況（お迎え時刻）と確定料金をお届けしました。<b>お客さまが「予約する」を押したら、お名前・ご連絡先をメールでお知らせします。</b>予約にならなかったときは「締め切り」のお知らせをお送りします。</p>');
+      if (isAsk_(r)) return page_('お返事を送りました', '<p>お客さまに、空き状況（お迎え時刻）と確定料金をお届けしました。<b>お客さまが「予約する」を押したら、お名前・ご連絡先をメールでお知らせします。</b>予約にならなかったときは「締め切り」のお知らせをお送りします。</p><p>このお返事は' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。そのあいだに予約が確定したときは、お引き受けください。</p>');
       return page_(isQuoteReq_(r) ? 'お見積もりを送りました' : '引き受けのお返事を送りました', '<p>お客さまに' + (isQuoteReq_(r) ? 'お見積もり' : '引き受けのお返事と確定料金') + 'をお届けしました。<b>お客さまが貴社を選んだら、お名前・ご連絡先をメールでお知らせします。</b>選ばれなかったときは「締め切り」のお知らせをお送りします。</p>');
     }
     var res = accept_(q.id, pt, at, fare, clip_(q.msg, 300), yenNum_(q.fare_hw), way);
@@ -853,7 +870,8 @@ function quote_(id, pt, at, fare, msg, fareHw, retWay) {
     if (!row || row.data['状態'] !== ST.OPEN) return { ok: false, msg: 'このご依頼は締め切りました。ご確認ありがとうございました。' };
     if (pickedIds_(row.data).indexOf(pt.id) < 0) return { ok: false, msg: 'お客さまが選んだ会社と異なるため、お見積もりを出せません。' };
     var list = quotesOf_(row.data).filter(function (x) { return x.pid !== pt.id; });
-    list.push({ pid: pt.id, at: at.getTime(), fare: fare, fareHw: fareHw || '', way: retWay || '', msg: msg || '', time: Date.now() });
+    var mine = { pid: pt.id, at: at.getTime(), fare: fare, fareHw: fareHw || '', way: retWay || '', msg: msg || '', time: Date.now() };
+    list.push(mine);
     setReq_(row.rowIndex, { '見積もりJSON': JSON.stringify(list) });
     SpreadsheetApp.flush();
     r = findReq_(id).data;
@@ -866,7 +884,8 @@ function quote_(id, pt, at, fare, msg, fareHw, retWay) {
   toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】' + word + 'が届きました：' + pt.name + '（受付番号 ' + id + '）' + legTag_(r),
     r['お名前'] + ' 様\n\n「' + pt.name + '」から' + word + 'が届きました。' + (isAsk_(r) ? '下のお迎え予定の時刻で空いています。\n※まだ予約は確定していません。内容に納得できたら、下のリンクから「この内容で予約する」を押してください。\n\n' : 'まだ予約は決まっていません。\n\n') +
     '■ ペットタクシー：' + pt.name + '\n■ お迎え予定：' + fmt_(at) + '\n■ 料金（確定・税込）：' + fareText_(fare, fareHw) + '\n' +
-    (retWay ? '■ 帰りのやり方：' + retWay + '\n' : '') + '■ お支払い：' + payForCustomer_(pt) + '\n' + (msg ? '■ ペットタクシーから：' + msg + '\n' : '') +
+    (retWay ? '■ 帰りのやり方：' + retWay + '\n' : '') + '■ お支払い：' + payForCustomer_(pt) + '\n' + '■ 予約したあとのキャンセル：' + cancelRuleText_(pt) + '\n' + (msg ? '■ ペットタクシーから：' + msg + '\n' : '') +
+    '■ この内容で予約できる期限：' + fmt_(new Date(quoteUntil_(mine))) + 'まで（過ぎると会社の空き状況が変わるため、この内容では予約できません）\n' +
     (isAsk_(r) ? '\n▼ この内容で予約する（押すと予約が確定し、この会社からご連絡があります）\n' : '\n▼ この会社に決める（押すと予約が決まり、この会社からご連絡があります）\n') + chooseUrl_(id, pt.id) +
     '\n\n' + (!isAsk_(r) || many ? 'ほかの会社の' + word + 'も、届きしだいお送りします。くらべてから決めてかまいません。' : '') +
     (isAsk_(r) ? '予約しない場合は、何もしなくて大丈夫です（下のリンクで取り消すこともできます）。\n' : 'どの会社にも決めない場合は、何もしなくて大丈夫です（下のリンクで取り消すこともできます）。\n') + cancelUrl_(id));
@@ -884,13 +903,14 @@ function choosePage_(q) {
   var r = row.data, qt = quotesOf_(r).filter(function (x) { return x.pid === pt.id; })[0];
   if (r['状態'] === ST.DONE) return page_(r['決定した提携先ID'] === pt.id ? (isAsk_(r) ? 'ご予約は確定しています' : 'この会社に決まっています') : 'ほかの会社に決まっています', '<p>' + esc_(r['決定した提携先'] || '') + 'に決まっています。決定のメールをご確認ください。</p>');
   if (r['状態'] !== ST.OPEN || !qt) return page_('締め切りました', '<p>このご依頼は締め切りました。</p>');
+  if (Date.now() > quoteUntil_(qt)) return page_('お返事の期限が過ぎました', '<p>「' + esc_(pt.name) + '」のお返事で予約できる期限（' + esc_(fmt_(new Date(quoteUntil_(qt)))) + '）が過ぎました。会社の空き状況が変わっている場合があるため、この内容では予約できません。</p><p>お手数ですが、<a href="' + esc_(retryUrl_(q.id)) + '" target="_top">同じ内容でもう一度問い合わせる</a>からお問い合わせください。</p>');
   if (q.go === '1') {
     var res = accept_(q.id, pt, new Date(qt.at), qt.fare, qt.msg, qt.fareHw, qt.way);
     if (!res.ok) return page_('決められませんでした', '<p>' + esc_(res.msg) + '</p>');
     return page_(isAsk_(r) ? 'ご予約が確定しました' : '決まりました', '<p>「' + esc_(pt.name) + '」' + (isAsk_(r) ? 'のご予約が確定しました。確定のメールをお送りしました。' : 'に決まりました。決定のメールをお送りしました。') + 'このあと、' + esc_(pt.name) + 'からご連絡があります。</p>');
   }
   return page_(isAsk_(r) ? 'この内容で予約しますか？' : 'この会社に決めますか？', '<div class="box">■ ペットタクシー：' + esc_(pt.name) + '<br>■ お迎え予定：' + esc_(fmt_(new Date(qt.at))) + '<br>■ 料金（確定・税込）：' + esc_(fareText_(qt.fare, qt.fareHw)) +
-    (qt.way ? '<br>■ 帰りのやり方：' + esc_(qt.way) : '') + '<br>■ お支払い：' + esc_(payForCustomer_(pt)) + '</div>' +
+    (qt.way ? '<br>■ 帰りのやり方：' + esc_(qt.way) : '') + '<br>■ お支払い：' + esc_(payForCustomer_(pt)) + '<br>■ 予約したあとのキャンセル：' + esc_(cancelRuleText_(pt)) + '<br>■ 予約できる期限：' + esc_(fmt_(new Date(quoteUntil_(qt)))) + 'まで</div>' +
     '<p>' + (isAsk_(r) ? '押すと予約が確定し、' + esc_(pt.name) + 'にお名前・ご連絡先をお知らせします。' + (pickedIds_(r).length > 1 ? 'ほかの会社へのお問い合わせは締め切ります。' : '') : '決めると、ほかの会社へのご依頼は締め切ります。') + '</p>' +
     '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'choose') + hidden_('id', q.id) + hidden_('p', q.p) + hidden_('k', q.k) + hidden_('go', '1') +
     '<button type="submit">' + (isAsk_(r) ? 'この内容で予約する' : 'この会社に決める') + '</button></form>');
