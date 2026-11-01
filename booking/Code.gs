@@ -1027,7 +1027,7 @@ function retryUrl_(id) { return CONFIG.SITE_URL + '?r=' + encodeURIComponent(id)
 
 function checkPending() {
   var sh = sheet_(SHEET_REQ);
-  ensureReqHeaders_(sh); // 「送迎確認」の列がないと何度も送ってしまうので、先に足しておく
+  try { ensureReqHeaders_(sh); } catch (err) {} // 「送迎確認」の列を先に足しておく（足せなくても rideCheckDue_ が列のない行には送らない）
   var vals = sh.getDataRange().getValues();
   var h = vals[0];
   var now = Date.now();
