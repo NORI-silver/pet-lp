@@ -107,7 +107,9 @@ var PARTNER_HEADERS = [
   '車のタイプ', '同乗できる人数', '乗せられるペット数', '荷物多めOK',
   'ケージ必須', 'ケージ貸し出し', '支払い方法', '支払いのタイミング', '営業時間', '何時間前まで',
   // 2026-10-31 追加（空欄＝まだ分からない。分からない条件は候補に出し、引き受けるときに会社がチェックして確かめる）
-  '送迎できる時間', '大型犬の最大kg', '大型犬の最大頭数', '貸し出しケージの最大kg', 'ペットだけOK', 'ワクチン必須'
+  '送迎できる時間', '大型犬の最大kg', '大型犬の最大頭数', '貸し出しケージの最大kg', 'ペットだけOK', 'ワクチン必須',
+  // 2026-11-01 追加：「犬・猫」「犬・猫・うさぎ・鳥」「すべて」など。書いてあればそれ以外の動物の依頼は送らない（列がなくても動く。空欄＝確かめてもらう）
+  '乗せられる動物'
 ];
 
 var ST = { OPEN: '手配中', DONE: '決定', NONE: '見つからず', CANCEL: '取り消し' };
@@ -461,7 +463,7 @@ function partners_() {
       lineUrl: lineUrlOf_(col('LINE公式ID（先方）') >= 0 ? v[col('LINE公式ID（先方）')] : ''),
       active: !no(v[col('受付中')]), careOk: !no(v[col('介助OK')]),
       lineCode: String(v[col('LINE登録コード')]).trim(), lineId: String(v[col('LINE userId')]).trim(),
-      big: tri('大型犬OK'), luggage: tri('荷物多めOK'), riders: num('同乗できる人数'), pets: num('乗せられるペット数'),
+      animals: animalsOf_(cell('乗せられる動物')), big: tri('大型犬OK'), luggage: tri('荷物多めOK'), riders: num('同乗できる人数'), pets: num('乗せられるペット数'),
       car: cell('車のタイプ'),
       cageMust: cell('ケージ必須'), cageLend: tri('ケージ貸し出し'),
       payMethod: cell('支払い方法'), payWhen: cell('支払いのタイミング'),
@@ -579,6 +581,27 @@ function animalKind_(p) {
   if (/うさぎ|ウサギ|フェレット|ハムスター|モルモット|チンチラ|リス|りす|ハリネズミ|デグー|小動物/.test(t)) return 'small';
   return 'other';
 }
+// 提携先シートの「乗せられる動物」を読む。例「犬・猫」「犬・猫・うさぎ・鳥」「犬のみ」「すべて」。空欄は null（分からない）
+function animalsOf_(t) {
+  t = String(t || '').trim();
+  if (!t) return null;
+  if (/すべて|全て|なんでも|何でも|制限なし/.test(t)) return { all: true };
+  var a = { all: false };
+  if (/犬/.test(t)) a.dog = true;
+  if (/猫/.test(t)) a.cat = true;
+  if (/小動物|うさぎ|ウサギ|フェレット|ハムスター|モルモット|チンチラ|ハリネズミ/.test(t)) a.small = true;
+  if (/鳥|インコ|オウム|文鳥/.test(t)) a.bird = true;
+  if (/爬虫|両生|カメ|亀|トカゲ|ヘビ|蛇/.test(t)) a.reptile = true;
+  if (/魚|金魚|メダカ/.test(t)) a.fish = true;
+  return a;
+}
+// true＝乗せられる、false＝乗せない、null＝分からない（確かめてもらう）
+function partnerAnimalOk_(pt, kind) {
+  var a = pt && pt.animals;
+  if (!a) return null;
+  if (a.all) return true;
+  return !!a[kind];
+}
 var ANIMAL_LABEL = {small:'小動物', bird:'鳥', reptile:'爬虫類', fish:'魚', other:'犬・猫のほかの子'};
 // 表示だけの会社が、犬・猫のほかの子を乗せられるか。true＝サイトに書いてある、false＝断る・犬猫のみと書いてある、null＝分からない
 function displayAnimalOk_(c, kind) {
@@ -609,9 +632,13 @@ function checks_(pt, r) {
   else if (pt.pets === null && n.pets >= 2) ask.push(n.pets + '匹が一緒に乗れる');
   if (n.luggage && pt.luggage === false) ng.push('荷物が多い');
   else if (n.luggage && pt.luggage === null) ask.push('多めの荷物（スーツケース・大きなケージなど）が載る');
-  // 種類：犬・猫のほかの子は、乗せられるかを会社ごとに確かめる
-  pets.filter(function (p) { return animalKind_(p); }).forEach(function (p) {
-    ask.push('犬・猫のほかの子（' + (p.breed || p.sp) + '）を乗せられる');
+  // 種類：提携先シートの「乗せられる動物」に書いてあれば、それ以外は送らない（Nori 2026-11-01「条件に合う依頼だけ届く」）。空欄の会社は確かめてもらう
+  pets.forEach(function (p) {
+    var k = /^犬$/.test(String(p.sp || '')) ? 'dog' : /^猫$/.test(String(p.sp || '')) ? 'cat' : animalKind_(p);
+    if (!k) return;
+    var ok = partnerAnimalOk_(pt, k);
+    if (ok === false) ng.push((p.breed || p.sp) + '（乗せられる動物の外）');
+    else if (ok === null && k !== 'dog' && k !== 'cat') ask.push('犬・猫のほかの子（' + (p.breed || p.sp) + '）を乗せられる');
   });
   // 大きさ
   if (bigs.length) {
