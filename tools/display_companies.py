@@ -295,7 +295,7 @@ def limits(f):
     # 大型犬の頭数
     lg, pe = _t(f, 'large'), _t(f, 'pets')
     m = re.search(r'大型犬[^。]*?(\d)頭(には)?対応していない', lg)
-    if m and m.group(1) != '1': out.append('大型犬は%d頭まで' % (int(m.group(1)) - 1))
+    if m and m.group(1) != '1': out.append('大型犬%d頭まで' % (int(m.group(1)) - 1))
     elif '食い違い' not in lg:
         ms = re.findall(r'大型犬[^。（]*?(\d)\s*(?:頭|匹)(まで)?', lg + '。' + pe)
         if ms:
@@ -306,6 +306,7 @@ def limits(f):
     if m: out.append('%s〜%s頭OK' % (m.group(1), m.group(2)))
     elif re.search(r'(\d)\s*頭(でも|を一度に)', pe): out.append('%s頭OK' % re.search(r'(\d)\s*頭(でも|を一度に)', pe).group(1))
     elif re.search(r'何頭でも|頭数(に関係なく|による追加料金はありません)|複数でも追加料金|多頭飼いも追加料金なし|匹数[^。]*関係なく', pe): out.append('頭数で料金は変わらない')
+    if not any('頭' in x and not x.startswith('大型犬') for x in out) and re.search(r'多頭', pe) and not re.search(r'多頭[^。]*(不可|お断り)|加算', pe): out.append('多頭OK')  # Nori 2026-11-01「多頭OKとか」も条件のタグに
     # 同乗の人数
     r = _t(f, 'riders')
     ns = [int(x) for x in re.findall(r'(\d)\s*(?:名|人)(?:様)?(?:まで|迄)', r) + re.findall(r'定員\s*(\d)\s*名', r) + re.findall(r'(\d)\s*名様?まで', r)]
