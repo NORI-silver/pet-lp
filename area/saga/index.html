@@ -499,10 +499,17 @@ footer a{color:var(--ink-2)}
 .req-mode label{display:block;padding:4px 0;cursor:pointer}
 .req-mode label span{display:block;font-size:.76rem;color:var(--ink-2);margin-left:1.6em}
 .partner-card .btn.pick-on{background:var(--o-d)}
-#partnerRest[hidden],.partner-sort[hidden]{display:none}
+#partnerRest[hidden],.partner-rest-btn[hidden],.partner-sort[hidden]{display:none}
 .partner-sort{display:flex;align-items:center;gap:8px;justify-content:flex-end;margin:4px 0 10px;font-size:.86rem}
 .partner-sort label{font-weight:700;color:var(--ink-2)}
 .partner-sort select{width:auto;min-width:12em;padding:8px 10px;font-size:.88rem}
+.partner-sort{flex-wrap:wrap;row-gap:8px;column-gap:14px}
+.partner-sort .ps-item{display:flex;align-items:center;gap:8px}
+.partner-sort .ps-item[hidden]{display:none}
+.partner-sort #partnerDist{min-width:7em}
+.partner-dist-note[hidden]{display:none}
+.partner-dist-note{margin:0 0 10px;font-size:.82rem;color:var(--ink-2);text-align:right}
+.partner-dist{margin:-2px 0 6px;font-size:.8rem;color:var(--ink-2)}
 .partner-card .partner-more{font-size:.8rem;color:var(--ink-2);border-top:1px dashed var(--line);padding:8px 0 0;margin:0;background:none;box-shadow:none;border-radius:0}
 .partner-card .partner-more>summary{font-weight:700;color:var(--o-d);font-size:.84rem;padding:0}
 .partner-card .partner-more>summary::after{content:" ▸";position:static;display:inline;width:auto;height:auto;margin:0;background:none;border-radius:0;transform:none}
@@ -843,8 +850,11 @@ footer a{color:var(--ink-2)}
             <label><input type="radio" name="req_mode" value="book" checked> <b>予約を依頼する</b><span>1社なら、引き受けた時点で決まります。2社以上なら、引き受けた会社の確定料金がメールで届き、1社を選んだときに決まります。</span></label>
             <label><input type="radio" name="req_mode" value="quote"> <b>見積もりを依頼する</b><span>選んだ会社から確定料金がメールで届きます。くらべて1社を選んだときに決まります。</span></label>
           </div>
-          <div class="partner-sort" id="partnerSortBox"><label for="partnerSort">並び順</label>
-            <select id="partnerSort"><option value="review_desc" selected>口コミの評価が高い順</option><option value="review_asc">口コミの評価が低い順</option><option value="price_asc">料金が安い順</option><option value="price_desc">料金が高い順</option></select></div>
+          <div class="partner-sort" id="partnerSortBox"><span class="ps-item"><label for="partnerSort">並び順</label>
+            <select id="partnerSort"><option value="dist_asc" selected>お店が近い順</option><option value="review_desc">口コミの評価が高い順</option><option value="review_asc">口コミの評価が低い順</option><option value="price_asc">料金が安い順</option><option value="price_desc">料金が高い順</option></select></span>
+            <span class="ps-item"><label for="partnerDist">お店からの距離</label>
+            <select id="partnerDist"><option value="" selected>すべて</option><option value="5">5km以内</option><option value="10">10km以内</option><option value="15">15km以内</option><option value="20">20km以内</option><option value="30">30km以内</option></select></span></div>
+          <p class="partner-dist-note" id="partnerDistNote" hidden></p>
           <div class="partner-grid" id="partnerCards"></div>
           <button type="button" class="partner-rest-btn" id="partnerRestBtn" aria-expanded="false" aria-controls="partnerRest" hidden></button>
           <div class="partner-grid" id="partnerRest" hidden></div>
@@ -903,7 +913,7 @@ footer a{color:var(--ink-2)}
     <p><a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・マイカーとの違い</a>では、料金のしくみをくわしく説明しています。キャリーに入る小さな子なら、<a href="/guide/taxi-with-pet/">ふつうのタクシーに乗れることもあります</a>。</p>
 
     <h2>ペットタクシーを頼む前に確かめること</h2>
-    <h3>お迎えに来てもらえる場所か</h3><p>会社ごとに対応する地域が決まっていて、地域の外はお迎え料金が増えたり、受けてもらえなかったりします。 <a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・マイカーとの違い</a></p><h3>料金の決まり方</h3><p>乗る距離の料金のほかに、お迎え料金・待ち時間の料金・夜間や早朝の割増・高速代がかかることがあります。どこまでが基本料金に入っているかは会社ごとに違います。 <a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・マイカーとの違い</a></p><h3>ケージやキャリー</h3><p>持っていくのか、借りられるのか、なしでも乗れるのか。猫はキャリーに入れて乗るのが基本です。 <a href="/guide/cat/">猫の移動をやさしく。キャリーの慣らし方と車での過ごし方</a></p><h3>大きさと頭数</h3><p>大型犬や多頭のときは、車の広さやスロープの有無を前もって伝えておくと安心です。 <a href="/guide/large-dog/">大型犬の移動に、ペットタクシーという選択</a></p><h3>飼い主さんが一緒に乗るか</h3><p>ペットだけの送迎を受けるかどうかは会社によって違います。 <a href="/guide/hospital/">動物病院への通院にペットタクシーを</a></p><h3>支払い方法とキャンセル</h3><p>現金だけの会社もあります。払うのが乗る前か降りるときか、キャンセル料がいつからかかるかも確かめましょう。 <a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・マイカーとの違い</a></p>
+    <h3>お迎えに来てもらえる場所か</h3><p>会社ごとに対応する地域が決まっていて、地域の外はお迎え料金が増えたり、受けてもらえなかったりします。 <a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・レンタカー・カーシェアとの違い</a></p><h3>料金の決まり方</h3><p>乗る距離の料金のほかに、お迎え料金・待ち時間の料金・夜間や早朝の割増・高速代がかかることがあります。どこまでが基本料金に入っているかは会社ごとに違います。 <a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・レンタカー・カーシェアとの違い</a></p><h3>ケージやキャリー</h3><p>持っていくのか、借りられるのか、なしでも乗れるのか。猫はキャリーに入れて乗るのが基本です。 <a href="/guide/cat/">猫の移動をやさしく。キャリーの慣らし方と車での過ごし方</a></p><h3>大きさと頭数</h3><p>大型犬や多頭のときは、車の広さやスロープの有無を前もって伝えておくと安心です。 <a href="/guide/large-dog/">大型犬の移動に、ペットタクシーという選択</a></p><h3>飼い主さんが一緒に乗るか</h3><p>ペットだけの送迎を受けるかどうかは会社によって違います。 <a href="/guide/hospital/">動物病院への通院にペットタクシーを</a></p><h3>支払い方法とキャンセル</h3><p>現金だけの会社もあります。払うのが乗る前か降りるときか、キャンセル料がいつからかかるかも確かめましょう。 <a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・レンタカー・カーシェアとの違い</a></p>
 
     <h2>佐賀県の夜間・救急の動物病院と、緊急の搬送</h2>
     <p>一刻を争う症状のときは、まずかかりつけや夜間・救急の動物病院に電話して、受け入れてもらえるか確かめてください。佐賀県の夜間・救急の動物病院として、福岡市博多区（福岡県）の病院を載せています。</p>
@@ -1185,6 +1195,7 @@ footer a{color:var(--ink-2)}
         <h4>1. お預かりする情報</h4>
         <ul><li>お名前、電話番号、メールアドレス</li><li>お迎えの場所、経由地、行き先、希望の日時、ペットの種類・体重・年齢などの情報、メモ欄の内容</li></ul>
         <p>フォームのお迎えの都道府県を近い順に並べるため、通信の情報（IPアドレス）から大まかな地域を推定することがあります。並び順にだけ使い、保存はしません。</p>
+        <p>場所の候補や道のり（料金の目安・お店からの距離）を調べるため、入力した場所の位置を地図・道路データのサービスに送ることがあります。お名前や連絡先は送りません。</p>
         <h4>2. 使う目的</h4>
         <ul><li>ペットタクシーの空き確認と手配、お迎え時間・料金のご連絡</li><li>キャンセルやお問い合わせへの対応</li><li>サービスの改善（個人が特定できない形の集計に限ります）</li></ul>
         <p>ご本人の同意なく、この目的のほかに使うことはありません。</p>
@@ -1264,7 +1275,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
   }
   function conditionsChanged(event){
-    if (["name","tel","email","notes","agree","website","partnerSort","req_mode","req_type"].indexOf(event.target.id || event.target.name) >= 0) return; // 並び順を変えても、候補は取り直さない
+    if (["name","tel","email","notes","agree","website","partnerSort","partnerDist","req_mode","req_type"].indexOf(event.target.id || event.target.name) >= 0) return; // 並び順を変えても、候補は取り直さない
     clearPartners(); queuePartners();
     if (!$("partnerNeed").hidden) showNeed(); // 出ている一覧は、入れたらすぐ減らす
   }
@@ -1414,21 +1425,33 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。どの会社もいまは準備中のため、まだ予約を依頼できません。料金は確定料金ではありません。" : (later ? cards.length + "社が候補です（うち" + later + "社は準備中のため、まだ予約を依頼できません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。選んだ会社だけに依頼します（最大" + MAX_PICKS + "社）。");
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。予約の依頼は送信されていません。</span>';
     $("partnerSortBox").hidden = cards.length < 2;
+    var hasDist = cards.some(function(c){ return !!c.shop; }); // 予約のしくみが古い版のあいだはお店の位置が来ないので、距離のしぼり込みを出さない
+    $("partnerDist").parentNode.hidden = !hasDist; if (!hasDist) $("partnerDist").value = "";
     $("reqModeBox").hidden = !ready || !!form.querySelector("input[name=req_type]"); // 予約を依頼できる会社があるときだけ。フォームの最初で選ぶときは出さない
     chosenPicks = chosenPicks.filter(function(c){ return cards.some(function(x){ return x.id === c.id && !x.display_only; }); }).map(function(c){ return cards.filter(function(x){ return x.id === c.id; })[0]; });
     chosenQuote = chosenPicks[0] || null; showPickButton();
     drawCards();
     paintLegs();
     loadScores();
+    loadRoads();
     // 自動更新では入力中のフォーカスやスクロール位置を動かさない。
   }
-  // 並べ替え（Nori 2026-10-31「価格の安い・高い順、口コミが高い・低い順でソートできるように。デフォルトは安い順」）
+  // 並べ替え（Nori 2026-10-31「価格の安い・高い順、口コミが高い・低い順」、2026-11-01「お店からお迎えまでの距離が短い順で表示」＝デフォルト）
   // 料金が出ない会社・口コミの点数がない会社は、どの並び順でも後ろ。同じなら元の順
   var scoresReady = false, scoreMemo = {}; // 口コミの星：このページを開いているあいだだけ覚える（保存はしない）
   function withScore(c){ return Object.prototype.hasOwnProperty.call(scoreMemo, c.id) ? Object.assign({}, c, {review: scoreMemo[c.id]}) : c; }
-  function sortCards(list){
-    var mode = $("partnerSort").value || "review_desc";
-    var key = function(c){ return mode.indexOf("price") === 0 ? (c.price && c.price.amount != null ? c.price.amount : null) : (c.review && c.review.rating > 0 ? c.review.rating : null); };
+  // お店からの距離でしぼる（Nori 2026-11-01「フィルターにも事業所との距離」）。お店の場所が分からない会社も外す。選んだ会社は外さない
+  function distOk(c, leg){
+    var max = Number($("partnerDist").value || 0);
+    if (!max || chosenPicks.some(function(x){ return x.id === c.id; })) return true;
+    var km = roadOf(c, leg);
+    if (km === undefined) return true; // 道のりを調べている途中の会社はまだ外さない
+    return km != null && km <= max; // お店の場所が分からない・道のりが取れない会社は外す
+  }
+  function sortCards(list, leg){
+    var mode = $("partnerSort").value || "dist_asc";
+    var key = function(c){ return mode.indexOf("price") === 0 ? (c.price && c.price.amount != null ? c.price.amount : null) : mode.indexOf("dist") === 0 ? (roadOf(c, leg) != null ? roadOf(c, leg) : null) : (c.review && c.review.rating > 0 ? c.review.rating : null); };
+    list = list.filter(function(c){ return distOk(c, leg); });
     var down = /_desc$/.test(mode);
     return list.map(withScore).map(function(c, i){ return {c: c, i: i, k: key(c)}; }).sort(function(a, b){
       if ((a.c.display_only ? 1 : 0) !== (b.c.display_only ? 1 : 0)) return a.c.display_only ? 1 : -1; // 予約を依頼できる会社を先に
@@ -1442,7 +1465,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var TOP_CARDS = 3, restOpen = false;
   function drawCards(){
     $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren();
-    var list = sortCards(quoteCards), rest = list.length - TOP_CARDS;
+    var list = sortCards(quoteCards, ""), rest = list.length - TOP_CARDS, cut = quoteCards.length - list.length;
+    $("partnerDistNote").hidden = !cut;
+    $("partnerDistNote").textContent = !cut ? "" : "候補" + quoteCards.length + "社のうち、お店からの車の道のりが" + $("partnerDist").value + "km以内は" + list.length + "社です" + (list.length ? "（お店の場所が分からない会社も外しています）。" : "。距離を広げてください。");
     list.forEach(function(card, i){ $(i < TOP_CARDS ? "partnerCards" : "partnerRest").appendChild(buildCard(card, "")); });
     $("partnerRestBtn").hidden = rest <= 0;
     $("partnerRest").hidden = rest <= 0 || !restOpen;
@@ -1458,6 +1483,57 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     drawCards();
     if (!chosenGo && !chosenBack) paintLegs();
   });
+  $("partnerDist").addEventListener("change", function(){
+    track("filter_partners_distance", {km: $("partnerDist").value || "all"});
+    drawCards();
+    if (!chosenGo && !chosenBack) paintLegs();
+  });
+  // お店→お迎えの場所の車の道のり（Nori 2026-11-01「直線で出すのやめて。クルマでの最短ルートでだして」）
+  // 道路データにまとめて1回で聞く（お迎えの場所ごと、最大90社ずつ）。このページを開いているあいだだけ覚える。取れなければ null
+  var roadMemo = {}, roadBusy = {};
+  function roadKey(shop, at){ return shop[0].toFixed(4) + "," + shop[1].toFixed(4) + ">" + at.lat.toFixed(5) + "," + at.lng.toFixed(5); }
+  function pickupAt(leg){ var d = routeDetails || {}; return leg === "back" ? d.backFrom : d.from; }
+  function roadOf(card, leg){ // 数値＝km／null＝分からない／undefined＝調べている途中
+    var at = pickupAt(leg);
+    if (!card.shop || !at) return null;
+    var k = roadKey(card.shop, at);
+    return Object.prototype.hasOwnProperty.call(roadMemo, k) ? roadMemo[k] : roadBusy[k] ? undefined : null;
+  }
+  function loadRoads(){
+    var points = {};
+    [[quoteCards, ""], [quoteLegs && quoteLegs.go || [], "go"], [quoteLegs && quoteLegs.back || [], "back"]].forEach(function(g){
+      var at = pickupAt(g[1]);
+      if (!at) return;
+      g[0].forEach(function(c){
+        if (!c.shop) return;
+        var k = roadKey(c.shop, at);
+        if (Object.prototype.hasOwnProperty.call(roadMemo, k) || roadBusy[k]) return;
+        var pk = at.lat.toFixed(5) + "," + at.lng.toFixed(5);
+        (points[pk] = points[pk] || {at: at, shops: {}}).shops[k] = c.shop;
+      });
+    });
+    Object.keys(points).forEach(function(pk){
+      var g = points[pk], keys = Object.keys(g.shops); // お迎えの場所は約100mの細かさに丸めて送る（お客さまの位置を細かく出さない）
+      for (var i = 0; i < keys.length; i += 90) (function(part){
+        part.forEach(function(k){ roadBusy[k] = 1; });
+        var cs = [{lat: Math.round(g.at.lat * 1000) / 1000, lng: Math.round(g.at.lng * 1000) / 1000}].concat(part.map(function(k){ return {lat: g.shops[k][0], lng: g.shops[k][1]}; }));
+        var src = part.map(function(k, j){ return j + 1; }).join(";");
+        fetch("https://router.project-osrm.org/table/v1/driving/" + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?sources=" + src + "&destinations=0&annotations=distance")
+          .then(function(r){ return r.json(); })
+          .then(function(j){ var ok = j && j.code === "Ok" && j.distances; part.forEach(function(k, n){ var m = ok && j.distances[n] && j.distances[n][0]; roadMemo[k] = m != null && isFinite(m) ? Math.round(m / 100) / 10 : null; }); })
+          .catch(function(){ part.forEach(function(k){ roadMemo[k] = null; }); })
+          .then(function(){ part.forEach(function(k){ delete roadBusy[k]; }); redrawSoft(); });
+      })(keys.slice(i, i + 90));
+    });
+    if (Object.keys(points).length) redrawSoft();
+  }
+  // 口コミや詳しい情報を開いている途中なら、並べ直さない（次に並び順を変えたときに反映）
+  function redrawSoft(){
+    if (sending) return;
+    var open = $("partnerResults").querySelector("#partnerCards .review-panel:not([hidden]),#partnerCards details[open],#partnerRest .review-panel:not([hidden]),#partnerRest details[open]");
+    if (!open) drawCards();
+    if (!chosenGo && !chosenBack && !$("legSplit").querySelector(".review-panel:not([hidden]),details[open]")) paintLegs();
+  }
   // 口コミの星は、カードを出したあとにまとめて取り寄せる（まだ取り寄せていない会社だけ）
   function loadScores(){
     var all = quoteCards.concat(quoteLegs && quoteLegs.go || [], quoteLegs && quoteLegs.back || []);
@@ -1479,6 +1555,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var article = document.createElement("article"); article.className = "partner-card";
       function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
       text("h4", card.label);
+      // お店からお迎えの場所までの車の道のり（道路データで調べる。直線距離は出さない。Nori 2026-11-01）
+      if ("shop" in card) { var road = roadOf(card, leg);
+        text("p", !card.shop ? "お店の場所は確認中です" : road === undefined ? "お店からの道のりを調べています…" : road == null ? "お店からの道のりは調べられませんでした" : "お店からお迎えの場所まで 車で" + road.toFixed(1) + "km", "partner-dist"); }
       var rv = card.review;
       if (rv && rv.rating > 0) {
         // 口コミの点数は規約上、出どころ（Google マップ）の表示が必要
@@ -1593,8 +1672,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     $("legSplit").hidden = !on;
     $("legGo").replaceChildren(); $("legBack").replaceChildren();
     if (!on) return;
-    sortCards(quoteLegs.go).forEach(function(c){ $("legGo").appendChild(buildCard(c, "go")); });
-    sortCards(quoteLegs.back).forEach(function(c){ $("legBack").appendChild(buildCard(c, "back")); });
+    sortCards(quoteLegs.go, "go").forEach(function(c){ $("legGo").appendChild(buildCard(c, "go")); });
+    sortCards(quoteLegs.back, "back").forEach(function(c){ $("legBack").appendChild(buildCard(c, "back")); });
     chosenGo = null; chosenBack = null; showLegPick();
   }
   function showLegPick(){
