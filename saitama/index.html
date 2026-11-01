@@ -863,7 +863,7 @@ footer a{color:var(--ink-2)}
                 <select id="retMinute" name="ret_minute" aria-label="帰りの分"></select>
               </div>
               <p class="note" id="retRoute">帰りは、行き先でお迎えして、お迎えの場所までお送りします。</p>
-              <p class="note">待っていてもらうか、あらためて迎えに来てもらうかは、安くなるほうを引き受けた会社がご案内します。</p>
+              <p class="note">待っていてもらうか、あらためて迎えに来てもらうかは、安くなるほうを会社が返事でご案内します。</p>
               <label class="chk"><input type="checkbox" id="retOther" name="ret_other" value="1"> 帰りの場所を変える</label>
               <div id="retPlaces" hidden>
                 <label for="retPickup" class="lbl">帰りのお迎えの場所</label>
@@ -882,7 +882,7 @@ footer a{color:var(--ink-2)}
           <div id="pets"></div>
           <label class="chk"><input type="checkbox" id="petOnly" name="pet_only" value="1"> ペットだけで乗る（飼い主さんは乗らない）</label>
           <div class="only-box" id="onlyBox" hidden>
-            <p class="small" style="margin:0 0 6px">ペットだけの送迎を受けるかは会社によって違います。会社が引き受けたら、決まったメールでお知らせします。</p>
+            <p class="small" style="margin:0 0 6px">ペットだけの送迎を受けるかは会社によって違います。会社からの空き状況と料金の返事でお知らせします。</p>
             <div class="f"><label for="handFrom">お迎えでペットを渡す人</label><input type="text" id="handFrom" name="hand_from" maxlength="100" placeholder="例：家族（母）・ペットホテルの受付"></div>
             <div class="f"><label for="handTo">行き先で受け取る人</label><input type="text" id="handTo" name="hand_to" maxlength="100" placeholder="例：動物病院の受付・祖父"></div>
           </div>
@@ -898,7 +898,7 @@ footer a{color:var(--ink-2)}
           <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
           <p id="partnerStatus" role="status" aria-live="polite"></p>
           <p class="partner-dist-note">ここに出る会社は、各社の公式サイトで公開されている料金表・営業時間などをもとに当サイトが載せています（2026年10〜11月に確認）。当サイトと提携していない会社も含みます。最新の料金・営業時間は各社にご確認ください。並び順は選んだ条件だけで決めていて、掲載料などで順番が変わることはありません。載せ方の修正や掲載をやめたいご希望は<a href="/contact/">お問い合わせ</a>からどうぞ。</p>
-          <p class="price-reason">料金が違うのは、各社の基本運賃・距離単価・お迎えに来る距離・夜間割増の決まりが違うためです。金額の差だけで、サービスの良し悪しは判断できません。</p>
+          <p class="price-reason">料金の目安は、各社の公式サイトに書かれている料金表をもとに、道のりから計算した概算です（100円単位にまるめています）。当日の道順・渋滞・待ち時間などで、実際の料金は変わります。確定料金は、問い合わせた会社が返事でお知らせします。料金が違うのは、各社の基本運賃・距離単価・お迎えに来る距離・夜間割増の決まりが違うためです。金額の差だけで、サービスの良し悪しは判断できません。</p>
           <div class="partner-sort" id="partnerSortBox"><span class="ps-item"><label for="partnerSort">並び順</label>
             <select id="partnerSort"><option value="dist_asc" selected>お店が近い順</option><option value="review_desc">口コミの評価が高い順</option><option value="review_asc">口コミの評価が低い順</option><option value="price_asc">料金が安い順</option><option value="price_desc">料金が高い順</option></select></span>
             <span class="ps-item"><label for="partnerDist">お店からの距離</label>
@@ -967,7 +967,7 @@ footer a{color:var(--ink-2)}
 
 <section class="scenes">
   <div class="wrap">
-    <div class="sh"><span class="eyebrow">AREA</span><h2>埼玉の対応エリア</h2><p>埼玉県のお迎えは、上のフォームでさがせます。下は主な市区です。引き受けられるかは、場所・日時・車の条件を見て会社が決めます。</p></div>
+    <div class="sh"><span class="eyebrow">AREA</span><h2>埼玉の対応エリア</h2><p>埼玉県のお迎えは、上のフォームでさがせます。下は主な市区です。空いているかどうかは、場所・日時・車の条件を見て会社がお返事します。</p></div>
     <div class="area" style="background:#fff;max-width:780px;margin:0 auto"><h3>埼玉県</h3><ul class="chips"><li>さいたま市</li><li>川口市</li><li>越谷市</li><li>所沢市</li><li>川越市</li><li>草加市</li><li>春日部市</li><li>戸田市</li><li>上尾市</li><li>熊谷市</li></ul></div>
   </div>
 </section>
@@ -1031,7 +1031,7 @@ footer a{color:var(--ink-2)}
       <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8L3.5 9.2l5.9-.9z"/></svg></div><h3>たくさんの会社から、その子に合う1社を</h3><p>お迎えに来てもらえる事業者を、料金の目安・口コミ・お店からの距離と一緒に表示します。気になる会社を何社でも選んで、空き状況と料金をまとめて問い合わせできます。届いた確定料金をくらべて、納得できる1社に予約できます。</p></div>
       <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/></svg></div><h3>その子に合う車だけ</h3><p>一緒に乗る人数、頭数、体重、荷物の量、介護が必要かどうか。条件に合う候補から、お客さまが選んだ会社だけに依頼します。</p></div>
       <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4M12 17h.01"/></svg></div><h3>料金の目安がその場でわかる</h3><p>お迎え場所と行き先を入れると、その区間の料金の目安がフォームに出ます。ご利用は無料です。</p></div>
-      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0115.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 01-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></svg></div><h3>決まらなくても、かんたんに、もう一度</h3><p>選んだ事業者が引き受けられなかったときは、メールのリンクから条件を見直し、事業者を選んで頼み直せます。</p></div>
+      <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0115.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 01-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></svg></div><h3>決まらなくても、かんたんに、もう一度</h3><p>選んだ事業者が空いていなかったときは、メールのリンクから条件を見直し、事業者を選んで頼み直せます。</p></div>
       <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><h3>何社にも電話しなくて大丈夫</h3><p>空き状況と料金の問い合わせは、当サイトが各社にお取り次ぎします。予約を確定するまで、お名前や電話番号は会社にお伝えしないので、何社からも電話がかかってくることはありません。お返事はメールでまとめて届くので、自分のペースでくらべられます。受付番号・お迎えの時間・確定料金もメールに残ります。</p></div>
       <div class="reason"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></div><h3>ペットのことを、1回だけ</h3><p>犬種・猫種、体重、性格、介護のことは、フォームに1回書くだけ。何社にも同じ説明をくり返さなくて大丈夫です。</p></div>
     </div>
@@ -1215,7 +1215,7 @@ footer a{color:var(--ink-2)}
       <details><summary>2匹以上いっしょに乗れますか？</summary><div class="a">乗れる頭数は、会社や車によって違います。公式サイトに頭数を書いている会社の多くは「大きさによって2〜3頭まで」としています。フォームで頭数を選ぶと1匹ずつ入力できるので、会社が頭数と大きさを見て、空き状況と料金をお返事します。</div></details>
       <details><summary>猫だけでも使えますか？</summary><div class="a">もちろんです。通院、お引っ越し、ペットホテルへの送り迎えなどにどうぞ。キャリーに入った状態での乗車が基本です。</div></details>
       <details><summary>当日の予約や、今すぐのお迎えはできますか？</summary><div class="a">当日のご予約もできます。空いていて間に合う会社だけが候補に出ます。ただ、会社にメールで確認してから決まるしくみなので、その場ですぐに車を呼ぶことはできません。お迎えの時刻は、いまから3時間以上あとで選んでください。</div></details>
-      <details><summary>利用料はかかりますか？</summary><div class="a">当サイトは無料です。お支払いはペットタクシーの運賃だけで、当日ペットタクシーへ直接お支払いください（方法は会社ごとに違い、決まったときのメールでお知らせします）。運賃は無料ではありませんので、料金の目安を先にご確認ください。</div></details>
+      <details><summary>利用料はかかりますか？</summary><div class="a">当サイトは無料です。お支払いはペットタクシーの運賃だけで、当日ペットタクシーへ直接お支払いください（方法は会社ごとに違い、会社からの返事のメールでお知らせします）。運賃は無料ではありませんので、料金の目安を先にご確認ください。</div></details>
       <details><summary>料金は乗る前に分かりますか？</summary><div class="a">はい。フォームに場所を入れると料金の目安が出ます。問い合わせた会社が、空き状況と一緒に「一般道で行く場合」と「高速道路を使う場合（高速代込み）」の確定料金（税込）をメールでお知らせします。お支払いは当日、ペットタクシーへ直接です。</div></details>
       <details><summary>連絡はどうやって届きますか？</summary><div class="a">受付番号、お迎えの時間と確定料金は、すべてメールでお送りします。記録が残るので、あとから見返せて安心です。メールが届かないときは、迷惑メールのフォルダもご確認ください。</div></details>
       <details><summary>どの地域で使えますか？</summary><div class="a">お迎えの都道府県は全国から選べます。お迎えの場所を入れると、その場所に来てもらえる会社と料金の目安が出ます。会社ごとに対応する地域が違うので、近くに会社が見つからないこともあります。</div></details>
@@ -1242,9 +1242,9 @@ footer a{color:var(--ink-2)}
         <h3>キャンセルについて</h3>
         <ul>
           <li>お迎えが決まる前なら、いつでも無料で取り消せます。</li>
-          <li>決まったあとのキャンセルは、お迎え時間をお知らせしたメールからご連絡ください。記録が残るよう、お電話でのキャンセルは受け付けていません。</li>
+          <li>予約が確定したあとのキャンセルは、「ご予約が確定しました」のメールからご連絡ください。記録が残るよう、お電話でのキャンセルは受け付けていません。</li>
           <li>当サイトがキャンセル料をいただくことはありません。</li>
-          <li>お迎えが決まったあとは、引き受けたペットタクシーのキャンセル規定が適用されます。キャンセル料がかかるかどうか、いくらかは会社ごとに違うため、決まったときのメールでご確認ください。</li>
+          <li>予約が確定したあとは、そのペットタクシーのキャンセル規定が適用されます。キャンセル料がかかるかどうか、いくらかは会社ごとに違うため、会社からの返事や予約確定のメールでご確認ください。</li>
           <li>ご連絡なしで乗られなかった場合は、次回からのご利用をお断りすることがあります。</li>
         </ul>
       </div>
@@ -1255,7 +1255,7 @@ footer a{color:var(--ink-2)}
           <li>運送契約はご利用者さまと各ペットタクシー事業者との間で結ばれます。料金のお支払い、送迎中の対応、トラブルの補償は各事業者が行います。</li>
           <li>ご乗車中の事故やケガなどは、各事業者の約款と保険にもとづいて対応されます。</li>
           <li>このページとフォームに出る料金は目安です。問い合わせた会社が、空き状況と一緒に「一般道で行く場合」と「高速道路を使う場合（高速代込み）」の確定料金（税込）をお知らせします。</li>
-          <li>運賃は当日、ペットタクシーへ直接お支払いください。お支払い方法は会社ごとに違い、決まったときのメールでお知らせします。当サイトへのお支払いはありません。</li>
+          <li>運賃は当日、ペットタクシーへ直接お支払いください。お支払い方法は会社ごとに違い、会社からの返事のメールでお知らせします。当サイトへのお支払いはありません。</li>
           <li>空き状況により、ご希望の日時にお応えできない場合があります。そのときはメールでお知らせします。メールのリンクから、日時だけ変えてもう一度お申し込みいただけます。</li>
           <li>このページの写真はイメージです。実際の車や設備は会社ごとに違います。</li>
           <li>ペットの体調の急変など、移動中の健康状態について当サイトは判断や保証ができません。体調が心配な子は、事前にかかりつけの獣医師にご相談ください。</li>
@@ -1649,7 +1649,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         article.appendChild(pts);
       }
       // 料金（概算見積もり）。口コミと料金のほかの詳しい情報は、最初はたたんでおく（Nori 2026-10-31）
-      var price = text("p", card.price.text, "partner-price");
+      var price = text("p", roundYenText(card.price.text), "partner-price");
       var tripName = leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道";
       var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + tripName + "の概算見積もり" + (card.price.taxUnknown ? (card.price.incompleteFees ? "（税の扱いは確認中・未確認の費用は別途）" : "（税の扱いは確認中）") : card.price.incompleteFees ? "（税込・未確認の費用は別途）" : "（税込）"); price.appendChild(cap);
       if (card.price.local && card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
@@ -1685,13 +1685,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         breakdown("迎車 " + fy(lp.pickup, lp.pickupUnknown) + "・回送 " + fy(lp.returnFee, lp.returnUnknown) + (lp.pickupUnknown || lp.returnUnknown ? "（追加分は要確認）" : "を含む"), lp);
         if (card.price.highway) breakdown("高速利用時 " + yen(card.price.highway.amount) + (card.price.highway.pickupUnknown || card.price.highway.returnUnknown ? "〜" : "") + " ＋ 通行料の実費", card.price.highway, "hw");
         else add("p", "高速利用時：経路・通行料を含めてお見積もり", "partner-note");
-        if (card.price.pickupNote) add("p",card.price.pickupNote,"partner-note");
-        if (card.price.routeNote) add("p",card.price.routeNote,"partner-note");
-        if (card.price.planNote) add("p",card.price.planNote,"partner-note");
+        if (card.price.pickupNote) add("p",roundYenText(card.price.pickupNote),"partner-note");
+        if (card.price.routeNote) add("p",roundYenText(card.price.routeNote),"partner-note");
+        if (card.price.planNote) add("p",roundYenText(card.price.planNote),"partner-note");
       }
-      if (card.price.night && !(card.price.local && card.price.local.nightExtra)) add("p",card.price.night,"partner-note");
+      if (card.price.night && !(card.price.local && card.price.local.nightExtra)) add("p",roundYenText(card.price.night),"partner-note");
       add("p", card.car); add("p", card.payment);
-      add("p", (card.price.amount == null ? "" : "公式サイトの料金表と道のりから計算した目安です。確定料金は、引き受けた会社からお知らせします。") + "通行料・駐車場代は別途実費です。高速道路を使うときの総額は、事業者の確認後にお知らせします。", "partner-note");
+      add("p", (card.price.amount == null ? "" : "この会社の公式サイトに書かれている料金表をもとに、道のりから計算した概算です（100円単位にまるめています）。当日の道順・渋滞・待ち時間などで変わります。確定料金は、問い合わせたあと会社が返事でお知らせします。") + "通行料・駐車場代は別途実費です。高速道路を使うときの総額は、事業者の確認後にお知らせします。", "partner-note");
       // 表示だけの会社（準備中）。予約の依頼はできない（サーバーでも断る）
       if (card.display_only) {
         article.classList.add("partner-later");
@@ -2013,7 +2013,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 実際の料金が目安を超えないよう、上限側で計算する（道のりは直線の1.5倍、1km単位で切り上げ、最後に100円単位で切り上げ）
   var ROAD = 1.5;
   var est = $("est"), geoCache = {}, pickedPlace = {}, estSeq = 0, lastKm = 0, lastKmHigh = 0, lastFare = "", lastFareNum = 0;
-  function yen(n){ return n.toLocaleString("ja-JP") + "円"; }
+  // 料金の目安は100円単位にまるめて出す（Nori 2026-11-01「1円単位まで出さない方がいい」）。並び替えは計算どおりの金額で行う
+  function yen(n){ return (n >= 100 ? Math.round(n / 100) * 100 : n).toLocaleString("ja-JP") + "円"; }
+  function roundYenText(s){ return String(s == null ? "" : s).replace(/(\d{1,3}(?:,\d{3})+|\d+)円/g, function(m, d){ return yen(Number(d.replace(/,/g, ""))); }); }
   // 場所の検索は4都県の中だけで探す（遠くの同じ名前の場所を拾わないように）。選んだ都県の中の候補を優先する
   // 全国のお迎えも入れられる（Nori 2026-10-31「全国にして。絞らないで」）。予約の依頼は全社準備中のため送れない（Code.gs の CONFIG.SHOW_ALL_CANDIDATES）
   // 1都3県だけに戻すときは false にする
