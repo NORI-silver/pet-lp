@@ -1,5 +1,6 @@
 # サイトの公開（GitHub Pages）が「前の公開が途中」のまま止まったときに、その公開を取り消す（手で動かすだけ）
 # 使い方：Actions →「pages-unstick」→ Run workflow（deployment_id に止まっている公開のIDを入れる）。取り消したあと、公開をやり直す
+# Pages の公開がもう終わっているのに止まって見えるときは、github-pages 環境の「途中のまま」のデプロイの状態を終わりにする
 name: pages-unstick
 on:
   workflow_dispatch:
@@ -9,6 +10,7 @@ on:
         required: true
 permissions:
   pages: write
+  deployments: write
   contents: read
 jobs:
   cancel:
@@ -17,7 +19,13 @@ jobs:
       - env:
           GH_TOKEN: ${{ github.token }}
           DEP: ${{ inputs.deployment_id }}
+          REPO: ${{ github.repository }}
         run: |
-          gh api "repos/${{ github.repository }}/pages/deployments/$DEP" || true
-          gh api -X POST "repos/${{ github.repository }}/pages/deployments/$DEP/cancel"
-          gh api "repos/${{ github.repository }}/pages/deployments/$DEP" || true
+          gh api "repos/$REPO/pages/deployments/$DEP" || true
+          gh api -X POST "repos/$REPO/pages/deployments/$DEP/cancel" || true
+          for id in $(gh api "repos/$REPO/deployments?environment=github-pages&per_page=30" --jq '.[].id'); do
+            st=$(gh api "repos/$REPO/deployments/$id/statuses?per_page=1" --jq '.[0].state // "none"')
+            sha=$(gh api "repos/$REPO/deployments/$id" --jq '.sha')
+            echo "$id $sha $st"
+            case "$st" in in_progress|queued|pending|none) gh api -X POST "repos/$REPO/deployments/$id/statuses" -f state=inactive >/dev/null && echo "  -> inactive";; esac
+          done
