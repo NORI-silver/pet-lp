@@ -325,9 +325,8 @@ def car_type(f):
         if re.search(r'セダン|普通タクシー', t): return 'セダン・ワゴン' if 'ワゴン' in t else 'セダン'
         if re.search(r'ハイエース', t): return '大きめのワゴン（ハイエース）'
         if re.search(r'軽', t) and re.search(r'ミニバン', t): return '軽自動車またはミニバン'
-        # 軽は形まで書く（Nori 2026-11-01「軽バンとかの書き方がいい」）。バンは後ろが広く大型犬やケージを置きやすい、軽の乗用車は狭い
+        # 軽は形まで書く（Nori 2026-11-01「軽バンとかの書き方がいい」「軽自動車の2種類は分けなくていい」）。軽バンとそれ以外の軽自動車の2つ。バンは後ろが広く大型犬やケージを置きやすい、軽の乗用車は狭い
         if re.search(r'N-?VAN|Nvan|エブリ|クリッパー|バモス', t, re.I) or (re.search(r'軽', t) and re.search(r'バン|ワンボックス', t)): return '軽バン'
-        if re.search(r'スペーシア|キャスト|軽乗用|軽のコンパクト', t): return '軽自動車（乗用）'
         if re.search(r'軽', t): return '軽自動車'
         if re.search(r'ミニバン|ワゴン', t): return 'ミニバン・ワゴン'
         return ''
