@@ -165,6 +165,35 @@ CUSTOM = {
     'D7847612': {'base': [2980, 5], 'tiers': [[6, 100, 165], [101, None, 132]], 'pick': {'per': 100}, 'back': {},
                  'wait': {'free': 60, 'unit': 10, 'yen': 200, 'cap': 1000}, 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '',
                  'src': 'https://pettaxi-hakataku.wepage.com/'},  # 5kmまで2,980円、お迎え100円/km（前日までの予約で博多駅10km圏内は無料）、待機60分無料・200円/10分・上限1,000円、21〜8時3,300円
+    # ↓ 2026-11-01 COCOタクの共通の料金表（各店の公式サイトで確認。Nori「料金はお見積りで出てこないのはなぜ？」）
+    'D2644ea0': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165},
+                 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '税込', 'src': 'https://tc-cocotaxi.com/'},  # 東京中央：待ち時間・回送の記載なし
+    'Df5f495f': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'back': {}, 'wait': {'free': 10, 'unit': 10, 'yen': 220},
+                 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '税込', 'src': 'https://coco-pet-taxi-tokyo-tama.com/'},  # 東京多摩
+    'D98b1024': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'back': {}, 'wait': {'free': 10, 'unit': 10, 'yen': 220},
+                 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '税込', 'src': 'https://cocotaku-shibuya.com/'},  # 渋谷
+    'Db508c4d': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'back': {}, 'wait': {'free': 10, 'unit': 10, 'yen': 220},
+                 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '税込', 'src': 'https://pet-cocotaxi-katusika.com/content3.html'},  # 足立中央本町
+    'Dbcd4199': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'back': {}, 'wait': {'free': 10, 'unit': 10, 'yen': 220},
+                 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '', 'src': 'https://cocotaku.com/料金表/'},  # 青山：税込か税別か書いていない
+    'Dbf4a40c': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'back': {}, 'wait': {'free': 10, 'unit': 10, 'yen': 220},
+                 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '税込', 'src': 'https://coco-taxi-shonan-hiratuka.com/'},  # 湘南平塚
+    'D7f0d2a2': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'back': {}, 'wait': {'free': 10, 'unit': 10, 'yen': 220},
+                 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '税込', 'src': 'https://pet-taxi-kyoto.com/'},  # 京都
+    'D7d5e5d1': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'back': {}, 'wait': {'free': 10, 'unit': 10, 'yen': 220},
+                 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '税込', 'src': 'https://pet-cocotaku-higashi-sumiyoshi.com/'},  # 大阪・東住吉
+    'D9895b9b': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'back': {}, 'wait': {'free': 10, 'unit': 10, 'yen': 220},
+                 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '', 'src': 'https://cocotaxi-kashiwara.com/price/'},  # 大阪柏原：税の書き方なし
+    'D3413153': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'back': {}, 'wait': {'free': 10, 'unit': 10, 'yen': 220},
+                 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '税込', 'src': 'https://coco-taxi-osaka-moriguchi.com/'},  # 守口
+    'D713b363': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'back': {}, 'wait': {'free': 10, 'unit': 10, 'yen': 220},
+                 'night': {'from': 21, 'to': 8, 'flat': 3000}, 'tax': '税込', 'src': 'https://pet-taxi-coco-taku-shin-osaka.com/#section-109'},  # 新大阪：夜間・早朝3,000円
+    'D91cc62f': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'back': {}, 'wait': {'free': 10, 'unit': 10, 'yen': 220},
+                 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '税込', 'src': 'https://cocotaku-higashiosaka.com/price/'},  # 東大阪
+    'D09687f4': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'back': {}, 'wait': {'free': 10, 'unit': 10, 'yen': 220},
+                 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '税込', 'src': 'https://www.cocotaxi-kobewest.com/'},  # 神戸西
+    'Db726555': {'base': [3300, 5], 'tiers': [[6, 100, 165], [101, 200, 132], [201, None, 110]], 'pick': {'per': 165}, 'back': {}, 'wait': {'free': 10, 'unit': 10, 'yen': 220},
+                 'night': {'from': 21, 'to': 8, 'flat': 3300}, 'tax': '税込', 'src': 'https://pet-taxi-kitakyusyu-kokuraten.com/'},  # 北九州小倉：市内お迎え無料のキャンペーン中と書いてあるが、期間・範囲が分からないので通常の165円/kmで計算
     'D06b72ea': {'base': [660, 0], 'tiers': [[1, None, 300]], 'perkmFromStart': True, 'pick': {'per': 300}, 'night': {'from': 21, 'to': 9, 'unknown': True}, 'tax': '',
                  'src': 'https://pets-taxi.net/ja/kamakurapettaxi'},  # 初乗り660円＋運搬300円/km、送迎300円/km（大船駅から）、9時前・21時以降は割増（金額なし）
 }
