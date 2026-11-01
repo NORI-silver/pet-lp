@@ -1,0 +1,23 @@
+# サイトの公開（GitHub Pages）が「前の公開が途中」のまま止まったときに、その公開を取り消す（手で動かすだけ）
+# 使い方：Actions →「pages-unstick」→ Run workflow（deployment_id に止まっている公開のIDを入れる）。取り消したあと、公開をやり直す
+name: pages-unstick
+on:
+  workflow_dispatch:
+    inputs:
+      deployment_id:
+        description: 止まっている公開のID（エラーに出る「Please cancel ○○ first」の○○）
+        required: true
+permissions:
+  pages: write
+  contents: read
+jobs:
+  cancel:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          DEP: ${{ inputs.deployment_id }}
+        run: |
+          gh api "repos/${{ github.repository }}/pages/deployments/$DEP" || true
+          gh api -X POST "repos/${{ github.repository }}/pages/deployments/$DEP/cancel"
+          gh api "repos/${{ github.repository }}/pages/deployments/$DEP" || true
