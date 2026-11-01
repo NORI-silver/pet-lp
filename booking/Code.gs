@@ -106,7 +106,7 @@ var PARTNER_HEADERS = [
 ];
 
 var ST = { OPEN: '手配中', DONE: '決定', NONE: '見つからず', CANCEL: '取り消し' };
-var MAX_PICKS = 5; // 1回に依頼できる会社の数
+// 1回に問い合わせできる会社の数の上限はない（Nori 2026-11-01「最大5社の上限はなくていい」）。同じ会社が2回入っていたら1回にする
 
 // お客さまが選んだ会社（カンマ区切り）。1社のときも同じ形
 function pickedIds_(r) { return String(r['指定した提携先ID'] || '').split(',').filter(String); }
@@ -247,7 +247,7 @@ function receive_(p) {
     }
     var mode = '問い合わせ'; // 予約と見積もりを分けない（Nori 2026-11-01）。前の LP が送る mode は使わない
     var picks = split ? [] : picksOf_(p);
-    if (!split && (!picks.length || picks.length > MAX_PICKS)) return { ok: false, error: 'selection_unavailable' };
+    if (!split && !picks.length) return { ok: false, error: 'selection_unavailable' };
     // 1社ずつ、表示した見積もりの署名を確かめる（複数社でも同じ）
     var sels = split ? legs.map(function (l) { return validateSelection_(l.p); }) : [(function () {
       var got = picks.map(function (x) { var q = {}; Object.keys(p).forEach(function (k) { q[k] = p[k]; }); return validateSelection_(withPick_(q, x.id, x.token, x.expires)); });

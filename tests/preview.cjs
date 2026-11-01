@@ -35,7 +35,7 @@ http.createServer(async(req,res)=>{
    const g=ctx.validateSelection_(ctx.legParams_(p,'go')), b=ctx.validateSelection_(ctx.withPick_(ctx.legParams_(p,'back'),p.back_partner_id,p.back_quote_token,p.back_quote_expires));
    if(g.ok&&b.ok){requests++;lastPartner=p.partner_id+'+'+p.back_partner_id;result={ok:true,id:'DEMO-GO',back_id:'DEMO-BACK'};} else result={ok:false,error:(g.ok?b:g).error};
   }
-  else {result=ctx.validateSelection_(p);if(result.ok){requests++;lastPartner=p.partner_id;result={ok:true,id:'DEMO-ONLY'};}}
+  else {result=ctx.validateSelection_(p);if(result.ok){requests++;lastPartner=p.picks?JSON.parse(p.picks).map(x=>x.id).join(','):p.partner_id;result={ok:true,id:'DEMO-ONLY'};}}
   res.setHeader('Content-Type','application/json');return res.end(JSON.stringify(result));
  }
  let filename=path.resolve(root,'.'+decodeURIComponent(url.pathname));
