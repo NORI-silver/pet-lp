@@ -1119,6 +1119,31 @@ for slug, pf, short, cities in PREFS:
       <p>上のフォームにお迎えの場所と行き先を入れると、来てもらえる会社と料金の目安が出ます。無料で使えて、当日の依頼もできます（会社にメールで確認するため、お迎えは依頼から3時間以上あと）。会社から空き状況と料金の返事が届いたら、納得してから予約を確定できます。</p>
       <a class="btn center" href="#form">空き状況と料金を問い合わせる（無料）{ARROW}</a>
     </div>'''
+    # 県ごとのよくある質問（数は display_companies.json・emergency.json から毎回数える。会社名・病院名は出さない）
+    _key = pf if pf == "北海道" else pf[:-1]
+    _hin = [h for h in hs if not other_pref(h, pf)]
+    pfaq = []
+    if n_cos:
+        _ns = _nsame(_key)
+        pfaq.append((f"{short}に来てくれるペットタクシーは何社ありますか？",
+            f"当サイトで公式サイトを確かめた全国の会社のうち、対応エリアに{pf}を書いている会社は{n_cos}社でした（{FARES_CHECKED}時点）。地名を書いていない場所に来てくれることもあるので、お迎えの場所をフォームに入れて確かめてください。"))
+        pfaq.append((f"{short}で当日でもペットタクシーを頼めますか？",
+            (f"{n_cos}社のうち、公式サイトや会社からの返事に当日も受けると書いてある会社は{_ns}社です。お迎えが今日のときは、この中から空いていて間に合う会社だけが候補に出ます。" if _ns else
+             f"{n_cos}社の中に、公式サイトや会社からの返事に当日も受けるとはっきり書いてある会社はまだありません。お迎えが今日だと候補が出ないことがあるので、明日以降の日時でさがすのがおすすめです。")
+            + "会社にメールで確認してから決まるしくみなので、お迎えの時刻は、いまから3時間以上あとで選んでください。"))
+    if _hin:
+        pfaq.append((f"{short}で夜間に診てもらえる動物病院はありますか？",
+            f"{pf}の夜間・救急の動物病院を{len(_hin)}件載せています（{'・'.join(hcities[:3])}など）。受付時間は病院ごとに違うので、行く前に電話で受け入れてもらえるか確かめてください。"))
+    elif hs:
+        pfaq.append((f"{short}で夜間に診てもらえる動物病院はありますか？",
+            f"{pf}の中で夜間に診てもらえる病院は見つからなかったため、近くの県の夜間・救急の動物病院を{len(hs)}件載せています。行く前に電話で受け入れてもらえるか確かめてください。"))
+    pfaq.append((f"{short}でペットの緊急搬送を頼める会社はありますか？",
+        (f"{pf}で緊急の搬送をしていると公式サイトに書いている会社を{len(taxis)}社載せています。急ぐときは、まず動物病院に電話して受け入れを確かめてから頼んでください。" if taxis else
+         f"{pf}で緊急の搬送をしている会社は、まだ載せていません。急ぐときは、まず動物病院に電話して、受け入れと行き方をご相談ください。")))
+    pfaq_html = (f'<h2>{e(short)}のペットタクシー よくある質問</h2><div class="faq-list">' +
+        ''.join(f'<details><summary>{e(q)}</summary><div class="a">{e(a_)}</div></details>' for q, a_ in pfaq) + '</div>')
+    ld += '\n<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a_}} for q, a_ in pfaq]}, ensure_ascii=False, indent=1) + '\n</script>'
     checks = ''.join(f'<h3>{e(h)}</h3><p>{e(t)} <a href="/guide/{g}/">{e(GBY[g]["title"])}</a></p>' for h, t, g in PREF_CHECKS)
     area_html = f'''<!-- 地域の説明（gen_areas.py の PREFS） -->
 <section id="area-info" style="padding-top:8px">
@@ -1145,6 +1170,7 @@ for slug, pf, short, cities in PREFS:
       <p class="emg-note">当サイトとは別の会社・病院です（{e(EMG["checked"])}時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、お問い合わせからお知らせください。口コミはページ上の「緊急」タブで見られます。</p>
     </div>
     <p><a href="/emergency/">全国の緊急の連絡先の一覧</a>から、現在地から近い病院も探せます。</p>
+    {pfaq_html}
   </article></div>
 </section>
 
