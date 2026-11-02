@@ -2319,7 +2319,7 @@ function placeDetailsRequest_(placeId, apiKey, fields) {
 function reviewPlace_(partnerId, fields) {
   var props = PropertiesService.getScriptProperties(), apiKey = props.getProperty('PLACES_API_KEY');
   var t = reviewTarget_(partnerId);
-  if (!apiKey || !t) return null;
+  if (!apiKey || !t) { log_('口コミ：' + (!apiKey ? 'キーがない ' : '探すことばがない ') + partnerId); return null; }
   var placeId = props.getProperty(t.idKey);
   if (placeId === '-') return null; // 前に探して見つからなかった
   if (!placeId) {
@@ -2333,10 +2333,10 @@ function reviewPlace_(partnerId, fields) {
   }
   var ym = Utilities.formatDate(new Date(), TZ, 'yyyyMM');
   var month = 'REVIEW_COUNT_' + ym, used = Number(props.getProperty(month)) || 0;
-  if (used >= CONFIG.REVIEW_MONTHLY_LIMIT) return null;
+  if (used >= CONFIG.REVIEW_MONTHLY_LIMIT) { log_('口コミ：月の上限 ' + partnerId); return null; }
   if (t.emg) {
     var emgMonth = 'REVIEW_EMG_COUNT_' + ym, emgUsed = Number(props.getProperty(emgMonth)) || 0;
-    if (emgUsed >= CONFIG.REVIEW_EMG_MONTHLY_LIMIT) return null;
+    if (emgUsed >= CONFIG.REVIEW_EMG_MONTHLY_LIMIT) { log_('口コミ：緊急タブ・病院の月の上限 ' + partnerId); return null; }
     props.setProperty(emgMonth, String(emgUsed + 1));
   }
   props.setProperty(month, String(used + 1));
@@ -2401,12 +2401,32 @@ function selectionReviews_(partnerId) {
 
 // 緊急タブの搬送の会社・病院の星と件数（ids はカンマ区切り。画面に出てきたところだけ、1回に12件まで）。点数は保存せず毎回取り寄せる
 function emgScores_(ids) {
-  var out = {};
-  ids.split(',').filter(function(id, i, a) { return EMG_REVIEWS[id] && a.indexOf(id) === i; }).slice(0, 12).forEach(function(id) {
+  var out = {}, unknown = [];
+  ids.split(',').filter(function(id, i, a) { if (!EMG_REVIEWS[id]) { unknown.push(id); return false; } return a.indexOf(id) === i; }).slice(0, 12).forEach(function(id) {
     var v = selectionReview_({id:id});
     if (v) out[id] = v;
   });
+  if (unknown.length) log_('口コミ：EMG_REVIEWS にないID ' + unknown.join(',')); // 貼り直し前のコードでは新しい病院は黙って外れる
   return {ok:true, scores:out};
+}
+
+// 口コミの星が出ないときの切り分け（運営者がエディタから実行する。何も送らない・保存しない）。
+// 例：reviewDebug_('V001') → 探すことば／覚えている場所ID／検索で返った名前と照合の結果／月の回数 を返す
+function reviewDebug_(id) {
+  var props = PropertiesService.getScriptProperties(), apiKey = props.getProperty('PLACES_API_KEY');
+  var t = reviewTarget_(id), ym = Utilities.formatDate(new Date(), TZ, 'yyyyMM');
+  var r = {id:id, inEmg:!!EMG_REVIEWS[id], target:t, hasKey:!!apiKey, saved:t ? props.getProperty(t.idKey) : null,
+           used:props.getProperty('REVIEW_COUNT_' + ym), emgUsed:props.getProperty('REVIEW_EMG_COUNT_' + ym)};
+  if (t && apiKey) {
+    var q = placeSearchRequest_(t, apiKey), url = q.url; delete q.url;
+    var res = UrlFetchApp.fetch(url, q), found = {};
+    try { found = JSON.parse(res.getContentText()) || {}; } catch (e) {}
+    r.searchStatus = res.getResponseCode();
+    r.candidates = (found.places || []).map(function(x) { return {name:(x.displayName || {}).text || '', ok:placeNameOk_(t, x)}; });
+    if (found.error) r.searchError = found.error;
+  }
+  Logger.log(JSON.stringify(r));
+  return r;
 }
 
 function validateSelection_(p) {
