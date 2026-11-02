@@ -1,18 +1,20 @@
 # お金を取らない情報ページ「ペットが亡くなったら（火葬・葬儀・霊園）」（/sougi/）。gen_areas.py が読み込んで使う。
 # Nori 2026-11-02「葬儀・霊園のページを作る」→ 同日「びっくりするくらい薄い」で本文を充実。
-# 守ること：民間の葬儀社・霊園の名前は載せない（順位・おすすめなし）。自治体の公式ページだけにリンク。電話番号なし。
+# 守ること：順位・おすすめなし。電話番号なし。民間の火葬場・霊園・納骨堂は Nori 2026-11-02「供養場？火葬場？この辺りも紹介できた方がいい」で
+# 載せる（tools/sougi_facilities.json、公式サイトで確かめた名前・市区町村・できること・公式サイトに書いてある料金だけ。並びは市区町村順）。
 # 言い方はやさしく（「死体」などのことばは自分の文では使わない。ペットは家族）。
-# 料金の数字は、tools/sougi.json に書いた自治体の公式ページの数字だけを使う（民間の料金の数字は書かない）。
+# 料金の数字は、自治体（tools/sougi.json）と民間の施設（tools/sougi_facilities.json）の公式ページに書いてある数字だけを使う。
 # データ：tools/sougi.json（県庁所在地（東京都は新宿区、見つからない県はほかの市）と政令指定都市。how/fee/bone/k）。
 import json, os
 import prefkeep
 from guides_sougi import SOUGI_GUIDES
 
 J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sougi.json"), encoding="utf-8"))
+F = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sougi_facilities.json"), encoding="utf-8"))
 
 SLUG = "sougi"
 TITLE = "ペットが亡くなったら｜まずすること・火葬の種類と料金・死亡届・自治体の受付（全国）｜ペットタクシー予約窓口"
-DESC = "ペットが亡くなったときに、まずすること（安置・保冷）、合同・個別・立ち会い・訪問火葬のちがい、自治体の引き取りの料金とお骨が返るか、犬の死亡届とマイクロチップの手続き、納骨・手元供養、ペットロスの相談先を、全国52の市区の公式情報とあわせてまとめました。"
+DESC = "ペットが亡くなったときに、まずすること（安置・保冷）、合同・個別・立ち会い・訪問火葬のちがい、自治体の引き取りの料金とお骨が返るか、犬の死亡届とマイクロチップの手続き、納骨・手元供養、ペットロスの相談先と、全国52の市区の受け付け・民間のペット火葬場や霊園112か所をまとめました。"
 PUBLISHED = "2026-11-02"
 MODIFIED = "2026-11-02"
 
@@ -30,6 +32,13 @@ def _card(e, c):
     tag = f'<span class="sg-tag sg-{e(c.get("k", "unk"))}">{e(KIND.get(c.get("k"), ""))}</span>' if c.get("k") else ""
     return (f'<div class="emg-item emg-co"><a href="{e(c["u"])}" target="_blank" rel="noopener"><b>{e(c["city"])}：{e(c["t"])}</b></a>'
             f'{tag}{lines}<small class="sg-src">{e(c["city"])}の公式ページ（{e(J["checked"])}に確認）</small></div>')
+
+
+def _fcard(e, f):
+    tags = "".join(f'<span class="sg-tag">{e(x)}</span>' for x in f.get("kinds", []) + [y for y in f.get("services", []) if y not in f.get("kinds", [])])
+    price = f'<small><b class="sg-k">料金の例</b>{e(f["price"])}（公式サイトの記載）</small>' if f.get("price") else ""
+    return (f'<div class="emg-item emg-co sg-pv"><a href="{e(f["u"])}" target="_blank" rel="noopener"><b>{e(f["name"])}</b></a>'
+            f'<small>{e(f["city"])}</small><div class="sg-tags">{tags}</div>{price}</div>')
 
 
 def _tbl(e, head, rows):
@@ -71,6 +80,9 @@ def render(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
     url = f"{SITE}/{SLUG}/"
     cities = J["cities"]
+    by_fac = {}
+    for f in F["facilities"]:
+        by_fac.setdefault(f["pref"], []).append(f)
     by_pref = {}
     for c in cities:
         by_pref.setdefault(c["pref"], []).append(c)
@@ -81,7 +93,9 @@ def render(ctx):
         body += f'<h3 class="emg-region">{e(lab)}</h3>\n'
         for pf in prefs:
             cs = by_pref.get(pf, [])
-            inner = "".join(_card(e, c) for c in cs) if cs else f'<p class="emg-none">{e(pf)}の案内は、まだ載せていません。お住まいの市町村のサイトで「ペット 亡くなった」と検索すると見つかることがあります。</p>'
+            fs = sorted(by_fac.get(pf, []), key=lambda f: f["city"])
+            pv = (f'<p class="sg-pvh">民間のペット火葬場・霊園・納骨堂（{len(fs)}か所・公式サイトの情報）</p>' + "".join(_fcard(e, f) for f in fs)) if fs else ""
+            inner = ("".join(_card(e, c) for c in cs) + pv) if cs else f'<p class="emg-none">{e(pf)}の案内は、まだ載せていません。お住まいの市町村のサイトで「ペット 亡くなった」と検索すると見つかることがあります。</p>'
             body += f'<section class="emg-pref" data-pref="{e(pf)}"><h4>{e(pf)}</h4>{inner}</section>\n'
 
     # お骨を返してもらえる市（公営）
@@ -129,7 +143,7 @@ def render(ctx):
     S.append(("ways", "見送りの方法と、それぞれのちがい", f"""
 <p>見送りの方法は、大きく分けて「自治体に頼む」「民間のペット葬儀・霊園に頼む」「自宅の庭に埋める」の3つです。自治体の中にも、ほかの子と一緒に焼却する市と、市の斎場の動物炉でお骨を返してもらえる市があります。</p>
 {ways_tbl}
-<p>費用は目安です。自治体の数字は、このページの一覧にある市区の公式ページの料金です。民間の料金は会社・体重・方法でまったく違うため、ここでは数字を書いていません。かならず見積もりをとってください。</p>"""))
+<p>費用は目安です。自治体の数字は、このページの一覧にある市区の公式ページの料金です。民間の料金は会社・体重・方法でまったく違います。下の一覧に、公式サイトに書いてある料金の例を載せていますが、かならず見積もりをとってください。</p>"""))
     S.append(("kinds", "火葬の種類（合同・個別・立ち会い・訪問火葬）", f"""
 <p>民間のペット葬儀では、ふつう次の中から選べます。会社によって呼び方がちがうことがあります（「一任個別火葬」「家族立ち会い火葬」など）。</p>
 {kind_tbl}
@@ -171,7 +185,7 @@ def render(ctx):
 <li>家まで来る火葬の車のときは、どこで火葬するか（近所への配慮）</li>
 <li>ペット霊園の設置に市の許可がいる地域もあります（京都市・新潟市・秋田市・佐賀市・相模原市・堺市などに決まりがあります）</li>
 </ul>
-<p class="emg-tips-note">このページでは、民間の葬儀社や霊園の名前は載せていません（おすすめや順位もつけていません）。</p>"""))
+<p class="emg-tips-note">下の都道府県ごとの一覧には、民間のペット火葬場・霊園・納骨堂の一部も載せています（公式サイトで確かめた情報です。おすすめや順位ではありません）。</p>"""))
     S.append(("loss", "ペットロスのつらさと相談先", """
 <p>家族として暮らしてきた子を亡くした悲しみは、とても大きなものです。涙が止まらない、もっとできることがあったのではと自分を責めてしまう、何も手につかない。どれも、多くの飼い主さんが経験する自然な気持ちです。</p>
 <ul>
@@ -186,7 +200,7 @@ def render(ctx):
 <p>体調の悪い子を病院に連れて行きたいときは、<a href="/hospital/">条件でさがす動物病院</a>や<a href="/emergency/">緊急のときの連絡先</a>もご覧ください。</p>"""))
 
     toc = '<nav class="tip art-toc" aria-label="このページの目次"><b>このページで分かること</b><ol>' + "".join(
-        f'<li><a href="#{i}">{e(h)}</a></li>' for i, h, _ in S) + '<li><a href="#list">都道府県ごとの自治体の受け付け（料金・お骨）</a></li><li><a href="#faq">よくある質問</a></li></ol></nav>'
+        f'<li><a href="#{i}">{e(h)}</a></li>' for i, h, _ in S) + '<li><a href="#list">都道府県ごとの自治体の受け付けと、民間のペット火葬場・霊園</a></li><li><a href="#faq">よくある質問</a></li></ol></nav>'
     more = {"first": "pet-died-first", "kinds": "pet-cremation-types", "price": "pet-cremation-city", "todoke": "pet-death-procedures", "kuyou": "pet-memorial", "loss": "pet-loss"}
     gt = {g["slug"]: g["title"] for g in SOUGI_GUIDES}
     def _more(i):
@@ -211,6 +225,9 @@ def render(ctx):
 .sg-tag{display:inline-block;margin-top:6px;font-size:.74rem;font-weight:700;border-radius:999px;padding:2px 10px;background:#fff;color:var(--ink-2)}
 .art .tbl td:first-child a{white-space:nowrap}
 .sg-back{color:#1e7d4f}.sg-none{color:var(--ink-3)}
+.sg-pvh{font-size:.84rem;font-weight:700;margin:14px 0 2px;color:var(--ink-2)}
+.emg-item.sg-pv{background:var(--cream)}
+.sg-tags{margin-top:4px}.sg-tags .sg-tag{margin:4px 4px 0 0}
 .emg-item small.sg-src{color:var(--ink-3);font-size:.72rem;margin-top:6px}
 </style>"""
     return ctx["head"](TITLE, DESC, url, ld) + f"""
@@ -220,7 +237,7 @@ def render(ctx):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › ペットが亡くなったら</nav>
     <h1><small>まずすること・火葬の種類と料金・死亡届・自治体の受付（全国）</small>ペットが亡くなったら</h1>
-    <p class="lede">長い時間を一緒に過ごした家族とのお別れは、とてもつらいものです。あわてなくて大丈夫です。亡くなった直後にすること、火葬の種類と自治体の料金、手続き、お骨の供養、ペットロスの相談先と、全国{n_city}の市区の受け付けをまとめました。</p>
+    <p class="lede">長い時間を一緒に過ごした家族とのお別れは、とてもつらいものです。あわてなくて大丈夫です。亡くなった直後にすること、火葬の種類と自治体の料金、手続き、お骨の供養、ペットロスの相談先、全国{n_city}の市区の受け付けと、都道府県ごとの民間のペット火葬場・霊園・納骨堂{len(F['facilities'])}か所をまとめました。</p>
   </div>
 </section>
 <section style="padding-top:8px">
@@ -231,8 +248,8 @@ def render(ctx):
 <section style="padding-top:0">
   <div class="wrap">
     <div class="emg">
-      <h2 id="list" class="sh" style="scroll-margin-top:90px">都道府県ごとの自治体の受け付け（料金・お骨）</h2>
-      <p class="emg-free">自治体の受け付け方（引き取り・持ち込み・斎場での火葬・費用）は、市区町村ごとに違います。下の一覧は、各都道府県の県庁所在地（東京都は新宿区。23区は区ごと。県庁所在地の案内が見つからない県はほかの市）と政令指定都市の公式ページです。ほかの市町村にお住まいの方は、お住まいの市町村のサイトでご確認ください。</p>
+      <h2 id="list" class="sh" style="scroll-margin-top:90px">都道府県ごとの自治体の受け付けと、民間のペット火葬場・霊園</h2>
+      <p class="emg-free">自治体の受け付け方（引き取り・持ち込み・斎場での火葬・費用）は、市区町村ごとに違います。下の一覧は、各都道府県の県庁所在地（東京都は新宿区。23区は区ごと。県庁所在地の案内が見つからない県はほかの市）と政令指定都市の公式ページです。ほかの市町村にお住まいの方は、お住まいの市町村のサイトでご確認ください。民間のペット火葬場・霊園・納骨堂は、各都道府県の一部を、公式サイトで確かめた名前・市区町村・できること・料金の例で載せています（順位やおすすめではなく、市区町村の順に並べています。料金は変わることがあるので、必ず公式サイトで確かめてください）。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       {body}
       <div class="emg-tips" id="faq"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
