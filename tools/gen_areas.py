@@ -1430,4 +1430,7 @@ nf = head("ページが見つかりません｜ペットタクシー予約窓口
 <section><div class="wrap"><div class="sh"><h2>エリアからさがす</h2></div>{area_links()}</div></section></main>
 ''' + foot("/#form")
 open(os.path.join(ROOT, "404.html"), "w", encoding="utf-8").write(nf)
+# AIエージェント向けの入口（/webmcp/data.json と /llms.txt。tools/gen_webmcp.py）
+import gen_webmcp
+gen_webmcp.build(ROOT)
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
