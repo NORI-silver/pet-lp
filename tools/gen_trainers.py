@@ -111,3 +111,28 @@ def urls(SITE):
 def write_all(ROOT, ctx):
     os.makedirs(os.path.join(ROOT, SLUG), exist_ok=True)
     open(os.path.join(ROOT, SLUG, "index.html"), "w", encoding="utf-8").write(render(ctx))
+
+# ── 都道府県ごとのページ（tools/gen_prefpages.py。[B] SEO「ドッグトレーナー ◯◯県」「犬 しつけ教室 ◯◯」） ──
+def _has(t, *ws): return any(w in t.get("services", "") for w in ws)
+def _facts(rs):
+    n = len(rs)
+    return [f"出張しつけ（家に来てくれる）を公式サイトに書いている：{sum(_has(t, '出張', '訪問', 'お家', 'ご自宅') for t in rs)}／{n}",
+            f"教室・グループレッスン：{sum(_has(t, '教室', 'グループ', 'クラス') for t in rs)}／{n}",
+            f"犬の幼稚園・保育園：{sum(_has(t, '幼稚園', '保育園') for t in rs)}／{n}",
+            f"預かりトレーニング：{sum(_has(t, '預かり') for t in rs)}／{n}",
+            f"オンライン：{sum(_has(t, 'オンライン') for t in rs)}／{n}"]
+def _faq(pf, rs, n):
+    home = sum(_has(t, '出張', '訪問', 'お家', 'ご自宅') for t in rs)
+    return [
+     (f"{pf}で家に来てくれるドッグトレーナーはいますか？", f"この一覧の{pf}の{n}件のうち、出張しつけ（家に来てくれる形）を公式サイトに書いているのは{home}件です。対応エリアは一覧でご確認ください。"),
+     (f"{pf}で子犬のパピークラスはありますか？", "子犬向けのクラスは、一覧の「提供内容」に書いてあります。ワクチンの接種の状況で参加できる時期が変わるので、教室と動物病院の両方にご相談ください。"),
+     ("料金はいくらですか？", "この一覧には料金を載せていません。出張しつけは1回ごと、教室はコースごとが多く、出張の交通費が別のこともあります。"),
+     ("教室への送り迎えが大変なときは？", "車がないときや大型犬のときは、ペットタクシーで家の前から教室の前まで移動できます。"),
+    ]
+CAT = dict(slug=SLUG, name="ドッグトレーナー・しつけ教室", unit="件", h1=H1, items=J["trainers"], card=_card, checked=J["checked"], reviews=True,
+  title_word="ドッグトレーナー・犬のしつけ教室", title_tail="出張しつけ・教室・幼稚園・預かり",
+  desc_tail="出張しつけ・教室・犬の幼稚園・預かりトレーニング・オンラインのどれをしているか、対応エリア・資格と、口コミの星を載せています。料金や順位は載せていません。",
+  lede=lambda pf, n: f"吠える、かむ、トイレ、散歩の引っぱり。{pf}で犬のしつけを相談できるドッグトレーナーと教室を{n}件まとめました。家に来てくれる出張しつけ、通う教室、犬の幼稚園など、公式サイトで確かめた提供内容だけを載せています。",
+  facts=_facts, faq=_faq, before_title="ドッグトレーナー・しつけ教室をえらぶときに確かめること", before=BEFORE,
+  taxi_h="教室や幼稚園への送り迎えは、ペットタクシーで", taxi_p="車がないとき、大型犬のとき、飼い主さまと一緒に家の前から教室の前まで移動できます。",
+  links=[("ドッグトレーナーのえらび方", "/guide/choose-dog-trainer/"), ("子犬のしつけはいつから？", "/guide/puppy-class/"), ("問題行動の相談先", "/guide/dog-behavior-help/"), ("全国のドッグラン", "/dogrun/")])

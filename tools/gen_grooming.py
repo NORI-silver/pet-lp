@@ -145,3 +145,23 @@ def urls(SITE):
 def write_all(ROOT, ctx):
     os.makedirs(os.path.join(ROOT, SLUG), exist_ok=True)
     open(os.path.join(ROOT, SLUG, "index.html"), "w", encoding="utf-8").write(render(ctx))
+
+# ── 都道府県ごとのページ（tools/gen_prefpages.py。[B] SEO「出張トリミング ◯◯県」） ──
+def _facts(rs):
+    n = len(rs)
+    return [f"{lab}と公式サイトに書いてある：{sum(bool(g.get(k)) for g in rs)}／{n}" for k, lab in CONDS]
+def _faq(pf, rs, n):
+    c = lambda k: sum(bool(g.get(k)) for g in rs)
+    return [
+     (f"{pf}で大型犬の出張トリミングを頼めますか？", f"この一覧の{pf}の{n}件のうち、大型犬に対応すると公式サイトに書いているのは{c('large')}件です。書いていない事業者も、たずねると受けてくれることがあります。"),
+     (f"{pf}でシニア犬や寝たきりの子の訪問トリミングはありますか？", f"シニア犬・介護中の子に対応すると公式サイトに書いているのは{c('senior')}件です。体調や持病を先に伝えて相談してください。"),
+     (f"{pf}で猫の出張トリミングはありますか？", f"猫に対応すると公式サイトに書いているのは{c('cat')}件です。"),
+     ("料金はいくらですか？", "この一覧には料金を載せていません。犬種・体重・コースのほかに、出張費が別になることがあります。"),
+    ]
+CAT = dict(slug=SLUG, name="出張トリミング・訪問トリミング", unit="件", h1=H1, items=J["groomers"], card=_card, checked=J["checked"], reviews=False,
+  title_word="出張トリミング・訪問トリミング", title_tail="トリミングカー・大型犬・シニア犬・猫",
+  desc_tail="出張エリアと、トリミングカー・家の中での施術・大型犬・シニア犬・猫への対応を載せています。料金や順位は載せていません。",
+  lede=lambda pf, n: f"サロンまで連れていくのが大変な大型犬、車がつらいシニアの子、外がこわい子。{pf}で家まで来てくれる出張トリミング・訪問トリミングを{n}件まとめました。公式サイトで確かめた出張エリアと対応だけを載せています。",
+  facts=_facts, faq=_faq, before_title="出張トリミングを頼む前に確かめること", before=BEFORE,
+  taxi_h="サロンへの送り迎えは、ペットタクシーで", taxi_p="大型犬やシニアの子も、飼い主さまと一緒に家の前からサロンの前まで移動できます。",
+  links=[("トリミング・ペットホテルへの送迎ガイド", "/guide/grooming-hotel/"), ("シニア犬・シニア猫、介護中の子の移動", "/guide/senior/"), ("大型犬の移動のガイド", "/guide/large-dog/"), ("全国のペットシッター", "/pet-sitter/")])

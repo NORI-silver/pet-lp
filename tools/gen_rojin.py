@@ -109,3 +109,27 @@ def urls(SITE):
 def write_all(ROOT, ctx):
     os.makedirs(os.path.join(ROOT, SLUG), exist_ok=True)
     open(os.path.join(ROOT, SLUG, "index.html"), "w", encoding="utf-8").write(render(ctx))
+
+# ── 都道府県ごとのページ（tools/gen_prefpages.py。[B] SEO「老犬ホーム ◯◯県」） ──
+def _cat_ok(h): return "猫" in h["animals"] and "猫は受けていません" not in h["animals"]
+def _facts(rs):
+    n = len(rs)
+    return [f"猫も受けると公式サイトに書いてある施設：{sum(_cat_ok(h) for h in rs)}／{n}",
+            f"大型犬について公式サイトに書いてある施設：{sum('大型' in h['animals'] for h in rs)}／{n}",
+            f"見学・面会のきまりが公式サイトに書いてある施設：{sum(bool(h.get('visit')) for h in rs)}／{n}",
+            f"動物取扱業の登録番号を公式サイトに書いている施設：{sum(bool(h.get('reg')) for h in rs)}／{n}"]
+def _faq(pf, rs, n):
+    cities = "、".join(dict.fromkeys(h["city"] for h in rs))
+    return [
+     (f"{pf}に老犬ホームは何か所ありますか？", f"この一覧では、公式サイトで確かめた{pf}の老犬ホーム・老猫ホームを{n}か所載せています（{cities}）。ここにない施設もあるので、見つけしだい足します。"),
+     (f"{pf}で猫を預けられる老猫ホームはありますか？", f"{pf}で猫も受けると公式サイトに書いてある施設は{sum(_cat_ok(h) for h in rs)}か所です。一覧の「受け入れる動物」でご確認ください。"),
+     ("料金はいくらですか？", "この一覧には料金を載せていません。入所の費用・月ごとの費用・医療費の組み合わせで決まり、犬の大きさや介護の度合いでも変わります。見積もりで確かめることは記事「老犬ホームの費用のしくみ」にまとめました。"),
+     ("見学や入所の日の移動はどうすれば？", "寝たきりの子や大型犬は、ペットタクシーで家の前から施設の前まで移動できます。施設が送迎をしていることもあるので、まず施設にたずねてみてください。"),
+    ]
+CAT = dict(slug=SLUG, name="老犬ホーム・老猫ホーム", unit="施設", h1=H1, items=J["homes"], card=_card, checked=J["checked"], reviews=True,
+  title_word="老犬ホーム・老猫ホーム", title_tail="受け入れる動物・見学・登録番号つき",
+  desc_tail="所在地・受け入れる動物（犬・猫・大型犬）・見学のきまり・動物取扱業の登録番号と、口コミの星を載せています。料金や順位は載せていません。",
+  lede=lambda pf, n: f"{pf}で、シニアの犬や猫を長期・終生で預かってくれる老犬ホーム・老猫ホームを{n}施設まとめました。公式サイトで確かめた所在地・受け入れる動物・見学のきまり・登録番号だけを載せています。見学の前に確かめたいことも一緒にどうぞ。",
+  facts=_facts, faq=_faq, before_title="老犬ホームをえらぶときに確かめること", before=BEFORE,
+  taxi_h="見学・入所・面会の移動は、ペットタクシーで", taxi_p="寝たきりの子や大型犬も、飼い主さまと一緒に家の前から施設の前まで移動できます。",
+  links=[("老犬ホームの費用のしくみ", "/guide/rojin-home-cost/"), ("老犬ホームに預ける前の準備", "/guide/rojin-home-prepare/"), ("老猫ホームのえらび方", "/guide/roneko-home/"), ("シニア犬・シニア猫、介護中の子の移動", "/guide/senior/"), ("往診専門の動物病院", "/hospital/visit/")])
