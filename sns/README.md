@@ -50,7 +50,7 @@
 
 - **X**：週2回、火曜と金曜の20時（Nori 2026-11-02「無料でもう1つ（週2回）」。無料の予約サービスは月10投稿まで）。`posts.json` の順に自動で予約する（5.）。ハッシュタグは1〜2個。
 - **Instagram**：週3回（月・水・金）、夜20時ごろ。同じ10投稿を順に使う（2週間で6つ、残りは3週目に）。ハッシュタグは8〜10個。
-- 画像はどちらも同じ `img/postNN.jpg` を使う。
+- 画像はガイド記事の写真をそのまま使う（文字入りの `img/postNN.jpg` は使わない。Nori 2026-11-02「コマーシャル感強い」）。
 - 10投稿で5週分。なくなる前に、ガイド記事26本からまだ使っていない話題で新しい投稿を足す（Claude が `posts.json` に足して `node sns/gen.cjs`）。
 - 返信・引用・ほかのアカウントへのコメントはしない（受け答えはサイトのお問い合わせへ）。
 
@@ -71,7 +71,7 @@ Xの予定（11/3 から）：11/3 1 はじめまして、11/6 2 タクシーと
 Nori 2026-11-02「僕の作業はゼロにしたい」。始めたあとは Nori さんの確認なしの完全自動。
 
 - アカウント：X [@pettaxi_yoyaku](https://x.com/pettaxi_yoyaku)、Instagram [pettaxi.yoyaku](https://www.instagram.com/pettaxi.yoyaku/)（ビジネス）。どちらも pettaxi.yoyaku@gmail.com で登録。パスワードは Nori さんの Chrome に保存。
-- **X**：ペットタクシー用の無料の予約サービス（Typefully。KONBU とは別のアカウント）に @pettaxi_yoyaku をつないである。`.github/workflows/sns-x.yml` が毎週日曜12時に `sns/schedule_x.py` を動かし、`posts.json` のまだ予約していない投稿を2つ、次の火・金20時に予約する（画像つき）。予約したものは `sns/state.json` に記録。キーは GitHub の Secret `TYPEFULLY_API_KEY`。ユーザー名が pettaxi_yoyaku のアカウントにしか入れない。投稿が残っていないと Issue「Xの投稿が残っていません」が開く → `posts.json` に足して `node sns/gen.cjs`。
+- **X**：ペットタクシー用の無料の予約サービス（Typefully。KONBU とは別のアカウント）に @pettaxi_yoyaku をつないである。`.github/workflows/sns-x.yml` が毎週日曜12時に `sns/schedule_x.py` を動かし、`posts.json` のまだ予約していない投稿を2つ、次の火・金20時に予約する。画像はガイド記事の写真だけ（`posts.json` の `photo`。文字やロゴ入りの `img/postNN.jpg` は広告っぽいので使わない。Nori 2026-11-02）。手で動かすとき `redo` を選ぶと、まだ出ていない予約を消して入れ直す。予約したものは `sns/state.json` に記録。キーは GitHub の Secret `TYPEFULLY_API_KEY`。ユーザー名が pettaxi_yoyaku のアカウントにしか入れない。投稿が残っていないと Issue「Xの投稿が残っていません」が開く → `posts.json` に足して `node sns/gen.cjs`。
 - 予約の前に、文の決まり（上の4.の言葉・リンク・長さ）をスクリプトでも確かめる。
 - **Instagram**：自動のつなぎこみはまだ（予約サービスが Instagram に対応していないため、方法を調べ中）。
 - 返信・コメント・DM・フォローはしない。
