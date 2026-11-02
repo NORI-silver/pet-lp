@@ -17,9 +17,11 @@ function price(id, o) {
 // ラッキーペットサービス：見積もりの返事と1円まで同じ
 assert.equal(price('D72024d3', { pickup: '神戸市灘区 JR六甲道駅', dropoff: '尼崎市立花町3丁目', at: '2026-11-18 19:50', km: 16, pick: 15 }).amount, 10400);
 assert.equal(price('D72024d3', { pickup: '西宮市 JR西宮駅', dropoff: '大阪国際空港', at: '2026-11-21 07:40', km: 15, pick: 3 }).amount, 8300);
-// ミント：お迎え・乗車とも距離ごとの表。20km超はお見積もり
+// ミント：お迎え・乗車とも距離ごとの表
 assert.equal(price('D1c2a5e3', { pickup: '堺市堺区', dropoff: '堺市中区', at: '2026-11-18 14:00', km: 10, pick: 12 }).amount, 3410 + 3300);
-assert.equal(price('D1c2a5e3', { pickup: '岸和田市', dropoff: '堺市中区', at: '2026-11-18 14:00', km: 23, pick: 15 }), null);
+// 20km超は1kmごと231円、17時以降は時間外3,300円（返事①：お迎え15km 3,300＋走行23km 7,513＋時間外3,300＝14,113円）
+assert.equal(price('D1c2a5e3', { pickup: '岸和田市', dropoff: '堺市中区', at: '2026-11-18 20:50', km: 23, pick: 15 }).amount, 14113);
+assert.equal(price('D1c2a5e3', { pickup: '岸和田市', dropoff: '堺市中区', at: '2026-11-18 14:00', km: 23, pick: 15 }).amount, 10813);
 // シエロ：船橋→羽田は定額10,000円（高速代込み）。逆向きも同じ
 let r = price('De3f35f2', { pickup: '千葉県船橋市 船橋駅', dropoff: '羽田空港 第1ターミナル', at: '2026-11-21 07:40', km: 36, pick: 15, back: 42 });
 assert.equal(r.amount, 10000); assert.equal(r.fixed, true); assert.equal(r.tollIncluded, true);

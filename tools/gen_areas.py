@@ -63,7 +63,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_hospitals
 import prefkeep
 import gen_dogrun
-_EMG_RV = _EMG_RV + gen_hospitals.review_rows()
+import gen_rojin
+import gen_trainers
+_EMG_RV = _EMG_RV + gen_hospitals.review_rows() + gen_rojin.review_rows() + gen_trainers.review_rows()
 booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG_REVIEWS*/var EMG_REVIEWS = " + json.dumps({t["id"]: {"query": t["review_query"], "name": t["review_name"]} for t in _EMG_RV if t.get("review_query")}, ensure_ascii=False) + ";/*/EMG_REVIEWS*/", booking_src, count=1, flags=re.S)
 # 候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る
 _DISP = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))["companies"]
@@ -373,7 +375,7 @@ PARTNER_BAND = '''<aside class="partner-band"><div class="wrap"><p><b>ペット�
 def foot(cta_href, band=True):
     return (PARTNER_BAND if band else '') + f'''<footer>
   <div class="wrap">
-    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国の公営ドッグラン</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
+    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国の公営ドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav><a href="/area/">全国</a>{''.join(f'<a href="/{a["slug"]}/">{e(a["short"])}</a>' for a in AREAS)}</nav>
     <p>ペットタクシー予約窓口</p>
     <p>&copy; 2026 ペットタクシー予約窓口</p>
@@ -650,7 +652,10 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
     <p>通院先や宿泊先ごとの行き方、受付・乗降場所、帰りの車で確かめたいことをまとめました。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "facility"])}
     <div class="sh"><h2>移動の困りごとから調べる</h2></div>
-    {guide_cards([g["slug"] for g in GUIDES if g.get("category") != "facility"])}
+    {guide_cards([g["slug"] for g in GUIDES if g.get("category") not in ("facility", "procedure")])}
+    <div class="sh"><h2>迷子・犬の登録・引っ越しの手続き</h2></div>
+    <p>迷子になったとき、迷子を保護したとき、犬の登録、引っ越し、飼えなくなったときの相談先。全国の窓口は<a href="/jichitai/">迷子・犬の登録・引取りの窓口</a>の一覧から。</p>
+    {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "procedure"])}
   </div>
 </section>
 <section style="padding-top:0">
@@ -1018,12 +1023,12 @@ ep = head("ペットの緊急搬送・動物救急車（緊急のペットタク
       <p class="emg-free">この一覧は無料の情報です。当サイトへのお申し込みやお支払いはありません。料金や受付は、それぞれの会社・病院に直接おたずねください。</p>
       <div class="f"><label for="emgPrefAll">都道府県でしぼりこむ</label><select id="emgPrefAll">{emg_opts}</select></div>
       <p class="emg-sum"><a href="/#emergency">現在地から近い病院を、車で行く時間と一緒にさがす</a></p>
-      <h2 class="emg-h">緊急の搬送をしている会社</h2>
-      <div id="emgTaxiAll">{''.join(emg_company(t) for t in EMG["taxis"])}</div>
-      <p class="emg-none" id="emgTaxiNone" hidden>この都道府県で緊急の搬送をしている会社は、まだ載せていません。</p>
       <h2 class="emg-h">夜間・救急の動物病院</h2>
       <p class="emg-sum">夜間の病院が見つからない県には、近くの県の病院を（県名）つきで載せています。</p>
       {emg_prefs_html}
+      <h2 class="emg-h">緊急の搬送をしている会社</h2>
+      <div id="emgTaxiAll">{''.join(emg_company(t) for t in EMG["taxis"])}</div>
+      <p class="emg-none" id="emgTaxiNone" hidden>この都道府県で緊急の搬送をしている会社は、まだ載せていません。</p>
       {emg_tips}
       <p class="emg-note">当サイトとは別の会社・病院です（{e(EMG["checked"])}時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、お問い合わせからお知らせください。</p>
     </div>
@@ -1202,10 +1207,10 @@ for slug, pf, short, cities in PREFS:
     <p>受付時間つきの一覧は<a href="/hospital/night/#pref={quote(pf)}">{e(pf)}の夜間・救急の動物病院</a>に、家まで来てくれる獣医さんは<a href="/hospital/visit/#pref={quote(pf)}">往診専門の動物病院</a>にまとめています。</p>
     {gen_dogrun.area_snippet(pf, e)}
     <div class="emg">
-      <h3 class="emg-h">緊急の搬送をしている会社</h3>
-      {taxi_html}
       <h3 class="emg-h">夜間・救急の動物病院</h3>
       {pref_hosp_html(pf)}
+      <h3 class="emg-h">緊急の搬送をしている会社</h3>
+      {taxi_html}
       <p class="emg-note">当サイトとは別の会社・病院です（{e(EMG["checked"])}時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、お問い合わせからお知らせください。口コミはページ上の「緊急」タブで見られます。</p>
     </div>
     <p><a href="/emergency/">全国の緊急の連絡先の一覧</a>から、現在地から近い病院も探せます。</p>
@@ -1346,6 +1351,14 @@ import gen_sougi
 gen_sougi.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_sougi.urls(SITE)
+# 全国の老犬ホーム・老猫ホーム（/rojin-home/）：お金を取らない情報ページ（tools/gen_rojin.py、データ tools/rojin.json）
+gen_rojin.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
+  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_rojin.urls(SITE)
+# 全国のドッグトレーナー・犬のしつけ教室（/dog-trainer/）：お金を取らない情報ページ（tools/gen_trainers.py、データ tools/trainers.json）
+gen_trainers.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
+  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_trainers.urls(SITE)
 
 # sitemap / robots / 404
 urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url] + hosp_urls + [pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url, pterms_url]
