@@ -111,6 +111,9 @@ src = re.sub(r"<!--FARE_TABLE-->.*?<!--/FARE_TABLE-->", lambda m: "<!--FARE_TABL
 EMG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "emergency.json"), encoding="utf-8"))
 EMG = {"checked": EMG["checked"], "taxis": EMG["taxis"], "hospitals": EMG["hospitals"]}
 src = re.sub(r"/\*EMG\*/.*?/\*/EMG\*/", lambda m: "/*EMG*/var EMG = " + json.dumps(EMG, ensure_ascii=False) + ";/*/EMG*/", src, count=1, flags=re.S)
+TAXIS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "regular_taxis.json"), encoding="utf-8"))  # ふつうのタクシー（ご案内だけ）
+TAXIS = {"checked": TAXIS["checked"], "taxis": [{k: t[k] for k in ("id", "name", "pref", "cities", "area_label", "rule", "fare", "url")} for t in TAXIS["taxis"]]}
+src = re.sub(r"/\*TAXIS\*/.*?/\*/TAXIS\*/", lambda m: "/*TAXIS*/var TAXIS = " + json.dumps(TAXIS, ensure_ascii=False) + ";/*/TAXIS*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*FARES\*/.*?/\*/FARES\*/", lambda m: "/*FARES*/" + FARE_JS + "/*/FARES*/", src, count=1, flags=re.S)
 open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(src)
 TOP_HTML = src  # 地域ページの元（下の clone_top）。src はあとで別の用途に使われるので写しておく

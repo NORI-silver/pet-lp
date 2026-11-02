@@ -505,6 +505,11 @@ footer a{color:var(--ink-2)}
 .partner-card .btn{margin-top:auto;font-size:.86rem;width:100%;padding:10px 14px;min-height:0;box-shadow:none}
 .partner-card .partner-note{color:var(--ink-2);font-size:.78rem}
 .partner-rest-btn{display:block;width:100%;margin:14px 0 0;padding:14px;border:1.5px dashed var(--o);border-radius:14px;background:#fff;color:var(--o-d);font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}
+.taxi-box{margin:22px 0 0;padding:16px;border:1.5px solid var(--line,#e5ded6);border-radius:16px;background:#fffdf9}
+.taxi-box h3{margin:0 0 8px;font-size:1.05rem}.taxi-lead,.taxi-note{font-size:.84rem;color:#5b544d;margin:0 0 12px}.taxi-note{margin:12px 0 0;font-size:.78rem}
+.taxi-list{display:grid;gap:10px}.taxi-card{padding:12px 14px;border:1px solid #e9e2da;border-radius:12px;background:#fff}
+.taxi-card h4{margin:0 0 4px;font-size:.98rem}.taxi-area{margin:0 0 6px;font-size:.8rem;color:#777}.taxi-rule{margin:0 0 8px;font-size:.86rem}
+.taxi-fare{margin:0 0 8px;font-size:.9rem}.taxi-fare b{margin:0 4px}.taxi-fare small{display:block;color:var(--o-d);font-weight:700;font-size:.78rem}.taxi-link{font-size:.86rem;font-weight:700}
 .partner-rest-btn:hover{background:#fff4ec}
 #partnerRest{margin-top:14px}
 .partner-points{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0}
@@ -957,6 +962,15 @@ footer a{color:var(--ink-2)}
           </div>
         </section>
 
+        <!--REGULAR_TAXI-->
+        <section class="taxi-box" id="taxiBox" aria-labelledby="taxiTitle" hidden>
+          <h3 id="taxiTitle">キャリーに入る子なら、ふつうのタクシーも使えます</h3>
+          <p class="taxi-lead">ペットと一緒に乗れることを公式サイトに書いているタクシー会社だけを載せています。予約は、各社の公式サイト・アプリ・電話から、ご自身でお願いします（当サイトからは問い合わせできません）。予約のときに、ペットが一緒であることを伝えてください。乗せられるかは、最後は会社や運転手さんの判断になります。</p>
+          <div class="taxi-list" id="taxiList"></div>
+          <p class="taxi-note" id="taxiNote"></p>
+        </section>
+        <!--/REGULAR_TAXI-->
+
         <div class="group">
           <div class="group-h"><span>3</span>ご連絡先</div>
           <div class="f"><label for="name">お名前<span class="need">必須</span></label>
@@ -1377,6 +1391,6 @@ footer a{color:var(--ink-2)}
 
 <div class="sticky"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
 
-<script src="/app.js?v=c8f38bc7de"></script>
+<script src="/app.js?v=83fbfffa5a"></script>
 </body>
 </html>
