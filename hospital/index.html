@@ -77,6 +77,37 @@
   </div>
 </section>
 </main>
+<script>
+(function(){
+var PREF_KEY = "petInfoPref";
+function prefGet(){ try { return localStorage.getItem(PREF_KEY); } catch (x) { return null; } }
+function prefPut(v){ try { localStorage.setItem(PREF_KEY, v); } catch (x) {} }
+// 都道府県でしぼりこめるページへのリンクに、いまの県を付ける
+function prefLinks(v){
+  document.querySelectorAll("a[href]").forEach(function(a){
+    var h = a.getAttribute("href");
+    if (!/^\/(hospital|dogrun|jichitai|sougi|emergency)\//.test(h)) return;
+    h = h.replace(/#pref=.*$/, "");
+    if (h.indexOf("#") >= 0) return;
+    a.setAttribute("href", v ? h + "#pref=" + encodeURIComponent(v) : h);
+  });
+}
+function prefKeep(sel, apply){
+  var m = location.hash.match(/^#pref=(.+)$/), v = null;
+  if (m) { try { v = decodeURIComponent(m[1]); } catch (x) {} }
+  if (v === null) v = prefGet();
+  if (v !== null && [].some.call(sel.options, function(o){ return o.value === v; })) {
+    sel.value = v; apply(); prefPut(v);
+  }
+  prefLinks(sel.value);
+  sel.addEventListener("change", function(){
+    apply(); prefPut(sel.value); prefLinks(sel.value);
+    try { history.replaceState(null, "", location.pathname + location.search + (sel.value ? "#pref=" + encodeURIComponent(sel.value) : "")); } catch (x) {}
+  });
+}
+  prefLinks(prefGet());
+})();
+</script>
 <footer>
   <div class="wrap">
     <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国の公営ドッグラン</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>

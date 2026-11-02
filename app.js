@@ -1523,8 +1523,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     }
     tabs.addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) setMode(b.dataset.mode); });
     // 都道府県を選びなおしたら、場所の欄は空にして都道府県の一覧に戻す
-    $("emgPref").addEventListener("change", function(){ track("emergency_pref", {pref: this.value}); inp.value = ""; say(""); ++whereSeq; here = null; ++nearSeq; show(this.value); });
-    show("東京都");
+    // 選んだ都道府県は、病院・ドッグランなどのページと共通で覚えておく（tools/prefkeep.py の petInfoPref。Nori 2026-11-02「一度選んだらユーザーが変更するまで固定」）
+    $("emgPref").addEventListener("change", function(){ track("emergency_pref", {pref: this.value}); try { localStorage.setItem("petInfoPref", this.value); } catch (x) {} inp.value = ""; say(""); ++whereSeq; here = null; ++nearSeq; show(this.value); });
+    // トップでは覚えている県を、エリアページではそのページの県を最初に出す
+    (function(){
+      var p = null;
+      if (location.pathname === "/") { try { p = localStorage.getItem("petInfoPref"); } catch (x) {} }
+      if (p && [].some.call($("emgPref").options, function(o){ return o.value === p; })) setSelect($("emgPref"), p);
+      show($("emgPref").value || "東京都");
+    })();
     if (location.hash === "#emergency") setMode("emg");
     // 右上の「空き状況と料金を問い合わせる」：ふつうのタブに戻す（Nori 2026-11-01 予約と見積もりを分けない）
     document.querySelectorAll("[data-cta]").forEach(function(a){

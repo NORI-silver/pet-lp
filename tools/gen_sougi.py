@@ -3,6 +3,7 @@
 # 守ること：民間の葬儀社・霊園の名前は載せない（順位・おすすめなし）。自治体の公式ページだけにリンク。電話番号なし。
 # 言い方はやさしく（「死体」などのことばは自分の文では使わない。ペットは家族）。データ：tools/sougi.json（県庁所在地、東京都は新宿区）。
 import json, os
+import prefkeep
 
 J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sougi.json"), encoding="utf-8"))
 
@@ -95,19 +96,7 @@ def render(ctx):
   </div>
 </section>
 </main>
-<script>
-(function(){{
-  var sel = document.getElementById("hospPref");
-  function apply(){{
-    var v = sel.value;
-    document.querySelectorAll(".emg-pref").forEach(function(s){{ s.hidden = !!v && s.dataset.pref !== v; }});
-    document.querySelectorAll(".emg-region").forEach(function(h){{ h.hidden = !!v; }});
-  }}
-  sel.addEventListener("change", apply);
-  var m = location.hash.match(/^#pref=(.+)$/);
-  if (m) {{ try {{ sel.value = decodeURIComponent(m[1]); apply(); }} catch (x) {{}} }}
-}})();
-</script>
+{prefkeep.LIST_JS}
 """ + ctx["foot_noband"]()
 
 def urls(SITE):
