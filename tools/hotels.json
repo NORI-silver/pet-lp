@@ -1,0 +1,1538 @@
+{
+ "_説明": "大型犬OK・猫専用のペットホテルの一覧（/pet-hotel/）のデータ。公式サイトで確かめたことだけ（料金・順位・電話番号は書かない）。large＝大型犬を受けると公式サイトに書いてある（large_basis：『文』＝大型犬OKなどの文、『料金表』＝ホテルの料金表に大型犬・超大型犬・30kg以上などの区分がある）。large_from_kg＝その施設の料金表で『大型犬』が始まる体重、max_kg＝受けられる上限。cat_only＝猫専用の施設、separate＝犬も預かるが猫を分けている形。cat・vet（動物病院の併設・運営）・pickup・senior・night_staff・camera・run・private_room は公式サイトにはっきり書いてあるときだけ。載せない：大型犬は『ご相談』だけ、猫を犬と同じ部屋で預かる、新規停止・中止、公式サイトのない・開けない、予約仲介サイト。",
+ "checked": "2026-11-02",
+ "hotels": [
+  {
+   "id": "PH001",
+   "name": "Dog Style 本店",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市中央区",
+   "url": "https://www.dogstyle-2008.com/pethotel.html",
+   "large": true,
+   "services": "ペットホテル、送迎",
+   "pickup": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH002",
+   "name": "ドッグ・ラブ・クオ",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市白石区",
+   "url": "https://www.doglovequa.jp/hotel/",
+   "large": true,
+   "services": "ドッグホテル、キャットホテル、宿泊専用室内ドッグラン",
+   "cat": true,
+   "run": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH003",
+   "name": "ONLY WAN（オンリーワン）",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市白石区",
+   "url": "https://www.only-wan.net/pethotel.html",
+   "large": true,
+   "services": "ペットホテル（犬・猫）、送迎",
+   "cat": true,
+   "pickup": true,
+   "night_staff": true,
+   "large_basis": "料金表",
+   "large_from_kg": 18
+  },
+  {
+   "id": "PH004",
+   "name": "旭ヶ丘ペットクラブ",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市中央区",
+   "url": "https://www.apc-wanwan.com/pethotel/",
+   "large": true,
+   "services": "ペットホテル（犬・猫）、ランコース",
+   "cat": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH005",
+   "name": "ミュアン",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市西区",
+   "url": "https://myuan-cat.com/",
+   "cat_only": true,
+   "services": "ケージフリーの完全個室。飼い主にも映像を配信。有料送迎あり。高齢猫向けの低いキャットタワー",
+   "pickup": true,
+   "senior": true,
+   "camera": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH006",
+   "name": "ダズウェル ペットバディ",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市豊平区",
+   "url": "https://petbuddy.jp/wordpress/",
+   "cat_only": true,
+   "services": "ケージフリーの猫専用ホテル",
+   "cat": true
+  },
+  {
+   "id": "PH007",
+   "name": "ドッグ・ラブ・クオ Nyan's Room",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市白石区",
+   "url": "https://www.doglovequa.jp/nyansroom/",
+   "separate": "猫ちゃん専用スペース「Nyan's Room」",
+   "services": "全室個室。一部エリアへ送迎あり。体力の落ちた高齢猫・投薬のある猫は原則不可",
+   "pickup": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH008",
+   "name": "ペットのお風呂やWONWON ねこペットホテル",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市西区",
+   "url": "https://ofuro-wonwon.com/catpethotel/",
+   "separate": "猫ちゃん専用の完全個室",
+   "services": "介護が必要な高齢猫も可（介護料金あり）。LINEで写真・動画の報告",
+   "senior": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH009",
+   "name": "GALFAR",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市太白区",
+   "url": "https://galfar.jp/hotel/",
+   "large": true,
+   "services": "動物病院併設のペットホテル（犬・猫）、ドッグラン",
+   "cat": true,
+   "vet": true,
+   "run": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH010",
+   "name": "南仙台どうぶつ病院",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市太白区",
+   "url": "https://www.minasen-ah.net/hotel",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）、併設ドッグラン",
+   "cat": true,
+   "vet": true,
+   "run": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH011",
+   "name": "ワンラブ カインズ仙台泉店",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市泉区",
+   "url": "https://www.pet-onelove.com/hotel/page189.php",
+   "large": true,
+   "services": "ペットホテル（犬・猫・小動物）",
+   "cat": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH012",
+   "name": "猫専門ペットホテル またたび亭",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市宮城野区",
+   "url": "https://www.matatabitei.com/",
+   "cat_only": true,
+   "services": "猫専門ホテル・保護猫カフェ・キャットシッター。大きな個室（成猫2匹まで同室）",
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH013",
+   "name": "キャットホテル ねこの館",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市泉区",
+   "url": "https://nekonoyakata-htl.com/",
+   "cat_only": true,
+   "services": "広い個室6室の猫専門ホテル",
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH014",
+   "name": "南仙台どうぶつ病院 ペットホテル",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市太白区",
+   "url": "https://www.minasen-ah.net/hotel",
+   "separate": "犬舎と完全に分かれた猫舎",
+   "services": "動物病院のホテル",
+   "vet": true,
+   "cat": true
+  },
+  {
+   "id": "PH015",
+   "name": "Pet Care House OCEAN",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市緑区",
+   "url": "http://www.pch-ocean.com/hotel.html",
+   "large": true,
+   "services": "ペットホテル（犬舎・猫舎）",
+   "cat": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH016",
+   "name": "七里動物病院",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市見沼区",
+   "url": "https://www.nanasato-ah.jp/treatment/hotel/",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH017",
+   "name": "犬猫倶楽部ウィズ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市大宮区",
+   "url": "http://www.with-dogscats.com/hotel",
+   "large": true,
+   "services": "ペットホテル（犬・猫）、一時預かり",
+   "cat": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH018",
+   "name": "よこやまペットクリニック",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市浦和区",
+   "url": "https://yokoyama-pc.com/hotel/",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "max_kg": 35,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH019",
+   "name": "駅前通り動物病院",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市見沼区",
+   "url": "https://ekimaedori.com/hotel/",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "large_basis": "料金表",
+   "large_from_kg": 20.1
+  },
+  {
+   "id": "PH020",
+   "name": "ねこべや大宮店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市大宮区",
+   "url": "https://nekobeya.pechika.jp/houses/omiya.html",
+   "cat_only": true,
+   "services": "家族ごとの個室。獣医師在籍。投薬・注射・点滴に対応。自宅送迎（有料）。スマホで24時間様子を見られる",
+   "pickup": true,
+   "senior": true,
+   "camera": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH021",
+   "name": "ねこべや越谷店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "越谷市",
+   "url": "https://nekobeya.pechika.jp/houses/koshigaya.html",
+   "cat_only": true,
+   "services": "家族ごとの個室。社内獣医師がオンラインで健康管理。食事に混ぜる薬に対応。自宅送迎（有料）。スマホで24時間様子を見られる",
+   "pickup": true,
+   "senior": true,
+   "camera": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH022",
+   "name": "猫専門ペットホテル ネコト 越谷店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "越谷市",
+   "url": "https://www.hotelnekoto.jp/",
+   "cat_only": true,
+   "services": "猫コンシェルジュが在籍。全室ケージレスの完全個室。24時間見られるカメラ。投薬・看病は事前連絡。さいたま市岩槻区に新店の予定あり",
+   "senior": true,
+   "camera": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH023",
+   "name": "船橋どうぶつ病院",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://fvh2014.com/hotel/",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）、ドッグランでの散歩",
+   "cat": true,
+   "vet": true,
+   "run": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH024",
+   "name": "とわ動物病院",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://twvc.jp/hotel/",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH025",
+   "name": "桑原動物病院",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://www.k-ah.com/pethotel/",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH026",
+   "name": "ねこべや千葉中央店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://nekobeya.pechika.jp/houses/chiba_chuo.html",
+   "cat_only": true,
+   "services": "窓付きの個室。獣医師在籍。持病・高齢の猫も可、投薬・注射・点滴に対応。提携ペットタクシーで自宅送迎。スマホで24時間様子を見られる",
+   "pickup": true,
+   "senior": true,
+   "camera": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH027",
+   "name": "ねこべや松戸店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://nekobeya.pechika.jp/houses/matsudo.html",
+   "cat_only": true,
+   "services": "家族ごとの個室。持病・高齢の猫も可。提携ペットタクシーで自宅送迎。スマホで24時間様子を見られる",
+   "pickup": true,
+   "senior": true,
+   "camera": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH028",
+   "name": "猫のお宿 猫の月",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://nekonotsuki.jimdofree.com/",
+   "cat_only": true,
+   "services": "自宅で営む猫専用ホテル。ミニ個室あり",
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH029",
+   "name": "Cuddle Cat（カドルキャット）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://select-type.com/s/Cuddle-Cat/",
+   "cat_only": true,
+   "services": "完全個室型の猫ホテルと老猫ホーム。投薬はオプション",
+   "senior": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH030",
+   "name": "セレブル動物病院",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://www.celebre.co.jp/hotel",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH031",
+   "name": "麻布ペット 代々木公園店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://azabupet.jp/service/hotel/",
+   "large": true,
+   "services": "ペットホテル（犬・猫）、送迎",
+   "cat": true,
+   "pickup": true,
+   "senior": true,
+   "night_staff": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH032",
+   "name": "聖蹟ファミリー動物病院",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "多摩市",
+   "url": "https://seisekifamily.com/hotel/",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "max_kg": 30,
+   "large_basis": "料金表",
+   "large_from_kg": 20
+  },
+  {
+   "id": "PH033",
+   "name": "多摩大塚どうぶつ病院",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "八王子市",
+   "url": "https://toah.jp/hotel/",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "senior": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH034",
+   "name": "プレミアキャットホテル＆スパ東京赤坂",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "港区",
+   "url": "https://premiercathoteltokyo.com/",
+   "cat_only": true,
+   "services": "猫専門の個室ホテル。送迎サービスあり（要問い合わせ）。夜間はWebカメラとアラームで見守り",
+   "pickup": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH035",
+   "name": "プレミアキャットホテル＆スパ東京飯田橋",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "文京区",
+   "url": "https://premiercathoteltokyoiidabashi.com/",
+   "cat_only": true,
+   "services": "猫だけの個室ホテル。送迎サービスあり。投薬は事前相談で判断。毎日LINEで写真・動画の報告",
+   "pickup": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH036",
+   "name": "プレミアキャットホテル＆スパ東京新宿代々木",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://premiercathoteltokyo-shinjukuyoyogi.com/",
+   "cat_only": true,
+   "services": "猫専門の個室ホテル。送迎サービスあり。投薬は事前相談",
+   "pickup": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH037",
+   "name": "ねこべや東京 港区本店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "港区",
+   "url": "https://nekobeya.pechika.jp/houses/minato.html",
+   "cat_only": true,
+   "services": "窓付き個室の猫専門ホテル。獣医師在籍（休みの日あり）。投薬・注射・点滴に対応。自宅送迎（有料）。全室Webカメラ・夜勤スタッフあり",
+   "pickup": true,
+   "senior": true,
+   "camera": true,
+   "night_staff": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH038",
+   "name": "ねこべや羽田空港店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "https://nekobeya.pechika.jp/houses/haneda.html",
+   "cat_only": true,
+   "services": "窓付き個室の猫専門ホテル。羽田空港まで送迎無料。シニア・投薬・注射・点滴に対応。全室Webカメラ・夜勤スタッフあり",
+   "pickup": true,
+   "senior": true,
+   "camera": true,
+   "night_staff": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH039",
+   "name": "ねこべや杉並店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "https://nekobeya.pechika.jp/houses/suginami.html",
+   "cat_only": true,
+   "services": "家族ごとの個室。獣医師在籍。投薬・注射・点滴に対応（要相談）。自宅送迎（有料）。全室Webカメラ",
+   "pickup": true,
+   "senior": true,
+   "camera": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH040",
+   "name": "ねこ専用ホテル まねきねこ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "品川区",
+   "url": "https://nekohotel-manekineko.com/",
+   "cat_only": true,
+   "services": "大崎の猫専用ホテル",
+   "cat": true
+  },
+  {
+   "id": "PH041",
+   "name": "ヌーノクラブ新井薬師店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中野区",
+   "url": "https://www.nunoclub.com/lp/cathotel_lp.html",
+   "separate": "2階が猫専用のフロア（1階は犬）",
+   "services": "ケージフリーの猫用フロア。送迎あり（別料金・距離や時期による）。投薬は注意事項に同意のうえ",
+   "pickup": true,
+   "senior": true,
+   "cat": true
+  },
+  {
+   "id": "PH042",
+   "name": "キャットクリニック世田谷",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://catcs.jp/free/hotel",
+   "cat_only": true,
+   "services": "猫専門の動物病院に併設の猫専用ホテル。預け入れ・お迎えは診察時間内",
+   "vet": true,
+   "cat": true
+  },
+  {
+   "id": "PH043",
+   "name": "ねこままホテル",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://www.necomama.com/",
+   "cat_only": true,
+   "services": "完全個室の猫専用ホテル（池尻）",
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH044",
+   "name": "ドッグサロン Donny",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市川崎区",
+   "url": "https://www.dogsalon-donny.com/%E3%83%9A%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB/",
+   "large": true,
+   "services": "ペットホテル（犬・猫）、無料送迎（条件あり）",
+   "cat": true,
+   "pickup": true,
+   "night_staff": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH045",
+   "name": "ドッグホテル WANCOTT",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "https://www.wancott.com/doghotel/",
+   "large": true,
+   "services": "ドッグホテル、ドッグパーク、ドッグナーシング",
+   "senior": true,
+   "night_staff": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH046",
+   "name": "かやま動物病院",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市中央区",
+   "url": "https://www.kayama-ah.jp/14892399984009",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "large_basis": "料金表",
+   "large_from_kg": 20
+  },
+  {
+   "id": "PH047",
+   "name": "木下動物病院",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市中央区",
+   "url": "https://kinoshita-animal-hospital.jp/pethotel/",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）、ドッグラン",
+   "cat": true,
+   "vet": true,
+   "run": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH048",
+   "name": "猫カフェれおん・にゃんくる蒲田のペットホテル",
+   "prefs": [
+    "神奈川県",
+    "東京都"
+   ],
+   "city": "横浜市（石川町）・大田区（蒲田）",
+   "url": "https://www.nekocafe-leon.com/cat-hotel",
+   "cat_only": true,
+   "services": "猫カフェが営む猫専用のペットホテル。10歳以上は要相談",
+   "cat": true
+  },
+  {
+   "id": "PH049",
+   "name": "ねこべや横浜関内店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "https://nekobeya.pechika.jp/houses/kannai.html",
+   "cat_only": true,
+   "services": "1部屋1家族の個室。提携ペットタクシーで自宅送迎。スマホのアプリで24時間様子を見られる",
+   "pickup": true,
+   "camera": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH050",
+   "name": "キャッツカールトン横浜",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市神奈川区",
+   "url": "https://cats-carlton.com/",
+   "cat_only": true,
+   "services": "オーナー宅の約6畳の個室を1家族で貸切。ケージレス。LINEで写真・動画の報告",
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH051",
+   "name": "横浜ねこ病院のペットホテル",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市神奈川区",
+   "url": "https://yokoneko.net/hotel/",
+   "cat_only": true,
+   "services": "ねこ専門クリニックが運営する完全個室のホテル。体調に気になる点があれば獣医師が診察",
+   "vet": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH052",
+   "name": "Host family 丸塚本店",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "浜松市",
+   "url": "https://www.hostfamily2012.com/doghotel",
+   "large": true,
+   "services": "ドッグホテル、専用ドッグラン",
+   "night_staff": true,
+   "run": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH053",
+   "name": "HAMA＆WAN",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "浜松市中央区",
+   "url": "https://www.hama-wan.com/pethotel.html",
+   "large": true,
+   "services": "ペットホテル、ドッグラン",
+   "run": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH054",
+   "name": "ワンラブ 静岡PARCO店",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "静岡市葵区",
+   "url": "https://www.pet-onelove.com/hotel/page238.php",
+   "large": true,
+   "services": "ペットホテル（犬・猫）",
+   "cat": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH055",
+   "name": "いちごみるく 瀬名中央店",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "静岡市葵区",
+   "url": "https://ichigomilk-salon.jp/hotel/",
+   "cat_only": true,
+   "services": "猫専用ホテル。他のお宅の犬・猫と接触しない",
+   "cat": true
+  },
+  {
+   "id": "PH056",
+   "name": "にゃんこペットホテル（ホストファミリー薬師店）",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "浜松市",
+   "url": "https://www.hostfamily2012.com/cathotel",
+   "separate": "にゃんこオンリーフロア",
+   "services": "完全個室6部屋（ノーマル・VIP）。いつもの薬にも対応。24時間Webカメラ",
+   "senior": true,
+   "camera": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH057",
+   "name": "ハミング動物病院 ペットホテル",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "浜松市中央区",
+   "url": "https://www.humming-ac.com/hotel.html",
+   "separate": "猫専用のお部屋",
+   "services": "動物病院が患者さま向けに預かり",
+   "vet": true,
+   "cat": true
+  },
+  {
+   "id": "PH058",
+   "name": "Dog Hotel ANKH",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市守山区",
+   "url": "https://doghotel-noa.com/",
+   "large": true,
+   "services": "ドッグホテル、老犬介護",
+   "senior": true,
+   "night_staff": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH059",
+   "name": "DOGCAT COCO",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市昭和区",
+   "url": "https://dogcatcoco.net/hotel/",
+   "large": true,
+   "services": "ペットホテル・一時預かり（犬・猫）、送迎（名古屋市内無料）",
+   "cat": true,
+   "pickup": true,
+   "senior": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH060",
+   "name": "ローズマリー 岡崎大樹寺店",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "岡崎市",
+   "url": "https://e-rm.co.jp/shop/okazaki/hotel/",
+   "large": true,
+   "services": "ペットホテル、ドッグラン",
+   "run": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH061",
+   "name": "おおい動物病院",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "一宮市",
+   "url": "https://oi-anihos.com/free/hotel",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）、ドッグラン",
+   "cat": true,
+   "vet": true,
+   "run": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH062",
+   "name": "Danke",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "豊田市",
+   "url": "https://danke-1104.com/",
+   "large": true,
+   "services": "ケージレスのペットホテル、屋根付きドッグラン",
+   "run": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH063",
+   "name": "かなくぼ動物病院",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "豊田市",
+   "url": "https://www.kanakubo-vet.com/pethotel/",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）、ドッグラン",
+   "cat": true,
+   "vet": true,
+   "senior": true,
+   "run": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH064",
+   "name": "ねこべや名古屋店",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市北区",
+   "url": "https://nekobeya.pechika.jp/houses/nagoya.html",
+   "cat_only": true,
+   "services": "1部屋1家族の個室。24時間スタッフ常駐。食事に混ぜて食べる薬に対応。自宅送迎（有料）。スマホで24時間様子を見られる",
+   "pickup": true,
+   "senior": true,
+   "camera": true,
+   "night_staff": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH065",
+   "name": "キャットホテル ジャスミン",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市緑区",
+   "url": "https://www.cat-jasmine.com/",
+   "cat_only": true,
+   "services": "ガラス張りの個室。10歳以上のシニア・持病の薬に対応。Webカメラあり。スタッフ1名常駐・夜間も見回り",
+   "senior": true,
+   "camera": true,
+   "night_staff": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH066",
+   "name": "猫ホテル bell",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市守山区",
+   "url": "https://www.nekohotel.jp/",
+   "cat_only": true,
+   "services": "3〜5.8畳の個室。有資格スタッフが24時間常駐。天井カメラをスマホで見られる。送迎サービスあり",
+   "pickup": true,
+   "camera": true,
+   "night_staff": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH067",
+   "name": "キャットホテル もふめいと（Moff Mate）",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "一宮市",
+   "url": "https://sites.google.com/view/moffmate/home",
+   "cat_only": true,
+   "services": "1部屋1家族。常駐シッターが夜間も見守り。15才以上は断る場合あり",
+   "night_staff": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH068",
+   "name": "DOG & LIFE east",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市左京区",
+   "url": "https://www.dogandlife.com/hotel/",
+   "large": true,
+   "services": "ペットホテル、送迎、介護用品",
+   "pickup": true,
+   "max_kg": 30,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH069",
+   "name": "右京動物病院",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市右京区",
+   "url": "https://www.ukyo-ah.com/hospital/price/",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH070",
+   "name": "@D.O.G",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市右京区",
+   "url": "https://www.atto-dog.com/hotel",
+   "large": true,
+   "services": "ペットホテル、送迎",
+   "pickup": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH071",
+   "name": "猫るす キャットホテル",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市中京区",
+   "url": "https://www.nekorusukyoto.com/",
+   "cat_only": true,
+   "services": "二条の猫に特化したホテル（シッターは他の動物も）",
+   "cat": true
+  },
+  {
+   "id": "PH072",
+   "name": "わんわんはうす 猫ちゃん用ペットホテル",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市中京区",
+   "url": "https://wanwanhouse.kyoto.jp/cat",
+   "separate": "他のペットと分けた猫専用のスペース",
+   "services": "病気・高齢の子、薬が必要な子も事前相談で預かり",
+   "senior": true,
+   "cat": true
+  },
+  {
+   "id": "PH073",
+   "name": "ドッグホテル レトノワ",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市西区",
+   "url": "https://intopet.jp/retonowa/pet-hotel/",
+   "large": true,
+   "services": "ペットホテル（一時預かり・お泊り）",
+   "large_basis": "文"
+  },
+  {
+   "id": "PH074",
+   "name": "ルーチェ動物病院",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "堺市南区",
+   "url": "https://www.luce-ah.com/hotels.php",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "large_basis": "料金表",
+   "large_from_kg": 20.1
+  },
+  {
+   "id": "PH075",
+   "name": "ゆう動物病院",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "豊中市",
+   "url": "https://www.you-ac.com/pet-hotel.html",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫・うさぎ）",
+   "cat": true,
+   "vet": true,
+   "max_kg": 50,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH076",
+   "name": "東山動物病院",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "堺市中区",
+   "url": "https://www.pet7.com/hotel",
+   "large": true,
+   "services": "動物病院併設のペットホテル、サロン",
+   "cat": true,
+   "vet": true,
+   "senior": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH077",
+   "name": "SCATWORKS（スキャットワークス）",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市北区",
+   "url": "https://scatworks.com/hotel/",
+   "cat_only": true,
+   "services": "犬などのいない猫専用ホテル。個別ケージ。朝晩LINEで写真",
+   "cat": true
+  },
+  {
+   "id": "PH078",
+   "name": "Sweet Dandelion Cat Hotel",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市東成区",
+   "url": "https://www.sweet-dandelion.com/cat-hotel/",
+   "cat_only": true,
+   "services": "完全個室の猫専用ホテル",
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH079",
+   "name": "にゃん子ん家 キャットホテル",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市（阿倍野区ほか）",
+   "url": "http://nyankonchi.jp/hotel/",
+   "cat_only": true,
+   "services": "完全個室の猫専用ホテル。朝晩2回LINEで様子を配信",
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH080",
+   "name": "上本町どうぶつ病院 ネコちゃんのペットホテル",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市天王寺区",
+   "url": "https://uehommachi-animal.com/pethotel-2.html",
+   "separate": "犬とは完全に別の猫用ホテル",
+   "services": "動物病院のホテル。獣医師による無料健康チェック",
+   "vet": true,
+   "cat": true
+  },
+  {
+   "id": "PH081",
+   "name": "うめだ東動物病院 ペットホテル",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市北区",
+   "url": "https://www.umedaeast-ah.com/hotel/",
+   "separate": "独立したネコ舎",
+   "services": "患者さま専用。獣医師と病院スタッフがお世話。病気・投薬が必要な子・シニアも可",
+   "vet": true,
+   "senior": true,
+   "cat": true
+  },
+  {
+   "id": "PH082",
+   "name": "ゆうなぎ動物病院 ペットホテル",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市港区",
+   "url": "https://www.yuunagiah.com/pethotel/index.html",
+   "separate": "犬舎と分かれた猫舎",
+   "services": "患者さま対象。猫用はキャットタワー付きVIP（完全個室）とスタンダード。シニア・介護預かりあり",
+   "vet": true,
+   "senior": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH083",
+   "name": "FUN FUN（ファンファン）",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "東大阪市",
+   "url": "https://cat-funfun.com/",
+   "cat_only": true,
+   "services": "8泊以上の長期専門の猫の預かり。個室。シニア・投薬の相談可",
+   "senior": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH084",
+   "name": "シェラトンドッグ",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市東灘区",
+   "url": "https://www.sheraton-kobe.co.jp/dog/",
+   "large": true,
+   "services": "ペットホテル（犬・猫）、トリミング",
+   "cat": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH085",
+   "name": "ワンワンホテル",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市中央区",
+   "url": "https://www.wanwanhotelkobe.com/pethotel",
+   "large": true,
+   "services": "ペットホテル、ドッグラン",
+   "run": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH086",
+   "name": "武田動物病院",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市須磨区",
+   "url": "https://www.takeda-ah.com/pet/pethotel/",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "max_kg": 50,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH087",
+   "name": "Animal Clinic どんぐりの森",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市東灘区",
+   "url": "https://dongrinomori.com/hotel",
+   "large": true,
+   "services": "動物病院併設のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "max_kg": 45,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH088",
+   "name": "たむら動物病院",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市須磨区",
+   "url": "https://www.tamura-ah.jp/%E3%83%9A%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH089",
+   "name": "ファミリー動物クリニック",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市北区",
+   "url": "https://family-ac.com/pet-hotel/",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH090",
+   "name": "ねこもり",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市兵庫区",
+   "url": "https://nekomori-kobe.com/",
+   "cat_only": true,
+   "services": "猫専門ホテルとシッター。新神戸駅・神戸空港などへ送迎。夜間も有人。家族猫だけで1室貸切も可",
+   "pickup": true,
+   "night_staff": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH091",
+   "name": "クシェルグルーマーズ ねこ専用ホテル",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "姫路市",
+   "url": "http://www.kuschel-groomers.com/hotel-cat.html",
+   "separate": "猫ちゃん専用のお部屋（トリミングルームとは別）",
+   "services": "オーダーメイドのねこ専用ホテル（個室スタンダード・デラックス）。高齢の猫は平面の部屋も。Webカメラ付きプレイルーム（オプション）",
+   "senior": true,
+   "camera": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH092",
+   "name": "ファミリー動物クリニック ペットホテル",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市北区",
+   "url": "https://family-ac.com/pet-hotel/",
+   "separate": "ネコちゃん専用のホテルスペース",
+   "services": "動物病院のホテル。内服の投与にも対応（別料金）",
+   "vet": true,
+   "senior": true,
+   "cat": true
+  },
+  {
+   "id": "PH093",
+   "name": "あさグルーミングサロン（あさ動物病院併設）",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市安佐南区",
+   "url": "https://asa-grooming-salon.asa-animal-hospital.com/pet-hotel-hiroshima/",
+   "large": true,
+   "services": "動物病院併設のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "senior": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH094",
+   "name": "Re:birthDream",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市安佐南区",
+   "url": "https://rebirth-dream-coltd.com/hotel/",
+   "large": true,
+   "services": "ペットホテル（犬・猫）、送迎",
+   "cat": true,
+   "pickup": true,
+   "max_kg": 40,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH095",
+   "name": "シャルマン",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "福山市",
+   "url": "https://pet-charmant.com/hotel.html",
+   "large": true,
+   "services": "ペットホテル（犬・猫）、送迎",
+   "cat": true,
+   "pickup": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH096",
+   "name": "キャットクリニック広島 キャットホテル",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市東区",
+   "url": "https://cat-clinic-hiroshima.com/hotel/",
+   "cat_only": true,
+   "services": "猫専門病院のホテル（広いゲージ4部屋・猫棚あり）。初めての方は事前に受診",
+   "vet": true,
+   "cat": true
+  },
+  {
+   "id": "PH097",
+   "name": "Re:birthDream 広島伴東店",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市安佐南区",
+   "url": "https://rebirth-dream-coltd.com/hotel/",
+   "separate": "別室の静かな猫ルーム",
+   "services": "猫は別室の猫ルームで猫用ゲージ。送迎あり",
+   "pickup": true,
+   "cat": true
+  },
+  {
+   "id": "PH098",
+   "name": "動物総合病院ユニベッツ福岡",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "大野城市",
+   "url": "https://www.univet.jp/hotel/",
+   "large": true,
+   "services": "動物病院のペットホテル、送迎サービス",
+   "cat": true,
+   "vet": true,
+   "pickup": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH099",
+   "name": "Putti",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市東区",
+   "url": "https://putti-pet.com/hotel/",
+   "large": true,
+   "services": "ペットホテル",
+   "large_basis": "文"
+  },
+  {
+   "id": "PH100",
+   "name": "BULL STAR",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "久留米市",
+   "url": "https://bullstar.jp/hotel/",
+   "large": true,
+   "services": "ペットホテル、送迎、ドッグラン",
+   "pickup": true,
+   "senior": true,
+   "run": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH101",
+   "name": "エイトわん",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "北九州市門司区",
+   "url": "https://eightwan.wixsite.com/8wan",
+   "large": true,
+   "services": "ペットホテル（犬・猫）、送迎、トリミング",
+   "cat": true,
+   "pickup": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH102",
+   "name": "みどりが丘動物病院",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市東区",
+   "url": "https://midorigaoka.vet/pethotel",
+   "large": true,
+   "services": "動物病院のペットホテル（犬・猫）",
+   "cat": true,
+   "vet": true,
+   "senior": true,
+   "large_basis": "料金表"
+  },
+  {
+   "id": "PH103",
+   "name": "ランキンドック 福岡店",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市",
+   "url": "http://rankin-dog.com/fuk_info.html",
+   "large": true,
+   "services": "ペットホテル、送迎（福岡市内無料）",
+   "pickup": true,
+   "large_basis": "文"
+  },
+  {
+   "id": "PH104",
+   "name": "ねこべや福岡城南店",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市城南区",
+   "url": "https://nekobeya.pechika.jp/houses/fukuoka_jyonan.html",
+   "cat_only": true,
+   "services": "1部屋1家族の個室。福岡空港まで送迎可。食事に混ぜて食べる薬に対応。スマホで24時間様子を見られる",
+   "pickup": true,
+   "senior": true,
+   "camera": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH105",
+   "name": "ねこべや福岡南店",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市南区",
+   "url": "https://nekobeya.pechika.jp/houses/fukuoka_minami.html",
+   "cat_only": true,
+   "services": "1部屋1家族の個室。老猫も可。福岡空港・博多駅などへ送迎。スマホで24時間様子を見られる",
+   "pickup": true,
+   "senior": true,
+   "camera": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH106",
+   "name": "fukuneco",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市城南区",
+   "url": "https://fukuneco.jp/cat-hotel",
+   "cat_only": true,
+   "services": "キャットシッターの自宅を改装した4〜6畳の完全個室（3室）。送迎オプションあり",
+   "pickup": true,
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH107",
+   "name": "ビースパ 猫専用ホテル",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市・北九州市・筑紫野市・大野城市",
+   "url": "https://b-spa.co.jp/nekohotel.html",
+   "separate": "猫専用ホテル（個室）・猫専用プレミアホテル",
+   "services": "ペットホテル・トリミング店の各店に猫専用の個室ホテル",
+   "private_room": true,
+   "cat": true
+  },
+  {
+   "id": "PH108",
+   "name": "ぷここん家 猫専用ペットホテル",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "北九州市小倉南区",
+   "url": "https://www.pucocnchi.com/hotel",
+   "cat_only": true,
+   "services": "譲渡型保護猫カフェの猫専用ホテル。シニア猫の受け入れ実績多数。投薬は事前相談（点滴・注射は不可）",
+   "senior": true,
+   "cat": true
+  }
+ ]
+}

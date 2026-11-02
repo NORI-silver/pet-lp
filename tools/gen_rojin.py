@@ -133,3 +133,5 @@ CAT = dict(slug=SLUG, name="老犬ホーム・老猫ホーム", unit="施設", h
   facts=_facts, faq=_faq, before_title="老犬ホームをえらぶときに確かめること", before=BEFORE,
   taxi_h="見学・入所・面会の移動は、ペットタクシーで", taxi_p="寝たきりの子や大型犬も、飼い主さまと一緒に家の前から施設の前まで移動できます。",
   links=[("老犬ホームの費用のしくみ", "/guide/rojin-home-cost/"), ("老犬ホームに預ける前の準備", "/guide/rojin-home-prepare/"), ("老猫ホームのえらび方", "/guide/roneko-home/"), ("シニア犬・シニア猫、介護中の子の移動", "/guide/senior/"), ("往診専門の動物病院", "/hospital/visit/")])
+
+CAT["table"] = [("猫", lambda h: "○" if _cat_ok(h) else ""), ("大型犬の記載", lambda h: "○" if "大型" in h["animals"] else ""), ("見学・面会の記載", lambda h: "○" if h.get("visit") else ""), ("登録番号", lambda h: "○" if h.get("reg") else ""), ("市区町村", lambda h: h["city"])]
