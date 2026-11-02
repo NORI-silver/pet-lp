@@ -9,7 +9,7 @@ sns/posts.json の投稿を、まだ予約していない順に、火曜と金�
 
 使い方: TYPEFULLY_API_KEY=... python3 sns/schedule_x.py [件数(既定2)] [--dry]
 """
-import json, os, sys, time, datetime as dt, urllib.request, urllib.error
+import json, os, subprocess, sys, time, datetime as dt, urllib.request, urllib.error
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -82,8 +82,8 @@ def main():
         img = os.path.join(HERE, "img", f"post{p['no']:02d}.jpg")
         up = req("POST", f"/social-sets/{sid}/media/upload", key,
                  {"file_name": os.path.basename(img), "alt_text": p["head"].replace("\n", "")})
-        with open(img, "rb") as f:
-            urllib.request.urlopen(urllib.request.Request(up["upload_url"], data=f.read(), method="PUT"), timeout=120)
+        # 署名つきURLへは、余計なヘッダーなしで中身だけ送る（urllib は Content-Type を足して 403 になる）
+        subprocess.run(["curl", "-sS", "-f", "-T", img, up["upload_url"]], check=True, timeout=120)
         for _ in range(30):
             st = req("GET", f"/social-sets/{sid}/media/{up['media_id']}", key)
             if st.get("status") == "ready":
