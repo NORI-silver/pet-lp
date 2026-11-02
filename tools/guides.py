@@ -677,6 +677,10 @@ for guide in GUIDES:
 from facility_guides import FACILITY_GUIDES
 GUIDES.extend(FACILITY_GUIDES)
 
+# お金を取らない「役に立つ情報」の記事（tools/guides_info.py）。
+from guides_info import INFO_GUIDES
+GUIDES.extend(INFO_GUIDES)
+
 for guide in GUIDES:
     if guide["slug"] == "hospital":
         guide["sections"].append(("病院名から行き方と移動の準備を調べる", [("links", [
