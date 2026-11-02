@@ -68,6 +68,7 @@ import gen_prefpages
 import gen_trainers
 import gen_sitters
 import gen_grooming
+import gen_prefcats
 _EMG_RV = _EMG_RV + gen_hospitals.review_rows() + gen_rojin.review_rows() + gen_trainers.review_rows()
 booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG_REVIEWS*/var EMG_REVIEWS = " + json.dumps({t["id"]: {"query": t["review_query"], "name": t["review_name"]} for t in _EMG_RV if t.get("review_query")}, ensure_ascii=False) + ";/*/EMG_REVIEWS*/", booking_src, count=1, flags=re.S)
 # 候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る
@@ -523,7 +524,7 @@ for a in AREAS:
     <h3>{e(a["pref"])}の夜間・救急の動物病院</h3>
     <p>夜や休日に具合が悪くなったときのために、{e(a["pref"])}の夜間・救急の動物病院を受付時間つきで<a href="/hospital/night/#pref={quote(a["pref"])}">夜間・救急の動物病院の一覧</a>にまとめています。往診専門の動物病院（家まで来てくれる獣医さん）は<a href="/hospital/visit/#pref={quote(a["pref"])}">往診の一覧</a>、猫だけを診る病院は<a href="/hospital/cat/#pref={quote(a["pref"])}">猫専門の動物病院</a>にあります。</p>
     {gen_dogrun.area_snippet(a["pref"], e)}
-    {gen_prefpages.area_snippet(a["pref"], e, [gen_rojin.CAT, gen_trainers.CAT, gen_sitters.CAT, gen_grooming.CAT])}
+    {gen_prefpages.area_snippet(a["pref"], e, [gen_prefcats.NIGHT, gen_prefcats.SOUGI, gen_rojin.CAT, gen_trainers.CAT, gen_sitters.CAT, gen_grooming.CAT])}
   </div>
 </section>
 
@@ -1218,7 +1219,7 @@ for slug, pf, short, cities in PREFS:
     <p>一刻を争う症状のときは、まずかかりつけや夜間・救急の動物病院に電話して、受け入れてもらえるか確かめてください。{hosp_lead}</p>
     <p>受付時間つきの一覧は<a href="/hospital/night/#pref={quote(pf)}">{e(pf)}の夜間・救急の動物病院</a>に、家まで来てくれる獣医さんは<a href="/hospital/visit/#pref={quote(pf)}">往診専門の動物病院</a>にまとめています。</p>
     {gen_dogrun.area_snippet(pf, e)}
-    {gen_prefpages.area_snippet(pf, e, [gen_rojin.CAT, gen_trainers.CAT, gen_sitters.CAT, gen_grooming.CAT])}
+    {gen_prefpages.area_snippet(pf, e, [gen_prefcats.NIGHT, gen_prefcats.SOUGI, gen_rojin.CAT, gen_trainers.CAT, gen_sitters.CAT, gen_grooming.CAT])}
     <div class="emg">
       <h3 class="emg-h">夜間・救急の動物病院</h3>
       {pref_hosp_html(pf)}
@@ -1350,6 +1351,8 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
 gen_hospitals.write_all(ROOT, dict(head=head, e=e, SITE=SITE, EMG=EMG, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = gen_hospitals.urls(SITE)
+_pp_ctx0 = dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, area_links=area_links,
+  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False)))
 # ペットの迷子・犬の登録・引取りの窓口（/jichitai/）：お金を取らない情報ページ（tools/gen_jichitai.py）
 import gen_jichitai
 gen_jichitai.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
@@ -1364,6 +1367,11 @@ import gen_sougi
 gen_sougi.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_sougi.urls(SITE)
+# [B] SEO：ペット火葬・霊園と夜間・救急の動物病院の都道府県ごとのページ（tools/gen_prefcats.py、検索がとくに多いため）
+import gen_prefcats
+for _cat in (gen_prefcats.SOUGI, gen_prefcats.NIGHT):
+    gen_prefpages.write_all(ROOT, _pp_ctx0, _cat); gen_prefpages.link_national(ROOT, _pp_ctx0, _cat)
+    hosp_urls = hosp_urls + gen_prefpages.urls(SITE, _cat)
 # 全国の老犬ホーム・老猫ホーム（/rojin-home/）：お金を取らない情報ページ（tools/gen_rojin.py、データ tools/rojin.json）
 gen_rojin.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
@@ -1391,6 +1399,7 @@ gen_prefpages.write_all(ROOT, _pp_ctx, gen_sitters.CAT); gen_prefpages.link_nati
 hosp_urls = hosp_urls + gen_prefpages.urls(SITE, gen_sitters.CAT)
 # 全国の出張トリミング・訪問トリミング（/trimming/）：お金を取らない情報ページ（tools/gen_grooming.py、データ tools/grooming.json。条件でしぼりこめる）
 import gen_grooming
+import gen_prefcats
 gen_grooming.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_grooming.urls(SITE)
