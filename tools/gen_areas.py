@@ -107,6 +107,13 @@ src = re.sub(r"/\*EMG\*/.*?/\*/EMG\*/", lambda m: "/*EMG*/var EMG = " + json.dum
 src = re.sub(r"/\*FARES\*/.*?/\*/FARES\*/", lambda m: "/*FARES*/" + FARE_JS + "/*/FARES*/", src, count=1, flags=re.S)
 open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(src)
 TOP_HTML = src  # 地域ページの元（下の clone_top）。src はあとで別の用途に使われるので写しておく
+# 地域ページは全部トップの写しで、ページの下の大きなプログラム（フォーム・料金の計算・緊急タブのデータ）も同じ。
+# 地域ページではそれを /app.js に分けて読み込む（2ページ目からはブラウザに残った写しを使うので速く開ける）
+import hashlib
+_APP_M = max(re.finditer(r"<script>(.*?)</script>", TOP_HTML, re.S), key=lambda m: len(m.group(1)))
+APP_JS = _APP_M.group(1)
+open(os.path.join(ROOT, "app.js"), "w", encoding="utf-8").write(APP_JS)
+APP_TAG = '<script src="/app.js?v=' + hashlib.sha1(APP_JS.encode("utf-8")).hexdigest()[:10] + '"></script>'
 css = re.search(r"<style>(.*?)</style>", src, re.S).group(1)
 extra_css = """
 /* エリア別ページ */
@@ -189,6 +196,7 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = t.replace('<section id="how">', area_html + '\n<section id="how">', 1)
     # エリアページ用のCSS（.crumb .prose など）を足す
     t = t.replace("</style>", extra_css.strip() + "\n</style>", 1)
+    t = t.replace(_APP_M.group(0), APP_TAG, 1)
     assert t.count(f"<option selected>{pref}</option>") == 2, pref
     assert f"<title>{e(title)}</title>" in t, title
     return t
