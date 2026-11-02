@@ -61,6 +61,7 @@ _EMG_RV = _EMG_J["taxis"] + [h for l in _EMG_J["hospitals"].values() for h in l]
 # 条件でさがす動物病院（/hospital/、tools/hospitals.json）の往診・猫専門の病院も同じしくみで口コミを出す
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_hospitals
+import prefkeep
 _EMG_RV = _EMG_RV + gen_hospitals.review_rows()
 booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG_REVIEWS*/var EMG_REVIEWS = " + json.dumps({t["id"]: {"query": t["review_query"], "name": t["review_name"]} for t in _EMG_RV if t.get("review_query")}, ensure_ascii=False) + ";/*/EMG_REVIEWS*/", booking_src, count=1, flags=re.S)
 # 候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る
@@ -1004,15 +1005,16 @@ ep = head("ペットの緊急搬送・動物救急車（緊急のペットタク
 </section>
 </main>
 <script>
-(function(){{
+(function(){{{prefkeep.FN}
   var sel = document.getElementById("emgPrefAll");
-  sel.addEventListener("change", function(){{
+  function apply(){{
     var v = sel.value, n = 0;
     document.querySelectorAll(".emg-pref").forEach(function(s){{ s.hidden = !!v && s.dataset.pref !== v; }});
     document.querySelectorAll(".emg-region").forEach(function(h){{ h.hidden = !!v; }});
     document.querySelectorAll("#emgTaxiAll .emg-co").forEach(function(d){{ var ok = !v || d.dataset.prefs.split(" ").indexOf(v) >= 0; d.hidden = !ok; if (ok) n++; }});
     document.getElementById("emgTaxiNone").hidden = n > 0;
-  }});
+  }}
+  prefKeep(sel, apply);  // 選んだ都道府県はほかのページでも保つ（tools/prefkeep.py）
 }})();
 </script>
 <script src="/reviews.js" defer></script>

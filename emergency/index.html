@@ -171,14 +171,42 @@
 </main>
 <script>
 (function(){
-  var sel = document.getElementById("emgPrefAll");
+var PREF_KEY = "petInfoPref";
+function prefGet(){ try { return localStorage.getItem(PREF_KEY); } catch (x) { return null; } }
+function prefPut(v){ try { localStorage.setItem(PREF_KEY, v); } catch (x) {} }
+// 都道府県でしぼりこめるページへのリンクに、いまの県を付ける
+function prefLinks(v){
+  document.querySelectorAll("a[href]").forEach(function(a){
+    var h = a.getAttribute("href");
+    if (!/^\/(hospital|dogrun|jichitai|sougi|emergency)\//.test(h)) return;
+    h = h.replace(/#pref=.*$/, "");
+    if (h.indexOf("#") >= 0) return;
+    a.setAttribute("href", v ? h + "#pref=" + encodeURIComponent(v) : h);
+  });
+}
+function prefKeep(sel, apply){
+  var m = location.hash.match(/^#pref=(.+)$/), v = null;
+  if (m) { try { v = decodeURIComponent(m[1]); } catch (x) {} }
+  if (v === null) v = prefGet();
+  if (v !== null && [].some.call(sel.options, function(o){ return o.value === v; })) {
+    sel.value = v; apply(); prefPut(v);
+  }
+  prefLinks(sel.value);
   sel.addEventListener("change", function(){
+    apply(); prefPut(sel.value); prefLinks(sel.value);
+    try { history.replaceState(null, "", location.pathname + location.search + (sel.value ? "#pref=" + encodeURIComponent(sel.value) : "")); } catch (x) {}
+  });
+}
+
+  var sel = document.getElementById("emgPrefAll");
+  function apply(){
     var v = sel.value, n = 0;
     document.querySelectorAll(".emg-pref").forEach(function(s){ s.hidden = !!v && s.dataset.pref !== v; });
     document.querySelectorAll(".emg-region").forEach(function(h){ h.hidden = !!v; });
     document.querySelectorAll("#emgTaxiAll .emg-co").forEach(function(d){ var ok = !v || d.dataset.prefs.split(" ").indexOf(v) >= 0; d.hidden = !ok; if (ok) n++; });
     document.getElementById("emgTaxiNone").hidden = n > 0;
-  });
+  }
+  prefKeep(sel, apply);  // 選んだ都道府県はほかのページでも保つ（tools/prefkeep.py）
 })();
 </script>
 <script src="/reviews.js" defer></script>
