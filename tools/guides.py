@@ -685,6 +685,10 @@ GUIDES.extend(INFO_GUIDES)
 from guides_jichitai import JICHITAI_GUIDES
 GUIDES.extend(JICHITAI_GUIDES)
 
+# ペットが亡くなったときの記事（tools/guides_sougi.py、/sougi/ と同じテーマ）。
+from guides_sougi import SOUGI_GUIDES
+GUIDES.extend(SOUGI_GUIDES)
+
 for guide in GUIDES:
     if guide["slug"] == "hospital":
         guide["sections"].append(("病院名から行き方と移動の準備を調べる", [("links", [
