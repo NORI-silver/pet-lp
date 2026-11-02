@@ -608,6 +608,9 @@ footer a{color:var(--ink-2)}
 .dr-tags li.ok{background:var(--o-l);color:var(--o-d)}
 .dr-card{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:18px 18px 8px;margin:0 0 18px;scroll-margin-top:90px}
 .art .dr-card h2{margin:0 0 4px;font-size:1.2rem;border-left:0;padding-left:0}
+.art .dr-card h3{margin:0 0 4px;font-size:1.15rem}
+.dr-tbl td small{color:var(--ink-3)}
+.art .emg-pref h3 small{font-weight:400;font-size:.8rem;color:var(--ink-3)}
 .dr-card .dr-city{font-size:.84rem;color:var(--ink-3);margin:0}
 .dr-card dl{margin:12px 0 0;display:grid;grid-template-columns:1fr;gap:0}
 .dr-card dt{font-size:.78rem;font-weight:800;color:var(--ink-3);margin-top:10px}
@@ -620,6 +623,8 @@ footer a{color:var(--ink-2)}
 .art .dr-tbl td:last-child,.art .dr-tbl th:last-child{background:transparent;font-weight:400}
 .art .dr-tbl th:last-child{background:#f7f4f1;font-weight:700}
 .art .dr-tbl td:nth-child(n+3),.art .dr-tbl th:nth-child(n+3){white-space:nowrap}
+.art .dr-cmp td:nth-child(n),.art .dr-cmp th:nth-child(n){white-space:normal}
+.art .dr-cmp tbody th{background:#f7f4f1;white-space:nowrap}
 .dr-row{border-top:1px solid var(--line);padding:10px 2px}
 .dr-row a{font-weight:700}
 .dr-row small{color:var(--ink-3);margin-left:6px}

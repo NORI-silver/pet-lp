@@ -192,6 +192,9 @@ extra_css = """
 .dr-tags li.ok{background:var(--o-l);color:var(--o-d)}
 .dr-card{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:18px 18px 8px;margin:0 0 18px;scroll-margin-top:90px}
 .art .dr-card h2{margin:0 0 4px;font-size:1.2rem;border-left:0;padding-left:0}
+.art .dr-card h3{margin:0 0 4px;font-size:1.15rem}
+.dr-tbl td small{color:var(--ink-3)}
+.art .emg-pref h3 small{font-weight:400;font-size:.8rem;color:var(--ink-3)}
 .dr-card .dr-city{font-size:.84rem;color:var(--ink-3);margin:0}
 .dr-card dl{margin:12px 0 0;display:grid;grid-template-columns:1fr;gap:0}
 .dr-card dt{font-size:.78rem;font-weight:800;color:var(--ink-3);margin-top:10px}
@@ -204,6 +207,8 @@ extra_css = """
 .art .dr-tbl td:last-child,.art .dr-tbl th:last-child{background:transparent;font-weight:400}
 .art .dr-tbl th:last-child{background:#f7f4f1;font-weight:700}
 .art .dr-tbl td:nth-child(n+3),.art .dr-tbl th:nth-child(n+3){white-space:nowrap}
+.art .dr-cmp td:nth-child(n),.art .dr-cmp th:nth-child(n){white-space:normal}
+.art .dr-cmp tbody th{background:#f7f4f1;white-space:nowrap}
 .dr-row{border-top:1px solid var(--line);padding:10px 2px}
 .dr-row a{font-weight:700}
 .dr-row small{color:var(--ink-3);margin-left:6px}
@@ -375,7 +380,7 @@ PARTNER_BAND = '''<aside class="partner-band"><div class="wrap"><p><b>ペット�
 def foot(cta_href, band=True):
     return (PARTNER_BAND if band else '') + f'''<footer>
   <div class="wrap">
-    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国の公営ドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
+    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国のドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav><a href="/area/">全国</a>{''.join(f'<a href="/{a["slug"]}/">{e(a["short"])}</a>' for a in AREAS)}</nav>
     <p>ペットタクシー予約窓口</p>
     <p>&copy; 2026 ペットタクシー予約窓口</p>
@@ -1342,7 +1347,7 @@ import gen_jichitai
 gen_jichitai.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_jichitai.urls(SITE)
-# 全国の公営ドッグラン（/dogrun/ と /dogrun/<県>/）：お金を取らない情報ページ（tools/gen_dogrun.py、データ tools/dogrun.json）
+# 全国のドッグラン（/dogrun/ と /dogrun/<県>/ と記事）：お金を取らない情報ページ（tools/gen_dogrun.py、データ tools/dogrun.json）
 gen_dogrun.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links, pref_href=pref_href,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_dogrun.urls(SITE)
