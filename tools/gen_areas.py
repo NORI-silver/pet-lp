@@ -331,6 +331,56 @@ def guide_cards(slugs, cls=""):
     return f'<ul class="gcards {cls}">' + "".join(
         f'<li><a href="/guide/{s}/"><b>{e(GBY[s]["title"])}</b><span>{e(GBY[s]["lede"])}</span></a></li>' for s in slugs) + '</ul>'
 
+from prefs import FARES_CHECKED
+def _night_txt(F):
+    n = (F or {}).get("night")
+    if not F: return "—"
+    if not n: return "料金表にない"
+    if n.get("unknown"): return f"{n['from']}時〜{n['to']}時（金額は書いていない）"
+    if "flat" in n: return f"{n['from']}時〜{n['to']}時は{n['flat']:,}円"
+    if "rate" in n: return f"{n['from']}時〜{n['to']}時は{round(n['rate']*10)}割増" if n['rate'] * 10 == round(n['rate'] * 10) else f"{n['from']}時〜{n['to']}時は{round(n['rate']*100)}%増"
+    if "bands" in n:
+        ys = [b[2] for b in n["bands"]]
+        return f"時間帯で{min(ys):,}〜{max(ys):,}円"
+    return "—"
+def _pick_txt(F):
+    q = (F or {}).get("pick")
+    if not F: return "—"
+    if not q: return "料金表にない"
+    if q.get("per"):
+        t = f"1kmごとに{q['per']:,}円"
+        if q.get("freeWithin"): t = f"{q['freeWithin']}kmまで無料、そのあと" + t
+        if q.get("km") and q.get("yen"): t = f"{q['km']}kmまで{q['yen']:,}円、そのあと" + t
+        return t
+    if q.get("yen") == 0: return "無料"
+    if q.get("yen"): return f"{q['yen']:,}円" + ("（変わることあり）" if q.get("unsure") else "")
+    return "—"
+def pref_company_table(pf, short, cs):
+    key = pf if pf == "北海道" else pf[:-1]
+    if not cs: return ""
+    pts = {}
+    for c in cs:
+        for t in c.get("points", []): pts[t] = pts.get(t, 0) + 1
+    want = [("24時間受付", "24時間受け付けている"), ("当日予約可", "当日の予約も受ける"), ("カード払い可", "カードで払える"), ("大型犬OK", "大型犬に対応している"), ("前日までキャンセル無料", "前日までキャンセル無料の")]
+    summ = "・".join(f"{lab}会社が{pts[k]}社" for k, lab in want if pts.get(k))
+    rows = []
+    for c in cs:
+        F = c.get("fare") if c.get("fare") and c["fare"].get("kind", "dist") == "dist" and c["fare"].get("base") else None
+        h = c.get("hours") or ""
+        ht = "24時間" if h == "0-24" else (h.replace("-", "時〜") + "時" if h else "—")
+        r5 = f"{_nat_ride(F, 5):,}円" if F else "お見積もり"
+        home = "都内" if c["pref"] == pf and pf.endswith("都") else "府内" if c["pref"] == pf and pf.endswith("府") else ("道内" if c["pref"] == pf and pf == "北海道" else ("県内" if c["pref"] == pf else c["pref"]))
+        rows.append((0 if c["pref"] == pf else 1, _nat_ride(F, 5) if F else 10**9, f'<tr><td>{e(home)}</td><td>{e(c.get("area_text") or "")}</td><td>{e(ht)}</td><td>{e(r5)}</td><td>{e(_pick_txt(F))}</td><td>{e(_night_txt(F))}</td></tr>'))
+    rows.sort(key=lambda r: (r[0], r[1]))
+    out = f'<h2>{e(short)}に来てくれるペットタクシー{len(cs)}社の、対応エリアと料金のしくみ</h2>'
+    out += f'<p>{e(pf)}のお迎えに対応している{len(cs)}社について、公式サイトに書かれている対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p>'
+    if summ:
+        out += f'<p>公式サイトに書いている内容を数えると、{e(summ)}でした（書いていない会社が、できないとは限りません）。</p>'
+    out += ('<div class="tbl"><table><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody>'
+            + "".join(r[2] for r in rows) + '</tbody></table></div>')
+    out += f'<p class="fare-flag"><b>確定料金ではありません。</b>{FARES_CHECKED}時点で各社の公式サイトを読んでまとめたもので、会社名は出していません。5kmの運賃は料金表から計算した片道の金額で、お迎え料金・待ち時間・高速代は入っていません。料金や対応エリアは変わることがあるので、フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p>'
+    return out
+
 for a in AREAS:
     url = f'{SITE}/{a["slug"]}/'
     cta = f'/?pref={a["pref"]}#form'
@@ -381,6 +431,12 @@ for a in AREAS:
       </div>
     </div>
 {NAT_NOTES}
+  </div>
+</section>
+
+<section id="area-companies">
+  <div class="wrap prose">
+    {pref_company_table(a["pref"], a["short"], [x for x in _DISP if a["pref"][:-1] in x.get("areas", [])])}
   </div>
 </section>
 
@@ -963,55 +1019,6 @@ def pref_hosp_html(pf):
 # 県ごとのデータ（2026-11-01）：公式サイトの対応エリアにその県がある会社の数と、料金表から計算した運賃。会社名は出さない。
 PREF_AIRPORT = {"北海道": "新千歳空港", "宮城県": "仙台空港", "愛知県": "中部国際空港（セントレア）や県営名古屋空港", "大阪府": "伊丹空港（大阪国際空港）や関西国際空港",
                 "兵庫県": "神戸空港や伊丹空港", "広島県": "広島空港", "福岡県": "福岡空港や北九州空港", "沖縄県": "那覇空港"}
-def _night_txt(F):
-    n = (F or {}).get("night")
-    if not F: return "—"
-    if not n: return "料金表にない"
-    if n.get("unknown"): return f"{n['from']}時〜{n['to']}時（金額は書いていない）"
-    if "flat" in n: return f"{n['from']}時〜{n['to']}時は{n['flat']:,}円"
-    if "rate" in n: return f"{n['from']}時〜{n['to']}時は{round(n['rate']*10)}割増" if n['rate'] * 10 == round(n['rate'] * 10) else f"{n['from']}時〜{n['to']}時は{round(n['rate']*100)}%増"
-    if "bands" in n:
-        ys = [b[2] for b in n["bands"]]
-        return f"時間帯で{min(ys):,}〜{max(ys):,}円"
-    return "—"
-def _pick_txt(F):
-    q = (F or {}).get("pick")
-    if not F: return "—"
-    if not q: return "料金表にない"
-    if q.get("per"):
-        t = f"1kmごとに{q['per']:,}円"
-        if q.get("freeWithin"): t = f"{q['freeWithin']}kmまで無料、そのあと" + t
-        if q.get("km") and q.get("yen"): t = f"{q['km']}kmまで{q['yen']:,}円、そのあと" + t
-        return t
-    if q.get("yen") == 0: return "無料"
-    if q.get("yen"): return f"{q['yen']:,}円" + ("（変わることあり）" if q.get("unsure") else "")
-    return "—"
-def pref_company_table(pf, short, cs):
-    key = pf if pf == "北海道" else pf[:-1]
-    if not cs: return ""
-    pts = {}
-    for c in cs:
-        for t in c.get("points", []): pts[t] = pts.get(t, 0) + 1
-    want = [("24時間受付", "24時間受け付けている"), ("当日予約可", "当日の予約も受ける"), ("カード払い可", "カードで払える"), ("大型犬OK", "大型犬に対応している"), ("前日までキャンセル無料", "前日までキャンセル無料の")]
-    summ = "・".join(f"{lab}会社が{pts[k]}社" for k, lab in want if pts.get(k))
-    rows = []
-    for c in cs:
-        F = c.get("fare") if c.get("fare") and c["fare"].get("kind", "dist") == "dist" and c["fare"].get("base") else None
-        h = c.get("hours") or ""
-        ht = "24時間" if h == "0-24" else (h.replace("-", "時〜") + "時" if h else "—")
-        r5 = f"{_nat_ride(F, 5):,}円" if F else "お見積もり"
-        home = "府内" if c["pref"] == pf and pf.endswith("府") else ("道内" if c["pref"] == pf and pf == "北海道" else ("県内" if c["pref"] == pf else c["pref"]))
-        rows.append((0 if c["pref"] == pf else 1, _nat_ride(F, 5) if F else 10**9, f'<tr><td>{e(home)}</td><td>{e(c.get("area_text") or "")}</td><td>{e(ht)}</td><td>{e(r5)}</td><td>{e(_pick_txt(F))}</td><td>{e(_night_txt(F))}</td></tr>'))
-    rows.sort(key=lambda r: (r[0], r[1]))
-    out = f'<h2>{e(short)}に来てくれるペットタクシー{len(cs)}社の、対応エリアと料金のしくみ</h2>'
-    out += f'<p>{e(pf)}のお迎えに対応している{len(cs)}社について、公式サイトに書かれている対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p>'
-    if summ:
-        out += f'<p>公式サイトに書いている内容を数えると、{e(summ)}でした（書いていない会社が、できないとは限りません）。</p>'
-    out += ('<div class="tbl"><table><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody>'
-            + "".join(r[2] for r in rows) + '</tbody></table></div>')
-    out += f'<p class="fare-flag"><b>確定料金ではありません。</b>{FARES_CHECKED}時点で各社の公式サイトを読んでまとめたもので、会社名は出していません。5kmの運賃は料金表から計算した片道の金額で、お迎え料金・待ち時間・高速代は入っていません。料金や対応エリアは変わることがあるので、フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p>'
-    return out
-
 def pref_data_html(pf, short):
     key = pf if pf == "北海道" else pf[:-1]
     cs = [x for x in _DISP if key in x.get("areas", [])]
