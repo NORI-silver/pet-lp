@@ -206,6 +206,8 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .emg-tips dd{margin:0;font-size:.84rem;line-height:1.75;color:var(--ink-2)}
 .emg-tips ul{margin:0;padding-left:1.2em}
 .emg-tips li{margin:2px 0}
+.emg-tips ol{margin:0;padding-left:1.4em;font-size:.84rem;line-height:1.75;color:var(--ink-2)}
+.emg-tips ol li{margin:0 0 10px}
 .emg-tips-note{font-size:.78rem;color:var(--ink-3);margin:12px 0 0}
 .emg h4{font-size:.95rem;margin:18px 0 6px}
 .emg-free{font-size:.84rem;background:var(--cream);border-radius:14px;padding:10px 14px;margin:0 0 14px}
