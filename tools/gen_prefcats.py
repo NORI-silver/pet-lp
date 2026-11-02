@@ -16,9 +16,22 @@ for c in gen_sougi.J["cities"]:
 
 def _has(f, w): return w in f.get("kinds", []) or w in f.get("services", [])
 
+# [B] 2026-11-03：県ごとの料金の幅（公式サイトに書いてある、いちばん小さい区分の料金）と全国の真ん中。数え方は guides_sougi と同じ。
+import guides_sougi as _gs
+_TYPES = [("kobetsu", "個別火葬（おまかせ）", _gs.SK), ("tachiai", "立ち会い火葬", _gs.ST), ("goudou", "合同火葬", _gs.SG)]
+def _price_lines(rs):
+    out = []
+    for k, lab, nat in _TYPES:
+        v = sorted(g[k] for g in (_gs._prices(f.get("price")) for f in rs) if k in g)
+        if len(v) >= 2:
+            out.append((lab, len(v), f"{v[0]:,}円〜{v[-1]:,}円", nat["med"]))
+    return out
+
 def _sougi_facts(rs):
     n = len(rs)
-    return [f"個別火葬：{sum(_has(f, '個別火葬') for f in rs)}／{n}", f"立ち会い火葬：{sum(_has(f, '立ち会い火葬') for f in rs)}／{n}",
+    pl = [f"{lab}の料金の例（{k}か所・猫や小型犬など小さい区分）：{rng}（全国{nat_n}か所の真ん中は{med}）"
+          for lab, k, rng, med in _price_lines(rs) for nat_n in [{"個別火葬（おまかせ）": _gs.SK, "立ち会い火葬": _gs.ST, "合同火葬": _gs.SG}[lab]["n"]]]
+    return pl + [f"個別火葬：{sum(_has(f, '個別火葬') for f in rs)}／{n}", f"立ち会い火葬：{sum(_has(f, '立ち会い火葬') for f in rs)}／{n}",
             f"お迎え（家まで来てくれる）：{sum(_has(f, 'お迎え') for f in rs)}／{n}", f"霊園：{sum(_has(f, '霊園') for f in rs)}／{n}",
             f"納骨堂：{sum(_has(f, '納骨堂') for f in rs)}／{n}", f"公式サイトに料金の例があるところ：{sum(bool(f.get('price')) for f in rs)}／{n}"]
 
@@ -36,6 +49,7 @@ def _sougi_faq(pf, rs, n):
      (f"{pf}でペットの火葬ができるところは？", f"この一覧では、{pf}の民間のペット火葬場・霊園・納骨堂を{n}か所と、{len(cs)}の市区の受け付けを、公式サイトで確かめた内容で載せています。"),
      (f"{pf}で家まで来てくれるペット火葬はありますか？", f"公式サイトに「お迎え」や訪問の火葬を書いているところは、この一覧の{pf}では{sum(_has(f, 'お迎え') for f in rs)}か所です。"),
      ("市や区に頼むと、お骨は返ってきますか？", (f"{pf}で載せている{len(cs)}の市区のうち、お骨を返してもらえると案内しているのは{back}か所です。" if cs else "") + "多くの市区では、ほかの動物と一緒に火葬するためお骨は返りません。お骨を手元に残したいときは、民間の個別火葬をえらびます。"),
+     *([(f"{pf}のペット火葬の料金は？", "公式サイトに書いてある、猫や小型犬など小さい区分の料金の例では、" + "、".join(f"{lab}が{rng}（{k}か所）" for lab, k, rng, med in _price_lines(rs)) + f"でした。全国の施設で数えた真ん中は、個別火葬（おまかせ）が{_gs.SK['med']}（{_gs.SK['n']}か所）、立ち会い火葬が{_gs.ST['med']}（{_gs.ST['n']}か所）です。体重やお迎えの有無で変わるので、見積もりで確かめてください。")] if _price_lines(rs) else []),
      ("亡くなってから火葬までに、まずすることは？", "体をきれいにして、保冷剤などで体を冷やし、涼しい部屋で安置します。くわしくは全国のページ「ペットが亡くなったら」にまとめました。"),
     ]
 
