@@ -1,264 +1,526 @@
 {
- "_説明": "ペットが亡くなったときの自治体の案内（/sougi/）。県庁所在地（東京都は新宿区）の公式ページ。tools/gen_sougi.py が使う。電話番号は載せない。",
+ "_説明": "ペットが亡くなったときの自治体の案内（/sougi/）。各都道府県の県庁所在地（東京都は新宿区。県庁所在地で見つからない県はほかの市）と政令指定都市の公式ページ。how=受け付け方、fee=料金、bone=お骨、k=back（お骨が返る・選べる）/no（返らない）/unk（書いていない）/none（市では受け付けていない）。tools/gen_sougi.py が使う。電話番号・民間の会社名は載せない。",
  "checked": "2026年11月2日",
  "cities": [
   {
    "pref": "北海道",
    "city": "札幌市",
    "t": "ペットの火葬",
-   "u": "https://www.city.sapporo.jp/inuneko/main/kasou.html"
+   "u": "https://www.city.sapporo.jp/inuneko/main/kasou.html",
+   "how": "動物愛護管理センターへ持ち込み（平日）",
+   "fee": "犬・猫は1体6,000円（うさぎなど4,000円、小鳥など1,000円）",
+   "bone": "ほかの動物と一緒に火葬するため、お骨は返らず、立ち会いもできません",
+   "k": "no"
   },
   {
    "pref": "青森県",
    "city": "青森市",
    "t": "動物の火葬",
-   "u": "https://www.city.aomori.aomori.jp/kurashi_kankyo/saijou/1002154/1002156.html"
+   "u": "https://www.city.aomori.aomori.jp/kurashi_kankyo/saijou/1002154/1002156.html",
+   "how": "市の斎場へ持ち込み（予約が必要）",
+   "fee": "斎場の使用料の案内をご確認ください",
+   "bone": "お骨を返してもらえます",
+   "k": "back"
   },
   {
    "pref": "岩手県",
    "city": "盛岡市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.morioka.iwate.jp/kurashi/pet/pet_kurashi/1030338.html"
+   "u": "https://www.city.morioka.iwate.jp/kurashi/pet/pet_kurashi/1030338.html",
+   "how": "市の施設へ持ち込み（地域ごとに受付先が違います）",
+   "fee": "都南地域2,100円、玉山地域1,000円（盛岡地域の施設は令和8年4月から受け付けていないと案内されています）",
+   "bone": "お骨は返りません",
+   "k": "no"
   },
   {
    "pref": "宮城県",
    "city": "仙台市",
    "t": "ペットの火葬",
-   "u": "https://www.city.sendai.jp/haiki-kanri/kurashi/shizen/petto/hogodobutsu/oshirase/pet.html"
+   "u": "https://www.city.sendai.jp/haiki-kanri/kurashi/shizen/petto/hogodobutsu/oshirase/pet.html",
+   "how": "市のペット斎場へ持ち込み、または引き取り（電話で予約）",
+   "fee": "お骨なし：持ち込み1,800円・引き取り3,700円／お骨あり（20kgまで）：持ち込み4,600円・引き取り6,500円",
+   "bone": "お骨ありを選ぶと1頭ずつ火葬し、斎場でお骨を受け取れます（立ち会いはできません）",
+   "k": "back"
   },
   {
    "pref": "秋田県",
    "city": "秋田市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.akita.lg.jp/kurashi/pet/1005361/1005396.html"
+   "u": "https://www.city.akita.lg.jp/kurashi/pet/1005361/1005396.html",
+   "how": "市にペットの斎場はなく、ペット霊園などに相談するよう案内しています",
+   "fee": "—",
+   "bone": "—",
+   "k": "none"
   },
   {
    "pref": "山形県",
    "city": "山形市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.yamagata-yamagata.lg.jp/kurashi/gomi/1006506/1006509/1001906.html"
+   "u": "https://www.city.yamagata-yamagata.lg.jp/kurashi/gomi/1006506/1006509/1001906.html",
+   "how": "市の施設の小動物専用炉へ持ち込み",
+   "fee": "1体3,000円",
+   "bone": "骨箱を持っていけば、後日お骨を返してもらえます（立ち会いはできません）",
+   "k": "back"
   },
   {
    "pref": "福島県",
    "city": "福島市",
    "t": "ペットの火葬",
-   "u": "https://www.city.fukushima.fukushima.jp/soshiki/8/1040/1/3691.html"
+   "u": "https://www.city.fukushima.fukushima.jp/soshiki/8/1040/1/3691.html",
+   "how": "市の施設へ持ち込み、または平日に家まで引き取り",
+   "fee": "持ち込み1,000円（お骨あり2,000円＋骨つぼ500円）、引き取り2,000円（お骨あり3,000円＋骨つぼ500円）",
+   "bone": "希望すればお骨を受け取れます",
+   "k": "back"
   },
   {
    "pref": "栃木県",
    "city": "宇都宮市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.utsunomiya.lg.jp/kurashi/gomi/kateigomi/dashikata/1004995.html"
+   "u": "https://www.city.utsunomiya.lg.jp/kurashi/gomi/kateigomi/dashikata/1004995.html",
+   "how": "家まで引き取り、または持ち込み",
+   "fee": "引き取り1体1,100円、持ち込み530円",
+   "bone": "お骨については書かれていません",
+   "k": "unk"
   },
   {
    "pref": "群馬県",
    "city": "前橋市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.maebashi.gunma.jp/soshiki/kankyo/seisoshisetsu/gyomu/1/2/1/2640.html"
+   "u": "https://www.city.maebashi.gunma.jp/soshiki/kankyo/seisoshisetsu/gyomu/1/2/1/2640.html",
+   "how": "家まで引き取り、または清掃工場へ持ち込み（事前に連絡）",
+   "fee": "引き取り2,120円、持ち込み1,050円",
+   "bone": "まとめて火葬するため、お骨は返りません",
+   "k": "no"
   },
   {
    "pref": "埼玉県",
    "city": "さいたま市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.saitama.lg.jp/001/006/010/006/p000004.html"
+   "u": "https://www.city.saitama.lg.jp/001/006/010/006/p000004.html",
+   "how": "区役所に電話かファックスで申し込み",
+   "fee": "1頭1,100円（現金）",
+   "bone": "お骨は返りません。お骨を返してほしいときは市の斎場（大宮聖苑）か民間へ",
+   "k": "no"
   },
   {
    "pref": "千葉県",
    "city": "千葉市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.chiba.jp/faq/kankyo/junkan/shushugyomu/1098.html"
+   "u": "https://www.city.chiba.jp/faq/kankyo/junkan/shushugyomu/1098.html",
+   "how": "家まで引き取り、または環境事業所・清掃工場へ持ち込み",
+   "fee": "引き取り1,000円、持ち込み500円（税別）",
+   "bone": "お骨は返りません",
+   "k": "no"
   },
   {
    "pref": "東京都",
    "city": "新宿区",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.shinjuku.lg.jp/seikatsu/file09_04_00001.html"
+   "u": "https://www.city.shinjuku.lg.jp/seikatsu/file09_04_00001.html",
+   "how": "清掃事務所・清掃センターへ持ち込み、動物の霊園で合同火葬",
+   "fee": "1頭3,000円（25kg未満）",
+   "bone": "お骨は返りません",
+   "k": "no"
   },
   {
    "pref": "神奈川県",
    "city": "横浜市",
    "t": "ペットの火葬",
-   "u": "https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/saijo/saijo/petto.html"
+   "u": "https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/saijo/saijo/petto.html",
+   "how": "市営の戸塚斎場で。個別火葬は持ち込み（予約）、合同火葬は持ち込みか引き取り",
+   "fee": "個別火葬は重さで10,000〜30,000円、合同火葬は持ち込み3,000円・引き取り6,500円",
+   "bone": "個別火葬はお骨をすべて持ち帰れます（骨つぼ代込み）",
+   "k": "back"
   },
   {
    "pref": "富山県",
    "city": "富山市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.toyama.lg.jp/kurashi/gomi/1010228/1005409.html"
+   "u": "https://www.city.toyama.lg.jp/kurashi/gomi/1010228/1005409.html",
+   "how": "市は引き取りを案内しておらず、民間のペット葬儀に頼む形です",
+   "fee": "—",
+   "bone": "—",
+   "k": "none"
   },
   {
    "pref": "新潟県",
    "city": "新潟市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.niigata.lg.jp/kurashi/gomi/gomi_recycl/dogcat.html"
+   "u": "https://www.city.niigata.lg.jp/kurashi/gomi/gomi_recycl/dogcat.html",
+   "how": "区役所に電話で申し込み、家まで引き取り（北区は持ち込みも）",
+   "fee": "引き取り1体2,200円（北区の持ち込み1,500円）",
+   "bone": "お骨については書かれていません",
+   "k": "unk"
   },
   {
    "pref": "福井県",
    "city": "福井市",
    "t": "クリーンセンターへの持ち込み",
-   "u": "https://www.city.fukui.lg.jp/kurasi/kankyo/center/pet.html"
+   "u": "https://www.city.fukui.lg.jp/kurasi/kankyo/center/pet.html",
+   "how": "クリーンセンターへ持ち込み、または引き取り",
+   "fee": "1体990円",
+   "bone": "数体まとめて火葬するため、お骨は返りません",
+   "k": "no"
   },
   {
    "pref": "長野県",
    "city": "長野市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.nagano.nagano.jp/n121515/contents/p001096.html"
+   "u": "https://www.city.nagano.nagano.jp/n121515/contents/p001096.html",
+   "how": "環境エネルギーセンターへ持ち込み（30kgまで）、または引き取り",
+   "fee": "持ち込みは10kgまでごとに190円、引き取りは5,300円＋10kgまでごとに190円",
+   "bone": "お骨は持ち帰れません",
+   "k": "no"
   },
   {
    "pref": "岐阜県",
    "city": "岐阜市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.gifu.lg.jp/kurashi/seikatukankyo/1002857/1025360/1025444.html"
+   "u": "https://www.city.gifu.lg.jp/kurashi/seikatukankyo/1002857/1025360/1025444.html",
+   "how": "市の斎苑でペットの火葬を受けています",
+   "fee": "リンク先でご確認ください",
+   "bone": "リンク先でご確認ください",
+   "k": "unk"
   },
   {
    "pref": "静岡県",
    "city": "静岡市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.shizuoka.lg.jp/s3276/s013004.html"
+   "u": "https://www.city.shizuoka.lg.jp/s3276/s013004.html",
+   "how": "動物愛護センターなどへ持ち込み（予約不要）",
+   "fee": "1頭3,400円",
+   "bone": "お骨は返らず、立ち会いもできません",
+   "k": "no"
   },
   {
    "pref": "愛知県",
    "city": "名古屋市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.nagoya.jp/kurashi/pet/1015199/1034042/1015202.html"
+   "u": "https://www.city.nagoya.jp/kurashi/pet/1015199/1034042/1015202.html",
+   "how": "市の八事斎場で動物の火葬、または環境事業所で引き取り",
+   "fee": "斎場は大きさで1,100〜4,400円、環境事業所は持ち込み750円・引き取り1,500円",
+   "bone": "お骨についてはリンク先でご確認ください",
+   "k": "unk"
   },
   {
    "pref": "滋賀県",
    "city": "大津市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.otsu.lg.jp/soshiki/021/1442/g/pet/1387776781007.html"
+   "u": "https://www.city.otsu.lg.jp/soshiki/021/1442/g/pet/1387776781007.html",
+   "how": "家まで引き取り、または市の聖苑の火葬棟へ持ち込み（事前に連絡）",
+   "fee": "引き取りは5kg未満11,000円〜30kg以上16,500円",
+   "bone": "引き取りの場合、お骨は返りません",
+   "k": "no"
   },
   {
    "pref": "京都府",
    "city": "京都市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.kyoto.lg.jp/kankyo/page/0000000981.html"
+   "u": "https://www.city.kyoto.lg.jp/kankyo/page/0000000981.html",
+   "how": "家まで引き取り、またはセンターへ持ち込み",
+   "fee": "1体4,810円",
+   "bone": "ほかの子と一緒に火葬し、お骨はほとんど残りません",
+   "k": "no"
   },
   {
    "pref": "大阪府",
    "city": "大阪市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.osaka.lg.jp/kankyo/page/0000370528.html"
+   "u": "https://www.city.osaka.lg.jp/kankyo/page/0000370528.html",
+   "how": "環境事業センターに申し込み、家まで引き取り",
+   "fee": "5kg未満1,700円、10kg未満2,100円、10kg以上2,800円",
+   "bone": "ほかの子と一緒に火葬し、お骨は返りません",
+   "k": "no"
   },
   {
    "pref": "兵庫県",
    "city": "神戸市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.kobe.lg.jp/a04164/kurashi/recycle/gomi/dashikata/info04.html"
+   "u": "https://www.city.kobe.lg.jp/a04164/kurashi/recycle/gomi/dashikata/info04.html",
+   "how": "市の委託先が引き取り、または事業所へ持ち込み",
+   "fee": "1頭4,000円（持ち込みは2,000円）",
+   "bone": "動物専用の炉で合同火葬し、お骨は返りません",
+   "k": "no"
   },
   {
    "pref": "奈良県",
    "city": "奈良市",
-   "t": "亡くなったときの案内",
-   "u": "https://www.city.nara.lg.jp/life/4/34/136/"
+   "t": "犬・猫などが亡くなったときの回収",
+   "u": "https://www.city.nara.lg.jp/site/gomi-syusyu/7380.html",
+   "how": "家の玄関先で引き取り、または持ち込み",
+   "fee": "引き取り1体1,000円、持ち込み無料",
+   "bone": "ほかのごみと一緒に焼却されます",
+   "k": "no"
   },
   {
    "pref": "和歌山県",
    "city": "和歌山市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.wakayama.wakayama.jp/kurashi/gomi_kankyo/1001113/1005184/1037075/1037077.html"
+   "u": "https://www.city.wakayama.wakayama.jp/kurashi/gomi_kankyo/1001113/1005184/1037075/1037077.html",
+   "how": "エネルギーセンターへ持ち込み、または引き取り",
+   "fee": "持ち込み1,030円、引き取り2,080円",
+   "bone": "お骨は返りません",
+   "k": "no"
   },
   {
    "pref": "岡山県",
    "city": "岡山市",
    "t": "ペットの火葬",
-   "u": "https://www.city.okayama.jp/kurashi/0000008390.html"
+   "u": "https://www.city.okayama.jp/kurashi/0000008390.html",
+   "how": "市営の斎場へ持ち込み（事前に区役所などで使用の申し込み）",
+   "fee": "市内の方はお骨あり13,000円、お骨なし9,000円",
+   "bone": "犬・猫はお骨を拾ってもらえます",
+   "k": "back"
   },
   {
    "pref": "広島県",
    "city": "広島市",
    "t": "市営火葬場でのペットの火葬",
-   "u": "https://www.city.hiroshima.lg.jp/living/owaka/1021362/1023039.html"
+   "u": "https://www.city.hiroshima.lg.jp/living/owaka/1021362/1023039.html",
+   "how": "市営の火葬場の窓口へ持ち込み",
+   "fee": "500g以下4,480円、それ以外9,000円",
+   "bone": "ほかの子と一緒に火葬し、お骨は持ち帰れません（立ち会いもできません）",
+   "k": "no"
   },
   {
    "pref": "香川県",
    "city": "高松市",
-   "t": "亡くなったときの案内",
-   "u": "https://www.city.takamatsu.kagawa.jp/udanimo/ani_staticpage.html?infopageid=34"
+   "t": "やすらぎ苑（動物の火葬）",
+   "u": "https://www.city.takamatsu.kagawa.jp/kurashi/kurashi/bochi/sougi/yasuragien.html",
+   "how": "市のやすらぎ苑の動物炉で1頭ずつ火葬（直接申し込み）",
+   "fee": "市内の方はお骨あり15,700円、お骨なし10,470円",
+   "bone": "お骨を返してもらうかどうか選べます",
+   "k": "back"
   },
   {
    "pref": "愛媛県",
    "city": "松山市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.matsuyama.ehime.jp/kurashi/kurashi/aigo/kainusi/doubutunositaisyobun.html"
+   "u": "https://www.city.matsuyama.ehime.jp/kurashi/kurashi/aigo/kainusi/doubutunositaisyobun.html",
+   "how": "家まで引き取り（立ち会いが必要）、またはクリーンセンターへ持ち込み",
+   "fee": "引き取り1,100円、持ち込み400円",
+   "bone": "お骨は返りません",
+   "k": "no"
   },
   {
    "pref": "高知県",
    "city": "高知市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.kochi.kochi.jp/soshiki/66/nakigara.html"
+   "u": "https://www.city.kochi.kochi.jp/soshiki/66/nakigara.html",
+   "how": "清掃工場で",
+   "fee": "1体500円",
+   "bone": "お骨は返りません",
+   "k": "no"
   },
   {
    "pref": "熊本県",
    "city": "熊本市",
    "t": "犬の死亡届",
-   "u": "https://www.city.kumamoto.jp/doubutuaigo/kiji00341110/index.html"
+   "u": "https://www.city.kumamoto.jp/doubutuaigo/kiji00341110/index.html",
+   "how": "市では火葬をしておらず、ペット霊園などへの相談を案内しています。犬の死亡届は窓口・郵送・電子申請で",
+   "fee": "死亡届は無料",
+   "bone": "—",
+   "k": "none"
   },
   {
    "pref": "大分県",
    "city": "大分市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.oita.oita.jp/o150/kurashi/pet/inuneko.html"
+   "u": "https://www.city.oita.oita.jp/o150/kurashi/pet/inuneko.html",
+   "how": "家まで引き取り（申し出）、または清掃工場へ持ち込み",
+   "fee": "引き取り1,040円",
+   "bone": "お骨については書かれていません",
+   "k": "unk"
   },
   {
    "pref": "宮崎県",
    "city": "宮崎市",
    "t": "ペットの火葬",
-   "u": "https://www.city.miyazaki.miyazaki.jp/life/trash/bring/405814.html"
+   "u": "https://www.city.miyazaki.miyazaki.jp/life/trash/bring/405814.html",
+   "how": "エコクリーンプラザみやざきへ持ち込み",
+   "fee": "お骨を拾う3,850円、拾わない2,750円",
+   "bone": "お骨を拾うことを選べます（立ち会いはできません）",
+   "k": "back"
   },
   {
    "pref": "鹿児島県",
    "city": "鹿児島市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.kagoshima.lg.jp/faq-kurashi/seiei-jueki/q8.html"
+   "u": "https://www.city.kagoshima.lg.jp/faq-kurashi/seiei-jueki/q8.html",
+   "how": "市の引き取りはなく、民間のペット葬祭か自宅の敷地への埋葬を案内しています",
+   "fee": "—",
+   "bone": "—",
+   "k": "none"
   },
   {
    "pref": "福岡県",
    "city": "福岡市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.fukuoka.lg.jp/kankyo/kateigomi/life/katei-bunbetsu/inu-neko-sitaisyusyu.html"
+   "u": "https://www.city.fukuoka.lg.jp/kankyo/kateigomi/life/katei-bunbetsu/inu-neko-sitaisyusyu.html",
+   "how": "市の委託先が引き取り",
+   "fee": "1体1,000円",
+   "bone": "火葬・埋葬を希望するときは民間へ",
+   "k": "no"
   },
   {
    "pref": "島根県",
    "city": "松江市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.matsue.lg.jp/soshikikarasagasu/kankyoenergybu_kankyoenergyka/gomi_kankyo_pet/3_1/pet/pettoowakare.html"
+   "u": "https://www.city.matsue.lg.jp/soshikikarasagasu/kankyoenergybu_kankyoenergyka/gomi_kankyo_pet/3_1/pet/pettoowakare.html",
+   "how": "エコクリーン松江へ持ち込み",
+   "fee": "1頭510円",
+   "bone": "お骨は返りません",
+   "k": "no"
   },
   {
    "pref": "三重県",
    "city": "津市",
    "t": "斎場でのペットの火葬",
-   "u": "https://www.info.city.tsu.mie.jp/kurashi/seikatsu_sumai/1002326/1011317.html"
+   "u": "https://www.info.city.tsu.mie.jp/kurashi/seikatsu_sumai/1002326/1011317.html",
+   "how": "市のいつくしみの杜へ持ち込み（予約不要）、合同火葬",
+   "fee": "料金表はリンク先でご確認ください",
+   "bone": "合同火葬です",
+   "k": "unk"
   },
   {
    "pref": "石川県",
    "city": "金沢市",
    "t": "よくある質問（ペットが亡くなったとき）",
-   "u": "https://www4.city.kanazawa.lg.jp/soshikikarasagasu/dobutsuaigokanricenter/yokuarushitsumon/3501.html"
+   "u": "https://www4.city.kanazawa.lg.jp/soshikikarasagasu/dobutsuaigokanricenter/yokuarushitsumon/3501.html",
+   "how": "市では火葬をしておらず、民間の動物霊園か戸別収集受付センターに相談。犬は動物愛護管理センターへ連絡",
+   "fee": "—",
+   "bone": "—",
+   "k": "none"
   },
   {
    "pref": "山口県",
    "city": "山口市",
    "t": "亡くなったときの案内",
-   "u": "https://www.city.yamaguchi.lg.jp/soshiki/52/182596.html"
+   "u": "https://www.city.yamaguchi.lg.jp/soshiki/52/182596.html",
+   "how": "決まった場所へ持ち込み",
+   "fee": "無料",
+   "bone": "お骨は返りません",
+   "k": "no"
   },
   {
    "pref": "沖縄県",
    "city": "那覇市",
    "t": "飼い主の方へ（亡くなったとき）",
-   "u": "https://www.city.naha.okinawa.jp/kurasitetuduki/animal/901.html"
+   "u": "https://www.city.naha.okinawa.jp/kurasitetuduki/animal/901.html",
+   "how": "原則は飼い主が処理（ペット葬儀社など）。ほかの方法はクリーン推進課に相談。犬は環境衛生課へ死亡届",
+   "fee": "—",
+   "bone": "—",
+   "k": "none"
   },
   {
    "pref": "茨城県",
    "city": "水戸市",
    "t": "犬の死亡届",
-   "u": "https://www.city.mito.lg.jp/site/doubutsuaigo/2764.html"
+   "u": "https://www.city.mito.lg.jp/site/doubutsuaigo/2764.html",
+   "how": "犬の死亡届は30日以内に、動物愛護センターの窓口・郵送・電子申請で",
+   "fee": "死亡届は無料",
+   "bone": "—",
+   "k": "none"
   },
   {
    "pref": "徳島県",
    "city": "徳島市",
    "t": "犬の死亡届",
-   "u": "https://www.city.tokushima.tokushima.jp/smph/kurashi/animal/todokede.html"
+   "u": "https://www.city.tokushima.tokushima.jp/smph/kurashi/animal/todokede.html",
+   "how": "犬の死亡届は環境政策課の窓口で",
+   "fee": "—",
+   "bone": "—",
+   "k": "none"
+  },
+  {
+   "pref": "山梨県",
+   "city": "甲府市",
+   "t": "ごみの分け方（犬・猫などが亡くなったとき）",
+   "u": "https://www.city.kofu.lg.jp/kurashi/gomi/guidebook/g_jpn/HTML/index16.html",
+   "how": "甲府・峡東クリーンセンターで引き取り（月〜土曜、住所の分かるものを持参）",
+   "fee": "1体700円（ガイドブックの記載）",
+   "bone": "お骨については書かれていません。犬は鑑札などを持って登録をなくす手続きを",
+   "k": "unk"
+  },
+  {
+   "pref": "鳥取県",
+   "city": "鳥取市",
+   "t": "動物が亡くなったとき（ペットの場合）",
+   "u": "https://www.city.tottori.lg.jp/page/4111.html",
+   "how": "火葬は市が案内する動物の霊場へ連絡して持ち込み（有料）。焼却施設へ直接持ち込むこともできます",
+   "fee": "焼却施設は10kgごとに120円",
+   "bone": "お骨については書かれていません",
+   "k": "unk"
+  },
+  {
+   "pref": "佐賀県",
+   "city": "唐津市",
+   "t": "ペット等の火葬",
+   "u": "https://www.city.karatsu.lg.jp/page/5049.html",
+   "how": "市の大平山斎苑へ持ち込み（事前に電話、市内に住む方）",
+   "fee": "1匹2,300円",
+   "bone": "立ち会いとお骨を拾うことはできません",
+   "k": "no"
+  },
+  {
+   "pref": "長崎県",
+   "city": "佐世保市",
+   "t": "飼っていたペットが亡くなったとき（よくある質問）",
+   "u": "https://faq.city.sasebo.lg.jp/faqfa2/public/web/knowledge1484.html",
+   "how": "廃棄物減量推進課に連絡して引き取り。登録した犬は動物愛護センターへ死亡届",
+   "fee": "リンク先でご確認ください",
+   "bone": "お骨については書かれていません",
+   "k": "unk"
+  },
+  {
+   "pref": "神奈川県",
+   "city": "川崎市",
+   "t": "犬や猫が亡くなったとき（よくある質問）",
+   "u": "https://www.city.kawasaki.jp/templates/faq/300/0000013337.html",
+   "how": "生活環境事業所に連絡",
+   "fee": "1体3,000円",
+   "bone": "お骨は返りません",
+   "k": "no"
+  },
+  {
+   "pref": "神奈川県",
+   "city": "相模原市",
+   "t": "動物が亡くなったときの受け入れ（よくある質問）",
+   "u": "https://www.city.sagamihara.kanagawa.jp/shisei/1026875/faq/gomi/1002591.html",
+   "how": "清掃工場・クリーンセンターへ持ち込み（20kgまで）",
+   "fee": "1体4,300円",
+   "bone": "お骨については書かれていません",
+   "k": "unk"
+  },
+  {
+   "pref": "静岡県",
+   "city": "浜松市",
+   "t": "ペット類の火葬",
+   "u": "https://www.city.hamamatsu.shizuoka.jp/simink/death/shieisaijo/shieisaijopet.html",
+   "how": "市の斎場へ持ち込み（予約不要、元日・友引は休み）",
+   "fee": "2kgまで1,250円、5kgまで3,140円、その先は5kgごとに2,090円",
+   "bone": "合同火葬のため、お骨は返らず、立ち会いもできません",
+   "k": "no"
+  },
+  {
+   "pref": "大阪府",
+   "city": "堺市",
+   "t": "亡くなった犬猫などの小動物（ペット）",
+   "u": "https://www.city.sakai.lg.jp/kurashi/dobutsu/inunekonado/76615120211115161359521.html",
+   "how": "引き取りを申し込むか、市役所の立体駐車場1階へ持ち込み（予約不要）",
+   "fee": "引き取り1回1,900円。清掃工場での焼却は無料、動物専用炉は体重で1,000〜5,000円",
+   "bone": "お骨は返りません",
+   "k": "no"
+  },
+  {
+   "pref": "福岡県",
+   "city": "北九州市",
+   "t": "ペットが亡くなったとき（こんな時はどうすれば）",
+   "u": "https://www.city.kitakyushu.lg.jp/contents/924_11821.html",
+   "how": "動物愛護センターへ持ち込み（平日、市内の方）",
+   "fee": "猫・6kg未満の犬など2,000円、6kg以上の犬など3,000円",
+   "bone": "お骨は返らず、立ち会いもできません",
+   "k": "no"
   }
  ]
 }
