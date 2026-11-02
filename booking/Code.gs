@@ -2425,9 +2425,14 @@ function reviewDebug_(id) {
     r.candidates = (found.places || []).map(function(x) { return {name:(x.displayName || {}).text || '', ok:placeNameOk_(t, x)}; });
     if (found.error) r.searchError = found.error;
   }
+  r.logSheet = !!sheet_(SHEET_LOG); // ログの書き先（「ログ」タブ）があるか
+  r.keysWithId = props.getKeys().filter(function(k) { return k.indexOf(id) >= 0; }); // そのIDに関わる覚えている値のキー
   Logger.log(JSON.stringify(r));
   return r;
 }
+// エディタの関数一覧から実行するための公開の名前（_ で終わる関数は一覧に出ない）。id を省くと V001
+function reviewDebug(id) { return reviewDebug_(id || 'V001'); }
+function reviewDebugV001() { Logger.log(JSON.stringify(reviewDebug_('V001'))); }
 
 function validateSelection_(p) {
   var error = selectionValid_(p);
