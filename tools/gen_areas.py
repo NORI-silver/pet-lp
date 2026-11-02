@@ -364,7 +364,7 @@ def _pick_txt(F):
     if q.get("yen") == 0: return "無料"
     if q.get("yen"): return f"{q['yen']:,}円" + ("（変わることあり）" if q.get("unsure") else "")
     return "—"
-def pref_company_table(pf, short, cs):
+def pref_company_table(pf, short, cs, cities=()):
     key = pf if pf == "北海道" else pf[:-1]
     if not cs: return ""
     pts = {}
@@ -385,6 +385,17 @@ def pref_company_table(pf, short, cs):
     out += f'<p>{e(pf)}のお迎えに対応している{len(cs)}社について、公式サイトに書かれている対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p>'
     if summ:
         out += f'<p>公式サイトに書いている内容を数えると、{e(summ)}でした（書いていない会社が、できないとは限りません）。</p>'
+    cm = []
+    for c in cities:
+        stem = re.sub(r"(市|区|町|村)$", "", c)
+        if stem == "港" or stem == key: stem = c  # 「港」は空港、「大阪」は大阪府にも当たるので、市・区まで入れて数える
+        n = sum(1 for x in cs if stem in (x.get("area_text") or ""))
+        if n: cm.append((n, stem))
+    if cm:
+        whole = sum(1 for x in cs if re.search(key + r"(全域|全県|県内全域|府内全域|都内全域|全体)|全域|一円", x.get("area_text") or ""))
+        out += (f'<p>対応エリアに地名が書かれている会社を数えると、' + "・".join(f"{st}が{n}社" for n, st in sorted(cm, key=lambda t: -t[0])) + 'でした。'
+                + (f'このほか「全域」「◯◯一円」のように広く書いている会社が{whole}社あります。' if whole else '')
+                + '地名が書かれていなくても来てもらえることがあるので、お迎えの場所はフォームで確かめてください。</p>')
     out += ('<div class="tbl"><table><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody>'
             + "".join(r[2] for r in rows) + '</tbody></table></div>')
     out += f'<p class="fare-flag"><b>確定料金ではありません。</b>{FARES_CHECKED}時点で各社の公式サイトを読んでまとめたもので、会社名は出していません。5kmの運賃は料金表から計算した片道の金額で、お迎え料金・待ち時間・高速代は入っていません。料金や対応エリアは変わることがあるので、フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p>'
@@ -445,7 +456,7 @@ for a in AREAS:
 
 <section id="area-companies">
   <div class="wrap prose">
-    {pref_company_table(a["pref"], a["short"], [x for x in _DISP if a["pref"][:-1] in x.get("areas", [])])}
+    {pref_company_table(a["pref"], a["short"], [x for x in _DISP if a["pref"][:-1] in x.get("areas", [])], a["cities"])}
   </div>
 </section>
 
@@ -1028,6 +1039,7 @@ def pref_hosp_html(pf):
 # 県ごとのデータ（2026-11-01）：公式サイトの対応エリアにその県がある会社の数と、料金表から計算した運賃。会社名は出さない。
 PREF_AIRPORT = {"北海道": "新千歳空港", "宮城県": "仙台空港", "愛知県": "中部国際空港（セントレア）や県営名古屋空港", "大阪府": "伊丹空港（大阪国際空港）や関西国際空港",
                 "兵庫県": "神戸空港や伊丹空港", "広島県": "広島空港", "福岡県": "福岡空港や北九州空港", "沖縄県": "那覇空港"}
+PREF_CITIES = {x[1]: x[3] for x in PREFS}
 def pref_data_html(pf, short):
     key = pf if pf == "北海道" else pf[:-1]
     cs = [x for x in _DISP if key in x.get("areas", [])]
@@ -1048,7 +1060,7 @@ def pref_data_html(pf, short):
         out += (f'<p>そのうち料金表をのせている{len(fs)}社の料金表で、乗った距離の運賃（片道）を計算すると次のとおりです。</p>'
                 f'<div class="tbl"><table><thead>{head}</thead><tbody>{rows}</tbody></table></div>'
                 '<p class="fare-flag"><b>確定料金ではありません。</b>お迎え料金・待ち時間・夜間や早朝の割増・高速代は入っていません。フォームにお迎えの場所と行き先を入れると、会社ごとにお迎え料金なども入れた目安が出ます。</p>')
-    out += pref_company_table(pf, short, cs)
+    out += pref_company_table(pf, short, cs, PREF_CITIES.get(pf, ()))
     if pf in PREF_AIRPORT:
         out += f'<p>{e(PREF_AIRPORT[pf])}への送迎は、飛行機の預け入れの受付時間に合わせて、お迎えの時刻を決めておくことが大切です。<a href="/guide/airport-moving/">ペットと引っ越し・空港送迎</a>に、航空会社の決まりと準備をまとめています。</p>'
     out += '<p>同乗できる人数、ペットだけの送迎、ワクチン、キャンセル料、夜間の割増は会社ごとに違います。<a href="/guide/choose/">ペットタクシーの選び方（全国の会社のルールをくらべました）</a>もあわせてご覧ください。</p>'
