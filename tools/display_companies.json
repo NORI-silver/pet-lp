@@ -6291,11 +6291,8 @@
    "review_q": "ミントペットタクシー 大阪",
    "review_name": "ミントペットタクシー",
    "hours": "9-17",
-   "flex": false,
-   "closed": [
-    0,
-    6
-   ],
+   "flex": true,
+   "closed": [],
    "lead_days": 0,
    "cut": null,
    "animals": {
