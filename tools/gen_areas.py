@@ -68,6 +68,7 @@ _DISP = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 booking_src = re.sub(r"/\*DISPLAY_COMPANIES\*/.*?/\*/DISPLAY_COMPANIES\*/", lambda m: "/*DISPLAY_COMPANIES*/var DISPLAY_COMPANIES = " + json.dumps(_DISP, ensure_ascii=False) + ";/*/DISPLAY_COMPANIES*/", booking_src, count=1, flags=re.S)
 def _ncos(k): return len([x for x in _DISP if k in x.get("areas", [])])
 def _ccos(k, stem): return len([x for x in _DISP if k in x.get("areas", []) and stem in (x.get("area_text") or "")])
+def _nsame(k): return len([x for x in _DISP if k in x.get("areas", []) and x.get("lead_days") == 0])
 def _nhosp(pf): return len(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "emergency.json"), encoding="utf-8"))["hospitals"].get(pf, []))
 _DCJ = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))
 _PPTS = _DCJ.get("partner_points", {})
@@ -273,6 +274,14 @@ AREAS = [
    ("埼玉の北部（熊谷など）でも使えますか？", "はい、お迎えの場所に入れられます。会社ごとに対応する地域が違うため、場所によってはお迎え料金が増えたり、来てもらえる会社が見つからなかったりすることがあります。日にちに余裕をもってご依頼ください。"),
   ]),
 ]
+# 4都県に共通で足すよくある質問（数は display_companies.json・emergency.json から毎回数える）
+for _a in AREAS:
+    _k = _a["pref"].rstrip("都県")
+    _a["faq"].append((f"{_a['short'].split('・')[0]}で当日でもペットタクシーを頼めますか？",
+        f"{_a['pref']}のお迎えに対応している{_ncos(_k)}社のうち、公式サイトや会社からの返事に当日も受けると書いてある会社は{_nsame(_k)}社です。お迎えが今日のときは、この中から空いていて間に合う会社だけが候補に出ます。会社にメールで確認してから決まるしくみなので、お迎えの時刻は、いまから3時間以上あとで選んでください。"))
+    if _a["slug"] != "kanagawa":
+        _a["faq"].append((f"{_a['short'].split('・')[0]}で夜間に診てもらえる動物病院はありますか？",
+            f"{_a['pref']}の夜間・救急の動物病院を{_nhosp(_a['pref'])}件載せています。受付時間は病院ごとに違うので、行く前に電話で受け入れてもらえるか確かめてください。このページの「緊急」タブや、夜間・救急の動物病院の一覧からさがせます。"))
 
 PAW = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="6" cy="9" r="2.2"/><circle cx="10" cy="5.5" r="2.2"/><circle cx="14" cy="5.5" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M12 11c-3 0-6 3.6-6 6.2 0 1.8 1.5 2.8 3 2.8 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.5 0 3-1 3-2.8C18 14.6 15 11 12 11z"/></svg>'
 ARROW = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>'
