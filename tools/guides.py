@@ -681,6 +681,10 @@ GUIDES.extend(FACILITY_GUIDES)
 from guides_info import INFO_GUIDES
 GUIDES.extend(INFO_GUIDES)
 
+# 迷子・犬の登録・引っ越し・飼えなくなったときの記事（tools/guides_jichitai.py、/jichitai/ と同じ窓口）。
+from guides_jichitai import JICHITAI_GUIDES
+GUIDES.extend(JICHITAI_GUIDES)
+
 for guide in GUIDES:
     if guide["slug"] == "hospital":
         guide["sections"].append(("病院名から行き方と移動の準備を調べる", [("links", [
