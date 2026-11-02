@@ -338,7 +338,7 @@ PARTNER_BAND = '''<aside class="partner-band"><div class="wrap"><p><b>ペット�
 def foot(cta_href, band=True):
     return (PARTNER_BAND if band else '') + f'''<footer>
   <div class="wrap">
-    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
+    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国の公営ドッグラン</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav><a href="/area/">全国</a>{''.join(f'<a href="/{a["slug"]}/">{e(a["short"])}</a>' for a in AREAS)}</nav>
     <p>ペットタクシー予約窓口</p>
     <p>&copy; 2026 ペットタクシー予約窓口</p>
@@ -1272,6 +1272,11 @@ import gen_jichitai
 gen_jichitai.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_jichitai.urls(SITE)
+# 全国の公営ドッグラン（/dogrun/）：お金を取らない情報ページ（tools/gen_dogrun.py、データ tools/dogrun.json）
+import gen_dogrun
+gen_dogrun.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
+  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_dogrun.urls(SITE)
 
 # sitemap / robots / 404
 urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url] + hosp_urls + [pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url, pterms_url]
