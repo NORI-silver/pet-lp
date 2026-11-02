@@ -17,6 +17,9 @@ const b64 = f => 'data:image/jpeg;base64,' + fs.readFileSync(path.join(ROOT, f))
 const illust = fs.readFileSync(path.join(__dirname, 'illust.svg'), 'utf8').replace(/<metadata>[\s\S]*?<\/metadata>/, '');
 const paw = `<svg viewBox="0 0 32 32" width="56" height="56"><rect width="32" height="32" rx="8" fill="${C.orange}"/><g fill="#fff" transform="translate(4 4)"><circle cx="6" cy="9" r="2.2"/><circle cx="10" cy="5.5" r="2.2"/><circle cx="14" cy="5.5" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M12 11c-3 0-6 3.6-6 6.2 0 1.8 1.5 2.8 3 2.8 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.5 0 3-1 3-2.8C18 14.6 15 11 12 11z"/></g></svg>`;
 
+// 肉球マーク（サイトの favicon と同じ形）。size=一辺px、op=濃さ（ヘッダー用に薄くもできる）
+const pawBig = (size, r) => `<svg viewBox="0 0 32 32" width="${size}" height="${size}"><rect width="32" height="32" rx="${32 * r}" fill="${C.orange}"/><g fill="#fff" transform="translate(4 4)"><circle cx="6" cy="9" r="2.2"/><circle cx="10" cy="5.5" r="2.2"/><circle cx="14" cy="5.5" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M12 11c-3 0-6 3.6-6 6.2 0 1.8 1.5 2.8 3 2.8 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.5 0 3-1 3-2.8C18 14.6 15 11 12 11z"/></g></svg>`;
+
 function postHtml(p) {
   return `<!doctype html><html><head><meta charset="utf-8">${FONT}<style>${BASE}
   body{width:1080px;height:1350px;background:${C.cream};display:flex;flex-direction:column}
@@ -32,7 +35,7 @@ function postHtml(p) {
   <div class="tag">${esc(p.tag)}</div><h1>${esc(p.head)}</h1>
   <ul>${p.points.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
   ${p.note ? `<div class="note">※${esc(p.note)}</div>` : ''}
-  <div class="ft">${paw}ペットタクシー予約窓口</div></div></body></html>`;
+  <div class="ft">${paw}ペットのくらし窓口</div></div></body></html>`;
 }
 
 const headerHtml = `<!doctype html><html><head><meta charset="utf-8">${FONT}<style>${BASE}
@@ -40,10 +43,10 @@ const headerHtml = `<!doctype html><html><head><meta charset="utf-8">${FONT}<sty
   .t{position:absolute;left:90px;top:110px}
   .t b{display:block;font-weight:800;font-size:68px}
   .t span{display:block;font-weight:500;font-size:32px;color:${C.sub};margin-top:14px}
-  .il{position:absolute;right:50px;top:60px;width:470px}
+  .il{position:absolute;right:110px;top:85px;width:330px}
   </style></head><body>
-  <div class="t"><b>ペットタクシー予約窓口</b><span>家族の移動に、ペットタクシーをさがしてくらべる</span></div>
-  <div class="il">${illust.replace('<svg', '<svg width="470" height="376"')}</div></body></html>`;
+  <div class="t"><b>ペットのくらし窓口</b><span>犬・猫と暮らす家族のための、ペットサービスさがし</span></div>
+  <div class="il">${pawBig(330, 0.18)}</div></body></html>`;
 
 (async () => {
   const b = await chromium.launch();
@@ -58,6 +61,10 @@ const headerHtml = `<!doctype html><html><head><meta charset="utf-8">${FONT}<sty
   await pg.setContent(headerHtml, { waitUntil: 'networkidle' });
   await pg.evaluate(() => document.fonts.ready);
   await pg.screenshot({ path: path.join(OUT, 'x-header.png') });
+  // アイコン（X・Instagram共通、1024×1024）。丸く切り抜かれても肉球が真ん中に来るように四角いまま全面オレンジ。
+  await pg.setViewportSize({ width: 1024, height: 1024 });
+  await pg.setContent(`<!doctype html><html><body style="margin:0">${pawBig(1024, 0)}</body></html>`);
+  await pg.screenshot({ path: path.join(OUT, 'avatar.png') });
   await b.close();
 
   // posts.md（Nori さんがコピーして貼るための一覧）

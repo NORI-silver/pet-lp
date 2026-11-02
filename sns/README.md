@@ -1,4 +1,6 @@
-# XとInstagramの専用アカウント（ペットタクシー予約窓口）
+# XとInstagramの専用アカウント（ペットのくらし窓口）
+
+[B] SNS。2026-11-03 構想 v1.0（`docs/concept.md`：ペットタクシーを上位概念にしない）に合わせて、名前を「ペットタクシー予約窓口」から「ペットのくらし窓口」に変えた（Nori「shiokonbuはつかわないで」「そうしよ」）。名前・ユーザー名に shiokonbu は使わない。
 
 2026-11-02 Nori「X, Instagramは新しい専用のアカウントを作って、投稿するのはアリ」「リンクは貼らない」。
 ガイド記事の中身を、リンクなしの短い投稿にして発信する。サイトへの道は、プロフィールのウェブサイト欄だけ。
@@ -7,7 +9,7 @@
 |---|---|
 | `posts.json` | 投稿の元データ（直すのはここ） |
 | `posts.md` | 最初の10投稿（X用・Instagram用の文、コピーして貼る） |
-| `img/avatar.png` | アイコン（X・Instagram共通、1024×1024。LINEの案Bと同じ絵） |
+| `img/avatar.png` | アイコン（X・Instagram共通、1024×1024。オレンジの肉球マーク＝サイトの favicon と同じ形） |
 | `img/x-header.png` | Xのヘッダー（1500×500） |
 | `img/post01.jpg`〜`post10.jpg` | 投稿の画像（1080×1350、X・Instagram共通） |
 | `gen.cjs` | 画像と `posts.md` を作り直す（`node sns/gen.cjs`。何も投稿しない） |
@@ -16,9 +18,9 @@
 
 | | X | Instagram |
 |---|---|---|
-| 表示名 | ペットタクシー予約窓口 | ペットタクシー予約窓口 |
-| ユーザー名（第1候補） | `pettaxi_yoyaku` | `pettaxi.yoyaku` |
-| 使われていたとき | `pet_taxi_yoyaku` → `pettaxi_mado` | `pettaxi_yoyaku` → `pet.taxi.yoyaku` |
+| 表示名 | ペットのくらし窓口 | ペットのくらし窓口 |
+| ユーザー名（第1候補） | `pet_kurashi`（旧 `pettaxi_yoyaku`） | `pet.kurashi`（旧 `pettaxi.yoyaku`） |
+| 使われていたとき | `petkurashi_mado` | `petkurashi.mado` |
 | メール | pettaxi.yoyaku@gmail.com（サービスの窓口のアドレス） | 同じ |
 | 種類 | ふつうのアカウント | プロアカウント（ビジネス）。カテゴリは「ペットサービス」に近いもの |
 
@@ -31,20 +33,21 @@
 **X（160文字まで）**
 
 ```
-犬・猫・うさぎなど、家族の移動のためのペットタクシーを全国からさがして、料金の目安をくらべられるサイトです。通院・介護・大型犬・多頭の移動のヒントを発信しています。
+犬・猫と暮らす家族のための、ペットサービスさがし。いまはペットタクシー（通院・介護・大型犬・多頭）の情報から。シニアの子の介護やしつけ・トリミングのことも順番にお届けします。
 ```
 
 **Instagram（150文字まで）**
 
 ```
-家族の移動に、ペットタクシーという選択🐶🐱
-全国のペットタクシーをさがして、料金の目安をくらべられます
-通院・介護・大型犬・多頭の移動のヒントを発信
+犬・猫と暮らす家族のための、ペットサービスさがし🐾
+いまはペットタクシー（通院・介護・大型犬・多頭）から
+シニアの子の介護・しつけ・トリミングも順番に
 ```
 
 - ウェブサイト欄：`https://pet.shiokonbu.com/`（リンクはここだけ。投稿には貼らない）
 - 場所の欄は空のまま。
 - 運営者の名前・住所・電話番号、飼っている子の名前やブログは出さない。
+- 投稿の話題は「移動」（ペットタクシー）を中心に、在宅ケア（シニア・介護）・しつけ・美容の話も少しずつ混ぜる（構想[A]のカテゴリ）。
 
 ## 3. 投稿のしかた
 
@@ -70,8 +73,8 @@ Xの予定（11/3 から）：11/3 1 はじめまして、11/6 2 タクシーと
 
 Nori 2026-11-02「僕の作業はゼロにしたい」。始めたあとは Nori さんの確認なしの完全自動。
 
-- アカウント：X [@pettaxi_yoyaku](https://x.com/pettaxi_yoyaku)、Instagram [pettaxi.yoyaku](https://www.instagram.com/pettaxi.yoyaku/)（ビジネス）。どちらも pettaxi.yoyaku@gmail.com で登録。パスワードは Nori さんの Chrome に保存。
-- **X**：ペットタクシー用の無料の予約サービス（Typefully。KONBU とは別のアカウント）に @pettaxi_yoyaku をつないである。`.github/workflows/sns-x.yml` が毎週日曜12時に `sns/schedule_x.py` を動かし、`posts.json` のまだ予約していない投稿を2つ、次の火・金20時に予約する。画像はガイド記事の写真だけ（`posts.json` の `photo`。文字やロゴ入りの `img/postNN.jpg` は広告っぽいので使わない。Nori 2026-11-02）。手で動かすとき `redo` を選ぶと、まだ出ていない予約を消して入れ直す。予約したものは `sns/state.json` に記録。キーは GitHub の Secret `TYPEFULLY_API_KEY`。ユーザー名が pettaxi_yoyaku のアカウントにしか入れない。投稿が残っていないと Issue「Xの投稿が残っていません」が開く → `posts.json` に足して `node sns/gen.cjs`。
+- アカウント：X @pet_kurashi（旧 @pettaxi_yoyaku）、Instagram pet.kurashi（旧 pettaxi.yoyaku）（ビジネス）。どちらも pettaxi.yoyaku@gmail.com で登録。パスワードは Nori さんの Chrome に保存。
+- **X**：ペットタクシー用の無料の予約サービス（Typefully。KONBU とは別のアカウント）にこのXをつないである。`.github/workflows/sns-x.yml` が毎週日曜12時に `sns/schedule_x.py` を動かし、`posts.json` のまだ予約していない投稿を2つ、次の火・金20時に予約する。画像はガイド記事の写真だけ（`posts.json` の `photo`。文字やロゴ入りの `img/postNN.jpg` は広告っぽいので使わない。Nori 2026-11-02）。手で動かすとき `redo` を選ぶと、まだ出ていない予約を消して入れ直す。予約したものは `sns/state.json` に記録。キーは GitHub の Secret `TYPEFULLY_API_KEY`。ユーザー名がこのアカウントのもの（`schedule_x.py` の `HANDLES`）のときだけ入れる。手で動かすとき `hold` を選ぶと、まだ出ていない予約を消して止める。投稿が残っていないと Issue「Xの投稿が残っていません」が開く → `posts.json` に足して `node sns/gen.cjs`。
 - 予約の前に、文の決まり（上の4.の言葉・リンク・長さ）をスクリプトでも確かめる。
 - **Instagram**：自動のつなぎこみはまだ（予約サービスが Instagram に対応していないため、方法を調べ中）。
 - 返信・コメント・DM・フォローはしない。
