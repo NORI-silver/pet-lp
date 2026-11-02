@@ -3,6 +3,7 @@
 # 守ること：国・都道府県・市町村の公園や動物愛護センターのドッグランだけ（民間は載せない）。順位・おすすめなし。電話番号なし。
 # 公式ページで確かめたことだけ書く。データ：tools/dogrun.json。
 import json, os
+import prefkeep
 
 J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "dogrun.json"), encoding="utf-8"))
 
@@ -82,19 +83,7 @@ def render(ctx):
   </div>
 </section>
 </main>
-<script>
-(function(){{
-  var sel = document.getElementById("hospPref");
-  function apply(){{
-    var v = sel.value;
-    document.querySelectorAll(".emg-pref").forEach(function(s){{ s.hidden = !!v && s.dataset.pref !== v; }});
-    document.querySelectorAll(".emg-region").forEach(function(h){{ h.hidden = !!v; }});
-  }}
-  sel.addEventListener("change", apply);
-  var m = location.hash.match(/^#pref=(.+)$/);
-  if (m) {{ try {{ sel.value = decodeURIComponent(m[1]); apply(); }} catch (x) {{}} }}
-}})();
-</script>
+{prefkeep.LIST_JS}
 """ + ctx["foot_noband"]()
 
 def urls(SITE):

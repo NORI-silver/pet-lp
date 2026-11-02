@@ -3,6 +3,7 @@
 # 守ること：病院からお金をもらわない。順位や「おすすめ」をつけない。電話番号は載せない。公式サイトで確かめたことだけ書く。
 # データ：夜間・救急＝tools/emergency.json（緊急タブと同じ）、往診・猫専門・エキゾチック・大型犬の設備＝tools/hospitals.json。
 import json, os
+import prefkeep
 
 HOSP = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "hospitals.json"), encoding="utf-8"))
 
@@ -121,19 +122,7 @@ def render_cond(cond, ctx):
   </div>
 </section>
 </main>
-<script>
-(function(){{
-  var sel = document.getElementById("hospPref");
-  function apply(){{
-    var v = sel.value;
-    document.querySelectorAll(".emg-pref").forEach(function(s){{ s.hidden = !!v && s.dataset.pref !== v; }});
-    document.querySelectorAll(".emg-region").forEach(function(h){{ h.hidden = !!v; }});
-  }}
-  sel.addEventListener("change", apply);
-  var m = location.hash.match(/^#pref=(.+)$/);
-  if (m) {{ try {{ sel.value = decodeURIComponent(m[1]); apply(); }} catch (x) {{}} }}
-}})();
-</script>
+{prefkeep.LIST_JS}
 <script src="/reviews.js" defer></script>
 """ + ctx["foot_noband"]()
 
@@ -169,6 +158,7 @@ def render_hub(ctx):
   </div>
 </section>
 </main>
+{prefkeep.LINKS_JS}
 """ + ctx["foot_noband"]()
 
 def review_rows():

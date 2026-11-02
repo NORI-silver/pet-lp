@@ -3,6 +3,7 @@
 # 守ること：公的な情報源だけ（環境省の自治体連絡先一覧と、各自治体の公式ページ）。電話番号は載せない。
 # データ：tools/jichitai.json（都道府県47・政令指定都市20・中核市62。担当の分け方は環境省の一覧に合わせた）。
 import json, os
+import prefkeep
 
 J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "jichitai.json"), encoding="utf-8"))
 
@@ -102,19 +103,7 @@ def render(ctx):
   </div>
 </section>
 </main>
-<script>
-(function(){{
-  var sel = document.getElementById("hospPref");
-  function apply(){{
-    var v = sel.value;
-    document.querySelectorAll(".emg-pref").forEach(function(s){{ s.hidden = !!v && s.dataset.pref !== v; }});
-    document.querySelectorAll(".emg-region").forEach(function(h){{ h.hidden = !!v; }});
-  }}
-  sel.addEventListener("change", apply);
-  var m = location.hash.match(/^#pref=(.+)$/);
-  if (m) {{ try {{ sel.value = decodeURIComponent(m[1]); apply(); }} catch (x) {{}} }}
-}})();
-</script>
+{prefkeep.LIST_JS}
 """ + ctx["foot_noband"]()
 
 def urls(SITE):
