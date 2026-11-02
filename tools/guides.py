@@ -684,6 +684,9 @@ GUIDES.extend(INFO_GUIDES)
 # 迷子・犬の登録・引っ越し・飼えなくなったときの記事（tools/guides_jichitai.py、/jichitai/ と同じ窓口）。
 from guides_jichitai import JICHITAI_GUIDES
 GUIDES.extend(JICHITAI_GUIDES)
+# 老犬ホーム・ドッグトレーナー・ペットシッターのえらび方・頼み方の記事（tools/guides_care.py）。
+from guides_care import CARE_GUIDES
+GUIDES.extend(CARE_GUIDES)
 
 for guide in GUIDES:
     if guide["slug"] == "hospital":

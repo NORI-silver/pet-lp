@@ -2,45 +2,1129 @@
  "_説明": "老犬ホーム・老猫ホームの全国一覧（/rojin-home/）のデータ。公式サイトで確かめたことだけ書く（料金・順位・電話番号は書かない）。登録番号（reg）は公式サイトに書いてあるものだけ。review_query/review_name は口コミの星の場所さがし（booking/Code.gs の EMG_REVIEWS。name の語がすべて地図の名前に含まれるときだけ採用）。載せない：ペットホテル・デイケアだけの施設、受け入れをやめた施設、公式サイトのない施設、連絡先が電話だけでも載せるが電話番号は書かない。",
  "checked": "2026年11月2日",
  "homes": [
-  {"id": "R001", "name": "老犬ホーム 愛犬本舗", "prefs": ["北海道"], "city": "札幌市白石区", "url": "https://aikenhonpo.com/", "addr": "北海道札幌市白石区川下2727-17", "animals": "犬", "review_query": "愛犬本舗 札幌市白石区", "review_name": "愛犬本舗"},
-  {"id": "R002", "name": "ニャンワンクラブ 老犬ホーム", "prefs": ["宮城県"], "city": "仙台市青葉区", "url": "https://www.nyanwan.jp/care/dog_home.html", "addr": "宮城県仙台市青葉区八幡2-1-21", "animals": "犬", "visit": "面会は営業時間内", "reg": "保管 仙台市(H18健保動)指令第5070号・譲受飼養 (H25健保動)指令第1120040号", "review_query": "ニャンワンクラブ 仙台市青葉区八幡", "review_name": "ニャンワンクラブ"},
-  {"id": "R003", "name": "いぬ&ねこの家 クラスメイト", "prefs": ["秋田県"], "city": "秋田市", "url": "https://classmate-akita.com/", "addr": "秋田県秋田市", "animals": "犬・猫", "spec": "公式サイト：「長期＆永久宿泊（老犬ホーム）」", "review_query": "いぬ&ねこの家 クラスメイト 秋田市", "review_name": "クラスメイト"},
-  {"id": "R004", "name": "老犬＆老猫ホームひまわり", "prefs": ["茨城県"], "city": "つくば市", "url": "https://rouken-kaigo.co.jp/", "addr": "茨城県つくば市沼田579", "animals": "犬・猫", "visit": "見学は事前に相談", "review_query": "老犬ホーム ひまわり つくば市沼田", "review_name": "ひまわり"},
-  {"id": "R005", "name": "桑原動物病院の老犬ホーム", "prefs": ["群馬県"], "city": "前橋市", "url": "https://kuwabara-awc.com/", "addr": "群馬県前橋市六供町1丁目8-3", "animals": "犬（猫は受けていません）", "spec": "動物病院に併設", "reg": "保管 第010000-22-1号・譲受飼養 第010000-20-31号", "review_query": "桑原動物病院 前橋市六供町", "review_name": "桑原動物病院"},
-  {"id": "R006", "name": "ささき動物病院の介護ペットホーム", "prefs": ["埼玉県"], "city": "さいたま市北区", "url": "https://www.ssk-nhp.com/", "addr": "埼玉県さいたま市北区植竹町1-51", "animals": "犬・猫", "visit": "面会は診療時間内いつでも", "spec": "動物病院に併設", "review_query": "ささき動物病院 さいたま市北区植竹町", "review_name": "ささき動物病院"},
-  {"id": "R007", "name": "あにまるケアハウス", "prefs": ["埼玉県"], "city": "加須市", "url": "https://www.animalcare.jp/", "addr": "埼玉県加須市久下5-316-1", "animals": "犬・猫（老犬・老猫ホーム）", "reg": "保管 第68-0323号・譲受飼養 第68-0324号", "review_query": "あにまるケアハウス 加須市久下", "review_name": "あにまるケアハウス"},
-  {"id": "R008", "name": "老犬ホーム Smile Flower", "prefs": ["千葉県"], "city": "千葉市緑区", "url": "https://roukenhome.com/", "addr": "千葉県千葉市緑区平川町1349-11", "animals": "犬（大型犬の区分あり）", "visit": "見学は前日までに予約（10〜15時）", "review_query": "老犬ホーム Smile Flower 千葉市緑区平川町", "review_name": "Smile Flower"},
-  {"id": "R009", "name": "老犬ホーム＆ペットホテル 九十九里パーク", "prefs": ["千葉県"], "city": "山武郡九十九里町", "url": "https://roukenhome.jp/", "addr": "千葉県山武郡九十九里町小関2188-3", "animals": "犬", "visit": "見学は予約制（年中無休）", "review_query": "老犬ホーム 九十九里パーク 九十九里町小関", "review_name": "九十九里パーク"},
-  {"id": "R010", "name": "シニアDOGハイム", "prefs": ["東京都"], "city": "足立区", "url": "https://senior-dog1.com/", "addr": "東京都足立区小台2-10-18", "animals": "犬（長期ステイ）", "reg": "譲受飼養 22東京都譲第007122号・保管 21東京都議第007122号", "review_query": "シニアDOGハイム 足立区小台", "review_name": "シニアDOGハイム"},
-  {"id": "R011", "name": "THE ケネルズ東京", "prefs": ["東京都"], "city": "目黒区", "url": "https://the-kennels.tokyo/", "addr": "東京都目黒区洗足2丁目19番地2号", "animals": "犬", "visit": "見学カウンセリングは会員登録をした方のみ（公式サイト 2026年3月17日の案内）", "review_query": "THE ケネルズ東京 目黒区洗足", "review_name": "ケネルズ"},
-  {"id": "R012", "name": "東京ペットホーム（キャットホーム・ドッグホーム）", "prefs": ["東京都"], "city": "大田区", "url": "https://tokyo-cathome.com/", "addr": "東京都大田区大森南1-23-5（本館・キャットホーム）／東糀谷1-13-22（2号館・ドッグホーム）", "animals": "犬・猫", "visit": "見学は予約制", "review_query": "東京ペットホーム 大田区大森南", "review_name": "東京ペットホーム"},
-  {"id": "R013", "name": "わんダ～らん 老犬ホーム", "prefs": ["新潟県"], "city": "新潟市西区", "url": "https://wonderrun.com/dog-home/", "addr": "新潟県新潟市西区槇尾275-1", "animals": "犬のみ（大型犬30kgまで。超大型犬の区分あり）", "visit": "面会は営業時間内（事前に連絡）", "review_query": "わんダ～らん 新潟市西区槇尾", "review_name": "わんダ"},
-  {"id": "R014", "name": "ドッグハウス・ダディー 西軽井沢 老犬ホーム", "prefs": ["長野県"], "city": "北佐久郡御代田町", "url": "https://rouken-karuizawa.jp/rouken", "addr": "長野県北佐久郡御代田町塩野3267-4", "animals": "犬（大型犬可。30kg超は相談）", "reg": "保管 長野県佐久保健所指令19-第103-01003812号・譲受飼養 29第5-01015316号", "review_query": "ドッグハウス・ダディー 御代田町", "review_name": "ダディー"},
-  {"id": "R015", "name": "セカンドハウス 羽島店 老犬ホーム", "prefs": ["岐阜県"], "city": "羽島市", "url": "https://s-house526.com/service/hashima/silver/", "addr": "岐阜県羽島市竹鼻町狐穴392番地2", "animals": "犬（終生のお預かり）", "review_query": "セカンドハウス 羽島店 羽島市竹鼻町", "review_name": "セカンドハウス"},
-  {"id": "R016", "name": "老犬ホーム暖家", "prefs": ["岐阜県"], "city": "揖斐郡揖斐川町", "url": "https://roukendanka.jp/", "addr": "岐阜県揖斐郡揖斐川町清水1488", "animals": "犬（小型・中型・大型）", "reg": "保管 040089号・譲受飼養 040091号", "review_query": "老犬ホーム暖家 揖斐川町", "review_name": "暖家"},
-  {"id": "R017", "name": "I・STYLE シニアハウス", "prefs": ["静岡県"], "city": "焼津市", "url": "https://i-style.co.jp/", "addr": "静岡県焼津市東小川1-3-17", "animals": "犬・猫", "visit": "内見できます", "spec": "公式サイト：「老犬・老猫ホーム開設」", "review_query": "I・STYLE 焼津市東小川", "review_name": "STYLE"},
-  {"id": "R018", "name": "老犬ホーム KAMALEI", "prefs": ["静岡県"], "city": "沼津市", "url": "https://kamalei2018.com/dog-oldhome.html", "addr": "静岡県沼津市足高305-19", "animals": "犬", "visit": "見学はいつでも（送迎あり）", "reg": "第227124018号・第227124019号", "review_query": "KAMALEI 沼津市足高", "review_name": "KAMALEI"},
-  {"id": "R019", "name": "ちびママの家", "prefs": ["静岡県"], "city": "浜松市中区", "url": "https://chibi-mama.com/", "addr": "静岡県浜松市中区城北1-12-20", "animals": "猫（高齢猫の専門）", "review_query": "ちびママの家 浜松市中区城北", "review_name": "ちびママ"},
-  {"id": "R020", "name": "老犬ホーム ワンワンパラダイス", "prefs": ["愛知県"], "city": "新城市", "url": "http://www.wanwan-paradise.com/", "addr": "愛知県新城市富岡字下川原82", "animals": "犬（小型犬5kg未満・10才以上のみ）", "visit": "施設の公開は控えています（公式サイト）", "reg": "動東第341号", "review_query": "ワンワンパラダイス 新城市富岡", "review_name": "ワンワンパラダイス"},
-  {"id": "R021", "name": "Furkidsun（老猫ホーム）", "prefs": ["愛知県"], "city": "蒲郡市", "url": "https://furkidsun.com/", "addr": "愛知県蒲郡市旭町1-8", "animals": "猫専用（長期・終身のお預かり）", "visit": "見学は土日祝のみ", "reg": "保管 動東第623号・譲受飼養 動東第624号", "review_query": "Furkidsun 蒲郡市旭町", "review_name": "Furkidsun"},
-  {"id": "R022", "name": "ペットホームOHANA", "prefs": ["三重県"], "city": "四日市市", "url": "https://pethomeohana.wphp.jp/", "addr": "三重県四日市市生桑町1642-7", "animals": "犬・猫（大型犬・超大型犬の区分あり）", "reg": "四管第R4-1号", "review_query": "ペットホームOHANA 四日市市生桑町", "review_name": "OHANA"},
-  {"id": "R023", "name": "ワンワンハートSAKURA withワンニャンプロジェクト", "prefs": ["三重県"], "city": "四日市市", "url": "https://www.wanwanhart-sakura.com/", "addr": "三重県四日市市桜町212番地", "animals": "犬・猫", "visit": "見学できます", "spec": "公式サイト：犬猫の介護施設", "review_query": "ワンワンハートSAKURA 四日市市桜町", "review_name": "SAKURA"},
-  {"id": "R024", "name": "Catホッと（老猫ホーム）", "prefs": ["滋賀県"], "city": "長浜市", "url": "https://cathot.jp/", "addr": "滋賀県長浜市", "animals": "猫", "visit": "見学の申し込みあり", "review_query": "Catホッと 長浜市", "review_name": "Catホッと"},
-  {"id": "R025", "name": "老犬介護ホーム ろうたす", "prefs": ["京都府"], "city": "京都市伏見区", "url": "https://dog-lotus.jp/", "addr": "京都府京都市伏見区醍醐高畑町68-5 中野第2ビル2階", "animals": "犬", "reg": "保管 京都市登録第140059号・譲受飼養 第140060号", "review_query": "老犬介護ホーム ろうたす 京都市伏見区", "review_name": "ろうたす"},
-  {"id": "R026", "name": "犬のケアハウスうらら", "prefs": ["京都府"], "city": "船井郡京丹波町", "url": "https://carehouse-urara.com/", "addr": "京都府船井郡京丹波町曽根清長60番地32", "animals": "犬", "visit": "面会用のゲストルームあり", "reg": "京都府第040120-2（保管）・第040120-7（譲受飼養）", "review_query": "犬のケアハウスうらら 京丹波町", "review_name": "うらら"},
-  {"id": "R027", "name": "老犬ホームあん", "prefs": ["京都府"], "city": "船井郡京丹波町", "url": "https://www.roukenhome-ann.jp/", "addr": "京都府船井郡京丹波町井尻スハ1-44", "animals": "犬（全年齢・全犬種。大型犬舎あり）", "visit": "見学・面会のご案内あり", "reg": "京都府第040118-2（保管）・第040118-7（譲受飼養）", "review_query": "老犬ホームあん 京丹波町井尻", "review_name": "あん"},
-  {"id": "R028", "name": "老犬介護ホーム メロー", "prefs": ["大阪府"], "city": "大阪市城東区", "url": "https://www.rouken-mellow.jp/", "addr": "大阪府大阪市城東区放出西2-4-13", "animals": "犬", "reg": "保管 160073B・譲受飼養 160073F", "review_query": "老犬介護ホーム メロー 大阪市城東区放出西", "review_name": "メロー"},
-  {"id": "R029", "name": "老犬ホーム Smile Flower Osaka", "prefs": ["大阪府"], "city": "八尾市", "url": "https://osaka.roukenhome.com/", "addr": "大阪府八尾市西山本町1丁目1-50（JPB動物医療センター八尾内）", "animals": "犬（大型犬の区分あり）", "spec": "動物病院に併設", "review_query": "老犬ホーム Smile Flower Osaka 八尾市西山本町", "review_name": "Smile Flower"},
-  {"id": "R030", "name": "老犬ホーム norn", "prefs": ["兵庫県"], "city": "神崎郡市川町", "url": "https://norn-rouken.jp/", "addr": "兵庫県神崎郡市川町屋形869", "animals": "犬（「大型犬も歓迎」）", "visit": "見学の予約できます", "reg": "保管 兵動第2632004号・譲受飼養 兵動第2636005号", "review_query": "老犬ホーム norn 市川町屋形", "review_name": "norn"},
-  {"id": "R031", "name": "Caramelpapa", "prefs": ["兵庫県"], "city": "明石市", "url": "https://caramelpapa.net/", "addr": "兵庫県明石市林崎町2-2-13", "animals": "犬・猫", "review_query": "Caramelpapa 明石市林崎町", "review_name": "Caramelpapa"},
-  {"id": "R032", "name": "関西ドッグスクール 老犬ホーム", "prefs": ["奈良県"], "city": "磯城郡三宅町", "url": "https://www.kansaidogschool.com/olddog", "addr": "奈良県磯城郡三宅町但馬102-1", "animals": "犬（ワクチン接種済み）", "review_query": "関西ドッグスクール 三宅町但馬", "review_name": "関西ドッグスクール"},
-  {"id": "R033", "name": "アニマルレストハウス", "prefs": ["和歌山県"], "city": "橋本市", "url": "https://animalresthouse.com/", "addr": "和歌山県橋本市隅田町中島1057-7", "animals": "犬", "reg": "保管 和歌山県04第1061号・譲受飼養 04第1062号", "review_query": "アニマルレストハウス 橋本市隅田町", "review_name": "アニマルレストハウス"},
-  {"id": "R034", "name": "MommySociety（愛と温もりの家）", "prefs": ["岡山県"], "city": "岡山市東区", "url": "https://pet-senior.com/", "addr": "岡山県岡山市東区城東台西2-6-1", "animals": "犬・猫", "review_query": "MommySociety 岡山市東区城東台西", "review_name": "MommySociety"},
-  {"id": "R035", "name": "老犬ホーム・KOMUGI", "prefs": ["山口県"], "city": "宇部市", "url": "https://rouken-komugi.sakura.ne.jp/wordpress/", "addr": "山口県宇部市則貞3丁目11-23-5", "animals": "犬", "review_query": "老犬ホーム KOMUGI 宇部市則貞", "review_name": "KOMUGI"},
-  {"id": "R036", "name": "ドッグケアハウス伝", "prefs": ["山口県"], "city": "山口市", "url": "https://dog-care-house-den.com/", "addr": "山口県山口市下小鯖4078-20", "animals": "犬", "visit": "予約制で来訪できます。Webカメラでの面会あり", "reg": "保管 平28山健第147号の1の24", "review_query": "ドッグケアハウス伝 山口市下小鯖", "review_name": "伝"},
-  {"id": "R037", "name": "いぬのケアハウス シェリー Fukuoka", "prefs": ["福岡県"], "city": "糟屋郡新宮町", "url": "https://shelly-fukuoka.com/", "addr": "福岡県糟屋郡新宮町原上1733-1", "animals": "犬", "visit": "事前の連絡で見学できます", "review_query": "いぬのケアハウス シェリー 新宮町原上", "review_name": "シェリー"},
-  {"id": "R038", "name": "ドッグハウスなぎさ 老犬ホーム", "prefs": ["福岡県"], "city": "中間市", "url": "https://www.doghousenagisa.com/rouken/", "addr": "福岡県中間市長津3丁目7-12", "animals": "犬（大型犬20〜40kgの区分あり）", "review_query": "ドッグハウスなぎさ 中間市長津", "review_name": "なぎさ"},
-  {"id": "R039", "name": "老犬介護ホームてるハウス", "prefs": ["福岡県"], "city": "北九州市八幡東区", "url": "http://teruhouse.jp/", "addr": "福岡県北九州市八幡東区日ノ出町1-11-3", "animals": "犬（室内飼いの子のみ）・猫は相談", "review_query": "老犬介護ホーム てるハウス 北九州市八幡東区", "review_name": "てるハウス"},
-  {"id": "R040", "name": "老犬ホーム REGALO", "prefs": ["沖縄県"], "city": "中頭郡読谷村", "url": "https://rokenhomeregalo.com/", "addr": "沖縄県中頭郡読谷村座喜味2304", "animals": "犬", "reg": "沖動保第1392号", "review_query": "老犬ホーム REGALO 読谷村座喜味", "review_name": "REGALO"}
+  {
+   "id": "R001",
+   "name": "老犬ホーム 愛犬本舗",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市白石区",
+   "url": "https://aikenhonpo.com/",
+   "addr": "北海道札幌市白石区川下2727-17",
+   "animals": "犬",
+   "review_query": "愛犬本舗 札幌市白石区",
+   "review_name": "愛犬本舗"
+  },
+  {
+   "id": "R002",
+   "name": "ニャンワンクラブ 老犬ホーム",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市青葉区",
+   "url": "https://www.nyanwan.jp/care/dog_home.html",
+   "addr": "宮城県仙台市青葉区八幡2-1-21",
+   "animals": "犬",
+   "visit": "面会は営業時間内",
+   "reg": "保管 仙台市(H18健保動)指令第5070号・譲受飼養 (H25健保動)指令第1120040号",
+   "review_query": "ニャンワンクラブ 仙台市青葉区八幡",
+   "review_name": "ニャンワンクラブ"
+  },
+  {
+   "id": "R003",
+   "name": "いぬ&ねこの家 クラスメイト",
+   "prefs": [
+    "秋田県"
+   ],
+   "city": "秋田市",
+   "url": "https://classmate-akita.com/",
+   "addr": "秋田県秋田市",
+   "animals": "犬・猫",
+   "spec": "公式サイト：「長期＆永久宿泊（老犬ホーム）」",
+   "review_query": "いぬ&ねこの家 クラスメイト 秋田市",
+   "review_name": "クラスメイト"
+  },
+  {
+   "id": "R004",
+   "name": "老犬＆老猫ホームひまわり",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://rouken-kaigo.co.jp/",
+   "addr": "茨城県つくば市沼田579",
+   "animals": "犬・猫",
+   "visit": "見学は事前に相談",
+   "review_query": "老犬ホーム ひまわり つくば市沼田",
+   "review_name": "ひまわり"
+  },
+  {
+   "id": "R005",
+   "name": "桑原動物病院の老犬ホーム",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "前橋市",
+   "url": "https://kuwabara-awc.com/",
+   "addr": "群馬県前橋市六供町1丁目8-3",
+   "animals": "犬（猫は受けていません）",
+   "spec": "動物病院に併設",
+   "reg": "保管 第010000-22-1号・譲受飼養 第010000-20-31号",
+   "review_query": "桑原動物病院 前橋市六供町",
+   "review_name": "桑原動物病院"
+  },
+  {
+   "id": "R006",
+   "name": "ささき動物病院の介護ペットホーム",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市北区",
+   "url": "https://www.ssk-nhp.com/",
+   "addr": "埼玉県さいたま市北区植竹町1-51",
+   "animals": "犬・猫",
+   "visit": "面会は診療時間内いつでも",
+   "spec": "動物病院に併設",
+   "review_query": "ささき動物病院 さいたま市北区植竹町",
+   "review_name": "ささき動物病院"
+  },
+  {
+   "id": "R007",
+   "name": "あにまるケアハウス",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "加須市",
+   "url": "https://www.animalcare.jp/",
+   "addr": "埼玉県加須市久下5-316-1",
+   "animals": "犬・猫（老犬・老猫ホーム）",
+   "reg": "保管 第68-0323号・譲受飼養 第68-0324号",
+   "review_query": "あにまるケアハウス 加須市久下",
+   "review_name": "あにまるケアハウス"
+  },
+  {
+   "id": "R008",
+   "name": "老犬ホーム Smile Flower",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "https://roukenhome.com/",
+   "addr": "千葉県千葉市緑区平川町1349-11",
+   "animals": "犬（大型犬の区分あり）",
+   "visit": "見学は前日までに予約（10〜15時）",
+   "review_query": "老犬ホーム Smile Flower 千葉市緑区平川町",
+   "review_name": "Smile Flower"
+  },
+  {
+   "id": "R009",
+   "name": "老犬ホーム＆ペットホテル 九十九里パーク",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "山武郡九十九里町",
+   "url": "https://roukenhome.jp/",
+   "addr": "千葉県山武郡九十九里町小関2188-3",
+   "animals": "犬",
+   "visit": "見学は予約制（年中無休）",
+   "review_query": "老犬ホーム 九十九里パーク 九十九里町小関",
+   "review_name": "九十九里パーク"
+  },
+  {
+   "id": "R010",
+   "name": "シニアDOGハイム",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://senior-dog1.com/",
+   "addr": "東京都足立区小台2-10-18",
+   "animals": "犬（長期ステイ）",
+   "reg": "譲受飼養 22東京都譲第007122号・保管 21東京都議第007122号",
+   "review_query": "シニアDOGハイム 足立区小台",
+   "review_name": "シニアDOGハイム"
+  },
+  {
+   "id": "R011",
+   "name": "THE ケネルズ東京",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "目黒区",
+   "url": "https://the-kennels.tokyo/",
+   "addr": "東京都目黒区洗足2丁目19番地2号",
+   "animals": "犬",
+   "visit": "見学カウンセリングは会員登録をした方のみ（公式サイト 2026年3月17日の案内）",
+   "review_query": "THE ケネルズ東京 目黒区洗足",
+   "review_name": "ケネルズ"
+  },
+  {
+   "id": "R012",
+   "name": "東京ペットホーム（キャットホーム・ドッグホーム）",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "https://tokyo-cathome.com/",
+   "addr": "東京都大田区大森南1-23-5（本館・キャットホーム）／東糀谷1-13-22（2号館・ドッグホーム）",
+   "animals": "犬・猫",
+   "visit": "見学は予約制",
+   "review_query": "東京ペットホーム 大田区大森南",
+   "review_name": "東京ペットホーム"
+  },
+  {
+   "id": "R013",
+   "name": "わんダ～らん 老犬ホーム",
+   "prefs": [
+    "新潟県"
+   ],
+   "city": "新潟市西区",
+   "url": "https://wonderrun.com/dog-home/",
+   "addr": "新潟県新潟市西区槇尾275-1",
+   "animals": "犬のみ（大型犬30kgまで。超大型犬の区分あり）",
+   "visit": "面会は営業時間内（事前に連絡）",
+   "review_query": "わんダ～らん 新潟市西区槇尾",
+   "review_name": "わんダ"
+  },
+  {
+   "id": "R014",
+   "name": "ドッグハウス・ダディー 西軽井沢 老犬ホーム",
+   "prefs": [
+    "長野県"
+   ],
+   "city": "北佐久郡御代田町",
+   "url": "https://rouken-karuizawa.jp/rouken",
+   "addr": "長野県北佐久郡御代田町塩野3267-4",
+   "animals": "犬（大型犬可。30kg超は相談）",
+   "reg": "保管 長野県佐久保健所指令19-第103-01003812号・譲受飼養 29第5-01015316号",
+   "review_query": "ドッグハウス・ダディー 御代田町",
+   "review_name": "ダディー"
+  },
+  {
+   "id": "R015",
+   "name": "セカンドハウス 羽島店 老犬ホーム",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "羽島市",
+   "url": "https://s-house526.com/service/hashima/silver/",
+   "addr": "岐阜県羽島市竹鼻町狐穴392番地2",
+   "animals": "犬（終生のお預かり）",
+   "review_query": "セカンドハウス 羽島店 羽島市竹鼻町",
+   "review_name": "セカンドハウス"
+  },
+  {
+   "id": "R016",
+   "name": "老犬ホーム暖家",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "揖斐郡揖斐川町",
+   "url": "https://roukendanka.jp/",
+   "addr": "岐阜県揖斐郡揖斐川町清水1488",
+   "animals": "犬（小型・中型・大型）",
+   "reg": "保管 040089号・譲受飼養 040091号",
+   "review_query": "老犬ホーム暖家 揖斐川町",
+   "review_name": "暖家"
+  },
+  {
+   "id": "R017",
+   "name": "I・STYLE シニアハウス",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "焼津市",
+   "url": "https://i-style.co.jp/",
+   "addr": "静岡県焼津市東小川1-3-17",
+   "animals": "犬・猫",
+   "visit": "内見できます",
+   "spec": "公式サイト：「老犬・老猫ホーム開設」",
+   "review_query": "I・STYLE 焼津市東小川",
+   "review_name": "STYLE"
+  },
+  {
+   "id": "R018",
+   "name": "老犬ホーム KAMALEI",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "沼津市",
+   "url": "https://kamalei2018.com/dog-oldhome.html",
+   "addr": "静岡県沼津市足高305-19",
+   "animals": "犬",
+   "visit": "見学はいつでも（送迎あり）",
+   "reg": "第227124018号・第227124019号",
+   "review_query": "KAMALEI 沼津市足高",
+   "review_name": "KAMALEI"
+  },
+  {
+   "id": "R019",
+   "name": "ちびママの家",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "浜松市中区",
+   "url": "https://chibi-mama.com/",
+   "addr": "静岡県浜松市中区城北1-12-20",
+   "animals": "猫（高齢猫の専門）",
+   "review_query": "ちびママの家 浜松市中区城北",
+   "review_name": "ちびママ"
+  },
+  {
+   "id": "R020",
+   "name": "老犬ホーム ワンワンパラダイス",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "新城市",
+   "url": "http://www.wanwan-paradise.com/",
+   "addr": "愛知県新城市富岡字下川原82",
+   "animals": "犬（小型犬5kg未満・10才以上のみ）",
+   "visit": "施設の公開は控えています（公式サイト）",
+   "reg": "動東第341号",
+   "review_query": "ワンワンパラダイス 新城市富岡",
+   "review_name": "ワンワンパラダイス"
+  },
+  {
+   "id": "R021",
+   "name": "Furkidsun（老猫ホーム）",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "蒲郡市",
+   "url": "https://furkidsun.com/",
+   "addr": "愛知県蒲郡市旭町1-8",
+   "animals": "猫専用（長期・終身のお預かり）",
+   "visit": "見学は土日祝のみ",
+   "reg": "保管 動東第623号・譲受飼養 動東第624号",
+   "review_query": "Furkidsun 蒲郡市旭町",
+   "review_name": "Furkidsun"
+  },
+  {
+   "id": "R022",
+   "name": "ペットホームOHANA",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "四日市市",
+   "url": "https://pethomeohana.wphp.jp/",
+   "addr": "三重県四日市市生桑町1642-7",
+   "animals": "犬・猫（大型犬・超大型犬の区分あり）",
+   "reg": "四管第R4-1号",
+   "review_query": "ペットホームOHANA 四日市市生桑町",
+   "review_name": "OHANA"
+  },
+  {
+   "id": "R023",
+   "name": "ワンワンハートSAKURA withワンニャンプロジェクト",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "四日市市",
+   "url": "https://www.wanwanhart-sakura.com/",
+   "addr": "三重県四日市市桜町212番地",
+   "animals": "犬・猫",
+   "visit": "見学できます",
+   "spec": "公式サイト：犬猫の介護施設",
+   "review_query": "ワンワンハートSAKURA 四日市市桜町",
+   "review_name": "SAKURA"
+  },
+  {
+   "id": "R024",
+   "name": "Catホッと（老猫ホーム）",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "長浜市",
+   "url": "https://cathot.jp/",
+   "addr": "滋賀県長浜市",
+   "animals": "猫",
+   "visit": "見学の申し込みあり",
+   "review_query": "Catホッと 長浜市",
+   "review_name": "Catホッと"
+  },
+  {
+   "id": "R025",
+   "name": "老犬介護ホーム ろうたす",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市伏見区",
+   "url": "https://dog-lotus.jp/",
+   "addr": "京都府京都市伏見区醍醐高畑町68-5 中野第2ビル2階",
+   "animals": "犬",
+   "reg": "保管 京都市登録第140059号・譲受飼養 第140060号",
+   "review_query": "老犬介護ホーム ろうたす 京都市伏見区",
+   "review_name": "ろうたす"
+  },
+  {
+   "id": "R026",
+   "name": "犬のケアハウスうらら",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "船井郡京丹波町",
+   "url": "https://carehouse-urara.com/",
+   "addr": "京都府船井郡京丹波町曽根清長60番地32",
+   "animals": "犬",
+   "visit": "面会用のゲストルームあり",
+   "reg": "京都府第040120-2（保管）・第040120-7（譲受飼養）",
+   "review_query": "犬のケアハウスうらら 京丹波町",
+   "review_name": "うらら"
+  },
+  {
+   "id": "R027",
+   "name": "老犬ホームあん",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "船井郡京丹波町",
+   "url": "https://www.roukenhome-ann.jp/",
+   "addr": "京都府船井郡京丹波町井尻スハ1-44",
+   "animals": "犬（全年齢・全犬種。大型犬舎あり）",
+   "visit": "見学・面会のご案内あり",
+   "reg": "京都府第040118-2（保管）・第040118-7（譲受飼養）",
+   "review_query": "老犬ホームあん 京丹波町井尻",
+   "review_name": "あん"
+  },
+  {
+   "id": "R028",
+   "name": "老犬介護ホーム メロー",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市城東区",
+   "url": "https://www.rouken-mellow.jp/",
+   "addr": "大阪府大阪市城東区放出西2-4-13",
+   "animals": "犬",
+   "reg": "保管 160073B・譲受飼養 160073F",
+   "review_query": "老犬介護ホーム メロー 大阪市城東区放出西",
+   "review_name": "メロー"
+  },
+  {
+   "id": "R029",
+   "name": "老犬ホーム Smile Flower Osaka",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "八尾市",
+   "url": "https://osaka.roukenhome.com/",
+   "addr": "大阪府八尾市西山本町1丁目1-50（JPB動物医療センター八尾内）",
+   "animals": "犬（大型犬の区分あり）",
+   "spec": "動物病院に併設",
+   "review_query": "老犬ホーム Smile Flower Osaka 八尾市西山本町",
+   "review_name": "Smile Flower"
+  },
+  {
+   "id": "R030",
+   "name": "老犬ホーム norn",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神崎郡市川町",
+   "url": "https://norn-rouken.jp/",
+   "addr": "兵庫県神崎郡市川町屋形869",
+   "animals": "犬（「大型犬も歓迎」）",
+   "visit": "見学の予約できます",
+   "reg": "保管 兵動第2632004号・譲受飼養 兵動第2636005号",
+   "review_query": "老犬ホーム norn 市川町屋形",
+   "review_name": "norn"
+  },
+  {
+   "id": "R031",
+   "name": "Caramelpapa",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "明石市",
+   "url": "https://caramelpapa.net/",
+   "addr": "兵庫県明石市林崎町2-2-13",
+   "animals": "犬・猫",
+   "review_query": "Caramelpapa 明石市林崎町",
+   "review_name": "Caramelpapa"
+  },
+  {
+   "id": "R032",
+   "name": "関西ドッグスクール 老犬ホーム",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "磯城郡三宅町",
+   "url": "https://www.kansaidogschool.com/olddog",
+   "addr": "奈良県磯城郡三宅町但馬102-1",
+   "animals": "犬（ワクチン接種済み）",
+   "review_query": "関西ドッグスクール 三宅町但馬",
+   "review_name": "関西ドッグスクール"
+  },
+  {
+   "id": "R033",
+   "name": "アニマルレストハウス",
+   "prefs": [
+    "和歌山県"
+   ],
+   "city": "橋本市",
+   "url": "https://animalresthouse.com/",
+   "addr": "和歌山県橋本市隅田町中島1057-7",
+   "animals": "犬",
+   "reg": "保管 和歌山県04第1061号・譲受飼養 04第1062号",
+   "review_query": "アニマルレストハウス 橋本市隅田町",
+   "review_name": "アニマルレストハウス"
+  },
+  {
+   "id": "R034",
+   "name": "MommySociety（愛と温もりの家）",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "岡山市東区",
+   "url": "https://pet-senior.com/",
+   "addr": "岡山県岡山市東区城東台西2-6-1",
+   "animals": "犬・猫",
+   "review_query": "MommySociety 岡山市東区城東台西",
+   "review_name": "MommySociety"
+  },
+  {
+   "id": "R035",
+   "name": "老犬ホーム・KOMUGI",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "宇部市",
+   "url": "https://rouken-komugi.sakura.ne.jp/wordpress/",
+   "addr": "山口県宇部市則貞3丁目11-23-5",
+   "animals": "犬",
+   "review_query": "老犬ホーム KOMUGI 宇部市則貞",
+   "review_name": "KOMUGI"
+  },
+  {
+   "id": "R036",
+   "name": "ドッグケアハウス伝",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "山口市",
+   "url": "https://dog-care-house-den.com/",
+   "addr": "山口県山口市下小鯖4078-20",
+   "animals": "犬",
+   "visit": "予約制で来訪できます。Webカメラでの面会あり",
+   "reg": "保管 平28山健第147号の1の24",
+   "review_query": "ドッグケアハウス伝 山口市下小鯖",
+   "review_name": "伝"
+  },
+  {
+   "id": "R037",
+   "name": "いぬのケアハウス シェリー Fukuoka",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "糟屋郡新宮町",
+   "url": "https://shelly-fukuoka.com/",
+   "addr": "福岡県糟屋郡新宮町原上1733-1",
+   "animals": "犬",
+   "visit": "事前の連絡で見学できます",
+   "review_query": "いぬのケアハウス シェリー 新宮町原上",
+   "review_name": "シェリー"
+  },
+  {
+   "id": "R038",
+   "name": "ドッグハウスなぎさ 老犬ホーム",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "中間市",
+   "url": "https://www.doghousenagisa.com/rouken/",
+   "addr": "福岡県中間市長津3丁目7-12",
+   "animals": "犬（大型犬20〜40kgの区分あり）",
+   "review_query": "ドッグハウスなぎさ 中間市長津",
+   "review_name": "なぎさ"
+  },
+  {
+   "id": "R039",
+   "name": "老犬介護ホームてるハウス",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "北九州市八幡東区",
+   "url": "http://teruhouse.jp/",
+   "addr": "福岡県北九州市八幡東区日ノ出町1-11-3",
+   "animals": "犬（室内飼いの子のみ）・猫は相談",
+   "review_query": "老犬介護ホーム てるハウス 北九州市八幡東区",
+   "review_name": "てるハウス"
+  },
+  {
+   "id": "R040",
+   "name": "老犬ホーム REGALO",
+   "prefs": [
+    "沖縄県"
+   ],
+   "city": "中頭郡読谷村",
+   "url": "https://rokenhomeregalo.com/",
+   "addr": "沖縄県中頭郡読谷村座喜味2304",
+   "animals": "犬",
+   "reg": "沖動保第1392号",
+   "review_query": "老犬ホーム REGALO 読谷村座喜味",
+   "review_name": "REGALO"
+  },
+  {
+   "id": "R041",
+   "name": "しっぽフリフリ シニア犬ホーム",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市緑区",
+   "url": "https://heartrelation.com/senior/",
+   "addr": "神奈川県相模原市緑区鳥屋1654-8",
+   "animals": "犬（10歳以上）",
+   "reg": "相模原市指令（生衛）第206-0003号（譲受飼養）",
+   "spec": "ウィークリー・マンスリーのプラン。3か月以上は連帯保証人が必要と公式サイトに記載",
+   "review_query": "しっぽフリフリ 相模原市緑区鳥屋",
+   "review_name": "しっぽフリフリ"
+  },
+  {
+   "id": "R042",
+   "name": "老猫ホーム＆猫ホテル うめねこ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市鶴見区",
+   "url": "https://www.umeneko.jp/",
+   "addr": "神奈川県横浜市鶴見区下末吉1-8-17",
+   "animals": "猫",
+   "visit": "見学・相談あり（要予約）",
+   "spec": "猫専用。12歳以上の終生のお世話、要介護の猫も",
+   "review_query": "うめねこ 横浜市鶴見区下末吉",
+   "review_name": "うめねこ"
+  },
+  {
+   "id": "R043",
+   "name": "老犬ホーム オレンジライフ湘南",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "平塚市",
+   "url": "https://orangelifeshonan.com/",
+   "addr": "神奈川県平塚市平塚1-5-18",
+   "animals": "犬",
+   "visit": "見学予約あり",
+   "reg": "動愛第240241号（保管）",
+   "spec": "デイケアから1か月単位の長期プランまで",
+   "review_query": "オレンジライフ湘南 平塚市平塚",
+   "review_name": "オレンジライフ湘南"
+  },
+  {
+   "id": "R044",
+   "name": "WANCOTT（ワンコット）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "https://www.wancott.com/dognursing/",
+   "addr": "神奈川県横浜市中区山下町168-1 レイトンハウス横浜3F・4F",
+   "animals": "犬",
+   "visit": "施設見学あり（契約前）",
+   "spec": "長期ステイ・一時預かり・デイケア・介護看護ケア。公式サイトに「老犬ホーム」の表記はなし",
+   "review_query": "WANCOTT 横浜市中区山下町",
+   "review_name": "WANCOTT"
+  },
+  {
+   "id": "R045",
+   "name": "山の上の老犬介護ホーム シルヴィ",
+   "prefs": [
+    "山梨県"
+   ],
+   "city": "甲斐市",
+   "url": "https://rouken-home.sakura.ne.jp/",
+   "addr": "山梨県甲斐市大垈1926-3",
+   "animals": "犬",
+   "visit": "訪問は事前連絡のうえ日時を打ち合わせ",
+   "reg": "第1081093号",
+   "spec": "生涯お預かり",
+   "review_query": "老犬ホーム シルヴィ 甲斐市大垈",
+   "review_name": "シルヴィ"
+  },
+  {
+   "id": "R046",
+   "name": "ドッグヴィレッヂクローバー 老犬ホーム",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "北群馬郡榛東村",
+   "url": "https://www.dogvillage-clover.com/olddog/",
+   "addr": "群馬県北群馬郡榛東村（番地は公式サイトに記載なし）",
+   "animals": "犬（犬種・年齢は問わない）",
+   "visit": "見学は電話で事前予約",
+   "reg": "群動愛第0316-191（譲受飼養業）",
+   "spec": "ショート・ミドル（1か月単位）・ロングステイ"
+  },
+  {
+   "id": "R047",
+   "name": "わんにゃんハウス・オレンジ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://wannyanhouse-orange.com/",
+   "addr": "千葉県千葉市中央区亥鼻1-2-5",
+   "animals": "犬・猫（大型犬・超大型犬も）",
+   "spec": "都市型の動物介護施設。老犬や介護が必要な子を受け入れ",
+   "review_query": "わんにゃんハウス オレンジ 千葉市中央区亥鼻",
+   "review_name": "わんにゃんハウス"
+  },
+  {
+   "id": "R048",
+   "name": "老猫ホーム・猫ホテル まるねこ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "https://maruneco.jp/cathome_cathotel/",
+   "addr": "東京都大田区羽田3-16-10 白山荘104",
+   "animals": "猫",
+   "visit": "見学は予約のうえ可",
+   "reg": "24東京都譲第008359号（譲受飼養）",
+   "spec": "終生飼養を前提に受け入れ",
+   "review_query": "まるねこ 大田区羽田",
+   "review_name": "まるねこ"
+  },
+  {
+   "id": "R049",
+   "name": "老犬介護施設 Familio（ファミリオ）",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "茨木市",
+   "url": "https://familio.dog/",
+   "addr": "大阪府茨木市南耳原1-7-24",
+   "animals": "犬",
+   "visit": "内覧はいつでも可（要予約）。初回は無料のお試し体験",
+   "reg": "大阪府登録第3111-2号・第3111-6号（保管・譲受飼養）",
+   "spec": "ケージに入れず24時間お世話。入居型の介護付き老犬ホーム",
+   "review_query": "Familio 茨木市南耳原",
+   "review_name": "Familio"
+  },
+  {
+   "id": "R050",
+   "name": "老犬・老猫ホーム あおいそら",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市北区",
+   "url": "https://peraichi.com/landing_pages/view/roukenhoomaoisora/",
+   "addr": "兵庫県神戸市北区有野町唐櫃192-2",
+   "animals": "犬・猫",
+   "reg": "神健保第0522015号（保管業）",
+   "spec": "1か月以上の長期預かり。所有者は最後まで飼い主のまま",
+   "review_query": "老犬ホーム あおいそら 神戸市北区有野町",
+   "review_name": "あおいそら"
+  },
+  {
+   "id": "R051",
+   "name": "ならまち・犬野苑",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "奈良市",
+   "url": "https://www.inunosono.com/",
+   "addr": "奈良県奈良市公納堂町24-2",
+   "animals": "犬・小動物",
+   "reg": "保管 第117002号",
+   "spec": "ノーケージ・スタッフ24時間在住・少頭数。3か月以上の契約あり",
+   "review_query": "犬野苑 奈良市公納堂町",
+   "review_name": "犬野苑"
+  },
+  {
+   "id": "R052",
+   "name": "シニアドッグケアホーム こころ",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "あま市",
+   "url": "https://www.senior-cocoro.jp/",
+   "addr": "愛知県あま市甚目寺須原100",
+   "animals": "犬（ピットブル・土佐犬は不可。継続的な医療行為が必要な子は不可）",
+   "visit": "老犬ホームは見学対応あり",
+   "spec": "24時間体制。デイサービス・ショートステイは新規休止中（公式サイト）",
+   "review_query": "シニアドッグケアホームこころ あま市甚目寺",
+   "review_name": "こころ"
+  },
+  {
+   "id": "R053",
+   "name": "わんわん保育園あおぞら 老犬ホーム",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市名東区",
+   "url": "https://wanwan-aozora.com/elderly-care/",
+   "addr": "愛知県名古屋市名東区香南2-1311",
+   "animals": "犬（大型犬は相談）",
+   "visit": "面会は事前連絡でいつでも可。来園は電話予約",
+   "spec": "長期のお預かり、旅立つまでのお預かり",
+   "review_query": "わんわん保育園あおぞら 名古屋市名東区香南",
+   "review_name": "あおぞら"
+  },
+  {
+   "id": "R054",
+   "name": "ペットケアホーム リュッカ",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "日進市",
+   "url": "https://www.petcarehomelyuca.com/",
+   "addr": "愛知県日進市岩崎町兼場1012-2",
+   "animals": "公式サイトに記載なし（老犬介護が中心）",
+   "visit": "見学は予約制",
+   "reg": "動本第1276号（保管）",
+   "spec": "総合動物介護施設。最期までお預かり。愛玩動物看護師が常駐",
+   "review_query": "ペットケアホーム リュッカ 日進市岩崎町",
+   "review_name": "リュッカ"
+  },
+  {
+   "id": "R055",
+   "name": "老犬ホーム ワンハピネス",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "高山市",
+   "url": "http://wan-happiness.com/",
+   "addr": "岐阜県高山市大洞町780-30",
+   "animals": "犬",
+   "reg": "飛保第900号-100081（譲受飼養業）",
+   "spec": "老犬・寝たきり・障害のある犬を生涯預かり",
+   "review_query": "老犬ホーム ワンハピネス 高山市大洞町",
+   "review_name": "ワンハピネス"
+  },
+  {
+   "id": "R056",
+   "name": "老犬ホーム ani TERRACE（アニテラス）",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "多気郡多気町",
+   "url": "https://www.ani-terrace.com/olddog/",
+   "addr": "三重県多気郡多気町ヴィソン672-1 農園3",
+   "animals": "犬（10歳以上）",
+   "visit": "見学は営業時間内の予約制",
+   "reg": "松管R第4-1号（保管）",
+   "spec": "1か月プラン・1年プラン",
+   "review_query": "ani TERRACE 多気町ヴィソン",
+   "review_name": "ani TERRACE"
+  },
+  {
+   "id": "R057",
+   "name": "老犬ホーム 御殿場",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "御殿場市",
+   "url": "https://www.roukenhome-gotemba.jp/",
+   "addr": "静岡県御殿場市大坂234-2",
+   "animals": "犬・猫（長期預かりは小動物・爬虫類も）",
+   "visit": "来所は事前にメールか問い合わせフォームで連絡",
+   "reg": "第225716001号（譲受飼養）・第225716002号（保管）",
+   "spec": "終生預かりと1か月以上の長期預かり",
+   "review_query": "老犬ホーム 御殿場 大坂234",
+   "review_name": "老犬ホーム 御殿場"
+  },
+  {
+   "id": "R058",
+   "name": "ワンBOX 老犬・老猫ホーム",
+   "prefs": [
+    "石川県"
+   ],
+   "city": "小松市",
+   "url": "https://www.wanbox.co.jp/geriatric/",
+   "addr": "石川県小松市平面町カ153-1（本店。野々市店ほか）",
+   "animals": "犬・猫（混合ワクチン未接種・攻撃的・偏食の子は不可）",
+   "visit": "入舎前に本店か野々市店で面談",
+   "spec": "生涯お預かり",
+   "review_query": "ワンBOX 小松市平面町",
+   "review_name": "ワンBOX"
+  },
+  {
+   "id": "R059",
+   "name": "菅原動物病院 老犬＆老猫介護ホーム",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市宮城野区",
+   "url": "https://www.sdb.ne.jp/rouken-care.html",
+   "addr": "宮城県仙台市宮城野区福住町2-14",
+   "animals": "犬・猫（10歳以上のシニア、寝たきり・歩行困難など）",
+   "spec": "動物病院が運営する永代預り（一時払い、分割も）",
+   "review_query": "菅原動物病院 仙台市宮城野区福住町",
+   "review_name": "菅原動物病院"
+  },
+  {
+   "id": "R060",
+   "name": "逢犬はうす",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市北区",
+   "url": "http://iken-house.com/",
+   "addr": "北海道札幌市北区篠路町篠路371-17",
+   "animals": "犬",
+   "visit": "見学あり（施設と お世話の様子を確認できる）",
+   "spec": "老犬介護ケア。パピーからシニアまでのペットホテルも",
+   "review_query": "逢犬はうす 札幌市北区篠路町",
+   "review_name": "逢犬はうす"
+  },
+  {
+   "id": "R061",
+   "name": "介護老犬ホーム TierHeim noah（ティアハイム・ノア）",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市東区",
+   "url": "https://tierheim-noah.life/",
+   "addr": "北海道札幌市東区北22条東8丁目2-3 1F",
+   "animals": "犬（年齢・障害・病気による制限なし）",
+   "reg": "札保動セ登録第1657号（譲受飼養）",
+   "spec": "老犬の介護・飼養を目的とした老犬ホーム",
+   "review_query": "ティアハイム ノア 札幌市東区北22条東",
+   "review_name": "noah"
+  },
+  {
+   "id": "R062",
+   "name": "老犬ホーム セタ",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市北区",
+   "url": "https://roukenhome-seta.jimdofree.com/",
+   "addr": "北海道札幌市北区新川6条14丁目3-11",
+   "animals": "犬",
+   "spec": "介護付きケージフリー・少数預かり。2022年10月開業",
+   "review_query": "老犬ホーム セタ 札幌市北区新川6条",
+   "review_name": "セタ"
+  },
+  {
+   "id": "R063",
+   "name": "老犬・老猫ホーム ほのぼのホーム",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市佐伯区",
+   "url": "https://honobono-home.jimdofree.com/",
+   "addr": "広島県広島市佐伯区八幡1-6-32",
+   "animals": "犬・猫",
+   "spec": "終生ご利用コース（月払い・一括）。面会室あり",
+   "review_query": "ほのぼのホーム 広島市佐伯区八幡",
+   "review_name": "ほのぼのホーム"
+  },
+  {
+   "id": "R064",
+   "name": "konomi動物病院 老犬・老猫ホーム",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市東区",
+   "url": "https://konomiah.com/rouken.html",
+   "addr": "広島県広島市東区（番地は老犬介護のページに記載なし）",
+   "animals": "犬・猫",
+   "spec": "動物病院が運営。終身一括が基本（所有権を病院に移す）"
+  },
+  {
+   "id": "R065",
+   "name": "老犬・老猫ホーム らんずケア",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "さぬき市",
+   "url": "https://www.runz-care.com/",
+   "addr": "香川県さぬき市志度3007-1",
+   "animals": "犬・猫",
+   "spec": "老犬＆老猫ホームと長期預かりのペットホテル",
+   "review_query": "らんずケア さぬき市志度",
+   "review_name": "らんずケア"
+  },
+  {
+   "id": "R066",
+   "name": "ペットホームえひめ",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "松山市",
+   "url": "https://pethome-ehime.jimdofree.com/",
+   "addr": "愛媛県松山市堀江町甲1545-5",
+   "animals": "犬・猫・小動物（うさぎ・鳥など）",
+   "reg": "動愛第1141号",
+   "spec": "長期ペットホテル専門店。老犬ホームとして終生お預かり（年齢・持病・介護度で相談）",
+   "review_query": "ペットホームえひめ 松山市堀江町",
+   "review_name": "ペットホームえひめ"
+  },
+  {
+   "id": "R067",
+   "name": "老犬ホーム 晴（haru）",
+   "prefs": [
+    "長崎県"
+   ],
+   "city": "大村市",
+   "url": "https://chuoukeibi.co.jp/rouken/",
+   "addr": "長崎県大村市中岳町1395",
+   "animals": "犬（ペットホテルは猫も）",
+   "visit": "初回は見学後に予約。見学は要予約",
+   "spec": "長期・介護・終生プラン（30日以上）",
+   "review_query": "老犬ホーム晴 大村市中岳町",
+   "review_name": "老犬ホーム晴"
+  },
+  {
+   "id": "R068",
+   "name": "ドッグケア soraと（老犬デイケア）",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市中央区",
+   "url": "https://sora-to.jp/",
+   "addr": "福岡県福岡市中央区平尾5-4-36-101",
+   "animals": "犬（老犬）",
+   "reg": "第E0501073（保管）",
+   "spec": "老犬のデイケアと老犬シッター。泊まりの長期預かりは公式サイトに記載なし",
+   "review_query": "ドッグケア soraと 福岡市中央区平尾",
+   "review_name": "soraと"
+  },
+  {
+   "id": "R069",
+   "name": "ペットホテル里親（終身・長期預かり）",
+   "prefs": [
+    "鹿児島県"
+   ],
+   "city": "大島郡龍郷町",
+   "url": "https://sato-oya.com/",
+   "addr": "鹿児島県大島郡龍郷町（番地は公式サイトのトップに記載なし）",
+   "animals": "小型犬・中型犬・大型犬・猫",
+   "reg": "鹿児島県R5名保第1034号",
+   "spec": "生涯お預かり・長期お預かり・里親探し（奄美大島）"
+  },
+  {
+   "id": "R070",
+   "name": "Rainbow Life Towa",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "久留米市",
+   "url": "https://www.rouken-care.jp/facility/hm0116/",
+   "addr": "福岡県久留米市山川追分2-3-36",
+   "animals": "小型犬・猫（中型・大型犬は相談）",
+   "reg": "第076001号（譲受飼養）",
+   "src": "紹介ページ"
+  },
+  {
+   "id": "R071",
+   "name": "リリモナハウス",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "大網白里市",
+   "url": "https://www.rouken-care.jp/facility/hm0041/",
+   "addr": "千葉県大網白里市桂山1271",
+   "animals": "犬",
+   "reg": "17-山健福87-1（譲受飼養）",
+   "src": "紹介ページ"
+  },
+  {
+   "id": "R072",
+   "name": "老犬介護ホーム Pumehana",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "函館市",
+   "url": "https://www.rouken-care.jp/facility/hm0115/",
+   "addr": "北海道函館市亀田港町32-11",
+   "animals": "小型犬・中型犬（大型犬・夜鳴きは相談）",
+   "reg": "北海道第022370404号（譲受飼養）",
+   "src": "紹介ページ"
+  },
+  {
+   "id": "R073",
+   "name": "ベリーのおうち OYADO",
+   "prefs": [
+    "鹿児島県"
+   ],
+   "city": "鹿屋市",
+   "url": "https://www.rouken-care.jp/facility/hm0107/",
+   "addr": "鹿児島県鹿屋市札元2-3758-21",
+   "animals": "犬・猫",
+   "reg": "鹿児島県R4 鹿屋保第35-10号（保管）",
+   "src": "紹介ページ"
+  },
+  {
+   "id": "R074",
+   "name": "わんわんわん（志波屋店）",
+   "prefs": [
+    "佐賀県"
+   ],
+   "city": "神埼市",
+   "url": "https://www.rouken-care.jp/facility/hm0018/",
+   "addr": "佐賀県神埼市神埼町志波屋2031-2",
+   "animals": "犬・猫",
+   "reg": "第41590355号（保管）",
+   "src": "紹介ページ"
+  },
+  {
+   "id": "R075",
+   "name": "フレンチブルドッグのお家 ポエム",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "生駒市",
+   "url": "https://www.rouken-care.jp/facility/hm0039/",
+   "addr": "奈良県生駒市ひかりが丘2-10-12",
+   "animals": "犬",
+   "reg": "1183005（譲受飼養）",
+   "src": "紹介ページ"
+  },
+  {
+   "id": "R076",
+   "name": "老犬ホームJiJi",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "たつの市",
+   "url": "https://www.rouken-care.jp/facility/hm0027/",
+   "addr": "兵庫県たつの市新宮町曽我井850",
+   "animals": "小型犬・中型犬（大型犬は相談）",
+   "reg": "兵動1636466号（譲受飼養）",
+   "src": "紹介ページ"
+  },
+  {
+   "id": "R077",
+   "name": "介護付老犬老猫ホーム おりづる園",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市安佐北区",
+   "url": "https://www.rouken-care.jp/facility/hm0021/",
+   "addr": "広島県広島市安佐北区落合南1-11-18",
+   "animals": "犬・猫",
+   "reg": "第254号（保管）",
+   "src": "紹介ページ"
+  },
+  {
+   "id": "R078",
+   "name": "Lien ～りあん～",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "北九州市門司区",
+   "url": "https://www.rouken-care.jp/facility/hm0095/",
+   "addr": "福岡県北九州市門司区高田1-4-25",
+   "animals": "犬・猫",
+   "reg": "北九州市第19013号（譲受飼養）",
+   "src": "紹介ページ"
+  },
+  {
+   "id": "R079",
+   "name": "老犬ホームぱーとなー",
+   "prefs": [
+    "佐賀県"
+   ],
+   "city": "唐津市",
+   "url": "https://www.rouken-care.jp/facility/hm0002/",
+   "addr": "佐賀県唐津市七山馬川565",
+   "animals": "犬",
+   "reg": "第41550079号（保管）",
+   "src": "紹介ページ"
+  }
  ]
 }
