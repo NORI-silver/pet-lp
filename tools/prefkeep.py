@@ -16,7 +16,7 @@ function prefPut(v){ try { localStorage.setItem(PREF_KEY, v); } catch (x) {} }
 function prefLinks(v){
   document.querySelectorAll("a[href]").forEach(function(a){
     var h = a.getAttribute("href");
-    if (!/^\/(hospital|dogrun|jichitai|sougi|emergency)\//.test(h)) return;
+    if (!/^\/(hospital|dogrun|jichitai|sougi|rojin-home|emergency)\//.test(h)) return;
     h = h.replace(/#pref=.*$/, "");
     if (h.indexOf("#") >= 0) return;
     a.setAttribute("href", v ? h + "#pref=" + encodeURIComponent(v) : h);
