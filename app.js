@@ -23,7 +23,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     quoteSeq++; quoteCards = []; chosenQuote = null; chosenPicks = []; quoteLegs = null; chosenGo = null; chosenBack = null;
     $("partnerResults").hidden = true; $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren(); $("partnerRestBtn").hidden = true; restOpen = false;
     $("legSplit").hidden = true; $("legGo").replaceChildren(); $("legBack").replaceChildren();
-    $("sendSelected").hidden = true;
+    $("sendSelected").hidden = true; $("taxiBox").hidden = true;
     clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
   }
   function conditionsChanged(event){
@@ -36,6 +36,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   function queuePartners(){
     clearTimeout(quoteTimer);
     if (sending) return;
+    drawTaxis();
     if (partnerBlock() === "") showLoading(); // 条件がそろっていれば、待つあいだもすぐ「探しています」を出す
     quoteTimer = setTimeout(loadPartners, 650);
   }
@@ -684,6 +685,51 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       p.care === "必要" ? "介助必要" + ((p.care_need || []).length || p.care_note ? "（" + (p.care_need || []).concat(p.care_note ? [p.care_note] : []).join("／") + "）" : "") : "介助いらない"].filter(String).join("・");
   }
 
+
+  // ── ふつうのタクシー（Nori 2026-11-01「犬種や猫種によっては普通のタクシーも使える。対応してるところのみにしぼって」）──
+  // ペット同乗を公式サイトに書いている会社だけ（tools/regular_taxis.json）。ご案内だけで、問い合わせの送り先にはしない。
+  // 出すのは、犬・猫が1〜2匹、全員10kgまででケージを持っていく、飼い主さんが一緒に乗る、お迎えの住所が会社の地域のとき。
+  // Nori 2026-11-02「公開」。止めるときは REGULAR_TAXI_ON を false にする。
+  var REGULAR_TAXI_ON = true;
+  /*TAXIS*/var TAXIS = {"checked": "2026-11-02", "taxis": [{"id": "mk-sapporo", "name": "札幌MKタクシー", "pref": "北海道", "cities": ["札幌市"], "area_label": "札幌市", "rule": "小型のペットで、扉の閉まったケージに全身が入っていれば一緒に乗れます（顔も出さない・車内ではケージから出さない・毛布でくるむだけは不可）。", "fare": {"base_km": 1.05, "base": 540, "add_m": 302, "pick": 200, "resv": 0, "night": 1.2}, "url": "https://www.mk-group.co.jp/sapporo/"}, {"id": "mk-nagoya", "name": "名古屋MKタクシー", "pref": "愛知県", "cities": ["名古屋市"], "area_label": "名古屋市", "rule": "小型のペットで、扉の閉まったケージに全身が入っていれば一緒に乗れます（顔も出さない・車内ではケージから出さない・毛布でくるむだけは不可）。", "fare": {"base_km": 0.91, "base": 470, "add_m": 247, "pick": 200, "resv": 200, "night": 1.2}, "url": "https://www.mk-group.co.jp/nagoya/"}, {"id": "mk-shiga", "name": "滋賀MKタクシー", "pref": "滋賀県", "cities": ["大津市", "草津市", "守山市", "栗東市", "野洲市"], "area_label": "大津・湖南", "rule": "小型のペットで、扉の閉まったケージに全身が入っていれば一緒に乗れます（顔も出さない・車内ではケージから出さない・毛布でくるむだけは不可）。", "fare": {"base_km": 0.9, "base": 480, "add_m": 227, "pick": 0, "resv": 0, "night": 1.2}, "url": "https://www.mk-group.co.jp/shiga/"}, {"id": "mk-kyoto", "name": "京都MKタクシー", "pref": "京都府", "cities": ["京都市"], "area_label": "京都市", "rule": "小型のペットで、扉の閉まったケージに全身が入っていれば一緒に乗れます（顔も出さない・車内ではケージから出さない・毛布でくるむだけは不可）。", "fare": {"base_km": 0.9, "base": 470, "add_m": 271, "pick": 300, "resv": 500, "night": 1.2}, "url": "https://www.mk-group.co.jp/kyoto/"}, {"id": "mk-osaka", "name": "大阪MKタクシー", "pref": "大阪府", "cities": ["大阪市"], "area_label": "大阪市", "rule": "小型のペットで、扉の閉まったケージに全身が入っていれば一緒に乗れます（顔も出さない・車内ではケージから出さない・毛布でくるむだけは不可）。", "fare": {"base_km": 0.969, "base": 500, "add_m": 231, "pick": 300, "resv": 0, "night": 1.2}, "url": "https://www.mk-group.co.jp/osaka/"}, {"id": "mk-kobe", "name": "神戸MKタクシー", "pref": "兵庫県", "cities": ["神戸市"], "area_label": "神戸市", "rule": "小型のペットで、扉の閉まったケージに全身が入っていれば一緒に乗れます（顔も出さない・車内ではケージから出さない・毛布でくるむだけは不可）。", "fare": {"base_km": 0.836, "base": 480, "add_m": 232, "pick": 300, "resv": 500, "night": 1.2}, "url": "https://www.mk-group.co.jp/kobe/"}, {"id": "mk-fukuoka", "name": "福岡MKタクシー", "pref": "福岡県", "cities": ["福岡市"], "area_label": "福岡市", "rule": "小型のペットで、扉の閉まったケージに全身が入っていれば一緒に乗れます（顔も出さない・車内ではケージから出さない・毛布でくるむだけは不可）。", "fare": {"base_km": 1.1, "base": 600, "add_m": 287, "pick": 300, "resv": 300, "night": 1.2}, "url": "https://www.mk-group.co.jp/fukuoka/"}, {"id": "mk-okinawa", "name": "沖縄MKタクシー", "pref": "沖縄県", "cities": ["那覇市"], "area_label": "那覇市", "rule": "小型のペットで、扉の閉まったケージに全身が入っていれば一緒に乗れます（顔も出さない・車内ではケージから出さない・毛布でくるむだけは不可）。", "fare": {"base_km": 1.65, "base": 650, "add_m": 350, "pick": 300, "resv": 300, "night": 1.2}, "url": "https://www.mk-group.co.jp/okinawa/"}, {"id": "daiwa-tokyo", "name": "大和自動車交通", "pref": "東京都", "cities": ["千代田区", "中央区", "港区", "新宿区", "文京区", "台東区", "墨田区", "江東区", "品川区", "目黒区", "大田区", "世田谷区", "渋谷区", "中野区", "杉並区", "豊島区", "北区", "荒川区", "板橋区", "練馬区", "足立区", "葛飾区", "江戸川区", "武蔵野市", "三鷹市"], "area_label": "東京23区・武蔵野市・三鷹市", "rule": "膝にのせられるくらいのケージなら、そのまま一緒に乗れます。予約のときに、ペットと乗ることを伝えてください。", "fare": {"base_km": 1.0, "base": 500, "add_m": 232, "pick": 500, "resv": 500, "night": 1.2}, "url": "https://www.daiwaj.com/service/taxi"}, {"id": "kanachu-kenou", "name": "神奈中タクシー", "pref": "神奈川県", "cities": ["藤沢市", "茅ヶ崎市", "平塚市", "伊勢原市", "秦野市", "相模原市", "大和市", "座間市", "海老名市", "綾瀬市", "厚木市", "寒川町"], "area_label": "神奈川県の県央・湘南（藤沢・相模原・厚木など）", "rule": "ケージや容器に入れて、ふたを閉めた状態なら一緒に乗れます（タオルで包む・抱っこのままは断られることがあります）。", "fare": {"base_km": 1.0, "base": 500, "add_m": 223, "pick": 500, "resv": 0, "night": 1.2}, "url": "https://kanachu-taxi.co.jp/"}]};/*/TAXIS*/
+  function taxiFit(){
+    if (!REGULAR_TAXI_ON || !TAXIS.taxis.length) return false;
+    if (/^0/.test($("riders").value || "")) return false;
+    var pets = readPets();
+    if (!pets.length || pets.length > 2) return false;
+    return pets.every(function(p){ var w = Number(p.weight); return (p.species === "犬" || p.species === "猫") && p.weight !== "" && isFinite(w) && w > 0 && w <= 10 && p.cage === "持ち込む"; });
+  }
+  function taxiMeter(f, km, night){
+    var m = km <= f.base_km ? f.base : f.base + Math.ceil((km - f.base_km) * 1000 / f.add_m) * 100;
+    return Math.round((night ? m * f.night : m) + f.pick + f.resv);
+  }
+  function drawTaxis(){
+    var box = $("taxiBox"); box.hidden = true; $("taxiList").replaceChildren();
+    if (!routeDetails || partnerBlock() !== "" || !taxiFit()) return;
+    var addr = $("pickup").value || "", pref = $("pref").value;
+    var list = TAXIS.taxis.filter(function(t){ return t.pref === pref && t.cities.some(function(c){ return addr.indexOf(c) >= 0; }); });
+    if (!list.length) return;
+    var fd = new FormData(form), later = fd.get("trip") === "往復";
+    var isNight = function(h){ if (h == null || h === "") return false; h = Number(h); return h >= 22 || h < 5; };
+    var yen = function(n){ return (Math.round(n / 100) * 100).toLocaleString("ja-JP") + "円"; };
+    list.forEach(function(t){
+      var el = document.createElement("div"); el.className = "taxi-card";
+      var go = taxiMeter(t.fare, routeDetails.km, isNight(fd.get("hour")));
+      var back = later ? taxiMeter(t.fare, routeDetails.backKm, isNight(fd.get("ret_hour"))) : 0;
+      var h = document.createElement("h4"); h.textContent = t.name; el.appendChild(h);
+      var area = document.createElement("p"); area.className = "taxi-area"; area.textContent = "お迎えの地域：" + t.area_label; el.appendChild(area);
+      var rule = document.createElement("p"); rule.className = "taxi-rule"; rule.textContent = t.rule; el.appendChild(rule);
+      var fare = document.createElement("p"); fare.className = "taxi-fare";
+      fare.innerHTML = "運賃の目安 <b></b><small>概算です（確定料金ではありません）</small>";
+      fare.querySelector("b").textContent = later ? "行き " + yen(go) + "・帰り " + yen(back) : "片道 " + yen(go);
+      el.appendChild(fare);
+      var a = document.createElement("a"); a.className = "taxi-link"; a.href = t.url; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = "公式サイトで予約のしかたを見る ↗"; el.appendChild(a);
+      $("taxiList").appendChild(el);
+    });
+    $("taxiNote").textContent = "運賃の目安は、各社の公式サイトの運賃（メーター）で道のりから計算し、呼んだときの迎車料金と時間指定の料金を足して100円単位にまるめたものです（夜22時〜朝5時は2割増）。渋滞や道順で実際の運賃は変わり、有料道路の料金は別です。各社の情報は" + TAXIS.checked.replace(/^(\d+)-0?(\d+)-0?(\d+)$/, "$1年$2月$3日") + "に確認しました。";
+    box.hidden = false;
+  }
 
   // ── 概算料金（お迎え場所 → 経由地 → 行き先 の距離から計算）──
   // 提携先ごとの料金表と、都県ごとの依頼先。tools/fares.json から gen_areas.py が書き込む（ここは手で直さない）。
