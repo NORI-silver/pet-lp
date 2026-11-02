@@ -1,0 +1,516 @@
+{
+ "_説明": "お金を取らない情報ページ（/dogrun/）のデータ。国・都道府県・市町村の公園や動物愛護センターにある公営のドッグランだけ。リンクは公園や自治体の公式ページ（ページ名で確かめた）。民間のドッグランは載せない。料金・利用時間・登録の条件は場所ごとに違うので、書くのは公式ページで確かめたことだけ（note）。電話番号は載せない。",
+ "checked": "2026年11月2日",
+ "dogruns": [
+  {
+   "id": "D001",
+   "pref": "東京都",
+   "name": "代々木公園ドッグラン",
+   "city": "渋谷区",
+   "url": "https://www.tokyo-park.or.jp/park/yoyogi/index.html",
+   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+  },
+  {
+   "id": "D002",
+   "pref": "東京都",
+   "name": "駒沢オリンピック公園ドッグラン",
+   "city": "世田谷区・目黒区",
+   "url": "https://www.tokyo-park.or.jp/park/komazawa-olympic/index.html",
+   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+  },
+  {
+   "id": "D003",
+   "pref": "東京都",
+   "name": "蘆花恒春園ドッグラン",
+   "city": "世田谷区",
+   "url": "https://www.tokyo-park.or.jp/park/rokakoshun-en/index.html",
+   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+  },
+  {
+   "id": "D004",
+   "pref": "東京都",
+   "name": "城北中央公園ドッグラン",
+   "city": "練馬区・板橋区",
+   "url": "https://www.tokyo-park.or.jp/park/johoku-chuo/index.html",
+   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+  },
+  {
+   "id": "D005",
+   "pref": "東京都",
+   "name": "舎人公園ドッグラン",
+   "city": "足立区",
+   "url": "https://www.tokyo-park.or.jp/park/toneri/index.html",
+   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+  },
+  {
+   "id": "D006",
+   "pref": "東京都",
+   "name": "水元公園ドッグラン",
+   "city": "葛飾区",
+   "url": "https://www.tokyo-park.or.jp/park/mizumoto/index.html",
+   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+  },
+  {
+   "id": "D007",
+   "pref": "東京都",
+   "name": "篠崎公園ドッグラン",
+   "city": "江戸川区",
+   "url": "https://www.tokyo-park.or.jp/park/shinozaki/index.html",
+   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+  },
+  {
+   "id": "D008",
+   "pref": "東京都",
+   "name": "木場公園ドッグラン",
+   "city": "江東区",
+   "url": "https://www.tokyo-park.or.jp/park/kiba/facility/index.html",
+   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+  },
+  {
+   "id": "D009",
+   "pref": "東京都",
+   "name": "小金井公園ドッグラン",
+   "city": "小金井市",
+   "url": "https://www.tokyo-park.or.jp/park/koganei/index.html",
+   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+  },
+  {
+   "id": "D010",
+   "pref": "東京都",
+   "name": "神代植物公園ドッグラン",
+   "city": "調布市",
+   "url": "https://www.tokyo-park.or.jp/park/johoku-chuo/news/2024/6_2024_12_web.html",
+   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+  },
+  {
+   "id": "D011",
+   "pref": "東京都",
+   "name": "桜ヶ丘公園ドッグラン",
+   "city": "多摩市",
+   "url": "https://www.tokyo-park.or.jp/park/sakuragaoka/index.html",
+   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+  },
+  {
+   "id": "D012",
+   "pref": "東京都",
+   "name": "小山内裏公園ドッグラン",
+   "city": "町田市・八王子市",
+   "url": "https://www.tokyo-park.or.jp/park/oyamadairi/index.html",
+   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+  },
+  {
+   "id": "D013",
+   "pref": "神奈川県",
+   "name": "相模原公園ドッグラン（県立）",
+   "city": "相模原市",
+   "url": "https://www.pref.kanagawa.jp/docs/n7t/dr.html",
+   "note": "利用には登録（登録会）が必要"
+  },
+  {
+   "id": "D014",
+   "pref": "神奈川県",
+   "name": "新杉田公園ドッグラン",
+   "city": "横浜市磯子区",
+   "url": "https://www.kanagawaparks.com/shinsugita/formalities.html",
+   "note": "利用には登録が必要"
+  },
+  {
+   "id": "D015",
+   "pref": "神奈川県",
+   "name": "東扇島東公園ドッグラン",
+   "city": "川崎市川崎区",
+   "url": "https://www.city.kawasaki.jp/580/page/0000001282.html"
+  },
+  {
+   "id": "D016",
+   "pref": "神奈川県",
+   "name": "あおばドッグラン（谷本公園）",
+   "city": "横浜市青葉区",
+   "url": "https://www.city.yokohama.lg.jp/faq/kukyoku/aoba/aoba-kusei/20211018105345042.html",
+   "note": "登録制（説明会あり）"
+  },
+  {
+   "id": "D017",
+   "pref": "埼玉県",
+   "name": "川越公園ドッグラン「わんこの遊び場」（県営）",
+   "city": "川越市",
+   "url": "https://www.parks.or.jp/kawagoesuijo/guide/000/000122.html",
+   "note": "利用には登録が必要"
+  },
+  {
+   "id": "D018",
+   "pref": "埼玉県",
+   "name": "所沢航空記念公園ドッグラン（県営）",
+   "city": "所沢市",
+   "url": "https://www.parks.or.jp/tokorozawa-kokuu/faq/001/001613.html",
+   "note": "利用登録はいらない（入口の利用規則を守る）"
+  },
+  {
+   "id": "D019",
+   "pref": "埼玉県",
+   "name": "大間木ドッグラン",
+   "city": "さいたま市緑区",
+   "url": "https://www.city.saitama.lg.jp/004/006/003/003/p010758.html"
+  },
+  {
+   "id": "D020",
+   "pref": "埼玉県",
+   "name": "新見沼大橋スポーツ広場ドッグラン",
+   "city": "さいたま市",
+   "url": "https://www.city.saitama.lg.jp/004/006/003/003/p046544.html"
+  },
+  {
+   "id": "D021",
+   "pref": "大阪府",
+   "name": "浜寺公園ドッグラン（府営）",
+   "city": "堺市・高石市",
+   "url": "https://hamadera.osaka-park.or.jp/facility/dogrun/"
+  },
+  {
+   "id": "D022",
+   "pref": "大阪府",
+   "name": "泉南りんくう公園ドッグラン（府営）",
+   "city": "泉南市",
+   "url": "https://sennan.osaka-park.or.jp/dogrun/"
+  },
+  {
+   "id": "D023",
+   "pref": "大阪府",
+   "name": "海とのふれあい広場ドッグラン",
+   "city": "堺市",
+   "url": "https://www.city.sakai.lg.jp/shisei/toshi/rinkai/umifureai/index.html"
+  },
+  {
+   "id": "D024",
+   "pref": "愛知県",
+   "name": "大高緑地ドッグラン（県営）",
+   "city": "名古屋市緑区",
+   "url": "https://www.aichi-koen.com/odaka_dogrun/"
+  },
+  {
+   "id": "D025",
+   "pref": "福岡県",
+   "name": "県営公園のドッグラン（春日公園・西公園ほか）",
+   "city": "春日市・福岡市ほか",
+   "url": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html"
+  },
+  {
+   "id": "D026",
+   "pref": "福岡県",
+   "name": "日明臨海公園ドッグラン",
+   "city": "北九州市小倉北区",
+   "url": "https://www.city.kitakyushu.lg.jp/contents/04700034_00001.html"
+  },
+  {
+   "id": "D027",
+   "pref": "福岡県",
+   "name": "洞北緑地ドッグラン",
+   "city": "北九州市八幡西区",
+   "url": "https://city.kitakyushu.lg.jp/kensetu/04700034.html"
+  },
+  {
+   "id": "D028",
+   "pref": "北海道",
+   "name": "根崎公園ドッグラン",
+   "city": "函館市",
+   "url": "https://www.city.hakodate.hokkaido.jp/docs/2020121000039/"
+  },
+  {
+   "id": "D029",
+   "pref": "岩手県",
+   "name": "盛岡市中央公園ドッグラン",
+   "city": "盛岡市",
+   "url": "https://www.city.morioka.iwate.jp/kurashi/midori/koen/1010523.html"
+  },
+  {
+   "id": "D030",
+   "pref": "山形県",
+   "name": "卸売市場西緑地ドッグラン",
+   "city": "山形市",
+   "url": "https://www.city.yamagata-yamagata.lg.jp/kurashi/koen/1006541/1006544/1014135.html"
+  },
+  {
+   "id": "D031",
+   "pref": "群馬県",
+   "name": "城南大橋ドッグラン",
+   "city": "高崎市",
+   "url": "https://www.city.takasaki.gunma.jp/page/4483.html"
+  },
+  {
+   "id": "D032",
+   "pref": "千葉県",
+   "name": "市川市のドッグラン",
+   "city": "市川市",
+   "url": "https://www.city.ichikawa.lg.jp/page/2876.html"
+  },
+  {
+   "id": "D033",
+   "pref": "茨城県",
+   "name": "国営ひたち海浜公園ドッグラン",
+   "city": "ひたちなか市",
+   "url": "https://hitachikaihin.jp/wp-content/uploads/2024/12/241209_dogrun_open.pdf"
+  },
+  {
+   "id": "D034",
+   "pref": "長野県",
+   "name": "長野県動物愛護センター（ハローアニマル）ドッグラン",
+   "city": "",
+   "url": "https://www.pref.nagano.lg.jp/dobutsuaigo/shisetsu/annai/dogrun.html"
+  },
+  {
+   "id": "D035",
+   "pref": "長野県",
+   "name": "犀川第2緑地ドッグラン",
+   "city": "長野市",
+   "url": "https://www.city.nagano.nagano.jp/n202500/koho/p000002.html"
+  },
+  {
+   "id": "D036",
+   "pref": "三重県",
+   "name": "北勢中央公園ドッグラン（県営）",
+   "city": "四日市市",
+   "url": "https://www.pref.mie.lg.jp/TOPICS/m0038500157.htm"
+  },
+  {
+   "id": "D037",
+   "pref": "京都府",
+   "name": "西京極総合運動公園ドッグラン",
+   "city": "京都市右京区",
+   "url": "https://www.city.kyoto.lg.jp/bunshi/page/0000349971.html"
+  },
+  {
+   "id": "D038",
+   "pref": "奈良県",
+   "name": "中和保健所動物愛護センター ドッグラン",
+   "city": "",
+   "url": "https://www.pref.nara.lg.jp/n070/1734.html"
+  },
+  {
+   "id": "D039",
+   "pref": "兵庫県",
+   "name": "西武庫公園ドッグラン（試験設置）",
+   "city": "尼崎市",
+   "url": "https://www.city.amagasaki.hyogo.jp/manabu/parks/1002037/1041661.html"
+  },
+  {
+   "id": "D040",
+   "pref": "宮城県",
+   "name": "国営みちのく杜の湖畔公園「森のドッグラン」",
+   "city": "川崎町",
+   "url": "https://michinoku-park.info/topics/dogrunriyou/"
+  },
+  {
+   "id": "D041",
+   "pref": "香川県",
+   "name": "国営讃岐まんのう公園ドッグラン",
+   "city": "まんのう町",
+   "url": "https://sanukimannopark.jp/facility/dogrun"
+  },
+  {
+   "id": "D042",
+   "pref": "香川県",
+   "name": "さぬき動物愛護センター しっぽの森 ドッグラン",
+   "city": "",
+   "url": "https://www.pref.kagawa.lg.jp/s-doubutuaigo/sanukidouaicenter/about/dogrun.html"
+  },
+  {
+   "id": "D043",
+   "pref": "岡山県",
+   "name": "岡山県動物愛護センター 北広場（ドッグラン）",
+   "city": "",
+   "url": "https://www.pref.okayama.jp/page/detail-28533.html"
+  },
+  {
+   "id": "D044",
+   "pref": "徳島県",
+   "name": "とくしま植物園ドッグラン",
+   "city": "徳島市",
+   "url": "https://www.city.tokushima.tokushima.jp/shisetsu/park/oshirase/d.html"
+  },
+  {
+   "id": "D045",
+   "pref": "愛媛県",
+   "name": "石手川緑地ドッグラン「わんパーク」",
+   "city": "松山市",
+   "url": "https://www.city.matsuyama.ehime.jp/shisetsu/koen/riyou-iji/wannpa-kusikennkikan.html"
+  },
+  {
+   "id": "D046",
+   "pref": "長崎県",
+   "name": "ドッグランえぼし",
+   "city": "佐世保市",
+   "url": "https://www.city.sasebo.lg.jp/tosiseibi/kouenk/dogruneboshi.html"
+  },
+  {
+   "id": "D047",
+   "pref": "長崎県",
+   "name": "稲佐山公園ドッグラン",
+   "city": "長崎市",
+   "url": "https://www.city.nagasaki.lg.jp/page/2014.html"
+  },
+  {
+   "id": "D048",
+   "pref": "熊本県",
+   "name": "石神山公園ドッグラン",
+   "city": "熊本市西区",
+   "url": "https://www.city.kumamoto.jp/kiji00332063/index.html",
+   "note": "利用には事前の登録が必要"
+  },
+  {
+   "id": "D049",
+   "pref": "熊本県",
+   "name": "香りの森ドッグラン",
+   "city": "熊本市",
+   "url": "https://www.city.kumamoto.jp/kiji00367506/index.html"
+  },
+  {
+   "id": "D050",
+   "pref": "佐賀県",
+   "name": "吉野ヶ里歴史公園ドッグラン",
+   "city": "吉野ヶ里町・神埼市",
+   "url": "https://www.pref.saga.lg.jp/chiji/kiji00391701/index.html"
+  },
+  {
+   "id": "D051",
+   "pref": "大分県",
+   "name": "おおいた動物愛護センター ドッグラン",
+   "city": "大分市",
+   "url": "https://www.pref.oita.jp/site/doubutuaigo/dogrun-tesuuryou-r8.html",
+   "note": "有料"
+  },
+  {
+   "id": "D052",
+   "pref": "秋田県",
+   "name": "犬都記念公園ドッグラン",
+   "city": "大館市",
+   "url": "https://www.city.odate.lg.jp/city/soshiki/toshiseibi/p879"
+  },
+  {
+   "id": "D053",
+   "pref": "石川県",
+   "name": "問屋第1公園ドッグラン",
+   "city": "小松市",
+   "url": "https://www.city.komatsu.lg.jp/soshiki/1026/kouenriyou/17606.html"
+  },
+  {
+   "id": "D054",
+   "pref": "愛知県",
+   "name": "トーエイ三丁公園ドッグラン",
+   "city": "東浦町",
+   "url": "https://www.town.aichi-higashiura.lg.jp/soshiki/toshiseibi/koen/gyomu/koen/sanchou/12965.html"
+  },
+  {
+   "id": "D055",
+   "pref": "愛知県",
+   "name": "蘇南公園ドッグラン広場",
+   "city": "江南市",
+   "url": "https://www.city.konan.lg.jp/kurashi/pets/1005739/1005789.html"
+  },
+  {
+   "id": "D056",
+   "pref": "大阪府",
+   "name": "黒鳥山公園ドッグラン",
+   "city": "和泉市",
+   "url": "https://www.city.osaka-izumi.lg.jp/kakukano/dezainbu/kouenryokuti/osirase/18315.html"
+  },
+  {
+   "id": "D057",
+   "pref": "大阪府",
+   "name": "まなび中央公園ドッグラン",
+   "city": "岸和田市",
+   "url": "https://www.city.kishiwada.lg.jp/page/132-manabichuuoukouendogrun.html"
+  },
+  {
+   "id": "D058",
+   "pref": "兵庫県",
+   "name": "赤穂ピクニック公園ドッグラン",
+   "city": "赤穂市",
+   "url": "https://www.city.ako.lg.jp/kensetsu/kouen/dogrun.html"
+  },
+  {
+   "id": "D059",
+   "pref": "東京都",
+   "name": "千代田区のドッグラン",
+   "city": "千代田区",
+   "url": "https://www.city.chiyoda.lg.jp/koho/machizukuri/koen/dogrun.html"
+  },
+  {
+   "id": "D060",
+   "pref": "広島県",
+   "name": "花みどり公園ドッグラン",
+   "city": "広島市安佐北区",
+   "url": "https://www.haff.city.hiroshima.jp/info/hanamidori/"
+  },
+  {
+   "id": "D061",
+   "pref": "千葉県",
+   "name": "成田市ドッグラン",
+   "city": "成田市",
+   "url": "https://www.city.narita.chiba.jp/environment/page0146_00002.html"
+  },
+  {
+   "id": "D062",
+   "pref": "千葉県",
+   "name": "百目木公園ドッグラン",
+   "city": "袖ケ浦市",
+   "url": "https://www.city.sodegaura.lg.jp/soshiki/toshi/doumekidogguran-uketukecyuu.html",
+   "note": "登録制"
+  },
+  {
+   "id": "D063",
+   "pref": "千葉県",
+   "name": "浦安市のドッグラン",
+   "city": "浦安市",
+   "url": "https://www.city.urayasu.lg.jp/shisetsu/sonota/1032392.html"
+  },
+  {
+   "id": "D064",
+   "pref": "北海道",
+   "name": "樽川公園ドッグラン",
+   "city": "石狩市",
+   "url": "https://www.city.ishikari.hokkaido.jp/soshiki/toshis/2915.html"
+  },
+  {
+   "id": "D065",
+   "pref": "北海道",
+   "name": "北光町未来の森公園ドッグラン",
+   "city": "苫小牧市",
+   "url": "https://www.city.tomakomai.hokkaido.jp/kurashi/sonota/pet/corona.html"
+  },
+  {
+   "id": "D066",
+   "pref": "北海道",
+   "name": "なつぞら公園ドッグラン",
+   "city": "音更町",
+   "url": "https://www.town.otofuke.hokkaido.jp/kurashi/toshi/koen/natsuzoradogguran.html"
+  },
+  {
+   "id": "D067",
+   "pref": "北海道",
+   "name": "鹿公園ドッグラン",
+   "city": "安平町",
+   "url": "https://www.town.abira.lg.jp/midokoro/shisetsu/park/92"
+  },
+  {
+   "id": "D068",
+   "pref": "沖縄県",
+   "name": "八重島公園ドッグラン",
+   "city": "沖縄市",
+   "url": "https://www.city.okinawa.okinawa.jp/k037/contents/p00034.html"
+  },
+  {
+   "id": "D069",
+   "pref": "鳥取県",
+   "name": "日野川運動公園ドッグラン",
+   "city": "米子市",
+   "url": "https://www.city.yonago.lg.jp/33880.htm"
+  },
+  {
+   "id": "D070",
+   "pref": "徳島県",
+   "name": "中鳥川公園ドッグラン",
+   "city": "美馬市",
+   "url": "https://www.city.mima.lg.jp/kanko/docs/1974459.html"
+  }
+ ]
+}
