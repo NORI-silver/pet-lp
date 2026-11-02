@@ -165,3 +165,5 @@ CAT = dict(slug=SLUG, name="出張トリミング・訪問トリミング", unit
   facts=_facts, faq=_faq, before_title="出張トリミングを頼む前に確かめること", before=BEFORE,
   taxi_h="サロンへの送り迎えは、ペットタクシーで", taxi_p="大型犬やシニアの子も、飼い主さまと一緒に家の前からサロンの前まで移動できます。",
   links=[("トリミング・ペットホテルへの送迎ガイド", "/guide/grooming-hotel/"), ("シニア犬・シニア猫、介護中の子の移動", "/guide/senior/"), ("大型犬の移動のガイド", "/guide/large-dog/"), ("全国のペットシッター", "/pet-sitter/")])
+
+CAT["table"] = [(lab.replace("に対応", "").replace("・介護中の子", ""), (lambda k: lambda g: "○" if g.get(k) else "")(k)) for k, lab in CONDS] + [("最大の体重", lambda g: f'{g["max_kg"]}kg' if g.get("max_kg") else "")]

@@ -69,6 +69,7 @@ import gen_trainers
 import gen_sitters
 import gen_grooming
 import gen_prefcats
+import gen_hotels
 _EMG_RV = _EMG_RV + gen_hospitals.review_rows() + gen_rojin.review_rows() + gen_trainers.review_rows()
 booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG_REVIEWS*/var EMG_REVIEWS = " + json.dumps({t["id"]: {"query": t["review_query"], "name": t["review_name"]} for t in _EMG_RV if t.get("review_query")}, ensure_ascii=False) + ";/*/EMG_REVIEWS*/", booking_src, count=1, flags=re.S)
 # 候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る
@@ -384,7 +385,7 @@ PARTNER_BAND = '''<aside class="partner-band"><div class="wrap"><p><b>ペット�
 def foot(cta_href, band=True):
     return (PARTNER_BAND if band else '') + f'''<footer>
   <div class="wrap">
-    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国のドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/trimming/">出張トリミング</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
+    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国のドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/trimming/">出張トリミング</a><a href="/pet-hotel/">大型犬OK・猫専用のペットホテル</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav><a href="/area/">全国</a>{''.join(f'<a href="/{a["slug"]}/">{e(a["short"])}</a>' for a in AREAS)}</nav>
     <p>ペットタクシー予約窓口</p>
     <p>&copy; 2026 ペットタクシー予約窓口</p>
@@ -524,7 +525,7 @@ for a in AREAS:
     <h3>{e(a["pref"])}の夜間・救急の動物病院</h3>
     <p>夜や休日に具合が悪くなったときのために、{e(a["pref"])}の夜間・救急の動物病院を受付時間つきで<a href="/hospital/night/#pref={quote(a["pref"])}">夜間・救急の動物病院の一覧</a>にまとめています。往診専門の動物病院（家まで来てくれる獣医さん）は<a href="/hospital/visit/#pref={quote(a["pref"])}">往診の一覧</a>、猫だけを診る病院は<a href="/hospital/cat/#pref={quote(a["pref"])}">猫専門の動物病院</a>にあります。</p>
     {gen_dogrun.area_snippet(a["pref"], e)}
-    {gen_prefpages.area_snippet(a["pref"], e, [gen_prefcats.NIGHT, gen_prefcats.SOUGI, gen_rojin.CAT, gen_trainers.CAT, gen_sitters.CAT, gen_grooming.CAT])}
+    {gen_prefpages.area_snippet(a["pref"], e, [gen_prefcats.NIGHT, gen_prefcats.SOUGI, gen_rojin.CAT, gen_trainers.CAT, gen_sitters.CAT, gen_grooming.CAT, gen_hotels.CAT])}
   </div>
 </section>
 
@@ -667,7 +668,7 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
     <p>迷子になったとき、迷子を保護したとき、犬の登録、引っ越し、飼えなくなったときの相談先。全国の窓口は<a href="/jichitai/">迷子・犬の登録・引取りの窓口</a>の一覧から。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "procedure"])}
     <div class="sh"><h2>老犬ホーム・ドッグトレーナー・ペットシッターのえらび方</h2></div>
-    <p>預ける・頼む前に知っておきたいこと。全国の一覧は<a href="/rojin-home/">老犬ホーム・老猫ホーム</a>、<a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a>、<a href="/pet-sitter/">ペットシッター</a>、<a href="/trimming/">出張トリミング</a>から。</p>
+    <p>預ける・頼む前に知っておきたいこと。全国の一覧は<a href="/rojin-home/">老犬ホーム・老猫ホーム</a>、<a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a>、<a href="/pet-sitter/">ペットシッター</a>、<a href="/trimming/">出張トリミング</a>、<a href="/pet-hotel/">大型犬OK・猫専用のペットホテル</a>から。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "care"])}
   </div>
 </section>
@@ -1219,7 +1220,7 @@ for slug, pf, short, cities in PREFS:
     <p>一刻を争う症状のときは、まずかかりつけや夜間・救急の動物病院に電話して、受け入れてもらえるか確かめてください。{hosp_lead}</p>
     <p>受付時間つきの一覧は<a href="/hospital/night/#pref={quote(pf)}">{e(pf)}の夜間・救急の動物病院</a>に、家まで来てくれる獣医さんは<a href="/hospital/visit/#pref={quote(pf)}">往診専門の動物病院</a>にまとめています。</p>
     {gen_dogrun.area_snippet(pf, e)}
-    {gen_prefpages.area_snippet(pf, e, [gen_prefcats.NIGHT, gen_prefcats.SOUGI, gen_rojin.CAT, gen_trainers.CAT, gen_sitters.CAT, gen_grooming.CAT])}
+    {gen_prefpages.area_snippet(pf, e, [gen_prefcats.NIGHT, gen_prefcats.SOUGI, gen_rojin.CAT, gen_trainers.CAT, gen_sitters.CAT, gen_grooming.CAT, gen_hotels.CAT])}
     <div class="emg">
       <h3 class="emg-h">夜間・救急の動物病院</h3>
       {pref_hosp_html(pf)}
@@ -1407,6 +1408,12 @@ _pp_ctx = dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, area_links=ar
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False)))
 gen_prefpages.write_all(ROOT, _pp_ctx, gen_grooming.CAT); gen_prefpages.link_national(ROOT, _pp_ctx, gen_grooming.CAT)
 hosp_urls = hosp_urls + gen_prefpages.urls(SITE, gen_grooming.CAT)
+# [B] 大型犬OK・猫専用のペットホテル（/pet-hotel/、tools/gen_hotels.py、データ tools/hotels.json）
+gen_hotels.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
+  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_hotels.urls(SITE)
+gen_prefpages.write_all(ROOT, _pp_ctx, gen_hotels.CAT); gen_prefpages.link_national(ROOT, _pp_ctx, gen_hotels.CAT)
+hosp_urls = hosp_urls + gen_prefpages.urls(SITE, gen_hotels.CAT)
 
 # sitemap / robots / 404
 urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url] + hosp_urls + [pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url, pterms_url]

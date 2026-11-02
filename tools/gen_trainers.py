@@ -136,3 +136,5 @@ CAT = dict(slug=SLUG, name="ドッグトレーナー・しつけ教室", unit="�
   facts=_facts, faq=_faq, before_title="ドッグトレーナー・しつけ教室をえらぶときに確かめること", before=BEFORE,
   taxi_h="教室や幼稚園への送り迎えは、ペットタクシーで", taxi_p="車がないとき、大型犬のとき、飼い主さまと一緒に家の前から教室の前まで移動できます。",
   links=[("ドッグトレーナーのえらび方", "/guide/choose-dog-trainer/"), ("子犬のしつけはいつから？", "/guide/puppy-class/"), ("問題行動の相談先", "/guide/dog-behavior-help/"), ("全国のドッグラン", "/dogrun/")])
+
+CAT["table"] = [("出張", lambda t: "○" if _has(t, "出張", "訪問", "お家", "ご自宅") else ""), ("教室", lambda t: "○" if _has(t, "教室", "グループ", "クラス") else ""), ("幼稚園", lambda t: "○" if _has(t, "幼稚園", "保育園") else ""), ("預かり", lambda t: "○" if _has(t, "預かり") else ""), ("オンライン", lambda t: "○" if _has(t, "オンライン") else ""), ("市区町村", lambda t: t.get("city", ""))]

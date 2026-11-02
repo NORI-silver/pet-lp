@@ -37,7 +37,16 @@ def _region_of(pf, regions):
         if pf in prefs: return lab, prefs
     return "", []
 
-CSS = "<style>.pp-nav{margin:4px 0;line-height:1.9}.pp-nav span{display:inline-block;min-width:5em;font-weight:bold;margin-right:6px}.pp-nav a,.pp-nav b{margin-right:10px;white-space:nowrap}.pp-facts{margin:6px 0 10px;padding-left:1.2em}</style>"
+CSS = "<style>.pp-nav{margin:4px 0;line-height:1.9}.pp-nav span{display:inline-block;min-width:5em;font-weight:bold;margin-right:6px}.pp-nav a,.pp-nav b{margin-right:10px;white-space:nowrap}.pp-facts{margin:6px 0 10px;padding-left:1.2em}.pp-tbl th,.pp-tbl td{font-size:13px;padding:4px 6px;text-align:center;white-space:nowrap}.pp-tbl td:first-child,.pp-tbl th:first-child{text-align:left;white-space:normal;min-width:9em}</style>"
+
+def table_html(e, cat, rs):
+    """条件を1つの表でくらべる（○＝公式サイトに書いてある、空欄＝書いていない／分からない）。"""
+    cols = cat.get("table")
+    if not cols: return ""
+    head = "<tr><th>名前</th>" + "".join(f"<th>{e(h)}</th>" for h, _ in cols) + "</tr>"
+    body = "".join("<tr><td>" + e(it["name"]) + "</td>" + "".join(f"<td>{e(f(it) or '')}</td>" for _, f in cols) + "</tr>" for it in rs)
+    return ('<div class="emg-tips"><h4>条件をくらべる</h4><div class="tbl"><table class="pp-tbl"><thead>' + head + '</thead><tbody>' + body +
+            '</tbody></table></div><p class="emg-tips-note">○は公式サイトにはっきり書いてあること。空欄は「しない」ではなく、公式サイトに書いていない・分からないという意味です。</p></div>')
 
 def render_pref(ctx, cat, pf, rows):
     e, SITE = ctx["e"], ctx["SITE"]
@@ -83,6 +92,7 @@ def render_pref(ctx, cat, pf, rows):
       {f'<div class="emg-tips" style="margin-top:0"><h4>{e(pf)}の{e(name)}のようす</h4>{facts_html}</div>' if facts_html else ''}
       {cat["extra"](e, pf) if cat.get("extra") else ""}
       <section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(cat.get("list_h", name))}（{e(pf)}・{n}{e(unit)}）</h2>{cards}</section>
+      {table_html(e, cat, rs)}
       {near_html}
       <div class="emg-tips"><h4>{e(cat['before_title'])}</h4><dl>{"".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in cat['before'])}</dl></div>
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>

@@ -85,3 +85,6 @@ NIGHT = dict(slug="hospital/night", name="夜間・救急の動物病院", unit=
   before=[(t, d.replace('<a href="/emergency/">', "").replace('<a href="/#form">', "").replace('</a>', "")) for t, d in _NIGHT["tips"]],
   taxi_h="前もって決まっている通院は、ペットタクシーで", taxi_p="再診や退院のお迎えなど、前もって決まっている移動はペットタクシーを予約できます。",
   links=[("緊急のときの連絡先", "/emergency/"), ("条件でさがす動物病院", "/hospital/"), ("動物病院への通院の送迎ガイド", "/guide/hospital/")])
+
+SOUGI["table"] = [("個別火葬", lambda f: "○" if _has(f, "個別火葬") else ""), ("立ち会い", lambda f: "○" if _has(f, "立ち会い火葬") else ""), ("お迎え", lambda f: "○" if _has(f, "お迎え") or _has(f, "訪問火葬") else ""), ("霊園", lambda f: "○" if _has(f, "霊園") else ""), ("納骨堂", lambda f: "○" if _has(f, "納骨堂") else ""), ("料金の例", lambda f: "○" if f.get("price") else "")]
+NIGHT["table"] = [("受付時間", lambda h: h.get("hours", "")), ("所在地", lambda h: h.get("city", ""))]
