@@ -19,7 +19,7 @@
 | | X | Instagram |
 |---|---|---|
 | 表示名 | ペットのくらし窓口 | ペットのくらし窓口 |
-| ユーザー名（第1候補） | `pet_kurashi`（旧 `pettaxi_yoyaku`） | `pet.kurashi`（旧 `pettaxi.yoyaku`） |
+| ユーザー名 | `petkurashi_mado`（pet_kurashi は使用済み。旧 `pettaxi_yoyaku`） | `pet.kurashi`（旧 `pettaxi.yoyaku`） |
 | 使われていたとき | `petkurashi_mado` | `petkurashi.mado` |
 | メール | pettaxi.yoyaku@gmail.com（サービスの窓口のアドレス） | 同じ |
 | 種類 | ふつうのアカウント | プロアカウント（ビジネス）。カテゴリは「ペットサービス」に近いもの |
@@ -73,7 +73,7 @@ Xの予定（11/3 から）：11/3 1 はじめまして、11/6 2 タクシーと
 
 Nori 2026-11-02「僕の作業はゼロにしたい」。始めたあとは Nori さんの確認なしの完全自動。
 
-- アカウント：X @pet_kurashi（旧 @pettaxi_yoyaku）、Instagram pet.kurashi（旧 pettaxi.yoyaku）（ビジネス）。どちらも pettaxi.yoyaku@gmail.com で登録。パスワードは Nori さんの Chrome に保存。
+- アカウント：X @petkurashi_mado（旧 @pettaxi_yoyaku）、Instagram pet.kurashi（旧 pettaxi.yoyaku）（ビジネス）。どちらも pettaxi.yoyaku@gmail.com で登録。パスワードは Nori さんの Chrome に保存。
 - **X**：ペットタクシー用の無料の予約サービス（Typefully。KONBU とは別のアカウント）にこのXをつないである。`.github/workflows/sns-x.yml` が毎週日曜12時に `sns/schedule_x.py` を動かし、`posts.json` のまだ予約していない投稿を2つ、次の火・金20時に予約する。画像はガイド記事の写真だけ（`posts.json` の `photo`。文字やロゴ入りの `img/postNN.jpg` は広告っぽいので使わない。Nori 2026-11-02）。手で動かすとき `redo` を選ぶと、まだ出ていない予約を消して入れ直す。予約したものは `sns/state.json` に記録。キーは GitHub の Secret `TYPEFULLY_API_KEY`。ユーザー名がこのアカウントのもの（`schedule_x.py` の `HANDLES`）のときだけ入れる。手で動かすとき `hold` を選ぶと、まだ出ていない予約を消して止める。投稿が残っていないと Issue「Xの投稿が残っていません」が開く → `posts.json` に足して `node sns/gen.cjs`。
 - 予約の前に、文の決まり（上の4.の言葉・リンク・長さ）をスクリプトでも確かめる。
 - **Instagram**：自動のつなぎこみはまだ（予約サービスが Instagram に対応していないため、方法を調べ中）。
