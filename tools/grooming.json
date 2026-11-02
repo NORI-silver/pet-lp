@@ -1,0 +1,1087 @@
+{
+ "_説明": "出張トリミング・訪問トリミングの全国一覧（/trimming/）のデータ。公式サイトで確かめたことだけ書く（料金・順位・電話番号は書かない）。area＝公式サイトに書いてある出張エリア、services＝公式サイトに書いてある内容。条件の large（大型犬）・cat（猫）・senior（シニア犬・介護中の子）・car（トリミングカー）・in_home（家の中で施術）・max_kg（最大の体重）は公式サイトにはっきり書いてあるときだけ入れる（ない＝不明。対応しないという意味ではない）。載せない：店舗だけのサロン、シャンプーだけでカットのない出張、新規受付の停止・閉業、公式サイトのない・開けない事業者、登録期限切れのまま更新のないサイト。",
+ "checked": "2026-11-02",
+ "groomers": [
+  {
+   "id": "G001",
+   "name": "箱・ドック",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市北区",
+   "url": "https://hakodog.com/",
+   "area": "札幌市内とその近郊（相談）",
+   "services": "専用ワゴン車でご自宅へ出張。シャンプーはご自宅のお風呂、ドライヤー・カットは車内",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G002",
+   "name": "ドックシャンプーわん",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市東区",
+   "url": "https://www.dogshampoo.jp/",
+   "area": "札幌市内全区・近郊",
+   "services": "移動シャンプー車でご自宅前へ。車内でシャンプー・カット",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G003",
+   "name": "出張 犬の美容室 もふのこ",
+   "prefs": [
+    "青森県"
+   ],
+   "city": "弘前市",
+   "url": "https://dog-mofunoko.com/",
+   "area": "弘前市を拠点に出張",
+   "services": "トリミングカーで訪問し、ご自宅の敷地内に車を停めて施術。部分お手入れ・クイックシャンプーも",
+   "car": true
+  },
+  {
+   "id": "G004",
+   "name": "出張トリミング Hiwa Hiwa",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市青葉区",
+   "url": "https://hiwahiwaoreo.wixsite.com/hiwahiwa",
+   "area": "仙台市泉区・青葉区・宮城野区・太白区・若林区、黒川郡、富谷市",
+   "services": "お家訪問型でシャンプー・カット",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G005",
+   "name": "Dog Salon ANGEL EYES（エンジェルアイズ）出張トリミング",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市泉区",
+   "url": "https://dogsalon-angeleyes.jimdofree.com/%E5%87%BA%E5%BC%B5%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0/",
+   "area": "仙台市内（遠方は相談）",
+   "services": "玄関・室内・ウッドデッキなどで部分カット・全身カット・シャンプー・爪切りなど",
+   "in_home": true
+  },
+  {
+   "id": "G006",
+   "name": "ペットサロン ポジティブ",
+   "prefs": [
+    "茨城県"
+   ],
+   "url": "https://www.positive-0511.net/",
+   "area": "水戸市・笠間市など茨城県央",
+   "services": "専用のトリミングカーでご自宅まで出張してトリミング。猫の爪切りも相談可",
+   "large": true,
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G007",
+   "name": "出張＆訪問トリミング おーるわん",
+   "prefs": [
+    "茨城県",
+    "千葉県"
+   ],
+   "url": "https://www.cartrimming-allone.com/",
+   "area": "茨城県南部（つくば市・牛久市・龍ケ崎市など）・千葉県北部（柏市など）",
+   "services": "トリミングカーでご自宅前へ。犬のシャンプー・カット、猫のグルーミング",
+   "cat": true,
+   "car": true
+  },
+  {
+   "id": "G008",
+   "name": "Trimming car salon Fluffy（フラッフィー）",
+   "prefs": [
+    "茨城県"
+   ],
+   "url": "https://trimmingcarsalonfluffy.amebaownd.com/",
+   "area": "石岡市周辺",
+   "services": "水道・電気設備の整ったトリミングカーでご自宅の駐車場で施術",
+   "car": true
+  },
+  {
+   "id": "G009",
+   "name": "出張トリミングの Shippo",
+   "prefs": [
+    "栃木県",
+    "茨城県"
+   ],
+   "city": "小山市",
+   "url": "https://shippo.crayonsite.com/",
+   "area": "小山市・栃木市・野木町・古河市（ほかは相談）",
+   "services": "トリミングカーでご自宅の駐車場でシャンプー・カット",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G010",
+   "name": "ワンワンハウス 犬の移動美容室",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "前橋市",
+   "url": "https://wan-wan-house.com/shampoo-car/",
+   "area": "前橋市と近く（伊勢崎市・渋川市・榛東村・高崎市・玉村町・吉岡町など）",
+   "services": "ご自宅まで伺い車内でシャンプー・トリミング",
+   "large": true,
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G011",
+   "name": "トリミングサロン ひまわり組",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川口市",
+   "url": "https://himawarigumi.crayonsite.info/",
+   "area": "川口市から出張（さいたま市南区など）",
+   "services": "専用のトリミングカーでご自宅へ伺い車内でシャンプー・カット。ご自宅での訪問トリミングも",
+   "senior": true,
+   "car": true,
+   "in_home": true
+  },
+  {
+   "id": "G012",
+   "name": "出張トリマー mogu",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "上尾市",
+   "url": "https://mogushampoo.com/",
+   "area": "さいたま市北区・大宮区・中央区・西区・岩槻区・見沼区、上尾市・蓮田市",
+   "services": "お客さま宅に訪問し、お部屋の中でトリミング",
+   "senior": true,
+   "in_home": true,
+   "max_kg": 15
+  },
+  {
+   "id": "G013",
+   "name": "トリミングカー＆サロン Fortuna（フォルトゥーナ）",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "三郷市",
+   "url": "https://fortuna.crayonsite.info/",
+   "area": "三郷市を拠点に八潮市・吉川市・草加市・越谷市周辺",
+   "services": "トリミングカーで訪問してシャンプー・トリミング、シニア犬ケア",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G014",
+   "name": "出張ドッグサロン Relief（リリーフ）",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市桜区",
+   "url": "https://www.dogsalon-relief.com/",
+   "area": "さいたま市桜区中心",
+   "services": "トリミングカーでご自宅の駐車場で施術。ペットシッター・お散歩代行も",
+   "car": true
+  },
+  {
+   "id": "G015",
+   "name": "アイネクルネ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://ainekurune.com/",
+   "area": "佐倉市周辺",
+   "services": "トリミングカー内またはご自宅内で施術。シャンプー・カット、部分ケア",
+   "cat": true,
+   "car": true,
+   "in_home": true
+  },
+  {
+   "id": "G016",
+   "name": "出張トリミング専門 Resh（リッシュ）",
+   "prefs": [
+    "千葉県",
+    "東京都"
+   ],
+   "url": "https://resh-trim.com/",
+   "area": "習志野市・船橋市・千葉市・四街道市・鎌ケ谷市・市川市・浦安市、都内の港区・目黒区・中央区など",
+   "services": "トリミングカー内で犬・猫のシャンプー・カット",
+   "large": true,
+   "cat": true,
+   "car": true
+  },
+  {
+   "id": "G017",
+   "name": "トリミングカーサロン もふ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "白井市",
+   "url": "https://mofu-shiroi.com/",
+   "area": "白井市・鎌ケ谷市全域、船橋市・印西市・市川市・柏市・松戸市の一部",
+   "services": "専用のトリミングカーでご自宅の駐車スペースへ。シャンプー・カット",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G018",
+   "name": "dog1st famille（ドッグファースト ファミーユ）訪問トリミング",
+   "prefs": [
+    "千葉県",
+    "東京都"
+   ],
+   "url": "https://dog1st-famille.com/triming/",
+   "area": "浦安・原木中山・行徳・妙典駅周辺（浦安市・市川市・船橋市・松戸市・習志野市、江東区・江戸川区・葛飾区など）",
+   "services": "トリマーがご自宅を訪問してトリミング。シニア犬向けの時短シャンプーなど",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G019",
+   "name": "犬の出張トリミング MOMO",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "http://www7b.biglobe.ne.jp/~momodog/",
+   "area": "流山市から出張（出張範囲はサイト内のページ）",
+   "services": "犬の出張トリミング専門店"
+  },
+  {
+   "id": "G020",
+   "name": "cocotrim.（ココトリム）",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "https://cocotrim.jp/",
+   "area": "杉並区・中野区・練馬区・武蔵野市・三鷹市・調布市・世田谷区・渋谷区・新宿区",
+   "services": "シャンプーカーでご自宅の駐車場や近くの駐車場へ。シャンプー・トリミング",
+   "car": true
+  },
+  {
+   "id": "G021",
+   "name": "出張トリミングサービス D&T",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://dandt.jp/",
+   "area": "足立区・葛飾区中心（荒川区も）",
+   "services": "バスタブ・シャワー付きのトリミングカーでご自宅前で施術",
+   "car": true
+  },
+  {
+   "id": "G022",
+   "name": "犬喜庵（けんきあん）",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "立川市",
+   "url": "https://kenkian.com/",
+   "area": "立川市・東大和市・武蔵村山市・小平市の一部",
+   "services": "トリミングカーでご自宅前でトリミング（出張・送迎・来店）",
+   "car": true
+  },
+  {
+   "id": "G023",
+   "name": "LUANA（ルアナ）",
+   "prefs": [
+    "東京都"
+   ],
+   "url": "https://www.luana-pets.com/",
+   "area": "目黒区・世田谷区・渋谷区・港区（ほかは相談）",
+   "services": "ご自宅にうかがってトリミング。犬・猫メニュー",
+   "large": true,
+   "cat": true,
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G024",
+   "name": "Trimming Charo 出張トリミングカー",
+   "prefs": [
+    "東京都"
+   ],
+   "url": "https://trimming-charo.com/",
+   "area": "昭島市・立川市・福生市中心",
+   "services": "出張トリミングカーでご自宅へ。シャンプー・カット（電源・排水を借りない）",
+   "car": true
+  },
+  {
+   "id": "G025",
+   "name": "トリミングルーム ラフ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://www.trimmingroom-laugh.net/",
+   "area": "足立区中心",
+   "services": "トリミングカーで出張・送迎。カット・シャンプー",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G026",
+   "name": "トリミングカー コロコロ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "八王子市",
+   "url": "https://coro56tc.wixsite.com/trimmingcar-corocoro",
+   "area": "八王子市（七国）から出張",
+   "services": "移動式サロンでご自宅や近くの駐車場で施術。シャンプー・カット、部分美容",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G027",
+   "name": "自宅訪問型出張トリミングサービス Animal Life Care ひょっとこ",
+   "prefs": [
+    "東京都"
+   ],
+   "url": "https://alc-hyottoko.com/",
+   "area": "多摩地域（日野市・立川市・国立市・国分寺市・府中市・調布市・三鷹市・武蔵野市・小金井市・八王子市・町田市など）",
+   "services": "ご自宅を訪問してトリミング・グルーミング。爪切りだけも相談",
+   "in_home": true
+  },
+  {
+   "id": "G028",
+   "name": "出張 トリミングカー for dogs",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市",
+   "url": "https://dogs.crayonsite.net/",
+   "area": "横浜市南区・港南区・戸塚区・保土ケ谷区中心",
+   "services": "ご自宅まで伺い車内でシャンプー・ブロー・カット",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G029",
+   "name": "Dog Salon ACO",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横須賀市",
+   "url": "https://dogsalon-aco.com/",
+   "area": "横須賀市・三浦市・横浜市金沢区",
+   "services": "店舗サロンと出張トリミングカー",
+   "large": true,
+   "car": true
+  },
+  {
+   "id": "G030",
+   "name": "Dog Salon HAPPY mo.mo（ハッピーモモ）訪問トリミング",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市瀬谷区",
+   "url": "https://dog-happymomo.jimdofree.com/%E8%A8%AA%E5%95%8F%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0/",
+   "area": "横浜市瀬谷区・三ツ境・希望ヶ丘・大和市",
+   "services": "ご自宅のお風呂場・洗面所をお借りしてカット。シャンプーのみも可",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G031",
+   "name": "出張トリミング Rian-dog（リアン）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "url": "https://www.rian-dogtrimming.com/",
+   "area": "横浜市栄区・戸塚区・港南区、鎌倉市・逗子市・葉山町・藤沢市・茅ヶ崎市",
+   "services": "ご自宅訪問でシャンプーコース・トリミングコース",
+   "in_home": true
+  },
+  {
+   "id": "G032",
+   "name": "横浜出張トリミング Dog's Paw（ドッグズパウ）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市保土ケ谷区",
+   "url": "http://dogspaw.jp/",
+   "area": "横浜市中心",
+   "services": "ご自宅内でトリミング",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G033",
+   "name": "トリミングカー バリー",
+   "prefs": [
+    "神奈川県",
+    "東京都"
+   ],
+   "city": "相模原市中央区",
+   "url": "https://trimmingcar-bally.crayonsite.com/p/2/",
+   "area": "相模原市中央区・南区・緑区、愛川町・厚木市・座間市、町田市（出張費は相談）",
+   "services": "ご自宅のお庭・駐車スペースで車内トリミング。シャンプー・カット、爪切り・歯みがきなど",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G034",
+   "name": "移動トリミングカー ブルー・ワン",
+   "prefs": [
+    "神奈川県",
+    "東京都"
+   ],
+   "city": "相模原市",
+   "url": "https://bluewan.net/",
+   "area": "相模原市・町田市中心（ほかは相談）",
+   "services": "ご自宅に訪問し、車の中でトリミング。全コースで光マイクロバブル",
+   "car": true
+  },
+  {
+   "id": "G035",
+   "name": "Dog Salon Tickle Tickle（ティックルティックル）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市緑区",
+   "url": "https://dogsalontickletickle.amebaownd.com/",
+   "area": "相模原市緑区橋本中心",
+   "services": "出張トリミングカーでお家の駐車場で施術",
+   "car": true
+  },
+  {
+   "id": "G036",
+   "name": "Dogsalon Erulolo（エルロロ）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市",
+   "url": "https://erulolo0723.com/",
+   "area": "相模原市・大和市・座間市・綾瀬市・海老名市・厚木市",
+   "services": "ワゴン型のトリミングカーでご自宅前へ。店舗と同じトリミング",
+   "car": true
+  },
+  {
+   "id": "G037",
+   "name": "dogvery（出張トリミング＆ペットシッター）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "足柄上郡",
+   "url": "https://www.dogvery.com/",
+   "area": "足柄上郡から小田原市・秦野市・平塚市・茅ヶ崎市周辺",
+   "services": "トリマーがご自宅を訪問してシャンプー・カット。ペットシッターも",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G038",
+   "name": "移動ペットサロン piro（ピロ）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "茅ヶ崎市",
+   "url": "https://r.goope.jp/petsalon-piro/",
+   "area": "茅ヶ崎市・藤沢市・寒川町中心",
+   "services": "車内でシャンプー・カットを行う出張型サロン",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G039",
+   "name": "いぬ国屋 移動ドッグトリミングサロンカー（提携店）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "藤沢市",
+   "url": "https://inukuniya.com/dogcar/",
+   "area": "藤沢市・茅ヶ崎市・鎌倉市（ほかは相談）",
+   "services": "ご自宅前で車内シャンプー＆カット",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G040",
+   "name": "wan one",
+   "prefs": [
+    "神奈川県"
+   ],
+   "url": "https://wan-one.shopinfo.jp/",
+   "area": "湘南地域中心",
+   "services": "お宅へ伺い車内でトリミングする完全プライベートサロン",
+   "car": true
+  },
+  {
+   "id": "G041",
+   "name": "イヌと暮らす 出張トリミング",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "藤沢市",
+   "url": "https://inutokurasu.net/pages/trimming",
+   "area": "藤沢市内限定",
+   "services": "ご自宅のお部屋で出張トリミング。おうちネコも",
+   "cat": true,
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G042",
+   "name": "ペットお助けマン ドゥ",
+   "prefs": [
+    "新潟県"
+   ],
+   "city": "新潟市西区",
+   "url": "https://www.husbandry.blog/about/",
+   "area": "新潟市（詳しいエリアの記載なし）",
+   "services": "サロンカーで伺うトリミングとハズバンダリートレーニング",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G043",
+   "name": "わんpad",
+   "prefs": [
+    "富山県"
+   ],
+   "city": "富山市",
+   "url": "https://www.wanpad.jp/",
+   "area": "富山市中心（エリア外も相談）",
+   "services": "オリジナルトリミングカーでご自宅まで伺う出張トリミング",
+   "large": true,
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G044",
+   "name": "ドッグサロン CORNER",
+   "prefs": [
+    "富山県"
+   ],
+   "city": "黒部市",
+   "url": "https://a2jfl.crayonsite.com/",
+   "area": "黒部市中心の新川地区",
+   "services": "トリミングカーで出張トリミング。フード・用品の配達も",
+   "car": true
+  },
+  {
+   "id": "G045",
+   "name": "出張トリミング SNIFF-SNIFF（スニフスニフ）",
+   "prefs": [
+    "石川県"
+   ],
+   "city": "白山市",
+   "url": "https://sniff-sniff.shopinfo.jp/",
+   "area": "白山市中心、野々市市・金沢市・能美市",
+   "services": "トリミングカーでご自宅へ。シャンプーからカットまで車内で",
+   "car": true
+  },
+  {
+   "id": "G046",
+   "name": "トリミングカー Nico*Nico（ニコニコ）",
+   "prefs": [
+    "長野県"
+   ],
+   "city": "佐久市",
+   "url": "https://nico-wan.com/",
+   "area": "佐久市・南佐久郡・北佐久郡・小諸市",
+   "services": "トリミングカーでご自宅前へ。車内でシャンプー・カット",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G047",
+   "name": "Dog Salon V（ビバ）",
+   "prefs": [
+    "長野県"
+   ],
+   "city": "大町市",
+   "url": "https://dog-salon-v.com/",
+   "area": "長野県全域",
+   "services": "トリミングカーでご自宅の駐車場で施術。オールシザーも",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G048",
+   "name": "出張トリミング ペットサロン あふろ",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "大垣市",
+   "url": "https://petsalonafuro.amebaownd.com/",
+   "area": "大垣市中心、岐阜市・本巣・北方・羽島・池田・垂井・海津など",
+   "services": "トリミングカーでお宅に伺い車内でシャンプー・カット。猫も",
+   "cat": true,
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G049",
+   "name": "Trimming Car PETRO（出張トリミング ペトロ）",
+   "prefs": [
+    "岐阜県"
+   ],
+   "url": "https://petro.jp/",
+   "area": "岐阜市・山県市・本巣市・各務原市・瑞穂市・羽島市・岐南町・北方町",
+   "services": "トリミングカーでご自宅前で全工程。シャンプー・カット",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G050",
+   "name": "トリミング・ケア・サロン Lovely Dog（ラブリードッグ）",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "浜松市中央区",
+   "url": "https://www.trimming-lovelydog.com/",
+   "area": "浜松市周辺",
+   "services": "トリミングカーでご自宅や事務所など指定の場所へ。サロンと同じトリミング、送迎も",
+   "large": true,
+   "car": true
+  },
+  {
+   "id": "G051",
+   "name": "フリートリマー Asami",
+   "prefs": [
+    "静岡県"
+   ],
+   "url": "https://asamiracle0706.wixsite.com/trimmer-asami",
+   "area": "静岡県東部（沼津市・三島市・長泉町・清水町・裾野市・富士市・伊豆の国市・静岡市など）",
+   "services": "ご自宅のお風呂場・脱衣所やリビングの一角をお借りしてトリミング",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G052",
+   "name": "出張トリミング Wan-Tail（ワンテイル）",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "静岡市",
+   "url": "https://wan-tail.com/",
+   "area": "静岡市内（焼津市は相談）",
+   "services": "お家での出張・訪問トリミング。皮膚ケア・シニア犬のケアの相談も",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G053",
+   "name": "ドッグルーム カレン",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "御殿場市",
+   "url": "https://www.omisejiman.net/dogroom-caren/",
+   "area": "御殿場市（裾野市・小山町、近隣は相談）",
+   "services": "移動型ペットサロン（出張トリミング）"
+  },
+  {
+   "id": "G054",
+   "name": "名古屋 出張トリミング ハナサキ",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市守山区",
+   "url": "https://www.hanasakigrooming.com/",
+   "area": "守山区から10km以内（守山区・千種区・東区・北区・名東区、尾張旭市・春日井市・瀬戸市・長久手市など）",
+   "services": "トリミング専用車両でご自宅へ。シャンプー・カット",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G055",
+   "name": "ワンにゃんシャンプー",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "豊田市",
+   "url": "https://wannyansham.crayonsite.net/",
+   "area": "豊田市中心",
+   "services": "トリミングカーでご自宅へ。犬・猫のシャンプー・カット",
+   "large": true,
+   "cat": true,
+   "car": true
+  },
+  {
+   "id": "G056",
+   "name": "オーシーペットモービル名古屋",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市",
+   "url": "http://apm-nagoya.com/",
+   "area": "名古屋市と近郊",
+   "services": "出張グルーミングワゴンでお家の前で犬・猫のシャンプー・カット",
+   "cat": true,
+   "car": true
+  },
+  {
+   "id": "G057",
+   "name": "Grooming service R.M",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "栗東市",
+   "url": "https://www.grooming-service-rm.com/",
+   "area": "栗東市安養寺から車で20分ほど",
+   "services": "出張トリミングと店舗サロン（小型犬・中型犬・大型犬）",
+   "large": true,
+   "senior": true
+  },
+  {
+   "id": "G058",
+   "name": "THE DOG Salon Trimming Wagon 京都本店",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市",
+   "url": "https://thedog-wagon.jp/area/s0008/",
+   "area": "京都市伏見区・右京区・下京区・南区・西京区、宇治市・向日市・長岡京市",
+   "services": "移動型トリミングワゴンで指定の場所へ（小型犬・中型犬）",
+   "car": true
+  },
+  {
+   "id": "G059",
+   "name": "出張トリミング Petit pas（プティ・パ）",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市西京区",
+   "url": "https://petitpas11.com/",
+   "area": "京都市内（ほかの地域は相談）",
+   "services": "自宅のお風呂場と2畳ほどのスペースを借りてシャンプー・トリミング",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G060",
+   "name": "Trimming move（トリミング ムーブ）",
+   "prefs": [
+    "大阪府",
+    "兵庫県"
+   ],
+   "url": "https://trimming-move.com/",
+   "area": "川西市・伊丹市・宝塚市・池田市・箕面市・豊中市・吹田市が中心",
+   "services": "トリミングカーで自宅まで訪問して施術（小型犬・中型犬）",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G061",
+   "name": "トリマー大江（出張トリミング 大阪）",
+   "prefs": [
+    "大阪府"
+   ],
+   "url": "https://shutcho-trimmer.crayonsite.net/",
+   "area": "大阪（詳しいエリアは記載なし）",
+   "services": "トリマーが自宅に伺ってトリミング",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G062",
+   "name": "ペットケアステーション大阪（出張トリミング）",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "堺市堺区",
+   "url": "https://petcare-station.com/trim/visit-triming/",
+   "area": "堺市堺区・北区・東区・西区、大阪市住吉区・阿倍野区・天王寺区",
+   "services": "自宅のお風呂場などを借りて施術。大型犬は出張のみで対応",
+   "large": true,
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G063",
+   "name": "THE DOG Salon Trimming Wagon 枚方店",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "枚方市",
+   "url": "https://thedog-wagon.jp/area/s0013/",
+   "area": "枚方市・交野市・寝屋川市・高槻市・四條畷市",
+   "services": "移動型トリミングワゴンで指定の場所へ（小型犬・中型犬）",
+   "car": true
+  },
+  {
+   "id": "G064",
+   "name": "大阪の犬の移動美容室 レインボードッグ",
+   "prefs": [
+    "大阪府",
+    "奈良県"
+   ],
+   "url": "http://rainbowdog2015.com/",
+   "area": "堺市・高石市・泉大津市・和泉市・岸和田市・富田林市・松原市など、奈良県生駒市・奈良市",
+   "services": "犬のための移動美容室"
+  },
+  {
+   "id": "G065",
+   "name": "animal care ふうすけのしっぽ",
+   "prefs": [
+    "大阪府"
+   ],
+   "url": "https://www.fuusukenosippo.com/",
+   "area": "大阪市・堺市・松原市・羽曳野市・富田林市・和泉市・岸和田市・泉佐野市など南大阪",
+   "services": "女性トリマーが自宅に訪問してトリミング",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G066",
+   "name": "自宅出張トリミング ホームトリマー（大阪のトリマー）",
+   "prefs": [
+    "大阪府"
+   ],
+   "url": "https://hometrimmer.net/",
+   "area": "郵便番号で対応を確認（大阪市・門真市・高石市などのトリマーが在籍）",
+   "services": "トリマーが飼い主の自宅に訪問してトリミング。猫専門の訪問トリミングもあり",
+   "cat": true,
+   "in_home": true
+  },
+  {
+   "id": "G067",
+   "name": "Dog trim MARU",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "守口市",
+   "url": "https://dogtrimmaru.crayonsite.info/",
+   "area": "守口市から片道30分圏内（門真市・寝屋川市・東大阪市・大東市・吹田市・摂津市など）",
+   "services": "自宅のお風呂場とスペースを借りて出張トリミング（小型犬専門）。店舗サロンもあり",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G068",
+   "name": "出張トリミング mellow pace",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市",
+   "url": "https://mellowpace.amebaownd.com/",
+   "area": "神戸市（東灘区〜兵庫区）〜西宮付近",
+   "services": "自宅に伺い家族のそばでトリミング（小型犬専門）",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G069",
+   "name": "pet salon おかげ犬",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市北区",
+   "url": "https://www.care-for-dog-okageken.com/",
+   "area": "店の指定エリア内",
+   "services": "店舗サロンと出張トリミング（爪切りのみ・一部カットのみも）"
+  },
+  {
+   "id": "G070",
+   "name": "Trimming Car Harry",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "明石市",
+   "url": "https://trimmingcarharry.crayonsite.net/",
+   "area": "明石市が中心",
+   "services": "トリミングカーで自宅に伺い駐車場で施術。来店も可",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G071",
+   "name": "DogSalon CARAT",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "加古川市",
+   "url": "https://www.dogsalon-carat.com/information/",
+   "area": "姫路市・加古川市・高砂市・播磨町・稲美町",
+   "services": "トリミングカーで出張し、車内でシャンプーからカットまで。来店も可",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G072",
+   "name": "出張トリミングyoko",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "橿原市",
+   "url": "https://www.shutcho-trimming405.com/",
+   "area": "奈良県内（一部エリア外あり）",
+   "services": "自宅に伺い、お風呂場と洗面所を借りて施術（小型犬専門）",
+   "in_home": true
+  },
+  {
+   "id": "G073",
+   "name": "トリミングカー愛犬",
+   "prefs": [
+    "鳥取県"
+   ],
+   "city": "倉吉市",
+   "url": "https://trimmingcar-aiken.com/",
+   "area": "倉吉市東巌城町から半径10km（それより遠くは相談）",
+   "services": "専用車で自宅前まで行き車内でトリミング（小型犬・中型犬）",
+   "car": true
+  },
+  {
+   "id": "G074",
+   "name": "出張トリミングSu-zu",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "岡山市北区",
+   "url": "https://trimmingsu-zu.com/",
+   "area": "岡山市・倉敷市・総社市・瀬戸内市が中心",
+   "services": "自宅の室内の一角を借りて犬・猫のシャンプー・カット",
+   "cat": true,
+   "in_home": true
+  },
+  {
+   "id": "G075",
+   "name": "ペットのお世話専門 Ciel（シエル）",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "岡山市東区",
+   "url": "http://pet-ciel.jp/",
+   "area": "記載なし（岡山市東区が拠点）",
+   "services": "自宅へ訪問してのトリミング（老犬・老猫ホームも運営）",
+   "large": true,
+   "cat": true,
+   "senior": true
+  },
+  {
+   "id": "G076",
+   "name": "ドッグサロンあかり",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "呉市",
+   "url": "https://dogsalon-akari.com/",
+   "area": "呉市・東広島市・安芸郡熊野町・広島市安芸区",
+   "services": "トリミングカーで出張。駐車場がない場合は家の中でも施術",
+   "senior": true,
+   "car": true,
+   "in_home": true
+  },
+  {
+   "id": "G077",
+   "name": "Dog Salon Treat",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "尾道市",
+   "url": "https://www.dogsalontreat.com/",
+   "area": "尾道・向島・三原・福山（松永）",
+   "services": "店舗サロンとトリミングカーでの訪問（小型犬・中型犬以下）",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G078",
+   "name": "DOG GROOMING wish",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市安佐南区",
+   "url": "https://www.dog-grooming-wish.com/",
+   "area": "広島市全域（8区）",
+   "services": "出張専用の自宅訪問トリミング"
+  },
+  {
+   "id": "G079",
+   "name": "trimmingcar pono",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市西区",
+   "url": "https://trimmingcar-pono.com/",
+   "area": "福岡市西区・糸島市・城南区・早良区",
+   "services": "トリミングカーで自宅近くまで訪問",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G080",
+   "name": "訪問トリミング COCO",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://u2z0l.crayonsite.net/",
+   "area": "福岡（詳しいエリアは記載なし）",
+   "services": "いつものお家でトリミング（平日のみ受付）",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G081",
+   "name": "わんこのプライベートサロン 出張トリミングcha-cha",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市博多区",
+   "url": "https://www.triming-cha-cha.com/",
+   "area": "福岡市南区・博多区・春日市",
+   "services": "出張専門のトリミング（来店不可）"
+  },
+  {
+   "id": "G082",
+   "name": "ペットライフサポートサロン lovely Tico",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "北九州市八幡西区",
+   "url": "https://www.lovelytico.com/",
+   "area": "記載なし（北九州市八幡西区が拠点）",
+   "services": "店舗サロンと出張でのトリミング"
+  },
+  {
+   "id": "G083",
+   "name": "VIGOR DOG（ヴィガードッグ）",
+   "prefs": [
+    "長崎県"
+   ],
+   "city": "長崎市",
+   "url": "https://vigordog.com/service/gotrimming",
+   "area": "出張地域は相談（長崎市が拠点）",
+   "services": "店舗サロン・ペットホテルと出張トリミング"
+  },
+  {
+   "id": "G084",
+   "name": "てぃーだ Dog grooming",
+   "prefs": [
+    "熊本県"
+   ],
+   "url": "https://tidadoggrooming.wixsite.com/my-site",
+   "area": "記載なし（車がない・車が苦手・外出できないお宅向け）",
+   "services": "店舗サロンと、犬のお家での出張トリミング",
+   "in_home": true
+  },
+  {
+   "id": "G085",
+   "name": "ドッグサロン puppy（パピー）",
+   "prefs": [
+    "宮崎県"
+   ],
+   "city": "宮崎市",
+   "url": "https://dogsalon-puppy.net/",
+   "area": "個別に問い合わせ（宮崎市が拠点）",
+   "services": "店舗サロンと自宅での出張トリミング",
+   "in_home": true
+  },
+  {
+   "id": "G086",
+   "name": "petsitter Luna",
+   "prefs": [
+    "沖縄県"
+   ],
+   "url": "https://www.loveluna-pet.com/",
+   "area": "沖縄県",
+   "services": "ペットシッターと出張グルーミング・トリミング"
+  }
+ ]
+}
