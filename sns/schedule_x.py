@@ -33,6 +33,14 @@ def req(method, path, key, body=None):
         sys.exit(f"Typefully {method} {path}: {e.code} {e.read().decode()[:500]}")
 
 
+def social_set(key):
+    sets = req("GET", "/social-sets?limit=50", key)["results"]
+    sid = next((s["id"] for s in sets if (s.get("username") or "").lower() == HANDLE), None)
+    if not sid:
+        sys.exit(f"{HANDLE} のアカウントが Typefully に見つかりません: {[s.get('username') for s in sets]}")
+    return sid
+
+
 def next_slots(after, n):
     out, d = [], after.astimezone(JST)
     day = d.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -48,9 +56,23 @@ def next_slots(after, n):
 def main():
     n = int(next((a for a in sys.argv[1:] if a.isdigit()), 2))
     dry = "--dry" in sys.argv
+    redo = "--redo" in sys.argv  # 予約ずみ（まだ出ていない）ものを消して入れ直す
     posts = json.load(open(os.path.join(HERE, "posts.json"), encoding="utf-8"))["posts"]
     sp = os.path.join(HERE, "state.json")
     state = json.load(open(sp, encoding="utf-8")) if os.path.exists(sp) else {"x": {}}
+    key = os.environ.get("TYPEFULLY_API_KEY")
+    if redo and not dry:
+        if not key:
+            sys.exit("TYPEFULLY_API_KEY がありません")
+        sid = social_set(key)
+        now = dt.datetime.now(JST)
+        gone = 0
+        for d in req("GET", f"/social-sets/{sid}/drafts?status=scheduled&limit=50", key)["results"]:
+            req("DELETE", f"/social-sets/{sid}/drafts/{d['id']}", key)
+            gone += 1
+        state["x"] = {k: v for k, v in state["x"].items() if dt.datetime.fromisoformat(v) <= now}
+        n = max(n, gone)
+        print("予約を消して入れ直す:", gone)
     todo = [p for p in posts if str(p["no"]) not in state["x"]][:n]
     if not todo:
         print("予約できる投稿が残っていません。posts.json に新しい投稿を足してください。")
@@ -70,18 +92,15 @@ def main():
             print(t.isoformat(), p["no"], p["tag"])
         return 0
 
-    key = os.environ.get("TYPEFULLY_API_KEY")
     if not key:
         sys.exit("TYPEFULLY_API_KEY がありません")
-    sets = req("GET", "/social-sets?limit=50", key)["results"]
-    sid = next((s["id"] for s in sets if (s.get("username") or "").lower() == HANDLE), None)
-    if not sid:
-        sys.exit(f"{HANDLE} のアカウントが Typefully に見つかりません: {[s.get('username') for s in sets]}")
+    sid = social_set(key)
 
     for p, t in zip(todo, slots):
-        img = os.path.join(HERE, "img", f"post{p['no']:02d}.jpg")
+        # 画像は文字やロゴを入れない写真だけ（Nori 2026-11-02「コマーシャル感強い」）
+        img = os.path.join(ROOT, p["photo"])
         up = req("POST", f"/social-sets/{sid}/media/upload", key,
-                 {"file_name": os.path.basename(img), "alt_text": p["head"].replace("\n", "")})
+                 {"file_name": os.path.basename(img), "alt_text": p.get("alt") or p["head"].replace("\n", "")})
         # 署名つきURLへは、余計なヘッダーなしで中身だけ送る（urllib は Content-Type を足して 403 になる）
         subprocess.run(["curl", "-sS", "-f", "-T", img, up["upload_url"]], check=True, timeout=120)
         for _ in range(30):
