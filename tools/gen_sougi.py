@@ -76,6 +76,18 @@ FAQ = [
 ]
 
 
+CSS = """<style>
+.sg-k{display:inline-block;min-width:4.5em;font-size:.72rem;color:#c0392b;font-weight:700;text-decoration:none!important}
+.emg-item small b.sg-k{display:inline-block}
+.sg-tag{display:inline-block;margin-top:6px;font-size:.74rem;font-weight:700;border-radius:999px;padding:2px 10px;background:#fff;color:var(--ink-2)}
+.art .tbl td:first-child a{white-space:nowrap}
+.sg-back{color:#1e7d4f}.sg-none{color:var(--ink-3)}
+.sg-pvh{font-size:.84rem;font-weight:700;margin:14px 0 2px;color:var(--ink-2)}
+.emg-item.sg-pv{background:var(--cream)}
+.sg-tags{margin-top:4px}.sg-tags .sg-tag{margin:4px 4px 0 0}
+.emg-item small.sg-src{color:var(--ink-3);font-size:.72rem;margin-top:6px}
+</style>"""
+
 def render(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
     url = f"{SITE}/{SLUG}/"
@@ -219,17 +231,7 @@ def render(ctx):
       {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}],
       ensure_ascii=False, indent=1) + "\n</script>"
-    css = """<style>
-.sg-k{display:inline-block;min-width:4.5em;font-size:.72rem;color:#c0392b;font-weight:700;text-decoration:none!important}
-.emg-item small b.sg-k{display:inline-block}
-.sg-tag{display:inline-block;margin-top:6px;font-size:.74rem;font-weight:700;border-radius:999px;padding:2px 10px;background:#fff;color:var(--ink-2)}
-.art .tbl td:first-child a{white-space:nowrap}
-.sg-back{color:#1e7d4f}.sg-none{color:var(--ink-3)}
-.sg-pvh{font-size:.84rem;font-weight:700;margin:14px 0 2px;color:var(--ink-2)}
-.emg-item.sg-pv{background:var(--cream)}
-.sg-tags{margin-top:4px}.sg-tags .sg-tag{margin:4px 4px 0 0}
-.emg-item small.sg-src{color:var(--ink-3);font-size:.72rem;margin-top:6px}
-</style>"""
+    css = CSS
     return ctx["head"](TITLE, DESC, url, ld) + f"""
 {css}
 <main>

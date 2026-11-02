@@ -19,7 +19,7 @@ def by_pref(cat):
     for it in cat["items"]:
         for pf in it["prefs"]:
             rows.setdefault(pf, []).append(it)
-    return {pf: rs for pf, rs in rows.items() if len(rs) >= MIN}
+    return {pf: rs for pf, rs in rows.items() if len(rs) >= cat.get("min", MIN)}
 
 def urls(SITE, cat):
     return [f"{SITE}{href(cat, pf)}" for pf in by_pref(cat)]
@@ -67,7 +67,7 @@ def render_pref(ctx, cat, pf, rows):
       ensure_ascii=False, indent=1) + "\n</script>"
     cards = "".join(cat["card"](e, it) for it in rs)
     facts_html = ("<ul class=\"pp-facts\">" + "".join(f"<li>{e(f)}</li>" for f in facts) + "</ul>") if facts else ""
-    return ctx["head"](title, desc, url, ld) + CSS + f"""
+    return ctx["head"](title, desc, url, ld) + CSS + cat.get("css", "") + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">
@@ -79,9 +79,10 @@ def render_pref(ctx, cat, pf, rows):
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="emg">
-      <p class="emg-free">この一覧は無料の情報です。事業者からお金をもらっていません。おすすめ順や点数順ではありません。料金は載せていないので、それぞれに直接おたずねください。</p>
+      <p class="emg-free">{e(cat.get("free", "この一覧は無料の情報です。事業者からお金をもらっていません。おすすめ順や点数順ではありません。料金は載せていないので、それぞれに直接おたずねください。"))}</p>
       {f'<div class="emg-tips" style="margin-top:0"><h4>{e(pf)}の{e(name)}のようす</h4>{facts_html}</div>' if facts_html else ''}
-      <section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(pf)}の{e(name)}（{n}{e(unit)}）</h2>{cards}</section>
+      {cat["extra"](e, pf) if cat.get("extra") else ""}
+      <section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(cat.get("list_h", name))}（{e(pf)}・{n}{e(unit)}）</h2>{cards}</section>
       {near_html}
       <div class="emg-tips"><h4>{e(cat['before_title'])}</h4><dl>{"".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in cat['before'])}</dl></div>
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
