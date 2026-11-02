@@ -61,6 +61,8 @@ p{margin:0 0 1em}
 .pills li span{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--o-l);color:var(--o-d)}
 .pills li span svg{width:13px;height:13px}
 .hero .after{margin-top:12px;font-size:.8rem;color:var(--ink-3)}
+.hero-fare{background:#fff;border-left:5px solid var(--o);border-radius:14px;padding:12px 16px;margin:0 0 16px;box-shadow:var(--shadow)}.hero-fare b{display:block;font-size:1rem;color:var(--o-d);margin-bottom:4px}.hero-fare span{display:block;font-size:.84rem;color:var(--ink-2);line-height:1.6}
+.fare-cta{text-align:center;margin:18px 0 6px}.fare-cta .btn{display:inline-flex}.fare-cta p{font-size:.8rem;color:var(--ink-3);margin-top:8px}
 .hero-visual{position:relative;max-width:520px;width:100%;margin:0 auto}
 .hero-visual .photo{aspect-ratio:1/1;border-radius:36px;box-shadow:0 30px 60px rgba(226,86,10,.18)}
 .hero-visual .photo .fallback svg{width:92%}

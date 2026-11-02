@@ -91,6 +91,8 @@ p{margin:0 0 1em}
 .pills li span{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--o-l);color:var(--o-d)}
 .pills li span svg{width:13px;height:13px}
 .hero .after{margin-top:12px;font-size:.8rem;color:var(--ink-3)}
+.hero-fare{background:#fff;border-left:5px solid var(--o);border-radius:14px;padding:12px 16px;margin:0 0 16px;box-shadow:var(--shadow)}.hero-fare b{display:block;font-size:1rem;color:var(--o-d);margin-bottom:4px}.hero-fare span{display:block;font-size:.84rem;color:var(--ink-2);line-height:1.6}
+.fare-cta{text-align:center;margin:18px 0 6px}.fare-cta .btn{display:inline-flex}.fare-cta p{font-size:.8rem;color:var(--ink-3);margin-top:8px}
 .hero-visual{position:relative;max-width:520px;width:100%;margin:0 auto}
 .hero-visual .photo{aspect-ratio:1/1;border-radius:36px;box-shadow:0 30px 60px rgba(226,86,10,.18)}
 .hero-visual .photo .fallback svg{width:92%}
@@ -619,7 +621,7 @@ footer a{color:var(--ink-2)}
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="6" cy="9" r="2.2"/><circle cx="10" cy="5.5" r="2.2"/><circle cx="14" cy="5.5" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M12 11c-3 0-6 3.6-6 6.2 0 1.8 1.5 2.8 3 2.8 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.5 0 3-1 3-2.8C18 14.6 15 11 12 11z"/></svg></i>ペットタクシー予約窓口</a>
-    <nav><a href="#how">使い方</a><a href="#area">エリア</a><a href="#price">料金</a><a href="/guide/">ガイド</a><a href="#faq">よくある質問</a></nav>
+    <nav><a href="#how">使い方</a><a href="#area">エリア</a><a href="#form">料金をくらべる</a><a href="/guide/">ガイド</a><a href="#faq">よくある質問</a></nav>
     <span class="top-cta"><a class="mini" href="#form" data-cta="header"><span class="lg">空き状況と料金を</span>問い合わせる<span class="lg">（無料）</span></a></span>
   </div>
 </header>
@@ -641,7 +643,8 @@ footer a{color:var(--ink-2)}
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>連絡はメールだけ</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>多頭もOK</li>
       </ul>
-      <a class="btn" href="#form">日時を選んで予約を申し込む<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
+      <div class="hero-fare"><b>各社の料金を、その場でくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。各社の公式サイトの料金表から計算した概算で、確定料金ではありません。</span></div>
+      <a class="btn" href="#form" data-cta="hero-fare">各社の料金をくらべる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
       <p class="after">無料で使えます（運賃は当日ペットタクシーへ直接お支払い）。当日の依頼もできます。</p>
     </div>
     <div class="hero-visual">
@@ -921,6 +924,7 @@ footer a{color:var(--ink-2)}
     <p class="fare-flag"><b>確定料金ではありません。</b>上の金額は目安です。確定料金（税込）は、問い合わせた会社から、空き状況と一緒にメールでお知らせします。</p>
     <p class="fare-night"><b>🌙 夜間・早朝の割増</b>上の目安は昼間の料金です。夜間・早朝の割増は、かかるかどうかも金額も会社ごとに違います。フォームの候補には、会社ごとの割増を入れた目安が出ます。</p>
     <p class="small">全国18都道府県・91社のペットタクシーが公式サイトにのせている料金表で、乗った距離の運賃（片道）を計算しました。大きい数字はまんなかの会社の金額で、その下は安い会社〜高い会社です。お迎え料金・待ち時間・夜間の割増・高速代・駐車場代は入っていません。フォームにお迎えの場所と行き先を入れると、来てもらえる会社ごとに、お迎え料金なども入れた目安が出ます。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。都道府県ごとの料金の例は、<a href="/area/">全国のペットタクシー情報</a>にまとめています。</p><!--/FARE_TABLE-->
+    <div class="fare-cta"><a class="btn" href="#form" data-cta="price-fare">あなたのルートで各社の料金をくらべる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a><p>公式サイトの料金表から計算した概算です。確定料金ではありません。料金表のない会社は「料金はお見積もり」と出ます。</p></div>
   </div>
 </section>
 
