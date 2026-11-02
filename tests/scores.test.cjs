@@ -11,6 +11,7 @@ const props = {PLACES_API_KEY:'k', REVIEW_COUNT_202610:'0'};
 ctx.PropertiesService = {getScriptProperties:()=>({getProperty:k=>props[k]||null,setProperty:(k,v)=>{props[k]=v;}})};
 ctx.Utilities = {formatDate:()=> '202610'};
 ctx.log_ = ()=>{};
+const realAnon = ctx.isAnon_; ctx.isAnon_ = () => false; // 名前を伏せる判定はこのテストの最後で確かめる
 let calls = [];
 const resp = (o) => ({getResponseCode:()=>200,getContentText:()=>JSON.stringify(o)});
 ctx.UrlFetchApp = {fetchAll:(reqs)=>reqs.map(q=>{ calls.push(q.url);
@@ -34,7 +35,11 @@ calls = [];
 r = JSON.parse(JSON.stringify(ctx.selectionScores_(a.id)));
 assert.deepEqual(r.scores, {}); assert.equal(calls.length, 0);      // 月の上限を超えたら取り寄せない
 assert.equal(ctx.selectionReviews_(a.id).ok !== undefined, true);   // 表示だけの会社も口コミ本文を見られる
-console.log('PASS: scores fetched in one batch, place names checked, monthly cap kept');
+ctx.isAnon_ = realAnon; props.REVIEW_COUNT_202610 = '0'; calls = [];
+r = JSON.parse(JSON.stringify(ctx.selectionScores_(a.id)));
+assert.deepEqual(r.scores, {}); assert.equal(calls.length, 0);      // 提携していない会社は星を出さない（名前を伏せる）
+assert.equal(ctx.selectionReviews_(a.id).ok, false);
+console.log('PASS: scores fetched in one batch, place names checked, monthly cap kept; anonymous companies get no stars');
 // 地図の名前が少し違っても、ブランド名と支店名の中心が合えば同じ場所とみなす。ほかの支店は取り違えない
 const ok = (w, n) => ctx.placeNameOk_({words:w.split(' '), loose:true}, {displayName:{text:n}});
 assert.equal(ok('COCOタク 東京小平店', 'ペットタクシー COCOタク 小平店'), true);
