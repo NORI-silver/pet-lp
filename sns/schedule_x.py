@@ -14,7 +14,7 @@ import json, os, subprocess, sys, time, datetime as dt, urllib.request, urllib.e
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 API = "https://api.typefully.com/v2"
-HANDLE = "pettaxi_yoyaku"
+HANDLES = {"pettaxi_yoyaku", "shiokonbu_pet"}  # ユーザー名を変えても同じアカウントに入れる
 JST = dt.timezone(dt.timedelta(hours=9))
 SLOTS = {1: 20, 4: 20}  # 火曜(1)・金曜(4) の20時
 # 文の決まり（AGENTS.md）。1つでも入っていたら予約しない。
@@ -35,9 +35,9 @@ def req(method, path, key, body=None):
 
 def social_set(key):
     sets = req("GET", "/social-sets?limit=50", key)["results"]
-    sid = next((s["id"] for s in sets if (s.get("username") or "").lower() == HANDLE), None)
+    sid = next((s["id"] for s in sets if (s.get("username") or "").lower() in HANDLES), None)
     if not sid:
-        sys.exit(f"{HANDLE} のアカウントが Typefully に見つかりません: {[s.get('username') for s in sets]}")
+        sys.exit(f"{HANDLES} のアカウントが Typefully に見つかりません: {[s.get('username') for s in sets]}")
     return sid
 
 
@@ -56,7 +56,8 @@ def next_slots(after, n):
 def main():
     n = int(next((a for a in sys.argv[1:] if a.isdigit()), 2))
     dry = "--dry" in sys.argv
-    redo = "--redo" in sys.argv  # 予約ずみ（まだ出ていない）ものを消して入れ直す
+    hold = "--hold" in sys.argv  # 予約ずみ（まだ出ていない）ものを消して、入れ直さない
+    redo = "--redo" in sys.argv or hold  # 予約ずみ（まだ出ていない）ものを消して入れ直す
     posts = json.load(open(os.path.join(HERE, "posts.json"), encoding="utf-8"))["posts"]
     sp = os.path.join(HERE, "state.json")
     state = json.load(open(sp, encoding="utf-8")) if os.path.exists(sp) else {"x": {}}
@@ -72,7 +73,10 @@ def main():
             gone += 1
         state["x"] = {k: v for k, v in state["x"].items() if dt.datetime.fromisoformat(v) <= now}
         n = max(n, gone)
-        print("予約を消して入れ直す:", gone)
+        print("予約を消した:", gone)
+        if hold:
+            json.dump(state, open(sp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+            return 0
     todo = [p for p in posts if str(p["no"]) not in state["x"]][:n]
     if not todo:
         print("予約できる投稿が残っていません。posts.json に新しい投稿を足してください。")
