@@ -2425,6 +2425,12 @@ function reviewDebug_(id) {
     r.candidates = (found.places || []).map(function(x) { return {name:(x.displayName || {}).text || '', ok:placeNameOk_(t, x)}; });
     if (found.error) r.searchError = found.error;
   }
+  if (t && apiKey && r.saved && r.saved !== '-') { // 覚えている場所の点数と件数（月の回数に数えずに1回だけ取り寄せる。点数がない場所は星を出さない仕様）
+    var d = placeDetailsRequest_(r.saved, apiKey, 'rating,userRatingCount,displayName'), durl = d.url; delete d.url;
+    var dres = UrlFetchApp.fetch(durl, d);
+    r.detailsStatus = dres.getResponseCode();
+    try { r.details = JSON.parse(dres.getContentText()); } catch (e) { r.details = dres.getContentText().slice(0, 300); }
+  }
   r.logSheet = !!sheet_(SHEET_LOG); // ログの書き先（「ログ」タブ）があるか
   r.keysWithId = props.getKeys().filter(function(k) { return k.indexOf(id) >= 0; }); // そのIDに関わる覚えている値のキー
   Logger.log(JSON.stringify(r));
