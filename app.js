@@ -1,6 +1,8 @@
 
 /* フォーム送信先（Google Apps Script のウェブアプリURL）。空の間は送信されません。 */
 var GAS_URL = "https://script.google.com/macros/s/AKfycbyy-cTvD-t8DFGhEyA2IbFiXWoB50kl_2_97WiVdMlXec8sIbI2NVUkkyn-45VkIMc_5g/exec";
+/* お誘いした会社だけの見本の画面（?demo=…。Nori 2026-11-02）。その会社だけ名前と口コミつきで出し、問い合わせは送らない */
+var DEMO = {tok: (function(){ try { return new URLSearchParams(location.search).get("demo") || ""; } catch (e) { return ""; } })(), ok: false, name: ""};
 /* アクセス解析に操作の回数だけを送る（入力内容は送らない）。ga.js が動いていないときは何もしない */
 function track(name, params){ if (window.gtag) gtag("event", name, params || {}); }
 var partnersTracked = false;
@@ -121,7 +123,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (!routeDetails) { showLoading(); return; } // 道のりを調べ終わったら、もう一度呼ばれる
     var searchSeq = ++quoteSeq, search = requestPayload().body;
     ["name","tel","email","notes","contact","website","pets","breed","age","sex","est_fare","est_fare_text"].forEach(function(k){search.delete(k);});
-    search.set("kind", "quotes");
+    search.set("kind", "quotes"); if (DEMO.tok) search.set("demo", DEMO.tok);
     showLoading();
     fetch(GAS_URL,{method:"POST",body:search}).then(function(res){return res.json();}).then(function(result){
       if (searchSeq !== quoteSeq || sending) return;
@@ -142,7 +144,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     track("open_reviews");
     if (panel.dataset.done) return;
     panel.textContent = "口コミを読み込んでいます…";
-    var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
+    var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id); if (DEMO.tok) body.set("demo", DEMO.tok);
     fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
       if (!j || !j.ok || !Array.isArray(j.reviews)) throw 0;
       panel.dataset.done = "1"; panel.replaceChildren();
@@ -286,7 +288,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (!scoresReady) return;
     var ids = all.map(function(c){ return c.id; }).filter(function(id, i, a){ return id && a.indexOf(id) === i && !Object.prototype.hasOwnProperty.call(scoreMemo, id); });
     if (!ids.length) return;
-    var seq = quoteSeq, body = new URLSearchParams(); body.set("kind", "scores"); body.set("ids", ids.join(","));
+    var seq = quoteSeq, body = new URLSearchParams(); body.set("kind", "scores"); body.set("ids", ids.join(",")); if (DEMO.tok) body.set("demo", DEMO.tok);
     fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
       if (!j || !j.ok) return;
       ids.forEach(function(id){ scoreMemo[id] = (j.scores || {})[id] || null; });
@@ -300,7 +302,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   function buildCard(card, leg){
       var article = document.createElement("article"); article.className = "partner-card";
       function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
-      text("h4", card.label);
+      var h4 = text("h4", card.label);
+      if (card.demo) { var bd = document.createElement("span"); bd.className = "demo-badge"; bd.textContent = "提携（見本）"; h4.appendChild(bd); }
       // お店からお迎えの場所までの車の道のり（道路データで調べる。直線距離は出さない。Nori 2026-11-01）
       if ("shop" in card) { var road = roadOf(card, leg);
         text("p", !card.shop ? "お店の場所は確認中です" : road === undefined ? "お店からの道のりを調べています…" : road == null ? "お店からの道のりは調べられませんでした" : "お店からお迎えの場所まで 車で" + road.toFixed(1) + "km", "partner-dist"); }
@@ -390,6 +393,29 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       btn.addEventListener("click", function(){ if (sending) return; if (leg) return pickLeg(leg, card, article); togglePick(card); });
       article.addEventListener("click", function(event){ if (!event.target.closest("button,a,details,.review-panel")) btn.click(); });
       article.appendChild(btn); return article;
+  }
+  // 見本の画面：上にお知らせを出し、その会社の都道府県を選んだ状態にする
+  if (DEMO.tok && GAS_URL) {
+    var demoBody = new URLSearchParams(); demoBody.set("kind", "demo"); demoBody.set("demo", DEMO.tok);
+    fetch(GAS_URL, {method: "POST", body: demoBody}).then(function(r){ return r.json(); }).then(function(j){
+      if (!j || !j.ok) return;
+      DEMO.ok = true; DEMO.name = j.name || "";
+      var box = document.createElement("div"); box.className = "demo-banner"; box.setAttribute("role", "note");
+      var b = document.createElement("b"); b.textContent = DEMO.name + "さま向けの見本の画面です";
+      box.append(b, document.createTextNode("ご提携いただいたときの見え方をお試しいただけます。" + (j.pref ? j.pref + "の" : "貴社の対応エリアの") + "お迎えの場所と日時を入れると、貴社が社名と口コミつきで、問い合わせできる会社として一番上に出ます（日時が貴社の営業時間の外だと出ません）。ほかの会社は、提携していないため社名を伏せています。この画面から問い合わせを送っても、どこにも届きません。"));
+      var f = $("petForm"); f.parentNode.insertBefore(box, f);
+      if (j.pref && $("pref") && [].some.call($("pref").options, function(o){ return o.value === j.pref; }) && !$("pref").value) { setSelect($("pref"), j.pref); }
+      if (typeof queuePartners === "function") queuePartners();
+    }).catch(function(){});
+  }
+  function demoSent(){
+    var box = $("demoDone");
+    if (!box) { box = document.createElement("div"); box.id = "demoDone"; box.className = "demo-done"; box.setAttribute("role", "status"); $("sendSelected").parentNode.insertBefore(box, $("sendSelected")); }
+    box.replaceChildren();
+    var b = document.createElement("b"); b.textContent = "見本の画面なので、問い合わせは送っていません";
+    var a = document.createElement("a"); a.href = "/partner/#screens"; a.textContent = "届くメールとお返事の画面の見本を見る";
+    box.append(b, document.createTextNode("ご提携後は、ここで選ばれた会社さまに「空き状況と料金のお問い合わせ」のメールが届きます（飼い主さんのお名前と連絡先は、予約が確定するまで伏せます）。お迎え時刻と確定料金を入れてお返事いただき、飼い主さんが「この内容で予約する」を押すと予約が確定します。"), document.createElement("br"), a);
+    box.scrollIntoView({block: "center", behavior: "smooth"});
   }
   function togglePick(card){
     chosenGo = null; chosenBack = null;
@@ -1893,6 +1919,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   form.addEventListener("submit", function(e){
     e.preventDefault();
     if (sending) return;
+    if (DEMO.ok && (chosenPicks.length || chosenGo || chosenBack)) { demoSent(); return; } // 見本の画面では送らない
     err.style.display = "none";
     function fail(msg, el){
       err.textContent = msg; err.style.display = "block";
