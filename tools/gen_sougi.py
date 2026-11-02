@@ -6,6 +6,7 @@
 # データ：tools/sougi.json（県庁所在地（東京都は新宿区、見つからない県はほかの市）と政令指定都市。how/fee/bone/k）。
 import json, os
 import prefkeep
+from guides_sougi import SOUGI_GUIDES
 
 J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sougi.json"), encoding="utf-8"))
 
@@ -186,7 +187,11 @@ def render(ctx):
 
     toc = '<nav class="tip art-toc" aria-label="このページの目次"><b>このページで分かること</b><ol>' + "".join(
         f'<li><a href="#{i}">{e(h)}</a></li>' for i, h, _ in S) + '<li><a href="#list">都道府県ごとの自治体の受け付け（料金・お骨）</a></li><li><a href="#faq">よくある質問</a></li></ol></nav>'
-    art = toc + "".join(f'<h2 id="{i}">{e(h)}</h2>{b}' for i, h, b in S)
+    more = {"first": "pet-died-first", "kinds": "pet-cremation-types", "price": "pet-cremation-city", "todoke": "pet-death-procedures", "kuyou": "pet-memorial", "loss": "pet-loss"}
+    gt = {g["slug"]: g["title"] for g in SOUGI_GUIDES}
+    def _more(i):
+        return f'<p>くわしくは：<a href="/guide/{more[i]}/">{e(gt[more[i]])}</a></p>' if i in more else ""
+    art = toc + "".join(f'<h2 id="{i}">{e(h)}</h2>{b}{_more(i)}' for i, h, b in S)
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in FAQ)
 
     ld = '<script type="application/ld+json">\n' + json.dumps([
@@ -237,6 +242,8 @@ def render(ctx):
 </section>
 <section style="padding-top:0">
   <div class="wrap">
+    <div class="sh"><h2>くわしい記事</h2><p>することを、記事でくわしく順番に説明しています。</p></div>
+    <ul class="other">{"".join(f'<li><a href="/guide/{e(g["slug"])}/">{e(g["title"])}</a></li>' for g in SOUGI_GUIDES)}</ul>
     <div class="sh"><h2>ほかの窓口の案内</h2><p>ペットのことで自治体に相談したいときの窓口や、動物病院の一覧もまとめています。</p></div>
     <ul class="other"><li><a href="/jichitai/">ペットの迷子・犬の登録・引取りの窓口</a></li><li><a href="/hospital/">条件でさがす動物病院</a></li><li><a href="/emergency/">緊急のときの連絡先</a></li><li><a href="/guide/">ペットの移動ガイド</a></li></ul>
     {ctx["area_links"]()}
