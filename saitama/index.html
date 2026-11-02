@@ -623,6 +623,36 @@ footer a{color:var(--ink-2)}
 .src a{color:var(--ink-3)}
 @media (min-width:760px){.art h2{font-size:1.55rem}}
 @media (min-width:760px){.area-hero{padding:32px 0 80px}.area-hero h1{font-size:2.5rem}.prose h2{font-size:1.7rem}}
+/* ドッグラン（tools/gen_dogrun.py） */
+.dr-stats{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:14px 0 0}
+.dr-stats li{background:#fff;border-radius:14px;padding:8px 14px;font-size:.86rem;color:var(--ink-2);box-shadow:0 2px 8px rgba(28,26,24,.06)}
+.dr-stats b{font-size:1.15rem;color:var(--o-d);margin-right:2px}
+.dr-prefs{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:8px;list-style:none;padding:0;margin:8px 0 0}
+.dr-prefs a,.dr-prefs span{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:.9rem;font-weight:700;color:var(--ink);text-decoration:none;background:#fff}
+.dr-prefs a:hover{border-color:var(--o);color:var(--o-d)}
+.dr-prefs small{font-weight:400;color:var(--ink-3);font-size:.78rem}
+.dr-prefs span{color:var(--ink-3);font-weight:400}
+.dr-region{font-size:1rem;margin:20px 0 0}
+.dr-tags,.art .dr-tags{display:flex;flex-wrap:wrap;gap:5px;list-style:none;padding:0;margin:6px 0 0}
+.dr-tags li{font-size:.74rem;font-weight:700;border-radius:999px;padding:2px 10px;background:#f7f4f1;color:var(--ink-2)}
+.dr-tags li.ok{background:var(--o-l);color:var(--o-d)}
+.dr-card{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:18px 18px 8px;margin:0 0 18px;scroll-margin-top:90px}
+.art .dr-card h2{margin:0 0 4px;font-size:1.2rem;border-left:0;padding-left:0}
+.dr-card .dr-city{font-size:.84rem;color:var(--ink-3);margin:0}
+.dr-card dl{margin:12px 0 0;display:grid;grid-template-columns:1fr;gap:0}
+.dr-card dt{font-size:.78rem;font-weight:800;color:var(--ink-3);margin-top:10px}
+.dr-card dd{margin:2px 0 0;font-size:.9rem;line-height:1.7;color:var(--ink)}
+@media (min-width:600px){.dr-card dl{grid-template-columns:9em 1fr}.dr-card dt{margin:0;padding:8px 0;border-top:1px solid var(--line)}.dr-card dd{margin:0;padding:8px 0;border-top:1px solid var(--line)}}
+.dr-card .dr-links{font-size:.84rem;margin:12px 0 8px}
+.dr-card .dr-links small{display:block;color:var(--ink-3);font-size:.76rem;margin-top:4px;word-break:break-all}
+.dr-card .dr-links small a{color:var(--ink-3)}
+.art .dr-tbl td,.art .dr-tbl th{text-align:left;padding:8px 6px}
+.art .dr-tbl td:last-child,.art .dr-tbl th:last-child{background:transparent;font-weight:400}
+.art .dr-tbl th:last-child{background:#f7f4f1;font-weight:700}
+.art .dr-tbl td:nth-child(n+3),.art .dr-tbl th:nth-child(n+3){white-space:nowrap}
+.dr-row{border-top:1px solid var(--line);padding:10px 2px}
+.dr-row a{font-weight:700}
+.dr-row small{color:var(--ink-3);margin-left:6px}
 </style>
 <script type="application/ld+json">
 {
@@ -1038,6 +1068,7 @@ footer a{color:var(--ink-2)}
     <h2>埼玉に来てくれるペットタクシー19社の、対応エリアと料金のしくみ</h2><p>埼玉県のお迎えに対応している19社について、公式サイトに書かれている対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p><p>公式サイトに書いている内容を数えると、24時間受け付けている会社が10社・当日の予約も受ける会社が5社・カードで払える会社が7社・大型犬に対応している会社が4社・前日までキャンセル無料の会社が3社でした（書いていない会社が、できないとは限りません）。</p><p>対応エリアに地名が書かれている会社を数えると、川口が3社・所沢が3社・草加が2社・さいたまが1社・川越が1社・春日部が1社・戸田が1社・熊谷が1社でした。このほか「全域」「◯◯一円」のように広く書いている会社が1社あります。地名が書かれていなくても来てもらえることがあるので、お迎えの場所はフォームで確かめてください。</p><div class="tbl"><table><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody><tr><td>県内</td><td>さいたま市中心に県南部、東京の一部</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>料金表にない</td></tr><tr><td>県内</td><td>川越中心に所沢・入間・狭山・飯能・熊谷など。隣県・全国も</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>料金表にない</td></tr><tr><td>県内</td><td>春日部中心、埼玉東部、茨城（古河・五霞・坂東）、千葉（野田・柏・流山）、栃木（小山・野木）、群馬（館林・邑楽）の一部</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>川口市を中心に東京・埼玉</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>新座市を中心に東京の練馬区・杉並区・世田谷区・板橋区、埼玉の和光・朝霞・志木・所沢・富士見・三芳</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>川口・蕨・草加・戸田、東京の北区・足立・板橋。緊急は全国</td><td>—</td><td>3,300円</td><td>料金表にない</td><td>22時〜5時は2割増</td></tr><tr><td>千葉県</td><td>東京23区・都下、千葉、埼玉の一部</td><td>24時間</td><td>770円</td><td>3kmまで550円、そのあと1kmごとに110円</td><td>時間帯で1,100〜3,300円</td></tr><tr><td>神奈川県</td><td>横浜・川崎・東京中心。神奈川・千葉・埼玉、長距離も</td><td>—</td><td>1,650円</td><td>1kmごとに150円</td><td>21時〜7時は2割増</td></tr><tr><td>東京都</td><td>東京・埼玉・千葉・神奈川、長距離</td><td>8時〜21時</td><td>2,200円</td><td>880円（変わることあり）</td><td>料金表にない</td></tr><tr><td>東京都</td><td>東京23区・埼玉・千葉が中心</td><td>8時〜20時</td><td>2,200円</td><td>1,000円（変わることあり）</td><td>料金表にない</td></tr><tr><td>東京都</td><td>東京23区、埼玉9市、千葉7市（当日対応）。ほかは相談</td><td>8時〜20時</td><td>2,200円</td><td>770円（変わることあり）</td><td>料金表にない</td></tr><tr><td>神奈川県</td><td>関東近県から全国（沖縄・離島は不可）</td><td>—</td><td>3,100円</td><td>1kmごとに100円</td><td>22時〜8時は3割増</td></tr><tr><td>東京都</td><td>杉並区・中野区・世田谷区・練馬区・新宿区・渋谷区・武蔵野市・三鷹市を中心に東京・神奈川・千葉・埼玉</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>東京都</td><td>小平・東村山・立川・国分寺・府中・八王子など多摩一帯、所沢・朝霞・和光など埼玉の一部</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>東京都</td><td>足立区・北区・板橋区・荒川区・豊島区・文京区・台東区・葛飾区・墨田区・江戸川区・川口市・草加市</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>東京都</td><td>葛飾区・足立区・江戸川区など東京東部、千葉・埼玉</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>東京都</td><td>千葉県全域ほか首都圏・全国に拡大中。長距離は相談</td><td>—</td><td>4,600円</td><td>1kmごとに120円</td><td>21時〜7時は3,000円</td></tr><tr><td>神奈川県</td><td>横浜市北部、東京の多摩の一部、埼玉の和光・朝霞・志木など（23区・武蔵野・三鷹は不可）</td><td>—</td><td>お見積もり</td><td>—</td><td>—</td></tr><tr><td>神奈川県</td><td>神奈川・関東近県中心、全国（島しょ除く）</td><td>—</td><td>お見積もり</td><td>—</td><td>—</td></tr></tbody></table></div><p class="fare-flag"><b>確定料金ではありません。</b>2026年10月30日時点で各社の公式サイトを読んでまとめたもので、会社名は出していません。5kmの運賃は料金表から計算した片道の金額で、お迎え料金・待ち時間・高速代は入っていません。料金や対応エリアは変わることがあるので、フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p>
     <h3>埼玉県の夜間・救急の動物病院</h3>
     <p>夜や休日に具合が悪くなったときのために、埼玉県の夜間・救急の動物病院を受付時間つきで<a href="/hospital/night/#pref=%E5%9F%BC%E7%8E%89%E7%9C%8C">夜間・救急の動物病院の一覧</a>にまとめています。往診専門の動物病院（家まで来てくれる獣医さん）は<a href="/hospital/visit/#pref=%E5%9F%BC%E7%8E%89%E7%9C%8C">往診の一覧</a>、猫だけを診る病院は<a href="/hospital/cat/#pref=%E5%9F%BC%E7%8E%89%E7%9C%8C">猫専門の動物病院</a>にあります。</p>
+    <h3>埼玉県の公営ドッグラン</h3><p>埼玉県には、公式ページで確かめた公営のドッグランが4か所あります（川越公園ドッグラン「わんこの遊び場」（県営）、所沢航空記念公園ドッグラン（県営）、大間木ドッグランなど）。料金・利用登録・利用時間・小型犬エリアの有無は<a href="/dogrun/saitama/">埼玉県の公営ドッグラン</a>にまとめています。大型犬や何頭もいっしょで、車がないときはペットタクシーでも行けます。</p>
   </div>
 </section>
 
