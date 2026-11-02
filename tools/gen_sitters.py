@@ -102,3 +102,27 @@ def urls(SITE):
 def write_all(ROOT, ctx):
     os.makedirs(os.path.join(ROOT, SLUG), exist_ok=True)
     open(os.path.join(ROOT, SLUG, "index.html"), "w", encoding="utf-8").write(render(ctx))
+
+# ── 都道府県ごとのページ（tools/gen_prefpages.py。[B] SEO「ペットシッター ◯◯県」） ──
+def _facts(rs):
+    n = len(rs)
+    out = []
+    for k, ch in J["chains"].items():
+        c = sum(s["chain"] == k for s in rs)
+        if c: out.append(f"{ch['name']}：{c}店")
+    out.append(f"猫について「対象」に書いてある店：{sum('猫' in s.get('animals', '') for s in rs)}／{n}")
+    return out
+def _faq(pf, rs, n):
+    return [
+     (f"{pf}にペットシッターは何店ありますか？", f"この一覧では、{pf}を対応エリアにしているペットシッターを{n}店載せています。店ごとに対応エリアが市区町村単位で決まっているので、一覧の「対応エリア」でご確認ください。"),
+     ("料金はいくらですか？", "この一覧には料金を載せていません。1回の訪問の時間、頭数、出張費・鍵の預かりの費用などで決まります。"),
+     ("はじめて頼むとき、何をすればいいですか？", "多くの店で、頼む前に家で事前の打ち合わせ（カウンセリング）をします。ごはん・トイレ・薬・緊急のときの動物病院・鍵の受け渡しを決めます。記事「ペットシッターの頼み方」にまとめました。"),
+     ("留守中に病院へ連れていってもらえますか？", "通院の付き添いを受ける店もあります。移動の方法（ペットタクシーなど）もあわせて打ち合わせで決めておくと安心です。"),
+    ]
+CAT = dict(slug=SLUG, name="ペットシッター", unit="店", h1=H1, items=J["sitters"], card=_card, checked=J["checked"], reviews=False,
+  title_word="ペットシッター", title_tail="自宅でお世話・散歩代行・対応エリアつき",
+  desc_tail="旅行や出張、入院のあいだに自宅へ来てお世話や散歩をしてくれるシッターの対応エリアと、頼む前に確かめたいことを載せています。料金や順位は載せていません。",
+  lede=lambda pf, n: f"旅行や出張、入院のあいだ、ペットを家に残したままお世話や散歩をしてくれるペットシッターを、{pf}で{n}店まとめました。各グループの公式サイトの店舗一覧で確かめた対応エリアだけを載せています。",
+  facts=_facts, faq=_faq, before_title="ペットシッターを頼む前に確かめること", before=BEFORE,
+  taxi_h="留守中の通院やホテルへの移動は、ペットタクシーで", taxi_p="家の前から動物病院やペットホテルの前まで移動できます。",
+  links=[("ペットシッターの頼み方", "/guide/how-to-use-pet-sitter/"), ("ペットシッターとペットホテル、どちらがいい？", "/guide/sitter-or-hotel/"), ("猫の留守番とキャットシッター", "/guide/cat-sitter/"), ("トリミング・ペットホテルへの送迎ガイド", "/guide/grooming-hotel/")])
