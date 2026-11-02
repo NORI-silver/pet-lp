@@ -364,7 +364,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         });
         box.appendChild(list); more.appendChild(box);
       }
-      if (card.price.local) {
+      if (card.price.fixed) { if (card.price.planNote) add("p",roundYenText(card.price.planNote),"partner-note"); }
+      else if (card.price.local) {
         var lp = card.price.local, fy = function(v, unknown){ return v ? yen(v) + (unknown ? "〜" : "") : unknown ? "要確認" : "0円"; };
         breakdown("迎車 " + fy(lp.pickup, lp.pickupUnknown) + "・回送 " + fy(lp.returnFee, lp.returnUnknown) + (lp.pickupUnknown || lp.returnUnknown ? "（追加分は要確認）" : "を含む"), lp);
         if (card.price.highway) breakdown("高速利用時 " + yen(card.price.highway.amount) + (card.price.highway.pickupUnknown || card.price.highway.returnUnknown ? "〜" : "") + " ＋ 通行料の実費", card.price.highway, "hw");
@@ -375,7 +376,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       }
       if (card.price.night && !(card.price.local && card.price.local.nightExtra)) add("p",roundYenText(card.price.night),"partner-note");
       add("p", card.car); add("p", card.payment);
-      add("p", (card.price.amount == null ? "" : "この会社の公式サイトに書かれている料金表をもとに、道のりから計算した概算です（100円単位にまるめています）。当日の道順・渋滞・待ち時間などで変わります。確定料金は、問い合わせたあと会社が返事でお知らせします。") + "通行料・駐車場代は別途実費です。高速道路を使うときの総額は、事業者の確認後にお知らせします。", "partner-note");
+      add("p", (card.price.amount == null ? "" : card.price.fixed ? "この会社の公式サイトに書かれている定額をもとにした概算です（100円単位にまるめています）。当日の条件で変わることがあります。確定料金は、問い合わせたあと会社が返事でお知らせします。" : "この会社の公式サイトに書かれている料金表をもとに、道のりから計算した概算です（100円単位にまるめています）。当日の道順・渋滞・待ち時間などで変わります。確定料金は、問い合わせたあと会社が返事でお知らせします。") + (card.price.fixed && card.price.tollIncluded ? "" : card.price.fixed ? "駐車場代は別途実費です。" : "通行料・駐車場代は別途実費です。高速道路を使うときの総額は、事業者の確認後にお知らせします。"), "partner-note");
       // 表示だけの会社（準備中）。予約の依頼はできない（サーバーでも断る）
       if (card.display_only) {
         article.classList.add("partner-later");
