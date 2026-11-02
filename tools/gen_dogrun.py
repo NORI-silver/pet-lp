@@ -407,8 +407,8 @@ def render_pref(ctx, pf, rs):
     n = len(rs)
     cities = []
     for d in rs:
-        c = d.get("city", "")
-        if c and c not in cities: cities.append(c)
+        for c in d.get("city", "").split("・"):
+            if c and c not in cities: cities.append(c)
     ctext = "・".join(cities[:3])
     title = f"{pf}のドッグラン{n}か所｜無料・登録・利用時間の一覧" + (f"（{ctext}）" if ctext and len(ctext) <= 14 else "") + "｜ペットタクシー予約窓口"
     names = "、".join(d["name"] for d in rs[:2])
