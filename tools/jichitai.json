@@ -1,0 +1,1521 @@
+{
+ "_説明": "お金を取らない情報ページ（/jichitai/）のデータ。都道府県・政令指定都市・中核市の動物愛護の窓口（動物愛護センター・保健所）の公式ページ。どの自治体が担当かは環境省「地方自治体連絡先一覧」(https://www.env.go.jp/nature/dobutsu/aigo/3_contact/) の129自治体に合わせた。リンクは各自治体の公式サイトのページ（ページ名で確かめた）。電話番号は載せない。",
+ "checked": "2026年11月2日",
+ "source": "https://www.env.go.jp/nature/dobutsu/aigo/3_contact/",
+ "prefs": [
+  {
+   "pref": "北海道",
+   "name": "北海道立動物愛護センター（あいにきた）",
+   "url": "https://www.pref.hokkaido.lg.jp/ks/awc/ainikita.html",
+   "links": [
+    {
+     "t": "道内における犬・猫保護・収容情報",
+     "u": "https://www.pref.hokkaido.lg.jp/ks/awc/partner.html"
+    }
+   ]
+  },
+  {
+   "pref": "青森県",
+   "name": "青森県動物愛護センター",
+   "url": "https://www.pref.aomori.lg.jp/soshiki/kenko/dobutu/",
+   "links": []
+  },
+  {
+   "pref": "岩手県",
+   "name": "岩手県（県民くらしの安全課）ペットのページ",
+   "url": "https://www.pref.iwate.jp/kurashikankyou/anzenanshin/pet/1004620.html",
+   "links": [
+    {
+     "t": "岩手県内の保護動物情報",
+     "u": "https://www.pref.iwate.jp/kurashikankyou/anzenanshin/pet/1004615.html"
+    }
+   ]
+  },
+  {
+   "pref": "宮城県",
+   "name": "宮城県動物愛護センター",
+   "url": "https://www.pref.miyagi.jp/soshiki/doubutuaigo/index.html",
+   "links": [
+    {
+     "t": "宮城県保護動物・保護犬情報",
+     "u": "https://www.pref.miyagi.jp/soshiki/doubutuaigo/hogoaigo.html"
+    }
+   ]
+  },
+  {
+   "pref": "秋田県",
+   "name": "秋田県動物愛護センター（主な業務内容）",
+   "url": "https://www.pref.akita.lg.jp/pages/archive/61",
+   "links": [
+    {
+     "t": "飼い犬がいなくなったら",
+     "u": "https://www.pref.akita.lg.jp/pages/archive/28561"
+    }
+   ]
+  },
+  {
+   "pref": "山形県",
+   "name": "山形県 動物愛護",
+   "url": "https://www.pref.yamagata.jp/kenfuku/doubutsuaigo/aigo/index.html",
+   "links": [
+    {
+     "t": "迷子・負傷犬猫情報",
+     "u": "https://www.pref.yamagata.jp/kenfuku/doubutsuaigo/aigo/inunekojouhou/index.html"
+    }
+   ]
+  },
+  {
+   "pref": "福島県",
+   "name": "福島県動物愛護センター",
+   "url": "https://www.pref.fukushima.lg.jp/sec/21620a/",
+   "links": [
+    {
+     "t": "迷子の犬・猫",
+     "u": "https://www.pref.fukushima.lg.jp/sec/21620a/maigo-dog-cat.html"
+    }
+   ]
+  },
+  {
+   "pref": "茨城県",
+   "name": "茨城県動物指導センター",
+   "url": "https://www.pref.ibaraki.jp/hokenfukushi/doshise/hogo/shoukai.html",
+   "links": [
+    {
+     "t": "迷い犬・迷い猫情報",
+     "u": "https://www.pref.ibaraki.jp/hokenfukushi/doshise/hogo/mayoiinuneko.html"
+    }
+   ]
+  },
+  {
+   "pref": "栃木県",
+   "name": "栃木県動物愛護指導センター",
+   "url": "https://www.douai.pref.tochigi.lg.jp/summary/",
+   "links": [
+    {
+     "t": "迷子のペットを探している方へ",
+     "u": "https://www.douai.pref.tochigi.lg.jp/work/custody-lostanimal/"
+    }
+   ]
+  },
+  {
+   "pref": "群馬県",
+   "name": "群馬県動物愛護センター",
+   "url": "https://www.pref.gunma.jp/soshiki/86/",
+   "links": [
+    {
+     "t": "ペットがいなくなってしまった飼い主の方へ",
+     "u": "https://www.pref.gunma.jp/page/660168.html"
+    }
+   ]
+  },
+  {
+   "pref": "埼玉県",
+   "name": "埼玉県動物指導センター",
+   "url": "https://www.pref.saitama.lg.jp/a0706/doubutu/telservice.html",
+   "links": [
+    {
+     "t": "ペットの迷子届・保護届",
+     "u": "https://www.pref.saitama.lg.jp/a0706/doubutu/telservice.html"
+    }
+   ]
+  },
+  {
+   "pref": "千葉県",
+   "name": "千葉県動物愛護センター",
+   "url": "https://www.pref.chiba.lg.jp/aigo/",
+   "links": [
+    {
+     "t": "収容されている犬",
+     "u": "https://www.pref.chiba.lg.jp/aigo/pet/inu-neko/shuuyou/shuu-inu.html"
+    }
+   ]
+  },
+  {
+   "pref": "東京都",
+   "name": "東京都動物愛護相談センター",
+   "url": "https://www.hokeniryo.metro.tokyo.lg.jp/shisetsu/jigyosyo/douso/gyoumu",
+   "links": [
+    {
+     "t": "犬、猫を逃がしてしまった飼い主の方へ",
+     "u": "https://www.hokeniryo.metro.tokyo.lg.jp/shisetsu/jigyosyo/douso/sissou/sissou"
+    },
+    {
+     "t": "収容動物情報（東京都）",
+     "u": "https://shuyojoho.metro.tokyo.lg.jp/"
+    }
+   ]
+  },
+  {
+   "pref": "神奈川県",
+   "name": "神奈川県動物愛護センター",
+   "url": "https://www.pref.kanagawa.jp/osirase/1594/awc/",
+   "links": [
+    {
+     "t": "迷子のペットをお探しの方へ",
+     "u": "https://www.pref.kanagawa.jp/osirase/1594/awc/lost/"
+    }
+   ]
+  },
+  {
+   "pref": "新潟県",
+   "name": "新潟県動物愛護センター",
+   "url": "https://www.pref.niigata.lg.jp/sec/seikatueisei/1338670837578.html",
+   "links": [
+    {
+     "t": "飼っている犬やねこが迷子になったら？",
+     "u": "https://www.pref.niigata.lg.jp/sec/seikatueisei/1211907692495.html"
+    }
+   ]
+  },
+  {
+   "pref": "富山県",
+   "name": "富山県動物管理センター",
+   "url": "https://www.pref.toyama.jp/1207/kurashi/seikatsu/seikatsu/doubutsuaigo/about/index.html",
+   "links": []
+  },
+  {
+   "pref": "石川県",
+   "name": "石川県 ペット・動物愛護",
+   "url": "https://www.pref.ishikawa.lg.jp/kurashi/seikatsu/pet/index.html",
+   "links": [
+    {
+     "t": "犬猫の保護情報",
+     "u": "https://www.pref.ishikawa.lg.jp/yakuji/doubutsu/hogoinuneko.html"
+    }
+   ]
+  },
+  {
+   "pref": "福井県",
+   "name": "福井県動物愛護センター",
+   "url": "https://www.pref.fukui.lg.jp/doc/doukansi/index.html",
+   "links": [
+    {
+     "t": "動物愛護センターに収容された犬・猫の流れ",
+     "u": "https://www.pref.fukui.lg.jp/doc/doukansi/doubutukanrisidou/doukansi-c-10.html"
+    }
+   ]
+  },
+  {
+   "pref": "山梨県",
+   "name": "山梨県 ペット・動物愛護",
+   "url": "https://www.pref.yamanashi.jp/toiawase/sodan/doubutsuaigo.html",
+   "links": [
+    {
+     "t": "飼っている犬や猫がいなくなってしまったら",
+     "u": "https://www.pref.yamanashi.jp/eisei-ykm/doubutuaigo_issou.html"
+    }
+   ]
+  },
+  {
+   "pref": "長野県",
+   "name": "長野県動物愛護センター（ハローアニマル）",
+   "url": "https://www.pref.nagano.lg.jp/dobutsuaigo/joto/inu-neko/index.html",
+   "links": [
+    {
+     "t": "ペットを保護した方へ",
+     "u": "https://www.pref.nagano.lg.jp/shokusei/kurashi/aigo/aigo/maigodoubutsu.html"
+    }
+   ]
+  },
+  {
+   "pref": "岐阜県",
+   "name": "岐阜県動物愛護センター",
+   "url": "https://www.pref.gifu.lg.jp/page/11539.html",
+   "links": [
+    {
+     "t": "よくある質問（動物愛護センター）",
+     "u": "https://www.pref.gifu.lg.jp/page/11543.html"
+    }
+   ]
+  },
+  {
+   "pref": "静岡県",
+   "name": "静岡県 動物愛護",
+   "url": "https://www.pref.shizuoka.jp/kenkofukushi/eiseiyakuji/dobutsuaigo/1081733/index.html",
+   "links": []
+  },
+  {
+   "pref": "愛知県",
+   "name": "愛知県動物愛護センター",
+   "url": "https://www.pref.aichi.jp/soshiki/doukan-c/",
+   "links": [
+    {
+     "t": "飼い犬がいなくなったら",
+     "u": "https://www.pref.aichi.jp/soshiki/doukan-c/inugainakunatta.html"
+    }
+   ]
+  },
+  {
+   "pref": "三重県",
+   "name": "三重県 狂犬病予防・動物愛護管理（動物関係のページ）",
+   "url": "https://www.pref.mie.lg.jp/SHOKUSEI/HP/70448044509.htm",
+   "links": []
+  },
+  {
+   "pref": "滋賀県",
+   "name": "滋賀県動物保護管理センター",
+   "url": "https://www.pref.shiga.lg.jp/doubutsuhogo/sonota/gaiyou/334372.html",
+   "links": [
+    {
+     "t": "飼い犬・猫が行方不明になったら",
+     "u": "https://www.pref.shiga.lg.jp/doubutsuhogo/azukari/102881.html"
+    }
+   ]
+  },
+  {
+   "pref": "京都府",
+   "name": "京都府 動物の飼養管理と愛護",
+   "url": "https://www.pref.kyoto.jp/doubutsu/",
+   "links": [
+    {
+     "t": "お問い合わせ先",
+     "u": "https://www.pref.kyoto.jp/doubutsu/toiawase.html"
+    }
+   ]
+  },
+  {
+   "pref": "大阪府",
+   "name": "大阪府動物愛護管理センター",
+   "url": "https://www.pref.osaka.lg.jp/o120200/doaicenter/doaicenter/index.html",
+   "links": [
+    {
+     "t": "迷子動物情報",
+     "u": "https://www.pref.osaka.lg.jp/o120200/doaicenter/doaicenter/maigoken.html"
+    }
+   ]
+  },
+  {
+   "pref": "兵庫県",
+   "name": "兵庫県動物愛護センター",
+   "url": "https://web.pref.hyogo.lg.jp/shisetsu/kurashi/shisetsu_052.html",
+   "links": [
+    {
+     "t": "犬の飼い主の皆様へ",
+     "u": "https://web.pref.hyogo.lg.jp/kf14/hw14_000000105.html"
+    }
+   ]
+  },
+  {
+   "pref": "奈良県",
+   "name": "奈良県 中和保健所動物愛護センター",
+   "url": "https://www.pref.nara.lg.jp/n070/1734.html",
+   "links": [
+    {
+     "t": "迷い犬・ねこ",
+     "u": "https://www.pref.nara.lg.jp/n070/3821.html"
+    }
+   ]
+  },
+  {
+   "pref": "和歌山県",
+   "name": "和歌山県動物愛護センター",
+   "url": "https://www.pref.wakayama.lg.jp/prefg/031601/animal.html",
+   "links": [
+    {
+     "t": "収容犬・猫の情報",
+     "u": "https://www.pref.wakayama.lg.jp/prefg/031601/d00156970.html"
+    }
+   ]
+  },
+  {
+   "pref": "鳥取県",
+   "name": "鳥取県 動物の愛護と管理",
+   "url": "https://www.pref.tottori.lg.jp/animal/",
+   "links": [
+    {
+     "t": "迷い犬猫収容情報",
+     "u": "https://www.pref.tottori.lg.jp/221001.htm"
+    }
+   ]
+  },
+  {
+   "pref": "島根県",
+   "name": "島根県 動物保護収容情報",
+   "url": "https://www.pref.shimane.lg.jp/infra/nature/animal/animal_protection/maigo/",
+   "links": []
+  },
+  {
+   "pref": "岡山県",
+   "name": "岡山県動物愛護センター",
+   "url": "https://www.pref.okayama.jp/page/detail-28566.html",
+   "links": [
+    {
+     "t": "動物の保護収容情報",
+     "u": "https://www.pref.okayama.jp/page/859555.html"
+    }
+   ]
+  },
+  {
+   "pref": "広島県",
+   "name": "広島県動物愛護センター",
+   "url": "https://www.pref.hiroshima.lg.jp/site/apc/",
+   "links": [
+    {
+     "t": "飼っている犬・猫が迷子になったときは",
+     "u": "https://www.pref.hiroshima.lg.jp/soshiki/58/1185246054129.html"
+    }
+   ]
+  },
+  {
+   "pref": "山口県",
+   "name": "山口県動物愛護センター",
+   "url": "https://www.pref.yamaguchi.lg.jp/site/doubutuaigo/",
+   "links": [
+    {
+     "t": "迷い犬・迷い猫情報",
+     "u": "https://www.doubutuaigo.pref.yamaguchi.lg.jp/maigo/"
+    }
+   ]
+  },
+  {
+   "pref": "徳島県",
+   "name": "徳島県動物愛護管理センター",
+   "url": "https://www.pref.tokushima.lg.jp/tokuho/doubutu/2009102700045/",
+   "links": [
+    {
+     "t": "飼い犬・飼い猫等が行方不明になった場合",
+     "u": "https://www.pref.tokushima.lg.jp/ippannokata/kurashi/seikatsueisei/5019303/"
+    }
+   ]
+  },
+  {
+   "pref": "香川県",
+   "name": "さぬき動物愛護センター しっぽの森",
+   "url": "https://www.pref.kagawa.lg.jp/s-doubutuaigo/sanukidouaicenter/index.html",
+   "links": [
+    {
+     "t": "迷い犬・迷い猫情報",
+     "u": "https://www.pref.kagawa.lg.jp/eisei/joto/maigo.html"
+    }
+   ]
+  },
+  {
+   "pref": "愛媛県",
+   "name": "愛媛県動物愛護センター",
+   "url": "https://www.pref.ehime.jp/page/16944.html",
+   "links": [
+    {
+     "t": "迷い犬猫情報",
+     "u": "https://www.pref.ehime.jp/page/16976.html"
+    }
+   ]
+  },
+  {
+   "pref": "高知県",
+   "name": "高知県の動物愛護について",
+   "url": "https://www.pref.kochi.lg.jp/doc/2019070100303/",
+   "links": [
+    {
+     "t": "ペットの犬や猫がいなくなったとき",
+     "u": "https://www.pref.kochi.lg.jp/soshiki/131901/2019120600180.html"
+    }
+   ]
+  },
+  {
+   "pref": "福岡県",
+   "name": "福岡県 犬の飼い主の皆様へ",
+   "url": "https://www.pref.fukuoka.lg.jp/contents/dog.html",
+   "links": []
+  },
+  {
+   "pref": "佐賀県",
+   "name": "佐賀県犬猫譲渡センター（いっしょけんね）",
+   "url": "https://www.pref.saga.lg.jp/kiji00315040/index.html",
+   "links": [
+    {
+     "t": "保護犬・猫などの情報（佐賀市・多久市・小城市・神埼市・神埼郡）",
+     "u": "https://www.pref.saga.lg.jp/kiji00349237/index.html"
+    }
+   ]
+  },
+  {
+   "pref": "長崎県",
+   "name": "長崎県動物愛護情報ネットワーク（ながさき犬猫ネット）",
+   "url": "https://www.pref.nagasaki.jp/bunrui/kurashi-kankyo/doubutsuaigo-pet/dobutsu/inuneko-net/",
+   "links": [
+    {
+     "t": "ながさき犬猫ネット",
+     "u": "https://animal-net.pref.nagasaki.jp/"
+    }
+   ]
+  },
+  {
+   "pref": "熊本県",
+   "name": "熊本県動物愛護センター（アニマルフレンズ熊本）",
+   "url": "https://www.pref.kumamoto.jp/soshiki/30/200508.html",
+   "links": [
+    {
+     "t": "ペットが迷子になってしまったら",
+     "u": "https://www.pref.kumamoto.jp/soshiki/30/51373.html"
+    }
+   ]
+  },
+  {
+   "pref": "大分県",
+   "name": "大分県 よくある相談（犬・猫）",
+   "url": "https://www.pref.oita.jp/soshiki/12089/faq-inuneko.html",
+   "links": [
+    {
+     "t": "迷い犬・猫の情報（各保健所へのリンク）",
+     "u": "https://www.pref.oita.jp/site/doubutuaigo/maigo-syokuan.html"
+    }
+   ]
+  },
+  {
+   "pref": "宮崎県",
+   "name": "みやざきドッグ愛ランド（宮崎県）",
+   "url": "https://dog.pref.miyazaki.lg.jp/modules/pico01/index.php?content_id=1",
+   "links": [
+    {
+     "t": "犬、猫の引取りを依頼したいときは？",
+     "u": "https://www.pref.miyazaki.lg.jp/kense/koho/kense-faq/qa_page/05-q05.html"
+    }
+   ]
+  },
+  {
+   "pref": "鹿児島県",
+   "name": "鹿児島県動物愛護センター",
+   "url": "http://www.pref.kagoshima.jp/ae09/kenko-fukushi/yakuji-eisei/dobotu/aigo/douaicenter.html",
+   "links": [
+    {
+     "t": "ペットが迷子になったら",
+     "u": "http://www.pref.kagoshima.jp/ae09/kenko-fukushi/yakuji-eisei/dobotu/hogo/maigo.html"
+    }
+   ]
+  },
+  {
+   "pref": "沖縄県",
+   "name": "沖縄県 ペット",
+   "url": "https://www.pref.okinawa.lg.jp/kurashikankyo/petgaiju/1018720/index.html",
+   "links": [
+    {
+     "t": "犬・猫の問い合わせ、相談先",
+     "u": "https://www.pref.okinawa.jp/kurashikankyo/petgaiju/1018720/1005076.html"
+    }
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "pref": "北海道",
+   "city": "札幌市",
+   "kind": "政令指定都市",
+   "name": "札幌市動物愛護管理センター（あいまる さっぽろ）",
+   "url": "https://www.city.sapporo.jp/inuneko/",
+   "links": [
+    {
+     "t": "迷子犬・猫保護収容情報",
+     "u": "https://www.city.sapporo.jp/inuneko/syuuyou_doubutsu/maigoinuneko.html"
+    }
+   ]
+  },
+  {
+   "pref": "北海道",
+   "city": "旭川市",
+   "kind": "中核市",
+   "name": "旭川市動物愛護センター（あにまある）",
+   "url": "https://www.city.asahikawa.hokkaido.jp/facility00/facility01/d052878.html",
+   "links": [
+    {
+     "t": "飼っていた犬が行方不明になってしまいました",
+     "u": "https://www.city.asahikawa.hokkaido.jp/1000/1001/sonota/animal/p003503.html"
+    }
+   ]
+  },
+  {
+   "pref": "北海道",
+   "city": "函館市",
+   "kind": "中核市",
+   "name": "函館市動物愛護管理センター",
+   "url": "https://www.city.hakodate.hokkaido.jp/docs/2024101600035/",
+   "links": []
+  },
+  {
+   "pref": "青森県",
+   "city": "青森市",
+   "kind": "中核市",
+   "name": "青森市 犬や猫の飼い主の皆さんへ",
+   "url": "https://www.city.aomori.aomori.jp/kurashi_kankyo/kankyo/1002067/1002070.html",
+   "links": []
+  },
+  {
+   "pref": "青森県",
+   "city": "八戸市",
+   "kind": "中核市",
+   "name": "八戸市 動物・ペットに関する質問",
+   "url": "https://www.city.hachinohe.aomori.jp/soshikikarasagasu/kohotokeika/kohokocho/FAQ/kurashi_tetsuzuki/4/4030.html",
+   "links": [
+    {
+     "t": "捕獲・収容動物の情報",
+     "u": "https://www.city.hachinohe.aomori.jp/soshikikarasagasu/eiseika/1/3797.html"
+    }
+   ]
+  },
+  {
+   "pref": "岩手県",
+   "city": "盛岡市",
+   "kind": "中核市",
+   "name": "盛岡市 ペットとの暮らし",
+   "url": "https://www.city.morioka.iwate.jp/kurashi/pet/pet_kurashi/index.html",
+   "links": [
+    {
+     "t": "迷子の犬・猫の飼い主を探しています",
+     "u": "https://www.city.morioka.iwate.jp/kurashi/pet/pet_kurashi/1001656.html"
+    }
+   ]
+  },
+  {
+   "pref": "宮城県",
+   "city": "仙台市",
+   "kind": "政令指定都市",
+   "name": "仙台市動物管理センター（アニパル仙台）",
+   "url": "https://www.city.sendai.jp/dobutsu/kurashi/shizen/petto/hogodobutsu/aigo/dobutsu/dobutsuaigogyoumu.html",
+   "links": [
+    {
+     "t": "保護犬情報",
+     "u": "https://www.city.sendai.jp/dobutsu/kurashi/shizen/petto/hogodobutsu/joho/hogoinu.html"
+    }
+   ]
+  },
+  {
+   "pref": "秋田県",
+   "city": "秋田市",
+   "kind": "中核市",
+   "name": "秋田市 犬・猫の迷子、保護",
+   "url": "https://www.city.akita.lg.jp/kurashi/pet/1005364/index.html",
+   "links": [
+    {
+     "t": "犬、猫を逃がしてしまった飼い主の方へ",
+     "u": "https://www.city.akita.lg.jp/kurashi/pet/1005364/1015484.html"
+    }
+   ]
+  },
+  {
+   "pref": "山形県",
+   "city": "山形市",
+   "kind": "中核市",
+   "name": "山形市動物愛護センター（わんにゃんポート）",
+   "url": "https://www.city.yamagata-yamagata.lg.jp/kurashi/pet/1006550/index.html",
+   "links": [
+    {
+     "t": "行方不明【犬・猫】情報",
+     "u": "https://www.city.yamagata-yamagata.lg.jp/kurashi/pet/1006550/1005145.html"
+    }
+   ]
+  },
+  {
+   "pref": "福島県",
+   "city": "郡山市",
+   "kind": "中核市",
+   "name": "郡山市 動物愛護係の業務",
+   "url": "https://www.city.koriyama.lg.jp/soshiki/74/7190.html",
+   "links": [
+    {
+     "t": "飼っていた犬や猫が行方不明になった場合は",
+     "u": "https://www.city.koriyama.lg.jp/soshiki/74/7224.html"
+    }
+   ]
+  },
+  {
+   "pref": "福島県",
+   "city": "いわき市",
+   "kind": "中核市",
+   "name": "いわき市 犬・猫の引取り",
+   "url": "https://www.city.iwaki.lg.jp/www/contents/1001000000325/index.html",
+   "links": [
+    {
+     "t": "行方不明犬について",
+     "u": "https://www.city.iwaki.lg.jp/www/contents/1453913141214/index.html"
+    }
+   ]
+  },
+  {
+   "pref": "福島県",
+   "city": "福島市",
+   "kind": "中核市",
+   "name": "福島市 犬・猫の飼い主のみなさまへ",
+   "url": "https://www.city.fukushima.fukushima.jp/soshiki/9/1046/3/1934.html",
+   "links": [
+    {
+     "t": "迷子（保護）動物情報",
+     "u": "https://www.city.fukushima.fukushima.jp/soshiki/9/1046/3/1933.html"
+    }
+   ]
+  },
+  {
+   "pref": "茨城県",
+   "city": "水戸市",
+   "kind": "中核市",
+   "name": "水戸市動物愛護センター",
+   "url": "https://www.city.mito.lg.jp/site/doubutsuaigo/index.html",
+   "links": [
+    {
+     "t": "飼い主の判らない犬や猫を保護したとき",
+     "u": "https://www.city.mito.lg.jp/page/19664.html"
+    }
+   ]
+  },
+  {
+   "pref": "栃木県",
+   "city": "宇都宮市",
+   "kind": "中核市",
+   "name": "宇都宮市 犬・猫・ペット",
+   "url": "https://www.city.utsunomiya.lg.jp/kurashi/pet/pet/index.html",
+   "links": [
+    {
+     "t": "迷子になった飼い犬や飼い猫を探している方へ",
+     "u": "https://www.city.utsunomiya.lg.jp/kurashi/pet/pet/1005584.html"
+    }
+   ]
+  },
+  {
+   "pref": "群馬県",
+   "city": "前橋市",
+   "kind": "中核市",
+   "name": "前橋市動物愛護管理センター（まえばしっぽ）",
+   "url": "https://www.city.maebashi.gunma.jp/5/48704.html",
+   "links": [
+    {
+     "t": "前橋市保健所で収容（保護）している犬の情報",
+     "u": "https://www.city.maebashi.gunma.jp/soshiki/kenko/eiseikensa/gyomu/1/1/1/9484.html"
+    }
+   ]
+  },
+  {
+   "pref": "群馬県",
+   "city": "高崎市",
+   "kind": "中核市",
+   "name": "高崎市動物愛護センター",
+   "url": "https://www.city.takasaki.gunma.jp/soshiki/44/",
+   "links": [
+    {
+     "t": "飼い主が行方を捜している動物一覧（犬）",
+     "u": "https://www.city.takasaki.gunma.jp/page/4081.html"
+    }
+   ]
+  },
+  {
+   "pref": "埼玉県",
+   "city": "さいたま市",
+   "kind": "政令指定都市",
+   "name": "さいたま市動物愛護ふれあいセンター",
+   "url": "https://www.city.saitama.lg.jp/006/015/041/001/fureaisenta-syoukai.html",
+   "links": [
+    {
+     "t": "迷子動物・保護動物の届出について",
+     "u": "https://www.city.saitama.lg.jp/008/004/003/004/p054703.html"
+    }
+   ]
+  },
+  {
+   "pref": "埼玉県",
+   "city": "川越市",
+   "kind": "中核市",
+   "name": "川越市保健所",
+   "url": "https://www.city.kawagoe.saitama.jp/kurashi/s-kankyo/1002982/1002989/1002996.html",
+   "links": [
+    {
+     "t": "川越市保健所保護収容動物情報",
+     "u": "https://www.city.kawagoe.saitama.jp/kurashi/s-kankyo/1002982/1002989/1002992.html"
+    }
+   ]
+  },
+  {
+   "pref": "埼玉県",
+   "city": "越谷市",
+   "kind": "中核市",
+   "name": "越谷市 よくあるご質問（犬・猫・ペット）",
+   "url": "https://www.city.koshigaya.saitama.jp/kurashi_shisei/fukushi/hokenjo/pet/dobutsu_kanrishido/doubutsuFAQ.html",
+   "links": [
+    {
+     "t": "犬猫の収容・譲渡情報",
+     "u": "https://www.city.koshigaya.saitama.jp/kurashi_shisei/fukushi/hokenjo/doubutsu/shuuyou_jouto/index.html"
+    }
+   ]
+  },
+  {
+   "pref": "埼玉県",
+   "city": "川口市",
+   "kind": "中核市",
+   "name": "川口市保健所生活衛生課",
+   "url": "https://www.city.kawaguchi.lg.jp/soshiki/01090/seikatueiseika/index.html",
+   "links": [
+    {
+     "t": "ペットが迷子になってしまったら",
+     "u": "https://www.city.kawaguchi.lg.jp/soshiki/01090/seikatueiseika/doubutsu/lost/index.html"
+    }
+   ]
+  },
+  {
+   "pref": "千葉県",
+   "city": "千葉市",
+   "kind": "政令指定都市",
+   "name": "千葉市動物保護指導センター",
+   "url": "https://www.city.chiba.jp/hokenfukushi/iryoeisei/seikatsueisei/dobutsuhogo/",
+   "links": [
+    {
+     "t": "飼っている動物が行方不明になったら（よくある質問）",
+     "u": "https://www.city.chiba.jp/faq/hokenfukushi/iryoeisei/seikatsueisei/dobutsuhogo/504.html"
+    }
+   ]
+  },
+  {
+   "pref": "千葉県",
+   "city": "船橋市",
+   "kind": "中核市",
+   "name": "船橋市動物愛護指導センター",
+   "url": "https://www.city.funabashi.lg.jp/shisetsu/hokenfukushiiryo/0007/0002/0001/p011303.html",
+   "links": [
+    {
+     "t": "迷子・保護動物情報",
+     "u": "https://www.city.funabashi.lg.jp/kurashi/doubutsu/003/p015893.html"
+    }
+   ]
+  },
+  {
+   "pref": "千葉県",
+   "city": "柏市",
+   "kind": "中核市",
+   "name": "柏市動物愛護ふれあいセンター",
+   "url": "https://www.city.kashiwa.lg.jp/shiseijoho/shisei/health_hospital/mainmenu/dobutsu/hogo/index.html",
+   "links": [
+    {
+     "t": "迷子犬猫・保護犬猫情報コーナー",
+     "u": "https://www.city.kashiwa.lg.jp/dobutsuaigo/shiseijoho/shisei/health_hospital/mainmenu/dobutsu/hogo/osagashinokata.html"
+    }
+   ]
+  },
+  {
+   "pref": "東京都",
+   "city": "八王子市",
+   "kind": "中核市",
+   "name": "八王子市 動物衛生",
+   "url": "https://www.city.hachioji.tokyo.jp/kurashi/hoken/007/001/index.html",
+   "links": [
+    {
+     "t": "迷い犬・迷い猫等について",
+     "u": "https://www.city.hachioji.tokyo.jp/kurashi/hoken/007/001/001/p002911.html"
+    }
+   ]
+  },
+  {
+   "pref": "神奈川県",
+   "city": "横浜市",
+   "kind": "政令指定都市",
+   "name": "横浜市動物愛護センター",
+   "url": "https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/pet-dobutsu/aigo/",
+   "links": [
+    {
+     "t": "なるべく早く探してください",
+     "u": "https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/pet-dobutsu/aigo/maigo/search.html"
+    }
+   ]
+  },
+  {
+   "pref": "神奈川県",
+   "city": "川崎市",
+   "kind": "政令指定都市",
+   "name": "川崎市動物愛護センター",
+   "url": "https://www.city.kawasaki.jp/350/page/0000017231.html",
+   "links": [
+    {
+     "t": "飼っている動物が逃げたので、情報があるか知りたい",
+     "u": "https://www.city.kawasaki.jp/templates/faq/350/0000013333.html"
+    }
+   ]
+  },
+  {
+   "pref": "神奈川県",
+   "city": "相模原市",
+   "kind": "政令指定都市",
+   "name": "相模原市 ペット・動物愛護",
+   "url": "https://www.city.sagamihara.kanagawa.jp/kosodate/kenko/1026628/pet/index.html",
+   "links": [
+    {
+     "t": "ペットが迷子になった場合、迷子ペットを保護した場合",
+     "u": "https://www.city.sagamihara.kanagawa.jp/kosodate/kenko/1026628/pet/1007469.html"
+    }
+   ]
+  },
+  {
+   "pref": "神奈川県",
+   "city": "横須賀市",
+   "kind": "中核市",
+   "name": "横須賀市動物愛護センター",
+   "url": "https://www.city.yokosuka.kanagawa.jp/3180/sisetu/fc00000033.html",
+   "links": [
+    {
+     "t": "迷い犬・猫等の保護や返還",
+     "u": "https://www.city.yokosuka.kanagawa.jp/3180/g_info/l100050065.html"
+    }
+   ]
+  },
+  {
+   "pref": "新潟県",
+   "city": "新潟市",
+   "kind": "政令指定都市",
+   "name": "新潟市動物愛護センター",
+   "url": "https://www.city.niigata.lg.jp/kurashi/animal/animal_aigo/index.html",
+   "links": [
+    {
+     "t": "迷子犬・猫保護収容情報",
+     "u": "https://www.city.niigata.lg.jp/kurashi/animal/animal_aigo/hogoshuyo/index.html"
+    }
+   ]
+  },
+  {
+   "pref": "富山県",
+   "city": "富山市",
+   "kind": "中核市",
+   "name": "富山市 犬・猫の適正飼育",
+   "url": "https://www.city.toyama.lg.jp/kurashi/seikatsu/1010313/1010317/1004132.html",
+   "links": []
+  },
+  {
+   "pref": "石川県",
+   "city": "金沢市",
+   "kind": "中核市",
+   "name": "金沢市動物愛護管理センター",
+   "url": "https://www4.city.kanazawa.lg.jp/soshikikarasagasu/dobutsuaigokanricenter/gyomuannai/1/3/index.html",
+   "links": [
+    {
+     "t": "ペットが迷子になったときは",
+     "u": "https://www4.city.kanazawa.lg.jp/soshikikarasagasu/dobutsuaigokanricenter/gyomuannai/1/3/3487.html"
+    }
+   ]
+  },
+  {
+   "pref": "福井県",
+   "city": "福井市",
+   "kind": "中核市",
+   "name": "福井市 犬・猫の保護、返還について",
+   "url": "https://www.city.fukui.lg.jp/kurasi/kaiinu/dog/p021331.html",
+   "links": []
+  },
+  {
+   "pref": "山梨県",
+   "city": "甲府市",
+   "kind": "中核市",
+   "name": "甲府市 犬・猫の譲渡事業",
+   "url": "https://www.city.kofu.yamanashi.jp/kenko_zoshin/sekatsueisei/nekokainusi.html",
+   "links": [
+    {
+     "t": "迷子の犬・猫の情報",
+     "u": "https://www.city.kofu.yamanashi.jp/hokenjo/2019mayoiinuneko.html"
+    }
+   ]
+  },
+  {
+   "pref": "長野県",
+   "city": "長野市",
+   "kind": "中核市",
+   "name": "長野市保健所動物愛護センター",
+   "url": "https://www.city.nagano.nagano.jp/n107000/contents/p005555.html",
+   "links": [
+    {
+     "t": "飼っているペットが行方不明になってしまった方へ",
+     "u": "https://city.nagano.nagano.jp/site/naganoshiaigo/459137.html"
+    }
+   ]
+  },
+  {
+   "pref": "長野県",
+   "city": "松本市",
+   "kind": "中核市",
+   "name": "松本市動物愛護センター",
+   "url": "https://www.city.matsumoto.nagano.jp/life/3/65/",
+   "links": [
+    {
+     "t": "ペットの迷子情報",
+     "u": "https://www.city.matsumoto.nagano.jp/life/3/65/441/"
+    }
+   ]
+  },
+  {
+   "pref": "岐阜県",
+   "city": "岐阜市",
+   "kind": "中核市",
+   "name": "岐阜市 畜犬管理センター",
+   "url": "https://www.city.gifu.lg.jp/kurashi/seikatukankyo/1002857/1011910.html",
+   "links": [
+    {
+     "t": "飼っている犬、猫がいなくなった",
+     "u": "https://www.city.gifu.lg.jp/kurashi/seikatukankyo/1002857/1025360/1025448.html"
+    }
+   ]
+  },
+  {
+   "pref": "静岡県",
+   "city": "静岡市",
+   "kind": "政令指定都市",
+   "name": "静岡市動物愛護センター",
+   "url": "https://www.city.shizuoka.lg.jp/s3276/s001864.html",
+   "links": [
+    {
+     "t": "迷い犬情報",
+     "u": "https://www.city.shizuoka.lg.jp/s3276/s001870.html"
+    }
+   ]
+  },
+  {
+   "pref": "静岡県",
+   "city": "浜松市",
+   "kind": "政令指定都市",
+   "name": "浜松市動物愛護教育センター",
+   "url": "https://www.city.hamamatsu.shizuoka.jp/maps/n-dou-aigo.html",
+   "links": []
+  },
+  {
+   "pref": "愛知県",
+   "city": "名古屋市",
+   "kind": "政令指定都市",
+   "name": "名古屋市 犬・猫等がいなくなったとき",
+   "url": "https://www.city.nagoya.jp/kurashi/pet/1015473/1015489/1015490.html",
+   "links": [
+    {
+     "t": "迷子動物情報（犬猫等をお探しの方へ）",
+     "u": "https://www.city.nagoya.jp/kurashi/pet/1015473/1015489/1015494.html"
+    }
+   ]
+  },
+  {
+   "pref": "愛知県",
+   "city": "豊田市",
+   "kind": "中核市",
+   "name": "豊田市動物愛護センター",
+   "url": "https://www.city.toyota.aichi.jp/shisei/shisetsu/shisetsusonota/aigocenter/index.html",
+   "links": [
+    {
+     "t": "飼い犬・飼い猫がいなくなったときの対応",
+     "u": "https://www.city.toyota.aichi.jp/kurashi/sumai/pet/1003696.html"
+    }
+   ]
+  },
+  {
+   "pref": "愛知県",
+   "city": "豊橋市",
+   "kind": "中核市",
+   "name": "豊橋市動物愛護センター（あいくる）",
+   "url": "https://www.city.toyohashi.lg.jp/56829.htm",
+   "links": [
+    {
+     "t": "飼い主さがし案内板 犬の情報",
+     "u": "https://www.city.toyohashi.lg.jp/6414.htm"
+    }
+   ]
+  },
+  {
+   "pref": "愛知県",
+   "city": "岡崎市",
+   "kind": "中核市",
+   "name": "岡崎市動物総合センター（Animo あにも）",
+   "url": "https://city.okazaki.lg.jp/1100/1107/1149/p005769.html",
+   "links": [
+    {
+     "t": "保護動物情報",
+     "u": "https://city.okazaki.lg.jp/1100/1107/1149/p008181.html"
+    }
+   ]
+  },
+  {
+   "pref": "愛知県",
+   "city": "一宮市",
+   "kind": "中核市",
+   "name": "一宮市 愛護動物",
+   "url": "https://www.city.ichinomiya.aichi.jp/hokenjo/hoken-eisei/1044007/1000182/index.html",
+   "links": [
+    {
+     "t": "犬や猫が迷子になった場合",
+     "u": "https://www.city.ichinomiya.aichi.jp/hokenjo/hoken-eisei/1044007/1000182/1036710.html"
+    }
+   ]
+  },
+  {
+   "pref": "滋賀県",
+   "city": "大津市",
+   "kind": "中核市",
+   "name": "大津市動物愛護センター",
+   "url": "https://www.city.otsu.lg.jp/soshiki/021/1442/index.html",
+   "links": [
+    {
+     "t": "飼い犬・猫がいなくなったら",
+     "u": "https://www.city.otsu.lg.jp/soshiki/021/1442/g/pet/mayoi/1387776398134.html"
+    }
+   ]
+  },
+  {
+   "pref": "京都府",
+   "city": "京都市",
+   "kind": "政令指定都市",
+   "name": "京都市の動物愛護事業（まとめ）",
+   "url": "https://www.city.kyoto.lg.jp/hokenfukushi/page/0000277550.html",
+   "links": []
+  },
+  {
+   "pref": "大阪府",
+   "city": "大阪市",
+   "kind": "政令指定都市",
+   "name": "おおさかワンニャンセンター",
+   "url": "https://www.city.osaka.lg.jp/kenko/page/0000003676.html",
+   "links": [
+    {
+     "t": "失そうした犬・猫などの受付・照会",
+     "u": "https://www.city.osaka.lg.jp/kenko/page/0000224249.html"
+    }
+   ]
+  },
+  {
+   "pref": "大阪府",
+   "city": "堺市",
+   "kind": "政令指定都市",
+   "name": "堺市動物指導センター",
+   "url": "https://www.city.sakai.lg.jp/smph/kurashi/dobutsu/shidocenter/shidocenter.html",
+   "links": [
+    {
+     "t": "迷い犬・迷い猫に関する相談",
+     "u": "https://www.city.sakai.lg.jp/kurashi/dobutsu/dogcat/komarigoto/mayoisodan.html"
+    }
+   ]
+  },
+  {
+   "pref": "大阪府",
+   "city": "高槻市",
+   "kind": "中核市",
+   "name": "高槻市 動物愛護",
+   "url": "https://www.city.takatsuki.osaka.jp/life/1/16/80/",
+   "links": [
+    {
+     "t": "行方不明になった犬・猫の受付・照会",
+     "u": "https://www.city.takatsuki.osaka.jp/soshiki/39/2752.html"
+    }
+   ]
+  },
+  {
+   "pref": "大阪府",
+   "city": "東大阪市",
+   "kind": "中核市",
+   "name": "東大阪市 ペット・動物",
+   "url": "https://www.city.higashiosaka.lg.jp/category/14-9-0-0-0-0-0-0-0-0.html",
+   "links": [
+    {
+     "t": "犬・猫が行方不明になったとき",
+     "u": "https://www.city.higashiosaka.lg.jp/0000000068.html"
+    }
+   ]
+  },
+  {
+   "pref": "大阪府",
+   "city": "豊中市",
+   "kind": "中核市",
+   "name": "豊中市 ペット（犬・猫）",
+   "url": "https://www.city.toyonaka.osaka.jp/kurashi/pettp-inuneko/index.html",
+   "links": [
+    {
+     "t": "ペットが迷子になった時の対応方法",
+     "u": "https://www.city.toyonaka.osaka.jp/kurashi/pettp-inuneko/maigo.html"
+    }
+   ]
+  },
+  {
+   "pref": "大阪府",
+   "city": "枚方市",
+   "kind": "中核市",
+   "name": "枚方市 収容動物情報",
+   "url": "https://www.city.hirakata.osaka.jp/0000001430.html",
+   "links": [
+    {
+     "t": "犬・猫が迷子になった時の対応方法",
+     "u": "https://www.city.hirakata.osaka.jp/0000001819.html"
+    }
+   ]
+  },
+  {
+   "pref": "大阪府",
+   "city": "八尾市",
+   "kind": "中核市",
+   "name": "八尾市 犬や猫を飼ったら",
+   "url": "https://city.yao.osaka.jp/0000000478.html",
+   "links": [
+    {
+     "t": "もし犬や猫が逃げ出してしまったら？",
+     "u": "https://www.city.yao.osaka.jp/kurashi_tetsuzuki/sumai_kurashi_seikatsu/1012763/1003039/1003051.html"
+    }
+   ]
+  },
+  {
+   "pref": "大阪府",
+   "city": "寝屋川市",
+   "kind": "中核市",
+   "name": "寝屋川市 保健所収容動物",
+   "url": "https://www.city.neyagawa.osaka.jp/organization_list/kenkou/hokeneisei/doubutu/inuneko_kankei/1554960576526.html",
+   "links": [
+    {
+     "t": "飼い犬・飼い猫が迷子になってしまったとき",
+     "u": "https://www.city.neyagawa.osaka.jp/organization_list/kenkou/hokeneisei/doubutu/inuneko_kankei/inunekokankei/1552983012707.html"
+    }
+   ]
+  },
+  {
+   "pref": "大阪府",
+   "city": "吹田市",
+   "kind": "中核市",
+   "name": "吹田市 ペット・動物",
+   "url": "https://www.city.suita.osaka.jp/kurashi/1018501/1018506/index.html",
+   "links": [
+    {
+     "t": "飼い犬・飼い猫が迷子になったときは",
+     "u": "https://www.city.suita.osaka.jp/kurashi/1018501/1018506/1018507/1031351.html"
+    }
+   ]
+  },
+  {
+   "pref": "兵庫県",
+   "city": "神戸市",
+   "kind": "政令指定都市",
+   "name": "神戸市動物管理センター",
+   "url": "https://www.city.kobe.lg.jp/a84140/kenko/health/hygiene/animal/amc.html",
+   "links": [
+    {
+     "t": "ペットが迷子になったとき",
+     "u": "https://www.city.kobe.lg.jp/a84140/kenko/health/hygiene/animal/h0496.html"
+    }
+   ]
+  },
+  {
+   "pref": "兵庫県",
+   "city": "姫路市",
+   "kind": "中核市",
+   "name": "姫路市動物管理センター",
+   "url": "https://www.city.himeji.lg.jp/kurashi/0000001381.html",
+   "links": [
+    {
+     "t": "ペットが迷子になったとき",
+     "u": "https://www.city.himeji.lg.jp/kurashi/0000001412.html"
+    }
+   ]
+  },
+  {
+   "pref": "兵庫県",
+   "city": "西宮市",
+   "kind": "中核市",
+   "name": "西宮市 動物の飼い主の方へ",
+   "url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/kainushinokata/index.html",
+   "links": [
+    {
+     "t": "ペットが迷子になった時は？",
+     "u": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/kainushinokata/pet-maigo.html"
+    }
+   ]
+  },
+  {
+   "pref": "兵庫県",
+   "city": "尼崎市",
+   "kind": "中核市",
+   "name": "尼崎市動物愛護センター",
+   "url": "https://www.city.amagasaki.hyogo.jp/map/1000375/1000390/1000473.html",
+   "links": [
+    {
+     "t": "迷い犬・迷い猫について",
+     "u": "https://www.city.amagasaki.hyogo.jp/kurashi/iryou/pet/051syuuyoudoubutu.html"
+    }
+   ]
+  },
+  {
+   "pref": "兵庫県",
+   "city": "明石市",
+   "kind": "中核市",
+   "name": "あかし動物センター（あかしっぽ）",
+   "url": "https://www.city.akashi.lg.jp/kankyou/dobutsu/index.html",
+   "links": [
+    {
+     "t": "迷子の情報",
+     "u": "https://www.city.akashi.lg.jp/kankyou/dobutsu/info/maigo.html"
+    }
+   ]
+  },
+  {
+   "pref": "奈良県",
+   "city": "奈良市",
+   "kind": "中核市",
+   "name": "奈良市 保健衛生課",
+   "url": "https://www.city.nara.lg.jp/soshiki/97/7968.html",
+   "links": [
+    {
+     "t": "ペットが迷子になったときは",
+     "u": "https://www.city.nara.lg.jp/soshiki/97/8478.html"
+    }
+   ]
+  },
+  {
+   "pref": "和歌山県",
+   "city": "和歌山市",
+   "kind": "中核市",
+   "name": "和歌山市 動物愛護管理に関すること",
+   "url": "https://www.city.wakayama.wakayama.jp/kurashi/kenko_iryo/1009125/1035775/index.html",
+   "links": [
+    {
+     "t": "犬・猫が迷子になったら",
+     "u": "https://www.city.wakayama.wakayama.jp/kurashi/kenko_iryo/1009125/1035775/1002091.html"
+    }
+   ]
+  },
+  {
+   "pref": "鳥取県",
+   "city": "鳥取市",
+   "kind": "中核市",
+   "name": "鳥取市 迷い犬猫収容情報",
+   "url": "https://www.city.tottori.lg.jp/page/40004.html",
+   "links": [
+    {
+     "t": "迷子のペット情報",
+     "u": "https://www.city.tottori.lg.jp/page/5048.html"
+    }
+   ]
+  },
+  {
+   "pref": "島根県",
+   "city": "松江市",
+   "kind": "中核市",
+   "name": "松江市 動物情報トップ",
+   "url": "https://www.city.matsue.lg.jp/soshikikarasagasu/kenkofukushibu_hokeneiseika/hokeneisei/5/2975.html",
+   "links": []
+  },
+  {
+   "pref": "岡山県",
+   "city": "岡山市",
+   "kind": "政令指定都市",
+   "name": "岡山市 ペット・動物について",
+   "url": "https://www.city.okayama.jp/0000019776.html",
+   "links": [
+    {
+     "t": "保護動物情報",
+     "u": "https://www.city.okayama.jp/kurashi/category/1-15-1-0-0-0-0-0-0-0.html"
+    }
+   ]
+  },
+  {
+   "pref": "岡山県",
+   "city": "倉敷市",
+   "kind": "中核市",
+   "name": "倉敷市 ペット・動物",
+   "url": "https://www.city.kurashiki.okayama.jp/kurashi/pet/index.html",
+   "links": [
+    {
+     "t": "ペットが迷子になったとき",
+     "u": "https://city.kurashiki.okayama.jp/16726.htm"
+    }
+   ]
+  },
+  {
+   "pref": "広島県",
+   "city": "広島市",
+   "kind": "政令指定都市",
+   "name": "広島市 ペットに関するよくある質問",
+   "url": "https://city.hiroshima.lg.jp/soshiki/77/32.html",
+   "links": [
+    {
+     "t": "飼い犬がいなくなった…！",
+     "u": "https://www.city.hiroshima.lg.jp/living/pet-doubutsu/1021301/1026245/1023096.html"
+    }
+   ]
+  },
+  {
+   "pref": "広島県",
+   "city": "福山市",
+   "kind": "中核市",
+   "name": "福山市動物愛護センター",
+   "url": "https://www.city.fukuyama.hiroshima.jp/life/1/12/76/",
+   "links": [
+    {
+     "t": "迷い犬の情報",
+     "u": "https://www.city.fukuyama.hiroshima.jp/soshiki/dobutsuaigo/237722.html"
+    }
+   ]
+  },
+  {
+   "pref": "広島県",
+   "city": "呉市",
+   "kind": "中核市",
+   "name": "呉市動物愛護センター",
+   "url": "https://www.city.kure.lg.jp/soshiki/127/",
+   "links": [
+    {
+     "t": "迷い犬・猫の情報",
+     "u": "https://www.city.kure.lg.jp/soshiki/127/hogo.html"
+    }
+   ]
+  },
+  {
+   "pref": "山口県",
+   "city": "下関市",
+   "kind": "中核市",
+   "name": "下関市動物愛護管理センター",
+   "url": "https://www.city.shimonoseki.lg.jp/soshiki/52/",
+   "links": [
+    {
+     "t": "犬・ねこを飼っている皆様へ",
+     "u": "https://www.city.shimonoseki.lg.jp/soshiki/52/1796.html"
+    }
+   ]
+  },
+  {
+   "pref": "香川県",
+   "city": "高松市",
+   "kind": "中核市",
+   "name": "高松市 犬や猫などの情報",
+   "url": "https://www.city.takamatsu.kagawa.jp/kurashi/kurashi/pet/animo.html",
+   "links": []
+  },
+  {
+   "pref": "愛媛県",
+   "city": "松山市",
+   "kind": "中核市",
+   "name": "松山市動物愛護センター（はぴまるの丘）",
+   "url": "https://www.city.matsuyama.ehime.jp/kurashi/kurashi/pet/hapimaru/hapimarunooka.html",
+   "links": [
+    {
+     "t": "ペットが迷子になったとき（迷子の届出）",
+     "u": "https://www.city.matsuyama.ehime.jp/kurashi/kurashi/aigo/kainusi/pet-maigo-hennkann.html"
+    }
+   ]
+  },
+  {
+   "pref": "高知県",
+   "city": "高知市",
+   "kind": "中核市",
+   "name": "中央小動物管理センター（高知市）",
+   "url": "https://www.city.kochi.kochi.jp/soshiki/36/aml-center.html",
+   "links": [
+    {
+     "t": "飼い犬・飼い猫がいなくなったとき",
+     "u": "https://www.city.kochi.kochi.jp/soshiki/36/inuneko-maigo.html"
+    }
+   ]
+  },
+  {
+   "pref": "福岡県",
+   "city": "北九州市",
+   "kind": "政令指定都市",
+   "name": "北九州市動物愛護センター",
+   "url": "https://city.kitakyushu.lg.jp/ho-huku/ho-doubutsulist.html",
+   "links": [
+    {
+     "t": "こんな時はどうすれば",
+     "u": "https://www.city.kitakyushu.lg.jp/contents/924_11821.html"
+    }
+   ]
+  },
+  {
+   "pref": "福岡県",
+   "city": "福岡市",
+   "kind": "政令指定都市",
+   "name": "福岡市動物愛護管理センター（わんにゃんよかネット）",
+   "url": "https://wannyan.city.fukuoka.lg.jp/",
+   "links": [
+    {
+     "t": "迷い犬・猫",
+     "u": "https://www.wannyan.city.fukuoka.lg.jp/yokanet/lost_animal"
+    }
+   ]
+  },
+  {
+   "pref": "福岡県",
+   "city": "久留米市",
+   "kind": "中核市",
+   "name": "久留米市 保護犬・猫の情報",
+   "url": "https://www.city.kurume.fukuoka.jp/1070kenkou/2040hokeneisei/3115doubutsuaigo/2016-0406-1637-187.html",
+   "links": []
+  },
+  {
+   "pref": "長崎県",
+   "city": "長崎市",
+   "kind": "中核市",
+   "name": "長崎市動物愛護管理センター",
+   "url": "https://www.city.nagasaki.lg.jp/site/doubutsuaigo/2923.html",
+   "links": [
+    {
+     "t": "犬がいなくなってしまった飼い主の方へ",
+     "u": "https://www.city.nagasaki.lg.jp/site/doubutsuaigo/list65-313.html"
+    }
+   ]
+  },
+  {
+   "pref": "長崎県",
+   "city": "佐世保市",
+   "kind": "中核市",
+   "name": "佐世保市動物愛護センター",
+   "url": "https://www.city.sasebo.lg.jp/kurashi/doubutsuaigo/index.html",
+   "links": [
+    {
+     "t": "迷い犬・迷い猫",
+     "u": "https://www.city.sasebo.lg.jp/kurashi/doubutsuaigo/maigo/index.html"
+    }
+   ]
+  },
+  {
+   "pref": "熊本県",
+   "city": "熊本市",
+   "kind": "政令指定都市",
+   "name": "熊本市動物愛護センター",
+   "url": "https://www.city.kumamoto.jp/doubutuaigo/",
+   "links": [
+    {
+     "t": "犬・猫を見つけたとき",
+     "u": "https://www.city.kumamoto.jp/doubutuaigo/kiji00341131/index.html"
+    }
+   ]
+  },
+  {
+   "pref": "大分県",
+   "city": "大分市",
+   "kind": "中核市",
+   "name": "大分市動物愛護センター",
+   "url": "https://www.city.oita.oita.jp/o029/shisejoho/annai/1000000000085/dobutsuaigoshinchaku.html",
+   "links": [
+    {
+     "t": "犬猫が行方不明になってしまったら",
+     "u": "https://www.city.oita.oita.jp/o245/kurashi/pet/1330325192975.html"
+    }
+   ]
+  },
+  {
+   "pref": "宮崎県",
+   "city": "宮崎市",
+   "kind": "中核市",
+   "name": "宮崎市 犬・猫の保護情報",
+   "url": "https://www.city.miyazaki.miyazaki.jp/life/pet/protection/",
+   "links": [
+    {
+     "t": "犬や猫が行方不明になった場合",
+     "u": "https://www.city.miyazaki.miyazaki.jp/life/pet/live/664.html"
+    }
+   ]
+  },
+  {
+   "pref": "鹿児島県",
+   "city": "鹿児島市",
+   "kind": "中核市",
+   "name": "鹿児島市動物愛護管理センター",
+   "url": "https://www.city.kagoshima.lg.jp/kenkofukushi/hokenjo/seiei-jueki/shisetsu/hoken/014.html",
+   "links": [
+    {
+     "t": "飼っている犬・猫がいなくなったのですが",
+     "u": "https://www.city.kagoshima.lg.jp/faq-kurashi/seiei-jueki/q11.html"
+    }
+   ]
+  },
+  {
+   "pref": "沖縄県",
+   "city": "那覇市",
+   "kind": "中核市",
+   "name": "那覇市 飼い主の方へ",
+   "url": "https://city.naha.okinawa.jp/kurasitetuduki/animal/901.html",
+   "links": [
+    {
+     "t": "犬猫の収容・保護情報",
+     "u": "https://www.city.naha.okinawa.jp/kurasitetuduki/animal/1002271/1002278.html"
+    }
+   ]
+  }
+ ]
+}
