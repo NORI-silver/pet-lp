@@ -114,6 +114,7 @@ TOP_HTML = src  # 地域ページの元（下の clone_top）。src はあとで
 # 地域ページは全部トップの写しで、ページの下の大きなプログラム（フォーム・料金の計算・緊急タブのデータ）も同じ。
 # 地域ページではそれを /app.js に分けて読み込む（2ページ目からはブラウザに残った写しを使うので速く開ける）
 import hashlib
+from urllib.parse import quote
 _APP_M = max(re.finditer(r"<script>(.*?)</script>", TOP_HTML, re.S), key=lambda m: len(m.group(1)))
 APP_JS = _APP_M.group(1)
 open(os.path.join(ROOT, "app.js"), "w", encoding="utf-8").write(APP_JS)
@@ -461,6 +462,8 @@ for a in AREAS:
 <section id="area-companies">
   <div class="wrap prose">
     {pref_company_table(a["pref"], a["short"], [x for x in _DISP if a["pref"][:-1] in x.get("areas", [])], a["cities"])}
+    <h3>{e(a["pref"])}の夜間・救急の動物病院</h3>
+    <p>夜や休日に具合が悪くなったときのために、{e(a["pref"])}の夜間・救急の動物病院を受付時間つきで<a href="/hospital/night/#pref={quote(a["pref"])}">夜間・救急の動物病院の一覧</a>にまとめています。往診専門の動物病院（家まで来てくれる獣医さん）は<a href="/hospital/visit/#pref={quote(a["pref"])}">往診の一覧</a>、猫だけを診る病院は<a href="/hospital/cat/#pref={quote(a["pref"])}">猫専門の動物病院</a>にあります。</p>
   </div>
 </section>
 
@@ -1120,6 +1123,7 @@ for slug, pf, short, cities in PREFS:
 
     <h2>{e(pf)}の夜間・救急の動物病院と、緊急の搬送</h2>
     <p>一刻を争う症状のときは、まずかかりつけや夜間・救急の動物病院に電話して、受け入れてもらえるか確かめてください。{hosp_lead}</p>
+    <p>受付時間つきの一覧は<a href="/hospital/night/#pref={quote(pf)}">{e(pf)}の夜間・救急の動物病院</a>に、家まで来てくれる獣医さんは<a href="/hospital/visit/#pref={quote(pf)}">往診専門の動物病院</a>にまとめています。</p>
     <div class="emg">
       <h3 class="emg-h">緊急の搬送をしている会社</h3>
       {taxi_html}
