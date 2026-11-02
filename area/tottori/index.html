@@ -623,6 +623,36 @@ footer a{color:var(--ink-2)}
 .src a{color:var(--ink-3)}
 @media (min-width:760px){.art h2{font-size:1.55rem}}
 @media (min-width:760px){.area-hero{padding:32px 0 80px}.area-hero h1{font-size:2.5rem}.prose h2{font-size:1.7rem}}
+/* ドッグラン（tools/gen_dogrun.py） */
+.dr-stats{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:14px 0 0}
+.dr-stats li{background:#fff;border-radius:14px;padding:8px 14px;font-size:.86rem;color:var(--ink-2);box-shadow:0 2px 8px rgba(28,26,24,.06)}
+.dr-stats b{font-size:1.15rem;color:var(--o-d);margin-right:2px}
+.dr-prefs{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:8px;list-style:none;padding:0;margin:8px 0 0}
+.dr-prefs a,.dr-prefs span{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:.9rem;font-weight:700;color:var(--ink);text-decoration:none;background:#fff}
+.dr-prefs a:hover{border-color:var(--o);color:var(--o-d)}
+.dr-prefs small{font-weight:400;color:var(--ink-3);font-size:.78rem}
+.dr-prefs span{color:var(--ink-3);font-weight:400}
+.dr-region{font-size:1rem;margin:20px 0 0}
+.dr-tags,.art .dr-tags{display:flex;flex-wrap:wrap;gap:5px;list-style:none;padding:0;margin:6px 0 0}
+.dr-tags li{font-size:.74rem;font-weight:700;border-radius:999px;padding:2px 10px;background:#f7f4f1;color:var(--ink-2)}
+.dr-tags li.ok{background:var(--o-l);color:var(--o-d)}
+.dr-card{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:18px 18px 8px;margin:0 0 18px;scroll-margin-top:90px}
+.art .dr-card h2{margin:0 0 4px;font-size:1.2rem;border-left:0;padding-left:0}
+.dr-card .dr-city{font-size:.84rem;color:var(--ink-3);margin:0}
+.dr-card dl{margin:12px 0 0;display:grid;grid-template-columns:1fr;gap:0}
+.dr-card dt{font-size:.78rem;font-weight:800;color:var(--ink-3);margin-top:10px}
+.dr-card dd{margin:2px 0 0;font-size:.9rem;line-height:1.7;color:var(--ink)}
+@media (min-width:600px){.dr-card dl{grid-template-columns:9em 1fr}.dr-card dt{margin:0;padding:8px 0;border-top:1px solid var(--line)}.dr-card dd{margin:0;padding:8px 0;border-top:1px solid var(--line)}}
+.dr-card .dr-links{font-size:.84rem;margin:12px 0 8px}
+.dr-card .dr-links small{display:block;color:var(--ink-3);font-size:.76rem;margin-top:4px;word-break:break-all}
+.dr-card .dr-links small a{color:var(--ink-3)}
+.art .dr-tbl td,.art .dr-tbl th{text-align:left;padding:8px 6px}
+.art .dr-tbl td:last-child,.art .dr-tbl th:last-child{background:transparent;font-weight:400}
+.art .dr-tbl th:last-child{background:#f7f4f1;font-weight:700}
+.art .dr-tbl td:nth-child(n+3),.art .dr-tbl th:nth-child(n+3){white-space:nowrap}
+.dr-row{border-top:1px solid var(--line);padding:10px 2px}
+.dr-row a{font-weight:700}
+.dr-row small{color:var(--ink-3);margin-left:6px}
 </style>
 <script type="application/ld+json">
 {
@@ -962,6 +992,7 @@ footer a{color:var(--ink-2)}
     <h2>鳥取県の夜間・救急の動物病院と、緊急の搬送</h2>
     <p>一刻を争う症状のときは、まずかかりつけや夜間・救急の動物病院に電話して、受け入れてもらえるか確かめてください。鳥取県の夜間・救急の動物病院として、岡山市南区（岡山県）の病院を載せています。</p>
     <p>受付時間つきの一覧は<a href="/hospital/night/#pref=%E9%B3%A5%E5%8F%96%E7%9C%8C">鳥取県の夜間・救急の動物病院</a>に、家まで来てくれる獣医さんは<a href="/hospital/visit/#pref=%E9%B3%A5%E5%8F%96%E7%9C%8C">往診専門の動物病院</a>にまとめています。</p>
+    <h3>鳥取県の公営ドッグラン</h3><p>鳥取県には、公式ページで確かめた公営のドッグランが1か所あります（日野川運動公園ドッグラン）。料金・利用登録・利用時間・小型犬エリアの有無は<a href="/dogrun/tottori/">鳥取県の公営ドッグラン</a>にまとめています。大型犬や何頭もいっしょで、車がないときはペットタクシーでも行けます。</p>
     <div class="emg">
       <h3 class="emg-h">緊急の搬送をしている会社</h3>
       <p class="emg-none">鳥取県で緊急の搬送をしている会社は、まだ載せていません。まずは動物病院に電話して、受け入れと行き方をご相談ください。</p>

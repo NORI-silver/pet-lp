@@ -62,6 +62,7 @@ _EMG_RV = _EMG_J["taxis"] + [h for l in _EMG_J["hospitals"].values() for h in l]
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_hospitals
 import prefkeep
+import gen_dogrun
 _EMG_RV = _EMG_RV + gen_hospitals.review_rows()
 booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG_REVIEWS*/var EMG_REVIEWS = " + json.dumps({t["id"]: {"query": t["review_query"], "name": t["review_name"]} for t in _EMG_RV if t.get("review_query")}, ensure_ascii=False) + ";/*/EMG_REVIEWS*/", booking_src, count=1, flags=re.S)
 # 候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る
@@ -174,6 +175,36 @@ extra_css = """
 .src a{color:var(--ink-3)}
 @media (min-width:760px){.art h2{font-size:1.55rem}}
 @media (min-width:760px){.area-hero{padding:32px 0 80px}.area-hero h1{font-size:2.5rem}.prose h2{font-size:1.7rem}}
+/* ドッグラン（tools/gen_dogrun.py） */
+.dr-stats{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:14px 0 0}
+.dr-stats li{background:#fff;border-radius:14px;padding:8px 14px;font-size:.86rem;color:var(--ink-2);box-shadow:0 2px 8px rgba(28,26,24,.06)}
+.dr-stats b{font-size:1.15rem;color:var(--o-d);margin-right:2px}
+.dr-prefs{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:8px;list-style:none;padding:0;margin:8px 0 0}
+.dr-prefs a,.dr-prefs span{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:.9rem;font-weight:700;color:var(--ink);text-decoration:none;background:#fff}
+.dr-prefs a:hover{border-color:var(--o);color:var(--o-d)}
+.dr-prefs small{font-weight:400;color:var(--ink-3);font-size:.78rem}
+.dr-prefs span{color:var(--ink-3);font-weight:400}
+.dr-region{font-size:1rem;margin:20px 0 0}
+.dr-tags,.art .dr-tags{display:flex;flex-wrap:wrap;gap:5px;list-style:none;padding:0;margin:6px 0 0}
+.dr-tags li{font-size:.74rem;font-weight:700;border-radius:999px;padding:2px 10px;background:#f7f4f1;color:var(--ink-2)}
+.dr-tags li.ok{background:var(--o-l);color:var(--o-d)}
+.dr-card{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:18px 18px 8px;margin:0 0 18px;scroll-margin-top:90px}
+.art .dr-card h2{margin:0 0 4px;font-size:1.2rem;border-left:0;padding-left:0}
+.dr-card .dr-city{font-size:.84rem;color:var(--ink-3);margin:0}
+.dr-card dl{margin:12px 0 0;display:grid;grid-template-columns:1fr;gap:0}
+.dr-card dt{font-size:.78rem;font-weight:800;color:var(--ink-3);margin-top:10px}
+.dr-card dd{margin:2px 0 0;font-size:.9rem;line-height:1.7;color:var(--ink)}
+@media (min-width:600px){.dr-card dl{grid-template-columns:9em 1fr}.dr-card dt{margin:0;padding:8px 0;border-top:1px solid var(--line)}.dr-card dd{margin:0;padding:8px 0;border-top:1px solid var(--line)}}
+.dr-card .dr-links{font-size:.84rem;margin:12px 0 8px}
+.dr-card .dr-links small{display:block;color:var(--ink-3);font-size:.76rem;margin-top:4px;word-break:break-all}
+.dr-card .dr-links small a{color:var(--ink-3)}
+.art .dr-tbl td,.art .dr-tbl th{text-align:left;padding:8px 6px}
+.art .dr-tbl td:last-child,.art .dr-tbl th:last-child{background:transparent;font-weight:400}
+.art .dr-tbl th:last-child{background:#f7f4f1;font-weight:700}
+.art .dr-tbl td:nth-child(n+3),.art .dr-tbl th:nth-child(n+3){white-space:nowrap}
+.dr-row{border-top:1px solid var(--line);padding:10px 2px}
+.dr-row a{font-weight:700}
+.dr-row small{color:var(--ink-3);margin-left:6px}
 """
 open(os.path.join(ROOT, "style.css"), "w", encoding="utf-8").write(css.strip() + "\n" + extra_css.strip() + "\n")
 
@@ -481,6 +512,7 @@ for a in AREAS:
     {pref_company_table(a["pref"], a["short"], [x for x in _DISP if a["pref"][:-1] in x.get("areas", [])], a["cities"])}
     <h3>{e(a["pref"])}の夜間・救急の動物病院</h3>
     <p>夜や休日に具合が悪くなったときのために、{e(a["pref"])}の夜間・救急の動物病院を受付時間つきで<a href="/hospital/night/#pref={quote(a["pref"])}">夜間・救急の動物病院の一覧</a>にまとめています。往診専門の動物病院（家まで来てくれる獣医さん）は<a href="/hospital/visit/#pref={quote(a["pref"])}">往診の一覧</a>、猫だけを診る病院は<a href="/hospital/cat/#pref={quote(a["pref"])}">猫専門の動物病院</a>にあります。</p>
+    {gen_dogrun.area_snippet(a["pref"], e)}
   </div>
 </section>
 
@@ -1168,6 +1200,7 @@ for slug, pf, short, cities in PREFS:
     <h2>{e(pf)}の夜間・救急の動物病院と、緊急の搬送</h2>
     <p>一刻を争う症状のときは、まずかかりつけや夜間・救急の動物病院に電話して、受け入れてもらえるか確かめてください。{hosp_lead}</p>
     <p>受付時間つきの一覧は<a href="/hospital/night/#pref={quote(pf)}">{e(pf)}の夜間・救急の動物病院</a>に、家まで来てくれる獣医さんは<a href="/hospital/visit/#pref={quote(pf)}">往診専門の動物病院</a>にまとめています。</p>
+    {gen_dogrun.area_snippet(pf, e)}
     <div class="emg">
       <h3 class="emg-h">緊急の搬送をしている会社</h3>
       {taxi_html}
@@ -1304,9 +1337,8 @@ import gen_jichitai
 gen_jichitai.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_jichitai.urls(SITE)
-# 全国の公営ドッグラン（/dogrun/）：お金を取らない情報ページ（tools/gen_dogrun.py、データ tools/dogrun.json）
-import gen_dogrun
-gen_dogrun.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
+# 全国の公営ドッグラン（/dogrun/ と /dogrun/<県>/）：お金を取らない情報ページ（tools/gen_dogrun.py、データ tools/dogrun.json）
+gen_dogrun.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links, pref_href=pref_href,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_dogrun.urls(SITE)
 # ペットが亡くなったら（/sougi/）：お金を取らない情報ページ（tools/gen_sougi.py、データ tools/sougi.json）
