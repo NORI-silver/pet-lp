@@ -1,0 +1,1789 @@
+{
+ "_説明": "ペットシッター（自宅に来てお世話・散歩代行）の全国一覧（/pet-sitter/）のデータ。各グループの公式サイトの店舗一覧（2026年11月2日）に載っている店舗名・対応エリア・店舗ページのURLだけを書く。料金・順位・電話番号は書かない。chain: SOS＝ペットシッターSOS（公式サイト：全加盟店が資格保有者でペットシッター保険に加入、犬・猫・小動物、事前の打ち合わせあり）、intopet＝ペットシッターintopetグループ（公式サイト：全店でペットシッター保険に加入し動物取扱業の登録、犬・猫・小動物・鳥）。口コミの星は出さない（訪問型で店舗がないため）。",
+ "checked": "2026年11月2日",
+ "chains": {
+  "SOS": {
+   "name": "ペットシッターSOS",
+   "url": "https://www.petsitter.co.jp/",
+   "note": "公式サイト：自宅を訪問してお世話をする訪問型。犬・猫・小動物に対応。全加盟店が資格保有者でペットシッター保険に加入。事前の打ち合わせあり"
+  },
+  "intopet": {
+   "name": "ペットシッターintopetグループ",
+   "url": "https://intopet.jp/",
+   "note": "公式サイト：食事・お水・散歩・トイレ・遊び・温度管理などのお世話。猫・犬・小動物・鳥・そのほか。全店でペットシッター保険に加入し、動物取扱業の登録あり"
+  }
+ },
+ "sitters": [
+  {
+   "id": "S001",
+   "name": "ペットシッターSOS 仙台北店",
+   "prefs": [
+    "宮城県"
+   ],
+   "area": "仙台市泉区、青葉区一部、太白区一部、宮城野区一部、富谷市、多賀城市",
+   "url": "https://www.petsitter.co.jp/shop/sendaikita/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S002",
+   "name": "ペットシッターSOS ひたちなか店",
+   "prefs": [
+    "茨城県"
+   ],
+   "area": "ひたちなか市、水戸市、那珂市、東海村、大洗町、常陸大宮市一部、常陸太田市一部",
+   "url": "https://www.petsitter.co.jp/shop/hitachinaka/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S003",
+   "name": "ペットシッターSOS 高崎店",
+   "prefs": [
+    "群馬県"
+   ],
+   "area": "高崎市・前橋市・安中市・藤岡市・伊勢崎市・渋川市ほか県内全域",
+   "url": "https://www.petsitter.co.jp/shop/takasaki/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S004",
+   "name": "ペットシッターSOS 深谷店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "深谷市、本庄市、熊谷市一部、美里町一部、寄居町一部",
+   "url": "https://www.petsitter.co.jp/shop/fukaya/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S005",
+   "name": "ペットシッターSOS 坂戸・川島町店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "比企郡川島町、坂戸市、吉見町、鶴ヶ島市、東松山市",
+   "url": "https://www.petsitter.co.jp/shop/sakado-kawa/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S006",
+   "name": "ペットシッターSOS 蓮田店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "蓮田市、さいたま市岩槻区・見沼区、白岡市、伊奈町",
+   "url": "https://www.petsitter.co.jp/shop/hasuda/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S007",
+   "name": "ペットシッターSOS 大宮東大成店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "さいたま市北区、大宮区一部、見沼区一部",
+   "url": "https://www.petsitter.co.jp/shop/omiyahigashionari/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S008",
+   "name": "ペットシッターSOS 大宮店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "さいたま市大宮区、西区、北区、岩槻区一部、上尾市",
+   "url": "https://www.petsitter.co.jp/shop/omiya/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S009",
+   "name": "ペットシッターSOS さいたま中央店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "さいたま市中央区、浦和区、桜区周辺",
+   "url": "https://www.petsitter.co.jp/shop/saitamachuo/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S010",
+   "name": "ペットシッターSOS 三郷中央店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "三郷市、吉川市",
+   "url": "https://www.petsitter.co.jp/shop/misatochuo/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S011",
+   "name": "ペットシッターSOS 草加店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "草加市、八潮市、越谷市一部",
+   "url": "https://www.petsitter.co.jp/shop/soka/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S012",
+   "name": "ペットシッターSOS 戸田店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "戸田市、蕨市",
+   "url": "https://www.petsitter.co.jp/shop/toda/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S013",
+   "name": "ペットシッターSOS 川越店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "川越市、富士見市、ふじみ野市、狭山市、新座市一部、所沢市一部、志木市一部",
+   "url": "https://www.petsitter.co.jp/shop/kawagoe/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S014",
+   "name": "ペットシッターSOS 入間飯能店",
+   "prefs": [
+    "埼玉県",
+    "東京都"
+   ],
+   "area": "入間市、飯能市、青梅市、所沢市一部、瑞穂町、狭山市一部、日高市",
+   "url": "https://www.petsitter.co.jp/shop/irumaome/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S015",
+   "name": "ペットシッターSOS 西高島平店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "板橋区（キャットシッター）",
+   "url": "https://www.petsitter.co.jp/shop/nishitakashimadaira/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S016",
+   "name": "ペットシッターSOS 板橋店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "板橋区、北区一部（赤羽・北赤羽・十条近辺）",
+   "url": "https://www.petsitter.co.jp/shop/itabashi/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S017",
+   "name": "ペットシッターSOS 足立店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "足立区、葛飾区一部",
+   "url": "https://www.petsitter.co.jp/shop/adachi/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S018",
+   "name": "ペットシッターSOS 荒川店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "荒川区、足立区一部、台東区一部",
+   "url": "https://www.petsitter.co.jp/shop/arakawa/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S019",
+   "name": "ペットシッターSOS 練馬店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "練馬区周辺",
+   "url": "https://www.petsitter.co.jp/shop/nerima/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S020",
+   "name": "ペットシッターSOS 中野店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "中野区、練馬区一部",
+   "url": "https://www.petsitter.co.jp/shop/nakano/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S021",
+   "name": "ペットシッターSOS 久我山店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "杉並区周辺、三鷹市一部、武蔵野市一部",
+   "url": "https://www.petsitter.co.jp/shop/kugayama/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S022",
+   "name": "ペットシッターSOS 世田谷仙川店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "世田谷区一部（仙川周辺）、調布市",
+   "url": "https://www.petsitter.co.jp/shop/setagayasengawa/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S023",
+   "name": "ペットシッターSOS 成城店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "世田谷区（246号より北側）",
+   "url": "https://www.petsitter.co.jp/shop/seijo/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S024",
+   "name": "ペットシッターSOS 桜上水店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "世田谷区（京王線・小田急線・世田谷線沿線）",
+   "url": "https://www.petsitter.co.jp/shop/sakurajousui/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S025",
+   "name": "ペットシッターSOS 浅草店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "台東区（蔵前橋通りより北側）",
+   "url": "https://www.petsitter.co.jp/shop/asakusa/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S026",
+   "name": "ペットシッターSOS 蔵前店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "台東区（蔵前中心）、墨田区一部、江東区一部",
+   "url": "https://www.petsitter.co.jp/shop/kuramae/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S027",
+   "name": "ペットシッターSOS 新宿店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "新宿区周辺",
+   "url": "https://www.petsitter.co.jp/shop/shinjuku/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S028",
+   "name": "ペットシッターSOS 新宿四谷店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "新宿区、千代田区一部、港区一部",
+   "url": "https://www.petsitter.co.jp/shop/shinjukuyotsuya/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S029",
+   "name": "ペットシッターSOS 神田店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "千代田区周辺、台東区・文京区・中央区・江東区・墨田区の一部",
+   "url": "https://www.petsitter.co.jp/shop/chiyodakanda/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S030",
+   "name": "ペットシッターSOS 両国店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "墨田区、江東区一部、台東区一部、中央区一部",
+   "url": "https://www.petsitter.co.jp/shop/ryogoku/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S031",
+   "name": "ペットシッターSOS 亀戸店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "墨田区一部、江東区一部",
+   "url": "https://www.petsitter.co.jp/shop/kameido/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S032",
+   "name": "ペットシッターSOS 築地店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "中央区、千代田区一部",
+   "url": "https://www.petsitter.co.jp/shop/tsukiji/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S033",
+   "name": "ペットシッターSOS 豊洲店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "豊洲・東雲・有明・塩浜・辰巳・晴海（キャットシッター）",
+   "url": "https://www.petsitter.co.jp/shop/toyosu/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S034",
+   "name": "ペットシッターSOS 江東湾岸エリア",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "江東区湾岸エリア（豊洲・東雲・有明・辰巳・潮見・枝川・塩浜・新砂・夢の島ほか）",
+   "url": "https://www.petsitter.co.jp/shop/kotowangan/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S035",
+   "name": "ペットシッターSOS 葛西店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "江戸川区（葛西方面）",
+   "url": "https://www.petsitter.co.jp/shop/kasai/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S036",
+   "name": "ペットシッターSOS 渋谷店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "渋谷区、港区一部",
+   "url": "https://www.petsitter.co.jp/shop/shibuya/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S037",
+   "name": "ペットシッターSOS 代々木八幡店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "渋谷区周辺、港区一部",
+   "url": "https://www.petsitter.co.jp/shop/yoyogihachiman/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S038",
+   "name": "ペットシッターSOS 港区芝浦店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "芝浦・港南・芝・三田・芝公園・麻布一部・高輪一部",
+   "url": "https://www.petsitter.co.jp/shop/shibaura/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S039",
+   "name": "ペットシッターSOS 港区白金店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "港区白金周辺、渋谷区恵比寿周辺、目黒区一部、品川区一部",
+   "url": "https://www.petsitter.co.jp/shop/shirokane/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S040",
+   "name": "ペットシッターSOS 品川店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "品川区",
+   "url": "https://www.petsitter.co.jp/shop/shinagawa/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S041",
+   "name": "ペットシッターSOS 自由が丘店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "自由が丘周辺、目黒区一部、世田谷区一部、大田区一部",
+   "url": "https://www.petsitter.co.jp/shop/jiyugaoka/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S042",
+   "name": "ペットシッターSOS 大森店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "大田区周辺",
+   "url": "https://www.petsitter.co.jp/shop/omori/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S043",
+   "name": "ペットシッターSOS 調布店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "調布市",
+   "url": "https://www.petsitter.co.jp/shop/chofu/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S044",
+   "name": "ペットシッターSOS 多摩・府中店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "多摩市、府中市",
+   "url": "https://www.petsitter.co.jp/shop/tama-fuchu/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S045",
+   "name": "ペットシッターSOS 日野店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "日野市、国立市、八王子市一部",
+   "url": "https://www.petsitter.co.jp/shop/hino/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S046",
+   "name": "ペットシッターSOS 立川店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "立川市、昭島市、八王子市一部、東大和市一部",
+   "url": "https://www.petsitter.co.jp/shop/tachikawa/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S047",
+   "name": "ペットシッターSOS 三鷹店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "三鷹市、調布市一部",
+   "url": "https://www.petsitter.co.jp/shop/mitaka/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S048",
+   "name": "ペットシッターSOS 三鷹上連雀店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "三鷹市、武蔵野市",
+   "url": "https://www.petsitter.co.jp/shop/mitaka-kamirenjaku/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S049",
+   "name": "ペットシッターSOS 西東京店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "西東京市周辺、東久留米市一部、練馬区石神井周辺",
+   "url": "https://www.petsitter.co.jp/shop/nishitokyo/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S050",
+   "name": "ペットシッターSOS 町田・新百合店",
+   "prefs": [
+    "神奈川県",
+    "東京都"
+   ],
+   "area": "川崎市麻生区、横浜市青葉区・都筑区一部、町田市周辺",
+   "url": "https://www.petsitter.co.jp/shop/shinyurigaoka/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S051",
+   "name": "ペットシッターSOS 相模原緑店",
+   "prefs": [
+    "神奈川県",
+    "東京都"
+   ],
+   "area": "相模原市、八王子市一部",
+   "url": "https://www.petsitter.co.jp/shop/sagamiharamidori/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S052",
+   "name": "ペットシッターSOS 武蔵小杉店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "川崎市中原区",
+   "url": "https://www.petsitter.co.jp/shop/musashikosugi/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S053",
+   "name": "ペットシッターSOS 高津区店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "川崎市高津区、中原区、多摩区、二子玉川周辺",
+   "url": "https://www.petsitter.co.jp/shop/takatsuku/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S054",
+   "name": "ペットシッターSOS 宮前店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "川崎市宮前区、高津区一部",
+   "url": "https://www.petsitter.co.jp/shop/miyamae/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S055",
+   "name": "ペットシッターSOS あざみ野店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市青葉区周辺",
+   "url": "https://www.petsitter.co.jp/shop/azamino/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S056",
+   "name": "ペットシッターSOS 川崎幸店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "川崎市幸区、川崎区",
+   "url": "https://www.petsitter.co.jp/shop/kawasakisaiwai/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S057",
+   "name": "ペットシッターSOS 川崎西口店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "川崎市幸区、川崎区、中原区一部、東京都大田区一部、品川区一部",
+   "url": "https://www.petsitter.co.jp/shop/kawasakinishi/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S058",
+   "name": "ペットシッターSOS 横浜旭店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市旭区、泉区一部",
+   "url": "https://www.petsitter.co.jp/shop/yokohama-asahi/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S059",
+   "name": "ペットシッターSOS 鶴見東口店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市鶴見区、川崎市川崎区・幸区",
+   "url": "https://www.petsitter.co.jp/shop/turumihigashi/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S060",
+   "name": "ペットシッターSOS 横浜港北店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市港北区、鶴見区一部",
+   "url": "https://www.petsitter.co.jp/shop/yokohamakohoku/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S061",
+   "name": "ペットシッターSOS 横浜三ツ沢店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市神奈川区、西区（近隣も相談可）",
+   "url": "https://www.petsitter.co.jp/shop/yokohama-mitsuzawa/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S062",
+   "name": "ペットシッターSOS 横浜上星川店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市保土ケ谷区、神奈川区、泉区（近隣も相談可）",
+   "url": "https://www.petsitter.co.jp/shop/yokohama-kamihoshikawa/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S063",
+   "name": "ペットシッターSOS 相模原店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "相模原市",
+   "url": "https://www.petsitter.co.jp/shop/sagamihara/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S064",
+   "name": "ペットシッターSOS 相模原南・座間店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "座間市、相模原市南区（ほかも相談可）",
+   "url": "https://www.petsitter.co.jp/shop/zama/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S065",
+   "name": "ペットシッターSOS 大和店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "大和市、横浜市瀬谷区・泉区一部（近隣も相談可）",
+   "url": "https://www.petsitter.co.jp/shop/yamato/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S066",
+   "name": "ペットシッターSOS 海老名店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "海老名市、綾瀬市",
+   "url": "https://www.petsitter.co.jp/shop/ebina/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S067",
+   "name": "ペットシッターSOS 厚木店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "厚木市、伊勢原市",
+   "url": "https://www.petsitter.co.jp/shop/atsugi/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S068",
+   "name": "ペットシッターSOS 茅ヶ崎南店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "茅ヶ崎市、藤沢市一部、平塚市一部",
+   "url": "https://www.petsitter.co.jp/shop/chigasaki/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S069",
+   "name": "ペットシッターSOS 平塚・茅ヶ崎北店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "平塚市、茅ヶ崎市一部、寒川町、藤沢市一部、大磯町、二宮町",
+   "url": "https://www.petsitter.co.jp/shop/hiratsuka/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S070",
+   "name": "ペットシッターSOS 湘南西エリア",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "平塚市一部、大磯町、二宮町",
+   "url": "https://www.petsitter.co.jp/shop/shonannishi/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S071",
+   "name": "ペットシッターSOS 藤沢店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "藤沢市一部、横浜市瀬谷区・泉区・戸塚区の一部",
+   "url": "https://www.petsitter.co.jp/shop/fujisawa/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S072",
+   "name": "ペットシッターSOS 横須賀葉山店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横須賀市、逗子市、葉山周辺",
+   "url": "https://www.petsitter.co.jp/shop/yokosukahayama/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S073",
+   "name": "ペットシッターSOS 横須賀三浦店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "三浦市、横須賀市一部",
+   "url": "https://www.petsitter.co.jp/shop/yokosukamiura/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S074",
+   "name": "ペットシッターSOS 佐倉ユーカリが丘店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "佐倉市、四街道市、八千代市一部",
+   "url": "https://www.petsitter.co.jp/shop/sakura-yukarigaoka/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S075",
+   "name": "ペットシッターSOS 市川店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "市川市",
+   "url": "https://www.petsitter.co.jp/shop/ichikawa/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S076",
+   "name": "ペットシッターSOS 本八幡店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "市川市、松戸市一部、江戸川区一部",
+   "url": "https://www.petsitter.co.jp/shop/motoyawata/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S077",
+   "name": "ペットシッターSOS 浦安店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "浦安市周辺（近隣も相談可）",
+   "url": "https://www.petsitter.co.jp/shop/urayasu/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S078",
+   "name": "ペットシッターSOS 船橋店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "船橋市周辺（近隣も相談可）",
+   "url": "https://www.petsitter.co.jp/shop/funabashi/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S079",
+   "name": "ペットシッターSOS 千葉中央店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉市中央区・稲毛区・美浜区周辺（キャットシッター）",
+   "url": "https://www.petsitter.co.jp/shop/chibachuo/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S080",
+   "name": "ペットシッターSOS 花見川店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉市花見川区周辺、習志野市、八千代市一部",
+   "url": "https://www.petsitter.co.jp/shop/hanamigawa/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S081",
+   "name": "ペットシッターSOS 長生店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "長生郡、茂原市、いすみ市一部、大網白里市",
+   "url": "https://www.petsitter.co.jp/shop/chosei/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S082",
+   "name": "ペットシッターSOS 千葉南店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "木更津市、千葉市一部、市原市、袖ケ浦市、君津市、富津市",
+   "url": "https://www.petsitter.co.jp/shop/chibaminami/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S083",
+   "name": "ペットシッターSOS 新潟下越店",
+   "prefs": [
+    "新潟県"
+   ],
+   "area": "胎内市、村上市、新発田市、関川村、聖籠町",
+   "url": "https://www.petsitter.co.jp/shop/niigatakaetsu/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S084",
+   "name": "ペットシッターSOS 新潟市店",
+   "prefs": [
+    "新潟県"
+   ],
+   "area": "新潟市西区、中央区周辺",
+   "url": "https://www.petsitter.co.jp/shop/niigatashi/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S085",
+   "name": "ペットシッターSOS 上越・糸魚川店",
+   "prefs": [
+    "新潟県",
+    "富山県"
+   ],
+   "area": "糸魚川市、上越市一部、富山県入善町",
+   "url": "https://www.petsitter.co.jp/shop/joetsu-itoigawa/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S086",
+   "name": "ペットシッターSOS 長野店",
+   "prefs": [
+    "長野県"
+   ],
+   "area": "長野市（一部地域除く）、千曲市一部",
+   "url": "https://www.petsitter.co.jp/shop/nagano/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S087",
+   "name": "ペットシッターSOS 佐久店",
+   "prefs": [
+    "長野県"
+   ],
+   "area": "佐久市近辺（要相談）",
+   "url": "https://www.petsitter.co.jp/shop/saku/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S088",
+   "name": "ペットシッターSOS 岐阜店",
+   "prefs": [
+    "岐阜県"
+   ],
+   "area": "岐阜市、各務原市、瑞穂市、笠松町、岐南町",
+   "url": "https://www.petsitter.co.jp/shop/gifu/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S089",
+   "name": "ペットシッターSOS 天白店",
+   "prefs": [
+    "愛知県"
+   ],
+   "area": "名古屋市天白区、昭和区、瑞穂区、名東区一部",
+   "url": "https://www.petsitter.co.jp/shop/tenpaku/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S090",
+   "name": "ペットシッターSOS 名古屋南店",
+   "prefs": [
+    "愛知県"
+   ],
+   "area": "名古屋市南区、熱田区一部、緑区一部、港区一部",
+   "url": "https://www.petsitter.co.jp/shop/nagoyaminami/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S091",
+   "name": "ペットシッターSOS 三河店",
+   "prefs": [
+    "愛知県"
+   ],
+   "area": "大府市、刈谷市、安城市、豊田市一部、そのほか西三河",
+   "url": "https://www.petsitter.co.jp/shop/mikawa/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S092",
+   "name": "ペットシッターSOS 阿久比店",
+   "prefs": [
+    "愛知県"
+   ],
+   "area": "知多半島全域（キャットシッター。小型犬対応可）",
+   "url": "https://www.petsitter.co.jp/shop/agui/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S093",
+   "name": "ペットシッターSOS 豊橋店",
+   "prefs": [
+    "愛知県",
+    "静岡県"
+   ],
+   "area": "豊橋市、豊川市、蒲郡市一部、新城市一部、静岡県湖西市",
+   "url": "https://www.petsitter.co.jp/shop/toyohashi/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S094",
+   "name": "ペットシッターSOS 滋賀南店",
+   "prefs": [
+    "滋賀県"
+   ],
+   "area": "大津市・草津市・栗東市・守山市・野洲市・東近江市・近江八幡市・彦根市",
+   "url": "https://www.petsitter.co.jp/shop/shigaminami/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S095",
+   "name": "ペットシッターSOS 京都北店",
+   "prefs": [
+    "京都府"
+   ],
+   "area": "京都市北区、左京区（一部除く）、上京区、中京区（四条通まで）",
+   "url": "https://www.petsitter.co.jp/shop/kyotokita/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S096",
+   "name": "ペットシッターSOS 岸和田店",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "岸和田市周辺",
+   "url": "https://www.petsitter.co.jp/shop/kishiwada/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S097",
+   "name": "ペットシッターSOS 西神戸店",
+   "prefs": [
+    "兵庫県"
+   ],
+   "area": "神戸市（垂水区・西区一部・須磨区・長田区・兵庫区・中央区一部）、明石市",
+   "url": "https://www.petsitter.co.jp/shop/nishikobe/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S098",
+   "name": "ペットシッターSOS 東神戸・芦屋店",
+   "prefs": [
+    "兵庫県"
+   ],
+   "area": "神戸市東灘区・灘区・中央区、芦屋市",
+   "url": "https://www.petsitter.co.jp/shop/higashikobe/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S099",
+   "name": "ペットシッターSOS 尼崎・西宮店",
+   "prefs": [
+    "兵庫県"
+   ],
+   "area": "尼崎市、西宮市",
+   "url": "https://www.petsitter.co.jp/shop/amagasaki/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S100",
+   "name": "ペットシッターSOS 川西・宝塚店",
+   "prefs": [
+    "兵庫県",
+    "大阪府"
+   ],
+   "area": "川西市、宝塚市、伊丹市一部、大阪府池田市一部",
+   "url": "https://www.petsitter.co.jp/shop/kawanishi_takarazuka/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S101",
+   "name": "ペットシッターSOS 米子店",
+   "prefs": [
+    "鳥取県"
+   ],
+   "area": "米子市周辺",
+   "url": "https://www.petsitter.co.jp/shop/yonago/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S102",
+   "name": "ペットシッターSOS 周南店",
+   "prefs": [
+    "山口県"
+   ],
+   "area": "周南市、下松市、光市、防府市（県東部も相談可）",
+   "url": "https://www.petsitter.co.jp/shop/shunan/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S103",
+   "name": "ペットシッターSOS 北九州店",
+   "prefs": [
+    "福岡県",
+    "山口県"
+   ],
+   "area": "北九州市各区、山口県下関市一部",
+   "url": "https://www.petsitter.co.jp/shop/kitakyushu/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S104",
+   "name": "ペットシッターSOS 鳥栖店",
+   "prefs": [
+    "佐賀県",
+    "福岡県"
+   ],
+   "area": "鳥栖市、三養基郡、大野城市、筑紫野市、小郡市、太宰府市、久留米市、三潴郡",
+   "url": "https://www.petsitter.co.jp/shop/tosu/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S105",
+   "name": "ペットシッターSOS 人吉店",
+   "prefs": [
+    "熊本県"
+   ],
+   "area": "人吉市、球磨郡",
+   "url": "https://www.petsitter.co.jp/shop/hitoyoshi/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S106",
+   "name": "ペットシッターSOS 湯布院店",
+   "prefs": [
+    "大分県"
+   ],
+   "area": "由布市、別府市、大分市",
+   "url": "https://www.petsitter.co.jp/shop/yufuin/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S107",
+   "name": "ペットシッターSOS 鹿児島店",
+   "prefs": [
+    "鹿児島県"
+   ],
+   "area": "鹿児島市（桜島を除く）",
+   "url": "https://www.petsitter.co.jp/shop/kagoshima/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S108",
+   "name": "ペットシッターSOS 沖縄北谷店",
+   "prefs": [
+    "沖縄県"
+   ],
+   "area": "北谷町、嘉手納町、中城村、読谷村、沖縄市、宜野湾市",
+   "url": "https://www.petsitter.co.jp/shop/okinawa-chatan/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S109",
+   "name": "ペットシッターSOS 沖縄宜野湾店",
+   "prefs": [
+    "沖縄県"
+   ],
+   "area": "宜野湾市、浦添市、那覇市一部",
+   "url": "https://www.petsitter.co.jp/shop/okinawaginowan/",
+   "chain": "SOS"
+  },
+  {
+   "id": "S110",
+   "name": "キャットシッター1010（せんじゅ）",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "足立区、荒川区、その他周辺",
+   "url": "https://intopet.jp/catsitter1010/",
+   "chain": "intopet",
+   "animals": "猫"
+  },
+  {
+   "id": "S111",
+   "name": "ペットシッター睦",
+   "prefs": [
+    "長崎県"
+   ],
+   "area": "長崎市、時津町、長与町、その他周辺",
+   "url": "https://intopet.jp/mutu/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S112",
+   "name": "ペットシッターCOCO",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "福岡市早良区、西区、城南区、南区、中央区、博多区、その他周辺",
+   "url": "https://intopet.jp/coco/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S113",
+   "name": "すみれねこシッター",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市保土ヶ谷区、その他周辺",
+   "url": "https://intopet.jp/sumireneko/",
+   "chain": "intopet",
+   "animals": "猫"
+  },
+  {
+   "id": "S114",
+   "name": "ペットシッターK9WORKS",
+   "prefs": [
+    "鳥取県"
+   ],
+   "area": "鳥取市、その他周辺",
+   "url": "https://intopet.jp/k9works/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S115",
+   "name": "ペットシッターとことこ日和",
+   "prefs": [
+    "静岡県"
+   ],
+   "area": "浜松市中央区、浜名区、磐田市、その他周辺",
+   "url": "https://intopet.jp/tokotokobiyori/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S116",
+   "name": "ペットシッターHIRO",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "目黒区、品川区、世田谷区、その他周辺",
+   "url": "https://intopet.jp/hiro/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S117",
+   "name": "ペットシッター寅次郎",
+   "prefs": [
+    "秋田県"
+   ],
+   "area": "大仙市、美郷町、横手市、仙北市、その他周辺",
+   "url": "https://intopet.jp/torajirou/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S118",
+   "name": "ペットシッター優ペット",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "蕨市、川口市、戸田市、さいたま市南区、その他周辺",
+   "url": "https://intopet.jp/yuu/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S119",
+   "name": "ペットシッターpurifuri",
+   "prefs": [
+    "愛知県"
+   ],
+   "area": "豊川市、豊橋市、新城市、蒲郡市、岡崎市、田原市、その他周辺",
+   "url": "https://intopet.jp/purifuri/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S120",
+   "name": "ペットシッターねんねこりん",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉市、市原市、習志野市、船橋市、その他周辺",
+   "url": "https://intopet.jp/nennekorin/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S121",
+   "name": "ペットシッターhoni8867",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "松戸市、その他周辺",
+   "url": "https://intopet.jp/honi8867/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S122",
+   "name": "ペットシッターひめシラ",
+   "prefs": [
+    "静岡県"
+   ],
+   "area": "三島市、裾野市、清水町、長泉町、その他周辺",
+   "url": "https://intopet.jp/himesira/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S123",
+   "name": "ペットシッターぱにぴ",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "八王子市、相模原、町田、日野、その他周辺",
+   "url": "https://intopet.jp/panipi/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S124",
+   "name": "ペットシッターTANTAN",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "綾瀬市、その他周辺",
+   "url": "https://intopet.jp/tantan/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S125",
+   "name": "ペットシッターにじいろぐも",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市金沢区、逗子市、葉山町（磯子区・栄区・横須賀市の一部）",
+   "url": "https://intopet.jp/2416gumo/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S126",
+   "name": "ペットシッターシャトンブルー",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "中野区、杉並区、練馬区、その他近郊",
+   "url": "https://intopet.jp/chatonbleu/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S127",
+   "name": "ペットシッターMOFUKO",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "比企郡、坂戸市、川越市、東松山市、その他周辺",
+   "url": "https://intopet.jp/mofuko/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S128",
+   "name": "ペットシッターあにまるfam",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "船橋市、習志野市、その他周辺",
+   "url": "https://intopet.jp/animalfam/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S129",
+   "name": "ペットシッターHAB",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "港区、その他周辺",
+   "url": "https://intopet.jp/hab/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S130",
+   "name": "ペットシッターSakura・an",
+   "prefs": [
+    "兵庫県"
+   ],
+   "area": "尼崎市、西宮市、その他周辺",
+   "url": "https://intopet.jp/sakura-an/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S131",
+   "name": "ペットシッターsmiley-biora",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市栄区、その他周辺",
+   "url": "https://intopet.jp/smiley-biora/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S132",
+   "name": "MYペットシッター",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "大阪市中央区、北区、福島区、都島区、西区、淀川区、その他近郊",
+   "url": "https://intopet.jp/my/",
+   "chain": "intopet",
+   "animals": "猫・小動物専門"
+  },
+  {
+   "id": "S133",
+   "name": "ペットシッターはっちのしっぽ",
+   "prefs": [
+    "宮崎県"
+   ],
+   "area": "綾町、国富町、宮崎市、その他周辺",
+   "url": "https://intopet.jp/hatchnosippo/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S134",
+   "name": "ペットシッターpatria",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "大阪市北区、その他周辺",
+   "url": "https://intopet.jp/patria/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S135",
+   "name": "ペットシッターAnimaRoom",
+   "prefs": [
+    "茨城県"
+   ],
+   "area": "常総市、守谷市、坂東市、つくば市、その他周辺",
+   "url": "https://intopet.jp/animaroom/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S136",
+   "name": "キャットシッターもなちゃん",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "川崎市麻生区、その他周辺",
+   "url": "https://intopet.jp/mona/",
+   "chain": "intopet",
+   "animals": "猫"
+  },
+  {
+   "id": "S137",
+   "name": "ペットシッターもこもふ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "柏市、流山市、我孫子市、その他周辺",
+   "url": "https://intopet.jp/mocomofu/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S138",
+   "name": "ペットシッター・詩海・",
+   "prefs": [
+    "栃木県"
+   ],
+   "area": "宇都宮市、その他周辺",
+   "url": "https://intopet.jp/utakai/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S139",
+   "name": "ペットシッターあーるず",
+   "prefs": [
+    "福島県",
+    "茨城県"
+   ],
+   "area": "いわき市、北茨城、その他周辺",
+   "url": "https://intopet.jp/rs/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S140",
+   "name": "ペットシッターたんぽぽ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "習志野市、その他周辺",
+   "url": "https://intopet.jp/tampopo/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S141",
+   "name": "ペットシッターBe good",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "中野区、新宿区、渋谷区、その他周辺",
+   "url": "https://intopet.jp/begood/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S142",
+   "name": "ペットシッターMay",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "大阪市内（北区、福島区、此花区、西淀川区、淀川区、西区、浪速区）、その他周辺",
+   "url": "https://intopet.jp/may/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S143",
+   "name": "ペットシッターpettyfam",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "さいたま市、朝霞市、志木市、その他周辺",
+   "url": "https://intopet.jp/pettyfam/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S144",
+   "name": "ペットシッターろば",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市鶴見区、港北区、神奈川区、川崎市、その他周辺",
+   "url": "https://intopet.jp/roba/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S145",
+   "name": "ペットシッターロックホッパー",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "品川区、その他周辺",
+   "url": "https://intopet.jp/rockhopper/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S146",
+   "name": "キャットシッターNear",
+   "prefs": [
+    "京都府"
+   ],
+   "area": "京都市（一部除外エリアあり）",
+   "url": "https://intopet.jp/near/",
+   "chain": "intopet",
+   "animals": "猫"
+  },
+  {
+   "id": "S147",
+   "name": "ペットシッターポノ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "さいたま市、川口市、その周辺",
+   "url": "https://intopet.jp/pono/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S148",
+   "name": "ペットシッターのん太郎ハウス",
+   "prefs": [
+    "宮崎県"
+   ],
+   "area": "宮崎市、その他周辺",
+   "url": "https://intopet.jp/nontarou/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S149",
+   "name": "ペットシッターみっきー",
+   "prefs": [
+    "石川県"
+   ],
+   "area": "金沢市、河北郡、かほく市、その他周辺",
+   "url": "https://intopet.jp/mickey/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S150",
+   "name": "ペットシッターねこまもり",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "新宿区、中野区、渋谷区、杉並区、その他周辺",
+   "url": "https://intopet.jp/nekomamori/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S151",
+   "name": "ペットシッターゆりかご",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "伊勢原市、その他周辺",
+   "url": "https://intopet.jp/yurikago/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S152",
+   "name": "ペットシッター・ドッグボディケア スマイルリリィ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "印西市、白井市、その他周辺",
+   "url": "https://intopet.jp/smile-lily/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S153",
+   "name": "ペットシッターはまっ子",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市神奈川区、その他周辺",
+   "url": "https://intopet.jp/hamacco/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S154",
+   "name": "キャットシッター・モジョ",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "大田区、田園調布、その他周辺",
+   "url": "https://intopet.jp/mojo/",
+   "chain": "intopet",
+   "animals": "猫"
+  },
+  {
+   "id": "S155",
+   "name": "ペットシッターぺろさの",
+   "prefs": [
+    "静岡県"
+   ],
+   "area": "沼津市、三島市、長泉町、清水町、その他周辺",
+   "url": "https://intopet.jp/perrosano/",
+   "chain": "intopet",
+   "animals": "犬のみ"
+  },
+  {
+   "id": "S156",
+   "name": "ペットシッター晴ればれ",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "太宰府市、筑紫野市、大野城市、春日市、那珂川市、宇美町、志免町、その他周辺",
+   "url": "https://intopet.jp/harebare/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S157",
+   "name": "ペットシッターpurePet",
+   "prefs": [
+    "長野県"
+   ],
+   "area": "軽井沢町、御代田町、小諸市、その他周辺",
+   "url": "https://intopet.jp/purepet/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S158",
+   "name": "ペットシッターBow’s Animal Care",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "小田原市、南足柄市、開成町、大井町、二宮町、その他周辺",
+   "url": "https://intopet.jp/bowsanimalcare/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S159",
+   "name": "キャットシッターベル",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "鎌倉市、藤沢市、その他周辺",
+   "url": "https://intopet.jp/bell/",
+   "chain": "intopet",
+   "animals": "猫"
+  },
+  {
+   "id": "S160",
+   "name": "ペットシッターおうち日和",
+   "prefs": [
+    "静岡県"
+   ],
+   "area": "藤枝市、焼津市、島田市、その他周辺",
+   "url": "https://intopet.jp/ouchibiyori/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S161",
+   "name": "ペットシッターはぴねす",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "福岡市中央区、博多区、その他周辺",
+   "url": "https://intopet.jp/happiness/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S162",
+   "name": "ペットシッター和風猫本舗",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "船橋市、八千代市、その他周辺",
+   "url": "https://intopet.jp/miacis/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S163",
+   "name": "bambini ペットシッター",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "港区、渋谷区（広尾・恵比寿・東）、その他周辺",
+   "url": "https://intopet.jp/bambini/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S164",
+   "name": "ペットシッターサービスこはるびより",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市金沢区、栄区、港南区、磯子区、横須賀市、逗子市、鎌倉市、その他周辺",
+   "url": "https://intopet.jp/koharubiyori/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S165",
+   "name": "ペットシッターわんとにゃ",
+   "prefs": [
+    "石川県"
+   ],
+   "area": "金沢市、白山市、野々市市、河北郡周辺、能美郡",
+   "url": "https://intopet.jp/wantonya/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S166",
+   "name": "キャットシッターゆるねこ",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "江東区、中央区、その他周辺",
+   "url": "https://intopet.jp/yuruneko/",
+   "chain": "intopet",
+   "animals": "猫"
+  },
+  {
+   "id": "S167",
+   "name": "ペットシッター結",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "川口市、さいたま市、蕨市、草加市、越谷市、戸田市",
+   "url": "https://intopet.jp/yui/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S168",
+   "name": "ペットシッター Smile Family",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "箕面市、茨木市、吹田市、豊中市（犬の散歩代行あり）",
+   "url": "https://intopet.jp/smilefamily/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S169",
+   "name": "豆福ペットシッターサービス",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "久喜市、白岡市、蓮田市、加須市、幸手市、杉戸町、宮代町、伊奈町（久喜駅から15km圏内）",
+   "url": "https://intopet.jp/mamefuku/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S170",
+   "name": "BBペットサービス",
+   "prefs": [
+    "東京都",
+    "埼玉県"
+   ],
+   "area": "足立区、葛飾区、草加市、八潮市、三郷市、その他周辺",
+   "url": "https://intopet.jp/bbpetservice/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S171",
+   "name": "cagiccoペットシッター",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市港北区、神奈川区、都筑区",
+   "url": "https://intopet.jp/cagicco/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S172",
+   "name": "chat concierge（ペットシッター・ペットホテル・キャッテリー）",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "流山市（松ヶ丘中心）、柏市、松戸市、その他周辺",
+   "url": "https://intopet.jp/chat-concierge/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S173",
+   "name": "chacoペットシッター",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "世田谷区、目黒区、その他周辺",
+   "url": "https://intopet.jp/chaco/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S174",
+   "name": "ペットシッターよこて",
+   "prefs": [
+    "秋田県"
+   ],
+   "area": "横手市、その他周辺",
+   "url": "https://petsitter-yokote.com/",
+   "chain": "intopet"
+  },
+  {
+   "id": "S175",
+   "name": "ペットシッター和ペット",
+   "prefs": [
+    "千葉県",
+    "東京都",
+    "埼玉県"
+   ],
+   "area": "松戸市、市川市、鎌ヶ谷市、船橋市、葛飾区、足立区、三郷市、その他周辺",
+   "url": "https://petsitter-wapet.co.jp/",
+   "chain": "intopet"
+  }
+ ]
+}
