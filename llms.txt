@@ -1,0 +1,36 @@
+# ペットタクシー予約窓口
+
+> 全国のペットタクシー会社をさがして、公式サイトの料金表から計算した料金の目安をくらべ、空き状況と料金を無料で問い合わせられるサイトです。あわせて、夜間・救急の動物病院や、ドッグラン・老犬ホーム・ペットシッターなど、ペットとのくらしに役立つ全国の一覧を載せています。
+
+- 料金は各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません。当日の道順・渋滞・待ち時間などで変わります。
+- 一覧は公式サイトで確かめたことだけを載せています。順位はつけていません。
+- ブラウザのAIエージェント向けに、見るだけの道具（WebMCP）を用意しています。一覧のデータは /webmcp/data.json です。
+
+## 料金をくらべる
+
+- [料金をくらべる・問い合わせる（無料）](https://pet.shiokonbu.com/#form): お迎えの場所・行き先・日時・ペットの情報を入れると、条件に合う会社と料金の目安が出ます
+- [全国の都道府県のページ](https://pet.shiokonbu.com/area/)
+- [ガイド](https://pet.shiokonbu.com/guide/): ペットタクシーの使い方・料金・ふつうのタクシーに犬は乗れるか など
+
+## ペットとのくらしの一覧
+
+- [夜間・救急の動物病院](https://pet.shiokonbu.com/emergency/): 130件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+- [緊急の搬送をしているペットタクシー会社](https://pet.shiokonbu.com/emergency/): 48件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+- [往診の動物病院](https://pet.shiokonbu.com/hospital/visit/): 68件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+- [猫の専門病院](https://pet.shiokonbu.com/hospital/cat/): 18件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+- [エキゾチックアニマルの専門病院](https://pet.shiokonbu.com/hospital/exotic/): 15件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+- [大型犬の設備がある動物病院](https://pet.shiokonbu.com/hospital/large/): 12件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+- [ドッグラン](https://pet.shiokonbu.com/dogrun/): 194件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+- [老犬ホーム・老猫ホーム](https://pet.shiokonbu.com/rojin-home/): 87件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+- [ペットシッター](https://pet.shiokonbu.com/pet-sitter/): 351件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+- [ドッグトレーナー・しつけ教室](https://pet.shiokonbu.com/dog-trainer/): 121件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+- [ペットホテル（大型犬OK・猫専用）](https://pet.shiokonbu.com/pet-hotel/): 109件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+- [出張トリミング](https://pet.shiokonbu.com/trimming/): 94件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+- [ペット火葬・霊園・納骨堂（民間）](https://pet.shiokonbu.com/sougi/): 171件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+- [自治体の動物愛護センター・保健所（迷子・登録・引取り）](https://pet.shiokonbu.com/jichitai/): 129件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます
+
+## そのほか
+
+- [利用規約](https://pet.shiokonbu.com/terms/)
+- [お問い合わせ](https://pet.shiokonbu.com/contact/)
+- [サイトマップ](https://pet.shiokonbu.com/sitemap.xml)

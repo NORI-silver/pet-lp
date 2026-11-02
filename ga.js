@@ -11,3 +11,10 @@
   s.src = "https://www.googletagmanager.com/gtag/js?id=" + ID;
   document.head.appendChild(s);
 })();
+
+// AIエージェント向けの道具（WebMCP、webmcp.js）。対応したブラウザのときだけ読み込む。見るだけで、どこにも送らない。
+(function(){
+  if (!(document.modelContext || navigator.modelContext) || /^\/go\//.test(location.pathname)) return;
+  var s = document.createElement("script"); s.defer = true; s.src = "/webmcp.js";
+  document.head.appendChild(s);
+})();
