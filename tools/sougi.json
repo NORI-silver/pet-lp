@@ -1,0 +1,264 @@
+{
+ "_説明": "ペットが亡くなったときの自治体の案内（/sougi/）。県庁所在地（東京都は新宿区）の公式ページ。tools/gen_sougi.py が使う。電話番号は載せない。",
+ "checked": "2026年11月2日",
+ "cities": [
+  {
+   "pref": "北海道",
+   "city": "札幌市",
+   "t": "ペットの火葬",
+   "u": "https://www.city.sapporo.jp/inuneko/main/kasou.html"
+  },
+  {
+   "pref": "青森県",
+   "city": "青森市",
+   "t": "動物の火葬",
+   "u": "https://www.city.aomori.aomori.jp/kurashi_kankyo/saijou/1002154/1002156.html"
+  },
+  {
+   "pref": "岩手県",
+   "city": "盛岡市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.morioka.iwate.jp/kurashi/pet/pet_kurashi/1030338.html"
+  },
+  {
+   "pref": "宮城県",
+   "city": "仙台市",
+   "t": "ペットの火葬",
+   "u": "https://www.city.sendai.jp/haiki-kanri/kurashi/shizen/petto/hogodobutsu/oshirase/pet.html"
+  },
+  {
+   "pref": "秋田県",
+   "city": "秋田市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.akita.lg.jp/kurashi/pet/1005361/1005396.html"
+  },
+  {
+   "pref": "山形県",
+   "city": "山形市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.yamagata-yamagata.lg.jp/kurashi/gomi/1006506/1006509/1001906.html"
+  },
+  {
+   "pref": "福島県",
+   "city": "福島市",
+   "t": "ペットの火葬",
+   "u": "https://www.city.fukushima.fukushima.jp/soshiki/8/1040/1/3691.html"
+  },
+  {
+   "pref": "栃木県",
+   "city": "宇都宮市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.utsunomiya.lg.jp/kurashi/gomi/kateigomi/dashikata/1004995.html"
+  },
+  {
+   "pref": "群馬県",
+   "city": "前橋市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.maebashi.gunma.jp/soshiki/kankyo/seisoshisetsu/gyomu/1/2/1/2640.html"
+  },
+  {
+   "pref": "埼玉県",
+   "city": "さいたま市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.saitama.lg.jp/001/006/010/006/p000004.html"
+  },
+  {
+   "pref": "千葉県",
+   "city": "千葉市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.chiba.jp/faq/kankyo/junkan/shushugyomu/1098.html"
+  },
+  {
+   "pref": "東京都",
+   "city": "新宿区",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.shinjuku.lg.jp/seikatsu/file09_04_00001.html"
+  },
+  {
+   "pref": "神奈川県",
+   "city": "横浜市",
+   "t": "ペットの火葬",
+   "u": "https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/saijo/saijo/petto.html"
+  },
+  {
+   "pref": "富山県",
+   "city": "富山市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.toyama.lg.jp/kurashi/gomi/1010228/1005409.html"
+  },
+  {
+   "pref": "新潟県",
+   "city": "新潟市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.niigata.lg.jp/kurashi/gomi/gomi_recycl/dogcat.html"
+  },
+  {
+   "pref": "福井県",
+   "city": "福井市",
+   "t": "クリーンセンターへの持ち込み",
+   "u": "https://www.city.fukui.lg.jp/kurasi/kankyo/center/pet.html"
+  },
+  {
+   "pref": "長野県",
+   "city": "長野市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.nagano.nagano.jp/n121515/contents/p001096.html"
+  },
+  {
+   "pref": "岐阜県",
+   "city": "岐阜市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.gifu.lg.jp/kurashi/seikatukankyo/1002857/1025360/1025444.html"
+  },
+  {
+   "pref": "静岡県",
+   "city": "静岡市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.shizuoka.lg.jp/s3276/s013004.html"
+  },
+  {
+   "pref": "愛知県",
+   "city": "名古屋市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.nagoya.jp/kurashi/pet/1015199/1034042/1015202.html"
+  },
+  {
+   "pref": "滋賀県",
+   "city": "大津市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.otsu.lg.jp/soshiki/021/1442/g/pet/1387776781007.html"
+  },
+  {
+   "pref": "京都府",
+   "city": "京都市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.kyoto.lg.jp/kankyo/page/0000000981.html"
+  },
+  {
+   "pref": "大阪府",
+   "city": "大阪市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.osaka.lg.jp/kankyo/page/0000370528.html"
+  },
+  {
+   "pref": "兵庫県",
+   "city": "神戸市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.kobe.lg.jp/a04164/kurashi/recycle/gomi/dashikata/info04.html"
+  },
+  {
+   "pref": "奈良県",
+   "city": "奈良市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.nara.lg.jp/life/4/34/136/"
+  },
+  {
+   "pref": "和歌山県",
+   "city": "和歌山市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.wakayama.wakayama.jp/kurashi/gomi_kankyo/1001113/1005184/1037075/1037077.html"
+  },
+  {
+   "pref": "岡山県",
+   "city": "岡山市",
+   "t": "ペットの火葬",
+   "u": "https://www.city.okayama.jp/kurashi/0000008390.html"
+  },
+  {
+   "pref": "広島県",
+   "city": "広島市",
+   "t": "市営火葬場でのペットの火葬",
+   "u": "https://www.city.hiroshima.lg.jp/living/owaka/1021362/1023039.html"
+  },
+  {
+   "pref": "香川県",
+   "city": "高松市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.takamatsu.kagawa.jp/udanimo/ani_staticpage.html?infopageid=34"
+  },
+  {
+   "pref": "愛媛県",
+   "city": "松山市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.matsuyama.ehime.jp/kurashi/kurashi/aigo/kainusi/doubutunositaisyobun.html"
+  },
+  {
+   "pref": "高知県",
+   "city": "高知市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.kochi.kochi.jp/soshiki/66/nakigara.html"
+  },
+  {
+   "pref": "熊本県",
+   "city": "熊本市",
+   "t": "犬の死亡届",
+   "u": "https://www.city.kumamoto.jp/doubutuaigo/kiji00341110/index.html"
+  },
+  {
+   "pref": "大分県",
+   "city": "大分市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.oita.oita.jp/o150/kurashi/pet/inuneko.html"
+  },
+  {
+   "pref": "宮崎県",
+   "city": "宮崎市",
+   "t": "ペットの火葬",
+   "u": "https://www.city.miyazaki.miyazaki.jp/life/trash/bring/405814.html"
+  },
+  {
+   "pref": "鹿児島県",
+   "city": "鹿児島市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.kagoshima.lg.jp/faq-kurashi/seiei-jueki/q8.html"
+  },
+  {
+   "pref": "福岡県",
+   "city": "福岡市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.fukuoka.lg.jp/kankyo/kateigomi/life/katei-bunbetsu/inu-neko-sitaisyusyu.html"
+  },
+  {
+   "pref": "島根県",
+   "city": "松江市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.matsue.lg.jp/soshikikarasagasu/kankyoenergybu_kankyoenergyka/gomi_kankyo_pet/3_1/pet/pettoowakare.html"
+  },
+  {
+   "pref": "三重県",
+   "city": "津市",
+   "t": "斎場でのペットの火葬",
+   "u": "https://www.info.city.tsu.mie.jp/kurashi/seikatsu_sumai/1002326/1011317.html"
+  },
+  {
+   "pref": "石川県",
+   "city": "金沢市",
+   "t": "よくある質問（ペットが亡くなったとき）",
+   "u": "https://www4.city.kanazawa.lg.jp/soshikikarasagasu/dobutsuaigokanricenter/yokuarushitsumon/3501.html"
+  },
+  {
+   "pref": "山口県",
+   "city": "山口市",
+   "t": "亡くなったときの案内",
+   "u": "https://www.city.yamaguchi.lg.jp/soshiki/52/182596.html"
+  },
+  {
+   "pref": "沖縄県",
+   "city": "那覇市",
+   "t": "飼い主の方へ（亡くなったとき）",
+   "u": "https://www.city.naha.okinawa.jp/kurasitetuduki/animal/901.html"
+  },
+  {
+   "pref": "茨城県",
+   "city": "水戸市",
+   "t": "犬の死亡届",
+   "u": "https://www.city.mito.lg.jp/site/doubutsuaigo/2764.html"
+  },
+  {
+   "pref": "徳島県",
+   "city": "徳島市",
+   "t": "犬の死亡届",
+   "u": "https://www.city.tokushima.tokushima.jp/smph/kurashi/animal/todokede.html"
+  }
+ ]
+}

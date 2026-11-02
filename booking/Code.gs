@@ -199,6 +199,9 @@ function doPost(e) {
     try { handleLine_(JSON.parse(body)); } catch (err) { log_('LINEエラー: ' + err); }
     return json_({ ok: true });
   }
+  if ((e.parameter || {}).kind === 'demo') {
+    try { return json_(demoInfo_(e.parameter.demo)); } catch (err) { return json_({ok:false}); }
+  }
   if ((e.parameter || {}).kind === 'quotes') {
     try { return json_(selectionQuotes_(e.parameter)); } catch (err) { return json_({ok:false,error:'quotes_unavailable'}); }
   }
@@ -206,10 +209,10 @@ function doPost(e) {
     try { return json_(emgScores_(String(e.parameter.ids || ''))); } catch (err) { return json_({ok:false,error:'reviews_unavailable'}); }
   }
   if ((e.parameter || {}).kind === 'scores') {
-    try { return json_(selectionScores_(String(e.parameter.ids || ''))); } catch (err) { return json_({ok:false,error:'reviews_unavailable'}); }
+    try { return json_(selectionScores_(String(e.parameter.ids || ''), demoId_(e.parameter.demo))); } catch (err) { return json_({ok:false,error:'reviews_unavailable'}); }
   }
   if ((e.parameter || {}).kind === 'reviews') {
-    try { return json_(selectionReviews_(String(e.parameter.partner_id || ''))); } catch (err) { return json_({ok:false,error:'reviews_unavailable'}); }
+    try { return json_(selectionReviews_(String(e.parameter.partner_id || ''), demoId_(e.parameter.demo))); } catch (err) { return json_({ok:false,error:'reviews_unavailable'}); }
   }
   try {
     if ((e.parameter || {}).kind === 'contact') return json_(contact_(e.parameter));
@@ -1885,6 +1888,7 @@ function selectionPrice_(pt, p) {
 function selectionQuotes_(p) {
   var error = selectionValid_(p);
   if (error) return {ok:false,error:error};
+  p.demo_id = demoId_(p.demo); // ページから来た demo_id は使わず、署名を確かめて決める
   // scores：口コミの星を kind=scores でまとめて取り寄せられる版（ページはこれが来たときだけ取り寄せる）
   var out = {ok:true,selection_version:1,scores:1,cards:quoteCards_(p)};
   // 往復は、行きと帰りをそれぞれ別の会社に頼めるように、片道ずつの候補も返す（Nori 2026-10-31）。全社準備中のあいだは出さない
@@ -1916,9 +1920,9 @@ function quoteCards_(p) {
     var price = selectionPrice_(pt,p);
     if (!price) return null;
     // 全社準備中のあいだは、提携先の会社も表示だけ（トークンを出さない＝依頼できない）
-    if (CONFIG.SHOW_ALL_CANDIDATES) return { id:pt.id, label:pt.name, display_only:true, car:pt.car || '車の詳細は確認中です',
+    if (CONFIG.SHOW_ALL_CANDIDATES) return anonCard_({ id:pt.id, label:pt.name, display_only:true, car:pt.car || '車の詳細は確認中です',
       payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は確認中です',
-      price:price, review:null, check:[], points:PARTNER_POINTS[pt.id] || [], limits:PARTNER_LIMITS[pt.id] || [], shop:partnerShop_(pt.id) };
+      price:price, review:null, check:[], points:PARTNER_POINTS[pt.id] || [], limits:PARTNER_LIMITS[pt.id] || [], shop:partnerShop_(pt.id) }, r['都府県'], '', p.demo_id);
     return { id:pt.id, label:pt.name, car:pt.car || '車の詳細は引き受け時に確認', points:PARTNER_POINTS[pt.id] || [], limits:PARTNER_LIMITS[pt.id] || [], shop:partnerShop_(pt.id),
       payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は引き受け時にご案内',
       price:price, review:null, check:checks_(pt, r).ask, expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
@@ -1956,6 +1960,54 @@ function displayInTime_(c, at, now) {
 /*PARTNER_POINTS*/var PARTNER_POINTS = {"P002": ["当日予約可", "深夜・早朝も相談可", "飼い主さんの同乗無料", "ケージを無料で使える"], "P003": ["介助のサポートあり", "大型犬OK"]};/*/PARTNER_POINTS*/
 // 条件のタグ（乗れる人数・頭数・お支払いの決まり。Nori 2026-11-01）。tools/display_companies.py が作り、gen_areas.py が書き込む
 /*PARTNER_LIMITS*/var PARTNER_LIMITS = {"P002": ["車：軽バン", "多頭OK", "現金のみ"], "P003": ["車：セダン"]};/*/PARTNER_LIMITS*/
+/* ───────── 提携していない会社は名前を出さない・お誘いした会社だけの見本画面（Nori 2026-11-02「AとC」） ───────── */
+
+// 名前・口コミ・お店の正確な場所を出さない会社か。問い合わせできない会社（表示だけ・全社準備中のあいだの提携先）はすべて。見本の会社だけ例外
+function isAnon_(id, demoId) {
+  if (demoId && id === demoId) return false;
+  return isDisplayOnly_(id) || !!CONFIG.SHOW_ALL_CANDIDATES;
+}
+// 「東京都・杉並区あたりの会社」。対応エリアの最初の市区町村から（都道府県の名前と同じなら付けない）
+function anonLabel_(pref, areaText) {
+  pref = String(pref || '');
+  var m = String(areaText || '').match(/^([^・、,，\s（(を]+?[区市町村])(?=[・、,，\s（(を]|$)/), city = m ? m[1] : '';
+  if (city && pref && city.indexOf(pref.replace(/[都道府県]$/, '')) === 0) city = '';
+  return (pref || 'お近く') + (city ? '・' + city + 'あたり' : '') + 'の会社';
+}
+// カードを名前なしにする。見本の会社は名前を出し、提携したときの見え方にする（問い合わせは送れない）
+function anonCard_(card, pref, areaText, demoId) {
+  if (demoId && card.id === demoId) {
+    card.demo = true; card.display_only = false; delete card.token; delete card.expires;
+    card.check = [];
+    return card;
+  }
+  if (!isAnon_(card.id, demoId)) return card;
+  card.label = anonLabel_(pref, areaText); card.anon = true;
+  if (card.shop) card.shop = [Math.round(card.shop[0] * 100) / 100, Math.round(card.shop[1] * 100) / 100]; // 道のりの目安に使うだけ（1kmくらいにまるめる）
+  return card;
+}
+// 見本のリンクの合言葉：<会社のID>.<署名>
+function demoToken_(id) { return id + '.' + sign_('demo:' + id); }
+function demoId_(tok) {
+  var m = String(tok || '').match(/^([A-Za-z0-9_-]{2,40})\.([A-Za-z0-9_-]{10,40})$/);
+  if (!m || sign_('demo:' + m[1]) !== m[2]) return '';
+  return isDisplayOnly_(m[1]) || partnerById_(m[1]) ? m[1] : '';
+}
+function demoInfo_(tok) {
+  var id = demoId_(tok);
+  if (!id) return {ok:false};
+  var c = DISPLAY_COMPANIES.filter(function(x) { return x.id === id; })[0], pt = c ? null : partnerById_(id);
+  return {ok:true, id:id, name:c ? c.name : pt.name, pref:c ? c.pref : ''};
+}
+function demoUrl_(id) { return CONFIG.SITE_URL + '?demo=' + encodeURIComponent(demoToken_(id)) + '#form'; }
+// お誘い用の見本のリンクを「見本リンク」タブに書き出す（スクリプトの画面で1回動かす。何も送らない）
+function makeDemoLinks() {
+  var sh = ensureSheet_(SpreadsheetApp.getActive(), '見本リンク', ['ID', '会社', '都道府県', '見本のリンク']);
+  var rows = DISPLAY_COMPANIES.map(function(c) { return [c.id, c.name, c.pref, demoUrl_(c.id)]; });
+  if (sh.getLastRow() > 1) sh.getRange(2, 1, sh.getLastRow() - 1, 4).clearContent();
+  if (rows.length) sh.getRange(2, 1, rows.length, 4).setValues(rows);
+  return rows.length;
+}
 function isDisplayOnly_(id) {
   return DISPLAY_COMPANIES.some(function(c) { return c.id === id; });
 }
@@ -1976,10 +2028,12 @@ function displayCards_(r, p) {
     var unsure = '', unknown = animalOk(c).indexOf(null) >= 0;
     if (kinds.length) unsure += unknown ? kindText + 'を乗せられるかは確認中です。' : '公式サイトに' + kindText + 'も乗せられると書いてあります。';
     var price = p && displayPrice_(c, p) || {amount:null,text:'料金はお見積もり',night:''};
-    return { id:c.id, label:c.name, display_only:true, animal_unknown:unknown, points:c.points || [], limits:c.limits || [], shop:c.shop || null,
+    var card = { id:c.id, label:c.name, display_only:true, animal_unknown:unknown, points:c.points || [], limits:c.limits || [], shop:c.shop || null,
       car:'所在地：' + c.pref + (c.area_text ? '。対応エリア：' + c.area_text + '（公式サイトの記載）' : '（対応エリアは確認中です）') + (c.car_type ? '。車：' + c.car_type + '（公式サイトの記載・会社の回答より）。' : '。車の詳細はまだ確認中です。') + unsure,
       payment:c.pay ? 'お支払い：' + c.pay + '（公式サイトの記載）' : 'お支払い方法はまだ確認中です',
       price:price, review:null, check:[] };
+    if (isAnon_(c.id, p && p.demo_id)) card.car = (c.car_type ? '車：' + c.car_type + '（公式サイトの記載・会社の回答より）。' : '車の詳細はまだ確認中です。') + unsure;
+    return anonCard_(card, c.pref, c.area_text, p && p.demo_id);
   }).sort(function(a, b) { // 犬・猫のほかの子を乗せられると書いてある会社を先に。その中で料金が出せる会社を安い順に、そのあとお見積もりの会社
     var x = a.price.amount == null ? Infinity : a.price.amount, y = b.price.amount == null ? Infinity : b.price.amount;
     return (a.animal_unknown ? 1 : 0) - (b.animal_unknown ? 1 : 0) || x - y;
@@ -2348,10 +2402,10 @@ function reviewPlace_(partnerId, fields) {
 
 // 候補カードの星と件数をまとめて取り寄せる（Nori 2026-10-31「口コミがあるものはちゃんと出して」）。ids はカンマ区切り、1回に40社まで。
 // 画面に出た会社だけ、同時に取り寄せる（UrlFetchApp.fetchAll）。点数は保存せず毎回取り寄せる。月の上限に近いときは、来た順に残りの回数までだけ
-function selectionScores_(ids) {
+function selectionScores_(ids, demoId) {
   var props = PropertiesService.getScriptProperties(), apiKey = props.getProperty('PLACES_API_KEY'), out = {};
   if (!apiKey) return {ok:true, scores:out};
-  var list = String(ids || '').split(',').filter(function(id, i, a) { return id && a.indexOf(id) === i && !EMG_REVIEWS[id]; }).slice(0, 40)
+  var list = String(ids || '').split(',').filter(function(id, i, a) { return id && a.indexOf(id) === i && !EMG_REVIEWS[id] && !isAnon_(id, demoId); }).slice(0, 40)
     .map(function(id) { return {id:id, t:reviewTarget_(id)}; }).filter(function(x) { return x.t; });
   list.forEach(function(x) { x.place = props.getProperty(x.t.idKey); });
   var need = list.filter(function(x) { return !x.place; });
@@ -2383,8 +2437,8 @@ function selectionScores_(ids) {
 
 // 候補カードの「口コミを見る」：口コミ本文（地図サービスが関連度の高い順に返す最大5件）をサイトの中で見せる。
 // 規約により、書いた人（名前・アイコン・プロフィールへのリンク）と、口コミそれぞれの元のページへのリンクを一緒に返す。保存はしない
-function selectionReviews_(partnerId) {
-  if (!reviewTarget_(partnerId)) return {ok:false,error:'unknown'};
+function selectionReviews_(partnerId, demoId) {
+  if (!reviewTarget_(partnerId) || isAnon_(partnerId, demoId)) return {ok:false,error:'unknown'};
   try {
     var v = reviewPlace_(partnerId, 'rating,userRatingCount,reviews');
     if (!v) return {ok:false,error:'reviews_unavailable'};

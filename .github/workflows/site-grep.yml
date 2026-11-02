@@ -1,0 +1,28 @@
+# 公式サイトのことばさがし（手で動かす）。tools/site_grep.py が候補カードの会社の公式サイトを開き、
+# 空港・定額などのことばのまわりの文を集めて、ジョブの出力と成果物（grep.md）に出す。何も送らない・何も書き換えない。
+name: site-grep
+on:
+  workflow_dispatch:
+    inputs:
+      words:
+        description: さがすことば（正規表現。空なら空港・定額など）
+        required: false
+        default: ''
+permissions:
+  contents: read
+jobs:
+  grep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: 公式サイトをさがす
+        env:
+          WORDS: ${{ inputs.words }}
+        run: |
+          if [ -n "$WORDS" ]; then python3 tools/site_grep.py grep.md "$WORDS"; else python3 tools/site_grep.py grep.md; fi
+          cat grep.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: grep
+          path: grep.md

@@ -10,7 +10,8 @@ ctx.log_ = ()=>{};
 let asked = [];
 ctx.UrlFetchApp = {fetch:(url,o)=>{ asked.push(o.headers['X-Goog-FieldMask']); return {getResponseCode:()=>200,getContentText:()=>JSON.stringify({rating:4.8,userRatingCount:6,reviews:[
   {rating:5,relativePublishTimeDescription:'1か月前',text:{text:'やさしい運転でした'},authorAttribution:{displayName:'A',uri:'https://maps.example/a',photoUri:'https://img.example/a'},googleMapsUri:'https://maps.example/r1'}]})}; }};
-const r = JSON.parse(JSON.stringify(ctx.selectionReviews_('P002')));
+assert.equal(ctx.selectionReviews_('P002').ok, false);           // 全社準備中のあいだは名前を伏せるので口コミも出さない
+const r = JSON.parse(JSON.stringify(ctx.selectionReviews_('P002', 'P002'))); // 見本のリンクの会社だけ見られる
 assert.equal(r.ok, true);
 assert.equal(r.reviews[0].author, 'A'); assert.equal(r.reviews[0].authorUrl, 'https://maps.example/a'); assert.equal(r.reviews[0].url, 'https://maps.example/r1');
 assert.ok(asked[0].includes('reviews'));
