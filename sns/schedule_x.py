@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Xの予約投稿（ペットタクシー予約窓口 @pettaxi_yoyaku）。
+"""Xの予約投稿（ペットのくらし窓口。旧 @pettaxi_yoyaku）。
 
 Nori 2026-11-02「僕の作業はゼロにしたい」「無料でもう1つ（週2回）」。
 sns/posts.json の投稿を、まだ予約していない順に、火曜と金曜の20時（日本時間）へ予約する。
@@ -14,7 +14,7 @@ import json, os, subprocess, sys, time, datetime as dt, urllib.request, urllib.e
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 API = "https://api.typefully.com/v2"
-HANDLES = {"pettaxi_yoyaku", "shiokonbu_pet"}  # ユーザー名を変えても同じアカウントに入れる
+HANDLES = {"pettaxi_yoyaku", "pet_kurashi", "petkurashi_mado"}  # ユーザー名を変えても同じアカウントに入れる
 JST = dt.timezone(dt.timedelta(hours=9))
 SLOTS = {1: 20, 4: 20}  # 火曜(1)・金曜(4) の20時
 # 文の決まり（AGENTS.md）。1つでも入っていたら予約しない。
