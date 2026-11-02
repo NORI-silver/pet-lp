@@ -326,7 +326,7 @@ def head(title, desc, url, extra_ld, og_img="/img/hero.jpg", og_w=1200, og_h=900
 <header class="top">
   <div class="wrap">
     <a class="logo" href="/"><i>{PAW}</i>ペットタクシー予約窓口</a>
-    <nav><a href="/#how">使い方</a><a href="/#area">エリア</a><a href="/#price">料金</a><a href="/guide/">ガイド</a><a href="/#faq">よくある質問</a></nav>
+    <nav><a href="/#how">使い方</a><a href="/#area">エリア</a><a href="/#form">料金をくらべる</a><a href="/guide/">ガイド</a><a href="/#faq">よくある質問</a></nav>
     <a class="mini" href="/#form">問い合わせる<span class="lg">（無料）</span></a>
   </div>
 </header>
@@ -552,6 +552,7 @@ for g in GUIDES:
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/guide/">ペットの移動ガイド</a> › {e(g["title"])}</nav>
     <h1>{e(g["title"])}</h1>
     <p class="lede">{e(g["lede"])}</p>
+    <div class="hero-fare"><b>あなたのルートで、各社の料金をくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。公式サイトの料金表から計算した概算で、確定料金ではありません。</span><a class="btn" href="/#form" data-cta="guide-fare" style="margin-top:10px">各社の料金をくらべる（無料）</a></div>
     <p class="small">ペットタクシー予約窓口　公開 {published.replace("-", ".")}・更新 {modified.replace("-", ".")}</p>
     <figure class="art-img"><picture><source srcset="/img/guide/{g["img"][:-4]}.webp" type="image/webp"><img src="/img/guide/{g["img"]}" alt="{e(g["img_alt"])}" width="1200" height="800" fetchpriority="high" onerror="this.closest('figure').remove()"></picture>{caption}</figure>
   </div>
