@@ -11,6 +11,21 @@
    "name": "ペットシッターintopetグループ",
    "url": "https://intopet.jp/",
    "note": "公式サイト：食事・お水・散歩・トイレ・遊び・温度管理などのお世話。猫・犬・小動物・鳥・そのほか。全店でペットシッター保険に加入し、動物取扱業の登録あり"
+  },
+  "nihon": {
+   "name": "日本ペットシッターサービス",
+   "url": "https://www.pet-ss.com/",
+   "note": "公式サイト：全国に店舗のある訪問型のペットシッター。犬・猫・小動物のお世話と散歩。各店が動物取扱業の登録を持つ加盟店"
+  },
+  "penguin": {
+   "name": "ぺんぎんシッター",
+   "url": "https://penguinsitter.com/",
+   "note": "公式サイト：ペットシッターと散歩代行。関東・関西・中国・四国・九州の各地に対応エリアのページあり（動物取扱業 香川 保管 第52169号）"
+  },
+  "indie": {
+   "name": "そのほかの地域のペットシッター（グループに入っていない店）",
+   "url": "",
+   "note": "各店の公式サイトに書いてある所在地・対応エリア・動物の種類だけを載せています"
   }
  },
  "sitters": [
@@ -1784,6 +1799,1594 @@
    "area": "松戸市、市川市、鎌ヶ谷市、船橋市、葛飾区、足立区、三郷市、その他周辺",
    "url": "https://petsitter-wapet.co.jp/",
    "chain": "intopet"
+  },
+  {
+   "id": "S176",
+   "name": "日本ペットシッターサービス 中央店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "中央区",
+   "url": "https://www.pet-ss.com/chuo/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S177",
+   "name": "日本ペットシッターサービス 三田店 Friend's",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "港区",
+   "url": "https://npet.jp/friends/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S178",
+   "name": "日本ペットシッターサービス 青山店 のる",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "港区",
+   "url": "https://npet.jp/noru/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S179",
+   "name": "日本ペットシッターサービス 新宿店 Wan's★heart",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "新宿区",
+   "url": "https://wans-heart.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S180",
+   "name": "日本ペットシッターサービス 新宿・文京店 LE'A LE'A",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "新宿区・文京区",
+   "url": "https://npet.jp/lealea/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S181",
+   "name": "日本ペットシッターサービス 台東店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "台東区",
+   "url": "https://npet.jp/taito/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S182",
+   "name": "日本ペットシッターサービス 墨田店 KOKO NOKO",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "墨田区",
+   "url": "https://npet.jp/kokonoko/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S183",
+   "name": "日本ペットシッターサービス 江東店 Tails Tales",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "江東区",
+   "url": "https://npet.jp/tails-tales/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S184",
+   "name": "日本ペットシッターサービス 品川店 Petta",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "品川区・港区",
+   "url": "https://www.npet.jp/petta/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S185",
+   "name": "日本ペットシッターサービス 成城店 PAL JOY",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "世田谷区",
+   "url": "https://pal-joy.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S186",
+   "name": "日本ペットシッターサービス 二子玉川店 モアハッピー",
+   "prefs": [
+    "東京都",
+    "神奈川県"
+   ],
+   "area": "世田谷区・川崎市高津区",
+   "url": "https://morehappy.jp/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S187",
+   "name": "日本ペットシッターサービス 渋谷店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "渋谷区",
+   "url": "https://npet.jp/shibuya/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S188",
+   "name": "日本ペットシッターサービス 西新宿・中野店 ぽち乃家",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "中野区・新宿区",
+   "url": "https://www.pochi-noya.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S189",
+   "name": "日本ペットシッターサービス 中野・杉並店 MOFS AMENITY",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "中野区・杉並区",
+   "url": "https://mofsamenity.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S190",
+   "name": "日本ペットシッターサービス 池袋店 La vie en Chiroru",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "豊島区",
+   "url": "https://npet.jp/chiroru/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S191",
+   "name": "日本ペットシッターサービス 豊島店 夢きゅ～ぶ",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "豊島区",
+   "url": "http://www.yumecube.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S192",
+   "name": "日本ペットシッターサービス 荒川店 Fu",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "荒川区",
+   "url": "https://npet.jp/fu/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S193",
+   "name": "日本ペットシッターサービス 板橋店 Always",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "板橋区",
+   "url": "https://always-pet.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S194",
+   "name": "日本ペットシッターサービス 富士見台店 こむぎHOUSE",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "練馬区",
+   "url": "https://npet.jp/komugihouse/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S195",
+   "name": "日本ペットシッターサービス 練馬店 おるすばんくらぶ",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "練馬区・西東京市",
+   "url": "https://www.orusuban.club/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S196",
+   "name": "日本ペットシッターサービス 王子神谷店 はーとあいらんど",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "北区・足立区",
+   "url": "https://npet.jp/heartisland/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S197",
+   "name": "日本ペットシッターサービス 葛飾店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "葛飾区",
+   "url": "https://pet-katsushika.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S198",
+   "name": "日本ペットシッターサービス 葛西店 しっぽ屋",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "江戸川区",
+   "url": "https://npet.jp/shippoya/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S199",
+   "name": "日本ペットシッターサービス 八王子南店 ひなた",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "八王子市・日野市・町田市周辺",
+   "url": "https://pet-hinata.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S200",
+   "name": "日本ペットシッターサービス 立川店 モモトサクラ",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "立川市・羽村市周辺",
+   "url": "https://pet-tachikawa.jimdofree.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S201",
+   "name": "日本ペットシッターサービス 吉祥寺店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "武蔵野市・練馬区周辺",
+   "url": "https://pet-kichijoji.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S202",
+   "name": "日本ペットシッターサービス 国立府中店 いちまろ",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "国立市・府中市",
+   "url": "https://www.pet-ichimaro.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S203",
+   "name": "日本ペットシッターサービス 西東京店",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "小平市・西東京市周辺",
+   "url": "https://www.pet-ss.com/kodaira/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S204",
+   "name": "日本ペットシッターサービス 東久留米店 もこもこ",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "東久留米市",
+   "url": "https://mokomoko-higashikurume.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S205",
+   "name": "日本ペットシッターサービス 多摩地区店 HAPPY",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "多摩市周辺",
+   "url": "https://npet.jp/happy/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S206",
+   "name": "日本ペットシッターサービス 横浜西店 Bowwow",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市神奈川区",
+   "url": "https://www.y-bowwow.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S207",
+   "name": "日本ペットシッターサービス 横浜中央店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市神奈川区",
+   "url": "https://npet.jp/yokohama-c/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S208",
+   "name": "日本ペットシッターサービス みなとみらい店 HEARTY",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市西区",
+   "url": "https://www.hearty-pet.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S209",
+   "name": "日本ペットシッターサービス 本牧店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市中区",
+   "url": "https://npet.jp/honmoku/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S210",
+   "name": "日本ペットシッターサービス 戸塚・藤沢店 uchinoko No.1",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市泉区・戸塚区・藤沢市",
+   "url": "https://npet.jp/uchinoko1/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S211",
+   "name": "日本ペットシッターサービス 横浜泉店 ぱお",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市泉区",
+   "url": "https://www.pao-pet.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S212",
+   "name": "日本ペットシッターサービス 青葉台店 bebete",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市青葉区",
+   "url": "https://npet.jp/bebete/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S213",
+   "name": "日本ペットシッターサービス たまプラーザ店 PETTY",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横浜市緑区・青葉区",
+   "url": "https://npet.jp/petty/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S214",
+   "name": "日本ペットシッターサービス 高津店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "川崎市高津区",
+   "url": "https://npet.jp/takatsu/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S215",
+   "name": "日本ペットシッターサービス 川崎中央店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "川崎市宮前区",
+   "url": "https://npet.jp/kawasaki-c/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S216",
+   "name": "日本ペットシッターサービス 生田店 ペットプラネット",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "川崎市多摩区",
+   "url": "https://npet.jp/petplanet/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S217",
+   "name": "日本ペットシッターサービス 淵野辺店 まごころ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "相模原市中央区",
+   "url": "https://www.pet-magokoro.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S218",
+   "name": "日本ペットシッターサービス 相武台店 きよら",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "相模原市南区",
+   "url": "https://npet.jp/kiyora/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S219",
+   "name": "日本ペットシッターサービス 横須賀中央店 PAW HOUSE POPPY ROAD",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "横須賀市",
+   "url": "https://npet.jp/poppyroad/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S220",
+   "name": "日本ペットシッターサービス 平塚店 TUBASA",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "平塚市",
+   "url": "https://npet.jp/tubasa-pet/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S221",
+   "name": "日本ペットシッターサービス 鎌倉栄店 おかえり",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "鎌倉市",
+   "url": "https://okaeri-pet.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S222",
+   "name": "日本ペットシッターサービス 湘南店 Hale lea",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "藤沢市",
+   "url": "https://npet.jp/halelea/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S223",
+   "name": "日本ペットシッターサービス 藤沢店 うにたけ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "藤沢市・鎌倉市",
+   "url": "https://npet.jp/unitake/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S224",
+   "name": "日本ペットシッターサービス 逗子・鎌倉店 ルナ&メルモ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "逗子市・鎌倉市・葉山町",
+   "url": "https://luna-merumo.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S225",
+   "name": "日本ペットシッターサービス 大宮宮原店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "さいたま市・上尾市",
+   "url": "http://www.pet-ss-om.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S226",
+   "name": "日本ペットシッターサービス 武蔵浦和店 marin",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "さいたま市",
+   "url": "https://petsitter-marin.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S227",
+   "name": "日本ペットシッターサービス 川口戸田店 ほっと犬",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "川口市・戸田市",
+   "url": "https://npet.jp/hottoken/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S228",
+   "name": "日本ペットシッターサービス 所沢店 Petライフアシスト",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "所沢市",
+   "url": "https://npet.jp/petlife/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S229",
+   "name": "日本ペットシッターサービス 東大和・所沢店 ペットサポートリリーフ",
+   "prefs": [
+    "埼玉県",
+    "東京都"
+   ],
+   "area": "所沢市・東大和市",
+   "url": "https://www.pets-relief.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S230",
+   "name": "日本ペットシッターサービス 上尾店 ハピマル",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "上尾市・さいたま市北区",
+   "url": "https://pet-hapimaru.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S231",
+   "name": "日本ペットシッターサービス 新座店 PAX COR",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "新座市・さいたま市",
+   "url": "https://npet.jp/paxcor/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S232",
+   "name": "日本ペットシッターサービス 千葉北店 PURE",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉市花見川区",
+   "url": "https://npet.jp/pure/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S233",
+   "name": "日本ペットシッターサービス 市川店 Luana",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "市川市・松戸市",
+   "url": "https://npet.jp/luana/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S234",
+   "name": "日本ペットシッターサービス 新船橋店 ぽち日和",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "船橋市",
+   "url": "https://pochibiyori.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S235",
+   "name": "日本ペットシッターサービス 松戸店 COSYペットケアサービス",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "松戸市",
+   "url": "https://www.cosypet.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S236",
+   "name": "日本ペットシッターサービス 習志野店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "習志野市",
+   "url": "https://www.narashino-pet.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S237",
+   "name": "日本ペットシッターサービス 我孫子・取手店 OHANA",
+   "prefs": [
+    "千葉県",
+    "茨城県"
+   ],
+   "area": "我孫子市・取手市",
+   "url": "https://ohana-malama.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S238",
+   "name": "日本ペットシッターサービス 千葉東店 Prime",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "大網白里市",
+   "url": "https://npet.jp/prime/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S239",
+   "name": "日本ペットシッターサービス 宇都宮店",
+   "prefs": [
+    "栃木県"
+   ],
+   "area": "宇都宮市",
+   "url": "https://npet.jp/utm/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S240",
+   "name": "日本ペットシッターサービス 前橋店 SmileQ",
+   "prefs": [
+    "群馬県"
+   ],
+   "area": "前橋市",
+   "url": "https://smileq-smile.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S241",
+   "name": "日本ペットシッターサービス 高崎店 mimiまれる",
+   "prefs": [
+    "群馬県"
+   ],
+   "area": "高崎市",
+   "url": "https://www.pet-ss.com/mimimareru/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S242",
+   "name": "日本ペットシッターサービス 太田大泉店 pom",
+   "prefs": [
+    "群馬県"
+   ],
+   "area": "太田市・大泉町",
+   "url": "https://npet.jp/pom/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S243",
+   "name": "日本ペットシッターサービス 札幌店 ペット・ステーション",
+   "prefs": [
+    "北海道"
+   ],
+   "area": "札幌市北区",
+   "url": "http://petstation-sp.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S244",
+   "name": "日本ペットシッターサービス 札幌中央店 ちゃめ",
+   "prefs": [
+    "北海道"
+   ],
+   "area": "札幌市・小樽市・石狩市・北広島市・江別市",
+   "url": "https://npet.jp/chame/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S245",
+   "name": "日本ペットシッターサービス 江別店 at home",
+   "prefs": [
+    "北海道"
+   ],
+   "area": "江別市",
+   "url": "https://www.pet-ss.com/ebetsu/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S246",
+   "name": "日本ペットシッターサービス 盛岡店 Tlc",
+   "prefs": [
+    "岩手県"
+   ],
+   "area": "盛岡市・滝沢市",
+   "url": "https://npet.jp/tlc/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S247",
+   "name": "日本ペットシッターサービス 花巻店 しっぽのOHEYA",
+   "prefs": [
+    "岩手県"
+   ],
+   "area": "花巻市",
+   "url": "https://pethotel-shipponooheya.studio.site/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S248",
+   "name": "日本ペットシッターサービス 岩沼店 モモトセ",
+   "prefs": [
+    "宮城県"
+   ],
+   "area": "岩沼市",
+   "url": "https://npet.jp/momotose/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S249",
+   "name": "日本ペットシッターサービス 秋田本部",
+   "prefs": [
+    "秋田県"
+   ],
+   "area": "秋田市",
+   "url": "https://npet.jp/akita/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S250",
+   "name": "日本ペットシッターサービス 山形店 もふもふの国",
+   "prefs": [
+    "山形県"
+   ],
+   "area": "山形市を中心",
+   "url": "https://npet.jp/mofmof/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S251",
+   "name": "日本ペットシッターサービス 富士店 Coco Maison",
+   "prefs": [
+    "静岡県"
+   ],
+   "area": "富士市",
+   "url": "https://npet.jp/coco-m/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S252",
+   "name": "日本ペットシッターサービス 名古屋中央店 名古屋ペットシッターサービス",
+   "prefs": [
+    "愛知県"
+   ],
+   "area": "名古屋市中川区",
+   "url": "https://petsitter-nagoya.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S253",
+   "name": "日本ペットシッターサービス 名古屋・日進店 Very Berry",
+   "prefs": [
+    "愛知県"
+   ],
+   "area": "名古屋市天白区・日進市",
+   "url": "https://npet.jp/veryberry/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S254",
+   "name": "日本ペットシッターサービス 名古屋一宮店",
+   "prefs": [
+    "愛知県"
+   ],
+   "area": "一宮市",
+   "url": "https://pet-ichinomiya.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S255",
+   "name": "日本ペットシッターサービス 滋賀店 くうワン",
+   "prefs": [
+    "滋賀県"
+   ],
+   "area": "東近江市",
+   "url": "https://petsit91.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S256",
+   "name": "日本ペットシッターサービス 京都店 Will",
+   "prefs": [
+    "京都府"
+   ],
+   "area": "京都市左京区",
+   "url": "https://petsitter-will.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S257",
+   "name": "日本ペットシッターサービス 京都中央店 つなぐ",
+   "prefs": [
+    "京都府"
+   ],
+   "area": "京都市右京区",
+   "url": "https://pet-tsunagu.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S258",
+   "name": "日本ペットシッターサービス 京都洛南店 Love & Peace",
+   "prefs": [
+    "京都府"
+   ],
+   "area": "宇治市",
+   "url": "https://pet-lp.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S259",
+   "name": "日本ペットシッターサービス 大阪中央店 Freet",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "大阪市港区",
+   "url": "https://npet.jp/osk-c/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S260",
+   "name": "日本ペットシッターサービス 東淀川店 オンリートラスト",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "大阪市東淀川区",
+   "url": "https://onlytrust.net/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S261",
+   "name": "日本ペットシッターサービス 豊中店 COMECOME",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "豊中市・大阪市城東区",
+   "url": "https://npet.jp/comecome/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S262",
+   "name": "日本ペットシッターサービス さかい店",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "堺市",
+   "url": "https://www.sakai-pet.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S263",
+   "name": "日本ペットシッターサービス 吹田店 さくら",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "吹田市",
+   "url": "https://npet.jp/sakura/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S264",
+   "name": "日本ペットシッターサービス 泉佐野店 3rd",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "泉佐野市",
+   "url": "https://www.pet-ss.com/3rd/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S265",
+   "name": "日本ペットシッターサービス 大東店 はこ舟",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "大東市",
+   "url": "https://npet.jp/hacobune/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S266",
+   "name": "日本ペットシッターサービス 東大阪店 スマイルエイト",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "東大阪市",
+   "url": "https://pet-smile8.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S267",
+   "name": "日本ペットシッターサービス 神戸東灘店 ミュー",
+   "prefs": [
+    "兵庫県"
+   ],
+   "area": "神戸市東灘区",
+   "url": "https://www.petsitter-mew.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S268",
+   "name": "日本ペットシッターサービス 神戸中央店",
+   "prefs": [
+    "兵庫県"
+   ],
+   "area": "神戸市",
+   "url": "https://kobechuou.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S269",
+   "name": "日本ペットシッターサービス 神戸西店 amo",
+   "prefs": [
+    "兵庫県"
+   ],
+   "area": "神戸市西区・明石市",
+   "url": "https://petsitter-amo.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S270",
+   "name": "日本ペットシッターサービス 西宮店 マックス＆クーパー",
+   "prefs": [
+    "兵庫県"
+   ],
+   "area": "西宮市",
+   "url": "https://max-cooper.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S271",
+   "name": "日本ペットシッターサービス 川西店 Play Bow",
+   "prefs": [
+    "兵庫県"
+   ],
+   "area": "川西市",
+   "url": "https://npet.jp/playbow/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S272",
+   "name": "日本ペットシッターサービス 神戸三田店",
+   "prefs": [
+    "兵庫県"
+   ],
+   "area": "三田市",
+   "url": "https://www.pet-ss.com/kobesanda/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S273",
+   "name": "日本ペットシッターサービス 岡山店 Lina's Paw",
+   "prefs": [
+    "岡山県"
+   ],
+   "area": "岡山市",
+   "url": "https://lunaspaw.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S274",
+   "name": "日本ペットシッターサービス 広島店 With You",
+   "prefs": [
+    "広島県"
+   ],
+   "area": "福山市",
+   "url": "https://www.pet-ss.com/withyou-h/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S275",
+   "name": "日本ペットシッターサービス 福山店 With You",
+   "prefs": [
+    "広島県"
+   ],
+   "area": "福山市",
+   "url": "https://npet.jp/withyou/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S276",
+   "name": "日本ペットシッターサービス 松江店 三島屋",
+   "prefs": [
+    "島根県"
+   ],
+   "area": "松江市",
+   "url": "https://npet.jp/mishimasya/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S277",
+   "name": "日本ペットシッターサービス 出雲店 Green Cat",
+   "prefs": [
+    "島根県"
+   ],
+   "area": "出雲市",
+   "url": "https://npet.jp/greencat/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S278",
+   "name": "日本ペットシッターサービス 徳島店",
+   "prefs": [
+    "徳島県"
+   ],
+   "area": "美馬市",
+   "url": "https://npet.jp/tokushima/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S279",
+   "name": "日本ペットシッターサービス 北九州店 ペットアンサンブル",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "北九州市小倉北区",
+   "url": "https://npet.jp/pet-ensemble/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S280",
+   "name": "日本ペットシッターサービス 福岡東店 かりん",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "福岡市東区",
+   "url": "https://www.pet-ss.com/karin/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S281",
+   "name": "日本ペットシッターサービス 福岡博多店 ペットサービスいーすまいる",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "福岡市早良区・博多区",
+   "url": "http://pet-i-smile.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S282",
+   "name": "日本ペットシッターサービス 福岡店 いきものがかり",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "福岡市",
+   "url": "https://www.ikimonogakari.jp/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S283",
+   "name": "日本ペットシッターサービス 福岡筑豊店 RinRin",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "田川市",
+   "url": "https://npet.jp/rinrin/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S284",
+   "name": "日本ペットシッターサービス 福津店 Awpia",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "福津市",
+   "url": "https://npet.jp/awpia/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S285",
+   "name": "日本ペットシッターサービス 熊本店 Me You",
+   "prefs": [
+    "熊本県"
+   ],
+   "area": "菊池郡大津町",
+   "url": "https://www.pet-ss.com/kuma-meyou/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S286",
+   "name": "日本ペットシッターサービス 日向延岡店 会心（eko）",
+   "prefs": [
+    "宮崎県"
+   ],
+   "area": "門川町・日向市・延岡市",
+   "url": "https://npet.jp/eko/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S287",
+   "name": "日本ペットシッターサービス 鹿児島支部 Me You",
+   "prefs": [
+    "鹿児島県"
+   ],
+   "area": "鹿児島市",
+   "url": "https://meyou-pet.com/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S288",
+   "name": "日本ペットシッターサービス 沖縄店 わらび",
+   "prefs": [
+    "沖縄県"
+   ],
+   "area": "那覇市",
+   "url": "https://npet.jp/warabi/",
+   "chain": "nihon"
+  },
+  {
+   "id": "S289",
+   "name": "ぺんぎんシッター（東京）",
+   "prefs": [
+    "東京都"
+   ],
+   "area": "東京の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/tokyo/",
+   "chain": "penguin"
+  },
+  {
+   "id": "S290",
+   "name": "ぺんぎんシッター（神奈川）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "area": "神奈川の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/kanagawa/",
+   "chain": "penguin"
+  },
+  {
+   "id": "S291",
+   "name": "ぺんぎんシッター（埼玉）",
+   "prefs": [
+    "埼玉県"
+   ],
+   "area": "埼玉の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/saitama/",
+   "chain": "penguin"
+  },
+  {
+   "id": "S292",
+   "name": "ぺんぎんシッター（千葉）",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/chiba/",
+   "chain": "penguin"
+  },
+  {
+   "id": "S293",
+   "name": "ぺんぎんシッター（大阪）",
+   "prefs": [
+    "大阪府"
+   ],
+   "area": "大阪の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/osaka",
+   "chain": "penguin"
+  },
+  {
+   "id": "S294",
+   "name": "ぺんぎんシッター（兵庫）",
+   "prefs": [
+    "兵庫県"
+   ],
+   "area": "兵庫の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/hyogo/",
+   "chain": "penguin"
+  },
+  {
+   "id": "S295",
+   "name": "ぺんぎんシッター（京都）",
+   "prefs": [
+    "京都府"
+   ],
+   "area": "京都の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/kyoto",
+   "chain": "penguin"
+  },
+  {
+   "id": "S296",
+   "name": "ぺんぎんシッター（滋賀）",
+   "prefs": [
+    "滋賀県"
+   ],
+   "area": "滋賀の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/shiga",
+   "chain": "penguin"
+  },
+  {
+   "id": "S297",
+   "name": "ぺんぎんシッター（奈良）",
+   "prefs": [
+    "奈良県"
+   ],
+   "area": "奈良の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/nara",
+   "chain": "penguin"
+  },
+  {
+   "id": "S298",
+   "name": "ぺんぎんシッター（和歌山）",
+   "prefs": [
+    "和歌山県"
+   ],
+   "area": "和歌山の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/wakayama",
+   "chain": "penguin"
+  },
+  {
+   "id": "S299",
+   "name": "ぺんぎんシッター（広島）",
+   "prefs": [
+    "広島県"
+   ],
+   "area": "広島の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/hiroshima",
+   "chain": "penguin"
+  },
+  {
+   "id": "S300",
+   "name": "ぺんぎんシッター（岡山）",
+   "prefs": [
+    "岡山県"
+   ],
+   "area": "岡山の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/okayama/",
+   "chain": "penguin"
+  },
+  {
+   "id": "S301",
+   "name": "ぺんぎんシッター（倉敷）",
+   "prefs": [
+    "岡山県"
+   ],
+   "area": "倉敷の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/kurashiki",
+   "chain": "penguin"
+  },
+  {
+   "id": "S302",
+   "name": "ぺんぎんシッター（高松）",
+   "prefs": [
+    "香川県"
+   ],
+   "area": "高松の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/takamatsu/",
+   "chain": "penguin"
+  },
+  {
+   "id": "S303",
+   "name": "ぺんぎんシッター（松山）",
+   "prefs": [
+    "愛媛県"
+   ],
+   "area": "松山の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/matsuyama/",
+   "chain": "penguin"
+  },
+  {
+   "id": "S304",
+   "name": "ぺんぎんシッター（徳島）",
+   "prefs": [
+    "徳島県"
+   ],
+   "area": "徳島の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/tokushima/",
+   "chain": "penguin"
+  },
+  {
+   "id": "S305",
+   "name": "ぺんぎんシッター（高知）",
+   "prefs": [
+    "高知県"
+   ],
+   "area": "高知の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/kochi/",
+   "chain": "penguin"
+  },
+  {
+   "id": "S306",
+   "name": "ぺんぎんシッター（熊本）",
+   "prefs": [
+    "熊本県"
+   ],
+   "area": "熊本の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/kumamoto/",
+   "chain": "penguin"
+  },
+  {
+   "id": "S307",
+   "name": "ぺんぎんシッター（久留米）",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "久留米の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/kurume/",
+   "chain": "penguin"
+  },
+  {
+   "id": "S308",
+   "name": "ぺんぎんシッター（福岡）",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "福岡の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/fukuoka/",
+   "chain": "penguin"
+  },
+  {
+   "id": "S309",
+   "name": "ぺんぎんシッター（佐賀）",
+   "prefs": [
+    "佐賀県"
+   ],
+   "area": "佐賀の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/saga",
+   "chain": "penguin"
+  },
+  {
+   "id": "S310",
+   "name": "ぺんぎんシッター（長崎）",
+   "prefs": [
+    "長崎県"
+   ],
+   "area": "長崎の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/nagasaki",
+   "chain": "penguin"
+  },
+  {
+   "id": "S311",
+   "name": "ぺんぎんシッター（鹿児島）",
+   "prefs": [
+    "鹿児島県"
+   ],
+   "area": "鹿児島の対応エリア（公式サイトのエリアページ参照）",
+   "url": "https://penguinsitter.com/area/kagoshima",
+   "chain": "penguin"
+  },
+  {
+   "id": "S312",
+   "name": "ペットシッターちりちり",
+   "prefs": [
+    "香川県"
+   ],
+   "area": "高松市",
+   "url": "https://www.sitter0823.com/",
+   "animals": "犬・猫など（お世話・散歩・しつけ相談。登録 第52100号）",
+   "chain": "indie"
+  },
+  {
+   "id": "S313",
+   "name": "わんにゃん訪問看護ぴりかのもり",
+   "prefs": [
+    "北海道"
+   ],
+   "area": "札幌市および近郊",
+   "url": "https://www.pirikanomori.com/",
+   "animals": "犬・猫・うさぎ（愛玩動物看護師による訪問介護・看護、留守中のシッターは相談）",
+   "chain": "indie"
+  },
+  {
+   "id": "S314",
+   "name": "ペットシッター とら",
+   "prefs": [
+    "山形県"
+   ],
+   "area": "山形市を中心",
+   "url": "https://www.petsitter-tora.com/",
+   "animals": "犬・猫・うさぎ・ハムスター（散歩代行・シニア犬のお世話も）",
+   "chain": "indie"
+  },
+  {
+   "id": "S315",
+   "name": "ペットシッターソワン",
+   "prefs": [
+    "広島県"
+   ],
+   "area": "広島市全域と周辺",
+   "url": "https://www.pet-soin.com/",
+   "animals": "犬・猫（散歩・食事・トイレ。24時間受付、年中無休）",
+   "chain": "indie"
+  },
+  {
+   "id": "S316",
+   "name": "お留守番ヘルプサービス",
+   "prefs": [
+    "徳島県"
+   ],
+   "area": "徳島市・鳴門市・石井町・松茂町・北島町・藍住町・板野町・上板町",
+   "url": "https://www.rusuhelp.com/",
+   "animals": "訪問シッターと散歩代行（ホテルは猫と6kg未満の小型犬のみ。登録 保管 第10139号）",
+   "chain": "indie"
+  },
+  {
+   "id": "S317",
+   "name": "ペットシッターランド",
+   "prefs": [
+    "和歌山県",
+    "大阪府",
+    "奈良県"
+   ],
+   "area": "和歌山県全域・大阪府南部・奈良県南東部",
+   "url": "https://petsitterland.com/",
+   "animals": "犬・猫・小動物（登録番号 28第1043号）",
+   "chain": "indie"
+  },
+  {
+   "id": "S318",
+   "name": "ペットシッターゆう",
+   "prefs": [
+    "福井県"
+   ],
+   "area": "福井市",
+   "url": "https://pet-yuu.com/",
+   "animals": "犬・猫・小動物（散歩・食事・トイレ。登録 福井市指令生衛第06K007号）",
+   "chain": "indie"
+  },
+  {
+   "id": "S319",
+   "name": "わんにゃんシッター春",
+   "prefs": [
+    "青森県"
+   ],
+   "area": "青森市・弘前市",
+   "url": "https://wannyan-haru.club/",
+   "animals": "犬（散歩代行・シッター・しつけ教室）",
+   "chain": "indie"
+  },
+  {
+   "id": "S320",
+   "name": "ペコたま（ペットシッター）",
+   "prefs": [
+    "青森県"
+   ],
+   "area": "青森市を中心に青森県内",
+   "url": "https://www.pekotama.com/",
+   "animals": "犬の散歩・留守中のお世話（ペット火葬も行う会社）",
+   "chain": "indie"
+  },
+  {
+   "id": "S321",
+   "name": "ガジュマルSitter",
+   "prefs": [
+    "奈良県",
+    "京都府"
+   ],
+   "area": "奈良市・精華町・木津川市を中心（大和郡山市・生駒市の一部も）",
+   "url": "https://gajumarusitter.com/",
+   "animals": "犬・猫・うさぎ・鳥・小動物・爬虫類など（シニアのお世話も。登録 第123022号）",
+   "chain": "indie"
+  },
+  {
+   "id": "S322",
+   "name": "ロバアンニ（ドッグシッター・散歩代行）",
+   "prefs": [
+    "奈良県",
+    "京都府"
+   ],
+   "area": "奈良市を中心に生駒市・大和郡山市・木津川市・精華町",
+   "url": "https://robaannie.com/",
+   "animals": "犬（大型犬は相談。登録 奈良市第124004号）",
+   "chain": "indie"
+  },
+  {
+   "id": "S323",
+   "name": "ペットケアサービス あおいろのそら",
+   "prefs": [
+    "奈良県",
+    "大阪府"
+   ],
+   "area": "奈良市・生駒市を中心に木津川市・精華町・四條畷市の一部",
+   "url": "https://aoiro-no-sora.com/service/",
+   "animals": "犬・猫・小動物・鳥（シッター・散歩代行・訪問介護。登録 奈良市第125014号）",
+   "chain": "indie"
+  },
+  {
+   "id": "S324",
+   "name": "ペットシッターにゃくるー",
+   "prefs": [
+    "三重県"
+   ],
+   "area": "鈴鹿市・亀山市・津市・四日市市",
+   "url": "https://nyacrew.com/",
+   "animals": "犬（15kgまで）・猫・小動物（愛玩動物看護師。登録 鈴管R第6-5号）",
+   "chain": "indie"
+  },
+  {
+   "id": "S325",
+   "name": "ペットサービスみあ",
+   "prefs": [
+    "三重県"
+   ],
+   "area": "四日市市・桑名市・菰野町・川越町・朝日町・東員町・いなべ市",
+   "url": "https://miapetsitter.jimdofree.com/",
+   "animals": "犬・猫・小動物・小鳥（シッター・散歩・ホテル・幼稚園）",
+   "chain": "indie"
+  },
+  {
+   "id": "S326",
+   "name": "キャットシッターShiro",
+   "prefs": [
+    "高知県"
+   ],
+   "area": "高知市近辺",
+   "url": "https://catsitter-shiro.amebaownd.com/",
+   "animals": "猫のみ（登録 第354号）",
+   "chain": "indie"
+  },
+  {
+   "id": "S327",
+   "name": "ペットシッターmiyan",
+   "prefs": [
+    "大分県"
+   ],
+   "area": "大分市大在を中心に片道10kmほど",
+   "url": "https://petmiyan.com/",
+   "animals": "犬・猫（完全出張型。しつけ相談も。登録 保管 第423001号）",
+   "chain": "indie"
+  },
+  {
+   "id": "S328",
+   "name": "ペットホテル＆ペットシッター シュシュ大分",
+   "prefs": [
+    "大分県"
+   ],
+   "area": "大分市",
+   "url": "https://www.petchouchou.jp/",
+   "animals": "犬・猫・小動物（散歩代行・お留守番のお世話）",
+   "chain": "indie"
+  },
+  {
+   "id": "S329",
+   "name": "ペットシッター松山",
+   "prefs": [
+    "愛媛県"
+   ],
+   "area": "松山市（市外は交通費）",
+   "url": "https://pom-pet.jimdofree.com/",
+   "animals": "犬・猫・小動物",
+   "chain": "indie"
+  },
+  {
+   "id": "S330",
+   "name": "ミルキーペッツ",
+   "prefs": [
+    "山梨県"
+   ],
+   "area": "甲府市を中心",
+   "url": "http://www.milky-pets.com/",
+   "animals": "犬・猫（散歩・食事・トイレ）",
+   "chain": "indie"
+  },
+  {
+   "id": "S331",
+   "name": "ペットケアサービスすみれ",
+   "prefs": [
+    "山梨県"
+   ],
+   "area": "甲府エリアを中心に山梨県内",
+   "url": "https://petcare-sumire.com/",
+   "animals": "犬が中心（猫・小動物は相談。シッター・散歩・シニア犬の訪問介護・通院のつきそい。登録 第3201001号）",
+   "chain": "indie"
   }
  ]
 }

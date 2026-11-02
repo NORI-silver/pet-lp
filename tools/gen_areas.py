@@ -657,10 +657,13 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
     <p>通院先や宿泊先ごとの行き方、受付・乗降場所、帰りの車で確かめたいことをまとめました。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "facility"])}
     <div class="sh"><h2>移動の困りごとから調べる</h2></div>
-    {guide_cards([g["slug"] for g in GUIDES if g.get("category") not in ("facility", "procedure")])}
+    {guide_cards([g["slug"] for g in GUIDES if g.get("category") not in ("facility", "procedure", "care")])}
     <div class="sh"><h2>迷子・犬の登録・引っ越しの手続き</h2></div>
     <p>迷子になったとき、迷子を保護したとき、犬の登録、引っ越し、飼えなくなったときの相談先。全国の窓口は<a href="/jichitai/">迷子・犬の登録・引取りの窓口</a>の一覧から。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "procedure"])}
+    <div class="sh"><h2>老犬ホーム・ドッグトレーナー・ペットシッターのえらび方</h2></div>
+    <p>預ける・頼む前に知っておきたいこと。全国の一覧は<a href="/rojin-home/">老犬ホーム・老猫ホーム</a>、<a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a>、<a href="/pet-sitter/">ペットシッター</a>から。</p>
+    {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "care"])}
   </div>
 </section>
 <section style="padding-top:0">
