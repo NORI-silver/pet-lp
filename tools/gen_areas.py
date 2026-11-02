@@ -67,6 +67,8 @@ booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG
 _DISP = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))["companies"]
 booking_src = re.sub(r"/\*DISPLAY_COMPANIES\*/.*?/\*/DISPLAY_COMPANIES\*/", lambda m: "/*DISPLAY_COMPANIES*/var DISPLAY_COMPANIES = " + json.dumps(_DISP, ensure_ascii=False) + ";/*/DISPLAY_COMPANIES*/", booking_src, count=1, flags=re.S)
 def _ncos(k): return len([x for x in _DISP if k in x.get("areas", [])])
+def _ccos(k, stem): return len([x for x in _DISP if k in x.get("areas", []) and stem in (x.get("area_text") or "")])
+def _nhosp(pf): return len(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "emergency.json"), encoding="utf-8"))["hospitals"].get(pf, []))
 _DCJ = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))
 _PPTS = _DCJ.get("partner_points", {})
 _PLIM = _DCJ.get("partner_limits", {})
@@ -233,6 +235,8 @@ AREAS = [
   cities=["横浜市","川崎市","相模原市","藤沢市","横須賀市","鎌倉市","茅ヶ崎市","大和市","厚木市","平塚市","海老名市","小田原市"],
   route=("横浜駅周辺 → 羽田空港", 25),
   faq=[
+   ("横浜・川崎に来てくれるペットタクシーは何社ありますか？", f"神奈川県のお迎えに対応している{_ncos('神奈川')}社のうち、公式サイトの対応エリアに「横浜」と書いている会社が{_ccos('神奈川','横浜')}社、「川崎」と書いている会社が{_ccos('神奈川','川崎')}社ありました。地名を書いていない会社が来てくれることもあるので、お迎えの場所をフォームに入れて確かめてください。"),
+   ("神奈川で夜間に診てもらえる動物病院はありますか？", f"横浜・川崎・相模原・藤沢・横須賀などの夜間・救急の動物病院を{_nhosp('神奈川県')}件載せています。受付時間は病院ごとに違うので、行く前に電話で受け入れてもらえるか確かめてください。このページの「緊急」タブや、夜間・救急の動物病院の一覧からさがせます。"),
    ("横浜から都内の動物病院まで頼めますか？", f"はい。県をまたぐ移動にも対応しています。横浜から都内までの20〜30kmなら、20kmで{nat_text(20)}、30kmで{nat_text(30)}が片道の目安です。"),
    ("川崎市からでもペットタクシーを予約できますか？", "はい。川崎市からのお迎えも選べます。場所・日時・ペットの大きさなどの条件に合う事業者と料金の目安を表示し、その中から何社でも選んで、空き状況と料金を問い合わせできます。会社から返事が届いたら、納得してから予約できます。"),
    ("湘南エリア（藤沢・茅ヶ崎・鎌倉）でも使えますか？", "はい、お迎えの場所に入れられます。会社ごとに対応する地域が違うため、場所によってはお迎え料金が増えたり、来てもらえる会社が見つからなかったりすることがあります。日にちに余裕をもってご依頼ください。"),
