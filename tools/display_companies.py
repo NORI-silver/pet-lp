@@ -252,7 +252,35 @@ FIX = {  # 文の形がまちまちなものは、ダッシュボードの記載
     'D18363bd': {'hours': '8-18'},                        # 8〜18時（時間外も相談可）
 }
 
-def schedule(c, did):
+# 当日予約（Nori 2026-11-02「当日予約できるところのフィルターってあってる？東京めっちゃ出てくる」）
+# 当日OK（lead_days=0）にするのは、公式サイトの原文（facts の by=site の quote。v は要約なので見ない）か会社の返事（by=reply）に
+# 当日も受けるとはっきり書いてある会社だけ。「可能な場合もございます」「お受けできない場合があります」「難しい」「判断」などは当日OKにしない。
+# 当日OKでない会社は、お迎えが今日のとき候補に出さない（booking/Code.gs の displayInTime_）。ダッシュボードの要約（「当日も相談可」など）では決めない
+SAME_OK = r'(可能|可|OK|ＯＫ|大丈夫|受け|受付|承|対応|歓迎|できます|お伺い|ご相談ください|迄です|までです)'
+SAME_WEAK = r'可能な場合|場合(も|が)(あり|ござい)|お受けできない|できません|難しい|判断|不可|まず電話で相談'
+def same_day_texts(f):
+    out = []
+    for key in ('lead', 'hours'):
+        v = f.get(key) or {}
+        if v.get('vague'): continue
+        if v.get('by') == 'site': out.append(str(v.get('quote') or ''))
+        elif v.get('by') == 'reply': out.append(str(v.get('v') or ''))
+    return out
+def same_day(f):
+    """当日予約：0＝はっきり受けると書いてある、None＝分からない・あいまい、1以上＝当日は受けない（何日前までか）"""
+    ok = ng = False
+    for t in same_day_texts(f):
+        for seg in re.findall(r'当日[^。（）()、]*', t):
+            if re.search(SAME_WEAK, seg):
+                if re.search(r'不可|お受けできません', seg): ng = True
+            elif re.search(SAME_OK, seg) or re.search(r'当日のご連絡でも', seg): ok = True
+    if ok: return 0
+    if ng:
+        m = re.search(r'(\d)日前まで', ' '.join(same_day_texts(f)))
+        return int(m.group(1)) if m else 1
+    return None
+
+def schedule(c, did, f=None):
     h, l = c.get('hours', ''), c.get('lead', '')
     out = {'hours': '', 'flex': bool(re.search(r'相談|依頼で|事前予約で可|依頼があれば', h)), 'closed': [], 'lead_days': None, 'cut': None}
     if re.search(r'24時間', h) and not re.search(r'電話受付24時間|Web予約は24時間|緊急は24時間', h): out['hours'] = '0-24'
@@ -260,12 +288,13 @@ def schedule(c, did):
         m = re.search(r'(\d{1,2}):?(\d{2})?\s*[〜~-]\s*(\d{1,2}):?(\d{2})?', h)
         if m: out['hours'] = '%d-%d' % (int(m.group(1)), int(m.group(3)) + (1 if m.group(4) and m.group(4) != '00' else 0))
     for w in re.findall(r'([日月火水木金土])曜定休', h): out['closed'].append(WD[w])
-    if re.search(r'当日[^。、]*?(可|対応|あり|相談)', l + h) and not re.search(r'不可|難しい', l): out['lead_days'] = 0
     if re.search(r'前日まで(に|の)?予約|^前日まで$|前日まで必須', l): out['lead_days'] = 1
     m = re.search(r'(\d)日前まで', l)
     if m: out['lead_days'] = int(m.group(1))
-    m = re.search(r'当日[^）]*?(\d{1,2})時まで', l + h)
-    if m: out['cut'] = int(m.group(1)); out['lead_days'] = 0
+    sd = same_day(f or {})
+    if sd is not None: out['lead_days'] = sd  # 公式サイトの原文・会社の返事を優先
+    m = re.search(r'当日[^）。 ]*?(\d{1,2})(時|:00)(まで|迄)', l + '。' + h + '。' + '。'.join(same_day_texts(f or {})))
+    if m and out['lead_days'] == 0: out['cut'] = int(m.group(1))
     out.update(FIX.get(did, {}))
     return out
 
@@ -311,6 +340,9 @@ POINT_RULES = [
 def points(f):
     out = []
     for key, ok, ng, label in POINT_RULES:
+        if label == '当日予約可':  # 当日のしぼりこみと同じ判定（same_day）にそろえる。Nori 2026-11-02
+            if same_day(f) == 0: out.append(label)
+            continue
         v = f.get(key) or {}
         if v.get('by') not in ('site', 'reply') or v.get('vague'): continue
         t = str(v.get('v') or '')
@@ -389,7 +421,7 @@ def main(master, comp, tariffs=None, facts_path=None):
                'shop': SHOP.get(m['id']), 'fare': fare(ts.get(m['id']), m['id']), 'pay': pay(c)}
         # 口コミの星を取り寄せるための、地図で場所を探すことばと、見つかった場所の名前に入っているはずのことば（ダッシュボードと同じ。点数そのものは入れない）
         if c.get('review_q') and c.get('review_name'): row['review_q'], row['review_name'] = c['review_q'], c['review_name']
-        row.update(schedule(c, m['id']))
+        row.update(schedule(c, m['id'], facts.get(m['id'], {})))
         row['animals'] = animals(dict(facts.get(m['id'], {}), _id=m['id']))
         pts = points(facts.get(m['id'], {}))
         lim = car_tags(facts.get(m['id'], {}))
