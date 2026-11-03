@@ -2,7 +2,7 @@
 // ID が空のときと、本番の pet.shiokonbu.com 以外（手元での確認など）では何もしない。
 (function(){
   // 2つに送る（Nori 2026-11-03）：shiokonbu.com 全体（pet・hinata などのサブドメインも全部入る総合）と、pet.shiokonbu.com だけの「pet」。
-  var IDS = ["G-ZYX17VBTWB", ""]; // 1つ目＝shiokonbu.com 総合（消さない）、2つ目＝pet だけ
+  var IDS = ["G-ZYX17VBTWB", "G-3KGJ9VY12G"]; // 1つ目＝shiokonbu.com 総合（消さない）、2つ目＝pet だけ
   IDS = IDS.filter(function(x){ return x; });
   if (!IDS.length || location.hostname !== "pet.shiokonbu.com") return;
   window.dataLayer = window.dataLayer || [];
