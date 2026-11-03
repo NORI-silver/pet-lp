@@ -80,13 +80,114 @@ def _night_facts(rs):
     if far: out.append(f"県の中に見つからないため、近くの県の病院も載せています：{far}院（所在地の県をカードに書いています）")
     return out
 
+# [B] 2026-11-03「中身の薄いページを充実させる」：県ごとに、うちのデータで数えたことを足す。
+# ①受付時間の書き方から数えた「深夜・朝まで」の病院の数 ②その県の緊急の搬送の会社（emergency.json の taxis、名前と公式サイトだけ・電話番号なし）
+# ③その県に来てくれるペットタクシー会社の受付時間と夜の割増（display_companies.json の公式の料金表。社名は出さない）
+# ④その県のほかの条件の病院（hospitals.json）の数。
+_DC = json.load(open(os.path.join(_D, "display_companies.json"), encoding="utf-8"))["companies"]
+_HJ = gen_hospitals.HOSP
+_HOURS_RE = re.compile(r"(\d+)時(?:\d+分)?〜(翌)?(\d+)時")
+def _late(h):
+    """受付時間の書き方（最初の時間帯）から、終わりの時刻を「翌◯時」なら24＋◯で返す。24時間は48。読めないときは None。"""
+    t = h.get("hours", "")
+    if "24時間" in t: return 48
+    m = _HOURS_RE.search(t)
+    if not m: return None
+    a, nxt, b = int(m.group(1)), m.group(2), int(m.group(3))
+    return b + 24 if (nxt or b < a) else b
+def _hours_counts(rs):
+    ls = [_late(h) for h in rs]
+    return dict(all=sum(1 for x in ls if x == 48), past0=sum(1 for x in ls if x is not None and x > 24),
+                till5=sum(1 for x in ls if x is not None and x >= 29), unknown=sum(1 for x in ls if x is None))
+def _key(pf): return pf if pf == "北海道" else pf[:-1]
+def _taxi_cos(pf): return [c for c in _DC if _key(pf) in c.get("areas", [])]
+def _emg_cos(pf): return [t for t in EMG["taxis"] if pf in t.get("prefs", [])]
+def _night_add(F, base, hour=23):
+    """夜の割増（料金表の書き方どおり）。読めないときは None。"""
+    n = (F or {}).get("night")
+    if not n or n.get("unknown"): return None
+    if "flat" in n: return n["flat"]
+    if "rate" in n: return int(base * n["rate"])
+    if "bands" in n:
+        for b in n["bands"]:
+            if b[0] <= hour < (b[1] or 24): return b[2]
+    return None
+def _taxi_night(pf):
+    cs = _taxi_cos(pf)
+    fs = [c["fare"] for c in cs if c.get("fare") and c["fare"].get("kind", "dist") == "dist" and c["fare"].get("base")]
+    day, night = [], []
+    for F in fs:
+        b = _fare_ride(F, 10); day.append(b)
+        a = _night_add(F, b)
+        if a is not None: night.append(b + a)
+    starts = sorted({(c["fare"].get("night") or {}).get("from") for c in cs if c.get("fare") and (c["fare"].get("night") or {}).get("from")})
+    return dict(n=len(cs), h24=sum(c.get("hours") == "0-24" for c in cs), fares=len(fs),
+                withnight=sum(1 for c in cs if c.get("fare") and c["fare"].get("night")),
+                day=sorted(day), night=sorted(night), starts=starts)
+def _fare_ride(F, km):
+    a, bk = F["base"]
+    for t in F["tiers"]:
+        lo = max(t[0], bk + 1); hi = min(km, t[1] if t[1] is not None else 10**9)
+        if hi >= lo: a += -(-(hi - lo + 1) // (t[3] if len(t) > 3 else 1)) * t[2]
+    if re.search("税抜|税別", F.get("tax") or "") and "税込" not in (F.get("tax") or ""): a = -(-a * 11 // 10)
+    return a
+def _mid(v): return v[(len(v) - 1) // 2]
+def _r100(y): return f"{int(round(y / 100.0)) * 100:,}円"
+_OTHER = [("visit", "往診専門（家に来てくれる）の"), ("cat", "猫専門の"), ("exotic", "エキゾチックアニマル専門の"), ("large", "大型犬の設備がある")]
+def _night_extra(e, pf):
+    from urllib.parse import quote
+    rs = [h for h in _HOS if pf in h["prefs"]]
+    hc = _hours_counts(rs)
+    out = ""
+    # ① 受付時間
+    out += (f'<div class="emg-tips" style="margin-top:0"><h4>{e(pf)}の病院の受付時間を数えると</h4><ul class="pp-facts">'
+            f'<li>24時間受け付けると書いている病院：{hc["all"]}院</li>'
+            f'<li>夜中の0時をこえて受け付ける病院（24時間をふくむ）：{hc["past0"]}院</li>'
+            f'<li>朝5時以降まで受け付ける病院（24時間をふくむ）：{hc["till5"]}院</li>'
+            + (f'<li>受付時間を時刻で書いていない病院：{hc["unknown"]}院</li>' if hc["unknown"] else '') +
+            '</ul><p class="emg-tips-note">各病院の公式サイトの受付時間（平日のいちばん主な時間帯）の書き方から数えました。曜日・祝日で変わる病院が多いので、行く前にカードの受付時間と公式サイトを見てください。'
+            + ('夜中の2時・3時に開いている病院が少ない県では、0時より前に電話で相談しておくと安心です。' if hc["till5"] == 0 else '') + '</p></div>')
+    # ② 搬送の会社
+    ec = _emg_cos(pf)
+    if ec:
+        items = "".join(f'<li><a href="{e(t["url"])}" target="_blank" rel="noopener">{e(t["name"])}</a>：{e(t.get("note", ""))}（{e(t.get("area", ""))}）</li>' for t in ec)
+        out += (f'<div class="emg-tips"><h4>{e(pf)}で、夜中の病院への搬送をしている会社（{len(ec)}社）</h4><ul class="pp-facts">{items}</ul>'
+                '<p class="emg-tips-note">公式サイトに緊急・夜間の搬送を書いている会社です。当サイトとは別の会社で、提携はしていません。連絡先と受付時間は各社の公式サイトでご確認ください。</p></div>')
+    else:
+        out += (f'<div class="emg-tips"><h4>{e(pf)}で、夜中の病院への搬送をしている会社</h4><p>{e(pf)}をはっきり対応エリアに書いている緊急の搬送の会社は、まだ見つけられていません。'
+                '車がないときは、病院に電話するときに「車がない」ことも伝えて、近くの移動手段を相談してください。見つけしだい足します。</p></div>')
+    # ③ ペットタクシー
+    tx = _taxi_night(pf)
+    if tx["n"]:
+        li = [f'{e(pf)}のお迎えに対応していると公式サイトに書いている会社：{tx["n"]}社', f'そのうち「24時間受付」と書いている会社：{tx["h24"]}社']
+        if tx["fares"]:
+            li.append(f'料金表があり、夜の割増を書いている会社：{tx["withnight"]}社（割増が始まる時刻は' + "・".join(f"{h}時" for h in tx["starts"]) + '）' if tx["starts"] else f'料金表がある会社：{tx["fares"]}社')
+            if len(tx["day"]) >= 2 and len(tx["night"]) >= 2:
+                li.append(f'10km乗ったときの運賃の目安：昼間 {_r100(_mid(tx["day"]))}、夜23時 {_r100(_mid(tx["night"]))}（まんなかの会社。{len(tx["night"])}社の料金表から計算）')
+        out += (f'<div class="emg-tips"><h4>{e(pf)}に来てくれるペットタクシーの、夜の受付と割増</h4><ul class="pp-facts">' + "".join(f"<li>{x}</li>" for x in li) + '</ul>'
+                '<p class="emg-tips-note"><b>確定料金ではありません。</b>各社の公式サイトの料金表をもとに計算した概算で、お迎え料金・待ち時間・当日の道順や渋滞などで変わります。'
+                'ペットタクシーは前もっての予約が基本で、当サイトからの依頼はお迎えが3時間以上あとになるため、急な夜中の受診には向きません。夜の再診や退院のお迎え、朝いちばんの通院に。</p></div>')
+    else:
+        out += (f'<div class="emg-tips"><h4>{e(pf)}に来てくれるペットタクシー</h4><p>{e(pf)}のお迎えを対応エリアに書いているペットタクシー会社は、当サイトの一覧ではまだ見つかっていません。'
+                'フォームでお迎えの場所を入れると、来てもらえる会社がいればそこに出ます。</p></div>')
+    # ④ ほかの条件
+    oth = [(lab, slug, sum(1 for h in _HJ[slug] if pf in h["prefs"])) for slug, lab in _OTHER]
+    out += (f'<div class="emg-tips"><h4>{e(pf)}のほかの条件の動物病院</h4><ul class="pp-facts">'
+            + "".join(f'<li><a href="/hospital/{slug}/#pref={quote(pf)}">{e(lab)}動物病院</a>：{n}院</li>' if n else f'<li>{e(lab)}動物病院：まだ載せていません</li>' for lab, slug, n in oth)
+            + '</ul><p class="emg-tips-note">夜の救急のあとは、かかりつけの病院か、症状に合った病院に引きつぐことが多いです。</p></div>')
+    return out
+
 def _night_faq(pf, rs, n):
     names = "、".join(h["name"] for h in rs[:3])
+    hc = _hours_counts(rs); tx = _taxi_night(pf); ec = _emg_cos(pf)
     return [
      (f"{pf}で夜間に診てもらえる動物病院は？", f"この一覧では、{pf}で夜間・救急に診てもらえる動物病院を{n}院載せています（{names}{'など' if n > 3 else ''}）。受付時間は病院ごとに違うので、各カードでご確認ください。"),
+     (f"{pf}に24時間や朝まで診てくれる動物病院はありますか？", f"公式サイトの受付時間の書き方で数えると、{pf}で載せている{n}院のうち、24時間と書いているのは{hc['all']}院、朝5時以降まで受け付けるのは{hc['till5']}院、夜中の0時をこえて受け付けるのは{hc['past0']}院です。曜日で変わる病院が多いので、公式サイトでご確認ください。"),
+     (f"{pf}で、夜中に病院まで運んでくれる会社は？", (f"公式サイトに緊急・夜間の搬送を書いている会社が{len(ec)}社あります（" + "、".join(t["name"] for t in ec) + "）。連絡先は各社の公式サイトでご確認ください。") if ec else f"{pf}を対応エリアに書いている緊急の搬送の会社は、まだ見つけられていません。病院に電話するときに、車がないことも相談してください。"),
      ("夜間の病院に行く前にすることは？", "まず電話で、症状・いつからか・動物の種類と体重を伝えて、受け入れてもらえるかを確かめてください。手術中や混雑で受けられないことがあります。"),
      ("夜間の診察の料金は？", "この一覧には料金を載せていません。夜間は時間外の料金が加わることが多いので、電話のときにたずねてください。"),
      ("夜中に病院まで行く車がないときは？", "緊急の搬送をしている会社に直接連絡できます。くわしくは「緊急のときの連絡先」のページをご覧ください。"),
+     (f"{pf}で、夜間や早朝の通院にペットタクシーは使えますか？", (f"{pf}のお迎えに対応していると公式サイトに書いている会社は{tx['n']}社で、そのうち24時間受付と書いているのは{tx['h24']}社です。" + (f"夜の割増は料金表を書いている会社のうち{tx['withnight']}社が書いていて、10kmを夜23時に乗ると、まんなかの会社で{_r100(_mid(tx['night']))}の目安です（昼間は{_r100(_mid(tx['day']))}。確定料金ではありません）。" if len(tx['night']) >= 2 and len(tx['day']) >= 2 else "") if tx['n'] else f"{pf}のお迎えを対応エリアに書いているペットタクシー会社は、当サイトの一覧ではまだ見つかっていません。") + "当サイトからの依頼はお迎えが3時間以上あとになるので、急な受診ではなく、再診や退院など前もって決まった移動に使ってください。"),
     ]
 
 NIGHT = dict(slug="hospital/night", name="夜間・救急の動物病院", unit="院", h1=_NIGHT["h1"], items=_HOS,
@@ -95,7 +196,7 @@ NIGHT = dict(slug="hospital/night", name="夜間・救急の動物病院", unit=
   title_word="夜間・救急の動物病院", title_tail="受付時間・所在地つき",
   desc_tail="病院の名前・受付時間・どんな病院か・所在地と公式サイトへのリンク、口コミの星を載せています。順位はつけていません。行く前に必ず電話で受け入れを確かめてください。",
   lede=lambda pf, n: f"夜中に具合が悪くなったとき、{pf}ではどこに行けばいいのか。夜間・救急に診てもらえる動物病院を{n}院、受付時間と一緒にまとめました。行く前に必ず電話で受け入れを確かめてください。",
-  facts=_night_facts, faq=_night_faq, before_title="夜間の病院にかかるときに",
+  facts=_night_facts, faq=_night_faq, extra_after=_night_extra, before_title="夜間の病院にかかるときに",
   before=[(t, d.replace('<a href="/emergency/">', "").replace('<a href="/#form">', "").replace('</a>', "")) for t, d in _NIGHT["tips"]],
   taxi_h="前もって決まっている通院は、ペットタクシーで", taxi_p="再診や退院のお迎えなど、前もって決まっている移動はペットタクシーを予約できます。",
   links=[("緊急のときの連絡先", "/emergency/"), ("条件でさがす動物病院", "/hospital/"), ("動物病院への通院の送迎ガイド", "/guide/hospital/")])

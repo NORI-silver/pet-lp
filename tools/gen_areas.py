@@ -1255,6 +1255,29 @@ hub_regions = ""
 for lab, ps in emg_regions:
     lis = "".join(f'<li><a href="{pref_href(p)}">{e(AREA_SHORT.get(p) or next(x[2] for x in PREFS if x[1] == p))}</a></li>' for p in ps)
     hub_regions += f'<h3 class="emg-region" style="text-align:center">{e(lab)}</h3><ul class="other">{lis}</ul>'
+# [B] 2026-11-03「中身の薄いページを充実させる」：都道府県ごとの数の表（会社の数・10kmの運賃・夜間の病院・搬送の会社）。うちのデータで数えたもの、社名なし。
+def _hub_table():
+    trs, found, many = "", 0, 0
+    for lab, ps in emg_regions:
+        trs += f'<tr><th colspan="5" style="text-align:left">{e(lab)}</th></tr>'
+        for p in ps:
+            key = p if p == "北海道" else p[:-1]
+            cs = [x for x in _DISP if key in x.get("areas", [])]
+            fs = sorted(_nat_ride(x["fare"], 10) for x in cs if x.get("fare") and x["fare"].get("kind", "dist") == "dist" and x["fare"].get("base"))
+            found += bool(cs); many += len(cs) >= 5
+            hs = [h for h in EMG["hospitals"].get(p, []) if not other_pref(h, p)]
+            tx = [t for t in EMG["taxis"] if p in t.get("prefs", [])]
+            nm = AREA_SHORT.get(p) or next(x[2] for x in PREFS if x[1] == p)
+            r1 = lambda y: f"{int(round(y / 100.0)) * 100:,}円"  # お客さまに見せる概算は100円単位
+            mid = r1(fs[(len(fs) - 1) // 2]) if len(fs) >= 3 else ("、".join(r1(v) for v in fs) if fs else "—")
+            trs += (f'<tr><td><a href="{pref_href(p)}">{e(nm)}</a></td><td>{len(cs) or "—"}</td><td>{mid}</td>'
+                    f'<td><a href="/hospital/night/{gen_dogrun.PSLUG[p]}/">{len(hs)}</a></td><td>{len(tx) or "—"}</td></tr>')
+    return (f'<div class="sh" style="margin-top:28px"><h2>都道府県ごとの数</h2></div>'
+            f'<p>当サイトで公式サイトを確かめた全国{len(_DISP)}社のペットタクシーのうち、お迎えの対応エリアに書いている都道府県を数えると、会社が見つかったのは47都道府県のうち{found}、5社以上あるのは{many}でした。'
+            '会社が見つからない県でも、となりの県の会社が来てくれることがあります。10kmの運賃は料金表をのせている会社で計算した片道の金額（100円単位にまるめています）で、3社以上あるときはまんなかの会社の金額です。</p>'
+            '<div class="tbl"><table><thead><tr><th>都道府県</th><th>ペットタクシー会社</th><th>10kmの運賃</th><th>夜間・救急の病院（県の中）</th><th>緊急の搬送の会社</th></tr></thead>'
+            f'<tbody>{trs}</tbody></table></div>'
+            f'<p class="fare-flag"><b>確定料金ではありません。</b>{FARES_CHECKED}時点で各社の公式サイトの料金表をもとに計算した概算です。お迎え料金・待ち時間・夜間や早朝の割増・高速代は入っていません。当日の道順・渋滞・待ち時間などで変わります。</p>')
 ph = head("全国のペットタクシー情報｜都道府県ごとの料金の例・夜間の動物病院｜ペットタクシー予約窓口",
   "47都道府県ごとに、ペットタクシーの料金の例や頼む前に確かめること、夜間・救急の動物病院とペットの緊急搬送の連絡先をまとめました。", pref_hub_url, hub_ld2) + f"""
 <main>
@@ -1267,7 +1290,7 @@ ph = head("全国のペットタクシー情報｜都道府県ごとの料金の
   </div>
 </section>
 <section style="padding-top:8px">
-  <div class="wrap">{hub_regions}</div>
+  <div class="wrap">{hub_regions}{_hub_table()}</div>
 </section>
 <section style="padding-top:0">
   <div class="wrap">
