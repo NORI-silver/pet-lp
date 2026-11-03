@@ -2,7 +2,7 @@
 # Nori 2026-11-02「病院は？全部マネタイズじゃなくていい。SEO的なコンテンツでもいい」「全国で」「口コミもつけて」。
 # 守ること：病院からお金をもらわない。順位や「おすすめ」をつけない。電話番号は載せない。公式サイトで確かめたことだけ書く。
 # データ：夜間・救急＝tools/emergency.json（緊急タブと同じ）、往診・猫専門・エキゾチック・大型犬の設備＝tools/hospitals.json。
-import json, os
+import json, os, re
 import prefkeep
 
 HOSP = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "hospitals.json"), encoding="utf-8"))
@@ -130,6 +130,29 @@ def render_hub(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
     url = SITE + "/hospital/"
     counts = {c["slug"]: len({h["id"] for v in _rows(c, ctx["EMG"]).values() for h in v}) for c in CONDS}
+    # [B] 2026-11-03：都道府県ごとの病院の数の表（うちの一覧で数えたもの）。夜間は県のページへ、ほかは全国のページの県の絞り込みへ。
+    from urllib.parse import quote
+    import gen_dogrun
+    per = {c["slug"]: _rows(c, ctx["EMG"]) for c in CONDS}
+    trs = ''
+    for lab, prefs in ctx["emg_regions"]:
+        trs += f'<tr><th colspan="{len(CONDS) + 1}" style="text-align:left">{e(lab)}</th></tr>'
+        for pf in prefs:
+            tds = ''
+            for c in CONDS:
+                n = len(per[c["slug"]].get(pf, []))
+                href = f'/hospital/night/{gen_dogrun.PSLUG[pf]}/' if c["slug"] == "night" else f'/hospital/{c["slug"]}/#pref={quote(pf)}'
+                tds += f'<td><a href="{href}">{n}</a></td>' if n else '<td>—</td>'
+            trs += f'<tr><td>{e(pf)}</td>{tds}</tr>'
+    zero_night = [pf for _, prefs in ctx["emg_regions"] for pf in prefs if not any(not re.search(r"（[^）]+[都道府県]）$", h.get("city", "")) for h in per["night"].get(pf, []))]
+    nh = [h for v in per["night"].values() for h in v]
+    h24 = len({h["id"] for h in nh if "24時間" in h.get("hours", "")})
+    summary = (f'<p>載せている夜間・救急の病院{counts["night"]}院のうち、受付時間に「24時間」と書いているのは{h24}院です。'
+               + (f'県の中に夜間・救急の病院が見つからず、近くの県の病院を載せているのは{len(zero_night)}県（' + "・".join(zero_night) + '）です。' if zero_night else '')
+               + "見つかった都道府県の数は、" + "、".join(f'{c["short"]}が{sum(1 for _, ps in ctx["emg_regions"] for pf in ps if per[c["slug"]].get(pf))}' for c in CONDS[1:]) + 'です。</p>')
+    matrix = (f'<div class="sh" style="margin-top:28px"><h2>都道府県ごとの病院の数</h2></div>{summary}'
+              '<div class="tbl"><table><thead><tr><th>都道府県</th>' + ''.join(f'<th>{e(c["short"])}</th>' for c in CONDS) + f'</tr></thead><tbody>{trs}</tbody></table></div>'
+              '<p class="emg-note">数字は、この一覧に載せている病院の数です（公式サイトで確かめられた病院だけ）。0（—）でも、その県に病院がないとは限りません。夜間・救急の数には、県の中に見つからないときに載せている近くの県の病院をふくみます。</p>')
     cards = ''.join(f'<li><a href="/hospital/{c["slug"]}/"><b>{e(c["h1"])}</b><span>全国{counts[c["slug"]]}件。{e(c["lede"].split("。")[0])}。</span></a></li>' for c in CONDS)
     ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
       {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
@@ -147,6 +170,7 @@ def render_hub(ctx):
 <section style="padding-top:8px">
   <div class="wrap">
     <ul class="gcards">{cards}</ul>
+    {matrix}
     <p class="emg-note" style="margin-top:18px">それぞれのページで都道府県をしぼりこめます。まだ載っていない県や病院は、見つけしだい足していきます。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
   </div>
 </section>

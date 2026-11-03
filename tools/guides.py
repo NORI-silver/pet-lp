@@ -672,6 +672,13 @@ for guide in GUIDES:
     if guide["slug"] in EXTRA_SECTIONS:
         guide["sections"].extend(EXTRA_SECTIONS[guide["slug"]])
         guide["modified"] = "2026-11-01"
+# [B] 2026-11-03：本文の短かったガイドに、データを数えた節を足す（tools/guides_counts.py）。
+from guides_counts import EXTRA as _COUNT_EXTRA
+for guide in GUIDES:
+    if guide["slug"] in _COUNT_EXTRA:
+        if guide["slug"] == "senior": guide["sections"].extend(_COUNT_EXTRA["senior"])  # 介助の節のあとに
+        else: guide["sections"][-1:-1] = _COUNT_EXTRA[guide["slug"]]  # 最後の節（予約の案内）の前に入れる
+        guide["modified"] = "2026-11-03"
 
 # 施設別の記事も同じ生成・出典管理の対象にする。
 from facility_guides import FACILITY_GUIDES
