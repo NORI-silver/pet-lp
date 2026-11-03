@@ -43,8 +43,9 @@
 | トリミング 送迎 あり | 170 | `/guide/grooming-hotel/` | |
 | ペットタクシー 埼玉／千葉 | 170／140 | `/saitama/`・`/chiba/` | |
 | ペット ハイヤー | 140 | `/guide/long-distance/` | |
-| ペットタクシー 長距離 | 110 | `/guide/long-distance/` | |
-| ペットタクシー とは | 110 | `/guide/what-is-pet-taxi/` | |
+| ペットタクシー 長距離 | 110 | `/guide/long-distance/` | 前年比+900%（Nori 11/3 の画面） |
+| ペットタクシー とは | 110 | `/guide/what-is-pet-taxi/` | 前年比+900%（Nori 11/3 の画面） |
+| ペットタクシー 乗れる | 10〜100 | `/guide/what-is-pet-taxi/`・`/guide/choose/` | 3か月で+900%（Nori 11/3 の画面）。乗れる動物・人数・頭数の数字で答える |
 | ペットタクシー 名古屋 | 90 | `/area/aichi/` | 料金表のある会社がまだない |
 | タクシー 犬 ケージなし | 90 | `/guide/taxi-with-pet/` | |
 | ペットホテル 送迎 あり／トリミング 送迎 | 90 | `/guide/grooming-hotel/` | |
