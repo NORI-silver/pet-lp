@@ -1,5 +1,5 @@
 {
- "_説明": "お金を取らない情報ページ（/dogrun/）のデータ。国・都道府県・市町村の公園や動物愛護センターにある公営のドッグランだけ。リンクは公園や自治体の公式ページ（ページ名で確かめた）。民間のドッグランは載せない。料金・利用時間・登録の条件は場所ごとに違うので、書くのは公式ページで確かめたことだけ（note）。電話番号は載せない。",
+ "_説明": "お金を取らない情報ページ（/dogrun/）のデータ。kind＝公営（国・都道府県・市町村の公園や動物愛護センター）・民間（お店・商業施設・レジャー施設）・高速道路（SA・PA）。リンクはそれぞれの公式ページ。料金・利用時間・登録の条件は場所ごとに違うので、書くのは公式ページで確かめたことだけ。電話番号は載せない。順位はつけない。",
  "checked": "2026年11月2日",
  "dogruns": [
   {
@@ -8,7 +8,21 @@
    "name": "代々木公園ドッグラン",
    "city": "渋谷区",
    "url": "https://www.tokyo-park.or.jp/park/yoyogi/index.html",
-   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+   "addr": "渋谷区代々木神園町",
+   "hours": "24時間（原則として日の出ている時間帯に）",
+   "fee": "無料",
+   "size": "超小型犬（5kgまで）・小・中型犬（12kgまで）・中・大型犬（10kg以上）の3エリア。フリーエリアはない",
+   "limit": "原則1頭、最大2頭",
+   "parking": "公園に有料駐車場（65台・24時間）",
+   "access": "JR山手線「原宿」から徒歩3分",
+   "reg": "都立12公園共通の利用登録（WEB申請・無料）。1か所で登録すれば12公園すべてで使える。有効期限は翌年度の6月30日まで",
+   "need": "その年度の狂犬病予防注射済票（済票に管理番号がなければ鑑札かマイクロチップ登録証明書の番号も）。生後4か月未満は登録できない",
+   "ng": "発情中の犬、病気やノミ・ダニのいる犬、かむくせのある犬などは入れない。おやつ・おもちゃは持ちこまない",
+   "src": [
+    "https://www.tokyo-park.or.jp/park/yoyogi/assets/20260303YoyogiDogRun_RiyouKiyaku.pdf",
+    "https://www.tokyo-park.or.jp/park/yoyogi/index.html",
+    "https://www.tokyo-park.or.jp/faq/"
+   ]
   },
   {
    "id": "D002",
@@ -16,7 +30,21 @@
    "name": "駒沢オリンピック公園ドッグラン",
    "city": "世田谷区・目黒区",
    "url": "https://www.tokyo-park.or.jp/park/komazawa-olympic/index.html",
-   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+   "addr": "世田谷区駒沢公園",
+   "hours": "24時間（原則として日の出ている時間帯に）",
+   "fee": "無料",
+   "size": "小型犬エリア（8kg未満）・中・大型犬優先エリア（6kg以上）",
+   "limit": "最大2頭",
+   "parking": "公園に有料駐車場（第一181台・第二41台、24時間）",
+   "access": "東急田園都市線「駒沢大学」から徒歩15分",
+   "reg": "都立12公園共通の利用登録（WEB申請・無料）。1か所で登録すれば12公園すべてで使える。有効期限は翌年度の6月30日まで",
+   "need": "その年度の狂犬病予防注射済票（済票に管理番号がなければ鑑札かマイクロチップ登録証明書の番号も）。生後4か月未満は登録できない",
+   "ng": "発情中の犬、病気やノミ・ダニのいる犬、かむくせのある犬などは入れない。おやつ・おもちゃは持ちこまない",
+   "src": [
+    "https://www.tokyo-park.or.jp/park/komazawa-olympic/assets/komazawa2024dogrun.pdf",
+    "https://www.tokyo-park.or.jp/park/komazawa-olympic/index.html",
+    "https://www.tokyo-park.or.jp/faq/"
+   ]
   },
   {
    "id": "D003",
@@ -24,7 +52,17 @@
    "name": "蘆花恒春園ドッグラン",
    "city": "世田谷区",
    "url": "https://www.tokyo-park.or.jp/park/rokakoshun-en/index.html",
-   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+   "addr": "世田谷区粕谷一丁目",
+   "fee": "無料",
+   "parking": "公園に有料駐車場（42台・24時間）",
+   "access": "京王線「芦花公園」または「八幡山」から徒歩15分",
+   "reg": "都立12公園共通の利用登録（WEB申請・無料）。1か所で登録すれば12公園すべてで使える。有効期限は翌年度の6月30日まで",
+   "need": "その年度の狂犬病予防注射済票（済票に管理番号がなければ鑑札かマイクロチップ登録証明書の番号も）。生後4か月未満は登録できない",
+   "ng": "発情中の犬、病気やノミ・ダニのいる犬、かむくせのある犬などは入れない。おやつ・おもちゃは持ちこまない",
+   "src": [
+    "https://www.tokyo-park.or.jp/park/rokakoshun-en/index.html",
+    "https://www.tokyo-park.or.jp/faq/"
+   ]
   },
   {
    "id": "D004",
@@ -32,7 +70,20 @@
    "name": "城北中央公園ドッグラン",
    "city": "練馬区・板橋区",
    "url": "https://www.tokyo-park.or.jp/park/johoku-chuo/index.html",
-   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+   "addr": "板橋区桜川一丁目・練馬区氷川台一丁目ほか",
+   "fee": "無料（運営への寄付の協力のお願いあり）",
+   "size": "小型犬専用（8kg未満）・中大型犬専用（8kg以上）・フリーエリア",
+   "limit": "原則1頭、最大2頭",
+   "parking": "公園に有料駐車場（66台・24時間）",
+   "access": "東武東上線「上板橋」から徒歩15分",
+   "reg": "都立12公園共通の利用登録（WEB申請・無料）。1か所で登録すれば12公園すべてで使える。有効期限は翌年度の6月30日まで",
+   "need": "その年度の狂犬病予防注射済票（済票に管理番号がなければ鑑札かマイクロチップ登録証明書の番号も）。生後4か月未満は登録できない",
+   "ng": "発情中の犬、病気やノミ・ダニのいる犬、かむくせのある犬などは入れない。おやつ・おもちゃは持ちこまない",
+   "src": [
+    "https://www.tokyo-park.or.jp/park/johoku-chuo/assets/jyohoku-riyoukiyaku202211.pdf",
+    "https://www.tokyo-park.or.jp/park/johoku-chuo/index.html",
+    "https://www.tokyo-park.or.jp/faq/"
+   ]
   },
   {
    "id": "D005",
@@ -40,7 +91,21 @@
    "name": "舎人公園ドッグラン",
    "city": "足立区",
    "url": "https://www.tokyo-park.or.jp/park/toneri/index.html",
-   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+   "addr": "足立区舎人公園",
+   "hours": "24時間（原則として日の出ている時間帯に）",
+   "fee": "無料",
+   "size": "小型犬（柴犬・コーギー・トイプードル・チワワなど）と中・大型犬に分かれる",
+   "limit": "最大2頭",
+   "parking": "公園に有料駐車場（3か所・計157台、24時間）",
+   "access": "日暮里・舎人ライナー「舎人公園」下車",
+   "reg": "都立12公園共通の利用登録（WEB申請・無料）。1か所で登録すれば12公園すべてで使える。有効期限は翌年度の6月30日まで",
+   "need": "その年度の狂犬病予防注射済票（済票に管理番号がなければ鑑札かマイクロチップ登録証明書の番号も）。生後4か月未満は登録できない",
+   "ng": "発情中の犬、病気やノミ・ダニのいる犬、かむくせのある犬などは入れない。おやつ・おもちゃは持ちこまない",
+   "src": [
+    "https://www.tokyo-park.or.jp/park/toneri/assets/toneri-dogrun-riyokiyaku202400302.pdf",
+    "https://www.tokyo-park.or.jp/park/toneri/index.html",
+    "https://www.tokyo-park.or.jp/faq/"
+   ]
   },
   {
    "id": "D006",
@@ -48,7 +113,21 @@
    "name": "水元公園ドッグラン",
    "city": "葛飾区",
    "url": "https://www.tokyo-park.or.jp/park/mizumoto/index.html",
-   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+   "addr": "葛飾区水元公園",
+   "hours": "24時間・通年（できるだけ日の出ている時間帯に）",
+   "fee": "無料",
+   "size": "小型犬エリア（8kg以下）・フリーエリア",
+   "limit": "最大3頭",
+   "parking": "公園に有料駐車場（287台・24時間）",
+   "access": "JR常磐線「金町」から京成バス「水元公園」下車、徒歩7分",
+   "reg": "都立12公園共通の利用登録（WEB申請・無料）。1か所で登録すれば12公園すべてで使える。有効期限は翌年度の6月30日まで",
+   "need": "その年度の狂犬病予防注射済票（済票に管理番号がなければ鑑札かマイクロチップ登録証明書の番号も）。生後4か月未満は登録できない",
+   "ng": "発情中の犬、病気やノミ・ダニのいる犬、かむくせのある犬などは入れない。おやつ・おもちゃは持ちこまない",
+   "src": [
+    "https://www.tokyo-park.or.jp/park/mizumoto/facility/index.html",
+    "https://www.tokyo-park.or.jp/park/mizumoto/assets/mizumoto-dogrun-riyokiyaku202400302.pdf",
+    "https://www.tokyo-park.or.jp/park/mizumoto/index.html"
+   ]
   },
   {
    "id": "D007",
@@ -56,7 +135,21 @@
    "name": "篠崎公園ドッグラン",
    "city": "江戸川区",
    "url": "https://www.tokyo-park.or.jp/park/shinozaki/index.html",
-   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+   "addr": "江戸川区上篠崎ほか",
+   "hours": "24時間（原則として日の出ている時間帯に）",
+   "fee": "無料",
+   "size": "小型犬エリア（8kg未満）・中・大型犬エリア（体重の制限なし）",
+   "limit": "制御できる頭数まで",
+   "parking": "公園に有料駐車場（第一193台・第二49台、24時間）",
+   "access": "都営新宿線「篠崎」から徒歩15〜16分",
+   "reg": "都立12公園共通の利用登録（WEB申請・無料）。1か所で登録すれば12公園すべてで使える。有効期限は翌年度の6月30日まで",
+   "need": "その年度の狂犬病予防注射済票（済票に管理番号がなければ鑑札かマイクロチップ登録証明書の番号も）。生後4か月未満は登録できない",
+   "ng": "発情中の犬、病気やノミ・ダニのいる犬、かむくせのある犬などは入れない。おやつ・おもちゃは持ちこまない",
+   "src": [
+    "https://www.tokyo-park.or.jp/park/shinozaki/assets/shinozaki-dogrun-riyokiyaku202400302.pdf",
+    "https://www.tokyo-park.or.jp/park/shinozaki/index.html",
+    "https://www.tokyo-park.or.jp/faq/"
+   ]
   },
   {
    "id": "D008",
@@ -64,7 +157,21 @@
    "name": "木場公園ドッグラン",
    "city": "江東区",
    "url": "https://www.tokyo-park.or.jp/park/kiba/facility/index.html",
-   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+   "addr": "江東区木場四・五丁目ほか",
+   "hours": "24時間（原則として日の出ている時間帯に）",
+   "fee": "無料",
+   "size": "小型犬専用（10kg未満）・中・大型犬用（10kg以上）",
+   "limit": "最大2頭",
+   "parking": "公園に有料駐車場（第一104台・第二30台、24時間）",
+   "access": "東京メトロ東西線「木場」から徒歩10分",
+   "reg": "都立12公園共通の利用登録（WEB申請・無料）。1か所で登録すれば12公園すべてで使える。有効期限は翌年度の6月30日まで",
+   "need": "その年度の狂犬病予防注射済票（済票に管理番号がなければ鑑札かマイクロチップ登録証明書の番号も）。生後4か月未満は登録できない",
+   "ng": "発情中の犬、病気やノミ・ダニのいる犬、かむくせのある犬などは入れない。おやつ・おもちゃは持ちこまない",
+   "src": [
+    "https://www.tokyo-park.or.jp/park/kiba/assets/20260303KibaDogRun_RiyouKiyaku.pdf",
+    "https://www.tokyo-park.or.jp/park/kiba/index.html",
+    "https://www.tokyo-park.or.jp/faq/"
+   ]
   },
   {
    "id": "D009",
@@ -72,15 +179,41 @@
    "name": "小金井公園ドッグラン",
    "city": "小金井市",
    "url": "https://www.tokyo-park.or.jp/park/koganei/index.html",
-   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+   "addr": "小金井市桜町三丁目ほか",
+   "hours": "24時間（原則として日の出ている時間帯に）",
+   "fee": "無料",
+   "size": "小型犬エリア（10kg未満）・中・大型犬エリア（10kg以上）・プレイエリア（体重の制限なし）",
+   "limit": "常に制御できる頭数まで",
+   "parking": "公園に有料駐車場（第一431台・第二126台、24時間）",
+   "access": "JR中央線「武蔵小金井」・「東小金井」からバス",
+   "reg": "都立12公園共通の利用登録（WEB申請・無料）。1か所で登録すれば12公園すべてで使える。有効期限は翌年度の6月30日まで",
+   "need": "その年度の狂犬病予防注射済票（済票に管理番号がなければ鑑札かマイクロチップ登録証明書の番号も）。生後4か月未満は登録できない",
+   "ng": "発情中の犬、病気やノミ・ダニのいる犬、かむくせのある犬などは入れない。おやつ・おもちゃは持ちこまない",
+   "src": [
+    "https://www.tokyo-park.or.jp/park/koganei/assets/koganei-dogrun-riyokiyaku202400302.pdf",
+    "https://www.tokyo-park.or.jp/park/koganei/index.html",
+    "https://www.tokyo-park.or.jp/faq/"
+   ]
   },
   {
    "id": "D010",
    "pref": "東京都",
    "name": "神代植物公園ドッグラン",
    "city": "調布市",
-   "url": "https://www.tokyo-park.or.jp/park/johoku-chuo/news/2024/6_2024_12_web.html",
-   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+   "url": "https://www.tokyo-park.or.jp/park/jindai/facility/index.html",
+   "place": "神代植物公園の外の東側、開放区域の一角",
+   "hours": "24時間（原則として日の出ている時間帯に）",
+   "fee": "無料",
+   "size": "小型犬エリア（9kg以下）・中・大型犬エリア（8kg以上）・フリーエリア",
+   "limit": "1頭まで",
+   "parking": "植物公園の有料駐車場",
+   "reg": "都立12公園共通の利用登録（WEB申請・無料）。1か所で登録すれば12公園すべてで使える。有効期限は翌年度の6月30日まで",
+   "need": "その年度の狂犬病予防注射済票（済票に管理番号がなければ鑑札かマイクロチップ登録証明書の番号も）。生後4か月未満は登録できない",
+   "ng": "発情中の犬、病気やノミ・ダニのいる犬、かむくせのある犬などは入れない。おやつ・おもちゃは持ちこまない",
+   "src": [
+    "https://www.tokyo-park.or.jp/park/jindai/assets/jindai-dogrun-riyokiyaku202400302.pdf",
+    "https://www.tokyo-park.or.jp/faq/"
+   ]
   },
   {
    "id": "D011",
@@ -88,7 +221,21 @@
    "name": "桜ヶ丘公園ドッグラン",
    "city": "多摩市",
    "url": "https://www.tokyo-park.or.jp/park/sakuragaoka/index.html",
-   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+   "addr": "多摩市連光寺三・五丁目",
+   "hours": "午前6時から日の入りまで",
+   "fee": "無料",
+   "size": "小型犬（10kg未満）・中・大型犬（10kg以上）",
+   "limit": "同じエリアに2頭まで",
+   "parking": "公園に無料駐車場（約95台。土日祝は少ないので公共交通機関がおすすめ）",
+   "access": "京王線「聖蹟桜ヶ丘」から京王バス「桜ヶ丘公園西口」下車すぐ",
+   "reg": "都立12公園共通の利用登録（WEB申請・無料）。1か所で登録すれば12公園すべてで使える。有効期限は翌年度の6月30日まで",
+   "need": "その年度の狂犬病予防注射済票（済票に管理番号がなければ鑑札かマイクロチップ登録証明書の番号も）。生後4か月未満は登録できない",
+   "ng": "発情中の犬、病気やノミ・ダニのいる犬、かむくせのある犬などは入れない。おやつ・おもちゃは持ちこまない",
+   "src": [
+    "https://www.tokyo-park.or.jp/park/sakuragaoka/assets/%E3%80%902024%E5%B9%B43%E6%9C%88%EF%BD%9E%E3%80%91%E6%A1%9C%E3%83%B6%E4%B8%98%E5%85%AC%E5%9C%92_%E3%83%89%E3%83%83%E3%82%B0%E3%83%A9%E3%83%B3%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84.pdf",
+    "https://www.tokyo-park.or.jp/park/sakuragaoka/index.html",
+    "https://www.tokyo-park.or.jp/faq/"
+   ]
   },
   {
    "id": "D012",
@@ -96,7 +243,17 @@
    "name": "小山内裏公園ドッグラン",
    "city": "町田市・八王子市",
    "url": "https://www.tokyo-park.or.jp/park/oyamadairi/index.html",
-   "note": "都立12公園のドッグラン共通利用登録（WEB申請、狂犬病予防注射済票の画像が必要）"
+   "addr": "町田市小山ケ丘・八王子市南大沢ほか",
+   "fee": "無料",
+   "parking": "公園に無料駐車場（23台・9時〜17時）",
+   "access": "京王相模原線「多摩境」から徒歩10分",
+   "reg": "都立12公園共通の利用登録（WEB申請・無料）。1か所で登録すれば12公園すべてで使える。有効期限は翌年度の6月30日まで",
+   "need": "その年度の狂犬病予防注射済票（済票に管理番号がなければ鑑札かマイクロチップ登録証明書の番号も）。生後4か月未満は登録できない",
+   "ng": "発情中の犬、病気やノミ・ダニのいる犬、かむくせのある犬などは入れない。おやつ・おもちゃは持ちこまない",
+   "src": [
+    "https://www.tokyo-park.or.jp/park/oyamadairi/index.html",
+    "https://www.tokyo-park.or.jp/faq/"
+   ]
   },
   {
    "id": "D013",
@@ -104,7 +261,8 @@
    "name": "相模原公園ドッグラン（県立）",
    "city": "相模原市",
    "url": "https://www.pref.kanagawa.jp/docs/n7t/dr.html",
-   "note": "利用には登録（登録会）が必要"
+   "size": "フリーゾーン・小型犬ゾーン（どちらも草地）",
+   "reg": "運営団体の登録会に参加して登録する"
   },
   {
    "id": "D014",
@@ -112,14 +270,24 @@
    "name": "新杉田公園ドッグラン",
    "city": "横浜市磯子区",
    "url": "https://www.kanagawaparks.com/shinsugita/formalities.html",
-   "note": "利用には登録が必要"
+   "addr": "横浜市磯子区杉田5-32（新杉田公園）",
+   "fee": "登録料1頭1,000円（6か月ごとに更新）。利用はフリーエリア1頭1回200円、貸切エリアは30分100円＋1頭200円（回数券あり）",
+   "size": "フリーエリア・貸切エリア",
+   "reg": "会員制。はじめに公園のレストハウスで登録",
+   "need": "飼い主の身分証明書、犬鑑札、狂犬病予防注射済票"
   },
   {
    "id": "D015",
    "pref": "神奈川県",
-   "name": "東扇島東公園ドッグラン",
+   "name": "東扇島東公園 わんわん広場（ドッグラン）",
    "city": "川崎市川崎区",
-   "url": "https://www.city.kawasaki.jp/580/page/0000001282.html"
+   "url": "https://www.city.kawasaki.jp/580/page/0000001282.html",
+   "hours": "9時〜17時（6〜9月は6時〜19時）",
+   "fee": "無料",
+   "reg": "事前の利用登録がいる。入るときは登録証を見えるように付ける",
+   "limit": "大型犬は1人1頭、小・中型犬は1人2頭まで。同時にリードを外せるのは1頭",
+   "parking": "公園に有料駐車場",
+   "access": "JR川崎駅東口から川崎市バス（川05）「東扇島東公園前」下車"
   },
   {
    "id": "D016",
@@ -127,7 +295,9 @@
    "name": "あおばドッグラン（谷本公園）",
    "city": "横浜市青葉区",
    "url": "https://www.city.yokohama.lg.jp/faq/kukyoku/aoba/aoba-kusei/20211018105345042.html",
-   "note": "登録制（説明会あり）"
+   "place": "谷本公園（青葉区）の駐車場のとなり",
+   "reg": "登録制。毎月の説明会（8月・12月はなし）に出ると会員証がもらえる",
+   "need": "犬鑑札、狂犬病予防注射済票、混合ワクチン（三種以上）の接種証明書、犬の写真、飼い主の本人確認書類"
   },
   {
    "id": "D017",
@@ -135,7 +305,14 @@
    "name": "川越公園ドッグラン「わんこの遊び場」（県営）",
    "city": "川越市",
    "url": "https://www.parks.or.jp/kawagoesuijo/guide/000/000122.html",
-   "note": "利用には登録が必要"
+   "addr": "川越市池辺880（川越公園内）",
+   "closed": "開くのは火・木・土・日・祝日。12月31日・1月1日は休み。雨や強風の日は閉めることがある",
+   "fee": "登録料1頭1,400円（1年）。利用は1回450円、6回券2,250円、年会費18,000円",
+   "size": "小型犬エリア（15kg未満）・フリーエリア（8kg以上）",
+   "reg": "管理ハウスでスタッフの説明を受けて登録（中学生以上の飼い主）",
+   "need": "1年以内の狂犬病予防注射済票、1年以内の混合ワクチン（3種以上）の接種証明、鑑札、犬の写真、飼い主の身分証明書",
+   "ng": "闘犬と指定の犬種（ピットブル、ブルテリア系、土佐犬、ロットワイラー、ブルドッグ（フレンチ・ブルドッグは除く）など）",
+   "parking": "公園の駐車場あり"
   },
   {
    "id": "D018",
@@ -143,210 +320,386 @@
    "name": "所沢航空記念公園ドッグラン（県営）",
    "city": "所沢市",
    "url": "https://www.parks.or.jp/tokorozawa-kokuu/faq/001/001613.html",
-   "note": "利用登録はいらない（入口の利用規則を守る）"
+   "reg": "いらない（入口の利用規則を守れば使える）",
+   "fee": "無料",
+   "addr": "所沢市並木（所沢航空記念公園内）"
   },
   {
    "id": "D019",
    "pref": "埼玉県",
    "name": "大間木ドッグラン",
    "city": "さいたま市緑区",
-   "url": "https://www.city.saitama.lg.jp/004/006/003/003/p010758.html"
+   "url": "https://www.city.saitama.lg.jp/004/006/003/003/p010758.html",
+   "addr": "さいたま市緑区大間木",
+   "hours": "8時30分〜17時30分（照明がないので日没後は使えない）",
+   "fee": "無料",
+   "size": "一般犬用・小型犬用",
+   "parking": "駐車場15台（同じ時間）"
   },
   {
    "id": "D020",
    "pref": "埼玉県",
    "name": "新見沼大橋スポーツ広場ドッグラン",
    "city": "さいたま市",
-   "url": "https://www.city.saitama.lg.jp/004/006/003/003/p046544.html"
+   "url": "https://www.city.saitama.lg.jp/004/006/003/003/p046544.html",
+   "addr": "さいたま市緑区大字見沼（新見沼大橋スポーツ広場内）",
+   "hours": "8時30分〜19時（照明がないので日没後は使えない）",
+   "fee": "無料",
+   "size": "大型犬・一般犬用・小型犬用",
+   "parking": "駐車場33台"
   },
   {
    "id": "D021",
    "pref": "大阪府",
    "name": "浜寺公園ドッグラン（府営）",
    "city": "堺市・高石市",
-   "url": "https://hamadera.osaka-park.or.jp/facility/dogrun/"
+   "url": "https://hamadera.osaka-park.or.jp/facility/dogrun/",
+   "place": "浜寺公園の北児童遊戯場の近く",
+   "hours": "10時〜16時30分",
+   "closed": "12月29日〜1月3日",
+   "fee": "無料",
+   "size": "中型・大型犬エリア・小型犬専用エリア（体高50cm以下が目安）",
+   "need": "1年以内の混合ワクチンと狂犬病予防注射",
+   "ng": "発情期・病気の犬、ほかの犬や人に攻撃的な犬",
+   "limit": "同時にリードを外せるのは1人1頭"
   },
   {
    "id": "D022",
    "pref": "大阪府",
-   "name": "泉南りんくう公園ドッグラン（府営）",
-   "city": "泉南市",
-   "url": "https://sennan.osaka-park.or.jp/dogrun/"
+   "name": "せんなん里海公園ドッグラン（府営）",
+   "city": "岬町",
+   "url": "https://sennan.osaka-park.or.jp/dogrun/",
+   "addr": "泉南郡岬町淡輪地先",
+   "hours": "24時間",
+   "closed": "12月29日〜1月3日（悪天候で閉めることも）",
+   "fee": "無料",
+   "size": "中型・大型犬フィールド・小型犬専用フィールド",
+   "reg": "いらない",
+   "need": "1年以内の狂犬病予防注射と混合ワクチン",
+   "limit": "1人で2頭以上のリードを持たない"
   },
   {
    "id": "D023",
    "pref": "大阪府",
    "name": "海とのふれあい広場ドッグラン",
    "city": "堺市",
-   "url": "https://www.city.sakai.lg.jp/shisei/toshi/rinkai/umifureai/index.html"
+   "url": "https://www.city.sakai.lg.jp/shisei/toshi/rinkai/umifureai/index.html",
+   "addr": "堺市堺区匠町6番1（海とのふれあい広場）",
+   "hours": "広場の開いている時間（9時〜17時。夏の土日祝は7時〜19時）"
   },
   {
    "id": "D024",
    "pref": "愛知県",
    "name": "大高緑地ドッグラン（県営）",
    "city": "名古屋市緑区",
-   "url": "https://www.aichi-koen.com/odaka_dogrun/"
+   "url": "https://www.aichi-koen.com/odaka_dogrun/",
+   "addr": "名古屋市緑区大高町字高山1-1",
+   "reg": "常駐の管理人はいない。出入口の利用規約を読んで自己責任で使う",
+   "limit": "1人2頭まで"
   },
   {
    "id": "D025",
    "pref": "福岡県",
-   "name": "県営公園のドッグラン（春日公園・西公園ほか）",
-   "city": "春日市・福岡市ほか",
-   "url": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html"
+   "name": "県営西公園ドッグラン",
+   "city": "福岡市中央区",
+   "url": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+   "addr": "福岡市中央区西公園13",
+   "hours": "9時〜17時（通年。雨や点検の日は休み）",
+   "fee": "1頭200円（はじめに別に登録料）",
+   "size": "小型・中型犬専用（約500㎡）",
+   "need": "犬鑑札またはマイクロチップ登録証明書、狂犬病予防注射の証明、混合ワクチンの接種証明",
+   "src": [
+    "https://www.pref.fukuoka.lg.jp/contents/dog-run.html"
+   ]
   },
   {
    "id": "D026",
    "pref": "福岡県",
    "name": "日明臨海公園ドッグラン",
    "city": "北九州市小倉北区",
-   "url": "https://www.city.kitakyushu.lg.jp/contents/04700034_00001.html"
+   "url": "https://www.city.kitakyushu.lg.jp/contents/04700034_00001.html",
+   "addr": "北九州市小倉北区西港町67番（日明臨海公園内）",
+   "hours": "毎週日曜10時〜16時（夏は5時〜7時）",
+   "closed": "天気の悪い日は閉める",
+   "fee": "登録事務手数料1頭500円（1年）＋1時間200円",
+   "size": "小型犬・中型犬・大型犬の3エリア",
+   "reg": "はじめに登録",
+   "need": "身分証明書、1年以内の5種以上ワクチン接種証明書、狂犬病の予防注射の証明（鑑札でも可）"
   },
   {
    "id": "D027",
    "pref": "福岡県",
    "name": "洞北緑地ドッグラン",
    "city": "北九州市八幡西区",
-   "url": "https://city.kitakyushu.lg.jp/kensetu/04700034.html"
+   "url": "https://www.city.kitakyushu.lg.jp/contents/04700034.html",
+   "addr": "北九州市八幡西区本城五丁目5番（洞北緑地内）",
+   "hours": "毎週日曜10時〜16時（7〜9月は8時〜12時）",
+   "closed": "雨の日は閉める",
+   "fee": "1回100円＋会員登録事務手数料500円（1年）",
+   "size": "小型犬・中型犬・大型犬の3エリア",
+   "reg": "はじめに会員登録",
+   "need": "身分証明書、1年以内の5種以上ワクチン接種証明書、狂犬病の予防注射の証明（鑑札でも可）"
   },
   {
    "id": "D028",
    "pref": "北海道",
    "name": "根崎公園ドッグラン",
    "city": "函館市",
-   "url": "https://www.city.hakodate.hokkaido.jp/docs/2020121000039/"
+   "url": "https://www.city.hakodate.hokkaido.jp/docs/2020121000039/",
+   "size": "大型・中型・小型犬の広いスペースと小型犬専用スペース",
+   "ng": "感染症のある犬、ワクチンを打っていない犬、体調の悪い犬は入らない"
   },
   {
    "id": "D029",
    "pref": "岩手県",
    "name": "盛岡市中央公園ドッグラン",
    "city": "盛岡市",
-   "url": "https://www.city.morioka.iwate.jp/kurashi/midori/koen/1010523.html"
+   "url": "https://www.city.morioka.iwate.jp/kurashi/midori/koen/1010523.html",
+   "place": "盛岡中央公園の中（BeBA TERRACE）",
+   "reg": "事前の登録がいる（登録料あり。管理運営団体へ）",
+   "need": "鑑札かマイクロチップ装着証明書、1年以内の狂犬病予防注射済票、1年以内の5種以上混合ワクチン接種証明書"
   },
   {
    "id": "D030",
    "pref": "山形県",
    "name": "卸売市場西緑地ドッグラン",
    "city": "山形市",
-   "url": "https://www.city.yamagata-yamagata.lg.jp/kurashi/koen/1006541/1006544/1014135.html"
+   "url": "https://www.city.yamagata-yamagata.lg.jp/kurashi/koen/1006541/1006544/1014135.html",
+   "place": "卸売市場西緑地の南側",
+   "closed": "年中無休",
+   "fee": "無料",
+   "size": "中・大型犬エリア・小型犬エリア",
+   "parking": "市場の向かいに専用駐車場"
   },
   {
    "id": "D031",
    "pref": "群馬県",
    "name": "城南大橋ドッグラン",
    "city": "高崎市",
-   "url": "https://www.city.takasaki.gunma.jp/page/4483.html"
+   "url": "https://www.city.takasaki.gunma.jp/page/4483.html",
+   "place": "烏川の河川敷の石原緑地（城南大橋の下流）",
+   "hours": "日の出から日没まで",
+   "fee": "利用は無料。登録料1匹1,520円（はじめだけ）",
+   "size": "小型犬用・中・大型犬用",
+   "reg": "高崎市に住民票がある18歳以上が、公園管理事務所で申請（ICカードの登録証をその場で発行、1年ごとに更新）",
+   "need": "鑑札・1年以内の狂犬病予防注射済票・1年以内の混合ワクチン接種済票（写しでよい）、身分証明書",
+   "limit": "1人2匹まで（小学生未満は入れない）",
+   "parking": "約50台",
+   "resident": true
   },
   {
    "id": "D032",
    "pref": "千葉県",
-   "name": "市川市のドッグラン",
+   "name": "塩浜ドッグラン（塩浜第二公園内）",
    "city": "市川市",
-   "url": "https://www.city.ichikawa.lg.jp/page/2876.html"
+   "url": "https://www.city.ichikawa.lg.jp/page/2876.html",
+   "addr": "市川市塩浜3丁目25",
+   "hours": "9時〜17時（6〜9月は19時まで）",
+   "closed": "年末年始、毎月第3日曜（8・9月は除く）、清掃・点検・イベントの日",
+   "fee": "無料",
+   "size": "フリーゾーン・小型犬ゾーン",
+   "reg": "市川市への会員登録がいる",
+   "parking": "塩浜第2公園の駐車場など",
+   "note": "市内の二俣ドッグランは休止中"
   },
   {
    "id": "D033",
    "pref": "茨城県",
-   "name": "国営ひたち海浜公園ドッグラン",
+   "name": "国営ひたち海浜公園 冬の特設ドッグラン",
    "city": "ひたちなか市",
-   "url": "https://hitachikaihin.jp/wp-content/uploads/2024/12/241209_dogrun_open.pdf"
+   "url": "https://hitachikaihin.jp/dogrun/",
+   "place": "多目的広場の近く（南口から徒歩5分ほど）",
+   "season": "冬の期間限定（2024年度は12月14日〜3月9日）。開く期間は毎年公式に出る",
+   "fee": "ドッグランは無料（公園の入園料・駐車料がかかる）",
+   "size": "大型犬（体高40cm以上）・中型犬・小型犬・フリーの4エリア",
+   "reg": "入園口でペット同伴誓約書を書く",
+   "need": "1年以内の狂犬病予防注射（混合ワクチンは任意）"
   },
   {
    "id": "D034",
    "pref": "長野県",
    "name": "長野県動物愛護センター（ハローアニマル）ドッグラン",
    "city": "",
-   "url": "https://www.pref.nagano.lg.jp/dobutsuaigo/shisetsu/annai/dogrun.html"
+   "url": "https://www.pref.nagano.lg.jp/dobutsuaigo/shisetsu/annai/dogrun.html",
+   "addr": "小諸市大字菱平字前新田2725",
+   "hours": "受付9時30分〜15時30分",
+   "fee": "1回30分500円（1回1組の貸切）",
+   "reg": "受付で申し込んで許可証を受け取る"
   },
   {
    "id": "D035",
    "pref": "長野県",
    "name": "犀川第2緑地ドッグラン",
    "city": "長野市",
-   "url": "https://www.city.nagano.nagano.jp/n202500/koho/p000002.html"
+   "url": "https://www.city.nagano.nagano.jp/n202500/koho/p000002.html",
+   "place": "犀川第2緑地（河川敷）",
+   "hours": "日の出から日没まで",
+   "closed": "通年（冬は除雪なし。足洗い場は11月下旬〜4月上旬休み）",
+   "fee": "無料",
+   "size": "小型犬（10kg未満）・中・大型犬（10kg以上）",
+   "reg": "利用規約に同意して、現地のQRコードか用紙で申し込む",
+   "need": "鑑札と注射済票を付ける",
+   "parking": "無料25台",
+   "src": [
+    "https://www.city.nagano.nagano.jp/n202500/contents/p006202.html"
+   ]
   },
   {
    "id": "D036",
    "pref": "三重県",
    "name": "北勢中央公園ドッグラン（県営）",
    "city": "四日市市",
-   "url": "https://www.pref.mie.lg.jp/TOPICS/m0038500157.htm"
+   "url": "https://www.pref.mie.lg.jp/TOPICS/m0038500157.htm",
+   "addr": "四日市市西村町1080（北勢中央公園の多目的広場）",
+   "hours": "8時30分〜16時30分（4〜6月・10月は17時30分まで、7〜9月は6時30分〜18時30分）",
+   "fee": "利用は無料。登録料は年500円",
+   "size": "小型犬（10kg未満）と中・大型犬（10kg以上）で使える曜日が分かれる（月ごとに交替）",
+   "reg": "管理事務所で事前に登録",
+   "need": "狂犬病予防注射などの確認"
   },
   {
    "id": "D037",
    "pref": "京都府",
    "name": "西京極総合運動公園ドッグラン",
    "city": "京都市右京区",
-   "url": "https://www.city.kyoto.lg.jp/bunshi/page/0000349971.html"
+   "url": "https://www.city.kyoto.lg.jp/bunshi/page/0000349971.html",
+   "place": "西京極総合運動公園の中（わかさスタジアム京都の周り）",
+   "fee": "有料（1頭1時間500円、1日1,000円など）",
+   "size": "全犬種エリア・小型犬専用エリア",
+   "reg": "運営会社のサイトで登録",
+   "note": "2026年3月20日に開いた"
   },
   {
    "id": "D038",
    "pref": "奈良県",
-   "name": "中和保健所動物愛護センター ドッグラン",
+   "name": "中和保健所動物愛護センター 動物訓練広場（ドッグラン）",
    "city": "",
-   "url": "https://www.pref.nara.lg.jp/n070/1734.html"
+   "url": "https://www.pref.nara.lg.jp/n070/1734.html",
+   "addr": "宇陀市大宇陀小附89",
+   "hours": "平日9時〜17時、土日祝10時〜17時（最後の入場16時30分、1回30分まで）",
+   "closed": "月曜（祝日なら次の平日）、12月28日〜1月4日、イベントの日",
+   "reg": "センターの窓口で利用者登録（カードの期限なし）",
+   "need": "犬鑑札（マイクロチップなら不要）、その年度の狂犬病予防注射済票、1年以内の5種以上混合ワクチン接種証明書の原本",
+   "src": [
+    "https://www.pref.nara.jp/secure/11645/251201dogrunsriyoukiyaku.pdf"
+   ]
   },
   {
    "id": "D039",
    "pref": "兵庫県",
    "name": "西武庫公園ドッグラン（試験設置）",
    "city": "尼崎市",
-   "url": "https://www.city.amagasaki.hyogo.jp/manabu/parks/1002037/1041661.html"
+   "url": "https://www.city.amagasaki.hyogo.jp/manabu/parks/1002037/1041661.html",
+   "addr": "尼崎市武庫元町3丁目（西武庫公園）",
+   "hours": "9時〜18時（早朝・夜間は使えない）",
+   "fee": "無料",
+   "size": "小型犬優先エリア・中大型犬優先エリア",
+   "reg": "事前登録（フォームで申し込む）",
+   "note": "試験設置：2025年8月7日〜2027年3月31日"
   },
   {
    "id": "D040",
    "pref": "宮城県",
    "name": "国営みちのく杜の湖畔公園「森のドッグラン」",
    "city": "川崎町",
-   "url": "https://michinoku-park.info/topics/dogrunriyou/"
+   "url": "https://michinoku-park.info/topics/dogrunriyou/",
+   "place": "みちのく公園の北地区",
+   "fee": "ドッグランの登録料310円（1年）。公園の入園料・駐車料は別",
+   "reg": "生後4か月以上、16歳以上の飼い主。登録書を出す",
+   "need": "1年以内の狂犬病予防注射済票、1年以内の5種以上混合ワクチン証明書"
   },
   {
    "id": "D041",
    "pref": "香川県",
    "name": "国営讃岐まんのう公園ドッグラン",
    "city": "まんのう町",
-   "url": "https://sanukimannopark.jp/facility/dogrun"
+   "url": "https://sanukimannopark.jp/facility/dogrun",
+   "addr": "仲多度郡まんのう町吉野4243-12（公園内）",
+   "hours": "9時30分〜17時（7月20日〜8月31日は18時、11月〜2月は16時30分）",
+   "fee": "ドッグランは無料（公園の入園料・駐車料は別）",
+   "size": "くつろぎエリア（リードをつける）・小型犬エリア（体高41cm未満）・大型犬エリア（体高41cm以上）",
+   "reg": "案内所で利用規約に同意して誓約書を書く",
+   "need": "犬鑑札（マイクロチップの特例ならその登録証明書）、1年以内の狂犬病予防注射済票",
+   "limit": "リードを外すのは大人1人2頭まで（試行中）"
   },
   {
    "id": "D042",
    "pref": "香川県",
    "name": "さぬき動物愛護センター しっぽの森 ドッグラン",
    "city": "",
-   "url": "https://www.pref.kagawa.lg.jp/s-doubutuaigo/sanukidouaicenter/about/dogrun.html"
+   "url": "https://www.pref.kagawa.lg.jp/s-doubutuaigo/sanukidouaicenter/about/dogrun.html",
+   "hours": "火・木・金曜（祝日は除く）の12時〜16時。12〜14時は中・大型犬、14〜16時は小型犬。1組2時間まで",
+   "fee": "無料",
+   "reg": "窓口で申請書と誓約書を出す（登録証はあとで郵送、1年有効）",
+   "need": "鑑札かマイクロチップの登録証明書、直近の狂犬病予防注射済票、1年以内の混合ワクチン接種証明"
   },
   {
    "id": "D043",
    "pref": "岡山県",
    "name": "岡山県動物愛護センター 北広場（ドッグラン）",
    "city": "",
-   "url": "https://www.pref.okayama.jp/page/detail-28533.html"
+   "url": "https://www.pref.okayama.jp/page/detail-28533.html",
+   "hours": "月曜・水〜日曜の9時30分〜16時（1回は原則1時間）",
+   "closed": "火曜、年末年始、熱中症警戒アラートの日",
+   "fee": "無料",
+   "reg": "愛護館で受付し、利用申請と誓約書を書く",
+   "need": "鑑札と注射済票を犬に付ける。ワクチン接種も求められる"
   },
   {
    "id": "D044",
    "pref": "徳島県",
    "name": "とくしま植物園ドッグラン",
    "city": "徳島市",
-   "url": "https://www.city.tokushima.tokushima.jp/shisetsu/park/oshirase/d.html"
+   "url": "https://www.city.tokushima.tokushima.jp/shisetsu/park/oshirase/d.html",
+   "addr": "徳島市方上町・渋野町（とくしま植物園内）",
+   "hours": "日の出から日没まで",
+   "fee": "無料（登録料もなし）",
+   "size": "フリーエリアと、登録した犬の大きさごとのエリア",
+   "reg": "窓口か郵送で申請（登録証は約14日で郵送）",
+   "need": "犬の写真、鑑札かマイクロチップ登録証明書の写真、1年以内の狂犬病予防注射済票の写真",
+   "limit": "1人1頭",
+   "parking": "植物園の駐車場60台"
   },
   {
    "id": "D045",
    "pref": "愛媛県",
    "name": "石手川緑地ドッグラン「わんパーク」",
    "city": "松山市",
-   "url": "https://www.city.matsuyama.ehime.jp/shisetsu/koen/riyou-iji/wannpa-kusikennkikan.html"
+   "url": "https://www.city.matsuyama.ehime.jp/shisetsu/koen/riyou-iji/wannpa-kusikennkikan.html",
+   "place": "松山市室町1丁目付近の石手川緑地",
+   "hours": "9時〜17時",
+   "fee": "無料",
+   "size": "小型犬専用エリアあり",
+   "reg": "いらない"
   },
   {
    "id": "D046",
    "pref": "長崎県",
    "name": "ドッグランえぼし",
    "city": "佐世保市",
-   "url": "https://www.city.sasebo.lg.jp/tosiseibi/kouenk/dogruneboshi.html"
+   "url": "https://www.city.sasebo.lg.jp/tosiseibi/kouenk/dogruneboshi.html",
+   "addr": "佐世保市烏帽子町128",
+   "hours": "9時〜18時（冬は17時）",
+   "closed": "開くのは水・土・日・祝日。12月30日〜1月2日は休み",
+   "fee": "1日1頭310円、または1年1頭3,140円。登録料510円",
+   "size": "小型犬エリア（おおむね10kg未満）・フリーエリア",
+   "reg": "毎年更新。開いている日に管理事務所へ申請書を出す",
+   "need": "犬鑑札、狂犬病予防注射済証、ワクチン接種がわかるもの、飼い主の身分証",
+   "limit": "制御できる頭数まで",
+   "parking": "無料約400台"
   },
   {
    "id": "D047",
    "pref": "長崎県",
    "name": "稲佐山公園ドッグラン",
    "city": "長崎市",
-   "url": "https://www.city.nagasaki.lg.jp/page/2014.html"
+   "url": "https://www.city.nagasaki.lg.jp/page/2014.html",
+   "hours": "日の出から日没まで",
+   "closed": "荒天・イベントの日",
+   "fee": "無料",
+   "size": "フリーゾーン（1,700㎡）・小型犬ゾーン（500㎡）",
+   "reg": "いらない（2025年4月1日から）。犬の登録と狂犬病予防注射が済んでいること",
+   "limit": "1人2頭まで。同時にリードを外せるのは1頭"
   },
   {
    "id": "D048",
@@ -354,21 +707,19 @@
    "name": "石神山公園ドッグラン",
    "city": "熊本市西区",
    "url": "https://www.city.kumamoto.jp/kiji00332063/index.html",
-   "note": "利用には事前の登録が必要"
+   "place": "金峰山の東のすそ野",
+   "hours": "8時30分〜17時（4〜9月は18時）",
+   "reg": "登録制（申請書はページからダウンロード）。使うときは登録証を持つ"
   },
   {
    "id": "D049",
    "pref": "熊本県",
    "name": "香りの森ドッグラン",
    "city": "熊本市",
-   "url": "https://www.city.kumamoto.jp/kiji00367506/index.html"
-  },
-  {
-   "id": "D050",
-   "pref": "佐賀県",
-   "name": "吉野ヶ里歴史公園ドッグラン",
-   "city": "吉野ヶ里町・神埼市",
-   "url": "https://www.pref.saga.lg.jp/chiji/kiji00391701/index.html"
+   "url": "https://www.city.kumamoto.jp/kiji00367506/index.html",
+   "hours": "7時〜18時（10〜3月は17時）",
+   "reg": "生後6か月以上。事前にオンラインで登録",
+   "need": "犬鑑札、狂犬病予防注射済票、注射日がわかる領収書、犬の全身写真"
   },
   {
    "id": "D051",
@@ -376,42 +727,67 @@
    "name": "おおいた動物愛護センター ドッグラン",
    "city": "大分市",
    "url": "https://www.pref.oita.jp/site/doubutuaigo/dogrun-tesuuryou-r8.html",
-   "note": "有料"
+   "note": "有料",
+   "fee": "有料。いっしょに使う場合は1頭1時間100〜700円、貸切は1時間1,000〜7,000円（2026年4月から）",
+   "limit": "5頭まで"
   },
   {
    "id": "D052",
    "pref": "秋田県",
    "name": "犬都記念公園ドッグラン",
    "city": "大館市",
-   "url": "https://www.city.odate.lg.jp/city/soshiki/toshiseibi/p879"
+   "url": "https://www.city.odate.lg.jp/city/soshiki/toshiseibi/p879",
+   "hours": "9時〜17時",
+   "season": "4月18日〜10月31日（雨の日は休み）",
+   "fee": "1シーズン2,000円、1か月500円（1日だけでも500円）",
+   "reg": "使用許可の申請書を出す（4月1日から受付）",
+   "need": "1年以内に狂犬病予防注射を受けた犬。許可証を持つ"
   },
   {
    "id": "D053",
    "pref": "石川県",
    "name": "問屋第1公園ドッグラン",
    "city": "小松市",
-   "url": "https://www.city.komatsu.lg.jp/soshiki/1026/kouenriyou/17606.html"
+   "url": "https://www.city.komatsu.lg.jp/soshiki/1026/kouenriyou/17606.html",
+   "place": "小松市問屋町",
+   "hours": "8時から日没まで",
+   "fee": "無料",
+   "size": "大型・中型犬エリア・小型犬エリア",
+   "reg": "いらない",
+   "parking": "12台"
   },
   {
    "id": "D054",
    "pref": "愛知県",
    "name": "トーエイ三丁公園ドッグラン",
    "city": "東浦町",
-   "url": "https://www.town.aichi-higashiura.lg.jp/soshiki/toshiseibi/koen/gyomu/koen/sanchou/12965.html"
+   "url": "https://www.town.aichi-higashiura.lg.jp/soshiki/toshiseibi/koen/gyomu/koen/sanchou/12965.html",
+   "reg": "事前に町の都市整備課で登録（町外の人も登録できる）",
+   "need": "利用登録申請書兼誓約書、身分証明書、犬鑑札、狂犬病予防注射済票"
   },
   {
    "id": "D055",
    "pref": "愛知県",
    "name": "蘇南公園ドッグラン広場",
    "city": "江南市",
-   "url": "https://www.city.konan.lg.jp/kurashi/pets/1005739/1005789.html"
+   "url": "https://www.city.konan.lg.jp/kurashi/pets/1005739/1005789.html",
+   "hours": "8時から日没まで（7〜9月は7時から）",
+   "fee": "無料",
+   "reg": "事前登録・毎年更新（ネットか市役所の窓口）",
+   "need": "犬の登録の証明、狂犬病予防注射の証明、おおむね1年以内の混合ワクチン接種証明、犬の全身写真"
   },
   {
    "id": "D056",
    "pref": "大阪府",
    "name": "黒鳥山公園ドッグラン",
    "city": "和泉市",
-   "url": "https://www.city.osaka-izumi.lg.jp/kakukano/dezainbu/kouenryokuti/osirase/18315.html"
+   "url": "https://www.city.osaka-izumi.lg.jp/kakukano/dezainbu/kouenryokuti/osirase/18315.html",
+   "hours": "日の出から日没まで",
+   "fee": "無料",
+   "size": "1区画。小型犬は奇数日、中大型犬は偶数日",
+   "reg": "いらない",
+   "need": "1年以内の狂犬病予防注射と各種ワクチン。鑑札と注射済票を付ける",
+   "limit": "たくさんの犬を連れての利用はできない"
   },
   {
    "id": "D057",
@@ -425,28 +801,54 @@
    "pref": "兵庫県",
    "name": "赤穂ピクニック公園ドッグラン",
    "city": "赤穂市",
-   "url": "https://www.city.ako.lg.jp/kensetsu/kouen/dogrun.html"
+   "url": "https://www.city.ako.lg.jp/kensetsu/kouen/dogrun.html",
+   "place": "赤穂ピクニック公園の駐車場の南",
+   "hours": "終日",
+   "fee": "無料",
+   "size": "大型犬エリア・小型犬エリア",
+   "reg": "いらない",
+   "ng": "ワクチンを打っていない犬などは使えないことがある"
   },
   {
    "id": "D059",
    "pref": "東京都",
-   "name": "千代田区のドッグラン",
+   "name": "Dog Garden 〜飯田橋〜（千代田区）",
    "city": "千代田区",
-   "url": "https://www.city.chiyoda.lg.jp/koho/machizukuri/koen/dogrun.html"
+   "url": "https://www.city.chiyoda.lg.jp/koho/machizukuri/koen/dogrun.html",
+   "addr": "千代田区飯田橋三丁目9番17号",
+   "hours": "4〜9月は7時〜19時、10〜3月は7時〜17時",
+   "fee": "無料",
+   "size": "小型犬エリア（体高25cm以下）・フリーエリア",
+   "reg": "事前の利用登録（電子申請・毎年更新）。区外の人も使える",
+   "need": "犬鑑札（マイクロチップ登録なら不要）と狂犬病予防注射済票を犬に付ける。狂犬病予防注射と混合ワクチンが必要"
   },
   {
    "id": "D060",
    "pref": "広島県",
    "name": "花みどり公園ドッグラン",
    "city": "広島市安佐北区",
-   "url": "https://www.haff.city.hiroshima.jp/info/hanamidori/"
+   "url": "https://www.haff.city.hiroshima.jp/info/hanamidori/",
+   "addr": "広島市安佐北区安佐町大字久地2411番地1（花みどり公園内）",
+   "hours": "9時〜16時",
+   "closed": "火曜（祝日なら次の日）、12月29日〜1月3日",
+   "fee": "無料（入園も無料）",
+   "size": "大型犬用・小型犬用",
+   "reg": "いらない",
+   "parking": "無料（約300台）"
   },
   {
    "id": "D061",
    "pref": "千葉県",
-   "name": "成田市ドッグラン",
+   "name": "成田市ドッグラン（広沼街区公園内）",
    "city": "成田市",
-   "url": "https://www.city.narita.chiba.jp/environment/page0146_00002.html"
+   "url": "https://www.city.narita.chiba.jp/environment/page0146_00002.html",
+   "addr": "成田市ウイング土屋273番地",
+   "hours": "日の出から日没まで（照明なし）",
+   "fee": "無料",
+   "size": "フリーエリア（大型・中型犬優先）・小型犬エリア",
+   "reg": "1頭ごとに登録、1年ごとに更新（市役所の公園緑地課、平日）",
+   "need": "利用登録申請書兼誓約書、犬のカラー写真2枚、鑑札かマイクロチップ登録証明書（コピー可）、その年度の狂犬病予防注射済票",
+   "parking": "12台"
   },
   {
    "id": "D062",
@@ -454,56 +856,98 @@
    "name": "百目木公園ドッグラン",
    "city": "袖ケ浦市",
    "url": "https://www.city.sodegaura.lg.jp/soshiki/toshi/doumekidogguran-uketukecyuu.html",
-   "note": "登録制"
+   "addr": "袖ケ浦市百目木200番地",
+   "fee": "登録料1頭 市内1,500円・市外1,800円。使うたびにワンコインほどの募金",
+   "reg": "公園管理事務所の窓口で登録。年2回以上の清掃活動に参加",
+   "need": "申込書、犬鑑札と注射済票（現物とコピー）、犬の写真"
   },
   {
    "id": "D063",
    "pref": "千葉県",
-   "name": "浦安市のドッグラン",
+   "name": "浦安公園ドッグラン",
    "city": "浦安市",
-   "url": "https://www.city.urayasu.lg.jp/shisetsu/sonota/1032392.html"
+   "url": "https://www.city.urayasu.lg.jp/shisetsu/sonota/1032392.html",
+   "place": "浦安公園の中（市役所の向かい）",
+   "hours": "8時〜19時",
+   "fee": "無料",
+   "reg": "ドッグラン利用届兼同意書を市役所の環境衛生課へ（窓口・郵送・メールなど）",
+   "need": "鑑札または鑑札番号、1年以内の狂犬病予防注射済票、3種混合以上のワクチン証明書",
+   "limit": "1人で何頭も連れての利用は控える",
+   "parking": "専用駐車場なし（市役所の立体駐車場）"
   },
   {
    "id": "D064",
    "pref": "北海道",
    "name": "樽川公園ドッグラン",
    "city": "石狩市",
-   "url": "https://www.city.ishikari.hokkaido.jp/soshiki/toshis/2915.html"
+   "url": "https://www.city.ishikari.hokkaido.jp/soshiki/toshis/2915.html",
+   "hours": "開いている期間は24時間",
+   "season": "4月中旬〜12月中旬（2026年は4月15日〜12月15日の予定。雪で早く閉じることも）",
+   "need": "狂犬病予防注射と犬の登録が済んでいること。かむくせ・ほえぐせのある犬は口輪"
   },
   {
    "id": "D065",
    "pref": "北海道",
    "name": "北光町未来の森公園ドッグラン",
    "city": "苫小牧市",
-   "url": "https://www.city.tomakomai.hokkaido.jp/kurashi/sonota/pet/corona.html"
+   "url": "https://www.city.tomakomai.hokkaido.jp/kurashi/sonota/pet/corona.html",
+   "addr": "苫小牧市北光町1丁目",
+   "hours": "9時〜17時",
+   "season": "4月1日〜11月30日（冬は閉鎖）",
+   "fee": "無料",
+   "size": "中型・大型犬用・小型犬用（10kg以下）",
+   "reg": "市役所の環境生活課か郵送で申請。毎年度更新",
+   "need": "申請書、本人確認書類、1年以内の注射済証、1年以内の5種以上混合ワクチン接種証明、犬鑑札",
+   "limit": "1人2頭まで",
+   "parking": "17台",
+   "note": "2026年10月28日から閉鎖中で、再開の時期は未定（公式ページ）"
   },
   {
    "id": "D066",
    "pref": "北海道",
    "name": "なつぞら公園ドッグラン",
    "city": "音更町",
-   "url": "https://www.town.otofuke.hokkaido.jp/kurashi/toshi/koen/natsuzoradogguran.html"
+   "url": "https://www.town.otofuke.hokkaido.jp/kurashi/toshi/koen/natsuzoradogguran.html",
+   "addr": "河東郡音更町なつぞら3番地1",
+   "hours": "開いている期間は常時（照明なし）",
+   "season": "5月上旬〜11月上旬（冬は閉鎖）",
+   "size": "小型犬用・中・大型犬用",
+   "reg": "いらない"
   },
   {
    "id": "D067",
    "pref": "北海道",
    "name": "鹿公園ドッグラン",
    "city": "安平町",
-   "url": "https://www.town.abira.lg.jp/midokoro/shisetsu/park/92"
+   "url": "https://www.town.abira.lg.jp/midokoro/shisetsu/park/92",
+   "addr": "勇払郡安平町追分白樺2丁目1番地（鹿公園内）",
+   "closed": "年中無休（照明・冬の除雪なし）",
+   "fee": "無料",
+   "need": "狂犬病予防注射と犬の登録が済んでいること。かむくせ・ほえぐせのある犬は口輪。おもちゃ・おやつは持ちこまない"
   },
   {
    "id": "D068",
    "pref": "沖縄県",
    "name": "八重島公園ドッグラン",
    "city": "沖縄市",
-   "url": "https://www.city.okinawa.okinawa.jp/k037/contents/p00034.html"
+   "url": "https://www.city.okinawa.okinawa.jp/k037/contents/p00034.html",
+   "place": "八重島公園のAコート",
+   "hours": "9時〜17時（1回55分の時間帯ごと）",
+   "fee": "有料（個人は500円など）",
+   "reg": "事前申込（管理事務所。空きがあれば当日も）",
+   "limit": "中型犬以下"
   },
   {
    "id": "D069",
    "pref": "鳥取県",
    "name": "日野川運動公園ドッグラン",
    "city": "米子市",
-   "url": "https://www.city.yonago.lg.jp/33880.htm"
+   "url": "https://www.city.yonago.lg.jp/33880.htm",
+   "fee": "無料",
+   "size": "大型犬・中型犬・小型犬の3エリア",
+   "reg": "いらない（2025年3月31日で登録制度を終えた）",
+   "need": "その年度の狂犬病予防注射済票",
+   "parking": "ドッグランの近くに停められる（下流側の坂道から入る）"
   },
   {
    "id": "D070",
@@ -511,6 +955,1928 @@
    "name": "中鳥川公園ドッグラン",
    "city": "美馬市",
    "url": "https://www.city.mima.lg.jp/kanko/docs/1974459.html"
+  },
+  {
+   "id": "D071",
+   "pref": "福岡県",
+   "city": "春日市",
+   "name": "県営春日公園ドッグラン",
+   "url": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+   "addr": "春日市原町3-1-4",
+   "hours": "9時〜17時（通年。雨や点検の日は休み）",
+   "fee": "1頭200円（はじめに別に登録料）",
+   "size": "フリーエリア（小型〜大型犬）・小型犬エリア（約2,100㎡）",
+   "need": "犬鑑札またはマイクロチップ登録証明書、狂犬病予防注射の証明、混合ワクチンの接種証明"
+  },
+  {
+   "id": "D072",
+   "pref": "福岡県",
+   "city": "筑後市",
+   "name": "県営筑後広域公園ドッグラン",
+   "url": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+   "addr": "筑後市津島831-1",
+   "hours": "9時〜17時（通年。雨や点検の日は休み）",
+   "fee": "1頭200円（はじめに別に登録料）",
+   "size": "小型犬エリア・フリーエリア（約5,600㎡）",
+   "need": "犬鑑札またはマイクロチップ登録証明書、狂犬病予防注射の証明、混合ワクチンの接種証明"
+  },
+  {
+   "id": "D073",
+   "pref": "千葉県",
+   "city": "浦安市",
+   "name": "浦安ドッグラン（運動公園のとなり）",
+   "url": "https://www.city.urayasu.lg.jp/shisetsu/sonota/1032392.html",
+   "place": "浦安市運動公園のとなり",
+   "hours": "8時〜20時",
+   "fee": "無料",
+   "size": "大型犬エリアあり",
+   "reg": "ドッグラン利用届兼同意書を市役所の環境衛生課へ（窓口・郵送・メールなど）",
+   "need": "鑑札または鑑札番号、1年以内の狂犬病予防注射済票、3種混合以上のワクチン証明書",
+   "limit": "1人で何頭も連れての利用は控える",
+   "parking": "20台（30分まで無料、そのあと有料）"
+  },
+  {
+   "id": "D074",
+   "pref": "東京都",
+   "city": "日野市",
+   "name": "日野市営ドッグラン（わんパークひの）",
+   "url": "https://www.city.hino.lg.jp/shisetsu/kankyo/koene/1001024.html",
+   "addr": "日野市上田633（駒形公園内）",
+   "hours": "4〜9月は9時〜18時、10〜3月は9時〜17時",
+   "closed": "12月29日〜1月3日",
+   "fee": "無料",
+   "size": "大型犬・中型犬優先エリアあり",
+   "reg": "日野市に住民登録があり、犬も日野市に登録していること。窓口・郵送・電子申請で毎年度登録",
+   "need": "犬鑑札かマイクロチップ登録証明書、1年以内の狂犬病予防注射済票、1年以内の5種以上混合ワクチン接種証明書（または抗体価検査証明書）",
+   "parking": "29区画",
+   "resident": true
+  },
+  {
+   "id": "D075",
+   "pref": "東京都",
+   "city": "港区",
+   "name": "芝浦中央公園ドッグラン",
+   "url": "https://www.city.minato.tokyo.jp/shiba-koudoboku/shibaura/koho/dogguran.html",
+   "place": "芝浦中央公園のB面",
+   "hours": "10〜4月は7時〜17時、5〜9月は6時〜19時",
+   "closed": "年末年始",
+   "fee": "無料",
+   "size": "一般犬用・小型犬用",
+   "reg": "港区のドッグラン共通の登録制（年1回更新）",
+   "need": "犬鑑札かマイクロチップID、狂犬病予防注射済票"
+  },
+  {
+   "id": "D076",
+   "pref": "東京都",
+   "city": "港区",
+   "name": "港南緑水公園ドッグラン",
+   "url": "https://www.city.minato.tokyo.jp/shiba-koudoboku/shibaura/koho/dogguran.html",
+   "hours": "7時〜19時（通年）",
+   "fee": "無料",
+   "size": "一般犬用・小型犬用",
+   "reg": "港区のドッグラン共通の登録制（年1回更新）",
+   "need": "犬鑑札かマイクロチップID、狂犬病予防注射済票"
+  },
+  {
+   "id": "D077",
+   "pref": "東京都",
+   "city": "港区",
+   "name": "新広尾公園ドッグラン",
+   "url": "https://www.city.minato.tokyo.jp/shiba-koudoboku/shibaura/koho/dogguran.html",
+   "hours": "7時〜19時",
+   "season": "毎年6〜8月は使えない",
+   "fee": "無料",
+   "size": "小型犬用だけ（体高25cm以下が目安）",
+   "reg": "港区のドッグラン共通の登録制（年1回更新）",
+   "need": "犬鑑札かマイクロチップID、狂犬病予防注射済票",
+   "parking": "車を停める場所はない"
+  },
+  {
+   "id": "D078",
+   "pref": "神奈川県",
+   "city": "大和市",
+   "name": "ふれあいの森ドッグラン（会員制）",
+   "url": "https://www.city.yamato.lg.jp/gyosei/soshik/13/koen_ryokuchi/dogrun/5939.html",
+   "addr": "大和市上草柳46-1",
+   "place": "親水広場の西側、相鉄線草柳トンネルの北側",
+   "hours": "4〜10月は5時〜19時、11〜3月は6時〜18時（日没後は使えない）",
+   "closed": "12月29日〜1月3日、雨の日、管理当番がいない日",
+   "reg": "予約制の登録説明会に出て、利用規則に同意し「結（ゆい）の会」に会員登録",
+   "parking": "敷地内の駐車場（路上駐車は厳禁）",
+   "src": [
+    "https://www.city.yamato.lg.jp/gyosei/soshik/13/koen_ryokuchi/dogrun/6593.html"
+   ]
+  },
+  {
+   "id": "D079",
+   "pref": "山形県",
+   "city": "酒田市",
+   "name": "最上川下流緑地ドッグラン",
+   "url": "https://www.city.sakata.lg.jp/jyutaku/kouenryokuchi/kouen/dog_run.html",
+   "place": "最上川下流の河川敷",
+   "hours": "時間の制限なし（照明がないので日没後は控える）",
+   "season": "4月1日〜11月23日",
+   "fee": "無料",
+   "reg": "オンラインか市役所の窓口で登録",
+   "need": "鑑札、1年以内の狂犬病予防注射済票、1年以内の3種以上混合ワクチン接種証明書、犬の全身写真（写真かコピー）",
+   "parking": "あり"
+  },
+  {
+   "id": "D080",
+   "pref": "長野県",
+   "city": "小諸市",
+   "name": "飯綱山公園ドッグラン",
+   "url": "https://www.city.komoro.lg.jp/soshikikarasagasu/kensetsusuidoubu/toshikeikakuka/4/2/623.html",
+   "place": "飯綱山公園の南側広場",
+   "hours": "日中のみ",
+   "size": "小型犬用（540㎡）・中・大型犬用（720㎡）"
+  },
+  {
+   "id": "D081",
+   "pref": "愛知県",
+   "city": "武豊町",
+   "name": "武豊中央公園ドッグラン",
+   "url": "https://www.town.taketoyo.lg.jp/chousei/shisetsu/1001535/1004356.html",
+   "size": "小型犬用・全犬種用",
+   "reg": "いらない",
+   "need": "ワクチン接種と狂犬病予防注射が済んでいること",
+   "limit": "1人1頭まで",
+   "parking": "公園の駐車場"
+  },
+  {
+   "id": "D082",
+   "pref": "新潟県",
+   "city": "見附市",
+   "name": "大平森林公園ドッグラン",
+   "url": "https://www.city.mitsuke.niigata.jp/soshiki/15/30482.html",
+   "place": "大平森林公園の中（受付はログハウスの2階）",
+   "hours": "9時〜16時30分",
+   "fee": "1匹 平日200円・土日祝300円（年会員3,000円）",
+   "reg": "はじめに申込書・問診票を書く",
+   "need": "1年以内の狂犬病予防注射と三種以上混合ワクチンの証明書の写し（初回）",
+   "limit": "1人1頭まで"
+  },
+  {
+   "id": "D083",
+   "pref": "新潟県",
+   "city": "新潟市北区",
+   "name": "県立島見緑地ドッグラン",
+   "url": "https://www.nvcb.or.jp/feature/with_dog",
+   "addr": "新潟市北区島見町山興野字山之辺2645-1",
+   "hours": "通常エリアは24時間、貸切のプライベートエリアは8時30分〜17時",
+   "fee": "通常エリアは無料。プライベートエリアは30分300円（予約制）",
+   "reg": "島見緑地の管理棟で登録・更新（10時〜15時）",
+   "src": [
+    "https://shimami-seiro.com/"
+   ]
+  },
+  {
+   "id": "D084",
+   "pref": "新潟県",
+   "city": "新潟市中央区",
+   "name": "いくとぴあ食花 ドッグラン",
+   "url": "https://www.nvcb.or.jp/feature/with_dog",
+   "addr": "新潟市中央区清五郎401",
+   "hours": "施設は9時30分〜16時30分（不定休）",
+   "reg": "会員登録をすると使える"
+  },
+  {
+   "id": "D085",
+   "pref": "青森県",
+   "city": "三沢市",
+   "name": "四川目ふるさと広場ドッグラン",
+   "url": "https://www.city.misawa.lg.jp/index.cfm/22,18619,71,478,html",
+   "addr": "三沢市四川目三丁目地内",
+   "fee": "無料"
+  },
+  {
+   "id": "D086",
+   "pref": "青森県",
+   "city": "三沢市",
+   "name": "三沢市民の森運動公園ドッグラン",
+   "url": "https://www.city.misawa.lg.jp/index.cfm/22,18619,71,478,html",
+   "addr": "三沢市大字三沢字淋代平（三沢市民の森運動公園）",
+   "fee": "1時間320円"
+  },
+  {
+   "id": "D087",
+   "pref": "青森県",
+   "city": "三沢市",
+   "name": "三沢市大空ひろばドッグラン",
+   "url": "https://www.city.misawa.lg.jp/index.cfm/22,18619,71,478,html",
+   "addr": "三沢市大字三沢字北山158番地",
+   "fee": "無料"
+  },
+  {
+   "id": "D088",
+   "pref": "青森県",
+   "city": "平内町",
+   "name": "夜越山ドッグラン",
+   "url": "https://www.town.hiranai.aomori.jp/soshiki/suisan/gyoumu_annai/kanko_jouhou/yogoshiyama_forest_park/2225.html",
+   "place": "夜越山森林公園（受付は夜越山オートキャンプ場センターハウス）",
+   "hours": "9時〜16時30分",
+   "season": "4月下旬〜10月末",
+   "fee": "1時間200円＋会員登録料300円（1年）",
+   "reg": "センターハウスで会員登録",
+   "need": "1年以内の狂犬病予防注射と混合ワクチンの証明書かレシート"
+  },
+  {
+   "id": "D089",
+   "pref": "福島県",
+   "city": "本宮市",
+   "name": "恵向公園ドッグラン",
+   "url": "https://www.city.motomiya.lg.jp/map/66.html",
+   "addr": "本宮市荒井字恵向121-6",
+   "hours": "日の出から日没まで（夜は使えない）",
+   "fee": "無料",
+   "size": "小・中型犬（25kg未満）・中・大型犬（10kg以上）",
+   "reg": "いらない",
+   "need": "狂犬病と混合ワクチンの接種が済んでいること。出入りのときはリード"
+  },
+  {
+   "id": "D090",
+   "pref": "栃木県",
+   "city": "さくら市",
+   "name": "ゆうゆうパーク（鬼怒川河川公園）ドッグラン",
+   "url": "https://www.city.tochigi-sakura.lg.jp/facility/000077/p004073.html",
+   "addr": "さくら市氏家1317",
+   "fee": "無料",
+   "size": "小型犬用・小型〜大型犬用",
+   "reg": "いらない",
+   "need": "狂犬病予防注射を受けた犬",
+   "limit": "1人1頭"
+  },
+  {
+   "id": "D091",
+   "pref": "栃木県",
+   "city": "野木町",
+   "name": "野木町総合運動公園ドッグラン",
+   "url": "https://www.town.nogi.lg.jp/business/machidukuri/page000105.html",
+   "hours": "4〜10月は9時〜18時、11〜3月は9時〜16時30分",
+   "closed": "月曜（祝日・振替休日は開く）、12月29日〜1月3日",
+   "fee": "無料",
+   "reg": "いらない",
+   "need": "狂犬病予防注射、3種以上の混合ワクチン、ノミ・ダニ予防。入るときは1mほどのリード",
+   "limit": "1人1頭（ボール遊びは平日9〜11時だけ）"
+  },
+  {
+   "id": "D092",
+   "pref": "富山県",
+   "city": "射水市",
+   "name": "足洗潟公園ドッグラン",
+   "url": "https://www.city.imizu.toyama.jp/event-topics/svTopiDtl.aspx?servno=23688",
+   "addr": "射水市足洗新町1丁目5",
+   "hours": "9時〜17時",
+   "closed": "天気などで臨時に休むことがある",
+   "fee": "無料",
+   "reg": "いらない（2024年3月11日から）",
+   "parking": "公園の駐車場"
+  },
+  {
+   "id": "D093",
+   "pref": "福井県",
+   "city": "坂井市",
+   "name": "ゆりの里公園ドッグラン",
+   "url": "https://yurinosato.com/dogrun/",
+   "addr": "坂井市春江町石塚21-2-3",
+   "hours": "9時30分〜17時（12〜2月は16時30分まで）",
+   "closed": "火曜（祝日なら水曜）、年末年始",
+   "fee": "1匹500円＋会員登録料500円（年度末まで）",
+   "size": "ふだんは中型犬以下・25kg未満（大型犬も入れる日あり）",
+   "need": "1年以内の狂犬病予防注射と混合ワクチンの証明書",
+   "parking": "ドッグラン専用駐車場"
+  },
+  {
+   "id": "D094",
+   "pref": "山梨県",
+   "city": "甲斐市",
+   "name": "甲斐市ドッグラン（釜無川スポーツ公園）",
+   "url": "https://www.city.kai.yamanashi.jp/page/4082.html",
+   "place": "釜無川スポーツ公園の中",
+   "size": "大・中型犬エリア・小型犬エリア",
+   "reg": "いらない",
+   "need": "犬の鑑札と注射済票を付ける（持っていけばよい）",
+   "parking": "南側に公園の駐車場"
+  },
+  {
+   "id": "D095",
+   "pref": "山梨県",
+   "city": "甲州市",
+   "name": "こぴっとひろば ドッグラン",
+   "url": "https://www.city.koshu.yamanashi.jp/docs/2026063000045",
+   "hours": "4〜9月は6時30分〜18時30分、10〜3月は7時〜17時",
+   "size": "小型犬用・中・大型犬用",
+   "reg": "スマートフォンのアプリで犬の情報と注射の証明を登録し、入口のコードでチェックインする",
+   "need": "狂犬病予防注射済証の写真（アプリで登録）",
+   "limit": "管理できる頭数まで",
+   "note": "2026年7月1日に開いた"
+  },
+  {
+   "id": "D096",
+   "pref": "岐阜県",
+   "city": "山県市",
+   "name": "おおが城山公園 ドッグラン広場",
+   "url": "https://www.city.yamagata.gifu.jp/site/yamanavi/3743.html",
+   "addr": "山県市大桑3654番地",
+   "hours": "8時30分〜17時（日没が早いときはそれまで）",
+   "fee": "無料（登録も無料）",
+   "size": "フリーゾーン（犬種・大きさを問わない）",
+   "reg": "事前登録（市の建設課の窓口かフォーム）",
+   "need": "身分証明書、鑑札・注射済票・1年以内の5種以上ワクチン接種証明書の写し、犬のカラー写真、申請書兼誓約書"
+  },
+  {
+   "id": "D097",
+   "pref": "岐阜県",
+   "city": "本巣市",
+   "name": "もとまるパーク ドッグラン",
+   "url": "https://www.city.motosu.lg.jp/0000002294.html",
+   "addr": "本巣市随原201番地1（公園）",
+   "need": "1年以内の狂犬病予防注射と各種ワクチン",
+   "parking": "公園の駐車場"
+  },
+  {
+   "id": "D098",
+   "pref": "岐阜県",
+   "city": "海津市",
+   "name": "羽根谷だんだん公園 ドッグラン",
+   "url": "https://www.city.kaizu.lg.jp/dandan-camp/0000003164.html",
+   "addr": "海津市南濃町奥条",
+   "size": "小型犬用（約450㎡）・大型犬用（約700㎡）、どちらも芝生",
+   "fee": "キャンプ場・デイサイトの利用者は無料",
+   "parking": "キャンプ・デイサイト・ドッグラン利用者の駐車場"
+  },
+  {
+   "id": "D099",
+   "pref": "静岡県",
+   "city": "島田市",
+   "name": "島田市川根温泉（道の駅 川根温泉）ドッグラン",
+   "url": "https://kawaneonsen.jp/facility/",
+   "addr": "島田市川根町笹間渡220",
+   "hours": "10時〜16時",
+   "size": "大型犬（おおむね15kg以上）は入れない",
+   "ng": "狂犬病予防注射を受けていない犬、かむくせのある犬、発情期の犬、よく吠える犬。中での飲食・えさやりはしない",
+   "note": "施設の休館日（第1・第3火曜など）は公式で確認",
+   "src": [
+    "https://www.city.shimada.shizuoka.jp/kanko-docs/837530548.html"
+   ]
+  },
+  {
+   "id": "D100",
+   "pref": "滋賀県",
+   "city": "草津市",
+   "name": "ロクハ公園ドッグラン場",
+   "url": "https://www.park-698.net/sinsei/sinsei_6/",
+   "addr": "草津市追分7丁目11-2（ロクハ公園）",
+   "closed": "月曜などに休場日あり（予約カレンダーで確認）",
+   "reg": "事前の会員登録と予約（年度ごとに更新）",
+   "parking": "公園の駐車場（約450台）",
+   "src": [
+    "https://www.city.kusatsu.shiga.jp/kurashi/koen_midori/koen_shokai/rokuhakouen.html"
+   ]
+  },
+  {
+   "id": "D101",
+   "pref": "和歌山県",
+   "city": "和歌山市",
+   "name": "紀の川第1緑地ドッグラン",
+   "url": "https://www.city.wakayama.wakayama.jp/shisetsu/kouen_sp_shisetsu/1006085/1010420.html",
+   "addr": "和歌山市湊（紀の川第1緑地）",
+   "fee": "無料",
+   "size": "大型・中型犬用・小型犬用",
+   "reg": "いらない",
+   "parking": "約20台"
+  },
+  {
+   "id": "D102",
+   "pref": "山口県",
+   "city": "萩市",
+   "name": "陶芸の村公園 萩ドッグラン",
+   "url": "https://www.city.hagi.lg.jp/soshiki/51/h18189.html",
+   "hours": "8時〜16時",
+   "closed": "開くのは土日・祝日だけ（12月29日〜1月3日は休み）",
+   "fee": "有料（入場のときに使用料）",
+   "reg": "登録した人は登録証を見せる。登録しない人は毎回、申請書兼誓約書を書く",
+   "need": "身分証明書、鑑札と1年以内の狂犬病予防注射済票（どちらも写しは不可）"
+  },
+  {
+   "id": "D103",
+   "pref": "高知県",
+   "city": "土佐清水市",
+   "name": "土佐清水総合公園ドッグラン",
+   "url": "https://www.city.tosashimizu.kochi.jp/kurashi/section/machidukuri/19906.html",
+   "place": "土佐清水総合公園の芝生広場",
+   "fee": "無料",
+   "reg": "いらない",
+   "need": "狂犬病予防注射とワクチン接種が済んでいること（済んでいない犬は入れない）"
+  },
+  {
+   "id": "D104",
+   "pref": "宮崎県",
+   "city": "国富町",
+   "name": "法華嶽公園ドッグラン",
+   "url": "http://www.town.kunitomi.miyazaki.jp/main/tourism/hokedake/page001561.html",
+   "hours": "9時〜16時（1時間ごと）",
+   "closed": "水曜",
+   "fee": "1人1時間100円＋1頭1時間300円（1時間の上限1,000円）",
+   "size": "ランエリア・水辺エリア",
+   "reg": "予約制（利用日の2か月前の1日から）。使う10分前までに管理事務所で受付",
+   "parking": "専用駐車場・第1駐車場",
+   "access": "東九州自動車道 国富スマートICから車で約25分"
+  },
+  {
+   "id": "D105",
+   "pref": "鹿児島県",
+   "city": "鹿屋市",
+   "name": "霧島ヶ丘公園 ばら園の中のドッグラン（試行）",
+   "url": "https://www.city.kanoya.lg.jp/hisyo/shise/gaiyo/shicho/ikenr610.html",
+   "place": "かのやばら園のイングリッシュローズガーデンの一部（約750㎡の芝生）",
+   "hours": "ばら園の開いている時間（17時まで）",
+   "note": "市が試しに置いている簡易のドッグラン。場所や広さは見直すことがある（市の回答・2024年10月）"
+  },
+  {
+   "id": "D106",
+   "kind": "高速道路",
+   "pref": "静岡県",
+   "city": "駿東郡小山町",
+   "name": "鮎沢PAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "東名高速道路の上り線（高速道路の外からは入れません）",
+   "size": "広さ約594㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D107",
+   "kind": "高速道路",
+   "pref": "静岡県",
+   "city": "御殿場市",
+   "name": "EXPASA足柄のドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "東名高速道路の上り・下り線（高速道路の外からは入れません）",
+   "size": "上り約329㎡。下りは全犬種のエリア約604㎡と小型犬のエリア約292㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D108",
+   "kind": "高速道路",
+   "pref": "静岡県",
+   "city": "富士市",
+   "name": "EXPASA富士川のドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "東名高速道路の上り線（高速道路の外からは入れません）",
+   "size": "広さ約240㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D109",
+   "kind": "高速道路",
+   "pref": "静岡県",
+   "city": "牧之原市",
+   "name": "牧之原SAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "東名高速道路の上り線（高速道路の外からは入れません）",
+   "size": "広さ約663㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ],
+   "hours": "8:00〜19:00"
+  },
+  {
+   "id": "D110",
+   "kind": "高速道路",
+   "pref": "愛知県",
+   "city": "岡崎市",
+   "name": "美合PAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "東名高速道路の下り線（高速道路の外からは入れません）",
+   "size": "広さ約330㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D111",
+   "kind": "高速道路",
+   "pref": "愛知県",
+   "city": "豊田市",
+   "name": "豊田上郷SAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "東名高速道路の上り線（高速道路の外からは入れません）",
+   "size": "広さ約201㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D112",
+   "kind": "高速道路",
+   "pref": "静岡県",
+   "city": "沼津市",
+   "name": "NEOPASA駿河湾沼津のドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "新東名高速道路の上り・下り線（高速道路の外からは入れません）",
+   "size": "上り約451㎡。下りは全犬種のエリア約538㎡と小型犬のエリア約508㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D113",
+   "kind": "高速道路",
+   "pref": "静岡県",
+   "city": "静岡市葵区",
+   "name": "NEOPASA静岡のドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "新東名高速道路の上り・下り線（高速道路の外からは入れません）",
+   "size": "上り約372㎡。下りは全犬種のエリア約322㎡と小型犬のエリア約100㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D114",
+   "kind": "高速道路",
+   "pref": "静岡県",
+   "city": "浜松市",
+   "name": "NEOPASA浜松のドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "新東名高速道路の上り・下り線（高速道路の外からは入れません）",
+   "size": "上りは全犬種のエリア約354㎡と小型犬のエリア約137㎡。下り約245㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D115",
+   "kind": "高速道路",
+   "pref": "愛知県",
+   "city": "岡崎市",
+   "name": "NEOPASA岡崎のドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "新東名高速道路の上り・下り（集約エリア）線（高速道路の外からは入れません）",
+   "size": "大・中型犬のエリア約173㎡と小型犬のエリア約180㎡（上り・下りとも）",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D116",
+   "kind": "高速道路",
+   "pref": "愛知県",
+   "city": "一宮市",
+   "name": "尾張一宮PAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "名神高速道路の下り線（高速道路の外からは入れません）",
+   "size": "広さ約121㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D117",
+   "kind": "高速道路",
+   "pref": "滋賀県",
+   "city": "犬上郡多賀町",
+   "name": "多賀SAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "名神高速道路の上り線（高速道路の外からは入れません）",
+   "size": "全犬種のエリア約198㎡と小型・中型犬のエリア約78㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D118",
+   "kind": "高速道路",
+   "pref": "三重県",
+   "city": "四日市市",
+   "name": "EXPASA御在所のドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "東名阪自動車道の上り・下り線（高速道路の外からは入れません）",
+   "size": "上り約114㎡、下り約151㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D119",
+   "kind": "高速道路",
+   "pref": "滋賀県",
+   "city": "長浜市",
+   "name": "神田PAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "北陸自動車道の上り・下り線（高速道路の外からは入れません）",
+   "size": "上り約369㎡、下り約202㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D120",
+   "kind": "高速道路",
+   "pref": "福井県",
+   "city": "南条郡南越前町",
+   "name": "南条SAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "北陸自動車道の上り・下り線（高速道路の外からは入れません）",
+   "size": "上り約107㎡、下り約110㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ],
+   "season": "冬は雪のため使えない"
+  },
+  {
+   "id": "D121",
+   "kind": "高速道路",
+   "pref": "石川県",
+   "city": "白山市",
+   "name": "徳光PAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "北陸自動車道の上り線（高速道路の外からは入れません）",
+   "size": "広さ約96㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ],
+   "season": "冬は雪のため使えない"
+  },
+  {
+   "id": "D122",
+   "kind": "高速道路",
+   "pref": "山梨県",
+   "city": "上野原市",
+   "name": "談合坂SA（上り）・EXPASA談合坂（下り）のドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "中央自動車道の上り・下り線（高速道路の外からは入れません）",
+   "size": "上りは大・中型犬のエリア約161㎡と小型犬のエリア約155㎡。下りは大・中型犬と小型犬のエリアが約269㎡ずつ",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D123",
+   "kind": "高速道路",
+   "pref": "山梨県",
+   "city": "笛吹市",
+   "name": "境川PAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "中央自動車道の下り線（高速道路の外からは入れません）",
+   "size": "大型犬のエリア約271㎡と小型犬のエリア約115㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D124",
+   "kind": "高速道路",
+   "pref": "山梨県",
+   "city": "甲斐市",
+   "name": "双葉SAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "中央自動車道の上り線（高速道路の外からは入れません）",
+   "size": "大型犬と小型犬のエリアが約269㎡ずつ",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D125",
+   "kind": "高速道路",
+   "pref": "長野県",
+   "city": "駒ヶ根市",
+   "name": "駒ヶ岳SAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "中央自動車道の上り・下り線（高速道路の外からは入れません）",
+   "size": "上りは全犬種のエリア約525㎡と小型犬のエリア約172㎡。下りは全犬種のエリア約270㎡と小型犬のエリア約294㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D126",
+   "kind": "高速道路",
+   "pref": "三重県",
+   "city": "津市",
+   "name": "安濃SAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "伊勢自動車道の下り線（高速道路の外からは入れません）",
+   "size": "全犬種のエリア約208㎡と小型・中型犬のエリア約208㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D127",
+   "kind": "高速道路",
+   "pref": "長野県",
+   "city": "松本市",
+   "name": "梓川SAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "長野自動車道の下り線（高速道路の外からは入れません）",
+   "size": "大型犬のエリア約271㎡と小型犬のエリア約115㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D128",
+   "kind": "高速道路",
+   "pref": "岐阜県",
+   "city": "関市",
+   "name": "関SAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "東海北陸自動車道の上り線（高速道路の外からは入れません）",
+   "size": "広さ約240㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D129",
+   "kind": "高速道路",
+   "pref": "岐阜県",
+   "city": "郡上市",
+   "name": "長良川SAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "東海北陸自動車道の下り線（高速道路の外からは入れません）",
+   "size": "広さ約234㎡",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D130",
+   "kind": "高速道路",
+   "pref": "三重県",
+   "city": "亀山市",
+   "name": "鈴鹿PAのドッグラン",
+   "url": "https://sapa.c-nexco.co.jp/guide/dogrun/",
+   "place": "新名神高速道路の上り・下り線（高速道路の外からは入れません）",
+   "size": "大・中型犬のエリア約700㎡と小型犬のエリア約550㎡（上り・下りとも）",
+   "fee": "ドッグランは無料（高速道路の料金は別）",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。ドッグランの外ではリードをつけます。くわしい決まりはNEXCO中日本の「ドッグラン利用規定」をご確認ください。",
+   "src": [
+    "https://sapa.c-nexco.co.jp/guide/dogrun/"
+   ]
+  },
+  {
+   "id": "D131",
+   "kind": "高速道路",
+   "pref": "栃木県",
+   "city": "那須郡那須町",
+   "name": "那須高原SAのドッグラン",
+   "url": "https://www.driveplaza.com/sapa/shisetsu_service/dog_run/",
+   "place": "東北自動車道の下り線",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。駐車場からドッグランまではリードをつけます。",
+   "src": [
+    "https://www.driveplaza.com/sapa/shisetsu_service/dog_run/"
+   ]
+  },
+  {
+   "id": "D132",
+   "kind": "高速道路",
+   "pref": "北海道",
+   "city": "伊達市",
+   "name": "有珠山SAのドッグラン",
+   "url": "https://www.driveplaza.com/sapa/shisetsu_service/dog_run/",
+   "place": "道央自動車道の下り線",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。駐車場からドッグランまではリードをつけます。",
+   "src": [
+    "https://www.driveplaza.com/sapa/shisetsu_service/dog_run/"
+   ]
+  },
+  {
+   "id": "D133",
+   "kind": "高速道路",
+   "pref": "宮城県",
+   "city": "黒川郡大和町",
+   "name": "長者原SAのドッグラン",
+   "url": "https://www.driveplaza.com/sapa/shisetsu_service/dog_run/",
+   "place": "東北自動車道の下り線",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。駐車場からドッグランまではリードをつけます。",
+   "src": [
+    "https://www.driveplaza.com/sapa/shisetsu_service/dog_run/"
+   ]
+  },
+  {
+   "id": "D134",
+   "kind": "高速道路",
+   "pref": "栃木県",
+   "city": "佐野市",
+   "name": "佐野SAのドッグラン",
+   "url": "https://www.driveplaza.com/sapa/shisetsu_service/dog_run/",
+   "place": "東北自動車道の下り線",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。駐車場からドッグランまではリードをつけます。",
+   "src": [
+    "https://www.driveplaza.com/assets/pdf/sapa/hw/east_sapamap_a4.pdf"
+   ]
+  },
+  {
+   "id": "D135",
+   "kind": "高速道路",
+   "pref": "埼玉県",
+   "city": "蓮田市",
+   "name": "蓮田SAのドッグラン",
+   "url": "https://www.driveplaza.com/sapa/shisetsu_service/dog_run/",
+   "place": "東北自動車道の上り線",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。駐車場からドッグランまではリードをつけます。",
+   "src": [
+    "https://www.driveplaza.com/assets/pdf/sapa/hw/east_sapamap_a4.pdf"
+   ],
+   "hours": "9:00〜17:00",
+   "season": "6月1日〜9月30日は休み（夏の間）"
+  },
+  {
+   "id": "D136",
+   "kind": "高速道路",
+   "pref": "福島県",
+   "city": "南相馬市",
+   "name": "南相馬鹿島SAのドッグラン",
+   "url": "https://www.driveplaza.com/sapa/shisetsu_service/dog_run/",
+   "place": "常磐自動車道の上り・下り（集約）線",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。駐車場からドッグランまではリードをつけます。",
+   "src": [
+    "https://www.driveplaza.com/assets/pdf/sapa/hw/east_sapamap_a4.pdf"
+   ]
+  },
+  {
+   "id": "D137",
+   "kind": "高速道路",
+   "pref": "大阪府",
+   "city": "岸和田市",
+   "name": "岸和田SAのドッグラン",
+   "url": "https://www.w-holdings.co.jp/sapa/2075.html",
+   "place": "阪和自動車道の上り線",
+   "hours": "24時間",
+   "size": "広さ約260㎡。ベンチ・水飲み場・ふん用のごみ箱あり",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。",
+   "src": [
+    "https://www.w-holdings.co.jp/sapa/2075.html"
+   ]
+  },
+  {
+   "id": "D138",
+   "kind": "高速道路",
+   "pref": "福岡県",
+   "city": "八女郡広川町",
+   "name": "広川SAのドッグラン",
+   "url": "https://www.w-holdings.co.jp/sapa/2635.html",
+   "place": "九州自動車道の上り線",
+   "hours": "日の出から日没まで（照明がないので夜は使わない）",
+   "size": "広さ約430㎡",
+   "note": "高速道路を通る人の休けい用です（高速道路の料金がかかります）。",
+   "src": [
+    "https://www.w-holdings.co.jp/sapa/2635.html"
+   ]
+  },
+  {
+   "id": "D139",
+   "kind": "民間",
+   "pref": "大阪府",
+   "city": "泉佐野市",
+   "name": "りんくうプレミアム・アウトレットのドッグラン",
+   "url": "https://www.premiumoutlets.co.jp/rinku/pet/",
+   "place": "メインサイド1階（スターバックスのとなり）",
+   "hours": "9:30〜20:00（施設の営業時間にあわせる）",
+   "fee": "無料",
+   "size": "犬種・体重の区別なし（広さ約314㎡）",
+   "need": "1年以内の狂犬病予防注射と、1年以内の混合ワクチン（5種以上）",
+   "limit": "飼い主1人につき1頭",
+   "ng": "発情中の犬、病気の犬、攻撃的な犬、飼い主が制御できない犬。未就学の子どもは入れない",
+   "note": "天気や季節で閉めたり、早く閉めたりすることがあります。",
+   "src": [
+    "https://www.premiumoutlets.co.jp/rinku/pet/terms.html"
+   ]
+  },
+  {
+   "id": "D140",
+   "kind": "民間",
+   "pref": "滋賀県",
+   "city": "蒲生郡竜王町",
+   "name": "三井アウトレットパーク 滋賀竜王のドッグラン",
+   "url": "https://mitsui-shopping-park.com/mop/shiga/special/2208_dogrun/",
+   "fee": "ドッグランセット（ペットカート2時間とドッグラン）1,700円、30分延長500円",
+   "size": "小型犬（約10kgまで）と中・大型犬（約10kgから）のエリア",
+   "need": "鑑札・狂犬病予防注射・混合ワクチン（狂犬病予防注射の証明がないと入れない）",
+   "access": "竜王ICから約500m",
+   "src": []
+  },
+  {
+   "id": "D141",
+   "kind": "民間",
+   "pref": "千葉県",
+   "city": "木更津市",
+   "name": "三井アウトレットパーク 木更津のドッグラン",
+   "url": "https://mitsui-shopping-park.com/mop/kisarazu/special/2404_dog-facility/dogrun/",
+   "place": "イースト1ゲート（バスターミナルAのとなり）",
+   "hours": "3〜7月・9〜11月 10:00〜19:00、8月 14:00〜20:00、12〜2月 10:00〜18:00",
+   "fee": "1日券900円（土日祝1,100円）、30分550円（土日祝660円）",
+   "size": "小型犬と中・大型犬のエリア（体重で分ける）",
+   "need": "1年以内の狂犬病予防注射（注射済票をつける）と、1年以内の混合ワクチン",
+   "limit": "飼い主1人につき2頭まで",
+   "ng": "病気やけがの犬、発情中の犬、犬や人に攻撃的な犬",
+   "src": []
+  },
+  {
+   "id": "D142",
+   "kind": "民間",
+   "pref": "千葉県",
+   "city": "八街市",
+   "name": "ドギーズアイランドのドッグラン（日帰り）",
+   "url": "https://www.doggys-island.jp/facility/dogrun/index.php",
+   "addr": "八街市小谷流",
+   "hours": "9:00〜21:00",
+   "fee": "入場（1人）大人1,000円（土日祝1,200円）。ドッグラン（1頭）小型犬800円・中型犬1,000円・大型犬1,200円（土日祝は300円高い）",
+   "parking": "1日800円",
+   "size": "小型犬専用・中大型犬・全犬種のエリア（夜間照明・水遊びのプールあり）",
+   "need": "1年以内の狂犬病予防注射と、1年以内の混合ワクチン（5種以上）の証明（受付で確認）",
+   "src": [
+    "https://www.doggys-island.jp/"
+   ]
+  },
+  {
+   "id": "D143",
+   "kind": "民間",
+   "pref": "神奈川県",
+   "city": "横浜市中区",
+   "name": "WANCOTT（ワンコット）のドッグパーク",
+   "url": "https://wancott.com/",
+   "addr": "横浜市中区山下町",
+   "hours": "10:00〜19:00（ドッグパークの最終受付は17:00）",
+   "reg": "会員制（利用の登録がいる）",
+   "src": []
+  },
+  {
+   "id": "D144",
+   "kind": "民間",
+   "pref": "北海道",
+   "city": "恵庭市",
+   "name": "えこりん村「SHEEP SHEEP」ドッグラン",
+   "url": "https://www.ecorinvillage.com/facility/dogrun.html",
+   "hours": "10:00〜16:00（最終受付15:30）",
+   "season": "5月1日〜12月6日（2026年）",
+   "closed": "水曜（祝日はあける）",
+   "fee": "1頭目1,500円、2頭目から1,000円",
+   "size": "大型犬のエリア約3,000㎡と、小・中型犬のエリア約1,000㎡（半分ほどが斜面）",
+   "need": "1年以内の狂犬病予防注射の証明と、3年以内の混合ワクチンの証明",
+   "ng": "発情中の犬、体調の悪い犬。場内は人も犬も飲食禁止",
+   "src": [
+    "https://www.ecorinvillage.com/"
+   ]
+  },
+  {
+   "id": "D145",
+   "kind": "民間",
+   "pref": "滋賀県",
+   "city": "蒲生郡日野町",
+   "name": "滋賀農業公園ブルーメの丘のドッグラン",
+   "url": "https://www.blumenooka.jp/touch/dogrun/",
+   "addr": "蒲生郡日野町西大路",
+   "hours": "3〜11月 10:00〜17:00、12〜2月 10:00〜16:00（開く日は公式ページのお知らせで確認）",
+   "fee": "ドッグランは無料（入園料は別）",
+   "size": "中・大型犬（10kgから）約2,000㎡、小型犬（10kg未満）約1,000㎡、全犬種約600㎡",
+   "need": "1年以内の混合ワクチン（5種以上）と狂犬病予防注射の証明",
+   "ng": "発情中・病気の犬、かむくせのある犬。土佐犬など入れない犬種あり。ボール・フリスビーは禁止",
+   "src": [
+    "https://www.blumenooka.jp/"
+   ]
+  },
+  {
+   "id": "D146",
+   "kind": "民間",
+   "pref": "千葉県",
+   "city": "成田市",
+   "name": "成田ゆめ牧場のドッグガーデン",
+   "url": "https://www.yumebokujo.com/doggarden.html",
+   "fee": "犬の入場料がかかります（金額は公式ページで確認）",
+   "size": "全犬種のエリアと、小・中型犬優先のエリア",
+   "need": "鑑札か狂犬病予防注射済証と、3種以上の混合ワクチンの証明（写真でもよい）",
+   "src": []
+  },
+  {
+   "id": "D147",
+   "kind": "民間",
+   "pref": "神奈川県",
+   "city": "藤沢市",
+   "name": "DOG DEPT + CAFE 湘南江ノ島店のドッグラン",
+   "url": "https://www.dogdept.com/shoplist/area03_7.html",
+   "need": "狂犬病予防注射の証明と、混合ワクチンの証明（写しや写真でもよい）",
+   "note": "カフェ・ショップのドッグランです。",
+   "src": [
+    "https://www.dogdept.com/cafe/"
+   ],
+   "addr": "藤沢市鵠沼海岸",
+   "hours": "平日11:00〜18:00、土日祝11:00〜19:00",
+   "closed": "水曜（祝日のときは翌日）"
+  },
+  {
+   "id": "D148",
+   "kind": "民間",
+   "pref": "長野県",
+   "city": "北佐久郡軽井沢町",
+   "name": "DOG DEPT + CAFE 軽井沢プリンス店のドッグラン",
+   "url": "https://www.dogdept.com/shoplist/area07_8.html",
+   "need": "狂犬病予防注射の証明と、混合ワクチンの証明（写しや写真でもよい）",
+   "note": "カフェ・ショップのドッグランです。",
+   "src": [
+    "https://www.dogdept.com/cafe/"
+   ],
+   "place": "軽井沢・プリンスショッピングプラザ（ツリーモール）",
+   "hours": "ショッピングプラザの営業時間と同じ",
+   "fee": "1頭目1日1,000円（税別）、2頭目から500円（税別）"
+  },
+  {
+   "id": "D149",
+   "kind": "民間",
+   "pref": "長野県",
+   "city": "北佐久郡軽井沢町",
+   "name": "DOG DEPT GARDEN 軽井沢店のドッグラン",
+   "url": "https://www.dogdept.com/shoplist/area02_1.html",
+   "need": "狂犬病予防注射の証明と、混合ワクチンの証明（写しや写真でもよい）",
+   "note": "カフェ・ショップのドッグランです。",
+   "src": [
+    "https://www.dogdept.com/cafe/"
+   ],
+   "hours": "季節やイベントで変わる（公式ページのカレンダー）",
+   "fee": "1頭目1日1,000円（税別）、2頭目から500円（税別）"
+  },
+  {
+   "id": "D150",
+   "kind": "民間",
+   "pref": "栃木県",
+   "city": "佐野市",
+   "name": "DOG DEPT GARDEN 佐野店のドッグラン",
+   "url": "https://www.dogdept.com/shoplist/area03_15.html",
+   "need": "狂犬病予防注射の証明と、混合ワクチンの証明（写しや写真でもよい）",
+   "note": "カフェ・ショップのドッグランです。",
+   "src": [
+    "https://www.dogdept.com/cafe/"
+   ],
+   "addr": "佐野市越名町",
+   "hours": "11:00〜18:00",
+   "closed": "水曜",
+   "fee": "1頭1,000円（税別）",
+   "access": "佐野藤岡ICから車で約3分"
+  },
+  {
+   "id": "D151",
+   "kind": "民間",
+   "pref": "千葉県",
+   "city": "木更津市",
+   "name": "DOG DEPT GARDEN 木更津店のドッグラン",
+   "url": "https://www.dogdept.com/shoplist/area03_16.html",
+   "need": "狂犬病予防注射の証明と、混合ワクチンの証明（写しや写真でもよい）",
+   "note": "カフェ・ショップのドッグランです。",
+   "src": [
+    "https://www.dogdept.com/cafe/"
+   ],
+   "addr": "木更津市金田東",
+   "hours": "平日11:00〜17:00、土日祝11:00〜18:00",
+   "closed": "木曜",
+   "fee": "1頭目1日1,100円、2頭目から550円"
+  },
+  {
+   "id": "D152",
+   "kind": "民間",
+   "pref": "静岡県",
+   "city": "御殿場市",
+   "name": "DOG DEPT GARDEN 御殿場店のドッグラン",
+   "url": "https://www.dogdept.com/shoplist/area07_19.html",
+   "need": "狂犬病予防注射の証明と、混合ワクチンの証明（写しや写真でもよい）",
+   "note": "カフェ・ショップのドッグランです。",
+   "src": [
+    "https://www.dogdept.com/cafe/"
+   ],
+   "addr": "御殿場市東山",
+   "hours": "11:00〜18:00",
+   "closed": "木曜",
+   "fee": "1頭1日1,100円、2頭目から550円"
+  },
+  {
+   "id": "D153",
+   "pref": "福岡県",
+   "name": "海の中道海浜公園ドッグラン（国営）",
+   "city": "福岡市東区",
+   "kind": "公営",
+   "url": "https://uminaka-park.jp/facility/dogrun/",
+   "addr": "福岡市東区大字西戸崎18-25（公園の所在地。ドッグランは光と風の広場エリア）",
+   "hours": "点検が終わってから閉園時間の30分前まで",
+   "fee": "1日券60円（1頭）・年間パスポート600円（1頭）。ほかに公園の入園料（車なら駐車料金も）がかかる",
+   "size": "約5,200㎡。フリーエリア（小型犬〜大型犬）・小型犬エリア（体高40cm以下）・くつろぎエリア（リードをつけて）",
+   "reg": "利用誓約書（A4で印刷して記入）を持っていく。年間パスポートは購入申込書も。係員が確かめてからプレートをつける",
+   "need": "犬鑑札と狂犬病予防注射済票（マイクロチップを登録した特例の自治体なら鑑札が要らない場合あり）。狂犬病などのワクチンを1年以内に受けていること",
+   "parking": "最寄りは光と風の広場駐車場（有料）",
+   "ng": "プレートをつけていない犬、1年以内にワクチンを受けていない犬、うつる病気の疑いがある犬、発情期の犬、闘犬などほかの利用者をこわがらせる犬。犬以外のペット連れ・犬を連れていない人も入れない",
+   "src": [
+    "https://uminaka-park.jp/facility/dogrun/",
+    "https://uminaka-park.jp/"
+   ]
+  },
+  {
+   "id": "D154",
+   "pref": "兵庫県",
+   "name": "あわじ花さじきドッグラン（県立）",
+   "city": "淡路市",
+   "kind": "公営",
+   "url": "https://awajihanasajiki.jp/4962/",
+   "addr": "淡路市楠本2805-7（公園の所在地。ドッグランは友愛の丘）",
+   "hours": "公園の開園時間 9:00〜17:00（入園は16:30まで）",
+   "fee": "無料（入園も無料）",
+   "size": "フリー区画のみ（大型犬・小型犬の区別なし）",
+   "closed": "公園の休園日（ホームページの休園日の案内で確かめる）",
+   "parking": "普通車 約200台（1回200円）",
+   "src": [
+    "https://awajihanasajiki.jp/4962/",
+    "https://awajihanasajiki.jp/"
+   ]
+  },
+  {
+   "id": "D155",
+   "pref": "東京都",
+   "name": "辰巳の森ドッグラン（辰巳の森海浜公園）",
+   "city": "江東区",
+   "kind": "公営",
+   "url": "https://www.tptc.co.jp/park/03_01/dogrun",
+   "addr": "江東区辰巳2-1-35（公園の管理事務所）",
+   "hours": "6:00〜21:00（夜は照明なし）",
+   "fee": "無料",
+   "size": "約2,000㎡。フリー広場 約1,240㎡・小型犬用広場 約490㎡",
+   "reg": "毎年度（4月1日から）「たつみの森ドッグラン利用登録」が必要（公式サイトの専用ページから）",
+   "need": "その年の狂犬病予防注射（4〜6月に受けてから登録）。猶予証明書では登録できない",
+   "closed": "決まった休みは書かれていない。しつけ教室などの行事で使えないことがある",
+   "parking": "公園の有料駐車場（第一95台・24時間、第二166台・6:00〜21:00。普通車1時間200円・1日最大1,200円）",
+   "src": [
+    "https://www.tptc.co.jp/park/03_01/dogrun",
+    "https://www.tptc.co.jp/park/03_01/access",
+    "https://www.tptc.co.jp/park/faq"
+   ]
+  },
+  {
+   "id": "D156",
+   "pref": "東京都",
+   "name": "荒川岩淵関緑地ドッグラン",
+   "city": "北区",
+   "kind": "公営",
+   "url": "https://www.city.kita.lg.jp/parks/visit/1019956.html",
+   "hours": "4〜9月 5:00〜19:00、10〜3月 6:00〜17:00（9時〜17時のほかは登録時に教わる番号のカギで開け閉めする）",
+   "fee": "無料",
+   "size": "Aエリア（10kg未満）10×15m・Bエリア（10kg以上）10×25m",
+   "reg": "荒川知水資料館北区事務室で登録（9時〜16時。月曜（祝日なら翌日）と12月26日〜1月6日は受付なし）。犬1頭ごと。生後4か月未満は登録できない",
+   "need": "狂犬病予防注射済票のコピー、獣医師の狂犬病予防注射済証（コピー可）、利用登録申請書、利用規約同意書",
+   "closed": "年末年始（12月29日〜1月3日）。荒天・災害のときなどは閉めることがある",
+   "ng": "柵を飛び越える犬。1人2頭まで。未就学児は入れない。犬以外のペット連れ・犬を連れていない人も入れない",
+   "src": [
+    "https://www.city.kita.lg.jp/parks/visit/1019956.html"
+   ]
+  },
+  {
+   "id": "D157",
+   "pref": "東京都",
+   "name": "杉並区立ドッグラン広場",
+   "city": "杉並区",
+   "kind": "公営",
+   "url": "https://dogrun-suginami.jp/",
+   "addr": "杉並区松ノ木1-1-4（都立和田堀公園内）",
+   "hours": "7:00から。閉場は1・2・3・9・10月17:00、4・5・8月18:00、6・7月19:00、11・12月16:00",
+   "fee": "無料",
+   "size": "小型犬エリア（10kg未満）約500㎡・中・大型犬エリア（10kg以上）約1,000㎡",
+   "reg": "利用登録窓口（松ノ木運動場管理棟内）で登録。年度ごとに更新。区外の人も使える。16歳未満は登録できない",
+   "need": "犬鑑札かマイクロチップ登録証明書、狂犬病予防注射済票、本人確認書類、申請書兼誓約書",
+   "closed": "年末年始（12月29日〜1月3日）、毎月1〜2回の場内整理日。台風・積雪などで休むことがある。熱中症特別警戒アラートの日は10時ごろ〜16時ごろ閉める",
+   "parking": "専用駐車場なし（都立公園の有料駐車場を使う）",
+   "ng": "生後6か月未満の子犬、かみぐせのある犬、生理中のメス、病気やけがの犬、闘犬類（土佐犬、アメリカン・ピット・ブル・テリアなど）",
+   "src": [
+    "https://dogrun-suginami.jp/",
+    "https://www.city.suginami.tokyo.jp/shisetsu/kouen/dogrun/1093625.html"
+   ]
+  },
+  {
+   "id": "D158",
+   "pref": "東京都",
+   "name": "目白台運動公園 わんわん広場",
+   "city": "文京区",
+   "kind": "公営",
+   "url": "https://www.city.bunkyo.lg.jp/bosai/midori/kuritukouen/kouen/mejirodaiundou/wanwanhiroba.html",
+   "addr": "文京区目白台一丁目19番・20番",
+   "hours": "5〜8月 7:30〜18:30、9〜4月 7:30〜17:00",
+   "fee": "無料（登録料も無料）",
+   "size": "2か所で約300㎡",
+   "reg": "目白台運動公園パークセンターで利用登録",
+   "need": "犬鑑札かマイクロチップの登録証明書（データなら印刷して持っていく）と、その年度の狂犬病予防注射済票",
+   "closed": "決まった休みは書かれていない。雨などで使えない日はパークセンターが決める",
+   "src": [
+    "https://www.city.bunkyo.lg.jp/bosai/midori/kuritukouen/kouen/mejirodaiundou/wanwanhiroba.html"
+   ]
+  },
+  {
+   "id": "D159",
+   "pref": "東京都",
+   "name": "国営昭和記念公園ドッグラン",
+   "city": "立川市",
+   "kind": "公営",
+   "url": "https://www.showakinen-koen.jp/facility/facility-522/",
+   "addr": "立川市緑町3173（公園の管理センター）。ドッグランは立川口ゲートの左横から入る",
+   "hours": "9:30から閉園の15分前まで",
+   "fee": "公園の入園料だけで使える（大人450円・中学生以下無料）。わんパス（愛犬登録カード）は1頭300円",
+   "size": "大型・中型犬エリア（体高40cm以上）、全犬種エリア、小型犬専用エリア（体高40cm以下）、わんぱくエリア、ビギナーズエリア",
+   "reg": "入園のときにゲートで「ペット同伴誓約書」を出す。わんパス（1年間有効）を作ると毎回の書類の提示が要らない",
+   "need": "毎回、1年以内の混合ワクチン（3種以上）の接種証明書と、狂犬病の注射済証か注射済票（コピー・写真可）。またはわんパス",
+   "parking": "公園の駐車場（普通車900円）",
+   "ng": "狂犬病予防注射や混合ワクチン（3種以上）を受けていない犬、ほかの人や動物に攻撃的な犬、発情中のメス（出血が終わって2週間以内も）",
+   "src": [
+    "https://www.showakinen-koen.jp/facility/facility-522/",
+    "https://www.showakinen-koen.jp/pets/",
+    "https://www.showakinen-koen.jp/price/"
+   ]
+  },
+  {
+   "id": "D160",
+   "pref": "東京都",
+   "name": "わんダフルネイチャーヴィレッジのドッグラン",
+   "city": "あきる野市",
+   "kind": "民間",
+   "url": "https://www.wnv.tokyo/intro/dogrun",
+   "addr": "あきる野市上代継600",
+   "fee": "入園料 大人（中学生以上）850円、小学生以下は当面無料、犬1頭目850円・2頭目から450円",
+   "size": "全犬種エリア 1,750㎡、中・大型犬専用（8kg以上）510㎡、小型犬専用（8kg未満）390㎡、屋根付き 400㎡、ビギナーズエリアなど",
+   "need": "1年以内の狂犬病予防注射済証と、3種以上の混合ワクチンの接種証明書（受けられない犬は猶予証明書か抗体価検査の結果）",
+   "parking": "普通車1日700円",
+   "ng": "ほかの犬や人に攻撃的な犬、ヒートが始まって30日以内の犬、うつる病気の犬。犬以外の動物連れは入れない",
+   "src": [
+    "https://www.wnv.tokyo/intro/dogrun",
+    "https://www.wnv.tokyo/price",
+    "https://www.wnv.tokyo/guide",
+    "https://www.wnv.tokyo/"
+   ]
+  },
+  {
+   "id": "D161",
+   "pref": "東京都",
+   "name": "しおさいドッグラン（大井ふ頭中央海浜公園）",
+   "city": "品川区・大田区",
+   "kind": "公営",
+   "url": "https://www.kouwan.metro.tokyo.lg.jp/kanko/14_kaijokouen_oi_202404.pdf",
+   "addr": "品川区八潮四丁目・大田区東海一丁目（公園の所在地）",
+   "size": "フリー広場と小型犬用広場",
+   "reg": "大井スポーツセンターの窓口で利用者登録（年度ごとに更新）。登録証はたつみの森・なぎさの森のドッグランでも使える",
+   "closed": "12月31日・1月1日",
+   "src": [
+    "https://www.kouwan.metro.tokyo.lg.jp/kanko/14_kaijokouen_oi_202404.pdf",
+    "https://www.kouwan.metro.tokyo.lg.jp/kanko/16_kaijokouen_nagisa_202304.pdf"
+   ]
+  },
+  {
+   "id": "D162",
+   "pref": "大阪府",
+   "name": "深北緑地ドッグラン（府営）",
+   "city": "大東市",
+   "kind": "公営",
+   "url": "https://fukakitaryokuchi.jp/page/about#dog",
+   "addr": "大東市深野北4-284（公園の所在地。ドッグランは第1駐車場側のテニスコートNo.14付近、小型犬専用は橋脚の下）",
+   "hours": "年中無休・24時間（夜は暗いので注意）",
+   "size": "テニスコート側は大型犬・小型犬の区分なし。橋脚下は小型犬専用（8kg未満）",
+   "closed": "なし（天気や地震などで使えないことがある）",
+   "parking": "公園の駐車場（24時間）",
+   "src": [
+    "https://fukakitaryokuchi.jp/page/about",
+    "https://fukakitaryokuchi.jp/"
+   ]
+  },
+  {
+   "id": "D163",
+   "pref": "大阪府",
+   "name": "彩都なないろ公園ドッグラン",
+   "city": "箕面市",
+   "kind": "公営",
+   "url": "https://www.city.minoh.lg.jp/midori/kouennsyoukai/dogrun.html",
+   "addr": "箕面市彩都粟生北2丁目",
+   "hours": "9:00〜19:00",
+   "fee": "無料",
+   "size": "大スペース 約470㎡・小スペース 約100㎡",
+   "reg": "登録は要らない",
+   "parking": "無料（満車のときあり。まわりの道路にはとめない）",
+   "src": [
+    "https://www.city.minoh.lg.jp/midori/kouennsyoukai/dogrun.html",
+    "https://www.city.minoh.lg.jp/midori/kouennsyoukai/saitonanairo.html",
+    "https://www.city.minoh.lg.jp/faq/kurashi/pet/dog_run.html"
+   ]
+  },
+  {
+   "id": "D164",
+   "pref": "大阪府",
+   "name": "東部公園ドッグラン",
+   "city": "枚方市",
+   "kind": "公営",
+   "url": "https://gomypark.com/park/tobu/",
+   "addr": "枚方市大字尊延寺2987-1",
+   "fee": "無料",
+   "size": "中・大型犬と小型犬でエリアが分かれている",
+   "parking": "有料（98台）",
+   "src": [
+    "https://gomypark.com/park/tobu/"
+   ]
+  },
+  {
+   "id": "D165",
+   "pref": "兵庫県",
+   "name": "三井アウトレットパーク マリンピア神戸のドッグラン",
+   "city": "神戸市垂水区",
+   "kind": "民間",
+   "url": "https://mitsui-shopping-park.com/mop/kobe/special/2411_dog-facility/",
+   "addr": "神戸市垂水区海岸通12-2",
+   "hours": "10:00〜18:00（受付17:00まで）。6〜8月は10:00〜20:00（受付19:00まで）",
+   "fee": "1日フリーパス 平日880円・土日祝1,100円（税込）",
+   "size": "犬の体重でエリアが分かれている",
+   "reg": "入る前に PET PARADISE + BEAUTY & FUN で料金を払い、利用規約に同意する",
+   "need": "1年以内の混合ワクチンと狂犬病予防注射の接種証明書",
+   "ng": "接種証明のない犬。1頭に同伴は2人まで、1人2頭まで",
+   "src": [
+    "https://mitsui-shopping-park.com/mop/kobe/special/2411_dog-facility/",
+    "https://mitsui-shopping-park.com/mop/kobe/"
+   ]
+  },
+  {
+   "id": "D166",
+   "pref": "愛知県",
+   "name": "三井アウトレットパーク 岡崎のドッグラン（山田農園 FARM＆DOGS）",
+   "city": "岡崎市",
+   "kind": "民間",
+   "url": "https://mitsui-shopping-park.com/mop/okazaki/special/pets/",
+   "addr": "岡崎市舞木町字金森200（OKAZAKI MARKET 1F、農園直営カフェのとなり）",
+   "hours": "10:00〜20:00（受付19:00まで）",
+   "fee": "同行者1人につき2頭まで1日660円（税込）",
+   "size": "小型犬（10kg未満）と大型犬（10kg以上）のエリア。時間で分ける（小型犬は毎時00〜29分、大型犬は30〜59分）",
+   "reg": "利用規約に同意してリストバンドをつける",
+   "need": "混合ワクチンと狂犬病予防注射の接種証明書",
+   "ng": "猛犬や危険をともなう犬種、接種証明のない犬。ドッグラン・店内ではオムツをつける",
+   "src": [
+    "https://mitsui-shopping-park.com/mop/okazaki/special/pets/",
+    "https://mitsui-shopping-park.com/mop/okazaki/"
+   ]
+  },
+  {
+   "id": "D167",
+   "pref": "埼玉県",
+   "name": "ららぽーと富士見のドッグラン",
+   "city": "富士見市",
+   "kind": "民間",
+   "url": "https://mitsui-shopping-park.com/lalaport/fujimi/service/pet.html",
+   "addr": "富士見市山室1-1313",
+   "hours": "10:00〜19:00（季節や天気で変わることがある）",
+   "fee": "初回登録手数料がかかる",
+   "reg": "初回は PETEMO の店内でペテモポイントカードを登録。2回目からもカードを持って店内で受付。1年ごとに更新",
+   "need": "混合ワクチンと狂犬病予防注射の接種日がわかる証明書（接種から2週間は使えない）",
+   "ng": "発情中の犬、ワクチン未完了の犬、病気の犬、攻撃的な犬・闘犬種、ノミ・ダニのいる犬、マーキング癖のある犬、施設に合わない大型犬。1人2頭まで。中学生以下は保護者と",
+   "src": [
+    "https://mitsui-shopping-park.com/lalaport/fujimi/service/pet.html",
+    "https://mitsui-shopping-park.com/lalaport/fujimi/"
+   ]
+  },
+  {
+   "id": "D168",
+   "pref": "神奈川県",
+   "name": "新横浜公園ドッグラン",
+   "city": "横浜市港北区",
+   "kind": "公営",
+   "url": "https://www.nissan-stadium.jp/shinyoko-park/dogrun.php",
+   "addr": "横浜市港北区小机町3300（新横浜公園内、遊具広場のとなり）",
+   "fee": "年間登録料 1人＋1頭1,200円（追加1人・1頭ごとに600円）。利用料 1人＋1頭500円（追加の犬500円）、同伴の人300円（15歳以下は無料）",
+   "size": "約3,000㎡。小型犬エリア 600㎡・フリーエリア 2,400㎡",
+   "reg": "年間登録が必要",
+   "closed": "開場は水・木・土・日の週4日（休場日が祝日なら開けて翌平日が休み）。雨の日や、前日の天気でグラウンドが悪い日は閉める",
+   "src": [
+    "https://www.nissan-stadium.jp/shinyoko-park/dogrun.php",
+    "https://www.city.yokohama.lg.jp/kurashi/machizukuri-kankyo/midori-koen/koen/qa/rule/faqrule-7.html"
+   ]
+  },
+  {
+   "id": "D169",
+   "pref": "神奈川県",
+   "name": "本牧山頂公園ドッグラン",
+   "city": "横浜市中区",
+   "kind": "公営",
+   "url": "https://sancho-yokohamaueki.com/dog-run/%e6%9c%ac%e7%89%a7%e5%b1%b1%e9%a0%82%e5%85%ac%e5%9c%92%e3%80%80dogrun%e6%83%85%e5%a0%b1/",
+   "addr": "横浜市中区和田山1-5（観山広場の一部）",
+   "hours": "3〜6月・10月 9:00〜17:00、7〜9月 15:00〜20:00、11〜2月 9:00〜16:00",
+   "fee": "1頭3時間500円（現金のみ）。会員登録管理費 年1,000円（はじめのプチレッスン料を含む）",
+   "size": "800㎡。小型犬・レッスンエリアとフリーサイズエリアなど2〜3面",
+   "reg": "会員登録（飼い主は18歳以上）。開場日に会場で申請。はじめにプチレッスンを受ける",
+   "need": "犬鑑札、狂犬病予防注射済証（1年以内）、混合ワクチンを受けたことがわかるもの",
+   "closed": "開くのは火・土・日だけ。雨の日は当日7時に決めてホームページにのせる",
+   "ng": "発情期の犬、寄生虫や皮ふの病気などのある犬、闘犬種や攻撃的な犬、犬以外のペット",
+   "src": [
+    "https://sancho-yokohamaueki.com/dog-run/%e6%9c%ac%e7%89%a7%e5%b1%b1%e9%a0%82%e5%85%ac%e5%9c%92%e3%80%80dogrun%e6%83%85%e5%a0%b1/",
+    "https://www.city.yokohama.lg.jp/kurashi/machizukuri-kankyo/midori-koen/koen/qa/rule/faqrule-7.html"
+   ]
+  },
+  {
+   "id": "D170",
+   "pref": "神奈川県",
+   "name": "入船公園ドッグラン",
+   "city": "横浜市鶴見区",
+   "kind": "公営",
+   "url": "https://www.sakata-greenservice.co.jp/irifune/%E6%9C%AA%E5%88%86%E9%A1%9E/6406/",
+   "addr": "横浜市鶴見区弁天町3-1（入船公園）",
+   "hours": "9:00〜19:00（12月28日は17:00まで）",
+   "reg": "受付・申請は入船公園管理事務所の窓口",
+   "closed": "月曜（祝日なら次の平日）、年末年始（12月29日〜1月3日）",
+   "src": [
+    "https://www.sakata-greenservice.co.jp/irifune/%E6%9C%AA%E5%88%86%E9%A1%9E/6406/",
+    "https://www.city.yokohama.lg.jp/kurashi/machizukuri-kankyo/midori-koen/koen/qa/rule/faqrule-7.html"
+   ]
+  },
+  {
+   "id": "D171",
+   "pref": "神奈川県",
+   "name": "海の公園 犬の遊び場",
+   "city": "横浜市金沢区",
+   "kind": "公営",
+   "url": "https://www.hama-midorinokyokai.or.jp/park/uminokouen/sports.php#dogrun",
+   "addr": "横浜市金沢区海の公園10（シーサイドライン「海の公園南口」駅の左右の高架下）",
+   "hours": "いつでも使える",
+   "fee": "無料",
+   "size": "2か所。犬の体の大きさで使い分ける（ほかにだれもいなければいっしょでもよい）。運動の設備・水飲み場はない",
+   "parking": "公園の有料駐車場（柴口・磯浜など）",
+   "src": [
+    "https://www.hama-midorinokyokai.or.jp/park/uminokouen/sports.php",
+    "https://www.city.yokohama.lg.jp/kurashi/machizukuri-kankyo/midori-koen/koen/koen/daihyoteki/umikouen.html"
+   ]
+  },
+  {
+   "id": "D172",
+   "pref": "埼玉県",
+   "name": "荒川運動公園ドッグラン",
+   "city": "川口市",
+   "kind": "公営",
+   "url": "https://www.city.kawaguchi.lg.jp/soshiki/01120/035/4/30152.html",
+   "addr": "川口市（荒川運動公園内）",
+   "hours": "4〜9月 8:00〜18:30、10〜3月 8:00〜17:30",
+   "parking": "専用はない。バーベキュー場の営業日の9:30〜17:30（11月は15:30まで）にバーベキュー場横の駐車場（1台600円）が使える。12月〜3月末は駐車場も休み",
+   "src": [
+    "https://www.city.kawaguchi.lg.jp/soshiki/01120/035/4/30152.html"
+   ]
+  },
+  {
+   "id": "D173",
+   "pref": "埼玉県",
+   "name": "草加市ドッグラン広場",
+   "city": "草加市",
+   "kind": "公営",
+   "url": "https://www.city.soka.saitama.jp/cont/s1805/010/010/010/020/a02/a01/PAGE000000000000062104.html",
+   "addr": "草加市柿木町272番地1（そうか公園の南東側）",
+   "hours": "6:00〜21:00",
+   "size": "小・中型犬ゾーン、大型犬ゾーン、コミュニティゾーン（犬の大きさに関係なく入れる）",
+   "reg": "前もって利用登録が必要",
+   "closed": "12月31日・1月1日、設備の整備・点検の日など",
+   "src": [
+    "https://www.city.soka.saitama.jp/cont/s1805/010/010/010/020/a02/a01/PAGE000000000000062104.html"
+   ]
+  },
+  {
+   "id": "D174",
+   "pref": "埼玉県",
+   "name": "朝霞市浜崎ドッグラン",
+   "city": "朝霞市",
+   "kind": "公営",
+   "url": "https://www.city.asaka.lg.jp/soshiki/14/hamasaki-dogrun.html",
+   "addr": "朝霞市大字浜崎56-1",
+   "hours": "8:00〜19:00（日がしずんだあとは使えない）",
+   "size": "小型犬エリア（10kg以下）230㎡・中・大型犬エリア 430㎡",
+   "reg": "市役所5階の環境推進課で登録。市内に住む18歳以上の飼い主。有効は直近の狂犬病予防注射の日から1年",
+   "need": "本人確認書類、犬の鑑札、1年以内の狂犬病予防注射済票、利用登録申請書兼誓約書",
+   "closed": "年末年始（12月29日〜1月3日）、イベントや施設管理のとき",
+   "parking": "8台",
+   "ng": "発情期の犬、病気の犬、凶暴・攻撃的な犬。犬以外のペット連れ・犬を連れていない人も入れない",
+   "src": [
+    "https://www.city.asaka.lg.jp/soshiki/14/hamasaki-dogrun.html"
+   ]
+  },
+  {
+   "id": "D175",
+   "pref": "埼玉県",
+   "name": "大間見晴らしの丘（大間近隣公園）のドッグラン",
+   "city": "鴻巣市",
+   "kind": "公営",
+   "url": "https://www.city.kounosu.saitama.jp/page/15918.html",
+   "addr": "鴻巣市大間字内谷",
+   "size": "大型犬と小型犬でエリアが分かれている",
+   "parking": "公園の駐車場（案内図の場所にとめる。路上駐車はしない）",
+   "src": [
+    "https://www.city.kounosu.saitama.jp/uploaded/attachment/12077.pdf",
+    "https://www.city.kounosu.saitama.jp/page/15918.html"
+   ]
+  },
+  {
+   "id": "D176",
+   "pref": "千葉県",
+   "name": "柏の葉公園ドッグラン（県立）",
+   "city": "柏市",
+   "kind": "公営",
+   "url": "https://www.cue-net.or.jp/kouen/kasiwa/dogrun/index.html",
+   "addr": "柏市柏の葉4丁目（日本庭園の東側広場）",
+   "hours": "9:00〜17:00（4月15日〜5月31日は18:30まで、6〜8月は19:00まで、9月1日〜15日は18:00まで）",
+   "fee": "利用は無料（年度ごとの登録料 1頭700円・現金のみ）",
+   "size": "約1,604㎡",
+   "reg": "前もってガイダンス（予約制）を受けて登録。その日すぐには使えない。毎年度更新。登録証を首から下げて使う",
+   "need": "狂犬病予防注射済票の現物（まだ届いていなければ1年以内に受けた証明のコピー）、犬の写真（縦2.5cm×横3cm）",
+   "closed": "火曜（祝日なら開けて次の平日が休み）",
+   "src": [
+    "https://www.cue-net.or.jp/kouen/kasiwa/dogrun/index.html",
+    "https://www.cue-net.or.jp/kouen/kasiwa/dogrun/guidance.html",
+    "https://www.pref.chiba.lg.jp/kouen/toshikouen/guidemap/kashiwanoha/index.html"
+   ]
+  },
+  {
+   "id": "D177",
+   "pref": "千葉県",
+   "name": "青葉の森公園ドッグラン（県立）",
+   "city": "千葉市中央区",
+   "kind": "公営",
+   "url": "http://www.cue-net.or.jp/kouen/aoba/dogrun/index.html",
+   "addr": "千葉市中央区青葉町（陸上競技場の近く）",
+   "hours": "6:00〜19:00",
+   "fee": "利用は無料（年度ごとの登録料 1頭3,000円）",
+   "size": "約1,280㎡",
+   "reg": "前もってガイダンス（予約制・約60分）を受けて登録。登録は翌年の6月30日まで有効で毎年更新。登録証を首から下げて使う",
+   "need": "鑑札かマイクロチップ登録証明書、その年度か前年度の狂犬病予防注射済票（金属プレートの現物。注射済証や猶予証明書だけでは登録できない）、犬の写真（縦3cm×横2.5cm）",
+   "closed": "月曜（祝日なら翌日）、1月1日〜3日、施設管理の日",
+   "src": [
+    "http://www.cue-net.or.jp/kouen/aoba/dogrun/index.html",
+    "http://www.cue-net.or.jp/kouen/aoba/dogrun/guidance.html",
+    "https://www.pref.chiba.lg.jp/kouen/toshikouen/guidemap/aoba/index.html"
+   ]
+  },
+  {
+   "id": "D178",
+   "pref": "千葉県",
+   "name": "ふなばしアンデルセン公園ドッグラン",
+   "city": "船橋市",
+   "kind": "公営",
+   "url": "https://www.park-funabashi.or.jp/and/dog_guide.html",
+   "addr": "船橋市神保町18番地（アンデルセン公園とは入口が別で、行き来はできない）",
+   "hours": "10:00〜16:00",
+   "fee": "1頭1回300円",
+   "size": "芝生 約4,830㎡。12kg未満と12kg以上のエリア（1週間ごとに入れかえ）",
+   "reg": "「利用規定兼同意書」を読んで受付をしてから入る",
+   "need": "その年度か前年度に自治体が出した狂犬病予防注射済票を犬につける（動物病院の紙の注射済証明書では使えない）",
+   "closed": "営業時間・休業日カレンダーで確かめる",
+   "parking": "普通車1回500円（12月1日〜3月15日は300円）",
+   "src": [
+    "https://www.park-funabashi.or.jp/and/dog_guide.html",
+    "https://www.city.funabashi.lg.jp/faq/machi/kouen/003/p059764.html"
+   ]
+  },
+  {
+   "id": "D179",
+   "pref": "千葉県",
+   "name": "北総花の丘公園ドッグラン（県立）",
+   "city": "印西市",
+   "kind": "公営",
+   "url": "https://www.pref.chiba.lg.jp/kouen/toshikouen/guidemap/documents/parkguide-hokusou.pdf",
+   "addr": "印西市原山（公園のEゾーン）",
+   "reg": "登録制",
+   "parking": "公園の有料駐車場（Bゾーン250台・Eゾーン155台）",
+   "src": [
+    "https://www.pref.chiba.lg.jp/kouen/toshikouen/guidemap/documents/parkguide-hokusou.pdf",
+    "https://www.pref.chiba.lg.jp/kouhou/kids/chi-bakun/machi/shisetsu/kouennado.html"
+   ]
+  },
+  {
+   "id": "D180",
+   "pref": "愛知県",
+   "name": "庄内緑地ドッグラン",
+   "city": "名古屋市西区",
+   "kind": "公営",
+   "url": "https://shonai-ryokuchi.jp/facility/facility25.html",
+   "addr": "名古屋市西区山田町大字上小田井字敷地3527（庄内緑地グリーンプラザ）",
+   "size": "大（約800㎡）と小（約300㎡）の2か所",
+   "note": "名古屋市営のドッグラン。ドッグランボランティアが運営し、現地で説明をする",
+   "src": [
+    "https://shonai-ryokuchi.jp/facility/facility25.html",
+    "https://aichinow.pref.aichi.jp/features/detail/153"
+   ]
+  },
+  {
+   "id": "D181",
+   "pref": "愛知県",
+   "name": "サーブアイランド ドッグCafé＆ドッグラン",
+   "city": "新城市",
+   "kind": "民間",
+   "url": "https://serveisland.com/dogrun",
+   "addr": "新城市豊岡字田ノ島52-9",
+   "hours": "10:00〜17:00（その日のうちは何度でも出入りできる）",
+   "fee": "大人550円、子ども（8〜15歳）300円、犬1頭550円（税込）",
+   "size": "天然芝 約300坪",
+   "parking": "無料（20台）",
+   "ng": "狂犬病・ワクチンなどの予防接種がすんでいない犬、うつる皮ふ病のある犬",
+   "src": [
+    "https://serveisland.com/dogrun",
+    "https://serveisland.com/"
+   ]
+  },
+  {
+   "id": "D182",
+   "pref": "福岡県",
+   "name": "西部運動公園ドッグラン",
+   "city": "福岡市西区",
+   "kind": "公営",
+   "url": "https://seibu-sports-park.com/facility/dogrun/",
+   "addr": "福岡市西区飯盛385",
+   "hours": "6:00〜21:00",
+   "fee": "利用は無料（登録手数料 1頭1,000円。新規・更新・再発行のとき）",
+   "size": "小型犬エリア 460㎡・中・大型犬エリア 586㎡",
+   "reg": "登録が必要（管理事務所の窓口 11:00〜16:00、年末年始は休み）",
+   "need": "犬鑑札と、その年度の狂犬病予防注射済票（どちらも現物・犬につける）、本人確認書類。マイクロチップの犬はマイクロチップ登録証も",
+   "ng": "登録していない犬",
+   "src": [
+    "https://seibu-sports-park.com/facility/dogrun/",
+    "https://seibu-sports-park.com/"
+   ]
+  },
+  {
+   "id": "D183",
+   "pref": "福岡県",
+   "name": "リバーサイドパーク（新宝満川地区）ドッグラン",
+   "city": "久留米市",
+   "kind": "公営",
+   "url": "https://kurumekoen.org/river/river_riyo/",
+   "addr": "久留米市（リバーサイドパークの新宝満川地区）",
+   "hours": "9〜4月 8:00〜18:00、5〜8月 7:30〜19:30",
+   "fee": "1回1頭200円、3か月パス1,010円、年間パス3,050円（税込）",
+   "size": "ドッグランは2つ",
+   "closed": "毎月第1水曜",
+   "src": [
+    "https://kurumekoen.org/river/river_riyo/",
+    "https://www.city.kurume.fukuoka.jp/1100keikaku/2030mayor/3010kishakaiken_19/files/2019-0510-kaiken2.pdf"
+   ]
+  },
+  {
+   "id": "D184",
+   "pref": "福岡県",
+   "name": "DogWiller（ドッグウィラー）のドッグラン",
+   "city": "久留米市",
+   "kind": "民間",
+   "url": "https://www.dogwiller.com/",
+   "addr": "久留米市田主丸町益生田610-7",
+   "hours": "9:30〜17:00（受付16:30まで）。夏は7:00〜13:00（受付12:30まで）",
+   "fee": "1頭目800円・2頭目から400円。貸し切り1時間2,000円",
+   "size": "天然芝。中型・大型犬専用（小型犬だけでは使えない）",
+   "closed": "木曜・金曜",
+   "ng": "小型犬だけの利用。土佐犬・アメリカンピットブルテリア・ロットワイラーなどは貸し切りのときだけ",
+   "src": [
+    "https://www.dogwiller.com/"
+   ]
+  },
+  {
+   "id": "D185",
+   "pref": "兵庫県",
+   "name": "垂水健康公園ドッグラン",
+   "city": "神戸市垂水区",
+   "kind": "公営",
+   "url": "https://www.kobe-park.or.jp/guide/dog_run_tarumi/",
+   "hours": "土・日・祝日の9:00〜17:00",
+   "closed": "平日。8月・9月と12月15日〜2月15日は閉める（予定は随時変わる）",
+   "note": "小束山婦人会が運営",
+   "src": [
+    "https://www.kobe-park.or.jp/guide/dog_run_tarumi/"
+   ]
+  },
+  {
+   "id": "D186",
+   "pref": "兵庫県",
+   "name": "北神戸田園スポーツ公園ドッグラン",
+   "city": "神戸市北区",
+   "kind": "公営",
+   "url": "https://www.denspo.com/wp/wp-content/uploads/2024/06/kiyaku.pdf",
+   "addr": "神戸市北区有野町二郎",
+   "hours": "4〜9月 8:30〜19:00、10〜3月 8:30〜17:00",
+   "fee": "利用は無料（利用登録料 1頭 年500円）",
+   "reg": "体育館1階の管理事務所（9時〜17時）でサポーターズクラブの会員登録と犬の利用登録。1年ごとに更新",
+   "need": "鑑札、狂犬病予防注射済証、1年以内の3種以上のワクチン接種済証（1年以内の抗体価証明書でも可）",
+   "closed": "毎月第4火曜、年末年始、荒天のとき、公園の行事・修繕・草刈りの日",
+   "parking": "公園の駐車場 約300台（平日最大300円・土日祝最大500円）",
+   "ng": "登録していない犬、かみつきなどのトラブルを起こした犬、発情期や病気の犬、闘犬目的の犬などほかの利用者をこわがらせる犬、犬以外のペット",
+   "src": [
+    "https://www.denspo.com/wp/wp-content/uploads/2024/06/kiyaku.pdf",
+    "https://www.denspo.com/"
+   ]
+  },
+  {
+   "id": "D187",
+   "pref": "兵庫県",
+   "name": "WAKUWAKUドッグランド神戸六甲",
+   "city": "神戸市北区",
+   "kind": "民間",
+   "url": "https://wakuwaku-dogland.com/dogrun.html",
+   "addr": "神戸市北区有野町唐櫃1563-1",
+   "hours": "10:30〜17:00（最終受付）",
+   "fee": "1日800円（追加1頭500円）。貸し切り1時間5,500円",
+   "size": "天然芝の屋外ドッグラン、プール（季節による）、室内ドッグラン",
+   "need": "はじめての利用は、1年以内の狂犬病と混合ワクチン（5種以上）の接種がわかるもの（コピー・写真可）",
+   "closed": "火曜",
+   "ng": "1年以内にワクチンを受けていない犬、生後6か月未満、攻撃的な犬、ヒート中・直後のメス、病気の犬。大型犬（20kg超）は大型犬の日（第2土曜・第4木曜）か貸し切りのときだけ",
+   "src": [
+    "https://wakuwaku-dogland.com/dogrun.html",
+    "https://wakuwaku-dogland.com/"
+   ]
+  },
+  {
+   "id": "D188",
+   "pref": "大阪府",
+   "name": "GRASS 高槻安満遺跡公園店のドッグラン",
+   "city": "高槻市",
+   "kind": "民間",
+   "url": "https://grass-grass.jp/shop_takatsuki",
+   "addr": "高槻市八丁畷町12-15",
+   "hours": "10:00〜19:00（ドッグランの受付は18:00まで）。6〜9月は20:00まで",
+   "size": "屋根つきのドッグラン",
+   "reg": "「Wan!Pass」アプリを入れて使う",
+   "need": "アプリでワクチン接種証明書と狂犬病予防接種証明書をアップロード",
+   "closed": "元日だけ休み",
+   "parking": "安満遺跡公園の東駐車場",
+   "src": [
+    "https://grass-grass.jp/shop_takatsuki"
+   ]
+  },
+  {
+   "id": "D189",
+   "pref": "大阪府",
+   "name": "GRASS DOG&CAT てんしば店のドッグラン",
+   "city": "大阪市天王寺区",
+   "kind": "民間",
+   "url": "https://grass-grass.jp/shop_tenshiba",
+   "addr": "大阪市天王寺区茶臼山町5-55（天王寺公園エントランスエリア「てんしば」）",
+   "hours": "10:00〜19:00（6〜9月は20:00まで）。ドッグランの受付は18:00まで",
+   "size": "屋外のドッグラン",
+   "reg": "「Wan!Pass」アプリを入れて使う",
+   "need": "アプリでワクチン接種証明書と狂犬病予防接種証明書をアップロード",
+   "closed": "元日だけ休み",
+   "parking": "天王寺公園地下駐車場など（有料）",
+   "src": [
+    "https://grass-grass.jp/shop_tenshiba",
+    "https://www.city.osaka.lg.jp/seisakukikakushitsu/page/0000674637.html"
+   ]
+  },
+  {
+   "id": "D190",
+   "pref": "大阪府",
+   "name": "GRASS 岸和田WHATAWON店のドッグラン",
+   "city": "岸和田市",
+   "kind": "民間",
+   "url": "https://grass-grass.jp/shop_kishiwada",
+   "addr": "岸和田市岸の丘町1丁目32-1",
+   "hours": "10:00〜19:00（6〜9月は20:00まで）",
+   "fee": "1時間 平日550円・土日祝1,100円、1日フリー 平日1,100円・土日祝1,650円（税込）",
+   "size": "小型犬用（10kg未満）と中型・大型犬用（10kg以上）",
+   "reg": "「Wan!Pass」アプリを入れて利用誓約書を出す",
+   "need": "1年以内の狂犬病予防注射と、1年以内の3種以上の混合ワクチン（受けられない犬は獣医師の抗体価証明書）",
+   "closed": "不定休",
+   "parking": "専用駐車場あり",
+   "ng": "狂犬病予防注射を受けられない犬、ワクチンの条件を満たさない犬、攻撃的な犬、ヒート中（出血が続くあいだとその後3週間）の犬。中学生未満の子どもは入れない",
+   "src": [
+    "https://grass-grass.jp/shop_kishiwada"
+   ]
+  },
+  {
+   "id": "D191",
+   "pref": "神奈川県",
+   "name": "さがみ湖プレジャーフォレストのドッグラン",
+   "city": "相模原市緑区",
+   "kind": "民間",
+   "url": "https://www.sagamiko-resort.jp/dogs/index.html",
+   "addr": "相模原市緑区若柳1634番地",
+   "fee": "犬の入園料 1頭目1,000円・2頭目から500円（人の入園料は別）",
+   "size": "入園口手前（全犬種・仕切りなし）、「天狗道場」奥（小型犬専用・中型犬専用）、「鏡の館」奥（小型犬専用・全犬種）の3か所",
+   "reg": "「ペット（犬）同伴入場参加規約」に同意する（前もって記入するか窓口で署名）",
+   "need": "狂犬病など決められた予防接種をすませた犬だけ",
+   "closed": "営業カレンダーで確かめる",
+   "src": [
+    "https://www.sagamiko-resort.jp/dogs/index.html",
+    "https://www.sagamiko-resort.jp/access/index.html"
+   ]
+  },
+  {
+   "id": "D192",
+   "pref": "東京都",
+   "name": "イリオ ららぽーと豊洲のドッグラン",
+   "city": "江東区",
+   "kind": "民間",
+   "url": "https://mitsui-shopping-park.com/lalaport/toyosu/shopguide/702749.html",
+   "addr": "江東区豊洲2-4-9（アーバンドック ららぽーと豊洲1 NORTH PORT 1F）",
+   "hours": "店の営業時間 10:00〜21:00",
+   "fee": "犬1頭と飼い主2人で30分ごと 平日800円・土日祝1,000円（追加の犬・人は30分ごとに220円、税込）",
+   "need": "その年度の狂犬病予防注射済票と、1年以内の証明書",
+   "ng": "小学生以下の子どもだけでは使えない",
+   "src": [
+    "https://mitsui-shopping-park.com/lalaport/toyosu/shopguide/702749.html",
+    "https://mitsui-shopping-park.com/lalaport/toyosu/service/pet_use.html"
+   ]
+  },
+  {
+   "id": "D193",
+   "pref": "東京都",
+   "name": "つばさドッグラン（城南島海浜公園）",
+   "city": "大田区",
+   "kind": "公営",
+   "url": "https://seaside-park.jp/wp-content/uploads/城南島海浜公園.pdf",
+   "addr": "大田区城南島4丁目2番2号（公園の所在地）",
+   "reg": "前もって犬ごとの利用者登録が必要",
+   "parking": "公園の有料駐車場（275台。最初の1時間300円、その後30分ごとに100円）",
+   "src": [
+    "https://seaside-park.jp/wp-content/uploads/城南島海浜公園.pdf"
+   ]
+  },
+  {
+   "id": "D194",
+   "pref": "愛知県",
+   "name": "DOGWITH（ドッグウィズ）のドッグラン",
+   "city": "長久手市",
+   "kind": "民間",
+   "url": "https://www.dogwith.jp",
+   "addr": "長久手市岩作三ヶ峯2-161",
+   "hours": "月・水・木 10:00〜18:30、金・土・日 9:00〜18:30",
+   "size": "屋外 約1,000坪・インドア 約150坪。犬の体型で仕切りがある",
+   "need": "1年以内の狂犬病予防注射と混合ワクチンの証明書（画像でも可）。受けられない犬は獣医師の抗体証明書・狂犬病予防注射猶予証明",
+   "closed": "火曜（祝日は営業）",
+   "ng": "ワクチンを受けて10日たっていない犬",
+   "src": [
+    "https://www.dogwith.jp"
+   ]
+  },
+  {
+   "id": "D195",
+   "pref": "愛知県",
+   "name": "ドッグガーデン スパニエル",
+   "city": "犬山市",
+   "kind": "民間",
+   "url": "https://www.doggarden-spaniel.jp/",
+   "addr": "犬山市喜六屋敷20-5",
+   "hours": "正午から日没まで（前日までの完全予約制・貸し切り）",
+   "fee": "1頭2時間2,000円（同じ飼い主の2頭目から半額）。付き添いは1頭に2人まで無料、3人目から1人500円。小学生までは無料",
+   "reg": "前日までの予約が必要（当日は受けない）",
+   "closed": "水曜",
+   "src": [
+    "https://www.doggarden-spaniel.jp/"
+   ]
   }
- ]
+ ],
+ "none": {
+  "島根県": "公式ページで確かめられる常設の公営ドッグランは、まだ見つかっていません。松江市は2025年3月に田和山西広場公園で試しにドッグランを開き、市の公園にドッグランを置いて管理する人を募集しています。",
+  "佐賀県": "公式ページで確かめられる常設の公営ドッグランは、まだ見つかっていません。"
+ },
+ "none_src": {
+  "島根県": "https://www.city.matsue.lg.jp/soshikikarasagasu/toshiseibibu_koenryokuchika/koen/1/25899.html"
+ }
 }

@@ -1,0 +1,52 @@
+# Xの予約投稿（@pettaxi_yoyaku、週2回：火・金の20時）。Nori 2026-11-02「僕の作業はゼロにしたい」。
+# 毎週日曜の昼に、sns/posts.json からまだ予約していない投稿を2つ、次の火・金に予約する（sns/schedule_x.py）。
+# 予約したものは sns/state.json に記録してコミットする。キーは Secret の TYPEFULLY_API_KEY（ペットタクシー用の無料 Typefully）。
+# 投稿が残っていないときは Issue「Xの投稿が残っていません」を開く。
+name: sns-x
+on:
+  schedule:
+    - cron: '0 3 * * 0' # 毎週日曜 12:00（日本時間）
+  workflow_dispatch:
+    inputs:
+      redo:
+        description: 'まだ出ていない予約を消して入れ直す'
+        type: boolean
+        default: false
+      hold:
+        description: 'まだ出ていない予約を消して止める（入れ直さない）'
+        type: boolean
+        default: false
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: sns-x
+  cancel-in-progress: false
+jobs:
+  schedule:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: 予約を入れる
+        id: run
+        env:
+          TYPEFULLY_API_KEY: ${{ secrets.TYPEFULLY_API_KEY }}
+        run: |
+          set +e
+          python3 sns/schedule_x.py 2 ${{ inputs.redo && '--redo' || '' }} ${{ inputs.hold && '--hold' || '' }}; c=$?
+          echo "code=$c" >> "$GITHUB_OUTPUT"
+          [ "$c" = 0 ] || [ "$c" = 2 ] || exit "$c"
+      - name: 記録をコミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sns/state.json
+          git diff --cached --quiet || { git commit -m "Xの予約を記録"; git push; }
+      - name: 投稿が残っていないとき
+        if: steps.run.outputs.code == '2'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          n=$(gh issue list --state open --search "Xの投稿が残っていません in:title" --json number --jq '.[0].number')
+          [ -n "$n" ] || gh issue create --title "Xの投稿が残っていません" --body "sns/posts.json に新しい投稿を足してください（node sns/gen.cjs で画像も作る）。"

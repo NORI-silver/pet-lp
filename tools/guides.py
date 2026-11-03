@@ -681,6 +681,19 @@ GUIDES.extend(FACILITY_GUIDES)
 from guides_info import INFO_GUIDES
 GUIDES.extend(INFO_GUIDES)
 
+# 迷子・犬の登録・引っ越し・飼えなくなったときの記事（tools/guides_jichitai.py、/jichitai/ と同じ窓口）。
+from guides_jichitai import JICHITAI_GUIDES
+GUIDES.extend(JICHITAI_GUIDES)
+# 老犬ホーム・ドッグトレーナー・ペットシッターのえらび方・頼み方の記事（tools/guides_care.py）。
+from guides_care import CARE_GUIDES
+GUIDES.extend(CARE_GUIDES)
+from guides_hotel import HOTEL_GUIDES
+GUIDES.extend(HOTEL_GUIDES)
+
+# ペットが亡くなったときの記事（tools/guides_sougi.py、/sougi/ と同じテーマ）。
+from guides_sougi import SOUGI_GUIDES
+GUIDES.extend(SOUGI_GUIDES)
+
 for guide in GUIDES:
     if guide["slug"] == "hospital":
         guide["sections"].append(("病院名から行き方と移動の準備を調べる", [("links", [

@@ -364,7 +364,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         });
         box.appendChild(list); more.appendChild(box);
       }
-      if (card.price.local) {
+      if (card.price.fixed) { if (card.price.planNote) add("p",roundYenText(card.price.planNote),"partner-note"); }
+      else if (card.price.local) {
         var lp = card.price.local, fy = function(v, unknown){ return v ? yen(v) + (unknown ? "〜" : "") : unknown ? "要確認" : "0円"; };
         breakdown("迎車 " + fy(lp.pickup, lp.pickupUnknown) + "・回送 " + fy(lp.returnFee, lp.returnUnknown) + (lp.pickupUnknown || lp.returnUnknown ? "（追加分は要確認）" : "を含む"), lp);
         if (card.price.highway) breakdown("高速利用時 " + yen(card.price.highway.amount) + (card.price.highway.pickupUnknown || card.price.highway.returnUnknown ? "〜" : "") + " ＋ 通行料の実費", card.price.highway, "hw");
@@ -375,7 +376,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       }
       if (card.price.night && !(card.price.local && card.price.local.nightExtra)) add("p",roundYenText(card.price.night),"partner-note");
       add("p", card.car); add("p", card.payment);
-      add("p", (card.price.amount == null ? "" : "この会社の公式サイトに書かれている料金表をもとに、道のりから計算した概算です（100円単位にまるめています）。当日の道順・渋滞・待ち時間などで変わります。確定料金は、問い合わせたあと会社が返事でお知らせします。") + "通行料・駐車場代は別途実費です。高速道路を使うときの総額は、事業者の確認後にお知らせします。", "partner-note");
+      add("p", (card.price.amount == null ? "" : card.price.fixed ? "この会社の公式サイトに書かれている定額をもとにした概算です（100円単位にまるめています）。当日の条件で変わることがあります。確定料金は、問い合わせたあと会社が返事でお知らせします。" : "この会社の公式サイトに書かれている料金表をもとに、道のりから計算した概算です（100円単位にまるめています）。当日の道順・渋滞・待ち時間などで変わります。確定料金は、問い合わせたあと会社が返事でお知らせします。") + (card.price.fixed && card.price.tollIncluded ? "" : card.price.fixed ? "駐車場代は別途実費です。" : "通行料・駐車場代は別途実費です。高速道路を使うときの総額は、事業者の確認後にお知らせします。"), "partner-note");
       // 表示だけの会社（準備中）。予約の依頼はできない（サーバーでも断る）
       if (card.display_only) {
         article.classList.add("partner-later");
@@ -1522,8 +1523,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     }
     tabs.addEventListener("click", function(e){ var b = e.target.closest("button"); if (b) setMode(b.dataset.mode); });
     // 都道府県を選びなおしたら、場所の欄は空にして都道府県の一覧に戻す
-    $("emgPref").addEventListener("change", function(){ track("emergency_pref", {pref: this.value}); inp.value = ""; say(""); ++whereSeq; here = null; ++nearSeq; show(this.value); });
-    show("東京都");
+    // 選んだ都道府県は、病院・ドッグランなどのページと共通で覚えておく（tools/prefkeep.py の petInfoPref。Nori 2026-11-02「一度選んだらユーザーが変更するまで固定」）
+    $("emgPref").addEventListener("change", function(){ track("emergency_pref", {pref: this.value}); try { localStorage.setItem("petInfoPref", this.value); } catch (x) {} inp.value = ""; say(""); ++whereSeq; here = null; ++nearSeq; show(this.value); });
+    // トップでは覚えている県を、エリアページではそのページの県を最初に出す
+    (function(){
+      var p = null;
+      if (location.pathname === "/") { try { p = localStorage.getItem("petInfoPref"); } catch (x) {} }
+      if (p && [].some.call($("emgPref").options, function(o){ return o.value === p; })) setSelect($("emgPref"), p);
+      show($("emgPref").value || "東京都");
+    })();
     if (location.hash === "#emergency") setMode("emg");
     // 右上の「空き状況と料金を問い合わせる」：ふつうのタブに戻す（Nori 2026-11-01 予約と見積もりを分けない）
     document.querySelectorAll("[data-cta]").forEach(function(a){
