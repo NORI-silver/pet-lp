@@ -16,6 +16,10 @@ on:
         description: 'まだ出ていない予約を消して止める（入れ直さない）'
         type: boolean
         default: false
+      status:
+        description: '予約・投稿のようすを出すだけ（何も変えない）'
+        type: boolean
+        default: false
 permissions:
   contents: write
   issues: write
@@ -34,7 +38,7 @@ jobs:
           TYPEFULLY_API_KEY: ${{ secrets.TYPEFULLY_API_KEY }}
         run: |
           set +e
-          python3 sns/schedule_x.py 2 ${{ inputs.redo && '--redo' || '' }} ${{ inputs.hold && '--hold' || '' }}; c=$?
+          python3 sns/schedule_x.py 2 ${{ inputs.redo && '--redo' || '' }} ${{ inputs.hold && '--hold' || '' }} ${{ inputs.status && '--status' || '' }}; c=$?
           echo "code=$c" >> "$GITHUB_OUTPUT"
           [ "$c" = 0 ] || [ "$c" = 2 ] || exit "$c"
       - name: 記録をコミット
