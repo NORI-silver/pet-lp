@@ -56,6 +56,12 @@ def next_slots(after, n):
 def main():
     n = int(next((a for a in sys.argv[1:] if a.isdigit()), 2))
     dry = "--dry" in sys.argv
+    if "--status" in sys.argv:  # 予約・投稿のようすを出すだけ（何も変えない）
+        key = os.environ.get("TYPEFULLY_API_KEY") or sys.exit("TYPEFULLY_API_KEY がありません")
+        sid = social_set(key)
+        for d in req("GET", f"/social-sets/{sid}/drafts?limit=10&order_by=-updated_at", key)["results"]:
+            print(d.get("status"), d.get("scheduled_date"), d.get("published_at"), d.get("x_published_url"), (d.get("preview") or "")[:30].replace("\n", " "))
+        return 0
     hold = "--hold" in sys.argv  # 予約ずみ（まだ出ていない）ものを消して、入れ直さない
     redo = "--redo" in sys.argv or hold  # 予約ずみ（まだ出ていない）ものを消して入れ直す
     posts = json.load(open(os.path.join(HERE, "posts.json"), encoding="utf-8"))["posts"]
