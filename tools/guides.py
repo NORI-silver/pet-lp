@@ -672,6 +672,7 @@ for guide in GUIDES:
     if guide["slug"] in EXTRA_SECTIONS:
         guide["sections"].extend(EXTRA_SECTIONS[guide["slug"]])
         guide["modified"] = "2026-11-01"
+        if guide["slug"] in ("new-family", "large-dog", "cat", "grooming-hotel", "long-distance"): guide["modified"] = "2026-11-03"  # 11/3 事業者データの数字を更新
 # [B] 2026-11-03：本文の短かったガイドに、データを数えた節を足す（tools/guides_counts.py）。
 from guides_counts import EXTRA as _COUNT_EXTRA
 for guide in GUIDES:
