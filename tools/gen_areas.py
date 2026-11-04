@@ -1453,6 +1453,10 @@ nf = head("ページが見つかりません｜ペットタクシー予約窓口
 <section><div class="wrap"><div class="sh"><h2>エリアからさがす</h2></div>{area_links()}</div></section></main>
 ''' + foot("/#form")
 open(os.path.join(ROOT, "404.html"), "w", encoding="utf-8").write(nf)
+# [B] 2026-11-04 同じ県のほかのカテゴリへのリンク（tools/crosslink.py）
+import crosslink
+_xl_prefs = [(a["slug"], {"tokyo": "東京都", "kanagawa": "神奈川県", "saitama": "埼玉県", "chiba": "千葉県"}[a["slug"]]) for a in AREAS] + [(x[0], x[1]) for x in PREFS]
+print("crosslink", crosslink.build(ROOT, _xl_prefs), "pages")
 # AIエージェント向けの入口（/webmcp/data.json と /llms.txt。tools/gen_webmcp.py）
 import gen_webmcp
 gen_webmcp.build(ROOT)
