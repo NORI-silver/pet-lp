@@ -15,7 +15,7 @@ CATS = [  # (フォルダ, ボタンの文字)
     ("rojin-home", "老犬ホーム・老猫ホーム"),
 ]
 # その県の病院・施設への移動ガイド（tools/facility_guides.py）。夜間病院の県ページにだけ足す
-GUIDE_LINKS = {"osaka": [("/guide/osaka-yakan-taxi/", "大阪どうぶつ夜間急病センターへの行き方")],
+GUIDE_LINKS = {"osaka": [("/guide/osaka-yakan-taxi/", "大阪どうぶつ夜間急病センターへの行き方"), ("/guide/hokusetsu-yakan-taxi/", "北摂夜間救急動物病院への行き方")],
                "tokyo": [("/guide/jarmec-tokyo-taxi/", "日本動物高度医療センター東京病院へのタクシー通院")],
                "kanagawa": [("/guide/jarmec-kawasaki-taxi/", "日本動物高度医療センター川崎本院へのタクシー通院")]}
 TOP4 = {"tokyo", "kanagawa", "saitama", "chiba"}
