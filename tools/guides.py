@@ -708,11 +708,11 @@ for guide in GUIDES:
     if guide["slug"] == "hospital":
         guide["sections"].append(("病院名から行き方と移動の準備を調べる", [("links", [
             (g["title"], "/guide/" + g["slug"] + "/") for g in FACILITY_GUIDES
-            if g["slug"] in {"jarmec-kawasaki-taxi", "jarmec-tokyo-taxi", "jsamc-tokorozawa-taxi", "jamc-shibuya-taxi"}
+            if g["slug"] in {"jarmec-kawasaki-taxi", "jarmec-tokyo-taxi", "jsamc-tokorozawa-taxi", "jamc-shibuya-taxi", "osaka-yakan-taxi"}
         ])]))
         guide["modified"] = "2026-10-31"
     if guide["slug"] == "what-is-pet-taxi":
-        guide["modified"] = "2026-11-01"
+        guide["modified"] = "2026-11-04"  # 11/4 数字で見る節
     if guide["slug"] == "senior":
         guide["sections"].append(("介護ケア施設への移動を調べる", [("links", [
             ("WANCOTT（ワンコット）への移動と施設の有料送迎", "/guide/wancott-taxi/")

@@ -14,6 +14,10 @@ CATS = [  # (フォルダ, ボタンの文字)
     ("dog-trainer", "ドッグトレーナー・しつけ教室"),
     ("rojin-home", "老犬ホーム・老猫ホーム"),
 ]
+# その県の病院・施設への移動ガイド（tools/facility_guides.py）。夜間病院の県ページにだけ足す
+GUIDE_LINKS = {"osaka": [("/guide/osaka-yakan-taxi/", "大阪どうぶつ夜間急病センターへの行き方")],
+               "tokyo": [("/guide/jarmec-tokyo-taxi/", "日本動物高度医療センター東京病院へのタクシー通院")],
+               "kanagawa": [("/guide/jarmec-kawasaki-taxi/", "日本動物高度医療センター川崎本院へのタクシー通院")]}
 TOP4 = {"tokyo", "kanagawa", "saitama", "chiba"}
 MARK = re.compile(r"<!--XLINK-->.*?<!--/XLINK-->\n?", re.S)
 
@@ -28,6 +32,8 @@ def build(root, prefs):
             html = MARK.sub("", open(p, encoding="utf-8").read())
             links = "".join(f'<li><a href="/{d2}/{slug}/">{name}の{label}</a></li>' for d2, label in have if d2 != d)
             links += f'<li><a href="{taxi}">{name}のペットタクシー</a></li>'
+            if d == "hospital/night":
+                links += "".join(f'<li><a href="{u}">{t}</a></li>' for u, t in GUIDE_LINKS.get(slug, []))
             block = (f'<!--XLINK--><section style="padding-top:0"><div class="wrap"><div class="sh"><h2>{name}のほかの情報</h2></div>'
                      f'<ul class="other">{links}</ul></div></section><!--/XLINK-->\n')
             if "</main>" not in html: continue
