@@ -34,6 +34,7 @@ var CONFIG = {
   REPLY_TO: '',
   // 新しい受付・決定・見つからずのたびに運営者へメールする
   ADMIN_NOTIFY: true,
+  MAIL_RESERVE: 20, // メールの残りがこれより少ない日は、運営者あての通知を送らない
   // テスト：true にすると、すべての依頼で会社あての連絡を運営者のメールに送る（会社には届かない）
   // false のままでも、お名前が「テスト」で始まる依頼／メールが運営者と同じ依頼はテスト扱いになる
   TEST_MODE: false,
@@ -428,7 +429,8 @@ function retSelect_() {
 }
 
 function decidedText_(r, pt) {
-  return pt.name + ' ' + (pt.person ? pt.person + '様' : 'ご担当者さま') + '\n\nありがとうございます。こちらのご依頼をお願いすることになりました。\nお客さまへ直接ご連絡をお願いします。\n\n' + customerForPartner_(r);
+  return pt.name + ' ' + (pt.person ? pt.person + '様' : 'ご担当者さま') + '\n\nありがとうございます。こちらのご依頼をお願いすることになりました。\nお客さまへ直接ご連絡をお願いします。\n\n' + customerForPartner_(r) +
+    '\n\n▼ やむを得ずお受けできなくなったとき（押すとお客さまにお知らせし、このご予約は取り消しになります）\n' + partnerCancelUrl_(r['受付番号'], pt.id);
 }
 
 function closedText_(r, pt) {
@@ -748,6 +750,7 @@ function doGet(e) {
     if (q.a === 'cancel') return cancelPage_(q);
     if (q.a === 'choose') return choosePage_(q);
     if (q.a === 'withdraw') return withdrawPage_(q);
+    if (q.a === 'pcancel') return partnerCancelPage_(q);
     if (q.a === 'ride') return ridePage_(q);
     if (q.a === 'admin') return adminPage_(q);
     if (q.a === 'prefill') return prefill_(q);
@@ -773,6 +776,7 @@ function acceptPage_(q) {
     var asks = checks_(pt, r).ask;
     if (asks.some(function (x, i) { return q['ok' + i] !== '1'; })) return page_('確認が終わっていません', '<p>「引き受ける前にご確認ください」の項目に、すべてチェックを入れてください。できない項目があるときは、お受けにならないでください。</p><p><a href="javascript:history.back()">戻る</a></p>');
     if (!fare || !at || (isRound_(r) && !way)) return page_('入力が足りません', '<p>お迎え時刻・確定料金（円）' + (isRound_(r) ? '・帰りのやり方' : '') + 'を入れてください。</p><p><a href="javascript:history.back()">戻る</a></p>');
+    if (needsChoice_(r) && at.getTime() - CONFIG.QUOTE_CUTOFF_MIN * 60000 <= Date.now()) return page_('お迎えが近すぎます', '<p>お迎えの' + cutoffText_() + '前を過ぎるお返事は、お客さまが予約を確定できないため、お送りできません。お迎えの時刻を確かめてください。</p><p><a href="javascript:history.back()">戻る</a></p>');
     if (needsChoice_(r)) {
       var qr = quote_(q.id, pt, at, fare, clip_(q.msg, 300), yenNum_(q.fare_hw), way);
       if (!qr.ok) return page_('締め切りました', '<p>' + esc_(qr.msg) + '</p>');
@@ -787,7 +791,8 @@ function acceptPage_(q) {
   }
 
   if (r['状態'] === ST.DONE && r['決定した提携先ID'] === pt.id) {
-    return page_('あなたに決まっています', '<p>お客さまへ直接ご連絡をお願いします。</p><div class="box">' + nl2br_(esc_(customerForPartner_(r))) + '</div>');
+    return page_('あなたに決まっています', '<p>お客さまへ直接ご連絡をお願いします。</p><div class="box">' + nl2br_(esc_(customerForPartner_(r))) + '</div>' +
+      '<p class="note">やむを得ずお受けできなくなったときは、<a href="' + esc_(partnerCancelUrl_(q.id, pt.id)) + '" target="_top">こちら</a>から取り消してください。お客さまにお知らせします。</p>');
   }
   if (r['状態'] !== ST.OPEN) return page_('締め切りました', '<p>このご依頼は締め切りました。ご確認ありがとうございました。</p>');
   var quoted = needsChoice_(r) && quotesOf_(r).filter(function (x) { return x.pid === pt.id; })[0];
@@ -925,7 +930,7 @@ function withdrawPage_(q) {
     var row = findReq_(q.id);
     if (!row) return page_('見つかりません', '<p>このご依頼は見つかりませんでした。</p>');
     r = row.data;
-    if (r['状態'] === ST.DONE && r['決定した提携先ID'] === pt.id) return page_('すでに予約が確定しています', '<p>お客さまが先に予約を確定しました。受けられない場合は、お手数ですが当サイトまでメールでお知らせください。</p>');
+    if (r['状態'] === ST.DONE && r['決定した提携先ID'] === pt.id) return page_('すでに予約が確定しています', '<p>お客さまが先に予約を確定しました。受けられない場合は、<a href="' + esc_(partnerCancelUrl_(q.id, pt.id)) + '" target="_top">こちら</a>から取り消してください。お客さまにお知らせします。</p>');
     if (r['状態'] !== ST.OPEN) return page_('締め切りました', '<p>このご依頼はもう締め切られています。取り下げは必要ありません。</p>');
     var list = quotesOf_(r), mine = list.filter(function (x) { return x.pid === pt.id; })[0];
     if (!mine) return page_('お返事が見つかりません', '<p>このお問い合わせへのお返事はまだありません。</p>');
@@ -942,6 +947,36 @@ function withdrawPage_(q) {
     (quotesOf_(findReq_(q.id).data).some(function (x) { return x.pid !== pt.id && !x.withdrawn; }) ? 'ほかの会社からのお返事は、そのままご予約いただけます。届いたメールをご確認ください。\n' : 'お手数ですが、同じ内容でもう一度お問い合わせいただけます。\n' + retryUrl_(q.id) + '\n'));
   notifyAdmin_('取り下げ ' + q.id + '：' + pt.name, pt.name + 'がお返事を取り下げました。\n\n' + rideText_(r));
   return page_('お返事を取り下げました', '<p>お客さまに、この内容では予約できないことをお知らせしました。ご連絡ありがとうございました。</p>');
+}
+// 予約が確定したあとで、会社がやむを得ず受けられなくなったとき（Nori 2026-11-08「破綻しないか」）
+function partnerCancelUrl_(id, pid) { return linkBase_() + '?a=pcancel&id=' + encodeURIComponent(id) + '&p=' + encodeURIComponent(pid) + '&k=' + sign_(id + ':' + pid + ':pcancel'); }
+function partnerCancelPage_(q) {
+  if (!q.id || !q.p || q.k !== sign_(q.id + ':' + q.p + ':pcancel')) return page_('リンクが正しくありません', '<p>お手数ですが、届いたメールのリンクからもう一度開いてください。</p>');
+  var pt = partnerById_(q.p), row0 = findReq_(q.id);
+  if (!pt || !row0) return page_('見つかりません', '<p>このご依頼は見つかりませんでした。</p>');
+  if (row0.data['状態'] !== ST.DONE || row0.data['決定した提携先ID'] !== pt.id) return page_('取り消しは必要ありません', '<p>このご予約は、いま貴社に決まっていません（お客さまが取り消したか、受付が終わっています）。</p>');
+  if (q.go !== '1') {
+    return page_('このご予約を取り消しますか？', '<div class="box">' + nl2br_(esc_('受付番号：' + q.id + '\nお迎え予定：' + fmt_(row0.data['お迎え予定']) + '\nお客さま：' + row0.data['お名前'] + ' 様')) + '</div>' +
+      '<p>押すと、お客さまに「ペットタクシーの都合でお受けできなくなりました」とお知らせし、このご予約は取り消しになります。お客さまにすでにご連絡している場合も、念のためお知らせします。</p>' +
+      '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pcancel') + hidden_('id', q.id) + hidden_('p', q.p) + hidden_('k', q.k) + hidden_('go', '1') +
+      '<button type="submit" class="gray">このご予約を取り消す</button></form>');
+  }
+  var lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    var row = findReq_(q.id);
+    if (row.data['状態'] !== ST.DONE || row.data['決定した提携先ID'] !== pt.id) return page_('取り消しは必要ありません', '<p>このご予約は、いま貴社に決まっていません。</p>');
+    setReq_(row.rowIndex, { '状態': ST.CANCEL, '終了日時': new Date() });
+    SpreadsheetApp.flush();
+  } finally {
+    lock.releaseLock();
+  }
+  var r = findReq_(q.id).data;
+  log_(q.id + ' 会社の都合で取り消し: ' + pt.id);
+  toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】ご予約をお受けできなくなりました（受付番号 ' + q.id + '）' + legTag_(r),
+    r['お名前'] + ' 様\n\n申し訳ありません。「' + pt.name + '」から、やむを得ない事情で ' + fmt_(r['お迎え予定']) + ' のご予約をお受けできなくなったと連絡がありました。このご予約は取り消しになりました。キャンセル料はかかりません。\n\nお手数ですが、同じ内容でほかの会社に問い合わせる場合は、こちらからどうぞ。\n' + retryUrl_(q.id));
+  notifyAdmin_('【会社の都合で取り消し】' + q.id + '：' + pt.name, pt.name + 'が確定後に取り消しました。お客さまに連絡が届いているか、必要なら確かめてください。\n\n' + rideText_(r));
+  return page_('ご予約を取り消しました', '<p>お客さまにお知らせしました。ご連絡ありがとうございました。</p>');
 }
 function chooseUrl_(id, pid) { return linkBase_() + '?a=choose&id=' + encodeURIComponent(id) + '&p=' + encodeURIComponent(pid) + '&k=' + sign_(id + ':' + pid + ':choose'); }
 
@@ -1364,6 +1399,8 @@ function closeOthers_(r, winnerId) {
 
 function notifyAdmin_(subject, text) {
   if (!CONFIG.ADMIN_NOTIFY) return;
+  // メールの1日の上限が近いときは、お客さま・会社あてを先に残すため、運営者あての通知を止める（ログには残る）
+  try { if (MailApp.getRemainingDailyQuota() < CONFIG.MAIL_RESERVE) { log_('上限が近いので運営者への通知を省略：' + subject); return; } } catch (e) {}
   mail_(adminEmail_(), '[運営] ' + subject, text + '\n\n予約シート：' + SpreadsheetApp.getActive().getUrl());
 }
 
