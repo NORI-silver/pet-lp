@@ -2349,7 +2349,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var a = go[0], b = go[go.length-1], ra = back[0], rb = back[back.length-1];
       var kmL = kmOf(rs[0],go), kmL2 = kmOf(rs[2],back);
       var kmH = kmOf(rs[1],go), kmH2 = kmOf(rs[3],back);
-      if (Math.max(kmL,kmL2)>250) {
+      if (Math.max(kmL,kmL2)>3000) { // 場所の取り違えだけを止める（前は250kmで、東京→広島のような長距離の依頼が候補ごと出なかった。2026-11-08 ペッタク）
         $("partnerResults").hidden = true; est.innerHTML = '<p>場所を確かめてください。距離がうまく計算できませんでした。</p>'; return;
       }
       var hasHigh = !!(rs[1] && rs[1].hw >= 1 || later && rs[3] && rs[3].hw >= 1);
