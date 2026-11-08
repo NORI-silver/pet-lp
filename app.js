@@ -170,7 +170,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
     var ready = cards.filter(function(c){ return !c.display_only; }).length, later = cards.length - ready;
-    if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。いまはどの会社にも、このサイトからはまだ問い合わせできません。料金は確定料金ではありません。" : (later ? cards.length + "社が候補です（うち" + later + "社は、このサイトからはまだ問い合わせできません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。" + (ready >= 2 ? "問い合わせたい会社を選ぶか、いちばん下の「全社に問い合わせる」でまとめて送れます。" : "問い合わせたい会社を選んでください。"));
+    if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。いまはどの会社にも、このサイトからはまだ問い合わせできません。" : (later ? cards.length + "社が候補です（うち" + later + "社は、このサイトからはまだ問い合わせできません）。" : cards.length + "社が候補です。") + (ready >= 2 ? "会社を選ぶか、下の「全社に問い合わせる」でまとめて送れます。" : "問い合わせたい会社を選んでください。"));
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。問い合わせは送信されていません。</span>';
     $("partnerSortBox").hidden = cards.length < 2;
     var hasDist = cards.some(function(c){ return !!c.shop; }); // 予約のしくみが古い版のあいだはお店の位置が来ないので、距離のしぼり込みを出さない
@@ -344,16 +344,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var ms = document.createElement("summary"); ms.textContent = "料金の内訳・車・お支払いなどを見る"; more.appendChild(ms);
       article.appendChild(more);
       function add(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; more.appendChild(el); return el; }
-      // この会社でまだ確かめられていない条件。引き受けるときに会社がチェックして確かめる（できなければ引き受けない）
-      if (card.check && card.check.length) {
-        var chk = document.createElement("details"); chk.className = "partner-check";
-        var cs = document.createElement("summary"); cs.textContent = "引き受けるときに会社が確かめること（" + card.check.length + "つ）"; chk.appendChild(cs);
-        var ul = document.createElement("ul");
-        card.check.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; ul.appendChild(li); });
-        chk.appendChild(ul);
-        var cn = document.createElement("p"); cn.textContent = "できない場合、その会社は引き受けません。そのときはメールでお知らせします。"; chk.appendChild(cn);
-        more.appendChild(chk);
-      }
+      // 「引き受けるときに会社が確かめること」（card.check）は、会社あての問い合わせメールにだけ出す。お客さまのカードには出さない（Nori 2026-11-08「ユーザに見せるべき？」）
       // 内訳は小さな文字の1行にして、押すと開く
       function breakdown(title, value, cls){
         var box = document.createElement("details"); box.className = "price-details" + (cls ? " " + cls : "");
@@ -376,7 +367,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       }
       if (card.price.night && !(card.price.local && card.price.local.nightExtra)) add("p",roundYenText(card.price.night),"partner-note");
       add("p", card.car); add("p", card.payment);
-      add("p", (card.price.amount == null ? "" : card.price.fixed ? "この会社の公式サイトに書かれている定額をもとにした概算です（100円単位にまるめています）。当日の条件で変わることがあります。確定料金は、問い合わせたあと会社が返事でお知らせします。" : "この会社の公式サイトに書かれている料金表をもとに、道のりから計算した概算です（100円単位にまるめています）。当日の道順・渋滞・待ち時間などで変わります。確定料金は、問い合わせたあと会社が返事でお知らせします。") + (card.price.fixed && card.price.tollIncluded ? "" : card.price.fixed ? "駐車場代は別途実費です。" : "通行料・駐車場代は別途実費です。高速道路を使うときの総額は、事業者の確認後にお知らせします。"), "partner-note");
+      add("p", (card.price.amount == null ? "" : card.price.fixed ? "公式サイトの定額をもとにした概算です。" : "公式サイトの料金表をもとにした概算です。") + (card.price.fixed && card.price.tollIncluded ? "" : card.price.fixed ? "駐車場代は別途実費です。" : "通行料・駐車場代は別途実費です。"), "partner-note");
       // 表示だけの会社（準備中）。予約の依頼はできない（サーバーでも断る）
       if (card.display_only) {
         article.classList.add("partner-later");
