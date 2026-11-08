@@ -38,7 +38,16 @@ console.log('PASS: Pettaku pickup leg is free when bringing a pet from afar to H
   const pettaku=vm.runInContext("DISPLAY_COMPANIES.filter(function(x){return x.id==='D225080e';})[0]",ctx);
   const r=ctx.displayPriceCalc_(pettaku,p);
   assert.ok(r && r.local.pickup===0 && r.amount>100000, 'Pettaku long-distance estimate');
-  const other=vm.runInContext("DISPLAY_COMPANIES.filter(function(x){return x.fare && x.id!=='D225080e' && x.id!=='D13b7c6f';})[0]",ctx);
+  const other=vm.runInContext("DISPLAY_COMPANIES.filter(function(x){return x.fare && !x.long;})[0]",ctx);
   assert.equal(ctx.displayPriceCalc_(other,p), null);
   console.log('PASS: long trips are priced only for open partners ('+r.amount+'円)');
+}
+// 長距離は長距離を受けている会社だけ（Nori 2026-11-08）：aiai（札幌）は対応地域に長距離がないので「お見積もり」
+{
+  const route=(from,to,km)=>JSON.stringify({km,backKm:km,from,to,backFrom:to,backTo:from});
+  const aiai=vm.runInContext("DISPLAY_COMPANIES.filter(function(x){return x.id==='D13b7c6f';})[0]",ctx);
+  const sapporo={lat:43.068,lng:141.351}, aomori={lat:40.822,lng:140.747};
+  assert.ok(!aiai.long);
+  assert.equal(ctx.displayPriceCalc_(aiai,{trip:'片道',datetime:'2026-12-01T08:30',pickup:'札幌駅',dropoff:'青森市',weight:5,pet_count:1,route_details:route(sapporo,aomori,420)}), null);
+  console.log('PASS: companies without long-distance service stay "お見積もり" beyond 250km');
 }

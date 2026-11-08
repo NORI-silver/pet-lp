@@ -454,6 +454,9 @@ def main(master, comp, tariffs=None, facts_path=None):
         row = {'id': m['id'], 'name': m['name'], 'pref': m['pref'], 'areas': areas(c, m), 'area_text': '' if at.startswith('不明') else at[:70],
                'shop': SHOP.get(m['id']), 'fare': fare(ts.get(m['id']), m['id']), 'pay': pay(c)}
         # 口コミの星を取り寄せるための、地図で場所を探すことばと、見つかった場所の名前に入っているはずのことば（ダッシュボードと同じ。点数そのものは入れない）
+        # 長距離（250km超）の料金の目安は、長距離を受けている会社だけ計算する（Nori 2026-11-08「長距離の計算をするのは長距離を請け合ってる会社だけ」）。
+        # 対応地域の文に「全国」「長距離」がある会社。「緊急は全国」「提携会社で全国」は自社の長距離ではないので入れない
+        if re.search(r'全国|長距離', re.sub(r'緊急は全国|提携会社で全国', '', at)): row['long'] = True
         if c.get('review_q') and c.get('review_name'): row['review_q'], row['review_name'] = c['review_q'], c['review_name']
         row.update(schedule(c, m['id'], facts.get(m['id'], {})))
         row['animals'] = animals(dict(facts.get(m['id'], {}), _id=m['id']))
