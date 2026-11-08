@@ -850,6 +850,7 @@ function accept_(id, pt, at, fare, msg, fareHw, retWay) {
     '■ ペットタクシー：' + pt.name + '\n' +
     '■ お迎え予定：' + fmt_(at) + '\n' +
     '■ 料金（確定・税込）：' + fareText_(fare, fareHw) + '\n' +
+    '　※当日の交通事情・待ち時間・道順の変更などで、実際の料金が変わることがあります。くわしくは会社にご確認ください。\n' +
     (retWay ? '■ 帰りのやり方：' + retWay + '（料金が安くなるほうをペットタクシーに選んでもらいました）\n' : '') +
     '■ お支払い：' + payForCustomer_(pt) + '\n' +
     (msg ? '■ ペットタクシーから：' + msg + '\n' : '') +
@@ -889,6 +890,7 @@ function quote_(id, pt, at, fare, msg, fareHw, retWay) {
   toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】' + word + 'が届きました：' + pt.name + '（受付番号 ' + id + '）' + legTag_(r),
     r['お名前'] + ' 様\n\n「' + pt.name + '」から' + word + 'が届きました。' + (isAsk_(r) ? '下のお迎え予定の時刻で空いています。\n※まだ予約は確定していません。内容に納得できたら、下のリンクから「この内容で予約する」を押してください。\n\n' : 'まだ予約は決まっていません。\n\n') +
     '■ ペットタクシー：' + pt.name + '\n■ お迎え予定：' + fmt_(at) + '\n■ 料金（確定・税込）：' + fareText_(fare, fareHw) + '\n' +
+    '　※当日の交通事情・待ち時間・道順の変更などで、実際の料金が変わることがあります。くわしくは会社にご確認ください。\n' +
     (retWay ? '■ 帰りのやり方：' + retWay + '\n' : '') + '■ お支払い：' + payForCustomer_(pt) + '\n' + '■ 予約したあとのキャンセル：' + cancelRuleText_(pt) + '\n' + (msg ? '■ ペットタクシーから：' + msg + '\n' : '') +
     '■ この内容で予約できる期限：' + fmt_(new Date(quoteUntil_(mine))) + 'まで（過ぎると会社の空き状況が変わるため、この内容では予約できません）\n' +
     (isAsk_(r) ? '\n▼ この内容で予約する（押すと予約が確定し、この会社からご連絡があります）\n' : '\n▼ この会社に決める（押すと予約が決まり、この会社からご連絡があります）\n') + chooseUrl_(id, pt.id) +
@@ -914,7 +916,7 @@ function choosePage_(q) {
     if (!res.ok) return page_('決められませんでした', '<p>' + esc_(res.msg) + '</p>');
     return page_(isAsk_(r) ? 'ご予約が確定しました' : '決まりました', '<p>「' + esc_(pt.name) + '」' + (isAsk_(r) ? 'のご予約が確定しました。確定のメールをお送りしました。' : 'に決まりました。決定のメールをお送りしました。') + 'このあと、' + esc_(pt.name) + 'からご連絡があります。</p>');
   }
-  return page_(isAsk_(r) ? 'この内容で予約しますか？' : 'この会社に決めますか？', '<div class="box">■ ペットタクシー：' + esc_(pt.name) + '<br>■ お迎え予定：' + esc_(fmt_(new Date(qt.at))) + '<br>■ 料金（確定・税込）：' + esc_(fareText_(qt.fare, qt.fareHw)) +
+  return page_(isAsk_(r) ? 'この内容で予約しますか？' : 'この会社に決めますか？', '<div class="box">■ ペットタクシー：' + esc_(pt.name) + '<br>■ お迎え予定：' + esc_(fmt_(new Date(qt.at))) + '<br>■ 料金（確定・税込）：' + esc_(fareText_(qt.fare, qt.fareHw)) + '<br>　※当日の交通事情・待ち時間・道順の変更などで、実際の料金が変わることがあります。' +
     (qt.way ? '<br>■ 帰りのやり方：' + esc_(qt.way) : '') + '<br>■ お支払い：' + esc_(payForCustomer_(pt)) + '<br>■ 予約したあとのキャンセル：' + esc_(cancelRuleText_(pt)) + '<br>■ 予約できる期限：' + esc_(fmt_(new Date(quoteUntil_(qt)))) + 'まで</div>' +
     '<p>' + (isAsk_(r) ? '押すと予約が確定し、' + esc_(pt.name) + 'にお名前・ご連絡先をお知らせします。' + (pickedIds_(r).length > 1 ? 'ほかの会社へのお問い合わせは締め切ります。' : '') : '決めると、ほかの会社へのご依頼は締め切ります。') + '</p>' +
     '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'choose') + hidden_('id', q.id) + hidden_('p', q.p) + hidden_('k', q.k) + hidden_('go', '1') +
