@@ -201,6 +201,25 @@ NIGHT = dict(slug="hospital/night", name="夜間・救急の動物病院", unit=
   taxi_h="前もって決まっている通院は、ペットタクシーで", taxi_p="再診や退院のお迎えなど、前もって決まっている移動はペットタクシーを予約できます。",
   links=[("緊急のときの連絡先", "/emergency/"), ("条件でさがす動物病院", "/hospital/"), ("動物病院への通院の送迎ガイド", "/guide/hospital/")])
 
+# [B] SEO 11/8：表示は多いのにクリックが少ない（大阪 12表示・0クリック）。県のページの題名と説明文に、
+# 答え（朝まで受け付ける病院の数・市の名前）を先に出す。数はすべて公式サイトの受付時間から数える。
+def _night_cities(rs):
+    cs = []
+    for h in rs:
+        c = re.sub(r"^(.+?市).+区$", r"\1", re.sub(r"（.*?）", "", h["city"]))
+        if not c.endswith("など") and c not in cs: cs.append(c)
+    return cs
+def _night_title(pf, rs, n):
+    hc = _hours_counts(rs); cs = _night_cities(rs)
+    mid = (f"朝まで受付{hc['till5']}院" if hc["till5"] else f"深夜0時すぎまで受付{hc['past0']}院" if hc["past0"] else "受付時間つき")
+    return f"{pf}の夜間・救急動物病院{n}院｜{mid}" + (f"（{'・'.join(cs[:3])}）" if cs else "")
+def _night_desc(pf, rs, n):
+    hc = _hours_counts(rs); cs = _night_cities(rs)
+    return (f"{pf}で夜間・休日に診てもらえる動物病院{n}院の受付時間と所在地" + (f"（{'・'.join(cs[:4])}など）" if cs else "") + "。"
+            + ((f"24時間受付は{hc['all']}院、" if hc["all"] else "") + f"朝5時以降まで受け付けるのは{hc['till5']}院です。" if hc["till5"] else "")
+            + "公式サイトで確かめた内容だけを、順位をつけずに載せています。行く前に必ず電話で受け入れを確かめてください。")
+NIGHT["title_fn"] = _night_title
+NIGHT["desc_fn"] = _night_desc
 SOUGI["table"] = [("個別火葬", lambda f: "○" if _has(f, "個別火葬") else ""), ("立ち会い", lambda f: "○" if _has(f, "立ち会い火葬") else ""), ("お迎え", lambda f: "○" if _has(f, "お迎え") or _has(f, "訪問火葬") else ""), ("霊園", lambda f: "○" if _has(f, "霊園") else ""), ("納骨堂", lambda f: "○" if _has(f, "納骨堂") else ""), ("料金の例", lambda f: "○" if f.get("price") else "")]
 NIGHT["table"] = [("受付時間", lambda h: h.get("hours", "")), ("所在地", lambda h: h.get("city", ""))]
 import facility_cards as _FC

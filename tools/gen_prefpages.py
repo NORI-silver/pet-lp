@@ -60,8 +60,8 @@ def render_pref(ctx, cat, pf, rows):
     near_html = ""
     if near:
         near_html = (f'<p>{e(lab)}のほかの県：' + "、".join(f'<a href="{href(cat, p)}">{e(p)}の{e(name)}（{len(rows[p])}{e(unit)}）</a>' for p in near) + '</p>')
-    title = f'{pf}の{cat["title_word"]}｜{n}{unit}の一覧（{cat["title_tail"]}）｜ペットタクシー予約窓口'
-    desc = f'{pf}の{name}を{n}{unit}、公式サイトで確かめた内容だけでまとめた無料の一覧です。' + cat["desc_tail"]
+    title = cat["title_fn"](pf, rs, n) if cat.get("title_fn") else f'{pf}の{cat["title_word"]}｜{n}{unit}の一覧（{cat["title_tail"]}）｜ペットタクシー予約窓口'
+    desc = cat["desc_fn"](pf, rs, n) if cat.get("desc_fn") else f'{pf}の{name}を{n}{unit}、公式サイトで確かめた内容だけでまとめた無料の一覧です。' + cat["desc_tail"]
     faq = cat["faq"](pf, rs, n)
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     ld = '<script type="application/ld+json">\n' + json.dumps([
