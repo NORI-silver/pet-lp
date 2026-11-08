@@ -77,6 +77,7 @@ _DISP = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 booking_src = re.sub(r"/\*DISPLAY_COMPANIES\*/.*?/\*/DISPLAY_COMPANIES\*/", lambda m: "/*DISPLAY_COMPANIES*/var DISPLAY_COMPANIES = " + json.dumps(_DISP, ensure_ascii=False) + ";/*/DISPLAY_COMPANIES*/", booking_src, count=1, flags=re.S)
 def _ncos(k): return len([x for x in _DISP if k in x.get("areas", [])])
 def _ccos(k, stem): return len([x for x in _DISP if k in x.get("areas", []) and stem in (x.get("area_text") or "")])
+def _n24(k): return len([x for x in _DISP if k in x.get("areas", []) and x.get("hours") == "0-24"])
 def _nsame(k): return len([x for x in _DISP if k in x.get("areas", []) and x.get("lead_days") == 0])
 def _nhosp(pf): return len(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "emergency.json"), encoding="utf-8"))["hospitals"].get(pf, []))
 _DCJ = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))
@@ -257,7 +258,7 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     return t
 
 AREAS = [
- dict(slug="tokyo", places=["jarmec-tokyo-taxi","jamc-shibuya-taxi"], pref="東京都", short="東京", count=17,
+ dict(slug="tokyo", places=["jarmec-tokyo-taxi","trva-yakan-taxi","jamc-shibuya-taxi"], pref="東京都", short="東京", count=17,
   title=f"東京のペットタクシー｜対応する{_ncos('東京')}社の料金・夜間割増をくらべて無料で問い合わせ（23区・多摩・羽田空港）｜ペットタクシー予約窓口",
   desc="東京都の犬・猫のペットタクシーの空き状況と料金を無料で問い合わせ。世田谷・渋谷・足立など23区から八王子・町田まで。かかりつけの動物病院への通院、日本動物高度医療センター東京病院など専門の病院、羽田空港やお引っ越しの移動に。料金の目安を見て何社にでもまとめて問い合わせ、返事を見てから予約できます。",
   lede="23区の動物病院への通院から、お引っ越し、羽田空港への送迎まで。フォームに入れると、来てもらえる会社と料金の目安が出て、何社にでもまとめて空き状況と料金を問い合わせできます。",
@@ -274,13 +275,14 @@ AREAS = [
    ("羽田空港への送迎はできますか？", f"はい。世田谷区から羽田空港（約18km）なら{nat_text(18)}が片道の目安です。飛行機に乗せる場合は、航空会社のペット預かりの受付時間に間に合うよう、メモ欄にフライトの時刻を書いてください。"),
    ("東京で夜間や早朝のお迎えも頼めますか？", "フォームは24時間送れますが、会社への確認はメールで行うため、連絡はすべてメールです。夜間・早朝は引き受けられる会社が見つからないこともあるため、早めのご予約をおすすめします。" + night_text("東京都") + "急な体調不良で一刻を争うときは、まず動物病院に電話してください。"),
   ]),
- dict(slug="kanagawa", places=["jarmec-kawasaki-taxi","wancott-taxi"], pref="神奈川県", short="神奈川・横浜", h1="神奈川・横浜・川崎", count=5,
+ dict(slug="kanagawa", places=["jarmec-kawasaki-taxi","dvms-yokohama-taxi","wancott-taxi"], pref="神奈川県", short="神奈川・横浜", h1="神奈川・横浜・川崎", count=5,
   title=f"神奈川・横浜・川崎のペットタクシー｜対応する{_ncos('神奈川')}社の料金・夜間割増をくらべて無料で問い合わせ｜ペットタクシー予約窓口",
-  desc="横浜・川崎・相模原・藤沢など神奈川県の犬・猫のペットタクシーの空き状況と料金を無料で問い合わせ。坂の多い住宅地からの通院、日本動物高度医療センター川崎本院や都内の専門病院、羽田空港への移動に。料金の目安を見て何社にでもまとめて問い合わせ、返事を見てから予約できます。当日の依頼もできます。",
+  desc=f"神奈川県に来てくれるペットタクシー{_ncos('神奈川')}社（24時間受付{_n24('神奈川')}社・当日も受けると書いている{_nsame('神奈川')}社）の料金の目安を、横浜・川崎・相模原・藤沢などお迎えの場所から無料でくらべられます。日本動物高度医療センター川崎本院や都内の専門病院、羽田空港への移動に。何社にでもまとめて問い合わせ、返事を見てから予約できます。",
   lede="横浜・川崎から湘南エリアまで。動物病院への通院や、都内の専門病院への移動、羽田空港への送迎に。お迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。",
   body=[
    ("神奈川・横浜・川崎でペットタクシーを使う理由", "横浜市や川崎市は坂道や丘の上の住宅地が多く、大型犬やシニアの子を連れて歩いたり、公共交通で移動したりするのは大変です。ペットタクシーなら玄関先まで迎えに来てくれるので、抱っこやキャリーで長く歩かせる必要がありません。"),
    ("横浜市内（18区）の通院・移動", f"横浜市は鶴見区・神奈川区・西区・中区・南区・港南区・保土ケ谷区・旭区・磯子区・金沢区・港北区・緑区・青葉区・都筑区・戸塚区・栄区・泉区・瀬谷区の18区があり、区をまたいでかかりつけや専門の動物病院へ通う方も多い地域です。神奈川県のお迎えに対応している{_ncos('神奈川')}社のうち、公式サイトの対応エリアに「横浜」と書いている会社は{_ccos('神奈川','横浜')}社でした。区の中や隣の区への5kmの移動で{nat_text(5)}、区をまたぐ10kmで{nat_text(10)}が片道の目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。"),
+   ("川崎市（7区）の通院・移動", f"川崎市は川崎区・幸区・中原区・高津区・宮前区・多摩区・麻生区の7区です。神奈川県のお迎えに対応している{_ncos('神奈川')}社のうち、公式サイトの対応エリアに「川崎」と書いている会社は{_ccos('神奈川','川崎')}社、そのうち24時間受け付けている会社は{len([x for x in _DISP if '神奈川' in x.get('areas', []) and '川崎' in (x.get('area_text') or '') and x.get('hours') == '0-24'])}社でした。高津区久地には日本動物高度医療センター川崎本院があり、夜間・救急の病院は中原区（24時間）と高津区（川崎市獣医師会の夜間の病院、診療日が限られます）にあります。区の中や隣の区への5kmの移動で{nat_text(5)}、市の南北をまたぐ15kmで{nat_text(15)}が片道の目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。"),
    ("川崎・横浜から都内への移動も", "神奈川から東京の専門病院や二次診療の動物病院へ通う方も多くいます。お迎えに来られる会社と料金の目安がフォームに出るので、気になる会社を選んで、空き状況と料金を問い合わせできます。"),
   ],
   cities=["横浜市","川崎市","相模原市","藤沢市","横須賀市","鎌倉市","茅ヶ崎市","大和市","厚木市","平塚市","海老名市","小田原市"],
