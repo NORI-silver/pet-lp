@@ -384,7 +384,7 @@ function sendWave_(id, stage) {
 function requestText_(r, pt) {
   return pt.name + ' ' + (pt.person ? pt.person + '様' : 'ご担当者さま') + '\n\n' +
     'ペットタクシーの検索サイト「' + CONFIG.SERVICE_NAME + '」です。飼い主さんから、送迎のお問い合わせが届きました。\n' +
-    (isAsk_(r) ? '★飼い主さんのお名前・ご連絡先は、飼い主さんが予約を確定した時点でお知らせします。\n★お返事の内容（お迎え時刻・確定料金）は、お返事から' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。そのあいだに飼い主さんが予約を確定したときは、お引き受けください。\n\n' : '★お客さまのお名前・ご連絡先は、引き受けが決まった時点でお知らせします（リンクから引き受けた場合はその場で表示されます）。\n\n') +
+    (isAsk_(r) ? '★飼い主さんのお名前・ご連絡先は、飼い主さんが予約を確定した時点でお知らせします。\n★お返事の内容（お迎え時刻・確定料金）は、お返事から' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。そのあいだに飼い主さんが予約を確定したときは、お引き受けください。お返事のあとにほかのご予約が入ったときは、お返事のリンクを開いて「このお返事を取り下げる」を押してください。\n\n' : '★お客さまのお名前・ご連絡先は、引き受けが決まった時点でお知らせします（リンクから引き受けた場合はその場で表示されます）。\n\n') +
     rideText_(r) + retAsk_(r) + estText_(r) + '\n■ お支払い：' + payForPartner_(pt) + askText_(pt, r) + '\n\n' +
     (isAsk_(r) ? '空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。お受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです）。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。\n'
       : isQuoteReq_(r) ? 'お見積もりのご依頼です。お客さまは、ほかの会社のお見積もりとくらべて1社を選びます。\nお受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです）。お客さまが貴社を選んだら、お名前・ご連絡先をお知らせします。\n'
@@ -747,6 +747,7 @@ function doGet(e) {
     if (q.a === 'accept') return acceptPage_(q);
     if (q.a === 'cancel') return cancelPage_(q);
     if (q.a === 'choose') return choosePage_(q);
+    if (q.a === 'withdraw') return withdrawPage_(q);
     if (q.a === 'ride') return ridePage_(q);
     if (q.a === 'admin') return adminPage_(q);
     if (q.a === 'prefill') return prefill_(q);
@@ -775,7 +776,7 @@ function acceptPage_(q) {
     if (needsChoice_(r)) {
       var qr = quote_(q.id, pt, at, fare, clip_(q.msg, 300), yenNum_(q.fare_hw), way);
       if (!qr.ok) return page_('締め切りました', '<p>' + esc_(qr.msg) + '</p>');
-      if (isAsk_(r)) return page_('お返事を送りました', '<p>お客さまに、空き状況（お迎え時刻）と確定料金をお届けしました。<b>お客さまが「予約する」を押したら、お名前・ご連絡先をメールでお知らせします。</b>予約にならなかったときは「締め切り」のお知らせをお送りします。</p><p>このお返事は' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。そのあいだに予約が確定したときは、お引き受けください。</p>');
+      if (isAsk_(r)) return page_('お返事を送りました', '<p>お客さまに、空き状況（お迎え時刻）と確定料金をお届けしました。<b>お客さまが「予約する」を押したら、お名前・ご連絡先をメールでお知らせします。</b>予約にならなかったときは「締め切り」のお知らせをお送りします。</p><p>このお返事は' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。そのあいだに予約が確定したときは、お引き受けください。</p>' + withdrawNote_(q.id, pt.id));
       return page_(isQuoteReq_(r) ? 'お見積もりを送りました' : '引き受けのお返事を送りました', '<p>お客さまに' + (isQuoteReq_(r) ? 'お見積もり' : '引き受けのお返事と確定料金') + 'をお届けしました。<b>お客さまが貴社を選んだら、お名前・ご連絡先をメールでお知らせします。</b>選ばれなかったときは「締め切り」のお知らせをお送りします。</p>');
     }
     var res = accept_(q.id, pt, at, fare, clip_(q.msg, 300), yenNum_(q.fare_hw), way);
@@ -790,7 +791,8 @@ function acceptPage_(q) {
   }
   if (r['状態'] !== ST.OPEN) return page_('締め切りました', '<p>このご依頼は締め切りました。ご確認ありがとうございました。</p>');
   var quoted = needsChoice_(r) && quotesOf_(r).filter(function (x) { return x.pid === pt.id; })[0];
-  if (quoted) return page_(isQuoteReq_(r) ? 'お見積もりをお送り済みです' : 'お返事をお送り済みです', '<p>確定料金 ' + esc_(fareText_(quoted.fare, quoted.fareHw)) + '・お迎え予定 ' + esc_(fmt_(new Date(quoted.at))) + ' でお客さまにお届けしています。お客さまが' + (isAsk_(r) ? '予約を決めたら' : '選んだら') + 'お知らせします。</p>');
+  if (quoted && quoted.withdrawn) return page_('お返事は取り下げ済みです', '<p>このお問い合わせへのお返事は取り下げました。お客さまには、この内容では予約できないことをお知らせしています。</p>');
+  if (quoted) return page_(isQuoteReq_(r) ? 'お見積もりをお送り済みです' : 'お返事をお送り済みです', '<p>確定料金 ' + esc_(fareText_(quoted.fare, quoted.fareHw)) + '・お迎え予定 ' + esc_(fmt_(new Date(quoted.at))) + ' でお客さまにお届けしています。お客さまが' + (isAsk_(r) ? '予約を決めたら' : '選んだら') + 'お知らせします。</p>' + withdrawNote_(q.id, pt.id));
   var def = defaultAt_(r);
   var html = '<p>' + esc_(pt.name) + ' 様</p>' +
     (isAsk_(r) ? '<div class="box"><b>空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。</b>お受けできる場合は、お迎え時刻と確定料金を入れてください。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。</div>'
@@ -900,6 +902,47 @@ function quote_(id, pt, at, fare, msg, fareHw, retWay) {
   return { ok: true };
 }
 
+// 会社がお返事を取り下げるリンク（Nori 2026-11-08：お返事のあとにほかの予約が入ったとき）
+function withdrawUrl_(id, pid) { return linkBase_() + '?a=withdraw&id=' + encodeURIComponent(id) + '&p=' + encodeURIComponent(pid) + '&k=' + sign_(id + ':' + pid + ':withdraw'); }
+function withdrawNote_(id, pid) {
+  return '<p class="note">お返事のあとにほかのご予約が入って受けられなくなったときは、お客さまが予約する前に <a href="' + esc_(withdrawUrl_(id, pid)) + '" target="_top">このお返事を取り下げる</a> を押してください。お客さまはこの内容では予約できなくなります。このリンクは、お問い合わせのメールの「お返事する」リンクを開くといつでも出ます。</p>';
+}
+function withdrawPage_(q) {
+  if (!q.id || !q.p || q.k !== sign_(q.id + ':' + q.p + ':withdraw')) return page_('リンクが正しくありません', '<p>お手数ですが、届いたメールのリンクからもう一度開いてください。</p>');
+  var pt = partnerById_(q.p);
+  if (!pt) return page_('見つかりません', '<p>このご依頼は見つかりませんでした。</p>');
+  if (q.go !== '1') {
+    var row0 = findReq_(q.id);
+    if (!row0) return page_('見つかりません', '<p>このご依頼は見つかりませんでした。</p>');
+    return page_('お返事を取り下げますか？', '<p>押すと、お客さまはこのお返事の内容では予約できなくなります。お客さまには、ほかのご予約が入ったためとお知らせします。</p>' +
+      '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'withdraw') + hidden_('id', q.id) + hidden_('p', q.p) + hidden_('k', q.k) + hidden_('go', '1') +
+      '<button type="submit">お返事を取り下げる</button></form>');
+  }
+  var lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  var r;
+  try {
+    var row = findReq_(q.id);
+    if (!row) return page_('見つかりません', '<p>このご依頼は見つかりませんでした。</p>');
+    r = row.data;
+    if (r['状態'] === ST.DONE && r['決定した提携先ID'] === pt.id) return page_('すでに予約が確定しています', '<p>お客さまが先に予約を確定しました。受けられない場合は、お手数ですが当サイトまでメールでお知らせください。</p>');
+    if (r['状態'] !== ST.OPEN) return page_('締め切りました', '<p>このご依頼はもう締め切られています。取り下げは必要ありません。</p>');
+    var list = quotesOf_(r), mine = list.filter(function (x) { return x.pid === pt.id; })[0];
+    if (!mine) return page_('お返事が見つかりません', '<p>このお問い合わせへのお返事はまだありません。</p>');
+    if (mine.withdrawn) return page_('取り下げ済みです', '<p>このお返事は、もう取り下げています。</p>');
+    mine.withdrawn = Date.now();
+    setReq_(row.rowIndex, { '見積もりJSON': JSON.stringify(list) });
+    SpreadsheetApp.flush();
+  } finally {
+    lock.releaseLock();
+  }
+  log_(q.id + ' 取り下げ: ' + pt.id);
+  toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】' + pt.name + 'のお返事が取り下げられました（受付番号 ' + q.id + '）' + legTag_(r),
+    r['お名前'] + ' 様\n\n「' + pt.name + '」から、ほかのご予約が入ったため、さきほどのお返事を取り下げるとの連絡がありました。このお返事の内容では予約できません。申し訳ありません。\n\n' +
+    (quotesOf_(findReq_(q.id).data).some(function (x) { return x.pid !== pt.id && !x.withdrawn; }) ? 'ほかの会社からのお返事は、そのままご予約いただけます。届いたメールをご確認ください。\n' : 'お手数ですが、同じ内容でもう一度お問い合わせいただけます。\n' + retryUrl_(q.id) + '\n'));
+  notifyAdmin_('取り下げ ' + q.id + '：' + pt.name, pt.name + 'がお返事を取り下げました。\n\n' + rideText_(r));
+  return page_('お返事を取り下げました', '<p>お客さまに、この内容では予約できないことをお知らせしました。ご連絡ありがとうございました。</p>');
+}
 function chooseUrl_(id, pid) { return linkBase_() + '?a=choose&id=' + encodeURIComponent(id) + '&p=' + encodeURIComponent(pid) + '&k=' + sign_(id + ':' + pid + ':choose'); }
 
 // お客さまが見積もりの中から1社に決めるページ
@@ -910,6 +953,7 @@ function choosePage_(q) {
   var r = row.data, qt = quotesOf_(r).filter(function (x) { return x.pid === pt.id; })[0];
   if (r['状態'] === ST.DONE) return page_(r['決定した提携先ID'] === pt.id ? (isAsk_(r) ? 'ご予約は確定しています' : 'この会社に決まっています') : 'ほかの会社に決まっています', '<p>' + esc_(r['決定した提携先'] || '') + 'に決まっています。決定のメールをご確認ください。</p>');
   if (r['状態'] !== ST.OPEN || !qt) return page_('締め切りました', '<p>このご依頼は締め切りました。</p>');
+  if (qt.withdrawn) return page_('このお返事は取り下げられました', '<p>「' + esc_(pt.name) + '」は、ほかのご予約が入ったため、このお返事を取り下げました。この内容では予約できません。</p><p>お手数ですが、<a href="' + esc_(retryUrl_(q.id)) + '" target="_top">同じ内容でもう一度問い合わせる</a>からお問い合わせください。</p>');
   if (Date.now() > quoteUntil_(qt)) return page_('お返事の期限が過ぎました', '<p>「' + esc_(pt.name) + '」のお返事で予約できる期限（' + esc_(fmt_(new Date(quoteUntil_(qt)))) + '）が過ぎました。会社の空き状況が変わっている場合があるため、この内容では予約できません。</p><p>お手数ですが、<a href="' + esc_(retryUrl_(q.id)) + '" target="_top">同じ内容でもう一度問い合わせる</a>からお問い合わせください。</p>');
   if (q.go === '1') {
     var res = accept_(q.id, pt, new Date(qt.at), qt.fare, qt.msg, qt.fareHw, qt.way);
@@ -1138,7 +1182,7 @@ function checkPending() {
     var today = Utilities.formatDate(new Date(), TZ, 'yyyyMMdd') === Utilities.formatDate(new Date(r['希望日時']), TZ, 'yyyyMMdd');
     var k = (r['日付のみ'] ? today : until < CONFIG.URGENT_HOURS) ? 0.5 : 1;
     // 見積もりが届いているあいだは、お客さまが選ぶのを待つ（お迎えの時刻を過ぎたら終わり）
-    if (until < 0 || (age >= CONFIG.GIVE_UP_MIN * k && !(needsChoice_(r) && quotesOf_(r).length))) {
+    if (until < 0 || (age >= CONFIG.GIVE_UP_MIN * k && !(needsChoice_(r) && quotesOf_(r).filter(function (x) { return !x.withdrawn; }).length))) {
       giveUp_(r['受付番号']);
     } else if (!pickedIds_(r).length && age >= CONFIG.WAVE2_MIN * k && Number(r['通知段階']) < 2) {
       var sent = sendWave_(r['受付番号'], 2);
