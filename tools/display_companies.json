@@ -6805,7 +6805,7 @@
    "long": true,
    "review_q": "ペッタク 広島",
    "review_name": "ペッタク",
-   "hours": "",
+   "hours": "0-24",
    "flex": false,
    "closed": [],
    "lead_days": 0,
@@ -6818,7 +6818,8 @@
    },
    "car_type": "軽バン",
    "limits": [
-    "車：軽バン"
+    "車：軽バン",
+    "同乗は2人まで"
    ],
    "points": [
     "当日予約可",
