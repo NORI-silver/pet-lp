@@ -1,10 +1,18 @@
 
 /* フォーム送信先（Google Apps Script のウェブアプリURL）。空の間は送信されません。 */
 var GAS_URL = "https://script.google.com/macros/s/AKfycbyy-cTvD-t8DFGhEyA2IbFiXWoB50kl_2_97WiVdMlXec8sIbI2NVUkkyn-45VkIMc_5g/exec";
+/* 道のりを聞く道路データの入口（OSRM と同じ形の API）。ここ1か所で切りかえる。
+   いまの公開デモは「お金をもうけない使い方だけ」が条件なので、手数料を始める前に商用で使える入口へ替える（法定表示の確認 2026-11-08） */
+var ROAD_API = "https://router.project-osrm.org";
 /* お誘いした会社だけの見本の画面（?demo=…。Nori 2026-11-02）。その会社だけ名前と口コミつきで出し、問い合わせは送らない */
 var DEMO = {tok: (function(){ try { return new URLSearchParams(location.search).get("demo") || ""; } catch (e) { return ""; } })(), ok: false, name: ""};
 /* アクセス解析に操作の回数だけを送る（入力内容は送らない）。ga.js が動いていないときは何もしない */
 function track(name, params){ if (window.gtag) gtag("event", name, params || {}); }
+/* 計測に使う項目の名前（ペットごとの欄は pet_… にまとめる）。値は使わない */
+function fieldName(el){ return String(el && (el.name || el.id) || "").replace(/^p\d+_/, "pet_").slice(0, 40); }
+var formEntry = "";
+/* 計測に使う会社のIDと名前（公式サイトに出ている社名だけ） */
+function coInfo(c){ var co = window.CO_SITE_ && window.CO_SITE_[c.id]; return {id: c.id, company_id: c.id, company_name: String(co ? co[0] : c.label || "").slice(0, 80), bookable: c.display_only ? 0 : 1}; }
 var partnersTracked = false;
 var MAX_PETS = 5;
 var lastSig = "", reqKey = "";
@@ -219,6 +227,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 名前を伏せた会社に「会社A・B…」の目印を付けて、くらべやすくする（2026-11-08 レビュー #4）
   // まだ提携していない会社も、社名と公式サイトへのリンクを出す（Nori 2026-11-08「すすめていいよ」）。問い合わせはできないまま。社名が分からない会社だけ「会社A・B…」の目印
   /*CO_SITE*/var CO_SITE = {"De5faaf3": ["COCOタク 杉並店", "https://pet-taxi-tokyo-suginami.com/"], "De33f4b4": ["COCOタク 東京世田谷店", "https://petcocotaxi-setagaya.com/"], "D2644ea0": ["COCOタク 東京中央店", "https://tc-cocotaxi.com/"], "Ddc3e31e": ["COCOタク 東京墨田店", "https://cocotaxi-pet-tokyo-sumida.com/"], "Df5f495f": ["COCOタク 東京多摩店", "https://coco-pet-taxi-tokyo-tama.com/"], "D400f012": ["COCOタク 東京小平店", "https://www.cocotaxi-sawan.com/"], "D3f74ac5": ["COCOタク 東京荒川店", "https://pet-taxi-adachi.com/"], "D0e1ab9c": ["COCOタク 東京足立店", "https://cocotaxiadachi.com/"], "D57763aa": ["COCOタク 武蔵野店", "https://coco-taxi-musashino.com/"], "D98b1024": ["COCOタク 渋谷店", "https://cocotaku-shibuya.com/"], "De308905": ["COCOタク 練馬杉並店", "https://cocotaku-nerima-suginami.com/"], "D45d6d56": ["COCOタク 西東京店", "https://cocotaxi.tokyo/"], "Db508c4d": ["COCOタク 足立中央本町店", "https://pet-cocotaxi-katusika.com/"], "Dbcd4199": ["COCOタク 青山店", "https://cocotaku.com/"], "D3661eb1": ["PETTA東京（ペッタ）", "https://www.petta-tokyo.com/"], "D1e44e13": ["cocoタク 大田・田園調布店", "https://coco-taxi.com/"], "D355c31f": ["サポっ人 中目黒店", "https://seikatsunosupport.com/pettaxi/"], "D7c32399": ["ペットタクシー こうのとり（AirLine Haneda）", "https://airline-haneda.com/taxi/"], "D0d1c8b4": ["ペットタクシー ワンネス", "https://oneness-taxi.com/"], "D692c9a6": ["ペットタクシー ワンハウス", "https://onehouse.jp/"], "D7922e74": ["ペトタクファインド", "https://pettaxi-find.com/chiba/"], "D72ab934": ["COCOタク 川崎店", "https://www.growing-group.co.jp/"], "D789b979": ["COCOタク 横浜店", "https://cocotaxi-yokohama.com/"], "Dfc12ca3": ["COCOタク 横浜港北店", "https://cocotaxi-yokohama-kouhoku.com/"], "Da1ed552": ["COCOタク 横浜磯子店", "https://pet-taxi-yokohama-isogo.com/"], "Dbf4a40c": ["COCOタク 湘南平塚店", "https://coco-taxi-shonan-hiratuka.com/"], "D0d611b0": ["COCOタク 湘南店", "https://www.cocotaku-shonan.com/"], "Dd6859ef": ["COCOタク 神奈川中央店", "https://coco-pettaxi-kanagawa-chuo.com/"], "D3cc975b": ["COCOタク 神奈川北店", "https://cocotaxi-wans.com/"], "D227d031": ["COCOタク 西湘秦野店", "https://pet-taxi-cocotaku-hadano.com/"], "De65cb2d": ["Legolas House（レゴラスハウス）", "https://www.legolashouse.com/"], "D945f580": ["ikimono care（イキモノケア）", "https://www.ikimonocare.com/"], "D5598693": ["ふわふわペットタクシー", "https://pet-yokohama.com/"], "D5604536": ["やこうDogはうす", "https://yakodoghouse.com/"], "Dc7b4703": ["わんにゃんハイヤー Angel Buggy", "https://www.angel-buggy.com/"], "D68f9d95": ["ペットタクシー Animals", "https://h12150825.wixsite.com/taxi-animals"], "D8da1ced": ["ペットタクシー わんだにゃー", "https://wan.da-nya.com/"], "Daed391e": ["ペットタクシー シアンシャ 厚木店", "https://chienchat.jp/atsugi/"], "D0437ae3": ["ペットタクシー シアンシャ 鎌倉店", "https://chienchat.jp/kamakura/"], "D5f32b1e": ["三和交通 ペットタクシー", "https://www.sanwakoutsu.co.jp/special/pet/"], "Daf1e25b": ["湘南Dog Life College（ペットタクシー）", "https://www.shonan-dog-college.jp/taxi"], "D0b50c1a": ["湘南ペットハイヤー", "https://www.shonan-web.com/sub6.html"], "D06b72ea": ["鎌倉ペットタクシー", "https://pets-taxi.net/ja/kamakurapettaxi"], "D40a4aa0": ["COCOタク さいたま南店", "https://cocotaxi-saitama.com/"], "Dfcb8480": ["COCOタク 埼玉川越店", "https://pet-taxi-saitama-kawagoe.jp/"], "D853ae97": ["COCOタク 埼玉春日部店", "https://pet-taxi-kasukabe.com/"], "D83f23cc": ["COCOタク 川口店", "https://cocokawaguchi.com/"], "D2a4caa6": ["COCOタク 練馬店", "https://pet-taxi-nerima.com/"], "D3cc1cce": ["ペットケア151A", "https://petcare-151a.com/pettaxi.html"], "Dcfbfbf2": ["COCOタク 船橋店", "https://cocotaku-funabashi.moe/"], "De3f35f2": ["コインペットタクシー シエロ", "https://pettaxi.jp/"], "D3c85024": ["ペットタクシー パールのしっぽ", "https://pearlno-shippo.com/"], "Dedcfcd2": ["動物苑（ペット送迎）", "https://www.pet594.com/pet-transport/"], "Dc28c19e": ["ワンワンハウス（ペットタクシー）", "https://wan-wan-house.com/pet-taxi/"], "Dc05105b": ["COCOタク 新札幌店", "https://pet-taxi-sc.com/"], "Db405639": ["D-RIDE（ペットタクシー）", "https://d-ride.jp/pettaxi.html"], "D44948b6": ["ぺトタク（札幌・小樽）", "https://pet-tax.com/"], "D13b7c6f": ["ペット専用タクシー aiai", "https://pet-taxi-aiai.com/"], "D1f53c72": ["COCOタク岩手盛岡店", "https://cocomorioka.iwate.jp/"], "D18363bd": ["COCOタク 仙台店", "https://pet-taxi-sendai.com/"], "D4adf70b": ["PETRIP", "https://petrip.co.jp/"], "D30e1838": ["ニャンワンクラブ（ペットタクシー）", "https://nyanwan.jp/"], "D1132ff9": ["冨士タクシー（ペットタクシー）", "https://www.fuji-taxinet.jp/service/pet-taxi.php"], "Da40f372": ["ペットタクシー With☆（ウィズ）", "https://pet-taxi.sakura.ne.jp/"], "Dd472236": ["ペットタクシー COCOタク静岡", "https://cocotaxi-shizuoka.com/"], "Dc2d8672": ["COCOタク 三河豊田店", "https://pet-taxi-aichi-mikawa.com/"], "D7d26cb4": ["COCOタク 名古屋尾張店", "https://pet-taxi-nagoya-owari.com/"], "D6c3b09b": ["COCOタク 愛知稲沢店", "https://cocotaku-inazawa-aichi.com/"], "D611ee5f": ["COCOタク 知多武豊店", "https://pet-taxi-aichi-chita-taketoyo.com/"], "Df997a81": ["COCOタク 穂の国店", "https://pet-taxi-aicih-toyohashi-honokuni.com/"], "D44cfd16": ["HAPPY WITH（ペットタクシー）", "https://happywith.pet/pettaxi/"], "D1834601": ["ZEROペットタクシー", "https://zero808.co.jp/pettaxi/"], "D7f0d2a2": ["COCOタク 京都店", "https://pet-taxi-kyoto.com/"], "Dc9d8a2b": ["PetTAXI24", "https://j-pettaxi.com/"], "D25bac67": ["ペットサポート てんりん", "https://ten-rin.jp/"], "Dfc6c94f": ["木谷わんわんタクシー", "https://kitani11taxi.com/"], "D7d574bf": ["ARC（アルク）Pet Taxi & Pet Sitter", "https://pet-arc.com/"], "D436a86d": ["COCOタク 南大阪店", "https://coco-taxi-minami-osaka.com/"], "D7d5e5d1": ["COCOタク 大阪・東住吉店", "https://pet-cocotaku-higashi-sumiyoshi.com/"], "D9895b9b": ["COCOタク 大阪柏原店", "https://cocotaxi-kashiwara.com/"], "D3413153": ["COCOタク 守口店", "https://coco-taxi-osaka-moriguchi.com/"], "D713b363": ["COCOタク 新大阪店", "https://pet-taxi-coco-taku-shin-osaka.com/"], "D91cc62f": ["COCOタク 東大阪店", "https://cocotaku-higashiosaka.com/"], "Db8bafea": ["Comasuke（コマスケ）", "https://comasuke.com/"], "D6125f28": ["DOG HAIR STUDIO KEN（ペットタクシー）", "https://doghairstudioken.jp/"], "D01478c8": ["アイアールサービス（ペットタクシー）", "https://www.i-and-r.com/pettaxi.html"], "Da9518d0": ["キャリーワン", "https://carry-one.net/"], "D66c4625": ["ペットタクシー アイボウ（相棒）", "https://www.aibou.com/"], "D874b316": ["ペットタクシー マイファミリー", "https://my-family-takatsuki.com/"], "D1c2a5e3": ["ミントペットタクシー", "https://www.vet-system.jp/"], "D09687f4": ["COCOタク 神戸西店", "https://cocotaxi-kobewest.com/"], "D9f338ec": ["ペットタクシー アニマルプラス", "https://animal-plus.p-kit.com/"], "D72024d3": ["ラッキーペットサービス", "https://lucky-pettaxi.jimdosite.com/"], "D154d458": ["COCOタク ならまち店", "https://pet-taxi-nara.com/"], "D0a999a3": ["ペットタクシー COCOタク奈良", "https://pet-coco-taxi-nara.com/"], "D225080e": ["ペッタク（PETTAXI）", "https://pettaku.com/"], "D678e01f": ["ペットタクシー 響", "https://pettaxihibiki.hp.peraichi.com/"], "D7c41c5f": ["トップスター（ペットタクシー）", "https://www.topstar-tokushima.com/pettaxi"], "Db726555": ["COCOタク 北九州小倉店", "https://pet-taxi-kitakyusyu-kokuraten.com/"], "D0ec95b6": ["COCOタク 福岡東店", "https://cocotakufukuokahigashi.com/"], "Df71b3ed": ["COCOタク 福岡空港店", "https://pet-taxi-fukuoka-airport.com/"], "Dfad4b87": ["COCOタク 福岡筑紫野店", "https://coco-taxi-fukuoka-chikushino.com/"], "Df31960d": ["ペットタクシー Happy", "https://www.pet-taxi-happy.jp/"], "Db28bc5b": ["福岡わんわんエクスプレス", "https://wanwan.pet/"], "D7847612": ["福岡ペットタクシー HAKAタク", "https://pettaxi-hakataku.wepage.com/"], "Db9067d3": ["COCOタク 長崎店", "https://pet-taxi-nagasaki.com/"], "P002": ["ペットエクスプレス", "https://pettaxi.tokyo/"], "P003": ["くりき", "https://pet-kuriki.com/"]};/*/CO_SITE*/
+  window.CO_SITE_ = CO_SITE; // 計測（coInfo）からも社名を引けるように
   // 公式サイトへのリンクに、当サイトから来たことの印を付ける（アクセス解析を入れている会社に見える）
   function siteUrl(u){
     try { var x = new URL(u); x.searchParams.set("utm_source", "pet.shiokonbu.com"); x.searchParams.set("utm_medium", "referral"); x.searchParams.set("utm_campaign", "pet_taxi_cards"); return x.toString(); } catch (e) { return u; }
@@ -246,7 +255,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       btn.textContent = ok ? "コピーしました。公式サイトのお問い合わせ欄に貼ってください" : "コピーできませんでした";
       setTimeout(function(){ btn.textContent = "問い合わせ文をコピー"; }, 4000);
     };
-    track("copy_inquiry", {id: card.id});
+    track("copy_inquiry", coInfo(card));
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function(){ done(true); }, function(){ done(fallback()); });
     else done(fallback());
     function fallback(){ try { var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); var ok = document.execCommand("copy"); ta.remove(); return ok; } catch (e) { return false; } }
@@ -363,7 +372,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         part.forEach(function(k){ roadBusy[k] = 1; });
         var cs = [{lat: Math.round(g.at.lat * 1000) / 1000, lng: Math.round(g.at.lng * 1000) / 1000}].concat(part.map(function(k){ return {lat: g.shops[k][0], lng: g.shops[k][1]}; }));
         var src = part.map(function(k, j){ return j + 1; }).join(";");
-        fetch("https://router.project-osrm.org/table/v1/driving/" + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?sources=" + src + "&destinations=0&annotations=distance")
+        fetch(ROAD_API + "/table/v1/driving/" + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?sources=" + src + "&destinations=0&annotations=distance")
           .then(function(r){ return r.json(); })
           .then(function(j){ var ok = j && j.code === "Ok" && j.distances; part.forEach(function(k, n){ var m = ok && j.distances[n] && j.distances[n][0]; roadMemo[k] = m != null && isFinite(m) ? Math.round(m / 100) / 10 : null; }); })
           .catch(function(){ part.forEach(function(k){ roadMemo[k] = null; }); })
@@ -479,7 +488,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           var cp = document.createElement("button"); cp.type = "button"; cp.className = "copy-ask"; cp.textContent = "問い合わせ文をコピー";
           cp.addEventListener("click", function(){ copyAsk(cp, card); });
           var sa = document.createElement("a"); sa.href = siteUrl(card.site); sa.target = "_blank"; sa.rel = "noopener"; sa.textContent = "公式サイトを見る ↗";
-          sa.addEventListener("click", function(){ track("official_site", {id: card.id}); });
+          sa.addEventListener("click", function(){ track("official_site", coInfo(card)); });
           sp.append(cp, sa); article.appendChild(sp);
         }
         text("p", card.site ? "このサイトからはまだ問い合わせできません。「問い合わせ文をコピー」を押すと、入力した条件をそのまま公式サイトのお問い合わせ欄に貼れます。" : "このサイトからは、まだ問い合わせできません", "partner-later-note"); // 大きな灰色のボタンはやめて1行に（2026-11-08 レビュー #2）
@@ -523,7 +532,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     chosenGo = null; chosenBack = null;
     var i = chosenPicks.map(function(c){ return c.id; }).indexOf(card.id);
     if (i >= 0) chosenPicks.splice(i, 1);
-    else chosenPicks.push(card);
+    else { chosenPicks.push(card); track("pick_company", coInfo(card)); }
     $("err").textContent = "";
     chosenQuote = chosenPicks[0] || null;
     drawCards(); showPickButton();
@@ -592,6 +601,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   function pickLeg(leg, card, article){
     if (leg === "go") chosenGo = card; else chosenBack = card;
+    var pi = coInfo(card); pi.leg = leg; track("pick_company", pi);
     chosenQuote = null; chosenPicks = []; drawCards();
     Array.prototype.forEach.call(article.parentNode.children, function(a){ a.classList.toggle("picked", a === article); });
     showLegPick();
@@ -615,6 +625,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (v && Array.prototype.some.call(el.options, function(o){ return o.value === v; })) el.value = v;
   }
   setSelect($("pref"), qs.get("pref"));
+  // [B] 病院の一覧などから来たとき（?to=病院の所在地）は、行き先に入れておく（2026-11-08「この病院までのペットタクシー」の導線）
+  var qTo = (qs.get("to") || "").trim().slice(0, 80);
+  if (qTo && !$("dropoff").value) $("dropoff").value = qTo;
 
   // 入力欄が見えている間は下部の固定ボタンを隠す
   var sticky = document.querySelector(".sticky");
@@ -1065,7 +1078,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // ── 道のり（道路データで調べる。取れないときは直線×ROADで代わりに計算）──
   // 道路データの経路は高速道路も使う。高速の区間の長さを数えて、一般道だけで行くときは
   // その区間を1.15倍の道のり・1kmあたり1分長くかかるとみて出す（一般道のほうが高めに出る）
-  var ROUTER = "https://router.project-osrm.org/route/v1/driving/", routeCache = {};
+  var ROUTER = ROAD_API + "/route/v1/driving/", routeCache = {};
   var HW_NAME = /高速|自動車道|有料道路|首都高|アクアライン/;
   function routeOf(cs){
     var url = ROUTER + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?overview=full&geometries=geojson&steps=true";
@@ -1406,6 +1419,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (x.spec) { var sp = document.createElement("small"); sp.className = "emg-spec"; sp.textContent = x.spec; d.appendChild(sp); }
       if (x.addr) { var ad = document.createElement("small"); ad.textContent = "所在地：" + x.addr; d.appendChild(ad); }
       if (x.review_query) { var sc = document.createElement("div"); sc.className = "emg-score"; sc.dataset.id = x.id; d.appendChild(sc); }
+      // [B] この病院までのペットタクシーの料金をくらべる（行き先に所在地を入れてフォームへ）
+      if (x.addr) { var tx = document.createElement("a"); tx.className = "emg-taxi"; tx.href = "/?to=" + encodeURIComponent(x.addr) + "#form"; tx.textContent = "この病院までのペットタクシーの料金をくらべる →"; d.appendChild(tx); }
       return d;
     }
     // 搬送の会社：名前は公式サイトへのリンク、電話番号はタップで電話できるように（リンクの中にリンクは置けないので枠は div）
@@ -1519,7 +1534,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     function driveTimes(from, list){
       if (!list.length) return Promise.resolve([]);
       var cs = [from].concat(list.map(function(e){ return e.c; }));
-      return fetch("https://router.project-osrm.org/table/v1/driving/" + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?sources=0&annotations=duration,distance")
+      return fetch(ROAD_API + "/table/v1/driving/" + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?sources=0&annotations=duration,distance")
         .then(function(r){ return r.json(); })
         .then(function(j){
           if (!j || j.code !== "Ok") return null;
@@ -2054,6 +2069,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (DEMO.ok && (chosenPicks.length || chosenGo || chosenBack)) { demoSent(); return; } // 見本の画面では送らない
     err.style.display = "none";
     function fail(msg, el){
+      track("form_error", {field_name: el ? fieldName(el) : "none"}); // 止まった項目の名前だけ（中身は送らない）
       err.textContent = msg; err.style.display = "block";
       if (el) jumpTo(el);
     }
@@ -2125,11 +2141,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       fail(msg);
     }
     // 受付の仕組みが保存できたと返してきたときだけ、完了画面にする
+    var sendInfo = {companies: splitPick ? 2 : picks.length, split: splitPick ? 1 : 0, trip: trip === "往復" ? "round" : "one_way", pref: $("pref").value};
+    track("inquiry_submit", sendInfo);
     fetch(GAS_URL, {method:"POST", body: body})
       .then(function(res){ return res.json(); })
       .then(function(r){
         if (!r || !r.ok) {
           var e = String(r && r.error || "");
+          track("inquiry_fail", {reason: e.slice(0, 40) || "unknown"});
           if (e.indexOf("selection_") === 0 || e === "missing") { clearPartners(); retry("候補を更新しています。表示されたら、もう一度事業者を選んでください。"); queuePartners(); return; }
           if (e === "area") return retry("お迎えの場所が対応エリアの外のようです。お迎えの場所を確かめてください。");
           if (e === "datetime") return retry("お迎えの日時が近すぎるか、読み取れませんでした。いまから3時間後より先の日時を選び直してください。");
@@ -2143,7 +2162,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         form.style.display = "none";
         $("thanks").style.display = "block";
         $("thanks").scrollIntoView({block:"start", behavior:"smooth"}); // 完了の知らせが画面の外にならないように
-        track("generate_lead");
+        track("generate_lead", sendInfo);
+        // どの会社に問い合わせたか（会社ごとに1件。会社名とIDだけで、お客さまの情報は送らない）
+        (splitPick ? [chosenGo, chosenBack] : picks).forEach(function(c){ var ci = coInfo(c); ci.pref = sendInfo.pref; track("lead_company", ci); });
       })
       .catch(function(){
         retry("受け付けできたか確認できませんでした。数分たっても受付メールが届かなければ、同じ事業者を選んで、もう一度問い合わせてください。入力内容はそのまま残っています。");
@@ -2155,8 +2176,32 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var a = e.target.closest && e.target.closest('a[href="#form"]');
     if (!a) return;
     e.preventDefault(); toFormStart(true);
+    formEntry = "cta"; track("form_cta", {cta: a.getAttribute("data-cta") || (a.closest(".sticky") ? "sticky" : a.closest("nav") ? "nav" : "body")});
     try { history.replaceState(null, "", "#form"); } catch (x) {}
   });
   if (location.hash === "#form") setTimeout(function(){ toFormStart(false); }, 0);
+  // フォームの動きの計測（Nori 2026-11-08「フォームに入力した・サブミットした・フォームのページに来た・どこから来た」）。
+  // 送るのは項目の名前と回数だけ。お名前・連絡先・場所・メモなどの入力した中身は送らない
+  (function(){
+    var page = location.pathname === "/" ? "top" : /^\/(tokyo|kanagawa|saitama|chiba|area)\//.test(location.pathname) ? "area" : "other";
+    var from = (function(){ try { if (!document.referrer) return "direct"; var r = new URL(document.referrer); return r.hostname === location.hostname ? r.pathname : "external"; } catch (x) { return "unknown"; } })();
+    var base = {page_type: page, from_page: from};
+    if (location.hash === "#form") formEntry = "link";
+    var card = document.querySelector("#form .form-card") || form, seen = false;
+    function viewed(){ if (seen) return; seen = true; var p = {entry: formEntry || "scroll"}; for (var k in base) p[k] = base[k]; track("form_view", p); }
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { io.disconnect(); viewed(); } }, {threshold: 0.2});
+      io.observe(card);
+    }
+    var begun = false, done = {};
+    function field(e){
+      var el = e.target, n = fieldName(el);
+      if (!/^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName) || !n || n === "website") return; // 迷惑投稿よけの隠し欄は数えない
+      if (!begun) { begun = true; viewed(); var p = {field_name: n}; for (var k in base) p[k] = base[k]; track("form_start", p); }
+      if (e.type === "change" && !done[n]) { done[n] = 1; track("form_field", {field_name: n}); }
+    }
+    form.addEventListener("focusin", field);
+    form.addEventListener("change", field);
+  })();
   syncOpenNote(); // 地域ページ・前回の入力で県が入っているとき
 })();

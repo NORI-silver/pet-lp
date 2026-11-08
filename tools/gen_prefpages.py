@@ -91,13 +91,13 @@ def render_pref(ctx, cat, pf, rows):
       <p class="emg-free">{e(cat.get("free", "この一覧は無料の情報です。事業者からお金をもらっていません。おすすめ順や点数順ではありません。料金は載せていないので、それぞれに直接おたずねください。"))}</p>
       {f'<div class="emg-tips" style="margin-top:0"><h4>{e(pf)}の{e(name)}のようす</h4>{facts_html}</div>' if facts_html else ''}
       {cat["extra"](e, pf) if cat.get("extra") else ""}
-      <section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(cat.get("list_h", name))}（{e(pf)}・{n}{e(unit)}）</h2>{cards}</section>
+      {cat["fac_chips"](e, pf) + chr(10) + "      " if cat.get("fac_chips") else ""}<section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(cat.get("list_h", name))}（{e(pf)}・{n}{e(unit)}）</h2>{cards}</section>
       {table_html(e, cat, rs)}
       {cat["extra_after"](e, pf) if cat.get("extra_after") else ""}
       {near_html}
       <div class="emg-tips"><h4>{e(cat['before_title'])}</h4><dl>{"".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in cat['before'])}</dl></div>
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
-      {pref_nav(cat, e, rows, ctx["emg_regions"], cur=pf)}
+      {pref_nav(cat, e, rows, ctx["emg_regions"], cur=pf)}{chr(10) + "      " + cat["fac_biz"](e) if cat.get("fac_biz") else ""}
       <p class="emg-note">当サイトとは別の事業者です（{e(cat['checked'])}に公式サイトで確かめた情報）。内容は変わることがあるので、頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
@@ -111,7 +111,7 @@ def render_pref(ctx, cat, pf, rows):
 </section>
 </main>
 {prefkeep.LINKS_JS}
-{'<script src="/reviews.js" defer></script>' if cat.get('reviews') else ''}
+{'<script src="/reviews.js" defer></script>' if cat.get('reviews') else ''}{chr(10) + '<script src="/facility.js" defer></script>' if cat.get('fac_chips') else ''}
 """ + ctx["foot_noband"]()
 
 def write_all(ROOT, ctx, cat):

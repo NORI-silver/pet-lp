@@ -17,7 +17,7 @@ CATS = [  # (フォルダ, ボタンの文字)
 # その県の病院・施設への移動ガイド（tools/facility_guides.py）。夜間病院の県ページにだけ足す
 GUIDE_LINKS = {"osaka": [("/guide/osaka-yakan-taxi/", "大阪どうぶつ夜間急病センターへの行き方"), ("/guide/hokusetsu-yakan-taxi/", "北摂夜間救急動物病院への行き方")],
                "tokyo": [("/guide/jarmec-tokyo-taxi/", "日本動物高度医療センター東京病院へのタクシー通院"), ("/guide/trva-yakan-taxi/", "TRVA動物医療センター（世田谷）夜間救急への行き方")],
-               "kanagawa": [("/guide/jarmec-kawasaki-taxi/", "日本動物高度医療センター川崎本院へのタクシー通院"), ("/guide/dvms-yokohama-taxi/", "DVMsどうぶつ医療センター横浜（夜間救急）への行き方")]}
+               "kanagawa": [("/guide/jarmec-kawasaki-taxi/", "日本動物高度医療センター川崎本院へのタクシー通院"), ("/guide/dvms-yokohama-taxi/", "DVMsどうぶつ医療センター横浜（夜間救急）への行き方"), ("/guide/veccs-yokohama-taxi/", "VECCS横浜（24時間の動物救急）への行き方")]}
 TOP4 = {"tokyo", "kanagawa", "saitama", "chiba"}
 MARK = re.compile(r"<!--XLINK-->.*?<!--/XLINK-->\n?", re.S)
 
