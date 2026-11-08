@@ -426,6 +426,7 @@ footer a{color:var(--ink-2)}
 .emg-guess{margin:6px 0 0;font-size:.8rem;color:var(--ink-2)}
 .emg-guess[hidden]{display:none}
 .open-note{margin:8px 0 0;background:#f7f4f1;border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
+#petForm.lite .opt-lite{display:none}
 .open-note[hidden],#contactBox[hidden]{display:none}
 .contact-none{margin:14px 0 0;background:#f7f4f1;border-radius:12px;padding:10px 14px;font-size:.86rem;color:var(--ink-2)}
 .contact-safe{margin:-4px 0 14px;font-size:.84rem;color:var(--ink-2);background:var(--o-l);border-radius:12px;padding:10px 14px}
@@ -934,7 +935,7 @@ footer a{color:var(--ink-2)}
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button>
             <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
             <p class="geo-msg" id="geoMsg" aria-live="polite"></p></div>
-          <div class="f"><span class="lbl">経由地<span class="any">任意</span></span>
+          <div class="f opt-lite"><span class="lbl">経由地<span class="any">任意</span></span>
             <div class="seg"><label><input type="radio" name="via_on" value="なし" checked><span>なし</span></label><label><input type="radio" name="via_on" value="あり"><span>あり（途中で寄る）</span></label></div>
             <div class="via-box" id="viaBox" hidden><input type="text" id="via" autocomplete="off" name="via" placeholder="例：〇〇トリミングサロン（渋谷区）" aria-label="経由地"></div></div>
           <div class="f"><label for="dropoff">行き先<span class="need">必須</span></label>
@@ -973,15 +974,15 @@ footer a{color:var(--ink-2)}
             <select id="petCount" required><option value="">選んでください</option><option value="1" selected>1匹</option><option value="2">2匹</option><option value="3">3匹</option><option value="4">4匹</option><option value="5">5匹</option></select></div>
           <p class="pet-hint" id="petHint">頭数を選ぶと、1匹ずつの入力欄が出ます。</p>
           <div id="pets"></div>
-          <label class="chk"><input type="checkbox" id="petOnly" name="pet_only" value="1"> ペットだけで乗る（飼い主さんは乗らない）</label>
-          <div class="only-box" id="onlyBox" hidden>
+          <label class="chk opt-lite"><input type="checkbox" id="petOnly" name="pet_only" value="1"> ペットだけで乗る（飼い主さんは乗らない）</label>
+          <div class="only-box opt-lite" id="onlyBox" hidden>
             <p class="small" style="margin:0 0 6px">ペットだけの送迎を受けるかは会社によって違います。会社からの空き状況と料金の返事でお知らせします。</p>
             <div class="f"><label for="handFrom">お迎えでペットを渡す人<span class="need">必須</span></label><input type="text" id="handFrom" name="hand_from" maxlength="100" placeholder="例：家族（母）・ペットホテルの受付"></div>
             <div class="f"><label for="handTo">行き先で受け取る人<span class="need">必須</span></label><input type="text" id="handTo" name="hand_to" maxlength="100" placeholder="例：動物病院の受付・祖父"></div>
           </div>
-          <div class="f" id="ridersF"><label for="riders">一緒に乗る人数<span class="need">必須</span><span class="any">飼い主さんは付き添いとして同乗します。同乗できる人数は会社によって違います</span></label>
+          <div class="f opt-lite" id="ridersF"><label for="riders">一緒に乗る人数<span class="need">必須</span><span class="any">飼い主さんは付き添いとして同乗します。同乗できる人数は会社によって違います</span></label>
             <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option>1人</option><option>2人</option><option>3人</option></select></div>
-          <div class="f"><label for="luggage">荷物の量<span class="need">必須</span></label>
+          <div class="f opt-lite"><label for="luggage">荷物の量<span class="need">必須</span></label>
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
@@ -1453,6 +1454,6 @@ footer a{color:var(--ink-2)}
 
 <div class="sticky"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
 
-<script src="/app.js?v=c3a11b0221"></script>
+<script src="/app.js?v=01db29ca61"></script>
 </body>
 </html>

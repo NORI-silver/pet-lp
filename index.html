@@ -426,6 +426,7 @@ footer a{color:var(--ink-2)}
 .emg-guess{margin:6px 0 0;font-size:.8rem;color:var(--ink-2)}
 .emg-guess[hidden]{display:none}
 .open-note{margin:8px 0 0;background:#f7f4f1;border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
+#petForm.lite .opt-lite{display:none}
 .open-note[hidden],#contactBox[hidden]{display:none}
 .contact-none{margin:14px 0 0;background:#f7f4f1;border-radius:12px;padding:10px 14px;font-size:.86rem;color:var(--ink-2)}
 .contact-safe{margin:-4px 0 14px;font-size:.84rem;color:var(--ink-2);background:var(--o-l);border-radius:12px;padding:10px 14px}
@@ -791,7 +792,7 @@ footer a{color:var(--ink-2)}
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button>
             <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
             <p class="geo-msg" id="geoMsg" aria-live="polite"></p></div>
-          <div class="f"><span class="lbl">経由地<span class="any">任意</span></span>
+          <div class="f opt-lite"><span class="lbl">経由地<span class="any">任意</span></span>
             <div class="seg"><label><input type="radio" name="via_on" value="なし" checked><span>なし</span></label><label><input type="radio" name="via_on" value="あり"><span>あり（途中で寄る）</span></label></div>
             <div class="via-box" id="viaBox" hidden><input type="text" id="via" autocomplete="off" name="via" placeholder="例：〇〇トリミングサロン（渋谷区）" aria-label="経由地"></div></div>
           <div class="f"><label for="dropoff">行き先<span class="need">必須</span></label>
@@ -830,15 +831,15 @@ footer a{color:var(--ink-2)}
             <select id="petCount" required><option value="">選んでください</option><option value="1" selected>1匹</option><option value="2">2匹</option><option value="3">3匹</option><option value="4">4匹</option><option value="5">5匹</option></select></div>
           <p class="pet-hint" id="petHint">頭数を選ぶと、1匹ずつの入力欄が出ます。</p>
           <div id="pets"></div>
-          <label class="chk"><input type="checkbox" id="petOnly" name="pet_only" value="1"> ペットだけで乗る（飼い主さんは乗らない）</label>
-          <div class="only-box" id="onlyBox" hidden>
+          <label class="chk opt-lite"><input type="checkbox" id="petOnly" name="pet_only" value="1"> ペットだけで乗る（飼い主さんは乗らない）</label>
+          <div class="only-box opt-lite" id="onlyBox" hidden>
             <p class="small" style="margin:0 0 6px">ペットだけの送迎を受けるかは会社によって違います。会社からの空き状況と料金の返事でお知らせします。</p>
             <div class="f"><label for="handFrom">お迎えでペットを渡す人<span class="need">必須</span></label><input type="text" id="handFrom" name="hand_from" maxlength="100" placeholder="例：家族（母）・ペットホテルの受付"></div>
             <div class="f"><label for="handTo">行き先で受け取る人<span class="need">必須</span></label><input type="text" id="handTo" name="hand_to" maxlength="100" placeholder="例：動物病院の受付・祖父"></div>
           </div>
-          <div class="f" id="ridersF"><label for="riders">一緒に乗る人数<span class="need">必須</span><span class="any">飼い主さんは付き添いとして同乗します。同乗できる人数は会社によって違います</span></label>
+          <div class="f opt-lite" id="ridersF"><label for="riders">一緒に乗る人数<span class="need">必須</span><span class="any">飼い主さんは付き添いとして同乗します。同乗できる人数は会社によって違います</span></label>
             <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option>1人</option><option>2人</option><option>3人</option></select></div>
-          <div class="f"><label for="luggage">荷物の量<span class="need">必須</span></label>
+          <div class="f opt-lite"><label for="luggage">荷物の量<span class="need">必須</span></label>
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
@@ -1301,9 +1302,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // カードを出せない理由。"fields"＝入っていない項目がある、"time"＝お迎えが近すぎる・帰りが行きより前、""＝そろっている
   function partnerBlock(){
     if (!GAS_URL) return "off";
-    var required = ["pref","pickup","dropoff","date","hour","minute","petCount","riders","luggage"];
+    // 問い合わせできる会社がいない県は、場所・日時・ペットの種類と体重だけで候補を出す（2026-11-08「少なくする」）
+    var lite = !prefOpen();
+    var required = ["pref","pickup","dropoff","date","hour","minute","petCount"].concat(lite ? [] : ["riders","luggage"]);
     if (required.some(function(id){return !$(id).value || !$(id).checkValidity();})) return "fields";
-    if (!petsBox.children.length || Array.prototype.some.call(petsBox.querySelectorAll("input"),function(el){return !el.checkValidity();})) return "fields";
+    if (!petsBox.children.length || Array.prototype.some.call(petsBox.querySelectorAll("input,select"),function(el){return !(lite && el.closest(".opt-lite")) && !el.checkValidity();})) return "fields";
     var fd = new FormData(form), at = new Date(fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute") + ":00+09:00");
     if (!fd.get("trip")) return "fields";
     if (fd.get("trip") === "往復") {
@@ -1377,6 +1380,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var searchSeq = ++quoteSeq, search = requestPayload().body;
     ["name","tel","email","notes","contact","website","pets","breed","age","sex","est_fare","est_fare_text"].forEach(function(k){search.delete(k);});
     search.set("kind", "quotes"); if (DEMO.tok) search.set("demo", DEMO.tok);
+    // 入力を減らした県では、たずねていない項目をいちばん広く探せる値で調べる（1人・手荷物・ケージはどちらでも・介護なし）
+    if (!prefOpen()) [["riders","1人"],["luggage","手荷物くらい"],["cage","どれでも"],["care","不要"]].forEach(function(d){ if (!search.get(d[0])) search.set(d[0], d[1]); });
     showLoading();
     fetch(GAS_URL,{method:"POST",body:search}).then(function(res){return res.json();}).then(function(result){
       if (searchSeq !== quoteSeq || sending) return;
@@ -1438,8 +1443,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // ご連絡先は、送れる会社がいるときだけ出す（いないのに電話番号まで入れさせない）
   function syncContact(){
     var bookable = quoteCards.some(function(c){ return !c.display_only; }) || !!(quoteLegs && quoteLegs.go && quoteLegs.go.some(function(c){ return !c.display_only; }));
-    var shown = quotesLoaded ? bookable : prefOpen();
+    if (quotesLoaded) lastBookable = bookable;
+    var shown = quotesLoaded ? bookable : prefOpen() || lastBookable; // 調べ直しているあいだは、前の結果のまま（欄が消えたり出たりしないように）
     $("contactBox").hidden = !shown;
+    syncLite(!prefOpen() && !shown);
+    if (shown && !prefOpen()) $("openNote").hidden = true; // ほかの県の会社が、お迎えか行き先の近くにいるとき
     var none = $("contactNone");
     if (!shown && quotesLoaded) {
       if (!none) { none = document.createElement("p"); none.id = "contactNone"; none.className = "contact-none"; $("contactBox").parentNode.insertBefore(none, $("contactBox")); }
@@ -1447,13 +1455,19 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       none.hidden = false;
     } else if (none) none.hidden = true;
   }
+  // 入力を減らすとき：たずねない欄を隠して、入っていなくても先へ進めるようにする（送れる会社が出たら元に戻す）
+  function syncLite(lite){
+    form.classList.toggle("lite", lite);
+    form.querySelectorAll(".opt-lite input, .opt-lite select, .opt-lite textarea").forEach(function(el){ el.disabled = lite; });
+  }
   function syncOpenNote(){
     var v = $("pref").value, n = $("openNote");
     n.hidden = prefOpen();
-    if (!n.hidden) n.textContent = v + "では、いまこのサイトから問い合わせできる会社はまだありません。条件を入れると、会社の候補と料金の目安、公式サイトへのリンクをご覧いただけます（ご連絡先の入力はいりません）。";
+    if (!n.hidden) n.textContent = v + "では、いまこのサイトから問い合わせできる会社はまだありません。お迎えの場所・日時と、ペットの種類・体重を入れると、会社の候補と料金の目安、公式サイトへのリンクをご覧いただけます（ご連絡先の入力はいりません）。";
     syncContact();
   }
-  $("pref").addEventListener("change", syncOpenNote);
+  var lastBookable = false;
+  $("pref").addEventListener("change", function(){ lastBookable = false; syncOpenNote(); });
   // 名前を伏せた会社に「会社A・B…」の目印を付けて、くらべやすくする（2026-11-08 レビュー #4）
   // まだ提携していない会社も、社名と公式サイトへのリンクを出す（Nori 2026-11-08「すすめていいよ」）。問い合わせはできないまま。社名が分からない会社だけ「会社A・B…」の目印
   /*CO_SITE*/var CO_SITE = {"De5faaf3": ["COCOタク 杉並店", "https://pet-taxi-tokyo-suginami.com/"], "De33f4b4": ["COCOタク 東京世田谷店", "https://petcocotaxi-setagaya.com/"], "D2644ea0": ["COCOタク 東京中央店", "https://tc-cocotaxi.com/"], "Ddc3e31e": ["COCOタク 東京墨田店", "https://cocotaxi-pet-tokyo-sumida.com/"], "Df5f495f": ["COCOタク 東京多摩店", "https://coco-pet-taxi-tokyo-tama.com/"], "D400f012": ["COCOタク 東京小平店", "https://www.cocotaxi-sawan.com/"], "D3f74ac5": ["COCOタク 東京荒川店", "https://pet-taxi-adachi.com/"], "D0e1ab9c": ["COCOタク 東京足立店", "https://cocotaxiadachi.com/"], "D57763aa": ["COCOタク 武蔵野店", "https://coco-taxi-musashino.com/"], "D98b1024": ["COCOタク 渋谷店", "https://cocotaku-shibuya.com/"], "De308905": ["COCOタク 練馬杉並店", "https://cocotaku-nerima-suginami.com/"], "D45d6d56": ["COCOタク 西東京店", "https://cocotaxi.tokyo/"], "Db508c4d": ["COCOタク 足立中央本町店", "https://pet-cocotaxi-katusika.com/"], "Dbcd4199": ["COCOタク 青山店", "https://cocotaku.com/"], "D3661eb1": ["PETTA東京（ペッタ）", "https://www.petta-tokyo.com/"], "D1e44e13": ["cocoタク 大田・田園調布店", "https://coco-taxi.com/"], "D355c31f": ["サポっ人 中目黒店", "https://seikatsunosupport.com/pettaxi/"], "D7c32399": ["ペットタクシー こうのとり（AirLine Haneda）", "https://airline-haneda.com/taxi/"], "D0d1c8b4": ["ペットタクシー ワンネス", "https://oneness-taxi.com/"], "D692c9a6": ["ペットタクシー ワンハウス", "https://onehouse.jp/"], "D7922e74": ["ペトタクファインド", "https://pettaxi-find.com/chiba/"], "D72ab934": ["COCOタク 川崎店", "https://www.growing-group.co.jp/"], "D789b979": ["COCOタク 横浜店", "https://cocotaxi-yokohama.com/"], "Dfc12ca3": ["COCOタク 横浜港北店", "https://cocotaxi-yokohama-kouhoku.com/"], "Da1ed552": ["COCOタク 横浜磯子店", "https://pet-taxi-yokohama-isogo.com/"], "Dbf4a40c": ["COCOタク 湘南平塚店", "https://coco-taxi-shonan-hiratuka.com/"], "D0d611b0": ["COCOタク 湘南店", "https://www.cocotaku-shonan.com/"], "Dd6859ef": ["COCOタク 神奈川中央店", "https://coco-pettaxi-kanagawa-chuo.com/"], "D3cc975b": ["COCOタク 神奈川北店", "https://cocotaxi-wans.com/"], "D227d031": ["COCOタク 西湘秦野店", "https://pet-taxi-cocotaku-hadano.com/"], "De65cb2d": ["Legolas House（レゴラスハウス）", "https://www.legolashouse.com/"], "D945f580": ["ikimono care（イキモノケア）", "https://www.ikimonocare.com/"], "D5598693": ["ふわふわペットタクシー", "https://pet-yokohama.com/"], "D5604536": ["やこうDogはうす", "https://yakodoghouse.com/"], "Dc7b4703": ["わんにゃんハイヤー Angel Buggy", "https://www.angel-buggy.com/"], "D68f9d95": ["ペットタクシー Animals", "https://h12150825.wixsite.com/taxi-animals"], "D8da1ced": ["ペットタクシー わんだにゃー", "https://wan.da-nya.com/"], "Daed391e": ["ペットタクシー シアンシャ 厚木店", "https://chienchat.jp/atsugi/"], "D0437ae3": ["ペットタクシー シアンシャ 鎌倉店", "https://chienchat.jp/kamakura/"], "D5f32b1e": ["三和交通 ペットタクシー", "https://www.sanwakoutsu.co.jp/special/pet/"], "Daf1e25b": ["湘南Dog Life College（ペットタクシー）", "https://www.shonan-dog-college.jp/taxi"], "D0b50c1a": ["湘南ペットハイヤー", "https://www.shonan-web.com/sub6.html"], "D06b72ea": ["鎌倉ペットタクシー", "https://pets-taxi.net/ja/kamakurapettaxi"], "D40a4aa0": ["COCOタク さいたま南店", "https://cocotaxi-saitama.com/"], "Dfcb8480": ["COCOタク 埼玉川越店", "https://pet-taxi-saitama-kawagoe.jp/"], "D853ae97": ["COCOタク 埼玉春日部店", "https://pet-taxi-kasukabe.com/"], "D83f23cc": ["COCOタク 川口店", "https://cocokawaguchi.com/"], "D2a4caa6": ["COCOタク 練馬店", "https://pet-taxi-nerima.com/"], "D3cc1cce": ["ペットケア151A", "https://petcare-151a.com/pettaxi.html"], "Dcfbfbf2": ["COCOタク 船橋店", "https://cocotaku-funabashi.moe/"], "De3f35f2": ["コインペットタクシー シエロ", "https://pettaxi.jp/"], "D3c85024": ["ペットタクシー パールのしっぽ", "https://pearlno-shippo.com/"], "Dedcfcd2": ["動物苑（ペット送迎）", "https://www.pet594.com/pet-transport/"], "Dc28c19e": ["ワンワンハウス（ペットタクシー）", "https://wan-wan-house.com/pet-taxi/"], "Dc05105b": ["COCOタク 新札幌店", "https://pet-taxi-sc.com/"], "Db405639": ["D-RIDE（ペットタクシー）", "https://d-ride.jp/pettaxi.html"], "D44948b6": ["ぺトタク（札幌・小樽）", "https://pet-tax.com/"], "D13b7c6f": ["ペット専用タクシー aiai", "https://pet-taxi-aiai.com/"], "D1f53c72": ["COCOタク岩手盛岡店", "https://cocomorioka.iwate.jp/"], "D18363bd": ["COCOタク 仙台店", "https://pet-taxi-sendai.com/"], "D4adf70b": ["PETRIP", "https://petrip.co.jp/"], "D30e1838": ["ニャンワンクラブ（ペットタクシー）", "https://nyanwan.jp/"], "D1132ff9": ["冨士タクシー（ペットタクシー）", "https://www.fuji-taxinet.jp/service/pet-taxi.php"], "Da40f372": ["ペットタクシー With☆（ウィズ）", "https://pet-taxi.sakura.ne.jp/"], "Dd472236": ["ペットタクシー COCOタク静岡", "https://cocotaxi-shizuoka.com/"], "Dc2d8672": ["COCOタク 三河豊田店", "https://pet-taxi-aichi-mikawa.com/"], "D7d26cb4": ["COCOタク 名古屋尾張店", "https://pet-taxi-nagoya-owari.com/"], "D6c3b09b": ["COCOタク 愛知稲沢店", "https://cocotaku-inazawa-aichi.com/"], "D611ee5f": ["COCOタク 知多武豊店", "https://pet-taxi-aichi-chita-taketoyo.com/"], "Df997a81": ["COCOタク 穂の国店", "https://pet-taxi-aicih-toyohashi-honokuni.com/"], "D44cfd16": ["HAPPY WITH（ペットタクシー）", "https://happywith.pet/pettaxi/"], "D1834601": ["ZEROペットタクシー", "https://zero808.co.jp/pettaxi/"], "D7f0d2a2": ["COCOタク 京都店", "https://pet-taxi-kyoto.com/"], "Dc9d8a2b": ["PetTAXI24", "https://j-pettaxi.com/"], "D25bac67": ["ペットサポート てんりん", "https://ten-rin.jp/"], "Dfc6c94f": ["木谷わんわんタクシー", "https://kitani11taxi.com/"], "D7d574bf": ["ARC（アルク）Pet Taxi & Pet Sitter", "https://pet-arc.com/"], "D436a86d": ["COCOタク 南大阪店", "https://coco-taxi-minami-osaka.com/"], "D7d5e5d1": ["COCOタク 大阪・東住吉店", "https://pet-cocotaku-higashi-sumiyoshi.com/"], "D9895b9b": ["COCOタク 大阪柏原店", "https://cocotaxi-kashiwara.com/"], "D3413153": ["COCOタク 守口店", "https://coco-taxi-osaka-moriguchi.com/"], "D713b363": ["COCOタク 新大阪店", "https://pet-taxi-coco-taku-shin-osaka.com/"], "D91cc62f": ["COCOタク 東大阪店", "https://cocotaku-higashiosaka.com/"], "Db8bafea": ["Comasuke（コマスケ）", "https://comasuke.com/"], "D6125f28": ["DOG HAIR STUDIO KEN（ペットタクシー）", "https://doghairstudioken.jp/"], "D01478c8": ["アイアールサービス（ペットタクシー）", "https://www.i-and-r.com/pettaxi.html"], "Da9518d0": ["キャリーワン", "https://carry-one.net/"], "D66c4625": ["ペットタクシー アイボウ（相棒）", "https://www.aibou.com/"], "D874b316": ["ペットタクシー マイファミリー", "https://my-family-takatsuki.com/"], "D1c2a5e3": ["ミントペットタクシー", "https://www.vet-system.jp/"], "D09687f4": ["COCOタク 神戸西店", "https://cocotaxi-kobewest.com/"], "D9f338ec": ["ペットタクシー アニマルプラス", "https://animal-plus.p-kit.com/"], "D72024d3": ["ラッキーペットサービス", "https://lucky-pettaxi.jimdosite.com/"], "D154d458": ["COCOタク ならまち店", "https://pet-taxi-nara.com/"], "D0a999a3": ["ペットタクシー COCOタク奈良", "https://pet-coco-taxi-nara.com/"], "D225080e": ["ペッタク（PETTAXI）", "https://pettaku.com/"], "D678e01f": ["ペットタクシー 響", "https://pettaxihibiki.hp.peraichi.com/"], "D7c41c5f": ["トップスター（ペットタクシー）", "https://www.topstar-tokushima.com/pettaxi"], "Db726555": ["COCOタク 北九州小倉店", "https://pet-taxi-kitakyusyu-kokuraten.com/"], "D0ec95b6": ["COCOタク 福岡東店", "https://cocotakufukuokahigashi.com/"], "Df71b3ed": ["COCOタク 福岡空港店", "https://pet-taxi-fukuoka-airport.com/"], "Dfad4b87": ["COCOタク 福岡筑紫野店", "https://coco-taxi-fukuoka-chikushino.com/"], "Df31960d": ["ペットタクシー Happy", "https://www.pet-taxi-happy.jp/"], "Db28bc5b": ["福岡わんわんエクスプレス", "https://wanwan.pet/"], "D7847612": ["福岡ペットタクシー HAKAタク", "https://pettaxi-hakataku.wepage.com/"], "Db9067d3": ["COCOタク 長崎店", "https://pet-taxi-nagasaki.com/"], "P002": ["ペットエクスプレス", "https://pettaxi.tokyo/"], "P003": ["くりき", "https://pet-kuriki.com/"]};/*/CO_SITE*/
@@ -1474,7 +1488,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (g("trip") === "往復") lines.push("・往復（帰りのお迎え：" + when(g("ret_date"), g("ret_hour"), g("ret_minute")) + (($("retOther") || {}).checked && $("retPickup").value.trim() ? "、" + $("retPickup").value.trim() + " → " + $("retDropoff").value.trim() : "") + "）");
     else lines.push("・片道");
     readPets().forEach(function(pt, i){ lines.push("・" + petLine(pt, i)); });
-    lines.push("・一緒に乗る人数：" + g("riders"));
+    if (g("riders")) lines.push("・一緒に乗る人数：" + g("riders"));
     if (/^0/.test(g("riders"))) { if (g("hand_from")) lines.push("・お迎えで渡す人：" + g("hand_from")); if (g("hand_to")) lines.push("・行き先で受け取る人：" + g("hand_to")); }
     if (g("luggage")) lines.push("・荷物：" + g("luggage"));
     lines.push("", "（ペットタクシー予約窓口 pet.shiokonbu.com で見て、問い合わせました）");
@@ -1959,16 +1973,16 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         KINDS.map(function(o){ return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('') + '</select>' +
         '<p style="margin:6px 0 0;font-size:.8rem;color:var(--ink-3)">乗せられる動物は会社ごとに違います。乗せられると公式サイトに書いてある会社を先に出します。</p></div></div>' +
       '<div class="two">' +
-        '<div class="f"><label for="' + k + '_breed"><span class="breed-lbl">犬種・猫種</span><span class="any">わかれば</span></label><div class="cb"><input type="text" id="' + k + '_breed" name="' + k + '_breed" class="breed" placeholder="選ぶか、入力してしぼりこみ" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><ul class="cb-list" role="listbox" hidden></ul></div></div>' +
+        '<div class="f opt-lite"><label for="' + k + '_breed"><span class="breed-lbl">犬種・猫種</span><span class="any">わかれば</span></label><div class="cb"><input type="text" id="' + k + '_breed" name="' + k + '_breed" class="breed" placeholder="選ぶか、入力してしぼりこみ" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><ul class="cb-list" role="listbox" hidden></ul></div></div>' +
         '<div class="f"><label for="' + k + '_weight">体重（kg）<span class="need">必須</span></label><input type="number" id="' + k + '_weight" name="' + k + '_weight" min="0.01" max="120" step="any" inputmode="decimal" placeholder="例：8（小さな子は 0.3 など）" required></div>' +
-        '<div class="f"><label for="' + k + '_age">年齢<span class="any">わかれば</span></label><input type="number" id="' + k + '_age" name="' + k + '_age" min="0" max="40" inputmode="numeric" placeholder="例：12"></div>' +
-        '<div class="f"><span class="lbl">性別<span class="any">わかれば</span></span>' + seg(k + "_sex", [["オス","男の子"],["メス","女の子"]], false) + '</div>' +
+        '<div class="f opt-lite"><label for="' + k + '_age">年齢<span class="any">わかれば</span></label><input type="number" id="' + k + '_age" name="' + k + '_age" min="0" max="40" inputmode="numeric" placeholder="例：12"></div>' +
+        '<div class="f opt-lite"><span class="lbl">性別<span class="any">わかれば</span></span>' + seg(k + "_sex", [["オス","男の子"],["メス","女の子"]], false) + '</div>' +
       '</div>' +
-      '<div class="f"><span class="lbl">ケージ・キャリー<span class="need">必須</span></span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true) + '</div>' +
-      '<div class="f"><span class="lbl">予防接種<span class="any">済んでいるものにチェック</span></span><div class="chks">' +
+      '<div class="f opt-lite"><span class="lbl">ケージ・キャリー<span class="need">必須</span></span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true) + '</div>' +
+      '<div class="f opt-lite"><span class="lbl">予防接種<span class="any">済んでいるものにチェック</span></span><div class="chks">' +
         '<label class="chk"><input type="checkbox" name="' + k + '_vac" value="1"> 混合ワクチン</label>' +
         '<label class="chk rabies"><input type="checkbox" name="' + k + '_rabies" value="1"> 狂犬病の予防注射</label></div></div>' +
-      '<div class="f"><span class="lbl">介護は必要ですか？<span class="need">必須</span></span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true) +
+      '<div class="f opt-lite"><span class="lbl">介護は必要ですか？<span class="need">必須</span></span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true) +
         '<div class="care-box" hidden><span class="lbl">どんな手助けが必要ですか？<span class="any">あてはまるものすべて</span></span><div class="chks">' +
         CARE_OPTS.map(function(c){ return '<label class="chk"><input type="checkbox" name="' + k + '_care_need" value="' + c + '"> ' + c + '</label>'; }).join('') + '</div>' +
         '<label for="' + k + '_care_note" class="lbl" style="margin-top:6px">くわしいこと<span class="any">わかれば</span></label><input type="text" id="' + k + '_care_note" name="' + k + '_care_note" maxlength="200" placeholder="例：後ろ足が立たない。3階でエレベーターなし"></div></div>';
@@ -1984,6 +1998,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       c.querySelector(".pet-h b").textContent = n > 1 ? (i + 1) + "匹目" : "ペットの情報";
     });
     $("petHint").hidden = n > 0;
+    if (form.classList.contains("lite")) petsBox.querySelectorAll(".opt-lite input, .opt-lite select").forEach(function(el){ el.disabled = true; });
   }
   countSel.addEventListener("change", function(){ setPetCount(countSel.value); });
   setPetCount(countSel.value); // 最初から1匹分の欄を出す（いちばん多い1匹なら、頭数を選ぶ手間がいらない）
@@ -2076,7 +2091,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     return (i + 1) + "匹目：" + [p.species, p.breed, p.weight ? p.weight + "kg" : "", p.age ? p.age + "歳" : "", p.sex,
       ({"持ち込む":"ケージ持ち込み","なし":"ケージなし希望","借りたい":"ケージを借りたい","どれでも":"ケージはあり・なしどちらでも"})[p.cage] || p.cage,
       p.vaccine ? "混合ワクチン済み" : "", p.rabies ? "狂犬病予防注射済み" : "",
-      p.care === "必要" ? "介助必要" + ((p.care_need || []).length || p.care_note ? "（" + (p.care_need || []).concat(p.care_note ? [p.care_note] : []).join("／") + "）" : "") : "介助いらない"].filter(String).join("・");
+      p.care === "必要" ? "介助必要" + ((p.care_need || []).length || p.care_note ? "（" + (p.care_need || []).concat(p.care_note ? [p.care_note] : []).join("／") + "）" : "") : p.care ? "介助いらない" : ""].filter(String).join("・");
   }
 
 
