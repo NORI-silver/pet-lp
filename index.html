@@ -1370,7 +1370,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (!result || !result.ok || result.selection_version !== 1 || !Array.isArray(result.cards)) throw new Error("quotes");
       quoteLegs = result.legs || null; scoresReady = result.scores === 1; // 予約のしくみが新しい版のときだけ星をまとめて取り寄せる
       paintPartners(result.cards);
-      if (!partnersTracked) { partnersTracked = true; track("view_partners", {count: result.cards.length}); }
+      // 戦略の数字（2026-11-08）：候補を出した回数・問い合わせできる会社が1社以上出た回数。1ページで1回だけ数える
+      if (!partnersTracked) { var nb = result.cards.filter(function(c){ return !c.display_only; }).length; partnersTracked = true; track("view_partners", {count: result.cards.length, bookable: nb, pref: $("pref").value}); if (nb) track("view_bookable", {count: nb, pref: $("pref").value}); }
       quoteRefreshTimer = setTimeout(function(){clearPartners();queuePartners();}, 14*60000);
     }).catch(function(){
       if (searchSeq !== quoteSeq || sending) return;
