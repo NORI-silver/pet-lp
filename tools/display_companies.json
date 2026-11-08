@@ -1037,6 +1037,7 @@
     }
    },
    "pay": "",
+   "long": true,
    "review_q": "PETTA東京 東京",
    "review_name": "PETTA東京",
    "hours": "8-21",
@@ -1464,6 +1465,7 @@
     }
    },
    "pay": "現金・カード・電子マネー・QR／到着後",
+   "long": true,
    "review_q": "ペトタクファインド 東京",
    "review_name": "ペトタクファインド",
    "hours": "",
@@ -2117,6 +2119,7 @@
     }
    },
    "pay": "現金・カード",
+   "long": true,
    "review_q": "COCOタク 西湘秦野店 神奈川",
    "review_name": "COCOタク 西湘秦野店",
    "hours": "0-24",
@@ -2386,6 +2389,7 @@
     }
    },
    "pay": "現金・カード・電子マネー・QR（フェリー長距離は事前決済）",
+   "long": true,
    "review_q": "ふわふわペットタクシー 神奈川",
    "review_name": "ふわふわペットタクシー",
    "hours": "",
@@ -2507,6 +2511,7 @@
     ]
    },
    "pay": "",
+   "long": true,
    "review_q": "やこうDogはうす 神奈川",
    "review_name": "やこうDogはうす",
    "hours": "",
@@ -2641,6 +2646,7 @@
     }
    },
    "pay": "",
+   "long": true,
    "review_q": "ペットタクシー Animals 神奈川",
    "review_name": "Animals",
    "hours": "8-20",
@@ -2681,6 +2687,7 @@
    ],
    "fare": null,
    "pay": "JCBタクシーチケット取扱",
+   "long": true,
    "review_q": "ペットタクシー わんだにゃー 神奈川",
    "review_name": "わんだにゃー",
    "hours": "",
@@ -2923,6 +2930,7 @@
    ],
    "fare": null,
    "pay": "",
+   "long": true,
    "review_q": "湘南ペットハイヤー 神奈川",
    "review_name": "湘南ペットハイヤー",
    "hours": "",
@@ -3116,6 +3124,7 @@
     "src": "https://pet-taxi-saitama-kawagoe.jp/"
    },
    "pay": "現金・カード・QR",
+   "long": true,
    "review_q": "COCOタク 埼玉川越店 埼玉",
    "review_name": "COCOタク 埼玉川越店",
    "hours": "0-24",
@@ -4337,6 +4346,7 @@
    ],
    "fare": null,
    "pay": "",
+   "long": true,
    "review_q": "ニャンワンクラブ 宮城",
    "review_name": "ニャンワンクラブ",
    "hours": "9-18",
@@ -4410,6 +4420,7 @@
    ],
    "fare": null,
    "pay": "前払い（振込・メールで届くカード決済）",
+   "long": true,
    "review_q": "ペットタクシー With☆ 山梨",
    "review_name": "With☆",
    "hours": "",
@@ -5196,6 +5207,7 @@
     ]
    },
    "pay": "",
+   "long": true,
    "review_q": "ペットサポート てんりん 京",
    "review_name": "ペットサポート てんりん",
    "hours": "9-21",
@@ -5815,6 +5827,7 @@
     "round": 10
    },
    "pay": "現金・カード・電子マネー・QR",
+   "long": true,
    "review_q": "Comasuke 大阪",
    "review_name": "Comasuke",
    "hours": "0-24",
@@ -6049,6 +6062,7 @@
     "src": "https://carry-one.net/priceandflow/"
    },
    "pay": "",
+   "long": true,
    "review_q": "キャリーワン 大阪",
    "review_name": "キャリーワン",
    "hours": "",
@@ -6201,6 +6215,7 @@
     "src": "https://my-family-takatsuki.com/price.html"
    },
    "pay": "",
+   "long": true,
    "review_q": "ペットタクシー マイファミリー 大阪",
    "review_name": "マイファミリー",
    "hours": "0-24",
@@ -6363,6 +6378,7 @@
     "src": "https://www.cocotaxi-kobewest.com/"
    },
    "pay": "",
+   "long": true,
    "review_q": "COCOタク 神戸西店 兵庫",
    "review_name": "COCOタク 神戸西店",
    "hours": "9-19",
@@ -6767,10 +6783,11 @@
       200
      ]
     ],
-    "tax": "",
+    "tax": "税込",
     "src": "https://pettaku.com/price-guide/",
     "pick": {
-     "per": 100
+     "per": 100,
+     "freeToShopKm": 80
     },
     "wait": {
      "free": 10,
@@ -6778,12 +6795,14 @@
      "yen": 300
     },
     "night": {
-     "from": 21,
-     "to": 7,
+     "from": 20,
+     "to": 8,
      "flat": 3000
-    }
+    },
+    "back": {}
    },
    "pay": "",
+   "long": true,
    "review_q": "ペッタク 広島",
    "review_name": "ペッタク",
    "hours": "",
@@ -7300,6 +7319,7 @@
     }
    },
    "pay": "",
+   "long": true,
    "review_q": "ペットタクシー Happy 福岡",
    "review_name": "Happy",
    "hours": "",
@@ -7361,6 +7381,7 @@
     "src": "https://wanwan.pet/"
    },
    "pay": "",
+   "long": true,
    "review_q": "福岡わんわんエクスプレス 福岡",
    "review_name": "福岡わんわんエクスプレス",
    "hours": "0-24",

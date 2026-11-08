@@ -215,7 +215,9 @@ REPLY_FIX = {
     'D0a999a3': {'base': [3300, 0], 'tiers': [[1, 100, 165], [101, 200, 132], [201, None, 110]], 'night': {'from': 21, 'to': 8, 'flat': 3300, 'by': 'start'}},  # COCOタク奈良：基本3,300円＋お迎えと乗車の全km×165円。20:50乗車は割増なし
     'D355c31f': {'kmMode': 'exact', 'pick': {'per': 198, 'freeWithin': 3},           # サポっ人 中目黒：13.1km×198＝2,593円のように小数の距離。お店の近くはお迎え無料
                  'night': {'from': 22, 'to': 8, 'rate': 0.5, 'onAll': True}},        # 8時前・22時過ぎは50%増し
-    'D225080e': {'night': {'from': 21, 'to': 7, 'flat': 3000}},                       # ペッタク：21〜7時は深夜料金3,000円
+    'D225080e': {'night': {'from': 20, 'to': 8, 'flat': 3000},                        # ペッタク：提携の申し込み（2026-11-08）で夜間・早朝加算は20〜8時3,000円
+                 'pick': {'per': 100, 'freeToShopKm': 80},                            # お迎えはお店（広島市安芸区）から1km100円。遠くから広島周辺へ送るときはお迎えの距離料金なし（高速代の実費だけ）
+                 'back': {}, 'tax': '税込'},                                          # 2026-11-08 加茂さんの返事：料金は税込、お店へ戻る回送料は通常・長距離ともなし
     'D678e01f': {'oneWayRate': 0.2, 'kmMode': 'floor', 'night': {'from': 22, 'to': 6, 'rate': 0.2}},  # 響：片道（乗り捨て）2割増し、25.9kmは25kmの料金、22〜6時2割増し
     'D1c2a5e3': {'tableOver': 231, 'night': {'from': 17, 'to': 24, 'flat': 3300, 'by': 'start'}},  # ミント：20km超は1kmごと231円（23km 7,513円・31km 9,361円が表の20km 6,820円からぴったり）、17時以降の時間外3,300円（返事①）
     'De3f35f2': {'night': {'bands': [[20, 22, 1100], [22, 24, 2200], [0, 5, 3300], [5, 7, 2200], [7, 8, 1100]], 'by': 'start'}},  # シエロ：夜間はお迎えの時刻で判定（「お迎え時間20時以降ですと…別途￥1,100」）
@@ -453,6 +455,9 @@ def main(master, comp, tariffs=None, facts_path=None):
         row = {'id': m['id'], 'name': m['name'], 'pref': m['pref'], 'areas': areas(c, m), 'area_text': '' if at.startswith('不明') else at[:70],
                'shop': SHOP.get(m['id']), 'fare': fare(ts.get(m['id']), m['id']), 'pay': pay(c)}
         # 口コミの星を取り寄せるための、地図で場所を探すことばと、見つかった場所の名前に入っているはずのことば（ダッシュボードと同じ。点数そのものは入れない）
+        # 長距離（250km超）の料金の目安は、長距離を受けている会社だけ計算する（Nori 2026-11-08「長距離の計算をするのは長距離を請け合ってる会社だけ」）。
+        # 対応地域の文に「全国」「長距離」がある会社。「緊急は全国」「提携会社で全国」は自社の長距離ではないので入れない
+        if re.search(r'全国|長距離', re.sub(r'緊急は全国|提携会社で全国', '', at)): row['long'] = True
         if c.get('review_q') and c.get('review_name'): row['review_q'], row['review_name'] = c['review_q'], c['review_name']
         row.update(schedule(c, m['id'], facts.get(m['id'], {})))
         row['animals'] = animals(dict(facts.get(m['id'], {}), _id=m['id']))

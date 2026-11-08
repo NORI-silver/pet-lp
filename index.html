@@ -1536,7 +1536,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 料金（概算見積もり）。口コミと料金のほかの詳しい情報は、最初はたたんでおく（Nori 2026-10-31）
       var price = text("p", roundYenText(card.price.text), "partner-price");
       var tripName = leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道";
-      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? "料金表が未登録のため、お見積もり" : "一般道・" + tripName + "の概算見積もり" + (card.price.taxUnknown ? (card.price.incompleteFees ? "（税の扱いは確認中・未確認の費用は別途）" : "（税の扱いは確認中）") : card.price.incompleteFees ? "（税込・未確認の費用は別途）" : "（税込）"); price.appendChild(cap);
+      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? (routeDetails && Math.max(routeDetails.km || 0, routeDetails.highKm || 0) > 250 ? "長距離のため、お見積もり" : "料金表が未登録のため、お見積もり") : "一般道・" + tripName + "の概算見積もり" + (card.price.taxUnknown ? (card.price.incompleteFees ? "（税の扱いは確認中・未確認の費用は別途）" : "（税の扱いは確認中）") : card.price.incompleteFees ? "（税込・未確認の費用は別途）" : "（税込）"); price.appendChild(cap);
       if (card.price.local && card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
       var caution = text("p", "", "partner-caution");
       var cb = document.createElement("b"); cb.textContent = card.price.amount == null ? "確定料金ではありません" : "概算見積もりです（確定料金ではありません）";
@@ -2349,7 +2349,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var a = go[0], b = go[go.length-1], ra = back[0], rb = back[back.length-1];
       var kmL = kmOf(rs[0],go), kmL2 = kmOf(rs[2],back);
       var kmH = kmOf(rs[1],go), kmH2 = kmOf(rs[3],back);
-      if (Math.max(kmL,kmL2)>250) {
+      if (Math.max(kmL,kmL2)>3000) { // 場所の取り違えだけを止める（前は250kmで、東京→広島のような長距離の依頼が候補ごと出なかった。2026-11-08 ペッタク）
         $("partnerResults").hidden = true; est.innerHTML = '<p>場所を確かめてください。距離がうまく計算できませんでした。</p>'; return;
       }
       var hasHigh = !!(rs[1] && rs[1].hw >= 1 || later && rs[3] && rs[3].hw >= 1);
