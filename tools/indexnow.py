@@ -4,7 +4,7 @@
 #   python3 tools/indexnow.py <前のコミット>   … そのコミットとくらべて送る（空なら1つ前のコミット）
 #   python3 tools/indexnow.py --all            … sitemap の全部を送る（はじめの1回や、手で送り直すとき）
 #   python3 tools/indexnow.py <前> --dry       … 送らずに一覧だけ出す
-import glob, json, os, re, subprocess, sys, urllib.request
+import glob, json, os, re, subprocess, sys, time, urllib.error, urllib.request
 
 HOST = "pet.shiokonbu.com"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,8 +41,16 @@ def send(urls, k):
         body = json.dumps({"host": HOST, "key": k, "keyLocation": f"https://{HOST}/{k}.txt", "urlList": urls[i:i + 10000]}).encode()
         req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
                                      headers={"Content-Type": "application/json; charset=utf-8"})
-        with urllib.request.urlopen(req, timeout=30) as r:
-            print("IndexNow", r.status, len(urls[i:i + 10000]), "件")
+        # 公開の直後は鍵のファイルがまだ届かず 403 になることがある（2026-11-08 の初回）。少し待って3回まで送り直す。
+        for t in range(4):
+            try:
+                with urllib.request.urlopen(req, timeout=30) as r:
+                    print("IndexNow", r.status, len(urls[i:i + 10000]), "件"); break
+            except urllib.error.HTTPError as e:
+                print("IndexNow", e.code, "（あとで送り直します）" if t < 3 else "")
+                if t == 3 or e.code not in (403, 429, 500, 502, 503):
+                    raise
+                time.sleep(60)
 
 if __name__ == "__main__":
     args = [a for a in sys.argv[1:] if not a.startswith("--")]

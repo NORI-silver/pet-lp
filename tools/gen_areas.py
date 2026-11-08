@@ -1184,7 +1184,12 @@ def emg_hosp(x):
     meta = (f'<small class="emg-spec">{e(x["spec"])}</small>' if x.get("spec") else '') + (f'<small>所在地：{e(x["addr"])}</small>' if x.get("addr") else '')
     return (f'<div class="emg-item emg-co"><a href="{e(x["url"])}" target="_blank" rel="noopener"><b>{e(x["name"])}</b></a>'
             f'<small>{e(x["city"])}・{e(x["hours"])}</small>{meta}'
-            + (f'<div class="emg-score" data-id="{e(x["id"])}"></div>' if x.get("review_query") else '') + '</div>')
+            + (f'<div class="emg-score" data-id="{e(x["id"])}"></div>' if x.get("review_query") else '') + taxi_link(x) + '</div>')
+def taxi_link(x, label="この病院"):
+    # [B] 「この病院までのペットタクシー」：所在地を行き先に入れてフォームへ（2026-11-08。情報ページからタクシーの検索へつなぐ）
+    if not x.get("addr"): return ''
+    from urllib.parse import quote as _q
+    return f'<a class="emg-taxi" href="/?to={_q(x["addr"])}#form">{label}までのペットタクシーの料金をくらべる →</a>'
 emg_prefs_html = ''
 for lab, prefs in emg_regions:
     emg_prefs_html += f'<h3 class="emg-region">{e(lab)}</h3>\n'
