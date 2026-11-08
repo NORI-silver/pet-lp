@@ -2001,9 +2001,30 @@ function selectionQuotes_(p) {
   p.demo_id = demoId_(p.demo); // ページから来た demo_id は使わず、署名を確かめて決める
   // scores：口コミの星を kind=scores でまとめて取り寄せられる版（ページはこれが来たときだけ取り寄せる）
   var out = {ok:true,selection_version:1,scores:1,cards:quoteCards_(p)};
+  try { if (!p.demo_id) demandLog_(p, out.cards); } catch (e) {} // 記録に失敗しても検索は止めない
   // 往復は、行きと帰りをそれぞれ別の会社に頼めるように、片道ずつの候補も返す（Nori 2026-10-31）。全社準備中のあいだは出さない
   if (p.trip === '往復' && !CONFIG.SHOW_ALL_CANDIDATES) out.legs = {go:quoteCards_(legParams_(p,'go')), back:quoteCards_(legParams_(p,'back'))};
   return out;
+}
+
+// 需要の記録（Nori 2026-11-08「すすめていいよ」）：どの地域で検索があり、どの会社が候補に出たかだけを残す。
+// 提携していない会社に「この地域でお客さまからの検索がありました」とお伝えして、提携にお誘いするため。
+// お名前・連絡先・番地・ペットの詳しい内容は残さない（市区町村まで）。同じ条件の検索は30分に1回だけ数える。
+function cityOf_(s) {
+  var t = String(s || '').replace(/\s/g, ''), par = t.match(/[（(]([^）)]*[市区町村])[）)]/);
+  if (par) t = par[1]; // 「渋谷駅 南口（渋谷区）」のような候補の書き方
+  var m = t.match(/^(?:.{2,3}?[都道府県])?(.+?郡.+?[町村]|.+?市.+?区|.+?[市区町村])/);
+  return m && m[1].length <= 12 ? m[1] : '';
+}
+function demandLog_(p, cards) {
+  var key = 'dm:' + Utilities.base64EncodeWebSafe(Utilities.computeDigest(Utilities.DigestAlgorithm.MD5, [p.pref, p.pickup, p.dropoff, String(p.datetime).slice(0, 10)].join('|')));
+  var cache = CacheService.getScriptCache();
+  if (cache.get(key)) return;
+  cache.put(key, '1', 1800);
+  var ids = (cards || []).map(function(c) { return c.id; });
+  var open = (cards || []).filter(function(c) { return c.listed && c.token; }).length;
+  var sh = ensureSheet_(SpreadsheetApp.getActive(), '需要の記録', ['日時', 'お迎えの都道府県', 'お迎えの市区町村', '行き先の市区町村', 'お迎えの日', '片道・往復', '候補に出た会社', '問い合わせできた会社の数']);
+  sh.appendRow([new Date(), shortPref_(p.pref), cityOf_(p.pickup), cityOf_(p.dropoff), String(p.datetime || '').slice(0, 10), String(p.trip || ''), ids.join(','), open]);
 }
 
 // 往復の片方を片道の依頼として見たときの入力（go＝行き、back＝帰り）。料金・署名・候補の判定はこれで片道として計算する
