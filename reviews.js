@@ -9,7 +9,11 @@
     if (panel.dataset.done) return;
     panel.textContent = "口コミを読み込んでいます…";
     var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
-    fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
+    fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){ fill(panel, j); })
+      .catch(function(){ panel.textContent = "口コミを読み込めませんでした。時間をおいてもう一度お試しください。"; });
+  }
+  // 取り寄せた口コミを枠に入れる（書いた人・元の口コミへのリンク・並び順の説明・出どころは規約で必要）
+  function fill(panel, j){
       if (!j || !j.ok || !Array.isArray(j.reviews)) throw 0;
       panel.dataset.done = "1"; panel.replaceChildren();
       panel.appendChild(el("p", "review-head", "関連度の高い順に、最大5件を表示しています（全" + j.count + "件）。"));
@@ -24,7 +28,22 @@
         panel.appendChild(item);
       });
       panel.appendChild(el("p", "partner-review-src", "Google Maps"));
-    }).catch(function(){ panel.textContent = "口コミを読み込めませんでした。時間をおいてもう一度お試しください。"; });
+  }
+  // 押したときだけ取り寄せる形（REVIEW_ON_CLICK）：最初は「口コミを見る」だけを出し、押したら星と本文をまとめて取り寄せる
+  function lazy(box){
+    var id = box.dataset.id, b = el("button", "partner-review-open", "口コミを見る"), p = el("p", "partner-score"); b.type = "button";
+    p.append(b, el("span", "partner-review-src", "Google Maps")); box.replaceChildren(p);
+    b.addEventListener("click", function(){
+      b.disabled = true; b.textContent = "口コミを読み込んでいます…";
+      if (window.gtag) gtag("event", "open_reviews", {});
+      var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
+      fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
+        if (!j || !j.ok || !(j.rating > 0)) throw 0;
+        memo[id] = {rating: j.rating, count: j.count}; paint(box, memo[id]);
+        var panel = box.querySelector(".review-panel"), open = box.querySelector(".partner-review-open");
+        fill(panel, j); panel.hidden = false; open.setAttribute("aria-expanded", "true");
+      }).catch(function(){ box.replaceChildren(el("p", "partner-review-src", "口コミは見つかりませんでした")); });
+    });
   }
   function paint(box, rv){
     box.replaceChildren();
@@ -56,6 +75,7 @@
   }
   var boxes = document.querySelectorAll(".emg-score[data-id]");
   if (!boxes.length) return;
+  if (false) { boxes.forEach(lazy); return; } // REVIEW_ON_CLICK（index.html と同じ値）
   if (!("IntersectionObserver" in window)) { boxes.forEach(want); return; }
   // 口コミの欄は空のあいだ見えないので、会社の枠が画面に入ったら取り寄せる（しぼりこみで隠れている会社は取り寄せない）
   var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting && x.target.offsetParent) { io.unobserve(x.target); want(x.target.querySelector(".emg-score")); } }); }, {rootMargin: "200px"});
