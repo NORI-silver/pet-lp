@@ -2261,7 +2261,9 @@ function displayPriceCalc_(c, p) {
   if (!F) return null;
   var d;
   try { d = JSON.parse(p.route_details); } catch (e) { return null; }
-  function validKm(v) { return typeof v === 'number' && isFinite(v) && v >= 1 && v <= 250; }
+  // 長距離：受け付けを始めた会社（ペッタクの「全国から広島周辺へ」）は3000kmまで計算する。表示だけの会社は250kmまで（それより遠いと、受けない距離の大きな金額になるので「お見積もり」）
+  var maxKm = openDisplayIds_().indexOf(c.id) >= 0 ? 3000 : 250;
+  function validKm(v) { return typeof v === 'number' && isFinite(v) && v >= 1 && v <= maxKm; }
   function pt(v) { return v && isFinite(v.lat) && isFinite(v.lng) && v.lat >= 20 && v.lat <= 46 && v.lng >= 122 && v.lng <= 154; }
   if (!d || !validKm(d.km) || !validKm(d.backKm) || !pt(d.from) || !pt(d.to)) return null;
   var round = p.trip === '往復';

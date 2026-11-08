@@ -30,3 +30,15 @@ console.log('PASS: only OPEN_PARTNERS can receive inquiries while every other co
   assert.ok(away && away.local.pickup>0, 'pickup is charged otherwise');
 }
 console.log('PASS: Pettaku pickup leg is free when bringing a pet from afar to Hiroshima');
+// 長距離（渋谷→広島 約805km）：受け付けを始めた会社は計算する、表示だけの会社は「お見積もり」のまま
+{
+  const route=(from,to,km)=>JSON.stringify({km,backKm:km,from,to,backFrom:to,backTo:from});
+  const shibuya={lat:35.658,lng:139.701}, hiro={lat:34.39,lng:132.46};
+  const p={trip:'片道',datetime:'2026-12-01T08:30',pickup:'渋谷駅',dropoff:'広島市',weight:5,pet_count:1,route_details:route(shibuya,hiro,805)};
+  const pettaku=vm.runInContext("DISPLAY_COMPANIES.filter(function(x){return x.id==='D225080e';})[0]",ctx);
+  const r=ctx.displayPriceCalc_(pettaku,p);
+  assert.ok(r && r.local.pickup===0 && r.amount>100000, 'Pettaku long-distance estimate');
+  const other=vm.runInContext("DISPLAY_COMPANIES.filter(function(x){return x.fare && x.id!=='D225080e' && x.id!=='D13b7c6f';})[0]",ctx);
+  assert.equal(ctx.displayPriceCalc_(other,p), null);
+  console.log('PASS: long trips are priced only for open partners ('+r.amount+'円)');
+}
