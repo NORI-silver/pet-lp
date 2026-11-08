@@ -27,6 +27,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     $("legSplit").hidden = true; $("legGo").replaceChildren(); $("legBack").replaceChildren();
     $("sendSelected").hidden = true; $("taxiBox").hidden = true;
     clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
+    quotesLoaded = false; syncContact();
   }
   function conditionsChanged(event){
     if (["name","tel","email","notes","agree","website","partnerSort","partnerDist"].indexOf(event.target.id || event.target.name) >= 0) return; // 並び順を変えても、候補は取り直さない
@@ -111,10 +112,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     box.replaceChildren(document.createTextNode("事業者と料金を出すには、あと次の項目を入れてください（押すとその場所へ移ります）。"), needButtons(list));
   }
   function loadPartners(){
+    quotesLoaded = false; syncOpenNote();
     showNeed();
     if (sending) return;
     var block = partnerBlock();
-    if (block === "fields" || block === "off") { $("partnerResults").hidden = true; return; }
+    if (block === "fields" || block === "off") { $("partnerResults").hidden = true; syncContact(); return; }
     if (block === "time") {
       $("partnerResults").hidden = false; $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren(); $("partnerRestBtn").hidden = true;
       $("partnerStatus").textContent = "お迎えは、いまから" + MIN_LEAD_H + "時間後より先の日時を選んでください（往復のときは、帰りを行きより後に）。";
@@ -166,8 +168,52 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var src = document.createElement("p"); src.className = "partner-review-src"; src.textContent = "Google Maps"; panel.appendChild(src);
     }).catch(function(){ panel.textContent = "口コミを読み込めませんでした。時間をおいてもう一度お試しください。"; });
   }
+  // 問い合わせできる会社がいる都道府県（tools/gen_areas.py が booking/Code.gs の OPEN_PARTNERS から作る）。県を選んだ時点で知らせる（2026-11-08 飼い主目線のレビュー #1）
+  /*OPEN_PREFS*/var OPEN_PREFS = ["京都", "兵庫", "北海道", "和歌山", "大阪", "奈良", "広島", "滋賀"];/*/OPEN_PREFS*/
+  /*AREA_PREFS*/var AREA_PREFS = ["三重", "京都", "佐賀", "兵庫", "北海道", "千葉", "和歌山", "埼玉", "大阪", "奈良", "宮城", "山梨", "岐阜", "岩手", "広島", "徳島", "愛知", "東京", "栃木", "滋賀", "石川", "神奈川", "福岡", "群馬", "茨城", "長崎", "静岡"];/*/AREA_PREFS*/
+  // 会社が見つかっていない県は、選ぶ前に分かるよう「（候補なし）」を付ける（値は県名のまま）
+  function markPrefs(){
+    if (!AREA_PREFS.length) return;
+    Array.prototype.forEach.call($("pref").options, function(o){
+      if (!o.value || AREA_PREFS.indexOf(shortPref(o.value)) >= 0) return;
+      var v = o.value; o.value = v; o.textContent = v + "（候補なし）";
+    });
+  }
+  markPrefs();
+  var quotesLoaded = false; // いま出ている候補がサーバーから届いたものか
+  function shortPref(v){ return String(v || "").replace(/[都府県]$/, ""); }
+  function prefOpen(){ var v = $("pref").value; return !v || DEMO.ok || OPEN_PREFS.indexOf(shortPref(v)) >= 0; }
+  // ご連絡先は、送れる会社がいるときだけ出す（いないのに電話番号まで入れさせない）
+  function syncContact(){
+    var bookable = quoteCards.some(function(c){ return !c.display_only; }) || !!(quoteLegs && quoteLegs.go && quoteLegs.go.some(function(c){ return !c.display_only; }));
+    var shown = quotesLoaded ? bookable : prefOpen();
+    $("contactBox").hidden = !shown;
+    var none = $("contactNone");
+    if (!shown && quotesLoaded) {
+      if (!none) { none = document.createElement("p"); none.id = "contactNone"; none.className = "contact-none"; $("contactBox").parentNode.insertBefore(none, $("contactBox")); }
+      none.textContent = "この条件では、いまこのサイトから問い合わせできる会社がないため、ご連絡先の入力はいりません。料金の目安は、会社を選ぶときの参考にしてください。";
+      none.hidden = false;
+    } else if (none) none.hidden = true;
+  }
+  function syncOpenNote(){
+    var v = $("pref").value, n = $("openNote");
+    n.hidden = prefOpen();
+    if (!n.hidden) n.textContent = v + "では、いまこのサイトから問い合わせできる会社はまだありません。条件を入れると、会社の候補と料金の目安はご覧いただけます（ご連絡先の入力はいりません）。";
+    syncContact();
+  }
+  $("pref").addEventListener("change", syncOpenNote);
+  // 名前を伏せた会社に「会社A・B…」の目印を付けて、くらべやすくする（2026-11-08 レビュー #4）
+  function letterAnon(lists){
+    var tags = {}, n = 0; // 同じ会社は、往復の行き・帰りの一覧でも同じ目印
+    lists.forEach(function(list){ (list || []).forEach(function(c){
+      if (!c.anon || c.anonTag) return;
+      if (!tags[c.id]) { var i = n++; tags[c.id] = i < 26 ? String.fromCharCode(65 + i) : String(i + 1); }
+      c.anonTag = tags[c.id]; c.label = "会社" + c.anonTag + "（" + String(c.label).replace(/の会社$/, "") + "）";
+    }); });
+  }
   function paintPartners(cards){
-    quoteCards = cards; $("partnerCards").replaceChildren();
+    letterAnon([cards, quoteLegs && quoteLegs.go, quoteLegs && quoteLegs.back]);
+    quotesLoaded = true; quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
     var ready = cards.filter(function(c){ return !c.display_only; }).length, later = cards.length - ready;
     if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。いまはどの会社にも、このサイトからはまだ問い合わせできません。" : (later ? cards.length + "社が候補です（うち" + later + "社は、このサイトからはまだ問い合わせできません）。" : cards.length + "社が候補です。") + (ready >= 2 ? "会社を選ぶか、下の「全社に問い合わせる」でまとめて送れます。" : "問い合わせたい会社を選んでください。"));
@@ -179,6 +225,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     chosenQuote = chosenPicks[0] || null; showPickButton();
     drawCards();
     paintLegs();
+    syncContact();
     loadScores();
     loadRoads();
     // 自動更新では入力中のフォーカスやスクロール位置を動かさない。
@@ -337,11 +384,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var tripName = leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道";
       var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? (routeDetails && Math.max(routeDetails.km || 0, routeDetails.highKm || 0) > 250 ? "長距離のため、お見積もり" : "料金表が未登録のため、お見積もり") : "一般道・" + tripName + "の概算見積もり" + (card.price.taxUnknown ? (card.price.incompleteFees ? "（税の扱いは確認中・未確認の費用は別途）" : "（税の扱いは確認中）") : card.price.incompleteFees ? "（税込・未確認の費用は別途）" : "（税込）"); price.appendChild(cap);
       if (card.price.local && card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
-      var caution = text("p", "", "partner-caution");
-      var cb = document.createElement("b"); cb.textContent = card.price.amount == null ? "確定料金ではありません" : "概算見積もりです（確定料金ではありません）";
-      caution.append(cb, card.price.amount == null ? "確定料金は会社からお知らせします。" : "実際の料金と異なる場合があります。");
+      // 概算の注意は料金のすぐ下に太字の1行（上のまとめの注意と合わせて「目立つ形」。2026-11-08 レビュー #2 でカードを短く）
+      text("p", card.price.amount == null ? "確定料金は会社からお知らせします" : "概算です。確定料金ではありません", "partner-caution");
       // 車・お支払いは、たたまずに出す（Nori 2026-11-08「支払い方法とかできるものは全部出しておいたほうが」）
-      if (card.car) text("p", card.car, "partner-info"); if (card.payment) text("p", /^お支払い/.test(card.payment) ? card.payment : "お支払い：" + card.payment, "partner-info");
+      // 分からない項目（「まだ確認中です」）は行ごと出さない。お客さまが選んだ動物を乗せられるかの「確認中」だけは残す（2026-11-08 レビュー #3）
+      var carText = String(card.car || "").replace(/(^|。)[^。]*(車の詳細|対応エリア)は?[^。]*確認中です[。）)]?/g, "$1").replace(/（対応エリアは確認中です）/g, "").replace(/^。+/, "").trim();
+      if (carText) text("p", carText, "partner-info");
+      if (card.payment && !/確認中/.test(card.payment)) text("p", /^お支払い/.test(card.payment) ? card.payment : "お支払い：" + card.payment, "partner-info");
       var more = document.createElement("details"); more.className = "partner-more";
       var ms = document.createElement("summary"); ms.textContent = "料金の内訳を見る"; more.appendChild(ms);
       article.appendChild(more);
@@ -372,9 +421,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 表示だけの会社（準備中）。予約の依頼はできない（サーバーでも断る）
       if (card.display_only) {
         article.classList.add("partner-later");
-        var later = document.createElement("button"); later.type = "button"; later.className = "btn"; later.disabled = true;
-        later.textContent = "この会社には、このサイトからはまだ問い合わせできません";
-        article.appendChild(later); return article;
+        text("p", "このサイトからは、まだ問い合わせできません", "partner-later-note"); // 大きな灰色のボタンはやめて1行に（2026-11-08 レビュー #2）
+        return article;
       }
       var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn";
       var legName = leg === "go" ? "行き" : leg === "back" ? "帰り" : "";
@@ -392,7 +440,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var demoBody = new URLSearchParams(); demoBody.set("kind", "demo"); demoBody.set("demo", DEMO.tok);
     fetch(GAS_URL, {method: "POST", body: demoBody}).then(function(r){ return r.json(); }).then(function(j){
       if (!j || !j.ok) return;
-      DEMO.ok = true; DEMO.name = j.name || "";
+      DEMO.ok = true; DEMO.name = j.name || ""; syncOpenNote();
       var box = document.createElement("div"); box.className = "demo-banner"; box.setAttribute("role", "note");
       var b = document.createElement("b"); b.textContent = DEMO.name + "さま向けの見本の画面です";
       box.append(b, document.createTextNode("ご提携いただいたときの見え方をお試しいただけます。" + (j.pref ? j.pref + "の" : "貴社の対応エリアの") + "お迎えの場所と日時を入れると、貴社が社名と口コミつきで、問い合わせできる会社として一番上に出ます（日時が貴社の営業時間の外だと出ません）。ほかの会社は、提携していないため社名を伏せています。この画面から問い合わせを送っても、どこにも届きません。"));
@@ -824,7 +872,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var v = sel.value, h = '<option value="">選んでください</option>';
     function opts(list){ return list.map(function(n){ return "<option>" + n + "</option>"; }).join(""); }
     h += rest.length ? '<optgroup label="近くの都道府県">' + opts(near) + '</optgroup><optgroup label="そのほか（北海道から順）">' + opts(rest) + '</optgroup>' : opts(near);
-    sel.innerHTML = h; sel.value = v;
+    sel.innerHTML = h; sel.value = v; markPrefs();
   }
   (function(){
     if ($("pref").value) { sortPrefs($("pref").value); return; }
@@ -1865,7 +1913,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var v = inp.value.trim(), ok = !v || v in pickedPlace || readHist().indexOf(v) >= 0;
       inp.classList.toggle("picked", !!v && ok);
       note.hidden = ok;
-      note.textContent = ok ? "" : "候補から選ばれていません。打ち間違いがないか確かめるか、もう一度入力して候補から選んでください。";
+      note.textContent = ok ? "" : "候補から選ぶと、場所をより正しく伝えられます（このままでも大丈夫です）。";
     }
     inp.addEventListener("focus", function(){ if (!pickedPlace[inp.value.trim()]) update(); }); // 候補から選んだあとは、もう一度一覧を開かない
     inp.addEventListener("input", update);
@@ -2039,4 +2087,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         retry("受け付けできたか確認できませんでした。数分たっても受付メールが届かなければ、同じ事業者を選んで、もう一度問い合わせてください。入力内容はそのまま残っています。");
       });
   });
+  // 「問い合わせる」ボタンは、説明を飛ばして入力欄（ご利用の流れの箱）へ（2026-11-08 レビュー #5）
+  function toFormStart(smooth){ var fc = $("emgBox").hidden && document.querySelector("#form .form-card") || $("form"); fc.scrollIntoView({block: "start", behavior: smooth ? "smooth" : "auto"}); }
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest('a[href="#form"]');
+    if (!a) return;
+    e.preventDefault(); toFormStart(true);
+    try { history.replaceState(null, "", "#form"); } catch (x) {}
+  });
+  if (location.hash === "#form") setTimeout(function(){ toFormStart(false); }, 0);
+  syncOpenNote(); // 地域ページ・前回の入力で県が入っているとき
 })();

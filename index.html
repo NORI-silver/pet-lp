@@ -332,7 +332,7 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .cb-list li.hist b::before{content:"🕘 "}
 .cb-list li b{font-weight:700}
 .cb-list li.g-attr{text-align:right;font-size:.72rem;padding:4px 10px 2px;font-family:Roboto,Arial,sans-serif;color:#5f6368}
-.place-note{font-size:.78rem;color:#b4421a;margin:4px 2px 0;line-height:1.6}
+.place-note{font-size:.78rem;color:var(--ink-3);margin:4px 2px 0;line-height:1.6}
 .place-note[hidden]{display:none}
 input.picked{border-color:#3d9a5b;background:#f3fbf5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%233d9a5b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center/18px;padding-right:38px}
 .f .note{display:block;font-size:.8rem;color:var(--ink-3);margin-top:6px}
@@ -421,6 +421,12 @@ footer a{color:var(--ink-2)}
 .pick-bar span::before{content:"✓ ";color:var(--o)}
 .pick-bar .btn{width:auto;flex:none;padding:12px 18px;font-size:.92rem;box-shadow:none}
 #thanks{scroll-margin-top:84px}
+.emg-pick select{font-size:1.05rem;border:2px solid var(--o)}
+.emg-guess{margin:6px 0 0;font-size:.8rem;color:var(--ink-2)}
+.emg-guess[hidden]{display:none}
+.open-note{margin:8px 0 0;background:#f7f4f1;border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
+.open-note[hidden],#contactBox[hidden]{display:none}
+.contact-none{margin:14px 0 0;background:#f7f4f1;border-radius:12px;padding:10px 14px;font-size:.86rem;color:var(--ink-2)}
 .contact-safe{margin:-4px 0 14px;font-size:.84rem;color:var(--ink-2);background:var(--o-l);border-radius:12px;padding:10px 14px}
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 16px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(255,255,255,0),#fff 30%);pointer-events:none}
 .sticky .btn{pointer-events:auto;max-width:none;padding:15px}
@@ -480,12 +486,14 @@ footer a{color:var(--ink-2)}
 .op div{display:grid;grid-template-columns:8.5em 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
 .op dt{font-weight:700;color:var(--ink)}
 .op dd{margin:0}
+#form .form-card{scroll-margin-top:76px}
 .flow3{background:#f7f4f1;border-radius:16px;padding:14px 16px;font-size:.86rem;color:var(--ink-2);margin:0 0 22px;line-height:1.6}
 .flow3-h{font-weight:700;color:var(--ink);margin:0 0 8px}
 .flow3 ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .flow3 li{color:var(--ink);font-weight:700}
 .flow3 li b{display:inline-block;margin-right:6px}
 .flow3 li span{display:block;font-weight:400;font-size:.8rem;color:var(--ink-2);margin-left:1.6em}
+@media (max-width:719px){.flow3{padding:12px 14px;margin-bottom:16px}.flow3 ol{gap:2px}.flow3 li span{display:none}}
 .flow3-note{margin:10px 0 0;font-size:.8rem;font-weight:700;color:var(--ink)}
 @media (min-width:720px){.flow3 ol{grid-template-columns:repeat(3,1fr)}}
 .yoyaku{background:#f7f4f1;border-radius:16px;padding:14px 16px;font-size:.86rem;color:var(--ink-2);margin:0 0 22px;line-height:1.7}
@@ -567,7 +575,8 @@ footer a{color:var(--ink-2)}
 .partner-card .price-details[open]{background:var(--cream);border-radius:10px;padding:6px 10px}
 .partner-card .price-details.hw summary{font-weight:700}
 .price-details dl{font-size:.76rem}
-.partner-caution{background:#fff4ec;border-left:3px solid var(--o);border-radius:6px;padding:5px 9px;font-size:.74rem!important;line-height:1.5!important;color:var(--ink-2)}
+.partner-later-note{margin:10px 0 0!important;font-size:.78rem!important;color:var(--ink-3)!important;text-align:center}
+.partner-caution{margin-top:2px!important;font-size:.78rem!important;line-height:1.5!important;font-weight:700;color:var(--o-d)!important}
 .partner-card .partner-info{font-size:.8rem;color:var(--ink-2);margin:0;line-height:1.6}
 .partner-caution b{color:var(--o-d);font-size:.8rem;margin-right:4px}
 .partner-review-open{background:none;border:0;padding:0;font:inherit;font-size:.82rem;color:var(--o-d);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
@@ -661,7 +670,7 @@ footer a{color:var(--ink-2)}
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>多頭もOK</li>
       </ul>
       <div class="hero-fare"><b>各社の料金を、その場でくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。各社の公式サイトの料金表から計算した概算で、確定料金ではありません。</span></div>
-      <a class="btn" href="#form" data-cta="hero-fare">各社の料金をくらべる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
+      <a class="btn" href="#form" data-cta="hero-fare">空き状況と料金を問い合わせる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
       <p class="after">無料で使えます（運賃は当日ペットタクシーへ直接お支払い）。当日の依頼もできます。</p>
     </div>
     <div class="hero-visual">
@@ -768,7 +777,8 @@ footer a{color:var(--ink-2)}
           <div class="group-h"><span>1</span>いつ、どこへ行きますか？</div>
           <div class="f"><label for="pref">お迎えの都道府県<span class="need">必須</span></label>
             <select id="pref" name="pref" required><option value="">選んでください</option><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option><option>東京都</option><option>神奈川県</option><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option></select>
-            <p class="pref-fix" id="prefFix" role="status" hidden></p></div>
+            <p class="pref-fix" id="prefFix" role="status" hidden></p>
+            <p class="open-note" id="openNote" role="status" hidden></p></div>
           <div class="f"><label for="pickup">お迎えの場所<span class="need">必須</span></label>
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button>
             <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
@@ -854,6 +864,7 @@ footer a{color:var(--ink-2)}
         </section>
 
 
+        <div id="contactBox">
         <div class="group">
           <div class="group-h"><span>3</span>ご連絡先</div>
           <p class="contact-safe">お名前・メール・電話番号は、予約を確定するまで会社には伝わりません。問い合わせの返事はメールで届きます。</p>
@@ -872,6 +883,7 @@ footer a{color:var(--ink-2)}
         </div>
 
         <label class="agree"><input type="checkbox" id="agree" required><span><span class="need" style="margin:0 6px 0 0">必須</span>「<a href="/terms/" target="_blank">利用規約</a>」とページ下の「キャンセルについて」「ご利用にあたって」「<a href="#privacy">個人情報の取り扱い</a>」を確認し、同意します。</span></label>
+        </div>
         <p id="err" role="alert"></p>
         <button class="btn" id="sendSelected" type="submit" hidden>選んだ事業者に空き状況と料金を問い合わせる（無料）</button>
         <button class="btn btn-all" id="sendAll" type="button" hidden>条件に合う全社に問い合わせる（無料）</button>
@@ -955,7 +967,7 @@ footer a{color:var(--ink-2)}
     <p class="fare-flag"><b>確定料金ではありません。</b>上の金額は目安です。確定料金（税込）は、問い合わせた会社から、空き状況と一緒にメールでお知らせします。</p>
     <p class="fare-night"><b>🌙 夜間・早朝の割増</b>上の目安は昼間の料金です。夜間・早朝の割増は、かかるかどうかも金額も会社ごとに違います。フォームの候補には、会社ごとの割増を入れた目安が出ます。</p>
     <p class="small">全国18都道府県・91社のペットタクシーが公式サイトにのせている料金表で、乗った距離の運賃（片道）を計算しました。大きい数字はまんなかの会社の金額で、その下は安い会社〜高い会社です。お迎え料金・待ち時間・夜間の割増・高速代・駐車場代は入っていません。フォームにお迎えの場所と行き先を入れると、来てもらえる会社ごとに、お迎え料金なども入れた目安が出ます。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。都道府県ごとの料金の例は、<a href="/area/">全国のペットタクシー情報</a>にまとめています。</p><!--/FARE_TABLE-->
-    <div class="fare-cta"><a class="btn" href="#form" data-cta="price-fare">あなたのルートで各社の料金をくらべる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a><p>公式サイトの料金表から計算した概算です。確定料金ではありません。料金表のない会社は「料金はお見積もり」と出ます。</p></div>
+    <div class="fare-cta"><a class="btn" href="#form" data-cta="price-fare">空き状況と料金を問い合わせる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a><p>公式サイトの料金表から計算した概算です。確定料金ではありません。料金表のない会社は「料金はお見積もり」と出ます。</p></div>
   </div>
 </section>
 
@@ -969,25 +981,6 @@ footer a{color:var(--ink-2)}
       <div class="stat"><div class="n">0<small>回</small></div><div class="l">問い合わせの電話<br>連絡はメールで届きます</div></div>
     </div>
     <p class="src">当日の依頼もできます（空いていて間に合う会社だけ候補に出ます）。対応する地域や料金は会社ごとに違います。</p>
-  </div>
-</section>
-
-<!-- 想い -->
-<section class="story" id="story">
-  <div class="wrap">
-    <span class="eyebrow">OUR WISH</span>
-    <h2>家族なのに、<br><span style="white-space:nowrap">一緒に出かけるのが</span><span style="white-space:nowrap">むずかしい。</span></h2>
-    <figure class="story-img"><picture><source srcset="/img/story.webp" type="image/webp"><img src="/img/story.jpg" alt="夕方の玄関で、キャリーに入った猫とリードをつけた柴犬を連れて出かける家族" width="1600" height="900" loading="lazy" onerror="this.parentNode.remove()"></picture></figure>
-    <p>具合が悪そうなのに、どうやって病院へ連れて行けばいいかわからない。電車には大きな子は乗せられないし、ふつうのタクシーは断られるかもしれない。車がない、運転できない、運転しながら様子を見られない。</p>
-    <p>犬や猫と暮らす人なら、一度はこんな日を過ごしたことがあるのではないでしょうか。</p>
-    <ul class="facts">
-      <li><b>ケース込み10kgまで</b>電車に乗せられるのは、ケースに入る小さな子だけ。<small>JR東日本の手回り品のきまり</small></li>
-      <li><b>1世帯 1.009台</b>全国の平均でも、車は1世帯に1台ほど。家族が使っている日もあり、東京では0.405台と、車のない家庭もめずらしくありません。<small>自動車検査登録情報協会（2025年3月末）</small></li>
-      <li><b>「様子を見よう」</b>連れて行くのが大変で受診を先のばしにすると、重症化するおそれがあると獣医師も書いています。<small>片川優子（獣医師）・現代ビジネス</small></li>
-    </ul>
-    <p>ペットタクシーは、そんなときのためにあります。家の前から行き先の前まで、乗り換えなし。飼い主は運転せず、すぐそばで声をかけていられます。</p>
-    <p>でも、ペットタクシーは小さなお店が多く、電話がつながらない、空いていない、料金がわからない、ということもよくあります。だから私たちは、その子に合う車を、一緒に探せる場所をつくることにしました。</p>
-    <p class="end"><span style="white-space:nowrap">移動を理由に、</span><span style="white-space:nowrap">あきらめないでほしい。</span><br><span style="white-space:nowrap">大切な家族のために、</span><span style="white-space:nowrap">やさしい一台を。</span></p>
   </div>
 </section>
 
@@ -1122,6 +1115,25 @@ footer a{color:var(--ink-2)}
   </div>
 </section>
 
+<!-- 想い（予約したい人の邪魔にならないよう FAQ の後ろへ。2026-11-08 飼い主目線のレビュー #11） -->
+<section class="story" id="story">
+  <div class="wrap">
+    <span class="eyebrow">OUR WISH</span>
+    <h2>家族なのに、<br><span style="white-space:nowrap">一緒に出かけるのが</span><span style="white-space:nowrap">むずかしい。</span></h2>
+    <figure class="story-img"><picture><source srcset="/img/story.webp" type="image/webp"><img src="/img/story.jpg" alt="夕方の玄関で、キャリーに入った猫とリードをつけた柴犬を連れて出かける家族" width="1600" height="900" loading="lazy" onerror="this.parentNode.remove()"></picture></figure>
+    <p>具合が悪そうなのに、どうやって病院へ連れて行けばいいかわからない。電車には大きな子は乗せられないし、ふつうのタクシーは断られるかもしれない。車がない、運転できない、運転しながら様子を見られない。</p>
+    <p>犬や猫と暮らす人なら、一度はこんな日を過ごしたことがあるのではないでしょうか。</p>
+    <ul class="facts">
+      <li><b>ケース込み10kgまで</b>電車に乗せられるのは、ケースに入る小さな子だけ。<small>JR東日本の手回り品のきまり</small></li>
+      <li><b>1世帯 1.009台</b>全国の平均でも、車は1世帯に1台ほど。家族が使っている日もあり、東京では0.405台と、車のない家庭もめずらしくありません。<small>自動車検査登録情報協会（2025年3月末）</small></li>
+      <li><b>「様子を見よう」</b>連れて行くのが大変で受診を先のばしにすると、重症化するおそれがあると獣医師も書いています。<small>片川優子（獣医師）・現代ビジネス</small></li>
+    </ul>
+    <p>ペットタクシーは、そんなときのためにあります。家の前から行き先の前まで、乗り換えなし。飼い主は運転せず、すぐそばで声をかけていられます。</p>
+    <p>でも、ペットタクシーは小さなお店が多く、電話がつながらない、空いていない、料金がわからない、ということもよくあります。だから私たちは、その子に合う車を、一緒に探せる場所をつくることにしました。</p>
+    <p class="end"><span style="white-space:nowrap">移動を理由に、</span><span style="white-space:nowrap">あきらめないでほしい。</span><br><span style="white-space:nowrap">大切な家族のために、</span><span style="white-space:nowrap">やさしい一台を。</span></p>
+  </div>
+</section>
+
 <!-- 9. キャンセル・ご利用にあたって・個人情報 -->
 <section id="policy">
   <div class="wrap">
@@ -1163,7 +1175,7 @@ footer a{color:var(--ink-2)}
         <p>ペットタクシー予約窓口（以下「当サイト」）は、お預かりする個人情報を次のとおり取り扱います。</p>
         <h4>1. お預かりする情報</h4>
         <ul><li>お名前、電話番号、メールアドレス</li><li>お迎えの場所、経由地、行き先、希望の日時、ペットの種類・体重・年齢などの情報、メモ欄の内容</li></ul>
-        <p>フォームのお迎えの都道府県を近い順に並べるため、通信の情報（IPアドレス）から大まかな地域を推定することがあります。並び順にだけ使い、保存はしません。</p>
+        <p>フォームのお迎えの都道府県を近い順に並べるためと、緊急のときの連絡先のページで近くの都道府県を最初に選んでおくため、通信の情報（IPアドレス）や、位置の利用をすでに許可している場合は端末の位置から、大まかな地域を推定することがあります。この目的にだけ使い、保存はしません。</p>
         <p>場所の候補や道のり（料金の目安・お店からの距離）を調べるため、入力した場所の位置を地図・道路データのサービスに送ることがあります。お名前や連絡先は送りません。</p>
         <h4>2. 使う目的</h4>
         <ul><li>ペットタクシー会社への空き状況と料金の問い合わせ、お迎え時間・料金・予約の確定のご連絡</li><li>キャンセルやお問い合わせへの対応</li><li>送迎のあとに、送迎があったかどうかをおたずねするご連絡（提携の会社とのご利用の確認に使います）</li><li>サービスの改善（個人が特定できない形の集計に限ります）</li><li>ペットタクシー会社さまから提携のお申し込みやお問い合わせをいただいたときは、その内容の確認、ご連絡、提携した会社さまの掲載に使います</li></ul>
@@ -1246,6 +1258,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     $("legSplit").hidden = true; $("legGo").replaceChildren(); $("legBack").replaceChildren();
     $("sendSelected").hidden = true; $("taxiBox").hidden = true;
     clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
+    quotesLoaded = false; syncContact();
   }
   function conditionsChanged(event){
     if (["name","tel","email","notes","agree","website","partnerSort","partnerDist"].indexOf(event.target.id || event.target.name) >= 0) return; // 並び順を変えても、候補は取り直さない
@@ -1330,10 +1343,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     box.replaceChildren(document.createTextNode("事業者と料金を出すには、あと次の項目を入れてください（押すとその場所へ移ります）。"), needButtons(list));
   }
   function loadPartners(){
+    quotesLoaded = false; syncOpenNote();
     showNeed();
     if (sending) return;
     var block = partnerBlock();
-    if (block === "fields" || block === "off") { $("partnerResults").hidden = true; return; }
+    if (block === "fields" || block === "off") { $("partnerResults").hidden = true; syncContact(); return; }
     if (block === "time") {
       $("partnerResults").hidden = false; $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren(); $("partnerRestBtn").hidden = true;
       $("partnerStatus").textContent = "お迎えは、いまから" + MIN_LEAD_H + "時間後より先の日時を選んでください（往復のときは、帰りを行きより後に）。";
@@ -1385,8 +1399,52 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var src = document.createElement("p"); src.className = "partner-review-src"; src.textContent = "Google Maps"; panel.appendChild(src);
     }).catch(function(){ panel.textContent = "口コミを読み込めませんでした。時間をおいてもう一度お試しください。"; });
   }
+  // 問い合わせできる会社がいる都道府県（tools/gen_areas.py が booking/Code.gs の OPEN_PARTNERS から作る）。県を選んだ時点で知らせる（2026-11-08 飼い主目線のレビュー #1）
+  /*OPEN_PREFS*/var OPEN_PREFS = ["京都", "兵庫", "北海道", "和歌山", "大阪", "奈良", "広島", "滋賀"];/*/OPEN_PREFS*/
+  /*AREA_PREFS*/var AREA_PREFS = ["三重", "京都", "佐賀", "兵庫", "北海道", "千葉", "和歌山", "埼玉", "大阪", "奈良", "宮城", "山梨", "岐阜", "岩手", "広島", "徳島", "愛知", "東京", "栃木", "滋賀", "石川", "神奈川", "福岡", "群馬", "茨城", "長崎", "静岡"];/*/AREA_PREFS*/
+  // 会社が見つかっていない県は、選ぶ前に分かるよう「（候補なし）」を付ける（値は県名のまま）
+  function markPrefs(){
+    if (!AREA_PREFS.length) return;
+    Array.prototype.forEach.call($("pref").options, function(o){
+      if (!o.value || AREA_PREFS.indexOf(shortPref(o.value)) >= 0) return;
+      var v = o.value; o.value = v; o.textContent = v + "（候補なし）";
+    });
+  }
+  markPrefs();
+  var quotesLoaded = false; // いま出ている候補がサーバーから届いたものか
+  function shortPref(v){ return String(v || "").replace(/[都府県]$/, ""); }
+  function prefOpen(){ var v = $("pref").value; return !v || DEMO.ok || OPEN_PREFS.indexOf(shortPref(v)) >= 0; }
+  // ご連絡先は、送れる会社がいるときだけ出す（いないのに電話番号まで入れさせない）
+  function syncContact(){
+    var bookable = quoteCards.some(function(c){ return !c.display_only; }) || !!(quoteLegs && quoteLegs.go && quoteLegs.go.some(function(c){ return !c.display_only; }));
+    var shown = quotesLoaded ? bookable : prefOpen();
+    $("contactBox").hidden = !shown;
+    var none = $("contactNone");
+    if (!shown && quotesLoaded) {
+      if (!none) { none = document.createElement("p"); none.id = "contactNone"; none.className = "contact-none"; $("contactBox").parentNode.insertBefore(none, $("contactBox")); }
+      none.textContent = "この条件では、いまこのサイトから問い合わせできる会社がないため、ご連絡先の入力はいりません。料金の目安は、会社を選ぶときの参考にしてください。";
+      none.hidden = false;
+    } else if (none) none.hidden = true;
+  }
+  function syncOpenNote(){
+    var v = $("pref").value, n = $("openNote");
+    n.hidden = prefOpen();
+    if (!n.hidden) n.textContent = v + "では、いまこのサイトから問い合わせできる会社はまだありません。条件を入れると、会社の候補と料金の目安はご覧いただけます（ご連絡先の入力はいりません）。";
+    syncContact();
+  }
+  $("pref").addEventListener("change", syncOpenNote);
+  // 名前を伏せた会社に「会社A・B…」の目印を付けて、くらべやすくする（2026-11-08 レビュー #4）
+  function letterAnon(lists){
+    var tags = {}, n = 0; // 同じ会社は、往復の行き・帰りの一覧でも同じ目印
+    lists.forEach(function(list){ (list || []).forEach(function(c){
+      if (!c.anon || c.anonTag) return;
+      if (!tags[c.id]) { var i = n++; tags[c.id] = i < 26 ? String.fromCharCode(65 + i) : String(i + 1); }
+      c.anonTag = tags[c.id]; c.label = "会社" + c.anonTag + "（" + String(c.label).replace(/の会社$/, "") + "）";
+    }); });
+  }
   function paintPartners(cards){
-    quoteCards = cards; $("partnerCards").replaceChildren();
+    letterAnon([cards, quoteLegs && quoteLegs.go, quoteLegs && quoteLegs.back]);
+    quotesLoaded = true; quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
     var ready = cards.filter(function(c){ return !c.display_only; }).length, later = cards.length - ready;
     if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。いまはどの会社にも、このサイトからはまだ問い合わせできません。" : (later ? cards.length + "社が候補です（うち" + later + "社は、このサイトからはまだ問い合わせできません）。" : cards.length + "社が候補です。") + (ready >= 2 ? "会社を選ぶか、下の「全社に問い合わせる」でまとめて送れます。" : "問い合わせたい会社を選んでください。"));
@@ -1398,6 +1456,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     chosenQuote = chosenPicks[0] || null; showPickButton();
     drawCards();
     paintLegs();
+    syncContact();
     loadScores();
     loadRoads();
     // 自動更新では入力中のフォーカスやスクロール位置を動かさない。
@@ -1556,11 +1615,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var tripName = leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道";
       var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? (routeDetails && Math.max(routeDetails.km || 0, routeDetails.highKm || 0) > 250 ? "長距離のため、お見積もり" : "料金表が未登録のため、お見積もり") : "一般道・" + tripName + "の概算見積もり" + (card.price.taxUnknown ? (card.price.incompleteFees ? "（税の扱いは確認中・未確認の費用は別途）" : "（税の扱いは確認中）") : card.price.incompleteFees ? "（税込・未確認の費用は別途）" : "（税込）"); price.appendChild(cap);
       if (card.price.local && card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
-      var caution = text("p", "", "partner-caution");
-      var cb = document.createElement("b"); cb.textContent = card.price.amount == null ? "確定料金ではありません" : "概算見積もりです（確定料金ではありません）";
-      caution.append(cb, card.price.amount == null ? "確定料金は会社からお知らせします。" : "実際の料金と異なる場合があります。");
+      // 概算の注意は料金のすぐ下に太字の1行（上のまとめの注意と合わせて「目立つ形」。2026-11-08 レビュー #2 でカードを短く）
+      text("p", card.price.amount == null ? "確定料金は会社からお知らせします" : "概算です。確定料金ではありません", "partner-caution");
       // 車・お支払いは、たたまずに出す（Nori 2026-11-08「支払い方法とかできるものは全部出しておいたほうが」）
-      if (card.car) text("p", card.car, "partner-info"); if (card.payment) text("p", /^お支払い/.test(card.payment) ? card.payment : "お支払い：" + card.payment, "partner-info");
+      // 分からない項目（「まだ確認中です」）は行ごと出さない。お客さまが選んだ動物を乗せられるかの「確認中」だけは残す（2026-11-08 レビュー #3）
+      var carText = String(card.car || "").replace(/(^|。)[^。]*(車の詳細|対応エリア)は?[^。]*確認中です[。）)]?/g, "$1").replace(/（対応エリアは確認中です）/g, "").replace(/^。+/, "").trim();
+      if (carText) text("p", carText, "partner-info");
+      if (card.payment && !/確認中/.test(card.payment)) text("p", /^お支払い/.test(card.payment) ? card.payment : "お支払い：" + card.payment, "partner-info");
       var more = document.createElement("details"); more.className = "partner-more";
       var ms = document.createElement("summary"); ms.textContent = "料金の内訳を見る"; more.appendChild(ms);
       article.appendChild(more);
@@ -1591,9 +1652,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 表示だけの会社（準備中）。予約の依頼はできない（サーバーでも断る）
       if (card.display_only) {
         article.classList.add("partner-later");
-        var later = document.createElement("button"); later.type = "button"; later.className = "btn"; later.disabled = true;
-        later.textContent = "この会社には、このサイトからはまだ問い合わせできません";
-        article.appendChild(later); return article;
+        text("p", "このサイトからは、まだ問い合わせできません", "partner-later-note"); // 大きな灰色のボタンはやめて1行に（2026-11-08 レビュー #2）
+        return article;
       }
       var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn";
       var legName = leg === "go" ? "行き" : leg === "back" ? "帰り" : "";
@@ -1611,7 +1671,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var demoBody = new URLSearchParams(); demoBody.set("kind", "demo"); demoBody.set("demo", DEMO.tok);
     fetch(GAS_URL, {method: "POST", body: demoBody}).then(function(r){ return r.json(); }).then(function(j){
       if (!j || !j.ok) return;
-      DEMO.ok = true; DEMO.name = j.name || "";
+      DEMO.ok = true; DEMO.name = j.name || ""; syncOpenNote();
       var box = document.createElement("div"); box.className = "demo-banner"; box.setAttribute("role", "note");
       var b = document.createElement("b"); b.textContent = DEMO.name + "さま向けの見本の画面です";
       box.append(b, document.createTextNode("ご提携いただいたときの見え方をお試しいただけます。" + (j.pref ? j.pref + "の" : "貴社の対応エリアの") + "お迎えの場所と日時を入れると、貴社が社名と口コミつきで、問い合わせできる会社として一番上に出ます（日時が貴社の営業時間の外だと出ません）。ほかの会社は、提携していないため社名を伏せています。この画面から問い合わせを送っても、どこにも届きません。"));
@@ -2043,7 +2103,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var v = sel.value, h = '<option value="">選んでください</option>';
     function opts(list){ return list.map(function(n){ return "<option>" + n + "</option>"; }).join(""); }
     h += rest.length ? '<optgroup label="近くの都道府県">' + opts(near) + '</optgroup><optgroup label="そのほか（北海道から順）">' + opts(rest) + '</optgroup>' : opts(near);
-    sel.innerHTML = h; sel.value = v;
+    sel.innerHTML = h; sel.value = v; markPrefs();
   }
   (function(){
     if ($("pref").value) { sortPrefs($("pref").value); return; }
@@ -3084,7 +3144,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var v = inp.value.trim(), ok = !v || v in pickedPlace || readHist().indexOf(v) >= 0;
       inp.classList.toggle("picked", !!v && ok);
       note.hidden = ok;
-      note.textContent = ok ? "" : "候補から選ばれていません。打ち間違いがないか確かめるか、もう一度入力して候補から選んでください。";
+      note.textContent = ok ? "" : "候補から選ぶと、場所をより正しく伝えられます（このままでも大丈夫です）。";
     }
     inp.addEventListener("focus", function(){ if (!pickedPlace[inp.value.trim()]) update(); }); // 候補から選んだあとは、もう一度一覧を開かない
     inp.addEventListener("input", update);
@@ -3258,6 +3318,16 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         retry("受け付けできたか確認できませんでした。数分たっても受付メールが届かなければ、同じ事業者を選んで、もう一度問い合わせてください。入力内容はそのまま残っています。");
       });
   });
+  // 「問い合わせる」ボタンは、説明を飛ばして入力欄（ご利用の流れの箱）へ（2026-11-08 レビュー #5）
+  function toFormStart(smooth){ var fc = $("emgBox").hidden && document.querySelector("#form .form-card") || $("form"); fc.scrollIntoView({block: "start", behavior: smooth ? "smooth" : "auto"}); }
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest('a[href="#form"]');
+    if (!a) return;
+    e.preventDefault(); toFormStart(true);
+    try { history.replaceState(null, "", "#form"); } catch (x) {}
+  });
+  if (location.hash === "#form") setTimeout(function(){ toFormStart(false); }, 0);
+  syncOpenNote(); // 地域ページ・前回の入力で県が入っているとき
 })();
 </script>
 </body>

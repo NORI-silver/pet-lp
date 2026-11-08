@@ -126,6 +126,15 @@ src = re.sub(r"/\*EMG\*/.*?/\*/EMG\*/", lambda m: "/*EMG*/var EMG = " + json.dum
 TAXIS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "regular_taxis.json"), encoding="utf-8"))  # ふつうのタクシー（ご案内だけ）
 TAXIS = {"checked": TAXIS["checked"], "taxis": [{k: t[k] for k in ("id", "name", "pref", "cities", "area_label", "rule", "fare", "url")} for t in TAXIS["taxis"]]}
 src = re.sub(r"/\*TAXIS\*/.*?/\*/TAXIS\*/", lambda m: "/*TAXIS*/var TAXIS = " + json.dumps(TAXIS, ensure_ascii=False) + ";/*/TAXIS*/", src, count=1, flags=re.S)
+# 問い合わせできる会社（booking/Code.gs の OPEN_PARTNERS）の対応する都道府県。フォームで県を選んだ時点で「まだ問い合わせできる会社がない」を知らせる（2026-11-08）
+def _open_prefs():
+    gs = open(os.path.join(ROOT, "booking", "Code.gs"), encoding="utf-8").read()
+    m = re.search(r"OPEN_PARTNERS:\s*\{([^}]*)\}", gs)
+    ids = re.findall(r"'[^']*'\s*:\s*'([^']+)'", m.group(1)) if m else []
+    return sorted({a for x in _DISP if x.get("id") in ids for a in x.get("areas", [])})
+src = re.sub(r"/\*OPEN_PREFS\*/.*?/\*/OPEN_PREFS\*/", lambda m: "/*OPEN_PREFS*/var OPEN_PREFS = " + json.dumps(_open_prefs(), ensure_ascii=False) + ";/*/OPEN_PREFS*/", src, count=1, flags=re.S)
+# 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、いない県に「（候補なし）」を付ける）
+src = re.sub(r"/\*AREA_PREFS\*/.*?/\*/AREA_PREFS\*/", lambda m: "/*AREA_PREFS*/var AREA_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}), ensure_ascii=False) + ";/*/AREA_PREFS*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*FARES\*/.*?/\*/FARES\*/", lambda m: "/*FARES*/" + FARE_JS + "/*/FARES*/", src, count=1, flags=re.S)
 # [B] 2026-11-08 トップに「都道府県ごとのペットタクシーの数」（全国の会社を公式サイトで確かめた数。トップだけに出し、地域ページの写しでは外す）
 def _nat_stats():
@@ -676,6 +685,9 @@ for g in GUIDES:
     open(os.path.join(ROOT, "guide", g["slug"], "index.html"), "w", encoding="utf-8").write(page)
 
 hub_url = SITE + "/guide/"
+# はじめての人が知りたい基本の記事（選び方・料金・当日・ペットだけ）を先に（2026-11-08 飼い主目線のレビュー #9）
+_BASIC = ["what-is-pet-taxi", "choose", "fare", "same-day", "pet-only", "taxi-with-pet"]
+def _basic_first(slugs): return [x for x in _BASIC if x in slugs] + [x for x in slugs if x not in _BASIC]
 hub_ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
   {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
   {"@type":"ListItem","position":2,"name":"ペットの移動ガイド","item":hub_url}]}, ensure_ascii=False, indent=1) + '\n</script>'
@@ -691,11 +703,11 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
+    <div class="sh"><h2>はじめての方へ・移動の困りごとから調べる</h2></div>
+    {guide_cards(_basic_first([g["slug"] for g in GUIDES if g.get("category") not in ("facility", "procedure", "care")]))}
     <div class="sh"><h2>病院・施設名から移動を調べる</h2></div>
     <p>通院先や宿泊先ごとの行き方、受付・乗降場所、帰りの車で確かめたいことをまとめました。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "facility"])}
-    <div class="sh"><h2>移動の困りごとから調べる</h2></div>
-    {guide_cards([g["slug"] for g in GUIDES if g.get("category") not in ("facility", "procedure", "care")])}
     <div class="sh"><h2>迷子・犬の登録・引っ越しの手続き</h2></div>
     <p>迷子になったとき、迷子を保護したとき、犬の登録、引っ越し、飼えなくなったときの相談先。全国の窓口は<a href="/jichitai/">迷子・犬の登録・引取りの窓口</a>の一覧から。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "procedure"])}
@@ -1174,6 +1186,23 @@ emg_opts = '<option value="">すべての都道府県</option>' + ''.join(f'<opt
 emg_ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
   {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
   {"@type":"ListItem","position":2,"name":"緊急のときの連絡先","item":emg_url}]}, ensure_ascii=False, indent=1) + '\n</script>'
+_top = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+_pn = re.search(r"var PREF_NAMES = (\[[^\]]*\]);", _top).group(1)
+_pl = re.search(r"var PREF_LL = (\[\[.*?\]\]);", _top).group(1)
+EMG_GUESS_JS = """if (!sel.value) (function(){
+    var NAMES = """ + _pn + """, LL = """ + _pl + """;
+    function at(lat, lng){ var best = -1, bd = Infinity; LL.forEach(function(p, i){ var dy = lat - p[0], dx = (lng - p[1]) * Math.cos((lat + p[0]) * Math.PI / 360), d = dx * dx + dy * dy; if (d < bd) { bd = d; best = i; } }); return best >= 0 && bd < 4 ? NAMES[best] : ""; }
+    function use(v, how){
+      if (!v || sel.value || ![].some.call(sel.options, function(o){ return o.value === v; })) return;
+      sel.value = v; apply(); prefLinks(v);
+      var g = document.getElementById("emgGuess"); g.textContent = how + "から、" + v + "を選んでいます。ちがうときは、上で選び直してください。"; g.hidden = false;
+    }
+    function byNet(){ fetch("https://get.geojs.io/v1/ip/geo.json").then(function(r){ return r.json(); }).then(function(d){ if (d && d.country_code === "JP") use(at(+d.latitude, +d.longitude), "通信の情報（おおよその地域）"); }).catch(function(){}); }
+    if (navigator.permissions && navigator.geolocation) navigator.permissions.query({name: "geolocation"}).then(function(st){
+      if (st.state !== "granted") return byNet();
+      navigator.geolocation.getCurrentPosition(function(p){ use(at(p.coords.latitude, p.coords.longitude), "いまいる場所"); }, byNet, {maximumAge: 600000, timeout: 5000});
+    }).catch(byNet); else byNet();
+  })();"""
 ep = head("ペットの緊急搬送・動物救急車（緊急のペットタクシー）と夜間の動物病院｜全国の一覧｜ペットタクシー予約窓口",
   "ペットの具合が急に悪くなったときの連絡先。緊急の搬送をしている会社と、夜間・救急の動物病院を、全国47都道府県から探せます。名前と公式サイトへのリンク、受付時間をまとめた無料の一覧です。", emg_url, emg_ld) + f"""
 <main>
@@ -1187,8 +1216,8 @@ ep = head("ペットの緊急搬送・動物救急車（緊急のペットタク
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="emg">
+      <div class="f emg-pick"><label for="emgPrefAll">都道府県をえらぶ</label><select id="emgPrefAll">{emg_opts}</select><p class="emg-guess" id="emgGuess" hidden></p></div>
       <p class="emg-free">この一覧は無料の情報です。当サイトへのお申し込みやお支払いはありません。料金や受付は、それぞれの会社・病院に直接おたずねください。</p>
-      <div class="f"><label for="emgPrefAll">都道府県でしぼりこむ</label><select id="emgPrefAll">{emg_opts}</select></div>
       <p class="emg-sum"><a href="/#emergency">現在地から近い病院を、車で行く時間と一緒にさがす</a></p>
       <h2 class="emg-h">夜間・救急の動物病院</h2>
       <p class="emg-sum">夜間の病院が見つからない県には、近くの県の病院を（県名）つきで載せています。</p>
@@ -1219,6 +1248,8 @@ ep = head("ペットの緊急搬送・動物救急車（緊急のペットタク
     document.getElementById("emgTaxiNone").hidden = n > 0;
   }}
   prefKeep(sel, apply);  // 選んだ都道府県はほかのページでも保つ（tools/prefkeep.py）
+  // はじめての人には、いる場所に近い県を最初から選んでおく（位置の利用がすでに許可されていれば端末の位置、なければ通信の情報からの大まかな地域。新しく許可は求めない。覚えはしない）。2026-11-08 飼い主目線のレビュー #7
+  {EMG_GUESS_JS}
 }})();
 </script>
 <script src="/reviews.js" defer></script>
