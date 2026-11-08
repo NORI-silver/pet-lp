@@ -5,6 +5,7 @@
 # データ：tools/trainers.json。口コミの星は動物病院のページと同じしくみ（/reviews.js → booking/Code.gs の EMG_REVIEWS）。
 import json, os
 import prefkeep
+import facility_cards as FC
 
 J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "trainers.json"), encoding="utf-8"))
 
@@ -32,7 +33,13 @@ def _card(e, t):
     if t.get("assoc"):
         extra += '<small>協会の一覧：' + e("・".join(ASSOC.get(a, a) for a in t["assoc"].split("・"))) + '</small>'
     if t.get("addr"): extra += f'<small>所在地：{e(t["addr"])}</small>'
-    return (f'<div class="emg-item emg-co"><a href="{e(t["url"])}" target="_blank" rel="noopener"><b>{e(t["name"])}</b></a>'
+    tags = FC.trainer_tags(t)
+    # 通う場所があるとき（教室・幼稚園・預かり）だけ「ここまでのペットタクシー」を出す（出張だけの事業者の所在地は事務所のことがあるため）
+    to = ""
+    if t.get("addr") and set(tags) & {"教室・グループ", "幼稚園・保育園", "預かり訓練"}:
+        pf = t["prefs"][0]
+        to = (t["addr"] if t["addr"].startswith(pf) else pf + t["addr"])
+    return (f'<div class="emg-item emg-co"{FC.attrs(e, "trainer", t, tags, t["name"], to, "教室")}><a href="{e(t["url"])}" target="_blank" rel="noopener"><b>{e(t["name"])}</b></a>'
             f'<small>{e(t["city"])}</small>{extra}'
             + (f'<div class="emg-score" data-id="{e(t["id"])}"></div>' if t.get("review_query") else "") + "</div>")
 
@@ -81,10 +88,12 @@ def render(ctx):
     <div class="emg">
       <p class="emg-free">この一覧は無料の情報です。教室からお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金は載せていないので、それぞれの教室に直接おたずねください。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
+      {FC.chips(e, FC.TRAINER_CHIPS)}
       {body}
       <div class="emg-tips"><h4>ドッグトレーナー・しつけ教室をえらぶときに確かめること</h4><dl>{before}</dl>
       <p class="emg-tips-note">ここに書いたのは一般的な目安です。犬の様子にあわせて、教室や動物病院に相談してください。</p></div>
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
+      {FC.biz(e, "ドッグトレーナー・しつけ教室")}
       <p class="emg-note">当サイトとは別の事業者です（{e(J["checked"])}に公式サイトで確かめた情報。協会の一覧は各協会のサイトで確かめました）。提供内容や対応エリアは変わることがあるので、頼む前に必ずリンク先でご確認ください。口コミの星と本文は地図サービスから取り寄せたもので、当サイトの評価ではありません。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
@@ -99,6 +108,7 @@ def render(ctx):
 </main>
 {prefkeep.LIST_JS}
 <script src="/reviews.js" defer></script>
+{FC.SCRIPT}
 """ + ctx["foot_noband"]()
 
 def review_rows():
@@ -138,3 +148,5 @@ CAT = dict(slug=SLUG, name="ドッグトレーナー・しつけ教室", unit="�
   links=[("ドッグトレーナーのえらび方", "/guide/choose-dog-trainer/"), ("子犬のしつけはいつから？", "/guide/puppy-class/"), ("問題行動の相談先", "/guide/dog-behavior-help/"), ("全国のドッグラン", "/dogrun/")])
 
 CAT["table"] = [("出張", lambda t: "○" if _has(t, "出張", "訪問", "お家", "ご自宅") else ""), ("教室", lambda t: "○" if _has(t, "教室", "グループ", "クラス") else ""), ("幼稚園", lambda t: "○" if _has(t, "幼稚園", "保育園") else ""), ("預かり", lambda t: "○" if _has(t, "預かり") else ""), ("オンライン", lambda t: "○" if _has(t, "オンライン") else ""), ("市区町村", lambda t: t.get("city", ""))]
+CAT["fac_chips"] = lambda e, pf: FC.chips(e, FC.TRAINER_CHIPS, pf)
+CAT["fac_biz"] = lambda e: FC.biz(e, "ドッグトレーナー・しつけ教室")
