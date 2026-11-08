@@ -147,6 +147,10 @@ def _nat_stats():
             '</tbody></table><p class="small">当サイトが公式サイトで確かめた会社の数です（2026年11月時点、3社以上の都道府県）。「当日も受ける」は公式サイトや会社の返事にはっきり書いてある会社だけ。運賃の目安は、各社の公式サイトの料金表をもとに計算した概算のまんなかの会社の金額で、お迎え料金・夜間の割増・待ち時間は入っていません。確定料金ではありません。</p></div><!--/NAT_STATS-->')
 src = re.sub(r"\s*<!--NAT_STATS-->.*?<!--/NAT_STATS-->", "", src, flags=re.S)
 src = src.replace('<a href="/area/">全国47都道府県のペットタクシー情報を見る</a></p>', '<a href="/area/">全国47都道府県のペットタクシー情報を見る</a></p>\n    ' + _nat_stats(), 1)
+# 数字の帯：会社が見つかった都道府県の数だけを出す（「47都道府県から選べます」は会社のいない県もあるので誤解のもと。法定表示の確認 2026-11-08）
+_npref = len({a for x in _DISP for a in x.get("areas", [])})
+src = re.sub(r'<div class="stat"><div class="n">[0-9]+<small>都道府県</small></div><div class="l">[^<]*(?:<br>[^<]*)?</div></div>',
+             f'<div class="stat"><div class="n">{_npref}<small>都道府県</small></div><div class="l">{len(_DISP)}社から<br>さがせます</div></div>', src, count=1)
 open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(src)
 TOP_HTML = src  # 地域ページの元（下の clone_top）。src はあとで別の用途に使われるので写しておく
 # 地域ページは全部トップの写しで、ページの下の大きなプログラム（フォーム・料金の計算・緊急タブのデータ）も同じ。
