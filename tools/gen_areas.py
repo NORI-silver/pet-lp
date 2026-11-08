@@ -127,6 +127,26 @@ TAXIS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 TAXIS = {"checked": TAXIS["checked"], "taxis": [{k: t[k] for k in ("id", "name", "pref", "cities", "area_label", "rule", "fare", "url")} for t in TAXIS["taxis"]]}
 src = re.sub(r"/\*TAXIS\*/.*?/\*/TAXIS\*/", lambda m: "/*TAXIS*/var TAXIS = " + json.dumps(TAXIS, ensure_ascii=False) + ";/*/TAXIS*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*FARES\*/.*?/\*/FARES\*/", lambda m: "/*FARES*/" + FARE_JS + "/*/FARES*/", src, count=1, flags=re.S)
+# [B] 2026-11-08 トップに「都道府県ごとのペットタクシーの数」（全国の会社を公式サイトで確かめた数。トップだけに出し、地域ページの写しでは外す）
+def _nat_stats():
+    from prefs import PREFS as _P
+    full = {"東京": ("東京都", "/tokyo/"), "神奈川": ("神奈川県", "/kanagawa/"), "埼玉": ("埼玉県", "/saitama/"), "千葉": ("千葉県", "/chiba/")}
+    for slug, name, *_ in _P: full.setdefault(name if name == "北海道" else name[:-1], (name, f"/area/{slug}/"))
+    keys = sorted({a for x in _DISP for a in x.get("areas", [])}, key=lambda k: (-_ncos(k), full.get(k, ("", "~"))[1]))
+    rows = ""
+    for k in keys:
+        n = _ncos(k)
+        if n < 3 or k not in full: continue
+        fs = sorted(_r100(_nat_ride(c["fare"], 5)) for c in _NAT if k in c.get("areas", []))
+        mid = f"{fs[(len(fs) - 1) // 2]:,}円" if fs else "—"
+        nm, u = full[k]
+        rows += f'<tr><td><a href="{u}">{nm}</a></td><td>{n}社</td><td>{_n24(k)}社</td><td>{_nsame(k)}社</td><td>{mid}</td></tr>'
+    npref = len({a for x in _DISP for a in x.get("areas", [])})
+    return (f'<!--NAT_STATS--><div class="tbl" style="margin-top:18px"><h3 style="font-size:1.05rem;margin:0 0 8px">都道府県ごとのペットタクシーの数（全国{len(_DISP)}社・{npref}都道府県）</h3>'
+            '<table><thead><tr><th>お迎えの都道府県</th><th>来てくれる会社</th><th>24時間受付</th><th>当日も受ける</th><th>5kmの運賃の目安</th></tr></thead><tbody>' + rows +
+            '</tbody></table><p class="small">当サイトが公式サイトで確かめた会社の数です（2026年11月時点、3社以上の都道府県）。「当日も受ける」は公式サイトや会社の返事にはっきり書いてある会社だけ。運賃の目安は、各社の公式サイトの料金表をもとに計算した概算のまんなかの会社の金額で、お迎え料金・夜間の割増・待ち時間は入っていません。確定料金ではありません。</p></div><!--/NAT_STATS-->')
+src = re.sub(r"\s*<!--NAT_STATS-->.*?<!--/NAT_STATS-->", "", src, flags=re.S)
+src = src.replace('<a href="/area/">全国47都道府県のペットタクシー情報を見る</a></p>', '<a href="/area/">全国47都道府県のペットタクシー情報を見る</a></p>\n    ' + _nat_stats(), 1)
 open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(src)
 TOP_HTML = src  # 地域ページの元（下の clone_top）。src はあとで別の用途に使われるので写しておく
 # 地域ページは全部トップの写しで、ページの下の大きなプログラム（フォーム・料金の計算・緊急タブのデータ）も同じ。
@@ -228,7 +248,7 @@ open(os.path.join(ROOT, "style.css"), "w", encoding="utf-8").write(css.strip() +
 # フォームのお迎えの都道府県を最初から選んだ状態にする。地域の説明（料金の目安・主な市区・よくある質問など）は
 # フォームのすぐ後ろに差し込む。トップの中身を直せば、地域ページも gen_areas.py の実行でそろう。
 def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
-    t = TOP_HTML
+    t = re.sub(r"\s*<!--NAT_STATS-->.*?<!--/NAT_STATS-->", "", TOP_HTML, flags=re.S)
     t = re.sub(r"<title>.*?</title>", lambda m: f"<title>{e(title)}</title>", t, count=1, flags=re.S)
     t = re.sub(r'<meta name="description" content="[^"]*">', lambda m: f'<meta name="description" content="{e(desc)}">', t, count=1)
     t = re.sub(r'<link rel="canonical" href="[^"]*">', lambda m: f'<link rel="canonical" href="{url}">', t, count=1)
