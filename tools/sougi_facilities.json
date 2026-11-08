@@ -1,5 +1,5 @@
 {
- "_説明": "民間のペット火葬場・霊園・納骨堂（/sougi/ の都道府県ごとの一覧）。公式サイトで確かめた名前・市区町村・できること・公式サイトに書いてある料金だけ。電話番号・番地・口コミは入れない。順位なし（市区町村順で出す）。Nori 2026-11-02。",
+ "_説明": "民間のペット火葬場・霊園・納骨堂（/sougi/ の都道府県ごとの一覧）。公式サイトで確かめた名前・市区町村・できること・公式サイトに書いてある料金だけ。電話番号・番地は入れない（口コミの点数も保存しない）。順位なし（市区町村順で出す）。Nori 2026-11-02。 2026-11-08 Nori「グーグルのやつ、つけといて。各社のね」で、id（S＋名前から作った6桁）・review_query（名前と市区町村）・review_name（見つかった場所の名前に含まれるはずのことば）を足し、口コミの星・件数・本文を動物病院と同じしくみ（/reviews.js → booking/Code.gs の EMG_REVIEWS）で出す。点数は保存しない。",
  "checked": "2026年11月2日",
  "facilities": [
   {
@@ -16,7 +16,10 @@
     "納骨"
    ],
    "price": "個別火葬 10,000円〜・合同火葬 6,000円〜",
-   "u": "https://kyokujitsugroup.jp/petkasoen/index.html"
+   "u": "https://kyokujitsugroup.jp/petkasoen/index.html",
+   "id": "S8ec33a",
+   "review_query": "旭川ひばりが丘ペット火葬園 上川郡鷹栖町",
+   "review_name": "旭川ひばりが丘ペット火葬園"
   },
   {
    "pref": "北海道",
@@ -34,7 +37,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://www.obihiropetreien.com/"
+   "u": "https://www.obihiropetreien.com/",
+   "id": "Sfb5dce",
+   "review_query": "帯広ペット霊園 中川郡幕別町",
+   "review_name": "帯広ペット霊園"
   },
   {
    "pref": "北海道",
@@ -52,7 +58,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://www.petreien-yasuragi.com/"
+   "u": "https://www.petreien-yasuragi.com/",
+   "id": "S117853",
+   "review_query": "ペット霊園やすらぎ 中川郡幕別町",
+   "review_name": "ペット霊園やすらぎ"
   },
   {
    "pref": "北海道",
@@ -70,7 +79,10 @@
     "納骨"
    ],
    "price": "立会個別火葬 成猫（4kg未満）20,000円・小型犬（2〜4kg未満）22,000円",
-   "u": "https://www.donanpet-ceremony.com/price.html"
+   "u": "https://www.donanpet-ceremony.com/price.html",
+   "id": "S2a7749",
+   "review_query": "道南ペット霊園函館 亀田郡七飯町",
+   "review_name": "道南ペット霊園函館"
   },
   {
    "pref": "北海道",
@@ -88,7 +100,10 @@
     "納骨"
    ],
    "price": "個別火葬 猫・小型犬 24,750〜30,030円（税込）",
-   "u": "https://www.pet-cemetery-kotan-asahikawa.com/about"
+   "u": "https://www.pet-cemetery-kotan-asahikawa.com/about",
+   "id": "S75bd01",
+   "review_query": "ペット霊園古潭 旭川市",
+   "review_name": "ペット霊園古潭"
   },
   {
    "pref": "北海道",
@@ -105,7 +120,10 @@
     "納骨"
    ],
    "price": "個別火葬 10,000円〜",
-   "u": "https://petreien.com/ossuary.html"
+   "u": "https://petreien.com/ossuary.html",
+   "id": "S942ea0",
+   "review_query": "愛ペット動物霊園 札幌市中央区",
+   "review_name": "愛ペット動物霊園"
   },
   {
    "pref": "北海道",
@@ -124,7 +142,10 @@
     "納骨"
    ],
    "price": "個別火葬 小型犬（1〜3kg）23,650円・猫（3kg未満）23,650円（税込）",
-   "u": "https://www.hd-reien.com/pages/93/"
+   "u": "https://www.hd-reien.com/pages/93/",
+   "id": "S220475",
+   "review_query": "北海道動物霊園 札幌市南区",
+   "review_name": "北海道動物霊園"
   },
   {
    "pref": "北海道",
@@ -140,7 +161,10 @@
     "納骨"
    ],
    "price": "小型犬（3kgまで）おまかせ火葬 9,500円・立ち会い火葬 21,000円（税込）",
-   "u": "https://petmemorial-zoo.com/price_dog.html"
+   "u": "https://petmemorial-zoo.com/price_dog.html",
+   "id": "Sa25e7d",
+   "review_query": "ペットメモリアルZoo 札幌市白石区",
+   "review_name": "ペットメモリアルZoo"
   },
   {
    "pref": "北海道",
@@ -157,7 +181,10 @@
     "立ち会い火葬",
     "お迎え"
    ],
-   "u": "https://tenshi-sato.com/"
+   "u": "https://tenshi-sato.com/",
+   "id": "Sfae8b9",
+   "review_query": "ペットメモリアルパーク天使の里 石狩市",
+   "review_name": "ペットメモリアルパーク天使の里"
   },
   {
    "pref": "北海道",
@@ -174,7 +201,10 @@
     "納骨"
    ],
    "price": "個別火葬 犬・小（トイプードル・チワワなど）31,000円",
-   "u": "https://www.petmemorial-tomakomai.com/"
+   "u": "https://www.petmemorial-tomakomai.com/",
+   "id": "Sb428bd",
+   "review_query": "ペットメモリアルサービス 苫小牧市",
+   "review_name": "ペットメモリアルサービス"
   },
   {
    "pref": "青森県",
@@ -190,7 +220,10 @@
     "納骨"
    ],
    "price": "火葬 1〜5kg 33,700円・5〜10kg 38,000円（税込）",
-   "u": "https://shukatsu.aomori.jp/pet/"
+   "u": "https://shukatsu.aomori.jp/pet/",
+   "id": "S9b3bec",
+   "review_query": "青い森ペット斎場・やすらぎの里ペット霊園 青森市",
+   "review_name": "青い森ペット斎場・やすらぎの里ペット霊園"
   },
   {
    "pref": "岩手県",
@@ -205,7 +238,10 @@
     "納骨"
    ],
    "price": "観音合同納骨 1体 5,500円（税込）",
-   "u": "https://www.petangel-iwate.com/pages/18/"
+   "u": "https://www.petangel-iwate.com/pages/18/",
+   "id": "S761d97",
+   "review_query": "ペットエンゼル岩手 滝沢市",
+   "review_name": "ペットエンゼル岩手"
   },
   {
    "pref": "岩手県",
@@ -224,7 +260,10 @@
     "納骨"
    ],
    "price": "小型（1kg〜）合同火葬 14,300円〜・個別立会 30,250円〜（税込）",
-   "u": "https://sunnysun.jp/services.html"
+   "u": "https://sunnysun.jp/services.html",
+   "id": "Sdbddec",
+   "review_query": "サニーサンペットメモリアル 盛岡市",
+   "review_name": "サニーサンペットメモリアル"
   },
   {
    "pref": "宮城県",
@@ -240,7 +279,10 @@
     "納骨"
    ],
    "price": "火葬 ねこ 23,000円〜26,000円・小型犬 26,000円〜",
-   "u": "https://sendai-pet-solina.com/price/index.html"
+   "u": "https://sendai-pet-solina.com/price/index.html",
+   "id": "S7755d5",
+   "review_query": "仙台ペット霊園 SOLINA 仙台市太白区",
+   "review_name": "仙台ペット霊園 SOLINA"
   },
   {
    "pref": "宮城県",
@@ -259,7 +301,10 @@
     "納骨"
    ],
    "price": "小型犬（〜7kg）個別火葬 47,700円・合同火葬 23,000円（税込）",
-   "u": "https://osaki-pet.com/plan/"
+   "u": "https://osaki-pet.com/plan/",
+   "id": "S78a99f",
+   "review_query": "大崎ペット斎場 大崎市",
+   "review_name": "大崎ペット斎場"
   },
   {
    "pref": "秋田県",
@@ -278,7 +323,10 @@
     "納骨"
    ],
    "price": "小型 5kg未満 個別立会火葬 22,000円・10kg未満 合同火葬 11,000円（税込）",
-   "u": "https://akita-animalclub.com/daisen.php"
+   "u": "https://akita-animalclub.com/daisen.php",
+   "id": "Sa4611d",
+   "review_query": "アキタアニマル倶楽部 大仙ホール 大仙市",
+   "review_name": "アキタアニマル倶楽部 大仙ホール"
   },
   {
    "pref": "秋田県",
@@ -297,7 +345,10 @@
     "納骨"
    ],
    "price": "小型 5kg未満 個別立会火葬 26,500円・個別一任火葬 21,500円（税込）",
-   "u": "https://akita-animalclub.com/akita.php"
+   "u": "https://akita-animalclub.com/akita.php",
+   "id": "S53b034",
+   "review_query": "アキタアニマル倶楽部 秋田ホール 秋田市",
+   "review_name": "アキタアニマル倶楽部 秋田ホール"
   },
   {
    "pref": "山形県",
@@ -314,7 +365,10 @@
     "納骨"
    ],
    "price": "合同火葬＋納骨 31,900円〜・個別火葬＋納骨 46,200円〜（税込）",
-   "u": "https://www.yamagatareien.or.jp/pet/"
+   "u": "https://www.yamagatareien.or.jp/pet/",
+   "id": "Sd0edb1",
+   "review_query": "山形霊園ペット事業部 山形市",
+   "review_name": "山形霊園ペット事業部"
   },
   {
    "pref": "山形県",
@@ -332,7 +386,10 @@
     "納骨"
    ],
    "price": "小型犬（10kg未満）個別一任火葬 18,000円・家族立会い火葬 21,000円（税込）",
-   "u": "https://www.shonai-pet.jp/price.html"
+   "u": "https://www.shonai-pet.jp/price.html",
+   "id": "S870493",
+   "review_query": "庄内ペット霊園 酒田市",
+   "review_name": "庄内ペット霊園"
   },
   {
    "pref": "福島県",
@@ -349,7 +406,10 @@
     "納骨"
    ],
    "price": "猫・うさぎ 個別葬 16,500円・合同葬 10,000円（税込）",
-   "u": "https://iwaki-pet-reien.com/price/index.html"
+   "u": "https://iwaki-pet-reien.com/price/index.html",
+   "id": "Se1bf8d",
+   "review_query": "いわきペット霊園 いわき市",
+   "review_name": "いわきペット霊園"
   },
   {
    "pref": "福島県",
@@ -365,7 +425,10 @@
     "納骨"
    ],
    "price": "火葬 3kg以下 13,200円・7kg以下 16,500円（税込）",
-   "u": "https://www.tamakawa-pet.com/reien.php"
+   "u": "https://www.tamakawa-pet.com/reien.php",
+   "id": "Scf5387",
+   "review_query": "玉川ペット霊園 石川郡玉川村",
+   "review_name": "玉川ペット霊園"
   },
   {
    "pref": "福島県",
@@ -381,7 +444,10 @@
     "納骨"
    ],
    "price": "個別火葬 小型（トイプードル・猫など）22,000円（税込）",
-   "u": "https://www.otakiage-kuyo.com/price.html"
+   "u": "https://www.otakiage-kuyo.com/price.html",
+   "id": "Sa9a9b5",
+   "review_query": "ペット葬祭センター福島 福島市",
+   "review_name": "ペット葬祭センター福島"
   },
   {
    "pref": "茨城県",
@@ -400,7 +466,10 @@
     "納骨"
    ],
    "price": "5kgまで 立会個別火葬 18,700円・一人個別火葬 14,300円・合同火葬 11,000円（税込）",
-   "u": "https://www.aishinn.jp/price/"
+   "u": "https://www.aishinn.jp/price/",
+   "id": "S70883b",
+   "review_query": "愛心ペットセレモ つくば市",
+   "review_name": "愛心ペットセレモ"
   },
   {
    "pref": "茨城県",
@@ -418,7 +487,10 @@
     "納骨"
    ],
    "price": "お立会いプラン 5kgまで 21,500円（税込）〜、お任せプラン 18,500円（税込）〜",
-   "u": "https://www.midorino.org/plan"
+   "u": "https://www.midorino.org/plan",
+   "id": "S5996ec",
+   "review_query": "ペット霊園 みどり野 ひたちなか市",
+   "review_name": "ペット霊園 みどり野"
   },
   {
    "pref": "栃木県",
@@ -434,7 +506,10 @@
     "納骨"
    ],
    "price": "火葬 22,000円（税込）〜、納骨 5,500円（税込）〜",
-   "u": "https://pet-honganji.com/price/"
+   "u": "https://pet-honganji.com/price/",
+   "id": "S7c8f28",
+   "review_query": "本願寺付嘱ペット霊園 佐野市",
+   "review_name": "本願寺付嘱ペット霊園"
   },
   {
    "pref": "栃木県",
@@ -451,7 +526,10 @@
     "納骨"
    ],
    "price": "小型犬 5kg以下 個別火葬 24,200円・合同火葬 18,700円（税の表記なし）",
-   "u": "https://yu-kamiyamakikaku-pet.com/%E6%96%99%E9%87%91%E8%A9%B3%E7%B4%B0/"
+   "u": "https://yu-kamiyamakikaku-pet.com/%E6%96%99%E9%87%91%E8%A9%B3%E7%B4%B0/",
+   "id": "See9362",
+   "review_query": "ペット霊園宇都宮 日光市",
+   "review_name": "ペット霊園宇都宮"
   },
   {
    "pref": "群馬県",
@@ -469,7 +547,10 @@
     "納骨"
    ],
    "price": "小型 個別立会い火葬 23,000円・個別一任火葬 19,000円・合同火葬 15,000円（税込）",
-   "u": "https://www.isesaki-pk.co.jp/price"
+   "u": "https://www.isesaki-pk.co.jp/price",
+   "id": "S523e5a",
+   "review_query": "イセサキPKサービス 伊勢崎市",
+   "review_name": "イセサキPKサービス"
   },
   {
    "pref": "群馬県",
@@ -485,7 +566,10 @@
     "納骨"
    ],
    "price": "2〜5kg 合同火葬 21,450円・立ち会い 26,950円（税の表記なし。火葬は専門業者に委託）",
-   "u": "https://tenmyoji.jp/pet/"
+   "u": "https://tenmyoji.jp/pet/",
+   "id": "Sa1ae09",
+   "review_query": "天明寺 前橋市",
+   "review_name": "天明寺"
   },
   {
    "pref": "群馬県",
@@ -500,7 +584,10 @@
     "納骨"
    ],
    "price": "個別火葬 2kg未満 14,300円（税込）",
-   "u": "https://seizandou.jp/page/pet"
+   "u": "https://seizandou.jp/page/pet",
+   "id": "Sccf329",
+   "review_query": "清山堂 高崎市",
+   "review_name": "清山堂"
   },
   {
    "pref": "埼玉県",
@@ -515,7 +602,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://urawa-petreien.com/"
+   "u": "https://urawa-petreien.com/",
+   "id": "S41ef0e",
+   "review_query": "浦和ペット霊園 さいたま市桜区",
+   "review_name": "浦和ペット霊園"
   },
   {
    "pref": "埼玉県",
@@ -534,7 +624,10 @@
     "納骨"
    ],
    "price": "3kg以下 一任合同火葬 15,000円・一任個別火葬 20,000円（税込）",
-   "u": "https://www.o-musashinopetreien.com/price/"
+   "u": "https://www.o-musashinopetreien.com/price/",
+   "id": "Sfd6400",
+   "review_query": "大宮武蔵野ペット霊園 上尾市",
+   "review_name": "大宮武蔵野ペット霊園"
   },
   {
    "pref": "埼玉県",
@@ -549,7 +642,10 @@
     "納骨"
    ],
    "price": "返骨火葬 1〜10kg 33,000円（税込）",
-   "u": "https://dearpet-saitama.jp/"
+   "u": "https://dearpet-saitama.jp/",
+   "id": "Sd1aa41",
+   "review_query": "ディアペットさいたま 上尾市",
+   "review_name": "ディアペットさいたま"
   },
   {
    "pref": "埼玉県",
@@ -559,7 +655,10 @@
     "火葬"
    ],
    "services": [],
-   "u": "http://doubutsu.no.coocan.jp/"
+   "u": "http://doubutsu.no.coocan.jp/",
+   "id": "Safcc83",
+   "review_query": "川口動物霊堂 川口市",
+   "review_name": "川口動物霊堂"
   },
   {
    "pref": "埼玉県",
@@ -578,7 +677,10 @@
     "納骨"
    ],
    "price": "小型犬 一任火葬 38,500円・立会火葬 49,500円（税込）。別途燃料費5%",
-   "u": "https://sayamako-reien.com/price.html"
+   "u": "https://sayamako-reien.com/price.html",
+   "id": "S20803e",
+   "review_query": "狭山湖動物霊園 所沢市",
+   "review_name": "狭山湖動物霊園"
   },
   {
    "pref": "埼玉県",
@@ -596,7 +698,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://www.pet-memorialpark.com/"
+   "u": "https://www.pet-memorialpark.com/",
+   "id": "S084b60",
+   "review_query": "ペットメモリアルパーク慈愛園 春日部市",
+   "review_name": "ペットメモリアルパーク慈愛園"
   },
   {
    "pref": "埼玉県",
@@ -613,7 +718,10 @@
     "納骨"
    ],
    "price": "個別火葬 15,000円〜（税込）",
-   "u": "https://musashi-pet.com/"
+   "u": "https://musashi-pet.com/",
+   "id": "S23b93a",
+   "review_query": "むさし動物霊園 越谷市",
+   "review_name": "むさし動物霊園"
   },
   {
    "pref": "埼玉県",
@@ -631,7 +739,10 @@
     "納骨"
    ],
    "price": "犬・猫 10,000円から",
-   "u": "https://www.asukanosato.com/"
+   "u": "https://www.asukanosato.com/",
+   "id": "S42cba6",
+   "review_query": "ペット葬儀 ペット火葬 あすかの郷 越谷市",
+   "review_name": "ペット葬儀 ペット火葬 あすかの郷"
   },
   {
    "pref": "千葉県",
@@ -646,7 +757,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://ypet.info/"
+   "u": "https://ypet.info/",
+   "id": "S06fda3",
+   "review_query": "八千代ペット霊園 八千代市",
+   "review_name": "八千代ペット霊園"
   },
   {
    "pref": "千葉県",
@@ -664,7 +778,10 @@
     "納骨"
    ],
    "price": "一任火葬 8,470円〜（税込）",
-   "u": "https://www.petceremony.jp/chiba/"
+   "u": "https://www.petceremony.jp/chiba/",
+   "id": "Se0a0fe",
+   "review_query": "ペットセレモニープレア千葉式場 千葉市稲毛区",
+   "review_name": "ペットセレモニープレア千葉式場"
   },
   {
    "pref": "千葉県",
@@ -681,7 +798,10 @@
     "納骨"
    ],
    "price": "立会いなし（お任せ）小型（猫・チワワなど）20,900円（税込）",
-   "u": "https://chibahigashireien.or.jp/petmemorial"
+   "u": "https://chibahigashireien.or.jp/petmemorial",
+   "id": "Se79f4e",
+   "review_query": "ペットメモリアル日本霊園 千葉市緑区",
+   "review_name": "ペットメモリアル日本霊園"
   },
   {
    "pref": "千葉県",
@@ -699,7 +819,10 @@
     "納骨"
    ],
    "price": "",
-   "u": "https://www.yaku-yoke.com/doubutukuyo.html"
+   "u": "https://www.yaku-yoke.com/doubutukuyo.html",
+   "id": "Sb22bec",
+   "review_query": "不動の杜ペット霊園 千葉市若葉区",
+   "review_name": "不動の杜ペット霊園"
   },
   {
    "pref": "千葉県",
@@ -714,7 +837,10 @@
     "個別火葬",
     "立ち会い火葬"
    ],
-   "u": "https://ichikawa-pet.co.jp/about"
+   "u": "https://ichikawa-pet.co.jp/about",
+   "id": "Sa2fae7",
+   "review_query": "市川ペット霊園 市川市",
+   "review_name": "市川ペット霊園"
   },
   {
    "pref": "千葉県",
@@ -732,7 +858,10 @@
     "納骨"
    ],
    "price": "個別火葬 5kg未満 33,000円（税込）",
-   "u": "https://kenyuusha.co.jp/jisyoin/"
+   "u": "https://kenyuusha.co.jp/jisyoin/",
+   "id": "S5299d7",
+   "review_query": "竺園寺別院 慈生院 市川市",
+   "review_name": "竺園寺別院 慈生院"
   },
   {
    "pref": "千葉県",
@@ -748,7 +877,10 @@
     "納骨"
    ],
    "price": "ペット個別葬プラン（一任） 〜5kg 21,500円（税込）",
-   "u": "https://www.pet594.com/plan/pet-kobetsuso/"
+   "u": "https://www.pet594.com/plan/pet-kobetsuso/",
+   "id": "S74b4b1",
+   "review_query": "動物苑 柏市",
+   "review_name": "動物苑"
   },
   {
    "pref": "千葉県",
@@ -765,7 +897,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://funabashi-petsaijyou.com/"
+   "u": "https://funabashi-petsaijyou.com/",
+   "id": "S85955a",
+   "review_query": "船橋ペット斎場 船橋市",
+   "review_name": "船橋ペット斎場"
   },
   {
    "pref": "東京都",
@@ -783,7 +918,10 @@
     "納骨"
    ],
    "price": "小型犬 立会葬儀 77,000円・個別一任葬儀 55,800円（税込）",
-   "u": "https://www.ookura-ac.jp/price"
+   "u": "https://www.ookura-ac.jp/price",
+   "id": "S0d9e61",
+   "review_query": "大蔵動物霊園 世田谷区",
+   "review_name": "大蔵動物霊園"
   },
   {
    "pref": "東京都",
@@ -797,7 +935,10 @@
    "services": [
     "お迎え"
    ],
-   "u": "http://www.rengeji.or.jp/"
+   "u": "http://www.rengeji.or.jp/",
+   "id": "S0d1740",
+   "review_query": "蓮華寺付属 哲学堂動物霊園 中野区",
+   "review_name": "蓮華寺付属 哲学堂動物霊園"
   },
   {
    "pref": "東京都",
@@ -814,7 +955,10 @@
     "納骨"
    ],
    "price": "一任火葬 小型犬 22,000円（税込）",
-   "u": "https://www.sankouji.com/animal.html"
+   "u": "https://www.sankouji.com/animal.html",
+   "id": "S9e38f7",
+   "review_query": "八王子動物霊園 八王子市",
+   "review_name": "八王子動物霊園"
   },
   {
    "pref": "東京都",
@@ -833,7 +977,10 @@
     "訪問火葬"
    ],
    "price": "合同火葬 小型犬 16,000円〜",
-   "u": "https://www.pet-kasou.biz/"
+   "u": "https://www.pet-kasou.biz/",
+   "id": "Scd0216",
+   "review_query": "八王子下柚木ペット霊園 八王子市",
+   "review_name": "八王子下柚木ペット霊園"
   },
   {
    "pref": "東京都",
@@ -848,7 +995,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://petsousai.com/"
+   "u": "https://petsousai.com/",
+   "id": "S9370ff",
+   "review_query": "城南ペット霊園 品川区",
+   "review_name": "城南ペット霊園"
   },
   {
    "pref": "東京都",
@@ -867,7 +1017,10 @@
     "納骨"
    ],
    "price": "5kg未満 合同葬 16,500円・個別葬 23,100円・お立会葬 45,100円（税込）",
-   "u": "https://tokyo-petreido.com/kanagawa-kawasaki/"
+   "u": "https://tokyo-petreido.com/kanagawa-kawasaki/",
+   "id": "S7bf45b",
+   "review_query": "東京ペット霊堂 大田区",
+   "review_name": "東京ペット霊堂"
   },
   {
    "pref": "東京都",
@@ -886,7 +1039,10 @@
     "納骨"
    ],
    "price": "個別一任火葬 小型犬 26,400円（税込）",
-   "u": "https://www.petsougi.jp/"
+   "u": "https://www.petsougi.jp/",
+   "id": "S9f181b",
+   "review_query": "大森ペット霊堂 大田区",
+   "review_name": "大森ペット霊堂"
   },
   {
    "pref": "東京都",
@@ -905,7 +1061,10 @@
     "納骨"
    ],
    "price": "小型犬 合同火葬 23,000円・個別火葬 38,000円・立会火葬 60,000円（税込）",
-   "u": "https://www.tokyo-pet.com/price/"
+   "u": "https://www.tokyo-pet.com/price/",
+   "id": "S4c6fc4",
+   "review_query": "慈恵院付属多摩犬猫霊園 府中市",
+   "review_name": "慈恵院付属多摩犬猫霊園"
   },
   {
    "pref": "東京都",
@@ -919,7 +1078,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://shinzoin-dr.com/"
+   "u": "https://shinzoin-dr.com/",
+   "id": "Sf45030",
+   "review_query": "真蔵院動物霊園 江戸川区",
+   "review_name": "真蔵院動物霊園"
   },
   {
    "pref": "東京都",
@@ -938,7 +1100,10 @@
     "納骨"
    ],
    "price": "一任個別火葬 猫・ウサギ 33,000円（税込）",
-   "u": "https://magokoro-pet.co.jp/"
+   "u": "https://magokoro-pet.co.jp/",
+   "id": "S948896",
+   "review_query": "寿量寺附属 真心動物霊園 町田市",
+   "review_name": "寿量寺附属 真心動物霊園"
   },
   {
    "pref": "東京都",
@@ -952,7 +1117,10 @@
    "services": [
     "納骨"
    ],
-   "u": "https://pet-memory.com/"
+   "u": "https://pet-memory.com/",
+   "id": "S3278da",
+   "review_query": "ペットメモリアルパーク南多摩 町田市",
+   "review_name": "ペットメモリアルパーク南多摩"
   },
   {
    "pref": "東京都",
@@ -967,7 +1135,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://www.kanzoin-nirvana.com/"
+   "u": "https://www.kanzoin-nirvana.com/",
+   "id": "S5818be",
+   "review_query": "観蔵院ペット霊園ニルバーナ 練馬区",
+   "review_name": "観蔵院ペット霊園ニルバーナ"
   },
   {
    "pref": "神奈川県",
@@ -984,7 +1155,10 @@
     "納骨"
    ],
    "price": "個別葬 16,500円〜（税込）",
-   "u": "https://www.ad-memorial.jp/"
+   "u": "https://www.ad-memorial.jp/",
+   "id": "S105757",
+   "review_query": "厚木動物メモリアルパーク 厚木市",
+   "review_name": "厚木動物メモリアルパーク"
   },
   {
    "pref": "神奈川県",
@@ -1002,7 +1176,10 @@
     "納骨"
    ],
    "price": "個別火葬 16,000円〜（税込）",
-   "u": "https://www.animalpark.co.jp/"
+   "u": "https://www.animalpark.co.jp/",
+   "id": "S606eea",
+   "review_query": "アニマルパークペット霊園 厚木市",
+   "review_name": "アニマルパークペット霊園"
   },
   {
    "pref": "神奈川県",
@@ -1017,7 +1194,10 @@
     "納骨"
    ],
    "price": "火葬・供養 11,000円から",
-   "u": "https://www.pet-kuyo.jp/"
+   "u": "https://www.pet-kuyo.jp/",
+   "id": "Sb2bece",
+   "review_query": "蓮昭寺 お寺のペット供養 平塚市",
+   "review_name": "蓮昭寺 お寺のペット供養"
   },
   {
    "pref": "神奈川県",
@@ -1036,7 +1216,10 @@
     "納骨"
    ],
    "price": "",
-   "u": "https://www.pochitama-reien.com/kasou/"
+   "u": "https://www.pochitama-reien.com/kasou/",
+   "id": "Sa3a602",
+   "review_query": "ポチたま霊園 横浜市戸塚区",
+   "review_name": "ポチたま霊園"
   },
   {
    "pref": "神奈川県",
@@ -1051,7 +1234,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://www.pet-sougi.com/"
+   "u": "https://www.pet-sougi.com/",
+   "id": "S76a3f5",
+   "review_query": "よこはま動物葬儀センター 横浜市瀬谷区",
+   "review_name": "よこはま動物葬儀センター"
   },
   {
    "pref": "神奈川県",
@@ -1067,7 +1253,10 @@
     "個別火葬",
     "納骨"
    ],
-   "u": "https://www.do-petkuyo.com/"
+   "u": "https://www.do-petkuyo.com/",
+   "id": "S994039",
+   "review_query": "福泉寺動物霊園 横浜市緑区",
+   "review_name": "福泉寺動物霊園"
   },
   {
    "pref": "神奈川県",
@@ -1085,7 +1274,10 @@
     "納骨"
    ],
    "price": "",
-   "u": "https://yokohama-aoba.petangel.jp/"
+   "u": "https://yokohama-aoba.petangel.jp/",
+   "id": "S486255",
+   "review_query": "ペットエンジェルゲイト横浜青葉 横浜市青葉区",
+   "review_name": "ペットエンジェルゲイト横浜青葉"
   },
   {
    "pref": "神奈川県",
@@ -1104,7 +1296,10 @@
     "納骨"
    ],
    "price": "立会葬儀 ベーシックプラン 兎・猫・小型犬 63,360円（税込）",
-   "u": "https://www.heiwakai.co.jp/price/"
+   "u": "https://www.heiwakai.co.jp/price/",
+   "id": "S3f9df6",
+   "review_query": "平和会ペットメモリアルパーク 横浜市青葉区・川崎市麻生区",
+   "review_name": "平和会ペットメモリアルパーク"
   },
   {
    "pref": "神奈川県",
@@ -1122,7 +1317,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://hana-okuri.jp/"
+   "u": "https://hana-okuri.jp/",
+   "id": "S31d6ce",
+   "review_query": "横須賀ペット霊園 ハナオクリ 横須賀市",
+   "review_name": "横須賀ペット霊園 ハナオクリ"
   },
   {
    "pref": "神奈川県",
@@ -1140,7 +1338,10 @@
     "納骨"
    ],
    "price": "合同火葬 犬・猫 5kg以下 14,300円（税の表記なし）",
-   "u": "https://sagami-sono.jp/"
+   "u": "https://sagami-sono.jp/",
+   "id": "Scb4a2f",
+   "review_query": "ペット葬祭・霊園相模の園 相模原市南区",
+   "review_name": "ペット葬祭・霊園相模の園"
   },
   {
    "pref": "新潟県",
@@ -1157,7 +1358,10 @@
     "納骨"
    ],
    "price": "一般火葬 5kgまで 14,000円",
-   "u": "http://www.johkohji.com/jiai/price_list.html"
+   "u": "http://www.johkohji.com/jiai/price_list.html",
+   "id": "S611d1d",
+   "review_query": "慈愛堂動物浄苑 上越市",
+   "review_name": "慈愛堂動物浄苑"
   },
   {
    "pref": "新潟県",
@@ -1176,7 +1380,10 @@
     "納骨"
    ],
    "price": "個別葬儀 犬・猫・ウサギ 5kg以下 22,000円（税込）",
-   "u": "https://www.pet-reien.net/plan/"
+   "u": "https://www.pet-reien.net/plan/",
+   "id": "S640953",
+   "review_query": "ペット葬祭センター 新潟市北区",
+   "review_name": "ペット葬祭センター"
   },
   {
    "pref": "新潟県",
@@ -1193,7 +1400,10 @@
     "納骨"
    ],
    "price": "個別葬 5kg未満 24,200円（税込）",
-   "u": "https://www.fujipark.info/about/"
+   "u": "https://www.fujipark.info/about/",
+   "id": "Sdcb9a8",
+   "review_query": "フジパーク ペット霊園 新潟市南区",
+   "review_name": "フジパーク ペット霊園"
   },
   {
    "pref": "富山県",
@@ -1210,7 +1420,10 @@
     "納骨"
    ],
    "price": "個別葬 猫・うさぎ 30,800円（税込）",
-   "u": "https://www.h-p-s.co.jp/price/"
+   "u": "https://www.h-p-s.co.jp/price/",
+   "id": "Sbcaec6",
+   "review_query": "北陸ペット葬儀社 富山市",
+   "review_name": "北陸ペット葬儀社"
   },
   {
    "pref": "富山県",
@@ -1226,7 +1439,10 @@
     "納骨"
    ],
    "price": "火葬のみ（供養塔に納める場合）猫・兎・超小型犬 26,400円",
-   "u": "https://magokoro-pet.jp/"
+   "u": "https://magokoro-pet.jp/",
+   "id": "S08b96f",
+   "review_query": "富山動物霊苑 まごころペットセレモニー 射水市",
+   "review_name": "富山動物霊苑 まごころペットセレモニー"
   },
   {
    "pref": "富山県",
@@ -1241,7 +1457,10 @@
     "納骨"
    ],
    "price": "スタンダードプラン 小型犬 34,000円（税込）",
-   "u": "https://takaokapet.com/sougryokin-html"
+   "u": "https://takaokapet.com/sougryokin-html",
+   "id": "Sd4ef6b",
+   "review_query": "高岡ペット葬儀社 高岡市",
+   "review_name": "高岡ペット葬儀社"
   },
   {
    "pref": "石川県",
@@ -1257,7 +1476,10 @@
     "立ち会い火葬"
    ],
    "price": "個別火葬 34,000円〜",
-   "u": "https://petaisousya-komatsu.com/"
+   "u": "https://petaisousya-komatsu.com/",
+   "id": "Sf259f2",
+   "review_query": "小松ペット霊園 小松市",
+   "review_name": "小松ペット霊園"
   },
   {
    "pref": "石川県",
@@ -1274,7 +1496,10 @@
     "納骨"
    ],
    "price": "個別火葬プラン 34,000円〜",
-   "u": "https://petaisousya.co.jp/information/seibu"
+   "u": "https://petaisousya.co.jp/information/seibu",
+   "id": "S33db8a",
+   "review_query": "西部緑地動物霊苑 金沢市",
+   "review_name": "西部緑地動物霊苑"
   },
   {
    "pref": "石川県",
@@ -1290,7 +1515,10 @@
     "お迎え"
    ],
    "price": "個別火葬 小2棺（小型犬・成猫）36,300円（税込）",
-   "u": "https://www.kanazawa-pet.jp/price/"
+   "u": "https://www.kanazawa-pet.jp/price/",
+   "id": "Sff49d6",
+   "review_query": "大乗寺山動物霊園 金沢市",
+   "review_name": "大乗寺山動物霊園"
   },
   {
    "pref": "福井県",
@@ -1307,7 +1535,10 @@
     "納骨"
    ],
    "price": "個別火葬プラン 34,000円〜",
-   "u": "https://petaisousya.co.jp/information/fukui/"
+   "u": "https://petaisousya.co.jp/information/fukui/",
+   "id": "S1f8f5f",
+   "review_query": "福井動物霊苑 福井市",
+   "review_name": "福井動物霊苑"
   },
   {
    "pref": "福井県",
@@ -1325,7 +1556,10 @@
     "納骨"
    ],
    "price": "個別セット 5kgまで 34,800円（税込）",
-   "u": "https://www.oozora.net/price.html"
+   "u": "https://www.oozora.net/price.html",
+   "id": "Sf408b4",
+   "review_query": "どうぶつセレモニーおおぞら 鯖江市",
+   "review_name": "どうぶつセレモニーおおぞら"
   },
   {
    "pref": "山梨県",
@@ -1341,7 +1575,10 @@
     "納骨"
    ],
    "price": "個別葬 小型 2〜10kg 35,000円（税込）",
-   "u": "https://www.petreido.info/"
+   "u": "https://www.petreido.info/",
+   "id": "S495b9e",
+   "review_query": "あやめの里ペット霊堂 南アルプス市",
+   "review_name": "あやめの里ペット霊堂"
   },
   {
    "pref": "山梨県",
@@ -1357,7 +1594,10 @@
     "納骨"
    ],
    "price": "個別火葬 猫・超小型犬 26,180円〜",
-   "u": "https://www.petreien-joudonosato.com/ryokin/index.html"
+   "u": "https://www.petreien-joudonosato.com/ryokin/index.html",
+   "id": "S347000",
+   "review_query": "ペット霊園 浄土の里 甲府市",
+   "review_name": "ペット霊園 浄土の里"
   },
   {
    "pref": "長野県",
@@ -1375,7 +1615,10 @@
     "納骨"
    ],
    "price": "選べる火葬プラン 5,500円（税込み）から",
-   "u": "https://xn--9ckk6c194qtz7ch1qn1f.com/"
+   "u": "https://xn--9ckk6c194qtz7ch1qn1f.com/",
+   "id": "S0a98c9",
+   "review_query": "長野ペット斎場やすらぎの杜 長野市",
+   "review_name": "長野ペット斎場やすらぎの杜"
   },
   {
    "pref": "長野県",
@@ -1391,7 +1634,10 @@
     "納骨"
    ],
    "price": "個別火葬 15kg未満 飯田市の方 9,000円（税別）",
-   "u": "http://www.pet-asiato.com/"
+   "u": "http://www.pet-asiato.com/",
+   "id": "Saf555c",
+   "review_query": "ペットのあしあと 飯田市",
+   "review_name": "ペットのあしあと"
   },
   {
    "pref": "岐阜県",
@@ -1408,7 +1654,10 @@
     "納骨"
    ],
    "price": "個別火葬プラン 30,800円〜（税込）",
-   "u": "https://xn--hhro2h534axp7a.com/"
+   "u": "https://xn--hhro2h534axp7a.com/",
+   "id": "S11b65d",
+   "review_query": "愛ペットセレモニーホール大垣 大垣市",
+   "review_name": "愛ペットセレモニーホール大垣"
   },
   {
    "pref": "岐阜県",
@@ -1425,7 +1674,10 @@
     "納骨"
    ],
    "price": "個別火葬（星プラン）5kg以下 20,900円（税込）",
-   "u": "https://pet-ceremony-gifu.com/plan/"
+   "u": "https://pet-ceremony-gifu.com/plan/",
+   "id": "Se3d8b8",
+   "review_query": "ペットセレモニー岐阜 日野霊園 岐阜市",
+   "review_name": "ペットセレモニー岐阜 日野霊園"
   },
   {
    "pref": "静岡県",
@@ -1440,7 +1692,10 @@
     "納骨"
    ],
    "price": "スタンダードプラン 5kg未満 30,000円",
-   "u": "https://pet.midorireien.com/"
+   "u": "https://pet.midorireien.com/",
+   "id": "S9e0e34",
+   "review_query": "みどり霊園 PETなないろぷらす 浜松市中央区",
+   "review_name": "みどり霊園 PETなないろぷらす"
   },
   {
    "pref": "静岡県",
@@ -1459,7 +1714,10 @@
     "納骨"
    ],
    "price": "個別火葬 8kgまで 36,300円（税込）",
-   "u": "https://doubutsunomori.com/kasou/"
+   "u": "https://doubutsunomori.com/kasou/",
+   "id": "S50a5de",
+   "review_query": "どうぶつの森霊園 静岡市葵区",
+   "review_name": "どうぶつの森霊園"
   },
   {
    "pref": "静岡県",
@@ -1474,7 +1732,10 @@
     "納骨"
    ],
    "price": "立会個別火葬・合同納骨 小型（5kg以下）38,000円",
-   "u": "https://www.heitakuji.net/contents/price.html"
+   "u": "https://www.heitakuji.net/contents/price.html",
+   "id": "S53ebbb",
+   "review_query": "平澤寺動物霊園 静岡市駿河区",
+   "review_name": "平澤寺動物霊園"
   },
   {
    "pref": "愛知県",
@@ -1492,7 +1753,10 @@
     "納骨"
    ],
    "price": "一任個別火葬 1〜5kg未満 24,000円（税込）",
-   "u": "https://ichinomiyadoubutureien.com/cost/"
+   "u": "https://ichinomiyadoubutureien.com/cost/",
+   "id": "Sd7f2f3",
+   "review_query": "一宮どうぶつ霊園 一宮市",
+   "review_name": "一宮どうぶつ霊園"
   },
   {
    "pref": "愛知県",
@@ -1510,7 +1774,10 @@
     "納骨"
    ],
    "price": "個別火葬 小型（5kg未満）26,000円（税込）",
-   "u": "https://hosen-ji.jp/"
+   "u": "https://hosen-ji.jp/",
+   "id": "Se1d99a",
+   "review_query": "名古屋ペット霊園 宝泉寺 名古屋市天白区",
+   "review_name": "名古屋ペット霊園 宝泉寺"
   },
   {
    "pref": "愛知県",
@@ -1525,7 +1792,10 @@
     "訪問火葬",
     "納骨"
    ],
-   "u": "https://shinnyoin.jp/"
+   "u": "https://shinnyoin.jp/",
+   "id": "S2102e1",
+   "review_query": "名古屋ペットセレモニー 眞如院 名古屋市瑞穂区",
+   "review_name": "名古屋ペットセレモニー 眞如院"
   },
   {
    "pref": "愛知県",
@@ -1540,7 +1810,10 @@
     "個別火葬",
     "納骨"
    ],
-   "u": "http://pet.manpukuji-okazaki.or.jp/"
+   "u": "http://pet.manpukuji-okazaki.or.jp/",
+   "id": "S2edc19",
+   "review_query": "岡崎ペットセレモニーまんぷく寺 岡崎市",
+   "review_name": "岡崎ペットセレモニーまんぷく寺"
   },
   {
    "pref": "愛知県",
@@ -1556,7 +1829,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://jimyouin.or.jp/place/jiin/aichi/nagaya.html"
+   "u": "https://jimyouin.or.jp/place/jiin/aichi/nagaya.html",
+   "id": "Sbd2aea",
+   "review_query": "慈妙院動物霊園 春日井市",
+   "review_name": "慈妙院動物霊園"
   },
   {
    "pref": "愛知県",
@@ -1573,7 +1849,10 @@
     "納骨"
    ],
    "price": "個別火葬 S（猫・チワワ等）37,400円（税込）",
-   "u": "https://www.pet-sougi.net/"
+   "u": "https://www.pet-sougi.net/",
+   "id": "S298dd9",
+   "review_query": "豊橋動物霊苑 豊橋市",
+   "review_name": "豊橋動物霊苑"
   },
   {
    "pref": "愛知県",
@@ -1590,7 +1869,10 @@
     "納骨"
    ],
    "price": "スタッフおまかせプラン サイズ3（うさぎ・猫・超小型犬）31,000円（税込）",
-   "u": "https://pet-yasashii.jp/"
+   "u": "https://pet-yasashii.jp/",
+   "id": "S1435ba",
+   "review_query": "ペットのやさしいお葬式 豊橋市",
+   "review_name": "ペットのやさしいお葬式"
   },
   {
    "pref": "愛知県",
@@ -1608,7 +1890,10 @@
     "納骨"
    ],
    "price": "おもいで（立会火葬）小型犬 38,000円",
-   "u": "http://www.mikawa-aigo.co.jp/price.html"
+   "u": "http://www.mikawa-aigo.co.jp/price.html",
+   "id": "S829787",
+   "review_query": "三河動物愛護協会 豊田市",
+   "review_name": "三河動物愛護協会"
   },
   {
    "pref": "三重県",
@@ -1627,7 +1912,10 @@
     "納骨"
    ],
    "price": "2〜6kg 一任個別火葬＋返骨 19,800円、合同火葬 13,200円（税込）",
-   "u": "https://y-pet.jp/plan"
+   "u": "https://y-pet.jp/plan",
+   "id": "Sc158a2",
+   "review_query": "四日市ペット斎場 四日市市",
+   "review_name": "四日市ペット斎場"
   },
   {
    "pref": "三重県",
@@ -1644,7 +1932,10 @@
     "納骨"
    ],
    "price": "一任火葬 4.9kgまで 18,000円、立会火葬 9.9kgまで 28,000円（税込）",
-   "u": "https://kousaiji-pet.jp/cremation-fee/"
+   "u": "https://kousaiji-pet.jp/cremation-fee/",
+   "id": "S934111",
+   "review_query": "高西寺ペット霊園 津市",
+   "review_name": "高西寺ペット霊園"
   },
   {
    "pref": "滋賀県",
@@ -1661,7 +1952,10 @@
     "納骨"
    ],
    "price": "火葬 10,000円〜（体重25kgまで）",
-   "u": "http://hikoneanimal.info/info.html"
+   "u": "http://hikoneanimal.info/info.html",
+   "id": "Sfb05bb",
+   "review_query": "国昌寺付属彦根動物霊園 彦根市",
+   "review_name": "国昌寺付属彦根動物霊園"
   },
   {
    "pref": "滋賀県",
@@ -1679,7 +1973,10 @@
     "納骨"
    ],
    "price": "小型（〜8kg）個別一任火葬 26,400円〜、合同一任火葬 19,800円〜（税込）",
-   "u": "https://www.pet-land.co.jp/price"
+   "u": "https://www.pet-land.co.jp/price",
+   "id": "S61877c",
+   "review_query": "草津・栗東セレモニーホール 栗東市",
+   "review_name": "草津・栗東セレモニーホール"
   },
   {
    "pref": "京都府",
@@ -1696,7 +1993,10 @@
     "納骨"
    ],
    "price": "小型 個別火葬 21,600円、立会火葬 32,400円、合同火葬 9,000円（税込）",
-   "u": "http://www.hieidaira-petreien.jp/ryoukin.html"
+   "u": "http://www.hieidaira-petreien.jp/ryoukin.html",
+   "id": "Se470c1",
+   "review_query": "比叡平ペット霊園 京都市山科区",
+   "review_name": "比叡平ペット霊園"
   },
   {
    "pref": "京都府",
@@ -1711,7 +2011,10 @@
     "お迎え"
    ],
    "price": "個別火葬 16,500円〜、合同火葬 11,000円〜",
-   "u": "https://ujidoubutsureien.com/funeral-process/"
+   "u": "https://ujidoubutsureien.com/funeral-process/",
+   "id": "S8a7e14",
+   "review_query": "宇治動物霊園 宇治市",
+   "review_name": "宇治動物霊園"
   },
   {
    "pref": "大阪府",
@@ -1728,7 +2031,10 @@
     "納骨"
    ],
    "price": "個別火葬・葬儀 SSサイズ 30,000円〜",
-   "u": "https://www.yasiro-pet.jp/ikoma.html"
+   "u": "https://www.yasiro-pet.jp/ikoma.html",
+   "id": "S51cb03",
+   "review_query": "大阪生駒ペット霊園 四條畷市",
+   "review_name": "大阪生駒ペット霊園"
   },
   {
    "pref": "大阪府",
@@ -1745,7 +2051,10 @@
     "納骨"
    ],
    "price": "火葬料 小型 33,000円、中型 44,000円（税込）",
-   "u": "https://www.senjyuin-memorialpark.com/price.html"
+   "u": "https://www.senjyuin-memorialpark.com/price.html",
+   "id": "S4d3b06",
+   "review_query": "千手院動物霊園 堺市南区",
+   "review_name": "千手院動物霊園"
   },
   {
    "pref": "大阪府",
@@ -1761,7 +2070,10 @@
     "納骨"
    ],
    "price": "子犬・小型犬・猫等（15kg以内）35,000円（納骨費用含む）",
-   "u": "https://www.chiemonjyuebaraji.jp/itemlist.html"
+   "u": "https://www.chiemonjyuebaraji.jp/itemlist.html",
+   "id": "S7d2886",
+   "review_query": "愛願院 ペット霊苑 堺市西区",
+   "review_name": "愛願院 ペット霊苑"
   },
   {
    "pref": "大阪府",
@@ -1776,7 +2088,10 @@
     "個別火葬",
     "納骨"
    ],
-   "u": "https://www.mspet.net/"
+   "u": "https://www.mspet.net/",
+   "id": "S0801bc",
+   "review_query": "てんのうじペット霊園 大阪市天王寺区",
+   "review_name": "てんのうじペット霊園"
   },
   {
    "pref": "大阪府",
@@ -1791,7 +2106,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "http://hirano-petreien.com/"
+   "u": "http://hirano-petreien.com/",
+   "id": "S97b9b4",
+   "review_query": "平野動物霊園 大阪市平野区",
+   "review_name": "平野動物霊園"
   },
   {
    "pref": "大阪府",
@@ -1808,7 +2126,10 @@
     "納骨"
    ],
    "price": "ご訪問火葬プラン 8,000円から、ご来園火葬プラン 10,000円から（税別）",
-   "u": "https://opreien.jp/price/"
+   "u": "https://opreien.jp/price/",
+   "id": "S55a861",
+   "review_query": "大阪ペット霊園社 大阪市旭区",
+   "review_name": "大阪ペット霊園社"
   },
   {
    "pref": "大阪府",
@@ -1826,7 +2147,10 @@
     "納骨"
    ],
    "price": "一任合同火葬 7,700円〜（税込）",
-   "u": "https://xn--pet-kk1et46u.com/"
+   "u": "https://xn--pet-kk1et46u.com/",
+   "id": "S48f666",
+   "review_query": "大阪ペット斎場 大阪市西区",
+   "review_name": "大阪ペット斎場"
   },
   {
    "pref": "大阪府",
@@ -1843,7 +2167,10 @@
     "納骨"
    ],
    "price": "個別火葬 小型（7kgくらいまで）39,600円（税込）",
-   "u": "https://www.ho-petreien.com/price.html"
+   "u": "https://www.ho-petreien.com/price.html",
+   "id": "Sf156a7",
+   "review_query": "東大阪動物霊園 東大阪市",
+   "review_name": "東大阪動物霊園"
   },
   {
    "pref": "大阪府",
@@ -1860,7 +2187,10 @@
     "納骨"
    ],
    "price": "個別一任火葬 14,300円〜（税込）",
-   "u": "https://petsark.co.jp/"
+   "u": "https://petsark.co.jp/",
+   "id": "S07118b",
+   "review_query": "総合ペットセレモニー豊中・箕面会館 豊中市",
+   "review_name": "総合ペットセレモニー豊中・箕面会館"
   },
   {
    "pref": "大阪府",
@@ -1877,7 +2207,10 @@
     "納骨"
    ],
    "price": "合同火葬B 小型犬 16,500円（税込）",
-   "u": "https://senjuin.co.jp/cremation"
+   "u": "https://senjuin.co.jp/cremation",
+   "id": "Sc72422",
+   "review_query": "ペットのお寺 千寿院 たかつき動物霊園 高槻市",
+   "review_name": "ペットのお寺 千寿院 たかつき動物霊園"
   },
   {
    "pref": "兵庫県",
@@ -1896,7 +2229,10 @@
     "納骨"
    ],
    "price": "",
-   "u": "https://youtakuji.net/sp/"
+   "u": "https://youtakuji.net/sp/",
+   "id": "S932ef2",
+   "review_query": "さんだ動物霊園 三田市",
+   "review_name": "さんだ動物霊園"
   },
   {
    "pref": "兵庫県",
@@ -1910,7 +2246,10 @@
     "納骨"
    ],
    "price": "永代供養 1体 10,000円",
-   "u": "https://www.kenyushajp.com/"
+   "u": "https://www.kenyushajp.com/",
+   "id": "S40d9e2",
+   "review_query": "犬友社動物霊園・加古川納骨堂 加古川市",
+   "review_name": "犬友社動物霊園・加古川納骨堂"
   },
   {
    "pref": "兵庫県",
@@ -1928,7 +2267,10 @@
     "納骨"
    ],
    "price": "",
-   "u": "https://xn--vsq81f633bhk6a.com/price/"
+   "u": "https://xn--vsq81f633bhk6a.com/price/",
+   "id": "S1fdf4b",
+   "review_query": "愛ペットセレモニー尼崎 尼崎市",
+   "review_name": "愛ペットセレモニー尼崎"
   },
   {
    "pref": "兵庫県",
@@ -1939,7 +2281,10 @@
     "霊園"
    ],
    "services": [],
-   "u": "https://inagawa-animalpark.com/index.html"
+   "u": "https://inagawa-animalpark.com/index.html",
+   "id": "S9388b0",
+   "review_query": "猪名川動物霊園 川辺郡猪名川町",
+   "review_name": "猪名川動物霊園"
   },
   {
    "pref": "兵庫県",
@@ -1953,7 +2298,10 @@
    "services": [
     "納骨"
    ],
-   "u": "https://www.9368677.com/"
+   "u": "https://www.9368677.com/",
+   "id": "Sca0744",
+   "review_query": "明石動物霊園 明石市",
+   "review_name": "明石動物霊園"
   },
   {
    "pref": "兵庫県",
@@ -1969,7 +2317,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://memories-pet.com/"
+   "u": "https://memories-pet.com/",
+   "id": "S181128",
+   "review_query": "六甲ペットメモリーズ 神戸市北区",
+   "review_name": "六甲ペットメモリーズ"
   },
   {
    "pref": "兵庫県",
@@ -1982,7 +2333,10 @@
     "納骨"
    ],
    "price": "納骨・永代供養 1霊 100,000円（志納金）",
-   "u": "https://www.kobe-zenkoji.jp/pet/"
+   "u": "https://www.kobe-zenkoji.jp/pet/",
+   "id": "Se0f92e",
+   "review_query": "神戸善光寺 ペット供養塔 神戸市灘区",
+   "review_name": "神戸善光寺 ペット供養塔"
   },
   {
    "pref": "兵庫県",
@@ -1998,7 +2352,10 @@
     "お迎え"
    ],
    "price": "",
-   "u": "https://kuyou77.sakura.ne.jp/newpage9-type2.html"
+   "u": "https://kuyou77.sakura.ne.jp/newpage9-type2.html",
+   "id": "Sb00a5f",
+   "review_query": "神戸動物霊園 神戸市西区",
+   "review_name": "神戸動物霊園"
   },
   {
    "pref": "奈良県",
@@ -2014,7 +2371,10 @@
     "納骨"
    ],
    "price": "",
-   "u": "https://www.otuka-pet.net/"
+   "u": "https://www.otuka-pet.net/",
+   "id": "S5175e2",
+   "review_query": "大塚山ペット霊園社 天理市",
+   "review_name": "大塚山ペット霊園社"
   },
   {
    "pref": "奈良県",
@@ -2031,7 +2391,10 @@
     "お迎え"
    ],
    "price": "犬・猫 個別おまかせ火葬 32,780円、合同火葬 7,700円（税込）",
-   "u": "https://petsleep.jp/plan/"
+   "u": "https://petsleep.jp/plan/",
+   "id": "S136c61",
+   "review_query": "ペットのお葬式＆思い出工房 奈良動物霊園 奈良市",
+   "review_name": "ペットのお葬式＆思い出工房 奈良動物霊園"
   },
   {
    "pref": "奈良県",
@@ -2049,7 +2412,10 @@
     "訪問火葬"
    ],
    "price": "猫・小型犬 霊園火葬 19,800円〜（税込）",
-   "u": "https://pet-memorial.org/"
+   "u": "https://pet-memorial.org/",
+   "id": "S51aad1",
+   "review_query": "家族の杜 奈良動物霊園 奈良市",
+   "review_name": "家族の杜 奈良動物霊園"
   },
   {
    "pref": "和歌山県",
@@ -2062,7 +2428,10 @@
     "納骨"
    ],
    "price": "犬・猫の納骨料 2万円",
-   "u": "https://www.anraku2.com/pet.html"
+   "u": "https://www.anraku2.com/pet.html",
+   "id": "Sda5bf8",
+   "review_query": "日蓮宗安楽寺 和歌山市",
+   "review_name": "日蓮宗安楽寺"
   },
   {
    "pref": "和歌山県",
@@ -2078,7 +2447,10 @@
     "納骨"
    ],
    "price": "合同火葬 6,000円より、個別火葬 27,200円より",
-   "u": "https://www.arg2002.com/price/"
+   "u": "https://www.arg2002.com/price/",
+   "id": "S2358f8",
+   "review_query": "アニマルレストガーデン 橋本市",
+   "review_name": "アニマルレストガーデン"
   },
   {
    "pref": "鳥取県",
@@ -2093,7 +2465,10 @@
     "訪問火葬"
    ],
    "price": "斎場での火葬 5kgまで 23,100円（税込）",
-   "u": "https://sakuramemoria.jp/pages/51/"
+   "u": "https://sakuramemoria.jp/pages/51/",
+   "id": "S2a5368",
+   "review_query": "かけはし斎場 岩美郡岩美町",
+   "review_name": "かけはし斎場"
   },
   {
    "pref": "鳥取県",
@@ -2112,7 +2487,10 @@
     "納骨"
    ],
    "price": "立会個別火葬 2〜6kg未満 24,000円、合同火葬 2kg未満 15,000円（税込）",
-   "u": "https://miho-forest.jp/price/"
+   "u": "https://miho-forest.jp/price/",
+   "id": "S1fe8eb",
+   "review_query": "美保動物霊園 米子市",
+   "review_name": "美保動物霊園"
   },
   {
    "pref": "島根県",
@@ -2128,7 +2506,10 @@
     "納骨"
    ],
    "price": "あんしん葬 10kgまで 23,100円、おもいやり葬 10kgまで 29,700円（税込）",
-   "u": "https://onesheart.info/price.html"
+   "u": "https://onesheart.info/price.html",
+   "id": "S1b8c6d",
+   "review_query": "ペット葬祭ワンズハート 松江市",
+   "review_name": "ペット葬祭ワンズハート"
   },
   {
    "pref": "島根県",
@@ -2144,7 +2525,10 @@
     "納骨"
    ],
    "price": "基本料金（火葬・柩・骨壷など）猫 25,000円、小型 30,000円",
-   "u": "http://himawarinooka.osonae.com/ryoukin/index.html"
+   "u": "http://himawarinooka.osonae.com/ryoukin/index.html",
+   "id": "S3536f9",
+   "review_query": "浜田ペット葬祭 ひまわりの丘 浜田市",
+   "review_name": "浜田ペット葬祭 ひまわりの丘"
   },
   {
    "pref": "岡山県",
@@ -2162,7 +2546,10 @@
     "納骨"
    ],
    "price": "納骨壇（スタンダード）1年 16,500円",
-   "u": "https://www.pet-pia.com/prices"
+   "u": "https://www.pet-pia.com/prices",
+   "id": "S6f6b42",
+   "review_query": "ペットピア 倉敷市",
+   "review_name": "ペットピア"
   },
   {
    "pref": "岡山県",
@@ -2180,7 +2567,10 @@
     "納骨"
    ],
    "price": "合同火葬 小型 ご来園 9,900円、個別火葬 ミニペット ご来園 11,000円（税込）",
-   "u": "https://ipet-hello.jp/saidaiji/"
+   "u": "https://ipet-hello.jp/saidaiji/",
+   "id": "S78992c",
+   "review_query": "愛ペットセレモニー ハロー 西大寺ホール 岡山市東区",
+   "review_name": "愛ペットセレモニー ハロー 西大寺ホール"
   },
   {
    "pref": "広島県",
@@ -2199,7 +2589,10 @@
     "納骨"
    ],
    "price": "合同火葬 7,700円〜、立会火葬 22,000円〜、一任火葬 15,400円〜（税込）",
-   "u": "https://www.pet594.co.jp/service.html"
+   "u": "https://www.pet594.co.jp/service.html",
+   "id": "S57a0db",
+   "review_query": "広島ペット霊苑 広島市南区",
+   "review_name": "広島ペット霊苑"
   },
   {
    "pref": "広島県",
@@ -2219,7 +2612,10 @@
     "訪問火葬"
    ],
    "price": "火葬 9,000円〜49,000円（大きさと火葬の種類による・税込）",
-   "u": "https://pet1194.com/"
+   "u": "https://pet1194.com/",
+   "id": "Sb83f53",
+   "review_query": "逢の杜ペット霊園 東広島市",
+   "review_name": "逢の杜ペット霊園"
   },
   {
    "pref": "広島県",
@@ -2236,7 +2632,10 @@
     "納骨"
    ],
    "price": "持込み合同火葬 小型犬・猫 6,600円、立会い個別火葬はこれに＋11,000円（税込）",
-   "u": "https://www.seto-doubutsureien.com/"
+   "u": "https://www.seto-doubutsureien.com/",
+   "id": "S1c0622",
+   "review_query": "瀬戸動物霊園 福山市",
+   "review_name": "瀬戸動物霊園"
   },
   {
    "pref": "山口県",
@@ -2254,7 +2653,10 @@
     "納骨"
    ],
    "price": "個別火葬 5kg未満 13,200円、10kg未満 15,400円（税込）",
-   "u": "https://www.pmp-shimonoseki.com/"
+   "u": "https://www.pmp-shimonoseki.com/",
+   "id": "S546706",
+   "review_query": "下関動物霊園 下関市",
+   "review_name": "下関動物霊園"
   },
   {
    "pref": "山口県",
@@ -2272,7 +2674,10 @@
     "納骨"
    ],
    "price": "個別火葬 5kg未満 13,200円、10kg未満 15,400円（税込）",
-   "u": "https://www.pmp-yamaguchi.com/"
+   "u": "https://www.pmp-yamaguchi.com/",
+   "id": "S3ae7dc",
+   "review_query": "山口動物霊園 山口市",
+   "review_name": "山口動物霊園"
   },
   {
    "pref": "徳島県",
@@ -2290,7 +2695,10 @@
     "納骨"
    ],
    "price": "小（5kg未満）19,800円（税込21,780円）",
-   "u": "https://petm.jp/price.html"
+   "u": "https://petm.jp/price.html",
+   "id": "S16e474",
+   "review_query": "徳島ペット供養苑 徳島市",
+   "review_name": "徳島ペット供養苑"
   },
   {
    "pref": "徳島県",
@@ -2308,7 +2716,10 @@
     "納骨"
    ],
    "price": "一任個別火葬 小（5kg未満）17,000円（税込）",
-   "u": "https://tokushima-reien.com/pet-funeral/"
+   "u": "https://tokushima-reien.com/pet-funeral/",
+   "id": "S91417c",
+   "review_query": "心のふるさと 徳島霊園 徳島市",
+   "review_name": "心のふるさと 徳島霊園"
   },
   {
    "pref": "香川県",
@@ -2326,7 +2737,10 @@
     "納骨"
    ],
    "price": "個別葬 1.5kg〜4kg（小型犬）23,100円（税込）",
-   "u": "https://kagawa-pet.com/pages/26/"
+   "u": "https://kagawa-pet.com/pages/26/",
+   "id": "S0b9ae7",
+   "review_query": "海岸寺ペット霊園やすらぎの里 仲多度郡多度津町",
+   "review_name": "海岸寺ペット霊園やすらぎの里"
   },
   {
    "pref": "香川県",
@@ -2345,7 +2759,10 @@
     "納骨"
    ],
    "price": "個別火葬 3kgまで 21,000円（税込）",
-   "u": "https://www.sanukidoubutsu.com/pricing"
+   "u": "https://www.sanukidoubutsu.com/pricing",
+   "id": "S80f803",
+   "review_query": "さぬき動物霊園 高松市",
+   "review_name": "さぬき動物霊園"
   },
   {
    "pref": "香川県",
@@ -2364,7 +2781,10 @@
     "納骨"
    ],
    "price": "個別火葬 5kg以内 22,000円（税込）",
-   "u": "https://www.reien-pet.net/price.html"
+   "u": "https://www.reien-pet.net/price.html",
+   "id": "Sfb31d7",
+   "review_query": "香川県ペットメモリアルパーク 御殿動物霊園葬斎場 高松市",
+   "review_name": "香川県ペットメモリアルパーク 御殿動物霊園葬斎場"
   },
   {
    "pref": "愛媛県",
@@ -2381,7 +2801,10 @@
     "納骨"
    ],
    "price": "猫・うさぎなど 20,900円（税込）",
-   "u": "https://www.pet-cemetery.jp/kasou"
+   "u": "https://www.pet-cemetery.jp/kasou",
+   "id": "Sb4f878",
+   "review_query": "ペット霊園松山 松山市",
+   "review_name": "ペット霊園松山"
   },
   {
    "pref": "愛媛県",
@@ -2397,7 +2820,10 @@
     "納骨"
    ],
    "price": "合同納骨堂 3,000円",
-   "u": "https://ehimepetreien.com/"
+   "u": "https://ehimepetreien.com/",
+   "id": "S43463b",
+   "review_query": "愛媛総合ペット霊園 西予市",
+   "review_name": "愛媛総合ペット霊園"
   },
   {
    "pref": "愛媛県",
@@ -2413,7 +2839,10 @@
     "訪問火葬"
    ],
    "price": "立会個別火葬 4kg未満 30,800円（税込）",
-   "u": "https://spc-oasis.com/price"
+   "u": "https://spc-oasis.com/price",
+   "id": "S7edcb4",
+   "review_query": "四国ペットセレモニーオアシス 西条市",
+   "review_name": "四国ペットセレモニーオアシス"
   },
   {
    "pref": "高知県",
@@ -2428,7 +2857,10 @@
     "納骨"
    ],
    "price": "猫・兎 10,000円（税込）",
-   "u": "https://www.hachimakiyama.net/"
+   "u": "https://www.hachimakiyama.net/",
+   "id": "Sed9958",
+   "review_query": "公園墓地 鉢巻山動物霊園 吾川郡いの町",
+   "review_name": "公園墓地 鉢巻山動物霊園"
   },
   {
    "pref": "高知県",
@@ -2445,7 +2877,10 @@
     "訪問火葬"
    ],
    "price": "ご家族立会プラン 12,000円〜",
-   "u": "https://www.on-innovation.com/"
+   "u": "https://www.on-innovation.com/",
+   "id": "S042315",
+   "review_query": "ペットのお葬式やさん。 高知市",
+   "review_name": "ペットのお葬式やさん。"
   },
   {
    "pref": "福岡県",
@@ -2459,7 +2894,10 @@
     "個別火葬",
     "納骨"
    ],
-   "u": "https://sakura-bic.com/"
+   "u": "https://sakura-bic.com/",
+   "id": "Sbdecef",
+   "review_query": "ペットセレモニー 桜PREMIUM 北九州市小倉北区",
+   "review_name": "ペットセレモニー 桜PREMIUM"
   },
   {
    "pref": "福岡県",
@@ -2477,7 +2915,10 @@
     "納骨"
    ],
    "price": "小型犬・猫の火葬料 11,000円〜15,400円",
-   "u": "https://osayuki-cemetery.com/price"
+   "u": "https://osayuki-cemetery.com/price",
+   "id": "Sefe9bf",
+   "review_query": "おさゆき動物霊苑 北九州市小倉南区",
+   "review_name": "おさゆき動物霊苑"
   },
   {
    "pref": "福岡県",
@@ -2493,7 +2934,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://heartland-park.co.jp/reien/pet-memorial-hearty/"
+   "u": "https://heartland-park.co.jp/reien/pet-memorial-hearty/",
+   "id": "S27ad5e",
+   "review_query": "ペットメモリアルハーティー 大野城市",
+   "review_name": "ペットメモリアルハーティー"
   },
   {
    "pref": "福岡県",
@@ -2510,7 +2954,10 @@
     "納骨"
    ],
    "price": "立会火葬 5kgまで 25,300円、おあずかり葬 5kgまで 18,700円（税込）",
-   "u": "https://dazaifu-pet-park.net/plan"
+   "u": "https://dazaifu-pet-park.net/plan",
+   "id": "S8b5713",
+   "review_query": "太宰府ペットパーク 太宰府市",
+   "review_name": "太宰府ペットパーク"
   },
   {
    "pref": "福岡県",
@@ -2523,7 +2970,10 @@
    "services": [
     "納骨"
    ],
-   "u": "https://www.ai-pet.net/"
+   "u": "https://www.ai-pet.net/",
+   "id": "Scda797",
+   "review_query": "愛ペット・エデン 宮若市",
+   "review_name": "愛ペット・エデン"
   },
   {
    "pref": "福岡県",
@@ -2539,7 +2989,10 @@
     "立ち会い火葬",
     "納骨"
    ],
-   "u": "https://hachidairyuoji-pet-fukuoka.com/"
+   "u": "https://hachidairyuoji-pet-fukuoka.com/",
+   "id": "S65c821",
+   "review_query": "八大龍王寺ペットメモリアル斎場 福岡市東区",
+   "review_name": "八大龍王寺ペットメモリアル斎場"
   },
   {
    "pref": "福岡県",
@@ -2554,7 +3007,10 @@
     "立ち会い火葬",
     "お迎え"
    ],
-   "u": "https://www.banreipark.jp/"
+   "u": "https://www.banreipark.jp/",
+   "id": "Se16301",
+   "review_query": "ばんれいパーク 福岡市西区",
+   "review_name": "ばんれいパーク"
   },
   {
    "pref": "福岡県",
@@ -2572,7 +3028,10 @@
     "納骨"
    ],
    "price": "小型 個別立会葬 26,400円、個別一任葬 19,800円（税込）",
-   "u": "https://www.pet-munakata-kohsin-co.jp/price/"
+   "u": "https://www.pet-munakata-kohsin-co.jp/price/",
+   "id": "S1a0483",
+   "review_query": "やすらぎの森 ペット霊園むなかた 福津市",
+   "review_name": "やすらぎの森 ペット霊園むなかた"
   },
   {
    "pref": "福岡県",
@@ -2587,7 +3046,10 @@
     "お迎え",
     "納骨"
    ],
-   "u": "https://heartland-park.co.jp/reien/heartland-fukuoka/"
+   "u": "https://heartland-park.co.jp/reien/heartland-fukuoka/",
+   "id": "S28f707",
+   "review_query": "ハートランド福岡 筑紫野市",
+   "review_name": "ハートランド福岡"
   },
   {
    "pref": "福岡県",
@@ -2605,7 +3067,10 @@
     "納骨"
    ],
    "price": "まごころプラン（立ち会い）小動物 13,200円〜（税込）",
-   "u": "https://morinoizumi-animal.com/"
+   "u": "https://morinoizumi-animal.com/",
+   "id": "S5d4383",
+   "review_query": "杜の泉動物霊園 遠賀郡水巻町",
+   "review_name": "杜の泉動物霊園"
   },
   {
    "pref": "福岡県",
@@ -2621,7 +3086,10 @@
     "訪問火葬",
     "納骨"
    ],
-   "u": "https://nishiten.com/angelpark/"
+   "u": "https://nishiten.com/angelpark/",
+   "id": "Sd950b1",
+   "review_query": "ペット寺院エンゼルパーク 那珂川市",
+   "review_name": "ペット寺院エンゼルパーク"
   },
   {
    "pref": "佐賀県",
@@ -2640,7 +3108,10 @@
     "納骨"
    ],
    "price": "小型（1〜3kg未満）合同火葬 11,000円、個別一任火葬 15,000円、個別立会火葬 17,000円（税込）",
-   "u": "https://petnoyasuragi.jp/price"
+   "u": "https://petnoyasuragi.jp/price",
+   "id": "S5222d0",
+   "review_query": "慈光苑 佐賀市",
+   "review_name": "慈光苑"
   },
   {
    "pref": "佐賀県",
@@ -2658,7 +3129,10 @@
     "納骨"
    ],
    "price": "小型犬（チワワなど）合同葬 12,100円〜（税込）",
-   "u": "http://memory-land.com/"
+   "u": "http://memory-land.com/",
+   "id": "Sccf116",
+   "review_query": "メモリーランド 小城市",
+   "review_name": "メモリーランド"
   },
   {
    "pref": "長崎県",
@@ -2674,7 +3148,10 @@
     "納骨"
    ],
    "price": "猫・チワワなど 14,300円〜、トイプードルなど 17,600円〜（税込）",
-   "u": "https://www.animal-heaven.co.jp/fee/"
+   "u": "https://www.animal-heaven.co.jp/fee/",
+   "id": "S643f2c",
+   "review_query": "ペット霊園アニマルへブン 長崎市",
+   "review_name": "ペット霊園アニマルへブン"
   },
   {
    "pref": "長崎県",
@@ -2691,7 +3168,10 @@
     "納骨"
    ],
    "price": "基本プラン（個別火葬・お骨上げ）猫 20,000円、小型犬 25,000円",
-   "u": "https://www.xn--t8jc7hf13b4azj.com/"
+   "u": "https://www.xn--t8jc7hf13b4azj.com/",
+   "id": "S23e587",
+   "review_query": "森の中のペット霊園 ペットのおはか 長崎市",
+   "review_name": "森の中のペット霊園 ペットのおはか"
   },
   {
    "pref": "熊本県",
@@ -2707,7 +3187,10 @@
     "納骨"
    ],
    "price": "火葬 小型（S）22,000円、中型（M）27,500円（税込）",
-   "u": "https://ueki-petreien.com/price.html"
+   "u": "https://ueki-petreien.com/price.html",
+   "id": "S6940fc",
+   "review_query": "植木ペット霊園 熊本市北区",
+   "review_name": "植木ペット霊園"
   },
   {
    "pref": "熊本県",
@@ -2724,7 +3207,10 @@
     "納骨"
    ],
    "price": "個別火葬 小型（ネコ・チワワなど）19,800円（税込）",
-   "u": "https://www.rengenosato.co.jp/price/"
+   "u": "https://www.rengenosato.co.jp/price/",
+   "id": "S461fc7",
+   "review_query": "ペット霊苑 蓮華乃郷 熊本市北区",
+   "review_name": "ペット霊苑 蓮華乃郷"
   },
   {
    "pref": "大分県",
@@ -2740,7 +3226,10 @@
     "納骨"
    ],
    "price": "立会火葬 小型（猫等）20,000円、一任火葬 小型 17,000円（税込）",
-   "u": "https://oitapet.co.jp/pages/10/"
+   "u": "https://oitapet.co.jp/pages/10/",
+   "id": "S91ed90",
+   "review_query": "大分ペット葬儀社 大分市",
+   "review_name": "大分ペット葬儀社"
   },
   {
    "pref": "大分県",
@@ -2758,7 +3247,10 @@
     "納骨"
    ],
    "price": "小型犬・猫・うさぎ 個別葬儀 火葬葬 20,000円、一任葬 15,000円",
-   "u": "https://www.shounji-ooita.com/"
+   "u": "https://www.shounji-ooita.com/",
+   "id": "S0393e3",
+   "review_query": "大分ペット斎場正雲寺 由布市",
+   "review_name": "大分ペット斎場正雲寺"
   },
   {
    "pref": "宮崎県",
@@ -2777,7 +3269,10 @@
     "訪問火葬"
    ],
    "price": "500g未満 個別火葬 15,400円〜、ご家族立会 17,600円〜（税込）",
-   "u": "https://dreamland-pt.jp/payment.html"
+   "u": "https://dreamland-pt.jp/payment.html",
+   "id": "S41c14a",
+   "review_query": "ペット霊園 ドリームランド 児湯郡新富町",
+   "review_name": "ペット霊園 ドリームランド"
   },
   {
    "pref": "宮崎県",
@@ -2793,7 +3288,10 @@
     "納骨"
    ],
    "price": "小型犬 個別火葬 16,000円〜18,000円、合同火葬 10,000円〜12,000円（税込）",
-   "u": "https://hiratsuka-petangel.jp/price/"
+   "u": "https://hiratsuka-petangel.jp/price/",
+   "id": "Sef3e12",
+   "review_query": "平塚ペットエンゼル 都城市",
+   "review_name": "平塚ペットエンゼル"
   },
   {
    "pref": "鹿児島県",
@@ -2811,7 +3309,10 @@
     "納骨"
    ],
    "price": "",
-   "u": "https://pet-nijinomori.jp/"
+   "u": "https://pet-nijinomori.jp/",
+   "id": "S822672",
+   "review_query": "転法輪寺付属かじき動物霊園「にじの森」 姶良市",
+   "review_name": "転法輪寺付属かじき動物霊園「にじの森」"
   },
   {
    "pref": "鹿児島県",
@@ -2828,7 +3329,10 @@
     "納骨"
    ],
    "price": "1kg未満 合同火葬 16,000円、個別火葬 17,000円（税込）",
-   "u": "https://nangounosato.com/price/"
+   "u": "https://nangounosato.com/price/",
+   "id": "Sa2a9dd",
+   "review_query": "ペット総合葬祭 南郷の里 鹿児島市",
+   "review_name": "ペット総合葬祭 南郷の里"
   },
   {
    "pref": "鹿児島県",
@@ -2847,7 +3351,10 @@
     "納骨"
    ],
    "price": "1〜5kg 合同火葬 16,000円、一任個別火葬 19,000円、立会個別火葬 22,000円",
-   "u": "https://animal-cemetery.myoenji.jp/price/"
+   "u": "https://animal-cemetery.myoenji.jp/price/",
+   "id": "S56057f",
+   "review_query": "慈愛の丘 とそ動物霊園 鹿児島市",
+   "review_name": "慈愛の丘 とそ動物霊園"
   },
   {
    "pref": "沖縄県",
@@ -2864,7 +3371,10 @@
     "訪問火葬"
    ],
    "price": "小型犬・猫など（〜6kg）個別・一任火葬 28,600円、合同火葬 22,000円（税込）",
-   "u": "https://magokoro-okinawa.com/price"
+   "u": "https://magokoro-okinawa.com/price",
+   "id": "Se2b0db",
+   "review_query": "沖縄ペット葬祭 永遠の家まごころ 沖縄市",
+   "review_name": "沖縄ペット葬祭 永遠の家まごころ"
   },
   {
    "pref": "沖縄県",
@@ -2879,7 +3389,10 @@
     "納骨"
    ],
    "price": "1〜5kg未満 個別火葬 27,500円、合同火葬 16,500円（税込）",
-   "u": "https://sougi.bestnet.ne.jp/wannyan-naha/price.html"
+   "u": "https://sougi.bestnet.ne.jp/wannyan-naha/price.html",
+   "id": "S54fbcf",
+   "review_query": "ワンニャン・メモリアル 那覇市",
+   "review_name": "ワンニャン・メモリアル"
   }
  ]
 }

@@ -38,7 +38,8 @@ def _fcard(e, f):
     tags = "".join(f'<span class="sg-tag">{e(x)}</span>' for x in f.get("kinds", []) + [y for y in f.get("services", []) if y not in f.get("kinds", [])])
     price = f'<small><b class="sg-k">料金の例</b>{e(f["price"])}（公式サイトの記載）</small>' if f.get("price") else ""
     return (f'<div class="emg-item emg-co sg-pv"><a href="{e(f["u"])}" target="_blank" rel="noopener"><b>{e(f["name"])}</b></a>'
-            f'<small>{e(f["city"])}</small><div class="sg-tags">{tags}</div>{price}</div>')
+            f'<small>{e(f["city"])}</small><div class="sg-tags">{tags}</div>{price}'
+            + (f'<div class="emg-score" data-id="{e(f["id"])}"></div>' if f.get("review_query") else "") + '</div>')
 
 
 def _tbl(e, head, rows):
@@ -271,7 +272,13 @@ def render(ctx):
 </section>
 </main>
 {prefkeep.LIST_JS}
+<script src="/reviews.js" defer></script>
 """ + ctx["foot_noband"]()
+
+
+def review_rows():
+    """口コミの場所を探すことば（booking/Code.gs の EMG_REVIEWS に足す）。Nori 2026-11-08「グーグルのやつ、つけといて。各社のね」"""
+    return [f for f in F["facilities"] if f.get("review_query")]
 
 
 def urls(SITE):
