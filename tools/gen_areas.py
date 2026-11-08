@@ -126,6 +126,15 @@ src = re.sub(r"/\*EMG\*/.*?/\*/EMG\*/", lambda m: "/*EMG*/var EMG = " + json.dum
 TAXIS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "regular_taxis.json"), encoding="utf-8"))  # ふつうのタクシー（ご案内だけ）
 TAXIS = {"checked": TAXIS["checked"], "taxis": [{k: t[k] for k in ("id", "name", "pref", "cities", "area_label", "rule", "fare", "url")} for t in TAXIS["taxis"]]}
 src = re.sub(r"/\*TAXIS\*/.*?/\*/TAXIS\*/", lambda m: "/*TAXIS*/var TAXIS = " + json.dumps(TAXIS, ensure_ascii=False) + ";/*/TAXIS*/", src, count=1, flags=re.S)
+# 問い合わせできる会社（booking/Code.gs の OPEN_PARTNERS）の対応する都道府県。フォームで県を選んだ時点で「まだ問い合わせできる会社がない」を知らせる（2026-11-08）
+def _open_prefs():
+    gs = open(os.path.join(ROOT, "booking", "Code.gs"), encoding="utf-8").read()
+    m = re.search(r"OPEN_PARTNERS:\s*\{([^}]*)\}", gs)
+    ids = re.findall(r"'[^']*'\s*:\s*'([^']+)'", m.group(1)) if m else []
+    return sorted({a for x in _DISP if x.get("id") in ids for a in x.get("areas", [])})
+src = re.sub(r"/\*OPEN_PREFS\*/.*?/\*/OPEN_PREFS\*/", lambda m: "/*OPEN_PREFS*/var OPEN_PREFS = " + json.dumps(_open_prefs(), ensure_ascii=False) + ";/*/OPEN_PREFS*/", src, count=1, flags=re.S)
+# 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、いない県に「（候補なし）」を付ける）
+src = re.sub(r"/\*AREA_PREFS\*/.*?/\*/AREA_PREFS\*/", lambda m: "/*AREA_PREFS*/var AREA_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}), ensure_ascii=False) + ";/*/AREA_PREFS*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*FARES\*/.*?/\*/FARES\*/", lambda m: "/*FARES*/" + FARE_JS + "/*/FARES*/", src, count=1, flags=re.S)
 # [B] 2026-11-08 トップに「都道府県ごとのペットタクシーの数」（全国の会社を公式サイトで確かめた数。トップだけに出し、地域ページの写しでは外す）
 def _nat_stats():

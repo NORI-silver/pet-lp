@@ -332,7 +332,7 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .cb-list li.hist b::before{content:"🕘 "}
 .cb-list li b{font-weight:700}
 .cb-list li.g-attr{text-align:right;font-size:.72rem;padding:4px 10px 2px;font-family:Roboto,Arial,sans-serif;color:#5f6368}
-.place-note{font-size:.78rem;color:#b4421a;margin:4px 2px 0;line-height:1.6}
+.place-note{font-size:.78rem;color:var(--ink-3);margin:4px 2px 0;line-height:1.6}
 .place-note[hidden]{display:none}
 input.picked{border-color:#3d9a5b;background:#f3fbf5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%233d9a5b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center/18px;padding-right:38px}
 .f .note{display:block;font-size:.8rem;color:var(--ink-3);margin-top:6px}
@@ -421,6 +421,9 @@ footer a{color:var(--ink-2)}
 .pick-bar span::before{content:"✓ ";color:var(--o)}
 .pick-bar .btn{width:auto;flex:none;padding:12px 18px;font-size:.92rem;box-shadow:none}
 #thanks{scroll-margin-top:84px}
+.open-note{margin:8px 0 0;background:#f7f4f1;border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
+.open-note[hidden],#contactBox[hidden]{display:none}
+.contact-none{margin:14px 0 0;background:#f7f4f1;border-radius:12px;padding:10px 14px;font-size:.86rem;color:var(--ink-2)}
 .contact-safe{margin:-4px 0 14px;font-size:.84rem;color:var(--ink-2);background:var(--o-l);border-radius:12px;padding:10px 14px}
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 16px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(255,255,255,0),#fff 30%);pointer-events:none}
 .sticky .btn{pointer-events:auto;max-width:none;padding:15px}
@@ -480,12 +483,14 @@ footer a{color:var(--ink-2)}
 .op div{display:grid;grid-template-columns:8.5em 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
 .op dt{font-weight:700;color:var(--ink)}
 .op dd{margin:0}
+#form .form-card{scroll-margin-top:76px}
 .flow3{background:#f7f4f1;border-radius:16px;padding:14px 16px;font-size:.86rem;color:var(--ink-2);margin:0 0 22px;line-height:1.6}
 .flow3-h{font-weight:700;color:var(--ink);margin:0 0 8px}
 .flow3 ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .flow3 li{color:var(--ink);font-weight:700}
 .flow3 li b{display:inline-block;margin-right:6px}
 .flow3 li span{display:block;font-weight:400;font-size:.8rem;color:var(--ink-2);margin-left:1.6em}
+@media (max-width:719px){.flow3{padding:12px 14px;margin-bottom:16px}.flow3 ol{gap:2px}.flow3 li span{display:none}}
 .flow3-note{margin:10px 0 0;font-size:.8rem;font-weight:700;color:var(--ink)}
 @media (min-width:720px){.flow3 ol{grid-template-columns:repeat(3,1fr)}}
 .yoyaku{background:#f7f4f1;border-radius:16px;padding:14px 16px;font-size:.86rem;color:var(--ink-2);margin:0 0 22px;line-height:1.7}
@@ -567,7 +572,8 @@ footer a{color:var(--ink-2)}
 .partner-card .price-details[open]{background:var(--cream);border-radius:10px;padding:6px 10px}
 .partner-card .price-details.hw summary{font-weight:700}
 .price-details dl{font-size:.76rem}
-.partner-caution{background:#fff4ec;border-left:3px solid var(--o);border-radius:6px;padding:5px 9px;font-size:.74rem!important;line-height:1.5!important;color:var(--ink-2)}
+.partner-later-note{margin:10px 0 0!important;font-size:.78rem!important;color:var(--ink-3)!important;text-align:center}
+.partner-caution{margin-top:2px!important;font-size:.78rem!important;line-height:1.5!important;font-weight:700;color:var(--o-d)!important}
 .partner-card .partner-info{font-size:.8rem;color:var(--ink-2);margin:0;line-height:1.6}
 .partner-caution b{color:var(--o-d);font-size:.8rem;margin-right:4px}
 .partner-review-open{background:none;border:0;padding:0;font:inherit;font-size:.82rem;color:var(--o-d);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
@@ -776,7 +782,7 @@ footer a{color:var(--ink-2)}
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>多頭もOK</li>
       </ul>
       <div class="hero-fare"><b>各社の料金を、その場でくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。各社の公式サイトの料金表から計算した概算で、確定料金ではありません。</span></div>
-      <a class="btn" href="#form" data-cta="hero-fare">各社の料金をくらべる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
+      <a class="btn" href="#form" data-cta="hero-fare">空き状況と料金を問い合わせる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
       <p class="after">無料で使えます（運賃は当日ペットタクシーへ直接お支払い）。当日の依頼もできます。</p>
     </div>
     <div class="hero-visual">
@@ -883,7 +889,8 @@ footer a{color:var(--ink-2)}
           <div class="group-h"><span>1</span>いつ、どこへ行きますか？</div>
           <div class="f"><label for="pref">お迎えの都道府県<span class="need">必須</span></label>
             <select id="pref" name="pref" required><option value="">選んでください</option><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option><option>東京都</option><option>神奈川県</option><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option selected>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option></select>
-            <p class="pref-fix" id="prefFix" role="status" hidden></p></div>
+            <p class="pref-fix" id="prefFix" role="status" hidden></p>
+            <p class="open-note" id="openNote" role="status" hidden></p></div>
           <div class="f"><label for="pickup">お迎えの場所<span class="need">必須</span></label>
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button>
             <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
@@ -969,6 +976,7 @@ footer a{color:var(--ink-2)}
         </section>
 
 
+        <div id="contactBox">
         <div class="group">
           <div class="group-h"><span>3</span>ご連絡先</div>
           <p class="contact-safe">お名前・メール・電話番号は、予約を確定するまで会社には伝わりません。問い合わせの返事はメールで届きます。</p>
@@ -987,6 +995,7 @@ footer a{color:var(--ink-2)}
         </div>
 
         <label class="agree"><input type="checkbox" id="agree" required><span><span class="need" style="margin:0 6px 0 0">必須</span>「<a href="/terms/" target="_blank">利用規約</a>」とページ下の「キャンセルについて」「ご利用にあたって」「<a href="#privacy">個人情報の取り扱い</a>」を確認し、同意します。</span></label>
+        </div>
         <p id="err" role="alert"></p>
         <button class="btn" id="sendSelected" type="submit" hidden>選んだ事業者に空き状況と料金を問い合わせる（無料）</button>
         <button class="btn btn-all" id="sendAll" type="button" hidden>条件に合う全社に問い合わせる（無料）</button>
@@ -1113,7 +1122,7 @@ footer a{color:var(--ink-2)}
     <p class="fare-flag"><b>確定料金ではありません。</b>上の金額は目安です。確定料金（税込）は、問い合わせた会社から、空き状況と一緒にメールでお知らせします。</p>
     <p class="fare-night"><b>🌙 夜間・早朝の割増</b>上の目安は昼間の料金です。夜間・早朝の割増は、かかるかどうかも金額も会社ごとに違います。フォームの候補には、会社ごとの割増を入れた目安が出ます。</p>
     <p class="small">全国18都道府県・91社のペットタクシーが公式サイトにのせている料金表で、乗った距離の運賃（片道）を計算しました。大きい数字はまんなかの会社の金額で、その下は安い会社〜高い会社です。お迎え料金・待ち時間・夜間の割増・高速代・駐車場代は入っていません。フォームにお迎えの場所と行き先を入れると、来てもらえる会社ごとに、お迎え料金なども入れた目安が出ます。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。都道府県ごとの料金の例は、<a href="/area/">全国のペットタクシー情報</a>にまとめています。</p><!--/FARE_TABLE-->
-    <div class="fare-cta"><a class="btn" href="#form" data-cta="price-fare">あなたのルートで各社の料金をくらべる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a><p>公式サイトの料金表から計算した概算です。確定料金ではありません。料金表のない会社は「料金はお見積もり」と出ます。</p></div>
+    <div class="fare-cta"><a class="btn" href="#form" data-cta="price-fare">空き状況と料金を問い合わせる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a><p>公式サイトの料金表から計算した概算です。確定料金ではありません。料金表のない会社は「料金はお見積もり」と出ます。</p></div>
   </div>
 </section>
 
@@ -1374,6 +1383,6 @@ footer a{color:var(--ink-2)}
 
 <div class="sticky"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
 
-<script src="/app.js?v=e21fba0c99"></script>
+<script src="/app.js?v=5c9ddddce3"></script>
 </body>
 </html>
