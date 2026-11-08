@@ -126,6 +126,25 @@ src = re.sub(r"/\*EMG\*/.*?/\*/EMG\*/", lambda m: "/*EMG*/var EMG = " + json.dum
 TAXIS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "regular_taxis.json"), encoding="utf-8"))  # ふつうのタクシー（ご案内だけ）
 TAXIS = {"checked": TAXIS["checked"], "taxis": [{k: t[k] for k in ("id", "name", "pref", "cities", "area_label", "rule", "fare", "url")} for t in TAXIS["taxis"]]}
 src = re.sub(r"/\*TAXIS\*/.*?/\*/TAXIS\*/", lambda m: "/*TAXIS*/var TAXIS = " + json.dumps(TAXIS, ensure_ascii=False) + ";/*/TAXIS*/", src, count=1, flags=re.S)
+# 問い合わせできる会社（booking/Code.gs の OPEN_PARTNERS）の対応する都道府県。フォームで県を選んだ時点で「まだ問い合わせできる会社がない」を知らせる（2026-11-08）
+def _open_prefs():
+    gs = open(os.path.join(ROOT, "booking", "Code.gs"), encoding="utf-8").read()
+    m = re.search(r"OPEN_PARTNERS:\s*\{([^}]*)\}", gs)
+    ids = re.findall(r"'[^']*'\s*:\s*'([^']+)'", m.group(1)) if m else []
+    return sorted({a for x in _DISP if x.get("id") in ids for a in x.get("areas", [])})
+src = re.sub(r"/\*OPEN_PREFS\*/.*?/\*/OPEN_PREFS\*/", lambda m: "/*OPEN_PREFS*/var OPEN_PREFS = " + json.dumps(_open_prefs(), ensure_ascii=False) + ";/*/OPEN_PREFS*/", src, count=1, flags=re.S)
+def _co_site():
+    out = {x["id"]: [x["name"], x["url"]] for x in _DISP if x.get("url")}
+    # 提携先シートの準備中の会社（P002 など）は、tools/fares.json の名前と出典（公式サイト）から
+    for v in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fares.json"), encoding="utf-8"))["companies"].values():
+        if not isinstance(v, dict) or not v.get("partner_id"): continue
+        u = re.match(r"(https?://[^/\s]+/)", v.get("出典", ""))
+        if u: out[v["partner_id"]] = [re.sub(r"（[^）]*）$", "", v["名前"]), u.group(1)]
+    return out
+# まだ提携していない会社の社名と公式サイト（候補カードで名前を伏せた会社に出す。Nori 2026-11-08「すすめていいよ」）
+src = re.sub(r"/\*CO_SITE\*/.*?/\*/CO_SITE\*/", lambda m: "/*CO_SITE*/var CO_SITE = " + json.dumps(_co_site(), ensure_ascii=False) + ";/*/CO_SITE*/", src, count=1, flags=re.S)
+# 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、いない県に「（候補なし）」を付ける）
+src = re.sub(r"/\*AREA_PREFS\*/.*?/\*/AREA_PREFS\*/", lambda m: "/*AREA_PREFS*/var AREA_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}), ensure_ascii=False) + ";/*/AREA_PREFS*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*FARES\*/.*?/\*/FARES\*/", lambda m: "/*FARES*/" + FARE_JS + "/*/FARES*/", src, count=1, flags=re.S)
 # [B] 2026-11-08 トップに「都道府県ごとのペットタクシーの数」（全国の会社を公式サイトで確かめた数。トップだけに出し、地域ページの写しでは外す）
 def _nat_stats():
@@ -147,6 +166,10 @@ def _nat_stats():
             '</tbody></table><p class="small">当サイトが公式サイトで確かめた会社の数です（2026年11月時点、3社以上の都道府県）。「当日も受ける」は公式サイトや会社の返事にはっきり書いてある会社だけ。運賃の目安は、各社の公式サイトの料金表をもとに計算した概算のまんなかの会社の金額で、お迎え料金・夜間の割増・待ち時間は入っていません。確定料金ではありません。</p></div><!--/NAT_STATS-->')
 src = re.sub(r"\s*<!--NAT_STATS-->.*?<!--/NAT_STATS-->", "", src, flags=re.S)
 src = src.replace('<a href="/area/">全国47都道府県のペットタクシー情報を見る</a></p>', '<a href="/area/">全国47都道府県のペットタクシー情報を見る</a></p>\n    ' + _nat_stats(), 1)
+# 数字の帯：会社が見つかった都道府県の数だけを出す（「47都道府県から選べます」は会社のいない県もあるので誤解のもと。法定表示の確認 2026-11-08）
+_npref = len({a for x in _DISP for a in x.get("areas", [])})
+src = re.sub(r'<div class="stat"><div class="n">[0-9]+<small>都道府県</small></div><div class="l">[^<]*(?:<br>[^<]*)?</div></div>',
+             f'<div class="stat"><div class="n">{_npref}<small>都道府県</small></div><div class="l">{len(_DISP)}社から<br>さがせます</div></div>', src, count=1)
 open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(src)
 TOP_HTML = src  # 地域ページの元（下の clone_top）。src はあとで別の用途に使われるので写しておく
 # 地域ページは全部トップの写しで、ページの下の大きなプログラム（フォーム・料金の計算・緊急タブのデータ）も同じ。
@@ -672,6 +695,9 @@ for g in GUIDES:
     open(os.path.join(ROOT, "guide", g["slug"], "index.html"), "w", encoding="utf-8").write(page)
 
 hub_url = SITE + "/guide/"
+# はじめての人が知りたい基本の記事（選び方・料金・当日・ペットだけ）を先に（2026-11-08 飼い主目線のレビュー #9）
+_BASIC = ["what-is-pet-taxi", "choose", "fare", "same-day", "pet-only", "taxi-with-pet"]
+def _basic_first(slugs): return [x for x in _BASIC if x in slugs] + [x for x in slugs if x not in _BASIC]
 hub_ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
   {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
   {"@type":"ListItem","position":2,"name":"ペットの移動ガイド","item":hub_url}]}, ensure_ascii=False, indent=1) + '\n</script>'
@@ -687,11 +713,11 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
+    <div class="sh"><h2>はじめての方へ・移動の困りごとから調べる</h2></div>
+    {guide_cards(_basic_first([g["slug"] for g in GUIDES if g.get("category") not in ("facility", "procedure", "care")]))}
     <div class="sh"><h2>病院・施設名から移動を調べる</h2></div>
     <p>通院先や宿泊先ごとの行き方、受付・乗降場所、帰りの車で確かめたいことをまとめました。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "facility"])}
-    <div class="sh"><h2>移動の困りごとから調べる</h2></div>
-    {guide_cards([g["slug"] for g in GUIDES if g.get("category") not in ("facility", "procedure", "care")])}
     <div class="sh"><h2>迷子・犬の登録・引っ越しの手続き</h2></div>
     <p>迷子になったとき、迷子を保護したとき、犬の登録、引っ越し、飼えなくなったときの相談先。全国の窓口は<a href="/jichitai/">迷子・犬の登録・引取りの窓口</a>の一覧から。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "procedure"])}
@@ -711,7 +737,7 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
 open(os.path.join(ROOT, "guide", "index.html"), "w", encoding="utf-8").write(hub)
 
 # 利用規約（/terms/）
-from terms import TERMS, TERMS_DATE
+from terms import TERMS, TERMS_DATE, TERMS_REVISED
 def terms_block(v):
     if isinstance(v, tuple) and v[0] == "ul": return "<ul>" + "".join(f"<li>{e(x)}</li>" for x in v[1]) + "</ul>"
     if isinstance(v, tuple) and v[0] == "html": return f"<p>{v[1]}</p>"
@@ -722,7 +748,7 @@ tp = head("利用規約｜ペットタクシー予約窓口", "ペットタク�
 <section class="area-hero"><div class="wrap"><h1>利用規約</h1><p class="lede">ペットタクシー予約窓口をご利用いただく前に、お読みください。</p></div></section>
 <section><div class="wrap prose terms">
 {''.join(f'<h2>{e(h)}</h2>' + ''.join(terms_block(v) for v in body) for h, body in TERMS)}
-<p class="small">{TERMS_DATE} 制定・2026年11月1日 改定</p>
+<p class="small">{TERMS_DATE} 制定・{TERMS_REVISED} 改定</p>
 </div></section>
 </main>
 """ + foot("/#form")
@@ -730,14 +756,14 @@ os.makedirs(os.path.join(ROOT, "terms"), exist_ok=True)
 open(os.path.join(ROOT, "terms", "index.html"), "w", encoding="utf-8").write(tp)
 
 # 提携規約（/partner/terms/）。本文は tools/partner_terms.py
-from partner_terms import PTERMS, PTERMS_DATE
+from partner_terms import PTERMS, PTERMS_DATE, PTERMS_REVISED
 pterms_url = SITE + "/partner/terms/"
 ptp = head("提携規約（ペットタクシー会社さま向け）｜ペットタクシー予約窓口", "ペットタクシー予約窓口と提携してくださるペットタクシー会社さま向けの規約です。問い合わせとお返事、予約の確定、手数料（当面はいただきません）、個人情報、提携の終了などを定めています。", pterms_url, "") + f"""
 <main>
 <section class="area-hero"><div class="wrap"><h1>提携規約<small style="display:block;font-size:.95rem;color:var(--o-d)">ペットタクシー会社さま向け</small></h1><p class="lede">当サイトと提携してくださる会社さまとの約束です。お申し込みのあと、この規約をメールでお送りし、同意のお返事をいただいてから提携が始まります。</p></div></section>
 <section><div class="wrap prose terms">
 {''.join(f'<h2>{e(h)}</h2>' + ''.join(terms_block(v) for v in body) for h, body in PTERMS)}
-<p class="small">{PTERMS_DATE} 制定</p>
+<p class="small">{PTERMS_DATE} 制定・{PTERMS_REVISED} 改定</p>
 <p><a href="/partner/">提携のご案内にもどる</a></p>
 </div></section>
 </main>
@@ -1158,7 +1184,12 @@ def emg_hosp(x):
     meta = (f'<small class="emg-spec">{e(x["spec"])}</small>' if x.get("spec") else '') + (f'<small>所在地：{e(x["addr"])}</small>' if x.get("addr") else '')
     return (f'<div class="emg-item emg-co"><a href="{e(x["url"])}" target="_blank" rel="noopener"><b>{e(x["name"])}</b></a>'
             f'<small>{e(x["city"])}・{e(x["hours"])}</small>{meta}'
-            + (f'<div class="emg-score" data-id="{e(x["id"])}"></div>' if x.get("review_query") else '') + '</div>')
+            + (f'<div class="emg-score" data-id="{e(x["id"])}"></div>' if x.get("review_query") else '') + taxi_link(x) + '</div>')
+def taxi_link(x, label="この病院"):
+    # [B] 「この病院までのペットタクシー」：所在地を行き先に入れてフォームへ（2026-11-08。情報ページからタクシーの検索へつなぐ）
+    if not x.get("addr"): return ''
+    from urllib.parse import quote as _q
+    return f'<a class="emg-taxi" href="/?to={_q(x["addr"])}#form">{label}までのペットタクシーの料金をくらべる →</a>'
 emg_prefs_html = ''
 for lab, prefs in emg_regions:
     emg_prefs_html += f'<h3 class="emg-region">{e(lab)}</h3>\n'
@@ -1170,6 +1201,23 @@ emg_opts = '<option value="">すべての都道府県</option>' + ''.join(f'<opt
 emg_ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
   {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
   {"@type":"ListItem","position":2,"name":"緊急のときの連絡先","item":emg_url}]}, ensure_ascii=False, indent=1) + '\n</script>'
+_top = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+_pn = re.search(r"var PREF_NAMES = (\[[^\]]*\]);", _top).group(1)
+_pl = re.search(r"var PREF_LL = (\[\[.*?\]\]);", _top).group(1)
+EMG_GUESS_JS = """if (!sel.value) (function(){
+    var NAMES = """ + _pn + """, LL = """ + _pl + """;
+    function at(lat, lng){ var best = -1, bd = Infinity; LL.forEach(function(p, i){ var dy = lat - p[0], dx = (lng - p[1]) * Math.cos((lat + p[0]) * Math.PI / 360), d = dx * dx + dy * dy; if (d < bd) { bd = d; best = i; } }); return best >= 0 && bd < 4 ? NAMES[best] : ""; }
+    function use(v, how){
+      if (!v || sel.value || ![].some.call(sel.options, function(o){ return o.value === v; })) return;
+      sel.value = v; apply(); prefLinks(v);
+      var g = document.getElementById("emgGuess"); g.textContent = how + "から、" + v + "を選んでいます。ちがうときは、上で選び直してください。"; g.hidden = false;
+    }
+    function byNet(){ fetch("https://get.geojs.io/v1/ip/geo.json").then(function(r){ return r.json(); }).then(function(d){ if (d && d.country_code === "JP") use(at(+d.latitude, +d.longitude), "通信の情報（おおよその地域）"); }).catch(function(){}); }
+    if (navigator.permissions && navigator.geolocation) navigator.permissions.query({name: "geolocation"}).then(function(st){
+      if (st.state !== "granted") return byNet();
+      navigator.geolocation.getCurrentPosition(function(p){ use(at(p.coords.latitude, p.coords.longitude), "いまいる場所"); }, byNet, {maximumAge: 600000, timeout: 5000});
+    }).catch(byNet); else byNet();
+  })();"""
 ep = head("ペットの緊急搬送・動物救急車（緊急のペットタクシー）と夜間の動物病院｜全国の一覧｜ペットタクシー予約窓口",
   "ペットの具合が急に悪くなったときの連絡先。緊急の搬送をしている会社と、夜間・救急の動物病院を、全国47都道府県から探せます。名前と公式サイトへのリンク、受付時間をまとめた無料の一覧です。", emg_url, emg_ld) + f"""
 <main>
@@ -1183,8 +1231,8 @@ ep = head("ペットの緊急搬送・動物救急車（緊急のペットタク
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="emg">
+      <div class="f emg-pick"><label for="emgPrefAll">都道府県をえらぶ</label><select id="emgPrefAll">{emg_opts}</select><p class="emg-guess" id="emgGuess" hidden></p></div>
       <p class="emg-free">この一覧は無料の情報です。当サイトへのお申し込みやお支払いはありません。料金や受付は、それぞれの会社・病院に直接おたずねください。</p>
-      <div class="f"><label for="emgPrefAll">都道府県でしぼりこむ</label><select id="emgPrefAll">{emg_opts}</select></div>
       <p class="emg-sum"><a href="/#emergency">現在地から近い病院を、車で行く時間と一緒にさがす</a></p>
       <h2 class="emg-h">夜間・救急の動物病院</h2>
       <p class="emg-sum">夜間の病院が見つからない県には、近くの県の病院を（県名）つきで載せています。</p>
@@ -1215,6 +1263,8 @@ ep = head("ペットの緊急搬送・動物救急車（緊急のペットタク
     document.getElementById("emgTaxiNone").hidden = n > 0;
   }}
   prefKeep(sel, apply);  // 選んだ都道府県はほかのページでも保つ（tools/prefkeep.py）
+  // はじめての人には、いる場所に近い県を最初から選んでおく（位置の利用がすでに許可されていれば端末の位置、なければ通信の情報からの大まかな地域。新しく許可は求めない。覚えはしない）。2026-11-08 飼い主目線のレビュー #7
+  {EMG_GUESS_JS}
 }})();
 </script>
 <script src="/reviews.js" defer></script>
@@ -1590,10 +1640,32 @@ hosp_urls = hosp_urls + gen_prefpages.urls(SITE, gen_hotels.CAT)
 # sitemap / robots / 404
 urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url] + hosp_urls + [pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url, pterms_url]
 guide_modified = {f'{SITE}/guide/{g["slug"]}/': g.get("modified", TODAY) for g in GUIDES}
-guide_modified[hub_url] = "2026-10-31"
+# [B] sitemap の lastmod は、ページの本文（<main> の中、script を除く）が変わった日にする（2026-11-08 AI検索・検索の集客）。
+# 前は記事以外が全部 TODAY（2026-10-30）のままで、検索エンジンやAI検索に「更新されていない」と伝わっていた。
+# tools/lastmod.json に URL ごとの本文のハッシュと日付を覚え、本文が変わったときだけ日付を今日（日本時間）にする。
+# ヘッダー・フッターなどサイト全体の小さな直しでは日付を動かさない。記事は記事の更新日（dateModified と同じ）を使う。
+import hashlib, datetime
+_lm_path = os.path.join(ROOT, "tools", "lastmod.json")
+_lm = json.load(open(_lm_path, encoding="utf-8")) if os.path.exists(_lm_path) else {}
+_today_jst = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime("%Y-%m-%d")
+def _body_hash(u):
+  f = os.path.join(ROOT, u[len(SITE) + 1:], "index.html")
+  if not os.path.exists(f): return None
+  t = open(f, encoding="utf-8").read()
+  m = re.search(r"<main.*?</main>", t, re.S)
+  t = re.sub(r"<script.*?</script>", "", m.group(0) if m else t, flags=re.S)
+  return hashlib.sha1(t.encode("utf-8")).hexdigest()[:16]
+_lm_new = {}
+for u in urls:
+  h = _body_hash(u); old_h, old_d = (_lm.get(u) or [None, None])
+  _lm_new[u] = [h, old_d if (old_h == h and old_d) else _today_jst]
+# 1行に1ページ（ほかのPRとぶつかったら、どちらかを取ってから gen_areas.py を実行し直せばそろう）
+open(_lm_path, "w", encoding="utf-8").write("{\n" + ",\n".join(json.dumps(u) + ": " + json.dumps(_lm_new[u]) for u in sorted(_lm_new)) + "\n}\n")
+def _lastmod(u):
+  return guide_modified.get(u) or _lm_new[u][1]
 open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-  "".join(f'  <url><loc>{u}</loc><lastmod>{guide_modified.get(u, TODAY)}</lastmod></url>\n' for u in urls) + '</urlset>\n')
+  "".join(f'  <url><loc>{u}</loc><lastmod>{_lastmod(u)}</lastmod></url>\n' for u in urls) + '</urlset>\n')
 open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /booking/\nDisallow: /docs/\n\nSitemap: {SITE}/sitemap.xml\n")
 nf = head("ページが見つかりません｜ペットタクシー予約窓口", "お探しのページは見つかりませんでした。", SITE + "/404.html", '<meta name="robots" content="noindex">') + f'''
 <main><section class="area-hero"><div class="wrap" style="text-align:center">

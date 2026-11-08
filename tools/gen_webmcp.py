@@ -3,7 +3,7 @@
 # - /webmcp/data.json：サイトに載せている一覧（名前・市区町村・公式サイト・このサイトのページ）だけを短くまとめたもの。
 #   電話番号・口コミ・順位は入れない。webmcp.js（ブラウザのAIエージェント用の道具）が読む。
 # - 道具はすべて「見るだけ」。会社への問い合わせ・送信はしない（送信の再開は Nori さんの「再開して」まで）。
-import json, os
+import json, os, re
 
 SITE = "https://pet.shiokonbu.com"
 
@@ -106,6 +106,20 @@ def llms(out):
          "## ペットとのくらしの一覧", ""]
     for c in out["categories"]:
         L.append(f"- [{c['label']}]({SITE}{c['page']}): {c['count']}件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます")
+    # [B] AI検索（ChatGPT・Perplexity・AI による概要など）が答えに引用しやすいように、ガイドを1行の要約つきで並べる（2026-11-08）。
+    # 要約は各ガイドの説明文（ページの description と同じ）なので、ページと内容がずれない。
+    from guides import GUIDES
+    for cat, head in ((None, "ガイド：ペットタクシーの料金・選び方・使い方（当サイトで各社の公式サイトを数えたデータつき）"),
+                      ("facility", "ガイド：専門の動物病院・夜間救急へ犬・猫と行くには"),
+                      ("procedure", "ガイド：迷子・登録・引っ越し・亡くなったときの手続き"),
+                      ("care", "ガイド：老犬ホーム・ペットシッター・ペットホテル・しつけ")):
+        gs = [g for g in GUIDES if g.get("category") == cat]
+        if not gs:
+            continue
+        L += ["", f"## {head}", ""]
+        for g in gs:
+            d = re.sub(r"\s+", " ", g["desc"]).strip()
+            L.append(f"- [{g['title']}]({SITE}/guide/{g['slug']}/): {d}（更新 {g.get('modified', '')}）".replace("（更新 ）", ""))
     L += ["", "## そのほか", "",
           f"- [利用規約]({SITE}/terms/)", f"- [お問い合わせ]({SITE}/contact/)", f"- [サイトマップ]({SITE}/sitemap.xml)", ""]
     return "\n".join(L)

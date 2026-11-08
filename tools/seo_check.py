@@ -9,18 +9,19 @@ from html.parser import HTMLParser
 ROOT = sys.argv[1] if len(sys.argv) > 1 else "."
 SITE = "https://pet.shiokonbu.com"
 # 画面に出してはいけない言葉（AGENTS.md）。「Google Maps」は口コミ・候補の出どころ表示として例外。
-BAN = ["Gmail", "スプレッドシート", "Apps Script", "まるっと", "代理予約", "取り次", "お取次", "手配", "お客さまに代わって", "に代わって探", "代わりに探す", "予約をお手伝い", "空いている車をさがす", "空いている車をお探し"]
+BAN = ["Gmail", "スプレッドシート", "Apps Script", "まるっと", "代理予約", "代理人", "取り次", "お取次", "手配", "お客さまに代わって", "に代わって探", "代わりに探す", "予約をお手伝い", "空いている車をさがす", "空いている車をお探し"]
 TEL_OK = ("emergency/", "area/")  # 緊急の搬送会社の電話だけ例外（tools/emergency.json の tel）
 PHONE = re.compile(r"0\d{1,4}-\d{1,4}-\d{3,4}|0120-?\d{3}-?\d{3}")
 
 class P(HTMLParser):
     def __init__(s):
         super().__init__(); s.title = ""; s.desc = None; s.canon = None; s.h1 = 0
-        s.robots = ""; s._t = False; s._skip = 0; s.text = []; s.tel = []
+        s.robots = ""; s._t = False; s._skip = 0; s._send = False; s.text = []; s.tel = []
     def handle_starttag(s, tag, a):
         a = dict(a)
         if tag == "title": s._t = True
         elif tag in ("script", "style"): s._skip += 1
+        elif tag == "dl" and "data-sendlist" in a: s._send = True  # 個人情報の取り扱いの外部送信の表（送り先の名前は法律で必要。AGENTS.md の例外）
         elif tag == "meta" and a.get("name") == "description": s.desc = a.get("content", "")
         elif tag == "meta" and a.get("name") == "robots": s.robots = a.get("content", "")
         elif tag == "link" and a.get("rel") == "canonical": s.canon = a.get("href")
@@ -29,9 +30,10 @@ class P(HTMLParser):
     def handle_endtag(s, tag):
         if tag == "title": s._t = False
         elif tag in ("script", "style"): s._skip -= 1
+        elif tag == "dl": s._send = False
     def handle_data(s, d):
         if s._t: s.title += d
-        elif not s._skip: s.text.append(d)
+        elif not s._skip and not s._send: s.text.append(d)
 
 def main():
     locs = re.findall(r"<loc>([^<]+)</loc>", open(os.path.join(ROOT, "sitemap.xml"), encoding="utf-8").read())

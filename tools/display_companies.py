@@ -284,6 +284,7 @@ FIX = {  # 文の形がまちまちなものは、ダッシュボードの記載
     'Ddc3e31e': {'hours': '10-22'},                   # 営業10〜22時（受付は24時間）
     'D3cc975b': {'hours': '8-20'},                    # 営業8〜20時（受付は24時間）
     'D18363bd': {'hours': '8-18'},                        # 8〜18時（時間外も相談可）
+    'D225080e': {'hours': '0-24'},                        # ペッタク：提携の申し込み（2026-11-08）「24時間受けられる」
 }
 
 # 当日予約（Nori 2026-11-02「当日予約できるところのフィルターってあってる？東京めっちゃ出てくる」）
@@ -442,6 +443,12 @@ def car_tags(f):
     return (['車：' + ct] if ct else []) + limits(f)
 PARTNER_SAME = {'P002': 'Dbcb8b8d', 'P003': 'Da968571'}  # 提携先シートの会社と、事業者マスターの同じ会社
 
+# 会社本人が提携の申し込み・返事で教えてくれた条件のタグ（pet-db の data/edits/ と同じ内容。by=provider）。カードにだけ出す。
+# area_text・animals はエリアページやガイドで「公式サイトの書き方」として数えるので、ここでは変えない（乗せられる動物・対応エリアは提携先シートで判定する）
+PROVIDER = {
+    'D225080e': {'limits_add': ['同乗は2人まで']},  # ペッタク：提携の申し込み 2026-11-08「飼い主さんの同乗 2人まで」
+}
+
 def main(master, comp, tariffs=None, facts_path=None):
     ms = json.load(open(master, encoding='utf-8'))
     cs = {c['id']: c for c in json.load(open(comp, encoding='utf-8'))}
@@ -454,6 +461,7 @@ def main(master, comp, tariffs=None, facts_path=None):
         at = re.sub(r'（[^）]*シートより）', '', c.get('area', ''))
         row = {'id': m['id'], 'name': m['name'], 'pref': m['pref'], 'areas': areas(c, m), 'area_text': '' if at.startswith('不明') else at[:70],
                'shop': SHOP.get(m['id']), 'fare': fare(ts.get(m['id']), m['id']), 'pay': pay(c)}
+        if re.match(r'https?://', c.get('url') or ''): row['url'] = c['url']  # 公式サイト。まだ提携していない会社も社名と公式サイトへのリンクを出す（Nori 2026-11-08「すすめていいよ」）
         # 口コミの星を取り寄せるための、地図で場所を探すことばと、見つかった場所の名前に入っているはずのことば（ダッシュボードと同じ。点数そのものは入れない）
         # 長距離（250km超）の料金の目安は、長距離を受けている会社だけ計算する（Nori 2026-11-08「長距離の計算をするのは長距離を請け合ってる会社だけ」）。
         # 対応地域の文に「全国」「長距離」がある会社。「緊急は全国」「提携会社で全国」は自社の長距離ではないので入れない
@@ -464,6 +472,8 @@ def main(master, comp, tariffs=None, facts_path=None):
         pts = points(facts.get(m['id'], {}))
         lim = car_tags(facts.get(m['id'], {}))
         if car_type(facts.get(m['id'], {})): row['car_type'] = car_type(facts.get(m['id'], {}))
+        pv = PROVIDER.get(m['id'], {})
+        lim = (lim + [x for x in pv.get('limits_add', []) if x not in lim])[:4]
         if lim: row['limits'] = lim
         if any(x.startswith('大型犬') for x in lim): pts = [x for x in pts if x != '大型犬OK']  # 頭数つきのほうを出す
         if any('頭' in x and not x.startswith('大型犬') for x in lim): pts = [x for x in pts if x != '多頭OK']
