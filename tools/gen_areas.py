@@ -133,6 +133,16 @@ def _open_prefs():
     ids = re.findall(r"'[^']*'\s*:\s*'([^']+)'", m.group(1)) if m else []
     return sorted({a for x in _DISP if x.get("id") in ids for a in x.get("areas", [])})
 src = re.sub(r"/\*OPEN_PREFS\*/.*?/\*/OPEN_PREFS\*/", lambda m: "/*OPEN_PREFS*/var OPEN_PREFS = " + json.dumps(_open_prefs(), ensure_ascii=False) + ";/*/OPEN_PREFS*/", src, count=1, flags=re.S)
+def _co_site():
+    out = {x["id"]: [x["name"], x["url"]] for x in _DISP if x.get("url")}
+    # 提携先シートの準備中の会社（P002 など）は、tools/fares.json の名前と出典（公式サイト）から
+    for v in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fares.json"), encoding="utf-8"))["companies"].values():
+        if not isinstance(v, dict) or not v.get("partner_id"): continue
+        u = re.match(r"(https?://[^/\s]+/)", v.get("出典", ""))
+        if u: out[v["partner_id"]] = [re.sub(r"（[^）]*）$", "", v["名前"]), u.group(1)]
+    return out
+# まだ提携していない会社の社名と公式サイト（候補カードで名前を伏せた会社に出す。Nori 2026-11-08「すすめていいよ」）
+src = re.sub(r"/\*CO_SITE\*/.*?/\*/CO_SITE\*/", lambda m: "/*CO_SITE*/var CO_SITE = " + json.dumps(_co_site(), ensure_ascii=False) + ";/*/CO_SITE*/", src, count=1, flags=re.S)
 # 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、いない県に「（候補なし）」を付ける）
 src = re.sub(r"/\*AREA_PREFS\*/.*?/\*/AREA_PREFS\*/", lambda m: "/*AREA_PREFS*/var AREA_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}), ensure_ascii=False) + ";/*/AREA_PREFS*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*FARES\*/.*?/\*/FARES\*/", lambda m: "/*FARES*/" + FARE_JS + "/*/FARES*/", src, count=1, flags=re.S)
