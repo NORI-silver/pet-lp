@@ -33,3 +33,20 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           timeout: 600000
+  # [B] 公開のあと、本文が変わったページ（sitemap の lastmod が変わった・増えたURL）を IndexNow で検索エンジンに知らせる（2026-11-08）。
+  # IndexNow は Bing などに「このページが新しくなった」と知らせるしくみ。ChatGPT の検索や Copilot は Bing の索引を使うので、AI検索に早く載る。
+  # 鍵（4d1bdcc4cfcf49810b95650642a055e1）は公開してよいもの（サイトの /4d1bdcc4cfcf49810b95650642a055e1.txt に置いて、持ち主の確認に使う）。送るのはページのURLだけ。失敗しても公開は止めない。
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: 変わったページを IndexNow に送る
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          python3 tools/indexnow.py "$BEFORE"

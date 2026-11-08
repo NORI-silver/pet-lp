@@ -1635,10 +1635,32 @@ hosp_urls = hosp_urls + gen_prefpages.urls(SITE, gen_hotels.CAT)
 # sitemap / robots / 404
 urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url] + hosp_urls + [pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url, pterms_url]
 guide_modified = {f'{SITE}/guide/{g["slug"]}/': g.get("modified", TODAY) for g in GUIDES}
-guide_modified[hub_url] = "2026-10-31"
+# [B] sitemap の lastmod は、ページの本文（<main> の中、script を除く）が変わった日にする（2026-11-08 AI検索・検索の集客）。
+# 前は記事以外が全部 TODAY（2026-10-30）のままで、検索エンジンやAI検索に「更新されていない」と伝わっていた。
+# tools/lastmod.json に URL ごとの本文のハッシュと日付を覚え、本文が変わったときだけ日付を今日（日本時間）にする。
+# ヘッダー・フッターなどサイト全体の小さな直しでは日付を動かさない。記事は記事の更新日（dateModified と同じ）を使う。
+import hashlib, datetime
+_lm_path = os.path.join(ROOT, "tools", "lastmod.json")
+_lm = json.load(open(_lm_path, encoding="utf-8")) if os.path.exists(_lm_path) else {}
+_today_jst = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime("%Y-%m-%d")
+def _body_hash(u):
+  f = os.path.join(ROOT, u[len(SITE) + 1:], "index.html")
+  if not os.path.exists(f): return None
+  t = open(f, encoding="utf-8").read()
+  m = re.search(r"<main.*?</main>", t, re.S)
+  t = re.sub(r"<script.*?</script>", "", m.group(0) if m else t, flags=re.S)
+  return hashlib.sha1(t.encode("utf-8")).hexdigest()[:16]
+_lm_new = {}
+for u in urls:
+  h = _body_hash(u); old_h, old_d = (_lm.get(u) or [None, None])
+  _lm_new[u] = [h, old_d if (old_h == h and old_d) else _today_jst]
+# 1行に1ページ（ほかのPRとぶつかったら、どちらかを取ってから gen_areas.py を実行し直せばそろう）
+open(_lm_path, "w", encoding="utf-8").write("{\n" + ",\n".join(json.dumps(u) + ": " + json.dumps(_lm_new[u]) for u in sorted(_lm_new)) + "\n}\n")
+def _lastmod(u):
+  return guide_modified.get(u) or _lm_new[u][1]
 open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-  "".join(f'  <url><loc>{u}</loc><lastmod>{guide_modified.get(u, TODAY)}</lastmod></url>\n' for u in urls) + '</urlset>\n')
+  "".join(f'  <url><loc>{u}</loc><lastmod>{_lastmod(u)}</lastmod></url>\n' for u in urls) + '</urlset>\n')
 open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /booking/\nDisallow: /docs/\n\nSitemap: {SITE}/sitemap.xml\n")
 nf = head("ページが見つかりません｜ペットタクシー予約窓口", "お探しのページは見つかりませんでした。", SITE + "/404.html", '<meta name="robots" content="noindex">') + f'''
 <main><section class="area-hero"><div class="wrap" style="text-align:center">
