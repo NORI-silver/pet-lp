@@ -43,6 +43,9 @@ var CONFIG = {
   // true のあいだは、提携先シートの会社（P002・P003）も含めて全社「準備中」：予約の依頼は誰にも送れない（ボタンは押せず、サーバーでも断る。Nori「その2社もまだ準備中。送信はできないように」）
   // false にすると今までの状態（提携先の2社だけ・依頼できる）に戻る
   SHOW_ALL_CANDIDATES: true,
+  // 掲載をOKしてくれた会社（表示だけの会社の ID）。全社準備中のあいだも、社名・口コミつき・「提携」の印で出す（問い合わせはまだ送れない）
+  // Nori 2026-11-08「aiai掲載していいって。掲載して」
+  LISTED_IDS: ['D13b7c6f'],
   // 表示だけの会社は、お店からお迎えの場所までが直線でこのkmを超えると出さない（都道府県が合っていても遠すぎる会社を外す）
   DISPLAY_MAX_KM: 80,
 
@@ -2046,8 +2049,10 @@ function displayInTime_(c, at, now) {
 /* ───────── 提携していない会社は名前を出さない・お誘いした会社だけの見本画面（Nori 2026-11-02「AとC」） ───────── */
 
 // 名前・口コミ・お店の正確な場所を出さない会社か。問い合わせできない会社（表示だけ・全社準備中のあいだの提携先）はすべて。見本の会社だけ例外
+function isListed_(id) { return (CONFIG.LISTED_IDS || []).indexOf(id) >= 0; }
 function isAnon_(id, demoId) {
   if (demoId && id === demoId) return false;
+  if (isListed_(id)) return false;
   return isDisplayOnly_(id) || !!CONFIG.SHOW_ALL_CANDIDATES;
 }
 // 「東京都・杉並区あたりの会社」。対応エリアの最初の市区町村から（都道府県の名前と同じなら付けない）
@@ -2064,6 +2069,7 @@ function anonCard_(card, pref, areaText, demoId) {
     card.check = [];
     return card;
   }
+  if (isListed_(card.id)) { card.listed = true; return card; }
   if (!isAnon_(card.id, demoId)) return card;
   card.label = anonLabel_(pref, areaText); card.anon = true;
   if (card.shop) card.shop = [Math.round(card.shop[0] * 100) / 100, Math.round(card.shop[1] * 100) / 100]; // 道のりの目安に使うだけ（1kmくらいにまるめる）
