@@ -21,7 +21,7 @@ class P(HTMLParser):
         a = dict(a)
         if tag == "title": s._t = True
         elif tag in ("script", "style"): s._skip += 1
-        elif tag == "table" and "data-sendlist" in a: s._send = True  # 個人情報の取り扱いの外部送信の表（送り先の名前は法律で必要。AGENTS.md の例外）
+        elif tag == "dl" and "data-sendlist" in a: s._send = True  # 個人情報の取り扱いの外部送信の表（送り先の名前は法律で必要。AGENTS.md の例外）
         elif tag == "meta" and a.get("name") == "description": s.desc = a.get("content", "")
         elif tag == "meta" and a.get("name") == "robots": s.robots = a.get("content", "")
         elif tag == "link" and a.get("rel") == "canonical": s.canon = a.get("href")
@@ -30,7 +30,7 @@ class P(HTMLParser):
     def handle_endtag(s, tag):
         if tag == "title": s._t = False
         elif tag in ("script", "style"): s._skip -= 1
-        elif tag == "table": s._send = False
+        elif tag == "dl": s._send = False
     def handle_data(s, d):
         if s._t: s.title += d
         elif not s._skip and not s._send: s.text.append(d)
