@@ -1,6 +1,9 @@
 
 /* フォーム送信先（Google Apps Script のウェブアプリURL）。空の間は送信されません。 */
 var GAS_URL = "https://script.google.com/macros/s/AKfycbyy-cTvD-t8DFGhEyA2IbFiXWoB50kl_2_97WiVdMlXec8sIbI2NVUkkyn-45VkIMc_5g/exec";
+/* 道のりを聞く道路データの入口（OSRM と同じ形の API）。ここ1か所で切りかえる。
+   いまの公開デモは「お金をもうけない使い方だけ」が条件なので、手数料を始める前に商用で使える入口へ替える（法定表示の確認 2026-11-08） */
+var ROAD_API = "https://router.project-osrm.org";
 /* お誘いした会社だけの見本の画面（?demo=…。Nori 2026-11-02）。その会社だけ名前と口コミつきで出し、問い合わせは送らない */
 var DEMO = {tok: (function(){ try { return new URLSearchParams(location.search).get("demo") || ""; } catch (e) { return ""; } })(), ok: false, name: ""};
 /* アクセス解析に操作の回数だけを送る（入力内容は送らない）。ga.js が動いていないときは何もしない */
@@ -350,7 +353,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         part.forEach(function(k){ roadBusy[k] = 1; });
         var cs = [{lat: Math.round(g.at.lat * 1000) / 1000, lng: Math.round(g.at.lng * 1000) / 1000}].concat(part.map(function(k){ return {lat: g.shops[k][0], lng: g.shops[k][1]}; }));
         var src = part.map(function(k, j){ return j + 1; }).join(";");
-        fetch("https://router.project-osrm.org/table/v1/driving/" + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?sources=" + src + "&destinations=0&annotations=distance")
+        fetch(ROAD_API + "/table/v1/driving/" + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?sources=" + src + "&destinations=0&annotations=distance")
           .then(function(r){ return r.json(); })
           .then(function(j){ var ok = j && j.code === "Ok" && j.distances; part.forEach(function(k, n){ var m = ok && j.distances[n] && j.distances[n][0]; roadMemo[k] = m != null && isFinite(m) ? Math.round(m / 100) / 10 : null; }); })
           .catch(function(){ part.forEach(function(k){ roadMemo[k] = null; }); })
@@ -1054,7 +1057,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // ── 道のり（道路データで調べる。取れないときは直線×ROADで代わりに計算）──
   // 道路データの経路は高速道路も使う。高速の区間の長さを数えて、一般道だけで行くときは
   // その区間を1.15倍の道のり・1kmあたり1分長くかかるとみて出す（一般道のほうが高めに出る）
-  var ROUTER = "https://router.project-osrm.org/route/v1/driving/", routeCache = {};
+  var ROUTER = ROAD_API + "/route/v1/driving/", routeCache = {};
   var HW_NAME = /高速|自動車道|有料道路|首都高|アクアライン/;
   function routeOf(cs){
     var url = ROUTER + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?overview=full&geometries=geojson&steps=true";
@@ -1510,7 +1513,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     function driveTimes(from, list){
       if (!list.length) return Promise.resolve([]);
       var cs = [from].concat(list.map(function(e){ return e.c; }));
-      return fetch("https://router.project-osrm.org/table/v1/driving/" + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?sources=0&annotations=duration,distance")
+      return fetch(ROAD_API + "/table/v1/driving/" + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?sources=0&annotations=duration,distance")
         .then(function(r){ return r.json(); })
         .then(function(j){
           if (!j || j.code !== "Ok") return null;

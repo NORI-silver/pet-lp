@@ -53,6 +53,8 @@ var CONFIG = {
   OPEN_PARTNERS: {'P060': 'D13b7c6f', 'P061': 'D225080e'},
   // 表示だけの会社は、お店からお迎えの場所までが直線でこのkmを超えると出さない（都道府県が合っていても遠すぎる会社を外す）
   DISPLAY_MAX_KM: 80,
+  // 道のりを聞く道路データの入口（OSRM と同じ形）。ページの ROAD_API と同じにする。いまの公開デモは非営利だけが条件なので、手数料を始める前に商用で使える入口へ替える
+  ROAD_API: 'https://router.project-osrm.org',
 
   // 決まらないときの待ち時間（分）。会社が動いている時間（OPEN_HOURS）だけ数える。夜の依頼は朝から数え始める
   OPEN_HOURS: '8-20',
@@ -2218,7 +2220,7 @@ function loadRoadKm_(shops, pts) {
     var todo = part.filter(function(sp) { return pts.some(function(pt) { return roadKm_(sp, pt) == null || roadKm_(sp, pt, true) == null; }); });
     if (!todo.length || !pts.length) return;
     var all = pts.concat(todo), n = pts.length;
-    var url = 'https://router.project-osrm.org/table/v1/driving/' + all.map(function(v) { return Number(v.lng).toFixed(5) + ',' + Number(v.lat).toFixed(5); }).join(';') + '?annotations=distance';
+    var url = CONFIG.ROAD_API + '/table/v1/driving/' + all.map(function(v) { return Number(v.lng).toFixed(5) + ',' + Number(v.lat).toFixed(5); }).join(';') + '?annotations=distance';
     try {
       var cache = null, key = '', j = null;
       try { cache = CacheService.getScriptCache(); key = 'road:' + Utilities.base64Encode(Utilities.computeDigest(Utilities.DigestAlgorithm.MD5, url)); var hit = cache.get(key); if (hit) j = JSON.parse(hit); } catch (e) { cache = null; }
