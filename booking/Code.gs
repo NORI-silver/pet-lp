@@ -806,7 +806,7 @@ function acceptPage_(q) {
     '<label>確定料金・一般道で行く場合（円・税込' + (isRound_(r) ? '、往復の合計' : '') + '）<input type="number" name="fare" inputmode="numeric" min="0" step="10" placeholder="例：4800" required></label>' +
     '<label>確定料金・高速道路を使う場合（円・税込、高速代込み）<input type="number" name="fare_hw" inputmode="numeric" min="0" step="10" placeholder="高速を使わないなら空欄"></label>' +
     '<p class="note">入れた金額を、お客さまに確定の料金としてお伝えします。</p>' +
-    '<label>お客さまへ一言（なくてもOK）<textarea name="msg" maxlength="300" placeholder="例：前日にお電話します"></textarea></label>' +
+    '<label>お客さまへ一言（なくてもOK。待機料を当日の実際の待ち時間で精算するときは、その旨と単価をここに書いてください）<textarea name="msg" maxlength="300" placeholder="例：前日にお電話します／待機料は当日の待ち時間で精算します（10分ごとに300円）"></textarea></label>' +
     '<button type="submit">' + (isAsk_(r) ? 'この内容でお返事する' : isQuoteReq_(r) ? 'この内容でお見積もりを送る' : 'この内容で引き受ける') + '</button></form>' +
     '';
   return page_(isAsk_(r) ? '空き状況と料金をお返事しますか？' : isQuoteReq_(r) ? 'お見積もりを出しますか？' : 'ご依頼を引き受けますか？', html);
