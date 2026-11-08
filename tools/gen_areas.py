@@ -132,7 +132,7 @@ def _nat_stats():
     from prefs import PREFS as _P
     full = {"東京": ("東京都", "/tokyo/"), "神奈川": ("神奈川県", "/kanagawa/"), "埼玉": ("埼玉県", "/saitama/"), "千葉": ("千葉県", "/chiba/")}
     for slug, name, *_ in _P: full.setdefault(name if name == "北海道" else name[:-1], (name, f"/area/{slug}/"))
-    keys = sorted({a for x in _DISP for a in x.get("areas", [])}, key=lambda k: -_ncos(k))
+    keys = sorted({a for x in _DISP for a in x.get("areas", [])}, key=lambda k: (-_ncos(k), full.get(k, ("", "~"))[1]))
     rows = ""
     for k in keys:
         n = _ncos(k)
