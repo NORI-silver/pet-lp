@@ -4,6 +4,7 @@
 # 各グループの公式サイトの店舗一覧に載っていることだけ書く（店舗名・対応エリア・店舗ページ）。データ：tools/sitters.json。口コミの星は出さない（訪問型で店舗がない）。
 import json, os
 import prefkeep
+import facility_cards as FC
 
 J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sitters.json"), encoding="utf-8"))
 
@@ -27,7 +28,9 @@ def _card(e, s):
     extra = f'<small>対応エリア：{e(s["area"])}</small>'
     if s.get("animals"): extra += f'<small>対象：{e(s["animals"])}</small>'
     extra += (f'<small>{e(ch["name"])}の店舗一覧より</small>' if s["chain"] != "indie" else '<small>公式サイトより</small>')
-    return (f'<div class="emg-item emg-co"><a href="{e(s["url"])}" target="_blank" rel="noopener"><b>{e(s["name"])}</b></a>{extra}</div>')
+    if not s.get("url"):
+        return f'<div class="emg-item emg-co"><b>{e(s["name"])}</b>{extra}</div>'
+    return (f'<div class="emg-item emg-co"{FC.attrs(e, "sitter", s, FC.sitter_tags(s, J["chains"]), s["name"])}><a href="{e(s["url"])}" target="_blank" rel="noopener"><b>{e(s["name"])}</b></a>{extra}</div>')
 
 def render(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
@@ -78,9 +81,11 @@ def render(ctx):
       <div class="emg-tips" style="margin-top:0"><h4>ペットシッターを頼む前に確かめること</h4><dl>{before}</dl>
       <p class="emg-tips-note">ここに書いたのは一般的な目安です。決まりは店舗ごとに違うので、必ず店舗ページでご確認ください。</p></div>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
+      {FC.chips(e, FC.SITTER_CHIPS)}
       {body}
       <div class="emg-tips"><h4>一覧に載せているグループ</h4><dl>{chains}</dl></div>
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
+      {FC.biz(e, "ペットシッター")}
       <p class="emg-note">当サイトとは別の事業者です（{e(J["checked"])}に各グループの公式サイトの店舗一覧で確かめた情報）。店舗や対応エリアは変わることがあるので、頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
@@ -94,6 +99,7 @@ def render(ctx):
 </section>
 </main>
 {prefkeep.LIST_JS}
+{FC.SCRIPT}
 """ + ctx["foot_noband"]()
 
 def urls(SITE):
@@ -126,3 +132,5 @@ CAT = dict(slug=SLUG, name="ペットシッター", unit="店", h1=H1, items=J["
   facts=_facts, faq=_faq, before_title="ペットシッターを頼む前に確かめること", before=BEFORE,
   taxi_h="留守中の通院やホテルへの移動は、ペットタクシーで", taxi_p="家の前から動物病院やペットホテルの前まで移動できます。",
   links=[("ペットシッターの頼み方", "/guide/how-to-use-pet-sitter/"), ("ペットシッターとペットホテル、どちらがいい？", "/guide/sitter-or-hotel/"), ("猫の留守番とキャットシッター", "/guide/cat-sitter/"), ("トリミング・ペットホテルへの送迎ガイド", "/guide/grooming-hotel/")])
+CAT["fac_chips"] = lambda e, pf: FC.chips(e, FC.SITTER_CHIPS, pf)
+CAT["fac_biz"] = lambda e: FC.biz(e, "ペットシッター")
