@@ -238,8 +238,9 @@ var CONTACT_TOPICS = ['ご予約について', 'キャンセル・変更につ�
 
 function contact_(p) {
   if (p.website) return { ok: true }; // 迷惑投稿よけ
-  var name = clip_(p.name, 100), email = clip_(p.email, 200).trim(), msg = clip_(p.message, 2000);
   var topic = clip_(p.topic, 80).trim() || 'その他'; // 提携の申し込み（/partner/）は「提携のお申し込み（会社名）」で来る
+  // 提携の申し込みは料金の項目が多いので長めに受ける（Nori 2026-11-08「あとから聞かなくていいように」）
+  var name = clip_(p.name, 100), email = clip_(p.email, 200).trim(), msg = clip_(p.message, /^提携/.test(topic) ? 8000 : 2000);
   if (!name || !msg || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { ok: false, error: 'missing' };
   var reqId = clip_(p.req_id, 20);
   var sh = ensureSheet_(SpreadsheetApp.getActive(), '問い合わせ', ['受付日時', '種類', 'お名前', 'メール', '受付番号', '内容', '対応']);
