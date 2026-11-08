@@ -6783,7 +6783,7 @@
       200
      ]
     ],
-    "tax": "",
+    "tax": "税込",
     "src": "https://pettaku.com/price-guide/",
     "pick": {
      "per": 100,
@@ -6798,7 +6798,8 @@
      "from": 20,
      "to": 8,
      "flat": 3000
-    }
+    },
+    "back": {}
    },
    "pay": "",
    "long": true,
