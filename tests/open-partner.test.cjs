@@ -17,3 +17,16 @@ assert.equal(ctx.isTest_(row('P002')),true);
 assert.equal(ctx.isTest_(row('')),true);
 assert.ok(vm.runInContext("openDisplayIds_().indexOf('D13b7c6f')>=0",ctx)); // 表示だけのカードとは重ねない
 console.log('PASS: only OPEN_PARTNERS can receive inquiries while every other company stays in preparation');
+// ペッタク：遠くから広島周辺へ送るときは、お迎えに向かう距離の料金をとらない（freeToShopKm）
+{
+  const c=vm.runInContext("DISPLAY_COMPANIES.filter(function(x){return x.id==='D225080e';})[0]",ctx);
+  assert.equal(c.fare.pick.freeToShopKm,80);
+  const route=(from,to,km)=>JSON.stringify({km,backKm:km,from,to,backFrom:to,backTo:from});
+  const okayama={lat:34.665,lng:133.918}, hiro={lat:34.39,lng:132.46}, kurashiki={lat:34.585,lng:133.772};
+  const base={trip:'片道',datetime:'2026-12-01T10:00',pickup:'岡山市',dropoff:'広島市',weight:5,pet_count:1};
+  const toHome=ctx.displayPriceCalc_(c,Object.assign({},base,{route_details:route(okayama,hiro,160)}));
+  const away=ctx.displayPriceCalc_(c,Object.assign({},base,{dropoff:'倉敷市',route_details:route(okayama,kurashiki,20)}));
+  assert.ok(toHome && toHome.local.pickup===0, 'pickup should be free when heading to Hiroshima');
+  assert.ok(away && away.local.pickup>0, 'pickup is charged otherwise');
+}
+console.log('PASS: Pettaku pickup leg is free when bringing a pet from afar to Hiroshima');
