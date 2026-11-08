@@ -263,6 +263,13 @@ extra_css = """
 .dr-row{border-top:1px solid var(--line);padding:10px 2px}
 .dr-row a{font-weight:700}
 .dr-row small{color:var(--ink-3);margin-left:6px}
+.taxi-cta{margin:4px 0 18px}
+.taxi-cta .btn,.taxi-top .btn{font-size:.95rem;padding:13px 20px;max-width:100%;white-space:normal;text-align:center}
+.taxi-cta small,.taxi-top small{display:block;color:var(--ink-3);font-size:.78rem;line-height:1.6;margin-top:6px}
+.taxi-top-sec{padding:0 0 8px}
+.taxi-top{background:var(--o-l);border-radius:18px;padding:14px 16px}
+.taxi-top p{margin:0 0 10px;font-size:.88rem;line-height:1.7;color:var(--ink)}
+.taxi-top p b{display:block;font-size:.98rem;color:var(--o-d)}
 """
 open(os.path.join(ROOT, "style.css"), "w", encoding="utf-8").write(css.strip() + "\n" + extra_css.strip() + "\n")
 
@@ -1678,6 +1685,9 @@ open(os.path.join(ROOT, "404.html"), "w", encoding="utf-8").write(nf)
 import crosslink
 _xl_prefs = [(a["slug"], {"tokyo": "東京都", "kanagawa": "神奈川県", "saitama": "埼玉県", "chiba": "千葉県"}[a["slug"]]) for a in AREAS] + [(x[0], x[1]) for x in PREFS]
 print("crosslink", crosslink.build(ROOT, _xl_prefs), "pages")
+# [B] 2026-11-08 情報ページからペットタクシーの料金くらべへの案内（tools/taxi_cta.py、Nori「1と2」）
+import taxi_cta
+print("taxi_cta", taxi_cta.build(ROOT, _xl_prefs), "pages")
 # AIエージェント向けの入口（/webmcp/data.json と /llms.txt。tools/gen_webmcp.py）
 import gen_webmcp
 gen_webmcp.build(ROOT)
