@@ -421,6 +421,9 @@ footer a{color:var(--ink-2)}
 .pick-bar span::before{content:"✓ ";color:var(--o)}
 .pick-bar .btn{width:auto;flex:none;padding:12px 18px;font-size:.92rem;box-shadow:none}
 #thanks{scroll-margin-top:84px}
+.emg-pick select{font-size:1.05rem;border:2px solid var(--o)}
+.emg-guess{margin:6px 0 0;font-size:.8rem;color:var(--ink-2)}
+.emg-guess[hidden]{display:none}
 .open-note{margin:8px 0 0;background:#f7f4f1;border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
 .open-note[hidden],#contactBox[hidden]{display:none}
 .contact-none{margin:14px 0 0;background:#f7f4f1;border-radius:12px;padding:10px 14px;font-size:.86rem;color:var(--ink-2)}
@@ -1202,25 +1205,6 @@ footer a{color:var(--ink-2)}
   </div>
 </section>
 
-<!-- 想い -->
-<section class="story" id="story">
-  <div class="wrap">
-    <span class="eyebrow">OUR WISH</span>
-    <h2>家族なのに、<br><span style="white-space:nowrap">一緒に出かけるのが</span><span style="white-space:nowrap">むずかしい。</span></h2>
-    <figure class="story-img"><picture><source srcset="/img/story.webp" type="image/webp"><img src="/img/story.jpg" alt="夕方の玄関で、キャリーに入った猫とリードをつけた柴犬を連れて出かける家族" width="1600" height="900" loading="lazy" onerror="this.parentNode.remove()"></picture></figure>
-    <p>具合が悪そうなのに、どうやって病院へ連れて行けばいいかわからない。電車には大きな子は乗せられないし、ふつうのタクシーは断られるかもしれない。車がない、運転できない、運転しながら様子を見られない。</p>
-    <p>犬や猫と暮らす人なら、一度はこんな日を過ごしたことがあるのではないでしょうか。</p>
-    <ul class="facts">
-      <li><b>ケース込み10kgまで</b>電車に乗せられるのは、ケースに入る小さな子だけ。<small>JR東日本の手回り品のきまり</small></li>
-      <li><b>1世帯 1.009台</b>全国の平均でも、車は1世帯に1台ほど。家族が使っている日もあり、東京では0.405台と、車のない家庭もめずらしくありません。<small>自動車検査登録情報協会（2025年3月末）</small></li>
-      <li><b>「様子を見よう」</b>連れて行くのが大変で受診を先のばしにすると、重症化するおそれがあると獣医師も書いています。<small>片川優子（獣医師）・現代ビジネス</small></li>
-    </ul>
-    <p>ペットタクシーは、そんなときのためにあります。家の前から行き先の前まで、乗り換えなし。飼い主は運転せず、すぐそばで声をかけていられます。</p>
-    <p>でも、ペットタクシーは小さなお店が多く、電話がつながらない、空いていない、料金がわからない、ということもよくあります。だから私たちは、その子に合う車を、一緒に探せる場所をつくることにしました。</p>
-    <p class="end"><span style="white-space:nowrap">移動を理由に、</span><span style="white-space:nowrap">あきらめないでほしい。</span><br><span style="white-space:nowrap">大切な家族のために、</span><span style="white-space:nowrap">やさしい一台を。</span></p>
-  </div>
-</section>
-
 <!-- 犬のタクシー・猫のタクシー -->
 <section id="dog-cat" style="padding-top:0">
   <div class="wrap">
@@ -1351,6 +1335,25 @@ footer a{color:var(--ink-2)}
   </div>
 </section>
 
+<!-- 想い（予約したい人の邪魔にならないよう FAQ の後ろへ。2026-11-08 飼い主目線のレビュー #11） -->
+<section class="story" id="story">
+  <div class="wrap">
+    <span class="eyebrow">OUR WISH</span>
+    <h2>家族なのに、<br><span style="white-space:nowrap">一緒に出かけるのが</span><span style="white-space:nowrap">むずかしい。</span></h2>
+    <figure class="story-img"><picture><source srcset="/img/story.webp" type="image/webp"><img src="/img/story.jpg" alt="夕方の玄関で、キャリーに入った猫とリードをつけた柴犬を連れて出かける家族" width="1600" height="900" loading="lazy" onerror="this.parentNode.remove()"></picture></figure>
+    <p>具合が悪そうなのに、どうやって病院へ連れて行けばいいかわからない。電車には大きな子は乗せられないし、ふつうのタクシーは断られるかもしれない。車がない、運転できない、運転しながら様子を見られない。</p>
+    <p>犬や猫と暮らす人なら、一度はこんな日を過ごしたことがあるのではないでしょうか。</p>
+    <ul class="facts">
+      <li><b>ケース込み10kgまで</b>電車に乗せられるのは、ケースに入る小さな子だけ。<small>JR東日本の手回り品のきまり</small></li>
+      <li><b>1世帯 1.009台</b>全国の平均でも、車は1世帯に1台ほど。家族が使っている日もあり、東京では0.405台と、車のない家庭もめずらしくありません。<small>自動車検査登録情報協会（2025年3月末）</small></li>
+      <li><b>「様子を見よう」</b>連れて行くのが大変で受診を先のばしにすると、重症化するおそれがあると獣医師も書いています。<small>片川優子（獣医師）・現代ビジネス</small></li>
+    </ul>
+    <p>ペットタクシーは、そんなときのためにあります。家の前から行き先の前まで、乗り換えなし。飼い主は運転せず、すぐそばで声をかけていられます。</p>
+    <p>でも、ペットタクシーは小さなお店が多く、電話がつながらない、空いていない、料金がわからない、ということもよくあります。だから私たちは、その子に合う車を、一緒に探せる場所をつくることにしました。</p>
+    <p class="end"><span style="white-space:nowrap">移動を理由に、</span><span style="white-space:nowrap">あきらめないでほしい。</span><br><span style="white-space:nowrap">大切な家族のために、</span><span style="white-space:nowrap">やさしい一台を。</span></p>
+  </div>
+</section>
+
 <!-- 9. キャンセル・ご利用にあたって・個人情報 -->
 <section id="policy">
   <div class="wrap">
@@ -1392,7 +1395,7 @@ footer a{color:var(--ink-2)}
         <p>ペットタクシー予約窓口（以下「当サイト」）は、お預かりする個人情報を次のとおり取り扱います。</p>
         <h4>1. お預かりする情報</h4>
         <ul><li>お名前、電話番号、メールアドレス</li><li>お迎えの場所、経由地、行き先、希望の日時、ペットの種類・体重・年齢などの情報、メモ欄の内容</li></ul>
-        <p>フォームのお迎えの都道府県を近い順に並べるため、通信の情報（IPアドレス）から大まかな地域を推定することがあります。並び順にだけ使い、保存はしません。</p>
+        <p>フォームのお迎えの都道府県を近い順に並べるためと、緊急のときの連絡先のページで近くの都道府県を最初に選んでおくため、通信の情報（IPアドレス）や、位置の利用をすでに許可している場合は端末の位置から、大まかな地域を推定することがあります。この目的にだけ使い、保存はしません。</p>
         <p>場所の候補や道のり（料金の目安・お店からの距離）を調べるため、入力した場所の位置を地図・道路データのサービスに送ることがあります。お名前や連絡先は送りません。</p>
         <h4>2. 使う目的</h4>
         <ul><li>ペットタクシー会社への空き状況と料金の問い合わせ、お迎え時間・料金・予約の確定のご連絡</li><li>キャンセルやお問い合わせへの対応</li><li>送迎のあとに、送迎があったかどうかをおたずねするご連絡（提携の会社とのご利用の確認に使います）</li><li>サービスの改善（個人が特定できない形の集計に限ります）</li><li>ペットタクシー会社さまから提携のお申し込みやお問い合わせをいただいたときは、その内容の確認、ご連絡、提携した会社さまの掲載に使います</li></ul>

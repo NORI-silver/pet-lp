@@ -391,6 +391,9 @@ footer a{color:var(--ink-2)}
 .pick-bar span::before{content:"✓ ";color:var(--o)}
 .pick-bar .btn{width:auto;flex:none;padding:12px 18px;font-size:.92rem;box-shadow:none}
 #thanks{scroll-margin-top:84px}
+.emg-pick select{font-size:1.05rem;border:2px solid var(--o)}
+.emg-guess{margin:6px 0 0;font-size:.8rem;color:var(--ink-2)}
+.emg-guess[hidden]{display:none}
 .open-note{margin:8px 0 0;background:#f7f4f1;border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
 .open-note[hidden],#contactBox[hidden]{display:none}
 .contact-none{margin:14px 0 0;background:#f7f4f1;border-radius:12px;padding:10px 14px;font-size:.86rem;color:var(--ink-2)}
