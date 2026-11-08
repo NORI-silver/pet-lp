@@ -1371,7 +1371,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
     var ready = cards.filter(function(c){ return !c.display_only; }).length, later = cards.length - ready;
-    if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。いまはどの会社にも、このサイトからはまだ問い合わせできません。料金は確定料金ではありません。" : (later ? cards.length + "社が候補です（うち" + later + "社は、このサイトからはまだ問い合わせできません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。問い合わせたい会社を選ぶか、いちばん下の「全社に問い合わせる」でまとめて送れます。");
+    if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。いまはどの会社にも、このサイトからはまだ問い合わせできません。料金は確定料金ではありません。" : (later ? cards.length + "社が候補です（うち" + later + "社は、このサイトからはまだ問い合わせできません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。" + (ready >= 2 ? "問い合わせたい会社を選ぶか、いちばん下の「全社に問い合わせる」でまとめて送れます。" : "問い合わせたい会社を選んでください。"));
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。問い合わせは送信されていません。</span>';
     $("partnerSortBox").hidden = cards.length < 2;
     var hasDist = cards.some(function(c){ return !!c.shop; }); // 予約のしくみが古い版のあいだはお店の位置が来ないので、距離のしぼり込みを出さない
