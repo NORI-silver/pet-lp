@@ -73,6 +73,9 @@ def build(root):
     data["mobile_grooming"] = _multi(_j(root, "grooming.json")["groomers"], ("services",))
     sf = _j(root, "sougi_facilities.json")["facilities"]
     data["pet_funeral"] = [_row(x["pref"], x, "・".join(x.get("kinds", [])) + (("／" + x["price"]) if x.get("price") else "")) for x in sf]
+    import gen_sougi_fac  # 施設ページがある施設は page を足す（docs/facility-page.md）
+    for x, r in zip(sf, data["pet_funeral"]):
+        if x["id"] in gen_sougi_fac.IDS: r["page"] = SITE + gen_sougi_fac.href(x)
     jc = _j(root, "jichitai.json")
     data["city_animal_office"] = [_row(x["pref"], x) for x in jc["prefs"]] + [_row(x["pref"], x) for x in jc["cities"]]
     for k, v in data.items():
