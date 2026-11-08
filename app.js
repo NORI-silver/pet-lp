@@ -170,7 +170,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
     var ready = cards.filter(function(c){ return !c.display_only; }).length, later = cards.length - ready;
-    if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。いまはどの会社にも、このサイトからはまだ問い合わせできません。料金は確定料金ではありません。" : (later ? cards.length + "社が候補です（うち" + later + "社は、このサイトからはまだ問い合わせできません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。問い合わせたい会社を選ぶか、いちばん下の「全社に問い合わせる」でまとめて送れます。");
+    if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。いまはどの会社にも、このサイトからはまだ問い合わせできません。料金は確定料金ではありません。" : (later ? cards.length + "社が候補です（うち" + later + "社は、このサイトからはまだ問い合わせできません）。" : cards.length + "社が候補です。") + "空き状況は未確認です。料金は確定料金ではありません。" + (ready >= 2 ? "問い合わせたい会社を選ぶか、いちばん下の「全社に問い合わせる」でまとめて送れます。" : "問い合わせたい会社を選んでください。"));
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。問い合わせは送信されていません。</span>';
     $("partnerSortBox").hidden = cards.length < 2;
     var hasDist = cards.some(function(c){ return !!c.shop; }); // 予約のしくみが古い版のあいだはお店の位置が来ないので、距離のしぼり込みを出さない
@@ -303,7 +303,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var article = document.createElement("article"); article.className = "partner-card";
       function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
       var h4 = text("h4", card.label);
-      if (card.demo) { var bd = document.createElement("span"); bd.className = "demo-badge"; bd.textContent = "提携（見本）"; h4.appendChild(bd); }
+      if (card.demo || card.listed) { var bd = document.createElement("span"); bd.className = "demo-badge"; bd.textContent = card.demo ? "提携（見本）" : "提携"; h4.appendChild(bd); }
       // お店からお迎えの場所までの車の道のり（道路データで調べる。直線距離は出さない。Nori 2026-11-01）
       if ("shop" in card) { var road = roadOf(card, leg);
         text("p", !card.shop ? "お店の場所は確認中です" : road === undefined ? "お店からの道のりを調べています…" : road == null ? "お店からの道のりは調べられませんでした" : "お店からお迎えの場所まで 車で" + road.toFixed(1) + "km", "partner-dist"); }

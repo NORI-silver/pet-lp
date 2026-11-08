@@ -43,6 +43,13 @@ var CONFIG = {
   // true のあいだは、提携先シートの会社（P002・P003）も含めて全社「準備中」：予約の依頼は誰にも送れない（ボタンは押せず、サーバーでも断る。Nori「その2社もまだ準備中。送信はできないように」）
   // false にすると今までの状態（提携先の2社だけ・依頼できる）に戻る
   SHOW_ALL_CANDIDATES: true,
+  // 掲載をOKしてくれた会社（表示だけの会社の ID）。全社準備中のあいだも、社名・口コミつき・「提携」の印で出す（問い合わせはまだ送れない）
+  // Nori 2026-11-08「aiai掲載していいって。掲載して」
+  LISTED_IDS: [],
+  // 全社準備中のあいだも、問い合わせを受け付ける会社（提携先シートのID → 料金・口コミ・特長に使う表示だけの会社のID）
+  // ここの会社にだけは、設定 B1 が「止める」のままでも本物の会社あてに送る。ほかの会社は今までどおり送らない
+  // Nori 2026-11-08「aiaiはOPENにしていい」
+  OPEN_PARTNERS: {'P060': 'D13b7c6f'},
   // 表示だけの会社は、お店からお迎えの場所までが直線でこのkmを超えると出さない（都道府県が合っていても遠すぎる会社を外す）
   DISPLAY_MAX_KM: 80,
 
@@ -447,7 +454,7 @@ function pickPartners_(r, stage) {
   var care = r['介助'] === '必要';
   return partners_().filter(function (pt) {
     if (!pt.active) return false;
-    if (CONFIG.SHOW_ALL_CANDIDATES || isDisplayOnly_(pt.id)) return false; // 全社準備中のあいだ・表示だけの会社には送らない
+    if ((CONFIG.SHOW_ALL_CANDIDATES && !isOpen_(pt.id)) || isDisplayOnly_(pt.id)) return false; // 全社準備中のあいだ（受け付けを始めた会社を除く）・表示だけの会社には送らない
     if (!fitsCar_(pt, r)) return false;
     if (!fitsCage_(pt, r)) return false;
     if (!inTime_(pt, r)) return false;
@@ -1436,7 +1443,9 @@ function footer_() {
 
 // テストの依頼か（会社には送らず、運営者のメールに送る）
 function isTest_(r) {
-  if (CONFIG.TEST_MODE || !liveSending_()) return true;
+  if (CONFIG.TEST_MODE) return true;
+  var ids = pickedIds_(r); // 受け付けを始めた会社だけに宛てた依頼は、B1 が「止める」でも会社に送る（Nori 2026-11-08「aiaiはOPENにしていい」）
+  if (!liveSending_() && !(ids.length && ids.every(isOpen_))) return true;
   if (/^\s*テスト/.test(String(r['お名前'] || ''))) return true;
   var m = String(r['メール'] || '').trim().toLowerCase();
   var me = ''; try { me = Session.getEffectiveUser().getEmail(); } catch (err) {}
@@ -1899,6 +1908,12 @@ function quoteSignature_(p, id, expires, price) {
 }
 
 function selectionPrice_(pt, p) {
+  var od = openDisplay_(pt.id);
+  if (od) { // 受け付けを始めた会社は、表示だけの会社と同じ公式サイトの料金表で計算する（お店からの道のりも同じく調べる）
+    var rd = {}; try { rd = JSON.parse(p.route_details || '{}') || {}; } catch (e) {}
+    if (od.shop && od.fare) loadRoadKm_([{lat:od.shop[0], lng:od.shop[1]}], [rd.from, rd.to, rd.backFrom, rd.backTo]);
+    return displayPrice_(od, p) || {amount:null,text:'料金はお見積もり',night:''};
+  }
   var key = Object.keys(SELECTION_FARES).filter(function(k) { return SELECTION_FARES[k].partner_id === pt.id; })[0];
   if (!key) return { amount:null,text:'料金はお見積もり',night:'' };
   var c = SELECTION_FARES[key], d;
@@ -2003,6 +2018,11 @@ function quoteCards_(p) {
     var price = selectionPrice_(pt,p);
     if (!price) return null;
     // 全社準備中のあいだは、提携先の会社も表示だけ（トークンを出さない＝依頼できない）
+    var od = openDisplay_(pt.id);
+    if (od) return { id:pt.id, label:pt.name, listed:true, car:(od.car_type ? '車：' + od.car_type + '（公式サイトの記載）' : pt.car || '車の詳細は引き受け時に確認'),
+      points:od.points || [], limits:od.limits || [], shop:od.shop || null,
+      payment:od.pay ? 'お支払い：' + od.pay + '（公式サイトの記載）' : [pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は引き受け時にご案内',
+      price:price, review:null, check:checks_(pt, r).ask, expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
     if (CONFIG.SHOW_ALL_CANDIDATES) return anonCard_({ id:pt.id, label:pt.name, display_only:true, car:pt.car || '車の詳細は確認中です',
       payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は確認中です',
       price:price, review:null, check:[], points:PARTNER_POINTS[pt.id] || [], limits:PARTNER_LIMITS[pt.id] || [], shop:partnerShop_(pt.id) }, r['都府県'], '', p.demo_id);
@@ -2046,8 +2066,13 @@ function displayInTime_(c, at, now) {
 /* ───────── 提携していない会社は名前を出さない・お誘いした会社だけの見本画面（Nori 2026-11-02「AとC」） ───────── */
 
 // 名前・口コミ・お店の正確な場所を出さない会社か。問い合わせできない会社（表示だけ・全社準備中のあいだの提携先）はすべて。見本の会社だけ例外
+function isOpen_(id) { return !!(CONFIG.OPEN_PARTNERS || {})[id]; }
+function openDisplay_(id) { var d = (CONFIG.OPEN_PARTNERS || {})[id]; return d ? DISPLAY_COMPANIES.filter(function(c) { return c.id === d; })[0] || null : null; }
+function openDisplayIds_() { var o = CONFIG.OPEN_PARTNERS || {}; return Object.keys(o).map(function(k) { return o[k]; }); }
+function isListed_(id) { return (CONFIG.LISTED_IDS || []).indexOf(id) >= 0; }
 function isAnon_(id, demoId) {
   if (demoId && id === demoId) return false;
+  if (isListed_(id) || isOpen_(id)) return false;
   return isDisplayOnly_(id) || !!CONFIG.SHOW_ALL_CANDIDATES;
 }
 // 「東京都・杉並区あたりの会社」。対応エリアの最初の市区町村から（都道府県の名前と同じなら付けない）
@@ -2064,6 +2089,7 @@ function anonCard_(card, pref, areaText, demoId) {
     card.check = [];
     return card;
   }
+  if (isListed_(card.id)) { card.listed = true; return card; }
   if (!isAnon_(card.id, demoId)) return card;
   card.label = anonLabel_(pref, areaText); card.anon = true;
   if (card.shop) card.shop = [Math.round(card.shop[0] * 100) / 100, Math.round(card.shop[1] * 100) / 100]; // 道のりの目安に使うだけ（1kmくらいにまるめる）
@@ -2107,7 +2133,8 @@ function displayCards_(r, p) {
   var kindText = kinds.map(function(k) { return ANIMAL_LABEL[k]; }).join('・');
   var rd = {};
   try { rd = JSON.parse((p || {}).route_details || '{}') || {}; from = rd.from; } catch (e) {}
-  var list = DISPLAY_COMPANIES.filter(function(c) { return displayServes_(c, r['都府県'], from) && displayInTime_(c, r['希望日時'], now) && animalOk(c).indexOf(false) < 0; });
+  var opened = openDisplayIds_();
+  var list = DISPLAY_COMPANIES.filter(function(c) { return opened.indexOf(c.id) < 0 && displayServes_(c, r['都府県'], from) && displayInTime_(c, r['希望日時'], now) && animalOk(c).indexOf(false) < 0; });
   if (p) loadRoadKm_(list.filter(function(c) { return c.shop && c.fare; }).map(function(c) { return {lat:c.shop[0], lng:c.shop[1]}; }), [rd.from, rd.to, rd.backFrom, rd.backTo]);
   return list.map(function(c) {
     var unsure = '', unknown = animalOk(c).indexOf(null) >= 0;
@@ -2439,7 +2466,7 @@ function reviewTarget_(id) {
   if (key && SELECTION_FARES[key].review_query) return {query:SELECTION_FARES[key].review_query, words:null, idKey:'PLACE_ID_' + id + '_' + SELECTION_FARES[key].review_query};
   var emg = EMG_REVIEWS[id];
   if (emg && emg.query) return {query:emg.query, words:[].concat(emg.name), idKey:'PLACE_ID_' + id + '_' + emg.query, emg:true};
-  var dc = DISPLAY_COMPANIES.filter(function(c) { return c.id === id; })[0];
+  var dc = openDisplay_(id) || DISPLAY_COMPANIES.filter(function(c) { return c.id === id; })[0]; // 受け付けを始めた会社は、表示だけの会社と同じ場所で口コミを探す
   // 社内用の事業者一覧（dashPlace_）と同じ場所IDを使う
   // 地図の名前は「COCOタク 小平店」のように登録名と少し違うことが多いので、ブランド名＋支店名の中心のことばで照らし合わせる（loose）。
   // 前の厳しい照らし合わせで「見つからない」と覚えた会社も探し直すよう、覚える場所を D2 に変えた（2026-10-31）
@@ -2622,7 +2649,7 @@ function validateSelection_(p) {
   if (error) return {ok:false,error:error};
   var expires = Number(p.quote_expires);
   if (!(expires > Date.now() && expires <= Date.now()+15*60000)) return {ok:false,error:'selection_expired'};
-  if (CONFIG.SHOW_ALL_CANDIDATES || isDisplayOnly_(p.partner_id)) return {ok:false,error:'selection_unavailable'}; // 全社準備中のあいだ・表示だけの会社には依頼できない
+  if ((CONFIG.SHOW_ALL_CANDIDATES && !isOpen_(p.partner_id)) || isDisplayOnly_(p.partner_id)) return {ok:false,error:'selection_unavailable'}; // 全社準備中のあいだ・表示だけの会社には依頼できない
   var pt = selectionCandidates_(selectionRide_(p)).filter(function(x) { return x.id === p.partner_id && !isDisplayOnly_(x.id); })[0];
   if (!pt) return {ok:false,error:'selection_unavailable'};
   var price = selectionPrice_(pt,p);
