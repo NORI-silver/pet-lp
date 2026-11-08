@@ -303,7 +303,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var article = document.createElement("article"); article.className = "partner-card";
       function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
       var h4 = text("h4", card.label);
-      if (card.demo || card.listed) { var bd = document.createElement("span"); bd.className = "demo-badge"; bd.textContent = card.demo ? "提携（見本）" : "提携"; h4.appendChild(bd); }
+      if (card.demo) { var bd = document.createElement("span"); bd.className = "demo-badge"; bd.textContent = "提携（見本）"; h4.appendChild(bd); }
       // お店からお迎えの場所までの車の道のり（道路データで調べる。直線距離は出さない。Nori 2026-11-01）
       if ("shop" in card) { var road = roadOf(card, leg);
         text("p", !card.shop ? "お店の場所は確認中です" : road === undefined ? "お店からの道のりを調べています…" : road == null ? "お店からの道のりは調べられませんでした" : "お店からお迎えの場所まで 車で" + road.toFixed(1) + "km", "partner-dist"); }
@@ -340,8 +340,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var caution = text("p", "", "partner-caution");
       var cb = document.createElement("b"); cb.textContent = card.price.amount == null ? "確定料金ではありません" : "概算見積もりです（確定料金ではありません）";
       caution.append(cb, card.price.amount == null ? "確定料金は会社からお知らせします。" : "実際の料金と異なる場合があります。");
+      // 車・お支払いは、たたまずに出す（Nori 2026-11-08「支払い方法とかできるものは全部出しておいたほうが」）
+      if (card.car) text("p", card.car, "partner-info"); if (card.payment) text("p", /^お支払い/.test(card.payment) ? card.payment : "お支払い：" + card.payment, "partner-info");
       var more = document.createElement("details"); more.className = "partner-more";
-      var ms = document.createElement("summary"); ms.textContent = "料金の内訳・車・お支払いなどを見る"; more.appendChild(ms);
+      var ms = document.createElement("summary"); ms.textContent = "料金の内訳を見る"; more.appendChild(ms);
       article.appendChild(more);
       function add(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; more.appendChild(el); return el; }
       // 「引き受けるときに会社が確かめること」（card.check）は、会社あての問い合わせメールにだけ出す。お客さまのカードには出さない（Nori 2026-11-08「ユーザに見せるべき？」）
@@ -366,7 +368,6 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         if (card.price.planNote) add("p",roundYenText(card.price.planNote),"partner-note");
       }
       if (card.price.night && !(card.price.local && card.price.local.nightExtra)) add("p",roundYenText(card.price.night),"partner-note");
-      add("p", card.car); add("p", card.payment);
       add("p", (card.price.amount == null ? "" : card.price.fixed ? "公式サイトの定額をもとにした概算です。" : "公式サイトの料金表をもとにした概算です。") + (card.price.fixed && card.price.tollIncluded ? "" : card.price.fixed ? "駐車場代は別途実費です。" : "通行料・駐車場代は別途実費です。"), "partner-note");
       // 表示だけの会社（準備中）。予約の依頼はできない（サーバーでも断る）
       if (card.display_only) {
