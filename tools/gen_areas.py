@@ -711,7 +711,7 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
 open(os.path.join(ROOT, "guide", "index.html"), "w", encoding="utf-8").write(hub)
 
 # 利用規約（/terms/）
-from terms import TERMS, TERMS_DATE
+from terms import TERMS, TERMS_DATE, TERMS_REVISED
 def terms_block(v):
     if isinstance(v, tuple) and v[0] == "ul": return "<ul>" + "".join(f"<li>{e(x)}</li>" for x in v[1]) + "</ul>"
     if isinstance(v, tuple) and v[0] == "html": return f"<p>{v[1]}</p>"
@@ -722,7 +722,7 @@ tp = head("利用規約｜ペットタクシー予約窓口", "ペットタク�
 <section class="area-hero"><div class="wrap"><h1>利用規約</h1><p class="lede">ペットタクシー予約窓口をご利用いただく前に、お読みください。</p></div></section>
 <section><div class="wrap prose terms">
 {''.join(f'<h2>{e(h)}</h2>' + ''.join(terms_block(v) for v in body) for h, body in TERMS)}
-<p class="small">{TERMS_DATE} 制定・2026年11月1日 改定</p>
+<p class="small">{TERMS_DATE} 制定・{TERMS_REVISED} 改定</p>
 </div></section>
 </main>
 """ + foot("/#form")
@@ -730,14 +730,14 @@ os.makedirs(os.path.join(ROOT, "terms"), exist_ok=True)
 open(os.path.join(ROOT, "terms", "index.html"), "w", encoding="utf-8").write(tp)
 
 # 提携規約（/partner/terms/）。本文は tools/partner_terms.py
-from partner_terms import PTERMS, PTERMS_DATE
+from partner_terms import PTERMS, PTERMS_DATE, PTERMS_REVISED
 pterms_url = SITE + "/partner/terms/"
 ptp = head("提携規約（ペットタクシー会社さま向け）｜ペットタクシー予約窓口", "ペットタクシー予約窓口と提携してくださるペットタクシー会社さま向けの規約です。問い合わせとお返事、予約の確定、手数料（当面はいただきません）、個人情報、提携の終了などを定めています。", pterms_url, "") + f"""
 <main>
 <section class="area-hero"><div class="wrap"><h1>提携規約<small style="display:block;font-size:.95rem;color:var(--o-d)">ペットタクシー会社さま向け</small></h1><p class="lede">当サイトと提携してくださる会社さまとの約束です。お申し込みのあと、この規約をメールでお送りし、同意のお返事をいただいてから提携が始まります。</p></div></section>
 <section><div class="wrap prose terms">
 {''.join(f'<h2>{e(h)}</h2>' + ''.join(terms_block(v) for v in body) for h, body in PTERMS)}
-<p class="small">{PTERMS_DATE} 制定</p>
+<p class="small">{PTERMS_DATE} 制定・{PTERMS_REVISED} 改定</p>
 <p><a href="/partner/">提携のご案内にもどる</a></p>
 </div></section>
 </main>
