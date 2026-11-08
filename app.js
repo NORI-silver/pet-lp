@@ -105,7 +105,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 事業者のカードを出すのに足りない項目を、カードの場所に出す（入力を始めてから）
   function showNeed(){
     var box = $("partnerNeed"), list = missingFields($("partnerResults"));
-    var started = ["pickup","dropoff","date","petCount"].some(function(id){ return $(id).value; });
+    var started = ["pickup","dropoff","date"].some(function(id){ return $(id).value; }) || Array.prototype.some.call(petsBox.querySelectorAll("input[name$=_weight]"), function(el){ return el.value; });
     box.hidden = !started || !list.length;
     if (box.hidden) return;
     box.replaceChildren(document.createTextNode("事業者と料金を出すには、あと次の項目を入れてください（押すとその場所へ移ります）。"), needButtons(list));
@@ -434,6 +434,28 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     b.hidden = n < 2 || sending;
     if (n >= 2) b.textContent = "条件に合う全" + n + "社に問い合わせる（無料）";
   }
+  // 会社を選んだら、次にすること（ご連絡先を入れて送る）を画面の下に出す（2026-11-08 CVR）。送るボタンが見えたら隠す
+  (function(){
+    var bar = $("pickBar"), send = $("sendSelected"), sendSeen = false, formSeen = true;
+    function sync(){
+      var on = !send.hidden && !send.disabled && !sendSeen && formSeen && !sending && form.style.display !== "none";
+      bar.hidden = !on;
+      if (on) $("pickBarGo").textContent = contactMiss() ? "次へ：ご連絡先 ↓" : "問い合わせへ ↓";
+      if (on) $("pickBarTxt").textContent = !chosenPicks.length && chosenGo && chosenBack ? "行きと帰りの会社を選んでいます" : chosenPicks.length > 1 ? chosenPicks.length + "社を選んでいます" : chosenPicks.length ? "選択中：" + chosenPicks[0].label : "会社を選んでいます";
+    }
+    new MutationObserver(sync).observe(send, {attributes: true, attributeFilter: ["hidden", "disabled"], childList: true, characterData: true, subtree: true});
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function(es){ sendSeen = es[0].isIntersecting; sync(); }).observe(send);
+      new IntersectionObserver(function(es){ formSeen = es[0].isIntersecting; sync(); }).observe(form);
+    }
+    function contactMiss(){ return ["name", "email", "tel", "agree"].map(function(id){ return $(id); }).filter(function(el){ return !el.checkValidity(); })[0]; }
+    form.addEventListener("change", sync);
+    $("pickBarGo").addEventListener("click", function(){
+      var miss = contactMiss();
+      track("pick_bar_next", {filled: miss ? 0 : 1});
+      if (miss) jumpTo(miss); else send.scrollIntoView({block: "center", behavior: "smooth"});
+    });
+  })();
   $("sendAll").addEventListener("click", function(){
     if (sending) return;
     var all = allTargets();
@@ -612,6 +634,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     $("petHint").hidden = n > 0;
   }
   countSel.addEventListener("change", function(){ setPetCount(countSel.value); });
+  setPetCount(countSel.value); // 最初から1匹分の欄を出す（いちばん多い1匹なら、頭数を選ぶ手間がいらない）
   // 「ペットだけで乗る」：人数は0人にして、渡す人・受け取る人をたずねる
   function syncOnly(){
     var on = $("petOnly").checked;
@@ -1239,7 +1262,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     $("restore").style.display = "block";
   }
   $("restoreClear").addEventListener("click", function(){
-    form.reset(); setPetCount(0); syncVia(); syncTrip();
+    form.reset(); setPetCount(countSel.value); syncVia(); syncTrip();
     $("restore").style.display = "none";
   });
   // お詫びメールの「日時だけ変えてもう一度」リンク（?r=受付番号&k=署名）
@@ -2009,7 +2032,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         addHist([o.pickup, o.via, o.dropoff, o.ret_pickup, o.ret_dropoff]);
         form.style.display = "none";
         $("thanks").style.display = "block";
-        $("form").scrollIntoView({behavior:"smooth"});
+        $("thanks").scrollIntoView({block:"start", behavior:"smooth"}); // 完了の知らせが画面の外にならないように
         track("generate_lead");
       })
       .catch(function(){

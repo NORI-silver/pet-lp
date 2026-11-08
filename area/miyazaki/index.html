@@ -415,6 +415,13 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:16px}
 footer nav a{color:var(--ink-2);text-decoration:none}
 footer a{color:var(--ink-2)}
 
+.pick-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#fff;box-shadow:0 -6px 24px rgba(28,26,24,.14);font-size:.86rem;font-weight:700;color:var(--ink)}
+.pick-bar[hidden]{display:none}
+.pick-bar span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pick-bar span::before{content:"✓ ";color:var(--o)}
+.pick-bar .btn{width:auto;flex:none;padding:12px 18px;font-size:.92rem;box-shadow:none}
+#thanks{scroll-margin-top:84px}
+.contact-safe{margin:-4px 0 14px;font-size:.84rem;color:var(--ink-2);background:var(--o-l);border-radius:12px;padding:10px 14px}
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 16px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(255,255,255,0),#fff 30%);pointer-events:none}
 .sticky .btn{pointer-events:auto;max-width:none;padding:15px}
 
@@ -901,7 +908,7 @@ footer a{color:var(--ink-2)}
         <div class="group">
           <div class="group-h"><span>2</span>どんな子ですか？</div>
           <div class="f"><label for="petCount">一緒に乗る子の数<span class="need">必須</span></label>
-            <select id="petCount" required><option value="">選んでください</option><option value="1">1匹</option><option value="2">2匹</option><option value="3">3匹</option><option value="4">4匹</option><option value="5">5匹</option></select></div>
+            <select id="petCount" required><option value="">選んでください</option><option value="1" selected>1匹</option><option value="2">2匹</option><option value="3">3匹</option><option value="4">4匹</option><option value="5">5匹</option></select></div>
           <p class="pet-hint" id="petHint">頭数を選ぶと、1匹ずつの入力欄が出ます。</p>
           <div id="pets"></div>
           <label class="chk"><input type="checkbox" id="petOnly" name="pet_only" value="1"> ペットだけで乗る（飼い主さんは乗らない）</label>
@@ -945,17 +952,10 @@ footer a{color:var(--ink-2)}
           </div>
         </section>
 
-        <!--REGULAR_TAXI-->
-        <section class="taxi-box" id="taxiBox" aria-labelledby="taxiTitle" hidden>
-          <h3 id="taxiTitle">キャリーに入る子なら、ふつうのタクシーも使えます</h3>
-          <p class="taxi-lead">ペットと一緒に乗れることを公式サイトに書いているタクシー会社だけを載せています。予約は、各社の公式サイト・アプリ・電話から、ご自身でお願いします（当サイトからは問い合わせできません）。予約のときに、ペットが一緒であることを伝えてください。乗せられるかは、最後は会社や運転手さんの判断になります。</p>
-          <div class="taxi-list" id="taxiList"></div>
-          <p class="taxi-note" id="taxiNote"></p>
-        </section>
-        <!--/REGULAR_TAXI-->
 
         <div class="group">
           <div class="group-h"><span>3</span>ご連絡先</div>
+          <p class="contact-safe">お名前・メール・電話番号は、予約を確定するまで会社には伝わりません。問い合わせの返事はメールで届きます。</p>
           <div class="f"><label for="name">お名前<span class="need">必須</span></label>
             <input type="text" id="name" name="name" placeholder="例：山田 花子" required autocomplete="name"></div>
           <div class="two">
@@ -974,6 +974,15 @@ footer a{color:var(--ink-2)}
         <p id="err" role="alert"></p>
         <button class="btn" id="sendSelected" type="submit" hidden>選んだ事業者に空き状況と料金を問い合わせる（無料）</button>
         <button class="btn btn-all" id="sendAll" type="button" hidden>条件に合う全社に問い合わせる（無料）</button>
+        <div class="pick-bar" id="pickBar" hidden><span id="pickBarTxt"></span><button type="button" class="btn" id="pickBarGo">次へ：ご連絡先 ↓</button></div>
+        <!--REGULAR_TAXI-->
+        <section class="taxi-box" id="taxiBox" aria-labelledby="taxiTitle" hidden>
+          <h3 id="taxiTitle">キャリーに入る子なら、ふつうのタクシーも使えます</h3>
+          <p class="taxi-lead">ペットと一緒に乗れることを公式サイトに書いているタクシー会社だけを載せています。予約は、各社の公式サイト・アプリ・電話から、ご自身でお願いします（当サイトからは問い合わせできません）。予約のときに、ペットが一緒であることを伝えてください。乗せられるかは、最後は会社や運転手さんの判断になります。</p>
+          <div class="taxi-list" id="taxiList"></div>
+          <p class="taxi-note" id="taxiNote"></p>
+        </section>
+        <!--/REGULAR_TAXI-->
       </form>
 
       <div id="thanks">
@@ -1349,6 +1358,6 @@ footer a{color:var(--ink-2)}
 
 <div class="sticky"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
 
-<script src="/app.js?v=8b57ae6410"></script>
+<script src="/app.js?v=e21fba0c99"></script>
 </body>
 </html>
