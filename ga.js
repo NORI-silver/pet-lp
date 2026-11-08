@@ -8,7 +8,18 @@
   window.dataLayer = window.dataLayer || [];
   window.gtag = function(){ dataLayer.push(arguments); };
   gtag("js", new Date());
-  IDS.forEach(function(id){ gtag("config", id); });
+  // URL の受付番号・署名・見本のリンクなどは送らない。広告の印（utm_…・gclid）だけ残す（2026-11-08）
+  function clean(u){
+    try {
+      var x = new URL(u), q = new URLSearchParams();
+      x.searchParams.forEach(function(v, k){ if (/^utm_/.test(k) || k === "gclid") q.append(k, v); });
+      var t = q.toString();
+      return x.origin + x.pathname + (t ? "?" + t : "");
+    } catch (e) { return ""; }
+  }
+  var opt = {page_location: clean(location.href)};
+  if (document.referrer) opt.page_referrer = clean(document.referrer);
+  IDS.forEach(function(id){ gtag("config", id, opt); });
   var s = document.createElement("script"); s.async = true;
   s.src = "https://www.googletagmanager.com/gtag/js?id=" + IDS[0];
   document.head.appendChild(s);

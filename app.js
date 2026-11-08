@@ -8,6 +8,9 @@ var ROAD_API = "https://router.project-osrm.org";
 var DEMO = {tok: (function(){ try { return new URLSearchParams(location.search).get("demo") || ""; } catch (e) { return ""; } })(), ok: false, name: ""};
 /* アクセス解析に操作の回数だけを送る（入力内容は送らない）。ga.js が動いていないときは何もしない */
 function track(name, params){ if (window.gtag) gtag("event", name, params || {}); }
+/* 計測に使う項目の名前（ペットごとの欄は pet_… にまとめる）。値は使わない */
+function fieldName(el){ return String(el && (el.name || el.id) || "").replace(/^p\d+_/, "pet_").slice(0, 40); }
+var formEntry = "";
 var partnersTracked = false;
 var MAX_PETS = 5;
 var lastSig = "", reqKey = "";
@@ -2048,6 +2051,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (DEMO.ok && (chosenPicks.length || chosenGo || chosenBack)) { demoSent(); return; } // 見本の画面では送らない
     err.style.display = "none";
     function fail(msg, el){
+      track("form_error", {field_name: el ? fieldName(el) : "none"}); // 止まった項目の名前だけ（中身は送らない）
       err.textContent = msg; err.style.display = "block";
       if (el) jumpTo(el);
     }
@@ -2119,11 +2123,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       fail(msg);
     }
     // 受付の仕組みが保存できたと返してきたときだけ、完了画面にする
+    var sendInfo = {companies: splitPick ? 2 : picks.length, split: splitPick ? 1 : 0, trip: trip === "往復" ? "round" : "one_way", pref: $("pref").value};
+    track("inquiry_submit", sendInfo);
     fetch(GAS_URL, {method:"POST", body: body})
       .then(function(res){ return res.json(); })
       .then(function(r){
         if (!r || !r.ok) {
           var e = String(r && r.error || "");
+          track("inquiry_fail", {reason: e.slice(0, 40) || "unknown"});
           if (e.indexOf("selection_") === 0 || e === "missing") { clearPartners(); retry("候補を更新しています。表示されたら、もう一度事業者を選んでください。"); queuePartners(); return; }
           if (e === "area") return retry("お迎えの場所が対応エリアの外のようです。お迎えの場所を確かめてください。");
           if (e === "datetime") return retry("お迎えの日時が近すぎるか、読み取れませんでした。いまから3時間後より先の日時を選び直してください。");
@@ -2137,7 +2144,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         form.style.display = "none";
         $("thanks").style.display = "block";
         $("thanks").scrollIntoView({block:"start", behavior:"smooth"}); // 完了の知らせが画面の外にならないように
-        track("generate_lead");
+        track("generate_lead", sendInfo);
       })
       .catch(function(){
         retry("受け付けできたか確認できませんでした。数分たっても受付メールが届かなければ、同じ事業者を選んで、もう一度問い合わせてください。入力内容はそのまま残っています。");
@@ -2149,8 +2156,32 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var a = e.target.closest && e.target.closest('a[href="#form"]');
     if (!a) return;
     e.preventDefault(); toFormStart(true);
+    formEntry = "cta"; track("form_cta", {cta: a.getAttribute("data-cta") || (a.closest(".sticky") ? "sticky" : a.closest("nav") ? "nav" : "body")});
     try { history.replaceState(null, "", "#form"); } catch (x) {}
   });
   if (location.hash === "#form") setTimeout(function(){ toFormStart(false); }, 0);
+  // フォームの動きの計測（Nori 2026-11-08「フォームに入力した・サブミットした・フォームのページに来た・どこから来た」）。
+  // 送るのは項目の名前と回数だけ。お名前・連絡先・場所・メモなどの入力した中身は送らない
+  (function(){
+    var page = location.pathname === "/" ? "top" : /^\/(tokyo|kanagawa|saitama|chiba|area)\//.test(location.pathname) ? "area" : "other";
+    var from = (function(){ try { if (!document.referrer) return "direct"; var r = new URL(document.referrer); return r.hostname === location.hostname ? r.pathname : "external"; } catch (x) { return "unknown"; } })();
+    var base = {page_type: page, from_page: from};
+    if (location.hash === "#form") formEntry = "link";
+    var card = document.querySelector("#form .form-card") || form, seen = false;
+    function viewed(){ if (seen) return; seen = true; var p = {entry: formEntry || "scroll"}; for (var k in base) p[k] = base[k]; track("form_view", p); }
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { io.disconnect(); viewed(); } }, {threshold: 0.2});
+      io.observe(card);
+    }
+    var begun = false, done = {};
+    function field(e){
+      var el = e.target, n = fieldName(el);
+      if (!/^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName) || !n || n === "website") return; // 迷惑投稿よけの隠し欄は数えない
+      if (!begun) { begun = true; viewed(); var p = {field_name: n}; for (var k in base) p[k] = base[k]; track("form_start", p); }
+      if (e.type === "change" && !done[n]) { done[n] = 1; track("form_field", {field_name: n}); }
+    }
+    form.addEventListener("focusin", field);
+    form.addEventListener("change", field);
+  })();
   syncOpenNote(); // 地域ページ・前回の入力で県が入っているとき
 })();
