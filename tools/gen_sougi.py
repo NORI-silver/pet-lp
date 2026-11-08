@@ -39,9 +39,11 @@ def _fcard(e, f):
     tags = "".join(f'<span class="sg-tag">{e(x)}</span>' for x in f.get("kinds", []) + [y for y in f.get("services", []) if y not in f.get("kinds", [])])
     price = f'<small><b class="sg-k">料金の例</b>{e(f["price"])}（公式サイトの記載）</small>' if f.get("price") else ""
     to = f'{f["name"]} {f["pref"]}{f["city"]}' if f.get("city") else ""
+    import gen_sougi_fac  # 施設ページ（試しの30施設）があれば、カードからつなぐ
+    more = f'<a class="emg-taxi" href="{gen_sougi_fac.href(f)}">{e(f["name"])}のくわしい情報（できること・料金の比較）→</a>' if f["id"] in gen_sougi_fac.IDS else ""
     return (f'<div class="emg-item emg-co sg-pv"{FC.attrs(e, "sougi", f, FC.sougi_tags(f), f["name"], to, "この施設")}><a href="{e(f["u"])}" target="_blank" rel="noopener"><b>{e(f["name"])}</b></a>'
             f'<small>{e(f["city"])}</small><div class="sg-tags">{tags}</div>{price}'
-            + (f'<div class="emg-score" data-id="{e(f["id"])}"></div>' if f.get("review_query") else "") + '</div>')
+            + (f'<div class="emg-score" data-id="{e(f["id"])}"></div>' if f.get("review_query") else "") + more + '</div>')
 
 
 def _tbl(e, head, rows):

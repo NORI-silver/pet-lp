@@ -1608,6 +1608,10 @@ import gen_prefcats
 for _cat in (gen_prefcats.SOUGI, gen_prefcats.NIGHT):
     gen_prefpages.write_all(ROOT, _pp_ctx0, _cat); gen_prefpages.link_national(ROOT, _pp_ctx0, _cat)
     hosp_urls = hosp_urls + gen_prefpages.urls(SITE, _cat)
+# [B] SEO：ペット火葬場・霊園の施設ごとのページ（試しの30施設。tools/gen_sougi_fac.py）
+import gen_sougi_fac
+gen_sougi_fac.write_all(ROOT, _pp_ctx0)
+hosp_urls = hosp_urls + gen_sougi_fac.urls(SITE)
 # 全国の老犬ホーム・老猫ホーム（/rojin-home/）：お金を取らない情報ページ（tools/gen_rojin.py、データ tools/rojin.json）
 gen_rojin.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
