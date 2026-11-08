@@ -91,7 +91,7 @@
 | `tools/match_audit.cjs` | マッチング検査。フォームの全組み合わせを全国の事業者に当て、しぼりこめない点（黙って除外・見落とし・しくみ外・要確認）を事業者ごとに出す。`node tools/match_audit.cjs --companies <ダッシュボードの companies.json> --sheet <提携先タブの写し> --out <フォルダ>`。事業者データは公開リポジトリに置かない。何も送らない |
 | `booking/Code.gs` | 予約の仕組み（Apps Script）。**リポジトリにあっても本番には自動で反映されません**（下記） |
 | `booking/accept-preview.html` | 会社の引き受け画面の見た目確認用 |
-| `docs/` | 手順書（`codex.md`＝Codexの使い方、`ai-backup.md`＝GitHubで動く予備のAI、`seo-agents.md`＝エリア担当のSEO Agent（担当・順番・手順）、`seo-agents/`＝担当ごとの候補、`seo-log.md`＝SEOの作業メモ） |
+| `docs/` | 手順書（`facility-page.md`＝施設1つずつのページの型（要点が先・事実の表に出どころと確認日・構造化データ・作る条件。新しく施設ページを作るときは必ずこれに合わせる）、`codex.md`＝Codexの使い方、`ai-backup.md`＝GitHubで動く予備のAI、`seo-agents.md`＝エリア担当のSEO Agent（担当・順番・手順）、`seo-agents/`＝担当ごとの候補、`seo-log.md`＝SEOの作業メモ） |
 | `sns/` | XとInstagramの専用アカウント（名前は「ペットのくらし窓口」。shiokonbu は使わない。Nori 2026-11-03）の計画・プロフィール・投稿の元データ（`posts.json`）と画像（`node sns/gen.cjs` で作る）。投稿にはリンクを貼らない（Nori 2026-11-02）。Xは `.github/workflows/sns-x.yml` が毎週日曜に `sns/schedule_x.py` で火・金20時に自動で予約する（Nori「僕の作業はゼロにしたい」、確認なし）。サイトのページではない |
 | `tools/partner_shots.cjs` | 提携のご案内ページの「画面の見本」（`img/partner/`）を、`booking/Code.gs` の本物の文面・画面と架空の依頼で撮り直す（`node tools/partner_shots.cjs`）。会社あてのメールや引き受け画面を変えたら撮り直す。何も送らない |
 | `tools/site_watch.py` | 公式サイトとデータベースの照合（Nori 2026-11-01「毎回LLMとかで情報を参照するのはやめたい。DB化して、定期的にサイトの情報とDBの情報があっているかをチェック」）。`tools/site_watch.json`（公式サイトのURLと、そこに書いてある文・料金の数字だけ）のページを開き、いまもあるかを確かめる。`.github/workflows/site-watch.yml` が毎週月曜9時に動かして Issue「公式サイトとデータベースの照合」（ラベル site-watch）にまとめる。何も送らない。一覧は事業者マスターから `master/conditions/gen_watch.py` で作る。条件（同乗人数・頭数・大型犬・ワクチン・ケージ・ペットだけ）の決まった形の値は `master/conditions/conditions.json`（作り方 `build_db.py`）が正本で、照合や判定はこの値だけを見る（毎回文を読み直さない） |
