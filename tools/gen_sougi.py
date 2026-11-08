@@ -7,6 +7,7 @@
 # データ：tools/sougi.json（県庁所在地（東京都は新宿区、見つからない県はほかの市）と政令指定都市。how/fee/bone/k）。
 import json, os
 import prefkeep
+import facility_cards as FC
 from guides_sougi import SOUGI_GUIDES
 
 J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sougi.json"), encoding="utf-8"))
@@ -37,7 +38,8 @@ def _card(e, c):
 def _fcard(e, f):
     tags = "".join(f'<span class="sg-tag">{e(x)}</span>' for x in f.get("kinds", []) + [y for y in f.get("services", []) if y not in f.get("kinds", [])])
     price = f'<small><b class="sg-k">料金の例</b>{e(f["price"])}（公式サイトの記載）</small>' if f.get("price") else ""
-    return (f'<div class="emg-item emg-co sg-pv"><a href="{e(f["u"])}" target="_blank" rel="noopener"><b>{e(f["name"])}</b></a>'
+    to = f'{f["name"]} {f["pref"]}{f["city"]}' if f.get("city") else ""
+    return (f'<div class="emg-item emg-co sg-pv"{FC.attrs(e, "sougi", f, FC.sougi_tags(f), f["name"], to, "この施設")}><a href="{e(f["u"])}" target="_blank" rel="noopener"><b>{e(f["name"])}</b></a>'
             f'<small>{e(f["city"])}</small><div class="sg-tags">{tags}</div>{price}'
             + (f'<div class="emg-score" data-id="{e(f["id"])}"></div>' if f.get("review_query") else "") + '</div>')
 
@@ -255,8 +257,10 @@ def render(ctx):
       <h2 id="list" class="sh" style="scroll-margin-top:90px">都道府県ごとの自治体の受け付けと、民間のペット火葬場・霊園</h2>
       <p class="emg-free">自治体の受け付け方（引き取り・持ち込み・斎場での火葬・費用）は、市区町村ごとに違います。下の一覧は、各都道府県の県庁所在地（東京都は新宿区。23区は区ごと。県庁所在地の案内が見つからない県はほかの市）と政令指定都市の公式ページです。ほかの市町村にお住まいの方は、お住まいの市町村のサイトでご確認ください。民間のペット火葬場・霊園・納骨堂は、各都道府県の一部を、公式サイトで確かめた名前・市区町村・できること・料金の例で載せています（順位やおすすめではなく、市区町村の順に並べています。料金は変わることがあるので、必ず公式サイトで確かめてください）。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
+      {FC.chips(e, FC.SOUGI_CHIPS)}
       {body}
       <div class="emg-tips" id="faq"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
+      {FC.biz(e, "ペット火葬・霊園")}
       <p class="emg-note">{e(J["checked"])}に各自治体の公式ページで確かめた情報です。受け付けの方法や費用は変わることがあるので、必ずリンク先でご確認ください。掲載の内容の誤りは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
@@ -273,6 +277,7 @@ def render(ctx):
 </main>
 {prefkeep.LIST_JS}
 <script src="/reviews.js" defer></script>
+{FC.SCRIPT}
 """ + ctx["foot_noband"]()
 
 
