@@ -102,12 +102,13 @@ def _nat_ride(F, km):
 _NAT = [c for c in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))["companies"]
         if c.get("fare") and c["fare"].get("kind", "dist") == "dist" and c["fare"].get("base")]
 _NAT_PREFS = len({c["pref"] for c in _NAT})
+def _r100(n): return int((n + 50) // 100 * 100)  # お客さまに見せる概算は100円単位（AGENTS.md「料金は目安」）
 def _nat_row(km):
-    v = sorted(_nat_ride(c["fare"], km) for c in _NAT)
+    v = sorted(_r100(_nat_ride(c["fare"], km)) for c in _NAT)
     mid = v[(len(v) - 1) // 2]
     return f'<div class="row"><dt>{km}km</dt><dd>{mid:,}円<br><small style="font-weight:400">{v[0]:,}〜{v[-1]:,}円</small></dd></div>'
 def nat_text(km):
-    v = sorted(_nat_ride(c["fare"], km) for c in _NAT)
+    v = sorted(_r100(_nat_ride(c["fare"], km)) for c in _NAT)
     return f"{v[(len(v) - 1) // 2]:,}円（{v[0]:,}〜{v[-1]:,}円）"
 NAT_NOTES = f"""    <p class="fare-flag"><b>確定料金ではありません。</b>上の金額は目安です。確定料金（税込）は、問い合わせた会社から、空き状況と一緒にメールでお知らせします。</p>
     <p class="fare-night"><b>🌙 夜間・早朝の割増</b>上の目安は昼間の料金です。夜間・早朝の割増は、かかるかどうかも金額も会社ごとに違います。フォームの候補には、会社ごとの割増を入れた目安が出ます。</p>
