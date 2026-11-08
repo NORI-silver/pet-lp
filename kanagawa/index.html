@@ -558,6 +558,7 @@ footer a{color:var(--ink-2)}
 .partner-score .stars::after{content:"★★★★★";position:absolute;left:0;top:0;width:var(--fill);overflow:hidden;white-space:nowrap;color:#f2a516}
 .partner-card a.partner-review,.partner-card span.partner-review{font-size:.76rem;font-weight:600}
 .partner-card:hover,.partner-card:focus-within{border-color:var(--o);box-shadow:0 0 0 3px #fff1e6}
+.partner-card.partner-later:hover,.partner-card.partner-later:focus-within{border-color:var(--line);box-shadow:none}
 #partnerStatus{font-size:.9rem;line-height:1.7}
 [hidden]#sendSelected{display:none}
 .price-reason{background:var(--cream);padding:12px 14px;border-radius:12px;font-size:.84rem;line-height:1.8}
@@ -575,6 +576,10 @@ footer a{color:var(--ink-2)}
 .partner-card .price-details[open]{background:var(--cream);border-radius:10px;padding:6px 10px}
 .partner-card .price-details.hw summary{font-weight:700}
 .price-details dl{font-size:.76rem}
+.open-icon{display:inline-flex;vertical-align:-4px;margin-right:6px;color:var(--o)}
+.partner-card.partner-open{border:2px solid var(--o)}
+.partner-site{margin:10px 0 0!important;text-align:center}
+.partner-site a{display:inline-block;padding:9px 18px;border:1.5px solid var(--line);border-radius:999px;font-weight:700;font-size:.86rem;color:var(--ink);text-decoration:none;background:#fff}
 .partner-later-note{margin:10px 0 0!important;font-size:.78rem!important;color:var(--ink-3)!important;text-align:center}
 .partner-caution{margin-top:2px!important;font-size:.78rem!important;line-height:1.5!important;font-weight:700;color:var(--o-d)!important}
 .partner-card .partner-info{font-size:.8rem;color:var(--ink-2);margin:0;line-height:1.6}
@@ -880,7 +885,7 @@ footer a{color:var(--ink-2)}
 <!-- 6. フォーム -->
 <section class="form-sec" id="form">
   <div class="wrap">
-    <div class="sh"><span class="eyebrow">REQUEST</span><h2>空き状況と料金を問い合わせる（無料）</h2><p>条件を入力して、料金の目安を見ながら事業者を選べます。会社から空き状況と確定料金がメールで届いたら、納得してから予約を確定してください。</p><!--PREP: 依頼の送信を再開したら消す--><p style="font-size:.86rem;background:#fff4e5;border-radius:12px;padding:10px 14px;margin-top:10px">いまはサイトの準備中のため、問い合わせを送れるのは社名が出ている会社だけです。ほかの会社は、候補と料金の目安だけをご覧いただけます。</p><!--/PREP--></div>
+    <div class="sh"><span class="eyebrow">REQUEST</span><h2>空き状況と料金を問い合わせる（無料）</h2><p>条件を入力して、料金の目安を見ながら事業者を選べます。会社から空き状況と確定料金がメールで届いたら、納得してから予約を確定してください。</p><!--PREP: 依頼の送信を再開したら消す--><p style="font-size:.86rem;background:#fff4e5;border-radius:12px;padding:10px 14px;margin-top:10px">いまはサイトの準備中のため、問い合わせを送れるのは社名が出ている会社だけです。ほかの会社は、料金の目安と公式サイトへのリンクをご覧いただけます。</p><!--/PREP--></div>
 
     <div class="mode-tabs" id="modeTabs" role="tablist" hidden>
       <button type="button" role="tab" aria-selected="true" data-mode="normal">空き状況・料金の問い合わせ</button>
@@ -1465,6 +1470,6 @@ footer a{color:var(--ink-2)}
 
 <div class="sticky"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
 
-<script src="/app.js?v=4ec2cfda34"></script>
+<script src="/app.js?v=7615915287"></script>
 </body>
 </html>
