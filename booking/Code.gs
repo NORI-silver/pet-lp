@@ -2342,9 +2342,12 @@ function displayPriceCalc_(c, p) {
       hours.forEach(function(h) { N.bands.forEach(function(b) { if (h >= b[0] && h < b[1]) best = Math.max(best, b[2]); }); });
       return best;
     }
-    var on = hours.some(function(h) { return N.from > N.to ? (h >= N.from || h < N.to) : (h >= N.from && h < N.to); });
+    var inN = function(h) { return N.from > N.to ? (h >= N.from || h < N.to) : (h >= N.from && h < N.to); };
+    var on = hours.some(inN);
     if (!on) return 0;
     if (N.unknown) { nightUnknown = true; return 0; } // 割増はあるが金額が書いていない
+    // 長距離（250km超）で割合の割増の会社は、夜間・早朝に走る分だけにかける（一部が夜にかかるだけで運賃全部を割増にしない。Nori 2026-11-08）
+    if (N.rate && km > 250) return Math.floor(amount * N.rate * hours.filter(inN).length / hours.length);
     return N.rate ? Math.floor(amount * N.rate) : (N.flat || 0);
   }
   function waitFee(min) { var W = F.wait, y = waitFee0(min); return W.cap != null ? Math.min(y, W.cap) : y; } // cap：待ち時間の上限額
