@@ -263,6 +263,13 @@ extra_css = """
 .dr-row{border-top:1px solid var(--line);padding:10px 2px}
 .dr-row a{font-weight:700}
 .dr-row small{color:var(--ink-3);margin-left:6px}
+.taxi-cta{margin:4px 0 18px}
+.taxi-cta .btn,.taxi-top .btn{font-size:.95rem;padding:13px 20px;max-width:100%;white-space:normal;text-align:center}
+.taxi-cta small,.taxi-top small{display:block;color:var(--ink-3);font-size:.78rem;line-height:1.6;margin-top:6px}
+.taxi-top-sec{padding:0 0 8px}
+.taxi-top{background:var(--o-l);border-radius:18px;padding:14px 16px}
+.taxi-top p{margin:0 0 10px;font-size:.88rem;line-height:1.7;color:var(--ink)}
+.taxi-top p b{display:block;font-size:.98rem;color:var(--o-d)}
 """
 open(os.path.join(ROOT, "style.css"), "w", encoding="utf-8").write(css.strip() + "\n" + extra_css.strip() + "\n")
 
@@ -342,8 +349,9 @@ AREAS = [
    ("大型犬をスロープ付きの車で運んでもらえますか？", "フォームに体重と犬種を入れていただくと、大型犬を受けている会社だけをご案内します。スロープの有無は会社や車によって違うので、必要なときはメモ欄に書いてください。"),
   ]),
  dict(slug="chiba", places=["doggys-island-taxi"], pref="千葉県", short="千葉", count=4,
-  title=f"千葉のペットタクシー｜対応する{_ncos('千葉')}社の料金・夜間割増をくらべて無料で問い合わせ（船橋・松戸・成田空港）｜ペットタクシー予約窓口",
-  desc=f"千葉県に来てくれるペットタクシー{_ncos('千葉')}社（当日も受けると書いている{_nsame('千葉')}社を含む）の料金の目安を、お迎えの場所から無料でくらべられます。千葉市・船橋・松戸・柏の動物病院への通院、成田空港への送迎、都内の専門病院への移動に。何社にでもまとめて空き状況と料金を問い合わせ、返事を見てから予約できます。",
+  # [B] SEO 11/8：14表示・0クリック（7.8位）。数・24時間・当日・料金の答えを先に出す。
+  title=f"千葉のペットタクシー{_ncos('千葉')}社の料金をくらべる｜24時間受付{_n24('千葉')}社・当日も受ける{_nsame('千葉')}社（船橋・松戸・成田空港）",
+  desc=f"千葉県に来てくれるペットタクシー{_ncos('千葉')}社の料金の目安を無料でくらべられます。船橋から成田空港（45km）なら片道{nat_text(45).split('（')[0]}が目安（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。24時間受付{_n24('千葉')}社・当日も受けると書いている{_nsame('千葉')}社。空き状況と料金を問い合わせ、返事を見てから予約できます。",
   lede="船橋・松戸・柏の住宅街から、佐倉・四街道・成田まで。動物病院への通院や成田空港への送迎に。お迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。",
   body=[
    ("千葉でペットタクシーを使う理由", "千葉県は車での移動が中心の地域が多く、車を持っていないご家庭や、運転できない日には通院の手段が限られます。佐倉・四街道・富里などでは、近くに夜間の動物病院が少なく、離れた病院まで移動することもあります。ペットタクシーなら、自宅から病院まで直接送ってもらえます。"),
@@ -357,8 +365,9 @@ AREAS = [
    ("千葉から都内の病院へ通えますか？", "はい。県をまたぐ移動にも対応しています。病院への往復なら「往復」を選んで、帰りの時刻（診察が終わるころ）を入れてください。待っていてもらうか、あらためて迎えに来てもらうかは、安いほうを会社が返事でご案内します。"),
   ]),
  dict(slug="saitama", places=["jsamc-tokorozawa-taxi"], pref="埼玉県", short="埼玉", count=3,
-  title=f"埼玉のペットタクシー｜対応する{_ncos('埼玉')}社の料金・夜間割増をくらべて無料で問い合わせ（さいたま・川口・所沢）｜ペットタクシー予約窓口",
-  desc=f"埼玉県に来てくれるペットタクシー{_ncos('埼玉')}社（当日も受けると書いている{_nsame('埼玉')}社を含む）の料金の目安を、お迎えの場所から無料でくらべられます。さいたま市・川口・越谷・川越の動物病院や、所沢の日本小動物医療センター、都内の専門病院への通院に。何社にでもまとめて空き状況と料金を問い合わせ、返事を見てから予約できます。",
+  # [B] SEO 11/8：16表示・0クリック（7.8位）。数・24時間・当日・料金の答えを先に出す。
+  title=f"埼玉のペットタクシー{_ncos('埼玉')}社の料金をくらべる｜24時間受付{_n24('埼玉')}社・当日も受ける{_nsame('埼玉')}社（さいたま・川口・所沢）",
+  desc=f"埼玉県に来てくれるペットタクシー{_ncos('埼玉')}社の料金の目安を無料でくらべられます。大宮から新宿（30km）なら片道{nat_text(30).split('（')[0]}が目安（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。24時間受付{_n24('埼玉')}社・当日も受けると書いている{_nsame('埼玉')}社。空き状況と料金を問い合わせ、返事を見てから予約できます。",
   lede="さいたま市・川口から川越・所沢まで。動物病院への通院や都内の専門病院への移動に。お迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。",
   body=[
    ("埼玉でペットタクシーを使う理由", "埼玉県は都内へ通う方が多く、平日の昼間は家族が付き添えないことがよくあります。ペットタクシーなら、飼い主さんが乗れない日でも、ペットだけを病院やトリミング、ペットホテルへ送ってもらえます。"),
@@ -1352,7 +1361,11 @@ for slug, pf, short, cities in PREFS:
     for h in hs:
         c = h["city"] if other_pref(h, pf) else re.sub(r"（.*?）", "", h["city"])
         if c not in hcities: hcities.append(c)
-    title = (f"{short}のペットタクシー｜対応する{n_cos}社の料金・夜間の動物病院・ペットの緊急搬送" if n_cos >= 3 else
+    _k = pf if pf == "北海道" else pf[:-1]
+    # [B] SEO 11/8：愛知 12表示・0クリック。3社以上の県は数・24時間・当日を先に出す（数えた数だけ）。
+    _t24, _tsd = _n24(_k), _nsame(_k)
+    _tx = "・".join(x for x in [f"24時間受付{_t24}社" if _t24 else "", f"当日も受ける{_tsd}社" if _tsd else ""] if x)
+    title = (f"{short}のペットタクシー{n_cos}社の料金をくらべる｜" + (_tx + "・" if _tx else "") + "夜間の動物病院" if n_cos >= 3 else
              f"{short}のペットタクシー｜料金の例・夜間の動物病院・ペットの緊急搬送" if has_fare else f"{short}のペットタクシーの探し方｜夜間の動物病院・ペットの緊急搬送") + "｜ペットタクシー予約窓口"
     dcities = []  # 説明文用：その県の中の病院の市（政令市の区はまとめる）
     for h in hs:
@@ -1678,6 +1691,9 @@ open(os.path.join(ROOT, "404.html"), "w", encoding="utf-8").write(nf)
 import crosslink
 _xl_prefs = [(a["slug"], {"tokyo": "東京都", "kanagawa": "神奈川県", "saitama": "埼玉県", "chiba": "千葉県"}[a["slug"]]) for a in AREAS] + [(x[0], x[1]) for x in PREFS]
 print("crosslink", crosslink.build(ROOT, _xl_prefs), "pages")
+# [B] 2026-11-08 情報ページからペットタクシーの料金くらべへの案内（tools/taxi_cta.py、Nori「1と2」）
+import taxi_cta
+print("taxi_cta", taxi_cta.build(ROOT, _xl_prefs), "pages")
 # AIエージェント向けの入口（/webmcp/data.json と /llms.txt。tools/gen_webmcp.py）
 import gen_webmcp
 gen_webmcp.build(ROOT)

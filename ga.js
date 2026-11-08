@@ -23,6 +23,15 @@
   var s = document.createElement("script"); s.async = true;
   s.src = "https://www.googletagmanager.com/gtag/js?id=" + IDS[0];
   document.head.appendChild(s);
+  // 情報ページ（病院・ドッグランなど）からペットタクシーのフォームへ進んだ回数（2026-11-08 Nori「1と2」）。
+  // data-taxi-cta のボタン（tools/taxi_cta.py）と、フォームのないページにあるフォームへのリンクを数える。入力内容は送らない
+  document.addEventListener("click", function(e){
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a) return;
+    var cta = a.getAttribute("data-taxi-cta"), href = a.getAttribute("href") || "";
+    if (!cta) { if (document.getElementById("petForm") || !/#form$/.test(href)) return; cta = "link"; }
+    gtag("event", "taxi_cta", {cta: cta, from: location.pathname.split("/")[1] || "top", transport_type: "beacon"});
+  }, true);
 })();
 
 // AIエージェント向けの道具（WebMCP、webmcp.js）。対応したブラウザのときだけ読み込む。見るだけで、どこにも送らない。
