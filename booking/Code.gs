@@ -2087,6 +2087,8 @@ function demoUrl_(id) { return CONFIG.SITE_URL + '?demo=' + encodeURIComponent(d
 function makeDemoLinks() {
   var sh = ensureSheet_(SpreadsheetApp.getActive(), '見本リンク', ['ID', '会社', '都道府県', '見本のリンク']);
   var rows = DISPLAY_COMPANIES.map(function(c) { return [c.id, c.name, c.pref, demoUrl_(c.id)]; });
+  // 提携先シートの会社（準備中のあいだは名前を伏せているので、見本のリンクも作る。Nori 2026-11-08「見本のリンクつくってよ」）
+  partners_().forEach(function(pt) { if (pt.id && !isDisplayOnly_(pt.id)) rows.push([pt.id, pt.name, (pt.areas || []).join('・'), demoUrl_(pt.id)]); });
   if (sh.getLastRow() > 1) sh.getRange(2, 1, sh.getLastRow() - 1, 4).clearContent();
   if (rows.length) sh.getRange(2, 1, rows.length, 4).setValues(rows);
   return rows.length;
