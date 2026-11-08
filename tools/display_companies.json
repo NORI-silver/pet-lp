@@ -6770,7 +6770,8 @@
     "tax": "",
     "src": "https://pettaku.com/price-guide/",
     "pick": {
-     "per": 100
+     "per": 100,
+     "freeToShopKm": 80
     },
     "wait": {
      "free": 10,
@@ -6778,8 +6779,8 @@
      "yen": 300
     },
     "night": {
-     "from": 21,
-     "to": 7,
+     "from": 20,
+     "to": 8,
      "flat": 3000
     }
    },
