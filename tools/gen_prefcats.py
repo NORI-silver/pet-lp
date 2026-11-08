@@ -54,7 +54,7 @@ def _sougi_faq(pf, rs, n):
     ]
 
 SOUGI = dict(slug="sougi", name="ペット火葬・霊園", unit="か所", h1="ペットが亡くなったら", items=_FAC, card=gen_sougi._fcard,
-  checked=gen_sougi.F.get("checked", gen_sougi.J["checked"]), reviews=False, min=1, css=gen_sougi.CSS,
+  checked=gen_sougi.F.get("checked", gen_sougi.J["checked"]), reviews=True, min=1, css=gen_sougi.CSS,
   free="この一覧は無料の情報です。火葬場・霊園や自治体からお金をもらっていません。おすすめ順や点数順ではありません。料金は公式サイトに書いてある例だけで、体重や内容で変わります。", list_h="民間のペット火葬場・霊園・納骨堂",
   title_word="ペット火葬・ペット霊園", title_tail="個別火葬・立ち会い・お迎え・自治体の受け付け",
   desc_tail="個別火葬・立ち会い火葬・お迎え・霊園・納骨堂のどれをしているか、公式サイトに書いてある料金の例、市区の受け付け（料金・お骨が返るか）を載せています。順位やおすすめはつけていません。",
