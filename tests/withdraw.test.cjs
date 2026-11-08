@@ -24,3 +24,13 @@ assert.equal(ctx.withdrawPage_({id:'R1',p:'P9',k,go:'1'}).t,'取り下げ済み�
 const ck=ctx.sign_('R1:P9:choose');
 assert.equal(ctx.choosePage_({id:'R1',p:'P9',k:ck,go:'1'}).t,'このお返事は取り下げられました'); // 押しても予約にならない
 console.log('PASS: partner can withdraw a reply; customer can no longer book it');
+// 確定後に会社がやむを得ず取り消す
+rows.R1['状態']=ctx.ST.DONE; rows.R1['決定した提携先ID']='P9'; rows.R1['お迎え予定']=new Date(now+86400000);
+Object.assign(ctx,{fmt_:()=>'11/20 10:30',retryUrl_:()=>'https://x/retry',legTag_:()=>''});
+const pk=ctx.sign_('R1:P9:pcancel');
+assert.equal(ctx.partnerCancelPage_({id:'R1',p:'P9',k:pk}).t,'このご予約を取り消しますか？');
+assert.equal(ctx.partnerCancelPage_({id:'R1',p:'P9',k:pk,go:'1'}).t,'ご予約を取り消しました');
+assert.equal(rows.R1['状態'],ctx.ST.CANCEL);
+assert.ok(sent.some(x=>x[0]==='c'&&/お受けできなくなりました/.test(x[1])));
+assert.equal(ctx.partnerCancelPage_({id:'R1',p:'P9',k:pk,go:'1'}).t,'取り消しは必要ありません');
+console.log('PASS: partner can cancel a confirmed booking; customer is told');
