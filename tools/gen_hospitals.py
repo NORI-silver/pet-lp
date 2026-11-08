@@ -70,7 +70,14 @@ def item_html(e, cond, h):
         extra += f'<small>所在地：{e(h["addr"])}</small>'
     return (f'<div class="emg-item emg-co"><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>'
             f'<small>{e(h["city"])}・{e(h["hours"])}</small>{spec}{extra}'
-            + (f'<div class="emg-score" data-id="{e(h["id"])}"></div>' if h.get("review_query") else '') + '</div>')
+            + (f'<div class="emg-score" data-id="{e(h["id"])}"></div>' if h.get("review_query") else '')
+            + (_taxi(h) if cond["src"] != "visit" else '') + '</div>')
+
+def _taxi(h):
+    # [B] 「この病院までのペットタクシー」：所在地を行き先に入れてフォームへ（2026-11-08）。往診は家に来るので付けない
+    if not h.get("addr"): return ''
+    from urllib.parse import quote
+    return f'<a class="emg-taxi" href="/?to={quote(h["addr"])}#form">この病院までのペットタクシーの料金をくらべる →</a>'
 
 def render_cond(cond, ctx):
     """条件ページ1枚のHTML。ctx は gen_areas.py の関数と値（head, foot, e, area_links, SITE, EMG, emg_regions, emg_opts）。"""

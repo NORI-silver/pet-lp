@@ -602,6 +602,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (v && Array.prototype.some.call(el.options, function(o){ return o.value === v; })) el.value = v;
   }
   setSelect($("pref"), qs.get("pref"));
+  // [B] 病院の一覧などから来たとき（?to=病院の所在地）は、行き先に入れておく（2026-11-08「この病院までのペットタクシー」の導線）
+  var qTo = (qs.get("to") || "").trim().slice(0, 80);
+  if (qTo && !$("dropoff").value) $("dropoff").value = qTo;
 
   // 入力欄が見えている間は下部の固定ボタンを隠す
   var sticky = document.querySelector(".sticky");
@@ -1392,6 +1395,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (x.spec) { var sp = document.createElement("small"); sp.className = "emg-spec"; sp.textContent = x.spec; d.appendChild(sp); }
       if (x.addr) { var ad = document.createElement("small"); ad.textContent = "所在地：" + x.addr; d.appendChild(ad); }
       if (x.review_query) { var sc = document.createElement("div"); sc.className = "emg-score"; sc.dataset.id = x.id; d.appendChild(sc); }
+      // [B] この病院までのペットタクシーの料金をくらべる（行き先に所在地を入れてフォームへ）
+      if (x.addr) { var tx = document.createElement("a"); tx.className = "emg-taxi"; tx.href = "/?to=" + encodeURIComponent(x.addr) + "#form"; tx.textContent = "この病院までのペットタクシーの料金をくらべる →"; d.appendChild(tx); }
       return d;
     }
     // 搬送の会社：名前は公式サイトへのリンク、電話番号はタップで電話できるように（リンクの中にリンクは置けないので枠は div）
