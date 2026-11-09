@@ -1150,8 +1150,10 @@ function cancelPage_(q) {
   var warn = '';
   if (r['状態'] === ST.DONE) {
     var left = (r['お迎え予定'].getTime() - Date.now()) / 3600000;
+    var cpt = partnerById_(r['決定した提携先ID']);
     warn = '<p class="note">ペットタクシー「' + esc_(r['決定した提携先']) + '」に決まっています。取り消すと、こちらからペットタクシーへお伝えします。' +
-      (left < 2 ? '<br><b>お迎えまで2時間を切っているため、ペットタクシー側のキャンセル料がかかる場合があります。</b>' : '') + '</p>';
+      (cpt ? '<br>' + esc_(cancelAfterText_(cpt)) : '') +
+      (left < 3 ? '<br><b>お迎えの3時間前を過ぎています。押す前に、ペットタクシーへ直接ご連絡ください。</b>' + (cpt ? '<br>' + esc_(partnerContactText_(cpt).replace(/^■ /, '').trim()) : '') : '') + '</p>';
   }
   var html = '<div class="box">' + nl2br_(esc_('受付番号：' + q.id + '\n希望日時：' + whenText_(r) + '\nお迎え：' + r['お迎えの場所'] + '\n行き先：' + r['行き先'])) + '</div>' + warn +
     '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'cancel') + hidden_('id', q.id) + hidden_('k', q.k) + hidden_('go', '1') +
