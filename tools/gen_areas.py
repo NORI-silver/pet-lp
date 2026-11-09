@@ -163,7 +163,7 @@ def _nat_stats():
     npref = len({a for x in _DISP for a in x.get("areas", [])})
     return (f'<!--NAT_STATS--><div class="tbl" style="margin-top:18px"><h3 style="font-size:1.05rem;margin:0 0 8px">都道府県ごとのペットタクシーの数（全国{len(_DISP)}社・{npref}都道府県）</h3>'
             '<table><thead><tr><th>お迎えの都道府県</th><th>来てくれる会社</th><th>24時間受付</th><th>当日も受ける</th><th>5kmの運賃の目安</th></tr></thead><tbody>' + rows +
-            '</tbody></table><p class="small">当サイトが公式サイトで確かめた会社の数です（2026年11月時点、3社以上の都道府県）。「当日も受ける」は公式サイトや会社の返事にはっきり書いてある会社だけ。運賃の目安は、各社の公式サイトの料金表をもとに計算した概算のまんなかの会社の金額で、お迎え料金・夜間の割増・待ち時間は入っていません。確定料金ではありません。</p></div><!--/NAT_STATS-->')
+            '</tbody></table><p class="small">当サイトが公式サイトで確かめた会社の数です（2026年11月時点、3社以上の都道府県）。「当日も受ける」は公式サイトや会社の返事にはっきり書いてある会社だけ。運賃の目安は、各社の公式サイトの料金表をもとに計算した概算のまんなかの会社の金額で、お迎え料金・夜間の割増・待ち時間は入っていません。確定料金ではありません。<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ（距離ごと・都道府県ごと・お迎え料金・夜間割増）</a></p></div><!--/NAT_STATS-->')
 src = re.sub(r"\s*<!--NAT_STATS-->.*?<!--/NAT_STATS-->", "", src, flags=re.S)
 src = src.replace('<a href="/area/">全国47都道府県のペットタクシー情報を見る</a></p>', '<a href="/area/">全国47都道府県のペットタクシー情報を見る</a></p>\n    ' + _nat_stats(), 1)
 # 数字の帯：会社が見つかった都道府県の数だけを出す（「47都道府県から選べます」は会社のいない県もあるので誤解のもと。法定表示の確認 2026-11-08）
@@ -1619,6 +1619,10 @@ hosp_urls = hosp_urls + gen_jichitai.urls(SITE)
 gen_dogrun.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links, pref_href=pref_href,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_dogrun.urls(SITE)
+# [B] SEO：ドッグランの施設ごとのページ（試しの30施設。tools/gen_dogrun_fac.py、型は docs/facility-page.md）
+import gen_dogrun_fac
+gen_dogrun_fac.write_all(ROOT, dict(head=head, e=e, SITE=SITE, foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_dogrun_fac.urls(SITE)
 # ペットが亡くなったら（/sougi/）：お金を取らない情報ページ（tools/gen_sougi.py、データ tools/sougi.json）
 import gen_sougi
 gen_sougi.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
@@ -1708,7 +1712,30 @@ def _lastmod(u):
 open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   "".join(f'  <url><loc>{u}</loc><lastmod>{_lastmod(u)}</lastmod></url>\n' for u in urls) + '</urlset>\n')
-open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /booking/\nDisallow: /docs/\n\nSitemap: {SITE}/sitemap.xml\n")
+# [B] 分野ごとのサイトマップ（2026-11-09 戦略担当「サイトマップを分野ごとに分けて」）。sitemap.xml（全部）はそのまま残し、
+# 同じURLを分野ごとの /sitemaps/<分野>.xml にも入れて、/sitemap_index.xml でまとめる。Search Console でサイトマップごとの
+# 登録数が出るので、分野ごとの登録率（品質の関門）を数えられる。分野はURLの最初のフォルダで決める（ペットタクシーの地域・トップ・規約などは taxi）。
+SITEMAP_CATS = {"guide": "guide", "sougi": "sougi", "dogrun": "dogrun", "hospital": "hospital", "pet-hotel": "pet-hotel",
+                "pet-sitter": "pet-sitter", "dog-trainer": "dog-trainer", "rojin-home": "rojin-home", "trimming": "trimming", "jichitai": "jichitai"}
+def _sm_cat(u):
+  return SITEMAP_CATS.get(u[len(SITE) + 1:].split("/")[0], "taxi")
+_sm_groups = {}
+for u in urls: _sm_groups.setdefault(_sm_cat(u), []).append(u)
+# 施設ごとのページ（試し）は、分野のサイトマップとは別にも出す（試しの登録率を見るため。docs/facility-page.md）
+import gen_sougi_fac, gen_dogrun_fac
+_sm_groups["facility-sougi"] = gen_sougi_fac.urls(SITE)
+_sm_groups["facility-dogrun"] = gen_dogrun_fac.urls(SITE)
+os.makedirs(os.path.join(ROOT, "sitemaps"), exist_ok=True)
+for _c in os.listdir(os.path.join(ROOT, "sitemaps")):
+  if _c.endswith(".xml") and _c[:-4] not in _sm_groups: os.remove(os.path.join(ROOT, "sitemaps", _c))
+for _c, _us in _sm_groups.items():
+  open(os.path.join(ROOT, "sitemaps", _c + ".xml"), "w", encoding="utf-8").write(
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    "".join(f'  <url><loc>{u}</loc><lastmod>{_lastmod(u)}</lastmod></url>\n' for u in _us) + '</urlset>\n')
+open(os.path.join(ROOT, "sitemap_index.xml"), "w", encoding="utf-8").write(
+  '<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  "".join(f'  <sitemap><loc>{SITE}/sitemaps/{_c}.xml</loc><lastmod>{max(_lastmod(u) for u in _sm_groups[_c])}</lastmod></sitemap>\n' for _c in sorted(_sm_groups)) + '</sitemapindex>\n')
+open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /booking/\nDisallow: /docs/\n\nSitemap: {SITE}/sitemap.xml\nSitemap: {SITE}/sitemap_index.xml\n")
 nf = head("ページが見つかりません｜ペットタクシー予約窓口", "お探しのページは見つかりませんでした。", SITE + "/404.html", '<meta name="robots" content="noindex">') + f'''
 <main><section class="area-hero"><div class="wrap" style="text-align:center">
 <h1>ページが見つかりませんでした</h1><p class="lede">URLが変わったか、削除された可能性があります。</p>

@@ -5,7 +5,7 @@ var GAS_URL = "https://script.google.com/macros/s/AKfycbyy-cTvD-t8DFGhEyA2IbFiXW
    いまの公開デモは「お金をもうけない使い方だけ」が条件なので、手数料を始める前に商用で使える入口へ替える（法定表示の確認 2026-11-08） */
 var ROAD_API = "https://router.project-osrm.org";
 /* 口コミ（星・本文）を「押したときだけ」取り寄せる（2026-11-08 戦略担当：訪問が増えても地図サービスの費用を増やさない）。
-   false のあいだは今までどおり、カードや一覧が画面に入ったら星を取り寄せる（月の上限つき）。月1.5万PVを超えたら true にして gen_areas.py を実行する */
+   false のあいだは今までどおり、カードや一覧が画面に入ったら星を取り寄せる（月の上限つき）。月1万PV（または口コミの月の上限の8割）を超えたら true にして gen_areas.py を実行する */
 var REVIEW_ON_CLICK = false;
 /* お誘いした会社だけの見本の画面（?demo=…。Nori 2026-11-02）。その会社だけ名前と口コミつきで出し、問い合わせは送らない */
 var DEMO = {tok: (function(){ try { return new URLSearchParams(location.search).get("demo") || ""; } catch (e) { return ""; } })(), ok: false, name: ""};

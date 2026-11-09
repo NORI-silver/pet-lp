@@ -1,5 +1,5 @@
-# Xの予約投稿（@pettaxi_yoyaku、週2回：火・金の20時）。Nori 2026-11-02「僕の作業はゼロにしたい」。
-# 毎週日曜の昼に、sns/posts.json からまだ予約していない投稿を2つ、次の火・金に予約する（sns/schedule_x.py）。
+# Xの予約投稿（@petkurashi_mado。曜日と時刻は sns/posts.json の x_days・x_hour。いまは火・金の20時）。Nori 2026-11-02「僕の作業はゼロにしたい」。
+# 毎週日曜の昼に、sns/posts.json からまだ予約していない投稿を1週間分予約する（sns/schedule_x.py）。
 # 予約したものは sns/state.json に記録してコミットする。キーは Secret の TYPEFULLY_API_KEY（ペットタクシー用の無料 Typefully）。
 # 投稿が残っていないときは Issue「Xの投稿が残っていません」を開く。
 name: sns-x
@@ -38,7 +38,7 @@ jobs:
           TYPEFULLY_API_KEY: ${{ secrets.TYPEFULLY_API_KEY }}
         run: |
           set +e
-          python3 sns/schedule_x.py 2 ${{ inputs.redo && '--redo' || '' }} ${{ inputs.hold && '--hold' || '' }} ${{ inputs.status && '--status' || '' }}; c=$?
+          python3 sns/schedule_x.py ${{ inputs.redo && '--redo' || '' }} ${{ inputs.hold && '--hold' || '' }} ${{ inputs.status && '--status' || '' }}; c=$?
           echo "code=$c" >> "$GITHUB_OUTPUT"
           [ "$c" = 0 ] || [ "$c" = 2 ] || exit "$c"
       - name: 記録をコミット

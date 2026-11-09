@@ -51,7 +51,7 @@ const headerHtml = `<!doctype html><html><head><meta charset="utf-8">${FONT}<sty
 (async () => {
   const b = await chromium.launch();
   const pg = await b.newPage({ viewport: { width: 1080, height: 1350 } });
-  for (const p of data.posts) {
+  for (const p of data.posts.filter(p => p.points)) { // カード画像は最初の10本だけ（いまは使っていない）
     await pg.setContent(postHtml(p), { waitUntil: 'networkidle' });
     await pg.evaluate(() => document.fonts.ready);
     await pg.screenshot({ path: path.join(OUT, `post${String(p.no).padStart(2, '0')}.jpg`), type: 'jpeg', quality: 88 });
@@ -72,7 +72,7 @@ const headerHtml = `<!doctype html><html><head><meta charset="utf-8">${FONT}<sty
   let md = `# 最初の10投稿（コピーして使う）\n\n` +
     `このファイルは \`node sns/gen.cjs\` で \`posts.json\` から作っています。直すときは \`posts.json\` を直してください。\n` +
     `どの投稿にもリンクは入れていません（Nori 2026-11-02）。画像は \`sns/img/postNN.jpg\`（X・Instagram共通、1080×1350）。\n\n`;
-  for (const p of data.posts) {
+  for (const p of data.posts.filter(p => p.points)) {
     const n = String(p.no).padStart(2, '0');
     const xBody = p.x.split('\n').filter(l => !l.startsWith('#')).join('\n');
     const ig = [xBody, p.ig_add, 'くわしくは、プロフィールのサイトの「ガイド」にまとめています。', '', [...new Set([...tags, ...(p.ig_extra || [])])].join(' ')]
