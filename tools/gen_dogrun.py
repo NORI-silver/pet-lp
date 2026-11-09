@@ -443,12 +443,16 @@ def taxi_band(e, pf=None, pref_href=None):
 </section>'''
 
 # ── 都道府県のページ（/dogrun/<slug>/） ──
+def _fac_link(e, d):
+    import gen_dogrun_fac  # 施設ごとのページ（試しの30施設）があれば、カードからつなぐ
+    return f'<p class="dr-links"><a href="{gen_dogrun_fac.href(d)}">{e(d["name"])}のくわしい情報（くらべる表・ここまでのペットタクシー）→</a></p>' if d["id"] in gen_dogrun_fac.IDS else ""
+
 def card(e, d):
     rows = "".join(f"<dt>{e(lab)}</dt><dd>{e(d[k])}</dd>" for k, lab in FIELDS if d.get(k))
     srcs = [u for u in d.get("src", []) if u != d["url"]]
     more = ("<small>あわせて確かめたページ：" + "、".join(f'<a href="{e(u)}" target="_blank" rel="noopener">{i + 1}</a>' for i, u in enumerate(srcs)) + "</small>") if srcs else ""
     return (f'<section class="dr-card" id="{d["id"]}"><h3>{e(d["name"])}</h3><p class="dr-city">{e(d["pref"])}{e(d.get("city", ""))}</p>{tags_html(e, d)}'
-            f'<dl>{rows}</dl><p class="dr-links"><a href="{e(d["url"])}" target="_blank" rel="noopener">公式ページで最新の情報を見る ↗</a>{more}</p></section>')
+            f'<dl>{rows}</dl><p class="dr-links"><a href="{e(d["url"])}" target="_blank" rel="noopener">公式ページで最新の情報を見る ↗</a>{more}</p>' + _fac_link(e, d) + '</section>')
 
 def render_pref(ctx, pf, rs):
     e, SITE = ctx["e"], ctx["SITE"]

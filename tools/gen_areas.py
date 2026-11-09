@@ -1619,6 +1619,10 @@ hosp_urls = hosp_urls + gen_jichitai.urls(SITE)
 gen_dogrun.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links, pref_href=pref_href,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_dogrun.urls(SITE)
+# [B] SEO：ドッグランの施設ごとのページ（試しの30施設。tools/gen_dogrun_fac.py、型は docs/facility-page.md）
+import gen_dogrun_fac
+gen_dogrun_fac.write_all(ROOT, dict(head=head, e=e, SITE=SITE, foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_dogrun_fac.urls(SITE)
 # ペットが亡くなったら（/sougi/）：お金を取らない情報ページ（tools/gen_sougi.py、データ tools/sougi.json）
 import gen_sougi
 gen_sougi.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
@@ -1713,6 +1717,10 @@ def _sm_cat(u):
   return SITEMAP_CATS.get(u[len(SITE) + 1:].split("/")[0], "taxi")
 _sm_groups = {}
 for u in urls: _sm_groups.setdefault(_sm_cat(u), []).append(u)
+# 施設ごとのページ（試し）は、分野のサイトマップとは別にも出す（試しの登録率を見るため。docs/facility-page.md）
+import gen_sougi_fac, gen_dogrun_fac
+_sm_groups["facility-sougi"] = gen_sougi_fac.urls(SITE)
+_sm_groups["facility-dogrun"] = gen_dogrun_fac.urls(SITE)
 os.makedirs(os.path.join(ROOT, "sitemaps"), exist_ok=True)
 for _c in os.listdir(os.path.join(ROOT, "sitemaps")):
   if _c.endswith(".xml") and _c[:-4] not in _sm_groups: os.remove(os.path.join(ROOT, "sitemaps", _c))
