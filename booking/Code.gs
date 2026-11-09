@@ -2798,7 +2798,9 @@ function reviewTarget_(id) {
   // 社内用の事業者一覧（dashPlace_）と同じ場所IDを使う
   // 地図の名前は「COCOタク 小平店」のように登録名と少し違うことが多いので、ブランド名＋支店名の中心のことばで照らし合わせる（loose）。
   // 前の厳しい照らし合わせで「見つからない」と覚えた会社も探し直すよう、覚える場所を D2 に変えた（2026-10-31）
-  if (dc && dc.review_q && dc.review_name) return {query:dc.review_q, query2:dc.review_name + ' ペットタクシー', words:String(dc.review_name).split(/[\s、,]+/).filter(String), loose:true, exact:dc.review_exact || '', idKey:'PLACE_ID_D2_' + id + '_' + dc.review_q + (dc.review_exact ? '_' + dc.review_exact : '')};
+  // 地図に同じ会社が2つあるときは、口コミのある方の正式な名前（review_exact）そのもので探す。住所を出していない（出張だけの）登録も候補に入れる（ペッタク 2026-11-09）
+  if (dc && dc.review_exact) return {query:dc.review_exact, query2:dc.review_q, words:String(dc.review_name || dc.review_exact).split(/[\s、,]+/).filter(String), loose:true, exact:dc.review_exact, sab:true, idKey:'PLACE_ID_D3_' + id + '_' + dc.review_exact};
+  if (dc && dc.review_q && dc.review_name) return {query:dc.review_q, query2:dc.review_name + ' ペットタクシー', words:String(dc.review_name).split(/[\s、,]+/).filter(String), loose:true, idKey:'PLACE_ID_D2_' + id + '_' + dc.review_q};
   return null;
 }
 var PLACE_PREF_RE = /^(北海道|青森|岩手|宮城|秋田|山形|福島|茨城|栃木|群馬|埼玉|千葉|東京|神奈川|新潟|富山|石川|福井|山梨|長野|岐阜|静岡|愛知|三重|滋賀|京都|大阪|兵庫|奈良|和歌山|鳥取|島根|岡山|広島|山口|徳島|香川|愛媛|高知|福岡|佐賀|長崎|熊本|大分|宮崎|鹿児島|沖縄)[都道府県]?/;
@@ -2826,7 +2828,7 @@ function placeNameOk_(t, place) {
 function placeSearchRequest_(t, apiKey, second) { // IDだけの検索は無料（名前も見るときは場所1件ごとに一度だけ）
   return {url:'https://places.googleapis.com/v1/places:searchText', method:'post', contentType:'application/json', muteHttpExceptions:true,
     headers:{'X-Goog-Api-Key':apiKey,'X-Goog-FieldMask':t.words ? 'places.id,places.displayName' : 'places.id'},
-    payload:JSON.stringify({textQuery:second ? t.query2 : t.query,languageCode:'ja',regionCode:'JP'})};
+    payload:JSON.stringify(t.sab ? {textQuery:second ? t.query2 : t.query,languageCode:'ja',regionCode:'JP',includePureServiceAreaPlaces:true} : {textQuery:second ? t.query2 : t.query,languageCode:'ja',regionCode:'JP'})};
 }
 // 検索の結果から場所のIDを決めて覚える（規約上、場所のIDだけは保存してよい）。見つからなければ '-' を覚える（提携先は覚えずに次も探す）
 function placeFromSearch_(id, t, text, props, keepTrying) {
@@ -2834,11 +2836,12 @@ function placeFromSearch_(id, t, text, props, keepTrying) {
   try { found = JSON.parse(text) || {}; } catch (e) {}
   var ok = (found.places || []).filter(function(x) { return placeNameOk_(t, x); });
   // 同じ会社が地図に2つ登録されているときは、口コミのある方の正式な名前（review_exact）を先に選ぶ（ペッタク 2026-11-09）
-  var hit = (t.exact && ok.filter(function(x) { return ((x.displayName || {}).text || '') === t.exact; })[0]) || ok[0];
+  // 正式な名前が決まっている会社は、その名前と同じ候補だけを選ぶ（口コミのない方の登録を覚えてしまわないように、ほかの候補にはしない）
+  var hit = t.exact ? ok.filter(function(x) { return placeNorm_((x.displayName || {}).text || '') === placeNorm_(t.exact); })[0] : ok[0];
   if (!hit || !hit.id) {
     if (keepTrying) return null; // もうひとつの探し方を試す
     log_('口コミ：場所が見つからない ' + id + ' ' + t.query + ' 候補：' + (found.places || []).slice(0, 5).map(function(x) { return (x.displayName || {}).text || ''; }).join('／'));
-    if (t.words) props.setProperty(t.idKey, '-');
+    if (t.words && !t.exact) props.setProperty(t.idKey, '-'); // 正式な名前の会社は覚えずに次も探す
     return null;
   }
   props.setProperty(t.idKey, hit.id);
