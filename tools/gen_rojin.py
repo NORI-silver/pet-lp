@@ -111,7 +111,7 @@ def write_all(ROOT, ctx):
     open(os.path.join(ROOT, SLUG, "index.html"), "w", encoding="utf-8").write(render(ctx))
 
 # ── 都道府県ごとのページ（tools/gen_prefpages.py。[B] SEO「老犬ホーム ◯◯県」） ──
-def _cat_ok(h): return "猫" in h["animals"] and "猫は受けていません" not in h["animals"]
+def _cat_ok(h): return "猫" in h["animals"] and "猫は受けていません" not in h["animals"] and "ペットホテルは猫も" not in h["animals"]  # ペットホテルだけ猫を受ける施設は老猫ホームに数えない（11/9）
 def _facts(rs):
     n = len(rs)
     return [f"猫も受けると公式サイトに書いてある施設：{sum(_cat_ok(h) for h in rs)}／{n}",
