@@ -427,6 +427,8 @@ footer a{color:var(--ink-2)}
 .emg-guess[hidden]{display:none}
 .open-note{margin:8px 0 0;background:#f7f4f1;border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
 #petForm.lite .opt-lite{display:none}
+.partner-wait{margin:2px 0 0;font-size:.8rem;color:var(--ink-2)}
+.wait-note b{color:var(--o-d)}
 .open-note[hidden],#contactBox[hidden]{display:none}
 .contact-none{margin:14px 0 0;background:#f7f4f1;border-radius:12px;padding:10px 14px;font-size:.86rem;color:var(--ink-2)}
 .contact-safe{margin:-4px 0 14px;font-size:.84rem;color:var(--ink-2);background:var(--o-l);border-radius:12px;padding:10px 14px}
@@ -620,7 +622,7 @@ footer a{color:var(--ink-2)}
   {"@type":"Question","name":"猫だけでも使えますか？","acceptedAnswer":{"@type":"Answer","text":"もちろんです。通院、お引っ越し、ペットホテルへの送り迎えなどにどうぞ。キャリーに入った状態での乗車が基本です。"}},
   {"@type":"Question","name":"当日の予約や、今すぐのお迎えはできますか？","acceptedAnswer":{"@type":"Answer","text":"当日のご予約もできます。空いていて間に合う会社だけが候補に出ます。ただ、会社にメールで確認してから決まるしくみなので、その場ですぐに車を呼ぶことはできません。お迎えの時刻は、いまから3時間以上あとで選んでください。"}},
   {"@type":"Question","name":"利用料はかかりますか？","acceptedAnswer":{"@type":"Answer","text":"当サイトは無料です。お支払いはペットタクシーの運賃だけで、当日ペットタクシーへ直接お支払いください（方法は会社ごとに違い、会社からの返事のメールでお知らせします）。運賃は無料ではありませんので、料金の目安を先にご確認ください。"}},
-  {"@type":"Question","name":"料金は乗る前に分かりますか？","acceptedAnswer":{"@type":"Answer","text":"はい。フォームに場所を入れると料金の目安が出ます。問い合わせた会社が、空き状況と一緒に「一般道で行く場合」と「高速道路を使う場合（高速代込み）」の確定料金（税込）をメールでお知らせします。お支払いは当日、ペットタクシーへ直接です。"}},
+  {"@type":"Question","name":"料金は乗る前に分かりますか？","acceptedAnswer":{"@type":"Answer","text":"はい。フォームに場所を入れると料金の目安が出ます。問い合わせた会社が、空き状況と一緒に「一般道で行く場合」と「高速道路を使う場合（高速代込み）」の確定料金（税込）をメールでお知らせします。お支払いは当日、ペットタクシーへ直接です。往復で病院などで待っていてもらうときの待ち時間の料金は、当日の実際の待ち時間で精算するため、最終的なお支払いが変わることがあります。"}},
   {"@type":"Question","name":"連絡はどうやって届きますか？","acceptedAnswer":{"@type":"Answer","text":"受付番号、お迎えの時間と確定料金は、すべてメールでお送りします。記録が残るので、あとから見返せて安心です。メールが届かないときは、迷惑メールのフォルダもご確認ください。"}},
   {"@type":"Question","name":"どの地域で使えますか？","acceptedAnswer":{"@type":"Answer","text":"お迎えの都道府県は全国から選べます。お迎えの場所を入れると、その場所に来てもらえる会社と料金の目安が出ます。会社ごとに対応する地域が違うので、近くに会社が見つからないこともあります。"}},
   {"@type":"Question","name":"犬のタクシーと普通のタクシーはなにが違うの？","acceptedAnswer":{"@type":"Answer","text":"普通のタクシーはペットの乗車を断られたり、ケージ必須だったりすることがあります。ペットタクシーはペット専用の車で、大型犬やケージなしの子、毛や汚れを気にせず乗れます。ペットの扱いに慣れたドライバーが運転します。"}},
@@ -815,6 +817,7 @@ footer a{color:var(--ink-2)}
               </div>
               <p class="note" id="retRoute">帰りは、行き先でお迎えして、お迎えの場所までお送りします。</p>
               <p class="note">待っていてもらうか、あらためて迎えに来てもらうかは、安くなるほうを会社が返事でご案内します。</p>
+              <p class="note wait-note"><b>待ち時間は当日の実際の時間で精算します。</b>用事が長引いたときなど、最終的なお支払いは会社の返事の料金から変わることがあります。</p>
               <label class="chk"><input type="checkbox" id="retOther" name="ret_other" value="1"> 帰りの場所を変える</label>
               <div id="retPlaces" hidden>
                 <label for="retPickup" class="lbl">帰りのお迎えの場所<span class="need">必須</span></label>
@@ -843,7 +846,7 @@ footer a{color:var(--ink-2)}
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
-        <p class="form-foot">条件が揃うと、合う事業者と料金の目安が自動で表示されます。会社を選んで依頼するまで、どこにも送信されません。</p>
+        <p class="form-foot">条件が揃うと、合う事業者と料金の目安が自動で表示されます。会社を選んで依頼するまで、どこにも送信されません。<br>料金は、会社の返事の確定料金でも、会社によっては当日の道路事情や待ち時間などで変わることがあります。</p>
         <div class="need-box" id="partnerNeed" hidden></div>
         <section class="partner-results" id="partnerResults" aria-labelledby="partnerTitle" hidden>
           <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
@@ -1115,7 +1118,7 @@ footer a{color:var(--ink-2)}
       <details><summary>猫だけでも使えますか？</summary><div class="a">もちろんです。通院、お引っ越し、ペットホテルへの送り迎えなどにどうぞ。キャリーに入った状態での乗車が基本です。</div></details>
       <details><summary>当日の予約や、今すぐのお迎えはできますか？</summary><div class="a">当日のご予約もできます。空いていて間に合う会社だけが候補に出ます。ただ、会社にメールで確認してから決まるしくみなので、その場ですぐに車を呼ぶことはできません。お迎えの時刻は、いまから3時間以上あとで選んでください。</div></details>
       <details><summary>利用料はかかりますか？</summary><div class="a">当サイトは無料です。お支払いはペットタクシーの運賃だけで、当日ペットタクシーへ直接お支払いください（方法は会社ごとに違い、会社からの返事のメールでお知らせします）。運賃は無料ではありませんので、料金の目安を先にご確認ください。</div></details>
-      <details><summary>料金は乗る前に分かりますか？</summary><div class="a">はい。フォームに場所を入れると料金の目安が出ます。問い合わせた会社が、空き状況と一緒に「一般道で行く場合」と「高速道路を使う場合（高速代込み）」の確定料金（税込）をメールでお知らせします。お支払いは当日、ペットタクシーへ直接です。</div></details>
+      <details><summary>料金は乗る前に分かりますか？</summary><div class="a">はい。フォームに場所を入れると料金の目安が出ます。問い合わせた会社が、空き状況と一緒に「一般道で行く場合」と「高速道路を使う場合（高速代込み）」の確定料金（税込）をメールでお知らせします。お支払いは当日、ペットタクシーへ直接です。往復で病院などで待っていてもらうときの待ち時間の料金は、当日の実際の待ち時間で精算するため、最終的なお支払いが変わることがあります。</div></details>
       <details><summary>連絡はどうやって届きますか？</summary><div class="a">受付番号、お迎えの時間と確定料金は、すべてメールでお送りします。記録が残るので、あとから見返せて安心です。メールが届かないときは、迷惑メールのフォルダもご確認ください。</div></details>
       <details><summary>どの地域で使えますか？</summary><div class="a">お迎えの都道府県は全国から選べます。お迎えの場所を入れると、その場所に来てもらえる会社と料金の目安が出ます。会社ごとに対応する地域が違うので、近くに会社が見つからないこともあります。</div></details>
       <details><summary>犬のタクシーと普通のタクシーはなにが違うの？</summary><div class="a">普通のタクシーはペットの乗車を断られたり、ケージ必須だったりすることがあります。ペットタクシーはペット専用の車で、大型犬やケージなしの子、毛や汚れを気にせず乗れます。ペットの扱いに慣れたドライバーが運転します。</div></details>
@@ -1728,6 +1731,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (card.price.local && card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
       // 概算の注意は料金のすぐ下に太字の1行（上のまとめの注意と合わせて「目立つ形」。2026-11-08 レビュー #2 でカードを短く）
       text("p", card.price.amount == null ? "確定料金は会社からお知らせします" : "概算です。確定料金ではありません", "partner-caution");
+      // 往復の待ち時間は当日の実際の時間で精算（Nori 2026-11-09「最終的な支払いは変動する可能性があるというのをユーザーにも」）
+      // 当日の道路事情でも変わる（Nori 2026-11-09「実際に当日の道路事情などで料金は変わる可能性もある」）
+      // 「渋滞でも追加料金なし」の会社には道路事情とは書かない（食い違わないように）
+      var noJam = (card.points || []).some(function(x){ return /渋滞でも追加料金なし/.test(x); }), why = noJam ? "行き先の変更など" : "当日の道路事情など";
+      text("p", tripName === "往復" ? "待ち時間は当日の実際の時間で精算します。" + why + "でも、お支払いは変わることがあります" : why + "で、お支払いは変わることがあります", "partner-wait");
       // 車・お支払いは、たたまずに出す（Nori 2026-11-08「支払い方法とかできるものは全部出しておいたほうが」）
       // 分からない項目（「まだ確認中です」）は行ごと出さない。お客さまが選んだ動物を乗せられるかの「確認中」だけは残す（2026-11-08 レビュー #3）
       var carText = String(card.car || "").replace(/(^|。)[^。]*(車の詳細|対応エリア)は?[^。]*確認中です[。）)]?/g, "$1").replace(/（対応エリアは確認中です）/g, "").replace(/^。+/, "").trim();
