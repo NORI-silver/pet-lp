@@ -6,7 +6,7 @@ Nori 2026-11-08「1と2」。gen_areas.py の最後（crosslink のあと）に�
 料金は概算で、確定料金ではないことを必ず添える。電話番号は出さない。"""
 import os, re
 
-DIRS = ["hospital", "dogrun", "jichitai", "sougi", "pet-hotel", "pet-sitter", "trimming", "dog-trainer", "rojin-home", "inu-yado"]
+DIRS = ["hospital", "dogrun", "jichitai", "sougi", "pet-hotel", "pet-sitter", "trimming", "dog-trainer", "rojin-home", "inu-yado", "inu-cafe"]
 TOP4 = {"tokyo", "kanagawa", "saitama", "chiba"}
 # 一覧の上に出す短い案内（見出し, 説明）。ないカテゴリは上に出さない
 TOP = {
@@ -14,6 +14,7 @@ TOP = {
     "pet-hotel": ("ホテルへの送り迎えに", "家の前からホテルの前まで、ペットタクシーで移動できます。"),
     "rojin-home": ("見学・入所・面会の日の移動に", "家の前から施設の前まで、ペットタクシーで移動できます。"),
     "dog-trainer": ("教室や幼稚園への送り迎えに", "家の前から教室の前まで、ペットタクシーで移動できます。"),
+    "inu-cafe": ("お店までの移動に", "大きな犬や何頭もいっしょでも、家の前からお店の前までペットタクシーで移動できます。"),
     "inu-yado": ("宿までの移動に", "大きな犬や何頭もいっしょでも、家の前から宿の前までペットタクシーで移動できます。"),
     "hospital": ("通院や退院のお迎えに", "前もって決まっている通院は、ペットタクシーを予約できます。"),
 }
