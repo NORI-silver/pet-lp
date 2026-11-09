@@ -3,7 +3,7 @@
 // ペットタクシーの候補カード（まだ提携していない会社）と同じ形にそろえる：
 //  - 公式サイトへのリンクに utm_source=pet.shiokonbu.com を付ける（当サイトから来たことが会社に見える）。押した数は解析の official_site
 //  - 「問い合わせ文をつくる」：条件を入れると、公式サイトのお問い合わせ欄に貼れる文を作ってコピーする（お名前・連絡先は入れない。保存しない。送らない）
-//    最後に「ペットタクシー予約窓口 pet.shiokonbu.com で見て、問い合わせました」と書く（送客が会社に伝わる）。数は copy_inquiry
+//    最後に「pet.shiokonbu.com で見て、問い合わせました」と書く（タクシー以外の分野なのでペットタクシーの名前は入れない。Nori 2026-11-09）（送客が会社に伝わる）。数は copy_inquiry
 //  - 条件のしぼりこみ（公式サイトに書いてあることから作ったタグだけ）。押した条件と県は facility_filter（どんな条件の人が多いか＝提携のお誘いに使う。個人の情報は送らない）
 //  - 所在地の分かる施設は「ここまでのペットタクシーの料金をくらべる」（トップのフォームの行き先に入れる）。数は facility_taxi
 //  - 提携した事業者（カードの data-partner="1"）は、名前の前にオレンジの丸にチェックのアイコンだけを付ける（文字は付けない）
@@ -87,7 +87,7 @@
   function buildText(cat, name){
     var c = CONF[cat], lines = [name ? name + " 御中" : "", "", c.head, ""];
     c.fields.forEach(function(f){ var v = (vals[cat + "." + f[0]] || "").trim(); if (v) lines.push("・" + f[1] + "：" + v); });
-    lines.push("", c.tail, "", "（ペットタクシー予約窓口 pet.shiokonbu.com で見て、問い合わせました）");
+    lines.push("", c.tail, "", "（pet.shiokonbu.com で見て、問い合わせました）");
     return lines.join("\n").replace(/^\n+/, "");
   }
   function copy(t, done){

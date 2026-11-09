@@ -11,7 +11,7 @@ ctx.Utilities={formatDate(d,tz,f){const j=new Date(d.getTime()+9*3600000),z=n=>S
 let html='';
 ctx.HtmlService={createHtmlOutput:h=>{html=h;const o={setTitle:()=>o,addMetaTag:()=>o};return o;}};
 ctx.linkBase_=()=>'https://pet.shiokonbu.com/go/';
-const pt={id:'P900',name:'見本ペットタクシー',person:'',active:true,areas:['東京'],email:'x@example.invalid',big:true,careOk:true,cageMust:'不要',cageLend:true,riders:3,pets:5,luggage:true,hours:'0-24',lead:0,car:'ワンボックス',payMethod:'現金',payWhen:'降りるとき'};
+const pt={id:'P900',name:'見本ペットタクシー',person:'',active:true,areas:['東京'],email:'x@example.invalid',tel:'03-0000-0000',big:true,careOk:true,cageMust:'不要',cageLend:true,riders:3,pets:5,luggage:true,hours:'0-24',lead:0,car:'ワンボックス',payMethod:'現金',payWhen:'降りるとき'};
 ctx.partners_=()=>[pt];ctx.partnerById_=()=>pt;
 const when=new Date('2026-11-20T01:30:00Z'); // 10:30 JST
 const r={'受付番号':'R-見本','状態':ctx.ST.OPEN,'依頼の種類':'問い合わせ','希望日時':when,'片道・往復':'片道','都府県':'東京','お迎えの場所':'世田谷区 桜新町駅の近く','行き先':'目黒区の動物病院','種類':'犬','犬種・猫種':'柴犬','体重kg':'10','年齢':'12','性別':'','キャリー':'持っている','介助':'不要','同乗人数':'1人','荷物':'少なめ','ペット数':'1','指定した提携先ID':'P900,P901,P902','概算料金':'','見積もりJSON':'[]'};
@@ -29,14 +29,8 @@ const mailHtml=`<!doctype html><meta charset="utf-8"><style>body{margin:0;backgr
  const b=await chromium.launch({args:['--lang=ja-JP']});const p=await b.newPage({viewport:{width:390,height:844},deviceScaleFactor:2,locale:'ja-JP'});
  for(const [name,h] of [['mail',mailHtml],['reply',accept]]){
   await p.setContent(h,{waitUntil:'load'});
-  if(name==='reply'){await p.fill('input[name=fare]','5200');await p.fill('textarea[name=msg]','前日にお電話でお迎えの場所を確認します');await p.evaluate(()=>{const i=document.querySelector('input[name=at]');i.type='text';i.value='2026/11/20 10:30';document.activeElement.blur();});} // 撮る環境が英語なので、日時の欄だけ日本の表示にする
+  if(name==='reply'){await p.fill('input[name=fare]','5200');await p.fill('textarea[name=msg]','前日にお電話でお迎えの場所を確認します');await p.evaluate(()=>document.activeElement.blur());} // 日時は変えられない枠に文字で出る（2026-11-09）。画面は省かずに全部撮る
   const png=path.join(out,name+'.png');await p.screenshot({path:png,fullPage:true});
-  if(name==='reply'){ // 依頼内容の箱（メールと同じ）は省き、題名と入力欄だけをつなげる
-   const box=await p.evaluate(()=>{const b=document.querySelectorAll('.box');const r1=b[0].getBoundingClientRect(),r2=b[1].getBoundingClientRect();return [r1.top+scrollY,r2.bottom+scrollY];});
-   require('node:child_process').execFileSync('python3',['-c',`from PIL import Image
-im=Image.open('${png}');w,h=im.size;a=int(${box[0]}*2)-8;c=int(${box[1]}*2)+16
-top=im.crop((0,0,w,a));bot=im.crop((0,c,w,h));n=Image.new('RGB',(w,top.height+bot.height),'white');n.paste(top,(0,0));n.paste(bot,(0,top.height));n.save('${png}')`]);
-  }
  }
  await b.close();
  // ページで使うのは webp だけ（png は消す）

@@ -86,6 +86,11 @@ _PPTS = _DCJ.get("partner_points", {})
 _PLIM = _DCJ.get("partner_limits", {})
 booking_src = re.sub(r"/\*PARTNER_POINTS\*/.*?/\*/PARTNER_POINTS\*/", lambda m: "/*PARTNER_POINTS*/var PARTNER_POINTS = " + json.dumps(_PPTS, ensure_ascii=False) + ";/*/PARTNER_POINTS*/", booking_src, count=1, flags=re.S)
 booking_src = re.sub(r"/\*PARTNER_LIMITS\*/.*?/\*/PARTNER_LIMITS\*/", lambda m: "/*PARTNER_LIMITS*/var PARTNER_LIMITS = " + json.dumps(_PLIM, ensure_ascii=False) + ";/*/PARTNER_LIMITS*/", booking_src, count=1, flags=re.S)
+# 提携規約の版（改定日＋本文の指紋）。同意のページ（booking/Code.gs の agreePage_）が、どの版に同意したかを記録する
+import hashlib as _hl
+from partner_terms import PTERMS as _PT, PTERMS_REVISED as _PTR
+PTERMS_HASH = _hl.sha256(json.dumps(_PT, ensure_ascii=False).encode("utf-8")).hexdigest()[:12]
+booking_src = re.sub(r"/\*PTERMS_VER\*/.*?/\*/PTERMS_VER\*/", lambda m: "/*PTERMS_VER*/var PTERMS_VER = " + json.dumps({"revised": _PTR, "hash": PTERMS_HASH}, ensure_ascii=False) + ";/*/PTERMS_VER*/", booking_src, count=1, flags=re.S)
 open(booking_path, "w", encoding="utf-8").write(booking_src)
 
 src = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
@@ -786,10 +791,10 @@ from partner_terms import PTERMS, PTERMS_DATE, PTERMS_REVISED
 pterms_url = SITE + "/partner/terms/"
 ptp = head("提携規約（ペットタクシー会社さま向け）｜ペットタクシー予約窓口", "ペットタクシー予約窓口と提携してくださるペットタクシー会社さま向けの規約です。問い合わせとお返事、予約の確定、手数料（当面はいただきません）、個人情報、提携の終了などを定めています。", pterms_url, "") + f"""
 <main>
-<section class="area-hero"><div class="wrap"><h1>提携規約<small style="display:block;font-size:.95rem;color:var(--o-d)">ペットタクシー会社さま向け</small></h1><p class="lede">当サイトと提携してくださる会社さまとの約束です。お申し込みのあと、この規約をメールでお送りし、同意のお返事をいただいてから提携が始まります。</p></div></section>
+<section class="area-hero"><div class="wrap"><h1>提携規約<small style="display:block;font-size:.95rem;color:var(--o-d)">ペットタクシー会社さま向け</small></h1><p class="lede">当サイトと提携してくださる会社さまとの約束です。同意のお手続きは、あらためてメールでご案内します。</p></div></section>
 <section><div class="wrap prose terms">
 {''.join(f'<h2>{e(h)}</h2>' + ''.join(terms_block(v) for v in body) for h, body in PTERMS)}
-<p class="small">{PTERMS_DATE} 制定・{PTERMS_REVISED} 改定</p>
+<p class="small">{PTERMS_DATE} 制定・{PTERMS_REVISED} 改定（版の番号 {PTERMS_HASH}）</p>
 <p><a href="/partner/">提携のご案内にもどる</a></p>
 </div></section>
 </main>
@@ -915,7 +920,7 @@ def _ic(path):  # メリットのアイコン（線の絵）
     return '<svg viewBox="0 0 48 48" fill="none" stroke="#ff6a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#fff1e6" stroke="none"/>' + path + '</svg>'
 PT_MERITS = [
  (_ic('<path d="M15 24h18M24 15v18"/><circle cx="24" cy="24" r="12"/>'), "はじめる費用は0円", "登録料・月額料金・掲載料はいただきません。お問い合わせを受け取るのも、お返事するのも無料です。"),
- (_ic('<rect x="12" y="15" width="24" height="18" rx="3"/><path d="M12 18l12 8 12-8"/>'), "電話の対応はいりません", "お問い合わせはメールで届きます。リンクを開いて、お迎え時刻と確定料金（税込）を入れるだけでお返事できます。"),
+ (_ic('<rect x="12" y="15" width="24" height="18" rx="3"/><path d="M12 18l12 8 12-8"/>'), "電話の対応はいりません", "お問い合わせはメールで届きます。リンクを開いて、確定料金（税込）を入れるだけでお返事できます。日時は飼い主さんの希望のままです。"),
  (_ic('<path d="M14 16h20l-7 9v8l-6 3V25z"/>'), "条件に合うお問い合わせだけ届きます", "お迎えできるエリア・乗せられる動物・送迎できる時間・ペットの体重や頭数・ケージなど、会社さまの条件に合うお問い合わせだけをお届けします。たとえば犬・猫だけの会社さまに、うさぎや鳥のお問い合わせは届きません。"),
  (_ic('<path d="M16 32V20l8-5 8 5v12z"/><path d="M21 32v-6h6v6"/>'), "料金は会社さまが決めます", "サイトの料金は目安です。確定料金はいつも会社さまがお返事で決めます。当サイトが値引きをお願いすることはありません。"),
  (_ic('<path d="M17 25l5 5 10-11"/>'), "受けられないときは返事不要", "空いていないときや条件が合わないときは、そのままにしておいてください。お断りのご連絡もいりません。"),
@@ -929,7 +934,7 @@ PT_FAQ = [
  ("キャンセルになったら手数料はどうなりますか？", "いまは手数料はいただいていません。将来いただくことになった場合も、送迎をしなかったときはかかりません。キャンセル料は会社さまのキャンセル規定のとおりで、キャンセル料に手数料をかけることはありません。なお、送迎があったかどうかは、送迎のあとに飼い主さんにも確かめ、月末のご報告と照らし合わせます（提携規約の第9条）。"),
  ("条件に合わないお問い合わせが届くことはありますか？", "お申し込みでうかがった条件（お迎えできるエリア、乗せられる動物、送迎できる時間、大型犬の体重や頭数、同乗の人数、ケージ）に合わないお問い合わせはお届けしません。たとえば犬・猫だけの会社さまにうさぎのお問い合わせは届かず、エリアの外のお問い合わせも届きません。条件がまだ分からない項目があるときは、メールに「引き受ける前にご確認ください」と書いてお届けしますので、できないときはお受けにならないでください。条件はメールでいつでも変えられます。"),
  ("ほかの予約サイトや自社の予約と一緒に使えますか？", "はい。いまの予約の受け方はそのままで、当サイトのお問い合わせを一つの窓口として足していただくイメージです。"),
- ("いまの候補の一覧で、会社さまはどう見えていますか？", "当サイトでは、公式サイトに公開されている料金表と営業時間をもとに、各地の会社を候補として表示しています。提携していない会社さまは、社名と公式サイトへのリンク、料金の目安を載せています（口コミは出さず、お店の場所はおおまかにしています）。飼い主さんは当サイトから問い合わせを送れないため、公式サイトで直接お問い合わせいただく形です。提携いただくと、社名の横に印が付き、飼い主さんが当サイトから空き状況と料金を問い合わせできるようになります。載せ方の修正や、掲載をやめたいご希望は、お問い合わせからいつでもお知らせください。"),
+ ("いまの候補の一覧で、会社さまはどう見えていますか？", "当サイトでは、公式サイトに公開されている料金表と営業時間をもとに、各地の会社を候補として表示しています。提携していない会社さまは、社名と公式サイトへのリンク、料金の目安を載せています（口コミは出さず、お店の場所はおおまかにしています）。飼い主さんは当サイトから問い合わせを送れないため、公式サイトで直接お問い合わせいただく形です。提携いただくと、社名の横に印が付き、地図サービスの口コミ（星と本文）も表示され、飼い主さんが当サイトから空き状況と料金を問い合わせできるようになります。載せ方の修正や、掲載をやめたいご希望は、お問い合わせからいつでもお知らせください。"),
  ("やめたいときはどうすればいいですか？", "メールでお知らせいただければ、いつでも止められます。違約金などはありません。すでに確定している予約は、最後までお願いします。"),
 ]
 
@@ -989,7 +994,7 @@ PT_FARE = "".join([
     + pt_if("p_kg", ["重い子は足す"], pt_q("体重による料金", pt_n("", "kg以上は"), pt_n("", "円を足す"))), "", "p_kg"),
   pt_f("同乗する人の料金", pt_sel("p_ridefee", "同乗する人の料金", ["人数で変わらない", "人数で足す"])
     + pt_if("p_ridefee", ["人数で足す"], pt_q("同乗する人の追加料金", pt_n("", "人目から1人"), pt_n("", "円"))), "", "p_ridefee"),
-  pt_f("当日の依頼", pt_sel("p_sameday", "当日の依頼", ["受けない（前日まで）", "空いていれば受ける", "空いていれば受ける（当日の追加料金あり）"])
+  pt_f("当日の依頼", pt_sel("p_sameday", "当日の依頼", ["受けない（前日まで）", "受けない（2日前まで）", "受けない（3日前より前まで）", "空いていれば受ける", "空いていれば受ける（当日の追加料金あり）"])
     + pt_if("p_sameday", ["空いていれば受ける", "空いていれば受ける（当日の追加料金あり）"], pt_q("当日の締め切り", pt_n("お迎えの ", "時間前まで", opt=True)))
     + pt_if("p_sameday", ["空いていれば受ける（当日の追加料金あり）"], pt_q("当日の追加料金", pt_n("", "円"))), "", "p_sameday"),
   pt_f("長い距離", pt_sel("p_long", "長い距離", ["同じ料金表で計算する", "一定の距離を超えると別にお見積もり"], req=False)
@@ -1001,16 +1006,35 @@ PT_FARE = "".join([
 ])
 PT_COND = "".join([
   pt_f("1回に乗せられる頭数", pt_sel("p_maxpets", "乗せられる頭数", ["1頭", "2頭まで", "3頭まで", "4頭以上"]), "", "p_maxpets"),
+  pt_f("大きい子（20kg以上）を一度に乗せられる数", pt_sel("p_large", "大きい子（20kg以上）の数", ["乗せられない", "1頭まで", "2頭まで", "3頭以上"]), "", "p_large"),
   pt_f("乗せられる体重（いちばん大きい子）", pt_sel("p_maxkg", "乗せられる体重", ["10kgまで", "20kgまで", "30kgまで", "40kgまで", "50kgまで", "50kgを超えても乗せられる"]), "", "p_maxkg"),
   pt_f("飼い主さんの同乗", pt_sel("p_ride", "飼い主さんの同乗", ["同乗できない", "1人まで", "2人まで", "3人まで", "4人以上"]), "", "p_ride"),
   pt_f("ペットだけの送迎（飼い主さんが乗らない）", pt_sel("p_petonly", "ペットだけの送迎", ["できる", "できない"]), "", "p_petonly"),
-  pt_f("ケージ・キャリー", pt_sel("p_cage", "ケージ", ["なくても乗せられる", "必要（貸し出しあり）", "必要（貸し出しなし）"]), "", "p_cage"),
-  pt_f("ワクチンの証明", pt_sel("p_vac", "ワクチンの証明", ["いらない", "必要"]), "", "p_vac"),
+  pt_f("ケージ・キャリー", pt_sel("p_cage", "ケージ", ["なくても乗せられる", "必要（貸し出しあり）", "必要（貸し出しなし）"])
+    + pt_if("p_cage", ["必要（貸し出しあり）"], '<b>貸し出せるケージの大きさ</b><textarea data-k="貸し出せるケージ" rows="2" maxlength="300" placeholder="例：小型犬用2つ、大型犬用（幅90cm）1つ"></textarea>'), "", "p_cage"),
+  pt_f("ワクチン", pt_sel("p_vac", "ワクチン", ["接種していなくても乗せられる", "接種していれば証明はいらない", "証明が必要（狂犬病の予防注射だけ）", "証明が必要（狂犬病と混合ワクチン）"]), "", "p_vac"),
+  pt_f("大きな荷物（スーツケース・大きなケージ・カートなど）", pt_sel("p_lug", "大きな荷物", ["載せられる", "少しなら載せられる", "載せられない"]), "", "p_lug"),
+  pt_f("途中で寄る（経由地）", pt_sel("p_via", "途中で寄る", ["できる（料金は距離と待ち時間のとおり）", "できる（1か所ごとに料金を足す）", "できない"])
+    + pt_if("p_via", ["できる（1か所ごとに料金を足す）"], pt_q("寄るときの料金", pt_n("1か所ごとに ", "円"))), "", "p_via"),
 ])
+# 介護が必要な子（お客さまのフォームの「どんな手助けが必要ですか？」と同じ言葉。app.js の CARE_OPTS）
+PT_CARE_OPTS = ["歩けない（抱っこで運ぶ）", "寝たきり（担架やマットで運ぶ）", "階段で運び出す（エレベーターなし）", "酸素や点滴などの医療機器がある", "カートやバギーごと乗りたい"]
+PT_CARE_HELP = ["乗り降りの手伝い", "大型犬を抱えて運ぶ"]
+PT_CARE_TOOLS = ["ストレッチャー（担架）", "介護用マット・クッション", "スロープ（カートごと乗れる）", "カート・バギーを固定できる", "酸素ボンベや点滴を置ける・固定できる", "体温を保つ道具（毛布・保温マットなど）", "どれもない"]
+PT_CARE = pt_f("介護が必要な子（歩くのがつらい・寝たきりなど）", pt_sel("p_care", "介護が必要な子", ["受けられる", "相談して決める", "受けられない"])
+    + pt_if("p_care", ["受けられる", "相談して決める"],
+        '<b>できること</b><span class="any">あてはまるものすべて</span><div class="checks" id="p_careok" data-k="介護でできること">'
+        + "".join(f'<label><input type="checkbox" value="{e(x)}">{e(x)}</label>' for x in PT_CARE_OPTS + PT_CARE_HELP) + '</div>'
+        + '<b>介護のときに伺える人数</b>' + pt_sel("p_carestaff", "介護で伺える人数", ["1人", "2人", "3人以上", "依頼に合わせて人数を増やせる"])
+        + '<b>抱えたり担架で運んだりできる体重</b>' + pt_sel("p_carekg", "介護で運べる体重", ["10kgまで", "20kgまで", "30kgまで", "40kgまで", "50kgまで", "50kgを超えても運べる"])
+        + '<b>車にある介護の道具</b><span class="any">あてはまるものすべて</span><div class="checks" id="p_caretool" data-k="介護の道具">'
+        + "".join(f'<label><input type="checkbox" value="{e(x)}">{e(x)}</label>' for x in PT_CARE_TOOLS) + '</div>'
+        + '<b>道具のくわしいこと</b><span class="any">あれば</span><textarea data-k="介護の道具（くわしく）" rows="2" maxlength="300" placeholder="例：担架は幅60cm・40kgまで、酸素ボンベは飼い主さんのものを固定できます"></textarea>'), "", "p_care")
+PT_QUALS = ["愛玩動物看護師（国家資格）", "獣医師", "ペット介護士・ペットケアの民間資格", "ペットの救急救命の講習を受けた", "動物取扱責任者", "とくになし"]
 PT_NEED = [
- ("お申し込みでうかがうこと", ["会社名・屋号、ご担当者のお名前", "お問い合わせを受け取るメールアドレス（窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスをお知らせください）", "お迎えできる都道府県・市区町村、受けられる曜日・時間帯、当日の依頼", "乗せられる動物・頭数・体重、飼い主さんの同乗、ペットだけの送迎、ケージ、ワクチン", "車の台数と種類、車が出発するお店・事業所の場所（町名まで）"]),
+ ("お申し込みでうかがうこと", ["会社名・屋号、ご担当者のお名前", "お問い合わせを受け取るメールアドレス（窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスをお知らせください）", "お迎えできる都道府県・市区町村、受けられる曜日・時間帯、時間外や当日の依頼", "乗せられる動物・頭数・体重（大きい子の数）、飼い主さんの同乗、ペットだけの送迎、ケージ、ワクチン、大きな荷物、途中で寄れるか", "介護が必要な子（歩けない・寝たきりなど）を受けられるか、できること、伺える人数、運べる体重、ストレッチャーなどの道具", "車の台数と種類、車が出発するお店・事業所の場所（町名まで）"]),
  ("料金でうかがうこと", ["税込か税別か", "基本料金と距離（または時間）の料金、1km未満の数え方", "お迎え料金・回送料金", "夜間・早朝の割増（率か金額、時間帯）", "待ち時間・高速道路・頭数・体重・同乗する人の料金", "キャンセル料、お支払い方法とタイミング"]),
- ("わかればうかがうこと", ["動物取扱業の登録番号", "お持ちの事業の許可・届出（旅客の許可、貨物軽自動車運送事業の届出など）", "加入している保険（対人・対物、ペットのケガ）", "往復・長い距離・空港などの料金"]),
+ ("わかればうかがうこと", ["動物取扱業の登録番号", "お持ちの事業の許可・届出（旅客の許可、貨物軽自動車運送事業の届出など）", "加入している保険（対人・対物、ペットのケガ）", "スタッフの資格（愛玩動物看護師など）", "往復・長い距離・空港などの料金", "お迎えに行ける距離、依頼から出発できるまでの時間"]),
 ]
 pt_merits = "".join(f'<div class="pt-merit">{ic}<h3>{e(t)}</h3><p>{e(d)}</p></div>' for ic, t, d in PT_MERITS)
 pt_faq = "".join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in PT_FAQ)
@@ -1031,8 +1055,8 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 <h2>お問い合わせから予約までの流れ</h2><p class="sub">飼い主さんは、空き状況と確定料金を見てから予約を決めます。会社さまのお返事だけでは予約は決まりません。</p>
 <ol class="pt-flow">
 <li><span class="who c">飼い主さん</span><h3>候補から会社を選んで問い合わせ</h3><p>お迎えの場所・日時・ペットの情報を入れると、条件に合う会社さまが料金の目安と一緒に並びます。飼い主さんは1社だけ、または条件に合う会社にまとめて問い合わせます。</p></li>
-<li><span class="who s">当サイト</span><h3>会社さまへメールでお届け</h3><p>日時・お迎えの場所・行き先・同乗する人数・ペットの種類や体重・頭数・ケージの有無と、料金の目安をお届けします。</p><span class="lock">🔒 この段階では、飼い主さんのお名前と連絡先はお伝えしません</span></li>
-<li><span class="who y">会社さま</span><h3>空いていればお返事</h3><p>メールのリンクを開き、お迎え時刻と確定料金（税込・一般道のとき／高速を使うとき）を入れて送るだけです。受けられないときは、何もしなくて大丈夫です。<a href="#screens">画面の見本を見る</a></p></li>
+<li><span class="who s">当サイト</span><h3>会社さまへメールでお届け</h3><p>日時・お迎えの場所・行き先・同乗する人数・荷物・介助の要否・ペットの種類や体重・頭数・ケージの有無・飼い主さんのメモと、料金の目安をお届けします。</p><span class="lock">🔒 この段階では、飼い主さんのお名前と連絡先はお伝えしません</span></li>
+<li><span class="who y">会社さま</span><h3>空いていればお返事</h3><p>メールのリンクを開き、確定料金（税込・一般道のとき／高速を使うとき）と、飼い主さんからの連絡を受ける電話番号・メールを入れて送るだけです（登録の連絡先が最初から入っています）。日時は飼い主さんの希望のままで、日付だけのご依頼のときだけ時刻を入れます。受けられないとき・日時が合わないときは、何もしなくて大丈夫です。<a href="#screens">画面の見本を見る</a></p></li>
 <li><span class="who c">飼い主さん</span><h3>内容を見て予約を確定</h3><p>飼い主さんが「この内容で予約する」を押した時点で予約が確定します。何社かに問い合わせたときは、くらべて1社を選びます。選ばれなかった会社さまには「締め切り」のお知らせが届きます。</p></li>
 <li><span class="who y">会社さま</span><h3>飼い主さんと直接やり取りして送迎</h3><p>確定すると、飼い主さんのお名前と連絡先をメールでお知らせします。そのあとの打ち合わせ・送迎・運賃のお受け取りは、会社さまと飼い主さんで直接お願いします。</p></li>
 </ol>
@@ -1041,8 +1065,8 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 <section class="pt-sec" id="screens"><div class="wrap">
 <h2>届くメールとお返事の画面（見本）</h2><p class="sub">実際に会社さまへ届くメールと、お返事の画面です。内容は架空のお問い合わせです。画面の中はスクロールできます。</p>
 <div class="pt-shots">
-<figure><div class="ph"><img src="/img/partner/mail.webp" width="390" height="1120" loading="lazy" alt="当サイトから届く「空き状況と料金のお問い合わせ」メールの見本。日時・お迎えの場所・行き先・ペット・同乗人数が書かれ、お名前と連絡先は伏せてある"></div><figcaption><b>1. メールが届く</b>日時・場所・ペットの様子が届きます。お名前と連絡先はまだ伏せています。受けられないときは何もしなくて大丈夫です。</figcaption></figure>
-<figure><div class="ph"><img src="/img/partner/reply.webp" width="390" height="839" loading="lazy" alt="メールのリンクから開くお返事の画面の見本。お迎え時刻と確定料金を入れて「この内容でお返事する」を押す"></div><figcaption><b>2. リンクを開いて数字を入れる</b>お迎え時刻と確定料金を入れて「この内容でお返事する」を押すだけです。ログインやアプリは要りません（見本では、メールと同じ依頼の内容の部分を省いています）。</figcaption></figure>
+<figure><div class="ph"><img src="/img/partner/mail.webp" width="390" height="1365" loading="lazy" alt="当サイトから届く「空き状況と料金のお問い合わせ」メールの見本。日時・お迎えの場所・行き先・ペット・同乗人数が書かれ、お名前と連絡先は伏せてある"></div><figcaption><b>1. メールが届く</b>日時・場所・ペットの様子が届きます。お名前と連絡先はまだ伏せています。受けられないときは何もしなくて大丈夫です。</figcaption></figure>
+<figure><div class="ph"><img src="/img/partner/reply.webp" width="390" height="2007" loading="lazy" alt="メールのリンクから開くお返事の画面の見本。ご依頼の内容は変えられない枠にあり、確定料金と連絡先を入れて「この内容でお返事する」を押す"></div><figcaption><b>2. リンクを開いて数字を入れる</b>ご依頼の内容（日時など）は変えられない枠に出ます。確定料金と連絡先を入れて「この内容でお返事する」を押すだけです。ログインやアプリは要りません。</figcaption></figure>
 </div>
 </div></section>
 
@@ -1066,7 +1090,7 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 <ol class="pt-steps">
 <li><b>このページから申し込む</b><span>下のフォームに、エリア・時間帯・料金などを入れて送ってください（10分ほど。ほとんど選ぶだけです）。</span></li>
 <li><b>内容の確認</b><span>当サイトで公式サイトなどを拝見し、数日以内にメールでご連絡します。わからない点はメールでおたずねします。お問い合わせを受け取るメールアドレスには確認のメールをお送りし、届くこと・お返事できることを確かめます。</span></li>
-<li><b>提携規約に同意</b><span>お問い合わせとお返事のしかた、個人情報の扱いなどを定めた<a href="/partner/terms/">提携規約</a>をメールでお送りします。ご確認のうえ、同意のお返事をください。</span></li>
+<li><b>提携規約のご確認</b><span>お問い合わせとお返事のしかた、個人情報の扱いなどを定めた<a href="/partner/terms/">提携規約</a>をご確認ください。規約への同意のお手続きは、あらためてメールでご案内します。</span></li>
 <li><b>お問い合わせのお届け開始</b><span>候補の一覧で問い合わせできる状態になり、条件に合うお問い合わせがメールで届きはじめます。</span></li>
 </ol>
 </div></section>
@@ -1093,24 +1117,31 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
   <div class="f"><label for="p_name">ご担当者のお名前</label><input type="text" id="p_name" name="name" required autocomplete="name"></div>
   <div class="f"><label for="p_email">お問い合わせを受け取るメールアドレス<span class="any">飼い主さんからのお問い合わせがここに届きます。窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスを入れてください</span></label><input type="email" id="p_email" name="email" required autocomplete="email"></div>
   <div class="f"><label for="p_email2">メールアドレス（確認のため、もう一度）</label><input type="email" id="p_email2" required autocomplete="email"></div>
+  <div class="f"><label for="p_cc">控えも届けたいメールアドレス<span class="any">あれば。窓口の共有アドレス（info@ など）があると、担当の方がお休みでも見落としません</span></label><input type="email" id="p_cc" data-k="控えのメールアドレス" autocomplete="off"></div>
   <div class="f"><label for="p_url">ホームページ<span class="any">あれば</span></label><input type="url" id="p_url" data-k="ホームページ" placeholder="https://"></div>
   <div class="group-h"><span>2</span>エリア・時間・車</div>
   <div class="f"><span class="lbl">お迎えできる都道府県</span><div class="checks" id="p_prefs" data-k="都道府県">{''.join(f'<label><input type="checkbox" value="{p}">{p}</label>' for p in PREFS47)}</div></div>
   <div class="f"><label for="p_city">お迎えできる市区町村など<span class="any">わかれば</span></label><input type="text" id="p_city" data-k="市区町村など" maxlength="300" placeholder="例：市内全域と、となりの市まで"></div>
   <div class="f"><label for="p_hours">受けられる曜日・時間帯</label><input type="text" id="p_hours" data-k="受けられる時間帯" required maxlength="200" placeholder="例：毎日 8:00〜20:00（定休日：水曜）"></div>
   <div class="f"><label for="p_car">車の台数と種類</label><input type="text" id="p_car" data-k="車" required maxlength="200" placeholder="例：2台（ワンボックス、軽バン）"></div>
+  {pt_f("時間外の依頼", pt_sel("p_off", "時間外の依頼", ["受けない", "相談に応じる"]), "", "p_off")}
+  {pt_f("お迎えに行ける距離", '<div class="pt-q" data-k="お迎えに行ける距離" data-opt="1">' + pt_n("お店から ", "kmまで", opt=True) + '</div>', "わかれば")}
+  {pt_f("依頼を受けてから出発できるまで", pt_sel("p_prep", "出発できるまで", ["30分くらい", "1時間くらい", "2時間くらい", "3時間以上"], req=False), "わかれば", "p_prep")}
   <div class="group-h"><span>3</span>乗せられる動物と条件</div>
   <div class="f"><span class="lbl">乗せられる動物</span><div class="checks" id="p_animals" data-k="乗せられる動物">{''.join(f'<label><input type="checkbox" value="{a}">{a}</label>' for a in ["犬", "猫", "うさぎ・フェレットなどの小動物", "鳥", "爬虫類・両生類", "魚"])}</div></div>
   {PT_COND}
+  {PT_CARE}
   <div class="group-h"><span>4</span>料金</div>
   {PT_FARE}
   <div class="f"><span class="lbl">お支払い方法</span><div class="checks" id="p_pays" data-k="お支払い方法">{''.join(f'<label><input type="checkbox" value="{p}">{p}</label>' for p in PAYS)}</div></div>
   <div class="group-h"><span>5</span>許可・保険など</div>
   <div class="f"><label for="p_reg">動物取扱業の登録番号<span class="any">わかれば</span></label><input type="text" id="p_reg" data-k="動物取扱業の登録番号" maxlength="100" autocomplete="off"></div>
   <div class="f"><label for="p_lic">事業の許可・届出<span class="any">わかれば</span></label><select id="p_lic" data-k="事業の許可・届出"><option value="">選んでください</option><option>一般乗用旅客自動車運送事業の許可（緑ナンバー）</option><option>貨物軽自動車運送事業の届出（黒ナンバー）</option><option>両方</option><option>そのほか・わからない</option></select></div>
+  <div class="f"><span class="lbl">スタッフの資格<span class="any">あてはまるものすべて</span></span><div class="checks" id="p_quals" data-k="スタッフの資格">{''.join(f'<label><input type="checkbox" value="{e(q)}">{e(q)}</label>' for q in PT_QUALS)}</div>
+    <input type="text" id="p_qual" data-k="スタッフの資格（そのほか）" maxlength="200" placeholder="そのほかの資格（例：ペット看護士（民間）、ドッグトレーナー）" aria-label="そのほかの資格"></div>
   <div class="f"><label for="p_ins">加入している保険<span class="any">わかれば</span></label><input type="text" id="p_ins" data-k="保険" maxlength="200" placeholder="例：対人・対物無制限、ペットのケガの補償あり"></div>
   <div class="f"><label for="p_msg">ほかに伝えたいこと<span class="any">あれば</span></label><textarea id="p_msg" data-k="そのほか" rows="4" maxlength="1000"></textarea></div>
-  <label class="agree"><input type="checkbox" id="p_agree" required><span><a href="/#privacy">個人情報の取り扱い</a>を確認し、同意します。提携の内容は<a href="/partner/terms/">提携規約</a>をご覧ください（同意は内容の確認のあと、メールでいただきます）。</span></label>
+  <label class="agree"><input type="checkbox" id="p_agree" required><span><a href="/#privacy">個人情報の取り扱い</a>を確認し、同意します。提携の内容は<a href="/partner/terms/">提携規約</a>をご覧ください（同意のお手続きは、あらためてメールでご案内します）。</span></label>
   <p id="p_err" role="alert" style="display:none;color:#c0392b;font-size:.88rem"></p>
   <button class="btn" type="submit">申し込む{ARROW}</button>
   <p class="form-foot">内容を確認して、数日以内にメールでご連絡します。</p>
@@ -1767,6 +1798,9 @@ print("crosslink", crosslink.build(ROOT, _xl_prefs), "pages")
 # [B] 2026-11-08 情報ページからペットタクシーの料金くらべへの案内（tools/taxi_cta.py、Nori「1と2」）
 import taxi_cta
 print("taxi_cta", taxi_cta.build(ROOT, _xl_prefs), "pages")
+# タクシー以外の分野のページのサイト名は「ペットのくらし窓口」（tools/brand.py、Nori 2026-11-09）
+import brand
+print("brand", brand.build(ROOT), "pages")
 # AIエージェント向けの入口（/webmcp/data.json と /llms.txt。tools/gen_webmcp.py）
 import gen_webmcp
 gen_webmcp.build(ROOT)
