@@ -6900,7 +6900,8 @@
    "url": "https://pettaku.com/",
    "long": true,
    "review_q": "ペッタク ペット専門の輸送サービス",
-   "review_exact": "ペッタク 【ペット専門の輸送サービス】", "review_place": "ChIJATs-MDNz2IcRU0HCm0bwaU4",
+   "review_exact": "ペッタク 【ペット専門の輸送サービス】",
+   "review_place": "ChIJATs-MDNz2IcRU0HCm0bwaU4",
    "review_name": "ペッタク",
    "hours": "0-24",
    "flex": false,
@@ -7215,7 +7216,14 @@
      "from": 21,
      "to": 8,
      "flat": 3300
-    }
+    },
+    "roundBack": {
+     "per": 165
+    },
+    "notes": [
+     "高速道路を使う場合、通行料金は別にかかります。",
+     "タクシーチケットは使えません。"
+    ]
    },
    "pay": "現金・カード",
    "url": "https://cocotakufukuokahigashi.com/",
