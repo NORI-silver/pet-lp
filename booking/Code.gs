@@ -8,7 +8,7 @@
  *        こちらのLINEに登録済み → 自動で送信
  *        先方のLINE公式だけ   → 運営者が「手配ページ」のボタンを押して送信（文面は入力済み）
  *        電話だけ        → 対象外
- *   3. 提携先がリンクを開き「お迎え時刻・確定料金（一般道／高速利用時）」を入れて引き受け（先着1社）
+ *   3. 提携先がリンクを開き「確定料金（一般道／高速利用時）」を入れて引き受け（日時はお客さまの希望で固定。日付だけの依頼は時刻も）（先着1社）
  *      返信で答えてきた場合は、運営者が手配ページで決定を入力
  *   4. お客さまへ「決まりました」を自動送信。引き受けた提携先にだけお客さまの連絡先を送る
  *   5. 決まらないとき：一定時間で近くのエリア・全国対応の提携先にも送る → それでもだめならお詫びを自動送信
@@ -398,12 +398,12 @@ function requestText_(r, pt) {
     'ペットタクシーの検索サイト「' + CONFIG.SERVICE_NAME + '」です。飼い主さんから、送迎のお問い合わせが届きました。\n' +
     (isAsk_(r) ? '★飼い主さんのお名前・ご連絡先は、飼い主さんが予約を確定した時点でお知らせします。\n★お返事の内容（お迎え時刻・確定料金）は、お返事から' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。そのあいだに飼い主さんが予約を確定したときは、お引き受けください。お返事のあとにほかのご予約が入ったときは、お返事のリンクを開いて「このお返事を取り下げる」を押してください。\n\n' : '★お客さまのお名前・ご連絡先は、引き受けが決まった時点でお知らせします（リンクから引き受けた場合はその場で表示されます）。\n\n') +
     rideText_(r) + retAsk_(r) + waitRuleForPartner_(r) + estText_(r) + '\n■ お支払い：' + payForPartner_(pt) + askText_(pt, r) + '\n\n' +
-    (isAsk_(r) ? '空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。お受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです）。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。\n'
-      : isQuoteReq_(r) ? 'お見積もりのご依頼です。お客さまは、ほかの会社のお見積もりとくらべて1社を選びます。\nお受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです）。お客さまが貴社を選んだら、お名前・ご連絡先をお知らせします。\n'
-      : needsChoice_(r) ? 'お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています。お受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです）。お客さまが引き受けた会社の中から1社を選んだ時点で決まり、お名前・ご連絡先をお知らせします。\n'
-      : 'お受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです。先着1社）。\n') + acceptUrl_(r['受付番号'], pt.id) +
+    (isAsk_(r) ? '空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。お受けいただける場合は、下のリンクから' + inputWord_(r) + '（税込）をご入力ください（数字を入れるだけです）。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。\n'
+      : isQuoteReq_(r) ? 'お見積もりのご依頼です。お客さまは、ほかの会社のお見積もりとくらべて1社を選びます。\nお受けいただける場合は、下のリンクから' + inputWord_(r) + '（税込）をご入力ください（数字を入れるだけです）。お客さまが貴社を選んだら、お名前・ご連絡先をお知らせします。\n'
+      : needsChoice_(r) ? 'お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています。お受けいただける場合は、下のリンクから' + inputWord_(r) + '（税込）をご入力ください（数字を入れるだけです）。お客さまが引き受けた会社の中から1社を選んだ時点で決まり、お名前・ご連絡先をお知らせします。\n'
+      : 'お受けいただける場合は、下のリンクから' + inputWord_(r) + '（税込）をご入力ください（数字を入れるだけです。先着1社）。\n') + acceptUrl_(r['受付番号'], pt.id) +
     '\n\nご返信でお答えいただく場合は、次のどちらかでお願いします。\n' +
-    '・受けられる：お迎え時刻〇時〇分・一般道〇円・高速を使う場合〇円（高速代込み。使わないなら「なし」）' + (isRound_(r) ? '・帰りは「待つ」か「あとで迎え」か' : '') + '\n' +
+    '・受けられる：' + (r['日付のみ'] ? 'お迎え時刻〇時〇分・' : '') + '一般道〇円・高速を使う場合〇円（高速代込み。使わないなら「なし」）' + (isRound_(r) ? '・帰りは「待つ」か「あとで迎え」か' : '') + '\n' +
     '・難しい\n\n' +
     '※ご質問（ペットの様子・建物の入り方など）は、決まったあとにお客さまへ直接お聞きください。\n' +
     '※ご都合が合わない場合、お返事は不要です。';
@@ -815,11 +815,11 @@ function acceptPage_(q) {
 
   if (q.go === '1') {
     var fare = Number(String(q.fare || '').replace(/[^\d]/g, ''));
-    var at = parseJst_(q.at);
+    var at = replyAt_(r, q);
     var way = retWayOf_(q.ret_way);
     var asks = checks_(pt, r).ask;
     if (asks.some(function (x, i) { return q['ok' + i] !== '1'; })) return page_('確認が終わっていません', '<p>「引き受ける前にご確認ください」の項目に、すべてチェックを入れてください。できない項目があるときは、お受けにならないでください。</p><p><a href="javascript:history.back()">戻る</a></p>');
-    if (!fare || !at || (isRound_(r) && !way)) return page_('入力が足りません', '<p>お迎え時刻・確定料金（円）' + (isRound_(r) ? '・帰りのやり方' : '') + 'を入れてください。</p><p><a href="javascript:history.back()">戻る</a></p>');
+    if (!fare || !at || (isRound_(r) && !way)) return page_('入力が足りません', '<p>' + (r['日付のみ'] ? 'お迎え時刻・' : '') + '確定料金（円）' + (isRound_(r) ? '・帰りのやり方' : '') + 'を入れてください。</p><p><a href="javascript:history.back()">戻る</a></p>');
     if (needsChoice_(r) && at.getTime() - CONFIG.QUOTE_CUTOFF_MIN * 60000 <= Date.now()) return page_('お迎えが近すぎます', '<p>お迎えの' + cutoffText_() + '前を過ぎるお返事は、お客さまが予約を確定できないため、お送りできません。お迎えの時刻を確かめてください。</p><p><a href="javascript:history.back()">戻る</a></p>');
     if (needsChoice_(r)) {
       var qr = quote_(q.id, pt, at, fare, clip_(q.msg, 300), yenNum_(q.fare_hw), way);
@@ -844,15 +844,19 @@ function acceptPage_(q) {
   if (quoted) return page_(isQuoteReq_(r) ? 'お見積もりをお送り済みです' : 'お返事をお送り済みです', '<p>確定料金 ' + esc_(fareText_(quoted.fare, quoted.fareHw)) + '・お迎え予定 ' + esc_(fmt_(new Date(quoted.at))) + ' でお客さまにお届けしています。お客さまが' + (isAsk_(r) ? '予約を決めたら' : '選んだら') + 'お知らせします。</p>' + withdrawNote_(q.id, pt.id));
   var def = defaultAt_(r);
   var html = '<p>' + esc_(pt.name) + ' 様</p>' +
-    (isAsk_(r) ? '<div class="box"><b>空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。</b>お受けできる場合は、お迎え時刻と確定料金を入れてください。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。</div>'
+    (isAsk_(r) ? '<div class="box"><b>空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。</b>お受けできる場合は、' + inputWord_(r) + 'を入れてください。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。</div>'
       : isQuoteReq_(r) ? '<div class="box"><b>お見積もりのご依頼です。</b>入れた確定料金をお客さまにお届けし、お客さまがほかの会社とくらべて1社を選びます。選ばれたら、お名前・ご連絡先をお知らせします。</div>'
       : needsChoice_(r) ? '<div class="box"><b>お客さまが' + pickedIds_(r).length + '社にお声がけしています。</b>引き受ける場合は確定料金を入れてください。お客さまが引き受けた会社の中から1社を選んだ時点で決まり、お名前・ご連絡先をお知らせします。</div>'
       : '<div class="box"><b>お客さまのお名前・電話番号・メールは、下の「引き受ける」を押すとすぐにこの画面に表示されます。</b>同じ内容をメールでもお送りします。先着1社です。</div>') +
-    '<div class="box">' + nl2br_(esc_(rideText_(r) + retAsk_(r) + waitRuleForPartner_(r) + '\n■ お支払い：' + payForPartner_(pt))) + '</div>' +
+    '<h2 class="sec">📋 ご依頼の内容<span class="tag">お客さまの希望・変えられません</span></h2>' +
+    '<div class="fixed"><div class="when">🕙 ' + esc_(whenText_(r)) + '</div>' +
+    nl2br_(esc_(rideText_(r).replace(/^■ 希望日時：[^\n]*\n?/, '') + retAsk_(r) + waitRuleForPartner_(r) + '\n■ お支払い：' + payForPartner_(pt))) + '</div>' +
+    (r['日付のみ'] ? '' : '<p class="note">この日時でお受けできないときは、お返事しないでください（日時は変えられません）。</p>') +
     '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' +
     hidden_('a', 'accept') + hidden_('id', q.id) + hidden_('p', q.p) + hidden_('k', q.k) + hidden_('go', '1') +
+    '<h2 class="sec">✏️ 貴社に入れていただくこと</h2>' +
     askBoxes_(pt, r) +
-    '<label>お迎え予定の時刻<input type="datetime-local" name="at" value="' + def + '" required></label>' +
+    (r['日付のみ'] ? '<label>お迎え予定の時刻（' + esc_(whenText_(r).replace(/ 時間はご相談$/, '')) + '）<input type="time" name="t" value="' + def.slice(11) + '" required></label>' : '') +
     (isRound_(r) ? retSelect_() : '') +
     '<label>確定料金・一般道で行く場合（円・税込' + (isRound_(r) ? '、往復の合計' : '') + '）<input type="number" name="fare" inputmode="numeric" min="0" step="10" placeholder="例：4800" required></label>' +
     '<label>確定料金・高速道路を使う場合（円・税込、高速代込み）<input type="number" name="fare_hw" inputmode="numeric" min="0" step="10" placeholder="高速を使わないなら空欄"></label>' +
@@ -1570,7 +1574,7 @@ function requestHtml_(r, pt) {
       ['🐾', 'ペット', petSummary_(r), [cageText_(r['キャリー']), r['同乗人数'] ? '同乗' + r['同乗人数'] : '', r['荷物'] ? '荷物' + r['荷物'] : ''].filter(String).join('・')],
       ['💴', 'お支払い', payForPartner_(pt).replace(/（貴社の設定としてお客さまにもお伝えしています）$/, '')]
     ]) +
-    mailButton_('空き状況と料金を返事する', acceptUrl_(r['受付番号'], pt.id), 'お迎え時刻と確定料金を入れるだけ') +
+    mailButton_('空き状況と料金を返事する', acceptUrl_(r['受付番号'], pt.id), inputWord_(r) + 'を入れるだけ') +
     mailNotes_([
       checks.length ? ['☑', '引き受ける前にご確認ください（できない場合はお受けにならないでください）\n' + checks.map(function (x) { return '・' + x; }).join('\n')] : null,
       ['⏱', '当日の道路事情' + (round ? 'や待ち時間' : '') + 'で料金表どおりに変わる分は、当日の実際の時間・道のりで精算してください'],
@@ -1580,7 +1584,7 @@ function requestHtml_(r, pt) {
     mailFine_([
       'お返事の内容は' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。お返事のあとにほかのご予約が入ったときは、お返事のリンクを開いて「このお返事を取り下げる」を押してください。',
       pickedIds_(r).length > 1 ? 'お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています。' : '',
-      'ご返信でお答えいただく場合：受けられる（お迎え時刻・一般道〇円・高速を使う場合〇円' + (round ? '・帰りは「待つ」か「あとで迎え」か' : '') + '）か、難しい、でお願いします。',
+      'ご返信でお答えいただく場合：受けられる（' + (r['日付のみ'] ? 'お迎え時刻・' : '') + '一般道〇円・高速を使う場合〇円' + (round ? '・帰りは「待つ」か「あとで迎え」か' : '') + '）か、難しい、でお願いします。',
       'ペットの様子などのご質問は、決まったあとにお客さまへ直接どうぞ。ご都合が合わない場合、お返事は不要です。'
     ]));
 }
@@ -1838,6 +1842,17 @@ function defaultAt_(r) {
   return r['日付のみ'] ? Utilities.formatDate(d, TZ, 'yyyy-MM-dd') + 'T10:00' : Utilities.formatDate(d, TZ, "yyyy-MM-dd'T'HH:mm");
 }
 
+// 会社が返事で入れるもの。日時はお客さまが決めたもので変えられない（日付だけの依頼だけ時刻を入れる。Nori 2026-11-09）
+function inputWord_(r) { return r['日付のみ'] ? 'お迎え時刻と確定料金' : '確定料金'; }
+
+// 返事のお迎え時刻。時刻つきの依頼は希望日時に固定（画面の値は使わない）。日付だけの依頼はその日の入力された時刻
+function replyAt_(r, q) {
+  if (!r['日付のみ']) return new Date(r['希望日時']);
+  var m = String(q.t || '').match(/^(\d{1,2}):(\d{2})$/);
+  if (!m) return null;
+  return parseJst_(Utilities.formatDate(new Date(r['希望日時']), TZ, 'yyyy-MM-dd') + 'T' + ('0' + m[1]).slice(-2) + ':' + m[2]);
+}
+
 // 予約シートの見出しに足りない列があれば右端に足す（あとから増えた列のため）
 function ensureReqHeaders_(sh) {
   var head = sh.getRange(1, 1, 1, Math.max(1, sh.getLastColumn())).getValues()[0].filter(String);
@@ -1904,7 +1919,7 @@ function page_(title, inner) {
     'textarea{min-height:80px}button{display:block;width:100%;margin-top:20px;background:#ff6a1a;color:#fff;border:0;border-radius:999px;padding:16px;font:inherit;font-weight:800;font-size:1.05rem}' +
     'button.gray{background:#5b5650}a.line{display:block;text-align:center;background:#06c755;color:#fff;text-decoration:none;border-radius:999px;padding:12px;font-weight:800;margin:8px 0}' +
     '.pt{border-top:1px solid #eee5dc;padding:12px 0}select{display:block;width:100%;font:inherit;font-size:16px;padding:12px;border:1.5px solid #e6ded6;border-radius:12px;margin-top:4px;background:#fff}' +
-    'button.gray{background:#5b5650}.note{font-size:.85rem;color:#5b5650}.brand{text-align:center;color:#e2560a;font-weight:800;margin-bottom:12px}';
+    'button.gray{background:#5b5650}.note{font-size:.85rem;color:#5b5650}.sec{font-size:1rem;margin:20px 0 6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.sec .tag{font-size:.75rem;font-weight:600;color:#5b5650;background:#ece8e3;border-radius:999px;padding:2px 10px}.fixed{background:#f1efec;border-radius:12px;padding:14px;margin:6px 0 8px;font-size:.92rem;color:#3d3833}.fixed .when{font-size:1.15rem;font-weight:800;color:#2b2622;margin-bottom:8px}.brand{text-align:center;color:#e2560a;font-weight:800;margin-bottom:12px}';
   if (JSON_PAGE) {
     return ContentService.createTextOutput(JSON.stringify({ ok: true, title: title, html: inner }))
       .setMimeType(ContentService.MimeType.JSON);
