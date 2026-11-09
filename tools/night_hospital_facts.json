@@ -1628,6 +1628,294 @@
     }
    ],
    "note": "旧名 ER文京（2025年9月1日に名称変更）。"
+  },
+  {
+   "id": "H045",
+   "name": "横浜動物救急診療センター VECCS横浜",
+   "pref": "神奈川県",
+   "city": "横浜市南区",
+   "url": "https://veccs-yokohama.jp/",
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "横浜市南区前里町1丁目25 2階",
+     "src": "https://veccs-yokohama.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "受付時間",
+     "v": "24時間（年中無休）",
+     "src": "https://veccs-yokohama.jp/infomation",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫（ウサギ・フェレットは相談）",
+     "src": "https://veccs-yokohama.jp/infomation",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に電話で状態を伝える",
+     "src": "https://veccs-yokohama.jp/infomation",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "診察料10,000円（税別）。検査・治療は別",
+     "src": "https://veccs-yokohama.jp/infomation",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金またはクレジットカード（診療終了時・退院時に一括）",
+     "src": "https://veccs-yokohama.jp/infomation",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "最寄り駅",
+     "v": "京急 黄金町駅前",
+     "src": "https://veccs-yokohama.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "駐車場",
+     "v": "緊急駐車スペースあり",
+     "src": "https://veccs-yokohama.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "診療の内容",
+     "v": "犬・猫の救急診療。検査・治療・必要に応じて手術・入院。報告書をかかりつけ病院へ",
+     "src": "https://veccs-yokohama.jp/infomation",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "休診日の記載なし（年中無休の表記）。駐車場・最寄り駅はトップページの説明文から",
+   "ok": true
+  },
+  {
+   "id": "H077",
+   "name": "大阪夜間ペットクリニック",
+   "pref": "大阪府",
+   "city": "大阪市東成区",
+   "url": "https://osaka-pet911.com/",
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大阪市東成区大今里南6-2-6（EST総合どうぶつ病院と同じ建物）",
+     "src": "https://osaka-pet911.com/access.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "受付時間",
+     "v": "20:00〜3:00（最終受付3:00）",
+     "src": "https://osaka-pet911.com/access.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "休診日",
+     "v": "年中無休",
+     "src": "https://osaka-pet911.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://osaka-pet911.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "迷うときはまず電話で相談",
+     "src": "https://osaka-pet911.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "夜間診察料10,000円（目安。税込・税抜の記載なし）。検査・処置は別",
+     "src": "https://osaka-pet911.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "最寄り駅",
+     "v": "千日前線 新深江駅から徒歩1分",
+     "src": "https://osaka-pet911.com/access.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "診療の内容",
+     "v": "夜間の急な体調不良・事故・誤食・呼吸困難・けいれん・外傷など。保険の窓口精算はなし",
+     "src": "https://osaka-pet911.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "駐車場はトップ（病院横に駐車スペース）とアクセス（西隣のコインパーキング・割引券）で書き方が違うので入れていない。支払い方法の記載なし",
+   "ok": true
+  },
+  {
+   "id": "H068",
+   "name": "もりやま犬と猫の病院",
+   "pref": "愛知県",
+   "city": "名古屋市守山区",
+   "url": "https://moriyama1299.com/",
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "名古屋市守山区深沢2-101",
+     "src": "https://moriyama1299.com/night/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "受付時間",
+     "v": "夜間救急は24時間（年中無休）",
+     "src": "https://moriyama1299.com/night/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に必ず電話。電話なしの直接来院は対応できないことがある",
+     "src": "https://moriyama1299.com/night/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "時間外診察料 19:00〜22:00 6,600円／22:00〜0:00 8,800円／0:00〜翌8:00 11,000円（税込）。検査・処置は別",
+     "src": "https://moriyama1299.com/night/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金・クレジットカード（VISA／Master／JCB／AMEX／Diners）・電子マネー・QRコード決済。アニコム・アイペット・ペット&ファミリーは窓口精算可",
+     "src": "https://moriyama1299.com/night/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "診療の内容",
+     "v": "対症療法・血液検査・レントゲン・超音波・点滴・酸素吸入・入院・内視鏡処置・開腹手術",
+     "src": "https://moriyama1299.com/night/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "対象の動物は本文に明記なし。駐車場・最寄り駅は夜間ページに記載なし",
+   "ok": true
+  },
+  {
+   "id": "H021",
+   "name": "どうぶつの総合病院 専門医療＆救急センター",
+   "pref": "埼玉県",
+   "city": "川口市",
+   "url": "https://vsec.jp/",
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "埼玉県川口市石神815",
+     "src": "https://vsec.jp/mp/yakan_1",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "受付時間",
+     "v": "救急外来 9:00〜25:00（年中無休）",
+     "src": "https://vsec.jp/mp/yakan_1",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に救急外来へ電話で状況を知らせる",
+     "src": "https://vsec.jp/mp/yakan_1",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "救急の応急処置 2〜6万円（税込、診察・検査・処置を含む目安）。入院・手術は別",
+     "src": "https://vsec.jp/mp/yakan_1",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "支払い方法",
+     "v": "診療終了後。夜間はクレジットカード（VISA・MASTER・JCB・AMEX）かQRコード決済（PayPay・イオン）のみ",
+     "src": "https://vsec.jp/mp/yakan_1",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "診療の内容",
+     "v": "救急診療と24時間ICU管理。救急以外の診察・健康相談・予防接種はしない",
+     "src": "https://vsec.jp/mp/yakan_1",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "対象の動物は本文に明記なし（説明文に犬猫）。駐車場・最寄り駅は夜間ページに記載なし",
+   "ok": true
+  },
+  {
+   "id": "H093",
+   "name": "北九州夜間救急動物病院",
+   "pref": "福岡県",
+   "city": "北九州市八幡東区",
+   "url": "https://kitakyu-vet.com/night/",
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "北九州市八幡東区東田一丁目3-6",
+     "src": "https://kitakyu-vet.com/night/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "受付時間",
+     "v": "21:00〜0:00",
+     "src": "https://kitakyu-vet.com/night/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "休診日",
+     "v": "年中無休（雪や台風などの悪天候時を除く）",
+     "src": "https://kitakyu-vet.com/night/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫（ほかは事前に問い合わせ）",
+     "src": "https://kitakyu-vet.com/night/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "必ず電話で確認してから来院",
+     "src": "https://kitakyu-vet.com/night/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "初診料8,000円。基本検査・血液検査・レントゲンを合わせて約2.5万円（税込・税抜の記載なし）",
+     "src": "https://kitakyu-vet.com/night/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "最寄り駅",
+     "v": "JR鹿児島本線 八幡駅から徒歩10分",
+     "src": "https://kitakyu-vet.com/night/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "支払い方法",
+     "v": "診療終了後に一括精算。クレジットカード払いが原則",
+     "src": "https://kitakyu-vet.com/night/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "診療の内容",
+     "v": "夜間の救急診療（応急の処置）。予防接種はしない。後日かかりつけ病院を受診",
+     "src": "https://kitakyu-vet.com/night/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "駐車場の記載なし。料金改定のお知らせ https://kitakyu-vet.com/night-info/kaitei/ は未確認",
+   "ok": true
   }
  ]
 }

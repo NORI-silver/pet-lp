@@ -386,6 +386,10 @@ def render_article(ctx, a):
     objs = [crumbs(SITE, [("ペットタクシー予約窓口", SITE + "/"), ("全国のドッグラン", f"{SITE}/{SLUG}/"), (a["short"], url)]),
             {"@context": "https://schema.org", "@type": "Article", "headline": a["title"](), "description": desc, "dateModified": "2026-11-02",
              "author": {"@type": "Organization", "name": "ペットタクシー予約窓口"}, "mainEntityOfPage": url}]
+    if a["slug"] == "survey":  # [B] AIO 11/9：独自データ記事は Dataset としても伝える
+        objs.append({"@context": "https://schema.org", "@type": "Dataset", "name": "全国のドッグランしらべ", "description": desc, "url": url, "inLanguage": "ja",
+                     "creator": {"@type": "Organization", "name": "ペットタクシー予約窓口"}, "spatialCoverage": "日本",
+                     "variableMeasured": ["利用料（無料・有料）", "利用登録", "必要なもの・条件", "小型犬エリア", "利用時間", "都道府県ごとの数"]})
     if items:
         objs.append({"@context": "https://schema.org", "@type": "ItemList", "name": a["short"], "numberOfItems": len(items), "itemListElement": items})
     return ctx["head"](title, desc, url, ld_json(objs)) + f"""

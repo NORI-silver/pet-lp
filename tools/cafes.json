@@ -1,0 +1,1733 @@
+{
+ "_説明": "犬と一緒に入れる（同伴できる）カフェ・ランチ（/inu-cafe/、tools/gen_facpages.py）。犬と触れ合うカフェではない。各店の公式サイトで確かめたことだけ（k・v・src・checked）。グルメサイト・まとめ記事は出どころにしない。電話番号・個人名は入れない。5項目未満や犬と入れる席が書いていない店は作らない。id は公式URLから作り、変えない。",
+ "cafes": [
+  {
+   "name": "Cafe Cha.mone.（カフェチャモネ）",
+   "kind": "カフェ",
+   "pref": "静岡県",
+   "city": "沼津市",
+   "url": "https://chamone.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県沼津市大岡817-1",
+     "src": "https://chamone.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（ワンちゃん同伴OKのカフェ）",
+     "src": "https://chamone.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "椅子に乗せるときはカフェマットを使う（貸出あり）。ドッグランはマナーベルト・パンツと混合・狂犬病ワクチンの証明書（写し・写真可）が必要",
+     "src": "https://chamone.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "ワンちゃん専用のお食事メニューあり（無添加・地元食材の手作りご飯）",
+     "src": "https://chamone.jp/menu/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "10:00〜17:00（L.O.16:00）。金曜は夜カフェ18:30〜21:00",
+     "src": "https://chamone.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日・水曜日",
+     "src": "https://chamone.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "夜カフェは2日前までの完全予約制",
+     "src": "https://chamone.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "沼津駅から車で約10分。駐車場あり（店舗前3台ほか）",
+     "src": "https://chamone.jp/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "ドッグラン併設。営業時間は時期によりSNSで変わることがある",
+   "id": "ce26cd4"
+  },
+  {
+   "name": "Deco's Dog Cafe 田園茶房",
+   "kind": "カフェ",
+   "pref": "東京都",
+   "city": "大田区",
+   "url": "https://hot-dog.co.jp/cafe/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "東京都大田区田園調布2-62-1 東急スクエアガーデンサイト北館1F",
+     "src": "https://hot-dog.co.jp/cafe/guide/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内・テラスの全席OK",
+     "src": "https://hot-dog.co.jp/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "ワンちゃん用メニューあり",
+     "src": "https://hot-dog.co.jp/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "月〜金 10:30〜19:00（L.O）、土日祝 10:00〜21:00（L.O）",
+     "src": "https://hot-dog.co.jp/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "なし（年末年始と東急スクエアガーデンサイトの休館日を除く）",
+     "src": "https://hot-dog.co.jp/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "予約できる。利用は平日3時間・土日祝2時間まで。予約時間から15分以内に連絡なく来店しないとキャンセル",
+     "src": "https://hot-dog.co.jp/cafe/guide/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "東急東横線 田園調布駅から徒歩3分。隣接の駐車場8台",
+     "src": "https://hot-dog.co.jp/cafe/guide/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬の大きさ・頭数・ルールは公式サイトに記載なし。営業時間は臨時の変更がSNSで告知されることがある",
+   "id": "c2a42e0"
+  },
+  {
+   "name": "和むすびや＆わんこのまるっと",
+   "kind": "カフェ",
+   "pref": "東京都",
+   "city": "北区",
+   "url": "https://marutto.tokyo/",
+   "ok": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "東京都北区滝野川2丁目8-5",
+     "src": "https://marutto.tokyo/about-us/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（総席数36席：店内28席・テラス8席）",
+     "src": "https://marutto.tokyo/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "入店料1頭220円。各座席にリードフックあり。キャリーのまま入店OK、キャリー・バギーは座席の側に置ける。ソファ席に座らせてよい",
+     "src": "https://marutto.tokyo/about-us/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "わんこ用メニューあり。ウチノコ用オーダーケーキ（3日前まで受付）",
+     "src": "https://marutto.tokyo/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "9:00〜18:00",
+     "src": "https://marutto.tokyo/about-us/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日",
+     "src": "https://marutto.tokyo/about-us/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "飛鳥山公園のすぐ側",
+     "src": "https://marutto.tokyo/about-us/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "入店料はトップページの記載。撮影スポットの料金はページで食い違うため入れていない。最寄り駅・駐車場は記載なし 店名がサイトの使わない言葉（まるっと）にあたるため、施設ページは作らない。",
+   "id": "c8eca69"
+  },
+  {
+   "name": "リリーカフェ（LilyCafe）",
+   "kind": "カフェ",
+   "pref": "神奈川県",
+   "city": "川崎市麻生区",
+   "url": "https://lily-cafe.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県川崎市麻生区千代が丘6-2-19",
+     "src": "https://lily-cafe.com/access",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（カウンターでも愛犬と楽しめる）",
+     "src": "https://lily-cafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "犬用メニューあり",
+     "src": "https://lily-cafe.com/dogmenu",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "11:00〜22:00（LO 21:30）",
+     "src": "https://lily-cafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日",
+     "src": "https://lily-cafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "小田急線 新百合ケ丘駅・百合ヶ丘駅から徒歩12分。店舗隣接（北側）の月極駐車場内に8台",
+     "src": "https://lily-cafe.com/access",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬の大きさ・頭数・ルールは公式サイトに記載なし",
+   "id": "c20513e"
+  },
+  {
+   "name": "cafe Lu（カフェ ルー）",
+   "kind": "カフェ",
+   "pref": "神奈川県",
+   "city": "茅ヶ崎市",
+   "url": "https://www.cafe-lu-shonan.com/",
+   "ok": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県茅ヶ崎市東海岸南4-11-39-4",
+     "src": "https://www.cafe-lu-shonan.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内同伴可",
+     "src": "https://www.cafe-lu-shonan.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "ワン用パンケーキなどペット用のフードメニューあり",
+     "src": "https://www.cafe-lu-shonan.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "営業時間・定休日は公式サイトになくSNSだけで、投稿どうしで食い違うため入れていない",
+   "id": "c9778c1"
+  },
+  {
+   "name": "ドッグカフェ・和カフェ 夢宇",
+   "kind": "カフェ",
+   "pref": "埼玉県",
+   "city": "川越市",
+   "url": "https://koedo-mu-u.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "埼玉県川越市久保町2-19",
+     "src": "https://koedo-mu-u.com/access.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "テラス席（屋根・エアコンあり）。天気の良い日はお庭のパラソル席も。テラスが満席のときは一部店内も",
+     "src": "https://koedo-mu-u.com/dog.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "毛足の長い犬は服を着せる。吠えは飼い主が止める",
+     "src": "https://koedo-mu-u.com/dog.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "犬の食事はなし。お水と米粉ワッフルのおやつあり",
+     "src": "https://koedo-mu-u.com/dog.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "11:00〜16:00（ラストオーダー14:45）",
+     "src": "https://koedo-mu-u.com/access.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "不定（カレンダーで確認）",
+     "src": "https://koedo-mu-u.com/access.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "土日祝のワンちゃんテラス席は予約不可",
+     "src": "https://koedo-mu-u.com/dog.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "お店の前に駐車場2台",
+     "src": "https://koedo-mu-u.com/access.html",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "本川越駅からの徒歩の分数がページ内で12分・10分と食い違うため駅は入れていない",
+   "id": "cedf279"
+  },
+  {
+   "name": "里づと",
+   "kind": "カフェ",
+   "pref": "大阪府",
+   "city": "豊能郡能勢町",
+   "url": "https://satoduto.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大阪府豊能郡能勢町森上224",
+     "src": "https://satoduto.com/2021/11/04/%E3%83%AF%E3%83%B3%E3%81%A1%E3%82%83%E3%82%93%E9%80%A3%E3%82%8C%E3%81%AE%E3%81%8A%E5%AE%A2%E6%A7%98%E3%81%B8/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "テラス席のみ",
+     "src": "https://satoduto.com/2021/11/04/%E3%83%AF%E3%83%B3%E3%81%A1%E3%82%83%E3%82%93%E9%80%A3%E3%82%8C%E3%81%AE%E3%81%8A%E5%AE%A2%E6%A7%98%E3%81%B8/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の大きさ",
+     "v": "大型犬は1匹まで（盲導犬は除く）",
+     "src": "https://satoduto.com/2021/11/04/%E3%83%AF%E3%83%B3%E3%81%A1%E3%82%83%E3%82%93%E9%80%A3%E3%82%8C%E3%81%AE%E3%81%8A%E5%AE%A2%E6%A7%98%E3%81%B8/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "テラス全体で4匹まで",
+     "src": "https://satoduto.com/2021/11/04/%E3%83%AF%E3%83%B3%E3%81%A1%E3%82%83%E3%82%93%E9%80%A3%E3%82%8C%E3%81%AE%E3%81%8A%E5%AE%A2%E6%A7%98%E3%81%B8/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "椅子に座らせるときはシートを用意。机の上はシートがあってもNG。お庭の植物にオシッコをかけない",
+     "src": "https://satoduto.com/2021/11/04/%E3%83%AF%E3%83%B3%E3%81%A1%E3%82%83%E3%82%93%E9%80%A3%E3%82%8C%E3%81%AE%E3%81%8A%E5%AE%A2%E6%A7%98%E3%81%B8/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "犬用メニューはなし",
+     "src": "https://satoduto.com/2021/11/04/%E3%83%AF%E3%83%B3%E3%81%A1%E3%82%83%E3%82%93%E9%80%A3%E3%82%8C%E3%81%AE%E3%81%8A%E5%AE%A2%E6%A7%98%E3%81%B8/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "11:00〜17:00（LO 16:30）",
+     "src": "https://satoduto.com/access",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "月・火曜日（祝日の場合は営業）",
+     "src": "https://satoduto.com/access",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "能勢電鉄 山下駅から阪急バスで森上バス停下車",
+     "src": "https://satoduto.com/access",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬のお知らせは2021-11-04の記事",
+   "id": "c8a152c"
+  },
+  {
+   "name": "EBIYA.CAFE Kamogawa（エビヤカフェ）",
+   "kind": "レストラン",
+   "pref": "千葉県",
+   "city": "鴨川市",
+   "url": "https://www.ebiyacafe.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "道の駅鴨川オーシャンパーク隣",
+     "src": "https://www.ebiyacafe.com/posts/7734915",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "一部の席（冷暖房完備の室内のテラスルーム）",
+     "src": "https://www.ebiyacafe.com/posts/7734915",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "満席時はウェイティングリストに記入し、車や隣の道の駅（ドッグランあり）で待てる",
+     "src": "https://www.ebiyacafe.com/posts/7734915",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "ランチ＆カフェ 11:00〜15:00（LO）、ディナー 17:30〜20:30（LO）",
+     "src": "https://www.ebiyacafe.com/posts/7734915",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜",
+     "src": "https://www.ebiyacafe.com/posts/7734915",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "犬連れは前日までの予約がおすすめ（空いていれば予約なしでも可）。ディナーは当日15時までに予約",
+     "src": "https://www.ebiyacafe.com/pages/2233527/withDOG",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬同伴専用カフェではない、と公式に記載。番地は公式サイトで確認できず",
+   "id": "c3536cb"
+  },
+  {
+   "name": "ほっこりわんカフェ",
+   "kind": "カフェ",
+   "pref": "北海道",
+   "city": "札幌市南区",
+   "url": "https://hokkoriwan.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "北海道札幌市南区北ノ沢4丁目5-66",
+     "src": "https://hokkoriwan.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK",
+     "src": "https://hokkoriwan.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "本日のわんちゃんご飯あり",
+     "src": "https://hokkoriwan.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "11:00〜17:00",
+     "src": "https://hokkoriwan.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週木曜・金曜日",
+     "src": "https://hokkoriwan.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "じょうてつバス「北の沢3丁目」下車。店の前に専用駐車場あり",
+     "src": "https://hokkoriwan.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "人工芝のドッグラン併設。臨時休業・貸切はSNSで告知される。犬の大きさ・頭数・ルールは記載なし",
+   "id": "c169552"
+  },
+  {
+   "name": "LA BLANC MOON（ラ ブランムーン）",
+   "kind": "カフェ",
+   "pref": "北海道",
+   "city": "札幌市清田区",
+   "url": "https://www.la-blanc-moon.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "北海道札幌市清田区真栄4条2丁目17-36",
+     "src": "https://www.la-blanc-moon.com/access/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（ドッグカフェは1階席と2階席）",
+     "src": "https://www.la-blanc-moon.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "オムツを着けていない犬の入店は遠慮。ドッグランは1年以内のワクチン接種証明書と狂犬病接種証明書の原本が必要",
+     "src": "https://www.la-blanc-moon.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "わんこプレートあり",
+     "src": "https://www.la-blanc-moon.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "11:00〜18:00（LO 17:00）",
+     "src": "https://www.la-blanc-moon.com/access/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日",
+     "src": "https://www.la-blanc-moon.com/access/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "ドッグラン併設",
+   "id": "caf877a"
+  },
+  {
+   "name": "バーナード・スクエア（Bernard Square）",
+   "kind": "カフェ",
+   "pref": "北海道",
+   "city": "札幌市南区",
+   "url": "http://www.bsq.jp/top.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "北海道札幌市南区中ノ沢1丁目11-17",
+     "src": "http://www.bsq.jp/top.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（1階のドッグカフェ、全席ソファ）",
+     "src": "http://www.bsq.jp/top.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "店内はリードフック完備。ヒート中の犬はカフェ可・ドッグラン不可。ドッグランは毎回混合ワクチン接種証明書（原本または写真）が必要、飼い主1名につき2頭まで",
+     "src": "http://www.bsq.jp/top.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "わんこごはん（無添加・手作り）",
+     "src": "http://www.bsq.jp/top.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "日・月・火 11:00〜18:00（LO 17:30）、金・土 11:00〜21:00（LO 20:30）",
+     "src": "http://www.bsq.jp/top.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜・木曜",
+     "src": "http://www.bsq.jp/top.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "カフェは予約不可",
+     "src": "http://www.bsq.jp/top.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "駐車場14台",
+     "src": "http://www.bsq.jp/top.html",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "ドッグラン併設。連休は定休日も営業することがある",
+   "id": "c9baaf7"
+  },
+  {
+   "name": "zoe cup cakes & cafe（mofmof cafe）",
+   "kind": "カフェ",
+   "pref": "北海道",
+   "city": "札幌市中央区",
+   "url": "https://www.mof-mof.jp/zoe-capcakes-cafe",
+   "ok": false,
+   "facts": [
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（1Fカフェスペース、愛犬同伴で利用できる）",
+     "src": "https://www.mof-mof.jp/zoe-capcakes-cafe",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "リードは短めにドッグフックへ。マーキング癖があればマナーベルト。椅子に乗せるときはカフェマットを敷く。テーブルに乗せない。発情期（シーズン後4週間以内）は入店不可。ペットシーツは使えない",
+     "src": "https://www.mof-mof.jp/zoe-capcakes-cafe",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "手作りご飯・ケーキ・トリーツ",
+     "src": "https://www.mof-mof.jp/zoe-capcakes-cafe",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "オフ会・パーティーの予約を受け付け",
+     "src": "https://www.mof-mof.jp/zoe-capcakes-cafe",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "公式サイトに「移転に伴い更新中」とあり、所在地・営業時間・アクセスは確かめられない",
+   "id": "c998c94"
+  },
+  {
+   "name": "&c アンドシー",
+   "kind": "カフェ",
+   "pref": "愛知県",
+   "city": "名古屋市中川区",
+   "url": "https://andc-cafe.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "愛知県名古屋市中川区馬手町3-13 1F",
+     "src": "https://andc-cafe.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（完全屋内型のドッグカフェ・ドッグラン）",
+     "src": "https://andc-cafe.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の大きさ",
+     "v": "超小型犬〜大型犬（利用料は超小型〜中型犬と大型犬で別）",
+     "src": "https://andc-cafe.jp/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "店内ではマナーおむつ（ベルト）を着ける（忘れたときは購入できる）。犬の利用料あり。犬のフードは持ち込み自由",
+     "src": "https://andc-cafe.jp/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "ドッグカフェ・ドッグラン 平日11:00〜16:00（最終受付15:00）、土日祝11:00〜18:00（最終受付17:00）",
+     "src": "https://andc-cafe.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "電話で受付",
+     "src": "https://andc-cafe.jp/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "あおなみ線 中島駅から徒歩約5分。駐車場6台（土日祝は16台）",
+     "src": "https://andc-cafe.jp/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "屋内ドッグラン・トリミング併設",
+   "id": "c7b26d1"
+  },
+  {
+   "name": "ドッグカフェ FLAT.",
+   "kind": "カフェ",
+   "pref": "愛知県",
+   "city": "名古屋市中川区",
+   "url": "https://flat.nagoya/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "愛知県名古屋市中川区中花町37",
+     "src": "https://flat.nagoya/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内・テラス席（全10席）",
+     "src": "https://flat.nagoya/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の大きさ",
+     "v": "小型犬・中型犬まで。大型犬はテラス席",
+     "src": "https://flat.nagoya/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "店内はマナーウェア必須（店で販売あり）。わんちゃんの飲み物の持ち込み可",
+     "src": "https://flat.nagoya/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "わんちゃん専用のフード・おやつあり",
+     "src": "https://flat.nagoya/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "10:30〜17:00（L.O. 16:30）、ランチ11:00〜14:00",
+     "src": "https://flat.nagoya/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜・水曜",
+     "src": "https://flat.nagoya/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "電話・Instagram DMで受付。当日も席が空いていれば可",
+     "src": "https://flat.nagoya/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "地下鉄 高畑駅から歩いて10分程度。駐車場は店舗前2台・第2駐車場7台",
+     "src": "https://flat.nagoya/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "ドッグランの利用可否がページ内で食い違うため入れていない",
+   "id": "c49c06f"
+  },
+  {
+   "name": "one two Skip",
+   "kind": "カフェ",
+   "pref": "愛知県",
+   "city": "名古屋市天白区",
+   "url": "https://1-2-skip.com/",
+   "ok": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "愛知県名古屋市天白区植田山3-1802",
+     "src": "https://1-2-skip.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "ワンコメニューあり（ワンコハンバーガー・馬肉のハンバーグ・ワンコクッキーなど）",
+     "src": "https://1-2-skip.com/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "10:00〜18:00（Last Order 17:00）",
+     "src": "https://1-2-skip.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週水曜日・木曜日",
+     "src": "https://1-2-skip.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "「わんちゃんNGのカフェスペースがある」とだけ書かれ、犬と入れる席がはっきり書かれていない",
+   "id": "cd415e9"
+  },
+  {
+   "name": "韓国料理 クムカフェ",
+   "kind": "レストラン",
+   "pref": "愛知県",
+   "city": "名古屋市北区",
+   "url": "https://kumucafe.owst.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "愛知県名古屋市北区杉村1丁目26-8 杉ビル 西館",
+     "src": "https://kumucafe.owst.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "ペット同伴可（テラス席はなし）",
+     "src": "https://kumucafe.owst.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "必ずオムツを着ける",
+     "src": "https://kumucafe.owst.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "水〜金 11:00〜15:00・17:00〜22:00、土日祝 11:00〜16:59・17:00〜22:00",
+     "src": "https://kumucafe.owst.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "月曜・火曜",
+     "src": "https://kumucafe.owst.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "尼ケ坂駅から徒歩約10分、地下鉄名城線 志賀本通駅1番出口から徒歩約12分",
+     "src": "https://kumucafe.owst.jp/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "土日祝のラストオーダーがページ内で食い違うため入れていない",
+   "id": "cafefc4"
+  },
+  {
+   "name": "The Moana Place（ザ モアナ プレイス）",
+   "kind": "レストラン",
+   "pref": "愛知県",
+   "city": "名古屋市天白区",
+   "url": "https://www.tmp0814.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "愛知県名古屋市天白区池見2-184",
+     "src": "https://www.tmp0814.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "テラス席はわんちゃんOK",
+     "src": "https://www.tmp0814.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "リードは手から離さず外さない。椅子に座らせるときはステイマットを持参。テーブルに乗せない。人用の食器・ブランケットを使わない。店内でブラッシングしない。トイレシートを敷かない。吠え続けるときは退店のお願いあり",
+     "src": "https://www.tmp0814.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "平日 11:00〜19:00、土日祝 8:30〜21:00",
+     "src": "https://www.tmp0814.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "年中無休",
+     "src": "https://www.tmp0814.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "Web予約・電話で受付",
+     "src": "https://www.tmp0814.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "駐車場あり（予約不可。南側の駐車場は別。第2駐車場は指定番号のみ）",
+     "src": "https://www.tmp0814.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "店内に犬が入れるかは書かれていない",
+   "id": "c451d54"
+  },
+  {
+   "name": "DogRun&Cafe EuAl*La（ユアーラ）",
+   "kind": "カフェ",
+   "pref": "福岡県",
+   "city": "築上郡上毛町",
+   "url": "https://www.dogruncafe-eualla.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "福岡県築上郡上毛町緒方473",
+     "src": "https://www.dogruncafe-eualla.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（愛犬は飼い主の隣で過ごせる）",
+     "src": "https://www.dogruncafe-eualla.com/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の大きさ",
+     "v": "超大型犬もゆったり過ごせるよう配慮",
+     "src": "https://www.dogruncafe-eualla.com/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "カフェだけの利用でも利用登録証（パスカード）が必要で、証明書類などを持参。ペットカートは段差なく入れる",
+     "src": "https://www.dogruncafe-eualla.com/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "熊本県産馬肉と福岡県豊前市産鹿肉のハンバーグ（持ち帰り可）",
+     "src": "https://www.dogruncafe-eualla.com/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "営業日・営業時間は不定（最終受付は閉店の1時間前）",
+     "src": "https://www.dogruncafe-eualla.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "ドッグラン併設。営業日はサイトのカレンダーで案内",
+   "id": "cdab00f"
+  },
+  {
+   "name": "Dogcafe BeBe（ドッグカフェ ベベ）",
+   "kind": "カフェ",
+   "pref": "福岡県",
+   "city": "遠賀郡遠賀町",
+   "url": "https://dogcafe-bebe.net/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "福岡県遠賀郡遠賀町松の本1丁目4-15",
+     "src": "https://dogcafe-bebe.net/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK。お天気の良い日はテラスも",
+     "src": "https://dogcafe-bebe.net/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の大きさ",
+     "v": "店内・テラス・ドッグランとも大型犬までOK",
+     "src": "https://dogcafe-bebe.net/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "リードフックあり",
+     "src": "https://dogcafe-bebe.net/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "わんちゃんメニューあり",
+     "src": "https://dogcafe-bebe.net/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週木曜日（祝日は営業し前日の水曜日が代休）と第3水曜日（祝日は営業）",
+     "src": "https://dogcafe-bebe.net/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "営業時間がページ内で11:00〜20:00と11:00〜19:00で食い違うため入れていない。ドッグラン併設、看板犬あり",
+   "id": "cc20f29"
+  },
+  {
+   "name": "Kukka with Flower & Cafe（秋保カフェKukka）",
+   "kind": "カフェ",
+   "pref": "宮城県",
+   "city": "仙台市太白区",
+   "url": "https://kukka087.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "宮城県仙台市太白区秋保町境野字羽山48-4",
+     "src": "https://kukka087.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "一部の席（屋内テラス席・サンルーム）",
+     "src": "https://kukka087.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "木曜日・第2水曜日",
+     "src": "https://kukka087.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "サイトに予約ページあり",
+     "src": "https://kukka087.com/reservation",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "秋保温泉から車で5分。駐車場あり（隣の空き地も駐車可）",
+     "src": "https://kukka087.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "営業時間はページ内で10:00〜16:00と平日10:30〜16:00が食い違うため入れていない。猫も同伴可と記載",
+   "id": "cc6bfda"
+  },
+  {
+   "name": "つるとんたん軽井沢",
+   "kind": "レストラン",
+   "pref": "長野県",
+   "city": "北佐久郡軽井沢町",
+   "url": "https://www.tsurutontan.co.jp/karuizawa/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県北佐久郡軽井沢町軽井沢旧軽井沢813-10",
+     "src": "https://www.tsurutontan.co.jp/karuizawa/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "一部の席（1Fの「With Dog」テラスエリア）",
+     "src": "https://www.tsurutontan.co.jp/karuizawa/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "わんちゃん専用のお食事あり",
+     "src": "https://www.tsurutontan.co.jp/karuizawa/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "電話またはインターネットで受付",
+     "src": "https://www.tsurutontan.co.jp/karuizawa/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "北陸新幹線 軽井沢駅から徒歩20分",
+     "src": "https://www.tsurutontan.co.jp/karuizawa/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬のエリアは「テラスエリア」で「店内、店外を選べる」とあり、店内に犬が入れるかは読み取れないため一部の席とした。営業時間はこのページに記載なし",
+   "id": "c96d01f"
+  },
+  {
+   "name": "Dog Caf'e WITH（ドッグカフェウィズ）",
+   "kind": "カフェ",
+   "pref": "長野県",
+   "city": "安曇野市",
+   "url": "https://dogcafewith.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県安曇野市豊科5188-8",
+     "src": "https://dogcafewith.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK",
+     "src": "https://dogcafewith.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "わんちゃんMENUあり（ローストビーフ、かぼちゃの米粉ワッフルなど）",
+     "src": "https://dogcafewith.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "カフェ 11:00〜19:00（ラストオーダー18:00）",
+     "src": "https://dogcafewith.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "カフェは火曜・第2・第3水曜日",
+     "src": "https://dogcafewith.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "JR大糸線 豊科駅から徒歩15分。中央道 安曇野ICから車で10分。駐車場12〜13台",
+     "src": "https://dogcafewith.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "看板犬はいるが「ふれあいカフェではありません」と記載。ペットホテル併設。祝日などで臨時の変更あり",
+   "id": "cda0ec9"
+  },
+  {
+   "name": "Heart2 Dog（ハーツドッグ）",
+   "kind": "カフェ",
+   "pref": "長野県",
+   "city": "長野市",
+   "url": "https://heart2dog.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（店内で愛犬と一緒に過ごせる）",
+     "src": "https://heart2dog.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "Cafe menu for dogs（季節のメニューあり）",
+     "src": "https://heart2dog.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "Shop & Cafe 10:30〜18:00、食事は11:30〜17:00（last order）。冬期（1〜3月）のCafeは17:00閉店",
+     "src": "https://heart2dog.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "Cafeは火曜・水曜",
+     "src": "https://heart2dog.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "Cafeは土日祝の11時〜12時30分が完全予約制",
+     "src": "https://heart2dog.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "住所は公式サイトに記載なし（善光寺の北参道を登った高台）。ラストオーダーはSNSと食い違うことがある。トリミングサロン併設",
+   "id": "cd97fd2"
+  },
+  {
+   "name": "ワンストップカフェ（wan stop cafe）",
+   "kind": "カフェ",
+   "pref": "兵庫県",
+   "city": "神戸市東灘区",
+   "url": "https://www.wanstopcafe.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県神戸市東灘区甲南町2-8-13",
+     "src": "https://www.wanstopcafe.com/shop",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（ドッグカフェ。リードを付けていれば同伴できる）",
+     "src": "https://www.wanstopcafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "リードは必ず着けて短めに。ヒート中は入店不可。テーブルに上げない。飼い主と犬で食器を共有しない。ステージに入らない。満席時は相席のお願いあり",
+     "src": "https://www.wanstopcafe.com/shop",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "8:00〜21:00（L.O.20:00）",
+     "src": "https://www.wanstopcafe.com/shop",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日・木曜日",
+     "src": "https://www.wanstopcafe.com/shop",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "JR神戸線 摂津本山駅から徒歩約8分",
+     "src": "https://www.wanstopcafe.com/shop",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "2020年の営業時間短縮のお知らせが残っており、営業時間が最新でない可能性あり",
+   "id": "cca08e9"
+  },
+  {
+   "name": "ワンカフェ丹波（Wan Cafe Tamba）",
+   "kind": "カフェ",
+   "pref": "兵庫県",
+   "city": "丹波市",
+   "url": "https://wancafetamba.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県丹波市春日町小多利358",
+     "src": "https://wancafetamba.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（室内・テラス席ともワンちゃんと同席OK）",
+     "src": "https://wancafetamba.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "ワンちゃんカフェメニュー、ワンコ用バースディケーキあり",
+     "src": "https://wancafetamba.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "木・金・土・日 10:00〜17:00",
+     "src": "https://wancafetamba.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "電話（営業時間中）・Instagramメッセージで受付",
+     "src": "https://wancafetamba.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "北近畿豊岡自動車道 春日ICから北へ6分。駐車場35台",
+     "src": "https://wancafetamba.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "定休日はサイト（月・火・水）とSNS（月1回の日曜など）で食い違うため入れていない。ドッグラン・トリミング・ホテル併設",
+   "id": "c70d199"
+  },
+  {
+   "name": "ディストリクト ブラッスリー・バー・ラウンジ（キンプトン新宿東京）",
+   "kind": "レストラン",
+   "pref": "東京都",
+   "city": "新宿区",
+   "url": "https://www.kimptonshinjuku.com/jp/dining/district/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "東京都新宿区西新宿3丁目4-7 キンプトン新宿東京 2F",
+     "src": "https://www.kimptonshinjuku.com/jp/dining/district/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "一部の席（ラウンジとテラスでペットと一緒に）",
+     "src": "https://www.kimptonshinjuku.com/jp/dining/district/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1組につき最大4匹まで",
+     "src": "https://www.kimptonshinjuku.com/jp/dining/district/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "朝食 6:30〜11:00（10:30 L.O.）、ランチ 11:30〜17:00（15:00 L.O.）、ディナー 18:00〜23:00（フード21:00 L.O.）",
+     "src": "https://www.kimptonshinjuku.com/jp/dining/district/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "オンライン予約・電話で受付。アフタヌーンティーは事前予約制",
+     "src": "https://www.kimptonshinjuku.com/jp/dining/district/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "ペット全般の決まりで犬だけの記載ではない。ドリンクのラストオーダーがページ内で食い違うため入れていない",
+   "id": "ca1bb5d"
+  },
+  {
+   "name": "ル ビストロ（LE BISTRO）",
+   "kind": "レストラン",
+   "pref": "東京都",
+   "city": "渋谷区",
+   "url": "https://www.huge.co.jp/restaurant/french/lebistro",
+   "ok": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "東京都渋谷区千駄ケ谷4丁目6-8",
+     "src": "https://www.huge.co.jp/restaurant/french/lebistro",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "テラス席（ペット可）",
+     "src": "https://www.huge.co.jp/restaurant/french/lebistro",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "月〜金 11:30〜15:00・17:00〜22:30、土日祝 11:30〜22:30",
+     "src": "https://www.huge.co.jp/restaurant/french/lebistro",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "なし",
+     "src": "https://www.huge.co.jp/restaurant/french/lebistro",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬の大きさ・頭数・ルールは記載なし。確かめた項目が4つのため ok:false",
+   "id": "c0048f7"
+  },
+  {
+   "name": "愛犬の駅 伊豆高原 カフェ&デリ",
+   "kind": "カフェ",
+   "pref": "静岡県",
+   "city": "伊東市",
+   "url": "https://www.welovedogs.jp/station/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊東市八幡野1135-1",
+     "src": "https://www.welovedogs.jp/station/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK。テラス席もOK（屋外ドッグランパスが必要）",
+     "src": "https://www.welovedogs.jp/station/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "入店前に排泄を済ませる。足を拭いてから入店。店内でもリードを着ける。混合ワクチン接種・ノミダニ対策をしておく。愛犬専用テーブルイスあり",
+     "src": "https://www.welovedogs.jp/station/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "ワンコDELI（店内で手作り、添加物・保存料不使用、獣医師監修）",
+     "src": "https://www.welovedogs.jp/station/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "カフェ 10:00〜17:00（L.O フード16:00、ドリンク・ワンコフード16:30）",
+     "src": "https://www.welovedogs.jp/station/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "なし",
+     "src": "https://www.welovedogs.jp/station/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "カフェは予約不要",
+     "src": "https://www.welovedogs.jp/station/cafe/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "国道135号線「城ヶ崎入り口交差点」すぐそば。駐車場は無料",
+     "src": "https://www.welovedogs.jp/station/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "ドッグラン・ショップ併設",
+   "id": "c5a7f0f"
+  },
+  {
+   "name": "和食だワン",
+   "kind": "レストラン",
+   "pref": "静岡県",
+   "city": "伊東市",
+   "url": "https://honkemaguroya.com/washokudawan/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊東市伊豆高原",
+     "src": "https://honkemaguroya.com/washokudawan/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（ペットはワンちゃんのみ）",
+     "src": "https://honkemaguroya.com/washokudawan/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "店内はリードを着ける。1年以内の狂犬病・伝染病の予防接種が必要。ヒート中・噛み癖・極端な吠え癖のある犬は入店不可。長く吠えるときは外で様子を見る",
+     "src": "https://honkemaguroya.com/washokudawan/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "わんちゃん用 鮪のほっぺたステーキ、鹿肉ハンバーグ",
+     "src": "https://honkemaguroya.com/washokudawan/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "ランチ 11:30〜14:45（L.O）、ディナー 17:30〜20:00（L.O、日曜は19:30）",
+     "src": "https://honkemaguroya.com/washokudawan/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日（祝日は営業）",
+     "src": "https://honkemaguroya.com/washokudawan/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "専用ドッグランあり。8月・年末年始は休まず営業とも記載。番地は公式サイトに記載なし",
+   "id": "c097d69"
+  },
+  {
+   "name": "らん布袋",
+   "kind": "カフェ",
+   "pref": "京都府",
+   "city": "京都市中京区",
+   "url": "https://ranhotei.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "京都府京都市中京区上瓦町64（京都三条会商店街内）",
+     "src": "https://ranhotei.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "一部の席（店内の椅子席のみ）",
+     "src": "https://ranhotei.com/pets/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の大きさ",
+     "v": "中型犬まで",
+     "src": "https://ranhotei.com/pets/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "リードを離さない。椅子は布製なので、カフェマットかペットシーツを持参するか、手足をウエットシートで拭く",
+     "src": "https://ranhotei.com/pets/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "ワンちゃんメニューあり",
+     "src": "https://ranhotei.com/pets/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "11:30〜20:00（金曜のみ23:00まで）",
+     "src": "https://ranhotei.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "木曜日",
+     "src": "https://ranhotei.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "撮影会などで貸切・時間変更の日がSNSで告知される",
+   "id": "c0aa0fb"
+  },
+  {
+   "name": "Dessert & Cafe BlueMoon（ブルームーン横須賀）",
+   "kind": "カフェ",
+   "pref": "神奈川県",
+   "city": "横須賀市",
+   "url": "https://bluemoonyokosuka.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県横須賀市津久井1-4-7",
+     "src": "https://bluemoonyokosuka.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK。抜け毛が多いときはテラス席",
+     "src": "https://bluemoonyokosuka.com/news/archives/61",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "基本的なしつけができていて、ほかの犬や人に吠えないこと",
+     "src": "https://bluemoonyokosuka.com/news/archives/61",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "10:00〜18:00（L.O 17:00）",
+     "src": "https://bluemoonyokosuka.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週月曜日、第二火曜日",
+     "src": "https://bluemoonyokosuka.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "オンラインで席を予約できる",
+     "src": "https://bluemoonyokosuka.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "京浜急行線 津久井浜駅から徒歩10分",
+     "src": "https://bluemoonyokosuka.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬の入店のお知らせは2025-02-16付け",
+   "id": "c7f12de"
+  },
+  {
+   "name": "ドッグカフェ ナナ＆ハチ",
+   "kind": "カフェ",
+   "pref": "埼玉県",
+   "city": "所沢市",
+   "url": "https://www.nanaandhachi.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "埼玉県所沢市若松町827-1-102",
+     "src": "https://www.nanaandhachi.com/shop.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（16席すべてわんこ同席可）",
+     "src": "https://www.nanaandhachi.com/shop.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の大きさ",
+     "v": "大型犬・小型犬とも",
+     "src": "https://www.nanaandhachi.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "わんこメニューあり",
+     "src": "https://www.nanaandhachi.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "11:30〜19:00（L.O. 18:30）、ランチ11:30〜14:00",
+     "src": "https://www.nanaandhachi.com/shop.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "所沢航空公園のドッグラン側。駐車場あり",
+     "src": "https://www.nanaandhachi.com/shop.html",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "定休日・犬のルールは記載なし",
+   "id": "c29cbbb"
+  },
+  {
+   "name": "GLAD GARDEN CAFE（グラッドガーデンカフェ）",
+   "kind": "カフェ",
+   "pref": "新潟県",
+   "city": "新潟市西区",
+   "url": "https://go9m8.crayonsite.com/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "新潟市西区みずき野3-3-15",
+     "src": "https://go9m8.crayonsite.com/p/3/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内・庭OK（ウッドデッキには犬をあげない）",
+     "src": "https://go9m8.crayonsite.com/p/3/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "狂犬病予防接種・ワクチン接種済みの犬だけ。店内・庭ではリード・マナーパンツ／ベルト。排泄物は持ち帰る。無駄吠えする犬は遠慮。貸切のときはノーリードで利用できる（1時間2,500円＋犬1頭200円）",
+     "src": "https://go9m8.crayonsite.com/p/3/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "ランチは予約制。カフェタイムは予約なしで利用できる",
+     "src": "https://go9m8.crayonsite.com/p/3/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "JR越後赤塚駅から徒歩10分。駐車場4台",
+     "src": "https://go9m8.crayonsite.com/p/3/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "営業時間（11:00〜16:00とカフェタイム〜16:30）とランチ予約の締め切り（2日前まで／前日昼まで）がページ内・ページ間で食い違うので入れていない。営業日はSNSで案内",
+   "ok": true,
+   "id": "cd2c83b"
+  },
+  {
+   "name": "ワイズドッグカフェ ル・ジャルダン",
+   "kind": "カフェ",
+   "pref": "広島県",
+   "city": "広島市中区",
+   "url": "https://ysdogcafe.com/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "広島市中区東千田町1-1-52 ひろしまガーデンガーデン コモンセンター棟1F",
+     "src": "https://ysdogcafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "店内OK（店内20席・屋根なしのテラス11席）",
+     "src": "https://ysdogcafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬のルール",
+     "v": "ワクチン接種済みの犬だけ。発情中は控える。店内・テラスともノーリード禁止。入店前に排泄を済ませるかオムツ・マナーバンド。椅子は足を拭くかカフェマット。テーブルに乗せない",
+     "src": "https://ysdogcafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬用メニュー",
+     "v": "ペット用のフードメニューあり（手作りおやつ・犬用フードの販売も）",
+     "src": "https://ysdogcafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "11:00〜22:00（L.O.21:00、入店20:30まで）",
+     "src": "https://ysdogcafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日",
+     "src": "https://ysdogcafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "東千田公園の中。広島電鉄宇品線「日赤病院前」から徒歩2分。専用駐車場なし",
+     "src": "https://ysdogcafe.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬の大きさ・頭数の記載なし",
+   "ok": true,
+   "id": "c9d61e5"
+  },
+  {
+   "name": "ザ・カフェ・ユーカリプタス",
+   "kind": "カフェ",
+   "pref": "岡山県",
+   "city": "倉敷市",
+   "url": "https://eucalyptus-cafe.com/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "倉敷市福島153-15",
+     "src": "https://eucalyptus-cafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と入れる席",
+     "v": "中庭のパティオで犬と過ごせる（店内の犬同伴は記載なし）",
+     "src": "https://eucalyptus-cafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の大きさ",
+     "v": "大型犬も同伴できる（事前の連絡がのぞましい）",
+     "src": "https://eucalyptus-cafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "営業時間",
+     "v": "火・水・木・祝 11:00〜19:00／金・土 12:00〜17:00",
+     "src": "https://eucalyptus-cafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "定休日",
+     "v": "月曜・日曜",
+     "src": "https://eucalyptus-cafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "予約",
+     "v": "予約なしで利用できる（混雑日・大人数は予約がおすすめ）",
+     "src": "https://eucalyptus-cafe.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "JR倉敷駅・中庄駅から車で約10分。店の横に駐車場3台",
+     "src": "https://eucalyptus-cafe.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "看板犬（ミニチュアシュナウザー2頭）がいるが、犬を連れて行くカフェとして案内している。店内の犬同伴の可否は未確認（FAQ・パティオのページは開けなかった）",
+   "ok": true,
+   "id": "c090026"
+  }
+ ]
+}
