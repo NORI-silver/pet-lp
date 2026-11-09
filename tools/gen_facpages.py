@@ -302,6 +302,11 @@ def render_inn_hub(ctx):
     </div>
   </div>
 </section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sh"><h2>宿までの移動は、ペットタクシーで</h2><p>車がないとき、大きな犬や何頭もいるときは、家の前から宿の前までペットタクシーで移動できます。遠い宿は、会社によって長い距離に対応していないことがあります。</p></div>
+  </div>
+</section>
 </main>
 """ + ctx["foot_noband"]()
 
