@@ -34,4 +34,14 @@ assert.equal(price('D25bac67', { pref: '京都', trip: '往復', pickup: '京都
 // aiai：パック便20,000円より式のほうが安ければ式（返事 17,325円）
 r = price('D13b7c6f', { pickup: '札幌市東区', dropoff: '新千歳空港', at: '2026-11-21 07:40', km: 51, pick: 10 });
 assert.ok(!r.fixed && r.amount < 20000);
+// COCOタク福岡東：迎車は古賀市の車庫から1km165円。往復は目的地からお迎えの場所に戻る回送代（1km165円）も足す（2026-11-10 須藤さんの返事）
+r = price('D0ec95b6', { pickup: '古賀市', dropoff: '福岡市東区', at: '2026-11-18 14:00', km: 10, pick: 8 });
+assert.equal(r.amount, 3300 + 5 * 165 + 8 * 165);
+assert.ok(r.planNote.includes('高速道路を使う場合、通行料金は別にかかります。') && r.planNote.includes('タクシーチケットは使えません。'));
+const rt = { trip: '往復', pickup: '古賀市', dropoff: '福岡市東区', rp: '福岡市東区', rd: '古賀市', at: '2026-11-18 10:00', rat: '2026-11-18 15:00', km: 10, pick: 8 };
+const withBack = price('D0ec95b6', rt);
+const rb = C('D0ec95b6').fare.roundBack; delete C('D0ec95b6').fare.roundBack;
+const noBack = price('D0ec95b6', rt); C('D0ec95b6').fare.roundBack = rb;
+assert.equal(withBack.amount - noBack.amount, 10 * 165);
+assert.ok(withBack.planNote.includes('目的地からお迎えの場所に戻る回送代'));
 console.log('PASS: site fixed fares (airport) and transcribed fare tables');
