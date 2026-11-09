@@ -63,11 +63,12 @@
 1. `main` を取り込み、`AGENTS.md`・このファイル・自分の担当ファイル・`docs/seo-log.md` の最後の10行だけ読む（ほかは必要なときだけ）。
 2. 開いている SEO のPRがあれば先に片付ける（SEO check が緑ならマージ、赤なら直す）。
 3. `python3 tools/seo_check.py .` の NG があれば、それを最優先で直す。
-4. なければ、担当ファイルの「やることの候補」から **1つだけ** 選ぶ。数字（Search Console・検索数）があれば、表示が多いのに順位・クリック率が低いものを先に。
+4. 戦略担当から「今週先にやる地域」（毎週月曜、提携のお誘いを強める地域）が届いていれば、順番より先にその地域のページを直す（`docs/seo-log.md` に地域名を書く）。
+5. なければ、担当ファイルの「やることの候補」から **1つだけ** 選ぶ。数字（Search Console・検索数）があれば、表示が多いのに順位・クリック率が低いものを先に。
    - Search Console の実数は、ChatGPT や日次レポートが残したメモ（SHIOKONBU_SEO の change_log、または `docs/seo-log.md`）を見る。無ければ推測しない。
-5. 元ファイル（`tools/gen_areas.py`・`tools/guides.py`・`tools/prefs.py`・`tools/emergency.json` など）を直し、`python3 tools/gen_areas.py .` → `python3 tools/seo_check.py .`。
-6. `main` からブランチ `claude/seo-<担当>-<日付>` を切ってPR。`docs/seo-log.md` に1行（日付・担当・何を・なぜ・PR）。SEO check が緑ならマージ（マージはNoriの事前許可あり）。
-7. 報告はマージしたときだけ、1〜2行。直すことが無い回は seo-log に「変化なし」と1行だけ書いて終わる。
+6. 元ファイル（`tools/gen_areas.py`・`tools/guides.py`・`tools/prefs.py`・`tools/emergency.json` など）を直し、`python3 tools/gen_areas.py .` → `python3 tools/seo_check.py .`。
+7. `main` からブランチ `claude/seo-<担当>-<日付>` を切ってPR。`docs/seo-log.md` に1行（日付・担当・何を・なぜ・PR）。SEO check が緑ならマージ（マージはNoriの事前許可あり）。
+8. 報告はマージしたときだけ、1〜2行。直すことが無い回は seo-log に「変化なし」と1行だけ書いて終わる。
 
 ## 守ること（AGENTS.md の要点）
 
@@ -75,6 +76,7 @@
 - 電話番号を出さない（緊急の搬送会社だけ例外）。ツール名を出さない。料金は計算どおりの数字＋「確定料金ではありません」。「◯円まで」は書かない。
 - 提携していない会社の名前、根拠のない数字（実績件数・「24時間」など）は書かない。「すぐ」「今すぐ来る」と読める言葉を使わない。
 - 県のページ（薄くても）は noindex にしない。市区町村ページの量産・47県の緊急ページ分割はしない（2026-10-30の決定）。
+- 目標は月間100万PV（Nori 2026-11-08、戦略 https://claude.ai/artifact/4XdeYEN7J2KL5LuqZm6mRg）。エリア担当は「いまある県・地域のページの順位上げ」。県×条件のページを作るのは、合う施設が5つ以上あるときだけ。
 - 会社への連絡・問い合わせは一切しない。`booking/Code.gs` はSEOでは触らない。
 - 1回で直すのは1つ。大きな作り替え・新しいページの追加は、まず seo-log に案を書いて次回以降に。
 

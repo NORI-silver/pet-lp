@@ -163,7 +163,7 @@ def _nat_stats():
     npref = len({a for x in _DISP for a in x.get("areas", [])})
     return (f'<!--NAT_STATS--><div class="tbl" style="margin-top:18px"><h3 style="font-size:1.05rem;margin:0 0 8px">都道府県ごとのペットタクシーの数（全国{len(_DISP)}社・{npref}都道府県）</h3>'
             '<table><thead><tr><th>お迎えの都道府県</th><th>来てくれる会社</th><th>24時間受付</th><th>当日も受ける</th><th>5kmの運賃の目安</th></tr></thead><tbody>' + rows +
-            '</tbody></table><p class="small">当サイトが公式サイトで確かめた会社の数です（2026年11月時点、3社以上の都道府県）。「当日も受ける」は公式サイトや会社の返事にはっきり書いてある会社だけ。運賃の目安は、各社の公式サイトの料金表をもとに計算した概算のまんなかの会社の金額で、お迎え料金・夜間の割増・待ち時間は入っていません。確定料金ではありません。</p></div><!--/NAT_STATS-->')
+            '</tbody></table><p class="small">当サイトが公式サイトで確かめた会社の数です（2026年11月時点、3社以上の都道府県）。「当日も受ける」は公式サイトや会社の返事にはっきり書いてある会社だけ。運賃の目安は、各社の公式サイトの料金表をもとに計算した概算のまんなかの会社の金額で、お迎え料金・夜間の割増・待ち時間は入っていません。確定料金ではありません。<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ（距離ごと・都道府県ごと・お迎え料金・夜間割増）</a></p></div><!--/NAT_STATS-->')
 src = re.sub(r"\s*<!--NAT_STATS-->.*?<!--/NAT_STATS-->", "", src, flags=re.S)
 src = src.replace('<a href="/area/">全国47都道府県のペットタクシー情報を見る</a></p>', '<a href="/area/">全国47都道府県のペットタクシー情報を見る</a></p>\n    ' + _nat_stats(), 1)
 # 数字の帯：会社が見つかった都道府県の数だけを出す（「47都道府県から選べます」は会社のいない県もあるので誤解のもと。法定表示の確認 2026-11-08）
@@ -1518,6 +1518,7 @@ open(os.path.join(ROOT, "area", "index.html"), "w", encoding="utf-8").write(ph)
 # 緊急の搬送の会社の口コミ（/emergency/ と /area/）：トップの緊急タブ・予約の候補カードと同じ見せ方。星と件数を出し、口コミはページの中で開く。
 # 外部の口コミページへのリンクは出さない（Nori 2026-10-31）。画面に入った会社のぶんだけ取り寄せる（取り寄せの回数を抑えるため）
 GAS = re.search(r'var GAS_URL = "([^"]+)"', top_src).group(1)
+REVIEW_ON_CLICK = re.search(r'var REVIEW_ON_CLICK = (true|false);', top_src).group(1) == "true"  # 口コミを押したときだけ取り寄せるか（index.html の値に合わせる）
 open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成ファイル（tools/gen_areas.py）。手で直さない
 (function(){
   var GAS_URL = %s, memo = {}, queue = [], timer = 0;
@@ -1529,7 +1530,11 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
     if (panel.dataset.done) return;
     panel.textContent = "口コミを読み込んでいます…";
     var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
-    fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
+    fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){ fill(panel, j); })
+      .catch(function(){ panel.textContent = "口コミを読み込めませんでした。時間をおいてもう一度お試しください。"; });
+  }
+  // 取り寄せた口コミを枠に入れる（書いた人・元の口コミへのリンク・並び順の説明・出どころは規約で必要）
+  function fill(panel, j){
       if (!j || !j.ok || !Array.isArray(j.reviews)) throw 0;
       panel.dataset.done = "1"; panel.replaceChildren();
       panel.appendChild(el("p", "review-head", "関連度の高い順に、最大5件を表示しています（全" + j.count + "件）。"));
@@ -1544,7 +1549,22 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
         panel.appendChild(item);
       });
       panel.appendChild(el("p", "partner-review-src", "Google Maps"));
-    }).catch(function(){ panel.textContent = "口コミを読み込めませんでした。時間をおいてもう一度お試しください。"; });
+  }
+  // 押したときだけ取り寄せる形（REVIEW_ON_CLICK）：最初は「口コミを見る」だけを出し、押したら星と本文をまとめて取り寄せる
+  function lazy(box){
+    var id = box.dataset.id, b = el("button", "partner-review-open", "口コミを見る"), p = el("p", "partner-score"); b.type = "button";
+    p.append(b, el("span", "partner-review-src", "Google Maps")); box.replaceChildren(p);
+    b.addEventListener("click", function(){
+      b.disabled = true; b.textContent = "口コミを読み込んでいます…";
+      if (window.gtag) gtag("event", "open_reviews", {});
+      var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
+      fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
+        if (!j || !j.ok || !(j.rating > 0)) throw 0;
+        memo[id] = {rating: j.rating, count: j.count}; paint(box, memo[id]);
+        var panel = box.querySelector(".review-panel"), open = box.querySelector(".partner-review-open");
+        fill(panel, j); panel.hidden = false; open.setAttribute("aria-expanded", "true");
+      }).catch(function(){ box.replaceChildren(el("p", "partner-review-src", "口コミは見つかりませんでした")); });
+    });
   }
   function paint(box, rv){
     box.replaceChildren();
@@ -1576,12 +1596,13 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
   }
   var boxes = document.querySelectorAll(".emg-score[data-id]");
   if (!boxes.length) return;
+  if (%s) { boxes.forEach(lazy); return; } // REVIEW_ON_CLICK（index.html と同じ値）
   if (!("IntersectionObserver" in window)) { boxes.forEach(want); return; }
   // 口コミの欄は空のあいだ見えないので、会社の枠が画面に入ったら取り寄せる（しぼりこみで隠れている会社は取り寄せない）
   var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting && x.target.offsetParent) { io.unobserve(x.target); want(x.target.querySelector(".emg-score")); } }); }, {rootMargin: "200px"});
   boxes.forEach(function(b){ io.observe(b.parentElement); });
 })();
-""" % json.dumps(GAS))
+""" % (json.dumps(GAS), "true" if REVIEW_ON_CLICK else "false"))
 
 # 条件でさがす動物病院（/hospital/）：お金を取らない情報ページ（tools/gen_hospitals.py）
 gen_hospitals.write_all(ROOT, dict(head=head, e=e, SITE=SITE, EMG=EMG, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
@@ -1608,6 +1629,10 @@ import gen_prefcats
 for _cat in (gen_prefcats.SOUGI, gen_prefcats.NIGHT):
     gen_prefpages.write_all(ROOT, _pp_ctx0, _cat); gen_prefpages.link_national(ROOT, _pp_ctx0, _cat)
     hosp_urls = hosp_urls + gen_prefpages.urls(SITE, _cat)
+# [B] SEO：ペット火葬場・霊園の施設ごとのページ（試しの30施設。tools/gen_sougi_fac.py）
+import gen_sougi_fac
+gen_sougi_fac.write_all(ROOT, _pp_ctx0)
+hosp_urls = hosp_urls + gen_sougi_fac.urls(SITE)
 # 全国の老犬ホーム・老猫ホーム（/rojin-home/）：お金を取らない情報ページ（tools/gen_rojin.py、データ tools/rojin.json）
 gen_rojin.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
@@ -1679,7 +1704,26 @@ def _lastmod(u):
 open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   "".join(f'  <url><loc>{u}</loc><lastmod>{_lastmod(u)}</lastmod></url>\n' for u in urls) + '</urlset>\n')
-open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /booking/\nDisallow: /docs/\n\nSitemap: {SITE}/sitemap.xml\n")
+# [B] 分野ごとのサイトマップ（2026-11-09 戦略担当「サイトマップを分野ごとに分けて」）。sitemap.xml（全部）はそのまま残し、
+# 同じURLを分野ごとの /sitemaps/<分野>.xml にも入れて、/sitemap_index.xml でまとめる。Search Console でサイトマップごとの
+# 登録数が出るので、分野ごとの登録率（品質の関門）を数えられる。分野はURLの最初のフォルダで決める（ペットタクシーの地域・トップ・規約などは taxi）。
+SITEMAP_CATS = {"guide": "guide", "sougi": "sougi", "dogrun": "dogrun", "hospital": "hospital", "pet-hotel": "pet-hotel",
+                "pet-sitter": "pet-sitter", "dog-trainer": "dog-trainer", "rojin-home": "rojin-home", "trimming": "trimming", "jichitai": "jichitai"}
+def _sm_cat(u):
+  return SITEMAP_CATS.get(u[len(SITE) + 1:].split("/")[0], "taxi")
+_sm_groups = {}
+for u in urls: _sm_groups.setdefault(_sm_cat(u), []).append(u)
+os.makedirs(os.path.join(ROOT, "sitemaps"), exist_ok=True)
+for _c in os.listdir(os.path.join(ROOT, "sitemaps")):
+  if _c.endswith(".xml") and _c[:-4] not in _sm_groups: os.remove(os.path.join(ROOT, "sitemaps", _c))
+for _c, _us in _sm_groups.items():
+  open(os.path.join(ROOT, "sitemaps", _c + ".xml"), "w", encoding="utf-8").write(
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    "".join(f'  <url><loc>{u}</loc><lastmod>{_lastmod(u)}</lastmod></url>\n' for u in _us) + '</urlset>\n')
+open(os.path.join(ROOT, "sitemap_index.xml"), "w", encoding="utf-8").write(
+  '<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  "".join(f'  <sitemap><loc>{SITE}/sitemaps/{_c}.xml</loc><lastmod>{max(_lastmod(u) for u in _sm_groups[_c])}</lastmod></sitemap>\n' for _c in sorted(_sm_groups)) + '</sitemapindex>\n')
+open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /booking/\nDisallow: /docs/\n\nSitemap: {SITE}/sitemap.xml\nSitemap: {SITE}/sitemap_index.xml\n")
 nf = head("ページが見つかりません｜ペットタクシー予約窓口", "お探しのページは見つかりませんでした。", SITE + "/404.html", '<meta name="robots" content="noindex">') + f'''
 <main><section class="area-hero"><div class="wrap" style="text-align:center">
 <h1>ページが見つかりませんでした</h1><p class="lede">URLが変わったか、削除された可能性があります。</p>

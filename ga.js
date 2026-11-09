@@ -32,6 +32,16 @@
     if (!cta) { if (document.getElementById("petForm") || !/#form$/.test(href)) return; cta = "link"; }
     gtag("event", "taxi_cta", {cta: cta, from: location.pathname.split("/")[1] || "top", transport_type: "beacon"});
   }, true);
+  // 情報ページから施設の公式サイトへ出た回数（2026-11-08 戦略「訪問を導線に」）。facility.js が印を付けたリンク（utm_source=pet.shiokonbu.com）は facility.js が数えるので、ここでは数えない。
+  // 施設のサイトには当サイトから来た印（utm）を付ける。役所のページ（jichitai）と地図・口コミのリンクには付けない。押した先の場所（ホスト名）とカテゴリだけ送る
+  var INFO = /^\/(hospital|dogrun|jichitai|sougi|pet-hotel|pet-sitter|trimming|dog-trainer|rojin-home|emergency)\//, UTM = {hospital: 1, dogrun: 1, "pet-hotel": 1, trimming: 1, "rojin-home": 1, emergency: 1};
+  if (INFO.test(location.pathname)) document.addEventListener("click", function(e){
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !/^https?:$/.test(a.protocol) || a.host === location.host || /utm_source=pet\.shiokonbu\.com/.test(a.href) || /(^|\.)google\.|goo\.gl$/.test(a.hostname)) return;
+    var cat = location.pathname.split("/")[1];
+    if (UTM[cat]) { try { var x = new URL(a.href); x.searchParams.set("utm_source", "pet.shiokonbu.com"); x.searchParams.set("utm_medium", "referral"); x.searchParams.set("utm_campaign", cat.replace(/-/g, "_") + "_list"); a.href = x.toString(); } catch (y) {} }
+    gtag("event", "official_site", {cat: cat, host: a.hostname, from: "page", transport_type: "beacon"});
+  }, true);
 })();
 
 // AIエージェント向けの道具（WebMCP、webmcp.js）。対応したブラウザのときだけ読み込む。見るだけで、どこにも送らない。

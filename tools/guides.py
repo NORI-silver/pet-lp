@@ -669,6 +669,9 @@ dict(slug="fare",
 # 全国の会社のルールを数えたデータ記事と、今ある記事に足す節（tools/guides_data.py）。
 from guides_data import DATA_GUIDES, EXTRA_SECTIONS
 GUIDES.extend(DATA_GUIDES)
+# [B] 独自データ記事「全国のペットタクシー料金しらべ」（数字は生成のたびに数える。tools/guides_fare_survey.py）
+from guides_fare_survey import FARE_SURVEY
+GUIDES.append(FARE_SURVEY)
 for guide in GUIDES:
     if guide["slug"] in EXTRA_SECTIONS:
         guide["sections"].extend(EXTRA_SECTIONS[guide["slug"]])
