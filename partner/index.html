@@ -182,8 +182,8 @@
   <div class="f"><label for="p_name">ご担当者のお名前</label><input type="text" id="p_name" name="name" required autocomplete="name"></div>
   <div class="f"><label for="p_email">お問い合わせを受け取るメールアドレス<span class="any">飼い主さんからのお問い合わせがここに届きます。窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスを入れてください</span></label><input type="email" id="p_email" name="email" required autocomplete="email"></div>
   <div class="group-h"><span>2</span>お店とお迎えのエリア</div>
-  <div class="f"><label for="p_shop">車が出発するお店・事業所<span class="any">住所や店名を入れて、出てきた候補から選んでください</span></label>
-    <div class="pt-ac"><input type="text" id="p_shop" data-k="車が出発する場所" required autocomplete="off" placeholder="例：広島市安芸区矢野西／〇〇ペットタクシー"><ul id="p_shopList" hidden></ul><span class="ok" id="p_shopOk" hidden></span></div></div>
+  <div class="f"><label for="p_shop">車が出発するお店・事業所の住所</label>
+    <div class="pt-ac"><input type="text" id="p_shop" data-k="車が出発する場所" required autocomplete="street-address" placeholder="例：広島県広島市安芸区矢野西1丁目2-3"><ul id="p_shopList" hidden></ul><span class="ok" id="p_shopOk" hidden></span></div></div>
   <div class="f"><span class="lbl">お迎えに行ける範囲</span><div class="seg pt-one" id="p_radius" data-k="お迎えに行ける範囲" data-req="1" role="radiogroup"><label><input type="radio" name="p_radius" value="お店から10kmまで"><span>お店から10kmまで</span></label><label><input type="radio" name="p_radius" value="20kmまで"><span>20kmまで</span></label><label><input type="radio" name="p_radius" value="30kmまで"><span>30kmまで</span></label><label><input type="radio" name="p_radius" value="50kmまで"><span>50kmまで</span></label><label><input type="radio" name="p_radius" value="80kmまで"><span>80kmまで</span></label><label><input type="radio" name="p_radius" value="もっと遠くても行く"><span>もっと遠くても行く</span></label></div></div>
   <div class="f"><span class="lbl">お迎えできる都道府県<span class="any">お店の場所と範囲から自動で選んでいます。ちがうところだけ直してください</span></span>
     <div class="checks seg" id="p_prefs" data-k="都道府県"></div>
@@ -195,7 +195,8 @@
     <div class="pt-sub" data-if="p_allday" data-v="時間を決めている" hidden><div class="pt-time"><select id="p_from" aria-label="何時から"><option value="0">0:00</option><option value="1">1:00</option><option value="2">2:00</option><option value="3">3:00</option><option value="4">4:00</option><option value="5">5:00</option><option value="6">6:00</option><option value="7">7:00</option><option value="8" selected>8:00</option><option value="9">9:00</option><option value="10">10:00</option><option value="11">11:00</option><option value="12">12:00</option><option value="13">13:00</option><option value="14">14:00</option><option value="15">15:00</option><option value="16">16:00</option><option value="17">17:00</option><option value="18">18:00</option><option value="19">19:00</option><option value="20">20:00</option><option value="21">21:00</option><option value="22">22:00</option><option value="23">23:00</option></select>から<select id="p_to" aria-label="何時まで"><option value="1">1:00</option><option value="2">2:00</option><option value="3">3:00</option><option value="4">4:00</option><option value="5">5:00</option><option value="6">6:00</option><option value="7">7:00</option><option value="8">8:00</option><option value="9">9:00</option><option value="10">10:00</option><option value="11">11:00</option><option value="12">12:00</option><option value="13">13:00</option><option value="14">14:00</option><option value="15">15:00</option><option value="16">16:00</option><option value="17">17:00</option><option value="18">18:00</option><option value="19">19:00</option><option value="20" selected>20:00</option><option value="21">21:00</option><option value="22">22:00</option><option value="23">23:00</option><option value="24">24:00</option></select>まで</div></div></div>
   <div class="f"><span class="lbl">時間外の依頼</span><div class="seg pt-one" id="p_off" data-k="時間外の依頼" data-req="1" role="radiogroup"><label><input type="radio" name="p_off" value="受けない"><span>受けない</span></label><label><input type="radio" name="p_off" value="相談に応じる"><span>相談に応じる</span></label></div></div>
   <div class="f"><span class="lbl">車の台数</span><div class="seg pt-one" id="p_cars" data-k="車の台数" data-req="1" role="radiogroup"><label><input type="radio" name="p_cars" value="1台"><span>1台</span></label><label><input type="radio" name="p_cars" value="2台"><span>2台</span></label><label><input type="radio" name="p_cars" value="3台以上"><span>3台以上</span></label></div></div>
-  <div class="f"><span class="lbl">車の種類<span class="any">あてはまるものすべて</span></span><div class="checks seg" id="p_cartype" data-k="車の種類"><label><input type="checkbox" value="軽バン・軽自動車"><span>軽バン・軽自動車</span></label><label><input type="checkbox" value="ミニバン・ワゴン"><span>ミニバン・ワゴン</span></label><label><input type="checkbox" value="大きめのワゴン（ハイエースなど）"><span>大きめのワゴン（ハイエースなど）</span></label><label><input type="checkbox" value="セダン"><span>セダン</span></label></div></div>
+  <div class="f"><span class="lbl">車種<span class="any">お使いの車をすべて</span></span><div class="checks seg" id="p_cartype" data-k="車種"><label><input type="checkbox" value="スズキ エブリイ"><span>スズキ エブリイ</span></label><label><input type="checkbox" value="ダイハツ ハイゼットカーゴ／アトレー"><span>ダイハツ ハイゼットカーゴ／アトレー</span></label><label><input type="checkbox" value="ホンダ N-VAN"><span>ホンダ N-VAN</span></label><label><input type="checkbox" value="ホンダ N-BOX"><span>ホンダ N-BOX</span></label><label><input type="checkbox" value="スズキ スペーシア"><span>スズキ スペーシア</span></label><label><input type="checkbox" value="トヨタ ハイエース"><span>トヨタ ハイエース</span></label><label><input type="checkbox" value="日産 キャラバン"><span>日産 キャラバン</span></label><label><input type="checkbox" value="トヨタ ノア／ヴォクシー"><span>トヨタ ノア／ヴォクシー</span></label><label><input type="checkbox" value="日産 セレナ"><span>日産 セレナ</span></label><label><input type="checkbox" value="ホンダ ステップワゴン"><span>ホンダ ステップワゴン</span></label><label><input type="checkbox" value="トヨタ アルファード／ヴェルファイア"><span>トヨタ アルファード／ヴェルファイア</span></label><label><input type="checkbox" value="トヨタ シエンタ"><span>トヨタ シエンタ</span></label><label><input type="checkbox" value="ホンダ フリード"><span>ホンダ フリード</span></label><label><input type="checkbox" value="三菱 デリカD:5"><span>三菱 デリカD:5</span></label><label><input type="checkbox" value="トヨタ JPN TAXI"><span>トヨタ JPN TAXI</span></label><label><input type="checkbox" value="トヨタ プリウス"><span>トヨタ プリウス</span></label></div>
+    <input type="text" id="p_carother" data-k="車種（そのほか）" maxlength="100" placeholder="ほかの車種（例：マツダ ボンゴ）" aria-label="ほかの車種" style="margin-top:8px"></div>
   <div class="group-h"><span>4</span>乗せられる動物と条件</div>
   <p class="pt-note">乗せられる動物のほかは、わかるところだけで大丈夫です。</p>
   <div class="f"><span class="lbl">乗せられる動物</span><div class="checks seg" id="p_animals" data-k="乗せられる動物"><label><input type="checkbox" value="犬"><span>犬</span></label><label><input type="checkbox" value="猫"><span>猫</span></label><label><input type="checkbox" value="うさぎ・フェレットなどの小動物"><span>うさぎ・フェレットなどの小動物</span></label><label><input type="checkbox" value="鳥"><span>鳥</span></label><label><input type="checkbox" value="爬虫類・両生類"><span>爬虫類・両生類</span></label><label><input type="checkbox" value="魚"><span>魚</span></label></div></div>
@@ -252,31 +253,41 @@
   function km(a, b){ var r = Math.PI / 180, x = (b[1] - a[1]) * r * Math.cos((a[0] + b[0]) / 2 * r), y = (b[0] - a[0]) * r; return Math.sqrt(x * x + y * y) * 6371; }
   function prefOf(t){ var m = String(t || "").replace(/^日本、?/, "").replace(/^〒\d{3}-?\d{4}\s*/, "").match(/^(北海道|東京都|大阪府|京都府|.{2,3}県)/); return m && PREFS.indexOf(m[1]) >= 0 ? m[1] : ""; }
   function pick(p){
-    shop = p; inp.value = p.name; list.hidden = true;
+    shop = p; inp.value = p.addr; list.hidden = true;
     $("p_shopOk").hidden = false; $("p_shopOk").textContent = "✓ " + p.addr;
     drawPrefs(true);
+  }
+  // 住所から位置を調べる（候補を選ばなくても、入れた住所のいちばん近い候補を使う）
+  function lookup(q){
+    return fetch("https://places.googleapis.com/v1/places:searchText", {method: "POST",
+        headers: {"Content-Type": "application/json", "X-Goog-Api-Key": PLACES_KEY, "X-Goog-FieldMask": "places.displayName,places.formattedAddress,places.location"},
+        body: JSON.stringify({textQuery: q, languageCode: "ja", regionCode: "jp", pageSize: 5})})
+      .then(function(r){ return r.ok ? r.json() : {}; }).then(function(j){
+        return ((j && j.places) || []).filter(function(p){ return p.location; }).map(function(p){
+          var addr = String(p.formattedAddress || "").replace(/^日本、?/, "").replace(/^〒\d{3}-?\d{4}\s*/, "");
+          return {addr: addr, ll: [p.location.latitude, p.location.longitude], pref: prefOf(addr)};
+        }).filter(function(p){ return p.addr; });
+      }).catch(function(){ return []; });
   }
   inp.addEventListener("input", function(){
     shop = null; $("p_shopOk").hidden = true; clearTimeout(timer);
     var q = inp.value.trim();
-    if (q.length < 2 || !PLACES_KEY) { list.hidden = true; return; }
+    if (q.length < 4 || !PLACES_KEY) { list.hidden = true; return; }
     timer = setTimeout(function(){
-      fetch("https://places.googleapis.com/v1/places:searchText", {method: "POST",
-        headers: {"Content-Type": "application/json", "X-Goog-Api-Key": PLACES_KEY, "X-Goog-FieldMask": "places.displayName,places.formattedAddress,places.location"},
-        body: JSON.stringify({textQuery: q, languageCode: "ja", regionCode: "jp", pageSize: 5})})
-      .then(function(r){ return r.ok ? r.json() : {}; }).then(function(j){
-        var ps = ((j && j.places) || []).filter(function(p){ return p.location; }).map(function(p){
-          var addr = String(p.formattedAddress || "").replace(/^日本、?/, "").replace(/^〒\d{3}-?\d{4}\s*/, "");
-          return {name: (p.displayName || {}).text || addr, addr: addr, ll: [p.location.latitude, p.location.longitude], pref: prefOf(addr)};
-        });
+      lookup(q).then(function(ps){
+        if (inp.value.trim() !== q) return;
         list.innerHTML = "";
-        ps.forEach(function(p){ var li = document.createElement("li"); li.textContent = p.name + "（" + p.addr + "）"; li.addEventListener("mousedown", function(e){ e.preventDefault(); pick(p); }); list.appendChild(li); });
+        ps.forEach(function(p){ var li = document.createElement("li"); li.textContent = p.addr; li.addEventListener("mousedown", function(e){ e.preventDefault(); pick(p); }); list.appendChild(li); });
         if (ps.length) { var a = document.createElement("small"); a.className = "attr"; a.textContent = "Google Maps"; list.appendChild(a); }
         list.hidden = !ps.length;
-      }).catch(function(){ list.hidden = true; });
-    }, 350);
+      });
+    }, 400);
   });
-  inp.addEventListener("blur", function(){ setTimeout(function(){ list.hidden = true; }, 150); });
+  inp.addEventListener("blur", function(){
+    setTimeout(function(){ list.hidden = true; }, 150);
+    var q = inp.value.trim();
+    if (!shop && q.length >= 4 && PLACES_KEY) lookup(q).then(function(ps){ if (!shop && ps[0] && inp.value.trim() === q) { shop = ps[0]; $("p_shopOk").hidden = false; $("p_shopOk").textContent = "✓ " + ps[0].addr; drawPrefs(true); } });
+  });
   // ── お迎えできる都道府県：お店の県と、範囲の中に県庁所在地が入る県（＋25km）を自動で選ぶ。近い順に10県をボタンで出し、残りは「ほかの都道府県」
   var RANGE = {"お店から10kmまで": 10, "20kmまで": 20, "30kmまで": 30, "50kmまで": 50, "80kmまで": 80, "もっと遠くても行く": 150};
   function chip(p, on){ return '<label><input type="checkbox" value="' + p + '"' + (on ? " checked" : "") + '><span>' + p + '</span></label>'; }
@@ -302,7 +313,7 @@
   function missing(){
     var bad = [].filter.call(f.querySelectorAll("input:invalid,textarea:invalid"), shown)[0];
     if (bad) return bad;
-    if (!shop) return inp;
+    if (!inp.value.trim()) return inp;
     // 必ず答えていただくのは、エリア・時間・料金のうかがい方（と、料金をここで入力するときの料金の欄）だけ。ほかは、わかるところだけ
     var REQ = ["p_radius", "p_allday", "p_faremode"];
     var one = [].filter.call(f.querySelectorAll(".pt-one[data-req]"), function(x){ return shown(x) && !val(x) && (REQ.indexOf(x.id) >= 0 || x.closest(".pt-fare")); })[0];
@@ -317,7 +328,7 @@
     }
     return null;
   }
-  var WHY = {p_shop: "お店の場所を入れて、候補から選んでください。", p_prefs: "お迎えできる都道府県を選んでください。", p_days: "受けられる曜日を選んでください。", p_cartype: "車の種類を選んでください。", p_animals: "乗せられる動物を選んでください。", p_agree: "確認のチェックを入れてください。"};
+  var WHY = {p_shop: "車が出発するお店・事業所の住所を入れてください。", p_prefs: "お迎えできる都道府県を選んでください。", p_days: "受けられる曜日を選んでください。", p_cartype: "車の種類を選んでください。", p_animals: "乗せられる動物を選んでください。", p_agree: "確認のチェックを入れてください。"};
   f.addEventListener("submit", function(e){
     e.preventDefault(); err.style.display = "none";
     f.querySelectorAll(".missing").forEach(function(x){ x.classList.remove("missing"); });
@@ -330,16 +341,16 @@
     var lines = [], co = $("p_co").value.trim(), apply = {};
     function put(k, v){ if (v) { lines.push("【" + k + "】" + v); apply[k] = v; } }
     f.querySelectorAll("[data-k]").forEach(function(x){
-      if (!shown(x) || (x.parentNode.closest && x.parentNode.closest(".pt-q")) || x.id === "p_prefs" || x.id === "p_days" || x.id === "p_allday" || x.id === "p_cars" || x.id === "p_cartype") return;
+      if (!shown(x) || (x.parentNode.closest && x.parentNode.closest(".pt-q")) || x.id === "p_prefs" || x.id === "p_days" || x.id === "p_allday" || x.id === "p_cars" || x.id === "p_cartype" || x.id === "p_carother") return;
       put(x.dataset.k, x.classList.contains("checks") ? picked(x.id).join("・") : x.classList.contains("pt-q") ? rowText(x) : val(x));
     });
     put("都道府県", prefsText());
     put("受けられる時間帯", hoursText());
-    put("車", [val($("p_cars")), picked("p_cartype").join("、")].filter(String).join("（") + (val($("p_cars")) && picked("p_cartype").length ? "）" : ""));
+    var models = picked("p_cartype").concat($("p_carother").value.trim() ? [$("p_carother").value.trim()] : []);
+    put("車", [val($("p_cars")), models.join("、")].filter(String).join("（") + (val($("p_cars")) && models.length ? "）" : ""));
     apply["都道府県の一覧"] = prefsAll().join("・");
-    apply["お店の位置"] = shop.ll.map(function(v){ return v.toFixed(4); }).join(",");
-    apply["お店の住所"] = shop.addr;
-    lines.push("【お店の住所】" + shop.addr);
+    if (shop) apply["お店の位置"] = shop.ll.map(function(v){ return v.toFixed(4); }).join(",");
+    apply["お店の住所"] = inp.value.trim();
     var body = new URLSearchParams();
     body.append("kind", "contact"); body.append("topic", "提携のお申し込み（" + co + "）");
     body.append("name", $("p_name").value.trim() + "（" + co + "）");

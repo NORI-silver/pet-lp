@@ -1025,6 +1025,9 @@ PT_FARE_MORE = "".join([
   pt_f("空港など、決まった区間の定額", '<input type="text" id="p_fixed" data-k="決まった区間の定額" maxlength="300" placeholder="例：広島市内→広島空港 15,000円">', "あれば", "p_fixed"),
   pt_f("料金でほかに伝えたいこと", '<textarea id="p_fare" data-k="料金の補足" rows="2" maxlength="500" placeholder="例：往復は1割引き"></textarea>', "あれば", "p_fare"),
 ])
+# 車種（ペットタクシーで多い車。予約のしくみは車種から軽バンかどうかを読む）
+PT_CARS = ["スズキ エブリイ", "ダイハツ ハイゼットカーゴ／アトレー", "ホンダ N-VAN", "ホンダ N-BOX", "スズキ スペーシア", "トヨタ ハイエース", "日産 キャラバン", "トヨタ ノア／ヴォクシー", "日産 セレナ",
+           "ホンダ ステップワゴン", "トヨタ アルファード／ヴェルファイア", "トヨタ シエンタ", "ホンダ フリード", "三菱 デリカD:5", "トヨタ JPN TAXI", "トヨタ プリウス"]
 PT_LARGE = ["1頭まで", "2頭まで", "3頭以上"]
 PT_ADULTS = ["大人は乗れない（ペットだけ）", "大人1人まで", "大人2人まで", "大人3人まで", "大人4人以上"]
 PT_COND = "".join([
@@ -1147,8 +1150,8 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
   <div class="f"><label for="p_name">ご担当者のお名前</label><input type="text" id="p_name" name="name" required autocomplete="name"></div>
   <div class="f"><label for="p_email">お問い合わせを受け取るメールアドレス<span class="any">飼い主さんからのお問い合わせがここに届きます。窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスを入れてください</span></label><input type="email" id="p_email" name="email" required autocomplete="email"></div>
   <div class="group-h"><span>2</span>お店とお迎えのエリア</div>
-  <div class="f"><label for="p_shop">車が出発するお店・事業所<span class="any">住所や店名を入れて、出てきた候補から選んでください</span></label>
-    <div class="pt-ac"><input type="text" id="p_shop" data-k="車が出発する場所" required autocomplete="off" placeholder="例：広島市安芸区矢野西／〇〇ペットタクシー"><ul id="p_shopList" hidden></ul><span class="ok" id="p_shopOk" hidden></span></div></div>
+  <div class="f"><label for="p_shop">車が出発するお店・事業所の住所</label>
+    <div class="pt-ac"><input type="text" id="p_shop" data-k="車が出発する場所" required autocomplete="street-address" placeholder="例：広島県広島市安芸区矢野西1丁目2-3"><ul id="p_shopList" hidden></ul><span class="ok" id="p_shopOk" hidden></span></div></div>
   {pt_f("お迎えに行ける範囲", pt_sel("p_radius", "お迎えに行ける範囲", ["お店から10kmまで", "20kmまで", "30kmまで", "50kmまで", "80kmまで", "もっと遠くても行く"]), "", "")}
   <div class="f"><span class="lbl">お迎えできる都道府県<span class="any">お店の場所と範囲から自動で選んでいます。ちがうところだけ直してください</span></span>
     <div class="checks seg" id="p_prefs" data-k="都道府県"></div>
@@ -1161,7 +1164,8 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
     <div class="pt-sub" data-if="p_allday" data-v="時間を決めている" hidden><div class="pt-time"><select id="p_from" aria-label="何時から">{''.join(f'<option value="{h}"' + (' selected' if h == 8 else '') + f'>{h}:00</option>' for h in range(0, 24))}</select>から<select id="p_to" aria-label="何時まで">{''.join(f'<option value="{h}"' + (' selected' if h == 20 else '') + f'>{h}:00</option>' for h in range(1, 25))}</select>まで</div></div></div>
   {pt_f("時間外の依頼", pt_sel("p_off", "時間外の依頼", ["受けない", "相談に応じる"]), "", "")}
   {pt_f("車の台数", pt_sel("p_cars", "車の台数", ["1台", "2台", "3台以上"]), "", "")}
-  <div class="f"><span class="lbl">車の種類<span class="any">あてはまるものすべて</span></span>{pt_chk("p_cartype", "車の種類", ["軽バン・軽自動車", "ミニバン・ワゴン", "大きめのワゴン（ハイエースなど）", "セダン"])}</div>
+  <div class="f"><span class="lbl">車種<span class="any">お使いの車をすべて</span></span>{pt_chk("p_cartype", "車種", PT_CARS)}
+    <input type="text" id="p_carother" data-k="車種（そのほか）" maxlength="100" placeholder="ほかの車種（例：マツダ ボンゴ）" aria-label="ほかの車種" style="margin-top:8px"></div>
   <div class="group-h"><span>4</span>乗せられる動物と条件</div>
   <p class="pt-note">乗せられる動物のほかは、わかるところだけで大丈夫です。</p>
   <div class="f"><span class="lbl">乗せられる動物</span>{pt_chk("p_animals", "乗せられる動物", ["犬", "猫", "うさぎ・フェレットなどの小動物", "鳥", "爬虫類・両生類", "魚"])}</div>
