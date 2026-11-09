@@ -1619,6 +1619,10 @@ hosp_urls = hosp_urls + gen_jichitai.urls(SITE)
 gen_dogrun.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links, pref_href=pref_href,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_dogrun.urls(SITE)
+# [B] SEO：ドッグランの施設ごとのページ（試しの30施設。tools/gen_dogrun_fac.py、型は docs/facility-page.md）
+import gen_dogrun_fac
+gen_dogrun_fac.write_all(ROOT, dict(head=head, e=e, SITE=SITE, foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_dogrun_fac.urls(SITE)
 # ペットが亡くなったら（/sougi/）：お金を取らない情報ページ（tools/gen_sougi.py、データ tools/sougi.json）
 import gen_sougi
 gen_sougi.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
