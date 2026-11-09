@@ -509,7 +509,10 @@ def render_pref(ctx, pf, rs):
         for c in d.get("city", "").split("・"):
             if c and c not in cities: cities.append(c)
     ctext = "・".join(cities[:3])
-    title = f"{pf}のドッグラン{n}か所｜無料・登録・利用時間の一覧" + (f"（{ctext}）" if ctext and len(ctext) <= 14 else "") + "｜ペットタクシー予約窓口"
+    # [B] SEO 11/9：愛知「ドッグラン」4.8位でもクリック0。題名に数（無料・小型犬エリア）を先に出す。
+    _tf, _ts = nfree(rs), nsmall(rs)
+    _tx = "・".join(x for x in [f"無料{_tf}か所" if _tf else "", f"小型犬エリア{_ts}か所" if _ts else ""] if x) or "料金・登録・利用時間"
+    title = f"{pf}のドッグラン{n}か所｜{_tx}" + (f"（{ctext}）" if ctext and len(ctext) <= 14 else "") + "｜ペットタクシー予約窓口"
     names = "、".join(d["name"] for d in rs[:2])
     desc = (f"{pf}のドッグラン{n}か所（{kind_counts_text(rs)}。{names}{'など' if n > 2 else ''}）を、公式ページで確かめた料金・利用登録・利用時間・"
             f"エリアの区分つきでまとめました。利用料が無料は{nfree(rs)}か所。")
