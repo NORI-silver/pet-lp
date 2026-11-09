@@ -187,10 +187,10 @@ _npref = len({a for x in _DISP for a in x.get("areas", [])})
 src = re.sub(r'<div class="stat"><div class="n">[0-9]+<small>都道府県</small></div><div class="l">[^<]*(?:<br>[^<]*)?</div></div>',
              f'<div class="stat"><div class="n">{_npref}<small>都道府県</small></div><div class="l">{len(_DISP)}社から<br>さがせます</div></div>', src, count=1)
 # トップの title・説明文（[B] 2026-11-10。「ペットタクシー」の検索でトップを出すため「ペットタクシーの料金比較」で始める。
-# 社数や10kmの金額を入れた案は Nori「ユーザてきにはあんまり」でやめ、飼い主さんの使い道と流れを書く。数はページの中の表に残す）
-_t_title = "ペットタクシーの料金比較｜犬・猫の通院や引っ越しに。近くの会社の料金の目安を無料でくらべる｜ペットタクシー予約窓口"
-_t_desc = ("動物病院への通院、引っ越し、空港への送迎に。お迎えの場所と行き先を入れると、来てもらえるペットタクシーと料金の目安がその場で並びます"
-           "（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。空き状況と料金を無料で問い合わせ、返事を見てから予約を決められます。")
+# 社数や10kmの金額を入れた案は Nori「ユーザてきにはあんまり」でやめ、Nori「料金がわかることがいいんじゃない？」で、料金の目安が分かることを先に書く。数はページの中の表に残す）
+_t_title = "ペットタクシーの料金をくらべる｜場所を入れると近くの会社の料金の目安がわかる（無料）｜ペットタクシー予約窓口"
+_t_desc = ("ペットタクシーはいくらかかる？お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安がその場で並びます"
+           "（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。犬・猫の通院や引っ越し、空港への送迎に。空き状況と料金を無料で問い合わせ、返事を見てから予約を決められます。")
 src = re.sub(r"<title>.*?</title>", lambda m: f"<title>{_t_title}</title>", src, count=1, flags=re.S)
 src = re.sub(r'<meta name="description" content="[^"]*">', lambda m: f'<meta name="description" content="{_t_desc}">', src, count=1)
 src = re.sub(r'<meta property="og:title" content="[^"]*">', lambda m: f'<meta property="og:title" content="{_t_title}">', src, count=1)
