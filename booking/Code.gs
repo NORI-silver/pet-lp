@@ -8,7 +8,7 @@
  *        こちらのLINEに登録済み → 自動で送信
  *        先方のLINE公式だけ   → 運営者が「手配ページ」のボタンを押して送信（文面は入力済み）
  *        電話だけ        → 対象外
- *   3. 提携先がリンクを開き「お迎え時刻・確定料金（一般道／高速利用時）」を入れて引き受け（先着1社）
+ *   3. 提携先がリンクを開き「確定料金（一般道／高速利用時）」を入れて引き受け（日時はお客さまの希望で固定。日付だけの依頼は時刻も）（先着1社）
  *      返信で答えてきた場合は、運営者が手配ページで決定を入力
  *   4. お客さまへ「決まりました」を自動送信。引き受けた提携先にだけお客さまの連絡先を送る
  *   5. 決まらないとき：一定時間で近くのエリア・全国対応の提携先にも送る → それでもだめならお詫びを自動送信
@@ -116,7 +116,9 @@ var REQ_HEADERS = [
   // 2026-10-31 Nori「複数社に予約・見積もりを依頼できるように。どちらかはお客さまが選ぶ」。依頼の種類＝予約／見積もり、見積もりJSON＝届いた見積もり
   '依頼の種類', '見積もりJSON',
   // 2026-11-01 Nori「キャンセルを直接事業者に伝えられたら、こっちは判断できない」→ 送迎のあとに飼い主さんにも確かめる（手数料の照らし合わせ用）
-  '送迎確認', '送迎確認日時'
+  '送迎確認', '送迎確認日時',
+  // 2026-11-09 Nori「会社の返事の入力欄に、電話とメールアドレスを入れる欄を作ろう」→ お客さまにお伝えする会社の連絡先（会社あての送信先は提携先シートのまま）
+  '会社の連絡先（電話）', '会社の連絡先（メール）'
 ];
 var PARTNER_HEADERS = [
   'ID', '事業者名', '担当者名', '対応エリア', 'メール', '電話番号', 'LINE公式ID（先方）', '受付中', '大型犬OK', '介助OK',
@@ -377,7 +379,7 @@ function sendWave_(id, stage) {
   }
   var manual = [];
   targets = targets.filter(function (pt) {
-    var how = deliver_(pt, (isAsk_(r) ? '【空き状況と料金のお問い合わせ】' : isQuoteReq_(r) ? '【お見積もりのご依頼】' : '【新しいご依頼】') + r['都府県'] + '・' + whenText_(r), requestText_(r, pt), r);
+    var how = deliver_(pt, (isAsk_(r) ? '【空き状況と料金のお問い合わせ】' : isQuoteReq_(r) ? '【お見積もりのご依頼】' : '【新しいご依頼】') + r['都府県'] + '・' + whenText_(r), requestText_(r, pt), r, requestHtml_(r, pt));
     if (how === 'manual') manual.push(pt.name);
     return !!how;
   });
@@ -398,12 +400,12 @@ function requestText_(r, pt) {
     'ペットタクシーの検索サイト「' + CONFIG.SERVICE_NAME + '」です。飼い主さんから、送迎のお問い合わせが届きました。\n' +
     (isAsk_(r) ? '★飼い主さんのお名前・ご連絡先は、飼い主さんが予約を確定した時点でお知らせします。\n★お返事の内容（お迎え時刻・確定料金）は、お返事から' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。そのあいだに飼い主さんが予約を確定したときは、お引き受けください。お返事のあとにほかのご予約が入ったときは、お返事のリンクを開いて「このお返事を取り下げる」を押してください。\n\n' : '★お客さまのお名前・ご連絡先は、引き受けが決まった時点でお知らせします（リンクから引き受けた場合はその場で表示されます）。\n\n') +
     rideText_(r) + retAsk_(r) + waitRuleForPartner_(r) + estText_(r) + '\n■ お支払い：' + payForPartner_(pt) + askText_(pt, r) + '\n\n' +
-    (isAsk_(r) ? '空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。お受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです）。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。\n'
-      : isQuoteReq_(r) ? 'お見積もりのご依頼です。お客さまは、ほかの会社のお見積もりとくらべて1社を選びます。\nお受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです）。お客さまが貴社を選んだら、お名前・ご連絡先をお知らせします。\n'
-      : needsChoice_(r) ? 'お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています。お受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです）。お客さまが引き受けた会社の中から1社を選んだ時点で決まり、お名前・ご連絡先をお知らせします。\n'
-      : 'お受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです。先着1社）。\n') + acceptUrl_(r['受付番号'], pt.id) +
+    (isAsk_(r) ? '空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。お受けいただける場合は、下のリンクから' + inputWord_(r) + '（税込）をご入力ください（数字を入れるだけです）。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。\n'
+      : isQuoteReq_(r) ? 'お見積もりのご依頼です。お客さまは、ほかの会社のお見積もりとくらべて1社を選びます。\nお受けいただける場合は、下のリンクから' + inputWord_(r) + '（税込）をご入力ください（数字を入れるだけです）。お客さまが貴社を選んだら、お名前・ご連絡先をお知らせします。\n'
+      : needsChoice_(r) ? 'お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています。お受けいただける場合は、下のリンクから' + inputWord_(r) + '（税込）をご入力ください（数字を入れるだけです）。お客さまが引き受けた会社の中から1社を選んだ時点で決まり、お名前・ご連絡先をお知らせします。\n'
+      : 'お受けいただける場合は、下のリンクから' + inputWord_(r) + '（税込）をご入力ください（数字を入れるだけです。先着1社）。\n') + acceptUrl_(r['受付番号'], pt.id) +
     '\n\nご返信でお答えいただく場合は、次のどちらかでお願いします。\n' +
-    '・受けられる：お迎え時刻〇時〇分・一般道〇円・高速を使う場合〇円（高速代込み。使わないなら「なし」）' + (isRound_(r) ? '・帰りは「待つ」か「あとで迎え」か' : '') + '\n' +
+    '・受けられる：' + (r['日付のみ'] ? 'お迎え時刻〇時〇分・' : '') + '一般道〇円・高速を使う場合〇円（高速代込み。使わないなら「なし」）' + (isRound_(r) ? '・帰りは「待つ」か「あとで迎え」か' : '') + '\n' +
     '・難しい\n\n' +
     '※ご質問（ペットの様子・建物の入り方など）は、決まったあとにお客さまへ直接お聞きください。\n' +
     '※ご都合が合わない場合、お返事は不要です。';
@@ -460,7 +462,8 @@ function retSelect_() {
 
 function decidedText_(r, pt) {
   return pt.name + ' ' + (pt.person ? pt.person + '様' : 'ご担当者さま') + '\n\nありがとうございます。こちらのご依頼をお願いすることになりました。\nお客さまへ直接ご連絡をお願いします。\n\n' + customerForPartner_(r) +
-    '\n\n▼ やむを得ずお受けできなくなったとき（押すとお客さまにお知らせし、このご予約は取り消しになります）\n' + partnerCancelUrl_(r['受付番号'], pt.id);
+    '\n\n▼ やむを得ずお受けできなくなったとき（押すとお客さまにお知らせし、このご予約は取り消しになります）\n' + partnerCancelUrl_(r['受付番号'], pt.id) +
+    '\n\n当サイトへのご連絡（お客さまとの間で困ったこと、条件の変更など）は、このメールに返信してください。';
 }
 
 function closedText_(r, pt) {
@@ -468,7 +471,44 @@ function closedText_(r, pt) {
 }
 
 function cancelText_(r, pt) {
-  return pt.name + ' ' + (pt.person ? pt.person + '様' : 'ご担当者さま') + '\n\nお客さまがご依頼を取り消されました。お迎えは不要です。\n\n受付番号：' + r['受付番号'] + '\nお迎え予定：' + fmt_(r['お迎え予定']) + '\nお客さま：' + r['お名前'] + ' 様\n\nご対応いただきありがとうございました。';
+  return pt.name + ' ' + (pt.person ? pt.person + '様' : 'ご担当者さま') + '\n\nお客さまがご依頼を取り消されました。お迎えは不要です。\n\n受付番号：' + r['受付番号'] + '\nお迎え予定：' + fmt_(r['お迎え予定']) + '\nお客さま：' + r['お名前'] + ' 様\n\nキャンセル料がかかる場合は、貴社のキャンセル規定にしたがって、お客さまへ直接ご案内ください（お客さまにも、規定によりキャンセル料がかかることがあるとお伝えしています）。\n\nご対応いただきありがとうございました。';
+}
+
+// 予約が確定したあと、お客さまが会社に直接連絡するための連絡先（Nori 2026-11-09「おすすめ通りでOK」：
+// 会社が遅れた・来ないときにお客さまが困らないように。電話番号はサイトには出さず、確定したお客さまへのメールにだけ書く）
+// お客さまに見せる会社の連絡先だけを差しかえた写し（会社あての送信は元の pt を使う）
+function custPt_(pt, tel, mail) {
+  if (!pt) return pt;
+  var o = {};
+  Object.keys(pt).forEach(function (k) { o[k] = pt[k]; });
+  if (tel || mail) { o.tel = String(tel || '').trim(); o.email = String(mail || '').trim(); }
+  return o;
+}
+// 決まった会社の、お客さま向けの連絡先（返事で会社が入れたもの。なければ提携先シート）
+function decidedPt_(r) {
+  return custPt_(partnerById_(r['決定した提携先ID']), r['会社の連絡先（電話）'], r['会社の連絡先（メール）']);
+}
+// 返事の画面で会社が入れた連絡先を確かめる。電話かメールの少なくとも一つ
+function replyContact_(q, pt) {
+  if (q.ctel === undefined && q.cmail === undefined) return { tel: '', mail: '' }; // 欄のない古い画面からの返事は提携先シートの連絡先のまま
+  var tel = String(q.ctel || '').replace(/[０-９]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); }).replace(/[ー－―]/g, '-').trim();
+  var mail = String(q.cmail || '').trim();
+  var digits = tel.replace(/[^\d]/g, '');
+  if (tel && (!/^[\d\-+() ]+$/.test(tel) || digits.length < 10 || digits.length > 11)) return { err: '電話番号の形が正しくありません（10〜11けたの数字）。' };
+  if (mail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) return { err: 'メールアドレスの形が正しくありません。' };
+  if (!tel && !mail) return { err: 'お客さまからの連絡を受ける電話番号かメールアドレスを、少なくとも一つ入れてください。' };
+  return { tel: tel, mail: mail };
+}
+
+function partnerContactText_(pt) {
+  var c = [pt.tel ? '電話 ' + pt.tel : '', pt.email ? 'メール ' + pt.email : ''].filter(String).join('／');
+  return c ? '■ ' + pt.name + 'の連絡先：' + c + '\n' : '';
+}
+
+// 確定後の取り消し・キャンセル料の案内（同）
+function cancelAfterText_(pt) {
+  var rule = String(pt.cancelRule || '').trim();
+  return '確定後の取り消しには「' + pt.name + '」のキャンセル規定' + (rule ? '（' + rule + '）' : '') + 'が適用され、キャンセル料がかかることがあります。キャンセル料のお支払いは、ペットタクシーへ直接です（当サイトのキャンセル料はありません）。';
 }
 
 function pickPartners_(r, stage) {
@@ -801,19 +841,21 @@ function acceptPage_(q) {
 
   if (q.go === '1') {
     var fare = Number(String(q.fare || '').replace(/[^\d]/g, ''));
-    var at = parseJst_(q.at);
+    var at = replyAt_(r, q);
     var way = retWayOf_(q.ret_way);
     var asks = checks_(pt, r).ask;
     if (asks.some(function (x, i) { return q['ok' + i] !== '1'; })) return page_('確認が終わっていません', '<p>「引き受ける前にご確認ください」の項目に、すべてチェックを入れてください。できない項目があるときは、お受けにならないでください。</p><p><a href="javascript:history.back()">戻る</a></p>');
-    if (!fare || !at || (isRound_(r) && !way)) return page_('入力が足りません', '<p>お迎え時刻・確定料金（円）' + (isRound_(r) ? '・帰りのやり方' : '') + 'を入れてください。</p><p><a href="javascript:history.back()">戻る</a></p>');
+    var ct = replyContact_(q, pt);
+    if (ct.err) return page_('連絡先を確かめてください', '<p>' + esc_(ct.err) + '</p><p><a href="javascript:history.back()">戻る</a></p>');
+    if (!fare || !at || (isRound_(r) && !way)) return page_('入力が足りません', '<p>' + (r['日付のみ'] ? 'お迎え時刻・' : '') + '確定料金（円）' + (isRound_(r) ? '・帰りのやり方' : '') + 'を入れてください。</p><p><a href="javascript:history.back()">戻る</a></p>');
     if (needsChoice_(r) && at.getTime() - CONFIG.QUOTE_CUTOFF_MIN * 60000 <= Date.now()) return page_('お迎えが近すぎます', '<p>お迎えの' + cutoffText_() + '前を過ぎるお返事は、お客さまが予約を確定できないため、お送りできません。お迎えの時刻を確かめてください。</p><p><a href="javascript:history.back()">戻る</a></p>');
     if (needsChoice_(r)) {
-      var qr = quote_(q.id, pt, at, fare, clip_(q.msg, 300), yenNum_(q.fare_hw), way);
+      var qr = quote_(q.id, pt, at, fare, clip_(q.msg, 300), yenNum_(q.fare_hw), way, ct);
       if (!qr.ok) return page_('締め切りました', '<p>' + esc_(qr.msg) + '</p>');
       if (isAsk_(r)) return page_('お返事を送りました', '<p>お客さまに、空き状況（お迎え時刻）と確定料金をお届けしました。<b>お客さまが「予約する」を押したら、お名前・ご連絡先をメールでお知らせします。</b>予約にならなかったときは「締め切り」のお知らせをお送りします。</p><p>このお返事は' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。そのあいだに予約が確定したときは、お引き受けください。</p>' + withdrawNote_(q.id, pt.id));
       return page_(isQuoteReq_(r) ? 'お見積もりを送りました' : '引き受けのお返事を送りました', '<p>お客さまに' + (isQuoteReq_(r) ? 'お見積もり' : '引き受けのお返事と確定料金') + 'をお届けしました。<b>お客さまが貴社を選んだら、お名前・ご連絡先をメールでお知らせします。</b>選ばれなかったときは「締め切り」のお知らせをお送りします。</p>');
     }
-    var res = accept_(q.id, pt, at, fare, clip_(q.msg, 300), yenNum_(q.fare_hw), way);
+    var res = accept_(q.id, pt, at, fare, clip_(q.msg, 300), yenNum_(q.fare_hw), way, ct);
     if (!res.ok) return page_('締め切りました', '<p>' + esc_(res.msg) + '</p>');
     var c = res.r;
     return page_('ありがとうございます！決まりました', '<p>お客さまに「決まりました」とお知らせしました。<b>お客さまへ直接ご連絡をお願いします。</b>この画面の内容を控えておいてください。</p>' +
@@ -830,19 +872,26 @@ function acceptPage_(q) {
   if (quoted) return page_(isQuoteReq_(r) ? 'お見積もりをお送り済みです' : 'お返事をお送り済みです', '<p>確定料金 ' + esc_(fareText_(quoted.fare, quoted.fareHw)) + '・お迎え予定 ' + esc_(fmt_(new Date(quoted.at))) + ' でお客さまにお届けしています。お客さまが' + (isAsk_(r) ? '予約を決めたら' : '選んだら') + 'お知らせします。</p>' + withdrawNote_(q.id, pt.id));
   var def = defaultAt_(r);
   var html = '<p>' + esc_(pt.name) + ' 様</p>' +
-    (isAsk_(r) ? '<div class="box"><b>空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。</b>お受けできる場合は、お迎え時刻と確定料金を入れてください。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。</div>'
+    (isAsk_(r) ? '<div class="box"><b>空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。</b>お受けできる場合は、' + inputWord_(r) + 'を入れてください。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。</div>'
       : isQuoteReq_(r) ? '<div class="box"><b>お見積もりのご依頼です。</b>入れた確定料金をお客さまにお届けし、お客さまがほかの会社とくらべて1社を選びます。選ばれたら、お名前・ご連絡先をお知らせします。</div>'
       : needsChoice_(r) ? '<div class="box"><b>お客さまが' + pickedIds_(r).length + '社にお声がけしています。</b>引き受ける場合は確定料金を入れてください。お客さまが引き受けた会社の中から1社を選んだ時点で決まり、お名前・ご連絡先をお知らせします。</div>'
       : '<div class="box"><b>お客さまのお名前・電話番号・メールは、下の「引き受ける」を押すとすぐにこの画面に表示されます。</b>同じ内容をメールでもお送りします。先着1社です。</div>') +
-    '<div class="box">' + nl2br_(esc_(rideText_(r) + retAsk_(r) + waitRuleForPartner_(r) + '\n■ お支払い：' + payForPartner_(pt))) + '</div>' +
+    '<h2 class="sec">📋 ご依頼の内容<span class="tag">お客さまの希望・変えられません</span></h2>' +
+    '<div class="fixed"><div class="when">🕙 ' + esc_(whenText_(r)) + '</div>' +
+    nl2br_(esc_(rideText_(r).replace(/^■ 希望日時：[^\n]*\n?/, '') + retAsk_(r) + waitRuleForPartner_(r) + '\n■ お支払い：' + payForPartner_(pt))) + '</div>' +
+    (r['日付のみ'] ? '' : '<p class="note">この日時でお受けできないときは、お返事しないでください（日時は変えられません）。</p>') +
     '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' +
     hidden_('a', 'accept') + hidden_('id', q.id) + hidden_('p', q.p) + hidden_('k', q.k) + hidden_('go', '1') +
+    '<h2 class="sec">✏️ 貴社に入れていただくこと</h2>' +
     askBoxes_(pt, r) +
-    '<label>お迎え予定の時刻<input type="datetime-local" name="at" value="' + def + '" required></label>' +
+    (r['日付のみ'] ? '<label>お迎え予定の時刻（' + esc_(whenText_(r).replace(/ 時間はご相談$/, '')) + '）<input type="time" name="t" value="' + def.slice(11) + '" required></label>' : '') +
     (isRound_(r) ? retSelect_() : '') +
     '<label>確定料金・一般道で行く場合（円・税込' + (isRound_(r) ? '、往復の合計' : '') + '）<input type="number" name="fare" inputmode="numeric" min="0" step="10" placeholder="例：4800" required></label>' +
     '<label>確定料金・高速道路を使う場合（円・税込、高速代込み）<input type="number" name="fare_hw" inputmode="numeric" min="0" step="10" placeholder="高速を使わないなら空欄"></label>' +
     '<p class="note">入れた金額を、お客さまに確定の料金としてお伝えします。</p>' +
+    '<label>お客さまからの連絡を受ける電話番号<input type="tel" name="ctel" inputmode="tel" autocomplete="tel" value="' + esc_(pt.tel || '') + '" placeholder="例：090-1234-5678"></label>' +
+    '<label>お客さまからの連絡を受けるメールアドレス<input type="email" name="cmail" autocomplete="email" value="' + esc_(pt.email || '') + '" placeholder="例：info@example.jp"></label>' +
+    '<p class="note">予約が決まったら、この電話番号とメールアドレスをお客さまにお伝えします（どちらか一つでも大丈夫です）。登録の内容が入っています。違うときは書きかえてください。</p>' +
     '<label>お客さまへ一言（なくてもOK。往復で待つときは、待機料の単価を書いていただくとお客さまに伝わります）<textarea name="msg" maxlength="300" placeholder="例：前日にお電話します／待機料は10分ごとに300円です"></textarea></label>' +
     '<button type="submit">' + (isAsk_(r) ? 'この内容でお返事する' : isQuoteReq_(r) ? 'この内容でお見積もりを送る' : 'この内容で引き受ける') + '</button></form>' +
     '';
@@ -857,8 +906,10 @@ function askBoxes_(pt, r) {
     a.map(function (x, i) { return '<label style="display:flex;gap:8px;align-items:flex-start;font-weight:400"><input type="checkbox" name="ok' + i + '" value="1" required style="width:auto;margin-top:4px"> ' + esc_(x) + '</label>'; }).join('') + '</div>';
 }
 
-function accept_(id, pt, at, fare, msg, fareHw, retWay) {
+function accept_(id, pt, at, fare, msg, fareHw, retWay, contact) {
   fareHw = fareHw || '';
+  contact = contact || {};
+  var cpt = custPt_(pt, contact.tel, contact.mail);
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
   var row;
@@ -869,7 +920,9 @@ function accept_(id, pt, at, fare, msg, fareHw, retWay) {
       return { ok: false, msg: mine ? 'このご依頼はすでにこの会社に決まっています。' : '申し訳ありません、ほかの方が先に引き受けたか、受付が終わりました。' };
     }
     if (pickedIds_(row.data).length && pickedIds_(row.data).indexOf(pt.id) < 0) return {ok:false,msg:'お客さまが選んだ会社と異なるため引き受けできません。'};
+    ensureReqHeaders_(sheet_(SHEET_REQ));
     setReq_(row.rowIndex, {
+      '会社の連絡先（電話）': contact.tel || '', '会社の連絡先（メール）': contact.mail || '',
       '状態': ST.DONE, '決定した提携先ID': pt.id, '決定した提携先': pt.name, 'お迎え予定': at,
       '料金の目安': fare, '高速利用時の料金': fareHw, '帰りのやり方': retWay || '', '提携先から一言': msg, '決定日時': new Date()
     });
@@ -891,9 +944,12 @@ function accept_(id, pt, at, fare, msg, fareHw, retWay) {
     (retWay ? '■ 帰りのやり方：' + retWay + '（料金が安くなるほうをペットタクシーに選んでもらいました）\n' : '') +
     '■ お支払い：' + payForCustomer_(pt) + '\n' +
     (msg ? '■ ペットタクシーから：' + msg + '\n' : '') +
-    '\nこのあと「' + pt.name + '」から、ご連絡先あてに直接ご連絡があります。ペットの様子などのご質問も、ペットタクシーと直接やりとりしてください。\n送迎のご契約は、お客さまと「' + pt.name + '」との間で結ばれます（当サイトは送迎を行わず、契約の当事者ではありません）。\n\n' +
-    '▼ 取り消す場合はこちら（当サイトのキャンセル料はありません。ペットタクシーのキャンセル規定は、この会社の案内をご確認ください）\n' + cancelUrl);
-  var how = deliver_(pt, '【決定】' + id + ' お客さまのご連絡先', decidedText_(r, pt), r);
+    partnerContactText_(cpt) +
+    '\nこのあと「' + pt.name + '」から、ご連絡先あてに直接ご連絡があります。ペットの様子などのご質問も、ペットタクシーと直接やりとりしてください。領収書が必要なときも、ペットタクシーにお申し出ください。\n' +
+    'お迎えの時刻が近づいても連絡がない・遅れているときは、まず「' + pt.name + '」へご連絡ください。つながらないときは、このメールに返信してください。\n' +
+    '送迎のご契約は、お客さまと「' + pt.name + '」との間で結ばれます（当サイトは送迎を行わず、契約の当事者ではありません）。\n\n' +
+    '▼ 取り消す場合はこちら\n' + cancelUrl + '\n' + cancelAfterText_(pt) + 'お迎えの3時間前を過ぎてから取り消すときは、このリンクを押す前に「' + pt.name + '」へ直接ご連絡ください。', confirmHtml_(r, cpt, at, fare, fareHw, retWay, msg, cancelUrl));
+  var how = deliver_(pt, '【決定】' + id + ' お客さまのご連絡先', decidedText_(r, pt), r, decidedHtml_(r, pt));
   closeOthers_(r, pt.id);
   notifyAdmin_((how === 'manual' ? '【LINEで決定を伝えてください】' : '') + '決定 ' + id + '：' + pt.name,
     (how === 'manual' ? pt.name + 'はLINE公式アカウントだけの会社です。手配ページの「決定をLINEで伝える」を押してください（お客さまの連絡先が入った文面です）。\n\n' : '') +
@@ -904,7 +960,7 @@ function accept_(id, pt, at, fare, msg, fareHw, retWay) {
 /* ───────── 見積もり依頼（2026-10-31 Nori「見積もり依頼か予約依頼かはユーザに選択できるように」） ───────── */
 
 // 会社のお見積もりを受け取り、お客さまに「この会社に決める」リンクつきでお届けする。お客さまの連絡先はまだ渡さない
-function quote_(id, pt, at, fare, msg, fareHw, retWay) {
+function quote_(id, pt, at, fare, msg, fareHw, retWay, contact) {
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
   var r;
@@ -913,7 +969,7 @@ function quote_(id, pt, at, fare, msg, fareHw, retWay) {
     if (!row || row.data['状態'] !== ST.OPEN) return { ok: false, msg: 'このご依頼は締め切りました。ご確認ありがとうございました。' };
     if (pickedIds_(row.data).indexOf(pt.id) < 0) return { ok: false, msg: 'お客さまが選んだ会社と異なるため、お見積もりを出せません。' };
     var list = quotesOf_(row.data).filter(function (x) { return x.pid !== pt.id; });
-    var mine = { pid: pt.id, at: at.getTime(), fare: fare, fareHw: fareHw || '', way: retWay || '', msg: msg || '', time: Date.now() };
+    var mine = { pid: pt.id, at: at.getTime(), fare: fare, fareHw: fareHw || '', way: retWay || '', msg: msg || '', time: Date.now(), tel: (contact && contact.tel) || '', mail: (contact && contact.mail) || '' };
     list.push(mine);
     setReq_(row.rowIndex, { '見積もりJSON': JSON.stringify(list) });
     SpreadsheetApp.flush();
@@ -932,7 +988,7 @@ function quote_(id, pt, at, fare, msg, fareHw, retWay) {
     '■ この内容で予約できる期限：' + fmt_(new Date(quoteUntil_(mine))) + 'まで（過ぎると会社の空き状況が変わるため、この内容では予約できません）\n' +
     (isAsk_(r) ? '\n▼ この内容で予約する（押すと予約が確定し、この会社からご連絡があります）\n' : '\n▼ この会社に決める（押すと予約が決まり、この会社からご連絡があります）\n') + chooseUrl_(id, pt.id) +
     '\n\n' + (!isAsk_(r) || many ? 'ほかの会社の' + word + 'も、届きしだいお送りします。くらべてから決めてかまいません。' : '') +
-    (isAsk_(r) ? '予約しない場合は、何もしなくて大丈夫です（下のリンクで取り消すこともできます）。\n' : 'どの会社にも決めない場合は、何もしなくて大丈夫です（下のリンクで取り消すこともできます）。\n') + cancelUrl_(id));
+    (isAsk_(r) ? '予約しない場合は、何もしなくて大丈夫です（下のリンクで取り消すこともできます）。\n' : 'どの会社にも決めない場合は、何もしなくて大丈夫です（下のリンクで取り消すこともできます）。\n') + cancelUrl_(id), quoteHtml_(r, pt, at, fare, fareHw, retWay, msg, mine, word, many));
   notifyAdmin_(word + ' ' + id + '：' + pt.name, '■ ' + pt.name + '\n■ お迎え予定：' + fmt_(at) + '\n■ 確定料金：' + fareText_(fare, fareHw) + '\n\n' + rideText_(r));
   return { ok: true };
 }
@@ -1021,7 +1077,7 @@ function choosePage_(q) {
   if (qt.withdrawn) return page_('このお返事は取り下げられました', '<p>「' + esc_(pt.name) + '」は、ほかのご予約が入ったため、このお返事を取り下げました。この内容では予約できません。</p><p>お手数ですが、<a href="' + esc_(retryUrl_(q.id)) + '" target="_top">同じ内容でもう一度問い合わせる</a>からお問い合わせください。</p>');
   if (Date.now() > quoteUntil_(qt)) return page_('お返事の期限が過ぎました', '<p>「' + esc_(pt.name) + '」のお返事で予約できる期限（' + esc_(fmt_(new Date(quoteUntil_(qt)))) + '）が過ぎました。会社の空き状況が変わっている場合があるため、この内容では予約できません。</p><p>お手数ですが、<a href="' + esc_(retryUrl_(q.id)) + '" target="_top">同じ内容でもう一度問い合わせる</a>からお問い合わせください。</p>');
   if (q.go === '1') {
-    var res = accept_(q.id, pt, new Date(qt.at), qt.fare, qt.msg, qt.fareHw, qt.way);
+    var res = accept_(q.id, pt, new Date(qt.at), qt.fare, qt.msg, qt.fareHw, qt.way, { tel: qt.tel, mail: qt.mail });
     if (!res.ok) return page_('決められませんでした', '<p>' + esc_(res.msg) + '</p>');
     return page_(isAsk_(r) ? 'ご予約が確定しました' : '決まりました', '<p>「' + esc_(pt.name) + '」' + (isAsk_(r) ? 'のご予約が確定しました。確定のメールをお送りしました。' : 'に決まりました。決定のメールをお送りしました。') + 'このあと、' + esc_(pt.name) + 'からご連絡があります。</p>');
   }
@@ -1133,8 +1189,10 @@ function cancelPage_(q) {
   var warn = '';
   if (r['状態'] === ST.DONE) {
     var left = (r['お迎え予定'].getTime() - Date.now()) / 3600000;
+    var cpt = decidedPt_(r);
     warn = '<p class="note">ペットタクシー「' + esc_(r['決定した提携先']) + '」に決まっています。取り消すと、こちらからペットタクシーへお伝えします。' +
-      (left < 2 ? '<br><b>お迎えまで2時間を切っているため、ペットタクシー側のキャンセル料がかかる場合があります。</b>' : '') + '</p>';
+      (cpt ? '<br>' + esc_(cancelAfterText_(cpt)) : '') +
+      (left < 3 ? '<br><b>お迎えの3時間前を過ぎています。押す前に、ペットタクシーへ直接ご連絡ください。</b>' + (cpt ? '<br>' + esc_(partnerContactText_(cpt).replace(/^■ /, '').trim()) : '') : '') + '</p>';
   }
   var html = '<div class="box">' + nl2br_(esc_('受付番号：' + q.id + '\n希望日時：' + whenText_(r) + '\nお迎え：' + r['お迎えの場所'] + '\n行き先：' + r['行き先'])) + '</div>' + warn +
     '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'cancel') + hidden_('id', q.id) + hidden_('k', q.k) + hidden_('go', '1') +
@@ -1157,10 +1215,12 @@ function cancel_(id) {
   }
   var r = findReq_(id).data;
   log_(id + ' 取り消し（' + before + 'から）');
+  var pt = before === ST.DONE ? partnerById_(r['決定した提携先ID']) : null;
   toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】ご依頼を取り消しました（受付番号 ' + id + '）',
-    r['お名前'] + ' 様\n\nご依頼を取り消しました。\n希望日時：' + whenText_(r) + '\n\nまたいつでもご利用ください。\n' + CONFIG.SITE_URL);
+    r['お名前'] + ' 様\n\nご依頼を取り消しました。\n希望日時：' + whenText_(r) + '\n' +
+    (pt ? '\n' + cancelAfterText_(pt) + '\n' + partnerContactText_(decidedPt_(r)) : '') +
+    '\nまたいつでもご利用ください。\n' + CONFIG.SITE_URL);
   if (before === ST.DONE) {
-    var pt = partnerById_(r['決定した提携先ID']);
     var how = pt && deliver_(pt, '【取り消し】' + id + ' ' + fmt_(r['お迎え予定']) + ' のご依頼', cancelText_(r, pt), r);
     if (how === 'manual') {
       notifyAdmin_('【LINEで取り消しを伝えてください】' + id, pt.name + 'へ、手配ページの「取り消しをLINEで伝える」を押してください。\n\n▼ 手配ページ\n' + adminUrl_(id));
@@ -1342,8 +1402,8 @@ function sendReceipt_(r) {
     '\n\n※このメールは自動でお送りしています。');
 }
 
-function toCustomer_(r, subject, text) {
-  if (r['メール']) mail_(r['メール'], subject, text + footer_());
+function toCustomer_(r, subject, text, html) {
+  if (r['メール']) mail_(r['メール'], subject, text + footer_(), html || '');
   if (r['お客さまLINE']) linePush_(r['お客さまLINE'], text);
 }
 
@@ -1405,14 +1465,14 @@ function lineApi_(kind, payload) {
 
 // 提携先へ：こちらのLINEに登録済みならLINE → メール → 先方LINE公式（運営者がボタンで送信）
 // 戻り値：'auto'（自動で送った）/ 'manual'（手配ページから運営者が送る）/ false（届けられない）
-function deliver_(pt, subject, text, r) {
+function deliver_(pt, subject, text, r, html) {
   if (r && isTest_(r)) {
     if (!pt.email && !pt.lineId && !pt.oaId && !pt.lineUrl) return false;
     var to = pt.email || (pt.lineId ? 'こちらのLINE' : 'LINE公式 ' + (pt.oaId || pt.lineUrl));
-    return mail_(adminEmail_(), '【テスト｜本来は ' + pt.name + '（' + to + '）へ】' + subject, text + footer_()) ? 'auto' : false;
+    return mail_(adminEmail_(), '【テスト｜本来は ' + pt.name + '（' + to + '）へ】' + subject, text + footer_(), html || '') ? 'auto' : false;
   }
   if (pt.lineId && CONFIG.LINE_CHANNEL_ACCESS_TOKEN && linePush_(pt.lineId, text)) return 'auto';
-  if (pt.email && mail_(pt.email, '【' + CONFIG.SERVICE_NAME + '】' + subject, text + footer_())) return 'auto';
+  if (pt.email && mail_(pt.email, '【' + CONFIG.SERVICE_NAME + '】' + subject, text + footer_(), html || '')) return 'auto';
   if (pt.oaId || pt.lineUrl) return 'manual';
   log_('届けられませんでした: ' + pt.id + ' ' + subject);
   return false;
@@ -1434,13 +1494,17 @@ function notifyAdmin_(subject, text) {
   mail_(adminEmail_(), '[運営] ' + subject, text + '\n\n予約シート：' + SpreadsheetApp.getActive().getUrl());
 }
 
-function mail_(to, subject, body) {
+function mail_(to, subject, body, html) {
   try {
     var replyTo = CONFIG.REPLY_TO || CONFIG.FROM_EMAIL || adminEmail_();
     if (fromOk_()) {
-      GmailApp.sendEmail(to, subject, body, { from: CONFIG.FROM_EMAIL, name: CONFIG.SERVICE_NAME, replyTo: replyTo });
+      var opt = { from: CONFIG.FROM_EMAIL, name: CONFIG.SERVICE_NAME, replyTo: replyTo };
+      if (html) opt.htmlBody = html;
+      GmailApp.sendEmail(to, subject, body, opt);
     } else {
-      MailApp.sendEmail({ to: to, subject: subject, body: body, name: CONFIG.SERVICE_NAME, replyTo: replyTo });
+      var m = { to: to, subject: subject, body: body, name: CONFIG.SERVICE_NAME, replyTo: replyTo };
+      if (html) m.htmlBody = html;
+      MailApp.sendEmail(m);
     }
     return true;
   } catch (err) {
@@ -1458,6 +1522,196 @@ function fromOk_() {
     FROM_OK_ = !!f && GmailApp.getAliases().some(function (a) { return String(a).toLowerCase() === f; });
   } catch (err) { FROM_OK_ = false; }
   return FROM_OK_;
+}
+
+/* ───────── 見た目のあるメール（Nori 2026-11-09「文字が多くてげんなり」「案にアップデートして・GASも」） ─────────
+   文字だけの本文（body）はそのまま残し、メールアプリが対応していれば同じ内容を見やすい形（htmlBody）で見せる。
+   書いてある内容・条件は文字だけの本文と同じ。カードに載せない細かい説明は、下に小さく残す。 */
+var MAIL_C = { orange: '#EE6A1F', blue: '#2F6FA8', green: '#2E8B57', ink: '#1F2A37', sub: '#6B665F', bg: '#F3F1EE', note: '#FFF4EA', line: '#F0ECE6' };
+function mh_(s) { return nl2br_(esc_(s)); }
+function mailPage_(inner) {
+  return '<!doctype html><html><body style="margin:0;padding:0;background:' + MAIL_C.bg + '">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:' + MAIL_C.bg + '"><tr><td align="center" style="padding:16px 12px">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;font-family:-apple-system,\'Hiragino Sans\',\'Noto Sans JP\',sans-serif;color:' + MAIL_C.ink + '">' +
+    '<tr><td style="text-align:center;font-size:13px;font-weight:700;color:' + MAIL_C.orange + ';padding:4px 0 12px">' + esc_(CONFIG.SERVICE_NAME) + '</td></tr>' +
+    inner +
+    '<tr><td style="font-size:11px;color:#8A857E;line-height:1.6;padding:20px 4px 8px;text-align:center">' + esc_(CONFIG.SERVICE_NAME) + '　<a href="' + esc_(CONFIG.SITE_URL) + '" style="color:#8A857E">' + esc_(CONFIG.SITE_URL) + '</a><br>このメールに返信すると運営に届きます。</td></tr>' +
+    '</table></td></tr></table></body></html>';
+}
+function mailHead_(badge, title, color) {
+  return '<tr><td style="text-align:center;padding:4px 0 16px">' +
+    (badge ? '<span style="display:inline-block;background:' + (color || MAIL_C.orange) + ';color:#fff;border-radius:999px;padding:4px 14px;font-size:12px;font-weight:700">' + esc_(badge) + '</span>' : '') +
+    '<div style="font-size:22px;font-weight:800;line-height:1.4;margin-top:10px">' + title + '</div></td></tr>';
+}
+function mailCard_(rows) {
+  rows = rows.filter(function (x) { return x && x[2]; });
+  return '<tr><td style="background:#fff;border-radius:16px;padding:4px 16px">' + rows.map(function (x, i) {
+    return '<table role="presentation" width="100%" cellpadding="0" cellspacing="0"' + (i ? ' style="border-top:1px solid ' + MAIL_C.line + '"' : '') + '><tr>' +
+      '<td width="34" valign="top" style="font-size:20px;padding:12px 0">' + x[0] + '</td>' +
+      '<td style="padding:12px 0"><div style="font-size:12px;color:' + MAIL_C.sub + '">' + esc_(x[1]) + '</div>' +
+      '<div style="font-size:16px;font-weight:700;line-height:1.5">' + mh_(x[2]) + '</div>' +
+      (x[3] ? '<div style="font-size:12px;color:' + MAIL_C.sub + ';line-height:1.5">' + mh_(x[3]) + '</div>' : '') + '</td></tr></table>';
+  }).join('') + '</td></tr>';
+}
+function mailButton_(label, url, sub) {
+  return '<tr><td style="padding:18px 0 4px;text-align:center"><a href="' + esc_(url) + '" style="display:block;background:' + MAIL_C.orange + ';color:#fff;text-decoration:none;border-radius:999px;padding:14px;font-size:17px;font-weight:800">' + esc_(label) + '</a>' +
+    (sub ? '<div style="font-size:12px;color:' + MAIL_C.sub + ';margin-top:6px">' + mh_(sub) + '</div>' : '') + '</td></tr>';
+}
+function mailButtons2_(list) {
+  list = list.filter(function (x) { return x && x[1]; });
+  if (!list.length) return '';
+  return '<tr><td style="padding:14px 0 0"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>' + list.map(function (x, i) {
+    return '<td width="' + Math.floor(100 / list.length) + '%" style="' + (i ? 'padding-left:10px' : '') + '"><a href="' + esc_(x[1]) + '" style="display:block;text-align:center;border:2px solid ' + MAIL_C.orange + ';color:' + MAIL_C.orange + ';text-decoration:none;border-radius:999px;padding:10px;font-size:15px;font-weight:800">' + esc_(x[0]) + '</a></td>';
+  }).join('') + '</tr></table></td></tr>';
+}
+// 連絡先のボタン（押す前にどこへかかるか分かるよう、番号・アドレスをボタンに書く。Nori 2026-11-09）
+function mailContactButtons_(tel, telShown, email) {
+  var list = [tel ? ['📞', telShown + ' に電話する', 'tel:' + tel] : null, email ? ['✉', email + ' にメールする', 'mailto:' + email] : null].filter(Boolean);
+  if (!list.length) return '';
+  return list.map(function (x) {
+    return '<tr><td style="padding:10px 0 0"><a href="' + esc_(x[2]) + '" style="display:block;text-align:center;border:2px solid ' + MAIL_C.orange + ';color:' + MAIL_C.orange + ';text-decoration:none;border-radius:999px;padding:10px 12px;font-size:15px;font-weight:800;word-break:break-all">' + esc_(x[0] + ' ' + x[1]) + '</a></td></tr>';
+  }).join('');
+}
+function mailNotes_(items) {
+  items = items.filter(function (x) { return x && x[1]; });
+  if (!items.length) return '';
+  return '<tr><td style="padding-top:14px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:' + MAIL_C.note + ';border-radius:14px"><tr><td style="padding:6px 14px">' +
+    items.map(function (x) { return '<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td width="26" valign="top" style="font-size:15px;padding:7px 0">' + x[0] + '</td><td style="font-size:14px;line-height:1.6;padding:7px 0">' + mh_(x[1]) + '</td></tr></table>'; }).join('') +
+    '</td></tr></table></td></tr>';
+}
+function mailSteps_(steps) {
+  return '<tr><td style="padding-top:14px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>' + steps.map(function (x, i) {
+    return '<td width="' + Math.floor(100 / steps.length) + '%" valign="top" style="' + (i ? 'padding-left:6px' : '') + '"><div style="background:#fff;border-radius:12px;padding:10px 6px;text-align:center;font-size:12px;line-height:1.4">' +
+      '<div style="width:24px;height:24px;line-height:24px;border-radius:12px;background:' + MAIL_C.orange + ';color:#fff;font-weight:800;margin:0 auto 4px">' + (i + 1) + '</div>' + mh_(x) + '</div></td>';
+  }).join('') + '</tr></table></td></tr>';
+}
+// 細かい説明（小さく灰色）。links は [文言, URL]
+function mailFine_(parts) {
+  parts = parts.filter(Boolean);
+  if (!parts.length) return '';
+  return '<tr><td style="font-size:12px;color:' + MAIL_C.sub + ';line-height:1.7;padding:16px 4px 0">' + parts.map(function (x) {
+    return Array.isArray(x) ? '<a href="' + esc_(x[1]) + '" style="color:' + MAIL_C.sub + '">' + esc_(x[0]) + '</a>' : mh_(x);
+  }).join('<br>') + '</td></tr>';
+}
+// 依頼のくわしい内容（会社あて。文字だけの本文と同じ項目を小さく）
+function mailDetail_(title, text) {
+  return '<tr><td style="padding-top:14px"><div style="background:#fff;border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.7;color:' + MAIL_C.ink + '"><div style="font-weight:700;color:' + MAIL_C.sub + ';font-size:12px;margin-bottom:4px">' + esc_(title) + '</div>' + mh_(String(text).replace(/^\n+/, '')) + '</div></td></tr>';
+}
+function petSummary_(r) {
+  if (Number(r['ペット数']) >= 2 && r['ペット詳細']) return r['ペット数'] + '匹';
+  return [r['種類'], r['犬種・猫種'] ? '（' + r['犬種・猫種'] + '）' : '', r['体重kg'] ? r['体重kg'] + 'kg' : '', r['年齢'] ? '・' + r['年齢'] + '歳' : ''].filter(String).join('');
+}
+function backText_(r) {
+  return r['帰りの日時'] instanceof Date ? '帰りは ' + fmt_(r['帰りの日時']).replace(/^.*\) /, '') : '';
+}
+
+// 会社へ：空き状況と料金のお問い合わせ（問い合わせの形のときだけ。ほかの形は文字だけ）
+function requestHtml_(r, pt) {
+  if (!isAsk_(r)) return '';
+  var round = isRound_(r), checks = checks_(pt, r).ask;
+  return mailPage_(
+    mailHead_('お名前・連絡先は、予約が決まったらお知らせします', '空き状況と料金の<br>お問い合わせです', MAIL_C.blue) +
+    mailCard_([
+      ['🕙', '日時', whenText_(r), [r['片道・往復'], backText_(r)].filter(String).join('・')],
+      ['📍', '区間', PREF_FULL[r['都府県']] + ' ' + r['お迎えの場所'] + '\n→ ' + r['行き先'], r['経由地'] ? '経由：' + r['経由地'] : ''],
+      ['🐾', 'ペット', petSummary_(r), [cageText_(r['キャリー']), r['同乗人数'] ? '同乗' + r['同乗人数'] : '', r['荷物'] ? '荷物' + r['荷物'] : ''].filter(String).join('・')],
+      ['💴', 'お支払い', payForPartner_(pt).replace(/（貴社の設定としてお客さまにもお伝えしています）$/, '')]
+    ]) +
+    mailButton_('空き状況と料金を返事する', acceptUrl_(r['受付番号'], pt.id), inputWord_(r) + 'を入れるだけ') +
+    mailNotes_([
+      checks.length ? ['☑', '引き受ける前にご確認ください（できない場合はお受けにならないでください）\n' + checks.map(function (x) { return '・' + x; }).join('\n')] : null,
+      ['⏱', '当日の道路事情' + (round ? 'や待ち時間' : '') + 'で料金表どおりに変わる分は、当日の実際の時間・道のりで精算してください'],
+      round ? ['🔁', '待つ場合の確定料金は、帰りの時刻まで待った金額でお返事ください'] : null
+    ]) +
+    mailDetail_('くわしい内容', rideText_(r) + retAsk_(r) + estText_(r)) +
+    mailFine_([
+      'お返事の内容は' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。お返事のあとにほかのご予約が入ったときは、お返事のリンクを開いて「このお返事を取り下げる」を押してください。',
+      pickedIds_(r).length > 1 ? 'お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています。' : '',
+      'ご返信でお答えいただく場合：受けられる（' + (r['日付のみ'] ? 'お迎え時刻・' : '') + '一般道〇円・高速を使う場合〇円' + (round ? '・帰りは「待つ」か「あとで迎え」か' : '') + '）か、難しい、でお願いします。',
+      'ペットの様子などのご質問は、決まったあとにお客さまへ直接どうぞ。ご都合が合わない場合、お返事は不要です。'
+    ]));
+}
+
+// お客さまへ：お返事が届きました
+function quoteHtml_(r, pt, at, fare, fareHw, retWay, msg, mine, word, many) {
+  var ask = isAsk_(r), f = feeFlags_(pt);
+  return mailPage_(
+    mailHead_(ask ? 'まだ予約は確定していません' : 'まだ決まっていません', esc_(pt.name) + 'から<br>' + (ask ? 'お返事' : esc_(word)) + 'が届きました') +
+    mailCard_([
+      ['🕙', 'お迎え', fmt_(at)],
+      ['💴', '確定料金（税込）', yen_(fare) + (num_(fareHw) ? '' : '（高速道路は使いません）'), num_(fareHw) ? '一般道で行く場合。高速道路を使うと ' + yen_(fareHw) + '（高速代込み）' : ''],
+      ['🔁', '帰り', retWay],
+      ['💳', 'お支払い', payForCustomer_(pt)],
+      ['💬', pt.name + 'から', msg]
+    ]) +
+    mailButton_(ask ? 'この内容で予約する' : 'この会社に決める', chooseUrl_(r['受付番号'], pt.id), fmt_(new Date(quoteUntil_(mine))) + 'まで') +
+    mailNotes_([
+      ['⏱', changeNote_(pt) + 'くわしくは会社にご確認ください。'],
+      isRound_(r) && !f.noWait ? ['🔁', '待っていてもらうときの待ち時間の料金は、当日の実際の待ち時間で精算します。'] : null,
+      ['✕', '予約したあとのキャンセル：' + cancelRuleText_(pt)]
+    ]) +
+    mailFine_([
+      '期限を過ぎると会社の空き状況が変わるため、この内容では予約できません。',
+      !ask || many ? 'ほかの会社の' + word + 'も、届きしだいお送りします。くらべてから決めてかまいません。' : '',
+      (ask ? '予約しない場合は、何もしなくて大丈夫です。' : 'どの会社にも決めない場合は、何もしなくて大丈夫です。'),
+      ['問い合わせを取り消す', cancelUrl_(r['受付番号'])],
+      '受付番号 ' + r['受付番号']
+    ]));
+}
+
+// お客さまへ：ご予約が確定しました
+function confirmHtml_(r, pt, at, fare, fareHw, retWay, msg, cancelUrl) {
+  var tel = String(pt.tel || '').replace(/[^\d+]/g, ''), f = feeFlags_(pt);
+  return mailPage_(
+    mailHead_('✓ 確定', 'ご予約が<br>確定しました', MAIL_C.green) +
+    mailCard_([
+      ['🚕', 'ペットタクシー', pt.name],
+      ['🕙', 'お迎え', fmt_(at)],
+      ['💴', '料金（確定・税込）', yen_(fare) + (num_(fareHw) ? '' : '（高速道路は使いません）'), num_(fareHw) ? '一般道で行く場合。高速道路を使うと ' + yen_(fareHw) + '（高速代込み）' : ''],
+      ['🔁', '帰り', retWay ? retWay + '（料金が安くなるほう）' : ''],
+      ['💳', 'お支払い', payForCustomer_(pt)],
+      ['💬', pt.name + 'から', msg]
+    ]) +
+    mailSteps_([pt.name + 'から\n連絡が来ます', '当日\nお迎え', 'お支払いは\n会社へ直接']) +
+    mailContactButtons_(tel, pt.tel, pt.email) +
+    mailNotes_([
+      ['⏰', '連絡がない・遅れているときは、まず' + pt.name + 'へ。つながらなければ、このメールに返信してください'],
+      ['⏱', changeNote_(pt)],
+      isRound_(r) && !f.noWait ? ['🔁', '待ち時間の料金は、当日の実際の待ち時間で精算します'] : null,
+      ['🧾', '領収書は' + pt.name + 'にお申し出ください。ペットの様子などのご質問も、会社と直接どうぞ']
+    ]) +
+    mailFine_([
+      cancelAfterText_(pt) + 'お迎えの3時間前を過ぎてから取り消すときは、押す前に「' + pt.name + '」へ直接ご連絡ください。',
+      ['予約を取り消す', cancelUrl],
+      '送迎のご契約は、お客さまと「' + pt.name + '」との間で結ばれます（当サイトは送迎を行わず、契約の当事者ではありません）。',
+      '受付番号 ' + r['受付番号']
+    ]));
+}
+
+// 会社へ：ご依頼が決まりました（お客さまの連絡先）
+function decidedHtml_(r, pt) {
+  var tel = String(r['電話番号'] || '').replace(/^'/, '').replace(/[^\d+]/g, '');
+  return mailPage_(
+    mailHead_('✓ 決定', 'ご依頼が<br>決まりました', MAIL_C.green) +
+    mailCard_([
+      ['👤', 'お客さま', r['お名前'] + ' さま', 'ご希望の連絡方法：' + r['連絡方法']],
+      ['📞', '電話・メール', String(r['電話番号'] || '').replace(/^'/, '') + '\n' + r['メール']],
+      ['🕙', 'お迎え', fmt_(r['お迎え予定']), r['お迎えの場所'] + ' → ' + r['行き先']],
+      ['💴', 'お伝えした確定料金', fareText_(r['料金の目安'], r['高速利用時の料金'])]
+    ]) +
+    mailContactButtons_(tel, String(r['電話番号'] || '').replace(/^'/, ''), r['メール']) +
+    mailNotes_([
+      ['📣', 'お客さまへ直接ご連絡をお願いします'],
+      ['⏱', '当日の道路事情' + (isRound_(r) ? 'や待ち時間' : '') + 'で料金表どおりに変わる分は、当日の実際の時間・道のりで精算してください'],
+      ['🔒', 'ご連絡先は、この送迎のためだけにお使いください']
+    ]) +
+    mailDetail_('くわしい内容', rideText_(r) + '\n■ お支払い：' + payForPartner_(pt)) +
+    mailFine_([
+      'やむを得ずお受けできなくなったときは、こちらから取り消してください（お客さまにお知らせし、このご予約は取り消しになります）。',
+      ['このご予約を取り消す', partnerCancelUrl_(r['受付番号'], pt.id)],
+      '当サイトへのご連絡（お客さまとの間で困ったこと、条件の変更など）は、このメールに返信してください。',
+      '受付番号 ' + r['受付番号']
+    ]));
 }
 
 function footer_() {
@@ -1630,6 +1884,17 @@ function defaultAt_(r) {
   return r['日付のみ'] ? Utilities.formatDate(d, TZ, 'yyyy-MM-dd') + 'T10:00' : Utilities.formatDate(d, TZ, "yyyy-MM-dd'T'HH:mm");
 }
 
+// 会社が返事で入れるもの。日時はお客さまが決めたもので変えられない（日付だけの依頼だけ時刻を入れる。Nori 2026-11-09）
+function inputWord_(r) { return r['日付のみ'] ? 'お迎え時刻と確定料金' : '確定料金'; }
+
+// 返事のお迎え時刻。時刻つきの依頼は希望日時に固定（画面の値は使わない）。日付だけの依頼はその日の入力された時刻
+function replyAt_(r, q) {
+  if (!r['日付のみ']) return new Date(r['希望日時']);
+  var m = String(q.t || '').match(/^(\d{1,2}):(\d{2})$/);
+  if (!m) return null;
+  return parseJst_(Utilities.formatDate(new Date(r['希望日時']), TZ, 'yyyy-MM-dd') + 'T' + ('0' + m[1]).slice(-2) + ':' + m[2]);
+}
+
 // 予約シートの見出しに足りない列があれば右端に足す（あとから増えた列のため）
 function ensureReqHeaders_(sh) {
   var head = sh.getRange(1, 1, 1, Math.max(1, sh.getLastColumn())).getValues()[0].filter(String);
@@ -1696,7 +1961,7 @@ function page_(title, inner) {
     'textarea{min-height:80px}button{display:block;width:100%;margin-top:20px;background:#ff6a1a;color:#fff;border:0;border-radius:999px;padding:16px;font:inherit;font-weight:800;font-size:1.05rem}' +
     'button.gray{background:#5b5650}a.line{display:block;text-align:center;background:#06c755;color:#fff;text-decoration:none;border-radius:999px;padding:12px;font-weight:800;margin:8px 0}' +
     '.pt{border-top:1px solid #eee5dc;padding:12px 0}select{display:block;width:100%;font:inherit;font-size:16px;padding:12px;border:1.5px solid #e6ded6;border-radius:12px;margin-top:4px;background:#fff}' +
-    'button.gray{background:#5b5650}.note{font-size:.85rem;color:#5b5650}.brand{text-align:center;color:#e2560a;font-weight:800;margin-bottom:12px}';
+    'button.gray{background:#5b5650}.note{font-size:.85rem;color:#5b5650}.sec{font-size:1rem;margin:20px 0 6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.sec .tag{font-size:.75rem;font-weight:600;color:#5b5650;background:#ece8e3;border-radius:999px;padding:2px 10px}.fixed{background:#f1efec;border-radius:12px;padding:14px;margin:6px 0 8px;font-size:.92rem;color:#3d3833}.fixed .when{font-size:1.15rem;font-weight:800;color:#2b2622;margin-bottom:8px}.brand{text-align:center;color:#e2560a;font-weight:800;margin-bottom:12px}';
   if (JSON_PAGE) {
     return ContentService.createTextOutput(JSON.stringify({ ok: true, title: title, html: inner }))
       .setMimeType(ContentService.MimeType.JSON);
