@@ -2840,7 +2840,7 @@ function placeFromSearch_(id, t, text, props, keepTrying) {
   var hit = t.exact ? ok.filter(function(x) { return placeNorm_((x.displayName || {}).text || '') === placeNorm_(t.exact); })[0] : ok[0];
   if (!hit || !hit.id) {
     if (keepTrying) return null; // もうひとつの探し方を試す
-    log_('口コミ：場所が見つからない ' + id + ' ' + t.query + ' 候補：' + (found.places || []).slice(0, 5).map(function(x) { return (x.displayName || {}).text || ''; }).join('／'));
+    log_('口コミ：場所が見つからない ' + id + ' ' + t.query + (found.error ? ' エラー：' + (found.error.status || '') + ' ' + String(found.error.message || '').slice(0, 200) : '') + ' 候補：' + (found.places || []).slice(0, 5).map(function(x) { return (x.displayName || {}).text || ''; }).join('／'));
     if (t.words && !t.exact) props.setProperty(t.idKey, '-'); // 正式な名前の会社は覚えずに次も探す
     return null;
   }
