@@ -112,7 +112,7 @@ def nat_text(km):
     return f"{v[(len(v) - 1) // 2]:,}円（{v[0]:,}〜{v[-1]:,}円）"
 NAT_NOTES = f"""    <p class="fare-flag"><b>確定料金ではありません。</b>上の金額は目安です。確定料金（税込）は、問い合わせた会社から、空き状況と一緒にメールでお知らせします。</p>
     <p class="fare-night"><b>🌙 夜間・早朝の割増</b>上の目安は昼間の料金です。夜間・早朝の割増は、かかるかどうかも金額も会社ごとに違います。フォームの候補には、会社ごとの割増を入れた目安が出ます。</p>
-    <p class="small">全国{_NAT_PREFS}都道府県・{len(_NAT)}社のペットタクシーが公式サイトにのせている料金表で、乗った距離の運賃（片道）を計算しました。大きい数字はまんなかの会社の金額で、その下は安い会社〜高い会社です。お迎え料金・待ち時間・夜間の割増・高速代・駐車場代は入っていません。フォームにお迎えの場所と行き先を入れると、来てもらえる会社ごとに、お迎え料金なども入れた目安が出ます。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。都道府県ごとの料金の例は、<a href="/area/">全国のペットタクシー情報</a>にまとめています。</p>"""
+    <p class="small">全国{_NAT_PREFS}都道府県・{len(_NAT)}社のペットタクシーが公式サイトにのせている料金表で、乗った距離の運賃（片道）を計算しました。大きい数字はまんなかの会社の金額で、その下は安い会社〜高い会社です。お迎え料金・待ち時間・夜間の割増・高速代・駐車場代は入っていません。フォームにお迎えの場所と行き先を入れると、来てもらえる会社ごとに、お迎え料金なども入れた目安が出ます。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。都道府県ごとの料金の例は、<a href="/area/">全国のペットタクシー情報</a>に、距離ごと・都道府県ごとの運賃とお迎え料金・夜間割増のつけ方の数は<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ</a>にまとめています。</p>"""
 TOP_TABLE = f"""        <h3>距離ごとの目安（全国{len(_NAT)}社の料金表から）</h3>
         <dl>
 """ + "".join(f"          {_nat_row(k)}\n" for k in (5, 10, 20, 30, 50)) + f"""        </dl>
@@ -650,6 +650,10 @@ for g in GUIDES:
        "image":f'{SITE}/img/guide/{g["img"]}',"datePublished":published,"dateModified":modified,"inLanguage":"ja",
        "author":{"@id":SITE+"/#org"},"publisher":{"@id":SITE+"/#org"},"mainEntityOfPage":url},
     ]
+    if g.get("dataset"):  # [B] AIO 11/9：独自データ記事は Dataset としても伝える（引用されやすく）
+        ld.append({"@context":"https://schema.org","@type":"Dataset","name":g["title"],"description":g["desc"],"url":url,"inLanguage":"ja",
+          "creator":{"@id":SITE+"/#org"},"dateModified":modified,"spatialCoverage":"日本",
+          "variableMeasured":g["dataset"]})
     if g.get("faq"):
         ld.append({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
           {"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":ans}} for q,ans in g["faq"]]})
@@ -695,6 +699,7 @@ for g in GUIDES:
   <div class="wrap">
     <div class="sh"><h2>エリアごとの料金の目安と対応</h2></div>
     {area_links()}
+    <p class="small" style="margin-top:10px">{'<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ（距離ごと・都道府県ごとの運賃、お迎え料金・夜間割増）</a>' if g["slug"] != "pet-taxi-fare-survey" else '<a href="/area/">全国のペットタクシー情報（都道府県ごと）</a>'}</p>
   </div>
 </section>
 <section style="padding-top:0">
@@ -1498,7 +1503,7 @@ def _hub_table():
                     f'<td><a href="/hospital/night/{gen_dogrun.PSLUG[p]}/">{len(hs)}</a></td><td>{len(tx) or "—"}</td></tr>')
     return (f'<div class="sh" style="margin-top:28px"><h2>都道府県ごとの数</h2></div>'
             f'<p>当サイトで公式サイトを確かめた全国{len(_DISP)}社のペットタクシーのうち、お迎えの対応エリアに書いている都道府県を数えると、会社が見つかったのは47都道府県のうち{found}、5社以上あるのは{many}でした。'
-            '会社が見つからない県でも、となりの県の会社が来てくれることがあります。10kmの運賃は料金表をのせている会社で計算した片道の金額（100円単位にまるめています）で、3社以上あるときはまんなかの会社の金額です。</p>'
+            '会社が見つからない県でも、となりの県の会社が来てくれることがあります。10kmの運賃は料金表をのせている会社で計算した片道の金額（100円単位にまるめています）で、3社以上あるときはまんなかの会社の金額です。確定料金ではありません。距離ごとの運賃やお迎え料金・夜間割増の数は<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ</a>にまとめています。</p>'
             '<div class="tbl"><table><thead><tr><th>都道府県</th><th>ペットタクシー会社</th><th>10kmの運賃</th><th>夜間・救急の病院（県の中）</th><th>緊急の搬送の会社</th></tr></thead>'
             f'<tbody>{trs}</tbody></table></div>'
             f'<p class="fare-flag"><b>確定料金ではありません。</b>{FARES_CHECKED}時点で各社の公式サイトの料金表をもとに計算した概算です。お迎え料金・待ち時間・夜間や早朝の割増・高速代は入っていません。当日の道順・渋滞・待ち時間などで変わります。</p>')
