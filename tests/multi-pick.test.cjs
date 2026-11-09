@@ -49,11 +49,18 @@ assert.equal(r['指定した提携先ID'], 'P002,P003'); assert.equal(r['依頼�
 assert.equal(ctx.needsChoice_(r), true);
 rows[0][H.indexOf('通知した提携先')] = 'P002,P003'; // sendWave_ が記録するもの
 const ak = id => ctx.sign_('ID1:' + id);
-assert.equal(ctx.acceptPage_({ id: 'ID1', p: 'P003', k: ak('P003'), go: '1', fare: '5000', at: day + 'T10:00' }), 'お返事を送りました');
+// 会社が返事の画面で入れた連絡先を、お客さまにお伝えする（Nori 2026-11-09）。形のおかしい値・空は断る
+assert.equal(ctx.acceptPage_({ id: 'ID1', p: 'P003', k: ak('P003'), go: '1', fare: '5000', ctel: '12', cmail: '' }), '連絡先を確かめてください');
+assert.equal(ctx.acceptPage_({ id: 'ID1', p: 'P003', k: ak('P003'), go: '1', fare: '5000', ctel: '', cmail: '' }), '連絡先を確かめてください');
+assert.equal(ctx.acceptPage_({ id: 'ID1', p: 'P003', k: ak('P003'), go: '1', fare: '5000', at: '2030-01-01T03:00', ctel: '090-0000-0000', cmail: 'drive@example.invalid' }), 'お返事を送りました');
+assert.equal(ctx.quotesOf_(obj(rows[0]))[0].at, ctx.parseJst_(day + 'T10:00').getTime(), '日時は画面の値でなく希望日時（Nori 2026-11-09）');
 assert.equal(obj(rows[0])['状態'], ctx.ST.OPEN, '引き受けただけでは決まらない');
 assert.ok(mails.some(m => m.subject.includes('空き状況と料金のお返事が届きました') && m.text.includes('この内容で予約する')));
 assert.equal(ctx.choosePage_({ id: 'ID1', p: 'P003', k: ctx.sign_('ID1:P003:choose'), go: '1' }), 'ご予約が確定しました');
 assert.equal(obj(rows[0])['決定した提携先ID'], 'P003');
+assert.equal(obj(rows[0])['会社の連絡先（電話）'], '090-0000-0000');
+assert.ok(mails.some(m => m.subject.includes('ご予約が確定しました') && m.text.includes('電話 090-0000-0000') && m.text.includes('drive@example.invalid')), '確定メールは会社が入れた連絡先');
+assert.ok(delivered.some(d => d.startsWith('P003 【決定】')), '会社あての送信は登録の宛先のまま');
 assert.ok(delivered.some(d => d.startsWith('P002 【締め切り】')), 'ほかの会社には締め切りを知らせる');
 // 1社だけでも、会社のお返事を見てお客さまが「この内容で予約する」を押すまで決まらない（Nori 2026-11-01）
 rows = []; mails = []; n = 10;
