@@ -1092,6 +1092,744 @@
    "note": "ケージ・ベッド・フードボールは宿で用意と記載。頭数・犬の料金・必要書類・チェックイン時刻・アクセスの説明は公式トップに記載なし（運営サイトは上限のため未確認）。",
    "ok": false,
    "id": "i04799f"
+  },
+  {
+   "name": "R with dog 秋保",
+   "kind": "ホテル",
+   "pref": "宮城県",
+   "city": "仙台市太白区",
+   "url": "https://r-with-dog.jp/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "宮城県仙台市太白区秋保町湯元字木戸保7-1",
+     "src": "https://r-with-dog.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬・大型犬",
+     "src": "https://r-with-dog.jp/tou.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭につき5,500円（税込）",
+     "src": "https://r-with-dog.jp/tou.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "館内すべてのスペース（客室・個室の食事処・ロビーなど）。シャワー室と露天風呂の浴槽、併設の旅館は不可",
+     "src": "https://r-with-dog.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防接種と5種以上の混合ワクチン（接種から1年未満）。敷地内はおむつかマナーベルト、客室の外はリード、散歩はお散歩バッグ",
+     "src": "https://r-with-dog.jp/tou.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "全4タイプの客室すべてにプライベートドッグラン",
+     "src": "https://r-with-dog.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00／チェックアウト10:00",
+     "src": "https://r-with-dog.jp/tou.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "車で東北道 仙台南ICから国道286号で約15分。無料駐車場あり",
+     "src": "https://r-with-dog.jp/access.html",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "客室は4タイプ（全室プライベートドッグランと露天風呂つき）",
+     "src": "https://r-with-dog.jp/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬の頭数の上限・犬種の制限は公式サイトに記載なし",
+   "ok": true,
+   "id": "ie235e3"
+  },
+  {
+   "name": "小谷流の里 ドギーズアイランド",
+   "kind": "ホテル",
+   "pref": "千葉県",
+   "city": "八街市",
+   "url": "https://www.doggys-island.jp/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県八街市小谷流624",
+     "src": "https://www.doggys-island.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射（1年以内）と5種以上の混合ワクチン（有効期限内）の証明書（コピー可）。生後4か月以上で基本的なしつけができている犬",
+     "src": "https://www.doggys-island.jp/assets/pdf/contract_stay.pdf",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬以外の動物を連れての利用は不可",
+     "src": "https://www.doggys-island.jp/assets/pdf/contract_stay.pdf",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "天然芝の大きなドッグラン（小型犬用・中大型犬用・全犬種用のエリア）。宿泊者は無料",
+     "src": "https://www.doggys-island.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室、レストラン・カフェ、散歩道「四季の花径」、ドッグプール。客室のジャグジー・プールへの入水は不可",
+     "src": "https://www.doggys-island.jp/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "本館：チェックイン15:00／チェックアウト11:00",
+     "src": "https://www.doggys-island.jp/hotel/mainbuilding/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "本館40室（デラックススイート2・コーナースイート2・スーペリア22・スタンダード14）。ほかにヴィラ・グランピングヴィラなど",
+     "src": "https://www.doggys-island.jp/hotel/mainbuilding/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬の宿泊料金・頭数の上限は確かめたページに記載なし（宿泊可能犬種はPDFで別に案内）",
+   "ok": true,
+   "id": "ia1549e"
+  },
+  {
+   "name": "ザ ロイヤルパークホテル 京都梅小路",
+   "kind": "ホテル",
+   "pref": "京都府",
+   "city": "京都市下京区",
+   "url": "https://www.royalparkhotels.co.jp/the/kyotoumekoji/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "京都府京都市下京区観喜寺町9-3",
+     "src": "https://www.royalparkhotels.co.jp/en/the/kyotoumekoji/stay/rooms/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "体重10kg未満で、館内をキャリーで移動できる大きさ。生後4か月以上",
+     "src": "https://www.royalparkhotels.co.jp/the/kyotoumekoji/assets/files/pdf/dog_agreement.pdf",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "客室1部屋につき1頭まで",
+     "src": "https://www.royalparkhotels.co.jp/the/kyotoumekoji/assets/files/pdf/dog_agreement.pdf",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防ワクチンと5種以上の混合ワクチン（接種後2週間以上1年未満）の証明を事前に提出。ノミ・マダニ対策。移動用キャリー、就寝用ケージ、リード、食事・寝具",
+     "src": "https://www.royalparkhotels.co.jp/the/kyotoumekoji/assets/files/pdf/dog_agreement.pdf",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室内（浴室を除く）。客室の外の館内・敷地・駐車場ではキャリーに入れる",
+     "src": "https://www.royalparkhotels.co.jp/the/kyotoumekoji/assets/files/pdf/dog_agreement.pdf",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00／チェックアウト11:00",
+     "src": "https://www.royalparkhotels.co.jp/en/the/kyotoumekoji/stay/rooms/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "JR梅小路京都西駅から徒歩約1分",
+     "src": "https://www.royalparkhotels.co.jp/en/the/kyotoumekoji/stay/rooms/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬の宿泊料金・犬と泊まれる部屋の数は確かめたページに記載なし。チェックイン・アウトはホテル全体の時刻",
+   "ok": true,
+   "id": "i114c96"
+  },
+  {
+   "name": "御宿 小笠原",
+   "kind": "旅館",
+   "pref": "熊本県",
+   "city": "阿蘇市",
+   "url": "https://onyado-ogasawara.com/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "熊本県阿蘇市黒川2323",
+     "src": "https://dogrun.onyado-ogasawara.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年の予防接種を受けていること。ペットの食事は持参",
+     "src": "https://onyado-ogasawara.com/pet/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室（全室離れの一戸建て）。部屋の外では抱っこ・リード・ケージなどが必要",
+     "src": "https://onyado-ogasawara.com/pet/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00／チェックアウト10:30",
+     "src": "https://onyado-ogasawara.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "九州道 熊本ICから国道57号経由で約32km。無料駐車場30台",
+     "src": "https://dogrun.onyado-ogasawara.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全室離れの一戸建て・天然温泉つき（特別室・洋室ツイン・洋室トリプル・和洋室）",
+     "src": "https://onyado-ogasawara.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬の宿泊料金・大きさ・頭数は確かめたページに記載なし。ドッグランの区画数はドッグランのページでは7エリアとあり、宿のトップは専用4か所（数え方が違うため宿のトップの値を採用）",
+   "ok": true,
+   "id": "ie7f220"
+  },
+  {
+   "name": "DEL style 大阪心斎橋 by Daiwa Roynet Hotel",
+   "kind": "ホテル",
+   "pref": "大阪府",
+   "city": "大阪市中央区",
+   "url": "https://www.daiwaroynet.jp/osaka-shinsaibashi/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大阪府大阪市中央区南船場3-9-8",
+     "src": "https://www.daiwaroynet.jp/osaka-shinsaibashi/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "体重10kg以下の小型犬・生後半年以上",
+     "src": "https://www.daiwaroynet.jp/withdog_shinsaibashi/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1部屋につき1匹まで",
+     "src": "https://www.daiwaroynet.jp/withdog_shinsaibashi/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病ワクチンと5種以上の混合ワクチンの接種証明（接種後2週間以上1年以内）。首輪・リード、移動用カバン、フード、マナーパンツ、同意書。ケージ・ペットベッドはホテルで用意",
+     "src": "https://www.daiwaroynet.jp/withdog_shinsaibashi/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室内。共用スペースはリードをつけてカートやクレートで移動。レストラン・フィットネスクラブは不可",
+     "src": "https://www.daiwaroynet.jp/withdog_shinsaibashi/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "猫・鳥・小動物は不可",
+     "src": "https://www.daiwaroynet.jp/withdog_shinsaibashi/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "Osaka Metro御堂筋線 心斎橋駅1号出口から徒歩約3分",
+     "src": "https://www.daiwaroynet.jp/osaka-shinsaibashi/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋はスタイルツイン4室（38.4㎡・1〜3名）",
+     "src": "https://www.daiwaroynet.jp/withdog_shinsaibashi/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬の宿泊料金・チェックイン/アウトは確かめたページに記載なし",
+   "ok": true,
+   "id": "ic3d238"
+  },
+  {
+   "name": "ホテル カゼドッグ（ホテル南風楼）",
+   "kind": "ホテル",
+   "pref": "長崎県",
+   "city": "島原市",
+   "url": "https://www.kazedog.com/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長崎県島原市弁天町2-7331-1",
+     "src": "https://www.kazedog.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "30kg未満の犬",
+     "src": "https://www.kazedog.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "10kgまでは1部屋3匹まで、11kg以上は1部屋1匹",
+     "src": "https://www.kazedog.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹あたり 10kgまで3,300円・20kgまで5,500円・30kgまで7,700円（現地で支払い）",
+     "src": "https://www.kazedog.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室、屋外・屋上ドッグラン、朝食会場（テラス）、専用個室の夕食会場（3日前までに予約）、犬用の足湯。温泉・客室の風呂は不可",
+     "src": "https://www.kazedog.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンを受けた室内犬で、有効期限内の接種証明書を持参。トイレのしつけ",
+     "src": "https://www.kazedog.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋外ドッグラン（約330㎡、同時に5組まで）、屋上ドッグラン、屋根付きの屋内ドッグラン",
+     "src": "https://www.kazedog.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全室ガーデンテラス露天風呂つき2段ベッドつき和洋室（42㎡）",
+     "src": "https://www.kazedog.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "料金の税込・税抜の別は記載なし。チェックイン・アウトの時刻は記載なし",
+   "ok": true,
+   "id": "i4a3e4f"
+  },
+  {
+   "name": "ドッグヴィラ広島",
+   "kind": "貸別荘",
+   "pref": "広島県",
+   "city": "広島市安佐南区",
+   "url": "https://www.hiroshima-glampingresort.com/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "広島県広島市安佐南区沼田町吉山920",
+     "src": "https://www.hiroshima-glampingresort.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（大型犬も可）",
+     "src": "https://hiroshima-glampingresort.com/qa/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://hiroshima-glampingresort.com/qa/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・ダイニング・寝室すべて（ベッドの上も可）",
+     "src": "https://www.hiroshima-glampingresort.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "必要なもの",
+     "v": "宿泊日から1年以内の狂犬病予防注射済証と混合ワクチン接種証明書。マナーウェアは必須ではない",
+     "src": "https://hiroshima-glampingresort.com/qa/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "各棟に専用のプライベートドッグラン（最大400㎡超）",
+     "src": "https://www.hiroshima-glampingresort.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "受け入れは犬のみ",
+     "src": "https://hiroshima-glampingresort.com/qa/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜18:00／チェックアウト11:00",
+     "src": "https://hiroshima-glampingresort.com/qa/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "広島自動車道 広島西風新都ICから車で約10分。JR広島駅からタクシーで約30分",
+     "src": "https://www.hiroshima-glampingresort.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ガーデンヴィラ・プレミアムヴィラ・ラグジュアリーヴィラ・スイートの4タイプ",
+     "src": "https://www.hiroshima-glampingresort.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬の宿泊料金は公式サイトに記載なし",
+   "ok": true,
+   "id": "i87c77e"
+  },
+  {
+   "name": "アパホテル＆リゾート〈上越妙高〉",
+   "kind": "ホテル",
+   "pref": "新潟県",
+   "city": "妙高市",
+   "url": "https://www.apahotel.com/resort/myoko/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "新潟県妙高市桶海1090",
+     "src": "https://www.apahotel.com/resort/myoko/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "生後4か月以上・体重23kg以下（小型犬・中型犬）",
+     "src": "https://www.apahotel.com/resort/myoko/pet/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小型犬は1室2頭まで、中型犬は1頭まで",
+     "src": "https://www.apahotel.com/resort/myoko/pet/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "小型犬1頭は宿泊料金に含む。小型犬2頭または中型犬1頭は追加2,000円",
+     "src": "https://www.apahotel.com/resort/myoko/pet/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ステイウィズドッグルーム、敷地内の散歩（リード着用）、ヒルサイドデッキ。ほかのホテル館内・ゴルフ場は不可",
+     "src": "https://www.apahotel.com/resort/myoko/pet/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "必要なもの",
+     "v": "ペット同伴宿泊滞在利用規約への同意と署名",
+     "src": "https://www.apahotel.com/resort/myoko/pet/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "宿泊者専用の屋外ドッグラン（約160㎡）と屋内ドッグラン（約200㎡）。宿泊者は無料",
+     "src": "https://www.apahotel.com/resort/myoko/pet/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "北陸新幹線 上越妙高駅・妙高はねうまライン 関山駅から無料送迎バス（前日までに予約）",
+     "src": "https://www.apahotel.com/resort/myoko/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋はステイウィズドッグツイン4室（29㎡）とトリプル1室（38㎡）",
+     "src": "https://www.apahotel.com/resort/myoko/pet/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬の追加料金の税込・税抜の別は記載なし。チェックイン・アウトは記載なし",
+   "ok": true,
+   "id": "i760b92"
+  },
+  {
+   "name": "ドッググランピング滋賀高島",
+   "kind": "コテージ",
+   "pref": "滋賀県",
+   "city": "高島市",
+   "url": "https://www.shiga-dogglamping.com/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "滋賀県高島市安曇川町下小川2248-8",
+     "src": "https://www.shiga-dogglamping.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種の制限なし（大型犬も可）",
+     "src": "https://www.shiga-dogglamping.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://www.shiga-dogglamping.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "無料",
+     "src": "https://www.shiga-dogglamping.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "戸建てのコテージ、専用ダイニング棟、専用ドッグラン",
+     "src": "https://www.shiga-dogglamping.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防接種証明書",
+     "src": "https://www.shiga-dogglamping.com/qa/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "全室に完全プライベートのドッグラン（フェンス・遊具あり）",
+     "src": "https://www.shiga-dogglamping.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00／チェックアウト10:00",
+     "src": "https://www.shiga-dogglamping.com/qa/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "名神高速 京都東ICから車で約1時間。JR湖西線 近江高島駅から車で約5分（無料送迎は3日前までに予約）",
+     "src": "https://www.shiga-dogglamping.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "戸建てコテージ・1日6組まで",
+     "src": "https://www.shiga-dogglamping.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "",
+   "ok": true,
+   "id": "i143dea"
+  },
+  {
+   "name": "愛犬と添い寝できる旅館 月香",
+   "kind": "旅館",
+   "pref": "福井県",
+   "city": "あわら市",
+   "url": "https://www.gekka-awara.com/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "福井県あわら市舟津9-8",
+     "src": "https://www.gekka-awara.com/guestroom/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "客室ごとに目安あり（多くは小型犬・中型犬、一部の客室は大型犬も）",
+     "src": "https://www.gekka-awara.com/guestroom/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室（飼い主と同じ部屋）。一部の客室に犬専用の浴槽やミニドッグラン",
+     "src": "https://www.gekka-awara.com/guestroom/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "「猫ちゃん＆ワンちゃんOKルーム」では猫も可。うさぎ・フェレットなどの小動物も可（食事会場には入れない）",
+     "src": "https://www.gekka-awara.com/guestroom/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ミニドッグラン付きの客室（WANスイート錦華・瑞雪）とプライベートドッグラン付きの純和風客室",
+     "src": "https://www.gekka-awara.com/guestroom/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病ワクチンを接種できない場合は獣医師の診断書。室内ドッグランではマナーベルトかおむつ",
+     "src": "https://www.gekka-awara.com/faq/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00／チェックアウト10:00",
+     "src": "https://www.gekka-awara.com/guestroom/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "北陸道 金津ICから約15分",
+     "src": "https://www.gekka-awara.com/faq/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "特別室・露天風呂付きスイート・WANスイート・ドッグラン付き和室・セミスイート・スタンダードなど9タイプ",
+     "src": "https://www.gekka-awara.com/guestroom/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "犬の宿泊料金・頭数の上限は確かめたページに記載なし",
+   "ok": true,
+   "id": "iadaa8f"
+  },
+  {
+   "name": "ドッグヴィラ別邸あかい",
+   "kind": "旅館",
+   "pref": "滋賀県",
+   "city": "大津市",
+   "url": "https://www.villa-akai.com/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "滋賀県大津市苗鹿2丁目30-7",
+     "src": "https://www.villa-akai.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬まで（ミックス犬は獣医師による小型犬の証明が必要）",
+     "src": "https://www.villa-akai.com/pet/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.villa-akai.com/pet/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹につき3,500円（税込）",
+     "src": "https://www.villa-akai.com/pet/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "必要なもの",
+     "v": "5種以上の混合ワクチンの接種証明書と狂犬病予防注射済証（接種後2週間以上1年未満）を事前に提出。ノミ・マダニの駆除",
+     "src": "https://www.villa-akai.com/pet/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室、半個室の食事処「ダイニング琵琶」、屋根付きドッグラン。隣の湯元舘の館内は不可",
+     "src": "https://www.villa-akai.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋根付きドッグラン",
+     "src": "https://www.villa-akai.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全6室・温泉露天風呂付き（デラックスツイン・リラックススイート）",
+     "src": "https://www.villa-akai.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "未就学児は宿泊不可と記載。チェックイン・アウトは確かめたページに記載なし",
+   "ok": true,
+   "id": "ib499e4"
+  },
+  {
+   "name": "ワン泊ヤマト",
+   "kind": "貸別荘",
+   "pref": "徳島県",
+   "city": "鳴門市",
+   "url": "https://onesbuddy916.com/",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "徳島県鳴門市",
+     "src": "https://onesbuddy916.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種の制限なし（大型犬も可）",
+     "src": "https://onesbuddy916.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1組5頭まで",
+     "src": "https://onesbuddy916.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1日3,300円（税込・頭数に関係なく）",
+     "src": "https://onesbuddy916.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "プライベートドッグラン（約200㎡）",
+     "src": "https://onesbuddy916.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00／チェックアウト10:00",
+     "src": "https://onesbuddy916.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "アクセス",
+     "v": "鳴門ICから車で約10分、鳴門駅から車で約5分、徳島阿波おどり空港から車で約15分",
+     "src": "https://onesbuddy916.com/",
+     "checked": "2026-11-09"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "2階建ての一棟貸し（リビング・和室・寝室2室、最大9名）",
+     "src": "https://onesbuddy916.com/",
+     "checked": "2026-11-09"
+    }
+   ],
+   "note": "所在地は市までしか公式トップに書いていない。必要なもの（ワクチン証明など）は利用規約のページを未確認",
+   "ok": true,
+   "id": "i70a363"
   }
  ]
 }

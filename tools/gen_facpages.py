@@ -212,6 +212,7 @@ def render_inn(ctx, x):
     kind = x.get("kind") or "宿"
     tparts = [w for w, k in (("犬の大きさ", "泊まれる犬の大きさ"), ("頭数", "犬の頭数"), ("料金", "犬の宿泊料金"), ("ドッグラン", "ドッグラン")) if fact(x, k)]
     title = f"{nm}（{pf}{x.get('city', '')}）｜犬と泊まれる{kind}の{'・'.join(tparts)}｜ペットタクシー予約窓口"
+    if len(title) > 60: title = f"{nm}（{x.get('city', '') or pf}）｜犬と泊まれる{kind}｜ペットタクシー予約窓口"
     lead = f"{nm}は、{pf}{x.get('city', '')}にある、犬と泊まれる{kind}です（公式サイト、{ck}に確認）。"
     pts = [lead] + [_sent(nm, k, fact(x, k), ck) for k in ("泊まれる犬の大きさ", "犬の頭数", "犬の宿泊料金", "必要なもの") if fact(x, k)]
     pts = pts[:5]
