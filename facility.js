@@ -10,7 +10,7 @@
 // 問い合わせを当サイトから事業者へ送ることはしない（許可のない事業者に転送しない）。
 (function(){
   function track(n, p){ if (window.gtag) gtag("event", n, p || {}); }
-  var CAMP = {sougi: "sougi_cards", sitter: "sitter_cards", trainer: "trainer_cards"};
+  var CAMP = {sougi: "sougi_cards", sitter: "sitter_cards", trainer: "trainer_cards", hosp: "hospital_pages", inn: "inn_pages"};
   var CONF = {
     sougi: {
       title: "火葬・霊園への問い合わせ文をつくる",
