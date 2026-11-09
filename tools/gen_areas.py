@@ -1019,16 +1019,22 @@ PT_COND = "".join([
 ])
 # 介護が必要な子（お客さまのフォームの「どんな手助けが必要ですか？」と同じ言葉。app.js の CARE_OPTS）
 PT_CARE_OPTS = ["歩けない（抱っこで運ぶ）", "寝たきり（担架やマットで運ぶ）", "階段で運び出す（エレベーターなし）", "酸素や点滴などの医療機器がある", "カートやバギーごと乗りたい"]
-PT_CARE_HELP = ["乗り降りの手伝い", "大型犬を抱えて運ぶ", "スタッフ2人で伺える"]
+PT_CARE_HELP = ["乗り降りの手伝い", "大型犬を抱えて運ぶ"]
+PT_CARE_TOOLS = ["ストレッチャー（担架）", "介護用マット・クッション", "スロープ（カートごと乗れる）", "カート・バギーを固定できる", "酸素ボンベや点滴を置ける・固定できる", "体温を保つ道具（毛布・保温マットなど）", "どれもない"]
 PT_CARE = pt_f("介護が必要な子（歩くのがつらい・寝たきりなど）", pt_sel("p_care", "介護が必要な子", ["受けられる", "相談して決める", "受けられない"])
     + pt_if("p_care", ["受けられる", "相談して決める"],
         '<b>できること</b><span class="any">あてはまるものすべて</span><div class="checks" id="p_careok" data-k="介護でできること">'
         + "".join(f'<label><input type="checkbox" value="{e(x)}">{e(x)}</label>' for x in PT_CARE_OPTS + PT_CARE_HELP) + '</div>'
-        + '<b>車にある介護の道具</b><textarea data-k="介護の道具" rows="2" maxlength="300" placeholder="例：担架、スロープ、介護用マット、酸素ボンベを置ける台"></textarea>'), "", "p_care")
+        + '<b>介護のときに伺える人数</b>' + pt_sel("p_carestaff", "介護で伺える人数", ["1人", "2人", "3人以上", "依頼に合わせて人数を増やせる"])
+        + '<b>抱えたり担架で運んだりできる体重</b>' + pt_sel("p_carekg", "介護で運べる体重", ["10kgまで", "20kgまで", "30kgまで", "40kgまで", "50kgまで", "50kgを超えても運べる"])
+        + '<b>車にある介護の道具</b><span class="any">あてはまるものすべて</span><div class="checks" id="p_caretool" data-k="介護の道具">'
+        + "".join(f'<label><input type="checkbox" value="{e(x)}">{e(x)}</label>' for x in PT_CARE_TOOLS) + '</div>'
+        + '<b>道具のくわしいこと</b><span class="any">あれば</span><textarea data-k="介護の道具（くわしく）" rows="2" maxlength="300" placeholder="例：担架は幅60cm・40kgまで、酸素ボンベは飼い主さんのものを固定できます"></textarea>'), "", "p_care")
+PT_QUALS = ["愛玩動物看護師（国家資格）", "獣医師", "ペット介護士・ペットケアの民間資格", "ペットの救急救命の講習を受けた", "動物取扱責任者", "とくになし"]
 PT_NEED = [
- ("お申し込みでうかがうこと", ["会社名・屋号、ご担当者のお名前", "お問い合わせを受け取るメールアドレス（窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスをお知らせください）", "お迎えできる都道府県・市区町村、受けられる曜日・時間帯、時間外や当日の依頼", "乗せられる動物・頭数・体重（大きい子の数）、飼い主さんの同乗、ペットだけの送迎、ケージ、ワクチン、大きな荷物、途中で寄れるか", "介護が必要な子（歩けない・寝たきりなど）を受けられるか、できること", "車の台数と種類、車が出発するお店・事業所の場所（町名まで）"]),
+ ("お申し込みでうかがうこと", ["会社名・屋号、ご担当者のお名前", "お問い合わせを受け取るメールアドレス（窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスをお知らせください）", "お迎えできる都道府県・市区町村、受けられる曜日・時間帯、時間外や当日の依頼", "乗せられる動物・頭数・体重（大きい子の数）、飼い主さんの同乗、ペットだけの送迎、ケージ、ワクチン、大きな荷物、途中で寄れるか", "介護が必要な子（歩けない・寝たきりなど）を受けられるか、できること、伺える人数、運べる体重、ストレッチャーなどの道具", "車の台数と種類、車が出発するお店・事業所の場所（町名まで）"]),
  ("料金でうかがうこと", ["税込か税別か", "基本料金と距離（または時間）の料金、1km未満の数え方", "お迎え料金・回送料金", "夜間・早朝の割増（率か金額、時間帯）", "待ち時間・高速道路・頭数・体重・同乗する人の料金", "キャンセル料、お支払い方法とタイミング"]),
- ("わかればうかがうこと", ["動物取扱業の登録番号", "お持ちの事業の許可・届出（旅客の許可、貨物軽自動車運送事業の届出など）", "加入している保険（対人・対物、ペットのケガ）", "スタッフの資格", "往復・長い距離・空港などの料金", "お迎えに行ける距離、依頼から出発できるまでの時間"]),
+ ("わかればうかがうこと", ["動物取扱業の登録番号", "お持ちの事業の許可・届出（旅客の許可、貨物軽自動車運送事業の届出など）", "加入している保険（対人・対物、ペットのケガ）", "スタッフの資格（愛玩動物看護師など）", "往復・長い距離・空港などの料金", "お迎えに行ける距離、依頼から出発できるまでの時間"]),
 ]
 pt_merits = "".join(f'<div class="pt-merit">{ic}<h3>{e(t)}</h3><p>{e(d)}</p></div>' for ic, t, d in PT_MERITS)
 pt_faq = "".join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in PT_FAQ)
@@ -1131,7 +1137,8 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
   <div class="group-h"><span>5</span>許可・保険など</div>
   <div class="f"><label for="p_reg">動物取扱業の登録番号<span class="any">わかれば</span></label><input type="text" id="p_reg" data-k="動物取扱業の登録番号" maxlength="100" autocomplete="off"></div>
   <div class="f"><label for="p_lic">事業の許可・届出<span class="any">わかれば</span></label><select id="p_lic" data-k="事業の許可・届出"><option value="">選んでください</option><option>一般乗用旅客自動車運送事業の許可（緑ナンバー）</option><option>貨物軽自動車運送事業の届出（黒ナンバー）</option><option>両方</option><option>そのほか・わからない</option></select></div>
-  <div class="f"><label for="p_qual">スタッフの資格<span class="any">あれば</span></label><input type="text" id="p_qual" data-k="スタッフの資格" maxlength="200" placeholder="例：愛玩動物看護師、ペット介護士"></div>
+  <div class="f"><span class="lbl">スタッフの資格<span class="any">あてはまるものすべて</span></span><div class="checks" id="p_quals" data-k="スタッフの資格">{''.join(f'<label><input type="checkbox" value="{e(q)}">{e(q)}</label>' for q in PT_QUALS)}</div>
+    <input type="text" id="p_qual" data-k="スタッフの資格（そのほか）" maxlength="200" placeholder="そのほかの資格（例：ペット看護士（民間）、ドッグトレーナー）" aria-label="そのほかの資格"></div>
   <div class="f"><label for="p_ins">加入している保険<span class="any">わかれば</span></label><input type="text" id="p_ins" data-k="保険" maxlength="200" placeholder="例：対人・対物無制限、ペットのケガの補償あり"></div>
   <div class="f"><label for="p_msg">ほかに伝えたいこと<span class="any">あれば</span></label><textarea id="p_msg" data-k="そのほか" rows="4" maxlength="1000"></textarea></div>
   <label class="agree"><input type="checkbox" id="p_agree" required><span><a href="/#privacy">個人情報の取り扱い</a>を確認し、同意します。提携の内容は<a href="/partner/terms/">提携規約</a>をご覧ください（同意のお手続きは、あらためてメールでご案内します）。</span></label>
