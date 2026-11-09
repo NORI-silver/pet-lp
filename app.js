@@ -353,6 +353,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 最初は上の3社だけ。残りはボタンを押すと開く（Nori 2026-10-31「表示はトップ3社。あとは折りたたみ」）
   var TOP_CARDS = 3, restOpen = false;
   function drawCards(){
+    // 口コミの点数が出ている会社がないときは、口コミの並び順を出さない（見えない点数で並べ替えないため。2026-11-09 矛盾の点検）
+    var hasScore = quoteCards.some(function(c){ var v = withScore(c).review; return v && v.rating > 0; });
+    $("partnerSort").querySelectorAll('option[value^="review"]').forEach(function(o){ o.hidden = o.disabled = !hasScore; });
+    if (!hasScore && /^review/.test($("partnerSort").value)) $("partnerSort").value = "dist_asc";
     $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren();
     var list = sortCards(quoteCards, ""), rest = list.length - TOP_CARDS, cut = quoteCards.length - list.length;
     $("partnerDistNote").hidden = !cut;
