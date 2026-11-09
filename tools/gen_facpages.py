@@ -23,6 +23,7 @@ def _load(fn):
 EMG = _load("emergency.json")
 HF = _load("night_hospital_facts.json")
 INN = _load("inns.json")
+CAFE = _load("cafes.json")
 
 
 def _ok(x): return x.get("ok", True) and not x.get("closed") and len(x.get("facts", [])) >= MIN_FACTS
@@ -37,6 +38,9 @@ def fact(x, k):
     for f in x.get("facts", []):
         if f["k"] == k: return f["v"]
     return ""
+
+
+CAFES = [x for x in CAFE.get("cafes", []) if _ok(x) and fact(x, "犬と入れる席")]
 
 
 def _jdate(iso):
@@ -54,6 +58,12 @@ I_KEYS = ["所在地", "泊まれる犬の大きさ", "犬の頭数", "犬の宿
 
 
 def hhref(x): return f"/hospital/night/{PSLUG[x['pref']]}/{x['id'].lower()}/"
+
+
+C_KEYS = ["所在地", "犬と入れる席", "犬の大きさ", "犬の頭数", "犬のルール", "犬用メニュー", "営業時間", "定休日", "予約", "アクセス"]
+
+
+def chref(x): return f"/inu-cafe/{PSLUG[x['pref']]}/{x['id'].lower()}/"
 
 
 def ihref(x): return f"/inu-yado/{PSLUG[x['pref']]}/{x['id'].lower()}/"
@@ -311,8 +321,116 @@ def render_inn_hub(ctx):
 """ + ctx["foot_noband"]()
 
 
+# ---- 犬と一緒に入れるカフェ・ランチ（同伴できるお店。犬と触れ合うカフェではない） ----
+def render_cafe(ctx, x):
+    e, SITE = ctx["e"], ctx["SITE"]
+    pf, slug, nm = x["pref"], PSLUG[x["pref"]], x["name"]
+    ck_iso = _latest(x); ck = _jdate(ck_iso)
+    url = SITE + chref(x)
+    kind = x.get("kind") or "お店"
+    seat = fact(x, "犬と入れる席")
+    tparts = [w for w, k in (("入れる席", "犬と入れる席"), ("犬の大きさ", "犬の大きさ"), ("ルール", "犬のルール"), ("犬用メニュー", "犬用メニュー")) if fact(x, k)]
+    title = f"{nm}（{pf}{x.get('city', '')}）｜犬と一緒に入れる{kind}の{'・'.join(tparts)}｜ペットタクシー予約窓口"
+    if len(title) > 60: title = f"{nm}（{x.get('city', '') or pf}）｜犬と入れる{kind}の条件｜ペットタクシー予約窓口"
+    lead = f"{nm}は、{pf}{x.get('city', '')}にある、犬と一緒に入れる（同伴できる）{kind}です。犬と入れる席は「{seat.rstrip('。')}」と公式サイトに書いてあります（{ck}に確認）。"
+    pts = [lead] + [_sent(nm, k, fact(x, k), ck) for k in ("犬の大きさ", "犬の頭数", "犬のルール", "犬用メニュー") if fact(x, k)]
+    pts = pts[:5]
+    same = [y for y in CAFES if y["pref"] == pf]
+    if len(same) < 3: same = [y for y in CAFES if _region(ctx, y["pref"]) == _region(ctx, pf)]
+    if len(same) < 3: same = CAFES
+    body = ""
+    for y in same[:10]:
+        n = e(y["name"])
+        n = f"<b>{n}</b>" if y is x else f'<a href="{chref(y)}">{n}</a>'
+        body += (f"<tr><td>{n}</td><td>{e(y['pref'])}{e(y.get('city', ''))}</td><td>{e(fact(y, '犬と入れる席'))}</td><td>{e(fact(y, '犬の大きさ'))}</td>"
+                 f"<td>{'○' if fact(y, '犬用メニュー') and not re.search('なし|ない|ありません', fact(y, '犬用メニュー')) else ''}</td></tr>")
+    cmp = (f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">近くの犬と入れるお店とくらべる</h2><div class="tbl"><table class="pp-tbl cmp">'
+           f'<thead><tr><th>名前</th><th>場所</th><th>犬と入れる席</th><th>犬の大きさ</th><th>犬用メニュー</th></tr></thead><tbody>{body}</tbody></table></div>'
+           '<p class="emg-tips-note">各店の公式サイトに書いてあることです。空欄は公式サイトに見つからなかったもの。並びは順位ではありません。<a href="/inu-cafe/">全部のお店の一覧</a></p></div>')
+    faq = [(f"{nm}は店内に犬と入れますか？", f"{nm}の公式サイトには、犬と入れる席について「{seat.rstrip('。')}」と書いてあります（{ck}に確認）。")]
+    if fact(x, "犬の大きさ"): faq.append((f"{nm}に大型犬は入れますか？", f"{nm}の公式サイトには「{fact(x, '犬の大きさ').rstrip('。')}」と書いてあります。"))
+    if fact(x, "犬のルール"): faq.append((f"{nm}で犬について決まりはありますか？", f"{nm}の公式サイトには「{fact(x, '犬のルール').rstrip('。')}」と書いてあります。"))
+    if fact(x, "犬用メニュー"): faq.append((f"{nm}に犬用のメニューはありますか？", f"{nm}の公式サイトには「{fact(x, '犬用メニュー').rstrip('。')}」と書いてあります。"))
+    ld_main = {"@type": "Restaurant" if kind == "レストラン" else "CafeOrCoffeeShop", "name": nm, "url": x["url"],
+               "address": dict({"@type": "PostalAddress", "addressRegion": pf, "addressCountry": "JP"},
+                               **({"addressLocality": x["city"]} if x.get("city") else {}), **({"streetAddress": fact(x, "所在地")} if fact(x, "所在地") else {}))}
+    desc = lead if len(lead) <= 150 else lead[:148] + "…"
+    return _page(ctx, title=title, desc=desc, url=url,
+                 crumbs=[("ペットタクシー予約窓口", "/"), ("犬と一緒に入れるカフェ・ランチ", "/inu-cafe/")],
+                 nm=nm, pts=pts, rows=_rows(e, x, C_KEYS), card=_card(e, "cafe", x, "お店"), cmp=cmp, faq=faq[:4],
+                 related=[("犬と一緒に入れるカフェ・ランチの一覧", "/inu-cafe/")] + [(n, h) for n, h in ((f"{pf}のドッグラン", f"/dogrun/{slug}/"),)
+                          if os.path.exists(os.path.join(_D, "..", h.strip("/"), "index.html"))] + [("犬と泊まれる宿", "/inu-yado/")],
+                 note=f"当サイトは{e(nm)}とは別の運営で、お店からお金をもらっていません。おすすめや順位ではありません。当サイトでは予約は受け付けていません。犬の条件や営業時間は変わることがあるので、行く前に必ず公式サイトかお店でご確認ください。",
+                 cta="<h2>お店までの移動は、ペットタクシーで</h2><p>車がないとき、大きな犬や何頭もいるときは、家の前からお店の前までペットタクシーで移動できます。</p>",
+                 ld_main=ld_main, src_url=x["url"], ck_iso=ck_iso)
+
+
+def render_cafe_hub(ctx):
+    e, SITE = ctx["e"], ctx["SITE"]
+    url = SITE + "/inu-cafe/"
+    n = len(CAFES)
+    inside = sum(1 for x in CAFES if re.search("店内", fact(x, "犬と入れる席")) and not re.search("テラス(席)?のみ|テラスだけ", fact(x, "犬と入れる席")))
+    terrace = sum(1 for x in CAFES if re.search("テラス(席)?のみ|テラスだけ", fact(x, "犬と入れる席")))
+    big = sum(1 for x in CAFES if re.search("大型", fact(x, "犬の大きさ")) and not re.search("不可|NG|お断り|小型犬のみ", fact(x, "犬の大きさ")))
+    menu = sum(1 for x in CAFES if fact(x, "犬用メニュー") and not re.search("なし|ない|ありません", fact(x, "犬用メニュー")))
+    belt = sum(1 for x in CAFES if re.search("マナーベルト|マナーパンツ|おむつ|オムツ", fact(x, "犬のルール")))
+    sm = [f"載せている{n}店のうち、公式サイトに店内で犬と一緒に座れると書いているのは{inside}店、テラス席だけと書いているのは{terrace}店です。",
+          f"大型犬も入れると書いているのは{big}店です。",
+          f"犬用メニューがあると書いているのは{menu}店、マナーベルトやおむつを求めると書いているのは{belt}店です。"]
+    by = {}
+    for x in CAFES: by.setdefault(_region(ctx, x["pref"]), []).append(x)
+    sec = ""
+    for lab, prefs in ctx["emg_regions"]:
+        if lab not in by: continue
+        rows = "".join(f'<tr><td><a href="{chref(x)}">{e(x["name"])}</a></td><td>{e(x["pref"])}{e(x.get("city", ""))}</td><td>{e(fact(x, "犬と入れる席"))}</td>'
+                       f'<td>{e(fact(x, "犬の大きさ"))}</td></tr>' for x in by[lab])
+        sec += (f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">{e(lab)}（{len(by[lab])}店）</h2><div class="tbl"><table class="pp-tbl cmp">'
+                f'<thead><tr><th>名前</th><th>場所</th><th>犬と入れる席</th><th>犬の大きさ</th></tr></thead><tbody>{rows}</tbody></table></div></div>')
+    title = f"犬と一緒に入れるカフェ・ランチ {n}店｜店内OK・テラス・大型犬の条件を公式サイトで確かめた一覧｜ペットタクシー予約窓口"
+    desc = f"愛犬と一緒に入れる（同伴できる）カフェ・レストランを、公式サイトで確かめた条件（店内かテラスか・犬の大きさ・決まり・犬用メニュー）と一緒にまとめた無料の一覧です（{n}店、出どころと確認日つき）。"
+    ld = '<script type="application/ld+json">\n' + json.dumps([
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 2, "name": "犬と一緒に入れるカフェ・ランチ", "item": url}]},
+        {"@context": "https://schema.org", "@type": "ItemList", "name": "犬と一緒に入れるカフェ・ランチ", "numberOfItems": n,
+         "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": SITE + chref(x), "name": x["name"]} for i, x in enumerate(CAFES)]}],
+        ensure_ascii=False, indent=1) + "\n</script>"
+    tips = [("行く前に確かめること", "犬と入れるのが店内か、テラス席だけか。犬の大きさや頭数の決まり、混む時間の入店の制限、予約がいるか。季節や天気でテラスが使えない日もあります。"),
+            ("よくある決まり", "リードを短く持つ、椅子やテーブルに乗せない、マナーベルトやおむつ、トイレをすませてから入る、など。お店ごとに違うので公式サイトで確かめてください。"),
+            ("移動のこと", "車がないとき、大きな犬や何頭もいるときは、<a href=\"/#form\">ペットタクシー</a>で家の前からお店の前まで移動できます。")]
+    tip_html = "".join(f"<h4>{e(a)}</h4><p style=\"font-size:.9rem;margin:4px 0 10px\">{b}</p>" for a, b in tips)
+    return ctx["head"](title, desc, url, ld) + CSS + f"""
+<main>
+<section class="area-hero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › 犬と一緒に入れるカフェ・ランチ</nav>
+    <h1>犬と一緒に入れるカフェ・ランチ</h1>
+    <p class="lede">愛犬と一緒に入れる（同伴できる）カフェとレストランを、各店の公式サイトで確かめた条件と一緒にまとめました。犬と触れ合えるカフェ（お店の犬がいるカフェ）の一覧ではありません。いまは{n}店で、確かめたお店から順に増やしています。</p>
+  </div>
+</section>
+<section style="padding-top:8px">
+  <div class="wrap">
+    <div class="emg">
+      <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">数えて分かったこと</h2><ul class="fac-pts">{"".join(f"<li>{e(t)}</li>" for t in sm)}</ul></div>
+      {sec}
+      <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">犬と入れるお店のえらび方</h2>{tip_html}</div>
+      <p class="emg-free">当サイトはお店とは別の運営で、お店からお金をもらっていません。並びは地方ごとで、順位やおすすめではありません。当サイトでは予約は受け付けていません。行く前に必ず各店の公式サイトでご確認ください。</p>
+      <p class="emg-note">掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+    </div>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sh"><h2>お店までの移動は、ペットタクシーで</h2><p>車がないとき、大きな犬や何頭もいるときは、家の前からお店の前までペットタクシーで移動できます。</p></div>
+  </div>
+</section>
+</main>
+""" + ctx["foot_noband"]()
+
+
 def urls(SITE):
-    return ([SITE + hhref(x) for x in HOSPS] + ([SITE + "/inu-yado/"] if INNS else []) + [SITE + ihref(x) for x in INNS])
+    return ([SITE + hhref(x) for x in HOSPS] + ([SITE + "/inu-yado/"] if INNS else []) + [SITE + ihref(x) for x in INNS]
+            + ([SITE + "/inu-cafe/"] if CAFES else []) + [SITE + chref(x) for x in CAFES])
 
 
 def write_all(ROOT, ctx):
@@ -323,3 +441,6 @@ def write_all(ROOT, ctx):
     if INNS:
         w("/inu-yado/", render_inn_hub(ctx))
         for x in INNS: w(ihref(x), render_inn(ctx, x))
+    if CAFES:
+        w("/inu-cafe/", render_cafe_hub(ctx))
+        for x in CAFES: w(chref(x), render_cafe(ctx, x))
