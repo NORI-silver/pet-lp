@@ -1772,6 +1772,9 @@ print("crosslink", crosslink.build(ROOT, _xl_prefs), "pages")
 # [B] 2026-11-08 情報ページからペットタクシーの料金くらべへの案内（tools/taxi_cta.py、Nori「1と2」）
 import taxi_cta
 print("taxi_cta", taxi_cta.build(ROOT, _xl_prefs), "pages")
+# タクシー以外の分野のページのサイト名は「ペットのくらし窓口」（tools/brand.py、Nori 2026-11-09）
+import brand
+print("brand", brand.build(ROOT), "pages")
 # AIエージェント向けの入口（/webmcp/data.json と /llms.txt。tools/gen_webmcp.py）
 import gen_webmcp
 gen_webmcp.build(ROOT)
