@@ -26,10 +26,27 @@ def _rn(pat, keys=("spec", "animals", "visit")):
     return sum(1 for h in _RH if _re.search(pat, " ".join(h.get(k, "") for k in keys)))
 R_N = len(_RH)
 R_NP = len({p for h in _RH for p in h["prefs"]})
-_RCAT = [h for h in _RH if "猫" in h["animals"] and "猫は受けていません" not in h["animals"]]
+_RCAT = [h for h in _RH if "猫" in h["animals"] and "猫は受けていません" not in h["animals"] and "ペットホテルは猫も" not in h["animals"]]  # ペットホテルだけ猫を受ける施設は数えない（11/9）
 R_CAT = len(_RCAT)
 R_CAT_ONLY = sum(1 for h in _RH if h["animals"].startswith("猫"))
 R_CAT_NP = len({p for h in _RCAT for p in h["prefs"]})
+# [B] SEO 11/9：老猫ホームの記事（12表示・23位）を厚くする。猫を受ける施設を都府県ごとに（公式サイトに書いてあることだけ）。
+from prefs import PREFS as _PF
+_PSL = {n: f"/area/{sl}/" for sl, n, *_ in _PF}
+_PSL.update({"東京都": "/tokyo/", "神奈川県": "/kanagawa/", "埼玉県": "/saitama/", "千葉県": "/chiba/"})
+_RSLUG = {n: sl for sl, n, *_ in _PF}
+_RSLUG.update({"東京都": "tokyo", "神奈川県": "kanagawa", "埼玉県": "saitama", "千葉県": "chiba"})
+_JIS = ("北海道 青森県 岩手県 宮城県 秋田県 山形県 福島県 茨城県 栃木県 群馬県 埼玉県 千葉県 東京都 神奈川県 新潟県 富山県 石川県 福井県 山梨県 長野県 岐阜県 静岡県 愛知県 三重県 "
+        "滋賀県 京都府 大阪府 兵庫県 奈良県 和歌山県 鳥取県 島根県 岡山県 広島県 山口県 徳島県 香川県 愛媛県 高知県 福岡県 佐賀県 長崎県 熊本県 大分県 宮崎県 鹿児島県 沖縄県").split()
+R_CAT_ROWS = [["都道府県", "施設", "市区町村", "受け入れる動物（公式サイトの書き方）"]] + [
+    [pf, h["name"], h["city"], h["animals"]] for pf in _JIS for h in _RCAT if pf in h["prefs"]]
+R_CAT_VET = sum(1 for h in _RCAT if "動物病院" in (h.get("spec") or ""))
+R_CAT_REG = sum(1 for h in _RCAT if h.get("reg"))
+R_CAT_JU = sum(1 for h in _RCAT if "譲受" in (h.get("reg") or ""))
+R_CAT_VISIT = sum(1 for h in _RCAT if h.get("visit"))
+import os as _os2
+R_CAT_LINKS = [(f"{pf}の老犬ホーム・老猫ホーム", f"/rojin-home/{_RSLUG[pf]}/") for pf in _JIS
+               if any(pf in h["prefs"] for h in _RCAT) and pf in _RSLUG and _os2.path.isdir(_os2.path.join(_D, "..", "rojin-home", _RSLUG[pf]))]
 R_LARGE = _rn("大型", ("animals",))
 _REG = [h["reg"] for h in _RH if h.get("reg")]
 R_REG = len(_REG)
@@ -209,7 +226,7 @@ dict(slug="roneko-home",
  desc=f"高齢の猫を預かる老猫ホームは、老犬ホームにくらべて数が少なく、当サイトで調べた全国{R_N}施設のうち猫も受けるのは{R_CAT}施設（{R_CAT_NP}都府県）、猫だけの施設は{R_CAT_ONLY}施設でした。猫にとって落ち着ける環境か、腎臓病や認知症のような症状のある猫をどう世話するか、通院と終生のお世話の決まりを、見学と契約で確かめる点としてまとめました。",
  lede="猫は環境の変化に弱い動物です。だからこそ、どんな部屋で、どんな人が、どう世話をしてくれるのかを、ていねいに確かめたい。老猫ホームを見るときのポイントをまとめました。",
  img="cat.jpg", img_alt="キャリーの中からこちらを見る猫",
- published="2026-11-02", modified="2026-11-03", category="care",
+ published="2026-11-02", modified="2026-11-09", category="care",
  sections=[
   ("老猫ホームは少なく、形もいろいろ", [
    "当サイトの一覧では、全国の老犬ホーム・老猫ホームのうち、猫を受け入れると公式サイトに書いてある施設を「受け入れる動物」で分かるようにしています。猫だけの施設（猫専用）、犬と猫の両方を受ける施設、動物病院が運営する施設があります。",
@@ -223,6 +240,16 @@ dict(slug="roneko-home",
            "犬と猫の両方：部屋が分かれているか、猫の部屋に犬の声が届かないかを確かめる",
            "動物病院が運営：持病のある猫の医療が近い。終生の一括払いの形が多い"]),
    ("links", [L_ROJIN]),
+  ]),
+  ("猫を受ける施設の一覧（都道府県ごと）", [
+   f"当サイトの一覧で、猫も受けると公式サイトに書いてある{R_CAT}施設です（相談を含む）。順位ではありません。料金や空きは、それぞれの公式サイトでご確認ください。",
+   ("table", R_CAT_ROWS),
+   ("table", [["猫を受ける施設のうち", "数"],
+              ["動物病院に併設・動物病院が運営", f"{R_CAT_VET}施設"],
+              ["動物取扱業の登録番号を公式サイトに書いている", f"{R_CAT_REG}施設（うち譲受飼養も{R_CAT_JU}施設）"],
+              ["見学や面会のことを公式サイトに書いている", f"{R_CAT_VISIT}施設"]]),
+   "終生のお預かり（飼い主から引き取って最期まで世話をする形）は、動物取扱業の「譲受飼養」の登録がいります。終生を考えているときは、登録番号の種類を公式サイトや契約の前に確かめてください。",
+   ("links", R_CAT_LINKS),
   ]),
   ("見学で見ること（猫ならでは）", [
    ("ul", ["ケージの大きさと、ケージから出て過ごせる時間や部屋があるか",
