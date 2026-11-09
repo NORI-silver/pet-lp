@@ -915,6 +915,17 @@ PT_CSS = """<style>
 .pt-sub{margin:-8px 0 18px;padding:12px 14px;border-left:3px solid var(--o-l);background:#fffaf5;border-radius:0 12px 12px 0}
 .pt-sub .pt-q+.pt-q,.pt-sub .pt-q+small{margin-top:10px}.pt-sub small{display:block;font-size:.8rem;color:var(--ink-3)}
 .pt-sub b{display:block;font-size:.82rem;color:var(--ink-2);margin:10px 0 4px}.pt-sub b:first-child{margin-top:0}
+.pt-form .seg{gap:6px}.pt-form .seg span{padding:8px 14px;font-size:.88rem}
+.pt-form .seg.missing span{border-color:#c0392b}
+.pt-ac{position:relative}.pt-ac ul{position:absolute;z-index:5;left:0;right:0;top:100%;margin:4px 0 0;padding:4px 0;list-style:none;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);max-height:260px;overflow:auto}
+.pt-ac li{padding:10px 14px;cursor:pointer;font-size:.92rem}.pt-ac li:hover,.pt-ac li[aria-selected=true]{background:var(--o-l)}
+.pt-ac .ok{display:block;margin-top:6px;font-size:.84rem;color:#2f7d32}.pt-ac small.attr{display:block;text-align:right;font-size:.7rem;color:var(--ink-3);padding:2px 10px}
+.pt-time{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px}.pt-time select{width:auto;min-height:42px;padding:8px 32px 8px 12px}
+.pt-prefs-more summary{cursor:pointer;font-size:.86rem;color:var(--o-d);margin-top:8px}
+.pt-more{margin:18px 0;border:1px dashed var(--line);border-radius:14px;padding:10px 14px}.pt-more>summary{cursor:pointer;font-weight:700}
+.pt-more[open]>summary{margin-bottom:12px}
+.pt-combo small{display:block;font-size:.82rem;color:var(--ink-3)}.pt-combo b{display:block;font-size:.86rem;margin:12px 0 6px}.pt-combo .pt-sub{margin:8px 0 0}
+.pt-note{font-size:.84rem;color:var(--ink-2);background:#fffaf5;border-radius:12px;padding:8px 12px;margin:-4px 0 14px}
 </style>"""
 def _ic(path):  # メリットのアイコン（線の絵）
     return '<svg viewBox="0 0 48 48" fill="none" stroke="#ff6a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#fff1e6" stroke="none"/>' + path + '</svg>'
@@ -940,9 +951,13 @@ PT_FAQ = [
 
 # 提携の申し込みフォーム（Nori 2026-11-08「料金が税込みかとか、あとから聞かなくていいように」）。
 # 候補カードの料金の計算（booking/Code.gs の displayPrice_）に要る項目をそろえて、選ぶ形で聞く
-def pt_sel(i, k, opts, req=True, ph="選んでください"):
-    return (f'<select id="{i}" data-k="{e(k)}"{" required" if req else ""}><option value="">{e(ph)}</option>'
-            + "".join(f'<option>{e(x)}</option>' for x in opts) + '</select>')
+# 選ぶ欄はタップ1回で選べるボタン（Nori 2026-11-10「回答の手間をできるだけ減らす」）。値は選んだボタンの文字
+def pt_sel(i, k, opts, req=True, ph=""):
+    return (f'<div class="seg pt-one" id="{i}" data-k="{e(k)}"' + (' data-req="1"' if req else '') + ' role="radiogroup">'
+            + "".join(f'<label><input type="radio" name="{i}" value="{e(x)}"><span>{e(x)}</span></label>' for x in opts) + '</div>')
+def pt_chk(i, k, opts):
+    return (f'<div class="checks seg" id="{i}" data-k="{e(k)}">'
+            + "".join(f'<label><input type="checkbox" value="{e(x)}"><span>{e(x)}</span></label>' for x in opts) + '</div>')
 def pt_n(before="", after="", opt=False):
     return (f'<span>{e(before)}<input type="number" min="0" step="any" inputmode="decimal" data-p="{e(before)}" data-u="{e(after)}"'
             + (' data-opt="1"' if opt else '') + f' aria-label="{e(before + "◯" + after)}">{e(after)}</span>')
@@ -959,8 +974,7 @@ def pt_leg(i, k, extra=()):
             + pt_if(i, ["定額"], pt_q(k + "（定額）", pt_n("", "円")))
             + pt_if(i, ["距離で決まる"], pt_q(k + "（距離）", pt_n("", "kmまで無料、", opt=True), pt_n("その先 ", "kmごとに"), pt_n("", "円")) + '<small>無料の距離がなければ空けたままで大丈夫です。</small>')
             + pt_if(i, ["市区町村ごとに決まっている"], f'<textarea data-k="{e(k)}（市区町村ごと）" rows="3" maxlength="400" placeholder="例：安芸区 1,000円、広島市内 2,000円、そのほか 1kmごとに100円"></textarea>'))
-PT_FARE = "".join([
-  pt_f("料金ページのURL", '<input type="url" id="p_fareurl" data-k="料金ページ" placeholder="https://">', "あれば"),
+PT_FARE_DETAIL = "".join([
   pt_f("料金の金額は", pt_sel("p_tax", "税込・税別", ["税込", "税別（消費税を足していただく金額）"]), "", "p_tax"),
   pt_f("料金の決め方", pt_sel("p_kind", "料金の決め方", ["距離で決まる", "時間で決まる", "エリア・区間ごとの定額", "毎回お見積もり"])
     + pt_if("p_kind", ["距離で決まる"],
@@ -975,8 +989,6 @@ PT_FARE = "".join([
         '<textarea data-k="区間ごとの定額" rows="3" maxlength="400" placeholder="例：広島市内 3,000円、広島空港まで 15,000円"></textarea>'), "", "p_kind"),
   pt_f("お迎え料金（お店からお迎えの場所まで）", pt_leg("p_pick", "お迎え料金"), "", "p_pick"),
   pt_f("回送料金（降りた場所からお店に戻る分）", pt_leg("p_back", "回送料金", ["お迎え料金と同じ"]), "", "p_back"),
-  pt_f("車が出発するお店・事業所の場所", '<input type="text" id="p_shop" data-k="車が出発する場所" required placeholder="例：広島市安芸区矢野西">',
-       "お迎え・回送の距離の計算に使います。町名まででかまいません", "p_shop"),
   pt_f("夜間・早朝の割増", pt_sel("p_night", "夜間・早朝の割増", ["なし", "率で増える（◯割増など）", "定額を足す"])
     + pt_if("p_night", ["率で増える（◯割増など）"], pt_q("割増の率", pt_n("", "％増し")))
     + pt_if("p_night", ["定額を足す"], pt_q("割増の金額", pt_n("", "円を足す")))
@@ -986,7 +998,6 @@ PT_FARE = "".join([
         + '<b>割増をかける料金</b>' + pt_q("割増をかける料金", pt_sel("p_nighton", "割増をかける料金", ["乗車の料金だけ", "お迎え・回送の料金にもかける"]))), "", "p_night"),
   pt_f("待ち時間の料金", pt_sel("p_wait", "待ち時間の料金", ["かからない", "かかる"])
     + pt_if("p_wait", ["かかる"], pt_q("待ち時間の内訳", pt_n("最初の ", "分は無料、", opt=True), pt_n("その先 ", "分ごとに"), pt_n("", "円"))), "", "p_wait"),
-  pt_f("往復（病院などで待って帰る）の料金", pt_sel("p_round", "往復の料金", ["行きと帰りの料金に、待ち時間の料金を足す", "行きと帰りを続けた1回の距離で計算", "往復の料金表がある"], req=False), "わかれば", "p_round"),
   pt_f("高速道路・有料道路の料金", pt_sel("p_toll", "高速道路の料金", ["実費をいただく（乗っている区間だけ）", "実費をいただく（お店に戻る分も）", "料金に含む", "使わない"]), "", "p_toll"),
   pt_f("頭数による料金", pt_sel("p_heads", "頭数による料金", ["頭数で変わらない", "2頭目から足す"])
     + pt_if("p_heads", ["2頭目から足す"], pt_q("2頭目からの料金", pt_n("1頭ごとに ", "円"))), "", "p_heads"),
@@ -997,25 +1008,38 @@ PT_FARE = "".join([
   pt_f("当日の依頼", pt_sel("p_sameday", "当日の依頼", ["受けない（前日まで）", "受けない（2日前まで）", "受けない（3日前より前まで）", "空いていれば受ける", "空いていれば受ける（当日の追加料金あり）"])
     + pt_if("p_sameday", ["空いていれば受ける", "空いていれば受ける（当日の追加料金あり）"], pt_q("当日の締め切り", pt_n("お迎えの ", "時間前まで", opt=True)))
     + pt_if("p_sameday", ["空いていれば受ける（当日の追加料金あり）"], pt_q("当日の追加料金", pt_n("", "円"))), "", "p_sameday"),
+  pt_f("キャンセル料", pt_sel("p_cxl", "キャンセル料", ["かからない", "前日まで無料、当日はかかる", "前々日から・当日以外もかかる"])
+    + pt_if("p_cxl", ["前日まで無料、当日はかかる"], pt_q("当日のキャンセル料", pt_n("運賃の ", "％"))), "", "p_cxl"),
+])
+# 料金は「料金表のページを見てもらう」を選べば、くわしい質問をとばせる（当サイトがページを読んで入れる）
+PT_FARE = "".join([
+  pt_f("料金のうかがい方", pt_sel("p_faremode", "料金のうかがい方", ["料金表のページを見てほしい（入力をとばす）", "ここで入力する"])
+    + pt_if("p_faremode", ["料金表のページを見てほしい（入力をとばす）"], '<b>料金表のページのURL</b><input type="url" id="p_fareurl" data-k="料金ページ" required placeholder="https://">')
+    + pt_if("p_faremode", ["ここで入力する"], '<div class="pt-fare">' + PT_FARE_DETAIL + '</div>'), "", ""),
+  pt_f("お支払いのタイミング", pt_sel("p_paytime", "お支払いのタイミング", ["乗る前", "降りるとき", "後日（請求書など）"]), "", "p_paytime"),
+])
+PT_FARE_MORE = "".join([
+  pt_f("往復（病院などで待って帰る）の料金", pt_sel("p_round", "往復の料金", ["行きと帰りの料金に、待ち時間の料金を足す", "行きと帰りを続けた1回の距離で計算", "往復の料金表がある"], req=False), "わかれば", "p_round"),
   pt_f("長い距離", pt_sel("p_long", "長い距離", ["同じ料金表で計算する", "一定の距離を超えると別にお見積もり"], req=False)
     + pt_if("p_long", ["一定の距離を超えると別にお見積もり"], pt_q("お見積もりになる距離", pt_n("", "kmを超えると"))), "わかれば", "p_long"),
   pt_f("空港など、決まった区間の定額", '<input type="text" id="p_fixed" data-k="決まった区間の定額" maxlength="300" placeholder="例：広島市内→広島空港 15,000円">', "あれば", "p_fixed"),
-  pt_f("キャンセル料", '<input type="text" id="p_cxl" data-k="キャンセル料" required maxlength="300" placeholder="例：前日まで無料、当日は基本料金の50%">', "", "p_cxl"),
-  pt_f("お支払いのタイミング", pt_sel("p_paytime", "お支払いのタイミング", ["乗る前", "降りるとき", "後日（請求書など）"]), "", "p_paytime"),
-  pt_f("料金でほかに伝えたいこと", '<textarea id="p_fare" data-k="料金の補足" rows="3" maxlength="500" placeholder="例：往復は1割引き、1kmごとの料金は10円未満を切り捨て"></textarea>', "あれば", "p_fare"),
+  pt_f("料金でほかに伝えたいこと", '<textarea id="p_fare" data-k="料金の補足" rows="2" maxlength="500" placeholder="例：往復は1割引き"></textarea>', "あれば", "p_fare"),
 ])
+PT_LARGE = ["1頭まで", "2頭まで", "3頭以上"]
+PT_ADULTS = ["大人は乗れない（ペットだけ）", "大人1人まで", "大人2人まで", "大人3人まで", "大人4人以上"]
 PT_COND = "".join([
   pt_f("1回に乗せられる頭数", pt_sel("p_maxpets", "乗せられる頭数", ["1頭", "2頭まで", "3頭まで", "4頭以上"]), "", "p_maxpets"),
-  pt_f("大きい子（20kg以上）を一度に乗せられる数", pt_sel("p_large", "大きい子（20kg以上）の数", ["乗せられない", "1頭まで", "2頭まで", "3頭以上"]), "", "p_large"),
-  pt_f("大きい子（20kg以上）と一緒に乗れる大人の人数", '<small>大きい子の頭数ごとに、飼い主さんが何人まで一緒に乗れるかを選んでください。車の広さで組み合わせが決まるためです。</small>'
-    + "".join(f'<b>大きい子{k}頭{"以上" if k == 4 else ""}のとき</b>' + pt_sel(f"p_combo{k}", f"大きい子{k}頭のときの大人", ["その頭数は乗せられない", "大人は乗れない（ペットだけ）", "大人1人まで", "大人2人まで", "大人3人まで", "大人4人以上"], req=False) for k in (1, 2, 3, 4))
-    + '<b>小さい・中くらいの子（20kg未満）だけを、いちばん多い頭数で乗せるとき</b>' + pt_sel("p_combo0", "小さい子だけで頭数がいちばん多いときの大人", ["大人は乗れない（ペットだけ）", "大人1人まで", "大人2人まで", "大人3人まで", "大人4人以上"], req=False)
-    + '<b>大きい子と大きな荷物（スーツケースなど）を一緒に</b>' + pt_sel("p_combolug", "大きい子と大きな荷物", ["載せられる", "載せられない"], req=False), "", ""),
+  pt_f("大きい子（20kg以上）を一度に乗せられる数", pt_sel("p_large", "大きい子（20kg以上）の数", ["乗せられない"] + PT_LARGE), "", "p_large"),
+  pt_f("いちばん多く乗せるときに、一緒に乗れる大人", '<div class="pt-combo">'
+    + '<b>小さい・中くらいの子（20kg未満）だけを、いちばん多く乗せるとき</b>' + pt_sel("p_combo0", "小さい子だけで頭数がいちばん多いときの大人", PT_ADULTS)
+    + "".join(pt_if("p_large", PT_LARGE[k - 1:], f'<b>大きい子{k}頭{"以上" if k == 4 else ""}のとき</b>' + pt_sel(f"p_combo{k}", f"大きい子{k}頭のときの大人", PT_ADULTS)) for k in (1, 2, 3))
+    + pt_if("p_large", PT_LARGE[2:], '<b>大きい子4頭以上のとき</b>' + pt_sel("p_combo4", "大きい子4頭のときの大人", ["その頭数は乗せられない"] + PT_ADULTS))
+    + pt_if("p_large", PT_LARGE, '<b>大きい子と、スーツケースなど大きな荷物を一緒に</b>' + pt_sel("p_combolug", "大きい子と大きな荷物", ["載せられる", "載せられない"])) + '</div>', "", ""),
   pt_f("乗せられる体重（いちばん大きい子）", pt_sel("p_maxkg", "乗せられる体重", ["10kgまで", "20kgまで", "30kgまで", "40kgまで", "50kgまで", "50kgを超えても乗せられる"]), "", "p_maxkg"),
   pt_f("飼い主さんの同乗", pt_sel("p_ride", "飼い主さんの同乗", ["同乗できない", "1人まで", "2人まで", "3人まで", "4人以上"]), "", "p_ride"),
   pt_f("ペットだけの送迎（飼い主さんが乗らない）", pt_sel("p_petonly", "ペットだけの送迎", ["できる", "できない"]), "", "p_petonly"),
   pt_f("ケージ・キャリー", pt_sel("p_cage", "ケージ", ["なくても乗せられる", "必要（貸し出しあり）", "必要（貸し出しなし）"])
-    + pt_if("p_cage", ["必要（貸し出しあり）"], '<b>貸し出せるケージの大きさ</b><textarea data-k="貸し出せるケージ" rows="2" maxlength="300" placeholder="例：小型犬用2つ、大型犬用（幅90cm）1つ"></textarea>'), "", "p_cage"),
+    + pt_if("p_cage", ["必要（貸し出しあり）"], '<b>貸し出せるいちばん大きいケージ</b>' + pt_sel("p_lend", "貸し出せるケージ", ["小型犬用（10kgまで）", "中型犬用（20kgまで）", "大型犬用（40kgまで）", "もっと大きい子も入る"], req=False)), "", "p_cage"),
   pt_f("ワクチン", pt_sel("p_vac", "ワクチン", ["接種していなくても乗せられる", "接種していれば証明はいらない", "証明が必要（狂犬病の予防注射だけ）", "証明が必要（狂犬病と混合ワクチン）"]), "", "p_vac"),
   pt_f("大きな荷物（スーツケース・大きなケージ・カートなど）", pt_sel("p_lug", "大きな荷物", ["載せられる", "少しなら載せられる", "載せられない"]), "", "p_lug"),
   pt_f("途中で寄る（経由地）", pt_sel("p_via", "途中で寄る", ["できる（料金は距離と待ち時間のとおり）", "できる（1か所ごとに料金を足す）", "できない"])
@@ -1027,23 +1051,25 @@ PT_CARE_HELP = ["乗り降りの手伝い", "大型犬を抱えて運ぶ"]
 PT_CARE_TOOLS = ["ストレッチャー（担架）", "介護用マット・クッション", "スロープ（カートごと乗れる）", "カート・バギーを固定できる", "酸素ボンベや点滴を置ける・固定できる", "体温を保つ道具（毛布・保温マットなど）", "どれもない"]
 PT_CARE = pt_f("介護が必要な子（歩くのがつらい・寝たきりなど）", pt_sel("p_care", "介護が必要な子", ["受けられる", "相談して決める", "受けられない"])
     + pt_if("p_care", ["受けられる", "相談して決める"],
-        '<b>できること</b><span class="any">あてはまるものすべて</span><div class="checks" id="p_careok" data-k="介護でできること">'
-        + "".join(f'<label><input type="checkbox" value="{e(x)}">{e(x)}</label>' for x in PT_CARE_OPTS + PT_CARE_HELP) + '</div>'
+        '<b>できること</b><span class="any">あてはまるものすべて</span>' + pt_chk("p_careok", "介護でできること", PT_CARE_OPTS + PT_CARE_HELP)
         + '<b>介護のときに伺える人数</b>' + pt_sel("p_carestaff", "介護で伺える人数", ["1人", "2人", "3人以上", "依頼に合わせて人数を増やせる"])
         + '<b>抱えたり担架で運んだりできる体重</b>' + pt_sel("p_carekg", "介護で運べる体重", ["10kgまで", "20kgまで", "30kgまで", "40kgまで", "50kgまで", "50kgを超えても運べる"])
-        + '<b>車にある介護の道具</b><span class="any">あてはまるものすべて</span><div class="checks" id="p_caretool" data-k="介護の道具">'
-        + "".join(f'<label><input type="checkbox" value="{e(x)}">{e(x)}</label>' for x in PT_CARE_TOOLS) + '</div>'
-        + '<b>道具のくわしいこと</b><span class="any">あれば</span><textarea data-k="介護の道具（くわしく）" rows="2" maxlength="300" placeholder="例：担架は幅60cm・40kgまで、酸素ボンベは飼い主さんのものを固定できます"></textarea>'), "", "p_care")
+        + '<b>車にある介護の道具</b><span class="any">あてはまるものすべて</span>' + pt_chk("p_caretool", "介護の道具", PT_CARE_TOOLS)), "", "p_care")
 PT_QUALS = ["愛玩動物看護師（国家資格）", "獣医師", "ペット介護士・ペットケアの民間資格", "ペットの救急救命の講習を受けた", "動物取扱責任者", "とくになし"]
 PT_NEED = [
- ("お申し込みでうかがうこと", ["会社名・屋号、ご担当者のお名前", "お問い合わせを受け取るメールアドレス（窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスをお知らせください）", "お迎えできる都道府県・市区町村、行き先までの距離、受けられる曜日・時間帯、時間外や当日の依頼", "乗せられる動物・頭数・体重（大きい子の数）、大きい子の数ごとに一緒に乗れる大人の人数、飼い主さんの同乗、ペットだけの送迎、ケージ、ワクチン、大きな荷物、途中で寄れるか", "介護が必要な子（歩けない・寝たきりなど）を受けられるか、できること、伺える人数、運べる体重、ストレッチャーなどの道具", "車の台数と種類、車が出発するお店・事業所の場所（町名まで）"]),
- ("料金でうかがうこと", ["税込か税別か", "基本料金と距離（または時間）の料金、1km未満の数え方", "お迎え料金・回送料金", "夜間・早朝の割増（率か金額、時間帯）", "待ち時間・高速道路・頭数・体重・同乗する人の料金", "キャンセル料、お支払い方法とタイミング"]),
- ("わかればうかがうこと", ["動物取扱業の登録番号", "お持ちの事業の許可・届出（旅客の許可、貨物軽自動車運送事業の届出など）", "加入している保険（対人・対物、ペットのケガ）", "スタッフの資格（愛玩動物看護師など）", "往復・長い距離・空港などの料金", "お迎えに行ける距離、依頼から出発できるまでの時間"]),
+ ("お申し込みでうかがうこと", ["会社名・屋号、ご担当者のお名前", "お問い合わせを受け取るメールアドレス（窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスをお知らせください）", "車が出発するお店の場所とお迎えに行ける範囲（km）、行き先までの距離、受けられる曜日・時間、車の台数と種類", "乗せられる動物・頭数・体重、大きい子と大人の組み合わせ、ペットだけの送迎、ケージ、ワクチン、大きな荷物、途中で寄れるか", "介護が必要な子（歩けない・寝たきりなど）を受けられるか、できること、伺える人数、運べる体重、ストレッチャーなどの道具"]),
+ ("料金でうかがうこと", ["料金表のページのURL", "税込か税別か", "基本料金と距離（または時間）の料金、1km未満の数え方", "お迎え料金・回送料金", "夜間・早朝の割増（率か金額、時間帯）", "待ち時間・高速道路・頭数・体重・同乗する人の料金", "キャンセル料、お支払い方法とタイミング"]),
+ ("わかればうかがうこと", ["動物取扱業の登録番号", "お持ちの事業の許可・届出（旅客の許可、貨物軽自動車運送事業の届出など）", "スタッフの資格（愛玩動物看護師など）", "往復・長い距離・空港などの料金", "依頼から出発できるまでの時間"]),
 ]
 pt_merits = "".join(f'<div class="pt-merit">{ic}<h3>{e(t)}</h3><p>{e(d)}</p></div>' for ic, t, d in PT_MERITS)
 pt_faq = "".join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in PT_FAQ)
 pt_need = "".join(f'<div><h3>{e(h)}</h3><ul>' + "".join(f"<li>{e(x)}</li>" for x in xs) + '</ul></div>' for h, xs in PT_NEED)
 pt_ld = '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in PT_FAQ]}, ensure_ascii=False) + '</script>'
+# 提携の申し込みフォームの動き（手書きのJSは tools/partner_form.js。お店の場所の候補は、トップと同じブラウザ用のキーを使う）
+_top_src = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+pt_js = (open(os.path.join(ROOT, "tools", "partner_form.js"), encoding="utf-8").read()
+         .replace("__GAS__", gas).replace("__PKEY__", re.search(r'var PLACES_KEY = "([^"]*)"', _top_src).group(1))
+         .replace("__PREFS__", json.dumps(PREFS47, ensure_ascii=False)).replace("__PREFLL__", re.search(r"var PREF_LL = (\[\[.*?\]\]);", _top_src).group(1)))
 pp = head("ペットタクシー会社の方へ 提携のご案内｜ペットタクシー予約窓口", "ペットタクシー会社さま向けの提携のご案内です。登録料・月額0円、電話対応なし。飼い主さんからの空き状況と料金のお問い合わせをメールでお届けし、予約が決まってからお名前と連絡先をお伝えします。", partner_url, pt_ld + PT_CSS) + f"""
 <main>
 <section class="area-hero"><div class="wrap"><h1>ペットタクシー会社の方へ<br>提携のご案内</h1><p class="lede">ペットタクシー予約窓口は、ペットの移動に困っている飼い主さんと、近くのペットタクシー会社さまをおつなぎするサイトです。全国で、いっしょにペットと飼い主さんをお迎えしてくださる会社さまを探しています。</p>
@@ -1100,7 +1126,7 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 </div></section>
 
 <section class="pt-sec"><div class="wrap">
-<h2>お申し込みでうかがうこと</h2><p class="sub">料金の目安を正しく計算して、飼い主さんに安心してお選びいただくため、次のことをうかがいます。ほとんど選ぶだけで、あとからおたずねしなくて済むようにしています。</p>
+<h2>お申し込みでうかがうこと</h2>
 <div class="pt-need">{pt_need}</div>
 </div></section>
 
@@ -1115,38 +1141,45 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 <div class="form-card">
 <form id="partnerForm" class="pt-form" novalidate>
   <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-  <p class="form-foot" style="margin-top:0">料金の目安を正しく計算するための項目です。料金表と同じ内容で、わかる範囲で選んでください。</p>
+  
   <div class="group-h"><span>1</span>会社とご連絡先</div>
   <div class="f"><label for="p_co">会社名・屋号</label><input type="text" id="p_co" data-k="会社名・屋号" required autocomplete="organization"></div>
   <div class="f"><label for="p_name">ご担当者のお名前</label><input type="text" id="p_name" name="name" required autocomplete="name"></div>
   <div class="f"><label for="p_email">お問い合わせを受け取るメールアドレス<span class="any">飼い主さんからのお問い合わせがここに届きます。窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスを入れてください</span></label><input type="email" id="p_email" name="email" required autocomplete="email"></div>
-  <div class="f"><label for="p_email2">メールアドレス（確認のため、もう一度）</label><input type="email" id="p_email2" required autocomplete="email"></div>
-  <div class="f"><label for="p_cc">控えも届けたいメールアドレス<span class="any">あれば。窓口の共有アドレス（info@ など）があると、担当の方がお休みでも見落としません</span></label><input type="email" id="p_cc" data-k="控えのメールアドレス" autocomplete="off"></div>
-  <div class="f"><label for="p_url">ホームページ<span class="any">あれば</span></label><input type="url" id="p_url" data-k="ホームページ" placeholder="https://"></div>
-  <div class="group-h"><span>2</span>エリア・時間・車</div>
-  <div class="f"><span class="lbl">お迎えできる都道府県</span><div class="checks" id="p_prefs" data-k="都道府県">{''.join(f'<label><input type="checkbox" value="{p}">{p}</label>' for p in PREFS47)}</div></div>
-  <div class="f"><label for="p_city">お迎えできる市区町村など<span class="any">わかれば</span></label><input type="text" id="p_city" data-k="市区町村など" maxlength="300" placeholder="例：市内全域と、となりの市まで"></div>
-  <div class="f"><label for="p_hours">受けられる曜日・時間帯</label><input type="text" id="p_hours" data-k="受けられる時間帯" required maxlength="200" placeholder="例：毎日 8:00〜20:00（定休日：水曜）"></div>
-  <div class="f"><label for="p_car">車の台数と種類</label><input type="text" id="p_car" data-k="車" required maxlength="200" placeholder="例：2台（ワンボックス、軽バン）"></div>
-  {pt_f("時間外の依頼", pt_sel("p_off", "時間外の依頼", ["受けない", "相談に応じる"]), "", "p_off")}
-  {pt_f("お迎えに行ける距離", '<div class="pt-q" data-k="お迎えに行ける距離" data-opt="1">' + pt_n("お店から ", "kmまで", opt=True) + '</div>', "わかれば")}
+  <div class="group-h"><span>2</span>お店とお迎えのエリア</div>
+  <div class="f"><label for="p_shop">車が出発するお店・事業所<span class="any">住所や店名を入れて、出てきた候補から選んでください</span></label>
+    <div class="pt-ac"><input type="text" id="p_shop" data-k="車が出発する場所" required autocomplete="off" placeholder="例：広島市安芸区矢野西／〇〇ペットタクシー"><ul id="p_shopList" hidden></ul><span class="ok" id="p_shopOk" hidden></span></div></div>
+  {pt_f("お迎えに行ける範囲", pt_sel("p_radius", "お迎えに行ける範囲", ["お店から10kmまで", "20kmまで", "30kmまで", "50kmまで", "80kmまで", "もっと遠くても行く"]), "", "")}
+  <div class="f"><span class="lbl">お迎えできる都道府県<span class="any">お店の場所と範囲から自動で選んでいます。ちがうところだけ直してください</span></span>
+    <div class="checks seg" id="p_prefs" data-k="都道府県"></div>
+    <details class="pt-prefs-more"><summary>ほかの都道府県も選ぶ</summary><div class="checks seg" id="p_prefs2">{''.join(f'<label><input type="checkbox" value="{p}"><span>{p}</span></label>' for p in PREFS47)}</div></details></div>
   {pt_f("行き先までの距離", pt_sel("p_dest", "行き先までの距離", ["決まりはない（遠くても行ける）", "お迎えの都道府県の中だけ", "距離に上限がある"])
-    + pt_if("p_dest", ["距離に上限がある"], pt_q("行き先までの上限", pt_n("乗っている距離 ", "kmまで"))), "", "p_dest")}
-  {pt_f("依頼を受けてから出発できるまで", pt_sel("p_prep", "出発できるまで", ["30分くらい", "1時間くらい", "2時間くらい", "3時間以上"], req=False), "わかれば", "p_prep")}
-  <div class="group-h"><span>3</span>乗せられる動物と条件</div>
-  <div class="f"><span class="lbl">乗せられる動物</span><div class="checks" id="p_animals" data-k="乗せられる動物">{''.join(f'<label><input type="checkbox" value="{a}">{a}</label>' for a in ["犬", "猫", "うさぎ・フェレットなどの小動物", "鳥", "爬虫類・両生類", "魚"])}</div></div>
+    + pt_if("p_dest", ["距離に上限がある"], pt_q("行き先までの上限", pt_n("乗っている距離 ", "kmまで"))), "", "")}
+  <div class="group-h"><span>3</span>受けられる時間と車</div>
+  <div class="f"><span class="lbl">受けられる曜日</span>{pt_chk("p_days", "受けられる曜日", ["月", "火", "水", "木", "金", "土", "日", "祝日"])}</div>
+  <div class="f"><span class="lbl">受けられる時間</span>{pt_sel("p_allday", "24時間", ["24時間", "時間を決めている"])}
+    <div class="pt-sub" data-if="p_allday" data-v="時間を決めている" hidden><div class="pt-time"><select id="p_from" aria-label="何時から">{''.join(f'<option value="{h}"' + (' selected' if h == 8 else '') + f'>{h}:00</option>' for h in range(0, 24))}</select>から<select id="p_to" aria-label="何時まで">{''.join(f'<option value="{h}"' + (' selected' if h == 20 else '') + f'>{h}:00</option>' for h in range(1, 25))}</select>まで</div></div></div>
+  {pt_f("時間外の依頼", pt_sel("p_off", "時間外の依頼", ["受けない", "相談に応じる"]), "", "")}
+  {pt_f("車の台数", pt_sel("p_cars", "車の台数", ["1台", "2台", "3台以上"]), "", "")}
+  <div class="f"><span class="lbl">車の種類<span class="any">あてはまるものすべて</span></span>{pt_chk("p_cartype", "車の種類", ["軽バン・軽自動車", "ミニバン・ワゴン", "大きめのワゴン（ハイエースなど）", "セダン"])}</div>
+  <div class="group-h"><span>4</span>乗せられる動物と条件</div>
+  <p class="pt-note">乗せられる動物のほかは、わかるところだけで大丈夫です。</p>
+  <div class="f"><span class="lbl">乗せられる動物</span>{pt_chk("p_animals", "乗せられる動物", ["犬", "猫", "うさぎ・フェレットなどの小動物", "鳥", "爬虫類・両生類", "魚"])}</div>
   {PT_COND}
   {PT_CARE}
-  <div class="group-h"><span>4</span>料金</div>
+  <div class="group-h"><span>5</span>料金とお支払い</div>
   {PT_FARE}
-  <div class="f"><span class="lbl">お支払い方法</span><div class="checks" id="p_pays" data-k="お支払い方法">{''.join(f'<label><input type="checkbox" value="{p}">{p}</label>' for p in PAYS)}</div></div>
-  <div class="group-h"><span>5</span>許可・保険など</div>
-  <div class="f"><label for="p_reg">動物取扱業の登録番号<span class="any">わかれば</span></label><input type="text" id="p_reg" data-k="動物取扱業の登録番号" maxlength="100" autocomplete="off"></div>
-  <div class="f"><label for="p_lic">事業の許可・届出<span class="any">わかれば</span></label><select id="p_lic" data-k="事業の許可・届出"><option value="">選んでください</option><option>一般乗用旅客自動車運送事業の許可（緑ナンバー）</option><option>貨物軽自動車運送事業の届出（黒ナンバー）</option><option>両方</option><option>そのほか・わからない</option></select></div>
-  <div class="f"><span class="lbl">スタッフの資格<span class="any">あてはまるものすべて</span></span><div class="checks" id="p_quals" data-k="スタッフの資格">{''.join(f'<label><input type="checkbox" value="{e(q)}">{e(q)}</label>' for q in PT_QUALS)}</div>
-    <input type="text" id="p_qual" data-k="スタッフの資格（そのほか）" maxlength="200" placeholder="そのほかの資格（例：ペット看護士（民間）、ドッグトレーナー）" aria-label="そのほかの資格"></div>
-  <div class="f"><label for="p_ins">加入している保険<span class="any">わかれば</span></label><input type="text" id="p_ins" data-k="保険" maxlength="200" placeholder="例：対人・対物無制限、ペットのケガの補償あり"></div>
-  <div class="f"><label for="p_msg">ほかに伝えたいこと<span class="any">あれば</span></label><textarea id="p_msg" data-k="そのほか" rows="4" maxlength="1000"></textarea></div>
+  <div class="f"><span class="lbl">お支払い方法</span>{pt_chk("p_pays", "お支払い方法", PAYS)}</div>
+  <details class="pt-more"><summary>わかれば（とばして大丈夫です）</summary>
+  <div class="f"><label for="p_cc">控えも届けたいメールアドレス<span class="any">あれば。窓口の共有アドレス（info@ など）があると、担当の方がお休みでも見落としません</span></label><input type="email" id="p_cc" data-k="控えのメールアドレス" autocomplete="off"></div>
+  <div class="f"><label for="p_url">ホームページ<span class="any">あれば</span></label><input type="url" id="p_url" data-k="ホームページ" placeholder="https://"></div>
+  {pt_f("依頼を受けてから出発できるまで", pt_sel("p_prep", "出発できるまで", ["30分くらい", "1時間くらい", "2時間くらい", "3時間以上"], req=False), "", "")}
+  {PT_FARE_MORE}
+  {pt_f("事業の許可・届出", pt_sel("p_lic", "事業の許可・届出", ["緑ナンバー（旅客の許可）", "黒ナンバー（貨物軽自動車の届出）", "両方"], req=False), "", "")}
+  <div class="f"><span class="lbl">スタッフの資格</span>{pt_chk("p_quals", "スタッフの資格", [q for q in PT_QUALS if q != "とくになし"])}</div>
+  <div class="f"><label for="p_reg">動物取扱業の登録番号</label><input type="text" id="p_reg" data-k="動物取扱業の登録番号" maxlength="100" autocomplete="off"></div>
+  <div class="f"><label for="p_msg">ほかに伝えたいこと</label><textarea id="p_msg" data-k="そのほか" rows="3" maxlength="1000"></textarea></div>
+  </details>
   <label class="agree"><input type="checkbox" id="p_agree" required><span><a href="/#privacy">個人情報の取り扱い</a>を確認し、同意します。提携の内容は<a href="/partner/terms/">提携規約</a>をご覧ください（同意のお手続きは、あらためてメールでご案内します）。</span></label>
   <p id="p_err" role="alert" style="display:none;color:#c0392b;font-size:.88rem"></p>
   <button class="btn" type="submit">申し込む{ARROW}</button>
@@ -1157,77 +1190,7 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 </div></section>
 </main>
 <script>
-(function(){{
-  var GAS_URL = "{gas}";
-  var f = document.getElementById("partnerForm"), err = document.getElementById("p_err");
-  function picked(id){{ return [].map.call(document.querySelectorAll("#" + id + " input:checked"), function(x){{ return x.value; }}); }}
-  function shown(x){{ return !x.closest("[hidden]"); }}
-  // 選んだ答えに合わせて、くわしい欄を出す（data-if＝どの選択欄か、data-v＝出す答え）
-  function sync(){{
-    f.querySelectorAll("[data-if]").forEach(function(d){{
-      var v = document.getElementById(d.dataset.if).value;
-      d.hidden = d.dataset.v.split("|").indexOf(v) < 0;
-    }});
-  }}
-  f.addEventListener("change", sync); sync();
-  // 数字の欄（.pt-q）は「3000円で 5kmまで」のように1行にまとめる
-  function rowText(q){{
-    var out = [];
-    q.querySelectorAll("input,select").forEach(function(x){{
-      var v = x.value.trim();
-      if (v) out.push(x.tagName === "SELECT" ? v : (x.dataset.p || "") + v + (x.dataset.u || ""));
-    }});
-    return out.join(" ");
-  }}
-  // 都道府県がほとんどのときは「全国（◯◯を除く）」と短く書く
-  function prefsText(){{
-    var on = picked("p_prefs"), off = [].map.call(document.querySelectorAll("#p_prefs input:not(:checked)"), function(x){{ return x.value; }});
-    return on.length >= 30 ? (off.length ? "全国（" + off.join("・") + "を除く" + on.length + "都道府県）" : "全国47都道府県") : on.join("・");
-  }}
-  function missing(){{
-    var bad = [].filter.call(f.querySelectorAll(":invalid"), shown)[0];
-    if (bad) return bad;
-    if (!picked("p_prefs").length) return document.querySelector("#p_prefs input");
-    if (!picked("p_animals").length) return document.querySelector("#p_animals input");
-    var qs = [].filter.call(f.querySelectorAll(".pt-q"), shown);
-    for (var i = 0; i < qs.length; i++) {{
-      var x = [].filter.call(qs[i].querySelectorAll("input,select"), function(y){{ return !y.dataset.opt && !y.value.trim(); }})[0];
-      if (x) return x;
-    }}
-    return null;
-  }}
-  f.addEventListener("submit", function(e){{
-    e.preventDefault(); err.style.display = "none";
-    var bad = missing();
-    var mismatch = !bad && document.getElementById("p_email").value.trim() !== document.getElementById("p_email2").value.trim();
-    if (mismatch) bad = document.getElementById("p_email2");
-    if (bad) {{ err.textContent = mismatch ? "メールアドレスが2つの欄で違っています。" : bad.id === "p_agree" ? "確認のチェックを入れてください。" : bad.type === "checkbox" ? (bad.closest("#p_animals") ? "乗せられる動物を選んでください。" : "お迎えできる都道府県を選んでください。") : bad.type === "url" && bad.value ? "URLはhttps://から入れてください。" : "まだ入力されていない項目があります。"; err.style.display = "block"; bad.focus(); return; }}
-    var lines = [], co = document.getElementById("p_co").value.trim();
-    // apply＝同じ答えを項目ごとに。予約のしくみが提携先シートの行に写す（手で写さない。2026-11-10）
-    var apply = {{}};
-    f.querySelectorAll("[data-k]").forEach(function(x){{
-      if (!shown(x) || (x.parentNode.closest && x.parentNode.closest(".pt-q"))) return;
-      var v = x.id === "p_prefs" ? prefsText() : x.classList.contains("checks") ? picked(x.id).join("・") : x.classList.contains("pt-q") ? rowText(x) : x.value.trim();
-      if (v) {{ lines.push("【" + x.dataset.k + "】" + v); apply[x.dataset.k] = v; }}
-    }});
-    apply["都道府県の一覧"] = picked("p_prefs").join("・");
-    var body = new URLSearchParams();
-    body.append("kind", "contact"); body.append("topic", "提携のお申し込み（" + co + "）");
-    body.append("name", document.getElementById("p_name").value.trim() + "（" + co + "）");
-    body.append("email", document.getElementById("p_email").value.trim());
-    body.append("message", lines.join("\\n"));
-    body.append("apply", JSON.stringify(apply));
-    body.append("website", f.website.value);
-    var btn = f.querySelector("button"); btn.disabled = true;
-    fetch(GAS_URL, {{method: "POST", body: body}}).then(function(r){{ return r.json(); }}).then(function(r){{
-      if (!r || !r.ok) throw 0;
-      f.style.display = "none"; document.getElementById("p_done").style.display = "block";
-    }}).catch(function(){{
-      btn.disabled = false;
-      err.textContent = "うまく送れませんでした。時間をおいてもう一度お試しください。"; err.style.display = "block";
-    }});
-  }});
-}})();
+{pt_js}
 </script>
 """ + foot("/#form", band=False)
 os.makedirs(os.path.join(ROOT, "partner"), exist_ok=True)
