@@ -142,6 +142,17 @@ def _co_site():
         if u: out[v["partner_id"]] = [re.sub(r"（[^）]*）$", "", v["名前"]), u.group(1)]
     return out
 # まだ提携していない会社の社名と公式サイト（候補カードで名前を伏せた会社に出す。Nori 2026-11-08「すすめていいよ」）
+# 当日の精算の注意を出さない会社（Nori 2026-11-09「当てはまらない会社は対象外」）：待機料金なし（wait.yen が0）と、渋滞でも追加料金なし
+def _no_fee():
+    gs = open(os.path.join(ROOT, "booking", "Code.gs"), encoding="utf-8").read()
+    m = re.search(r"OPEN_PARTNERS:\s*\{([^}]*)\}", gs)
+    alias = {}
+    for p, d in (re.findall(r"'([^']+)'\s*:\s*'([^']+)'", m.group(1)) if m else []): alias.setdefault(d, []).append(p)
+    def ids(x): return [x["id"]] + alias.get(x["id"], [])
+    nowait = sorted(i for x in _DISP if ((x.get("fare") or {}).get("wait") or {}).get("yen") == 0 for i in ids(x))
+    nojam = sorted(i for x in _DISP if "渋滞でも追加料金なし" in (x.get("points") or []) for i in ids(x))
+    return {"nowait": nowait, "nojam": nojam}
+src = re.sub(r"/\*NO_FEE\*/.*?/\*/NO_FEE\*/", lambda m: "/*NO_FEE*/var NO_FEE = " + json.dumps(_no_fee(), ensure_ascii=False) + ";/*/NO_FEE*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*CO_SITE\*/.*?/\*/CO_SITE\*/", lambda m: "/*CO_SITE*/var CO_SITE = " + json.dumps(_co_site(), ensure_ascii=False) + ";/*/CO_SITE*/", src, count=1, flags=re.S)
 # 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、いない県に「（候補なし）」を付ける）
 src = re.sub(r"/\*AREA_PREFS\*/.*?/\*/AREA_PREFS\*/", lambda m: "/*AREA_PREFS*/var AREA_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}), ensure_ascii=False) + ";/*/AREA_PREFS*/", src, count=1, flags=re.S)
