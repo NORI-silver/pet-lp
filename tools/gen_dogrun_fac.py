@@ -102,9 +102,11 @@ def render(ctx, d):
       ensure_ascii=False, indent=1) + "\n</script>"
     taxi = ""
     if k != "高速道路":
-        taxi = (f'<p style="margin:10px 0"><a class="btn" data-taxi-fac="1" href="/?pref={e(pf)}&amp;to={e(_addr(d))}#form" '
+        taxi = (f'<p style="margin:10px 0"><a class="btn" data-taxi-fac="1" data-taxi-cta="dogrun-fac" href="/?pref={e(pf)}&amp;to={e(_addr(d))}#form" '
                 f'onclick="if(window.gtag)gtag(\'event\',\'facility_taxi\',{{cat:\'dogrun\',id:\'{e(d["id"])}\',pref:\'{e(pf)}\'}})">このドッグランまでのペットタクシーの料金をくらべる →</a></p>'
                 '<p class="emg-tips-note">大型犬や何頭もいっしょのときに。料金は各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません。</p>')
+    # 高速道路のSA・PAは外から入れないのでボタンは付けず、県のペットタクシーの料金くらべへのリンクだけ（tests/info-light.test.cjs）
+    area_li = "" if taxi else (f'<li><a href="{"/" + slug if slug in ("tokyo", "kanagawa", "saitama", "chiba") else "/area/" + slug}/#form" data-taxi-cta="dogrun-link">{e(pf)}のペットタクシーの料金をくらべる</a></li>')
     faq_html = "".join(f"<dt>{e(a)}</dt><dd>{e(b)}</dd>" for a, b in _faq(d))
     css = ("<style>.emg .tbl{overflow-x:auto;max-width:100%}.pp-tbl th,.pp-tbl td{font-size:13px;padding:5px 6px;text-align:left;vertical-align:top}"
            ".pp-tbl.cmp td,.pp-tbl.cmp th{white-space:nowrap}.pp-tbl.cmp td:first-child{white-space:normal;min-width:9em}.fac-pts{margin:6px 0 4px;padding-left:1.2em}.fac-pts li{margin:3px 0}</style>")
@@ -125,7 +127,7 @@ def render(ctx, d):
       {taxi}
       {_cmp(e, d)}
       {f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{faq_html}</dl></div>' if faq_html else ''}
-      <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">関連するページ</h2><ul class="other"><li><a href="/{G.SLUG}/{slug}/">{e(pf)}のドッグラン</a></li><li><a href="/{G.SLUG}/">全国のドッグラン</a></li><li><a href="/guide/large-dog/">大型犬の移動ガイド</a></li><li><a href="/hospital/night/{slug}/">{e(pf)}の夜間・救急の動物病院</a></li></ul></div>
+      <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">関連するページ</h2><ul class="other"><li><a href="/{G.SLUG}/{slug}/">{e(pf)}のドッグラン</a></li><li><a href="/{G.SLUG}/">全国のドッグラン</a></li><li><a href="/guide/large-dog/">大型犬の移動ガイド</a></li><li><a href="/hospital/night/{slug}/">{e(pf)}の夜間・救急の動物病院</a></li>{area_li}</ul></div>
       <p class="emg-free">当サイトは{e(nm)}とは別の運営で、お金をもらっていません。おすすめや順位ではありません。</p>
       <p class="emg-note">掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
