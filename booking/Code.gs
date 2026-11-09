@@ -134,8 +134,9 @@ var PARTNER_HEADERS = [
   'キャンセル規定',
   // 2026-11-10 追加（Nori「お客さまのフォームのあらゆる組み合わせに、マッチングさせられる事業者の情報を」）。提携の申し込み（/partner/）からそのまま入る（applyPartner_）
   // ○＝受けられる／×＝受けられない／空欄・「相談」＝分からない（引き受けるときに確かめる）
-  '行き先の範囲', '行き先の上限km', '違う種類を一緒に', 'かむ・興奮しやすい子', '短頭種の夏', 'うつる病気かもしれない子',
-  'ペットだけの受け渡し', '介護でできること', '介護で伺える人数', '介護で運べる体重', '介護の道具', '途中で寄る', 'ワクチンの証明', '申し込みの内容'
+  // 組み合わせ（Nori 2026-11-10「大型犬4頭乗せられて、さらに大人2人乗せられるってほんと？」）：大きい子の頭数ごとに一緒に乗れる大人の人数
+  '行き先の範囲', '行き先の上限km', '大型犬1頭のときの大人', '大型犬2頭のときの大人', '大型犬3頭のときの大人', '大型犬4頭以上のときの大人',
+  '小型だけで最大頭数のときの大人', '大型犬と大きな荷物', '介護でできること', '介護で伺える人数', '介護で運べる体重', '介護の道具', '途中で寄る', 'ワクチンの証明', '申し込みの内容'
 ];
 
 var ST = { OPEN: '手配中', DONE: '決定', NONE: '見つからず', CANCEL: '取り消し' };
@@ -303,9 +304,10 @@ function applyPartner_(a, name, email) {
       '大型犬の最大kg': /超え/.test(kg) ? 999 : n(kg), '大型犬の最大頭数': /乗せられない/.test(big) ? 0 : /以上/.test(big) ? 9 : n(big),
       'ペットだけOK': yn(g('ペットだけの送迎'), /^できる/, /できない/), 'ワクチン必須': /接種していなくても/.test(g('ワクチン')) ? '×' : '',
       '乗せられる動物': g('乗せられる動物'), 'キャンセル規定': g('キャンセル料'),
-      '行き先の範囲': g('行き先までの距離'), '行き先の上限km': n(g('行き先までの上限')), '違う種類を一緒に': g('違う種類の子を一緒に'),
-      'かむ・興奮しやすい子': g('かむ・興奮しやすい子'), '短頭種の夏': g('短頭種の夏の送迎'), 'うつる病気かもしれない子': g('うつる病気かもしれない子'),
-      'ペットだけの受け渡し': g('ペットだけの受け渡し'), '介護でできること': g('介護でできること'), '介護で伺える人数': g('介護で伺える人数'),
+      '行き先の範囲': g('行き先までの距離'), '行き先の上限km': n(g('行き先までの上限')), 
+      '大型犬1頭のときの大人': g('大きい子1頭のときの大人'), '大型犬2頭のときの大人': g('大きい子2頭のときの大人'), '大型犬3頭のときの大人': g('大きい子3頭のときの大人'),
+      '大型犬4頭以上のときの大人': g('大きい子4頭のときの大人'), '小型だけで最大頭数のときの大人': g('小さい子だけで頭数がいちばん多いときの大人'), '大型犬と大きな荷物': g('大きい子と大きな荷物'),
+      '介護でできること': g('介護でできること'), '介護で伺える人数': g('介護で伺える人数'),
       '介護で運べる体重': g('介護で運べる体重'), '介護の道具': g('介護の道具'), '途中で寄る': g('途中で寄る'), 'ワクチンの証明': g('ワクチン'),
       '申し込みの内容': JSON.stringify(a).slice(0, 45000)
     };
@@ -622,9 +624,9 @@ function partners_() {
       hours: cell('営業時間'), lead: num('何時間前まで'),
       careTri: tri('介助OK'), rideHours: cell('送迎できる時間'), maxKg: num('大型犬の最大kg'), maxBig: num('大型犬の最大頭数'),
       lendKg: num('貸し出しケージの最大kg'), petOnly: tri('ペットだけOK'), vacMust: tri('ワクチン必須'),
-      destScope: cell('行き先の範囲'), destKm: num('行き先の上限km'), mix: tri3_(cell('違う種類を一緒に')),
-      bite: tri3_(cell('かむ・興奮しやすい子')), brachy: tri3_(cell('短頭種の夏')), sick: tri3_(cell('うつる病気かもしれない子')),
-      hand: cell('ペットだけの受け渡し'), careCan: cell('介護でできること'), careStaff: num('介護で伺える人数'), careStaffMore: /増や/.test(cell('介護で伺える人数')),
+      destScope: cell('行き先の範囲'), destKm: num('行き先の上限km'), combo: [comboOf_(cell('小型だけで最大頭数のときの大人')), comboOf_(cell('大型犬1頭のときの大人')), comboOf_(cell('大型犬2頭のときの大人')),
+        comboOf_(cell('大型犬3頭のときの大人')), comboOf_(cell('大型犬4頭以上のときの大人'))], comboLug: tri3_(cell('大型犬と大きな荷物')),
+      careCan: cell('介護でできること'), careStaff: num('介護で伺える人数'), careStaffMore: /増や/.test(cell('介護で伺える人数')),
       careKg: /超え/.test(cell('介護で運べる体重')) ? Infinity : num('介護で運べる体重'), careTools: cell('介護の道具'), via: tri3_(cell('途中で寄る')),
       vacProof: cell('ワクチンの証明')
     });
@@ -639,8 +641,16 @@ function tri3_(v) {
   if (/^(×|✕|x|いいえ|no)$/i.test(v) || /受けられない|乗せられない|できない/.test(v)) return false;
   return true;
 }
-// 短頭種（夏の暑さで息が苦しくなりやすい犬種・猫種）
-var BRACHY_RE = /フレンチ|ブルドッグ|ブルドック|パグ|ボストン|シーズー|シー・ズー|ペキニーズ|狆|チン|ボクサー|キャバリア|ブリュッセル|ペルシャ|エキゾチック|ヒマラヤン/;
+// 組み合わせの答え → 一緒に乗れる大人の人数。-1＝その頭数は乗せられない、null＝分からない
+function comboOf_(v) {
+  v = String(v || '').trim();
+  if (!v) return null;
+  if (/乗せられない|^×$/.test(v)) return -1;
+  if (/乗れない|ペットだけ/.test(v)) return 0;
+  if (/以上/.test(v)) return 9;
+  var m = toHalf_(v).match(/\d+/);
+  return m ? Number(m[0]) : null;
+}
 // 47都道府県（行き先の住所から都道府県を読む）
 var PREF47 = ['北海道','青森','岩手','宮城','秋田','山形','福島','茨城','栃木','群馬','埼玉','千葉','東京','神奈川','新潟','富山','石川','福井','山梨','長野','岐阜','静岡','愛知','三重','滋賀','京都','大阪','兵庫','奈良','和歌山','鳥取','島根','岡山','広島','山口','徳島','香川','愛媛','高知','福岡','佐賀','長崎','熊本','大分','宮崎','鹿児島','沖縄'];
 function prefIn_(t) {
@@ -743,7 +753,7 @@ function petsOf_(r) {
   if (!Array.isArray(a) || !a.length) a = [{ weight: r['体重kg'], care: r['介助'] }];
   if (a.length === 1 && !a[0].species) a[0].species = r['種類'];
   return a.map(function (p) { return { kg: Number(p.weight) || 0, care: p.care || '', vac: p.vaccine === '済', sp: String(p.species || ''), breed: String(p.breed || ''), need: (p.care_need || []).concat(p.care_note ? [p.care_note] : []), needList: p.care_need || [],
-    rabies: p.rabies === '済', bite: p.bite === '1', sick: p.sick === '1' }; });
+    rabies: p.rabies === '済' }; });
 }
 // 犬・猫のほかの子の種類（small＝うさぎ・フェレット・ハムスターなどの小動物、bird＝鳥、reptile＝爬虫類・両生類、fish＝魚、other＝そのほか）。犬・猫なら ''
 // フォームの「その他」で選んだ種類（種類の欄に入る）と、くわしい種類の欄から読む（Nori 2026-10-31「犬、猫以外の動物の利用もできる事業者さん」）
@@ -823,7 +833,18 @@ function checks_(pt, r) {
     var maxBig = pt.maxBig !== null ? pt.maxBig : isVan_(pt) ? CONFIG.VAN_BIG_DOGS : null;
     if (maxBig !== null && bigs.length > maxBig) ng.push('大型犬' + bigs.length + '頭' + (pt.maxBig === null ? '（軽バンは' + maxBig + '頭まで）' : ''));
     else if (maxBig === null && bigs.length >= 2) ask.push('大型犬' + bigs.length + '頭が一緒に乗れる');
-    if (n.riders + bigs.length >= 3) ask.push('大型犬' + bigs.length + '頭と大人' + n.riders + '人が一緒に乗れる');
+    // 組み合わせ：申し込みで大きい子の頭数ごとの大人の人数が分かっていれば、それで決める
+    var cap = (pt.combo || [])[Math.min(bigs.length, 4)];
+    if (cap === -1) ng.push('大型犬' + bigs.length + '頭');
+    else if (cap !== null && cap !== undefined) {
+      ask = ask.filter(function (x) { return x !== '大人' + n.riders + '人が一緒に乗れる'; }); // 人数は組み合わせの答えで分かる
+      if (n.riders > cap) ng.push('大型犬' + bigs.length + '頭と大人' + n.riders + '人（' + (cap ? '大人' + cap + '人まで' : '大人は乗れない') + '）'); }
+    else if (n.riders + bigs.length >= 3) ask.push('大型犬' + bigs.length + '頭と大人' + n.riders + '人が一緒に乗れる');
+    if (n.luggage) { if (pt.comboLug === false) ng.push('大型犬と大きな荷物'); else if (pt.comboLug == null && pt.luggage === true) ask.push('大型犬と多めの荷物を一緒に載せられる'); }
+  } else if (n.pets >= 2 && pt.combo && pt.combo[0] !== null && pt.combo[0] !== undefined && n.riders > pt.combo[0]) {
+    // 小さい子だけ：いちばん多い頭数のときの大人の人数を超えるときは、その頭数なら外し、少ない頭数なら確かめる
+    if (pt.pets !== null && n.pets >= pt.pets) ng.push(n.pets + '匹と大人' + n.riders + '人');
+    else ask.push(n.pets + '匹と大人' + n.riders + '人が一緒に乗れる');
   }
   // ケージ
   if (!fitsCage_(pt, r)) ng.push('ケージの条件');
@@ -879,24 +900,6 @@ function moreChecks_(pt, r, pets, n, ng, ask) {
   }
   // 途中で寄る
   if (String(r['経由地'] || '').trim()) tri(pt.via, '', '途中で寄る', '途中で寄れる（' + clip_(r['経由地'], 40) + '）');
-  // 違う種類の子が一緒
-  var kinds = {};
-  pets.forEach(function (p) { kinds[/^犬$/.test(p.sp) ? 'dog' : /^猫$/.test(p.sp) ? 'cat' : (animalKind_(p) || 'dog')] = 1; });
-  if (Object.keys(kinds).length > 1) tri(pt.mix, '', '違う種類の子を一緒に', '違う種類の子（' + pets.map(function (p) { return p.sp || '犬'; }).filter(function (x, i, a) { return a.indexOf(x) === i; }).join('と') + '）を一緒に乗せられる');
-  // かむ・興奮しやすい子、うつる病気かもしれない子
-  if (pets.some(function (p) { return p.bite; })) tri(pt.bite, '', 'かむことがある・興奮しやすい子', 'かむことがある・興奮しやすい子を乗せられる');
-  if (pets.some(function (p) { return p.sick; })) tri(pt.sick, '', '下痢や嘔吐がある子', '下痢や嘔吐がある子（うつる病気かもしれない）を乗せられる');
-  // 短頭種の夏（6〜9月）
-  var at = r['希望日時'] ? new Date(r['希望日時']) : null;
-  var mon = at && isFinite(at.getTime()) ? new Date(at.getTime() + 9 * 3600000).getUTCMonth() + 1 : 0;
-  var flat = pets.filter(function (p) { return BRACHY_RE.test(p.breed); });
-  if (flat.length && mon >= 6 && mon <= 9) tri(pt.brachy, '', '短頭種の夏の送迎', '短頭種（' + flat[0].breed + '）の夏の送迎ができる');
-  // ペットだけのときの受け渡し（お客さまの「渡す人」「受け取る人」から）
-  if (n.riders === 0 && pt.petOnly !== false && pt.hand) {
-    var memo = String(r['メモ'] || ''), facility = /病院|ホテル|サロン|施設|受付|スタッフ|保育園|ペットシッター/.test(memo), key = /鍵|かぎ|カギ|留守/.test(memo);
-    if (facility && !/施設/.test(pt.hand)) ask.push('病院・ホテルなど施設の人との受け渡しができる');
-    if (key && !/鍵/.test(pt.hand)) ask.push('鍵を預かって家から連れ出す・家に戻すことができる');
-  }
 }
 
 // 介護：お客さまが選んだ「どんな手助けが必要ですか？」と、会社の「介護でできること」「運べる体重」「人数」「道具」をくらべる

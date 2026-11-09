@@ -2041,10 +2041,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       '<div class="f opt-lite"><span class="lbl">介護は必要ですか？<span class="need">必須</span></span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true) +
         '<div class="care-box" hidden><span class="lbl">どんな手助けが必要ですか？<span class="any">あてはまるものすべて</span></span><div class="chks">' +
         CARE_OPTS.map(function(c){ return '<label class="chk"><input type="checkbox" name="' + k + '_care_need" value="' + c + '"> ' + c + '</label>'; }).join('') + '</div>' +
-        '<label for="' + k + '_care_note" class="lbl" style="margin-top:6px">くわしいこと<span class="any">わかれば</span></label><input type="text" id="' + k + '_care_note" name="' + k + '_care_note" maxlength="200" placeholder="例：後ろ足が立たない。3階でエレベーターなし"></div></div>' +
-      '<div class="f opt-lite"><span class="lbl">気をつけてほしいこと<span class="any">あてはまれば</span></span><div class="chks">' +
-        '<label class="chk"><input type="checkbox" name="' + k + '_bite" value="1"> かむことがある・興奮しやすい</label>' +
-        '<label class="chk"><input type="checkbox" name="' + k + '_sick" value="1"> 下痢や嘔吐がある（うつる病気かもしれない）</label></div></div>';
+        '<label for="' + k + '_care_note" class="lbl" style="margin-top:6px">くわしいこと<span class="any">わかれば</span></label><input type="text" id="' + k + '_care_note" name="' + k + '_care_note" maxlength="200" placeholder="例：後ろ足が立たない。3階でエレベーターなし"></div></div>';
     return el;
   }
   // 入力済みのカードは残したまま、数だけ増やす・減らす
@@ -2143,16 +2140,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var care = g("care"), dog = !g("species") || g("species") === "犬";
       return { species:g("species") === "その他" && g("kind") ? g("kind") : g("species"), breed:g("breed"), weight:g("weight"), age:g("age"), sex:g("sex"), cage:g("cage"), care:care,
         vaccine: g("vac") ? "済" : "", rabies: dog && g("rabies") ? "済" : "",
-        care_need: care === "必要" ? fd.getAll(k + "_care_need").map(String) : [], care_note: care === "必要" ? g("care_note") : "",
-        bite: g("bite") ? "1" : "", sick: g("sick") ? "1" : "" };
+        care_need: care === "必要" ? fd.getAll(k + "_care_need").map(String) : [], care_note: care === "必要" ? g("care_note") : "" };
     });
   }
   function petLine(p, i){
     return (i + 1) + "匹目：" + [p.species, p.breed, p.weight ? p.weight + "kg" : "", p.age ? p.age + "歳" : "", p.sex,
       ({"持ち込む":"ケージ持ち込み","なし":"ケージなし希望","借りたい":"ケージを借りたい","どれでも":"ケージはあり・なしどちらでも"})[p.cage] || p.cage,
       p.vaccine ? "混合ワクチン済み" : "", p.rabies ? "狂犬病予防注射済み" : "",
-      p.care === "必要" ? "介助必要" + ((p.care_need || []).length || p.care_note ? "（" + (p.care_need || []).concat(p.care_note ? [p.care_note] : []).join("／") + "）" : "") : p.care ? "介助いらない" : "",
-      p.bite ? "かむことがある・興奮しやすい" : "", p.sick ? "下痢や嘔吐がある" : ""].filter(String).join("・");
+      p.care === "必要" ? "介助必要" + ((p.care_need || []).length || p.care_note ? "（" + (p.care_need || []).concat(p.care_note ? [p.care_note] : []).join("／") + "）" : "") : p.care ? "介助いらない" : ""].filter(String).join("・");
   }
 
 
@@ -2672,8 +2667,6 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       c.querySelector("input[name$=_rabies]").checked = p.rabies === "済";
       c.querySelectorAll("input[name$=_care_need]").forEach(function(x){ x.checked = (p.care_need || []).indexOf(x.value) >= 0; });
       if (p.care_note != null) $(k + "_care_note").value = p.care_note;
-      c.querySelector("input[name$=_bite]").checked = p.bite === "1";
-      c.querySelector("input[name$=_sick]").checked = p.sick === "1";
       syncPetCard(c);
     });
   }
