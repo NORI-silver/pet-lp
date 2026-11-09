@@ -1704,7 +1704,26 @@ def _lastmod(u):
 open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   "".join(f'  <url><loc>{u}</loc><lastmod>{_lastmod(u)}</lastmod></url>\n' for u in urls) + '</urlset>\n')
-open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /booking/\nDisallow: /docs/\n\nSitemap: {SITE}/sitemap.xml\n")
+# [B] 分野ごとのサイトマップ（2026-11-09 戦略担当「サイトマップを分野ごとに分けて」）。sitemap.xml（全部）はそのまま残し、
+# 同じURLを分野ごとの /sitemaps/<分野>.xml にも入れて、/sitemap_index.xml でまとめる。Search Console でサイトマップごとの
+# 登録数が出るので、分野ごとの登録率（品質の関門）を数えられる。分野はURLの最初のフォルダで決める（ペットタクシーの地域・トップ・規約などは taxi）。
+SITEMAP_CATS = {"guide": "guide", "sougi": "sougi", "dogrun": "dogrun", "hospital": "hospital", "pet-hotel": "pet-hotel",
+                "pet-sitter": "pet-sitter", "dog-trainer": "dog-trainer", "rojin-home": "rojin-home", "trimming": "trimming", "jichitai": "jichitai"}
+def _sm_cat(u):
+  return SITEMAP_CATS.get(u[len(SITE) + 1:].split("/")[0], "taxi")
+_sm_groups = {}
+for u in urls: _sm_groups.setdefault(_sm_cat(u), []).append(u)
+os.makedirs(os.path.join(ROOT, "sitemaps"), exist_ok=True)
+for _c in os.listdir(os.path.join(ROOT, "sitemaps")):
+  if _c.endswith(".xml") and _c[:-4] not in _sm_groups: os.remove(os.path.join(ROOT, "sitemaps", _c))
+for _c, _us in _sm_groups.items():
+  open(os.path.join(ROOT, "sitemaps", _c + ".xml"), "w", encoding="utf-8").write(
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    "".join(f'  <url><loc>{u}</loc><lastmod>{_lastmod(u)}</lastmod></url>\n' for u in _us) + '</urlset>\n')
+open(os.path.join(ROOT, "sitemap_index.xml"), "w", encoding="utf-8").write(
+  '<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  "".join(f'  <sitemap><loc>{SITE}/sitemaps/{_c}.xml</loc><lastmod>{max(_lastmod(u) for u in _sm_groups[_c])}</lastmod></sitemap>\n' for _c in sorted(_sm_groups)) + '</sitemapindex>\n')
+open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /booking/\nDisallow: /docs/\n\nSitemap: {SITE}/sitemap.xml\nSitemap: {SITE}/sitemap_index.xml\n")
 nf = head("ページが見つかりません｜ペットタクシー予約窓口", "お探しのページは見つかりませんでした。", SITE + "/404.html", '<meta name="robots" content="noindex">') + f'''
 <main><section class="area-hero"><div class="wrap" style="text-align:center">
 <h1>ページが見つかりませんでした</h1><p class="lede">URLが変わったか、削除された可能性があります。</p>
