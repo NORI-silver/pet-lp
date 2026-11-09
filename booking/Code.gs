@@ -397,7 +397,7 @@ function requestText_(r, pt) {
   return pt.name + ' ' + (pt.person ? pt.person + '様' : 'ご担当者さま') + '\n\n' +
     'ペットタクシーの検索サイト「' + CONFIG.SERVICE_NAME + '」です。飼い主さんから、送迎のお問い合わせが届きました。\n' +
     (isAsk_(r) ? '★飼い主さんのお名前・ご連絡先は、飼い主さんが予約を確定した時点でお知らせします。\n★お返事の内容（お迎え時刻・確定料金）は、お返事から' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。そのあいだに飼い主さんが予約を確定したときは、お引き受けください。お返事のあとにほかのご予約が入ったときは、お返事のリンクを開いて「このお返事を取り下げる」を押してください。\n\n' : '★お客さまのお名前・ご連絡先は、引き受けが決まった時点でお知らせします（リンクから引き受けた場合はその場で表示されます）。\n\n') +
-    rideText_(r) + retAsk_(r) + estText_(r) + '\n■ お支払い：' + payForPartner_(pt) + askText_(pt, r) + '\n\n' +
+    rideText_(r) + retAsk_(r) + waitRuleForPartner_(r) + estText_(r) + '\n■ お支払い：' + payForPartner_(pt) + askText_(pt, r) + '\n\n' +
     (isAsk_(r) ? '空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。お受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです）。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。\n'
       : isQuoteReq_(r) ? 'お見積もりのご依頼です。お客さまは、ほかの会社のお見積もりとくらべて1社を選びます。\nお受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです）。お客さまが貴社を選んだら、お名前・ご連絡先をお知らせします。\n'
       : needsChoice_(r) ? 'お客さまが選んだ' + pickedIds_(r).length + '社にお声がけしています。お受けいただける場合は、下のリンクからお迎え時刻と確定料金（税込）をご入力ください（数字を入れるだけです）。お客さまが引き受けた会社の中から1社を選んだ時点で決まり、お名前・ご連絡先をお知らせします。\n'
@@ -432,6 +432,15 @@ var RET_WAYS = ['待つ（病院などで終わるまで待機）', 'あとで�
 // 往復のときだけ：待つか一度戻るかは、お客さまの料金が安くなるほうを会社に選んでもらう
 function retAsk_(r) {
   return isRound_(r) && !r['帰りのやり方'] ? '\n■ 帰りのやり方：病院などで待つか、一度戻ってあとで迎えに行くかは、お客さまの料金が安くなるほうを貴社で選んでください（確定料金は選んだやり方の往復の合計で）' : '';
+}
+// 往復の待ち時間は、当日の実際の待ち時間で精算してもらう（Nori 2026-11-09「事業者側にもそこは実際の時間で精算してもらうように」）
+// 当日の道路事情（渋滞・通行止め・道順の変更）で料金表どおりに変わる分も、実際の時間・道のりで精算してもらう（Nori 2026-11-09「当日の道路事情などで料金は変わる可能性もある」）
+function waitRuleForPartner_(r) {
+  return (isRound_(r) ? '\n■ 待ち時間の料金：病院などで待つときは、当日の実際の待ち時間で精算してください。待つやり方の確定料金は、お問い合わせの帰りの時刻まで待った場合の金額でお返事ください' : '') +
+    '\n■ 当日の精算：当日の道路事情（渋滞・通行止め・道順の変更など）' + (isRound_(r) ? 'や待ち時間' : '') + 'で貴社の料金表どおりに料金が変わる分は、実際の時間・道のりで精算してください（お客さまにも、当日の事情で最終的なお支払いが変わることがあるとお伝えしています）';
+}
+function waitRuleForCustomer_(r) {
+  return isRound_(r) ? '　※病院などで待っていてもらうときの待ち時間の料金は、当日の実際の待ち時間で精算します。用事が長引いたときなど、最終的なお支払いは上の料金から変わることがあります。\n' : '';
 }
 function retWayOf_(v) { return RET_WAYS.filter(function (w) { return w === v; })[0] || ''; }
 function retSelect_() {
@@ -815,7 +824,7 @@ function acceptPage_(q) {
       : isQuoteReq_(r) ? '<div class="box"><b>お見積もりのご依頼です。</b>入れた確定料金をお客さまにお届けし、お客さまがほかの会社とくらべて1社を選びます。選ばれたら、お名前・ご連絡先をお知らせします。</div>'
       : needsChoice_(r) ? '<div class="box"><b>お客さまが' + pickedIds_(r).length + '社にお声がけしています。</b>引き受ける場合は確定料金を入れてください。お客さまが引き受けた会社の中から1社を選んだ時点で決まり、お名前・ご連絡先をお知らせします。</div>'
       : '<div class="box"><b>お客さまのお名前・電話番号・メールは、下の「引き受ける」を押すとすぐにこの画面に表示されます。</b>同じ内容をメールでもお送りします。先着1社です。</div>') +
-    '<div class="box">' + nl2br_(esc_(rideText_(r) + retAsk_(r) + '\n■ お支払い：' + payForPartner_(pt))) + '</div>' +
+    '<div class="box">' + nl2br_(esc_(rideText_(r) + retAsk_(r) + waitRuleForPartner_(r) + '\n■ お支払い：' + payForPartner_(pt))) + '</div>' +
     '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' +
     hidden_('a', 'accept') + hidden_('id', q.id) + hidden_('p', q.p) + hidden_('k', q.k) + hidden_('go', '1') +
     askBoxes_(pt, r) +
@@ -824,7 +833,7 @@ function acceptPage_(q) {
     '<label>確定料金・一般道で行く場合（円・税込' + (isRound_(r) ? '、往復の合計' : '') + '）<input type="number" name="fare" inputmode="numeric" min="0" step="10" placeholder="例：4800" required></label>' +
     '<label>確定料金・高速道路を使う場合（円・税込、高速代込み）<input type="number" name="fare_hw" inputmode="numeric" min="0" step="10" placeholder="高速を使わないなら空欄"></label>' +
     '<p class="note">入れた金額を、お客さまに確定の料金としてお伝えします。</p>' +
-    '<label>お客さまへ一言（なくてもOK。待機料を当日の実際の待ち時間で精算するときは、その旨と単価をここに書いてください）<textarea name="msg" maxlength="300" placeholder="例：前日にお電話します／待機料は当日の待ち時間で精算します（10分ごとに300円）"></textarea></label>' +
+    '<label>お客さまへ一言（なくてもOK。往復で待つときは、待機料の単価を書いていただくとお客さまに伝わります）<textarea name="msg" maxlength="300" placeholder="例：前日にお電話します／待機料は10分ごとに300円です"></textarea></label>' +
     '<button type="submit">' + (isAsk_(r) ? 'この内容でお返事する' : isQuoteReq_(r) ? 'この内容でお見積もりを送る' : 'この内容で引き受ける') + '</button></form>' +
     '';
   return page_(isAsk_(r) ? '空き状況と料金をお返事しますか？' : isQuoteReq_(r) ? 'お見積もりを出しますか？' : 'ご依頼を引き受けますか？', html);
@@ -868,7 +877,7 @@ function accept_(id, pt, at, fare, msg, fareHw, retWay) {
     '■ ペットタクシー：' + pt.name + '\n' +
     '■ お迎え予定：' + fmt_(at) + '\n' +
     '■ 料金（確定・税込）：' + fareText_(fare, fareHw) + '\n' +
-    '　※当日の交通事情・待ち時間・道順の変更などで、実際の料金が変わることがあります。くわしくは会社にご確認ください。\n' +
+    '　※当日の交通事情・待ち時間・道順の変更などで、実際の料金が変わることがあります。くわしくは会社にご確認ください。\n' + waitRuleForCustomer_(r) +
     (retWay ? '■ 帰りのやり方：' + retWay + '（料金が安くなるほうをペットタクシーに選んでもらいました）\n' : '') +
     '■ お支払い：' + payForCustomer_(pt) + '\n' +
     (msg ? '■ ペットタクシーから：' + msg + '\n' : '') +
@@ -908,7 +917,7 @@ function quote_(id, pt, at, fare, msg, fareHw, retWay) {
   toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】' + word + 'が届きました：' + pt.name + '（受付番号 ' + id + '）' + legTag_(r),
     r['お名前'] + ' 様\n\n「' + pt.name + '」から' + word + 'が届きました。' + (isAsk_(r) ? '下のお迎え予定の時刻で空いています。\n※まだ予約は確定していません。内容に納得できたら、下のリンクから「この内容で予約する」を押してください。\n\n' : 'まだ予約は決まっていません。\n\n') +
     '■ ペットタクシー：' + pt.name + '\n■ お迎え予定：' + fmt_(at) + '\n■ 料金（確定・税込）：' + fareText_(fare, fareHw) + '\n' +
-    '　※当日の交通事情・待ち時間・道順の変更などで、実際の料金が変わることがあります。くわしくは会社にご確認ください。\n' +
+    '　※当日の交通事情・待ち時間・道順の変更などで、実際の料金が変わることがあります。くわしくは会社にご確認ください。\n' + waitRuleForCustomer_(r) +
     (retWay ? '■ 帰りのやり方：' + retWay + '\n' : '') + '■ お支払い：' + payForCustomer_(pt) + '\n' + '■ 予約したあとのキャンセル：' + cancelRuleText_(pt) + '\n' + (msg ? '■ ペットタクシーから：' + msg + '\n' : '') +
     '■ この内容で予約できる期限：' + fmt_(new Date(quoteUntil_(mine))) + 'まで（過ぎると会社の空き状況が変わるため、この内容では予約できません）\n' +
     (isAsk_(r) ? '\n▼ この内容で予約する（押すと予約が確定し、この会社からご連絡があります）\n' : '\n▼ この会社に決める（押すと予約が決まり、この会社からご連絡があります）\n') + chooseUrl_(id, pt.id) +
