@@ -84,7 +84,7 @@
 | `terms/` `contact/` `partner/` | 利用規約・お問い合わせ・提携のご案内（生成。規約本文は `tools/terms.py`） |
 | `facility.js` | 情報ページ（火葬・霊園／シッター／トレーナー）のカードの動き（公式サイトの印・問い合わせ文・しぼりこみ・タクシー導線・解析）。手書き、生成の対象外。印とタグは `tools/facility_cards.py` |
 | `go/index.html` | メールのリンクを開くページ（手書き、生成の対象外、noindex） |
-| `sitemap.xml` `robots.txt` `404.html` | 生成 |
+| `sitemap.xml` `robots.txt` `404.html` | 生成。`sitemap.xml` は全部のページ。同じURLを分野ごと（taxi・guide・sougi・dogrun・hospital・pet-hotel など、URLの最初のフォルダ）に `sitemaps/<分野>.xml` にも入れ、`sitemap_index.xml` でまとめる（2026-11-09、分野ごとの登録率を Search Console で数えるため。`gen_areas.py` の `SITEMAP_CATS`）。新しい分野のフォルダを作ったら `SITEMAP_CATS` に足す |
 | `lib/` | 地図（Leaflet 1.9.4） |
 | `img/` | 写真（jpg と webp） |
 | `tools/` | 生成スクリプトとデータ：`gen_areas.py`、`guides.py`、`terms.py`、`prefs.py`、`fares.json`、`emergency.json`、`display_companies.json`（候補カードに表示だけする会社） |
