@@ -74,7 +74,14 @@ def item_html(e, cond, h):
     return (f'<div class="emg-item emg-co"><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>'
             f'<small>{e(h["city"])}・{e(h["hours"])}</small>{spec}{extra}'
             + (f'<div class="emg-score" data-id="{e(h["id"])}"></div>' if h.get("review_query") else '')
-            + (_taxi(h) if cond["src"] != "visit" else '') + '</div>')
+            + (_taxi(h) if cond["src"] != "visit" else '') + _fac(e, cond, h) + '</div>')
+
+def _fac(e, cond, h):
+    # 施設ページ（試しの30院、tools/gen_facpages.py）がある病院は、カードからつなぐ
+    if cond["src"] != "emg": return ''
+    import gen_facpages
+    x = next((y for y in gen_facpages.HOSPS if y["id"] == h.get("id")), None)
+    return f'<a class="emg-taxi" href="{gen_facpages.hhref(x)}">{e(h["name"])}のくわしい情報（受付時間・料金・行き方）→</a>' if x else ''
 
 def _taxi(h):
     # [B] 「この病院までのペットタクシー」：所在地を行き先に入れてフォームへ（2026-11-08）。往診は家に来るので付けない

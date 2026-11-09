@@ -1637,6 +1637,10 @@ for _cat in (gen_prefcats.SOUGI, gen_prefcats.NIGHT):
 import gen_sougi_fac
 gen_sougi_fac.write_all(ROOT, _pp_ctx0)
 hosp_urls = hosp_urls + gen_sougi_fac.urls(SITE)
+# [B] SEO：夜間・救急の動物病院と犬と泊まれる宿の施設ごとのページ（試しの30ずつ。tools/gen_facpages.py）
+import gen_facpages
+gen_facpages.write_all(ROOT, _pp_ctx0)
+hosp_urls = hosp_urls + gen_facpages.urls(SITE)
 # 全国の老犬ホーム・老猫ホーム（/rojin-home/）：お金を取らない情報ページ（tools/gen_rojin.py、データ tools/rojin.json）
 gen_rojin.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
