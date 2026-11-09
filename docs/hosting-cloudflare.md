@@ -1,10 +1,10 @@
 # [F] 公開先を Cloudflare Pages へ移す手順（元に戻す方法つき）
 
-2026-11-08 作成。まだ移していません。移す時期は「月10万PV」か「手数料を始める日の前」の早いほう（戦略担当の判断）。Nori さんへの作業のお願いは、時期が来たら戦略担当がまとめて出す。
+2026-11-08 作成。まだ移していません。移す時期は「月5万PV」（2026-11-09 戦略担当「倍速」で10万PVから前倒し）か「手数料を始める日の前」の早いほう（戦略担当の判断）。Nori さんへの作業のお願いは、時期が来たら戦略担当がまとめて出す。
 
 ## なぜ移すか
 
-- GitHub Pages は転送量の目安が月100GB。平均250KB/PVだと約40万PVで超えるので、余裕をみて10万PVで移す。
+- GitHub Pages は転送量の目安が月100GB。平均250KB/PVだと約40万PVで超えるので、余裕をみて5万PVで移す（手数料を始める前の商用の決まりにも早めに合わせる）。
 - GitHub Pages は「オンラインの商売や取引を主にするサイト」には使えない決まり（[GitHub Pages の制限](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)）。手数料を始めたら当たるおそれがある。
 - Cloudflare Pages は無料で商用に使え、静的なページの転送量に上限の記載がない。ファイルは2万まで（2026-11-08 で約630）、1ファイル25MiBまで、公開は月500回まで（[Cloudflare Pages の上限](https://developers.cloudflare.com/pages/platform/limits/)）。
 
