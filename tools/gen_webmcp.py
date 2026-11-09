@@ -66,6 +66,10 @@ def build(root):
     data["exotic_vet"] = _multi(hos["exotic"], ("animals", "spec"))
     data["large_facility_vet"] = _multi(hos["large"], ("spec",))
     data["dog_run"] = _multi(_j(root, "dogrun.json")["dogruns"], ("kind", "hours", "fee"))
+    import gen_dogrun_fac  # 施設ページがある施設は page を足す
+    for r in data["dog_run"]:
+        x = next((d for d in gen_dogrun_fac.PAGES if d["url"] == r.get("url") and d["name"] == r.get("name")), None)
+        if x: r["page"] = SITE + gen_dogrun_fac.href(x)
     data["senior_dog_home"] = _multi(_j(root, "rojin.json")["homes"], ("animals",))
     data["pet_sitter"] = _multi(_j(root, "sitters.json")["sitters"])
     data["dog_trainer"] = _multi(_j(root, "trainers.json")["trainers"], ("services",))

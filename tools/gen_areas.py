@@ -1619,6 +1619,10 @@ hosp_urls = hosp_urls + gen_jichitai.urls(SITE)
 gen_dogrun.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links, pref_href=pref_href,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_dogrun.urls(SITE)
+# [B] SEO：ドッグランの施設ごとのページ（試しの30施設。tools/gen_dogrun_fac.py、型は docs/facility-page.md）
+import gen_dogrun_fac
+gen_dogrun_fac.write_all(ROOT, dict(head=head, e=e, SITE=SITE, foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_dogrun_fac.urls(SITE)
 # ペットが亡くなったら（/sougi/）：お金を取らない情報ページ（tools/gen_sougi.py、データ tools/sougi.json）
 import gen_sougi
 gen_sougi.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
@@ -1704,7 +1708,24 @@ def _lastmod(u):
 open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   "".join(f'  <url><loc>{u}</loc><lastmod>{_lastmod(u)}</lastmod></url>\n' for u in urls) + '</urlset>\n')
-open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /booking/\nDisallow: /docs/\n\nSitemap: {SITE}/sitemap.xml\n")
+# [B] 分野ごとのサイトマップ（2026-11-09 戦略担当：検索への登録率を分野ごとに見るため）。sitemap.xml は全部のまま、同じURLを分野ごとにも分けて出す。
+_SM_CATS = ["guide", "area", "hospital", "dogrun", "sougi", "jichitai", "rojin-home", "dog-trainer", "pet-sitter", "trimming", "pet-hotel"]
+_sm_names = []
+for _c in _SM_CATS:
+  _us = [u for u in urls if u.startswith(f"{SITE}/{_c}/")]
+  if not _us: continue
+  _sm_names.append(f"sitemap-{_c}.xml")
+  open(os.path.join(ROOT, f"sitemap-{_c}.xml"), "w", encoding="utf-8").write(
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    "".join(f'  <url><loc>{u}</loc><lastmod>{_lastmod(u)}</lastmod></url>\n' for u in _us) + '</urlset>\n')
+# 施設ごとのページだけのサイトマップ（試しの登録率を見るため）
+import gen_sougi_fac, gen_dogrun_fac
+for _n, _us in (("sitemap-facility-sougi.xml", gen_sougi_fac.urls(SITE)), ("sitemap-facility-dogrun.xml", gen_dogrun_fac.urls(SITE))):
+  _sm_names.append(_n)
+  open(os.path.join(ROOT, _n), "w", encoding="utf-8").write(
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    "".join(f'  <url><loc>{u}</loc><lastmod>{_lastmod(u)}</lastmod></url>\n' for u in _us) + '</urlset>\n')
+open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /booking/\nDisallow: /docs/\n\nSitemap: {SITE}/sitemap.xml\n" + "".join(f"Sitemap: {SITE}/{_n}\n" for _n in _sm_names))
 nf = head("ページが見つかりません｜ペットタクシー予約窓口", "お探しのページは見つかりませんでした。", SITE + "/404.html", '<meta name="robots" content="noindex">') + f'''
 <main><section class="area-hero"><div class="wrap" style="text-align:center">
 <h1>ページが見つかりませんでした</h1><p class="lede">URLが変わったか、削除された可能性があります。</p>
