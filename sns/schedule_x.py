@@ -7,7 +7,7 @@ sns/posts.json の投稿を、まだ予約していない順に、火曜と金�
 予約先はペットタクシー用の無料 Typefully（APIキーは GitHub の Secret TYPEFULLY_API_KEY）。
 ユーザー名が pettaxi_yoyaku のアカウントにだけ入れる（ほかのアカウントには絶対に入れない）。
 
-使い方: TYPEFULLY_API_KEY=... python3 sns/schedule_x.py [件数(既定2)] [--dry]
+使い方: TYPEFULLY_API_KEY=... python3 sns/schedule_x.py [件数(既定は1週間分)] [--dry]
 """
 import json, os, subprocess, sys, time, datetime as dt, urllib.request, urllib.error
 
@@ -16,7 +16,10 @@ ROOT = os.path.dirname(HERE)
 API = "https://api.typefully.com/v2"
 HANDLES = {"pettaxi_yoyaku", "pet_kurashi", "petkurashi_mado"}  # ユーザー名を変えても同じアカウントに入れる
 JST = dt.timezone(dt.timedelta(hours=9))
-SLOTS = {1: 20, 4: 20}  # 火曜(1)・金曜(4) の20時
+# 投稿する曜日（月=0〜日=6）と時刻は posts.json の "x_days"・"x_hour" で決める（なければ火・金の20時）。
+# 無料の予約サービスは月10投稿までなので、毎日にするには有料のプランが要る。
+_cfg = json.load(open(os.path.join(HERE, "posts.json"), encoding="utf-8"))
+SLOTS = {d: _cfg.get("x_hour", 20) for d in _cfg.get("x_days", [1, 4])}
 # 文の決まり（AGENTS.md）。1つでも入っていたら予約しない。
 BAN = ["http", "www.", "手配", "取り次", "取次", "代理", "代わって", "完全予約制", "手配料", "今すぐ", "すぐ来", "24時間",
        "Google", "Gmail", "スプレッドシート", "くらい", "円まで", "予約できます"]
@@ -54,7 +57,7 @@ def next_slots(after, n):
 
 
 def main():
-    n = int(next((a for a in sys.argv[1:] if a.isdigit()), 2))
+    n = int(next((a for a in sys.argv[1:] if a.isdigit()), len(SLOTS)))  # 既定は1週間分
     dry = "--dry" in sys.argv
     if "--status" in sys.argv:  # 予約・投稿のようすを出すだけ（何も変えない）
         key = os.environ.get("TYPEFULLY_API_KEY") or sys.exit("TYPEFULLY_API_KEY がありません")
