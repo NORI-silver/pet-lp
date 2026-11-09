@@ -2011,7 +2011,7 @@ function agreePage_(q) {
       } finally { lock.releaseLock(); }
       log_('規約の同意：' + pt.id + ' ' + pt.name + ' ' + name + ' 版 ' + PTERMS_VER.hash);
       notifyAdmin_('提携規約に同意がありました：' + pt.name, pt.name + '（' + pt.id + '）が提携規約に同意しました。\n同意した方：' + name + (role ? '（' + role + '）' : '') +
-        '\n規約：' + ver + '\n記録：予約シートの「' + SHEET_AGREE + '」タブ\n\n問い合わせの受け付けを始めるのは、運営者が確かめてからです。');
+        '\n規約：' + ver + '\n記録：予約シートの「' + SHEET_AGREE + '」タブ' + (isOpen_(pt.id) ? '' : '\n\n問い合わせの受け付けを始めるのは、運営者が確かめてからです。'));
       return page_('提携規約への同意を受け付けました', '<p>' + esc_(pt.name) + ' さま、ありがとうございます。提携規約への同意を記録しました。</p>' +
         '<div class="box">同意した日時：' + esc_(when(now)) + '<br>同意した方：' + esc_(name) + (role ? '（' + esc_(role) + '）' : '') + '<br>規約：' + esc_(ver) + '</div>' +
         '<p>このページは控えとして保存しておいてください。規約はいつでも <a href="' + esc_(termsUrl) + '" target="_blank">提携規約のページ</a> で見られます。</p>');
@@ -2028,7 +2028,7 @@ function agreePage_(q) {
     '<label style="display:flex;gap:8px;align-items:flex-start;font-weight:600"><input type="checkbox" name="ok" value="1" required style="width:auto;margin-top:6px">' +
     '<span>' + esc_(pt.name) + ' として、提携規約（' + esc_(ver) + '）を読み、同意します。</span></label>' +
     '<button type="submit">提携規約に同意する</button></form>' +
-    '<p class="note">押すと、同意した日時・お名前・規約の版を当サイトの記録に残します。同意しただけでは、まだお問い合わせは届きません。受け付けの開始は、あらためてメールでお知らせします。</p>');
+    '<p class="note">押すと、同意した日時・お名前・規約の版を当サイトの記録に残します。' + (isOpen_(pt.id) ? 'お問い合わせの受け付けはすでに始まっています。' : '同意しただけでは、まだお問い合わせは届きません。受け付けの開始は、あらためてメールでお知らせします。') + '</p>');
 }
 // 同意のページのリンクを「同意のリンク」タブに書き出す（スクリプトの画面で1回動かす。何も送らない）
 function makeAgreeLinks() {

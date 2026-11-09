@@ -33,12 +33,14 @@ def _card(e, t):
     if t.get("assoc"):
         extra += '<small>協会の一覧：' + e("・".join(ASSOC.get(a, a) for a in t["assoc"].split("・"))) + '</small>'
     if t.get("addr"): extra += f'<small>所在地：{e(t["addr"])}</small>'
+    # 教室の会場が所在地と別のとき（事業者本人のお申し出。エコル 2026-11-09）。タクシーの行き先も会場にする
+    if t.get("venue"): extra += f'<small>教室の会場：{e(t["venue"])}</small>'
     tags = FC.trainer_tags(t)
     # 通う場所があるとき（教室・幼稚園・預かり）だけ「ここまでのペットタクシー」を出す（出張だけの事業者の所在地は事務所のことがあるため）
     to = ""
     if t.get("addr") and set(tags) & {"教室・グループ", "幼稚園・保育園", "預かり訓練"}:
         pf = t["prefs"][0]
-        to = (t["addr"] if t["addr"].startswith(pf) else pf + t["addr"])
+        to = t.get("venue_addr") or (t["addr"] if t["addr"].startswith(pf) else pf + t["addr"])
     return (f'<div class="emg-item emg-co"{FC.attrs(e, "trainer", t, tags, t["name"], to, "教室")}><a href="{e(t["url"])}" target="_blank" rel="noopener"><b>{e(t["name"])}</b></a>'
             f'<small>{e(t["city"])}</small>{extra}'
             + (f'<div class="emg-score" data-id="{e(t["id"])}"></div>' if t.get("review_query") else "") + "</div>")
