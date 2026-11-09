@@ -86,6 +86,11 @@ _PPTS = _DCJ.get("partner_points", {})
 _PLIM = _DCJ.get("partner_limits", {})
 booking_src = re.sub(r"/\*PARTNER_POINTS\*/.*?/\*/PARTNER_POINTS\*/", lambda m: "/*PARTNER_POINTS*/var PARTNER_POINTS = " + json.dumps(_PPTS, ensure_ascii=False) + ";/*/PARTNER_POINTS*/", booking_src, count=1, flags=re.S)
 booking_src = re.sub(r"/\*PARTNER_LIMITS\*/.*?/\*/PARTNER_LIMITS\*/", lambda m: "/*PARTNER_LIMITS*/var PARTNER_LIMITS = " + json.dumps(_PLIM, ensure_ascii=False) + ";/*/PARTNER_LIMITS*/", booking_src, count=1, flags=re.S)
+# 提携規約の版（改定日＋本文の指紋）。同意のページ（booking/Code.gs の agreePage_）が、どの版に同意したかを記録する
+import hashlib as _hl
+from partner_terms import PTERMS as _PT, PTERMS_REVISED as _PTR
+PTERMS_HASH = _hl.sha256(json.dumps(_PT, ensure_ascii=False).encode("utf-8")).hexdigest()[:12]
+booking_src = re.sub(r"/\*PTERMS_VER\*/.*?/\*/PTERMS_VER\*/", lambda m: "/*PTERMS_VER*/var PTERMS_VER = " + json.dumps({"revised": _PTR, "hash": PTERMS_HASH}, ensure_ascii=False) + ";/*/PTERMS_VER*/", booking_src, count=1, flags=re.S)
 open(booking_path, "w", encoding="utf-8").write(booking_src)
 
 src = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
@@ -786,10 +791,10 @@ from partner_terms import PTERMS, PTERMS_DATE, PTERMS_REVISED
 pterms_url = SITE + "/partner/terms/"
 ptp = head("提携規約（ペットタクシー会社さま向け）｜ペットタクシー予約窓口", "ペットタクシー予約窓口と提携してくださるペットタクシー会社さま向けの規約です。問い合わせとお返事、予約の確定、手数料（当面はいただきません）、個人情報、提携の終了などを定めています。", pterms_url, "") + f"""
 <main>
-<section class="area-hero"><div class="wrap"><h1>提携規約<small style="display:block;font-size:.95rem;color:var(--o-d)">ペットタクシー会社さま向け</small></h1><p class="lede">当サイトと提携してくださる会社さまとの約束です。お申し込みのあと、この規約をメールでお送りし、同意のお返事をいただいてから提携が始まります。</p></div></section>
+<section class="area-hero"><div class="wrap"><h1>提携規約<small style="display:block;font-size:.95rem;color:var(--o-d)">ペットタクシー会社さま向け</small></h1><p class="lede">当サイトと提携してくださる会社さまとの約束です。お申し込みのあと、同意のページのリンクをメールでお送りし、そのページで「同意する」を押していただいてから提携が始まります。</p></div></section>
 <section><div class="wrap prose terms">
 {''.join(f'<h2>{e(h)}</h2>' + ''.join(terms_block(v) for v in body) for h, body in PTERMS)}
-<p class="small">{PTERMS_DATE} 制定・{PTERMS_REVISED} 改定</p>
+<p class="small">{PTERMS_DATE} 制定・{PTERMS_REVISED} 改定（版の番号 {PTERMS_HASH}）</p>
 <p><a href="/partner/">提携のご案内にもどる</a></p>
 </div></section>
 </main>
@@ -1066,7 +1071,7 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 <ol class="pt-steps">
 <li><b>このページから申し込む</b><span>下のフォームに、エリア・時間帯・料金などを入れて送ってください（10分ほど。ほとんど選ぶだけです）。</span></li>
 <li><b>内容の確認</b><span>当サイトで公式サイトなどを拝見し、数日以内にメールでご連絡します。わからない点はメールでおたずねします。お問い合わせを受け取るメールアドレスには確認のメールをお送りし、届くこと・お返事できることを確かめます。</span></li>
-<li><b>提携規約に同意</b><span>お問い合わせとお返事のしかた、個人情報の扱いなどを定めた<a href="/partner/terms/">提携規約</a>をメールでお送りします。ご確認のうえ、同意のお返事をください。</span></li>
+<li><b>提携規約に同意</b><span>お問い合わせとお返事のしかた、個人情報の扱いなどを定めた<a href="/partner/terms/">提携規約</a>への同意のページのリンクをメールでお送りします。ご確認のうえ、ページの「提携規約に同意する」を押してください（押した日時と規約の版を記録します）。</span></li>
 <li><b>お問い合わせのお届け開始</b><span>候補の一覧で問い合わせできる状態になり、条件に合うお問い合わせがメールで届きはじめます。</span></li>
 </ol>
 </div></section>
@@ -1110,7 +1115,7 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
   <div class="f"><label for="p_lic">事業の許可・届出<span class="any">わかれば</span></label><select id="p_lic" data-k="事業の許可・届出"><option value="">選んでください</option><option>一般乗用旅客自動車運送事業の許可（緑ナンバー）</option><option>貨物軽自動車運送事業の届出（黒ナンバー）</option><option>両方</option><option>そのほか・わからない</option></select></div>
   <div class="f"><label for="p_ins">加入している保険<span class="any">わかれば</span></label><input type="text" id="p_ins" data-k="保険" maxlength="200" placeholder="例：対人・対物無制限、ペットのケガの補償あり"></div>
   <div class="f"><label for="p_msg">ほかに伝えたいこと<span class="any">あれば</span></label><textarea id="p_msg" data-k="そのほか" rows="4" maxlength="1000"></textarea></div>
-  <label class="agree"><input type="checkbox" id="p_agree" required><span><a href="/#privacy">個人情報の取り扱い</a>を確認し、同意します。提携の内容は<a href="/partner/terms/">提携規約</a>をご覧ください（同意は内容の確認のあと、メールでいただきます）。</span></label>
+  <label class="agree"><input type="checkbox" id="p_agree" required><span><a href="/#privacy">個人情報の取り扱い</a>を確認し、同意します。提携の内容は<a href="/partner/terms/">提携規約</a>をご覧ください（同意は内容の確認のあと、お送りする同意のページでいただきます）。</span></label>
   <p id="p_err" role="alert" style="display:none;color:#c0392b;font-size:.88rem"></p>
   <button class="btn" type="submit">申し込む{ARROW}</button>
   <p class="form-foot">内容を確認して、数日以内にメールでご連絡します。</p>
