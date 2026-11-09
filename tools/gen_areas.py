@@ -328,8 +328,9 @@ AREAS = [
    ("東京で夜間や早朝のお迎えも頼めますか？", "フォームは24時間送れますが、会社への確認はメールで行うため、連絡はすべてメールです。夜間・早朝は引き受けられる会社が見つからないこともあるため、早めのご予約をおすすめします。" + night_text("東京都") + "急な体調不良で一刻を争うときは、まず動物病院に電話してください。"),
   ]),
  dict(slug="kanagawa", places=["jarmec-kawasaki-taxi","dvms-yokohama-taxi","wancott-taxi"], pref="神奈川県", short="神奈川・横浜", h1="神奈川・横浜・川崎", count=5,
-  title=f"神奈川・横浜・川崎のペットタクシー｜対応する{_ncos('神奈川')}社の料金・夜間割増をくらべて無料で問い合わせ｜ペットタクシー予約窓口",
-  desc=f"神奈川県に来てくれるペットタクシー{_ncos('神奈川')}社（24時間受付{_n24('神奈川')}社・当日も受けると書いている{_nsame('神奈川')}社）の料金の目安を、横浜・川崎・相模原・藤沢などお迎えの場所から無料でくらべられます。日本動物高度医療センター川崎本院や都内の専門病院、羽田空港への移動に。何社にでもまとめて問い合わせ、返事を見てから予約できます。",
+  # [B] SEO 11/9：84表示・0クリック（16.7位。ペットタクシー・タクシー 犬連れ・ペットタクシー 川崎）。数と料金の答えを先に出す。
+  title=f"神奈川のペットタクシー{_ncos('神奈川')}社の料金をくらべる｜24時間受付{_n24('神奈川')}社・当日も受ける{_nsame('神奈川')}社（横浜・川崎・相模原）",
+  desc=f"神奈川県に来てくれるペットタクシー{_ncos('神奈川')}社の料金の目安を無料でくらべられます。10kmなら片道{nat_text(10).split('（')[0]}が目安（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。川崎市に来てくれる会社も。犬連れでふつうのタクシーに乗れる条件もご案内。空き状況と料金を問い合わせ、返事を見てから予約できます。",
   lede="横浜・川崎から湘南エリアまで。動物病院への通院や、都内の専門病院への移動、羽田空港への送迎に。お迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。",
   body=[
    ("神奈川・横浜・川崎でペットタクシーを使う理由", "横浜市や川崎市は坂道や丘の上の住宅地が多く、大型犬やシニアの子を連れて歩いたり、公共交通で移動したりするのは大変です。ペットタクシーなら玄関先まで迎えに来てくれるので、抱っこやキャリーで長く歩かせる必要がありません。"),
@@ -1637,6 +1638,10 @@ for _cat in (gen_prefcats.SOUGI, gen_prefcats.NIGHT):
 import gen_sougi_fac
 gen_sougi_fac.write_all(ROOT, _pp_ctx0)
 hosp_urls = hosp_urls + gen_sougi_fac.urls(SITE)
+# [B] SEO：夜間・救急の動物病院と犬と泊まれる宿の施設ごとのページ（試しの30ずつ。tools/gen_facpages.py）
+import gen_facpages
+gen_facpages.write_all(ROOT, _pp_ctx0)
+hosp_urls = hosp_urls + gen_facpages.urls(SITE)
 # 全国の老犬ホーム・老猫ホーム（/rojin-home/）：お金を取らない情報ページ（tools/gen_rojin.py、データ tools/rojin.json）
 gen_rojin.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))

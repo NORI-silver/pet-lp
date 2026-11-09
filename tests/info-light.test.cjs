@@ -3,7 +3,7 @@
 // ・ペットタクシーへの案内（data-taxi-cta）を必ず持つ（tools/taxi_cta.py）
 // 上限を超えたら、全国のページに全部の施設を並べず、県のページへのリンクにする（施設が増えたとき用）
 const fs=require('node:fs'),path=require('node:path'),zlib=require('node:zlib'),assert=require('node:assert/strict');
-const DIRS=['hospital','dogrun','jichitai','sougi','pet-hotel','pet-sitter','trimming','dog-trainer','rojin-home'];
+const DIRS=['hospital','dogrun','jichitai','sougi','pet-hotel','pet-sitter','trimming','dog-trainer','rojin-home','inu-yado'];
 const ALLOW=new Set(['/ga.js','/reviews.js','/facility.js']);
 const MAX_GZ=60*1024, MAX_INLINE=24*1024, MAX_JS=24*1024;
 let pages=0, big=[0,''];
