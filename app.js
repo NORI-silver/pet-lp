@@ -2235,7 +2235,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     function field(e){
       var el = e.target, n = fieldName(el);
       if (!/^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName) || !n || n === "website") return; // 迷惑投稿よけの隠し欄は数えない
-      if (!begun) { begun = true; viewed(); var p = {field_name: n}; for (var k in base) p[k] = base[k]; track("form_start", p); }
+      if (!begun) { begun = true; viewed(); var p = {field_name: n}; for (var k in base) p[k] = base[k]; track("form_input_start", p); }
       if (e.type === "change" && !done[n]) { done[n] = 1; track("form_field", {field_name: n}); }
     }
     form.addEventListener("focusin", field);
