@@ -131,7 +131,11 @@ var PARTNER_HEADERS = [
   // 2026-11-01 追加：「犬・猫」「犬・猫・うさぎ・鳥」「すべて」など。書いてあればそれ以外の動物の依頼は送らない（列がなくても動く。空欄＝確かめてもらう）
   '乗せられる動物',
   // 2026-11-01 追加：確定のあとのキャンセル料など（例「前日まで無料・当日は運賃の50%」）。書いてあれば予約する前のお客さまに見せる
-  'キャンセル規定'
+  'キャンセル規定',
+  // 2026-11-10 追加（Nori「お客さまのフォームのあらゆる組み合わせに、マッチングさせられる事業者の情報を」）。提携の申し込み（/partner/）からそのまま入る（applyPartner_）
+  // ○＝受けられる／×＝受けられない／空欄・「相談」＝分からない（引き受けるときに確かめる）
+  '行き先の範囲', '行き先の上限km', '違う種類を一緒に', 'かむ・興奮しやすい子', '短頭種の夏', 'うつる病気かもしれない子',
+  'ペットだけの受け渡し', '介護でできること', '介護で伺える人数', '介護で運べる体重', '介護の道具', '途中で寄る', 'ワクチンの証明', '申し込みの内容'
 ];
 
 var ST = { OPEN: '手配中', DONE: '決定', NONE: '見つからず', CANCEL: '取り消し' };
@@ -251,13 +255,64 @@ function contact_(p) {
   var reqId = clip_(p.req_id, 20);
   var sh = ensureSheet_(SpreadsheetApp.getActive(), '問い合わせ', ['受付日時', '種類', 'お名前', 'メール', '受付番号', '内容', '対応']);
   sh.appendRow([new Date(), topic, name, email, reqId ? "'" + reqId : '', msg, '']);
+  // 提携の申し込みは、答えを項目ごとに提携先シートへ写す（受付中は×のまま。2026-11-10 Nori「あらゆる組み合わせにマッチングさせられる情報を」）
+  var applied = '';
+  if (/^提携のお申し込み/.test(topic) && p.apply) {
+    try { applied = applyPartner_(JSON.parse(String(p.apply).slice(0, 20000)), name, email); }
+    catch (err) { log_('提携の申し込みの写しでエラー: ' + err); }
+  }
   try {
     MailApp.sendEmail({ to: adminEmail_(), replyTo: email, name: CONFIG.SERVICE_NAME,
       subject: '[お問い合わせ] ' + topic + '：' + name + ' 様',
       body: '■ 種類：' + topic + '\n■ お名前：' + name + ' 様\n■ メール：' + email + (reqId ? '\n■ 受付番号：' + reqId : '') +
-        '\n\n' + msg + '\n\n――――――――――\nこのメールに返信すると、お客さま（' + email + '）に届きます。\n予約シート「問い合わせ」タブにも残しています：' + SpreadsheetApp.getActive().getUrl() });
+        '\n\n' + msg + (applied ? '\n\n■ 提携先シートに ' + applied + ' として入れました（受付中は×。提携を始めるときに○にします）' : '') + '\n\n――――――――――\nこのメールに返信すると、お客さま（' + email + '）に届きます。\n予約シート「問い合わせ」タブにも残しています：' + SpreadsheetApp.getActive().getUrl() });
   } catch (err) { log_('問い合わせメールの送信エラー: ' + err); }
   return { ok: true };
+}
+
+// 提携の申し込みの答え（/partner/ のフォームの項目名 → 値）を、提携先シートの1行にする。受付中は×（だれにも送らない）。新しいIDを返す
+function applyPartner_(a, name, email) {
+  if (!a || typeof a !== 'object') return '';
+  var g = function (k) { return String(a[k] == null ? '' : a[k]).trim(); };
+  var n = function (t) { var m = toHalf_(t).match(/\d+/); return m ? Number(m[0]) : ''; };
+  var yn = function (t, yes, no) { return yes.test(t) ? '○' : no.test(t) ? '×' : ''; };
+  var co = g('会社名・屋号');
+  if (!co) return '';
+  var lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    var sh = ensureSheet_(SpreadsheetApp.getActive(), SHEET_PARTNER, PARTNER_HEADERS);
+    var head = sh.getRange(1, 1, 1, Math.max(1, sh.getLastColumn())).getValues()[0].map(String);
+    var add = PARTNER_HEADERS.filter(function (h) { return head.indexOf(h) < 0; });
+    if (add.length) { sh.getRange(1, head.length + 1, 1, add.length).setValues([add]).setFontWeight('bold').setBackground('#fff1e6'); head = head.concat(add); }
+    var ids = sh.getLastRow() > 1 ? sh.getRange(2, head.indexOf('ID') + 1, sh.getLastRow() - 1, 1).getValues().map(function (r) { return Number(String(r[0]).replace(/\D/g, '')) || 0; }) : [];
+    var id = 'P' + ('00' + (Math.max.apply(null, [0].concat(ids)) + 1)).slice(-3);
+    var same = sh.getLastRow() > 1 && sh.getRange(2, head.indexOf('メール') + 1, sh.getLastRow() - 1, 1).getValues().some(function (r) { return String(r[0]).trim().toLowerCase() === String(email).toLowerCase(); });
+    var ride = g('飼い主さんの同乗'), pets = g('乗せられる頭数'), big = g('大きい子（20kg以上）の数'), kg = g('乗せられる体重'), cage = g('ケージ'), same0 = g('当日の依頼');
+    var lead = n(g('当日の締め切り'));
+    if (lead === '') lead = /前日まで/.test(same0) ? 24 : /2日前/.test(same0) ? 48 : /3日前/.test(same0) ? 72 : '';
+    var row = {
+      'ID': id, '事業者名': co, '担当者名': String(name || '').replace(/（[^）]*）$/, ''), '対応エリア': g('都道府県の一覧') || g('都道府県'), 'メール': email, '受付中': '×',
+      '大型犬OK': /乗せられない/.test(big) ? '×' : big ? '○' : '', '介助OK': yn(g('介護が必要な子'), /^受けられる/, /受けられない/),
+      'メモ': '提携の申し込み ' + Utilities.formatDate(new Date(), TZ, 'yyyy/MM/dd HH:mm') + '（受付中は×。提携を始めるときに○）' + (same ? '／同じメールの行がほかにもあります' : ''),
+      '車のタイプ': g('車'), '同乗できる人数': /できない/.test(ride) ? 0 : /以上/.test(ride) ? 9 : n(ride), '乗せられるペット数': /以上/.test(pets) ? 5 : n(pets),
+      '荷物多めOK': /^載せられる/.test(g('大きな荷物')) ? '○' : /載せられない/.test(g('大きな荷物')) ? '×' : '',
+      'ケージ必須': /なくても/.test(cage) ? '×' : /必要/.test(cage) ? '○' : '', 'ケージ貸し出し': /貸し出しあり/.test(cage) ? '○' : /貸し出しなし/.test(cage) ? '×' : '',
+      '支払い方法': g('お支払い方法'), '支払いのタイミング': g('お支払いのタイミング'), '営業時間': g('受けられる時間帯'), '何時間前まで': lead,
+      '送迎できる時間': /受けない/.test(g('時間外の依頼')) ? g('受けられる時間帯') : '',
+      '大型犬の最大kg': /超え/.test(kg) ? 999 : n(kg), '大型犬の最大頭数': /乗せられない/.test(big) ? 0 : /以上/.test(big) ? 9 : n(big),
+      'ペットだけOK': yn(g('ペットだけの送迎'), /^できる/, /できない/), 'ワクチン必須': /接種していなくても/.test(g('ワクチン')) ? '×' : '',
+      '乗せられる動物': g('乗せられる動物'), 'キャンセル規定': g('キャンセル料'),
+      '行き先の範囲': g('行き先までの距離'), '行き先の上限km': n(g('行き先までの上限')), '違う種類を一緒に': g('違う種類の子を一緒に'),
+      'かむ・興奮しやすい子': g('かむ・興奮しやすい子'), '短頭種の夏': g('短頭種の夏の送迎'), 'うつる病気かもしれない子': g('うつる病気かもしれない子'),
+      'ペットだけの受け渡し': g('ペットだけの受け渡し'), '介護でできること': g('介護でできること'), '介護で伺える人数': g('介護で伺える人数'),
+      '介護で運べる体重': g('介護で運べる体重'), '介護の道具': g('介護の道具'), '途中で寄る': g('途中で寄る'), 'ワクチンの証明': g('ワクチン'),
+      '申し込みの内容': JSON.stringify(a).slice(0, 45000)
+    };
+    sh.appendRow(head.map(function (h) { return row[h] === undefined ? '' : row[h]; }));
+    log_('提携の申し込みを提携先シートに入れました: ' + id + ' ' + co);
+    return id;
+  } finally { lock.releaseLock(); }
 }
 
 function receive_(p) {
@@ -566,10 +621,32 @@ function partners_() {
       payMethod: cell('支払い方法'), payWhen: cell('支払いのタイミング'),
       hours: cell('営業時間'), lead: num('何時間前まで'),
       careTri: tri('介助OK'), rideHours: cell('送迎できる時間'), maxKg: num('大型犬の最大kg'), maxBig: num('大型犬の最大頭数'),
-      lendKg: num('貸し出しケージの最大kg'), petOnly: tri('ペットだけOK'), vacMust: tri('ワクチン必須')
+      lendKg: num('貸し出しケージの最大kg'), petOnly: tri('ペットだけOK'), vacMust: tri('ワクチン必須'),
+      destScope: cell('行き先の範囲'), destKm: num('行き先の上限km'), mix: tri3_(cell('違う種類を一緒に')),
+      bite: tri3_(cell('かむ・興奮しやすい子')), brachy: tri3_(cell('短頭種の夏')), sick: tri3_(cell('うつる病気かもしれない子')),
+      hand: cell('ペットだけの受け渡し'), careCan: cell('介護でできること'), careStaff: num('介護で伺える人数'), careStaffMore: /増や/.test(cell('介護で伺える人数')),
+      careKg: /超え/.test(cell('介護で運べる体重')) ? Infinity : num('介護で運べる体重'), careTools: cell('介護の道具'), via: tri3_(cell('途中で寄る')),
+      vacProof: cell('ワクチンの証明')
     });
   }
   return out;
+}
+
+// 申し込みの答え（受けられる／相談して決める／受けられない、できる／できない、○／×）→ true / false / null（相談・空欄＝分からない）
+function tri3_(v) {
+  v = String(v || '').trim();
+  if (!v || /相談/.test(v)) return null;
+  if (/^(×|✕|x|いいえ|no)$/i.test(v) || /受けられない|乗せられない|できない/.test(v)) return false;
+  return true;
+}
+// 短頭種（夏の暑さで息が苦しくなりやすい犬種・猫種）
+var BRACHY_RE = /フレンチ|ブルドッグ|ブルドック|パグ|ボストン|シーズー|シー・ズー|ペキニーズ|狆|チン|ボクサー|キャバリア|ブリュッセル|ペルシャ|エキゾチック|ヒマラヤン/;
+// 47都道府県（行き先の住所から都道府県を読む）
+var PREF47 = ['北海道','青森','岩手','宮城','秋田','山形','福島','茨城','栃木','群馬','埼玉','千葉','東京','神奈川','新潟','富山','石川','福井','山梨','長野','岐阜','静岡','愛知','三重','滋賀','京都','大阪','兵庫','奈良','和歌山','鳥取','島根','岡山','広島','山口','徳島','香川','愛媛','高知','福岡','佐賀','長崎','熊本','大分','宮崎','鹿児島','沖縄'];
+function prefIn_(t) {
+  t = String(t || '');
+  var hit = PREF47.filter(function (x) { return t.indexOf(x === '北海道' ? x : x + (x === '東京' ? '都' : /^(大阪|京都)$/.test(x) ? '府' : '県')) >= 0; });
+  return hit.length === 1 ? hit[0] : '';
 }
 
 // 届けられる窓口があるか（電話だけの会社は対象外）
@@ -665,7 +742,8 @@ function petsOf_(r) {
   try { a = JSON.parse(r['ペットJSON'] || '[]'); } catch (e) { a = []; }
   if (!Array.isArray(a) || !a.length) a = [{ weight: r['体重kg'], care: r['介助'] }];
   if (a.length === 1 && !a[0].species) a[0].species = r['種類'];
-  return a.map(function (p) { return { kg: Number(p.weight) || 0, care: p.care || '', vac: p.vaccine === '済', sp: String(p.species || ''), breed: String(p.breed || ''), need: (p.care_need || []).concat(p.care_note ? [p.care_note] : []) }; });
+  return a.map(function (p) { return { kg: Number(p.weight) || 0, care: p.care || '', vac: p.vaccine === '済', sp: String(p.species || ''), breed: String(p.breed || ''), need: (p.care_need || []).concat(p.care_note ? [p.care_note] : []), needList: p.care_need || [],
+    rabies: p.rabies === '済', bite: p.bite === '1', sick: p.sick === '1' }; });
 }
 // 犬・猫のほかの子の種類（small＝うさぎ・フェレット・ハムスターなどの小動物、bird＝鳥、reptile＝爬虫類・両生類、fish＝魚、other＝そのほか）。犬・猫なら ''
 // フォームの「その他」で選んだ種類（種類の欄に入る）と、くわしい種類の欄から読む（Nori 2026-10-31「犬、猫以外の動物の利用もできる事業者さん」）
@@ -762,11 +840,7 @@ function checks_(pt, r) {
   }
   // 介護
   var careNeed = r['介助'] === '必要' || pets.some(function (p) { return p.care === '必要'; });
-  if (careNeed) {
-    if (pt.careTri === false) ng.push('介護が必要な子');
-    var what = [].concat.apply([], pets.map(function (p) { return p.need; }));
-    ask.push('介護が必要な子の送迎' + (what.length ? '（' + what.join('／') + '）' : '') + 'ができる');
-  }
+  if (careNeed) careChecks_(pt, pets, ng, ask);
   // ペットだけ
   if (n.riders === 0) {
     if (pt.petOnly === false) ng.push('ペットだけの送迎');
@@ -780,9 +854,76 @@ function checks_(pt, r) {
     var j = new Date(at.getTime() + 9 * 3600000), hr = j.getUTCHours() + j.getUTCMinutes() / 60;
     return nh.some(function (b) { var dlt = b - hr; return dlt > 0 && dlt <= 1; });
   })) ask.push('割増の時間（' + nh[0] + '時〜' + nh[1] + '時）をまたぐ分も、確定料金に入れる');
-  // ワクチン
-  if (pt.vacMust === true && pets.some(function (p) { return !p.vac; })) ask.push('混合ワクチンの接種が記入されていない子がいるが、乗れる');
+  // ワクチン：申し込みの「ワクチンの証明」があればそれで（狂犬病だけ／狂犬病と混合）、なければ前の列「ワクチン必須」（混合）
+  var dogs = pets.filter(function (p) { return /^犬$/.test(p.sp) || (!p.sp && !animalKind_(p)); });
+  if (/狂犬病/.test(pt.vacProof)) {
+    if (dogs.some(function (p) { return !p.rabies; })) ask.push('狂犬病の予防注射が記入されていない犬がいるが、乗れる（証明が必要な会社）');
+    if (/混合/.test(pt.vacProof) && pets.some(function (p) { return !p.vac; })) ask.push('混合ワクチンの接種が記入されていない子がいるが、乗れる（証明が必要な会社）');
+  } else if (/接種していれば/.test(pt.vacProof)) {
+    if (pets.some(function (p) { return !p.vac; })) ask.push('混合ワクチンの接種が記入されていない子がいるが、乗れる');
+  } else if (!pt.vacProof && pt.vacMust === true && pets.some(function (p) { return !p.vac; })) ask.push('混合ワクチンの接種が記入されていない子がいるが、乗れる');
+  moreChecks_(pt, r, pets, n, ng, ask);
   return { ng: ng, ask: ask };
+}
+
+// 2026-11-10 追加の条件（提携の申し込みの答えで判定。分からない会社は確かめてもらう）
+function moreChecks_(pt, r, pets, n, ng, ask) {
+  var tri = function (v, what, ngText, askText) { if (v === false) ng.push(ngText); else if (v == null || v === undefined) ask.push(askText); };
+  // 行き先までの距離
+  var km = Number(r['概算km']) || Number(((r._route || {}).km)) || 0;
+  if (pt.destKm && km > pt.destKm) ng.push('乗る距離 ' + Math.round(km) + 'km（' + pt.destKm + 'kmまで）');
+  if (/都道府県の中だけ/.test(pt.destScope || '')) {
+    var to = prefIn_(r['行き先']);
+    if (to && to !== r['都府県']) ng.push('行き先が' + to + '（お迎えの都道府県の中だけ）');
+    else if (!to && km > 40) ask.push('行き先（' + Math.round(km) + 'km先）まで行ける');
+  }
+  // 途中で寄る
+  if (String(r['経由地'] || '').trim()) tri(pt.via, '', '途中で寄る', '途中で寄れる（' + clip_(r['経由地'], 40) + '）');
+  // 違う種類の子が一緒
+  var kinds = {};
+  pets.forEach(function (p) { kinds[/^犬$/.test(p.sp) ? 'dog' : /^猫$/.test(p.sp) ? 'cat' : (animalKind_(p) || 'dog')] = 1; });
+  if (Object.keys(kinds).length > 1) tri(pt.mix, '', '違う種類の子を一緒に', '違う種類の子（' + pets.map(function (p) { return p.sp || '犬'; }).filter(function (x, i, a) { return a.indexOf(x) === i; }).join('と') + '）を一緒に乗せられる');
+  // かむ・興奮しやすい子、うつる病気かもしれない子
+  if (pets.some(function (p) { return p.bite; })) tri(pt.bite, '', 'かむことがある・興奮しやすい子', 'かむことがある・興奮しやすい子を乗せられる');
+  if (pets.some(function (p) { return p.sick; })) tri(pt.sick, '', '下痢や嘔吐がある子', '下痢や嘔吐がある子（うつる病気かもしれない）を乗せられる');
+  // 短頭種の夏（6〜9月）
+  var at = r['希望日時'] ? new Date(r['希望日時']) : null;
+  var mon = at && isFinite(at.getTime()) ? new Date(at.getTime() + 9 * 3600000).getUTCMonth() + 1 : 0;
+  var flat = pets.filter(function (p) { return BRACHY_RE.test(p.breed); });
+  if (flat.length && mon >= 6 && mon <= 9) tri(pt.brachy, '', '短頭種の夏の送迎', '短頭種（' + flat[0].breed + '）の夏の送迎ができる');
+  // ペットだけのときの受け渡し（お客さまの「渡す人」「受け取る人」から）
+  if (n.riders === 0 && pt.petOnly !== false && pt.hand) {
+    var memo = String(r['メモ'] || ''), facility = /病院|ホテル|サロン|施設|受付|スタッフ|保育園|ペットシッター/.test(memo), key = /鍵|かぎ|カギ|留守/.test(memo);
+    if (facility && !/施設/.test(pt.hand)) ask.push('病院・ホテルなど施設の人との受け渡しができる');
+    if (key && !/鍵/.test(pt.hand)) ask.push('鍵を預かって家から連れ出す・家に戻すことができる');
+  }
+}
+
+// 介護：お客さまが選んだ「どんな手助けが必要ですか？」と、会社の「介護でできること」「運べる体重」「人数」「道具」をくらべる
+// 受けられない会社は外す。できることがそろっている会社は確かめない（2026-11-10。前は介護の依頼はいつも確かめていた）
+function careChecks_(pt, pets, ng, ask) {
+  if (pt.careTri === false) { ng.push('介護が必要な子'); return; }
+  var cared = pets.filter(function (p) { return p.care === '必要'; });
+  if (!cared.length) cared = pets;
+  var needs = [].concat.apply([], cared.map(function (p) { return p.needList || []; })).filter(function (x, i, a) { return a.indexOf(x) === i; });
+  var notes = [].concat.apply([], cared.map(function (p) { return (p.need || []).filter(function (x) { return (p.needList || []).indexOf(x) < 0; }); }));
+  var maxKg = Math.max.apply(null, cared.map(function (p) { return p.kg; }));
+  var lift = needs.some(function (x) { return /歩けない|寝たきり|階段/.test(x); });
+  if (!pt.careCan) { // 申し込みの答えがない会社（前からの会社）は、いままでどおり確かめる
+    ask.push('介護が必要な子の送迎' + (needs.concat(notes).length ? '（' + needs.concat(notes).join('／') + '）' : '') + 'ができる');
+    return;
+  }
+  var miss = needs.filter(function (x) { return pt.careCan.indexOf(x) < 0; });
+  if (miss.length) ask.push('介護が必要な子の送迎（' + miss.join('／') + '）ができる');
+  if (lift && pt.careKg !== null && pt.careKg !== undefined && maxKg > pt.careKg) ng.push(maxKg + 'kgの子を抱えて・担架で運ぶ（' + pt.careKg + 'kgまで）');
+  else if (lift && maxKg >= CONFIG.LARGE_DOG_KG && pt.careStaff === 1 && !pt.careStaffMore) ask.push(maxKg + 'kgの子を1人で抱えて・担架で運べる');
+  var tools = pt.careTools || '';
+  if (tools) {
+    if (needs.some(function (x) { return /寝たきり/.test(x); }) && !/ストレッチャー|マット/.test(tools)) ask.push('寝たきりの子を運ぶ担架やマットを用意できる');
+    if (needs.some(function (x) { return /酸素|点滴/.test(x); }) && !/酸素/.test(tools)) ask.push('酸素ボンベや点滴を車に置ける・固定できる');
+    if (needs.some(function (x) { return /カート|バギー/.test(x); }) && !/スロープ|カート/.test(tools)) ask.push('カートやバギーごと乗れる');
+  }
+  if (notes.length) ask.push('介護のくわしいこと（' + notes.join('／') + '）に合わせられる');
 }
 
 // 「@ID」ではなく line.me のURL（個人アカウントなど）が書かれている場合。文面の入力済みでは開けないので、コピーして貼る
@@ -2240,6 +2381,7 @@ function selectionRide_(p) {
     '体重kg': Number(p.weight), '同乗人数': String(p.riders || ''), 'ペット数': Number(p.pet_count),
     'キャリー': String(p.cage || ''), '介助': String(p.care || ''), '荷物': String(p.luggage || ''),
     'ペットJSON': String(p.pets_json || ''), '帰りの日時': p.trip === '往復' ? parseJst_(p.return_datetime) : '',
+    '経由地': String(p.via || ''), '行き先': String(p.dropoff || ''),
     '_route': (function() { try { return JSON.parse(p.route_details || '{}') || {}; } catch (e) { return {}; } })()
   };
 }

@@ -1004,16 +1004,24 @@ PT_FARE = "".join([
   pt_f("お支払いのタイミング", pt_sel("p_paytime", "お支払いのタイミング", ["乗る前", "降りるとき", "後日（請求書など）"]), "", "p_paytime"),
   pt_f("料金でほかに伝えたいこと", '<textarea id="p_fare" data-k="料金の補足" rows="3" maxlength="500" placeholder="例：往復は1割引き、1kmごとの料金は10円未満を切り捨て"></textarea>', "あれば", "p_fare"),
 ])
+# ペットだけのときの受け渡し（お客さまのフォームの「お迎えでペットを渡す人」「行き先で受け取る人」に合わせる）
+PT_HAND = ["病院・ホテルなど施設の人から受け取る", "病院・ホテルなど施設の人に渡す", "家族など飼い主さん以外の人から受け取る・渡す", "鍵を預かって家から連れ出す・家に戻す"]
 PT_COND = "".join([
   pt_f("1回に乗せられる頭数", pt_sel("p_maxpets", "乗せられる頭数", ["1頭", "2頭まで", "3頭まで", "4頭以上"]), "", "p_maxpets"),
   pt_f("大きい子（20kg以上）を一度に乗せられる数", pt_sel("p_large", "大きい子（20kg以上）の数", ["乗せられない", "1頭まで", "2頭まで", "3頭以上"]), "", "p_large"),
   pt_f("乗せられる体重（いちばん大きい子）", pt_sel("p_maxkg", "乗せられる体重", ["10kgまで", "20kgまで", "30kgまで", "40kgまで", "50kgまで", "50kgを超えても乗せられる"]), "", "p_maxkg"),
   pt_f("飼い主さんの同乗", pt_sel("p_ride", "飼い主さんの同乗", ["同乗できない", "1人まで", "2人まで", "3人まで", "4人以上"]), "", "p_ride"),
-  pt_f("ペットだけの送迎（飼い主さんが乗らない）", pt_sel("p_petonly", "ペットだけの送迎", ["できる", "できない"]), "", "p_petonly"),
+  pt_f("ペットだけの送迎（飼い主さんが乗らない）", pt_sel("p_petonly", "ペットだけの送迎", ["できる", "できない"])
+    + pt_if("p_petonly", ["できる"], '<b>できる受け渡し</b><span class="any">あてはまるものすべて</span><div class="checks" id="p_hand" data-k="ペットだけの受け渡し">'
+        + "".join(f'<label><input type="checkbox" value="{e(x)}">{e(x)}</label>' for x in PT_HAND) + '</div>'), "", "p_petonly"),
   pt_f("ケージ・キャリー", pt_sel("p_cage", "ケージ", ["なくても乗せられる", "必要（貸し出しあり）", "必要（貸し出しなし）"])
     + pt_if("p_cage", ["必要（貸し出しあり）"], '<b>貸し出せるケージの大きさ</b><textarea data-k="貸し出せるケージ" rows="2" maxlength="300" placeholder="例：小型犬用2つ、大型犬用（幅90cm）1つ"></textarea>'), "", "p_cage"),
   pt_f("ワクチン", pt_sel("p_vac", "ワクチン", ["接種していなくても乗せられる", "接種していれば証明はいらない", "証明が必要（狂犬病の予防注射だけ）", "証明が必要（狂犬病と混合ワクチン）"]), "", "p_vac"),
   pt_f("大きな荷物（スーツケース・大きなケージ・カートなど）", pt_sel("p_lug", "大きな荷物", ["載せられる", "少しなら載せられる", "載せられない"]), "", "p_lug"),
+  pt_f("違う種類の子を一緒に（犬と猫など）", pt_sel("p_mix", "違う種類の子を一緒に", ["乗せられる", "相談して決める", "乗せられない"]), "", "p_mix"),
+  pt_f("かむことがある・興奮しやすい子", pt_sel("p_bite", "かむ・興奮しやすい子", ["受けられる", "相談して決める", "受けられない"]), "", "p_bite"),
+  pt_f("短頭種（フレンチ・ブルドッグ、パグなど）の夏（6〜9月）の送迎", pt_sel("p_brachy", "短頭種の夏の送迎", ["受けられる", "相談して決める", "受けられない"]), "", "p_brachy"),
+  pt_f("下痢や嘔吐など、うつる病気かもしれない子", pt_sel("p_sick", "うつる病気かもしれない子", ["受けられる", "相談して決める", "受けられない"]), "", "p_sick"),
   pt_f("途中で寄る（経由地）", pt_sel("p_via", "途中で寄る", ["できる（料金は距離と待ち時間のとおり）", "できる（1か所ごとに料金を足す）", "できない"])
     + pt_if("p_via", ["できる（1か所ごとに料金を足す）"], pt_q("寄るときの料金", pt_n("1か所ごとに ", "円"))), "", "p_via"),
 ])
@@ -1032,7 +1040,7 @@ PT_CARE = pt_f("介護が必要な子（歩くのがつらい・寝たきりな�
         + '<b>道具のくわしいこと</b><span class="any">あれば</span><textarea data-k="介護の道具（くわしく）" rows="2" maxlength="300" placeholder="例：担架は幅60cm・40kgまで、酸素ボンベは飼い主さんのものを固定できます"></textarea>'), "", "p_care")
 PT_QUALS = ["愛玩動物看護師（国家資格）", "獣医師", "ペット介護士・ペットケアの民間資格", "ペットの救急救命の講習を受けた", "動物取扱責任者", "とくになし"]
 PT_NEED = [
- ("お申し込みでうかがうこと", ["会社名・屋号、ご担当者のお名前", "お問い合わせを受け取るメールアドレス（窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスをお知らせください）", "お迎えできる都道府県・市区町村、受けられる曜日・時間帯、時間外や当日の依頼", "乗せられる動物・頭数・体重（大きい子の数）、飼い主さんの同乗、ペットだけの送迎、ケージ、ワクチン、大きな荷物、途中で寄れるか", "介護が必要な子（歩けない・寝たきりなど）を受けられるか、できること、伺える人数、運べる体重、ストレッチャーなどの道具", "車の台数と種類、車が出発するお店・事業所の場所（町名まで）"]),
+ ("お申し込みでうかがうこと", ["会社名・屋号、ご担当者のお名前", "お問い合わせを受け取るメールアドレス（窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスをお知らせください）", "お迎えできる都道府県・市区町村、行き先までの距離、受けられる曜日・時間帯、時間外や当日の依頼", "乗せられる動物・頭数・体重（大きい子の数）、違う種類の子を一緒に乗せられるか、かむ子・短頭種の夏・うつる病気かもしれない子、飼い主さんの同乗、ペットだけの送迎と受け渡し、ケージ、ワクチン、大きな荷物、途中で寄れるか", "介護が必要な子（歩けない・寝たきりなど）を受けられるか、できること、伺える人数、運べる体重、ストレッチャーなどの道具", "車の台数と種類、車が出発するお店・事業所の場所（町名まで）"]),
  ("料金でうかがうこと", ["税込か税別か", "基本料金と距離（または時間）の料金、1km未満の数え方", "お迎え料金・回送料金", "夜間・早朝の割増（率か金額、時間帯）", "待ち時間・高速道路・頭数・体重・同乗する人の料金", "キャンセル料、お支払い方法とタイミング"]),
  ("わかればうかがうこと", ["動物取扱業の登録番号", "お持ちの事業の許可・届出（旅客の許可、貨物軽自動車運送事業の届出など）", "加入している保険（対人・対物、ペットのケガ）", "スタッフの資格（愛玩動物看護師など）", "往復・長い距離・空港などの料金", "お迎えに行ける距離、依頼から出発できるまでの時間"]),
 ]
@@ -1126,6 +1134,8 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
   <div class="f"><label for="p_car">車の台数と種類</label><input type="text" id="p_car" data-k="車" required maxlength="200" placeholder="例：2台（ワンボックス、軽バン）"></div>
   {pt_f("時間外の依頼", pt_sel("p_off", "時間外の依頼", ["受けない", "相談に応じる"]), "", "p_off")}
   {pt_f("お迎えに行ける距離", '<div class="pt-q" data-k="お迎えに行ける距離" data-opt="1">' + pt_n("お店から ", "kmまで", opt=True) + '</div>', "わかれば")}
+  {pt_f("行き先までの距離", pt_sel("p_dest", "行き先までの距離", ["決まりはない（遠くても行ける）", "お迎えの都道府県の中だけ", "距離に上限がある"])
+    + pt_if("p_dest", ["距離に上限がある"], pt_q("行き先までの上限", pt_n("乗っている距離 ", "kmまで"))), "", "p_dest")}
   {pt_f("依頼を受けてから出発できるまで", pt_sel("p_prep", "出発できるまで", ["30分くらい", "1時間くらい", "2時間くらい", "3時間以上"], req=False), "わかれば", "p_prep")}
   <div class="group-h"><span>3</span>乗せられる動物と条件</div>
   <div class="f"><span class="lbl">乗せられる動物</span><div class="checks" id="p_animals" data-k="乗せられる動物">{''.join(f'<label><input type="checkbox" value="{a}">{a}</label>' for a in ["犬", "猫", "うさぎ・フェレットなどの小動物", "鳥", "爬虫類・両生類", "魚"])}</div></div>
@@ -1197,16 +1207,20 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
     if (mismatch) bad = document.getElementById("p_email2");
     if (bad) {{ err.textContent = mismatch ? "メールアドレスが2つの欄で違っています。" : bad.id === "p_agree" ? "確認のチェックを入れてください。" : bad.type === "checkbox" ? (bad.closest("#p_animals") ? "乗せられる動物を選んでください。" : "お迎えできる都道府県を選んでください。") : bad.type === "url" && bad.value ? "URLはhttps://から入れてください。" : "まだ入力されていない項目があります。"; err.style.display = "block"; bad.focus(); return; }}
     var lines = [], co = document.getElementById("p_co").value.trim();
+    // apply＝同じ答えを項目ごとに。予約のしくみが提携先シートの行に写す（手で写さない。2026-11-10）
+    var apply = {{}};
     f.querySelectorAll("[data-k]").forEach(function(x){{
       if (!shown(x) || (x.parentNode.closest && x.parentNode.closest(".pt-q"))) return;
       var v = x.id === "p_prefs" ? prefsText() : x.classList.contains("checks") ? picked(x.id).join("・") : x.classList.contains("pt-q") ? rowText(x) : x.value.trim();
-      if (v) lines.push("【" + x.dataset.k + "】" + v);
+      if (v) {{ lines.push("【" + x.dataset.k + "】" + v); apply[x.dataset.k] = v; }}
     }});
+    apply["都道府県の一覧"] = picked("p_prefs").join("・");
     var body = new URLSearchParams();
     body.append("kind", "contact"); body.append("topic", "提携のお申し込み（" + co + "）");
     body.append("name", document.getElementById("p_name").value.trim() + "（" + co + "）");
     body.append("email", document.getElementById("p_email").value.trim());
     body.append("message", lines.join("\\n"));
+    body.append("apply", JSON.stringify(apply));
     body.append("website", f.website.value);
     var btn = f.querySelector("button"); btn.disabled = true;
     fetch(GAS_URL, {{method: "POST", body: body}}).then(function(r){{ return r.json(); }}).then(function(r){{
