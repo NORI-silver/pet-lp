@@ -468,7 +468,20 @@ function closedText_(r, pt) {
 }
 
 function cancelText_(r, pt) {
-  return pt.name + ' ' + (pt.person ? pt.person + '様' : 'ご担当者さま') + '\n\nお客さまがご依頼を取り消されました。お迎えは不要です。\n\n受付番号：' + r['受付番号'] + '\nお迎え予定：' + fmt_(r['お迎え予定']) + '\nお客さま：' + r['お名前'] + ' 様\n\nご対応いただきありがとうございました。';
+  return pt.name + ' ' + (pt.person ? pt.person + '様' : 'ご担当者さま') + '\n\nお客さまがご依頼を取り消されました。お迎えは不要です。\n\n受付番号：' + r['受付番号'] + '\nお迎え予定：' + fmt_(r['お迎え予定']) + '\nお客さま：' + r['お名前'] + ' 様\n\nキャンセル料がかかる場合は、貴社のキャンセル規定にしたがって、お客さまへ直接ご案内ください（お客さまにも、規定によりキャンセル料がかかることがあるとお伝えしています）。\n\nご対応いただきありがとうございました。';
+}
+
+// 予約が確定したあと、お客さまが会社に直接連絡するための連絡先（Nori 2026-11-09「おすすめ通りでOK」：
+// 会社が遅れた・来ないときにお客さまが困らないように。電話番号はサイトには出さず、確定したお客さまへのメールにだけ書く）
+function partnerContactText_(pt) {
+  var c = [pt.tel ? '電話 ' + pt.tel : '', pt.email ? 'メール ' + pt.email : ''].filter(String).join('／');
+  return c ? '■ ' + pt.name + 'の連絡先：' + c + '\n' : '';
+}
+
+// 確定後の取り消し・キャンセル料の案内（同）
+function cancelAfterText_(pt) {
+  var rule = String(pt.cancelRule || '').trim();
+  return '確定後の取り消しには「' + pt.name + '」のキャンセル規定' + (rule ? '（' + rule + '）' : '') + 'が適用され、キャンセル料がかかることがあります。キャンセル料のお支払いは、ペットタクシーへ直接です（当サイトのキャンセル料はありません）。';
 }
 
 function pickPartners_(r, stage) {
@@ -891,8 +904,11 @@ function accept_(id, pt, at, fare, msg, fareHw, retWay) {
     (retWay ? '■ 帰りのやり方：' + retWay + '（料金が安くなるほうをペットタクシーに選んでもらいました）\n' : '') +
     '■ お支払い：' + payForCustomer_(pt) + '\n' +
     (msg ? '■ ペットタクシーから：' + msg + '\n' : '') +
-    '\nこのあと「' + pt.name + '」から、ご連絡先あてに直接ご連絡があります。ペットの様子などのご質問も、ペットタクシーと直接やりとりしてください。\n送迎のご契約は、お客さまと「' + pt.name + '」との間で結ばれます（当サイトは送迎を行わず、契約の当事者ではありません）。\n\n' +
-    '▼ 取り消す場合はこちら（当サイトのキャンセル料はありません。ペットタクシーのキャンセル規定は、この会社の案内をご確認ください）\n' + cancelUrl);
+    partnerContactText_(pt) +
+    '\nこのあと「' + pt.name + '」から、ご連絡先あてに直接ご連絡があります。ペットの様子などのご質問も、ペットタクシーと直接やりとりしてください。領収書が必要なときも、ペットタクシーにお申し出ください。\n' +
+    'お迎えの時刻が近づいても連絡がない・遅れているときは、まず「' + pt.name + '」へご連絡ください。つながらないときは、このメールに返信してください。\n' +
+    '送迎のご契約は、お客さまと「' + pt.name + '」との間で結ばれます（当サイトは送迎を行わず、契約の当事者ではありません）。\n\n' +
+    '▼ 取り消す場合はこちら\n' + cancelUrl + '\n' + cancelAfterText_(pt) + 'お迎えの3時間前を過ぎてから取り消すときは、このリンクを押す前に「' + pt.name + '」へ直接ご連絡ください。');
   var how = deliver_(pt, '【決定】' + id + ' お客さまのご連絡先', decidedText_(r, pt), r);
   closeOthers_(r, pt.id);
   notifyAdmin_((how === 'manual' ? '【LINEで決定を伝えてください】' : '') + '決定 ' + id + '：' + pt.name,
@@ -1157,10 +1173,12 @@ function cancel_(id) {
   }
   var r = findReq_(id).data;
   log_(id + ' 取り消し（' + before + 'から）');
+  var pt = before === ST.DONE ? partnerById_(r['決定した提携先ID']) : null;
   toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】ご依頼を取り消しました（受付番号 ' + id + '）',
-    r['お名前'] + ' 様\n\nご依頼を取り消しました。\n希望日時：' + whenText_(r) + '\n\nまたいつでもご利用ください。\n' + CONFIG.SITE_URL);
+    r['お名前'] + ' 様\n\nご依頼を取り消しました。\n希望日時：' + whenText_(r) + '\n' +
+    (pt ? '\n' + cancelAfterText_(pt) + '\n' + partnerContactText_(pt) : '') +
+    '\nまたいつでもご利用ください。\n' + CONFIG.SITE_URL);
   if (before === ST.DONE) {
-    var pt = partnerById_(r['決定した提携先ID']);
     var how = pt && deliver_(pt, '【取り消し】' + id + ' ' + fmt_(r['お迎え予定']) + ' のご依頼', cancelText_(r, pt), r);
     if (how === 'manual') {
       notifyAdmin_('【LINEで取り消しを伝えてください】' + id, pt.name + 'へ、手配ページの「取り消しをLINEで伝える」を押してください。\n\n▼ 手配ページ\n' + adminUrl_(id));
