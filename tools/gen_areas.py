@@ -677,7 +677,7 @@ for g in GUIDES:
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/guide/">ペットの移動ガイド</a> › {e(g["title"])}</nav>
     <h1>{e(g["title"])}</h1>
     <p class="lede">{e(g["lede"])}</p>
-    <div class="hero-fare"><b>あなたのルートで、各社の料金をくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。公式サイトの料金表から計算した概算で、確定料金ではありません。</span><a class="btn" href="/#form" data-cta="guide-fare" style="margin-top:10px">各社の料金をくらべる（無料）</a></div>
+    <div class="hero-fare"><b>あなたのルートで、ペットタクシー各社の料金をくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。公式サイトの料金表から計算した概算で、確定料金ではありません。</span><a class="btn" href="/#form" data-cta="guide-fare" style="margin-top:10px">ペットタクシーの料金をくらべる（無料）</a></div>
     <p class="small">ペットタクシー予約窓口　公開 {published.replace("-", ".")}・更新 {modified.replace("-", ".")}</p>
     <figure class="art-img"><picture><source srcset="/img/guide/{g["img"][:-4]}.webp" type="image/webp"><img src="/img/guide/{g["img"]}" alt="{e(g["img_alt"])}" width="1200" height="800" fetchpriority="high" onerror="this.closest('figure').remove()"></picture>{caption}</figure>
   </div>
