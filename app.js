@@ -557,7 +557,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       DEMO.ok = true; DEMO.name = j.name || ""; syncOpenNote();
       var box = document.createElement("div"); box.className = "demo-banner"; box.setAttribute("role", "note");
       var b = document.createElement("b"); b.textContent = DEMO.name + "さま向けの見本の画面です";
-      box.append(b, document.createTextNode("ご提携いただいたときの見え方をお試しいただけます。" + (j.pref ? j.pref + "の" : "貴社の対応エリアの") + "お迎えの場所と日時を入れると、貴社が社名と口コミつきで、問い合わせできる会社として一番上に出ます（日時が貴社の営業時間の外だと出ません）。ほかの会社は、提携していないため社名を伏せています。この画面から問い合わせを送っても、どこにも届きません。"));
+      box.append(b, document.createTextNode("ご提携いただいたときの見え方をお試しいただけます。" + (j.pref ? j.pref + "の" : "貴社の対応エリアの") + "お迎えの場所と日時を入れると、貴社が社名と口コミつきで、問い合わせできる会社として一番上に出ます（日時が貴社の営業時間の外だと出ません）。ほかの会社は、提携していないため口コミを出さず、当サイトから問い合わせも送れません。この画面から問い合わせを送っても、どこにも届きません。"));
       var f = $("petForm"); f.parentNode.insertBefore(box, f);
       if (j.pref && $("pref") && [].some.call($("pref").options, function(o){ return o.value === j.pref; }) && !$("pref").value) { setSelect($("pref"), j.pref); }
       if (typeof queuePartners === "function") queuePartners();

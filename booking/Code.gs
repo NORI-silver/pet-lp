@@ -460,7 +460,8 @@ function retSelect_() {
 
 function decidedText_(r, pt) {
   return pt.name + ' ' + (pt.person ? pt.person + '様' : 'ご担当者さま') + '\n\nありがとうございます。こちらのご依頼をお願いすることになりました。\nお客さまへ直接ご連絡をお願いします。\n\n' + customerForPartner_(r) +
-    '\n\n▼ やむを得ずお受けできなくなったとき（押すとお客さまにお知らせし、このご予約は取り消しになります）\n' + partnerCancelUrl_(r['受付番号'], pt.id);
+    '\n\n▼ やむを得ずお受けできなくなったとき（押すとお客さまにお知らせし、このご予約は取り消しになります）\n' + partnerCancelUrl_(r['受付番号'], pt.id) +
+    '\n\n当サイトへのご連絡（お客さまとの間で困ったこと、条件の変更など）は、このメールに返信してください。';
 }
 
 function closedText_(r, pt) {
