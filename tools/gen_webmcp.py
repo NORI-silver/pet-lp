@@ -66,6 +66,10 @@ def build(root):
     data["exotic_vet"] = _multi(hos["exotic"], ("animals", "spec"))
     data["large_facility_vet"] = _multi(hos["large"], ("spec",))
     data["dog_run"] = _multi(_j(root, "dogrun.json")["dogruns"], ("kind", "hours", "fee"))
+    import gen_dogrun_fac  # 施設ページがある施設は page を足す
+    for r in data["dog_run"]:
+        x = next((d for d in gen_dogrun_fac.PAGES if d["url"] == r.get("url") and d["name"] == r.get("name")), None)
+        if x: r["page"] = SITE + gen_dogrun_fac.href(x)
     data["senior_dog_home"] = _multi(_j(root, "rojin.json")["homes"], ("animals",))
     data["pet_sitter"] = _multi(_j(root, "sitters.json")["sitters"])
     data["dog_trainer"] = _multi(_j(root, "trainers.json")["trainers"], ("services",))
@@ -106,6 +110,9 @@ def llms(out):
          f"- [料金をくらべる・問い合わせる（無料）]({SITE}/#form): お迎えの場所・行き先・日時・ペットの情報を入れると、条件に合う会社と料金の目安が出ます",
          f"- [全国の都道府県のページ]({SITE}/area/)",
          f"- [ガイド]({SITE}/guide/): ペットタクシーの使い方・料金・ふつうのタクシーに犬は乗れるか など", "",
+         "## 独自のしらべ（引用してよいデータ。出どころの記載をお願いします）", "",
+         f"- [全国のペットタクシー料金しらべ]({SITE}/guide/pet-taxi-fare-survey/): 全国のペットタクシー会社の公式の料金表を同じ式で計算した、距離ごと・都道府県ごとの運賃、お迎え料金・夜間割増・待ち時間の数",
+         f"- [全国のドッグランしらべ]({SITE}/dogrun/survey/): 公式ページで確かめた全国のドッグランの料金・利用登録・ワクチンの条件・小型犬エリアを、公営・お店や施設・高速道路のSA・PAごとに数えたもの", "",
          "## ペットとのくらしの一覧", ""]
     for c in out["categories"]:
         L.append(f"- [{c['label']}]({SITE}{c['page']}): {c['count']}件。URL の最後に #pref=東京都 のように付けると、その都道府県でしぼれます")
