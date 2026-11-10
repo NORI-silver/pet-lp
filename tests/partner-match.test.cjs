@@ -20,6 +20,10 @@ assert.equal(ck({ destKm:50 }, req({ '概算km': 30 })).ng.length, 0);
 assert.ok(ck({ destScope:'お迎えの都道府県の中だけ' }, req({ '行き先':'神奈川県横浜市中区' })).ng[0].includes('神奈川'));
 assert.equal(ck({ destScope:'お迎えの都道府県の中だけ' }, req({ '行き先':'東京都目黒区' })).ng.length, 0);
 assert.ok(ck({ destScope:'お迎えの都道府県の中だけ' }, req({ '行き先':'○○動物病院', '_route': { km: 60 } })).ask[0].includes('60km'));
+// お迎えの範囲：お店（練馬）から20kmまでの会社に、横浜のお迎えは届かない
+const nerima = { shopLL:{ lat:35.737, lng:139.654 }, radiusKm:20 };
+assert.ok(ck(nerima, req({ '_route': { from:{ lat:35.466, lng:139.622 } } })).ng[0].includes('20kmまで'));
+assert.equal(ck(nerima, req({ '_route': { from:{ lat:35.70, lng:139.70 } } })).ng.length, 0);
 // 経由地
 assert.ok(ck({ via:false }, req({ '経由地':'渋谷駅' })).ng.includes('途中で寄る'));
 assert.ok(ck({}, req({ '経由地':'渋谷駅' })).ask[0].includes('渋谷駅'));
@@ -46,8 +50,13 @@ assert.equal(ck(able, care(12, ['寝たきり（担架やマットで運ぶ）']
 assert.ok(ck(able, care(35, ['寝たきり（担架やマットで運ぶ）'])).ng[0].includes('35kg'));
 assert.ok(ck(able, care(12, ['酸素や点滴などの医療機器がある'])).ask.some(x => x.includes('医療機器')));
 assert.ok(ck({ ...able, careTools:'介護用マット・クッション' }, care(12, ['酸素や点滴などの医療機器がある'])).ask.some(x => x.includes('酸素ボンベ')));
-assert.ok(ck({ ...able, careKg:Infinity, careStaff:1 }, care(25, ['歩けない（抱っこで運ぶ）'])).ask.some(x => x.includes('1人で')));
+assert.ok(ck({ ...able, careKg:Infinity, careStaff:1 }, care(32, ['歩けない（抱っこで運ぶ）'])).ask.some(x => x.includes('1人で')));
 assert.ok(ck({ careTri:false }, care(5, [])).ng.includes('介護が必要な子'));
+// 新しい申し込み：介護は大型犬（30kg以上）を運べるかだけで決める。小さい子は飼い主さんが抱っこできるので問わない（Nori 2026-11-10）
+assert.equal(ck({ careTri:true, careBigSet:true, careBig:false }, care(8, ['寝たきり（担架やマットで運ぶ）'])).ng.filter(x => /介護/.test(x)).length, 0);
+assert.ok(ck({ careTri:true, careBigSet:true, careBig:false }, care(32, ['歩けない（抱っこで運ぶ）'])).ng[0].includes('介護が必要な大型犬'));
+assert.ok(ck({ careTri:true, careBigSet:true, careBig:null }, care(32, [])).ask[0].includes('32kg'));
+assert.equal(ck({ careTri:true, careBigSet:true, careBig:true }, care(40, ['寝たきり（担架やマットで運ぶ）'])).ask.filter(x => /介護/.test(x)).length, 0);
 assert.ok(ck({}, care(5, ['寝たきり（担架やマットで運ぶ）'])).ask[0].includes('寝たきり')); // 申し込みの答えがない会社はいままでどおり
 // ワクチンの証明：狂犬病だけの会社は、狂犬病の記入がない犬だけ確かめる
 assert.ok(ck({ vacProof:'証明が必要（狂犬病の予防注射だけ）' }, req({ 'ペットJSON': pets([{ species:'犬', weight:'5', vaccine:'済' }]) })).ask[0].includes('狂犬病'));
@@ -76,7 +85,9 @@ ctx.Utilities = { formatDate: () => '2026/11/10 07:00' };
 ctx.log_ = () => {};
 const id = ctx.applyPartner_({ '会社名・屋号':'テスト練馬', '都道府県の一覧':'東京都・埼玉県', '飼い主さんの同乗':'3人まで', '乗せられる頭数':'4頭以上', '大きい子（20kg以上）の数':'2頭まで',
   '乗せられる体重':'40kgまで', 'ペットだけの送迎':'できない', 'ケージ':'必要（貸し出しあり）', '当日の依頼':'空いていれば受ける', '当日の締め切り':'お迎えの 1時間前まで',
-  '介護が必要な子':'受けられない', '大きい子1頭のときの大人':'大人3人まで', '大きい子2頭のときの大人':'大人2人まで', '大きい子4頭のときの大人':'その頭数は乗せられない', '途中で寄る':'できる（料金は距離と待ち時間のとおり）', '行き先までの距離':'距離に上限がある', '行き先までの上限':'乗っている距離 100kmまで' }, '生形（テスト練馬）', 'b@example.com');
+  '介護が必要な子':'受けられない', '大きい子1頭のときの大人':'大人3人まで', '大きい子2頭のときの大人':'大人2人まで', '大きい子4頭のときの大人':'その頭数は乗せられない', '途中で寄る':'できる（料金は距離と待ち時間のとおり）', '行き先までの距離':'距離に上限がある', '行き先までの上限':'乗っている距離 100kmまで',
+  'お迎えに行ける範囲':'20kmまで', 'お店の位置':'35.7370,139.6540', 'お店の住所':'東京都練馬区練馬1丁目', '貸し出せるケージ':'大型犬用（40kgまで）',
+  'キャンセル料':'前日まで無料、当日はかかる', '当日のキャンセル料':'運賃の 50％', '受けられる時間帯':'毎日 0:00〜24:00' }, '生形（テスト練馬）', 'b@example.com');
 assert.equal(id, 'P062');
 const h = rows[0], last = rows[rows.length - 1], v = k => last[h.indexOf(k)];
 assert.ok(h.includes('申し込みの内容') && h.includes('行き先の上限km'));
@@ -91,6 +102,11 @@ assert.equal(v('ケージ貸し出し'), '○');
 assert.equal(v('何時間前まで'), 1);
 assert.equal(v('介助OK'), '×');
 assert.equal(v('行き先の上限km'), 100);
+assert.equal(v('お迎えの範囲km'), 20);
+assert.equal(v('お店の緯度経度'), '35.7370,139.6540');
+assert.equal(v('貸し出しケージの最大kg'), 40);
+assert.equal(v('キャンセル規定'), '前日まで無料、当日は運賃の 50％');
+assert.deepEqual(JSON.parse(JSON.stringify(ctx.hoursOf_(v('営業時間')))), [0, 24]);
 assert.equal(ctx.comboOf_(v('大型犬1頭のときの大人')), 3);
 assert.equal(ctx.comboOf_(v('大型犬4頭以上のときの大人')), -1);
 assert.equal(ctx.comboOf_(v('大型犬3頭のときの大人')), null);
