@@ -1364,7 +1364,7 @@ def pref_data_html(pf, short):
     if fs:
         rows = ""
         for km in (5, 10, 20):
-            v = sorted(_nat_ride(x["fare"], km) for x in fs)
+            v = sorted(_r100(_nat_ride(x["fare"], km)) for x in fs)  # お客さまに見せる概算は100円単位（AGENTS.md）
             mid = v[(len(v) - 1) // 2]
             rows += (f'<tr><th>{km}km</th><td>{mid:,}円</td><td>{v[0]:,}〜{v[-1]:,}円</td></tr>' if len(v) >= 3 else
                      f'<tr><th>{km}km</th><td colspan="2">' + "・".join(f"{x:,}円" for x in v) + '</td></tr>')
@@ -1377,6 +1377,46 @@ def pref_data_html(pf, short):
         out += f'<p>{e(PREF_AIRPORT[pf])}への送迎は、飛行機の預け入れの受付時間に合わせて、お迎えの時刻を決めておくことが大切です。<a href="/guide/airport-moving/">ペットと引っ越し・空港送迎</a>に、航空会社の決まりと準備をまとめています。</p>'
     out += '<p>同乗できる人数、ペットだけの送迎、ワクチン、キャンセル料、夜間の割増は会社ごとに違います。<a href="/guide/choose/">ペットタクシーの選び方（全国の会社のルールをくらべました）</a>もあわせてご覧ください。</p>'
     return out, len(cs)
+
+# [B] SEO 11/10 Nori「大阪名古屋神奈川千葉とかペットの飼い主が多いところもね」：大阪・愛知は /area/ の型だけで地域の中身が薄く、
+# 「ペットタクシー 大阪」（月1,300）で出ていなかった。対応エリアに書かれた市の数（公式サイトの文から数える）と、よく行く区間の料金の目安を足す。
+# 道のりは地図の車のルートでの目安。料金は全国の会社の料金表から nat_text で計算（概算）。
+PREF_LOCAL = {
+  "大阪府": dict(
+    why="大阪市の中心部は動物病院が多い一方、北摂（豊中・吹田・高槻・茨木）や南の堺・泉州から専門の病院へ通うと、10km以上の移動になることもあります。電車にはキャリーに入る子しか乗れず、大型犬は乗れません。伊丹空港・関西国際空港への送迎や、お引っ越しの移動にも使われます。",
+    stems=["大阪市", "堺", "高槻", "茨木", "伊丹", "豊中", "吹田", "東大阪", "枚方"],
+    routes=[("大阪駅（梅田）→ 伊丹空港", 16), ("天王寺 → 堺市（堺東）", 10), ("大阪駅（梅田）→ 関西国際空港", 50)],
+    faq=[("大阪市内の動物病院まで、ペットタクシーはいくらですか？", "5km"), ("大阪から関西国際空港まで、ペットタクシーはいくらですか？", "50km")]),
+  "愛知県": dict(
+    why="名古屋市の中から専門の動物病院へ通うときや、豊田・岡崎・豊橋など名古屋から離れた市からの移動は、20〜40kmになることもあります。電車にはキャリーに入る子しか乗れず、大型犬は乗れません。中部国際空港（セントレア）への送迎や、お引っ越しの移動にも使われます。",
+    stems=["名古屋", "豊橋", "豊田", "岡崎"],
+    routes=[("名古屋駅 → 県営名古屋空港", 13), ("名古屋駅 → 豊田市", 35), ("名古屋駅 → 中部国際空港", 45)],
+    faq=[("名古屋市内の動物病院まで、ペットタクシーはいくらですか？", "5km"), ("名古屋から中部国際空港まで、ペットタクシーはいくらですか？", "45km")]),
+}
+def _pref_text(key, km):
+    fs = [c for c in _NAT if key in c.get("areas", [])]
+    if len(fs) < 3: return nat_text(km), "全国"
+    v = sorted(_r100(_nat_ride(c["fare"], km)) for c in fs)
+    if v[0] == v[-1]: return f"{v[0]:,}円（{len(fs)}社とも同じ）", f"{len(fs)}社"
+    return f"{v[(len(v) - 1) // 2]:,}円（{v[0]:,}〜{v[-1]:,}円）", f"{len(fs)}社"
+def pref_local(pf, short, key):
+    L = PREF_LOCAL.get(pf)
+    if not L: return "", []
+    n = _ncos(key)
+    cs = [(st, _ccos(key, st)) for st in L["stems"]]
+    cs = [(st, c) for st, c in cs if c]
+    rows = "".join(f"<tr><td>{e(r)}</td><td>{km}km</td><td>{_pref_text(key, km)[0]}</td></tr>" for r, km in L["routes"])
+    basis = _pref_text(key, 10)[1]
+    basis = f"{pf}に来てくれる会社のうち料金表をのせている{basis}" if basis != "全国" else "全国の会社"
+    html = (f'<h2>{e(short)}でペットタクシーを使うとき</h2><p>{e(L["why"])}</p>'
+            + (f'<p>{e(pf)}のお迎えに対応している{n}社のうち、公式サイトの対応エリアに市の名前を書いている会社の数は、' + "・".join(f"「{e(st)}」{c}社" for st, c in cs) + "でした。名前を書いていない市にも来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。</p>" if cs else "")
+            + f'<h3>よく行く区間の料金の目安（片道）</h3><table><thead><tr><th>区間</th><th>車の道のり</th><th>料金の目安（まんなか・安い〜高い）</th></tr></thead><tbody>{rows}</tbody></table>'
+            + f'<p class="small">{e(basis)}の公式サイトの料金表をもとに計算した乗った距離の運賃の概算で、確定料金ではありません。お迎え料金・夜間の割増は入っていません。当日の道順・渋滞・待ち時間などで変わり、高速道路を使うときはその料金が別にかかります。</p>')
+    faq = []
+    for q, k in L["faq"]:
+        km = int(k[:-2])
+        faq.append((q, f"{basis}の料金表で計算すると、{km}kmで片道{_pref_text(key, km)[0]}が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。お迎えの料金や夜間の割増は会社ごとに違うので、フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。"))
+    return html, faq
 
 for slug, pf, short, cities in PREFS:
     url = f'{SITE}/area/{slug}/'
@@ -1421,7 +1461,8 @@ for slug, pf, short, cities in PREFS:
     # 県ごとのよくある質問（数は display_companies.json・emergency.json から毎回数える。会社名・病院名は出さない）
     _key = pf if pf == "北海道" else pf[:-1]
     _hin = [h for h in hs if not other_pref(h, pf)]
-    pfaq = []
+    local_html, local_faq = pref_local(pf, short, _key)
+    pfaq = list(local_faq)
     if n_cos:
         _ns = _nsame(_key)
         pfaq.append((f"{short}に来てくれるペットタクシーは何社ありますか？",
@@ -1451,6 +1492,7 @@ for slug, pf, short, cities in PREFS:
     <p class="small">ペットタクシー予約窓口　更新 {TODAY.replace("-", ".")}</p>
     <h2>{e(short)}のペットタクシーの料金{"の例" if has_fare else ""}</h2>
     {pref_fare_html(pf)}
+    {local_html}
     <p><a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・マイカーとの違い</a>では、料金のしくみをくわしく説明しています。キャリーに入る小さな子なら、<a href="/guide/taxi-with-pet/">ふつうのタクシーに乗れることもあります</a>。</p>
 
     {data_html}
