@@ -75,7 +75,7 @@
   }
   var boxes = document.querySelectorAll(".emg-score[data-id]");
   if (!boxes.length) return;
-  if (false) { boxes.forEach(lazy); return; } // REVIEW_ON_CLICK（index.html と同じ値）
+  if (true) { boxes.forEach(lazy); return; } // REVIEW_ON_CLICK（index.html と同じ値）
   if (!("IntersectionObserver" in window)) { boxes.forEach(want); return; }
   // 口コミの欄は空のあいだ見えないので、会社の枠が画面に入ったら取り寄せる（しぼりこみで隠れている会社は取り寄せない）
   var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting && x.target.offsetParent) { io.unobserve(x.target); want(x.target.querySelector(".emg-score")); } }); }, {rootMargin: "200px"});
