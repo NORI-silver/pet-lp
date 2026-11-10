@@ -138,7 +138,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (!routeDetails) { showLoading(); return; } // 道のりを調べ終わったら、もう一度呼ばれる
     var searchSeq = ++quoteSeq, search = requestPayload().body;
     ["name","tel","email","notes","contact","website","pets","breed","age","sex","est_fare","est_fare_text"].forEach(function(k){search.delete(k);});
-    search.set("kind", "quotes"); if (DEMO.tok) search.set("demo", DEMO.tok);
+    search.set("kind", "quotes"); if (DEMO.tok) search.set("demo", DEMO.tok); if (window.PET_STAFF) search.set("staff", "1"); // 運営者の動作確認は需要の記録で分ける（ga.js）
     // 入力を減らした県では、たずねていない項目をいちばん広く探せる値で調べる（1人・手荷物・ケージはどちらでも・介護なし）
     if (!prefOpen()) [["riders","1人"],["luggage","手荷物くらい"],["cage","どれでも"],["care","不要"]].forEach(function(d){ if (!search.get(d[0])) search.set(d[0], d[1]); });
     showLoading();
