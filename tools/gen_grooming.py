@@ -167,3 +167,13 @@ CAT = dict(slug=SLUG, name="出張トリミング・訪問トリミング", unit
   links=[("トリミング・ペットホテルへの送迎ガイド", "/guide/grooming-hotel/"), ("シニア犬・シニア猫、介護中の子の移動", "/guide/senior/"), ("大型犬の移動のガイド", "/guide/large-dog/"), ("全国のペットシッター", "/pet-sitter/")])
 
 CAT["table"] = [(lab.replace("に対応", "").replace("・介護中の子", ""), (lambda k: lambda g: "○" if g.get(k) else "")(k)) for k, lab in CONDS] + [("最大の体重", lambda g: f'{g["max_kg"]}kg' if g.get("max_kg") else "")]
+
+# [B] SEO 11/10：「出張トリミングカー」「猫 トリミング 出張」で表示が多いのにクリックが少ない（大阪30表示・東京22表示）。
+# 題名に、公式サイトで数えたトリミングカー・猫・大型犬の件数を出す（0件の項目は出さない）。
+def _title(pf, rs, n):
+    c = lambda k: sum(bool(g.get(k)) for g in rs)
+    parts = [f"トリミングカー{c('car')}件" if c('car') else "", f"猫も受ける{c('cat')}件" if c('cat') else "",
+             f"大型犬{c('large')}件" if c('large') else "", f"シニア犬{c('senior')}件" if c('senior') else ""]
+    mid = "・".join(x for x in parts if x)
+    return f"{pf}の出張トリミング・訪問トリミング{n}件｜" + (mid or "公式サイトで確かめた一覧") + "｜ペットタクシー予約窓口"
+CAT["title_fn"] = _title

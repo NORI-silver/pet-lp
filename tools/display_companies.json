@@ -7215,7 +7215,8 @@
     "night": {
      "from": 21,
      "to": 8,
-     "flat": 3300
+     "flat": 3300,
+     "by": "start"
     },
     "roundBack": {
      "per": 165
