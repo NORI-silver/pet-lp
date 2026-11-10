@@ -117,14 +117,6 @@
       if (!shown(x) || (x.parentNode.closest && x.parentNode.closest(".pt-q")) || x.id === "p_prefs" || x.id === "p_days" || x.id === "p_allday" || x.id === "p_cars" || x.id === "p_cartype" || x.id === "p_carother") return;
       put(x.dataset.k, x.classList.contains("checks") ? picked(x.id).join("・") : x.classList.contains("pt-q") ? rowText(x) : val(x));
     });
-    // 大きい子の頭数ごとの大人の人数（予約のしくみの列にそろえる）。いちばん多いときだけ聞き、それより少ないときは「一緒に乗れる飼い主さん」と同じ
-    var ride = val($("p_ride")), big = val($("p_large")), bigRide = shown($("p_bigride")) ? val($("p_bigride")) : "";
-    var adults = function(t){ return !t ? "" : /できない/.test(t) ? "大人は乗れない（ペットだけ）" : /以上/.test(t) ? "大人4人以上" : "大人" + t; };
-    var maxBig = /以上/.test(big) ? 4 : parseInt(big, 10) || 0;
-    for (var k = 1; k <= 4 && ride; k++) {
-      var t = k > maxBig ? "乗せられない" : k === maxBig && bigRide && bigRide !== "上と同じ" ? adults(bigRide) : adults(ride);
-      if (maxBig) apply[k === 4 ? "大きい子4頭のときの大人" : "大きい子" + k + "頭のときの大人"] = t;
-    }
     put("都道府県", prefsText());
     put("受けられる時間帯", hoursText());
     var models = picked("p_cartype").concat($("p_carother").value.trim() ? [$("p_carother").value.trim()] : []);

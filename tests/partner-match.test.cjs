@@ -50,8 +50,13 @@ assert.equal(ck(able, care(12, ['寝たきり（担架やマットで運ぶ）']
 assert.ok(ck(able, care(35, ['寝たきり（担架やマットで運ぶ）'])).ng[0].includes('35kg'));
 assert.ok(ck(able, care(12, ['酸素や点滴などの医療機器がある'])).ask.some(x => x.includes('医療機器')));
 assert.ok(ck({ ...able, careTools:'介護用マット・クッション' }, care(12, ['酸素や点滴などの医療機器がある'])).ask.some(x => x.includes('酸素ボンベ')));
-assert.ok(ck({ ...able, careKg:Infinity, careStaff:1 }, care(25, ['歩けない（抱っこで運ぶ）'])).ask.some(x => x.includes('1人で')));
+assert.ok(ck({ ...able, careKg:Infinity, careStaff:1 }, care(32, ['歩けない（抱っこで運ぶ）'])).ask.some(x => x.includes('1人で')));
 assert.ok(ck({ careTri:false }, care(5, [])).ng.includes('介護が必要な子'));
+// 新しい申し込み：介護は大型犬（30kg以上）を運べるかだけで決める。小さい子は飼い主さんが抱っこできるので問わない（Nori 2026-11-10）
+assert.equal(ck({ careTri:true, careBigSet:true, careBig:false }, care(8, ['寝たきり（担架やマットで運ぶ）'])).ng.filter(x => /介護/.test(x)).length, 0);
+assert.ok(ck({ careTri:true, careBigSet:true, careBig:false }, care(32, ['歩けない（抱っこで運ぶ）'])).ng[0].includes('介護が必要な大型犬'));
+assert.ok(ck({ careTri:true, careBigSet:true, careBig:null }, care(32, [])).ask[0].includes('32kg'));
+assert.equal(ck({ careTri:true, careBigSet:true, careBig:true }, care(40, ['寝たきり（担架やマットで運ぶ）'])).ask.filter(x => /介護/.test(x)).length, 0);
 assert.ok(ck({}, care(5, ['寝たきり（担架やマットで運ぶ）'])).ask[0].includes('寝たきり')); // 申し込みの答えがない会社はいままでどおり
 // ワクチンの証明：狂犬病だけの会社は、狂犬病の記入がない犬だけ確かめる
 assert.ok(ck({ vacProof:'証明が必要（狂犬病の予防注射だけ）' }, req({ 'ペットJSON': pets([{ species:'犬', weight:'5', vaccine:'済' }]) })).ask[0].includes('狂犬病'));

@@ -76,7 +76,8 @@ var CONFIG = {
   DEFAULT_PARTNER_HOURS: '8-18',
   DEFAULT_LEAD_HOURS: 3,
 
-  LARGE_DOG_KG: 20, // この体重以上は「大型犬OK」の提携先にだけ送る
+  LARGE_DOG_KG: 30, // Nori 2026-11-10「大型犬は30kg以上にして」
+  // この体重以上は「大型犬OK」の提携先にだけ送る
   ASK_KG: 30, // この体重以上の子は、上限が分からない会社に乗れるかを引き受けるときに確かめる（Nori 2026-10-31「30kg以上は予約時に要確認」）
   VAN_BIG_DOGS: 2, // 軽バン（エブリイ・N-VAN など）は大型犬2頭まで乗れる（Nori 2026-10-31）
   // 提携先シートの車の情報が空欄のときは、いちばん小さい車（軽バン）とみなす
@@ -138,7 +139,7 @@ var PARTNER_HEADERS = [
   '行き先の範囲', '行き先の上限km', '大型犬1頭のときの大人', '大型犬2頭のときの大人', '大型犬3頭のときの大人', '大型犬4頭以上のときの大人',
   '小型だけで最大頭数のときの大人', '大型犬と大きな荷物',
   // お迎えのエリア（Nori 2026-11-10「都道府県以下のレベルの対応エリアももっと工夫して」）：お店の位置とお迎えに行ける範囲（km）。お迎えの場所がお店から範囲の外なら送らない
-  'お店の住所', 'お店の緯度経度', 'お迎えの範囲km', '介護でできること', '介護で伺える人数', '介護で運べる体重', '介護の道具', '途中で寄る', 'ワクチンの証明', '申し込みの内容'
+  'お店の住所', 'お店の緯度経度', 'お迎えの範囲km', '介護でできること', '介護で伺える人数', '介護で運べる体重', '介護の道具', '介護の大型犬', '途中で寄る', 'ワクチンの証明', '申し込みの内容'
 ];
 
 var ST = { OPEN: '手配中', DONE: '決定', NONE: '見つからず', CANCEL: '取り消し' };
@@ -291,7 +292,7 @@ function applyPartner_(a, name, email) {
     var ids = sh.getLastRow() > 1 ? sh.getRange(2, head.indexOf('ID') + 1, sh.getLastRow() - 1, 1).getValues().map(function (r) { return Number(String(r[0]).replace(/\D/g, '')) || 0; }) : [];
     var id = 'P' + ('00' + (Math.max.apply(null, [0].concat(ids)) + 1)).slice(-3);
     var same = sh.getLastRow() > 1 && sh.getRange(2, head.indexOf('メール') + 1, sh.getLastRow() - 1, 1).getValues().some(function (r) { return String(r[0]).trim().toLowerCase() === String(email).toLowerCase(); });
-    var ride = g('飼い主さんの同乗'), pets = g('乗せられる頭数'), big = g('大きい子（20kg以上）の数'), kg = g('乗せられる体重'), cage = g('ケージ'), same0 = g('当日の依頼');
+    var ride = g('飼い主さんの同乗'), pets = g('乗せられる頭数'), big = g('大型犬（30kg以上）の数') || g('大きい子（20kg以上）の数'), kg = g('乗せられる体重'), cage = g('ケージ'), same0 = g('当日の依頼');
     var lead = n(g('当日の締め切り'));
     if (lead === '') lead = /前日まで/.test(same0) ? 24 : /2日前/.test(same0) ? 48 : /3日前/.test(same0) ? 72 : '';
     var row = {
@@ -314,7 +315,7 @@ function applyPartner_(a, name, email) {
       '大型犬1頭のときの大人': g('大きい子1頭のときの大人'), '大型犬2頭のときの大人': g('大きい子2頭のときの大人'), '大型犬3頭のときの大人': g('大きい子3頭のときの大人'),
       '大型犬4頭以上のときの大人': g('大きい子4頭のときの大人'), '小型だけで最大頭数のときの大人': g('小さい子だけで頭数がいちばん多いときの大人'), '大型犬と大きな荷物': g('大きい子と大きな荷物'),
       '介護でできること': g('介護でできること'), '介護で伺える人数': g('介護で伺える人数'),
-      '介護で運べる体重': g('介護で運べる体重'), '介護の道具': g('介護の道具'), '途中で寄る': g('途中で寄る'), 'ワクチンの証明': g('ワクチン'),
+      '介護で運べる体重': g('介護で運べる体重'), '介護の道具': g('介護の道具'), '介護の大型犬': g('介護が必要な大型犬'), '途中で寄る': g('途中で寄る'), 'ワクチンの証明': g('ワクチン'),
       '申し込みの内容': JSON.stringify(a).slice(0, 45000)
     };
     sh.appendRow(head.map(function (h) { return row[h] === undefined ? '' : row[h]; }));
@@ -634,7 +635,7 @@ function partners_() {
         comboOf_(cell('大型犬3頭のときの大人')), comboOf_(cell('大型犬4頭以上のときの大人'))], comboLug: tri3_(cell('大型犬と大きな荷物')),
       shopLL: (function (t) { var m = toHalf_(t).match(/(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)/); return m ? { lat: Number(m[1]), lng: Number(m[2]) } : null; })(cell('お店の緯度経度')),
       radiusKm: num('お迎えの範囲km'),
-      careCan: cell('介護でできること'), careStaff: num('介護で伺える人数'), careStaffMore: /増や/.test(cell('介護で伺える人数')),
+      careBig: tri3_(cell('介護の大型犬')), careBigSet: !!cell('介護の大型犬'), careCan: cell('介護でできること'), careStaff: num('介護で伺える人数'), careStaffMore: /増や/.test(cell('介護で伺える人数')),
       careKg: /超え/.test(cell('介護で運べる体重')) ? Infinity : num('介護で運べる体重'), careTools: cell('介護の道具'), via: tri3_(cell('途中で寄る')),
       vacProof: cell('ワクチンの証明')
     });
@@ -865,7 +866,7 @@ function checks_(pt, r) {
     }
     if (/なし/.test(c) && pt.cageMust === '') ask.push('ケージなしで乗れる');
     // 「どちらでもいい」でも、会社がケージを使うなら大型犬が入る大きさを持っているか確かめる（Nori 2026-10-31）
-    if (/どれでも/.test(c) && bigs.length && pt.cageLend !== false && pt.lendKg === null) ask.push('ケージを使う場合、' + maxKg + 'kgの子が入る大きさのケージを用意できる');
+    if (/どれでも/.test(c) && maxKg >= 20 && pt.cageLend !== false && pt.lendKg === null) ask.push('ケージを使う場合、' + maxKg + 'kgの子が入る大きさのケージを用意できる');
   }
   // 介護
   var careNeed = r['介助'] === '必要' || pets.some(function (p) { return p.care === '必要'; });
@@ -922,6 +923,14 @@ function careChecks_(pt, pets, ng, ask) {
   if (pt.careTri === false) { ng.push('介護が必要な子'); return; }
   var cared = pets.filter(function (p) { return p.care === '必要'; });
   if (!cared.length) cared = pets;
+  // 新しい申し込みは「介護が必要な大型犬を運べるか」だけで決める。小さい子は飼い主さんが抱っこできるので問わない（Nori 2026-11-10）
+  if (pt.careBigSet) {
+    var bigCare = cared.filter(function (p) { return p.kg >= CONFIG.LARGE_DOG_KG; });
+    if (bigCare.length && pt.careBig === false) ng.push('介護が必要な大型犬（' + CONFIG.LARGE_DOG_KG + 'kg以上）');
+    else if (bigCare.length && pt.careBig === null) ask.push('介護が必要な大型犬（' + Math.max.apply(null, bigCare.map(function (p) { return p.kg; })) + 'kg）を運べる');
+    else if (pt.careTri === null) ask.push('介護が必要な子の送迎ができる');
+    return;
+  }
   var needs = [].concat.apply([], cared.map(function (p) { return p.needList || []; })).filter(function (x, i, a) { return a.indexOf(x) === i; });
   var notes = [].concat.apply([], cared.map(function (p) { return (p.need || []).filter(function (x) { return (p.needList || []).indexOf(x) < 0; }); }));
   var maxKg = Math.max.apply(null, cared.map(function (p) { return p.kg; }));

@@ -15,7 +15,7 @@ let partners=[partner('P002'),partner('P003'),partner('P099'),partner('inactive'
 ctx.partners_ = () => partners;
 const point = {lat:35.63,lng:139.66};
 const when = new Date(Date.now()+48*3600000+9*3600000).toISOString().slice(0,10)+'T12:00';
-let p={pref:'東京都',pickup:'世田谷区',dropoff:'目黒区',datetime:when,trip:'片道',riders:'2人',luggage:'少なめ',species:'犬',weight:'25',cage:'借りたい',care:'必要',pet_count:'1',pets_json:'[]',route_details:JSON.stringify({km:10,backKm:10,from:point,to:point,backFrom:point,backTo:point})};
+let p={pref:'東京都',pickup:'世田谷区',dropoff:'目黒区',datetime:when,trip:'片道',riders:'2人',luggage:'少なめ',species:'犬',weight:'32',cage:'借りたい',care:'必要',pet_count:'1',pets_json:'[]',route_details:JSON.stringify({km:10,backKm:10,from:point,to:point,backFrom:point,backTo:point})};
 let cards=call('selectionQuotes_',p).cards;
 assert.deepEqual(cards.map(c=>c.id),['P002','P003','P099']);
 assert.equal(cards[0].price.amount,4000); // 3,300 + 迎車・回送660, 100円単位切上げ
