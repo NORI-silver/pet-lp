@@ -22,6 +22,18 @@ BEFORE = [
  ("費用の見方", "この一覧に料金は載せていません。入所のときの費用、月ごとの費用、医療費・消耗品、終生の一括払いの組み合わせで決まり、犬の大きさや介護の度合いで変わります。見積もりで何を確かめるかは、記事「老犬ホームの費用のしくみ」にまとめました。"),
 ]
 
+# 一覧に載せる条件（Nori 2026-11-10「それの条件とかもサイトに書いといてね」）。全国のページと県のページの両方に出す。
+CRITERIA = [
+ "シニアの犬・猫を長期または終生で預かることを、施設の公式サイトに今も書いていること。",
+ "公式サイトがあること。見つからない施設だけ、老犬ホームの情報サイト（老犬ケア）の施設紹介ページで確かめ、そのページにリンクしています。SNSだけの施設は今は載せていません。",
+ "ペットホテルやデイケア（日帰りのお預かり）だけの施設、受け入れをやめた・休んでいる施設は載せません。",
+ "書くのは、公式サイトに書いてある所在地・受け入れる動物・見学や面会のきまり・動物取扱業の登録番号だけです。料金・電話番号・順位は書きません。",
+ "施設からお金はもらっていません。載っていない施設もあるので、見つけしだい足します。",
+]
+def criteria_html(e, pf=None):
+    return ('<div class="emg-tips"><h4>この一覧に載せている施設の条件</h4><ul>'
+            + "".join(f"<li>{e(t)}</li>" for t in CRITERIA) + "</ul></div>")
+
 def _card(e, h):
     extra = ""
     if h.get("spec"): extra += f'<small class="emg-spec">{e(h["spec"])}</small>'
@@ -80,6 +92,7 @@ def render(ctx):
       <p class="emg-free">この一覧は無料の情報です。施設からお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金は載せていないので、それぞれの施設に直接おたずねください。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       {body}
+      {criteria_html(e)}
       <div class="emg-tips"><h4>老犬ホームをえらぶときに確かめること</h4><dl>{before}</dl>
       <p class="emg-tips-note">くわしくは<a href="/guide/rojin-home/">老犬ホーム・老猫ホームを見学するときに確かめること</a>にまとめています。</p></div>
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
@@ -130,7 +143,7 @@ CAT = dict(slug=SLUG, name="老犬ホーム・老猫ホーム", unit="施設", h
   title_word="老犬ホーム・老猫ホーム", title_tail="受け入れる動物・見学・登録番号つき",
   desc_tail="所在地・受け入れる動物（犬・猫・大型犬）・見学のきまり・動物取扱業の登録番号と、口コミの星を載せています。料金や順位は載せていません。",
   lede=lambda pf, n: f"{pf}で、シニアの犬や猫を長期・終生で預かってくれる老犬ホーム・老猫ホームを{n}施設まとめました。公式サイトで確かめた所在地・受け入れる動物・見学のきまり・登録番号だけを載せています。見学の前に確かめたいことも一緒にどうぞ。",
-  facts=_facts, faq=_faq, before_title="老犬ホームをえらぶときに確かめること", before=BEFORE,
+  facts=_facts, faq=_faq, extra_after=criteria_html, before_title="老犬ホームをえらぶときに確かめること", before=BEFORE,
   taxi_h="見学・入所・面会の移動は、ペットタクシーで", taxi_p="寝たきりの子や大型犬も、飼い主さまと一緒に家の前から施設の前まで移動できます。",
   links=[("老犬ホームの費用のしくみ", "/guide/rojin-home-cost/"), ("老犬ホームに預ける前の準備", "/guide/rojin-home-prepare/"), ("老猫ホームのえらび方", "/guide/roneko-home/"), ("シニア犬・シニア猫、介護中の子の移動", "/guide/senior/"), ("往診専門の動物病院", "/hospital/visit/")])
 
