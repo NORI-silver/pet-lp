@@ -137,6 +137,23 @@ def _open_prefs():
     m = re.search(r"OPEN_PARTNERS:\s*\{([^}]*)\}", gs)
     ids = re.findall(r"'[^']*'\s*:\s*'([^']+)'", m.group(1)) if m else []
     return sorted({a for x in _DISP if x.get("id") in ids for a in x.get("areas", [])})
+# [B] SEO 11/10 Nori「今提携が完了してるエリアを重点的に改善して」：問い合わせを受け付けている会社（OPEN_PARTNERS）のお店がある都道府県では、
+# エリアページの題名・説明文・リード文に「この会社に問い合わせできる」を出す。お店のあたりの名前は公式サイトの対応エリアの書き方から。
+_OPEN_LABEL = {"D13b7c6f": ("北海道", "札幌"), "D225080e": ("広島県", "広島"), "De308905": ("東京都", "練馬区・杉並区"), "D0ec95b6": ("福岡県", "福岡市東区")}
+def _open_local():
+    gs = open(os.path.join(ROOT, "booking", "Code.gs"), encoding="utf-8").read()
+    m = re.search(r"OPEN_PARTNERS:\s*\{([^}]*)\}", gs)
+    out = {}
+    for i in (re.findall(r"'[^']*'\s*:\s*'([^']+)'", m.group(1)) if m else []):
+        if i in _OPEN_LABEL:
+            pf, lab = _OPEN_LABEL[i]
+            out.setdefault(pf, []).append((next(x["name"] for x in _DISP if x["id"] == i), lab))
+    return out
+OPEN_LOCAL = _open_local()
+def open_lead(pf):
+    cs = OPEN_LOCAL.get(pf)
+    if not cs: return ""
+    return f"{pf}では、" + "・".join(f"{n}（{l}）" for n, l in cs) + "に、このページのフォームから空き状況と料金を無料で問い合わせできます。"
 src = re.sub(r"/\*OPEN_PREFS\*/.*?/\*/OPEN_PREFS\*/", lambda m: "/*OPEN_PREFS*/var OPEN_PREFS = " + json.dumps(_open_prefs(), ensure_ascii=False) + ";/*/OPEN_PREFS*/", src, count=1, flags=re.S)
 def _co_site():
     out = {x["id"]: [x["name"], x["url"]] for x in _DISP if x.get("url")}
@@ -412,9 +429,12 @@ ARROW = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width
 CHECK = '<span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>'
 e = html.escape
 
-def area_links(cur=None):
+# [B] SEO 11/10 Nori「提携が完了してるエリア」「大阪名古屋…飼い主が多いところも」：ガイド・エリアページからのリンクに、大きな県と提携先のある県を足す
+KEY_PREF_LINKS = [("osaka", "大阪"), ("aichi", "愛知・名古屋"), ("fukuoka", "福岡"), ("hokkaido", "北海道・札幌"), ("hiroshima", "広島"), ("hyogo", "兵庫・神戸")]
+def area_links(cur=None, more=False):
     return '<ul class="other">' + ''.join(
-        f'<li><a href="/{a["slug"]}/">{e(a["short"])}のペットタクシー</a></li>' for a in AREAS if a["slug"] != cur) + '<li><a href="/area/">ほかの道府県（全国）</a></li></ul>'
+        f'<li><a href="/{a["slug"]}/">{e(a["short"])}のペットタクシー</a></li>' for a in AREAS if a["slug"] != cur) + ''.join(
+        f'<li><a href="/area/{s_}/">{e(n_)}のペットタクシー</a></li>' for s_, n_ in (KEY_PREF_LINKS if more else [])) + '<li><a href="/area/">ほかの道府県（全国）</a></li></ul>'
 
 def head(title, desc, url, extra_ld, og_img="/img/hero.jpg", og_w=1200, og_h=900):
     return f'''<!doctype html>
@@ -618,11 +638,11 @@ for a in AREAS:
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sh"><h2>ほかのエリアのペットタクシー</h2></div>
-    {area_links(a["slug"])}
+    {area_links(a["slug"], more=True)}
   </div>
 </section>
 '''
-    page = clone_top(a["title"], a["desc"], url, ld_html, f'{a.get("h1", a["short"])}のペットタクシー予約', a["lede"], a["pref"], area_html,
+    page = clone_top(a["title"], a["desc"], url, ld_html, f'{a.get("h1", a["short"])}のペットタクシー予約', open_lead(a["pref"]) + a["lede"], a["pref"], area_html,
                      f'<a href="/">ペットタクシー予約窓口</a> › {e(a["short"])}のペットタクシー')
     os.makedirs(os.path.join(ROOT, a["slug"]), exist_ok=True)
     open(os.path.join(ROOT, a["slug"], "index.html"), "w", encoding="utf-8").write(page)
@@ -703,7 +723,7 @@ for g in GUIDES:
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sh"><h2>エリアごとの料金の目安と対応</h2></div>
-    {area_links()}
+    {area_links(more=True)}
     <p class="small" style="margin-top:10px">{'<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ（距離ごと・都道府県ごとの運賃、お迎え料金・夜間割増）</a>' if g["slug"] != "pet-taxi-fare-survey" else '<a href="/area/">全国のペットタクシー情報（都道府県ごと）</a>'}</p>
   </div>
 </section>
@@ -1347,7 +1367,7 @@ def pref_data_html(pf, short):
     if fs:
         rows = ""
         for km in (5, 10, 20):
-            v = sorted(_nat_ride(x["fare"], km) for x in fs)
+            v = sorted(_r100(_nat_ride(x["fare"], km)) for x in fs)  # お客さまに見せる概算は100円単位（AGENTS.md）
             mid = v[(len(v) - 1) // 2]
             rows += (f'<tr><th>{km}km</th><td>{mid:,}円</td><td>{v[0]:,}〜{v[-1]:,}円</td></tr>' if len(v) >= 3 else
                      f'<tr><th>{km}km</th><td colspan="2">' + "・".join(f"{x:,}円" for x in v) + '</td></tr>')
@@ -1360,6 +1380,46 @@ def pref_data_html(pf, short):
         out += f'<p>{e(PREF_AIRPORT[pf])}への送迎は、飛行機の預け入れの受付時間に合わせて、お迎えの時刻を決めておくことが大切です。<a href="/guide/airport-moving/">ペットと引っ越し・空港送迎</a>に、航空会社の決まりと準備をまとめています。</p>'
     out += '<p>同乗できる人数、ペットだけの送迎、ワクチン、キャンセル料、夜間の割増は会社ごとに違います。<a href="/guide/choose/">ペットタクシーの選び方（全国の会社のルールをくらべました）</a>もあわせてご覧ください。</p>'
     return out, len(cs)
+
+# [B] SEO 11/10 Nori「大阪名古屋神奈川千葉とかペットの飼い主が多いところもね」：大阪・愛知は /area/ の型だけで地域の中身が薄く、
+# 「ペットタクシー 大阪」（月1,300）で出ていなかった。対応エリアに書かれた市の数（公式サイトの文から数える）と、よく行く区間の料金の目安を足す。
+# 道のりは地図の車のルートでの目安。料金は全国の会社の料金表から nat_text で計算（概算）。
+PREF_LOCAL = {
+  "大阪府": dict(
+    why="大阪市の中心部は動物病院が多い一方、北摂（豊中・吹田・高槻・茨木）や南の堺・泉州から専門の病院へ通うと、10km以上の移動になることもあります。電車にはキャリーに入る子しか乗れず、大型犬は乗れません。伊丹空港・関西国際空港への送迎や、お引っ越しの移動にも使われます。",
+    stems=["大阪市", "堺", "高槻", "茨木", "伊丹", "豊中", "吹田", "東大阪", "枚方"],
+    routes=[("大阪駅（梅田）→ 伊丹空港", 16), ("天王寺 → 堺市（堺東）", 10), ("大阪駅（梅田）→ 関西国際空港", 50)],
+    faq=[("大阪市内の動物病院まで、ペットタクシーはいくらですか？", "5km"), ("大阪から関西国際空港まで、ペットタクシーはいくらですか？", "50km")]),
+  "愛知県": dict(
+    why="名古屋市の中から専門の動物病院へ通うときや、豊田・岡崎・豊橋など名古屋から離れた市からの移動は、20〜40kmになることもあります。電車にはキャリーに入る子しか乗れず、大型犬は乗れません。中部国際空港（セントレア）への送迎や、お引っ越しの移動にも使われます。",
+    stems=["名古屋", "豊橋", "豊田", "岡崎"],
+    routes=[("名古屋駅 → 県営名古屋空港", 13), ("名古屋駅 → 豊田市", 35), ("名古屋駅 → 中部国際空港", 45)],
+    faq=[("名古屋市内の動物病院まで、ペットタクシーはいくらですか？", "5km"), ("名古屋から中部国際空港まで、ペットタクシーはいくらですか？", "45km")]),
+}
+def _pref_text(key, km):
+    fs = [c for c in _NAT if key in c.get("areas", [])]
+    if len(fs) < 3: return nat_text(km), "全国"
+    v = sorted(_r100(_nat_ride(c["fare"], km)) for c in fs)
+    if v[0] == v[-1]: return f"{v[0]:,}円（{len(fs)}社とも同じ）", f"{len(fs)}社"
+    return f"{v[(len(v) - 1) // 2]:,}円（{v[0]:,}〜{v[-1]:,}円）", f"{len(fs)}社"
+def pref_local(pf, short, key):
+    L = PREF_LOCAL.get(pf)
+    if not L: return "", []
+    n = _ncos(key)
+    cs = [(st, _ccos(key, st)) for st in L["stems"]]
+    cs = [(st, c) for st, c in cs if c]
+    rows = "".join(f"<tr><td>{e(r)}</td><td>{km}km</td><td>{_pref_text(key, km)[0]}</td></tr>" for r, km in L["routes"])
+    basis = _pref_text(key, 10)[1]
+    basis = f"{pf}に来てくれる会社のうち料金表をのせている{basis}" if basis != "全国" else "全国の会社"
+    html = (f'<h2>{e(short)}でペットタクシーを使うとき</h2><p>{e(L["why"])}</p>'
+            + (f'<p>{e(pf)}のお迎えに対応している{n}社のうち、公式サイトの対応エリアに市の名前を書いている会社の数は、' + "・".join(f"「{e(st)}」{c}社" for st, c in cs) + "でした。名前を書いていない市にも来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。</p>" if cs else "")
+            + f'<h3>よく行く区間の料金の目安（片道）</h3><table><thead><tr><th>区間</th><th>車の道のり</th><th>料金の目安（まんなか・安い〜高い）</th></tr></thead><tbody>{rows}</tbody></table>'
+            + f'<p class="small">{e(basis)}の公式サイトの料金表をもとに計算した乗った距離の運賃の概算で、確定料金ではありません。お迎え料金・夜間の割増は入っていません。当日の道順・渋滞・待ち時間などで変わり、高速道路を使うときはその料金が別にかかります。</p>')
+    faq = []
+    for q, k in L["faq"]:
+        km = int(k[:-2])
+        faq.append((q, f"{basis}の料金表で計算すると、{km}kmで片道{_pref_text(key, km)[0]}が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。お迎えの料金や夜間の割増は会社ごとに違うので、フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。"))
+    return html, faq
 
 for slug, pf, short, cities in PREFS:
     url = f'{SITE}/area/{slug}/'
@@ -1375,7 +1435,10 @@ for slug, pf, short, cities in PREFS:
     # [B] SEO 11/8：愛知 12表示・0クリック。3社以上の県は数・24時間・当日を先に出す（数えた数だけ）。
     _t24, _tsd = _n24(_k), _nsame(_k)
     _tx = "・".join(x for x in [f"24時間受付{_t24}社" if _t24 else "", f"当日も受ける{_tsd}社" if _tsd else ""] if x)
-    title = (f"{short}のペットタクシー{n_cos}社の料金をくらべる｜" + (_tx + "・" if _tx else "") + "夜間の動物病院" if n_cos >= 3 else
+    _ol = OPEN_LOCAL.get(pf)
+    title = (f"{short}のペットタクシー{n_cos}社の料金をくらべる｜{'・'.join(l for _, l in _ol)}の会社に空き状況と料金を無料で問い合わせ" if _ol and n_cos >= 2 else
+             f"{short}のペットタクシーの料金の目安｜{'・'.join(l for _, l in _ol)}の会社に空き状況と料金を無料で問い合わせ" if _ol else
+             f"{short}のペットタクシー{n_cos}社の料金をくらべる｜" + (_tx + "・" if _tx else "") + "夜間の動物病院" if n_cos >= 3 else
              f"{short}のペットタクシー｜料金の例・夜間の動物病院・ペットの緊急搬送" if has_fare else f"{short}のペットタクシーの探し方｜夜間の動物病院・ペットの緊急搬送") + "｜ペットタクシー予約窓口"
     dcities = []  # 説明文用：その県の中の病院の市（政令市の区はまとめる）
     for h in hs:
@@ -1401,7 +1464,8 @@ for slug, pf, short, cities in PREFS:
     # 県ごとのよくある質問（数は display_companies.json・emergency.json から毎回数える。会社名・病院名は出さない）
     _key = pf if pf == "北海道" else pf[:-1]
     _hin = [h for h in hs if not other_pref(h, pf)]
-    pfaq = []
+    local_html, local_faq = pref_local(pf, short, _key)
+    pfaq = list(local_faq)
     if n_cos:
         _ns = _nsame(_key)
         pfaq.append((f"{short}に来てくれるペットタクシーは何社ありますか？",
@@ -1431,6 +1495,7 @@ for slug, pf, short, cities in PREFS:
     <p class="small">ペットタクシー予約窓口　更新 {TODAY.replace("-", ".")}</p>
     <h2>{e(short)}のペットタクシーの料金{"の例" if has_fare else ""}</h2>
     {pref_fare_html(pf)}
+    {local_html}
     <p><a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・マイカーとの違い</a>では、料金のしくみをくわしく説明しています。キャリーに入る小さな子なら、<a href="/guide/taxi-with-pet/">ふつうのタクシーに乗れることもあります</a>。</p>
 
     {data_html}
@@ -1464,7 +1529,8 @@ for slug, pf, short, cities in PREFS:
 </section>
 '''
     area_html = re.sub(r'<div class="emg-score" data-id="[^"]*"></div>', "", area_html)  # 口コミはトップの緊急タブの仕組みで見る（二重に読み込まない）
-    lede = f"{pf}（{'・'.join(cities[:4])}など）で、犬や猫の移動の手段を探している方へ。フォームに入力すると、条件に合う事業者と料金の目安が見られます。急ぐときの連絡先は「緊急」タブにまとめています。"
+    if _ol: desc = "・".join(n for n, _ in _ol) + "に、空き状況と料金を無料で問い合わせできます。" + desc.replace("頼む前に確かめること、", "")
+    lede = open_lead(pf) + f"{pf}（{'・'.join(cities[:4])}など）で、犬や猫の移動の手段を探している方へ。フォームに入力すると、条件に合う事業者と料金の目安が見られます。急ぐときの連絡先は「緊急」タブにまとめています。"
     page = clone_top(title, desc, url, ld, f"{short}のペットタクシー", lede, pf, area_html,
                      f'<a href="/">ペットタクシー予約窓口</a> › <a href="/area/">全国のペットタクシー情報</a> › {e(short)}')
     os.makedirs(os.path.join(ROOT, "area", slug), exist_ok=True)
