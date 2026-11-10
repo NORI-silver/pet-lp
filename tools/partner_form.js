@@ -87,13 +87,14 @@
     var bad = [].filter.call(f.querySelectorAll("input:invalid,textarea:invalid"), shown)[0];
     if (bad) return bad;
     if (!inp.value.trim()) return inp;
-    // 必ず答えていただくのは、エリア・時間・料金のうかがい方（と、料金をここで入力するときの料金の欄）だけ。ほかは、わかるところだけ
-    var REQ = ["p_radius", "p_allday", "p_faremode"];
+    // 必ず答えていただく選ぶ欄（Nori 2026-11-10「わかればの欄も必須」）。料金をここで入力するときは料金の欄も
+    var REQ = ["p_radius", "p_allday", "p_faremode", "p_prep", "p_round", "p_long", "p_lic"];
     var one = [].filter.call(f.querySelectorAll(".pt-one[data-req]"), function(x){ return shown(x) && !val(x) && (REQ.indexOf(x.id) >= 0 || x.closest(".pt-fare")); })[0];
     if (one) return one;
     if (!prefsAll().length) return $("p_prefs");
     if (!picked("p_days").length) return $("p_days");
     if (!picked("p_animals").length) return $("p_animals");
+    if (!picked("p_quals").length) return $("p_quals");
     var qs = [].filter.call(f.querySelectorAll(".pt-q"), shown);
     for (var i = 0; i < qs.length; i++) {
       var x = [].filter.call(qs[i].querySelectorAll("input[type=number]"), function(y){ return !y.dataset.opt && !y.value.trim(); })[0];
@@ -101,7 +102,7 @@
     }
     return null;
   }
-  var WHY = {p_shop: "車が出発するお店・事業所の住所を入れてください。", p_prefs: "お迎えできる都道府県を選んでください。", p_days: "受けられる曜日を選んでください。", p_cartype: "車の種類を選んでください。", p_animals: "乗せられる動物を選んでください。", p_agree: "確認のチェックを入れてください。"};
+  var WHY = {p_shop: "車が出発するお店・事業所の住所を入れてください。", p_prefs: "お迎えできる都道府県を選んでください。", p_days: "受けられる曜日を選んでください。", p_cartype: "車の種類を選んでください。", p_animals: "乗せられる動物を選んでください。", p_quals: "スタッフの資格を選んでください（なければ「とくになし」）。", p_reg: "動物取扱業の登録番号を入れてください。", p_url: "ホームページのURLを https:// から入れてください。", p_agree: "確認のチェックを入れてください。"};
   f.addEventListener("submit", function(e){
     e.preventDefault(); err.style.display = "none";
     f.querySelectorAll(".missing").forEach(function(x){ x.classList.remove("missing"); });

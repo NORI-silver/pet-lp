@@ -1019,9 +1019,9 @@ PT_FARE = "".join([
   pt_f("お支払いのタイミング", pt_sel("p_paytime", "お支払いのタイミング", ["乗る前", "降りるとき", "後日（請求書など）"]), "", "p_paytime"),
 ])
 PT_FARE_MORE = "".join([
-  pt_f("往復（病院などで待って帰る）の料金", pt_sel("p_round", "往復の料金", ["行きと帰りの料金に、待ち時間の料金を足す", "行きと帰りを続けた1回の距離で計算", "往復の料金表がある"], req=False), "わかれば", "p_round"),
-  pt_f("長い距離", pt_sel("p_long", "長い距離", ["同じ料金表で計算する", "一定の距離を超えると別にお見積もり"], req=False)
-    + pt_if("p_long", ["一定の距離を超えると別にお見積もり"], pt_q("お見積もりになる距離", pt_n("", "kmを超えると"))), "わかれば", "p_long"),
+  pt_f("往復（病院などで待って帰る）の料金", pt_sel("p_round", "往復の料金", ["行きと帰りの料金に、待ち時間の料金を足す", "行きと帰りを続けた1回の距離で計算", "往復の料金表がある", "決まっていない"]), "", "p_round"),
+  pt_f("長い距離", pt_sel("p_long", "長い距離", ["同じ料金表で計算する", "一定の距離を超えると別にお見積もり"])
+    + pt_if("p_long", ["一定の距離を超えると別にお見積もり"], pt_q("お見積もりになる距離", pt_n("", "kmを超えると"))), "", "p_long"),
   pt_f("空港など、決まった区間の定額", '<input type="text" id="p_fixed" data-k="決まった区間の定額" maxlength="300" placeholder="例：広島市内→広島空港 15,000円">', "あれば", "p_fixed"),
   pt_f("料金でほかに伝えたいこと", '<textarea id="p_fare" data-k="料金の補足" rows="2" maxlength="500" placeholder="例：往復は1割引き"></textarea>', "あれば", "p_fare"),
 ])
@@ -1049,7 +1049,7 @@ PT_QUALS = ["愛玩動物看護師（国家資格）", "獣医師", "ペット�
 PT_NEED = [
  ("お申し込みでうかがうこと", ["会社名・屋号、ご担当者のお名前", "お問い合わせを受け取るメールアドレス（窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスをお知らせください）", "車が出発するお店の場所とお迎えに行ける範囲（km）、行き先までの距離、受けられる曜日・時間、車の台数と種類", "乗せられる動物・頭数・体重、大型犬は何頭まで、ペットだけの送迎、ケージ、ワクチン、大きな荷物、途中で寄れるか", "介護が必要な子を受けられるか、介護が必要な大型犬（30kg以上）を運べるか"]),
  ("料金でうかがうこと", ["料金表のページのURL", "税込か税別か", "基本料金と距離（または時間）の料金、1km未満の数え方", "お迎え料金・回送料金", "夜間・早朝の割増（率か金額、時間帯）", "待ち時間・高速道路・頭数・体重・同乗する人の料金", "キャンセル料、お支払い方法とタイミング"]),
- ("わかればうかがうこと", ["動物取扱業の登録番号", "お持ちの事業の許可・届出（旅客の許可、貨物軽自動車運送事業の届出など）", "スタッフの資格（愛玩動物看護師など）", "往復・長い距離・空港などの料金", "依頼から出発できるまでの時間"]),
+ ("そのほかうかがうこと", ["動物取扱業の登録番号", "お持ちの事業の許可・届出（旅客の許可、貨物軽自動車運送事業の届出など）", "スタッフの資格（愛玩動物看護師など）", "往復・長い距離・空港などの料金", "依頼から出発できるまでの時間"]),
 ]
 pt_merits = "".join(f'<div class="pt-merit">{ic}<h3>{e(t)}</h3><p>{e(d)}</p></div>' for ic, t, d in PT_MERITS)
 pt_faq = "".join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in PT_FAQ)
@@ -1161,16 +1161,14 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
   <div class="group-h"><span>5</span>料金とお支払い</div>
   {PT_FARE}
   <div class="f"><span class="lbl">お支払い方法</span>{pt_chk("p_pays", "お支払い方法", PAYS)}</div>
-  <details class="pt-more"><summary>わかれば（とばして大丈夫です）</summary>
-  <div class="f"><label for="p_cc">控えも届けたいメールアドレス<span class="any">あれば。窓口の共有アドレス（info@ など）があると、担当の方がお休みでも見落としません</span></label><input type="email" id="p_cc" data-k="控えのメールアドレス" autocomplete="off"></div>
-  <div class="f"><label for="p_url">ホームページ<span class="any">あれば</span></label><input type="url" id="p_url" data-k="ホームページ" placeholder="https://"></div>
-  {pt_f("依頼を受けてから出発できるまで", pt_sel("p_prep", "出発できるまで", ["30分くらい", "1時間くらい", "2時間くらい", "3時間以上"], req=False), "", "")}
+  <div class="group-h"><span>6</span>そのほか</div>
+  <div class="f"><label for="p_url">ホームページ</label><input type="url" id="p_url" data-k="ホームページ" placeholder="https://" required></div>
+  {pt_f("依頼を受けてから出発できるまで", pt_sel("p_prep", "出発できるまで", ["30分くらい", "1時間くらい", "2時間くらい", "3時間以上"]), "", "")}
   {PT_FARE_MORE}
-  {pt_f("事業の許可・届出", pt_sel("p_lic", "事業の許可・届出", ["緑ナンバー（旅客の許可）", "黒ナンバー（貨物軽自動車の届出）", "両方"], req=False), "", "")}
-  <div class="f"><span class="lbl">スタッフの資格</span>{pt_chk("p_quals", "スタッフの資格", [q for q in PT_QUALS if q != "とくになし"])}</div>
-  <div class="f"><label for="p_reg">動物取扱業の登録番号</label><input type="text" id="p_reg" data-k="動物取扱業の登録番号" maxlength="100" autocomplete="off"></div>
-  <div class="f"><label for="p_msg">ほかに伝えたいこと</label><textarea id="p_msg" data-k="そのほか" rows="3" maxlength="1000"></textarea></div>
-  </details>
+  {pt_f("事業の許可・届出", pt_sel("p_lic", "事業の許可・届出", ["緑ナンバー（旅客の許可）", "黒ナンバー（貨物軽自動車の届出）", "両方", "どちらもない"]), "", "")}
+  <div class="f"><span class="lbl">スタッフの資格</span>{pt_chk("p_quals", "スタッフの資格", PT_QUALS)}</div>
+  <div class="f"><label for="p_reg">動物取扱業の登録番号</label><input type="text" id="p_reg" data-k="動物取扱業の登録番号" maxlength="100" autocomplete="off" placeholder="なければ「なし」" required></div>
+  <div class="f"><label for="p_msg">ほかに伝えたいこと<span class="any">あれば</span></label><textarea id="p_msg" data-k="そのほか" rows="3" maxlength="1000"></textarea></div>
   <label class="agree"><input type="checkbox" id="p_agree" required><span><a href="/#privacy">個人情報の取り扱い</a>を確認し、同意します。提携の内容は<a href="/partner/terms/">提携規約</a>をご覧ください（同意のお手続きは、あらためてメールでご案内します）。</span></label>
   <p id="p_err" role="alert" style="display:none;color:#c0392b;font-size:.88rem"></p>
   <button class="btn" type="submit">申し込む{ARROW}</button>
