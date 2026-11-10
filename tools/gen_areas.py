@@ -429,9 +429,12 @@ ARROW = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width
 CHECK = '<span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>'
 e = html.escape
 
-def area_links(cur=None):
+# [B] SEO 11/10 Nori「提携が完了してるエリア」「大阪名古屋…飼い主が多いところも」：ガイド・エリアページからのリンクに、大きな県と提携先のある県を足す
+KEY_PREF_LINKS = [("osaka", "大阪"), ("aichi", "愛知・名古屋"), ("fukuoka", "福岡"), ("hokkaido", "北海道・札幌"), ("hiroshima", "広島"), ("hyogo", "兵庫・神戸")]
+def area_links(cur=None, more=False):
     return '<ul class="other">' + ''.join(
-        f'<li><a href="/{a["slug"]}/">{e(a["short"])}のペットタクシー</a></li>' for a in AREAS if a["slug"] != cur) + '<li><a href="/area/">ほかの道府県（全国）</a></li></ul>'
+        f'<li><a href="/{a["slug"]}/">{e(a["short"])}のペットタクシー</a></li>' for a in AREAS if a["slug"] != cur) + ''.join(
+        f'<li><a href="/area/{s_}/">{e(n_)}のペットタクシー</a></li>' for s_, n_ in (KEY_PREF_LINKS if more else [])) + '<li><a href="/area/">ほかの道府県（全国）</a></li></ul>'
 
 def head(title, desc, url, extra_ld, og_img="/img/hero.jpg", og_w=1200, og_h=900):
     return f'''<!doctype html>
@@ -635,7 +638,7 @@ for a in AREAS:
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sh"><h2>ほかのエリアのペットタクシー</h2></div>
-    {area_links(a["slug"])}
+    {area_links(a["slug"], more=True)}
   </div>
 </section>
 '''
@@ -720,7 +723,7 @@ for g in GUIDES:
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sh"><h2>エリアごとの料金の目安と対応</h2></div>
-    {area_links()}
+    {area_links(more=True)}
     <p class="small" style="margin-top:10px">{'<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ（距離ごと・都道府県ごとの運賃、お迎え料金・夜間割増）</a>' if g["slug"] != "pet-taxi-fare-survey" else '<a href="/area/">全国のペットタクシー情報（都道府県ごと）</a>'}</p>
   </div>
 </section>
