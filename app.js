@@ -290,7 +290,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       btn.textContent = ok ? "コピーしました。公式サイトのお問い合わせ欄に貼ってください" : "コピーできませんでした";
       setTimeout(function(){ btn.textContent = "問い合わせ文をコピー"; }, 4000);
     };
-    track("copy_inquiry", coInfo(card));
+    var ci = coInfo(card); ci.cat = "taxi"; track("copy_inquiry", ci);
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function(){ done(true); }, function(){ done(fallback()); });
     else done(fallback());
     function fallback(){ try { var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); var ok = document.execCommand("copy"); ta.remove(); return ok; } catch (e) { return false; } }
@@ -536,7 +536,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           var cp = document.createElement("button"); cp.type = "button"; cp.className = "copy-ask"; cp.textContent = "問い合わせ文をコピー";
           cp.addEventListener("click", function(){ copyAsk(cp, card); });
           var sa = document.createElement("a"); sa.href = siteUrl(card.site); sa.target = "_blank"; sa.rel = "noopener"; sa.textContent = "公式サイトを見る ↗";
-          sa.addEventListener("click", function(){ track("official_site", coInfo(card)); });
+          sa.addEventListener("click", function(){ var o = coInfo(card); o.cat = "taxi"; o.from = "card"; try { o.host = new URL(sa.href).hostname; } catch (e) {} track("official_site", o); }); // 会社ごとの遷移数（Nori 2026-11-10）
           sp.append(cp, sa); article.appendChild(sp);
         }
         text("p", card.site ? "このサイトからはまだ問い合わせできません。「問い合わせ文をコピー」を押すと、入力した条件をそのまま公式サイトのお問い合わせ欄に貼れます。" : "このサイトからは、まだ問い合わせできません", "partner-later-note"); // 大きな灰色のボタンはやめて1行に（2026-11-08 レビュー #2）
