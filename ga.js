@@ -1,6 +1,13 @@
 // アクセス解析：見られたページと、よく使われる操作の数を集計する（お名前・連絡先・場所などの入力内容は送らない）。
 // ID が空のときと、本番の pet.shiokonbu.com 以外（手元での確認など）では何もしない。
 (function(){
+  // 運営者の端末の印（2026-11-10 戦略担当）：一度 ?staff=1 で開くとこの端末を運営者と覚え、?staff=0 で解除。
+  // 解析のイベントに staff=1 を付け、検索は需要の記録で「運営者」と分ける（index.html）。手元の確認でも覚える
+  try {
+    var st = new URLSearchParams(location.search).get("staff");
+    if (st === "1") localStorage.setItem("petStaff", "1"); else if (st === "0") localStorage.removeItem("petStaff");
+    window.PET_STAFF = localStorage.getItem("petStaff") === "1";
+  } catch (e) { window.PET_STAFF = new URLSearchParams(location.search).get("staff") === "1"; }
   // 2つに送る（Nori 2026-11-03）：shiokonbu.com 全体（pet・hinata などのサブドメインも全部入る総合）と、pet.shiokonbu.com だけの「pet」。
   var IDS = ["G-ZYX17VBTWB", "G-3KGJ9VY12G"]; // 1つ目＝shiokonbu.com 総合（消さない）、2つ目＝pet だけ
   IDS = IDS.filter(function(x){ return x; });
@@ -19,6 +26,7 @@
   }
   var opt = {page_location: clean(location.href)};
   if (document.referrer) opt.page_referrer = clean(document.referrer);
+  if (window.PET_STAFF) { gtag("set", {staff: "1"}); gtag("set", "user_properties", {staff: "1"}); opt.traffic_type = "internal"; }
   IDS.forEach(function(id){ gtag("config", id, opt); });
   var s = document.createElement("script"); s.async = true;
   s.src = "https://www.googletagmanager.com/gtag/js?id=" + IDS[0];

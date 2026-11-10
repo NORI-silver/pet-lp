@@ -2525,8 +2525,30 @@ function demandLog_(p, cards) {
   cache.put(key, '1', 1800);
   var ids = (cards || []).map(function(c) { return c.id; });
   var open = (cards || []).filter(function(c) { return c.listed && c.token; }).length;
-  var sh = ensureSheet_(SpreadsheetApp.getActive(), '需要の記録', ['日時', 'お迎えの都道府県', 'お迎えの市区町村', '行き先の市区町村', 'お迎えの日', '片道・往復', '候補に出た会社', '問い合わせできた会社の数']);
-  sh.appendRow([new Date(), shortPref_(p.pref), cityOf_(p.pickup), cityOf_(p.dropoff), String(p.datetime || '').slice(0, 10), String(p.trip || ''), ids.join(','), open]);
+  var sh = ensureSheet_(SpreadsheetApp.getActive(), '需要の記録', DEMAND_HEAD_);
+  if (sh.getRange(1, 9).getValue() !== '運営者') sh.getRange(1, 9).setValue('運営者').setFontWeight('bold').setBackground('#fff1e6');
+  sh.appendRow([new Date(), shortPref_(p.pref), cityOf_(p.pickup), cityOf_(p.dropoff), String(p.datetime || '').slice(0, 10), String(p.trip || ''), ids.join(','), open, p.staff === '1' ? '運営者' : '']);
+}
+// 9列目「運営者」：運営者の動作確認の検索（その端末で一度 https://pet.shiokonbu.com/?staff=1 を開くと、ページが staff=1 を付けて送る。?staff=0 で解除）。
+// お誘いのメールの数字は、ここが空の行だけで数える（2026-11-10 戦略担当・提携担当）。
+var DEMAND_HEAD_ = ['日時', 'お迎えの都道府県', 'お迎えの市区町村', '行き先の市区町村', 'お迎えの日', '片道・往復', '候補に出た会社', '問い合わせできた会社の数', '運営者'];
+
+// 前の記録に、あとから運営者の印を付ける（何も送らない）。from・to は '2026-11-08 10:00' の形、
+// pref を渡すとその都道府県（「東京」のように都道府県の字なし）だけ。印を付けた行の数を返す。
+// 例：markDemandStaff('2026-11-08 00:00', '2026-11-08 23:59')
+function markDemandStaff(from, to, pref) {
+  var sh = SpreadsheetApp.getActive().getSheetByName('需要の記録');
+  if (!sh || sh.getLastRow() < 2) return 0;
+  var a = new Date(String(from).replace(/-/g, '/')), b = new Date(String(to).replace(/-/g, '/'));
+  sh.getRange(1, 9).setValue('運営者');
+  var v = sh.getRange(2, 1, sh.getLastRow() - 1, 9).getValues(), n = 0;
+  var col = v.map(function(r) {
+    var t = r[0] instanceof Date ? r[0] : new Date(r[0]), hit = t >= a && t <= b && (!pref || r[1] === pref);
+    if (hit && r[8] !== '運営者') n++;
+    return [hit ? '運営者' : r[8]];
+  });
+  sh.getRange(2, 9, col.length, 1).setValues(col);
+  return n;
 }
 
 // 往復の片方を片道の依頼として見たときの入力（go＝行き、back＝帰り）。料金・署名・候補の判定はこれで片道として計算する
