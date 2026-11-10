@@ -168,4 +168,12 @@ CAT = dict(slug=SLUG, name="ドッグトレーナー・しつけ教室", unit="�
 CAT["table"] = [("出張", lambda t: "○" if _has(t, "出張", "訪問", "お家", "ご自宅") else ""), ("教室", lambda t: "○" if _has(t, "教室", "グループ", "クラス") else ""), ("幼稚園", lambda t: "○" if _has(t, "幼稚園", "保育園") else ""), ("預かり", lambda t: "○" if _has(t, "預かり") else ""), ("オンライン", lambda t: "○" if _has(t, "オンライン") else ""), ("市区町村", lambda t: t.get("city", ""))]
 CAT["fac_chips"] = lambda e, pf: FC.chips(e, FC.TRAINER_CHIPS, pf)
 CAT["extra_after"] = _free_class
+# [B] 11/10：「埼玉 犬のようちえん」「出張 ドッグトレーナー 福岡」などで表示されるので、題名に出張・幼稚園・預かりの件数（公式サイトに書いてある数）を出す
+def _title(pf, rs, n):
+    home = sum(_has(t, '出張', '訪問', 'お家', 'ご自宅') for t in rs)
+    kg = sum(_has(t, '幼稚園', '保育園') for t in rs)
+    az = sum(_has(t, '預かり') for t in rs)
+    parts = [f"出張しつけ{home}件" if home else "", f"犬の幼稚園{kg}件" if kg else "", f"預かり{az}件" if az else ""]
+    return f"{pf}のドッグトレーナー・犬のしつけ教室{n}件｜" + "・".join(x for x in parts if x) + "（公式サイトで確認）｜ペットタクシー予約窓口"
+CAT["title_fn"] = _title
 CAT["fac_biz"] = lambda e: FC.biz(e, "ドッグトレーナー・しつけ教室")
