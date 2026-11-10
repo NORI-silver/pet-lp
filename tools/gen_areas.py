@@ -186,17 +186,16 @@ src = src.replace('<a href="/area/">全国47都道府県のペットタクシー
 _npref = len({a for x in _DISP for a in x.get("areas", [])})
 src = re.sub(r'<div class="stat"><div class="n">[0-9]+<small>都道府県</small></div><div class="l">[^<]*(?:<br>[^<]*)?</div></div>',
              f'<div class="stat"><div class="n">{_npref}<small>都道府県</small></div><div class="l">{len(_DISP)}社から<br>さがせます</div></div>', src, count=1)
-# トップの title・説明文・h1 の上の一行に、全国の社数・都道府県の数・10kmの目安を入れる（[B] 2026-11-10 Nori「ペットタクシーのSEO順位が少し上がってきた。もっとあげて」。
-# 「ペットタクシー」の検索で、数の入ったエリアページ（/kanagawa/ など）が出てトップが出ていなかったため。数は生成のたびに数える）
-_t_title = f"ペットタクシーの料金比較｜全国{len(_DISP)}社・{_npref}都道府県の運賃の目安と空き状況を無料で問い合わせ｜ペットタクシー予約窓口"
-_t_desc = (f"全国{len(_DISP)}社（{_npref}都道府県）のペットタクシー（動物タクシー）の料金の目安をくらべて、空き状況と料金を無料で問い合わせ。"
-           f"10kmなら片道{nat_text(10).split('（')[0]}が目安（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。"
-           "犬・猫・うさぎも。返事を見て納得してから予約できます。当日の依頼もできます。")
+# トップの title・説明文（[B] 2026-11-10。「ペットタクシー」の検索でトップを出すため「ペットタクシーの料金比較」で始める。
+# 社数や10kmの金額を入れた案は Nori「ユーザてきにはあんまり」でやめ、Nori「料金がわかることがいいんじゃない？」で、料金の目安が分かることを先に書く。数はページの中の表に残す）
+_t_title = "ペットタクシーの料金をくらべる｜場所を入れると近くの会社の料金の目安がわかる（無料）｜ペットタクシー予約窓口"
+_t_desc = ("ペットタクシーはいくらかかる？お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安がその場で並びます"
+           "（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。犬・猫の通院や引っ越し、空港への送迎に。空き状況と料金を無料で問い合わせ、返事を見てから予約を決められます。")
 src = re.sub(r"<title>.*?</title>", lambda m: f"<title>{_t_title}</title>", src, count=1, flags=re.S)
 src = re.sub(r'<meta name="description" content="[^"]*">', lambda m: f'<meta name="description" content="{_t_desc}">', src, count=1)
 src = re.sub(r'<meta property="og:title" content="[^"]*">', lambda m: f'<meta property="og:title" content="{_t_title}">', src, count=1)
 src = re.sub(r'<meta property="og:description" content="[^"]*">', lambda m: f'<meta property="og:description" content="{_t_desc}">', src, count=1)
-src = re.sub(r'(<span class="kicker">).*?(<b )', lambda m: m.group(1) + f"全国{len(_DISP)}社のペットタクシーの料金比較・空き状況の問い合わせ " + m.group(2), src, count=1, flags=re.S)
+src = re.sub(r'(<span class="kicker">).*?(<b )', lambda m: m.group(1) + "ペットタクシーの料金比較・空き状況の問い合わせ " + m.group(2), src, count=1, flags=re.S)
 open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(src)
 TOP_HTML = src  # 地域ページの元（下の clone_top）。src はあとで別の用途に使われるので写しておく
 # 地域ページは全部トップの写しで、ページの下の大きなプログラム（フォーム・料金の計算・緊急タブのデータ）も同じ。

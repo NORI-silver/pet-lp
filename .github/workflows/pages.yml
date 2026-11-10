@@ -19,7 +19,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -32,7 +32,8 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
         with:
-          timeout: 600000
+          # 2026-11-10：GitHub 側の公開が「finished_file_sync」のまま10分をこえて止まり、3回つづけて取り消されたので、待つ時間を25分にのばした
+          timeout: 1500000
   # [B] 公開のあと、本文が変わったページ（sitemap の lastmod が変わった・増えたURL）を IndexNow で検索エンジンに知らせる（2026-11-08）。
   # IndexNow は Bing などに「このページが新しくなった」と知らせるしくみ。ChatGPT の検索や Copilot は Bing の索引を使うので、AI検索に早く載る。
   # 鍵（4d1bdcc4cfcf49810b95650642a055e1）は公開してよいもの（サイトの /4d1bdcc4cfcf49810b95650642a055e1.txt に置いて、持ち主の確認に使う）。送るのはページのURLだけ。失敗しても公開は止めない。
