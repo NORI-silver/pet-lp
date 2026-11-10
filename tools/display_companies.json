@@ -7213,9 +7213,10 @@
      "yen": 220
     },
     "night": {
-     "from": 21,
+     "from": 20,
      "to": 8,
-     "flat": 3300
+     "flat": 3300,
+     "by": "start"
     },
     "roundBack": {
      "per": 165
