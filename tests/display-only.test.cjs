@@ -30,7 +30,7 @@ const shown=cards.filter(c=>c.id!=='P002');
 // お迎えの都道府県に対応している会社だけ（Nori 2026-10-31「大阪の住所で全国の会社が出た」）。お店が遠すぎる会社も外す
 const inT=c=>disp.find(d=>d.id===c.id).areas.includes('東京');
 assert.ok(shown.length>0 && shown.every(inT));
-assert.equal(shown.length, disp.filter(c=>ctx.displayServes_(c,'東京',point)&&ctx.displayInTime_(c,ctx.selectionRide_(p)['希望日時'],new Date())).length);
+assert.equal(shown.length, disp.filter(c=>!ctx.openDisplayIds_().includes(c.id)&&ctx.displayServes_(c,'東京',point)&&ctx.displayInTime_(c,ctx.selectionRide_(p)['希望日時'],new Date())).length);
 shown.forEach(c=>{ assert.equal(c.token,undefined); assert.equal(c.review,null); });
 // 料金表がある会社は料金の目安を出す（安い順、お見積もりの会社はあと）
 const priced=shown.filter(c=>c.price.amount!=null);
