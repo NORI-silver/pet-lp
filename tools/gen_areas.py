@@ -137,6 +137,23 @@ def _open_prefs():
     m = re.search(r"OPEN_PARTNERS:\s*\{([^}]*)\}", gs)
     ids = re.findall(r"'[^']*'\s*:\s*'([^']+)'", m.group(1)) if m else []
     return sorted({a for x in _DISP if x.get("id") in ids for a in x.get("areas", [])})
+# [B] SEO 11/10 Nori「今提携が完了してるエリアを重点的に改善して」：問い合わせを受け付けている会社（OPEN_PARTNERS）のお店がある都道府県では、
+# エリアページの題名・説明文・リード文に「この会社に問い合わせできる」を出す。お店のあたりの名前は公式サイトの対応エリアの書き方から。
+_OPEN_LABEL = {"D13b7c6f": ("北海道", "札幌"), "D225080e": ("広島県", "広島"), "De308905": ("東京都", "練馬区・杉並区"), "D0ec95b6": ("福岡県", "福岡市東区")}
+def _open_local():
+    gs = open(os.path.join(ROOT, "booking", "Code.gs"), encoding="utf-8").read()
+    m = re.search(r"OPEN_PARTNERS:\s*\{([^}]*)\}", gs)
+    out = {}
+    for i in (re.findall(r"'[^']*'\s*:\s*'([^']+)'", m.group(1)) if m else []):
+        if i in _OPEN_LABEL:
+            pf, lab = _OPEN_LABEL[i]
+            out.setdefault(pf, []).append((next(x["name"] for x in _DISP if x["id"] == i), lab))
+    return out
+OPEN_LOCAL = _open_local()
+def open_lead(pf):
+    cs = OPEN_LOCAL.get(pf)
+    if not cs: return ""
+    return f"{pf}では、" + "・".join(f"{n}（{l}）" for n, l in cs) + "に、このページのフォームから空き状況と料金を無料で問い合わせできます。"
 src = re.sub(r"/\*OPEN_PREFS\*/.*?/\*/OPEN_PREFS\*/", lambda m: "/*OPEN_PREFS*/var OPEN_PREFS = " + json.dumps(_open_prefs(), ensure_ascii=False) + ";/*/OPEN_PREFS*/", src, count=1, flags=re.S)
 def _co_site():
     out = {x["id"]: [x["name"], x["url"]] for x in _DISP if x.get("url")}
@@ -622,7 +639,7 @@ for a in AREAS:
   </div>
 </section>
 '''
-    page = clone_top(a["title"], a["desc"], url, ld_html, f'{a.get("h1", a["short"])}のペットタクシー予約', a["lede"], a["pref"], area_html,
+    page = clone_top(a["title"], a["desc"], url, ld_html, f'{a.get("h1", a["short"])}のペットタクシー予約', open_lead(a["pref"]) + a["lede"], a["pref"], area_html,
                      f'<a href="/">ペットタクシー予約窓口</a> › {e(a["short"])}のペットタクシー')
     os.makedirs(os.path.join(ROOT, a["slug"]), exist_ok=True)
     open(os.path.join(ROOT, a["slug"], "index.html"), "w", encoding="utf-8").write(page)
@@ -1375,7 +1392,10 @@ for slug, pf, short, cities in PREFS:
     # [B] SEO 11/8：愛知 12表示・0クリック。3社以上の県は数・24時間・当日を先に出す（数えた数だけ）。
     _t24, _tsd = _n24(_k), _nsame(_k)
     _tx = "・".join(x for x in [f"24時間受付{_t24}社" if _t24 else "", f"当日も受ける{_tsd}社" if _tsd else ""] if x)
-    title = (f"{short}のペットタクシー{n_cos}社の料金をくらべる｜" + (_tx + "・" if _tx else "") + "夜間の動物病院" if n_cos >= 3 else
+    _ol = OPEN_LOCAL.get(pf)
+    title = (f"{short}のペットタクシー{n_cos}社の料金をくらべる｜{'・'.join(l for _, l in _ol)}の会社に空き状況と料金を無料で問い合わせ" if _ol and n_cos >= 2 else
+             f"{short}のペットタクシーの料金の目安｜{'・'.join(l for _, l in _ol)}の会社に空き状況と料金を無料で問い合わせ" if _ol else
+             f"{short}のペットタクシー{n_cos}社の料金をくらべる｜" + (_tx + "・" if _tx else "") + "夜間の動物病院" if n_cos >= 3 else
              f"{short}のペットタクシー｜料金の例・夜間の動物病院・ペットの緊急搬送" if has_fare else f"{short}のペットタクシーの探し方｜夜間の動物病院・ペットの緊急搬送") + "｜ペットタクシー予約窓口"
     dcities = []  # 説明文用：その県の中の病院の市（政令市の区はまとめる）
     for h in hs:
@@ -1464,7 +1484,8 @@ for slug, pf, short, cities in PREFS:
 </section>
 '''
     area_html = re.sub(r'<div class="emg-score" data-id="[^"]*"></div>', "", area_html)  # 口コミはトップの緊急タブの仕組みで見る（二重に読み込まない）
-    lede = f"{pf}（{'・'.join(cities[:4])}など）で、犬や猫の移動の手段を探している方へ。フォームに入力すると、条件に合う事業者と料金の目安が見られます。急ぐときの連絡先は「緊急」タブにまとめています。"
+    if _ol: desc = "・".join(n for n, _ in _ol) + "に、空き状況と料金を無料で問い合わせできます。" + desc.replace("頼む前に確かめること、", "")
+    lede = open_lead(pf) + f"{pf}（{'・'.join(cities[:4])}など）で、犬や猫の移動の手段を探している方へ。フォームに入力すると、条件に合う事業者と料金の目安が見られます。急ぐときの連絡先は「緊急」タブにまとめています。"
     page = clone_top(title, desc, url, ld, f"{short}のペットタクシー", lede, pf, area_html,
                      f'<a href="/">ペットタクシー予約窓口</a> › <a href="/area/">全国のペットタクシー情報</a> › {e(short)}')
     os.makedirs(os.path.join(ROOT, "area", slug), exist_ok=True)
