@@ -189,18 +189,35 @@ NIGHT = dict(slug="hospital/night", name="夜間・救急の動物病院", unit=
 # [B] SEO 11/8：表示は多いのにクリックが少ない（大阪 12表示・0クリック）。県のページの題名と説明文に、
 # 答え（朝まで受け付ける病院の数・市の名前）を先に出す。数はすべて公式サイトの受付時間から数える。
 def _night_cities(rs):
+    # 県の中の病院の市を先に。近くの県の病院は「宮城県仙台市」のように県を付けて出す（県の中にあるように読めないように）
     cs = []
-    for h in rs:
+    for h in sorted(rs, key=_far):
         c = re.sub(r"^(.+?市).+区$", r"\1", re.sub(r"（.*?）", "", h["city"]))
+        if _far(h):
+            fp = re.search(r"（([^）]+)）$", h["city"]).group(1)
+            c = c if c.startswith(fp) else fp + c
         if not c.endswith("など") and c not in cs: cs.append(c)
     return cs
+# [B] SEO 11/10：県の中に夜間の病院がない（または少ない）県は、題名で「近くの県の病院」とはっきり書く（青森・鳥取など16県）。
+def _night_mid(hc):
+    return (f"朝まで受付{hc['till5']}院" if hc["till5"] else f"深夜0時すぎまで受付{hc['past0']}院" if hc["past0"] else "受付時間つき")
 def _night_title(pf, rs, n):
-    hc = _hours_counts(rs); cs = _night_cities(rs)
-    mid = (f"朝まで受付{hc['till5']}院" if hc["till5"] else f"深夜0時すぎまで受付{hc['past0']}院" if hc["past0"] else "受付時間つき")
-    return f"{pf}の夜間・救急動物病院{n}院｜{mid}" + (f"（{'・'.join(cs[:3])}）" if cs else "")
+    hc = _hours_counts(rs); cs = _night_cities(rs); far = sum(_far(h) for h in rs); mid = _night_mid(hc)
+    cl = f"（{'・'.join(cs[:3])}）" if cs else ""
+    if far == n:
+        return f"{pf}から行ける夜間・救急動物病院｜近くの県の{n}院{cl}・{mid}"
+    if far:
+        return f"{pf}の夜間・救急動物病院{n - far}院と近くの県の{far}院｜{mid}{cl}"
+    return f"{pf}の夜間・救急動物病院{n}院｜{mid}{cl}"
 def _night_desc(pf, rs, n):
-    hc = _hours_counts(rs); cs = _night_cities(rs)
-    return (f"{pf}で夜間・休日に診てもらえる動物病院{n}院の受付時間と所在地" + (f"（{'・'.join(cs[:4])}など）" if cs else "") + "。"
+    hc = _hours_counts(rs); cs = _night_cities(rs); far = sum(_far(h) for h in rs)
+    if far == n:
+        head = f"{pf}の中では夜間・救急の動物病院が見つからなかったため、近くの県で夜間・休日に診てもらえる{n}院の受付時間と所在地を載せています"
+    elif far:
+        head = f"{pf}で夜間・休日に診てもらえる動物病院{n - far}院と、近くの県の{far}院の受付時間と所在地"
+    else:
+        head = f"{pf}で夜間・休日に診てもらえる動物病院{n}院の受付時間と所在地"
+    return (head + (f"（{'・'.join(cs[:4])}など）" if cs else "") + "。"
             + ((f"24時間受付は{hc['all']}院、" if hc["all"] else "") + f"朝5時以降まで受け付けるのは{hc['till5']}院です。" if hc["till5"] else "")
             + "公式サイトで確かめた内容だけを、順位をつけずに載せています。行く前に必ず電話で受け入れを確かめてください。")
 NIGHT["title_fn"] = _night_title
