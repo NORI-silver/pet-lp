@@ -547,7 +547,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 複数社を選べる（Nori 2026-10-31）。押すたびに選ぶ・外す。送るのは下の「選んだ◯社に…」ボタン
       var on = !leg && chosenPicks.some(function(c){ return c.id === card.id; });
       if (on) { article.classList.add("picked"); btn.classList.add("pick-on"); }
-      btn.textContent = legName ? legName + "をこの事業者にする" : on ? "✓ 選んでいます（押すと外す）" : "この会社を選ぶ"; btn.setAttribute("aria-label", legName ? legName + "を" + card.label + "にする" : card.label + (on ? "を外す" : "を選ぶ"));
+      btn.textContent = legName ? legName + "をこの事業者にする" : on ? "✓ 問い合わせ先に入れました（押すと外す）" : "この会社に問い合わせる"; btn.setAttribute("aria-label", legName ? legName + "を" + card.label + "にする" : card.label + (on ? "を問い合わせ先から外す" : "を問い合わせ先に入れる"));
       if (!leg) btn.setAttribute("aria-pressed", on ? "true" : "false");
       btn.addEventListener("click", function(){ if (sending) return; if (leg) return pickLeg(leg, card, article); togglePick(card); });
       article.addEventListener("click", function(event){ if (!event.target.closest("button,a,details,.review-panel")) btn.click(); });
