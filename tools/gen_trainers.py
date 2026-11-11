@@ -102,7 +102,7 @@ def render(ctx):
 </section>
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sh"><h2>教室や幼稚園への送り迎えは、ペットタクシーで</h2><p>車がないとき、大型犬のとき、飼い主さまと一緒に家の前から教室の前まで移動できます。当日の依頼もできますが、会社にメールで確認するため、お迎えは依頼から3時間以上あとになります。</p></div>
+    <div class="sh"><h2>教室や幼稚園への送り迎えは、ペットタクシーで</h2><p>車がないとき、大型犬のとき、飼い主さまと一緒に家の前から教室の前まで移動できます。当日の依頼もできます。</p></div>
     <ul class="other"><li><a href="/guide/choose-dog-trainer/">ドッグトレーナーのえらび方</a></li><li><a href="/guide/puppy-class/">子犬のしつけはいつから？社会化期とパピークラス</a></li><li><a href="/guide/dog-behavior-help/">かむ・吠える・トイレの失敗：問題行動の相談先</a></li><li><a href="/dogrun/">全国のドッグラン</a></li><li><a href="/jichitai/">ペットの迷子・犬の登録・引取りの窓口</a></li><li><a href="/hospital/">条件でさがす動物病院</a></li><li><a href="/guide/large-dog/">大型犬の移動のガイド</a></li></ul>
     {ctx["area_links"]()}
   </div>
