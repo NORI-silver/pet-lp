@@ -310,7 +310,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     quotesLoaded = true; quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
     var ready = cards.filter(function(c){ return !c.display_only; }).length, later = cards.length - ready;
-    if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。いまはどの会社にも、このサイトからはまだ問い合わせできません。" : (later ? cards.length + "社が候補です（うち" + later + "社は、このサイトからはまだ問い合わせできません）。" : cards.length + "社が候補です。") + (ready >= 2 ? "会社を選ぶか、下の「全社に問い合わせる」でまとめて送れます。" : "問い合わせたい会社を選んでください。"));
+    // できることを先に書く（2026-11-11 飼い主目線のレビュー N2）。コピーの説明はカードごとではなくここで1回（N3）
+    var copyable = cards.some(function(c){ return c.display_only && c.site; });
+    var copyNote = copyable ? (ready ? "印のない会社は" : "") + "「問い合わせ文をコピー」を押すと、入力した条件をそのまま公式サイトのお問い合わせ欄に貼れます。" : "";
+    if (cards.length) $("partnerStatus").textContent = !ready ? cards.length + "社が見つかりました。各社の料金の目安と公式サイトをご覧いただけます（このサイトから問い合わせできる会社は、まだありません）。" + copyNote
+      : (later ? "このサイトから問い合わせできる会社：" + ready + "社（社名の横にオレンジのチェック）。ほかの" + later + "社は、料金の目安と公式サイトをご覧いただけます。" : cards.length + "社が候補です。") + (ready >= 2 ? "会社を選ぶか、下の「全社に問い合わせる」でまとめて送れます。" : "問い合わせたい会社を選んでください。") + copyNote;
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。問い合わせは送信されていません。</span>';
     $("partnerSortBox").hidden = cards.length < 2;
     var hasDist = cards.some(function(c){ return !!c.shop; }); // 予約のしくみが古い版のあいだはお店の位置が来ないので、距離のしぼり込みを出さない
@@ -488,13 +492,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? (routeDetails && Math.max(routeDetails.km || 0, routeDetails.highKm || 0) > 250 ? "長距離のため、お見積もり" : "料金表が未登録のため、お見積もり") : "一般道・" + tripName + "の概算見積もり" + (card.price.taxUnknown ? (card.price.incompleteFees ? "（税の扱いは確認中・未確認の費用は別途）" : "（税の扱いは確認中）") : card.price.incompleteFees ? "（税込・未確認の費用は別途）" : "（税込）"); price.appendChild(cap);
       if (card.price.local && card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
       // 概算の注意は料金のすぐ下に太字の1行（上のまとめの注意と合わせて「目立つ形」。2026-11-08 レビュー #2 でカードを短く）
-      text("p", card.price.amount == null ? "確定料金は会社からお知らせします" : "概算です。確定料金ではありません", "partner-caution");
+      var caution = text("p", card.price.amount == null ? "確定料金は会社からお知らせします" : "概算です。確定料金ではありません", "partner-caution");
       // 往復の待ち時間は当日の実際の時間で精算（Nori 2026-11-09「最終的な支払いは変動する可能性があるというのをユーザーにも」）
       // 当日の道路事情でも変わる（Nori 2026-11-09「実際に当日の道路事情などで料金は変わる可能性もある」）
       // 当てはまらない会社には出さない（Nori 2026-11-09「当てはまらない会社は対象外」）：渋滞でも追加料金なしの会社は道路事情、待機料金なしの会社は待ち時間
       var jam = NO_FEE.nojam.indexOf(card.id) < 0 && !(card.points || []).some(function(x){ return /渋滞でも追加料金なし/.test(x); });
       var wait = tripName === "往復" && NO_FEE.nowait.indexOf(card.id) < 0;
-      if (jam || wait) text("p", wait && jam ? "待ち時間は当日の実際の時間で精算します。当日の道路事情などでも、お支払いは変わることがあります" : wait ? "待ち時間は当日の実際の時間で精算するため、お支払いは変わることがあります" : "当日の道路事情などで、お支払いは変わることがあります", "partner-wait");
+      // カードでは概算の注意と同じ行に短く（くわしくはフォームの往復の欄・フォームの下・FAQ。2026-11-11 レビュー N3）
+      if (jam || wait) { var wsp = document.createElement("span"); wsp.className = "partner-wait"; wsp.textContent = "。" + (wait && jam ? "当日の待ち時間・道路事情で変わることがあります" : wait ? "待ち時間は当日の実際の時間で精算します" : "当日の道路事情で変わることがあります"); caution.appendChild(wsp); }
       // 車・お支払いは、たたまずに出す（Nori 2026-11-08「支払い方法とかできるものは全部出しておいたほうが」）
       // 分からない項目（「まだ確認中です」）は行ごと出さない。お客さまが選んだ動物を乗せられるかの「確認中」だけは残す（2026-11-08 レビュー #3）
       var carText = String(card.car || "").replace(/(^|。)[^。]*(車の詳細|対応エリア)は?[^。]*確認中です[。）)]?/g, "$1").replace(/（対応エリアは確認中です）/g, "").replace(/^。+/, "").trim();
@@ -539,7 +544,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           sa.addEventListener("click", function(){ var o = coInfo(card); o.cat = "taxi"; o.from = "card"; try { o.host = new URL(sa.href).hostname; } catch (e) {} track("official_site", o); }); // 会社ごとの遷移数（Nori 2026-11-10）
           sp.append(cp, sa); article.appendChild(sp);
         }
-        text("p", card.site ? "このサイトからはまだ問い合わせできません。「問い合わせ文をコピー」を押すと、入力した条件をそのまま公式サイトのお問い合わせ欄に貼れます。" : "このサイトからは、まだ問い合わせできません", "partner-later-note"); // 大きな灰色のボタンはやめて1行に（2026-11-08 レビュー #2）
+        if (!card.site) text("p", "このサイトからは、まだ問い合わせできません", "partner-later-note"); // コピーの説明は一覧の上で1回（2026-11-11 レビュー N3） // 大きな灰色のボタンはやめて1行に（2026-11-08 レビュー #2）
         return article;
       }
       var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn";
