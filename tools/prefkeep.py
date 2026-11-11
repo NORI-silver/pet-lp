@@ -45,8 +45,37 @@ APPLY = r"""
   }
 """
 
+# はじめての人（#pref= も覚えた県もない）には、いる場所に近い県を最初から選んでおく。
+# 位置の利用がすでに許可されていれば端末の位置、なければ通信の情報からの大まかな地域。新しく許可は求めない。覚えはしない。
+# 全国の一覧で北海道から並ぶと、自分の県まで長くスクロールして離れてしまうため（2026-11-12 Nori「サイト内離脱してるんだったらそれはヒントだ。改善して」。緊急のページと同じしくみ）
+import os as _os, re as _re
+_top = open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "index.html"), encoding="utf-8").read()
+_PN = _re.search(r"var PREF_NAMES = (\[[^\]]*\]);", _top).group(1)
+_PL = _re.search(r"var PREF_LL = (\[\[.*?\]\]);", _top).group(1)
+GUESS = r"""
+function prefGuess(sel, apply){
+  if (sel.value) return;
+  var NAMES = """ + _PN + """, LL = """ + _PL + r""";
+  function at(lat, lng){ var best = -1, bd = Infinity; LL.forEach(function(p, i){ var dy = lat - p[0], dx = (lng - p[1]) * Math.cos((lat + p[0]) * Math.PI / 360), d = dx * dx + dy * dy; if (d < bd) { bd = d; best = i; } }); return best >= 0 && bd < 4 ? NAMES[best] : ""; }
+  function use(v, how){
+    if (!v || sel.value || ![].some.call(sel.options, function(o){ return o.value === v; })) return;
+    sel.value = v; apply(); prefLinks(v);
+    var g = document.createElement("p"); g.className = "pref-guess"; g.style.cssText = "margin:6px 0 0;font-size:.82rem;color:#6b5a4e";
+    g.textContent = how + "から、" + v + "を選んでいます。ちがうときは、上で選び直してください（「すべての都道府県」で全国）。";
+    sel.parentNode.appendChild(g);
+    sel.addEventListener("change", function(){ g.remove(); }, {once: true});
+    try { window.gtag && gtag("event", "pref_guess", {pref: v, how: how.indexOf("いまいる") === 0 ? "geo" : "ip"}); } catch (x) {}
+  }
+  function byNet(){ fetch("https://get.geojs.io/v1/ip/geo.json").then(function(r){ return r.json(); }).then(function(d){ if (d && d.country_code === "JP") use(at(+d.latitude, +d.longitude), "通信の情報（おおよその地域）"); }).catch(function(){}); }
+  if (navigator.permissions && navigator.geolocation) navigator.permissions.query({name: "geolocation"}).then(function(st){
+    if (st.state !== "granted") return byNet();
+    navigator.geolocation.getCurrentPosition(function(p){ use(at(p.coords.latitude, p.coords.longitude), "いまいる場所"); }, byNet, {maximumAge: 600000, timeout: 5000});
+  }).catch(byNet); else byNet();
+}
+"""
+
 # 病院（条件ごと）・ドッグラン・自治体・亡くなったら のページ（select#hospPref）
-LIST_JS = "<script>\n(function(){" + FN + '  var sel = document.getElementById("hospPref");' + APPLY + "  prefKeep(sel, apply);\n})();\n</script>"
+LIST_JS = "<script>\n(function(){" + FN + GUESS + '  var sel = document.getElementById("hospPref");' + APPLY + "  prefKeep(sel, apply);\n  prefGuess(sel, apply);\n})();\n</script>"
 
 # /hospital/ のように選択欄のないページ：覚えている県をリンクに付けるだけ
 LINKS_JS = "<script>\n(function(){" + FN + "  prefLinks(prefGet());\n})();\n</script>"

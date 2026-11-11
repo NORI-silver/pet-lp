@@ -165,15 +165,27 @@
   var chips = el("div", "fac-chips"), cnt = el("p", "fac-count");
   chips.setAttribute("role", "group"); chips.setAttribute("aria-label", "条件でしぼりこむ");
   function tagsOf(c){ return "|" + (c.getAttribute("data-tags") || "") + "|"; }
+  // 市区町村の名前でさがす（入れた文字は解析に送らない。件数が多い一覧だけ。2026-11-12 東京都のシッター84店で、ほかの県の店から並んで離れていたため）
+  var qbox = null, qv = "";
+  function norm(t){ return String(t || "").replace(/[\s　]/g, "").replace(/[ヶヵ]/g, "ケ"); }
+  if (cards.length >= 15) {
+    qbox = el("div", "fac-q"); qbox.style.cssText = "margin:0 0 10px";
+    var ql = el("label", "", "市区町村の名前でさがす"); ql.setAttribute("for", "facQ"); ql.style.cssText = "display:block;font-weight:700;font-size:.86rem;margin-bottom:4px";
+    var qi = document.createElement("input"); qi.type = "search"; qi.id = "facQ"; qi.placeholder = "例：世田谷区、横浜市"; qi.setAttribute("enterkeyhint", "search");
+    qi.style.cssText = "width:100%;max-width:360px;padding:10px 12px;border:1.5px solid #e2d6cc;border-radius:10px;font-size:16px";
+    qi.addEventListener("input", function(){ qv = norm(qi.value).replace(/[都道府県市区町村]$/, ""); apply(); });
+    qi.addEventListener("change", function(){ if (qv) track("facility_search", {cat: cat0, n: cards.filter(function(c){ return !c.classList.contains("fac-off"); }).length}); });
+    qbox.append(ql, qi);
+  }
   function apply(){
     var keys = Object.keys(on).filter(function(k){ return on[k]; }), n = 0;
     cards.forEach(function(c){
-      var ok = keys.every(function(k){ return tagsOf(c).indexOf("|" + k + "|") >= 0; });
+      var ok = keys.every(function(k){ return tagsOf(c).indexOf("|" + k + "|") >= 0; }) && (!qv || norm(c.textContent).indexOf(qv) >= 0);
       c.classList.toggle("fac-off", !ok);
       var sec = c.closest(".emg-pref");
       if (ok && (!sec || !sec.hidden)) n++;
     });
-    cnt.textContent = keys.length ? "条件に合うのは " + n + " 件です（公式サイトに書いてあることだけで判定。書いていない所は外れます）。" : "";
+    cnt.textContent = keys.length || qv ? "条件に合うのは " + n + " 件です（公式サイトに書いてあることだけで判定。書いていない所は外れます）。" : "";
   }
   labels.forEach(function(lab){
     var b = el("button", "", lab); b.type = "button"; b.setAttribute("aria-pressed", "false");
@@ -183,6 +195,7 @@
     });
     chips.appendChild(b);
   });
+  if (qbox) box.appendChild(qbox);
   box.appendChild(chips); box.appendChild(cnt);
   var sel = document.getElementById("hospPref"); if (sel) sel.addEventListener("change", function(){ setTimeout(apply, 0); });
 })();
