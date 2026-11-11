@@ -92,7 +92,7 @@ def render(ctx):
 </section>
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sh"><h2>ペットホテルへの送り迎えや通院は、ペットタクシーで</h2><p>あずけに行く日や迎えに行く日、留守中の通院に、ペットタクシーを予約できます。当日の依頼もできますが、会社にメールで確認するため、お迎えは依頼から3時間以上あとになります。</p></div>
+    <div class="sh"><h2>ペットホテルへの送り迎えや通院は、ペットタクシーで</h2><p>あずけに行く日や迎えに行く日、留守中の通院に、ペットタクシーを予約できます。当日の依頼もできます。</p></div>
     <ul class="other"><li><a href="/guide/how-to-use-pet-sitter/">ペットシッターの頼み方（打ち合わせ・鍵・報告・保険）</a></li><li><a href="/guide/sitter-or-hotel/">ペットシッターとペットホテル、どちらがいい？</a></li><li><a href="/guide/cat-sitter/">猫の留守番とキャットシッター</a></li><li><a href="/guide/grooming-hotel/">トリミング・ペットホテルへの送迎ガイド</a></li><li><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a></li><li><a href="/hospital/visit/">往診専門の動物病院</a></li><li><a href="/guide/cat/">猫の移動のガイド</a></li></ul>
     {ctx["area_links"]()}
   </div>

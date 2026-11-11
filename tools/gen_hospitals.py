@@ -133,7 +133,7 @@ def render_cond(cond, ctx):
 </section>
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sh"><h2>病院への移動は、ペットタクシーで</h2><p>通院や退院のお迎えなど、前もって決まっている移動は、ペットタクシーを予約できます。当日の依頼もできますが、会社にメールで確認するため、お迎えは依頼から3時間以上あとになります。</p></div>
+    <div class="sh"><h2>病院への移動は、ペットタクシーで</h2><p>通院や退院のお迎えなど、前もって決まっている移動は、ペットタクシーを予約できます。当日の依頼もできます。</p></div>
     <ul class="other"><li><a href="/guide/hospital/">動物病院への通院の送迎ガイド</a></li><li><a href="/emergency/">緊急のときの連絡先</a></li></ul>
     {ctx["area_links"]()}
   </div>

@@ -102,7 +102,7 @@ def render(ctx):
 </section>
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sh"><h2>入所や面会の日の移動は、ペットタクシーで</h2><p>寝たきりの子や大型犬も、家の前から施設の前まで飼い主さまと一緒に移動できます。当日の依頼もできますが、会社にメールで確認するため、お迎えは依頼から3時間以上あとになります。</p></div>
+    <div class="sh"><h2>入所や面会の日の移動は、ペットタクシーで</h2><p>寝たきりの子や大型犬も、家の前から施設の前まで飼い主さまと一緒に移動できます。当日の依頼もできます。</p></div>
     <ul class="other"><li><a href="/guide/rojin-home/">老犬ホームを見学するときに確かめること</a></li><li><a href="/guide/rojin-home-cost/">老犬ホームの費用のしくみ</a></li><li><a href="/guide/rojin-home-prepare/">預ける前の準備・持ち物・契約</a></li><li><a href="/guide/roneko-home/">老猫ホームのえらび方</a></li><li><a href="/guide/senior/">シニア犬・シニア猫、介護中の子の移動</a></li><li><a href="/hospital/visit/">往診専門の動物病院</a></li><li><a href="/sougi/">ペットが亡くなったら</a></li></ul>
     {ctx["area_links"]()}
   </div>
