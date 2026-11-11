@@ -334,7 +334,9 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = re.sub(r'(<select id="pref"[^>]*>.*?)<option>' + re.escape(pref) + '</option>', lambda m: m.group(1) + f'<option selected>{pref}</option>', t, count=1, flags=re.S)
     t = re.sub(r'(<select id="emgPref"[^>]*>.*?)<option>' + re.escape(pref) + '</option>', lambda m: m.group(1) + f'<option selected>{pref}</option>', t, count=1, flags=re.S)
     # 地域の説明はフォームの後ろ（「使い方」の前）に
-    t = t.replace('<section id="how">', area_html + '\n<section id="how">', 1)
+    # トップ（全国の入口）へ、「ペットタクシー」全体のことばでリンクする（トップとエリアページの役割を分ける）
+    to_top = '<div class="wrap"><p class="to-top">ほかの都道府県の会社もふくめてさがすときは、<a href="/">全国のペットタクシーの料金をくらべる</a>ページへ。</p></div>'
+    t = t.replace('<section id="how">', area_html + '\n' + to_top + '\n<section id="how">', 1)
     # エリアページ用のCSS（.crumb .prose など）を足す
     t = t.replace("</style>", extra_css.strip() + "\n</style>", 1)
     t = t.replace(_APP_M.group(0), APP_TAG, 1)
