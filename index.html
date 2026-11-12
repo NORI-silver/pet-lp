@@ -1449,7 +1449,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       b.disabled = true; b.textContent = "口コミを読み込んでいます…"; track("open_reviews");
       var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id); if (DEMO.tok) body.set("demo", DEMO.tok);
       fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
-        if (!j || !j.ok || !(j.rating > 0)) throw 0;
+        if (j && j.ok && !(j.rating > 0)) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
+        if (!j || !j.ok) throw 0;
         var rv = {rating: j.rating, count: j.count}; save(rv);
         // 星の行（出どころの表示「Google Maps」は規約で必要）と、取り寄せた口コミを開いた枠
         var score = document.createElement("p"); score.className = "partner-score";
@@ -1463,7 +1464,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var panel = document.createElement("div"); panel.className = "review-panel";
         open.addEventListener("click", function(){ toggleReviews(id, panel, open); });
         holder.replaceChildren(score, panel); fillReviews(panel, j); open.setAttribute("aria-expanded", "true");
-      }).catch(function(){ save(null); var n = document.createElement("p"); n.className = "partner-review-src"; n.textContent = "口コミは見つかりませんでした"; holder.replaceChildren(n); });
+      }).catch(function(e){ save(null); var n = document.createElement("p"); n.className = "partner-review-src"; n.textContent = e === "none" ? "Googleマップの口コミはまだありません" : "口コミを読み込めませんでした。時間をおいてもう一度お試しください"; holder.replaceChildren(n); });
     });
     return holder;
   }
