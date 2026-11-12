@@ -19,21 +19,32 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment2.outputs.page_url || steps.deployment3.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
+      # 2026-11-10：GitHub 側の公開が「syncing_files」「finished_file_sync」のまま10分をこえて止まり、取り消されることがある。
+      # deploy-pages の待ち時間は10分（600000）が上限なので、のばせない。かわりに、同じ中身でもう2回まで公開しなおす。
       - id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          # 2026-11-10：GitHub 側の公開が「finished_file_sync」のまま10分をこえて止まり、3回つづけて取り消されたので、待つ時間を25分にのばした
-          timeout: 1500000
+        continue-on-error: true
+      - id: deployment2
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - id: deployment3
+        if: steps.deployment.outcome == 'failure' && steps.deployment2.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+      - name: 公開できたか
+        if: always()
+        run: |
+          [ "${{ steps.deployment.outcome }}" = success ] || [ "${{ steps.deployment2.outcome }}" = success ] || [ "${{ steps.deployment3.outcome }}" = success ] || { echo "3回とも公開できませんでした"; exit 1; }
   # [B] 公開のあと、本文が変わったページ（sitemap の lastmod が変わった・増えたURL）を IndexNow で検索エンジンに知らせる（2026-11-08）。
   # IndexNow は Bing などに「このページが新しくなった」と知らせるしくみ。ChatGPT の検索や Copilot は Bing の索引を使うので、AI検索に早く載る。
   # 鍵（4d1bdcc4cfcf49810b95650642a055e1）は公開してよいもの（サイトの /4d1bdcc4cfcf49810b95650642a055e1.txt に置いて、持ち主の確認に使う）。送るのはページのURLだけ。失敗しても公開は止めない。

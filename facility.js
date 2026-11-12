@@ -122,7 +122,7 @@
       copy(ta.value, function(ok){ bc.textContent = ok ? "コピーしました。公式サイトに貼ってください" : "コピーできませんでした。文を長押しして選んでください"; setTimeout(function(){ bc.textContent = "文をコピーする"; }, 4000); });
     });
     btns.appendChild(bc);
-    if (href) { var go = el("a", "fac-go", "公式サイトを開く ↗"); go.href = siteUrl(href, cat); go.target = "_blank"; go.rel = "noopener"; go.addEventListener("click", function(){ track("official_site", {cat: cat, id: card.getAttribute("data-fid") || "", pref: prefOf(card), from: "dialog"}); }); btns.appendChild(go); }
+    if (href) { var go = el("a", "fac-go", "公式サイトを開く ↗"); go.href = siteUrl(href, cat); go.target = "_blank"; go.rel = "noopener"; go.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: card.getAttribute("data-fid") || "", pref: prefOf(card), from: "dialog"}); }); btns.appendChild(go); }
     var bx = el("button", "fac-x", "閉じる"); bx.value = "close"; btns.appendChild(bx);
     f.appendChild(btns);
     dlg.replaceChildren(f);
@@ -130,20 +130,21 @@
     track("open_inquiry", {cat: cat, id: card.getAttribute("data-fid") || ""});
   }
 
+  function hostOf(u){ try { return new URL(u, location.href).hostname; } catch (e) { return ""; } } // 送客先（会社名とホスト名だけ。2026-11-12 Nori「どこにってのもふくめて」）
   // ── カード ──
   var cards = Array.prototype.slice.call(document.querySelectorAll(".emg-item[data-cat]"));
   if (!cards.length) return;
   cards.forEach(function(card){
     var cat = card.getAttribute("data-cat"), fid = card.getAttribute("data-fid") || "";
     var a = card.querySelector("a[href^='http']"), href = a ? a.getAttribute("href") : "";
-    if (href) { card.setAttribute("data-site", href); a.href = siteUrl(href, cat); a.addEventListener("click", function(){ track("official_site", {cat: cat, id: fid, pref: prefOf(card), from: "name"}); }); }
+    if (href) { card.setAttribute("data-site", href); a.href = siteUrl(href, cat); a.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: fid, pref: prefOf(card), from: "name"}); }); }
     if (!card.getAttribute("data-name") && a) card.setAttribute("data-name", (a.textContent || "").trim());
     if (card.getAttribute("data-partner") === "1" && a) {
       var ic = el("span", "fac-ic"); ic.setAttribute("role", "img"); ic.setAttribute("aria-label", "このサイトから問い合わせできる事業者"); ic.title = "このサイトから問い合わせできる事業者"; ic.innerHTML = ICON;
       var b = a.querySelector("b") || a; b.insertBefore(ic, b.firstChild);
     }
     var row = el("div", "fac-act");
-    if (href) { var s = el("a", "fac-site", "公式サイトを見る ↗"); s.href = siteUrl(href, cat); s.target = "_blank"; s.rel = "noopener"; s.addEventListener("click", function(){ track("official_site", {cat: cat, id: fid, pref: prefOf(card), from: "button"}); }); row.appendChild(s); }
+    if (href) { var s = el("a", "fac-site", "公式サイトを見る ↗"); s.href = siteUrl(href, cat); s.target = "_blank"; s.rel = "noopener"; s.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: fid, pref: prefOf(card), from: "button"}); }); row.appendChild(s); }
     if (CONF[cat]) { var q = el("button", "", "問い合わせ文をつくる"); q.type = "button"; q.addEventListener("click", function(){ openAsk(card); }); row.appendChild(q); }
     var to = card.getAttribute("data-to");
     if (to) {
@@ -164,15 +165,27 @@
   var chips = el("div", "fac-chips"), cnt = el("p", "fac-count");
   chips.setAttribute("role", "group"); chips.setAttribute("aria-label", "条件でしぼりこむ");
   function tagsOf(c){ return "|" + (c.getAttribute("data-tags") || "") + "|"; }
+  // 市区町村の名前でさがす（入れた文字は解析に送らない。件数が多い一覧だけ。2026-11-12 東京都のシッター84店で、ほかの県の店から並んで離れていたため）
+  var qbox = null, qv = "";
+  function norm(t){ return String(t || "").replace(/[\s　]/g, "").replace(/[ヶヵ]/g, "ケ"); }
+  if (cards.length >= 15) {
+    qbox = el("div", "fac-q"); qbox.style.cssText = "margin:0 0 10px";
+    var ql = el("label", "", "市区町村の名前でさがす"); ql.setAttribute("for", "facQ"); ql.style.cssText = "display:block;font-weight:700;font-size:.86rem;margin-bottom:4px";
+    var qi = document.createElement("input"); qi.type = "search"; qi.id = "facQ"; qi.placeholder = "例：世田谷区、横浜市"; qi.setAttribute("enterkeyhint", "search");
+    qi.style.cssText = "width:100%;max-width:360px;padding:10px 12px;border:1.5px solid #e2d6cc;border-radius:10px;font-size:16px";
+    qi.addEventListener("input", function(){ qv = norm(qi.value).replace(/[都道府県市区町村]$/, ""); apply(); });
+    qi.addEventListener("change", function(){ if (qv) track("facility_search", {cat: cat0, n: cards.filter(function(c){ return !c.classList.contains("fac-off"); }).length}); });
+    qbox.append(ql, qi);
+  }
   function apply(){
     var keys = Object.keys(on).filter(function(k){ return on[k]; }), n = 0;
     cards.forEach(function(c){
-      var ok = keys.every(function(k){ return tagsOf(c).indexOf("|" + k + "|") >= 0; });
+      var ok = keys.every(function(k){ return tagsOf(c).indexOf("|" + k + "|") >= 0; }) && (!qv || norm(c.textContent).indexOf(qv) >= 0);
       c.classList.toggle("fac-off", !ok);
       var sec = c.closest(".emg-pref");
       if (ok && (!sec || !sec.hidden)) n++;
     });
-    cnt.textContent = keys.length ? "条件に合うのは " + n + " 件です（公式サイトに書いてあることだけで判定。書いていない所は外れます）。" : "";
+    cnt.textContent = keys.length || qv ? "条件に合うのは " + n + " 件です（公式サイトに書いてあることだけで判定。書いていない所は外れます）。" : "";
   }
   labels.forEach(function(lab){
     var b = el("button", "", lab); b.type = "button"; b.setAttribute("aria-pressed", "false");
@@ -182,6 +195,7 @@
     });
     chips.appendChild(b);
   });
+  if (qbox) box.appendChild(qbox);
   box.appendChild(chips); box.appendChild(cnt);
   var sel = document.getElementById("hospPref"); if (sel) sel.addEventListener("change", function(){ setTimeout(apply, 0); });
 })();

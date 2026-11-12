@@ -100,7 +100,7 @@ def render(ctx):
 </section>
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sh"><h2>ホテルへの送り迎えは、ペットタクシーで</h2><p>大型犬やキャリーの猫も、飼い主さまと一緒に家の前からホテルの前まで移動できます。当日の依頼もできますが、会社にメールで確認するため、お迎えは依頼から3時間以上あとになります。</p></div>
+    <div class="sh"><h2>ホテルへの送り迎えは、ペットタクシーで</h2><p>大型犬やキャリーの猫も、飼い主さまと一緒に家の前からホテルの前まで移動できます。当日の依頼もできます。</p></div>
     <ul class="other"><li><a href="/guide/large-dog-hotel/">大型犬を預けられるペットホテルの探し方</a></li><li><a href="/guide/cat-hotel/">猫をペットホテルに預けるとき</a></li><li><a href="/guide/sitter-or-hotel/">ペットシッターとペットホテル、どちらがいい？</a></li><li><a href="/guide/grooming-hotel/">トリミング・ペットホテルへの送迎ガイド</a></li><li><a href="/pet-sitter/">全国のペットシッター</a></li><li><a href="/guide/cat-sitter/">猫の留守番とキャットシッター</a></li><li><a href="/guide/large-dog/">大型犬の移動のガイド</a></li></ul>
     {ctx["area_links"]()}
   </div>

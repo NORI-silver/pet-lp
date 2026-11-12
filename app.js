@@ -197,7 +197,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       b.disabled = true; b.textContent = "口コミを読み込んでいます…"; track("open_reviews");
       var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id); if (DEMO.tok) body.set("demo", DEMO.tok);
       fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
-        if (!j || !j.ok || !(j.rating > 0)) throw 0;
+        if (j && j.ok && !(j.rating > 0)) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
+        if (!j || !j.ok) throw 0;
         var rv = {rating: j.rating, count: j.count}; save(rv);
         // 星の行（出どころの表示「Google Maps」は規約で必要）と、取り寄せた口コミを開いた枠
         var score = document.createElement("p"); score.className = "partner-score";
@@ -211,12 +212,12 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var panel = document.createElement("div"); panel.className = "review-panel";
         open.addEventListener("click", function(){ toggleReviews(id, panel, open); });
         holder.replaceChildren(score, panel); fillReviews(panel, j); open.setAttribute("aria-expanded", "true");
-      }).catch(function(){ save(null); var n = document.createElement("p"); n.className = "partner-review-src"; n.textContent = "口コミは見つかりませんでした"; holder.replaceChildren(n); });
+      }).catch(function(e){ save(null); var n = document.createElement("p"); n.className = "partner-review-src"; n.textContent = e === "none" ? "Googleマップの口コミはまだありません" : "口コミを読み込めませんでした。時間をおいてもう一度お試しください"; holder.replaceChildren(n); });
     });
     return holder;
   }
   // 問い合わせできる会社がいる都道府県（tools/gen_areas.py が booking/Code.gs の OPEN_PARTNERS から作る）。県を選んだ時点で知らせる（2026-11-08 飼い主目線のレビュー #1）
-  /*OPEN_PREFS*/var OPEN_PREFS = ["京都", "兵庫", "北海道", "和歌山", "大阪", "奈良", "広島", "東京", "滋賀", "福岡"];/*/OPEN_PREFS*/
+  /*OPEN_PREFS*/var OPEN_PREFS = ["京都", "兵庫", "北海道", "千葉", "和歌山", "埼玉", "大阪", "奈良", "広島", "東京", "滋賀", "神奈川", "福岡"];/*/OPEN_PREFS*/
   /*AREA_PREFS*/var AREA_PREFS = ["三重", "京都", "佐賀", "兵庫", "北海道", "千葉", "和歌山", "埼玉", "大阪", "奈良", "宮城", "山梨", "岐阜", "岩手", "広島", "徳島", "愛知", "東京", "栃木", "滋賀", "石川", "神奈川", "福岡", "群馬", "茨城", "長崎", "静岡"];/*/AREA_PREFS*/
   // 会社が見つかっていない県は、選ぶ前に分かるよう「（候補なし）」を付ける（値は県名のまま）
   function markPrefs(){
@@ -290,7 +291,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       btn.textContent = ok ? "コピーしました。公式サイトのお問い合わせ欄に貼ってください" : "コピーできませんでした";
       setTimeout(function(){ btn.textContent = "問い合わせ文をコピー"; }, 4000);
     };
-    track("copy_inquiry", coInfo(card));
+    var ci = coInfo(card); ci.cat = "taxi"; track("copy_inquiry", ci);
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function(){ done(true); }, function(){ done(fallback()); });
     else done(fallback());
     function fallback(){ try { var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); var ok = document.execCommand("copy"); ta.remove(); return ok; } catch (e) { return false; } }
@@ -310,7 +311,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     quotesLoaded = true; quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
     var ready = cards.filter(function(c){ return !c.display_only; }).length, later = cards.length - ready;
-    if (cards.length) $("partnerStatus").textContent = (!ready ? cards.length + "社が候補です。いまはどの会社にも、このサイトからはまだ問い合わせできません。" : (later ? cards.length + "社が候補です（うち" + later + "社は、このサイトからはまだ問い合わせできません）。" : cards.length + "社が候補です。") + (ready >= 2 ? "会社を選ぶか、下の「全社に問い合わせる」でまとめて送れます。" : "問い合わせたい会社を選んでください。"));
+    // できることを先に書く（2026-11-11 飼い主目線のレビュー N2）。コピーの説明はカードごとではなくここで1回（N3）
+    var copyable = cards.some(function(c){ return c.display_only && c.site; });
+    var copyNote = copyable ? (ready ? "印のない会社は" : "") + "「問い合わせ文をコピー」を押すと、入力した条件をそのまま公式サイトのお問い合わせ欄に貼れます。" : "";
+    if (cards.length) $("partnerStatus").textContent = !ready ? cards.length + "社が見つかりました。各社の料金の目安と公式サイトをご覧いただけます（このサイトから問い合わせできる会社は、まだありません）。" + copyNote
+      : (later ? "このサイトから問い合わせできる会社：" + ready + "社（社名の横にオレンジのチェック）。ほかの" + later + "社は、料金の目安と公式サイトをご覧いただけます。" : cards.length + "社が候補です。") + (ready >= 2 ? "会社を選ぶか、下の「全社に問い合わせる」でまとめて送れます。" : "問い合わせたい会社を選んでください。") + copyNote;
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。問い合わせは送信されていません。</span>';
     $("partnerSortBox").hidden = cards.length < 2;
     var hasDist = cards.some(function(c){ return !!c.shop; }); // 予約のしくみが古い版のあいだはお店の位置が来ないので、距離のしぼり込みを出さない
@@ -488,13 +493,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? (routeDetails && Math.max(routeDetails.km || 0, routeDetails.highKm || 0) > 250 ? "長距離のため、お見積もり" : "料金表が未登録のため、お見積もり") : "一般道・" + tripName + "の概算見積もり" + (card.price.taxUnknown ? (card.price.incompleteFees ? "（税の扱いは確認中・未確認の費用は別途）" : "（税の扱いは確認中）") : card.price.incompleteFees ? "（税込・未確認の費用は別途）" : "（税込）"); price.appendChild(cap);
       if (card.price.local && card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
       // 概算の注意は料金のすぐ下に太字の1行（上のまとめの注意と合わせて「目立つ形」。2026-11-08 レビュー #2 でカードを短く）
-      text("p", card.price.amount == null ? "確定料金は会社からお知らせします" : "概算です。確定料金ではありません", "partner-caution");
+      var caution = text("p", card.price.amount == null ? "確定料金は会社からお知らせします" : "概算です。確定料金ではありません", "partner-caution");
       // 往復の待ち時間は当日の実際の時間で精算（Nori 2026-11-09「最終的な支払いは変動する可能性があるというのをユーザーにも」）
       // 当日の道路事情でも変わる（Nori 2026-11-09「実際に当日の道路事情などで料金は変わる可能性もある」）
       // 当てはまらない会社には出さない（Nori 2026-11-09「当てはまらない会社は対象外」）：渋滞でも追加料金なしの会社は道路事情、待機料金なしの会社は待ち時間
       var jam = NO_FEE.nojam.indexOf(card.id) < 0 && !(card.points || []).some(function(x){ return /渋滞でも追加料金なし/.test(x); });
       var wait = tripName === "往復" && NO_FEE.nowait.indexOf(card.id) < 0;
-      if (jam || wait) text("p", wait && jam ? "待ち時間は当日の実際の時間で精算します。当日の道路事情などでも、お支払いは変わることがあります" : wait ? "待ち時間は当日の実際の時間で精算するため、お支払いは変わることがあります" : "当日の道路事情などで、お支払いは変わることがあります", "partner-wait");
+      // カードでは概算の注意と同じ行に短く（くわしくはフォームの往復の欄・フォームの下・FAQ。2026-11-11 レビュー N3）
+      if (jam || wait) { var wsp = document.createElement("span"); wsp.className = "partner-wait"; wsp.textContent = "。" + (wait && jam ? "当日の待ち時間・道路事情で変わることがあります" : wait ? "待ち時間は当日の実際の時間で精算します" : "当日の道路事情で変わることがあります"); caution.appendChild(wsp); }
       // 車・お支払いは、たたまずに出す（Nori 2026-11-08「支払い方法とかできるものは全部出しておいたほうが」）
       // 分からない項目（「まだ確認中です」）は行ごと出さない。お客さまが選んだ動物を乗せられるかの「確認中」だけは残す（2026-11-08 レビュー #3）
       var carText = String(card.car || "").replace(/(^|。)[^。]*(車の詳細|対応エリア)は?[^。]*確認中です[。）)]?/g, "$1").replace(/（対応エリアは確認中です）/g, "").replace(/^。+/, "").trim();
@@ -536,10 +542,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           var cp = document.createElement("button"); cp.type = "button"; cp.className = "copy-ask"; cp.textContent = "問い合わせ文をコピー";
           cp.addEventListener("click", function(){ copyAsk(cp, card); });
           var sa = document.createElement("a"); sa.href = siteUrl(card.site); sa.target = "_blank"; sa.rel = "noopener"; sa.textContent = "公式サイトを見る ↗";
-          sa.addEventListener("click", function(){ track("official_site", coInfo(card)); });
+          sa.addEventListener("click", function(){ var o = coInfo(card); o.cat = "taxi"; o.from = "card"; try { o.host = new URL(sa.href).hostname; } catch (e) {} track("official_site", o); }); // 会社ごとの遷移数（Nori 2026-11-10）
           sp.append(cp, sa); article.appendChild(sp);
         }
-        text("p", card.site ? "このサイトからはまだ問い合わせできません。「問い合わせ文をコピー」を押すと、入力した条件をそのまま公式サイトのお問い合わせ欄に貼れます。" : "このサイトからは、まだ問い合わせできません", "partner-later-note"); // 大きな灰色のボタンはやめて1行に（2026-11-08 レビュー #2）
+        if (!card.site) text("p", "このサイトからは、まだ問い合わせできません", "partner-later-note"); // コピーの説明は一覧の上で1回（2026-11-11 レビュー N3） // 大きな灰色のボタンはやめて1行に（2026-11-08 レビュー #2）
         return article;
       }
       var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn";
@@ -547,7 +553,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 複数社を選べる（Nori 2026-10-31）。押すたびに選ぶ・外す。送るのは下の「選んだ◯社に…」ボタン
       var on = !leg && chosenPicks.some(function(c){ return c.id === card.id; });
       if (on) { article.classList.add("picked"); btn.classList.add("pick-on"); }
-      btn.textContent = legName ? legName + "をこの事業者にする" : on ? "✓ 選んでいます（押すと外す）" : "この会社を選ぶ"; btn.setAttribute("aria-label", legName ? legName + "を" + card.label + "にする" : card.label + (on ? "を外す" : "を選ぶ"));
+      btn.textContent = legName ? legName + "をこの事業者にする" : on ? "✓ 問い合わせ先に入れました（押すと外す）" : "この会社に問い合わせる"; btn.setAttribute("aria-label", legName ? legName + "を" + card.label + "にする" : card.label + (on ? "を問い合わせ先から外す" : "を問い合わせ先に入れる"));
       if (!leg) btn.setAttribute("aria-pressed", on ? "true" : "false");
       btn.addEventListener("click", function(){ if (sending) return; if (leg) return pickLeg(leg, card, article); togglePick(card); });
       article.addEventListener("click", function(event){ if (!event.target.closest("button,a,details,.review-panel")) btn.click(); });

@@ -486,7 +486,7 @@ def taxi_band(e, pf=None, pref_href=None):
     night = f'/hospital/night/#pref={quote(pf)}' if pf else "/hospital/night/"
     return f'''<section style="padding-top:0">
   <div class="wrap">
-    <div class="sh"><h2>大型犬や多頭で、遠くのドッグランへ</h2><p>車がないとき、大型犬や何頭もいっしょのときは、ペットタクシーを予約できます（乗せられる犬の大きさや頭数は会社ごとに違います）。各社の公式サイトの料金表から計算した概算で、料金をくらべられます。当日の依頼もできますが、会社にメールで確認するため、お迎えは依頼から3時間以上あとになります。</p></div>
+    <div class="sh"><h2>大型犬や多頭で、遠くのドッグランへ</h2><p>車がないとき、大型犬や何頭もいっしょのときは、ペットタクシーを予約できます（乗せられる犬の大きさや頭数は会社ごとに違います）。各社の公式サイトの料金表から計算した概算で、料金をくらべられます。当日の依頼もできます。</p></div>
     <ul class="other">{area}<li><a href="/#form">ペットタクシーの料金をくらべる（無料）</a></li><li><a href="{jich}">ペットの迷子・犬の登録・引取りの窓口</a></li><li><a href="{night}">夜間・救急の動物病院</a></li><li><a href="/guide/large-dog/">大型犬の移動のガイド</a></li><li><a href="/guide/multi-pet/">多頭で乗れるペットタクシー</a></li></ul>
   </div>
 </section>'''

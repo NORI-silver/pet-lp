@@ -196,13 +196,17 @@ def _night_cities(rs):
         if _far(h):
             fp = re.search(r"（([^）]+)）$", h["city"]).group(1)
             c = c if c.startswith(fp) else fp + c
-        if not c.endswith("など") and c not in cs: cs.append(c)
+        if not c.endswith("など") and not c.endswith("県内") and c not in cs: cs.append(c)  # 「高知県内（当番制）」は市の名前ではないので出さない
     return cs
 # [B] SEO 11/10：県の中に夜間の病院がない（または少ない）県は、題名で「近くの県の病院」とはっきり書く（青森・鳥取など16県）。
-def _night_mid(hc):
-    return (f"朝まで受付{hc['till5']}院" if hc["till5"] else f"深夜0時すぎまで受付{hc['past0']}院" if hc["past0"] else "受付時間つき")
+def _night_mid(hc, rs=()):
+    if hc["till5"]: return f"朝まで受付{hc['till5']}院"
+    if hc["past0"]: return f"深夜0時すぎまで受付{hc['past0']}院"
+    # [B] SEO 11/11：「受付時間つき」だけだと答えにならない（高知 26表示・0クリック）。いちばん遅い受付の時刻を出す（公式サイトの受付時間から）
+    ends = [int(m.group(2) or m.group(3)) for h in rs for m in [re.search(r"〜(翌)?(\d+)時|(\d+)時まで", h.get("hours", ""))] if m]
+    return ("深夜0時まで受付" if max(ends) == 24 else f"夜{max(ends)}時まで受付") if ends else "受付時間つき"
 def _night_title(pf, rs, n):
-    hc = _hours_counts(rs); cs = _night_cities(rs); far = sum(_far(h) for h in rs); mid = _night_mid(hc)
+    hc = _hours_counts(rs); cs = _night_cities(rs); far = sum(_far(h) for h in rs); mid = _night_mid(hc, rs)
     cl = f"（{'・'.join(cs[:3])}）" if cs else ""
     if far == n:
         return f"{pf}から行ける夜間・救急動物病院｜近くの県の{n}院{cl}・{mid}"
