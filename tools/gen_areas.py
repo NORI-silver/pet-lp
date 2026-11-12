@@ -1170,11 +1170,11 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
   <div class="group-h"><span>2</span>お店とお迎えのエリア</div>
   <div class="f"><label for="p_shop">車が出発するお店・事業所の住所</label>
     <div class="pt-ac"><input type="text" id="p_shop" data-k="車が出発する場所" required autocomplete="street-address" placeholder="例：広島県広島市安芸区矢野西1丁目2-3"><ul id="p_shopList" hidden></ul><span class="ok" id="p_shopOk" hidden></span></div></div>
-  {pt_f("お迎えに行ける範囲", pt_sel("p_radius", "お迎えに行ける範囲", ["お店から10kmまで", "20kmまで", "30kmまで", "50kmまで", "80kmまで", "もっと遠くても行く"]), "", "")}
+  {pt_f("お迎えに行ける範囲", pt_sel("p_radius", "お迎えに行ける範囲", ["お店から5kmまで", "10kmまで", "20kmまで", "30kmまで", "50kmまで", "80kmまで", "100kmまで"]), "", "")}
   <div class="f"><span class="lbl">お迎えできる都道府県<span class="any">お店の場所と範囲から自動で選んでいます。ちがうところだけ直してください</span></span>
     <div class="checks seg" id="p_prefs" data-k="都道府県"></div>
     <details class="pt-prefs-more"><summary>ほかの都道府県も選ぶ</summary><div class="checks seg" id="p_prefs2">{''.join(f'<label><input type="checkbox" value="{p}"><span>{p}</span></label>' for p in PREFS47)}</div></details></div>
-  {pt_f("行き先までの距離", pt_sel("p_dest", "行き先までの距離", ["決まりはない（遠くても行ける）", "お迎えの都道府県の中だけ", "距離に上限がある"])
+  {pt_f("行き先までの距離", pt_sel("p_dest", "行き先までの距離", ["お迎えの都道府県の中だけ", "距離に上限がある", "全国どこへでも行ける"])
     + pt_if("p_dest", ["距離に上限がある"], pt_q("行き先までの上限", pt_n("乗っている距離 ", "kmまで"))), "", "")}
   <div class="group-h"><span>3</span>受けられる時間と車</div>
   <div class="f"><span class="lbl">受けられる曜日</span>{pt_chk("p_days", "受けられる曜日", ["月", "火", "水", "木", "金", "土", "日", "祝日"])}</div>
