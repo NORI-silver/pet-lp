@@ -1,0 +1,617 @@
+{
+ "_説明": "候補カードの「許可・登録」「資格」「保険」の行。各社の公式サイトに書いてあることだけ（2026-11-12 確認）。書いていない会社に「なし」とは出さない。動物取扱業は until（有効期限）を過ぎたら出さない。DB は pet-db の data/edits/2026-11-12-licenses.json",
+ "companies": {
+  "D01478c8": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://www.i-and-r.com/pettaxi.html"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D09687f4": {
+   "transport": "届出",
+   "ins": true,
+   "src": [
+    "https://cocotaxi-kobewest.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D0a999a3": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://pet-coco-taxi-nara.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D0b50c1a": {
+   "transport": "届出",
+   "src": [
+    "https://www.shonan-web.com/sub10.html"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D0d1c8b4": {
+   "transport": "届出",
+   "src": [
+    "https://oneness-taxi.com/company.html"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D0d611b0": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://www.cocotaku-shonan.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D0e1ab9c": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://cocotaxiadachi.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D0ec95b6": {
+   "transport": "黒ナンバー",
+   "quals": [
+    "ペットケアアドバイザー",
+    "ペットケアセラピスト"
+   ],
+   "ins": true,
+   "src": [
+    "https://cocotakufukuokahigashi.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D13b7c6f": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://pet-taxi-aiai.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D154d458": {
+   "transport": "黒ナンバー",
+   "quals": [
+    "ペットセーバー（応急手当）"
+   ],
+   "ins": true,
+   "src": [
+    "https://pet-taxi-nara.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D18363bd": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://pet-taxi-sendai.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D1e44e13": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://coco-taxi.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D1f53c72": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://cocomorioka.iwate.jp/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D25bac67": {
+   "reg": {
+    "kinds": [
+     "保管"
+    ],
+    "no": "京都市登録第240002号",
+    "until": "2029-04-06"
+   },
+   "src": [
+    "https://ten-rin.jp/company/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D30e1838": {
+   "reg": {
+    "kinds": [
+     "保管",
+     "譲受飼養"
+    ],
+    "no": "仙台市（H18健保動）指令第5070号・仙台市（H25健保動）指令第1120040号",
+    "until": "2026-11-20"
+   },
+   "transport": "届出",
+   "src": [
+    "https://nyanwan.jp/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D355c31f": {
+   "transport": "届出",
+   "ins": true,
+   "src": [
+    "https://seikatsunosupport.com/pettaxi/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D3661eb1": {
+   "reg": {
+    "kinds": [
+     "保管",
+     "訓練"
+    ],
+    "no": "18東京都保第006003号・18東京都訓第006003号",
+    "until": "2028-08-08"
+   },
+   "quals": [
+    "愛玩動物飼養管理士1級"
+   ],
+   "src": [
+    "https://www.petta-tokyo.com/profile.html"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D3c85024": {
+   "quals": [
+    "訪問介護ヘルパー",
+    "動物介護士"
+   ],
+   "src": [
+    "https://pearlno-shippo.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D3cc1cce": {
+   "transport": "届出",
+   "src": [
+    "https://petcare-151a.com/pettaxi.html"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D3f74ac5": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://pet-taxi-adachi.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D400f012": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://www.cocotaxi-sawan.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D40a4aa0": {
+   "transport": "黒ナンバー",
+   "src": [
+    "https://cocotaxi-saitama.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D436a86d": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://coco-taxi-minami-osaka.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D44cfd16": {
+   "reg": {
+    "kinds": [
+     "保管"
+    ],
+    "no": "第041228号",
+    "until": "2027-11-06"
+   },
+   "src": [
+    "https://happywith.pet/pettaxi/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D45d6d56": {
+   "transport": "届出",
+   "ins": true,
+   "src": [
+    "https://cocotaxi.tokyo/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D4adf70b": {
+   "transport": "黒ナンバー",
+   "quals": [
+    "ペットシッター士"
+   ],
+   "src": [
+    "https://petrip.co.jp/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D5598693": {
+   "transport": "届出",
+   "quals": [
+    "介護の資格"
+   ],
+   "ins": true,
+   "src": [
+    "https://pet-yokohama.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D5604536": {
+   "transport": "届出",
+   "src": [
+    "https://yakodoghouse.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D57763aa": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://coco-taxi-musashino.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D611ee5f": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://pet-taxi-aichi-chita-taketoyo.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D6125f28": {
+   "reg": {
+    "kinds": [],
+    "no": "大阪府登録 第3801-2号",
+    "until": "2030-03-01"
+   },
+   "quals": [
+    "家庭動物管理士"
+   ],
+   "src": [
+    "https://doghairstudioken.jp/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D678e01f": {
+   "transport": "届出",
+   "src": [
+    "https://pettaxihibiki.hp.peraichi.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D68f9d95": {
+   "transport": "届出",
+   "ins": true,
+   "src": [
+    "https://h12150825.wixsite.com/taxi-animals"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D6c3b09b": {
+   "transport": "黒ナンバー",
+   "quals": [
+    "ペットセーバー（応急手当）",
+    "ペット防災アンバサダー"
+   ],
+   "ins": true,
+   "src": [
+    "https://cocotaku-inazawa-aichi.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D713b363": {
+   "transport": "届出",
+   "ins": true,
+   "src": [
+    "https://pet-taxi-coco-taku-shin-osaka.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D72ab934": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://www.growing-group.co.jp/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D7847612": {
+   "transport": "黒ナンバー",
+   "quals": [
+    "ペットシッター士",
+    "ペットセーバー（応急手当）"
+   ],
+   "ins": true,
+   "src": [
+    "https://pettaxi-hakataku.wepage.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D7922e74": {
+   "transport": "届出",
+   "src": [
+    "https://pettaxi-find.com/chiba/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D7c41c5f": {
+   "reg": {
+    "kinds": [
+     "販売",
+     "保管",
+     "訓練"
+    ],
+    "no": "販売 10418／保管 10419／訓練 10420"
+   },
+   "quals": [
+    "小動物看護士",
+    "ドッグシッター",
+    "愛犬飼育管理士"
+   ],
+   "src": [
+    "https://www.topstar-tokushima.com/company"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D7d26cb4": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://pet-taxi-nagoya-owari.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D7d574bf": {
+   "reg": {
+    "kinds": [
+     "保管"
+    ],
+    "no": "大阪府登録 第3964-2号",
+    "until": "2025-12-07"
+   },
+   "src": [
+    "https://pet-arc.com/821-2/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D83f23cc": {
+   "quals": [
+    "犬猫介護アドバイザー",
+    "ペット介護インストラクター",
+    "犬猫ストレスケアアドバイザー"
+   ],
+   "src": [
+    "https://cocokawaguchi.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D853ae97": {
+   "transport": "黒ナンバー",
+   "quals": [
+    "ドッグヘルスアドバイザー",
+    "トリマー"
+   ],
+   "ins": true,
+   "src": [
+    "https://pet-taxi-kasukabe.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D874b316": {
+   "transport": "届出",
+   "src": [
+    "https://my-family-takatsuki.com/aboutus.html"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D945f580": {
+   "reg": {
+    "kinds": [
+     "保管"
+    ],
+    "no": "第30-0341（横浜市）"
+   },
+   "src": [
+    "https://www.ikimonocare.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "D9895b9b": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://cocotaxi-kashiwara.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Db28bc5b": {
+   "transport": "届出",
+   "src": [
+    "https://wanwan.pet/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Db508c4d": {
+   "transport": "黒ナンバー",
+   "src": [
+    "https://pet-cocotaxi-katusika.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Db8bafea": {
+   "reg": {
+    "kinds": [
+     "保管"
+    ],
+    "no": "大阪府登録 第5132-2号",
+    "until": "2031-02-01"
+   },
+   "transport": "黒ナンバー",
+   "quals": [
+    "ペットセーバー（応急手当）",
+    "愛犬飼育管理士",
+    "キャットシッター"
+   ],
+   "ins": true,
+   "src": [
+    "https://comasuke.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Db9067d3": {
+   "transport": "黒ナンバー",
+   "quals": [
+    "介護の資格"
+   ],
+   "ins": true,
+   "src": [
+    "https://pet-taxi-nagasaki.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Dc05105b": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://pet-taxi-sc.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Dc28c19e": {
+   "transport": "届出",
+   "ins": true,
+   "src": [
+    "https://wan-wan-house.com/pet-taxi/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Dc2d8672": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://pet-taxi-aichi-mikawa.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Dc7b4703": {
+   "quals": [
+    "愛玩動物飼養管理士1級"
+   ],
+   "src": [
+    "https://www.angel-buggy.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Dcfbfbf2": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://cocotaku-funabashi.moe/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Dd472236": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://cocotaxi-shizuoka.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Dd6859ef": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://coco-pettaxi-kanagawa-chuo.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "De308905": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://cocotaku-nerima-suginami.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "De5faaf3": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://pet-taxi-tokyo-suginami.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Df71b3ed": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://pet-taxi-fukuoka-airport.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Df997a81": {
+   "transport": "黒ナンバー",
+   "quals": [
+    "サービス介助士",
+    "認知症介助士",
+    "介護職員初任者研修"
+   ],
+   "ins": true,
+   "src": [
+    "https://pet-taxi-aicih-toyohashi-honokuni.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Dfad4b87": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://coco-taxi-fukuoka-chikushino.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Dfc12ca3": {
+   "transport": "黒ナンバー",
+   "ins": true,
+   "src": [
+    "https://cocotaxi-yokohama-kouhoku.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Dfc6c94f": {
+   "quals": [
+    "ドッグシッター"
+   ],
+   "src": [
+    "https://kitani11taxi.com/"
+   ],
+   "checked": "2026-11-12"
+  },
+  "Dfcb8480": {
+   "ins": true,
+   "src": [
+    "https://pet-taxi-saitama-kawagoe.jp/"
+   ],
+   "checked": "2026-11-12"
+  }
+ }
+}
