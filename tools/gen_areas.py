@@ -1547,17 +1547,20 @@ for slug, pf, short, cities in PREFS:
     _t24, _tsd = _n24(_k), _nsame(_k)
     _tx = "・".join(x for x in [f"24時間受付{_t24}社" if _t24 else "", f"当日も受ける{_tsd}社" if _tsd else ""] if x)
     _ol = OPEN_LOCAL.get(pf)
+    # [B] SEO 11/12：題名は多くの人に関係すること（通院・空港までの料金）を出す。夜間は使う人が限られるので題名に出さない（Nori「夜間割とかあんまり響かない」）
+    _air = any("空港" in r for r, _ in PREF_LOCAL.get(pf, {}).get("routes", []))
+    _use = "通院・空港までの料金の目安" if _air else "通院の料金の目安"
     title = (f"{short}のペットタクシー{n_cos}社の料金をくらべる｜{'・'.join(l for _, l in _ol)}の会社に空き状況と料金を無料で問い合わせ" if _ol and n_cos >= 2 else
              f"{short}のペットタクシーの料金の目安｜{'・'.join(l for _, l in _ol)}の会社に空き状況と料金を無料で問い合わせ" if _ol else
-             f"{short}のペットタクシー{n_cos}社の料金をくらべる｜" + (_tx + "・" if _tx else "") + "夜間の動物病院" if n_cos >= 3 else
-             f"{short}のペットタクシー｜料金の例・夜間の動物病院・ペットの緊急搬送" if has_fare else f"{short}のペットタクシーの探し方｜夜間の動物病院・ペットの緊急搬送") + "｜ペットタクシー予約窓口"
+             f"{short}のペットタクシー{n_cos}社の料金をくらべる｜" + (f"当日も受ける{_tsd}社、" if _tsd else "") + _use if n_cos >= 3 else
+             f"{short}のペットタクシー｜{_use}と会社の探し方" if has_fare or pf in PREF_LOCAL else f"{short}のペットタクシーの探し方｜料金の決まり方と頼む前に確かめること") + "｜ペットタクシー予約窓口"
     dcities = []  # 説明文用：その県の中の病院の市（政令市の区はまとめる）
     for h in hs:
         if other_pref(h, pf): continue
         c = re.sub(r"^(.+?市).+区$", r"\1", re.sub(r"（.*?）", "", h["city"]))
         if c not in dcities: dcities.append(c)
     desc = (f"{pf}（{'・'.join(cities[:3])}など）で犬・猫のペットタクシーを探す方へ。" + (f"お迎えに対応する{n_cos}社と料金の例、" if n_cos >= 2 else ("公式サイトに書かれた料金の例、" if has_fare else "料金の決まり方、")) +
-            "頼む前に確かめること、" + (f"夜間・救急の動物病院（{'・'.join(dcities[:2])}など）" if dcities else ("近くの県の夜間・救急の動物病院" if hs else "夜間・救急の動物病院")) + "とペットの緊急搬送の連絡先をまとめました。")
+            ("通院・空港までの料金の目安、" if _air else ("通院の料金の目安、" if pf in PREF_LOCAL else "")) + "頼む前に確かめることをまとめました。夜間・救急の動物病院の一覧もあります。")
     ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
       {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
       {"@type":"ListItem","position":2,"name":"全国のペットタクシー情報","item":pref_hub_url},
