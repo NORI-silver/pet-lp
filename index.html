@@ -1394,17 +1394,41 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     // 入力を減らした県では、たずねていない項目をいちばん広く探せる値で調べる（1人・手荷物・ケージはどちらでも・介護なし）
     if (!prefOpen()) [["riders","1人"],["luggage","手荷物くらい"],["cage","どれでも"],["care","不要"]].forEach(function(d){ if (!search.get(d[0])) search.set(d[0], d[1]); });
     showLoading();
-    fetch(GAS_URL,{method:"POST",body:search}).then(function(res){return res.json();}).then(function(result){
+    // 予約のしくみの返事が一時的に取れないことがある（2026-11-12 渋谷→中目黒で「候補を確認できませんでした」。同じ条件で入れ直すと出た）。
+    // 1回だけ少し待ってもう一度さがし、それでもだめなときだけお知らせする。理由は解析の quotes_error に残す（入力の中身は送らない）
+    var why = "";
+    function askQuotes(left){
+      return fetch(GAS_URL,{method:"POST",body:search}).then(function(res){
+        if (!res.ok) throw new Error("http_" + res.status);
+        return res.json().catch(function(){ throw new Error("not_json"); });
+      }).then(function(result){
+        if (!result || !result.ok || result.selection_version !== 1 || !Array.isArray(result.cards)) throw new Error(result && result.error ? String(result.error).slice(0, 40) : "bad_reply");
+        return result;
+      }).catch(function(e){
+        why = String(e && e.message || "network").slice(0, 40);
+        if (left > 0 && searchSeq === quoteSeq && !sending && !/^(datetime|missing|area)$/.test(why)) return new Promise(function(ok){ setTimeout(ok, 1500); }).then(function(){ return askQuotes(left - 1); });
+        throw e;
+      });
+    }
+    askQuotes(1).then(function(result){
       if (searchSeq !== quoteSeq || sending) return;
-      if (!result || !result.ok || result.selection_version !== 1 || !Array.isArray(result.cards)) throw new Error("quotes");
       quoteLegs = result.legs || null; scoresReady = result.scores === 1; // 予約のしくみが新しい版のときだけ星をまとめて取り寄せる
       paintPartners(result.cards);
       // 戦略の数字（2026-11-08）：候補を出した回数・問い合わせできる会社が1社以上出た回数。1ページで1回だけ数える
       if (!partnersTracked) { var nb = result.cards.filter(function(c){ return !c.display_only; }).length; partnersTracked = true; track("view_partners", {count: result.cards.length, bookable: nb, pref: $("pref").value}); if (nb) track("view_bookable", {count: nb, pref: $("pref").value}); }
       quoteRefreshTimer = setTimeout(function(){clearPartners();queuePartners();}, 14*60000);
-    }).catch(function(){
+    }).catch(function(e){
       if (searchSeq !== quoteSeq || sending) return;
-      $("partnerStatus").textContent = "候補を確認できませんでした。少し待っても表示されない場合は、日時や条件を入れ直してください。依頼は送信されていません。";
+      if (!why) why = String(e && e.message || "paint").slice(0, 40); // 返事は来たが、カードを出すところで止まった
+      track("quotes_error", {reason: why, pref: $("pref").value});
+      var st = $("partnerStatus");
+      st.textContent = why === "datetime" ? "お迎えは、いまから" + MIN_LEAD_H + "時間後より先の日時を選んでください。依頼は送信されていません。"
+        : "候補を確認できませんでした。通信が混み合っていた可能性があります。依頼は送信されていません。";
+      if (why !== "datetime") {
+        var again = document.createElement("button"); again.type = "button"; again.className = "partner-rest-btn"; again.style.marginTop = "8px"; again.textContent = "もう一度さがす";
+        again.addEventListener("click", function(){ track("quotes_retry", {reason: why}); loadPartners(); });
+        st.appendChild(document.createElement("br")); st.appendChild(again);
+      }
     });
   }
   // 口コミ本文：押したときだけ取り寄せる（毎回取り寄せ、保存しない）
