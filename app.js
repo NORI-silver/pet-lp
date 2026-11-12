@@ -330,6 +330,49 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       c.anonTag = tags[c.id]; c.label = "会社" + c.anonTag + "（" + String(c.label).replace(/の会社$/, "") + "）";
     }); });
   }
+  // アピールポイントと条件のタグを、お客さまの入れた条件に合うものだけにする（Nori 2026-11-12「もっとユーザのインテントにあわせて。昼の条件に深夜割を出しても仕方ない」
+  // 「キャンセル無料とか、車も車種がわかるやつはそれも出して。支払い方法もいいね」）。中身は公式サイト・会社の返事にある文のままで、作らない・盛らない
+  var CAR_MODELS = /(スズキ\s*)?エブリイ|(ホンダ\s*)?N-?VAN|(ダイハツ\s*)?(ハイゼット(カーゴ)?|アトレー)|(ホンダ\s*)?ザッツ|(トヨタ\s*)?(ハイエース|アルファード|ヴォクシー|ノア|シエンタ|プリウス|ジャパンタクシー)|(日産\s*)?(セレナ|キャラバン|NV200)|(ホンダ\s*)?(ステップワゴン|フリード|オデッセイ)|(スズキ\s*)?スペーシア/;
+  function intentOf(){
+    var fd = new FormData(form), hrs = [Number(fd.get("hour"))];
+    if (fd.get("trip") === "往復") hrs.push(Number(fd.get("ret_hour")));
+    var pets = Array.prototype.map.call(petsBox.querySelectorAll("input[name$=_weight]"), function(el){ return Number(el.value) || 0; });
+    var cages = Array.prototype.map.call(form.querySelectorAll("input[name$=_cage]:checked"), function(el){ return el.value; });
+    var j = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
+    return {
+      night: hrs.some(function(h){ return isFinite(h) && (h >= 20 || h < 8); }),
+      today: fd.get("date") === j,
+      big: pets.some(function(w){ return w >= 20; }),
+      many: pets.length >= 2,
+      care: !!form.querySelector("input[name$=_care][value=必要]:checked"),
+      rent: cages.indexOf("借りたい") >= 0,
+      round: fd.get("trip") === "往復",
+      onlyPet: /^0/.test(String(fd.get("riders") || ""))
+    };
+  }
+  function fitPoints(card){
+    var it = intentOf(), night = it.night || !!(card.price && card.price.local && card.price.local.nightExtra);
+    var keep = function(x){
+      if (/深夜|早朝|24時間/.test(x)) return night;
+      if (/当日予約/.test(x)) return it.today;
+      if (/大型犬/.test(x)) return it.big;
+      if (/多頭|\d頭OK|頭数で料金/.test(x)) return it.many;
+      if (/介助|スロープ/.test(x)) return it.care || (/スロープ/.test(x) && it.big);
+      if (/ケージを無料/.test(x)) return it.rent;
+      if (/往復の割引/.test(x)) return it.round;
+      if (/同乗/.test(x)) return !it.onlyPet;
+      return true;
+    };
+    // 安心につながること（キャンセル・渋滞・当日）を先に
+    var rank = function(x){ return /キャンセル/.test(x) ? 0 : /渋滞|追加料金なし/.test(x) ? 1 : /当日予約/.test(x) ? 2 : 3; };
+    var points = (card.points || []).filter(keep).sort(function(a, b){ return rank(a) - rank(b); });
+    if (card.cancelFree && !points.some(function(x){ return /キャンセル/.test(x); })) points.unshift(card.cancelFree);
+    // 車：車種が分かる会社は車種を出す（「軽バン」より「スズキ エブリイ」）
+    var m = String(card.car || "").match(CAR_MODELS), car = m ? "車：" + m[0].replace(/\s+/g, " ") : "";
+    var limits = (card.limits || []).filter(keep).map(function(x){ return car && /^車：/.test(x) ? car : x; });
+    if (car && !limits.some(function(x){ return /^車：/.test(x); })) limits.unshift(car);
+    return {points: points.slice(0, 4), limits: limits.slice(0, 3)};
+  }
   function paintPartners(cards){
     letterAnon([cards, quoteLegs && quoteLegs.go, quoteLegs && quoteLegs.back]);
     quotesLoaded = true; quoteCards = cards; $("partnerCards").replaceChildren();
@@ -338,8 +381,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     // できることを先に書く（2026-11-11 飼い主目線のレビュー N2）。コピーの説明はカードごとではなくここで1回（N3）
     var copyable = cards.some(function(c){ return c.display_only && c.site; });
     var copyNote = copyable ? (ready ? "印のない会社は" : "") + "「問い合わせ文をコピー」を押すと、入力した条件をそのまま公式サイトのお問い合わせ欄に貼れます。" : "";
-    if (cards.length) $("partnerStatus").textContent = !ready ? cards.length + "社が見つかりました。各社の料金の目安と公式サイトをご覧いただけます（このサイトから問い合わせできる会社は、まだありません）。" + copyNote
-      : (later ? "このサイトから問い合わせできる会社：" + ready + "社（社名の横にオレンジのチェック）。ほかの" + later + "社は、料金の目安と公式サイトをご覧いただけます。" : cards.length + "社が候補です。") + (ready >= 2 ? "会社を選ぶか、下の「全社に問い合わせる」でまとめて送れます。" : "問い合わせたい会社を選んでください。") + copyNote;
+    // 上の説明は1行だけ（Nori 2026-11-12「いる？」。前は社数・コピーの使い方まで書いて長かった。コピーの使い方はボタンを見れば分かる）
+    if (cards.length) $("partnerStatus").textContent = ready ? "オレンジのチェックの会社には、ここから問い合わせできます。" : cards.length + "社が見つかりました。料金の目安と公式サイトをご覧ください。";
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。問い合わせは送信されていません。</span>';
     $("partnerSortBox").hidden = cards.length < 2;
     var hasDist = cards.some(function(c){ return !!c.shop; }); // 予約のしくみが古い版のあいだはお店の位置が来ないので、距離のしぼり込みを出さない
@@ -505,10 +548,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       } // 点数が取れないときは何も出さない（外部の口コミページへは飛ばさない。Nori 2026-10-31）
       // アピールポイント（公式サイトに書いてあることだけ。Nori 2026-10-31）
       // 条件のタグ（同乗の人数・頭数・お支払いの決まり。灰色。Nori 2026-11-01）
-      if ((card.points && card.points.length) || (card.limits && card.limits.length)) {
+      var fit = fitPoints(card);
+      if (fit.points.length || fit.limits.length) {
         var pts = document.createElement("ul"); pts.className = "partner-points"; pts.setAttribute("aria-label", "公式サイトに書いてある特長と条件");
-        (card.points || []).forEach(function(x){ var li = document.createElement("li"); li.textContent = x; pts.appendChild(li); });
-        (card.limits || []).forEach(function(x){ var li = document.createElement("li"); li.className = "lim"; li.textContent = x; pts.appendChild(li); });
+        fit.points.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; pts.appendChild(li); });
+        fit.limits.forEach(function(x){ var li = document.createElement("li"); li.className = "lim"; li.textContent = x; pts.appendChild(li); });
         article.appendChild(pts);
       }
       // 料金（概算見積もり）。口コミと料金のほかの詳しい情報は、最初はたたんでおく（Nori 2026-10-31）
