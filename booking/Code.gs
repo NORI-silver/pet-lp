@@ -162,6 +162,13 @@ function quoteUntil_(qt) {
   return Math.min(t + CONFIG.QUOTE_VALID_HOURS * 3600000, at - CONFIG.QUOTE_CUTOFF_MIN * 60000);
 }
 // 予約する前のお客さまに見せるキャンセルの決まり（当サイトはキャンセル料をいただかない）
+// キャンセル規定から、アピールに出せる短い言い方（かからない・前日まで無料のときだけ）
+function cancelFree_(t) {
+  t = String(t || '');
+  if (/キャンセル料(なし|は(かかりません|いただきません|無料))|かからない/.test(t)) return 'キャンセル料なし';
+  if (/前日まで[^、。]*無料/.test(t)) return '前日までキャンセル無料';
+  return '';
+}
 function cancelRuleText_(pt) {
   var c = String((pt && pt.cancelRule) || '').trim();
   return c ? c + '（' + pt.name + 'の規定）' : pt.name + 'のキャンセル規定によります。予約の前に、' + pt.name + 'の公式サイトなどでご確認ください';
@@ -2601,8 +2608,9 @@ function quoteCards_(p) {
     if (!price) return null;
     // 全社準備中のあいだは、提携先の会社も表示だけ（トークンを出さない＝依頼できない）
     var od = openDisplay_(pt.id);
-    if (od) return { id:pt.id, label:pt.name, listed:true, car:(od.car_type ? '車：' + od.car_type + '（公式サイトの記載）' : pt.car || '車の詳細は引き受け時に確認'),
-      points:od.points || [], limits:od.limits || [], shop:od.shop || null,
+    // 車：申し込みで車種（エブリイなど）が分かる会社は車種を出す。キャンセル料がかからない会社はそれもアピールに（Nori 2026-11-12「キャンセル無料とか、車も車種がわかるやつはそれも出して」）
+    if (od) return { id:pt.id, label:pt.name, listed:true, car:(/[ァ-ヴー]{3,}|N-?VAN/.test(pt.car || '') && !/^軽バン$/.test(pt.car) ? '車：' + pt.car : od.car_type ? '車：' + od.car_type + '（公式サイトの記載）' : pt.car || '車の詳細は引き受け時に確認'),
+      points:od.points || [], limits:od.limits || [], shop:od.shop || null, cancelFree:cancelFree_(pt.cancelRule),
       payment:od.pay ? 'お支払い：' + od.pay + '（公式サイトの記載）' : [pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は引き受け時にご案内',
       price:price, review:null, check:checks_(pt, r).ask, expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
     if (CONFIG.SHOW_ALL_CANDIDATES) return anonCard_({ id:pt.id, label:pt.name, display_only:true, car:pt.car || '車の詳細は確認中です',
