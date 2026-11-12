@@ -1015,7 +1015,10 @@
     "神奈川"
    ],
    "area_text": "東京・埼玉・千葉・神奈川、長距離",
-   "shop": null,
+   "shop": [
+    35.694,
+    139.819
+   ],
    "fare": {
     "base": [
      2200,
@@ -1041,13 +1044,15 @@
     "tax": "税込",
     "src": "https://www.petta-tokyo.com/cont2/main.html",
     "pick": {
-     "yen": 880,
-     "unsure": true
+     "per": 110
     },
     "wait": {
      "free": 0,
      "unit": 10,
      "yen": 250
+    },
+    "back": {
+     "per": 110
     }
    },
    "pay": "",
