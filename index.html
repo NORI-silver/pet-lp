@@ -848,7 +848,7 @@ footer a{color:var(--ink-2)}
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
-        <p class="form-foot">条件が揃うと、合う事業者と料金の目安が自動で表示されます。会社を選んで依頼するまで、どこにも送信されません。<br>料金は、会社の返事の確定料金でも、会社によっては当日の道路事情や待ち時間などで変わることがあります。</p>
+        <p class="form-foot">条件を入れると、合う会社と料金の目安が出ます（まだ送信されません）。料金は当日の道路事情や待ち時間で変わることがあります。</p>
         <div class="need-box" id="partnerNeed" hidden></div>
         <section class="partner-results" id="partnerResults" aria-labelledby="partnerTitle" hidden>
           <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
@@ -1394,17 +1394,41 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     // 入力を減らした県では、たずねていない項目をいちばん広く探せる値で調べる（1人・手荷物・ケージはどちらでも・介護なし）
     if (!prefOpen()) [["riders","1人"],["luggage","手荷物くらい"],["cage","どれでも"],["care","不要"]].forEach(function(d){ if (!search.get(d[0])) search.set(d[0], d[1]); });
     showLoading();
-    fetch(GAS_URL,{method:"POST",body:search}).then(function(res){return res.json();}).then(function(result){
+    // 予約のしくみの返事が一時的に取れないことがある（2026-11-12 渋谷→中目黒で「候補を確認できませんでした」。同じ条件で入れ直すと出た）。
+    // 1回だけ少し待ってもう一度さがし、それでもだめなときだけお知らせする。理由は解析の quotes_error に残す（入力の中身は送らない）
+    var why = "";
+    function askQuotes(left){
+      return fetch(GAS_URL,{method:"POST",body:search}).then(function(res){
+        if (!res.ok) throw new Error("http_" + res.status);
+        return res.json().catch(function(){ throw new Error("not_json"); });
+      }).then(function(result){
+        if (!result || !result.ok || result.selection_version !== 1 || !Array.isArray(result.cards)) throw new Error(result && result.error ? String(result.error).slice(0, 40) : "bad_reply");
+        return result;
+      }).catch(function(e){
+        why = String(e && e.message || "network").slice(0, 40);
+        if (left > 0 && searchSeq === quoteSeq && !sending && !/^(datetime|missing|area)$/.test(why)) return new Promise(function(ok){ setTimeout(ok, 1500); }).then(function(){ return askQuotes(left - 1); });
+        throw e;
+      });
+    }
+    askQuotes(1).then(function(result){
       if (searchSeq !== quoteSeq || sending) return;
-      if (!result || !result.ok || result.selection_version !== 1 || !Array.isArray(result.cards)) throw new Error("quotes");
       quoteLegs = result.legs || null; scoresReady = result.scores === 1; // 予約のしくみが新しい版のときだけ星をまとめて取り寄せる
       paintPartners(result.cards);
       // 戦略の数字（2026-11-08）：候補を出した回数・問い合わせできる会社が1社以上出た回数。1ページで1回だけ数える
       if (!partnersTracked) { var nb = result.cards.filter(function(c){ return !c.display_only; }).length; partnersTracked = true; track("view_partners", {count: result.cards.length, bookable: nb, pref: $("pref").value}); if (nb) track("view_bookable", {count: nb, pref: $("pref").value}); }
       quoteRefreshTimer = setTimeout(function(){clearPartners();queuePartners();}, 14*60000);
-    }).catch(function(){
+    }).catch(function(e){
       if (searchSeq !== quoteSeq || sending) return;
-      $("partnerStatus").textContent = "候補を確認できませんでした。少し待っても表示されない場合は、日時や条件を入れ直してください。依頼は送信されていません。";
+      if (!why) why = String(e && e.message || "paint").slice(0, 40); // 返事は来たが、カードを出すところで止まった
+      track("quotes_error", {reason: why, pref: $("pref").value});
+      var st = $("partnerStatus");
+      st.textContent = why === "datetime" ? "お迎えは、いまから" + MIN_LEAD_H + "時間後より先の日時を選んでください。依頼は送信されていません。"
+        : "候補を確認できませんでした。通信が混み合っていた可能性があります。依頼は送信されていません。";
+      if (why !== "datetime") {
+        var again = document.createElement("button"); again.type = "button"; again.className = "partner-rest-btn"; again.style.marginTop = "8px"; again.textContent = "もう一度さがす";
+        again.addEventListener("click", function(){ track("quotes_retry", {reason: why}); loadPartners(); });
+        st.appendChild(document.createElement("br")); st.appendChild(again);
+      }
     });
   }
   // 口コミ本文：押したときだけ取り寄せる（毎回取り寄せ、保存しない）
@@ -1469,7 +1493,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     return holder;
   }
   // 問い合わせできる会社がいる都道府県（tools/gen_areas.py が booking/Code.gs の OPEN_PARTNERS から作る）。県を選んだ時点で知らせる（2026-11-08 飼い主目線のレビュー #1）
-  /*OPEN_PREFS*/var OPEN_PREFS = ["京都", "兵庫", "北海道", "千葉", "和歌山", "埼玉", "大阪", "奈良", "広島", "東京", "滋賀", "神奈川", "福岡"];/*/OPEN_PREFS*/
+  /*OPEN_PREFS*/var OPEN_PREFS = ["京都", "兵庫", "北海道", "千葉", "和歌山", "埼玉", "大阪", "奈良", "山梨", "広島", "東京", "栃木", "滋賀", "神奈川", "福岡", "群馬", "茨城", "長野", "静岡"];/*/OPEN_PREFS*/
   /*AREA_PREFS*/var AREA_PREFS = ["三重", "京都", "佐賀", "兵庫", "北海道", "千葉", "和歌山", "埼玉", "大阪", "奈良", "宮城", "山梨", "岐阜", "岩手", "広島", "徳島", "愛知", "東京", "栃木", "滋賀", "石川", "神奈川", "福岡", "群馬", "茨城", "長崎", "長野", "静岡"];/*/AREA_PREFS*/
   // 会社が見つかっていない県は、選ぶ前に分かるよう「（候補なし）」を付ける（値は県名のまま）
   function markPrefs(){
@@ -1558,6 +1582,49 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       c.anonTag = tags[c.id]; c.label = "会社" + c.anonTag + "（" + String(c.label).replace(/の会社$/, "") + "）";
     }); });
   }
+  // アピールポイントと条件のタグを、お客さまの入れた条件に合うものだけにする（Nori 2026-11-12「もっとユーザのインテントにあわせて。昼の条件に深夜割を出しても仕方ない」
+  // 「キャンセル無料とか、車も車種がわかるやつはそれも出して。支払い方法もいいね」）。中身は公式サイト・会社の返事にある文のままで、作らない・盛らない
+  var CAR_MODELS = /(スズキ\s*)?エブリイ|(ホンダ\s*)?N-?VAN|(ダイハツ\s*)?(ハイゼット(カーゴ)?|アトレー)|(ホンダ\s*)?ザッツ|(トヨタ\s*)?(ハイエース|アルファード|ヴォクシー|ノア|シエンタ|プリウス|ジャパンタクシー)|(日産\s*)?(セレナ|キャラバン|NV200)|(ホンダ\s*)?(ステップワゴン|フリード|オデッセイ)|(スズキ\s*)?スペーシア/;
+  function intentOf(){
+    var fd = new FormData(form), hrs = [Number(fd.get("hour"))];
+    if (fd.get("trip") === "往復") hrs.push(Number(fd.get("ret_hour")));
+    var pets = Array.prototype.map.call(petsBox.querySelectorAll("input[name$=_weight]"), function(el){ return Number(el.value) || 0; });
+    var cages = Array.prototype.map.call(form.querySelectorAll("input[name$=_cage]:checked"), function(el){ return el.value; });
+    var j = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
+    return {
+      night: hrs.some(function(h){ return isFinite(h) && (h >= 20 || h < 8); }),
+      today: fd.get("date") === j,
+      big: pets.some(function(w){ return w >= 20; }),
+      many: pets.length >= 2,
+      care: !!form.querySelector("input[name$=_care][value=必要]:checked"),
+      rent: cages.indexOf("借りたい") >= 0,
+      round: fd.get("trip") === "往復",
+      onlyPet: /^0/.test(String(fd.get("riders") || ""))
+    };
+  }
+  function fitPoints(card){
+    var it = intentOf(), night = it.night || !!(card.price && card.price.local && card.price.local.nightExtra);
+    var keep = function(x){
+      if (/深夜|早朝|24時間/.test(x)) return night;
+      if (/当日予約/.test(x)) return it.today;
+      if (/大型犬/.test(x)) return it.big;
+      if (/多頭|\d頭OK|頭数で料金/.test(x)) return it.many;
+      if (/介助|スロープ/.test(x)) return it.care || (/スロープ/.test(x) && it.big);
+      if (/ケージを無料/.test(x)) return it.rent;
+      if (/往復の割引/.test(x)) return it.round;
+      if (/同乗/.test(x)) return !it.onlyPet;
+      return true;
+    };
+    // 安心につながること（キャンセル・渋滞・当日）を先に
+    var rank = function(x){ return /キャンセル/.test(x) ? 0 : /渋滞|追加料金なし/.test(x) ? 1 : /当日予約/.test(x) ? 2 : 3; };
+    var points = (card.points || []).filter(keep).sort(function(a, b){ return rank(a) - rank(b); });
+    if (card.cancelFree && !points.some(function(x){ return /キャンセル/.test(x); })) points.unshift(card.cancelFree);
+    // 車：車種が分かる会社は車種を出す（「軽バン」より「スズキ エブリイ」）
+    var m = String(card.car || "").match(CAR_MODELS), car = m ? "車：" + m[0].replace(/\s+/g, " ") : "";
+    var limits = (card.limits || []).filter(keep).map(function(x){ return car && /^車：/.test(x) ? car : x; });
+    if (car && !limits.some(function(x){ return /^車：/.test(x); })) limits.unshift(car);
+    return {points: points.slice(0, 4), limits: limits.slice(0, 3)};
+  }
   function paintPartners(cards){
     letterAnon([cards, quoteLegs && quoteLegs.go, quoteLegs && quoteLegs.back]);
     quotesLoaded = true; quoteCards = cards; $("partnerCards").replaceChildren();
@@ -1566,8 +1633,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     // できることを先に書く（2026-11-11 飼い主目線のレビュー N2）。コピーの説明はカードごとではなくここで1回（N3）
     var copyable = cards.some(function(c){ return c.display_only && c.site; });
     var copyNote = copyable ? (ready ? "印のない会社は" : "") + "「問い合わせ文をコピー」を押すと、入力した条件をそのまま公式サイトのお問い合わせ欄に貼れます。" : "";
-    if (cards.length) $("partnerStatus").textContent = !ready ? cards.length + "社が見つかりました。各社の料金の目安と公式サイトをご覧いただけます（このサイトから問い合わせできる会社は、まだありません）。" + copyNote
-      : (later ? "このサイトから問い合わせできる会社：" + ready + "社（社名の横にオレンジのチェック）。ほかの" + later + "社は、料金の目安と公式サイトをご覧いただけます。" : cards.length + "社が候補です。") + (ready >= 2 ? "会社を選ぶか、下の「全社に問い合わせる」でまとめて送れます。" : "問い合わせたい会社を選んでください。") + copyNote;
+    // 上の説明は1行だけ（Nori 2026-11-12「いる？」。前は社数・コピーの使い方まで書いて長かった。コピーの使い方はボタンを見れば分かる）
+    if (cards.length) $("partnerStatus").textContent = ready ? "オレンジのチェックの会社には、ここから問い合わせできます。" : cards.length + "社が見つかりました。料金の目安と公式サイトをご覧ください。";
     else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。問い合わせは送信されていません。</span>';
     $("partnerSortBox").hidden = cards.length < 2;
     var hasDist = cards.some(function(c){ return !!c.shop; }); // 予約のしくみが古い版のあいだはお店の位置が来ないので、距離のしぼり込みを出さない
@@ -1733,10 +1800,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       } // 点数が取れないときは何も出さない（外部の口コミページへは飛ばさない。Nori 2026-10-31）
       // アピールポイント（公式サイトに書いてあることだけ。Nori 2026-10-31）
       // 条件のタグ（同乗の人数・頭数・お支払いの決まり。灰色。Nori 2026-11-01）
-      if ((card.points && card.points.length) || (card.limits && card.limits.length)) {
+      var fit = fitPoints(card);
+      if (fit.points.length || fit.limits.length) {
         var pts = document.createElement("ul"); pts.className = "partner-points"; pts.setAttribute("aria-label", "公式サイトに書いてある特長と条件");
-        (card.points || []).forEach(function(x){ var li = document.createElement("li"); li.textContent = x; pts.appendChild(li); });
-        (card.limits || []).forEach(function(x){ var li = document.createElement("li"); li.className = "lim"; li.textContent = x; pts.appendChild(li); });
+        fit.points.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; pts.appendChild(li); });
+        fit.limits.forEach(function(x){ var li = document.createElement("li"); li.className = "lim"; li.textContent = x; pts.appendChild(li); });
         article.appendChild(pts);
       }
       // 料金（概算見積もり）。口コミと料金のほかの詳しい情報は、最初はたたんでおく（Nori 2026-10-31）
