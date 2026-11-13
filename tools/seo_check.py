@@ -43,7 +43,12 @@ def main():
         f = os.path.join(ROOT, rel, "index.html") if (rel == "" or rel.endswith("/")) else os.path.join(ROOT, rel)
         if not os.path.exists(f):
             ng.append(f"{u}: sitemap にあるのにファイルがない"); continue
-        p = P(); p.feed(open(f, encoding="utf-8").read())
+        raw = open(f, encoding="utf-8").read()
+        p = P(); p.feed(raw)
+        # 記事の写真は、その記事だけのもの（tools/page_images.py。Nori 2026-11-13「使いまわしが気になる」）
+        if rel.startswith("guide/") and rel != "guide/":
+            for src in re.findall(r'class="art-img"><picture><source srcset="[^"]*" type="image/webp"><img src="([^"]+)"', raw):
+                if src != f"/img/guide/{rel.split('/')[1]}.jpg": ng.append(f"{u}: ほかの記事の写真 {src} を使っている（写真は img/guide/<この記事>.jpg だけ）")
         t = p.title.strip(); titles[t].append(u)
         if not t: ng.append(f"{u}: title がない")
         elif len(t) > 70: warn.append(f"{u}: title が長い（{len(t)}字）")
