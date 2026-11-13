@@ -672,6 +672,9 @@ GUIDES.extend(DATA_GUIDES)
 # [B] 独自データ記事「全国のペットタクシー料金しらべ」（数字は生成のたびに数える。tools/guides_fare_survey.py）
 from guides_fare_survey import FARE_SURVEY
 GUIDES.append(FARE_SURVEY)
+# [B] SEO 11/13：料金しらべのデータから作る記事（夜間・早朝の料金、待ち時間の料金。tools/guides_fare_more.py）
+from guides_fare_more import MORE_GUIDES
+GUIDES.extend(MORE_GUIDES)
 # [B] SEO 11/9：長距離のガイドは「50km タクシー」で表示されてもクリック0。題名に50km・100kmの目安（全国の料金表のまんなか）を出す。
 import guides_fare_survey as _FS
 for _g in GUIDES:
