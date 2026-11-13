@@ -1,0 +1,35 @@
+# Instagram と Threads に毎日20時（日本時間）に1本ずつ出す（ペットのくらし窓口）。Nori 2026-11-13「無料枠でやって」。
+# 予約のしくみがないので、その時刻にこの作業が sns/post_meta.py で出す。出したものは sns/state.json の ig・threads に記録。
+# キーは Secret の META_IG_TOKEN・META_THREADS_TOKEN。まだないときは何もしないで終わる。
+name: sns-meta
+on:
+  schedule:
+    - cron: '0 11 * * *' # 毎日 20:00（日本時間）
+  workflow_dispatch:
+    inputs:
+      dry:
+        description: '出さずに、次に出す文を見るだけ'
+        type: boolean
+        default: true
+permissions:
+  contents: write
+concurrency:
+  group: sns-meta
+  cancel-in-progress: false
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: 出す
+        env:
+          META_IG_TOKEN: ${{ secrets.META_IG_TOKEN }}
+          META_THREADS_TOKEN: ${{ secrets.META_THREADS_TOKEN }}
+        run: python3 sns/post_meta.py ${{ inputs.dry && '--dry' || '' }}
+      - name: 記録をコミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sns/state.json
+          git diff --cached --quiet || { git pull --rebase -q; git commit -m "Instagram・Threadsの投稿を記録"; git push; }
