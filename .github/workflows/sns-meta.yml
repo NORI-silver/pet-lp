@@ -11,6 +11,10 @@ on:
         description: '出さずに、次に出す文を見るだけ'
         type: boolean
         default: true
+      check:
+        description: 'キーが使えるかだけ確かめる（出さない）'
+        type: boolean
+        default: false
 permissions:
   contents: write
 concurrency:
@@ -26,7 +30,7 @@ jobs:
         env:
           META_IG_TOKEN: ${{ secrets.META_IG_TOKEN }}
           META_THREADS_TOKEN: ${{ secrets.META_THREADS_TOKEN }}
-        run: python3 sns/post_meta.py ${{ inputs.dry && '--dry' || '' }}
+        run: python3 sns/post_meta.py ${{ inputs.dry && '--dry' || '' }} ${{ inputs.check && '--check' || '' }}
       - name: 記録をコミット
         run: |
           git config user.name "github-actions[bot]"
