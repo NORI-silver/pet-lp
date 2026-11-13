@@ -61,6 +61,7 @@ _EMG_RV = _EMG_J["taxis"] + [h for l in _EMG_J["hospitals"].values() for h in l]
 # 条件でさがす動物病院（/hospital/、tools/hospitals.json）の往診・猫専門の病院も同じしくみで口コミを出す
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_hospitals
+from page_images import GUIDE_ALT, AREA_ALT, area_key
 import prefkeep
 import gen_dogrun
 import gen_rojin
@@ -397,6 +398,14 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = t.replace('<section id="how">', area_html + '\n' + to_top + '\n<section id="how">', 1)
     # エリアページ用のCSS（.crumb .prose など）を足す
     t = t.replace("</style>", extra_css.strip() + "\n</style>", 1)
+    # いちばん上の写真だけ、そのページの写真があれば置きかえる（tools/page_images.py）
+    k = area_key(url.replace(SITE, ""))
+    if k and os.path.exists(os.path.join(ROOT, "img", "area", k + ".jpg")):
+        t = t.replace('href="/img/hero.webp"', f'href="/img/area/{k}.webp"', 1)
+        t = t.replace(f'content="{SITE}/img/hero.jpg"', f'content="{SITE}/img/area/{k}.jpg"', 1)
+        t = re.sub(r'<meta property="og:image:alt" content="[^"]*">', lambda m: f'<meta property="og:image:alt" content="{e(AREA_ALT.get(k, ""))}">', t, count=1)
+        t = re.sub(r'<source srcset="/img/hero\.webp" type="image/webp"><img src="/img/hero\.jpg" alt="[^"]*"',
+                   lambda m: f'<source srcset="/img/area/{k}.webp" type="image/webp"><img src="/img/area/{k}.jpg" alt="{e(AREA_ALT.get(k, ""))}"', t, count=1)
     t = t.replace(_APP_M.group(0), APP_TAG, 1)
     assert t.count(f"<option selected>{pref}</option>") == 2, pref
     assert f"<title>{e(title)}</title>" in t, title
@@ -734,6 +743,13 @@ for g in GUIDES:
     published = g.get("published", PUBLISHED)
     modified = g.get("modified", TODAY)
     caption = f'<figcaption class="small">{e(g["img_caption"])}</figcaption>' if g.get("img_caption") else ""
+    # 写真はその記事だけのもの（tools/page_images.py）。届いていなければ写真の枠を出さない
+    own = f'{g["slug"]}.jpg'
+    has_img = os.path.exists(os.path.join(ROOT, "img", "guide", own))
+    img_alt = g["img_alt"] if g.get("img") == own else GUIDE_ALT.get(g["slug"], "")
+    og_img, og_w, og_h = (f'/img/guide/{own}', 1200, 800) if has_img else ("/img/hero.jpg", 1200, 900)
+    fig = (f'<figure class="art-img"><picture><source srcset="/img/guide/{own[:-4]}.webp" type="image/webp"><img src="/img/guide/{own}" alt="{e(img_alt)}" width="1200" height="800" fetchpriority="high" onerror="this.closest(\'figure\').remove()"></picture>{caption}</figure>'
+           if has_img else "")
     checked = f'<p class="small">公式情報の確認日：{e(g["checked"])}</p>\n    ' if g.get("checked") else ""
     ld = [
       {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -741,7 +757,7 @@ for g in GUIDES:
         {"@type":"ListItem","position":2,"name":"ペットの移動ガイド","item":SITE+"/guide/"},
         {"@type":"ListItem","position":3,"name":g["title"],"item":url}]},
       {"@context":"https://schema.org","@type":"Article","headline":g["title"],"description":g["desc"],"url":url,
-       "image":f'{SITE}/img/guide/{g["img"]}',"datePublished":published,"dateModified":modified,"inLanguage":"ja",
+       "image":SITE + og_img,"datePublished":published,"dateModified":modified,"inLanguage":"ja",
        "author":{"@id":SITE+"/#org"},"publisher":{"@id":SITE+"/#org"},"mainEntityOfPage":url},
     ]
     if g.get("dataset"):  # [B] AIO 11/9：独自データ記事は Dataset としても伝える（引用されやすく）
@@ -764,7 +780,7 @@ for g in GUIDES:
     if g.get("faq"):
         faq = '<h2>よくある質問</h2><div class="faq-list">' + "".join(f'<details><summary>{e(q)}</summary><div class="a">{e(ans)}</div></details>' for q,ans in g["faq"]) + '</div>'
     src = '<div class="src"><b>参考にした情報</b><ul>' + "".join(f'<li><a href="{e(u)}" rel="noopener" target="_blank">{e(n)}</a></li>' for n,u in g["sources"]) + '</ul><p>内容は公開日時点のものです。ルールや料金は変わることがあるため、ご利用の前に各社の案内をご確認ください。</p></div>' if g["sources"] else ""
-    page = head(g["seo_title"] + "｜ペットタクシー予約窓口", g["desc"], url, ld_html, f'/img/guide/{g["img"]}', 1200, 800) + f"""
+    page = head(g["seo_title"] + "｜ペットタクシー予約窓口", g["desc"], url, ld_html, og_img, og_w, og_h) + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">
@@ -773,7 +789,7 @@ for g in GUIDES:
     <p class="lede">{e(g["lede"])}</p>
     <div class="hero-fare"><b>あなたのルートで、ペットタクシー各社の料金をくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。公式サイトの料金表から計算した概算で、確定料金ではありません。</span><a class="btn" href="/#form" data-cta="guide-fare" style="margin-top:10px">ペットタクシーの料金をくらべる（無料）</a></div>
     <p class="small">ペットタクシー予約窓口　公開 {published.replace("-", ".")}・更新 {modified.replace("-", ".")}</p>
-    <figure class="art-img"><picture><source srcset="/img/guide/{g["img"][:-4]}.webp" type="image/webp"><img src="/img/guide/{g["img"]}" alt="{e(g["img_alt"])}" width="1200" height="800" fetchpriority="high" onerror="this.closest('figure').remove()"></picture>{caption}</figure>
+    {fig}
   </div>
 </section>
 <section style="padding-top:8px">
