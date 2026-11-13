@@ -78,5 +78,5 @@ Nori 2026-11-02「僕の作業はゼロにしたい」。始めたあとは Nori
 - アカウント：X @petkurashi_mado（旧 @pettaxi_yoyaku）、Instagram pet.kurashi（旧 pettaxi.yoyaku）（ビジネス）。どちらも pettaxi.yoyaku@gmail.com で登録。パスワードは Nori さんの Chrome に保存。
 - **X**：ペットタクシー用の無料の予約サービス（Typefully。KONBU とは別のアカウント）にこのXをつないである。`.github/workflows/sns-x.yml` が毎週日曜12時に `sns/schedule_x.py` を動かし、`posts.json` のまだ予約していない投稿を2つ、次の火・金20時に予約する。画像はガイド記事の写真だけ（`posts.json` の `photo`。文字やロゴ入りの `img/postNN.jpg` は広告っぽいので使わない。Nori 2026-11-02）。手で動かすとき `redo` を選ぶと、まだ出ていない予約を消して入れ直す。予約したものは `sns/state.json` に記録。キーは GitHub の Secret `TYPEFULLY_API_KEY`。ユーザー名がこのアカウントのもの（`schedule_x.py` の `HANDLES`）のときだけ入れる。手で動かすとき `hold` を選ぶと、まだ出ていない予約を消して止める。投稿が残っていないと Issue「Xの投稿が残っていません」が開く → `posts.json` に足して `node sns/gen.cjs`。
 - 予約の前に、文の決まり（上の4.の言葉・リンク・長さ）をスクリプトでも確かめる。
-- **Instagram**：自動のつなぎこみはまだ（予約サービスが Instagram に対応していないため、方法を調べ中）。
+- **Instagram・Threads**（Nori 2026-11-13「無料枠でやって」）：Meta の公式のしくみ（無料）で、`.github/workflows/sns-meta.yml` が毎日20時に `sns/post_meta.py` で1本ずつ出す（予約のしくみがないので、その時刻に出す）。順番は `posts.json` のとおりで、Xとは別に数える（記録は `state.json` の `ig`・`threads`）。Instagram の文は X の文に `ig_add` とハッシュタグ（最大10個）を足したもの。キーは Secret の `META_IG_TOKEN`・`META_THREADS_TOKEN`（Nori さんが最初に1回だけ貼る）。キーがないあいだは何もしない。手で動かすと、はじめは「出さずに見るだけ」（dry）。
 - 返信・コメント・DM・フォローはしない。
