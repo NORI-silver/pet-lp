@@ -80,3 +80,10 @@ Nori 2026-11-02「僕の作業はゼロにしたい」。始めたあとは Nori
 - 予約の前に、文の決まり（上の4.の言葉・リンク・長さ）をスクリプトでも確かめる。
 - **Instagram・Threads**（Nori 2026-11-13「無料枠でやって」）：Meta の公式のしくみ（無料）で、`.github/workflows/sns-meta.yml` が毎日20時に `sns/post_meta.py` で1本ずつ出す（予約のしくみがないので、その時刻に出す）。順番は `posts.json` のとおりで、Xとは別に数える（記録は `state.json` の `ig`・`threads`）。Instagram の文は X の文に `ig_add` とハッシュタグ（最大10個）を足したもの。キーは Secret の `META_IG_TOKEN`・`META_THREADS_TOKEN`（Nori さんが最初に1回だけ貼る）。キーがないあいだは何もしない。手で動かすと、はじめは「出さずに見るだけ」（dry）。
 - 返信・コメント・DM・フォローはしない。
+
+## 豆知識の投稿（2026-11-14）
+
+Nori「ちゃんとユーザーが読みたいとかいいね押したくなるやつにしてね、コマーシャル感がないように。豆知識とか」。
+- `sns/tips.py` にペットの豆知識（予約・ペットタクシーの話なし）を書き、`python3 sns/tips.py` で posts.json に足す（`kind: "tip"`）。
+- X・Instagram・Threads とも、豆知識2本にほかの1本の順で出す（`schedule_x.py` の `pick`）。ほかの投稿は、ドッグラン・夜間の病院などタクシーの話ではないものが先。
+- Threads の豆知識は写真なしの文だけ、ハッシュタグは最初の1つだけ。

@@ -25,6 +25,31 @@ BAN = ["http", "www.", "手配", "取り次", "取次", "代理", "代わって"
        "Google", "Gmail", "スプレッドシート", "くらい", "円まで", "予約できます"]
 
 
+INFO = ("dogrun:", "night:", "survey:dog")  # タクシーの話ではない施設・調べものの投稿
+
+
+def pick(posts, done, n=1):
+    """次に出す投稿を n 本えらぶ。豆知識（kind=tip）2本にほかの1本の順（Nori 2026-11-14「コマーシャル感がないように。豆知識とか」）。
+    はじめての1本はいちばん最初の投稿（あいさつ）。done は出した（予約した）順の番号の並び。"""
+    done = [str(d) for d in done]
+    left = [p for p in posts if str(p["no"]) not in done]
+    kind = {str(p["no"]): p.get("kind") for p in posts}
+    out = []
+    while left and len(out) < n:
+        if not done:
+            p = left[0]
+        else:
+            tips = [q for q in left if q.get("kind") == "tip"]
+            # ほかの投稿は、ペットタクシーの話より施設の情報（ドッグラン・夜間の病院など）を先に
+            others = sorted([q for q in left if q.get("kind") != "tip"], key=lambda q: not str(q.get("key", "")).startswith(INFO))
+            two = len(done) >= 2 and all(kind.get(d) == "tip" for d in done[-2:])
+            p = (others[0] if (two or not tips) and others else tips[0])
+        out.append(p)
+        left.remove(p)
+        done.append(str(p["no"]))
+    return out
+
+
 def req(method, path, key, body=None):
     data = json.dumps(body).encode() if body is not None else None
     r = urllib.request.Request(API + path, data=data, method=method,
@@ -86,7 +111,7 @@ def main():
         if hold:
             json.dump(state, open(sp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
             return 0
-    todo = [p for p in posts if str(p["no"]) not in state["x"]][:n]
+    todo = pick(posts, sorted(state["x"], key=lambda k: state["x"][k]), n)
     if not todo:
         print("予約できる投稿が残っていません。posts.json に新しい投稿を足してください。")
         return 2
