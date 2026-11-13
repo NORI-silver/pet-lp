@@ -14,7 +14,7 @@ import json, os, sys, time, urllib.parse, urllib.request, urllib.error, datetime
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from schedule_x import BAN  # noqa: E402
+from schedule_x import BAN, pick  # noqa: E402
 
 SITE = "https://pet.shiokonbu.com/"
 JST = dt.timezone(dt.timedelta(hours=9))
@@ -70,13 +70,26 @@ def post_ig(token, p, common):
     return call("POST", f"{IG}/me/media_publish", {"creation_id": c["id"], "access_token": token}).get("id")
 
 
+def text_threads(p):
+    """Threads は文だけで出す。ハッシュタグは最初の1つだけ（Threads はトピックが1つ）。"""
+    lines = p["x"].split("\n")
+    tags = [w for l in lines if l.startswith("#") for w in l.split() if w.startswith("#")]
+    body = "\n".join(l for l in lines if not l.startswith("#"))
+    return body + ("\n" + tags[0] if tags else "")
+
+
 def post_threads(token, p):
     me = call("GET", f"{TH}/me", {"fields": "username", "access_token": token})
     if me.get("username") not in HANDLES["threads"]:
         sys.exit(f"Threads のアカウントが違います: {me.get('username')}")
-    check(p["x"])
-    c = call("POST", f"{TH}/me/threads", {"media_type": "IMAGE", "image_url": SITE + p["photo"], "text": p["x"],
-                                          "alt_text": p.get("alt") or p["tag"], "access_token": token})
+    text = text_threads(p)
+    check(text)
+    # 豆知識は文だけ（Threads は文が中心）。ほかは写真つき
+    if p.get("kind") == "tip":
+        args = {"media_type": "TEXT", "text": text}
+    else:
+        args = {"media_type": "IMAGE", "image_url": SITE + p["photo"], "text": text, "alt_text": p.get("alt") or p["tag"]}
+    c = call("POST", f"{TH}/me/threads", {**args, "access_token": token})
     for _ in range(30):
         st = call("GET", f"{TH}/{c['id']}", {"fields": "status", "access_token": token}).get("status")
         if st == "FINISHED":
@@ -99,13 +112,13 @@ def main():
         if only and kind != only:
             continue
         done = state.setdefault(kind, {})
-        nxt = next((p for p in data["posts"] if str(p["no"]) not in done), None)
+        nxt = next(iter(pick(data["posts"], list(done))), None)
         if not nxt:
             print(kind, "出せる投稿が残っていません")
             continue
         if dry:
             print(f"== {kind} {nxt['no']} {nxt['tag']} {SITE + nxt['photo']}")
-            print(caption_ig(nxt, data["ig_tags_common"]) if kind == "ig" else nxt["x"])
+            print(caption_ig(nxt, data["ig_tags_common"]) if kind == "ig" else text_threads(nxt))
             continue
         if not tokens[kind]:
             print(kind, "のキーがまだありません（何もしない）")
