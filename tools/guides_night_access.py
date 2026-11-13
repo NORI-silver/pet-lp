@@ -31,9 +31,15 @@ for p in PREF47:
     emg = [t for t in _E["taxis"] if p in t.get("prefs", [])]
     ROWS.append(dict(pref=p, hosp=len(own), near=near, t24=len(t24), emg=len(emg), local=p not in NO_LOCAL_TAXI))
 
-NO_HOSP = [r for r in ROWS if r["hosp"] == 0]
+# 2026-11-14 さがし直し（法定表示の担当のすすめ）：夜間の病院が見つからなかった11県を、各県の夜間・救急のまとめ（公式サイトをもとにしたもの）と公式サイトでもう一度さがした。
+# 10県は、夜間に診る時間を公式サイトに出している病院が県内に見つからない（ふつうの病院の「かかりつけだけ」「できる限り」の時間外の対応はある）。
+# 島根県は、松江市の病院に「夜間救急診療のご案内」のページがあるが開けず、時間を確かめられなかったので「確認中」にして、見つからなかった県には数えない。
+UNSURE = {"島根県"}
+for r in ROWS:
+    r["unsure"] = r["pref"] in UNSURE and r["hosp"] == 0
+NO_HOSP = [r for r in ROWS if r["hosp"] == 0 and not r["unsure"]]
 NO_RIDE = [r for r in ROWS if r["t24"] == 0 and r["emg"] == 0]
-BOTH = [r for r in ROWS if r["hosp"] == 0 and r["t24"] == 0 and r["emg"] == 0]
+BOTH = [r for r in NO_HOSP if r["t24"] == 0 and r["emg"] == 0]
 BOTH_NOLOCAL = [r for r in BOTH if not r["local"]]
 N_HOSP = sum(r["hosp"] for r in ROWS)
 
@@ -42,7 +48,7 @@ def _names(rs): return "・".join(_short(r["pref"]) for r in rs)
 _table = [["都道府県", "県内の夜間・救急の動物病院", "24時間受付のペットタクシー", "動物の救急搬送の会社", "地元のペットタクシー"]]
 for r in ROWS:
     _table.append([r["pref"],
-                   f"{r['hosp']}" if r["hosp"] else ("なし（" + "・".join(r["near"]) + "の病院が近い）" if r["near"] else "なし"),
+                   f"{r['hosp']}" if r["hosp"] else "確認中" if r["unsure"] else ("なし（" + "・".join(r["near"]) + "の病院が近い）" if r["near"] else "なし"),
                    f"{r['t24']}社" if r["t24"] else "なし",
                    f"{r['emg']}社" if r["emg"] else "なし",
                    "あり" if r["local"] else "見つからず"])
@@ -57,7 +63,7 @@ NIGHT_ACCESS = dict(slug="night-emergency-survey",
        f"{_names(BOTH)}の{len(BOTH)}県は、どちらも見つかりませんでした。"),
  lede="夜中にペットの具合が急に悪くなったとき、どこの病院へ、どうやって行けばいいのか。47都道府県の夜間・救急の動物病院と、夜も頼める移動の手段を数えると、住んでいる県によって大きな差がありました。",
  img="night-emergency-survey.jpg", img_alt="夜の動物病院の受付で、キャリーを抱えて待つ飼い主", img_caption="写真はイメージです。",
- published="2026-11-13", modified="2026-11-13", checked=f"夜間の病院・救急搬送は{_E['checked']}、ペットタクシーは2026年11月（各公式サイト）",
+ published="2026-11-13", modified="2026-11-14", checked=f"夜間の病院・救急搬送は{_E['checked']}、ペットタクシーは2026年11月（各公式サイト）",
  sections=[
   ("まとめ", [
    ("tip", f"まとめ：県内に夜間・救急の動物病院が見つからなかったのは{len(NO_HOSP)}県。夜に頼める移動の手段（24時間受付のペットタクシー・動物の救急搬送）が見つからなかったのは{len(NO_RIDE)}県。"
@@ -73,7 +79,7 @@ NIGHT_ACCESS = dict(slug="night-emergency-survey",
    "夜の急変のときは、となりの県の病院まで行くことも考えておく必要があります。かかりつけの病院が夜も相談にのってくれることもあるので、まずは昼のうちに確かめてください。車がない方、運転に不安がある方は、昼のうちに「夜に何かあったらどうするか」を決めておくのがいちばんの備えです。",
   ]),
   ("47都道府県の一覧", [
-   "「県内の夜間・救急の動物病院」は、夜間・救急の診療を公式サイトに書いている病院のうち、当サイトが確かめた数です。かかりつけの病院が夜も診てくれることもあるので、まずはかかりつけに確かめてください。",
+   "「県内の夜間・救急の動物病院」は、夜間・救急の診療を公式サイトに書いている病院のうち、当サイトが確かめた数です。かかりつけの病院が夜も診てくれることもあるので、まずはかかりつけに確かめてください。「なし」の県にも、ふつうの動物病院が、かかりつけの子だけ・できる限りといった形で夜の急患を受けていることがあります（夜に診る時間を公式サイトに出していない病院は数えていません）。「確認中」は、夜間の診療の案内があるのに時間を確かめられなかった県です。",
    ("table", _table),
    "「24時間受付のペットタクシー」は、24時間受付と公式サイトに書いている会社の数で、夜に必ず来てもらえるという意味ではありません。「地元のペットタクシー」は、その県に会社が見つかったかどうかです。",
   ]),
