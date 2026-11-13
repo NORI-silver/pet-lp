@@ -174,6 +174,7 @@ def _title(pf, rs, n):
     kg = sum(_has(t, '幼稚園', '保育園') for t in rs)
     az = sum(_has(t, '預かり') for t in rs)
     parts = [f"出張しつけ{home}件" if home else "", f"犬の幼稚園{kg}件" if kg else "", f"預かり{az}件" if az else ""]
-    return f"{pf}のドッグトレーナー・犬のしつけ教室{n}件｜" + "・".join(x for x in parts if x) + "（公式サイトで確認）｜ペットタクシー予約窓口"
+    # [B] 11/13：題名は多くの飼い主さんの悩みと「あきらめずに済むこと」を先に（Nori 11/12「ペインポイントとなんの断念を解決するものなのか」）
+    return f"{pf}のドッグトレーナー・犬のしつけ教室{n}件｜吠え・かみ癖・トイレの悩みに。" + (f"家に来てくれる出張しつけ{home}件" if home else "教室・犬の幼稚園の一覧") + "｜ペットタクシー予約窓口"
 CAT["title_fn"] = _title
 CAT["fac_biz"] = lambda e: FC.biz(e, "ドッグトレーナー・しつけ教室")
