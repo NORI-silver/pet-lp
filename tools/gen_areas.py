@@ -229,6 +229,16 @@ def _no_fee():
     nojam = sorted(i for x in _DISP if "渋滞でも追加料金なし" in (x.get("points") or []) for i in ids(x))
     return {"nowait": nowait, "nojam": nojam}
 src = re.sub(r"/\*NO_FEE\*/.*?/\*/NO_FEE\*/", lambda m: "/*NO_FEE*/var NO_FEE = " + json.dumps(_no_fee(), ensure_ascii=False) + ";/*/NO_FEE*/", src, count=1, flags=re.S)
+# 許可・登録・資格・保険（tools/licenses.json。提携先のIDにも同じ値を付ける。Nori 2026-11-12）
+def _creds():
+    lic = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "licenses.json"), encoding="utf-8"))["companies"]
+    gs = open(os.path.join(ROOT, "booking", "Code.gs"), encoding="utf-8").read()
+    m = re.search(r"OPEN_PARTNERS:\s*\{([^}]*)\}", gs)
+    out = {k: {x: v[x] for x in ("reg", "transport", "ins", "quals") if x in v} for k, v in lic.items()}
+    for p, d in (re.findall(r"'([^']+)'\s*:\s*'([^']+)'", m.group(1)) if m else []):
+        if d in out: out[p] = out[d]
+    return out
+src = re.sub(r"/\*CREDS\*/.*?/\*/CREDS\*/", lambda m: "/*CREDS*/var CREDS = " + json.dumps(_creds(), ensure_ascii=False) + ";/*/CREDS*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*CO_SITE\*/.*?/\*/CO_SITE\*/", lambda m: "/*CO_SITE*/var CO_SITE = " + json.dumps(_co_site(), ensure_ascii=False) + ";/*/CO_SITE*/", src, count=1, flags=re.S)
 # 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、いない県に「（候補なし）」を付ける）
 src = re.sub(r"/\*AREA_PREFS\*/.*?/\*/AREA_PREFS\*/", lambda m: "/*AREA_PREFS*/var AREA_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}), ensure_ascii=False) + ";/*/AREA_PREFS*/", src, count=1, flags=re.S)
