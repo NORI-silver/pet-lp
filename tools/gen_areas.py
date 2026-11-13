@@ -613,6 +613,34 @@ def _pick_txt(F):
     if q.get("yen") == 0: return "無料"
     if q.get("yen"): return f"{q['yen']:,}円" + ("（変わることあり）" if q.get("unsure") else "")
     return "—"
+def pref_fare_stats(short, cs):
+    """その県に来てくれる会社だけの料金表で、乗った距離の運賃を計算する（全国の目安とくらべる。うちだけのデータ）"""
+    Fs = [c["fare"] for c in cs if c.get("fare") and c["fare"].get("kind", "dist") == "dist" and c["fare"].get("base")]
+    if len(Fs) < 3: return ""
+    rows, diffs = [], []
+    for km in (5, 10, 20, 30):
+        v = sorted(_r100(_nat_ride(F, km)) for F in Fs)
+        n = sorted(_r100(_nat_ride(c["fare"], km)) for c in _NAT)
+        mid, nmid = v[(len(v) - 1) // 2], n[(len(n) - 1) // 2]
+        diffs.append((km, mid - nmid, nmid))
+        rows.append((km, mid, v[0], v[-1], nmid))
+    same = all(d == 0 for _, d, _ in diffs)
+    head = '<tr><th>乗る距離</th><th>まんなかの会社</th><th>安い会社〜高い会社</th>' + ('' if same else '<th>全国のまんなか</th>') + '</tr>'
+    body = "".join(f'<tr><td>{km}km</td><td>{mid:,}円</td><td>{lo:,}〜{hi:,}円</td>'
+                   + ('' if same else f'<td>{nm:,}円</td>') + '</tr>' for km, mid, lo, hi, nm in rows)
+    per = sum(1 for F in Fs if (F.get("pick") or {}).get("per"))
+    flat = sum(1 for F in Fs if (F.get("pick") or {}).get("yen") is not None and not (F.get("pick") or {}).get("per"))
+    nopick = sum(1 for F in Fs if not F.get("pick"))
+    k10 = sorted(_r100(_nat_ride(F, 10)) for F in Fs)
+    pk = "・".join(t for t in [f"お迎えの道のり1kmごとにかかる会社が{per}社" if per else "", f"決まった金額の会社が{flat}社" if flat else "", f"料金表に書いていない会社が{nopick}社" if nopick else ""] if t)
+    out = f'<h3>{e(short)}に来てくれる会社だけで計算した運賃（料金表のある{len(Fs)}社）</h3>'
+    out += (f'<p>{e(short)}のお迎えに対応している会社のうち、公式サイトに料金表がある{len(Fs)}社だけで、乗った距離の運賃（片道）を全国の目安と同じ式で計算しました。'
+            f'10kmでは、いちばん安い会社が{k10[0]:,}円、高い会社が{k10[-1]:,}円で、{k10[-1]-k10[0]:,}円の差があります。何社かくらべてから問い合わせると、同じ道のりでも払う金額が変わります。</p>')
+    out += '<div class="tbl"><table><thead>' + head + '</thead><tbody>' + body + '</tbody></table></div>'
+    if same: out += f'<p>まんなかの会社の金額は、全国{len(_NAT)}社のまんなかと同じでした。</p>'
+    if pk: out += f'<p>このほかにかかるお迎え料金（お店からお迎えの場所まで）のつけ方は、{e(pk)}です。お店が遠い会社ほどお迎え料金が高くなるので、フォームでは会社ごとに、お店からお迎えの場所までの車の道のりを入れた目安を出しています。</p>'
+    return out
+
 def pref_company_table(pf, short, cs, cities=()):
     key = pf if pf == "北海道" else pf[:-1]
     if not cs: return ""
@@ -645,6 +673,7 @@ def pref_company_table(pf, short, cs, cities=()):
         out += (f'<p>対応エリアに地名が書かれている会社を数えると、' + "・".join(f"{st}が{n}社" for n, st in sorted(cm, key=lambda t: -t[0])) + 'でした。'
                 + (f'このほか「全域」「◯◯一円」のように広く書いている会社が{whole}社あります。' if whole else '')
                 + '地名が書かれていなくても来てもらえることがあるので、お迎えの場所はフォームで確かめてください。</p>')
+    out += pref_fare_stats(short, cs)
     out += ('<div class="tbl"><table><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody>'
             + "".join(r[2] for r in rows) + '</tbody></table></div>')
     out += f'<p class="fare-flag"><b>確定料金ではありません。</b>{FARES_CHECKED}時点で各社の公式サイトを読んでまとめたもので、会社名は出していません。5kmの運賃は料金表から計算した片道の金額で、お迎え料金・待ち時間・高速代は入っていません。料金や対応エリアは変わることがあるので、フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p>'
