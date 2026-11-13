@@ -7,7 +7,7 @@ const ctx=vm.createContext({Date,JSON,Math,Number,String,Object,Array,isFinite,i
 vm.runInContext(fs.readFileSync('booking/Code.gs','utf8'),ctx);
 vm.runInContext("CONFIG.ADMIN_EMAIL='admin@example.com'; liveSending_=function(){return false;}",ctx);
 assert.equal(vm.runInContext('CONFIG.SHOW_ALL_CANDIDATES',ctx),true);
-assert.equal(ctx.isOpen_('P060'),true); assert.equal(ctx.isOpen_('P061'),true); assert.equal(ctx.isOpen_('P030'),true); assert.equal(ctx.isOpen_('P062'),true); assert.equal(ctx.isOpen_('P063'),true); assert.equal(ctx.isOpen_('P053'),false); assert.equal(ctx.isOpen_('P002'),false);
+assert.equal(ctx.isOpen_('P060'),true); assert.equal(ctx.isOpen_('P061'),true); assert.equal(ctx.isOpen_('P030'),true); assert.equal(ctx.isOpen_('P062'),true); assert.equal(ctx.isOpen_('P063'),true); assert.equal(ctx.isOpen_('P064'),true); assert.equal(ctx.isOpen_('P053'),false); assert.equal(ctx.isOpen_('P002'),false);
 assert.equal(ctx.openDisplay_('P060').id,'D13b7c6f');
 assert.equal(ctx.isAnon_('P060',''),false); assert.equal(ctx.isAnon_('P002',''),true);
 const row=(ids)=>({'指定した提携先ID':ids,'お名前':'山田','メール':'a@b.jp'});
