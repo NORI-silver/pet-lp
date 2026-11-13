@@ -62,7 +62,8 @@
     if (!shop && q.length >= 4 && PLACES_KEY) lookup(q).then(function(ps){ if (!shop && ps[0] && inp.value.trim() === q) { shop = ps[0]; $("p_shopOk").hidden = false; $("p_shopOk").textContent = "✓ " + ps[0].addr; drawPrefs(true); } });
   });
   // ── お迎えできる都道府県：お店の県と、範囲の中に県庁所在地が入る県（＋25km）を自動で選ぶ。近い順に10県をボタンで出し、残りは「ほかの都道府県」
-  var RANGE = {"お店から10kmまで": 10, "20kmまで": 20, "30kmまで": 30, "50kmまで": 50, "80kmまで": 80, "もっと遠くても行く": 150};
+  // お迎えの範囲は必ずkmで決めていただく（「もっと遠くても行く」は対象エリアが決まらないのでやめた。Nori 2026-11-12「ちゃんと対象エリアが決まるように」）
+  var RANGE = {"お店から5kmまで": 5, "10kmまで": 10, "20kmまで": 20, "30kmまで": 30, "50kmまで": 50, "80kmまで": 80, "100kmまで": 100};
   function chip(p, on){ return '<label><input type="checkbox" value="' + p + '"' + (on ? " checked" : "") + '><span>' + p + '</span></label>'; }
   function drawPrefs(auto){
     var near = $("p_prefs"), more = $("p_prefs2"), on = {};

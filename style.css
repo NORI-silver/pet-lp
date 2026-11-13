@@ -504,9 +504,9 @@ footer a{color:var(--ink-2)}
 .partner-points{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0}
 .partner-points li{font-size:.72rem;background:#eef6ee;color:#2f5d34;border-radius:999px;padding:2px 8px;line-height:1.5}
 .partner-points li.lim{background:#f1f0ee;color:#55504a}
-.partner-creds{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:6px 0 0;padding:0}
-.partner-creds li{font-size:.72rem;border:1px solid #d9d4ce;color:#46423d;background:#fff;border-radius:6px;padding:1px 7px;line-height:1.5}
-.partner-creds li::before{content:"✓ ";color:#3d9a5b;font-weight:700}
+.partner-creds{display:flex;flex-wrap:wrap;gap:2px 12px;list-style:none;margin:6px 0 0;padding:0;font-size:.74rem;line-height:1.5;color:#5f6368}
+.partner-creds li{display:inline-flex;align-items:baseline;gap:3px}
+.partner-creds li::before{content:"✓";color:#188038;font-weight:700}
 .partner-card .btn.pick-on{background:var(--o-d)}
 #partnerRest[hidden],.partner-rest-btn[hidden],.partner-sort[hidden]{display:none}
 .partner-sort{display:flex;align-items:center;gap:8px;justify-content:flex-end;margin:4px 0 10px;font-size:.86rem}

@@ -534,9 +534,9 @@ footer a{color:var(--ink-2)}
 .partner-points{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0}
 .partner-points li{font-size:.72rem;background:#eef6ee;color:#2f5d34;border-radius:999px;padding:2px 8px;line-height:1.5}
 .partner-points li.lim{background:#f1f0ee;color:#55504a}
-.partner-creds{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:6px 0 0;padding:0}
-.partner-creds li{font-size:.72rem;border:1px solid #d9d4ce;color:#46423d;background:#fff;border-radius:6px;padding:1px 7px;line-height:1.5}
-.partner-creds li::before{content:"✓ ";color:#3d9a5b;font-weight:700}
+.partner-creds{display:flex;flex-wrap:wrap;gap:2px 12px;list-style:none;margin:6px 0 0;padding:0;font-size:.74rem;line-height:1.5;color:#5f6368}
+.partner-creds li{display:inline-flex;align-items:baseline;gap:3px}
+.partner-creds li::before{content:"✓";color:#188038;font-weight:700}
 .partner-card .btn.pick-on{background:var(--o-d)}
 #partnerRest[hidden],.partner-rest-btn[hidden],.partner-sort[hidden]{display:none}
 .partner-sort{display:flex;align-items:center;gap:8px;justify-content:flex-end;margin:4px 0 10px;font-size:.86rem}
@@ -767,6 +767,14 @@ footer a{color:var(--ink-2)}
   },
   {
    "@type": "Question",
+   "name": "宮城・仙台で、車がなくても大型犬を動物病院へ連れて行けますか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "宮城県のお迎えに対応している3社のうち、公式サイトに大型犬も乗せられると書いている会社は1社でした（2026年10月30日時点）。電車にはキャリーに入る小さな子しか乗れませんが、ペットタクシーなら車がなくても、大きな子と一緒に動物病院へ行けます。乗せられる頭数や一緒に乗れる人数は会社ごとに違うので、候補の会社の条件と公式サイトで確かめてください。"
+   }
+  },
+  {
+   "@type": "Question",
    "name": "宮城・仙台で当日でもペットタクシーを頼めますか？",
    "acceptedAnswer": {
     "@type": "Answer",
@@ -987,7 +995,7 @@ footer a{color:var(--ink-2)}
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
-        <p class="form-foot">条件が揃うと、合う事業者と料金の目安が自動で表示されます。会社を選んで依頼するまで、どこにも送信されません。<br>料金は、会社の返事の確定料金でも、会社によっては当日の道路事情や待ち時間などで変わることがあります。</p>
+        <p class="form-foot">条件を入れると、合う会社と料金の目安が出ます（まだ送信されません）。料金は当日の道路事情や待ち時間で変わることがあります。</p>
         <div class="need-box" id="partnerNeed" hidden></div>
         <section class="partner-results" id="partnerResults" aria-labelledby="partnerTitle" hidden>
           <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
@@ -1092,7 +1100,7 @@ footer a{color:var(--ink-2)}
       <p class="emg-note">当サイトとは別の会社・病院です（2026年10月31日時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、お問い合わせからお知らせください。口コミはページ上の「緊急」タブで見られます。</p>
     </div>
     <p><a href="/emergency/">全国の緊急の連絡先の一覧</a>から、現在地から近い病院も探せます。</p>
-    <h2>宮城・仙台のペットタクシー よくある質問</h2><div class="faq-list"><details><summary>仙台市内の動物病院まで、ペットタクシーはいくらですか？</summary><div class="a">全国の会社の料金表で計算すると、5kmで片道3,300円（800〜6,400円）が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。お迎えの料金や夜間の割増は会社ごとに違うので、フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。</div></details><details><summary>仙台から仙台空港まで、ペットタクシーはいくらですか？</summary><div class="a">全国の会社の料金表で計算すると、20kmで片道5,800円（2,400〜10,000円）が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。お迎えの料金や夜間の割増は会社ごとに違うので、フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。</div></details><details><summary>宮城・仙台に来てくれるペットタクシーは何社ありますか？</summary><div class="a">当サイトで公式サイトを確かめた全国の会社のうち、対応エリアに宮城県を書いている会社は3社でした（2026年10月30日時点）。地名を書いていない場所に来てくれることもあるので、お迎えの場所をフォームに入れて確かめてください。</div></details><details><summary>宮城・仙台で当日でもペットタクシーを頼めますか？</summary><div class="a">3社の中に、公式サイトや会社からの返事に当日も受けるとはっきり書いてある会社はまだありません。お迎えが今日だと候補が出ないことがあるので、明日以降の日時でさがすのがおすすめです。会社にメールで確認してから決まるしくみなので、お迎えの時刻は、いまから3時間以上あとで選んでください。</div></details><details><summary>宮城・仙台で夜間に診てもらえる動物病院はありますか？</summary><div class="a">宮城県の夜間・救急の動物病院を2件載せています（仙台市宮城野区・仙台市太白区など）。受付時間は病院ごとに違うので、行く前に電話で受け入れてもらえるか確かめてください。</div></details><details><summary>宮城・仙台でペットの緊急搬送を頼める会社はありますか？</summary><div class="a">宮城県で緊急の搬送をしていると公式サイトに書いている会社を1社載せています。急ぐときは、まず動物病院に電話して受け入れを確かめてから頼んでください。</div></details></div>
+    <h2>宮城・仙台のペットタクシー よくある質問</h2><div class="faq-list"><details><summary>仙台市内の動物病院まで、ペットタクシーはいくらですか？</summary><div class="a">全国の会社の料金表で計算すると、5kmで片道3,300円（800〜6,400円）が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。お迎えの料金や夜間の割増は会社ごとに違うので、フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。</div></details><details><summary>仙台から仙台空港まで、ペットタクシーはいくらですか？</summary><div class="a">全国の会社の料金表で計算すると、20kmで片道5,800円（2,400〜10,000円）が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。お迎えの料金や夜間の割増は会社ごとに違うので、フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。</div></details><details><summary>宮城・仙台に来てくれるペットタクシーは何社ありますか？</summary><div class="a">当サイトで公式サイトを確かめた全国の会社のうち、対応エリアに宮城県を書いている会社は3社でした（2026年10月30日時点）。地名を書いていない場所に来てくれることもあるので、お迎えの場所をフォームに入れて確かめてください。</div></details><details><summary>宮城・仙台で、車がなくても大型犬を動物病院へ連れて行けますか？</summary><div class="a">宮城県のお迎えに対応している3社のうち、公式サイトに大型犬も乗せられると書いている会社は1社でした（2026年10月30日時点）。電車にはキャリーに入る小さな子しか乗れませんが、ペットタクシーなら車がなくても、大きな子と一緒に動物病院へ行けます。乗せられる頭数や一緒に乗れる人数は会社ごとに違うので、候補の会社の条件と公式サイトで確かめてください。</div></details><details><summary>宮城・仙台で当日でもペットタクシーを頼めますか？</summary><div class="a">3社の中に、公式サイトや会社からの返事に当日も受けるとはっきり書いてある会社はまだありません。お迎えが今日だと候補が出ないことがあるので、明日以降の日時でさがすのがおすすめです。会社にメールで確認してから決まるしくみなので、お迎えの時刻は、いまから3時間以上あとで選んでください。</div></details><details><summary>宮城・仙台で夜間に診てもらえる動物病院はありますか？</summary><div class="a">宮城県の夜間・救急の動物病院を2件載せています（仙台市宮城野区・仙台市太白区など）。受付時間は病院ごとに違うので、行く前に電話で受け入れてもらえるか確かめてください。</div></details><details><summary>宮城・仙台でペットの緊急搬送を頼める会社はありますか？</summary><div class="a">宮城県で緊急の搬送をしていると公式サイトに書いている会社を1社載せています。急ぐときは、まず動物病院に電話して受け入れを確かめてから頼んでください。</div></details></div>
   </article></div>
 </section>
 
@@ -1153,7 +1161,7 @@ footer a{color:var(--ink-2)}
     <div class="price-wrap">
       <div class="free"><div class="t"><b>ご利用料</b>何度使っても</div><div class="v">0<small>円</small></div></div>
       <div class="fare">
-<!--FARE_TABLE-->        <h3>距離ごとの目安（全国91社の料金表から）</h3>
+<!--FARE_TABLE-->        <h3>距離ごとの目安（全国92社の料金表から）</h3>
         <dl>
           <div class="row"><dt>5km</dt><dd>3,300円<br><small style="font-weight:400">800〜6,400円</small></dd></div>
           <div class="row"><dt>10km</dt><dd>4,100円<br><small style="font-weight:400">1,300〜6,400円</small></dd></div>
@@ -1165,7 +1173,7 @@ footer a{color:var(--ink-2)}
     </div>
     <p class="fare-flag"><b>確定料金ではありません。</b>上の金額は目安です。確定料金（税込）は、問い合わせた会社から、空き状況と一緒にメールでお知らせします。</p>
     <p class="fare-night"><b>🌙 夜間・早朝の割増</b>上の目安は昼間の料金です。夜間・早朝の割増は、かかるかどうかも金額も会社ごとに違います。フォームの候補には、会社ごとの割増を入れた目安が出ます。</p>
-    <p class="small">全国18都道府県・91社のペットタクシーが公式サイトにのせている料金表で、乗った距離の運賃（片道）を計算しました。大きい数字はまんなかの会社の金額で、その下は安い会社〜高い会社です。お迎え料金・待ち時間・夜間の割増・高速代・駐車場代は入っていません。フォームにお迎えの場所と行き先を入れると、来てもらえる会社ごとに、お迎え料金なども入れた目安が出ます。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。都道府県ごとの料金の例は、<a href="/area/">全国のペットタクシー情報</a>に、距離ごと・都道府県ごとの運賃とお迎え料金・夜間割増のつけ方の数は<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ</a>にまとめています。</p><!--/FARE_TABLE-->
+    <p class="small">全国18都道府県・92社のペットタクシーが公式サイトにのせている料金表で、乗った距離の運賃（片道）を計算しました。大きい数字はまんなかの会社の金額で、その下は安い会社〜高い会社です。お迎え料金・待ち時間・夜間の割増・高速代・駐車場代は入っていません。フォームにお迎えの場所と行き先を入れると、来てもらえる会社ごとに、お迎え料金なども入れた目安が出ます。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。都道府県ごとの料金の例は、<a href="/area/">全国のペットタクシー情報</a>に、距離ごと・都道府県ごとの運賃とお迎え料金・夜間割増のつけ方の数は<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ</a>にまとめています。</p><!--/FARE_TABLE-->
     <div class="fare-cta"><a class="btn" href="#form" data-cta="price-fare">空き状況と料金を問い合わせる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a><p>公式サイトの料金表から計算した概算です。確定料金ではありません。料金表のない会社は「料金はお見積もり」と出ます。</p></div>
   </div>
 </section>
@@ -1174,7 +1182,7 @@ footer a{color:var(--ink-2)}
 <section class="stats" aria-label="サービスの数字">
   <div class="wrap">
     <div class="grid">
-      <div class="stat"><div class="n">27<small>都道府県</small></div><div class="l">106社から<br>さがせます</div></div>
+      <div class="stat"><div class="n">28<small>都道府県</small></div><div class="l">107社から<br>さがせます</div></div>
       <div class="stat"><div class="n">0<small>円</small></div><div class="l">当サイトのご利用料<br>運賃は乗った車へ</div></div>
       <div class="stat"><div class="n">1<small>回</small></div><div class="l">の入力で、何社にでも<br>まとめて問い合わせ</div></div>
       <div class="stat"><div class="n">0<small>回</small></div><div class="l">問い合わせの電話<br>連絡はメールで届きます</div></div>
@@ -1433,6 +1441,6 @@ footer a{color:var(--ink-2)}
 
 <div class="sticky"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
 
-<script src="/app.js?v=58c23f99a9"></script>
+<script src="/app.js?v=c2c7e43923"></script>
 </body>
 </html>
