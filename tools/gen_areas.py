@@ -2021,6 +2021,10 @@ for c in CITIES:
 # sitemap / robots / 404
 urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url] + hosp_urls + [pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url, pterms_url]
 urls += [SITE + c["path"] for c in CITIES]
+# [B] 検索に出さないページ（tools/noindex.json。Nori 2026-11-13「全部やって」）。サイトマップから外し、最後に noindex,follow を入れる。
+NOINDEX = json.load(open(os.path.join(ROOT, "tools", "noindex.json"), encoding="utf-8"))["pages"]
+def _keep(u): return u[len(SITE):] not in NOINDEX
+urls = [u for u in urls if _keep(u)]
 guide_modified = {f'{SITE}/guide/{g["slug"]}/': g.get("modified", TODAY) for g in GUIDES}
 # [B] sitemap の lastmod は、ページの本文（<main> の中、script を除く）が変わった日にする（2026-11-08 AI検索・検索の集客）。
 # 前は記事以外が全部 TODAY（2026-10-30）のままで、検索エンジンやAI検索に「更新されていない」と伝わっていた。
@@ -2059,8 +2063,8 @@ _sm_groups = {}
 for u in urls: _sm_groups.setdefault(_sm_cat(u), []).append(u)
 # 施設ごとのページ（試し）は、分野のサイトマップとは別にも出す（試しの登録率を見るため。docs/facility-page.md）
 import gen_sougi_fac, gen_dogrun_fac
-_sm_groups["facility-sougi"] = gen_sougi_fac.urls(SITE)
-_sm_groups["facility-dogrun"] = gen_dogrun_fac.urls(SITE)
+_sm_groups["facility-sougi"] = [u for u in gen_sougi_fac.urls(SITE) if _keep(u)]
+_sm_groups["facility-dogrun"] = [u for u in gen_dogrun_fac.urls(SITE) if _keep(u)]
 os.makedirs(os.path.join(ROOT, "sitemaps"), exist_ok=True)
 for _c in os.listdir(os.path.join(ROOT, "sitemaps")):
   if _c.endswith(".xml") and _c[:-4] not in _sm_groups: os.remove(os.path.join(ROOT, "sitemaps", _c))
@@ -2093,3 +2097,12 @@ print("brand", brand.build(ROOT), "pages")
 import gen_webmcp
 gen_webmcp.build(ROOT)
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
+# [B] noindex.json のページに noindex,follow を入れる（ほかの後処理のあと）
+for _p in NOINDEX:
+  _f = os.path.join(ROOT, _p.strip("/"), "index.html")
+  if not os.path.exists(_f): continue
+  _t = open(_f, encoding="utf-8").read()
+  _t = re.sub(r'<meta name="robots"[^>]*>\s*', "", _t)
+  _t = _t.replace("</title>", '</title>\n<meta name="robots" content="noindex,follow">', 1)
+  open(_f, "w", encoding="utf-8").write(_t)
+print("noindex", len(NOINDEX), "pages")
