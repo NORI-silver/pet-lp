@@ -1015,7 +1015,10 @@
     "神奈川"
    ],
    "area_text": "東京・埼玉・千葉・神奈川、長距離",
-   "shop": null,
+   "shop": [
+    35.694,
+    139.819
+   ],
    "fare": {
     "base": [
      2200,
@@ -1041,13 +1044,15 @@
     "tax": "税込",
     "src": "https://www.petta-tokyo.com/cont2/main.html",
     "pick": {
-     "yen": 880,
-     "unsure": true
+     "per": 110
     },
     "wait": {
      "free": 0,
      "unit": 10,
      "yen": 250
+    },
+    "back": {
+     "per": 110
     }
    },
    "pay": "",
@@ -7666,6 +7671,92 @@
     "ok": [],
     "no": []
    },
+   "points": [
+    "24時間受付",
+    "カード払い可"
+   ]
+  },
+  {
+   "id": "Dcb3b5a2",
+   "name": "ペットタクシーおさんぽ",
+   "pref": "神奈川県",
+   "areas": [
+    "茨城",
+    "栃木",
+    "群馬",
+    "埼玉",
+    "千葉",
+    "東京",
+    "神奈川",
+    "山梨",
+    "長野",
+    "静岡"
+   ],
+   "area_text": "相模原市を中心に厚木市・海老名市・愛川町・町田市・八王子市・多摩市",
+   "shop": [
+    35.582,
+    139.351
+   ],
+   "fare": {
+    "base": [
+     0,
+     0
+    ],
+    "tiers": [
+     [
+      1,
+      5,
+      480
+     ],
+     [
+      6,
+      50,
+      330
+     ],
+     [
+      51,
+      null,
+      230
+     ]
+    ],
+    "tax": "",
+    "src": "https://pettaxi-osanpo.com/pettaxi",
+    "pick": {
+     "yen": 1800,
+     "unknownOver": 20
+    },
+    "back": {},
+    "wait": {
+     "free": 0,
+     "unit": 10,
+     "yen": 300
+    },
+    "night": {
+     "from": 21,
+     "to": 6,
+     "rate": 0.2,
+     "onAll": true
+    }
+   },
+   "pay": "現金・カード",
+   "url": "https://pettaxi-osanpo.com/",
+   "review_q": "ペットタクシーおさんぽ 相模原",
+   "review_name": "おさんぽ",
+   "hours": "0-24",
+   "flex": true,
+   "closed": [],
+   "lead_days": null,
+   "cut": null,
+   "animals": {
+    "all": false,
+    "only": false,
+    "ok": [],
+    "no": []
+   },
+   "limits": [
+    "同乗は1人まで",
+    "大型犬2頭OK"
+   ],
    "points": [
     "24時間受付",
     "カード払い可"
