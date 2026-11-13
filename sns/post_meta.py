@@ -8,7 +8,7 @@
 - キーは GitHub の Secret（META_IG_TOKEN・META_THREADS_TOKEN）。ないときは何もしないで終わる。
 - Instagram と Threads は予約ができないので、毎日20時に GitHub Actions がその場で出す（.github/workflows/sns-meta.yml）。
 
-使い方: python3 sns/post_meta.py [--dry] [--only ig|threads] [--status]
+使い方: python3 sns/post_meta.py [--dry] [--only ig|threads] [--check]
 """
 import json, os, sys, time, urllib.parse, urllib.request, urllib.error, datetime as dt
 
@@ -110,7 +110,11 @@ def main():
         if not tokens[kind]:
             print(kind, "のキーがまだありません（何もしない）")
             continue
-        if "--status" in sys.argv:
+        if "--check" in sys.argv:  # キーが使えるか、アカウントが合っているかだけ見る（出さない）
+            base = IG if kind == "ig" else TH
+            me = call("GET", f"{base}/me", {"fields": "username", "access_token": tokens[kind]})
+            ok = me.get("username") in HANDLES[kind]
+            print(kind, "キーは使えます" if ok else "アカウントが違います", me.get("username"))
             continue
         pid = post_ig(tokens[kind], nxt, data["ig_tags_common"]) if kind == "ig" else post_threads(tokens[kind], nxt)
         done[str(nxt["no"])] = now
