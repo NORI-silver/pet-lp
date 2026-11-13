@@ -675,6 +675,9 @@ GUIDES.append(FARE_SURVEY)
 # [B] SEO 11/13：料金しらべのデータから作る記事（夜間・早朝の料金、待ち時間の料金。tools/guides_fare_more.py）
 from guides_fare_more import MORE_GUIDES
 GUIDES.extend(MORE_GUIDES)
+# [F][B] 報道向けの独自データ記事「夜にペットが急変したら」（Nori 2026-11-13。tools/guides_night_access.py）
+from guides_night_access import NIGHT_ACCESS
+GUIDES.append(NIGHT_ACCESS)
 # [B] SEO 11/9：長距離のガイドは「50km タクシー」で表示されてもクリック0。題名に50km・100kmの目安（全国の料金表のまんなか）を出す。
 import guides_fare_survey as _FS
 for _g in GUIDES:
