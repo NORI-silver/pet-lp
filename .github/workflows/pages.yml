@@ -26,6 +26,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      # [B] 2026-11-13 トップページを軽くする：公開する写しだけ、トップの大きなプログラムを /app.js の読み込みに置きかえる（tools/slim_top.py）
+      - run: python3 tools/slim_top.py .
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
