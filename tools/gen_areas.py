@@ -495,12 +495,14 @@ ARROW = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width
 CHECK = '<span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>'
 e = html.escape
 
+# [B] SEO 11/13 Nori「全部やって」：市のページ（CITIES）もここから全部のガイド・エリアページにつなぐ
 # [B] SEO 11/10 Nori「提携が完了してるエリア」「大阪名古屋…飼い主が多いところも」：ガイド・エリアページからのリンクに、大きな県と提携先のある県を足す
 KEY_PREF_LINKS = [("osaka", "大阪"), ("aichi", "愛知・名古屋"), ("fukuoka", "福岡"), ("hokkaido", "北海道・札幌"), ("hiroshima", "広島"), ("hyogo", "兵庫・神戸")]
 def area_links(cur=None, more=False):
     return '<ul class="other">' + ''.join(
         f'<li><a href="/{a["slug"]}/">{e(a["short"])}のペットタクシー</a></li>' for a in AREAS if a["slug"] != cur) + ''.join(
-        f'<li><a href="/area/{s_}/">{e(n_)}のペットタクシー</a></li>' for s_, n_ in (KEY_PREF_LINKS if more else [])) + '<li><a href="/area/">ほかの道府県（全国）</a></li></ul>'
+        f'<li><a href="/area/{s_}/">{e(n_)}のペットタクシー</a></li>' for s_, n_ in (KEY_PREF_LINKS if more else [])) + ''.join(
+        f'<li><a href="{c["path"]}">{e(c["city"])}のペットタクシー</a></li>' for c in (CITIES if more else []) if c["path"] != f"/{cur}/") + '<li><a href="/area/">ほかの道府県（全国）</a></li></ul>'
 
 def head(title, desc, url, extra_ld, og_img="/img/hero.jpg", og_w=1200, og_h=900):
     return f'''<!doctype html>
