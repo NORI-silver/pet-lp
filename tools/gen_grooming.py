@@ -175,5 +175,6 @@ def _title(pf, rs, n):
     parts = [f"トリミングカー{c('car')}件" if c('car') else "", f"猫も受ける{c('cat')}件" if c('cat') else "",
              f"大型犬{c('large')}件" if c('large') else "", f"シニア犬{c('senior')}件" if c('senior') else ""]
     mid = "・".join(x for x in parts if x)
-    return f"{pf}の出張トリミング・訪問トリミング{n}件｜" + (mid or "公式サイトで確かめた一覧") + "｜ペットタクシー予約窓口"
+    # [B] 11/13：悩みと「あきらめずに済むこと」を先に（Nori 11/12）
+    return f"{pf}の出張トリミング・訪問トリミング{n}件｜お店に連れて行けない子も、家の前や家の中でシャンプー・カット｜ペットタクシー予約窓口"
 CAT["title_fn"] = _title
