@@ -136,7 +136,45 @@
    "hours": "10時〜19時（不定休。夜間・深夜・早朝は別料金）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "わんにゃん保健室 中央区",
-   "review_name": "わんにゃん保健室"
+   "review_name": "わんにゃん保健室",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "東京23区と国立・府中・三鷹・稲城・調布・狛江・武蔵野市、川崎・横浜の一部、戸田・川口・草加・蕨・八潮・三郷・松戸・市川・浦安・習志野市（23区の外は距離の料金）",
+     "src": "https://asakusa12.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "10時〜19時（不定休）。19時〜21時は夜間、21時以降は時間外",
+     "src": "https://asakusa12.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "完全予約制。Webのフォーム・電話・メール",
+     "src": "https://asakusa12.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://asakusa12.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "基本料金5,000円＋初診料2,000円（再診1,000円）。夜間10,000円・深夜30,000円・当日予約は5,000円を加算",
+     "src": "https://asakusa12.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "血液・超音波・尿・便の検査・酸素室の設置・皮下点滴・ワクチン・緩和ケア・ターミナルケア",
+     "src": "https://asakusa12.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V004",
@@ -153,7 +191,51 @@
    "hours": "20時〜翌3時（夜間の往診だけ。翌日以降はかかりつけへ）",
    "spec": "夜間の往診専門",
    "review_query": "ペットドクターカー 杉並区",
-   "review_name": "ペットドクターカー"
+   "review_name": "ペットドクターカー",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "東京23区と近くの市（小金井・小平など）、埼玉南部、川崎北部など",
+     "src": "http://petdoctorcar.net",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "夜20時〜翌3時に電話で受付（夜間の往診だけ）",
+     "src": "http://petdoctorcar.net",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "先に電話で症状を伝え、獣医師が救急の対応がいると判断したら往診",
+     "src": "http://petdoctorcar.net",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫・うさぎ・ハムスター・モルモット・小鳥など",
+     "src": "http://petdoctorcar.net",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "10,000円から（距離で変わる）。往診の診療費の総額は平均30,000〜60,000円（税別）",
+     "src": "http://petdoctorcar.net",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "その日に現金かクレジットカード",
+     "src": "http://petdoctorcar.net",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできないこと",
+     "v": "翌日からはかかりつけの病院で診てもらう",
+     "src": "http://petdoctorcar.net",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V005",
@@ -168,7 +250,33 @@
    "hours": "10時〜19時（火曜休み）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "さかうえ動物病院 中野区",
-   "review_name": "さかうえ動物病院"
+   "review_name": "さかうえ動物病院",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "中野区を中心に、新宿区・杉並区・渋谷区",
+     "src": "https://www.sakaue-ah.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "10時〜19時（火曜休み）。19時以降は時間外料金",
+     "src": "https://www.sakaue-ah.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "Web予約・LINE",
+     "src": "https://www.sakaue-ah.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://www.sakaue-ah.com",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V006",
@@ -283,7 +391,57 @@
    "hours": "9時30分〜16時（診療日は公式サイトで確認）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "あおば動物クリニック 東久留米市",
-   "review_name": "あおば動物クリニック"
+   "review_name": "あおば動物クリニック",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "東久留米市を中心に（地域の外も相談）",
+     "src": "https://aoba-ac0512.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "9時30分〜16時（月・火・木、土曜は相談）。水・金・日・祝は休み",
+     "src": "https://aoba-ac0512.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話・予約フォーム（往診中は折り返し）",
+     "src": "https://aoba-ac0512.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫・うさぎ（ほかの小動物は相談）",
+     "src": "https://aoba-ac0512.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "片道3kmまで2,200円、そこから1kmごとに400円。別に初診料2,200円（再診1,100円）",
+     "src": "https://aoba-ac0512.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "予防接種・血液検査（外注）・超音波・注射・皮下点滴・慢性の病気の治療・終末期の緩和ケア・鍼灸",
+     "src": "https://aoba-ac0512.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできないこと",
+     "v": "レントゲン・外科の処置・入院・手術・夜間の診療（設備のある病院を紹介）",
+     "src": "https://aoba-ac0512.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金・クレジットカード",
+     "src": "https://aoba-ac0512.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V009",
@@ -510,7 +668,45 @@
    "hours": "10時〜20時、夜間20時〜22時（水・木休み）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "マリどうぶつ診療所 文京区",
-   "review_name": "マリどうぶつ診療所"
+   "review_name": "マリどうぶつ診療所",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "文京・台東・千代田区など都内10区（ほかの23区も相談）",
+     "src": "https://mari-ac.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "10時〜20時（水・木休み）。20時〜22時は夜間診療（別料金）",
+     "src": "https://mari-ac.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "完全予約制。電話・LINE・Webのフォーム",
+     "src": "https://mari-ac.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://mari-ac.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "文京・台東・千代田区5,500円、中央・港・新宿区7,150円、豊島・北・荒川・墨田区8,800円（税込）。別に診察料1,100円から",
+     "src": "https://mari-ac.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "内科・予防・緩和ケア・ターミナルケア・在宅ケアの相談",
+     "src": "https://mari-ac.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V016",
@@ -526,7 +722,51 @@
    "hours": "公式サイトで確認（日祝休み）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "往診専門 なべしま動物病院 西東京市",
-   "review_name": "往診専門 なべしま動物病院"
+   "review_name": "往診専門 なべしま動物病院",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "西東京・東久留米・武蔵野・清瀬・新座市、練馬区（ほかも相談）",
+     "src": "https://nabeshima-ah.hp.peraichi.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "日曜・祝日は休み（曜日で時間がちがう）",
+     "src": "https://nabeshima-ah.hp.peraichi.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話・LINE（当日の予約もできる）",
+     "src": "https://nabeshima-ah.hp.peraichi.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://nabeshima-ah.hp.peraichi.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "片道5kmまで2,200円、そこから1kmごとに440円（税込）",
+     "src": "https://nabeshima-ah.hp.peraichi.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "内科・予防・鍼灸や漢方",
+     "src": "https://nabeshima-ah.hp.peraichi.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金・クレジットカード（駐車料金は実費）",
+     "src": "https://nabeshima-ah.hp.peraichi.com",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V020",
@@ -789,7 +1029,45 @@
    "hours": "午前9時〜12時（木・金・土）、午後14時〜17時30分（月〜金）、日祝休み",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "うみかぜ動物病院 茅ヶ崎市・藤沢市",
-   "review_name": "うみかぜ動物病院"
+   "review_name": "うみかぜ動物病院",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "藤沢市・茅ヶ崎市・寒川町・鎌倉市",
+     "src": "https://www.umikaze-ah.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "月〜金14時〜17時30分、木・金・土9時〜12時。日曜・祝日は休み",
+     "src": "https://www.umikaze-ah.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "オンライン予約・メール",
+     "src": "https://www.umikaze-ah.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://www.umikaze-ah.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "内科・予防接種・定期健診・栄養の相談・鍼灸・ターミナルケア",
+     "src": "https://www.umikaze-ah.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "クレジットカード",
+     "src": "https://www.umikaze-ah.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V026",
@@ -804,7 +1082,57 @@
    "hours": "9時〜19時（水曜休み）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "往診専門動物病院 アニマルライフパートナー 藤沢市",
-   "review_name": "アニマルライフパートナー"
+   "review_name": "アニマルライフパートナー",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "藤沢市を中心に大和・綾瀬・茅ヶ崎市など（半径10kmまで）",
+     "src": "https://animallifepartner.com/housecall.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "9時〜19時（水曜休み）",
+     "src": "https://animallifepartner.com/housecall.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "メール・電話・問い合わせフォーム（なるべく前日までに）",
+     "src": "https://animallifepartner.com/housecall.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫・うさぎ・ハムスター（ほかも相談）",
+     "src": "https://animallifepartner.com/housecall.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "半径5kmまで2,200円、10kmまで3,850円（診察料などは別）",
+     "src": "https://animallifepartner.com/housecall.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "内科・鍼灸・漢方・食事の相談・介護の相談・リハビリ",
+     "src": "https://animallifepartner.com/housecall.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできないこと",
+     "v": "レントゲンなど大きな機材の検査・手術（近くの病院と連携）",
+     "src": "https://animallifepartner.com/housecall.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金・クレジットカード・PayPay",
+     "src": "https://animallifepartner.com/housecall.html",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V027",
@@ -820,7 +1148,45 @@
    "hours": "10時〜19時（土日祝も・要予約・不定休）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "金乃時アニマルクリニック 横浜市",
-   "review_name": "金乃時アニマルクリニック"
+   "review_name": "金乃時アニマルクリニック",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "東京23区・横浜市と川崎・大和・座間・綾瀬・藤沢・鎌倉・逗子市",
+     "src": "https://www.kinnotokianimalclinic.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "10時〜18時（土日祝も診療・不定休）",
+     "src": "https://www.kinnotokianimalclinic.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "事前予約制。問い合わせフォーム・LINE・電話",
+     "src": "https://www.kinnotokianimalclinic.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://www.kinnotokianimalclinic.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "東京6,000〜7,000円、横浜市内6,000円、横浜市の周り8,000円。18時〜20時の開始は15,000円、20時以降は20,000円",
+     "src": "https://www.kinnotokianimalclinic.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "慢性の病気の管理・痛みのケア・終末期の相談・血液検査・エコー・健康診断・予防接種・薬の郵送",
+     "src": "https://www.kinnotokianimalclinic.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V028",
@@ -836,7 +1202,45 @@
    "hours": "平日7時〜17時",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "ホームズ動物往診所 川崎市",
-   "review_name": "ホームズ動物往診所"
+   "review_name": "ホームズ動物往診所",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "新百合ヶ丘駅を中心に神奈川県と東京都",
+     "src": "https://oshinjuiharano.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "平日7時〜17時",
+     "src": "https://oshinjuiharano.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話・メール・問い合わせフォーム・LINE（当日もできる範囲で）",
+     "src": "https://oshinjuiharano.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://oshinjuiharano.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "診察・尿や便の検査・血液検査・超音波・予防接種・注射・皮下点滴・健康診断・終末期の対応",
+     "src": "https://oshinjuiharano.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできないこと",
+     "v": "手術（近くの病院を紹介）。救急の設備は限られる",
+     "src": "https://oshinjuiharano.com",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V029",
@@ -851,7 +1255,27 @@
    "hours": "公式サイトで確認",
    "spec": "往診専門（鍼灸・漢方）",
    "review_query": "往診専門 Coccole わんにゃんクリニック 伊勢原市",
-   "review_name": "Coccole"
+   "review_name": "Coccole",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "伊勢原を中心に",
+     "src": "https://coccole-zaitakuvet.amebaownd.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "LINE・電話",
+     "src": "https://coccole-zaitakuvet.amebaownd.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://coccole-zaitakuvet.amebaownd.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V030",
@@ -1049,7 +1473,45 @@
    "hours": "予約制（公式サイトで確認）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "犬猫往診専門 虹の橋どうぶつ病院 さいたま市緑区",
-   "review_name": "虹の橋どうぶつ病院"
+   "review_name": "虹の橋どうぶつ病院",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "さいたま市全域・川口市・越谷市・都内の一部",
+     "src": "https://select-type.com/s/nijinohashi",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "予約制。予約フォーム・メール",
+     "src": "https://select-type.com/s/nijinohashi",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://select-type.com/s/nijinohashi",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "健康チェック・爪切りや耳掃除・ワクチンの相談・食事や環境の相談・緩和ケアや看護の相談",
+     "src": "https://select-type.com/s/nijinohashi",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできないこと",
+     "v": "高度な検査・手術（かかりつけや近くの病院を紹介）",
+     "src": "https://select-type.com/s/nijinohashi",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "クレジットカード・ペット保険",
+     "src": "https://select-type.com/s/nijinohashi",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V034",
@@ -1064,7 +1526,39 @@
    "hours": "月・水・木・土 9時〜18時、火 16時30分〜18時（金・日・祝休み）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "動物往診＋在宅ケアサービス にくきゅう 鶴ヶ島市",
-   "review_name": "にくきゅう"
+   "review_name": "にくきゅう",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "鶴ヶ島・川越・坂戸・日高市、毛呂山・鳩山・川島町を中心に",
+     "src": "https://11299.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "月・水・木・土9時〜18時、火曜16時30分〜18時。金・日・祝は休み。夜間・休みの日の緊急は受けない",
+     "src": "https://11299.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "サイトの「往診の申し込み」",
+     "src": "https://11299.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫・うさぎ・ハムスター・モルモット・フェレット",
+     "src": "https://11299.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "狂犬病の予防注射・フィラリア予防・ノミダニ対策など",
+     "src": "https://11299.jp/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V035",
@@ -1079,7 +1573,51 @@
    "hours": "月〜金 9時30分〜18時（完全予約制）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "VHVぶなの木動物病院 桶川市",
-   "review_name": "VHVぶなの木動物病院"
+   "review_name": "VHVぶなの木動物病院",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "桶川・上尾・北本・鴻巣・加須市、伊奈・吉見町など",
+     "src": "https://bunanokivet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "月〜金9時30分〜18時（最後の往診は16時）。土日祝は休み",
+     "src": "https://bunanokivet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "完全予約制。電話・問い合わせフォーム・メール（当日は電話だけ）",
+     "src": "https://bunanokivet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "桶川駅から2km未満2,000円、2〜6km 2,100円から、6〜10km 2,500円から（税別）。別に診察料1,000〜2,000円",
+     "src": "https://bunanokivet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "緩和ケア・介護の相談・点滴・注射・傷や床ずれの処置・健康診断・ワクチン・血液や尿の検査・鍼灸・漢方・終末期の相談",
+     "src": "https://bunanokivet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできないこと",
+     "v": "手術・一刻を争う処置（大学病院や専門病院を紹介）",
+     "src": "https://bunanokivet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "往診は現金のみ",
+     "src": "https://bunanokivet.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V036",
@@ -1094,7 +1632,51 @@
    "hours": "9時〜18時（木曜休み）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "ペコ犬猫往診所 比企郡鳩山町",
-   "review_name": "ペコ犬猫往診所"
+   "review_name": "ペコ犬猫往診所",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "鳩山町を中心に坂戸・鶴ヶ島・東松山市、滑川・嵐山・小川町",
+     "src": "https://www.peko-animal.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "9時〜18時（木曜休み。土日祝・年末年始・お盆も診療）",
+     "src": "https://www.peko-animal.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話で日時を相談",
+     "src": "https://www.peko-animal.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://www.peko-animal.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "地域で1,000円か2,000円（税抜）。診察料1,000円、時間外は5,000円（再診の人だけ）",
+     "src": "https://www.peko-animal.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "皮下輸液・注射・ワクチン・便や尿や血液の検査・おなかの超音波・フィラリア検査・爪切り・耳掃除",
+     "src": "https://www.peko-animal.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金・クレジットカード",
+     "src": "https://www.peko-animal.com",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V037",
@@ -1109,7 +1691,39 @@
    "hours": "9時〜18時（水・日休み・完全予約制）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "学園の森訪問診療アニマルクリニック つくば市",
-   "review_name": "学園の森訪問診療アニマルクリニック"
+   "review_name": "学園の森訪問診療アニマルクリニック",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "つくば市を中心に",
+     "src": "https://tsukuba-animal.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "9時〜18時（水・日休み、不定休あり）",
+     "src": "https://tsukuba-animal.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "完全予約制。Web予約・電話",
+     "src": "https://tsukuba-animal.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://tsukuba-animal.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "家での診察・治療・療養・住まいの相談・看取り",
+     "src": "https://tsukuba-animal.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V038",
@@ -1124,7 +1738,57 @@
    "hours": "月〜金 9時〜17時",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "AMIGO往診獣医療 稲敷郡阿見町",
-   "review_name": "AMIGO往診獣医療"
+   "review_name": "AMIGO往診獣医療",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "阿見町・牛久・土浦・龍ケ崎市・美浦村（5,000円）、つくば・かすみがうら・常総・つくばみらい・取手・守谷・稲敷市・利根・河内町（8,000円）",
+     "src": "https://amigo-homevet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "予約受付8時〜18時、診療9時〜17時（日曜・祝日は休み）",
+     "src": "https://amigo-homevet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話で予約",
+     "src": "https://amigo-homevet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://amigo-homevet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "5,000円から（税抜）＋初診料2,000円・再診料1,000円",
+     "src": "https://amigo-homevet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "総合診療・予防接種・健康診断・誤食やけがの救急（近くの地域だけ）・皮下点滴・介護の相談・酸素をつけたままの搬送",
+     "src": "https://amigo-homevet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできないこと",
+     "v": "全身麻酔の処置（ほかの病院を紹介）",
+     "src": "https://amigo-homevet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金・クレジットカード・電子決済・ペット保険の窓口精算",
+     "src": "https://amigo-homevet.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V039",
@@ -1139,7 +1803,39 @@
    "hours": "金曜休み（時間は公式サイトで確認）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "たけふじ動物病院 諏訪市",
-   "review_name": "たけふじ動物病院"
+   "review_name": "たけふじ動物病院",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "諏訪市を中心に岡谷・茅野市、下諏訪・富士見・辰野町、原村など",
+     "src": "https://www.takefuji-ac.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "金曜休み（時間外は前もって相談）",
+     "src": "https://www.takefuji-ac.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話・問い合わせフォーム・メール（メールは24時間）",
+     "src": "https://www.takefuji-ac.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://www.takefuji-ac.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "クレジットカード",
+     "src": "https://www.takefuji-ac.jp/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V040",
@@ -1154,7 +1850,33 @@
    "hours": "平日9時〜16時30分、土9時〜12時（日祝休み・完全予約制）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "ポラリス往診どうぶつ病院 北佐久郡軽井沢町",
-   "review_name": "ポラリス往診どうぶつ病院"
+   "review_name": "ポラリス往診どうぶつ病院",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "軽井沢町の西部を中心に半径20kmほど",
+     "src": "https://polaris-ah.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "平日9時〜16時30分、土曜9時〜12時（日曜・祝日は休み）",
+     "src": "https://polaris-ah.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "完全予約制。当日の予約は平日15時・土曜10時30分まで",
+     "src": "https://polaris-ah.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://polaris-ah.com",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V041",
@@ -1169,7 +1891,57 @@
    "hours": "月〜金 10時〜18時30分、土は予約のみ",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "まりこ動物往診所 中新川郡立山町",
-   "review_name": "まりこ動物往診所"
+   "review_name": "まりこ動物往診所",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "立山町を拠点に上市町・富山市・滑川市・射水市・舟橋村など（遠くも相談）",
+     "src": "https://peraichi.com/landing_pages/view/mariko123anivet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "月〜金10時〜18時30分、土曜10時〜13時（予約のみ）。日・祝は休み",
+     "src": "https://peraichi.com/landing_pages/view/mariko123anivet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "LINE・問い合わせフォーム・電話（初診は面談から）",
+     "src": "https://peraichi.com/landing_pages/view/mariko123anivet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫・ヤギ・ヒツジ・牛・馬（ハムスター・爬虫類は診ない）",
+     "src": "https://peraichi.com/landing_pages/view/mariko123anivet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "半径10kmまで1,500円から3,500円から（地域で）。10kmの外は4kmごとに500円、時間外・休日は4,000〜8,000円を加算",
+     "src": "https://peraichi.com/landing_pages/view/mariko123anivet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "ワクチン・予防・健康診断（血液・尿・便・超音波）・皮膚や目の検査・緩和ケア・鍼灸・漢方・リハビリ・爪切り・マイクロチップ・看取りとグリーフケア",
+     "src": "https://peraichi.com/landing_pages/view/mariko123anivet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできないこと",
+     "v": "レントゲン・内視鏡・麻酔の手術・交通事故などの緊急（近くの病院を紹介）",
+     "src": "https://peraichi.com/landing_pages/view/mariko123anivet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金・クレジットカード（1万円以上）・PayPay",
+     "src": "https://peraichi.com/landing_pages/view/mariko123anivet/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V042",
@@ -1231,7 +2003,39 @@
    "hours": "平日と日曜 9時〜15時（完全予約制）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "往診専門きとう動物クリニック 豊田市",
-   "review_name": "往診専門きとう動物クリニック"
+   "review_name": "往診専門きとう動物クリニック",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "豊田・みよし・知立・安城・刈谷・岡崎市",
+     "src": "http://oushin.main.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "予約受付9時〜19時、往診は9時〜15時。土曜・祝日は休み（急患は対応）",
+     "src": "http://oushin.main.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "完全予約制。電話・問い合わせフォーム",
+     "src": "http://oushin.main.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "http://oushin.main.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "一般診療・ワクチン・狂犬病の注射・フィラリア予防・健康診断・介護の相談",
+     "src": "http://oushin.main.jp/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V044",
@@ -1246,7 +2050,39 @@
    "hours": "電話は9時〜17時",
    "spec": "午後は往診専門",
    "review_query": "メープルファミリー動物病院 名古屋市",
-   "review_name": "メープルファミリー動物病院"
+   "review_name": "メープルファミリー動物病院",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "名古屋市内（港区・守山区をのぞく）",
+     "src": "https://maple-family.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "電話は9時〜17時",
+     "src": "https://maple-family.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話・問い合わせフォーム・LINE。家の駐車場（コインパーキングは不可）がいる。初診の救急は受けない",
+     "src": "https://maple-family.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://maple-family.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "内科・暮らしの相談・漢方の相談・終末期ケア",
+     "src": "https://maple-family.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V045",
@@ -1261,7 +2097,39 @@
    "hours": "10時〜17時（水・日・祝休み）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "バディ動物クリニック 津市",
-   "review_name": "バディ動物クリニック"
+   "review_name": "バディ動物クリニック",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "三重県内",
+     "src": "https://www.buddy-ac.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "10時〜17時（水・日・祝は休み）",
+     "src": "https://www.buddy-ac.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "Webの予約ページ・問い合わせ・電話",
+     "src": "https://www.buddy-ac.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://www.buddy-ac.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "在宅でできる診療・予防接種・行動診療（オンラインも）",
+     "src": "https://www.buddy-ac.com",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V046",
@@ -1335,7 +2203,57 @@
    "hours": "9時〜18時（土日祝は12時〜18時・不定休）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "ホッと往診動物診療所 大阪市",
-   "review_name": "ホッと往診動物診療所"
+   "review_name": "ホッと往診動物診療所",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "大阪市を中心に周りの市町村も（出発は東住吉区）",
+     "src": "http://www.hotto-ah.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "9時〜18時（土日祝は12時〜18時、不定休）",
+     "src": "http://www.hotto-ah.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "LINE（いちばん早い）・問い合わせフォーム・電話。病院の返事で確定",
+     "src": "http://www.hotto-ah.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "http://www.hotto-ah.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "診察料1,650円＋訪問料（5kmまで2,530円、そこから1kmごとに330円）。何頭いても訪問料は1回分",
+     "src": "http://www.hotto-ah.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "便・尿・耳・皮膚の検査・細胞診・血圧・簡易な腹部エコー・血液検査・ワクチン・予防・爪切りなどのお手入れ・介護の相談・家での看取りの相談",
+     "src": "http://www.hotto-ah.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできないこと",
+     "v": "高度な検査・治療（二次診療の病院を紹介）",
+     "src": "http://www.hotto-ah.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金・クレジットカード・QRコード（一括払い）",
+     "src": "http://www.hotto-ah.com",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V048",
@@ -1350,7 +2268,45 @@
    "hours": "9時〜18時（不定休）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "さくらアニマルクリニック 八尾市",
-   "review_name": "さくらアニマルクリニック"
+   "review_name": "さくらアニマルクリニック",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "八尾市（JR久宝寺駅のあたり）を拠点に。遠くは相談",
+     "src": "https://sakuraanimalclinic.jimdofree.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "9時〜18時（不定休）。LINE・オンライン予約は24時間",
+     "src": "https://sakuraanimalclinic.jimdofree.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話・LINE・メールフォーム・オンライン予約",
+     "src": "https://sakuraanimalclinic.jimdofree.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://sakuraanimalclinic.jimdofree.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "健康チェック・尿検査・皮下点滴・傷の処置・慢性腎不全の治療・ワクチン・予防・鍼・漢方・緩和ケア・寝たきりの終末期の在宅ケア",
+     "src": "https://sakuraanimalclinic.jimdofree.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "クレジットカード",
+     "src": "https://sakuraanimalclinic.jimdofree.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V049",
@@ -1365,7 +2321,39 @@
    "hours": "9時〜19時（日祝も。夜間は時間外料金）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "よつば動物病院 神戸市・明石市",
-   "review_name": "よつば動物病院"
+   "review_name": "よつば動物病院",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "神戸市・明石市を中心に",
+     "src": "https://www.yotsuba-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "9時〜19時（日曜・祝日も診察。夜間は時間外の料金で対応）",
+     "src": "https://www.yotsuba-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話・予約フォーム",
+     "src": "https://www.yotsuba-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫・うさぎ",
+     "src": "https://www.yotsuba-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "家での診察・治療方針の相談・老犬老猫の介護・看取り・ターミナルケアの相談",
+     "src": "https://www.yotsuba-vet.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V050",
@@ -1396,7 +2384,39 @@
    "hours": "9時〜19時（水・金・土は午後のみ・不定休・予約制）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "往診専門クルーアニマルクリニック 京都市",
-   "review_name": "往診専門クルーアニマルクリニック"
+   "review_name": "往診専門クルーアニマルクリニック",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "京都市と向日・長岡京・宇治・八幡・城陽市、久御山・大山崎町、大津市",
+     "src": "https://crewanimalclinic.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "9時〜19時（水・金・土は午後だけ、不定休）。事前予約制",
+     "src": "https://crewanimalclinic.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話・予約フォーム・LINE",
+     "src": "https://crewanimalclinic.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫・うさぎ・ハムスター・フェレット・モルモット・チンチラ・ハリネズミ・鳥・爬虫類・両生類",
+     "src": "https://crewanimalclinic.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "クレジットカード・バーコード決済",
+     "src": "https://crewanimalclinic.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V052",
@@ -1411,7 +2431,33 @@
    "hours": "9時〜19時（火曜休み）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "往診専門 comaペットクリニック 和歌山市",
-   "review_name": "comaペットクリニック"
+   "review_name": "comaペットクリニック",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "和歌山市を中心に",
+     "src": "https://coma-petclinic.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "9時〜19時（火曜休み）。19時以降は再診の人だけ（時間外料金）",
+     "src": "https://coma-petclinic.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "LINE・電話",
+     "src": "https://coma-petclinic.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "家での診察・治療・高齢の子の介護の相談・ペット用酸素ハウスの貸し出し",
+     "src": "https://coma-petclinic.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V053",
@@ -1427,7 +2473,51 @@
    "hours": "10時〜21時（電話は18時まで・不定休）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "おうちdeペットクリニック 福岡市",
-   "review_name": "おうちdeペットクリニック"
+   "review_name": "おうちdeペットクリニック",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "福岡市中央区（西公園）を中心に福岡県と佐賀県の一部",
+     "src": "https://ouchide-pc.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "診療10時〜21時、電話10時〜18時（不定休）",
+     "src": "https://ouchide-pc.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "公式LINE（当日の空きもLINEで）",
+     "src": "https://ouchide-pc.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://ouchide-pc.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "10kmまで3,000円、そこから1kmごとに100円（実際に走った距離）",
+     "src": "https://ouchide-pc.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "診察・在宅ケア・訪問看護や介護・終末期の医療・緩和ケア",
+     "src": "https://ouchide-pc.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "クレジットカード・QR決済・ペット保険の窓口精算",
+     "src": "https://ouchide-pc.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V054",
@@ -1442,7 +2532,51 @@
    "hours": "10時〜18時（不定休）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "なかやま犬猫病院 熊本市",
-   "review_name": "なかやま犬猫病院"
+   "review_name": "なかやま犬猫病院",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "熊本市（水前寺）を中心に。20kmをこえると別料金",
+     "src": "https://inuneko-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "診療10時〜18時、電話9時〜17時30分（不定休）",
+     "src": "https://inuneko-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話・LINE（当日は電話）",
+     "src": "https://inuneko-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://inuneko-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "往復5kmまで1,650円、そこから1kmごとに220円（実際に走った距離）",
+     "src": "https://inuneko-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "診察・処置・治療・ケア・健康管理・定期の訪問診療",
+     "src": "https://inuneko-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金・クレジットカード・QuicPay・コード決済",
+     "src": "https://inuneko-vet.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V055",
@@ -1458,7 +2592,45 @@
    "hours": "平日9時〜19時、土9時〜12時（日曜休み）",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "往診専門犬猫クリニックあしおと 中津市",
-   "review_name": "あしおと"
+   "review_name": "あしおと",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "中津市を中心に豊前市・宇佐市（行橋・豊後高田方面も一部）",
+     "src": "https://oushinvet-ashioto.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "平日9時〜19時、土曜9時〜12時（土曜の午後・日曜は休み）",
+     "src": "https://oushinvet-ashioto.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話・LINE（当日もできる）",
+     "src": "https://oushinvet-ashioto.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://oushinvet-ashioto.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "往診料",
+     "v": "中津駅から5kmまで1,650円、10kmまで2,750円、15kmまで3,850円、そこから1kmごとに330円",
+     "src": "https://oushinvet-ashioto.com",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "家でできること",
+     "v": "ワクチン・フィラリアの検査と予防・吐く・下痢・皮膚・耳・猫風邪・けんかの傷などの内科・緩和ケア",
+     "src": "https://oushinvet-ashioto.com",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V056",
@@ -1473,7 +2645,33 @@
    "hours": "8時〜20時",
    "spec": "往診専門（自宅に来て診てくれる）",
    "review_query": "かやま往診専門動物病院 いちき串木野市",
-   "review_name": "かやま往診専門動物病院"
+   "review_name": "かやま往診専門動物病院",
+   "facts": [
+    {
+     "k": "往診の地域",
+     "v": "いちき串木野市・薩摩川内市・日置市・鹿児島市を中心に",
+     "src": "https://kayama-oushin.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "8時〜20時",
+     "src": "https://kayama-oushin.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話で相談して予約",
+     "src": "https://kayama-oushin.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://kayama-oushin.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "V057",
