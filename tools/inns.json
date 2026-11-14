@@ -9182,6 +9182,530 @@
     "l"
    ],
    "id": "i6346f1"
+  },
+  {
+   "name": "ホテル TOKIWAN",
+   "kind": "ホテル",
+   "pref": "山口県",
+   "city": "宇部市",
+   "url": "https://tokiwan.net/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山口県宇部市上宇部75（常盤湖畔・ときわ公園の中）",
+     "src": "https://tokiwan.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "同意書に書かれた一部の犬種のほかは全犬種（小・中型犬と大型犬）",
+     "src": "https://tokiwan.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "部屋ごとにちがう。小・中型犬は2〜4匹、大型犬は1〜4匹まで",
+     "src": "https://tokiwan.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "小・中型犬1匹1泊2,200円、大型犬1匹1泊5,500円",
+     "src": "https://tokiwan.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "ペット同伴宿泊滞在同意書（前の日までにオンラインか、チェックインのときに紙で）",
+     "src": "https://tokiwan.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室（夕食・朝食は部屋食）。多くの部屋にテラス",
+     "src": "https://tokiwan.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "宿泊者専用の200㎡をこえる人工芝のラン",
+     "src": "https://tokiwan.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "全室にドッグサークルとドッグバス。トイレトレー・ペットシート・シャンプーなど",
+     "src": "https://tokiwan.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "犬のごはんは別料金・予約制",
+     "src": "https://tokiwan.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時・10時",
+     "src": "https://tokiwan.net/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "id75e6e"
+  },
+  {
+   "name": "松江日和 by HIYORISTAY",
+   "kind": "貸別荘",
+   "pref": "島根県",
+   "city": "松江市",
+   "url": "https://hiyoristay.jp/matsue-biyori/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "島根県松江市中原町150",
+     "src": "https://hiyoristay.jp/matsue-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬より小さい子（生後4か月以上）",
+     "src": "https://hiyoristay.jp/matsue-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2匹まで",
+     "src": "https://hiyoristay.jp/matsue-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病と5種以上の混合ワクチン（接種後2週間以上1年未満）、ノミ・ダニの駆除",
+     "src": "https://hiyoristay.jp/matsue-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "古民家風の1棟貸し（140㎡・中庭つき、1〜6名）",
+     "src": "https://hiyoristay.jp/matsue-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・食器・ペットシーツ",
+     "src": "https://hiyoristay.jp/matsue-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "16時・10時",
+     "src": "https://hiyoristay.jp/matsue-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ（ほかの動物は不可）",
+     "src": "https://hiyoristay.jp/matsue-biyori/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i72feac"
+  },
+  {
+   "name": "リバーサイドグランピング上瀬野",
+   "kind": "グランピング",
+   "pref": "広島県",
+   "city": "広島市安芸区",
+   "url": "https://glamping-kamiseno.com/faq/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "広島県広島市安芸区上瀬野町2287-4",
+     "src": "https://glamping-kamiseno.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大きさ・犬種の決まりはなし",
+     "src": "https://glamping-kamiseno.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の決まりはなし",
+     "src": "https://glamping-kamiseno.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病ワクチンを済ませていること。予約のときに伝える",
+     "src": "https://glamping-kamiseno.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれるのはコテージBの1棟だけ",
+     "src": "https://glamping-kamiseno.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時30分〜21時・10時",
+     "src": "https://glamping-kamiseno.com/faq/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i07ead7"
+  },
+  {
+   "name": "和牛とのどぐろの温泉旅館 四季荘",
+   "kind": "旅館",
+   "pref": "島根県",
+   "city": "出雲市",
+   "url": "https://shikisou.com/pets.php",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "島根県出雲市斐川町学頭1369",
+     "src": "https://shikisou.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kgまでの小型犬・中型犬",
+     "src": "https://shikisou.com/pets.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1部屋に犬・猫あわせて2匹まで",
+     "src": "https://shikisou.com/pets.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹目4,400円、2匹目から1匹3,300円",
+     "src": "https://shikisou.com/pets.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の狂犬病・混合ワクチンの証明、同意書、救急の薬。ケージ・キャリーは貸し出しあり",
+     "src": "https://shikisou.com/pets.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室（館内の移動と部屋ではケージかキャリー。食事処は原則不可）",
+     "src": "https://shikisou.com/pets.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋上のドッグラン",
+     "src": "https://shikisou.com/pets.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬用の温泉",
+     "v": "ペット専用の貸切風呂（予約・有料、タオルとシャンプーあり）",
+     "src": "https://shikisou.com/pets.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "夕食は部屋で犬と一緒に（犬のごはんは予約・別料金）",
+     "src": "https://shikisou.com/pets.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "猫と小鳥も泊まれる（大きさ・頭数の決まりは同じ）",
+     "src": "https://shikisou.com/pets.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時〜19時・10時",
+     "src": "https://shikisou.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "id8a458"
+  },
+  {
+   "name": "出雲日和 by HIYORISTAY",
+   "kind": "貸別荘",
+   "pref": "島根県",
+   "city": "出雲市",
+   "url": "https://hiyoristay.jp/izumo-biyori/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "島根県出雲市大社町杵築東479",
+     "src": "https://hiyoristay.jp/izumo-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬より小さい子（室内で飼っている・生後4か月以上）",
+     "src": "https://hiyoristay.jp/izumo-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "3匹まで",
+     "src": "https://hiyoristay.jp/izumo-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病と5種以上の混合ワクチン（接種後2週間以上1年未満）、ノミ・ダニの駆除",
+     "src": "https://hiyoristay.jp/izumo-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1棟貸し（161㎡、リビングと和室、1〜6名）",
+     "src": "https://hiyoristay.jp/izumo-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "中庭とドッグランつき",
+     "src": "https://hiyoristay.jp/izumo-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・食器・ペットシーツ",
+     "src": "https://hiyoristay.jp/izumo-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "16時・10時",
+     "src": "https://hiyoristay.jp/izumo-biyori/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ（ほかの動物は不可）",
+     "src": "https://hiyoristay.jp/izumo-biyori/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i6a42f5"
+  },
+  {
+   "name": "せとうちアイランドステイズ周防大島",
+   "kind": "グランピング",
+   "pref": "山口県",
+   "city": "大島郡周防大島町",
+   "url": "https://www.yamaguchi-setouchi-glamping.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山口県大島郡周防大島町平野1256",
+     "src": "https://www.yamaguchi-setouchi-glamping.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグオーシャンスイート（2〜4名、客室半露天風呂）",
+     "src": "https://www.yamaguchi-setouchi-glamping.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室とドッグランつきのガーデン",
+     "src": "https://www.yamaguchi-setouchi-glamping.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "犬と泊まれる棟にプライベートドッグラン",
+     "src": "https://www.yamaguchi-setouchi-glamping.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ペットシート・ごはん入れ、犬用のバスタブ（無料で貸し出し）",
+     "src": "https://www.yamaguchi-setouchi-glamping.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "ifa6549"
+  },
+  {
+   "name": "ONIWA",
+   "kind": "コテージ",
+   "pref": "高知県",
+   "city": "安芸郡芸西村",
+   "url": "https://oniwa-kochi.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "高知県安芸郡芸西村西分乙1307",
+     "src": "https://oniwa-kochi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬も泊まれる",
+     "src": "https://oniwa-kochi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室に小型犬8匹・中型犬と大型犬5匹まで（グランピングの部屋は2匹まで）。こえるときは相談",
+     "src": "https://oniwa-kochi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "2匹までは宿泊料金に入っている。3匹目から1匹1泊3,300円",
+     "src": "https://oniwa-kochi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "室内は自由。ドッグランの外ではリード",
+     "src": "https://oniwa-kochi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "1組ずつ使うドッグラン。森コテージはプライベートドッグランつき",
+     "src": "https://oniwa-kochi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれるコテージ、サウナつきの森コテージ、グランピング（キャビン）、キャンプエリア",
+     "src": "https://oniwa-kochi.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i1b4a19"
+  },
+  {
+   "name": "一棟貸しの宿 朋友",
+   "kind": "貸別荘",
+   "pref": "香川県",
+   "city": "仲多度郡琴平町",
+   "url": "https://www.minpaku-hoyu.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "香川県仲多度郡琴平町下櫛梨1092-2",
+     "src": "https://www.minpaku-hoyu.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬も泊まれる",
+     "src": "https://www.minpaku-hoyu.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹は無料、2匹で3,000円（予約のときに伝える）",
+     "src": "https://www.minpaku-hoyu.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "サークル（120×120）・ペットシーツ・食器・足ふきシートを用意できる（先に問い合わせ）",
+     "src": "https://www.minpaku-hoyu.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "寝室のほか（夜はサークルの中かリードフックにつなぐ）",
+     "src": "https://www.minpaku-hoyu.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1棟貸しの宿",
+     "src": "https://www.minpaku-hoyu.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時・10時（相談で変えられる）",
+     "src": "https://www.minpaku-hoyu.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ie28985"
   }
  ]
 }
