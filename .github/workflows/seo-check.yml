@@ -25,6 +25,8 @@ jobs:
           git diff --stat --exit-code || (echo "tools/ を直したら python3 tools/gen_areas.py . を実行して、生成ファイルもコミットしてください"; exit 1)
       - name: SEO と文言のチェック
         run: python3 tools/seo_check.py .
+      - name: 食い違いの点検（提携先の届出・税・お迎えの範囲と県・手で書いた社数・会社のない県の文）
+        run: python3 tools/consistency_check.py .
       - uses: actions/setup-node@v4
         with:
           node-version: '20'

@@ -67,6 +67,16 @@ def _animal_section(k, lab):
 
 # ── 待ち時間（退院・通院） ──
 _W = [c["fare"]["wait"] for c in _C if c.get("fare") and c["fare"].get("wait") and c["fare"]["wait"].get("unit")]
+# 2026-11-14 点検：ガイドに手で書いていた待ち時間の数（73社・1時間1,100円など）を毎回数える
+N_WAITCALC = len(_W)
+def wait_cells(m):
+    v = sorted(_wait(W, m) for W in _W)
+    return _r100(_mid(v)), f"{_r100(v[0])}〜{_r100(v[-1])}"
+import collections as _col
+_wm = _col.Counter((W.get("free", 0), W["unit"], W["yen"]) for W in _W if not W.get("first") and not W.get("after")).most_common(1)[0]
+WAIT_MODE_TEXT = (f"{_wm[0][0]}分までは無料、そのあと" if _wm[0][0] else "") + f"{_wm[0][1]}分ごとに{_wm[0][2]}円"
+WAIT_MODE_N = _wm[1]
+
 def _wait_section():
     frees = [W.get("free", 0) for W in _W]
     f0 = sum(1 for x in frees if x == 0); f10 = sum(1 for x in frees if 0 < x < 30); f30 = sum(1 for x in frees if x >= 30)

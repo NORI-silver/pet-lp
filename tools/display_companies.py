@@ -473,9 +473,35 @@ PARTNER_SAME = {'P002': 'Dbcb8b8d', 'P003': 'Da968571'}  # 提携先シートの
 
 # 会社本人が提携の申し込み・返事で教えてくれた条件のタグ（pet-db の data/edits/ と同じ内容。by=provider）。カードにだけ出す。
 # area_text・animals はエリアページやガイドで「公式サイトの書き方」として数えるので、ここでは変えない（乗せられる動物・対応エリアは提携先シートで判定する）
+# 2026-11-14 点検（Nori「こんごこのようなことがないように」）：申し込みの答えがカードに使われていなかったので、ここに入れたものは
+# gen_areas.py が毎回 display_companies.json に重ねる（apply_provider）。radius_km はお迎えの範囲で、tools/consistency_check.py が県と合うかを見る。
+# hours・pay・limits_add・fare_add（料金表に足す鍵）を入れられる。areas_ok は範囲の外でも残す県（Noriさんの判断待ちなど）。
 PROVIDER = {
-    'D225080e': {'limits_add': ['同乗は2人まで']},  # ペッタク：提携の申し込み 2026-11-08「飼い主さんの同乗 2人まで」
+    'D225080e': {'limits_add': ['同乗は2人まで'],  # ペッタク：提携の申し込み 2026-11-08「飼い主さんの同乗 2人まで」
+                 'pay': '現金・カード・電子マネー・QRコード決済'},  # 申し込みの「お支払い方法」
+    'D3661eb1': {'radius_km': 10, 'hours': '6-22', 'pay': '現金・電子マネー・QRコード決済',  # PETTA東京：提携の申し込み 2026-11-12（受けられる時間帯 毎日6:00〜22:00）
+                 'limits_add': ['同乗は2人まで', '2〜3頭OK', '大型犬2頭OK']},
+    'Dcb3b5a2': {'radius_km': 50,  # おさんぽ：三浦さまの返事 2026-11-13「目安50キロにしてください」
+                 'areas_ok': ['茨城', '栃木', '群馬', '長野', '静岡']},  # 申し込みの県のまま（Nori 2026-11-14「範囲が広い方で出しておきましょう」）。静岡は御殿場・小山町が50km以内
+    'Dd472236': {'radius_km': 100, 'hours': '0-24', 'pay': '現金・カード・電子マネー・QRコード決済',  # CoCoタク静岡：提携の申し込み 2026-11-13
+                 'limits_add': ['大型犬3頭まで'], 'fare_add': {'roundContinuous': True}},  # 往復は「行きと帰りを続けた1回の距離で計算」
+    'D0ec95b6': {'pay': '現金・カード・電子マネー・QRコード決済',  # COCOタク福岡東：提携の申し込み 2026-11-10
+                 'limits_add': ['同乗は2人まで', '2頭OK', '大型犬1頭まで']},
+    'De308905': {'radius_km': 300, 'limits_add': ['同乗は3人まで']},  # COCOタク練馬杉並：提携の申し込み 2026-11-09（お迎えに行ける距離 お店から300kmまで）
 }
+
+def apply_provider(row):
+    """申し込み・返事で会社本人が答えたこと（PROVIDER）を、候補カードの1社分に重ねる。何度かけても同じ結果になる。"""
+    pv = PROVIDER.get(row.get('id'), {})
+    if not pv: return row
+    for k in ('hours', 'pay'):
+        if pv.get(k): row[k] = pv[k]
+    lim = list(row.get('limits') or [])
+    lim = (lim + [x for x in pv.get('limits_add', []) if x not in lim])[:4]
+    if lim: row['limits'] = lim
+    if any(x.startswith('大型犬') for x in lim) and row.get('points'): row['points'] = [x for x in row['points'] if x != '大型犬OK']
+    if pv.get('fare_add') and row.get('fare'): row['fare'].update(pv['fare_add'])
+    return row
 
 def main(master, comp, tariffs=None, facts_path=None):
     ms = json.load(open(master, encoding='utf-8'))
@@ -503,12 +529,11 @@ def main(master, comp, tariffs=None, facts_path=None):
         pts = points(facts.get(m['id'], {}))
         lim = car_tags(facts.get(m['id'], {}))
         if car_type(facts.get(m['id'], {})): row['car_type'] = car_type(facts.get(m['id'], {}))
-        pv = PROVIDER.get(m['id'], {})
-        lim = (lim + [x for x in pv.get('limits_add', []) if x not in lim])[:4]
         if lim: row['limits'] = lim
         if any(x.startswith('大型犬') for x in lim): pts = [x for x in pts if x != '大型犬OK']  # 頭数つきのほうを出す
         if any('頭' in x and not x.startswith('大型犬') for x in lim): pts = [x for x in pts if x != '多頭OK']
         if pts: row['points'] = pts
+        apply_provider(row)
         assert not re.search(r'\d{2,4}-\d{2,4}-\d{3,4}|@', json.dumps(row, ensure_ascii=False)), row  # 電話番号・メールは入れない
         out.append(row)
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'display_companies.json')
