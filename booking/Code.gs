@@ -2429,7 +2429,9 @@ function openNear_(pt, r) {
   var od = openDisplay_(pt.id), d = (r || {})._route || {};
   if (!od || !od.shop) return true;
   var shop = {lat:od.shop[0], lng:od.shop[1]}, ok = function(v) { return v && isFinite(v.lat) && isFinite(v.lng); };
-  var near = function(v) { return ok(v) && kmBetween_(shop, v) <= CONFIG.DISPLAY_MAX_KM; };
+  // 申し込みで答えてもらったお迎えの範囲（お迎えの範囲km）が80kmより広い会社は、その範囲まで出す（2026-11-14 点検：CoCoタク静岡は100kmまでと答えているのに80kmで切っていた）
+  var lim = Math.max(CONFIG.DISPLAY_MAX_KM, Number(pt.radiusKm) || 0);
+  var near = function(v) { return ok(v) && kmBetween_(shop, v) <= lim; };
   if (!ok(d.from) && !ok(d.to)) return true;
   return near(d.from) || near(d.to);
 }

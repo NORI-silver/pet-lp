@@ -171,7 +171,7 @@ def nat_text(km):
     return f"{v[(len(v) - 1) // 2]:,}円（{v[0]:,}〜{v[-1]:,}円）"
 NAT_NOTES = f"""    <p class="fare-flag"><b>確定料金ではありません。</b>上の金額は目安です。確定料金（税込）は、問い合わせた会社から、空き状況と一緒にメールでお知らせします。</p>
     <p class="fare-night"><b>🌙 夜間・早朝の割増</b>上の目安は昼間の料金です。夜間・早朝の割増は、かかるかどうかも金額も会社ごとに違います。フォームの候補には、会社ごとの割増を入れた目安が出ます。</p>
-    <p class="small">全国{_NAT_PREFS}都道府県・{len(_NAT)}社のペットタクシーが公式サイトにのせている料金表で、乗った距離の運賃（片道）を計算しました。大きい数字はまんなかの会社の金額で、その下は安い会社〜高い会社です。お迎え料金・待ち時間・夜間の割増・高速代・駐車場代は入っていません。夜間・早朝の割増は<a href="/guide/night-fare/">夜間・早朝の料金</a>、病院で待ってもらう料金は<a href="/guide/wait-fare/">待ち時間の料金</a>にまとめています。フォームにお迎えの場所と行き先を入れると、来てもらえる会社ごとに、お迎え料金なども入れた目安が出ます。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。都道府県ごとの料金の例は、<a href="/area/">全国のペットタクシー情報</a>に、距離ごと・都道府県ごとの運賃とお迎え料金・夜間割増のつけ方の数は<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ</a>にまとめています。</p>"""
+    <p class="small">全国{len(_NAT)}社のペットタクシーが公式サイトにのせている料金表で、乗った距離の運賃（片道）を計算しました。大きい数字はまんなかの会社の金額で、その下は安い会社〜高い会社です。お迎え料金・待ち時間・夜間の割増・高速代・駐車場代は入っていません。フォームにお迎えの場所と行き先を入れると、来てもらえる会社ごとに、お迎え料金なども入れた目安が出ます。運賃は当日、ペットタクシーへ直接お支払いください（当サイトへのお支払いはありません）。都道府県ごとの料金の例は、<a href="/area/">全国のペットタクシー情報</a>に、距離ごと・都道府県ごとの運賃とお迎え料金・夜間割増のつけ方の数は<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ</a>にまとめています。</p>"""
 TOP_TABLE = f"""        <h3>距離ごとの目安（全国{len(_NAT)}社の料金表から）</h3>
         <dl>
 """ + "".join(f"          {_nat_row(k)}\n" for k in (5, 10, 20, 30, 50)) + f"""        </dl>
@@ -244,6 +244,9 @@ src = re.sub(r"/\*CO_SITE\*/.*?/\*/CO_SITE\*/", lambda m: "/*CO_SITE*/var CO_SIT
 src = re.sub(r"/\*AREA_PREFS\*/.*?/\*/AREA_PREFS\*/", lambda m: "/*AREA_PREFS*/var AREA_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}), ensure_ascii=False) + ";/*/AREA_PREFS*/", src, count=1, flags=re.S)
 # 県の中にお店はないが、県の外の会社が「お迎えに行く」と書いている都道府県（「（県外の会社のみ）」を付ける）。どちらでもない県は選択欄から消す（Nori 2026-11-14）
 _LOCAL_PREFS = {a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}
+# [D] 2026-11-14 食い違いの点検：迎えに行ける会社が1社もない県（いまは沖縄。トップの選択欄の NO_PICK）は、県のページでも「フォームでさがせます」と書かない
+_FAR_KEYS = {a for x in _DISP for a in x.get("far", [])}
+def no_pick(key): return key not in _LOCAL_PREFS and key not in _FAR_KEYS
 src = re.sub(r"/\*FAR_PREFS\*/.*?/\*/FAR_PREFS\*/", lambda m: "/*FAR_PREFS*/var FAR_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("far", [])} - _LOCAL_PREFS), ensure_ascii=False) + ";/*/FAR_PREFS*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*FARES\*/.*?/\*/FARES\*/", lambda m: "/*FARES*/" + FARE_JS + "/*/FARES*/", src, count=1, flags=re.S)
 # [B] 2026-11-08 トップに「都道府県ごとのペットタクシーの数」（全国の会社を公式サイトで確かめた数。トップだけに出し、地域ページの写しでは外す）
@@ -1494,7 +1497,8 @@ def pref_data_html(pf, short):
     fs = [x for x in cs if x.get("fare") and x["fare"].get("kind", "dist") == "dist" and x["fare"].get("base")]
     out = f'<h2>{e(short)}のお迎えに対応しているペットタクシー</h2>'
     if not cs:
-        out += f'<p>当サイトで公式サイトを確かめた会社の中には、対応エリアに{e(pf)}を書いている会社はまだありません（{FARES_CHECKED}時点）。お迎えの場所によっては、となりの県の会社が来られることもあるので、フォームでさがしてみてください。</p>'
+        if no_pick(key): out += f'<p>当サイトで公式サイトを確かめた会社の中には、対応エリアに{e(pf)}を書いている会社はまだありません。県外から{e(pf)}へお迎えに行ける会社も見つかっていないため、フォームのお迎えの都道府県には、まだ{e(pf)}を出していません。</p>'
+        else: out += f'<p>当サイトで公式サイトを確かめた会社の中には、対応エリアに{e(pf)}を書いている会社はまだありません。県外の会社がお迎えに来られることがあるので、フォームでさがしてみてください。</p>'
     else:
         out += f'<p>当サイトで公式サイトを確かめた全国の会社のうち、対応エリアに{e(pf)}を書いている会社は<b>{len(cs)}社</b>でした（{FARES_CHECKED}時点。同じチェーンのお店は1社ずつ数えています）。対応エリアは「市内だけ」「県の一部だけ」の会社もあるので、お迎えの場所で来てもらえるかは、フォームでさがすと確かめられます。</p>'
     if fs:
@@ -1707,7 +1711,7 @@ def pref_local(pf, short, key):
     faq = []
     for q, k in L["faq"]:
         km = int(k[:-2])
-        faq.append((q, f"{basis}の料金表で計算すると、{km}kmで片道{_pref_text(key, km)[0]}が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。お迎えの料金や夜間の割増は会社ごとに違うので、フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。"))
+        faq.append((q, f"{basis}の料金表で計算すると、{km}kmで片道{_pref_text(key, km)[0]}が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。" + (f"いまは{pf}にお迎えに行ける会社が見つかっていないので、全国の会社の料金表から出した参考の金額です。" if no_pick(key) else "お迎えの料金や夜間の割増は会社ごとに違うので、フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。")))
     return html, faq
 
 for slug, pf, short, cities in PREFS:
@@ -1749,6 +1753,7 @@ for slug, pf, short, cities in PREFS:
       <p>上のフォームにお迎えの場所と行き先を入れると、来てもらえる会社と料金の目安が出ます。無料で使えて、当日の依頼もできます。会社から空き状況と料金の返事が届いたら、納得してから予約を確定できます。</p>
       <a class="btn center" href="#form">空き状況と料金を問い合わせる（無料）{ARROW}</a>
     </div>'''
+    if no_pick(pf if pf == "北海道" else pf[:-1]): last = ''  # 迎えに行ける会社がない県は、フォームへのボタンを出さない（2026-11-14）
     # 県ごとのよくある質問（数は display_companies.json・emergency.json から毎回数える。会社名・病院名は出さない）
     _key = pf if pf == "北海道" else pf[:-1]
     _hin = [h for h in hs if not other_pref(h, pf)]
@@ -1779,10 +1784,13 @@ for slug, pf, short, cities in PREFS:
     ld += '\n<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
       {"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a_}} for q, a_ in pfaq]}, ensure_ascii=False, indent=1) + '\n</script>'
     checks = ''.join(f'<h3>{e(h)}</h3><p>{e(t)} <a href="/guide/{g}/">{e(GBY[g]["title"])}</a></p>' for h, t, g in PREF_CHECKS)
+    _np = no_pick(pf if pf == "北海道" else pf[:-1])
+    _flag = (f'<p class="fare-flag"><b>{e(pf)}にお迎えに行けるペットタクシーの会社は、まだ見つかっていません。</b>見つかったら、上のフォームでさがせるようにします。</p>' if _np else
+             f'<p class="fare-flag"><b>{e(pf)}からのお迎えも、上のフォームでさがせます。</b>{NOT_YET}会社ごとに対応する地域が違うので、近くに会社が見つからないこともあります。</p>')
     area_html = f'''<!-- 地域の説明（gen_areas.py の PREFS） -->
 <section id="area-info" style="padding-top:8px">
   <div class="wrap"><article class="art">
-    <p class="fare-flag"><b>{e(pf)}からのお迎えも、上のフォームでさがせます。</b>{NOT_YET}会社ごとに対応する地域が違うので、近くに会社が見つからないこともあります。</p>
+    {_flag}
     <p class="small">ペットタクシー予約窓口　更新 {TODAY.replace("-", ".")}</p>
     <h2>{e(short)}のペットタクシーの料金{"の例" if has_fare else ""}</h2>
     {pref_fare_html(pf)}
@@ -1821,7 +1829,7 @@ for slug, pf, short, cities in PREFS:
 '''
     area_html = re.sub(r'<div class="emg-score" data-id="[^"]*"></div>', "", area_html)  # 口コミはトップの緊急タブの仕組みで見る（二重に読み込まない）
     if _ol: desc = desc.replace("料金の目安を、お迎えの場所を入れて無料でしらべられます。", "料金の目安がわかり、" + "・".join(n for n, _ in _ol) + "には空き状況と料金を無料で問い合わせできます。")
-    lede = open_lead(pf) + f"{pf}（{'・'.join(cities[:4])}など）で、犬や猫の移動の手段を探している方へ。フォームに入力すると、条件に合う事業者と料金の目安が見られます。急ぐときの連絡先は「緊急」タブにまとめています。"
+    lede = open_lead(pf) + f"{pf}（{'・'.join(cities[:4])}など）で、犬や猫の移動の手段を探している方へ。" + ("" if _np else "フォームに入力すると、条件に合う事業者と料金の目安が見られます。") + "急ぐときの連絡先は「緊急」タブにまとめています。"
     page = clone_top(title, desc, url, ld, f"{short}のペットタクシー", lede, pf, area_html,
                      f'<a href="/">ペットタクシー予約窓口</a> › <a href="/area/">全国のペットタクシー情報</a> › {e(short)}')
     os.makedirs(os.path.join(ROOT, "area", slug), exist_ok=True)
