@@ -1403,58 +1403,12 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 <section class="pt-sec" id="apply"><div class="wrap" style="max-width:640px">
 <h2>提携のお申し込み</h2>
 <div class="form-card">
-<form id="partnerForm" class="pt-form" novalidate>
-  <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-  
-  <div class="group-h"><span>1</span>会社とご連絡先</div>
-  <div class="f"><label for="p_co">会社名・屋号</label><input type="text" id="p_co" data-k="会社名・屋号" required autocomplete="organization"></div>
-  <div class="f"><label for="p_name">ご担当者のお名前</label><input type="text" id="p_name" name="name" required autocomplete="name"></div>
-  <div class="f"><label for="p_email">お問い合わせを受け取るメールアドレス<span class="any">飼い主さんからのお問い合わせがここに届きます。窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスを入れてください</span></label><input type="email" id="p_email" name="email" required autocomplete="email"></div>
-  <div class="group-h"><span>2</span>お店とお迎えのエリア</div>
-  <div class="f"><label for="p_shop">車が出発するお店・事業所の住所</label>
-    <div class="pt-ac"><input type="text" id="p_shop" data-k="車が出発する場所" required autocomplete="street-address" placeholder="例：広島県広島市安芸区矢野西1丁目2-3"><ul id="p_shopList" hidden></ul><span class="ok" id="p_shopOk" hidden></span></div></div>
-  {pt_f("お迎えに行ける範囲", pt_sel("p_radius", "お迎えに行ける範囲", ["お店から5kmまで", "10kmまで", "20kmまで", "30kmまで", "50kmまで", "80kmまで", "100kmまで"]), "", "")}
-  <div class="f"><span class="lbl">お迎えできる都道府県<span class="any">お店の場所と範囲から自動で選んでいます。ちがうところだけ直してください</span></span>
-    <div class="checks seg" id="p_prefs" data-k="都道府県"></div>
-    <details class="pt-prefs-more"><summary>ほかの都道府県も選ぶ</summary><div class="checks seg" id="p_prefs2">{''.join(f'<label><input type="checkbox" value="{p}"><span>{p}</span></label>' for p in PREFS47)}</div></details></div>
-  {pt_f("行き先までの距離", pt_sel("p_dest", "行き先までの距離", ["お迎えの都道府県の中だけ", "距離に上限がある", "全国どこへでも行ける"])
-    + pt_if("p_dest", ["距離に上限がある"], pt_q("行き先までの上限", pt_n("乗っている距離 ", "kmまで"))), "", "")}
-  <div class="group-h"><span>3</span>受けられる時間と車</div>
-  <div class="f"><span class="lbl">受けられる曜日</span>{pt_chk("p_days", "受けられる曜日", ["月", "火", "水", "木", "金", "土", "日", "祝日"])}</div>
-  <div class="f"><span class="lbl">受けられる時間</span>{pt_sel("p_allday", "24時間", ["24時間", "時間を決めている"])}
-    <div class="pt-sub" data-if="p_allday" data-v="時間を決めている" hidden><div class="pt-time"><select id="p_from" aria-label="何時から">{''.join(f'<option value="{h}"' + (' selected' if h == 8 else '') + f'>{h}:00</option>' for h in range(0, 24))}</select>から<select id="p_to" aria-label="何時まで">{''.join(f'<option value="{h}"' + (' selected' if h == 20 else '') + f'>{h}:00</option>' for h in range(1, 25))}</select>まで</div></div></div>
-  {pt_f("時間外の依頼", pt_sel("p_off", "時間外の依頼", ["受けない", "相談に応じる"]), "", "")}
-  {pt_f("車の台数", pt_sel("p_cars", "車の台数", ["1台", "2台", "3台以上"]), "", "")}
-  <div class="f"><span class="lbl">車種<span class="any">お使いの車をすべて</span></span>{pt_chk("p_cartype", "車種", PT_CARS)}
-    <input type="text" id="p_carother" data-k="車種（そのほか）" maxlength="100" placeholder="ほかの車種（例：マツダ ボンゴ）" aria-label="ほかの車種" style="margin-top:8px"></div>
-  <div class="group-h"><span>4</span>乗せられる動物と条件</div>
-  <p class="pt-note">乗せられる動物のほかは、わかるところだけで大丈夫です。</p>
-  <div class="f"><span class="lbl">乗せられる動物</span>{pt_chk("p_animals", "乗せられる動物", ["犬", "猫", "うさぎ・フェレットなどの小動物", "鳥", "爬虫類・両生類", "魚"])}</div>
-  {PT_COND}
-  {PT_CARE}
-  <div class="group-h"><span>5</span>料金とお支払い</div>
-  {PT_FARE}
-  <div class="f"><span class="lbl">お支払い方法</span>{pt_chk("p_pays", "お支払い方法", PAYS)}</div>
-  <div class="group-h"><span>6</span>そのほか</div>
-  <div class="f"><label for="p_url">ホームページ</label><input type="url" id="p_url" data-k="ホームページ" placeholder="https://" required></div>
-  {pt_f("依頼を受けてから出発できるまで", pt_sel("p_prep", "出発できるまで", ["30分くらい", "1時間くらい", "2時間くらい", "3時間以上"]), "", "")}
-  {PT_FARE_MORE}
-  {pt_f("事業の許可・届出", pt_sel("p_lic", "事業の許可・届出", ["緑ナンバー（旅客の許可）", "黒ナンバー（貨物軽自動車の届出）", "両方", "どちらもない"]), "", "")}
-  <div class="f"><span class="lbl">スタッフの資格</span>{pt_chk("p_quals", "スタッフの資格", PT_QUALS)}</div>
-  <div class="f"><label for="p_reg">動物取扱業の登録番号</label><input type="text" id="p_reg" data-k="動物取扱業の登録番号" maxlength="100" autocomplete="off" placeholder="なければ「なし」" required></div>
-  <div class="f"><label for="p_msg">ほかに伝えたいこと<span class="any">あれば</span></label><textarea id="p_msg" data-k="そのほか" rows="3" maxlength="1000"></textarea></div>
-  <label class="agree"><input type="checkbox" id="p_agree" required><span><a href="/#privacy">個人情報の取り扱い</a>を確認し、同意します。提携の内容は<a href="/partner/terms/">提携規約</a>をご覧ください（同意のお手続きは、あらためてメールでご案内します）。</span></label>
-  <p id="p_err" role="alert" style="display:none;color:#c0392b;font-size:.88rem"></p>
-  <button class="btn" type="submit">申し込む{ARROW}</button>
-  <p class="form-foot">内容を確認して、数日以内にメールでご連絡します。</p>
-</form>
-<div id="p_done" style="display:none;text-align:center"><h2 style="font-size:1.2rem">お申し込みを受け付けました</h2><p>内容を確認して、メールでご連絡します。ありがとうございます。</p></div>
+<p>会社名・ご連絡先・ホームページを入れると、当サイトで公式サイトの料金や条件を集めている会社さまには、その内容を先に入れたページが開きます。まちがいを直して、足りないところを選んでいただき、最後に料金の例が合っているかを確かめていただきます。</p>
+<a class="btn" href="/go/?a=pconf&amp;new=1" style="display:block;text-align:center">申し込みのページを開く{ARROW}</a>
+<p class="form-foot">内容を確認して、数日以内にメールでご連絡します。送っただけでは、まだご依頼は届きません。</p>
 </div>
 </div></section>
 </main>
-<script>
-{pt_js}
-</script>
 """ + foot("/#form", band=False)
 os.makedirs(os.path.join(ROOT, "partner"), exist_ok=True)
 pp = pp.replace('<div class="sticky"><a class="btn" href="/#form">空き状況と料金を問い合わせる（無料）</a></div>', '<div class="sticky"><a class="btn" href="#apply">提携を申し込む（無料）</a></div>')

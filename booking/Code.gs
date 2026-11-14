@@ -2229,6 +2229,151 @@ var PCONF = {
     { l: '大阪市内 10km（お迎え450km）', yen: 'ご依頼をお送りしません', d: '乗る距離がお迎えより短いため' }
   ]}
 };
+// 確認ページの中身。PCONF に手で書いた会社はそれを使い、ほかの会社は公式サイトから集めた情報（DISPLAY_COMPANIES）から作る（Nori 2026-11-14「全社に」）。
+// 公式サイトの情報がない会社（新しく申し込む会社など）は、全部「入力してください」の白紙で出す
+function pconfOf_(id) {
+  if (PCONF[id]) return PCONF[id];
+  var c = DISPLAY_COMPANIES.filter(function(x) { return x.id === id; })[0];
+  if (c) return pconfAuto_(c);
+  var pt = id && partnerById_(id);
+  return pt ? pconfAuto_({ id: id, name: pt.name }) : null;
+}
+function pconfHours_(h) {
+  if (!h) return '';
+  if (h === '0-24') return '毎日 24時間';
+  var m = String(h).match(/^(\d+(?:\.\d+)?)-(\d+(?:\.\d+)?)$/);
+  var t = function(x) { x = Number(x); return Math.floor(x) + ':' + (x % 1 ? '30' : '00'); };
+  return m ? '毎日 ' + t(m[1]) + '〜' + t(m[2]) : String(h);
+}
+function pconfAnimals_(c) {
+  var a = c.animals || {};
+  if (a.only) return '犬・猫だけ';
+  if (a.all) return '犬・猫・小動物・鳥など（公式サイトに「動物はなんでも」の記載）';
+  var ok = (a.ok || []).map(function(k) { return ANIMAL_LABEL[k]; }).filter(String);
+  return ok.length ? '犬・猫・' + ok.join('・') : '';
+}
+// 公式サイトの料金表（fare）を、会社が読んで確かめられる文にする
+function pconfRide_(F) {
+  if (!F) return '';
+  if (F.base && F.tiers) return yen_(F.base[0]) + 'で' + F.base[1] + 'kmまで' + F.tiers.map(function(t) {
+    return '、' + t[0] + (t[1] == null ? 'km〜' : '〜' + t[1] + 'km') + 'は' + (t[3] ? t[3] + 'km' : '1km') + 'ごとに' + yen_(t[2]); }).join('');
+  if (F.kind === 'time') return '時間で決まる料金（公式サイトの料金表のとおり）';
+  if (F.kind === 'table') return '距離ごとの料金表（公式サイトのとおり）';
+  if (F.kind === 'zone' || F.kind === 'zones') return 'エリア・区間ごとの定額（公式サイトのとおり）';
+  return '';
+}
+function pconfPickType_(q) {
+  if (!q) return '';
+  if (q.whole) return '〇km以上なら、距離のぜんぶ×単価';
+  if (q.per != null) return '距離で（〇kmまで無料・定額、その先1kmごと）';
+  if (q.yen === 0) return 'かからない';
+  if (q.yen != null || q.places || q.table || q.bands || q.tiers) return 'そのほか（下に書いてください）';
+  return '';
+}
+function pconfPickText_(q) {
+  if (!q) return '';
+  if (q.whole) return q.km + 'km以上なら、距離のぜんぶ×' + yen_(q.per);
+  if (q.per != null) return (q.freeWithin ? q.freeWithin + 'kmまで無料、' : q.km ? q.km + 'kmまで' + yen_(q.yen || 0) + '、' : '') + 'その先1kmごとに' + yen_(q.per) + (q.cap != null ? '（上限' + yen_(q.cap) + '）' : '');
+  if (q.yen != null && q.yen > 0) return '定額 ' + yen_(q.yen);
+  return '';
+}
+function pconfNightText_(N) {
+  if (!N) return '';
+  var span = N.from + '時〜' + N.to + '時';
+  if (N.rate) return span + 'は' + Math.round(N.rate * 100) + '%増し';
+  if (N.flat) return span + 'は' + yen_(N.flat) + 'を足す';
+  if (N.bands) return '時間帯で ' + N.bands.map(function(b) { return b[0] + '〜' + b[1] + '時 ' + yen_(b[2]); }).join('、');
+  return span + 'は割増あり';
+}
+function pconfAuto_(c) {
+  var F = c.fare || null, S = function(v) { return v ? 'site' : 'need'; };
+  var lim = (c.limits || []).join('・'), pts = (c.points || []).join('・');
+  var riders = (lim.match(/同乗は(\d+)人まで/) || [])[1];
+  var big = (lim.match(/大型犬(\d+)頭まで/) || [])[1];
+  var pickT = F && F.pick ? pconfPickType_(F.pick) : '', backT = F && F.back ? pconfPickType_(F.back) : '';
+  var nightT = F && F.night ? pconfNightText_(F.night) : '';
+  var item = function(k, l, tag, type, ex) { var o = { k: k, l: l, tag: tag, type: type }; for (var x in ex || {}) o[x] = ex[x]; return o; };
+  return { name: c.name, site: c.url || '', read: '', auto: true, shop: c.shop || null, sections: [
+    { h: '1. どこへ行けるか', items: [
+      item('origin', 'お迎えの起点（お店・車庫のある市区町村か最寄り駅。番地は不要です）', 'need', 'text', { ph: '例：横浜市泉区（相鉄線 緑園都市駅）', note: c.pref ? '公式サイトの所在地：' + c.pref + (c.area_text ? '。対応エリア：' + c.area_text : '') : '' }),
+      item('radius', 'お迎えに行ける範囲', c.anywhere ? 'site' : 'need', 'radio', { o: ['起点から〇kmまで（下に書いてください）', '上限なし'], v: c.anywhere ? '上限なし' : undefined, more: '何kmまでか（例：30km）' }),
+      item('dest', '行き先の範囲', c.long ? 'chk' : 'need', 'radio', { o: ['お迎えの都道府県の中だけ', '距離に上限がある（下に書いてください）', '全国どこへでも'], v: c.long ? '全国どこへでも' : undefined, more: '上限があるときは何kmまでか' }),
+      item('ng_area', '行けない地域', 'need', 'check', { o: ['沖縄県', '離島'], v: c.ng_prefs && c.ng_prefs.indexOf('沖縄') >= 0 ? ['沖縄県'] : [], more: 'ほかに行けない都道府県があれば' }),
+      item('ng_short', '受けない依頼', 'need', 'check', { o: ['乗る距離が、お迎えに向かう距離より短い依頼', 'お迎えも行き先も、お店の地域の外の依頼'], v: (c.ride_ge_pick ? ['乗る距離が、お迎えに向かう距離より短い依頼'] : []).concat(c.need_prefs ? ['お迎えも行き先も、お店の地域の外の依頼'] : []) })
+    ]},
+    { h: '2. いつ行けるか', items: [
+      item('hours', '送迎できる曜日・時間帯', S(c.hours), 'text', { v: pconfHours_(c.hours) + ((c.closed || []).length ? '（定休日あり）' : ''), ph: '例：毎日 24時間／月〜土 8時〜20時' }),
+      item('same', '当日の依頼', c.lead_days != null ? 'site' : 'need', 'radio', { o: ['受けない（前日まで）', '空いていれば受ける'], v: c.lead_days === 0 ? '空いていれば受ける' : c.lead_days > 0 ? '受けない（前日まで）' : undefined,
+        more: '当日を受けるときは、何時までの受付か・お迎えの何時間前までか', mv: c.cut != null ? '当日の受付は' + c.cut + '時まで' : '' }),
+      item('prep', '依頼を受けてから出発できるまで', 'need', 'radio', { o: ['30分くらい', '1時間くらい', '2時間くらい', '3時間以上'] }),
+      item('emg', '夜間の救急・緊急の搬送', 'need', 'radio', { o: ['受ける', '受けない'] })
+    ]},
+    { h: '3. 何を乗せられるか', items: [
+      item('animals', '乗せられる動物', S(pconfAnimals_(c)), 'text', { v: pconfAnimals_(c), ph: '例：犬・猫・うさぎ・鳥' }),
+      item('maxkg', '乗せられる体重の上限', 'need', 'text', { ph: '例：50kgまで' }),
+      item('riders', '一緒に乗れる飼い主さん', S(riders), 'text', { v: riders ? riders + '人まで' : '', ph: '例：2人まで' }),
+      item('big1', '大型犬（30kg以上）1頭のとき、一緒に乗れる大人', 'need', 'text', { ph: '例：2人／乗せられない' }),
+      item('big2', '大型犬2頭のとき、一緒に乗れる大人', big === '1' ? 'site' : 'need', 'text', { v: big === '1' ? '乗せられない（大型犬1頭まで）' : '', ph: '例：1人／乗せられない' }),
+      item('big3', '大型犬3頭以上のとき、一緒に乗れる大人', 'need', 'text', { ph: '例：乗せられない' }),
+      item('small', '小さい子だけで、いちばん多い頭数のとき、一緒に乗れる大人', 'need', 'text', { ph: '例：4頭で2人' }),
+      item('bigbag', '大型犬と大きな荷物（車いす・カートなど）を一緒に', 'need', 'radio', { o: ['載せられる', '載せられない', '相談して決める'] }),
+      item('cage', 'ケージ', 'need', 'radio', { o: ['なくても乗せられる', 'お客さまのケージが必要', 'ケージの貸し出しあり'], more: '貸し出しのケージの大きさ・体重の上限' }),
+      item('care', '介護が必要な子', /介助|介護/.test(pts) ? 'chk' : 'need', 'radio', { o: ['受けられる', '相談して決める', '受けられない'], v: /介助|介護/.test(pts) ? '受けられる' : undefined, more: 'できること（抱っこ・担架・酸素など）' }),
+      item('petonly', 'ペットだけの送迎（飼い主さんが乗らない）', 'need', 'radio', { o: ['できる', 'できない'] }),
+      item('vaccine', 'ワクチン', 'need', 'radio', { o: ['接種していなくても乗せられる', '接種していれば証明はいらない', '証明が必要'] }),
+      item('via', '途中で寄る', 'need', 'radio', { o: ['できる', 'できない'] }),
+      item('luggage', '大きな荷物', 'need', 'radio', { o: ['載せられる', '少しなら載せられる', '載せられない'] })
+    ]},
+    { h: '4. 料金', items: [
+      item('tax', '料金表の金額', F && F.tax ? 'site' : 'need', 'radio', { o: ['税込（消費税なしも含む）', '税別'], v: F && F.tax ? (/税抜|税別/.test(F.tax) && !/税込/.test(F.tax) ? '税別' : '税込（消費税なしも含む）') : undefined }),
+      item('ride', '乗る距離の料金', S(pconfRide_(F)), 'text', { v: pconfRide_(F), ph: '例：5kmまで3,000円、その先1kmごとに200円' }),
+      item('pick', 'お迎えに向かう距離の料金', S(pickT), 'radio', { o: ['かからない', '距離で（〇kmまで無料・定額、その先1kmごと）', '〇km以上なら、距離のぜんぶ×単価', 'そのほか（下に書いてください）'], v: pickT || undefined,
+        more: '金額（例：5kmまで無料、その先1kmごとに100円）', mv: F ? pconfPickText_(F.pick) : '' }),
+      item('pick2', '往復のときのお迎えの料金', 'need', 'radio', { o: ['行きの1回だけ', '行きと帰りで2回'], v: F && F.pickOnce ? '行きの1回だけ' : F && F.pickEachLeg ? '行きと帰りで2回' : undefined }),
+      item('back', '送ったあと戻る分の料金', F && F.back ? 'site' : 'need', 'radio', { o: ['かからない', '距離で（〇kmまで無料・定額、その先1kmごと）', '往復のときだけかかる', 'そのほか（下に書いてください）'], v: backT === 'かからない' || (F && F.back && !backT) ? 'かからない' : backT || undefined,
+        more: '金額', mv: F ? pconfPickText_(F.back) : '' }),
+      item('wait', '待ち時間の料金', F && F.wait ? 'site' : 'need', 'text', { v: F && F.wait ? (F.wait.free ? F.wait.free + '分まで無料、' : '') + 'その先' + (F.wait.unit || 10) + '分ごとに' + yen_(F.wait.yen) : '', ph: '例：10分まで無料、その先10分ごとに200円' }),
+      item('night', '夜間・早朝の割増', F && F.night ? 'site' : 'need', 'text', { v: nightT, ph: '例：22時〜5時は2割増し／なし' }),
+      item('night_how', '夜間・早朝の割増のかかり方', F && F.night && F.night.by ? 'chk' : 'need', 'radio', { o: ['乗る時刻がその時間帯のとき', 'その時間帯に走った分だけ', '少しでもかかれば、ぜんぶ'], v: F && F.night ? (F.night.by === 'start' ? '乗る時刻がその時間帯のとき' : F.night.by === 'driven' ? 'その時間帯に走った分だけ' : undefined) : undefined }),
+      item('toll', '高速料金（実費）をいただく区間', 'need', 'check', { o: ['乗せている区間', 'お迎えに向かう分', '戻る分', '料金に含んでいる'] }),
+      item('long', '長い距離', c.long ? 'chk' : 'need', 'radio', { o: ['同じ料金表で計算', '〇kmを超えるとお見積もり（下に書いてください）'], v: c.long ? '同じ料金表で計算' : undefined, more: '何kmを超えるとお見積もりか' }),
+      item('other', 'そのほかの料金（頭数・体重・同乗の追加、立て替え手数料、地域の加算、フェリー代など）', 'need', 'text', { ph: '例：2頭目から1,000円、立替手数料 5%、なし' }),
+      item('cancel', 'キャンセル料・お支払い', S(c.pay), 'text', { v: c.pay ? 'お支払い：' + c.pay : '', ph: '例：前日まで無料、当日50%。現金・カード' })
+    ]},
+    { h: '5. 車と許可', items: [
+      item('plate', 'このサイトのご依頼で使う車のナンバー', 'need', 'radio', { o: ['黒ナンバー（貨物軽自動車の届出）', '緑ナンバー（旅客の許可）', '白ナンバー'], note: '白ナンバーの車では、提携をお受けできません' }),
+      item('car', '車種・台数', c.car_type ? 'chk' : 'need', 'text', { v: c.car_type || '', ph: '例：スズキ エブリイ 1台' }),
+      item('license', '貨物軽自動車運送事業の届出番号、または旅客の許可番号', 'need', 'text', { ph: '分からなければ「確認中」' }),
+      item('animal_no', '動物取扱業の登録番号', 'need', 'text', { ph: 'なければ「なし」' }),
+      item('insurance', '保険', 'need', 'check', { o: ['動物（運ぶ子）の賠償保険', '貨物保険', '事業用の自動車保険'] }),
+      item('quals', 'スタッフの資格', 'need', 'text', { ph: '例：愛玩動物飼養管理士、ペット介護士' })
+    ]}
+  ], examples: pconfExamples_(c) };
+}
+// 料金の例：お店の位置と料金表から、近く・少し遠く・夜・遠くからのお迎えの4つを、候補カードと同じ式で計算する
+// 道のりは直線×1.3の概算（お店の場所が分からない会社・料金表のない会社は例を出さない）
+function pconfExamples_(c) {
+  if (!c.shop || !c.fare) return [];
+  var shop = { lat: c.shop[0], lng: c.shop[1] }, d = new Date(Date.now() + 14 * 86400000 + 9 * 3600000);
+  var day = d.getUTCFullYear() + '-' + ('0' + (d.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + d.getUTCDate()).slice(-2);
+  var at = function(km) { return { lat: shop.lat + (km - 0.05) / 1.3 / 111.2, lng: shop.lng }; }; // 道のりは直線×1.3。km の切り上げで1km多くならないよう少し手前に置く
+  return [[5, 10, '10:00', '昼'], [20, 30, '10:00', '昼'], [10, 20, '23:00', '23時'], [60, 80, '10:00', '昼']].map(function(x) {
+    var from = at(x[0]), to = at(x[0] + x[1]);
+    var p = { trip: '片道', pref: c.pref || '', datetime: day + 'T' + x[2], pickup: '', dropoff: '', weight: 5, pet_count: 1,
+      route_details: JSON.stringify({ km: x[1], backKm: x[1], from: from, to: to, backFrom: to, backTo: from }) };
+    var r = null; try { r = displayPrice_(c, p); } catch (e) {}
+    var L = r && r.local;
+    return { l: 'お店から' + x[0] + 'kmの場所 → ' + x[1] + 'km先、' + x[3] + '（5kgの子1頭・片道）', yen: r ? r.text : 'お見積もり',
+      d: L ? '乗る距離 ' + yen_(L.ride) + '＋お迎え ' + yen_(L.pickup) + '＋戻り ' + yen_(L.returnFee) + (L.nightExtra ? '＋夜の割増 ' + yen_(L.nightExtra) : '') : '料金表から計算できませんでした' };
+  });
+}
+// 新しく申し込む会社の入り口（a=pconf&new=1）：会社名・メール・ホームページだけを聞き、当サイトに公式サイトの情報がある会社は下書きを入れた確認ページを出す
+function pconfFind_(site) {
+  var h = String(site || '').toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[\/?#]/)[0];
+  if (!h || h.indexOf('.') < 0) return '';
+  var c = DISPLAY_COMPANIES.filter(function(x) { return x.url && String(x.url).toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[\/?#]/)[0] === h; })[0];
+  return c ? c.id : '';
+}
 function pconfUrl_(id) { return linkBase_() + '?a=pconf&t=' + encodeURIComponent(demoToken_(id)); }
 var PCONF_TAG = { site: ['サイトより', '#2e8b57'], chk: ['ご確認ください', '#b7791f'], need: ['入力してください', '#c0392b'] };
 function pconfItem_(it, q) {
@@ -2243,7 +2388,7 @@ function pconfItem_(it, q) {
     var cn = nm + '_' + i, on = q.go === '1' ? q[cn] === '1' : (it.v || []).indexOf(o) >= 0;
     html += '<label style="font-weight:400;margin:6px 0"><input type="checkbox" name="' + cn + '" value="1"' + (on ? ' checked' : '') + '>' + esc_(o) + '</label>';
   });
-  if (it.more) html += '<input name="' + nm + '_more" maxlength="200" value="' + esc_(q[nm + '_more'] || '') + '" placeholder="' + esc_(it.more) + '">';
+  if (it.more) html += '<input name="' + nm + '_more" maxlength="200" value="' + esc_(q[nm + '_more'] != null ? q[nm + '_more'] : it.mv || '') + '" placeholder="' + esc_(it.more) + '">'; // mv：サイトから読んだ補足
   return html + '</div>';
 }
 // 答えを読みやすい文にする（メールと「提携の確認」タブ用）
@@ -2257,39 +2402,46 @@ function pconfAnswers_(c, q) {
     if (more) v += (v ? '／' : '') + more;
     var orig = it.type === 'check' ? (it.v || []).join('・') : (it.v || '');
     out[it.k] = v;
-    lines.push('・' + it.l + '：' + (v || '（空欄）') + (it.v != null && v !== orig ? '　←サイトの内容から変更' : ''));
+    lines.push('・' + it.l + '：' + (v || '（空欄）') + (it.v != null && it.tag !== 'need' && v !== orig ? '　←サイトの内容から変更' : ''));
   }); });
   return { obj: out, text: lines.join('\n') };
 }
 function pconfPage_(q) {
-  var id = demoId_(q.t), c = id && PCONF[id];
+  var isNew = q['new'] === '1', id = isNew ? '' : demoId_(q.t), c = null;
+  if (isNew && q.step !== '2' && q.go !== '1') return pconfStart_(q);
+  if (isNew) { id = pconfFind_(q.site); c = id ? pconfOf_(id) : pconfAuto_({ name: String(q.co || '').trim().slice(0, 80) }); }
+  else c = id && pconfOf_(id);
   if (!c) return page_('リンクが正しくありません', '<p>お手数ですが、届いたメールのリンクからもう一度開いてください。</p>');
+  var coName = isNew ? String(q.co || '').trim().slice(0, 80) : c.name, email = String(q.email || '').trim().slice(0, 120);
   if (q.go === '1') {
     var name = String(q.name || '').trim().slice(0, 60);
-    if (!name) q.err = 1;
+    if (!name || (isNew && (!coName || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)))) q.err = 1;
     else {
       var a = pconfAnswers_(c, q);
-      var ex = c.examples.map(function(e, i) { var v = String(q['ex' + i] || ''), fix = String(q['ex' + i + '_fix'] || '').trim().slice(0, 200);
+      var ex = (c.examples || []).map(function(e, i) { var v = String(q['ex' + i] || ''), fix = String(q['ex' + i + '_fix'] || '').trim().slice(0, 200);
         return '・' + e.l + '：' + e.yen + ' → ' + (v || '（未回答）') + (fix ? '（' + fix + '）' : ''); }).join('\n');
       var memo = String(q.memo || '').trim().slice(0, 2000);
+      var head = isNew ? '・メール：' + email + '\n・ホームページ：' + String(q.site || '').trim().slice(0, 200) + (id ? '\n・当サイトの公式サイトの情報：あり（' + id + '）' : '') + '\n' : '';
       var lock = LockService.getScriptLock();
       lock.waitLock(20000);
       try {
         var sh = ensureSheet_(SpreadsheetApp.getActive(), SHEET_PCONF, PCONF_HEADERS);
-        sh.appendRow([new Date(), id, c.name, name, a.text + (memo ? '\n・ほかに伝えたいこと：' + memo : ''), ex, JSON.stringify({ a: a.obj, memo: memo }).slice(0, 45000)]);
+        sh.appendRow([new Date(), id || '（新規）', coName, name, head + a.text + (memo ? '\n・ほかに伝えたいこと：' + memo : ''), ex, JSON.stringify({ a: a.obj, memo: memo, email: isNew ? email : undefined, site: isNew ? String(q.site || '') : undefined }).slice(0, 45000)]);
         sh.getRange(sh.getLastRow(), 1).setNumberFormat('yyyy/MM/dd HH:mm:ss');
       } finally { lock.releaseLock(); }
-      log_('提携の確認：' + id + ' ' + c.name + ' ' + name);
-      notifyAdmin_('提携の確認が届きました：' + c.name, c.name + '（' + id + '）から、公式サイトの内容の確認が届きました。\nご担当：' + name + '\n\n■ 答え\n' + a.text +
-        (memo ? '\n\n■ ほかに伝えたいこと\n' + memo : '') + '\n\n■ 料金の例\n' + ex + '\n\n記録：予約シートの「' + SHEET_PCONF + '」タブ\n受付を始めるのは、運営者が確かめてからです。');
-      return page_('ご確認ありがとうございました', '<p>' + esc_(c.name) + ' さま、お答えを受け付けました。</p><p>いただいた内容で登録し、料金の計算と、お送りするご依頼の条件をそろえます。わからないところがあれば、メールでおうかがいします。</p>');
+      log_('提携の確認：' + (id || '新規') + ' ' + coName + ' ' + name);
+      notifyAdmin_((isNew ? '提携の申し込みが届きました：' : '提携の確認が届きました：') + coName, coName + (id ? '（' + id + '）' : '') + 'から、' + (isNew ? '提携の申し込み' : '公式サイトの内容の確認') + 'が届きました。\nご担当：' + name + '\n' + head + '\n■ 答え\n' + a.text +
+        (memo ? '\n\n■ ほかに伝えたいこと\n' + memo : '') + (ex ? '\n\n■ 料金の例\n' + ex : '') + '\n\n記録：予約シートの「' + SHEET_PCONF + '」タブ\n受付を始めるのは、運営者が確かめてからです。');
+      return page_('ありがとうございました', '<p>' + esc_(coName) + ' さま、お答えを受け付けました。</p><p>いただいた内容で登録し、料金の計算と、お送りするご依頼の条件をそろえます。わからないところがあれば、メールでおうかがいします。</p>');
     }
   }
-  var html = '<p>' + esc_(c.name) + ' さま</p><p>公式サイト（<a href="' + esc_(c.site) + '" target="_blank">' + esc_(c.site.replace(/^https?:\/\//, '').replace(/\/$/, '')) + '</a>、' + esc_(c.read) + '時点）の内容を、先に入れておきました。まちがいがあれば直して、「入力してください」のところだけ埋めてください。最後に、この内容で計算した料金の例を確かめてください。</p>' +
-    (q.err ? '<p style="color:#c0392b;font-weight:700">ご担当のお名前を入れてください。</p>' : '') +
-    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pconf') + hidden_('t', q.t) + hidden_('go', '1');
+  var html = '<p>' + esc_(coName) + ' さま</p>' + (c.site
+    ? '<p>公式サイト（<a href="' + esc_(c.site) + '" target="_blank">' + esc_(c.site.replace(/^https?:\/\//, '').replace(/\/$/, '')) + '</a>' + (c.read ? '、' + esc_(c.read) + '時点' : '') + '）の内容を、先に入れておきました。まちがいがあれば直して、「入力してください」のところだけ埋めてください。' + ((c.examples || []).length ? '最後に、この内容で計算した料金の例を確かめてください。' : '') + '</p>'
+    : '<p>ご依頼をお送りする条件と、料金の計算に使う内容をうかがいます。選ぶところがほとんどです。</p>') +
+    (q.err ? '<p style="color:#c0392b;font-weight:700">' + (isNew ? '会社名・メールアドレス・' : '') + 'ご担当のお名前を入れてください。</p>' : '') +
+    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) + hidden_('site', q.site || '') : hidden_('t', q.t)) + hidden_('go', '1');
   c.sections.forEach(function(s) { html += '<h2>' + esc_(s.h) + '</h2>' + s.items.map(function(it) { return pconfItem_(it, q); }).join(''); });
-  html += '<h2>6. 料金の例</h2><p class="note">上の内容で計算しました。高速料金は含みません。</p>' + c.examples.map(function(e, i) {
+  if ((c.examples || []).length) html += '<h2>6. 料金の例</h2><p class="note">上の内容で計算しました。高速料金は含みません。</p>' + c.examples.map(function(e, i) {
     return '<div class="pt"><b>' + esc_(e.l) + '</b><div style="font-size:1.1rem;font-weight:800;margin:4px 0">' + esc_(e.yen) + '</div><div class="note">' + esc_(e.d) + '</div>' +
       ['合っている', 'ちがう'].map(function(o) { return '<label style="font-weight:400;margin:6px 0;display:inline-block;margin-right:16px"><input type="radio" name="ex' + i + '" value="' + o + '"' + (q['ex' + i] === o ? ' checked' : '') + '>' + o + '</label>'; }).join('') +
       '<input name="ex' + i + '_fix" maxlength="200" value="' + esc_(q['ex' + i + '_fix'] || '') + '" placeholder="ちがうときは、正しい金額や理由"></div>';
@@ -2297,7 +2449,17 @@ function pconfPage_(q) {
   html += '<label>ほかに伝えたいこと（あれば）<textarea name="memo" maxlength="2000">' + esc_(q.memo || '') + '</textarea></label>' +
     '<label>ご担当のお名前（必須）<input name="name" required maxlength="60" value="' + esc_(q.name || '') + '"></label>' +
     '<button type="submit">この内容で送る</button></form><p class="note">送っただけでは、まだご依頼は届きません。内容を確かめてから、あらためてメールでご連絡します。</p>';
-  return page_('公式サイトの内容のご確認', html);
+  return page_(isNew && !id ? '提携のお申し込み' : '公式サイトの内容のご確認', html);
+}
+// 新しい申し込みの最初の画面：会社名・メール・ホームページだけ
+function pconfStart_(q) {
+  var html = '<p>まず、会社名・ご連絡先・ホームページを教えてください。当サイトで公式サイトの料金や条件を集めている会社さまは、次の画面にその内容を先に入れてお出しします。</p>' +
+    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pconf') + hidden_('new', '1') + hidden_('step', '2') +
+    '<label>会社名・屋号（必須）<input name="co" required maxlength="80" value="' + esc_(q.co || '') + '"></label>' +
+    '<label>お問い合わせを受け取るメールアドレス（必須）<input name="email" type="email" required maxlength="120" value="' + esc_(q.email || '') + '"></label>' +
+    '<label>ホームページのURL（あれば）<input name="site" maxlength="200" placeholder="https://" value="' + esc_(q.site || '') + '"></label>' +
+    '<button type="submit">次へ</button></form><p class="note">個人情報の取り扱いは <a href="' + esc_(CONFIG.SITE_URL) + '#privacy">こちら</a>。提携の内容は <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/terms/') + '">提携規約</a> をご覧ください。</p>';
+  return page_('提携のお申し込み', html);
 }
 
 /* ───────── 提携規約への同意（a=agree。Nori 2026-11-09「サイト上でクリックして」「logをちゃんと取っておいて」） ───────── */
@@ -2854,12 +3016,14 @@ function demoInfo_(tok) {
 function demoUrl_(id) { return CONFIG.SITE_URL + '?demo=' + encodeURIComponent(demoToken_(id)) + '#form'; }
 // お誘い用の見本のリンクを「見本リンク」タブに書き出す（スクリプトの画面で1回動かす。何も送らない）
 function makeDemoLinks() {
-  var sh = ensureSheet_(SpreadsheetApp.getActive(), '見本リンク', ['ID', '会社', '都道府県', '見本のリンク']);
-  var rows = DISPLAY_COMPANIES.map(function(c) { return [c.id, c.name, c.pref, demoUrl_(c.id)]; });
+  // 5列目：公式サイトの内容を先に入れた提携の確認ページ（a=pconf。2026-11-15 全社に。お誘いのメールにはこちらを入れる）
+  var sh = ensureSheet_(SpreadsheetApp.getActive(), '見本リンク', ['ID', '会社', '都道府県', '見本のリンク', '確認ページのリンク']);
+  sh.getRange(1, 5).setValue('確認ページのリンク').setFontWeight('bold');
+  var rows = DISPLAY_COMPANIES.map(function(c) { return [c.id, c.name, c.pref, demoUrl_(c.id), pconfUrl_(c.id)]; });
   // 提携先シートの会社（準備中のあいだは名前を伏せているので、見本のリンクも作る。Nori 2026-11-08「見本のリンクつくってよ」）
-  partners_().forEach(function(pt) { if (pt.id && !isDisplayOnly_(pt.id)) rows.push([pt.id, pt.name, (pt.areas || []).join('・'), demoUrl_(pt.id)]); });
-  if (sh.getLastRow() > 1) sh.getRange(2, 1, sh.getLastRow() - 1, 4).clearContent();
-  if (rows.length) sh.getRange(2, 1, rows.length, 4).setValues(rows);
+  partners_().forEach(function(pt) { if (pt.id && !isDisplayOnly_(pt.id)) rows.push([pt.id, pt.name, (pt.areas || []).join('・'), demoUrl_(pt.id), pconfUrl_(pt.id)]); });
+  if (sh.getLastRow() > 1) sh.getRange(2, 1, sh.getLastRow() - 1, 5).clearContent();
+  if (rows.length) sh.getRange(2, 1, rows.length, 5).setValues(rows);
   return rows.length;
 }
 function isDisplayOnly_(id) {
