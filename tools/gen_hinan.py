@@ -42,10 +42,13 @@ RICH_CITY, RICH_PREF = 5, 6
 def score(it):
     return sum([bool(it.get("animals")), any(v for v in it["flags"].values()), bool(it.get("cage")), bool(it.get("place")),
                 bool(it.get("size") or it.get("no")), len(it.get("rules") or []) >= 2, bool(it.get("map"))])
+# Nori 2026-11-14「てか、そもそも薄い記事作らないで」：点数が足りても、書き出したあと tools/thin_gate.py で
+# そのページだけの字数（ひな形の文を除く）を数え、足りないページは作らない（市区町村は県のページの中へ、県は一覧で「まだ」）。
+THIN, PREF_THIN = set(), set()
 def has_page(it):
-    return it["kind"] == "city" and score(it) >= RICH_CITY
+    return it["kind"] == "city" and score(it) >= RICH_CITY and (it["pref"], it["name"]) not in THIN
 def pref_ok(its):
-    return sum(score(x) for x in its) >= RICH_PREF
+    return sum(score(x) for x in its) >= RICH_PREF and its[0]["pref"] not in PREF_THIN
 
 def href_city(it):
     return f"/{SLUG}/{PSLUG[it['pref']]}/{CSLUG[(it['pref'], it['name'])]}/"
@@ -184,6 +187,7 @@ def render_top(ctx):
     <li><b class="k">連れて行ける動物</b>犬・猫は多くの自治体が受け入れる。うさぎ・小鳥・爬虫類は自治体で違う</li>
     <li><b class="k">大型犬</b>はっきり書いた自治体は少なく、「小型」「小動物」に限る市が多い。ケージに入らなければリードでつなぐ、と書く市も（川崎市・大阪市）。預け先も決めておく</li>
     <li><b class="k">ケージ</b>飼い主が持っていくのが基本。避難所にペット用の備蓄はないと書く市が多い</li></ul></div>
+    {finder(e, [p for _, ps in ctx["emg_regions"] for p in ps])}
     {stats}
     <h2 id="pref">都道府県ごとのくわしい決まり</h2>
     {_pref_links(e, done)}
@@ -269,6 +273,7 @@ def render_pref(ctx, pf, its, done):
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
     <div class="answer"><h2 id="answer">{e(pf)}のペットと避難のポイント</h2><p>{e(pol)}</p></div>
+    {finder(e, [p for _, ps in ctx["emg_regions"] for p in ps], pf)}
     {('<h2 id="city">市区町村ごとのページ</h2>' + city_links) if cities else ""}
     {cov}
     <h2 id="table">受け入れる動物とケージ（自治体ごと）</h2>
@@ -370,6 +375,26 @@ def urls(SITE):
     return [f"{SITE}/{SLUG}/"] + [f"{SITE}{href(pf)}" for pf in ok] + [f"{SITE}{href_city(it)}" for pf in ok for it in bp[pf] if has_page(it)]
 
 def write_all(ROOT, ctx):
+    try:
+        import thin_gate as TG
+    except ImportError:
+        TG = None
+    for _ in range(4):
+        _write(ROOT, ctx)
+        if not TG: break
+        mine = [p for p in TG.all_pages(ROOT) if p.startswith(f"/{SLUG}/") and p != f"/{SLUG}/"]
+        n = TG.measure(ROOT, TG.all_pages(ROOT))
+        low = [p for p in mine if n.get(p, 0) < TG.MIN_CHARS]
+        if not low: break
+        rev_p = {PSLUG[pf]: pf for pf in PSLUG}
+        rev_c = {(PSLUG[pf], CSLUG[(pf, nm)]): (pf, nm) for (pf, nm) in CSLUG if pf in PSLUG}
+        for p in low:
+            parts = [x for x in p.split("/") if x]
+            if len(parts) == 3 and (parts[1], parts[2]) in rev_c: THIN.add(rev_c[(parts[1], parts[2])])
+            elif len(parts) == 2 and parts[1] in rev_p: PREF_THIN.add(rev_p[parts[1]])
+    write_finder(ROOT)
+
+def _write(ROOT, ctx):
     bp = by_pref()
     done = [pf for _, ps in ctx["emg_regions"] for pf in ps if pf in bp and pref_ok(bp[pf])]
     import shutil
@@ -390,3 +415,52 @@ def write_all(ROOT, ctx):
 
 def _bf(page):
     return page.replace("</head>", V.BF_CSS + "\n</head>", 1).replace("</body>", V.BF_JS + "\n</body>", 1)
+
+# [B] Nori 2026-11-14「地域でフィルターして連絡できるようにしたほうがいいんじゃない？もしくはリンク貼ってそっちに飛ばすとか」：
+# 都道府県 → 市区町村をえらぶと、全国1,741の市区町村のどれでも、当サイトのページ（あれば）か、確かめた公式ページ、
+# なければその市区町村の公式サイトへ案内する。一覧は /hinan/munis.json（ページの重さに入れない。えらんだときだけ読む）。電話番号は出さない。
+def write_finder(ROOT):
+    bp = by_pref()
+    have = {(it["pref"], it["name"]): it for its in bp.values() for it in its if it["kind"] == "city"}
+    pref_page = {pf for pf in bp if pref_ok(bp[pf])}
+    nf = set(NONE)
+    out = {}
+    for m in MUNI:
+        pf, nm, top = m["pref"], m["name"], m.get("url") or ""
+        it = have.get((pf, nm))
+        if it and has_page(it) and pf in pref_page: row = [nm, "page", href_city(it), top]
+        elif it and pf in pref_page: row = [nm, "card", href(pf) + "#" + nm, top]
+        elif it: row = [nm, "link", it["links"][0][1], top, it["links"][0][0]]
+        elif (pf, nm) in nf: row = [nm, "none", "", top]
+        else: row = [nm, "todo", "", top]
+        out.setdefault(pf, []).append(row)
+    open(os.path.join(ROOT, SLUG, "munis.json"), "w", encoding="utf-8").write(json.dumps(out, ensure_ascii=False, separators=(",", ":")))
+
+FINDER_CSS = """<style>
+.hn-find{background:#fff;border:2px solid var(--accent,#e8590c);border-radius:18px;padding:14px 16px;margin:12px 0 18px}
+.hn-find h2{font-size:1.05rem;margin:0 0 8px}
+.hn-find .row{display:flex;flex-wrap:wrap;gap:8px}
+.hn-find select{flex:1 1 140px;min-width:0;font-size:1rem;padding:10px;border:1.5px solid var(--line);border-radius:12px;background:#fff}
+.hn-find .out{margin-top:10px;line-height:1.8;font-size:.95rem}
+.hn-find .out a{font-weight:700}
+</style>"""
+
+def finder(e, prefs, pf=None):
+    opts = "".join(f'<option{" selected" if p == pf else ""}>{e(p)}</option>' for p in prefs)
+    return FINDER_CSS + f"""<div class="hn-find" id="find"><h2>お住まいの市区町村の決まりをさがす</h2>
+<p style="margin:0 0 8px;font-size:.9rem">全国の市区町村から、当サイトでまとめた決まりか、市区町村の公式サイトへご案内します。</p>
+<div class="row"><select id="hnP" aria-label="都道府県"><option value="">都道府県をえらぶ</option>{opts}</select>
+<select id="hnM" aria-label="市区町村" disabled><option value="">市区町村をえらぶ</option></select></div>
+<div class="out" id="hnO" aria-live="polite"></div></div>
+<script>(function(){{var P=document.getElementById('hnP'),M=document.getElementById('hnM'),O=document.getElementById('hnO'),D=null;
+function esc(s){{return String(s).replace(/[&<>"]/g,function(c){{return{{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}}[c]}})}}
+function fill(){{M.innerHTML='<option value="">市区町村をえらぶ</option>';O.innerHTML='';var L=D&&D[P.value]||[];L.forEach(function(r,i){{var o=document.createElement('option');o.value=i;o.textContent=r[0];M.appendChild(o)}});M.disabled=!L.length}}
+function load(cb){{if(D)return cb();fetch('/{SLUG}/munis.json').then(function(r){{return r.json()}}).then(function(j){{D=j;cb()}}).catch(function(){{O.textContent='読み込めませんでした。時間をおいてお試しください。'}})}}
+P.addEventListener('change',function(){{load(fill)}});if(P.value)load(fill);
+M.addEventListener('change',function(){{var r=(D[P.value]||[])[M.value];if(!r){{O.innerHTML='';return}}var n=esc(r[0]),top=r[3]?'<a href="'+esc(r[3])+'" target="_blank" rel="noopener">'+n+'の公式サイト ↗</a>':'',h='';
+if(r[1]=='page')h='<a href="'+esc(r[2])+'">'+n+'のペットと避難の決まりを見る</a>';
+else if(r[1]=='card')h='<a href="'+esc(r[2])+'">'+n+'の決まり（'+esc(P.value)+'のページの中）を見る</a>';
+else if(r[1]=='link')h=n+'の公式ページ：<a href="'+esc(r[2])+'" target="_blank" rel="noopener">'+esc(r[4]||'ペットと避難')+' ↗</a>';
+else if(r[1]=='none')h=n+'の公式サイトには、ペットと避難について書いたページが見つかりませんでした。'+top+'の防災のページか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
+else h=n+'は、まだ当サイトで確かめていません。'+top+'で「ペット 避難」とさがすか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
+O.innerHTML=h;try{{gtag('event','hinan_find',{{pref:P.value,status:r[1]}})}}catch(e){{}}}})}})();</script>"""
