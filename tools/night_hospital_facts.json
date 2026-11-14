@@ -1928,6 +1928,1555 @@
    ],
    "note": "駐車場の記載なし。料金改定のお知らせ https://kitakyu-vet.com/night-info/kaitei/ は未確認",
    "ok": true
+  },
+  {
+   "id": "H054",
+   "name": "チェルシーアニマルクリニック 夜間診療",
+   "pref": "富山県",
+   "city": "富山市",
+   "url": "https://chelsea-animal.com/emergency/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "富山県富山市上飯野25",
+     "src": "https://chelsea-animal.com/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "19時〜21時（最終受付21時）。月・水・木・金曜（祝日を除く）",
+     "src": "https://chelsea-animal.com/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫のみ",
+     "src": "https://chelsea-animal.com/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "まず夜間診療専用の電話へ。様子・いつ気づいたか・着くまでの時間を伝える",
+     "src": "https://chelsea-animal.com/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "通常の診察料に夜間費用2,000〜5,000円が加わる",
+     "src": "https://chelsea-animal.com/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "クレジットカードまたは現金",
+     "src": "https://chelsea-animal.com/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "誤飲・誤食、帝王切開、嘔吐や発作などの急な体調不良、肺水腫など。ほかの病院にかかっている子も診る",
+     "src": "https://chelsea-animal.com/emergency/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H052",
+   "name": "富山県獣医師会 夜間診療（当番制）",
+   "pref": "富山県",
+   "city": "富山県内",
+   "url": "https://www.toyamavet.or.jp/vet_09.html",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "受付時間",
+     "v": "月〜金曜 20時〜22時（それ以後は受け付けない）",
+     "src": "https://www.toyamavet.or.jp/vet_09.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "祝日",
+     "src": "https://www.toyamavet.or.jp/vet_09.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "主に犬・猫（ほかの小動物は当番病院に確認。野生動物は対象外）",
+     "src": "https://www.toyamavet.or.jp/vet_09.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "まず県獣医師会に電話し、留守番電話で案内される当番病院に電話して予約",
+     "src": "https://www.toyamavet.or.jp/vet_09.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "通常の診療費に夜間診察料が加わり、簡単な処置でも1万〜2万円以上かかることがある",
+     "src": "https://www.toyamavet.or.jp/vet_09.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "原則現金（カードが使える当番病院もあるので予約の電話で確認）",
+     "src": "https://www.toyamavet.or.jp/vet_09.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "仮の診断にもとづく応急処置だけ。ワクチン・予防薬・フードの販売はしない",
+     "src": "https://www.toyamavet.or.jp/vet_09.html",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H064",
+   "name": "浜松夜間救急動物病院",
+   "pref": "静岡県",
+   "city": "浜松市中央区",
+   "url": "http://hamamatsu-aer.jp/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県浜松市中央区東伊場2-1-9",
+     "src": "http://hamamatsu-aer.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "21時から電話で予約を受け付け（深夜2時以降は時間外料金）",
+     "src": "https://www.hamamatsu-aer.jp/medical/index.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "月曜日",
+     "src": "http://hamamatsu-aer.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫（ほかの小動物は症状により診られる場合があるので電話で）",
+     "src": "http://hamamatsu-aer.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に必ず電話",
+     "src": "http://hamamatsu-aer.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "夜間診察料 9,900円（税込）、0時以降 11,000円（税込）。深夜2時以降は時間外料金。検査・治療費は別",
+     "src": "http://hamamatsu-aer.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "原則クレジットカード",
+     "src": "http://hamamatsu-aer.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "駐車場",
+     "v": "6台（満車のときは受付で近くの駐車場を案内）",
+     "src": "http://hamamatsu-aer.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "血液・尿検査、レントゲン・超音波、治療、緊急手術",
+     "src": "http://hamamatsu-aer.jp/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H065",
+   "name": "VCJ動物医療センター駿河病院",
+   "pref": "静岡県",
+   "city": "御殿場市",
+   "url": "https://vcj-sulga.com/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県御殿場市東田中1078-1",
+     "src": "https://vcj-sulga.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "24時間体制（完全看護）",
+     "src": "https://vcj-sulga.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫、フェレット・ハムスター・ウサギ・モモンガ・モルモット・亀・鳥類・魚類・ハ虫類など（野生種は除く）",
+     "src": "https://vcj-sulga.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "救急診療（夜間診療）、専門医療",
+     "src": "https://vcj-sulga.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "最寄り駅",
+     "v": "車は東名高速 御殿場ICが目印",
+     "src": "https://vcj-sulga.com/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H097",
+   "name": "高知県獣医師会 夜間診療（当番制）",
+   "pref": "高知県",
+   "city": "高知県内",
+   "url": "https://www.kochikenjuishikai.or.jp/article/archives/8",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "受付時間",
+     "v": "20時〜23時（電話の受付は22時30分まで）",
+     "src": "https://www.kochikenjuishikai.or.jp/article/archives/8",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫（ほかの動物は当日の当番病院に相談）",
+     "src": "https://www.kochikenjuishikai.or.jp/article/archives/8",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "県獣医師会に電話して当日の当番病院を確かめ、当番病院に電話で予約（完全予約制）",
+     "src": "https://www.kochikenjuishikai.or.jp/article/archives/8",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "応急的な一次診療。手術・入院・予防注射は原則しない",
+     "src": "https://www.kochikenjuishikai.or.jp/article/archives/8",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H101",
+   "name": "大分動物夜間診療（獣医師が家に来る往診）",
+   "pref": "大分県",
+   "city": "大分市",
+   "url": "https://animal.oita.jp/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "受付時間",
+     "v": "19時〜翌6時（目安。早めに終わることもある）",
+     "src": "https://animal.oita.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "うさぎ・フェレット・ハムスターなどのエキゾチックアニマルが中心。犬・猫は状況により。大型動物・爬虫類は対応しない",
+     "src": "https://animal.oita.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "電話で連絡（予約制ではない）。獣医師1人のため出られないこともある",
+     "src": "https://animal.oita.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金のみ",
+     "src": "https://animal.oita.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "家に来てくれる往診。大分市を中心におおむね50km圏内（大分県内）。救急・応急処置が中心",
+     "src": "https://animal.oita.jp/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H076",
+   "name": "右京動物病院 夜間救急",
+   "pref": "京都府",
+   "city": "京都市右京区",
+   "url": "https://www.ukyo-ah.com/service/night/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "京都市右京区太秦京ノ道町12-2（本院）",
+     "src": "https://www.ukyo-ah.com/service/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "平日19時〜22時（土・日・祝はなし）",
+     "src": "https://www.ukyo-ah.com/service/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "まず電話で、動物の情報と状態を伝える",
+     "src": "https://www.ukyo-ah.com/service/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "通常の診察料などに夜間救急費用 9,000円（＋税）が加わる",
+     "src": "https://www.ukyo-ah.com/service/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "嘔吐・下痢などの消化器の症状、麻痺・けいれんなどの神経の症状まで分野を問わず。夜間の手術にも対応",
+     "src": "https://www.ukyo-ah.com/service/night/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H080",
+   "name": "りんくう動物救急医療協会（大阪公立大学 獣医臨床センター 夜間診療科）",
+   "pref": "大阪府",
+   "city": "泉佐野市",
+   "url": "https://www.raema.or.jp/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大阪府泉佐野市りんくう往来北1番地の58",
+     "src": "https://www.raema.or.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "電話の受付 20時〜翌4時、診療 21時〜翌4時30分",
+     "src": "https://www.raema.or.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "土曜日",
+     "src": "https://www.raema.or.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫が基本。うさぎ・小型のげっ歯類・小型の鳥は診られる場合あり。ほかの動物は診られない",
+     "src": "https://www.raema.or.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "必ず夜間救急診療専用の電話に連絡してから。電話だけの相談は受けていない",
+     "src": "https://www.raema.or.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "クレジットカードのみ（現金は使えない）",
+     "src": "https://www.raema.or.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "駐車場",
+     "v": "建物の正面",
+     "src": "https://www.raema.or.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "最寄り駅",
+     "v": "南海本線・JR関西空港線「りんくうタウン」駅から北東へ400m（徒歩約7分）",
+     "src": "https://www.raema.or.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "夜間の緊急診療。条件が合えば緊急手術も。往診はしない",
+     "src": "https://www.raema.or.jp/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H018",
+   "name": "伊勢崎動物医療センター 夜間救急診療",
+   "pref": "群馬県",
+   "city": "伊勢崎市",
+   "url": "https://i-ac.jp/night-emergency/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "群馬県伊勢崎市田中町889-8",
+     "src": "https://i-ac.jp/night-emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "23時〜翌5時",
+     "src": "https://i-ac.jp/night-emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "月曜・火曜",
+     "src": "https://i-ac.jp/night-emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫のみ",
+     "src": "https://i-ac.jp/night-emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来るときは必ず電話",
+     "src": "https://i-ac.jp/night-emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "5時を過ぎると時間外料金が加わる（金額は書いていない）",
+     "src": "https://i-ac.jp/night-emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金またはクレジットカード（診察のあと一括）。窓口でのペット保険の精算はできない",
+     "src": "https://i-ac.jp/night-emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "駐車場",
+     "v": "第3駐車場は病院の南西、田中十字路の交差点付近",
+     "src": "https://i-ac.jp/night-emergency/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H019",
+   "name": "さいとう動物病院 富岡総合医療センター",
+   "pref": "群馬県",
+   "city": "富岡市",
+   "url": "https://saitovet.com/medical/emergency/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "群馬県富岡市富岡3058-1",
+     "src": "https://saitovet.com/medical/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫（ほかの動物は電話で相談）",
+     "src": "https://saitovet.com/medical/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に必ず電話",
+     "src": "https://saitovet.com/medical/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "夜間救急 ＋16,500円（税込）。検査・処置・入院などは別",
+     "src": "https://saitovet.com/medical/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "クレジットカードのみ",
+     "src": "https://saitovet.com/medical/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "嘔吐・下痢、誤食・中毒、尿が出ない、けいれん・失神、呼吸困難、骨折・けが、熱中症など。入院・手術もできる範囲で",
+     "src": "https://saitovet.com/medical/emergency/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "note": "受付時間は本文が18時〜翌2時、よくある質問が18時〜23時で食い違うため入れていない"
+  },
+  {
+   "id": "H086",
+   "name": "奈良動物医療センター",
+   "pref": "奈良県",
+   "city": "奈良市",
+   "url": "https://nara-amc.com/medical/emergency/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "奈良県奈良市鶴舞東町2-6",
+     "src": "https://nara-amc.com/medical/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "夜間・早朝 19時〜翌9時（昼 11時30分〜17時も救急を受け付け）",
+     "src": "https://nara-amc.com/medical/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "必ず電話してから",
+     "src": "https://nara-amc.com/medical/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "時間外診療費 夜間・早朝11,000円（昼は5,500円）。通常の診療費とは別",
+     "src": "https://nara-amc.com/medical/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "夜間はクレジットカードのみ。夜間はペット保険の窓口精算は使えない",
+     "src": "https://nara-amc.com/medical/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "駐車場",
+     "v": "40台",
+     "src": "https://nara-amc.com/medical/emergency/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "24時間体制。誤飲・誤食、嘔吐、下痢、呼吸の異常、けいれん、けが、出血など",
+     "src": "https://nara-amc.com/medical/emergency/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H066",
+   "name": "名古屋夜間動物救急センター",
+   "pref": "愛知県",
+   "city": "名古屋市中区",
+   "url": "https://nagoyavet.jp/hospital_yakan.php",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "受付時間",
+     "v": "21時〜翌2時（電話の受付は1時30分まで）",
+     "src": "https://nagoyavet.jp/hospital_yakan.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に必ず電話",
+     "src": "https://nagoyavet.jp/hospital_yakan.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "緊急手術にも対応。獣医師・看護師が常に複数いる。診察のあと、かかりつけ向けの報告書をつくる",
+     "src": "https://nagoyavet.jp/hospital_yakan.php",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H084",
+   "name": "大蔵海岸ペットクリニック",
+   "pref": "兵庫県",
+   "city": "明石市",
+   "url": "https://okurakaigan-vet.com/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県明石市大蔵町24-24",
+     "src": "https://okurakaigan-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "21時〜23時",
+     "src": "https://okurakaigan-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "水曜午後・日曜・祝日",
+     "src": "https://okurakaigan-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫・ハムスター・小鳥",
+     "src": "https://okurakaigan-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "夜間の診察は完全予約制。電話で予約（電話での相談はしていない）",
+     "src": "https://okurakaigan-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "23時まで6,500円（税抜）、23時以降10,000円（税抜）",
+     "src": "https://okurakaigan-vet.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "救急治療・集中治療に力を入れている",
+     "src": "https://okurakaigan-vet.com/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H085",
+   "name": "エルザ動物医療センター 夜間救急診療",
+   "pref": "兵庫県",
+   "city": "姫路市",
+   "url": "https://www.elsa-hp.com/medicalcare/nighttime/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県姫路市下手野1-110-1（国道2号沿い、姫路赤十字病院の東）",
+     "src": "https://www.elsa-hp.com/medicalcare/nighttime/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "夜間救急診療専用の電話に連絡（不安なときは来院前に電話）",
+     "src": "https://www.elsa-hp.com/medicalcare/nighttime/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "夜間救急診療受付料 一般11,000円（税込）、診察の割増 一般＋30%〜、手術の割増 一般＋70%〜。ほかに初診料・再診料",
+     "src": "https://www.elsa-hp.com/medicalcare/nighttime/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金・クレジットカード・デビットカード",
+     "src": "https://www.elsa-hp.com/medicalcare/nighttime/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "夜間の診察・投薬・手術。犬・猫・フェレット以外は料金が違う",
+     "src": "https://www.elsa-hp.com/medicalcare/nighttime/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "note": "受付時間は専用ダイヤルの案内が21時〜24時、料金表が21時〜23時で食い違うため入れていない"
+  },
+  {
+   "id": "H074",
+   "name": "大阪・北摂夜間救急どうぶつ病院",
+   "pref": "大阪府",
+   "city": "箕面市",
+   "url": "https://heah.jp/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大阪府箕面市船場東2-3-55（北摂ベッツセンタービル）",
+     "src": "https://heah.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "年中無休 21時〜翌朝6時",
+     "src": "https://heah.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "年中無休",
+     "src": "https://heah.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫（ほかの動物は前もって電話で確認）",
+     "src": "https://heah.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に電話",
+     "src": "https://heah.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "クレジットカード（VISA・Master・JCB・AMEX・Diners）・デビットカード・現金。ペット保険の窓口精算はできない",
+     "src": "https://heah.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "最寄り駅",
+     "v": "北大阪急行「箕面船場阪大前」駅から徒歩10分",
+     "src": "https://heah.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "CT・MRIあり。検査・治療・緊急手術。関西全域から受け入れ",
+     "src": "https://heah.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "診察料 10,000円（税抜、夜間・深夜料金を含む）。検査・治療は別",
+     "src": "https://heah.jp/medical",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H094",
+   "name": "おおしま動物病院",
+   "pref": "徳島県",
+   "city": "板野郡藍住町",
+   "url": "https://www.oshima-ah.com/%E5%A4%9C%E9%96%93%E6%95%91%E6%80%A5",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "徳島県板野郡藍住町",
+     "src": "https://www.oshima-ah.com/%E5%A4%9C%E9%96%93%E6%95%91%E6%80%A5",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "夜8時以降、できる限り診察（院長がいない日は診られない）",
+     "src": "https://www.oshima-ah.com/%E5%A4%9C%E9%96%93%E6%95%91%E6%80%A5",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫のみ",
+     "src": "https://www.oshima-ah.com/%E5%A4%9C%E9%96%93%E6%95%91%E6%80%A5",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "留守番電話に名前・電話番号・「ホームページで注意事項を確認済み」を残す（時間外の電話は1回だけ）。5分たっても折り返しがなければほかの病院へ",
+     "src": "https://www.oshima-ah.com/%E5%A4%9C%E9%96%93%E6%95%91%E6%80%A5",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "夜間料金 1万円が加わる。検査をすると平均4万円ほど、外科手術は少なくとも12万円以上が目安。初めての方は先に現金1万円を預ける",
+     "src": "https://www.oshima-ah.com/%E5%A4%9C%E9%96%93%E6%95%91%E6%80%A5",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "その場で現金のみ（カードは使えない）",
+     "src": "https://www.oshima-ah.com/%E5%A4%9C%E9%96%93%E6%95%91%E6%80%A5",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "犬と猫の専門病院。院長の体調や夜間の手術の状況で対応",
+     "src": "https://www.oshima-ah.com/%E5%A4%9C%E9%96%93%E6%95%91%E6%80%A5",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H091",
+   "name": "konomi動物病院",
+   "pref": "広島県",
+   "city": "広島市東区",
+   "url": "https://konomiah.com/jikangai.html",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "休診日",
+     "v": "休診日でも夜間はできる限り対応（24時間ではない）",
+     "src": "https://konomiah.com/jikangai.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "時間外は犬・猫・ウサギのみ",
+     "src": "https://konomiah.com/jikangai.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "時間外の診察は必ず前もって電話で予約",
+     "src": "https://konomiah.com/jikangai.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "時間外診療費がかかる（金額は書いていない）",
+     "src": "https://konomiah.com/jikangai.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "誤飲、帝王切開、交通事故、けいれん発作など。緊急手術・入院にも対応",
+     "src": "https://konomiah.com/jikangai.html",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H090",
+   "name": "倉敷夜間ペットクリニック",
+   "pref": "岡山県",
+   "city": "倉敷市",
+   "url": "http://www.stemvets.com/file/YORUtantou.html",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "岡山県倉敷市福島696-6（倉敷ペットクリニック）",
+     "src": "http://www.stemvets.com/file/YORUtantou.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "夜間診療 21時〜0時（夜間の電話は23時30分まで）",
+     "src": "http://www.stemvets.com/file/YORUtantou.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫。ウサギ・ハムスター・フェレット・鳥・爬虫類は診られる獣医師が限られる（前もって電話）",
+     "src": "http://www.stemvets.com/file/YORUtantou.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "時間外料金がかかる（金額は書いていない）",
+     "src": "http://www.stemvets.com/file/YORUtantou.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金・各種クレジットカード",
+     "src": "http://www.stemvets.com/file/YORUtantou.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "駐車場",
+     "v": "敷地内7台、第二駐車場10台（200m北、下電「八軒樋」バス停前）",
+     "src": "http://www.stemvets.com/file/YORUtantou.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "夜間は救急だけ。予防接種・フード・薬だけの処方・避妊去勢・ホテルの予約は受けない",
+     "src": "http://www.stemvets.com/file/YORUtantou.html",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H106",
+   "name": "動物病院なは 夜間救急医療センター",
+   "pref": "沖縄県",
+   "city": "島尻郡南風原町",
+   "url": "https://naha-ah.com/night",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "沖縄県島尻郡南風原町新川64",
+     "src": "https://naha-ah.com/night",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "20時〜翌3時（最終受付2時30分）",
+     "src": "https://naha-ah.com/night",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "木曜・金曜（獣医師の出勤で変わることがある）",
+     "src": "https://naha-ah.com/night",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "基本は犬・猫（エキゾチックアニマルは電話で確認）",
+     "src": "https://naha-ah.com/night",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に必ず電話",
+     "src": "https://naha-ah.com/night",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "夜間診療費 10,000円。検査・処置は別",
+     "src": "https://naha-ah.com/night",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "駐車場",
+     "v": "7台",
+     "src": "https://naha-ah.com/night",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "ちょっとした不安から緊急手術まで",
+     "src": "https://naha-ah.com/night",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H100",
+   "name": "きらてとあにまるほすぴたる",
+   "pref": "熊本県",
+   "city": "熊本市南区",
+   "url": "https://k1r4t3t0animalhospital.jp/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "熊本県熊本市南区島町4丁目10-21",
+     "src": "https://k1r4t3t0animalhospital.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "月曜・金曜（祝日は診察）",
+     "src": "https://k1r4t3t0animalhospital.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "電話（順番の予約はできない）",
+     "src": "https://k1r4t3t0animalhospital.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "駐車場",
+     "v": "病院前に4台（いちばん左は上の階の方の場所で使えない）",
+     "src": "https://k1r4t3t0animalhospital.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "時間外・夜間救急診療のある一般の病院（外科・腫瘍・歯科・皮膚・眼科など）",
+     "src": "https://k1r4t3t0animalhospital.jp/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H060",
+   "name": "佐久・軽井沢夜間どうぶつ病院",
+   "pref": "長野県",
+   "city": "佐久市",
+   "url": "https://sakukaruizawa-yakan.com/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県佐久市佐久平駅東21-2 佐久平プレイスビル1F-A",
+     "src": "https://sakukaruizawa-yakan.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "21時〜24時（月〜金。土日祝は不定期）",
+     "src": "https://sakukaruizawa-yakan.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に電話",
+     "src": "https://sakukaruizawa-yakan.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "夜間診療費用がかかる（金額は書いていない）",
+     "src": "https://sakukaruizawa-yakan.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "最寄り駅",
+     "v": "JR・しなの鉄道「佐久平」駅の東（佐久平駅東）",
+     "src": "https://sakukaruizawa-yakan.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "嘔吐・下痢・誤飲、呼吸、アレルギー、けが、尿路、発作など。そのあとはかかりつけと連携",
+     "src": "https://sakukaruizawa-yakan.com/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H061",
+   "name": "こやま動物病院 夜間救急診療",
+   "pref": "長野県",
+   "city": "長野市",
+   "url": "https://koyama-ah.jp/annai/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県長野市松代町松代716-9",
+     "src": "https://koyama-ah.jp/annai/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "19時〜23時（23時以降は対応しない）",
+     "src": "https://koyama-ah.jp/annai/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "日曜・火曜・祝日、年末年始・お盆・GW",
+     "src": "https://koyama-ah.jp/annai/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫・フェレット・うさぎ・小型の鳥・ハムスター・モルモット・ハリネズミ・亀",
+     "src": "https://koyama-ah.jp/annai/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "緊急のときは前もって電話（夜は留守番電話に名前・番号・用件を残す）",
+     "src": "https://koyama-ah.jp/annai/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "夜間診察料 1万円が別にかかる",
+     "src": "https://koyama-ah.jp/annai/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "夜間は基本クレジットカードのみ",
+     "src": "https://koyama-ah.jp/annai/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "駐車場",
+     "v": "患者用の駐車場あり",
+     "src": "https://koyama-ah.jp/annai/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H058",
+   "name": "きらら動物病院 千塚分院",
+   "pref": "山梨県",
+   "city": "甲府市",
+   "url": "https://www.kirara-vet-chizuka.com/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県甲府市千塚3-1-11",
+     "src": "https://www.kirara-vet-chizuka.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "20時〜22時は時間外対応（夜8時から夜間料金）",
+     "src": "https://www.kirara-vet-chizuka.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "日曜・祝日・第2木曜",
+     "src": "https://www.kirara-vet-chizuka.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "小型犬と猫のみ",
+     "src": "https://www.kirara-vet-chizuka.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "電話で確かめてから（駐車場が少ないため）",
+     "src": "https://www.kirara-vet-chizuka.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "クレジットカードが使える",
+     "src": "https://www.kirara-vet-chizuka.com/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H007",
+   "name": "長町南動物病院 夜間救急",
+   "pref": "宮城県",
+   "city": "仙台市太白区",
+   "url": "https://www.nagamachiminami-ah.com/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "宮城県仙台市太白区長町南3丁目8-28",
+     "src": "https://www.nagamachiminami-ah.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "夜間救急 19時〜23時（当分の間、この病院をかかりつけにしている方だけ）",
+     "src": "https://www.nagamachiminami-ah.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫、うさぎ・フェレット・ハリネズミなどの小動物",
+     "src": "https://www.nagamachiminami-ah.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "電話のあと、診察が必要なら来院（相談だけの電話は受けていない）",
+     "src": "https://www.nagamachiminami-ah.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "診療費のほかに時間外診察料（金額は書いていない）",
+     "src": "https://www.nagamachiminami-ah.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場あり",
+     "src": "https://www.nagamachiminami-ah.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "最寄り駅",
+     "v": "地下鉄「長町南」駅から徒歩5分",
+     "src": "https://www.nagamachiminami-ah.com/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H014",
+   "name": "宇都宮白沢動物病院 夜間診療",
+   "pref": "栃木県",
+   "city": "宇都宮市",
+   "url": "https://utsunomiya-ah.com/night/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県宇都宮市白沢町594-38",
+     "src": "https://utsunomiya-ah.com/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "20時30分〜24時30分（受付は30分前まで）。LINEか電話で予約、22時以降は電話のみ",
+     "src": "https://utsunomiya-ah.com/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "不定休",
+     "src": "https://utsunomiya-ah.com/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫・小型の哺乳類・爬虫類・両生類",
+     "src": "https://utsunomiya-ah.com/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "緊急のときは必ず電話",
+     "src": "https://utsunomiya-ah.com/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "20時30分〜21時30分 初診10,000円・再診5,000円、21時30分〜23時 10,000円、23時〜24時30分 15,000円。検査・治療・薬は別",
+     "src": "https://utsunomiya-ah.com/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金またはクレジットカード",
+     "src": "https://utsunomiya-ah.com/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "駐車場",
+     "v": "5台",
+     "src": "https://utsunomiya-ah.com/night/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H015",
+   "name": "しもつけVETセンター 夜間救急科",
+   "pref": "栃木県",
+   "city": "下野市",
+   "url": "https://www.tochigi-svc.com/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県下野市駅東5丁目2-1",
+     "src": "https://www.tochigi-svc.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "20時〜翌7時",
+     "src": "https://www.tochigi-svc.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に必ず電話（電話のない方は防犯上お断りする場合あり）。電話で獣医師などが緊急度を判断",
+     "src": "https://www.tochigi-svc.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "夜間の急な体調不良やけがなど緊急性の高い症状。緊急手術中や混雑時は受けられないことがある",
+     "src": "https://www.tochigi-svc.com/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H016",
+   "name": "小山夜間救急 あかりの森どうぶつ病院",
+   "pref": "栃木県",
+   "city": "小山市",
+   "url": "https://vets-tree.co.jp/night/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県小山市外城168番地4（あかりの森どうぶつ病院）",
+     "src": "https://vets-tree.co.jp/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "夜間 20時〜翌4時",
+     "src": "https://vets-tree.co.jp/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "夜間は年中無休",
+     "src": "https://vets-tree.co.jp/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫",
+     "src": "https://vets-tree.co.jp/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に必ず電話",
+     "src": "https://vets-tree.co.jp/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金またはクレジットカード",
+     "src": "https://vets-tree.co.jp/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "ぐったりしている、呼吸が苦しそう、けいれん、誤飲、けが・出血など",
+     "src": "https://vets-tree.co.jp/night/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H002",
+   "name": "アネス動物病院 札幌円山動物麻酔センター",
+   "pref": "北海道",
+   "city": "札幌市中央区",
+   "url": "https://anes-amc.com/medical-night/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "札幌市中央区南4条西20丁目1-18",
+     "src": "https://anes-amc.com/medical-night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "月〜金（祝日をふくむ）20時〜翌2時",
+     "src": "https://anes-amc.com/medical-night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "夜間は土曜・日曜なし",
+     "src": "https://anes-amc.com/medical-night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬と猫",
+     "src": "https://anes-amc.com/medical-night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "予約制ではないが、必ず前もって電話",
+     "src": "https://anes-amc.com/medical-night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "夜間料金 5,500円（税込、初診・再診とも）。通常の診療費は別",
+     "src": "https://anes-amc.com/medical-night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "クレジットカードが使える（当日精算、あと払い不可）",
+     "src": "https://anes-amc.com/medical-night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "駐車場",
+     "v": "7台",
+     "src": "https://anes-amc.com/medical-night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "最寄り駅",
+     "v": "地下鉄東西線「西18丁目」駅2番出口から徒歩9分",
+     "src": "https://anes-amc.com/medical-night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "救急・緊急手術、入院、集中治療",
+     "src": "https://anes-amc.com/medical-night/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H005",
+   "name": "江別白樺通りアニマルクリニック 夜間救急外来",
+   "pref": "北海道",
+   "city": "江別市",
+   "url": "https://ebetsu.lifemate-vh.com/night/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "北海道江別市野幌屯田町37-28",
+     "src": "https://ebetsu.lifemate-vh.com/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "診察 20時〜22時（月・金・土・日、祝日も同じ）。電話は21時まで、22時を過ぎると診察できない",
+     "src": "https://ebetsu.lifemate-vh.com/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "火・水・木",
+     "src": "https://ebetsu.lifemate-vh.com/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "夜間診療料金 5,000円。検査・処置は別",
+     "src": "https://ebetsu.lifemate-vh.com/night/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "少人数のため、できない検査・処置があり、ほかの病院を案内することもある",
+     "src": "https://ebetsu.lifemate-vh.com/night/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H003",
+   "name": "ペテモどうぶつ医療センター 札幌月寒",
+   "pref": "北海道",
+   "city": "札幌市豊平区",
+   "url": "https://mc.aeonpet.com/sapporotsukisamu/er/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "受付時間",
+     "v": "夜間 21時〜24時・5時〜9時（0時〜5時は3年以内にこのグループにかかった方などに限る）",
+     "src": "https://mc.aeonpet.com/sapporotsukisamu/er/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に必ず電話",
+     "src": "https://mc.aeonpet.com/sapporotsukisamu/er/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "平均3〜5万円。別に夜間診察料（1万円前後）と夜間の検査・処置料",
+     "src": "https://mc.aeonpet.com/sapporotsukisamu/er/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "現金またはクレジットカード（当日に全額精算）",
+     "src": "https://mc.aeonpet.com/sapporotsukisamu/er/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "夜間救急は応急処置（リリーフ診療）だけ。多くは翌日にほかの病院で治療をつづける",
+     "src": "https://mc.aeonpet.com/sapporotsukisamu/er/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "H004",
+   "name": "北海道大学動物医療センター（夜間休日診療）",
+   "pref": "北海道",
+   "city": "札幌市北区",
+   "url": "https://www.vetmed.hokudai.ac.jp/VMTH/owner/nightandweekendandholidayservice/",
+   "ok": true,
+   "closed": false,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "北海道札幌市北区北19条西10丁目",
+     "src": "https://www.vetmed.hokudai.ac.jp/VMTH/owner/nightandweekendandholidayservice/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "平日 17時〜24時（それ以外の時間と土日祝は、電話がペット保険会社の相談窓口へつながる）",
+     "src": "https://www.vetmed.hokudai.ac.jp/VMTH/owner/nightandweekendandholidayservice/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫のみ（エキゾチック動物は対象外）",
+     "src": "https://www.vetmed.hokudai.ac.jp/VMTH/owner/nightandweekendandholidayservice/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に必ず専用の電話へ（電話なしの来院は診られない）",
+     "src": "https://www.vetmed.hokudai.ac.jp/VMTH/owner/nightandweekendandholidayservice/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "夜間特別診察料金がかかる（金額は電話で確認）",
+     "src": "https://www.vetmed.hokudai.ac.jp/VMTH/owner/nightandweekendandholidayservice/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "クレジットカードのみ",
+     "src": "https://www.vetmed.hokudai.ac.jp/VMTH/owner/nightandweekendandholidayservice/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "診療の内容",
+     "v": "CT・MRIなど麻酔を使う診療はしない",
+     "src": "https://www.vetmed.hokudai.ac.jp/VMTH/owner/nightandweekendandholidayservice/",
+     "checked": "2026-11-14"
+    }
+   ]
   }
  ]
 }
