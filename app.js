@@ -1116,7 +1116,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     function li(n){ var t = prefNote(n); return '<li role="option" data-v="' + n + '" aria-selected="' + (n === sel.value) + '">' + n + (t ? "<small>" + t + "</small>" : "") + "</li>"; }
     var h = "";
     if (!L.list.length) h = '<li class="none">見つかりません。ひらがなか漢字で、県名の最初の文字から入れてください</li>';
-    else if (L.near.length && L.rest.length) h = '<li class="g">近くの都道府県</li>' + L.near.map(li).join("") + '<li class="g">そのほか（ご利用の多い順）</li>' + L.rest.map(li).join("");
+    else if (L.near.length && L.rest.length) h = '<li class="g">近くの都道府県</li>' + L.near.map(li).join("") + '<li class="g">そのほか</li>' + L.rest.map(li).join("");
     else h = L.list.map(li).join("");
     ul.innerHTML = h;
     syncPrefBtn();
