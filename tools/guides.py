@@ -729,6 +729,9 @@ GUIDES.extend(INS_GUIDES)
 # ペットが亡くなったときの記事（tools/guides_sougi.py、/sougi/ と同じテーマ）。
 from guides_sougi import SOUGI_GUIDES
 GUIDES.extend(SOUGI_GUIDES)
+# 保護犬・保護猫を迎える（譲渡・里親）の記事（tools/guides_joto.py、/joto/ と同じデータ。2026-11-14）。
+from guides_joto import JOTO_GUIDES
+GUIDES.extend(JOTO_GUIDES)
 
 for guide in GUIDES:
     if guide["slug"] == "hospital":

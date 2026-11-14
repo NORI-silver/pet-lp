@@ -1,0 +1,1134 @@
+{
+ "_説明": "お金を取らない情報ページ（/joto/）のデータ。都道府県と政令指定都市の、保護犬・保護猫の譲渡（新しい飼い主になる）の公式ページと、そのページに書いてある条件だけ。条件の言い方は短くまとめたもの（数字・年齢・金額は公式ページのまま）。書いていないことは書かない（空＝分からない）。京都市は京都府と共同の京都動物愛護センター。中核市と民間の保護団体は第2弾で足す。電話番号は載せない。",
+ "checked": "2026年11月14日",
+ "centers": [
+  {
+   "pref": "北海道",
+   "city": "",
+   "name": "北海道立動物愛護センター（あいにきた）",
+   "url": "https://www.pref.hokkaido.lg.jp/ks/awc/jouto.html",
+   "animals": "犬・猫",
+   "conds": [
+    "18歳以上で北海道に住んでいる",
+    "同居の家族全員が賛成",
+    "動物を飼える住まい（賃貸はペット可か確かめられることがある）",
+    "猫は室内で飼う（できない家庭には譲渡しない）",
+    "マイクロチップの装着と登録を約束",
+    "面会は予約制・公的な身分証が必要"
+   ],
+   "links": [
+    {
+     "t": "譲渡の審査項目",
+     "u": "https://www.pref.hokkaido.lg.jp/ks/awc/shinsakoumoku.html"
+    }
+   ]
+  },
+  {
+   "pref": "青森県",
+   "city": "",
+   "name": "青森県動物愛護センター",
+   "url": "https://www.pref.aomori.lg.jp/soshiki/kenko/dobutu/adopt.html",
+   "animals": "犬・猫",
+   "conds": [
+    "青森県に住む18歳以上",
+    "家族全員が賛成・動物を飼える住宅",
+    "飼っている犬猫が合わせて10頭未満",
+    "家族全員が60歳以上か一人暮らしは後見人が必要",
+    "無料の譲渡前講習会が必須（受講後1年有効）",
+    "譲渡手数料3,000円",
+    "不妊去勢手術を約束"
+   ],
+   "links": [
+    {
+     "t": "譲渡の条件・後見人",
+     "u": "http://www.aomori-animal.jp/adopt_omukae_joken.html"
+    }
+   ]
+  },
+  {
+   "pref": "岩手県",
+   "city": "",
+   "name": "岩手県（保健所・動物愛護センター）",
+   "url": "https://www.pref.iwate.jp/kurashikankyou/anzenanshin/pet/1004616.html",
+   "animals": "犬・猫",
+   "conds": [
+    "県内に住む満20歳以上",
+    "同居の人の同意",
+    "集合住宅は動物の飼育が禁止されていないこと",
+    "譲渡前講習会（1時間程度）",
+    "マイクロチップか名札・猫は屋内飼育に努める・適切な時期の不妊去勢を約束"
+   ],
+   "links": [
+    {
+     "t": "岩手県内の譲渡会情報",
+     "u": "https://www.pref.iwate.jp/kurashikankyou/anzenanshin/pet/1057667.html"
+    }
+   ]
+  },
+  {
+   "pref": "宮城県",
+   "city": "",
+   "name": "宮城県動物愛護センター",
+   "url": "https://www.pref.miyagi.jp/soshiki/doubutuaigo/jyoto-inu-nagare.html",
+   "animals": "犬・猫",
+   "conds": [
+    "原則宮城県内に住む18歳以上",
+    "家族全員の同意",
+    "集合住宅・借家は飼育の承認が必要",
+    "不妊去勢など繁殖制限を約束",
+    "面会は日程を調整して予約、面会の当日は譲渡しない"
+   ],
+   "links": [
+    {
+     "t": "県内の保健所と仙台市の譲渡動物情報",
+     "u": "https://www.pref.miyagi.jp/soshiki/doubutuaigo/joutodoubutu.html"
+    },
+    {
+     "t": "みやぎわんにゃん家族むすび",
+     "u": "https://wannyan-musubi.pref.miyagi.jp/"
+    }
+   ]
+  },
+  {
+   "pref": "秋田県",
+   "city": "",
+   "name": "秋田県動物愛護センター",
+   "url": "https://www.pref.akita.lg.jp/pages/archive/54",
+   "animals": "犬・猫",
+   "conds": [
+    "原則秋田県民",
+    "家族全員の同意",
+    "譲渡の前に飼い方の講習（1時間程度）",
+    "来所して実際に見てから申し込む（予約の受付はしていない）",
+    "終生飼養・譲渡後の不妊去勢・誓約書"
+   ],
+   "links": []
+  },
+  {
+   "pref": "山形県",
+   "city": "",
+   "name": "山形県（動物愛護センター・保健所）",
+   "url": "https://www.pref.yamagata.jp/020071/kenfuku/doubutsuaigo/aigo/kainushisagashi/jyoto.html",
+   "animals": "犬・猫",
+   "conds": [
+    "山形県民が対象（くわしい基準は県のPDF）",
+    "保健所の譲渡前講習会が必須、その後に希望者の名簿に登録",
+    "保健所職員の立ち会いで対面して決める",
+    "猫は不妊去勢・なるべく室内飼い"
+   ],
+   "links": [
+    {
+     "t": "譲渡前講習会について",
+     "u": "https://www.pref.yamagata.jp/301025/kenfuku/doubutsuaigo/aigo/kainushisagashi/koushuukai.html"
+    }
+   ]
+  },
+  {
+   "pref": "福島県",
+   "city": "",
+   "name": "福島県動物愛護センター",
+   "url": "https://www.pref.fukushima.lg.jp/sec/21620a/joto-about.html",
+   "animals": "犬・猫",
+   "conds": [
+    "原則成人",
+    "譲渡前講習（動画視聴とオンラインのアンケート、または来所）",
+    "動物を飼える住宅・家族全員の同意",
+    "一人暮らしや60歳以上だけの世帯は60歳未満のサポートする人を決める",
+    "譲渡手数料4,000円",
+    "不妊去勢・猫は完全屋内飼育",
+    "マッチングは電話で予約して来所"
+   ],
+   "links": []
+  },
+  {
+   "pref": "茨城県",
+   "city": "",
+   "name": "茨城県動物指導センター",
+   "url": "https://www.pref.ibaraki.jp/hokenfukushi/doshise/aigo/jyoutokaikopi-.html",
+   "animals": "犬",
+   "conds": [
+    "県内に住み、一人暮らしでなく同居の家族全員が希望",
+    "原則、乳幼児・妊婦・介護が必要な人がいない",
+    "賃貸は証明書が必要",
+    "犬は3頭以下（猫と合わせて5頭以下）",
+    "書類審査・事前の家庭訪問・事前講習会（修了証は1年有効）",
+    "自宅で2週間のトライアル",
+    "しつけ方教室への参加と譲渡後の訪問"
+   ],
+   "links": [
+    {
+     "t": "譲渡対象登録ボランティア一覧（PDF）",
+     "u": "https://www.pref.ibaraki.jp/hokenfukushi/doshise/hogo/documents/toubora20260911.pdf"
+    }
+   ]
+  },
+  {
+   "pref": "栃木県",
+   "city": "",
+   "name": "栃木県動物愛護指導センター",
+   "url": "https://www.douai.pref.tochigi.lg.jp/jyouto/",
+   "animals": "犬・猫",
+   "conds": [
+    "栃木県内に住む個人（県外の人へは直接譲渡しない）",
+    "誓約事項と飼い主の条件はリンク先で確認"
+   ],
+   "links": []
+  },
+  {
+   "pref": "群馬県",
+   "city": "",
+   "name": "群馬県動物愛護センター",
+   "url": "https://www.pref.gunma.jp/page/7901.html",
+   "animals": "犬・猫",
+   "conds": [
+    "新しい飼い主になる本人が申し込む（代理は不可）",
+    "66歳以上か一人暮らしは20〜60歳の後見人が必要",
+    "オンラインの譲渡前講習会→面接→希望者登録（1年有効）",
+    "平日のお見合いは予約制",
+    "譲渡後6か月以内に飼育のようすを報告"
+   ],
+   "links": [
+    {
+     "t": "譲渡の条件",
+     "u": "https://www.pref.gunma.jp/page/7986.html"
+    }
+   ]
+  },
+  {
+   "pref": "埼玉県",
+   "city": "",
+   "name": "埼玉県動物指導センター",
+   "url": "https://www.pref.saitama.lg.jp/a0706/doubutu/jouto.html",
+   "animals": "犬・猫",
+   "conds": [
+    "電話で予約して来所（保健所では受け付けていない）",
+    "譲渡講習会の受講が必修",
+    "避妊去勢・猫は室内飼い・犬は登録と狂犬病の予防注射を約束"
+   ],
+   "links": [
+    {
+     "t": "県の譲渡会",
+     "u": "https://www.pref.saitama.lg.jp/b0716/joutokai202612.html"
+    },
+    {
+     "t": "県が認めた譲渡の団体",
+     "u": "https://www.pref.saitama.lg.jp/b0716/doubutu-link-jyoutoninnteidanntai.html"
+    }
+   ]
+  },
+  {
+   "pref": "千葉県",
+   "city": "",
+   "name": "千葉県動物愛護センター",
+   "url": "https://www.pref.chiba.lg.jp/aigo/kainushi-bosyu-honsyo.html",
+   "animals": "犬・猫",
+   "conds": [
+    "千葉県に住む60歳以下の成人",
+    "同居の家族全員の同意（61歳以上や一人暮らしは後継人が必要）",
+    "集合住宅・賃貸は飼育が認められていること",
+    "講習会の受講が必要・面会は予約制（平日9時〜15時30分）",
+    "希望すれば自宅で2週間以内のトライアル",
+    "事前と譲渡後の訪問調査に協力"
+   ],
+   "links": [
+    {
+     "t": "合同譲渡会",
+     "u": "https://www.pref.chiba.lg.jp/aigo/godojotokai.html"
+    },
+    {
+     "t": "犬と猫との出会いの場",
+     "u": "https://www.pref.chiba.lg.jp/aigo/dogcat-meeting.html"
+    },
+    {
+     "t": "登録団体・ボランティア活動",
+     "u": "https://www.pref.chiba.lg.jp/aigo/bora-katudou.html"
+    },
+    {
+     "t": "東葛飾支所の飼い主募集",
+     "u": "https://www.pref.chiba.lg.jp/aigo/kainushi-bosyu-shisyo.html"
+    }
+   ]
+  },
+  {
+   "pref": "神奈川県",
+   "city": "",
+   "name": "神奈川県動物愛護センター",
+   "url": "https://www.pref.kanagawa.jp/osirase/1594/awc/receive/about.html",
+   "animals": "犬・猫・うさぎなど",
+   "conds": [
+    "神奈川県か東京都・山梨県・静岡県に住む、原則65歳以下の成人",
+    "家族全員が賛成・協力、飼育できる住まい、飼えなくなったときの預け先",
+    "譲渡前講習会（オンラインの約40分の動画、受講証は3年有効）→面接を予約",
+    "トライアルはしていない",
+    "先住動物がいると断ることがある",
+    "65歳を超える人は、おおむね10歳以上の小型犬・猫を対象に相談できる"
+   ],
+   "links": [
+    {
+     "t": "65歳を超える方の譲り受け",
+     "u": "https://www.pref.kanagawa.jp/osirase/1594/awc/receive/sinia.html"
+    },
+    {
+     "t": "譲受対象犬",
+     "u": "https://www.pref.kanagawa.jp/osirase/1594/awc/receive/dog.html"
+    },
+    {
+     "t": "譲受対象猫",
+     "u": "https://www.pref.kanagawa.jp/osirase/1594/awc/receive/cat.html"
+    }
+   ]
+  },
+  {
+   "pref": "新潟県",
+   "city": "",
+   "name": "新潟県動物愛護センター",
+   "url": "https://www.pref.niigata.lg.jp/sec/seikatueisei/nekoinunojouto.html",
+   "animals": "犬・猫",
+   "conds": [
+    "来館して動物と面会してから予約",
+    "不動産会社や後見人と連絡がとれないと予約できない（条件は環境調査票）",
+    "譲渡後に不妊去勢の報告"
+   ],
+   "links": []
+  },
+  {
+   "pref": "富山県",
+   "city": "",
+   "name": "富山県動物管理センター",
+   "url": "https://www.pref.toyama.jp/1207/kurashi/seikatsu/seikatsu/doubutsuaigo/dog.html",
+   "animals": "犬・猫",
+   "conds": [
+    "県内に住む成人・家族の同意",
+    "飼えなくなったときに代わりに飼える64歳以下の成人がいる",
+    "原則1世帯1頭",
+    "賃貸はペット可と分かる書類",
+    "申請書を出して電話で受付・譲渡講習会の受講が必要",
+    "来所は予約制の個別紹介（1日3組）",
+    "不妊手術・終生飼養"
+   ],
+   "links": [
+    {
+     "t": "保護ねこの飼い主募集",
+     "u": "https://www.pref.toyama.jp/1207/kurashi/seikatsu/seikatsu/doubutsuaigo/cat.html"
+    },
+    {
+     "t": "譲渡仲介制度",
+     "u": "https://www.pref.toyama.jp/1207/kurashi/seikatsu/seikatsu/doubutsuaigo/tyuukai-zyouto.html"
+    }
+   ]
+  },
+  {
+   "pref": "石川県",
+   "city": "",
+   "name": "いしかわ動物愛護センター",
+   "url": "https://aigo-ishikawa.jp/transfer/",
+   "animals": "犬・猫",
+   "conds": [
+    "18〜60歳で一人暮らしでない人（一人暮らしや61歳以上は18〜60歳の後見人の承諾書があれば可）",
+    "同居の人全員の同意",
+    "借家・集合住宅は飼育を認める書類",
+    "飼っている犬猫と合わせて2頭以下",
+    "猫は室内飼育",
+    "営利や広告に使わない"
+   ],
+   "links": [
+    {
+     "t": "譲渡の流れ",
+     "u": "https://aigo-ishikawa.jp/steps-to-transfer/"
+    }
+   ]
+  },
+  {
+   "pref": "福井県",
+   "city": "",
+   "name": "福井県動物愛護センター",
+   "url": "https://www.fapscsite.com/blank-14",
+   "animals": "犬・猫",
+   "conds": [
+    "センターの譲渡条件を満たす人（未成年は保護者の同意と同伴）",
+    "賃貸は飼育できる書類（契約書など）",
+    "犬・猫は適正飼育講習会の受講が必須",
+    "終生飼養の保証人を立てる",
+    "譲渡会の日や開所日（平日8時30分〜17時）に面会できる"
+   ],
+   "links": []
+  },
+  {
+   "pref": "山梨県",
+   "city": "",
+   "name": "山梨県動物愛護指導センター",
+   "url": "https://www.pref.yamanashi.jp/doubutsu/be_a_foster.html",
+   "animals": "犬・猫",
+   "conds": [
+    "県内に住む18歳以上",
+    "一人暮らしか60歳以上は保証人の同意",
+    "同居の人全員の同意・賃貸や集合住宅は貸主の了承",
+    "同じ種類の動物を飼っていない（猫は先住猫1匹まで条件つきで可）",
+    "講習会（約1時間）の受講が必須",
+    "不妊去勢・マイクロチップ・猫は室内飼育・譲渡後6か月以内に連絡票"
+   ],
+   "links": []
+  },
+  {
+   "pref": "長野県",
+   "city": "",
+   "name": "長野県動物愛護センター（ハローアニマル）",
+   "url": "https://www.pref.nagano.lg.jp/dobutsuaigo/joto/inu-neko/index.html",
+   "animals": "犬・猫",
+   "conds": [
+    "県内に住む18歳以上（学生を除く）・自分で飼う個人だけ",
+    "家族全員の賛成",
+    "集合住宅・借家は管理者の同意書",
+    "飼い方教室（学科）に参加、犬はパピー教室（実技）も",
+    "費用は犬1頭13,000円・猫1匹12,000円（現金のみ）",
+    "不妊去勢・ワクチン・マイクロチップはセンターで済ませてある",
+    "面会は予約制"
+   ],
+   "links": [
+    {
+     "t": "譲渡の要領",
+     "u": "https://www.pref.nagano.lg.jp/dobutsuaigo/joto/inu-neko/jotoyoryo.html"
+    }
+   ]
+  },
+  {
+   "pref": "岐阜県",
+   "city": "",
+   "name": "岐阜県動物愛護センター",
+   "url": "https://www.pref.gifu.lg.jp/page/11544.html",
+   "animals": "犬・猫",
+   "conds": [
+    "18歳以上で主に世話をする人",
+    "譲渡前の講習動画を見ておく",
+    "家族全員の同意・飼える住まい・身分証",
+    "飼えなくなったときに代わりに飼う人（65歳以上だけや一人暮らしは名前と連絡先を書く）",
+    "費用は1頭7,900円（不妊去勢をしていない子は2,400円）",
+    "猫は室内飼養・マイクロチップの登録"
+   ],
+   "links": [
+    {
+     "t": "譲渡の流れ",
+     "u": "https://www.pref.gifu.lg.jp/page/488240.html"
+    }
+   ]
+  },
+  {
+   "pref": "静岡県",
+   "city": "",
+   "name": "静岡県動物愛護センター",
+   "url": "https://www.pref.shizuoka.jp/kenkofukushi/eiseiyakuji/dobutsuaigo/1081733/index.html",
+   "animals": "犬・猫",
+   "conds": [
+    "県の内外を問わずエントリーできる（基準は県のPDF）",
+    "65歳以上は代わりに飼う65歳未満の人の誓約書",
+    "集合住宅・賃貸は飼える契約書などの写し",
+    "平日に電話で面談を予約、お迎えの日に約60分の飼育講習会",
+    "見学は予約制（土日祝も）",
+    "マイクロチップの登録手数料（オンライン400円・書面1,400円）"
+   ],
+   "links": []
+  },
+  {
+   "pref": "愛知県",
+   "city": "",
+   "name": "愛知県動物愛護センター",
+   "url": "https://wannyan-navi.pref.aichi.jp/",
+   "animals": "犬・猫",
+   "conds": [
+    "譲渡は有料：センターで不妊去勢をした犬猫9,000円、していない犬猫5,000円",
+    "飼い方講習会の申し込みはリンク先から"
+   ],
+   "links": [
+    {
+     "t": "譲渡の手数料",
+     "u": "https://www.pref.aichi.jp/soshiki/doukan-c/jyoutotesuuryou.html"
+    }
+   ]
+  },
+  {
+   "pref": "三重県",
+   "city": "",
+   "name": "三重県動物愛護推進センター（あすまいる）",
+   "url": "https://www.pref.mie.lg.jp/common/01/ci500012678.htm",
+   "animals": "犬・猫",
+   "conds": [
+    "健康診断・ノミダニ駆除・ワクチン・マイクロチップを済ませて譲渡（手数料あり。金額はリンク先の表）",
+    "手続きの流れはリンク先の図"
+   ],
+   "links": [
+    {
+     "t": "譲渡手続きの流れ",
+     "u": "https://www.pref.mie.lg.jp/ASMILE/83583044512_00003.htm"
+    },
+    {
+     "t": "譲渡手数料",
+     "u": "https://www.pref.mie.lg.jp/ASMILE/83583044512_00004.htm"
+    }
+   ]
+  },
+  {
+   "pref": "滋賀県",
+   "city": "",
+   "name": "滋賀県動物保護管理センター",
+   "url": "https://www.pref.shiga.lg.jp/doubutsuhogo/hoshii/102884.html",
+   "animals": "犬・猫",
+   "conds": [
+    "成人で、同居の家族全員の同意",
+    "集合住宅・借家は飼育の承認",
+    "譲渡前講習会の受講が必要・事前登録制（審査のあと希望を伝える）",
+    "猫は室内飼いできる人に限る",
+    "登録・狂犬病予防注射・不妊去勢の誓約"
+   ],
+   "links": []
+  },
+  {
+   "pref": "京都府",
+   "city": "",
+   "name": "京都動物愛護センター（京都府・京都市の共同）",
+   "url": "https://kyoto-ani-love.com/information/owner/recruit/",
+   "animals": "犬・猫",
+   "conds": [
+    "条件と流れはリンク先で確認"
+   ],
+   "links": []
+  },
+  {
+   "pref": "大阪府",
+   "city": "",
+   "name": "大阪府動物愛護管理センター",
+   "url": "https://www.pref.osaka.lg.jp/o120200/doaicenter/doaicenter/zyotonituite.html",
+   "animals": "犬・猫など",
+   "conds": [
+    "原則大阪府に住む人（一部は府外も可・要問い合わせ）",
+    "65歳以上は引受人の同伴と引受人確認書",
+    "集合住宅・借家は飼える規約などの書類",
+    "職員による譲渡前の自宅訪問と譲渡前講習会",
+    "先住動物（同じ種類）との相性を見る最長2週間のお試し（犬猫だけ・希望制）",
+    "譲渡後6か月以内に健康診断・不妊去勢の報告、6か月〜1年に近況の報告"
+   ],
+   "links": []
+  },
+  {
+   "pref": "奈良県",
+   "city": "",
+   "name": "奈良県うだ・アニマルパーク（動物愛護センター）",
+   "url": "https://www.pref.nara.lg.jp/n070/3371.html",
+   "animals": "犬・猫",
+   "conds": [
+    "県外に住む人も可（住まいの平面図を出す）",
+    "65歳以上は誓約書と65歳未満の飼育補助者",
+    "1日の留守が4時間以上だと迎えられる子が限られる",
+    "先住動物を含めて犬は2頭まで、猫は3頭まで（場合による）",
+    "講習会は動画（県のアプリで申し込み）",
+    "見学はガラス越し（猫は10時〜15時半ごろ、犬は散歩のとき）"
+   ],
+   "links": []
+  },
+  {
+   "pref": "和歌山県",
+   "city": "",
+   "name": "和歌山県動物愛護センター",
+   "url": "https://www.pref.wakayama.lg.jp/prefg/031601/d00221328.html",
+   "animals": "犬・猫",
+   "conds": [
+    "世帯全員の同意・代わりに飼う人の連絡先",
+    "高齢で支える人がいない、ペット禁止の住宅、先住の犬猫の不妊手術がまだ、などは譲渡できないことがある",
+    "正しい飼い方講習会の受講（マッチングは受講日から1年）",
+    "トライアルの制度はない",
+    "飼育と不妊の報告・アンケートや家庭訪問への協力"
+   ],
+   "links": []
+  },
+  {
+   "pref": "鳥取県",
+   "city": "",
+   "name": "鳥取県（中部・西部の保健所・動物愛護センター アミティエ）",
+   "url": "https://www.pref.tottori.lg.jp/220718.htm",
+   "animals": "犬・猫",
+   "conds": [
+    "保健所で譲り受けを希望する人の事前登録",
+    "見学は中部・西部の保健所に前もって電話で問い合わせ",
+    "県に登録した譲渡ボランティアのもとの犬猫も紹介"
+   ],
+   "links": []
+  },
+  {
+   "pref": "広島県",
+   "city": "",
+   "name": "広島県動物愛護センター",
+   "url": "https://www.pref.hiroshima.lg.jp/site/apc/contents-sincenterinunekonojouto.html",
+   "animals": "犬・猫",
+   "conds": [
+    "成人で、同居の人全員の同意（県外の人も可）",
+    "集合住宅・借家は飼育の承認、65歳以上は預け先を前もって決める",
+    "ほかに同じ種類の動物がいない人を優先（先住犬は登録・予防注射・不妊去勢済み、先住猫は屋内飼育・不妊去勢済み）",
+    "無料の譲渡前講習会（毎週土曜。受講済証は1年有効）",
+    "譲渡も講習会も無料",
+    "譲渡会は毎週土曜（10〜12時・13〜15時30分）、見学は自由"
+   ],
+   "links": []
+  },
+  {
+   "pref": "山口県",
+   "city": "",
+   "name": "山口県動物愛護センター",
+   "url": "https://www.pref.yamaguchi.lg.jp/site/doubutuaigo/list24.html",
+   "animals": "犬・猫",
+   "conds": [
+    "動物愛護センターの譲渡犬・猫と、健康福祉センターの収容犬・猫をリンク先で紹介",
+    "条件はリンク先で確認"
+   ],
+   "links": [
+    {
+     "t": "動物愛護センターの譲渡犬・猫",
+     "u": "https://www.pref.yamaguchi.lg.jp/site/doubutuaigo/list24-149.html"
+    }
+   ]
+  },
+  {
+   "pref": "香川県",
+   "city": "",
+   "name": "さぬき動物愛護センター しっぽの森",
+   "url": "https://www.pref.kagawa.lg.jp/s-doubutuaigo/sanukidouaicenter/jyouto/joutonagare.html",
+   "animals": "犬・猫",
+   "conds": [
+    "譲渡前講習の受講から始まる（流れはリンク先）"
+   ],
+   "links": [
+    {
+     "t": "譲渡犬・譲渡猫情報",
+     "u": "https://www.pref.kagawa.lg.jp/s-doubutuaigo/sanukidouaicenter/jyouto/s04u6e190311095146.html"
+    }
+   ]
+  },
+  {
+   "pref": "愛媛県",
+   "city": "",
+   "name": "愛媛県動物愛護センター",
+   "url": "https://www.pref.ehime.jp/page/16990.html",
+   "animals": "犬・猫",
+   "conds": [
+    "健康管理をした犬・猫を無料で譲渡",
+    "譲渡前講習会の受講が必要"
+   ],
+   "links": []
+  },
+  {
+   "pref": "高知県",
+   "city": "",
+   "name": "高知県（中央小動物管理センター・保健所）",
+   "url": "https://www.pref.kochi.lg.jp/doc/2016042100231/",
+   "animals": "犬・猫",
+   "conds": [
+    "申請の条件と様式は県の譲渡実施要領で確認"
+   ],
+   "links": []
+  },
+  {
+   "pref": "佐賀県",
+   "city": "",
+   "name": "佐賀県犬猫譲渡センター（いっしょけんね）",
+   "url": "https://www.pref.saga.lg.jp/kiji00314888/index.html",
+   "animals": "犬・猫",
+   "conds": [
+    "原則、県内に住む成人",
+    "家族全員の同意",
+    "賃貸・集合住宅は飼えるか確かめる",
+    "不妊去勢・犬は登録と狂犬病予防注射・猫は室内飼い",
+    "見学は10〜12時・13〜16時（土日祝は休み。第2土曜・第4日曜の10〜13時は開館）"
+   ],
+   "links": []
+  },
+  {
+   "pref": "大分県",
+   "city": "",
+   "name": "おおいた動物愛護センター",
+   "url": "https://www.pref.oita.jp/soshiki/12089/jyoto.html",
+   "animals": "犬・猫",
+   "conds": [
+    "大分県内に住む人",
+    "一家族に一匹まで",
+    "譲渡前講習会（犬は毎月第3水曜、猫は第4水曜。前日までに予約）",
+    "審査の結果、断られることもある"
+   ],
+   "links": []
+  },
+  {
+   "pref": "徳島県",
+   "city": "",
+   "name": "徳島県動物愛護管理センター",
+   "url": "https://www.douai-tokushima.com/transfer/",
+   "animals": "犬・猫",
+   "conds": [
+    "センターの講習会の受講が必要"
+   ],
+   "links": [
+    {
+     "t": "飼い主をさがす会",
+     "u": "https://www.douai-tokushima.com/foster"
+    }
+   ]
+  },
+  {
+   "pref": "岡山県",
+   "city": "",
+   "name": "岡山県動物愛護センター",
+   "url": "https://www.pref.okayama.jp/page/435473.html",
+   "animals": "犬・猫",
+   "conds": [
+    "審査に合った犬猫は譲渡会（岡山県動物愛護財団の主催）で",
+    "問題をかかえた犬猫は「特別譲渡」（問題点を理解して飼う覚悟が必要）"
+   ],
+   "links": [
+    {
+     "t": "特別譲渡",
+     "u": "https://www.pref.okayama.jp/page/429012.html"
+    },
+    {
+     "t": "譲渡会参加へのお願い",
+     "u": "https://www.pref.okayama.jp/page/952330.html"
+    }
+   ]
+  },
+  {
+   "pref": "熊本県",
+   "city": "",
+   "name": "熊本県動物愛護センター（アニマルフレンズ熊本）",
+   "url": "https://www.kumamoto-doubutuaigo.jp/",
+   "animals": "犬・猫",
+   "conds": [
+    "譲渡対象者の基準で審査",
+    "譲渡講習会を受講",
+    "原則2週間以内のトライアル（終わったら一度センターに返して報告書）"
+   ],
+   "links": [
+    {
+     "t": "保護犬・猫のトライアル制度",
+     "u": "https://www.pref.kumamoto.jp/soshiki/217/208357.html"
+    },
+    {
+     "t": "休日譲渡会",
+     "u": "https://www.pref.kumamoto.jp/soshiki/217/205685.html"
+    },
+    {
+     "t": "登録譲渡ボランティア",
+     "u": "https://www.pref.kumamoto.jp/soshiki/30/4958.html"
+    }
+   ]
+  },
+  {
+   "pref": "島根県",
+   "city": "",
+   "name": "島根県（各保健所）",
+   "url": "https://www.pref.shimane.lg.jp/infra/nature/animal/aigo_izumo/doubutu_jyouhou/inunekonokainusibosyuu.html",
+   "animals": "犬・猫",
+   "conds": [
+    "保健所ごとに譲渡の情報（松江・出雲・浜田・雲南など）を出している"
+   ],
+   "links": [
+    {
+     "t": "松江・安来の譲渡情報",
+     "u": "https://www.pref.shimane.lg.jp/infra/nature/animal/matsue_hoken/jyouto/jyotojyoho.html"
+    },
+    {
+     "t": "浜田保健所の譲渡情報",
+     "u": "https://www.pref.shimane.lg.jp/infra/nature/animal/hamada_hoken/joutojouhou.html"
+    }
+   ]
+  },
+  {
+   "pref": "長崎県",
+   "city": "",
+   "name": "長崎県（アニマルポートながさき・ながさき犬猫ネット）",
+   "url": "https://animal-net.pref.nagasaki.jp/",
+   "animals": "犬・猫",
+   "conds": [
+    "県内の譲渡の犬猫をまとめて紹介"
+   ],
+   "links": []
+  },
+  {
+   "pref": "東京都",
+   "city": "",
+   "name": "東京都動物愛護相談センター",
+   "url": "https://www.hokeniryo.metro.tokyo.lg.jp/shisetsu/jigyosyo/douso/e092000020240329143058713",
+   "animals": "犬・猫など",
+   "conds": [
+    "講習会をしたうえで譲渡",
+    "登録したボランティア団体（譲渡対象団体）を通して新しい飼い主をさがすことも多い",
+    "保護犬・保護猫の情報は都の「ワンニャンとうきょう」に"
+   ],
+   "links": [
+    {
+     "t": "東京都動物情報サイト「ワンニャンとうきょう」",
+     "u": "https://www.hokeniryo.metro.tokyo.lg.jp/kankyo/aigo/wannyan"
+    }
+   ]
+  },
+  {
+   "pref": "兵庫県",
+   "city": "",
+   "name": "兵庫県動物愛護センター",
+   "url": "https://hyogo-douai.sakura.ne.jp/jouto.html",
+   "animals": "犬・猫",
+   "conds": [
+    "兵庫県内に住む人",
+    "一人暮らし・転居予定・未成年・高齢の人は原則受けられない",
+    "賃貸・集合住宅は管理規約か賃貸契約の写し",
+    "同じ種類の動物をすでに飼っていると断られることがある",
+    "譲渡会の講習のあとにお渡し",
+    "犬は譲渡後約2週間と1年後に家庭訪問・約1か月後にしつけ方教室、猫は約半年後に飼育状況の調査",
+    "見学は各所の「ふれあいの時間」（原則電話予約）"
+   ],
+   "links": []
+  },
+  {
+   "pref": "鹿児島県",
+   "city": "",
+   "name": "鹿児島県動物愛護センター",
+   "url": "https://www.pref.kagoshima.jp/kenko-fukushi/yakuji-eisei/dobotu/jouto/index.html",
+   "animals": "犬・猫",
+   "conds": [
+    "条件は県の「犬・猫の譲渡実施要領」で確認"
+   ],
+   "links": []
+  },
+  {
+   "pref": "沖縄県",
+   "city": "",
+   "name": "沖縄県動物愛護管理センター",
+   "url": "https://www.pref.okinawa.jp/kurashikankyo/petgaiju/1018720/1005084.html",
+   "animals": "犬・猫",
+   "conds": [
+    "収容期限が過ぎた成犬をセンターの譲渡会で譲渡",
+    "申し込みには誓約書など",
+    "八重山保健所の案内は別ページ"
+   ],
+   "links": [
+    {
+     "t": "八重山保健所の譲渡",
+     "u": "https://www.pref.okinawa.lg.jp/kurashikankyo/petgaiju/1018720/1005101.html"
+    }
+   ]
+  },
+  {
+   "pref": "宮崎県",
+   "city": "",
+   "name": "宮崎県（みやざきドッグ愛ランド）",
+   "url": "https://dog.pref.miyazaki.lg.jp/modules/pico01/index.php?content_id=1",
+   "animals": "犬・猫",
+   "conds": [
+    "保健所などを通じて新しい飼い主をさがすしくみ（登録は原則宮崎県内に住む人）",
+    "営利目的は不可",
+    "犬を譲り受けたら登録・狂犬病予防注射"
+   ],
+   "links": []
+  },
+  {
+   "pref": "福岡県",
+   "city": "",
+   "name": "福岡県（保健福祉環境事務所・動物愛護センター）",
+   "url": "https://www.pref.fukuoka.lg.jp/life/1/6/361/",
+   "animals": "犬・猫",
+   "conds": [
+    "譲渡の窓口と条件は県のペットのページから確認（福岡市・北九州市・久留米市はそれぞれの市が担当）"
+   ],
+   "links": []
+  },
+  {
+   "pref": "北海道",
+   "city": "札幌市",
+   "name": "札幌市動物愛護管理センター（あいまる さっぽろ）",
+   "url": "https://www.city.sapporo.jp/inuneko/syuuyou_doubutsu/joutoinuneko.html",
+   "animals": "犬・猫",
+   "conds": [
+    "面談で家族構成や住宅事情を確かめる",
+    "先住動物がいるときだけ譲渡後2週間のトライアル",
+    "見学は予約不要（身分証とキャリー、犬は首輪とリードを持参）",
+    "市内で犬を飼う人は犬の登録手数料3,200円"
+   ],
+   "links": []
+  },
+  {
+   "pref": "宮城県",
+   "city": "仙台市",
+   "name": "仙台市動物管理センター（アニパル仙台）",
+   "url": "https://www.city.sendai.jp/dobutsu/kurashi/shizen/petto/hogodobutsu/joho/jyoutojigyou.html",
+   "animals": "犬・猫",
+   "conds": [
+    "条件と流れはリンク先で確認",
+    "土曜日に猫の譲渡会あり"
+   ],
+   "links": [
+    {
+     "t": "アニパル仙台猫日和譲渡会",
+     "u": "https://www.city.sendai.jp/dobutsu/kurashi/shizen/petto/hogodobutsu/joho/nekobiyorijotokai.html"
+    }
+   ]
+  },
+  {
+   "pref": "埼玉県",
+   "city": "さいたま市",
+   "name": "さいたま市動物愛護ふれあいセンター",
+   "url": "https://www.city.saitama.lg.jp/008/004/003/005/p007933.html",
+   "animals": "犬・猫",
+   "conds": [
+    "条件と流れはリンク先で確認"
+   ],
+   "links": []
+  },
+  {
+   "pref": "千葉県",
+   "city": "千葉市",
+   "name": "千葉市動物保護指導センター",
+   "url": "https://www.city.chiba.jp/hokenfukushi/iryoeisei/seikatsueisei/dobutsuhogo/060_transfer.html",
+   "animals": "犬・猫",
+   "conds": [
+    "条件と流れはリンク先で確認"
+   ],
+   "links": []
+  },
+  {
+   "pref": "神奈川県",
+   "city": "横浜市",
+   "name": "横浜市動物愛護センター",
+   "url": "https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/pet-dobutsu/aigo/joto/kojin.html",
+   "animals": "犬・猫など",
+   "conds": [
+    "成人で、同居の人全員の同意",
+    "集合住宅・賃貸は飼える契約書など、猫は屋内飼育",
+    "飼えなくなったときに代わりに飼う人を決めて誓約書",
+    "面談のときにお見合い（犬1頭、猫は2頭まで）",
+    "市内で犬を飼う人は登録手数料3,000円"
+   ],
+   "links": []
+  },
+  {
+   "pref": "神奈川県",
+   "city": "川崎市",
+   "name": "川崎市動物愛護センター",
+   "url": "https://www.city.kawasaki.jp/shisei/category/288-11-1-6-2-0-0-0-0-0.html",
+   "animals": "犬・猫・うさぎなど",
+   "conds": [
+    "神奈川県内・東京都内か、センターに通い続けられる地域に住む、原則65歳未満の成人",
+    "家族全員の同意、集合住宅・借家は規約の写し",
+    "電話で相談→予約制の譲渡前講習会→職員との面談で選考",
+    "毎月の譲渡会あり"
+   ],
+   "links": [
+    {
+     "t": "毎月の譲渡会",
+     "u": "https://www.city.kawasaki.jp/350/page/0000158129.html"
+    }
+   ]
+  },
+  {
+   "pref": "神奈川県",
+   "city": "相模原市",
+   "name": "相模原市（動物愛護の担当）",
+   "url": "https://www.city.sagamihara.kanagawa.jp/kosodate/kenko/1026628/pet/1022974.html",
+   "animals": "猫",
+   "conds": [
+    "条件と流れはリンク先で確認",
+    "市に登録した譲渡対象団体からも譲り受けられる"
+   ],
+   "links": [
+    {
+     "t": "市に登録した譲渡対象団体",
+     "u": "https://www.city.sagamihara.kanagawa.jp/kosodate/kenko/1026628/pet/1007473.html"
+    }
+   ]
+  },
+  {
+   "pref": "新潟県",
+   "city": "新潟市",
+   "name": "新潟市動物愛護センター",
+   "url": "https://www.city.niigata.lg.jp/kurashi/animal/animal_aigo/jyouto/index.html",
+   "animals": "犬・猫",
+   "conds": [
+    "条件と流れはリンク先で確認"
+   ],
+   "links": []
+  },
+  {
+   "pref": "静岡県",
+   "city": "静岡市",
+   "name": "静岡市動物愛護館",
+   "url": "https://www.city.shizuoka.lg.jp/000_003534.html",
+   "animals": "犬・猫",
+   "conds": [
+    "条件と流れはリンク先で確認",
+    "成犬譲渡制度・子猫の譲渡あり"
+   ],
+   "links": [
+    {
+     "t": "子猫の譲渡",
+     "u": "https://www.city.shizuoka.lg.jp/s3276/s001872.html"
+    }
+   ]
+  },
+  {
+   "pref": "静岡県",
+   "city": "浜松市",
+   "name": "浜松市動物愛護教育センター",
+   "url": "https://www.city.hamamatsu.shizuoka.jp/maps/n-dou-aigo.html",
+   "animals": "犬・猫",
+   "conds": [
+    "条件と流れはリンク先で確認"
+   ],
+   "links": []
+  },
+  {
+   "pref": "愛知県",
+   "city": "名古屋市",
+   "name": "名古屋市動物愛護センター",
+   "url": "https://www.city.nagoya.jp/kenkofukushi/page/0000010005.html",
+   "animals": "犬・猫",
+   "conds": [
+    "条件と流れはリンク先で確認",
+    "長く収容している犬の紹介コーナーもある"
+   ],
+   "links": [
+    {
+     "t": "譲渡ボランティア一覧",
+     "u": "https://www.city.nagoya.jp/kurashi/pet/1015473/1015483/1015487.html"
+    },
+    {
+     "t": "長期収容犬の紹介",
+     "u": "https://www.city.nagoya.jp/kurashi/pet/1015473/1015483/1015484.html"
+    }
+   ]
+  },
+  {
+   "pref": "大阪府",
+   "city": "大阪市",
+   "name": "おおさかワンニャンセンター（大阪市）",
+   "url": "https://www.city.osaka.lg.jp/kenko/page/0000225856.html",
+   "animals": "犬・猫",
+   "conds": [
+    "事前申込制で審査（申込書はオンラインでも出せる）",
+    "主に世話をする人が66歳以上なら、世話を頼める65歳以下の成人の了承",
+    "集合住宅・借家は規約の写し",
+    "参加証が届いたら「ワンニャン教室」（毎週水曜、電話予約）で講習と譲渡",
+    "不妊去勢（犬はすみやかに、猫は1年以内）・6か月〜1年以内に報告"
+   ],
+   "links": []
+  },
+  {
+   "pref": "大阪府",
+   "city": "堺市",
+   "name": "堺市動物指導センター",
+   "url": "https://www.city.sakai.lg.jp/kurashi/dobutsu/dogcat/inunekojoto/joto.html",
+   "animals": "犬・猫",
+   "conds": [
+    "飼育希望の登録制（条件は市の登録の案内で確認）"
+   ],
+   "links": [
+    {
+     "t": "堺市犬猫譲渡制度実施要領",
+     "u": "https://www.city.sakai.lg.jp/shisei/sonota/jyorei/youkou/hokeneisei/71309420211209165757235.html"
+    }
+   ]
+  },
+  {
+   "pref": "兵庫県",
+   "city": "神戸市",
+   "name": "神戸市動物管理センター",
+   "url": "https://www.city.kobe.lg.jp/a84140/kenko/health/hygiene/animal/jotokai/index.html",
+   "animals": "犬・猫",
+   "conds": [
+    "条件と流れはリンク先で確認"
+   ],
+   "links": [
+    {
+     "t": "犬及び猫の団体譲渡",
+     "u": "https://www.city.kobe.lg.jp/a84140/kenko/health/hygiene/animal/dantaijoto.html"
+    }
+   ]
+  },
+  {
+   "pref": "岡山県",
+   "city": "岡山市",
+   "name": "岡山市保健所",
+   "url": "https://www.city.okayama.jp/kurashi/0000016432.html",
+   "animals": "犬・猫",
+   "conds": [
+    "条件と流れはリンク先で確認",
+    "猫は別ページ「猫の譲渡希望者の方へ」"
+   ],
+   "links": [
+    {
+     "t": "猫の譲渡希望者の方へ",
+     "u": "https://www.city.okayama.jp/kurashi/0000016366.html"
+    },
+    {
+     "t": "譲渡に協力しているボランティア",
+     "u": "https://www.city.okayama.jp/kurashi/0000028599.html"
+    }
+   ]
+  },
+  {
+   "pref": "広島県",
+   "city": "広島市",
+   "name": "広島市動物管理センター",
+   "url": "https://www.city.hiroshima.lg.jp/living/pet-doubutsu/1021301/1026246/1023087.html",
+   "animals": "犬・猫",
+   "conds": [
+    "広島市・府中町に住む18歳以上（高校生を除く）",
+    "60歳以上や一人暮らしは飼育を引き継ぐ人",
+    "同居の家族全員の同意、集合住宅・借家は管理組合か家主の同意書",
+    "飼い方の指導（30分ほど）",
+    "見学は平日・電話予約",
+    "不妊去勢を確実に・譲渡後の調査に協力"
+   ],
+   "links": []
+  },
+  {
+   "pref": "福岡県",
+   "city": "北九州市",
+   "name": "北九州市動物愛護センター",
+   "url": "https://www.city.kitakyushu.lg.jp/contents/924_11834.html",
+   "animals": "犬・猫",
+   "conds": [
+    "条件と流れはリンク先で確認",
+    "センターの譲渡会は事前予約制"
+   ],
+   "links": [
+    {
+     "t": "譲渡対象猫の紹介",
+     "u": "https://www.city.kitakyushu.lg.jp/contents/924_11835.html"
+    }
+   ]
+  },
+  {
+   "pref": "福岡県",
+   "city": "福岡市",
+   "name": "福岡市動物愛護管理センター（わんにゃんよかネット）",
+   "url": "https://www.wannyan.city.fukuoka.lg.jp/yokanet/assignment",
+   "animals": "犬・猫",
+   "conds": [
+    "条件と流れはリンク先で確認",
+    "譲渡犬猫のトライアル制度あり"
+   ],
+   "links": [
+    {
+     "t": "譲渡犬猫のトライアル制度",
+     "u": "https://www.wannyan.city.fukuoka.lg.jp/yokanet/news/archives/459"
+    }
+   ]
+  },
+  {
+   "pref": "熊本県",
+   "city": "熊本市",
+   "name": "熊本市動物愛護センター",
+   "url": "https://www.city.kumamoto.jp/doubutuaigo/list03629.html",
+   "animals": "犬・猫",
+   "conds": [
+    "これまでの飼育と今の環境から判断（基準は市のPDF）",
+    "見学は平日10〜16時・予約制",
+    "犬の見学会・猫の譲渡会を開くことがある"
+   ],
+   "links": []
+  }
+ ]
+}
