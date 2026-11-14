@@ -1,58 +1,290 @@
-# [B] 2026-11-14 Nori「葬儀、火葬、迷子、躾、ホテルとか他も全部犬種ごとにフィルターして、それぞれの情報があるほうがいいね」
-# 記事の「うちの子で見る」（犬種・体重のしぼりこみ、tools/visual.py の breeds）で使う犬種の一覧。
-#  - name・group・trait・url は ジャパンケネルクラブ（JKC）の犬種のページ（2026-11-14 に確認）。trait は「習性／性格」の文をそのまま。
+# [B] 2026-11-14 Nori「葬儀、火葬、迷子、躾、ホテルとか他も全部犬種ごとにフィルターして」→ 同日「地域と犬種の網羅性がひくすぎ」「全部網羅して」
+# 記事の「うちの子で見る」（犬種・体重のしぼりこみ、tools/visual.py の breeds）で使う犬種・猫種の一覧。
+#  - 犬：ジャパンケネルクラブ（JKC）が公認する全犬種（10グループのページ、2026-11-14 に確認）。並びは JKC の 2025年の犬籍登録頭数の多い順（上位60）→ そのほか。
+#    trait は JKC の犬種のページの「習性／性格」の文をそのまま（確かめた犬種だけ。空は未確認）。
 #  - kg は体重の区分（小型・中型・大型など）に当てはめるためだけの目安。JKC が体重を書いている犬種は kg_src="JKC"、
-#    書いていない犬種（体高だけ）は一般的な目安で kg_src="目安"。記事の金額などの計算には使わない（区分にだけ使う）。
-#  - tags：短頭種（brachy）など、記事のカードを犬種のなかまで出すときの印。
-# 犬種を足すときは JKC のページで確かめてから。猫は id="cat"（犬種ではないが、同じ選択欄に出す）。
+#    書いていない犬種は一般的な目安で kg_src="目安"。記事の金額などの計算には使わない（区分にだけ使う）。
+#  - tags：brachy＝ANA が夏に預かりを中止する「短頭犬種」に挙げている犬種（ANA 国内線の案内、2026-11-14 確認）、jp＝日本犬。
+#  - 猫：主な猫の種類（アニコム損保「猫種ランキング2026」の上位と、CFA などの登録団体の猫種）。どれも記事の「cat」のカードに当たる。
+# 犬種を足すときは JKC のページで確かめてから。
 
 JKC = "https://www.jkc.or.jp/breeds/"
+JKC_RANK = ("ジャパンケネルクラブ「犬種別犬籍登録頭数」（2025年）", "https://www.jkc.or.jp/registr-statistics/")
+CAT_RANK = ("アニコム損保「猫種ランキング2026」", "https://www.anicom-sompo.co.jp/special/name_cat/cat_2026/")
 
-BREEDS = [
- dict(id="tpoodle", name="トイ・プードル", kg=(2, 4.5), kg_src="目安", group=9, url=JKC + "poodle/",
-      trait="忠誠心、学習能力及び訓練性能で知られており、そのためコンパニオン・ドッグとして非常に適している。"),
- dict(id="chihuahua", name="チワワ", kg=(1, 3), kg_src="JKC", group=9, url=JKC + "chihuahua/",
-      trait="機敏で注意深く、活発であり、大変勇敢である。"),
- dict(id="dachs", name="ミニチュア・ダックスフンド", kg=(3.5, 6), kg_src="目安", group=4, url=JKC + "dachshund/",
-      trait="生まれつき友好的で、落ち着きがあり、怖がりでも、攻撃的でもない。情熱的で、辛抱強く、優れた嗅覚を持ち、素早い狩猟を行う。"),
- dict(id="pome", name="ポメラニアン", kg=(1.5, 3.5), kg_src="目安", group=5, url=JKC + "pomeranian/",
-      trait="常に注意深く、活発で、主人への忠誠心が非常に強い。たいへん学習能力が高く、訓練しやすい。"),
- dict(id="shiba", name="柴", kg=(7, 11), kg_src="目安", group=5, url=JKC + "shiba/", tags=["jp"],
-      trait="忠実で、感覚鋭敏、警戒心に富んでいる。"),
- dict(id="mschnauzer", name="ミニチュア・シュナウザー", kg=(4, 8), kg_src="JKC", group=2, url=JKC + "miniature-schnauzer/",
-      trait="利口で、怖いもの知らず、忍耐強く、敏捷である。"),
- dict(id="yorkie", name="ヨークシャー・テリア", kg=(1.5, 3.2), kg_src="JKC", group=3, url=JKC + "yorkshire-terrier/",
-      trait="用心深く、利口なトイ・テリアである。気質は安定しており、勇敢である。"),
- dict(id="frenchie", name="フレンチ・ブルドッグ", kg=(8, 14), kg_src="JKC", group=9, url=JKC + "french-bulldog/", tags=["brachy"],
-      trait="社交的、且つ、活発で、遊び好きで、独占欲が強く、鋭敏なコンパニオン・ドッグである。"),
- dict(id="shihtzu", name="シー・ズー", kg=(4.5, 8), kg_src="JKC", group=9, url=JKC + "shih-tzu/", tags=["brachy"],
-      trait="理解力があり、活動的で、敏活である。友好的で、自立心がある。"),
- dict(id="maltese", name="マルチーズ", kg=(2, 4), kg_src="目安", group=9, url=JKC + "maltese/",
-      trait="活発で、優美だがたくましく、気品がある（一般外貌より）。"),
- dict(id="papillon", name="パピヨン", kg=(2, 5), kg_src="目安", group=9, url=JKC + "papillon/",
-      trait=""),
- dict(id="mpin", name="ミニチュア・ピンシャー", kg=(4, 6), kg_src="JKC", group=2, url=JKC + "miniature-pinscher/",
-      trait="活発で、元気のよい、自信に満ちた穏やかな性格である。"),
- dict(id="pug", name="パグ", kg=(6.3, 8.1), kg_src="JKC", group=9, url=JKC + "pug/", tags=["brachy"],
-      trait="かなりの愛嬌があり、威厳と理解力がある。安定した性格で、愉快で、活発な性格である。"),
- dict(id="cavalier", name="キャバリア・キング・チャールズ・スパニエル", kg=(5.4, 8), kg_src="JKC", group=9, url=JKC + "cavalier-king-charles-spaniel/",
-      trait="運動好きで、愛情深く、恐れ知らずである。明るく、友好的で攻撃性はない。"),
- dict(id="jrt", name="ジャック・ラッセル・テリア", kg=(5, 6), kg_src="JKC", group=3, url=JKC + "jack-russell-terrier/",
-      trait="活発であり、機敏で活動的なテリアである。大胆不敵。友好的だが、沈着冷静である。"),
- dict(id="beagle", name="ビーグル", kg=(8, 14), kg_src="目安", group=6, url=JKC + "beagle/",
-      trait="狩猟を本来の機能とする快活なハウンドであり、臭跡をたどって主に野ウサギの猟を行う。用心深く、利口で、穏やかな性格である。"),
- dict(id="corgi", name="ウェルシュ・コーギー・ペンブローク", kg=(9, 12), kg_src="JKC", group=1, url=JKC + "welsh-corgi-pembroke/",
-      trait="外見は大胆で、働き者。外向的で、友好的。神経質であったり、攻撃的ではない。"),
- dict(id="border", name="ボーダー・コリー", kg=(14, 22), kg_src="目安", group=1, url=JKC + "border-collie/",
-      trait="鋭敏で、注意深い。又、責任感があり、聡明。神経質でも、攻撃的でもない。"),
- dict(id="golden", name="ゴールデン・レトリーバー", kg=(25, 36), kg_src="目安", group=8, url=JKC + "golden-retriever/",
-      trait="従順で、利口で天賦の作業能力を備える。優しく、友好的で、自信に満ちている。"),
- dict(id="lab", name="ラブラドール・レトリーバー", kg=(25, 36), kg_src="目安", group=8, url=JKC + "labrador-retriever/",
-      trait="気立てが良く、たいへん聡明である。理解力があり、鋭敏で、柔順で、人に喜ばれるのを好む。"),
- dict(id="bernese", name="バーニーズ・マウンテン・ドッグ", kg=(35, 50), kg_src="目安", group=2, url=JKC + "bernese-mountain-dog/",
-      trait="日常生活では自信に満ち、注意深く、油断がなく、また怖いもの知らず。性格が良く飼い主には献身的で、他人に対しても穏やかで、自信を持って接する。"),
+# (id, 名前, JKCのページ, グループ, (下限kg, 上限kg), kg_src, tags, 性格)
+_D = [
+ # --- JKC 2025年 登録の多い順（上位60） ---
+ ("tpoodle", "トイ・プードル", "poodle", 9, (2, 4.5), "目安", [], "忠誠心、学習能力及び訓練性能で知られており、そのためコンパニオン・ドッグとして非常に適している。"),
+ ("chihuahua", "チワワ", "chihuahua", 9, (1, 3), "JKC", [], "機敏で注意深く、活発であり、大変勇敢である。"),
+ ("dachs", "ミニチュア・ダックスフンド", "dachshund", 4, (3.5, 6), "目安", [], "生まれつき友好的で、落ち着きがあり、怖がりでも、攻撃的でもない。情熱的で、辛抱強く、優れた嗅覚を持ち、素早い狩猟を行う。"),
+ ("pome", "ポメラニアン", "pomeranian", 5, (1.5, 3.5), "目安", [], "常に注意深く、活発で、主人への忠誠心が非常に強い。たいへん学習能力が高く、訓練しやすい。"),
+ ("mschnauzer", "ミニチュア・シュナウザー", "miniature-schnauzer", 2, (4, 8), "JKC", [], "利口で、怖いもの知らず、忍耐強く、敏捷である。"),
+ ("maltese", "マルチーズ", "maltese", 9, (2, 4), "目安", [], "活発で、優美だがたくましく、気品がある（一般外貌より）。"),
+ ("frenchie", "フレンチ・ブルドッグ", "french-bulldog", 9, (8, 14), "JKC", ["brachy"], "社交的、且つ、活発で、遊び好きで、独占欲が強く、鋭敏なコンパニオン・ドッグである。"),
+ ("yorkie", "ヨークシャー・テリア", "yorkshire-terrier", 3, (1.5, 3.2), "JKC", [], "用心深く、利口なトイ・テリアである。気質は安定しており、勇敢である。"),
+ ("bichon", "ビション・フリーゼ", "bichon-frise", 9, (4, 6), "JKC", [], "どこへでも問題なく連れて行くことができる、真のコンパニオン・ドッグである。神経質でも、しばしば吠えることもなく、知らない人や犬に対しても大変社交的である。"),
+ ("shihtzu", "シー・ズー", "shih-tzu", 9, (4.5, 8), "JKC", ["brachy"], "理解力があり、活動的で、敏活である。友好的で、自立心がある。"),
+ ("golden", "ゴールデン・レトリーバー", "golden-retriever", 8, (25, 36), "目安", [], "従順で、利口で天賦の作業能力を備える。優しく、友好的で、自信に満ちている。"),
+ ("pug", "パグ", "pug", 9, (6.3, 8.1), "JKC", ["brachy"], "かなりの愛嬌があり、威厳と理解力がある。安定した性格で、愉快で、活発な性格である。"),
+ ("corgi", "ウェルシュ・コーギー・ペンブローク", "welsh-corgi-pembroke", 1, (9, 12), "JKC", [], "外見は大胆で、働き者。外向的で、友好的。神経質であったり、攻撃的ではない。"),
+ ("border", "ボーダー・コリー", "border-collie", 1, (14, 22), "目安", [], "鋭敏で、注意深い。又、責任感があり、聡明。神経質でも、攻撃的でもない。"),
+ ("pekingese", "ペキニーズ", "pekingese", 9, (3.5, 5.4), "JKC", ["brachy"], "怖いもの知らずで、忠実で、超然としているが、臆病であったり、攻撃的ではない。"),
+ ("shiba", "柴", "shiba", 5, (7, 11), "目安", ["jp"], "忠実で、感覚鋭敏、警戒心に富んでいる。"),
+ ("cavalier", "キャバリア・キング・チャールズ・スパニエル", "cavalier-king-charles-spaniel", 9, (5.4, 8), "JKC", [], "運動好きで、愛情深く、恐れ知らずである。明るく、友好的で攻撃性はない。"),
+ ("papillon", "パピヨン", "papillon", 9, (2, 5), "目安", [], ""),
+ ("lab", "ラブラドール・レトリーバー", "labrador-retriever", 8, (25, 36), "目安", [], "気立てが良く、たいへん聡明である。理解力があり、鋭敏で、柔順で、人に喜ばれるのを好む。"),
+ ("iggy", "イタリアン・グレーハウンド", "italian-greyhound", 10, (3, 5), "JKC", [], "陽気で、愛情豊かで、従順である。"),
+ ("jrt", "ジャック・ラッセル・テリア", "jack-russell-terrier", 3, (5, 6), "JKC", [], "活発であり、機敏で活動的なテリアである。大胆不敵。友好的だが、沈着冷静である。"),
+ ("mpin", "ミニチュア・ピンシャー", "miniature-pinscher", 2, (4, 6), "JKC", [], "活発で、元気のよい、自信に満ちた穏やかな性格である。"),
+ ("husky", "シベリアン・ハスキー", "siberian-husky", 5, (15.5, 28), "JKC", [], ""),
+ ("sheltie", "シェットランド・シープドッグ", "shetland-sheepdog", 1, (6, 10), "目安", [], "機敏でやさしく、知的で力強く、活動的である。飼い主に対して愛情深く良く反応を示し、見知らぬ人に対しては打ち解けにくいが、神経質ではない。"),
+ ("boston", "ボストン・テリア", "boston-terrier", 9, (4, 11.35), "JKC", ["brachy"], "友好的で、快活な性格である。優れた性格であり、高い知性を有しており、比類ない家庭犬である。"),
+ ("acocker", "アメリカン・コッカー・スパニエル", "american-cocker-spaniel", 8, (9, 14), "目安", [], "穏やかな気質で、臆病ではない。"),
+ ("beagle", "ビーグル", "beagle", 6, (8, 14), "目安", [], "狩猟を本来の機能とする快活なハウンドであり、臭跡をたどって主に野ウサギの猟を行う。用心深く、利口で、穏やかな性格である。"),
+ ("jspitz", "日本スピッツ", "japanese-spitz", 5, (5, 10), "目安", ["jp"], "明朗かつ利口で、感覚は鋭い。喧騒であってはならない。"),
+ ("bernese", "バーニーズ・マウンテン・ドッグ", "bernese-mountain-dog", 2, (35, 50), "目安", [], "日常生活では自信に満ち、注意深く、油断がなく、また怖いもの知らず。性格が良く飼い主には献身的で、他人に対しても穏やかで、自信を持って接する。"),
+ ("bulldog", "ブルドッグ", "bulldog", 2, (22, 25), "JKC", ["brachy"], "判断力があり、力強く、活動的な印象を与える。鋭敏で、果敢、忠誠心があり、信頼でき、勇敢。外見は怖そうだが、愛情深い気質である。"),
+ ("samoyed", "サモエド", "samoyed", 5, (17, 30), "目安", [], "友好的で、開放的、注意深く、活き活きとしている。狩猟本能はごく僅かである。シャイでも攻撃的でもない。"),
+ ("doberman", "ドーベルマン", "dobermann", 2, (32, 45), "JKC", [], "ドーベルマンの気質は友好的で、穏やかである。家族に非常に忠実である。中庸な気性と鋭敏さ（警戒心）が望まれる。"),
+ ("westie", "ウエスト・ハイランド・ホワイト・テリア", "west-highland-white-terrier", 3, (6, 10), "目安", [], "小さく、活動的で、勇敢。自尊心は高く、いたずらっ子である。鋭敏で、陽気で、勇気があり、独立心が強いが、友好的である。"),
+ ("pyrenees", "グレート・ピレニーズ", "great-pyrenees", 2, (40, 60), "目安", [], "力強く敏捷であり、また穏やかで護衛するものに対する意識が高い。"),
+ ("chin", "狆", "chin", 9, (2, 4), "目安", ["brachy", "jp"], "利口でおとなしく、愛らしい性質を有している。"),
+ ("gshepherd", "ジャーマン・シェパード・ドッグ", "german-shepherd-dog", 1, (22, 40), "JKC", [], "安定した性格で、バランスが取れていて、大胆である。自信に満ち、全体的に落ち着いており（怒った時以外）、性格が良く、注意深く、訓練しやすい。"),
+ ("ecocker", "イングリッシュ・コッカー・スパニエル", "english-cocker-spaniel", 8, (13, 14.5), "JKC", [], "明るい性格で、絶えず振られる尾は、典型的な活発な動きを見せる。穏やかで愛情深いが、大変活動的である。"),
+ ("whippet", "ウィペット", "whippet", 10, (10, 16), "目安", [], "理想的なコンパニオンである。家庭でも、スポーツをする環境でもたいへん適応しやすい。優しく、愛情豊かで、むらのない性質である。"),
+ ("borzoi", "ボルゾイ", "borzoi", 10, (30, 48), "目安", [], "穏やかな気質で、視覚反応は非常にはっきりとしている。人に対する態度は、自然か友好的である。"),
+ ("akita", "秋田", "akita", 5, (30, 50), "目安", ["jp"], "性質は沈着、忠実、従順で、感覚鋭敏である。"),
+ ("oes", "オールド・イングリッシュ・シープドッグ", "old-english-sheepdog", 1, (27, 45), "目安", [], "安定した気質をもつ、従順な犬である。勇敢で誠実、そして信頼がおける。神経質であったり、不意に攻撃的になることはない。"),
+ ("flatcoat", "フラットコーテッド・レトリーバー", "flat-coated-retriever", 8, (25, 36), "JKC", [], "楽天的で友好的である。自信に満ちており、また優しい性格をしている。"),
+ ("weimaraner", "ワイマラナー", "weimaraner", 7, (25, 40), "JKC", [], "多才で、容易に節度のある訓練が入ったり、情熱的なハンティング・ドッグとして訓練することもできる。計画的な探索には根気がよいが、活発過ぎることはない。"),
+ ("rottweiler", "ロットワイラー", "rottweiler", 2, (42, 50), "JKC", [], "気立てがよく、基本的な性格は落ち着いており、子供好きで、非常に忠誠心があり、従順で、素直で熱心に作業をする。"),
+ ("newfoundland", "ニューファンドランド", "newfoundland", 2, (54, 68), "JKC", [], "威厳を持ち、楽しそうで、独創的で、たいへん優しく穏やかであることで知られている。"),
+ ("malamute", "アラスカン・マラミュート", "alaskan-malamute", 5, (34, 38), "JKC", [], "愛情深く、友好的で、ワン・マン・ドッグではない。忠実で、献身的なコンパニオン・ドッグで、いつでも遊びに乗ってくる。"),
+ ("dalmatian", "ダルメシアン", "dalmatian", 6, (24, 32), "JKC", [], "外向的且つ、友好的で、シャイでもなく、しり込みすることもなく、神経質でも攻撃的でもない。"),
+ ("minibull", "ミニチュア・ブル・テリア", "miniature-bull-terrier", 3, (9, 15), "目安", [], "情熱と勇気に満ちている。安定した性格で、よくしつけに従う。頑固ではあるが、特に人間とはよい関係になれる。"),
+ ("aussie", "オーストラリアン・シェパード", "australian-shepherd", 1, (16, 32), "目安", [], "牧畜と護衛の強い本能を持つ利口な作業犬である。安定した気質で、気立てがよく、めったに喧嘩をしない。初めて会う時は幾分おとなしい。"),
+ ("norfolk", "ノーフォーク・テリア", "norfolk-terrier", 3, (5, 6), "目安", [], "小さな《いたずらっ子》である。愛らしい性格で、けんか好きではなく、頑丈な体格である。機敏で、恐れを知らない。"),
+ ("chowchow", "チャウ・チャウ", "chow-chow", 5, (20, 32), "目安", ["brachy"], "静かな犬で、よい番犬である。独立心が強く、誠実だが、超然とした一面もある。"),
+ ("whiteswiss", "ホワイト・スイス・シェパード・ドッグ", "white-swiss-shepherd-dog", 1, (25, 40), "JKC", [], "活力があり、神経質ではなく、注意深く警戒心がある。見知らぬ者に対してはいくぶん控えめなこともあるが、けっして臆病だったり攻撃的であったりはしない。"),
+ ("bolognese", "ボロニーズ", "bolognese", 9, (2.5, 4), "JKC", [], "たいへん素直な性質で、通常は落ち着いている。積極的で従順で、飼い主とその関係者にきわめてよくなつく。"),
+ ("brussels", "ブリュッセル・グリフォン", "brussels-griffon", 9, (3.5, 6), "JKC", ["brachy"], "注意深く、誇り高く、飼い主に対してたいへん愛情深い。警戒心が強い。臆病でもなければ、攻撃的でもない。"),
+ ("crested", "チャイニーズ・クレステッド・ドッグ", "chinese-crested-dog", 9, (2, 6), "目安", [], "明るく、決して攻撃的ではない。"),
+ ("scottie", "スコティッシュ・テリア", "scottish-terrier", 3, (8.6, 10.4), "JKC", [], "誠実且つ忠実である。威厳があり、独立心が強く、控えめだが、勇気があり、たいへん利口である。"),
+ ("toymanchester", "トイ・マンチェスター・テリア", "toy-manchester-terrier", 3, (2.7, 3.6), "JKC", [], "テリア・キャラクターを有する小型犬である。用心深く、過度に神経質であることはない。"),
+ ("dane", "グレート・デーン", "great-dane", 2, (45, 80), "目安", [], "友好的で、愛情深く、飼い主に対し献身的である。挑発に対し大変忍耐強く、攻撃的ではない。"),
+ ("roughcollie", "ラフ・コリー", "rough-collie", 1, (18, 30), "目安", [], "親しみやすい性質で、神経質であったり、攻撃的であったりしない。"),
+ ("kooiker", "コーイケルホンディエ", "kooikerhondje", 8, (9, 14), "目安", [], "陽気で機敏、自信に溢れ、十分な忍耐力やスタミナもある。気立てがよく、用心深いが、うるさくはない。"),
+ # --- プードル・ダックスフンドのほかのサイズ、日本犬 ---
+ ("mpoodle", "ミニチュア・プードル", "poodle", 9, (5, 8), "目安", [], "忠誠心、学習能力及び訓練性能で知られており、そのためコンパニオン・ドッグとして非常に適している。"),
+ ("mdpoodle", "ミディアム・プードル", "poodle", 9, (8, 15), "目安", [], "忠誠心、学習能力及び訓練性能で知られており、そのためコンパニオン・ドッグとして非常に適している。"),
+ ("spoodle", "スタンダード・プードル", "poodle", 9, (18, 30), "目安", [], "忠誠心、学習能力及び訓練性能で知られており、そのためコンパニオン・ドッグとして非常に適している。"),
+ ("kdachs", "カニーンヘン・ダックスフンド", "dachshund", 4, (2.5, 4), "目安", [], "生まれつき友好的で、落ち着きがあり、怖がりでも、攻撃的でもない。情熱的で、辛抱強く、優れた嗅覚を持ち、素早い狩猟を行う。"),
+ ("sdachs", "スタンダード・ダックスフンド", "dachshund", 4, (7, 12), "目安", [], "生まれつき友好的で、落ち着きがあり、怖がりでも、攻撃的でもない。情熱的で、辛抱強く、優れた嗅覚を持ち、素早い狩猟を行う。"),
+ ("kai", "甲斐", "kai", 5, (11, 18), "目安", ["jp"], "大変忍耐強く、精悍で素朴感がある。性格は忠実、従順で警戒心に富み、大胆である。"),
+ ("hokkaido", "北海道", "hokkaido", 5, (18, 25), "目安", ["jp"], "感覚鋭敏で、警戒心に富む。"),
+ ("shikoku", "四国", "shikoku", 5, (15, 22), "目安", ["jp"], "持久力に富んでいる。感覚は鋭敏かつ精悍で警戒心に富む。猟欲が旺盛で、主人には従順である。"),
+ ("kishu", "紀州", "kishu", 5, (15, 25), "目安", ["jp"], "大変忍耐強く、素朴感の中に、気品と精悍さを有している。性格は忠実、従順で、警戒心に富む。"),
 ]
-BY_ID = {b["id"]: b for b in BREEDS}
+
+# --- そのほかの JKC 公認犬種（グループのページから。性格は未確認なので空。体重は目安） ---
+# (id, 名前, JKCのページ, グループ, (下限kg, 上限kg), tags)
+_REST = [
+ # 1G 牧羊犬・牧畜犬
+ ("maremma", "アブルッツォ・アンド・マレンマ・シェパード・ドッグ", "maremma-sheepdog", 1, (30, 45), []),
+ ("cardigan", "ウェルシュ・コーギー・カーディガン", "welsh-corgi-cardigan", 1, (11, 17), []),
+ ("cattledog", "オーストラリアン・キャトル・ドッグ", "australian-cattle-dog", 1, (15, 22), []),
+ ("kelpie", "オーストラリアン・ケルピー", "australian-kelpie", 1, (11, 20), []),
+ ("kuvasz", "クーバース", "kuvasz", 1, (30, 52), []),
+ ("croatian", "クロアチアン・シープドッグ", "croatian-sheepdog", 1, (13, 20), []),
+ ("komondor", "コモンドール", "komondor", 1, (40, 60), []),
+ ("saarloos", "サールロース・ウルフドッグ", "saarloos-wolfdog", 1, (30, 45), []),
+ ("schipperke", "スキッパーキ", "schipperke", 1, (3, 9), []),
+ ("smoothcollie", "スムース・コリー", "smooth-collie", 1, (18, 30), []),
+ ("dutchshepherd", "ダッチ・シェパード・ドッグ", "dutch-shepherd-dog", 1, (23, 32), []),
+ ("schapendoes", "ダッチ・シャペンドース", "dutch-schapendoes", 1, (12, 20), []),
+ ("czwolf", "チェコスロバキアン・ウルフドッグ", "czechoslovakian-wolfdog", 1, (20, 30), []),
+ ("bearded", "ビアデッド・コリー", "bearded-collie", 1, (18, 27), []),
+ ("pyrshep", "ピレニアン・シープドッグ", "pyrenean-sheepdog", 1, (7, 15), []),
+ ("bouvier", "ブービエ・デ・フランダース", "bouvier-des-flandres", 1, (27, 40), []),
+ ("pumi", "プーミー", "pumi", 1, (8, 15), []),
+ ("puli", "プーリー", "puli", 1, (10, 15), []),
+ ("briard", "ブリアード", "briard", 1, (30, 40), []),
+ ("belgian", "ベルジアン・シェパード・ドッグ", "belgian-shepherd-dog", 1, (20, 30), []),
+ ("beauceron", "ボースロン", "beauceron", 1, (30, 45), []),
+ ("pon", "ポリッシュ・ローランド・シープドッグ", "polish-lowland-sheepdog", 1, (14, 23), []),
+ ("miniaussie", "ミニチュア・アメリカン・シェパード", "miniature-american-shepherd", 1, (9, 18), []),
+ ("mudi", "ムーディー", "mudi", 1, (8, 13), []),
+ ("lancashire", "ランカシャー・ヒーラー", "lancashire-heeler", 1, (3, 6), []),
+ # 2G 使役犬
+ ("affen", "アーフェンピンシャー", "affenpinscher", 2, (3, 6), []),
+ ("corso", "イタリアン・コルソ・ドッグ", "italian-corso-dog", 2, (40, 50), []),
+ ("estrela", "エストレラ・マウンテン・ドッグ", "estrela-mountain-dog", 2, (30, 60), []),
+ ("kangal", "カンガル・シェパード・ドッグ", "kangal-shepherd-dog", 2, (40, 65), []),
+ ("gsmd", "グレート・スイス・マウンテン・ドッグ", "great-swiss-mountain-dog", 2, (50, 70), []),
+ ("caucasian", "コーカシアン・シェパード", "caucasian-shepherd", 2, (45, 80), []),
+ ("sharpei", "シャー・ペイ", "shar-pei", 2, (18, 25), []),
+ ("gpinscher", "ジャーマン・ピンシャー", "german-pinscher", 2, (11, 20), []),
+ ("gschnauzer", "ジャイアント・シュナウザー", "giant-schnauzer", 2, (35, 47), []),
+ ("sarplaninac", "シャルプラニナッツ", "sarplaninac", 2, (35, 45), []),
+ ("sschnauzer", "スタンダード・シュナウザー", "standard-schnauzer", 2, (14, 20), []),
+ ("smastiff", "スパニッシュ・マスティフ", "spanish-mastiff", 2, (50, 90), []),
+ ("stbernard", "セント・バーナード", "st-bernard", 2, (55, 90), []),
+ ("cao", "セントラル・アジア・シェパード・ドッグ", "central-asia-shepherd-dog", 2, (40, 80), []),
+ ("tmastiff", "チベタン・マスティフ", "tibetan-mastiff", 2, (35, 75), []),
+ ("dogo", "ドゴ・アルヘンティーノ", "dogo-argentino", 2, (35, 45), []),
+ ("tosa", "土佐", "tosa", 2, (40, 90), ["jp"]),
+ ("neapolitan", "ナポリタン・マスティフ", "neapolitan-mastiff", 2, (50, 70), []),
+ ("pmastiff", "ピレニアン・マスティフ", "pyrenean-mastiff", 2, (55, 100), []),
+ ("fila", "ブラジリアン・ガード・ドッグ", "brazilian-guard-dog", 2, (40, 50), []),
+ ("bullmastiff", "ブルマスティフ", "bullmastiff", 2, (41, 59), []),
+ ("presa", "プレサ・カナリオ", "presa-canario", 2, (40, 65), []),
+ ("boxer", "ボクサー", "boxer", 2, (25, 32), ["brachy"]),
+ ("bordeaux", "ボルドー・マスティフ", "bordeaux-mastiff", 2, (45, 65), []),
+ ("mastiff", "マスティフ", "mastiff", 2, (65, 100), []),
+ ("leonberger", "レオンベルガー", "leonberger", 2, (40, 75), []),
+ # 3G テリア
+ ("wheaten", "アイリッシュ・ソフトコーテッド・ウィートン・テリア", "irish-soft-coated-wheaten-terrier", 3, (14, 20), []),
+ ("irishterrier", "アイリッシュ・テリア", "irish-terrier", 3, (11, 12.5), []),
+ ("amstaff", "アメリカン・スタッフォードシャー・テリア", "american-staffordshire-terrier", 3, (18, 30), []),
+ ("welshterrier", "ウェルシュ・テリア", "welsh-terrier", 3, (9, 10), []),
+ ("airedale", "エアデール・テリア", "airedale-terrier", 3, (18, 29), []),
+ ("silky", "オーストラリアン・シルキー・テリア", "australian-silky-terrier", 3, (3.5, 5), []),
+ ("austerrier", "オーストラリアン・テリア", "australian-terrier", 3, (5, 7), []),
+ ("cairn", "ケアーン・テリア", "cairn-terrier", 3, (6, 8), []),
+ ("kerryblue", "ケリー・ブルー・テリア", "kerry-blue-terrier", 3, (15, 18), []),
+ ("sealyham", "シーリハム・テリア", "sealyham-terrier", 3, (8, 9), []),
+ ("ghterrier", "ジャーマン・ハンティング・テリア", "german-hunting-terrier", 3, (7.5, 10), []),
+ ("skye", "スカイ・テリア", "skye-terrier", 3, (11, 14), []),
+ ("staffy", "スタッフォードシャー・ブル・テリア", "staffordshire-bull-terrier", 3, (11, 17), []),
+ ("smoothfox", "スムース・フォックス・テリア", "smooth-fox-terrier", 3, (7, 8.5), []),
+ ("dandie", "ダンディ・ディンモント・テリア", "dandie-dinmont-terrier", 3, (8, 11), []),
+ ("cesky", "チェスキー・テリア", "cesky-terrier", 3, (6, 10), []),
+ ("jterrier", "日本テリア", "japanese-terrier", 3, (3, 5), ["jp"]),
+ ("norwich", "ノーリッチ・テリア", "norwich-terrier", 3, (5, 6), []),
+ ("parson", "パーソン・ラッセル・テリア", "parson-russell-terrier", 3, (6, 8), []),
+ ("bullterrier", "ブル・テリア", "bull-terrier", 3, (20, 32), ["brachy"]),
+ ("bedlington", "ベドリントン・テリア", "bedlington-terrier", 3, (8, 10), []),
+ ("borderterrier", "ボーダー・テリア", "border-terrier", 3, (5, 7), []),
+ ("manchester", "マンチェスター・テリア", "manchester-terrier", 3, (5, 10), []),
+ ("lakeland", "レークランド・テリア", "lakeland-terrier", 3, (7, 8), []),
+ ("wirefox", "ワイアー・フォックス・テリア", "wire-fox-terrier", 3, (7, 8.5), []),
+ # 5G 原始的な犬・スピッツ
+ ("aakita", "アメリカン・アキタ", "american-akita", 5, (32, 59), []),
+ ("ibizan", "イビザン・ハウンド", "ibizan-hound", 5, (20, 25), []),
+ ("keeshond", "キースホンド", "keeshond", 5, (14, 20), []),
+ ("greenland", "グリーンランド・ドッグ", "greenland-dog", 5, (27, 32), []),
+ ("jindo", "コリア・ジンドー・ドッグ", "korea-jindo-dog", 5, (15, 23), []),
+ ("gspitz", "ジャーマン・スピッツ", "german-spitz", 5, (7, 18), []),
+ ("xolo", "ショロイツクインツレ", "xoloitzcuintle", 5, (4, 25), []),
+ ("thairidge", "タイ・リッジバック・ドッグ", "thai-ridgeback-dog", 5, (16, 34), []),
+ ("taiwan", "タイワン・ドッグ", "taiwan-dog", 5, (12, 18), []),
+ ("cirneco", "チルネコ・デルエトナ", "cirneco-delletna", 5, (8, 12), []),
+ ("elkhound", "ノルウェジアン・エルクハウンド・グレー", "norwegian-elkhound-grey", 5, (20, 25), []),
+ ("buhund", "ノルウェジアン・ブーフント", "norwegian-buhund", 5, (12, 18), []),
+ ("basenji", "バセンジー", "basenji", 5, (9.5, 11), []),
+ ("pharaoh", "ファラオ・ハウンド", "pharaoh-hound", 5, (18, 27), []),
+ ("lapphund", "フィニッシュ・ラポニアン・ドッグ", "finnish-lapponian-dog", 5, (15, 24), []),
+ ("peruvian", "ペルービアン・ヘアレス・ドッグ", "peruvian-hairless-dog", 5, (4, 25), []),
+ ("lappherder", "ラポニアン・ハーダー", "lapponian-herder", 5, (20, 30), []),
+ # 6G 嗅覚ハウンド
+ ("afoxhound", "アメリカン・フォックスハウンド", "american-foxhound", 6, (27, 32), []),
+ ("gbgv", "グランド・バセット・グリフォン・バンデーン", "grand-basset-griffon-vendeen", 6, (18, 20), []),
+ ("basset", "バセット・ハウンド", "basset-hound", 6, (20, 30), []),
+ ("harrier", "ハリア", "harrier", 6, (20, 27), []),
+ ("pbgv", "プチ・バセット・グリフォン・バンデーン", "petit-basset-griffon-vendeen", 6, (15, 20), []),
+ ("coonhound", "ブラック・アンド・タン・クーンハウンド", "black-and-tan-coonhound", 6, (25, 34), []),
+ ("bloodhound", "ブラッドハウンド", "bloodhound", 6, (40, 54), []),
+ ("porcelaine", "ポルスレーヌ", "porcelaine", 6, (25, 28), []),
+ ("ridgeback", "ローデシアン・リッジバック", "rhodesian-ridgeback", 6, (32, 36.5), []),
+ # 7G ポインター・セター
+ ("irishsetter", "アイリッシュ・セター", "irish-setter", 7, (27, 32), []),
+ ("irwsetter", "アイリッシュ・レッド・アンド・ホワイト・セター", "irish-red-and-white-setter", 7, (25, 34), []),
+ ("spinone", "イタリアン・スピノーネ", "italian-spinone", 7, (28, 39), []),
+ ("bracco", "イタリアン・ポインティング・ドッグ", "italian-pointing-dog", 7, (25, 40), []),
+ ("esetter", "イングリッシュ・セター", "english-setter", 7, (20, 36), []),
+ ("pointer", "イングリッシュ・ポインター", "english-pointer", 7, (20, 34), []),
+ ("gordon", "ゴードン・セター", "gordon-setter", 7, (25, 36), []),
+ ("gsp", "ジャーマン・ショートヘアード・ポインター", "german-shorthaired-pointer", 7, (20, 32), []),
+ ("gwp", "ジャーマン・ワイアーヘアード・ポインター", "german-wirehaired-pointer", 7, (25, 35), []),
+ ("vizsla", "ショートヘアード・ハンガリアン・ビズラ", "short-haired-hungarian-vizsla", 7, (20, 30), []),
+ ("smunster", "スモール・ミュンスターレンダー", "small-munsterlander", 7, (17, 26), []),
+ ("brittany", "ブリタニー・スパニエル", "brittany-spaniel", 7, (14, 18), []),
+ ("lmunster", "ラージ・ミュンスターレンダー", "large-munsterlander", 7, (25, 30), []),
+ # 8G レトリーバーなど
+ ("iws", "アイリッシュ・ウォーター・スパニエル", "irish-water-spaniel", 8, (20, 30), []),
+ ("springer", "イングリッシュ・スプリンガー・スパニエル", "english-springer-spaniel", 8, (18, 25), []),
+ ("welshspringer", "ウェルシュ・スプリンガー・スパニエル", "welsh-springer-spaniel", 8, (16, 25), []),
+ ("curly", "カーリーコーテッド・レトリーバー", "curly-coated-retriever", 8, (29, 36), []),
+ ("clumber", "クランバー・スパニエル", "clumber-spaniel", 8, (25, 39), []),
+ ("sussex", "サセックス・スパニエル", "sussex-spaniel", 8, (18, 23), []),
+ ("swd", "スパニッシュ・ウォーター・ドッグ", "spanish-water-dog", 8, (14, 22), []),
+ ("chessie", "チェサピーク・ベイ・レトリーバー", "chesapeake-bay-retriever", 8, (25, 36), []),
+ ("toller", "ノヴァ・スコシア・ダック・トーリング・レトリーバー", "nova-scotia-duck-tolling-retriever", 8, (17, 23), []),
+ ("field", "フィールド・スパニエル", "field-spaniel", 8, (18, 25), []),
+ ("pwd", "ポーチュギーズ・ウォーター・ドッグ", "portuguese-water-dog", 8, (16, 25), []),
+ ("lagotto", "ロマーニャ・ウォーター・ドッグ", "romagna-water-dog", 8, (11, 16), []),
+ # 9G 愛玩犬
+ ("kingcharles", "キング・チャールズ・スパニエル", "king-charles-spaniel", 9, (3.5, 6.5), ["brachy"]),
+ ("coton", "コトン・ド・テュレアール", "coton-de-tulear", 9, (3.5, 6), []),
+ ("tibspaniel", "チベタン・スパニエル", "tibetan-spaniel", 9, (4, 7), ["brachy"]),
+ ("tibterrier", "チベタン・テリア", "tibetan-terrier", 9, (8, 14), []),
+ ("havanese", "ハバニーズ", "havanese", 9, (3, 6), []),
+ ("ratter", "プラシュスキー・クリサジーク", "prazsky-krysarik", 9, (1.5, 3.5), []),
+ ("brabancon", "プチ・ブラバンソン", "petit-brabancon", 9, (3.5, 6), ["brachy"]),
+ ("belgiangriffon", "ベルジアン・グリフォン", "belgian-griffon", 9, (3.5, 6), ["brachy"]),
+ ("lhasa", "ラサ・アプソ", "lhasa-apso", 9, (5, 8), []),
+ ("lowchen", "ローシェン", "lowchen", 9, (4, 8), []),
+ ("russiantoy", "ロシアン・トイ", "russian-toy", 9, (1.5, 3), []),
+ # 10G 視覚ハウンド
+ ("wolfhound", "アイリッシュ・ウルフハウンド", "irish-wolfhound", 10, (40, 70), []),
+ ("azawakh", "アザワク", "azawakh", 10, (15, 25), []),
+ ("afghan", "アフガン・ハウンド", "afghan-hound", 10, (23, 30), []),
+ ("greyhound", "グレーハウンド", "greyhound", 10, (27, 40), []),
+ ("galgo", "スパニッシュ・グレーハウンド", "spanish-greyhound", 10, (20, 30), []),
+ ("saluki", "サルーキ", "saluki", 10, (16, 29), []),
+ ("sloughi", "スルーギ", "sloughi", 10, (18, 28), []),
+ ("deerhound", "ディアハウンド", "deerhound", 10, (34, 50), []),
+]
+
+# 猫の種類（体重は目安。記事の「猫」のカードに当たる）
+_CATS = [
+ ("scottish", "スコティッシュ・フォールド", (3, 6)), ("catmix", "ミックス（雑種）の猫", (3, 6)), ("munchkin", "マンチカン", (2.5, 4.5)),
+ ("ragdoll", "ラグドール", (4.5, 9)), ("minuet", "ミヌエット", (2, 4)), ("siberian", "サイベリアン", (4, 9)),
+ ("british", "ブリティッシュ・ショートヘア", (4, 8)), ("ash", "アメリカン・ショートヘア", (3.5, 7)),
+ ("norwegian", "ノルウェージャン・フォレスト・キャット", (4, 9)), ("ragamuffin", "ラガマフィン", (4.5, 9)),
+ ("mainecoon", "メインクーン", (4, 10)), ("russianblue", "ロシアンブルー", (3, 5.5)), ("bengal", "ベンガル", (3.5, 7)),
+ ("persian", "ペルシャ", (3, 6)), ("exotic", "エキゾチック・ショートヘア", (3, 6)), ("himalayan", "ヒマラヤン", (3, 6)),
+ ("siamese", "シャム", (2.5, 5)), ("abyssinian", "アビシニアン", (2.5, 5)), ("somali", "ソマリ", (3, 5)),
+ ("singapura", "シンガプーラ", (2, 3.5)), ("sphynx", "スフィンクス", (3, 5.5)), ("devonrex", "デボンレックス", (2.5, 4.5)),
+ ("cornishrex", "コーニッシュレックス", (2.5, 4.5)), ("selkirk", "セルカークレックス", (3.5, 7)), ("laperm", "ラパーマ", (2.5, 5)),
+ ("acurl", "アメリカンカール", (2.5, 5)), ("abobtail", "アメリカンボブテイル", (3, 7)), ("awirehair", "アメリカンワイヤーヘア", (3.5, 6)),
+ ("jbobtail", "ジャパニーズボブテイル", (2.5, 4.5)), ("birman", "バーマン", (3.5, 7)), ("balinese", "バリニーズ", (2.5, 5)),
+ ("oriental", "オリエンタル", (2.5, 5)), ("burmese", "バーミーズ", (3, 5.5)), ("burmilla", "バーミラ", (3, 6)),
+ ("bombay", "ボンベイ", (2.5, 5)), ("chartreux", "シャルトリュー", (3, 7)), ("egyptianmau", "エジプシャンマウ", (2.5, 5)),
+ ("havana", "ハバナブラウン", (2.5, 4.5)), ("korat", "コラット", (2.5, 4.5)), ("manx", "マンクス", (3.5, 5.5)),
+ ("cymric", "キムリック", (3.5, 5.5)), ("nebelung", "ネベロング", (3, 5.5)), ("ocicat", "オシキャット", (3, 6.5)),
+ ("savannah", "サバンナ", (5, 11)), ("chausie", "チャウシー", (5, 10)), ("snowshoe", "スノーシュー", (3, 6)),
+ ("tonkinese", "トンキニーズ", (2.5, 5)), ("tangora", "ターキッシュアンゴラ", (2.5, 5)), ("tvan", "ターキッシュバン", (3.5, 8)),
+ ("toyger", "トイガー", (3, 6)), ("lykoi", "ライコイ", (2, 4.5)), ("pixiebob", "ピクシーボブ", (4, 8)),
+ ("kurilian", "クリリアンボブテイル", (3, 7)), ("peterbald", "ピーターボールド", (3, 5)), ("donskoy", "ドンスコイ", (3, 6)),
+ ("ausmist", "オーストラリアンミスト", (3, 6)), ("khaomanee", "カオマニー", (2.5, 5)), ("thai", "タイ", (2.5, 5)),
+ ("australianmist", "", (0, 0)),
+]
+
+BREEDS = []
+for _id, _n, _u, _g, _kg, _src, _tags, _tr in _D:
+    BREEDS.append(dict(id=_id, name=_n, kg=_kg, kg_src=_src, group=_g, url=JKC + _u + "/", tags=list(_tags), trait=_tr, rank=True))
+for _id, _n, _u, _g, _kg, _tags in _REST:
+    BREEDS.append(dict(id=_id, name=_n, kg=_kg, kg_src="目安", group=_g, url=JKC + _u + "/", tags=list(_tags), trait=""))
+TOP_N = len(_D)
+CATS = [dict(id=_id, name=_n, kg=_kg, kg_src="目安", tags=["cat"], cat=True) for _id, _n, _kg in _CATS if _n]
+# 漢字の名前の読み（名前でさがすときに、ひらがなでも当たるように）
+YOMI = {"柴": "シバイヌ", "狆": "チン", "秋田": "アキタイヌ", "甲斐": "カイケン", "北海道": "ホッカイドウイヌ", "四国": "シコクケン",
+        "紀州": "キシュウケン", "土佐": "トサケン", "日本スピッツ": "ニホンスピッツ", "日本テリア": "ニホンテリア", "ミックス（雑種）の猫": "ザッシュ"}
+for _b in BREEDS + CATS:
+    if _b["name"] in YOMI: _b["yomi"] = YOMI[_b["name"]]
+BY_ID = {b["id"]: b for b in BREEDS + CATS}
 
 # JKC のグループ（犬種のなかま）。説明は JKC の各グループのページの文。
 GROUPS = {
@@ -62,8 +294,10 @@ GROUPS = {
  4: ("4G ダックスフンド", "地面の穴に住むアナグマや兎用の猟犬", JKC + "breed_category/04g/"),
  5: ("5G 原始的な犬・スピッツ", "日本犬を含む、スピッツ(尖ったの意)系の犬", JKC + "breed_category/05g/"),
  6: ("6G 嗅覚ハウンド", "大きな吠声と優れた嗅覚で獲物を追う獣猟犬", JKC + "breed_category/06g/"),
+ 7: ("7G ポインター・セター", "獲物を探し出し、その位置を静かに示す猟犬", JKC + "breed_category/07g/"),
  8: ("8G 7グループ以外の鳥猟犬", "レトリーバー、フラッシング・ドッグ、ウォーター・ドッグ", JKC + "breed_category/08g/"),
  9: ("9G 愛玩犬", "家庭犬、伴侶や愛玩目的の犬", JKC + "breed_category/09g/"),
+ 10: ("10G 視覚ハウンド", "優れた視覚と走力で獲物を追跡捕獲する犬", JKC + "breed_category/10g/"),
 }
 
 # 体重の区分（ミックスの子や、一覧にない犬種はこちらで選ぶ）。(キー, 表示, 下限kg, 上限kg（未満）)
@@ -74,5 +308,6 @@ SIZES = [
 ]
 
 def keys_of(b):
-    """犬種のカードに当たるキー：犬種のid・グループ（g1 など）・tags"""
+    """犬種・猫種のカードに当たるキー：id・グループ（g1 など）・tags。猫は cat"""
+    if b.get("cat"): return [b["id"], "cat"]
     return [b["id"], f"g{b['group']}"] + list(b.get("tags", []))

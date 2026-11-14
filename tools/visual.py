@@ -123,6 +123,9 @@ def _bf_items(items, arrow, heading):
     if buf: out.append("<ul>" + "".join(buf) + "</ul>")
     return "".join(out)
 def breeds(d, arrow="", heading=""):
+    """犬種・体重・猫の種類で「うちの子で見る」。選ぶ欄には JKC 公認の犬種と主な猫の種類を全部出す（Nori 2026-11-14「全部網羅して」）。
+    d["breeds"] は前の形の名残（並べる犬種のしぼり）で、いまは使わない。猫の種類は、猫のカード（キー cat）がある部品だけに出す。
+    d["cat_kg"]=True なら猫も体重の区分に当てはめる（火葬の料金のように体重だけで決まるもの）"""
     import breeds as B
     sizes = d.get("sizes") or B.SIZES
     rows = d["rows"]
@@ -130,21 +133,25 @@ def breeds(d, arrow="", heading=""):
     import hashlib
     uid = "bf-" + hashlib.sha1((d.get("title", "") + str(len(rows))).encode("utf-8")).hexdigest()[:6]  # ページの作り直しで変わらない id
     def ov(lo, hi, a, b): return lo < b and a < hi  # 重なり
+    def sh(keys): return " ".join(["all"] + [k for k in dict.fromkeys(keys) if k in used and k != "all"])
+    def opt(b):
+        lo, hi = b["kg"]
+        keys = B.keys_of(b) + ([k for k, _, a, z in sizes if ov(lo, hi, a, z)] if not b.get("cat") or d.get("cat_kg") else [])
+        c = ' data-c="1"' if b.get("cat") else ""
+        y = f' data-y="{e(b["yomi"])}"' if b.get("yomi") else ""
+        return (f'<option value="{e(b["id"])}" data-show="{e(sh(keys))}" data-b="{e(b["id"])}"{c} '
+                f'data-lo="{lo}" data-hi="{hi}"{y}>{e(b["name"])}</option>')
+    dogs = B.BREEDS
     opts = ['<option value="">すべて表示</option>', '<optgroup label="体重で選ぶ（ミックスの子も）">']
     for key, lab, lo, hi in sizes:
-        show = ["all", key] + [b["id"] for b in B.BREEDS if ov(b["kg"][0], b["kg"][1], lo, hi)]
-        opts.append(f'<option value="{e(key)}" data-show="{e(" ".join(show))}" data-lo="{lo}" data-hi="{hi}">{e(lab)}</option>')
+        show = [key] + [b["id"] for b in dogs if ov(b["kg"][0], b["kg"][1], lo, hi)]
+        opts.append(f'<option value="{e(key)}" data-show="{e(sh(show))}" data-lo="{lo}" data-hi="{hi}">{e(lab)}</option>')
     opts.append("</optgroup>")
-    if "cat" in used:
-        opts.append('<optgroup label="猫"><option value="cat" data-show="all cat" data-b="cat">猫</option></optgroup>')
-    opts.append('<optgroup label="犬種で選ぶ">')
-    ids = d.get("breeds") or [b["id"] for b in B.BREEDS]
-    for bid in ids:
-        b = B.BY_ID[bid]
-        lo, hi = b["kg"]
-        show = ["all"] + B.keys_of(b) + [k for k, _, a, z in sizes if ov(lo, hi, a, z)]
-        opts.append(f'<option value="{e(bid)}" data-show="{e(" ".join(show))}" data-b="{e(bid)}" data-lo="{lo}" data-hi="{hi}">{e(b["name"])}</option>')
-    opts.append("</optgroup>")
+    opts.append('<optgroup label="よく飼われている犬種（登録の多い順）">' + "".join(opt(b) for b in dogs[:B.TOP_N]) + "</optgroup>")
+    opts.append('<optgroup label="そのほかの犬種（五十音順）">' + "".join(opt(b) for b in sorted(dogs[B.TOP_N:], key=lambda b: b["name"])) + "</optgroup>")
+    cats = "cat" in used
+    if cats:
+        opts.append('<optgroup label="猫の種類">' + "".join(opt(b) for b in B.CATS) + "</optgroup>")
     cards = []
     for r in rows:
         src = r.get("src")
@@ -159,7 +166,8 @@ def breeds(d, arrow="", heading=""):
     lead = f'<p class="bf-lead">{rich(d["lead"])}</p>' if d.get("lead") else ""
     note = f'<p class="note">{rich(d["note"])}</p>' if d.get("note") else ""
     return (f'<div class="bf" data-bf>{title}{lead}<div class="bf-bar"><label for="{uid}">うちの子で見る</label>'
-            f'<select id="{uid}">{"".join(opts)}</select></div><p class="bf-now" aria-live="polite"></p>'
+            f'<select id="{uid}">{"".join(opts)}</select></div>'
+            f'<input class="bf-q" type="search" placeholder="{"犬種・猫の種類" if cats else "犬種"}の名前でさがす（例：しば、ぷーどる）" aria-label="名前でさがす" autocomplete="off"><p class="bf-now" aria-live="polite"></p>'
             f'<div class="bf-cards">{"".join(cards)}</div>{note}</div>')
 
 BF_CSS = """<style>
@@ -172,6 +180,7 @@ BF_CSS = """<style>
 .bf-bar select{flex:1 1 auto;min-width:0;width:100%;font-size:16px;padding:9px 10px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
 .art .bf-now,.bf-now{font-size:.82rem;color:var(--ink-2);margin:6px 2px 10px!important;line-height:1.6}
 .bf-now:empty{display:none}
+.bf-q{display:block;width:100%;box-sizing:border-box;font-size:16px;padding:8px 12px;margin:8px 0 0;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
 .bf-cards{display:grid;gap:10px}
 .bf-card{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px 6px;min-width:0}
 .bf-card .bars{padding:12px 12px 6px;border-radius:14px;margin:4px 0 10px}
@@ -195,11 +204,15 @@ function ap(bf,o){var sh=o&&o.value?o.getAttribute('data-show').split(' '):null,
 [].forEach.call(bf.querySelectorAll('.bf-card'),function(c){var ok=!sh||c.getAttribute('data-k').split(' ').some(function(k){return sh.indexOf(k)>=0});c.hidden=!ok;if(ok)n++});
 bf.querySelector('.bf-now').textContent=sh?(n?'「'+o.textContent+'」に当てはまる'+n+'件を表示しています。「すべて表示」でもとに戻ります。':'「'+o.textContent+'」だけの情報はまだありません。上の「すべて表示」か体重で選んでください。'):'';}
 function pick(s,v){var o=null;[].forEach.call(s.options,function(x){if(!o&&v.b&&x.getAttribute('data-b')===v.b)o=x});
-if(!o&&v.kg!=null)[].forEach.call(s.options,function(x){if(!o&&!x.getAttribute('data-b')&&x.getAttribute('data-lo')!==null&&v.kg>=+x.getAttribute('data-lo')&&v.kg<+x.getAttribute('data-hi'))o=x});return o}
+if(!o&&v.c)return null;if(!o&&v.kg!=null)[].forEach.call(s.options,function(x){if(!o&&!x.getAttribute('data-b')&&x.getAttribute('data-lo')!==null&&v.kg>=+x.getAttribute('data-lo')&&v.kg<+x.getAttribute('data-hi'))o=x});return o}
 function all(v,from){L.forEach(function(bf){var s=bf.querySelector('select');if(bf===from)return;var o=v?pick(s,v):null;s.value=o?o.value:'';ap(bf,o)})}
 L.forEach(function(bf){var s=bf.querySelector('select');s.addEventListener('change',function(){var o=s.options[s.selectedIndex],v=null;
-if(o.value){var lo=+o.getAttribute('data-lo'),hi=+o.getAttribute('data-hi');v=o.getAttribute('data-b')?{b:o.getAttribute('data-b'),kg:(lo+Math.min(hi,lo+40))/2}:{kg:(lo+Math.min(hi,lo+40))/2}}
-ap(bf,o);p(v);all(v,bf);try{window.gtag&&gtag('event','breed_filter',{pick:o.value||'all',from:location.pathname})}catch(e){}})});
+if(o.value){var lo=+o.getAttribute('data-lo'),hi=+o.getAttribute('data-hi');v=o.getAttribute('data-b')?{b:o.getAttribute('data-b'),kg:(lo+Math.min(hi,lo+40))/2,c:o.getAttribute('data-c')?1:0}:{kg:(lo+Math.min(hi,lo+40))/2}}
+ap(bf,o);p(v);all(v,bf);try{window.gtag&&gtag('event','breed_filter',{pick:o.value||'all',from:location.pathname})}catch(e){}});
+var q=bf.querySelector('.bf-q');if(q)q.addEventListener('input',function(){var t=nm(q.value);if(!t)return;var best=null,sc=9;
+[].forEach.call(s.options,function(x){if(!x.value)return;var r=9;[x.textContent,x.getAttribute('data-y')||''].forEach(function(z){var n=nm(z);if(!n)return;var i=n.indexOf(t),k=n===t?0:i===0?1:i>0?2:9;if(k<r)r=k});if(r<sc){sc=r;best=x}});
+if(best&&best!==s.options[s.selectedIndex]){s.value=best.value;s.dispatchEvent(new Event('change'))}})});
+function nm(t){return String(t).replace(/[\u3041-\u3096]/g,function(c){return String.fromCharCode(c.charCodeAt(0)+96)}).replace(/[・\s　ー-]/g,'').toLowerCase()}
 var v=g();if(v)all(v,null)})();</script>"""
 
 def block(b, arrow="", heading=""):
