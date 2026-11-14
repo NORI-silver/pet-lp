@@ -796,6 +796,79 @@ for a in AREAS:
 def block(b, heading=""):
     return _V.block(b, ARROW, heading)
 
+# 記事を読みに来た人の目的（2026-11-14 Nori「ユーザーのインテントをちゃんと理解してよ。そのユーザーがどんなクエリで入ってくるのか。何を求めているのか」）
+# 迷子・登録・亡くなったとき・火葬・老犬ホーム・しつけ・シッター・ホテル・保険の記事は、ペットタクシーを探しに来た人ではない。
+# → サイト名は「ペットのくらし窓口」、いちばん上のタクシーの案内・料金の欄・タクシーの締めの箱を出さず、その分野の一覧へつなぐ。
+NON_TAXI_CATS = ("procedure", "care", "money")
+def _related_info(g):
+    """タクシー以外の記事の「あわせて読みたい」は、同じ分野の記事から（タクシーの記事を混ぜない）"""
+    pool = [x["slug"] for x in GUIDES if not taxi_intent(x) and x["slug"] != g["slug"]]
+    hub = guide_hub(g["slug"])[0]
+    same = [x for x in pool if guide_hub(x)[0] == hub]
+    out = [x for x in g["related"] if x in pool]
+    for x in same + pool:
+        if len(out) >= 3: break
+        if x not in out: out.append(x)
+    return out[:3]
+def taxi_intent(g): return g.get("category") not in NON_TAXI_CATS
+def guide_hub(slug):
+    if slug.startswith(("lost-", "found-")) or slug in ("microchip", "dog-registration", "moving-with-pet", "cant-keep-pet"):
+        return "/jichitai/", "迷子・犬の登録の窓口", "お住まいの市区町村の窓口をさがす"
+    if slug.startswith(("pet-cremation", "pet-died", "pet-death", "pet-memorial", "pet-loss", "pet-funeral", "pet-ashes")):
+        return "/sougi/", "ペットが亡くなったら", "近くのペット火葬・霊園と、自治体の受付をさがす"
+    if slug in ("rojin-home-cost", "rojin-home-prepare", "roneko-home"):
+        return "/rojin-home/", "老犬ホーム・老猫ホーム", "都道府県ごとの老犬ホーム・老猫ホームを見る"
+    if slug in ("choose-dog-trainer", "puppy-class", "dog-behavior-help"):
+        return "/dog-trainer/", "ドッグトレーナー・しつけ教室", "都道府県ごとのドッグトレーナー・しつけ教室を見る"
+    if slug in ("how-to-use-pet-sitter", "sitter-or-hotel", "cat-sitter"):
+        return "/pet-sitter/", "ペットシッター", "都道府県ごとのペットシッターを見る"
+    if slug in ("large-dog-hotel", "cat-hotel"):
+        return "/pet-hotel/", "ペットホテル", "大型犬OK・猫専用のペットホテルを見る"
+    if slug == "pet-insurance":
+        return "/hospital/", "条件でさがす動物病院", "夜間・救急や往診の動物病院をさがす"
+    return "/guide/", "ペットの移動ガイド", ""
+
+# 案内（動線）は、読む人がそれを必要とする節のすぐ後ろに置く（2026-11-14 Nori「どこに動線があったら便利かも緻密に考えて」）
+#  - タクシーの記事・病院や施設への行き方の記事：最初に「移動」「向かう」「頼む」などの話が出てくる節の後ろに、料金くらべの箱を1つ
+#  - タクシー以外の記事：答えの節の後ろに、その分野の一覧（近くの施設・窓口をさがす）への箱。
+#    本文で「ペットタクシーも使えます」と書いた節の後ろにだけ、小さく料金くらべのリンク
+_MOVE_H = re.compile(r"タクシー|頼む|移動|向かう|送迎|迎え|行き方|車で|の車|電車")
+_TAXI_BOX = ('<aside class="next-box"><b>ペットタクシーで行くときは</b><a href="/#form" data-cta="guide-fare">料金をくらべる（無料）→</a>'
+             '<small>お迎えの場所と行き先を入れると、来てもらえる会社ごとの目安が並びます（概算・確定料金ではありません）</small></aside>')
+_TAXI_MINI = '<p class="next-mini"><a href="/#form" data-cta="guide-move">ペットタクシーで行くときは、料金をくらべる（無料）→</a></p>'
+_HUB_AT = {}
+# 一覧への箱がかえってじゃまになる記事（ペットロスの気持ち・保険を決めたい人には、施設の一覧は次の一歩ではない）
+_NO_HUB = {"pet-loss", "pet-insurance"}
+_TAXI_CORE = {"what-is-pet-taxi", "fare", "choose", "pet-only", "same-day", "multi-pet", "long-distance", "pet-taxi-fare-survey",
+              "night-fare", "wait-fare", "small-animals", "birds-reptiles", "large-dog", "cat", "senior", "nervous-pet",
+              "discharge-transfer", "grooming-hotel", "farewell", "airport-moving", "new-family"}
+_TAXI_AT = {"night-emergency-survey": "夜の足"}
+_HUB_EXTRA = {"night-emergency-survey": ("/hospital/night/", "夜間・救急の動物病院", "都道府県ごとの夜間・救急の動物病院をさがす")}  # この見出しの節の後ろに一覧への箱（それ以外は最初の節の後ろ）
+def guide_next(g, i, h, bs, state):
+    """i 番目の節のあとに置く案内のHTML（state は記事ごとに1回だけ置くための印）"""
+    out = ""
+    text = " ".join(b if isinstance(b, str) else str(b[1]) for b in bs)
+    if taxi_intent(g):
+        ex = _HUB_EXTRA.get(g["slug"])
+        if ex and i == 1:
+            out += f'<aside class="next-box"><b>{e(ex[1])}</b><a href="{ex[0]}" data-cta="guide-hub">{e(ex[2])}→</a></aside>'
+        hs = [x for x, _ in g["sections"]]
+        if g["slug"] in _TAXI_AT: at = next((k for k, x in enumerate(hs, 1) if _TAXI_AT[g["slug"]] in x), 1)
+        elif g["slug"] in _TAXI_CORE: at = 1  # ペットタクシーのことを調べに来た人には、答えのすぐ後ろ
+        else:  # 病院・施設への行き方の記事：まず施設のこと、ペットタクシーの話の節の後ろで
+            at = next((k for k, x in enumerate(hs, 1) if k > 1 and "タクシー" in x), None) or \
+                 next((k for k, x in enumerate(hs, 1) if k > 1 and _MOVE_H.search(x) and "電話" not in x), len(hs))
+        if i == at and not state.get("taxi"):
+            state["taxi"] = 1; out += _TAXI_BOX
+    else:
+        hub, name, lead = guide_hub(g["slug"])
+        at = _HUB_AT.get(g["slug"])
+        if g["slug"] not in _NO_HUB and not state.get("hub") and ((at and at in h) or (not at and i == 1)):
+            state["hub"] = 1; out += f'<aside class="next-box"><b>{e(name)}</b><a href="{hub}" data-cta="guide-hub">{e(lead)}→</a></aside>'
+        if "ペットタクシー" in text and not state.get("mini"):
+            state["mini"] = 1; out += _TAXI_MINI
+    return out
+
 for g in GUIDES:
     url = f'{SITE}/guide/{g["slug"]}/'
     published = g.get("published", PUBLISHED)
@@ -812,7 +885,7 @@ for g in GUIDES:
     ld = [
       {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
         {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
-        {"@type":"ListItem","position":2,"name":"ペットの移動ガイド","item":SITE+"/guide/"},
+        {"@type":"ListItem","position":2,"name":guide_hub(g["slug"])[1],"item":SITE+guide_hub(g["slug"])[0]},
         {"@type":"ListItem","position":3,"name":g["title"],"item":url}]},
       {"@context":"https://schema.org","@type":"Article","headline":g["title"],"description":g["desc"],"url":url,
        "image":SITE + og_img,"datePublished":published,"dateModified":modified,"inLanguage":"ja",
@@ -829,19 +902,22 @@ for g in GUIDES:
     if g.get("category") == "facility":
         toc = '<nav class="tip art-toc" aria-label="この記事の目次"><b>この記事で分かること</b><ol>' + "".join(
             f'<li><a href="#section-{i}">{e(h)}</a></li>' for i, (h, _) in enumerate(g["sections"], 1)) + '</ol></nav>'
-        body = toc + "".join(f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b) for b in bs)
+        _st = {}
+        body = toc + "".join(f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b) for b in bs) + guide_next(g, i, h, bs, _st)
                               for i, (h, bs) in enumerate(g["sections"], 1))
         body += f'<p class="small">{e(g["facility_note"])}</p>'
     else:
         # 最初の「先に答え」の節は答えの箱に。節が5つ以上の記事は目次と節の番号を出す（図で読む、tools/visual.py）
         secs = g["sections"]
         many = _V.many(g)
-        parts = []
+        parts, _st = [], {}
         for i, (h, bs) in enumerate(secs, 1):
             sec = f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b, h) for b in bs)
-            parts.append(f'<div class="answer">{sec}</div>' if i == 1 and _V.is_answer(h) else sec)
-        toc = ('<nav class="tip art-toc" aria-label="この記事の目次"><b>この記事で分かること</b><ol>' + "".join(
-            f'<li><a href="#section-{i}">{e(h)}</a></li>' for i, (h, _) in enumerate(secs, 1)) + '</ol></nav>') if many else ""
+            nxt = guide_next(g, i, h, bs, _st)
+            parts.append((f'<div class="answer">{sec}</div>' if i == 1 and _V.is_answer(h) else sec) + nxt)
+        # 目次はたたんでおく（開くと全部。中身はHTMLにあるので検索にも読める）。2026-11-14 Nori「記事、すごく読みにくい」
+        toc = ('<details class="toc2"><summary>この記事の目次（' + str(len(secs)) + 'つ）</summary><nav aria-label="この記事の目次"><ol>' + "".join(
+            f'<li><a href="#section-{i}">{e(h)}</a></li>' for i, (h, _) in enumerate(secs, 1)) + '</ol></nav></details>') if many else ""
         if many and parts and parts[0].startswith('<div class="answer">'):
             body = parts[0] + toc + "".join(parts[1:])
         else:
@@ -854,10 +930,9 @@ for g in GUIDES:
 <main>
 <section class="area-hero">
   <div class="wrap">
-    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/guide/">ペットの移動ガイド</a> › {e(g["title"])}</nav>
+    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="{guide_hub(g["slug"])[0]}">{e(guide_hub(g["slug"])[1])}</a> › {e(g["title"])}</nav>
     <h1>{e(g["title"])}</h1>
     <p class="lede">{e(g["lede"])}</p>
-    <div class="hero-fare"><b>あなたのルートで、ペットタクシー各社の料金をくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。公式サイトの料金表から計算した概算で、確定料金ではありません。</span><a class="btn" href="/#form" data-cta="guide-fare" style="margin-top:10px">ペットタクシーの料金をくらべる（無料）</a></div>
     <p class="small">ペットタクシー予約窓口　公開 {published.replace("-", ".")}・更新 {modified.replace("-", ".")}</p>
     {fig}
   </div>
@@ -872,7 +947,7 @@ for g in GUIDES:
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sh"><h2>あわせて読みたい</h2></div>
-    {guide_cards(g["related"], "three")}
+    {guide_cards(g["related"] if taxi_intent(g) else _related_info(g), "three")}
   </div>
 </section>
 <section style="padding-top:0">
@@ -893,6 +968,15 @@ for g in GUIDES:
 </section>
 </main>
 """ + foot("/#form")
+    # 記事を読んでいるあいだ、画面の下に出つづけるボタンは出さない（本文が隠れて読みにくい。下の「大切な家族の移動に」のボタンは残す）
+    page = re.sub(r'<div class="sticky">.*?</div>\n', "", page, count=1)
+    if not taxi_intent(g):
+        hub, hub_name, hub_lead = guide_hub(g["slug"])
+        page = re.sub(r'\s*<p class="guide-cta">.*?</p>', "", page, count=1, flags=re.S)
+        page = re.sub(r'<section style="padding-top:0">\s*<div class="wrap">\s*<div class="sh"><h2>エリアごとの料金の目安と対応</h2></div>.*?</section>\n', "", page, count=1, flags=re.S)
+        if g["slug"] in _NO_HUB:
+            page = re.sub(r'<section style="padding-top:0">\s*<div class="wrap">\s*<div class="last">.*?</section>\n', "", page, count=1, flags=re.S)
+        page = re.sub(r'<div class="last">.*?</div>\n  </div>', f'<div class="last">\n      <h2>{e(hub_name)}</h2>\n      <p>{e(hub_lead)}。公式サイトで確かめたことだけをのせています。</p>\n      <a class="btn center" href="{hub}">{e(hub_name)}の一覧へ{ARROW}</a>\n    </div>\n  </div>', page, count=1, flags=re.S)
     if g.get("category") == "facility":
         page = page.replace("空き状況と料金を問い合わせる（無料）", "掲載候補を見る").replace(">問い合わせる<span class=\"lg\">（無料）</span><", ">掲載候補を見る<")
         page = page.replace("無料で使えます。問い合わせただけでは予約は確定しません。会社の返事を見て「この内容で予約する」を押した時点で予約が確定します。",
@@ -2298,7 +2382,7 @@ import taxi_cta
 print("taxi_cta", taxi_cta.build(ROOT, _xl_prefs), "pages")
 # タクシー以外の分野のページのサイト名は「ペットのくらし窓口」（tools/brand.py、Nori 2026-11-09）
 import brand
-print("brand", brand.build(ROOT), "pages")
+print("brand", brand.build(ROOT, [g["slug"] for g in GUIDES if not taxi_intent(g)]), "pages")
 # AIエージェント向けの入口（/webmcp/data.json と /llms.txt。tools/gen_webmcp.py）
 import gen_webmcp
 gen_webmcp.build(ROOT)
