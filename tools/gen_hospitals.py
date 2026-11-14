@@ -71,6 +71,12 @@ def item_html(e, cond, h):
         extra += f'<small>診てもらえる動物：{e(h["animals"])}</small>'
     if h.get("addr"):
         extra += f'<small>所在地：{e(h["addr"])}</small>'
+    # [C] 2026-11-14 公式サイトで確かめた項目（facts）をカードに。出どころと確認日つき
+    fs = [f for f in h.get("facts", []) if f["k"] not in ("往診の地域", "対象の動物")]
+    if fs:
+        ck = max(f["checked"] for f in fs)
+        extra += ('<dl class="hosp-facts">' + "".join(f'<dt>{e(f["k"])}</dt><dd>{e(f["v"])}</dd>' for f in fs)
+                  + f'</dl><small class="hosp-src">公式サイトより（{int(ck[5:7])}月{int(ck[8:10])}日に確認）</small>')
     return (f'<div class="emg-item emg-co"><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>'
             f'<small>{e(h["city"])}・{e(h["hours"])}</small>{spec}{extra}'
             + (f'<div class="emg-score" data-id="{e(h["id"])}"></div>' if h.get("review_query") else '')
@@ -111,6 +117,31 @@ def _night_answer(e, rows):
             f'<p>クレジットカードだけで現金が使えないと書いている病院が{card_only}院あります。料金と、夜に受診したほうがいい症状は'
             f'<a href="/guide/night-vet-fee/">夜間の動物病院の料金の相場と、夜に受診したほうがいい症状</a>にまとめました。都道府県のページには、病院ごとの料金・対象の動物・設備・お支払い・駐車場をくらべる表があります。</p></div>')
 
+def _visit_answer(e, rows):
+    """[C] 2026-11-14 往診の一覧のいちばん上に答えの箱と、公式サイトで確かめた往診料・できること・できないことをくらべる表。"""
+    import visual as _V
+    hs = list({h["id"]: h for v in rows.values() for h in v}.values())
+    fx = [h for h in hs if h.get("facts")]
+    def fv(h, k): return next((f["v"] for f in h.get("facts", []) if f["k"] == k), "")
+    ys = sorted(int(m.replace(",", "")) for h in fx for m in re.findall(r"([\d,]{4,})円", fv(h, "往診料"))[:1])
+    mitori = sum(1 for h in fx if re.search("看取り|ターミナル|終末期|最期", fv(h, "家でできること")))
+    exo = sum(1 for h in hs if re.search("うさぎ|ウサギ|鳥|ハムスター|フェレット|爬虫", (h.get("animals", "") + fv(h, "対象の動物"))))
+    ng = sum(1 for h in fx if re.search("手術|レントゲン|入院", fv(h, "家でできないこと")))
+    prefs = len([p for p, v in rows.items() if v])
+    kv = [("往診の動物病院は？", f"全国{len(hs)}院を、{prefs}都道府県に分けて載せています。往診の地域は病院ごとに決まっているので、カードの「往診エリア」で家が入るかを確かめてください。"),
+          ("往診料はいくら？", (f"公式サイトに金額のある病院では、往診料は{ys[0]:,}〜{ys[-1]:,}円ほど（無料の病院もあります）。距離で上がる病院が多く、ほかに診察料・検査・お薬の料金がかかります。" if len(ys) >= 2 else "病院ごとに違います。距離で上がる病院が多いです。")),
+          ("家で何ができる？", f"診察・血液や尿の検査・注射・点滴・ワクチンなどは家でできる病院が多いです。手術・レントゲン・入院は家ではできないと書いている病院が{ng}院あり、そのときは設備のある病院を紹介してくれます。")]
+    tiles = [(f"{len(hs)}院", "公式サイトで確かめた往診の動物病院"), (f"{len(fx)}院", "往診料・できることなどを公式サイトで確かめた病院"),
+             (f"{mitori}院", "家での看取り・終末期のケアを書いている病院（確かめた病院のうち）"), (f"{exo}院", "犬・猫のほかの動物も診ると書いている病院")]
+    li = "".join(f'<li><b class="k">{e(q)}</b>{e(a)}</li>' for q, a in kv)
+    def cell(h, k): return e(fv(h, k)) or "—"
+    tx = [h for h in fx if sum(1 for k in ("往診料", "受付時間", "家でできること", "家でできないこと", "支払い方法") if fv(h, k)) >= 3]
+    rows_h = "".join(f'<tr><th scope="row">{e(h["name"])}<small>（{e(h["prefs"][0])}）</small></th><td>{cell(h, "往診料")}</td><td>{cell(h, "受付時間")}</td><td>{cell(h, "家でできること")}</td><td>{cell(h, "家でできないこと")}</td><td>{cell(h, "支払い方法")}</td></tr>' for h in tx)
+    return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">往診の動物病院のポイント</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}</div>'
+            f'<div class="emg-tips" style="margin-top:0"><h4>往診料・家でできること・できないことをくらべる（{len(tx)}院）</h4>'
+            '<p>公式サイトに書いてあることを写しました。金額は税込・税抜が病院ごとに違うので、そのままです。「—」は公式サイトに書いていない・見つからなかった項目です（「しない」という意味ではありません）。</p>'
+            f'<table><thead><tr><th>病院</th><th>往診料</th><th>受付時間</th><th>家でできること</th><th>家でできないこと</th><th>お支払い</th></tr></thead><tbody>{rows_h}</tbody></table></div>')
+
 def render_cond(cond, ctx):
     """条件ページ1枚のHTML。ctx は gen_areas.py の関数と値（head, foot, e, area_links, SITE, EMG, emg_regions, emg_opts）。"""
     e, SITE = ctx["e"], ctx["SITE"]
@@ -142,7 +173,7 @@ def render_cond(cond, ctx):
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    {_night_answer(e, rows) if cond["slug"] == "night" else ""}
+    {_night_answer(e, rows) if cond["slug"] == "night" else _visit_answer(e, rows) if cond["slug"] == "visit" else ""}
     <div class="emg">
       <p class="emg-free">この一覧は無料の情報です。病院からお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金や受け入れは、それぞれの病院に直接おたずねください。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
