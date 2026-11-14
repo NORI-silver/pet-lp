@@ -79,6 +79,8 @@ def card(e, it):
     def row(t, v):
         return f"<dt>{e(t)}</dt><dd>{e(v)}</dd>" if v else f'<dt>{e(t)}</dt><dd class="hn-none">公式ページに書いていません（不明）</dd>'
     rules = ("<dt>そのほかの決まり・備え</dt><dd><ul>" + "".join(f"<li>{e(r)}</li>" for r in it["rules"]) + "</ul></dd>") if it.get("rules") else ""
+    if it.get("details"):  # 公式ページに書いてある、そのほかのこと（在宅避難・協定・受付のしかたなど）
+        rules += "<dt>公式ページに書いてある、そのほかのこと</dt><dd><ul>" + "".join(f"<li>{e(r)}</li>" for r in it["details"]) + "</ul></dd>"
     links = "".join(f'<li><a href="{e(u)}" target="_blank" rel="noopener">{e(t)}</a></li>' for t, u in it["links"])
     mp = (f'<dt>避難所の場所</dt><dd><a href="{e(it["map"][1])}" target="_blank" rel="noopener">{e(it["map"][0])}</a></dd>' if it.get("map")
           else '<dt>避難所の場所</dt><dd class="hn-none">ペットを受け入れる避難所の一覧・地図は、確かめたページにはありませんでした。お住まいの市区町村のページでご確認ください。</dd>')
