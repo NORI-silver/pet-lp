@@ -10,16 +10,27 @@ CHECKED = G.CHECKED
 MAX = 30
 
 
+# [B] 11/14 Nori「内容が薄いページを全面的に強化」：施設ページだけに出す項目（一覧には出さない）。公式ページの文だけ。
+MORE = [("apply", "申し込みのしかた"), ("rules", "利用のきまり"), ("equip", "設備"), ("around", "まわりの施設・注意")]
+
+
 def facts(d):
-    return [(lab, d[k]) for k, lab in G.FIELDS if d.get(k)]
+    return [(lab, d[k]) for k, lab in G.FIELDS + MORE if d.get(k)]
+
+
+def base(d):  # ページを選ぶ数え方は前のまま（選ばれる30施設が入れかわらないように）
+    return [k for k, _ in G.FIELDS if d.get(k)]
+
+
+def ck(d): return d.get("checked") or CHECKED
 
 
 def pick():
     cand = {}
     for d in G.RUNS:
-        if len(facts(d)) >= 5 and d.get("addr"):  # 確かめた項目5つ以上・所在地あり（docs/facility-page.md）
+        if len(base(d)) >= 5 and d.get("addr"):  # 確かめた項目5つ以上・所在地あり（docs/facility-page.md）
             cand.setdefault(d["pref"], []).append(d)
-    for v in cand.values(): v.sort(key=lambda d: -len(facts(d)))
+    for v in cand.values(): v.sort(key=lambda d: -len(base(d)))
     order = sorted(cand, key=lambda p: -len(G.BY[p]))
     out, i = [], 0
     while len(out) < MAX and any(cand.values()):
@@ -29,7 +40,10 @@ def pick():
     return out
 
 
-PAGES = pick()
+# 11/14 時点の30施設を固定（データを足しても入れかわらないように）。広げるときはここに足す。
+FIXED = ['D001', 'D190', 'D032', 'D166', 'D169', 'D017', 'D153', 'D152', 'D186', 'D065', 'D150', 'D096', 'D145', 'D036', 'D041', 'D044', 'D046', 'D089', 'D093', 'D038', 'D060', 'D092', 'D002', 'D022', 'D178', 'D181', 'D078', 'D174', 'D026', 'D099']
+_BYID = {d["id"]: d for d in G.RUNS}
+PAGES = [_BYID[i] for i in FIXED if i in _BYID]
 IDS = {d["id"] for d in PAGES}
 
 
@@ -65,11 +79,13 @@ def _cmp(e, d):
 
 def _faq(d):
     nm, q = d["name"], []
-    if d.get("fee"): q.append((f"{nm}の料金はいくらですか？", f"{nm}の料金は、公式ページによると「{d['fee']}」です（{CHECKED}に確認）。"))
+    if d.get("fee"): q.append((f"{nm}の料金はいくらですか？", f"{nm}の料金は、公式ページによると「{d['fee']}」です（{ck(d)}に確認）。"))
     if d.get("reg"): q.append((f"{nm}は利用登録がいりますか？", f"{nm}の利用登録は、公式ページによると「{d['reg']}」です。"))
     if d.get("hours"): q.append((f"{nm}は何時から使えますか？", f"{nm}の利用時間は、公式ページによると「{d['hours']}」です" + (f"。休みは「{d['closed']}」です。" if d.get("closed") else "。")))
     if d.get("size"): q.append((f"{nm}に小型犬のエリアはありますか？", f"{nm}のエリアは、公式ページによると「{d['size']}」です。"))
-    return q[:4]
+    if d.get("parking"): q.append((f"{nm}に駐車場はありますか？", f"公式ページによると「{d['parking']}」です。"))
+    if d.get("need"): q.append((f"{nm}に持っていくものは？", f"公式ページによると「{d['need']}」です。"))
+    return q[:6]
 
 
 def render(ctx, d):
@@ -79,7 +95,7 @@ def render(ctx, d):
     kname = {"公営": "公営のドッグラン", "民間": "お店・施設のドッグラン", "高速道路": "高速道路のSA・PAのドッグラン"}[k]
     tparts = [w for w, f in (("料金", "fee"), ("利用時間", "hours"), ("登録", "reg"), ("行き方", "access")) if d.get(f)]
     title = f"{nm}（{d.get('city', '')}）｜{'・'.join(tparts)}｜ペットタクシー予約窓口"
-    lead1 = f"{nm}は、{pf}{d.get('city', '')}にある{kname}です（{CHECKED}に公式ページで確認）。"
+    lead1 = f"{nm}は、{pf}{d.get('city', '')}にある{kname}です（{ck(d)}に公式ページで確認）。"
     pts = [lead1]
     if d.get("fee"): pts.append(f"{nm}の料金は「{d['fee']}」です。")
     if d.get("hours"): pts.append(f"{nm}の利用時間は「{d['hours']}」です。")
@@ -87,7 +103,7 @@ def render(ctx, d):
     if d.get("size"): pts.append(f"{nm}のエリアは「{d['size']}」です。")
     pts = pts[:5]
     srcs = [d["url"]] + [u for u in d.get("src", []) if u != d["url"]]
-    src_html = "、".join(f'<a href="{e(u)}" target="_blank" rel="noopener">公式ページ{"" if i == 0 else i + 1}</a>' for i, u in enumerate(srcs)) + f"（{e(CHECKED)}に確認）"
+    src_html = "、".join(f'<a href="{e(u)}" target="_blank" rel="noopener">公式ページ{"" if i == 0 else i + 1}</a>' for i, u in enumerate(srcs)) + f"（{e(ck(d))}に確認）"
     rows = "".join(f'<tr><th scope="row">{e(lab)}</th><td>{e(v)}</td></tr>' for lab, v in facts(d))
     pt = "Park" if k == "公営" else "Place"
     ld = '<script type="application/ld+json">\n' + json.dumps([
@@ -98,7 +114,7 @@ def render(ctx, d):
         {"@type": "ListItem", "position": 4, "name": nm, "item": url}]},
       {"@context": "https://schema.org", "@type": pt, "additionalType": "ドッグラン", "name": nm, "url": d["url"],
        "address": {"@type": "PostalAddress", "addressRegion": pf, "streetAddress": d.get("addr", ""), "addressCountry": "JP"}},
-      {"@context": "https://schema.org", "@type": "WebPage", "name": nm, "url": url, "dateModified": _iso(CHECKED), "isBasedOn": d["url"]}],
+      {"@context": "https://schema.org", "@type": "WebPage", "name": nm, "url": url, "dateModified": _iso(ck(d)), "isBasedOn": d["url"]}],
       ensure_ascii=False, indent=1) + "\n</script>"
     taxi = ""
     if k != "高速道路":
