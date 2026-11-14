@@ -8342,6 +8342,440 @@
     "s"
    ],
    "id": "i127020"
+  },
+  {
+   "name": "グランピングヴィレッジ富士河口湖",
+   "kind": "グランピング",
+   "pref": "山梨県",
+   "city": "南都留郡鳴沢村",
+   "url": "https://www.nature-glamping.com/pet/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県南都留郡鳴沢村鳴沢7430",
+     "src": "https://www.nature-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬も泊まれる",
+     "src": "https://www.nature-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の決まりはなし（部屋は1匹を想定した広さ）",
+     "src": "https://www.nature-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "犬の料金はかからない",
+     "src": "https://www.nature-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病と混合ワクチンの証明書（写真でも可）。夜はケージの中の犬用ベッドで休ませる",
+     "src": "https://www.nature-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "1棟貸しの部屋の中と専用のBBQスペース（ベッドに上げるのは不可）",
+     "src": "https://www.nature-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "犬と泊まれる部屋ごとに専用のドッグラン（共用のランはなし）",
+     "src": "https://www.nature-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ヴィラ6棟（2〜6名、サウナつき）とドーム5棟（2〜5名）。全室に客室温泉",
+     "src": "https://www.nature-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ（猫は泊まれない）",
+     "src": "https://www.nature-glamping.com/pet/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i1f5d6c"
+  },
+  {
+   "name": "草津温泉 湯の宿 音雅",
+   "kind": "旅館",
+   "pref": "群馬県",
+   "city": "吾妻郡草津町",
+   "url": "https://onga.co.jp/pet01.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "群馬県吾妻郡草津町草津740-3",
+     "src": "https://onga.co.jp/pet01.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬まで（15kgまで）",
+     "src": "https://onga.co.jp/pet01.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1部屋2匹まで",
+     "src": "https://onga.co.jp/pet01.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "ごはん・リード・ペットシーツ・ケージ（60×90cm）、狂犬病とワクチンの証明書",
+     "src": "https://onga.co.jp/pet01.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "館内にドッグランあり",
+     "src": "https://onga.co.jp/pet01.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬と猫。ほかの動物は相談",
+     "src": "https://onga.co.jp/pet01.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i7e562c"
+  },
+  {
+   "name": "リゾートホテル蓼科",
+   "kind": "ホテル",
+   "pref": "長野県",
+   "city": "茅野市",
+   "url": "https://resort-hotel-tateshina.jp/pages/65/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県茅野市北山4035",
+     "src": "https://resort-hotel-tateshina.jp/pages/65/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "15kgまでの小型犬・中型犬（1歳以上）",
+     "src": "https://resort-hotel-tateshina.jp/pages/65/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2匹まで",
+     "src": "https://resort-hotel-tateshina.jp/pages/65/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹2,200円（現地で支払い）",
+     "src": "https://resort-hotel-tateshina.jp/pages/65/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "館内はふたつきのカートかキャリー（抱っこ・リードだけは不可）、同意書、ごはん",
+     "src": "https://resort-hotel-tateshina.jp/pages/65/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドッグルーム（レストラン・送迎バスは不可）",
+     "src": "https://resort-hotel-tateshina.jp/pages/65/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグルーム（40㎡・3名）。ケージなどの用意あり",
+     "src": "https://resort-hotel-tateshina.jp/pages/65/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時30分・10時",
+     "src": "https://resort-hotel-tateshina.jp/pages/65/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i1ba2da"
+  },
+  {
+   "name": "丸山温泉 古城館",
+   "kind": "旅館",
+   "pref": "新潟県",
+   "city": "南魚沼市",
+   "url": "https://kojyokan.com/rooms/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "新潟県南魚沼市石打1873",
+     "src": "https://kojyokan.com/rooms/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1部屋3匹まで",
+     "src": "https://kojyokan.com/rooms/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病と混合ワクチンの証明書（抗体検査の証明でも可）",
+     "src": "https://kojyokan.com/rooms/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・フードボウル・ペットシーツ・消臭スプレー・粘着ローラー・エチケット袋",
+     "src": "https://kojyokan.com/rooms/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋、廊下・ロビー（リードか抱っこ）、食事処の犬と入れるフロア",
+     "src": "https://kojyokan.com/rooms/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ドッグパーク古城（宿泊者は無料、4月中旬〜11月中旬・8時〜最終入場18時）",
+     "src": "https://kojyokan.com/rooms/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "離れのジュニアスイート1室、二間続きの和室2室、和室2室、洋室4室",
+     "src": "https://kojyokan.com/rooms/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "id4e77f"
+  },
+  {
+   "name": "別邸 石の家",
+   "kind": "旅館",
+   "pref": "静岡県",
+   "city": "伊東市",
+   "url": "https://www.izu-ishinoie.com/pet/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊東市八幡野1265-9",
+     "src": "https://www.izu-ishinoie.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬・大型犬",
+     "src": "https://www.izu-ishinoie.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹目は無料、2匹目2,000円、3匹目から1匹1,000円",
+     "src": "https://www.izu-ishinoie.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "予防接種を済ませていること。トイレのしつけ・むだぼえをしないこと",
+     "src": "https://www.izu-ishinoie.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "猫・うさぎ・フェレット・小鳥などもできるかぎり受け入れ。猫専用の部屋あり",
+     "src": "https://www.izu-ishinoie.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "全室で一緒に泊まれる。全室の露天風呂に一緒に入れる・部屋食",
+     "src": "https://www.izu-ishinoie.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "本館の裏に約40坪のドッグラン。ドッグランつきの客室（人工芝かウッドチップ）",
+     "src": "https://www.izu-ishinoie.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "トイレトレー・ペットシーツ・フードボウル・お散歩セットなど。ケージ・カート・キャットタワー・猫のトイレの貸し出し",
+     "src": "https://www.izu-ishinoie.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "持ってきたごはんを温めてくれる。オーダーメイドの犬のごはんもある",
+     "src": "https://www.izu-ishinoie.com/pet/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "rabbit",
+    "ferret",
+    "bird"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "icf7cbe"
+  },
+  {
+   "name": "ドッグパレスリゾート箱根",
+   "kind": "ホテル",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://dogpalace.sakura.ne.jp/facilities.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡箱根町宮城野1355-1",
+     "src": "https://dogpalace.sakura.ne.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全室で犬と泊まれる（ツイン・和室・和洋室など）",
+     "src": "https://dogpalace.sakura.ne.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "温泉のほかはどこでも一緒",
+     "src": "https://dogpalace.sakura.ne.jp/facilities.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "砂利のラン（約80㎡）、大型犬専用の天然芝の坂道のラン、雨の日も使える室内のラン",
+     "src": "https://dogpalace.sakura.ne.jp/facilities.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "各部屋にフードボウル・足ふきタオル・ペットシーツ・消臭スプレー・粘着ローラー・大型犬まで入るケージ。犬のシャワーブースとトリミング台",
+     "src": "https://dogpalace.sakura.ne.jp/facilities.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時〜17時30分・10時",
+     "src": "https://dogpalace.sakura.ne.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i64fc71"
+  },
+  {
+   "name": "クスクスグランピング真鶴",
+   "kind": "グランピング",
+   "pref": "神奈川県",
+   "city": "足柄下郡真鶴町",
+   "url": "https://couscousglamping.com/rooms/dog-park-tent/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡真鶴町岩812-8",
+     "src": "https://couscousglamping.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫・ミニブタなどどの動物も一緒に泊まれる（テントを傷つけたり汚したりするくせのある子は不可）",
+     "src": "https://couscousglamping.com/rooms/dog-park-tent/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "プライベートドッグランつきのベルテント（19.6㎡・大人4名まで）",
+     "src": "https://couscousglamping.com/rooms/dog-park-tent/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "テント専用のプライベートドッグラン",
+     "src": "https://couscousglamping.com/rooms/dog-park-tent/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "犬用のベッド、テント前の屋根つきウッドデッキ",
+     "src": "https://couscousglamping.com/rooms/dog-park-tent/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時〜22時・6時〜11時",
+     "src": "https://couscousglamping.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "small"
+   ],
+   "id": "i2c44a8"
   }
  ]
 }
