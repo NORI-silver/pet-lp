@@ -407,6 +407,7 @@ def scene_desc(where, pref):
             "犬・猫を乗せてくれるペットタクシーの料金の目安を、お迎えの場所を入れて会社ごとに無料でくらべられます。")
 def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = re.sub(r"\s*<!--NAT_STATS-->.*?<!--/NAT_STATS-->", "", TOP_HTML, flags=re.S)
+    t = re.sub(r"\s*<!--KURASHI-->.*?<!--/KURASHI-->", "", t, flags=re.S)  # 全分野の入口はトップだけ（tools/portal.py）
     t = re.sub(r"<title>.*?</title>", lambda m: f"<title>{e(title)}</title>", t, count=1, flags=re.S)
     t = re.sub(r'<meta name="description" content="[^"]*">', lambda m: f'<meta name="description" content="{e(desc)}">', t, count=1)
     t = re.sub(r'<link rel="canonical" href="[^"]*">', lambda m: f'<link rel="canonical" href="{url}">', t, count=1)
@@ -2407,6 +2408,9 @@ print("tables", tables.build(ROOT), "pages")
 # AIエージェント向けの入口（/webmcp/data.json と /llms.txt。tools/gen_webmcp.py）
 import gen_webmcp
 gen_webmcp.build(ROOT)
+# サイト全体を「ペットのくらし窓口」の総合サイトに（上の名前・分野のメニュー・トップの全分野の入口・構造化データ。tools/portal.py、Nori 2026-11-14）
+import portal
+print("portal", portal.build(ROOT), "pages")
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] noindex.json のページに noindex,follow を入れる（ほかの後処理のあと）
 for _p in NOINDEX:
