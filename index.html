@@ -295,6 +295,21 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .est-rows b small.nt{display:block;text-align:right;font-size:.74rem;color:#3b47a8;font-weight:700}
 .pref-fix{margin:8px 0 0;background:#fff4e5;border:2px solid var(--o);border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
 .pref-fix[hidden]{display:none}
+.pref-pick select{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.pref-btn{display:block;width:100%;text-align:left;font:inherit;font-size:16px;padding:14px 40px 14px 16px;border:1.5px solid var(--line);border-radius:14px;background:#fbfaf9 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235b5650' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 16px center;color:var(--ink);min-height:52px;cursor:pointer}
+.pref-btn[hidden],.pref-panel[hidden]{display:none}
+.pref-btn.empty{color:#8a837b}
+.pref-btn[aria-expanded=true],.pref-btn:focus{outline:0;border-color:var(--o);background-color:#fff}
+.pref-btn small,.pref-list small{font-size:.72rem;color:var(--ink-3);margin-left:6px;font-weight:500}
+.pref-panel{margin-top:6px;border:1.5px solid var(--o);border-radius:14px;background:#fff;padding:10px;box-shadow:0 8px 24px rgba(28,26,24,.12)}
+.pref-q{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fbfaf9;margin:0 0 6px;-webkit-appearance:none;appearance:none}
+.pref-q:focus{outline:0;border-color:var(--o);background:#fff}
+.pref-list{list-style:none;margin:0;padding:0;max-height:300px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.pref-list li{padding:12px 10px;border-radius:10px;cursor:pointer;font-size:1rem;line-height:1.3}
+.pref-list li[aria-selected=true]{background:var(--o-l);font-weight:700}
+.pref-list li.on,.pref-list li:hover{background:#f6f2ee}
+.pref-list li.g{cursor:default;font-size:.74rem;font-weight:700;color:var(--ink-3);padding:10px 10px 4px;background:none}
+.pref-list li.none{cursor:default;color:var(--ink-3);font-size:.88rem;background:none}
 .est-flag,.fare-flag{background:#fff;border:2px solid var(--o);border-radius:12px;padding:9px 12px;margin:8px 0;font-size:.84rem;line-height:1.6;color:var(--ink)}
 .est-flag b,.fare-flag b{color:var(--o-d);display:block;font-size:.92rem}
 .est-night,.fare-night{background:#eef0fb;border-radius:12px;padding:9px 12px;margin:8px 0;font-size:.82rem;line-height:1.6;color:var(--ink)}
@@ -791,8 +806,10 @@ footer a{color:var(--ink-2)}
         <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
         <div class="group">
           <div class="group-h"><span>1</span>いつ、どこへ行きますか？</div>
-          <div class="f"><label for="pref">お迎えの都道府県<span class="need">必須</span></label>
-            <select id="pref" name="pref" required><option value="">選んでください</option><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option><option>東京都</option><option>神奈川県</option><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option></select>
+          <div class="f pref-pick"><label for="pref" id="prefLbl">お迎えの都道府県<span class="need">必須</span></label>
+            <button type="button" id="prefBtn" class="pref-btn" aria-labelledby="prefLbl prefBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="prefPanel" hidden>選んでください</button>
+            <div class="pref-panel" id="prefPanel" hidden><input type="search" id="prefQ" class="pref-q" placeholder="県名で検索（例：かながわ、ふくおか）" autocomplete="off" aria-label="お迎えの都道府県を県名で検索" enterkeyhint="search"><ul class="pref-list" id="prefList" role="listbox" aria-label="お迎えの都道府県"></ul></div>
+            <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>大阪府</option><option>愛知県</option><option>埼玉県</option><option>千葉県</option><option>兵庫県</option><option>北海道</option><option>福岡県</option><option>静岡県</option><option>茨城県</option><option>広島県</option><option>京都府</option><option>宮城県</option><option>新潟県</option><option>長野県</option><option>岐阜県</option><option>群馬県</option><option>栃木県</option><option>岡山県</option><option>福島県</option><option>三重県</option><option>熊本県</option><option>鹿児島県</option><option>沖縄県</option><option>滋賀県</option><option>山口県</option><option>愛媛県</option><option>奈良県</option><option>長崎県</option><option>青森県</option><option>岩手県</option><option>石川県</option><option>大分県</option><option>宮崎県</option><option>山形県</option><option>富山県</option><option>秋田県</option><option>香川県</option><option>和歌山県</option><option>佐賀県</option><option>山梨県</option><option>福井県</option><option>徳島県</option><option>高知県</option><option>島根県</option><option>鳥取県</option></select>
             <p class="pref-fix" id="prefFix" role="status" hidden></p>
             <p class="open-note" id="openNote" role="status" hidden></p></div>
           <div class="f"><label for="pickup">お迎えの場所<span class="need">必須</span></label>
@@ -1353,6 +1370,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   // その欄までスクロールして、選びやすいようにする
   function jumpTo(el){
+    if (el.id === "pref" && $("prefBtn") && !$("prefBtn").hidden) { $("prefBtn").scrollIntoView({block: "center", behavior: "smooth"}); openPrefs(true); return; }
     var target = el.type === "radio" ? el.closest(".seg") || el : el;
     target.scrollIntoView({block: "center", behavior: "smooth"});
     try { el.focus({preventScroll: true}); } catch (e) { el.focus(); }
@@ -2326,9 +2344,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       navigator.geolocation.getCurrentPosition(ok, ng, {enableHighAccuracy: true, timeout: 12000, maximumAge: 0});
     }, {enableHighAccuracy: false, timeout: 5000, maximumAge: 300000});
   }
-  // お迎えの都道府県の並び順（Nori 2026-10-31「ユーザの所在地に合わせて近いところが上に。あとは北海道から順に」）
+  // お迎えの都道府県の並び順（Nori 2026-10-31「ユーザの所在地に合わせて近いところが上に」、2026-11-14「需要が大きい順にしよう。あと、検索もできるように」）
   // 近い順の元：エリアページなどで選ばれている都道府県 → 位置の利用がすでに許可されていれば端末の位置 → 通信の情報からの大まかな地域。
-  // 許可の確認は新しく出さない。分からないときは北海道から順のまま。選んでいる値は変えない
+  // 許可の確認は新しく出さない。分からないときは需要の大きい順だけ。選んでいる値は変えない
   var PREF_LL = [[43.06,141.35],[40.82,140.74],[39.70,141.15],[38.27,140.87],[39.72,140.10],[38.24,140.36],[37.75,140.47],[36.34,140.45],[36.57,139.88],[36.39,139.06],[35.86,139.65],[35.61,140.12],[35.69,139.69],[35.45,139.64],[37.90,139.02],[36.70,137.21],[36.59,136.63],[36.07,136.22],[35.66,138.57],[36.65,138.18],[35.39,136.72],[34.98,138.38],[35.18,136.91],[34.73,136.51],[35.00,135.87],[35.02,135.76],[34.69,135.52],[34.69,135.18],[34.69,135.83],[34.23,135.17],[35.50,134.24],[35.47,133.05],[34.66,133.93],[34.40,132.46],[34.19,131.47],[34.07,134.56],[34.34,134.04],[33.84,132.77],[33.56,133.53],[33.61,130.42],[33.25,130.30],[32.74,129.87],[32.79,130.74],[33.24,131.61],[31.91,131.42],[31.56,130.56],[26.21,127.68]];
   var PREF_NEAR_N = 6; // 上に出す数（その都道府県を含む）
   function llDist(a, b){ var dy = a[0] - b[0], dx = (a[1] - b[1]) * Math.cos((a[0] + b[0]) * Math.PI / 360); return dx * dx + dy * dy; }
@@ -2337,21 +2355,77 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     PREF_LL.forEach(function(p, i){ var d = llDist([lat, lng], p); if (d < bd) { bd = d; best = i; } });
     return best >= 0 && bd < 4 ? PREF_NAMES[best] : ""; // 日本の外（2度より遠い）なら使わない
   }
-  function sortPrefs(base){
-    var sel = $("pref"), i0 = PREF_NAMES.indexOf(base);
-    if (!sel || i0 < 0) return;
-    if (document.activeElement === sel) { sel.addEventListener("blur", function(){ sortPrefs(base); }, {once: true}); return; }
-    var have = {}; Array.prototype.forEach.call(sel.querySelectorAll("option"), function(o){ if (o.value) have[o.value] = 1; });
-    var near = PREF_NAMES.filter(function(n){ return have[n]; }).sort(function(a, b){
+  // 需要の大きい順（Nori 2026-11-14「需要が大きい順にしよう」）。いまは人口の多い順（2020年国勢調査）。サイトでさがされた数がたまったら、その順に置きかえる
+  var PREF_DEMAND = ["東京都", "神奈川県", "大阪府", "愛知県", "埼玉県", "千葉県", "兵庫県", "北海道", "福岡県", "静岡県", "茨城県", "広島県", "京都府", "宮城県", "新潟県", "長野県", "岐阜県", "群馬県", "栃木県", "岡山県", "福島県", "三重県", "熊本県", "鹿児島県", "沖縄県", "滋賀県", "山口県", "愛媛県", "奈良県", "長崎県", "青森県", "岩手県", "石川県", "大分県", "宮崎県", "山形県", "富山県", "秋田県", "香川県", "和歌山県", "佐賀県", "山梨県", "福井県", "徳島県", "高知県", "島根県", "鳥取県"];
+  var PREF_READ = {"北海道": "ほっかいどう", "青森県": "あおもり", "岩手県": "いわて", "宮城県": "みやぎ", "秋田県": "あきた", "山形県": "やまがた", "福島県": "ふくしま", "茨城県": "いばらき", "栃木県": "とちぎ", "群馬県": "ぐんま", "埼玉県": "さいたま", "千葉県": "ちば", "東京都": "とうきょう", "神奈川県": "かながわ", "新潟県": "にいがた", "富山県": "とやま", "石川県": "いしかわ", "福井県": "ふくい", "山梨県": "やまなし", "長野県": "ながの", "岐阜県": "ぎふ", "静岡県": "しずおか", "愛知県": "あいち", "三重県": "みえ", "滋賀県": "しが", "京都府": "きょうと", "大阪府": "おおさか", "兵庫県": "ひょうご", "奈良県": "なら", "和歌山県": "わかやま", "鳥取県": "とっとり", "島根県": "しまね", "岡山県": "おかやま", "広島県": "ひろしま", "山口県": "やまぐち", "徳島県": "とくしま", "香川県": "かがわ", "愛媛県": "えひめ", "高知県": "こうち", "福岡県": "ふくおか", "佐賀県": "さが", "長崎県": "ながさき", "熊本県": "くまもと", "大分県": "おおいた", "宮崎県": "みやざき", "鹿児島県": "かごしま", "沖縄県": "おきなわ"};
+  var prefBase = "";
+  function prefKey(t){ return String(t || "").trim().replace(/[\u30a1-\u30f6]/g, function(c){ return String.fromCharCode(c.charCodeAt(0) - 0x60); }).replace(/[都府県]$/, "").replace(/\s+/g, ""); }
+  function prefHit(n, q){ var k = prefKey(q); return !k || n.indexOf(k) === 0 || prefKey(n).indexOf(k) >= 0 || (PREF_READ[n] || "").indexOf(k) === 0; }
+  // 選択欄を作り直す：近くの都道府県（分かるときだけ）を上に、あとは需要の大きい順。県名の検索（prefQ）に合う県だけ出す。
+  // スマホの選択欄では文字の大きさを変えられないので、県名と「県外の会社のみ」を分けて出す自前の一覧（prefList）で選ぶ（Nori 2026-11-14「フォント小さくして」）。
+  // 値を持つのは今までどおり select#pref（ほかの処理はこれを見る）
+  function prefNote(n){ return FAR_PREFS.indexOf(shortPref(n)) >= 0 ? "県外の会社のみ" : ""; }
+  function prefLists(){
+    var q = $("prefQ") ? $("prefQ").value : "";
+    var list = PREF_DEMAND.filter(function(n){ return NO_PICK.indexOf(n) < 0 && prefHit(n, q); });
+    var i0 = PREF_NAMES.indexOf(prefBase), near = [];
+    if (i0 >= 0 && !prefKey(q)) near = list.slice().sort(function(a, b){
       return llDist(PREF_LL[PREF_NAMES.indexOf(a)], PREF_LL[i0]) - llDist(PREF_LL[PREF_NAMES.indexOf(b)], PREF_LL[i0]);
     }).slice(0, PREF_NEAR_N);
-    var rest = PREF_NAMES.filter(function(n){ return have[n] && near.indexOf(n) < 0; });
-    if (!rest.length) near.sort(function(a, b){ return PREF_NAMES.indexOf(a) - PREF_NAMES.indexOf(b); });
-    var v = sel.value, h = '<option value="">選んでください</option>';
-    function opts(list){ return list.map(function(n){ return "<option>" + n + "</option>"; }).join(""); }
-    h += rest.length ? '<optgroup label="近くの都道府県">' + opts(near) + '</optgroup><optgroup label="そのほか（北海道から順）">' + opts(rest) + '</optgroup>' : opts(near);
-    sel.innerHTML = h; sel.value = v; markPrefs();
+    return {q: q, list: list, near: near, rest: list.filter(function(n){ return near.indexOf(n) < 0; })};
   }
+  function renderPrefs(){
+    var sel = $("pref"); if (!sel) return;
+    var L = prefLists(), v = sel.value;
+    // select はいつも全部の県を持つ（検索でしぼっても値は消さない）
+    var all = PREF_DEMAND.filter(function(n){ return NO_PICK.indexOf(n) < 0; });
+    if (document.activeElement !== sel) {
+      sel.innerHTML = '<option value="">選んでください</option>' + all.map(function(n){ return "<option>" + n + "</option>"; }).join("");
+      markPrefs();
+      if (v && all.indexOf(v) >= 0) sel.value = v;
+    }
+    var ul = $("prefList"); if (!ul) return;
+    function li(n){ var t = prefNote(n); return '<li role="option" data-v="' + n + '" aria-selected="' + (n === sel.value) + '">' + n + (t ? "<small>" + t + "</small>" : "") + "</li>"; }
+    var h = "";
+    if (!L.list.length) h = '<li class="none">見つかりません。ひらがなか漢字で、県名の最初の文字から入れてください</li>';
+    else if (L.near.length && L.rest.length) h = '<li class="g">近くの都道府県</li>' + L.near.map(li).join("") + '<li class="g">そのほか</li>' + L.rest.map(li).join("");
+    else h = L.list.map(li).join("");
+    ul.innerHTML = h;
+    syncPrefBtn();
+  }
+  function syncPrefBtn(){
+    var b = $("prefBtn"), v = $("pref").value; if (!b) return;
+    var t = v && prefNote(v);
+    b.innerHTML = v ? v + (t ? "<small>" + t + "</small>" : "") : "選んでください";
+    b.classList.toggle("empty", !v);
+  }
+  function openPrefs(on){
+    var p = $("prefPanel"), b = $("prefBtn"); if (!p || !b) return;
+    p.hidden = !on; b.setAttribute("aria-expanded", on ? "true" : "false");
+    if (on) { $("prefQ").value = ""; renderPrefs(); var cur = $("prefList").querySelector("[aria-selected=true]"); if (cur) cur.scrollIntoView({block: "nearest"}); try { $("prefQ").focus({preventScroll: true}); } catch (e) {} }
+  }
+  function pickPref(v){
+    var sel = $("pref");
+    if (sel.value !== v) { sel.value = v; sel.dispatchEvent(new Event("change", {bubbles: true})); }
+    openPrefs(false); syncPrefBtn(); $("prefBtn").focus();
+  }
+  function sortPrefs(base){ if (PREF_NAMES.indexOf(base) < 0) return; prefBase = base; renderPrefs(); }
+  (function(){
+    var b = $("prefBtn"); if (!b) return;
+    b.hidden = false;
+    b.addEventListener("click", function(){ openPrefs($("prefPanel").hidden); });
+    $("prefQ").addEventListener("input", renderPrefs);
+    $("prefQ").addEventListener("keydown", function(e){
+      if (e.key === "Enter") { e.preventDefault(); var f = $("prefList").querySelector("li[data-v]"); if (f) pickPref(f.dataset.v); }
+      if (e.key === "Escape") { openPrefs(false); b.focus(); }
+    });
+    $("prefList").addEventListener("click", function(e){ var t = e.target.closest("li[data-v]"); if (t) pickPref(t.dataset.v); });
+    document.addEventListener("click", function(e){ if (!$("prefPanel").hidden && !e.target.closest(".pref-pick")) openPrefs(false); });
+    $("pref").addEventListener("change", syncPrefBtn);
+    // ほかの処理（場所から県を直す・入力の復元・リセット）が値を変えても、ボタンの文字を合わせる
+    var last = null; setInterval(function(){ var v = $("pref").value; if (v !== last) { last = v; syncPrefBtn(); } }, 500);
+    renderPrefs();
+  })();
   (function(){
     if ($("pref").value) { sortPrefs($("pref").value); return; }
     function byNet(){
