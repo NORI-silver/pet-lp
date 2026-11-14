@@ -14,6 +14,7 @@ import gen_yado as Y
 PSLUG = gen_dogrun.PSLUG
 _D = os.path.dirname(os.path.abspath(__file__))
 MIN_FACTS = 5
+NEW_INN_MIN_CHARS = 1200  # まだページのない宿の基準（サイト全体の数え方とのずれに余裕）
 INN_MIN_CHARS = 1000  # 宿1軒のページを作る「そのページだけの字数」（thin_gate の 900 に余裕をもたせる）
 
 
@@ -410,7 +411,10 @@ def write_all(ROOT, ctx):
         pages = {x["id"]: render_inn(ctx, x) for x in INNS if x["page"]}
         segs = {k: set(TG._segments(v)) for k, v in pages.items()}
         df = Counter(t for v in segs.values() for t in v)
-        short = {k for k, v in segs.items() if sum(len(t) for t in v if df[t] < TG.TEMPLATE_DF) < INN_MIN_CHARS}
+        # まだページのない宿は、サイト全体で数えたときに足りなくならないよう NEW_INN_MIN_CHARS で切る
+        isnew = {x["id"]: not os.path.exists(os.path.join(ROOT, ihref(x).strip("/"), "index.html")) for x in INNS}
+        short = {k for k, v in segs.items()
+                 if sum(len(t) for t in v if df[t] < TG.TEMPLATE_DF) < (NEW_INN_MIN_CHARS if isnew[k] else INN_MIN_CHARS)}
         if not short: break
         for x in INNS:
             if x["id"] in short: x["page"] = False
