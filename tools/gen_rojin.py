@@ -155,3 +155,13 @@ CAT = dict(slug=SLUG, name="老犬ホーム・老猫ホーム", unit="施設", h
   links=[("老犬ホームの費用のしくみ", "/guide/rojin-home-cost/"), ("老犬ホームに預ける前の準備", "/guide/rojin-home-prepare/"), ("老猫ホームのえらび方", "/guide/roneko-home/"), ("シニア犬・シニア猫、介護中の子の移動", "/guide/senior/"), ("往診専門の動物病院", "/hospital/visit/")])
 
 CAT["table"] = [("猫", lambda h: "○" if _cat_ok(h) else ""), ("大型犬の記載", lambda h: "○" if "大型" in h["animals"] else ""), ("見学・面会の記載", lambda h: "○" if h.get("visit") else ""), ("登録番号", lambda h: "○" if h.get("reg") else ""), ("市区町村", lambda h: h["city"])]
+
+# [B] 2026-11-14「うちの子で見る」：公式サイトに書いてある受け入れる動物で分ける（犬だけ・猫だけ・小型犬だけ）
+def _bf_keys(h):
+    a = h["animals"]
+    k = ["cat"] if _cat_ok(h) else []
+    if not a.startswith("猫"):
+        k += ["s"] if "小型犬5kg未満" in a else ["s", "m", "l"]
+    return k
+CAT["bf_keys"] = _bf_keys
+CAT["bf_lead"] = "公式サイトに書いてある「受け入れる動物」で分けています（犬だけ・猫だけ・小型犬だけの施設など）。大きさの決まりを書いていない施設は、犬ならどの大きさでも表示します。"
