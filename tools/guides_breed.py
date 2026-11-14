@@ -77,8 +77,23 @@ def cremation_rows():
     return rows
 
 URN = ("ペット霊園宇都宮（料金表）", "https://yu-kamiyamakikaku-pet.com/%E6%96%99%E9%87%91%E8%A9%B3%E7%B4%B0/")
-def cremation_block():
-    rows = cremation_rows() + [
+def urn_rows(more=False):
+    """骨つぼの大きさ（ペット霊園宇都宮が犬種で書いている区分）。more=True で八王子下柚木の「何寸まで無料」も"""
+    rows = URN_ROWS()
+    if more:
+        rows[0]["items"].append("八王子下柚木ペット霊園の個別火葬は、4寸までの骨つぼが料金に入っています")
+        rows[1]["items"].append("八王子下柚木ペット霊園の個別火葬は、4寸までの骨つぼが料金に入っています")
+        rows[2]["items"].append("八王子下柚木ペット霊園の個別火葬では、5寸の骨つぼは2,000円たします")
+    return rows
+
+def urn_block():
+    return ("breeds", {"title": "うちの子の犬種・体重で、骨つぼの大きさを見る",
+                       "lead": "骨つぼの大きさは、体の大きさ（お骨の量）で決まります。犬種を選ぶと、目安の大きさが出ます。",
+                       "sizes": [(k, l, lo, hi) for k, l, lo, hi, _ in CREM_SIZES], "rows": urn_rows(True),
+                       "note": "犬種と骨つぼの大きさの組み合わせは、ペット霊園宇都宮の料金表の書き方です（2026年11月に確認）。同じ犬種でも体の大きさで変わります。"})
+
+def URN_ROWS():
+    return [
      dict(k=["cat", "chihuahua", "yorkie", "pome"], h="骨つぼ：3.5寸（猫・チワワなど）", tag="骨つぼ",
           items=["ペット霊園宇都宮は、猫・チワワなどの骨つぼを3.5寸（4,000円）としています",
                  "大きな猫は、施設によって1つ上の区分・骨つぼになることがあります"], src=URN),
@@ -91,6 +106,9 @@ def cremation_block():
           items=["ペット霊園宇都宮は、ゴールデン・ラブラドールなどの骨つぼを6寸（8,500円）としています",
                  "八王子下柚木ペット霊園は「大型犬は6寸まで無料」と書いています。料金に骨つぼが入っているか、何寸までかを聞きます"], src=URN),
     ]
+
+def cremation_block():
+    rows = cremation_rows() + URN_ROWS()
     note = ("料金は各施設の公式サイトの体重ごとの料金表から、その体重のときの金額を写しました（2026年11月に確認）。「個別」の中身は施設ごとにちがい、"
             + "、".join(f"{n.split('（')[0]}は{kind}" for n, kind, _, _ in CREMATION[:6]) + "などです。"
             "空欄の体重（区分を書いていない・相談）の施設は数えていません。お迎え・夜や休日の料金が別のこともあるので、見積もりで確かめてください。おすすめ順ではありません。"
