@@ -831,6 +831,8 @@ def guide_hub(slug):
         return "/joto/", "保護犬・保護猫の譲渡の窓口", "住んでいる都道府県の譲渡の条件と譲渡会を見る"
     if slug == "pet-insurance":
         return "/hospital/", "条件でさがす動物病院", "夜間・救急や往診の動物病院をさがす"
+    if slug == "night-vet-fee":
+        return "/hospital/night/", "夜間・救急の動物病院", "都道府県の夜間・救急の動物病院と料金を見る"
     return "/guide/", "ペットの移動ガイド", ""
 
 # 案内（動線）は、読む人がそれを必要とする節のすぐ後ろに置く（2026-11-14 Nori「どこに動線があったら便利かも緻密に考えて」）
@@ -917,12 +919,13 @@ for g in GUIDES:
         many = _V.many(g)
         parts, _st = [], {}
         for i, (h, bs) in enumerate(secs, 1):
-            sec = f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b, h) for b in bs)
+            ans = i == 1 and _V.is_answer(h)
+            sec = (f'<h2 id="section-{i}" class="pill">{e(_V.answer_title(h))}</h2>' if ans else f'<h2 id="section-{i}">{e(h)}</h2>') + "".join(block(b, h) for b in bs)
             nxt = guide_next(g, i, h, bs, _st)
-            parts.append((f'<div class="answer">{sec}</div>' if i == 1 and _V.is_answer(h) else sec) + nxt)
+            parts.append((f'<div class="answer">{sec}</div>' if ans else sec) + nxt)
         # 目次はたたんでおく（開くと全部。中身はHTMLにあるので検索にも読める）。2026-11-14 Nori「記事、すごく読みにくい」
         toc = ('<details class="toc2"><summary>この記事の目次（' + str(len(secs)) + 'つ）</summary><nav aria-label="この記事の目次"><ol>' + "".join(
-            f'<li><a href="#section-{i}">{e(h)}</a></li>' for i, (h, _) in enumerate(secs, 1)) + '</ol></nav></details>') if many else ""
+            f'<li><a href="#section-{i}">{e(_V.answer_title(h) if i == 1 else h)}</a></li>' for i, (h, _) in enumerate(secs, 1)) + '</ol></nav></details>') if many else ""
         if many and parts and parts[0].startswith('<div class="answer">'):
             body = parts[0] + toc + "".join(parts[1:])
         else:
@@ -2115,6 +2118,36 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
       });
       panel.appendChild(el("p", "partner-review-src", "Google Maps"));
   }
+  // 施設の写真（押したときだけ・最大3枚）。撮った人の名前とリンク・出どころは規約で必要。2026-11-14 Nori「施設の写真とか追加したほうがいいんじゃない？」
+  function photos(box){
+    if (box.nextElementSibling && box.nextElementSibling.classList.contains("fac-photos")) return;
+    var id = box.dataset.id, w = el("div", "fac-photos"), b = el("button", "partner-review-open", "写真を見る"); b.type = "button";
+    w.appendChild(b); box.parentNode.insertBefore(w, box.nextSibling);
+    b.addEventListener("click", function(){
+      b.disabled = true; b.textContent = "写真を読み込んでいます…";
+      if (window.gtag) gtag("event", "open_photos", {id: id});
+      var body = new URLSearchParams(); body.set("kind", "photos"); body.set("partner_id", id);
+      fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
+        if (!j || !j.ok) throw 0;
+        if (!j.photos || !j.photos.length) throw "none";
+        var row = el("div", "fac-photo-row");
+        j.photos.forEach(function(v){
+          var f = el("figure", "fac-photo"), img = document.createElement("img");
+          img.src = v.url; img.alt = ""; img.loading = "lazy"; img.referrerPolicy = "no-referrer"; if (v.w && v.h) { img.width = v.w; img.height = v.h; }
+          f.appendChild(img);
+          var cap = el("figcaption");
+          (v.by || []).forEach(function(a, i){
+            if (i) cap.appendChild(document.createTextNode("・"));
+            var n = el(a.uri ? "a" : "span", "", a.name || "投稿者"); if (a.uri) { n.href = a.uri; n.target = "_blank"; n.rel = "noopener"; }
+            cap.appendChild(n);
+          });
+          if (cap.childNodes.length) f.appendChild(cap);
+          row.appendChild(f);
+        });
+        w.replaceChildren(row, el("p", "partner-review-src", "写真：Google Maps（利用者が投稿した写真です）"));
+      }).catch(function(e){ w.replaceChildren(el("p", "partner-review-src", e === "none" ? "地図サービスに写真がまだありません" : "写真を読み込めませんでした。時間をおいてもう一度お試しください")); });
+    });
+  }
   // 押したときだけ取り寄せる形（REVIEW_ON_CLICK）：最初は「口コミを見る」だけを出し、押したら星と本文をまとめて取り寄せる
   function lazy(box){
     var id = box.dataset.id, b = el("button", "partner-review-open", "口コミを見る"), p = el("p", "partner-score"); b.type = "button";
@@ -2162,6 +2195,7 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
   }
   var boxes = document.querySelectorAll(".emg-score[data-id]");
   if (!boxes.length) return;
+  boxes.forEach(photos);
   if (%s) { boxes.forEach(lazy); return; } // REVIEW_ON_CLICK（index.html と同じ値）
   if (!("IntersectionObserver" in window)) { boxes.forEach(want); return; }
   // 口コミの欄は空のあいだ見えないので、会社の枠が画面に入ったら取り寄せる（しぼりこみで隠れている会社は取り寄せない）

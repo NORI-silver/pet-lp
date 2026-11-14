@@ -202,7 +202,7 @@ def _vac_answer():
           ("混合ワクチンの証明もいりますか？", f"同じ{len(w)}か所のうち、混合ワクチンの接種証明を求めるのは{mix}か所です。公園などの公営のランは狂犬病と鑑札だけのところが多く、お店や施設のランは混合ワクチンまで求めるところが多いです。"),
           ("子犬はいつからドッグランに行けますか？", f"子犬の月齢やワクチンからの日数を決まりにしているところが、一覧に{pup}か所あります。「生後◯か月から」「ワクチンを受けてから◯日」などで、場所によって違うので、行く前に公式ページで確かめてください。"),
           ("書類のほかに持っていくものは？", "・".join(x.split("（")[0] for x in BRING[:3]) + "です。持ち物とマナーは<a href=\"/dogrun/first/\">はじめてのドッグラン</a>にまとめました。")]
-    return ('<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">先に答え</h2><dl>' + "".join(f"<dt>{q}</dt><dd>{a}</dd>" for q, a in qa) + "</dl></div>")
+    return ('<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">ワクチンと証明書のポイント</h2><dl>' + "".join(f"<dt>{q}</dt><dd>{a}</dd>" for q, a in qa) + "</dl></div>")
 
 
 # [B] 11/14：「ドッグラン 登録 不要」（月40〜70）の検索に、数えた数で先に答える。
@@ -213,7 +213,7 @@ def _noreg_answer():
     qa = [("登録しなくても使えるドッグランはありますか？", f"あります。一覧の{TOTAL}か所のうち、登録について公式ページに書いてあるのは{len(w)}か所で、そのうち「登録はいらない」とはっきり書いてあるのは{n0}か所です。のこりの{len(w) - n0}か所は、はじめに利用登録や受付がいります。下に{n0}か所の一覧があります。"),
           ("今日すぐ使いたいときは？", f"高速道路のSA・PAのドッグラン（一覧に{sa}か所）は、公式ページに登録の決まりが書かれていません。お店や施設のドッグランは、その日の受付で書類を見せる形が多いです。公園などの公営のドッグランは、登録会や窓口での登録が先にいるところが多いので、前もって確かめてください。"),
           ("登録のときに何がいりますか？", "多いのは、犬の鑑札（またはマイクロチップの登録証明）、その年度の狂犬病予防注射済票、混合ワクチンの接種証明です。数は<a href=\"/dogrun/vaccine/\">ドッグランに必要な書類</a>にまとめました。")]
-    return ('<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">先に答え</h2><dl>' + "".join(f"<dt>{q}</dt><dd>{a}</dd>" for q, a in qa) + "</dl></div>")
+    return ('<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">登録がいらないドッグランのポイント</h2><dl>' + "".join(f"<dt>{q}</dt><dd>{a}</dd>" for q, a in qa) + "</dl></div>")
 
 def _pct(a, b): return f"{round(a * 100 / b)}%" if b else "—"
 def _kind_table(e):
@@ -537,7 +537,7 @@ def _answer(e, pf, rs, faq):
     tiles = [(f"{n}か所", f"{pf}で公式ページを確かめたドッグラン")]
     for v, lab in [(nfree(rs), "利用料が無料と書いてある"), (nnoreg(rs), "登録なしで使えると書いてある"), (nsmall(rs), "小型犬のエリアがある")]:
         if v: tiles.append((f"{v}か所", lab))
-    return f'<div class="answer"><h2 id="answer">先に答え</h2><ul class="kv">{kv}</ul></div>' + _V.stats(tiles[:4])
+    return f'<div class="answer"><h2 id="answer">{e(pf)}のドッグランのポイント</h2><ul class="kv">{kv}</ul></div>' + _V.stats(tiles[:4])
 
 def render_pref(ctx, pf, rs):
     e, SITE = ctx["e"], ctx["SITE"]
