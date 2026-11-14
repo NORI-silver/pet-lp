@@ -2385,6 +2385,9 @@ print("taxi_cta", taxi_cta.build(ROOT, _xl_prefs), "pages")
 # タクシー以外の分野のページのサイト名は「ペットのくらし窓口」（tools/brand.py、Nori 2026-11-09）
 import brand
 print("brand", brand.build(ROOT, [g["slug"] for g in GUIDES if not taxi_intent(g)]), "pages")
+# サイト全体の表を読みやすくする（tools/tables.py、Nori 2026-11-14「表にまとめてるものが見にくい」）
+import tables
+print("tables", tables.build(ROOT), "pages")
 # AIエージェント向けの入口（/webmcp/data.json と /llms.txt。tools/gen_webmcp.py）
 import gen_webmcp
 gen_webmcp.build(ROOT)
