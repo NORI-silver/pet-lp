@@ -2193,6 +2193,17 @@ open(os.path.join(ROOT, "404.html"), "w", encoding="utf-8").write(nf)
 import crosslink
 _xl_prefs = [(a["slug"], {"tokyo": "東京都", "kanagawa": "神奈川県", "saitama": "埼玉県", "chiba": "千葉県"}[a["slug"]]) for a in AREAS] + [(x[0], x[1]) for x in PREFS]
 print("crosslink", crosslink.build(ROOT, _xl_prefs), "pages")
+# [B] 2026-11-14 施設1つずつのページに、確かめてあるデータから作る節（夜間の病院・行く前に確かめること・運賃の目安）を足す（tools/fac_extra.py）
+import fac_extra
+def _fac_fare(pf):
+    _k = pf if pf == "北海道" else pf[:-1]
+    if not _ncos(_k): return []  # 迎えに来てくれる会社がない県（沖縄など）は出さない
+    out = []
+    for km in (5, 10, 20):
+        v, b = _pref_text(_k, km)
+        out.append((km, v, f"{pf}に来てくれる会社のうち料金表をのせている{b}" if b != "全国" else "全国の会社"))
+    return out
+print("fac_extra", fac_extra.build(ROOT, EMG, _fac_fare), "pages")
 # [B] 2026-11-08 情報ページからペットタクシーの料金くらべへの案内（tools/taxi_cta.py、Nori「1と2」）
 import taxi_cta
 print("taxi_cta", taxi_cta.build(ROOT, _xl_prefs), "pages")

@@ -37,6 +37,8 @@ def facts(f):
     for k, lab, note in SVC:
         if _has(f, k): out.append((lab, f"あり（{note}）"))
     if f.get("price"): out.append(("料金の例", f["price"]))
+    # [B] 11/14 Nori「めちゃめちゃ濃くして」：施設ページだけに出す、公式サイトで確かめた項目（{"k","v"}）
+    out += [(x["k"], x["v"]) for x in f.get("more", [])]
     return out
 
 
@@ -61,7 +63,10 @@ def pick():
     return out
 
 
-PAGES = pick()
+# 11/14 時点の30施設を固定（項目を足しても入れかわらないように）。広げるときはここに足す。
+FIXED = ['Scd0216', 'S1a0483', 'S220475', 'Sfd6400', 'S606eea', 'S48f666', 'S5299d7', 'Se1d99a', 'Se1bf8d', 'S523e5a', 'Sdcb9a8', 'S33db8a', 'S50a5de', 'S136c61', 'S57a0db', 'S0b9ae7', 'S7edcb4', 'S56057f', 'Sdbddec', 'S78a99f', 'Sa4611d', 'Sd0edb1', 'S70883b', 'See9362', 'Sf408b4', 'S495b9e', 'Saf555c', 'S11b65d', 'Sc158a2', 'S61877c']
+_BYID = {f["id"]: f for f in F}
+PAGES = [_BYID[i] for i in FIXED if i in _BYID]
 IDS = {f["id"] for f in PAGES}
 
 
