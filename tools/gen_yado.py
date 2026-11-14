@@ -215,6 +215,7 @@ def _ld(SITE, crumbs, items, faq):
     out = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + h} for i, (n, h) in enumerate(crumbs)]}]
     if items:
+        items = items[:100]  # 構造化データは100軒まで（ページの中の一覧は全部）
         out.append({"@context": "https://schema.org", "@type": "ItemList", "numberOfItems": len(items),
                     "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": (SITE + href(x)) if x["page"] else x["url"], "name": x["name"]} for i, x in enumerate(items)]})
     if faq:
@@ -535,9 +536,13 @@ def write_all(ROOT, ctx):
         pages[("h", "pet")] = render_pethub(ctx); pages[("h", "dog")] = render_hub(ctx)
         segs = {k: set(TG._segments(v)) for k, v in pages.items()}
         df = Counter(t for v in segs.values() for t in v)
-        short = {k[1] for k, v in segs.items() if k[0] == "a" and sum(len(t) for t in v if df[t] < TG.TEMPLATE_DF) < ANIMAL_MIN_CHARS}
-        if not short: break
-        ANIMAL_PAGES.difference_update(short)
+        uniq = {k: sum(len(t) for t in v if df[t] < TG.TEMPLATE_DF) for k, v in segs.items()}
+        short = {k[1] for k, n in uniq.items() if k[0] == "a" and n < ANIMAL_MIN_CHARS}
+        # 県のページも、まだない県は字数が足りるときだけ作る（足りない県は全国のページの地方の表に入れる）
+        short_p = {k[1] for k, n in uniq.items() if k[0] == "p" and n < ANIMAL_MIN_CHARS
+                   and not os.path.exists(os.path.join(ROOT, "inu-yado", PSLUG[k[1]], "index.html"))}
+        if not short and not short_p: break
+        ANIMAL_PAGES.difference_update(short); PREFS.difference_update(short_p)
     for k, _, slug in AN:
         d = os.path.join(ROOT, "pet-yado", slug)
         if k not in ANIMAL_PAGES and os.path.isdir(d): shutil.rmtree(d)

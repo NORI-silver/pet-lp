@@ -15431,6 +15431,3198 @@
     "m"
    ],
    "id": "i4b1ff1"
+  },
+  {
+   "name": "ホテル椿山荘東京",
+   "kind": "ホテル",
+   "pref": "東京都",
+   "city": "文京区",
+   "url": "https://hotel-chinzanso-tokyo.com/accommodations/rooms/pet_friendly",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "東京都文京区関口2-10-8",
+     "src": "https://hotel-chinzanso-tokyo.com/accommodations/rooms/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（ワクチンなど法律の決まりを満たすこと）",
+     "src": "https://hotel-chinzanso-tokyo.com/accommodations/rooms/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "猫も泊まれる（キャットハウスと猫砂を用意）",
+     "src": "https://hotel-chinzanso-tokyo.com/accommodations/rooms/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "予約のときに電話で申し込む",
+     "src": "https://hotel-chinzanso-tokyo.com/accommodations/rooms/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（ペットだけで部屋に残すのは不可）と5階の専用ドッグパーク（約40㎡・足洗い場）。スイートはケージに入れてロビーに入れる",
+     "src": "https://hotel-chinzanso-tokyo.com/accommodations/rooms/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージかキャットハウス・ペットシーツか猫砂・食器・ウェットティッシュ・粘着クリーナー",
+     "src": "https://hotel-chinzanso-tokyo.com/accommodations/rooms/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "部屋でのペットシッターは1時間5,500円から、近くのペットホテルもある（有料）",
+     "src": "https://hotel-chinzanso-tokyo.com/accommodations/rooms/pet_friendly",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ie9c7b2"
+  },
+  {
+   "name": "パティーナ大阪",
+   "kind": "ホテル",
+   "pref": "大阪府",
+   "city": "大阪市",
+   "url": "https://patinahotels.com/osaka/dog-friendly-stay",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "デラックス・プレミアム・ジュニアスイート",
+     "src": "https://patinahotels.com/osaka/dog-friendly-stay",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "1頭15kgまで",
+     "src": "https://patinahotels.com/osaka/dog-friendly-stay",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://patinahotels.com/osaka/dog-friendly-stay",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊10,000円（税・サービス料込み、清掃料を含む）",
+     "src": "https://patinahotels.com/osaka/dog-friendly-stay",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の狂犬病と混合ワクチンの証明書、フード、留守番させるときはクレート。事前に連絡",
+     "src": "https://patinahotels.com/osaka/dog-friendly-stay",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋とレストランP72のテラス席だけ（共用部はカートかキャリー）",
+     "src": "https://patinahotels.com/osaka/dog-friendly-stay",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "クッションベッド・骨の形のおもちゃ・フードと水の皿。1階入口横に24時間の足洗い場",
+     "src": "https://patinahotels.com/osaka/dog-friendly-stay",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "icb5440"
+  },
+  {
+   "name": "フォーシーズンズホテル京都",
+   "kind": "ホテル",
+   "pref": "京都府",
+   "city": "京都市",
+   "url": "https://fourseasons.com/kyoto/services-and-amenities/pet-friendly-stays",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "デラックス・プレミア・プレミア ヘリテージガーデン",
+     "src": "https://fourseasons.com/kyoto/services-and-amenities/pet-friendly-stays",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "7kgまで",
+     "src": "https://fourseasons.com/kyoto/services-and-amenities/pet-friendly-stays",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室1匹",
+     "src": "https://fourseasons.com/kyoto/services-and-amenities/pet-friendly-stays",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬と猫",
+     "src": "https://fourseasons.com/kyoto/services-and-amenities/pet-friendly-stays",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1室18,975円の清掃料（税・サービス料込み）",
+     "src": "https://fourseasons.com/kyoto/services-and-amenities/pet-friendly-stays",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書への署名とワクチン接種の証明",
+     "src": "https://fourseasons.com/kyoto/services-and-amenities/pet-friendly-stays",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋・積翠園（池の庭）・EMBA KYOTO GRILLのテラス（リード）。ほかのレストラン・スパは不可、部屋の外はカートかキャリー",
+     "src": "https://fourseasons.com/kyoto/services-and-amenities/pet-friendly-stays",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "水の器・ごみ箱・シート・クレート（申し出）・おやつ・散歩マップ",
+     "src": "https://fourseasons.com/kyoto/services-and-amenities/pet-friendly-stays",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "if9bb2c"
+  },
+  {
+   "name": "1 Hotel Tokyo",
+   "kind": "ホテル",
+   "pref": "東京都",
+   "city": "港区",
+   "url": "https://www.1hotels.com/tokyo/pet-friendly",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "東京都港区赤坂2-17-22",
+     "src": "https://www.1hotels.com/tokyo/pet-friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kgまでの小型犬（ほかのペットは事前に相談）",
+     "src": "https://www.1hotels.com/tokyo/pet-friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室1頭",
+     "src": "https://www.1hotels.com/tokyo/pet-friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "清掃料30,000円",
+     "src": "https://www.1hotels.com/tokyo/pet-friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋と共用部（リードかキャリー、目を離さない）。レストランは不可",
+     "src": "https://www.1hotels.com/tokyo/pet-friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ベッドと食器",
+     "src": "https://www.1hotels.com/tokyo/pet-friendly",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i44ebf3"
+  },
+  {
+   "name": "せせらぎの宿 呉竹",
+   "kind": "旅館",
+   "pref": "静岡県",
+   "city": "静岡市",
+   "url": "https://hpdsp.jp/kuretake/en/page1",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県静岡市葵区富沢220-1",
+     "src": "https://hpdsp.jp/kuretake/en/page1",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋2室（中庭つきの和洋室など）",
+     "src": "https://hpdsp.jp/kuretake/en/page1",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3頭まで",
+     "src": "https://hpdsp.jp/kuretake/en/page1",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭3,000円（税込・現地払い）",
+     "src": "https://hpdsp.jp/kuretake/en/page1",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "登録、1年以内の狂犬病と5種以上の混合ワクチン、ノミ・ダニ予防、生後4か月以上、ペット宿泊同意書",
+     "src": "https://hpdsp.jp/kuretake/en/page1",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ロビー・犬と泊まれる部屋・ドッグラン（ラウンジ・食事処・大浴場は不可）",
+     "src": "https://hpdsp.jp/kuretake/en/page1",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・足ふきタオル・エチケット袋・トイレシート・粘着ローラー",
+     "src": "https://hpdsp.jp/kuretake/en/page1",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "専用ドッグラン（14:30〜23:00、翌6:00〜10:30）",
+     "src": "https://hpdsp.jp/kuretake/en/page1",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i535a24"
+  },
+  {
+   "name": "Casual Resort COFF Ichinomiya",
+   "kind": "ホテル",
+   "pref": "千葉県",
+   "city": "一宮町",
+   "url": "https://hotel-r9.jp/pdf/rules/coff_petsrules.pdf",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県長生郡一宮町一宮10007",
+     "src": "https://hotel-r9.jp/pdf/rules/coff_petsrules.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "20kg未満の中型犬まで（生後6か月以上の室内犬）",
+     "src": "https://hotel-r9.jp/pdf/rules/coff_petsrules.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで（15kg未満の小型犬は3頭まで）",
+     "src": "https://hotel-r9.jp/pdf/rules/coff_petsrules.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病と5種以上の混合ワクチン（接種後2週間以上1年未満）の証明の写し、ノミ・ダニ駆除。キャリーケージ・リード・トイレシート・食事と食器",
+     "src": "https://hotel-r9.jp/pdf/rules/coff_petsrules.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（基本は専用ケージ）。本館・ジャグジー・ベッド・BBQ施設は不可",
+     "src": "https://hotel-r9.jp/pdf/rules/coff_petsrules.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ",
+     "src": "https://hotel-r9.jp/pdf/rules/coff_petsrules.pdf",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i1ae1f8"
+  },
+  {
+   "name": "天然温泉ホテルリブマックスPREMIUM札幌大通公園",
+   "kind": "ホテル",
+   "pref": "北海道",
+   "city": "札幌市",
+   "url": "https://www.hotel-livemax.com/dogstay/#天然温泉ホテルリブマックスPREMIUM札幌大通公園",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ifda5f0"
+  },
+  {
+   "name": "ホテルリブマックス札幌すすきの",
+   "kind": "ホテル",
+   "pref": "北海道",
+   "city": "札幌市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス札幌すすきの",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ie1ee5a"
+  },
+  {
+   "name": "ホテルリブマックス札幌中島公園GRANDE",
+   "kind": "ホテル",
+   "pref": "北海道",
+   "city": "札幌市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス札幌中島公園GRANDE",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i3e14e4"
+  },
+  {
+   "name": "ホテルリブマックスBUDGET札幌駅前",
+   "kind": "ホテル",
+   "pref": "北海道",
+   "city": "札幌市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックスBUDGET札幌駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i257f61"
+  },
+  {
+   "name": "ホテルリブマックス本八戸駅前ビジネスホテル",
+   "kind": "ホテル",
+   "pref": "青森県",
+   "city": "八戸市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス本八戸駅前ビジネスホテル",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "id41fff"
+  },
+  {
+   "name": "ホテルリブマックス仙台青葉通",
+   "kind": "ホテル",
+   "pref": "宮城県",
+   "city": "仙台市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス仙台青葉通",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i1b8801"
+  },
+  {
+   "name": "ホテルリブマックス福島郡山駅前",
+   "kind": "ホテル",
+   "pref": "福島県",
+   "city": "郡山市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス福島郡山駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i7a08ad"
+  },
+  {
+   "name": "ホテルリブマックスBUDGET湯本",
+   "kind": "ホテル",
+   "pref": "福島県",
+   "city": "いわき市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックスBUDGET湯本",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ia0ef42"
+  },
+  {
+   "name": "ホテルリブマックス蒲田駅前",
+   "kind": "ホテル",
+   "pref": "東京都",
+   "city": "大田区",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス蒲田駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i1819fd"
+  },
+  {
+   "name": "ホテルリブマックス浅草橋駅前",
+   "kind": "ホテル",
+   "pref": "東京都",
+   "city": "台東区",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス浅草橋駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i8530c3"
+  },
+  {
+   "name": "ホテルリブマックスBUDGET横浜関内",
+   "kind": "ホテル",
+   "pref": "神奈川県",
+   "city": "横浜市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックスBUDGET横浜関内",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i442b4a"
+  },
+  {
+   "name": "ホテルリブマックス横浜スタジアム前",
+   "kind": "ホテル",
+   "pref": "神奈川県",
+   "city": "横浜市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス横浜スタジアム前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i74cfc1"
+  },
+  {
+   "name": "ホテルリブマックス横浜元町駅前",
+   "kind": "ホテル",
+   "pref": "神奈川県",
+   "city": "横浜市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス横浜元町駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ibd6745"
+  },
+  {
+   "name": "ホテルリブマックスBUDGET宇都宮",
+   "kind": "ホテル",
+   "pref": "栃木県",
+   "city": "宇都宮市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックスBUDGET宇都宮",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ie744ad"
+  },
+  {
+   "name": "スパリゾートリブマックス",
+   "kind": "ホテル",
+   "pref": "栃木県",
+   "city": "",
+   "url": "https://www.hotel-livemax.com/dogstay/#スパリゾートリブマックス",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i10e090"
+  },
+  {
+   "name": "ホテルリブマックスBUDGET群馬沼田",
+   "kind": "ホテル",
+   "pref": "群馬県",
+   "city": "沼田市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックスBUDGET群馬沼田",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i914cc8"
+  },
+  {
+   "name": "ホテルリブマックス新潟駅前",
+   "kind": "ホテル",
+   "pref": "新潟県",
+   "city": "新潟市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス新潟駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i1a582d"
+  },
+  {
+   "name": "ホテルリブマックス新潟長岡駅前",
+   "kind": "ホテル",
+   "pref": "新潟県",
+   "city": "長岡市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス新潟長岡駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "idbe7cc"
+  },
+  {
+   "name": "ホテルリブマックス富山",
+   "kind": "ホテル",
+   "pref": "富山県",
+   "city": "富山市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス富山",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ib524d0"
+  },
+  {
+   "name": "天然温泉ホテルリブマックスBUDGET甲府",
+   "kind": "ホテル",
+   "pref": "山梨県",
+   "city": "甲府市",
+   "url": "https://www.hotel-livemax.com/dogstay/#天然温泉ホテルリブマックスBUDGET甲府",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "if765b4"
+  },
+  {
+   "name": "天然温泉ホテルリブマックスPREMIUM長野駅前",
+   "kind": "ホテル",
+   "pref": "長野県",
+   "city": "長野市",
+   "url": "https://www.hotel-livemax.com/dogstay/#天然温泉ホテルリブマックスPREMIUM長野駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ia1bb77"
+  },
+  {
+   "name": "ホテルリブマックス岡崎",
+   "kind": "ホテル",
+   "pref": "愛知県",
+   "city": "岡崎市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス岡崎",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i59ac50"
+  },
+  {
+   "name": "ホテルリブマックス愛知豊田駅前",
+   "kind": "ホテル",
+   "pref": "愛知県",
+   "city": "豊田市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス愛知豊田駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "id8b2a8"
+  },
+  {
+   "name": "ホテルリブマックス三河安城駅前",
+   "kind": "ホテル",
+   "pref": "愛知県",
+   "city": "安城市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス三河安城駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "iccb92e"
+  },
+  {
+   "name": "リブマックスさきしまコスモタワーホテル",
+   "kind": "ホテル",
+   "pref": "大阪府",
+   "city": "大阪市",
+   "url": "https://www.hotel-livemax.com/dogstay/#リブマックスさきしまコスモタワーホテル",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ic7f870"
+  },
+  {
+   "name": "ホテルリブマックスBUDGET神戸",
+   "kind": "ホテル",
+   "pref": "兵庫県",
+   "city": "神戸市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックスBUDGET神戸",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "iff9650"
+  },
+  {
+   "name": "ホテルリブマックス神戸三宮",
+   "kind": "ホテル",
+   "pref": "兵庫県",
+   "city": "神戸市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス神戸三宮",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i4429cb"
+  },
+  {
+   "name": "天然温泉ホテルリブマックスPREMIUM姫路駅南",
+   "kind": "ホテル",
+   "pref": "兵庫県",
+   "city": "姫路市",
+   "url": "https://www.hotel-livemax.com/dogstay/#天然温泉ホテルリブマックスPREMIUM姫路駅南",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ie6e627"
+  },
+  {
+   "name": "ホテルリブマックスBUDGET尼崎",
+   "kind": "ホテル",
+   "pref": "兵庫県",
+   "city": "尼崎市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックスBUDGET尼崎",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i8b2a14"
+  },
+  {
+   "name": "ホテルリブマックス西宮",
+   "kind": "ホテル",
+   "pref": "兵庫県",
+   "city": "西宮市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス西宮",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i4d7a73"
+  },
+  {
+   "name": "ホテルリブマックス京都二条城北",
+   "kind": "ホテル",
+   "pref": "京都府",
+   "city": "京都市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス京都二条城北",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "id014af"
+  },
+  {
+   "name": "ホテルリブマックス京都二条城西",
+   "kind": "ホテル",
+   "pref": "京都府",
+   "city": "京都市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス京都二条城西",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i145f69"
+  },
+  {
+   "name": "ホテルリブマックスBUDGET京都駅前",
+   "kind": "ホテル",
+   "pref": "京都府",
+   "city": "京都市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックスBUDGET京都駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "id9494a"
+  },
+  {
+   "name": "ホテルリブマックスBUDGET京都五条",
+   "kind": "ホテル",
+   "pref": "京都府",
+   "city": "京都市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックスBUDGET京都五条",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i523faa"
+  },
+  {
+   "name": "ホテルリブマックス京都寺町通",
+   "kind": "ホテル",
+   "pref": "京都府",
+   "city": "京都市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス京都寺町通",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ibf87e4"
+  },
+  {
+   "name": "ホテルリブマックス京都鴨川前",
+   "kind": "ホテル",
+   "pref": "京都府",
+   "city": "京都市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス京都鴨川前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i3d4d9e"
+  },
+  {
+   "name": "ホテルリブマックス広島平和公園前",
+   "kind": "ホテル",
+   "pref": "広島県",
+   "city": "広島市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス広島平和公園前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "id7c99f"
+  },
+  {
+   "name": "天然温泉ホテルリブマックスPREMIUM広島",
+   "kind": "ホテル",
+   "pref": "広島県",
+   "city": "広島市",
+   "url": "https://www.hotel-livemax.com/dogstay/#天然温泉ホテルリブマックスPREMIUM広島",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "idf2890"
+  },
+  {
+   "name": "ホテルリブマックス福山駅前",
+   "kind": "ホテル",
+   "pref": "広島県",
+   "city": "福山市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス福山駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ifb3eb3"
+  },
+  {
+   "name": "ホテルリブマックス高松駅前",
+   "kind": "ホテル",
+   "pref": "香川県",
+   "city": "高松市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス高松駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i445040"
+  },
+  {
+   "name": "ホテルリブマックス小倉駅前",
+   "kind": "ホテル",
+   "pref": "福岡県",
+   "city": "北九州市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス小倉駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i166c0f"
+  },
+  {
+   "name": "ホテルリブマックス博多中洲",
+   "kind": "ホテル",
+   "pref": "福岡県",
+   "city": "福岡市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス博多中洲",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i49a4aa"
+  },
+  {
+   "name": "ホテルリブマックス博多駅前",
+   "kind": "ホテル",
+   "pref": "福岡県",
+   "city": "福岡市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス博多駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i773a36"
+  },
+  {
+   "name": "ホテルリブマックス博多駅南",
+   "kind": "ホテル",
+   "pref": "福岡県",
+   "city": "福岡市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス博多駅南",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "id6c258"
+  },
+  {
+   "name": "ホテルリブマックス福岡天神",
+   "kind": "ホテル",
+   "pref": "福岡県",
+   "city": "福岡市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス福岡天神",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i2cb101"
+  },
+  {
+   "name": "ホテルリブマックス福岡天神WEST",
+   "kind": "ホテル",
+   "pref": "福岡県",
+   "city": "福岡市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックス福岡天神WEST",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i9b376e"
+  },
+  {
+   "name": "ホテルリブマックスBUDGET鹿児島",
+   "kind": "ホテル",
+   "pref": "鹿児島県",
+   "city": "鹿児島市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックスBUDGET鹿児島",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i36d23a"
+  },
+  {
+   "name": "ホテルリブマックスBUDGET那覇",
+   "kind": "ホテル",
+   "pref": "沖縄県",
+   "city": "那覇市",
+   "url": "https://www.hotel-livemax.com/dogstay/#ホテルリブマックスBUDGET那覇",
+   "ok": true,
+   "facts": [
+    {
+     "k": "プラン",
+     "v": "「Dog×Stay」プランで泊まる（ホテルごとにちがうことがあるので、予約前に確かめる）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg未満の小型犬",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭分はプラン料金に込み。2頭目から2,000円",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病ワクチンの接種証明書（コピー可）。マナーベルトかマナーパンツがあると安心",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（レストランは不可。食事のあいだは部屋で留守番。一時預かりはなし）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フード用の皿1枚・水の皿1枚・ペットシーツ（1日1頭2枚）",
+     "src": "https://www.hotel-livemax.com/dogstay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i305ea7"
   }
  ]
 }
