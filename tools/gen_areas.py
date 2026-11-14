@@ -2356,7 +2356,8 @@ open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
 # 同じURLを分野ごとの /sitemaps/<分野>.xml にも入れて、/sitemap_index.xml でまとめる。Search Console でサイトマップごとの
 # 登録数が出るので、分野ごとの登録率（品質の関門）を数えられる。分野はURLの最初のフォルダで決める（ペットタクシーの地域・トップ・規約などは taxi）。
 SITEMAP_CATS = {"guide": "guide", "sougi": "sougi", "dogrun": "dogrun", "hospital": "hospital", "pet-hotel": "pet-hotel",
-                "pet-sitter": "pet-sitter", "dog-trainer": "dog-trainer", "rojin-home": "rojin-home", "trimming": "trimming", "jichitai": "jichitai", "hinan": "hinan", "joto": "joto"}
+                "pet-sitter": "pet-sitter", "dog-trainer": "dog-trainer", "rojin-home": "rojin-home", "trimming": "trimming", "jichitai": "jichitai", "hinan": "hinan", "joto": "joto",
+                "inu-yado": "yado", "pet-yado": "yado"}
 def _sm_cat(u):
   return SITEMAP_CATS.get(u[len(SITE) + 1:].split("/")[0], "taxi")
 _sm_groups = {}
