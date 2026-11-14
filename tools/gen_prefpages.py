@@ -37,7 +37,7 @@ def _region_of(pf, regions):
         if pf in prefs: return lab, prefs
     return "", []
 
-CSS = "<style>.emg .tbl{overflow-x:auto;max-width:100%}.pp-nav{margin:4px 0;line-height:1.9}.pp-nav span{display:inline-block;min-width:5em;font-weight:bold;margin-right:6px}.pp-nav a,.pp-nav b{margin-right:10px;white-space:nowrap}.pp-facts{margin:6px 0 10px;padding-left:1.2em}.pp-tbl th,.pp-tbl td{font-size:13px;padding:4px 6px;text-align:center;white-space:nowrap}.pp-tbl td:first-child,.pp-tbl th:first-child{text-align:left;white-space:normal;min-width:9em}</style>"
+CSS = "<style>.emg .tbl{overflow-x:auto;max-width:100%}.pp-nav{margin:4px 0;line-height:1.9}.pp-nav span{display:inline-block;min-width:5em;font-weight:bold;margin-right:6px}.pp-nav a,.pp-nav b{margin-right:10px;white-space:nowrap}.pp-facts{margin:6px 0 10px;padding-left:1.2em}.pp-tbl th,.pp-tbl td{font-size:13px;padding:4px 6px;text-align:center;white-space:nowrap}.pp-tbl td:first-child,.pp-tbl th:first-child{text-align:left;white-space:normal;min-width:9em}.pp-ans{font-size:inherit}.pp-ans .answer{margin:0 0 14px}.pp-ans>ul{margin:0 0 14px;padding-left:1.2em;line-height:1.8}</style>"
 
 def table_html(e, cat, rs):
     """条件を1つの表でくらべる（○＝公式サイトに書いてある、空欄＝書いていない／分からない）。"""
@@ -85,6 +85,33 @@ def fact_table_html(e, cat, pf, rs):
             f'<details><summary>確かめた公式サイト</summary><ul>{srcs}</ul></details></div>')
     return out
 
+
+# [B] 2026-11-14 Nori「老犬ホームとかほかの分野の記事もこのページのように答えみたいなことからはじめて、もっと視覚的に分かりやすく」：
+# 県のページのいちばん上に「先に答え」の箱（よくある質問の上の3つを、問い→答えの形で）と、数字のタイル（件数・料金の幅・「◯／◯」の数）を出す。
+# 答えの文は、よくある質問と同じ（このページだけの数・名前から作った文）。のこりの質問は下の「よくある質問」に出す。構造化データは全部。
+import re as _re
+def answer_html(e, cat, pf, rs, faq, facts):
+    import visual as _V
+    n, unit = len(rs), cat["unit"]
+    tiles = [(f"{n}{unit}", f"{pf}で公式サイトを確かめた{cat['name']}")]
+    pk = cat.get("price_key", "料金")
+    ys = sorted(f["yen"] for f in (_fv(it, pk) for it in rs) if f and f.get("yen"))
+    if len(ys) >= 2: tiles.append((f"{ys[0]:,}〜{ys[-1]:,}円", cat.get("price_tile", "公式サイトに書いてある料金の幅")))
+    elif ys: tiles.append((f"{ys[0]:,}円", cat.get("price_tile", "公式サイトに書いてある料金")))
+    rest = []
+    for f in facts:
+        m = _re.match(r"^(.+?)[：:]\s*(\d+)／(\d+)$", f)
+        if m and int(m.group(2)) == 0: continue  # 0件は下の表で分かるので、答えの箱には出さない
+        if m and len(tiles) < 4: tiles.append((f"{m.group(2)}／{m.group(3)}", m.group(1)))
+        else: rest.append(f)
+    def first(a):
+        m = _re.match(r"^(.+?。)(?![）」])", a)
+        return m.group(1) if m else a
+    kv = "".join(f'<li><b class="k">{e(q)}</b>{e(first(a))}</li>' for q, a in faq[:3])
+    more = ("<ul>" + "".join(f"<li>{e(x)}</li>" for x in rest) + "</ul>") if rest else ""
+    return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">先に答え</h2><ul class="kv">{kv}</ul></div>'
+            f'{_V.stats(tiles)}{more}</div>')
+
 def render_pref(ctx, cat, pf, rows):
     e, SITE = ctx["e"], ctx["SITE"]
     rs = rows[pf]
@@ -112,8 +139,12 @@ def render_pref(ctx, cat, pf, rows):
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
       ensure_ascii=False, indent=1) + "\n</script>"
     cards = "".join(cat["card"](e, it) for it in rs)
+    if cat.get("bf_keys") and n >= 3:  # うちの子（体重・猫）でしぼる。公式サイトに書いてある受け入れの決まりだけで分け、書いていない店・施設はいつも出す
+        import visual as _V
+        cards = _V.breeds({"title": f"うちの子で{cat['name']}をしぼる", "lead": cat.get("bf_lead", "受け入れる動物・大きさの決まりが公式サイトに書いてあるところは、それで分けています。書いていないところは、いつも表示します。"),
+                           "rows": [{"k": cat["bf_keys"](it), "raw": cat["card"](e, it)} for it in rs]})
     facts_html = ("<ul class=\"pp-facts\">" + "".join(f"<li>{e(f)}</li>" for f in facts) + "</ul>") if facts else ""
-    return ctx["head"](title, desc, url, ld) + CSS + cat.get("css", "") + f"""
+    page = ctx["head"](title, desc, url, ld) + CSS + cat.get("css", "") + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">
@@ -124,12 +155,13 @@ def render_pref(ctx, cat, pf, rows):
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
+    {answer_html(e, cat, pf, rs, faq, facts)}
     <div class="emg">
-      <p class="emg-free">{e(cat.get("free", "この一覧は無料の情報です。事業者からお金をもらっていません。おすすめ順や点数順ではありません。料金は載せていないので、それぞれに直接おたずねください。"))}</p>
-      {f'<div class="emg-tips" style="margin-top:0"><h4>{e(pf)}の{e(name)}のようす</h4>{facts_html}</div>' if facts_html else ''}
+      <p class="emg-free">{e(cat.get("free", "この一覧は無料の情報です。事業者からお金をもらっていません。おすすめ順や点数順ではありません。" + ("料金は公式サイトに書いてあるものだけを、確かめた日つきで載せています。" if any(it.get("facts") for it in rs) else "料金は載せていないので、それぞれに直接おたずねください。")))}</p>
+      {fact_table_html(e, cat, pf, rs)}
       {cat["extra"](e, pf) if cat.get("extra") else ""}
       {cat["fac_chips"](e, pf) + chr(10) + "      " if cat.get("fac_chips") else ""}<section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(cat.get("list_h", name))}（{e(pf)}・{n}{e(unit)}）</h2>{cards}</section>
-      {table_html(e, cat, rs)}{fact_table_html(e, cat, pf, rs)}
+      {table_html(e, cat, rs)}
       {cat["extra_after"](e, pf) if cat.get("extra_after") else ""}
       {near_html}
       <div class="emg-tips"><h4>{e(cat['before_title'])}</h4><dl>{"".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in cat['before'])}</dl></div>
@@ -150,6 +182,10 @@ def render_pref(ctx, cat, pf, rows):
 {prefkeep.LINKS_JS}
 {'<script src="/reviews.js" defer></script>' if cat.get('reviews') else ''}{chr(10) + '<script src="/facility.js" defer></script>' if cat.get('fac_chips') else ''}
 """ + ctx["foot_noband"]()
+    if 'data-bf' in page:
+        import visual as _V
+        page = page.replace("</head>", _V.BF_CSS + "\n</head>", 1).replace("</body>", _V.BF_JS + "\n</body>", 1)
+    return page
 
 def write_all(ROOT, ctx, cat):
     rows = by_pref(cat)

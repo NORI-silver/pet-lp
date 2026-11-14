@@ -158,6 +158,8 @@ def breeds(d, arrow="", heading=""):
         opts.append('<optgroup label="猫"><option value="cat" data-show="all cat" data-c="1">猫</option></optgroup>')
     cards = []
     for r in rows:
+        if r.get("raw"):  # 一覧のカード（生成側で作ったHTML）をそのまま包む（県のページ、2026-11-14）
+            cards.append(f'<div class="bf-card bf-raw" data-k="{e(" ".join(r["k"]))}">{r["raw"]}</div>'); continue
         src = r.get("src")
         s = (f'<p class="bf-src">出どころ：<a href="{e(src[1])}" rel="noopener" target="_blank">{e(src[0])}</a></p>' if src and src[1]
              else (f'<p class="bf-src">出どころ：{e(src[0])}</p>' if src else ""))
@@ -189,6 +191,7 @@ BF_CSS = """<style>
 .bf-card{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px 6px;min-width:0}
 .bf-card .bars{padding:12px 12px 6px;border-radius:14px;margin:4px 0 10px}
 .bf-card[hidden]{display:none}
+.bf-raw{padding:0;border:0;background:none;border-radius:0}.bf-raw>.emg-item{margin:0}
 .art .bf-card h3,.bf-card h3{font-size:1rem;margin:0 0 6px;color:var(--ink);line-height:1.5}
 .bf-tag{display:inline-block;font-size:.7rem;font-weight:800;background:var(--o-l);color:var(--o-d);border-radius:999px;padding:1px 9px;margin-right:6px;vertical-align:.12em}
 .art .bf-card ul,.bf-card ul{padding-left:1.2em;margin:0 0 8px;line-height:1.8}

@@ -2211,6 +2211,8 @@ gen_joto.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions
 hosp_urls = hosp_urls + gen_joto.urls(SITE)
 gen_prefpages.write_all(ROOT, _pp_ctx0, gen_joto.CAT); gen_prefpages.link_national(ROOT, _pp_ctx0, gen_joto.CAT)
 hosp_urls = hosp_urls + gen_prefpages.urls(SITE, gen_joto.CAT)
+gen_joto.write_cities(ROOT, _pp_ctx0)  # 市のページ（/joto/<県>/<市>/、2026-11-14 第2弾）
+hosp_urls = hosp_urls + gen_joto.city_urls(SITE)
 # [B] SEO：ペット火葬場・霊園の施設ごとのページ（試しの30施設。tools/gen_sougi_fac.py）
 import gen_sougi_fac
 gen_sougi_fac.write_all(ROOT, _pp_ctx0)
