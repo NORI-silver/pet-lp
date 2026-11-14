@@ -917,12 +917,13 @@ for g in GUIDES:
         many = _V.many(g)
         parts, _st = [], {}
         for i, (h, bs) in enumerate(secs, 1):
-            sec = f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b, h) for b in bs)
+            ans = i == 1 and _V.is_answer(h)
+            sec = (f'<h2 id="section-{i}" class="pill">{e(_V.answer_title(h))}</h2>' if ans else f'<h2 id="section-{i}">{e(h)}</h2>') + "".join(block(b, h) for b in bs)
             nxt = guide_next(g, i, h, bs, _st)
-            parts.append((f'<div class="answer">{sec}</div>' if i == 1 and _V.is_answer(h) else sec) + nxt)
+            parts.append((f'<div class="answer">{sec}</div>' if ans else sec) + nxt)
         # 目次はたたんでおく（開くと全部。中身はHTMLにあるので検索にも読める）。2026-11-14 Nori「記事、すごく読みにくい」
         toc = ('<details class="toc2"><summary>この記事の目次（' + str(len(secs)) + 'つ）</summary><nav aria-label="この記事の目次"><ol>' + "".join(
-            f'<li><a href="#section-{i}">{e(h)}</a></li>' for i, (h, _) in enumerate(secs, 1)) + '</ol></nav></details>') if many else ""
+            f'<li><a href="#section-{i}">{e(_V.answer_title(h) if i == 1 else h)}</a></li>' for i, (h, _) in enumerate(secs, 1)) + '</ol></nav></details>') if many else ""
         if many and parts and parts[0].startswith('<div class="answer">'):
             body = parts[0] + toc + "".join(parts[1:])
         else:

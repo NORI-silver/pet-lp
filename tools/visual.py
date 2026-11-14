@@ -248,6 +248,14 @@ def many(g):
 def is_answer(h):
     return h.startswith(("先に答え", "結論", "まとめ：", "要点"))
 
+
+def answer_title(h):
+    """答えの節の見出しは、前につけた「先に答え：」「結論：」などをとって、答えの文そのものにする（上の小さな札が「結論」。Nori 2026-11-14「この記事の答えってワーディングがおかしい」）"""
+    for p in ("先に答え：", "先に答え", "結論：", "まとめ：", "要点："):
+        if h.startswith(p) and h[len(p):].strip():
+            return h[len(p):].strip()
+    return h
+
 # 白いアイコン（チェック）
 _CHECK = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E\")"
 
@@ -288,7 +296,7 @@ CSS = """
 .art ul:not([class]) li::marker{color:var(--o)}
 .art .answer{background:#fff;border:2.5px solid var(--o);border-radius:22px;padding:4px 14px 4px;margin:28px 0 8px;box-shadow:0 6px 18px rgba(255,106,26,.08)}
 .art .answer>h2{border-left:0;padding-left:0;margin:16px 0 10px;font-size:1.2rem}
-.art .answer>h2::before{content:"この記事の答え";display:block;width:max-content;font-size:.72rem;letter-spacing:.08em;background:var(--o);color:#fff;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+.art .answer>h2.pill::before{content:"結論";display:block;width:max-content;font-size:.72rem;letter-spacing:.08em;background:var(--o);color:#fff;border-radius:999px;padding:2px 10px;margin-bottom:8px}
 .art .answer ul:not([class]){list-style:none;padding:0}
 .art .answer ul:not([class]) li{position:relative;padding:10px 0 10px 32px;border-top:1px dashed var(--line);margin:0}
 .art .answer ul:not([class]) li:first-child{border-top:0}
