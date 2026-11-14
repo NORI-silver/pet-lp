@@ -69,6 +69,48 @@ U5 = _y(_mid([_ride(c["fare"], 5) for c in _UNIQ]))
 def _yen(n): return f"{int(n):,}円"  # 料金表に書いてある単価（概算ではないので、まるめない）
 N24 = sum(1 for c in _D if c.get("hours") == "0-24")
 NSAME = sum(1 for c in _D if c.get("lead_days") == 0)
+# [D] 2026-11-14 サイト全体の食い違いの点検：ほかのガイドに手で書いていた社数（106社・91社・99社など）が、会社を足すたびにずれていたので、ここで数えてそろえる。
+N_FARE = sum(1 for c in _D if c.get("fare"))                      # 料金表から料金を計算できる会社
+N_NOFARE = N_ALL - N_FARE                                          # 料金表がなく毎回お見積もりの会社
+N_WAIT_FEE = sum(1 for c in _D if ((c.get("fare") or {}).get("wait") or {}).get("yen"))  # 待ち時間の料金がのっている会社
+N_NIGHT_ANY = sum(1 for c in _D if (c.get("fare") or {}).get("night") and not c["fare"]["night"].get("unknown"))  # 夜間・早朝の割増がのっている会社
+_pp = collections.Counter((c["fare"].get("pick") or {}).get("per") for c in _F if (c["fare"].get("pick") or {}).get("per"))
+N_PICK_PER = sum(_pp.values())                                     # 距離に応じたお迎え料金がかかる会社（距離の料金表のある会社のうち）
+PICK_PER_MODE, PICK_PER_MODE_N = _pp.most_common(1)[0]
+def _taxk(c):
+    t = (c.get("fare") or {}).get("tax") or ""
+    return "in" if "税込" in t else ("out" if re.search("税抜|税別", t) else "none")
+_tx = collections.Counter(_taxk(c) for c in _D if c.get("fare"))
+TAX_IN, TAX_OUT, TAX_NONE = _tx["in"], _tx["out"], _tx["none"]
+LEAD_1 = sum(1 for c in _D if c.get("lead_days") == 1)
+LEAD_3 = sum(1 for c in _D if c.get("lead_days") == 3)
+LEAD_REST = N_ALL - NSAME - LEAD_1 - LEAD_3
+N_BIG = sum(1 for c in _D if "大型犬OK" in (c.get("points") or []))
+def _lim(x): return sum(1 for c in _D if x in (c.get("limits") or []))
+BIG2, BIG1, BIG3 = _lim("大型犬2頭OK"), _lim("大型犬1頭まで"), _lim("大型犬3頭まで")
+N_ZENKOKU = sum(1 for c in _D if "全国" in (c.get("area_text") or ""))
+N_CHOKYORI = sum(1 for c in _D if "長距離" in (c.get("area_text") or ""))
+def pref_n(k): return sum(1 for c in _D if k in c.get("areas", []))
+_pc = collections.Counter(a for c in _D for a in c.get("areas", []))
+def _pref_list(n, glue, unit="社"):
+    out, done = [], set()
+    for k, v in _pc.most_common():
+        if k in done: continue
+        same = [x for x, y in _pc.items() if y == v and x not in done and x != k]
+        if len(out) >= n: break
+        if same:
+            done.update(same); out.append(f"{k}と{'と'.join(same)}{glue}{v}{unit}")
+        else: out.append(f"{k}{glue}{v}{unit}")
+        done.add(k)
+    return out
+PREF_TOP_TEXT = "・".join(_pref_list(6, "")) + "など"   # 例：東京37社・神奈川27社・…・京都と兵庫13社など
+TOKYO_N = pref_n("東京")
+TOKYO_24 = sum(1 for c in _D if "東京" in c.get("areas", []) and c.get("hours") == "0-24")
+TOKYO_SAME = sum(1 for c in _D if "東京" in c.get("areas", []) and c.get("lead_days") == 0)
+def _pf(k): return _FULL[k][0] if k in _FULL else k
+PREF_RANK_TEXT = (f"{_pf(_pc.most_common(1)[0][0])}（{_pc.most_common(1)[0][1]}社）で、"
+                  + "、".join(f"{_pf(k)}{v}社" for k, v in _pc.most_common(5)[1:]) + "と続きます")
+M100 = _y(_mid([_ride(c["fare"], 100) for c in _F]))
 
 # 都道府県ごと（お迎えに来てくれる会社が2社以上の県）
 _pref_rows = []
