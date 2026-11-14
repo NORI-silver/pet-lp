@@ -240,8 +240,11 @@ def _creds():
     return out
 src = re.sub(r"/\*CREDS\*/.*?/\*/CREDS\*/", lambda m: "/*CREDS*/var CREDS = " + json.dumps(_creds(), ensure_ascii=False) + ";/*/CREDS*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*CO_SITE\*/.*?/\*/CO_SITE\*/", lambda m: "/*CO_SITE*/var CO_SITE = " + json.dumps(_co_site(), ensure_ascii=False) + ";/*/CO_SITE*/", src, count=1, flags=re.S)
-# 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、いない県に「（候補なし）」を付ける）
+# 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、県の中に会社がない県は「（県外の会社のみ）」を付けるか、選択欄から消す）
 src = re.sub(r"/\*AREA_PREFS\*/.*?/\*/AREA_PREFS\*/", lambda m: "/*AREA_PREFS*/var AREA_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}), ensure_ascii=False) + ";/*/AREA_PREFS*/", src, count=1, flags=re.S)
+# 県の中にお店はないが、県の外の会社が「お迎えに行く」と書いている都道府県（「（県外の会社のみ）」を付ける）。どちらでもない県は選択欄から消す（Nori 2026-11-14）
+_LOCAL_PREFS = {a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}
+src = re.sub(r"/\*FAR_PREFS\*/.*?/\*/FAR_PREFS\*/", lambda m: "/*FAR_PREFS*/var FAR_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("far", [])} - _LOCAL_PREFS), ensure_ascii=False) + ";/*/FAR_PREFS*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*FARES\*/.*?/\*/FARES\*/", lambda m: "/*FARES*/" + FARE_JS + "/*/FARES*/", src, count=1, flags=re.S)
 # [B] 2026-11-08 トップに「都道府県ごとのペットタクシーの数」（全国の会社を公式サイトで確かめた数。トップだけに出し、地域ページの写しでは外す）
 def _nat_stats():
