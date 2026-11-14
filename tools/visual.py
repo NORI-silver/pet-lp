@@ -127,8 +127,8 @@ def breeds(d, arrow="", heading=""):
     sizes = d.get("sizes") or B.SIZES
     rows = d["rows"]
     used = {k for r in rows for k in r["k"]}
-    _BF_N[0] += 1
-    uid = f"bf{_BF_N[0]}"
+    import hashlib
+    uid = "bf-" + hashlib.sha1((d.get("title", "") + str(len(rows))).encode("utf-8")).hexdigest()[:6]  # ページの作り直しで変わらない id
     def ov(lo, hi, a, b): return lo < b and a < hi  # 重なり
     opts = ['<option value="">すべて表示</option>', '<optgroup label="体重で選ぶ（ミックスの子も）">']
     for key, lab, lo, hi in sizes:

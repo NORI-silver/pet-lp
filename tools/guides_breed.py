@@ -172,3 +172,94 @@ def lost_block():
                        "lead": "犬種や体重を選ぶと、その子に当てはまるカードだけになります。性格のカードはどの子にも出ます。",
                        "rows": rows,
                        "note": "性格ごとのちがいは、迷子の動物の捜索を研究するKat Albrecht氏がMaddie's Fundに書いた記事によるものです（アメリカの例）。犬種の性格はJKCの犬種標準の文です。"})
+
+# ---- 飛行機（国内線で預ける）：ANA の決まり ----
+ANA = ("ANA「ペットについて（国内線）」", "https://www.ana.co.jp/dom/checkin/rakunori/pets/")
+def airplane_block():
+    rows = [
+     dict(k=["brachy"], h="鼻の短い犬種（短頭犬種）", tag="犬種",
+          items=["ANAは、毎年5月1日〜10月31日の夏のあいだ、高温に弱く熱中症や呼吸困難のおそれがある「短頭犬種」の預かりを中止しています",
+                 "ANAが挙げている犬種：ブルドッグ、フレンチ・ブルドッグ、ボクサー、シーズー、ボストン・テリア、ブル・テリア、キングチャールズ・スパニエル、チベタン・スパニエル、ブリュッセル・グリフォン、チャウチャウ、パグ、チン、ペキニーズ",
+                 "この期間に遠くへ移るときは、車での移動を考えます。夏の車内も暑くなるので、冷房と休憩の計画を"], src=ANA),
+     dict(k=["l"], h="大型犬（25kg以上）", tag="体重",
+          items=["ANAで預けられるケージは特大用（LL）の幅65×奥行95×高さ70cmまでです。小型機（DH4・CR7）の便では、LLのケージは預けられません",
+                 "犬とケージを合わせた重さが32〜45kgだと預けられないことがあり、45kgをこえると預けられません",
+                 "大型犬はケージの大きさで乗せられないこともあるので、予約の前にANAの予約デスクに問い合わせるよう案内されています"], src=ANA),
+     dict(k=["all"], h="どの子にも：料金と予約", tag="だれでも",
+          items=["料金は1個1路線あたり6,600円（一部の路線は4,400円）。無料の手荷物には含まれません",
+                 "決まった規格のケージに入れて預けます。空港までの移動の時間も、ケージに入っている時間に入ります"], src=ANA),
+    ]
+    return ("breeds", {"title": "うちの子の犬種・体重で、飛行機に預けるときの決まりを見る",
+                       "lead": "鼻の短い犬種と大型犬は、預けられる時期や大きさに決まりがあります。",
+                       "rows": rows,
+                       "note": "ANAの国内線の案内（2026年11月14日に確認）。ほかの航空会社は決まりがちがうので、それぞれの案内で確かめてください。"})
+
+# ---- ペットホテル：当サイトの一覧（hotels.json）を数えたこと ----
+import json as _json, os as _os
+_H = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "hotels.json"), encoding="utf-8"))["hotels"]
+def hotel_block():
+    n = len(_H)
+    nL = sum(1 for h in _H if h.get("large"))
+    nV = sum(1 for h in _H if h.get("large") and h.get("vet"))
+    froms = sorted(h["large_from_kg"] for h in _H if h.get("large_from_kg"))
+    maxs = sorted(h["max_kg"] for h in _H if h.get("max_kg"))
+    fmt = lambda v: f"{v:g}kg"
+    nCat = sum(1 for h in _H if h.get("cat"))
+    nCO = sum(1 for h in _H if h.get("cat_only"))
+    nSep = sum(1 for h in _H if h.get("separate"))
+    nSen = sum(1 for h in _H if h.get("senior"))
+    SRC = ("当サイトのペットホテルの一覧（各ホテルの公式サイトで確かめたこと）", "/pet-hotel/")
+    rows = [
+     dict(k=["l"], h="大型犬（25kg以上）", tag="体重",
+          items=[f"一覧の{n}件のうち、大型犬を受けると公式サイトに書いているのは{nL}件でした。そのうち{nV}件は動物病院のホテルです",
+                 f"受けられる体重の上限を書いていたのは{len(maxs)}件で、{'・'.join(fmt(x) for x in maxs)}でした。それより重い子は「相談」か「受けられない」になります",
+                 "問い合わせでは「大型犬です」ではなく、体重（◯kg）と犬種を伝えます"], src=SRC),
+     dict(k=["m"], h="中型犬（10〜25kg）", tag="体重",
+          items=[f"料金表で「大型犬」が何kgから始まるかを書いていたホテルでは、{'・'.join(fmt(x) for x in froms)}からでした。中型犬でも、ホテルによっては大型犬の料金・部屋になります",
+                 "体重が区切りの近くなら、最近はかった体重を伝えます"], src=SRC),
+     dict(k=["s"], h="小型犬（10kg未満）", tag="体重",
+          items=["小型犬は多くのホテルが受けますが、部屋の広さやほかの犬と一緒に遊ばせるかはホテルごとにちがいます",
+                 "小さな子は、大きな犬と分けて過ごすかを確かめます"]),
+     dict(k=["cat"], h="猫", tag="猫",
+          items=[f"一覧の{n}件のうち、猫も泊められると書いているのは{nCat}件。猫だけを預かる猫専用のホテルが{nCO}件、犬も預かるが猫を別のフロアや部屋にするホテルが{nSep}件でした",
+                 "犬の声が苦手な子は、猫専用か、猫を分けるホテルを選びます"], src=SRC),
+     dict(k=["brachy"], h="鼻の短い犬種（フレンチ・ブルドッグ・パグ・シー・ズーなど）", tag="犬種",
+          items=["航空会社が夏に預かりを中止するほど、暑さに弱いとされる犬種です（ANAの国内線の案内）。夏に預けるときは、部屋の冷房と、散歩の時間帯を確かめます"], src=ANA),
+     dict(k=["all"], h="シニアの子・持病のある子", tag="だれでも",
+          items=[f"シニア・介護・持病の子を受けると書いているのは{nSen}件でした。薬の飲ませ方、夜にスタッフがいるかを確かめます"], src=SRC),
+    ]
+    return ("breeds", {"title": "うちの子の体重・犬種で、ペットホテルを選ぶときのポイントを見る",
+                       "lead": "当サイトのペットホテルの一覧を数えて分かったことを、体重・犬種ごとにまとめました。",
+                       "rows": rows,
+                       "note": "数は当サイトの一覧に載せているホテル（各ホテルの公式サイトで確かめたこと）を数えたものです。公式サイトに書いていないことは「しない」という意味ではありません。"})
+
+# ---- 老犬ホーム：当サイトの一覧（rojin.json）の「受ける動物」の欄を数えたこと ----
+_R = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "rojin.json"), encoding="utf-8"))
+_R = [v for v in _R.values() if isinstance(v, list)][0]
+def _anim(r): return r["animals"] if isinstance(r["animals"], str) else "・".join(r["animals"])
+def rojin_block():
+    n = len(_R)
+    big = [r for r in _R if "大型" in _anim(r) and "相談" not in _anim(r)]
+    big_c = [r for r in _R if "大型" in _anim(r) and "相談" in _anim(r)]
+    cat = [r for r in _R if "猫" in _anim(r) and "猫は受けていません" not in _anim(r) and "猫は相談" not in _anim(r)]
+    cat_only = [r for r in _R if _anim(r).startswith("猫")]
+    SRC = ("当サイトの老犬ホームの一覧（各施設の公式サイトで確かめたこと）", "/rojin-home/")
+    rows = [
+     dict(k=["l"], h="大型犬（25kg以上）", tag="体重",
+          items=[f"一覧の{n}施設のうち、大型犬を受ける・大型犬の料金区分があると書いているのは{len(big)}施設、大型犬は「相談」と書いているのが{len(big_c)}施設でした",
+                 "体重の上限を書いている施設もあります（わんダ～らん 老犬ホームは大型犬30kgまで、ドッグハウス・ダディー 西軽井沢は30kg超は相談、ドッグハウスなぎさは大型犬20〜40kgの区分）",
+                 "月ごとの費用は、多くの施設が犬の大きさで分けています。介護で抱えて動かす手間も変わるので、寝たきりになったときの費用も聞きます"], src=SRC),
+     dict(k=["s"], h="小型犬（10kg未満）", tag="体重",
+          items=["小型犬だけを受ける施設もあります（例：老犬ホーム ワンワンパラダイスは小型犬5kg未満・10才以上のみ）",
+                 "小さな子は、大きな犬と同じ部屋で過ごすかを見学で確かめます"], src=SRC),
+     dict(k=["cat"], h="猫", tag="猫",
+          items=[f"猫も受けると書いているのは{len(cat)}施設、そのうち猫だけの老猫ホームが{len(cat_only)}施設でした",
+                 "犬と同じ建物のときは、猫の部屋が分かれているか、犬の声が届かないかを見ます"], src=SRC),
+     dict(k=["all"], h="どの子にも：見学で聞くこと", tag="だれでも",
+          items=["体重と犬種だけでなく、歩けるか・寝たきりか・夜鳴きがあるかで受けられるかと費用が変わります",
+                 "いまの体重と、介護の度合い（食事・トイレ・寝返り）を書いたメモを持っていきます"]),
+    ]
+    return ("breeds", {"title": "うちの子の体重で、老犬ホームを選ぶときのポイントを見る",
+                       "lead": "当サイトの老犬ホームの一覧で、受ける動物と大きさの書き方を数えました。",
+                       "rows": rows,
+                       "note": "数は当サイトの一覧に載せている施設の公式サイトに書いてあったことを数えたものです。書いていない施設も、問い合わせると受けることがあります。"})
