@@ -29,7 +29,11 @@ CAFE = _load("cafes.json")
 def _ok(x): return x.get("ok", True) and not x.get("closed") and len(x.get("facts", [])) >= MIN_FACTS
 
 
-HOSPS = [x for x in HF.get("items", []) if _ok(x)]
+# [C] 2026-11-14 Nori「そもそも薄い記事作らないで」：そのページだけの字数が900字に満たない病院（tools/thin_hosp.py が tools/hosp_fold.json に書く）は
+# 1院のページを作らず、都道府県のページの表とカードにだけ載せる（前にページがあった病院は、県のページへ移す案内だけ残す：FOLD）。
+_FOLD_IDS = set(_load("hosp_fold.json").get("ids", [])) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "hosp_fold.json")) else set()
+HOSPS = [x for x in HF.get("items", []) if _ok(x) and x["id"] not in _FOLD_IDS]
+FOLD = [x for x in HF.get("items", []) if x not in HOSPS and x.get("pref") in PSLUG]
 INNS = [x for x in INN.get("inns", []) if _ok(x)]
 HIDS = {x["id"] for x in HOSPS}
 
@@ -452,6 +456,13 @@ def write_all(ROOT, ctx):
         d = os.path.join(ROOT, path.strip("/")); os.makedirs(d, exist_ok=True)
         open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(html)
     for x in HOSPS: w(hhref(x), render_hosp(ctx, x))
+    for x in FOLD:
+        # 前に1院のページがあった病院は、県のページへ移す（検索から来た人が迷わないように。noindex・サイトマップに入れない）
+        if not os.path.exists(os.path.join(ROOT, hhref(x).strip("/"), "index.html")): continue
+        to = f"/hospital/night/{PSLUG[x['pref']]}/"
+        w(hhref(x), f'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow">'
+                    f'<link rel="canonical" href="{ctx["SITE"]}{to}"><meta http-equiv="refresh" content="0; url={to}">'
+                    f'<title>{x["pref"]}の夜間・救急の動物病院</title></head><body><p><a href="{to}">{x["pref"]}の夜間・救急の動物病院</a>に移しました。</p></body></html>\n')
     if INNS:
         w("/inu-yado/", render_inn_hub(ctx))
         for x in INNS: w(ihref(x), render_inn(ctx, x))
