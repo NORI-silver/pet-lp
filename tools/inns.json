@@ -5426,6 +5426,1174 @@
     "cat"
    ],
    "id": "id3f256"
+  },
+  {
+   "name": "こしかの温泉グランピング",
+   "kind": "グランピング",
+   "pref": "鹿児島県",
+   "city": "霧島市",
+   "url": "https://koshikano-onsen.com/glamping/pet",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "鹿児島県霧島市隼人町松永2625",
+     "src": "https://koshikano-onsen.com/glamping/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "40kgまで（旅館グランピングの101号室は10kgまでの小型犬だけ）",
+     "src": "https://koshikano-onsen.com/glamping/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "大型犬は1頭まで、小型〜中型犬は2頭まで（それより多いときは相談）",
+     "src": "https://koshikano-onsen.com/glamping/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射と5種以上の混合ワクチンの証明書（泊まる日の2週間以上前・1年未満の接種）をフロントで見せる。生後6か月以上、ノミ・ダニの予防",
+     "src": "https://koshikano-onsen.com/glamping/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室のどこでも（ドームテント・ダイニング・お風呂）。共用の場所は入れない。部屋に残すときは室内のケージに",
+     "src": "https://koshikano-onsen.com/glamping/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "宿泊者は無料、8時〜18時、約27m×5mの人工芝（大型犬も可）",
+     "src": "https://koshikano-onsen.com/glamping/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ（ワンちゃんのみ）",
+     "src": "https://koshikano-onsen.com/glamping/pet",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ie142ae"
+  },
+  {
+   "name": "THE FIVE RIVERS FINE GLAMPING 群馬白沢",
+   "kind": "グランピング",
+   "pref": "群馬県",
+   "city": "沼田市",
+   "url": "https://www.thefiveriversfineglamping.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "群馬県沼田市白沢町高平2540",
+     "src": "https://www.thefiveriversfineglamping.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "専用ドッグラン付きのグランピング（1日2組まで）と、ドッグラン付きのキャンプサイト",
+     "src": "https://www.thefiveriversfineglamping.com/dogrun",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "グランピングはケージなしで一緒に過ごせる。テラスに犬用の椅子",
+     "src": "https://www.thefiveriversfineglamping.com/dogrun",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "柵で囲まれた天然芝。入口の鍵を閉めればノーリード",
+     "src": "https://www.thefiveriversfineglamping.com/dogrun",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "グランピングの宿泊だけのオプション「わんご飯」S 1,300円・M 1,600円・L 1,900円",
+     "src": "https://www.thefiveriversfineglamping.com/dogrun",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "サイトごとに泊まれる犬種の一覧（PDF）があるので予約の前に確かめる",
+     "src": "https://www.thefiveriversfineglamping.com/dogrun",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "iafa298"
+  },
+  {
+   "name": "NAGOMI CAMP",
+   "kind": "グランピング",
+   "pref": "栃木県",
+   "city": "那須塩原市",
+   "url": "https://www.nagomi-camp.jp/dog-glamping",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬",
+     "src": "https://www.nagomi-camp.jp/dog-glamping",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで（小型犬の3頭目は相談）",
+     "src": "https://www.nagomi-camp.jp/dog-glamping",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭目は無料、2頭目は3,300円",
+     "src": "https://www.nagomi-camp.jp/dog-glamping",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッググランピング「紗綾」1棟だけ（1〜3名）。プライベートのドッグエリア付き",
+     "src": "https://www.nagomi-camp.jp/dog-glamping",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "1棟だけのプライベートドッグラン",
+     "src": "https://www.nagomi-camp.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・トイレシーツ・犬のおやつ・手洗いの水道",
+     "src": "https://www.nagomi-camp.jp/dog-glamping",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i8e85be"
+  },
+  {
+   "name": "那須ハミルの森",
+   "kind": "グランピング",
+   "pref": "栃木県",
+   "city": "那須郡那須町",
+   "url": "https://www.hamirunomori.com/stay/petdome.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須郡那須町大字高久甲5310-1",
+     "src": "https://www.hamirunomori.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペットドームテント（直径6m・4名まで）。ペット同伴OKのキャンプサイトもある",
+     "src": "https://www.hamirunomori.com/stay/petdome.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "柵で囲まれたテントのサイトはリードなしで過ごせる。BBQハウスではリードかケージ・カート",
+     "src": "https://www.hamirunomori.com/stay/petdome.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "4棟だけの天然芝のドッグラン",
+     "src": "https://www.hamirunomori.com/stay/petdome.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ（内寸108.5×68.5×68.5cm）、水入れ2つ、トイレシーツ、粘着クリーナー、サイトごとの足洗い場",
+     "src": "https://www.hamirunomori.com/stay/petdome.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "iae0cad"
+  },
+  {
+   "name": "エトワ木更津",
+   "kind": "グランピング",
+   "pref": "千葉県",
+   "city": "木更津市",
+   "url": "https://www.cigr.co.jp/etowa/kisarazu/dog-stay/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県木更津市下郡1886",
+     "src": "https://www.cigr.co.jp/etowa/kisarazu/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "DOG CABIN 1室4頭まで（25kg以上の大型犬は2頭まで）",
+     "src": "https://www.cigr.co.jp/etowa/kisarazu/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "DOG CABIN・DOG LOUNGE（屋内でノーリード）・BBQサイト（リード）。カフェラウンジとマーケットは入れない",
+     "src": "https://www.cigr.co.jp/etowa/kisarazu/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "DOG CABINごとに25㎡のプライベートドッグラン",
+     "src": "https://www.cigr.co.jp/etowa/kisarazu/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "DOG CABIN（2名まで）",
+     "src": "https://www.cigr.co.jp/etowa/kisarazu/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と泊まれる時期",
+     "v": "犬と一緒の宿泊は2027年1月31日まで（2月1日からは受けない）",
+     "src": "https://www.cigr.co.jp/etowa/kisarazu/dog-stay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ide1f24"
+  },
+  {
+   "name": "MOROISOSO",
+   "kind": "貸別荘",
+   "pref": "神奈川県",
+   "city": "三浦市",
+   "url": "https://moroisoso.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県三浦市三崎町諸磯1868-5",
+     "src": "https://moroisoso.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬は不可",
+     "src": "https://moroisoso.jp/faq",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "敷地の中にドッグラン",
+     "src": "https://moroisoso.jp/faq",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1棟貸し（4LDK・220㎡・18名まで、1日1組）",
+     "src": "https://moroisoso.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン13時・チェックアウト10時",
+     "src": "https://moroisoso.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "if6469c"
+  },
+  {
+   "name": "河口湖カントリーコテージBan",
+   "kind": "コテージ",
+   "pref": "山梨県",
+   "city": "南都留郡富士河口湖町",
+   "url": "https://www.c-ban.com/pet/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県南都留郡富士河口湖町河口2092",
+     "src": "https://www.c-ban.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "24kg以下の小型〜中型犬は1棟2匹まで、25kg以上の大型犬は1棟1匹まで",
+     "src": "https://www.c-ban.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 小型〜中型犬3,300円、大型犬5,500円（税込）",
+     "src": "https://www.c-ban.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内に狂犬病ワクチンと混合ワクチンを受けた犬だけ（チェックインで証明書を見せる必要はない）",
+     "src": "https://www.c-ban.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ソファ・ベッドには上げない。「モダンツイン」「モダンスイート」は犬と泊まれない",
+     "src": "https://www.c-ban.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ",
+     "src": "https://www.c-ban.com/pet/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i3393b8"
+  },
+  {
+   "name": "VISION GLAMPING Resort&Spa 山中湖",
+   "kind": "グランピング",
+   "pref": "山梨県",
+   "city": "南都留郡山中湖村",
+   "url": "https://vision-glamping.com/yamanakako/pet",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県南都留郡山中湖村山中字栗木林1385-43",
+     "src": "https://vision-glamping.com/yamanakako/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "40kgまで",
+     "src": "https://vision-glamping.com/yamanakako/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "大型犬は1頭、小型・中型犬は2頭まで",
+     "src": "https://vision-glamping.com/yamanakako/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "宿泊料金に含まれ、別の料金はない（犬のごはんは1,100〜1,980円の有料オプション）",
+     "src": "https://vision-glamping.com/yamanakako/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射（必ず）と5種以上の混合ワクチン（2週間以上前・1年未満）。生後6か月以上、ノミ・ダニの予防",
+     "src": "https://vision-glamping.com/yamanakako/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "建物のすべて（ダイニング・お風呂・寝室）と外のエリア。共用の場所は入れない",
+     "src": "https://vision-glamping.com/yamanakako/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "専用のドッグランはない。塀で囲まれた敷地でリードなしで過ごせる",
+     "src": "https://vision-glamping.com/yamanakako/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ",
+     "src": "https://vision-glamping.com/yamanakako/pet",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i594726"
+  },
+  {
+   "name": "PICA秩父",
+   "kind": "キャンプ場",
+   "pref": "埼玉県",
+   "city": "秩父市",
+   "url": "https://www.pica-resort.jp/chichibu/stay/site/doggy.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "埼玉県秩父市久那637-2（秩父ミューズパーク内）",
+     "src": "https://www.pica-resort.jp/chichibu/about/guidance.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドギーコテージ5棟（4名まで）。ほかに犬と泊まれるのはBBQ6（CAMP6）とPARK&CAMPフリーサイト（電源なし）",
+     "src": "https://www.pica-resort.jp/chichibu/about/guidance.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1棟3頭まで",
+     "src": "https://www.pica-resort.jp/chichibu/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "コテージは1頭1,900円・追加1頭600円、テントサイトは600円",
+     "src": "https://www.pica-resort.jp/chichibu/about/guidance.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "5種以上の混合ワクチンと狂犬病予防注射（最後の接種が3年以内）",
+     "src": "https://www.pica-resort.jp/chichibu/about/guidance.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドギーコテージはケージなしで同じ部屋に。場内は必ずリード。売店・樹音の湯・コテージホールは入れない",
+     "src": "https://www.pica-resort.jp/chichibu/about/guidance.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "コテージごとのプライベートドッグラン（約70㎡）と足洗い場",
+     "src": "https://www.pica-resort.jp/chichibu/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "コテージ15時〜19時／7時半〜10時、テントサイト13時〜19時／12時まで",
+     "src": "https://www.pica-resort.jp/chichibu/about/guidance.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i003029"
+  },
+  {
+   "name": "PICA山中湖",
+   "kind": "キャンプ場",
+   "pref": "山梨県",
+   "city": "南都留郡山中湖村",
+   "url": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドギーコテージ1棟（4名と犬3頭まで、シングルベッド4台）",
+     "src": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "3頭まで",
+     "src": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドギーコテージはケージなしで同じ部屋に（室内はリードか目の届く範囲で、寝るときはハウスがおすすめ）。囲いのある庭",
+     "src": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "専用のドッグラン付き",
+     "src": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "猫・小動物・小鳥も泊まれるが、室内ではケージかキャリーに入れる",
+     "src": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器と消臭スプレーをフロントで貸し出し",
+     "src": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "small",
+    "bird"
+   ],
+   "id": "i552ccf"
+  },
+  {
+   "name": "PICAさがみ湖",
+   "kind": "キャンプ場",
+   "pref": "神奈川県",
+   "city": "相模原市緑区",
+   "url": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "コテージ・ドッグラン3棟（4名まで、さがみ湖リゾートプレジャーフォレストの中）",
+     "src": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "宿泊料金とは別にペット料金がかかる（金額は予約のページ）",
+     "src": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "室内では備え付けか持参のケージ（W93×D58×H63cm）を使う。園内は必ずリード。屋根付きテラスあり",
+     "src": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "専用のプライベートドッグラン（6m×3.5m）",
+     "src": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "アクセス",
+     "v": "フロントから歩いて約8分（送迎・荷物の配送なし）",
+     "src": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i52bbfc"
+  },
+  {
+   "name": "PICA富士吉田",
+   "kind": "キャンプ場",
+   "pref": "山梨県",
+   "city": "富士吉田市",
+   "url": "https://www.pica-resort.jp/yoshida/stay/site/dog-cabin.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグガーデンキャビン2棟（4名まで、2段ベッド2台）",
+     "src": "https://www.pica-resort.jp/yoshida/stay/site/dog-cabin.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ケージなしで同じ部屋に",
+     "src": "https://www.pica-resort.jp/yoshida/stay/site/dog-cabin.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "約200㎡のプライベートドッグラン（傾斜や障害物がほとんどない）",
+     "src": "https://www.pica-resort.jp/yoshida/stay/site/dog-cabin.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "アクセス",
+     "v": "河口湖ICから約8分",
+     "src": "https://www.pica-resort.jp/yoshida/stay/site/dog-cabin.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "料金の数え方",
+     "v": "4歳以上が料金・定員の対象（3歳以下は無料）",
+     "src": "https://www.pica-resort.jp/yoshida/stay/site/dog-cabin.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "idca513"
+  },
+  {
+   "name": "PICA八ヶ岳明野",
+   "kind": "キャンプ場",
+   "pref": "山梨県",
+   "city": "北杜市",
+   "url": "https://www.pica-resort.jp/en/akeno/stay/site/dogcottage.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグコテージ2棟（6名まで）とドッグキャビン1棟（6名まで）",
+     "src": "https://www.pica-resort.jp/en/akeno/stay/site/?view=site",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドッグコテージ・ドッグキャビンは犬と同じ部屋でOK",
+     "src": "https://www.pica-resort.jp/en/akeno/stay/site/dogcottage.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "コテージの前に柵で囲まれた専用スペース（3.5m×4.55m）",
+     "src": "https://www.pica-resort.jp/en/akeno/stay/site/dogcottage.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "アクセス",
+     "v": "中央道の韮崎ICから約20分",
+     "src": "https://www.pica-resort.jp/en/akeno/stay/site/dogcottage.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "料金の数え方",
+     "v": "中学生以下は無料・定員に数えない",
+     "src": "https://www.pica-resort.jp/en/akeno/stay/site/dogcottage.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器",
+     "src": "https://www.pica-resort.jp/en/akeno/stay/site/dogcottage.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i6221cb"
+  },
+  {
+   "name": "ハミルズフォレスト with DOG",
+   "kind": "貸別荘",
+   "pref": "栃木県",
+   "city": "那須郡那須町",
+   "url": "https://www.hamirus-forest.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須郡那須町高久乙802-179",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全室に露天風呂がある離れのヴィラ6室（4名・2名の部屋）",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数や種類の制限はない",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭一律2,000円（大きさにかかわらず）",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "証明書を持ってくる必要はない（ワクチンを受けられない理由がある子も泊まれる）",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "車で約10分の那須ハミルの森のドッグランを使える。敷地に散歩できる庭と小道",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ペットバス・ドライヤー・タオル（1頭1枚）・食器。ベッドステップとペットフェンスの貸し出し",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i1acb7d"
+  },
+  {
+   "name": "星のや富士",
+   "kind": "ホテル",
+   "pref": "山梨県",
+   "city": "南都留郡富士河口湖町",
+   "url": "https://hoshinoresorts.com/ja/hotels/hoshinoyafuji/sp/petroom/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれるキャビンは1日1室（1〜2名）",
+     "src": "https://hoshinoresorts.com/ja/hotels/hoshinoyafuji/sp/petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "20kg以下の中型犬まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/hoshinoyafuji/sp/petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/hoshinoyafuji/sp/petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込、現地で支払う）",
+     "src": "https://hoshinoresorts.com/ja/hotels/hoshinoyafuji/sp/petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済証か注射済票と、混合ワクチンの証明書（または抗体検査の結果）のコピー。ないと泊まれない",
+     "src": "https://hoshinoresorts.com/ja/hotels/hoshinoyafuji/sp/petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "キャビンとテラスリビング（落下防止ネットあり）。キャビンの外はリードかクレート。部屋での食事は一緒、メインダイニングは不可",
+     "src": "https://hoshinoresorts.com/ja/hotels/hoshinoyafuji/sp/petroom/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i4ed75b"
+  },
+  {
+   "name": "界 ポロト",
+   "kind": "旅館",
+   "pref": "北海道",
+   "city": "白老郡白老町",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaiporoto/sp/pet/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "20kg以下の中型犬まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiporoto/sp/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiporoto/sp/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルーム（3名まで・42㎡、ポロト湖が見える）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiporoto/sp/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "食事処の半個室で一緒に食べられる。ライブラリーはペットカートで。ポロト湖のほとりを散歩（歩いて約3分）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiporoto/sp/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "近くの「ドッグランもなかの森」",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiporoto/sp/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "アクセス",
+     "v": "JR白老駅から歩いて約10分、無料駐車場あり",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiporoto/sp/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射（毎年）と混合ワクチン（接種から3年未満）の証明をチェックインで見せる（未接種は泊まれない）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i7cc9a0"
+  },
+  {
+   "name": "別邸 わんこ日和",
+   "kind": "旅館",
+   "pref": "熊本県",
+   "city": "葦北郡芦北町",
+   "url": "https://www.wancobi.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "熊本県葦北郡芦北町湯浦112-23",
+     "src": "https://www.wancobi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬10kgまで・中型犬20kgまで・大型犬40kgまで",
+     "src": "https://www.wancobi.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭 小型犬3,300円・中型犬4,400円・大型犬5,500円（税込）",
+     "src": "https://www.wancobi.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の狂犬病予防注射と5種以上の混合ワクチンの証明（原本・コピー・画像）、ノミ・ダニの予防",
+     "src": "https://www.wancobi.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室とドッグランのほかはリード。共用の場所は抱っこ・カート・マナーベルト。ぬれたままベッドに上げない",
+     "src": "https://www.wancobi.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "敷地にドッグラン広場（小山・水遊び場・ドームテント）。わんちゃん蔵スパ（泡風呂・水中トレッドミル）",
+     "src": "https://www.wancobi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "5室。どの部屋にも天然温泉の露天風呂と犬用の温泉プール",
+     "src": "https://www.wancobi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15時・チェックアウト10時半",
+     "src": "https://www.wancobi.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i2e0954"
+  },
+  {
+   "name": "南阿蘇フィールドホテル",
+   "kind": "ホテル",
+   "pref": "熊本県",
+   "city": "阿蘇郡南阿蘇村",
+   "url": "https://mf-h.jp/pet_friendly/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "熊本県阿蘇郡南阿蘇村河陰3624",
+     "src": "https://mf-h.jp/pet_friendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "どの客室タイプにも犬と泊まれる部屋がある。専用ドッグラン付きのキャビンも",
+     "src": "https://mf-h.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹目2,200円、2匹目から1匹1,100円（税込、現地で支払う）",
+     "src": "https://mf-h.jp/pet_friendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の狂犬病予防注射と混合ワクチン。ペット宿泊の同意書",
+     "src": "https://mf-h.jp/pet_friendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室（入る前に足をふく）。客室のお風呂で犬を洗わない",
+     "src": "https://mf-h.jp/pet_friendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "7時〜11時・15時〜20時、大型犬と小・中型犬に分かれたエリア、足洗い場",
+     "src": "https://mf-h.jp/pet_friendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "水・ごはんの器、タオル、おやつ、ペットシーツ、うんち袋、ウェットシート、消臭スプレー（ごはんは持参）",
+     "src": "https://mf-h.jp/pet_friendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "室内で飼っている犬が対象。犬・猫以外の動物は前もって相談",
+     "src": "https://mf-h.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i5b8367"
+  },
+  {
+   "name": "グランピングリゾート熊本 吉無田",
+   "kind": "グランピング",
+   "pref": "熊本県",
+   "city": "上益城郡御船町",
+   "url": "https://www.glampingresort-kumamoto.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "熊本県上益城郡御船町田代6702-99",
+     "src": "https://www.glampingresort-kumamoto.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "3頭まで（4頭以上は相談）",
+     "src": "https://www.glampingresort-kumamoto.com/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭5,000円・2頭8,000円・3頭10,000円",
+     "src": "https://www.glampingresort-kumamoto.com/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病の予防接種証明書かワクチン接種証明書をチェックインで見せる。マナーパンツを着ける",
+     "src": "https://www.glampingresort-kumamoto.com/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "デラックスキャビン（ペット同伴可）と、キャンプ・RVパークのサイト",
+     "src": "https://www.glampingresort-kumamoto.com/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の専用エリアはどこでも一緒。プライベートドッグラン付き",
+     "src": "https://www.glampingresort-kumamoto.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "グランピング15時〜19時／10時まで、オートキャンプ・RVパーク14時〜19時／11時まで",
+     "src": "https://www.glampingresort-kumamoto.com/qa/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i99d8c1"
+  },
+  {
+   "name": "癒しの宿 鷹勝",
+   "kind": "旅館",
+   "pref": "大分県",
+   "city": "由布市",
+   "url": "https://yado-takasho.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大分県由布市湯布院町湯平791",
+     "src": "https://yado-takasho.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "離れ8室のうち4室だけ犬と泊まれる",
+     "src": "https://yado-takasho.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "室内犬だけ",
+     "src": "https://yado-takasho.jp/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "ワクチン証明の持参は不要。ケージ・ごはん・用品は持参",
+     "src": "https://yado-takasho.jp/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "食事は本館なので犬は客室で留守番。敷地では必ずリード",
+     "src": "https://yado-takasho.jp/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ない（近くを散歩）",
+     "src": "https://yado-takasho.jp/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15時半〜17時半・チェックアウト10時",
+     "src": "https://yado-takasho.jp/faq/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i8d69b2"
+  },
+  {
+   "name": "ザ・ペニンシュラ東京",
+   "kind": "ホテル",
+   "pref": "東京都",
+   "city": "千代田区",
+   "url": "https://www.peninsula.com/ja/tokyo/dog-stay-program",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "15kgまで",
+     "src": "https://www.peninsula.com/ja/tokyo/dog-stay-program",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1部屋1匹",
+     "src": "https://www.peninsula.com/ja/tokyo/dog-stay-program",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "スイートルームだけ（1日の受け入れ数に限りあり）",
+     "src": "https://www.peninsula.com/ja/tokyo/dog-stay-program",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防法で決められた予防接種の証明",
+     "src": "https://www.peninsula.com/ja/tokyo/dog-stay-program",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室の外は抱っこかキャリー。バスルームは不可。留守番はケージかキャリーで2時間まで",
+     "src": "https://www.peninsula.com/ja/tokyo/dog-stay-program",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "犬用ベッド・器・アメニティ、犬用ユニフォームの貸し出し、スタッフとの散歩（予約がおすすめ）",
+     "src": "https://www.peninsula.com/ja/tokyo/dog-stay-program",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i1440e6"
   }
  ]
 }

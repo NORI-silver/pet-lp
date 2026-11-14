@@ -207,9 +207,8 @@ CAT["table"] = [(h, (lambda w: (lambda c: topic_mark(c, w)))(w)) for h, w in TOP
 G = json.load(open(os.path.join(os.path.dirname(__file__), "joto_groups.json"), encoding="utf-8"))
 
 def groups_html(e, pf):
-    gs = [g for g in G["groups"] if g["pref"] == pf]
+    gs = [g for g in G["groups"] if pf in g["prefs"]]
     if not gs: return ""
-    reg = G["registries"].get(pf)
     cards = "".join(
         f'<div class="emg-item emg-co jt-card"><a href="{e(g["url"])}" target="_blank" rel="noopener"><b>{e(g["name"])}</b></a>'
         f'<small>民間の保護団体・{e(g["animals"])}{("・" + e(g["area"])) if g["area"] else ""}</small>'
@@ -218,9 +217,10 @@ def groups_html(e, pf):
         f'<p class="jt-more"><a href="{e(g["cond_url"])}" target="_blank" rel="noopener">条件・費用のページ（団体の公式サイト） ↗</a></p>'
         f'<small class="sg-src">{e(G["checked"])}に公式サイトで確認</small></div>'
         for g in gs)
-    src = f'<a href="{e(reg["u"])}" target="_blank" rel="noopener">{e(reg["t"])} ↗</a>' if reg else "自治体の登録団体の一覧"
-    return (f'<section class="emg-pref"><h2 style="font-size:1.15em">{e(pf)}に登録された保護団体（{len(gs)}団体）</h2>'
-            f'<p class="emg-note">{src}に載っている団体のうち、公式サイトに譲渡の条件と費用が書いてある団体です。条件と費用は団体ごとにちがい、自治体の窓口より細かいことが多いので、くらべてから申し込んでください（{e(G["checked"])}に確かめた内容。おすすめ順ではありません）。</p>'
+    regs = G["registries"].get(pf, [])
+    src = "・".join(f'<a href="{e(r["u"])}" target="_blank" rel="noopener">{e(r["t"])} ↗</a>' for r in regs) or "自治体の登録団体の一覧"
+    return (f'<section class="emg-pref"><h2 style="font-size:1.15em">{e(pf)}の自治体に登録された保護団体（{len(gs)}団体）</h2>'
+            f'<p class="emg-note">{src}に載っている団体のうち、公式サイトに譲渡の条件や費用が書いてある団体です。条件と費用は団体ごとにちがい、自治体の窓口より細かいことが多いので、くらべてから申し込んでください（{e(G["checked"])}に確かめた内容。おすすめ順ではありません）。</p>'
             + cards + '</section>')
 
 CAT["extra_after"] = groups_html
