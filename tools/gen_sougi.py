@@ -41,6 +41,10 @@ def _fcard(e, f):
     to = f'{f["name"]} {f["pref"]}{f["city"]}' if f.get("city") else ""
     import gen_sougi_fac  # 施設ページ（試しの30施設）があれば、カードからつなぐ
     more = f'<a class="emg-taxi" href="{gen_sougi_fac.href(f)}">{e(f["name"])}のくわしい情報（できること・料金の比較）→</a>' if f["id"] in gen_sougi_fac.IDS else ""
+    # 施設ページのない施設も、公式サイトで確かめたくわしい項目（more）をカードの中に出す（県のページを濃くする。2026-11-15）
+    if f.get("more") and f["id"] not in gen_sougi_fac.IDS:
+        more = ('<dl class="sg-more">' + "".join(f'<dt>{e(x["k"])}</dt><dd>{e(x["v"])}</dd>' for x in f["more"])
+                + f'</dl><small class="sg-src">公式サイトで確認（{e(f.get("checked", ""))}）</small>')
     return (f'<div class="emg-item emg-co sg-pv"{FC.attrs(e, "sougi", f, FC.sougi_tags(f), f["name"], to, "この施設")}><a href="{e(f["u"])}" target="_blank" rel="noopener"><b>{e(f["name"])}</b></a>'
             f'<small>{e(f["city"])}</small><div class="sg-tags">{tags}</div>{price}'
             + (f'<div class="emg-score" data-id="{e(f["id"])}"></div>' if f.get("review_query") else "") + more + '</div>')
@@ -91,6 +95,9 @@ CSS = """<style>
 .emg-item.sg-pv{background:var(--cream)}
 .sg-tags{margin-top:4px}.sg-tags .sg-tag{margin:4px 4px 0 0}
 .emg-item small.sg-src{color:var(--ink-3);font-size:.72rem;margin-top:6px}
+.sg-more{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin:8px 0 0;font-size:.8rem}
+.sg-more dt{color:var(--ink-3);font-weight:400}
+.sg-more dd{margin:0;color:var(--ink)}
 </style>"""
 
 def render(ctx):
