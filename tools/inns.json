@@ -6594,6 +6594,1088 @@
     "m"
    ],
    "id": "i1440e6"
+  },
+  {
+   "name": "ISUMI Glamping Resort & Spa SOLAS",
+   "kind": "グランピング",
+   "pref": "千葉県",
+   "city": "いすみ市",
+   "url": "https://solas-glamping.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県いすみ市釈迦谷1610-1",
+     "src": "https://solas-glamping.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペットドームテント3部屋（4名とペットまで）",
+     "src": "https://solas-glamping.jp/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "ペットドームテントだけ2頭まで",
+     "src": "https://solas-glamping.jp/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンか狂犬病予防注射の証明書（チェックインで確かめる）",
+     "src": "https://solas-glamping.jp/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "犬用トイレ・食器・トイレシート",
+     "src": "https://solas-glamping.jp/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "3室とも犬以外の動物もOK",
+     "src": "https://solas-glamping.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "グランピング15時／11時、キャンプサイト13時／10時",
+     "src": "https://solas-glamping.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i5a1495"
+  },
+  {
+   "name": "イノセンスリゾート in千葉レゾール",
+   "kind": "コテージ",
+   "pref": "千葉県",
+   "city": "山武市",
+   "url": "https://innocence-resort.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県山武市蓮沼ハ4159",
+     "src": "https://innocence-resort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "体重10kg未満か体高40cm未満の小型犬が目安（庭の柵・高さ60cmを越えない子は相談）",
+     "src": "https://innocence-resort.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "決まりはない（部屋と庭の広さを予約ページで確かめる）",
+     "src": "https://innocence-resort.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済証と混合ワクチンの証明書",
+     "src": "https://innocence-resort.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "犬と泊まれる棟は足洗い場つきの専用庭（リードをつなぐ金具あり）",
+     "src": "https://innocence-resort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "猫など小さな動物も泊まれる（ほかの動物は前もって相談）",
+     "src": "https://innocence-resort.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15時・チェックアウト10時",
+     "src": "https://innocence-resort.com/faq/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "small"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i27d80d"
+  },
+  {
+   "name": "HIROBA BY BON-MAL",
+   "kind": "貸別荘",
+   "pref": "千葉県",
+   "city": "鴨川市",
+   "url": "https://bonmal.jp/hiroba/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県鴨川市広場830-5（チェックインは鴨川市横渚1625-1）",
+     "src": "https://bonmal.jp/hiroba/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬も泊まれる",
+     "src": "https://bonmal.jp/hiroba/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "3頭まで（4頭目からは相談）",
+     "src": "https://bonmal.jp/hiroba/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭2,000円（清掃料）",
+     "src": "https://bonmal.jp/hiroba/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射などの予防接種。トイレのしつけ",
+     "src": "https://bonmal.jp/hiroba/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1棟貸し（4LDK＋ペットルーム）",
+     "src": "https://bonmal.jp/hiroba/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器3組、ロングリード3本、ケージ、トイレ、トイレシート（1泊3枚）",
+     "src": "https://bonmal.jp/hiroba/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "猫も泊まれる",
+     "src": "https://bonmal.jp/hiroba/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15時（最終20時）・チェックアウト11時",
+     "src": "https://bonmal.jp/hiroba/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i9a046b"
+  },
+  {
+   "name": "一宮グリーンパーク&レジデンス",
+   "kind": "貸別荘",
+   "pref": "千葉県",
+   "city": "長生郡一宮町",
+   "url": "https://www.ichinomiya-greenpark.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県長生郡一宮町東浪見7388-1",
+     "src": "https://www.ichinomiya-greenpark.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1日1組の1棟貸し（50㎡と76㎡の2つの部屋）",
+     "src": "https://www.ichinomiya-greenpark.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "室内ではマナーウェアを着せる。150坪の天然芝の庭で走れる",
+     "src": "https://www.ichinomiya-greenpark.com/usage-guide",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "13時から使える",
+     "src": "https://www.ichinomiya-greenpark.com/usage-guide",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "小型犬用のステップトイレ・ケージ、ペット用タオル、消臭剤、粘着クリーナー、水入れ",
+     "src": "https://www.ichinomiya-greenpark.com/usage-guide",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15時・チェックアウト10時",
+     "src": "https://www.ichinomiya-greenpark.com/usage-guide",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "ibc7ace"
+  },
+  {
+   "name": "BON-MAL TREE",
+   "kind": "貸別荘",
+   "pref": "千葉県",
+   "city": "鴨川市",
+   "url": "https://bonmal.jp/tree/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県鴨川市東江見747-11（チェックインは鴨川市横渚1625-1）",
+     "src": "https://bonmal.jp/tree/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬も泊まれる",
+     "src": "https://bonmal.jp/tree/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "3頭まで（4頭目からは相談）",
+     "src": "https://bonmal.jp/tree/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭2,000円",
+     "src": "https://bonmal.jp/tree/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射などの予防接種。トイレのしつけ",
+     "src": "https://bonmal.jp/tree/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "室内も外もリードなしで過ごせる。建物の中に宿泊者だけのドッグラン",
+     "src": "https://bonmal.jp/tree/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1棟貸し（2寝室・4名まで）",
+     "src": "https://bonmal.jp/tree/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "猫も泊まれる",
+     "src": "https://bonmal.jp/tree/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15時（最終20時）・チェックアウト11時",
+     "src": "https://bonmal.jp/tree/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i7a489d"
+  },
+  {
+   "name": "Beach Resort ～CHIKURA～",
+   "kind": "貸別荘",
+   "pref": "千葉県",
+   "city": "南房総市",
+   "url": "https://beachresort-chikura.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県南房総市千倉町忽戸601-1",
+     "src": "https://beachresort-chikura.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・大型犬を問わない",
+     "src": "https://beachresort-chikura.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "2頭目まで無料、3頭目から有料",
+     "src": "https://beachresort-chikura.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1棟貸し（1階に1室・2階に2室の寝室、それぞれにお風呂とトイレ）",
+     "src": "https://beachresort-chikura.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "アクセス",
+     "v": "富浦ICから約30分",
+     "src": "https://beachresort-chikura.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i11e2c0"
+  },
+  {
+   "name": "BIANCA",
+   "kind": "貸別荘",
+   "pref": "千葉県",
+   "city": "南房総市",
+   "url": "https://villabianca.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県南房総市千倉町川口209-7",
+     "src": "https://villabianca.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬まで（大型犬は前もって相談）",
+     "src": "https://villabianca.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "3匹まで無料、最大5匹",
+     "src": "https://villabianca.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "滑りにくい床、ペットスペース、低い階段、脱走防止のゲート",
+     "src": "https://villabianca.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "天然芝のプライベートドッグラン（BBQも一緒に。駐車場と入口は二重の柵）",
+     "src": "https://villabianca.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1日1組の1棟貸し（4名、最大6名）",
+     "src": "https://villabianca.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i2a4ec2"
+  },
+  {
+   "name": "プライベートオーシャンヴィラ藍水",
+   "kind": "貸別荘",
+   "pref": "千葉県",
+   "city": "鴨川市",
+   "url": "https://www.chiba-privatevilla.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県鴨川市江見青木395",
+     "src": "https://www.chiba-privatevilla.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "6棟のうち3棟が犬と泊まれる",
+     "src": "https://www.chiba-privatevilla.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "犬と泊まれる棟ごとに全面芝生のプライベートドッグラン",
+     "src": "https://www.chiba-privatevilla.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "小型犬用2,200円・中型犬用2,750円・大型犬用3,250円",
+     "src": "https://www.chiba-privatevilla.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ペット用アメニティ",
+     "src": "https://www.chiba-privatevilla.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "ia13f29"
+  },
+  {
+   "name": "レイクサイドテラス琵琶湖",
+   "kind": "グランピング",
+   "pref": "滋賀県",
+   "city": "高島市",
+   "url": "https://www.biwako-glamping.com/pet/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "滋賀県高島市勝野1533（チェックインの場所）",
+     "src": "https://www.biwako-glamping.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれるのは1日3組（ドッグサファリテント2つ・レイクサイドドッグコテージ1つ、各6名まで）",
+     "src": "https://www.biwako-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬・大型犬",
+     "src": "https://www.biwako-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "犬と泊まれる部屋（ドッグサファリテントはケージなし）。オムツかマナーベルトを着ける",
+     "src": "https://www.biwako-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "部屋ごとにプライベートドッグラン（リードなしで遊べる）",
+     "src": "https://www.biwako-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "小型犬1,650円・中型犬2,200円・大型犬2,750円",
+     "src": "https://www.biwako-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "トイレ・シーツ、粘着クリーナー、うんち袋、クレート、リード、食器、犬用ベッド",
+     "src": "https://www.biwako-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ",
+     "src": "https://www.biwako-glamping.com/pet/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i9c49cf"
+  },
+  {
+   "name": "Dog Villa Holoholo",
+   "kind": "貸別荘",
+   "pref": "兵庫県",
+   "city": "淡路市",
+   "url": "https://awaji-holoholo.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県淡路市尾崎620",
+     "src": "https://awaji-holoholo.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "何頭でもよい",
+     "src": "https://awaji-holoholo.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "犬の追加料金はない",
+     "src": "https://awaji-holoholo.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "自分たちだけの天然芝のドッグラン（約600㎡）",
+     "src": "https://awaji-holoholo.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1棟貸し",
+     "src": "https://awaji-holoholo.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドッグランと焚き火のそばの芝生。薪ストーブに柵はないので気をつける",
+     "src": "https://awaji-holoholo.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "アクセス",
+     "v": "北淡ICから南へ約10分",
+     "src": "https://awaji-holoholo.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i127e5c"
+  },
+  {
+   "name": "キャノピーbyヒルトン大阪梅田",
+   "kind": "ホテル",
+   "pref": "大阪府",
+   "city": "大阪市北区",
+   "url": "https://canopy-osaka.hiltonjapan.co.jp/plans/rooms/10563",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "1部屋2匹まで、合わせて15kgまで",
+     "src": "https://canopy-osaka.hiltonjapan.co.jp/plans/rooms/10563",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "2匹分の料金はプランに含む。チェックインで10,000円を預ける（部屋に傷がなければ返す）",
+     "src": "https://canopy-osaka.hiltonjapan.co.jp/plans/rooms/10563",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の証明書（犬は狂犬病と5種混合、猫は3種混合。コピー可）とペット宿泊の同意書",
+     "src": "https://canopy-osaka.hiltonjapan.co.jp/plans/rooms/10563",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室と1階カフェのテラス席。ほかの場所はケージかキャリーに入れて扉を閉める",
+     "src": "https://canopy-osaka.hiltonjapan.co.jp/plans/rooms/10563",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "プレミアムルーム・キャノピービュールーム・キャノピーコーナースイート",
+     "src": "https://canopy-osaka.hiltonjapan.co.jp/plans/rooms/10563",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "マット・食器・トイレ・ごみ箱、犬はケージ・猫はキャットタワー。ベビーカー型のペットカートとカーシートの貸し出し",
+     "src": "https://canopy-osaka.hiltonjapan.co.jp/plans/rooms/10563",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "猫も泊まれる（3種混合ワクチンの証明）",
+     "src": "https://canopy-osaka.hiltonjapan.co.jp/plans/rooms/10563",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i6a6167"
+  },
+  {
+   "name": "Lakeside Resort&Cafe AFUMI KITAKOMATSU",
+   "kind": "グランピング",
+   "pref": "滋賀県",
+   "city": "大津市",
+   "url": "https://afumi.net/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "滋賀県大津市北小松997-1",
+     "src": "https://afumi.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬は1棟2匹まで、中型犬は1匹まで（体重20kgが目安）。大型犬は不可",
+     "src": "https://afumi.net/faq",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病と5種以上の混合ワクチン（2週間以上前・1年未満）の証明書をチェックインで見せる。同意書",
+     "src": "https://afumi.net/faq",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドッグラン付きのドームだけ。ベッドには上げない。カフェのデッキは入れる、館内はリード",
+     "src": "https://afumi.net/faq",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグラン付きドーム（2〜4名）",
+     "src": "https://afumi.net/faq",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ",
+     "src": "https://afumi.net/faq",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15時・チェックアウト10時",
+     "src": "https://afumi.net/faq",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i7750e8"
+  },
+  {
+   "name": "LEMON FARM GLAMPING しまなみ",
+   "kind": "グランピング",
+   "pref": "広島県",
+   "city": "尾道市",
+   "url": "https://www.citruspark-glamping.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "広島県尾道市瀬戸田町荻24985-1",
+     "src": "https://www.citruspark-glamping.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれるのはドッグスイートヴィラ2棟だけ",
+     "src": "https://www.citruspark-glamping.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数・犬種の決まりはない",
+     "src": "https://www.citruspark-glamping.com/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "2頭まで無料、3頭目から1頭3,300円（税込）",
+     "src": "https://www.citruspark-glamping.com/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射と混合ワクチンの証明（前もってメールか当日持参）",
+     "src": "https://www.citruspark-glamping.com/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "室内とドッグランはリードなし。BBQスペースも一緒。フロント・部屋のお風呂とトイレは入れない。公園と共用部はリード",
+     "src": "https://www.citruspark-glamping.com/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ヴィラの前に天然芝のドッグラン（約150㎡、となりと柵で分ける）",
+     "src": "https://www.citruspark-glamping.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15時〜18時・チェックアウト10時",
+     "src": "https://www.citruspark-glamping.com/qa/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ifa2354"
+  },
+  {
+   "name": "IZUMO DOGS by HIYORISTAY",
+   "kind": "貸別荘",
+   "pref": "島根県",
+   "city": "出雲市",
+   "url": "https://hiyoristay.jp/izumo-dogs/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "島根県出雲市大社町杵築南805-15",
+     "src": "https://hiyoristay.jp/izumo-dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬まで（室内で飼っている犬）",
+     "src": "https://hiyoristay.jp/izumo-dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "3匹まで",
+     "src": "https://hiyoristay.jp/izumo-dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病と5種以上の混合ワクチン（2週間以上前・1年未満）。生後4か月以上、ノミ・ダニの予防",
+     "src": "https://hiyoristay.jp/izumo-dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "1棟の中。留守番はケージに入れる",
+     "src": "https://hiyoristay.jp/izumo-dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1棟貸し（115㎡、1〜6名）",
+     "src": "https://hiyoristay.jp/izumo-dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "足洗い場、ケージ、食器、ペットシーツ",
+     "src": "https://hiyoristay.jp/izumo-dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ",
+     "src": "https://hiyoristay.jp/izumo-dogs/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i29e77c"
+  },
+  {
+   "name": "グランピングリゾート大島",
+   "kind": "グランピング",
+   "pref": "山口県",
+   "city": "大島郡周防大島町",
+   "url": "https://glamping-oshima.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山口県大島郡周防大島町志佐35",
+     "src": "https://glamping-oshima.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬だけ",
+     "src": "https://glamping-oshima.com/faq",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://glamping-oshima.com/faq",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグベース・ドッグスイートベース",
+     "src": "https://glamping-oshima.com/faq",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ベッドに上げない（ケージを使う）",
+     "src": "https://glamping-oshima.com/faq",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器、ペットシーツ、除菌スプレー、タオル（フードは持参）",
+     "src": "https://glamping-oshima.com/faq",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15時〜18時・チェックアウト10時",
+     "src": "https://glamping-oshima.com/faq",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬のほかの動物は不可",
+     "src": "https://glamping-oshima.com/faq",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i93c3db"
+  },
+  {
+   "name": "岡山ひるぜん貸別荘ピーターパン",
+   "kind": "貸別荘",
+   "pref": "岡山県",
+   "city": "真庭市",
+   "url": "https://hiruzen-peterpan.com/wp/activity/withdog/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "岡山県真庭市蒜山上福田",
+     "src": "https://hiruzen-peterpan.com/wp/activity/withdog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "小型・中型犬1頭1,100円、25kg以上の大型犬1頭3,100円",
+     "src": "https://hiruzen-peterpan.com/wp/activity/withdog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "コテージごとに上限がある（予約で体重と頭数を伝える）",
+     "src": "https://hiruzen-peterpan.com/wp/activity/withdog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "混合ワクチンと狂犬病予防注射。2〜3日前にシャンプー",
+     "src": "https://hiruzen-peterpan.com/wp/activity/withdog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "コテージの中とデッキ（リードフックあり）。寝室・布団の部屋は入れない。犬だけにしない",
+     "src": "https://hiruzen-peterpan.com/wp/activity/withdog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "7棟に専用ドッグラン（無料）。冬は雪で使えないことがある",
+     "src": "https://hiruzen-peterpan.com/wp/activity/withdog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "id8c3d2"
+  },
+  {
+   "name": "愛犬と泊まる温泉リゾート いろりの湯宿 別邸 藤屋",
+   "kind": "旅館",
+   "pref": "広島県",
+   "city": "廿日市市",
+   "url": "https://www.bettei-fujiya.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "広島県廿日市市塩屋1-11-25",
+     "src": "https://www.bettei-fujiya.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "体重の決まりはない（あばれても抱っこできる子）",
+     "src": "https://www.bettei-fujiya.com/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "5棟7室の離れ（どれも温泉つき）",
+     "src": "https://www.bettei-fujiya.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "レストランも一緒（外から入るとき・館内の移動は抱っこ）。部屋に犬用ソファ。竹林の散歩道。部屋の外はリード",
+     "src": "https://www.bettei-fujiya.com/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "小型犬用の屋外ドッグラン（リードなし）",
+     "src": "https://www.bettei-fujiya.com/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "夕食 ヒレ肉8,800円・ローストビーフ2,200円（前日まで）。朝のレトルトは無料",
+     "src": "https://www.bettei-fujiya.com/pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ベッド・トイレ・シーツ・粘着クリーナー・ウェットティッシュ・タオル・うんち袋・食器（ケージは相談）",
+     "src": "https://www.bettei-fujiya.com/pet",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "ie1300c"
+  },
+  {
+   "name": "瀬戸内リゾートベッセルおおち",
+   "kind": "ホテル",
+   "pref": "香川県",
+   "city": "東かがわ市",
+   "url": "https://vessel-oochi.com/withdogplan/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "香川県東かがわ市馬篠1200",
+     "src": "https://vessel-oochi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型（6kg以下）・中型（25kg未満）・大型（25kg以上）。生後4か月以上",
+     "src": "https://vessel-oochi.com/withdogplan/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1部屋2頭まで",
+     "src": "https://vessel-oochi.com/withdogplan/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊 小型2,200円・中型3,300円・大型5,500円（税込、2頭目は500円引き）",
+     "src": "https://vessel-oochi.com/withdogplan/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病か混合ワクチンの証明書（2週間以上前・1年未満）と、ペット宿泊の同意書",
+     "src": "https://vessel-oochi.com/withdogplan/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室だけ（本館は入れない）。留守番と夜はケージ、ベッドには上げない",
+     "src": "https://vessel-oochi.com/withdogplan/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "宿泊者は無料、10時〜17時（季節で変わる）",
+     "src": "https://vessel-oochi.com/withdogplan/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ、ふたつきごみ箱、粘着クリーナー、トイレシーツ、食器、犬用ソファ、消臭袋",
+     "src": "https://vessel-oochi.com/withdogplan/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i2199a9"
   }
  ]
 }
