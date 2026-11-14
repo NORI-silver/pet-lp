@@ -23368,6 +23368,402 @@
     "l"
    ],
    "id": "i667c0c"
+  },
+  {
+   "name": "ふもとっぱら",
+   "kind": "キャンプ場",
+   "pref": "静岡県",
+   "city": "富士宮市",
+   "url": "https://fumotoppara.net/guide/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全面フリーサイト（草原・車をテントの横に付けられる）。コテージ・キャビンなどの宿泊施設もある",
+     "src": "https://fumotoppara.net/guide/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "キャンプはイン8:30〜17:00・アウト14:00（17時以降のチェックインは不可）。宿泊施設はイン15:00〜17:00・アウト11:00",
+     "src": "https://fumotoppara.net/guide/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大きさの決まりは書いていない（リードをつける）",
+     "src": "https://fumotoppara.net/caution/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "キャンプサイト（リードをつけ、ふんは持ち帰る。トイレのごみ箱に捨てない）。団体用の宿舎「まほろば」の建物の中は不可",
+     "src": "https://fumotoppara.net/caution/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "料金の数え方",
+     "v": "コテージ柏は5名まで30,000円、翠山荘・毛無山荘・金山キャビンは5名まで25,000円",
+     "src": "https://fumotoppara.net/guide/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ia07ee1"
+  },
+  {
+   "name": "イチホテル浅草橋",
+   "kind": "ホテル",
+   "pref": "東京都",
+   "city": "台東区",
+   "url": "https://hotel-monday.com/dog_friendly#イチホテル浅草橋",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "やや大きめの犬まで（15kgくらいまで）",
+     "src": "https://hotel-monday.com/dog_friendly#イチホテル浅草橋",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://hotel-monday.com/dog_friendly#イチホテル浅草橋",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "アクセス",
+     "v": "浅草橋駅西口から歩いて2分",
+     "src": "https://hotel-monday.com/dog_friendly#イチホテル浅草橋",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "2頭目から1頭1泊5,000円",
+     "src": "https://hotel-monday.com/dog_friendly#イチホテル浅草橋",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "予約後にメールで届く宿泊滞在同意書に、チェックインの2日前までに答える。部屋ではおむつ",
+     "src": "https://hotel-monday.com/dog_friendly#イチホテル浅草橋",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（ベッド・ソファも可。犬だけの留守番は不可）。ロビーなど共用部は抱っこかカート",
+     "src": "https://hotel-monday.com/dog_friendly#イチホテル浅草橋",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "トイレとトイレシート・消臭スプレー・ウェットティッシュ・粘着シート・うんち袋・ペーパータオル",
+     "src": "https://hotel-monday.com/dog_friendly#イチホテル浅草橋",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i31ec5b"
+  },
+  {
+   "name": "hotel MONday 羽田空港",
+   "kind": "ホテル",
+   "pref": "東京都",
+   "city": "大田区",
+   "url": "https://hotel-monday.com/dog_friendly#hotel MONday 羽田空港",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（7kgくらいまで）",
+     "src": "https://hotel-monday.com/dog_friendly#hotel MONday 羽田空港",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://hotel-monday.com/dog_friendly#hotel MONday 羽田空港",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "アクセス",
+     "v": "京急 大鳥居駅から歩いて2分",
+     "src": "https://hotel-monday.com/dog_friendly#hotel MONday 羽田空港",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "2頭目から1頭1泊5,000円",
+     "src": "https://hotel-monday.com/dog_friendly#hotel MONday 羽田空港",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "予約後にメールで届く宿泊滞在同意書に、チェックインの2日前までに答える。部屋ではおむつ",
+     "src": "https://hotel-monday.com/dog_friendly#hotel MONday 羽田空港",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（ベッド・ソファも可。犬だけの留守番は不可）。ロビーなど共用部は抱っこかカート",
+     "src": "https://hotel-monday.com/dog_friendly#hotel MONday 羽田空港",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "トイレとトイレシート・消臭スプレー・ウェットティッシュ・粘着シート・うんち袋・ペーパータオル",
+     "src": "https://hotel-monday.com/dog_friendly#hotel MONday 羽田空港",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i8e4784"
+  },
+  {
+   "name": "OMO5東京五反田 by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "東京都",
+   "city": "品川区",
+   "url": "https://hoshinoresorts.com/ja/hotels/omo5tokyogotanda/sp/dog-stay/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "アクセス",
+     "v": "東急池上線 大崎広小路駅から歩いて1分、JR五反田駅から歩いて6分",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5tokyogotanda/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリーツイン（24〜30㎡・1〜2名）とドッグフレンドリーデラックス（35〜38㎡・1〜4名）",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5tokyogotanda/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg）まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5tokyogotanda/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋と館内の共用部（リード、一部を除く）・屋外ドッグラン（5:30〜21:00）・屋内ドッグラウンジ（24時間）",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5tokyogotanda/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・ベッド・食器・トイレ・ペットシート・防水マット・ごみ箱。ペットカートの貸し出し",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5tokyogotanda/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "ワクチン接種の基準あり（利用規約）。駐車場の移動はケージ",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5tokyogotanda/sp/dog-stay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "iaffcdf"
+  },
+  {
+   "name": "OMO7横浜 by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "神奈川県",
+   "city": "横浜市",
+   "url": "https://hoshinoresorts.com/ja/hotels/omo7yokohama/sp/dog-stay/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "アクセス",
+     "v": "関内駅から歩いて1分",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7yokohama/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリーダブル（24〜25㎡）・デラックス（40〜49㎡）・スイート（73㎡）",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7yokohama/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "ダブル・デラックスは小〜中型犬2頭まで（デラックスは大型犬1頭も可）。スイートは小〜大型犬2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7yokohama/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "館内の共用部（リード）。OMOダイニング・ライブラリーラウンジ・ベーカリーなどは不可",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7yokohama/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋外ドッグラン（5:30〜22:00、小型犬エリアあり）と屋内ドッグラン（24時間）",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7yokohama/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・食器・トイレ・ペット用アメニティ。屋内ドッグラウンジに無料シャワーと電子レンジ",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7yokohama/sp/dog-stay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "idb2965"
+  },
+  {
+   "name": "OMO7大阪 by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "大阪府",
+   "city": "大阪市",
+   "url": "https://hoshinoresorts.com/ja/hotels/omo7osaka/sp/dog-stay/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "アクセス",
+     "v": "新今宮駅・動物園前駅の目の前",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7osaka/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリーいどばたスイート（59㎡・1〜5名）とドッグフレンドリーツイン（29㎡・1〜3名）",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7osaka/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "1頭20kgまで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7osaka/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7osaka/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ロビーなど共用部（リード）・OMOダイニング・OMOカフェ＆バルの犬と一緒の席・ガーデン「みやぐりん」",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7osaka/sp/dog-stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・食器・アメニティ・見守りカメラの貸し出し・散歩バッグ",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7osaka/sp/dog-stay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "ie284cd"
+  },
+  {
+   "name": "琵琶湖マリオットホテル",
+   "kind": "ホテル",
+   "pref": "滋賀県",
+   "city": "守山市",
+   "url": "https://www.biwako-marriott.com/press/pdf/20210712_BMH.pdf",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "滋賀県守山市今浜町十軒家2876",
+     "src": "https://www.biwako-marriott.com/press/pdf/20210712_BMH.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリールーム（スーペリアツイン30㎡）",
+     "src": "https://www.biwako-marriott.com/press/pdf/20210712_BMH.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の小型犬",
+     "src": "https://www.biwako-marriott.com/press/pdf/20210712_BMH.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室1頭",
+     "src": "https://www.biwako-marriott.com/press/pdf/20210712_BMH.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "愛犬の宿泊料5,500円（2021年のお知らせ）",
+     "src": "https://www.biwako-marriott.com/press/pdf/20210712_BMH.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "宿泊滞在同意書・ワクチン接種証明書と狂犬病予防注射済票のコピー（1週間前までに出す）。ごはんといつもの道具",
+     "src": "https://www.biwako-marriott.com/press/pdf/20210712_BMH.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（館内の移動はクレート）",
+     "src": "https://www.biwako-marriott.com/press/pdf/20210712_BMH.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・脱臭機・トイレ・ペットシーツ・ペット用ごみ箱・食器・粘着ローラー・ウェットティッシュ・消臭剤・ふん袋",
+     "src": "https://www.biwako-marriott.com/press/pdf/20210712_BMH.pdf",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i914873"
   }
  ]
 }
