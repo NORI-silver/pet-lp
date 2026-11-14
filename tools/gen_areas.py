@@ -70,7 +70,7 @@ _EMG_RV = _EMG_J["taxis"] + [h for l in _EMG_J["hospitals"].values() for h in l]
 # 条件でさがす動物病院（/hospital/、tools/hospitals.json）の往診・猫専門の病院も同じしくみで口コミを出す
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_hospitals
-from page_images import GUIDE_ALT, AREA_ALT, area_key
+from page_images import GUIDE_ALT, AREA_ALT, AREA_POS, area_key
 import prefkeep
 import gen_dogrun
 import gen_rojin
@@ -437,6 +437,8 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
         t = re.sub(r'<meta property="og:image:alt" content="[^"]*">', lambda m: f'<meta property="og:image:alt" content="{e(AREA_ALT.get(k, ""))}">', t, count=1)
         t = re.sub(r'<source srcset="/img/hero\.webp" type="image/webp"><img src="/img/hero\.jpg" alt="[^"]*"',
                    lambda m: f'<source srcset="/img/area/{k}.webp" type="image/webp"><img src="/img/area/{k}.jpg" alt="{e(AREA_ALT.get(k, ""))}"', t, count=1)
+        if k in AREA_POS:  # 写真ごとに、スマホの横長の枠でペットが切れない位置
+            t = re.sub(r'(<img src="/img/area/' + re.escape(k) + r'\.jpg"[^>]*?style="object-position:)[^"]*"', lambda m: m.group(1) + AREA_POS[k] + '"', t, count=1)
     t = t.replace(_APP_M.group(0), APP_TAG, 1)
     assert t.count(f"<option selected>{pref}</option>") == 2, pref
     assert f"<title>{e(title)}</title>" in t, title
