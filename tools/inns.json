@@ -8776,6 +8776,412 @@
     "small"
    ],
    "id": "i2c44a8"
+  },
+  {
+   "name": "ハウステンボス フォレストヴィラ ドッグヴィラ",
+   "kind": "ホテル",
+   "pref": "長崎県",
+   "city": "佐世保市",
+   "url": "https://www.huistenbosch.co.jp/hotels/fv/rooms/dogvilla/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長崎県佐世保市ハウステンボス町7-7",
+     "src": "https://www.huistenbosch.co.jp/hotels/fv/index",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "宿泊同意書と、狂犬病・5種以上のワクチンの証明書のコピーを先に出す（接種から2週間以上1年未満。猶予証明・抗体検査の証明は使えない）",
+     "src": "https://www.huistenbosch.co.jp/hotels/fv/rooms/dogvilla/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ヴィラの中（2階の寝室は不可）。屋内の施設や乗り物のあいだは併設のドッグクロークに預けられる",
+     "src": "https://www.huistenbosch.co.jp/hotels/fv/rooms/dogvilla/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグヴィラ（77㎡・大人2〜4名）。ハウステンボスの中で犬と泊まれるのはここだけ",
+     "src": "https://www.huistenbosch.co.jp/hotels/fv/rooms/dogvilla/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "専用ケージ・ペットシーツ・消臭スプレー・タオル・トイレ・フードボウル・粘着ローラー・外のリードフック",
+     "src": "https://www.huistenbosch.co.jp/hotels/fv/rooms/dogvilla/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時・11時（前後はドッグクロークを使える）",
+     "src": "https://www.huistenbosch.co.jp/hotels/fv/rooms/dogvilla/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i7e5681"
+  },
+  {
+   "name": "グランドーム福岡ふくつ",
+   "kind": "グランピング",
+   "pref": "福岡県",
+   "city": "福津市",
+   "url": "https://www.fukuoka-glamping.com/pet/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "福岡県福津市津屋崎4丁目45-1",
+     "src": "https://www.fukuoka-glamping.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬も泊まれる",
+     "src": "https://www.fukuoka-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の決まりはなし（部屋は1匹を想定した広さ）",
+     "src": "https://www.fukuoka-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "チェックインのときに狂犬病ワクチンの証明書",
+     "src": "https://www.fukuoka-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドームテント16棟のうち4棟（サプライズドッグ8名、スタンダードドッグ・ドッグマリン4名）",
+     "src": "https://www.fukuoka-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "トイレシート・消臭スプレー・ふたつきのごみ箱・ケージ・えさ入れ・水入れ",
+     "src": "https://www.fukuoka-glamping.com/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ（ほかの動物は泊まれない）",
+     "src": "https://www.fukuoka-glamping.com/pet/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i5a7b1a"
+  },
+  {
+   "name": "SAKURA別邸 The Pool Villa",
+   "kind": "貸別荘",
+   "pref": "大分県",
+   "city": "玖珠郡九重町",
+   "url": "https://sakurabettei.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大分県玖珠郡九重町2646-1",
+     "src": "https://sakurabettei.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬・大型犬",
+     "src": "https://sakurabettei.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬用のプール",
+     "v": "ペット棟は温水プールで犬と一緒に泳げる",
+     "src": "https://sakurabettei.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "となりの旅籠 彩くらのドッグランを使える",
+     "src": "https://sakurabettei.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペット棟のプライベートヴィラ1棟",
+     "src": "https://sakurabettei.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i9eaecc"
+  },
+  {
+   "name": "吹上浜フィールドホテル",
+   "kind": "グランピング",
+   "pref": "鹿児島県",
+   "city": "いちき串木野市",
+   "url": "https://ff-h.jp/pet_friendly",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "鹿児島県いちき串木野市湊町1-101",
+     "src": "https://ff-h.jp/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大きさ・犬種を問わない（室内で飼っている子）",
+     "src": "https://ff-h.jp/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹目2,200円、2匹目から1匹1,100円（1泊・現地で支払い）",
+     "src": "https://ff-h.jp/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の狂犬病と混合ワクチンの記録、同意書。ごはん・マナー用品",
+     "src": "https://ff-h.jp/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "水・ごはんの器、体をふくタオル、おやつ、ペットシーツ、マナー袋。カートの貸し出し",
+     "src": "https://ff-h.jp/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "グランピングのテラス・レストランのテラス席など（温泉・プール・TENKU FIELDは不可）",
+     "src": "https://ff-h.jp/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "海のそばのドッグラン（宿泊者だけ、7〜11時・15〜20時）",
+     "src": "https://ff-h.jp/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "トレーラーの部屋（9〜13号、64〜93㎡）とホテルの部屋（23〜31㎡、テラスつき）",
+     "src": "https://ff-h.jp/pet_friendly",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬のほかのペットも泊まれる",
+     "src": "https://ff-h.jp/pet_friendly",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i85c52b"
+  },
+  {
+   "name": "小田温泉 離れの宿 花心",
+   "kind": "コテージ",
+   "pref": "熊本県",
+   "city": "阿蘇郡南小国町",
+   "url": "https://hanagocoro.jp/faq/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "熊本県阿蘇郡南小国町満願寺東長田5349",
+     "src": "https://hanagocoro.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹2,200円、3匹目から1,100円",
+     "src": "https://hanagocoro.jp/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病と5種以上の混合ワクチンの証明書、ごはん・小物（貸し出しなし）。外ではリード",
+     "src": "https://hanagocoro.jp/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "サークル（72×104×高さ70cm）、ペットシーツ2枚、うんちの袋2枚",
+     "src": "https://hanagocoro.jp/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "敷地内のドッグラン（24時まで）",
+     "src": "https://hanagocoro.jp/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ログハウス風のコテージ10室。全室に源泉かけ流しの風呂",
+     "src": "https://hanagocoro.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時〜20時30分・10時",
+     "src": "https://hanagocoro.jp/faq/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i9372ca"
+  },
+  {
+   "name": "旅籠 彩くら",
+   "kind": "旅館",
+   "pref": "大分県",
+   "city": "玖珠郡九重町",
+   "url": "https://www.hatagosakura.jp/room.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大分県玖珠郡九重町町田2645",
+     "src": "https://www.hatagosakura.jp/room.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬・大型犬",
+     "src": "https://www.hatagosakura.jp/room.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "離れ10棟のうち5棟（深山・冬桜・雛菊・白雪・白妙、52〜62㎡）",
+     "src": "https://www.hatagosakura.jp/room.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬用の温泉",
+     "v": "ペットと泊まれる離れの客室露天風呂に犬も入れる",
+     "src": "https://www.hatagosakura.jp/room.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "宿泊者だけのドッグラン",
+     "src": "https://www.hatagosakura.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i8525df"
+  },
+  {
+   "name": "Last piece",
+   "kind": "グランピング",
+   "pref": "福岡県",
+   "city": "糸島市",
+   "url": "https://www.489pro-x.com/ja/s/lastpiece/page/dogplan/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "福岡県糸島市志摩芥屋3288-260",
+     "src": "https://lastpiece.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬も泊まれる",
+     "src": "https://www.489pro-x.com/ja/s/lastpiece/page/dogplan/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1部屋2匹まで",
+     "src": "https://www.489pro-x.com/ja/s/lastpiece/page/dogplan/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "2匹目から2,750円",
+     "src": "https://www.489pro-x.com/ja/s/lastpiece/page/dogplan/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "ペット同伴の同意書とワクチンの証明書のコピー。犬のごはん",
+     "src": "https://www.489pro-x.com/ja/s/lastpiece/page/dogplan/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドームの中、ウッドデッキ（食事も一緒）、敷地の走れる場所、目の前の海辺（体験ブースは不可）",
+     "src": "https://www.489pro-x.com/ja/s/lastpiece/page/dogplan/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれるドームはD5（2〜4名）とD1（2〜5名）",
+     "src": "https://www.489pro-x.com/ja/s/lastpiece/page/dogplan/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・トイレトレー・ペットシーツ・消臭袋・タオル・水・おやつ、共同の洗い場",
+     "src": "https://lastpiece.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i6346f1"
   }
  ]
 }
