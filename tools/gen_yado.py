@@ -15,8 +15,9 @@ import visual as V
 
 PSLUG = gen_dogrun.PSLUG
 _D = os.path.dirname(os.path.abspath(__file__))
-PREF_MIN = 3     # 都道府県のページを作る軒数
-ANIMAL_MIN = 4   # 動物ごとのページを作る軒数
+PREF_MIN = 5     # 都道府県のページを作る軒数（Nori 2026-11-14「そもそも薄い記事作らないで」。足りない県は全国のページの地方の表に入れる）
+ANIMAL_MIN = 5   # 動物ごとのページを作る軒数（足りない動物は /pet-yado/ の中に載せる）
+OWN_MIN = 5      # 宿1軒のページを作るのに要る、その宿だけの事実の数（系列で共通の決まりのページから写した事実は数えない）
 MIN_FACTS = 5
 
 SZ = [("s", "小型犬"), ("m", "中型犬"), ("l", "大型犬")]
@@ -69,6 +70,19 @@ for _x in INNS:
 
 
 def has_dog(x): return "dog" in x["animals"]
+
+
+# 系列の共通の決まり（2軒以上が同じページを出どころにしている事実）は、その宿だけの中身として数えない。
+from collections import Counter
+_SRC = Counter(f["src"] for x in INNS for f in {f["src"]: f for f in x["facts"]}.values())
+def own_facts(x): return sum(1 for f in x["facts"] if _SRC[f["src"]] < 2 or f["src"].rstrip("/") == x["url"].rstrip("/") or f["k"] == "所在地")
+for _x in INNS:
+    _x["page"] = _x.get("page", True) and own_facts(_x) >= OWN_MIN
+
+
+def link(x):
+    """宿の名前のリンク：1軒のページがある宿はそのページ、ない宿は公式サイト"""
+    return href(x) if x["page"] else x["url"]
 
 
 def href(x):
@@ -162,9 +176,9 @@ def card(e, x, camp="yado_cards"):
         v = fact(x, k)
         if v: rows.append(f"<dt>{lab}</dt><dd>{e(_cut(v))}</dd>")
     addr = fact(x, "所在地") or x["pref"] + x.get("city", "")
-    return (f'<h3><a href="{href(x)}">{e(x["name"])}</a></h3><p class="yd-at">{e(x["pref"])}{e(x.get("city", ""))}・{e(x.get("kind") or "宿")}</p>'
+    return ((f'<h3><a href="{href(x)}">{e(x["name"])}</a></h3>' if x["page"] else f'<h3><a href="{e(_utm(x["url"], camp))}" target="_blank" rel="noopener" data-official="{e(x["id"])}">{e(x["name"])} ↗</a></h3>') + f'<p class="yd-at">{e(x["pref"])}{e(x.get("city", ""))}・{e(x.get("kind") or "宿")}</p>'
             f'<ul class="yd-chips">{chips}</ul><dl>{"".join(rows)}</dl>'
-            f'<p class="yd-go"><a href="{href(x)}">くわしく見る（出どころつき）</a>'
+            f'<p class="yd-go">' + (f'<a href="{href(x)}">くわしく見る（出どころつき）</a>' if x["page"] else "") +
             f'<a href="{e(_utm(x["url"], camp))}" target="_blank" rel="noopener" data-official="{e(x["id"])}">公式サイト ↗</a>'
             f'<a href="/?to={quote(addr[:80])}#form" data-taxi-cta="yado-card">ここまでのペットタクシーの料金 →</a></p>')
 
@@ -177,7 +191,7 @@ def fit_keys(x):
 
 def table(e, xs):
     rows = "".join(
-        f'<tr><td><a href="{href(x)}">{e(x["name"])}</a><br><small>{e(x.get("city", "") or x["pref"])}</small></td><td>{e(size_text(x) or "―")}</td>'
+        f'<tr><td><a href="{e(link(x))}"{"" if x["page"] else ' target="_blank" rel="noopener"'}>{e(x["name"])}</a><br><small>{e(x.get("city", "") or x["pref"])}</small></td><td>{e(size_text(x) or "―")}</td>'
         f'<td>{e(_cut(fact(x, "犬の頭数"), 30) or "―")}</td><td>{e(_cut(fact(x, "犬の宿泊料金"), 34) or "―")}</td><td>{"○" if _run(x) else ""}</td>'
         f'<td>{e("・".join(AN_NAME[k] for k in x["animals"] if k in AN_NAME))}</td></tr>' for x in xs)
     return ('<div class="tbl"><table class="pp-tbl yd-tbl"><thead><tr><th>宿</th><th>犬の大きさ</th><th>頭数</th><th>犬の料金</th><th>ドッグラン</th><th>犬以外</th></tr></thead>'
@@ -189,7 +203,7 @@ def _ld(SITE, crumbs, items, faq):
         {"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + h} for i, (n, h) in enumerate(crumbs)]}]
     if items:
         out.append({"@context": "https://schema.org", "@type": "ItemList", "numberOfItems": len(items),
-                    "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": SITE + href(x), "name": x["name"]} for i, x in enumerate(items)]})
+                    "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": (SITE + href(x)) if x["page"] else x["url"], "name": x["name"]} for i, x in enumerate(items)]})
     if faq:
         out.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]})
