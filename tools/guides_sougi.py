@@ -446,3 +446,7 @@ dict(slug="pet-loss",
  sources=[MHLW_KOKORO],
  related=["pet-memorial", "pet-died-first", "senior"]),
 ]
+
+# [B] 11/14 Nori「大型犬で50kg」「超リッチな葬儀」「色んな角度で」：施設名つきの記事（guides_sougi_more.py）
+from guides_sougi_more import MORE as _MORE
+SOUGI_GUIDES.extend(_MORE)
