@@ -378,7 +378,8 @@ open(os.path.join(ROOT, "style.css"), "w", encoding="utf-8").write(css.strip() +
 # ほかの悩み（タクシーに断られる・介護の子など）は各記事の題名で受ける。
 PAIN_T = "車がなくても、大きな子も動物病院へ"
 def pain_desc(where):
-    return f"車がない、大型犬で電車に乗れない、抱っこして通うのがつらい。そんなときも通院をあきらめなくて大丈夫です。{where}で犬・猫を乗せてくれるペットタクシーの料金の目安を、お迎えの場所を入れて無料でしらべられます。"
+    # [B] 11/14 Nori「ペットタクシーで検索した。順位がだいぶ下がってる」：検索の言葉（◯◯のペットタクシー・料金）を説明文の頭に。悩みの文はそのあと。
+    return f"{where}で犬・猫を乗せてくれるペットタクシーの料金の目安を、お迎えの場所を入れて無料でくらべられます。車がない、大型犬で電車に乗れない、抱っこして通うのがつらい。そんなときも通院をあきらめなくて大丈夫です。"
 def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = re.sub(r"\s*<!--NAT_STATS-->.*?<!--/NAT_STATS-->", "", TOP_HTML, flags=re.S)
     t = re.sub(r"<title>.*?</title>", lambda m: f"<title>{e(title)}</title>", t, count=1, flags=re.S)
