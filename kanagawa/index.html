@@ -177,6 +177,10 @@ p{margin:0 0 1em}
 .fare dt{color:var(--ink-2);font-size:.94rem}
 .fare dd{margin:0 0 0 12px;font-weight:800;font-size:1.05rem;white-space:nowrap;text-align:right}
 .fare dd small{font-weight:600;font-size:.78rem;color:var(--ink-3)}
+.fare .row{flex-wrap:wrap}
+.fare .rgbar{position:relative;display:block;flex-basis:100%;height:10px;margin:8px 0 0;background:#f3eee9;border-radius:5px}
+.fare .rgbar i{position:absolute;top:0;bottom:0;background:#ffc29b;border-radius:5px}
+.fare .rgbar b{position:absolute;top:-3px;width:4px;height:16px;margin-left:-2px;background:var(--o-d);border-radius:2px}
 .fare h3{font-size:.8rem;letter-spacing:.12em;color:var(--o);padding:16px 0 4px}
 .price .small{margin-top:16px;text-align:center}
 
@@ -729,6 +733,80 @@ footer a{color:var(--ink-2)}
 .taxi-top{background:var(--o-l);border-radius:18px;padding:14px 16px}
 .taxi-top p{margin:0 0 10px;font-size:.88rem;line-height:1.7;color:var(--ink)}
 .taxi-top p b{display:block;font-size:.98rem;color:var(--o-d)}
+
+/* 図で読む部品（tools/visual.py、2026-11-14） */
+.art b.n,.prose b.n{color:var(--o-d);font-weight:800}
+.art ul.kv{list-style:none;padding:0;display:grid;gap:10px}
+.art ul.kv li{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;margin:0;line-height:1.75}
+.art ul.kv li b.k{display:block;color:var(--ink);font-size:1rem;line-height:1.5;margin-bottom:3px;padding-left:12px;border-left:4px solid var(--o)}
+.art ul.check{list-style:none;padding:0}
+.art ul.check li{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px 12px 46px;margin:0 0 8px;line-height:1.75}
+.art ul.check li::before{content:"";position:absolute;left:14px;top:15px;width:22px;height:22px;border-radius:7px;background:var(--o) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/15px no-repeat}
+.art ol.steps{list-style:none;padding:0;counter-reset:st;margin:4px 0 18px}
+.art ol.steps>li{counter-increment:st;position:relative;padding:3px 0 18px 48px;margin:0;line-height:1.75}
+.art ol.steps>li::before{content:counter(st);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;background:var(--o);color:#fff;font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center}
+.art ol.steps>li::after{content:"";position:absolute;left:16px;top:38px;bottom:4px;width:2px;background:#ffd9c2}
+.art ol.steps>li:last-child::after{display:none}
+.art ol.steps b.k,.art ul.check b.k{display:block;color:var(--ink);font-size:1rem;line-height:1.5;margin-bottom:2px}
+.art ul:not([class]) li::marker{color:var(--o)}
+.art .answer{background:#fff;border:2.5px solid var(--o);border-radius:22px;padding:4px 18px 4px;margin:28px 0 8px;box-shadow:0 6px 18px rgba(255,106,26,.08)}
+.art .answer>h2{border-left:0;padding-left:0;margin:16px 0 10px;font-size:1.2rem}
+.art .answer>h2::before{content:"この記事の答え";display:block;width:max-content;font-size:.72rem;letter-spacing:.08em;background:var(--o);color:#fff;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+.art .answer ul:not([class]){list-style:none;padding:0}
+.art .answer ul:not([class]) li{position:relative;padding:10px 0 10px 32px;border-top:1px dashed var(--line);margin:0}
+.art .answer ul:not([class]) li:first-child{border-top:0}
+.art .answer ul:not([class]) li::before{content:"";position:absolute;left:0;top:13px;width:20px;height:20px;border-radius:50%;background:var(--o) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/13px no-repeat}
+.art.num{counter-reset:h2}
+.art.num>h2:not(.nonum),.art.num>.answer>h2{counter-increment:h2}
+.art.num>h2:not(.nonum)::before{content:counter(h2);display:inline-flex;align-items:center;justify-content:center;width:1.7em;height:1.7em;border-radius:9px;background:var(--o-l);color:var(--o-d);font-size:.8em;margin-right:8px;vertical-align:.1em}
+.art.num>h2:not(.nonum){border-left:0;padding-left:0}
+.art nav.art-toc ol{counter-reset:none;margin:6px 0 0;padding-left:1.5em}
+.art nav.art-toc li{margin:4px 0;font-weight:600}
+.art nav.art-toc a{color:var(--ink);text-decoration:none;border-bottom:1px dashed var(--o)}
+.art td.y{text-align:right;white-space:nowrap}
+.art table.stack td.y{white-space:normal}
+.art .tb{display:block;height:7px;border-radius:4px;background:var(--o);margin-top:5px;opacity:.85}
+.art .tb.rg{background:#ffb37f}
+.art td:last-child .tb{background:var(--o-d)}
+.art td:last-child .tb.rg{background:#f08c4a}
+@media (max-width:599px){
+.art table.stack{background:transparent;font-size:.9rem}
+.art table.stack thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.art table.stack tr{display:block;background:#fff;border:1.5px solid var(--line);border-radius:16px;margin:0 0 10px;overflow:hidden}
+.art table.stack tbody th{display:block;border:0;background:var(--o-l);color:var(--o-d);text-align:left;padding:10px 14px;font-size:.98rem}
+.art table.stack td{display:block;border:0;border-top:1px dashed var(--line);text-align:left;padding:8px 14px;background:transparent;font-weight:400}
+.art table.stack td:last-child{background:transparent;font-weight:700}
+.art table.stack td::before{content:attr(data-l);display:block;font-size:.72rem;font-weight:800;color:var(--ink-3);margin-bottom:1px}
+}
+.vstats{list-style:none;padding:0;margin:6px 0 20px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.vstats li{background:var(--o-l);border-radius:18px;padding:14px 14px 12px;margin:0;display:flex;flex-direction:column;gap:4px}
+.vstats b{font-size:1.2rem;line-height:1.25;color:var(--o-d);font-weight:800;letter-spacing:-.01em}
+.vstats span{font-size:.82rem;line-height:1.55;color:var(--ink-2)}
+@media (min-width:600px){.vstats{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.vstats b{font-size:1.55rem}}
+.bars{margin:6px 0 22px;background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:16px 16px 10px}
+.bars figcaption{font-weight:800;color:var(--ink);font-size:.98rem;margin-bottom:10px}
+.bars ol{list-style:none;padding:0;margin:0}
+.bars li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;margin:0 0 8px}
+.bars .l{grid-column:1/-1;font-size:.84rem;color:var(--ink-2);line-height:1.45}
+.bars .t{height:14px;background:#f7f4f1;border-radius:7px;overflow:hidden}
+.bars .t i{display:block;height:100%;background:#ffb37f;border-radius:7px}
+.bars li.hi .t i{background:var(--o)}
+.bars li b{font-size:.92rem;color:var(--ink);white-space:nowrap}
+.bars li.hi b{color:var(--o-d)}
+.bars .note{font-size:.76rem;color:var(--ink-3);margin:4px 0 4px;line-height:1.6}
+.vs{display:grid;gap:10px;margin:6px 0 20px}
+.vs>div{border-radius:18px;padding:14px 16px 6px;background:#fff;border:2px solid var(--o)}
+.vs>div.vb{border-color:var(--line);background:#fbfaf8}
+.vs b.vh{display:block;font-size:1rem;margin-bottom:6px;color:var(--o-d)}
+.vs .vb b.vh{color:var(--ink-2)}
+.vs ul{padding-left:1.2em;margin:0 0 8px}
+@media (min-width:600px){.vs{grid-template-columns:1fr 1fr}}
+.flow{list-style:none;padding:0;margin:6px 0 20px;display:grid;gap:22px}
+.flow li{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:10px 14px;margin:0;text-align:center}
+.flow li b{display:block;color:var(--o-d);font-size:.98rem}
+.flow li span{display:block;font-size:.82rem;color:var(--ink-2);line-height:1.55}
+.flow li:not(:last-child)::after{content:"";position:absolute;left:50%;bottom:-17px;margin-left:-7px;border:7px solid transparent;border-top:9px solid var(--o)}
+@media (min-width:700px){.flow{grid-auto-flow:column;grid-auto-columns:1fr;gap:20px}.flow li:not(:last-child)::after{left:auto;right:-17px;top:50%;bottom:auto;margin:-7px 0 0;border:7px solid transparent;border-left:9px solid var(--o)}}
 </style>
 <script type="application/ld+json">
 {
@@ -1167,11 +1245,11 @@ footer a{color:var(--ink-2)}
       <div class="fare">
         <h3>乗る距離（道のり）ごとの目安（全国92社の料金表から）</h3>
         <dl>
-          <div class="row"><dt>5km</dt><dd>3,300円<br><small style="font-weight:400">800〜6,400円</small></dd></div>
-          <div class="row"><dt>10km</dt><dd>4,100円<br><small style="font-weight:400">1,300〜6,400円</small></dd></div>
-          <div class="row"><dt>20km</dt><dd>5,800円<br><small style="font-weight:400">2,400〜10,000円</small></dd></div>
-          <div class="row"><dt>30km</dt><dd>7,400円<br><small style="font-weight:400">3,400〜13,600円</small></dd></div>
-          <div class="row"><dt>50km</dt><dd>10,700円<br><small style="font-weight:400">3,600〜20,900円</small></dd></div>
+          <div class="row"><dt>5km</dt><dd>3,300円<br><small style="font-weight:400">800〜6,400円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:3.8%;width:26.8%"></i><b style="left:15.8%"></b></i></div>
+          <div class="row"><dt>10km</dt><dd>4,100円<br><small style="font-weight:400">1,300〜6,400円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:6.2%;width:24.4%"></i><b style="left:19.6%"></b></i></div>
+          <div class="row"><dt>20km</dt><dd>5,800円<br><small style="font-weight:400">2,400〜10,000円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:11.5%;width:36.4%"></i><b style="left:27.8%"></b></i></div>
+          <div class="row"><dt>30km</dt><dd>7,400円<br><small style="font-weight:400">3,400〜13,600円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:16.3%;width:48.8%"></i><b style="left:35.4%"></b></i></div>
+          <div class="row"><dt>50km</dt><dd>10,700円<br><small style="font-weight:400">3,600〜20,900円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:17.2%;width:82.8%"></i><b style="left:51.2%"></b></i></div>
         </dl>
         <h3>たとえば</h3>
         <dl><div class="row"><dt>横浜駅周辺 → 羽田空港<br>（道のり約25km）</dt><dd>6,600円（3,000〜11,800円）</dd></div></dl>
@@ -1185,7 +1263,7 @@ footer a{color:var(--ink-2)}
 
 <section id="area-companies">
   <div class="wrap prose">
-    <h2>神奈川・横浜に来てくれるペットタクシー27社の、対応エリアと料金のしくみ</h2><p>神奈川県のお迎えに対応している27社について、公式サイトに書かれている対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p><p>公式サイトに書いている内容を数えると、24時間受け付けている会社が15社・当日の予約も受ける会社が6社・カードで払える会社が9社・大型犬に対応している会社が4社・前日までキャンセル無料の会社が5社でした（書いていない会社が、できないとは限りません）。</p><p>対応エリアに地名が書かれている会社を数えると、横浜が7社・川崎が4社・海老名が4社・厚木が3社・藤沢が2社・鎌倉が2社・茅ヶ崎が2社・大和が2社・平塚が2社・小田原が2社・相模原が1社でした。このほか「全域」「◯◯一円」のように広く書いている会社が5社あります。地名が書かれていなくても来てもらえることがあるので、お迎えの場所はフォームで確かめてください。</p><h3>神奈川・横浜に来てくれる会社だけで計算した運賃（料金表のある22社）</h3><p>神奈川・横浜のお迎えに対応している会社のうち、公式サイトに料金表がある22社だけで、乗った距離の運賃（片道）を全国の目安と同じ式で計算しました。10kmでは、いちばん安い会社が3,300円、高い会社が5,700円で、2,400円の差があります。何社かくらべてから問い合わせると、同じ道のりでも払う金額が変わります。</p><div class="tbl"><table><thead><tr><th>乗る距離</th><th>まんなかの会社</th><th>安い会社〜高い会社</th><th>全国のまんなか</th></tr></thead><tbody><tr><td>5km</td><td>3,100円</td><td>1,700〜4,600円</td><td>3,300円</td></tr><tr><td>10km</td><td>4,100円</td><td>3,300〜5,700円</td><td>4,100円</td></tr><tr><td>20km</td><td>5,800円</td><td>5,500〜8,000円</td><td>5,800円</td></tr><tr><td>30km</td><td>7,700円</td><td>7,400〜12,000円</td><td>7,400円</td></tr></tbody></table></div><p>このほかにかかるお迎え料金（お店からお迎えの場所まで）のつけ方は、お迎えの道のり1kmごとにかかる会社が18社・決まった金額の会社が3社・料金表に書いていない会社が1社です。お店が遠い会社ほどお迎え料金が高くなるので、フォームでは会社ごとに、お店からお迎えの場所までの車の道のりを入れた目安を出しています。</p><div class="tbl"><table><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody><tr><td>県内</td><td>横浜・川崎・東京中心。神奈川・千葉・埼玉、長距離も</td><td>—</td><td>1,650円</td><td>1kmごとに150円</td><td>21時〜7時は2割増</td></tr><tr><td>県内</td><td></td><td>8時〜19時</td><td>2,000円</td><td>1,300円</td><td>料金表にない</td></tr><tr><td>県内</td><td></td><td>—</td><td>2,160円</td><td>1kmごとに300円</td><td>21時〜9時（金額は書いていない）</td></tr><tr><td>県内</td><td></td><td>9時〜18時</td><td>2,200円</td><td>料金表にない</td><td>料金表にない</td></tr><tr><td>県内</td><td>厚木・伊勢原・海老名・愛甲郡</td><td>24時間</td><td>2,310円</td><td>1kmごとに330円</td><td>料金表にない</td></tr><tr><td>県内</td><td>鎌倉・逗子・葉山中心、藤沢・茅ヶ崎など</td><td>24時間</td><td>2,310円</td><td>1kmごとに330円</td><td>料金表にない</td></tr><tr><td>県内</td><td>相模原市を中心に厚木市・海老名市・愛川町・町田市・八王子市・多摩市</td><td>24時間</td><td>2,400円</td><td>1,800円</td><td>21時〜6時は2割増</td></tr><tr><td>県内</td><td>神奈川発、全国</td><td>8時〜20時</td><td>2,500円</td><td>1kmごとに400円</td><td>20時〜8時は2割増</td></tr><tr><td>県内</td><td>関東近県から全国（沖縄・離島は不可）</td><td>—</td><td>3,100円</td><td>1kmごとに100円</td><td>22時〜8時は3割増</td></tr><tr><td>県内</td><td>川崎市・横浜市、東京の大田区・世田谷区・目黒区・杉並区</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>横浜市中区・西区・南区・保土ケ谷区・港南区・磯子区、神奈川全域・23区も相談</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>横浜市（港北区・神奈川区・西区・中区・都筑区・鶴見区）を中心に神奈川県全域</td><td>24時間</td><td>3,300円</td><td>無料</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>磯子区を中心に、事前予約で神奈川全域・状況により東京も</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>平塚市と近隣市町村、小田原市</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>藤沢・茅ヶ崎・鎌倉・大和・綾瀬・海老名・寒川・横浜など</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>22時〜8時は3,300円</td></tr><tr><td>県内</td><td>神奈川県全域、東京都多摩地区、静岡県東部（海老名・座間・大和・綾瀬が中心）</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>川崎市全区、横浜市（港北・鶴見・都筑・青葉・神奈川・保土ケ谷・緑・旭）、近隣も相談</td><td>8時〜20時</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>秦野・伊勢原・厚木・小田原・平塚を中心に長距離も相談</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td></td><td>24時間</td><td>お見積もり</td><td>—</td><td>—</td></tr><tr><td>県内</td><td>東京・神奈川（ほかは相談）</td><td>8時〜20時</td><td>お見積もり</td><td>—</td><td>—</td></tr><tr><td>県内</td><td>神奈川・東京中心に全国</td><td>—</td><td>お見積もり</td><td>—</td><td>—</td></tr><tr><td>県内</td><td>横浜市北部、東京の多摩の一部、埼玉の和光・朝霞・志木など（23区・武蔵野・三鷹は不可）</td><td>—</td><td>お見積もり</td><td>—</td><td>—</td></tr><tr><td>県内</td><td>神奈川・関東近県中心、全国（島しょ除く）</td><td>—</td><td>お見積もり</td><td>—</td><td>—</td></tr><tr><td>東京都</td><td>東京・埼玉・千葉・神奈川、長距離</td><td>6時〜22時</td><td>2,200円</td><td>1kmごとに110円</td><td>料金表にない</td></tr><tr><td>東京都</td><td>大田区中心、23区・川崎の一部（外は予約で相談）</td><td>—</td><td>2,500円</td><td>5kmまで1,500円、そのあと1kmごとに150円</td><td>料金表にない</td></tr><tr><td>東京都</td><td>杉並区・中野区・世田谷区・練馬区・新宿区・渋谷区・武蔵野市・三鷹市を中心に東京・神奈川・千葉・埼玉</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>東京都</td><td>千葉県全域ほか首都圏・全国に拡大中。長距離は相談</td><td>—</td><td>4,600円</td><td>1kmごとに120円</td><td>21時〜7時は3,000円</td></tr></tbody></table></div><p class="fare-flag"><b>確定料金ではありません。</b>2026年10月30日時点で各社の公式サイトを読んでまとめたもので、会社名は出していません。5kmの運賃は料金表から計算した片道の金額で、お迎え料金・待ち時間・高速代は入っていません。料金や対応エリアは変わることがあるので、フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p>
+    <h2>神奈川・横浜に来てくれるペットタクシー27社の、対応エリアと料金のしくみ</h2><p>神奈川県のお迎えに対応している27社について、公式サイトに書かれている対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p><figure class="bars"><figcaption>公式サイトに書いている内容を数えると（27社のうち）</figcaption><ol><li><span class="l">24時間受け付けている会社</span><span class="t"><i style="width:55.6%"></i></span><b>15社</b></li><li><span class="l">当日の予約も受ける会社</span><span class="t"><i style="width:22.2%"></i></span><b>6社</b></li><li><span class="l">カードで払える会社</span><span class="t"><i style="width:33.3%"></i></span><b>9社</b></li><li><span class="l">大型犬に対応している会社</span><span class="t"><i style="width:14.8%"></i></span><b>4社</b></li><li><span class="l">前日までキャンセル無料の会社</span><span class="t"><i style="width:18.5%"></i></span><b>5社</b></li></ol><p class="note">書いていない会社が、できないとは限りません。</p></figure><figure class="bars"><figcaption>対応エリアに地名が書かれている会社の数（27社のうち）</figcaption><ol><li><span class="l">横浜</span><span class="t"><i style="width:25.9%"></i></span><b>7社</b></li><li><span class="l">川崎</span><span class="t"><i style="width:14.8%"></i></span><b>4社</b></li><li><span class="l">海老名</span><span class="t"><i style="width:14.8%"></i></span><b>4社</b></li><li><span class="l">厚木</span><span class="t"><i style="width:11.1%"></i></span><b>3社</b></li><li><span class="l">藤沢</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">鎌倉</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">茅ヶ崎</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">大和</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">平塚</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">小田原</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">相模原</span><span class="t"><i style="width:3.7%"></i></span><b>1社</b></li></ol></figure><p>このほか「全域」「◯◯一円」のように広く書いている会社が5社あります。地名が書かれていなくても来てもらえることがあるので、お迎えの場所はフォームで確かめてください。</p><h3>神奈川・横浜に来てくれる会社だけで計算した運賃（料金表のある22社）</h3><p>神奈川・横浜のお迎えに対応している会社のうち、公式サイトに料金表がある22社だけで、乗った距離の運賃（片道）を全国の目安と同じ式で計算しました。10kmでは、いちばん安い会社が3,300円、高い会社が5,700円で、2,400円の差があります。何社かくらべてから問い合わせると、同じ道のりでも払う金額が変わります。</p><div class="tbl"><table class="has-bars"><thead><tr><th>乗る距離</th><th>まんなかの会社</th><th>安い会社〜高い会社</th><th>全国のまんなか</th></tr></thead><tbody><tr><th>5km</th><td class="y">3,100円<i class="tb" style="width:25.8%" aria-hidden="true"></i></td><td class="y">1,700〜4,600円<i class="tb rg" style="margin-left:14.2%;width:24.2%" aria-hidden="true"></i></td><td class="y">3,300円<i class="tb" style="width:27.5%" aria-hidden="true"></i></td></tr><tr><th>10km</th><td class="y">4,100円<i class="tb" style="width:34.2%" aria-hidden="true"></i></td><td class="y">3,300〜5,700円<i class="tb rg" style="margin-left:27.5%;width:20.0%" aria-hidden="true"></i></td><td class="y">4,100円<i class="tb" style="width:34.2%" aria-hidden="true"></i></td></tr><tr><th>20km</th><td class="y">5,800円<i class="tb" style="width:48.3%" aria-hidden="true"></i></td><td class="y">5,500〜8,000円<i class="tb rg" style="margin-left:45.8%;width:20.8%" aria-hidden="true"></i></td><td class="y">5,800円<i class="tb" style="width:48.3%" aria-hidden="true"></i></td></tr><tr><th>30km</th><td class="y">7,700円<i class="tb" style="width:64.2%" aria-hidden="true"></i></td><td class="y">7,400〜12,000円<i class="tb rg" style="margin-left:61.7%;width:38.3%" aria-hidden="true"></i></td><td class="y">7,400円<i class="tb" style="width:61.7%" aria-hidden="true"></i></td></tr></tbody></table></div><p>このほかにかかるお迎え料金（お店からお迎えの場所まで）のつけ方は、お迎えの道のり1kmごとにかかる会社が18社・決まった金額の会社が3社・料金表に書いていない会社が1社です。お店が遠い会社ほどお迎え料金が高くなるので、フォームでは会社ごとに、お店からお迎えの場所までの車の道のりを入れた目安を出しています。</p><div class="tbl"><table><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody><tr><td>県内</td><td>横浜・川崎・東京中心。神奈川・千葉・埼玉、長距離も</td><td>—</td><td>1,650円</td><td>1kmごとに150円</td><td>21時〜7時は2割増</td></tr><tr><td>県内</td><td></td><td>8時〜19時</td><td>2,000円</td><td>1,300円</td><td>料金表にない</td></tr><tr><td>県内</td><td></td><td>—</td><td>2,160円</td><td>1kmごとに300円</td><td>21時〜9時（金額は書いていない）</td></tr><tr><td>県内</td><td></td><td>9時〜18時</td><td>2,200円</td><td>料金表にない</td><td>料金表にない</td></tr><tr><td>県内</td><td>厚木・伊勢原・海老名・愛甲郡</td><td>24時間</td><td>2,310円</td><td>1kmごとに330円</td><td>料金表にない</td></tr><tr><td>県内</td><td>鎌倉・逗子・葉山中心、藤沢・茅ヶ崎など</td><td>24時間</td><td>2,310円</td><td>1kmごとに330円</td><td>料金表にない</td></tr><tr><td>県内</td><td>相模原市を中心に厚木市・海老名市・愛川町・町田市・八王子市・多摩市</td><td>24時間</td><td>2,400円</td><td>1,800円</td><td>21時〜6時は2割増</td></tr><tr><td>県内</td><td>神奈川発、全国</td><td>8時〜20時</td><td>2,500円</td><td>1kmごとに400円</td><td>20時〜8時は2割増</td></tr><tr><td>県内</td><td>関東近県から全国（沖縄・離島は不可）</td><td>—</td><td>3,100円</td><td>1kmごとに100円</td><td>22時〜8時は3割増</td></tr><tr><td>県内</td><td>川崎市・横浜市、東京の大田区・世田谷区・目黒区・杉並区</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>横浜市中区・西区・南区・保土ケ谷区・港南区・磯子区、神奈川全域・23区も相談</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>横浜市（港北区・神奈川区・西区・中区・都筑区・鶴見区）を中心に神奈川県全域</td><td>24時間</td><td>3,300円</td><td>無料</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>磯子区を中心に、事前予約で神奈川全域・状況により東京も</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>平塚市と近隣市町村、小田原市</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>藤沢・茅ヶ崎・鎌倉・大和・綾瀬・海老名・寒川・横浜など</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>22時〜8時は3,300円</td></tr><tr><td>県内</td><td>神奈川県全域、東京都多摩地区、静岡県東部（海老名・座間・大和・綾瀬が中心）</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>川崎市全区、横浜市（港北・鶴見・都筑・青葉・神奈川・保土ケ谷・緑・旭）、近隣も相談</td><td>8時〜20時</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td>秦野・伊勢原・厚木・小田原・平塚を中心に長距離も相談</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>県内</td><td></td><td>24時間</td><td>お見積もり</td><td>—</td><td>—</td></tr><tr><td>県内</td><td>東京・神奈川（ほかは相談）</td><td>8時〜20時</td><td>お見積もり</td><td>—</td><td>—</td></tr><tr><td>県内</td><td>神奈川・東京中心に全国</td><td>—</td><td>お見積もり</td><td>—</td><td>—</td></tr><tr><td>県内</td><td>横浜市北部、東京の多摩の一部、埼玉の和光・朝霞・志木など（23区・武蔵野・三鷹は不可）</td><td>—</td><td>お見積もり</td><td>—</td><td>—</td></tr><tr><td>県内</td><td>神奈川・関東近県中心、全国（島しょ除く）</td><td>—</td><td>お見積もり</td><td>—</td><td>—</td></tr><tr><td>東京都</td><td>東京・埼玉・千葉・神奈川、長距離</td><td>6時〜22時</td><td>2,200円</td><td>1kmごとに110円</td><td>料金表にない</td></tr><tr><td>東京都</td><td>大田区中心、23区・川崎の一部（外は予約で相談）</td><td>—</td><td>2,500円</td><td>5kmまで1,500円、そのあと1kmごとに150円</td><td>料金表にない</td></tr><tr><td>東京都</td><td>杉並区・中野区・世田谷区・練馬区・新宿区・渋谷区・武蔵野市・三鷹市を中心に東京・神奈川・千葉・埼玉</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>東京都</td><td>千葉県全域ほか首都圏・全国に拡大中。長距離は相談</td><td>—</td><td>4,600円</td><td>1kmごとに120円</td><td>21時〜7時は3,000円</td></tr></tbody></table></div><p class="fare-flag"><b>確定料金ではありません。</b>2026年10月30日時点で各社の公式サイトを読んでまとめたもので、会社名は出していません。5kmの運賃は料金表から計算した片道の金額で、お迎え料金・待ち時間・高速代は入っていません。料金や対応エリアは変わることがあるので、フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p>
     <h3>神奈川県の市ごとのペットタクシー</h3><ul><li><a href="/kanagawa/yokohama/">横浜市のペットタクシー（よく行く区間の料金の目安）</a></li><li><a href="/kanagawa/kawasaki/">川崎市のペットタクシー（よく行く区間の料金の目安）</a></li></ul>
     <h3>神奈川県の夜間・救急の動物病院</h3>
     <p>夜や休日に具合が悪くなったときのために、神奈川県の夜間・救急の動物病院を受付時間つきで<a href="/hospital/night/#pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C">夜間・救急の動物病院の一覧</a>にまとめています。往診専門の動物病院（家まで来てくれる獣医さん）は<a href="/hospital/visit/#pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C">往診の一覧</a>、猫だけを診る病院は<a href="/hospital/cat/#pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C">猫専門の動物病院</a>にあります。</p>
@@ -1257,11 +1335,11 @@ footer a{color:var(--ink-2)}
       <div class="fare">
 <!--FARE_TABLE-->        <h3>距離ごとの目安（全国92社の料金表から）</h3>
         <dl>
-          <div class="row"><dt>5km</dt><dd>3,300円<br><small style="font-weight:400">800〜6,400円</small></dd></div>
-          <div class="row"><dt>10km</dt><dd>4,100円<br><small style="font-weight:400">1,300〜6,400円</small></dd></div>
-          <div class="row"><dt>20km</dt><dd>5,800円<br><small style="font-weight:400">2,400〜10,000円</small></dd></div>
-          <div class="row"><dt>30km</dt><dd>7,400円<br><small style="font-weight:400">3,400〜13,600円</small></dd></div>
-          <div class="row"><dt>50km</dt><dd>10,700円<br><small style="font-weight:400">3,600〜20,900円</small></dd></div>
+          <div class="row"><dt>5km</dt><dd>3,300円<br><small style="font-weight:400">800〜6,400円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:3.8%;width:26.8%"></i><b style="left:15.8%"></b></i></div>
+          <div class="row"><dt>10km</dt><dd>4,100円<br><small style="font-weight:400">1,300〜6,400円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:6.2%;width:24.4%"></i><b style="left:19.6%"></b></i></div>
+          <div class="row"><dt>20km</dt><dd>5,800円<br><small style="font-weight:400">2,400〜10,000円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:11.5%;width:36.4%"></i><b style="left:27.8%"></b></i></div>
+          <div class="row"><dt>30km</dt><dd>7,400円<br><small style="font-weight:400">3,400〜13,600円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:16.3%;width:48.8%"></i><b style="left:35.4%"></b></i></div>
+          <div class="row"><dt>50km</dt><dd>10,700円<br><small style="font-weight:400">3,600〜20,900円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:17.2%;width:82.8%"></i><b style="left:51.2%"></b></i></div>
         </dl>
       </div>
     </div>

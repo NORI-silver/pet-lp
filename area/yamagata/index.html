@@ -177,6 +177,10 @@ p{margin:0 0 1em}
 .fare dt{color:var(--ink-2);font-size:.94rem}
 .fare dd{margin:0 0 0 12px;font-weight:800;font-size:1.05rem;white-space:nowrap;text-align:right}
 .fare dd small{font-weight:600;font-size:.78rem;color:var(--ink-3)}
+.fare .row{flex-wrap:wrap}
+.fare .rgbar{position:relative;display:block;flex-basis:100%;height:10px;margin:8px 0 0;background:#f3eee9;border-radius:5px}
+.fare .rgbar i{position:absolute;top:0;bottom:0;background:#ffc29b;border-radius:5px}
+.fare .rgbar b{position:absolute;top:-3px;width:4px;height:16px;margin-left:-2px;background:var(--o-d);border-radius:2px}
 .fare h3{font-size:.8rem;letter-spacing:.12em;color:var(--o);padding:16px 0 4px}
 .price .small{margin-top:16px;text-align:center}
 
@@ -729,6 +733,80 @@ footer a{color:var(--ink-2)}
 .taxi-top{background:var(--o-l);border-radius:18px;padding:14px 16px}
 .taxi-top p{margin:0 0 10px;font-size:.88rem;line-height:1.7;color:var(--ink)}
 .taxi-top p b{display:block;font-size:.98rem;color:var(--o-d)}
+
+/* 図で読む部品（tools/visual.py、2026-11-14） */
+.art b.n,.prose b.n{color:var(--o-d);font-weight:800}
+.art ul.kv{list-style:none;padding:0;display:grid;gap:10px}
+.art ul.kv li{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;margin:0;line-height:1.75}
+.art ul.kv li b.k{display:block;color:var(--ink);font-size:1rem;line-height:1.5;margin-bottom:3px;padding-left:12px;border-left:4px solid var(--o)}
+.art ul.check{list-style:none;padding:0}
+.art ul.check li{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px 12px 46px;margin:0 0 8px;line-height:1.75}
+.art ul.check li::before{content:"";position:absolute;left:14px;top:15px;width:22px;height:22px;border-radius:7px;background:var(--o) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/15px no-repeat}
+.art ol.steps{list-style:none;padding:0;counter-reset:st;margin:4px 0 18px}
+.art ol.steps>li{counter-increment:st;position:relative;padding:3px 0 18px 48px;margin:0;line-height:1.75}
+.art ol.steps>li::before{content:counter(st);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;background:var(--o);color:#fff;font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center}
+.art ol.steps>li::after{content:"";position:absolute;left:16px;top:38px;bottom:4px;width:2px;background:#ffd9c2}
+.art ol.steps>li:last-child::after{display:none}
+.art ol.steps b.k,.art ul.check b.k{display:block;color:var(--ink);font-size:1rem;line-height:1.5;margin-bottom:2px}
+.art ul:not([class]) li::marker{color:var(--o)}
+.art .answer{background:#fff;border:2.5px solid var(--o);border-radius:22px;padding:4px 18px 4px;margin:28px 0 8px;box-shadow:0 6px 18px rgba(255,106,26,.08)}
+.art .answer>h2{border-left:0;padding-left:0;margin:16px 0 10px;font-size:1.2rem}
+.art .answer>h2::before{content:"この記事の答え";display:block;width:max-content;font-size:.72rem;letter-spacing:.08em;background:var(--o);color:#fff;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+.art .answer ul:not([class]){list-style:none;padding:0}
+.art .answer ul:not([class]) li{position:relative;padding:10px 0 10px 32px;border-top:1px dashed var(--line);margin:0}
+.art .answer ul:not([class]) li:first-child{border-top:0}
+.art .answer ul:not([class]) li::before{content:"";position:absolute;left:0;top:13px;width:20px;height:20px;border-radius:50%;background:var(--o) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/13px no-repeat}
+.art.num{counter-reset:h2}
+.art.num>h2:not(.nonum),.art.num>.answer>h2{counter-increment:h2}
+.art.num>h2:not(.nonum)::before{content:counter(h2);display:inline-flex;align-items:center;justify-content:center;width:1.7em;height:1.7em;border-radius:9px;background:var(--o-l);color:var(--o-d);font-size:.8em;margin-right:8px;vertical-align:.1em}
+.art.num>h2:not(.nonum){border-left:0;padding-left:0}
+.art nav.art-toc ol{counter-reset:none;margin:6px 0 0;padding-left:1.5em}
+.art nav.art-toc li{margin:4px 0;font-weight:600}
+.art nav.art-toc a{color:var(--ink);text-decoration:none;border-bottom:1px dashed var(--o)}
+.art td.y{text-align:right;white-space:nowrap}
+.art table.stack td.y{white-space:normal}
+.art .tb{display:block;height:7px;border-radius:4px;background:var(--o);margin-top:5px;opacity:.85}
+.art .tb.rg{background:#ffb37f}
+.art td:last-child .tb{background:var(--o-d)}
+.art td:last-child .tb.rg{background:#f08c4a}
+@media (max-width:599px){
+.art table.stack{background:transparent;font-size:.9rem}
+.art table.stack thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.art table.stack tr{display:block;background:#fff;border:1.5px solid var(--line);border-radius:16px;margin:0 0 10px;overflow:hidden}
+.art table.stack tbody th{display:block;border:0;background:var(--o-l);color:var(--o-d);text-align:left;padding:10px 14px;font-size:.98rem}
+.art table.stack td{display:block;border:0;border-top:1px dashed var(--line);text-align:left;padding:8px 14px;background:transparent;font-weight:400}
+.art table.stack td:last-child{background:transparent;font-weight:700}
+.art table.stack td::before{content:attr(data-l);display:block;font-size:.72rem;font-weight:800;color:var(--ink-3);margin-bottom:1px}
+}
+.vstats{list-style:none;padding:0;margin:6px 0 20px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.vstats li{background:var(--o-l);border-radius:18px;padding:14px 14px 12px;margin:0;display:flex;flex-direction:column;gap:4px}
+.vstats b{font-size:1.2rem;line-height:1.25;color:var(--o-d);font-weight:800;letter-spacing:-.01em}
+.vstats span{font-size:.82rem;line-height:1.55;color:var(--ink-2)}
+@media (min-width:600px){.vstats{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.vstats b{font-size:1.55rem}}
+.bars{margin:6px 0 22px;background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:16px 16px 10px}
+.bars figcaption{font-weight:800;color:var(--ink);font-size:.98rem;margin-bottom:10px}
+.bars ol{list-style:none;padding:0;margin:0}
+.bars li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;margin:0 0 8px}
+.bars .l{grid-column:1/-1;font-size:.84rem;color:var(--ink-2);line-height:1.45}
+.bars .t{height:14px;background:#f7f4f1;border-radius:7px;overflow:hidden}
+.bars .t i{display:block;height:100%;background:#ffb37f;border-radius:7px}
+.bars li.hi .t i{background:var(--o)}
+.bars li b{font-size:.92rem;color:var(--ink);white-space:nowrap}
+.bars li.hi b{color:var(--o-d)}
+.bars .note{font-size:.76rem;color:var(--ink-3);margin:4px 0 4px;line-height:1.6}
+.vs{display:grid;gap:10px;margin:6px 0 20px}
+.vs>div{border-radius:18px;padding:14px 16px 6px;background:#fff;border:2px solid var(--o)}
+.vs>div.vb{border-color:var(--line);background:#fbfaf8}
+.vs b.vh{display:block;font-size:1rem;margin-bottom:6px;color:var(--o-d)}
+.vs .vb b.vh{color:var(--ink-2)}
+.vs ul{padding-left:1.2em;margin:0 0 8px}
+@media (min-width:600px){.vs{grid-template-columns:1fr 1fr}}
+.flow{list-style:none;padding:0;margin:6px 0 20px;display:grid;gap:22px}
+.flow li{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:10px 14px;margin:0;text-align:center}
+.flow li b{display:block;color:var(--o-d);font-size:.98rem}
+.flow li span{display:block;font-size:.82rem;color:var(--ink-2);line-height:1.55}
+.flow li:not(:last-child)::after{content:"";position:absolute;left:50%;bottom:-17px;margin-left:-7px;border:7px solid transparent;border-top:9px solid var(--o)}
+@media (min-width:700px){.flow{grid-auto-flow:column;grid-auto-columns:1fr;gap:20px}.flow li:not(:last-child)::after{left:auto;right:-17px;top:50%;bottom:auto;margin:-7px 0 0;border:7px solid transparent;border-left:9px solid var(--o)}}
 </style>
 <script type="application/ld+json">
 {
@@ -1086,7 +1164,7 @@ footer a{color:var(--ink-2)}
     <p class="small">ペットタクシー予約窓口　更新 2026.10.30</p>
     <h2>山形のペットタクシーの料金</h2>
     <p>山形県のペットタクシーの料金は、当サイトではまだ確かめられていません。料金は会社ごとに決まっていて、多くは乗る距離で計算します。そのほかに、お迎え料金や待ち時間の料金、夜間・早朝の割増がかかることがあります。頼む前に、どこまでが基本料金に入っているかを確かめてください。</p>
-    <h2>山形でペットタクシーを使うとき</h2><p>山形市の中の通院のほか、天童・東根・米沢など山形市のまわりの市から専門の動物病院へ通うと、長い移動になることもあります。冬は雪が多く、ペットを連れて歩いたりバスを待ったりするのが大変な日が続きます。電車にはキャリーに入る子しか乗れず、大型犬は乗れません。山形空港への送迎や、お引っ越しの移動にも使われます。</p><h3>よく行く区間の料金の目安（片道）</h3><table><thead><tr><th>区間</th><th>車の道のりの目安</th><th>料金の目安（まんなか・安い〜高い）</th></tr></thead><tbody><tr><td>山形駅 → 天童市</td><td>15km</td><td>5,000円（1,900〜8,200円）</td></tr><tr><td>山形駅 → 山形空港</td><td>25km</td><td>6,600円（3,000〜11,800円）</td></tr><tr><td>山形駅 → 米沢市</td><td>50km</td><td>10,700円（3,600〜20,900円）</td></tr></tbody></table><p class="small">全国の会社の公式サイトの料金表をもとに計算した乗った距離の運賃の概算で、確定料金ではありません。お迎え料金・夜間の割増は入っていません。当日の道順・渋滞・待ち時間などで変わり、高速道路を使うときはその料金が別にかかります。</p>
+    <h2>山形でペットタクシーを使うとき</h2><p>山形市の中の通院のほか、天童・東根・米沢など山形市のまわりの市から専門の動物病院へ通うと、長い移動になることもあります。冬は雪が多く、ペットを連れて歩いたりバスを待ったりするのが大変な日が続きます。電車にはキャリーに入る子しか乗れず、大型犬は乗れません。山形空港への送迎や、お引っ越しの移動にも使われます。</p><h3>よく行く区間の料金の目安（片道）</h3><figure class="bars"><figcaption>区間ごとの運賃のまんなか（片道・概算）</figcaption><ol><li><span class="l">山形駅 → 天童市（15km）</span><span class="t"><i style="width:46.7%"></i></span><b>5,000円（1,900〜8,200円）</b></li><li><span class="l">山形駅 → 山形空港（25km）</span><span class="t"><i style="width:61.7%"></i></span><b>6,600円（3,000〜11,800円）</b></li><li><span class="l">山形駅 → 米沢市（50km）</span><span class="t"><i style="width:100.0%"></i></span><b>10,700円（3,600〜20,900円）</b></li></ol></figure><table><thead><tr><th>区間</th><th>車の道のりの目安</th><th>料金の目安（まんなか・安い〜高い）</th></tr></thead><tbody><tr><td>山形駅 → 天童市</td><td>15km</td><td>5,000円（1,900〜8,200円）</td></tr><tr><td>山形駅 → 山形空港</td><td>25km</td><td>6,600円（3,000〜11,800円）</td></tr><tr><td>山形駅 → 米沢市</td><td>50km</td><td>10,700円（3,600〜20,900円）</td></tr></tbody></table><p class="small">全国の会社の公式サイトの料金表をもとに計算した乗った距離の運賃の概算で、確定料金ではありません。お迎え料金・夜間の割増は入っていません。当日の道順・渋滞・待ち時間などで変わり、高速道路を使うときはその料金が別にかかります。</p>
     <p><a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・マイカーとの違い</a>では、料金のしくみをくわしく説明しています。キャリーに入る小さな子なら、<a href="/guide/taxi-with-pet/">ふつうのタクシーに乗れることもあります</a>。</p>
 
     <h2>山形のお迎えに対応しているペットタクシー</h2><p>当サイトで公式サイトを確かめた会社の中には、対応エリアに山形県を書いている会社はまだありません。県外の会社がお迎えに来られることがあるので、フォームでさがしてみてください。</p><p>同乗できる人数、ペットだけの送迎、ワクチン、キャンセル料、夜間の割増は会社ごとに違います。<a href="/guide/choose/">ペットタクシーの選び方（全国の会社のルールをくらべました）</a>もあわせてご覧ください。</p>
@@ -1170,11 +1248,11 @@ footer a{color:var(--ink-2)}
       <div class="fare">
 <!--FARE_TABLE-->        <h3>距離ごとの目安（全国92社の料金表から）</h3>
         <dl>
-          <div class="row"><dt>5km</dt><dd>3,300円<br><small style="font-weight:400">800〜6,400円</small></dd></div>
-          <div class="row"><dt>10km</dt><dd>4,100円<br><small style="font-weight:400">1,300〜6,400円</small></dd></div>
-          <div class="row"><dt>20km</dt><dd>5,800円<br><small style="font-weight:400">2,400〜10,000円</small></dd></div>
-          <div class="row"><dt>30km</dt><dd>7,400円<br><small style="font-weight:400">3,400〜13,600円</small></dd></div>
-          <div class="row"><dt>50km</dt><dd>10,700円<br><small style="font-weight:400">3,600〜20,900円</small></dd></div>
+          <div class="row"><dt>5km</dt><dd>3,300円<br><small style="font-weight:400">800〜6,400円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:3.8%;width:26.8%"></i><b style="left:15.8%"></b></i></div>
+          <div class="row"><dt>10km</dt><dd>4,100円<br><small style="font-weight:400">1,300〜6,400円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:6.2%;width:24.4%"></i><b style="left:19.6%"></b></i></div>
+          <div class="row"><dt>20km</dt><dd>5,800円<br><small style="font-weight:400">2,400〜10,000円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:11.5%;width:36.4%"></i><b style="left:27.8%"></b></i></div>
+          <div class="row"><dt>30km</dt><dd>7,400円<br><small style="font-weight:400">3,400〜13,600円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:16.3%;width:48.8%"></i><b style="left:35.4%"></b></i></div>
+          <div class="row"><dt>50km</dt><dd>10,700円<br><small style="font-weight:400">3,600〜20,900円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:17.2%;width:82.8%"></i><b style="left:51.2%"></b></i></div>
         </dl>
       </div>
     </div>

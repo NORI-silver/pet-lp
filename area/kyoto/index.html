@@ -177,6 +177,10 @@ p{margin:0 0 1em}
 .fare dt{color:var(--ink-2);font-size:.94rem}
 .fare dd{margin:0 0 0 12px;font-weight:800;font-size:1.05rem;white-space:nowrap;text-align:right}
 .fare dd small{font-weight:600;font-size:.78rem;color:var(--ink-3)}
+.fare .row{flex-wrap:wrap}
+.fare .rgbar{position:relative;display:block;flex-basis:100%;height:10px;margin:8px 0 0;background:#f3eee9;border-radius:5px}
+.fare .rgbar i{position:absolute;top:0;bottom:0;background:#ffc29b;border-radius:5px}
+.fare .rgbar b{position:absolute;top:-3px;width:4px;height:16px;margin-left:-2px;background:var(--o-d);border-radius:2px}
 .fare h3{font-size:.8rem;letter-spacing:.12em;color:var(--o);padding:16px 0 4px}
 .price .small{margin-top:16px;text-align:center}
 
@@ -729,6 +733,80 @@ footer a{color:var(--ink-2)}
 .taxi-top{background:var(--o-l);border-radius:18px;padding:14px 16px}
 .taxi-top p{margin:0 0 10px;font-size:.88rem;line-height:1.7;color:var(--ink)}
 .taxi-top p b{display:block;font-size:.98rem;color:var(--o-d)}
+
+/* 図で読む部品（tools/visual.py、2026-11-14） */
+.art b.n,.prose b.n{color:var(--o-d);font-weight:800}
+.art ul.kv{list-style:none;padding:0;display:grid;gap:10px}
+.art ul.kv li{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;margin:0;line-height:1.75}
+.art ul.kv li b.k{display:block;color:var(--ink);font-size:1rem;line-height:1.5;margin-bottom:3px;padding-left:12px;border-left:4px solid var(--o)}
+.art ul.check{list-style:none;padding:0}
+.art ul.check li{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px 12px 46px;margin:0 0 8px;line-height:1.75}
+.art ul.check li::before{content:"";position:absolute;left:14px;top:15px;width:22px;height:22px;border-radius:7px;background:var(--o) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/15px no-repeat}
+.art ol.steps{list-style:none;padding:0;counter-reset:st;margin:4px 0 18px}
+.art ol.steps>li{counter-increment:st;position:relative;padding:3px 0 18px 48px;margin:0;line-height:1.75}
+.art ol.steps>li::before{content:counter(st);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;background:var(--o);color:#fff;font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center}
+.art ol.steps>li::after{content:"";position:absolute;left:16px;top:38px;bottom:4px;width:2px;background:#ffd9c2}
+.art ol.steps>li:last-child::after{display:none}
+.art ol.steps b.k,.art ul.check b.k{display:block;color:var(--ink);font-size:1rem;line-height:1.5;margin-bottom:2px}
+.art ul:not([class]) li::marker{color:var(--o)}
+.art .answer{background:#fff;border:2.5px solid var(--o);border-radius:22px;padding:4px 18px 4px;margin:28px 0 8px;box-shadow:0 6px 18px rgba(255,106,26,.08)}
+.art .answer>h2{border-left:0;padding-left:0;margin:16px 0 10px;font-size:1.2rem}
+.art .answer>h2::before{content:"この記事の答え";display:block;width:max-content;font-size:.72rem;letter-spacing:.08em;background:var(--o);color:#fff;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+.art .answer ul:not([class]){list-style:none;padding:0}
+.art .answer ul:not([class]) li{position:relative;padding:10px 0 10px 32px;border-top:1px dashed var(--line);margin:0}
+.art .answer ul:not([class]) li:first-child{border-top:0}
+.art .answer ul:not([class]) li::before{content:"";position:absolute;left:0;top:13px;width:20px;height:20px;border-radius:50%;background:var(--o) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/13px no-repeat}
+.art.num{counter-reset:h2}
+.art.num>h2:not(.nonum),.art.num>.answer>h2{counter-increment:h2}
+.art.num>h2:not(.nonum)::before{content:counter(h2);display:inline-flex;align-items:center;justify-content:center;width:1.7em;height:1.7em;border-radius:9px;background:var(--o-l);color:var(--o-d);font-size:.8em;margin-right:8px;vertical-align:.1em}
+.art.num>h2:not(.nonum){border-left:0;padding-left:0}
+.art nav.art-toc ol{counter-reset:none;margin:6px 0 0;padding-left:1.5em}
+.art nav.art-toc li{margin:4px 0;font-weight:600}
+.art nav.art-toc a{color:var(--ink);text-decoration:none;border-bottom:1px dashed var(--o)}
+.art td.y{text-align:right;white-space:nowrap}
+.art table.stack td.y{white-space:normal}
+.art .tb{display:block;height:7px;border-radius:4px;background:var(--o);margin-top:5px;opacity:.85}
+.art .tb.rg{background:#ffb37f}
+.art td:last-child .tb{background:var(--o-d)}
+.art td:last-child .tb.rg{background:#f08c4a}
+@media (max-width:599px){
+.art table.stack{background:transparent;font-size:.9rem}
+.art table.stack thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.art table.stack tr{display:block;background:#fff;border:1.5px solid var(--line);border-radius:16px;margin:0 0 10px;overflow:hidden}
+.art table.stack tbody th{display:block;border:0;background:var(--o-l);color:var(--o-d);text-align:left;padding:10px 14px;font-size:.98rem}
+.art table.stack td{display:block;border:0;border-top:1px dashed var(--line);text-align:left;padding:8px 14px;background:transparent;font-weight:400}
+.art table.stack td:last-child{background:transparent;font-weight:700}
+.art table.stack td::before{content:attr(data-l);display:block;font-size:.72rem;font-weight:800;color:var(--ink-3);margin-bottom:1px}
+}
+.vstats{list-style:none;padding:0;margin:6px 0 20px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.vstats li{background:var(--o-l);border-radius:18px;padding:14px 14px 12px;margin:0;display:flex;flex-direction:column;gap:4px}
+.vstats b{font-size:1.2rem;line-height:1.25;color:var(--o-d);font-weight:800;letter-spacing:-.01em}
+.vstats span{font-size:.82rem;line-height:1.55;color:var(--ink-2)}
+@media (min-width:600px){.vstats{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.vstats b{font-size:1.55rem}}
+.bars{margin:6px 0 22px;background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:16px 16px 10px}
+.bars figcaption{font-weight:800;color:var(--ink);font-size:.98rem;margin-bottom:10px}
+.bars ol{list-style:none;padding:0;margin:0}
+.bars li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;margin:0 0 8px}
+.bars .l{grid-column:1/-1;font-size:.84rem;color:var(--ink-2);line-height:1.45}
+.bars .t{height:14px;background:#f7f4f1;border-radius:7px;overflow:hidden}
+.bars .t i{display:block;height:100%;background:#ffb37f;border-radius:7px}
+.bars li.hi .t i{background:var(--o)}
+.bars li b{font-size:.92rem;color:var(--ink);white-space:nowrap}
+.bars li.hi b{color:var(--o-d)}
+.bars .note{font-size:.76rem;color:var(--ink-3);margin:4px 0 4px;line-height:1.6}
+.vs{display:grid;gap:10px;margin:6px 0 20px}
+.vs>div{border-radius:18px;padding:14px 16px 6px;background:#fff;border:2px solid var(--o)}
+.vs>div.vb{border-color:var(--line);background:#fbfaf8}
+.vs b.vh{display:block;font-size:1rem;margin-bottom:6px;color:var(--o-d)}
+.vs .vb b.vh{color:var(--ink-2)}
+.vs ul{padding-left:1.2em;margin:0 0 8px}
+@media (min-width:600px){.vs{grid-template-columns:1fr 1fr}}
+.flow{list-style:none;padding:0;margin:6px 0 20px;display:grid;gap:22px}
+.flow li{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:10px 14px;margin:0;text-align:center}
+.flow li b{display:block;color:var(--o-d);font-size:.98rem}
+.flow li span{display:block;font-size:.82rem;color:var(--ink-2);line-height:1.55}
+.flow li:not(:last-child)::after{content:"";position:absolute;left:50%;bottom:-17px;margin-left:-7px;border:7px solid transparent;border-top:9px solid var(--o)}
+@media (min-width:700px){.flow{grid-auto-flow:column;grid-auto-columns:1fr;gap:20px}.flow li:not(:last-child)::after{left:auto;right:-17px;top:50%;bottom:auto;margin:-7px 0 0;border:7px solid transparent;border-left:9px solid var(--o)}}
 </style>
 <script type="application/ld+json">
 {
@@ -1110,10 +1188,10 @@ footer a{color:var(--ink-2)}
     <p class="small">ペットタクシー予約窓口　更新 2026.10.30</p>
     <h2>京都のペットタクシーの料金</h2>
     <p>京都府のペットタクシーの料金は、当サイトではまだ確かめられていません。料金は会社ごとに決まっていて、多くは乗る距離で計算します。そのほかに、お迎え料金や待ち時間の料金、夜間・早朝の割増がかかることがあります。頼む前に、どこまでが基本料金に入っているかを確かめてください。</p>
-    <h2>京都でペットタクシーを使うとき</h2><p>京都市の中の通院のほか、宇治・亀岡など京都市のまわりから専門の病院へ通うときに使われます。電車やバスにはキャリーに入る子しか乗れず、大型犬は乗れません。大阪の病院や伊丹空港への移動、お引っ越しにも使われます。</p><p>京都府のお迎えに対応している13社のうち、公式サイトの対応エリアに市の名前を書いている会社の数は、「京都市」1社・「宇治」1社・「亀岡」1社でした。名前を書いていない市にも来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。</p><h3>よく行く区間の料金の目安（片道）</h3><table><thead><tr><th>区間</th><th>車の道のりの目安</th><th>料金の目安（まんなか・安い〜高い）</th></tr></thead><tbody><tr><td>京都駅 → 宇治市</td><td>15km</td><td>5,000円（3,300〜6,000円）</td></tr><tr><td>京都駅 → 大阪駅（梅田）</td><td>45km</td><td>9,900円（3,600〜12,000円）</td></tr><tr><td>京都駅 → 伊丹空港</td><td>50km</td><td>10,700円（3,600〜13,000円）</td></tr></tbody></table><p class="small">京都府に来てくれる会社のうち料金表をのせている12社の公式サイトの料金表をもとに計算した乗った距離の運賃の概算で、確定料金ではありません。お迎え料金・夜間の割増は入っていません。当日の道順・渋滞・待ち時間などで変わり、高速道路を使うときはその料金が別にかかります。</p>
+    <h2>京都でペットタクシーを使うとき</h2><p>京都市の中の通院のほか、宇治・亀岡など京都市のまわりから専門の病院へ通うときに使われます。電車やバスにはキャリーに入る子しか乗れず、大型犬は乗れません。大阪の病院や伊丹空港への移動、お引っ越しにも使われます。</p><p>京都府のお迎えに対応している13社のうち、公式サイトの対応エリアに市の名前を書いている会社の数は、「京都市」1社・「宇治」1社・「亀岡」1社でした。名前を書いていない市にも来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。</p><h3>よく行く区間の料金の目安（片道）</h3><figure class="bars"><figcaption>区間ごとの運賃のまんなか（片道・概算）</figcaption><ol><li><span class="l">京都駅 → 宇治市（15km）</span><span class="t"><i style="width:46.7%"></i></span><b>5,000円（3,300〜6,000円）</b></li><li><span class="l">京都駅 → 大阪駅（梅田）（45km）</span><span class="t"><i style="width:92.5%"></i></span><b>9,900円（3,600〜12,000円）</b></li><li><span class="l">京都駅 → 伊丹空港（50km）</span><span class="t"><i style="width:100.0%"></i></span><b>10,700円（3,600〜13,000円）</b></li></ol></figure><table><thead><tr><th>区間</th><th>車の道のりの目安</th><th>料金の目安（まんなか・安い〜高い）</th></tr></thead><tbody><tr><td>京都駅 → 宇治市</td><td>15km</td><td>5,000円（3,300〜6,000円）</td></tr><tr><td>京都駅 → 大阪駅（梅田）</td><td>45km</td><td>9,900円（3,600〜12,000円）</td></tr><tr><td>京都駅 → 伊丹空港</td><td>50km</td><td>10,700円（3,600〜13,000円）</td></tr></tbody></table><p class="small">京都府に来てくれる会社のうち料金表をのせている12社の公式サイトの料金表をもとに計算した乗った距離の運賃の概算で、確定料金ではありません。お迎え料金・夜間の割増は入っていません。当日の道順・渋滞・待ち時間などで変わり、高速道路を使うときはその料金が別にかかります。</p>
     <p><a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・マイカーとの違い</a>では、料金のしくみをくわしく説明しています。キャリーに入る小さな子なら、<a href="/guide/taxi-with-pet/">ふつうのタクシーに乗れることもあります</a>。</p>
 
-    <h2>京都のお迎えに対応しているペットタクシー</h2><p>当サイトで公式サイトを確かめた全国の会社のうち、対応エリアに京都府を書いている会社は<b>13社</b>でした（2026年10月30日時点。同じチェーンのお店は1社ずつ数えています）。対応エリアは「市内だけ」「県の一部だけ」の会社もあるので、お迎えの場所で来てもらえるかは、フォームでさがすと確かめられます。</p><p>そのうち料金表をのせている12社の料金表で、乗った距離の運賃（片道）を計算すると次のとおりです。</p><div class="tbl"><table><thead><tr><th>乗った距離</th><th>まんなかの会社</th><th>安い会社〜高い会社</th></tr></thead><tbody><tr><th>5km</th><td>3,300円</td><td>2,000〜4,100円</td></tr><tr><th>10km</th><td>4,100円</td><td>3,200〜5,000円</td></tr><tr><th>20km</th><td>5,800円</td><td>3,300〜7,000円</td></tr></tbody></table></div><p class="fare-flag"><b>確定料金ではありません。</b>お迎え料金・待ち時間・夜間や早朝の割増・高速代は入っていません。フォームにお迎えの場所と行き先を入れると、会社ごとにお迎え料金なども入れた目安が出ます。</p><h2>京都に来てくれるペットタクシー13社の、対応エリアと料金のしくみ</h2><p>京都府のお迎えに対応している13社について、公式サイトに書かれている対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p><p>公式サイトに書いている内容を数えると、24時間受け付けている会社が10社・当日の予約も受ける会社が6社・カードで払える会社が4社・大型犬に対応している会社が3社・前日までキャンセル無料の会社が4社でした（書いていない会社が、できないとは限りません）。</p><p>対応エリアに地名が書かれている会社を数えると、木津川が2社・京都市が1社・宇治が1社・亀岡が1社でした。このほか「全域」「◯◯一円」のように広く書いている会社が5社あります。地名が書かれていなくても来てもらえることがあるので、お迎えの場所はフォームで確かめてください。</p><h3>京都に来てくれる会社だけで計算した運賃（料金表のある12社）</h3><p>京都のお迎えに対応している会社のうち、公式サイトに料金表がある12社だけで、乗った距離の運賃（片道）を全国の目安と同じ式で計算しました。10kmでは、いちばん安い会社が3,200円、高い会社が5,000円で、1,800円の差があります。何社かくらべてから問い合わせると、同じ道のりでも払う金額が変わります。</p><div class="tbl"><table><thead><tr><th>乗る距離</th><th>まんなかの会社</th><th>安い会社〜高い会社</th></tr></thead><tbody><tr><td>5km</td><td>3,300円</td><td>2,000〜4,100円</td></tr><tr><td>10km</td><td>4,100円</td><td>3,200〜5,000円</td></tr><tr><td>20km</td><td>5,800円</td><td>3,300〜7,000円</td></tr><tr><td>30km</td><td>7,400円</td><td>3,400〜9,000円</td></tr></tbody></table></div><p>まんなかの会社の金額は、全国92社のまんなかと同じでした。</p><p>このほかにかかるお迎え料金（お店からお迎えの場所まで）のつけ方は、お迎えの道のり1kmごとにかかる会社が11社・料金表に書いていない会社が1社です。お店が遠い会社ほどお迎え料金が高くなるので、フォームでは会社ごとに、お店からお迎えの場所までの車の道のりを入れた目安を出しています。</p><div class="tbl"><table><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody><tr><td>府内</td><td>京都・滋賀</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>府内</td><td>京都・木津川</td><td>—</td><td>3,300円</td><td>料金表にない</td><td>21時〜6時は3,300円</td></tr><tr><td>府内</td><td>京都中心、全国も</td><td>9時〜21時</td><td>3,300円</td><td>1kmごとに100円</td><td>21時〜9時は25%増</td></tr><tr><td>府内</td><td>京都中心（乗るか降りるかが営業エリア内なら他府県も）</td><td>—</td><td>お見積もり</td><td>—</td><td>—</td></tr><tr><td>大阪府</td><td>北大阪・吹田・摂津・茨木・高槻中心、近畿・全国</td><td>24時間</td><td>2,000円</td><td>1kmごとに110円</td><td>時間帯で1,000〜2,000円</td></tr><tr><td>大阪府</td><td>関西全域（大阪・兵庫・京都・奈良）</td><td>—</td><td>3,300円</td><td>1kmごとに110円</td><td>料金表にない</td></tr><tr><td>大阪府</td><td>富田林市を拠点に堺市・大阪狭山市・河内長野市、大阪・奈良・和歌山など近畿一円</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>大阪府</td><td>柏原市・八尾市・藤井寺市・羽曳野市・松原市・堺市・大阪市（天王寺・阿倍野・中央・平野）、関西全域</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>大阪府</td><td>大阪市内と近隣市町、兵庫県の一部、伊丹・関西空港</td><td>—</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,000円</td></tr><tr><td>大阪府</td><td>茨木・高槻・豊中など、京都市・亀岡・宇治など。近畿一円・全国</td><td>24時間</td><td>3,300円</td><td>1kmごとに180円</td><td>21時〜7時は4,500円</td></tr><tr><td>奈良県</td><td>奈良市中心・近畿圏（奈良・大阪・兵庫・京都・滋賀・和歌山）</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>広島県</td><td>広島発・全国（中四国・九州北部・関西が中心）</td><td>24時間</td><td>4,000円</td><td>1kmごとに100円</td><td>20時〜8時は3,000円</td></tr><tr><td>奈良県</td><td>奈良市・大和郡山・生駒・木津川・精華（近畿一円、遠方も相談）</td><td>24時間</td><td>4,125円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr></tbody></table></div><p class="fare-flag"><b>確定料金ではありません。</b>2026年10月30日時点で各社の公式サイトを読んでまとめたもので、会社名は出していません。5kmの運賃は料金表から計算した片道の金額で、お迎え料金・待ち時間・高速代は入っていません。料金や対応エリアは変わることがあるので、フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p><p>同乗できる人数、ペットだけの送迎、ワクチン、キャンセル料、夜間の割増は会社ごとに違います。<a href="/guide/choose/">ペットタクシーの選び方（全国の会社のルールをくらべました）</a>もあわせてご覧ください。</p>
+    <h2>京都のお迎えに対応しているペットタクシー</h2><p>当サイトで公式サイトを確かめた全国の会社のうち、対応エリアに京都府を書いている会社は<b>13社</b>でした（2026年10月30日時点。同じチェーンのお店は1社ずつ数えています）。対応エリアは「市内だけ」「県の一部だけ」の会社もあるので、お迎えの場所で来てもらえるかは、フォームでさがすと確かめられます。</p><ul class="vstats"><li><b>13社</b><span>京都府のお迎えに対応している会社</span></li><li><b>4,100円</b><span>10kmの運賃のまんなか（概算・確定料金ではありません）</span></li><li><b>6社</b><span>当日の予約も受けると書いている会社</span></li><li><b>10社</b><span>24時間受け付けている会社</span></li></ul><p>そのうち料金表をのせている12社の料金表で、乗った距離の運賃（片道）を計算すると次のとおりです。</p><div class="tbl"><table class="has-bars"><thead><tr><th>乗った距離</th><th>まんなかの会社</th><th>安い会社〜高い会社</th></tr></thead><tbody><tr><th>5km</th><td class="y">3,300円<i class="tb" style="width:47.1%" aria-hidden="true"></i></td><td class="y">2,000〜4,100円<i class="tb rg" style="margin-left:28.6%;width:30.0%" aria-hidden="true"></i></td></tr><tr><th>10km</th><td class="y">4,100円<i class="tb" style="width:58.6%" aria-hidden="true"></i></td><td class="y">3,200〜5,000円<i class="tb rg" style="margin-left:45.7%;width:25.7%" aria-hidden="true"></i></td></tr><tr><th>20km</th><td class="y">5,800円<i class="tb" style="width:82.9%" aria-hidden="true"></i></td><td class="y">3,300〜7,000円<i class="tb rg" style="margin-left:47.1%;width:52.9%" aria-hidden="true"></i></td></tr></tbody></table></div><p class="fare-flag"><b>確定料金ではありません。</b>お迎え料金・待ち時間・夜間や早朝の割増・高速代は入っていません。フォームにお迎えの場所と行き先を入れると、会社ごとにお迎え料金なども入れた目安が出ます。</p><h2>京都に来てくれるペットタクシー13社の、対応エリアと料金のしくみ</h2><p>京都府のお迎えに対応している13社について、公式サイトに書かれている対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p><figure class="bars"><figcaption>公式サイトに書いている内容を数えると（13社のうち）</figcaption><ol><li><span class="l">24時間受け付けている会社</span><span class="t"><i style="width:76.9%"></i></span><b>10社</b></li><li><span class="l">当日の予約も受ける会社</span><span class="t"><i style="width:46.2%"></i></span><b>6社</b></li><li><span class="l">カードで払える会社</span><span class="t"><i style="width:30.8%"></i></span><b>4社</b></li><li><span class="l">大型犬に対応している会社</span><span class="t"><i style="width:23.1%"></i></span><b>3社</b></li><li><span class="l">前日までキャンセル無料の会社</span><span class="t"><i style="width:30.8%"></i></span><b>4社</b></li></ol><p class="note">書いていない会社が、できないとは限りません。</p></figure><figure class="bars"><figcaption>対応エリアに地名が書かれている会社の数（13社のうち）</figcaption><ol><li><span class="l">木津川</span><span class="t"><i style="width:15.4%"></i></span><b>2社</b></li><li><span class="l">京都市</span><span class="t"><i style="width:7.7%"></i></span><b>1社</b></li><li><span class="l">宇治</span><span class="t"><i style="width:7.7%"></i></span><b>1社</b></li><li><span class="l">亀岡</span><span class="t"><i style="width:7.7%"></i></span><b>1社</b></li></ol></figure><p>このほか「全域」「◯◯一円」のように広く書いている会社が5社あります。地名が書かれていなくても来てもらえることがあるので、お迎えの場所はフォームで確かめてください。</p><h3>京都に来てくれる会社だけで計算した運賃（料金表のある12社）</h3><p>京都のお迎えに対応している会社のうち、公式サイトに料金表がある12社だけで、乗った距離の運賃（片道）を全国の目安と同じ式で計算しました。10kmでは、いちばん安い会社が3,200円、高い会社が5,000円で、1,800円の差があります。何社かくらべてから問い合わせると、同じ道のりでも払う金額が変わります。</p><div class="tbl"><table class="has-bars"><thead><tr><th>乗る距離</th><th>まんなかの会社</th><th>安い会社〜高い会社</th></tr></thead><tbody><tr><th>5km</th><td class="y">3,300円<i class="tb" style="width:36.7%" aria-hidden="true"></i></td><td class="y">2,000〜4,100円<i class="tb rg" style="margin-left:22.2%;width:23.3%" aria-hidden="true"></i></td></tr><tr><th>10km</th><td class="y">4,100円<i class="tb" style="width:45.6%" aria-hidden="true"></i></td><td class="y">3,200〜5,000円<i class="tb rg" style="margin-left:35.6%;width:20.0%" aria-hidden="true"></i></td></tr><tr><th>20km</th><td class="y">5,800円<i class="tb" style="width:64.4%" aria-hidden="true"></i></td><td class="y">3,300〜7,000円<i class="tb rg" style="margin-left:36.7%;width:41.1%" aria-hidden="true"></i></td></tr><tr><th>30km</th><td class="y">7,400円<i class="tb" style="width:82.2%" aria-hidden="true"></i></td><td class="y">3,400〜9,000円<i class="tb rg" style="margin-left:37.8%;width:62.2%" aria-hidden="true"></i></td></tr></tbody></table></div><p>まんなかの会社の金額は、全国92社のまんなかと同じでした。</p><p>このほかにかかるお迎え料金（お店からお迎えの場所まで）のつけ方は、お迎えの道のり1kmごとにかかる会社が11社・料金表に書いていない会社が1社です。お店が遠い会社ほどお迎え料金が高くなるので、フォームでは会社ごとに、お店からお迎えの場所までの車の道のりを入れた目安を出しています。</p><div class="tbl"><table><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody><tr><td>府内</td><td>京都・滋賀</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>府内</td><td>京都・木津川</td><td>—</td><td>3,300円</td><td>料金表にない</td><td>21時〜6時は3,300円</td></tr><tr><td>府内</td><td>京都中心、全国も</td><td>9時〜21時</td><td>3,300円</td><td>1kmごとに100円</td><td>21時〜9時は25%増</td></tr><tr><td>府内</td><td>京都中心（乗るか降りるかが営業エリア内なら他府県も）</td><td>—</td><td>お見積もり</td><td>—</td><td>—</td></tr><tr><td>大阪府</td><td>北大阪・吹田・摂津・茨木・高槻中心、近畿・全国</td><td>24時間</td><td>2,000円</td><td>1kmごとに110円</td><td>時間帯で1,000〜2,000円</td></tr><tr><td>大阪府</td><td>関西全域（大阪・兵庫・京都・奈良）</td><td>—</td><td>3,300円</td><td>1kmごとに110円</td><td>料金表にない</td></tr><tr><td>大阪府</td><td>富田林市を拠点に堺市・大阪狭山市・河内長野市、大阪・奈良・和歌山など近畿一円</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>大阪府</td><td>柏原市・八尾市・藤井寺市・羽曳野市・松原市・堺市・大阪市（天王寺・阿倍野・中央・平野）、関西全域</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>大阪府</td><td>大阪市内と近隣市町、兵庫県の一部、伊丹・関西空港</td><td>—</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,000円</td></tr><tr><td>大阪府</td><td>茨木・高槻・豊中など、京都市・亀岡・宇治など。近畿一円・全国</td><td>24時間</td><td>3,300円</td><td>1kmごとに180円</td><td>21時〜7時は4,500円</td></tr><tr><td>奈良県</td><td>奈良市中心・近畿圏（奈良・大阪・兵庫・京都・滋賀・和歌山）</td><td>24時間</td><td>3,300円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr><tr><td>広島県</td><td>広島発・全国（中四国・九州北部・関西が中心）</td><td>24時間</td><td>4,000円</td><td>1kmごとに100円</td><td>20時〜8時は3,000円</td></tr><tr><td>奈良県</td><td>奈良市・大和郡山・生駒・木津川・精華（近畿一円、遠方も相談）</td><td>24時間</td><td>4,125円</td><td>1kmごとに165円</td><td>21時〜8時は3,300円</td></tr></tbody></table></div><p class="fare-flag"><b>確定料金ではありません。</b>2026年10月30日時点で各社の公式サイトを読んでまとめたもので、会社名は出していません。5kmの運賃は料金表から計算した片道の金額で、お迎え料金・待ち時間・高速代は入っていません。料金や対応エリアは変わることがあるので、フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p><p>同乗できる人数、ペットだけの送迎、ワクチン、キャンセル料、夜間の割増は会社ごとに違います。<a href="/guide/choose/">ペットタクシーの選び方（全国の会社のルールをくらべました）</a>もあわせてご覧ください。</p>
 
     <h2>ペットタクシーを頼む前に確かめること</h2>
     <h3>お迎えに来てもらえる場所か</h3><p>会社ごとに対応する地域が決まっていて、地域の外はお迎え料金が増えたり、受けてもらえなかったりします。 <a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・レンタカー・カーシェアとの違い</a></p><h3>料金の決まり方</h3><p>乗る距離の料金のほかに、お迎え料金・待ち時間の料金・夜間や早朝の割増・高速代がかかることがあります。どこまでが基本料金に入っているかは会社ごとに違います。 <a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・レンタカー・カーシェアとの違い</a></p><h3>ケージやキャリー</h3><p>持っていくのか、借りられるのか、なしでも乗れるのか。猫はキャリーに入れて乗るのが基本です。 <a href="/guide/cat/">猫の移動をやさしく。キャリーの慣らし方と車での過ごし方</a></p><h3>大きさと頭数</h3><p>大型犬や多頭のときは、車の広さやスロープの有無を前もって伝えておくと安心です。 <a href="/guide/large-dog/">大型犬の移動に、ペットタクシーという選択</a></p><h3>飼い主さんが一緒に乗るか</h3><p>ペットだけの送迎を受けるかどうかは会社によって違います。 <a href="/guide/hospital/">動物病院への通院にペットタクシーを</a></p><h3>支払い方法とキャンセル</h3><p>現金だけの会社もあります。払うのが乗る前か降りるときか、キャンセル料がいつからかかるかも確かめましょう。 <a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・レンタカー・カーシェアとの違い</a></p>
@@ -1194,11 +1272,11 @@ footer a{color:var(--ink-2)}
       <div class="fare">
 <!--FARE_TABLE-->        <h3>距離ごとの目安（全国92社の料金表から）</h3>
         <dl>
-          <div class="row"><dt>5km</dt><dd>3,300円<br><small style="font-weight:400">800〜6,400円</small></dd></div>
-          <div class="row"><dt>10km</dt><dd>4,100円<br><small style="font-weight:400">1,300〜6,400円</small></dd></div>
-          <div class="row"><dt>20km</dt><dd>5,800円<br><small style="font-weight:400">2,400〜10,000円</small></dd></div>
-          <div class="row"><dt>30km</dt><dd>7,400円<br><small style="font-weight:400">3,400〜13,600円</small></dd></div>
-          <div class="row"><dt>50km</dt><dd>10,700円<br><small style="font-weight:400">3,600〜20,900円</small></dd></div>
+          <div class="row"><dt>5km</dt><dd>3,300円<br><small style="font-weight:400">800〜6,400円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:3.8%;width:26.8%"></i><b style="left:15.8%"></b></i></div>
+          <div class="row"><dt>10km</dt><dd>4,100円<br><small style="font-weight:400">1,300〜6,400円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:6.2%;width:24.4%"></i><b style="left:19.6%"></b></i></div>
+          <div class="row"><dt>20km</dt><dd>5,800円<br><small style="font-weight:400">2,400〜10,000円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:11.5%;width:36.4%"></i><b style="left:27.8%"></b></i></div>
+          <div class="row"><dt>30km</dt><dd>7,400円<br><small style="font-weight:400">3,400〜13,600円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:16.3%;width:48.8%"></i><b style="left:35.4%"></b></i></div>
+          <div class="row"><dt>50km</dt><dd>10,700円<br><small style="font-weight:400">3,600〜20,900円</small></dd><i class="rgbar" aria-hidden="true"><i style="left:17.2%;width:82.8%"></i><b style="left:51.2%"></b></i></div>
         </dl>
       </div>
     </div>
