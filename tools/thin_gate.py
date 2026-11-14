@@ -63,6 +63,8 @@ def all_pages(root):
     for dp, dn, fn in os.walk(root):
         dn[:] = [d for d in dn if not d.startswith(".") and d not in ("tools", "node_modules", "tests", "img", "lib", "docs", "sns", "booking")]
         if "index.html" in fn:
+            # 県のページへ移した案内だけのページ（tools/thin_hosp.py。noindex・サイトマップなし）は本文がないので数えない
+            if 'http-equiv="refresh"' in open(os.path.join(dp, "index.html"), encoding="utf-8").read(2000): continue
             rel = os.path.relpath(dp, root).replace(os.sep, "/")
             out.append("/" if rel == "." else "/" + rel + "/")
     return out
