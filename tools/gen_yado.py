@@ -219,6 +219,19 @@ def _fees(xs):
     return sorted(y for y in (_yen(fact(x, "犬の宿泊料金")) for x in xs) if y)
 
 
+_IMG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "img", "yado")
+
+
+def _photo(e, url, alt):
+    """img/yado/<url の / を - に>.jpg があるときだけ写真を出す（ページごとに1枚、使い回さない）。"""
+    key = url.split("://", 1)[-1].split("/", 1)[-1].strip("/").replace("/", "-")
+    if not os.path.exists(os.path.join(_IMG_DIR, key + ".jpg")):
+        return ""
+    return (f'<figure class="art-img"><picture><source srcset="/img/yado/{key}.webp" type="image/webp">'
+            f'<img src="/img/yado/{key}.jpg" alt="{e(alt)}の写真（イメージ）" width="1200" height="800" fetchpriority="high" '
+            f'onerror="this.closest(\'figure\').remove()"></picture></figure>')
+
+
 def _wrap(ctx, title, desc, url, ld, crumb_html, h1, small, lede, body, cta=True):
     e = ctx["e"]
     taxi = ('<section style="padding-top:0"><div class="wrap"><div class="sh"><h2>宿までの移動は、ペットタクシーで</h2>'
@@ -231,6 +244,7 @@ def _wrap(ctx, title, desc, url, ld, crumb_html, h1, small, lede, body, cta=True
     <nav class="crumb" aria-label="パンくずリスト">{crumb_html}</nav>
     <h1>{f"<small>{e(small)}</small>" if small else ""}{e(h1)}</h1>
     <p class="lede">{lede}</p>
+    {_photo(e, url, h1)}
   </div>
 </section>
 <section style="padding-top:8px">
