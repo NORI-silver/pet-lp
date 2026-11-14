@@ -14,6 +14,7 @@ import gen_yado as Y
 PSLUG = gen_dogrun.PSLUG
 _D = os.path.dirname(os.path.abspath(__file__))
 MIN_FACTS = 5
+INN_MIN_CHARS = 1000  # 宿1軒のページを作る「そのページだけの字数」（thin_gate の 900 に余裕をもたせる）
 
 
 def _load(fn):
@@ -401,9 +402,26 @@ def write_all(ROOT, ctx):
         w(hhref(x), f'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow">'
                     f'<link rel="canonical" href="{ctx["SITE"]}{to}"><meta http-equiv="refresh" content="0; url={to}">'
                     f'<title>{x["pref"]}の夜間・救急の動物病院</title></head><body><p><a href="{to}">{x["pref"]}の夜間・救急の動物病院</a>に移しました。</p></body></html>\n')
+    # 宿1軒のページは、そのページだけの字数（tools/thin_gate.py と同じ数え方）が足りるときだけ作る（Nori 2026-11-14「そもそも薄い記事作らないで」）。
+    # 足りない宿は県・全国の一覧のカードに入れ、名前は公式サイトへ。サイト全体ではひな形の文がもっと多いので、余裕をみて INN_MIN_CHARS で切る。
+    import thin_gate as TG
+    from collections import Counter
+    for _ in range(3):
+        pages = {x["id"]: render_inn(ctx, x) for x in INNS if x["page"]}
+        segs = {k: set(TG._segments(v)) for k, v in pages.items()}
+        df = Counter(t for v in segs.values() for t in v)
+        short = {k for k, v in segs.items() if sum(len(t) for t in v if df[t] < TG.TEMPLATE_DF) < INN_MIN_CHARS}
+        if not short: break
+        for x in INNS:
+            if x["id"] in short: x["page"] = False
     Y.write_all(ROOT, ctx)
     for x in INNS:
-        if x.get("page", True): w(ihref(x), render_inn(ctx, x))
+        f = os.path.join(ROOT, ihref(x).strip("/"), "index.html")
+        if x["page"]: w(ihref(x), render_inn(ctx, x))
+        elif os.path.exists(f):
+            os.remove(f)
+            try: os.rmdir(os.path.dirname(f))
+            except OSError: pass
     if CAFES:
         w("/inu-cafe/", render_cafe_hub(ctx))
         for x in CAFES: w(chref(x), render_cafe(ctx, x))
