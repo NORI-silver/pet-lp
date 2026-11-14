@@ -54,7 +54,7 @@ console.log('PASS: Pettaku pickup leg is free when bringing a pet from afar to H
 // 長距離で割合の夜間割増の会社は、夜に走る分だけにかける（Nori 2026-11-08「そうしよう」）
 {
   const route=(from,to,km)=>JSON.stringify({km,backKm:km,from,to,backFrom:to,backTo:from});
-  const c=vm.runInContext("DISPLAY_COMPANIES.filter(function(x){return x.long && x.fare && x.fare.night && x.fare.night.rate;})[0]",ctx);
+  const c=vm.runInContext("DISPLAY_COMPANIES.filter(function(x){return x.long && x.fare && x.fare.night && x.fare.night.rate && !x.fare.night.maxKm && x.fare.night.by !== 'start';})[0]",ctx);
   const p={trip:'片道',datetime:'2026-12-01T08:30',pickup:'渋谷駅',dropoff:'広島市',weight:5,pet_count:1,route_details:route({lat:35.658,lng:139.701},{lat:34.39,lng:132.46},923)};
   const r=ctx.displayPriceCalc_(c,p);
   assert.ok(r && r.local.nightExtra>0 && r.local.nightExtra < Math.floor(r.local.ride*c.fare.night.rate), 'night extra only for the night part');
