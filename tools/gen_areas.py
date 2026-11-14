@@ -1139,7 +1139,6 @@ def pt_leg(i, k, extra=()):
             + pt_if(i, ["距離で決まる"], pt_q(k + "（距離）", pt_n("", "kmまで無料、", opt=True), pt_n("その先 ", "kmごとに"), pt_n("", "円")) + '<small>無料の距離がなければ空けたままで大丈夫です。</small>')
             + pt_if(i, ["市区町村ごとに決まっている"], f'<textarea data-k="{e(k)}（市区町村ごと）" rows="3" maxlength="400" placeholder="例：安芸区 1,000円、広島市内 2,000円、そのほか 1kmごとに100円"></textarea>'))
 PT_FARE_DETAIL = "".join([
-  pt_f("料金の金額は", pt_sel("p_tax", "税込・税別", ["税込", "税別（消費税を足していただく金額）"]), "", "p_tax"),
   pt_f("料金の決め方", pt_sel("p_kind", "料金の決め方", ["距離で決まる", "時間で決まる", "エリア・区間ごとの定額", "毎回お見積もり"])
     + pt_if("p_kind", ["距離で決まる"],
         '<b>基本料金（初乗り）</b>' + pt_q("基本料金", pt_n("", "円で"), pt_n("", "kmまで"))
@@ -1180,6 +1179,8 @@ PT_FARE = "".join([
   pt_f("料金のうかがい方", pt_sel("p_faremode", "料金のうかがい方", ["料金表のページを見てほしい（入力をとばす）", "ここで入力する"])
     + pt_if("p_faremode", ["料金表のページを見てほしい（入力をとばす）"], '<b>料金表のページのURL</b><input type="url" id="p_fareurl" data-k="料金ページ" required placeholder="https://">')
     + pt_if("p_faremode", ["ここで入力する"], '<div class="pt-fare">' + PT_FARE_DETAIL + '</div>'), "", ""),
+  # 2026-11-14 点検：料金表のURLで入力をとばした会社に税込・税別を聞けていなかったので、どちらを選んでも必ず聞く
+  pt_f("料金の金額は", pt_sel("p_tax", "税込・税別", ["税込", "税別（消費税を足していただく金額）"]), "", "p_tax"),
   pt_f("お支払いのタイミング", pt_sel("p_paytime", "お支払いのタイミング", ["乗る前", "降りるとき", "後日（請求書など）"]), "", "p_paytime"),
 ])
 PT_FARE_MORE = "".join([
