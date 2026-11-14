@@ -824,6 +824,8 @@ def guide_hub(slug):
         return "/pet-sitter/", "ペットシッター", "都道府県ごとのペットシッターを見る"
     if slug in ("large-dog-hotel", "cat-hotel"):
         return "/pet-hotel/", "ペットホテル", "大型犬OK・猫専用のペットホテルを見る"
+    if slug in ("pet-evacuation", "pet-disaster-prep"):
+        return "/hinan/", "ペットと避難（同行避難）", "都道府県・市区の避難所の決まりを見る"
     if slug == "pet-insurance":
         return "/hospital/", "条件でさがす動物病院", "夜間・救急や往診の動物病院をさがす"
     return "/guide/", "ペットの移動ガイド", ""
@@ -1011,7 +1013,7 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
     <p>通院先や宿泊先ごとの行き方、受付・乗降場所、帰りの車で確かめたいことをまとめました。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "facility"])}
     <div class="sh"><h2>迷子・犬の登録・引っ越しの手続き</h2></div>
-    <p>迷子になったとき、迷子を保護したとき、犬の登録、引っ越し、飼えなくなったときの相談先。全国の窓口は<a href="/jichitai/">迷子・犬の登録・引取りの窓口</a>の一覧から。</p>
+    <p>迷子になったとき、迷子を保護したとき、犬の登録、引っ越し、飼えなくなったときの相談先と、災害のときの避難と備え。全国の窓口は<a href="/jichitai/">迷子・犬の登録・引取りの窓口</a>、避難所の決まりは<a href="/hinan/">ペットと避難</a>の一覧から。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "procedure"])}
     <div class="sh"><h2>老犬ホーム・ドッグトレーナー・ペットシッターのえらび方</h2></div>
     <p>預ける・頼む前に知っておきたいこと。全国の一覧は<a href="/rojin-home/">老犬ホーム・老猫ホーム</a>、<a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a>、<a href="/pet-sitter/">ペットシッター</a>、<a href="/trimming/">出張トリミング</a>、<a href="/pet-hotel/">大型犬OK・猫専用のペットホテル</a>から。</p>
@@ -2189,6 +2191,11 @@ import gen_sougi
 gen_sougi.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_sougi.urls(SITE)
+# [B] SEO：ペットと避難（/hinan/ と /hinan/<県>/）：都道府県・市区の公式ページの決まり（tools/gen_hinan.py、データ tools/hinan.json）
+import gen_hinan
+gen_hinan.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, area_links=area_links,
+  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_hinan.urls(SITE)
 # [B] SEO：ペット火葬・霊園と夜間・救急の動物病院の都道府県ごとのページ（tools/gen_prefcats.py、検索がとくに多いため）
 import gen_prefcats
 for _cat in (gen_prefcats.SOUGI, gen_prefcats.NIGHT):
@@ -2337,7 +2344,7 @@ open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
 # 同じURLを分野ごとの /sitemaps/<分野>.xml にも入れて、/sitemap_index.xml でまとめる。Search Console でサイトマップごとの
 # 登録数が出るので、分野ごとの登録率（品質の関門）を数えられる。分野はURLの最初のフォルダで決める（ペットタクシーの地域・トップ・規約などは taxi）。
 SITEMAP_CATS = {"guide": "guide", "sougi": "sougi", "dogrun": "dogrun", "hospital": "hospital", "pet-hotel": "pet-hotel",
-                "pet-sitter": "pet-sitter", "dog-trainer": "dog-trainer", "rojin-home": "rojin-home", "trimming": "trimming", "jichitai": "jichitai"}
+                "pet-sitter": "pet-sitter", "dog-trainer": "dog-trainer", "rojin-home": "rojin-home", "trimming": "trimming", "jichitai": "jichitai", "hinan": "hinan"}
 def _sm_cat(u):
   return SITEMAP_CATS.get(u[len(SITE) + 1:].split("/")[0], "taxi")
 _sm_groups = {}
