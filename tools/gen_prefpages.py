@@ -109,7 +109,7 @@ def answer_html(e, cat, pf, rs, faq, facts):
         return m.group(1) if m else a
     kv = "".join(f'<li><b class="k">{e(q)}</b>{e(first(a))}</li>' for q, a in faq[:3])
     more = ("<ul>" + "".join(f"<li>{e(x)}</li>" for x in rest) + "</ul>") if rest else ""
-    return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">先に答え</h2><ul class="kv">{kv}</ul></div>'
+    return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">{e(pf)}の{e(cat["name"])}のポイント</h2><ul class="kv">{kv}</ul></div>'
             f'{_V.stats(tiles)}{more}</div>')
 
 def render_pref(ctx, cat, pf, rows):

@@ -96,6 +96,7 @@ var CONFIG = {
   // キーはここに書かず、スクリプトのプロパティ PLACES_API_KEY に入れる。空なら点数は出さず「口コミを見る」リンクだけ
   REVIEW_MONTHLY_LIMIT: 900, // 1か月に取り寄せる回数の上限（無料の範囲 1,000回に収める。超えたら月末までリンクだけ）
   REVIEW_EMG_MONTHLY_LIMIT: 500, // そのうち緊急タブの搬送の会社・病院に使ってよい回数（予約の候補カードのぶんを残すため）
+  PHOTO_MONTHLY_LIMIT: 600, // 施設の写真を取り寄せる回数の上限（場所の詳しい情報1回＋写真1枚ごとに1回。押したときだけ。2026-11-14 Nori「施設の写真とか追加したほうがいいんじゃない？」）
   REVIEW_DASH_MONTHLY_LIMIT: 200 // そのうち社内用の事業者一覧（a=dash）で使ってよい回数
 };
 
@@ -244,6 +245,9 @@ function doPost(e) {
   }
   if ((e.parameter || {}).kind === 'scores') {
     try { return json_(selectionScores_(String(e.parameter.ids || ''), demoId_(e.parameter.demo))); } catch (err) { return json_({ok:false,error:'reviews_unavailable'}); }
+  }
+  if ((e.parameter || {}).kind === 'photos') {
+    try { return json_(facilityPhotos_(String(e.parameter.partner_id || ''), demoId_(e.parameter.demo))); } catch (err) { return json_({ok:false,error:'photos_unavailable'}); }
   }
   if ((e.parameter || {}).kind === 'reviews') {
     try { return json_(selectionReviews_(String(e.parameter.partner_id || ''), demoId_(e.parameter.demo))); } catch (err) { return json_({ok:false,error:'reviews_unavailable'}); }
@@ -3352,6 +3356,40 @@ function selectionReviews_(partnerId, demoId) {
     log_('口コミ本文：エラー ' + partnerId + ' ' + e);
     return {ok:false,error:'reviews_unavailable'};
   }
+}
+
+// 施設の写真（押したときだけ・最大3枚）。地図サービスの写真を、撮った人の名前とリンクつきで返す（規約で必要）。保存しない。
+// 写真の住所（photoUri）はキーを含まない一時的な住所。月の回数は口コミとは別に数える（PHOTO_MONTHLY_LIMIT）
+function facilityPhotos_(partnerId, demoId) {
+  var t = reviewTarget_(partnerId);
+  if (!t || isAnon_(partnerId, demoId)) return {ok:false,error:'unknown'};
+  var props = PropertiesService.getScriptProperties(), apiKey = props.getProperty('PLACES_API_KEY');
+  if (!apiKey) return {ok:false,error:'photos_unavailable'};
+  var placeId = t.place || props.getProperty(t.idKey);
+  if (placeId === '-') return {ok:true, photos:[]};
+  if (!placeId) {
+    var q = placeSearchRequest_(t, apiKey), url = q.url; delete q.url;
+    placeId = placeFromSearch_(partnerId, t, UrlFetchApp.fetch(url, q).getContentText(), props, !!t.query2);
+    if (!placeId) return {ok:true, photos:[]};
+  }
+  var month = 'PHOTO_COUNT_' + Utilities.formatDate(new Date(), TZ, 'yyyyMM'), used = Number(props.getProperty(month)) || 0;
+  if (used + 4 > CONFIG.PHOTO_MONTHLY_LIMIT) { log_('写真：月の上限 ' + partnerId); return {ok:false,error:'limit'}; }
+  var d = placeDetailsRequest_(placeId, apiKey, 'photos'), durl = d.url; delete d.url;
+  var res = UrlFetchApp.fetch(durl, d);
+  if (res.getResponseCode() !== 200) { props.setProperty(month, String(used + 1)); log_('写真：取り寄せ失敗 ' + partnerId + ' ' + res.getResponseCode()); return {ok:false,error:'photos_unavailable'}; }
+  var ph = ((JSON.parse(res.getContentText()) || {}).photos || []).slice(0, 3);
+  var media = ph.length ? UrlFetchApp.fetchAll(ph.map(function(x) {
+    return {url:'https://places.googleapis.com/v1/' + x.name + '/media?maxWidthPx=800&skipHttpRedirect=true&key=' + encodeURIComponent(apiKey), muteHttpExceptions:true};
+  })) : [];
+  props.setProperty(month, String(used + 1 + ph.length));
+  var out = [];
+  ph.forEach(function(x, i) {
+    var m = {}; try { m = JSON.parse(media[i].getContentText()) || {}; } catch (e) {}
+    if (!m.photoUri) return;
+    out.push({url:m.photoUri, w:x.widthPx || 0, h:x.heightPx || 0,
+      by:(x.authorAttributions || []).map(function(a) { return {name:a.displayName || '', uri:a.uri || ''}; })});
+  });
+  return {ok:true, photos:out};
 }
 
 // 緊急タブの搬送の会社・病院の星と件数（ids はカンマ区切り。画面に出てきたところだけ、1回に12件まで）。点数は保存せず毎回取り寄せる

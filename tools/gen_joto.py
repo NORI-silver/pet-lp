@@ -139,7 +139,7 @@ def render(ctx):
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="emg">
-      <div class="emg-tips jt-ans" style="margin-top:0"><h4>先に答え：迎えるまでの流れ</h4>{flow_html(e)}
+      <div class="emg-tips jt-ans" style="margin-top:0"><h4>迎えるまでの流れ</h4>{flow_html(e)}
       <p class="emg-tips-note">くわしい条件・費用・保護団体のえらび方は、記事「<a href="/guide/adopt-pet/">保護犬・保護猫を迎えるには</a>」に。</p></div>
       <p class="emg-free">この一覧は無料の情報です。自治体や団体からお金をもらっていません。条件は{e(J["checked"])}に各自治体の公式ページで確かめた内容を短くまとめたもので、変わることがあります。申し込む前に、必ずリンク先の公式ページでご確認ください。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
@@ -281,7 +281,7 @@ def render_city(ctx, c):
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="emg">
-      <div class="emg-tips jt-ans" style="margin-top:0"><h4>先に答え：{e(city)}の窓口と主な条件</h4>
+      <div class="emg-tips jt-ans" style="margin-top:0"><h4>{e(city)}の窓口と主な条件</h4>
       <p><a href="{e(c['url'])}" target="_blank" rel="noopener"><b>{e(c['name'])}</b> ↗</a></p><ul>{lead3}</ul>
       <p class="emg-tips-note">公式ページに書いてあるかどうか（✓＝書いてある。「書いていない」は「ない」ではなく、ページに書いていないという意味）</p>{chk_html(e, c)}</div>
       <p class="emg-free">この案内は無料の情報です。自治体からお金をもらっていません。{e(J['checked'])}に公式ページで確かめた内容を短くまとめたもので、変わることがあります。申し込む前に、必ずリンク先でご確認ください。</p>
