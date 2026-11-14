@@ -5860,6 +5860,326 @@
     "l"
    ],
    "id": "i594726"
+  },
+  {
+   "name": "PICA秩父",
+   "kind": "キャンプ場",
+   "pref": "埼玉県",
+   "city": "秩父市",
+   "url": "https://www.pica-resort.jp/chichibu/stay/site/doggy.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "埼玉県秩父市久那637-2（秩父ミューズパーク内）",
+     "src": "https://www.pica-resort.jp/chichibu/about/guidance.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドギーコテージ5棟（4名まで）。ほかに犬と泊まれるのはBBQ6（CAMP6）とPARK&CAMPフリーサイト（電源なし）",
+     "src": "https://www.pica-resort.jp/chichibu/about/guidance.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1棟3頭まで",
+     "src": "https://www.pica-resort.jp/chichibu/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "コテージは1頭1,900円・追加1頭600円、テントサイトは600円",
+     "src": "https://www.pica-resort.jp/chichibu/about/guidance.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "5種以上の混合ワクチンと狂犬病予防注射（最後の接種が3年以内）",
+     "src": "https://www.pica-resort.jp/chichibu/about/guidance.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドギーコテージはケージなしで同じ部屋に。場内は必ずリード。売店・樹音の湯・コテージホールは入れない",
+     "src": "https://www.pica-resort.jp/chichibu/about/guidance.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "コテージごとのプライベートドッグラン（約70㎡）と足洗い場",
+     "src": "https://www.pica-resort.jp/chichibu/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "コテージ15時〜19時／7時半〜10時、テントサイト13時〜19時／12時まで",
+     "src": "https://www.pica-resort.jp/chichibu/about/guidance.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i003029"
+  },
+  {
+   "name": "PICA山中湖",
+   "kind": "キャンプ場",
+   "pref": "山梨県",
+   "city": "南都留郡山中湖村",
+   "url": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドギーコテージ1棟（4名と犬3頭まで、シングルベッド4台）",
+     "src": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "3頭まで",
+     "src": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドギーコテージはケージなしで同じ部屋に（室内はリードか目の届く範囲で、寝るときはハウスがおすすめ）。囲いのある庭",
+     "src": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "専用のドッグラン付き",
+     "src": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "猫・小動物・小鳥も泊まれるが、室内ではケージかキャリーに入れる",
+     "src": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器と消臭スプレーをフロントで貸し出し",
+     "src": "https://www.pica-resort.jp/yamanakako/stay/site/doggy.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "small",
+    "bird"
+   ],
+   "id": "i552ccf"
+  },
+  {
+   "name": "PICAさがみ湖",
+   "kind": "キャンプ場",
+   "pref": "神奈川県",
+   "city": "相模原市緑区",
+   "url": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "コテージ・ドッグラン3棟（4名まで、さがみ湖リゾートプレジャーフォレストの中）",
+     "src": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "宿泊料金とは別にペット料金がかかる（金額は予約のページ）",
+     "src": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "室内では備え付けか持参のケージ（W93×D58×H63cm）を使う。園内は必ずリード。屋根付きテラスあり",
+     "src": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "専用のプライベートドッグラン（6m×3.5m）",
+     "src": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "アクセス",
+     "v": "フロントから歩いて約8分（送迎・荷物の配送なし）",
+     "src": "https://www.pica-resort.jp/sagamiko/stay/site/cottage_dogrun.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i52bbfc"
+  },
+  {
+   "name": "PICA富士吉田",
+   "kind": "キャンプ場",
+   "pref": "山梨県",
+   "city": "富士吉田市",
+   "url": "https://www.pica-resort.jp/yoshida/stay/site/dog-cabin.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグガーデンキャビン2棟（4名まで、2段ベッド2台）",
+     "src": "https://www.pica-resort.jp/yoshida/stay/site/dog-cabin.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ケージなしで同じ部屋に",
+     "src": "https://www.pica-resort.jp/yoshida/stay/site/dog-cabin.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "約200㎡のプライベートドッグラン（傾斜や障害物がほとんどない）",
+     "src": "https://www.pica-resort.jp/yoshida/stay/site/dog-cabin.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "アクセス",
+     "v": "河口湖ICから約8分",
+     "src": "https://www.pica-resort.jp/yoshida/stay/site/dog-cabin.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "料金の数え方",
+     "v": "4歳以上が料金・定員の対象（3歳以下は無料）",
+     "src": "https://www.pica-resort.jp/yoshida/stay/site/dog-cabin.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "idca513"
+  },
+  {
+   "name": "PICA八ヶ岳明野",
+   "kind": "キャンプ場",
+   "pref": "山梨県",
+   "city": "北杜市",
+   "url": "https://www.pica-resort.jp/en/akeno/stay/site/dogcottage.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグコテージ2棟（6名まで）とドッグキャビン1棟（6名まで）",
+     "src": "https://www.pica-resort.jp/en/akeno/stay/site/?view=site",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドッグコテージ・ドッグキャビンは犬と同じ部屋でOK",
+     "src": "https://www.pica-resort.jp/en/akeno/stay/site/dogcottage.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "コテージの前に柵で囲まれた専用スペース（3.5m×4.55m）",
+     "src": "https://www.pica-resort.jp/en/akeno/stay/site/dogcottage.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "アクセス",
+     "v": "中央道の韮崎ICから約20分",
+     "src": "https://www.pica-resort.jp/en/akeno/stay/site/dogcottage.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "料金の数え方",
+     "v": "中学生以下は無料・定員に数えない",
+     "src": "https://www.pica-resort.jp/en/akeno/stay/site/dogcottage.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器",
+     "src": "https://www.pica-resort.jp/en/akeno/stay/site/dogcottage.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i6221cb"
+  },
+  {
+   "name": "ハミルズフォレスト with DOG",
+   "kind": "貸別荘",
+   "pref": "栃木県",
+   "city": "那須郡那須町",
+   "url": "https://www.hamirus-forest.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須郡那須町高久乙802-179",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全室に露天風呂がある離れのヴィラ6室（4名・2名の部屋）",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数や種類の制限はない",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭一律2,000円（大きさにかかわらず）",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "証明書を持ってくる必要はない（ワクチンを受けられない理由がある子も泊まれる）",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "車で約10分の那須ハミルの森のドッグランを使える。敷地に散歩できる庭と小道",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ペットバス・ドライヤー・タオル（1頭1枚）・食器。ベッドステップとペットフェンスの貸し出し",
+     "src": "https://www.hamirus-forest.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i1acb7d"
   }
  ]
 }
