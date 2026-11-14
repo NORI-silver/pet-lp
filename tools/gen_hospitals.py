@@ -167,6 +167,58 @@ def _cat_answer(e, rows):
             '<p>公式サイトに書いてあることを短くしました。「—」は公式サイトに書いていない・見つからなかった項目です（「ない」という意味ではありません）。</p>'
             f'<table><thead><tr><th>病院</th><th>休診日</th><th>予約</th><th>猫にやさしい工夫</th><th>設備</th><th>駐車場</th></tr></thead><tbody>{rows_h}</tbody></table></div>')
 
+def _spec_box(e, title, kv, tiles, cap, cols, tx):
+    """答えの箱＋数字のタイル＋くらべる表（公式サイトの事実から）。"""
+    import visual as _V
+    def fv(h, k): return next((f["v"] for f in h.get("facts", []) if f["k"] == k), "")
+    li = "".join(f'<li><b class="k">{e(q)}</b>{e(a)}</li>' for q, a in kv)
+    th = "".join(f"<th>{e(lab)}</th>" for lab, _ in cols)
+    rows_h = "".join(f'<tr><th scope="row">{e(h["name"])}<small>（{e(h["prefs"][0])}）</small></th>' + "".join(f"<td>{e(fv(h, k)) or '—'}</td>" for _, k in cols) + "</tr>" for h in tx)
+    return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">{e(title)}</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}</div>'
+            f'<div class="emg-tips" style="margin-top:0"><h4>{e(cap)}（{len(tx)}院）</h4>'
+            '<p>公式サイトに書いてあることを短くしました。「—」は公式サイトに書いていない・見つからなかった項目です（「ない」という意味ではありません）。</p>'
+            f'<table><thead><tr><th>病院</th>{th}</tr></thead><tbody>{rows_h}</tbody></table></div>')
+
+def _exotic_answer(e, rows):
+    """[C] 2026-11-14 エキゾチック専門の一覧の上に答えの箱とくらべる表。"""
+    hs = list({h["id"]: h for v in rows.values() for h in v}.values())
+    fx = [h for h in hs if h.get("facts")]
+    def fv(h, k): return next((f["v"] for f in h.get("facts", []) if f["k"] == k), "")
+    nodc = sum(1 for h in fx if re.search("犬・猫は(診ない|新しくは受けない)", fv(h, "診る動物")))
+    dc = sum(1 for h in fx if re.search("犬・猫(も診る|と、)|^犬・猫・", fv(h, "診る動物")))
+    rsv = sum(1 for h in fx if re.search("予約制|予約優先", fv(h, "予約のしかた")))
+    ct = sum(1 for h in fx if "CT" in fv(h, "設備"))
+    rep = sum(1 for h in fx if re.search("爬虫類|トカゲ|ヘビ|カメ", fv(h, "診る動物")))
+    prefs = len([p for p, v in rows.items() if v])
+    kv = [("うさぎ・鳥・爬虫類を診てくれる病院は？", f"全国{len(hs)}院を{prefs}都道府県に分けて載せています。どの動物を診るかは病院ごとに違うので、カードの「診る動物」で、うちの子の種類が入っているかを確かめてください。"),
+          ("予約はいる？", f"公式サイトを確かめた{len(fx)}院のうち{rsv}院が予約制か予約優先です。小さな動物は待ち時間も負担になるので、先に予約してから行くのがおすすめです。"),
+          ("犬・猫と一緒の病院？", f"犬・猫は診ないと書いている病院が{nodc}院、犬・猫も診る病院が{dc}院です。犬や猫の声やにおいが苦手な子は、犬・猫を診ない病院を選ぶと落ち着きやすいです。")]
+    tiles = [(f"{len(hs)}院", "公式サイトで確かめたエキゾチック専門の動物病院"), (f"{rep}院", "爬虫類（カメ・トカゲ・ヘビなど）も診ると書いている病院"),
+             (f"{nodc}院", "犬・猫は診ないと書いている病院"), (f"{ct}院", "CTがあると書いている病院")]
+    tx = [h for h in fx if sum(1 for k in ("診る動物", "予約のしかた", "休診日", "設備", "支払い方法", "駐車場") if fv(h, k)) >= 3]
+    return _spec_box(e, "エキゾチック専門の動物病院のポイント", kv, tiles, "診る動物・予約・設備をくらべる",
+                     [("診る動物", "診る動物"), ("予約", "予約のしかた"), ("休診日", "休診日"), ("設備", "設備"), ("お支払い", "支払い方法")], tx)
+
+def _large_answer(e, rows):
+    """[C] 2026-11-14 大型犬の設備の一覧の上に答えの箱とくらべる表。"""
+    hs = list({h["id"]: h for v in rows.values() for h in v}.values())
+    fx = [h for h in hs if h.get("facts")]
+    def fv(h, k): return next((f["v"] for f in h.get("facts", []) if f["k"] == k), "")
+    K = "大型犬のための設備"
+    table = sum(1 for h in fx if re.search("診察台", fv(h, K)))
+    ward = sum(1 for h in fx if re.search("入院|犬舎|ケージ", fv(h, K)))
+    ct = sum(1 for h in fx if "CT" in fv(h, "設備"))
+    park = sum(1 for h in fx if fv(h, "駐車場"))
+    prefs = len([p for p, v in rows.items() if v])
+    kv = [("大型犬でも安心な動物病院は？", f"大型犬のための設備を公式サイトに書いている病院を、全国{len(hs)}院・{prefs}都道府県に分けて載せています。"),
+          ("どんな設備があると楽？", f"大型犬用や高さを変えられる診察台を書いている病院が{table}院あり、抱き上げる負担が減ります。大型犬が入れる入院室・犬舎は{ward}院が書いています。広い診察室や、車の中で待てるしくみも助かります。"),
+          ("車で行ける？", f"駐車場や車の中での待ち方を書いている病院は{park}院です。大型犬は車で行くことが多いので、行く前に駐車場を確かめてください。")]
+    tiles = [(f"{len(hs)}院", "大型犬のための設備を書いている動物病院"), (f"{table}院", "大型犬用・昇降式の診察台"),
+             (f"{ward}院", "大型犬が入れる入院室・犬舎"), (f"{ct}院", "CTがあると書いている病院")]
+    tx = [h for h in fx if sum(1 for k in (K, "設備", "休診日", "予約のしかた", "駐車場") if fv(h, k)) >= 2]
+    return _spec_box(e, "大型犬にやさしい動物病院のポイント", kv, tiles, "大型犬のための設備・駐車場をくらべる",
+                     [("大型犬のための設備", K), ("設備", "設備"), ("休診日", "休診日"), ("駐車場", "駐車場")], tx)
+
 def render_cond(cond, ctx):
     """条件ページ1枚のHTML。ctx は gen_areas.py の関数と値（head, foot, e, area_links, SITE, EMG, emg_regions, emg_opts）。"""
     e, SITE = ctx["e"], ctx["SITE"]
@@ -198,7 +250,7 @@ def render_cond(cond, ctx):
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    {_night_answer(e, rows) if cond["slug"] == "night" else _visit_answer(e, rows) if cond["slug"] == "visit" else _cat_answer(e, rows) if cond["slug"] == "cat" else ""}
+    {_night_answer(e, rows) if cond["slug"] == "night" else _visit_answer(e, rows) if cond["slug"] == "visit" else _cat_answer(e, rows) if cond["slug"] == "cat" else _exotic_answer(e, rows) if cond["slug"] == "exotic" else _large_answer(e, rows) if cond["slug"] == "large" else ""}
     <div class="emg">
       <p class="emg-free">この一覧は無料の情報です。病院からお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金や受け入れは、それぞれの病院に直接おたずねください。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
