@@ -89,7 +89,7 @@
     if (bad) return bad;
     if (!inp.value.trim()) return inp;
     // 必ず答えていただく選ぶ欄（Nori 2026-11-10「わかればの欄も必須」）。料金をここで入力するときは料金の欄も
-    var REQ = ["p_radius", "p_allday", "p_faremode", "p_prep", "p_round", "p_long", "p_lic"];
+    var REQ = ["p_radius", "p_allday", "p_faremode", "p_tax", "p_prep", "p_round", "p_long", "p_lic"];
     var one = [].filter.call(f.querySelectorAll(".pt-one[data-req]"), function(x){ return shown(x) && !val(x) && (REQ.indexOf(x.id) >= 0 || x.closest(".pt-fare")); })[0];
     if (one) return one;
     if (!prefsAll().length) return $("p_prefs");
