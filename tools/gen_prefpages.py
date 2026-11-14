@@ -48,6 +48,43 @@ def table_html(e, cat, rs):
     return ('<div class="emg-tips"><h4>条件をくらべる</h4><div class="tbl"><table class="pp-tbl"><thead>' + head + '</thead><tbody>' + body +
             '</tbody></table></div><p class="emg-tips-note">○は公式サイトにはっきり書いてあること。空欄は「しない」ではなく、公式サイトに書いていない・分からないという意味です。</p></div>')
 
+
+# [B] 2026-11-14 Nori「薄い記事は撲滅させてね。全部濃い記事にして」：一覧のデータに facts（k・v・src・checked、料金は yen・min・tax）が
+# ある店・施設は、県のページに「料金・条件をくらべる」表と、料金の棒を出す。公式サイトに書いてあることだけ。書いていない項目は「—」。
+def _fv(it, k):
+    for f in it.get("facts", []):
+        if f["k"] == k: return f
+    return None
+def _jd(d): return f"{int(d[:4])}年{int(d[5:7])}月{int(d[8:10])}日" if d and len(d) == 10 else (d or "")
+def fact_table_html(e, cat, pf, rs):
+    cols = cat.get("fact_cols")
+    hs = [it for it in rs if it.get("facts")]
+    if not cols or not hs: return ""
+    import visual as _V
+    def cell(it, ks):
+        vs = [f["v"] for f in (_fv(it, k) for k in ks) if f]
+        return e("／".join(vs)) if vs else "—"
+    unit, name = cat["unit"], cat["name"]
+    rows = "".join(f'<tr><th scope="row">{e(it["name"])}</th>' + "".join(f"<td>{cell(it, ks)}</td>" for _, ks in cols) + "</tr>" for it in hs)
+    pk = cat.get("price_key", "料金")
+    pr = sorted([(it, _fv(it, pk)) for it in hs if (_fv(it, pk) or {}).get("yen")], key=lambda x: x[1]["yen"])
+    out = f'<div class="emg-tips" style="margin-top:0"><h4>{e(pf)}の{e(name)}の料金・条件をくらべる</h4>'
+    out += (f'<p>載せている{len(rs)}{e(unit)}のうち{len(hs)}{e(unit)}について、公式サイトに書いてある料金・交通費・キャンセル料などをまとめました。'
+            + (f'1回の料金を書いているのは{len(pr)}{e(unit)}です。' if pr else '') + '</p>')
+    if len(pr) >= 2:
+        tax = {"込": "税込", "抜": "税抜"}
+        out += _V.bars({"title": cat.get("price_title", "いちばん短いコースの1回の料金（公式サイトの表示どおり）"),
+                        "rows": [(it["name"], f["yen"], f'{f["yen"]:,}円' + (f'／{f["min"]}分' if f.get("min") else "") + (f'（{tax[f["tax"]]}）' if f.get("tax") in tax else ""))
+                                 for it, f in pr],
+                        "note": "店ごとにコースの時間・税の表示がちがうので、そのまま並べています。交通費・初回の費用は別です。"})
+    dates = sorted({f.get("checked", "") for it in hs for f in it["facts"]})
+    srcs = "".join(f'<li><a href="{e(it["url"])}" target="_blank" rel="noopener">{e(it["name"])}の公式サイト</a></li>' for it in hs)
+    out += ('<div class="tbl"><table class="pp-tbl"><thead><tr><th>名前</th>' + "".join(f"<th>{e(lab)}</th>" for lab, _ in cols) +
+            f'</tr></thead><tbody>{rows}</tbody></table></div>'
+            f'<p class="emg-tips-note">「—」は公式サイトに書いていない・見つからなかった項目です（「しない」という意味ではありません）。{_jd(dates[-1] if dates else "")}までに公式サイトで確かめました。料金は変わることがあるので、頼む前に必ず公式サイトでご確認ください。</p>'
+            f'<details><summary>確かめた公式サイト</summary><ul>{srcs}</ul></details></div>')
+    return out
+
 def render_pref(ctx, cat, pf, rows):
     e, SITE = ctx["e"], ctx["SITE"]
     rs = rows[pf]
@@ -92,7 +129,7 @@ def render_pref(ctx, cat, pf, rows):
       {f'<div class="emg-tips" style="margin-top:0"><h4>{e(pf)}の{e(name)}のようす</h4>{facts_html}</div>' if facts_html else ''}
       {cat["extra"](e, pf) if cat.get("extra") else ""}
       {cat["fac_chips"](e, pf) + chr(10) + "      " if cat.get("fac_chips") else ""}<section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(cat.get("list_h", name))}（{e(pf)}・{n}{e(unit)}）</h2>{cards}</section>
-      {table_html(e, cat, rs)}
+      {table_html(e, cat, rs)}{fact_table_html(e, cat, pf, rs)}
       {cat["extra_after"](e, pf) if cat.get("extra_after") else ""}
       {near_html}
       <div class="emg-tips"><h4>{e(cat['before_title'])}</h4><dl>{"".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in cat['before'])}</dl></div>

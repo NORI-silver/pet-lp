@@ -1,5 +1,5 @@
 {
- "_説明": "ペットシッター（自宅に来てお世話・散歩代行）の全国一覧（/pet-sitter/）のデータ。各グループの公式サイトの店舗一覧（2026年11月2日）に載っている店舗名・対応エリア・店舗ページのURLだけを書く。料金・順位・電話番号は書かない。chain: SOS＝ペットシッターSOS（公式サイト：全加盟店が資格保有者でペットシッター保険に加入、犬・猫・小動物、事前の打ち合わせあり）、intopet＝ペットシッターintopetグループ（公式サイト：全店でペットシッター保険に加入し動物取扱業の登録、犬・猫・小動物・鳥）。口コミの星は出さない（訪問型で店舗がないため）。",
+ "_説明": "ペットシッター（自宅に来てお世話・散歩代行）の全国一覧（/pet-sitter/）のデータ。各グループの公式サイトの店舗一覧（2026年11月2日）に載っている店舗名・対応エリア・店舗ページのURLだけを書く。順位・電話番号は書かない。2026-11-14 から、店の公式サイトで確かめた料金・交通費・鍵・キャンセル料などを facts（k・v・src・checked、料金は yen・min・tax）に入れる（Nori「薄い記事は撲滅させてね」）。人の名前・登録番号は入れない。chain: SOS＝ペットシッターSOS（公式サイト：全加盟店が資格保有者でペットシッター保険に加入、犬・猫・小動物、事前の打ち合わせあり）、intopet＝ペットシッターintopetグループ（公式サイト：全店でペットシッター保険に加入し動物取扱業の登録、犬・猫・小動物・鳥）。口コミの星は出さない（訪問型で店舗がないため）。",
  "checked": "2026年11月2日",
  "chains": {
   "SOS": {
@@ -1085,7 +1085,21 @@
    ],
    "area": "人吉市、球磨郡",
    "url": "https://www.petsitter.co.jp/shop/hitoyoshi/",
-   "chain": "SOS"
+   "chain": "SOS",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シッティング料金＋出張料金＋交通費（金額は本部の料金ページ）",
+     "src": "https://www.petsitter.co.jp/shop/hitoyoshi/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応する動物",
+     "v": "犬・猫・小動物など、家で飼われている動物はほぼ対応",
+     "src": "https://www.petsitter.co.jp/shop/hitoyoshi/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "S106",
@@ -2491,7 +2505,27 @@
    ],
    "area": "札幌市・小樽市・石狩市・北広島市・江別市",
    "url": "https://npet.jp/chame/",
-   "chain": "nihon"
+   "chain": "nihon",
+   "facts": [
+    {
+     "k": "鍵",
+     "v": "鍵預り証を発行して保管",
+     "src": "https://npet.jp/chame/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応する動物",
+     "v": "犬・猫・うさぎ・ハムスターなどの小動物",
+     "src": "https://npet.jp/chame/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "保険",
+     "v": "ペットシッター向けの賠償責任保険に加入",
+     "src": "https://npet.jp/chame/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "S245",
@@ -2789,9 +2823,61 @@
    "prefs": [
     "広島県"
    ],
-   "area": "福山市",
+   "area": "広島市（中・東・南・西・安佐南・安佐北・安芸・佐伯区）、府中町・海田町・坂町、廿日市市（一部を除く）",
    "url": "https://www.pet-ss.com/withyou-h/",
-   "chain": "nihon"
+   "chain": "nihon",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本60分：小型犬3,600円・中型犬3,900円・大型犬4,200円・猫2匹まで3,900円・小動物3,600円。ショート40分：猫2匹まで3,700円。散歩代行30分：小型犬3,300円〜（小型犬10kg未満、大型犬20kg以上）",
+     "src": "https://www.pet-ss.com/withyou-h/",
+     "checked": "2026-11-14",
+     "yen": 3300,
+     "min": 30
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "お店からの実費。車は1kmあたり70円、駐車場代は別",
+     "src": "https://www.pet-ss.com/withyou-h/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "初回・契約",
+     "v": "初回登録料 2,900円（種類・頭数・回数を問わず一律）",
+     "src": "https://www.pet-ss.com/withyou-h/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "鍵",
+     "v": "鍵預り証を発行して保管",
+     "src": "https://www.pet-ss.com/withyou-h/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応する動物",
+     "v": "犬・猫・うさぎ・ハムスター・モルモットなど（水槽のペットはえさやりだけ、爬虫類は対象外）",
+     "src": "https://www.pet-ss.com/withyou-h/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "キャンセル料",
+     "v": "2日前30%、前日50%、当日100%",
+     "src": "https://www.pet-ss.com/withyou-h/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "保険",
+     "v": "ペットシッター向けの賠償責任保険に加入",
+     "src": "https://www.pet-ss.com/withyou-h/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "動物取扱業",
+     "v": "登録あり",
+     "src": "https://www.pet-ss.com/withyou-h/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "S275",
@@ -2799,9 +2885,41 @@
    "prefs": [
     "広島県"
    ],
-   "area": "福山市",
+   "area": "福山市・尾道市・笠岡市とその周辺",
    "url": "https://npet.jp/withyou/",
-   "chain": "nihon"
+   "chain": "nihon",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "相談で決める（5回以上つづけて使うと基本料金5%引き）",
+     "src": "https://npet.jp/withyou/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "鍵",
+     "v": "鍵預り証を発行し、事務所の保管庫で保管",
+     "src": "https://npet.jp/withyou/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "福山市・尾道市・笠岡市とその周辺",
+     "src": "https://npet.jp/withyou/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "保険",
+     "v": "ペットシッター向けの賠償責任保険に加入",
+     "src": "https://npet.jp/withyou/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "動物取扱業",
+     "v": "登録あり",
+     "src": "https://npet.jp/withyou/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "S276",
@@ -2899,9 +3017,55 @@
    "prefs": [
     "熊本県"
    ],
-   "area": "菊池郡大津町",
+   "area": "熊本市とその周辺",
    "url": "https://www.pet-ss.com/kuma-meyou/",
-   "chain": "nihon"
+   "chain": "nihon",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本60分：小型犬3,300円・中型犬3,600円・大型犬3,900円・猫2匹まで3,300円。ショート30分：猫2匹まで2,500円。散歩代行30分：小型犬2,000円〜",
+     "src": "https://www.pet-ss.com/kuma-meyou/",
+     "checked": "2026-11-14",
+     "yen": 2000,
+     "min": 30
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "熊本市役所から家までの距離1kmあたり20円。初回の打ち合わせは料金も交通費も無料",
+     "src": "https://www.pet-ss.com/kuma-meyou/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "初回・契約",
+     "v": "初回登録料 2,000円（一律）",
+     "src": "https://www.pet-ss.com/kuma-meyou/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "鍵",
+     "v": "鍵預り証を発行し、事務所の保管庫で保管",
+     "src": "https://www.pet-ss.com/kuma-meyou/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応する動物",
+     "v": "犬・猫・うさぎ・ハムスター・モルモットなど（爬虫類は相談、水槽はえさやりだけ）",
+     "src": "https://www.pet-ss.com/kuma-meyou/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "キャンセル料",
+     "v": "2日前20%、前日30%、当日100%",
+     "src": "https://www.pet-ss.com/kuma-meyou/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "保険",
+     "v": "ペットシッター向けの賠償責任保険に加入",
+     "src": "https://www.pet-ss.com/kuma-meyou/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "S286",
@@ -3019,9 +3183,38 @@
    "prefs": [
     "奈良県"
    ],
-   "area": "奈良の対応エリア（公式サイトのエリアページ参照）",
+   "area": "奈良市・生駒市・大和郡山市",
    "url": "https://penguinsitter.com/area/nara",
-   "chain": "penguin"
+   "chain": "penguin",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "散歩代行 30分3,000円〜、猫・小動物のお世話 約45分3,500円〜、犬のお世話 約60分4,000円〜（税別）。延長15分ごと＋1,000円",
+     "src": "https://penguinsitter.com/area/nara",
+     "checked": "2026-11-14",
+     "yen": 3000,
+     "min": 30,
+     "tax": "抜"
+    },
+    {
+     "k": "鍵",
+     "v": "いないときはカウンセリングで合鍵を預かり、紛失防止タグをつけて保管",
+     "src": "https://penguinsitter.com/area/nara",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応する動物",
+     "v": "家で飼われている動物はすべて（スタッフにより違う）",
+     "src": "https://penguinsitter.com/area/nara",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "奈良市・生駒市・大和郡山市",
+     "src": "https://penguinsitter.com/area/nara",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "S298",
@@ -3039,9 +3232,38 @@
    "prefs": [
     "広島県"
    ],
-   "area": "広島の対応エリア（公式サイトのエリアページ参照）",
+   "area": "広島市の8区、廿日市市、府中町・海田町",
    "url": "https://penguinsitter.com/area/hiroshima",
-   "chain": "penguin"
+   "chain": "penguin",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "散歩代行 30分3,000円〜、猫・小動物のお世話 約45分3,500円〜、犬のお世話 約60分4,000円〜（税別）。延長15分ごと＋1,000円",
+     "src": "https://penguinsitter.com/area/hiroshima",
+     "checked": "2026-11-14",
+     "yen": 3000,
+     "min": 30,
+     "tax": "抜"
+    },
+    {
+     "k": "鍵",
+     "v": "いないときはカウンセリングで合鍵を預かり、紛失防止タグをつけて保管",
+     "src": "https://penguinsitter.com/area/hiroshima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応する動物",
+     "v": "家で飼われている動物はすべて（スタッフにより違う）。うさぎ・フェレット・デグー・チンチラ・インコ・モモンガ・メダカなどの例",
+     "src": "https://penguinsitter.com/area/hiroshima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "広島市の8区、廿日市市、府中町・海田町",
+     "src": "https://penguinsitter.com/area/hiroshima",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "S300",
@@ -3109,9 +3331,38 @@
    "prefs": [
     "熊本県"
    ],
-   "area": "熊本の対応エリア（公式サイトのエリアページ参照）",
+   "area": "熊本市、菊陽町・大津町、嘉島町・益城町・御船町・甲佐町、合志市",
    "url": "https://penguinsitter.com/area/kumamoto/",
-   "chain": "penguin"
+   "chain": "penguin",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "散歩代行 30分3,000円〜、猫・小動物のお世話 約45分3,500円〜、犬のお世話 約60分4,000円〜（税別）。延長15分ごと＋1,000円",
+     "src": "https://penguinsitter.com/area/kumamoto/",
+     "checked": "2026-11-14",
+     "yen": 3000,
+     "min": 30,
+     "tax": "抜"
+    },
+    {
+     "k": "鍵",
+     "v": "初回はシッターがあいさつ（カウンセリング）に来て、納得してから合鍵を預かる",
+     "src": "https://penguinsitter.com/area/kumamoto/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応する動物",
+     "v": "家で飼われている動物はすべて（スタッフにより違う）",
+     "src": "https://penguinsitter.com/area/kumamoto/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "熊本市、菊陽町・大津町、嘉島町・益城町・御船町・甲佐町、合志市",
+     "src": "https://penguinsitter.com/area/kumamoto/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "S307",
@@ -3205,7 +3456,39 @@
    "area": "広島市全域と周辺",
    "url": "https://www.pet-soin.com/",
    "animals": "犬・猫（散歩・食事・トイレ。24時間受付、年中無休）",
-   "chain": "indie"
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "初回・契約",
+     "v": "見積もり・事前の打ち合わせは無料",
+     "src": "https://www.pet-soin.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "鍵",
+     "v": "預かった鍵はシッティングのとき以外は使わない（希望すれば預かり証）",
+     "src": "https://www.pet-soin.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応する動物",
+     "v": "犬・猫・うさぎ・小動物",
+     "src": "https://www.pet-soin.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "キャンセル料",
+     "v": "始まる日の2日前までは無料",
+     "src": "https://www.pet-soin.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "動物取扱業",
+     "v": "登録あり",
+     "src": "https://www.pet-soin.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "S316",
@@ -3229,7 +3512,42 @@
    "area": "和歌山県全域・大阪府南部・奈良県南東部",
    "url": "https://petsitterland.com/",
    "animals": "犬・猫・小動物（登録番号 28第1043号）",
-   "chain": "indie"
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "約1時間・1日1回：猫 4,000円、小型犬 4,000円、中型犬 4,500円、大型犬 5,000円（税抜）",
+     "src": "https://petsitterland.com/",
+     "checked": "2026-11-14",
+     "yen": 4000,
+     "min": 60,
+     "tax": "抜"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "依頼場所までの交通費が別にかかる（範囲が広いので相談）",
+     "src": "https://petsitterland.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "鍵",
+     "v": "打ち合わせで合鍵を預かり、終わってから7日以内にレターパックで返す",
+     "src": "https://petsitterland.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応する動物",
+     "v": "猫・犬・小動物（1ケージごと）",
+     "src": "https://petsitterland.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "保険",
+     "v": "ペットシッター賠償保険に加入",
+     "src": "https://petsitterland.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "S318",
@@ -3274,7 +3592,36 @@
    "area": "奈良市・精華町・木津川市を中心（大和郡山市・生駒市の一部も）",
    "url": "https://gajumarusitter.com/",
    "animals": "犬・猫・うさぎ・鳥・小動物・爬虫類など（シニアのお世話も。登録 第123022号）",
-   "chain": "indie"
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "40分 2,530円〜、60分 3,300円〜（税込）。年末年始・GW・お盆は20%増し、営業時間外は夜間料金1,100円",
+     "src": "https://gajumarusitter.com/",
+     "checked": "2026-11-14",
+     "yen": 2530,
+     "min": 40,
+     "tax": "込"
+    },
+    {
+     "k": "初回・契約",
+     "v": "契約手数料・初回手数料はなし（料金は打ち合わせのときに前払い）",
+     "src": "https://gajumarusitter.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応する動物",
+     "v": "犬・猫・うさぎ・モルモット・デグー・ハムスター・リス・インコ・爬虫類など",
+     "src": "https://gajumarusitter.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "動物取扱業",
+     "v": "登録あり（保管）",
+     "src": "https://gajumarusitter.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "S322",
@@ -3286,7 +3633,53 @@
    "area": "奈良市を中心に生駒市・大和郡山市・木津川市・精華町",
    "url": "https://robaannie.com/",
    "animals": "犬（大型犬は相談。登録 奈良市第124004号）",
-   "chain": "indie"
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "散歩代行 30分1,500円・40分2,000円、お留守番のお世話 30分1,800円・40分2,400円（犬の大きさで変わらない。多頭は1頭ごとに追加）",
+     "src": "https://robaannie.com/",
+     "checked": "2026-11-14",
+     "yen": 1500,
+     "min": 30
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "初回のみカルテ作成と出張費で2,000円。車の移動は1kmあたり100円、駐車場代は実費",
+     "src": "https://robaannie.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "鍵",
+     "v": "お留守番のお世話は鍵を預かる（金庫で保管）。散歩代行は預からない",
+     "src": "https://robaannie.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応する動物",
+     "v": "犬（犬種を問わない。大型犬は相談）",
+     "src": "https://robaannie.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "キャンセル料",
+     "v": "前日50%、当日100%",
+     "src": "https://robaannie.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "保険",
+     "v": "賠償責任保険に加入（毎年更新）",
+     "src": "https://robaannie.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "動物取扱業",
+     "v": "登録あり（保管）",
+     "src": "https://robaannie.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "S323",
@@ -3298,7 +3691,48 @@
    "area": "奈良市・生駒市を中心に木津川市・精華町・四條畷市の一部",
    "url": "https://aoiro-no-sora.com/service/",
    "animals": "犬・猫・小動物・鳥（シッター・散歩代行・訪問介護。登録 奈良市第125014号）",
-   "chain": "indie"
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "30分：猫 2,000円、犬15kg未満 2,500円・15〜40kg 3,500円、小動物・小鳥 2,000円。散歩代行30分 2,000円〜（1頭あたり税込）。繁忙期は2割増、時間外は1,000円",
+     "src": "https://aoiro-no-sora.com/fee-list/",
+     "checked": "2026-11-14",
+     "yen": 2000,
+     "min": 30,
+     "tax": "込"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "お店との往復の距離1kmあたり100円（税込）、有料駐車場は実費",
+     "src": "https://aoiro-no-sora.com/fee-list/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "初回・契約",
+     "v": "初回訪問相談料 2,000円（税込。キャンペーン中は無料）",
+     "src": "https://aoiro-no-sora.com/service/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応する動物",
+     "v": "犬・猫・ハムスター・モルモット・うさぎ・フェレットなどの小動物・インコや文鳥などの小鳥",
+     "src": "https://aoiro-no-sora.com/service/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "キャンセル料",
+     "v": "予約日の前日0時以降はかかる（金額は書いていない）",
+     "src": "https://aoiro-no-sora.com/fee-list/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "動物取扱業",
+     "v": "登録あり",
+     "src": "https://aoiro-no-sora.com/service/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "S324",
