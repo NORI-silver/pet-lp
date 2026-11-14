@@ -6,7 +6,7 @@ Nori 2026-11-08「1と2」。gen_areas.py の最後（crosslink のあと）に�
 料金は概算で、確定料金ではないことを必ず添える。電話番号は出さない。"""
 import os, re
 
-DIRS = ["hospital", "dogrun", "jichitai", "sougi", "pet-hotel", "pet-sitter", "trimming", "dog-trainer", "rojin-home", "inu-yado", "inu-cafe", "hinan"]
+DIRS = ["hospital", "dogrun", "jichitai", "sougi", "pet-hotel", "pet-sitter", "trimming", "dog-trainer", "rojin-home", "inu-yado", "inu-cafe", "hinan", "joto"]
 TOP4 = {"tokyo", "kanagawa", "saitama", "chiba"}
 # 一覧の上に出す短い案内（見出し, 説明）。ないカテゴリは上に出さない
 # 2026-11-14 Nori「一番最初にタクシーの動線があるけど、不適切な気がする、ユーザーのインテントと違うよね？」：

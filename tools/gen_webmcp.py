@@ -23,6 +23,7 @@ CATS = [
     ("mobile_grooming", "出張トリミング", "/trimming/"),
     ("pet_funeral", "ペット火葬・霊園・納骨堂（民間）", "/sougi/"),
     ("city_animal_office", "自治体の動物愛護センター・保健所（迷子・登録・引取り）", "/jichitai/"),
+    ("adoption_center", "保護犬・保護猫の譲渡の窓口（都道府県・政令市の動物愛護センター）", "/joto/"),
 ]
 
 def _j(root, name):
@@ -82,6 +83,7 @@ def build(root):
         if x["id"] in gen_sougi_fac.IDS: r["page"] = SITE + gen_sougi_fac.href(x)
     jc = _j(root, "jichitai.json")
     data["city_animal_office"] = [_row(x["pref"], x) for x in jc["prefs"]] + [_row(x["pref"], x) for x in jc["cities"]]
+    data["adoption_center"] = [_row(x["pref"], x, x.get("animals", "")) for x in _j(root, "joto.json")["centers"]]
     for k, v in data.items():
         for r in v:
             assert r["url"], (k, r)

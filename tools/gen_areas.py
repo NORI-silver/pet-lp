@@ -826,6 +826,8 @@ def guide_hub(slug):
         return "/pet-hotel/", "ペットホテル", "大型犬OK・猫専用のペットホテルを見る"
     if slug in ("pet-evacuation", "pet-disaster-prep"):
         return "/hinan/", "ペットと避難（同行避難）", "都道府県・市区の避難所の決まりを見る"
+    if slug == "adopt-pet":
+        return "/joto/", "保護犬・保護猫の譲渡の窓口", "住んでいる都道府県の譲渡の条件と譲渡会を見る"
     if slug == "pet-insurance":
         return "/hospital/", "条件でさがす動物病院", "夜間・救急や往診の動物病院をさがす"
     return "/guide/", "ペットの移動ガイド", ""
@@ -2201,6 +2203,13 @@ import gen_prefcats
 for _cat in (gen_prefcats.SOUGI, gen_prefcats.NIGHT):
     gen_prefpages.write_all(ROOT, _pp_ctx0, _cat); gen_prefpages.link_national(ROOT, _pp_ctx0, _cat)
     hosp_urls = hosp_urls + gen_prefpages.urls(SITE, _cat)
+# [B] 保護犬・保護猫を迎える（譲渡・里親）（/joto/ と /joto/<県>/。tools/gen_joto.py、データ tools/joto.json。2026-11-14）
+import gen_joto
+gen_joto.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
+  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_joto.urls(SITE)
+gen_prefpages.write_all(ROOT, _pp_ctx0, gen_joto.CAT); gen_prefpages.link_national(ROOT, _pp_ctx0, gen_joto.CAT)
+hosp_urls = hosp_urls + gen_prefpages.urls(SITE, gen_joto.CAT)
 # [B] SEO：ペット火葬場・霊園の施設ごとのページ（試しの30施設。tools/gen_sougi_fac.py）
 import gen_sougi_fac
 gen_sougi_fac.write_all(ROOT, _pp_ctx0)
@@ -2344,7 +2353,7 @@ open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
 # 同じURLを分野ごとの /sitemaps/<分野>.xml にも入れて、/sitemap_index.xml でまとめる。Search Console でサイトマップごとの
 # 登録数が出るので、分野ごとの登録率（品質の関門）を数えられる。分野はURLの最初のフォルダで決める（ペットタクシーの地域・トップ・規約などは taxi）。
 SITEMAP_CATS = {"guide": "guide", "sougi": "sougi", "dogrun": "dogrun", "hospital": "hospital", "pet-hotel": "pet-hotel",
-                "pet-sitter": "pet-sitter", "dog-trainer": "dog-trainer", "rojin-home": "rojin-home", "trimming": "trimming", "jichitai": "jichitai", "hinan": "hinan"}
+                "pet-sitter": "pet-sitter", "dog-trainer": "dog-trainer", "rojin-home": "rojin-home", "trimming": "trimming", "jichitai": "jichitai", "hinan": "hinan", "joto": "joto"}
 def _sm_cat(u):
   return SITEMAP_CATS.get(u[len(SITE) + 1:].split("/")[0], "taxi")
 _sm_groups = {}
