@@ -1498,13 +1498,24 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 問い合わせできる会社がいる都道府県（tools/gen_areas.py が booking/Code.gs の OPEN_PARTNERS から作る）。県を選んだ時点で知らせる（2026-11-08 飼い主目線のレビュー #1）
   /*OPEN_PREFS*/var OPEN_PREFS = ["京都", "兵庫", "北海道", "千葉", "和歌山", "埼玉", "大阪", "奈良", "山梨", "広島", "東京", "栃木", "滋賀", "神奈川", "福岡", "群馬", "茨城", "長野", "静岡"];/*/OPEN_PREFS*/
   /*AREA_PREFS*/var AREA_PREFS = ["三重", "京都", "佐賀", "兵庫", "北海道", "千葉", "和歌山", "埼玉", "大阪", "奈良", "宮城", "山梨", "岐阜", "岩手", "広島", "徳島", "愛知", "東京", "栃木", "滋賀", "石川", "神奈川", "福岡", "群馬", "茨城", "長崎", "長野", "静岡"];/*/AREA_PREFS*/
-  // 会社が見つかっていない県は、選ぶ前に分かるよう「（候補なし）」を付ける（値は県名のまま）
+  /*FAR_PREFS*/var FAR_PREFS = ["大分", "宮崎", "富山", "山口", "山形", "岡山", "島根", "愛媛", "新潟", "熊本", "福井", "福島", "秋田", "青森", "香川", "高知", "鳥取", "鹿児島"];/*/FAR_PREFS*/
+  // 県の中にお店はないが県の外の会社がお迎えに行く県は「（県外の会社のみ）」を付け（値は県名のまま）、お迎えに行ける会社が1社もない県は選択欄から消す（Nori 2026-11-14）
+  var NO_PICK = [];
   function markPrefs(){
     if (!AREA_PREFS.length) return;
-    Array.prototype.forEach.call($("pref").options, function(o){
+    Array.prototype.slice.call($("pref").options).forEach(function(o){
       if (!o.value || AREA_PREFS.indexOf(shortPref(o.value)) >= 0) return;
-      var v = o.value; o.value = v; o.textContent = v + "（候補なし）";
+      if (FAR_PREFS.indexOf(shortPref(o.value)) >= 0) { var v = o.value; o.value = v; o.textContent = v + "（県外の会社のみ）"; return; }
+      if (NO_PICK.indexOf(o.value) < 0) NO_PICK.push(o.value);
+      var was = o.selected; o.remove();
+      if (was) { $("pref").value = ""; noPick(o.value); }
     });
+  }
+  function noPick(p){
+    var fx = $("prefFix");
+    if (!fx) return;
+    fx.textContent = p + "にお迎えに行けるペットタクシーの会社は、まだ見つかっていません。";
+    fx.hidden = false;
   }
   markPrefs();
   var quotesLoaded = false; // いま出ている候補がサーバーから届いたものか
@@ -2655,6 +2666,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         if (pp === "out") {
           lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
           $("partnerResults").hidden = true; est.innerHTML = '<div class="t">ルートの地図</div><p>場所を確かめてください。お迎えの場所が、対応エリアの外のようです。</p>';
+          return;
+        }
+        if (pp && NO_PICK.indexOf(pp) >= 0) {
+          lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
+          $("partnerResults").hidden = true; est.innerHTML = '<div class="t">ルートの地図</div><p>' + pp + 'にお迎えに行けるペットタクシーの会社は、まだ見つかっていません。</p>';
           return;
         }
         if (pp && pp !== $("pref").value) {
