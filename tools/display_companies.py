@@ -496,7 +496,7 @@ PROVIDER = {
     'D5598693': {'anywhere': True, 'ng_prefs': ['沖縄'], 'ride_ge_pick': True, 'need_prefs': ['茨城', '栃木', '群馬', '埼玉', '千葉', '東京', '神奈川', '山梨', '静岡'],
                  'hide_fare': True, 'pay': '現金・クレジットカード・電子マネー・QR（10万円を超える送迎は事前に全額振込み）', 'hours': '0-24', 'car_type': '軽貨物車（黒ナンバー）',
                  'limits_set': ['大型犬1頭まで（大人2人まで同乗）', '同乗は3人まで', '50kgまで', '頭数で料金は変わらない'],
-                 'fare_add': {'pick': {'km': 8, 'yen': 0, 'per': 100, 'whole': True}, 'pickOnce': True, 'back': {}, 'night': {'from': 22, 'to': 8, 'rate': 0.3, 'by': 'start', 'maxKm': 100},
+                 'fare_add': {'tax': '税込（消費税なし）', 'pick': {'km': 8, 'yen': 0, 'per': 100, 'whole': True}, 'pickOnce': True, 'back': {}, 'night': {'from': 22, 'to': 8, 'rate': 0.3, 'by': 'start', 'maxKm': 100},
                               'prefAdd': [[['北海道'], 10000, '北海道特別料金']], 'ferry': True, 'advanceRate': 0.04, 'quotePickKm': 100,
                               'notes': ['高速料金は実費で、お迎えに向かう分・戻る分にもかかります。']}},
 }
