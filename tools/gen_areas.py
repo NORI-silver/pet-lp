@@ -679,6 +679,7 @@ def pref_company_table(pf, short, cs, cities=()):
     rows = []
     for c in cs:
         F = c.get("fare") if c.get("fare") and c["fare"].get("kind", "dist") == "dist" and c["fare"].get("base") else None
+        if c.get("hide_fare"): F = None  # 料金の数字を1社ずつ並べないでほしいと言われた会社（ふわふわ 2026-11-14「数値の公表は避けていただけませんか」）。全体の目安の計算には入れる
         h = c.get("hours") or ""
         ht = "24時間" if h == "0-24" else (h.replace("-", "時〜") + "時" if h else "—")
         r5 = f"{_nat_ride(F, 5):,}円" if F else "お見積もり"

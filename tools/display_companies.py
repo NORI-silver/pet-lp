@@ -488,19 +488,38 @@ PROVIDER = {
     'D0ec95b6': {'pay': '現金・カード・電子マネー・QRコード決済',  # COCOタク福岡東：提携の申し込み 2026-11-10
                  'limits_add': ['同乗は2人まで', '2頭OK', '大型犬1頭まで']},
     'De308905': {'radius_km': 300, 'limits_add': ['同乗は3人まで']},  # COCOタク練馬杉並：提携の申し込み 2026-11-09（お迎えに行ける距離 お店から300kmまで）
+    # ふわふわペットタクシー（提携先 P066）：平さんのメール 2026-11-14「弊社はお迎え距離は無制限」と、提携の確認ページ（a=pconf）の答え 2026-11-14 21:51（予約シート「提携の確認」）。
+    # 起点は相鉄線 緑園都市駅。行けない地域は沖縄・離島。乗る距離がお迎えに向かう距離より短い依頼は受けない。お迎えか行き先が関東近県のときだけ（大阪→福岡のような依頼は受けない）。
+    # お迎え対応費は8km以上なら距離の全部×100円（往復でも行きの1回だけ）。回送料金なし。深夜早朝（22時〜翌8時）は乗る時刻がその時間帯のとき実走料金の3割増し、100km以上は割増なし。
+    # 北海道特別料金 10,000円＋フェリー代、立替手数料4%。遠くからのお迎え（大阪→横浜など）は大幅割引で計算方法は非公開なので、お迎えが100km超はお見積もり。
+    # 車：ミニバンは運転手付きレンタカー（白ナンバー）なので、このサイトの依頼は黒ナンバーの車だけ（Nori 2026-11-12 白ナンバーとは提携しない）
+    'D5598693': {'anywhere': True, 'ng_prefs': ['沖縄'], 'ride_ge_pick': True, 'need_prefs': ['茨城', '栃木', '群馬', '埼玉', '千葉', '東京', '神奈川', '山梨', '静岡'],
+                 'hide_fare': True, 'pay': '現金・クレジットカード・電子マネー・QR（10万円を超える送迎は事前に全額振込み）', 'hours': '0-24', 'car_type': '軽貨物車（黒ナンバー）',
+                 'limits_set': ['大型犬1頭まで（大人2人まで同乗）', '同乗は3人まで', '50kgまで', '頭数で料金は変わらない'],
+                 'fare_add': {'pick': {'km': 8, 'yen': 0, 'per': 100, 'whole': True}, 'pickOnce': True, 'back': {}, 'night': {'from': 22, 'to': 8, 'rate': 0.3, 'by': 'start', 'maxKm': 100},
+                              'prefAdd': [[['北海道'], 10000, '北海道特別料金']], 'ferry': True, 'advanceRate': 0.04, 'quotePickKm': 100,
+                              'notes': ['高速料金は実費で、お迎えに向かう分・戻る分にもかかります。']}},
 }
 
 def apply_provider(row):
     """申し込み・返事で会社本人が答えたこと（PROVIDER）を、候補カードの1社分に重ねる。何度かけても同じ結果になる。"""
     pv = PROVIDER.get(row.get('id'), {})
     if not pv: return row
-    for k in ('hours', 'pay'):
+    for k in ('hours', 'pay', 'car_type'):
         if pv.get(k): row[k] = pv[k]
-    lim = list(row.get('limits') or [])
+    lim = list(pv['limits_set']) if pv.get('limits_set') else list(row.get('limits') or [])  # limits_set：会社の答えで置きかえる（公式サイトの車の記載が、このサイトで使わない車のとき）
     lim = (lim + [x for x in pv.get('limits_add', []) if x not in lim])[:4]
     if lim: row['limits'] = lim
     if any(x.startswith('大型犬') for x in lim) and row.get('points'): row['points'] = [x for x in row['points'] if x != '大型犬OK']
     if pv.get('fare_add') and row.get('fare'): row['fare'].update(pv['fare_add'])
+    if pv.get('hide_fare'): row['hide_fare'] = True  # エリアのページの会社ごとの料金の行に数字を出さない（候補カードの合計の目安は出す）
+    # お迎えの距離に上限のない会社（2026-11-14）：行けない県のほかは全部の県でお迎えの候補にする。far にも写すと、
+    # お迎えの都道府県の選択欄の「県外の会社のみ」・会社のない県を消す判定（gen_areas.py）にもそのまま効く
+    if pv.get('anywhere'):
+        row['anywhere'], row['ng_prefs'], row['long'] = True, pv.get('ng_prefs', []), True
+        if pv.get('ride_ge_pick'): row['ride_ge_pick'] = True
+        if pv.get('need_prefs'): row['need_prefs'] = pv['need_prefs']  # お迎えか行き先が、このどれかの県のときだけ
+        row['far'] = [x for x in PREF47 if x not in row.get('areas', []) and x not in row['ng_prefs']]
     return row
 
 def main(master, comp, tariffs=None, facts_path=None):
