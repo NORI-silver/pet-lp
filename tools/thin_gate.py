@@ -39,7 +39,7 @@ def measure(root, paths):
 # 数える分野（URLの最初のフォルダ）。ここにない分野（ペットタクシーのトップ・エリア・市・規約・提携）は対象外。
 # 新しい情報の分野を作ったらここに足す。分野の入口のページ（/dogrun/ など1段目）は一覧の入口なので数えない。
 CATS = ("guide", "dogrun", "sougi", "hospital", "jichitai", "hinan", "joto", "pet-sitter", "trimming", "dog-trainer",
-        "rojin-home", "pet-hotel", "inu-yado", "inu-cafe", "emergency")
+        "rojin-home", "pet-hotel", "inu-yado", "pet-yado", "inu-cafe", "emergency")
 
 
 def target(p):

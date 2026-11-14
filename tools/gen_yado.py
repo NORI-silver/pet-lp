@@ -141,7 +141,7 @@ def size_text(x):
 CSS = """<style>
 .yd-ans{background:#fff;border:2.5px solid var(--o);border-radius:22px;padding:14px 16px 6px;margin:0 0 18px;box-shadow:0 6px 18px rgba(255,106,26,.08)}
 .yd-ans>h2{font-size:1.12rem;margin:0 0 8px;border:0;padding:0}
-.yd-ans>h2::before{content:"先に答え";display:block;width:max-content;font-size:.72rem;letter-spacing:.08em;background:var(--o);color:#fff;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+.yd-ans>h2::before{content:"結論";display:block;width:max-content;font-size:.72rem;letter-spacing:.08em;background:var(--o);color:#fff;border-radius:999px;padding:2px 10px;margin-bottom:8px}
 .yd-ans ul{list-style:none;padding:0;margin:0 0 8px}
 .yd-ans li{position:relative;padding:9px 0 9px 30px;border-top:1px dashed var(--line);line-height:1.75;font-size:.93rem}
 .yd-ans li:first-child{border-top:0}
@@ -289,7 +289,7 @@ def render_pref(ctx, pf):
     rel = [(f"{pf}のドッグラン", f"/dogrun/{PSLUG[pf]}/"), (f"{pf}の夜間・救急の動物病院", f"/hospital/night/{PSLUG[pf]}/")]
     rel = [(a, h) for a, h in rel if os.path.exists(os.path.join(_D, "..", h.strip("/"), "index.html"))]
     rel += [("全国の犬と泊まれる宿", "/inu-yado/"), ("猫・うさぎなど犬以外と泊まれる宿", "/pet-yado/"), ("犬と一緒に入れるカフェ・ランチ", "/inu-cafe/")]
-    body = (f'<div class="yd-ans"><h2>{e(pf)}で犬と泊まれる宿は{n}軒</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
+    body = (f'<div class="yd-ans"><h2>{e(pf)}の犬と泊まれる宿のポイント</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
             + V.stats(tiles)
             + _fit(e, f"うちの子の大きさで、{pf}の宿を見る", f"{pf}の{n}軒を、泊まれる犬の大きさ（小型犬・中型犬・大型犬）と猫でしぼれます。犬種を選ぶと、その犬種の体重に合う宿だけが残ります。", xs)
             + f'<h2 class="yd-h">{e(pf)}の{n}軒をくらべる</h2>' + table(e, xs)

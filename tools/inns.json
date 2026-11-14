@@ -4418,6 +4418,1014 @@
     "l"
    ],
    "id": "id20cd4"
+  },
+  {
+   "name": "Rakuten STAY VILLA 草津温泉",
+   "kind": "貸別荘",
+   "pref": "群馬県",
+   "city": "吾妻郡草津町",
+   "url": "https://stay.rakuten.co.jp/villa/kusatsu-onsen/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "群馬県吾妻郡草津町草津745",
+     "src": "https://stay.rakuten.co.jp/villa/kusatsu-onsen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "一部の客室（予約時に「ペット可」の表示で確かめる）",
+     "src": "https://stay.rakuten.co.jp/villa/kusatsu-onsen/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i9e5cf7"
+  },
+  {
+   "name": "Rakuten STAY VILLA 箱根強羅",
+   "kind": "貸別荘",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://stay.rakuten.co.jp/villa/hakone-gora/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡箱根町強羅1320-299",
+     "src": "https://stay.rakuten.co.jp/villa/hakone-gora/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "C typeがペットOK（6名まで）",
+     "src": "https://stay.rakuten.co.jp/villa/hakone-gora/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "C typeの部屋にドッグラン",
+     "src": "https://stay.rakuten.co.jp/villa/hakone-gora/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i664bb5"
+  },
+  {
+   "name": "Rakuten STAY VILLA 由布院温泉",
+   "kind": "貸別荘",
+   "pref": "大分県",
+   "city": "由布市",
+   "url": "https://stay.rakuten.co.jp/villa/yufuin-onsen/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大分県由布市湯布院町川北899-35",
+     "src": "https://stay.rakuten.co.jp/villa/yufuin-onsen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "A01とD01〜D04がペットOK",
+     "src": "https://stay.rakuten.co.jp/villa/yufuin-onsen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "D01〜D04にドッグランとペットの足洗い場",
+     "src": "https://stay.rakuten.co.jp/villa/yufuin-onsen/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i95f1c7"
+  },
+  {
+   "name": "Rakuten STAY VILLA 鴨川",
+   "kind": "貸別荘",
+   "pref": "千葉県",
+   "city": "鴨川市",
+   "url": "https://stay.rakuten.co.jp/villa/kamogawa/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県鴨川市西町1130-1",
+     "src": "https://stay.rakuten.co.jp/villa/kamogawa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "スイートA101とD棟（D101〜D107）がペットOK。B棟・C棟は不可",
+     "src": "https://stay.rakuten.co.jp/villa/kamogawa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "D棟にドッグラン",
+     "src": "https://stay.rakuten.co.jp/villa/kamogawa/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i2d8854"
+  },
+  {
+   "name": "Rakuten STAY VILLA 阿蘇黒川",
+   "kind": "貸別荘",
+   "pref": "熊本県",
+   "city": "阿蘇郡南小国町",
+   "url": "https://stay.rakuten.co.jp/villa/aso-kurokawa/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "熊本県阿蘇郡南小国町満願寺6843-16",
+     "src": "https://stay.rakuten.co.jp/villa/aso-kurokawa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペットフレンドリールームは105のみ",
+     "src": "https://stay.rakuten.co.jp/villa/aso-kurokawa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "プライベートドッグラン",
+     "src": "https://stay.rakuten.co.jp/villa/aso-kurokawa/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i3f65bc"
+  },
+  {
+   "name": "Rakuten STAY TERRACE 南紀白浜",
+   "kind": "ホテル",
+   "pref": "和歌山県",
+   "city": "西牟婁郡白浜町",
+   "url": "https://stay.rakuten.co.jp/terrace/nanki-shirahama/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "和歌山県西牟婁郡白浜町富田1615-58",
+     "src": "https://stay.rakuten.co.jp/terrace/nanki-shirahama/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "C1タイプの101・102がペットOK",
+     "src": "https://stay.rakuten.co.jp/terrace/nanki-shirahama/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "if41d99"
+  },
+  {
+   "name": "Rakuten STAY ニセコ",
+   "kind": "貸別荘",
+   "pref": "北海道",
+   "city": "虻田郡ニセコ町",
+   "url": "https://stay.rakuten.co.jp/niseko/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "北海道虻田郡ニセコ町字曽我480-32",
+     "src": "https://stay.rakuten.co.jp/niseko/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリールームのみ",
+     "src": "https://stay.rakuten.co.jp/niseko/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と泊まれる時期",
+     "v": "4月〜11月の期間限定",
+     "src": "https://stay.rakuten.co.jp/niseko/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i3dba66"
+  },
+  {
+   "name": "Rakuten STAY 札幌中島公園",
+   "kind": "ホテル",
+   "pref": "北海道",
+   "city": "札幌市中央区",
+   "url": "https://stay.rakuten.co.jp/sapporo-nakajima-park/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "北海道札幌市中央区南8条西3丁目1-1",
+     "src": "https://stay.rakuten.co.jp/sapporo-nakajima-park/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "C type（ドッグフレンドリー）のみペットOK",
+     "src": "https://stay.rakuten.co.jp/sapporo-nakajima-park/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "id025eb"
+  },
+  {
+   "name": "Rakuten STAY あわら温泉",
+   "kind": "ホテル",
+   "pref": "福井県",
+   "city": "あわら市",
+   "url": "https://stay.rakuten.co.jp/awara-onsen/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "福井県あわら市温泉一丁目309番地",
+     "src": "https://stay.rakuten.co.jp/awara-onsen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "201・202・203・205・206がペットOK。施設内ではリード必須",
+     "src": "https://stay.rakuten.co.jp/awara-onsen/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i5d77bf"
+  },
+  {
+   "name": "Rakuten STAY x EAGLES",
+   "kind": "ホテル",
+   "pref": "宮城県",
+   "city": "仙台市宮城野区",
+   "url": "https://stay.rakuten.co.jp/eagles/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "宮城県仙台市宮城野区宮城野2-11-35",
+     "src": "https://stay.rakuten.co.jp/eagles/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬のみ",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小型犬2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "102がペット可（101は不可）。ペットケージは102のみ",
+     "src": "https://stay.rakuten.co.jp/eagles/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ia1ac50"
+  },
+  {
+   "name": "Rakuten STAY VILLA 鬼怒川リバーサイド",
+   "kind": "貸別荘",
+   "pref": "栃木県",
+   "city": "日光市",
+   "url": "https://stay.rakuten.co.jp/villa/kinugawa/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県日光市鬼怒川温泉大原391-1",
+     "src": "https://stay.rakuten.co.jp/villa/kinugawa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "B typeがペットOK（6名まで）",
+     "src": "https://stay.rakuten.co.jp/villa/kinugawa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "人工芝のプライベートドッグラン",
+     "src": "https://stay.rakuten.co.jp/villa/kinugawa/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ic56f65"
+  },
+  {
+   "name": "Rakuten STAY 箱根すすき草原",
+   "kind": "貸別荘",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://stay.rakuten.co.jp/hakone-susuki-grass-fields/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡箱根町仙石原字六郎兵衛1246-80",
+     "src": "https://stay.rakuten.co.jp/hakone-susuki-grass-fields/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリーの部屋（2ダブル＋2シングル、6名まで）",
+     "src": "https://stay.rakuten.co.jp/hakone-susuki-grass-fields/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ペットと楽しめる客室専用の庭",
+     "src": "https://stay.rakuten.co.jp/hakone-susuki-grass-fields/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i21f0a8"
+  },
+  {
+   "name": "Rakuten STAY FUJIMI TERRACE 箱根芦ノ湖",
+   "kind": "ホテル",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://stay.rakuten.co.jp/hakone-ashinoko/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡箱根町元箱根三ツ谷2-2",
+     "src": "https://stay.rakuten.co.jp/hakone-ashinoko/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "スイート501と、ドッグフレンドリー（2ダブルベッド＋ロフト）がペットOK",
+     "src": "https://stay.rakuten.co.jp/hakone-ashinoko/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ペットも楽しめるプライベートガーデンと足洗い場",
+     "src": "https://stay.rakuten.co.jp/hakone-ashinoko/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i6f88ad"
+  },
+  {
+   "name": "Rakuten STAY 日光宝殿",
+   "kind": "貸別荘",
+   "pref": "栃木県",
+   "city": "日光市",
+   "url": "https://stay.rakuten.co.jp/nikko-hoden/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県日光市宝殿23-1",
+     "src": "https://stay.rakuten.co.jp/nikko-hoden/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペットと泊まれる部屋8室（101〜104、201〜204）",
+     "src": "https://stay.rakuten.co.jp/nikko-hoden/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i0032e1"
+  },
+  {
+   "name": "Rakuten STAY 富士 河口湖駅",
+   "kind": "貸別荘",
+   "pref": "山梨県",
+   "city": "南都留郡富士河口湖町",
+   "url": "https://stay.rakuten.co.jp/fuji-kawaguchiko-station/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県南都留郡富士河口湖町船津3557-10",
+     "src": "https://stay.rakuten.co.jp/fuji-kawaguchiko-station/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "104・105がペットフレンドリー",
+     "src": "https://stay.rakuten.co.jp/fuji-kawaguchiko-station/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "2棟だけ客室専用ドッグラン（テラス兼用）",
+     "src": "https://stay.rakuten.co.jp/fuji-kawaguchiko-station/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i30b537"
+  },
+  {
+   "name": "Rakuten STAY TERRACE 箱根小涌谷",
+   "kind": "貸別荘",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://stay.rakuten.co.jp/terrace/hakone-kowakudani/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡箱根町小涌谷483-2",
+     "src": "https://stay.rakuten.co.jp/terrace/hakone-kowakudani/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "Aタイプ（スイート・10名）、Dタイプ102、Fタイプ103〜105がペットOK",
+     "src": "https://stay.rakuten.co.jp/terrace/hakone-kowakudani/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "人工芝の部屋専用の庭のドッグラン（Aタイプ約45㎡、D102約24㎡、F103〜105約25㎡）",
+     "src": "https://stay.rakuten.co.jp/terrace/hakone-kowakudani/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i484b74"
+  },
+  {
+   "name": "Rakuten STAY VILLA 箱根桃源台",
+   "kind": "貸別荘",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://stay.rakuten.co.jp/villa/hakone-togendai/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡箱根町元箱根160-51",
+     "src": "https://stay.rakuten.co.jp/villa/hakone-togendai/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "Bタイプ001・002がペットOK",
+     "src": "https://stay.rakuten.co.jp/villa/hakone-togendai/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "人工芝の客室専用の庭",
+     "src": "https://stay.rakuten.co.jp/villa/hakone-togendai/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i73eb70"
+  },
+  {
+   "name": "ヒルトン小田原リゾート＆スパ",
+   "kind": "ホテル",
+   "pref": "神奈川県",
+   "city": "小田原市",
+   "url": "https://odawara.hiltonjapan.co.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県小田原市根府川583-1",
+     "src": "https://odawara.hiltonjapan.co.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "1匹あたり体重18kgまで",
+     "src": "https://odawara.hiltonjapan.co.jp/plans/rooms/4166",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2匹まで",
+     "src": "https://odawara.hiltonjapan.co.jp/plans/rooms/4166",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "「宿泊滞在同意書」と、狂犬病・ワクチン注射の接種証明書の写しをメールで送る（ないと予約を受けられないことがある）",
+     "src": "https://odawara.hiltonjapan.co.jp/plans/rooms/4166",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ヒルトンドッグフレンドリールームだけ。ロビーなど共用部はキャリーバッグかバギーで（顔も隠す）。バルコニーには出さない",
+     "src": "https://odawara.hiltonjapan.co.jp/plans/rooms/4166",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "バーデ棟の近くの屋外（8時〜17時、宿泊者のみ）",
+     "src": "https://odawara.hiltonjapan.co.jp/plans/rooms/4166",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ヒルトンドッグフレンドリールーム（4名まで）",
+     "src": "https://odawara.hiltonjapan.co.jp/plans/rooms/4166",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "id234b6"
+  },
+  {
+   "name": "東急バケーションズ山中湖",
+   "kind": "ホテル",
+   "pref": "山梨県",
+   "city": "南都留郡山中湖村",
+   "url": "https://www.tokyu-vacations.com/facilities/yamanakako/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県南都留郡山中湖村平野3764-1 フェザント山中湖内",
+     "src": "https://www.tokyu-vacations.com/facilities/yamanakako/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫とも可",
+     "src": "https://www.tokyu-vacations.com/facilities/yamanakako/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "スタンダードは犬・猫あわせて最大5頭、グランヴィラ（2室のみ）は最大8頭",
+     "src": "https://www.tokyu-vacations.com/facilities/yamanakako/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "「利用規則」を読み、フロントで「同意書」を出す",
+     "src": "https://www.tokyu-vacations.com/facilities/yamanakako/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "スタンダードと、グランヴィラ2室。「愛犬愛猫ルーム」",
+     "src": "https://www.tokyu-vacations.com/facilities/yamanakako/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 16時、チェックアウト 10時",
+     "src": "https://www.tokyu-vacations.com/facilities/yamanakako/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat"
+   ],
+   "id": "id3f256"
   }
  ]
 }
