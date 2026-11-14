@@ -18623,6 +18623,4751 @@
     "s"
    ],
    "id": "i305ea7"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 北九州八幡店",
+   "kind": "ホテル",
+   "pref": "福岡県",
+   "city": "北九州市",
+   "url": "https://hatagoya.co.jp/pet_policy/#北九州八幡店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ifbbcc3"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 日向門川店",
+   "kind": "ホテル",
+   "pref": "宮崎県",
+   "city": "門川町",
+   "url": "https://hatagoya.co.jp/pet_policy/#日向門川店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "if14810"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 宮崎店",
+   "kind": "ホテル",
+   "pref": "宮崎県",
+   "city": "宮崎市",
+   "url": "https://hatagoya.co.jp/pet_policy/#宮崎店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i71dea4"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 鹿児島垂水店",
+   "kind": "ホテル",
+   "pref": "鹿児島県",
+   "city": "垂水市",
+   "url": "https://hatagoya.co.jp/pet_policy/#鹿児島垂水店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i890c44"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 鳴門駅前店",
+   "kind": "ホテル",
+   "pref": "徳島県",
+   "city": "鳴門市",
+   "url": "https://hatagoya.co.jp/pet_policy/#鳴門駅前店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i093887"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 吉野川SA店",
+   "kind": "ホテル",
+   "pref": "徳島県",
+   "city": "",
+   "url": "https://hatagoya.co.jp/pet_policy/#吉野川SA店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i886fe9"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 高松店",
+   "kind": "ホテル",
+   "pref": "香川県",
+   "city": "高松市",
+   "url": "https://hatagoya.co.jp/pet_policy/#高松店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i72f2e1"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 讃岐観音寺店",
+   "kind": "ホテル",
+   "pref": "香川県",
+   "city": "観音寺市",
+   "url": "https://hatagoya.co.jp/pet_policy/#讃岐観音寺店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i136578"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 新居浜店",
+   "kind": "ホテル",
+   "pref": "愛媛県",
+   "city": "新居浜市",
+   "url": "https://hatagoya.co.jp/pet_policy/#新居浜店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ifdf0dd"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 松山店",
+   "kind": "ホテル",
+   "pref": "愛媛県",
+   "city": "松山市",
+   "url": "https://hatagoya.co.jp/pet_policy/#松山店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i9a5a3e"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 室戸店",
+   "kind": "ホテル",
+   "pref": "高知県",
+   "city": "室戸市",
+   "url": "https://hatagoya.co.jp/pet_policy/#室戸店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i2ada6c"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 高知店",
+   "kind": "ホテル",
+   "pref": "高知県",
+   "city": "高知市",
+   "url": "https://hatagoya.co.jp/pet_policy/#高知店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ib8a23c"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 四万十店",
+   "kind": "ホテル",
+   "pref": "高知県",
+   "city": "四万十市",
+   "url": "https://hatagoya.co.jp/pet_policy/#四万十店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i6f0a53"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 鳥取倉吉店",
+   "kind": "ホテル",
+   "pref": "鳥取県",
+   "city": "倉吉市",
+   "url": "https://hatagoya.co.jp/pet_policy/#鳥取倉吉店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "iaff7cc"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 津山店",
+   "kind": "ホテル",
+   "pref": "岡山県",
+   "city": "津山市",
+   "url": "https://hatagoya.co.jp/pet_policy/#津山店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i052163"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 岡山店",
+   "kind": "ホテル",
+   "pref": "岡山県",
+   "city": "岡山市",
+   "url": "https://hatagoya.co.jp/pet_policy/#岡山店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i8eac7f"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 井原店",
+   "kind": "ホテル",
+   "pref": "岡山県",
+   "city": "井原市",
+   "url": "https://hatagoya.co.jp/pet_policy/#井原店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "id5830d"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 広島店",
+   "kind": "ホテル",
+   "pref": "広島県",
+   "city": "広島市",
+   "url": "https://hatagoya.co.jp/pet_policy/#広島店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ic77c1c"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 境港店",
+   "kind": "ホテル",
+   "pref": "鳥取県",
+   "city": "境港市",
+   "url": "https://hatagoya.co.jp/pet_policy/#境港店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ic2a471"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 出雲大社店",
+   "kind": "ホテル",
+   "pref": "島根県",
+   "city": "出雲市",
+   "url": "https://hatagoya.co.jp/pet_policy/#出雲大社店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i1b868b"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 宮島SA店",
+   "kind": "ホテル",
+   "pref": "広島県",
+   "city": "",
+   "url": "https://hatagoya.co.jp/pet_policy/#宮島SA店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "iff63c4"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 長門店",
+   "kind": "ホテル",
+   "pref": "山口県",
+   "city": "長門市",
+   "url": "https://hatagoya.co.jp/pet_policy/#長門店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i3a5235"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 壇之浦PA店",
+   "kind": "ホテル",
+   "pref": "山口県",
+   "city": "下関市",
+   "url": "https://hatagoya.co.jp/pet_policy/#壇之浦PA店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ib4842e"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 彦根店",
+   "kind": "ホテル",
+   "pref": "滋賀県",
+   "city": "彦根市",
+   "url": "https://hatagoya.co.jp/pet_policy/#彦根店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i5e221f"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 名阪長島店",
+   "kind": "ホテル",
+   "pref": "三重県",
+   "city": "桑名市",
+   "url": "https://hatagoya.co.jp/pet_policy/#名阪長島店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i889f47"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 湾岸長島店",
+   "kind": "ホテル",
+   "pref": "三重県",
+   "city": "桑名市",
+   "url": "https://hatagoya.co.jp/pet_policy/#湾岸長島店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i33c3ca"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 伊勢松阪店",
+   "kind": "ホテル",
+   "pref": "三重県",
+   "city": "松阪市",
+   "url": "https://hatagoya.co.jp/pet_policy/#伊勢松阪店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i009c72"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 伊賀店",
+   "kind": "ホテル",
+   "pref": "三重県",
+   "city": "伊賀市",
+   "url": "https://hatagoya.co.jp/pet_policy/#伊賀店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "idce8af"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 奈良針店",
+   "kind": "ホテル",
+   "pref": "奈良県",
+   "city": "奈良市",
+   "url": "https://hatagoya.co.jp/pet_policy/#奈良針店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i584b01"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 大阪枚方店",
+   "kind": "ホテル",
+   "pref": "大阪府",
+   "city": "枚方市",
+   "url": "https://hatagoya.co.jp/pet_policy/#大阪枚方店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ie14720"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 大阪港店",
+   "kind": "ホテル",
+   "pref": "大阪府",
+   "city": "大阪市",
+   "url": "https://hatagoya.co.jp/pet_policy/#大阪港店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "if9642e"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 神戸須磨店",
+   "kind": "ホテル",
+   "pref": "兵庫県",
+   "city": "神戸市",
+   "url": "https://hatagoya.co.jp/pet_policy/#神戸須磨店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i7d15c1"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 たつの店",
+   "kind": "ホテル",
+   "pref": "兵庫県",
+   "city": "たつの市",
+   "url": "https://hatagoya.co.jp/pet_policy/#たつの店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i70ac53"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 富士田子浦店",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "富士市",
+   "url": "https://hatagoya.co.jp/pet_policy/#富士田子浦店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ic86ff5"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 清水興津店",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "静岡市",
+   "url": "https://hatagoya.co.jp/pet_policy/#清水興津店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ia9d38e"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 静岡牧之原店",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "牧之原市",
+   "url": "https://hatagoya.co.jp/pet_policy/#静岡牧之原店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "if8db06"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 袋井店",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "袋井市",
+   "url": "https://hatagoya.co.jp/pet_policy/#袋井店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i623924"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 浜名湖店",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "浜松市",
+   "url": "https://hatagoya.co.jp/pet_policy/#浜名湖店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ie57117"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 黒部店",
+   "kind": "ホテル",
+   "pref": "富山県",
+   "city": "黒部市",
+   "url": "https://hatagoya.co.jp/pet_policy/#黒部店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i639f1f"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 小矢部店",
+   "kind": "ホテル",
+   "pref": "富山県",
+   "city": "小矢部市",
+   "url": "https://hatagoya.co.jp/pet_policy/#小矢部店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ia4dcae"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 飛騨高山店",
+   "kind": "ホテル",
+   "pref": "岐阜県",
+   "city": "高山市",
+   "url": "https://hatagoya.co.jp/pet_policy/#飛騨高山店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i46957d"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 土岐店",
+   "kind": "ホテル",
+   "pref": "岐阜県",
+   "city": "土岐市",
+   "url": "https://hatagoya.co.jp/pet_policy/#土岐店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ic5dc7f"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 新潟南店",
+   "kind": "ホテル",
+   "pref": "新潟県",
+   "city": "新潟市",
+   "url": "https://hatagoya.co.jp/pet_policy/#新潟南店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "if8a070"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 軽井沢店",
+   "kind": "ホテル",
+   "pref": "長野県",
+   "city": "軽井沢町",
+   "url": "https://hatagoya.co.jp/pet_policy/#軽井沢店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i09b772"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 茅野蓼科店",
+   "kind": "ホテル",
+   "pref": "長野県",
+   "city": "茅野市",
+   "url": "https://hatagoya.co.jp/pet_policy/#茅野蓼科店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i1ba3d4"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 小淵沢店",
+   "kind": "ホテル",
+   "pref": "山梨県",
+   "city": "北杜市",
+   "url": "https://hatagoya.co.jp/pet_policy/#小淵沢店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ic0bc5a"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 韮崎店",
+   "kind": "ホテル",
+   "pref": "山梨県",
+   "city": "韮崎市",
+   "url": "https://hatagoya.co.jp/pet_policy/#韮崎店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ie03c23"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 甲府石和店",
+   "kind": "ホテル",
+   "pref": "山梨県",
+   "city": "笛吹市",
+   "url": "https://hatagoya.co.jp/pet_policy/#甲府石和店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ib07bbb"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 富士都留店",
+   "kind": "ホテル",
+   "pref": "山梨県",
+   "city": "都留市",
+   "url": "https://hatagoya.co.jp/pet_policy/#富士都留店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "if2427c"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 富士吉田店",
+   "kind": "ホテル",
+   "pref": "山梨県",
+   "city": "富士吉田市",
+   "url": "https://hatagoya.co.jp/pet_policy/#富士吉田店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i47cb02"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 山中湖店",
+   "kind": "ホテル",
+   "pref": "山梨県",
+   "city": "山中湖村",
+   "url": "https://hatagoya.co.jp/pet_policy/#山中湖店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i886969"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 水戸大洗店",
+   "kind": "ホテル",
+   "pref": "茨城県",
+   "city": "大洗町",
+   "url": "https://hatagoya.co.jp/pet_policy/#水戸大洗店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "iba17d4"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 神栖店",
+   "kind": "ホテル",
+   "pref": "茨城県",
+   "city": "神栖市",
+   "url": "https://hatagoya.co.jp/pet_policy/#神栖店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i993de8"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 那須店",
+   "kind": "ホテル",
+   "pref": "栃木県",
+   "city": "那須町",
+   "url": "https://hatagoya.co.jp/pet_policy/#那須店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i08524f"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 日光鬼怒川店",
+   "kind": "ホテル",
+   "pref": "栃木県",
+   "city": "日光市",
+   "url": "https://hatagoya.co.jp/pet_policy/#日光鬼怒川店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i67a65b"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 つくば店",
+   "kind": "ホテル",
+   "pref": "茨城県",
+   "city": "つくば市",
+   "url": "https://hatagoya.co.jp/pet_policy/#つくば店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "id5bc77"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 沼田店",
+   "kind": "ホテル",
+   "pref": "群馬県",
+   "city": "沼田市",
+   "url": "https://hatagoya.co.jp/pet_policy/#沼田店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i327f10"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 前橋南店",
+   "kind": "ホテル",
+   "pref": "群馬県",
+   "city": "前橋市",
+   "url": "https://hatagoya.co.jp/pet_policy/#前橋南店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "iec76e2"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 秩父店",
+   "kind": "ホテル",
+   "pref": "埼玉県",
+   "city": "秩父市",
+   "url": "https://hatagoya.co.jp/pet_policy/#秩父店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i481d35"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 東京新木場店",
+   "kind": "ホテル",
+   "pref": "東京都",
+   "city": "江東区",
+   "url": "https://hatagoya.co.jp/pet_policy/#東京新木場店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i3993e1"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 九十九里店",
+   "kind": "ホテル",
+   "pref": "千葉県",
+   "city": "",
+   "url": "https://hatagoya.co.jp/pet_policy/#九十九里店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i9ee723"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 袖ヶ浦店",
+   "kind": "ホテル",
+   "pref": "千葉県",
+   "city": "袖ケ浦市",
+   "url": "https://hatagoya.co.jp/pet_policy/#袖ヶ浦店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ia326a6"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 木更津金田店",
+   "kind": "ホテル",
+   "pref": "千葉県",
+   "city": "木更津市",
+   "url": "https://hatagoya.co.jp/pet_policy/#木更津金田店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i87ec0c"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 木更津港店",
+   "kind": "ホテル",
+   "pref": "千葉県",
+   "city": "木更津市",
+   "url": "https://hatagoya.co.jp/pet_policy/#木更津港店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i56b7f9"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 千葉勝浦店",
+   "kind": "ホテル",
+   "pref": "千葉県",
+   "city": "勝浦市",
+   "url": "https://hatagoya.co.jp/pet_policy/#千葉勝浦店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i358611"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 箱根仙石原店",
+   "kind": "ホテル",
+   "pref": "神奈川県",
+   "city": "箱根町",
+   "url": "https://hatagoya.co.jp/pet_policy/#箱根仙石原店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ifbe707"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 函館店",
+   "kind": "ホテル",
+   "pref": "北海道",
+   "city": "函館市",
+   "url": "https://hatagoya.co.jp/pet_policy/#函館店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ibdcf8f"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 庄内店",
+   "kind": "ホテル",
+   "pref": "山形県",
+   "city": "",
+   "url": "https://hatagoya.co.jp/pet_policy/#庄内店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i5013ac"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 寒河江店",
+   "kind": "ホテル",
+   "pref": "山形県",
+   "city": "寒河江市",
+   "url": "https://hatagoya.co.jp/pet_policy/#寒河江店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ib7ece6"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 長者原SA店",
+   "kind": "ホテル",
+   "pref": "宮城県",
+   "city": "",
+   "url": "https://hatagoya.co.jp/pet_policy/#長者原SA店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i2e56d2"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 仙台亘理店",
+   "kind": "ホテル",
+   "pref": "宮城県",
+   "city": "亘理町",
+   "url": "https://hatagoya.co.jp/pet_policy/#仙台亘理店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ic9b514"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 須賀川店",
+   "kind": "ホテル",
+   "pref": "福島県",
+   "city": "須賀川市",
+   "url": "https://hatagoya.co.jp/pet_policy/#須賀川店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ie1ea3b"
+  },
+  {
+   "name": "ファミリーロッジ旅籠屋 いわき勿来店",
+   "kind": "ホテル",
+   "pref": "福島県",
+   "city": "いわき市",
+   "url": "https://hatagoya.co.jp/pet_policy/#いわき勿来店",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全店共通の「ツインルーム【ペット同宿可】」（ペット可の部屋はすべて喫煙可）",
+     "src": "https://hatagoya.co.jp/hakodate/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫などは大きさを問わない。小鳥・ハムスター・フェレットなどケージで飼うペットも可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "犬・猫などは2匹まで、ケージで飼うペットは2ケージまで",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹（1ケージ）3,300円、2匹（2ケージ）6,600円",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "トイレシート・ケージ・リード・足ふき用ぞうきん・掃除用品（宿ではペット用品の用意・販売はなし）",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中（ベッド・いすに乗せない、浴室に入れない、部屋に残して出かけない）。ラウンジは不可、外ではリード。車中泊は不可",
+     "src": "https://hatagoya.co.jp/pet_policy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜23:00、チェックアウト10:00",
+     "src": "https://hatagoya.co.jp/instructions/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "ferret"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i667c0c"
   }
  ]
 }
