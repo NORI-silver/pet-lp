@@ -158,8 +158,14 @@ def render_hosp(ctx, x):
     hours = fact(x, "受付時間")
     tparts = [w for w, k in (("受付時間", "受付時間"), ("休診日", "休診日"), ("料金", "夜間の料金"), ("行き方", "最寄り駅")) if fact(x, k)]
     title = f"{nm}（{x.get('city', '')}）｜夜間・救急の{'・'.join(tparts)}｜ペットタクシー予約窓口"
+    # [B] 11/14 Nori「ユーザが何を求めていて、それにたいするアンサーがあるのか」：「病院名 料金」の検索が多いので、
+    # 公式サイトの夜間の料金が短く書けるときは題名と説明文に入れる（数字は公式サイトのまま）。
+    fee = fact(x, "夜間の料金").rstrip("。") if fact(x, "夜間の料金") else ""
+    if fee and len(fee) <= 22 and re.search(r"\d", fee):
+        t2 = f"{nm}（{x.get('city', '')}）｜{fee if fee.startswith('夜間') else '夜間の' + fee}・{'・'.join(w for w in tparts if w != '料金')}｜ペットタクシー予約窓口"
+        if len(t2) <= 68: title = t2
     lead = f"{nm}は、{pf}{x.get('city', '')}の夜間・救急の動物病院です" + (f"。受付時間は「{hours.rstrip('。')}」です（公式サイト、{ck}に確認）。" if hours else f"（公式サイト、{ck}に確認）。")
-    pts = [lead] + [_sent(nm, k, fact(x, k), ck) for k in ("休診日", "対象の動物", "来院前の連絡", "夜間の料金") if fact(x, k)]
+    pts = [lead] + [_sent(nm, k, fact(x, k), ck) for k in ("休診日", "対象の動物", "来院前の連絡", "夜間の料金", "費用の目安") if fact(x, k)]
     pts = pts[:5]
     emg = _emg_row(x)
     same = [h for h in EMG["hospitals"].get(pf, []) if h.get("url")][:10]
@@ -175,16 +181,24 @@ def render_hosp(ctx, x):
                f'<thead><tr><th>名前</th><th>市区町村</th><th>受付時間</th></tr></thead><tbody>{body}</tbody></table></div>'
                f'<p class="emg-tips-note">受付時間は各病院の公式サイトに書いてある時間です。並びは順位ではありません。全部の病院は<a href="/hospital/night/{slug}/">{e(pf)}の夜間・救急の動物病院</a>にあります。</p></div>')
     faq = []
+    # 「病院名 料金」「病院名 夜間 何時まで」の検索に先に答える（公式サイトの文のまま）
+    if fact(x, "夜間の料金") or fact(x, "費用の目安"):
+        a = "".join(f"「{fact(x, k).rstrip('。')}」" for k in ("夜間の料金", "費用の目安") if fact(x, k))
+        faq.append((f"{nm}の夜間の料金はいくらですか？", f"{nm}の公式サイトには{a}と書いてあります（{ck}に確認）。検査・処置・入院で変わるので、くわしくは電話で確かめてください。"))
+    if fact(x, "支払い方法"): faq.append((f"{nm}ではカードで払えますか？", f"{nm}の公式サイトには「{fact(x, '支払い方法').rstrip('。')}」と書いてあります。"))
     if hours: faq.append((f"{nm}は何時に受け付けていますか？", f"{nm}の公式サイトには「{hours.rstrip('。')}」と書いてあります（{ck}に確認）。"))
     if fact(x, "来院前の連絡"): faq.append((f"{nm}に行く前に電話は必要ですか？", f"{nm}の公式サイトには「{fact(x, '来院前の連絡').rstrip('。')}」と書いてあります。夜間の病院は手術中などで受け入れられないこともあるので、行く前に電話で確かめてください。"))
     if fact(x, "対象の動物"): faq.append((f"{nm}では犬と猫以外も診てもらえますか？", f"{nm}の公式サイトには「{fact(x, '対象の動物').rstrip('。')}」と書いてあります（{ck}に確認）。"))
     if fact(x, "駐車場"): faq.append((f"{nm}に駐車場はありますか？", f"{nm}の公式サイトには「{fact(x, '駐車場').rstrip('。')}」と書いてあります。"))
-    faq = faq[:4]
+    if fact(x, "最寄り駅"): faq.append((f"{nm}へは電車で行けますか？", f"{nm}の公式サイトには「{fact(x, '最寄り駅').rstrip('。')}」と書いてあります。"))
+    faq = faq[:7]
     ld_main = {"@type": "VeterinaryCare", "name": nm, "url": x["url"],
                "address": dict({"@type": "PostalAddress", "addressRegion": pf, "addressCountry": "JP"},
                                **({"addressLocality": x["city"]} if x.get("city") else {}), **({"streetAddress": fact(x, "所在地")} if fact(x, "所在地") else {}))}
     rid = emg.get("id") if emg.get("review_query") else ""
-    return _page(ctx, title=title, desc=lead, url=url,
+    hdesc = lead + (f"夜間の料金は「{fee}」。" if fee else "") + (f"{fact(x, '来院前の連絡').rstrip('。')}。" if fact(x, "来院前の連絡") else "")
+    if len(hdesc) > 160: hdesc = lead
+    return _page(ctx, title=title, desc=hdesc, url=url,
                  crumbs=[("ペットタクシー予約窓口", "/"), ("条件でさがす動物病院", "/hospital/"), ("夜間・救急", "/hospital/night/"), (pf, f"/hospital/night/{slug}/")],
                  nm=nm, pts=pts, rows=_rows(e, x, H_KEYS), card=_card(e, "hosp", x, "病院", rid), cmp=cmp, faq=faq,
                  related=[(f"{pf}の夜間・救急の動物病院", f"/hospital/night/{slug}/"), ("夜間・救急の動物病院（全国）", "/hospital/night/"),
