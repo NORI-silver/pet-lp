@@ -9706,6 +9706,649 @@
     "l"
    ],
    "id": "ie28985"
+  },
+  {
+   "name": "PAWCATION VILLA Leaf",
+   "kind": "貸別荘",
+   "pref": "栃木県",
+   "city": "那須郡那須町",
+   "url": "https://www.dog-lv.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須郡那須町高久乙2253",
+     "src": "https://www.dog-lv.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "天然芝のドッグラン（約700坪、大型犬にも合う高さの柵）。夜22時までナイトラン",
+     "src": "https://www.dog-lv.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "室内の寝室や部屋を自由に行き来できる（荷物置き場は不可）",
+     "src": "https://www.dog-lv.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1日1組の1棟貸し（主寝室と2つのゲストルーム、6名・最大9名）",
+     "src": "https://www.dog-lv.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレ・トイレシート・タオル・粘着ローラー・消臭スプレー・おもちゃ、全犬種の足洗い場",
+     "src": "https://www.dog-lv.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時・12時",
+     "src": "https://www.dog-lv.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i976919"
+  },
+  {
+   "name": "グランピングリゾート ブリリアントヴィレッジ日光",
+   "kind": "グランピング",
+   "pref": "栃木県",
+   "city": "日光市",
+   "url": "https://brilliant-village.com/village/dogs/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "45kgまで（生後6か月以上）",
+     "src": "https://brilliant-village.com/village/dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1テントに10kg未満は3匹、10〜45kgは2匹まで",
+     "src": "https://brilliant-village.com/village/dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹3,300円（1回の滞在ごと、連泊でも同じ）",
+     "src": "https://brilliant-village.com/village/dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の狂犬病と混合ワクチン。犬のごはん・リード、複数のときは普段のケージ",
+     "src": "https://brilliant-village.com/village/dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドッグ棟と専用のBBQデッキ、カフェのテラス席（管理棟・カフェの中は不可）。ベッドに乗せるのは不可",
+     "src": "https://brilliant-village.com/village/dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "宿泊者専用の柵で囲まれたドッグラン（約660㎡）",
+     "src": "https://brilliant-village.com/village/dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグ棟のツインドーム（約63㎡・6名）",
+     "src": "https://brilliant-village.com/village/dogs/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・ペットトレー・食器・ペットベッド・ブランケット・粘着ローラー、足洗い場と犬用シャワー",
+     "src": "https://brilliant-village.com/village/dogs/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i9cbb40"
+  },
+  {
+   "name": "ヴィラ楓倉-kagura-",
+   "kind": "ホテル",
+   "pref": "栃木県",
+   "city": "那須塩原市",
+   "url": "https://www.villa-kagura.com/dog/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須塩原市上塩原604-4",
+     "src": "https://www.villa-kagura.com/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬・小型犬",
+     "src": "https://www.villa-kagura.com/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.villa-kagura.com/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹3,300円（衛生費）",
+     "src": "https://www.villa-kagura.com/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病と混合ワクチンの証明書（コピー・写真でも可）、リード、ごはん、マナーウェア、キャリーかクレート",
+     "src": "https://www.villa-kagura.com/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "館内どこでも。ダイニングで一緒に食事、同じベッドで寝られる",
+     "src": "https://www.villa-kagura.com/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬用の温泉",
+     "v": "源泉かけ流しの温泉に一緒に入れる（温泉プールは不可）",
+     "src": "https://www.villa-kagura.com/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "中庭の人工芝でリードなしで遊べる",
+     "src": "https://www.villa-kagura.com/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・トイレシート・フードボウル・タオル・消臭ミスト・エチケット袋",
+     "src": "https://www.villa-kagura.com/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i00f1c4"
+  },
+  {
+   "name": "Nenn NASUKOUGEN",
+   "kind": "グランピング",
+   "pref": "栃木県",
+   "city": "那須郡那須町",
+   "url": "https://nenn-nasu.com/wp-content/uploads/pet-companion.pdf",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須郡那須町高久甲5461-1",
+     "src": "https://nenn-nasu.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬（25kg未満・抱っこできる目安）",
+     "src": "https://nenn-nasu.com/wp-content/uploads/pet-companion.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1部屋2匹まで",
+     "src": "https://nenn-nasu.com/wp-content/uploads/pet-companion.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病・混合ワクチンの書類、犬鑑札、ごはん・寝具・タオル、救急の薬",
+     "src": "https://nenn-nasu.com/wp-content/uploads/pet-companion.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "テントの中と柵の中のテントサイト（フロント・スパ棟・カフェなどの建物と大浴場は不可）",
+     "src": "https://nenn-nasu.com/wp-content/uploads/pet-companion.pdf",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "プライベートドッグランつきのテント",
+     "src": "https://nenn-nasu.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "ia9200a"
+  },
+  {
+   "name": "TOWAピュアコテージ",
+   "kind": "コテージ",
+   "pref": "栃木県",
+   "city": "那須郡那須町",
+   "url": "https://www.pure-cottages.jp/withpets/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須郡那須町高久乙3375（那須ハイランドパーク）",
+     "src": "https://www.pure-cottages.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の決まりはなし",
+     "src": "https://www.pure-cottages.jp/withpets/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大きさの決まりは書いていない（大型犬におすすめの部屋もある）",
+     "src": "https://www.pure-cottages.jp/withpets/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹1泊2,200円",
+     "src": "https://www.pure-cottages.jp/withpets/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "施設を使う同意書の回答。ワクチンの証明書はいらないが持っていくのがおすすめ",
+     "src": "https://www.pure-cottages.jp/withpets/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "BBQ village、朝食レストランのテラス席、部屋食（冬はレストラン不可）。寝室とベッドは不可",
+     "src": "https://www.pure-cottages.jp/withpets/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ホテルの中に2,000㎡以上の天然芝のラン。那須ハイランドパークの8か所のランも無料",
+     "src": "https://www.pure-cottages.jp/withpets/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "中型犬サイズのケージ・お皿・トイレシート・掃除用品・犬用のごみ箱",
+     "src": "https://www.pure-cottages.jp/withpets/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬・猫・うさぎ・鳥なども泊まれる（ほかは問い合わせ）",
+     "src": "https://www.pure-cottages.jp/withpets/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "rabbit",
+    "bird"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ie55678"
+  },
+  {
+   "name": "秋川渓谷リバーティオ",
+   "kind": "キャンプ場",
+   "pref": "東京都",
+   "city": "あきる野市",
+   "url": "https://www.rivertio.com/faq/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "東京都あきる野市小和田464",
+     "src": "https://www.rivertio.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬",
+     "src": "https://www.rivertio.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小型犬は2匹、中型犬は1匹まで",
+     "src": "https://www.rivertio.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹2,000円",
+     "src": "https://www.rivertio.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "ケージなど、リード（場内は必ず）、うんちの処理用品",
+     "src": "https://www.rivertio.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "コテージの室内は原則不可（外につなぐか、ケージで玄関のタイルのところ）",
+     "src": "https://www.rivertio.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックインは14時〜18時",
+     "src": "https://www.rivertio.com/faq/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i5bf63b"
+  },
+  {
+   "name": "NASU Villa Luce",
+   "kind": "貸別荘",
+   "pref": "栃木県",
+   "city": "那須塩原市",
+   "url": "https://nasuvillaluce.net/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須塩原市北弥六440-1",
+     "src": "https://nasuvillaluce.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "施設のすべての部屋で犬と一緒に過ごせる",
+     "src": "https://nasuvillaluce.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "となりに200坪のドッグラン",
+     "src": "https://nasuvillaluce.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1棟貸しのコテージ（6人までは同じ料金）",
+     "src": "https://nasuvillaluce.net/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時から・10時",
+     "src": "https://nasuvillaluce.net/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i66c72f"
+  },
+  {
+   "name": "露天風呂付きヴィラ 紅葉 -KUREHA-",
+   "kind": "貸別荘",
+   "pref": "栃木県",
+   "city": "那須塩原市",
+   "url": "https://www.vila-kureha.com/dog",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須塩原市上塩原22",
+     "src": "https://www.vila-kureha.com/dog",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬・小型犬",
+     "src": "https://www.vila-kureha.com/dog",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2匹まで",
+     "src": "https://www.vila-kureha.com/dog",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹3,300円（衛生費）",
+     "src": "https://www.vila-kureha.com/dog",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病と混合ワクチンの証明書（コピー・写真でも可）、リード、ごはん、マナーウェア、キャリーかクレート",
+     "src": "https://www.vila-kureha.com/dog",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ヴィラの中はどこでも。テラスはリードなしで遊べる",
+     "src": "https://www.vila-kureha.com/dog",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・トイレシート・フードボウル・タオル・消臭ミスト・エチケット袋",
+     "src": "https://www.vila-kureha.com/dog",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "idccbaa"
+  },
+  {
+   "name": "Papermoon はなれ",
+   "kind": "ホテル",
+   "pref": "栃木県",
+   "city": "那須郡那須町",
+   "url": "https://pmoon-hanare.com/with-pet.php",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須郡那須町湯本206-537",
+     "src": "https://pmoon-hanare.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内に狂犬病とワクチンを受けた室内犬。接種証明書",
+     "src": "https://pmoon-hanare.com/with-pet.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室と敷地（敷地はリード）。部屋に犬だけで留守番は不可",
+     "src": "https://pmoon-hanare.com/with-pet.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・フードボウル・トイレシーツ・粘着ローラー・消臭スプレー・足ふきシート・ペット用の空気清浄機",
+     "src": "https://pmoon-hanare.com/with-pet.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペットと泊まれる部屋もある（ベッド・ソファには防水カバー）",
+     "src": "https://pmoon-hanare.com/with-pet.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時・11時",
+     "src": "https://pmoon-hanare.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i784bb1"
+  },
+  {
+   "name": "五氣里-itsukiri-",
+   "kind": "貸別荘",
+   "pref": "千葉県",
+   "city": "いすみ市",
+   "url": "https://itsukiri.com/villa/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県いすみ市下布施2891",
+     "src": "https://itsukiri.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれるのはドッグスイート（110㎡、プール・サウナつき）とドッグヴィラ（85㎡、天然温泉の風呂）。どちらも2〜5名",
+     "src": "https://itsukiri.com/villa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドッグスイート・ドッグヴィラの部屋の中",
+     "src": "https://itsukiri.com/villa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ドッグスイートにドッグラン",
+     "src": "https://itsukiri.com/villa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時・10時",
+     "src": "https://itsukiri.com/villa/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "ie51c70"
+  },
+  {
+   "name": "軽井沢倶楽部ホテル軽井沢1130",
+   "kind": "ホテル",
+   "pref": "群馬県",
+   "city": "吾妻郡嬬恋村",
+   "url": "https://www.karuizawaclub.co.jp/hotel1130/pet/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "群馬県吾妻郡嬬恋村鎌原1453-2",
+     "src": "https://www.karuizawaclub.co.jp/hotel1130/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬〜大型犬（1歳以上、しつけができている子）",
+     "src": "https://www.karuizawaclub.co.jp/hotel1130/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "大型犬1匹、または中型犬2匹まで",
+     "src": "https://www.karuizawaclub.co.jp/hotel1130/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "ペット同伴宿泊滞在同意書",
+     "src": "https://www.karuizawaclub.co.jp/hotel1130/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドッグルーム、ホテルまわりのおさんぽコース、シャトルバス",
+     "src": "https://www.karuizawaclub.co.jp/hotel1130/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "2階のドッグルーム（81㎡・4名、露天風呂つきのタイプも）。専用の出入口",
+     "src": "https://www.karuizawaclub.co.jp/hotel1130/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "大型のケージ・ペットシート・食器・掃除用品・消臭剤、専用出入口の前に足洗い場",
+     "src": "https://www.karuizawaclub.co.jp/hotel1130/pet/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ibf97c5"
   }
  ]
 }
