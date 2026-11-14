@@ -124,7 +124,27 @@
    "services": "専用のトリミングカーでご自宅まで出張してトリミング。猫の爪切りも相談可",
    "large": true,
    "senior": true,
-   "car": true
+   "car": true,
+   "facts": [
+    {
+     "k": "犬・猫・大きさ",
+     "v": "犬。猫は爪切りだけ相談できる",
+     "src": "https://www.positive-0511.net/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "水戸を中心に専用のトリミングカーで出張",
+     "src": "https://www.positive-0511.net/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "予約",
+     "v": "電話・予約フォーム・LINE",
+     "src": "https://www.positive-0511.net/",
+     "checked": "2026-11-15"
+    }
+   ]
   },
   {
    "id": "G007",
@@ -175,7 +195,47 @@
    "url": "https://trimmingcarsalonfluffy.amebaownd.com/",
    "area": "石岡市周辺",
    "services": "水道・電気設備の整ったトリミングカーでご自宅の駐車場で施術",
-   "car": true
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー（税込）：スムースチワワ4,200円、ロングチワワ5,200円、トイプードル7,100円、柴犬7,100円。カット：ロングチワワ6,200円、トイプードル8,600円。MIXは体重で5,900円〜。初回10%引き、多頭5%引き",
+     "src": "https://trimmingcarsalonfluffy.amebaownd.com/pages/1594470/static",
+     "checked": "2026-11-15",
+     "yen": 4200,
+     "tax": "込"
+    },
+    {
+     "k": "出張費",
+     "v": "拠点から1kmにつき50円",
+     "src": "https://trimmingcarsalonfluffy.amebaownd.com/pages/1594470/static",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "犬（大型犬は相談）",
+     "src": "https://trimmingcarsalonfluffy.amebaownd.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "支払い",
+     "v": "クレジットカード・QR決済も使える。完全予約制",
+     "src": "https://trimmingcarsalonfluffy.amebaownd.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "用意するもの",
+     "v": "はじめては混合ワクチンと狂犬病の証明",
+     "src": "https://trimmingcarsalonfluffy.amebaownd.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "石岡市のまわり",
+     "src": "https://trimmingcarsalonfluffy.amebaownd.com/",
+     "checked": "2026-11-15"
+    }
+   ]
   },
   {
    "id": "G009",
@@ -189,7 +249,27 @@
    "area": "小山市・栃木市・野木町・古河市（ほかは相談）",
    "services": "トリミングカーでご自宅の駐車場でシャンプー・カット",
    "senior": true,
-   "car": true
+   "car": true,
+   "facts": [
+    {
+     "k": "支払い",
+     "v": "クレジットカード・電子マネーが使える",
+     "src": "https://shippo.crayonsite.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "予約",
+     "v": "オンライン予約（1か月先まで）・LINE・電話（9時〜18時）。1頭ずつ予約",
+     "src": "https://shippo.crayonsite.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "小山市・栃木市・野木町・古河市（ほかは相談）",
+     "src": "https://shippo.crayonsite.com/",
+     "checked": "2026-11-15"
+    }
+   ]
   },
   {
    "id": "G010",
@@ -805,7 +885,27 @@
    "services": "トリミングカーでお宅に伺い車内でシャンプー・カット。猫も",
    "cat": true,
    "senior": true,
-   "car": true
+   "car": true,
+   "facts": [
+    {
+     "k": "犬・猫・大きさ",
+     "v": "犬と猫（猫のシャンプー・カットも）。シニアの子も",
+     "src": "https://petsalonafuro.amebaownd.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "大垣市を中心に、岐阜市・本巣・北方・羽島・池田・垂井・海津。ほかも相談",
+     "src": "https://petsalonafuro.amebaownd.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "予約",
+     "v": "電話かLINE",
+     "src": "https://petsalonafuro.amebaownd.com/",
+     "checked": "2026-11-15"
+    }
+   ]
   },
   {
    "id": "G049",
@@ -817,7 +917,47 @@
    "area": "岐阜市・山県市・本巣市・各務原市・瑞穂市・羽島市・岐南町・北方町",
    "services": "トリミングカーでご自宅前で全工程。シャンプー・カット",
    "senior": true,
-   "car": true
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー（税込）：チワワ5,500円、ダックス・パグ6,100円、トイプードル・シーズー6,600円、柴犬8,800円。シャンプー＋カット：チワワ7,200円、トイプードル8,800円、シュナウザー9,200円。毛玉600円〜",
+     "src": "https://petro.jp/menu/",
+     "checked": "2026-11-15",
+     "yen": 5500,
+     "tax": "込"
+    },
+    {
+     "k": "出張費",
+     "v": "岐阜市若福町から道のり3km以内0円、5kmまで500円、10kmまで1,000円、15kmまで1,500円、20kmまで2,100円",
+     "src": "https://petro.jp/menu/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "犬（子犬からシニアまで。小型犬・シニア犬が得意）",
+     "src": "https://petro.jp/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "支払い",
+     "v": "現金だけ、終わってから",
+     "src": "https://petro.jp/menu/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "用意するもの",
+     "v": "電源を借りる（なければ発電機を持ってくる。音が出る）",
+     "src": "https://petro.jp/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "岐阜市・山県市・本巣市・岐南町・各務原市・瑞穂市・羽島市・北方町。ネット・電話・LINEで予約",
+     "src": "https://petro.jp/",
+     "checked": "2026-11-15"
+    }
+   ]
   },
   {
    "id": "G050",
@@ -1006,7 +1146,34 @@
    ],
    "url": "http://rainbowdog2015.com/",
    "area": "堺市・高石市・泉大津市・和泉市・岸和田市・富田林市・松原市など、奈良県生駒市・奈良市",
-   "services": "犬のための移動美容室"
+   "services": "犬のための移動美容室",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー：チワワ・ダックス・パグなど3,500円〜、シーズー・トイプードルなど4,500円〜、柴犬5,000円〜、ゴールデン8,000円〜、バーニーズ12,000円〜。カットはシャンプー＋1,500円〜2,000円、大型犬のカットは相談（税の表示なし）",
+     "src": "https://rainbowdog2015.com/price",
+     "checked": "2026-11-15",
+     "yen": 3500
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "犬だけ（小型〜超大型）",
+     "src": "https://rainbowdog2015.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "奈良県は生駒市・奈良市（一部は有料の地域）",
+     "src": "https://rainbowdog2015.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "予約",
+     "v": "電話かお問い合わせのページ",
+     "src": "https://rainbowdog2015.com/",
+     "checked": "2026-11-15"
+    }
+   ]
   },
   {
    "id": "G065",
@@ -1105,7 +1272,47 @@
    "url": "https://www.shutcho-trimming405.com/",
    "area": "奈良県内（一部エリア外あり）",
    "services": "自宅に伺い、お風呂場と洗面所を借りて施術（小型犬専門）",
-   "in_home": true
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー（税込）：スムースチワワ・ダックス・パグなど4,800円〜、トイプードル・シーズーなど6,800円。カット：ロングチワワ・パピヨンなど7,200円〜、トイプードルなど8,800円〜。シャンプー・爪切り・耳掃除・肛門腺・足まわりのカットこみ",
+     "src": "https://www.shutcho-trimming405.com/p/2/",
+     "checked": "2026-11-15",
+     "yen": 4800,
+     "tax": "込"
+    },
+    {
+     "k": "出張費",
+     "v": "場所によって別にかかる。17時以降の夜間は1,500〜2,000円増し。駐車場がなければパーキング代",
+     "src": "https://www.shutcho-trimming405.com/p/2/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "小型犬だけ",
+     "src": "https://www.shutcho-trimming405.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "用意するもの",
+     "v": "はじめては狂犬病と混合ワクチンの証明。ノミ・ダニの駆除。洗面所とお風呂場を借りる（夏はエアコンのある部屋）",
+     "src": "https://www.shutcho-trimming405.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "キャンセル料",
+     "v": "前日50%（18時以降は100%）、当日100%",
+     "src": "https://www.shutcho-trimming405.com/p/2/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "橿原市を拠点に奈良県内（生駒市はのぞく）。予約はLINEが基本",
+     "src": "https://www.shutcho-trimming405.com/",
+     "checked": "2026-11-15"
+    }
+   ]
   },
   {
    "id": "G073",
