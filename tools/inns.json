@@ -10504,6 +10504,1580 @@
     "dog"
    ],
    "id": "i22d24d"
+  },
+  {
+   "name": "designer's villa EDGE",
+   "kind": "貸別荘",
+   "pref": "兵庫県",
+   "city": "南あわじ市",
+   "url": "https://villa-edge.com/option/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県南あわじ市福良丙773-53",
+     "src": "https://villa-edge.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "40kgまで",
+     "src": "https://villa-edge.com/option/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "10kg以下は3匹、25kg以下は2匹、40kg以下は1匹まで（1部屋3匹まで）",
+     "src": "https://villa-edge.com/option/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹3,300円",
+     "src": "https://villa-edge.com/option/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "フードボウル・トイレセット・ケージ・ペットベッド・ウェットシート・消臭除菌スプレー",
+     "src": "https://villa-edge.com/option/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "どちらの部屋にも芝生のプライベートガーデン",
+     "src": "https://villa-edge.com/option/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "宿泊者専用のドッグラン",
+     "src": "https://villa-edge.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ（猫・小動物は不可）",
+     "src": "https://villa-edge.com/option/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i5928d6"
+  },
+  {
+   "name": "とれとれヴィレッジ",
+   "kind": "コテージ",
+   "pref": "和歌山県",
+   "city": "西牟婁郡白浜町",
+   "url": "https://village.toretore.com/faq/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の小型犬だけ",
+     "src": "https://village.toretore.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペットと泊まれる部屋は8部屋（数に限りがあるので先に電話で問い合わせ）",
+     "src": "https://village.toretore.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中の専用ケージ",
+     "src": "https://village.toretore.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "部屋に専用ケージ",
+     "src": "https://village.toretore.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "村の中にドッグラン",
+     "src": "https://village.toretore.com/faq/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時から（18時をすぎるときは連絡）・11時",
+     "src": "https://village.toretore.com/faq/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i42b9dd"
+  },
+  {
+   "name": "LAKE villa CHITOSE",
+   "kind": "貸別荘",
+   "pref": "滋賀県",
+   "city": "彦根市",
+   "url": "https://lake-villa-chitose.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "滋賀県彦根市松原2丁目4-13（琵琶湖のほとり）",
+     "src": "https://lake-villa-chitose.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大きさの決まりはなし",
+     "src": "https://lake-villa-chitose.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の決まりはなし",
+     "src": "https://lake-villa-chitose.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "2匹までは無料、3匹目から1匹3,300円",
+     "src": "https://lake-villa-chitose.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "どの客室も、ベッドの上も一緒にいられる",
+     "src": "https://lake-villa-chitose.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ドッグランあり",
+     "src": "https://lake-villa-chitose.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "3部屋（湖・月・陽）すべて犬と泊まれる",
+     "src": "https://lake-villa-chitose.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i858eec"
+  },
+  {
+   "name": "WANの音（竹野の海辺 湯やど 海の音）",
+   "kind": "旅館",
+   "pref": "兵庫県",
+   "city": "豊岡市",
+   "url": "https://t-motherearth.com/uminone/wannone/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県豊岡市竹野町竹野3396-1（海の音の敷地内）",
+     "src": "https://t-motherearth.com/uminone/wannone/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "和室ベッドの客室2室（誕生・轟）。犬専用のドアつき",
+     "src": "https://t-motherearth.com/uminone/wannone/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室、食事処「田久日」、近くの犬専用ビーチ（青井浜わんわんビーチ）",
+     "src": "https://t-motherearth.com/uminone/wannone/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "消臭スプレー・粘着ローラー・トイレ・トイレシート・ケージ・フードボウル・ウェットシート、玄関に足洗い場",
+     "src": "https://t-motherearth.com/uminone/wannone/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "夕食 WANプレート1匹2,200円、朝食 WANボウル1匹1,100円",
+     "src": "https://t-motherearth.com/uminone/wannone/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "14時・11時",
+     "src": "https://t-motherearth.com/uminone/wannone/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i68648c"
+  },
+  {
+   "name": "町家ホテルYANAGI",
+   "kind": "貸別荘",
+   "pref": "京都府",
+   "city": "京都市右京区",
+   "url": "https://www.hotel-yanagi.com/staying-with-pets",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "京都府京都市右京区西院上今田町18-11・12",
+     "src": "https://www.hotel-yanagi.com/staying-with-pets",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大きさ・体重の決まりはなし",
+     "src": "https://www.hotel-yanagi.com/staying-with-pets",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の決まりはなし（多いときは先に問い合わせ）",
+     "src": "https://www.hotel-yanagi.com/staying-with-pets",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "ペットは基本無料（予約のときに種類と数を伝える）",
+     "src": "https://www.hotel-yanagi.com/staying-with-pets",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "ペット用品はすべて持っていく（貸し出しなし）。ワクチンの証明書はいらないが、狂犬病などの予防接種を受けていること",
+     "src": "https://www.hotel-yanagi.com/staying-with-pets",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "1棟の中を自由に歩ける（家具には上げない。夜は1階でケージやサークルの中）",
+     "src": "https://www.hotel-yanagi.com/staying-with-pets",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "町家の1棟貸し",
+     "src": "https://www.hotel-yanagi.com/staying-with-pets",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "種類の決まりはなし（亀・モモンガ・うずら・ミーアキャットも泊まったことがある）",
+     "src": "https://www.hotel-yanagi.com/staying-with-pets",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "bird",
+    "small",
+    "reptile"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i0a51fe"
+  },
+  {
+   "name": "藤乃煌 富士御殿場",
+   "kind": "グランピング",
+   "pref": "静岡県",
+   "city": "御殿場市",
+   "url": "https://www.fu-ji-no.jp/kirameki/qa/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県御殿場市東田中3373-25",
+     "src": "https://www.fu-ji-no.jp/kirameki/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大きさを問わない（ドッグキャビンだけ）",
+     "src": "https://www.fu-ji-no.jp/kirameki/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "7kg未満2,200円、7〜40kg 4,400円",
+     "src": "https://www.fu-ji-no.jp/kirameki/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "犬のごはんと飲み物、120cmまでのリード",
+     "src": "https://www.fu-ji-no.jp/kirameki/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれるのはドッグキャビン",
+     "src": "https://www.fu-ji-no.jp/kirameki/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ドッグキャビンごとに専用のドッグラン",
+     "src": "https://www.fu-ji-no.jp/kirameki/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時・10時",
+     "src": "https://www.fu-ji-no.jp/kirameki/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ",
+     "src": "https://www.fu-ji-no.jp/kirameki/qa/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i7eb3a6"
+  },
+  {
+   "name": "三谷温泉 平野屋",
+   "kind": "旅館",
+   "pref": "愛知県",
+   "city": "蒲郡市",
+   "url": "https://www.hotel-hiranoya.co.jp/dogfriendly/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "愛知県蒲郡市三谷町南山1-21",
+     "src": "https://www.hotel-hiranoya.co.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬だけ",
+     "src": "https://www.hotel-hiranoya.co.jp/dogfriendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2匹まで",
+     "src": "https://www.hotel-hiranoya.co.jp/dogfriendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "プランに1匹分が入っている。2匹目は現地で2,200円",
+     "src": "https://www.hotel-hiranoya.co.jp/dogfriendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病と5種以上の混合ワクチンの証明書、犬用のタオルと敷物、エチケット袋。館内はペット用のバスケット",
+     "src": "https://www.hotel-hiranoya.co.jp/dogfriendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "6階のワンちゃんルーム（和室）と屋上のドッグラン。夕食は個室で一緒に（共用の場所と朝食会場は不可）",
+     "src": "https://www.hotel-hiranoya.co.jp/dogfriendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋上のドッグラン（日の出から日の入りまで）",
+     "src": "https://www.hotel-hiranoya.co.jp/dogfriendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "空気清浄機・ケージ・食事用のトレイ・水",
+     "src": "https://www.hotel-hiranoya.co.jp/dogfriendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ",
+     "src": "https://www.hotel-hiranoya.co.jp/dogfriendly/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i80b123"
+  },
+  {
+   "name": "1HOTEL",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "静岡市駿河区",
+   "url": "https://www.1hotel.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県静岡市駿河区丸子3344-11",
+     "src": "https://www.1hotel.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "ドッグランを使うときは1年以内の混合ワクチンと狂犬病ワクチンの証明",
+     "src": "https://www.1hotel.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "和食 OTE（朝・夕）、となりの匠宿の工房体験",
+     "src": "https://www.1hotel.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ドッグラン（宿泊者は24時間）と宿泊者専用の屋根つきドッグラン",
+     "src": "https://www.1hotel.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "セルフシャンプー、フォトブース、一時預かり",
+     "src": "https://www.1hotel.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "和食 OTE に犬用の食事",
+     "src": "https://www.1hotel.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "15時〜18時・11時",
+     "src": "https://www.1hotel.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "ia065b0"
+  },
+  {
+   "name": "TERROIR（S HUT）",
+   "kind": "貸別荘",
+   "pref": "兵庫県",
+   "city": "淡路市",
+   "url": "https://islandliving.jp/tettoir/stay.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬・大型犬（生後6か月以上、室内で飼っている子）",
+     "src": "https://islandliving.jp/tettoir/stay.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小型犬2匹、中型犬1匹、大型犬1匹まで",
+     "src": "https://islandliving.jp/tettoir/stay.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹5,500円",
+     "src": "https://islandliving.jp/tettoir/stay.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病と混合ワクチンの証明書。シャンプーとノミ・ダニ対策を済ませる。クレートは必要なら持参",
+     "src": "https://islandliving.jp/tettoir/stay.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "室内（ベッドは原則不可、ソファの一部は可。湯船・シャワーは不可）。敷地ではリード",
+     "src": "https://islandliving.jp/tettoir/stay.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "トイレシーツ・足ふきシート・犬用タオル・エチケット袋・粘着ローラー・消臭除菌スプレー・犬の食器",
+     "src": "https://islandliving.jp/tettoir/stay.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ie9601c"
+  },
+  {
+   "name": "WEST COAST AWAJI",
+   "kind": "貸別荘",
+   "pref": "兵庫県",
+   "city": "南あわじ市",
+   "url": "https://awaji.vacations/plan/west-cost-awaji/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県南あわじ市津井カリコ岬1477-5",
+     "src": "https://awaji.vacations/plan/west-cost-awaji/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kgまで）・中型犬（25kgまで）・大型犬（30kgまで）",
+     "src": "https://awaji.vacations/plan/west-cost-awaji/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "大きさで変わる（多頭や大型犬は相談）",
+     "src": "https://awaji.vacations/plan/west-cost-awaji/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1匹2,200円（衛生料金）",
+     "src": "https://awaji.vacations/plan/west-cost-awaji/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "予防接種を済ませていること。ごはん・寝具・トイレ・足ふきタオル（ケージは無料で借りられる）",
+     "src": "https://awaji.vacations/plan/west-cost-awaji/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "室内と庭（庭は21時まで）。お風呂は不可",
+     "src": "https://awaji.vacations/plan/west-cost-awaji/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "歩いて3分の近くのドッグパーク",
+     "src": "https://awaji.vacations/plan/west-cost-awaji/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "14時〜18時・10時",
+     "src": "https://awaji.vacations/plan/west-cost-awaji/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ",
+     "src": "https://awaji.vacations/plan/west-cost-awaji/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "if6415a"
+  },
+  {
+   "name": "東横INN札幌すすきの交差点",
+   "kind": "ホテル",
+   "pref": "北海道",
+   "city": "札幌市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN札幌すすきの交差点",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i1b72e5"
+  },
+  {
+   "name": "東横INN新函館北斗駅南口",
+   "kind": "ホテル",
+   "pref": "北海道",
+   "city": "北斗市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN新函館北斗駅南口",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i8d62f3"
+  },
+  {
+   "name": "東横INN郡山",
+   "kind": "ホテル",
+   "pref": "福島県",
+   "city": "郡山市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN郡山",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i10bb96"
+  },
+  {
+   "name": "東横INN成田空港本館",
+   "kind": "ホテル",
+   "pref": "千葉県",
+   "city": "成田市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN成田空港本館",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i9a6175"
+  },
+  {
+   "name": "東横INN横浜関内",
+   "kind": "ホテル",
+   "pref": "神奈川県",
+   "city": "横浜市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN横浜関内",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "iebae08"
+  },
+  {
+   "name": "東横INN富士山大月駅",
+   "kind": "ホテル",
+   "pref": "山梨県",
+   "city": "大月市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN富士山大月駅",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "id757ac"
+  },
+  {
+   "name": "東横INN松本駅前本町",
+   "kind": "ホテル",
+   "pref": "長野県",
+   "city": "松本市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN松本駅前本町",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ia7c1ea"
+  },
+  {
+   "name": "東横INN上越妙高駅西口",
+   "kind": "ホテル",
+   "pref": "新潟県",
+   "city": "上越市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN上越妙高駅西口",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i79bad0"
+  },
+  {
+   "name": "東横INN名古屋金山",
+   "kind": "ホテル",
+   "pref": "愛知県",
+   "city": "名古屋市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN名古屋金山",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ide5b45"
+  },
+  {
+   "name": "東横INN中部国際空港1",
+   "kind": "ホテル",
+   "pref": "愛知県",
+   "city": "常滑市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN中部国際空港1",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ドッグランが併設",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i211ddc"
+  },
+  {
+   "name": "東横INN京都五条大宮",
+   "kind": "ホテル",
+   "pref": "京都府",
+   "city": "京都市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN京都五条大宮",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i59980e"
+  },
+  {
+   "name": "東横INN梅田中津2",
+   "kind": "ホテル",
+   "pref": "大阪府",
+   "city": "大阪市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN梅田中津2",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i5ad7eb"
+  },
+  {
+   "name": "東横INN京橋桜ノ宮",
+   "kind": "ホテル",
+   "pref": "大阪府",
+   "city": "大阪市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN京橋桜ノ宮",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i5b0cd4"
+  },
+  {
+   "name": "東横INN広島駅スタジアム前",
+   "kind": "ホテル",
+   "pref": "広島県",
+   "city": "広島市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN広島駅スタジアム前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i15f156"
+  },
+  {
+   "name": "東横INN北九州空港",
+   "kind": "ホテル",
+   "pref": "福岡県",
+   "city": "北九州市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN北九州空港",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i334a38"
+  },
+  {
+   "name": "東横INN那覇おもろまち駅前",
+   "kind": "ホテル",
+   "pref": "沖縄県",
+   "city": "那覇市",
+   "url": "https://www.toyoko-inn.com/campaign/dog/#東横INN那覇おもろまち駅前",
+   "ok": true,
+   "facts": [
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "10kg以下の室内で飼っている小型犬（生後4か月以上）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3匹まで",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊 1匹目2,500円、2・3匹目は各2,000円",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "同意書（署名）、狂犬病と5種以上の混合ワクチンの証明書の写し（接種後2週間以上1年未満）、ごはん・マット",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ペット同伴OKルームの中だけ（ベッドとバスルームは不可）。館内は頭まで隠れるバッグで移動。食事会場は不可",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・粘着テープ・ふたつきのごみ箱・空気清浄機（無料）",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "小型犬だけ",
+     "src": "https://www.toyoko-inn.com/campaign/dog/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ie15e7f"
   }
  ]
 }
