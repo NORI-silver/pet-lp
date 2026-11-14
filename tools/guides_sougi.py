@@ -7,6 +7,7 @@
 # 公式サイトに書いている料金、tools/sougi.json＝自治体）を数えて分かったことを足す。民間の施設の名前は記事には出さず、数と料金の分布だけ（数字はデータから自動）。
 
 import json as _json, os as _os, re as _re, statistics as _st
+import guides_breed as _GB  # 犬種・体重の「うちの子で見る」（2026-11-14）
 _D = _os.path.dirname(_os.path.abspath(__file__))
 _FAC = _json.load(open(_os.path.join(_D, "sougi_facilities.json"), encoding="utf-8"))["facilities"]
 _CITY = _json.load(open(_os.path.join(_D, "sougi.json"), encoding="utf-8"))["cities"]
@@ -147,7 +148,7 @@ dict(slug="pet-cremation-types",
  desc=f"ペットの火葬の種類（合同・個別・立ち会い・訪問火葬）のちがいと料金。全国{N_PRICED}施設の公式サイトの料金を並べると、小さな子の個別火葬は真ん中が{SK['med']}、同じ施設で合同から個別にすると{D_GK}、立ち会いにすると{D_KT}上がりました。自治体とのちがい、見積もりで確かめることもまとめました。",
  lede="ペットの火葬には、ほかの子と一緒に火葬する方法から、家族でお骨を拾う方法まで、いくつかの種類があります。何がちがうのかを知っておくと、あとで「こうすればよかった」と思うことが少なくなります。",
  img="senior.jpg", img_alt="やわらかいマットの上でブランケットをかけて休むシニア犬",
- published="2026-11-02", modified="2026-11-03", category="procedure",
+ published="2026-11-02", modified="2026-11-14", category="procedure",
  sections=[
   ("4つの火葬のちがい", [
    ("table", [["", "お骨", "立ち会い", "費用"],
@@ -169,6 +170,11 @@ dict(slug="pet-cremation-types",
            f"「税込」と書いていたのは{N_TAX}施設です。ほかは税別か、書いていませんでした。くらべるときは税込でそろえます"]),
    ("tip", "ここに並べたのは公式サイトに書いてある料金で、多くは「〜から」の金額です。お迎え・休日や夜の料金・骨つぼなどが別にかかることもあるので、実際の料金は見積もりで確かめてください。"),
    ("links", [L_SOUGI]),
+  ]),
+  ("体重・犬種で変わる火葬の料金と骨つぼ", [
+   "火葬の料金は、多くの施設が体重で分けています。体重ごとの料金表を公式サイトにのせている施設の金額を、体重の区分ごとに並べました。犬種を選ぶと、その子の体重の区分と骨つぼの大きさが出ます。",
+   _GB.cremation_block(),
+   ("links", [("大型犬・超大型犬の火葬（40kg・50kgをこえる子）", "/guide/pet-cremation-large-dog/"), ("猫の火葬", "/guide/pet-cremation-cat/"), ("小さな動物の火葬", "/guide/pet-cremation-small/"), ("粉骨・骨つぼ・納骨堂の料金", "/guide/pet-ashes/")]),
   ]),
   ("どの方法を受けている施設が多いか", [
    f"一覧の{N_FAC}施設が公式サイトに書いている、できることを数えました（ひとつの施設がいくつも受けています）。",
@@ -230,7 +236,7 @@ dict(slug="pet-cremation-types",
       ("訪問火葬は近所に迷惑になりませんか？", "火葬する場所しだいです。家の前で火葬するのか、近くの決まった場所へ移動するのかを、頼む前に確かめてください。"),
       ("民間のペット火葬の料金はいくらですか？", f"会社・体重・火葬の方法で大きく違います。当サイトで{N_PRICED}施設の公式サイトの料金を並べると、猫・小型犬など小さな子の個別火葬（おまかせ）は真ん中が{SK['med']}、合同火葬は{SG['med']}、立ち会い火葬は{ST['med']}でした。同じ条件で、書いたもので見積もりをとって比べてください。"),
       ("立ち会い火葬にすると、いくら高くなりますか？", f"同じ施設がおまかせの個別火葬と立ち会い火葬の両方の料金を書いている{N_KT}施設では、差の真ん中が{D_KT}でした。お別れの部屋や時間が含まれるかで差が変わります。")],
- sources=[SENDAI, YOKOHAMA, OKAYAMA, TAKAMATSU, KARATSU, SAKAI_CAR],
+ sources=[SENDAI, YOKOHAMA, OKAYAMA, TAKAMATSU, KARATSU, SAKAI_CAR] + _GB.CREM_SOURCES,
  related=["pet-cremation-city", "pet-memorial", "pet-died-first"]),
 
 dict(slug="pet-cremation-city",
