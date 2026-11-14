@@ -147,11 +147,15 @@ def breeds(d, arrow="", heading=""):
         show = [key] + [b["id"] for b in dogs if ov(b["kg"][0], b["kg"][1], lo, hi)]
         opts.append(f'<option value="{e(key)}" data-show="{e(sh(show))}" data-lo="{lo}" data-hi="{hi}">{e(lab)}</option>')
     opts.append("</optgroup>")
-    opts.append('<optgroup label="よく飼われている犬種（登録の多い順）">' + "".join(opt(b) for b in dogs[:B.TOP_N]) + "</optgroup>")
-    opts.append('<optgroup label="そのほかの犬種（五十音順）">' + "".join(opt(b) for b in sorted(dogs[B.TOP_N:], key=lambda b: b["name"])) + "</optgroup>")
+    # d["names"]=False なら犬種・猫の種類の名前は出さず、体重と「猫」だけ（中身が犬種で変わらない小さなページで、名前の一覧が本文をふくらませないように。避難の市区町村ページ）
+    if d.get("names", True):
+        opts.append('<optgroup label="よく飼われている犬種（登録の多い順）">' + "".join(opt(b) for b in dogs[:B.TOP_N]) + "</optgroup>")
+        opts.append('<optgroup label="そのほかの犬種（五十音順）">' + "".join(opt(b) for b in sorted(dogs[B.TOP_N:], key=lambda b: b["name"])) + "</optgroup>")
     cats = "cat" in used
-    if cats:
+    if cats and d.get("names", True):
         opts.append('<optgroup label="猫の種類">' + "".join(opt(b) for b in B.CATS) + "</optgroup>")
+    elif cats:
+        opts.append('<optgroup label="猫"><option value="cat" data-show="all cat" data-c="1">猫</option></optgroup>')
     cards = []
     for r in rows:
         src = r.get("src")
@@ -204,10 +208,10 @@ function ap(bf,o){var sh=o&&o.value?o.getAttribute('data-show').split(' '):null,
 [].forEach.call(bf.querySelectorAll('.bf-card'),function(c){var ok=!sh||c.getAttribute('data-k').split(' ').some(function(k){return sh.indexOf(k)>=0});c.hidden=!ok;if(ok)n++});
 bf.querySelector('.bf-now').textContent=sh?(n?'「'+o.textContent+'」に当てはまる'+n+'件を表示しています。「すべて表示」でもとに戻ります。':'「'+o.textContent+'」だけの情報はまだありません。上の「すべて表示」か体重で選んでください。'):'';}
 function pick(s,v){var o=null;[].forEach.call(s.options,function(x){if(!o&&v.b&&x.getAttribute('data-b')===v.b)o=x});
-if(!o&&v.c)return null;if(!o&&v.kg!=null)[].forEach.call(s.options,function(x){if(!o&&!x.getAttribute('data-b')&&x.getAttribute('data-lo')!==null&&v.kg>=+x.getAttribute('data-lo')&&v.kg<+x.getAttribute('data-hi'))o=x});return o}
+if(!o&&v.c){[].forEach.call(s.options,function(x){if(!o&&x.getAttribute('data-c')&&!x.getAttribute('data-b'))o=x});return o}if(!o&&v.kg!=null)[].forEach.call(s.options,function(x){if(!o&&!x.getAttribute('data-b')&&x.getAttribute('data-lo')!==null&&v.kg>=+x.getAttribute('data-lo')&&v.kg<+x.getAttribute('data-hi'))o=x});return o}
 function all(v,from){L.forEach(function(bf){var s=bf.querySelector('select');if(bf===from)return;var o=v?pick(s,v):null;s.value=o?o.value:'';ap(bf,o)})}
 L.forEach(function(bf){var s=bf.querySelector('select');s.addEventListener('change',function(){var o=s.options[s.selectedIndex],v=null;
-if(o.value){var lo=+o.getAttribute('data-lo'),hi=+o.getAttribute('data-hi');v=o.getAttribute('data-b')?{b:o.getAttribute('data-b'),kg:(lo+Math.min(hi,lo+40))/2,c:o.getAttribute('data-c')?1:0}:{kg:(lo+Math.min(hi,lo+40))/2}}
+if(o.value){var lo=+o.getAttribute('data-lo'),hi=+o.getAttribute('data-hi');v=(o.getAttribute('data-c')&&!o.getAttribute('data-b'))?{c:1}:o.getAttribute('data-b')?{b:o.getAttribute('data-b'),kg:(lo+Math.min(hi,lo+40))/2,c:o.getAttribute('data-c')?1:0}:{kg:(lo+Math.min(hi,lo+40))/2}}
 ap(bf,o);p(v);all(v,bf);try{window.gtag&&gtag('event','breed_filter',{pick:o.value||'all',from:location.pathname})}catch(e){}});
 var q=bf.querySelector('.bf-q');if(q)q.addEventListener('input',function(){var t=nm(q.value);if(!t)return;var best=null,sc=9;
 [].forEach.call(s.options,function(x){if(!x.value)return;var r=9;[x.textContent,x.getAttribute('data-y')||''].forEach(function(z){var n=nm(z);if(!n)return;var i=n.indexOf(t),k=n===t?0:i===0?1:i>0?2:9;if(k<r)r=k});if(r<sc){sc=r;best=x}});

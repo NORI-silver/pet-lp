@@ -233,10 +233,10 @@ function ap(bf,o){var sh=o&&o.value?o.getAttribute('data-show').split(' '):null,
 [].forEach.call(bf.querySelectorAll('.bf-card'),function(c){var ok=!sh||c.getAttribute('data-k').split(' ').some(function(k){return sh.indexOf(k)>=0});c.hidden=!ok;if(ok)n++});
 bf.querySelector('.bf-now').textContent=sh?(n?'「'+o.textContent+'」に当てはまる'+n+'件を表示しています。「すべて表示」でもとに戻ります。':'「'+o.textContent+'」だけの情報はまだありません。上の「すべて表示」か体重で選んでください。'):'';}
 function pick(s,v){var o=null;[].forEach.call(s.options,function(x){if(!o&&v.b&&x.getAttribute('data-b')===v.b)o=x});
-if(!o&&v.c)return null;if(!o&&v.kg!=null)[].forEach.call(s.options,function(x){if(!o&&!x.getAttribute('data-b')&&x.getAttribute('data-lo')!==null&&v.kg>=+x.getAttribute('data-lo')&&v.kg<+x.getAttribute('data-hi'))o=x});return o}
+if(!o&&v.c){[].forEach.call(s.options,function(x){if(!o&&x.getAttribute('data-c')&&!x.getAttribute('data-b'))o=x});return o}if(!o&&v.kg!=null)[].forEach.call(s.options,function(x){if(!o&&!x.getAttribute('data-b')&&x.getAttribute('data-lo')!==null&&v.kg>=+x.getAttribute('data-lo')&&v.kg<+x.getAttribute('data-hi'))o=x});return o}
 function all(v,from){L.forEach(function(bf){var s=bf.querySelector('select');if(bf===from)return;var o=v?pick(s,v):null;s.value=o?o.value:'';ap(bf,o)})}
 L.forEach(function(bf){var s=bf.querySelector('select');s.addEventListener('change',function(){var o=s.options[s.selectedIndex],v=null;
-if(o.value){var lo=+o.getAttribute('data-lo'),hi=+o.getAttribute('data-hi');v=o.getAttribute('data-b')?{b:o.getAttribute('data-b'),kg:(lo+Math.min(hi,lo+40))/2,c:o.getAttribute('data-c')?1:0}:{kg:(lo+Math.min(hi,lo+40))/2}}
+if(o.value){var lo=+o.getAttribute('data-lo'),hi=+o.getAttribute('data-hi');v=(o.getAttribute('data-c')&&!o.getAttribute('data-b'))?{c:1}:o.getAttribute('data-b')?{b:o.getAttribute('data-b'),kg:(lo+Math.min(hi,lo+40))/2,c:o.getAttribute('data-c')?1:0}:{kg:(lo+Math.min(hi,lo+40))/2}}
 ap(bf,o);p(v);all(v,bf);try{window.gtag&&gtag('event','breed_filter',{pick:o.value||'all',from:location.pathname})}catch(e){}});
 var q=bf.querySelector('.bf-q');if(q)q.addEventListener('input',function(){var t=nm(q.value);if(!t)return;var best=null,sc=9;
 [].forEach.call(s.options,function(x){if(!x.value)return;var r=9;[x.textContent,x.getAttribute('data-y')||''].forEach(function(z){var n=nm(z);if(!n)return;var i=n.indexOf(t),k=n===t?0:i===0?1:i>0?2:9;if(k<r)r=k});if(r<sc){sc=r;best=x}});
