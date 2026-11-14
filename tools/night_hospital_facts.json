@@ -1523,10 +1523,40 @@
    "pref": "石川県",
    "city": "金沢市",
    "url": "https://kanazawa-yakan.com/",
-   "ok": false,
+   "ok": true,
    "closed": false,
-   "facts": [],
-   "note": "公式サイトがクローラーを拒否（robots）していて読めない。検索ではポータルのみ"
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "金沢市泉3丁目1-12",
+     "src": "https://kanazawa-yakan.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受付時間",
+     "v": "21時〜翌2時",
+     "src": "https://kanazawa-yakan.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "不定休",
+     "src": "https://kanazawa-yakan.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院前の連絡",
+     "v": "来院前に電話で確かめる",
+     "src": "https://kanazawa-yakan.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い方法",
+     "v": "キャッシュレス決済のみ（現金は使えない）",
+     "src": "https://kanazawa-yakan.com/",
+     "checked": "2026-11-14"
+    }
+   ]
   },
   {
    "id": "H062",
@@ -2213,6 +2243,18 @@
     {
      "k": "診療の内容",
      "v": "応急的な一次診療。手術・入院・予防注射は原則しない",
+     "src": "https://www.kochikenjuishikai.or.jp/article/archives/8",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "来院のときに",
+     "v": "受付で診療同意書に署名・押印（印鑑を持参）。治療中の病気があれば検査結果や薬を持っていく。時間内に来られないと予約は取り消し",
+     "src": "https://www.kochikenjuishikai.or.jp/article/archives/8",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "休診日",
+     "v": "当番は日ごとに決まる（その日の当番を獣医師会に確かめる）",
      "src": "https://www.kochikenjuishikai.or.jp/article/archives/8",
      "checked": "2026-11-14"
     }
