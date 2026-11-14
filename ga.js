@@ -71,3 +71,8 @@
   var s = document.createElement("script"); s.defer = true; s.src = "/webmcp.js";
   document.head.appendChild(s);
 })();
+// 分野のメニュー（tools/portal.py の catbar）：いま見ている分野が画面の外なら、見える位置まで横に送る（2026-11-14）
+(function(){
+  function go(){var n=document.querySelector('.catbar .wrap'),a=n&&n.querySelector('[aria-current]');if(a&&a.offsetLeft+a.offsetWidth>n.clientWidth)n.scrollLeft=a.offsetLeft-20;}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
+})();
