@@ -96,6 +96,18 @@ for _x in DOGS: BYPREF.setdefault(_x["pref"], []).append(_x)
 PREFS = {pf for pf, xs in BYPREF.items() if len(xs) >= PREF_MIN}
 OTHER = {k: [x for x in INNS if k in x["animals"]] for k, _, _ in AN}
 ANIMAL_PAGES = {k for k, xs in OTHER.items() if len(xs) >= ANIMAL_MIN}
+# 宿の種類（Nori 2026-11-14「グランピングやキャンプ場など全部入れて」）。kind の値 → 種類のページ /inu-yado/<slug>/（犬と泊まれる宿が TYPE_MIN 軒以上のとき）
+TYPES = [("ryokan", "旅館", ("旅館",)), ("hotel", "ホテル", ("ホテル",)), ("pension", "ペンション", ("ペンション", "オーベルジュ")),
+         ("cottage", "コテージ・貸別荘", ("コテージ", "貸別荘", "ヴィラ")), ("glamping", "グランピング", ("グランピング",)),
+         ("camp", "キャンプ場", ("キャンプ場", "オートキャンプ場"))]
+TYPE_MIN = 5
+def type_of(x):
+    for slug, nm, kinds in TYPES:
+        if (x.get("kind") or "") in kinds: return slug
+    return ""
+BYTYPE = {slug: [x for x in DOGS if type_of(x) == slug] for slug, _, _ in TYPES}
+TYPE_PAGES = [slug for slug, _, _ in TYPES if len(BYTYPE[slug]) >= TYPE_MIN]
+TYPE_NAME = {slug: nm for slug, nm, _ in TYPES}
 
 
 def pref_href(pf): return f"/inu-yado/{PSLUG[pf]}/" if pf in PREFS else f"/inu-yado/#{PSLUG[pf]}"
@@ -361,6 +373,7 @@ def render_hub(ctx):
            ("ワクチンの証明書は必要？", f"{n}軒のうち{vac}軒が証明を求めると書いています。1年以内の狂犬病予防注射と、混合ワクチン（多くは5種以上）の証明が多いです。")]
     body = (f'<div class="yd-ans"><h2>犬と泊まれる宿は、全国で{n}軒を確かめました</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
             + V.stats(tiles) + bars
+            + (f'<h2 class="yd-h">宿の種類からさがす</h2><ul class="yd-pref">' + "".join(f'<li><a href="/inu-yado/{t}/">{e(TYPE_NAME[t])}<small>{len(BYTYPE[t])}軒</small></a></li>' for t in TYPE_PAGES) + '</ul>' if TYPE_PAGES else "")
             + f'<h2 class="yd-h">都道府県からさがす</h2><p class="emg-tips-note">{PREF_MIN}軒以上の県は県のページで、うちの子の大きさでしぼって見られます。それより少ない県は、このページの下の地方の表に入れています。</p>{chips}'
             + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">犬以外のペットと泊まれる宿</h2><ul class="yd-pref">'
             + "".join(f'<li><a href="{animal_href(k)}">{e(nm)}<small>{len(OTHER[k])}軒</small></a></li>' for k, nm, _ in AN if OTHER[k]) + "</ul></div>"
@@ -413,6 +426,48 @@ def render_animal(ctx, k):
     return _wrap(ctx, title, desc, url, _ld(SITE, crumbs, xs, faq), crumb, f"{nm}と泊まれる宿", f"公式サイトで確かめた{n}軒", lede, body)
 
 
+TYPE_TIPS = {
+    "camp": [("キャンプ場で気をつけること", "リードは短めに持ち、ほかのサイトに入らないようにします。夏は地面とテントの中が熱くなるので日かげと水を、夜は冷えるので犬用の敷物を。鳴き声は夜と朝早くに特に気をつけます。")],
+    "glamping": [("グランピングで確かめること", "犬が入れるのがテントの中までか、デッキまでか。ベッドに上げてよいか。夏の暑さと冬の寒さへの備え（冷暖房の有無）。")],
+    "cottage": [("コテージ・貸別荘で確かめること", "犬が上がってよい場所（ソファ・ベッド・2階）、庭やデッキの囲いの高さ、掃除の決まり（毛の始末・追加の清掃料）。1棟貸しは、ほかの泊まり客を気にしなくてよいのが良いところです。")],
+    "ryokan": [("旅館で確かめること", "犬が入れるのが客室だけか、食事処や大浴場の近くの廊下は抱っこやカートか。部屋食か、犬と一緒に食べられる食事処があるか。")],
+    "hotel": [("ホテルで確かめること", "ロビーやエレベーターを歩いてよいか（抱っこ・カートの決まり）、犬と入れるレストランがあるか、ドッグランやシャワー・足洗い場があるか。")],
+    "pension": [("ペンションで確かめること", "犬と入れる食堂か、部屋で待たせるか。オーナーさんも犬を飼っている宿が多いので、ほかの犬が苦手な子は先に伝えておきます。")],
+}
+
+
+def render_type(ctx, slug):
+    e, SITE = ctx["e"], ctx["SITE"]
+    nm = TYPE_NAME[slug]; xs = sorted(BYTYPE[slug], key=lambda x: (PREF_ORDER(ctx, x["pref"]), x.get("city", ""), x["name"])); n = len(xs)
+    url = f"{SITE}/inu-yado/{slug}/"
+    prefs = list(dict.fromkeys(x["pref"] for x in xs))
+    big = [x for x in xs if "l" in x["sizes"]]; cats = [x for x in xs if "cat" in x["animals"]]
+    runs = [x for x in xs if _run(x)]; fees = _fees(xs)
+    ans = [f"犬と泊まれる{nm}は、当サイトで公式サイトを確かめた{n}軒です（{'・'.join(prefs[:6])}{'など' if len(prefs) > 6 else ''}）。"]
+    ans.append(f"大型犬も泊まれると書いているのは{len(big)}軒：{_names(big)}。" if big else f"大型犬も泊まれると書いている{nm}は、確かめた中にはありませんでした。")
+    if cats: ans.append(f"猫も一緒に泊まれるのは{len(cats)}軒：{_names(cats)}。")
+    if fees: ans.append(f"犬の料金が書いてある{len(fees)}軒では、1頭1泊（1回）{fees[0]:,}円〜{fees[-1]:,}円（いちばん安い区分）。")
+    tiles = [(f"{n}軒", f"犬と泊まれる{nm}"), (f"{len(prefs)}", "都道府県"), (f"{len(big)}軒", "大型犬も泊まれる"), (f"{len(runs)}軒", "ドッグランがある")]
+    faq = [(f"犬と泊まれる{nm}はどこ？", f"当サイトで公式サイトを確かめた中では、{_names(xs, 6)}です。都道府県と犬の大きさでしぼれます。")]
+    if big: faq.append((f"大型犬と泊まれる{nm}は？", f"公式サイトに大型犬も泊まれると書いているのは、{_names(big, 6)}です。頭数や体重の上限は宿ごとに違います。"))
+    if fees: faq.append((f"{nm}の犬の料金はいくら？", f"犬の料金を書いている{len(fees)}軒では、いちばん安い区分で{fees[0]:,}円〜{fees[-1]:,}円でした。無料のところもあります。"))
+    others = "".join(f'<li><a href="/inu-yado/{t}/">{e(TYPE_NAME[t])}<small>{len(BYTYPE[t])}軒</small></a></li>' for t in TYPE_PAGES if t != slug)
+    body = (f'<div class="yd-ans"><h2>犬と泊まれる{e(nm)}のポイント</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
+            + V.stats(tiles)
+            + _fit(e, f"うちの子の大きさで、{nm}を見る", f"{n}軒を、泊まれる犬の大きさ（小型犬・中型犬・大型犬）と猫でしぼれます。", xs)
+            + f'<h2 class="yd-h">{e(nm)}{n}軒をくらべる</h2>' + table(e, xs)
+            + "".join(f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">{e(a)}</h2><p style="font-size:.9rem;margin:4px 0 10px">{e(b)}</p></div>' for a, b in TYPE_TIPS.get(slug, []))
+            + f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{_faq_html(e, faq)}</dl></div>'
+            + (f'<h2 class="yd-h">ほかの種類の宿</h2><ul class="yd-pref">{others}</ul>' if others else "")
+            + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">関連するページ</h2><ul class="other"><li><a href="/inu-yado/">全国の犬と泊まれる宿</a></li><li><a href="/pet-yado/">猫・うさぎなど犬以外と泊まれる宿</a></li><li><a href="/dogrun/">全国のドッグラン</a></li></ul></div>')
+    title = f"犬と泊まれる{nm}{n}軒｜大型犬・犬の料金・ドッグランをくらべる｜ペットのくらし窓口"
+    desc = f"犬と一緒に泊まれる{nm}{n}軒を、各施設の公式サイトで確かめた犬の大きさ・頭数・犬の料金・ドッグラン・必要なものでくらべられる無料の一覧です。"
+    crumbs = [("ペットのくらし窓口", "/"), ("犬と泊まれる宿", "/inu-yado/"), (nm, f"/inu-yado/{slug}/")]
+    crumb = f'<a href="/">ペットのくらし窓口</a> › <a href="/inu-yado/">犬と泊まれる宿</a> › {e(nm)}'
+    lede = f"犬と一緒に泊まれる{e(nm)}を、各施設の公式サイトに書いてあることだけでまとめました。大きさ・頭数・料金・犬が入れる場所は施設ごとに違うので、くらべてから公式サイトで予約してください。"
+    return _wrap(ctx, title, desc, url, _ld(SITE, crumbs, xs, faq), crumb, f"犬と泊まれる{nm}", f"公式サイトで確かめた{n}軒", lede, body)
+
+
 def PREF_ORDER(ctx, pf):
     i = 0
     for _, ps in ctx["emg_regions"]:
@@ -456,6 +511,7 @@ def urls(SITE):
     out = [SITE + "/inu-yado/"] + [f"{SITE}/inu-yado/{PSLUG[pf]}/" for pf in sorted(PREFS, key=lambda p: PSLUG[p])]
     if any(OTHER.values()): out.append(SITE + "/pet-yado/")
     out += [f"{SITE}/pet-yado/{AN_SLUG[k]}/" for k in sorted(ANIMAL_PAGES)]
+    out += [f"{SITE}/inu-yado/{t}/" for t in TYPE_PAGES]
     return out
 
 
@@ -471,3 +527,4 @@ def write_all(ROOT, ctx):
     for pf in PREFS: w(f"/inu-yado/{PSLUG[pf]}/", render_pref(ctx, pf))
     if any(OTHER.values()): w("/pet-yado/", render_pethub(ctx))
     for k in ANIMAL_PAGES: w(f"/pet-yado/{AN_SLUG[k]}/", render_animal(ctx, k))
+    for t in TYPE_PAGES: w(f"/inu-yado/{t}/", render_type(ctx, t))
