@@ -607,6 +607,20 @@ footer a{color:var(--ink-2)}
 .partner-later-note{margin:10px 0 0!important;font-size:.78rem!important;color:var(--ink-3)!important;text-align:center}
 .partner-caution{margin-top:2px!important;font-size:.78rem!important;line-height:1.5!important;font-weight:700;color:var(--o-d)!important}
 .partner-card .partner-info{font-size:.8rem;color:var(--ink-2);margin:0;line-height:1.6}
+/* カードをすっきり（Nori 2026-11-14） */
+.partner-card{gap:8px}
+.partner-card .partner-price{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:8px;font-size:1.45rem}
+.partner-card .partner-price small{display:inline;font-size:.74rem}
+.partner-caution{margin-top:-4px!important;font-weight:600!important}
+.partner-card .partner-creds{margin:0;font-size:.78rem;gap:2px 12px}
+.partner-card .partner-score{font-size:.82rem;gap:4px 6px;flex-wrap:nowrap}.partner-card .partner-score .stars{font-size:.9rem}.partner-card .partner-score .partner-review-open{white-space:nowrap}
+.partner-card .partner-score .partner-review-src{margin-left:auto;font-size:.68rem}
+.partner-card .partner-dist{margin:-4px 0 0}
+.partner-card .partner-more{border-top:0;padding:0}
+.partner-card .partner-more>summary{font-size:.78rem;color:var(--ink-2);font-weight:600}
+.partner-site{flex-wrap:nowrap;margin:4px 0 0!important}
+.partner-site a{flex:1 1 auto;text-align:center;border-color:var(--o);color:var(--o-d)}
+.copy-ask{flex:0 0 auto;border:0;background:none;padding:9px 6px;color:var(--ink-2);font-weight:600;font-size:.8rem;text-decoration:underline}
 .partner-caution b{color:var(--o-d);font-size:.8rem;margin-right:4px}
 .partner-review-open{background:none;border:0;padding:0;font:inherit;font-size:.82rem;color:var(--o-d);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .partner-review-src{font-family:Roboto,Arial,sans-serif;font-size:.7rem;color:#5f6368;margin-left:auto;white-space:nowrap}
@@ -1807,7 +1821,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var c = id && CREDS[id]; if (!c) return [];
     var out = [], today = new Date().toISOString().slice(0, 10);
     if (c.reg && !(c.reg.until && c.reg.until < today)) out.push("動物取扱業の登録あり" + (c.reg.kinds && c.reg.kinds.length ? "（" + c.reg.kinds.join("・") + "）" : ""));
-    if (c.transport) out.push(c.transport === "黒ナンバー" ? "運送の届出あり（黒ナンバー）" : "運送の届出あり");
+    if (c.transport) out.push("運送の届出あり"); // 「黒ナンバー」と書く会社と「届出」と書く会社があるが、どちらも同じ貨物軽自動車運送事業の届出なので表示はひとつにする（Nori 2026-11-14「同じなら統一して」）
     if (c.ins) out.push("動物の賠償保険に加入");
     if (c.quals && c.quals.length) out.push("資格：" + c.quals.slice(0, 2).join("・"));
     return out;
@@ -1844,20 +1858,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       } // 点数が取れないときは何も出さない（外部の口コミページへは飛ばさない。Nori 2026-10-31）
       // アピールポイント（公式サイトに書いてあることだけ。Nori 2026-10-31）
       // 条件のタグ（同乗の人数・頭数・お支払いの決まり。灰色。Nori 2026-11-01）
-      var fit = fitPoints(card);
-      if (fit.points.length || fit.limits.length) {
-        var pts = document.createElement("ul"); pts.className = "partner-points"; pts.setAttribute("aria-label", "公式サイトに書いてある特長と条件");
-        fit.points.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; pts.appendChild(li); });
-        fit.limits.forEach(function(x){ var li = document.createElement("li"); li.className = "lim"; li.textContent = x; pts.appendChild(li); });
-        article.appendChild(pts);
-      }
-      var cr = credLine(card.id);
-      if (cr.length) { var cl = document.createElement("ul"); cl.className = "partner-creds"; cl.setAttribute("aria-label", "公式サイトに書いてある許可・登録・資格・保険");
-        cr.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; cl.appendChild(li); }); article.appendChild(cl); }
       // 料金（概算見積もり）。口コミと料金のほかの詳しい情報は、最初はたたんでおく（Nori 2026-10-31）
       var price = text("p", roundYenText(card.price.text), "partner-price");
       var tripName = leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道";
-      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? (routeDetails && Math.max(routeDetails.km || 0, routeDetails.highKm || 0) > 250 ? "長距離のため、お見積もり" : "料金表が未登録のため、お見積もり") : "一般道・" + tripName + "の概算見積もり" + (card.price.taxUnknown ? (card.price.incompleteFees ? "（税の扱いは確認中・未確認の費用は別途）" : "（税の扱いは確認中）") : card.price.incompleteFees ? "（税込・未確認の費用は別途）" : "（税込）"); price.appendChild(cap);
+      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? (routeDetails && Math.max(routeDetails.km || 0, routeDetails.highKm || 0) > 250 ? "長距離のため、お見積もり" : "料金表が未登録のため、お見積もり") : "一般道・" + tripName + "の概算" + (card.price.taxUnknown ? "（税は確認中）" : "（税込）"); price.appendChild(cap);
       if (card.price.local && card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
       // 概算の注意は料金のすぐ下に太字の1行（上のまとめの注意と合わせて「目立つ形」。2026-11-08 レビュー #2 でカードを短く）
       var caution = text("p", card.price.amount == null ? "確定料金は会社からお知らせします" : "概算です。確定料金ではありません", "partner-caution");
@@ -1870,11 +1874,25 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (jam || wait) { var wsp = document.createElement("span"); wsp.className = "partner-wait"; wsp.textContent = "。" + (wait && jam ? "当日の待ち時間・道路事情で変わることがあります" : wait ? "待ち時間は当日の実際の時間で精算します" : "当日の道路事情で変わることがあります"); caution.appendChild(wsp); }
       // 車・お支払いは、たたまずに出す（Nori 2026-11-08「支払い方法とかできるものは全部出しておいたほうが」）
       // 分からない項目（「まだ確認中です」）は行ごと出さない。お客さまが選んだ動物を乗せられるかの「確認中」だけは残す（2026-11-08 レビュー #3）
-      var carText = String(card.car || "").replace(/(^|。)[^。]*(車の詳細|対応エリア)は?[^。]*確認中です[。）)]?/g, "$1").replace(/（対応エリアは確認中です）/g, "").replace(/^。+/, "").trim();
-      if (carText) text("p", carText, "partner-info");
-      if (card.payment && !/確認中/.test(card.payment)) text("p", /^お支払い/.test(card.payment) ? card.payment : "お支払い：" + card.payment, "partner-info");
+      // すっきり見せる（Nori 2026-11-14「ごみごみしてる。もっとすっきり」）：料金のすぐ下に許可・保険、その下に特長・条件・車・お支払いを1列のタグにまとめる
+      var cr = credLine(card.id);
+      if (cr.length) { var cl = document.createElement("ul"); cl.className = "partner-creds"; cl.setAttribute("aria-label", "公式サイトに書いてある許可・登録・資格・保険");
+        cr.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; cl.appendChild(li); }); article.appendChild(cl); }
+      var fit = fitPoints(card), tags = fit.limits.slice();
+      // 車・お支払いは、たたまずに出す（Nori 2026-11-08）。タグと同じ内容を本文に二重に出さない。（公式サイトの記載）などの出どころの注記はタグでははぶく（タグは全部、公式サイトか会社の返事に書いてあることだけ）
+      // 分からない項目（「確認中」）は出さない（2026-11-08 レビュー #3）
+      var carTag = String(card.car || "").split("。")[0].replace(/（[^）]*）/g, "").trim();
+      if (carTag && !/確認中/.test(carTag) && !tags.some(function(x){ return /^車：/.test(x); })) tags.push(/^車：/.test(carTag) ? carTag : "車：" + carTag);
+      var payTag = String(card.payment || "").replace(/^お支払い：/, "").replace(/（[^）]*）/g, "").trim();
+      if (payTag && !/確認中|ご案内/.test(payTag) && !tags.concat(fit.points).some(function(x){ return /現金のみ|カード払い/.test(x); })) tags.push("お支払い：" + payTag);
+      if (fit.points.length || tags.length) {
+        var pts = document.createElement("ul"); pts.className = "partner-points"; pts.setAttribute("aria-label", "公式サイトに書いてある特長と条件");
+        fit.points.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; pts.appendChild(li); });
+        tags.forEach(function(x){ var li = document.createElement("li"); li.className = "lim"; li.textContent = x; pts.appendChild(li); });
+        article.appendChild(pts);
+      }
       var more = document.createElement("details"); more.className = "partner-more";
-      var ms = document.createElement("summary"); ms.textContent = "料金の内訳を見る"; more.appendChild(ms);
+      var ms = document.createElement("summary"); ms.textContent = "料金の内訳"; more.appendChild(ms);
       article.appendChild(more);
       function add(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; more.appendChild(el); return el; }
       // 「引き受けるときに会社が確かめること」（card.check）は、会社あての問い合わせメールにだけ出す。お客さまのカードには出さない（Nori 2026-11-08「ユーザに見せるべき？」）
@@ -1888,6 +1906,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         });
         box.appendChild(list); more.appendChild(box);
       }
+      if (card.price.incompleteFees) add("p", "「〜」は、まだ確かめられていない費用（迎車・回送の一部など）を入れていない金額です。", "partner-note");
       if (card.price.fixed) { if (card.price.planNote) add("p",roundYenText(card.price.planNote),"partner-note"); }
       else if (card.price.local) {
         var lp = card.price.local, fy = function(v, unknown){ return v ? yen(v) + (unknown ? "〜" : "") : unknown ? "要確認" : "0円"; };
@@ -1906,11 +1925,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         if (card.site) { // 公式サイトへ（別のタブ）。空き状況と料金は会社に直接おたずねいただく
           var sp = document.createElement("p"); sp.className = "partner-site";
           // 入力した内容をむだにしないよう、そのまま貼れる問い合わせ文をコピーできる。文の最後に当サイトから来たことを書く（送客が会社に伝わる。Nori 2026-11-08）
-          var cp = document.createElement("button"); cp.type = "button"; cp.className = "copy-ask"; cp.textContent = "問い合わせ文をコピー";
+          var cp = document.createElement("button"); cp.type = "button"; cp.className = "copy-ask"; cp.textContent = "文をコピー"; cp.setAttribute("aria-label", "問い合わせ文をコピー");
           cp.addEventListener("click", function(){ copyAsk(cp, card); });
-          var sa = document.createElement("a"); sa.href = siteUrl(card.site); sa.target = "_blank"; sa.rel = "noopener"; sa.textContent = "公式サイトを見る ↗";
+          var sa = document.createElement("a"); sa.href = siteUrl(card.site); sa.target = "_blank"; sa.rel = "noopener"; sa.textContent = "公式サイトで問い合わせ ↗";
           sa.addEventListener("click", function(){ var o = coInfo(card); o.cat = "taxi"; o.from = "card"; try { o.host = new URL(sa.href).hostname; } catch (e) {} track("official_site", o); }); // 会社ごとの遷移数（Nori 2026-11-10）
-          sp.append(cp, sa); article.appendChild(sp);
+          sp.append(sa, cp); article.appendChild(sp);
         }
         if (!card.site) text("p", "このサイトからは、まだ問い合わせできません", "partner-later-note"); // コピーの説明は一覧の上で1回（2026-11-11 レビュー N3） // 大きな灰色のボタンはやめて1行に（2026-11-08 レビュー #2）
         return article;
