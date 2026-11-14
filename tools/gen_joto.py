@@ -28,10 +28,18 @@ import gen_dogrun
 PSLUG = gen_dogrun.PSLUG
 _MUNI = {(m["pref"], m["name"]): m["slug"] for m in json.load(open(os.path.join(_D, "municipalities.json"), encoding="utf-8"))}
 CITY_MIN = 5
-def city_href(c):
+# 市のページは「そのページだけの字数」（tools/thin_gate.py と同じ数え方）が足りるときだけ作る（Nori 2026-11-14「そもそも薄い記事作らないで」）。
+# 足りない市は tools/joto_city_fold.json に入れ、県のページのカードにだけ載せる（前にあったURLは県のページへ移す案内だけ）。
+CITY_MIN_CHARS = 1000  # サイト全体ではひな形の文がもっと多いので、900字より少し余裕をみる
+_FOLD_F = os.path.join(_D, "joto_city_fold.json")
+_FOLD = set(json.load(open(_FOLD_F, encoding="utf-8")).get("cities", [])) if os.path.exists(_FOLD_F) else set()
+def _city_path(c):
     if not c.get("city") or len(c["conds"]) < CITY_MIN: return None
     s = _MUNI.get((c["pref"], c["city"]))
     return f"/{SLUG}/{PSLUG[c['pref']]}/{s}/" if s else None
+def city_href(c):
+    p = _city_path(c)
+    return None if (p is None or p in _FOLD) else p
 CITY_ITEMS = [c for c in ITEMS if city_href(c)]
 
 # 条件の見出しごとに、公式ページに書いてあるかどうか（書いてある＝○、書いていない＝空欄。「しない」ではない）
@@ -309,7 +317,27 @@ def city_urls(SITE):
     return [SITE + city_href(c) for c in CITY_ITEMS]
 
 def write_cities(ROOT, ctx):
-    for c in CITY_ITEMS:
-        d = os.path.join(ROOT, city_href(c).strip("/"))
-        os.makedirs(d, exist_ok=True)
-        open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(render_city(ctx, c))
+    import thin_gate as TG
+    from collections import Counter
+    pages = {city_href(c): render_city(ctx, c) for c in CITY_ITEMS}
+    segs = {k: set(TG._segments(v)) for k, v in pages.items()}
+    df = Counter(t for v in segs.values() for t in v)
+    short = {k for k, v in segs.items() if sum(len(t) for t in v if df[t] < TG.TEMPLATE_DF) < CITY_MIN_CHARS}
+    fold = sorted(_FOLD | short)
+    if set(fold) != _FOLD:
+        json.dump({"_note": "市のページを作らない市（そのページだけの字数が足りない）。gen_joto.write_cities が書く。公式ページの事実を足せば、消せば次の実行でまた数える。", "cities": fold},
+                  open(_FOLD_F, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    for k, html in pages.items():
+        if k in short: continue
+        d = os.path.join(ROOT, k.strip("/")); os.makedirs(d, exist_ok=True)
+        open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(html)
+    for c in ITEMS:
+        k = _city_path(c)
+        if not k or (k not in fold): continue
+        f = os.path.join(ROOT, k.strip("/"), "index.html")
+        if not os.path.exists(f): continue
+        to = f"/{SLUG}/{PSLUG[c['pref']]}/"
+        open(f, "w", encoding="utf-8").write(
+            f'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow">'
+            f'<link rel="canonical" href="{ctx["SITE"]}{to}"><meta http-equiv="refresh" content="0; url={to}">'
+            f'<title>{c["pref"]}の保護犬・保護猫の譲渡</title></head><body><p><a href="{to}">{c["pref"]}の保護犬・保護猫の譲渡</a>に移しました（{c["city"]}の窓口も載っています）。</p></body></html>\n')
