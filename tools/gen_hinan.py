@@ -7,7 +7,7 @@
 import json, os
 import gen_dogrun
 import visual as V
-from guides_hinan import HINAN_GUIDES, ITEMS, CHECKED, MARK, table_rows, N, N_CAGE, SIZES, BREEDS
+from guides_hinan import HINAN_GUIDES, ITEMS, CHECKED, MARK, table_rows, N, N_CAGE, SIZES, BREEDS, SEIREI
 
 SLUG = "hinan"
 PSLUG = gen_dogrun.PSLUG
@@ -25,6 +25,18 @@ def by_pref():
 
 def href(pf):
     return f"/{SLUG}/{PSLUG[pf]}/"
+
+# 全国の市区町村（tools/municipalities.json、Code for FUKUI の localgovjp・CC0 から。slug は読みのローマ字）
+MUNI = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "municipalities.json"), encoding="utf-8"))
+CSLUG = {(m["pref"], m["name"]): m["slug"] for m in MUNI}
+MUNI_ORDER = {(m["pref"], m["name"]): i for i, m in enumerate(MUNI)}
+CHUKAKU = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "jichitai.json"), encoding="utf-8")).get("_chukaku", [])) or {
+    c["city"] for c in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "jichitai.json"), encoding="utf-8"))["cities"] if c["kind"] == "中核市"}
+_HJ = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "hinan.json"), encoding="utf-8"))
+NONE = [tuple(x[:2]) for x in _HJ.get("none", [])]  # しらべたが、ペットと避難のページが見つからなかった市区町村 [県, 名前, 理由]
+
+def href_city(it):
+    return f"/{SLUG}/{PSLUG[it['pref']]}/{CSLUG[(it['pref'], it['name'])]}/"
 
 CSS = """<style>
 .hn-card{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:14px 16px 8px;margin:0 0 14px}
@@ -132,11 +144,15 @@ def render_top(ctx):
     rest = [pf for _, ps in ctx["emg_regions"] for pf in ps if pf not in bp]
     title = "ペットの同行避難と避難所の決まり｜受け入れる動物・大型犬・ケージ（都道府県・市区ごと）｜ペットタクシー予約窓口"
     desc = (f"ペットと避難するときの「同行避難」と「同伴避難」のちがい、避難所で受け入れる動物（犬・猫・うさぎ・小鳥・爬虫類）、大型犬の扱い、ケージの決まりを、"
-            f"{'・'.join(done)}の{N}の都県・市区の公式ページからまとめました。持ち出し品と、ペットを受け入れる避難所の調べ方も。")
+            f"{len(done)}都道府県・{N}の自治体の公式ページからまとめました。")
     faq = HINAN_GUIDES[0]["faq"][:6]
     ld = _ld(SITE, url, "ペットの同行避難と避難所の決まり", desc, [("ペットタクシー予約窓口", "/"), ("ペットと避難", f"/{SLUG}/")], faq)
-    stats = V.stats([(f"{N}", "確かめた都県・市区"), (f"{N_CAGE}", "ケージを持っていく・入れると書いている"),
+    stats = V.stats([(f"{N}", "確かめた都道府県・市区"), (f"{N_CAGE}", "ケージを持っていく・入れると書いている"),
                      (f"{sum(1 for x in ITEMS if x['flags'].get('cat') == 'yes')}", "猫を受け入れると書いている")])
+    pref_rows = [["都道府県", "確かめた自治体", "犬", "猫", "ケージ持参"]] + [
+        [pf, str(len(bp[pf])), str(sum(1 for x in bp[pf] if x["flags"].get("dog") == "yes")),
+         str(sum(1 for x in bp[pf] if x["flags"].get("cat") == "yes")), str(sum(1 for x in bp[pf] if x.get("cage_req")))] for pf in done]
+    rest_txt = (f'<p class="hn-none">{e("・".join(rest))}は、ペットと避難の決まりを書いた公式ページが見つからなかったか、まだ確かめていません。お住まいの市区町村のホームページで「ペット 避難」と検索すると、受け入れの決まりが見つかることがあります。</p>' if rest else "")
     summ = "".join(f'<h3 class="emg-region"><a href="{href(pf)}">{e(pf)}のペット同行避難 →</a></h3><p class="hn-none">{e("・".join(it["name"] for it in bp[pf]))}の公式ページに書いてある、受け入れる動物・大きさ・ケージ・飼う場所と、避難所の調べ方。</p>' for pf in done)
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     return ctx["head"](title, desc, url, ld) + CSS + f"""
@@ -145,7 +161,7 @@ def render_top(ctx):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › ペットと避難</nav>
     <h1><small>同行避難・同伴避難・避難所で受け入れる動物の決まり</small>ペットと避難するとき</h1>
-    <p class="lede">災害のときは、ペットを連れて避難するのが原則です（同行避難）。ただし、避難所で同じ部屋にいられるとは限らず、受け入れる動物や飼う場所は市区町村・避難所ごとに違います。都県・市区の公式ページに書いてあることを、そのまままとめました。</p>
+    <p class="lede">災害のときは、ペットを連れて避難するのが原則です（同行避難）。ただし、避難所で同じ部屋にいられるとは限らず、受け入れる動物や飼う場所は市区町村・避難所ごとに違います。都道府県・市区の公式ページに書いてあることを、そのまままとめました。</p>
   </div>
 </section>
 <section style="padding-top:8px">
@@ -157,12 +173,15 @@ def render_top(ctx):
     <li><b class="k">大型犬</b>はっきり書いた自治体は少なく、「小型」「小動物」に限る市が多い。ケージに入らなければリードでつなぐ、と書く市も（川崎市・大阪市）。預け先も決めておく</li>
     <li><b class="k">ケージ</b>飼い主が持っていくのが基本。避難所にペット用の備蓄はないと書く市が多い</li></ul></div>
     {stats}
-    <h2 id="table">自治体ごとの受け入れる動物（一覧）</h2>
-    <p>○は受け入れると書いてある、△はむずかしい場合がある・一部は受け入れない、—は書いていない、です（{e(CHECKED)}に各自治体の公式ページで確認）。</p>
-    {V.block(("table", table_rows()))}
     <h2 id="pref">都道府県ごとのくわしい決まり</h2>
     {_pref_links(e, done)}
-    <p class="hn-none">ほかの道府県（{e("・".join(rest[:6]))}など）は、人口の多い県から順に足していきます。それまでは、お住まいの市区町村のホームページで「ペット 避難」と検索すると、受け入れの決まりが見つかることがあります。</p>
+    {rest_txt}
+    <h2 id="table">都道府県ごとの確かめた自治体の数</h2>
+    <p>「犬」「猫」は、受け入れると公式ページに書いてある自治体の数です。書いていない自治体も「受け入れない」という意味ではありません（{e(CHECKED)}に確認）。</p>
+    {V.block(("table", pref_rows))}
+    <h2 id="seirei">政令指定都市の受け入れる動物</h2>
+    <p>○は受け入れると書いてある、△はむずかしい場合がある・一部は受け入れない、—は書いていない、です。ほかの市区町村は都道府県ごとのページにあります。</p>
+    {V.block(("table", table_rows(SEIREI)))}
   </article></div>
 </section>
 <section style="padding-top:0">
@@ -191,26 +210,39 @@ def render_top(ctx):
 def render_pref(ctx, pf, its, done):
     e, SITE = ctx["e"], ctx["SITE"]
     url = f"{SITE}{href(pf)}"
-    names = "・".join(it["name"] for it in its if it["kind"] == "city")
-    title = f"{pf}のペット同行避難｜避難所で受け入れる動物・大型犬・ケージの決まり（{names}）｜ペットタクシー予約窓口" if names else \
-            f"{pf}のペット同行避難｜避難所で受け入れる動物・大型犬・ケージの決まり｜ペットタクシー予約窓口"
-    desc = (f"{pf}でペットと避難するときの決まりを、{'・'.join(it['name'] for it in its)}の公式ページからまとめました。避難所で受け入れる動物（犬・猫・うさぎ・小鳥・爬虫類）、"
-            f"大型犬の扱い、ケージ・リード・ワクチン、避難所で飼う場所、受付の手続き、ペットを受け入れる避難所の調べ方。")
-    faq = faq_for(pf, its)
+    prefs_it = [it for it in its if it["kind"] == "pref"]
+    cities = sorted([it for it in its if it["kind"] == "city"], key=lambda x: MUNI_ORDER.get((pf, x["name"]), 9999))
+    big = [x for x in cities if x["name"] in SEIREI or x["name"] in CHUKAKU]
+    head_names = "・".join(x["name"] for x in (big or cities)[:3])
+    title = (f"{pf}のペット同行避難｜市区町村ごとの避難所の決まり（{head_names}など）｜ペットタクシー予約窓口" if cities else
+             f"{pf}のペット同行避難｜避難所で受け入れる動物・大型犬・ケージの決まり｜ペットタクシー予約窓口")
+    desc = (f"{pf}でペットと避難するときの決まりを、{pf}と{len(cities)}の市区町村の公式ページからまとめました。避難所で受け入れる動物（犬・猫・うさぎ・小鳥・爬虫類）、"
+            f"大型犬の扱い、ケージ・リード、避難所で飼う場所、受付の手続き、ペットを受け入れる避難所の調べ方。" if cities else
+            f"{pf}でペットと避難するときの決まりを、{pf}の公式ページからまとめました。避難所で受け入れる動物、大型犬の扱い、ケージ・リード、避難所で飼う場所、ペットを受け入れる避難所の調べ方。")
+    faq = faq_for(pf, prefs_it + big[:3] if big else prefs_it + cities[:3])
     ld = _ld(SITE, url, f"{pf}のペット同行避難と避難所の決まり", desc,
              [("ペットタクシー予約窓口", "/"), ("ペットと避難", f"/{SLUG}/"), (pf, href(pf))], faq)
+    show = prefs_it + cities
     rows = [["自治体", "犬", "大型犬", "猫", "小動物・鳥", "爬虫類", "ケージ持参"]] + [
         [it["name"], MARK[it["flags"].get("dog")], MARK[it["flags"].get("large")], MARK[it["flags"].get("cat")],
-         MARK[it["flags"].get("small") or it["flags"].get("bird")], MARK[it["flags"].get("reptile")], "要" if it.get("cage_req") else "—"] for it in its]
-    fit = V.block(("breeds", {"title": f"うちの子の大きさ・種類で、{pf}の決まりを見る", "rows": fit_rows(its), "sizes": SIZES, "breeds": BREEDS,
-                              "lead": f"{'・'.join(it['name'] for it in its)}の公式ページに書いてあることを、大きさ・種類ごとに並べました。",
+         MARK[it["flags"].get("small") or it["flags"].get("bird")], MARK[it["flags"].get("reptile")], "要" if it.get("cage_req") else "—"] for it in show]
+    fit_its = prefs_it + (big or cities)[:10]
+    fit = V.block(("breeds", {"title": f"うちの子の大きさ・種類で、{pf}の決まりを見る", "rows": fit_rows(fit_its), "sizes": SIZES, "breeds": BREEDS,
+                              "lead": f"{'・'.join(it['name'] for it in fit_its)}の公式ページに書いてあることを、大きさ・種類ごとに並べました。"
+                                      + ("ほかの市区町村は、下のそれぞれのページで見られます。" if len(cities) > len(fit_its) - len(prefs_it) else ""),
                               "note": "書いていない自治体も「受け入れない」という意味ではありません。避難所ごとの決まりもあるので、お住まいの市区町村で確かめてください。"}))
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
-    cities = [it for it in its if it["kind"] == "city"]
-    lede = (f"{pf}と{'・'.join(x['name'] for x in cities)}の公式ページに書いてある、ペットと避難するときの決まりです。" if cities else
-            f"{pf}の公式ページに書いてある、ペットと避難するときの決まりです。") + \
-           "避難所で受け入れる動物や飼う場所は、市区町村・避難所ごとに違います。ここにない市区町村にお住まいの方は、お住まいの市区町村のページでご確認ください。"
-    pol = its[0].get("policy") or ""
+    lede = (f"{pf}と{len(cities)}の市区町村の公式ページに書いてある、ペットと避難するときの決まりです。" if cities else
+            f"{pf}の公式ページに書いてある、ペットと避難するときの決まりです。") + "避難所で受け入れる動物や飼う場所は、市区町村・避難所ごとに違います。"
+    pol = (prefs_it[0].get("policy") if prefs_it else None) or (cities[0].get("policy") if cities else "") or ""
+    city_links = ('<ul class="hn-pref">' + "".join(f'<li><a href="{href_city(it)}">{e(it["name"])}</a></li>' for it in cities) + "</ul>") if cities else ""
+    nf = [n for (p_, n) in NONE if p_ == pf]
+    rest = [m["name"] for m in MUNI if m["pref"] == pf and m["name"] not in {x["name"] for x in cities} and m["name"] not in nf]
+    cov = ""
+    if nf:
+        cov += f'<p class="hn-none">{e("・".join(nf))}は、ペットと避難について書いた公式ページが見つかりませんでした（{e(CHECKED)}にしらべました）。避難所の決まりは、それぞれの市町村の防災の担当にご確認ください。</p>'
+    if rest:
+        cov += f'<p class="hn-none">{e("・".join(rest))}は、まだ確かめていません。順に足していきます。</p>'
     return ctx["head"](title, desc, url, ld) + CSS + f"""
 <main>
 <section class="area-hero">
@@ -223,12 +255,13 @@ def render_pref(ctx, pf, its, done):
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
     <div class="answer"><h2 id="answer">先に答え</h2><p>{e(pol)}</p></div>
+    {('<h2 id="city">市区町村ごとのページ</h2>' + city_links) if cities else ""}
+    {cov}
     <h2 id="table">受け入れる動物とケージ（自治体ごと）</h2>
     <p>○は受け入れると書いてある、△はむずかしい場合がある・一部は受け入れない、—は書いていない、です（{e(CHECKED)}に確認）。</p>
     {V.block(("table", rows))}
     {fit}
-    <h2 id="detail">自治体ごとのくわしい決まり</h2>
-    {"".join(card(e, it) for it in its)}
+    {('<h2 id="detail">' + e(pf) + 'の決まり</h2>' + "".join(card(e, it) for it in prefs_it)) if prefs_it else ""}
     <h2 id="faq">よくある質問</h2>
     <dl class="emg-tips">{faq_html}</dl>
     <p class="emg-note">{e(CHECKED)}に各自治体の公式ページで確かめた情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
@@ -247,8 +280,76 @@ def render_pref(ctx, pf, its, done):
 </main>
 """ + ctx["foot_noband"]()
 
+def _answer(it):
+    """市区町村のページの「先に答え」：受け入れる動物・大型犬・ケージを一文ずつ"""
+    f = it["flags"]
+    acc = [lab for k, lab in KINDS if f.get(k) == "yes" and k != "large"]
+    out = []
+    if it.get("policy"): out.append(it["policy"])
+    out.append(("受け入れると書いてある動物：" + "・".join(acc) + "。") if acc else "受け入れる動物の種類は、公式ページに書いていません（不明）。")
+    cnd = [lab for k, lab in KINDS if f.get(k) in ("cond", "hard") and k != "large"]
+    if cnd: out.append("条件つき・むずかしい場合があると書いてある動物：" + "・".join(cnd) + (f"（{it['no']}）" if it.get("no") else "") + "。")
+    ng = [lab for k, lab in KINDS if f.get(k) == "no" and k != "large"]
+    if ng: out.append("受け入れないと書いてある動物：" + "・".join(ng) + "。")
+    out.append("大型犬：" + (it.get("size") or FLAG_TXT[f.get("large")] + ("（避難所に確かめる）" if not f.get("large") else "")) )
+    out.append("ケージ・キャリー：" + ("持っていく、またはケージの中で飼うと書いてある。" if it.get("cage_req") else (it.get("cage") or "公式ページに決まりは書いていません。")))
+    return out
+
+def render_city(ctx, pf, it, sibs, done):
+    e, SITE = ctx["e"], ctx["SITE"]
+    nm = it["name"]
+    url = f"{SITE}{href_city(it)}"
+    title = f"{nm}のペット同行避難｜避難所で受け入れる動物・大型犬・ケージ（{pf}）｜ペットタクシー予約窓口"
+    acc = [lab for k, lab in KINDS if it["flags"].get(k) == "yes" and k != "large"]
+    desc = (f"{pf}{nm}でペットと避難するときの決まりを、{nm}の公式ページからまとめました。"
+            + (f"避難所で受け入れると書いてある動物（{'・'.join(acc)}）、" if acc else "避難所で受け入れる動物、")
+            + "大型犬の扱い、ケージ・リード、避難所で飼う場所、ペットを受け入れる避難所の調べ方。")
+    faq = faq_for(pf, [it])
+    ld = _ld(SITE, url, f"{nm}のペット同行避難と避難所の決まり", desc,
+             [("ペットタクシー予約窓口", "/"), ("ペットと避難", f"/{SLUG}/"), (pf, href(pf)), (nm, href_city(it))], faq)
+    fit = V.block(("breeds", {"title": f"うちの子の大きさ・種類で、{nm}の決まりを見る", "rows": fit_rows([it]), "sizes": SIZES, "breeds": BREEDS,
+                              "lead": f"{nm}の公式ページに書いてあることを、大きさ・種類ごとに並べました。",
+                              "note": "書いていないことも「受け入れない」という意味ではありません。避難所ごとの決まりもあるので、市区町村や避難所で確かめてください。"}))
+    faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
+    ans = "".join(f"<li>{e(x)}</li>" for x in _answer(it))
+    others = [x for x in sibs if x is not it]
+    sib = ('<ul class="hn-pref">' + "".join(f'<li><a href="{href_city(x)}">{e(x["name"])}</a></li>' for x in others) + "</ul>") if others else ""
+    return ctx["head"](title, desc, url, ld) + CSS + f"""
+<main>
+<section class="area-hero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/{SLUG}/">ペットと避難</a> › <a href="{href(pf)}">{e(pf)}</a> › {e(nm)}</nav>
+    <h1><small>避難所で受け入れる動物・大型犬・ケージの決まり</small>{e(nm)}のペット同行避難</h1>
+    <p class="lede">{e(nm)}（{e(pf)}）の公式ページに書いてある、ペットと避難するときの決まりです。書いていないことは「不明」としています（「受け入れない」という意味ではありません）。</p>
+  </div>
+</section>
+<section style="padding-top:8px">
+  <div class="wrap"><article class="art">
+    <div class="answer"><h2 id="answer">先に答え</h2><ul>{ans}</ul></div>
+    {fit}
+    <h2 id="detail">{e(nm)}のくわしい決まり</h2>
+    {card(e, it)}
+    <h2 id="faq">よくある質問</h2>
+    <dl class="emg-tips">{faq_html}</dl>
+    <p class="emg-note">{e(CHECKED)}に{e(nm)}の公式ページで確かめた情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+  </article></div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sh"><h2>{e(pf)}のほかの市区町村</h2><p>{e(pf)}の決まりと、ほかの市区町村の決まりです。</p></div>
+    <ul class="other"><li><a href="{href(pf)}">{e(pf)}のペット同行避難（県の決まりと一覧）</a></li></ul>
+    {sib}
+    <div class="sh"><h2>くわしい記事</h2><p>同行避難と同伴避難のちがい、持ち出し品のリストなど。</p></div>
+    {_guides(e)}
+    <ul class="other"><li><a href="/{SLUG}/">ペットと避難するとき（全国の一覧）</a></li><li><a href="/jichitai/">ペットの迷子・犬の登録・引取りの窓口</a></li><li><a href="/guide/lost-pet/">ペットが迷子になったら</a></li></ul>
+  </div>
+</section>
+{_taxi(e, pf)}
+</main>
+""" + ctx["foot_noband"]()
+
 def urls(SITE):
-    return [f"{SITE}/{SLUG}/"] + [f"{SITE}{href(pf)}" for pf in by_pref()]
+    return [f"{SITE}/{SLUG}/"] + [f"{SITE}{href(pf)}" for pf in by_pref()] + [f"{SITE}{href_city(it)}" for it in ITEMS if it["kind"] == "city"]
 
 def write_all(ROOT, ctx):
     bp = by_pref()
@@ -261,6 +362,10 @@ def write_all(ROOT, ctx):
         d = os.path.join(ROOT, SLUG, PSLUG[pf]); os.makedirs(d, exist_ok=True)
         page = _bf(render_pref(ctx, pf, bp[pf], done))
         open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(page)
+        cities = sorted([x for x in bp[pf] if x["kind"] == "city"], key=lambda x: MUNI_ORDER.get((pf, x["name"]), 9999))
+        for it in cities:
+            cd = os.path.join(ROOT, SLUG, PSLUG[pf], CSLUG[(pf, it["name"])]); os.makedirs(cd, exist_ok=True)
+            open(os.path.join(cd, "index.html"), "w", encoding="utf-8").write(_bf(render_city(ctx, pf, it, cities, done)))
 
 def _bf(page):
     return page.replace("</head>", V.BF_CSS + "\n</head>", 1).replace("</body>", V.BF_JS + "\n</body>", 1)
