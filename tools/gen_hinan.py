@@ -178,7 +178,7 @@ def render_top(ctx):
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
-    <div class="answer"><h2 id="answer">先に答え</h2>
+    <div class="answer"><h2 id="answer">ペットと避難するときのポイント</h2>
     <ul class="kv"><li><b class="k">同行避難</b>ペットを連れて避難所などまで逃げること。同じ部屋で過ごせるという意味ではない（環境省）</li>
     <li><b class="k">同伴避難</b>避難所で飼い主がペットを飼って世話をしている状態。これも同じ部屋とは限らない（環境省）</li>
     <li><b class="k">連れて行ける動物</b>犬・猫は多くの自治体が受け入れる。うさぎ・小鳥・爬虫類は自治体で違う</li>
@@ -268,7 +268,7 @@ def render_pref(ctx, pf, its, done):
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
-    <div class="answer"><h2 id="answer">先に答え</h2><p>{e(pol)}</p></div>
+    <div class="answer"><h2 id="answer">{e(pf)}のペットと避難のポイント</h2><p>{e(pol)}</p></div>
     {('<h2 id="city">市区町村ごとのページ</h2>' + city_links) if cities else ""}
     {cov}
     <h2 id="table">受け入れる動物とケージ（自治体ごと）</h2>
@@ -296,7 +296,7 @@ def render_pref(ctx, pf, its, done):
 """ + ctx["foot_noband"]()
 
 def _answer(it):
-    """市区町村のページの「先に答え」：受け入れる動物・大型犬・ケージを一文ずつ"""
+    """市区町村のページの「ポイント」：受け入れる動物・大型犬・ケージを一文ずつ"""
     f = it["flags"]
     acc = [lab for k, lab in KINDS if f.get(k) == "yes" and k != "large"]
     out = []
@@ -341,7 +341,7 @@ def render_city(ctx, pf, it, sibs, done):
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
-    <div class="answer"><h2 id="answer">先に答え</h2><ul>{ans}</ul></div>
+    <div class="answer"><h2 id="answer">{e(nm)}のペットと避難のポイント</h2><ul>{ans}</ul></div>
     {fit}
     <h2 id="detail">{e(nm)}のくわしい決まり</h2>
     {card(e, it)}
