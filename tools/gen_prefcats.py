@@ -147,7 +147,7 @@ def _hf(h, k):
     for f in (x or {}).get("facts", []):
         if f["k"] == k: return f
     return None
-_FCOLS = [("夜間の料金", ("夜間の料金", "費用の目安")), ("対象の動物", ("対象の動物",)), ("お支払い", ("支払い方法",)),
+_FCOLS = [("夜間の料金", ("夜間の料金", "費用の目安")), ("対象の動物", ("対象の動物",)), ("CT・MRI・ICU", ("設備",)), ("お支払い", ("支払い方法",)),
           ("休み", ("休診日",)), ("車・電車", ("駐車場", "最寄り駅"))]
 def _night_fact_table(e, pf, rs):
     hs = [h for h in rs if h.get("id") in _HF]
@@ -158,14 +158,17 @@ def _night_fact_table(e, pf, rs):
     rows = "".join(f'<tr><th scope="row">{e(h["name"])}</th>' + "".join(f"<td>{cell(h, ks)}</td>" for _, ks in _FCOLS) + "</tr>" for h in hs)
     fee = sum(1 for h in hs if _hf(h, "夜間の料金") or _hf(h, "費用の目安"))
     card = sum(1 for h in hs if re.search("カード", (_hf(h, "支払い方法") or {}).get("v", "")) and not re.search("使えない|不可|原則現金|現金のみ", _hf(h, "支払い方法")["v"]))
+    eq = sum(1 for h in hs if re.search("CT|MRI|ICU|集中治療", (_hf(h, "設備") or {}).get("v", "")))
     dates = sorted({f["checked"] for h in hs for f in _HF[h["id"]]["facts"] if f.get("checked")})
     d = dates[-1] if dates else ""
     jd = f"{int(d[:4])}年{int(d[5:7])}月{int(d[8:10])}日" if len(d) == 10 else d
     srcs = "".join(f'<li><a href="{e(h["url"])}" target="_blank" rel="noopener">{e(h["name"])}の公式サイト</a></li>' for h in hs)
     return (f'<div class="emg-tips" style="margin-top:0"><h4>{e(pf)}の夜間の病院の料金・受け入れをくらべる</h4>'
             f'<p>載せている{len(rs)}院のうち{len(hs)}院について、公式サイトに書いてある夜間の料金・診てもらえる動物・お支払い・休み・行き方をまとめました。'
-            f'夜間の料金を書いているのは{fee}院、クレジットカードが使えると書いているのは{card}院です。'
-            '夜間は、診察料のほかに検査・処置・お薬の料金が加わります。金額は税込・税抜が病院ごとに違うので、そのまま写しています。</p>'
+            f'夜間の料金を書いているのは{fee}院、クレジットカードが使えると書いているのは{card}院'
+            + (f'、CT・MRI・ICU（集中治療室）のどれかがあると書いているのは{eq}院です。' if eq else 'です。') +
+            '夜間は、診察料のほかに検査・処置・お薬の料金が加わります。金額は税込・税抜が病院ごとに違うので、そのまま写しています。'
+            '<a href="/guide/night-vet-fee/">夜間の動物病院の料金の相場と、夜に受診したほうがいい症状</a>もあわせてどうぞ。</p>'
             f'<table><thead><tr><th>病院</th>' + "".join(f"<th>{lab}</th>" for lab, _ in _FCOLS) + f'</tr></thead><tbody>{rows}</tbody></table>'
             f'<p class="emg-tips-note">「—」は公式サイトに書いていない・見つからなかった項目です（「しない」という意味ではありません）。{jd}までに各病院の公式サイトで確かめました。料金や受け入れは変わることがあるので、行く前に電話でたずねてください。</p>'
             f'<details><summary>確かめた公式サイト</summary><ul>{srcs}</ul></details></div>')

@@ -831,6 +831,8 @@ def guide_hub(slug):
         return "/joto/", "保護犬・保護猫の譲渡の窓口", "住んでいる都道府県の譲渡の条件と譲渡会を見る"
     if slug == "pet-insurance":
         return "/hospital/", "条件でさがす動物病院", "夜間・救急や往診の動物病院をさがす"
+    if slug == "night-vet-fee":
+        return "/hospital/night/", "夜間・救急の動物病院", "都道府県の夜間・救急の動物病院と料金を見る"
     return "/guide/", "ペットの移動ガイド", ""
 
 # 案内（動線）は、読む人がそれを必要とする節のすぐ後ろに置く（2026-11-14 Nori「どこに動線があったら便利かも緻密に考えて」）

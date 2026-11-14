@@ -732,6 +732,9 @@ GUIDES.extend(SOUGI_GUIDES)
 # 保護犬・保護猫を迎える（譲渡・里親）の記事（tools/guides_joto.py、/joto/ と同じデータ。2026-11-14）。
 from guides_joto import JOTO_GUIDES
 GUIDES.extend(JOTO_GUIDES)
+# 動物病院の記事（夜間の料金の相場と受診したほうがいい症状。tools/guides_hospital.py、2026-11-14）。
+from guides_hospital import HOSPITAL_GUIDES
+GUIDES.extend(HOSPITAL_GUIDES)
 
 for guide in GUIDES:
     if guide["slug"] == "hospital":

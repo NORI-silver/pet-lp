@@ -89,6 +89,28 @@ def _taxi(h):
     from urllib.parse import quote
     return f'<a class="emg-taxi" href="/?to={quote(h["addr"])}#form">この病院までのペットタクシーの料金をくらべる →</a>'
 
+def _night_answer(e, rows):
+    """[C] 2026-11-14 Nori「動物病院の内容うすすぎ」：夜間の一覧のいちばん上に答えの箱（数は公式サイトで確かめた事実から数える）。"""
+    import visual as _V, guides_hospital as _G
+    hs = {h["id"]: h for v in rows.values() for h in v}
+    hf = {x["id"]: x for x in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "night_hospital_facts.json"), encoding="utf-8"))["items"]
+          if x.get("ok", True) and not x.get("closed") and x["id"] in hs}
+    def has(x, k, pat): return any(f["k"] == k and re.search(pat, f["v"]) for f in x["facts"])
+    n24 = sum(1 for h in hs.values() if "24時間" in h.get("hours", ""))
+    eq = sum(1 for x in hf.values() if has(x, "設備", "CT|MRI"))
+    card_only = sum(1 for x in hf.values() if has(x, "支払い方法", "原則クレジット|現金は使えない|現金のお取り扱いはしておりません|現金.*不可"))
+    call = sum(1 for x in hf.values() if has(x, "来院前の連絡", "電話"))
+    far = sum(1 for pf, v in rows.items() if v and all(re.search(r"（[^）]+[都道府県]）$", h.get("city") or "") for h in v))
+    kv = [("夜間に診てもらえる動物病院は？", f"全国{len(hs)}院を都道府県ごとに載せています。下の都道府県をえらぶと、受付時間・所在地・公式サイトが出ます。県の中に見つからない{far}県は、近くの県の病院を載せています。"),
+          ("夜間の診察料はいくら？", f"公式サイトに金額のある{_G.N_FEE}院では、基本の診察料のまん中が{_G.MED:,}円（税込にそろえて{_G.LO:,}〜{_G.HI:,}円）。検査や処置を合わせると2万〜5万円ほどが多いです。"),
+          ("行く前にすることは？", f"必ず電話です。公式サイトを確かめた{len(hf)}院のうち{call}院が、来院前の電話を求めています。症状・いつから・種類・体重を伝えてください。")]
+    tiles = [(f"{len(hs)}院", "公式サイトで確かめた夜間・救急の動物病院"), (f"{n24}院", "受付時間に「24時間」と書いている病院"),
+             (f"{_G.MED:,}円", "夜間の基本の診察料のまん中（税込にそろえて）"), (f"{eq}院", "CT・MRIがあると書いている病院")]
+    li = "".join(f'<li><b class="k">{e(q)}</b>{e(a)}</li>' for q, a in kv)
+    return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">夜間・救急の動物病院のポイント</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}'
+            f'<p>クレジットカードだけで現金が使えないと書いている病院が{card_only}院あります。料金と、夜に受診したほうがいい症状は'
+            f'<a href="/guide/night-vet-fee/">夜間の動物病院の料金の相場と、夜に受診したほうがいい症状</a>にまとめました。都道府県のページには、病院ごとの料金・対象の動物・設備・お支払い・駐車場をくらべる表があります。</p></div>')
+
 def render_cond(cond, ctx):
     """条件ページ1枚のHTML。ctx は gen_areas.py の関数と値（head, foot, e, area_links, SITE, EMG, emg_regions, emg_opts）。"""
     e, SITE = ctx["e"], ctx["SITE"]
@@ -120,6 +142,7 @@ def render_cond(cond, ctx):
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
+    {_night_answer(e, rows) if cond["slug"] == "night" else ""}
     <div class="emg">
       <p class="emg-free">この一覧は無料の情報です。病院からお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金や受け入れは、それぞれの病院に直接おたずねください。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
