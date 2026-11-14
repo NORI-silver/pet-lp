@@ -529,6 +529,16 @@ def card(e, d):
     return (f'<section class="dr-card" id="{d["id"]}"><h3>{e(d["name"])}</h3><p class="dr-city">{e(d["pref"])}{e(d.get("city", ""))}</p>{tags_html(e, d)}'
             f'<dl>{rows}</dl><p class="dr-links"><a href="{e(d["url"])}" target="_blank" rel="noopener">公式ページで最新の情報を見る ↗</a>{more}</p>' + _fac_link(e, d) + '</section>')
 
+# [B] 2026-11-14 Nori「答えみたいなことからはじめて、もっと視覚的に」：県のページの最初に「先に答え」（よくある質問の答え）と数字のタイル
+def _answer(e, pf, rs, faq):
+    import visual as _V
+    n = len(rs)
+    kv = "".join(f'<li><b class="k">{e(q)}</b>{e(a)}</li>' for q, a in faq[:-1][:4])
+    tiles = [(f"{n}か所", f"{pf}で公式ページを確かめたドッグラン")]
+    for v, lab in [(nfree(rs), "利用料が無料と書いてある"), (nnoreg(rs), "登録なしで使えると書いてある"), (nsmall(rs), "小型犬のエリアがある")]:
+        if v: tiles.append((f"{v}か所", lab))
+    return f'<div class="answer"><h2 id="answer">先に答え</h2><ul class="kv">{kv}</ul></div>' + _V.stats(tiles[:4])
+
 def render_pref(ctx, pf, rs):
     e, SITE = ctx["e"], ctx["SITE"]
     url = SITE + href(pf)
@@ -574,6 +584,7 @@ def render_pref(ctx, pf, rs):
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
+    {_answer(e, pf, rs, faq)}
     <p class="emg-free">この一覧は無料の情報です。順番はおすすめ順ではありません。書いていない項目は、公式ページに書いていなかったものです。お店や施設のドッグランは、公式ページで確かめられたところから順に足しています。</p>
     <div class="tbl"><table class="dr-tbl"><thead><tr><th>ドッグラン（市町村）</th><th>種類</th><th>料金</th><th>登録</th></tr></thead><tbody>{table}</tbody></table></div>
     {cards}
