@@ -69,6 +69,7 @@ _EMG_J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
 _EMG_RV = _EMG_J["taxis"] + [h for l in _EMG_J["hospitals"].values() for h in l]
 # 条件でさがす動物病院（/hospital/、tools/hospitals.json）の往診・猫専門の病院も同じしくみで口コミを出す
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import visual as _V  # 図で読む部品（2026-11-14 Nori「文字ばかりで読むのに疲れます」）
 import gen_hospitals
 from page_images import GUIDE_ALT, AREA_ALT, area_key
 import prefkeep
@@ -174,7 +175,10 @@ def _r100(n): return int((n + 50) // 100 * 100)  # お客さまに見せる概�
 def _nat_row(km):
     v = sorted(_r100(_nat_ride(c["fare"], km)) for c in _NAT)
     mid = v[(len(v) - 1) // 2]
-    return f'<div class="row"><dt>{km}km</dt><dd>{mid:,}円<br><small style="font-weight:400">{v[0]:,}〜{v[-1]:,}円</small></dd></div>'
+    # 安い会社〜高い会社の範囲の棒と、まんなかの印（図で読む、2026-11-14。数字は dd の文字のまま）
+    top = max(_r100(_nat_ride(c["fare"], 50)) for c in _NAT)
+    bar = f'<i class="rgbar" aria-hidden="true"><i style="left:{v[0] / top * 100:.1f}%;width:{max((v[-1] - v[0]) / top * 100, 1):.1f}%"></i><b style="left:{mid / top * 100:.1f}%"></b></i>'
+    return f'<div class="row"><dt>{km}km</dt><dd>{mid:,}円<br><small style="font-weight:400">{v[0]:,}〜{v[-1]:,}円</small></dd>{bar}</div>'
 def nat_text(km):
     v = sorted(_r100(_nat_ride(c["fare"], km)) for c in _NAT)
     return f"{v[(len(v) - 1) // 2]:,}円（{v[0]:,}〜{v[-1]:,}円）"
@@ -383,6 +387,7 @@ extra_css = """
 .taxi-top p{margin:0 0 10px;font-size:.88rem;line-height:1.7;color:var(--ink)}
 .taxi-top p b{display:block;font-size:.98rem;color:var(--o-d)}
 """
+extra_css += __import__("visual").CSS
 open(os.path.join(ROOT, "style.css"), "w", encoding="utf-8").write(css.strip() + "\n" + extra_css.strip() + "\n")
 
 # ── 地域ページ＝トップと同じページ（Nori 2026-10-31「ペットタクシー 神奈川 で検索されたページもトップと同じに」）──
@@ -656,7 +661,8 @@ def pref_fare_stats(short, cs):
     out = f'<h3>{e(short)}に来てくれる会社だけで計算した運賃（料金表のある{len(Fs)}社）</h3>'
     out += (f'<p>{e(short)}のお迎えに対応している会社のうち、公式サイトに料金表がある{len(Fs)}社だけで、乗った距離の運賃（片道）を全国の目安と同じ式で計算しました。'
             f'10kmでは、いちばん安い会社が{k10[0]:,}円、高い会社が{k10[-1]:,}円で、{k10[-1]-k10[0]:,}円の差があります。何社かくらべてから問い合わせると、同じ道のりでも払う金額が変わります。</p>')
-    out += '<div class="tbl"><table><thead>' + head + '</thead><tbody>' + body + '</tbody></table></div>'
+    out += _V.block(("table", [["乗る距離", "まんなかの会社", "安い会社〜高い会社"] + ([] if same else ["全国のまんなか"])] +
+                     [[f"{km}km", f"{mid:,}円", f"{lo:,}〜{hi:,}円"] + ([] if same else [f"{nm:,}円"]) for km, mid, lo, hi, nm in rows]))
     if same: out += f'<p>まんなかの会社の金額は、全国{len(_NAT)}社のまんなかと同じでした。</p>'
     if pk: out += f'<p>このほかにかかるお迎え料金（お店からお迎えの場所まで）のつけ方は、{e(pk)}です。お店が遠い会社ほどお迎え料金が高くなるので、フォームでは会社ごとに、お店からお迎えの場所までの車の道のりを入れた目安を出しています。</p>'
     return out
@@ -680,8 +686,10 @@ def pref_company_table(pf, short, cs, cities=()):
     rows.sort(key=lambda r: (r[0], r[1]))
     out = f'<h2>{e(short)}に来てくれるペットタクシー{len(cs)}社の、対応エリアと料金のしくみ</h2>'
     out += f'<p>{e(pf)}のお迎えに対応している{len(cs)}社について、公式サイトに書かれている対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p>'
-    if summ:
-        out += f'<p>公式サイトに書いている内容を数えると、{e(summ)}でした（書いていない会社が、できないとは限りません）。</p>'
+    if summ:  # 数は棒で見せる（文字はラベルとして残す。図で読む、2026-11-14）
+        out += _V.bars({"title": f"公式サイトに書いている内容を数えると（{len(cs)}社のうち）", "max": len(cs),
+                        "rows": [(lab + "会社", pts[k], f"{pts[k]}社") for k, lab in want if pts.get(k)],
+                        "note": "書いていない会社が、できないとは限りません。"})
     cm = []
     for c in cities:
         stem = re.sub(r"(市|区|町|村)$", "", c)
@@ -690,8 +698,9 @@ def pref_company_table(pf, short, cs, cities=()):
         if n: cm.append((n, stem))
     if cm:
         whole = sum(1 for x in cs if re.search(key + r"(全域|全県|県内全域|府内全域|都内全域|全体)|全域|一円", x.get("area_text") or ""))
-        out += (f'<p>対応エリアに地名が書かれている会社を数えると、' + "・".join(f"{st}が{n}社" for n, st in sorted(cm, key=lambda t: -t[0])) + 'でした。'
-                + (f'このほか「全域」「◯◯一円」のように広く書いている会社が{whole}社あります。' if whole else '')
+        out += _V.bars({"title": f"対応エリアに地名が書かれている会社の数（{len(cs)}社のうち）", "max": len(cs),
+                        "rows": [(st, n, f"{n}社") for n, st in sorted(cm, key=lambda t: -t[0])]})
+        out += ('<p>' + (f'このほか「全域」「◯◯一円」のように広く書いている会社が{whole}社あります。' if whole else '')
                 + '地名が書かれていなくても来てもらえることがあるので、お迎えの場所はフォームで確かめてください。</p>')
     out += pref_fare_stats(short, cs)
     out += ('<div class="tbl"><table><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody>'
@@ -784,18 +793,8 @@ for a in AREAS:
     os.makedirs(os.path.join(ROOT, a["slug"]), exist_ok=True)
     open(os.path.join(ROOT, a["slug"], "index.html"), "w", encoding="utf-8").write(page)
 
-def block(b):
-    if isinstance(b, str): return f"<p>{e(b)}</p>"
-    k, v = b
-    if k in ("ul", "ol"): return f"<{k}>" + "".join(f"<li>{e(x)}</li>" for x in v) + f"</{k}>"
-    if k == "links": return '<ul>' + "".join(f'<li><a href="{e(u)}">{e(n)}</a></li>' for n, u in v) + '</ul>'
-    if k == "tip": return f'<p class="tip">{e(v)}</p>'
-    if k == "cta": return f'<a class="btn" href="/#form">{e(v)}{ARROW}</a>'
-    if k == "table":
-        h, *rows = v
-        return '<div class="tbl"><table><thead><tr>' + "".join(f"<th>{e(x)}</th>" for x in h) + '</tr></thead><tbody>' + \
-          "".join("<tr>" + "".join((f"<th>{e(x)}</th>" if i == 0 else f"<td>{e(x)}</td>") for i, x in enumerate(r)) + "</tr>" for r in rows) + '</tbody></table></div>'
-    raise ValueError(k)
+def block(b, heading=""):
+    return _V.block(b, ARROW, heading)
 
 for g in GUIDES:
     url = f'{SITE}/guide/{g["slug"]}/'
@@ -834,10 +833,22 @@ for g in GUIDES:
                               for i, (h, bs) in enumerate(g["sections"], 1))
         body += f'<p class="small">{e(g["facility_note"])}</p>'
     else:
-        body = "".join(f'<h2>{e(h)}</h2>' + "".join(block(b) for b in bs) for h, bs in g["sections"])
+        # 最初の「先に答え」の節は答えの箱に。節が5つ以上の記事は目次と節の番号を出す（図で読む、tools/visual.py）
+        secs = g["sections"]
+        many = _V.many(g)
+        parts = []
+        for i, (h, bs) in enumerate(secs, 1):
+            sec = f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b, h) for b in bs)
+            parts.append(f'<div class="answer">{sec}</div>' if i == 1 and _V.is_answer(h) else sec)
+        toc = ('<nav class="tip art-toc" aria-label="この記事の目次"><b>この記事で分かること</b><ol>' + "".join(
+            f'<li><a href="#section-{i}">{e(h)}</a></li>' for i, (h, _) in enumerate(secs, 1)) + '</ol></nav>') if many else ""
+        if many and parts and parts[0].startswith('<div class="answer">'):
+            body = parts[0] + toc + "".join(parts[1:])
+        else:
+            body = toc + "".join(parts)
     faq = ""
     if g.get("faq"):
-        faq = '<h2>よくある質問</h2><div class="faq-list">' + "".join(f'<details><summary>{e(q)}</summary><div class="a">{e(ans)}</div></details>' for q,ans in g["faq"]) + '</div>'
+        faq = '<h2 class="nonum">よくある質問</h2><div class="faq-list">' + "".join(f'<details><summary>{e(q)}</summary><div class="a">{e(ans)}</div></details>' for q,ans in g["faq"]) + '</div>'
     src = '<div class="src"><b>参考にした情報</b><ul>' + "".join(f'<li><a href="{e(u)}" rel="noopener" target="_blank">{e(n)}</a></li>' for n,u in g["sources"]) + '</ul><p>内容は公開日時点のものです。ルールや料金は変わることがあるため、ご利用の前に各社の案内をご確認ください。</p></div>' if g["sources"] else ""
     page = head(g["seo_title"] + "｜ペットタクシー予約窓口", g["desc"], url, ld_html, og_img, og_w, og_h) + f"""
 <main>
@@ -852,7 +863,7 @@ for g in GUIDES:
   </div>
 </section>
 <section style="padding-top:8px">
-  <div class="wrap"><article class="art">
+  <div class="wrap"><article class="art{' num' if _V.many(g) and g.get('category') != 'facility' and not any(re.match(r'\d+\.', h) for h, _ in g['sections']) else ''}">
     {body}
     {faq}
     {checked}{src}
@@ -1514,6 +1525,15 @@ def pref_data_html(pf, short):
         else: out += f'<p>当サイトで公式サイトを確かめた会社の中には、対応エリアに{e(pf)}を書いている会社はまだありません。県外の会社がお迎えに来られることがあるので、フォームでさがしてみてください。</p>'
     else:
         out += f'<p>当サイトで公式サイトを確かめた全国の会社のうち、対応エリアに{e(pf)}を書いている会社は<b>{len(cs)}社</b>でした（{FARES_CHECKED}時点。同じチェーンのお店は1社ずつ数えています）。対応エリアは「市内だけ」「県の一部だけ」の会社もあるので、お迎えの場所で来てもらえるかは、フォームでさがすと確かめられます。</p>'
+        # ひと目で分かる数字（図で読む、2026-11-14）。数字はこのページの中の計算と同じもの
+        _t = [(f"{len(cs)}社", f"{pf}のお迎えに対応している会社")]
+        if len(fs) >= 3:
+            _v = sorted(_r100(_nat_ride(x["fare"], 10)) for x in fs)
+            _t.append((f"{_v[(len(_v) - 1) // 2]:,}円", "10kmの運賃のまんなか（概算・確定料金ではありません）"))
+        for _k, _lab in (("当日予約可", "当日の予約も受けると書いている会社"), ("24時間受付", "24時間受け付けている会社")):
+            _n = sum(1 for x in cs if _k in x.get("points", []))
+            if _n: _t.append((f"{_n}社", _lab))
+        if len(_t) >= 2: out += _V.stats(_t)
     if fs:
         rows = ""
         for km in (5, 10, 20):
@@ -1522,8 +1542,16 @@ def pref_data_html(pf, short):
             rows += (f'<tr><th>{km}km</th><td>{mid:,}円</td><td>{v[0]:,}〜{v[-1]:,}円</td></tr>' if len(v) >= 3 else
                      f'<tr><th>{km}km</th><td colspan="2">' + "・".join(f"{x:,}円" for x in v) + '</td></tr>')
         head = '<tr><th>乗った距離</th><th>まんなかの会社</th><th>安い会社〜高い会社</th></tr>' if len(fs) >= 3 else '<tr><th>乗った距離</th><th colspan="2">各社の運賃</th></tr>'
+        if len(fs) >= 3:  # 金額の表は棒つき（tools/visual.py）
+            _rows = [["乗った距離", "まんなかの会社", "安い会社〜高い会社"]]
+            for km in (5, 10, 20):
+                v = sorted(_r100(_nat_ride(x["fare"], km)) for x in fs)
+                _rows.append([f"{km}km", f"{v[(len(v) - 1) // 2]:,}円", f"{v[0]:,}〜{v[-1]:,}円"])
+            _tbl = _V.block(("table", _rows))
+        else:
+            _tbl = f'<div class="tbl"><table><thead>{head}</thead><tbody>{rows}</tbody></table></div>'
         out += (f'<p>そのうち料金表をのせている{len(fs)}社の料金表で、乗った距離の運賃（片道）を計算すると次のとおりです。</p>'
-                f'<div class="tbl"><table><thead>{head}</thead><tbody>{rows}</tbody></table></div>'
+                f'{_tbl}'
                 '<p class="fare-flag"><b>確定料金ではありません。</b>お迎え料金・待ち時間・夜間や早朝の割増・高速代は入っていません。フォームにお迎えの場所と行き先を入れると、会社ごとにお迎え料金なども入れた目安が出ます。</p>')
     out += pref_company_table(pf, short, cs, PREF_CITIES.get(pf, ()))
     if pf in PREF_AIRPORT:
@@ -1776,7 +1804,8 @@ def pref_local(pf, short, key):
     basis = f"{pf}に来てくれる会社のうち料金表をのせている{basis}" if basis != "全国" else "全国の会社"
     html = (f'<h2>{e(short)}でペットタクシーを使うとき</h2><p>{e(L["why"])}</p>'
             + (f'<p>{e(pf)}のお迎えに対応している{n}社のうち、公式サイトの対応エリアに市の名前を書いている会社の数は、' + "・".join(f"「{e(st)}」{c}社" for st, c in cs) + "でした。名前を書いていない市にも来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。</p>" if cs else "")
-            + f'<h3>よく行く区間の料金の目安（片道）</h3><table><thead><tr><th>区間</th><th>車の道のりの目安</th><th>料金の目安（まんなか・安い〜高い）</th></tr></thead><tbody>{rows}</tbody></table>'
+            + f'<h3>よく行く区間の料金の目安（片道）</h3>' + _V.bars({"title": "区間ごとの運賃のまんなか（片道・概算）", "rows": [(f"{r}（{km}km）", int(re.sub(r"[^0-9]", "", _pref_text(key, km)[0].split("円")[0])), _pref_text(key, km)[0]) for r, km in L["routes"]]})
+            + f'<table><thead><tr><th>区間</th><th>車の道のりの目安</th><th>料金の目安（まんなか・安い〜高い）</th></tr></thead><tbody>{rows}</tbody></table>'
             + f'<p class="small">{e(basis)}の公式サイトの料金表をもとに計算した乗った距離の運賃の概算で、確定料金ではありません。お迎え料金・夜間の割増は入っていません。当日の道順・渋滞・待ち時間などで変わり、高速道路を使うときはその料金が別にかかります。</p>')
     faq = []
     for q, k in L["faq"]:
