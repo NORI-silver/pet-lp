@@ -159,9 +159,11 @@
     "愛玩動物飼養管理士1級"
    ],
    "src": [
-    "https://www.petta-tokyo.com/profile.html"
+    "https://www.petta-tokyo.com/profile.html",
+    "提携の申し込み 2026-11-12（事業の許可・届出：黒ナンバー（貨物軽自動車の届出））"
    ],
-   "checked": "2026-11-12"
+   "checked": "2026-11-14",
+   "transport": "黒ナンバー"
   },
   "D3c85024": {
    "quals": [
@@ -612,6 +614,13 @@
     "https://pet-taxi-saitama-kawagoe.jp/"
    ],
    "checked": "2026-11-12"
+  },
+  "Dcb3b5a2": {
+   "transport": "黒ナンバー",
+   "src": [
+    "提携の申し込み 2026-11-12（事業の許可・届出：黒ナンバー（貨物軽自動車の届出））"
+   ],
+   "checked": "2026-11-14"
   }
  }
 }
