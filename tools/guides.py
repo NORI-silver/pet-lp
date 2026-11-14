@@ -716,6 +716,9 @@ from guides_care import CARE_GUIDES
 GUIDES.extend(CARE_GUIDES)
 from guides_hotel import HOTEL_GUIDES
 GUIDES.extend(HOTEL_GUIDES)
+# ペット保険は必要か（tools/guides_insurance.py、2026-11-14）。
+from guides_insurance import INS_GUIDES
+GUIDES.extend(INS_GUIDES)
 
 # ペットが亡くなったときの記事（tools/guides_sougi.py、/sougi/ と同じテーマ）。
 from guides_sougi import SOUGI_GUIDES
