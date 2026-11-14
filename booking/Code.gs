@@ -1002,6 +1002,7 @@ function doGet(e) {
     if (q.a === 'withdraw') return withdrawPage_(q);
     if (q.a === 'pcancel') return partnerCancelPage_(q);
     if (q.a === 'ride') return ridePage_(q);
+    if (q.a === 'survey') return surveyPage_(q);
     if (q.a === 'admin') return adminPage_(q);
     if (q.a === 'prefill') return prefill_(q);
     if (q.a === 'dash') return dashPage_(q);
@@ -1474,6 +1475,7 @@ function purgeOldPersonal_() {
 
 function checkPending() {
   try { purgeOldPersonal_(); } catch (err) { log_('個人情報の削除でエラー: ' + err); } // 1日1回だけ動く
+  try { updateSummary_(); } catch (err) { log_('集計でエラー: ' + err); } // 1時間に1回だけ作り直す
   var sh = sheet_(SHEET_REQ);
   try { ensureReqHeaders_(sh); } catch (err) {} // 「送迎確認」の列を先に足しておく（足せなくても rideCheckDue_ が列のない行には送らない）
   var vals = sh.getDataRange().getValues();
@@ -1540,6 +1542,7 @@ function sendRideCheck_(id) {
   toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】無事に送迎できましたか？（受付番号 ' + id + '）' + legTag_(r),
     r['お名前'] + ' 様\n\n先日はご利用ありがとうございました。\n' + fmt_(r['お迎え予定']) + ' の「' + r['決定した提携先'] + '」の送迎について、ひとつだけ教えてください。\n\n' +
     '▼ 送迎できたか・キャンセルしたかを答える（1回押すだけです）\n' + rideUrl_(id) + '\n\n' +
+    'よろしければ、そのあとに出るアンケート（星を押すだけの3問）にもお答えください（答えなくても大丈夫です）。\n\n' +
     'サービスをよくするため、また提携の会社との確認のために使います。お答えの内容が、お客さまと会社とのやり取りに影響することはありません。');
   log_(id + ' 送迎の確認を送った');
 }
@@ -1554,8 +1557,10 @@ function ridePage_(q) {
     setReq_(row.rowIndex, { '送迎確認': ANS[q.ans], '送迎確認日時': new Date() });
     log_(q.id + ' 送迎の確認：' + ANS[q.ans]);
     if (q.ans !== 'done') notifyAdmin_('送迎の確認：' + ANS[q.ans] + ' ' + q.id, '飼い主さんの答え：' + ANS[q.ans] + '\n会社：' + r['決定した提携先'] + '\n\n' + rideText_(r));
+    if (q.ans !== 'cancel' && !surveyDone_(q.id)) return page_('ありがとうございました', '<p>お答えを受け付けました。</p>' + surveyForm_(q.id, r));
     return page_('ありがとうございました', '<p>お答えを受け付けました。またいつでもご利用ください。</p>');
   }
+  if (r['送迎確認'] && r['送迎確認'] !== '確認中' && !/キャンセル/.test(r['送迎確認']) && !surveyDone_(q.id)) return page_('お答えいただいています', '<p>「' + esc_(r['送迎確認']) + '」で受け付けています。ありがとうございました。</p>' + surveyForm_(q.id, r));
   if (r['送迎確認'] && r['送迎確認'] !== '確認中') return page_('お答えいただいています', '<p>「' + esc_(r['送迎確認']) + '」で受け付けています。ありがとうございました。</p>');
   function btn(ans, label, gray) {
     return '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'ride') + hidden_('id', q.id) + hidden_('k', q.k) + hidden_('go', '1') + hidden_('ans', ans) +
@@ -1564,6 +1569,117 @@ function ridePage_(q) {
   return page_('無事に送迎できましたか？', '<div class="box">' + nl2br_(esc_('受付番号：' + q.id + '\nペットタクシー：' + r['決定した提携先'] + '\nお迎え予定：' + fmt_(r['お迎え予定']))) + '</div>' +
     btn('done', 'はい、送迎してもらいました') + btn('cancel', 'キャンセルしました', true) + btn('other', '日時や内容が予定と違いました', true));
 }
+
+/* ───────── ご利用後のアンケート（a=survey。Nori 2026-11-14「作ろう」） ─────────
+   「無事に送迎できましたか？」で「送迎してもらいました」「予定と違いました」と答えた方に、続けて聞く。
+   答えは「アンケート」タブに1件1行。お名前・連絡先は入れない（受付番号と会社だけ）。サイトには載せない。 */
+var SHEET_SURVEY = 'アンケート';
+var SURVEY_HEADERS = ['答えた日時', '受付番号', '提携先ID', '会社', 'お迎えの都道府県', 'お迎え予定', '全体の満足度（星）', '会社の対応（星）', '料金の納得感（星）', 'ひとこと'];
+// Nori 2026-11-14「簡単に答えられるように。基本星で回答、多くて3問。あとは自由記述の欄を任意で」
+var SURVEY_Q = { sat: '全体の満足度', staff: 'ペットタクシーの会社の対応', fare: '料金の納得感' };
+function surveySheet_() { return ensureSheet_(SpreadsheetApp.getActive(), SHEET_SURVEY, SURVEY_HEADERS); }
+function surveyKey_(id) { return sign_(id + ':survey'); }
+function surveyDone_(id) {
+  var sh = sheet_(SHEET_SURVEY);
+  if (!sh || sh.getLastRow() < 2) return false;
+  return sh.getRange(2, 2, sh.getLastRow() - 1, 1).getValues().some(function (v) { return String(v[0]) === String(id); });
+}
+function surveyForm_(id, r) {
+  // 星は押すだけ（JSなし。右から並べて、選んだ星より左も色がつくようにする）
+  var css = '<style>.sv{background:#fbfaf9;border:1px solid #eee5dc;border-radius:16px;padding:14px 12px 10px;margin:12px 0}.sv .sq{font-weight:700;margin:0 0 4px;text-align:center}' +
+    '.stars{display:flex;flex-direction:row-reverse;justify-content:center;gap:4px}.stars input{position:absolute;opacity:0;width:1px;height:1px}' +
+    '.stars label{display:flex;align-items:center;justify-content:center;width:52px;height:52px;font-size:2.4rem;line-height:1;color:#ddd6ce;cursor:pointer;margin:0;padding:0;font-weight:400;transition:transform .1s,color .1s;-webkit-tap-highlight-color:transparent}' +
+    '.stars label:active{transform:scale(1.25)}.stars input:checked~label{color:#ffa41c}.stars input:focus-visible+label{outline:2px solid #ff6a1a;border-radius:10px}' +
+    '.sv .ends{display:flex;justify-content:space-between;font-size:.75rem;color:#8a837c;max-width:290px;margin:2px auto 0}</style>';
+  var html = css + '<h2>よろしければ、かんたんなアンケートにもご協力ください</h2>' +
+    '<p class="note">星をタップするだけです（3問）。答えなくても、このまま閉じて大丈夫です。お答えはサービスをよくするためだけに使い、サイトに載せたり、会社にお名前とあわせて伝えたりはしません。</p>' +
+    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'survey') + hidden_('id', id) + hidden_('k', surveyKey_(id)) + hidden_('go', '1');
+  Object.keys(SURVEY_Q).forEach(function (key) {
+    html += '<div class="sv"><p class="sq">' + esc_(SURVEY_Q[key]) + '</p><div class="stars" role="radiogroup" aria-label="' + esc_(SURVEY_Q[key]) + '">';
+    for (var n = 5; n >= 1; n--) {
+      var fid = 'sv_' + key + n;
+      html += '<input type="radio" name="' + key + '" value="' + n + '" id="' + fid + '"><label for="' + fid + '" title="星' + n + 'つ" aria-label="星' + n + 'つ">★</label>';
+    }
+    html += '</div><div class="ends"><span>いまひとつ</span><span>とてもよい</span></div></div>';
+  });
+  html += '<p style="font-weight:700;margin:16px 0 4px">ひとこと（書かなくても大丈夫です）</p><textarea name="comment" maxlength="500" placeholder="よかったこと、こまったことなど"></textarea>' +
+    '<p class="note">お名前・電話番号・住所は書かないでください。</p>' +
+    '<button type="submit">アンケートを送る</button></form>';
+  return html;
+}
+function surveyPage_(q) {
+  if (!q.id || q.k !== surveyKey_(q.id)) return page_('リンクが正しくありません', '<p>お手数ですが、届いたメールのリンクからもう一度開いてください。</p>');
+  var row = findReq_(q.id);
+  if (!row) return page_('見つかりません', '<p>このご依頼は見つかりませんでした。</p>');
+  var r = row.data;
+  if (surveyDone_(q.id)) return page_('ありがとうございました', '<p>アンケートはすでにお答えいただいています。またいつでもご利用ください。</p>');
+  if (q.go !== '1') return page_('ご利用後のアンケート', surveyForm_(q.id, r));
+  var pick = function (key) { var v = Number(q[key]); return v >= 1 && v <= 5 && Math.floor(v) === v ? v : ''; };
+  var a = { sat: pick('sat'), staff: pick('staff'), fare: pick('fare'), comment: clip_(String(q.comment || '').trim(), 500) };
+  if (!a.sat && !a.staff && !a.fare && !a.comment) return page_('ご利用後のアンケート', '<p class="note">どれか1つ選んでから送ってください。</p>' + surveyForm_(q.id, r));
+  var lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    if (surveyDone_(q.id)) return page_('ありがとうございました', '<p>アンケートはすでにお答えいただいています。</p>');
+    surveySheet_().appendRow([new Date(), String(q.id), r['決定した提携先ID'], r['決定した提携先'], r['都府県'], r['お迎え予定'], a.sat, a.staff, a.fare, /^[=+\-@]/.test(a.comment) ? "'" + a.comment : a.comment]);
+    SpreadsheetApp.flush();
+  } finally {
+    lock.releaseLock();
+  }
+  log_(q.id + ' アンケートの答え');
+  notifyAdmin_('アンケート ' + q.id + '：' + r['決定した提携先'] + (a.sat ? '（満足度 ' + a.sat + '）' : ''),
+    '■ 会社：' + r['決定した提携先'] + '\n■ お迎え予定：' + fmt_(r['お迎え予定']) + '\n■ 全体の満足度：' + (a.sat ? '星' + a.sat : '―') + '\n■ 会社の対応：' + (a.staff ? '星' + a.staff : '―') +
+    '\n■ 料金の納得感：' + (a.fare ? '星' + a.fare : '―') + '\n■ ひとこと：' + (a.comment || '―') + '\n\n「アンケート」タブにも入っています。');
+  return page_('ありがとうございました', '<p>アンケートを受け付けました。いただいた声は、サイトとサービスをよくするために使わせていただきます。</p><p>またいつでもご利用ください。</p>');
+}
+
+/* ───────── 集計（「集計」タブ。1日1回 checkPending から作り直す。手で直さない） ─────────
+   月ごと（受付日時の月）に、問い合わせ → 予約確定 → 取り消し・見つからず → 送迎の確認 → アンケート を数える。
+   テストの依頼（お名前が「テスト」で始まる・運営のアドレスから）は数えない。個人情報を消したあとの行は見分けられないのでそのまま数える。 */
+var SHEET_SUMMARY = '集計';
+function updateSummary_(force) {
+  var day = Utilities.formatDate(new Date(), TZ, 'yyyyMMddH'), props = PropertiesService.getScriptProperties();
+  if (!force && props.getProperty('summary_hour') === day) return;
+  props.setProperty('summary_hour', day);
+  var sh = sheet_(SHEET_REQ), vals = sh.getDataRange().getValues(), h = vals[0], m = {}, months = [];
+  var admin = String(adminEmail_() || '').toLowerCase();
+  var row0 = function (k) { if (!m[k]) { m[k] = { ask: 0, done: 0, cancel: 0, none: 0, open: 0, rode: 0, rcancel: 0, other: 0, noans: 0, sv: 0, satSum: 0, satN: 0 }; months.push(k); } return m[k]; };
+  for (var i = 1; i < vals.length; i++) {
+    var r = toObj_(h, vals[i]);
+    if (!r['受付番号']) continue;
+    if (/^\s*テスト/.test(String(r['お名前'] || '')) || (admin && String(r['メール'] || '').trim().toLowerCase() === admin)) continue;
+    var t = r['受付日時'] instanceof Date ? r['受付日時'] : new Date(r['受付日時']);
+    if (isNaN(t.getTime())) continue;
+    var c = row0(Utilities.formatDate(t, TZ, 'yyyy-MM'));
+    c.ask++;
+    var st = r['状態'], rc = String(r['送迎確認'] || '');
+    if (st === ST.DONE) c.done++; else if (st === ST.CANCEL) c.cancel++; else if (st === ST.NONE) c.none++; else c.open++;
+    if (r['決定日時']) { if (st === ST.CANCEL) c.done++; } // 決まってから取り消したものも「予約確定」に数える
+    if (rc === '送迎あり') c.rode++; else if (/キャンセル/.test(rc)) c.rcancel++; else if (/予定と違/.test(rc)) c.other++; else if (st === ST.DONE && rc === '確認中') c.noans++;
+  }
+  var sv = sheet_(SHEET_SURVEY);
+  if (sv && sv.getLastRow() > 1) sv.getRange(2, 1, sv.getLastRow() - 1, 7).getValues().forEach(function (v) {
+    var t = v[0] instanceof Date ? v[0] : new Date(v[0]);
+    if (isNaN(t.getTime())) return;
+    var c = row0(Utilities.formatDate(t, TZ, 'yyyy-MM'));
+    c.sv++;
+    if (Number(v[6])) { c.satSum += Number(v[6]); c.satN++; }
+  });
+  months.sort();
+  var head = ['月', '問い合わせ', '予約確定（あとで取り消しも含む）', '取り消し（確定の前・あと）', '見つからず', 'まだ返事待ち', '送迎あり（お客さまの答え）', 'キャンセル（お客さまの答え）', '予定と違った（お客さまの答え）', '送迎の確認に未回答', 'アンケートの数', '満足度の平均'];
+  var out = [head].concat(months.map(function (k) {
+    var c = m[k];
+    return [k, c.ask, c.done, c.cancel, c.none, c.open, c.rode, c.rcancel, c.other, c.noans, c.sv, c.satN ? Math.round(c.satSum / c.satN * 10) / 10 : ''];
+  }));
+  var ss = SpreadsheetApp.getActive(), sum = ss.getSheetByName(SHEET_SUMMARY) || ss.insertSheet(SHEET_SUMMARY);
+  sum.clearContents();
+  sum.getRange(1, 1, out.length, head.length).setValues(out);
+  sum.getRange(1, 1, 1, head.length).setFontWeight('bold').setBackground('#fff1e6');
+  sum.setFrozenRows(1);
+  sum.getRange(out.length + 2, 1).setValue('このタブは自動で作り直します（1時間ごと）。手で直しても消えます。テストの依頼は数えていません。更新：' + Utilities.formatDate(new Date(), TZ, 'yyyy/MM/dd HH:mm'));
+}
+// 手で今すぐ作り直したいとき（Apps Script の画面で選んで実行。何も送らない）
+function updateSummary() { updateSummary_(true); }
 
 /* ───────── お客さまへのメール ───────── */
 
