@@ -504,9 +504,9 @@ footer a{color:var(--ink-2)}
 .partner-points{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0}
 .partner-points li{font-size:.72rem;background:#eef6ee;color:#2f5d34;border-radius:999px;padding:2px 8px;line-height:1.5}
 .partner-points li.lim{background:#f1f0ee;color:#55504a}
-.partner-creds{display:flex;flex-wrap:wrap;gap:2px 12px;list-style:none;margin:6px 0 0;padding:0;font-size:.74rem;line-height:1.5;color:#5f6368}
-.partner-creds li{display:inline-flex;align-items:baseline;gap:3px}
-.partner-creds li::before{content:"✓";color:#188038;font-weight:700}
+.partner-creds{display:flex;flex-wrap:wrap;gap:4px 14px;list-style:none;margin:8px 0 2px;padding:0;font-size:.8rem;line-height:1.5;color:#3c4043;font-weight:500}
+.partner-creds li{display:inline-flex;align-items:flex-start;gap:5px}
+.partner-creds li::before{content:"";flex:0 0 auto;width:14px;height:14px;border-radius:50%;margin-top:3px;background:#1e8e3e url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-8.5' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/11px}
 .partner-card .btn.pick-on{background:var(--o-d)}
 #partnerRest[hidden],.partner-rest-btn[hidden],.partner-sort[hidden]{display:none}
 .partner-sort{display:flex;align-items:center;gap:8px;justify-content:flex-end;margin:4px 0 10px;font-size:.86rem}
