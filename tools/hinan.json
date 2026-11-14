@@ -3129,6 +3129,1713 @@
    ],
    "map": null,
    "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "千代田区",
+   "kind": "city",
+   "policy": "ページでは避難所での受け入れのしかたは書いていない。いざというときにペットを預かってくれる人や場所を前もって確保しておくようすすめている。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "移動用のケージやキャリーバッグに嫌がらずに入れるよう、日ごろから練習しておく。",
+   "rules": [
+    "フードと水は5日分を用意する",
+    "迷子札やマイクロチップで身元が分かるようにする",
+    "避難先では周りの人に気をつけて、飼い主が世話と場所の管理をする"
+   ],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "千代田区「ペットの災害対策」",
+     "https://www.city.chiyoda.lg.jp/koho/kurashi/dobutsu/pet-disaster-taisaku.html"
+    ]
+   ],
+   "map": [
+    "千代田区防災ポータル「避難所一覧・福祉避難所一覧」",
+    "https://bosai.city.chiyoda.lg.jp/hinan/hinanjyo-ichiran.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "中央区",
+   "kind": "city",
+   "policy": "避難所になるすべての防災拠点で、ペットの同行避難を受け入れる。飼い主の自助・共助による同行避難が基本。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "中央区「人とペットの災害対策の推進に向けた連携」",
+     "https://www.city.chuo.lg.jp/a0030/petbosai.html"
+    ]
+   ],
+   "map": [
+    "中央区「防災拠点（避難所）・副拠点」",
+    "https://www.city.chuo.lg.jp/a0011/bousaianzen/bousai/bousaitaisaku/hinanjo/bousaikyotenfukukyoten.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "江東区",
+   "kind": "city",
+   "policy": "自宅が安全なら在宅避難を考える。避難が必要なときは、できるだけペットと一緒に安全な場所へ避難する（同行避難）。区立の小・中学校などに開く避難所は、原則としてペットを受け入れる。",
+   "animals": "原則として犬・猫・小鳥などの小動物。",
+   "no": null,
+   "size": null,
+   "cage": "ケージやキャリーは備えの品として用意しておく。",
+   "rules": [
+    "フードと水は5日分以上（できれば7日分以上）",
+    "鑑札や迷子札を付け、マイクロチップもすすめている",
+    "ワクチン・狂犬病の注射・ノミやダニの予防をしておく"
+   ],
+   "place": "人と同じ場所ではなく、飼い主のいる場所とペットの場所は分ける。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": "yes",
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "江東区「ペットの防災」",
+     "https://www.city.koto.lg.jp/260401/kurashi/dobutsu/petto/pettonosaigaitaisaku.html"
+    ]
+   ],
+   "map": [
+    "江東区防災ポータル「避難所一覧・福祉避難所一覧」",
+    "https://bosai.city.koto.lg.jp/hinan/hinanjyo-ichiran.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "品川区",
+   "kind": "city",
+   "policy": "2024年度に、すべての避難所でペット同行避難を受け入れる体制を整えた（ペットの受け入れスペースと物資の備え）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "品川区「イオンペット株式会社と災害時協定締結 ペット同行避難の避難所受入体制を強化」",
+     "https://www.city.shinagawa.tokyo.jp/kusei/press_release/1008314/1009329.html"
+    ]
+   ],
+   "map": [
+    "品川区防災ポータル「避難所一覧」",
+    "https://bosai.city.shinagawa.tokyo.jp/hinan/hinanjyo-ichiran.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "渋谷区",
+   "kind": "city",
+   "policy": "区の「ペットとの同行避難マニュアル」で、飼い主のふだんの備えと、避難所でペットを受け入れて世話をするしかたを決めている。くわしくはマニュアルと飼い主の手引き（PDF）を見る。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "渋谷区「ペットとの同行避難マニュアル」",
+     "https://www.city.shibuya.tokyo.jp/bosai/bosai/bosai-manual-map/manual_pet.html"
+    ]
+   ],
+   "map": [
+    "渋谷区防災ポータル「避難所・自主避難施設一覧」",
+    "https://bosai.city.shibuya.tokyo.jp/hinan/hinanjyo-ichiran.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "中野区",
+   "kind": "city",
+   "policy": "地域防災計画で、避難所での小動物の同行避難を受け入れ、校庭などの一部を「ペットの避難所」にすると決めている。",
+   "animals": "小動物（犬・猫・鳥など）だけ。",
+   "no": null,
+   "size": null,
+   "cage": "ペットはケージに入れる。ケージ・フード・トイレ用品・薬は飼い主が用意する。",
+   "rules": [
+    "フードと水は最低3日分（できれば7日分）",
+    "世話・ふんの片付け・衛生管理は飼い主の責任",
+    "犬は鑑札と狂犬病予防注射済票、迷子札を付ける",
+    "くわしいルールは避難所ごとに違うことがある"
+   ],
+   "place": "屋外（校庭などの一部）。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": "yes",
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "中野区「ペットの災害対策、災害から愛するペットを守るために」",
+     "https://www.city.tokyo-nakano.lg.jp/bosai/suigai-sonae/jijyo-kyojyo/pet.html"
+    ]
+   ],
+   "map": [
+    "中野区「中野の避難所・広域避難場所」",
+    "https://www.city.tokyo-nakano.lg.jp/bosai/hinanjyo/hinanjyo/nakano.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "杉並区",
+   "kind": "city",
+   "policy": "同行避難は、飼い主がペットと一緒に避難すること。震災救援所（区立小・中学校）の場所と道順を前もって確かめておく。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "キャリーやケージは、布製ではなく重ねられるものがよい。",
+   "rules": [
+    "震災救援所にはペットのフードや薬の備えはない",
+    "フードと水は最低5日分",
+    "負傷した動物の救護所は区内5か所の震災救援所だけ"
+   ],
+   "place": "震災救援所では、ペットと同じ部屋で過ごせるとは限らない。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "杉並区「ペットの災害対策」",
+     "https://www.city.suginami.tokyo.jp/s046/855.html"
+    ],
+    [
+     "杉並区「震災救援所ペット対応てびき」（PDF）",
+     "https://www.city.suginami.tokyo.jp/documents/863/r6_kyuenjyotebiki.pdf"
+    ]
+   ],
+   "map": [
+    "杉並区「避難所」",
+    "https://www.city.suginami.tokyo.jp/s015/1501.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "豊島区",
+   "kind": "city",
+   "policy": "救援センター（避難所）を開いたときは、ペットの同行避難を受け入れる。ペットを置き去りにせず、一緒に避難する。",
+   "animals": "ケージに入れられる大きさの小型の哺乳類と鳥類。",
+   "no": "特定動物・特定外来生物など。は虫類と魚は、管理がむずかしく逃げると危ないため受け入れない。大型の動物などは、知り合いなどの預け先を前もって決めておく。",
+   "size": "ケージに入れられる大きさまで。",
+   "cage": "ケージなどは飼い主が用意する。救援センターでは原則ケージの中で過ごす。",
+   "rules": [
+    "フードと水は飼い主が用意し、えさやりとふんの片付けもする",
+    "フードと水は最低5〜7日分",
+    "首輪の迷子札やマイクロチップで身元を分かるように",
+    "補助犬は別の部屋を考える"
+   ],
+   "place": "人とは別のスペース。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": "no",
+    "large": "no"
+   },
+   "links": [
+    [
+     "豊島区「ペット同行避難」",
+     "https://www.city.toshima.lg.jp/044/bosai/bousaijigyou/2112160914.html"
+    ]
+   ],
+   "map": [
+    "豊島区「救援センター」",
+    "https://www.city.toshima.lg.jp/bosai/taisaku/hinanjo/kyuencenter/index.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "北区",
+   "kind": "city",
+   "policy": "区立小・中学校などの避難所を開いたときは、すべての避難所でペットと同行避難できる。同行避難は一緒に移動することで、同じ部屋で過ごせるという意味ではない。",
+   "animals": "犬・猫・小鳥そのほかの小動物（危なくない動物）。犬は狂犬病の予防注射を受けていることが条件。",
+   "no": "狂犬病の予防注射を受けていない犬は受け入れできない。",
+   "size": null,
+   "cage": "ケージ・フード・水は原則として飼い主が用意する（避難所の備えは数が少ない）。ケージに入れるかリードでつなぐ。",
+   "rules": [
+    "水とフードは最低5日分（できれば7日分以上）",
+    "世話はすべて飼い主の責任。むだぼえしないなど基本のしつけ",
+    "犬は鑑札と注射済票を付ける"
+   ],
+   "place": "避難所の運営本部が決める。原則は雨風をしのげる場所で、居住スペースから離れた昇降口などが多い。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": "yes",
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "北区「災害時における避難所へのペットの同行避難」",
+     "https://www.city.kita.lg.jp/safety/disaster/1018235/1018236/1002576.html"
+    ]
+   ],
+   "map": [
+    "北区防災ポータル",
+    "https://bosaiportal.city.kita.lg.jp/"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "荒川区",
+   "kind": "city",
+   "policy": "震災のとき、ペットを受け入れられる一次避難所は区内10か所（南千住2・荒川3・尾久3・日暮里2）。",
+   "animals": "犬・猫・そのほかの小動物（ハムスター・うさぎ・フェレット・小鳥など）。",
+   "no": "温度の管理が必要な動物や危険な動物は持ち込まない。",
+   "size": null,
+   "cage": "ペット用のフタ付きのケージ（クレート）とフードなどを持っていく。",
+   "rules": [
+    "一次避難所にペット用品の備えはない",
+    "避難所の運営に協力し、ルールに従う",
+    "犬は狂犬病の予防注射を受け、鑑札と注射済票を付ける"
+   ],
+   "place": "基本は屋根のある屋外。飼い主と同じ部屋では過ごせない。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": "yes",
+    "bird": "yes",
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "荒川区「震災時にペット避難の受入れが可能な一次避難所一覧」",
+     "https://www.city.arakawa.tokyo.jp/a032/bousai/pet_bosai/dokohinan.html"
+    ]
+   ],
+   "map": [
+    "荒川区「震災時にペット避難の受入れが可能な一次避難所一覧」",
+    "https://www.city.arakawa.tokyo.jp/a032/bousai/pet_bosai/dokohinan.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "足立区",
+   "kind": "city",
+   "policy": "原則として、ペットを連れて避難所へ避難する（同行避難）。人とペットが同じ部屋で過ごせるという意味ではない。家が安全なら在宅避難もある。",
+   "animals": "犬・猫などの一般的なペット。",
+   "no": "犬・猫などの一般的なペット以外の動物は、避難所での受け入れがむずかしい場合がある（預け先を確保しておく）。",
+   "size": null,
+   "cage": "ケージ・リード・ペットシートを必ず持っていく。避難所ではケージで過ごす。",
+   "rules": [
+    "避難所にペット用の備えはない",
+    "フードと水は5日分以上",
+    "犬は鑑札と狂犬病予防注射済票を付ける",
+    "世話とふんの片付けは飼い主の責任"
+   ],
+   "place": "飼い主とペットは同じ部屋では過ごせない。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": "hard",
+    "large": null
+   },
+   "links": [
+    [
+     "足立区「災害時のペットとの避難について」",
+     "https://www.city.adachi.tokyo.jp/sekatsuese/kurashi/dobutsu/saigai.html"
+    ],
+    [
+     "足立区「ペット同行避難ガイドライン」（2026年1月、PDF）",
+     "https://www.city.adachi.tokyo.jp/documents/61978/petguideline.pdf"
+    ]
+   ],
+   "map": [
+    "足立区災害ポータル「避難所一覧」",
+    "https://bosai.city.adachi.tokyo.jp/hinan/hinanjyo-ichiran.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "葛飾区",
+   "kind": "city",
+   "policy": "区の「避難所における動物飼育のガイドライン」（2020年修正）で、学校避難所での同行避難の動物の受け入れ方を決めている。",
+   "animals": "ふつうの家庭のペット（犬・猫・うさぎ・フェレット・小鳥・ハムスターなどの小型のげっ歯類）。",
+   "no": "人に危害を加えるおそれのある動物と、片手で持ち運べる大きさのケージに入らない大型の動物。",
+   "size": "片手で持ち運べる大きさのケージに入ること。",
+   "cage": "避難所ではケージ（おり）に入れて飼う。台風で短い時間の避難なら、クレートやキャリーバッグでもよい。",
+   "rules": [
+    "フード・水・トイレ用品は飼い主が持っていく",
+    "ふんは決められた場所でさせ、飼い主が片付ける",
+    "避難所の本部と協力して動物の場所を運営する"
+   ],
+   "place": "学校避難所の屋内または屋外で、居住スペースとは別の決められた場所。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": "yes",
+    "bird": "yes",
+    "reptile": null,
+    "large": "no"
+   },
+   "links": [
+    [
+     "葛飾区「避難所における動物飼育のガイドライン（令和2年修正）」",
+     "https://www.city.katsushika.lg.jp/kurashi/1003399/1003401/1023835.html"
+    ]
+   ],
+   "map": [
+    "葛飾区「一時集合場所・避難場所」",
+    "https://www.city.katsushika.lg.jp/kurashi/1004028/1000063/1004029/1030341/1004759.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "八王子市",
+   "kind": "city",
+   "policy": "同行避難は、ペットを置いていかず一緒に避難すること（同じ部屋で飼うという意味ではない）。受け入れは避難所の管理者の判断に従う。家が安全なら自宅での生活をすすめている。",
+   "animals": "主に犬・猫などの小動物。",
+   "no": "特殊なペットは、災害時の預け先を前もってさがしておく。",
+   "size": null,
+   "cage": "決められた場所で、ケージに入れるか柱などにつなぐ。",
+   "rules": [
+    "フードなどは飼い主が用意し、1週間分ほどが目安",
+    "受付で「同行動物登録カード」を出す",
+    "決められた時間にえさをやり、ふんの後始末をする",
+    "ペットは避難する部屋に入れない"
+   ],
+   "place": "居住スペースには入れられない。校庭などの決められた飼育スペース。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "八王子市「ペットの災害対策」",
+     "https://www.city.hachioji.tokyo.jp/kurashi/hoken/007/001/001/p026179.html"
+    ]
+   ],
+   "map": [
+    "八王子市「地震時の指定緊急避難場所及び指定避難所」",
+    "https://www.city.hachioji.tokyo.jp/emergency/bousai/m12873/saigai/p035634.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "武蔵野市",
+   "kind": "city",
+   "policy": "できるだけ自宅で暮らしつづける「在宅避難」が基本。家が全壊・全焼などで危なく、知り合いの家などの避難先もないときに、やむなく同行避難する。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [
+    "ふだんからペットフードや水を備えておく",
+    "災害時の動物救援本部は、むさしのエコreゾートに置く予定"
+   ],
+   "place": "避難所では人の生活が優先で、人とペットの場所は別々。一緒には過ごせない。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "武蔵野市「ペットのための防災対策」",
+     "https://www.city.musashino.lg.jp/kurashi_tetsuzuki/pet/1045339.html"
+    ],
+    [
+     "武蔵野市「ペット同行避難マニュアル 第1版」（2023年7月、PDF）",
+     "https://www.city.musashino.lg.jp/_res/projects/default_project/_page_/001/045/339/2023091906.pdf"
+    ]
+   ],
+   "map": [
+    "武蔵野市「市の一時集合場所・避難所・帰宅困難者一時滞在施設などについて」",
+    "https://www.city.musashino.lg.jp/kurashi_tetsuzuki/bosai_anzen/bosai_anzen_center_web/1044377/1044390.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "三鷹市",
+   "kind": "city",
+   "policy": "家で暮らせないときはペットと同行避難する。避難所の運営マニュアルでペットスペースを用意し、同行避難を受け入れる。人とペットが同じ場所で過ごすという意味ではない。",
+   "animals": "犬・猫などの小型の家庭動物。",
+   "no": "特定動物・特定外来生物・家畜。",
+   "size": null,
+   "cage": "決められた場所でケージに入れて飼う。フードやケージなどは飼い主が用意する。",
+   "rules": [
+    "食事や排せつの世話は飼い主がする",
+    "ペットスペースは限られるので、一時的な預け先を複数考えておく",
+    "補助犬は別の部屋で使用者と過ごす"
+   ],
+   "place": "昇降口など決められたスペース。ほかの場所への連れ込みは原則禁止。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "三鷹市「ペットの防災対策」",
+     "https://www.city.mitaka.lg.jp/c_service/056/056790.html"
+    ]
+   ],
+   "map": [
+    "三鷹市「避難所」",
+    "https://www.city.mitaka.lg.jp/c_service/065/065397.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "青梅市",
+   "kind": "city",
+   "policy": "災害時は人の命が最優先。飼い主とペットの同行避難は、飼い主の心のケアのためにも大切として、市の「ペットとの同行避難マニュアル」で飼い主の備えと災害時の行動を示している。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "青梅市「ペットとの同行避難マニュアル」",
+     "https://www.city.ome.tokyo.jp/soshiki/22/30402.html"
+    ],
+    [
+     "青梅市「ペットとの同行避難マニュアル」（PDF）",
+     "https://www.city.ome.tokyo.jp/uploaded/attachment/18347.pdf"
+    ]
+   ],
+   "map": [
+    "青梅市「避難場所等一覧」",
+    "https://www.city.ome.tokyo.jp/soshiki/11/179.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "府中市",
+   "kind": "city",
+   "policy": "同行避難は、飼い主がペットと一緒に安全に避難すること。避難所で同じ場所で暮らせるという意味ではない。ペットの過ごし方は避難所ごとに違うので、それぞれのルールに従う。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [
+    "ペットの避難用品と備えは少なくとも5日分",
+    "鑑札・迷子札・マイクロチップで飼い主を分かるようにする",
+    "治療やワクチンの記録をのせたプロフィールシートを持つ"
+   ],
+   "place": "避難所ごとに違う。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "府中市「ペットの災害対策について」",
+     "https://www.city.fuchu.tokyo.jp/kurashi/sekatu/doubutsuaigo/doukouhinan.html"
+    ]
+   ],
+   "map": [
+    "府中市「避難所について」",
+    "https://www.city.fuchu.tokyo.jp/bosaibohan/saigai/hinan/hinanjo.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "調布市",
+   "kind": "city",
+   "policy": "災害時の避難所では、ペットの同行避難を受け入れる。",
+   "animals": "犬・猫・鳥などの小動物。",
+   "no": "人に危害を加えるおそれのある大型の動物、特定動物・特定外来生物とそれに似た動物。",
+   "size": null,
+   "cage": "キャリーやケージに入れて飼う。キャリー・ケージ・飲み物と食べ物・トイレ用品は飼い主が用意する。",
+   "rules": [
+    "避難所にペットの備えはない",
+    "食事や排せつの世話は飼い主がする",
+    "「ペット登録台帳」と「ペット名札」を前もって書いておくと入所がスムーズ"
+   ],
+   "place": "人の居住スペースには入れず、決められたペットスペース。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": "yes",
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "調布市「ペットの災害対策」",
+     "https://www.city.chofu.lg.jp/020090/p013111.html"
+    ]
+   ],
+   "map": [
+    "調布市「避難所マップ」",
+    "https://www.city.chofu.lg.jp/020090/p013106.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "町田市",
+   "kind": "city",
+   "policy": "家で暮らすのが危ないときは、ペットを連れて避難施設へ避難する。家と周りが安全ならペットと在宅避難もできる。ペットの扱いは各避難施設の運営者が決める。",
+   "animals": "犬・猫・小型の哺乳類・鳥類。",
+   "no": "は虫類や特定動物などは避難施設で受け入れできない。",
+   "size": null,
+   "cage": "ケージ・キャリーバッグを用意し、入る練習をしておく。",
+   "rules": [
+    "避難施設にペット用品の備えはない",
+    "フード（療法食）と水は最低1週間分",
+    "犬の鑑札や迷子札、マイクロチップを付ける"
+   ],
+   "place": "原則として、人が過ごす場所とは別の場所（補助犬はのぞく）。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": "yes",
+    "bird": "yes",
+    "reptile": "no",
+    "large": null
+   },
+   "links": [
+    [
+     "町田市「災害に備えて」",
+     "https://www.city.machida.tokyo.jp/iryo/hokenjo/pet/kaikata_manner/saigai.html"
+    ]
+   ],
+   "map": [
+    "町田市「震災時避難広場（避難場所）・避難施設（避難所）一覧」",
+    "https://www.city.machida.tokyo.jp/kurashi/bouhan/bousai/earthquake/taisaku/sonae01.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "小金井市",
+   "kind": "city",
+   "policy": "災害のときは同行避難が原則。ペットを置いていったり放したりしない。市の避難所は原則としてペットを受け入れる。",
+   "animals": "犬・猫・小鳥とそのほかの小動物だけ。",
+   "no": null,
+   "size": null,
+   "cage": "必ずクレートなどに入れて避難し、避難所の決められた場所に置く。",
+   "rules": [
+    "えさやりやふんの片付けは飼い主が責任をもってする",
+    "フードと水は最低5日分（できれば7日分）",
+    "迷子札やマイクロチップで身元を分かるようにする"
+   ],
+   "place": "飼い主の居住スペースとペットのスペースは別。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": "yes",
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "小金井市「災害時のペット対策について」",
+     "https://www.city.koganei.lg.jp/kurashi/472/bosai/bosaiservice/pethinan.html"
+    ]
+   ],
+   "map": [
+    "小金井市「災害時に備えて、避難所等教えてください。」",
+    "https://www.city.koganei.lg.jp/kurashi/472/bosai/bosaiservice/005.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "小平市",
+   "kind": "city",
+   "policy": "避難所へ避難するときは、ペットとの同行避難が原則。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "ケージ・クレート・キャリーバッグなどに入れて避難し、避難所の決められた場所に置く。",
+   "rules": [
+    "えさやりやふんの片付けは飼い主が責任をもってする",
+    "避難所の飼い方のルールを守り、ほかの避難者に気をつける",
+    "ペットホテル・親族・知人など預け先も前もって考えておく"
+   ],
+   "place": "飼い主の居住スペースとは別の場所。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "小平市「ペットのための非常時の備え」",
+     "https://www.city.kodaira.tokyo.jp/kurashi/080/080967.html"
+    ]
+   ],
+   "map": [
+    "小平市「避難場所・避難所の一覧」",
+    "https://www.city.kodaira.tokyo.jp/kurashi/000/000161.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "日野市",
+   "kind": "city",
+   "policy": "ペットは同行避難が原則。すべての指定避難所（市内の小・中学校・ふれあいホール・南平体育館）でペットの同行・同伴避難を受け入れる。人とペットが同じ部屋で暮らすという意味ではない。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "避難所にケージはないので、ケージと食べ物は飼い主が用意する。ケージの中で落ち着いていられるようにしておく。",
+   "rules": [
+    "フードや用品は飼い主が用意する",
+    "避難所の場所は限られるので、ほかの預け先も考えておく"
+   ],
+   "place": "飼い主とは別の場所。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "日野市「災害時のペット対策について」",
+     "https://www.city.hino.lg.jp/kurashi/sumai/pet/1011573.html"
+    ],
+    [
+     "日野市「災害時ペット対策の心得と準備について」（PDF）",
+     "https://www.city.hino.lg.jp/_res/projects/default_project/_page_/001/011/573/20260824.pdf"
+    ]
+   ],
+   "map": [
+    "日野市「避難所での過ごし方」",
+    "https://www.city.hino.lg.jp/kurashi/annzen/1023003/1014634.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "国分寺市",
+   "kind": "city",
+   "policy": "地区防災センター（避難所）でペットを受け入れる。飼っている人もいない人も、ルールを知って協力し合うことが大切。",
+   "animals": "犬・猫などの小動物と小鳥類。",
+   "no": "大型の動物や危険な動物は、敷地内に入れない。",
+   "size": null,
+   "cage": "ケージかクレートを必ず持ってくる（ないと受け入れを断られることがある）。",
+   "rules": [
+    "ケージがあっても、アレルギー対策のため人と同じ場所では寝泊まりできない",
+    "盲導犬などの補助犬はペットではなく、人と一緒に過ごせる"
+   ],
+   "place": "原則として屋外。雨や嵐のときは雨風をしのげる場所。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": "yes",
+    "reptile": null,
+    "large": "no"
+   },
+   "links": [
+    [
+     "国分寺市「基本的な避難所生活について」",
+     "https://www.city.kokubunji.tokyo.jp/bousai/bousai/1035328/1024176.html"
+    ]
+   ],
+   "map": [
+    "国分寺市「二次避難所・福祉避難所」",
+    "https://www.city.kokubunji.tokyo.jp/bousai/bousai/1035331/1002462.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "福生市",
+   "kind": "city",
+   "policy": "市が開く避難所のうち、ペットを受け入れられる施設へは「同行避難」が原則。同じ部屋で過ごす（同伴避難）という意味ではない。避難所での世話は飼い主の責任。",
+   "animals": "家で飼っている犬・猫・うさぎなどの小型の哺乳類と鳥類。",
+   "no": "家畜、販売用の動物、特定動物・特定外来生物など。馬などの大型の哺乳類、魚類、は虫類、両生類、昆虫も対象外。",
+   "size": null,
+   "cage": "キャリーバッグかケージを持っていく。",
+   "rules": [
+    "市はペットフードやケージを備えていない",
+    "フードと水は最低7日分",
+    "避難所のほかの預け先も前もって考えておく"
+   ],
+   "place": null,
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": "yes",
+    "bird": "yes",
+    "reptile": "no",
+    "large": null
+   },
+   "links": [
+    [
+     "福生市「ペットの避難の受入れに関するガイドライン」",
+     "https://www.city.fussa.tokyo.jp/life/disaster/prevention/1011969.html"
+    ],
+    [
+     "福生市「ペットの避難の受入れに関するガイドライン」（2021年7月、PDF）",
+     "https://www.city.fussa.tokyo.jp/_res/projects/default_project/_page_/001/011/969/petguidelines3.pdf"
+    ]
+   ],
+   "map": [
+    "福生市「避難所等」",
+    "https://www.city.fussa.tokyo.jp/map/hinanjo/index.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "狛江市",
+   "kind": "city",
+   "policy": "避難所でのペットの世話は、すべて飼い主の責任。市はペットのフードやトイレを備えていない。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "避難所では必ずケージに入れる。小型犬や猫はキャリーバッグやケージに入れて避難し、扉が開かないようにテープでとめる。",
+   "rules": [
+    "迷子札と鑑札を付ける",
+    "フードと水は最低5日分",
+    "各避難所で決めたルールを守る",
+    "避難所ごとの運営の話し合いや訓練に参加する"
+   ],
+   "place": "盲導犬・介助犬などをのぞき、すべてのペットは人の生活スペースと分ける。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "狛江市「ペットの防災」",
+     "https://www.city.komae.tokyo.jp/index.cfm/42,85995,328,2043,html"
+    ]
+   ],
+   "map": [
+    "狛江市「避難所等の確認、市内の防災用品取扱店」",
+    "https://www.city.komae.tokyo.jp/index.cfm/42,78473,328,2043,html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "清瀬市",
+   "kind": "city",
+   "policy": "同行避難は、犬・猫・小動物を連れて避難所へ行くこと（人と同じ場所で暮らすという意味ではない）。家が安全なら在宅もある。風水害のときは、屋外にテントを張るのが危ないため、原則として同行避難はひかえ、ほかの避難先や預け先を確保する。",
+   "animals": "犬・猫・小動物。",
+   "no": null,
+   "size": null,
+   "cage": "ケージの中か、つないで飼う。",
+   "rules": [
+    "犬は鑑札と注射済票を付ける",
+    "ペット用の備えは最低5日分（できれば7日分）",
+    "避難所の運営係の指示に従う"
+   ],
+   "place": "避難所の敷地の屋外で、テントなどで雨をしのぐ場所。人の生活スペースとは分ける。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "清瀬市「ペットの災害対策」",
+     "https://www.city.kiyose.lg.jp/kurashi/bousai_anzen/bousai_kiki/1003335/1007825.html"
+    ],
+    [
+     "清瀬市「ペット同行避難に関するガイドライン」（2023年2月、PDF）",
+     "https://www.city.kiyose.lg.jp/_res/projects/default_project/_page_/001/007/825/petgaidolain.pdf"
+    ]
+   ],
+   "map": [
+    "清瀬市「清瀬市指定避難所等一覧」",
+    "https://www.city.kiyose.lg.jp/kurashi/bousai_anzen/bousai_kiki/1003363.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "東久留米市",
+   "kind": "city",
+   "policy": "ペットは飼い主と一緒に避難するが、過ごすのは避難所の敷地内の屋外で、飼い主とは別。家が安全で世話に戻れるなら、避難所に連れて行かない選び方もある。",
+   "animals": "犬・猫・小鳥・小型のげっ歯類（うさぎなど）などの一般的なペットに限る。",
+   "no": "それ以外のペットは、避難所以外の預け先を考えておく。",
+   "size": "大きさの上限は書いていない。大きいペットはリードやハーネスを付けて避難する。",
+   "cage": "大型以外のペットは、ケージやキャリーバッグに入れて一緒に避難する。",
+   "rules": [
+    "防災用品は最低7日分、できれば10日分",
+    "犬は鑑札と注射済票を付ける",
+    "世話は飼い主の責任。飼い主同士で協力して飼育スペースを運営する"
+   ],
+   "place": "避難所の敷地内の屋外。人とは別の飼育スペース。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": "yes",
+    "bird": "yes",
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "東久留米市「災害発生時に慌てないために知っておきたい７つのこと」（2020年9月、PDF）",
+     "https://www.city.higashikurume.lg.jp/_res/projects/default_project/_page_/001/005/189/saigaipet.pdf"
+    ],
+    [
+     "東久留米市「ペットの飼い主の皆さん 飼育マナーとルールの確認を」",
+     "https://www.city.higashikurume.lg.jp/kurashi/kankyo/doubutsu/1005189.html"
+    ]
+   ],
+   "map": [
+    "東久留米市「指定避難所（避難所）」",
+    "https://www.city.higashikurume.lg.jp/kurashi/anzen/bousai/1003939/1000251.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "武蔵村山市",
+   "kind": "city",
+   "policy": "同行避難は、ペットを連れて安全に避難所まで行くこと。人とペットが同じ場所で暮らす同伴避難は考えていない。家が安全で世話に戻れるなら、家に置いておく選び方もある。",
+   "animals": "一般的なペット（犬・猫・小鳥・小型のげっ歯類）。",
+   "no": "それ以外の動物は受け入れがむずかしい場合がある（預け先を考えておく）。",
+   "size": null,
+   "cage": "避難所では必ずケージやキャリーバッグに入れて飼う。",
+   "rules": [
+    "ペット用品は最低5日分（できれば7日分）",
+    "犬は鑑札と狂犬病予防注射済票を付ける",
+    "風水害のときは開く避難所が順番なので、市の情報で確かめる"
+   ],
+   "place": "地震のときは、屋根のある屋外などのペットの場所（避難所ごとの運営委員会が決める）。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": "yes",
+    "reptile": "hard",
+    "large": null
+   },
+   "links": [
+    [
+     "武蔵村山市「ペット防災」",
+     "https://www.city.musashimurayama.lg.jp/kurashi/kankyou/pet/1011374.html"
+    ]
+   ],
+   "map": [
+    "武蔵村山市「避難場所・避難所一覧」",
+    "https://www.city.musashimurayama.lg.jp/kurashi/bousai/saigai/1000091.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "多摩市",
+   "kind": "city",
+   "policy": "災害時、飼い主はペットを連れて避難場所まで避難できる（同行避難が原則）。避難所にはペットの飼育スペースを作り、飼い主が責任をもって世話をする。",
+   "animals": null,
+   "no": null,
+   "size": "一緒に避難できる数には限りがある。キャリーに入らない大きなペットは車も考える（暑さに注意）。",
+   "cage": "キャリーやケージを用意し、入る練習をしておく。",
+   "rules": [
+    "フード・水・薬は最低5日分",
+    "犬は狂犬病の注射済票と鑑札を首輪に付ける",
+    "リードを外さない",
+    "親せき・ペットホテルなどの預け先も考える"
+   ],
+   "place": "人とペットは別の場所。避難所に決められたペットの場所がある。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "多摩市「災害時にはペットも一緒に避難しましょう！」",
+     "https://www.city.tama.lg.jp/kurashi/kankyo/pet/1002357.html"
+    ]
+   ],
+   "map": [
+    "多摩市「避難所一覧」",
+    "https://www.city.tama.lg.jp/kurashi/bousai/map/1001530.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "稲城市",
+   "kind": "city",
+   "policy": "市は、指定避難所へのペットの同行避難を受け入れる。人とペットが同じ場所で過ごす同伴避難はできない。",
+   "animals": "ケージやキャリーバッグに入る大きさの犬・猫・うさぎなどの小動物。",
+   "no": "狂犬病の予防注射を受けていない犬は、受け入れできないことがある。",
+   "size": "ケージやキャリーバッグに入る大きさ。",
+   "cage": "ペットはケージなどに入れて、決められた場所で飼う。",
+   "rules": [
+    "飼うのに必要なものは飼い主が用意する",
+    "世話は飼い主が自分でする（市の職員は手伝わない）",
+    "ふだんからしつけと健康管理をしておく"
+   ],
+   "place": "避難所の決められた場所。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": "yes",
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "稲城市「ペット同行避難」",
+     "https://www.city.inagi.tokyo.jp/kurashi/iza/1002270/1002334/1012066.html"
+    ]
+   ],
+   "map": [
+    "稲城市「避難所・避難場所一覧」",
+    "https://www.city.inagi.tokyo.jp/kurashi/iza/1002270/1002296/1011944/1011960.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "東京都",
+   "name": "羽村市",
+   "kind": "city",
+   "policy": "家で暮らせないときは、ペットと一緒に避難所へ行く「同行避難」をすすめている。原則として、避難所の室内など人と同じ場所では過ごせない。",
+   "animals": "家で飼われている犬・猫・小鳥・うさぎなどの小動物を想定。",
+   "no": "大型の動物や特定動物は、受け入れや管理がむずかしい場合がある。は虫類や魚類は温度の変化に弱く、避難所の環境はきびしいと考えられる。",
+   "size": null,
+   "cage": "ケージやキャリーバッグを必ず用意し、その中で過ごせるよう練習しておく。",
+   "rules": [
+    "避難所にペットの食べ物や用品はない",
+    "フードと水は少なくとも5日分（できれば7日分以上）、療法食・薬は最低7日分",
+    "犬鑑札・狂犬病予防注射済票・迷子札を付ける"
+   ],
+   "place": "専用の飼育場所。冷暖房のない場所や屋外（屋根のある軒下など）になると考えられる。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": "yes",
+    "bird": "yes",
+    "reptile": "hard",
+    "large": "hard"
+   },
+   "links": [
+    [
+     "羽村市「ペットの災害対策について」",
+     "https://www.city.hamura.tokyo.jp/0000020417.html"
+    ]
+   ],
+   "map": null,
+   "cage_req": false
+  },
+  {
+   "pref": "東京都",
+   "name": "西東京市",
+   "kind": "city",
+   "policy": "家で暮らせないときは、ペットを連れて同行避難できる。避難所での世話はすべて飼い主が責任をもってする。",
+   "animals": null,
+   "no": "必要なワクチンを受けていないと、避難所で飼えないことがある。",
+   "size": null,
+   "cage": "避難所ではケージが必要。",
+   "rules": [
+    "フードと水は少なくとも5日分（できれば7日分以上）",
+    "原則としてペット用の物資は配らない",
+    "ペットスペースの掃除・消毒に協力し、避難所のルールに従う"
+   ],
+   "place": "人の生活スペースとは別の専用スペース（盲導犬などの補助犬は一緒に過ごせる）。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "西東京市「災害時にペットを守るために」",
+     "https://www.city.nishitokyo.lg.jp/kurasi/iza/bosai/saigainisonaete/nishitokyocity20190215095612305.html"
+    ],
+    [
+     "西東京市「ペットの避難受入に関するガイドライン」（PDF）",
+     "https://www.city.nishitokyo.lg.jp/kurasi/iza/bosai/saigainisonaete/nishitokyocity20190215095612305.files/pettogaidorain.pdf"
+    ]
+   ],
+   "map": [
+    "西東京市「広域避難場所・避難広場・避難所・自主避難所・福祉避難所・一時滞在施設」",
+    "https://www.city.nishitokyo.lg.jp/kurasi/iza/bosai/hinanjo/hinanhiroba_sisetsu.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "神奈川県",
+   "name": "横須賀市",
+   "kind": "city",
+   "policy": "市内で震度5強以上の地震のあと自動で開く震災時避難所について、ガイドラインで決めている。同行避難は、ペットと一緒に安全な場所まで避難すること。避難所の中で人とペットが一緒に暮らすことは原則禁止（アレルギーや感染症のため）。",
+   "animals": "家で飼っている犬や猫などの小型の哺乳類と鳥類。",
+   "no": "環境省が定める特定動物（危険な動物）。は虫類・両生類・魚類・昆虫など、ヒーターやエアーポンプなどが必要な動物は受け入れできない。",
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": "yes",
+    "reptile": "no",
+    "large": null
+   },
+   "links": [
+    [
+     "横須賀市「震災時避難所におけるペット同行避難ガイドライン」",
+     "https://www.city.yokosuka.kanagawa.jp/0525/petdoukouhinan.html"
+    ],
+    [
+     "横須賀市「ペット同行避難ガイドライン」（PDF）",
+     "https://www.city.yokosuka.kanagawa.jp/0525/documents/pethinanguidelines.pdf"
+    ]
+   ],
+   "map": [
+    "横須賀市「避難場所（広域避難地・震災時避難所など）」",
+    "https://www.city.yokosuka.kanagawa.jp/0525/bousainavi/sonae/hinan/hinanbasyo.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "神奈川県",
+   "name": "平塚市",
+   "kind": "city",
+   "policy": "すべての指定避難所と指定緊急避難場所で、ペットと一緒に避難（同行避難）できる。災害の大きさや被害によって変わることがあるので、避難所の職員の指示に従う。",
+   "animals": null,
+   "no": null,
+   "size": "大きさの上限は書いていない。ケージに入らない大型犬などはリードにつなぐ。",
+   "cage": "必ずケージに入れる。ケージに入らない大型犬などは必ずリードにつないで避難する。",
+   "rules": [
+    "避難所にペットフードやペットシートの備えはない",
+    "フードと水は少なくとも5日分（できれば7日分以上）",
+    "犬は鑑札と注射済票を付ける",
+    "避難所ごとに決めたルールで飼う"
+   ],
+   "place": "飼育エリアなど決められた場所。基本は屋外（風水害のときは避難所ごとに違う）。飼い主と同じ場所では過ごせない。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "平塚市「ペットの防災対策」",
+     "https://www.city.hiratsuka.kanagawa.jp/bosai/page05_00081.html"
+    ]
+   ],
+   "map": [
+    "平塚市「指定避難所 ペット受入場所」（PDF）",
+    "https://www.city.hiratsuka.kanagawa.jp/common/200092068.pdf"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "神奈川県",
+   "name": "鎌倉市",
+   "kind": "city",
+   "policy": "災害時にペットの安全と健康を守り、動物が苦手な人やアレルギーのある人とも避難所で一緒に暮らせるよう、市の「ペット同行避難ガイドライン」（2024年3月）を作っている。くわしくはガイドライン（PDF）を見る。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "鎌倉市「鎌倉市ペット同行避難ガイドライン」",
+     "https://www.city.kamakura.kanagawa.jp/sougoubousai/20040315.html"
+    ],
+    [
+     "鎌倉市「ペット同行避難ガイドライン」（2024年3月、PDF）",
+     "https://www.city.kamakura.kanagawa.jp/sougoubousai/documents/060315petguideline.pdf"
+    ]
+   ],
+   "map": [
+    "鎌倉市「災害時の避難場所について」",
+    "https://www.city.kamakura.kanagawa.jp/sougoubousai/hinanbasho.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "神奈川県",
+   "name": "藤沢市",
+   "kind": "city",
+   "policy": "同行避難には、避難するかの判断と、ペットと安全に避難してまわりに迷惑をかけずに過ごすための、ふだんからの備えが必要。ペット用の避難スペースは施設ごとにあり、受け入れる数には限りがある。",
+   "animals": null,
+   "no": null,
+   "size": "受け入れる頭数に限りがある。",
+   "cage": "避難所にケージはないので、各自で持っていく。",
+   "rules": [
+    "フード・水・食器は5日分",
+    "伸びないリード・首輪の予備、ペットシーツなどを用意する",
+    "犬は年1回の狂犬病の予防注射"
+   ],
+   "place": "施設ごとのペット用避難スペース。屋外の場合もある。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "藤沢市「ペットの防災について」",
+     "https://www.city.fujisawa.kanagawa.jp/seiei/pet_bousai.html"
+    ],
+    [
+     "藤沢市「避難所運営マニュアル（ペット対策編）」（PDF）",
+     "https://www.city.fujisawa.kanagawa.jp/documents/8903/pettokainushipdf.pdf"
+    ]
+   ],
+   "map": [
+    "藤沢市「避難先一覧」（ペット用避難スペースの有無つき、PDF）",
+    "https://www.city.fujisawa.kanagawa.jp/documents/20769/20260630100444.pdf"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "神奈川県",
+   "name": "小田原市",
+   "kind": "city",
+   "policy": "市は小田原獣医師会と「災害時の動物救護活動に関する協定」を結び、避難所での動物の健康相談・指導・助言などを受けられるようにしている。避難所での受け入れのしかたはこのページには書いていない。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "小田原市「小田原獣医師会と『災害時の動物救護活動に関する協定』を締結しました」",
+     "https://www.city.odawara.kanagawa.jp/field/envi/pet-wildlife/pet/ki-20170077.html"
+    ]
+   ],
+   "map": null,
+   "cage_req": false
+  },
+  {
+   "pref": "神奈川県",
+   "name": "茅ヶ崎市",
+   "kind": "city",
+   "policy": "犬・猫などのペットは、鳴き声・におい・アレルギーなどのため居住スペースには入れない。受け入れるか、どこに置くかは各避難所が決める（市のページに避難所ごとの場所の一覧がある）。",
+   "animals": null,
+   "no": null,
+   "size": "避難所によって、小型犬と大型犬で場所を分けている。",
+   "cage": "どの避難所にもペットのケージやフードの備えはないので、飼い主が持っていく。ケージの持参を求める避難所もある。",
+   "rules": [
+    "えさやりとふんの片付けは飼い主がする",
+    "リードを必ず付ける（避難所によって）",
+    "避難所の職員の指示に従う"
+   ],
+   "place": "避難所ごとに違う（飼育小屋・更衣室・屋外・空き教室など）。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "茅ヶ崎市「避難所でのペットの受け入れについて」",
+     "https://www.city.chigasaki.kanagawa.jp/kankyo/pet/1003488/1027538.html"
+    ],
+    [
+     "茅ヶ崎市「ペットの防災ガイドライン」（2023年4月改訂、PDF）",
+     "https://www.city.chigasaki.kanagawa.jp/_res/projects/default_project/_page_/001/027/538/gaidorainnr5.pdf"
+    ]
+   ],
+   "map": [
+    "茅ヶ崎市「避難所でのペットの受け入れについて」",
+    "https://www.city.chigasaki.kanagawa.jp/kankyo/pet/1003488/1027538.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "神奈川県",
+   "name": "逗子市",
+   "kind": "city",
+   "policy": "同行避難が円滑に進むよう、市の「災害時におけるペット同行避難に関するガイドライン」を作っている。ペットを受け入れられる指定避難所には、飼い主同士で飼育場所を作れる「ペットスターターキット」を置いている。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [
+    "動物が苦手な人やアレルギーのある人に配慮する",
+    "キットには設営マニュアル・利用ルール・受付用紙・ブルーシートなどが入っている"
+   ],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "逗子市「災害とペット（災害時におけるペット同行避難に関するガイドライン）」",
+     "https://www.city.zushi.kanagawa.jp/kurashi/bosai/1001502/1001521/1011727.html"
+    ],
+    [
+     "逗子市「災害時におけるペット同行避難に関するガイドライン」（2025年9月改訂、PDF）",
+     "https://www.city.zushi.kanagawa.jp/_res/projects/default_project/_page_/001/011/727/1.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false
+  },
+  {
+   "pref": "神奈川県",
+   "name": "厚木市",
+   "kind": "city",
+   "policy": "災害時に避難するときは、ペットを連れて避難する「同行避難」が原則。人とペットは別の場所で過ごす。",
+   "animals": "犬・猫・小動物。",
+   "no": null,
+   "size": null,
+   "cage": "ケージやキャリーバッグなどを必ず持っていく（ないと受け入れできないことがある）。",
+   "rules": [
+    "フードと水は7日分以上が目安",
+    "犬は狂犬病の予防注射を受け、鑑札・迷子札・マイクロチップを付ける",
+    "ペットの場所は飼い主が掃除し、ごみは持ち帰る"
+   ],
+   "place": "避難所の中の決められた場所（飼い主とは別）。場所は限られている。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "厚木市「ペットの防災について」",
+     "https://www.city.atsugi.kanagawa.jp/soshiki/seikatsukankyoka/5/2/37676.html"
+    ]
+   ],
+   "map": [
+    "厚木市「市内広域・指定避難所」",
+    "https://www.city.atsugi.kanagawa.jp/soshiki/kikikanrika/7/7/20213.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "神奈川県",
+   "name": "大和市",
+   "kind": "city",
+   "policy": "ペットと一緒に避難する同行避難が必要としている。避難するときは、基本的にペットをケージに入れ、フードや衛生用品も持っていく。犬や猫以外のペットの同行避難もさまたげない。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "基本的にケージに入れて避難する。ケージやキャリーバッグに慣らしておく。",
+   "rules": [
+    "フード・水・衛生用品は少なくとも5日分（できれば7日分以上）",
+    "飼育管理は飼い主の責任。飼い主同士で協力する",
+    "自主防災会などの指示に従う"
+   ],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "大和市「ペットの防災(同行避難)」",
+     "https://www.city.yamato.lg.jp/gyosei/soshik/27/bosai_anzenanshin/saigainisonaete/6540.html"
+    ]
+   ],
+   "map": [
+    "大和市「地域の避難先（一時避難場所、広域避難場所、避難生活施設）」",
+    "https://www.city.yamato.lg.jp/gyosei/soshik/27/bosai_anzenanshin/hinansuru/5854.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "神奈川県",
+   "name": "海老名市",
+   "kind": "city",
+   "policy": "開く避難所すべてでペットを受け入れる。逃げおくれを防ぐため、市の「ペット同行避難ガイドライン」で受け入れの条件を決めている。安全な場所なら、親せきの家や車中泊もよい。",
+   "animals": "犬・猫・小動物で、飼い主の責任で飼えるもの。",
+   "no": "環境省が定める特定動物（危険な動物）。は虫類・魚類など、ヒーターやエアーポンプなどが必要な動物。",
+   "size": null,
+   "cage": "ケージの中で暮らせること。ケージに入らない場合はリードでつなげること。",
+   "rules": [
+    "犬は鑑札と狂犬病予防注射済票を付ける（注射を受けられない犬は猶予証明書）",
+    "避難所にペット用品の備えはない。フード・水・トイレ用品を用意する",
+    "ペット専用スペースで飼い主の責任で管理する"
+   ],
+   "place": "ペット専用スペース。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": null,
+    "reptile": "no",
+    "large": null
+   },
+   "links": [
+    [
+     "海老名市「ペット同行避難ガイドライン ~災害に備えた飼い主の心得～」",
+     "https://www.city.ebina.kanagawa.jp/guide/kurashi/pet/1013467.html"
+    ],
+    [
+     "海老名市「開設する全避難所でペットの受入れを開始します」",
+     "https://www.city.ebina.kanagawa.jp/guide/kyukyu/bousai/1013484.html"
+    ]
+   ],
+   "map": null,
+   "cage_req": false
+  },
+  {
+   "pref": "神奈川県",
+   "name": "座間市",
+   "kind": "city",
+   "policy": "地域防災計画で、避難所でペットを受け入れる3つの条件を決めている。条件が1つでもそろわないと受け入れできない。",
+   "animals": "犬・猫・小動物で、飼い主の責任で飼えるもの。",
+   "no": "環境省が定める特定動物（危険な動物）、は虫類・魚類など特別な設備が必要な動物。",
+   "size": null,
+   "cage": "ケージを持っていくこと（条件の1つ）。",
+   "rules": [
+    "犬は首輪に鑑札と狂犬病予防注射済票を付ける（条件）",
+    "エサと水を用意できること（条件）。エサは最低3日分",
+    "ケージに慣らし、むだぼえしないようにしつける"
+   ],
+   "place": "屋外。雨風をよけるシートなどがあると役立つ。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": null,
+    "bird": null,
+    "reptile": "no",
+    "large": null
+   },
+   "links": [
+    [
+     "座間市「ペットの災害時への備えは大丈夫ですか」",
+     "https://www.city.zama.kanagawa.jp/kurashi/doubutsu/pet/1002511.html"
+    ]
+   ],
+   "map": [
+    "座間市「広域避難場所・一次避難所・二次避難所・地域避難所一覧」",
+    "https://www.city.zama.kanagawa.jp/kurashi/bousai/hinanjo/1001651.html"
+   ],
+   "cage_req": true
+  },
+  {
+   "pref": "神奈川県",
+   "name": "南足柄市",
+   "kind": "city",
+   "policy": "家族とペットが一緒に安全に避難できるよう、ふだんから備える。同行避難の手順とルールは、小田原獣医師会と作った「避難所におけるペット対応マニュアル」（2020年7月）にまとめている。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "キャリーバッグやケージを用意し、入ることに慣らしておく。",
+   "rules": [
+    "フード・水・療法食・薬は少なくとも5日分（できれば7日分以上）",
+    "犬は鑑札と注射済票を付ける",
+    "動物が苦手な人に迷惑をかけないようにする"
+   ],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "南足柄市「ペットの災害対策について」",
+     "https://www.city.minamiashigara.kanagawa.jp/kurashi/gomi/pet/p05846.html"
+    ],
+    [
+     "南足柄市「避難所におけるペット対応マニュアル」（PDF）",
+     "https://www.city.minamiashigara.kanagawa.jp/global-image/units/172629/1-20240222105754.pdf"
+    ]
+   ],
+   "map": [
+    "南足柄市「指定避難所・一時避難場所」",
+    "https://www.city.minamiashigara.kanagawa.jp/kurashi/bouan/boutai/hassei/shitei_hinanbasho.html"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "青森県",
+   "name": "青森県",
+   "kind": "pref",
+   "policy": "災害への備えをお願いしている。くわしくは県の動物愛護センターのページで案内している。県は、市町村ごとの同伴避難ができる避難所・受け入れるペット・飼う場所をまとめた一覧（2024年9月現在）を出している。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "青森県「災害の備え・同行避難」",
+     "https://www.pref.aomori.lg.jp/soshiki/kenko/dobutu/saigai.html"
+    ]
+   ],
+   "map": [
+    "青森県「市町村の同伴避難可能な避難所」（2024年9月現在、PDF）",
+    "https://www.pref.aomori.lg.jp/soshiki/kenko/hoken/files/zentair6.pdf"
+   ],
+   "cage_req": false
+  },
+  {
+   "pref": "福島県",
+   "name": "福島県",
+   "kind": "pref",
+   "policy": "災害は突然おこり、ペットを守れるのは飼い主だけ。猫と同行避難ができるよう、前もって備えておく。いざというときに預かってくれる場所も決めておく。",
+   "animals": "このページは猫についての案内。",
+   "no": null,
+   "size": null,
+   "cage": "ケージに慣らしておく。ケージは備えの品に入れる。",
+   "rules": [
+    "えさと水は5日分",
+    "ペット用の備えは1つにまとめて、すぐ持ち出せるように",
+    "迷子札付きの首輪とマイクロチップで身元を分かるように",
+    "ワクチンの記録がある健康手帳と写真も用意"
+   ],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "福島県「猫の3ない運動と防災対策」",
+     "https://www.pref.fukushima.lg.jp/sec/21045e/leaflet.html"
+    ],
+    [
+     "福島県「猫の3ない運動と防災対策」チラシ（PDF）",
+     "https://www.pref.fukushima.lg.jp/uploaded/attachment/741664.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false
   }
+ ],
+ "none": [
+  [
+   "東京都",
+   "台東区",
+   "公式サイトにペットと避難のページが見つからない"
+  ],
+  [
+   "東京都",
+   "立川市",
+   "公式サイトにペットと避難のページが見つからない"
+  ],
+  [
+   "東京都",
+   "昭島市",
+   "公式サイトにペットと避難のページが見つからない"
+  ],
+  [
+   "東京都",
+   "東村山市",
+   "公式サイトにペットと避難のページが見つからない"
+  ],
+  [
+   "東京都",
+   "国立市",
+   "公式サイトにペットと避難のページが見つからない"
+  ],
+  [
+   "東京都",
+   "東大和市",
+   "公式サイトにペットと避難のページが見つからない"
+  ],
+  [
+   "東京都",
+   "あきる野市",
+   "公式サイトにペットと避難のページが見つからない"
+  ],
+  [
+   "神奈川県",
+   "三浦市",
+   "公式サイトにペットと避難のページが見つからない"
+  ],
+  [
+   "神奈川県",
+   "秦野市",
+   "公式サイトにペットと避難のページが見つからない"
+  ],
+  [
+   "神奈川県",
+   "伊勢原市",
+   "公式サイトにペットと避難のページが見つからない"
+  ],
+  [
+   "京都府",
+   "京都府",
+   "府のページは環境省のチラシへのリンクだけで、府としての案内が見つからない"
+  ],
+  [
+   "宮城県",
+   "宮城県",
+   "公式サイトにペットと避難のページが見つからない"
+  ],
+  [
+   "沖縄県",
+   "沖縄県",
+   "公式サイトにペットと避難のページが見つからない"
+  ],
+  [
+   "秋田県",
+   "秋田県",
+   "公式サイトにペットと避難のページが見つからない"
+  ]
  ]
 }
