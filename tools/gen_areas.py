@@ -2357,6 +2357,16 @@ urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{
 urls += [SITE + c["path"] for c in CITIES]
 # [B] 検索に出さないページ（tools/noindex.json。Nori 2026-11-13「全部やって」）。サイトマップから外し、最後に noindex,follow を入れる。
 NOINDEX = json.load(open(os.path.join(ROOT, "tools", "noindex.json"), encoding="utf-8"))["pages"]
+# [B] 薄いページは中身が足りるまで検索に出さない（tools/thin_gate.py。Nori 2026-11-14「じゃあそうしてよ」）。
+# 毎回数え直すので、中身を足して基準を超えたページは次の実行で自動で検索に戻る。数えた結果は tools/thin_auto.json。
+import thin_gate
+_THIN, _THIN_ALL = thin_gate.thin(ROOT, [u[len(SITE):] for u in urls])
+NOINDEX = dict(NOINDEX)
+for _p, _c in _THIN.items(): NOINDEX.setdefault(_p, f"そのページだけの字数が {_c} 字（{thin_gate.MIN_CHARS} 字に足りない。tools/thin_gate.py）")
+open(os.path.join(ROOT, "tools", "thin_auto.json"), "w", encoding="utf-8").write(json.dumps(
+  {"_note": "gen_areas.py が毎回作る。薄くて検索に出していないページと字数（tools/thin_gate.py）。手で直さない", "min_chars": thin_gate.MIN_CHARS,
+   "pages": dict(sorted(_THIN.items()))}, ensure_ascii=False, indent=1) + "\n")
+print("thin", len(_THIN), "pages noindex")
 def _keep(u): return u[len(SITE):] not in NOINDEX
 urls = [u for u in urls if _keep(u)]
 guide_modified = {f'{SITE}/guide/{g["slug"]}/': g.get("modified", TODAY) for g in GUIDES}

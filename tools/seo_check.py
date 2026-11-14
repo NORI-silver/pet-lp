@@ -65,6 +65,20 @@ def main():
         if not rel.startswith(TEL_OK):
             if p.tel: ng.append(f"{u}: 電話リンク {p.tel[:2]}")
             if PHONE.search(body): ng.append(f"{u}: 電話番号らしき文字 {PHONE.search(body).group()}")
+    # 薄いページを検索に出さない（tools/thin_gate.py。Nori 2026-11-14）。サイトマップにある情報ページは、そのページだけの字数が基準を超えているか、
+    # thin_keep.json に理由つきで入っていること。gen_areas.py を通せば自動で外れるので、ここで止まるのは手で作ったページかサイトマップの直し忘れ
+    sys.path.insert(0, os.path.join(ROOT, "tools"))
+    import thin_gate
+    _paths = [u.replace(SITE, "") or "/" for u in locs]
+    _n = thin_gate.measure(ROOT, _paths)
+    _keep = thin_gate.keep_list(ROOT)
+    for _p, _c in _n.items():
+        if thin_gate.target(_p) and _p not in _keep and _c < thin_gate.MIN_CHARS * 0.9:  # 作るときと数える時点が少し違うので1割の幅
+            ng.append(f"{SITE}{_p}: そのページだけの字数が {_c} 字で薄いのにサイトマップにある（tools/thin_gate.py）")
+    # 薄いページは作らない（Nori 2026-11-14「そもそも薄い記事作らないで」）。noindex でも、新しい薄いページがあれば止める。
+    # 中身を足して基準を超えるか、作らない（生成のスクリプトで条件を満たすページだけ作る）。thin_baseline.json に足して逃げない。
+    for _p, _c in thin_gate.new_thin(ROOT).items():
+        ng.append(f"{SITE}{_p}: 新しい薄いページ（そのページだけの字数 {_c} 字・{thin_gate.MIN_CHARS} 字が基準）。作らないか、中身を足す（tools/thin_gate.py）")
     for t, us in titles.items():
         if t and len(us) > 1: ng.append(f"title が重複「{t}」: {', '.join(us)}")
     for w in warn: print("注意:", w)
