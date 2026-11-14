@@ -199,6 +199,30 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
     <div class="answer"><h2 id="answer">岡山県のペットと避難のポイント</h2><p>災害のときはペットと一緒に安全に避難所まで逃げる「同行避難」をすすめている。同行避難は避難所でペットと同じ部屋で過ごすことではない。県は市町村向けの指針で、ペットを理由に避難所への入場を断ったり、来るのをためらわせたりしないよう求めている。</p></div>
+    <style>
+.hn-find{background:#fff;border:2px solid var(--accent,#e8590c);border-radius:18px;padding:14px 16px;margin:12px 0 18px}
+.hn-find h2{font-size:1.05rem;margin:0 0 8px}
+.hn-find .row{display:flex;flex-wrap:wrap;gap:8px}
+.hn-find select{flex:1 1 140px;min-width:0;font-size:1rem;padding:10px;border:1.5px solid var(--line);border-radius:12px;background:#fff}
+.hn-find .out{margin-top:10px;line-height:1.8;font-size:.95rem}
+.hn-find .out a{font-weight:700}
+</style><div class="hn-find" id="find"><h2>お住まいの市区町村の決まりをさがす</h2>
+<p style="margin:0 0 8px;font-size:.9rem">全国の市区町村から、当サイトでまとめた決まりか、市区町村の公式サイトへご案内します。</p>
+<div class="row"><select id="hnP" aria-label="都道府県"><option value="">都道府県をえらぶ</option><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option><option>東京都</option><option>神奈川県</option><option>埼玉県</option><option>千葉県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option><option selected>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option></select>
+<select id="hnM" aria-label="市区町村" disabled><option value="">市区町村をえらぶ</option></select></div>
+<div class="out" id="hnO" aria-live="polite"></div></div>
+<script>(function(){var P=document.getElementById('hnP'),M=document.getElementById('hnM'),O=document.getElementById('hnO'),D=null;
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function fill(){M.innerHTML='<option value="">市区町村をえらぶ</option>';O.innerHTML='';var L=D&&D[P.value]||[];L.forEach(function(r,i){var o=document.createElement('option');o.value=i;o.textContent=r[0];M.appendChild(o)});M.disabled=!L.length}
+function load(cb){if(D)return cb();fetch('/hinan/munis.json').then(function(r){return r.json()}).then(function(j){D=j;cb()}).catch(function(){O.textContent='読み込めませんでした。時間をおいてお試しください。'})}
+P.addEventListener('change',function(){load(fill)});if(P.value)load(fill);
+M.addEventListener('change',function(){var r=(D[P.value]||[])[M.value];if(!r){O.innerHTML='';return}var n=esc(r[0]),top=r[3]?'<a href="'+esc(r[3])+'" target="_blank" rel="noopener">'+n+'の公式サイト ↗</a>':'',h='';
+if(r[1]=='page')h='<a href="'+esc(r[2])+'">'+n+'のペットと避難の決まりを見る</a>';
+else if(r[1]=='card')h='<a href="'+esc(r[2])+'">'+n+'の決まり（'+esc(P.value)+'のページの中）を見る</a>';
+else if(r[1]=='link')h=n+'の公式ページ：<a href="'+esc(r[2])+'" target="_blank" rel="noopener">'+esc(r[4]||'ペットと避難')+' ↗</a>';
+else if(r[1]=='none')h=n+'の公式サイトには、ペットと避難について書いたページが見つかりませんでした。'+top+'の防災のページか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
+else h=n+'は、まだ当サイトで確かめていません。'+top+'で「ペット 避難」とさがすか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
+O.innerHTML=h;try{gtag('event','hinan_find',{pref:P.value,status:r[1]})}catch(e){}})})();</script>
     <h2 id="city">市区町村ごとのページ</h2><ul class="hn-pref"><li><a href="/hinan/okayama/okayama-shi/">岡山市</a></li></ul>
     <p class="hn-none">倉敷市・津山市・玉野市・笠岡市・井原市・総社市・高梁市・新見市・備前市・瀬戸内市・赤磐市・真庭市・美作市・浅口市・和気町・早島町・里庄町・矢掛町・新庄村・鏡野町・勝央町・奈義町・西粟倉村・久米南町・美咲町・吉備中央町は、まだ確かめていません。順に足していきます。</p>
     <h2 id="table">受け入れる動物とケージ（自治体ごと）</h2>
@@ -217,7 +241,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
     <div class="sh"><h2>くわしい記事</h2><p>同行避難と同伴避難のちがい、持ち出し品のリストなど。</p></div>
     <ul class="other"><li><a href="/guide/pet-evacuation/">ペットと避難するとき：同行避難と同伴避難のちがい・避難所の決まり</a></li><li><a href="/guide/pet-disaster-prep/">ペットの防災：持ち出し品リストと日ごろの備え</a></li></ul>
     <div class="sh"><h2>ほかの都道府県</h2><p>ほかの都道府県の決まりも、公式ページからまとめています。</p></div>
-    <ul class="hn-pref"><li><a href="/hinan/hokkaido/">北海道</a></li><li><a href="/hinan/iwate/">岩手県</a></li><li><a href="/hinan/akita/">秋田県</a></li><li><a href="/hinan/yamagata/">山形県</a></li><li><a href="/hinan/fukushima/">福島県</a></li><li><a href="/hinan/tokyo/">東京都</a></li><li><a href="/hinan/kanagawa/">神奈川県</a></li><li><a href="/hinan/saitama/">埼玉県</a></li><li><a href="/hinan/chiba/">千葉県</a></li><li><a href="/hinan/ibaraki/">茨城県</a></li><li><a href="/hinan/gunma/">群馬県</a></li><li><a href="/hinan/niigata/">新潟県</a></li><li><a href="/hinan/toyama/">富山県</a></li><li><a href="/hinan/ishikawa/">石川県</a></li><li><a href="/hinan/nagano/">長野県</a></li><li><a href="/hinan/gifu/">岐阜県</a></li><li><a href="/hinan/shizuoka/">静岡県</a></li><li><a href="/hinan/aichi/">愛知県</a></li><li><a href="/hinan/kyoto/">京都府</a></li><li><a href="/hinan/osaka/">大阪府</a></li><li><a href="/hinan/hyogo/">兵庫県</a></li><li><a href="/hinan/nara/">奈良県</a></li><li><a href="/hinan/wakayama/">和歌山県</a></li><li><a href="/hinan/okayama/" aria-current="page">岡山県</a></li><li><a href="/hinan/hiroshima/">広島県</a></li><li><a href="/hinan/fukuoka/">福岡県</a></li><li><a href="/hinan/kumamoto/">熊本県</a></li></ul>
+    <ul class="hn-pref"><li><a href="/hinan/hokkaido/">北海道</a></li><li><a href="/hinan/yamagata/">山形県</a></li><li><a href="/hinan/fukushima/">福島県</a></li><li><a href="/hinan/tokyo/">東京都</a></li><li><a href="/hinan/kanagawa/">神奈川県</a></li><li><a href="/hinan/saitama/">埼玉県</a></li><li><a href="/hinan/chiba/">千葉県</a></li><li><a href="/hinan/ibaraki/">茨城県</a></li><li><a href="/hinan/niigata/">新潟県</a></li><li><a href="/hinan/toyama/">富山県</a></li><li><a href="/hinan/nagano/">長野県</a></li><li><a href="/hinan/shizuoka/">静岡県</a></li><li><a href="/hinan/osaka/">大阪府</a></li><li><a href="/hinan/hyogo/">兵庫県</a></li><li><a href="/hinan/nara/">奈良県</a></li><li><a href="/hinan/wakayama/">和歌山県</a></li><li><a href="/hinan/okayama/" aria-current="page">岡山県</a></li><li><a href="/hinan/hiroshima/">広島県</a></li><li><a href="/hinan/fukuoka/">福岡県</a></li><li><a href="/hinan/kumamoto/">熊本県</a></li></ul>
     <ul class="other"><li><a href="/hinan/">ペットと避難するとき（全国の一覧）</a></li><li><a href="/jichitai/">ペットの迷子・犬の登録・引取りの窓口</a></li><li><a href="/guide/lost-pet/">ペットが迷子になったら</a></li></ul>
   </div>
 </section>

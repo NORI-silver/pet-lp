@@ -9,7 +9,9 @@ const MAX_GZ=60*1024, MAX_INLINE=24*1024, MAX_JS=24*1024;
 let pages=0, big=[0,''];
 function walk(d){ for(const f of fs.readdirSync(d,{withFileTypes:true})){ const p=path.join(d,f.name); if(f.isDirectory()) walk(p); else if(f.name==='index.html') check(p); } }
 function check(p){
-  const h=fs.readFileSync(p,'utf8'); pages++;
+  const h=fs.readFileSync(p,'utf8');
+  if(/http-equiv="refresh"/.test(h)) return;  // 県のページへ移した病院の案内（tools/thin_hosp.py）
+  pages++;
   const gz=zlib.gzipSync(h,{level:9}).length; if(gz>big[0]) big=[gz,p];
   assert.ok(gz<=MAX_GZ, p+' is '+gz+' bytes gzipped (limit '+MAX_GZ+'): link to prefecture pages instead of listing everything');
   for(const m of h.matchAll(/<script[^>]*\ssrc="([^"]+)"/g)) assert.ok(ALLOW.has(m[1]), p+' loads '+m[1]+' (info pages must not load the top page scripts)');
