@@ -1830,6 +1830,2594 @@
    "note": "所在地は市までしか公式トップに書いていない。必要なもの（ワクチン証明など）は利用規約のページを未確認",
    "ok": true,
    "id": "i70a363"
+  },
+  {
+   "name": "下田プリンスホテル",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "下田市",
+   "url": "https://www.princehotels.co.jp/pet/shimoda/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県下田市白浜1547-1",
+     "src": "https://www.princehotels.co.jp/pet/shimoda/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬・大型犬。超大型犬は不可（おおむね体重40kg未満）",
+     "src": "https://www.princehotels.co.jp/pet/shimoda/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室あたり大型犬・中型犬2頭／小型犬4頭まで",
+     "src": "https://www.princehotels.co.jp/pet/shimoda/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室・ドッグラン・ホテル前のビーチ・カフェ「Two Tail's」（犬用メニューあり）",
+     "src": "https://www.princehotels.co.jp/pet/shimoda/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "天然芝の2つ：小型犬専用 280㎡、大型・中型・小型犬共通 233㎡",
+     "src": "https://www.princehotels.co.jp/pet/shimoda/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "オーシャンビューツイン（約35.6㎡・3名まで）、オーシャンビュースイート（約61㎡・4名まで）",
+     "src": "https://www.princehotels.co.jp/pet/shimoda/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の狂犬病ワクチン・混合ワクチンの接種証明書、予約後に滞在同意書",
+     "src": "https://www.princehotels.co.jp/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時、チェックアウト 11時",
+     "src": "https://www.princehotels.co.jp/pet/shimoda/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i4e112d"
+  },
+  {
+   "name": "伊豆長岡温泉 三養荘",
+   "kind": "旅館",
+   "pref": "静岡県",
+   "city": "伊豆の国市",
+   "url": "https://www.princehotels.co.jp/pet/sanyo-so/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊豆の国市ままの上270",
+     "src": "https://www.princehotels.co.jp/pet/sanyo-so/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（おおむね体重10kg未満）。中型犬は△、大型犬・超大型犬は不可",
+     "src": "https://www.princehotels.co.jp/pet/sanyo-so/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.princehotels.co.jp/pet/sanyo-so/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室（専用の坪庭・客室の温泉）。インルームダイニング可。お食事処・ラウンジは不可",
+     "src": "https://www.princehotels.co.jp/pet/sanyo-so/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ドッグランはなし。専用の坪庭ではノーリードで遊べる",
+     "src": "https://www.princehotels.co.jp/pet/sanyo-so/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "離れ「藤裏葉〜和んず Hanare〜」（76㎡以上、専用坪庭・客室温泉つき）",
+     "src": "https://www.princehotels.co.jp/pet/sanyo-so/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の狂犬病ワクチン・混合ワクチンの接種証明書、予約後に滞在同意書",
+     "src": "https://www.princehotels.co.jp/pet/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i6084f1"
+  },
+  {
+   "name": "嬬恋プリンスホテル",
+   "kind": "ホテル",
+   "pref": "群馬県",
+   "city": "吾妻郡嬬恋村",
+   "url": "https://www.princehotels.co.jp/pet/tsumagoi/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "群馬県吾妻郡嬬恋村嬬恋高原",
+     "src": "https://www.princehotels.co.jp/pet/tsumagoi/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（おおむね体重10kg未満）。中型犬は△、大型犬・超大型犬は不可",
+     "src": "https://www.princehotels.co.jp/pet/tsumagoi/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.princehotels.co.jp/pet/tsumagoi/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室・宿泊者専用ドッグラン・玄関のシャワーつき足洗い場。ホテルのレストランは不可。部屋に残すときは鍵をかけたケージに",
+     "src": "https://www.princehotels.co.jp/pet/tsumagoi/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "グラスガーデンの芝生のドッグラン（宿泊者専用、ノーリード可）",
+     "src": "https://www.princehotels.co.jp/pet/tsumagoi/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリールーム（約38.7㎡・1〜4名）",
+     "src": "https://www.princehotels.co.jp/pet/tsumagoi/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の狂犬病ワクチン・混合ワクチンの接種証明書、予約後に滞在同意書",
+     "src": "https://www.princehotels.co.jp/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時、チェックアウト 11時",
+     "src": "https://www.princehotels.co.jp/pet/tsumagoi/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i659d5c"
+  },
+  {
+   "name": "グランドプリンスホテル新高輪",
+   "kind": "ホテル",
+   "pref": "東京都",
+   "city": "港区",
+   "url": "https://www.princehotels.co.jp/pet/shintakanawa/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "東京都港区高輪3-13-1",
+     "src": "https://www.princehotels.co.jp/pet/shintakanawa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（おおむね体重10kg未満）。中型犬は△、大型犬・超大型犬は不可",
+     "src": "https://www.princehotels.co.jp/pet/shintakanawa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://www.princehotels.co.jp/pet/shintakanawa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドッグフレンドリールームと「PET-SPA 高輪店」（屋内ドッグラン・ドッグクローク、予約制）。レストランは不可、インルームダイニングなし",
+     "src": "https://www.princehotels.co.jp/pet/shintakanawa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "PET-SPA 高輪店の屋内ドッグラン",
+     "src": "https://www.princehotels.co.jp/pet/shintakanawa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ツイン（約29.9㎡・2名まで）、トリプル（約37.8㎡・3名まで）",
+     "src": "https://www.princehotels.co.jp/pet/shintakanawa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の狂犬病ワクチン・混合ワクチンの接種証明書、予約後に滞在同意書",
+     "src": "https://www.princehotels.co.jp/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時、チェックアウト 11時",
+     "src": "https://www.princehotels.co.jp/pet/shintakanawa/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ice451a"
+  },
+  {
+   "name": "グランドプリンスホテル広島",
+   "kind": "ホテル",
+   "pref": "広島県",
+   "city": "広島市南区",
+   "url": "https://www.princehotels.co.jp/pet/hiroshima",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "広島県広島市南区元宇品町23-1",
+     "src": "https://www.princehotels.co.jp/pet/hiroshima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（おおむね体重10kg未満）",
+     "src": "https://www.princehotels.co.jp/pet/hiroshima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1頭まで",
+     "src": "https://www.princehotels.co.jp/pet/hiroshima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室（靴を脱いで過ごせる）。ホテルのレストランは不可。犬だけを部屋に残しての外出は控える",
+     "src": "https://www.princehotels.co.jp/pet/hiroshima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリールーム ツイン（約53㎡・3名まで）",
+     "src": "https://www.princehotels.co.jp/pet/hiroshima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の狂犬病ワクチン・混合ワクチンの接種証明書、予約後に滞在同意書",
+     "src": "https://www.princehotels.co.jp/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 14時、チェックアウト 11時",
+     "src": "https://www.princehotels.co.jp/pet/hiroshima",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "if83aa3"
+  },
+  {
+   "name": "リゾナーレ那須",
+   "kind": "ホテル",
+   "pref": "栃木県",
+   "city": "那須郡那須町",
+   "url": "https://hoshinoresorts.com/ja/hotels/risonarenasu/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須郡那須町高久乙道下2301",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonarenasu/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬のみ",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonarenasu/sp/nasu-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "愛犬ルームは1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonarenasu/sp/nasu-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "犬1頭につき（大きさ問わず）1泊5,093円（税込）",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonarenasu/sp/nasu-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済証または注射済票、混合ワクチン予防接種証明書（または抗体検査結果証明書）のコピー",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonarenasu/sp/nasu-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "愛犬ルーム、メインダイニング「OTTO SETTE NASU」の夕食（キャリーケース持参時のみ）、屋外（リード着用）。ビュッフェレストラン・食品を扱う施設・温泉施設は不可",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonarenasu/sp/nasu-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "スタンダードツイン 愛犬ルーム（愛犬同伴の客専用）",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonarenasu/sp/nasu-petroom/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i895222"
+  },
+  {
+   "name": "リゾナーレ八ヶ岳",
+   "kind": "ホテル",
+   "pref": "山梨県",
+   "city": "北杜市",
+   "url": "https://hoshinoresorts.com/ja/hotels/risonareyatsugatake/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県北杜市小淵沢町129-1",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareyatsugatake/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大きさは問わない。基本的なしつけ（噛まない、無駄吠えしない、飛びつかない）ができている犬",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareyatsugatake/sp/yatsugatake-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "愛犬ルーム1室に2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareyatsugatake/sp/yatsugatake-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "犬1頭につき（大きさ問わず）1泊5,093円（税込）",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareyatsugatake/sp/yatsugatake-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済証または注射済票、混合ワクチン予防接種証明書（または抗体検査結果証明書）のコピー",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareyatsugatake/sp/yatsugatake-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "愛犬ルーム、レストラン「YYgrill」（朝・夕）と「OTTO SETTE」（夕）の決まった席、屋外（リード着用）。食品を扱う店・プール・もくもく湯は不可",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareyatsugatake/sp/yatsugatake-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルームテラス付（約70㎡、専用テラスつき）",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareyatsugatake/sp/yatsugatake-petroom/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ic9bee3"
+  },
+  {
+   "name": "リゾナーレ熱海",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "熱海市",
+   "url": "https://hoshinoresorts.com/ja/hotels/risonareatami/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県熱海市水口町2-13-1",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareatami/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬のみ",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareatami/sp/atami-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareatami/sp/atami-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "犬1頭につき（大きさ問わず）1泊5,093円（税込）",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareatami/sp/atami-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済証または注射済票、混合ワクチン予防接種証明書（または抗体検査結果証明書）のコピー",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareatami/sp/atami-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "コーナーテラス 愛犬ルーム、和食ダイニング「花火」の夕食（席数限定・ケージ必須）、共用スペースはケージで。温泉・ソラノビーチ Books&Cafe・ショップ・プール・土足禁止のところは不可",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareatami/sp/atami-petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "コーナーテラス 愛犬ルーム",
+     "src": "https://hoshinoresorts.com/ja/hotels/risonareatami/sp/atami-petroom/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i4fb3be"
+  },
+  {
+   "name": "星のや軽井沢",
+   "kind": "旅館",
+   "pref": "長野県",
+   "city": "北佐久郡軽井沢町",
+   "url": "https://hoshinoresorts.com/ja/hotels/hoshinoyakaruizawa/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県軽井沢町星野",
+     "src": "https://hoshinoresorts.com/ja/hotels/hoshinoyakaruizawa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬も泊まれる",
+     "src": "https://hoshinoresorts.com/ja/hotels/hoshinoyakaruizawa/sp/petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭までをすすめている",
+     "src": "https://hoshinoresorts.com/ja/hotels/hoshinoyakaruizawa/sp/petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込）を現地で",
+     "src": "https://hoshinoresorts.com/ja/hotels/hoshinoyakaruizawa/sp/petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済証または注射済票、混合ワクチン予防接種証明書（または抗体検査結果証明書）のコピー",
+     "src": "https://hoshinoresorts.com/ja/hotels/hoshinoyakaruizawa/sp/petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "愛犬ルーム、メインダイニング「日本料理 嘉助」、ハルニレテラスのテラス席のある店。館内・屋外はリードかケージで",
+     "src": "https://hoshinoresorts.com/ja/hotels/hoshinoyakaruizawa/sp/petroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "庭路地の部屋 愛犬ルーム（ツイン・トリプル）",
+     "src": "https://hoshinoresorts.com/ja/hotels/hoshinoyakaruizawa/sp/petroom/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ib44cc8"
+  },
+  {
+   "name": "界 仙石原",
+   "kind": "旅館",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaisengokuhara/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡箱根町仙石原817-359",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaisengokuhara/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaisengokuhara/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaisengokuhara/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれるのは1室だけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaisengokuhara/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込）を現地で（星野リゾートの愛犬ルーム利用規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射の証明と、3年以内の混合ワクチン（5種以上）の証明書か1年以内の抗体検査の結果（写し・画像でよい）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i010a89"
+  },
+  {
+   "name": "ホテルフォレストヒルズ那須 with DOGS",
+   "kind": "コテージ",
+   "pref": "栃木県",
+   "city": "那須郡那須町",
+   "url": "https://www.forest-hills.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須郡那須町高久乙1880",
+     "src": "https://www.forest-hills.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "全犬種OK（大型犬は体高50cm以上とする）",
+     "src": "https://www.forest-hills.jp/useful/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "猫も泊まれる（猫と泊まれる部屋あり、猫だけの宿泊も可）",
+     "src": "https://www.forest-hills.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "館内の全施設に同行できる。レストランも一緒、すべての客室で同伴できる",
+     "src": "https://www.forest-hills.jp/useful/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ドッグパーク（1,600㎡、宿泊者以外も利用可）、屋根つき・大型犬用・小型犬用、5kg未満の犬だけのドッグラン",
+     "src": "https://www.forest-hills.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "宿泊時に「愛犬同伴宿泊規約」（予防接種などを記載）に同意の署名",
+     "src": "https://www.forest-hills.jp/useful/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "コテージのヴィラ（プレミアム・メゾネット・2ベッドルームスイートなど）と猫と泊まれる部屋",
+     "src": "https://www.forest-hills.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i08ef1a"
+  },
+  {
+   "name": "ホテルラフォーレ那須 ドッグコテージ",
+   "kind": "コテージ",
+   "pref": "栃木県",
+   "city": "那須郡那須町",
+   "url": "https://www.laforet.co.jp/lf-nasu/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須郡那須町湯本206-959",
+     "src": "https://www.laforet.co.jp/special/dogcottage/nasu.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg以下）〜大型犬（25kg以上）。生後4か月以上",
+     "src": "https://www.laforet.co.jp/special/dogcottage/nasu.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中型犬2頭または大型犬1頭",
+     "src": "https://www.laforet.co.jp/special/dogcottage/nasu.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭につき3,300円（税込）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/nasu.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病と5種以上の混合ワクチンの接種、保健所の畜犬登録。予約時に狂犬病の注射済票と接種証明書の写し、署名した宿泊同意書を送る",
+     "src": "https://www.laforet.co.jp/special/dogcottage/nasu.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室内は放してよい（ベッドの上・温泉の浴槽を除く）。レストラン・屋内の共用スペース・和室は不可",
+     "src": "https://www.laforet.co.jp/special/dogcottage/nasu.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグコテージ8室（4〜7名）とドッグコンフォートコテージ8室（2〜5名）、各75.5㎡",
+     "src": "https://www.laforet.co.jp/special/dogcottage/nasu.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時、チェックアウト 10時",
+     "src": "https://www.laforet.co.jp/special/dogcottage/nasu.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i92264b"
+  },
+  {
+   "name": "軽井沢マリオットホテル（ドッグ対応コテージ）",
+   "kind": "ホテル",
+   "pref": "長野県",
+   "city": "北佐久郡軽井沢町",
+   "url": "https://www.laforet.co.jp/special/dogcottage/kmh.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県北佐久郡軽井沢町長倉",
+     "src": "https://www.laforet.co.jp/special/dogcottage/kmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg以下）〜大型犬（25kg以上）。部屋のタイプにより違う",
+     "src": "https://www.laforet.co.jp/special/dogcottage/kmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "デラックスコテージキング・コンフォートコテージツインは小型犬3頭または大型犬2頭まで（相談）、コテージキング・コテージツインは小型犬1頭まで",
+     "src": "https://www.laforet.co.jp/special/dogcottage/kmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭目 5,500円／2頭目以降 2,200円（税込）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/kmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "予約時に狂犬病予防注射済票の写し・混合ワクチン接種証明書の写し・宿泊滞在同意書を送る（メールかFAX）。保健所の畜犬登録が済んでいること",
+     "src": "https://www.laforet.co.jp/special/dogcottage/kmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室は放してよい（ベッドの上・浴室を除く）。レストランは不可。ドッグ対応コテージ以外の屋内と屋外の芝生は立ち入りを遠慮",
+     "src": "https://www.laforet.co.jp/special/dogcottage/kmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグ対応コテージ2棟・全10室・4タイプ",
+     "src": "https://www.laforet.co.jp/special/dogcottage/kmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時、チェックアウト 11時",
+     "src": "https://www.laforet.co.jp/special/dogcottage/kmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬のみ",
+     "src": "https://www.laforet.co.jp/special/dogcottage/kmh.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "iaf33e0"
+  },
+  {
+   "name": "伊豆マリオットホテル修善寺",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "伊豆市",
+   "url": "https://www.laforet.co.jp/special/dogcottage/zmh.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊豆市大平1529",
+     "src": "https://www.laforet.co.jp/special/dogcottage/zmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小・中型犬（25kg以下）〜大型犬（25kg以上）。部屋のタイプにより違う",
+     "src": "https://www.laforet.co.jp/special/dogcottage/zmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "ガーデンスイートは小型犬（10kg以下）3頭または大型犬1頭まで、スーペリア・和洋室は小型犬2頭まで",
+     "src": "https://www.laforet.co.jp/special/dogcottage/zmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭目 5,500円／2頭目以降 2,200円（税込）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/zmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "予約時に狂犬病予防注射済票の写し・混合ワクチン接種証明書の写し・宿泊滞在同意書を送る（メールかFAX）。保健所の畜犬登録が済んでいること",
+     "src": "https://www.laforet.co.jp/special/dogcottage/zmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室は放してよい（ベッドの上・浴室を除く）。レストラン・屋内の共用スペースは不可",
+     "src": "https://www.laforet.co.jp/special/dogcottage/zmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "リゾート内に330㎡のドッグラン。2022年2月にホテルの隣にも新設",
+     "src": "https://www.laforet.co.jp/special/dogcottage/zmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全3タイプ21室（ガーデンスイート1室・スーペリア10室・和洋室10室）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/zmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時、チェックアウト 11時",
+     "src": "https://www.laforet.co.jp/special/dogcottage/zmh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬のみ",
+     "src": "https://www.laforet.co.jp/special/dogcottage/zmh.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i3d28cb"
+  },
+  {
+   "name": "コートヤード・バイ・マリオット 白馬",
+   "kind": "ホテル",
+   "pref": "長野県",
+   "city": "北安曇郡白馬村",
+   "url": "https://www.laforet.co.jp/special/dogcottage/cyh.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県北安曇郡白馬村北城",
+     "src": "https://www.laforet.co.jp/special/dogcottage/cyh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg以下）のみ",
+     "src": "https://www.laforet.co.jp/special/dogcottage/cyh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小型犬2頭まで",
+     "src": "https://www.laforet.co.jp/special/dogcottage/cyh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭目 5,500円／2頭目以降 2,200円（税込）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/cyh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "予約時に狂犬病予防注射済票の写し・混合ワクチン接種証明書の写し・宿泊滞在同意書を送る（メールかFAX）。保健所の畜犬登録が済んでいること",
+     "src": "https://www.laforet.co.jp/special/dogcottage/cyh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室は放してよい（ベッドの上・浴室を除く）、レストランはテラス席のみ。それ以外の共用スペースは不可",
+     "src": "https://www.laforet.co.jp/special/dogcottage/cyh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグルーム7室（3名まで）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/cyh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時、チェックアウト 11時",
+     "src": "https://www.laforet.co.jp/special/dogcottage/cyh.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬のみ",
+     "src": "https://www.laforet.co.jp/special/dogcottage/cyh.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i51d471"
+  },
+  {
+   "name": "ラフォーレ箱根強羅 湯の棲",
+   "kind": "旅館",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://www.laforet.co.jp/special/dogcottage/gora.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡箱根町強羅1320",
+     "src": "https://www.laforet.co.jp/special/dogcottage/gora.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg以下）〜中型犬（25kg以下）。部屋のタイプにより違う",
+     "src": "https://www.laforet.co.jp/special/dogcottage/gora.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "本館は小型犬2頭または中型犬1頭まで、綾野棟は小型犬1頭まで",
+     "src": "https://www.laforet.co.jp/special/dogcottage/gora.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭につき3,300円（税込）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/gora.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "予約時に狂犬病予防注射済票の写し・混合ワクチン接種証明書の写し・宿泊滞在同意書を送る（メールかFAX）。保健所の畜犬登録が済んでいること",
+     "src": "https://www.laforet.co.jp/special/dogcottage/gora.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室は放してよい（ベッドの上・温泉の浴槽を除く）。レストラン・囲炉裏リビングなど屋内の共用スペースは不可",
+     "src": "https://www.laforet.co.jp/special/dogcottage/gora.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "綾野棟にウッドチップのドッグラン（本館の客も利用可）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/gora.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "温泉露天風呂つきのドッグルーム全8室（本館4室・綾野棟4室）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/gora.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時、チェックアウト 11時",
+     "src": "https://www.laforet.co.jp/special/dogcottage/gora.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i91cd74"
+  },
+  {
+   "name": "ホテルラフォーレ修善寺 山紫水明",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "伊豆市",
+   "url": "https://www.laforet.co.jp/special/dogcottage/sanshi.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊豆市大平1529",
+     "src": "https://www.laforet.co.jp/special/dogcottage/sanshi.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小・中型犬（25kg以下）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/sanshi.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小型犬2頭または中型犬1頭まで",
+     "src": "https://www.laforet.co.jp/special/dogcottage/sanshi.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭につき3,300円（税込）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/sanshi.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "予約時に狂犬病予防注射済票の写し・混合ワクチン接種証明書の写し・宿泊滞在同意書を送る（メールかFAX）。保健所の畜犬登録が済んでいること",
+     "src": "https://www.laforet.co.jp/special/dogcottage/sanshi.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室は放してよい（浴室を除く）。レストラン・共用施設・ゴルフ場などは不可",
+     "src": "https://www.laforet.co.jp/special/dogcottage/sanshi.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "2022年2月に伊豆マリオットホテル修善寺の隣に新設",
+     "src": "https://www.laforet.co.jp/special/dogcottage/sanshi.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全32室のうち8室がドッグルーム（テラスつき4名の部屋と3名の部屋）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/sanshi.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時、チェックアウト 11時",
+     "src": "https://www.laforet.co.jp/special/dogcottage/sanshi.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬のみ",
+     "src": "https://www.laforet.co.jp/special/dogcottage/sanshi.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "if565e3"
+  },
+  {
+   "name": "ホテルラフォーレ修善寺 ドッグコテージ",
+   "kind": "コテージ",
+   "pref": "静岡県",
+   "city": "伊豆市",
+   "url": "https://www.laforet.co.jp/special/dogcottage/shuzenji.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊豆市大平1529",
+     "src": "https://www.laforet.co.jp/special/dogcottage/shuzenji.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小・中型犬（25kg以下）〜大型犬（25kg以上）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/shuzenji.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中型犬2頭または大型犬1頭まで",
+     "src": "https://www.laforet.co.jp/special/dogcottage/shuzenji.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭につき3,300円（税込）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/shuzenji.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "予約時に狂犬病予防注射済票の写し・混合ワクチン接種証明書の写し・宿泊滞在同意書を送る（メールかFAX）。保健所の畜犬登録が済んでいること",
+     "src": "https://www.laforet.co.jp/special/dogcottage/shuzenji.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室は放してよい（和室・浴室を除く）。レストラン・共用施設・ゴルフ場などは不可",
+     "src": "https://www.laforet.co.jp/special/dogcottage/shuzenji.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "2022年2月に伊豆マリオットホテル修善寺の隣に新設",
+     "src": "https://www.laforet.co.jp/special/dogcottage/shuzenji.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグコテージ2棟・全16室（53㎡、6名まで）",
+     "src": "https://www.laforet.co.jp/special/dogcottage/shuzenji.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時、チェックアウト 10時",
+     "src": "https://www.laforet.co.jp/special/dogcottage/shuzenji.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬のみ",
+     "src": "https://www.laforet.co.jp/special/dogcottage/shuzenji.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ie170b8"
+  },
+  {
+   "name": "愛犬お宿 伊豆高原",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "伊東市",
+   "url": "https://www.welovedogs.jp/hotel/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊東市富戸1038-91",
+     "src": "https://www.welovedogs.jp/hotel/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "体重20kg未満の室内犬。生後5か月以上",
+     "src": "http://www.welovedogs.jp/hotel/facilities/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限はなし",
+     "src": "http://www.welovedogs.jp/hotel/facilities/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の狂犬病予防接種と混合ワクチン接種。チェックイン時に証明書を見せる",
+     "src": "http://www.welovedogs.jp/hotel/facilities/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リードをつけて館内を一緒に歩ける。カフェ・バーラウンジ、犬と入れるカラオケルームも同伴可",
+     "src": "http://www.welovedogs.jp/hotel/facilities/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "雨の日用の屋内ドッグランと、屋外テラスのガーデンドッグラン（どちらも無料、ノーリード）",
+     "src": "http://www.welovedogs.jp/hotel/facilities/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全20室（バリ風洋室・和室・バリアフリーの洋室ツイン）",
+     "src": "https://www.welovedogs.jp/hotel/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "ie9342f"
+  },
+  {
+   "name": "ウブドの森 伊豆高原",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "伊東市",
+   "url": "https://www.ubudnomori.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊東市富戸1007-21",
+     "src": "https://www.ubudnomori.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "超大型犬（ホテルの基準）は不可、ただし別館グラティスは受け入れ可。大型犬に対応した客室は4室",
+     "src": "https://www.ubudnomori.jp/stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内の狂犬病予防接種と混合ワクチン接種。チェックイン時に接種済証を見せ、愛犬同伴宿泊規約に署名。屋外飼育・ヒート中の犬は不可",
+     "src": "https://www.ubudnomori.jp/stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室とドッグラン以外ではリードをつける。食事も一緒にとれる",
+     "src": "https://www.ubudnomori.jp/stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋内66㎡（アジリティ設備あり）と屋外428㎡（芝・ウッドチップ）",
+     "src": "https://www.ubudnomori.jp/stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全18室（本館の和洋室・別館グラティス）。うち大型犬に対応した客室4室",
+     "src": "https://www.ubudnomori.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "if73ce1"
+  },
+  {
+   "name": "ゆるり熱海 with DOGS",
+   "kind": "旅館",
+   "pref": "静岡県",
+   "city": "熱海市",
+   "url": "https://yururi-atami.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県熱海市泉411-292",
+     "src": "https://yururi-atami.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型・中型犬同伴専用。屋外で飼っている犬・闘犬は不可",
+     "src": "https://yururi-atami.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1部屋3頭まで（洋室ツインは2頭まで）",
+     "src": "https://yururi-atami.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1室あたり 1頭4,400円・2頭6,600円・3頭8,800円（2食付き・朝食付きのプラン。会員が公式サイトから予約すると割引あり）",
+     "src": "https://yururi-atami.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "接種後2週間以上1年以内の狂犬病ワクチンと5種以上の混合ワクチンの接種証明書（混合ワクチンは1年以内の抗体検査証明書でも可）。事前チェックインか当日のタブレットで画像を出す。5〜11月はノミ・ダニ・フィラリアの薬を処方してから",
+     "src": "https://yururi-atami.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室・ドッグラン以外ではリードをつける。証明書がないと共有部・ドッグランは使えない",
+     "src": "https://yururi-atami.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋外・屋内・海が見える屋上の3つ。トリミング・ドライルームもある",
+     "src": "https://yururi-atami.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時（最終22時）、チェックアウト 10時",
+     "src": "https://yururi-atami.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i38bad8"
+  },
+  {
+   "name": "ゆるり奥日光 with DOGS",
+   "kind": "旅館",
+   "pref": "栃木県",
+   "city": "日光市",
+   "url": "https://yururi-okunikko.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県日光市湯元2548",
+     "src": "https://yururi-okunikko.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型・中型・大型・超大型犬（屋外で飼っている犬・闘犬は不可）",
+     "src": "https://yururi-okunikko.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "スタンダードの部屋は小型犬3頭・中型犬2頭・大型犬と超大型犬1頭まで。洋室ツインは小型犬・中型犬2頭まで",
+     "src": "https://yururi-okunikko.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1室あたり 1頭4,400円・2頭6,600円・3頭8,800円（2食付き・朝食付きのプラン。会員が公式サイトから予約すると割引あり）",
+     "src": "https://yururi-okunikko.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "接種後2週間以上1年以内の狂犬病ワクチンと5種以上の混合ワクチンの接種証明書（混合ワクチンは1年以内の抗体検査証明書でも可）。事前チェックインか当日のタブレットで画像を出す。5〜11月はノミ・ダニ・フィラリアの薬を処方してから",
+     "src": "https://yururi-okunikko.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室・ドッグラン・犬と入れるレストラン。それ以外ではリードをつける",
+     "src": "https://yururi-okunikko.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ロビーから見える屋外の中庭ドッグランと、天気に関係なく使える屋内ドッグラン",
+     "src": "https://yururi-okunikko.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時（最終22時）、チェックアウト 10時",
+     "src": "https://yururi-okunikko.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "iea5de1"
+  },
+  {
+   "name": "ゆとりろガーデン北軽井沢 with DOGS",
+   "kind": "ホテル",
+   "pref": "群馬県",
+   "city": "吾妻郡嬬恋村",
+   "url": "https://yutorelo-garden-kitakaruizawa.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "群馬県吾妻郡嬬恋村鎌原1514",
+     "src": "https://yutorelo-garden-kitakaruizawa.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬・大型犬（全室で犬と泊まれる）",
+     "src": "https://yutorelo-garden-kitakaruizawa.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1部屋に小型犬2頭、または中型犬・大型犬1頭まで",
+     "src": "https://yutorelo-garden-kitakaruizawa.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭4,400円・2頭6,600円（税込）をフロントで",
+     "src": "https://yutorelo-garden-kitakaruizawa.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "接種後2週間以上1年以内の狂犬病ワクチンと5種以上の混合ワクチンの接種証明書（混合ワクチンは1年以内の抗体検査証明書でも可）",
+     "src": "https://yutorelo-garden-kitakaruizawa.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "レストランで一緒に夕食。犬を部屋に残して長い時間敷地の外に出るのは控える",
+     "src": "https://yutorelo-garden-kitakaruizawa.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "4か所",
+     "src": "https://yutorelo-garden-kitakaruizawa.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全5種類の客室",
+     "src": "https://yutorelo-garden-kitakaruizawa.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ia75ae2"
+  },
+  {
+   "name": "ゆるり箱根 with DOGS",
+   "kind": "旅館",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://yururi-hakone.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡箱根町強羅1300-415",
+     "src": "https://yururi-hakone.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬限定。屋外で飼っている犬・闘犬は不可",
+     "src": "https://yururi-hakone.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1室あたり 1頭4,400円・2頭6,600円・3頭8,800円（2食付き・朝食付きのプラン。会員が公式サイトから予約すると割引あり）",
+     "src": "https://yururi-hakone.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "接種後2週間以上1年以内の狂犬病ワクチンと5種以上の混合ワクチンの接種証明書（混合ワクチンは1年以内の抗体検査証明書でも可）。事前チェックインか当日のタブレットで画像を出す。5〜11月はノミ・ダニ・フィラリアの薬を処方してから",
+     "src": "https://yururi-hakone.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室・犬と入れるレストラン・ドッグプールつきの貸切風呂。客室・ドッグラン以外ではリードをつける",
+     "src": "https://yururi-hakone.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "1階に屋内ドッグラン。屋外のコミュニティガーデンもある",
+     "src": "https://yururi-hakone.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全4タイプ（半露天風呂付き洋室・和室など）",
+     "src": "https://yururi-hakone.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時（最終22時）、チェックアウト 10時",
+     "src": "https://yururi-hakone.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ib49ffd"
+  },
+  {
+   "name": "ゆとりろ蓼科ホテル with DOGS",
+   "kind": "ホテル",
+   "pref": "長野県",
+   "city": "茅野市",
+   "url": "https://yutorelo-tateshina.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県茅野市豊平チェルトの森柳川5-2-10",
+     "src": "https://yutorelo-tateshina.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "トイレのしつけができている犬。大型犬は1頭まで",
+     "src": "https://yutorelo-tateshina.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1部屋3頭まで（フォレストツインは2頭まで）。4頭目は承諾書を出して3,300円",
+     "src": "https://yutorelo-tateshina.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭4,400円・2頭6,600円・3頭8,800円",
+     "src": "https://yutorelo-tateshina.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "全館で犬と一緒（チェックインも同伴可）、レストランで一緒に食事",
+     "src": "https://yutorelo-tateshina.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ウェルカム・中庭・室内の3つと、森の散歩道（400m）",
+     "src": "https://yutorelo-tateshina.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i050552"
+  },
+  {
+   "name": "くにさき 森と海のドッグリゾート",
+   "kind": "ホテル",
+   "pref": "大分県",
+   "city": "国東市",
+   "url": "https://kunisaki-dogresort.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大分県国東市国東町小原3204-1",
+     "src": "https://kunisaki-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型・中型・大型犬同伴専用。屋外で飼っている犬・闘犬は不可",
+     "src": "https://kunisaki-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室3頭まで（オーシャンビューエコノミーツイン・和室は小型犬2頭・中型犬2頭・大型犬1頭まで）",
+     "src": "https://kunisaki-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1室あたり 1頭4,400円・2頭6,600円・3頭8,800円（2食付き・朝食付きのプラン。会員が公式サイトから予約すると割引あり）",
+     "src": "https://kunisaki-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "接種後2週間以上1年以内の狂犬病ワクチンと5種以上の混合ワクチンの接種証明書（混合ワクチンは1年以内の抗体検査証明書でも可）。事前チェックインか当日のタブレットで画像を出す。5〜11月はノミ・ダニ・フィラリアの薬を処方してから",
+     "src": "https://kunisaki-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室・ドッグラン・レストラン。それ以外ではリードをつける",
+     "src": "https://kunisaki-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "しおかぜラン（天然芝 約500坪、小型犬エリアあり）・こもれびラン（約100坪）・だいちラン（約400坪）・屋内のひだまりラン",
+     "src": "https://kunisaki-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全38室",
+     "src": "https://kunisaki-dogresort.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i10a818"
+  },
+  {
+   "name": "別府 丘と海のドッグリゾート",
+   "kind": "ホテル",
+   "pref": "大分県",
+   "city": "別府市",
+   "url": "https://beppu-dogresort.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大分県別府市堀田町11-69",
+     "src": "https://beppu-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬。屋外で飼っている犬・闘犬は不可",
+     "src": "https://beppu-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室に小型犬3頭または中型犬2頭まで",
+     "src": "https://beppu-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1室あたり 1頭4,400円・2頭6,600円・3頭8,800円（2食付き・朝食付きのプラン。会員が公式サイトから予約すると割引あり）",
+     "src": "https://beppu-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "接種後2週間以上1年以内の狂犬病ワクチンと5種以上の混合ワクチンの接種証明書（混合ワクチンは1年以内の抗体検査証明書でも可）。事前チェックインか当日のタブレットで画像を出す。5〜11月はノミ・ダニ・フィラリアの薬を処方してから",
+     "src": "https://beppu-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室・ドッグラン・レストラン、ドッグプールつきの貸切露天風呂（有料）。それ以外ではリードをつける",
+     "src": "https://beppu-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "2階に屋内ドッグラン",
+     "src": "https://beppu-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全38室",
+     "src": "https://beppu-dogresort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時（最終22時）、チェックアウト 10時",
+     "src": "https://beppu-dogresort.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i2508ba"
+  },
+  {
+   "name": "エンゼルフォレスト熱海自然郷（貸別荘）",
+   "kind": "貸別荘",
+   "pref": "静岡県",
+   "city": "熱海市",
+   "url": "https://www.angel-hotels.com/angelforest-rental-villa/atamishizenkyo/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県熱海市上多賀1066-1（熱海自然郷の中の貸別荘）",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/atamishizenkyo/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "多くの棟は「ペット可」。月と太陽 EN ATAMI・BASE ATAMI・HANABI・DREAM VILLA は小型犬のみ",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/atamishizenkyo/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "Green Garden Villa Ladybird・サンライズ熱海は猫も可",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/atamishizenkyo/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "ペットと泊まる人はペットの同意書が必須。ドッグパークは利用規約兼同意書と、本人確認・狂犬病予防接種証明書・8種以上の混合ワクチン接種・鑑札かマイクロチップ登録書の写し",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/atamishizenkyo/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ドッグパーク（大型犬と中小型犬で仕切り）。相模台2-1054・アサヒ丘337の棟は専用ドッグランつき",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/atamishizenkyo/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "5〜10名の貸別荘が約30棟、多くは戸別温泉つき",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/atamishizenkyo/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "最大10頭まで（3頭まで無料）",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "3頭までは無料、4〜10頭目は1頭につき1,000円（税込）",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ベッド・寝具には上げない。寝室ではサークルに入れる。サークル・トイレ・シーツ・食器は1頭分を用意",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時（18時まで）、チェックアウト 10時",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/qa/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat"
+   ],
+   "id": "i3f9697"
+  },
+  {
+   "name": "Rakuten STAY 熱海",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "熱海市",
+   "url": "https://stay.rakuten.co.jp/atami/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県熱海市和田浜南町3-5",
+     "src": "https://stay.rakuten.co.jp/atami/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬・中型犬・小型犬",
+     "src": "https://stay.rakuten.co.jp/atami/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "計2頭まで",
+     "src": "https://stay.rakuten.co.jp/atami/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "各客室のリビング・テラス。ベッドには上げない。1階・2階のラウンジなど共用スペースは不可。施設内はリード必須",
+     "src": "https://stay.rakuten.co.jp/atami/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペットフレンドリールーム（33・35・43・45）",
+     "src": "https://stay.rakuten.co.jp/atami/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ide20e1"
+  },
+  {
+   "name": "エンゼルフォレスト伊豆高原（貸別荘）",
+   "kind": "貸別荘",
+   "pref": "静岡県",
+   "city": "伊東市",
+   "url": "https://www.angel-hotels.com/angelforest-rental-villa/izukogen/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊東市赤沢373-298",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/izukogen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "ペット宿泊同意書（必須）。宿泊者専用のドッグパークは狂犬病・混合ワクチンなどの証明書が必要",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/izukogen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "別荘オーナー・宿泊者専用の無料ドッグパーク（温泉の足湯つき、9時〜17時15分受付、水・木休み）。プライベートドッグランつきの棟もある",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/izukogen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペット可の貸別荘14棟（4〜10名）",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/izukogen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "最大10頭まで（3頭まで無料）",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "3頭までは無料、4〜10頭目は1頭につき1,000円（税込）",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ベッド・寝具には上げない。寝室ではサークルに入れる。サークル・トイレ・シーツ・食器は1頭分を用意",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時（18時まで）、チェックアウト 10時",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/qa/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "if8e9cd"
+  },
+  {
+   "name": "エンゼルフォレスト中伊豆（コテージ）",
+   "kind": "貸別荘",
+   "pref": "静岡県",
+   "city": "伊豆市",
+   "url": "https://www.angel-hotels.com/angelforest-rental-villa/nakaizu/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊豆市上白岩2071-307",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/nakaizu/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "愛犬同伴宿泊規約・宿泊約款",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/nakaizu/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "全棟ドッグランつきのコテージ。共用ドッグラン（2024年4月26日オープン、9時〜17時、無料）",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/nakaizu/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "すべてのコテージでペットと泊まれる",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/nakaizu/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "最大10頭まで（3頭まで無料）",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "3頭までは無料、4〜10頭目は1頭につき1,000円（税込）",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ベッド・寝具には上げない。寝室ではサークルに入れる。サークル・トイレ・シーツ・食器は1頭分を用意",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時（18時まで）、チェックアウト 10時",
+     "src": "https://www.angel-hotels.com/angelforest-rental-villa/qa/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "ia993e1"
+  },
+  {
+   "name": "東急バケーションズ伊豆高原",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "伊東市",
+   "url": "https://www.tokyu-vacations.com/facilities/izukogen/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊東市池字中野614-91",
+     "src": "https://www.tokyu-vacations.com/facilities/izukogen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室に最大6頭",
+     "src": "https://www.tokyu-vacations.com/facilities/izukogen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬のみ",
+     "src": "https://www.tokyu-vacations.com/facilities/izukogen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "「愛犬利用規則」を読み、フロントで「愛犬同意書」を出す",
+     "src": "https://www.tokyu-vacations.com/facilities/izukogen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "一般棟と分かれた犬と泊まれる専用棟。犬専用の足洗い場あり。通常ルーム・伊豆急ルームは不可",
+     "src": "https://www.tokyu-vacations.com/facilities/izukogen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬家族（愛犬家族ガーデンを含む）",
+     "src": "https://www.tokyu-vacations.com/facilities/izukogen/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン 15時、チェックアウト 10時（2026年11月30日の宿泊までは11時）",
+     "src": "https://www.tokyu-vacations.com/facilities/izukogen/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i902879"
+  },
+  {
+   "name": "淡路島うずしお温泉 うめ丸（ドッグルーム）",
+   "kind": "旅館",
+   "pref": "兵庫県",
+   "city": "南あわじ市",
+   "url": "https://www.umemaru.co.jp/dogroom/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県南あわじ市阿那賀1137-9",
+     "src": "https://www.umemaru.co.jp/dogroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬のみ（10kg程度）",
+     "src": "https://www.umemaru.co.jp/dogroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2匹まで",
+     "src": "https://www.umemaru.co.jp/dogroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防接種済証・ワクチン注射接種証明書の写しを、同意書と一緒にアップロード",
+     "src": "https://www.umemaru.co.jp/dogroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドッグルームの中だけ。ロビーなど共用スペース・朝食会場・浴場は不可。館内の移動はペットキャリーに入れる",
+     "src": "https://www.umemaru.co.jp/dogroom/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "和洋室のドッグルーム「307」（67㎡）1室、和室のドッグルーム（52㎡）1室",
+     "src": "https://www.umemaru.co.jp/dogroom/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "i74357a"
+  },
+  {
+   "name": "海のホテル 島花",
+   "kind": "ホテル",
+   "pref": "兵庫県",
+   "city": "洲本市",
+   "url": "https://www.shimahana.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県洲本市小路谷1277番5",
+     "src": "https://www.shimahana.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "予約の前に「ドッグフレンドリールーム利用案内」を読み、同意書を出す",
+     "src": "https://www.shimahana.com/dog_friendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドッグフレンドリールーム。カフェ「南風花」はケージを使えば一緒に過ごせる。犬専用のバス・アメニティのあるグルーミングルーム",
+     "src": "https://www.shimahana.com/dog_friendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "約10m×約20m",
+     "src": "https://www.shimahana.com/dog_friendly/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ヴィラ（タイプA・B）、グランデルーム、スタンダードルーム",
+     "src": "https://www.shimahana.com/dog_friendly/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "if9dd8b"
+  },
+  {
+   "name": "サンセットビューホテル けひの海",
+   "kind": "ホテル",
+   "pref": "兵庫県",
+   "city": "南あわじ市",
+   "url": "https://keinoumi.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県南あわじ市松帆古津路970-76",
+     "src": "https://keinoumi.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "ドッグルームは小型犬のみ（5kg程度）",
+     "src": "https://keinoumi.jp/room/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "ドッグルームは2匹まで",
+     "src": "https://keinoumi.jp/room/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "「同意書申し込みフォーム」を確かめてから予約",
+     "src": "https://keinoumi.jp/room/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ドッグルームとプライベートヴィラ「しまおと」。ロビー・レストラン・大浴場・中庭などは不可。移動はケージで",
+     "src": "https://keinoumi.jp/room/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグルーム2室（37㎡・30㎡）、ヴィラ しまおと（50㎡・5名まで）",
+     "src": "https://keinoumi.jp/room/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ieb9e03"
+  },
+  {
+   "name": "わんちゃんと一緒 犬御殿",
+   "kind": "旅館",
+   "pref": "和歌山県",
+   "city": "西牟婁郡白浜町",
+   "url": "https://inugoten.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "和歌山県西牟婁郡白浜町3742番地22",
+     "src": "https://inugoten.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "温泉の大浴場以外は、ロビー・部屋・食堂・屋上まで一緒に過ごせる。部屋の露天風呂は犬と一緒に入れる",
+     "src": "https://inugoten.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "芝生の屋外ドッグラン（チェックイン〜24時）、室内ドッグラン（〜22時）、白良浜が見える屋上ドッグラン（〜日没）。朝は7時から",
+     "src": "https://inugoten.jp/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "いつものごはんとリード（食器は部屋に用意）",
+     "src": "https://inugoten.jp/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "オーシャンフロントの部屋からアジアンテイストの洋室まで",
+     "src": "https://inugoten.jp/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "id2d827"
+  },
+  {
+   "name": "Rakuten STAY VILLA 八ヶ岳",
+   "kind": "貸別荘",
+   "pref": "山梨県",
+   "city": "北杜市",
+   "url": "https://stay.rakuten.co.jp/villa/yatsugatake/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県北杜市小淵沢町10144-3",
+     "src": "https://stay.rakuten.co.jp/villa/yatsugatake/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬・中型犬・小型犬",
+     "src": "https://stay.rakuten.co.jp/villa/yatsugatake/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "計2頭まで",
+     "src": "https://stay.rakuten.co.jp/villa/yatsugatake/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋のリビング・テラス・ドッグラン（104・109のみ）。ベッド・小上がり（畳）には上げない",
+     "src": "https://stay.rakuten.co.jp/villa/yatsugatake/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "104・109の部屋に専用ドッグラン",
+     "src": "https://stay.rakuten.co.jp/villa/yatsugatake/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペットフレンドリールームは103・104・108・109の4室",
+     "src": "https://stay.rakuten.co.jp/villa/yatsugatake/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "icde10b"
+  },
+  {
+   "name": "Rakuten STAY VILLA 那須",
+   "kind": "貸別荘",
+   "pref": "栃木県",
+   "city": "那須郡那須町",
+   "url": "https://stay.rakuten.co.jp/villa/nasu/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須郡那須町大字湯本204-60",
+     "src": "https://stay.rakuten.co.jp/villa/nasu/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペットフレンドリールーム：C101〜C104（81㎡・4名まで）、B105〜B108（116㎡のメゾネット・10名まで）",
+     "src": "https://stay.rakuten.co.jp/villa/nasu/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "部屋専用のプライベートドッグラン（C101〜C104）。テラスに犬の足洗い場",
+     "src": "https://stay.rakuten.co.jp/villa/nasu/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "icaf3e5"
+  },
+  {
+   "name": "Rakuten STAY VILLA 日光",
+   "kind": "貸別荘",
+   "pref": "栃木県",
+   "city": "日光市",
+   "url": "https://stay.rakuten.co.jp/villa/nikko/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県日光市所野1550-6",
+     "src": "https://stay.rakuten.co.jp/villa/nikko/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "A棟（A01〜A06、約102㎡・8名）とD棟（約143㎡・8名）がペットOK",
+     "src": "https://stay.rakuten.co.jp/villa/nikko/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "庭をドッグランとして使える。部屋専用の足洗い場",
+     "src": "https://stay.rakuten.co.jp/villa/nikko/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i6484d0"
+  },
+  {
+   "name": "Rakuten STAY VILLA 富士河口湖の森",
+   "kind": "貸別荘",
+   "pref": "山梨県",
+   "city": "南都留郡富士河口湖町",
+   "url": "https://stay.rakuten.co.jp/villa/fuji-kawaguchiko-forest/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県南都留郡富士河口湖町船津5636-1",
+     "src": "https://stay.rakuten.co.jp/villa/fuji-kawaguchiko-forest/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペットフレンドリールーム6室（D01〜D03、E01〜E03）",
+     "src": "https://stay.rakuten.co.jp/villa/fuji-kawaguchiko-forest/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ie1a257"
+  },
+  {
+   "name": "Rakuten STAY VILLA 箱根仙石原",
+   "kind": "貸別荘",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://stay.rakuten.co.jp/villa/hakone-sengokuhara/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡箱根町仙石原1246番748（北館）・1246番761（南館）",
+     "src": "https://stay.rakuten.co.jp/villa/hakone-sengokuhara/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペットフレンドリールーム（北館N105・N106、南館S104・S105）",
+     "src": "https://stay.rakuten.co.jp/villa/hakone-sengokuhara/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ペットフレンドリールームに専用ドッグラン",
+     "src": "https://stay.rakuten.co.jp/villa/hakone-sengokuhara/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i013b33"
+  },
+  {
+   "name": "Rakuten STAY TERRACE 城崎リバーサイド",
+   "kind": "ホテル",
+   "pref": "兵庫県",
+   "city": "豊岡市",
+   "url": "https://stay.rakuten.co.jp/terrace/kinosaki/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県豊岡市城崎町上山1414-4",
+     "src": "https://stay.rakuten.co.jp/terrace/kinosaki/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬（10kg未満）・中型犬（25kg未満）・大型犬（40kg未満）",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小・中・大型犬あわせて2頭まで",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "リビング・テラス・ドッグランだけ。浴室・ベッドルームは使わない",
+     "src": "https://stay.rakuten.co.jp/features/pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペットOKの部屋：Bタイプ402、Eタイプ101〜103、Fタイプ201〜204",
+     "src": "https://stay.rakuten.co.jp/terrace/kinosaki/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "人工芝のドッグランつきの部屋あり（Eタイプのテラス）",
+     "src": "https://stay.rakuten.co.jp/terrace/kinosaki/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "id20cd4"
   }
  ]
 }
