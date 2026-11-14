@@ -7,7 +7,7 @@ import os
 INFO_NAME = "ペットのくらし窓口"
 TAXI_NAME = "ペットタクシー予約窓口"
 INFO_DIRS = ["dogrun", "dog-trainer", "pet-sitter", "sougi", "hospital", "jichitai", "rojin-home",
-             "trimming", "pet-hotel", "inu-yado", "inu-cafe", "emergency"]
+             "trimming", "pet-hotel", "inu-yado", "inu-cafe", "emergency", "hinan"]
 
 import re
 
