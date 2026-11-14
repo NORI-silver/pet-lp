@@ -7,7 +7,7 @@
 import json, os
 import gen_dogrun
 import visual as V
-from guides_hinan import HINAN_GUIDES, ITEMS, CHECKED, MARK, table_rows, N, N_CAGE
+from guides_hinan import HINAN_GUIDES, ITEMS, CHECKED, MARK, table_rows, N, N_CAGE, SIZES, BREEDS
 
 SLUG = "hinan"
 PSLUG = gen_dogrun.PSLUG
@@ -78,7 +78,7 @@ def fit_rows(its):
     def flag(it, k):
         return FLAG_TXT[it["flags"].get(k)] + ("" if it["flags"].get(k) else "（市区町村・避難所に確かめる）")
     return [
-        {"k": ["s"], "h": "小型犬（10kg未満）", "items": [line(it, flag(it, "dog") + ("。" + it["cage"] if it.get("cage") else "")) for it in its]},
+        {"k": ["s"], "h": "小型犬（10kg未満）", "items": [line(it, flag(it, "dog")) for it in its]},
         {"k": ["m", "l"], "h": "中型犬・大型犬（10kg以上）", "items": [line(it, large(it)) for it in its]},
         {"k": ["cat"], "h": "猫", "items": [line(it, flag(it, "cat")) for it in its]},
         {"k": ["all"], "tag": "ほかの動物", "h": "うさぎ・ハムスター・小鳥・爬虫類", "items": [line(it, small(it)) for it in its]},
@@ -136,8 +136,8 @@ def render_top(ctx):
     faq = HINAN_GUIDES[0]["faq"][:6]
     ld = _ld(SITE, url, "ペットの同行避難と避難所の決まり", desc, [("ペットタクシー予約窓口", "/"), ("ペットと避難", f"/{SLUG}/")], faq)
     stats = V.stats([(f"{N}", "確かめた都県・市区"), (f"{N_CAGE}", "ケージを持っていく・入れると書いている"),
-                     (f"{sum(1 for x in ITEMS if x['flags'].get('cat') == 'yes')}", "猫を受け入れると書いている"), ("0", "体重・寸法の数字で決めている")])
-    secs = "".join(f'<h3 class="emg-region">{e(pf)}</h3>' + "".join(card(e, it) for it in bp[pf]) for pf in done)
+                     (f"{sum(1 for x in ITEMS if x['flags'].get('cat') == 'yes')}", "猫を受け入れると書いている")])
+    summ = "".join(f'<h3 class="emg-region"><a href="{href(pf)}">{e(pf)}のペット同行避難 →</a></h3><p class="hn-none">{e("・".join(it["name"] for it in bp[pf]))}の公式ページに書いてある、受け入れる動物・大きさ・ケージ・飼う場所と、避難所の調べ方。</p>' for pf in done)
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     return ctx["head"](title, desc, url, ld) + CSS + f"""
 <main>
@@ -154,7 +154,7 @@ def render_top(ctx):
     <ul class="kv"><li><b class="k">同行避難</b>ペットを連れて避難所などまで逃げること。同じ部屋で過ごせるという意味ではない（環境省）</li>
     <li><b class="k">同伴避難</b>避難所で飼い主がペットを飼って世話をしている状態。これも同じ部屋とは限らない（環境省）</li>
     <li><b class="k">連れて行ける動物</b>犬・猫は多くの自治体が受け入れる。うさぎ・小鳥・爬虫類は自治体で違う</li>
-    <li><b class="k">大型犬</b>受け入れないと書いた自治体はなかった。ケージに入らなければリードでつなぐ市も（川崎市・大阪市）</li>
+    <li><b class="k">大型犬</b>はっきり書いた自治体は少なく、「小型」「小動物」に限る市が多い。ケージに入らなければリードでつなぐ、と書く市も（川崎市・大阪市）。預け先も決めておく</li>
     <li><b class="k">ケージ</b>飼い主が持っていくのが基本。避難所にペット用の備蓄はないと書く市が多い</li></ul></div>
     {stats}
     <h2 id="table">自治体ごとの受け入れる動物（一覧）</h2>
@@ -168,9 +168,9 @@ def render_top(ctx):
 <section style="padding-top:0">
   <div class="wrap">
     <div class="emg">
-      <h2 class="sh" id="list" style="scroll-margin-top:90px">都県・市区ごとの公式の決まり</h2>
+      <h2 class="sh" id="list" style="scroll-margin-top:90px">都道府県ごとのページ</h2>
       <p class="emg-free">それぞれの公式ページに書いてあることだけを載せています。書いていないことは「公式ページに書いていません（不明）」としています（「受け入れない」という意味ではありません）。</p>
-      {secs}
+      {summ}
       <div class="emg-tips" id="faq"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
       <p class="emg-note">{e(CHECKED)}に各自治体の公式ページで確かめた情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先と、お住まいの市区町村でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
@@ -199,10 +199,10 @@ def render_pref(ctx, pf, its, done):
     faq = faq_for(pf, its)
     ld = _ld(SITE, url, f"{pf}のペット同行避難と避難所の決まり", desc,
              [("ペットタクシー予約窓口", "/"), ("ペットと避難", f"/{SLUG}/"), (pf, href(pf))], faq)
-    rows = [["自治体", "犬", "大型犬", "猫", "小動物・鳥", "ケージ持参"]] + [
+    rows = [["自治体", "犬", "大型犬", "猫", "小動物・鳥", "爬虫類", "ケージ持参"]] + [
         [it["name"], MARK[it["flags"].get("dog")], MARK[it["flags"].get("large")], MARK[it["flags"].get("cat")],
-         MARK[it["flags"].get("small") or it["flags"].get("bird")], "要" if it.get("cage_req") else "—"] for it in its]
-    fit = V.block(("breeds", {"title": f"うちの子の大きさ・種類で、{pf}の決まりを見る", "rows": fit_rows(its),
+         MARK[it["flags"].get("small") or it["flags"].get("bird")], MARK[it["flags"].get("reptile")], "要" if it.get("cage_req") else "—"] for it in its]
+    fit = V.block(("breeds", {"title": f"うちの子の大きさ・種類で、{pf}の決まりを見る", "rows": fit_rows(its), "sizes": SIZES, "breeds": BREEDS,
                               "lead": f"{'・'.join(it['name'] for it in its)}の公式ページに書いてあることを、大きさ・種類ごとに並べました。",
                               "note": "書いていない自治体も「受け入れない」という意味ではありません。避難所ごとの決まりもあるので、お住まいの市区町村で確かめてください。"}))
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
