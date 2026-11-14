@@ -16,6 +16,7 @@ import visual as V
 PSLUG = gen_dogrun.PSLUG
 _D = os.path.dirname(os.path.abspath(__file__))
 PREF_MIN = 5     # 都道府県のページを作る軒数（Nori 2026-11-14「そもそも薄い記事作らないで」。足りない県は全国のページの地方の表に入れる）
+ANIMAL_MIN_CHARS = 1000  # 動物ごとのページを作る「そのページだけの字数」（thin_gate の 900 に余裕）
 ANIMAL_MIN = 5   # 動物ごとのページを作る軒数（足りない動物は /pet-yado/ の中に載せる）
 OWN_MIN = 5      # 宿1軒のページを作るのに要る、その宿だけの事実の数（系列で共通の決まりのページから写した事実は数えない）
 MIN_FACTS = 5
@@ -523,6 +524,23 @@ def write_all(ROOT, ctx):
     def w(path, html):
         d = os.path.join(ROOT, path.strip("/")); os.makedirs(d, exist_ok=True)
         open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(_bf(html))
+    # 動物ごとのページも、そのページだけの字数（tools/thin_gate.py と同じ数え方）が ANIMAL_MIN_CHARS に届くときだけ作る
+    # （Nori 2026-11-14「そもそも薄い記事作らないで」）。届かない動物は /pet-yado/ の中に載せ、前に作ったページは消す。
+    import shutil, thin_gate as TG
+    from collections import Counter
+    for _ in range(3):
+        pages = {("a", k): render_animal(ctx, k) for k in ANIMAL_PAGES}
+        pages.update({("p", pf): render_pref(ctx, pf) for pf in PREFS})
+        pages.update({("t", t): render_type(ctx, t) for t in TYPE_PAGES})
+        pages[("h", "pet")] = render_pethub(ctx); pages[("h", "dog")] = render_hub(ctx)
+        segs = {k: set(TG._segments(v)) for k, v in pages.items()}
+        df = Counter(t for v in segs.values() for t in v)
+        short = {k[1] for k, v in segs.items() if k[0] == "a" and sum(len(t) for t in v if df[t] < TG.TEMPLATE_DF) < ANIMAL_MIN_CHARS}
+        if not short: break
+        ANIMAL_PAGES.difference_update(short)
+    for k, _, slug in AN:
+        d = os.path.join(ROOT, "pet-yado", slug)
+        if k not in ANIMAL_PAGES and os.path.isdir(d): shutil.rmtree(d)
     if DOGS: w("/inu-yado/", render_hub(ctx))
     for pf in PREFS: w(f"/inu-yado/{PSLUG[pf]}/", render_pref(ctx, pf))
     if any(OTHER.values()): w("/pet-yado/", render_pethub(ctx))
