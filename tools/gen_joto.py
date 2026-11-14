@@ -207,7 +207,7 @@ CAT["table"] = [(h, (lambda w: (lambda c: topic_mark(c, w)))(w)) for h, w in TOP
 G = json.load(open(os.path.join(os.path.dirname(__file__), "joto_groups.json"), encoding="utf-8"))
 
 def groups_html(e, pf):
-    gs = [g for g in G["groups"] if g["pref"] == pf]
+    gs = [g for g in G["groups"] if pf in g["prefs"]]
     if not gs: return ""
     cards = "".join(
         f'<div class="emg-item emg-co jt-card"><a href="{e(g["url"])}" target="_blank" rel="noopener"><b>{e(g["name"])}</b></a>'
