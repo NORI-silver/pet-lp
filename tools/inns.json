@@ -12078,6 +12078,2204 @@
     "s"
    ],
    "id": "ie15e7f"
+  },
+  {
+   "name": "SETONITE（セトニテ）",
+   "kind": "グランピング",
+   "pref": "岡山県",
+   "city": "玉野市",
+   "url": "https://setonite.jp/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "岡山県玉野市田井5-28-30",
+     "src": "https://setonite.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全9棟（海側8棟と山側の「ドッグフレンドリーヴィラ」1棟）。犬と泊まれるのはドッグフレンドリーヴィラのテント",
+     "src": "https://setonite.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜19:00、チェックアウト10:00",
+     "src": "https://setonite.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "テントの近くにドッグラン",
+     "src": "https://setonite.jp/qa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬だけ（ほかのペットは不可）",
+     "src": "https://setonite.jp/qa",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "ie06123"
+  },
+  {
+   "name": "わんわんパラダイス 八ヶ岳",
+   "kind": "コテージ",
+   "pref": "山梨県",
+   "city": "北杜市",
+   "url": "https://withdog.iconia.co.jp/hotels/wwp-yatsugatake",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県北杜市長坂町小荒間1792",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-yatsugatake",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "一棟貸しのコテージ（プライベートドッグラン付きプレミアム2DK・定員5名、2DK・定員4名、1DK・定員2名、露天風呂付きもあり）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-yatsugatake",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-yatsugatake",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-yatsugatake",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-yatsugatake",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-yatsugatake",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。基本的なしつけができている犬。ヒート中の犬と生後4か月未満の犬は不可",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-yatsugatake",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "コテージとレストラン",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-yatsugatake",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-yatsugatake",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "約1,100坪の森のドッグランと約450坪の人工芝ドッグパーク（小型犬・大型犬のエリア、アジリティ）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-yatsugatake",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i104e7f"
+  },
+  {
+   "name": "わんわんパラダイス プレミア 山中湖",
+   "kind": "ホテル",
+   "pref": "山梨県",
+   "city": "山中湖村",
+   "url": "https://withdog.iconia.co.jp/hotels/wwpp-yamanakako",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県南都留郡山中湖村山中343-1",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-yamanakako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "プライベートドッグラン付きツイン（定員3名・2室）、富士山ビューのファミリールーム（定員4名）、デラックスファミリー（定員5名）など",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-yamanakako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-yamanakako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-yamanakako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-yamanakako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-yamanakako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。基本的なしつけができている犬。ヒート中の犬と生後4か月未満の犬は不可",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-yamanakako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋・レストラン・屋内のプレイスペース・屋上のDOG PARK",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-yamanakako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-yamanakako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋上の人工芝DOG PARK（富士山が見える）と一部の部屋に専用ドッグラン",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-yamanakako",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ic8d50b"
+  },
+  {
+   "name": "わんわんパラダイス 安曇野",
+   "kind": "コテージ",
+   "pref": "長野県",
+   "city": "安曇野市",
+   "url": "https://withdog.iconia.co.jp/hotels/wwp-azumino",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県安曇野市穂高牧2230",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-azumino",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグラン付きコテージ（3LDK・定員5名、2LDK・定員4名）と連棟のログ風コテージ（2LDK・定員6名）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-azumino",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-azumino",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-azumino",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-azumino",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-azumino",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。基本的なしつけができている犬。ヒート中の犬と生後4か月未満の犬は不可",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-azumino",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "コテージ",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-azumino",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-azumino",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "コテージ2タイプに専用ドッグラン",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-azumino",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i120ebc"
+  },
+  {
+   "name": "わんわんパラダイス 蓼科",
+   "kind": "コテージ",
+   "pref": "長野県",
+   "city": "立科町",
+   "url": "https://withdog.iconia.co.jp/hotels/wwp-tateshina",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県北佐久郡立科町芦田八ケ野字女神湖975",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-tateshina",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "コテージ（2LDK和洋室・定員5名、2DK和洋室・定員4〜5名、テラス付き連棟・定員2名）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-tateshina",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-tateshina",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-tateshina",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-tateshina",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-tateshina",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。基本的なしつけができている犬。ヒート中の犬と生後4か月未満の犬は不可",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-tateshina",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "1棟貸しのコテージとドッグラン",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-tateshina",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-tateshina",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "428㎡（大型犬も走れる広さ）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-tateshina",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i415030"
+  },
+  {
+   "name": "わんわんパラダイス 高山",
+   "kind": "ホテル",
+   "pref": "岐阜県",
+   "city": "高山市",
+   "url": "https://withdog.iconia.co.jp/hotels/wwp-takayama",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "岐阜県高山市丹生川町久手470-1",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-takayama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "テラス付きデラックストリプル（定員4名・1室）、和洋室（定員5名）、離れのプライベートコテージ（定員8名）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-takayama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-takayama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-takayama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-takayama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-takayama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。基本的なしつけができている犬。ヒート中の犬と生後4か月未満の犬は不可",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-takayama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋・レストラン・犬用の浴槽がある貸切の個室風呂",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-takayama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-takayama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "小型犬優先と中・大型犬優先の2か所（夏はミスト）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-takayama",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "idb9d93"
+  },
+  {
+   "name": "わんわんパラダイス 浜名湖",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "浜松市",
+   "url": "https://withdog.iconia.co.jp/hotels/wwp-hamanako",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県浜松市中央区舘山寺町260-1",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-hamanako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "レイクビューの和モダンツイン（定員3名）、デラックス和洋室（定員7名）、パノラマコーナートリプル（定員3名）など",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-hamanako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-hamanako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-hamanako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-hamanako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-hamanako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。基本的なしつけができている犬。ヒート中の犬と生後4か月未満の犬は不可",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-hamanako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋・レストラン・屋内のプレイスペース・DOG PARK",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-hamanako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-hamanako",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋外のDOG PARK（夏はミスト）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-hamanako",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i14a071"
+  },
+  {
+   "name": "わんわんパラダイス 伊豆高原",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "伊東市",
+   "url": "https://withdog.iconia.co.jp/hotels/wwp-izukougen",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊東市大室高原3-490",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-izukougen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "テラス付きツイン（定員3名）、デラックストリプル（定員4名）、温泉とプライベートドッグラン付きコテージ（2DK・定員5名）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-izukougen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-izukougen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-izukougen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-izukougen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-izukougen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。基本的なしつけができている犬。ヒート中の犬と生後4か月未満の犬は不可",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-izukougen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋・レストラン・ドッグラン・屋内のプレイスペース",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-izukougen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-izukougen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "小型犬専用と犬種フリー（アジリティ）の2か所",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-izukougen",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i229932"
+  },
+  {
+   "name": "わんわんパラダイス プレミア 伊豆高原",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "伊東市",
+   "url": "https://withdog.iconia.co.jp/hotels/wwpp-izukogen",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊東市八幡野1092-2",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "最上階の和モダン・デラックストリプル、ドッグランに直結の和モダン（いずれも34㎡・定員2〜3名）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。基本的なしつけができている犬。ヒート中の犬と生後4か月未満の犬は不可",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋・レストラン・屋内のプレイスペース・DOG PARK",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "約390㎡の人工芝DOG PARK（アジリティ）と約300mの散歩コース",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-izukogen",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i90d0ad"
+  },
+  {
+   "name": "わんわんパラダイス 松阪",
+   "kind": "ホテル",
+   "pref": "三重県",
+   "city": "松阪市",
+   "url": "https://withdog.iconia.co.jp/hotels/wwp-matsusaka",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "三重県松阪市飯高町森2296-1",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-matsusaka",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグガーデン付き和モダンツイン（定員3名）、メゾネット和洋室（定員6名）、ドッグガーデン付き和室10畳（定員5名）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-matsusaka",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-matsusaka",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-matsusaka",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-matsusaka",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-matsusaka",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。基本的なしつけができている犬。ヒート中の犬と生後4か月未満の犬は不可",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-matsusaka",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋・レストラン・ドッグラン・散歩コース",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-matsusaka",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-matsusaka",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "犬種フリーのドッグラン（トンネル・アジリティ）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-matsusaka",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "if9cb40"
+  },
+  {
+   "name": "わんわんパラダイス 鳥羽",
+   "kind": "ホテル",
+   "pref": "三重県",
+   "city": "鳥羽市",
+   "url": "https://withdog.iconia.co.jp/hotels/wwp-toba",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "三重県鳥羽市小浜町272",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-toba",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "最上階のプレミアム和洋室（定員4名）、オーシャンビューのデラックス和洋室（定員5名）、デラックストリプル（定員4名）など",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-toba",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-toba",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-toba",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-toba",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-toba",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。基本的なしつけができている犬。ヒート中の犬と生後4か月未満の犬は不可",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-toba",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋・レストラン・屋上のDOG PARK・ドッグラン",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-toba",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-toba",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋上のDOG PARKとホテル横のドッグラン",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-toba",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬用のプール",
+     "v": "4月〜10月末（ライフジャケットの貸し出しあり）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-toba",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ie4a709"
+  },
+  {
+   "name": "わんわんパラダイス プレミア 南紀白浜",
+   "kind": "ホテル",
+   "pref": "和歌山県",
+   "city": "上富田町",
+   "url": "https://withdog.iconia.co.jp/hotels/wwpp-nankishirahama",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "和歌山県西牟婁郡上富田町南紀の台1-1",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-nankishirahama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグラン・サウナ付きヒルサイドヴィラ（定員4名）、オーシャンビューの和洋室（定員6名）とツイン（定員2名）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-nankishirahama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-nankishirahama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-nankishirahama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-nankishirahama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-nankishirahama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。基本的なしつけができている犬。ヒート中の犬と生後4か月未満の犬は不可",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-nankishirahama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋・レストラン・犬用の浴槽がある貸切家族風呂・屋内のプレイスペース",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-nankishirahama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-nankishirahama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "人工芝のDOG PARK（夏はミスト）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-nankishirahama",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i83aef2"
+  },
+  {
+   "name": "わんわんパラダイス 奈良生駒",
+   "kind": "ホテル",
+   "pref": "奈良県",
+   "city": "平群町",
+   "url": "https://withdog.iconia.co.jp/hotels/wwp-naraikoma",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "奈良県生駒郡平群町上庄2-16-1",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-naraikoma",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "和室15畳（定員7名）、和洋室（定員4名）、ツイン（定員2名）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-naraikoma",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト10:00",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-naraikoma",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-naraikoma",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-naraikoma",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-naraikoma",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。飼い主の犬だけ。基本的なしつけができた室内犬、生後6か月以上、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-naraikoma",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "館内やレストラン",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-naraikoma",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤・犬用の料理",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-naraikoma",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋外と屋内",
+     "src": "https://withdog.iconia.co.jp/hotels/wwp-naraikoma",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i9b54c1"
+  },
+  {
+   "name": "わんわんパラダイス プレミア 塩原",
+   "kind": "旅館",
+   "pref": "栃木県",
+   "city": "那須塩原市",
+   "url": "https://withdog.iconia.co.jp/hotels/wwpp-shiobara",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県那須塩原市塩原1256",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-shiobara",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "露天風呂付き特別和洋室（定員6名）、和室10畳（定員5名）、洋室ツイン（定員2名）など",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-shiobara",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト10:00",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-shiobara",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-shiobara",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-shiobara",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-shiobara",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。飼い主の犬だけ。基本的なしつけができた室内犬、生後6か月以上、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-shiobara",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋とレストラン",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-shiobara",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤・散歩グッズ",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-shiobara",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋外（ウッドチップ）・中庭（アジリティ・照明つき）・屋内の3か所",
+     "src": "https://withdog.iconia.co.jp/hotels/wwpp-shiobara",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "idc56a1"
+  },
+  {
+   "name": "ほったらかしの宿 ゆうふり伊豆高原",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "伊東市",
+   "url": "https://withdog.iconia.co.jp/hotels/yufuri-izukogen",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊東市富戸1317-2132",
+     "src": "https://withdog.iconia.co.jp/hotels/yufuri-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "プレミア和洋室（72㎡・定員4名）、デラックス和洋室（定員5名）、スタンダード和洋室（定員4名）",
+     "src": "https://withdog.iconia.co.jp/hotels/yufuri-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/yufuri-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/yufuri-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "頭数の制限なし",
+     "src": "https://withdog.iconia.co.jp/hotels/yufuri-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭 小型犬（10kg未満）3,300円、中型犬（10〜25kg未満）4,400円、大型犬（25kg以上）5,500円",
+     "src": "https://withdog.iconia.co.jp/hotels/yufuri-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。同伴宿泊の同意書。飼い主の犬だけ。基本的なしつけができた室内犬、生後6か月以上、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/yufuri-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（部屋で一緒に食事）",
+     "src": "https://withdog.iconia.co.jp/hotels/yufuri-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/yufuri-izukogen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋上ドッグラン（人工芝）と約600坪のドッグラン（大型犬・小型犬ゾーン、照明つき）。屋上に温水プール",
+     "src": "https://withdog.iconia.co.jp/hotels/yufuri-izukogen",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "if34beb"
+  },
+  {
+   "name": "天然温泉 田沢湖レイクリゾート",
+   "kind": "ホテル",
+   "pref": "秋田県",
+   "city": "仙北市",
+   "url": "https://withdog.iconia.co.jp/hotels/tazawako-lakeresort",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "秋田県仙北市田沢湖生保内字下高野82-117",
+     "src": "https://withdog.iconia.co.jp/hotels/tazawako-lakeresort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "洋室のペットルーム（ツイン・定員2名、トリプル・定員3名、デラックス・定員6名）",
+     "src": "https://withdog.iconia.co.jp/hotels/tazawako-lakeresort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト10:00",
+     "src": "https://withdog.iconia.co.jp/hotels/tazawako-lakeresort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "15kgまでの小型の室内犬",
+     "src": "https://withdog.iconia.co.jp/hotels/tazawako-lakeresort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1部屋1頭",
+     "src": "https://withdog.iconia.co.jp/hotels/tazawako-lakeresort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭2,200円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/tazawako-lakeresort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "1年以内のワクチン証明書。かみぐせのある犬・トイレのしつけができていない犬は不可",
+     "src": "https://withdog.iconia.co.jp/hotels/tazawako-lakeresort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋の中だけ（ベッド・布団に乗せない）。部屋の外は抱っこかケージ。温泉のあいだは部屋で留守番",
+     "src": "https://withdog.iconia.co.jp/hotels/tazawako-lakeresort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/tazawako-lakeresort",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ifdb717"
+  },
+  {
+   "name": "亀の井ホテル 筑波山",
+   "kind": "ホテル",
+   "pref": "茨城県",
+   "city": "つくば市",
+   "url": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-tsukubasan",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "茨城県つくば市筑波1050-1",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-tsukubasan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリールーム デラックスツイン（定員4名・43.6㎡）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-tsukubasan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト10:00",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-tsukubasan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-tsukubasan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小型・中型犬は3頭まで、大型犬は2頭まで",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-tsukubasan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭2,200円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-tsukubasan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。同伴宿泊の同意書。飼い主の犬だけ。基本的なしつけができた室内犬、生後6か月以上、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-tsukubasan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（温泉「双神の湯」は犬と一緒は不可）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-tsukubasan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤・専用入口近くの足洗い場",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-tsukubasan",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i7df3b3"
+  },
+  {
+   "name": "亀の井ホテル 喜連川",
+   "kind": "ホテル",
+   "pref": "栃木県",
+   "city": "さくら市",
+   "url": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kitsuregawa",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県さくら市喜連川5296-1",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kitsuregawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリールーム（洋室ツイン・定員2名、和室・定員4〜5名、洋室セミダブル・定員2名）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kitsuregawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト10:00",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kitsuregawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kitsuregawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "3頭まで",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kitsuregawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭2,200円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kitsuregawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。同伴宿泊の同意書。飼い主の犬だけ。基本的なしつけができた室内犬、生後6か月以上、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kitsuregawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋と敷地の散歩道",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kitsuregawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤・散歩用のアメニティ",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kitsuregawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "犬種フリーと小型犬用の2か所",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kitsuregawa",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i64ce5d"
+  },
+  {
+   "name": "草津温泉 大東舘",
+   "kind": "旅館",
+   "pref": "群馬県",
+   "city": "草津町",
+   "url": "https://withdog.iconia.co.jp/hotels/daitokan",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "群馬県吾妻郡草津町草津126",
+     "src": "https://withdog.iconia.co.jp/hotels/daitokan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリールーム専用フロアの和室（10畳・定員4〜5名、7.5畳・定員3名）",
+     "src": "https://withdog.iconia.co.jp/hotels/daitokan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト10:00",
+     "src": "https://withdog.iconia.co.jp/hotels/daitokan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "30kgまでの室内犬（1歳以上）",
+     "src": "https://withdog.iconia.co.jp/hotels/daitokan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "15kg未満は2頭まで、30kg未満は1頭まで",
+     "src": "https://withdog.iconia.co.jp/hotels/daitokan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭2,200円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/daitokan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。同伴宿泊の同意書。飼い主の犬だけ、しつけができた1歳以上の室内犬、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/daitokan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "専用フロアの部屋",
+     "src": "https://withdog.iconia.co.jp/hotels/daitokan",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤・犬用のごはん（予約）",
+     "src": "https://withdog.iconia.co.jp/hotels/daitokan",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "id99772"
+  },
+  {
+   "name": "亀の井ホテル 九十九里",
+   "kind": "ホテル",
+   "pref": "千葉県",
+   "city": "旭市",
+   "url": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kujukuri",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県旭市仁玉2280-1",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kujukuri",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリーヴィラ（定員4名・57㎡・プライベートサウナ付き）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kujukuri",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト10:00",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kujukuri",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kujukuri",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "3頭まで",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kujukuri",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭2,200円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kujukuri",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。同伴宿泊の同意書。飼い主の犬だけ。基本的なしつけができた室内犬、生後6か月以上、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kujukuri",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "ヴィラとテラス（犬と一緒にBBQ）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kujukuri",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤・BBQコンロ・入口前の足洗い場",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kujukuri",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "ヴィラごとに専用ドッグラン",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kujukuri",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ie4c20d"
+  },
+  {
+   "name": "亀の井ホテル 鴨川",
+   "kind": "ホテル",
+   "pref": "千葉県",
+   "city": "鴨川市",
+   "url": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kamogawa",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県鴨川市西町1137",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kamogawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全室プライベートドッグラン付き（ツイン・定員3名・34㎡ほか）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kamogawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト10:00",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kamogawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kamogawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "3頭まで",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kamogawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭2,200円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kamogawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。同伴宿泊の同意書。飼い主の犬だけ。基本的なしつけができた室内犬、生後6か月以上、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kamogawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋と部屋のドッグラン（犬用の入口と駐車スペースあり）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kamogawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤・部屋の前の専用シャワー・犬用メニュー",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kamogawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "全室にウッドデッキの専用ドッグラン",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-kamogawa",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ia46548"
+  },
+  {
+   "name": "白浜オーシャンリゾート",
+   "kind": "ホテル",
+   "pref": "千葉県",
+   "city": "南房総市",
+   "url": "https://withdog.iconia.co.jp/hotels/shirahama-ocean-resort",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県南房総市白浜町白浜2784",
+     "src": "https://withdog.iconia.co.jp/hotels/shirahama-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1階テラス付きツイン（デラックス・スタンダード、定員3名）、2階の和室10畳（定員5名）",
+     "src": "https://withdog.iconia.co.jp/hotels/shirahama-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト10:00",
+     "src": "https://withdog.iconia.co.jp/hotels/shirahama-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/shirahama-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "3頭まで",
+     "src": "https://withdog.iconia.co.jp/hotels/shirahama-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭目は無料、2頭目から1頭2,200円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/shirahama-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。同伴宿泊の同意書。飼い主の犬だけ。基本的なしつけができた室内犬、生後6か月以上、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/shirahama-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋・シーサイドガーデン・ドッグラン（犬用の入口から行ける）",
+     "src": "https://withdog.iconia.co.jp/hotels/shirahama-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/shirahama-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "太平洋が見えるドッグラン（アジリティ）。夏は犬用プール",
+     "src": "https://withdog.iconia.co.jp/hotels/shirahama-ocean-resort",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i8dc4dc"
+  },
+  {
+   "name": "奥多摩 清流リゾート 亀の井ホテル 青梅",
+   "kind": "ホテル",
+   "pref": "東京都",
+   "city": "青梅市",
+   "url": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-ome",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "東京都青梅市駒木町3-668-2",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-ome",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグラン付きデラックススイート・サウナ付きプレミアム・ドッグラン付きアクセシブルスイート（いずれも定員4名）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-ome",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト10:00",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-ome",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（大型犬は1階の部屋だけ）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-ome",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小型・中型犬は2頭まで、大型犬は1頭まで",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-ome",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭2,200円（税込）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-ome",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。同伴宿泊の同意書。飼い主の犬だけ。基本的なしつけができた室内犬、生後6か月以上、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-ome",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（部屋で一緒に食事）と部屋のドッグラン",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-ome",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤・入口前の足洗い場・犬連れ専用の入口",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-ome",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "一部の部屋に専用ドッグラン",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-ome",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ib2239a"
+  },
+  {
+   "name": "ホテルニューアカオ",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "熱海市",
+   "url": "https://withdog.iconia.co.jp/hotels/hotel-new-akao",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県熱海市熱海1993-250",
+     "src": "https://withdog.iconia.co.jp/hotels/hotel-new-akao",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ホライゾン・ウイングのドッグフレンドリールーム（定員2名・39㎡）",
+     "src": "https://withdog.iconia.co.jp/hotels/hotel-new-akao",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト10:00",
+     "src": "https://withdog.iconia.co.jp/hotels/hotel-new-akao",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬だけ",
+     "src": "https://withdog.iconia.co.jp/hotels/hotel-new-akao",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで（あわせて15kgまで）",
+     "src": "https://withdog.iconia.co.jp/hotels/hotel-new-akao",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。同伴宿泊の同意書。飼い主の犬だけ。基本的なしつけができた室内犬、生後6か月以上、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/hotel-new-akao",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（部屋食）とシャトルバス",
+     "src": "https://withdog.iconia.co.jp/hotels/hotel-new-akao",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/hotel-new-akao",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s"
+   ],
+   "id": "ic15beb"
+  },
+  {
+   "name": "熱川オーシャンリゾート",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "東伊豆町",
+   "url": "https://withdog.iconia.co.jp/hotels/atagawa-ocean-resort",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県賀茂郡東伊豆町奈良本字熱川989-1",
+     "src": "https://withdog.iconia.co.jp/hotels/atagawa-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全室オーシャンフロント。犬と泊まれる部屋はビューバスツイン（定員3名）など",
+     "src": "https://withdog.iconia.co.jp/hotels/atagawa-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/atagawa-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/atagawa-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小型犬3頭まで、中型犬2頭まで、大型犬1頭まで",
+     "src": "https://withdog.iconia.co.jp/hotels/atagawa-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "小型犬2,200円、中型・大型犬3,300円（1頭・税込）。公式サイトの予約で半額",
+     "src": "https://withdog.iconia.co.jp/hotels/atagawa-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。同伴宿泊の同意書。飼い主の犬だけ。基本的なしつけができた室内犬、生後6か月以上、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/atagawa-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤・犬用メニュー・ペット用ドライヤー",
+     "src": "https://withdog.iconia.co.jp/hotels/atagawa-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "天然芝のドッグラン（アジリティ）。夏は犬用プール",
+     "src": "https://withdog.iconia.co.jp/hotels/atagawa-ocean-resort",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i3e10f5"
+  },
+  {
+   "name": "伊良湖オーシャンリゾート",
+   "kind": "ホテル",
+   "pref": "愛知県",
+   "city": "田原市",
+   "url": "https://withdog.iconia.co.jp/hotels/irago-ocean-resort",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "愛知県田原市日出町骨山1460-36",
+     "src": "https://withdog.iconia.co.jp/hotels/irago-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリールーム（オーシャンビュー・定員4名・39㎡）",
+     "src": "https://withdog.iconia.co.jp/hotels/irago-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト10:00",
+     "src": "https://withdog.iconia.co.jp/hotels/irago-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/irago-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小型・中型犬は2頭まで、大型犬は1頭まで",
+     "src": "https://withdog.iconia.co.jp/hotels/irago-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭4,500円",
+     "src": "https://withdog.iconia.co.jp/hotels/irago-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。同伴宿泊の同意書。飼い主の犬だけ、しつけができた1歳以上の室内犬、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/irago-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋・ドッグラン（送迎バスは不可）",
+     "src": "https://withdog.iconia.co.jp/hotels/irago-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤・ドッグカート・犬用メニュー",
+     "src": "https://withdog.iconia.co.jp/hotels/irago-ocean-resort",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "天然芝473㎡（5:00〜23:00・照明つき）と小・中型犬用のミニドッグラン。夏は犬用プール",
+     "src": "https://withdog.iconia.co.jp/hotels/irago-ocean-resort",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i89f0d8"
+  },
+  {
+   "name": "亀の井ホテル 知多美浜",
+   "kind": "ホテル",
+   "pref": "愛知県",
+   "city": "美浜町",
+   "url": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-chitamihama",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "愛知県知多郡美浜町奥田砂原39",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-chitamihama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ペット対応ツイン（定員3名・40㎡・防音と床の仕上げ）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-chitamihama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト10:00",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-chitamihama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-chitamihama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-chitamihama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭2,200円",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-chitamihama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。同伴宿泊の同意書。飼い主の犬だけ。基本的なしつけができた室内犬、生後6か月以上、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-chitamihama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（夕食も部屋で）と目の前の奥田海岸",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-chitamihama",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤・海への通路の足洗い場",
+     "src": "https://withdog.iconia.co.jp/hotels/kamenoi-hotels-chitamihama",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i243ad3"
+  },
+  {
+   "name": "シーガイア・フォレスト・コテージ",
+   "kind": "コテージ",
+   "pref": "宮崎県",
+   "city": "宮崎市",
+   "url": "https://withdog.iconia.co.jp/hotels/seagaia",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "宮崎県宮崎市山崎町浜山",
+     "src": "https://withdog.iconia.co.jp/hotels/seagaia",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "ドッグフレンドリールーム（定員7名・117㎡、木製ケージ・ベッドつき）",
+     "src": "https://withdog.iconia.co.jp/hotels/seagaia",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00、チェックアウト11:00",
+     "src": "https://withdog.iconia.co.jp/hotels/seagaia",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "犬種・大きさの制限なし（小型〜超大型）",
+     "src": "https://withdog.iconia.co.jp/hotels/seagaia",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "3頭まで",
+     "src": "https://withdog.iconia.co.jp/hotels/seagaia",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1泊1頭3,300円",
+     "src": "https://withdog.iconia.co.jp/hotels/seagaia",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "毎年1回の狂犬病予防接種と、有効期限内の混合ワクチン（伝染病予防注射）か抗体検査の証明。同伴宿泊の同意書。飼い主の犬だけ。基本的なしつけができた室内犬、生後6か月以上、ヒート中でない（終わって2週間以上）、妊娠中でない",
+     "src": "https://withdog.iconia.co.jp/hotels/seagaia",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋（1階はテラスのBBQコンロ）と松林の散歩道",
+     "src": "https://withdog.iconia.co.jp/hotels/seagaia",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "食器・トイレシート・ケージ・タオル・消臭剤",
+     "src": "https://withdog.iconia.co.jp/hotels/seagaia",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "近くの「ドッグパークohana」を宿泊者の特別料金で使える",
+     "src": "https://withdog.iconia.co.jp/hotels/seagaia",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "iacbc55"
+  },
+  {
+   "name": "清里ペンション・マッキントッシュ",
+   "kind": "ペンション",
+   "pref": "山梨県",
+   "city": "北杜市",
+   "url": "https://www.kiyosato-mackin.com/stay/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県北杜市高根町清里3545-443",
+     "src": "https://www.kiyosato-mackin.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型〜中型犬（20kgまで）",
+     "src": "https://www.kiyosato-mackin.com/stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "15kg以下1頭1,100円、20kg以下1頭1,650円（3頭目から半額）",
+     "src": "https://www.kiyosato-mackin.com/stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "猫1,100円、小動物550円",
+     "src": "https://www.kiyosato-mackin.com/stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "館内はどこでも（部屋の外ではリードを持つ）。食事は食堂で一緒に。生理中の犬は部屋から出さない（おむつ）",
+     "src": "https://www.kiyosato-mackin.com/stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "部屋に粘着ローラー・エチケット袋・消臭スプレー・ウェットティッシュ・トイレシーツ。共用スペースに足ふきタオル・食器・ケージ・トイレ（ケージ・サークル・トイレの貸し出しあり）",
+     "src": "https://www.kiyosato-mackin.com/stay/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "食器・フード・リード・いつものおもちゃやベッド",
+     "src": "https://www.kiyosato-mackin.com/stay/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "cat",
+    "small"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i5da8f2"
   }
  ]
 }
