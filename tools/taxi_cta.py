@@ -9,6 +9,9 @@ import os, re
 DIRS = ["hospital", "dogrun", "jichitai", "sougi", "pet-hotel", "pet-sitter", "trimming", "dog-trainer", "rojin-home", "inu-yado", "inu-cafe"]
 TOP4 = {"tokyo", "kanagawa", "saitama", "chiba"}
 # 一覧の上に出す短い案内（見出し, 説明）。ないカテゴリは上に出さない
+# 2026-11-14 Nori「一番最初にタクシーの動線があるけど、不適切な気がする、ユーザーのインテントと違うよね？」：
+# 一覧を見に来た人の最初に見るものは一覧そのもの。上の案内はやめ、各カードの「ここまでのペットタクシーの料金をくらべる」と下の節だけにする。
+TOP_OFF = True
 TOP = {
     "dogrun": ("ドッグランまで、車がないときは", "大型犬や何頭もいっしょでも、ペットタクシーで行けます。"),
     "pet-hotel": ("ホテルへの送り迎えに", "家の前からホテルの前まで、ペットタクシーで移動できます。"),
@@ -45,7 +48,7 @@ def build(root, prefs):
             btn = (f'<!--TAXICTA--><div class="taxi-cta"><a class="btn" href="{href}" data-taxi-cta="{cat}-bottom">{label}{ARROW}</a>'
                    f'<small>お迎えの場所と行き先を入れると、来てもらえる会社と料金の目安が並びます。{NOTE}</small></div><!--/TAXICTA-->')
             html = BOTTOM.sub(lambda m: m.group(1) + "\n    " + btn, html, count=1)
-            top = TOP.get(cat)
+            top = None if TOP_OFF else TOP.get(cat)
             if top and "<!--TAXICTA-->" in html:
                 card = (f'<!--TAXICTA--><section class="taxi-top-sec"><div class="wrap"><div class="taxi-top"><p><b>{top[0]}</b>{top[1]}</p>'
                         f'<a class="btn" href="{href}" data-taxi-cta="{cat}-top">{label}{ARROW}</a><small>{NOTE}</small></div></div></section><!--/TAXICTA-->\n')

@@ -136,7 +136,26 @@ _CHECK = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' vie
 
 CSS = """
 /* 図で読む部品（tools/visual.py、2026-11-14） */
-.art b.n,.prose b.n{color:var(--o-d);font-weight:800}
+/* 読みやすさ（2026-11-14 Nori「記事、すごく読みにくい」）：本文は濃い色・行間ひろめ、数字は色を変えずに下に薄いマーカー */
+.art{font-size:16.5px}
+.art p,.art ul,.art ol{color:#33302c;line-height:1.95}
+.art p{margin:0 0 20px}
+.art h2{margin-top:52px}
+.art b.n,.prose b.n{color:inherit;font-weight:700;background:linear-gradient(transparent 60%,#ffe1cc 0)}
+.art .next-box{display:block;background:var(--o-l);border-radius:16px;padding:14px 16px;margin:4px 0 26px}
+.art .next-box b{display:block;font-size:.8rem;color:var(--ink-2);font-weight:700;margin-bottom:2px}
+.art .next-box a{font-weight:800;color:var(--o-d);font-size:1.02rem;line-height:1.5}
+.art .next-box small{display:block;color:var(--ink-3);font-size:.76rem;line-height:1.6;margin-top:4px}
+.art p.next-mini{margin:-6px 0 22px;font-size:.9rem}
+.art p.next-mini a{color:var(--o-d);font-weight:700}
+.guide-cta{margin:0 0 14px;font-size:.95rem;line-height:1.6}
+.guide-cta a{font-weight:800;color:var(--o-d)}
+.guide-cta small{display:block;color:var(--ink-3);font-size:.78rem;margin-top:2px}
+.art details.toc2{background:#fff;border:1.5px solid var(--line);border-radius:16px;margin:18px 0 8px;padding:0 16px}
+.art details.toc2 summary{cursor:pointer;font-weight:800;padding:12px 0;color:var(--ink);list-style-position:inside}
+.art details.toc2 ol{margin:0 0 14px;padding-left:1.5em;font-size:.92rem}
+.art details.toc2 li{margin:6px 0}
+.art details.toc2 a{color:var(--ink)}
 .art ul.kv{list-style:none;padding:0;display:grid;gap:10px}
 .art ul.kv li{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;margin:0;line-height:1.75}
 .art ul.kv li b.k{display:block;color:var(--ink);font-size:1rem;line-height:1.5;margin-bottom:3px;padding-left:12px;border-left:4px solid var(--o)}
@@ -150,7 +169,7 @@ CSS = """
 .art ol.steps>li:last-child::after{display:none}
 .art ol.steps b.k,.art ul.check b.k{display:block;color:var(--ink);font-size:1rem;line-height:1.5;margin-bottom:2px}
 .art ul:not([class]) li::marker{color:var(--o)}
-.art .answer{background:#fff;border:2.5px solid var(--o);border-radius:22px;padding:4px 18px 4px;margin:28px 0 8px;box-shadow:0 6px 18px rgba(255,106,26,.08)}
+.art .answer{background:#fff;border:2.5px solid var(--o);border-radius:22px;padding:4px 14px 4px;margin:28px 0 8px;box-shadow:0 6px 18px rgba(255,106,26,.08)}
 .art .answer>h2{border-left:0;padding-left:0;margin:16px 0 10px;font-size:1.2rem}
 .art .answer>h2::before{content:"この記事の答え";display:block;width:max-content;font-size:.72rem;letter-spacing:.08em;background:var(--o);color:#fff;border-radius:999px;padding:2px 10px;margin-bottom:8px}
 .art .answer ul:not([class]){list-style:none;padding:0}
@@ -179,14 +198,14 @@ CSS = """
 .art table.stack td:last-child{background:transparent;font-weight:700}
 .art table.stack td::before{content:attr(data-l);display:block;font-size:.72rem;font-weight:800;color:var(--ink-3);margin-bottom:1px}
 }
-.vstats{list-style:none;padding:0;margin:6px 0 20px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.art .vstats,.vstats{list-style:none;padding:0;margin:6px 0 20px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .vstats li{background:var(--o-l);border-radius:18px;padding:14px 14px 12px;margin:0;display:flex;flex-direction:column;gap:4px}
-.vstats b{font-size:1.2rem;line-height:1.25;color:var(--o-d);font-weight:800;letter-spacing:-.01em}
+.vstats b{font-size:1.12rem;line-height:1.25;color:var(--o-d);font-weight:800;letter-spacing:-.01em}
 .vstats span{font-size:.82rem;line-height:1.55;color:var(--ink-2)}
 @media (min-width:600px){.vstats{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.vstats b{font-size:1.55rem}}
 .bars{margin:6px 0 22px;background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:16px 16px 10px}
 .bars figcaption{font-weight:800;color:var(--ink);font-size:.98rem;margin-bottom:10px}
-.bars ol{list-style:none;padding:0;margin:0}
+.art .bars ol,.bars ol{list-style:none;padding:0;margin:0}
 .bars li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;margin:0 0 8px}
 .bars .l{grid-column:1/-1;font-size:.84rem;color:var(--ink-2);line-height:1.45}
 .bars .t{height:14px;background:#f7f4f1;border-radius:7px;overflow:hidden}
@@ -202,7 +221,7 @@ CSS = """
 .vs .vb b.vh{color:var(--ink-2)}
 .vs ul{padding-left:1.2em;margin:0 0 8px}
 @media (min-width:600px){.vs{grid-template-columns:1fr 1fr}}
-.flow{list-style:none;padding:0;margin:6px 0 20px;display:grid;gap:22px}
+.art .flow,.flow{list-style:none;padding:0;margin:6px 0 20px;display:grid;gap:22px}
 .flow li{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:10px 14px;margin:0;text-align:center}
 .flow li b{display:block;color:var(--o-d);font-size:.98rem}
 .flow li span{display:block;font-size:.82rem;color:var(--ink-2);line-height:1.55}
