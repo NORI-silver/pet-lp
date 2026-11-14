@@ -89,7 +89,7 @@ def urn_rows(more=False):
 def urn_block():
     return ("breeds", {"title": "うちの子の犬種・体重で、骨つぼの大きさを見る",
                        "lead": "骨つぼの大きさは、体の大きさ（お骨の量）で決まります。犬種を選ぶと、目安の大きさが出ます。",
-                       "sizes": [(k, l, lo, hi) for k, l, lo, hi, _ in CREM_SIZES], "rows": urn_rows(True),
+                       "sizes": [(k, l, lo, hi) for k, l, lo, hi, _ in CREM_SIZES], "rows": urn_rows(True), "cat_kg": True,
                        "note": "犬種と骨つぼの大きさの組み合わせは、ペット霊園宇都宮の料金表の書き方です（2026年11月に確認）。同じ犬種でも体の大きさで変わります。"})
 
 def URN_ROWS():
@@ -115,7 +115,7 @@ def cremation_block():
             "犬種の体重は目安です。いまの体重に近い区分を選んでください。")
     return ("breeds", {"title": "うちの子の体重・犬種で、火葬の料金と骨つぼを見る",
                        "lead": "犬種や体重を選ぶと、その子に当てはまるカードだけになります（ミックスの子は体重で）。",
-                       "sizes": [(k, l, lo, hi) for k, l, lo, hi, _ in CREM_SIZES], "rows": rows, "note": note})
+                       "sizes": [(k, l, lo, hi) for k, l, lo, hi, _ in CREM_SIZES], "rows": rows, "note": note, "cat_kg": True})
 
 CREM_SOURCES = [(n.split("（")[0] + "（料金）", u) for n, _, u, _ in CREMATION]
 
@@ -135,14 +135,27 @@ def training_block():
      8: "レトリーバーなどの鳥猟犬です（JKC）。体が大きくなるので、子犬のうちに引っぱらない歩き方と、とびつかない練習をしておくと楽になります",
      9: "家庭犬、伴侶や愛玩目的の犬です（JKC）。体が小さいので抱っこで済ませがちですが、自分の足で歩く・知らない人に触られることにも少しずつ慣らします",
      2: "番犬、警護、作業をする犬のなかまです（JKC）。ミニチュア・シュナウザーなど小さな犬種も入ります。物音への反応の落ち着け方を教室で相談します",
+     7: "獲物を探し出し、その位置を静かに示す猟犬のなかまです（JKC）。においや鳥に気を取られやすいので、呼んだら戻る練習を教室で相談します",
+     10: "優れた視覚と走力で獲物を追う犬のなかまです（JKC）。動くものを目で追って走り出すことがあるので、囲いのない場所での引き綱の扱いを教室で決めておきます",
     }
+    # 性格の文を写した犬種（よく飼われている犬種）は1頭ずつ、そのほかの犬種はなかま（グループ）ごとのカードにする
+    grows = []
+    for g in sorted(B.GROUPS):
+        rest = [b for b in B.BREEDS if b["group"] == g and not b["trait"]]
+        if not rest: continue
+        names = "、".join(b["name"] for b in rest[:6]) + ("など" if len(rest) > 6 else "")
+        grows.append(dict(k=[b["id"] for b in rest], h=f"{_gname(g)}のなかま（{names}）", tag="なかま",
+                         items=[G_TIPS[g], f"このなかまの犬種：{'、'.join(b['name'] for b in rest)}"],
+                         src=(f"JKC「{_gname(g)}」", B.GROUPS[g][2])))
     for b in B.BREEDS:
+        if not b["trait"]: continue
         items = []
         if b["trait"]: items.append(f"JKCの犬種標準の「性格」：「{b['trait']}」")
         items.append(f"犬種のなかま：{_gname(b['group'])}。{G_TIPS[b['group']]}")
         if "brachy" in b.get("tags", []):
             items.append("鼻の短い犬種（短頭種）です。暑い日の屋外の練習や、長いあいだ興奮させる練習はさけ、涼しい時間・室内で短く行うよう教室と決めておきます")
         rows.append(dict(k=[b["id"]], h=b["name"], tag="犬種", items=items, src=(f"JKC「{b['name']}」", b["url"])))
+    rows += grows
     rows += [
      dict(k=["l"], h="大型犬（25kg以上）", tag="体重",
           items=["子犬のうちはすぐ大きくなります。引っぱり・とびつきは、体が大きくなってからだと止めるのに力がいるので、早めに教室で練習します",
