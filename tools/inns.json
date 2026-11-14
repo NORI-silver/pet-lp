@@ -23764,6 +23764,467 @@
     "s"
    ],
    "id": "i914873"
+  },
+  {
+   "name": "月の宿・海の家",
+   "kind": "貸別荘",
+   "pref": "兵庫県",
+   "city": "赤穂市",
+   "url": "https://moon-ocean.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県赤穂市御崎のあたり（一棟貸しの貸別荘2軒）",
+     "src": "https://moon-ocean.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "猫など犬以外",
+     "v": "犬とうさぎだけ（ほかの動物は不可）",
+     "src": "https://moon-ocean.com/clause",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://moon-ocean.com/clause",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "予防接種の証明、犬は保健所への登録。1歳以上でトイレのしつけができていること。ケージ・クレートを持ってくる（部屋に残すとき・スタッフが入るとき）。ごはんといつもの寝具・タオル",
+     "src": "https://moon-ocean.com/clause",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "建物の中（浴槽・布団には上げない。長い時間ペットだけにしない）",
+     "src": "https://moon-ocean.com/clause",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "発情中の子",
+     "src": "https://moon-ocean.com/clause",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog",
+    "rabbit"
+   ],
+   "id": "iaaafbc"
+  },
+  {
+   "name": "KONA RESORT AWAJI KAI（Pool Villa）",
+   "kind": "貸別荘",
+   "pref": "兵庫県",
+   "city": "淡路市",
+   "url": "https://kona-resort.jp/location/pool-villa/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "兵庫県淡路市江井2134",
+     "src": "https://kona-resort.jp/location/pool-villa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1棟貸しのプールヴィラ4棟のうち、Pool Villa 02（1階だけ）と03（1・2階だけ）が犬と泊まれる。01とOn the WATERは不可",
+     "src": "https://kona-resort.jp/qa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "02は1階、03は1階と2階（上の階には入れない）",
+     "src": "https://kona-resort.jp/location/pool-villa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "02・03の1階に、犬もくつろげる大きなソファベッド",
+     "src": "https://kona-resort.jp/location/pool-villa/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "建物の裏に共用のドッグラン",
+     "src": "https://kona-resort.jp/qa/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i43072b"
+  },
+  {
+   "name": "クリスタルヴィラ白浜",
+   "kind": "貸別荘",
+   "pref": "和歌山県",
+   "city": "西牟婁郡白浜町",
+   "url": "https://crystalvilla.jp/shirahama/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "和歌山県西牟婁郡白浜町堅田2399-3524（チェックインは2399-2684）",
+     "src": "https://crystalvilla.jp/shirahama/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全12棟のうち犬と泊まれるのはC・D・E・I棟の4棟",
+     "src": "https://crystalvilla.jp/shirahama/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "定員と広さ",
+     "v": "C棟8名（最大10名）・約137㎡、D棟6名・約98㎡、E棟6名・約97㎡、I棟8名・約95㎡（メゾネット）",
+     "src": "https://crystalvilla.jp/shirahama/rooms/?s=pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋の設備",
+     "v": "全4棟に露天風呂とジャグジー。C棟とI棟はサウナとプールも",
+     "src": "https://crystalvilla.jp/shirahama/rooms/?s=pet",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージと犬用のアメニティ",
+     "src": "https://crystalvilla.jp/shirahama/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i274102"
+  },
+  {
+   "name": "こころ和む愛犬との湯宿 桃の木温泉 さんわそう",
+   "kind": "旅館",
+   "pref": "山梨県",
+   "city": "南アルプス市",
+   "url": "https://reserve.489ban.net/client/momonoki/0/detail/395759",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県南アルプス市芦安（桃の木温泉）。甲府昭和ICから芦安方面へ車で約40分",
+     "src": "https://www.yamanashi-kankou.jp/special/2019gw_pet.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬も大型犬も",
+     "src": "https://reserve.489ban.net/client/momonoki/0/detail/395759",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊2,200円（公式サイトからの予約は2頭まで無料の特典）",
+     "src": "https://reserve.489ban.net/client/momonoki/0/detail/395759",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病の証明書と、1年以内に受けた5種以上の混合ワクチンの証明書",
+     "src": "https://reserve.489ban.net/client/momonoki/0/detail/395759",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室とお食事処",
+     "src": "https://reserve.489ban.net/client/momonoki/0/detail/395759",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "屋内ドッグラン。部屋によって屋外のドッグランや部屋専用の室内ドッグラン",
+     "src": "https://reserve.489ban.net/client/momonoki/0/detail/395759",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ・消臭スプレー・食器・トイレトレー・ペットシーツ・粘着ローラー・ウェットティッシュ・袋・ブラシなど（部屋で少しちがう）",
+     "src": "https://reserve.489ban.net/client/momonoki/0/detail/395759",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "料理長の犬用の食事を前もって頼める（夕食1,100円・朝食880円）",
+     "src": "https://reserve.489ban.net/client/momonoki/0/detail/395759",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i5d87ad"
+  },
+  {
+   "name": "ドッグヴィラ富士河口湖",
+   "kind": "貸別荘",
+   "pref": "山梨県",
+   "city": "南都留郡富士河口湖町",
+   "url": "https://reserve.489ban.net/client/dog-villa-fuji/0/detail/722987",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全棟犬と泊まれる1棟貸しのヴィラ。各棟に天然温泉とサウナ",
+     "src": "https://reserve.489ban.net/client/dog-villa-fuji/0/detail/722987",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "全棟にプライベートドッグラン（棟の敷地の中はリードなしで過ごせる）",
+     "src": "https://reserve.489ban.net/client/dog-villa-fuji/0/detail/722987",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬用の温泉",
+     "v": "犬用の浴槽がある温泉",
+     "src": "https://reserve.489ban.net/client/dog-villa-fuji/0/detail/722987",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "トイレトレー・シーツ・サークルとマット・食器・タオル・ウェットティッシュ・消臭ミスト・袋（犬1頭分）",
+     "src": "https://reserve.489ban.net/client/dog-villa-fuji/0/detail/722987",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜18:00、チェックアウト10:00",
+     "src": "https://reserve.489ban.net/client/dog-villa-fuji/0/detail/722987",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "プラン",
+     "v": "素泊まり（食材の持ち込み可。火器は持ち込めず、BBQはコンロを予約）",
+     "src": "https://reserve.489ban.net/client/dog-villa-fuji/0/detail/722987",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "ie60c5a"
+  },
+  {
+   "name": "DOG VILLA 千葉南房総",
+   "kind": "貸別荘",
+   "pref": "千葉県",
+   "city": "南房総市",
+   "url": "https://reserve.489ban.net/client/dog-villa/0/detail/675100",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "全棟犬と泊まれる1棟貸しのヴィラ（天然温泉とプライベートSPA）",
+     "src": "https://reserve.489ban.net/client/dog-villa/0/detail/675100",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防接種証と5種以上の混合ワクチン接種証のコピー",
+     "src": "https://reserve.489ban.net/client/dog-villa/0/detail/675100",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "全棟に専用のドッグラン（80㎡以上、部屋で少しちがう）。棟の敷地の中はリードなしで過ごせる",
+     "src": "https://reserve.489ban.net/client/dog-villa/0/detail/675100",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬用の温泉",
+     "v": "犬用の浴槽があり、一緒に天然温泉に入れる",
+     "src": "https://reserve.489ban.net/client/dog-villa/0/detail/675100",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "サークルとマット・トイレトレー・シーツ・食器・タオル・ウェットティッシュ・消臭ミスト・袋",
+     "src": "https://reserve.489ban.net/client/dog-villa/0/detail/675100",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜18:00、チェックアウト11:00",
+     "src": "https://reserve.489ban.net/client/dog-villa/0/detail/675100",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "id38f3e"
+  },
+  {
+   "name": "ドッグヴィラ千葉千倉",
+   "kind": "貸別荘",
+   "pref": "千葉県",
+   "city": "南房総市",
+   "url": "https://reserve.489ban.net/client/dog-villa-cc/0/detail/1320660",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "プライベートプール・サウナ・ドッグランつきの貸切ヴィラ（TypeA・TypeB）",
+     "src": "https://reserve.489ban.net/client/dog-villa-cc/0/detail/1320660",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "何頭でも一緒に泊まれる（上限の記載なし）",
+     "src": "https://reserve.489ban.net/client/dog-villa-cc/0/detail/1320660",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "TypeAは室内67㎡・ドッグラン136㎡",
+     "src": "https://reserve.489ban.net/client/dog-villa-cc/0/detail/1320660",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "部屋と柵で囲んだ庭（リードなしで過ごせる）",
+     "src": "https://reserve.489ban.net/client/dog-villa-cc/0/detail/1320660",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜18:00、チェックアウト11:00",
+     "src": "https://reserve.489ban.net/client/dog-villa-cc/0/detail/1320660",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "プラン",
+     "v": "素泊まり（BBQはグリルを予約、火気の持ち込み不可）",
+     "src": "https://reserve.489ban.net/client/dog-villa-cc/0/detail/1320660",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "ie03749"
+  },
+  {
+   "name": "Imitelis Biotop（イミテリス ビオトープ）",
+   "kind": "貸別荘",
+   "pref": "千葉県",
+   "city": "山武郡横芝光町",
+   "url": "https://reserve.489ban.net/client/imitelis-biotop/0/detail/1193823",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "千葉県山武郡横芝光町木戸台1892-1（松尾横芝ICから約8分）",
+     "src": "https://san-tatsu.jp/pressrelease/493337/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "1日1組の1棟貸しのドッグヴィラ",
+     "src": "https://reserve.489ban.net/client/imitelis-biotop/0/detail/1193823",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "小型犬・中型犬・大型犬",
+     "src": "https://san-tatsu.jp/pressrelease/493337/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "大型犬6頭までは追加料金なし",
+     "src": "https://reserve.489ban.net/client/imitelis-biotop/0/detail/1193823",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "フェンスで囲んだ約9,000㎡の専用ドッグラン（リードなし）と、いちばん深いところ約70cmのドッグプール",
+     "src": "https://san-tatsu.jp/pressrelease/493337/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ドライルーム・玄関からつながる洗い場・ケージ・すべりにくい床",
+     "src": "https://reserve.489ban.net/client/imitelis-biotop/0/detail/1193823",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ib89625"
+  },
+  {
+   "name": "ドッググランピング河口湖",
+   "kind": "グランピング",
+   "pref": "山梨県",
+   "city": "南都留郡富士河口湖町",
+   "url": "https://reserve.489ban.net/client/dg-kawaguchiko/0/detail/849832",
+   "ok": true,
+   "facts": [
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と一緒に泊まる人だけのグランピング。ドーム（スタンダード・プライベート・スイート）とプレミアムコテージ（アジリティつきもある）",
+     "src": "https://reserve.489ban.net/client/dg-kawaguchiko/0/detail/849832",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "全棟に専用のドッグラン。スタンダードドーム60㎡、プレミアムコテージ・プライベートドーム80㎡、スイートドーム120㎡",
+     "src": "https://reserve.489ban.net/client/dg-kawaguchiko/0/detail/849832",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "泊まる棟とその専用ドッグラン",
+     "src": "https://reserve.489ban.net/client/dg-kawaguchiko/0/detail/849832",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "プラン",
+     "v": "1泊2食つき（BBQ）",
+     "src": "https://reserve.489ban.net/client/dg-kawaguchiko/0/detail/849832",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "無添加の食材を使った犬用のごはんがある",
+     "src": "https://reserve.489ban.net/client/dg-kawaguchiko/0/detail/849832",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00〜18:00、チェックアウト10:00",
+     "src": "https://reserve.489ban.net/client/dg-kawaguchiko/0/detail/849832",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "icf3a00"
   }
  ]
 }
