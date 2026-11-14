@@ -909,7 +909,7 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="sh"><h2>はじめての方へ・移動の困りごとから調べる</h2></div>
-    {guide_cards(_basic_first([g["slug"] for g in GUIDES if g.get("category") not in ("facility", "procedure", "care")]))}
+    {guide_cards(_basic_first([g["slug"] for g in GUIDES if g.get("category") not in ("facility", "procedure", "care", "money")]))}
     <div class="sh"><h2>病院・施設名から移動を調べる</h2></div>
     <p>通院先や宿泊先ごとの行き方、受付・乗降場所、帰りの車で確かめたいことをまとめました。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "facility"])}
@@ -919,6 +919,9 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
     <div class="sh"><h2>老犬ホーム・ドッグトレーナー・ペットシッターのえらび方</h2></div>
     <p>預ける・頼む前に知っておきたいこと。全国の一覧は<a href="/rojin-home/">老犬ホーム・老猫ホーム</a>、<a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a>、<a href="/pet-sitter/">ペットシッター</a>、<a href="/trimming/">出張トリミング</a>、<a href="/pet-hotel/">大型犬OK・猫専用のペットホテル</a>から。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "care"])}
+    <div class="sh"><h2>病院代とペット保険</h2></div>
+    <p>手術や入院にかかるお金と、保険に入るかどうかの考え方。</p>
+    {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "money"])}
   </div>
 </section>
 <section style="padding-top:0">
