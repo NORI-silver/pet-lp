@@ -139,11 +139,42 @@ def _fare_ride(F, km):
 def _mid(v): return v[(len(v) - 1) // 2]
 def _r100(y): return f"{int(round(y / 100.0)) * 100:,}円"
 _OTHER = [("visit", "往診専門（家に来てくれる）の"), ("cat", "猫専門の"), ("exotic", "エキゾチックアニマル専門の"), ("large", "大型犬の設備がある")]
+# [B] 2026-11-14 Nori「薄い記事は撲滅させてね。全部濃い記事にして」：検索は「夜間 動物病院 料金」「24時間」「近く」が多い。
+# 病院ごとに公式サイトで確かめた項目（night_hospital_facts.json、出どころ・確認日つき）を県のページにも表で出す。書いていない項目は「—」。
+_HF = {x["id"]: x for x in json.load(open(os.path.join(_D, "night_hospital_facts.json"), encoding="utf-8"))["items"] if x.get("ok", True) and not x.get("closed")}
+def _hf(h, k):
+    x = _HF.get(h.get("id"))
+    for f in (x or {}).get("facts", []):
+        if f["k"] == k: return f
+    return None
+_FCOLS = [("夜間の料金", ("夜間の料金", "費用の目安")), ("対象の動物", ("対象の動物",)), ("お支払い", ("支払い方法",)),
+          ("休み", ("休診日",)), ("車・電車", ("駐車場", "最寄り駅"))]
+def _night_fact_table(e, pf, rs):
+    hs = [h for h in rs if h.get("id") in _HF]
+    if not hs: return ""
+    def cell(h, ks):
+        vs = [f["v"] for f in (_hf(h, k) for k in ks) if f]
+        return e("／".join(vs)) if vs else "—"
+    rows = "".join(f'<tr><th scope="row">{e(h["name"])}</th>' + "".join(f"<td>{cell(h, ks)}</td>" for _, ks in _FCOLS) + "</tr>" for h in hs)
+    fee = sum(1 for h in hs if _hf(h, "夜間の料金") or _hf(h, "費用の目安"))
+    card = sum(1 for h in hs if re.search("カード", (_hf(h, "支払い方法") or {}).get("v", "")) and not re.search("使えない|不可|原則現金|現金のみ", _hf(h, "支払い方法")["v"]))
+    dates = sorted({f["checked"] for h in hs for f in _HF[h["id"]]["facts"] if f.get("checked")})
+    d = dates[-1] if dates else ""
+    jd = f"{int(d[:4])}年{int(d[5:7])}月{int(d[8:10])}日" if len(d) == 10 else d
+    srcs = "".join(f'<li><a href="{e(h["url"])}" target="_blank" rel="noopener">{e(h["name"])}の公式サイト</a></li>' for h in hs)
+    return (f'<div class="emg-tips" style="margin-top:0"><h4>{e(pf)}の夜間の病院の料金・受け入れをくらべる</h4>'
+            f'<p>載せている{len(rs)}院のうち{len(hs)}院について、公式サイトに書いてある夜間の料金・診てもらえる動物・お支払い・休み・行き方をまとめました。'
+            f'夜間の料金を書いているのは{fee}院、クレジットカードが使えると書いているのは{card}院です。'
+            '夜間は、診察料のほかに検査・処置・お薬の料金が加わります。金額は税込・税抜が病院ごとに違うので、そのまま写しています。</p>'
+            f'<table><thead><tr><th>病院</th>' + "".join(f"<th>{lab}</th>" for lab, _ in _FCOLS) + f'</tr></thead><tbody>{rows}</tbody></table>'
+            f'<p class="emg-tips-note">「—」は公式サイトに書いていない・見つからなかった項目です（「しない」という意味ではありません）。{jd}までに各病院の公式サイトで確かめました。料金や受け入れは変わることがあるので、行く前に電話でたずねてください。</p>'
+            f'<details><summary>確かめた公式サイト</summary><ul>{srcs}</ul></details></div>')
+
 def _night_extra(e, pf):
     from urllib.parse import quote
     rs = [h for h in _HOS if pf in h["prefs"]]
     hc = _hours_counts(rs)
-    out = ""
+    out = _night_fact_table(e, pf, rs)
     # ① 受付時間
     out += (f'<div class="emg-tips" style="margin-top:0"><h4>{e(pf)}の病院の受付時間を数えると</h4><ul class="pp-facts">'
             f'<li>24時間受け付けると書いている病院：{hc["all"]}院</li>'
@@ -168,6 +199,12 @@ def _night_extra(e, pf):
             + '</ul><p class="emg-tips-note">夜の救急のあとは、かかりつけの病院か、症状に合った病院に引きつぐことが多いです。</p></div>')
     return out
 
+def _fee_answer(pf, rs):
+    fs = [(h["name"], (_hf(h, "夜間の料金") or _hf(h, "費用の目安"))["v"]) for h in rs if _hf(h, "夜間の料金") or _hf(h, "費用の目安")]
+    if not fs: return "載せている病院の公式サイトには、夜間の料金が見つかりませんでした。夜間は時間外の料金が加わることが多いので、電話のときにたずねてください。"
+    return ("公式サイトに書いてある夜間の料金は、" + "。".join(f"{n}：{v}" for n, v in fs[:4]) + "。"
+            "診察料のほかに検査・処置・お薬の料金が加わります。変わることがあるので、電話のときにたずねてください。")
+
 def _night_faq(pf, rs, n):
     names = "、".join(h["name"] for h in rs[:3])
     hc = _hours_counts(rs); tx = _taxi_night(pf); ec = _emg_cos(pf)
@@ -176,7 +213,7 @@ def _night_faq(pf, rs, n):
      (f"{pf}に24時間や朝まで診てくれる動物病院はありますか？", f"公式サイトの受付時間の書き方で数えると、{pf}で載せている{n}院のうち、24時間と書いているのは{hc['all']}院、朝5時以降まで受け付けるのは{hc['till5']}院、夜中の0時をこえて受け付けるのは{hc['past0']}院です。曜日で変わる病院が多いので、公式サイトでご確認ください。"),
      (f"{pf}で、夜中に病院まで運んでくれる会社は？", (f"公式サイトに緊急・夜間の搬送を書いている会社が{len(ec)}社あります（" + "、".join(t["name"] for t in ec) + "）。連絡先は各社の公式サイトでご確認ください。") if ec else f"{pf}を対応エリアに書いている緊急の搬送の会社は、まだ見つけられていません。病院に電話するときに、車がないことも相談してください。"),
      ("夜間の病院に行く前にすることは？", "まず電話で、症状・いつからか・動物の種類と体重を伝えて、受け入れてもらえるかを確かめてください。手術中や混雑で受けられないことがあります。"),
-     ("夜間の診察の料金は？", "この一覧には料金を載せていません。夜間は時間外の料金が加わることが多いので、電話のときにたずねてください。"),
+     ("夜間の診察の料金は？", _fee_answer(pf, rs)),
      ("夜中に病院まで行く車がないときは？", "緊急の搬送をしている会社に直接連絡できます。くわしくは「緊急のときの連絡先」のページをご覧ください。"),
     ]
 
