@@ -11,6 +11,15 @@ PUBLISHED = "2026-10-27"  # ガイド記事の公開日
 # 料金の目安（片道）。提携先ごとの料金表とエリアの対応は tools/fares.json にまとめている。
 # 会社を足したら fares.json を直してこのスクリプトを実行すると、トップの料金表・フォームの概算・エリアページがまとめて変わる。
 import math
+# 2026-11-14 点検：会社本人の答え（display_companies.py の PROVIDER）を毎回 display_companies.json に重ねる。入れ忘れ・先祖返りを防ぐ
+def _apply_provider():
+    import sys as _s; _s.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import display_companies as _dc
+    _p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json")
+    _j = json.load(open(_p, encoding="utf-8")); _before = json.dumps(_j, ensure_ascii=False)
+    for _r in _j["companies"]: _dc.apply_provider(_r)
+    if json.dumps(_j, ensure_ascii=False) != _before: json.dump(_j, open(_p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+_apply_provider()
 FARES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fares.json"), encoding="utf-8"))
 CO = FARES["companies"]
 ALL_PREFS = list(FARES["areas"])

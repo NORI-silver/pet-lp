@@ -792,6 +792,9 @@
    "points": [
     "24時間受付",
     "カード払い可"
+   ],
+   "limits": [
+    "同乗は3人まで"
    ]
   },
   {
@@ -1055,12 +1058,12 @@
      "per": 110
     }
    },
-   "pay": "",
+   "pay": "現金・電子マネー・QRコード決済",
    "url": "https://www.petta-tokyo.com/",
    "long": true,
    "review_q": "PETTA東京 東京",
    "review_name": "PETTA東京",
-   "hours": "8-21",
+   "hours": "6-22",
    "flex": true,
    "closed": [],
    "lead_days": 0,
@@ -1073,7 +1076,10 @@
    },
    "car_type": "軽自動車またはミニバン",
    "limits": [
-    "車：軽自動車またはミニバン"
+    "車：軽自動車またはミニバン",
+    "同乗は2人まで",
+    "2〜3頭OK",
+    "大型犬2頭OK"
    ],
    "points": [
     "当日予約可",
@@ -4560,13 +4566,14 @@
      "from": 21,
      "to": 8,
      "flat": 3300
-    }
+    },
+    "roundContinuous": true
    },
-   "pay": "カード・PayPay",
+   "pay": "現金・カード・電子マネー・QRコード決済",
    "url": "https://cocotaxi-shizuoka.com/",
    "review_q": "ペットタクシー COCOタク静岡 静岡",
    "review_name": "COCOタク静岡",
-   "hours": "8-21",
+   "hours": "0-24",
    "flex": true,
    "closed": [],
    "lead_days": null,
@@ -4583,7 +4590,8 @@
    "limits": [
     "車：軽自動車",
     "2〜3頭OK",
-    "同乗は3人まで"
+    "同乗は3人まで",
+    "大型犬3頭まで"
    ],
    "points": [
     "深夜・早朝も相談可",
@@ -6901,7 +6909,7 @@
     },
     "back": {}
    },
-   "pay": "",
+   "pay": "現金・カード・電子マネー・QRコード決済",
    "url": "https://pettaku.com/",
    "long": true,
    "review_q": "ペッタク ペット専門の輸送サービス",
@@ -7271,7 +7279,7 @@
      "タクシーチケットは使えません。"
     ]
    },
-   "pay": "現金・カード",
+   "pay": "現金・カード・電子マネー・QRコード決済",
    "url": "https://cocotakufukuokahigashi.com/",
    "review_q": "COCOタク 福岡東店 福岡",
    "review_name": "COCOタク 福岡東店",
@@ -7294,6 +7302,11 @@
     "山口",
     "佐賀",
     "熊本"
+   ],
+   "limits": [
+    "同乗は2人まで",
+    "2頭OK",
+    "大型犬1頭まで"
    ]
   },
   {
