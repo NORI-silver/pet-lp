@@ -106,6 +106,102 @@ def flow(items):
     """短い流れ（→でつなぐ）。items = [(見出し, ひとこと), ...]"""
     return '<ol class="flow">' + "".join(f'<li><b>{e(t)}</b>{("<span>" + e(s) + "</span>") if s else ""}</li>' for t, s in items) + "</ol>"
 
+# ---- 犬種・体重で「うちの子で見る」（2026-11-14 Nori「全部犬種ごとにフィルターして、それぞれの情報があるほうがいいね」）----
+# カードは全部HTMLに出す（最初は全部見える。検索・AIにも全部読める）。選ぶと、合わないカードだけを hidden にする小さなJS（BF_JS）。
+# 選んだ犬種・体重はブラウザに覚えて（petBreed）、ほかの記事でも同じ子で見られる。保険の記事（guides_insurance.py）と共通の部品。
+# 使い方：("breeds", {"title":…, "lead":…, "rows":[{"k":["s"], "h":見出し, "items":[文 か ("table", …) などの部品], "src":(名前, URL)}], "note":…,
+#          "sizes":[(キー, 表示, 下限kg, 上限kg未満)]（省略で breeds.SIZES）, "breeds":[犬種id]（省略で全部）})
+# k に使えるもの：all（だれでも）・体重の区分のキー・犬種id（tools/breeds.py）・g1〜g9（JKCのグループ）・brachy（短頭種）・cat（猫）
+_BF_N = [0]
+def _bf_items(items, arrow, heading):
+    """文はまとめて箇条書きに、表・棒グラフなどの部品はそのまま（箇条書きの中に入れない）"""
+    out, buf = [], []
+    for x in items:
+        if isinstance(x, str): buf.append(f"<li>{rich(x)}</li>"); continue
+        if buf: out.append("<ul>" + "".join(buf) + "</ul>"); buf = []
+        out.append(block(x, arrow, heading))
+    if buf: out.append("<ul>" + "".join(buf) + "</ul>")
+    return "".join(out)
+def breeds(d, arrow="", heading=""):
+    import breeds as B
+    sizes = d.get("sizes") or B.SIZES
+    rows = d["rows"]
+    used = {k for r in rows for k in r["k"]}
+    import hashlib
+    uid = "bf-" + hashlib.sha1((d.get("title", "") + str(len(rows))).encode("utf-8")).hexdigest()[:6]  # ページの作り直しで変わらない id
+    def ov(lo, hi, a, b): return lo < b and a < hi  # 重なり
+    opts = ['<option value="">すべて表示</option>', '<optgroup label="体重で選ぶ（ミックスの子も）">']
+    for key, lab, lo, hi in sizes:
+        show = ["all", key] + [b["id"] for b in B.BREEDS if ov(b["kg"][0], b["kg"][1], lo, hi)]
+        opts.append(f'<option value="{e(key)}" data-show="{e(" ".join(show))}" data-lo="{lo}" data-hi="{hi}">{e(lab)}</option>')
+    opts.append("</optgroup>")
+    if "cat" in used:
+        opts.append('<optgroup label="猫"><option value="cat" data-show="all cat" data-b="cat">猫</option></optgroup>')
+    opts.append('<optgroup label="犬種で選ぶ">')
+    ids = d.get("breeds") or [b["id"] for b in B.BREEDS]
+    for bid in ids:
+        b = B.BY_ID[bid]
+        lo, hi = b["kg"]
+        show = ["all"] + B.keys_of(b) + [k for k, _, a, z in sizes if ov(lo, hi, a, z)]
+        opts.append(f'<option value="{e(bid)}" data-show="{e(" ".join(show))}" data-b="{e(bid)}" data-lo="{lo}" data-hi="{hi}">{e(b["name"])}</option>')
+    opts.append("</optgroup>")
+    cards = []
+    for r in rows:
+        src = r.get("src")
+        s = (f'<p class="bf-src">出どころ：<a href="{e(src[1])}" rel="noopener" target="_blank">{e(src[0])}</a></p>' if src and src[1]
+             else (f'<p class="bf-src">出どころ：{e(src[0])}</p>' if src else ""))
+        tag = f'<span class="bf-tag">{e(r["tag"])}</span>' if r.get("tag") else ""
+        cards.append(f'<section class="bf-card" data-k="{e(" ".join(r["k"]))}"><h3>{tag}{e(r["h"])}</h3>'
+                     + (f'<p>{rich(r["p"])}</p>' if r.get("p") else "")
+                     + _bf_items(r.get("items") or [], arrow, heading)
+                     + s + "</section>")
+    title = f'<p class="bf-t">{e(d["title"])}</p>' if d.get("title") else ""
+    lead = f'<p class="bf-lead">{rich(d["lead"])}</p>' if d.get("lead") else ""
+    note = f'<p class="note">{rich(d["note"])}</p>' if d.get("note") else ""
+    return (f'<div class="bf" data-bf>{title}{lead}<div class="bf-bar"><label for="{uid}">うちの子で見る</label>'
+            f'<select id="{uid}">{"".join(opts)}</select></div><p class="bf-now" aria-live="polite"></p>'
+            f'<div class="bf-cards">{"".join(cards)}</div>{note}</div>')
+
+BF_CSS = """<style>
+/* 犬種・体重で「うちの子で見る」 */
+.bf{background:#fbfaf8;border:1.5px solid var(--line);border-radius:22px;padding:14px 14px 6px;margin:8px 0 24px}
+.bf-t{font-weight:800;color:var(--ink);font-size:1.02rem;margin:0 0 4px!important}
+.bf-lead{font-size:.9rem;margin:0 0 10px!important;line-height:1.75}
+.bf-bar{display:flex;align-items:center;gap:8px;background:#fff;border:2px solid var(--o);border-radius:16px;padding:8px 10px;position:sticky;top:72px;z-index:3;box-shadow:0 4px 12px rgba(28,26,24,.06)}
+.bf-bar label{font-weight:800;color:var(--o-d);font-size:.86rem;white-space:nowrap}
+.bf-bar select{flex:1 1 auto;min-width:0;width:100%;font-size:16px;padding:9px 10px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.art .bf-now,.bf-now{font-size:.82rem;color:var(--ink-2);margin:6px 2px 10px!important;line-height:1.6}
+.bf-now:empty{display:none}
+.bf-cards{display:grid;gap:10px}
+.bf-card{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px 6px;min-width:0}
+.bf-card .bars{padding:12px 12px 6px;border-radius:14px;margin:4px 0 10px}
+.bf-card[hidden]{display:none}
+.art .bf-card h3,.bf-card h3{font-size:1rem;margin:0 0 6px;color:var(--ink);line-height:1.5}
+.bf-tag{display:inline-block;font-size:.7rem;font-weight:800;background:var(--o-l);color:var(--o-d);border-radius:999px;padding:1px 9px;margin-right:6px;vertical-align:.12em}
+.art .bf-card ul,.bf-card ul{padding-left:1.2em;margin:0 0 8px;line-height:1.8}
+.art .bf-card li{margin:0 0 4px}
+.art .bf-card p{margin:0 0 8px;line-height:1.8}
+.art .bf-card .bf-src,.bf-src{font-size:.74rem;color:var(--ink-3);margin:0 0 6px!important;line-height:1.5}
+.bf-src a{color:var(--ink-3)}
+.bf .note{font-size:.76rem;color:var(--ink-3);margin:8px 2px 8px;line-height:1.6}
+@media (min-width:760px){.bf-cards{grid-template-columns:1fr 1fr}}
+</style>"""
+
+# 選んだら合わないカードを隠す。選んだ子は petBreed に覚えて、ほかの記事・ほかの部品でも同じ子にする（JSが動かなくても全部見える）
+BF_JS = """<script>(function(){var K='petBreed';function g(){try{return JSON.parse(localStorage.getItem(K)||'null')}catch(e){return null}}
+function p(v){try{v?localStorage.setItem(K,JSON.stringify(v)):localStorage.removeItem(K)}catch(e){}}
+var L=[].slice.call(document.querySelectorAll('[data-bf]'));
+function ap(bf,o){var sh=o&&o.value?o.getAttribute('data-show').split(' '):null,n=0;
+[].forEach.call(bf.querySelectorAll('.bf-card'),function(c){var ok=!sh||c.getAttribute('data-k').split(' ').some(function(k){return sh.indexOf(k)>=0});c.hidden=!ok;if(ok)n++});
+bf.querySelector('.bf-now').textContent=sh?(n?'「'+o.textContent+'」に当てはまる'+n+'件を表示しています。「すべて表示」でもとに戻ります。':'「'+o.textContent+'」だけの情報はまだありません。上の「すべて表示」か体重で選んでください。'):'';}
+function pick(s,v){var o=null;[].forEach.call(s.options,function(x){if(!o&&v.b&&x.getAttribute('data-b')===v.b)o=x});
+if(!o&&v.kg!=null)[].forEach.call(s.options,function(x){if(!o&&!x.getAttribute('data-b')&&x.getAttribute('data-lo')!==null&&v.kg>=+x.getAttribute('data-lo')&&v.kg<+x.getAttribute('data-hi'))o=x});return o}
+function all(v,from){L.forEach(function(bf){var s=bf.querySelector('select');if(bf===from)return;var o=v?pick(s,v):null;s.value=o?o.value:'';ap(bf,o)})}
+L.forEach(function(bf){var s=bf.querySelector('select');s.addEventListener('change',function(){var o=s.options[s.selectedIndex],v=null;
+if(o.value){var lo=+o.getAttribute('data-lo'),hi=+o.getAttribute('data-hi');v=o.getAttribute('data-b')?{b:o.getAttribute('data-b'),kg:(lo+Math.min(hi,lo+40))/2}:{kg:(lo+Math.min(hi,lo+40))/2}}
+ap(bf,o);p(v);all(v,bf);try{window.gtag&&gtag('event','breed_filter',{pick:o.value||'all',from:location.pathname})}catch(e){}})});
+var v=g();if(v)all(v,null)})();</script>"""
+
 def block(b, arrow="", heading=""):
     """記事の1かたまりをHTMLにする（gen_areas.py の block から呼ぶ）"""
     if isinstance(b, str): return f"<p>{rich(b)}</p>"
@@ -120,6 +216,7 @@ def block(b, arrow="", heading=""):
     if k == "bars": return bars(v)
     if k == "vs": return vs(v)
     if k == "flow": return flow(v)
+    if k == "breeds": return breeds(v, arrow, heading)
     if k == "html": return v  # 生成側で作ったHTML（エスケープ済みのものだけ）
     raise ValueError(k)
 

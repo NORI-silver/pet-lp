@@ -5,6 +5,7 @@
 # 料金は tools/sougi_facilities.json（各施設の公式サイトの料金、2026年11月に確認）から写す。データを直したらここも直す。
 import json as _json, os as _os, re as _re
 import gen_dogrun as _G
+import guides_breed as _GB  # 犬種・体重の「うちの子で見る」（2026-11-14）
 from guides_sougi import (L_SOUGI, L_KINDS, L_CITY, L_KUYOU, L_FAREWELL, L_FIRST, SAPPORO, SAKAI_CAR)
 
 _D = _os.path.dirname(_os.path.abspath(__file__))
@@ -319,6 +320,9 @@ dict(slug="pet-ashes",
               ["やすらぎの森 ペット霊園むなかた（福岡県）", "厚紙の骨箱1,100円、骨つぼ2,200円〜4,400円"]]),
    "骨つぼの大きさは「寸」で表します。ペット霊園宇都宮の目安では、猫・チワワは3.5寸、柴犬・コーギーは5寸、ゴールデン・ラブラドールは6寸です。",
    _links(["See9362", "S70883b", "Scd0216", "S57a0db", "S0b9ae7", "S1a0483"]),
+  ]),
+  ("うちの子の骨つぼは何寸？", [
+   _GB.urn_block(),
   ]),
   ("納骨堂の料金", [
    ("table", [["施設", "納骨堂"],

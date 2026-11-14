@@ -981,6 +981,8 @@ for g in GUIDES:
         page = page.replace("空き状況と料金を問い合わせる（無料）", "掲載候補を見る").replace(">問い合わせる<span class=\"lg\">（無料）</span><", ">掲載候補を見る<")
         page = page.replace("無料で使えます。問い合わせただけでは予約は確定しません。会社の返事を見て「この内容で予約する」を押した時点で予約が確定します。",
                             "現在は候補の表示のみです。すべての会社への問い合わせを停止しています。")
+    if "data-bf" in page:  # 犬種・体重で「うちの子で見る」（tools/visual.py の breeds）を動かす小さなJS
+        page = page.replace("</head>", _V.BF_CSS + "\n</head>", 1).replace("</body>", _V.BF_JS + "\n</body>", 1)
     os.makedirs(os.path.join(ROOT, "guide", g["slug"]), exist_ok=True)
     open(os.path.join(ROOT, "guide", g["slug"], "index.html"), "w", encoding="utf-8").write(page)
 
