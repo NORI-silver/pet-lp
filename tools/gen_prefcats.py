@@ -170,11 +170,37 @@ def _night_fact_table(e, pf, rs):
             f'<p class="emg-tips-note">「—」は公式サイトに書いていない・見つからなかった項目です（「しない」という意味ではありません）。{jd}までに各病院の公式サイトで確かめました。料金や受け入れは変わることがあるので、行く前に電話でたずねてください。</p>'
             f'<details><summary>確かめた公式サイト</summary><ul>{srcs}</ul></details></div>')
 
+
+# [B] 2026-11-14 薄いページをなくす：県の中に夜間の病院がない県は、県庁所在地からいちばん近い夜間の病院までの直線の距離を出す
+import math as _m
+_JIS47 = ("北海道 青森県 岩手県 宮城県 秋田県 山形県 福島県 茨城県 栃木県 群馬県 埼玉県 千葉県 東京都 神奈川県 新潟県 富山県 石川県 福井県 山梨県 長野県 岐阜県 静岡県 愛知県 三重県 "
+          "滋賀県 京都府 大阪府 兵庫県 奈良県 和歌山県 鳥取県 島根県 岡山県 広島県 山口県 徳島県 香川県 愛媛県 高知県 福岡県 佐賀県 長崎県 熊本県 大分県 宮崎県 鹿児島県 沖縄県").split()
+def _pref_ll():
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "index.html"), encoding="utf-8").read()
+    m = re.search(r"PREF_LL = (\[\[.*?\]\]);", src)
+    return dict(zip(_JIS47, json.loads(m.group(1)))) if m else {}
+_PLL = _pref_ll()
+_CAP = {"青森県": "青森市", "岩手県": "盛岡市", "秋田県": "秋田市", "山形県": "山形市", "福井県": "福井市", "三重県": "津市", "和歌山県": "和歌山市",
+        "鳥取県": "鳥取市", "島根県": "松江市", "佐賀県": "佐賀市", "長崎県": "長崎市"}
+def _km(a, b):
+    r = _m.radians
+    d = _m.sin(r(b[0] - a[0]) / 2) ** 2 + _m.cos(r(a[0])) * _m.cos(r(b[0])) * _m.sin(r(b[1] - a[1]) / 2) ** 2
+    return 6371 * 2 * _m.asin(_m.sqrt(d))
+def _far_box(e, pf, rs):
+    if any("（" not in (h.get("city") or "") for h in rs) or pf not in _PLL: return ""
+    hs = sorted([(h, _km(_PLL[pf], h["ll"])) for h in rs if h.get("ll")], key=lambda x: x[1])
+    if not hs: return ""
+    cap = _CAP.get(pf, "県庁所在地")
+    li = "".join(f'<li><b>{e(h["name"])}</b>（{e(h["city"])}）：{e(cap)}から直線で約{round(d / 10) * 10}km。受付 {e(h.get("hours", "公式サイトでご確認ください"))}</li>' for h, d in hs)
+    return (f'<div class="emg-tips" style="margin-top:0"><h4>{e(pf)}から行ける夜間・救急の動物病院まで（{e(cap)}から）</h4>'
+            f'<p>{e(pf)}の中には、夜に受け付けると公式サイトに書いている動物病院をまだ見つけられていません（2026年11月14日時点）。いちばん近いのは次の病院です。道のりは直線より長く、車で数時間かかることもあります。</p>'
+            f'<ul class="pp-facts">{li}</ul><p class="emg-tips-note">距離は県庁所在地と病院の所在地の直線の距離を10km単位でまるめた目安です。夜に具合が悪くなったら、まず、かかりつけの病院の時間外の案内（留守番電話・ホームページ）を確かめ、遠くの病院へ向かうときは出る前に電話してください。</p></div>')
+
 def _night_extra(e, pf):
     from urllib.parse import quote
     rs = [h for h in _HOS if pf in h["prefs"]]
     hc = _hours_counts(rs)
-    out = _night_fact_table(e, pf, rs)
+    out = _far_box(e, pf, rs) + _night_fact_table(e, pf, rs)
     # ① 受付時間
     out += (f'<div class="emg-tips" style="margin-top:0"><h4>{e(pf)}の病院の受付時間を数えると</h4><ul class="pp-facts">'
             f'<li>24時間受け付けると書いている病院：{hc["all"]}院</li>'
