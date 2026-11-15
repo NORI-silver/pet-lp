@@ -52,6 +52,14 @@ def _times(s):
     return out
 
 
+def _tels():
+    """夜間・救急の病院の電話番号（night_hospital_facts.json の tel・tel_src。公式サイトにある番号だけ）。"""
+    import json as _j
+    try: its = _j.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "night_hospital_facts.json"), encoding="utf-8"))["items"]
+    except Exception: return {}
+    return {x["id"]: x for x in its if x.get("tel") and x.get("tel_src") and not x.get("closed")}
+_TEL = _tels()
+
 def record(h, pref, tags, depts_of):
     """1院を検索用の短い形にする。y＝書いてある（合う）、n＝はっきり合わない。どちらにもない項目は「書いていない」。"""
     y, n = set(tags), set()
@@ -135,7 +143,8 @@ def record(h, pref, tags, depts_of):
     r["y"] = sorted(y); r["no"] = sorted(n - y)
     if h.get("review_query") and h.get("id"): r["rv"] = h["id"]
     # 電話番号は、公式サイトか獣医師会の一覧にある番号だけ（tel_src つき）。Nori 2026-11-15 判断のカード「出す」
-    if h.get("tel") and h.get("tel_src"): r["tel"] = re.sub(r"[^0-9\-]", "", h["tel"])
+    tl = h if h.get("tel") else _TEL.get(h.get("id"), {})
+    if tl.get("tel") and tl.get("tel_src"): r["tel"] = re.sub(r"[^0-9\-]", "", tl["tel"])
     if re.search(r"（[^）]+[都道府県]）$", r["c"]): r["far"] = 1
     return r
 
