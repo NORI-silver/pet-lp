@@ -2676,7 +2676,7 @@ function pinfoPage_(q) {
   // 審査の状況
   html += '<h2>審査の状況</h2>' + (rows.length ? '<div class="box">' + rows.slice(-12).reverse().map(function(v) {
     var c = v[6] === '公開' ? '#1e8e3e' : v[6] === '直してください' ? '#c5221f' : '#b06000';
-    return '<div style="display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid #eee5dc;padding:4px 0"><span>' + esc_(v[3]) + '：' + esc_(String(v[4]).slice(0, 40)) + '</span><span style="color:' + c + ';white-space:nowrap">' + esc_(v[6]) + (v[7] ? '（' + esc_(v[7]) + '）' : '') + '</span></div>';
+    return '<div style="border-bottom:1px solid #eee5dc;padding:6px 0"><div>' + esc_(v[3]) + '：' + esc_(String(v[4]).slice(0, 40)) + '</div><div style="color:' + c + ';font-weight:700;font-size:.9rem">' + esc_(v[6]) + (v[7] ? '（' + esc_(v[7]) + '）' : '') + '</div></div>';
   }).join('') + '</div>' : '<p class="note">まだ何も送られていません。</p>');
   // 写真（/go/ のページが data-pinfo-up を見て、縮めてから送る）
   html += '<h2>写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）</h2><p class="note">ご自身で撮った、実際の車・設備・お店の写真だけ。横長で長いほうが' + PINFO_PHOTO_MIN_PX + 'px以上。電話番号・ナンバープレート・人の顔が写っていないもの。文字やスタンプは入れないでください。</p>' +
