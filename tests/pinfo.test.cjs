@@ -31,6 +31,21 @@ assert.equal(ctx.pinfoSessionPid_(tok, Date.now()+25*3600e3),'');
 assert.equal(ctx.pinfoSessionPid_(tok.replace('P063','P030')),'');
 // 止めた会社は入れない
 ctx.PINFO_STOP.push('P063'); assert.equal(ctx.pinfoSessionPid_(tok),''); ctx.PINFO_STOP.pop();
+// すでに分かっている内容（公式サイト・申し込み）は、まだ何も送っていない会社の画面にはじめから入れておく。変えずに送っても行は増えない
+{
+  const kn=ctx.pinfoPage_({s:tok}).html;
+  assert.ok(kn.includes('入力済み（公式サイト・申し込みより）') && kn.includes('すぐにはカードに出ません'));
+  assert.ok(/value="運送の届出（黒ナンバー）" checked/.test(kn) && kn.includes('18東京都保第006003号'), 'license and number prefilled');
+  const k=ctx.PINFO_KNOWN.D3661eb1, q={s:tok,go:'1',pay:k.pay.list,cred:k.cred.list,cred_until:k.cred.until};
+  Object.keys(k.cred.nos).forEach(c=>q['no_'+c]=k.cred.nos[c]);
+  ctx.pinfoPage_(q); assert.equal(rows.length,0,'unchanged prefill is not re-sent');
+  // 番号の要る項目を足して番号がなければ、その項目の名前を出して止める
+  const r2=ctx.pinfoPage_(Object.assign({},q,{cred:k.cred.list.concat(['タクシー事業の許可（緑ナンバー）'])})).html;
+  assert.ok(r2.includes('「タクシー事業の許可（緑ナンバー）」の番号を入れてください') && rows.length===0);
+  // 資格・保険は番号の欄がない。登録・届出・許可は項目ごとに欄がある
+  assert.ok(!kn.includes('name="no_動物の賠償保険"') && kn.includes('name="no_運送の届出（黒ナンバー）"') && kn.includes('name="no_動物取扱業（保管）の登録"'));
+  ctx.PINFO_KNOWN={};
+}
 sent.length=0;
 const page=ctx.pinfoPage_({s:tok}).html;
 assert.ok(page.includes('PETTA東京') && page.includes('data-pinfo-up') && page.includes('（5〜30%）') && page.includes('pct_off_until') && page.includes('早朝・深夜の割増なし'));
@@ -56,7 +71,7 @@ assert.equal(rows.length,4, 'only the rejected note is re-sent');
 let n0=rows.length;
 r=ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],equip:['ケージの貸し出し','ペットシーツ'],yen_off:'500',yen_off_until:later,note:''}).html;
 assert.ok(r.includes('番号を入れてください') && !rows.slice(n0).some(x=>x[3]==='許可・資格・保険'));
-ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],cred_no:'関自貨第123号',pay:['現金','クレジットカード'],equip:['ケージの貸し出し','ペットシーツ'],yen_off:'500',yen_off_until:later,note:''});
+ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],'no_運送の届出（黒ナンバー）':'関自貨第123号',pay:['現金','クレジットカード'],equip:['ケージの貸し出し','ペットシーツ'],yen_off:'500',yen_off_until:later,note:''});
 assert.ok(rows.some(x=>x[3]==='許可・資格・保険' && x[4].includes('関自貨第123号')) && rows.some(x=>x[3]==='お支払い方法' && x[4]==='現金・クレジットカード'));
 assert.ok(!page.includes('多頭の同乗') && !page.includes('飼い主さんの同乗') && !page.includes('得意な行き先'));
 // 写真はページが横3：縦2に切り抜いたものだけ。小さい・形がちがうものは断る

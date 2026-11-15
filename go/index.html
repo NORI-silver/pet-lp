@@ -9,6 +9,8 @@
 <meta name="theme-color" content="#ff6a1a">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://script.google.com">
+<link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&display=swap" rel="stylesheet">
@@ -128,7 +130,7 @@
       b.set("photo_kind", kindSel.value); if (kindSel.value === DRIVER) b.set("consent", "1");
       fetch(API, { method: "POST", body: b }).then(function(r){ return r.json(); }).then(function(r){
         btn.disabled = false;
-        if (r && r.ok) { msg.textContent = "受け付けました（" + r.n + "枚め）。運営者が確かめてから公開します。"; file.value = ""; img = null; prev.style.display = cap.style.display = pos.style.display = "none"; }
+        if (r && r.ok) { msg.textContent = "受け付けました（" + r.n + "枚め）。運営者が確かめてから公開します（すぐにはカードに出ません）。"; file.value = ""; img = null; prev.style.display = cap.style.display = pos.style.display = "none"; }
         else msg.textContent = (r && r.error) || "うまく送れませんでした。";
       }).catch(function(){ btn.disabled = false; msg.textContent = "うまく送れませんでした。時間をおいてもう一度お試しください。"; });
     });
@@ -165,19 +167,36 @@
     hookSurvey();
     return;
   }
+  // 掲載情報のページ（a=pinfo のログインのあと・a=pinfo_view）は、前に開いたときの画面をこの端末に24時間だけ控えておき、
+  // 開いたらすぐそれを見せて、受付の仕組みの返事が来たら最新に置きかえる（それまでは押せない。Nori 2026-11-15「サイトの読み込みが遅いので早くして」）
+  var CK = "", stale = false;
+  if (!q.get("go") && ((q.get("a") === "pinfo" && q.get("s")) || (q.get("a") === "pinfo_view" && q.get("k")))) CK = "go:" + q.get("a") + ":" + (q.get("s") || q.get("k"));
+  function show(r){
+    if (r.title) {
+      title.textContent = r.title; title.hidden = false;
+      document.title = r.title + "｜ペットタクシー予約窓口";
+    }
+    body.innerHTML = r.html;
+  }
+  if (CK) try {
+    var c = JSON.parse(localStorage.getItem(CK) || "null");
+    if (c && Date.now() - c.t < 864e5 && typeof c.html === "string") {
+      show(c); stale = true;
+      body.style.opacity = ".55"; body.style.pointerEvents = "none";
+      body.insertAdjacentHTML("afterbegin", '<p class="msg" data-stale style="opacity:1">最新の内容を読み込んでいます…</p>');
+    }
+  } catch (e) {}
   fetch(API + "?" + q.toString())
     .then(function(r){ return r.json(); })
     .then(function(r){
       if (!r || !r.ok || typeof r.html !== "string") return fail();
-      if (r.title) {
-        title.textContent = r.title; title.hidden = false;
-        document.title = r.title + "｜ペットタクシー予約窓口";
-      }
-      body.innerHTML = r.html;
+      body.style.opacity = ""; body.style.pointerEvents = "";
+      show(r);
+      if (CK) try { localStorage.setItem(CK, JSON.stringify({ t: Date.now(), title: r.title || "", html: r.html })); } catch (e) {}
       upload();
       hookSurvey();
     })
-    .catch(fail);
+    .catch(function(){ body.style.opacity = ""; body.style.pointerEvents = ""; fail(); });
 })();
 </script>
 </body>

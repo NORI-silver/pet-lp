@@ -87,6 +87,32 @@ booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG
 # 候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る
 _DISP = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))["companies"]
 booking_src = re.sub(r"/\*DISPLAY_COMPANIES\*/.*?/\*/DISPLAY_COMPANIES\*/", lambda m: "/*DISPLAY_COMPANIES*/var DISPLAY_COMPANIES = " + json.dumps(_DISP, ensure_ascii=False) + ";/*/DISPLAY_COMPANIES*/", booking_src, count=1, flags=re.S)
+# 掲載情報のページで、はじめから入れておく内容（受付中の会社だけ。公式サイト・提携の申し込みでうかがったこと。Nori 2026-11-15「すでに回答もらってるものは入力済みになってるんだよね？」）
+def _pinfo_known():
+    m = re.search(r"OPEN_PARTNERS:\s*(\{[^}]*\})", booking_src)
+    ids = set(re.findall(r"'(D[0-9a-f]+)'", m.group(1))) if m else set()
+    lic = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "licenses.json"), encoding="utf-8"))["companies"]
+    out = {}
+    for c in _DISP:
+        if c["id"] not in ids: continue
+        k, pay, t = {}, [], c.get("pay") or ""
+        for lab, rx in (("現金", r"現金"), ("クレジットカード", r"カード|クレジット"), ("電子マネー", r"電子マネー"), ("QRコード決済", r"QR|PayPay|ペイペイ"), ("銀行振込", r"振込")):
+            if re.search(rx, t): pay.append(lab)
+        if pay: k["pay"] = {"list": pay}
+        L, cred, nos = lic.get(c["id"]) or {}, [], {}
+        reg = L.get("reg") or {}
+        kinds, regno = reg.get("kinds") or [], [x.strip() for x in re.split(r"[・、,]", reg.get("no") or "") if x.strip()]
+        for i, kd in enumerate(kinds):
+            lab = f"動物取扱業（{kd}）の登録"
+            cred.append(lab)
+            if len(regno) == len(kinds): nos[lab] = regno[i]
+        if L.get("transport"): cred.append("運送の届出（黒ナンバー）")
+        if L.get("ins"): cred.append("動物の賠償保険")
+        cred += [q for q in L.get("quals") or [] if q not in cred]
+        if cred: k["cred"] = {"list": cred, "nos": nos, "until": reg.get("until") or ""}
+        if k: out[c["id"]] = k
+    return out
+booking_src = re.sub(r"/\*PINFO_KNOWN\*/.*?/\*/PINFO_KNOWN\*/", lambda m: "/*PINFO_KNOWN*/var PINFO_KNOWN = " + json.dumps(_pinfo_known(), ensure_ascii=False) + ";/*/PINFO_KNOWN*/", booking_src, count=1, flags=re.S)
 def _ncos(k): return len([x for x in _DISP if k in x.get("areas", [])])
 def _ccos(k, stem): return len([x for x in _DISP if k in x.get("areas", []) and stem in (x.get("area_text") or "")])
 def _n24(k): return len([x for x in _DISP if k in x.get("areas", []) and x.get("hours") == "0-24"])
