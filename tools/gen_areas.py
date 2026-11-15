@@ -1076,6 +1076,25 @@ ptp = ptp.replace('<div class="sticky"><a class="btn" href="/partner/#apply">空
 os.makedirs(os.path.join(ROOT, "partner", "terms"), exist_ok=True)
 open(os.path.join(ROOT, "partner", "terms", "index.html"), "w", encoding="utf-8").write(ptp)
 
+# 掲載の決まり（/partner/listing/）。本文は tools/partner_listing.py（Nori 2026-11-15）
+from partner_listing import LISTING, LISTING_DATE
+def _listing_block(v):
+    if isinstance(v, tuple): return f'<li><b>{e(v[0])}</b>：{e(v[1])}</li>'
+    return f'<li>{e(v)}</li>'
+plp = head("掲載の決まり（提携しているペットタクシー会社さま向け）｜ペットタクシー予約窓口", "提携しているペットタクシー会社さまが、写真・特典・設備・臨時のお休みなどを足すときの決まりです。載せられるもの・載せられないもの・写真の条件・公開までの流れをまとめています。", SITE + "/partner/listing/", "") + f"""
+<main>
+<section class="area-hero"><div class="wrap"><h1>掲載の決まり<small style="display:block;font-size:.95rem;color:var(--o-d)">提携しているペットタクシー会社さま向け</small></h1><p class="lede">掲載情報のページで足せるものと、載せられないものをまとめました。お客さまが安心してくらべられるように、どの会社さまにも同じ決まりをお願いしています。</p></div></section>
+<section><div class="wrap prose terms">
+{''.join(f'<h2>{e(h)}</h2><ul>' + ''.join(_listing_block(v) for v in body) + '</ul>' for h, body in LISTING)}
+<p class="small">{LISTING_DATE} 制定</p>
+<p><a href="/partner/">提携のご案内にもどる</a>・<a href="/partner/terms/">提携規約</a></p>
+</div></section>
+</main>
+""" + foot("/partner/#apply", band=False)
+plp = plp.replace('<div class="sticky"><a class="btn" href="/partner/#apply">空き状況と料金を問い合わせる（無料）</a></div>', '<div class="sticky"><a class="btn" href="/partner/#apply">提携を申し込む（無料）</a></div>')
+os.makedirs(os.path.join(ROOT, "partner", "listing"), exist_ok=True)
+open(os.path.join(ROOT, "partner", "listing", "index.html"), "w", encoding="utf-8").write(plp)
+
 # お問い合わせ（/contact/）。送り先はトップのフォームと同じ受付の仕組み（kind=contact）
 gas = re.search(r'var GAS_URL = "([^"]+)"', open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()).group(1)
 contact_url = SITE + "/contact/"
