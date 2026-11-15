@@ -29,41 +29,76 @@
       });
       panel.appendChild(el("p", "partner-review-src", "Google Maps"));
   }
-  // 施設の写真（押したときだけ・最大3枚）。撮った人の名前とリンク・出どころは規約で必要。2026-11-14 Nori「施設の写真とか追加したほうがいいんじゃない？」
+  // 施設の写真（最大3枚）。撮った人の名前とリンク・出どころは規約で必要。2026-11-14 Nori「施設の写真とか追加したほうがいいんじゃない？」
+  // 施設カード（tools/faccard.py）は上の大きな枠に、横にスワイプして見る形で入れる（Nori 2026-11-15「写真はスワイプで複数みれるように」）。
+  // PHOTO_AUTO（tools/faccard.py）が true なら、カードが画面に近づいたときに自動で取り寄せる。false なら「写真を見る」を押したときだけ
+  var PHOTO_AUTO = false;
+  function getPhotos(id){
+    if (window.gtag) gtag("event", "open_photos", {id: id});
+    var body = new URLSearchParams(); body.set("kind", "photos"); body.set("partner_id", id);
+    return fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
+      if (!j || !j.ok) throw 0;
+      if (!j.photos || !j.photos.length) throw "none";
+      return j.photos;
+    });
+  }
+  function credit(v){
+    var cap = el("figcaption");
+    (v.by || []).forEach(function(a, i){
+      if (i) cap.appendChild(document.createTextNode("・"));
+      var n = el(a.uri ? "a" : "span", "", a.name || "投稿者"); if (a.uri) { n.href = a.uri; n.target = "_blank"; n.rel = "noopener"; }
+      cap.appendChild(n);
+    });
+    return cap;
+  }
+  function carousel(slot, ps){
+    var car = el("div", "fc-car"), dots = el("div", "fc-dots");
+    ps.forEach(function(v, i){
+      var f = el("figure"), img = document.createElement("img");
+      img.src = v.url; img.alt = ""; img.loading = "lazy"; img.referrerPolicy = "no-referrer"; if (v.w && v.h) { img.width = v.w; img.height = v.h; }
+      f.appendChild(img); if ((v.by || []).length) f.appendChild(credit(v)); car.appendChild(f);
+      var d = el("i"); if (!i) d.className = "on"; dots.appendChild(d);
+    });
+    car.addEventListener("scroll", function(){
+      var k = Math.round(car.scrollLeft / Math.max(1, car.clientWidth));
+      [].forEach.call(dots.children, function(d, i){ d.className = i === k ? "on" : ""; });
+    }, {passive: true});
+    var keep = slot.querySelector(".fc-badge");
+    slot.replaceChildren(car); if (ps.length > 1) slot.appendChild(dots);
+    slot.appendChild(el("span", "fc-src", "写真：Google Maps"));
+    if (keep) slot.appendChild(keep);
+  }
   function photos(box){
     if (box.nextElementSibling && box.nextElementSibling.classList.contains("fac-photos")) return;
-    var id = box.dataset.id, w = el("div", "fac-photos"), b = el("button", "partner-review-open", "写真を見る"); b.type = "button";
-    // 施設カード（tools/faccard.py）は、左上の写真の枠に「写真」のボタンを置き、取り寄せた1枚目を枠に入れる。写真の列（撮った人・出どころつき）はカードの上の段の下
-    var card = box.closest(".fc"), slot = card && card.querySelector(".fc-ph");
+    var id = box.dataset.id, card = box.closest(".fc"), slot = card && card.querySelector(".fc-ph");
     if (slot) {
-      if (slot.querySelector(".fc-phbtn")) return;
-      b = el("button", "fc-phbtn", "写真"); b.type = "button"; b.setAttribute("aria-label", "この施設の写真を見る");
-      slot.appendChild(b); card.querySelector(".fc-top").after(w);
-    } else { w.appendChild(b); box.parentNode.insertBefore(w, box.nextSibling); }
+      if (slot.dataset.go) return; slot.dataset.go = "1";
+      var b = el("button", "fc-phbtn", "写真を見る"); b.type = "button";
+      var load = function(){
+        b.disabled = true; b.textContent = "写真を読み込んでいます…";
+        getPhotos(id).then(function(ps){ carousel(slot, ps); }).catch(function(e){ b.remove(); if (e !== "none") { var x = el("button", "fc-phbtn", "写真をもう一度読み込む"); x.type = "button"; x.addEventListener("click", function(){ x.remove(); slot.appendChild(b); load(); }); slot.appendChild(x); } });
+      };
+      b.addEventListener("click", load);
+      if (PHOTO_AUTO && "IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting && x.target.offsetParent) { io.disconnect(); slot.appendChild(b); load(); } }); }, {rootMargin: "300px"});
+        io.observe(slot);
+      } else slot.appendChild(b);
+      return;
+    }
+    var w = el("div", "fac-photos"); b = el("button", "partner-review-open", "写真を見る"); b.type = "button";
+    w.appendChild(b); box.parentNode.insertBefore(w, box.nextSibling);
     b.addEventListener("click", function(){
       b.disabled = true; b.textContent = "写真を読み込んでいます…";
-      if (window.gtag) gtag("event", "open_photos", {id: id});
-      var body = new URLSearchParams(); body.set("kind", "photos"); body.set("partner_id", id);
-      fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
-        if (!j || !j.ok) throw 0;
-        if (!j.photos || !j.photos.length) throw "none";
+      getPhotos(id).then(function(ps){
         var row = el("div", "fac-photo-row");
-        j.photos.forEach(function(v){
+        ps.forEach(function(v){
           var f = el("figure", "fac-photo"), img = document.createElement("img");
           img.src = v.url; img.alt = ""; img.loading = "lazy"; img.referrerPolicy = "no-referrer"; if (v.w && v.h) { img.width = v.w; img.height = v.h; }
-          f.appendChild(img);
-          var cap = el("figcaption");
-          (v.by || []).forEach(function(a, i){
-            if (i) cap.appendChild(document.createTextNode("・"));
-            var n = el(a.uri ? "a" : "span", "", a.name || "投稿者"); if (a.uri) { n.href = a.uri; n.target = "_blank"; n.rel = "noopener"; }
-            cap.appendChild(n);
-          });
-          if (cap.childNodes.length) f.appendChild(cap);
+          f.appendChild(img); var cap = credit(v); if (cap.childNodes.length) f.appendChild(cap);
           row.appendChild(f);
         });
         w.replaceChildren(row, el("p", "partner-review-src", "写真：Google Maps（利用者が投稿した写真です）"));
-        if (slot) { var im = document.createElement("img"); im.src = j.photos[0].url; im.alt = ""; im.referrerPolicy = "no-referrer"; slot.replaceChildren(im); }
-      }).catch(function(e){ if (slot) b.remove(); w.replaceChildren(el("p", "partner-review-src", e === "none" ? "地図サービスに写真がまだありません" : "写真を読み込めませんでした。時間をおいてもう一度お試しください")); });
+      }).catch(function(e){ w.replaceChildren(el("p", "partner-review-src", e === "none" ? "地図サービスに写真がまだありません" : "写真を読み込めませんでした。時間をおいてもう一度お試しください")); });
     });
   }
   // 押したときだけ取り寄せる形（REVIEW_ON_CLICK）：最初は「口コミを見る」だけを出し、押したら星と本文をまとめて取り寄せる
