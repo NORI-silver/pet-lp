@@ -15,7 +15,9 @@
   var LBL = {};
   btns.forEach(function(b){ LBL[b.getAttribute("data-k")] = b.getAttribute("data-l") || b.textContent; });
   items.forEach(function(it){
-    it._k = " " + (it.getAttribute("data-k") || "") + " ";
+    // 条件：data-k と、カードの印（data-ft・data-tags。区切りは「|」、空白は「_」に）
+    var ex = [it.getAttribute("data-ft"), it.getAttribute("data-tags")].join("|").split("|").filter(Boolean).map(function(x){ return x.trim().replace(/ /g, "_"); });
+    it._k = " " + (it.getAttribute("data-k") || "") + " " + ex.join(" ") + " ";
     it._no = " " + (it.getAttribute("data-no") || "") + " ";
     var p = it.closest("[data-pref]");
     it._p = it.getAttribute("data-pref") || (p ? p.getAttribute("data-pref") : "");
