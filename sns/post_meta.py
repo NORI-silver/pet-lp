@@ -84,11 +84,10 @@ def post_threads(token, p):
         sys.exit(f"Threads のアカウントが違います: {me.get('username')}")
     text = text_threads(p)
     check(text)
-    # 豆知識は文だけ（Threads は文が中心）。ほかは写真つき
-    if p.get("kind") == "tip":
-        args = {"media_type": "TEXT", "text": text}
-    else:
-        args = {"media_type": "IMAGE", "image_url": SITE + p["photo"], "text": text, "alt_text": p.get("alt") or p["tag"]}
+    # 写真か動画は必ず入れる（Nori 2026-11-15「写真か動画は絶対いれて」）
+    if not p.get("photo"):
+        sys.exit(f"投稿{p['no']}に写真がありません")
+    args = {"media_type": "IMAGE", "image_url": SITE + p["photo"], "text": text, "alt_text": p.get("alt") or p["tag"]}
     c = call("POST", f"{TH}/me/threads", {**args, "access_token": token})
     for _ in range(30):
         st = call("GET", f"{TH}/{c['id']}", {"fields": "status", "access_token": token}).get("status")
