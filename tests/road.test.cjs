@@ -24,7 +24,7 @@ ctx.UrlFetchApp = { fetch(url) {
 const cards = ctx.displayCards_(ctx.selectionRide_(p), p);
 const card = cards.find(x => x.id === c.id);
 assert.equal(urls.length, 1, '道路データには1回だけ聞く');
-assert.equal(card.price.local.pickup, 13 * 165, 'お迎えは車の道のり12.3km→13km×165円');
+assert.equal(card.price.local.pickup, 14 * 165, 'お迎えは車の道のり12.3kmを1割長めに見て13.53km→14km×165円（Nori 2026-11-15）');
 assert.match(card.price.pickupNote, /車の道のり/);
 // 取れないときは直線×1.3（カードに概算と書く）
 ctx.ROAD_KM = null;
