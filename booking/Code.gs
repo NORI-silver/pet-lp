@@ -2480,14 +2480,19 @@ var PINFO_PHOTO_KINDS = ['車の外', '車の中', 'ケージ・設備', 'お店
 var PINFO_PHOTO_MAX = 5, PINFO_PHOTO_DAY = 10, PINFO_OFFER_MAX = 2, PINFO_NOTE_MAX = 60, PINFO_PHOTO_MIN_PX = 1200, PINFO_SESSION_H = 24;
 var PINFO_STOP = []; // 掲載情報のページを止めた会社（提携先ID）。提携をやめた会社などをここに入れる
 // 特典の決まった形（{n} に数字。max は数字の上限）
+// 特典の決まった形（Nori 2026-11-15「期間限定10％オフとか、早朝深夜増なしとか、500円OFFとか。わかりやすいカタチ」）。
+// {n} に数字（min〜max）。どれも終わりの日つきで、カードには「期間限定・◯/◯まで」と出す
 var PINFO_OFFERS = [
-  { k: 'first_yen', t: 'はじめての方は{n}円引き', unit: '円', max: 5000 },
-  { k: 'first_pct', t: 'はじめての方は{n}%引き', unit: '%', max: 30 },
-  { k: 'pick_free', t: 'お迎え料金が{n}kmまで無料', unit: 'km', max: 50 },
-  { k: 'wait_free', t: '待ち時間{n}分まで無料', unit: '分', max: 120 },
+  { k: 'pct_off', t: '{n}%オフ', unit: '%', min: 5, max: 30 },
+  { k: 'yen_off', t: '{n}円オフ', unit: '円', min: 100, max: 5000 },
+  { k: 'night_free', t: '早朝・深夜の割増なし' },
+  { k: 'pick_free', t: 'お迎え料金なし（{n}kmまで）', unit: 'km', min: 1, max: 50 },
+  { k: 'wait_free', t: '待ち時間{n}分まで無料', unit: '分', min: 10, max: 120 },
+  { k: 'round_yen', t: '往復で{n}円オフ', unit: '円', min: 100, max: 5000 },
+  { k: 'first_pct', t: 'はじめての方は{n}%オフ', unit: '%', min: 5, max: 30 },
+  { k: 'first_yen', t: 'はじめての方は{n}円オフ', unit: '円', min: 100, max: 5000 },
   { k: 'cage_free', t: 'ケージの貸し出し無料' },
-  { k: 'cancel_free', t: '前日までのキャンセルは無料' },
-  { k: 'round_yen', t: '往復で{n}円引き', unit: '円', max: 5000 }
+  { k: 'cancel_free', t: '前日までのキャンセル無料' }
 ];
 var PINFO_EQUIP = ['ケージの貸し出し', 'キャリーの貸し出し', 'スロープ', '担架', 'ペットシーツ', '車内の温度管理', '車いすの方の同乗'];
 // 人数・頭数・範囲・時間のように候補選びに使うことはここでは受けない（提携の確認ページで直してもらう）
@@ -2579,7 +2584,7 @@ function pinfoPublic_() {
     if (v[6] !== '公開' || !pinfoOpen_(String(v[1]))) return;
     var d; try { d = JSON.parse(v[8] || '{}'); } catch (e) { return; }
     var o = out[v[1]] = out[v[1]] || { offers: [], tags: [], note: '', photos: [] };
-    if (v[3] === PINFO_KINDS.offer) o.offers = (d.list || []).filter(function(x) { return x.until >= today; }).map(function(x) { return x.text; });
+    if (v[3] === PINFO_KINDS.offer) o.offers = (d.list || []).filter(function(x) { return x.until >= today; }).map(function(x) { return { t: x.label || String(x.text || '').replace(/（[\d/]+まで）$/, ''), until: Number(x.until.slice(5, 7)) + '/' + Number(x.until.slice(8, 10)) }; });
     else if (v[3] === PINFO_KINDS.equip) o.equip = d.list || [];
     else if (v[3] === PINFO_KINDS.note) o.note = d.text || '';
     else if (v[3] === PINFO_KINDS.photo && d.file && d.w >= d.h) o.photos.push({ url: 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(d.file) + '&sz=w1200', kind: d.kind });
@@ -2635,9 +2640,9 @@ function pinfoPage_(q) {
       var o = PINFO_OFFERS.filter(function(x) { return x.k === q['of' + i]; })[0];
       if (!o) continue;
       var n = Number(String(q['of' + i + 'n'] || '').replace(/[^\d]/g, '')), until = String(q['of' + i + 'u'] || '');
-      if (o.unit && (!n || n > o.max)) { done.push('特典「' + o.t.replace('{n}', '◯') + '」の数字は1〜' + o.max + o.unit + 'で入れてください'); continue; }
+      if (o.unit && (!n || n < o.min || n > o.max)) { done.push('特典「' + o.t.replace('{n}', '◯') + '」の数字は' + o.min.toLocaleString() + '〜' + o.max.toLocaleString() + o.unit + 'で入れてください'); continue; }
       if (!/^\d{4}-\d{2}-\d{2}$/.test(until) || new Date(until) < new Date()) { done.push('特典の終わりの日を入れてください'); continue; }
-      offers.push({ k: o.k, n: n || null, until: until, text: o.t.replace('{n}', n.toLocaleString()) + '（' + until.replace(/-/g, '/') + 'まで）' });
+      offers.push({ k: o.k, n: n || null, until: until, label: o.t.replace('{n}', n.toLocaleString()), text: o.t.replace('{n}', n.toLocaleString()) + '（' + until.replace(/-/g, '/') + 'まで）' });
     }
     var before = { offer: pinfoLatest_(rows, 'offer'), equip: pinfoLatest_(rows, 'equip'), pay: pinfoLatest_(rows, 'pay'), cred: pinfoLatest_(rows, 'cred'), note: pinfoLatest_(rows, 'note') };
     var add = function(kind, text, data) { var r = pinfoAdd_(pid, kind, text, data); pinfoNotify_(pid, r, kind, text); done.push(PINFO_KINDS[kind]); got.push(PINFO_KINDS[kind] + '：' + text); };
@@ -2670,7 +2675,7 @@ function pinfoPage_(q) {
     '<h2>特典（同時に' + PINFO_OFFER_MAX + 'つまで）</h2><p class="note">このサイトから問い合わせたお客さまだけの特典です。お返事の確定料金に特典を入れてからお送りください。終わりの日を過ぎると自動で消えます。</p>';
   for (var j = 0; j < PINFO_OFFER_MAX; j++) {
     var co = cur.offer[j] || {};
-    html += '<div class="pt"><select name="of' + j + '"><option value="">（なし）</option>' + PINFO_OFFERS.map(function(o) { return '<option value="' + o.k + '"' + (co.k === o.k ? ' selected' : '') + '>' + esc_(o.t.replace('{n}', '◯')) + '</option>'; }).join('') + '</select>' +
+    html += '<div class="pt"><select name="of' + j + '"><option value="">（なし）</option>' + PINFO_OFFERS.map(function(o) { return '<option value="' + o.k + '"' + (co.k === o.k ? ' selected' : '') + '>' + esc_(o.t.replace('{n}', '◯') + (o.unit ? '（' + o.min.toLocaleString() + '〜' + o.max.toLocaleString() + o.unit + '）' : '')) + '</option>'; }).join('') + '</select>' +
       '<label style="font-weight:400">◯に入れる数字<input name="of' + j + 'n" inputmode="numeric" value="' + esc_(co.n || '') + '"></label><label style="font-weight:400">終わりの日<input type="date" name="of' + j + 'u" value="' + esc_(co.until || '') + '"></label></div>';
   }
   html += '<h2>設備・できること</h2><p class="note">カードに特長のタグで出ます。</p>' + pinfoChips_('equip', PINFO_EQUIP, cur.equip) +

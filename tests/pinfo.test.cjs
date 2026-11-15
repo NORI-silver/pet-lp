@@ -33,17 +33,17 @@ assert.equal(ctx.pinfoSessionPid_(tok.replace('P063','P030')),'');
 ctx.PINFO_STOP.push('P063'); assert.equal(ctx.pinfoSessionPid_(tok),''); ctx.PINFO_STOP.pop();
 sent.length=0;
 const page=ctx.pinfoPage_({s:tok}).html;
-assert.ok(page.includes('PETTA東京') && page.includes('data-pinfo-up') && page.includes('お迎え料金が◯kmまで無料'));
+assert.ok(page.includes('PETTA東京') && page.includes('data-pinfo-up') && page.includes('◯%オフ') && page.includes('早朝・深夜の割増なし'));
 // 特典は終わりの日と数字の上限、ひとことは禁止の言い方で止める
 const later=new Date(Date.now()+30*864e5).toISOString().slice(0,10);
 let r=ctx.pinfoPage_({s:tok,go:'1',of0:'first_pct',of0n:'50',of0u:later}).html;
-assert.ok(r.includes('1〜30%') && rows.length===0);
+assert.ok(r.includes('5〜30%') && rows.length===0);
 r=ctx.pinfoPage_({s:tok,go:'1',of0:'pick_free',of0n:'5',of0u:later,equip:['ケージの貸し出し','ペットシーツ'],note:'地域最安！お電話は03-1234-5678'}).html;
 assert.ok(rows.length===3, 'offer + equip + note');
-assert.equal(rows[0][3],'特典'); assert.ok(rows[0][4].startsWith('お迎え料金が5kmまで無料')); assert.equal(rows[0][6],'確認待ち');
+assert.equal(rows[0][3],'特典'); assert.ok(rows[0][4].startsWith('お迎え料金なし（5kmまで）')); assert.equal(rows[0][6],'確認待ち');
 const note=rows.find(x=>x[3]==='ひとこと'); assert.equal(note[6],'直してください'); assert.ok(/電話番号/.test(note[7]) && /くらべる言い方/.test(note[7]));
 assert.ok(mails.length===3 && mails[0][1].includes('a=pinfo_ok'));
-assert.ok(sent.length===1 && sent[0][0]==='petta@example.jp' && sent[0][2].includes('お迎え料金が5kmまで無料'), 'receipt to the partner');
+assert.ok(sent.length===1 && sent[0][0]==='petta@example.jp' && sent[0][2].includes('お迎え料金なし（5kmまで）'), 'receipt to the partner');
 // 同じ内容をもう一度送っても行は増えない
 ctx.pinfoPage_({s:tok,go:'1',of0:'pick_free',of0n:'5',of0u:later,equip:['ケージの貸し出し','ペットシーツ'],note:'地域最安！お電話は03-1234-5678'});
 assert.equal(rows.length,4, 'only the rejected note is re-sent');
@@ -64,7 +64,7 @@ console.log('PASS: partner listing page logs in by email link, accepts only part
   rows.length=0; ctx.CacheService={getScriptCache:()=>({get:()=>null,put(){},remove(){}})};
   const later=new Date(Date.now()+30*864e5).toISOString().slice(0,10), past='2020-01-01';
   const row=(kind,state,data)=>rows.push([new Date(),'P063','PETTA東京',kind,'',  '○',state,'',JSON.stringify(data)]);
-  row('特典','公開',{list:[{text:'お迎え料金が5kmまで無料（'+later+'まで）',until:later},{text:'古い',until:past}]});
+  row('特典','公開',{list:[{label:'10%オフ',text:'10%オフ（'+later+'まで）',until:later},{text:'早朝・深夜の割増なし（2025/01/01まで）',until:later},{text:'古い',until:past}]});
   row('設備・できること','公開',{list:['ケージの貸し出し']});
   row('お支払い方法','公開',{list:['現金']});
   row('ひとこと','公開',{text:'大型犬もどうぞ'});
@@ -73,7 +73,8 @@ console.log('PASS: partner listing page logs in by email link, accepts only part
   row('写真','公開',{file:'out',w:1500,h:1000,kind:'車の外'});
   row('写真','直してください',{file:'ng',w:1600,h:1000,kind:'お店'});
   const pub=ctx.pinfoPublic_()['P063'];
-  assert.deepEqual(pub.offers,['お迎え料金が5kmまで無料（'+later+'まで）']);
+  const ud=Number(later.slice(5,7))+'/'+Number(later.slice(8,10));
+  assert.equal(JSON.stringify(pub.offers),JSON.stringify([{t:'10%オフ',until:ud},{t:'早朝・深夜の割増なし',until:ud}]));
   assert.deepEqual(pub.tags,['ケージの貸し出し']); assert.equal(pub.note,'大型犬もどうぞ');
   assert.equal(pub.photos.length,2); assert.ok(pub.photos[0].url.includes('out') && pub.photos[1].url.includes('abc'), 'car outside first');
   console.log('PASS: only approved, unexpired, landscape items reach the cards');
