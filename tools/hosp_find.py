@@ -134,6 +134,8 @@ def record(h, pref, tags, depts_of):
     if dps: r["d"] = dps
     r["y"] = sorted(y); r["no"] = sorted(n - y)
     if h.get("review_query") and h.get("id"): r["rv"] = h["id"]
+    # 電話番号は、公式サイトか獣医師会の一覧にある番号だけ（tel_src つき）。Nori 2026-11-15 判断のカード「出す」
+    if h.get("tel") and h.get("tel_src"): r["tel"] = re.sub(r"[^0-9\-]", "", h["tel"])
     if re.search(r"（[^）]+[都道府県]）$", r["c"]): r["far"] = 1
     return r
 

@@ -2464,6 +2464,9 @@ gen_webmcp.build(ROOT)
 # サイト全体を「ペットのくらし窓口」の総合サイトに（上の名前・分野のメニュー・トップの全分野の入口・構造化データ。tools/portal.py、Nori 2026-11-14）
 import portal
 print("portal", portal.build(ROOT), "pages")
+# 全カテゴリのUI/UX（さがす箱1つ・結果のカード・小さなタクシーの案内。tools/uikit.py、Nori 2026-11-15。まず病院・ホテル・ドッグラン）
+import uikit
+print("uikit", uikit.build(ROOT))
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] noindex.json のページに noindex,follow を入れる（ほかの後処理のあと）
 for _p in NOINDEX:

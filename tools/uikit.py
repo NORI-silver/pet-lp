@@ -1,0 +1,225 @@
+"""[B] 2026-11-15 全カテゴリのUI/UX（Nori「ペットのくらし窓口 全カテゴリUI/UX改善依頼」）。共通の部品とルール。
+gen_areas.py の最後（faccard・portal のあと）に動く。何度動かしても同じ結果。
+
+- さがす箱（box）：最初に見せる質問は2〜3つ（どこで・どの子・どんな）。ほかは「詳しい条件で絞り込む」の中。動きは /find.js（tools/find.js）。
+  条件は公式サイトに書いてあることだけ（施設の data-k）。書いていない施設は「書いていない（分からない）」で、押せば見られる。
+- 結果の後ろのペットタクシーの案内は、横長の小さなカード1枚（ボタンは「ペットタクシーを探す」）。関連のリンクは文字のリンク、地域のリンクは折りたたみ。
+- ボタンは3つの型：主なボタン（オレンジ・1つの節に1つ）／しぼりこみ（白地に灰色の枠）／関連のリンク（文字のリンク）。
+- 先に動物病院・ペットホテル・ドッグランで試し（PILOT）、よければほかのカテゴリへ広げる。
+"""
+import html as _h, os, re
+import prefkeep
+
+PILOT = ["hospital", "pet-hotel", "dogrun"]
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+CSS = """<style id="uicss">
+#ffRes{scroll-margin-top:110px;height:0;margin:0}
+[data-ffg]{margin:0;padding:0!important}[data-ffg]>h2{margin-top:18px!important}
+body.ux .emg{border:0;padding:0;background:none;box-shadow:none;border-radius:0}
+.ux-find{background:#fff;border:1px solid #efe0d3;border-radius:18px;padding:14px 14px 10px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin:4px 0 14px}
+.ux-r{padding:8px 0 6px;border-top:1px solid #f5ebe2}.ux-r:first-child{border-top:0;padding-top:0}
+.ux-l{display:block;font-size:.8rem;font-weight:700;color:#7a6a5e;margin:0 0 6px}
+.ux-w{display:flex;flex-wrap:wrap;gap:6px}
+.ux-w select{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb;background:#fff;color:#2b2622}
+.ux-w input{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb}
+.ux-w button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:8px 13px;font-size:.88rem;line-height:1.2;color:#3c2f26;cursor:pointer}
+.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ux-need button{border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:12px 8px;font-size:.93rem;font-weight:700;color:#3c2f26;cursor:pointer}
+.ux-find button[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff;font-weight:700}
+.ux-find button[hidden]{display:none}
+.ux-det{border-top:1px solid #f5ebe2;padding-top:6px;margin-top:2px}
+.ux-det summary{cursor:pointer;font-weight:700;font-size:.88rem;color:#a8410a;padding:6px 0;list-style:none;background:none!important;box-shadow:none!important;border:0!important}
+.ux-det summary::-webkit-details-marker{display:none}.ux-det summary::after{display:none!important;content:none!important}
+.ux-det summary::before{content:"＋ "}.ux-det[open] summary::before{content:"－ "}
+.ux-det summary span{margin-left:6px;font-size:.78rem;color:#fff;background:#e8590c;border-radius:999px;padding:1px 7px}.ux-det summary span:empty{display:none}
+.ux-det .ux-l{margin-top:8px}
+.ux-go{display:block;width:100%;margin:10px 0 4px;border:0;border-radius:999px;background:#2b2622;color:#fff;font-weight:800;font-size:1rem;padding:13px;cursor:pointer}
+.ux-foot{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-top:8px;border-top:1px solid #f5ebe2}
+.ux-sum{flex:1;margin:0;font-weight:800;font-size:1rem;color:#2b2622}.ux-sum small{display:block;font-weight:400;color:#7a6a5e;font-size:.78rem}
+.ux-clear{white-space:nowrap;border:0;background:none;color:#7a6a5e;text-decoration:underline;font-size:.82rem;cursor:pointer}
+.ux-alt{display:flex;flex-wrap:wrap;gap:6px}.ux-alt:not(:empty){margin-top:8px}
+.ux-alt-b{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:7px 11px;font-size:.84rem;color:#3c2f26;cursor:pointer}
+.ux-none{flex-basis:100%;margin:0;background:#fff8f2;border-radius:12px;padding:10px 12px;font-size:.88rem}
+.ux-unk{opacity:.85}.ux-unk-n{margin:4px 0 0;font-size:.76rem;color:#7a6a5e}
+.ux-list{display:grid;gap:10px;margin:8px 0 14px}
+.ux-c{background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px;margin:0;scroll-margin-top:110px}
+.ux-c-n{display:block;font-weight:800;font-size:1.02rem;color:#2b2622;text-decoration:none;line-height:1.35;margin:0}
+a.ux-c-n{text-decoration:underline;text-decoration-color:#e3d3c6;text-underline-offset:3px}
+.ux-c .ux-c-m{margin:2px 0 6px;font-size:.8rem;color:#7a6a5e}
+.ux-c .dr-tags{margin:0 0 6px}
+.ux-c .ux-c-l{margin:3px 0 0;font-size:.85rem;color:#4a3f37;display:flex;gap:6px;line-height:1.45}.ux-c-l i{font-style:normal;flex:0 0 1.2em;text-align:center}
+.ux-c-a{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.ux-c-a .ux-btn{justify-content:center;padding:10px 6px;font-size:.88rem}
+.ux-btn.l{background:#fff;color:#2b2622!important;border:1px solid #d9c9bb}
+.ux-c-s{margin:8px 0 0;font-size:.82rem;text-align:center}.ux-c-s a{color:#a8410a}
+.ux-c-d{margin-top:8px;border-top:1px solid #f5ebe2;padding-top:4px}
+.ux-c-d summary{padding-left:0!important;border-radius:0!important;cursor:pointer;font-size:.85rem;font-weight:700;color:#a8410a;padding:6px 0;list-style:none;background:none!important;border:0!important;box-shadow:none!important}
+.ux-c-d summary::-webkit-details-marker{display:none}.ux-c-d summary::after{display:none!important;content:none!important}
+.ux-c-d summary::before{content:"＋ "}.ux-c-d[open] summary::before{content:"－ "}
+.ux-c-d dl{margin:4px 0;font-size:.84rem}.ux-c-d dt{font-weight:700;margin-top:6px}.ux-c-d dd{margin:0}
+.ux-g-p{font-size:.85rem;color:#6b5f56;margin:0 0 4px}
+.ux-tx{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #efe0d3;border-radius:16px;padding:12px 14px;margin:8px 0 4px}
+.ux-tx-i{flex:0 0 40px;height:40px;border-radius:12px;background:#fff1e6;color:#e8590c;display:flex;align-items:center;justify-content:center}
+.ux-tx-i svg{width:24px;height:24px}
+.ux-tx-b{flex:1;min-width:0}.ux-tx-b h2{font-size:.98rem;margin:0;line-height:1.35}.ux-tx-b p{margin:2px 0 0;font-size:.8rem;color:#6b5f56;line-height:1.45}
+.ux-tx-a{flex:0 0 auto;border-radius:999px;background:#e8590c;color:#fff!important;font-weight:800;font-size:.85rem;padding:9px 12px;text-decoration:none;white-space:nowrap}
+.ux-tx-n{display:block;font-size:.72rem;color:#8a7d73;margin:0 0 14px}
+@media (max-width:420px){.ux-tx{flex-wrap:wrap}.ux-tx-a{flex:1 1 100%;text-align:center}}
+.ux-nav{margin:14px 0}.ux-nav-h{font-size:.85rem;font-weight:700;color:#7a6a5e;margin:0 0 4px}
+body.ux ul.other{display:block;columns:2 13em;column-gap:18px;margin:4px 0 12px;padding:0;list-style:none}
+body.ux ul.other li{display:block;break-inside:avoid;margin:0;padding:5px 0;border-bottom:1px solid #f3ece6}
+body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!important;border:0!important;box-shadow:none!important;padding:0!important;border-radius:0!important;font-size:.88rem;font-weight:400;color:#a8410a;text-decoration:underline;text-underline-offset:2px;white-space:normal}
+.ux-areas{margin:6px 0 14px;border:1px solid #efe0d3;border-radius:12px;padding:0 12px}
+.ux-areas>summary{cursor:pointer;font-weight:700;font-size:.9rem;padding:11px 0;list-style:none;background:none!important;box-shadow:none!important;border:0!important}
+.ux-areas>summary::-webkit-details-marker{display:none}.ux-areas>summary::after{display:none!important;content:none!important}
+.ux-areas>summary::before{content:"＋ ";color:#e8590c}.ux-areas[open]>summary::before{content:"－ "}
+.ux-btn{display:inline-flex;align-items:center;gap:4px;border-radius:10px;background:#2b2622;color:#fff!important;font-weight:700;font-size:.82rem;padding:7px 12px;text-decoration:none}
+@media (min-width:760px){.ux-list{grid-template-columns:1fr 1fr}.ux-need{grid-template-columns:repeat(4,1fr)}.ux-w select{flex:0 0 14em}.ux-w input{flex:1 1 auto}}
+</style>"""
+
+CAR = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+       '<path d="M5 16V11l2-5h10l2 5v5"/><path d="M3 16h18v3H3z"/><circle cx="7.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/><path d="M5 11h14"/></svg>')
+
+def e(x): return _h.escape(str(x), quote=True)
+
+def _b(items, cls=""):
+    return "".join(f'<button type="button" data-k="{e(k)}" data-l="{e(l)}" aria-pressed="false">{e(l)}</button>' for k, l in items)
+
+def box(cat, *, q_ph, opts=None, who=None, need=None, more=(), unit="件", noun="ところ", go="この条件でさがす", guess=False, needpref=False):
+    """さがす箱。opts＝都道府県の <option>（全国のページだけ）、who＝(質問, [(key, 名前)])、need＝(質問, [(key, 名前)])、more＝[(小見出し, [(key, 名前)])]。"""
+    rows = []
+    place = (f'<select id="ffPref" aria-label="都道府県">{opts}</select>' if opts else "") + f'<input id="ffQ" type="search" placeholder="{e(q_ph)}" aria-label="{e(q_ph)}" autocomplete="off">'
+    rows.append(f'<div class="ux-r"><span class="ux-l">どこで探しますか？</span><div class="ux-w">{place}</div></div>')
+    if who and who[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(who[0])}</span><div class="ux-w">{_b(who[1])}</div></div>')
+    if need and need[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(need[0])}</span><div class="ux-need">{_b(need[1])}</div></div>')
+    if more:
+        inner = "".join(f'<span class="ux-l">{e(t)}</span><div class="ux-w">{_b(it)}</div>' for t, it in more if it)
+        rows.append(f'<details class="ux-det"><summary>詳しい条件で絞り込む<span></span></summary>{inner}</details>')
+    attrs = f' data-ff="{e(cat)}" data-unit="{e(unit)}" data-noun="{e(noun)}"' + (" data-guess" if guess else "") + (" data-needpref" if needpref else "")
+    return (f'<div class="ux-find"{attrs}>' + "".join(rows) + f'<button type="button" class="ux-go" id="ffGo">{e(go)}</button>'
+            '<div class="ux-foot"><p class="ux-sum" id="ffSum" aria-live="polite"></p><button type="button" class="ux-clear" id="ffClear" hidden>条件をクリア</button></div>'
+            '<div class="ux-alt" id="ffAlt"></div></div><div id="ffRes"></div>')
+
+FIND_JS = '<script src="/find.js" defer></script>'
+
+def write_js(ROOT):
+    js = open(os.path.join(HERE, "find.js"), encoding="utf-8").read()
+    out = "// 生成：tools/uikit.py（元は tools/find.js と tools/prefkeep.py）\n" + prefkeep.FN + prefkeep.GUESS + "\n" + js
+    open(os.path.join(ROOT, "find.js"), "w", encoding="utf-8").write(out)
+    return len(out.encode())
+
+def head(h):
+    h = re.sub(r'<style id="uicss">.*?</style>\n?', "", h, flags=re.S)
+    h = h.replace("</head>", CSS + "\n</head>", 1)
+    if not re.search(r'<body[^>]*class="[^"]*\bux\b', h):
+        h = re.sub(r"<body(?![^>]*class=)", '<body class="ux"', h, count=1)
+        h = re.sub(r'<body([^>]*)class="(?![^"]*\bux\b)', r'<body\1class="ux ', h, count=1)
+    return h
+
+# ── 結果の後ろのペットタクシーの案内 ──
+TX = {
+    "hospital": "通院や退院のお迎えに。家の前から病院の前まで、飼い主さんも一緒に乗れます。",
+    "hospital-night": "前もって決まっている通院や退院のお迎えに。急ぎの搬送は緊急の連絡先へ。",
+    "pet-hotel": "家の前からホテルの前まで。大きな子やキャリーの猫も、飼い主さんと一緒に。",
+    "dogrun": "車がないとき、大きな子や何頭もいっしょのときに。",
+}
+NOTE = "料金の目安は各社の公式サイトの料金表から計算した概算で、確定料金ではありません。"
+_SEC = re.compile(r'<section style="padding-top:0">\s*<div class="wrap">\s*<div class="sh"><h2>([^<]*)</h2><p>[^<]*</p></div>\s*'
+                  r'<!--TAXICTA--><div class="taxi-cta"><a class="btn" href="([^"]*)" data-taxi-cta="([^"]*)">.*?<!--/TAXICTA-->\s*((?:<ul class="other">.*?</ul>\s*)*)', re.S)
+_TAXI_LINK = re.compile(r'^/(tokyo|kanagawa|chiba|saitama|area)/|#form$')
+
+def _split_links(uls):
+    guide, area = [], []
+    for li in re.findall(r"<li>.*?</li>", uls, re.S):
+        m = re.search(r'href="([^"]*)"', li)
+        hf = m.group(1) if m else ""
+        if _TAXI_LINK.search(hf):
+            if hf != "/#form": area.append(li)
+        else: guide.append(li)
+    return guide, area
+
+def taxi(h, cat):
+    def rep(m):
+        title, href, cta, uls = m.group(1), m.group(2), m.group(3), m.group(4)
+        guide, area = _split_links(uls)
+        out = ('<section style="padding-top:0" class="ux-tx-sec">\n  <div class="wrap">\n'
+               f'    <!--TAXICTA--><div class="ux-tx"><span class="ux-tx-i">{CAR}</span><div class="ux-tx-b"><h2>{title}</h2><p>{e(TX.get(cat.replace("-bottom", ""), TX.get(cat.split("-")[0], "")))}</p></div>'
+               f'<a class="ux-tx-a" href="{href}" data-taxi-cta="{cta}">ペットタクシーを探す</a></div><small class="ux-tx-n">{NOTE}</small><!--/TAXICTA-->\n')
+        if guide: out += f'    <nav class="ux-nav" aria-label="関連ガイド"><p class="ux-nav-h">関連ガイド</p><ul class="other">{"".join(guide)}</ul></nav>\n'
+        if area: out += f'    <details class="ux-areas"><summary>地域のペットタクシー</summary><ul class="other">{"".join(area)}</ul></details>\n'
+        return out
+    return _SEC.sub(rep, h, count=1)
+
+# ── ペットホテル（faccard のカードの一覧）の上を、さがす箱1つにまとめる ──
+HOTEL = dict(
+    cat="pet-hotel", unit="件", noun="ホテル", q_ph="市区町村（例：世田谷区、札幌市）",
+    who=("どの子を預けますか？", [("large", "大型犬"), ("cat", "猫"), ("senior", "シニア・介護")]),
+    need=("どんなホテルをお探しですか？", [("cat_only", "猫専用"), ("vet", "病院が併設"), ("pickup", "送迎あり"), ("night_staff", "夜もスタッフ")]),
+    more=[("設備", [("private_room", "個室"), ("camera", "カメラで見守り"), ("run", "ドッグラン")])],
+    go="この条件でホテルを探す")
+
+def _end(h, i, tag="div"):
+    import faccard
+    return faccard._end(h, i, tag)
+
+def _cut(h, start_pat):
+    i = h.find(start_pat)
+    if i < 0: return h, ""
+    j = _end(h, i, "div")
+    return h[:i] + h[j:], h[i:j]
+
+def facility_list(h, conf, hub):
+    if 'id="ffRes"' in h: return h
+    em = h.find('<div class="emg">')
+    if em < 0: return h
+    h, _ = _cut(h, '<div class="fp" data-fp>')
+    h, pf = _cut(h, '<div class="f"><label for="hospPref">')
+    h, _ = _cut(h, '<div class="f"><span>条件でしぼりこむ')
+    opts = ""
+    m = re.search(r"<select[^>]*>(.*)</select>", pf, re.S)
+    if m: opts = m.group(1)
+    # 一覧の上の注意書きは一覧の後ろへ
+    em = h.find('<div class="emg">')
+    first = h.find('<section class="emg-pref"', em)
+    frees = re.findall(r'\s*<p class="emg-free">.*?</p>', h[em:first], re.S) if first > 0 else []
+    for f in frees: h = h[:em] + h[em:].replace(f, "", 1)
+    if frees:
+        k = h.find('<div class="emg-tips">', em)
+        if k < 0: k = h.find('<p class="emg-note">', em)
+        if k > 0: h = h[:k] + "".join(x.strip() for x in frees) + "\n      " + h[k:]
+    bx = box(conf["cat"], q_ph=conf["q_ph"], opts=opts if hub else None, who=conf["who"], need=conf["need"], more=conf["more"],
+             unit=conf["unit"], noun=conf["noun"], go=conf["go"], guess=hub)
+    em = h.find('<div class="emg">')
+    h = h[:em + len('<div class="emg">')] + bx + h[em + len('<div class="emg">'):]
+    # 施設に印（data-flags をそのまま条件に）と「公式サイト」のボタン
+    def card(m):
+        t = m.group(0)
+        fl = re.search(r'data-flags="([^"]*)"', t)
+        return t[:-1] + f' data-ffi data-k="{fl.group(1) if fl else ""}">'
+    h = re.sub(r'<div class="emg-item emg-co fc[^"]*"[^>]*>', card, h)
+    h = re.sub(r'(<div class="fc-name"><a href="([^"]*)"[^>]*>.*?</div>)((?:(?!class="fc-name").)*?)<div class="fc-acts">',
+               lambda m: m.group(1) + m.group(3) + f'<div class="fc-acts"><a class="ux-btn" href="{m.group(2)}" target="_blank" rel="noopener">公式サイトを見る ↗</a>', h, flags=re.S)
+    # 前の動き（fit.js・条件のチェック）を外して /find.js に
+    h = h.replace('<script src="/fit.js" defer></script>\n', "").replace('<script src="/fit.js" defer></script>', "")
+    h = re.sub(r"<script>\n\(function\(\)\{(?:(?!</script>).)*?\.trim-cond input(?:(?!</script>).)*?</script>\n?", "", h, flags=re.S)
+    if FIND_JS not in h: h = h.replace("</body>", FIND_JS + "\n</body>", 1)
+    return h
+
+def build(ROOT):
+    n = 0
+    sz = write_js(ROOT)
+    for d in PILOT:
+        for r, _, fs in os.walk(os.path.join(ROOT, d)):
+            if "index.html" not in fs: continue
+            p = os.path.join(r, "index.html")
+            parts = os.path.relpath(r, ROOT).split(os.sep)
+            h = open(p, encoding="utf-8").read()
+            old = h
+            cat = "hospital-night" if parts[:2] == ["hospital", "night"] else d
+            h = taxi(h, cat)
+            if d == "pet-hotel" and len(parts) <= 2: h = facility_list(h, HOTEL, hub=len(parts) == 1)
+            h = head(h)
+            if h != old:
+                open(p, "w", encoding="utf-8").write(h); n += 1
+    return n, sz

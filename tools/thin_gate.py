@@ -18,6 +18,8 @@ def _segments(html):
     for tag in SKIP_TAGS:
         t = re.sub(r"<%s\b.*?</%s>" % (tag, tag), " ", t, flags=re.S)
     t = re.sub(r'<details class="toc2".*?</details>', " ", t, flags=re.S)
+    # カードの要約の行（同じカードの「くわしく見る」の中の文を短くしたもの。tools/uikit.py）は数えない
+    t = re.sub(r'<p class="ux-c-l">.*?</p>', " ", t, flags=re.S)
     t = re.sub(r"&[a-z#0-9]+;", " ", t)
     out = []
     for part in re.split(r"<[^>]+>", t):
