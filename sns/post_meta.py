@@ -23,7 +23,7 @@ TH = "https://graph.threads.net/v1.0"
 HANDLES = {"ig": {"pet.kurashi"}, "threads": {"pet.kurashi"}}
 
 
-def call(method, url, params):
+def call(method, url, params, fatal=True):
     data = urllib.parse.urlencode(params).encode()
     if method == "GET":
         url, data = url + "?" + data.decode(), None
@@ -33,6 +33,8 @@ def call(method, url, params):
             return json.loads(f.read() or b"{}")
     except urllib.error.HTTPError as e:
         body = e.read().decode()[:400]
+        if not fatal:
+            raise RuntimeError(f"{e.code} {body}")
         sys.exit(f"{method} {url.split('?')[0]}: {e.code} {body}")
 
 
@@ -71,8 +73,10 @@ def post_ig(token, p, common):
 
 
 def text_threads(p):
-    """Threads は文だけで出す。ハッシュタグは最初の1つだけ（Threads はトピックが1つ）。"""
-    lines = p["x"].split("\n")
+    """Threads の文。ハッシュタグは最初の1つだけ（Threads はトピックが1つ）。クイズは問いだけ（答えは次の日に返信で）。"""
+    lines = p.get("th", p["x"]).split("\n")
+    if p.get("answer") and not any(l.startswith("答えは") for l in lines):
+        lines = [l for l in lines if not l.startswith("#")] + ["答えは、あしたこの投稿への返信で🐾"] + [l for l in lines if l.startswith("#")]
     tags = [w for l in lines if l.startswith("#") for w in l.split() if w.startswith("#")]
     body = "\n".join(l for l in lines if not l.startswith("#"))
     return body + ("\n" + tags[0] if tags else "")
@@ -99,6 +103,20 @@ def post_threads(token, p):
     return call("POST", f"{TH}/me/threads_publish", {"creation_id": c["id"], "access_token": token}).get("id")
 
 
+def answer_quiz(token, state):
+    """きのうのクイズの答えを、その投稿への返信で出す。うまくいかなくても今日の投稿は止めない。"""
+    q = state.pop("threads_quiz")
+    try:
+        check(q["answer"])
+        c = call("POST", f"{TH}/me/threads", {"media_type": "TEXT", "text": q["answer"], "reply_to_id": q["id"],
+                                              "access_token": token}, fatal=False)
+        time.sleep(5)
+        r = call("POST", f"{TH}/me/threads_publish", {"creation_id": c["id"], "access_token": token}, fatal=False)
+        print("threads クイズの答えを返信", r.get("id"))
+    except Exception as e:  # noqa: BLE001
+        print("threads クイズの答えを返信できませんでした", e)
+
+
 def main():
     dry = "--dry" in sys.argv
     only = sys.argv[sys.argv.index("--only") + 1] if "--only" in sys.argv else None
@@ -116,7 +134,7 @@ def main():
         done = state.setdefault(kind, {})
         nxt = next(iter(pick(data["posts"], list(done))), None)
         if not nxt:
-            print(kind, "出せる投稿が残っていません")
+            print(kind, "出せる投稿が残っていません（写真のある投稿がない）")
             continue
         if dry:
             print(f"== {kind} {nxt['no']} {nxt['tag']} {SITE + nxt['photo']}")
@@ -131,7 +149,11 @@ def main():
             ok = me.get("username") in HANDLES[kind]
             print(kind, "キーは使えます" if ok else "アカウントが違います", me.get("username"))
             continue
+        if kind == "threads" and state.get("threads_quiz"):
+            answer_quiz(tokens[kind], state)
         pid = post_ig(tokens[kind], nxt, data["ig_tags_common"]) if kind == "ig" else post_threads(tokens[kind], nxt)
+        if kind == "threads" and nxt.get("answer"):
+            state["threads_quiz"] = {"id": pid, "answer": nxt["answer"]}
         done[str(nxt["no"])] = now
         print(kind, "出した", nxt["no"], nxt["tag"], pid)
         json.dump(state, open(sp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
