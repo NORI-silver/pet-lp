@@ -679,12 +679,12 @@ def pref_company_table(pf, short, cs, cities=()):
     rows = []
     for c in cs:
         F = c.get("fare") if c.get("fare") and c["fare"].get("kind", "dist") == "dist" and c["fare"].get("base") else None
-        if c.get("hide_fare"): F = None  # 料金の数字を1社ずつ並べないでほしいと言われた会社（ふわふわ 2026-11-14「数値の公表は避けていただけませんか」）。全体の目安の計算には入れる
+        # hide_formula：料金の数字はよいが、計算のしかた（お迎え・夜間の式）は出さないでほしい会社（ふわふわ 2026-11-15「料金の公表は構いません。料金の計算方法の公式だけ非公開で」）
         h = c.get("hours") or ""
         ht = "24時間" if h == "0-24" else (h.replace("-", "時〜") + "時" if h else "—")
         r5 = f"{_nat_ride(F, 5):,}円" if F else "お見積もり"
         home = "都内" if c["pref"] == pf and pf.endswith("都") else "府内" if c["pref"] == pf and pf.endswith("府") else ("道内" if c["pref"] == pf and pf == "北海道" else ("県内" if c["pref"] == pf else c["pref"]))
-        rows.append((0 if c["pref"] == pf else 1, _nat_ride(F, 5) if F else 10**9, f'<tr><td>{e(home)}</td><td>{e(c.get("area_text") or "")}</td><td>{e(ht)}</td><td>{e(r5)}</td><td>{e(_pick_txt(F))}</td><td>{e(_night_txt(F))}</td></tr>'))
+        rows.append((0 if c["pref"] == pf else 1, _nat_ride(F, 5) if F else 10**9, f'<tr><td>{e(home)}</td><td>{e(c.get("area_text") or "")}</td><td>{e(ht)}</td><td>{e(r5)}</td><td>{e("—" if c.get("hide_formula") else _pick_txt(F))}</td><td>{e("—" if c.get("hide_formula") else _night_txt(F))}</td></tr>'))
     rows.sort(key=lambda r: (r[0], r[1]))
     out = f'<h2>{e(short)}に来てくれるペットタクシー{len(cs)}社の、対応エリアと料金のしくみ</h2>'
     out += f'<p>{e(pf)}のお迎えに対応している{len(cs)}社について、公式サイトに書かれている対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p>'
