@@ -1,4 +1,5 @@
 {
+  "meta_pause": "2026-11-15 Nori「SNSの投稿がほんとに面白くない」→ 新しい方向を決めるまで止める",
   "_note": "XとInstagramの投稿の元データ。リンクは入れない（Nori 2026-11-02「リンクは貼らない」）。数字はガイド記事（tools/guides.py）にあるものだけ。node sns/gen.cjs で画像と posts.md を作り直す。",
   "ig_tags_common": [
     "#ペットタクシー",

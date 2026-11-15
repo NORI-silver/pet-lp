@@ -107,6 +107,9 @@ def main():
     sp = os.path.join(HERE, "state.json")
     state = json.load(open(sp, encoding="utf-8"))
     now = dt.datetime.now(JST).isoformat(timespec="minutes")
+    if data.get("meta_pause") and not dry and "--check" not in sys.argv:
+        print("いまは止めています（posts.json の meta_pause）:", data["meta_pause"])
+        return 0
     tokens = {"ig": os.environ.get("META_IG_TOKEN"), "threads": os.environ.get("META_THREADS_TOKEN")}
     for kind in ("ig", "threads"):
         if only and kind != only:
