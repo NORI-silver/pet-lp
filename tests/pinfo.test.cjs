@@ -53,6 +53,13 @@ const off=rows.find(x=>x[3]==='臨時のお休み'); assert.equal(off[6],'確認
 ctx.PINFO_ALL_=null; assert.ok(!ctx.pinfoOffDays_('P063')['2027-01-01']);
 off[6]='公開'; ctx.PINFO_ALL_=null;
 assert.ok(ctx.pinfoOffDays_('P063')['2027-01-01']);
+// 登録・届出を選んだら番号が要る。お支払い方法は受け付ける。人数・頭数の項目はない
+let n0=rows.length;
+r=ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],equip:['ケージの貸し出し','ペットシーツ'],of0:'pick_free',of0n:'5',of0u:later,note:''}).html;
+assert.ok(r.includes('番号を入れてください') && !rows.slice(n0).some(x=>x[3]==='許可・資格・保険'));
+ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],cred_no:'関自貨第123号',pay:['現金','クレジットカード'],equip:['ケージの貸し出し','ペットシーツ'],of0:'pick_free',of0n:'5',of0u:later,note:''});
+assert.ok(rows.some(x=>x[3]==='許可・資格・保険' && x[4].includes('関自貨第123号')) && rows.some(x=>x[3]==='お支払い方法' && x[4]==='現金・クレジットカード'));
+assert.ok(!page.includes('多頭の同乗') && !page.includes('飼い主さんの同乗') && !page.includes('得意な行き先'));
 console.log('PASS: partner listing page logs in by email link, accepts only partners, blocks banned wording, reviews day-offs');
 {
   const res=ctx.checks_({id:'P063',hours:'0-24',rideHours:'0-24'},{'希望日時':'2027-01-01T01:00:00Z','ペット':'[]'});
@@ -68,7 +75,7 @@ console.log('PASS: partner listing page logs in by email link, accepts only part
   const row=(kind,state,data)=>rows.push([new Date(),'P063','PETTA東京',kind,'',  '○',state,'',JSON.stringify(data)]);
   row('特典','公開',{list:[{text:'お迎え料金が5kmまで無料（'+later+'まで）',until:later},{text:'古い',until:past}]});
   row('設備・できること','公開',{list:['ケージの貸し出し']});
-  row('得意な行き先','確認待ち',{list:['空港']});
+  row('お支払い方法','公開',{list:['現金']});
   row('ひとこと','公開',{text:'大型犬もどうぞ'});
   row('写真','公開',{file:'abc',w:1600,h:1067,kind:'車の中'});
   row('写真','公開',{file:'tall',w:900,h:1600,kind:'車の外'});
