@@ -494,7 +494,7 @@ PROVIDER = {
     # 北海道特別料金 10,000円＋フェリー代、立替手数料4%。遠くからのお迎え（大阪→横浜など）は大幅割引で計算方法は非公開なので、お迎えが100km超はお見積もり。
     # 車：ミニバンは運転手付きレンタカー（白ナンバー）なので、このサイトの依頼は黒ナンバーの車だけ（Nori 2026-11-12 白ナンバーとは提携しない）
     'D5598693': {'anywhere': True, 'ng_prefs': ['沖縄'], 'ride_ge_pick': True, 'need_prefs': ['茨城', '栃木', '群馬', '埼玉', '千葉', '東京', '神奈川', '山梨', '静岡'],
-                 'hide_fare': True, 'pay': '現金・クレジットカード・電子マネー・QR（10万円を超える送迎は事前に全額振込み）', 'hours': '0-24', 'car_type': '軽貨物車（黒ナンバー）',
+                 'hide_formula': True, 'pay': '現金・クレジットカード・電子マネー・QR（10万円を超える送迎は事前に全額振込み）', 'hours': '0-24', 'car_type': '軽貨物車（黒ナンバー）',
                  'limits_set': ['大型犬1頭まで（大人2人まで同乗）', '同乗は3人まで', '50kgまで', '頭数で料金は変わらない'],
                  'fare_add': {'tax': '税込（消費税なし）', 'pick': {'km': 8, 'yen': 0, 'per': 100, 'whole': True}, 'pickOnce': True, 'back': {}, 'night': {'from': 22, 'to': 8, 'rate': 0.3, 'by': 'start', 'maxKm': 100},
                               'prefAdd': [[['北海道'], 10000, '北海道特別料金']], 'ferry': True, 'advanceRate': 0.04, 'quotePickKm': 100,
@@ -512,7 +512,7 @@ def apply_provider(row):
     if lim: row['limits'] = lim
     if any(x.startswith('大型犬') for x in lim) and row.get('points'): row['points'] = [x for x in row['points'] if x != '大型犬OK']
     if pv.get('fare_add') and row.get('fare'): row['fare'].update(pv['fare_add'])
-    if pv.get('hide_fare'): row['hide_fare'] = True  # エリアのページの会社ごとの料金の行に数字を出さない（候補カードの合計の目安は出す）
+    if pv.get('hide_formula'): row['hide_formula'] = True  # エリアのページの表に、お迎え・夜間の計算のしかたを出さない（料金の数字は出す）
     # お迎えの距離に上限のない会社（2026-11-14）：行けない県のほかは全部の県でお迎えの候補にする。far にも写すと、
     # お迎えの都道府県の選択欄の「県外の会社のみ」・会社のない県を消す判定（gen_areas.py）にもそのまま効く
     if pv.get('anywhere'):
