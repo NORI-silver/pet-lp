@@ -78,7 +78,7 @@ HUB = [
     ("出かける・移動する", [
         ("ペットタクシー", "/#form", "料金の目安をくらべて、空き状況と料金を無料で問い合わせ", None),
         ("ドッグラン", "/dogrun/", "公園・お店・高速道路のSA・PA", "dog_run"),
-        ("犬と泊まれる宿", "/inu-yado/", "犬の大きさ・頭数・料金を確かめた宿", "inns"),
+        ("犬と泊まれる宿", "/inu-yado/", "犬の大きさ・頭数・料金でくらべる宿", "inns"),
         ("猫・うさぎ・小鳥と泊まれる宿", "/pet-yado/", "犬以外のペットOKと公式サイトにある宿", None),
         ("犬と入れるカフェ・ランチ", "/inu-cafe/", "店内OK・テラス・大型犬の条件", "cafes"),
     ]),
@@ -112,7 +112,7 @@ def hub_html(root):
     return ('<!--KURASHI--><section class="kurashi" id="kurashi" aria-labelledby="kurashiTitle"><div class="wrap">'
             '<div class="sh"><span class="eyebrow">PET LIFE</span><h2 id="kurashiTitle">ペットとのくらしの窓口</h2>'
             '<p>ペットタクシーのほかにも、動物病院・預け先・お出かけ先・自治体の窓口まで、全国の情報を都道府県でさがせます。'
-            'どれも公式サイトで確かめたことだけを載せていて、順位はつけていません。</p></div>'
+            '公式サイトの情報をもとに載せていて、順位はつけていません。</p></div>'
             f'<div class="hub">{"".join(out)}</div>'
             '<p class="hub-more"><a href="/guide/">ペットのくらしと移動のガイド（記事の一覧）→</a></p>'
             '</div></section><!--/KURASHI-->')

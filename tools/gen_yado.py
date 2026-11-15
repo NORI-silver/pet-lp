@@ -4,7 +4,7 @@
 #  - /pet-yado/            犬以外のペット（猫・うさぎ・小鳥・フェレットなど）と泊まれる宿の入口
 #  - /pet-yado/<動物>/     動物ごとのページ（ANIMAL_MIN 軒以上の動物だけ）
 #  - 宿1軒ずつのページは tools/gen_facpages.py の render_inn（犬が泊まれない宿は /pet-yado/<県>/<id>/）
-# データは tools/inns.json（各宿の公式サイトで確かめたことだけ。facts の k・v・src・checked）。
+# データは tools/inns.json（各宿の公式サイトの情報。facts の k・v・src・checked）。
 #   animals：泊まれる動物（dog・cat・rabbit・ferret・bird・small・reptile）、sizes：泊まれる犬の大きさの区分（s・m・l。breeds.SIZES と同じ）。
 #   どちらも公式サイトの文（facts）から決めたもの。古い宿は下の OLD に書いた。
 # 守ること：順位・おすすめ・電話番号は書かない。数はデータから数える（手で書かない）。宿の予約は受け付けない（公式サイトへのリンクだけ）。
@@ -299,16 +299,16 @@ def render_pref(ctx, pf):
     oth = [x for x in xs if set(x["animals"]) - {"dog", "cat"}]
     runs = [x for x in xs if _run(x)]; fees = _fees(xs)
     cities = list(dict.fromkeys(x.get("city", "") for x in xs if x.get("city")))
-    ans = [f"{pf}で犬と泊まれる宿は、当サイトで公式サイトを確かめた{n}軒です（{'・'.join(cities[:5])}{'など' if len(cities) > 5 else ''}）。"]
+    ans = [f"{pf}で犬と泊まれる宿は、当サイトに載せている{n}軒です（{'・'.join(cities[:5])}{'など' if len(cities) > 5 else ''}）。"]
     ans.append(f"大型犬も泊まれると公式サイトに書いているのは{len(big)}軒：{_names(big)}。" if big else "大型犬も泊まれると公式サイトに書いている宿は、確かめた中にはありませんでした。")
     if cats: ans.append(f"猫も一緒に泊まれるのは{len(cats)}軒：{_names(cats)}。")
     if oth: ans.append(f"うさぎなど犬・猫以外の動物も泊まれるのは{len(oth)}軒：{_names(oth)}。")
     if fees: ans.append(f"犬の宿泊料金が書いてある{len(fees)}軒では、1頭1泊{fees[0]:,}円〜{fees[-1]:,}円（いちばん安い区分。税込・税抜は宿ごと）。")
-    tiles = [(f"{n}軒", "公式サイトで確かめた宿"), (f"{len(big)}軒", "大型犬も泊まれる"), (f"{len(runs)}軒", "ドッグランがある")]
+    tiles = [(f"{n}軒", "載せている宿"), (f"{len(big)}軒", "大型犬も泊まれる"), (f"{len(runs)}軒", "ドッグランがある")]
     if cats: tiles.append((f"{len(cats)}軒", "猫も泊まれる"))
     faq = []
     if big: faq.append((f"{pf}で大型犬と泊まれる宿は？", f"公式サイトに大型犬も泊まれると書いているのは、{_names(big, 6)}です。頭数や体重の上限は宿ごとに違います。"))
-    faq.append((f"{pf}で猫と泊まれる宿は？", f"確かめた{n}軒のうち、猫も泊まれると書いているのは{_names(cats, 6)}です。" if cats else f"確かめた{n}軒には、猫も泊まれると書いている宿はありませんでした。全国の猫と泊まれる宿は「猫と泊まれる宿」のページにまとめています。"))
+    faq.append((f"{pf}で猫と泊まれる宿は？", f"載せている{n}軒のうち、猫も泊まれると書いているのは{_names(cats, 6)}です。" if cats else f"載せている{n}軒には、猫も泊まれると書いている宿はありませんでした。全国の猫と泊まれる宿は「猫と泊まれる宿」のページにまとめています。"))
     if fees: faq.append((f"{pf}の宿の犬の宿泊料金はいくらくらい？", f"犬の料金を書いている{len(fees)}軒では、1頭1泊のいちばん安い区分で{fees[0]:,}円〜{fees[-1]:,}円でした。大きさや頭数で変わる宿が多く、無料の宿もあります。"))
     vac = sum(1 for x in xs if re.search(r"ワクチン|狂犬病", fact(x, "必要なもの")))
     faq.append(("ワクチンの証明書は要りますか？", f"{n}軒のうち{vac}軒が、狂犬病予防注射や混合ワクチンの証明を求めると公式サイトに書いています。写しや写真でよい宿もあります。"))
@@ -327,13 +327,13 @@ def render_pref(ctx, pf):
             + (f'<h2 class="yd-h">{e(reg)}のほかの県</h2><ul class="yd-pref">{near_html}</ul>' if near_html else "")
             + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">関連するページ</h2><ul class="other">' + "".join(f'<li><a href="{h}">{e(a)}</a></li>' for a, h in rel) + "</ul></div>")
     title = f"{pf}の犬と泊まれる宿{n}軒｜大型犬・頭数・犬の料金をくらべる｜ペットのくらし窓口"
-    desc = f"{pf}で犬と泊まれる旅館・ホテル・コテージ{n}軒を、各宿の公式サイトで確かめた犬の大きさ・頭数・犬の宿泊料金・ドッグラン・必要なものでくらべられます。" + (f"大型犬OKは{len(big)}軒。" if big else "") + (f"猫もOKは{len(cats)}軒。" if cats else "")
+    desc = f"{pf}で犬と泊まれる旅館・ホテル・コテージ{n}軒を、各宿の公式サイトに書いてある犬の大きさ・頭数・犬の宿泊料金・ドッグラン・必要なものでくらべられます。" + (f"大型犬OKは{len(big)}軒。" if big else "") + (f"猫もOKは{len(cats)}軒。" if cats else "")
     crumbs = [("ペットのくらし窓口", "/"), ("犬と泊まれる宿", "/inu-yado/"), (pf, f"/inu-yado/{PSLUG[pf]}/")]
     ld = _ld(SITE, crumbs, xs, faq)
     crumb = f'<a href="/">ペットのくらし窓口</a> › <a href="/inu-yado/">犬と泊まれる宿</a> › {e(pf)}'
     ck = max((f.get("checked", "") for x in xs for f in x["facts"]), default="")
     lede = f"{e(pf)}で犬と一緒に泊まれる宿を、各宿の公式サイトに書いてあることだけでまとめました（{e(_jdate(ck))}までに確認）。大きさ・頭数・料金・犬が入れる場所は宿ごとに大きく違うので、うちの子に合う宿をくらべてから公式サイトで予約してください。"
-    return _wrap(ctx, title, desc, url, ld, crumb, f"{pf}の犬と泊まれる宿", f"公式サイトで確かめた{n}軒", lede, body)
+    return _wrap(ctx, title, desc, url, ld, crumb, f"{pf}の犬と泊まれる宿", f"載せている{n}軒", lede, body)
 
 
 def render_hub(ctx):
@@ -344,13 +344,13 @@ def render_hub(ctx):
     runs = [x for x in xs if _run(x)]; fees = _fees(xs)
     vac = sum(1 for x in xs if re.search(r"ワクチン|狂犬病", fact(x, "必要なもの")))
     top = sorted(BYPREF.items(), key=lambda kv: -len(kv[1]))[:5]
-    ans = [f"当サイトで公式サイトを確かめた、犬と泊まれる宿は{n}軒（{npf}都道府県）です。多いのは" + "・".join(f"{p}（{len(v)}軒）" for p, v in top) + "。",
+    ans = [f"当サイトに載せている、犬と泊まれる宿は{n}軒（{npf}都道府県）です。多いのは" + "・".join(f"{p}（{len(v)}軒）" for p, v in top) + "。",
            f"大型犬も泊まれると書いているのは{len(big)}軒、猫も一緒に泊まれるのは{len(cats)}軒です。",
            f"{vac}軒が狂犬病予防注射や混合ワクチンの証明を求めています。予約の前に証明書を用意しておくと安心です。"]
     if fees:
         med = fees[(len(fees) - 1) // 2]
         ans.append(f"犬の宿泊料金を書いている{len(fees)}軒では、1頭1泊のいちばん安い区分の真ん中が{med:,}円（{fees[0]:,}円〜{fees[-1]:,}円）でした。")
-    tiles = [(f"{n}軒", "公式サイトで確かめた宿"), (f"{npf}", "都道府県"), (f"{len(big)}軒", "大型犬も泊まれる"), (f"{len(cats)}軒", "猫も泊まれる"), (f"{len(runs)}軒", "ドッグランがある")]
+    tiles = [(f"{n}軒", "載せている宿"), (f"{npf}", "都道府県"), (f"{len(big)}軒", "大型犬も泊まれる"), (f"{len(cats)}軒", "猫も泊まれる"), (f"{len(runs)}軒", "ドッグランがある")]
     bars = V.bars({"title": "泊まれる犬の大きさ（公式サイトに書いてある宿の数）", "max": n,
                    "rows": [(lab, sum(1 for x in xs if k in x["sizes"]), f"{sum(1 for x in xs if k in x['sizes'])}軒") for k, lab in SZ],
                    "note": f"{n}軒のうち、大きさを書いている宿を数えました。1軒が複数の大きさに入ります。"})
@@ -371,10 +371,10 @@ def render_hub(ctx):
             anchors = "".join(f'<span id="{PSLUG[p]}"></span>' for p in ids)
             sec += f'{anchors}<h3 class="yd-h">{e(lab)}（{len({x["pref"] for x in rows})}県・{len(rows)}軒）</h3>' + table(e, rows)
     faq = [("犬と泊まれる宿はどうやってさがす？", "都道府県のページで、泊まれる犬の大きさ（小型犬・中型犬・大型犬）や猫でしぼれます。犬種を選ぶと体重に合う宿だけが残ります。"),
-           ("大型犬と泊まれる宿は多い？", f"確かめた{n}軒のうち{len(big)}軒が、大型犬も泊まれると書いています。体重の上限（25kg・40kgなど）や頭数の決まりは宿ごとに違います。"),
+           ("大型犬と泊まれる宿は多い？", f"載せている{n}軒のうち{len(big)}軒が、大型犬も泊まれると書いています。体重の上限（25kg・40kgなど）や頭数の決まりは宿ごとに違います。"),
            ("猫やうさぎと泊まれる宿は？", f"猫も泊まれる宿は{len(cats)}軒です。うさぎ・フェレット・小鳥などは「犬以外と泊まれる宿」のページにまとめています。"),
            ("ワクチンの証明書は必要？", f"{n}軒のうち{vac}軒が証明を求めると書いています。1年以内の狂犬病予防注射と、混合ワクチン（多くは5種以上）の証明が多いです。")]
-    body = (f'<div class="yd-ans"><h2>犬と泊まれる宿は、全国で{n}軒を確かめました</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
+    body = (f'<div class="yd-ans"><h2>犬と泊まれる宿は、全国で{n}軒を載せています</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
             + (f'<h2 class="yd-h">宿の種類からさがす</h2><ul class="yd-pref">' + "".join(f'<li><a href="/inu-yado/{t}/">{e(TYPE_NAME[t])}<small>{len(BYTYPE[t])}軒</small></a></li>' for t in TYPE_PAGES) + '</ul>' if TYPE_PAGES else "")
             + f'<h2 class="yd-h">都道府県からさがす</h2><p class="emg-tips-note">{PREF_MIN}軒以上の県は県のページで、うちの子の大きさでしぼって見られます。それより少ない県は、このページの下の地方の表に入れています。</p>{chips}'
             + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">犬以外のペットと泊まれる宿</h2><ul class="yd-pref">'
@@ -384,10 +384,10 @@ def render_hub(ctx):
             + f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{_faq_html(e, faq)}</dl></div>'
             + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">犬と泊まれる宿のえらび方</h2>' + "".join(f'<h4>{e(a)}</h4><p style="font-size:.9rem;margin:4px 0 10px">{e(b)}</p>' for a, b in TIPS) + "</div>")
     title = f"犬と泊まれる宿 全国{n}軒｜都道府県別・大型犬OK・猫もOKを公式サイトで確認｜ペットのくらし窓口"
-    desc = f"犬と泊まれる旅館・ホテル・コテージを全国{npf}都道府県・{n}軒、各宿の公式サイトで確かめた犬の大きさ・頭数・犬の宿泊料金・必要なものでくらべられる無料の一覧。大型犬OK{len(big)}軒、猫もOK{len(cats)}軒。"
+    desc = f"犬と泊まれる旅館・ホテル・コテージを全国{npf}都道府県・{n}軒、各宿の公式サイトに書いてある犬の大きさ・頭数・犬の宿泊料金・必要なものでくらべられる無料の一覧。大型犬OK{len(big)}軒、猫もOK{len(cats)}軒。"
     crumbs = [("ペットのくらし窓口", "/"), ("犬と泊まれる宿", "/inu-yado/")]
     ld = _ld(SITE, crumbs, [x for x in xs if x["pref"] not in PREFS][:100], faq)
-    lede = "犬と一緒に泊まれる旅館・ホテル・コテージを、各宿の公式サイトに書いてあることだけでまとめました。予約サイトやまとめ記事は使っていません。確かめた宿から順に増やしています。"
+    lede = "犬と一緒に泊まれる旅館・ホテル・コテージを、各宿の公式サイトに書いてあることだけでまとめました。予約サイトやまとめ記事は使っていません。情報がそろった宿から順に増やしています。"
     return _wrap(ctx, title, desc, url, ld, '<a href="/">ペットのくらし窓口</a> › 犬と泊まれる宿', "犬と泊まれる宿", f"全国{npf}都道府県・{n}軒", lede, body)
 
 
@@ -415,7 +415,7 @@ def render_animal(ctx, k):
     import uikit
     opts = '<option value="">すべての都道府県</option>' + "".join(f"<option>{e(p)}</option>" for p in sorted(prefs, key=lambda p: PREF_ORDER(ctx, p)))
     finder = uikit.box("pet-yado", q_ph="市町村・宿の名前（例：軽井沢）", opts=opts, unit="軒", noun="宿", go="この条件で宿を探す")
-    faq = [(f"{nm}と泊まれる宿はどこ？", f"当サイトで公式サイトを確かめた中では、{_names(xs, 6)}です。"),
+    faq = [(f"{nm}と泊まれる宿はどこ？", f"当サイトに載せている中では、{_names(xs, 6)}です。"),
            (f"犬と泊まれる宿なら{nm}も泊まれる？", f"泊まれるとはかぎりません。犬だけと書いている宿も多いので、{nm}と泊まれるか、部屋のタイプとあわせて宿に確かめてください。")]
     body = (f'<div class="yd-ans"><h2>{e(nm)}と泊まれる宿は{n}軒</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
             + f'<h2 class="yd-h">{e(nm)}と泊まれる{n}軒</h2>' + finder + f'<div class="bf-cards" style="display:grid;gap:10px">{cards}</div>'
@@ -424,12 +424,12 @@ def render_animal(ctx, k):
             + "".join(f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">{e(a)}</h2><p style="font-size:.9rem;margin:4px 0 10px">{e(b)}</p></div>' for a, b in ANIMAL_TIPS.get(k, []))
             + f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{_faq_html(e, faq)}</dl></div>'
             + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">関連するページ</h2><ul class="other"><li><a href="/pet-yado/">犬以外のペットと泊まれる宿</a></li><li><a href="/inu-yado/">犬と泊まれる宿</a></li><li><a href="/guide/small-animals/">うさぎ・小動物の移動</a></li></ul></div>')
-    title = f"{nm}と泊まれる宿{n}軒｜公式サイトで確かめた条件をくらべる｜ペットのくらし窓口"
-    desc = f"{nm}と一緒に泊まれる旅館・ホテル・コテージ{n}軒を、各宿の公式サイトで確かめた条件（泊まれる部屋・ケージ・料金・必要なもの）でまとめた無料の一覧です。"
+    title = f"{nm}と泊まれる宿{n}軒｜公式サイトに書いてある条件をくらべる｜ペットのくらし窓口"
+    desc = f"{nm}と一緒に泊まれる旅館・ホテル・コテージ{n}軒を、各宿の公式サイトに書いてある条件（泊まれる部屋・ケージ・料金・必要なもの）でまとめた無料の一覧です。"
     crumbs = [("ペットのくらし窓口", "/"), ("犬以外のペットと泊まれる宿", "/pet-yado/"), (f"{nm}と泊まれる宿", f"/pet-yado/{AN_SLUG[k]}/")]
     crumb = f'<a href="/">ペットのくらし窓口</a> › <a href="/pet-yado/">犬以外のペットと泊まれる宿</a> › {e(nm)}'
     lede = f"{e(nm)}と一緒に泊まれる宿を、各宿の公式サイトに「{e(nm)}も泊まれる」と書いてあるものだけでまとめました。書いていない宿は入れていません。"
-    return _wrap(ctx, title, desc, url, _ld(SITE, crumbs, xs, faq), crumb, f"{nm}と泊まれる宿", f"公式サイトで確かめた{n}軒", lede, body)
+    return _wrap(ctx, title, desc, url, _ld(SITE, crumbs, xs, faq), crumb, f"{nm}と泊まれる宿", f"載せている{n}軒", lede, body)
 
 
 TYPE_TIPS = {
@@ -449,12 +449,12 @@ def render_type(ctx, slug):
     prefs = list(dict.fromkeys(x["pref"] for x in xs))
     big = [x for x in xs if "l" in x["sizes"]]; cats = [x for x in xs if "cat" in x["animals"]]
     runs = [x for x in xs if _run(x)]; fees = _fees(xs)
-    ans = [f"犬と泊まれる{nm}は、当サイトで公式サイトを確かめた{n}軒です（{'・'.join(prefs[:6])}{'など' if len(prefs) > 6 else ''}）。"]
+    ans = [f"犬と泊まれる{nm}は、当サイトに載せている{n}軒です（{'・'.join(prefs[:6])}{'など' if len(prefs) > 6 else ''}）。"]
     ans.append(f"大型犬も泊まれると書いているのは{len(big)}軒：{_names(big)}。" if big else f"大型犬も泊まれると書いている{nm}は、確かめた中にはありませんでした。")
     if cats: ans.append(f"猫も一緒に泊まれるのは{len(cats)}軒：{_names(cats)}。")
     if fees: ans.append(f"犬の料金が書いてある{len(fees)}軒では、1頭1泊（1回）{fees[0]:,}円〜{fees[-1]:,}円（いちばん安い区分）。")
     tiles = [(f"{n}軒", f"犬と泊まれる{nm}"), (f"{len(prefs)}", "都道府県"), (f"{len(big)}軒", "大型犬も泊まれる"), (f"{len(runs)}軒", "ドッグランがある")]
-    faq = [(f"犬と泊まれる{nm}はどこ？", f"当サイトで公式サイトを確かめた中では、{_names(xs, 6)}です。都道府県と犬の大きさでしぼれます。")]
+    faq = [(f"犬と泊まれる{nm}はどこ？", f"当サイトに載せている中では、{_names(xs, 6)}です。都道府県と犬の大きさでしぼれます。")]
     if big: faq.append((f"大型犬と泊まれる{nm}は？", f"公式サイトに大型犬も泊まれると書いているのは、{_names(big, 6)}です。頭数や体重の上限は宿ごとに違います。"))
     if fees: faq.append((f"{nm}の犬の料金はいくら？", f"犬の料金を書いている{len(fees)}軒では、いちばん安い区分で{fees[0]:,}円〜{fees[-1]:,}円でした。無料のところもあります。"))
     others = "".join(f'<li><a href="/inu-yado/{t}/">{e(TYPE_NAME[t])}<small>{len(BYTYPE[t])}軒</small></a></li>' for t in TYPE_PAGES if t != slug)
@@ -469,11 +469,11 @@ def render_type(ctx, slug):
             + (f'<h2 class="yd-h">ほかの種類の宿</h2><ul class="yd-pref">{others}</ul>' if others else "")
             + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">関連するページ</h2><ul class="other"><li><a href="/inu-yado/">全国の犬と泊まれる宿</a></li><li><a href="/pet-yado/">猫・うさぎなど犬以外と泊まれる宿</a></li><li><a href="/dogrun/">全国のドッグラン</a></li></ul></div>')
     title = f"犬と泊まれる{nm}{n}軒｜大型犬・犬の料金・ドッグランをくらべる｜ペットのくらし窓口"
-    desc = f"犬と一緒に泊まれる{nm}{n}軒を、各施設の公式サイトで確かめた犬の大きさ・頭数・犬の料金・ドッグラン・必要なものでくらべられる無料の一覧です。"
+    desc = f"犬と一緒に泊まれる{nm}{n}軒を、各施設の公式サイトに書いてある犬の大きさ・頭数・犬の料金・ドッグラン・必要なものでくらべられる無料の一覧です。"
     crumbs = [("ペットのくらし窓口", "/"), ("犬と泊まれる宿", "/inu-yado/"), (nm, f"/inu-yado/{slug}/")]
     crumb = f'<a href="/">ペットのくらし窓口</a> › <a href="/inu-yado/">犬と泊まれる宿</a> › {e(nm)}'
     lede = f"犬と一緒に泊まれる{e(nm)}を、各施設の公式サイトに書いてあることだけでまとめました。大きさ・頭数・料金・犬が入れる場所は施設ごとに違うので、くらべてから公式サイトで予約してください。"
-    return _wrap(ctx, title, desc, url, _ld(SITE, crumbs, xs, faq), crumb, f"犬と泊まれる{nm}", f"公式サイトで確かめた{n}軒", lede, body)
+    return _wrap(ctx, title, desc, url, _ld(SITE, crumbs, xs, faq), crumb, f"犬と泊まれる{nm}", f"載せている{n}軒", lede, body)
 
 
 def PREF_ORDER(ctx, pf):
@@ -510,7 +510,7 @@ def render_pethub(ctx):
             + f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{_faq_html(e, faq)}</dl></div>'
             + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">関連するページ</h2><ul class="other"><li><a href="/inu-yado/">犬と泊まれる宿</a></li><li><a href="/pet-hotel/">ペットホテル（預かり）</a></li><li><a href="/pet-sitter/">ペットシッター</a></li></ul></div>')
     title = f"猫・うさぎ・小鳥・フェレットと泊まれる宿{n}軒｜犬以外のペットOKの宿｜ペットのくらし窓口"
-    desc = f"猫・うさぎ・フェレット・小鳥など、犬以外のペットと一緒に泊まれる宿{n}軒を、各宿の公式サイトで確かめた条件でまとめました。" + "・".join(f"{AN_NAME[k]}{len(OTHER[k])}軒" for k, _, _ in AN if OTHER[k]) + "。"
+    desc = f"猫・うさぎ・フェレット・小鳥など、犬以外のペットと一緒に泊まれる宿{n}軒を、各宿の公式サイトに書いてある条件でまとめました。" + "・".join(f"{AN_NAME[k]}{len(OTHER[k])}軒" for k, _, _ in AN if OTHER[k]) + "。"
     crumbs = [("ペットのくらし窓口", "/"), ("犬以外のペットと泊まれる宿", "/pet-yado/")]
     lede = "猫・うさぎ・フェレット・小鳥など、犬以外のペットと一緒に泊まれる宿を、公式サイトに「泊まれる」と書いてあるものだけでまとめました。"
     return _wrap(ctx, title, desc, url, _ld(SITE, crumbs, allx, faq), '<a href="/">ペットのくらし窓口</a> › 犬以外のペットと泊まれる宿',

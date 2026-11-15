@@ -113,7 +113,7 @@ def _answer(e, place, cs, srcname):
     import visual as _V
     f = _facts(cs)
     hh, mm = divmod(f["latest"], 60)
-    kv = [(f"{place}の動物病院は？", (f"{srcname}で診療時間などを確かめられた{f['n']}院を載せています。" if _site(srcname) else f"{srcname}に載っていて、診療時間などを確かめられた{f['n']}院を載せています。") + "順番は町の名前の順で、おすすめ順ではありません。"),
+    kv = [(f"{place}の動物病院は？", (f"{srcname}で診療時間などが分かる{f['n']}院を載せています。" if _site(srcname) else f"{srcname}に載っていて、診療時間などが分かる{f['n']}院を載せています。") + "順番は町の名前の順で、おすすめ順ではありません。"),
           ("夕方は何時まで？", f"{f['n']}院のうち{len(f['late'])}院が19時かそれより遅くまで診ています（いちばん遅いのは{hh}時{mm:02d}分まで）。夜中は<a href=\"/hospital/night/\">夜間・救急の動物病院</a>へ。"),
           ("うさぎ・小鳥も診てもらえる？", f"うさぎ・ハムスター・モルモット・フェレットなどの小動物を診ると書いているのは{len(f['small'])}院、鳥は{len(f['bird'])}院です。")]
     if f["park"]:

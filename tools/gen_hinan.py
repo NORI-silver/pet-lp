@@ -83,7 +83,7 @@ def card(e, it):
         rules += "<dt>公式ページに書いてある、そのほかのこと</dt><dd><ul>" + "".join(f"<li>{e(r)}</li>" for r in it["details"]) + "</ul></dd>"
     links = "".join(f'<li><a href="{e(u)}" target="_blank" rel="noopener">{e(t)}</a></li>' for t, u in it["links"])
     mp = (f'<dt>避難所の場所</dt><dd><a href="{e(it["map"][1])}" target="_blank" rel="noopener">{e(it["map"][0])}</a></dd>' if it.get("map")
-          else '<dt>避難所の場所</dt><dd class="hn-none">ペットを受け入れる避難所の一覧・地図は、確かめたページにはありませんでした。お住まいの市区町村のページでご確認ください。</dd>')
+          else '<dt>避難所の場所</dt><dd class="hn-none">ペットを受け入れる避難所の一覧・地図は、公式ページにはありませんでした。お住まいの市区町村のページでご確認ください。</dd>')
     return (f'<section class="hn-card" id="{e(it["name"])}"><h3>{e(it["name"])}</h3>{_flags(e, it)}<dl>'
             + row("考え方", it.get("policy")) + row("受け入れる動物", it.get("animals"))
             + (row("受け入れない・むずかしい動物", it["no"]) if it.get("no") else "")
@@ -164,9 +164,9 @@ def render_top(ctx):
             f"{len(done)}都道府県・{N}の自治体の公式ページからまとめました。")
     faq = HINAN_GUIDES[0]["faq"][:6]
     ld = _ld(SITE, url, "ペットの同行避難と避難所の決まり", desc, [("ペットタクシー予約窓口", "/"), ("ペットと避難", f"/{SLUG}/")], faq)
-    stats = V.stats([(f"{N}", "確かめた都道府県・市区"), (f"{N_CAGE}", "ケージを持っていく・入れると書いている"),
+    stats = V.stats([(f"{N}", "しらべた都道府県・市区"), (f"{N_CAGE}", "ケージを持っていく・入れると書いている"),
                      (f"{sum(1 for x in ITEMS if x['flags'].get('cat') == 'yes')}", "猫を受け入れると書いている")])
-    pref_rows = [["都道府県", "確かめた自治体", "犬", "猫", "ケージ持参"]] + [
+    pref_rows = [["都道府県", "しらべた自治体", "犬", "猫", "ケージ持参"]] + [
         [pf, str(len(bp[pf])), str(sum(1 for x in bp[pf] if x["flags"].get("dog") == "yes")),
          str(sum(1 for x in bp[pf] if x["flags"].get("cat") == "yes")), str(sum(1 for x in bp[pf] if x.get("cage_req")))] for pf in done]
     rest_txt = (f'<p class="hn-none">{e("・".join(rest))}は、ペットと避難の決まりを書いた公式ページが見つからなかったか、まだ確かめていません。お住まいの市区町村のホームページで「ペット 避難」と検索すると、受け入れの決まりが見つかることがあります。</p>' if rest else "")
@@ -194,7 +194,7 @@ def render_top(ctx):
     <h2 id="pref">都道府県ごとのくわしい決まり</h2>
     {_pref_links(e, done)}
     {rest_txt}
-    <h2 id="table">都道府県ごとの確かめた自治体の数</h2>
+    <h2 id="table">都道府県ごとのしらべた自治体の数</h2>
     <p>「犬」「猫」は、受け入れると公式ページに書いてある自治体の数です。書いていない自治体も「受け入れない」という意味ではありません（{e(CHECKED)}に確認）。</p>
     {V.block(("table", pref_rows))}
     <h2 id="seirei">政令指定都市の受け入れる動物</h2>
@@ -209,7 +209,7 @@ def render_top(ctx):
       <p class="emg-free">それぞれの公式ページに書いてあることだけを載せています。書いていないことは「公式ページに書いていません（不明）」としています（「受け入れない」という意味ではありません）。</p>
       {summ}
       <div class="emg-tips" id="faq"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
-      <p class="emg-note">{e(CHECKED)}に各自治体の公式ページで確かめた情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先と、お住まいの市区町村でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+      <p class="emg-note">{e(CHECKED)}時点の、公式ページに書いてある情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先と、お住まいの市区町村でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
 </section>
@@ -286,7 +286,7 @@ def render_pref(ctx, pf, its, done):
     {('<h2 id="more">ほかの市区町村の決まり</h2>' + "".join(card(e, it) for it in small)) if small else ""}
     <h2 id="faq">よくある質問</h2>
     <dl class="emg-tips">{faq_html}</dl>
-    <p class="emg-note">{e(CHECKED)}に各自治体の公式ページで確かめた情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+    <p class="emg-note">{e(CHECKED)}時点の、公式ページに書いてある情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
   </article></div>
 </section>
 <section style="padding-top:0">
@@ -354,7 +354,7 @@ def render_city(ctx, pf, it, sibs, done):
     {card(e, it)}
     <h2 id="faq">よくある質問</h2>
     <dl class="emg-tips">{faq_html}</dl>
-    <p class="emg-note">{e(CHECKED)}に{e(nm)}の公式ページで確かめた情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+    <p class="emg-note">{e(CHECKED)}時点の、{e(nm)}の公式ページに書いてある情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
   </article></div>
 </section>
 <section style="padding-top:0">

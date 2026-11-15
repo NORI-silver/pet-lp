@@ -2,7 +2,7 @@
 #  - 夜間・救急の動物病院：/hospital/night/<県>/<id>/（データ tools/night_hospital_facts.json。病院の一覧は tools/emergency.json）
 #  - 犬と泊まれる宿（新しい分野）：/inu-yado/ と /inu-yado/<県>/<id>/（データ tools/inns.json）
 # 戦略担当 2026-11-09（Nori「倍のスピードで」）：検索数を測り終えるのを待たずに、宿と夜間病院の30施設ずつを並行で施設ページに。判定は公開から2週間後。
-# 守ること：公式サイトで確かめた項目が5つ以上の施設だけ。書くのはデータの facts（k・v・src・checked）と、そこから数えたことだけ。
+# 守ること：公式サイトに書いてある項目が5つ以上の施設だけ。書くのはデータの facts（k・v・src・checked）と、そこから数えたことだけ。
 # 電話番号・個人名・順位・「おすすめ」は書かない。書いていない項目は行ごと出さない（「不明」と書かない）。
 # 宿は予約・申し込みの受付をしない（公式サイトへのリンクだけ）。「手配」「代理」などの言葉は使わない。
 import json, os, re
@@ -114,7 +114,7 @@ def _page(ctx, *, title, desc, url, crumbs, nm, pts, rows, card, cmp, faq, relat
   <div class="wrap">
     <div class="emg">
       <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts">{"".join(f"<li>{e(p)}</li>" for p in pts)}</ul></div>
-      <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">公式サイトで確かめたこと</h2><div class="tbl"><table class="pp-tbl"><thead><tr><th>項目</th><th>内容</th><th>出どころ</th></tr></thead><tbody>{rows}</tbody></table></div><p class="emg-tips-note">書いていない項目は、公式サイトに見つからなかったものです（「しない」という意味ではありません）。</p></div>
+      <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">公式サイトに書いてあること</h2><div class="tbl"><table class="pp-tbl"><thead><tr><th>項目</th><th>内容</th><th>出どころ</th></tr></thead><tbody>{rows}</tbody></table></div><p class="emg-tips-note">書いていない項目は、公式サイトに見つからなかったものです（「しない」という意味ではありません）。</p></div>
       {card}
       {cmp}
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{faq_html}</dl></div>
@@ -171,7 +171,7 @@ def render_hosp(ctx, x):
     if fee and len(fee) <= 22 and re.search(r"\d", fee):
         t2 = f"{nm}（{x.get('city', '')}）｜{fee if fee.startswith('夜間') else '夜間の' + fee}・{'・'.join(w for w in tparts if w != '料金')}｜ペットタクシー予約窓口"
         if len(t2) <= 68: title = t2
-    lead = f"{nm}は、{pf}{x.get('city', '')}の夜間・救急の動物病院です" + (f"。受付時間は「{hours.rstrip('。')}」です（公式サイト、{ck}に確認）。" if hours else f"（公式サイト、{ck}に確認）。")
+    lead = f"{nm}は、{pf}{x.get('city', '')}の夜間・救急の動物病院です" + (f"。受付時間は「{hours.rstrip('。')}」です（{ck}時点の公式サイトの情報）。" if hours else f"（{ck}時点の公式サイトの情報）。")
     pts = [lead] + [_sent(nm, k, fact(x, k), ck) for k in ("休診日", "対象の動物", "来院前の連絡", "夜間の料金", "費用の目安") if fact(x, k)]
     pts = pts[:5]
     emg = _emg_row(x)
@@ -237,7 +237,7 @@ def render_inn(ctx, x):
     tparts = [w for w, k in (("犬の大きさ", "泊まれる犬の大きさ"), ("頭数", "犬の頭数"), ("料金", "犬の宿泊料金"), ("ドッグラン", "ドッグラン")) if fact(x, k)]
     title = f"{nm}（{pf}{x.get('city', '')}）｜{with_}と泊まれる{kind}の{'・'.join(tparts) or '条件'}｜ペットのくらし窓口"
     if len(title) > 60: title = f"{nm}（{x.get('city', '') or pf}）｜{with_}と泊まれる{kind}｜ペットのくらし窓口"
-    lead = f"{nm}は、{pf}{x.get('city', '')}にある、{with_}と泊まれる{kind}です（公式サイト、{ck}に確認）。" + (f"{'・'.join(oth)}も泊まれると書いています。" if dog and oth else "")
+    lead = f"{nm}は、{pf}{x.get('city', '')}にある、{with_}と泊まれる{kind}です（{ck}時点の公式サイトの情報）。" + (f"{'・'.join(oth)}も泊まれると書いています。" if dog and oth else "")
     pts = [lead] + [_sent(nm, k, fact(x, k), ck) for k in ("泊まれる犬の大きさ", "犬の頭数", "犬の宿泊料金", "猫など犬以外", "必要なもの") if fact(x, k)]
     pts = pts[:5]
     same = [y for y in INNS if y["pref"] == pf and Y.has_dog(y) == dog]
@@ -345,8 +345,8 @@ def render_cafe_hub(ctx):
                        f'<td>{e(fact(x, "犬の大きさ"))}</td></tr>' for x in by[lab])
         sec += (f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">{e(lab)}（{len(by[lab])}店）</h2><div class="tbl"><table class="pp-tbl cmp">'
                 f'<thead><tr><th>名前</th><th>場所</th><th>犬と入れる席</th><th>犬の大きさ</th></tr></thead><tbody>{rows}</tbody></table></div></div>')
-    title = f"犬と一緒に入れるカフェ・ランチ {n}店｜店内OK・テラス・大型犬の条件を公式サイトで確かめた一覧｜ペットタクシー予約窓口"
-    desc = f"愛犬と一緒に入れる（同伴できる）カフェ・レストランを、公式サイトで確かめた条件（店内かテラスか・犬の大きさ・決まり・犬用メニュー）と一緒にまとめた無料の一覧です（{n}店、出どころと確認日つき）。"
+    title = f"犬と一緒に入れるカフェ・ランチ {n}店｜店内OK・テラス・大型犬の条件をくらべる一覧｜ペットタクシー予約窓口"
+    desc = f"愛犬と一緒に入れる（同伴できる）カフェ・レストランを、公式サイトに書いてある条件（店内かテラスか・犬の大きさ・決まり・犬用メニュー）と一緒にまとめた無料の一覧です（{n}店、出どころと確認日つき）。"
     ld = '<script type="application/ld+json">\n' + json.dumps([
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
@@ -363,7 +363,7 @@ def render_cafe_hub(ctx):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › 犬と一緒に入れるカフェ・ランチ</nav>
     <h1>犬と一緒に入れるカフェ・ランチ</h1>
-    <p class="lede">愛犬と一緒に入れる（同伴できる）カフェとレストランを、各店の公式サイトで確かめた条件と一緒にまとめました。犬と触れ合えるカフェ（お店の犬がいるカフェ）の一覧ではありません。いまは{n}店で、確かめたお店から順に増やしています。</p>
+    <p class="lede">愛犬と一緒に入れる（同伴できる）カフェとレストランを、各店の公式サイトに書いてある条件と一緒にまとめました。犬と触れ合えるカフェ（お店の犬がいるカフェ）の一覧ではありません。いまは{n}店で、情報がそろったお店から順に増やしています。</p>
   </div>
 </section>
 <section style="padding-top:8px">
