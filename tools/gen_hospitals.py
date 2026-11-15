@@ -223,8 +223,10 @@ _TAGK = {"night": "night", "visit": "visit", "cat": "catspec", "exotic": "exospe
 
 def finder(ctx, slug="", pref="", city=""):
     """動物病院を自分の条件でさがす欄（tools/hosp_find.py）。slug の条件を最初から押しておく。"""
-    import hosp_find, faccard
-    return hosp_find.html(ctx["e"], ctx["emg_opts"], [n for n, _ in faccard.DEPTS], _TAGK.get(slug, ""), pref, city)
+    import hosp_find, faccard, gen_dogrun
+    # 赤いボタンはページの中で夜間の病院にしぼる（JS）。検索エンジンには、その県の夜間・救急のページへのリンクとして見せる
+    nh = f"/hospital/night/{gen_dogrun.PSLUG[pref]}/" if pref in gen_dogrun.PSLUG else "/hospital/night/"
+    return hosp_find.html(ctx["e"], ctx["emg_opts"], [n for n, _ in faccard.DEPTS], _TAGK.get(slug, ""), pref, city, nh)
 
 def render_cond(cond, ctx):
     """条件ページ1枚のHTML。ctx は gen_areas.py の関数と値（head, foot, e, area_links, SITE, EMG, emg_regions, emg_opts）。"""

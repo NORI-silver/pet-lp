@@ -17,8 +17,7 @@ SKIP_DIRS = {"go", "booking", "sns", "lib", "tests", "docs", "tools", "node_modu
 # (メニューの短い名前, URL, この URL で始まるページで印をつけるか)
 CATBAR = [
     ("ペットタクシー", "/#form"),
-    ("夜間・救急の病院", "/hospital/night/"),
-    ("動物病院", "/hospital/"),
+    ("動物病院・夜間救急", "/hospital/"),  # 夜間・救急は病院のさがす欄の「夜間・救急」と上の赤いボタンから（Nori 2026-11-15「タブわけたほうがいいのか？」→ひとつに）
     ("ペットホテル", "/pet-hotel/"),
     ("シッター", "/pet-sitter/"),
     ("トリミング", "/trimming/"),
@@ -41,7 +40,7 @@ def _active(path):
     if path == "/" or path.startswith(TAXI_PREFIX):
         return "/#form"
     if path.startswith("/emergency/"):
-        return "/hospital/night/"
+        return "/hospital/"
     best = ""
     for _, u in CATBAR:
         if u != "/#form" and path.startswith(u) and len(u) > len(best):
