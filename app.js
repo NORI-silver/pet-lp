@@ -545,13 +545,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var article = document.createElement("article"); article.className = "partner-card";
       function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
       // 会社が送って運営者が公開にした掲載情報（Nori 2026-11-15）。写真は会社の写真だけ。ない会社には写真の枠を出さない
-      var ex = card.extra || null;
+      var ex = card.extra || null, thumb = null;
       if (ex && ex.photos && ex.photos.length) {
         var ph = document.createElement("div"); ph.className = "partner-photos";
         ex.photos.forEach(function(p, i){ var im = document.createElement("img"); im.src = p.url; im.alt = card.label + "の" + (p.kind || "写真"); im.loading = "lazy"; im.decoding = "async";
-          im.referrerPolicy = "no-referrer"; im.addEventListener("error", function(){ im.remove(); if (!ph.querySelector("img")) ph.remove(); }); ph.appendChild(im); });
-        var pc = document.createElement("small"); pc.className = "partner-photo-src"; pc.textContent = "写真：" + card.label; ph.appendChild(pc);
-        article.appendChild(ph);
+          im.referrerPolicy = "no-referrer"; im.addEventListener("error", function(){ im.remove(); if (!ph.querySelector("img")) ph.parentNode.remove(); }); ph.appendChild(im); });
+        // 検索広告のように、写真は料金・特典の右に小さく（Nori 2026-11-15「このくらいの写真は？いちもふくめて」）。横にスワイプで次の写真
+        var thumb = document.createElement("div"); thumb.className = "partner-thumb"; thumb.appendChild(ph);
+        if (ex.photos.length > 1) { var pn = document.createElement("span"); pn.className = "partner-photo-n"; pn.textContent = "写真" + ex.photos.length + "枚"; thumb.appendChild(pn); }
+        var pc = document.createElement("small"); pc.className = "partner-photo-src"; pc.textContent = "写真：" + card.label; thumb.appendChild(pc);
       }
       var h4 = text("h4", card.label);
       // 運転手の写真（掲載情報）は名前の横に丸く（Nori 2026-11-15「運転手の写真も」）
@@ -618,6 +620,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var os = document.createElement("small"); os.textContent = (o.until ? o.until + "まで・" : "") + "このサイトから問い合わせた方"; of.appendChild(os);
         article.appendChild(of);
       });
+      // 料金〜特典を左、写真を右に並べる
+      if (thumb) { var body = document.createElement("div"); body.className = "partner-body"; var mainCol = document.createElement("div"); mainCol.className = "partner-main";
+        article.insertBefore(body, price); var n = price; while (n) { var nx = n.nextSibling; mainCol.appendChild(n); n = nx; }
+        body.append(mainCol, thumb); }
       var cr = credLine(card.id);
       if (cr.length) { var cl = document.createElement("ul"); cl.className = "partner-creds"; cl.setAttribute("aria-label", "公式サイトに書いてある許可・登録・資格・保険");
         cr.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; cl.appendChild(li); }); article.appendChild(cl); }
