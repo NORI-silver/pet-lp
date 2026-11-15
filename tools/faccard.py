@@ -207,6 +207,24 @@ def _split_items(v):
 def _short(lab):
     return re.sub(r"[（(].*?[）)]", "", lab).strip() or lab
 
+_PREF_RX = re.compile(r"^(東京都|北海道|(?:京都|大阪)府|[^\s都道府県]{2,3}県)")
+_FT_ORDER = ["24時間", "夜も", "日曜も", "駐車場", "カード払い", "来てくれる・送迎", "料金を公開"]
+
+def features(rows, rest, chips):
+    """カードに書いてあることから、しぼりこみの印を作る（書いていないカードには付けない＝しぼると外れる）。"""
+    f = []
+    tm = " ".join(v for l, v, _ in rows if _TIME.search(l) and not re.search(r"休", l)) + " " + rest
+    if re.search(r"24時間", tm): f.append("24時間")
+    if re.search(r"翌|2[0-3]時|2[0-3]:\d\d|24時間|夜間|深夜", tm): f.append("夜も")
+    hol = [v for l, v, _ in rows if re.search(r"休", l)]
+    if hol and not any(re.search(r"日曜|日・|日祝|日、|・日|^日|、日|日$|不定", v) for v in hol): f.append("日曜も")
+    for l, v, _ in rows:
+        if re.search(r"駐車", l) and not re.search(r"なし|ありません|^0|ない", v): f.append("駐車場")
+        if re.search(r"支払", l) and re.search(r"カード|クレジット", v): f.append("カード払い")
+        if _PRICE.search(l): f.append("料金を公開")
+    if any(re.search(r"送迎|出張|訪問|お迎え|往診", c) for c in chips): f.append("来てくれる・送迎")
+    return [x for x in _FT_ORDER if x in f]
+
 def build_card(card, conf, fit_by_name):
     m = _OPEN.match(card)
     opentag = m.group(0)
@@ -223,6 +241,9 @@ def build_card(card, conf, fit_by_name):
         if tag == "small" and "sg-src" in cls:
             more.append(x); continue
         if tag == "small" and "emg-spec" in cls:
+            sm = re.search(r"（([^）]+)）", t)
+            if sm and _kinds_in(sm.group(1)) and re.fullmatch(r"[犬猫鳥・、うさぎウサギ小動物フェレットハムスターモルモットエキゾチック爬虫類などほか]+", sm.group(1)):
+                rows.append(("診る動物", sm.group(1), x)); continue
             more.append(x)
             if not loc and not rows and not re.search(r"：", t): pass
             continue
@@ -275,12 +296,16 @@ def build_card(card, conf, fit_by_name):
     if not fit and conf["key"] == "joto":
         a = _kinds_in(loc.split("・", 1)[1] if "・" in loc else "")
         if a: fit = fit_attr(a, "など" not in loc, animals_text="・".join(KIND_LABEL[k] for k in a))
+    if not fit and conf["key"] != "joto":  # 診る・受ける動物の行から（書いてある動物だけ。「など」があれば決めつけない）
+        for lab, val, _ in rows:
+            a = _kinds_in(val) if _ANIM.search(lab) else []
+            if a: fit = fit_attr(a, not re.search(r"など|ほか|その他|相談|…", val), animals_text=val[:30]); break
     ot = opentag.replace('class="emg-item emg-co', 'class="emg-item emg-co fc', 1)
     if fit: ot = ot[:-1] + fit + ">"
     hue = _hue(name)
     sid = re.search(r'class="emg-score" data-id="([^"]+)"', inner)
     # 写真の枠は、地図サービスの写真がある施設だけ（押して取り寄せたときに出す）。写真のない施設に代わりの絵は付けない（Nori 2026-11-15「写真ない奴、無理につけないで」）
-    ph = f'<div class="fc-ph" data-ph="{html.escape(sid.group(1))}" hidden></div>' if sid else ""
+    ph = f'<div class="fc-ph" data-ph="{html.escape(sid.group(1))}" hidden></div>' if sid and PHOTO_AUTO else ""
     city = loc.split("・", 1)[0] if loc else ""
     rest = loc.split("・", 1)[1] if loc and "・" in loc and conf["key"] != "joto" else ""
     if conf["key"] == "joto": city = loc
@@ -289,31 +314,44 @@ def build_card(card, conf, fit_by_name):
             m = re.search(r"(?:都|道|府|県)?([^都道府県\s]{1,8}?(?:市|区|町|村))", val) if lab and _ADDR.search(lab) else None
             if m: city = m.group(1); break
     if city and len(city) <= 14: ot = ot[:-1] + f' data-city="{html.escape(city)}">'
-    kind = f'{city}の{conf["noun"]}' if city and len(city) <= 14 and conf["key"] != "joto" else (city or conf["noun"])
-    body = [f'<p class="fc-kind">{html.escape(kind)}</p>', f'<div class="fc-name">{head}</div>']
-    if fors: body.append(f'<p class="fc-catch">【{html.escape("・".join(fors[:2]))}に】</p>')
+    # しぼりこみの印（カードに書いてあることだけから。書いていないカードは外れる）
+    ft = list(dict.fromkeys(features(rows, rest, ch) + [c for c in ch if len(c) <= 10 and "|" not in c]))
+    if ft: ot = ot[:-1] + f' data-ft="{html.escape("|".join(ft))}">'
+    # 見出しの「◯◯市の動物病院」は地域の見出しと重なるので出さない（Nori 2026-11-15「柏市の下に柏市の動物病院って全てのカードに入れてるけど不要」）
+    body = [f'<div class="fc-name">{head}</div>']
+    if fors: body.append(f'<p class="fc-catch">{html.escape("・".join(fors[:2]))}に</p>')
     lines = []
     if rest: lines.append(("clock", "", rest))
     lines += [(ic, lab, val) for ic, lab, val in pick if ic != "yen"]
     for ic, lab, val in lines[:3]:
-        body.append(f'<p class="fc-line">{icon(ic)}<span>' + (f'<span class="fc-k">{html.escape(_short(lab))}</span>' if lab else "") + f'{html.escape(val)}</span></p>')
+        v = val
+        body.append(f'<p class="fc-line" title="{html.escape(_short(lab))}">{icon(ic)}<span>{html.escape(v)}</span></p>')
     for ic, lab, val in pick:
-        if ic == "yen": body.append(f'<p class="fc-price">{icon("yen")}<span><span class="fc-k">{html.escape(_short(lab))}</span>{html.escape(val)}</span></p>')
+        if ic == "yen": body.append(f'<p class="fc-price" title="{html.escape(_short(lab))}">{icon("yen")}<span>{html.escape(val)}</span></p>')
     more = [f'<small>{html.escape(lab)}：{html.escape(val)}</small>' for ic, lab, val in lines[3:]] + more
-    if ch: body.append('<ul class="fc-tags">' + "".join(f"<li>{html.escape(c)}</li>" for c in ch) + "</ul>")
+    if ch: body.append('<ul class="fc-tags">' + "".join(f"<li>{html.escape(c)}</li>" for c in ch[:4]) + "</ul>")
     body.append('<p class="fc-fit" hidden></p>')
     body += keep
-    if more: body.append('<details class="fc-more"><summary>くわしく見る</summary>' + "".join(more) + "</details>")
-    body += tail
+    # 下のボタンの列：写真（押したとき reviews.js が入れる）・口コミ・タクシーの料金・くわしいページ・そのほか（文は短く、アイコンつき）
+    acts = []
+    for x in tail:
+        if 'class="emg-taxi"' in x:
+            hm = re.search(r'href="([^"]*)"', x); hf = hm.group(1) if hm else ""
+            full = _txt(x).rstrip(" →")
+            if hf.startswith("/?") or "#form" in hf:
+                acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="{hf}" aria-label="{html.escape(full)}">タクシー料金</a>')
+            else:
+                acts.append(f'<a class="emg-taxi fc-a fc-a-info" href="{hf}" aria-label="{html.escape(full)}">くわしく</a>')
+        else: acts.append(x)
+    if more: acts.append('<details class="fc-more"><summary class="fc-a fc-a-more">そのほか</summary><div class="fc-more-b">' + "".join(more) + "</div></details>")
+    if acts: body.append('<div class="fc-acts">' + "".join(acts) + "</div>")
     return ot + ph + '<div class="fc-body">' + "".join(body) + "</div></div>"
 
 # ---- 「うちの子に合うところをさがす」 ----
-def panel(conf, kinds_used, has_size, has_sen, has_pup, n):
+def panel(conf, kinds_used, has_size, has_sen, has_pup, n, fts=(), box=False):
     import breeds as B
     want = conf.get("want")
-    title = "迎えたい子で窓口をさがす" if want else f"うちの子に合う{conf['label']}をさがす"
-    lead = ("迎えたい動物を選ぶと、その動物の譲渡をしていると公式ページに書いてある窓口が上に来ます。" if want else
-            "選ぶと、合うところから順に並び、カードに「この子OK」「要確認」「合わないかも」と理由が出ます（公式サイトに書いていないことは「要確認」）。")
+    title = "迎えたい子でさがす" if want else "うちの子に合うところをさがす"
     kinds = [k for k in conf["kinds"] if k in kinds_used] if len(conf["kinds"]) > 1 else []
     rows = []
     if len(kinds) > 1:
@@ -330,10 +368,12 @@ def panel(conf, kinds_used, has_size, has_sen, has_pup, n):
     if has_sen and conf.get("senior"): ex.append('<button type="button" data-v="sen" aria-pressed="false">シニア・介護が必要</button>')
     if has_pup and conf.get("puppy"): ex.append('<button type="button" data-v="pup" aria-pressed="false">子犬（1歳まで）</button>')
     if ex: rows.append('<div class="fp-row"><span class="fp-l">ほかに</span><div class="fp-btns" data-g="x">' + "".join(ex) + "</div></div>")
-    if not rows: return ""
-    return (f'<div class="fp" data-fp><p class="fp-t">{icon("paw")}{html.escape(title)}</p><p class="fp-lead">{html.escape(lead)}</p>'
-            + "".join(rows) +
-            '<p class="fp-now" aria-live="polite"></p><label class="fp-hide"><input type="checkbox"> 合わないかもしれないところを隠す</label></div>')
+    if fts: rows.append('<div class="fp-row"><span class="fp-l">しぼる</span><div class="fp-btns fp-ft" data-g="f">' +
+                        "".join(f'<button type="button" data-v="{html.escape(v)}" aria-pressed="false">{html.escape(v)}</button>' for v in fts) + "</div></div>")
+    if not rows and not box: return ""
+    hide = '<label class="fp-hide"><input type="checkbox"> 合わないかもを隠す</label>' if (kinds or has_size or ex) else ""
+    return (f'<div class="fp" data-fp><p class="fp-t">{icon("paw")}{html.escape(title)}</p>'
+            + "".join(rows) + '<p class="fp-now" aria-live="polite"></p>' + hide + '</div>')
 
 CSS = """<style id="fccss">
 .emg-item.fc{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line,#ece6e0);border-radius:18px;padding:0;margin:0;box-shadow:0 2px 10px rgba(28,26,24,.07);overflow:hidden;min-width:0}
@@ -343,8 +383,8 @@ CSS = """<style id="fccss">
 .fr-s{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
 .fr-more{margin:4px 0 18px;font-size:14px}.fr-more a{color:#c2410c;font-weight:600}
 .fr-s>.emg-item.fc{flex:0 0 80%;max-width:330px;scroll-snap-align:start}
-.fr-s>.emg-item.fc[hidden],.fr-s>.emg-item.fac-off{display:none}
-.fr:not(:has(.emg-item.fc:not([hidden]):not(.fac-off):not(.fc-hid))){display:none}
+.fr-s>.emg-item.fc[hidden],.fr-s>.emg-item.fac-off,.emg-item.fc.fc-off{display:none}
+.fr:not(:has(.emg-item.fc:not([hidden]):not(.fac-off):not(.fc-hid):not(.fc-off))),.fr-empty{display:none!important}
 .fc-ph{position:relative;aspect-ratio:4/3;background:#f4f1ee;overflow:hidden}
 .fc-ph[hidden]{display:none}
 .fc-phbtn{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:700;padding:6px 12px;margin:10px 0 0;border:1.5px solid var(--line,#ece6e0);border-radius:999px;background:#fff;color:var(--ink,#2b2622);cursor:pointer}
@@ -359,32 +399,46 @@ CSS = """<style id="fccss">
 .fc-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55)}.fc-dots i.on{background:#fff}
 .fc-src{position:absolute;right:8px;bottom:8px;z-index:2;font-size:.66rem;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:2px 6px}
 .fc-body{padding:12px 14px 14px;flex:1;display:flex;flex-direction:column}
-.fc-kind{font-size:.98rem;font-weight:800;color:var(--ink,#2b2622);margin:0!important;line-height:1.5}
-.fc-name{margin:2px 0 0}.fc-name>a{font-size:.95rem;line-height:1.5;color:var(--ink-2,#5a524b);text-decoration:none}.fc-name>a b{font-weight:600}
-.fc-catch{font-size:.9rem;font-weight:700;color:#a8410b;margin:4px 0 0!important;line-height:1.55}
+.fc-name{margin:0}.fc-name>a{font-size:1.02rem;line-height:1.45;color:var(--ink,#2b2622);text-decoration:none;display:block}.fc-name>a b{font-weight:800}
+.fc-catch{display:inline-block;align-self:flex-start;font-size:.76rem;font-weight:700;color:#a8410b;background:#fff1e6;border-radius:999px;padding:2px 9px;margin:6px 0 0!important;line-height:1.5}
 .fc-line,.fc-price{display:flex;gap:6px;align-items:flex-start;font-size:.86rem;line-height:1.55;color:var(--ink-2,#5a524b);margin:4px 0 0!important}
-.fc-line>span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-width:0}
+.fc-line>span{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;min-width:0}
 .fc-price{font-weight:800;color:var(--ink,#2b2622);font-size:.92rem}
 .fc-i{flex:0 0 auto;width:16px;height:16px;margin-top:2px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;color:var(--o,#e8590c)}
 .fc-k{font-size:.72rem;font-weight:700;color:var(--ink-3,#6b625b);background:#f4f1ee;border-radius:6px;padding:1px 6px;margin-right:6px}
 .fc-tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0!important;margin:8px 0 0!important}
 .fc-tags li{font-size:.74rem;line-height:1.3;padding:3px 8px;border-radius:6px;background:#f4f1ee;color:var(--ink-2,#5a524b);margin:0!important}
-.fc-fit{font-size:.84rem;font-weight:700;line-height:1.5;margin:10px 0 0!important;padding:7px 10px;border-radius:10px}
-.fc-fit small{display:block;font-weight:400;font-size:.78rem;margin-top:1px}
+.fc-fit{align-self:flex-start;font-size:.8rem;font-weight:800;line-height:1.4;margin:8px 0 0!important;padding:4px 10px;border-radius:999px}
+.fc-fit small{display:block;font-weight:500;font-size:.72rem}
+.fc-fit.ok small{display:none}
 .fc-fit.ok{background:#e8f5e9;color:#1b5e20}.fc-fit.unk{background:#f4f1ee;color:#5a524b}.fc-fit.ng{background:#fdecea;color:#a12a1b}
 .emg-item.fc.fc-ng{opacity:.62}
 .emg-item.fc.fc-hid{display:none}
-.fc-more{margin:10px 0 0;font-size:.84rem}
-.fc-more summary{cursor:pointer;color:var(--ink-2,#5a524b);font-weight:700;font-size:.82rem;padding:2px 0}
-.fc-more>small,.fc-more>p,.fc-more>ul,.fc-more>dl{display:block;margin:6px 0 0!important}
+.fc-acts{display:flex;flex-wrap:wrap;gap:5px;margin:auto 0 0;padding-top:10px}
+.fc-a,.fc-acts .partner-review-open,.fc-acts .fc-phbtn,.fc-acts .fac-act a,.fc-acts .fac-act button{display:inline-flex;align-items:center;gap:3px;font-size:.74rem!important;font-weight:700;line-height:1.2;padding:6px 9px!important;margin:0!important;border:1.5px solid var(--line,#ece6e0)!important;border-radius:999px!important;background:#fff!important;color:var(--ink,#2b2622)!important;text-decoration:none!important;cursor:pointer;list-style:none;min-height:32px;box-sizing:border-box;white-space:nowrap}
+.fc-a::before,.fc-acts .partner-review-open::before,.fc-acts .fc-phbtn::before{content:"";width:15px;height:15px;flex:0 0 15px;background:center/contain no-repeat}
+.fc-acts .fc-phbtn::before{background-image:var(--fc-cam)}.fc-acts .partner-review-open::before{background-image:var(--fc-star)}
+.fc-a-more::-webkit-details-marker{display:none}.fc-more>summary{list-style:none}.fc-acts summary::after{display:none!important;content:none!important}
+.fc-acts .emg-score,.fc-acts .partner-score{display:contents;margin:0}
+.fc-acts .partner-score .stars,.fc-acts .partner-score>b{align-self:center}
+.fc-acts .review-panel,.fc-acts .partner-review-src{flex:0 0 100%;font-size:.72rem}
+.fc-acts .fac-act{display:contents}
+.fc-acts .fac-act a.fac-site{background:var(--o,#e8590c)!important;border-color:var(--o,#e8590c)!important;color:#fff!important}
+.fc-more{display:block;flex:0 0 auto;margin:0;background:none!important;box-shadow:none!important;border:0!important;padding:0!important}.fc-more[open]{flex-basis:100%}.fc-more[open]>summary{border-color:var(--o,#e8590c)!important;display:inline-flex}
+.fc-more-b{margin-top:6px;font-size:.82rem;line-height:1.6;color:var(--ink-2,#5a524b);background:#faf8f6;border-radius:10px;padding:6px 10px}
+.fc-more-b>small,.fc-more-b>p,.fc-more-b>ul,.fc-more-b>dl,.fc-more-b>a{display:block;margin:4px 0!important}
+:root{--fc-cam:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23c2410c%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%208h3l1.5-2h7L17%208h3v11H4z%22/%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2213%22%20r%3D%223.3%22/%3E%3C/svg%3E");--fc-star:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23c2410c%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%204l2.4%205%205.4.6-4%203.7%201.1%205.3L12%2016l-4.9%202.6%201.1-5.3-4-3.7%205.4-.6z%22/%3E%3C/svg%3E")}
+.fc-a-cam::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23c2410c%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%208h3l1.5-2h7L17%208h3v11H4z%22/%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2213%22%20r%3D%223.3%22/%3E%3C/svg%3E")}.fc-a-star::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23c2410c%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%204l2.4%205%205.4.6-4%203.7%201.1%205.3L12%2016l-4.9%202.6%201.1-5.3-4-3.7%205.4-.6z%22/%3E%3C/svg%3E")}.fc-a-car::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23c2410c%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%2015.5l1.6-5a2%202%200%200%201%201.9-1.4h9a2%202%200%200%201%201.9%201.4l1.6%205v3h-16z%22/%3E%3Ccircle%20cx%3D%228%22%20cy%3D%2215.5%22%20r%3D%221.3%22/%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2215.5%22%20r%3D%221.3%22/%3E%3C/svg%3E")}.fc-a-info::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23c2410c%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%228.5%22/%3E%3Cpath%20d%3D%22M12%2011v5M12%208h.01%22/%3E%3C/svg%3E")}.fc-a-more::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23c2410c%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%206v12M6%2012h12%22/%3E%3C/svg%3E")}.fc-a-site::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23c2410c%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M14%205h5v5M19%205l-8%208M17%2014v5H5V7h5%22/%3E%3C/svg%3E")}.fc-a-note::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23c2410c%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M6%204h9l3%203v13H6z%22/%3E%3Cpath%20d%3D%22M9%2011h6M9%2015h6%22/%3E%3C/svg%3E")}
 .emg-item.fc .jt-c{margin-top:8px}
 .fp{background:#fffaf5;border:2px solid var(--o,#e8590c);border-radius:20px;padding:14px;margin:12px 0 16px}
-.fp-t{display:flex;gap:6px;align-items:center;font-weight:800;font-size:1.04rem;margin:0 0 4px!important;color:var(--ink,#2b2622)}
+.fp-t{display:flex;gap:6px;align-items:center;font-weight:800;font-size:1.04rem;margin:0 0 10px!important;color:var(--ink,#2b2622)}
 .fp-t .fc-i{width:20px;height:20px;margin:0}
-.fp-lead{font-size:.84rem;line-height:1.7;margin:0 0 10px!important;color:var(--ink-2,#5a524b)}
 .fp-row{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:0 0 10px}
 .fp-l{font-size:.8rem;font-weight:800;color:var(--ink-3,#6b625b);min-width:5em}
-.fp-btns{display:flex;flex-wrap:wrap;gap:6px}
+.fp-btns{display:flex;flex-wrap:wrap;gap:6px;flex:1 1 200px}
+.fp-ft button,.fp .fac-chips button{font-size:.84rem;padding:6px 12px;min-height:36px;border-radius:999px;border:1.5px solid var(--line,#ece6e0);background:#fff;font-weight:700;color:var(--ink,#2b2622)}
+.fp .fac-chips button[aria-pressed=true]{background:var(--o,#e8590c);border-color:var(--o,#e8590c);color:#fff}
+.fp .fac-filter{margin:0 0 8px}.fp .fac-chips{margin:4px 0}.fp .fac-count:empty{display:none}
 .fp-btns button{font-size:.9rem;font-weight:700;padding:8px 14px;border-radius:999px;border:1.5px solid var(--line,#ece6e0);background:#fff;color:var(--ink,#2b2622);cursor:pointer;min-height:40px}
 .fp-btns button[aria-pressed=true]{background:var(--o,#e8590c);border-color:var(--o,#e8590c);color:#fff}
 .fp-row select{flex:1 1 220px;min-width:0;font-size:16px;padding:9px 10px;border:1.5px solid var(--line,#ece6e0);border-radius:12px;background:#fff;color:var(--ink,#2b2622)}
@@ -492,8 +546,21 @@ def _one(h, conf, fbn):
     if "data-fp" not in h2:
         fits = [json.loads(html.unescape(x)) for x in re.findall(r'data-fit="([^"]+)"', h2)]
         ku = {k for f in fits for k in f.get("a", [])}
-        pn = panel(conf, ku, any("s" in f or "kg" in f for f in fits), any(f.get("sen") for f in fits), any(f.get("pup") for f in fits), len(fits))
-        if pn and fits:
+        fl = [html.unescape(x).split("|") for x in re.findall(r'data-ft="([^"]*)"', h2)]
+        nc = len(re.findall(r'class="emg-item emg-co fc', h2))
+        cnt = {}
+        for xs in fl:
+            for x in xs: cnt[x] = cnt.get(x, 0) + 1
+        old_chips = set((re.search(r'data-fac-chips="([^"]*)"', h2) or [None, ""])[1].split("|"))
+        fts = [x for x in _FT_ORDER if 0 < cnt.get(x, 0) < nc]
+        if "data-fac-chips" in h2: fts = [x for x in fts if x not in ("来てくれる・送迎", "料金を公開")]
+        if "data-fac-chips" not in h2:  # 前からの「条件でしぼりこむ」があるページは、そちらと重ねない
+            fts += sorted([x for x in cnt if x not in _FT_ORDER and 2 <= cnt[x] < nc], key=lambda x: -cnt[x])
+        fts = [x for x in fts if not re.search(r"シニア|介護|猫OK|犬OK|大型犬|猫専用|子犬|パピー", x)]  # 上の「どの子？」「大きさ」と重ねない
+        if any("送迎" in x for x in fts if x != "来てくれる・送迎"): fts = [x for x in fts if x != "来てくれる・送迎"]
+        fts = fts[:8] if nc >= 4 else []
+        pn = panel(conf, ku, any("s" in f or "kg" in f for f in fits), any(f.get("sen") for f in fits), any(f.get("pup") for f in fits), len(fits), fts, "data-fac-chips" in h2)
+        if pn:
             k = h2.find('class="emg-item emg-co fc')
             em = h2.rfind('<div class="emg">', 0, k)
             if em >= 0 and h2.count("</main>", em, k) == 0:  # 一覧の箱のいちばん上（答えの箱・数字のすぐ後ろ）
@@ -507,7 +574,36 @@ def _one(h, conf, fbn):
                     if q >= 0 and pos - q < 6000 and h2.count("<section", q, pos) <= 1: pos = min(pos, q)
             h2 = h2[:pos] + pn + h2[pos:]
             if FIT_JS not in h2: h2 = h2.replace("</body>", FIT_JS + "\n</body>", 1)
+    # 前からの「条件でしぼりこむ」（facility.js が市区町村の検索とチップを入れる箱）を、さがす欄の中にまとめる
+    ff = h2.find('<div class="fac-filter"'); fn = h2.find('<p class="fp-now"')
+    if ff >= 0 and fn >= 0 and ff > fn:
+        fe = _end(h2, ff, "div"); box = re.sub(r'<p class="emg-tips-note"[^>]*>条件でしぼりこむ[^<]*</p>', "", h2[ff:fe])
+        h2 = h2[:ff] + h2[fe:]
+        h2 = h2[:fn] + box + h2[fn:]
+    h2 = list_first(h2)
     return None if h2 != h and _too_big(h2) else h2
+
+def list_first(h):
+    """一覧（さがす欄とカード）を、ポイントの箱・数字・グラフより前に出す（タクシーのページのフォームと同じく、さがすものを先に。
+    Nori 2026-11-15「ページの上の方になんかいろいろ結構長く書いてるけど、フォームとかが先に来たほうがいい」）。説明は消さずに一覧の後ろへ。"""
+    k = h.find('class="emg-item emg-co fc')
+    if k < 0: return h
+    em = h.rfind('<div class="emg">', 0, k)
+    if em < 0: return h
+    sec = h.rfind('<section style="padding-top:8px"', 0, em)
+    if sec < 0 or h.count("</section>", sec, em): return h
+    w = h.find("<div", sec)
+    if w < 0 or w >= em: return h
+    wo = h.find(">", w) + 1
+    if not h[wo:em].strip(): return h
+    if h.count("</div>", wo, em) > h.count("<div", wo, em): return h  # 同じ箱の中にないときは動かさない
+    ee = _end(h, em, "div")
+    block = h[em:ee]
+    # 一覧の上の「無料の情報です」の注意書きは一覧の後ろへ
+    notes = re.findall(r'\s*<p class="emg-free">.*?</p>', block[:block.find("<section") if "<section" in block else 0], re.S)
+    for n in notes: block = block.replace(n, "", 1)
+    if notes: block = block[:-len("</div>")] + "".join(notes) + "</div>"
+    return h[:wo] + block + h[wo:em] + h[ee:]
 
 def build(ROOT):
     T = _fit_table()

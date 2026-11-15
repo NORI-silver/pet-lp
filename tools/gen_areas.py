@@ -2113,16 +2113,17 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
     slot.hidden = false;
   }
   function photos(box){
+    if (!PHOTO_AUTO) return; // 「写真を見る」のボタンは出さない（Nori 2026-11-15「写真を見るはいらない」）。自動で出すときだけ写真を入れる
     if (box.nextElementSibling && box.nextElementSibling.classList.contains("fac-photos")) return;
     var id = box.dataset.id, card = box.closest(".fc"), slot = card && card.querySelector(".fc-ph");
     if (slot) {
       if (slot.dataset.go) return; slot.dataset.go = "1";
-      var body = card.querySelector(".fc-body") || card, more = body.querySelector(".fc-more");
-      var put = function(n){ if (more && more.parentNode === body) body.insertBefore(n, more); else body.appendChild(n); };
-      var b = el("button", "fc-phbtn", "写真を見る"); b.type = "button";
+      var body = card.querySelector(".fc-acts") || card.querySelector(".fc-body") || card;
+      var put = function(n){ body.insertBefore(n, body.firstChild); };
+      var b = el("button", "fc-phbtn", "写真"); b.type = "button"; b.setAttribute("aria-label", "写真を見る");
       var load = function(){
-        b.disabled = true; b.textContent = "写真を読み込んでいます…";
-        getPhotos(id).then(function(ps){ carousel(slot, ps); b.remove(); }).catch(function(e){ if (e === "none") { b.textContent = "写真はまだありません"; return; } b.remove(); var x = el("button", "fc-phbtn", "写真をもう一度読み込む"); x.type = "button"; x.addEventListener("click", function(){ x.remove(); put(b); load(); }); put(x); });
+        b.disabled = true; b.textContent = "読み込み中…";
+        getPhotos(id).then(function(ps){ carousel(slot, ps); b.remove(); }).catch(function(e){ if (e === "none") { b.textContent = "写真なし"; return; } b.remove(); var x = el("button", "fc-phbtn", "写真をもう一度"); x.type = "button"; x.addEventListener("click", function(){ x.remove(); put(b); load(); }); put(x); });
       };
       b.addEventListener("click", load);
       put(b);
@@ -2150,10 +2151,10 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
   }
   // 押したときだけ取り寄せる形（REVIEW_ON_CLICK）：最初は「口コミを見る」だけを出し、押したら星と本文をまとめて取り寄せる
   function lazy(box){
-    var id = box.dataset.id, b = el("button", "partner-review-open", "口コミを見る"), p = el("p", "partner-score"); b.type = "button";
-    p.append(b, el("span", "partner-review-src", "Google Maps")); box.replaceChildren(p);
+    var fc = box.closest(".fc-acts"), id = box.dataset.id, b = el("button", "partner-review-open", fc ? "口コミ" : "口コミを見る"), p = el("p", "partner-score"); b.type = "button";
+    if (fc) { b.setAttribute("aria-label", "口コミを見る"); p.append(b); } else p.append(b, el("span", "partner-review-src", "Google Maps")); box.replaceChildren(p);
     b.addEventListener("click", function(){
-      b.disabled = true; b.textContent = "口コミを読み込んでいます…";
+      b.disabled = true; b.textContent = fc ? "読み込み中…" : "口コミを読み込んでいます…";
       if (window.gtag) gtag("event", "open_reviews", {});
       var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
       fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
