@@ -5,6 +5,7 @@ const ctx=vm.createContext({Date,JSON,Math,Number,String,Object,Array,isFinite,i
   Session:{getEffectiveUser:()=>({getEmail:()=>'admin@example.com'})},
   Utilities:{computeHmacSha256Signature:(s,k)=>[...crypto.createHmac('sha256',k).update(s).digest()],base64EncodeWebSafe:(b)=>Buffer.from(b).toString('base64').replace(/\+/g,'-').replace(/\//g,'_')}});
 vm.runInContext(fs.readFileSync('booking/Code.gs','utf8'),ctx);
+vm.runInContext('CONFIG.ROUTE_PAD = 1', ctx); // 会社の見積もりと式が合うかは、会社の距離そのままで確かめる（サイトでは道のりを1割長めに見る）
 assert.equal(ctx.isOpen_('P066'),true); assert.equal(ctx.openDisplay_('P066').id,'D5598693');
 const c=vm.runInContext("DISPLAY_COMPANIES.filter(function(x){return x.id==='D5598693';})[0]",ctx);
 const shop={lat:c.shop[0],lng:c.shop[1]};
