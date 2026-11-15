@@ -15,7 +15,9 @@ import visual as V
 
 PSLUG = gen_dogrun.PSLUG
 _D = os.path.dirname(os.path.abspath(__file__))
+TYPE_TABLE_MAX = 120  # 種類のページで表も出す軒数の上限（ページを軽く保つ。tests/info-light.test.cjs の60KB）
 PREF_MIN = 5     # 都道府県のページを作る軒数（Nori 2026-11-14「そもそも薄い記事作らないで」。足りない県は全国のページの地方の表に入れる）
+ANIMAL_MIN_CHARS = 1000  # 動物ごとのページを作る「そのページだけの字数」（thin_gate の 900 に余裕）
 ANIMAL_MIN = 5   # 動物ごとのページを作る軒数（足りない動物は /pet-yado/ の中に載せる）
 OWN_MIN = 5      # 宿1軒のページを作るのに要る、その宿だけの事実の数（系列で共通の決まりのページから写した事実は数えない）
 MIN_FACTS = 5
@@ -214,6 +216,7 @@ def _ld(SITE, crumbs, items, faq):
     out = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + h} for i, (n, h) in enumerate(crumbs)]}]
     if items:
+        items = items[:100]  # 構造化データは100軒まで（ページの中の一覧は全部）
         out.append({"@context": "https://schema.org", "@type": "ItemList", "numberOfItems": len(items),
                     "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": (SITE + href(x)) if x["page"] else x["url"], "name": x["name"]} for i, x in enumerate(items)]})
     if faq:
@@ -455,7 +458,9 @@ def render_type(ctx, slug):
     body = (f'<div class="yd-ans"><h2>犬と泊まれる{e(nm)}のポイント</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
             + V.stats(tiles)
             + _fit(e, f"うちの子の大きさで、{nm}を見る", f"{n}軒を、泊まれる犬の大きさ（小型犬・中型犬・大型犬）と猫でしぼれます。", xs)
-            + f'<h2 class="yd-h">{e(nm)}{n}軒をくらべる</h2>' + table(e, xs)
+            + (f'<h2 class="yd-h">{e(nm)}{n}軒をくらべる</h2>' + table(e, xs) if n <= TYPE_TABLE_MAX else
+               f'<h2 class="yd-h">都道府県ごとの{e(nm)}</h2><p class="emg-tips-note">軒数が多いので、くらべる表は都道府県のページにあります。</p><ul class="yd-pref">'
+               + "".join(f'<li><a href="{pref_href(pf)}">{e(pf)}<small>{sum(1 for x in xs if x["pref"] == pf)}軒</small></a></li>' for pf in prefs) + '</ul>')
             + "".join(f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">{e(a)}</h2><p style="font-size:.9rem;margin:4px 0 10px">{e(b)}</p></div>' for a, b in TYPE_TIPS.get(slug, []))
             + f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{_faq_html(e, faq)}</dl></div>'
             + (f'<h2 class="yd-h">ほかの種類の宿</h2><ul class="yd-pref">{others}</ul>' if others else "")
@@ -523,6 +528,27 @@ def write_all(ROOT, ctx):
     def w(path, html):
         d = os.path.join(ROOT, path.strip("/")); os.makedirs(d, exist_ok=True)
         open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(_bf(html))
+    # 動物ごとのページも、そのページだけの字数（tools/thin_gate.py と同じ数え方）が ANIMAL_MIN_CHARS に届くときだけ作る
+    # （Nori 2026-11-14「そもそも薄い記事作らないで」）。届かない動物は /pet-yado/ の中に載せ、前に作ったページは消す。
+    import shutil, thin_gate as TG
+    from collections import Counter
+    for _ in range(3):
+        pages = {("a", k): render_animal(ctx, k) for k in ANIMAL_PAGES}
+        pages.update({("p", pf): render_pref(ctx, pf) for pf in PREFS})
+        pages.update({("t", t): render_type(ctx, t) for t in TYPE_PAGES})
+        pages[("h", "pet")] = render_pethub(ctx); pages[("h", "dog")] = render_hub(ctx)
+        segs = {k: set(TG._segments(v)) for k, v in pages.items()}
+        df = Counter(t for v in segs.values() for t in v)
+        uniq = {k: sum(len(t) for t in v if df[t] < TG.TEMPLATE_DF) for k, v in segs.items()}
+        short = {k[1] for k, n in uniq.items() if k[0] == "a" and n < ANIMAL_MIN_CHARS}
+        # 県のページも、まだない県は字数が足りるときだけ作る（足りない県は全国のページの地方の表に入れる）
+        short_p = {k[1] for k, n in uniq.items() if k[0] == "p" and n < ANIMAL_MIN_CHARS
+                   and not os.path.exists(os.path.join(ROOT, "inu-yado", PSLUG[k[1]], "index.html"))}
+        if not short and not short_p: break
+        ANIMAL_PAGES.difference_update(short); PREFS.difference_update(short_p)
+    for k, _, slug in AN:
+        d = os.path.join(ROOT, "pet-yado", slug)
+        if k not in ANIMAL_PAGES and os.path.isdir(d): shutil.rmtree(d)
     if DOGS: w("/inu-yado/", render_hub(ctx))
     for pf in PREFS: w(f"/inu-yado/{PSLUG[pf]}/", render_pref(ctx, pf))
     if any(OTHER.values()): w("/pet-yado/", render_pethub(ctx))
