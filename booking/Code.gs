@@ -2679,8 +2679,8 @@ var PINFO_OFFERS = [
   { k: 'cage_free', t: 'ケージの貸し出し無料' },
   { k: 'cancel_free', t: '前日までのキャンセル無料' }
 ];
-// 数字のいらない特典（チェックで選ぶ）
-var PINFO_OFFER_X = ['早朝・深夜の割増なし', 'ケージの貸し出し無料', '前日までのキャンセル無料'];
+// 画面に出す特典（数字を入れるもの・印を付けるもの）。それぞれに期間を入れる
+var PINFO_OFFER_FORM = ['pct_off', 'yen_off', 'night_free', 'cage_free', 'cancel_free'];
 var PINFO_EQUIP = ['ケージの貸し出し', 'キャリーの貸し出し', 'スロープ', '担架', 'ペットシーツ', '車内の温度管理', '車いすの方の同乗'];
 // 人数・頭数・範囲・時間のように候補選びに使うことはここでは受けない（提携の確認ページで直してもらう）
 var PINFO_PAY = ['現金', 'クレジットカード', '電子マネー', 'QRコード決済', '銀行振込'];
@@ -2807,6 +2807,10 @@ function pinfoReviewPage_(q) {
   return page_(ok ? '公開にしました' : '直してくださいにしました', '<p>' + esc_(v[2]) + '：' + esc_(v[3]) + '</p><p class="note">' + esc_(String(v[4]).slice(0, 200)) + '</p>' +
     (ok ? '<p>10分ほどで、お客さまが見る候補のカードに出ます。</p>' : '<p>会社のページの「審査の状況」に「' + esc_(why) + '」と出ます。</p>'));
 }
+// カードの見本の番号の印と、大事なところの強調（Nori 2026-11-15「大事なところはわかるように、もじを強調して」「カードのどこが今回の入力でかわるのかも印つけたりして」）
+function pinfoMark_(n) { return '<span style="display:inline-flex;align-items:center;justify-content:center;width:1.6em;height:1.6em;border-radius:50%;background:#e2560a;color:#fff;font-size:.8em;font-weight:800;margin-right:6px;vertical-align:.12em">' + n + '</span>'; }
+function pinfoEm_(t) { return '<b style="color:#c2410c">' + t + '</b>'; }
+function pinfoWhere_(t) { return '<p style="margin:2px 0 8px;font-size:.88rem;color:#3c4043;background:#fff1e6;border-radius:8px;padding:6px 10px">カードの ' + t + '</p>'; }
 function pinfoChips_(name, list, picked) {
   return '<div style="display:flex;flex-wrap:wrap;gap:6px 14px">' + list.map(function(x) {
     return '<label style="font-weight:400;margin:4px 0;display:inline-flex;gap:6px;align-items:center"><input type="checkbox" style="width:auto;display:inline;margin:0" name="' + name + '" value="' + esc_(x) + '"' + (picked.indexOf(x) >= 0 ? ' checked' : '') + '>' + esc_(x) + '</label>';
@@ -2842,22 +2846,19 @@ function pinfoPage_(q, view) {
   if (q.go === '1' && !view) {
     var arr = function(k) { return [].concat(q[k] || []).map(String).filter(Boolean); };
     // 特典（同時に2つまで・終わりの日は必ず）
-    // 特典は「◯%オフ」「◯円オフ」の欄（どちらか1つ）と、そのほかの特典のチェック、期間（いつから・いつまで）だけ（Nori 2026-11-15「何%オフの欄、何円オフの欄を作っておいてあとは期間を入れられるように」）
+    // 特典は1つずつ、数字（%オフ・円オフ）か印（そのほか）と、それぞれの期間（いつから・いつまで）を入れる
+    // （Nori 2026-11-15「何%オフの欄、何円オフの欄を作っておいて」「オフとか何円引きはそれぞれ期間入れられるようにして」）
     var offers = [], num = function(k) { return Number(String(q[k] || '').replace(/[^\d]/g, '')) || 0; };
-    var pct = num('off_pct'), yenOff = num('off_yen'), extras = arr('off_x').filter(function(x) { return PINFO_OFFER_X.indexOf(x) >= 0; });
-    var from = String(q.off_from || ''), until = String(q.off_until || ''), today0 = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
-    var want = [];
-    if (pct && yenOff) done.push('割引は「%オフ」か「円オフ」のどちらか1つにしてください');
-    else if (pct) { if (pct < 5 || pct > 30) done.push('%オフは5〜30%で入れてください'); else want.push({ k: 'pct_off', n: pct }); }
-    else if (yenOff) { if (yenOff < 100 || yenOff > 5000) done.push('円オフは100〜5,000円で入れてください'); else want.push({ k: 'yen_off', n: yenOff }); }
-    extras.forEach(function(x) { var o = PINFO_OFFERS.filter(function(y) { return y.t === x; })[0]; if (o) want.push({ k: o.k, n: null }); });
-    if (want.length) {
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(until) || until < today0) { done.push('特典の「いつまで」を入れてください'); want = []; }
-      else if (from && (!/^\d{4}-\d{2}-\d{2}$/.test(from) || from > until)) { done.push('特典の「いつから」は「いつまで」より前の日にしてください'); want = []; }
-    }
-    want.forEach(function(w) {
-      var o = PINFO_OFFERS.filter(function(y) { return y.k === w.k; })[0], label = o.t.replace('{n}', w.n ? w.n.toLocaleString() : '');
-      offers.push({ k: w.k, n: w.n, from: from > today0 ? from : '', until: until, label: label, text: label + '（' + (from > today0 ? from.replace(/-/g, '/') + '〜' : '') + until.replace(/-/g, '/') + 'まで）' });
+    var today0 = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
+    PINFO_OFFER_FORM.forEach(function(k) {
+      var o = PINFO_OFFERS.filter(function(y) { return y.k === k; })[0], n = o.unit ? num(k) : 0, on = o.unit ? !!n : q[k] === '1';
+      if (!on) return;
+      if (o.unit && (n < o.min || n > o.max)) { done.push(o.t.replace('{n}', '◯') + 'は' + o.min.toLocaleString() + '〜' + o.max.toLocaleString() + o.unit + 'で入れてください'); return; }
+      var from = String(q[k + '_from'] || ''), until = String(q[k + '_until'] || ''), label = o.t.replace('{n}', n ? n.toLocaleString() : '');
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(until) || until < today0) { done.push('「' + label + '」の「いつまで」を入れてください'); return; }
+      if (from && (!/^\d{4}-\d{2}-\d{2}$/.test(from) || from > until)) { done.push('「' + label + '」の「いつから」は「いつまで」より前の日にしてください'); return; }
+      from = from > today0 ? from : '';
+      offers.push({ k: k, n: n || null, from: from, until: until, label: label, text: label + '（' + (from ? from.replace(/-/g, '/') + '〜' : '') + until.replace(/-/g, '/') + 'まで）' });
     });
     var before = { offer: pinfoLatest_(rows, 'offer'), equip: pinfoLatest_(rows, 'equip'), pay: pinfoLatest_(rows, 'pay'), cred: pinfoLatest_(rows, 'cred'), note: pinfoLatest_(rows, 'note') };
     var add = function(kind, text, data) { var r = pinfoAdd_(pid, kind, text, data); pinfoNotify_(pid, r, kind, text); done.push(PINFO_KINDS[kind]); got.push(PINFO_KINDS[kind] + '：' + text); };
@@ -2877,41 +2878,46 @@ function pinfoPage_(q, view) {
   }
   var cur = { offer: pinfoLatest_(rows, 'offer').list || [], equip: pinfoLatest_(rows, 'equip').list || [], pay: pinfoLatest_(rows, 'pay').list || [], cred: pinfoLatest_(rows, 'cred'), note: pinfoLatest_(rows, 'note').text || '' };
   var photos = rows.filter(function(v) { return v[3] === PINFO_KINDS.photo && v[6] !== '直してください' && v[6] !== '取り下げ'; });
-  var html = '<p>' + esc_(name) + ' さま</p><p>お客さまが見る候補のカードに、写真・特典・ひとことを足せます。<b>写真と特典がある会社は、お客さまに選ばれやすくなります。</b>運営者が確かめてから出します。受け付けた内容は、登録のメールアドレスにもお知らせします。載せられるものの決まりは <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/listing/') + '">掲載の決まり</a> をご覧ください。</p>' +
+  var html = '<p>' + esc_(name) + ' さま</p><p>お客さまが見る候補のカードに、写真・特典・ひとことを足せます。<b>写真と特典がある会社は、お客さまに選ばれやすくなります。</b>' + pinfoEm_('運営者が確かめてから出します。') + '受け付けた内容は、登録のメールアドレスにもお知らせします。載せられるものの決まりは <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/listing/') + '">掲載の決まり</a> をご覧ください。</p>' +
     (view ? '<div class="box"><b>運営者だけが見られる見本です。</b>事業者がログインしたあとの画面と同じですが、送っても何も保存されず、どこにも届きません。</div>' : '') +
     (q.go === '1' && view ? '<div class="box">見本なので、保存していません。</div>' : '') +
     (q.go === '1' && !view ? '<div class="box">' + (done.length ? esc_(done.join('、')) + ' を受け付けました。' : '変わったところはありませんでした。') + '</div>' : '');
   // カードの見え方の見本（写真・特典・運転手を入れたとき。画像は見本用に作ったもので、実在の会社・人ではない。Nori 2026-11-15）
   html +=
-    '<h2>お客さまに見えるカード（見本）</h2><p class="note">写真・特典・運転手の写真・ひとことを入れると、候補のカードはこのように見えます（見本の会社です）。</p>' +
-    '<img src="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/img/partner/card-sample.jpg') + '" alt="写真・特典・運転手の写真が入った候補のカードの見本" width="390" style="display:block;width:100%;max-width:390px;height:auto;margin:8px 0 16px;border-radius:14px;box-shadow:0 1px 6px rgba(0,0,0,.12)">';
+    '<h2>お客さまに見えるカード（見本）</h2><p class="note">この画面で入れたものは、カードの' + pinfoMark_('1') + '〜' + pinfoMark_('5') + 'の場所に出ます（見本の会社です）。下の項目にも同じ番号を付けています。</p>' +
+    '<img src="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/img/partner/card-sample.jpg') + '" alt="写真・特典・運転手の写真が入った候補のカードの見本。1が写真、2が運転手の写真、3が特典、4が設備、5がひとこと" width="390" style="display:block;width:100%;max-width:390px;height:auto;margin:8px 0 16px;border-radius:14px;box-shadow:0 1px 6px rgba(0,0,0,.12)">';
   // 写真（/go/ のページが data-pinfo-up を見て、縮めてから送る）
-  html += '<h2>写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）</h2><p class="note">スマホで撮った写真を、そのまま選んでください。大きさや形はこちらで合わせます。選ぶと、カードに出る形の見本が出るので、つまみで位置を直してから送れます。</p>' +
+  html += '<h2>' + pinfoMark_('1') + '写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）・' + pinfoMark_('2') + '運転手</h2>' + pinfoWhere_(pinfoMark_('1') + '料金の右の写真（横にスワイプで次の写真）と、' + pinfoMark_('2') + '社名の横の丸（「写真の種類」で「運転手」を選んだ写真）が変わります。') +
+    '<p class="note">' + pinfoEm_('スマホで撮った写真を、そのまま選んでください。') + '大きさや形はこちらで合わせます。選ぶと、カードに出る形の見本が出るので、つまみで位置を直してから送れます。</p>' +
     '<div class="box" style="font-size:.9rem"><b>スマホでの撮り方</b><ul style="margin:6px 0 0;padding-left:1.2em">' +
     '<li>車・車の中・お店は、<b>スマホを横向き</b>にして撮る。車は全体が入るように少し離れて。</li>' +
     '<li>1枚めは「車の外」がおすすめ（カードの最初に出ます）。</li>' +
     '<li>昼の明るい場所で。うしろにほかの車・人・看板が入らないように。</li>' +
-    '<li>ナンバープレート・電話番号が写らないように。文字やスタンプは入れない。</li>' +
-    '<li>「運転手」は<b>スマホは縦のまま</b>、顔が真ん中、胸から上。明るい場所で（会社名の横に丸く出ます。写っている方ご本人の了解が必要です）。</li>' +
-    '<li>運転手のほかは、人の顔が写らないように。ご自身で撮った実際の写真だけにしてください。</li></ul></div>' +
+    '<li>' + pinfoEm_('ナンバープレート・電話番号が写らないように。') + '文字やスタンプは入れない。</li>' +
+    '<li>「運転手」は<b>スマホは縦のまま</b>、顔が真ん中、胸から上。明るい場所で（会社名の横に丸く出ます。' + pinfoEm_('写っている方ご本人の了解が必要です') + '）。</li>' +
+    '<li>運転手のほかは、人の顔が写らないように。' + pinfoEm_('ご自身で撮った実際の写真だけ') + 'にしてください。</li></ul></div>' +
     (photos.length < PINFO_PHOTO_MAX ? '<div data-pinfo-up data-t="' + esc_(view ? '' : q.s) + '"' + (view ? ' data-view="1"' : '') + ' class="box"><label>写真の種類<select data-kind>' + PINFO_PHOTO_KINDS.map(function(k) { return '<option>' + esc_(k) + '</option>'; }).join('') + '</select></label>' +
       '<label>写真を選ぶ<input type="file" accept="image/jpeg,image/png,image/heic,image/webp"></label>' +
       '<label style="font-weight:400;display:flex;gap:6px;align-items:center"><input type="checkbox" data-rights style="width:auto;display:inline;margin:0">自分（自社）で撮った写真で、載せる権利があります</label>' +
       '<button type="button" class="gray">この写真を送る</button><p class="note up-msg"></p></div>' : '<p class="note">いまは5枚そろっています。</p>');
   // そのほかの項目（ボタンで選ぶ）
   html += '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + (view ? hidden_('a', 'pinfo_view') + hidden_('k', q.k) : hidden_('a', 'pinfo') + hidden_('s', q.s)) + hidden_('go', '1') +
-    '<h2>特典</h2><p class="note">このサイトから問い合わせたお客さまだけの特典です。お返事の確定料金に特典を入れてからお送りください。「いつまで」を過ぎると自動で消えます。</p>';
-  var curK = function(k) { return cur.offer.filter(function(o) { return o.k === k; })[0] || {}; }, cur0 = cur.offer[0] || {};
-  var unitBox = function(name, v, unit, ph) { return '<div style="display:flex;align-items:center;gap:8px;margin:6px 0"><input name="' + name + '" inputmode="numeric" placeholder="' + ph + '" value="' + esc_(v || '') + '" style="width:7em;display:inline-block">' + '<span style="font-weight:700;white-space:nowrap">' + unit + '</span></div>'; };
-  html += '<div class="pt"><b>割引（どちらか1つ）</b>' + unitBox('off_pct', curK('pct_off').n, '%オフ', '10') + unitBox('off_yen', curK('yen_off').n, '円オフ', '500') + '<p class="note" style="margin:0">%オフは5〜30%、円オフは100〜5,000円まで。</p>' +
-    '<b style="display:block;margin-top:12px">そのほかの特典</b>' + pinfoChips_('off_x', PINFO_OFFER_X, cur.offer.map(function(o) { return o.label || ''; })) +
-    '<b style="display:block;margin-top:12px">期間</b><div style="display:flex;gap:10px;flex-wrap:wrap"><label style="font-weight:400;flex:1;min-width:9em">いつから（空ならすぐ）<input type="date" name="off_from" value="' + esc_(cur0.from || '') + '"></label>' +
-    '<label style="font-weight:400;flex:1;min-width:9em">いつまで<input type="date" name="off_until" value="' + esc_(cur0.until || '') + '"></label></div></div>';
-  html += '<h2>設備・できること</h2><p class="note">カードに特長のタグで出ます。</p>' + pinfoChips_('equip', PINFO_EQUIP, cur.equip) +
-    '<h2>ひとこと（' + PINFO_NOTE_MAX + '字まで）</h2><p class="note">カードに「会社から：…」で出ます。電話番号・URL・SNS・「最安」「No.1」などは載せられません。</p><input name="note" maxlength="' + PINFO_NOTE_MAX + '" value="' + esc_(cur.note) + '">' +
-    '<h2 style="margin-top:28px">運営者へのお知らせ</h2><p class="note">ここはカードにすぐには出ません。運営者が確かめてから、表示を直します。一緒に乗れる人数・頭数・お迎えの範囲・営業時間が変わったときは、運営者にメールでお知らせください。</p>' +
+    '<h2>' + pinfoMark_('3') + '特典</h2>' + pinfoWhere_(pinfoMark_('3') + 'もとの料金に線が引かれて割引後の料金が並び、その下に「10%オフ　11/30まで」のように出ます。') +
+    '<p class="note">' + pinfoEm_('このサイトから問い合わせたお客さまだけ') + 'の特典です。' + pinfoEm_('お返事の確定料金に特典を入れてから') + 'お送りください。使う特典に数字を入れるか印を付けて、' + pinfoEm_('それぞれ期間') + 'を入れてください。「いつまで」を過ぎると自動で消えます。</p>';
+  var curK = function(k) { return cur.offer.filter(function(o) { return o.k === k; })[0] || {}; };
+  html += PINFO_OFFER_FORM.map(function(k) {
+    var o = PINFO_OFFERS.filter(function(y) { return y.k === k; })[0], c = curK(k);
+    var head = o.unit
+      ? '<div style="display:flex;align-items:center;gap:8px"><input name="' + k + '" inputmode="numeric" placeholder="' + (o.unit === '%' ? '10' : '500') + '" value="' + esc_(c.n || '') + '" style="width:6.5em;display:inline-block;margin:0"><b style="white-space:nowrap">' + esc_(o.t.replace('{n}', '')) + '</b><span class="note" style="white-space:nowrap">（' + o.min.toLocaleString() + '〜' + o.max.toLocaleString() + o.unit + '）</span></div>'
+      : '<label style="margin:0;display:flex;gap:8px;align-items:center"><input type="checkbox" name="' + k + '" value="1"' + (c.k ? ' checked' : '') + ' style="width:auto;display:inline;margin:0"><b>' + esc_(o.t) + '</b></label>';
+    return '<div class="pt">' + head + '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px"><label style="font-weight:400;flex:1;min-width:8.5em;margin:0;font-size:.9rem">いつから（空ならすぐ）<input type="date" name="' + k + '_from" value="' + esc_(c.from || '') + '"></label>' +
+      '<label style="font-weight:400;flex:1;min-width:8.5em;margin:0;font-size:.9rem">いつまで<input type="date" name="' + k + '_until" value="' + esc_(c.until || '') + '"></label></div></div>';
+  }).join('');
+  html += '<h2>' + pinfoMark_('4') + '設備・できること</h2>' + pinfoWhere_(pinfoMark_('4') + '特長のタグ（小さな札）に出ます。') + pinfoChips_('equip', PINFO_EQUIP, cur.equip) +
+    '<h2>' + pinfoMark_('5') + 'ひとこと（' + PINFO_NOTE_MAX + '字まで）</h2>' + pinfoWhere_(pinfoMark_('5') + 'いちばん下に「会社から：…」で出ます。') + '<p class="note">' + pinfoEm_('電話番号・URL・SNS・「最安」「No.1」などは載せられません。') + '</p><input name="note" maxlength="' + PINFO_NOTE_MAX + '" value="' + esc_(cur.note) + '">' +
+    '<h2 style="margin-top:28px">運営者へのお知らせ</h2><p class="note">' + pinfoEm_('ここはカードにすぐには出ません。') + '運営者が確かめてから、表示を直します。一緒に乗れる人数・頭数・お迎えの範囲・営業時間が変わったときは、運営者にメールでお知らせください。</p>' +
     '<h3>お支払い方法</h3>' + pinfoChips_('pay', PINFO_PAY, cur.pay) +
-    '<h3>許可・資格・保険</h3><p class="note">登録・届出・許可を選んだときは番号が必要です。</p>' + pinfoChips_('cred', PINFO_CRED, cur.cred.list || []) +
+    '<h3>許可・資格・保険</h3><p class="note">' + pinfoEm_('登録・届出・許可を選んだときは番号が必要です。') + '</p>' + pinfoChips_('cred', PINFO_CRED, cur.cred.list || []) +
     '<label style="font-weight:400">登録番号・届出番号・許可番号<input name="cred_no" maxlength="40" value="' + esc_(cur.cred.no || '') + '"></label><label style="font-weight:400">登録の有効期限（あれば）<input type="date" name="cred_until" value="' + esc_(cur.cred.until || '') + '"></label>' +
     '<button type="submit">確認して送る</button></form>';
   // 審査の状況
