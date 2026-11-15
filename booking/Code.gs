@@ -74,7 +74,7 @@ var CONFIG = {
   KEEP_PERSONAL_DAYS: 365,
   MIN_LEAD_HOURS: 3, // お迎えは受付から3時間より先だけ（LPと同じ。入力にかかる時間を見て15分は大目に見る）
   URGENT_HOURS: 3, // 希望時刻まで3時間を切っている依頼は、待ち時間を半分にする
-  // 送迎のあと、飼い主さんに「無事に送迎できましたか？」を聞く（お迎え予定からこの時間たったら。送るのは RIDE_CHECK_SEND_HOURS の時間帯だけ）
+  // 送迎のあと、飼い主さんに「無事に送迎できましたか？」を聞く（送り届けた時刻の目安からこの時間たったら。往復は帰りのあと。送るのは RIDE_CHECK_SEND_HOURS の時間帯だけ）
   RIDE_CHECK_AFTER_HOURS: 12,
   RIDE_CHECK_SEND_HOURS: '9-20',
 
@@ -1503,10 +1503,11 @@ function checkPending() {
   try { ensureReqHeaders_(sh); } catch (err) {} // 「送迎確認」の列を先に足しておく（足せなくても rideCheckDue_ が列のない行には送らない）
   var vals = sh.getDataRange().getValues();
   var h = vals[0];
-  var now = Date.now();
+  var now = Date.now(), stateOf = {};
+  for (var j = 1; j < vals.length; j++) stateOf[vals[j][0]] = vals[j][h.indexOf('状態')];
   for (var i = 1; i < vals.length; i++) {
     var r = toObj_(h, vals[i]);
-    if (rideCheckDue_(r, now)) { sendRideCheck_(r['受付番号']); continue; }
+    if (rideCheckDue_(r, now, stateOf)) { sendRideCheck_(r['受付番号']); continue; }
     if (r['状態'] !== ST.OPEN) continue;
     var age = openMinutes_(r['受付日時'], now, CONFIG.OPEN_HOURS); // 会社が動いている時間だけ数える
     var until = (new Date(r['希望日時']).getTime() - now) / 3600000;
@@ -1546,13 +1547,27 @@ function giveUp_(id) {
 
 /* ───────── 送迎のあとの確認（飼い主さんに聞いて、会社の月末の申告と照らし合わせる） ───────── */
 
-// 決まった予約で、お迎え予定から RIDE_CHECK_AFTER_HOURS たち、まだ聞いていない、いまが送ってよい時間帯
-function rideCheckDue_(r, now) {
+// 決まった予約で、送り届けた時刻（目安）から RIDE_CHECK_AFTER_HOURS たち、まだ聞いていない、いまが送ってよい時間帯
+// Nori 2026-11-15「送り届けたあと12時間後くらいに。往復の場合は復路のあとね」
+// stateOf：受付番号 → 状態（行きと帰りで別の会社の往復で、行きの分は帰りが決まっていれば帰りのほうで聞く）
+function rideCheckDue_(r, now, stateOf) {
   if (!('送迎確認' in r) || r['状態'] !== ST.DONE || r['送迎確認'] || !r['メール']) return false; // 列がない古いシートでは送らない（同じメールをくり返さないため）
-  var at = new Date(r['お迎え予定']).getTime();
+  if (/^行き/.test(String(r['区間'] || '')) && r['ペアの受付番号'] && stateOf && stateOf[r['ペアの受付番号']] === ST.DONE) return false;
+  var at = rideEndAt_(r);
   if (!isFinite(at) || now - at < CONFIG.RIDE_CHECK_AFTER_HOURS * 3600000) return false;
   if (now - at > 14 * 24 * 3600000) return false; // 古すぎる予約には聞かない
   return inHours_(Number(Utilities.formatDate(new Date(now), TZ, 'H')), hoursOf_(CONFIG.RIDE_CHECK_SEND_HOURS));
+}
+// 送り届けた時刻の目安（ミリ秒）。乗っている時間は道のり1kmを2.4分とみる（料金の夜間の判定と同じ）。距離が分からなければ1時間。
+// 往復は帰りのお迎えの時刻＋乗っている時間。帰りの時刻が分からない往復は、行きのお迎え＋行き帰りの時間＋2時間。
+function rideEndAt_(r) {
+  var go = new Date(r['お迎え予定']).getTime();
+  if (!isFinite(go)) return NaN;
+  var km = num_(r['概算km']), round = isRound_(r) && !r['区間'];
+  var leg = km ? Math.min(600, Math.max(20, (round ? km / 2 : km) * 2.4)) * 60000 : 3600000;
+  if (!round) return go + leg;
+  var back = r['帰りの日時'] instanceof Date ? r['帰りの日時'].getTime() : new Date(r['帰りの日時'] || '').getTime();
+  return isFinite(back) && back > go ? back + leg : go + leg * 2 + 2 * 3600000;
 }
 
 function rideUrl_(id) { return linkBase_() + '?a=ride&id=' + encodeURIComponent(id) + '&k=' + sign_(id + ':ride'); }
