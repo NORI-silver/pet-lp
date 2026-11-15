@@ -4,7 +4,7 @@
 name: sns-meta
 on:
   schedule:
-    - cron: '0 11 * * *' # 毎日 20:00（日本時間）
+    - cron: '23 10 * * *' # 毎日 19:23（日本時間）ごろ。毎時0分は混んで遅れやすい（11/14 は6時間遅れた）ので少し前にずらす
   workflow_dispatch:
     inputs:
       dry:
@@ -36,4 +36,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add sns/state.json
-          git diff --cached --quiet || { git pull --rebase -q; git commit -m "Instagram・Threadsの投稿を記録"; git push; }
+          git diff --cached --quiet || { git commit -q -m "Instagram・Threadsの投稿を記録"; git pull --rebase -q; git push; }

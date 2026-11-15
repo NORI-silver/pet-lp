@@ -3,13 +3,15 @@
 // ・ペットタクシーへの案内（data-taxi-cta）を必ず持つ（tools/taxi_cta.py）
 // 上限を超えたら、全国のページに全部の施設を並べず、県のページへのリンクにする（施設が増えたとき用）
 const fs=require('node:fs'),path=require('node:path'),zlib=require('node:zlib'),assert=require('node:assert/strict');
-const DIRS=['hospital','dogrun','jichitai','sougi','pet-hotel','pet-sitter','trimming','dog-trainer','rojin-home','inu-yado','inu-cafe'];
-const ALLOW=new Set(['/ga.js','/reviews.js','/facility.js']);
+const DIRS=['hospital','dogrun','jichitai','sougi','pet-hotel','pet-sitter','trimming','dog-trainer','rojin-home','inu-yado','pet-yado','inu-cafe','hinan','joto'];
+const ALLOW=new Set(['/ga.js','/reviews.js','/facility.js','/fit.js','/hosp.js','/find.js']);  // find.js＝共通のさがす箱（tools/uikit.py）  // hosp.js＝動物病院を自分の条件でさがす（tools/hosp_find.py）  // fit.js＝うちの子に合うところをさがす（tools/faccard.py）
 const MAX_GZ=60*1024, MAX_INLINE=24*1024, MAX_JS=24*1024;
 let pages=0, big=[0,''];
 function walk(d){ for(const f of fs.readdirSync(d,{withFileTypes:true})){ const p=path.join(d,f.name); if(f.isDirectory()) walk(p); else if(f.name==='index.html') check(p); } }
 function check(p){
-  const h=fs.readFileSync(p,'utf8'); pages++;
+  const h=fs.readFileSync(p,'utf8');
+  if(/http-equiv="refresh"/.test(h)) return;  // 県のページへ移した病院の案内（tools/thin_hosp.py）
+  pages++;
   const gz=zlib.gzipSync(h,{level:9}).length; if(gz>big[0]) big=[gz,p];
   assert.ok(gz<=MAX_GZ, p+' is '+gz+' bytes gzipped (limit '+MAX_GZ+'): link to prefecture pages instead of listing everything');
   for(const m of h.matchAll(/<script[^>]*\ssrc="([^"]+)"/g)) assert.ok(ALLOW.has(m[1]), p+' loads '+m[1]+' (info pages must not load the top page scripts)');

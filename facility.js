@@ -143,18 +143,19 @@
       var ic = el("span", "fac-ic"); ic.setAttribute("role", "img"); ic.setAttribute("aria-label", "このサイトから問い合わせできる事業者"); ic.title = "このサイトから問い合わせできる事業者"; ic.innerHTML = ICON;
       var b = a.querySelector("b") || a; b.insertBefore(ic, b.firstChild);
     }
-    var row = el("div", "fac-act");
-    if (href) { var s = el("a", "fac-site", "公式サイトを見る ↗"); s.href = siteUrl(href, cat); s.target = "_blank"; s.rel = "noopener"; s.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: fid, pref: prefOf(card), from: "button"}); }); row.appendChild(s); }
-    if (CONF[cat]) { var q = el("button", "", "問い合わせ文をつくる"); q.type = "button"; q.addEventListener("click", function(){ openAsk(card); }); row.appendChild(q); }
+    var acts = card.querySelector(".fc-acts"), row = el("div", "fac-act");
+    if (href) { var s = el("a", "fac-site", acts ? "公式サイト ↗" : "公式サイトを見る ↗"); s.href = siteUrl(href, cat); s.target = "_blank"; s.rel = "noopener"; s.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: fid, pref: prefOf(card), from: "button"}); }); row.appendChild(s); }
+    if (CONF[cat]) { var q = el("button", acts ? "fc-a fc-a-note" : "", acts ? "問い合わせ文" : "問い合わせ文をつくる"); if (acts) q.setAttribute("aria-label", "問い合わせ文をつくる"); q.type = "button"; q.addEventListener("click", function(){ openAsk(card); }); row.appendChild(q); }
     var to = card.getAttribute("data-to");
     if (to) {
-      var t = el("a", "fac-taxi", (card.getAttribute("data-to-label") || "ここ") + "までのペットタクシーの料金をくらべる →");
+      var tl = (card.getAttribute("data-to-label") || "ここ") + "までのペットタクシーの料金をくらべる";
+      var t = el("a", acts ? "fac-taxi fc-a fc-a-car" : "fac-taxi", acts ? "タクシー料金" : tl + " →"); if (acts) t.setAttribute("aria-label", tl);
       var pf = prefOf(card);
       t.href = "/?" + (pf ? "pref=" + encodeURIComponent(pf) + "&" : "") + "to=" + encodeURIComponent(to) + "#form";
       t.addEventListener("click", function(){ track("facility_taxi", {cat: cat, id: fid, pref: pf}); });
       row.appendChild(t);
     }
-    card.appendChild(row);
+    if (acts) acts.insertBefore(row, acts.firstChild); else card.appendChild(row);
   });
 
   // ── 条件でしぼりこむ ──（data-tags は公式サイトに書いてあることから作ったもの。空＝書いていない・分からない）

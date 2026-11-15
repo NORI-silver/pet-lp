@@ -69,6 +69,7 @@ _EMG_J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
 _EMG_RV = _EMG_J["taxis"] + [h for l in _EMG_J["hospitals"].values() for h in l]
 # 条件でさがす動物病院（/hospital/、tools/hospitals.json）の往診・猫専門の病院も同じしくみで口コミを出す
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import visual as _V  # 図で読む部品（2026-11-14 Nori「文字ばかりで読むのに疲れます」）
 import gen_hospitals
 from page_images import GUIDE_ALT, AREA_ALT, AREA_POS, area_key
 import prefkeep
@@ -86,6 +87,32 @@ booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG
 # 候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る
 _DISP = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))["companies"]
 booking_src = re.sub(r"/\*DISPLAY_COMPANIES\*/.*?/\*/DISPLAY_COMPANIES\*/", lambda m: "/*DISPLAY_COMPANIES*/var DISPLAY_COMPANIES = " + json.dumps(_DISP, ensure_ascii=False) + ";/*/DISPLAY_COMPANIES*/", booking_src, count=1, flags=re.S)
+# 掲載情報のページで、はじめから入れておく内容（受付中の会社だけ。公式サイト・提携の申し込みでうかがったこと。Nori 2026-11-15「すでに回答もらってるものは入力済みになってるんだよね？」）
+def _pinfo_known():
+    m = re.search(r"OPEN_PARTNERS:\s*(\{[^}]*\})", booking_src)
+    ids = set(re.findall(r"'(D[0-9a-f]+)'", m.group(1))) if m else set()
+    lic = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "licenses.json"), encoding="utf-8"))["companies"]
+    out = {}
+    for c in _DISP:
+        if c["id"] not in ids: continue
+        k, pay, t = {}, [], c.get("pay") or ""
+        for lab, rx in (("現金", r"現金"), ("クレジットカード", r"カード|クレジット"), ("電子マネー", r"電子マネー"), ("QRコード決済", r"QR|PayPay|ペイペイ"), ("銀行振込", r"振込")):
+            if re.search(rx, t): pay.append(lab)
+        if pay: k["pay"] = {"list": pay}
+        L, cred, nos = lic.get(c["id"]) or {}, [], {}
+        reg = L.get("reg") or {}
+        kinds, regno = reg.get("kinds") or [], [x.strip() for x in re.split(r"[・、,]", reg.get("no") or "") if x.strip()]
+        for i, kd in enumerate(kinds):
+            lab = f"動物取扱業（{kd}）の登録"
+            cred.append(lab)
+            if len(regno) == len(kinds): nos[lab] = regno[i]
+        if L.get("transport"): cred.append("運送の届出（黒ナンバー）")
+        if L.get("ins"): cred.append("動物の賠償保険")
+        cred += [q for q in L.get("quals") or [] if q not in cred]
+        if cred: k["cred"] = {"list": cred, "nos": nos, "until": reg.get("until") or ""}
+        if k: out[c["id"]] = k
+    return out
+booking_src = re.sub(r"/\*PINFO_KNOWN\*/.*?/\*/PINFO_KNOWN\*/", lambda m: "/*PINFO_KNOWN*/var PINFO_KNOWN = " + json.dumps(_pinfo_known(), ensure_ascii=False) + ";/*/PINFO_KNOWN*/", booking_src, count=1, flags=re.S)
 def _ncos(k): return len([x for x in _DISP if k in x.get("areas", [])])
 def _ccos(k, stem): return len([x for x in _DISP if k in x.get("areas", []) and stem in (x.get("area_text") or "")])
 def _n24(k): return len([x for x in _DISP if k in x.get("areas", []) and x.get("hours") == "0-24"])
@@ -174,7 +201,10 @@ def _r100(n): return int((n + 50) // 100 * 100)  # お客さまに見せる概�
 def _nat_row(km):
     v = sorted(_r100(_nat_ride(c["fare"], km)) for c in _NAT)
     mid = v[(len(v) - 1) // 2]
-    return f'<div class="row"><dt>{km}km</dt><dd>{mid:,}円<br><small style="font-weight:400">{v[0]:,}〜{v[-1]:,}円</small></dd></div>'
+    # 安い会社〜高い会社の範囲の棒と、まんなかの印（図で読む、2026-11-14。数字は dd の文字のまま）
+    top = max(_r100(_nat_ride(c["fare"], 50)) for c in _NAT)
+    bar = f'<i class="rgbar" aria-hidden="true"><i style="left:{v[0] / top * 100:.1f}%;width:{max((v[-1] - v[0]) / top * 100, 1):.1f}%"></i><b style="left:{mid / top * 100:.1f}%"></b></i>'
+    return f'<div class="row"><dt>{km}km</dt><dd>{mid:,}円<br><small style="font-weight:400">{v[0]:,}〜{v[-1]:,}円</small></dd>{bar}</div>'
 def nat_text(km):
     v = sorted(_r100(_nat_ride(c["fare"], km)) for c in _NAT)
     return f"{v[(len(v) - 1) // 2]:,}円（{v[0]:,}〜{v[-1]:,}円）"
@@ -258,7 +288,7 @@ _FAR_KEYS = {a for x in _DISP for a in x.get("far", [])}
 def no_pick(key): return key not in _LOCAL_PREFS and key not in _FAR_KEYS
 src = re.sub(r"/\*FAR_PREFS\*/.*?/\*/FAR_PREFS\*/", lambda m: "/*FAR_PREFS*/var FAR_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("far", [])} - _LOCAL_PREFS), ensure_ascii=False) + ";/*/FAR_PREFS*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*FARES\*/.*?/\*/FARES\*/", lambda m: "/*FARES*/" + FARE_JS + "/*/FARES*/", src, count=1, flags=re.S)
-# [B] 2026-11-08 トップに「都道府県ごとのペットタクシーの数」（全国の会社を公式サイトで確かめた数。トップだけに出し、地域ページの写しでは外す）
+# [B] 2026-11-08 トップに「都道府県ごとのペットタクシーの数」（全国の会社を公式サイトに書いてある数。トップだけに出し、地域ページの写しでは外す）
 def _nat_stats():
     from prefs import PREFS as _P
     full = {"東京": ("東京都", "/tokyo/"), "神奈川": ("神奈川県", "/kanagawa/"), "埼玉": ("埼玉県", "/saitama/"), "千葉": ("千葉県", "/chiba/")}
@@ -275,7 +305,7 @@ def _nat_stats():
     npref = len({a for x in _DISP for a in x.get("areas", [])})
     return (f'<!--NAT_STATS--><div class="tbl" style="margin-top:18px"><h3 style="font-size:1.05rem;margin:0 0 8px">都道府県ごとのペットタクシーの数（全国{len(_DISP)}社・{npref}都道府県）</h3>'
             '<table><thead><tr><th>お迎えの都道府県</th><th>来てくれる会社</th><th>24時間受付</th><th>当日も受ける</th><th>5kmの運賃の目安</th></tr></thead><tbody>' + rows +
-            '</tbody></table><p class="small">当サイトが公式サイトで確かめた会社の数です（2026年11月時点、3社以上の都道府県）。「当日も受ける」は公式サイトや会社の返事にはっきり書いてある会社だけ。運賃の目安は、各社の公式サイトの料金表をもとに計算した概算のまんなかの会社の金額で、お迎え料金・夜間の割増・待ち時間は入っていません。確定料金ではありません。<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ（距離ごと・都道府県ごと・お迎え料金・夜間割増）</a></p></div><!--/NAT_STATS-->')
+            '</tbody></table><p class="small">当サイトに載せている会社の数です（2026年11月時点、3社以上の都道府県）。「当日も受ける」は公式サイトや会社の返事にはっきり書いてある会社だけ。運賃の目安は、各社の公式サイトの料金表をもとに計算した概算のまんなかの会社の金額で、お迎え料金・夜間の割増・待ち時間は入っていません。確定料金ではありません。<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ（距離ごと・都道府県ごと・お迎え料金・夜間割増）</a></p></div><!--/NAT_STATS-->')
 src = re.sub(r"\s*<!--NAT_STATS-->.*?<!--/NAT_STATS-->", "", src, flags=re.S)
 src = src.replace('<a href="/area/">全国47都道府県のペットタクシー情報を見る</a></p>', '<a href="/area/">全国47都道府県のペットタクシー情報を見る</a></p>\n    ' + _nat_stats(), 1)
 # 数字の帯：会社が見つかった都道府県の数だけを出す（「47都道府県から選べます」は会社のいない県もあるので誤解のもと。法定表示の確認 2026-11-08）
@@ -383,6 +413,7 @@ extra_css = """
 .taxi-top p{margin:0 0 10px;font-size:.88rem;line-height:1.7;color:var(--ink)}
 .taxi-top p b{display:block;font-size:.98rem;color:var(--o-d)}
 """
+extra_css += __import__("visual").CSS
 open(os.path.join(ROOT, "style.css"), "w", encoding="utf-8").write(css.strip() + "\n" + extra_css.strip() + "\n")
 
 # ── 地域ページ＝トップと同じページ（Nori 2026-10-31「ペットタクシー 神奈川 で検索されたページもトップと同じに」）──
@@ -402,6 +433,7 @@ def scene_desc(where, pref):
             "犬・猫を乗せてくれるペットタクシーの料金の目安を、お迎えの場所を入れて会社ごとに無料でくらべられます。")
 def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = re.sub(r"\s*<!--NAT_STATS-->.*?<!--/NAT_STATS-->", "", TOP_HTML, flags=re.S)
+    t = re.sub(r"\s*<!--KURASHI-->.*?<!--/KURASHI-->", "", t, flags=re.S)  # 全分野の入口はトップだけ（tools/portal.py）
     t = re.sub(r"<title>.*?</title>", lambda m: f"<title>{e(title)}</title>", t, count=1, flags=re.S)
     t = re.sub(r'<meta name="description" content="[^"]*">', lambda m: f'<meta name="description" content="{e(desc)}">', t, count=1)
     t = re.sub(r'<link rel="canonical" href="[^"]*">', lambda m: f'<link rel="canonical" href="{url}">', t, count=1)
@@ -658,7 +690,8 @@ def pref_fare_stats(short, cs):
     out = f'<h3>{e(short)}に来てくれる会社だけで計算した運賃（料金表のある{len(Fs)}社）</h3>'
     out += (f'<p>{e(short)}のお迎えに対応している会社のうち、公式サイトに料金表がある{len(Fs)}社だけで、乗った距離の運賃（片道）を全国の目安と同じ式で計算しました。'
             f'10kmでは、いちばん安い会社が{k10[0]:,}円、高い会社が{k10[-1]:,}円で、{k10[-1]-k10[0]:,}円の差があります。何社かくらべてから問い合わせると、同じ道のりでも払う金額が変わります。</p>')
-    out += '<div class="tbl"><table><thead>' + head + '</thead><tbody>' + body + '</tbody></table></div>'
+    out += _V.block(("table", [["乗る距離", "まんなかの会社", "安い会社〜高い会社"] + ([] if same else ["全国のまんなか"])] +
+                     [[f"{km}km", f"{mid:,}円", f"{lo:,}〜{hi:,}円"] + ([] if same else [f"{nm:,}円"]) for km, mid, lo, hi, nm in rows]))
     if same: out += f'<p>まんなかの会社の金額は、全国{len(_NAT)}社のまんなかと同じでした。</p>'
     if pk: out += f'<p>このほかにかかるお迎え料金（お店からお迎えの場所まで）のつけ方は、{e(pk)}です。お店が遠い会社ほどお迎え料金が高くなるので、フォームでは会社ごとに、お店からお迎えの場所までの車の道のりを入れた目安を出しています。</p>'
     return out
@@ -674,16 +707,19 @@ def pref_company_table(pf, short, cs, cities=()):
     rows = []
     for c in cs:
         F = c.get("fare") if c.get("fare") and c["fare"].get("kind", "dist") == "dist" and c["fare"].get("base") else None
+        # hide_formula：料金の数字はよいが、計算のしかた（お迎え・夜間の式）は出さないでほしい会社（ふわふわ 2026-11-15「料金の公表は構いません。料金の計算方法の公式だけ非公開で」）
         h = c.get("hours") or ""
         ht = "24時間" if h == "0-24" else (h.replace("-", "時〜") + "時" if h else "—")
         r5 = f"{_nat_ride(F, 5):,}円" if F else "お見積もり"
         home = "都内" if c["pref"] == pf and pf.endswith("都") else "府内" if c["pref"] == pf and pf.endswith("府") else ("道内" if c["pref"] == pf and pf == "北海道" else ("県内" if c["pref"] == pf else c["pref"]))
-        rows.append((0 if c["pref"] == pf else 1, _nat_ride(F, 5) if F else 10**9, f'<tr><td>{e(home)}</td><td>{e(c.get("area_text") or "")}</td><td>{e(ht)}</td><td>{e(r5)}</td><td>{e(_pick_txt(F))}</td><td>{e(_night_txt(F))}</td></tr>'))
+        rows.append((0 if c["pref"] == pf else 1, _nat_ride(F, 5) if F else 10**9, f'<tr><td>{e(home)}</td><td>{e(c.get("area_text") or "")}</td><td>{e(ht)}</td><td>{e(r5)}</td><td>{e("—" if c.get("hide_formula") else _pick_txt(F))}</td><td>{e("—" if c.get("hide_formula") else _night_txt(F))}</td></tr>'))
     rows.sort(key=lambda r: (r[0], r[1]))
     out = f'<h2>{e(short)}に来てくれるペットタクシー{len(cs)}社の、対応エリアと料金のしくみ</h2>'
     out += f'<p>{e(pf)}のお迎えに対応している{len(cs)}社について、公式サイトに書かれている対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p>'
-    if summ:
-        out += f'<p>公式サイトに書いている内容を数えると、{e(summ)}でした（書いていない会社が、できないとは限りません）。</p>'
+    if summ:  # 数は棒で見せる（文字はラベルとして残す。図で読む、2026-11-14）
+        out += _V.bars({"title": f"公式サイトに書いている内容を数えると（{len(cs)}社のうち）", "max": len(cs),
+                        "rows": [(lab + "会社", pts[k], f"{pts[k]}社") for k, lab in want if pts.get(k)],
+                        "note": "書いていない会社が、できないとは限りません。"})
     cm = []
     for c in cities:
         stem = re.sub(r"(市|区|町|村)$", "", c)
@@ -692,8 +728,9 @@ def pref_company_table(pf, short, cs, cities=()):
         if n: cm.append((n, stem))
     if cm:
         whole = sum(1 for x in cs if re.search(key + r"(全域|全県|県内全域|府内全域|都内全域|全体)|全域|一円", x.get("area_text") or ""))
-        out += (f'<p>対応エリアに地名が書かれている会社を数えると、' + "・".join(f"{st}が{n}社" for n, st in sorted(cm, key=lambda t: -t[0])) + 'でした。'
-                + (f'このほか「全域」「◯◯一円」のように広く書いている会社が{whole}社あります。' if whole else '')
+        out += _V.bars({"title": f"対応エリアに地名が書かれている会社の数（{len(cs)}社のうち）", "max": len(cs),
+                        "rows": [(st, n, f"{n}社") for n, st in sorted(cm, key=lambda t: -t[0])]})
+        out += ('<p>' + (f'このほか「全域」「◯◯一円」のように広く書いている会社が{whole}社あります。' if whole else '')
                 + '地名が書かれていなくても来てもらえることがあるので、お迎えの場所はフォームで確かめてください。</p>')
     out += pref_fare_stats(short, cs)
     out += ('<div class="tbl"><table><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody>'
@@ -786,18 +823,87 @@ for a in AREAS:
     os.makedirs(os.path.join(ROOT, a["slug"]), exist_ok=True)
     open(os.path.join(ROOT, a["slug"], "index.html"), "w", encoding="utf-8").write(page)
 
-def block(b):
-    if isinstance(b, str): return f"<p>{e(b)}</p>"
-    k, v = b
-    if k in ("ul", "ol"): return f"<{k}>" + "".join(f"<li>{e(x)}</li>" for x in v) + f"</{k}>"
-    if k == "links": return '<ul>' + "".join(f'<li><a href="{e(u)}">{e(n)}</a></li>' for n, u in v) + '</ul>'
-    if k == "tip": return f'<p class="tip">{e(v)}</p>'
-    if k == "cta": return f'<a class="btn" href="/#form">{e(v)}{ARROW}</a>'
-    if k == "table":
-        h, *rows = v
-        return '<div class="tbl"><table><thead><tr>' + "".join(f"<th>{e(x)}</th>" for x in h) + '</tr></thead><tbody>' + \
-          "".join("<tr>" + "".join((f"<th>{e(x)}</th>" if i == 0 else f"<td>{e(x)}</td>") for i, x in enumerate(r)) + "</tr>" for r in rows) + '</tbody></table></div>'
-    raise ValueError(k)
+def block(b, heading=""):
+    return _V.block(b, ARROW, heading)
+
+# 記事を読みに来た人の目的（2026-11-14 Nori「ユーザーのインテントをちゃんと理解してよ。そのユーザーがどんなクエリで入ってくるのか。何を求めているのか」）
+# 迷子・登録・亡くなったとき・火葬・老犬ホーム・しつけ・シッター・ホテル・保険の記事は、ペットタクシーを探しに来た人ではない。
+# → サイト名は「ペットのくらし窓口」、いちばん上のタクシーの案内・料金の欄・タクシーの締めの箱を出さず、その分野の一覧へつなぐ。
+NON_TAXI_CATS = ("procedure", "care", "money")
+def _related_info(g):
+    """タクシー以外の記事の「あわせて読みたい」は、同じ分野の記事から（タクシーの記事を混ぜない）"""
+    pool = [x["slug"] for x in GUIDES if not taxi_intent(x) and x["slug"] != g["slug"]]
+    hub = guide_hub(g["slug"])[0]
+    same = [x for x in pool if guide_hub(x)[0] == hub]
+    out = [x for x in g["related"] if x in pool]
+    for x in same + pool:
+        if len(out) >= 3: break
+        if x not in out: out.append(x)
+    return out[:3]
+def taxi_intent(g): return g.get("category") not in NON_TAXI_CATS
+def guide_hub(slug):
+    if slug.startswith(("lost-", "found-")) or slug in ("microchip", "dog-registration", "moving-with-pet", "cant-keep-pet"):
+        return "/jichitai/", "迷子・犬の登録の窓口", "お住まいの市区町村の窓口をさがす"
+    if slug.startswith(("pet-cremation", "pet-died", "pet-death", "pet-memorial", "pet-loss", "pet-funeral", "pet-ashes")):
+        return "/sougi/", "ペットが亡くなったら", "近くのペット火葬・霊園と、自治体の受付をさがす"
+    if slug in ("rojin-home-cost", "rojin-home-prepare", "roneko-home"):
+        return "/rojin-home/", "老犬ホーム・老猫ホーム", "都道府県ごとの老犬ホーム・老猫ホームを見る"
+    if slug in ("choose-dog-trainer", "puppy-class", "dog-behavior-help"):
+        return "/dog-trainer/", "ドッグトレーナー・しつけ教室", "都道府県ごとのドッグトレーナー・しつけ教室を見る"
+    if slug in ("how-to-use-pet-sitter", "sitter-or-hotel", "cat-sitter"):
+        return "/pet-sitter/", "ペットシッター", "都道府県ごとのペットシッターを見る"
+    if slug in ("large-dog-hotel", "cat-hotel"):
+        return "/pet-hotel/", "ペットホテル", "大型犬OK・猫専用のペットホテルを見る"
+    if slug in ("pet-evacuation", "pet-disaster-prep"):
+        return "/hinan/", "ペットと避難（同行避難）", "都道府県・市区の避難所の決まりを見る"
+    if slug == "adopt-pet":
+        return "/joto/", "保護犬・保護猫の譲渡の窓口", "住んでいる都道府県の譲渡の条件と譲渡会を見る"
+    if slug == "pet-insurance":
+        return "/hospital/", "条件でさがす動物病院", "夜間・救急や往診の動物病院をさがす"
+    if slug == "night-vet-fee":
+        return "/hospital/night/", "夜間・救急の動物病院", "都道府県の夜間・救急の動物病院と料金を見る"
+    return "/guide/", "ペットの移動ガイド", ""
+
+# 案内（動線）は、読む人がそれを必要とする節のすぐ後ろに置く（2026-11-14 Nori「どこに動線があったら便利かも緻密に考えて」）
+#  - タクシーの記事・病院や施設への行き方の記事：最初に「移動」「向かう」「頼む」などの話が出てくる節の後ろに、料金くらべの箱を1つ
+#  - タクシー以外の記事：答えの節の後ろに、その分野の一覧（近くの施設・窓口をさがす）への箱。
+#    本文で「ペットタクシーも使えます」と書いた節の後ろにだけ、小さく料金くらべのリンク
+_MOVE_H = re.compile(r"タクシー|頼む|移動|向かう|送迎|迎え|行き方|車で|の車|電車")
+_TAXI_BOX = ('<aside class="next-box"><b>ペットタクシーで行くときは</b><a href="/#form" data-cta="guide-fare">料金をくらべる（無料）→</a>'
+             '<small>お迎えの場所と行き先を入れると、来てもらえる会社ごとの目安が並びます（概算・確定料金ではありません）</small></aside>')
+_TAXI_MINI = '<p class="next-mini"><a href="/#form" data-cta="guide-move">ペットタクシーで行くときは、料金をくらべる（無料）→</a></p>'
+_HUB_AT = {}
+# 一覧への箱がかえってじゃまになる記事（ペットロスの気持ち・保険を決めたい人には、施設の一覧は次の一歩ではない）
+_NO_HUB = {"pet-loss", "pet-insurance"}
+_TAXI_CORE = {"what-is-pet-taxi", "fare", "choose", "pet-only", "same-day", "multi-pet", "long-distance", "pet-taxi-fare-survey",
+              "night-fare", "wait-fare", "small-animals", "birds-reptiles", "large-dog", "cat", "senior", "nervous-pet",
+              "discharge-transfer", "grooming-hotel", "farewell", "airport-moving", "new-family"}
+_TAXI_AT = {"night-emergency-survey": "夜の足"}
+_HUB_EXTRA = {"night-emergency-survey": ("/hospital/night/", "夜間・救急の動物病院", "都道府県ごとの夜間・救急の動物病院をさがす")}  # この見出しの節の後ろに一覧への箱（それ以外は最初の節の後ろ）
+def guide_next(g, i, h, bs, state):
+    """i 番目の節のあとに置く案内のHTML（state は記事ごとに1回だけ置くための印）"""
+    out = ""
+    text = " ".join(b if isinstance(b, str) else str(b[1]) for b in bs)
+    if taxi_intent(g):
+        ex = _HUB_EXTRA.get(g["slug"])
+        if ex and i == 1:
+            out += f'<aside class="next-box"><b>{e(ex[1])}</b><a href="{ex[0]}" data-cta="guide-hub">{e(ex[2])}→</a></aside>'
+        hs = [x for x, _ in g["sections"]]
+        if g["slug"] in _TAXI_AT: at = next((k for k, x in enumerate(hs, 1) if _TAXI_AT[g["slug"]] in x), 1)
+        elif g["slug"] in _TAXI_CORE: at = 1  # ペットタクシーのことを調べに来た人には、答えのすぐ後ろ
+        else:  # 病院・施設への行き方の記事：まず施設のこと、ペットタクシーの話の節の後ろで
+            at = next((k for k, x in enumerate(hs, 1) if k > 1 and "タクシー" in x), None) or \
+                 next((k for k, x in enumerate(hs, 1) if k > 1 and _MOVE_H.search(x) and "電話" not in x), len(hs))
+        if i == at and not state.get("taxi"):
+            state["taxi"] = 1; out += _TAXI_BOX
+    else:
+        hub, name, lead = guide_hub(g["slug"])
+        at = _HUB_AT.get(g["slug"])
+        if g["slug"] not in _NO_HUB and not state.get("hub") and ((at and at in h) or (not at and i == 1)):
+            state["hub"] = 1; out += f'<aside class="next-box"><b>{e(name)}</b><a href="{hub}" data-cta="guide-hub">{e(lead)}→</a></aside>'
+        if "ペットタクシー" in text and not state.get("mini"):
+            state["mini"] = 1; out += _TAXI_MINI
+    return out
 
 for g in GUIDES:
     url = f'{SITE}/guide/{g["slug"]}/'
@@ -811,11 +917,11 @@ for g in GUIDES:
     og_img, og_w, og_h = (f'/img/guide/{own}', 1200, 800) if has_img else ("/img/hero.jpg", 1200, 900)
     fig = (f'<figure class="art-img"><picture><source srcset="/img/guide/{own[:-4]}.webp" type="image/webp"><img src="/img/guide/{own}" alt="{e(img_alt)}" width="1200" height="800" fetchpriority="high" onerror="this.closest(\'figure\').remove()"></picture>{caption}</figure>'
            if has_img else "")
-    checked = f'<p class="small">公式情報の確認日：{e(g["checked"])}</p>\n    ' if g.get("checked") else ""
+    checked = f'<p class="small">情報の時点：{e(g["checked"])}</p>\n    ' if g.get("checked") else ""
     ld = [
       {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
         {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
-        {"@type":"ListItem","position":2,"name":"ペットの移動ガイド","item":SITE+"/guide/"},
+        {"@type":"ListItem","position":2,"name":guide_hub(g["slug"])[1],"item":SITE+guide_hub(g["slug"])[0]},
         {"@type":"ListItem","position":3,"name":g["title"],"item":url}]},
       {"@context":"https://schema.org","@type":"Article","headline":g["title"],"description":g["desc"],"url":url,
        "image":SITE + og_img,"datePublished":published,"dateModified":modified,"inLanguage":"ja",
@@ -832,29 +938,44 @@ for g in GUIDES:
     if g.get("category") == "facility":
         toc = '<nav class="tip art-toc" aria-label="この記事の目次"><b>この記事で分かること</b><ol>' + "".join(
             f'<li><a href="#section-{i}">{e(h)}</a></li>' for i, (h, _) in enumerate(g["sections"], 1)) + '</ol></nav>'
-        body = toc + "".join(f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b) for b in bs)
+        _st = {}
+        body = toc + "".join(f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b) for b in bs) + guide_next(g, i, h, bs, _st)
                               for i, (h, bs) in enumerate(g["sections"], 1))
         body += f'<p class="small">{e(g["facility_note"])}</p>'
     else:
-        body = "".join(f'<h2>{e(h)}</h2>' + "".join(block(b) for b in bs) for h, bs in g["sections"])
+        # 最初の「先に答え」の節は答えの箱に。節が5つ以上の記事は目次と節の番号を出す（図で読む、tools/visual.py）
+        secs = g["sections"]
+        many = _V.many(g)
+        parts, _st = [], {}
+        for i, (h, bs) in enumerate(secs, 1):
+            ans = i == 1 and _V.is_answer(h)
+            sec = (f'<h2 id="section-{i}" class="pill">{e(_V.answer_title(h))}</h2>' if ans else f'<h2 id="section-{i}">{e(h)}</h2>') + "".join(block(b, h) for b in bs)
+            nxt = guide_next(g, i, h, bs, _st)
+            parts.append((f'<div class="answer">{sec}</div>' if ans else sec) + nxt)
+        # 目次はたたんでおく（開くと全部。中身はHTMLにあるので検索にも読める）。2026-11-14 Nori「記事、すごく読みにくい」
+        toc = ('<details class="toc2"><summary>この記事の目次（' + str(len(secs)) + 'つ）</summary><nav aria-label="この記事の目次"><ol>' + "".join(
+            f'<li><a href="#section-{i}">{e(_V.answer_title(h) if i == 1 else h)}</a></li>' for i, (h, _) in enumerate(secs, 1)) + '</ol></nav></details>') if many else ""
+        if many and parts and parts[0].startswith('<div class="answer">'):
+            body = parts[0] + toc + "".join(parts[1:])
+        else:
+            body = toc + "".join(parts)
     faq = ""
     if g.get("faq"):
-        faq = '<h2>よくある質問</h2><div class="faq-list">' + "".join(f'<details><summary>{e(q)}</summary><div class="a">{e(ans)}</div></details>' for q,ans in g["faq"]) + '</div>'
+        faq = '<h2 class="nonum">よくある質問</h2><div class="faq-list">' + "".join(f'<details><summary>{e(q)}</summary><div class="a">{e(ans)}</div></details>' for q,ans in g["faq"]) + '</div>'
     src = '<div class="src"><b>参考にした情報</b><ul>' + "".join(f'<li><a href="{e(u)}" rel="noopener" target="_blank">{e(n)}</a></li>' for n,u in g["sources"]) + '</ul><p>内容は公開日時点のものです。ルールや料金は変わることがあるため、ご利用の前に各社の案内をご確認ください。</p></div>' if g["sources"] else ""
     page = head(g["seo_title"] + "｜ペットタクシー予約窓口", g["desc"], url, ld_html, og_img, og_w, og_h) + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">
-    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/guide/">ペットの移動ガイド</a> › {e(g["title"])}</nav>
+    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="{guide_hub(g["slug"])[0]}">{e(guide_hub(g["slug"])[1])}</a> › {e(g["title"])}</nav>
     <h1>{e(g["title"])}</h1>
     <p class="lede">{e(g["lede"])}</p>
-    <div class="hero-fare"><b>あなたのルートで、ペットタクシー各社の料金をくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。公式サイトの料金表から計算した概算で、確定料金ではありません。</span><a class="btn" href="/#form" data-cta="guide-fare" style="margin-top:10px">ペットタクシーの料金をくらべる（無料）</a></div>
     <p class="small">ペットタクシー予約窓口　公開 {published.replace("-", ".")}・更新 {modified.replace("-", ".")}</p>
     {fig}
   </div>
 </section>
 <section style="padding-top:8px">
-  <div class="wrap"><article class="art">
+  <div class="wrap"><article class="art{' num' if _V.many(g) and g.get('category') != 'facility' and not any(re.match(r'\d+\.', h) for h, _ in g['sections']) else ''}">
     {body}
     {faq}
     {checked}{src}
@@ -863,7 +984,7 @@ for g in GUIDES:
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sh"><h2>あわせて読みたい</h2></div>
-    {guide_cards(g["related"], "three")}
+    {guide_cards(g["related"] if taxi_intent(g) else _related_info(g), "three")}
   </div>
 </section>
 <section style="padding-top:0">
@@ -884,10 +1005,21 @@ for g in GUIDES:
 </section>
 </main>
 """ + foot("/#form")
+    # 記事を読んでいるあいだ、画面の下に出つづけるボタンは出さない（本文が隠れて読みにくい。下の「大切な家族の移動に」のボタンは残す）
+    page = re.sub(r'<div class="sticky">.*?</div>\n', "", page, count=1)
+    if not taxi_intent(g):
+        hub, hub_name, hub_lead = guide_hub(g["slug"])
+        page = re.sub(r'\s*<p class="guide-cta">.*?</p>', "", page, count=1, flags=re.S)
+        page = re.sub(r'<section style="padding-top:0">\s*<div class="wrap">\s*<div class="sh"><h2>エリアごとの料金の目安と対応</h2></div>.*?</section>\n', "", page, count=1, flags=re.S)
+        if g["slug"] in _NO_HUB:
+            page = re.sub(r'<section style="padding-top:0">\s*<div class="wrap">\s*<div class="last">.*?</section>\n', "", page, count=1, flags=re.S)
+        page = re.sub(r'<div class="last">.*?</div>\n  </div>', f'<div class="last">\n      <h2>{e(hub_name)}</h2>\n      <p>{e(hub_lead)}。公式サイトの情報をもとにのせています。</p>\n      <a class="btn center" href="{hub}">{e(hub_name)}の一覧へ{ARROW}</a>\n    </div>\n  </div>', page, count=1, flags=re.S)
     if g.get("category") == "facility":
         page = page.replace("空き状況と料金を問い合わせる（無料）", "掲載候補を見る").replace(">問い合わせる<span class=\"lg\">（無料）</span><", ">掲載候補を見る<")
         page = page.replace("無料で使えます。問い合わせただけでは予約は確定しません。会社の返事を見て「この内容で予約する」を押した時点で予約が確定します。",
                             "現在は候補の表示のみです。すべての会社への問い合わせを停止しています。")
+    if "data-bf" in page:  # 犬種・体重で「うちの子で見る」（tools/visual.py の breeds）を動かす小さなJS
+        page = page.replace("</head>", _V.BF_CSS + "\n</head>", 1).replace("</body>", _V.BF_JS + "\n</body>", 1)
     os.makedirs(os.path.join(ROOT, "guide", g["slug"]), exist_ok=True)
     open(os.path.join(ROOT, "guide", g["slug"], "index.html"), "w", encoding="utf-8").write(page)
 
@@ -916,7 +1048,7 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
     <p>通院先や宿泊先ごとの行き方、受付・乗降場所、帰りの車で確かめたいことをまとめました。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "facility"])}
     <div class="sh"><h2>迷子・犬の登録・引っ越しの手続き</h2></div>
-    <p>迷子になったとき、迷子を保護したとき、犬の登録、引っ越し、飼えなくなったときの相談先。全国の窓口は<a href="/jichitai/">迷子・犬の登録・引取りの窓口</a>の一覧から。</p>
+    <p>迷子になったとき、迷子を保護したとき、犬の登録、引っ越し、飼えなくなったときの相談先と、災害のときの避難と備え。全国の窓口は<a href="/jichitai/">迷子・犬の登録・引取りの窓口</a>、避難所の決まりは<a href="/hinan/">ペットと避難</a>の一覧から。</p>
     {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "procedure"])}
     <div class="sh"><h2>老犬ホーム・ドッグトレーナー・ペットシッターのえらび方</h2></div>
     <p>預ける・頼む前に知っておきたいこと。全国の一覧は<a href="/rojin-home/">老犬ホーム・老猫ホーム</a>、<a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a>、<a href="/pet-sitter/">ペットシッター</a>、<a href="/trimming/">出張トリミング</a>、<a href="/pet-hotel/">大型犬OK・猫専用のペットホテル</a>から。</p>
@@ -971,6 +1103,25 @@ ptp = head("提携規約（ペットタクシー会社さま向け）｜ペッ�
 ptp = ptp.replace('<div class="sticky"><a class="btn" href="/partner/#apply">空き状況と料金を問い合わせる（無料）</a></div>', '<div class="sticky"><a class="btn" href="/partner/#apply">提携を申し込む（無料）</a></div>')
 os.makedirs(os.path.join(ROOT, "partner", "terms"), exist_ok=True)
 open(os.path.join(ROOT, "partner", "terms", "index.html"), "w", encoding="utf-8").write(ptp)
+
+# 掲載の決まり（/partner/listing/）。本文は tools/partner_listing.py（Nori 2026-11-15）
+from partner_listing import LISTING, LISTING_DATE
+def _listing_block(v):
+    if isinstance(v, tuple): return f'<li><b>{e(v[0])}</b>：{e(v[1])}</li>'
+    return f'<li>{e(v)}</li>'
+plp = head("掲載の決まり（提携しているペットタクシー会社さま向け）｜ペットタクシー予約窓口", "提携しているペットタクシー会社さまが、写真・特典・設備・臨時のお休みなどを足すときの決まりです。載せられるもの・載せられないもの・写真の条件・公開までの流れをまとめています。", SITE + "/partner/listing/", "") + f"""
+<main>
+<section class="area-hero"><div class="wrap"><h1>掲載の決まり<small style="display:block;font-size:.95rem;color:var(--o-d)">提携しているペットタクシー会社さま向け</small></h1><p class="lede">掲載情報のページで足せるものと、載せられないものをまとめました。お客さまが安心してくらべられるように、どの会社さまにも同じ決まりをお願いしています。</p></div></section>
+<section><div class="wrap prose terms">
+{''.join(f'<h2>{e(h)}</h2><ul>' + ''.join(_listing_block(v) for v in body) + '</ul>' for h, body in LISTING)}
+<p class="small">{LISTING_DATE} 制定</p>
+<p><a href="/partner/">提携のご案内にもどる</a>・<a href="/partner/terms/">提携規約</a></p>
+</div></section>
+</main>
+""" + foot("/partner/#apply", band=False)
+plp = plp.replace('<div class="sticky"><a class="btn" href="/partner/#apply">空き状況と料金を問い合わせる（無料）</a></div>', '<div class="sticky"><a class="btn" href="/partner/#apply">提携を申し込む（無料）</a></div>')
+os.makedirs(os.path.join(ROOT, "partner", "listing"), exist_ok=True)
+open(os.path.join(ROOT, "partner", "listing", "index.html"), "w", encoding="utf-8").write(plp)
 
 # お問い合わせ（/contact/）。送り先はトップのフォームと同じ受付の仕組み（kind=contact）
 gas = re.search(r'var GAS_URL = "([^"]+)"', open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()).group(1)
@@ -1299,58 +1450,12 @@ pp = head("ペットタクシー会社の方へ 提携のご案内｜ペット�
 <section class="pt-sec" id="apply"><div class="wrap" style="max-width:640px">
 <h2>提携のお申し込み</h2>
 <div class="form-card">
-<form id="partnerForm" class="pt-form" novalidate>
-  <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-  
-  <div class="group-h"><span>1</span>会社とご連絡先</div>
-  <div class="f"><label for="p_co">会社名・屋号</label><input type="text" id="p_co" data-k="会社名・屋号" required autocomplete="organization"></div>
-  <div class="f"><label for="p_name">ご担当者のお名前</label><input type="text" id="p_name" name="name" required autocomplete="name"></div>
-  <div class="f"><label for="p_email">お問い合わせを受け取るメールアドレス<span class="any">飼い主さんからのお問い合わせがここに届きます。窓口がお問い合わせフォームだけの会社さまも、メールで受け取れるアドレスを入れてください</span></label><input type="email" id="p_email" name="email" required autocomplete="email"></div>
-  <div class="group-h"><span>2</span>お店とお迎えのエリア</div>
-  <div class="f"><label for="p_shop">車が出発するお店・事業所の住所</label>
-    <div class="pt-ac"><input type="text" id="p_shop" data-k="車が出発する場所" required autocomplete="street-address" placeholder="例：広島県広島市安芸区矢野西1丁目2-3"><ul id="p_shopList" hidden></ul><span class="ok" id="p_shopOk" hidden></span></div></div>
-  {pt_f("お迎えに行ける範囲", pt_sel("p_radius", "お迎えに行ける範囲", ["お店から5kmまで", "10kmまで", "20kmまで", "30kmまで", "50kmまで", "80kmまで", "100kmまで"]), "", "")}
-  <div class="f"><span class="lbl">お迎えできる都道府県<span class="any">お店の場所と範囲から自動で選んでいます。ちがうところだけ直してください</span></span>
-    <div class="checks seg" id="p_prefs" data-k="都道府県"></div>
-    <details class="pt-prefs-more"><summary>ほかの都道府県も選ぶ</summary><div class="checks seg" id="p_prefs2">{''.join(f'<label><input type="checkbox" value="{p}"><span>{p}</span></label>' for p in PREFS47)}</div></details></div>
-  {pt_f("行き先までの距離", pt_sel("p_dest", "行き先までの距離", ["お迎えの都道府県の中だけ", "距離に上限がある", "全国どこへでも行ける"])
-    + pt_if("p_dest", ["距離に上限がある"], pt_q("行き先までの上限", pt_n("乗っている距離 ", "kmまで"))), "", "")}
-  <div class="group-h"><span>3</span>受けられる時間と車</div>
-  <div class="f"><span class="lbl">受けられる曜日</span>{pt_chk("p_days", "受けられる曜日", ["月", "火", "水", "木", "金", "土", "日", "祝日"])}</div>
-  <div class="f"><span class="lbl">受けられる時間</span>{pt_sel("p_allday", "24時間", ["24時間", "時間を決めている"])}
-    <div class="pt-sub" data-if="p_allday" data-v="時間を決めている" hidden><div class="pt-time"><select id="p_from" aria-label="何時から">{''.join(f'<option value="{h}"' + (' selected' if h == 8 else '') + f'>{h}:00</option>' for h in range(0, 24))}</select>から<select id="p_to" aria-label="何時まで">{''.join(f'<option value="{h}"' + (' selected' if h == 20 else '') + f'>{h}:00</option>' for h in range(1, 25))}</select>まで</div></div></div>
-  {pt_f("時間外の依頼", pt_sel("p_off", "時間外の依頼", ["受けない", "相談に応じる"]), "", "")}
-  {pt_f("車の台数", pt_sel("p_cars", "車の台数", ["1台", "2台", "3台以上"]), "", "")}
-  <div class="f"><span class="lbl">車種<span class="any">お使いの車をすべて</span></span>{pt_chk("p_cartype", "車種", PT_CARS)}
-    <input type="text" id="p_carother" data-k="車種（そのほか）" maxlength="100" placeholder="ほかの車種（例：マツダ ボンゴ）" aria-label="ほかの車種" style="margin-top:8px"></div>
-  <div class="group-h"><span>4</span>乗せられる動物と条件</div>
-  <p class="pt-note">乗せられる動物のほかは、わかるところだけで大丈夫です。</p>
-  <div class="f"><span class="lbl">乗せられる動物</span>{pt_chk("p_animals", "乗せられる動物", ["犬", "猫", "うさぎ・フェレットなどの小動物", "鳥", "爬虫類・両生類", "魚"])}</div>
-  {PT_COND}
-  {PT_CARE}
-  <div class="group-h"><span>5</span>料金とお支払い</div>
-  {PT_FARE}
-  <div class="f"><span class="lbl">お支払い方法</span>{pt_chk("p_pays", "お支払い方法", PAYS)}</div>
-  <div class="group-h"><span>6</span>そのほか</div>
-  <div class="f"><label for="p_url">ホームページ</label><input type="url" id="p_url" data-k="ホームページ" placeholder="https://" required></div>
-  {pt_f("依頼を受けてから出発できるまで", pt_sel("p_prep", "出発できるまで", ["30分くらい", "1時間くらい", "2時間くらい", "3時間以上"]), "", "")}
-  {PT_FARE_MORE}
-  {pt_f("事業の許可・届出", pt_sel("p_lic", "事業の許可・届出", ["緑ナンバー（旅客の許可）", "黒ナンバー（貨物軽自動車の届出）", "両方", "どちらもない"]), "", "")}
-  <div class="f"><span class="lbl">スタッフの資格</span>{pt_chk("p_quals", "スタッフの資格", PT_QUALS)}</div>
-  <div class="f"><label for="p_reg">動物取扱業の登録番号</label><input type="text" id="p_reg" data-k="動物取扱業の登録番号" maxlength="100" autocomplete="off" placeholder="なければ「なし」" required></div>
-  <div class="f"><label for="p_msg">ほかに伝えたいこと<span class="any">あれば</span></label><textarea id="p_msg" data-k="そのほか" rows="3" maxlength="1000"></textarea></div>
-  <label class="agree"><input type="checkbox" id="p_agree" required><span><a href="/#privacy">個人情報の取り扱い</a>を確認し、同意します。提携の内容は<a href="/partner/terms/">提携規約</a>をご覧ください（同意のお手続きは、あらためてメールでご案内します）。</span></label>
-  <p id="p_err" role="alert" style="display:none;color:#c0392b;font-size:.88rem"></p>
-  <button class="btn" type="submit">申し込む{ARROW}</button>
-  <p class="form-foot">内容を確認して、数日以内にメールでご連絡します。</p>
-</form>
-<div id="p_done" style="display:none;text-align:center"><h2 style="font-size:1.2rem">お申し込みを受け付けました</h2><p>内容を確認して、メールでご連絡します。ありがとうございます。</p></div>
+<p>会社名・ご連絡先・ホームページを入れると、当サイトで公式サイトの料金や条件を集めている会社さまには、その内容を先に入れたページが開きます。まちがいを直して、足りないところを選んでいただき、最後に料金の例が合っているかを確かめていただきます。</p>
+<a class="btn" href="/go/?a=pconf&amp;new=1" style="display:block;text-align:center">申し込みのページを開く{ARROW}</a>
+<p class="form-foot">内容を確認して、数日以内にメールでご連絡します。送っただけでは、まだご依頼は届きません。</p>
 </div>
 </div></section>
 </main>
-<script>
-{pt_js}
-</script>
 """ + foot("/#form", band=False)
 os.makedirs(os.path.join(ROOT, "partner"), exist_ok=True)
 pp = pp.replace('<div class="sticky"><a class="btn" href="/#form">空き状況と料金を問い合わせる（無料）</a></div>', '<div class="sticky"><a class="btn" href="#apply">提携を申し込む（無料）</a></div>')
@@ -1369,7 +1474,7 @@ def emg_company(x):
             f'<small>対応エリア：{e(x["area"])}。{e(x["note"])}</small>{tel}'
             + (f'<div class="emg-score" data-id="{e(x["id"])}"></div>' if x.get("review_query") else '') + '</div>')
 def emg_hosp(x):
-    # 名前は公式サイトへのリンク。どんな病院か・所在地（公式サイトで確かめたものだけ）と、口コミの星（予約の候補カードと同じしくみ）
+    # 名前は公式サイトへのリンク。どんな病院か・所在地と、口コミの星（予約の候補カードと同じしくみ）
     meta = (f'<small class="emg-spec">{e(x["spec"])}</small>' if x.get("spec") else '') + (f'<small>所在地：{e(x["addr"])}</small>' if x.get("addr") else '')
     return (f'<div class="emg-item emg-co"><a href="{e(x["url"])}" target="_blank" rel="noopener"><b>{e(x["name"])}</b></a>'
             f'<small>{e(x["city"])}・{e(x["hours"])}</small>{meta}'
@@ -1485,12 +1590,12 @@ PREF_CHECKS = [
 def pref_fare_html(pf):
     rows = PREF_FARES.get(pf)
     if not rows:
-        return (f'<p>{e(pf)}のペットタクシーの料金は、当サイトではまだ確かめられていません。料金は会社ごとに決まっていて、多くは乗る距離で計算します。'
+        return (f'<p>{e(pf)}のペットタクシーの料金は、当サイトにはまだ載っていません。料金は会社ごとに決まっていて、多くは乗る距離で計算します。'
                 'そのほかに、お迎え料金や待ち時間の料金、夜間・早朝の割増がかかることがあります。頼む前に、どこまでが基本料金に入っているかを確かめてください。</p>')
     return ('<p>' + e(pf) + 'のペットタクシー会社が公式サイトに書いている料金の例です。同じ「基本料金」でも、含まれる距離やお迎え・待ち時間の扱いは会社ごとに違います。</p>'
             '<div class="tbl"><table><thead><tr><th>会社のある場所</th><th>乗る料金</th><th>お迎えなど</th></tr></thead><tbody>' +
             ''.join(f'<tr><th>{e(w)}</th><td>{e(f)}</td><td>{e(pk)}</td></tr>' for w, f, pk in rows) + '</tbody></table></div>'
-            f'<p class="fare-flag"><b>確定料金ではありません。</b>{FARES_CHECKED}に各社の公式サイトで確かめた料金の例で、当サイトの依頼先の料金ではありません。夜間・早朝の割増や高速代は入っていません。料金は変わることがあるので、頼む前に必ず各社にご確認ください。</p>')
+            f'<p class="fare-flag"><b>確定料金ではありません。</b>{FARES_CHECKED}時点の料金の例で、当サイトの依頼先の料金ではありません。夜間・早朝の割増や高速代は入っていません。料金は変わることがあるので、頼む前に必ず各社にご確認ください。</p>')
 def other_pref(h, pf):  # 近くの県の病院は city の終わりに（◯◯県）が付いている
     m = re.search(r"（([^（）]+[都道府県])）$", h["city"])
     return bool(m) and m.group(1) != pf
@@ -1512,10 +1617,19 @@ def pref_data_html(pf, short):
     fs = [x for x in cs if x.get("fare") and x["fare"].get("kind", "dist") == "dist" and x["fare"].get("base")]
     out = f'<h2>{e(short)}のお迎えに対応しているペットタクシー</h2>'
     if not cs:
-        if no_pick(key): out += f'<p>当サイトで公式サイトを確かめた会社の中には、対応エリアに{e(pf)}を書いている会社はまだありません。県外から{e(pf)}へお迎えに行ける会社も見つかっていないため、フォームのお迎えの都道府県には、まだ{e(pf)}を出していません。</p>'
-        else: out += f'<p>当サイトで公式サイトを確かめた会社の中には、対応エリアに{e(pf)}を書いている会社はまだありません。県外の会社がお迎えに来られることがあるので、フォームでさがしてみてください。</p>'
+        if no_pick(key): out += f'<p>当サイトに載せている会社の中には、対応エリアに{e(pf)}を書いている会社はまだありません。県外から{e(pf)}へお迎えに行ける会社も見つかっていないため、フォームのお迎えの都道府県には、まだ{e(pf)}を出していません。</p>'
+        else: out += f'<p>当サイトに載せている会社の中には、対応エリアに{e(pf)}を書いている会社はまだありません。県外の会社がお迎えに来られることがあるので、フォームでさがしてみてください。</p>'
     else:
-        out += f'<p>当サイトで公式サイトを確かめた全国の会社のうち、対応エリアに{e(pf)}を書いている会社は<b>{len(cs)}社</b>でした（{FARES_CHECKED}時点。同じチェーンのお店は1社ずつ数えています）。対応エリアは「市内だけ」「県の一部だけ」の会社もあるので、お迎えの場所で来てもらえるかは、フォームでさがすと確かめられます。</p>'
+        out += f'<p>当サイトに載せている全国の会社のうち、対応エリアに{e(pf)}を書いている会社は<b>{len(cs)}社</b>でした（{FARES_CHECKED}時点。同じチェーンのお店は1社ずつ数えています）。対応エリアは「市内だけ」「県の一部だけ」の会社もあるので、お迎えの場所で来てもらえるかは、フォームでさがすと確かめられます。</p>'
+        # ひと目で分かる数字（図で読む、2026-11-14）。数字はこのページの中の計算と同じもの
+        _t = [(f"{len(cs)}社", f"{pf}のお迎えに対応している会社")]
+        if len(fs) >= 3:
+            _v = sorted(_r100(_nat_ride(x["fare"], 10)) for x in fs)
+            _t.append((f"{_v[(len(_v) - 1) // 2]:,}円", "10kmの運賃のまんなか（概算・確定料金ではありません）"))
+        for _k, _lab in (("当日予約可", "当日の予約も受けると書いている会社"), ("24時間受付", "24時間受け付けている会社")):
+            _n = sum(1 for x in cs if _k in x.get("points", []))
+            if _n: _t.append((f"{_n}社", _lab))
+        if len(_t) >= 2: out += _V.stats(_t)
     if fs:
         rows = ""
         for km in (5, 10, 20):
@@ -1524,8 +1638,16 @@ def pref_data_html(pf, short):
             rows += (f'<tr><th>{km}km</th><td>{mid:,}円</td><td>{v[0]:,}〜{v[-1]:,}円</td></tr>' if len(v) >= 3 else
                      f'<tr><th>{km}km</th><td colspan="2">' + "・".join(f"{x:,}円" for x in v) + '</td></tr>')
         head = '<tr><th>乗った距離</th><th>まんなかの会社</th><th>安い会社〜高い会社</th></tr>' if len(fs) >= 3 else '<tr><th>乗った距離</th><th colspan="2">各社の運賃</th></tr>'
+        if len(fs) >= 3:  # 金額の表は棒つき（tools/visual.py）
+            _rows = [["乗った距離", "まんなかの会社", "安い会社〜高い会社"]]
+            for km in (5, 10, 20):
+                v = sorted(_r100(_nat_ride(x["fare"], km)) for x in fs)
+                _rows.append([f"{km}km", f"{v[(len(v) - 1) // 2]:,}円", f"{v[0]:,}〜{v[-1]:,}円"])
+            _tbl = _V.block(("table", _rows))
+        else:
+            _tbl = f'<div class="tbl"><table><thead>{head}</thead><tbody>{rows}</tbody></table></div>'
         out += (f'<p>そのうち料金表をのせている{len(fs)}社の料金表で、乗った距離の運賃（片道）を計算すると次のとおりです。</p>'
-                f'<div class="tbl"><table><thead>{head}</thead><tbody>{rows}</tbody></table></div>'
+                f'{_tbl}'
                 '<p class="fare-flag"><b>確定料金ではありません。</b>お迎え料金・待ち時間・夜間や早朝の割増・高速代は入っていません。フォームにお迎えの場所と行き先を入れると、会社ごとにお迎え料金なども入れた目安が出ます。</p>')
     out += pref_company_table(pf, short, cs, PREF_CITIES.get(pf, ()))
     if pf in PREF_AIRPORT:
@@ -1778,7 +1900,8 @@ def pref_local(pf, short, key):
     basis = f"{pf}に来てくれる会社のうち料金表をのせている{basis}" if basis != "全国" else "全国の会社"
     html = (f'<h2>{e(short)}でペットタクシーを使うとき</h2><p>{e(L["why"])}</p>'
             + (f'<p>{e(pf)}のお迎えに対応している{n}社のうち、公式サイトの対応エリアに市の名前を書いている会社の数は、' + "・".join(f"「{e(st)}」{c}社" for st, c in cs) + "でした。名前を書いていない市にも来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。</p>" if cs else "")
-            + f'<h3>よく行く区間の料金の目安（片道）</h3><table><thead><tr><th>区間</th><th>車の道のりの目安</th><th>料金の目安（まんなか・安い〜高い）</th></tr></thead><tbody>{rows}</tbody></table>'
+            + f'<h3>よく行く区間の料金の目安（片道）</h3>' + _V.bars({"title": "区間ごとの運賃のまんなか（片道・概算）", "rows": [(f"{r}（{km}km）", int(re.sub(r"[^0-9]", "", _pref_text(key, km)[0].split("円")[0])), _pref_text(key, km)[0]) for r, km in L["routes"]]})
+            + f'<table><thead><tr><th>区間</th><th>車の道のりの目安</th><th>料金の目安（まんなか・安い〜高い）</th></tr></thead><tbody>{rows}</tbody></table>'
             + f'<p class="small">{e(basis)}の公式サイトの料金表をもとに計算した乗った距離の運賃の概算で、確定料金ではありません。お迎え料金・夜間の割増は入っていません。当日の道順・渋滞・待ち時間などで変わり、高速道路を使うときはその料金が別にかかります。</p>')
     faq = []
     for q, k in L["faq"]:
@@ -1835,7 +1958,7 @@ for slug, pf, short, cities in PREFS:
     if n_cos:
         _ns = _nsame(_key)
         pfaq.append((f"{short}に来てくれるペットタクシーは何社ありますか？",
-            f"当サイトで公式サイトを確かめた全国の会社のうち、対応エリアに{pf}を書いている会社は{n_cos}社でした（{FARES_CHECKED}時点）。地名を書いていない場所に来てくれることもあるので、お迎えの場所をフォームに入れて確かめてください。"))
+            f"当サイトに載せている全国の会社のうち、対応エリアに{pf}を書いている会社は{n_cos}社でした（{FARES_CHECKED}時点）。地名を書いていない場所に来てくれることもあるので、お迎えの場所をフォームに入れて確かめてください。"))
         _bf = big_faq(short, pf, _key)
         if _bf: pfaq.append(_bf)
         pfaq.append((f"{short}で当日でもペットタクシーを頼めますか？",
@@ -1932,7 +2055,7 @@ def _hub_table():
             trs += (f'<tr><td><a href="{pref_href(p)}">{e(nm)}</a></td><td>{len(cs) or "—"}</td><td>{mid}</td>'
                     f'<td><a href="/hospital/night/{gen_dogrun.PSLUG[p]}/">{len(hs)}</a></td><td>{len(tx) or "—"}</td></tr>')
     return (f'<div class="sh" style="margin-top:28px"><h2>都道府県ごとの数</h2></div>'
-            f'<p>当サイトで公式サイトを確かめた全国{len(_DISP)}社のペットタクシーのうち、お迎えの対応エリアに書いている都道府県を数えると、会社が見つかったのは47都道府県のうち{found}、5社以上あるのは{many}でした。'
+            f'<p>当サイトに載せている全国{len(_DISP)}社のペットタクシーのうち、お迎えの対応エリアに書いている都道府県を数えると、会社が見つかったのは47都道府県のうち{found}、5社以上あるのは{many}でした。'
             '会社が見つからない県でも、となりの県の会社が来てくれることがあります。10kmの運賃は料金表をのせている会社で計算した片道の金額（100円単位にまるめています）で、3社以上あるときはまんなかの会社の金額です。確定料金ではありません。距離ごとの運賃やお迎え料金・夜間割増の数は<a href="/guide/pet-taxi-fare-survey/">全国のペットタクシー料金しらべ</a>にまとめています。</p>'
             '<div class="tbl"><table><thead><tr><th>都道府県</th><th>ペットタクシー会社</th><th>10kmの運賃</th><th>夜間・救急の病院（県の中）</th><th>緊急の搬送の会社</th></tr></thead>'
             f'<tbody>{trs}</tbody></table></div>'
@@ -1964,6 +2087,7 @@ open(os.path.join(ROOT, "area", "index.html"), "w", encoding="utf-8").write(ph)
 
 # 緊急の搬送の会社の口コミ（/emergency/ と /area/）：トップの緊急タブ・予約の候補カードと同じ見せ方。星と件数を出し、口コミはページの中で開く。
 # 外部の口コミページへのリンクは出さない（Nori 2026-10-31）。画面に入った会社のぶんだけ取り寄せる（取り寄せの回数を抑えるため）
+import faccard
 GAS = re.search(r'var GAS_URL = "([^"]+)"', top_src).group(1)
 REVIEW_ON_CLICK = re.search(r'var REVIEW_ON_CLICK = (true|false);', top_src).group(1) == "true"  # 口コミを押したときだけ取り寄せるか（index.html の値に合わせる）
 open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成ファイル（tools/gen_areas.py）。手で直さない
@@ -1997,12 +2121,87 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
       });
       panel.appendChild(el("p", "partner-review-src", "Google Maps"));
   }
+  // 施設の写真（最大3枚）。撮った人の名前とリンク・出どころは規約で必要。2026-11-14 Nori「施設の写真とか追加したほうがいいんじゃない？」
+  // 施設カード（tools/faccard.py）は上の大きな枠に、横にスワイプして見る形で入れる（Nori 2026-11-15「写真はスワイプで複数みれるように」）。
+  // PHOTO_AUTO（tools/faccard.py）が true なら、カードが画面に近づいたときに自動で取り寄せる。false なら「写真を見る」を押したときだけ
+  var PHOTO_AUTO = %s;
+  function getPhotos(id){
+    if (window.gtag) gtag("event", "open_photos", {id: id});
+    var body = new URLSearchParams(); body.set("kind", "photos"); body.set("partner_id", id);
+    return fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
+      if (!j || !j.ok) throw 0;
+      if (!j.photos || !j.photos.length) throw "none";
+      return j.photos;
+    });
+  }
+  function credit(v){
+    var cap = el("figcaption");
+    (v.by || []).forEach(function(a, i){
+      if (i) cap.appendChild(document.createTextNode("・"));
+      var n = el(a.uri ? "a" : "span", "", a.name || "投稿者"); if (a.uri) { n.href = a.uri; n.target = "_blank"; n.rel = "noopener"; }
+      cap.appendChild(n);
+    });
+    return cap;
+  }
+  function carousel(slot, ps){
+    var car = el("div", "fc-car"), dots = el("div", "fc-dots");
+    ps.forEach(function(v, i){
+      var f = el("figure"), img = document.createElement("img");
+      img.src = v.url; img.alt = ""; img.loading = "lazy"; img.referrerPolicy = "no-referrer"; if (v.w && v.h) { img.width = v.w; img.height = v.h; }
+      f.appendChild(img); if ((v.by || []).length) f.appendChild(credit(v)); car.appendChild(f);
+      var d = el("i"); if (!i) d.className = "on"; dots.appendChild(d);
+    });
+    car.addEventListener("scroll", function(){
+      var k = Math.round(car.scrollLeft / Math.max(1, car.clientWidth));
+      [].forEach.call(dots.children, function(d, i){ d.className = i === k ? "on" : ""; });
+    }, {passive: true});
+    slot.replaceChildren(car); if (ps.length > 1) slot.appendChild(dots);
+    slot.appendChild(el("span", "fc-src", "写真：Google Maps"));
+    slot.hidden = false;
+  }
+  function photos(box){
+    if (!PHOTO_AUTO) return; // 「写真を見る」のボタンは出さない（Nori 2026-11-15「写真を見るはいらない」）。自動で出すときだけ写真を入れる
+    if (box.nextElementSibling && box.nextElementSibling.classList.contains("fac-photos")) return;
+    var id = box.dataset.id, card = box.closest(".fc"), slot = card && card.querySelector(".fc-ph");
+    if (slot) {
+      if (slot.dataset.go) return; slot.dataset.go = "1";
+      var body = card.querySelector(".fc-acts") || card.querySelector(".fc-body") || card;
+      var put = function(n){ body.insertBefore(n, body.firstChild); };
+      var b = el("button", "fc-phbtn", "写真"); b.type = "button"; b.setAttribute("aria-label", "写真を見る");
+      var load = function(){
+        b.disabled = true; b.textContent = "読み込み中…";
+        getPhotos(id).then(function(ps){ carousel(slot, ps); b.remove(); }).catch(function(e){ if (e === "none") { b.textContent = "写真なし"; return; } b.remove(); var x = el("button", "fc-phbtn", "写真をもう一度"); x.type = "button"; x.addEventListener("click", function(){ x.remove(); put(b); load(); }); put(x); });
+      };
+      b.addEventListener("click", load);
+      put(b);
+      if (PHOTO_AUTO && "IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting && x.target.offsetParent) { io.disconnect(); load(); } }); }, {rootMargin: "300px"});
+        io.observe(card);
+      }
+      return;
+    }
+    var w = el("div", "fac-photos"); b = el("button", "partner-review-open", "写真を見る"); b.type = "button";
+    w.appendChild(b); box.parentNode.insertBefore(w, box.nextSibling);
+    b.addEventListener("click", function(){
+      b.disabled = true; b.textContent = "写真を読み込んでいます…";
+      getPhotos(id).then(function(ps){
+        var row = el("div", "fac-photo-row");
+        ps.forEach(function(v){
+          var f = el("figure", "fac-photo"), img = document.createElement("img");
+          img.src = v.url; img.alt = ""; img.loading = "lazy"; img.referrerPolicy = "no-referrer"; if (v.w && v.h) { img.width = v.w; img.height = v.h; }
+          f.appendChild(img); var cap = credit(v); if (cap.childNodes.length) f.appendChild(cap);
+          row.appendChild(f);
+        });
+        w.replaceChildren(row, el("p", "partner-review-src", "写真：Google Maps（利用者が投稿した写真です）"));
+      }).catch(function(e){ w.replaceChildren(el("p", "partner-review-src", e === "none" ? "地図サービスに写真がまだありません" : "写真を読み込めませんでした。時間をおいてもう一度お試しください")); });
+    });
+  }
   // 押したときだけ取り寄せる形（REVIEW_ON_CLICK）：最初は「口コミを見る」だけを出し、押したら星と本文をまとめて取り寄せる
   function lazy(box){
-    var id = box.dataset.id, b = el("button", "partner-review-open", "口コミを見る"), p = el("p", "partner-score"); b.type = "button";
-    p.append(b, el("span", "partner-review-src", "Google Maps")); box.replaceChildren(p);
+    var fc = box.closest(".fc-acts"), id = box.dataset.id, b = el("button", "partner-review-open", fc ? "口コミ" : "口コミを見る"), p = el("p", "partner-score"); b.type = "button";
+    if (fc) { b.setAttribute("aria-label", "口コミを見る"); p.append(b); } else p.append(b, el("span", "partner-review-src", "Google Maps")); box.replaceChildren(p);
     b.addEventListener("click", function(){
-      b.disabled = true; b.textContent = "口コミを読み込んでいます…";
+      b.disabled = true; b.textContent = fc ? "読み込み中…" : "口コミを読み込んでいます…";
       if (window.gtag) gtag("event", "open_reviews", {});
       var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
       fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
@@ -2042,15 +2241,18 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
     if (box.dataset.id in memo) { if (memo[box.dataset.id]) paint(box, memo[box.dataset.id]); return; }
     queue.push(box.dataset.id); if (!timer) timer = setTimeout(flush, 300);
   }
+  // 後から並べたカード（/hosp.js の病院さがし）にも「口コミ」を付ける
+  window.petReviews = function(root){ root.querySelectorAll(".emg-score[data-id]").forEach(function(b){ if (!b.firstChild) lazy(b); }); };
   var boxes = document.querySelectorAll(".emg-score[data-id]");
   if (!boxes.length) return;
+  boxes.forEach(photos);
   if (%s) { boxes.forEach(lazy); return; } // REVIEW_ON_CLICK（index.html と同じ値）
   if (!("IntersectionObserver" in window)) { boxes.forEach(want); return; }
   // 口コミの欄は空のあいだ見えないので、会社の枠が画面に入ったら取り寄せる（しぼりこみで隠れている会社は取り寄せない）
   var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting && x.target.offsetParent) { io.unobserve(x.target); want(x.target.querySelector(".emg-score")); } }); }, {rootMargin: "200px"});
   boxes.forEach(function(b){ io.observe(b.parentElement); });
 })();
-""" % (json.dumps(GAS), "true" if REVIEW_ON_CLICK else "false"))
+""" % (json.dumps(GAS), "true" if faccard.PHOTO_AUTO else "false", "true" if REVIEW_ON_CLICK else "false"))
 
 # 条件でさがす動物病院（/hospital/）：お金を取らない情報ページ（tools/gen_hospitals.py）
 gen_hospitals.write_all(ROOT, dict(head=head, e=e, SITE=SITE, EMG=EMG, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
@@ -2076,11 +2278,25 @@ import gen_sougi
 gen_sougi.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_sougi.urls(SITE)
+# [B] SEO：ペットと避難（/hinan/ と /hinan/<県>/）：都道府県・市区の公式ページの決まり（tools/gen_hinan.py、データ tools/hinan.json）
+import gen_hinan
+gen_hinan.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, area_links=area_links,
+  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_hinan.urls(SITE)
 # [B] SEO：ペット火葬・霊園と夜間・救急の動物病院の都道府県ごとのページ（tools/gen_prefcats.py、検索がとくに多いため）
 import gen_prefcats
 for _cat in (gen_prefcats.SOUGI, gen_prefcats.NIGHT):
     gen_prefpages.write_all(ROOT, _pp_ctx0, _cat); gen_prefpages.link_national(ROOT, _pp_ctx0, _cat)
     hosp_urls = hosp_urls + gen_prefpages.urls(SITE, _cat)
+# [B] 保護犬・保護猫を迎える（譲渡・里親）（/joto/ と /joto/<県>/。tools/gen_joto.py、データ tools/joto.json。2026-11-14）
+import gen_joto
+gen_joto.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
+  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_joto.urls(SITE)
+gen_prefpages.write_all(ROOT, _pp_ctx0, gen_joto.CAT); gen_prefpages.link_national(ROOT, _pp_ctx0, gen_joto.CAT)
+hosp_urls = hosp_urls + gen_prefpages.urls(SITE, gen_joto.CAT)
+gen_joto.write_cities(ROOT, _pp_ctx0)  # 市のページ（/joto/<県>/<市>/、2026-11-14 第2弾）
+hosp_urls = hosp_urls + gen_joto.city_urls(SITE)
 # [B] SEO：ペット火葬場・霊園の施設ごとのページ（試しの30施設。tools/gen_sougi_fac.py）
 import gen_sougi_fac
 gen_sougi_fac.write_all(ROOT, _pp_ctx0)
@@ -2145,7 +2361,7 @@ for c in CITIES:
     faq = []
     if n:
         faq.append((f"{city}に来てくれるペットタクシーは何社ありますか？",
-            f"当サイトで公式サイトを確かめた会社のうち、{pf}のお迎えに対応している会社は{n}社で、そのうち対応エリアに「{c['stems'][0]}」と市の名前を書いている会社は{named}社でした（{_FC}時点）。名前を書いていない会社も来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。"))
+            f"当サイトに載せている会社のうち、{pf}のお迎えに対応している会社は{n}社で、そのうち対応エリアに「{c['stems'][0]}」と市の名前を書いている会社は{named}社でした（{_FC}時点）。名前を書いていない会社も来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。"))
     for r, km in c["routes"][:2]:
         faq.append((f"{r.split('（')[0]}まで、ペットタクシーはいくらですか？",
             f"{basis}の料金表で計算すると、道のり{km}kmで片道{_pref_text(k, km)[0]}が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。お迎えの料金や夜間の割増は会社ごとに違い、当日の道順・渋滞・待ち時間などでも変わります。フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。"))
@@ -2191,6 +2407,16 @@ urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{
 urls += [SITE + c["path"] for c in CITIES]
 # [B] 検索に出さないページ（tools/noindex.json。Nori 2026-11-13「全部やって」）。サイトマップから外し、最後に noindex,follow を入れる。
 NOINDEX = json.load(open(os.path.join(ROOT, "tools", "noindex.json"), encoding="utf-8"))["pages"]
+# [B] 薄いページは中身が足りるまで検索に出さない（tools/thin_gate.py。Nori 2026-11-14「じゃあそうしてよ」）。
+# 毎回数え直すので、中身を足して基準を超えたページは次の実行で自動で検索に戻る。数えた結果は tools/thin_auto.json。
+import thin_gate
+_THIN, _THIN_ALL = thin_gate.thin(ROOT, [u[len(SITE):] for u in urls])
+NOINDEX = dict(NOINDEX)
+for _p, _c in _THIN.items(): NOINDEX.setdefault(_p, f"そのページだけの字数が {_c} 字（{thin_gate.MIN_CHARS} 字に足りない。tools/thin_gate.py）")
+open(os.path.join(ROOT, "tools", "thin_auto.json"), "w", encoding="utf-8").write(json.dumps(
+  {"_note": "gen_areas.py が毎回作る。薄くて検索に出していないページと字数（tools/thin_gate.py）。手で直さない", "min_chars": thin_gate.MIN_CHARS,
+   "pages": dict(sorted(_THIN.items()))}, ensure_ascii=False, indent=1) + "\n")
+print("thin", len(_THIN), "pages noindex")
 def _keep(u): return u[len(SITE):] not in NOINDEX
 urls = [u for u in urls if _keep(u)]
 guide_modified = {f'{SITE}/guide/{g["slug"]}/': g.get("modified", TODAY) for g in GUIDES}
@@ -2224,7 +2450,8 @@ open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
 # 同じURLを分野ごとの /sitemaps/<分野>.xml にも入れて、/sitemap_index.xml でまとめる。Search Console でサイトマップごとの
 # 登録数が出るので、分野ごとの登録率（品質の関門）を数えられる。分野はURLの最初のフォルダで決める（ペットタクシーの地域・トップ・規約などは taxi）。
 SITEMAP_CATS = {"guide": "guide", "sougi": "sougi", "dogrun": "dogrun", "hospital": "hospital", "pet-hotel": "pet-hotel",
-                "pet-sitter": "pet-sitter", "dog-trainer": "dog-trainer", "rojin-home": "rojin-home", "trimming": "trimming", "jichitai": "jichitai"}
+                "pet-sitter": "pet-sitter", "dog-trainer": "dog-trainer", "rojin-home": "rojin-home", "trimming": "trimming", "jichitai": "jichitai", "hinan": "hinan", "joto": "joto",
+                "inu-yado": "yado", "pet-yado": "yado"}
 def _sm_cat(u):
   return SITEMAP_CATS.get(u[len(SITE) + 1:].split("/")[0], "taxi")
 _sm_groups = {}
@@ -2271,10 +2498,22 @@ import taxi_cta
 print("taxi_cta", taxi_cta.build(ROOT, _xl_prefs), "pages")
 # タクシー以外の分野のページのサイト名は「ペットのくらし窓口」（tools/brand.py、Nori 2026-11-09）
 import brand
-print("brand", brand.build(ROOT), "pages")
+print("brand", brand.build(ROOT, [g["slug"] for g in GUIDES if not taxi_intent(g)]), "pages")
+# サイト全体の表を読みやすくする（tools/tables.py、Nori 2026-11-14「表にまとめてるものが見にくい」）
+import tables
+print("tables", tables.build(ROOT), "pages")
+# 施設の一覧のカードを写真の枠・要点・こんな人に・くわしくは折りたたみに。「うちの子に合うところをさがす」も（tools/faccard.py、Nori 2026-11-15）
+import faccard
+print("faccard", faccard.build(ROOT), "pages")
 # AIエージェント向けの入口（/webmcp/data.json と /llms.txt。tools/gen_webmcp.py）
 import gen_webmcp
 gen_webmcp.build(ROOT)
+# サイト全体を「ペットのくらし窓口」の総合サイトに（上の名前・分野のメニュー・トップの全分野の入口・構造化データ。tools/portal.py、Nori 2026-11-14）
+import portal
+print("portal", portal.build(ROOT), "pages")
+# 全カテゴリのUI/UX（さがす箱1つ・結果のカード・小さなタクシーの案内。tools/uikit.py、Nori 2026-11-15。まず病院・ホテル・ドッグラン）
+import uikit
+print("uikit", uikit.build(ROOT))
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] noindex.json のページに noindex,follow を入れる（ほかの後処理のあと）
 for _p in NOINDEX:

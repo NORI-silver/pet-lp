@@ -1,0 +1,28 @@
+# SNS の投稿に合う写真の候補を集めて、ブランチ sns-cand に置く（何も投稿しない）。Nori 2026-11-15「写真か動画は絶対いれて」。
+# 候補から選んだ1枚を sns/img/<名前>.jpg にするのは、PR で行う。
+name: sns-photos
+on:
+  workflow_dispatch:
+    inputs:
+      names:
+        description: '写真をさがす投稿の名前（空白区切り。空なら写真のない投稿すべて）'
+        type: string
+        default: ''
+permissions:
+  contents: write
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q pillow
+      - run: python3 sns/photos.py ${{ inputs.names }}
+      - name: 候補をブランチ sns-cand に置く
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q --orphan sns-cand
+          git rm -rq --cached .
+          git add -f sns/cand
+          git commit -qm "SNSの写真の候補"
+          git push -q -f origin sns-cand

@@ -29,12 +29,87 @@
       });
       panel.appendChild(el("p", "partner-review-src", "Google Maps"));
   }
+  // 施設の写真（最大3枚）。撮った人の名前とリンク・出どころは規約で必要。2026-11-14 Nori「施設の写真とか追加したほうがいいんじゃない？」
+  // 施設カード（tools/faccard.py）は上の大きな枠に、横にスワイプして見る形で入れる（Nori 2026-11-15「写真はスワイプで複数みれるように」）。
+  // PHOTO_AUTO（tools/faccard.py）が true なら、カードが画面に近づいたときに自動で取り寄せる。false なら「写真を見る」を押したときだけ
+  var PHOTO_AUTO = false;
+  function getPhotos(id){
+    if (window.gtag) gtag("event", "open_photos", {id: id});
+    var body = new URLSearchParams(); body.set("kind", "photos"); body.set("partner_id", id);
+    return fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
+      if (!j || !j.ok) throw 0;
+      if (!j.photos || !j.photos.length) throw "none";
+      return j.photos;
+    });
+  }
+  function credit(v){
+    var cap = el("figcaption");
+    (v.by || []).forEach(function(a, i){
+      if (i) cap.appendChild(document.createTextNode("・"));
+      var n = el(a.uri ? "a" : "span", "", a.name || "投稿者"); if (a.uri) { n.href = a.uri; n.target = "_blank"; n.rel = "noopener"; }
+      cap.appendChild(n);
+    });
+    return cap;
+  }
+  function carousel(slot, ps){
+    var car = el("div", "fc-car"), dots = el("div", "fc-dots");
+    ps.forEach(function(v, i){
+      var f = el("figure"), img = document.createElement("img");
+      img.src = v.url; img.alt = ""; img.loading = "lazy"; img.referrerPolicy = "no-referrer"; if (v.w && v.h) { img.width = v.w; img.height = v.h; }
+      f.appendChild(img); if ((v.by || []).length) f.appendChild(credit(v)); car.appendChild(f);
+      var d = el("i"); if (!i) d.className = "on"; dots.appendChild(d);
+    });
+    car.addEventListener("scroll", function(){
+      var k = Math.round(car.scrollLeft / Math.max(1, car.clientWidth));
+      [].forEach.call(dots.children, function(d, i){ d.className = i === k ? "on" : ""; });
+    }, {passive: true});
+    slot.replaceChildren(car); if (ps.length > 1) slot.appendChild(dots);
+    slot.appendChild(el("span", "fc-src", "写真：Google Maps"));
+    slot.hidden = false;
+  }
+  function photos(box){
+    if (!PHOTO_AUTO) return; // 「写真を見る」のボタンは出さない（Nori 2026-11-15「写真を見るはいらない」）。自動で出すときだけ写真を入れる
+    if (box.nextElementSibling && box.nextElementSibling.classList.contains("fac-photos")) return;
+    var id = box.dataset.id, card = box.closest(".fc"), slot = card && card.querySelector(".fc-ph");
+    if (slot) {
+      if (slot.dataset.go) return; slot.dataset.go = "1";
+      var body = card.querySelector(".fc-acts") || card.querySelector(".fc-body") || card;
+      var put = function(n){ body.insertBefore(n, body.firstChild); };
+      var b = el("button", "fc-phbtn", "写真"); b.type = "button"; b.setAttribute("aria-label", "写真を見る");
+      var load = function(){
+        b.disabled = true; b.textContent = "読み込み中…";
+        getPhotos(id).then(function(ps){ carousel(slot, ps); b.remove(); }).catch(function(e){ if (e === "none") { b.textContent = "写真なし"; return; } b.remove(); var x = el("button", "fc-phbtn", "写真をもう一度"); x.type = "button"; x.addEventListener("click", function(){ x.remove(); put(b); load(); }); put(x); });
+      };
+      b.addEventListener("click", load);
+      put(b);
+      if (PHOTO_AUTO && "IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting && x.target.offsetParent) { io.disconnect(); load(); } }); }, {rootMargin: "300px"});
+        io.observe(card);
+      }
+      return;
+    }
+    var w = el("div", "fac-photos"); b = el("button", "partner-review-open", "写真を見る"); b.type = "button";
+    w.appendChild(b); box.parentNode.insertBefore(w, box.nextSibling);
+    b.addEventListener("click", function(){
+      b.disabled = true; b.textContent = "写真を読み込んでいます…";
+      getPhotos(id).then(function(ps){
+        var row = el("div", "fac-photo-row");
+        ps.forEach(function(v){
+          var f = el("figure", "fac-photo"), img = document.createElement("img");
+          img.src = v.url; img.alt = ""; img.loading = "lazy"; img.referrerPolicy = "no-referrer"; if (v.w && v.h) { img.width = v.w; img.height = v.h; }
+          f.appendChild(img); var cap = credit(v); if (cap.childNodes.length) f.appendChild(cap);
+          row.appendChild(f);
+        });
+        w.replaceChildren(row, el("p", "partner-review-src", "写真：Google Maps（利用者が投稿した写真です）"));
+      }).catch(function(e){ w.replaceChildren(el("p", "partner-review-src", e === "none" ? "地図サービスに写真がまだありません" : "写真を読み込めませんでした。時間をおいてもう一度お試しください")); });
+    });
+  }
   // 押したときだけ取り寄せる形（REVIEW_ON_CLICK）：最初は「口コミを見る」だけを出し、押したら星と本文をまとめて取り寄せる
   function lazy(box){
-    var id = box.dataset.id, b = el("button", "partner-review-open", "口コミを見る"), p = el("p", "partner-score"); b.type = "button";
-    p.append(b, el("span", "partner-review-src", "Google Maps")); box.replaceChildren(p);
+    var fc = box.closest(".fc-acts"), id = box.dataset.id, b = el("button", "partner-review-open", fc ? "口コミ" : "口コミを見る"), p = el("p", "partner-score"); b.type = "button";
+    if (fc) { b.setAttribute("aria-label", "口コミを見る"); p.append(b); } else p.append(b, el("span", "partner-review-src", "Google Maps")); box.replaceChildren(p);
     b.addEventListener("click", function(){
-      b.disabled = true; b.textContent = "口コミを読み込んでいます…";
+      b.disabled = true; b.textContent = fc ? "読み込み中…" : "口コミを読み込んでいます…";
       if (window.gtag) gtag("event", "open_reviews", {});
       var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
       fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
@@ -74,8 +149,11 @@
     if (box.dataset.id in memo) { if (memo[box.dataset.id]) paint(box, memo[box.dataset.id]); return; }
     queue.push(box.dataset.id); if (!timer) timer = setTimeout(flush, 300);
   }
+  // 後から並べたカード（/hosp.js の病院さがし）にも「口コミ」を付ける
+  window.petReviews = function(root){ root.querySelectorAll(".emg-score[data-id]").forEach(function(b){ if (!b.firstChild) lazy(b); }); };
   var boxes = document.querySelectorAll(".emg-score[data-id]");
   if (!boxes.length) return;
+  boxes.forEach(photos);
   if (true) { boxes.forEach(lazy); return; } // REVIEW_ON_CLICK（index.html と同じ値）
   if (!("IntersectionObserver" in window)) { boxes.forEach(want); return; }
   // 口コミの欄は空のあいだ見えないので、会社の枠が画面に入ったら取り寄せる（しぼりこみで隠れている会社は取り寄せない）

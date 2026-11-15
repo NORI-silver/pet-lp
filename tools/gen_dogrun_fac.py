@@ -1,6 +1,6 @@
 # [B] SEO：ドッグランを施設1つずつのページにする（/dogrun/<県>/<id>/）。試しの30施設。型は docs/facility-page.md。
 # 戦略担当 2026-11-09（Nori「倍のスピードで」）：火葬30の結果を待たずにドッグランも30。確かめた項目5つ以上は下げない。
-# 書くのは tools/dogrun.json の値（公式ページで確かめたこと）と、そこから数えたことだけ。書いていない項目は行ごと出さない。
+# 書くのは tools/dogrun.json の値（公式ページの情報）と、そこから数えたことだけ。書いていない項目は行ごと出さない。
 # 電話番号・順位・おすすめは書かない。各ページに「このドッグランまでのペットタクシー」（facility_taxi。高速道路のSA・PAは外からは入れないので付けない）。
 import json, os
 import gen_dogrun as G
@@ -97,7 +97,7 @@ def render(ctx, d):
     kname = {"公営": "公営のドッグラン", "民間": "お店・施設のドッグラン", "高速道路": "高速道路のSA・PAのドッグラン"}[k]
     tparts = [w for w, f in (("料金", "fee"), ("利用時間", "hours"), ("登録", "reg"), ("行き方", "access")) if d.get(f)]
     title = f"{nm}（{d.get('city', '')}）｜{'・'.join(tparts)}｜ペットタクシー予約窓口"
-    lead1 = f"{nm}は、{pf}{d.get('city', '')}にある{kname}です（{ck(d)}に公式ページで確認）。"
+    lead1 = f"{nm}は、{pf}{d.get('city', '')}にある{kname}です（{ck(d)}時点の公式ページの情報）。"
     pts = [lead1]
     if d.get("fee"): pts.append(f"{nm}の料金は「{d['fee']}」です。")
     if d.get("hours"): pts.append(f"{nm}の利用時間は「{d['hours']}」です。")
@@ -140,7 +140,7 @@ def render(ctx, d):
   <div class="wrap">
     <div class="emg">
       <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts">{"".join(f"<li>{e(x)}</li>" for x in pts)}</ul></div>
-      <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">公式ページで確かめたこと</h2><div class="tbl"><table class="pp-tbl"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody>{rows}</tbody></table></div>
+      <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">公式ページに書いてあること</h2><div class="tbl"><table class="pp-tbl"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody>{rows}</tbody></table></div>
       <p class="emg-tips-note">出どころ：{src_html}。書いていない項目は載せていません。変わることがあるので、出かける前に必ず公式ページでご確認ください。</p></div>
       {taxi}
       {_cmp(e, d)}

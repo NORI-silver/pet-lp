@@ -139,7 +139,7 @@ def render(ctx):
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sh"><h2>保護された子のお迎えや、通院の移動に</h2><p>動物愛護センターや動物病院への移動は、ペットタクシーを予約できます。当日の依頼もできます。</p></div>
-    <ul class="other"><li><a href="/hospital/">条件でさがす動物病院</a></li><li><a href="/emergency/">緊急のときの連絡先</a></li><li><a href="/guide/hospital/">動物病院への通院の送迎ガイド</a></li><li><a href="/dogrun/">全国のドッグラン</a></li></ul>
+    <ul class="other"><li><a href="/joto/">保護犬・保護猫を迎える（譲渡の窓口と条件）</a></li><li><a href="/hospital/">条件でさがす動物病院</a></li><li><a href="/emergency/">緊急のときの連絡先</a></li><li><a href="/guide/hospital/">動物病院への通院の送迎ガイド</a></li><li><a href="/dogrun/">全国のドッグラン</a></li></ul>
     {ctx["area_links"]()}
   </div>
 </section>

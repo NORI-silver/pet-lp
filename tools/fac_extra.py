@@ -1,6 +1,6 @@
 # [B] SEO 2026-11-14（Nori「内容が薄いページを全面的に強化してほしい」「めちゃめちゃ濃くして」）：
 # 施設1つずつのページ（ドッグラン・火葬・夜間の病院・犬と泊まれる宿・犬と入れるカフェ）に、
-# すでに公式サイトで確かめてあるデータだけから作る節を足す。作り話・確かめていない数字は入れない。
+# すでに公式サイトの情報をもとにしたデータだけから作る節を足す。作り話・確かめていない数字は入れない。
 #  1) その県の夜間・救急の動物病院（tools/emergency.json。火葬のページには出さない）
 #  2) 行く前に確かめること（分野ごとのチェックリスト。事実ではなく確かめる項目の案内）
 #  3) ペットタクシーの枠の中に、その県に来てくれる会社の料金表で計算した運賃の目安（概算・確定料金ではありません）
@@ -96,7 +96,7 @@ def _inject(h, cat, pf, fid, EMG, pref_fare, night_href, e):
                 li += f"<li>{nm}{('（' + e(meta) + '）') if meta else ''}</li>"
             ttl = (f"{pf}のほかの夜間・救急の動物病院" if cat == "hospital" else f"ケガや急な体調の変化のときに：{pf}の夜間・救急の動物病院")
             blocks.append(f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">{e(ttl)}</h2><ul class="other">{li}</ul>'
-                          f'<p class="emg-tips-note">各病院の公式サイトで確かめた名前と受付の時間です（変わることがあります）。行く前に必ず電話で受け付けているか確かめてください。'
+                          f'<p class="emg-tips-note">各病院の公式サイトに書いてある名前と受付の時間です（変わることがあります）。行く前に必ず電話で受け付けているか確かめてください。'
                           f'<a href="/hospital/night/{e(_slug(pf))}/">{e(pf)}の夜間・救急の動物病院をすべて見る</a></p></div>')
     chk = "".join(f"<li>{e(x)}</li>" for x in C["check"])
     blocks.append(f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">行く前に確かめること</h2><ul class="fac-pts">{chk}</ul>'

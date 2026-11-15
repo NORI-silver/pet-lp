@@ -1,6 +1,6 @@
 # お金を取らない情報ページ「条件でさがす動物病院」（/hospital/）。gen_areas.py が読み込んで使う。
 # Nori 2026-11-02「病院は？全部マネタイズじゃなくていい。SEO的なコンテンツでもいい」「全国で」「口コミもつけて」。
-# 守ること：病院からお金をもらわない。順位や「おすすめ」をつけない。電話番号は載せない。公式サイトで確かめたことだけ書く。
+# 守ること：病院からお金をもらわない。順位や「おすすめ」をつけない。電話番号は載せない。公式サイトに書いてあることだけ書く。
 # データ：夜間・救急＝tools/emergency.json（緊急タブと同じ）、往診・猫専門・エキゾチック・大型犬の設備＝tools/hospitals.json。
 import json, os, re
 import prefkeep
@@ -71,6 +71,12 @@ def item_html(e, cond, h):
         extra += f'<small>診てもらえる動物：{e(h["animals"])}</small>'
     if h.get("addr"):
         extra += f'<small>所在地：{e(h["addr"])}</small>'
+    # [C] 2026-11-14 公式サイトに書いてある項目（facts）をカードに。出どころと確認日つき
+    fs = [f for f in h.get("facts", []) if f["k"] not in ("往診の地域", "対象の動物")]
+    if fs:
+        ck = max(f["checked"] for f in fs)
+        extra += ('<dl class="hosp-facts">' + "".join(f'<dt>{e(f["k"])}</dt><dd>{e(f["v"])}</dd>' for f in fs)
+                  + f'</dl><small class="hosp-src">公式サイトより（{int(ck[5:7])}月{int(ck[8:10])}日に確認）</small>')
     return (f'<div class="emg-item emg-co"><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>'
             f'<small>{e(h["city"])}・{e(h["hours"])}</small>{spec}{extra}'
             + (f'<div class="emg-score" data-id="{e(h["id"])}"></div>' if h.get("review_query") else '')
@@ -88,6 +94,139 @@ def _taxi(h):
     if not h.get("addr"): return ''
     from urllib.parse import quote
     return f'<a class="emg-taxi" href="/?to={quote(h["addr"])}#form">この病院までのペットタクシーの料金をくらべる →</a>'
+
+def _night_answer(e, rows):
+    """[C] 2026-11-14 Nori「動物病院の内容うすすぎ」：夜間の一覧のいちばん上に答えの箱（数は公式サイトに書いてある事実から数える）。"""
+    import visual as _V, guides_hospital as _G
+    hs = {h["id"]: h for v in rows.values() for h in v}
+    hf = {x["id"]: x for x in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "night_hospital_facts.json"), encoding="utf-8"))["items"]
+          if x.get("ok", True) and not x.get("closed") and x["id"] in hs}
+    def has(x, k, pat): return any(f["k"] == k and re.search(pat, f["v"]) for f in x["facts"])
+    n24 = sum(1 for h in hs.values() if "24時間" in h.get("hours", ""))
+    eq = sum(1 for x in hf.values() if has(x, "設備", "CT|MRI"))
+    card_only = sum(1 for x in hf.values() if has(x, "支払い方法", "原則クレジット|現金は使えない|現金のお取り扱いはしておりません|現金.*不可"))
+    call = sum(1 for x in hf.values() if has(x, "来院前の連絡", "電話"))
+    far = sum(1 for pf, v in rows.items() if v and all(re.search(r"（[^）]+[都道府県]）$", h.get("city") or "") for h in v))
+    kv = [("夜間に診てもらえる動物病院は？", f"全国{len(hs)}院を都道府県ごとに載せています。下の都道府県をえらぶと、受付時間・所在地・公式サイトが出ます。県の中に見つからない{far}県は、近くの県の病院を載せています。"),
+          ("夜間の診察料はいくら？", f"公式サイトに金額のある{_G.N_FEE}院では、基本の診察料のまん中が{_G.MED:,}円（税込にそろえて{_G.LO:,}〜{_G.HI:,}円）。検査や処置を合わせると2万〜5万円ほどが多いです。"),
+          ("行く前にすることは？", f"必ず電話です。載せている{len(hf)}院のうち{call}院が、来院前の電話を求めています。症状・いつから・種類・体重を伝えてください。")]
+    tiles = [(f"{len(hs)}院", "載せている夜間・救急の動物病院"), (f"{n24}院", "受付時間に「24時間」と書いている病院"),
+             (f"{_G.MED:,}円", "夜間の基本の診察料のまん中（税込にそろえて）"), (f"{eq}院", "CT・MRIがあると書いている病院")]
+    li = "".join(f'<li><b class="k">{e(q)}</b>{e(a)}</li>' for q, a in kv)
+    return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">夜間・救急の動物病院のポイント</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}'
+            f'<p>クレジットカードだけで現金が使えないと書いている病院が{card_only}院あります。料金と、夜に受診したほうがいい症状は'
+            f'<a href="/guide/night-vet-fee/">夜間の動物病院の料金の相場と、夜に受診したほうがいい症状</a>にまとめました。都道府県のページには、病院ごとの料金・対象の動物・設備・お支払い・駐車場をくらべる表があります。</p></div>')
+
+def _visit_answer(e, rows):
+    """[C] 2026-11-14 往診の一覧のいちばん上に答えの箱と、公式サイトに書いてある往診料・できること・できないことをくらべる表。"""
+    import visual as _V
+    hs = list({h["id"]: h for v in rows.values() for h in v}.values())
+    fx = [h for h in hs if h.get("facts")]
+    def fv(h, k): return next((f["v"] for f in h.get("facts", []) if f["k"] == k), "")
+    ys = sorted(int(m.replace(",", "")) for h in fx for m in re.findall(r"([\d,]{4,})円", fv(h, "往診料"))[:1])
+    mitori = sum(1 for h in fx if re.search("看取り|ターミナル|終末期|最期", fv(h, "家でできること")))
+    exo = sum(1 for h in hs if re.search("うさぎ|ウサギ|鳥|ハムスター|フェレット|爬虫", (h.get("animals", "") + fv(h, "対象の動物"))))
+    ng = sum(1 for h in fx if re.search("手術|レントゲン|入院", fv(h, "家でできないこと")))
+    prefs = len([p for p, v in rows.items() if v])
+    kv = [("往診の動物病院は？", f"全国{len(hs)}院を、{prefs}都道府県に分けて載せています。往診の地域は病院ごとに決まっているので、カードの「往診エリア」で家が入るかを確かめてください。"),
+          ("往診料はいくら？", (f"公式サイトに金額のある病院では、往診料は{ys[0]:,}〜{ys[-1]:,}円ほど（無料の病院もあります）。距離で上がる病院が多く、ほかに診察料・検査・お薬の料金がかかります。" if len(ys) >= 2 else "病院ごとに違います。距離で上がる病院が多いです。")),
+          ("家で何ができる？", f"診察・血液や尿の検査・注射・点滴・ワクチンなどは家でできる病院が多いです。手術・レントゲン・入院は家ではできないと書いている病院が{ng}院あり、そのときは設備のある病院を紹介してくれます。")]
+    tiles = [(f"{len(hs)}院", "載せている往診の動物病院"), (f"{len(fx)}院", "往診料・できることなどを公式サイトに書いてある病院"),
+             (f"{mitori}院", "家での看取り・終末期のケアを書いている病院（載せている病院のうち）"), (f"{exo}院", "犬・猫のほかの動物も診ると書いている病院")]
+    li = "".join(f'<li><b class="k">{e(q)}</b>{e(a)}</li>' for q, a in kv)
+    def cell(h, k): return e(fv(h, k)) or "—"
+    tx = [h for h in fx if sum(1 for k in ("往診料", "受付時間", "家でできること", "家でできないこと", "支払い方法") if fv(h, k)) >= 3]
+    rows_h = "".join(f'<tr><th scope="row">{e(h["name"])}<small>（{e(h["prefs"][0])}）</small></th><td>{cell(h, "往診料")}</td><td>{cell(h, "受付時間")}</td><td>{cell(h, "家でできること")}</td><td>{cell(h, "家でできないこと")}</td><td>{cell(h, "支払い方法")}</td></tr>' for h in tx)
+    return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">往診の動物病院のポイント</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}</div>'
+            f'<div class="emg-tips" style="margin-top:0"><h4>往診料・家でできること・できないことをくらべる（{len(tx)}院）</h4>'
+            '<p>公式サイトに書いてあることを写しました。金額は税込・税抜が病院ごとに違うので、そのままです。「—」は公式サイトに書いていない・見つからなかった項目です（「しない」という意味ではありません）。</p>'
+            f'<table><thead><tr><th>病院</th><th>往診料</th><th>受付時間</th><th>家でできること</th><th>家でできないこと</th><th>お支払い</th></tr></thead><tbody>{rows_h}</tbody></table></div>')
+
+def _cat_answer(e, rows):
+    """[C] 2026-11-14 猫専門の一覧の上に答えの箱と、公式サイトに書いてある予約・猫にやさしい工夫・設備をくらべる表。"""
+    import visual as _V
+    hs = list({h["id"]: h for v in rows.values() for h in v}.values())
+    fx = [h for h in hs if h.get("facts")]
+    def fv(h, k): return next((f["v"] for f in h.get("facts", []) if f["k"] == k), "")
+    gold = sum(1 for h in hs if re.search("ゴールド|GOLD|Gold", fv(h, "猫にやさしい工夫") + h.get("spec", "")))
+    rsv = sum(1 for h in fx if re.search("予約制|予約優先", fv(h, "予約のしかた")))
+    free = sum(1 for h in fx if re.search("予約なしで来院|予約なしでよい", fv(h, "予約のしかた")))
+    park = sum(1 for h in fx if fv(h, "駐車場"))
+    prefs = len([p for p, v in rows.items() if v])
+    kv = [("猫専門の動物病院は？", f"全国{len(hs)}院を{prefs}都道府県に分けて載せています。猫だけを診る病院なので、待合室で犬に会うことがありません。"),
+          ("予約はいる？", f"載せている{len(fx)}院のうち{rsv}院が予約制か予約優先です。予約なしで行ける病院は{free}院。行く前に公式サイトか電話で確かめてください。"),
+          ("猫にやさしい病院の目じるしは？", f"国際ねこ医学会（ISFM）の「キャット・フレンドリー・クリニック」の認定があります。最高位のゴールドと書いている病院は{gold}院です。")]
+    tiles = [(f"{len(hs)}院", "載せている猫専門の動物病院"), (f"{gold}院", "キャット・フレンドリー・クリニックのゴールド"),
+             (f"{rsv}院", "予約制・予約優先と書いている病院"), (f"{park}院", "駐車場か駐車料金の負担を書いている病院")]
+    li = "".join(f'<li><b class="k">{e(q)}</b>{e(a)}</li>' for q, a in kv)
+    def cell(h, k): return e(fv(h, k)) or "—"
+    tx = [h for h in fx if sum(1 for k in ("診療時間", "予約のしかた", "猫にやさしい工夫", "設備", "駐車場") if fv(h, k)) >= 3]
+    rows_h = "".join(f'<tr><th scope="row">{e(h["name"])}<small>（{e(h["prefs"][0])}）</small></th><td>{cell(h, "休診日")}</td><td>{cell(h, "予約のしかた")}</td><td>{cell(h, "猫にやさしい工夫")}</td><td>{cell(h, "設備")}</td><td>{cell(h, "駐車場")}</td></tr>' for h in tx)
+    return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">猫専門の動物病院のポイント</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}</div>'
+            f'<div class="emg-tips" style="margin-top:0"><h4>予約・猫にやさしい工夫・設備をくらべる（{len(tx)}院）</h4>'
+            '<p>公式サイトに書いてあることを短くしました。「—」は公式サイトに書いていない・見つからなかった項目です（「ない」という意味ではありません）。</p>'
+            f'<table><thead><tr><th>病院</th><th>休診日</th><th>予約</th><th>猫にやさしい工夫</th><th>設備</th><th>駐車場</th></tr></thead><tbody>{rows_h}</tbody></table></div>')
+
+def _spec_box(e, title, kv, tiles, cap, cols, tx):
+    """答えの箱＋数字のタイル＋くらべる表（公式サイトの事実から）。"""
+    import visual as _V
+    def fv(h, k): return next((f["v"] for f in h.get("facts", []) if f["k"] == k), "")
+    li = "".join(f'<li><b class="k">{e(q)}</b>{e(a)}</li>' for q, a in kv)
+    th = "".join(f"<th>{e(lab)}</th>" for lab, _ in cols)
+    rows_h = "".join(f'<tr><th scope="row">{e(h["name"])}<small>（{e(h["prefs"][0])}）</small></th>' + "".join(f"<td>{e(fv(h, k)) or '—'}</td>" for _, k in cols) + "</tr>" for h in tx)
+    return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">{e(title)}</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}</div>'
+            f'<div class="emg-tips" style="margin-top:0"><h4>{e(cap)}（{len(tx)}院）</h4>'
+            '<p>公式サイトに書いてあることを短くしました。「—」は公式サイトに書いていない・見つからなかった項目です（「ない」という意味ではありません）。</p>'
+            f'<table><thead><tr><th>病院</th>{th}</tr></thead><tbody>{rows_h}</tbody></table></div>')
+
+def _exotic_answer(e, rows):
+    """[C] 2026-11-14 エキゾチック専門の一覧の上に答えの箱とくらべる表。"""
+    hs = list({h["id"]: h for v in rows.values() for h in v}.values())
+    fx = [h for h in hs if h.get("facts")]
+    def fv(h, k): return next((f["v"] for f in h.get("facts", []) if f["k"] == k), "")
+    nodc = sum(1 for h in fx if re.search("犬・猫は(診ない|新しくは受けない)", fv(h, "診る動物")))
+    dc = sum(1 for h in fx if re.search("犬・猫(も診る|と、)|^犬・猫・", fv(h, "診る動物")))
+    rsv = sum(1 for h in fx if re.search("予約制|予約優先", fv(h, "予約のしかた")))
+    ct = sum(1 for h in fx if "CT" in fv(h, "設備"))
+    rep = sum(1 for h in fx if re.search("爬虫類|トカゲ|ヘビ|カメ", fv(h, "診る動物")))
+    prefs = len([p for p, v in rows.items() if v])
+    kv = [("うさぎ・鳥・爬虫類を診てくれる病院は？", f"全国{len(hs)}院を{prefs}都道府県に分けて載せています。どの動物を診るかは病院ごとに違うので、カードの「診る動物」で、うちの子の種類が入っているかを確かめてください。"),
+          ("予約はいる？", f"載せている{len(fx)}院のうち{rsv}院が予約制か予約優先です。小さな動物は待ち時間も負担になるので、先に予約してから行くのがおすすめです。"),
+          ("犬・猫と一緒の病院？", f"犬・猫は診ないと書いている病院が{nodc}院、犬・猫も診る病院が{dc}院です。犬や猫の声やにおいが苦手な子は、犬・猫を診ない病院を選ぶと落ち着きやすいです。")]
+    tiles = [(f"{len(hs)}院", "載せているエキゾチック専門の動物病院"), (f"{rep}院", "爬虫類（カメ・トカゲ・ヘビなど）も診ると書いている病院"),
+             (f"{nodc}院", "犬・猫は診ないと書いている病院"), (f"{ct}院", "CTがあると書いている病院")]
+    tx = [h for h in fx if sum(1 for k in ("診る動物", "予約のしかた", "休診日", "設備", "支払い方法", "駐車場") if fv(h, k)) >= 3]
+    return _spec_box(e, "エキゾチック専門の動物病院のポイント", kv, tiles, "診る動物・予約・設備をくらべる",
+                     [("診る動物", "診る動物"), ("予約", "予約のしかた"), ("休診日", "休診日"), ("設備", "設備"), ("お支払い", "支払い方法")], tx)
+
+def _large_answer(e, rows):
+    """[C] 2026-11-14 大型犬の設備の一覧の上に答えの箱とくらべる表。"""
+    hs = list({h["id"]: h for v in rows.values() for h in v}.values())
+    fx = [h for h in hs if h.get("facts")]
+    def fv(h, k): return next((f["v"] for f in h.get("facts", []) if f["k"] == k), "")
+    K = "大型犬のための設備"
+    table = sum(1 for h in fx if re.search("診察台", fv(h, K)))
+    ward = sum(1 for h in fx if re.search("入院|犬舎|ケージ", fv(h, K)))
+    ct = sum(1 for h in fx if "CT" in fv(h, "設備"))
+    park = sum(1 for h in fx if fv(h, "駐車場"))
+    prefs = len([p for p, v in rows.items() if v])
+    kv = [("大型犬でも安心な動物病院は？", f"大型犬のための設備を公式サイトに書いている病院を、全国{len(hs)}院・{prefs}都道府県に分けて載せています。"),
+          ("どんな設備があると楽？", f"大型犬用や高さを変えられる診察台を書いている病院が{table}院あり、抱き上げる負担が減ります。大型犬が入れる入院室・犬舎は{ward}院が書いています。広い診察室や、車の中で待てるしくみも助かります。"),
+          ("車で行ける？", f"駐車場や車の中での待ち方を書いている病院は{park}院です。大型犬は車で行くことが多いので、行く前に駐車場を確かめてください。")]
+    tiles = [(f"{len(hs)}院", "大型犬のための設備を書いている動物病院"), (f"{table}院", "大型犬用・昇降式の診察台"),
+             (f"{ward}院", "大型犬が入れる入院室・犬舎"), (f"{ct}院", "CTがあると書いている病院")]
+    tx = [h for h in fx if sum(1 for k in (K, "設備", "休診日", "予約のしかた", "駐車場") if fv(h, k)) >= 2]
+    return _spec_box(e, "大型犬にやさしい動物病院のポイント", kv, tiles, "大型犬のための設備・駐車場をくらべる",
+                     [("大型犬のための設備", K), ("設備", "設備"), ("休診日", "休診日"), ("駐車場", "駐車場")], tx)
+
+_TAGK = {"night": "night", "visit": "visit", "cat": "catspec", "exotic": "exospec", "large": "large"}
+
+def finder(ctx, slug="", pref="", city=""):
+    """動物病院を自分の条件でさがす欄（tools/hosp_find.py）。slug の条件を最初から押しておく。"""
+    import hosp_find, faccard, gen_dogrun
+    # 赤いボタンはページの中で夜間の病院にしぼる（JS）。検索エンジンには、その県の夜間・救急のページへのリンクとして見せる
+    nh = f"/hospital/night/{gen_dogrun.PSLUG[pref]}/" if pref in gen_dogrun.PSLUG else "/hospital/night/"
+    return hosp_find.html(ctx["e"], ctx["emg_opts"], [n for n, _ in faccard.DEPTS], _TAGK.get(slug, ""), pref, city, nh)
 
 def render_cond(cond, ctx):
     """条件ページ1枚のHTML。ctx は gen_areas.py の関数と値（head, foot, e, area_links, SITE, EMG, emg_regions, emg_opts）。"""
@@ -111,23 +250,23 @@ def render_cond(cond, ctx):
       {"@type":"ListItem","position":3,"name":cond["h1"],"item":url}]}, ensure_ascii=False, indent=1) + '\n</script>'
     return ctx["head"](cond["title"], cond["desc"], url, ld) + f"""
 <main>
-<section class="area-hero">
+<section class="area-hero" style="padding-bottom:4px;min-height:0">
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/hospital/">条件でさがす動物病院</a> › {e(cond["short"])}</nav>
-    <h1><small>全国{total}件・都道府県でしぼりこめます</small>{e(cond["h1"])}</h1>
-    <p class="lede">{e(cond["lede"])}</p>
+    <h1>{e(cond["h1"])}</h1>
   </div>
 </section>
-<section style="padding-top:8px">
+<section style="padding-top:4px">
   <div class="wrap">
+    {finder(ctx, cond["slug"])}
+    <div class="hf-static">{body}</div>
+    <p class="lede" style="margin-top:22px">{e(cond["lede"])}</p>
+    {_night_answer(e, rows) if cond["slug"] == "night" else _visit_answer(e, rows) if cond["slug"] == "visit" else _cat_answer(e, rows) if cond["slug"] == "cat" else _exotic_answer(e, rows) if cond["slug"] == "exotic" else _large_answer(e, rows) if cond["slug"] == "large" else ""}
     <div class="emg">
       <p class="emg-free">この一覧は無料の情報です。病院からお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金や受け入れは、それぞれの病院に直接おたずねください。</p>
-      <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
-      <p class="emg-sum">ほかの条件：</p><ul class="other" style="justify-content:flex-start">{others}</ul>
-      {body}
       <div class="emg-tips"><h4>{e(cond["short"])}の病院にかかるときに</h4><dl>{tips}</dl>
       <p class="emg-tips-note">ここに書いたのは一般的な心がけです。ペットの様子にあわせて、病院の指示にしたがってください。</p></div>
-      <p class="emg-note">当サイトとは別の病院です（{e(checked)}に公式サイトで確かめた情報）。診療時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。口コミの星と本文は地図サービスから取り寄せたもので、当サイトの評価ではありません。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+      <p class="emg-note">当サイトとは別の病院です（{e(checked)}時点の、公式サイトに書いてある情報）。診療時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。口コミの星と本文は地図サービスから取り寄せたもので、当サイトの評価ではありません。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
 </section>
@@ -139,8 +278,8 @@ def render_cond(cond, ctx):
   </div>
 </section>
 </main>
-{prefkeep.LIST_JS}
 <script src="/reviews.js" defer></script>
+<script src="/hosp.js" defer></script>
 """ + ctx["foot_noband"]()
 
 def render_hub(ctx):
@@ -169,26 +308,94 @@ def render_hub(ctx):
                + "見つかった都道府県の数は、" + "、".join(f'{c["short"]}が{sum(1 for _, ps in ctx["emg_regions"] for pf in ps if per[c["slug"]].get(pf))}' for c in CONDS[1:]) + 'です。</p>')
     matrix = (f'<div class="sh" style="margin-top:28px"><h2>都道府県ごとの病院の数</h2></div>{summary}'
               '<div class="tbl"><table><thead><tr><th>都道府県</th>' + ''.join(f'<th>{e(c["short"])}</th>' for c in CONDS) + f'</tr></thead><tbody>{trs}</tbody></table></div>'
-              '<p class="emg-note">数字は、この一覧に載せている病院の数です（公式サイトで確かめられた病院だけ）。0（—）でも、その県に病院がないとは限りません。夜間・救急の数には、県の中に見つからないときに載せている近くの県の病院をふくみます。</p>')
-    cards = ''.join(f'<li><a href="/hospital/{c["slug"]}/"><b>{e(c["h1"])}</b><span>全国{counts[c["slug"]]}件。{e(c["lede"].split("。")[0])}。</span></a></li>' for c in CONDS)
+              '<p class="emg-note">数字は、この一覧に載せている病院の数です。0（—）でも、その県に病院がないとは限りません。夜間・救急の数には、県の中に見つからないときに載せている近くの県の病院をふくみます。</p>')
+    # [B] 2026-11-15 Nori「このページひどすぎ」「自分の条件で探せるようにして」：
+    # いちばん上で「どこで（県）」と「どんな病院」を選ぶと、その県の一覧へ。数の表は下にたたむ。
+    import gen_vetclinics
+    VB = gen_vetclinics.by_pref()
+    data = {}
+    for _, prefs in ctx["emg_regions"]:
+        for pf in prefs:
+            d = {}
+            for c in CONDS:
+                hs = per[c["slug"]].get(pf, [])
+                loc = [h for h in hs if not re.search(r"（[^）]+[都道府県]）$", h.get("city", ""))]
+                d[c["slug"]] = [len(loc), len(hs) - len(loc)]
+            nv = len(VB.get(pf, []))
+            d["vet"] = [nv if nv >= gen_vetclinics.PREF_MIN else 0, 0]
+            d["s"] = gen_dogrun.PSLUG[pf]
+            data[pf] = d
+    nvet = sum(len(v) for pf, v in VB.items() if len(v) >= gen_vetclinics.PREF_MIN)
+    TILES = [("vet", "🏥", "いつもの病院", "近くの動物病院・診療時間"),
+             ("night", "🌙", "夜間・救急", "夜中・休日に診てほしい"),
+             ("visit", "🏠", "往診", "家に来てほしい"),
+             ("cat", "🐱", "猫専門", "猫だけの病院がいい"),
+             ("exotic", "🐰", "うさぎ・鳥など", "犬猫以外を診てほしい"),
+             ("large", "🐕", "大型犬の設備", "大きな子の入院・診察台")]
+    tot = dict(counts, vet=nvet)
+    tiles = ''.join(f'<li><a class="ht" data-k="{k}" href="{"/hospital/" + k + "/" if k != "vet" else "#hpick"}"><i aria-hidden="true">{ic}</i><b>{e(nm)}</b><span>{e(sub)}</span><em>全国{tot[k]}院</em></a></li>' for k, ic, nm, sub in TILES)
+    pgrid = ''.join(f'<div class="hg"><h3>{e(lab)}</h3><p>' + ''.join(f'<button type="button" data-p="{e(pf)}">{e(pf.rstrip("都府県") if pf != "北海道" else pf)}<small>{sum(v[0] for k, v in data[pf].items() if k != "s")}</small></button>' for pf in prefs) + '</p></div>' for lab, prefs in ctx["emg_regions"])
+    css = """<style>
+.hpick{background:#fff;border:1px solid #f0e2d6;border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.hpick .q{font-weight:700;margin:0 0 8px;font-size:1rem}
+.hpick select{width:100%;font-size:1rem;padding:12px;border-radius:10px;border:1px solid #d9c9bb;background:#fff}
+.htiles{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.htiles a{display:flex;flex-direction:column;gap:2px;height:100%;box-sizing:border-box;padding:12px;border:1px solid #eadbcf;border-radius:14px;text-decoration:none;color:#3c2f26;background:#fffaf6}
+.htiles i{font-style:normal;font-size:1.6rem;line-height:1}
+.htiles b{font-size:.98rem;margin-top:4px}
+.htiles span{font-size:.78rem;color:#7a6a5e}
+.htiles em{font-style:normal;font-size:.8rem;font-weight:700;color:#e8590c;margin-top:auto;padding-top:6px}
+.htiles a.zero{opacity:.55;background:#f7f4f1}
+.htiles a.zero em{color:#8a7a6e;font-weight:400}
+.hgrid{margin-top:10px}.hg h3{font-size:.85rem;color:#7a6a5e;margin:12px 0 6px}
+.hg p{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+.hg button{border:1px solid #eadbcf;background:#fff;border-radius:999px;padding:6px 10px;font-size:.88rem;color:#3c2f26}
+.hg button small{margin-left:4px;color:#e8590c;font-weight:700}
+.hg button[aria-pressed=true]{background:#e8590c;color:#fff;border-color:#e8590c}.hg button[aria-pressed=true] small{color:#fff}
+details.hnum{margin-top:24px;border-top:1px solid #f0e2d6;padding-top:10px}details.hnum summary{cursor:pointer;font-weight:700}
+</style>"""
+    js = "<script>\n(function(){" + prefkeep.FN + prefkeep.GUESS + r"""
+  var D = """ + json.dumps(data, ensure_ascii=False) + r""", sel = document.getElementById("hospPref");
+  function apply(){
+    var v = sel.value, d = D[v];
+    document.querySelectorAll(".ht").forEach(function(a){
+      var k = a.dataset.k, em = a.querySelector("em");
+      if (!a._t) a._t = em.textContent;
+      a.classList.remove("zero");
+      if (!d) { em.textContent = a._t; a.href = k === "vet" ? "#hpick" : "/hospital/" + k + "/"; if (k === "vet") { em.textContent = "県を選んでください"; a.classList.add("zero"); } return; }
+      var n = d[k][0], far = d[k][1];
+      if (k === "night") a.href = "/hospital/night/" + d.s + "/";
+      else if (k === "vet") a.href = n ? "/hospital/" + d.s + "/" : "#hpick";
+      else a.href = "/hospital/" + k + "/#pref=" + encodeURIComponent(v);
+      if (n) em.textContent = v + "に" + n + "院";
+      else if (far) em.textContent = "近くの県に" + far + "院";
+      else { em.textContent = k === "vet" ? "この県はまだ準備中" : v + "はまだ見つかっていません"; a.classList.add("zero"); if (k !== "vet") a.href = "/hospital/" + k + "/"; }
+    });
+    document.querySelectorAll(".hg button").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.p === v ? "true" : "false"); });
+  }
+  document.querySelectorAll(".hg button").forEach(function(b){ b.addEventListener("click", function(){
+    sel.value = b.dataset.p; sel.dispatchEvent(new Event("change")); document.getElementById("hpick").scrollIntoView({behavior: "smooth"});
+  }); });
+  document.querySelectorAll(".ht").forEach(function(a){ a.addEventListener("click", function(){ try { window.gtag && gtag("event", "hosp_pick", {kind: a.dataset.k, pref: sel.value || "all"}); } catch (x) {} }); });
+  prefKeep(sel, apply); apply(); prefGuess(sel, apply);
+})();
+</script>"""
     ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
       {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
       {"@type":"ListItem","position":2,"name":"条件でさがす動物病院","item":url}]}, ensure_ascii=False, indent=1) + '\n</script>'
     return ctx["head"]("条件でさがす動物病院（夜間・救急／往診／猫専門）｜全国47都道府県｜ペットタクシー予約窓口",
-      "夜間・救急、自宅に来てくれる往診専門、猫だけを診る猫専門。条件に合う動物病院を全国47都道府県から探せる無料の一覧です。公式サイトで確かめた受付時間・所在地と、口コミの星をまとめています。", url, ld) + f"""
+      "夜間・救急、自宅に来てくれる往診専門、猫だけを診る猫専門。条件に合う動物病院を全国47都道府県から探せる無料の一覧です。公式サイトに書いてある受付時間・所在地と、口コミの星をまとめています。", url, ld) + f"""
 <main>
-<section class="area-hero">
+<section class="area-hero" style="padding-bottom:4px;min-height:0">
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › 条件でさがす動物病院</nav>
-    <h1><small>全国47都道府県・無料</small>条件でさがす動物病院</h1>
-    <p class="lede">「夜中に診てくれる病院は？」「寝たきりだから家に来てほしい」「猫だけの病院がいい」。そんなときに、公式サイトで確かめた病院の一覧を条件ごとにまとめました。病院からお金はもらわず、順位もつけていません。</p>
+    <h1>動物病院をさがす</h1>
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    <ul class="gcards">{cards}</ul>
-    {matrix}
-    <p class="emg-note" style="margin-top:18px">それぞれのページで都道府県をしぼりこめます。まだ載っていない県や病院は、見つけしだい足していきます。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+    {finder(ctx)}
+    <p class="emg-note" style="margin-top:18px">病院からお金をもらわず、順位もつけていません。公式サイトや獣医師会の一覧に載っている病院だけを載せています。まだ載っていない県や病院は、見つけしだい足していきます。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
   </div>
 </section>
 <section style="padding-top:0">
@@ -196,10 +403,12 @@ def render_hub(ctx):
     <div class="sh"><h2>病院への移動は、ペットタクシーで</h2><p>家の前から病院の前まで、飼い主さまと一緒に。お迎えの場所と行き先を入れると、条件に合う会社と料金の目安が出ます。</p></div>
     <ul class="other"><li><a href="/guide/hospital/">動物病院への通院の送迎ガイド</a></li><li><a href="/guide/senior/">シニア犬・シニア猫、介護中の子の移動</a></li><li><a href="/guide/cat/">猫の移動のガイド</a></li><li><a href="/emergency/">緊急のときの連絡先</a></li></ul>
     {ctx["area_links"]()}
+    <details class="hnum"><summary>都道府県ごと・条件ごとの病院の数</summary>{matrix}</details>
   </div>
 </section>
 </main>
-{prefkeep.LINKS_JS}
+<script src="/reviews.js" defer></script>
+<script src="/hosp.js" defer></script>
 """ + ctx["foot_noband"]()
 
 def review_rows():
@@ -207,12 +416,28 @@ def review_rows():
     return [h for k in ("visit", "cat", "exotic", "large") for h in HOSP[k] if h.get("review_query")]
 
 def urls(SITE):
-    return [SITE + "/hospital/"] + [f'{SITE}/hospital/{c["slug"]}/' for c in CONDS]
+    import gen_vetclinics
+    return [SITE + "/hospital/"] + [f'{SITE}/hospital/{c["slug"]}/' for c in CONDS] + gen_vetclinics.urls(SITE)
 
 def write_all(ROOT, ctx):
     os.makedirs(os.path.join(ROOT, "hospital"), exist_ok=True)
+    # [B] 2026-11-15 動物病院を自分の条件でさがす：県ごとのデータと /hosp.js
+    import hosp_find, gen_vetclinics, gen_facpages, gen_dogrun, faccard
+    fac = {x["id"]: gen_facpages.hhref(x) for x in gen_facpages.HOSPS}
+    def vet_page(pf, h):
+        cs = gen_vetclinics.by_pref().get(pf, [])
+        if len(cs) < gen_vetclinics.PREF_MIN or h.get("pref") != pf: return ""
+        n = sum(1 for c in cs if c["city"] == h["city"])
+        sl = gen_vetclinics.cslug(pf, h["city"])
+        return f"/hospital/{gen_dogrun.PSLUG[pf]}/{sl}/" if n >= gen_vetclinics.CITY_MIN and sl else f"/hospital/{gen_dogrun.PSLUG[pf]}/"
+    avail, _ = hosp_find.build(ROOT, ctx, CONDS, lambda c: _rows(c, ctx["EMG"]), lambda h: fac.get(h.get("id"), ""),
+                               gen_vetclinics.by_pref, vet_page, gen_dogrun.PSLUG, faccard.depts_of)
+    hosp_find.write_js(ROOT, avail, gen_dogrun.PSLUG)
     open(os.path.join(ROOT, "hospital", "index.html"), "w", encoding="utf-8").write(render_hub(ctx))
     for c in CONDS:
         d = os.path.join(ROOT, "hospital", c["slug"])
         os.makedirs(d, exist_ok=True)
         open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(render_cond(c, ctx))
+    # [B] 2026-11-15 ふつうの動物病院（県・市区町村ごと）
+    import gen_vetclinics
+    gen_vetclinics.write_all(ROOT, ctx)
