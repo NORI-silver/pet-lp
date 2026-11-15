@@ -2077,7 +2077,13 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
   function photos(box){
     if (box.nextElementSibling && box.nextElementSibling.classList.contains("fac-photos")) return;
     var id = box.dataset.id, w = el("div", "fac-photos"), b = el("button", "partner-review-open", "写真を見る"); b.type = "button";
-    w.appendChild(b); box.parentNode.insertBefore(w, box.nextSibling);
+    // 施設カード（tools/faccard.py）は、左上の写真の枠に「写真」のボタンを置き、取り寄せた1枚目を枠に入れる。写真の列（撮った人・出どころつき）はカードの上の段の下
+    var card = box.closest(".fc"), slot = card && card.querySelector(".fc-ph");
+    if (slot) {
+      if (slot.querySelector(".fc-phbtn")) return;
+      b = el("button", "fc-phbtn", "写真"); b.type = "button"; b.setAttribute("aria-label", "この施設の写真を見る");
+      slot.appendChild(b); card.querySelector(".fc-top").after(w);
+    } else { w.appendChild(b); box.parentNode.insertBefore(w, box.nextSibling); }
     b.addEventListener("click", function(){
       b.disabled = true; b.textContent = "写真を読み込んでいます…";
       if (window.gtag) gtag("event", "open_photos", {id: id});
@@ -2100,7 +2106,8 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
           row.appendChild(f);
         });
         w.replaceChildren(row, el("p", "partner-review-src", "写真：Google Maps（利用者が投稿した写真です）"));
-      }).catch(function(e){ w.replaceChildren(el("p", "partner-review-src", e === "none" ? "地図サービスに写真がまだありません" : "写真を読み込めませんでした。時間をおいてもう一度お試しください")); });
+        if (slot) { var im = document.createElement("img"); im.src = j.photos[0].url; im.alt = ""; im.referrerPolicy = "no-referrer"; slot.replaceChildren(im); }
+      }).catch(function(e){ if (slot) b.remove(); w.replaceChildren(el("p", "partner-review-src", e === "none" ? "地図サービスに写真がまだありません" : "写真を読み込めませんでした。時間をおいてもう一度お試しください")); });
     });
   }
   // 押したときだけ取り寄せる形（REVIEW_ON_CLICK）：最初は「口コミを見る」だけを出し、押したら星と本文をまとめて取り寄せる
@@ -2407,6 +2414,9 @@ print("brand", brand.build(ROOT, [g["slug"] for g in GUIDES if not taxi_intent(g
 # サイト全体の表を読みやすくする（tools/tables.py、Nori 2026-11-14「表にまとめてるものが見にくい」）
 import tables
 print("tables", tables.build(ROOT), "pages")
+# 施設の一覧のカードを写真の枠・要点・こんな人に・くわしくは折りたたみに。「うちの子に合うところをさがす」も（tools/faccard.py、Nori 2026-11-15）
+import faccard
+print("faccard", faccard.build(ROOT), "pages")
 # AIエージェント向けの入口（/webmcp/data.json と /llms.txt。tools/gen_webmcp.py）
 import gen_webmcp
 gen_webmcp.build(ROOT)
