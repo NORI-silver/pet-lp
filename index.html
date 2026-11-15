@@ -558,6 +558,11 @@ footer a{color:var(--ink-2)}
 .partner-points{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0}
 .partner-points li{font-size:.72rem;background:#eef6ee;color:#2f5d34;border-radius:999px;padding:2px 8px;line-height:1.5}
 .partner-points li.lim{background:#f1f0ee;color:#55504a}
+.partner-photos{position:relative;display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;margin:-4px 0 8px;border-radius:12px}
+.partner-photos img{flex:0 0 100%;aspect-ratio:3/2;object-fit:cover;scroll-snap-align:start;border-radius:12px;background:#f3eee8}
+.partner-photo-src{position:absolute;right:8px;bottom:6px;font-size:.68rem;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:1px 6px}
+.partner-offer{margin:6px 0 2px;padding:5px 10px;border:1.5px solid #e8590c;border-radius:10px;color:#b7470a;font-size:.84rem;font-weight:700}
+.partner-note{margin:6px 0 0;font-size:.82rem;color:#5b5650}
 .partner-creds{display:flex;flex-wrap:wrap;gap:4px 14px;list-style:none;margin:8px 0 2px;padding:0;font-size:.8rem;line-height:1.5;color:#3c4043;font-weight:500}
 .partner-creds li{display:inline-flex;align-items:flex-start;gap:5px}
 .partner-creds li::before{content:"";flex:0 0 auto;width:14px;height:14px;border-radius:50%;margin-top:3px;background:#1e8e3e url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-8.5' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/11px}
@@ -1872,6 +1877,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   function buildCard(card, leg){
       var article = document.createElement("article"); article.className = "partner-card";
       function text(tag, value, cls){ var el = document.createElement(tag); el.textContent = value; if (cls) el.className = cls; article.appendChild(el); return el; }
+      // 会社が送って運営者が公開にした掲載情報（Nori 2026-11-15）。写真は会社の写真だけ。ない会社には写真の枠を出さない
+      var ex = card.extra || null;
+      if (ex && ex.photos && ex.photos.length) {
+        var ph = document.createElement("div"); ph.className = "partner-photos";
+        ex.photos.forEach(function(p, i){ var im = document.createElement("img"); im.src = p.url; im.alt = card.label + "の" + (p.kind || "写真"); im.loading = "lazy"; im.decoding = "async";
+          im.referrerPolicy = "no-referrer"; im.addEventListener("error", function(){ im.remove(); if (!ph.querySelector("img")) ph.remove(); }); ph.appendChild(im); });
+        var pc = document.createElement("small"); pc.className = "partner-photo-src"; pc.textContent = "写真：" + card.label; ph.appendChild(pc);
+        article.appendChild(ph);
+      }
       var h4 = text("h4", card.label);
       // 問い合わせできる（提携している）会社には、名前の横にアイコンだけ付ける（Nori 2026-11-08「アイコンをつけて目立つように。文字はいらない」）
       if (!card.display_only) { article.classList.add("partner-open"); var ic = document.createElement("span"); ic.className = "open-icon"; ic.setAttribute("role", "img"); ic.setAttribute("aria-label", "このサイトから問い合わせできる会社"); ic.title = "このサイトから問い合わせできる会社"; ic.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M6.5 12.5l3.6 3.6 7.4-7.6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'; h4.prepend(ic); }
@@ -1917,10 +1931,12 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 車・お支払いは、たたまずに出す（Nori 2026-11-08「支払い方法とかできるものは全部出しておいたほうが」）
       // 分からない項目（「まだ確認中です」）は行ごと出さない。お客さまが選んだ動物を乗せられるかの「確認中」だけは残す（2026-11-08 レビュー #3）
       // すっきり見せる（Nori 2026-11-14「ごみごみしてる。もっとすっきり」）：料金のすぐ下に許可・保険、その下に特長・条件・車・お支払いを1列のタグにまとめる
+      if (ex && ex.offers) ex.offers.forEach(function(o){ text("p", "このサイトから問い合わせた方：" + o, "partner-offer"); });
       var cr = credLine(card.id);
       if (cr.length) { var cl = document.createElement("ul"); cl.className = "partner-creds"; cl.setAttribute("aria-label", "公式サイトに書いてある許可・登録・資格・保険");
         cr.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; cl.appendChild(li); }); article.appendChild(cl); }
       var fit = fitPoints(card), tags = fit.limits.slice();
+      if (ex && ex.tags) ex.tags.forEach(function(x){ if (fit.points.indexOf(x) < 0 && tags.indexOf(x) < 0) fit.points.push(x); });
       // 車・お支払いは、たたまずに出す（Nori 2026-11-08）。タグと同じ内容を本文に二重に出さない。（公式サイトの記載）などの出どころの注記はタグでははぶく（タグは全部、公式サイトか会社の返事に書いてあることだけ）
       // 分からない項目（「確認中」）は出さない（2026-11-08 レビュー #3）
       var carTag = String(card.car || "").split("。")[0].replace(/（[^）]*）/g, "").trim();
@@ -1933,6 +1949,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         tags.forEach(function(x){ var li = document.createElement("li"); li.className = "lim"; li.textContent = x; pts.appendChild(li); });
         article.appendChild(pts);
       }
+      if (ex && ex.note) text("p", "会社から：" + ex.note, "partner-note");
       var more = document.createElement("details"); more.className = "partner-more";
       var ms = document.createElement("summary"); ms.textContent = "料金の内訳"; more.appendChild(ms);
       article.appendChild(more);

@@ -528,6 +528,11 @@ footer a{color:var(--ink-2)}
 .partner-points{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0}
 .partner-points li{font-size:.72rem;background:#eef6ee;color:#2f5d34;border-radius:999px;padding:2px 8px;line-height:1.5}
 .partner-points li.lim{background:#f1f0ee;color:#55504a}
+.partner-photos{position:relative;display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;margin:-4px 0 8px;border-radius:12px}
+.partner-photos img{flex:0 0 100%;aspect-ratio:3/2;object-fit:cover;scroll-snap-align:start;border-radius:12px;background:#f3eee8}
+.partner-photo-src{position:absolute;right:8px;bottom:6px;font-size:.68rem;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:1px 6px}
+.partner-offer{margin:6px 0 2px;padding:5px 10px;border:1.5px solid #e8590c;border-radius:10px;color:#b7470a;font-size:.84rem;font-weight:700}
+.partner-note{margin:6px 0 0;font-size:.82rem;color:#5b5650}
 .partner-creds{display:flex;flex-wrap:wrap;gap:4px 14px;list-style:none;margin:8px 0 2px;padding:0;font-size:.8rem;line-height:1.5;color:#3c4043;font-weight:500}
 .partner-creds li{display:inline-flex;align-items:flex-start;gap:5px}
 .partner-creds li::before{content:"";flex:0 0 auto;width:14px;height:14px;border-radius:50%;margin-top:3px;background:#1e8e3e url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-8.5' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/11px}
