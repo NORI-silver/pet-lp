@@ -4,7 +4,6 @@ const vm = require('node:vm');
 const assert = require('node:assert/strict');
 const ctx = vm.createContext({ console, Date, JSON, Math, Number, String, Object, Array, isFinite });
 vm.runInContext(fs.readFileSync('booking/Code.gs', 'utf8'), ctx);
-vm.runInContext('CONFIG.ROUTE_PAD = 1', ctx); // 会社の見積もりと式が合うかは、会社の距離そのままで確かめる（サイトでは道のりを1割長めに見る）
 const C = id => ctx.DISPLAY_COMPANIES.find(x => x.id === id);
 const from = { lat: 35, lng: 135 }, to = { lat: 35.1, lng: 135.1 };
 function price(id, o) {

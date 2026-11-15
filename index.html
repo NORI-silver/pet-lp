@@ -2643,9 +2643,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     for (var i = 1; i < list.length; i++) d += kmBetween(list[i-1], list[i]) * ROAD;
     return d;
   }
-  // 料金に使う距離。地図の最短の道のりは実際より短く出やすいので、1割長めに見て1km単位で切り上げ
-  // （本当の料金が概算より高くならないように。Nori 2026-11-15。予約のしくみの ROUTE_PAD と同じ）
-  function kmOf(rt, list){ return Math.max(1, Math.ceil(rt ? rt.km * 1.1 : straightKm(list))); }
+  // 料金に使う距離。道のりは少しだけ長めに見て1km単位で切り上げ
+  function kmOf(rt, list){ return Math.max(1, Math.ceil(rt ? rt.km * 1.05 : straightKm(list))); }
 
   // ── 地図（ルートを線で表示。地図の部品は使うときだけ読み込む）──
   var mapLib = null, mlLib = null, estMap = null;
