@@ -139,7 +139,8 @@ def render_pref(ctx, cat, pf, rows):
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
       ensure_ascii=False, indent=1) + "\n</script>"
     cards = "".join(cat["card"](e, it) for it in rs)
-    if cat.get("bf_keys") and n >= 3:  # うちの子（体重・猫）でしぼる。公式サイトに書いてある受け入れの決まりだけで分け、書いていない店・施設はいつも出す
+    import faccard as _FC
+    if cat.get("bf_keys") and n >= 3 and cat["slug"] not in _FC.DIRS:  # 施設カードの分野は「うちの子に合うところをさがす」（tools/faccard.py）にまとめた  # うちの子（体重・猫）でしぼる。公式サイトに書いてある受け入れの決まりだけで分け、書いていない店・施設はいつも出す
         import visual as _V
         cards = _V.breeds({"title": f"うちの子で{cat['name']}をしぼる", "lead": cat.get("bf_lead", "受け入れる動物・大きさの決まりが公式サイトに書いてあるところは、それで分けています。書いていないところは、いつも表示します。"),
                            "rows": [{"k": cat["bf_keys"](it), "raw": cat["card"](e, it)} for it in rs]})
