@@ -26,24 +26,35 @@ BAN = ["http", "www.", "手配", "取り次", "取次", "代理", "代わって"
 
 
 INFO = ("dogrun:", "night:", "survey:dog")  # タクシーの話ではない施設・調べものの投稿
+FEED_KINDS = ["aru", "quiz", "howto", "data"]  # あるある・クイズ・実用ワザ・調べた数字（Nori 2026-11-15「1〜4を日がわりで全部」）
 
 
 def pick(posts, done, n=1):
-    """次に出す投稿を n 本えらぶ。豆知識（kind=tip）2本にほかの1本の順（Nori 2026-11-14「コマーシャル感がないように。豆知識とか」）。
-    はじめての1本はいちばん最初の投稿（あいさつ）。done は出した（予約した）順の番号の並び。"""
+    """次に出す投稿を n 本えらぶ。done は出した（予約した）順の番号の並び。
+    sns/feed.py の4つの形（あるある→クイズ→実用ワザ→調べた数字）を日がわりで出す。写真のない投稿はとばす。
+    4つの形の投稿がなくなったら、前の並び（豆知識2本にほかの1本）に戻る。"""
     done = [str(d) for d in done]
     left = [p for p in posts if str(p["no"]) not in done]
     kind = {str(p["no"]): p.get("kind") for p in posts}
     out = []
     while left and len(out) < n:
-        if not done:
+        feed = [q for q in left if q.get("kind") in FEED_KINDS and q.get("photo")]
+        if feed:
+            last = next((kind[d] for d in reversed(done) if kind.get(d) in FEED_KINDS), None)
+            i = (FEED_KINDS.index(last) + 1) % 4 if last else 0
+            order = FEED_KINDS[i:] + FEED_KINDS[:i]
+            p = next(q for k in order for q in feed if q.get("kind") == k)
+        elif not done:
             p = left[0]
         else:
             tips = [q for q in left if q.get("kind") == "tip"]
             # ほかの投稿は、ペットタクシーの話より施設の情報（ドッグラン・夜間の病院など）を先に
-            others = sorted([q for q in left if q.get("kind") != "tip"], key=lambda q: not str(q.get("key", "")).startswith(INFO))
+            others = sorted([q for q in left if q.get("kind") not in ["tip", *FEED_KINDS]],
+                            key=lambda q: not str(q.get("key", "")).startswith(INFO))
             two = len(done) >= 2 and all(kind.get(d) == "tip" for d in done[-2:])
-            p = (others[0] if (two or not tips) and others else tips[0])
+            p = (others[0] if (two or not tips) and others else tips[0]) if (tips or others) else None
+            if p is None:
+                break
         out.append(p)
         left.remove(p)
         done.append(str(p["no"]))
