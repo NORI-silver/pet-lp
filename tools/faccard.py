@@ -279,10 +279,8 @@ def build_card(card, conf, fit_by_name):
     if fit: ot = ot[:-1] + fit + ">"
     hue = _hue(name)
     sid = re.search(r'class="emg-score" data-id="([^"]+)"', inner)
-    # 写真の枠（上に大きく）。写真が来るまでは名前の1文字。左上の札は要点の1つめ
-    badge = f'<span class="fc-badge">{html.escape(ch[0])}</span>' if ch else ""
-    ph = (f'<div class="fc-ph" style="--fh:{hue}"' + (f' data-ph="{html.escape(sid.group(1))}"' if sid else "") +
-          f'><span class="fc-mono" aria-hidden="true">{html.escape(_mono(name))}</span>{icon(conf["icon"], "fc-ci")}{badge}</div>')
+    # 写真の枠は、地図サービスの写真がある施設だけ（押して取り寄せたときに出す）。写真のない施設に代わりの絵は付けない（Nori 2026-11-15「写真ない奴、無理につけないで」）
+    ph = f'<div class="fc-ph" data-ph="{html.escape(sid.group(1))}" hidden></div>' if sid else ""
     city = loc.split("・", 1)[0] if loc else ""
     rest = loc.split("・", 1)[1] if loc and "・" in loc and conf["key"] != "joto" else ""
     if conf["key"] == "joto": city = loc
@@ -290,6 +288,7 @@ def build_card(card, conf, fit_by_name):
         for ic, lab, val in pick + [(None, l, v) for l, v, _ in rows]:
             m = re.search(r"(?:都|道|府|県)?([^都道府県\s]{1,8}?(?:市|区|町|村))", val) if lab and _ADDR.search(lab) else None
             if m: city = m.group(1); break
+    if city and len(city) <= 14: ot = ot[:-1] + f' data-city="{html.escape(city)}">'
     kind = f'{city}の{conf["noun"]}' if city and len(city) <= 14 and conf["key"] != "joto" else (city or conf["noun"])
     body = [f'<p class="fc-kind">{html.escape(kind)}</p>', f'<div class="fc-name">{head}</div>']
     if fors: body.append(f'<p class="fc-catch">【{html.escape("・".join(fors[:2]))}に】</p>')
@@ -301,7 +300,7 @@ def build_card(card, conf, fit_by_name):
     for ic, lab, val in pick:
         if ic == "yen": body.append(f'<p class="fc-price">{icon("yen")}<span><span class="fc-k">{html.escape(_short(lab))}</span>{html.escape(val)}</span></p>')
     more = [f'<small>{html.escape(lab)}：{html.escape(val)}</small>' for ic, lab, val in lines[3:]] + more
-    if len(ch) > 1: body.append('<ul class="fc-tags">' + "".join(f"<li>{html.escape(c)}</li>" for c in ch[1:]) + "</ul>")
+    if ch: body.append('<ul class="fc-tags">' + "".join(f"<li>{html.escape(c)}</li>" for c in ch) + "</ul>")
     body.append('<p class="fc-fit" hidden></p>')
     body += keep
     if more: body.append('<details class="fc-more"><summary>くわしく見る</summary>' + "".join(more) + "</details>")
@@ -337,23 +336,28 @@ def panel(conf, kinds_used, has_size, has_sen, has_pup, n):
             '<p class="fp-now" aria-live="polite"></p><label class="fp-hide"><input type="checkbox"> 合わないかもしれないところを隠す</label></div>')
 
 CSS = """<style id="fccss">
-.emg-item.fc{display:block;background:#fff;border:0;border-radius:20px;padding:0;margin:0 0 18px;box-shadow:0 2px 14px rgba(28,26,24,.10);overflow:hidden}
-.fc-ph{position:relative;aspect-ratio:16/10;background:linear-gradient(135deg,hsl(var(--fh) 62% 92%),hsl(calc(var(--fh) + 40) 55% 86%));color:hsl(var(--fh) 40% 30%);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.fc-mono{font-size:3.4rem;font-weight:800;line-height:1;opacity:.85}
-.fc-ci{position:absolute;right:12px;bottom:12px;width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
-.fc-badge{position:absolute;left:12px;top:12px;z-index:2;font-size:.78rem;font-weight:800;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink,#2b2622);box-shadow:0 1px 4px rgba(0,0,0,.12)}
-.fc-phbtn{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;font-size:.82rem;font-weight:800;padding:8px 16px;border:0;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink,#2b2622);display:flex;align-items:center;gap:6px;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.15);white-space:nowrap}
-.fc-phbtn .fc-i{width:16px;height:16px;margin:0}
+.emg-item.fc{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line,#ece6e0);border-radius:18px;padding:0;margin:0;box-shadow:0 2px 10px rgba(28,26,24,.07);overflow:hidden;min-width:0}
+.fr{margin:4px 0 18px}
+.fr-h{font-size:1.05rem!important;font-weight:800;margin:10px 0 8px!important;display:flex;align-items:baseline;gap:8px}
+.fr-h small{font-size:.78rem;font-weight:600;color:var(--ink-3,#6b625b)}
+.fr-s{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.fr-s>.emg-item.fc{flex:0 0 80%;max-width:330px;scroll-snap-align:start}
+.fr-s>.emg-item.fc[hidden],.fr-s>.emg-item.fac-off{display:none}
+.fr:not(:has(.emg-item.fc:not([hidden]):not(.fac-off):not(.fc-hid))){display:none}
+.fc-ph{position:relative;aspect-ratio:4/3;background:#f4f1ee;overflow:hidden}
+.fc-ph[hidden]{display:none}
+.fc-phbtn{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:700;padding:6px 12px;margin:10px 0 0;border:1.5px solid var(--line,#ece6e0);border-radius:999px;background:#fff;color:var(--ink,#2b2622);cursor:pointer}
+.fc-phbtn[disabled]{opacity:.7;cursor:default}
 .fc-car{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .fc-car::-webkit-scrollbar{display:none}
 .fc-car figure{flex:0 0 100%;margin:0;position:relative;scroll-snap-align:start}
 .fc-car img{width:100%;height:100%;object-fit:cover;display:block}
-.fc-car figcaption{position:absolute;left:8px;bottom:8px;max-width:70%;font-size:.68rem;line-height:1.3;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:2px 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fc-car figcaption{position:absolute;left:8px;bottom:8px;max-width:60%;font-size:.68rem;line-height:1.3;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:2px 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .fc-car figcaption a{color:#fff}
 .fc-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:6px;z-index:2;pointer-events:none}
 .fc-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55)}.fc-dots i.on{background:#fff}
 .fc-src{position:absolute;right:8px;bottom:8px;z-index:2;font-size:.66rem;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:2px 6px}
-.fc-body{padding:12px 16px 14px}
+.fc-body{padding:12px 14px 14px;flex:1;display:flex;flex-direction:column}
 .fc-kind{font-size:.98rem;font-weight:800;color:var(--ink,#2b2622);margin:0!important;line-height:1.5}
 .fc-name{margin:2px 0 0}.fc-name>a{font-size:.95rem;line-height:1.5;color:var(--ink-2,#5a524b);text-decoration:none}.fc-name>a b{font-weight:600}
 .fc-catch{font-size:.9rem;font-weight:700;color:#a8410b;margin:4px 0 0!important;line-height:1.55}
@@ -388,10 +392,52 @@ CSS = """<style id="fccss">
 .fp-now b{font-weight:800}
 .fp-hide{display:flex;gap:6px;align-items:center;font-size:.82rem;color:var(--ink-2,#5a524b)}
 .fp-hide input{width:18px;height:18px}
-@media (min-width:760px){.emg-pref:has(>.emg-item.fc){display:grid;grid-template-columns:1fr 1fr;gap:0 12px;align-items:start}.emg-pref:has(>.emg-item.fc)>:not(.emg-item){grid-column:1/-1}}
+@media (min-width:760px){.fr-s>.emg-item.fc{flex-basis:300px}}
 </style>"""
 
 FIT_JS = '<script src="/fit.js" defer></script>'
+
+_CARD = re.compile(r'<div class="emg-item emg-co fc[^"]*"[^>]*>')
+
+def rows(h):
+    """続いて並ぶカードを、横にスワイプして見る列（.fr）にまとめる。6件以上で市区町村が分かれるときは市区町村ごとの列にする
+    （Nori 2026-11-15「ヨコにスワイプしたらいろいろ出てくる。各カテゴリ(エリアとか)でわけるみたいなUI」）。何度動かしても同じ。"""
+    if 'class="fr-s"' in h: return h
+    out, i, run = [], 0, []
+    def flush():
+        if not run: return
+        cards = [c for c, _ in run]
+        cities = [cy for _, cy in run]
+        groups = []
+        uniq = list(dict.fromkeys(c for c in cities if c))
+        if len(cards) >= 6 and len(uniq) >= 2 and sum(1 for u in uniq if cities.count(u) >= 2) >= 1:
+            other = []
+            for u in uniq:
+                cs = [c for c, cy in run if cy == u]
+                if len(cs) >= 2: groups.append((u, cs))
+                else: other += cs
+            other += [c for c, cy in run if not cy]
+            if other: groups.append(("ほかの地域", other))
+        else:
+            groups.append(("", cards))
+        for lab, cs in groups:
+            hd = f'<h3 class="fr-h">{html.escape(lab)}<small>{len(cs)}件</small></h3>' if lab else ""
+            out.append(f'<div class="fr">{hd}<div class="fr-s">' + "".join(cs) + "</div></div>")
+        run.clear()
+    pos = 0
+    for m in _CARD.finditer(h):
+        if m.start() < pos: continue
+        e = _end(h, m.start(), "div")
+        gap = h[pos:m.start()]
+        if run and gap.strip():
+            flush()
+        if not run: out.append(gap)
+        cy = (re.search(r'data-city="([^"]*)"', m.group(0)) or [None, ""])[1]
+        run.append((h[m.start():e], html.unescape(cy)))
+        pos = e
+    flush()
+    out.append(h[pos:])
+    return "".join(out)
 
 def _too_big(h):
     """情報ページの重さの上限（tests/info-light.test.cjs の60KB）を超えるなら作りかえない（全部の施設を並べる全国のページ。県のページで見せる）"""
@@ -422,6 +468,7 @@ def build(ROOT):
             out.append(h[i:])
             h2 = "".join(out)
             if "emg-item emg-co fc" not in h2: continue
+            h2 = rows(h2)
             if 'id="fccss"' not in h2:
                 h2 = h2.replace("</head>", CSS + "\n</head>", 1)
                 h2 = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + SPRITE, h2, count=1)
