@@ -40,6 +40,10 @@
 .go .stars{display:flex;flex-direction:row-reverse;justify-content:center;gap:4px}.go .stars input{position:absolute;opacity:0;width:1px;height:1px}
 .go .stars label{display:flex;align-items:center;justify-content:center;width:52px;height:52px;font-size:2.4rem;line-height:1;color:#ddd6ce;cursor:pointer;margin:0;padding:0;font-weight:400;-webkit-tap-highlight-color:transparent}
 .go .stars label:active{transform:scale(1.25)}.go .stars input:checked~label{color:#ffa41c}.go .sv .ends{display:flex;justify-content:space-between;font-size:.75rem;color:var(--ink-3);max-width:290px;margin:2px auto 0}
+.go .svh{font-weight:800;margin:22px 0 2px}.go .svc{font-weight:700;margin:12px 0 4px;font-size:.92rem}.go .sv textarea{min-height:64px}
+.go .pub{display:flex;gap:6px;flex-wrap:wrap}.go .pub input{position:absolute;opacity:0;width:1px;height:1px}
+.go .pub label{flex:1 1 30%;text-align:center;border:1.5px solid var(--line);border-radius:999px;padding:10px 4px;font-size:.88rem;font-weight:700;color:var(--ink-2);background:#fff;cursor:pointer;margin:0;-webkit-tap-highlight-color:transparent}
+.go .pub input:checked+label{background:var(--o);border-color:var(--o);color:#fff}.go .pub input:focus-visible+label{outline:2px solid var(--o);outline-offset:2px}
 </style>
 <script src="/ga.js"></script>
 </head>
@@ -152,16 +156,31 @@
     if (f) f.addEventListener("submit", function(e){ e.preventDefault(); sendSurvey(f); });
   }
   if (q.get("a") === "ride" && q.get("ans") === "done" && q.get("sk") && q.get("id") && !q.get("go")) {
-    var Q = [["sat", "全体の満足度"], ["staff", "ペットタクシーの会社の対応"], ["fare", "料金の納得感"]], h = "";
+    // 星とえらぶ欄（booking/Code.gs の surveyForm_ と同じ形。Nori 2026-11-15 サイトの使いやすさと、載せてよいかを足した）
+    var stars = function(key, label){
+      var t = '<p class="sq">' + label + '</p><div class="stars" role="radiogroup" aria-label="' + label + '">';
+      for (var n = 5; n >= 1; n--) t += '<input type="radio" name="' + key + '" value="' + n + '" id="sv_' + key + n + '"><label for="sv_' + key + n + '" aria-label="星' + n + 'つ">★</label>';
+      return t + '</div><div class="ends"><span>いまひとつ</span><span>とてもよい</span></div>';
+    };
+    var pub = function(name){
+      var t = '<p class="svc">この感想をサイトに載せてもいいですか？</p><div class="pub" role="radiogroup" aria-label="この感想をサイトに載せてもいいですか？">';
+      [["no", "載せないで"], ["anon", "匿名ならOK"], ["name", "実名でOK"]].forEach(function(o){
+        t += '<input type="radio" name="' + name + '" value="' + o[0] + '" id="sv_' + name + '_' + o[0] + '"' + (o[0] === "no" ? " checked" : "") + '><label for="sv_' + name + '_' + o[0] + '">' + o[1] + '</label>';
+      });
+      return t + '</div>';
+    };
+    var h = "";
     if (q.get("pn") || q.get("at")) h += '<div class="box">' + (q.get("pn") ? "ペットタクシー：" + esc(q.get("pn")) + "<br>" : "") + (q.get("at") ? "お迎え予定：" + esc(q.get("at")) : "") + "</div>";
-    h += '<h2>よろしければ、ご感想も教えてください</h2><p class="note">星をタップするだけです（3問・任意）。星を選ばずに「送る」を押してもかまいません。お答えはサービスをよくするためだけに使い、サイトに載せたり、会社にお名前とあわせて伝えたりはしません。</p><form>' +
-      '<input type="hidden" name="a" value="survey"><input type="hidden" name="id" value="' + esc(q.get("id")) + '"><input type="hidden" name="k" value="' + esc(q.get("sk")) + '"><input type="hidden" name="go" value="1"><input type="hidden" name="ride" value="done">';
-    Q.forEach(function(x){
-      h += '<div class="sv"><p class="sq">' + x[1] + '</p><div class="stars" role="radiogroup" aria-label="' + x[1] + '">';
-      for (var n = 5; n >= 1; n--) h += '<input type="radio" name="' + x[0] + '" value="' + n + '" id="sv_' + x[0] + n + '"><label for="sv_' + x[0] + n + '" aria-label="星' + n + 'つ">★</label>';
-      h += '</div><div class="ends"><span>いまひとつ</span><span>とてもよい</span></div></div>';
-    });
-    h += '<p style="font-weight:700;margin:16px 0 4px">ひとこと（任意）</p><textarea name="comment" maxlength="500" placeholder="よかったこと、こまったことなど"></textarea><p class="note">お名前・電話番号・住所は書かないでください。</p><button type="submit">送る</button></form>';
+    h += '<h2>よろしければ、ご感想も教えてください</h2><p class="note">星をタップするだけです（どれも任意）。何も選ばずに「送る」を押してもかまいません。ご感想は、「匿名ならOK」「実名でOK」を選んだときだけ、運営者が読んだうえでサイトに載せることがあります。</p><form>' +
+      '<input type="hidden" name="a" value="survey"><input type="hidden" name="id" value="' + esc(q.get("id")) + '"><input type="hidden" name="k" value="' + esc(q.get("sk")) + '"><input type="hidden" name="go" value="1"><input type="hidden" name="ride" value="done">' +
+      '<div class="sv">' + stars("sat", "全体の満足度") + '</div>' +
+      '<p class="svh">ペットタクシーの会社について</p>' +
+      '<div class="sv">' + stars("staff", "ペットタクシーの会社の対応") + '</div><div class="sv">' + stars("fare", "料金の納得感") +
+      '<p class="svc">会社へのひとこと（任意）</p><textarea name="comment" maxlength="500" placeholder="よかったこと、こまったことなど"></textarea>' + pub("pub_co") + '</div>' +
+      '<p class="svh">このサイトについて</p>' +
+      '<div class="sv">' + stars("site", "このサイトの使いやすさ") +
+      '<p class="svc">サイトへのひとこと（任意）</p><textarea name="scomment" maxlength="500" placeholder="使いやすかったこと、わかりにくかったことなど"></textarea>' + pub("pub_site") + '</div>' +
+      '<p class="note">「実名でOK」のときは、ご予約のときのお名前で載せます。ひとことには電話番号・住所は書かないでください。</p><button type="submit">送る</button></form>';
     title.textContent = "送迎してもらいました"; title.hidden = false; document.title = "送迎してもらいました｜ペットタクシー予約窓口";
     body.innerHTML = h;
     hookSurvey();
