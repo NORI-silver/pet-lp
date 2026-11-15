@@ -124,10 +124,14 @@ def _sort(cs):
 
 def _ld(SITE, crumbs, url, cs, name):
     items = [{"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + u} for i, (n, u) in enumerate(crumbs)]
+    cs = cs[:LD_MAX]  # 構造化データは先頭の LD_MAX 院まで（ページのスクリプトを 24KB 以内に。tests/info-light.test.cjs）
     lst = {"@context": "https://schema.org", "@type": "ItemList", "name": name, "numberOfItems": len(cs),
            "itemListElement": [{"@type": "ListItem", "position": i + 1, "item": {"@type": "VeterinaryCare", "name": c["name"], "address": c["addr"], **({"url": c["url"]} if c["url"] else {})}} for i, c in enumerate(cs)]}
     return ('<script type="application/ld+json">\n' + json.dumps({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items}, ensure_ascii=False, indent=1)
-            + '\n</script>\n<script type="application/ld+json">\n' + json.dumps(lst, ensure_ascii=False, indent=1) + '\n</script>')
+            + '\n</script>\n<script type="application/ld+json">\n' + json.dumps(lst, ensure_ascii=False, separators=(",", ":")) + '\n</script>')
+
+
+LD_MAX = 120
 
 
 def _page(ctx, title, desc, url, ld, crumb, h1small, h1, lede, inner):
