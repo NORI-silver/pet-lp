@@ -1580,7 +1580,7 @@ function sendRideCheck_(id) {
   toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】無事に送迎できましたか？（受付番号 ' + id + '）' + legTag_(r),
     r['お名前'] + ' 様\n\n先日はご利用ありがとうございました。\n' + fmt_(r['お迎え予定']) + ' の「' + r['決定した提携先'] + '」の送迎について、ひとつだけ教えてください。\n\n' +
     '▼ 送迎できたか・キャンセルしたかを答える（1回押すだけです）\n' + rideUrl_(id) + '\n\n' +
-    'よろしければ、そのあとに出るアンケート（星を押すだけの3問）にもお答えください（任意です）。\n\n' +
+    'よろしければ、そのあとに出るアンケート（星を押すだけ）にもお答えください（任意です）。\n\n' +
     'サービスをよくするため、また提携の会社との確認のために使います。お答えの内容が、お客さまと会社とのやり取りに影響することはありません。', rideCheckHtml_(r, id));
   log_(id + ' 送迎の確認を送った');
 }
@@ -1596,7 +1596,7 @@ function rideCheckHtml_(r, id) {
       ['🚕', 'ペットタクシー', r['決定した提携先']],
       ['🕙', 'お迎え', fmt_(r['お迎え予定'])]
     ]) +
-    mailButton_('はい、送迎してもらいました', u + '&ans=done&sk=' + surveyKey_(id) + '&pn=' + encodeURIComponent(r['決定した提携先'] || '') + '&at=' + encodeURIComponent(fmt_(r['お迎え予定'])), 'このあと、星をタップするだけのアンケート（3問・任意）があります') +
+    mailButton_('はい、送迎してもらいました', u + '&ans=done&sk=' + surveyKey_(id) + '&pn=' + encodeURIComponent(r['決定した提携先'] || '') + '&at=' + encodeURIComponent(fmt_(r['お迎え予定'])), 'このあと、星をタップするだけのアンケート（どれも任意）があります') +
     mailButtons2_([['キャンセルしました', u + '&ans=cancel'], ['予定と違いました', u + '&ans=other']]) +
     mailFine_([
       'サービスをよくするため、また提携の会社との確認のために使います。お答えの内容が、お客さまと会社とのやり取りに影響することはありません。',
@@ -1635,12 +1635,25 @@ function ridePage_(q) {
 
 /* ───────── ご利用後のアンケート（a=survey。Nori 2026-11-14「作ろう」） ─────────
    「無事に送迎できましたか？」で「送迎してもらいました」「予定と違いました」と答えた方に、続けて聞く。
-   答えは「アンケート」タブに1件1行。お名前・連絡先は入れない（受付番号と会社だけ）。サイトには載せない。 */
+   答えは「アンケート」タブに1件1行。連絡先は入れない（受付番号と会社だけ）。
+   Nori 2026-11-15「サイトの利用に関しての満足も聞けるように」「匿名でウェブに掲載していいか、実名で掲載していいかのパーミッションもとって。サイトと事業者に対する」「ユーザにとって負担なく」：
+   会社への感想とサイトへの感想それぞれに「載せないで／匿名ならOK／実名でOK」をタップで選んでいただく（はじめは「載せないで」）。
+   お名前は「実名でOK」を選んだ方だけ、予約のときのお名前を残す。サイトに載せるのは、運営者が読んでから。 */
 var SHEET_SURVEY = 'アンケート';
-var SURVEY_HEADERS = ['答えた日時', '受付番号', '提携先ID', '会社', 'お迎えの都道府県', 'お迎え予定', '全体の満足度（星）', '会社の対応（星）', '料金の納得感（星）', 'ひとこと'];
-// Nori 2026-11-14「簡単に答えられるように。基本星で回答、多くて3問。あとは自由記述の欄を任意で」
-var SURVEY_Q = { sat: '全体の満足度', staff: 'ペットタクシーの会社の対応', fare: '料金の納得感' };
-function surveySheet_() { return ensureSheet_(SpreadsheetApp.getActive(), SHEET_SURVEY, SURVEY_HEADERS); }
+var SURVEY_HEADERS = ['答えた日時', '受付番号', '提携先ID', '会社', 'お迎えの都道府県', 'お迎え予定', '全体の満足度（星）', '会社の対応（星）', '料金の納得感（星）', '会社へのひとこと',
+  'サイトの使いやすさ（星）', 'サイトへのひとこと', '会社への感想の掲載', 'サイトへの感想の掲載', 'お名前（実名でOKの方だけ）'];
+// Nori 2026-11-14「簡単に答えられるように。基本星で回答」。11-15 にサイトの使いやすさを足した
+var SURVEY_Q = { sat: '全体の満足度', staff: 'ペットタクシーの会社の対応', fare: '料金の納得感', site: 'このサイトの使いやすさ' };
+var SURVEY_PUB = { no: '載せないで', anon: '匿名ならOK', name: '実名でOK' };
+var SURVEY_PUB_TEXT = { no: '載せない', anon: '匿名でOK', name: '実名でOK' };
+function surveySheet_() {
+  var sh = ensureSheet_(SpreadsheetApp.getActive(), SHEET_SURVEY, SURVEY_HEADERS);
+  // 前からあるタブは見出しを今の形にそろえる（列は後ろに足しただけなので、前の行はそのまま）
+  if (sh.getLastColumn() <= SURVEY_HEADERS.length && sh.getRange(1, 1, 1, SURVEY_HEADERS.length).getValues()[0].join('|') !== SURVEY_HEADERS.join('|')) {
+    sh.getRange(1, 1, 1, SURVEY_HEADERS.length).setValues([SURVEY_HEADERS]).setFontWeight('bold').setBackground('#fff1e6');
+  }
+  return sh;
+}
 function surveyKey_(id) { return sign_(id + ':survey'); }
 function surveyDone_(id) {
   var sh = sheet_(SHEET_SURVEY);
@@ -1648,25 +1661,42 @@ function surveyDone_(id) {
   return sh.getRange(2, 2, sh.getLastRow() - 1, 1).getValues().some(function (v) { return String(v[0]) === String(id); });
 }
 function surveyForm_(id, r, ride) {
-  // 星は押すだけ（JSなし。右から並べて、選んだ星より左も色がつくようにする）
+  // 星もえらぶ欄も押すだけ（JSなし。星は右から並べて、選んだ星より左も色がつくようにする）。go/index.html の同じ画面とそろえる
   var css = '<style>.sv{background:#fbfaf9;border:1px solid #eee5dc;border-radius:16px;padding:14px 12px 10px;margin:12px 0}.sv .sq{font-weight:700;margin:0 0 4px;text-align:center}' +
-    '.stars{display:flex;flex-direction:row-reverse;justify-content:center;gap:4px}.stars input{position:absolute;opacity:0;width:1px;height:1px}' +
+    '.stars{display:flex;flex-direction:row-reverse;justify-content:center;gap:4px}.stars input,.pub input{position:absolute;opacity:0;width:1px;height:1px}' +
     '.stars label{display:flex;align-items:center;justify-content:center;width:52px;height:52px;font-size:2.4rem;line-height:1;color:#ddd6ce;cursor:pointer;margin:0;padding:0;font-weight:400;transition:transform .1s,color .1s;-webkit-tap-highlight-color:transparent}' +
     '.stars label:active{transform:scale(1.25)}.stars input:checked~label{color:#ffa41c}.stars input:focus-visible+label{outline:2px solid #ff6a1a;border-radius:10px}' +
-    '.sv .ends{display:flex;justify-content:space-between;font-size:.75rem;color:#8a837c;max-width:290px;margin:2px auto 0}</style>';
-  var html = css + '<h2>' + (ride ? 'よろしければ、ご感想も教えてください' : 'よろしければ、かんたんなアンケートにもご協力ください') + '</h2>' +
-    '<p class="note">星をタップするだけです（3問・任意）。' + (ride ? '星を選ばずに「送る」を押してもかまいません。' : '') + 'お答えはサービスをよくするためだけに使い、サイトに載せたり、会社にお名前とあわせて伝えたりはしません。</p>' +
-    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'survey') + hidden_('id', id) + hidden_('k', surveyKey_(id)) + hidden_('go', '1') + (ride ? hidden_('ride', ride) : '');
-  Object.keys(SURVEY_Q).forEach(function (key) {
-    html += '<div class="sv"><p class="sq">' + esc_(SURVEY_Q[key]) + '</p><div class="stars" role="radiogroup" aria-label="' + esc_(SURVEY_Q[key]) + '">';
+    '.sv .ends{display:flex;justify-content:space-between;font-size:.75rem;color:#8a837c;max-width:290px;margin:2px auto 0}' +
+    '.svh{font-weight:800;margin:22px 0 2px}.svc{font-weight:700;margin:12px 0 4px;font-size:.92rem}.sv textarea{min-height:64px}' +
+    '.pub{display:flex;gap:6px;flex-wrap:wrap}.pub label{flex:1 1 30%;text-align:center;border:1.5px solid #e2d8ce;border-radius:999px;padding:10px 4px;font-size:.88rem;font-weight:700;color:#5f5953;background:#fff;cursor:pointer;margin:0;-webkit-tap-highlight-color:transparent}' +
+    '.pub input:checked+label{background:#ff6a1a;border-color:#ff6a1a;color:#fff}.pub input:focus-visible+label{outline:2px solid #ff6a1a;outline-offset:2px}</style>';
+  var stars = function (key) {
+    var h = '<p class="sq">' + esc_(SURVEY_Q[key]) + '</p><div class="stars" role="radiogroup" aria-label="' + esc_(SURVEY_Q[key]) + '">';
     for (var n = 5; n >= 1; n--) {
       var fid = 'sv_' + key + n;
-      html += '<input type="radio" name="' + key + '" value="' + n + '" id="' + fid + '"><label for="' + fid + '" title="星' + n + 'つ" aria-label="星' + n + 'つ">★</label>';
+      h += '<input type="radio" name="' + key + '" value="' + n + '" id="' + fid + '"><label for="' + fid + '" title="星' + n + 'つ" aria-label="星' + n + 'つ">★</label>';
     }
-    html += '</div><div class="ends"><span>いまひとつ</span><span>とてもよい</span></div></div>';
-  });
-  html += '<p style="font-weight:700;margin:16px 0 4px">ひとこと（任意）</p><textarea name="comment" maxlength="500" placeholder="よかったこと、こまったことなど"></textarea>' +
-    '<p class="note">お名前・電話番号・住所は書かないでください。</p>' +
+    return h + '</div><div class="ends"><span>いまひとつ</span><span>とてもよい</span></div>';
+  };
+  var pub = function (name, label) {
+    var h = '<p class="svc">' + label + '</p><div class="pub" role="radiogroup" aria-label="' + label + '">';
+    Object.keys(SURVEY_PUB).forEach(function (v) {
+      var fid = 'sv_' + name + '_' + v;
+      h += '<input type="radio" name="' + name + '" value="' + v + '" id="' + fid + '"' + (v === 'no' ? ' checked' : '') + '><label for="' + fid + '">' + SURVEY_PUB[v] + '</label>';
+    });
+    return h + '</div>';
+  };
+  var html = css + '<h2>' + (ride ? 'よろしければ、ご感想も教えてください' : 'よろしければ、かんたんなアンケートにもご協力ください') + '</h2>' +
+    '<p class="note">星をタップするだけです（どれも任意）。' + (ride ? '何も選ばずに「送る」を押してもかまいません。' : '') + 'ご感想は、「匿名ならOK」「実名でOK」を選んだときだけ、運営者が読んだうえでサイトに載せることがあります。</p>' +
+    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'survey') + hidden_('id', id) + hidden_('k', surveyKey_(id)) + hidden_('go', '1') + (ride ? hidden_('ride', ride) : '') +
+    '<div class="sv">' + stars('sat') + '</div>' +
+    '<p class="svh">ペットタクシーの会社について</p>' +
+    '<div class="sv">' + stars('staff') + '</div><div class="sv">' + stars('fare') +
+    '<p class="svc">会社へのひとこと（任意）</p><textarea name="comment" maxlength="500" placeholder="よかったこと、こまったことなど"></textarea>' + pub('pub_co', 'この感想をサイトに載せてもいいですか？') + '</div>' +
+    '<p class="svh">このサイトについて</p>' +
+    '<div class="sv">' + stars('site') +
+    '<p class="svc">サイトへのひとこと（任意）</p><textarea name="scomment" maxlength="500" placeholder="使いやすかったこと、わかりにくかったことなど"></textarea>' + pub('pub_site', 'この感想をサイトに載せてもいいですか？') + '</div>' +
+    '<p class="note">「実名でOK」のときは、ご予約のときのお名前で載せます。ひとことには電話番号・住所は書かないでください。</p>' +
     '<button type="submit">' + (ride ? '送る' : 'アンケートを送る') + '</button></form>';
   return html;
 }
@@ -1682,24 +1712,33 @@ function surveyPage_(q) {
   if (surveyDone_(q.id)) return page_('ありがとうございました', '<p>お答えを受け付けました。またいつでもご利用ください。</p>');
   if (q.go !== '1') return page_('ご利用後のアンケート', surveyForm_(q.id, r));
   var pick = function (key) { var v = Number(q[key]); return v >= 1 && v <= 5 && Math.floor(v) === v ? v : ''; };
-  var a = { sat: pick('sat'), staff: pick('staff'), fare: pick('fare'), comment: clip_(String(q.comment || '').trim(), 500) };
-  if (!a.sat && !a.staff && !a.fare && !a.comment) {
+  var pubOf = function (key) { return SURVEY_PUB_TEXT[q[key]] ? q[key] : 'no'; };
+  var safe = function (t) { return /^[=+\-@]/.test(t) ? "'" + t : t; };
+  var a = { sat: pick('sat'), staff: pick('staff'), fare: pick('fare'), site: pick('site'),
+    comment: clip_(String(q.comment || '').trim(), 500), scomment: clip_(String(q.scomment || '').trim(), 500), pubCo: pubOf('pub_co'), pubSite: pubOf('pub_site') };
+  if (!a.sat && !a.staff && !a.fare && !a.site && !a.comment && !a.scomment) {
     if (q.ride === 'done') return page_('ありがとうございました', '<p>お答えを受け付けました。またいつでもご利用ください。</p>');
     return page_('ご利用後のアンケート', '<p class="note">どれか1つ選んでから送ってください。</p>' + surveyForm_(q.id, r));
   }
+  // 実名でOKを選んだときだけ、お名前を残す（どちらにも「実名でOK」がなければ空のまま）
+  var realName = (a.pubCo === 'name' || a.pubSite === 'name') ? String(r['お名前'] || '') : '';
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
   try {
     if (surveyDone_(q.id)) return page_('ありがとうございました', '<p>アンケートはすでにお答えいただいています。</p>');
-    surveySheet_().appendRow([new Date(), String(q.id), r['決定した提携先ID'], r['決定した提携先'], r['都府県'], r['お迎え予定'], a.sat, a.staff, a.fare, /^[=+\-@]/.test(a.comment) ? "'" + a.comment : a.comment]);
+    surveySheet_().appendRow([new Date(), String(q.id), r['決定した提携先ID'], r['決定した提携先'], r['都府県'], r['お迎え予定'], a.sat, a.staff, a.fare, safe(a.comment),
+      a.site, safe(a.scomment), SURVEY_PUB_TEXT[a.pubCo], SURVEY_PUB_TEXT[a.pubSite], safe(realName)]);
     SpreadsheetApp.flush();
   } finally {
     lock.releaseLock();
   }
   log_(q.id + ' アンケートの答え');
+  var star = function (v) { return v ? '星' + v : '―'; };
   notifyAdmin_('アンケート ' + q.id + '：' + r['決定した提携先'] + (a.sat ? '（満足度 ' + a.sat + '）' : ''),
-    '■ 会社：' + r['決定した提携先'] + '\n■ お迎え予定：' + fmt_(r['お迎え予定']) + '\n■ 全体の満足度：' + (a.sat ? '星' + a.sat : '―') + '\n■ 会社の対応：' + (a.staff ? '星' + a.staff : '―') +
-    '\n■ 料金の納得感：' + (a.fare ? '星' + a.fare : '―') + '\n■ ひとこと：' + (a.comment || '―') + '\n\n「アンケート」タブにも入っています。');
+    '■ 会社：' + r['決定した提携先'] + '\n■ お迎え予定：' + fmt_(r['お迎え予定']) + '\n■ 全体の満足度：' + star(a.sat) +
+    '\n\n【会社について】\n■ 会社の対応：' + star(a.staff) + '\n■ 料金の納得感：' + star(a.fare) + '\n■ ひとこと：' + (a.comment || '―') + '\n■ サイトに載せる：' + SURVEY_PUB_TEXT[a.pubCo] +
+    '\n\n【サイトについて】\n■ サイトの使いやすさ：' + star(a.site) + '\n■ ひとこと：' + (a.scomment || '―') + '\n■ サイトに載せる：' + SURVEY_PUB_TEXT[a.pubSite] +
+    (realName ? '\n\n■ 実名で載せるときのお名前：' + realName : '') + '\n\n「アンケート」タブにも入っています。');
   return page_('ありがとうございました', '<p>アンケートを受け付けました。いただいた声は、サイトとサービスをよくするために使わせていただきます。</p><p>またいつでもご利用ください。</p>');
 }
 
@@ -1732,7 +1771,7 @@ function updateSummary_(force) {
   props.setProperty('summary_hour', day);
   var sh = sheet_(SHEET_REQ), vals = sh.getDataRange().getValues(), h = vals[0], m = {}, months = [], testIds = {};
   var admin = String(adminEmail_() || '').toLowerCase();
-  var row0 = function (k) { if (!m[k]) { m[k] = { ask: 0, done: 0, cancel: 0, none: 0, open: 0, rode: 0, rcancel: 0, other: 0, noans: 0, sv: 0, satSum: 0, satN: 0 }; months.push(k); } return m[k]; };
+  var row0 = function (k) { if (!m[k]) { m[k] = { ask: 0, done: 0, cancel: 0, none: 0, open: 0, rode: 0, rcancel: 0, other: 0, noans: 0, sv: 0, satSum: 0, satN: 0, siteSum: 0, siteN: 0 }; months.push(k); } return m[k]; };
   for (var i = 1; i < vals.length; i++) {
     var r = toObj_(h, vals[i]);
     if (!r['受付番号']) continue;
@@ -1747,19 +1786,20 @@ function updateSummary_(force) {
     if (rc === '送迎あり') c.rode++; else if (/キャンセル/.test(rc)) c.rcancel++; else if (/予定と違/.test(rc)) c.other++; else if (st === ST.DONE && rc === '確認中') c.noans++;
   }
   var sv = sheet_(SHEET_SURVEY);
-  if (sv && sv.getLastRow() > 1) sv.getRange(2, 1, sv.getLastRow() - 1, 7).getValues().forEach(function (v) {
+  if (sv && sv.getLastRow() > 1) sv.getRange(2, 1, sv.getLastRow() - 1, Math.max(11, Math.min(sv.getLastColumn(), SURVEY_HEADERS.length))).getValues().forEach(function (v) {
     if (testIds[String(v[1])] || String(v[2]) === 'TEST') return; // テストの答えは数えない
     var t = v[0] instanceof Date ? v[0] : new Date(v[0]);
     if (isNaN(t.getTime())) return;
     var c = row0(Utilities.formatDate(t, TZ, 'yyyy-MM'));
     c.sv++;
     if (Number(v[6])) { c.satSum += Number(v[6]); c.satN++; }
+    if (Number(v[10])) { c.siteSum += Number(v[10]); c.siteN++; }
   });
   months.sort();
-  var head = ['月', '問い合わせ', '予約確定（あとで取り消しも含む）', '取り消し（確定の前・あと）', '見つからず', 'まだ返事待ち', '送迎あり（お客さまの答え）', 'キャンセル（お客さまの答え）', '予定と違った（お客さまの答え）', '送迎の確認に未回答', 'アンケートの数', '満足度の平均'];
+  var head = ['月', '問い合わせ', '予約確定（あとで取り消しも含む）', '取り消し（確定の前・あと）', '見つからず', 'まだ返事待ち', '送迎あり（お客さまの答え）', 'キャンセル（お客さまの答え）', '予定と違った（お客さまの答え）', '送迎の確認に未回答', 'アンケートの数', '満足度の平均', 'サイトの使いやすさの平均'];
   var out = [head].concat(months.map(function (k) {
     var c = m[k];
-    return [k, c.ask, c.done, c.cancel, c.none, c.open, c.rode, c.rcancel, c.other, c.noans, c.sv, c.satN ? Math.round(c.satSum / c.satN * 10) / 10 : ''];
+    return [k, c.ask, c.done, c.cancel, c.none, c.open, c.rode, c.rcancel, c.other, c.noans, c.sv, c.satN ? Math.round(c.satSum / c.satN * 10) / 10 : '', c.siteN ? Math.round(c.siteSum / c.siteN * 10) / 10 : ''];
   }));
   var ss = SpreadsheetApp.getActive(), sum = ss.getSheetByName(SHEET_SUMMARY) || ss.insertSheet(SHEET_SUMMARY);
   sum.clearContents();
