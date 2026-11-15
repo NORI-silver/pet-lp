@@ -2476,14 +2476,17 @@ function pconfStart_(q) {
 }
 
 /* ───────── 掲載情報の追加（a=pinfo。Nori 2026-11-15「事業者側に、情報を追加的に入れてもらえる画面」「なんでも載せられるようにはしない」） ─────────
-   決まりは docs/partner-info-rules.md。使えるのは提携している会社（OPEN_PARTNERS）だけ。入り口は提携の確認ページと同じ合言葉（demoToken_）。
-   送られたものは「掲載情報」タブに「確認待ち」で残し、運営者がメールのボタンでOK／直してください。臨時のお休みだけは審査なしですぐ候補から外す。
+   決まりは /partner/listing/（tools/partner_listing.py）。使えるのは提携している会社（OPEN_PARTNERS）で、PINFO_STOP に入れていない会社だけ。
+   入るときは「メールでログイン」（Nori 2026-11-15「いっかいすすめてみて」）：提携先シートの登録メールに、24時間だけ使えるリンク（pinfoSession_）を送る。
+   見本リンクと同じ合言葉（pinfoUrl_）は、ログインのメールを頼む画面を開くだけで、それだけでは中に入れない。
+   送られたものは「掲載情報」タブに「確認待ち」で残し、運営者がメールのリンクで公開／直してください（臨時のお休みもふくむ）。受け付けたら会社の登録メールに受付のメールを送る。
    公開してよいのは「公開」の行だけ（サイトへの反映は運営者がタブから tools/partner_info.json に写す）。 */
 var SHEET_PINFO = '掲載情報';
 var PINFO_HEADERS = ['受け付けた日時', '提携先ID', '会社名', '種類', '内容', '自動チェック', '状態', '理由', 'データ'];
 var PINFO_KINDS = { photo: '写真', offer: '特典', equip: '設備・できること', good: '得意な行き先', cred: '許可・資格・保険', off: '臨時のお休み', note: 'ひとこと' };
 var PINFO_PHOTO_KINDS = ['車の外', '車の中', 'ケージ・設備', 'お店', 'スタッフ'];
-var PINFO_PHOTO_MAX = 5, PINFO_OFFER_MAX = 2, PINFO_NOTE_MAX = 60, PINFO_PHOTO_MIN_PX = 1200;
+var PINFO_PHOTO_MAX = 5, PINFO_PHOTO_DAY = 10, PINFO_OFFER_MAX = 2, PINFO_NOTE_MAX = 60, PINFO_PHOTO_MIN_PX = 1200, PINFO_SESSION_H = 24;
+var PINFO_STOP = []; // 掲載情報のページを止めた会社（提携先ID）。提携をやめた会社などをここに入れる
 // 特典の決まった形（{n} に数字。max は数字の上限）
 var PINFO_OFFERS = [
   { k: 'first_yen', t: 'はじめての方は{n}円引き', unit: '円', max: 5000 },
@@ -2509,9 +2512,50 @@ function pinfoCheck_(s) { s = String(s || ''); return PINFO_NG.filter(function(x
 function pinfoPid_(t) {
   var id = demoId_(t), op = CONFIG.OPEN_PARTNERS || {};
   if (!id) return '';
-  if (op[id]) return id;
-  for (var p in op) if (op[p] === id) return p;
-  return '';
+  var pid = op[id] ? id : '';
+  if (!pid) for (var p in op) if (op[p] === id) pid = p;
+  return pid && pinfoOpen_(pid) ? pid : '';
+}
+function pinfoOpen_(pid) { return !!(CONFIG.OPEN_PARTNERS || {})[pid] && PINFO_STOP.indexOf(pid) < 0; }
+// ログインのリンク（24時間）：提携先ID.期限.署名
+function pinfoSession_(pid, now) { var exp = (now || Date.now()) + PINFO_SESSION_H * 3600000; return pid + '.' + exp + '.' + sign_('pinfo-s:' + pid + ':' + exp); }
+function pinfoSessionPid_(s, now) {
+  var m = String(s || '').match(/^([A-Za-z0-9]+)\.(\d+)\.(.+)$/);
+  if (!m || Number(m[2]) < (now || Date.now()) || m[3] !== sign_('pinfo-s:' + m[1] + ':' + m[2])) return '';
+  return pinfoOpen_(m[1]) ? m[1] : '';
+}
+function pinfoPartner_(pid) { return partners_().filter(function(x) { return x.id === pid; })[0] || null; }
+// ログインのメールを頼む画面。登録のメールに届いたかどうかは、だれにも同じ文で答える（登録のアドレスを探られないように）
+function pinfoLogin_(q, msg) {
+  var pid = q.t ? pinfoPid_(q.t) : '', pt = pid ? pinfoPartner_(pid) : null;
+  if (q.mail === '1') {
+    if (!pid) {
+      var em = String(q.email || '').trim().toLowerCase();
+      if (em) partners_().some(function(x) { if (pinfoOpen_(x.id) && String(x.email || '').trim().toLowerCase() === em) { pid = x.id; pt = x; return true; } return false; });
+    }
+    if (pt && pt.email) {
+      var props = PropertiesService.getScriptProperties(), key = 'PINFO_MAIL_' + pid, last = Number(props.getProperty(key)) || 0;
+      if (Date.now() - last > 5 * 60000) {
+        props.setProperty(key, String(Date.now()));
+        mail_(pt.email, '【' + CONFIG.SERVICE_NAME + '】掲載情報のページのログイン', pt.name + ' さま\n\n掲載情報のページに入るリンクです。' + PINFO_SESSION_H + '時間だけ使えます。ほかの方には渡さないでください。\n\n' +
+          linkBase_() + '?a=pinfo&s=' + encodeURIComponent(pinfoSession_(pid)) + '\n\nお心当たりがないときは、このメールは捨ててください。リンクを開かなければ何も変わりません。\n\n' + CONFIG.SERVICE_NAME);
+        log_('掲載情報：ログインのメール ' + pid);
+      }
+    }
+    return page_('メールを送りました', '<p>登録のメールアドレスに、ログインのリンクを送りました（登録のアドレスでないときは届きません）。リンクは' + PINFO_SESSION_H + '時間だけ使えます。</p><p class="note">届かないときは、迷惑メールのフォルダもご覧ください。続けて送れるのは5分に1回です。</p>');
+  }
+  var html = (msg ? '<div class="box">' + esc_(msg) + '</div>' : '') + '<p>提携している会社さまが、写真・特典・設備などを足せるページです。入るときは、登録のメールアドレスにログインのリンクをお送りします（パスワードはいりません）。</p>' +
+    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pinfo') + hidden_('mail', '1') +
+    (pt ? hidden_('t', q.t) + '<p><b>' + esc_(pt.name) + '</b> さまの登録のメールアドレスに送ります。</p>' : '<label>登録のメールアドレス<input name="email" type="email" required maxlength="120"></label>') +
+    '<button type="submit">ログインのリンクをメールで受け取る</button></form><p class="note">載せられるものの決まりは <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/listing/') + '">掲載の決まり</a> をご覧ください。</p>';
+  return page_('掲載情報のページ', html);
+}
+// 受け付けたことを会社の登録メールに知らせる（身に覚えのない変更に気づけるように）
+function pinfoReceipt_(pid, items) {
+  var pt = pinfoPartner_(pid);
+  if (!pt || !pt.email || !items.length) return;
+  mail_(pt.email, '【' + CONFIG.SERVICE_NAME + '】掲載情報を受け付けました', pt.name + ' さま\n\n掲載情報のページで、次の内容を受け付けました。運営者が確かめてから、お客さまが見るカードに出します。\n\n' +
+    items.map(function(x) { return '・' + x; }).join('\n') + '\n\nお心当たりがないときは、このメールにそのまま返信してください。\n\n' + CONFIG.SERVICE_NAME);
 }
 function pinfoName_(pid) { var pt = partners_().filter(function(x) { return x.id === pid; })[0]; return pt ? pt.name : pid; }
 function pinfoUrl_(pid) { return linkBase_() + '?a=pinfo&t=' + encodeURIComponent(demoToken_(pid)); }
@@ -2531,11 +2575,11 @@ function pinfoAdd_(pid, kind, text, data, state) {
     return sh.getLastRow();
   } finally { lock.releaseLock(); }
 }
-// 臨時のお休み（「反映ずみ」の行）。checks_ がこの日のお迎えを外す
+// 臨時のお休み（運営者が「公開」にした行）。checks_ がこの日のお迎えを外す
 var PINFO_ALL_ = null; // 1回の実行の中で使い回す（候補を選ぶとき会社ごとにシートを読まない）
 function pinfoOffDays_(pid) {
   var days = {};
-  try { if (!PINFO_ALL_) PINFO_ALL_ = pinfoRows_(''); PINFO_ALL_.filter(function(v) { return String(v[1]) === String(pid); }).forEach(function(v) { if (v[3] === PINFO_KINDS.off && v[6] === '反映ずみ') (JSON.parse(v[8] || '{}').days || []).forEach(function(d) { days[d] = 1; }); }); } catch (e) {}
+  try { if (!PINFO_ALL_) PINFO_ALL_ = pinfoRows_(''); PINFO_ALL_.filter(function(v) { return String(v[1]) === String(pid); }).forEach(function(v) { if (v[3] === PINFO_KINDS.off && v[6] === '公開') (JSON.parse(v[8] || '{}').days || []).forEach(function(d) { days[d] = 1; }); }); } catch (e) {}
   return days;
 }
 function pinfoReviewUrl_(row, act) { return webUrl_() + '?a=pinfo_ok&r=' + row + '&do=' + act + '&k=' + sign_('pinfo:' + row + ':' + act); }
@@ -2567,9 +2611,9 @@ function pinfoLatest_(rows, kind) {
   try { return r ? JSON.parse(r[8] || '{}') : {}; } catch (e) { return {}; }
 }
 function pinfoPage_(q) {
-  var pid = pinfoPid_(q.t);
-  if (!pid) return page_('リンクが正しくありません', '<p>このページは、提携している会社さまだけがお使いいただけます。お手数ですが、届いたメールのリンクから開いてください。</p>');
-  var name = pinfoName_(pid), rows = pinfoRows_(pid), done = [];
+  var pid = pinfoSessionPid_(q.s);
+  if (!pid) return pinfoLogin_(q, q.s ? 'ログインのリンクの期限が切れたか、正しくありません。もう一度メールで受け取ってください。' : '');
+  var name = pinfoName_(pid), rows = pinfoRows_(pid), done = [], got = [];
   if (q.go === '1') {
     var arr = function(k) { return [].concat(q[k] || []).map(String).filter(Boolean); };
     // 特典（同時に2つまで・終わりの日は必ず）
@@ -2583,7 +2627,7 @@ function pinfoPage_(q) {
       offers.push({ k: o.k, n: n || null, until: until, text: o.t.replace('{n}', n.toLocaleString()) + '（' + until.replace(/-/g, '/') + 'まで）' });
     }
     var before = { offer: pinfoLatest_(rows, 'offer'), equip: pinfoLatest_(rows, 'equip'), good: pinfoLatest_(rows, 'good'), cred: pinfoLatest_(rows, 'cred'), note: pinfoLatest_(rows, 'note') };
-    var add = function(kind, text, data, state) { var r = pinfoAdd_(pid, kind, text, data, state); if (!state) pinfoNotify_(pid, r, kind, text); done.push(PINFO_KINDS[kind]); };
+    var add = function(kind, text, data) { var r = pinfoAdd_(pid, kind, text, data); pinfoNotify_(pid, r, kind, text); done.push(PINFO_KINDS[kind]); got.push(PINFO_KINDS[kind] + '：' + text); };
     var same = function(a, b) { return JSON.stringify(a || []) === JSON.stringify(b || []); };
     if (!same(offers.map(function(o) { return o.text; }), (before.offer.list || []).map(function(o) { return o.text; })) && (offers.length || (before.offer.list || []).length))
       add('offer', offers.length ? offers.map(function(o) { return o.text; }).join('／') : '（特典をやめる）', { list: offers });
@@ -2594,26 +2638,27 @@ function pinfoPage_(q) {
     var note = String(q.note || '').trim().slice(0, PINFO_NOTE_MAX);
     if (note !== (before.note.text || '')) add('note', note || '（ひとことを消す）', { text: note });
     var off = String(q.off || '').split(/[\s,、]+/).filter(function(d) { return /^\d{4}-\d{2}-\d{2}$/.test(d); }).slice(0, 31);
-    if (off.length) add('off', off.join('・'), { days: off }, '反映ずみ');
+    if (off.length) add('off', off.join('・'), { days: off });
+    pinfoReceipt_(pid, got);
     rows = pinfoRows_(pid);
   }
   var cur = { offer: pinfoLatest_(rows, 'offer').list || [], equip: pinfoLatest_(rows, 'equip').list || [], good: pinfoLatest_(rows, 'good').list || [], cred: pinfoLatest_(rows, 'cred'), note: pinfoLatest_(rows, 'note').text || '' };
   var photos = rows.filter(function(v) { return v[3] === PINFO_KINDS.photo && v[6] !== '直してください' && v[6] !== '取り下げ'; });
-  var html = '<p>' + esc_(name) + ' さま</p><p>ここで足した内容は、運営者が確かめてから、お客さまが見る候補のカードに出ます（臨時のお休みだけはすぐ反映します）。載せられるものの決まりは <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/listing/') + '">掲載の決まり</a> をご覧ください。</p>' +
+  var html = '<p>' + esc_(name) + ' さま</p><p>ここで足した内容は、運営者が確かめてから、お客さまが見る候補のカードに出ます。受け付けた内容は、登録のメールアドレスにもお知らせします。載せられるものの決まりは <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/listing/') + '">掲載の決まり</a> をご覧ください。</p>' +
     (q.go === '1' ? '<div class="box">' + (done.length ? esc_(done.join('、')) + ' を受け付けました。' : '変わったところはありませんでした。') + '</div>' : '');
   // 審査の状況
   html += '<h2>審査の状況</h2>' + (rows.length ? '<div class="box">' + rows.slice(-12).reverse().map(function(v) {
-    var c = v[6] === '公開' || v[6] === '反映ずみ' ? '#1e8e3e' : v[6] === '直してください' ? '#c5221f' : '#b06000';
+    var c = v[6] === '公開' ? '#1e8e3e' : v[6] === '直してください' ? '#c5221f' : '#b06000';
     return '<div style="display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid #eee5dc;padding:4px 0"><span>' + esc_(v[3]) + '：' + esc_(String(v[4]).slice(0, 40)) + '</span><span style="color:' + c + ';white-space:nowrap">' + esc_(v[6]) + (v[7] ? '（' + esc_(v[7]) + '）' : '') + '</span></div>';
   }).join('') + '</div>' : '<p class="note">まだ何も送られていません。</p>');
   // 写真（/go/ のページが data-pinfo-up を見て、縮めてから送る）
   html += '<h2>写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）</h2><p class="note">ご自身で撮った、実際の車・設備・お店の写真だけ。横長で長いほうが' + PINFO_PHOTO_MIN_PX + 'px以上。電話番号・ナンバープレート・人の顔が写っていないもの。文字やスタンプは入れないでください。</p>' +
-    (photos.length < PINFO_PHOTO_MAX ? '<div data-pinfo-up data-t="' + esc_(q.t) + '" class="box"><label>写真の種類<select data-kind>' + PINFO_PHOTO_KINDS.map(function(k) { return '<option>' + esc_(k) + '</option>'; }).join('') + '</select></label>' +
+    (photos.length < PINFO_PHOTO_MAX ? '<div data-pinfo-up data-t="' + esc_(q.s) + '" class="box"><label>写真の種類<select data-kind>' + PINFO_PHOTO_KINDS.map(function(k) { return '<option>' + esc_(k) + '</option>'; }).join('') + '</select></label>' +
       '<label>写真を選ぶ<input type="file" accept="image/jpeg,image/png,image/heic,image/webp"></label>' +
       '<label style="font-weight:400;display:flex;gap:6px;align-items:center"><input type="checkbox" data-rights style="width:auto;display:inline;margin:0">自分（自社）で撮った写真で、載せる権利があります</label>' +
       '<button type="button" class="gray">この写真を送る</button><p class="note up-msg"></p></div>' : '<p class="note">いまは5枚そろっています。</p>');
   // そのほかの項目（ボタンで選ぶ）
-  html += '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pinfo') + hidden_('t', q.t) + hidden_('go', '1') +
+  html += '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pinfo') + hidden_('s', q.s) + hidden_('go', '1') +
     '<h2>特典（同時に' + PINFO_OFFER_MAX + 'つまで）</h2><p class="note">このサイトから問い合わせたお客さまだけの特典です。お返事の確定料金に特典を入れてからお送りください。終わりの日を過ぎると自動で消えます。</p>';
   for (var j = 0; j < PINFO_OFFER_MAX; j++) {
     var co = cur.offer[j] || {};
@@ -2624,21 +2669,25 @@ function pinfoPage_(q) {
     '<h2>得意な行き先</h2>' + pinfoChips_('good', PINFO_GOOD, cur.good) +
     '<h2>許可・資格・保険</h2><p class="note">運営者が登録番号などを確かめてから、カードに緑のチェックで出します。</p>' + pinfoChips_('cred', PINFO_CRED, cur.cred.list || []) +
     '<label style="font-weight:400">動物取扱業の登録番号（あれば）<input name="cred_no" maxlength="40" value="' + esc_(cur.cred.no || '') + '"></label><label style="font-weight:400">登録の有効期限（あれば）<input type="date" name="cred_until" value="' + esc_(cur.cred.until || '') + '"></label>' +
-    '<h2>臨時のお休み</h2><p class="note">この日はお客さまの候補に出なくなります（すぐ反映）。日付を「2026-12-31 2027-01-01」のように並べて入れてください。</p><input name="off" placeholder="2026-12-31 2027-01-01">' +
+    '<h2>臨時のお休み</h2><p class="note">運営者が確かめたあと、この日はお客さまの候補に出なくなります。日付を「2026-12-31 2027-01-01」のように並べて入れてください。</p><input name="off" placeholder="2026-12-31 2027-01-01">' +
     '<h2>ひとこと（' + PINFO_NOTE_MAX + '字まで）</h2><p class="note">電話番号・URL・SNS・「最安」「No.1」などは載せられません。</p><input name="note" maxlength="' + PINFO_NOTE_MAX + '" value="' + esc_(cur.note) + '">' +
     '<button type="submit">確認して送る</button></form>';
   return page_('掲載情報の追加・変更', html);
 }
 // 写真を受け取る（/go/ のページから POST kind=pinfo_photo。縮めてJPEGにしたもの＝位置の情報などは消えている）
 function pinfoPhoto_(p) {
-  var pid = pinfoPid_(p.t);
-  if (!pid) return { ok: false, error: 'リンクが正しくありません' };
+  var pid = pinfoSessionPid_(p.t);
+  if (!pid) return { ok: false, error: 'ログインの期限が切れました。もう一度メールで受け取ってください' };
   if (p.rights !== '1') return { ok: false, error: '「載せる権利があります」にチェックしてください' };
   var kind = PINFO_PHOTO_KINDS.indexOf(p.photo_kind) >= 0 ? p.photo_kind : PINFO_PHOTO_KINDS[0];
   var w = Number(p.w) || 0, h = Number(p.h) || 0;
   if (Math.max(w, h) < PINFO_PHOTO_MIN_PX) return { ok: false, error: '写真が小さすぎます（長いほうが' + PINFO_PHOTO_MIN_PX + 'px以上の写真にしてください）' };
-  var n = pinfoRows_(pid).filter(function(v) { return v[3] === PINFO_KINDS.photo && v[6] !== '直してください' && v[6] !== '取り下げ'; }).length;
+  var mine = pinfoRows_(pid).filter(function(v) { return v[3] === PINFO_KINDS.photo; });
+  var n = mine.filter(function(v) { return v[6] !== '直してください' && v[6] !== '取り下げ'; }).length;
   if (n >= PINFO_PHOTO_MAX) return { ok: false, error: '写真は' + PINFO_PHOTO_MAX + '枚までです' };
+  var today = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
+  if (mine.filter(function(v) { return new Date(new Date(v[0]).getTime() + 9 * 3600000).toISOString().slice(0, 10) === today; }).length >= PINFO_PHOTO_DAY)
+    return { ok: false, error: '写真を送れるのは1日' + PINFO_PHOTO_DAY + '枚までです。あしたもう一度お試しください' };
   var m = String(p.data || '').match(/^data:image\/jpeg;base64,(.+)$/);
   if (!m || m[1].length > 4 * 1024 * 1024) return { ok: false, error: '写真を読み込めませんでした' };
   var props = PropertiesService.getScriptProperties(), fid = props.getProperty('PINFO_FOLDER'), folder;
@@ -2648,6 +2697,7 @@ function pinfoPhoto_(p) {
   var text = kind + '（' + w + '×' + h + '） ' + file.getUrl();
   var row = pinfoAdd_(pid, 'photo', kind + '（' + w + '×' + h + '）', { kind: kind, file: file.getId(), w: w, h: h, horiz: w >= h });
   pinfoNotify_(pid, row, 'photo', text + (w < h ? '\n※縦長の写真です（横長をお願いしています）' : ''));
+  pinfoReceipt_(pid, ['写真：' + kind]);
   return { ok: true, n: n + 1 };
 }
 
