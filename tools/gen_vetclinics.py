@@ -60,8 +60,11 @@ def card(e, c, srcname):
             ("診る動物", animals_txt(c["animals"])), ("駐車場", parking(c)), ("ほかにしていること", svc(c)), ("お支払い", c["pay"]), ("予約", c.get("note", ""))]
     sm = "".join(f"<small>{e(k)}：{e(v)}</small>" for k, v in rows if v)
     ck = c["checked"]
-    return (f'<div class="emg-item emg-co"><a href="{e(href)}" target="_blank" rel="noopener"><b>{e(c["name"])}</b></a>{sm}'
-            f'<small class="hosp-src"><a href="{e(c["src"])}" target="_blank" rel="noopener">{e(srcname)}</a>より（{int(ck[5:7])}月{int(ck[8:10])}日に確認）</small>'
+    import faccard
+    at = animals_txt(c["animals"])
+    fit = faccard.fit_attr(animals=faccard._kinds_in(at), only=bool(at) and "その他" not in at, animals_text=at) if at else ""
+    return (f'<div class="emg-item emg-co"{fit}><a href="{e(href)}" target="_blank" rel="noopener"><b>{e(c["name"])}</b></a>{sm}'
+            f'<small class="hosp-src sg-src"><a href="{e(c["src"])}" target="_blank" rel="noopener">{e(srcname)}</a>より（{int(ck[5:7])}月{int(ck[8:10])}日に確認）</small>'
             f'<a class="emg-taxi" href="/?to={quote(c["addr"])}#form">この病院までのペットタクシーの料金をくらべる →</a></div>')
 
 
