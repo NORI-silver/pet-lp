@@ -219,6 +219,13 @@ def _large_answer(e, rows):
     return _spec_box(e, "大型犬にやさしい動物病院のポイント", kv, tiles, "大型犬のための設備・駐車場をくらべる",
                      [("大型犬のための設備", K), ("設備", "設備"), ("休診日", "休診日"), ("駐車場", "駐車場")], tx)
 
+_TAGK = {"night": "night", "visit": "visit", "cat": "catspec", "exotic": "exospec", "large": "large"}
+
+def finder(ctx, slug="", pref="", city=""):
+    """動物病院を自分の条件でさがす欄（tools/hosp_find.py）。slug の条件を最初から押しておく。"""
+    import hosp_find, faccard
+    return hosp_find.html(ctx["e"], ctx["emg_opts"], [n for n, _ in faccard.DEPTS], _TAGK.get(slug, ""), pref, city)
+
 def render_cond(cond, ctx):
     """条件ページ1枚のHTML。ctx は gen_areas.py の関数と値（head, foot, e, area_links, SITE, EMG, emg_regions, emg_opts）。"""
     e, SITE = ctx["e"], ctx["SITE"]
@@ -241,21 +248,20 @@ def render_cond(cond, ctx):
       {"@type":"ListItem","position":3,"name":cond["h1"],"item":url}]}, ensure_ascii=False, indent=1) + '\n</script>'
     return ctx["head"](cond["title"], cond["desc"], url, ld) + f"""
 <main>
-<section class="area-hero">
+<section class="area-hero" style="padding-bottom:4px;min-height:0">
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/hospital/">条件でさがす動物病院</a> › {e(cond["short"])}</nav>
-    <h1><small>全国{total}件・都道府県でしぼりこめます</small>{e(cond["h1"])}</h1>
-    <p class="lede">{e(cond["lede"])}</p>
+    <h1>{e(cond["h1"])}</h1>
   </div>
 </section>
-<section style="padding-top:8px">
+<section style="padding-top:4px">
   <div class="wrap">
+    {finder(ctx, cond["slug"])}
+    <div class="hf-static">{body}</div>
+    <p class="lede" style="margin-top:22px">{e(cond["lede"])}</p>
     {_night_answer(e, rows) if cond["slug"] == "night" else _visit_answer(e, rows) if cond["slug"] == "visit" else _cat_answer(e, rows) if cond["slug"] == "cat" else _exotic_answer(e, rows) if cond["slug"] == "exotic" else _large_answer(e, rows) if cond["slug"] == "large" else ""}
     <div class="emg">
       <p class="emg-free">この一覧は無料の情報です。病院からお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金や受け入れは、それぞれの病院に直接おたずねください。</p>
-      <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
-      <p class="emg-sum">ほかの条件：</p><ul class="other" style="justify-content:flex-start">{others}</ul>
-      {body}
       <div class="emg-tips"><h4>{e(cond["short"])}の病院にかかるときに</h4><dl>{tips}</dl>
       <p class="emg-tips-note">ここに書いたのは一般的な心がけです。ペットの様子にあわせて、病院の指示にしたがってください。</p></div>
       <p class="emg-note">当サイトとは別の病院です（{e(checked)}に公式サイトで確かめた情報）。診療時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。口コミの星と本文は地図サービスから取り寄せたもので、当サイトの評価ではありません。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
@@ -270,8 +276,8 @@ def render_cond(cond, ctx):
   </div>
 </section>
 </main>
-{prefkeep.LIST_JS}
 <script src="/reviews.js" defer></script>
+<script src="/hosp.js" defer></script>
 """ + ctx["foot_noband"]()
 
 def render_hub(ctx):
@@ -301,26 +307,93 @@ def render_hub(ctx):
     matrix = (f'<div class="sh" style="margin-top:28px"><h2>都道府県ごとの病院の数</h2></div>{summary}'
               '<div class="tbl"><table><thead><tr><th>都道府県</th>' + ''.join(f'<th>{e(c["short"])}</th>' for c in CONDS) + f'</tr></thead><tbody>{trs}</tbody></table></div>'
               '<p class="emg-note">数字は、この一覧に載せている病院の数です（公式サイトで確かめられた病院だけ）。0（—）でも、その県に病院がないとは限りません。夜間・救急の数には、県の中に見つからないときに載せている近くの県の病院をふくみます。</p>')
-    cards = ''.join(f'<li><a href="/hospital/{c["slug"]}/"><b>{e(c["h1"])}</b><span>全国{counts[c["slug"]]}件。{e(c["lede"].split("。")[0])}。</span></a></li>' for c in CONDS)
+    # [B] 2026-11-15 Nori「このページひどすぎ」「自分の条件で探せるようにして」：
+    # いちばん上で「どこで（県）」と「どんな病院」を選ぶと、その県の一覧へ。数の表は下にたたむ。
+    import gen_vetclinics
+    VB = gen_vetclinics.by_pref()
+    data = {}
+    for _, prefs in ctx["emg_regions"]:
+        for pf in prefs:
+            d = {}
+            for c in CONDS:
+                hs = per[c["slug"]].get(pf, [])
+                loc = [h for h in hs if not re.search(r"（[^）]+[都道府県]）$", h.get("city", ""))]
+                d[c["slug"]] = [len(loc), len(hs) - len(loc)]
+            nv = len(VB.get(pf, []))
+            d["vet"] = [nv if nv >= gen_vetclinics.PREF_MIN else 0, 0]
+            d["s"] = gen_dogrun.PSLUG[pf]
+            data[pf] = d
+    nvet = sum(len(v) for pf, v in VB.items() if len(v) >= gen_vetclinics.PREF_MIN)
+    TILES = [("vet", "🏥", "いつもの病院", "近くの動物病院・診療時間"),
+             ("night", "🌙", "夜間・救急", "夜中・休日に診てほしい"),
+             ("visit", "🏠", "往診", "家に来てほしい"),
+             ("cat", "🐱", "猫専門", "猫だけの病院がいい"),
+             ("exotic", "🐰", "うさぎ・鳥など", "犬猫以外を診てほしい"),
+             ("large", "🐕", "大型犬の設備", "大きな子の入院・診察台")]
+    tot = dict(counts, vet=nvet)
+    tiles = ''.join(f'<li><a class="ht" data-k="{k}" href="{"/hospital/" + k + "/" if k != "vet" else "#hpick"}"><i aria-hidden="true">{ic}</i><b>{e(nm)}</b><span>{e(sub)}</span><em>全国{tot[k]}院</em></a></li>' for k, ic, nm, sub in TILES)
+    pgrid = ''.join(f'<div class="hg"><h3>{e(lab)}</h3><p>' + ''.join(f'<button type="button" data-p="{e(pf)}">{e(pf.rstrip("都府県") if pf != "北海道" else pf)}<small>{sum(v[0] for k, v in data[pf].items() if k != "s")}</small></button>' for pf in prefs) + '</p></div>' for lab, prefs in ctx["emg_regions"])
+    css = """<style>
+.hpick{background:#fff;border:1px solid #f0e2d6;border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.hpick .q{font-weight:700;margin:0 0 8px;font-size:1rem}
+.hpick select{width:100%;font-size:1rem;padding:12px;border-radius:10px;border:1px solid #d9c9bb;background:#fff}
+.htiles{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.htiles a{display:flex;flex-direction:column;gap:2px;height:100%;box-sizing:border-box;padding:12px;border:1px solid #eadbcf;border-radius:14px;text-decoration:none;color:#3c2f26;background:#fffaf6}
+.htiles i{font-style:normal;font-size:1.6rem;line-height:1}
+.htiles b{font-size:.98rem;margin-top:4px}
+.htiles span{font-size:.78rem;color:#7a6a5e}
+.htiles em{font-style:normal;font-size:.8rem;font-weight:700;color:#e8590c;margin-top:auto;padding-top:6px}
+.htiles a.zero{opacity:.55;background:#f7f4f1}
+.htiles a.zero em{color:#8a7a6e;font-weight:400}
+.hgrid{margin-top:10px}.hg h3{font-size:.85rem;color:#7a6a5e;margin:12px 0 6px}
+.hg p{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+.hg button{border:1px solid #eadbcf;background:#fff;border-radius:999px;padding:6px 10px;font-size:.88rem;color:#3c2f26}
+.hg button small{margin-left:4px;color:#e8590c;font-weight:700}
+.hg button[aria-pressed=true]{background:#e8590c;color:#fff;border-color:#e8590c}.hg button[aria-pressed=true] small{color:#fff}
+details.hnum{margin-top:24px;border-top:1px solid #f0e2d6;padding-top:10px}details.hnum summary{cursor:pointer;font-weight:700}
+</style>"""
+    js = "<script>\n(function(){" + prefkeep.FN + prefkeep.GUESS + r"""
+  var D = """ + json.dumps(data, ensure_ascii=False) + r""", sel = document.getElementById("hospPref");
+  function apply(){
+    var v = sel.value, d = D[v];
+    document.querySelectorAll(".ht").forEach(function(a){
+      var k = a.dataset.k, em = a.querySelector("em");
+      if (!a._t) a._t = em.textContent;
+      a.classList.remove("zero");
+      if (!d) { em.textContent = a._t; a.href = k === "vet" ? "#hpick" : "/hospital/" + k + "/"; if (k === "vet") { em.textContent = "県を選んでください"; a.classList.add("zero"); } return; }
+      var n = d[k][0], far = d[k][1];
+      if (k === "night") a.href = "/hospital/night/" + d.s + "/";
+      else if (k === "vet") a.href = n ? "/hospital/" + d.s + "/" : "#hpick";
+      else a.href = "/hospital/" + k + "/#pref=" + encodeURIComponent(v);
+      if (n) em.textContent = v + "に" + n + "院";
+      else if (far) em.textContent = "近くの県に" + far + "院";
+      else { em.textContent = k === "vet" ? "この県はまだ準備中" : v + "はまだ見つかっていません"; a.classList.add("zero"); if (k !== "vet") a.href = "/hospital/" + k + "/"; }
+    });
+    document.querySelectorAll(".hg button").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.p === v ? "true" : "false"); });
+  }
+  document.querySelectorAll(".hg button").forEach(function(b){ b.addEventListener("click", function(){
+    sel.value = b.dataset.p; sel.dispatchEvent(new Event("change")); document.getElementById("hpick").scrollIntoView({behavior: "smooth"});
+  }); });
+  document.querySelectorAll(".ht").forEach(function(a){ a.addEventListener("click", function(){ try { window.gtag && gtag("event", "hosp_pick", {kind: a.dataset.k, pref: sel.value || "all"}); } catch (x) {} }); });
+  prefKeep(sel, apply); apply(); prefGuess(sel, apply);
+})();
+</script>"""
     ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
       {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
       {"@type":"ListItem","position":2,"name":"条件でさがす動物病院","item":url}]}, ensure_ascii=False, indent=1) + '\n</script>'
     return ctx["head"]("条件でさがす動物病院（夜間・救急／往診／猫専門）｜全国47都道府県｜ペットタクシー予約窓口",
       "夜間・救急、自宅に来てくれる往診専門、猫だけを診る猫専門。条件に合う動物病院を全国47都道府県から探せる無料の一覧です。公式サイトで確かめた受付時間・所在地と、口コミの星をまとめています。", url, ld) + f"""
 <main>
-<section class="area-hero">
+<section class="area-hero" style="padding-bottom:4px;min-height:0">
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › 条件でさがす動物病院</nav>
-    <h1><small>全国47都道府県・無料</small>条件でさがす動物病院</h1>
-    <p class="lede">「夜中に診てくれる病院は？」「寝たきりだから家に来てほしい」「猫だけの病院がいい」。そんなときに、公式サイトで確かめた病院の一覧を条件ごとにまとめました。病院からお金はもらわず、順位もつけていません。</p>
+    <h1>動物病院をさがす</h1>
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    {__import__("gen_vetclinics").hub_links(e)}
-    <ul class="gcards">{cards}</ul>
-    {matrix}
-    <p class="emg-note" style="margin-top:18px">それぞれのページで都道府県をしぼりこめます。まだ載っていない県や病院は、見つけしだい足していきます。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+    {finder(ctx)}
+    <p class="emg-note" style="margin-top:18px">病院からお金をもらわず、順位もつけていません。公式サイトや獣医師会の一覧で確かめた病院だけを載せています。まだ載っていない県や病院は、見つけしだい足していきます。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
   </div>
 </section>
 <section style="padding-top:0">
@@ -328,10 +401,12 @@ def render_hub(ctx):
     <div class="sh"><h2>病院への移動は、ペットタクシーで</h2><p>家の前から病院の前まで、飼い主さまと一緒に。お迎えの場所と行き先を入れると、条件に合う会社と料金の目安が出ます。</p></div>
     <ul class="other"><li><a href="/guide/hospital/">動物病院への通院の送迎ガイド</a></li><li><a href="/guide/senior/">シニア犬・シニア猫、介護中の子の移動</a></li><li><a href="/guide/cat/">猫の移動のガイド</a></li><li><a href="/emergency/">緊急のときの連絡先</a></li></ul>
     {ctx["area_links"]()}
+    <details class="hnum"><summary>都道府県ごと・条件ごとの病院の数</summary>{matrix}</details>
   </div>
 </section>
 </main>
-{prefkeep.LINKS_JS}
+<script src="/reviews.js" defer></script>
+<script src="/hosp.js" defer></script>
 """ + ctx["foot_noband"]()
 
 def review_rows():
@@ -344,6 +419,18 @@ def urls(SITE):
 
 def write_all(ROOT, ctx):
     os.makedirs(os.path.join(ROOT, "hospital"), exist_ok=True)
+    # [B] 2026-11-15 動物病院を自分の条件でさがす：県ごとのデータと /hosp.js
+    import hosp_find, gen_vetclinics, gen_facpages, gen_dogrun, faccard
+    fac = {x["id"]: gen_facpages.hhref(x) for x in gen_facpages.HOSPS}
+    def vet_page(pf, h):
+        cs = gen_vetclinics.by_pref().get(pf, [])
+        if len(cs) < gen_vetclinics.PREF_MIN or h.get("pref") != pf: return ""
+        n = sum(1 for c in cs if c["city"] == h["city"])
+        sl = gen_vetclinics.cslug(pf, h["city"])
+        return f"/hospital/{gen_dogrun.PSLUG[pf]}/{sl}/" if n >= gen_vetclinics.CITY_MIN and sl else f"/hospital/{gen_dogrun.PSLUG[pf]}/"
+    avail, _ = hosp_find.build(ROOT, ctx, CONDS, lambda c: _rows(c, ctx["EMG"]), lambda h: fac.get(h.get("id"), ""),
+                               gen_vetclinics.by_pref, vet_page, gen_dogrun.PSLUG, faccard.depts_of)
+    hosp_find.write_js(ROOT, avail, gen_dogrun.PSLUG)
     open(os.path.join(ROOT, "hospital", "index.html"), "w", encoding="utf-8").write(render_hub(ctx))
     for c in CONDS:
         d = os.path.join(ROOT, "hospital", c["slug"])
