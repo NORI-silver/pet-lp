@@ -295,6 +295,22 @@ def _night_desc(pf, rs, n):
     return (head + (f"（{'・'.join(cs[:4])}など）" if cs else "") + "。"
             + ((f"24時間受付は{hc['all']}院、" if hc["all"] else "") + f"朝5時以降まで受け付けるのは{hc['till5']}院です。" if hc["till5"] else "")
             + "公式サイトで確かめた内容だけを、順位をつけずに載せています。行く前に必ず電話で受け入れを確かめてください。")
+
+# [B] 2026-11-15 GSC：県のページに「ペット火葬 無料」「市役所 ペット火葬」で3〜8位に出るのにクリックがない。説明文で、市の受け付けの安い例を先に答える。
+def _fee_min(c):
+    f = c.get("fee", "")
+    if f.startswith("持ち込み無料") or f.startswith("無料"): return 0
+    m = re.search(r"(\d[\d,]*)円", f)
+    return int(m.group(1).replace(",", "")) if m else None
+def _sougi_desc(pf, rs, n):
+    cs = [(v, c) for c in _CITIES.get(pf, []) for v in [_fee_min(c)] if v is not None]
+    cs.sort(key=lambda x: x[0])
+    head = f"{pf}のペット火葬・霊園{n}か所と、市の受け付けを公式サイトで確かめてまとめた無料の一覧です。"
+    if cs:
+        ex = "、".join(f"{c['city']}は" + ("無料の受け付けあり" if v == 0 else f"{v:,}円から") for v, c in cs[:3])
+        head += f"市の火葬・引き取りは{ex}（お骨が返るかも記載）。"
+    return head + "個別火葬・立ち会い・お迎え・納骨堂の有無と公式サイトの料金の例。順位やおすすめはつけていません。"
+SOUGI["desc_fn"] = _sougi_desc
 NIGHT["title_fn"] = _night_title
 NIGHT["desc_fn"] = _night_desc
 SOUGI["table"] = [("個別火葬", lambda f: "○" if _has(f, "個別火葬") else ""), ("立ち会い", lambda f: "○" if _has(f, "立ち会い火葬") else ""), ("お迎え", lambda f: "○" if _has(f, "お迎え") or _has(f, "訪問火葬") else ""), ("霊園", lambda f: "○" if _has(f, "霊園") else ""), ("納骨堂", lambda f: "○" if _has(f, "納骨堂") else ""), ("料金の例", lambda f: "○" if f.get("price") else "")]
