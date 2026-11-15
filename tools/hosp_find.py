@@ -127,8 +127,10 @@ def record(h, pref, tags, depts_of):
         r["t"] = [[a, b] for a, b in ts]
     elif "h24" in y and re.search(r"^24時間", hv or ""): r["t"] = [[0, 1440]]
     if closed.strip(): r["x"] = closed.strip()
-    if animals: r["a"] = animals
+    if animals: r["a"] = "・".join(dict.fromkeys(x for x in re.split(r"[・、,\s]+", animals) if x))
     if h.get("area"): r["ar"] = h["area"]
+    st = _facts(h, "最寄り駅", "アクセス", "行き方")
+    if st: r["st"] = st[:120]
     if dps: r["d"] = dps
     r["y"] = sorted(y); r["no"] = sorted(n - y)
     if h.get("review_query") and h.get("id"): r["rv"] = h["id"]
@@ -194,7 +196,16 @@ CSS = """<style id="hfcss">
 .hf-c select{flex:1 1 9em;min-width:0;font-size:.95rem;padding:9px 10px;border-radius:10px;border:1px solid #d9c9bb;background:#fff;color:#2b2622}
 .hf-c button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:7px 11px;font-size:.86rem;line-height:1.2;color:#3c2f26;cursor:pointer}
 .hf-c button[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff;font-weight:700}
-.hf-c button.hf-x{display:none}.hf-c.open button.hf-x{display:inline-block}
+.hf-c button.hf-x{display:none}.hf-c.open button.hf-x{display:inline-block}.hf-c.open .hf-mo{display:none}
+.hf-w{flex-wrap:wrap;overflow:visible;margin:0;padding:0}
+.hf-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hf-need button{border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:12px 8px;font-size:.95rem;font-weight:700;color:#3c2f26;cursor:pointer}
+.hf-need button[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff}
+.hf-go{display:block;width:100%;margin:10px 0 2px;border:0;border-radius:999px;background:#2b2622;color:#fff;font-weight:800;font-size:1rem;padding:13px;cursor:pointer}
+.hc-a2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.hc-a2 a{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:12px;padding:11px 6px;font-weight:800;font-size:.92rem;text-decoration:none;background:#2b2622;color:#fff}
+.hc-a2 a.l{background:#fff;color:#2b2622;border:1px solid #d9c9bb}
+.hc-sub{display:block;text-align:center;margin-top:8px;font-size:.84rem;color:#6b5f56}
 .hf-c button.hf-mo{border-style:dashed;color:#7a6a5e}
 .hf-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:8px;border-top:1px solid #f5ebe2}
 .hf-sum{flex:1;margin:0;font-weight:800;font-size:1rem;color:#2b2622}.hf-sum small{font-weight:400;color:#7a6a5e;font-size:.78rem;display:block}
@@ -205,7 +216,6 @@ CSS = """<style id="hfcss">
 .hc-n{display:block;font-weight:800;font-size:1.02rem;color:#2b2622;text-decoration:none;line-height:1.35}
 .hc-b{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0 4px}
 .hc-b span{font-size:.74rem;padding:2px 8px;border-radius:999px;background:#fff1e6;color:#a8410a;font-weight:700}
-.hc-b span.now{background:#e6f4ea;color:#1e7d34}
 .hc-b span.u{background:#f2efec;color:#6b5f56;font-weight:400}
 .hc-l{margin:3px 0 0;font-size:.85rem;color:#4a3f37;display:flex;gap:6px;line-height:1.45}
 .hc-l i{font-style:normal;flex:0 0 1.2em;text-align:center}
@@ -217,32 +227,63 @@ CSS = """<style id="hfcss">
 .hf-more{display:block;margin:12px auto 0;border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:9px 18px;font-size:.9rem;cursor:pointer}
 .hf-none{background:#fff8f2;border-radius:12px;padding:12px;font-size:.9rem}
 .hf-on .hf-static{display:none}
+.hf-sos{display:block;margin:0 0 10px;padding:10px 12px;border-radius:12px;background:#fdecea;color:#b3261e;font-weight:800;font-size:.9rem;text-decoration:none}
+.hf-sos::after{content:" →"}
+.hf-p input{flex:1 1 100%;min-width:0;font-size:.95rem;padding:9px 10px;border-radius:10px;border:1px solid #d9c9bb}
+.hf-det{border-top:1px solid #f5ebe2;padding-top:6px;margin-top:2px}
+.hf-det summary{cursor:pointer;font-weight:700;font-size:.88rem;color:#a8410a;padding:6px 0;list-style:none}
+.hf-det summary::-webkit-details-marker{display:none}
+.hf-det summary::after{display:none!important;content:none!important}
+.hf-det summary{background:none!important;box-shadow:none!important;border:0!important}
+.hf-det summary::before{content:"＋ "}.hf-det[open] summary::before{content:"－ "}
+.hf-det summary span{margin-left:6px;font-size:.78rem;color:#fff;background:#e8590c;border-radius:999px;padding:1px 7px}
+.hf-det summary span:empty{display:none}
+.hf-alt{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.hf-alt button,.hf-alt a{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:7px 11px;font-size:.85rem;color:#3c2f26;text-decoration:none;cursor:pointer}
+@media (min-width:760px){.hf-list{grid-template-columns:1fr 1fr}.hf-p select{flex:0 0 14em}.hf-p input{flex:1 1 auto}.hf-need{grid-template-columns:repeat(3,1fr)}.hf-c{flex-wrap:wrap;overflow:visible;margin:0;padding:0}}
 </style>"""
 
 
-def _btns(g, items, more_after=None):
-    out = []
-    for i, (k, lab) in enumerate(items):
-        x = ' class="hf-x"' if more_after is not None and i >= more_after else ""
-        out.append(f'<button type="button" data-g="{g}" data-v="{k}" aria-pressed="false"{x}>{lab}</button>')
-    if more_after is not None and len(items) > more_after:
-        out.append('<button type="button" class="hf-mo">ほかも見る</button>')
-    return "".join(out)
+def _btns(g, items, more_after=None, extra=False):
+    x = ' class="hf-x"' if extra else ""
+    return "".join(f'<button type="button" data-g="{g}" data-v="{k}" aria-pressed="false"{x}>{lab}</button>' for k, lab in items)
+
+
+NEED = [("", "指定なし"), ("night", "夜間・救急"), ("sunhol", "日曜・祝日"), ("h24", "24時間"), ("visit", "往診"), ("spec", "専門診療")]
 
 
 def html(e, emg_opts, depts, preset="", pref="", city=""):
-    """さがす欄の箱。preset＝最初から押しておくボタン（例 night）、pref・city＝最初に選んでおく場所。"""
+    """さがす欄の箱。最初に見えるのは 地域・動物・診療ニーズ の3つだけ。ほかは「詳しい条件」の中。
+    preset＝最初から選んでおく条件（例 night）、pref・city＝最初に選んでおく場所。"""
     d_items = [("d:" + n, n) for n in depts]
+    need = "".join(f'<button type="button" data-need="{k}" aria-pressed="{"true" if (k == preset or (not k and not preset)) else "false"}">{lab}</button>' for k, lab in NEED)
     return (CSS + f'<div class="hf" id="hf" data-hf data-preset="{e(preset)}" data-pref="{e(pref)}" data-city="{e(city)}">'
-            f'<div class="hf-r"><span class="hf-l">どこで？</span><div class="hf-c hf-p"><select id="hospPref" aria-label="都道府県">{emg_opts}</select>'
-            f'<select id="hfCity" aria-label="市区町村"><option value="">市区町村すべて</option></select></div></div>'
-            f'<div class="hf-r"><span class="hf-l">うちの子は？</span><div class="hf-c">{_btns("a", ANIMALS)}</div></div>'
-            f'<div class="hf-r"><span class="hf-l">いつ診てほしい？</span><div class="hf-c">{_btns("w", WHEN)}</div></div>'
-            f'<div class="hf-r"><span class="hf-l">どんな病院？</span><div class="hf-c">{_btns("k", KIND)}</div></div>'
+            '<a class="hf-sos" href="#hf" data-sos>いま具合が悪いとき：夜間・救急の病院をさがす</a>'
+            f'<div class="hf-r"><span class="hf-l">どこで探しますか？</span><div class="hf-c hf-p"><select id="hospPref" aria-label="都道府県">{emg_opts}</select>'
+            f'<select id="hfCity" aria-label="市区町村" hidden><option value="">市区町村すべて</option></select>'
+            '<input id="hfQ" type="search" list="hfCities" enterkeyhint="search" placeholder="市区町村・駅名" aria-label="市区町村・駅名・住所・病院名でさがす"><datalist id="hfCities"></datalist></div></div>'
+            f'<div class="hf-r"><span class="hf-l">どの動物ですか？</span><div class="hf-c hf-w">{_btns("a", ANIMALS[:3] + [ANIMALS[5]], None)}<button type="button" class="hf-mo">その他</button>{_btns("a", ANIMALS[3:5] + ANIMALS[6:], None, True)}</div></div>'
+            f'<div class="hf-r"><span class="hf-l">どんな病院をお探しですか？</span><div class="hf-need">{need}</div></div>'
+            '<details class="hf-det" id="hfDet"><summary>詳しい条件で絞り込む<span id="hfDetN"></span></summary>'
             f'<div class="hf-r"><span class="hf-l">診療科目</span><div class="hf-c">{_btns("d", d_items)}</div></div>'
+            f'<div class="hf-r"><span class="hf-l">病院の種類</span><div class="hf-c">{_btns("k", KIND)}</div></div>'
+            f'<div class="hf-r"><span class="hf-l">診療の日・時間</span><div class="hf-c">{_btns("w", WHEN)}</div></div>'
             f'<div class="hf-r"><span class="hf-l">設備・サービス</span><div class="hf-c">{_btns("s", SVC)}</div></div>'
+            '</details>'
+            '<button type="button" class="hf-go" id="hfGo">この条件で病院を探す</button>'
             f'<div class="hf-foot"><p class="hf-sum" id="hfSum" aria-live="polite">都道府県を選ぶと、合う病院が下に並びます</p><button type="button" class="hf-clear" id="hfClear">条件をクリア</button></div>'
             f'</div><div class="hf-list" id="hfList"></div>')
+
+
+def near_prefs():
+    """都道府県ごとに、県庁所在地が近い県を3つ（結果が少ないときに近くの県の病院も出すため）。"""
+    import prefkeep, math
+    names = json.loads(prefkeep._PN); ll = json.loads(prefkeep._PL)
+    out = {}
+    for i, n in enumerate(names):
+        d = sorted(((ll[i][0] - p[0]) ** 2 + ((ll[i][1] - p[1]) * math.cos(math.radians(ll[i][0]))) ** 2, names[j]) for j, p in enumerate(ll) if j != i)
+        out[n] = [x[1] for x in d[:3]]
+    return out
 
 
 def write_js(ROOT, avail, pslug):
@@ -250,7 +291,7 @@ def write_js(ROOT, avail, pslug):
     body = open(os.path.join(HERE, "hosp_find.js"), encoding="utf-8").read()
     body = (body.replace("__SLUG__", json.dumps(pslug, ensure_ascii=False))
                 .replace("__LABEL__", json.dumps(LABEL, ensure_ascii=False))
-                .replace("__AVAIL__", json.dumps(avail, ensure_ascii=False, separators=(",", ":"))))
+                .replace("__NEAR__", json.dumps(near_prefs(), ensure_ascii=False, separators=(",", ":"))))
     js = "// 生成ファイル（tools/hosp_find.py）。手で直さない\n(function(){" + prefkeep.FN + prefkeep.GUESS + body + "\n})();\n"
     open(os.path.join(ROOT, "hosp.js"), "w", encoding="utf-8").write(js)
     return len(js.encode())
