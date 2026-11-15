@@ -239,7 +239,7 @@ def hotel_block():
     nCO = sum(1 for h in _H if h.get("cat_only"))
     nSep = sum(1 for h in _H if h.get("separate"))
     nSen = sum(1 for h in _H if h.get("senior"))
-    SRC = ("当サイトのペットホテルの一覧（各ホテルの公式サイトで確かめたこと）", "/pet-hotel/")
+    SRC = ("当サイトのペットホテルの一覧（各ホテルの公式サイトの情報）", "/pet-hotel/")
     rows = [
      dict(k=["l"], h="大型犬（25kg以上）", tag="体重",
           items=[f"一覧の{n}件のうち、大型犬を受けると公式サイトに書いているのは{nL}件でした。そのうち{nV}件は動物病院のホテルです",
@@ -262,7 +262,7 @@ def hotel_block():
     return ("breeds", {"title": "うちの子の体重・犬種で、ペットホテルを選ぶときのポイントを見る",
                        "lead": "当サイトのペットホテルの一覧を数えて分かったことを、体重・犬種ごとにまとめました。",
                        "rows": rows,
-                       "note": "数は当サイトの一覧に載せているホテル（各ホテルの公式サイトで確かめたこと）を数えたものです。公式サイトに書いていないことは「しない」という意味ではありません。"})
+                       "note": "数は当サイトの一覧に載せているホテル（各ホテルの公式サイトの情報）を数えたものです。公式サイトに書いていないことは「しない」という意味ではありません。"})
 
 # ---- 老犬ホーム：当サイトの一覧（rojin.json）の「受ける動物」の欄を数えたこと ----
 _R = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "rojin.json"), encoding="utf-8"))
@@ -274,7 +274,7 @@ def rojin_block():
     big_c = [r for r in _R if "大型" in _anim(r) and "相談" in _anim(r)]
     cat = [r for r in _R if "猫" in _anim(r) and "猫は受けていません" not in _anim(r) and "猫は相談" not in _anim(r)]
     cat_only = [r for r in _R if _anim(r).startswith("猫")]
-    SRC = ("当サイトの老犬ホームの一覧（各施設の公式サイトで確かめたこと）", "/rojin-home/")
+    SRC = ("当サイトの老犬ホームの一覧（各施設の公式サイトの情報）", "/rojin-home/")
     rows = [
      dict(k=["l"], h="大型犬（25kg以上）", tag="体重",
           items=[f"一覧の{n}施設のうち、大型犬を受ける・大型犬の料金区分があると書いているのは{len(big)}施設、大型犬は「相談」と書いているのが{len(big_c)}施設でした",

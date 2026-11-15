@@ -1,7 +1,7 @@
 # [B] SEO：ペット火葬場・霊園を施設1つずつのページにする（/sougi/<県>/<id>/）。試しの30施設。
-# 戦略担当 2026-11-08「月間100万PVを最短で」の打ち手1（公式サイトで確かめた施設を施設ページに）。品質の関門：
+# 戦略担当 2026-11-08「月間100万PVを最短で」の打ち手1（公式サイトに書いてある施設を施設ページに）。品質の関門：
 #  確かめた項目が3つ以上（市区町村・できること・料金の例）・出どころ（公式サイト）と確認日を書く・週200ページまで・4週後の登録率6割を見てから広げる。
-# 書くのは tools/sougi_facilities.json の値（公式サイトで確かめた名前・市区町村・できること・料金の例）と、そこから数えたことだけ。
+# 書くのは tools/sougi_facilities.json の値（公式サイトに書いてある名前・市区町村・できること・料金の例）と、そこから数えたことだけ。
 # 電話番号・番地・順位・おすすめは書かない。書いていないこと＝「しない」ではなく「公式サイトに書いていない」。言い方はやさしく。
 # 各ページに「ここまでのペットタクシー」（facility.js の facility_taxi）・問い合わせ文（copy_inquiry）・口コミの星（reviews.js）。
 import json, os
@@ -37,7 +37,7 @@ def facts(f):
     for k, lab, note in SVC:
         if _has(f, k): out.append((lab, f"あり（{note}）"))
     if f.get("price"): out.append(("料金の例", f["price"]))
-    # [B] 11/14 Nori「めちゃめちゃ濃くして」：施設ページだけに出す、公式サイトで確かめた項目（{"k","v"}）
+    # [B] 11/14 Nori「めちゃめちゃ濃くして」：施設ページだけに出す、公式サイトに書いてある項目（{"k","v"}）
     out += [(x["k"], x["v"]) for x in f.get("more", [])]
     return out
 
@@ -153,7 +153,7 @@ def render(ctx, f):
   <div class="wrap">
     <div class="emg">
       <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts">{"".join(f"<li>{e(x)}</li>" for x in pts)}</ul></div>
-      <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">公式サイトで確かめたこと</h2><div class="tbl"><table class="pp-tbl"><thead><tr><th>項目</th><th>内容</th><th>出どころ</th></tr></thead><tbody>{rows}</tbody></table></div></div>
+      <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">公式サイトに書いてあること</h2><div class="tbl"><table class="pp-tbl"><thead><tr><th>項目</th><th>内容</th><th>出どころ</th></tr></thead><tbody>{rows}</tbody></table></div></div>
       {card}
       {_cmp(e, f)}
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{faq_html}</dl></div>

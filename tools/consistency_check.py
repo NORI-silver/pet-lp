@@ -61,7 +61,7 @@ for pid, did in OPEN.items():
     if not c.get("shop"): NG.append(f"{nm}：お店の場所（SHOP）がない。お迎えの範囲で候補をしぼれない")
     t = (LIC.get(did) or {}).get("transport")
     if t not in ("黒ナンバー", "緑ナンバー", "届出"):
-        NG.append(f"{nm}：運送の届出（黒ナンバー・緑ナンバー）が licenses.json にない。申し込みの答えか公式サイトで確かめて入れる（白ナンバーとは提携しない）")
+        NG.append(f"{nm}：運送の届出（黒ナンバー・緑ナンバー）が licenses.json にない。申し込みの答えか公式サイトの情報をもとに入れる（白ナンバーとは提携しない）")
 
 # 2. お迎えの範囲と都道府県
 for did, pv in PROVIDER.items():

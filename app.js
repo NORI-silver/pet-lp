@@ -1083,7 +1083,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       a.textContent = "公式サイトで予約のしかたを見る ↗"; el.appendChild(a);
       $("taxiList").appendChild(el);
     });
-    $("taxiNote").textContent = "運賃の目安は、各社の公式サイトの運賃（メーター）で道のりから計算し、呼んだときの迎車料金と時間指定の料金を足して100円単位にまるめたものです（夜22時〜朝5時は2割増）。渋滞や道順で実際の運賃は変わり、有料道路の料金は別です。各社の情報は" + TAXIS.checked.replace(/^(\d+)-0?(\d+)-0?(\d+)$/, "$1年$2月$3日") + "に確認しました。";
+    $("taxiNote").textContent = "運賃の目安は、各社の公式サイトの運賃（メーター）で道のりから計算し、呼んだときの迎車料金と時間指定の料金を足して100円単位にまるめたものです（夜22時〜朝5時は2割増）。渋滞や道順で実際の運賃は変わり、有料道路の料金は別です。各社の情報は" + TAXIS.checked.replace(/^(\d+)-0?(\d+)-0?(\d+)$/, "$1年$2月$3日") + "時点のものです。";
     box.hidden = false;
   }
 
@@ -1675,7 +1675,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var tabs = $("modeTabs"), box = $("emgBox");
     tabs.hidden = false;
     $("emgNote").textContent = "当サイトとは別の会社・病院です（" + EMG.checked + "時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、お問い合わせからお知らせください。急ぎでなければ、「空き状況・料金の問い合わせ」タブからお問い合わせください（お迎えは依頼から3時間以上あと）。車で行く時間と道のりは、OpenStreetMap の道路データ（© OpenStreetMap contributors）で計算しています。";
-    // 病院：名前は公式サイトへのリンク。どんな病院か・所在地（公式サイトで確かめたものだけ）と口コミの星も出す（リンクの中にリンクは置けないので枠は div）
+    // 病院：名前は公式サイトへのリンク。どんな病院か・所在地と口コミの星も出す（リンクの中にリンクは置けないので枠は div）
     function item(x, sub){
       var d = document.createElement("div"), a = document.createElement("a");
       d.className = "emg-item emg-co";

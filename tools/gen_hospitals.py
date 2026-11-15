@@ -1,6 +1,6 @@
 # お金を取らない情報ページ「条件でさがす動物病院」（/hospital/）。gen_areas.py が読み込んで使う。
 # Nori 2026-11-02「病院は？全部マネタイズじゃなくていい。SEO的なコンテンツでもいい」「全国で」「口コミもつけて」。
-# 守ること：病院からお金をもらわない。順位や「おすすめ」をつけない。電話番号は載せない。公式サイトで確かめたことだけ書く。
+# 守ること：病院からお金をもらわない。順位や「おすすめ」をつけない。電話番号は載せない。公式サイトに書いてあることだけ書く。
 # データ：夜間・救急＝tools/emergency.json（緊急タブと同じ）、往診・猫専門・エキゾチック・大型犬の設備＝tools/hospitals.json。
 import json, os, re
 import prefkeep
@@ -71,7 +71,7 @@ def item_html(e, cond, h):
         extra += f'<small>診てもらえる動物：{e(h["animals"])}</small>'
     if h.get("addr"):
         extra += f'<small>所在地：{e(h["addr"])}</small>'
-    # [C] 2026-11-14 公式サイトで確かめた項目（facts）をカードに。出どころと確認日つき
+    # [C] 2026-11-14 公式サイトに書いてある項目（facts）をカードに。出どころと確認日つき
     fs = [f for f in h.get("facts", []) if f["k"] not in ("往診の地域", "対象の動物")]
     if fs:
         ck = max(f["checked"] for f in fs)
@@ -96,7 +96,7 @@ def _taxi(h):
     return f'<a class="emg-taxi" href="/?to={quote(h["addr"])}#form">この病院までのペットタクシーの料金をくらべる →</a>'
 
 def _night_answer(e, rows):
-    """[C] 2026-11-14 Nori「動物病院の内容うすすぎ」：夜間の一覧のいちばん上に答えの箱（数は公式サイトで確かめた事実から数える）。"""
+    """[C] 2026-11-14 Nori「動物病院の内容うすすぎ」：夜間の一覧のいちばん上に答えの箱（数は公式サイトに書いてある事実から数える）。"""
     import visual as _V, guides_hospital as _G
     hs = {h["id"]: h for v in rows.values() for h in v}
     hf = {x["id"]: x for x in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "night_hospital_facts.json"), encoding="utf-8"))["items"]
@@ -109,8 +109,8 @@ def _night_answer(e, rows):
     far = sum(1 for pf, v in rows.items() if v and all(re.search(r"（[^）]+[都道府県]）$", h.get("city") or "") for h in v))
     kv = [("夜間に診てもらえる動物病院は？", f"全国{len(hs)}院を都道府県ごとに載せています。下の都道府県をえらぶと、受付時間・所在地・公式サイトが出ます。県の中に見つからない{far}県は、近くの県の病院を載せています。"),
           ("夜間の診察料はいくら？", f"公式サイトに金額のある{_G.N_FEE}院では、基本の診察料のまん中が{_G.MED:,}円（税込にそろえて{_G.LO:,}〜{_G.HI:,}円）。検査や処置を合わせると2万〜5万円ほどが多いです。"),
-          ("行く前にすることは？", f"必ず電話です。公式サイトを確かめた{len(hf)}院のうち{call}院が、来院前の電話を求めています。症状・いつから・種類・体重を伝えてください。")]
-    tiles = [(f"{len(hs)}院", "公式サイトで確かめた夜間・救急の動物病院"), (f"{n24}院", "受付時間に「24時間」と書いている病院"),
+          ("行く前にすることは？", f"必ず電話です。載せている{len(hf)}院のうち{call}院が、来院前の電話を求めています。症状・いつから・種類・体重を伝えてください。")]
+    tiles = [(f"{len(hs)}院", "載せている夜間・救急の動物病院"), (f"{n24}院", "受付時間に「24時間」と書いている病院"),
              (f"{_G.MED:,}円", "夜間の基本の診察料のまん中（税込にそろえて）"), (f"{eq}院", "CT・MRIがあると書いている病院")]
     li = "".join(f'<li><b class="k">{e(q)}</b>{e(a)}</li>' for q, a in kv)
     return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">夜間・救急の動物病院のポイント</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}'
@@ -118,7 +118,7 @@ def _night_answer(e, rows):
             f'<a href="/guide/night-vet-fee/">夜間の動物病院の料金の相場と、夜に受診したほうがいい症状</a>にまとめました。都道府県のページには、病院ごとの料金・対象の動物・設備・お支払い・駐車場をくらべる表があります。</p></div>')
 
 def _visit_answer(e, rows):
-    """[C] 2026-11-14 往診の一覧のいちばん上に答えの箱と、公式サイトで確かめた往診料・できること・できないことをくらべる表。"""
+    """[C] 2026-11-14 往診の一覧のいちばん上に答えの箱と、公式サイトに書いてある往診料・できること・できないことをくらべる表。"""
     import visual as _V
     hs = list({h["id"]: h for v in rows.values() for h in v}.values())
     fx = [h for h in hs if h.get("facts")]
@@ -131,8 +131,8 @@ def _visit_answer(e, rows):
     kv = [("往診の動物病院は？", f"全国{len(hs)}院を、{prefs}都道府県に分けて載せています。往診の地域は病院ごとに決まっているので、カードの「往診エリア」で家が入るかを確かめてください。"),
           ("往診料はいくら？", (f"公式サイトに金額のある病院では、往診料は{ys[0]:,}〜{ys[-1]:,}円ほど（無料の病院もあります）。距離で上がる病院が多く、ほかに診察料・検査・お薬の料金がかかります。" if len(ys) >= 2 else "病院ごとに違います。距離で上がる病院が多いです。")),
           ("家で何ができる？", f"診察・血液や尿の検査・注射・点滴・ワクチンなどは家でできる病院が多いです。手術・レントゲン・入院は家ではできないと書いている病院が{ng}院あり、そのときは設備のある病院を紹介してくれます。")]
-    tiles = [(f"{len(hs)}院", "公式サイトで確かめた往診の動物病院"), (f"{len(fx)}院", "往診料・できることなどを公式サイトで確かめた病院"),
-             (f"{mitori}院", "家での看取り・終末期のケアを書いている病院（確かめた病院のうち）"), (f"{exo}院", "犬・猫のほかの動物も診ると書いている病院")]
+    tiles = [(f"{len(hs)}院", "載せている往診の動物病院"), (f"{len(fx)}院", "往診料・できることなどを公式サイトに書いてある病院"),
+             (f"{mitori}院", "家での看取り・終末期のケアを書いている病院（載せている病院のうち）"), (f"{exo}院", "犬・猫のほかの動物も診ると書いている病院")]
     li = "".join(f'<li><b class="k">{e(q)}</b>{e(a)}</li>' for q, a in kv)
     def cell(h, k): return e(fv(h, k)) or "—"
     tx = [h for h in fx if sum(1 for k in ("往診料", "受付時間", "家でできること", "家でできないこと", "支払い方法") if fv(h, k)) >= 3]
@@ -143,7 +143,7 @@ def _visit_answer(e, rows):
             f'<table><thead><tr><th>病院</th><th>往診料</th><th>受付時間</th><th>家でできること</th><th>家でできないこと</th><th>お支払い</th></tr></thead><tbody>{rows_h}</tbody></table></div>')
 
 def _cat_answer(e, rows):
-    """[C] 2026-11-14 猫専門の一覧の上に答えの箱と、公式サイトで確かめた予約・猫にやさしい工夫・設備をくらべる表。"""
+    """[C] 2026-11-14 猫専門の一覧の上に答えの箱と、公式サイトに書いてある予約・猫にやさしい工夫・設備をくらべる表。"""
     import visual as _V
     hs = list({h["id"]: h for v in rows.values() for h in v}.values())
     fx = [h for h in hs if h.get("facts")]
@@ -154,9 +154,9 @@ def _cat_answer(e, rows):
     park = sum(1 for h in fx if fv(h, "駐車場"))
     prefs = len([p for p, v in rows.items() if v])
     kv = [("猫専門の動物病院は？", f"全国{len(hs)}院を{prefs}都道府県に分けて載せています。猫だけを診る病院なので、待合室で犬に会うことがありません。"),
-          ("予約はいる？", f"公式サイトを確かめた{len(fx)}院のうち{rsv}院が予約制か予約優先です。予約なしで行ける病院は{free}院。行く前に公式サイトか電話で確かめてください。"),
+          ("予約はいる？", f"載せている{len(fx)}院のうち{rsv}院が予約制か予約優先です。予約なしで行ける病院は{free}院。行く前に公式サイトか電話で確かめてください。"),
           ("猫にやさしい病院の目じるしは？", f"国際ねこ医学会（ISFM）の「キャット・フレンドリー・クリニック」の認定があります。最高位のゴールドと書いている病院は{gold}院です。")]
-    tiles = [(f"{len(hs)}院", "公式サイトで確かめた猫専門の動物病院"), (f"{gold}院", "キャット・フレンドリー・クリニックのゴールド"),
+    tiles = [(f"{len(hs)}院", "載せている猫専門の動物病院"), (f"{gold}院", "キャット・フレンドリー・クリニックのゴールド"),
              (f"{rsv}院", "予約制・予約優先と書いている病院"), (f"{park}院", "駐車場か駐車料金の負担を書いている病院")]
     li = "".join(f'<li><b class="k">{e(q)}</b>{e(a)}</li>' for q, a in kv)
     def cell(h, k): return e(fv(h, k)) or "—"
@@ -191,9 +191,9 @@ def _exotic_answer(e, rows):
     rep = sum(1 for h in fx if re.search("爬虫類|トカゲ|ヘビ|カメ", fv(h, "診る動物")))
     prefs = len([p for p, v in rows.items() if v])
     kv = [("うさぎ・鳥・爬虫類を診てくれる病院は？", f"全国{len(hs)}院を{prefs}都道府県に分けて載せています。どの動物を診るかは病院ごとに違うので、カードの「診る動物」で、うちの子の種類が入っているかを確かめてください。"),
-          ("予約はいる？", f"公式サイトを確かめた{len(fx)}院のうち{rsv}院が予約制か予約優先です。小さな動物は待ち時間も負担になるので、先に予約してから行くのがおすすめです。"),
+          ("予約はいる？", f"載せている{len(fx)}院のうち{rsv}院が予約制か予約優先です。小さな動物は待ち時間も負担になるので、先に予約してから行くのがおすすめです。"),
           ("犬・猫と一緒の病院？", f"犬・猫は診ないと書いている病院が{nodc}院、犬・猫も診る病院が{dc}院です。犬や猫の声やにおいが苦手な子は、犬・猫を診ない病院を選ぶと落ち着きやすいです。")]
-    tiles = [(f"{len(hs)}院", "公式サイトで確かめたエキゾチック専門の動物病院"), (f"{rep}院", "爬虫類（カメ・トカゲ・ヘビなど）も診ると書いている病院"),
+    tiles = [(f"{len(hs)}院", "載せているエキゾチック専門の動物病院"), (f"{rep}院", "爬虫類（カメ・トカゲ・ヘビなど）も診ると書いている病院"),
              (f"{nodc}院", "犬・猫は診ないと書いている病院"), (f"{ct}院", "CTがあると書いている病院")]
     tx = [h for h in fx if sum(1 for k in ("診る動物", "予約のしかた", "休診日", "設備", "支払い方法", "駐車場") if fv(h, k)) >= 3]
     return _spec_box(e, "エキゾチック専門の動物病院のポイント", kv, tiles, "診る動物・予約・設備をくらべる",
@@ -266,7 +266,7 @@ def render_cond(cond, ctx):
       <p class="emg-free">この一覧は無料の情報です。病院からお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金や受け入れは、それぞれの病院に直接おたずねください。</p>
       <div class="emg-tips"><h4>{e(cond["short"])}の病院にかかるときに</h4><dl>{tips}</dl>
       <p class="emg-tips-note">ここに書いたのは一般的な心がけです。ペットの様子にあわせて、病院の指示にしたがってください。</p></div>
-      <p class="emg-note">当サイトとは別の病院です（{e(checked)}に公式サイトで確かめた情報）。診療時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。口コミの星と本文は地図サービスから取り寄せたもので、当サイトの評価ではありません。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+      <p class="emg-note">当サイトとは別の病院です（{e(checked)}時点の、公式サイトに書いてある情報）。診療時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。口コミの星と本文は地図サービスから取り寄せたもので、当サイトの評価ではありません。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
 </section>
@@ -308,7 +308,7 @@ def render_hub(ctx):
                + "見つかった都道府県の数は、" + "、".join(f'{c["short"]}が{sum(1 for _, ps in ctx["emg_regions"] for pf in ps if per[c["slug"]].get(pf))}' for c in CONDS[1:]) + 'です。</p>')
     matrix = (f'<div class="sh" style="margin-top:28px"><h2>都道府県ごとの病院の数</h2></div>{summary}'
               '<div class="tbl"><table><thead><tr><th>都道府県</th>' + ''.join(f'<th>{e(c["short"])}</th>' for c in CONDS) + f'</tr></thead><tbody>{trs}</tbody></table></div>'
-              '<p class="emg-note">数字は、この一覧に載せている病院の数です（公式サイトで確かめられた病院だけ）。0（—）でも、その県に病院がないとは限りません。夜間・救急の数には、県の中に見つからないときに載せている近くの県の病院をふくみます。</p>')
+              '<p class="emg-note">数字は、この一覧に載せている病院の数です。0（—）でも、その県に病院がないとは限りません。夜間・救急の数には、県の中に見つからないときに載せている近くの県の病院をふくみます。</p>')
     # [B] 2026-11-15 Nori「このページひどすぎ」「自分の条件で探せるようにして」：
     # いちばん上で「どこで（県）」と「どんな病院」を選ぶと、その県の一覧へ。数の表は下にたたむ。
     import gen_vetclinics
@@ -384,7 +384,7 @@ details.hnum{margin-top:24px;border-top:1px solid #f0e2d6;padding-top:10px}detai
       {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
       {"@type":"ListItem","position":2,"name":"条件でさがす動物病院","item":url}]}, ensure_ascii=False, indent=1) + '\n</script>'
     return ctx["head"]("条件でさがす動物病院（夜間・救急／往診／猫専門）｜全国47都道府県｜ペットタクシー予約窓口",
-      "夜間・救急、自宅に来てくれる往診専門、猫だけを診る猫専門。条件に合う動物病院を全国47都道府県から探せる無料の一覧です。公式サイトで確かめた受付時間・所在地と、口コミの星をまとめています。", url, ld) + f"""
+      "夜間・救急、自宅に来てくれる往診専門、猫だけを診る猫専門。条件に合う動物病院を全国47都道府県から探せる無料の一覧です。公式サイトに書いてある受付時間・所在地と、口コミの星をまとめています。", url, ld) + f"""
 <main>
 <section class="area-hero" style="padding-bottom:4px;min-height:0">
   <div class="wrap">
@@ -395,7 +395,7 @@ details.hnum{margin-top:24px;border-top:1px solid #f0e2d6;padding-top:10px}detai
 <section style="padding-top:8px">
   <div class="wrap">
     {finder(ctx)}
-    <p class="emg-note" style="margin-top:18px">病院からお金をもらわず、順位もつけていません。公式サイトや獣医師会の一覧で確かめた病院だけを載せています。まだ載っていない県や病院は、見つけしだい足していきます。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+    <p class="emg-note" style="margin-top:18px">病院からお金をもらわず、順位もつけていません。公式サイトや獣医師会の一覧に載っている病院だけを載せています。まだ載っていない県や病院は、見つけしだい足していきます。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
   </div>
 </section>
 <section style="padding-top:0">

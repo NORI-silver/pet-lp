@@ -1,7 +1,7 @@
 # [B] SEO：情報ページ（老犬ホーム・出張トリミング・ドッグトレーナー・ペットシッター）の都道府県ごとのページ（/<カテゴリ>/<県のslug>/）。
 # Nori 2026-11-02「SEOをまずは強化したいので、SEOと相性がよいものを優先」。「老犬ホーム 千葉」のような 地域×カテゴリ の検索で、
 # その県の一覧だけのページが出るようにする（全国のページは1つのURLで、県の選択はブラウザの中だけだったため）。
-# 中身は全国のページと同じデータ（公式サイトで確かめたことだけ）。県ごとの数・条件の数・よくある質問は自動で数える。順位・料金・電話番号なし。
+# 中身は全国のページと同じデータ（公式サイトの情報）。県ごとの数・条件の数・よくある質問は自動で数える。順位・料金・電話番号なし。
 # 1件もない県のページは作らない（全国のページに「まだ載せていません」と出る）。件数が少ない県は、同じ地方のほかの県のページへのリンクを出す。
 import json, os
 import gen_dogrun
@@ -81,8 +81,8 @@ def fact_table_html(e, cat, pf, rs):
     srcs = "".join(f'<li><a href="{e(it["url"])}" target="_blank" rel="noopener">{e(it["name"])}の公式サイト</a></li>' for it in hs)
     out += ('<div class="tbl"><table class="pp-tbl"><thead><tr><th>名前</th>' + "".join(f"<th>{e(lab)}</th>" for lab, _ in cols) +
             f'</tr></thead><tbody>{rows}</tbody></table></div>'
-            f'<p class="emg-tips-note">「—」は公式サイトに書いていない・見つからなかった項目です（「しない」という意味ではありません）。{_jd(dates[-1] if dates else "")}までに公式サイトで確かめました。料金は変わることがあるので、頼む前に必ず公式サイトでご確認ください。</p>'
-            f'<details><summary>確かめた公式サイト</summary><ul>{srcs}</ul></details></div>')
+            f'<p class="emg-tips-note">「—」は公式サイトに書いていない・見つからなかった項目です（「しない」という意味ではありません）。{_jd(dates[-1] if dates else "")}時点の、公式サイトに書いてある情報です。料金は変わることがあるので、頼む前に必ず公式サイトでご確認ください。</p>'
+            f'<details><summary>出どころの公式サイト</summary><ul>{srcs}</ul></details></div>')
     return out
 
 
@@ -93,7 +93,7 @@ import re as _re
 def answer_html(e, cat, pf, rs, faq, facts):
     import visual as _V
     n, unit = len(rs), cat["unit"]
-    tiles = [(f"{n}{unit}", f"{pf}で公式サイトを確かめた{cat['name']}")]
+    tiles = [(f"{n}{unit}", f"{pf}で、この一覧に載せている{cat['name']}")]
     pk = cat.get("price_key", "料金")
     ys = sorted(f["yen"] for f in (_fv(it, pk) for it in rs) if f and f.get("yen"))
     if len(ys) >= 2: tiles.append((f"{ys[0]:,}〜{ys[-1]:,}円", cat.get("price_tile", "公式サイトに書いてある料金の幅")))
@@ -125,7 +125,7 @@ def render_pref(ctx, cat, pf, rows):
     if near:
         near_html = (f'<p>{e(lab)}のほかの県：' + "、".join(f'<a href="{href(cat, p)}">{e(p)}の{e(name)}（{len(rows[p])}{e(unit)}）</a>' for p in near) + '</p>')
     title = cat["title_fn"](pf, rs, n) if cat.get("title_fn") else f'{pf}の{cat["title_word"]}｜{n}{unit}の一覧（{cat["title_tail"]}）｜ペットタクシー予約窓口'
-    desc = cat["desc_fn"](pf, rs, n) if cat.get("desc_fn") else f'{pf}の{name}を{n}{unit}、公式サイトで確かめた内容だけでまとめた無料の一覧です。' + cat["desc_tail"]
+    desc = cat["desc_fn"](pf, rs, n) if cat.get("desc_fn") else f'{pf}の{name}を{n}{unit}、公式サイトの情報をもとにまとめた無料の一覧です。' + cat["desc_tail"]
     faq = cat["faq"](pf, rs, n)
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     ld = '<script type="application/ld+json">\n' + json.dumps([
@@ -150,7 +150,7 @@ def render_pref(ctx, cat, pf, rows):
 <section class="area-hero">
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/{cat['slug']}/">{e(cat['h1'])}</a> › {e(pf)}</nav>
-    <h1><small>{n}{e(unit)}・公式サイトで確かめた内容だけ</small>{e(pf)}の{e(name)}</h1>
+    <h1><small>{n}{e(unit)}・公式サイトの情報をもとに</small>{e(pf)}の{e(name)}</h1>
     <p class="lede">{e(cat['lede'](pf, n))}</p>
   </div>
 </section>
@@ -158,7 +158,7 @@ def render_pref(ctx, cat, pf, rows):
   <div class="wrap">
     {answer_html(e, cat, pf, rs, faq, facts)}
     <div class="emg">
-      <p class="emg-free">{e(cat.get("free", "この一覧は無料の情報です。事業者からお金をもらっていません。おすすめ順や点数順ではありません。" + ("料金は公式サイトに書いてあるものだけを、確かめた日つきで載せています。" if any(it.get("facts") for it in rs) else "料金は載せていないので、それぞれに直接おたずねください。")))}</p>
+      <p class="emg-free">{e(cat.get("free", "この一覧は無料の情報です。事業者からお金をもらっていません。おすすめ順や点数順ではありません。" + ("料金は公式サイトに書いてあるものだけを、情報の時点つきで載せています。" if any(it.get("facts") for it in rs) else "料金は載せていないので、それぞれに直接おたずねください。")))}</p>
       {fact_table_html(e, cat, pf, rs)}
       {cat["extra"](e, pf) if cat.get("extra") else ""}
       {cat["fac_chips"](e, pf) + chr(10) + "      " if cat.get("fac_chips") else ""}<section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(cat.get("list_h", name))}（{e(pf)}・{n}{e(unit)}）</h2>{cards}</section>
@@ -168,7 +168,7 @@ def render_pref(ctx, cat, pf, rows):
       <div class="emg-tips"><h4>{e(cat['before_title'])}</h4><dl>{"".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in cat['before'])}</dl></div>
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
       {pref_nav(cat, e, rows, ctx["emg_regions"], cur=pf)}{chr(10) + "      " + cat["fac_biz"](e) if cat.get("fac_biz") else ""}
-      <p class="emg-note">当サイトとは別の事業者です（{e(cat['checked'])}に公式サイトで確かめた情報）。内容は変わることがあるので、頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+      <p class="emg-note">当サイトとは別の事業者です（{e(cat['checked'])}時点の、公式サイトに書いてある情報）。内容は変わることがあるので、頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
 </section>
@@ -218,4 +218,4 @@ def area_snippet(pf, e, cats):
         if pf in rows:
             ls.append(f'<a href="{href(cat, pf)}">{e(pf)}の{e(cat["name"])}（{len(rows[pf])}{e(cat["unit"])}）</a>')
     if not ls: return ""
-    return f'<h3>{e(pf)}のペットのサービス</h3><p>公式サイトで確かめた一覧：' + "、".join(ls) + '。</p>'
+    return f'<h3>{e(pf)}のペットのサービス</h3><p>載せている一覧：' + "、".join(ls) + '。</p>'
