@@ -6,7 +6,7 @@
 - 写真はサイトの写真（https://pet.shiokonbu.com/<photo>）。文字やロゴ入りの画像は使わない（Nori 2026-11-02）。
 - リンクは貼らない（Nori 2026-11-02）。文の決まりは schedule_x.py の BAN で確かめる。
 - キーは GitHub の Secret（META_IG_TOKEN・META_THREADS_TOKEN）。ないときは何もしないで終わる。
-- Instagram と Threads は予約ができないので、毎日20時に GitHub Actions がその場で出す（.github/workflows/sns-meta.yml）。
+- Instagram と Threads は予約ができないので、Threads毎日8時・Instagram月水金19時に GitHub Actions がその場で出す（.github/workflows/sns-meta.yml）。
 
 使い方: python3 sns/post_meta.py [--dry] [--only ig|threads] [--check]
 """
