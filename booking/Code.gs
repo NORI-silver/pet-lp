@@ -1580,7 +1580,7 @@ function sendRideCheck_(id) {
   toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】無事に送迎できましたか？（受付番号 ' + id + '）' + legTag_(r),
     r['お名前'] + ' 様\n\n先日はご利用ありがとうございました。\n' + fmt_(r['お迎え予定']) + ' の「' + r['決定した提携先'] + '」の送迎について、ひとつだけ教えてください。\n\n' +
     '▼ 送迎できたか・キャンセルしたかを答える（1回押すだけです）\n' + rideUrl_(id) + '\n\n' +
-    'よろしければ、そのあとに出るアンケート（星を押すだけの3問）にもお答えください（答えなくても大丈夫です）。\n\n' +
+    'よろしければ、そのあとに出るアンケート（星を押すだけの3問）にもお答えください（任意です）。\n\n' +
     'サービスをよくするため、また提携の会社との確認のために使います。お答えの内容が、お客さまと会社とのやり取りに影響することはありません。', rideCheckHtml_(r, id));
   log_(id + ' 送迎の確認を送った');
 }
@@ -1595,7 +1595,7 @@ function rideCheckHtml_(r, id) {
       ['🚕', 'ペットタクシー', r['決定した提携先']],
       ['🕙', 'お迎え', fmt_(r['お迎え予定'])]
     ]) +
-    mailButton_('はい、送迎してもらいました', u + '&ans=done', 'このあと、星をタップするだけのアンケート（3問）があります。答えなくても大丈夫です') +
+    mailButton_('はい、送迎してもらいました', u + '&ans=done', 'このあと、星をタップするだけのアンケート（3問・任意）があります') +
     mailButtons2_([['キャンセルしました', u + '&ans=cancel'], ['予定と違いました', u + '&ans=other']]) +
     mailFine_([
       'サービスをよくするため、また提携の会社との確認のために使います。お答えの内容が、お客さまと会社とのやり取りに影響することはありません。',
@@ -1654,7 +1654,7 @@ function surveyForm_(id, r, ride) {
     '.stars label:active{transform:scale(1.25)}.stars input:checked~label{color:#ffa41c}.stars input:focus-visible+label{outline:2px solid #ff6a1a;border-radius:10px}' +
     '.sv .ends{display:flex;justify-content:space-between;font-size:.75rem;color:#8a837c;max-width:290px;margin:2px auto 0}</style>';
   var html = css + '<h2>' + (ride ? 'よろしければ、ご感想も教えてください' : 'よろしければ、かんたんなアンケートにもご協力ください') + '</h2>' +
-    '<p class="note">星をタップするだけです（3問）。' + (ride ? '答えなくても、そのまま「送る」を押せば大丈夫です。' : '答えなくても、このまま閉じて大丈夫です。') + 'お答えはサービスをよくするためだけに使い、サイトに載せたり、会社にお名前とあわせて伝えたりはしません。</p>' +
+    '<p class="note">星をタップするだけです（3問・任意）。' + (ride ? '星を選ばずに「送る」を押してもかまいません。' : '') + 'お答えはサービスをよくするためだけに使い、サイトに載せたり、会社にお名前とあわせて伝えたりはしません。</p>' +
     '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'survey') + hidden_('id', id) + hidden_('k', surveyKey_(id)) + hidden_('go', '1') + (ride ? hidden_('ride', ride) : '');
   Object.keys(SURVEY_Q).forEach(function (key) {
     html += '<div class="sv"><p class="sq">' + esc_(SURVEY_Q[key]) + '</p><div class="stars" role="radiogroup" aria-label="' + esc_(SURVEY_Q[key]) + '">';
@@ -1664,7 +1664,7 @@ function surveyForm_(id, r, ride) {
     }
     html += '</div><div class="ends"><span>いまひとつ</span><span>とてもよい</span></div></div>';
   });
-  html += '<p style="font-weight:700;margin:16px 0 4px">ひとこと（書かなくても大丈夫です）</p><textarea name="comment" maxlength="500" placeholder="よかったこと、こまったことなど"></textarea>' +
+  html += '<p style="font-weight:700;margin:16px 0 4px">ひとこと（任意）</p><textarea name="comment" maxlength="500" placeholder="よかったこと、こまったことなど"></textarea>' +
     '<p class="note">お名前・電話番号・住所は書かないでください。</p>' +
     '<button type="submit">' + (ride ? '送る' : 'アンケートを送る') + '</button></form>';
   return html;
@@ -1702,6 +1702,25 @@ function surveyPage_(q) {
   return page_('ありがとうございました', '<p>アンケートを受け付けました。いただいた声は、サイトとサービスをよくするために使わせていただきます。</p><p>またいつでもご利用ください。</p>');
 }
 
+// テスト：アンケートのメール（送迎の確認）を1通だけ送る（Nori 2026-11-15「テストで僕に送れる？」）。
+// 予約シートに「テスト」の行を1つ足して送る（お名前が「テスト」で始まるので集計には入らない。アンケートの答えも集計から外す）。会社には何も送らない。
+// to を省くと、このスクリプトを動かしている人のアドレスへ。例：sendTestRideCheck('あなたのアドレス')
+function sendTestRideCheck(to) {
+  to = String(to || Session.getEffectiveUser().getEmail() || '').trim();
+  if (!/^[^@\s]+@[^@\s]+$/.test(to)) throw new Error('送り先のメールアドレスがありません');
+  var sh = sheet_(SHEET_REQ);
+  ensureReqHeaders_(sh);
+  var head = sh.getRange(1, 1, 1, sh.getLastColumn()).getValues()[0];
+  var id = newId_(sh), now = new Date(), at = new Date(now.getTime() - 24 * 3600000);
+  var r = { '受付番号': id, '受付日時': now, '状態': ST.DONE, '都府県': '東京', 'お迎えの場所': '（テスト）', '行き先': '（テスト）', '希望日時': at, '片道・往復': '片道',
+    'お名前': 'テスト（アンケートの見本）', 'メール': to, '決定した提携先ID': 'TEST', '決定した提携先': 'ペットタクシー（テストの見本）', 'お迎え予定': at, '決定日時': now, '送迎確認': '', '依頼の種類': '問い合わせ' };
+  sh.appendRow(head.map(function (k) { return k in r ? r[k] : ''; }));
+  SpreadsheetApp.flush();
+  sendRideCheck_(id);
+  log_(id + ' テストの送迎の確認を送った（' + to + '）');
+  return id + ' を ' + to + ' に送りました';
+}
+
 /* ───────── 集計（「集計」タブ。1日1回 checkPending から作り直す。手で直さない） ─────────
    月ごと（受付日時の月）に、問い合わせ → 予約確定 → 取り消し・見つからず → 送迎の確認 → アンケート を数える。
    テストの依頼（お名前が「テスト」で始まる・運営のアドレスから）は数えない。個人情報を消したあとの行は見分けられないのでそのまま数える。 */
@@ -1710,13 +1729,13 @@ function updateSummary_(force) {
   var day = Utilities.formatDate(new Date(), TZ, 'yyyyMMddH'), props = PropertiesService.getScriptProperties();
   if (!force && props.getProperty('summary_hour') === day) return;
   props.setProperty('summary_hour', day);
-  var sh = sheet_(SHEET_REQ), vals = sh.getDataRange().getValues(), h = vals[0], m = {}, months = [];
+  var sh = sheet_(SHEET_REQ), vals = sh.getDataRange().getValues(), h = vals[0], m = {}, months = [], testIds = {};
   var admin = String(adminEmail_() || '').toLowerCase();
   var row0 = function (k) { if (!m[k]) { m[k] = { ask: 0, done: 0, cancel: 0, none: 0, open: 0, rode: 0, rcancel: 0, other: 0, noans: 0, sv: 0, satSum: 0, satN: 0 }; months.push(k); } return m[k]; };
   for (var i = 1; i < vals.length; i++) {
     var r = toObj_(h, vals[i]);
     if (!r['受付番号']) continue;
-    if (/^\s*テスト/.test(String(r['お名前'] || '')) || (admin && String(r['メール'] || '').trim().toLowerCase() === admin)) continue;
+    if (/^\s*テスト/.test(String(r['お名前'] || '')) || (admin && String(r['メール'] || '').trim().toLowerCase() === admin)) { testIds[String(r['受付番号'])] = 1; continue; }
     var t = r['受付日時'] instanceof Date ? r['受付日時'] : new Date(r['受付日時']);
     if (isNaN(t.getTime())) continue;
     var c = row0(Utilities.formatDate(t, TZ, 'yyyy-MM'));
@@ -1728,6 +1747,7 @@ function updateSummary_(force) {
   }
   var sv = sheet_(SHEET_SURVEY);
   if (sv && sv.getLastRow() > 1) sv.getRange(2, 1, sv.getLastRow() - 1, 7).getValues().forEach(function (v) {
+    if (testIds[String(v[1])] || String(v[2]) === 'TEST') return; // テストの答えは数えない
     var t = v[0] instanceof Date ? v[0] : new Date(v[0]);
     if (isNaN(t.getTime())) return;
     var c = row0(Utilities.formatDate(t, TZ, 'yyyy-MM'));
