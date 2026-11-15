@@ -372,6 +372,11 @@ CSS = """<style id="fccss">
 
 FIT_JS = '<script src="/fit.js" defer></script>'
 
+def _too_big(h):
+    """情報ページの重さの上限（tests/info-light.test.cjs の60KB）を超えるなら作りかえない（全部の施設を並べる全国のページ。県のページで見せる）"""
+    import gzip
+    return len(gzip.compress(h.encode("utf-8"), 9)) > 59 * 1024
+
 def build(ROOT):
     T = _fit_table()
     n = 0
@@ -411,6 +416,7 @@ def build(ROOT):
                         pos = em + len('<div class="emg">')
                         h2 = h2[:pos] + pn + h2[pos:]
                         if FIT_JS not in h2: h2 = h2.replace("</body>", FIT_JS + "\n</body>", 1)
+                        if _too_big(h2): print("faccard: 重すぎるので作りかえない", os.path.relpath(p, ROOT)); continue
                         open(p, "w", encoding="utf-8").write(h2); n += 1
                         continue
                     sec = h2.rfind('<section class="emg-pref"', 0, k)
@@ -420,6 +426,8 @@ def build(ROOT):
                         if q >= 0 and pos - q < 6000 and h2.count("<section", q, pos) <= 1: pos = min(pos, q)
                     h2 = h2[:pos] + pn + h2[pos:]
                     if FIT_JS not in h2: h2 = h2.replace("</body>", FIT_JS + "\n</body>", 1)
+            if h2 != h and _too_big(h2):
+                print("faccard: 重すぎるので作りかえない", os.path.relpath(p, ROOT)); continue
             if h2 != h:
                 open(p, "w", encoding="utf-8").write(h2); n += 1
     return n
