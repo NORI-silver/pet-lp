@@ -1396,7 +1396,21 @@
    "addr": "三重県四日市市尾平町3232-4",
    "services": "しつけ教室、犬の幼稚園、パピーレッスン、出張カウンセリング、ペットホテル、長期・終生預かり、ハイドロセラピー",
    "review_query": "Dog Answer 四日市市尾平町",
-   "review_name": "Dog Answer"
+   "review_name": "Dog Answer",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "一律の料金プランはなく、カウンセリング（対面か出張、1〜2時間ほど）のあとに、その子に合わせたプランと料金を提案",
+     "src": "https://www.dogschool-tanaka.jp/service/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対象の犬",
+     "v": "カウンセリングは生後60日の子犬から年齢を問わず。犬の幼稚園は犬種・年齢を問わず入園できる",
+     "src": "https://www.dogschool-tanaka.jp/service/",
+     "checked": "2026-11-15"
+    }
+   ]
   },
   {
    "id": "T087",
@@ -1410,7 +1424,21 @@
    "services": "出張訓練、預かり訓練、通い訓練、しつけ教室、ドッグホテル",
    "cert": "公認訓練士（JKC・日本警察犬協会・JSV会員）",
    "review_query": "田中警察犬訓練所 四日市市西坂部町",
-   "review_name": "ドッグスクールタナカ"
+   "review_name": "ドッグスクールタナカ",
+   "facts": [
+    {
+     "k": "初回・体験",
+     "v": "初回の相談は無料。無料の教室もある",
+     "src": "https://dog-school-tanaka.com/dogschool/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対象の犬",
+     "v": "パピーコースは生後2か月から6か月の子犬",
+     "src": "https://dog-school-tanaka.com/dogschool/",
+     "checked": "2026-11-15"
+    }
+   ]
   },
   {
    "id": "T088",
