@@ -2686,6 +2686,21 @@ var PINFO_EQUIP = ['ケージの貸し出し', 'キャリーの貸し出し', '�
 var PINFO_PAY = ['現金', 'クレジットカード', '電子マネー', 'QRコード決済', '銀行振込'];
 var PINFO_CRED_NO = ['動物取扱業（保管）の登録', '動物取扱業（輸送）の登録', '運送の届出（黒ナンバー）', 'タクシー事業の許可（緑ナンバー）']; // 番号が要るもの
 var PINFO_CRED = ['動物取扱業（保管）の登録', '動物取扱業（輸送）の登録', '運送の届出（黒ナンバー）', 'タクシー事業の許可（緑ナンバー）', '動物の賠償保険', '愛玩動物看護師', 'ペットシッター士', '動物介護士'];
+// 番号が要るか（登録・届出・許可）。資格・保険は番号の欄なし。番号は項目ごとに1つずつ（Nori 2026-11-15「対になる番号の入力とかない場合ってパターンある？」）
+function pinfoNeedNo_(c) { return PINFO_CRED_NO.indexOf(c) >= 0 || /の(登録|届出|許可)/.test(c); }
+// ほかの分野（ホテル・トリミング・トレーナーなど）にも同じページを広げる前提（Nori 2026-11-15「今後、ホテルやらトリミングやらトレーナーやらでも、どうようのやつやっていくつもり」）。
+// 分野ごとに違うもの（設備・お支払い・資格・特典・カードの見本・決まりのページ）はここにまとめ、画面と受付はこの設定だけを見る。いまはペットタクシー（taxi）だけ。
+// 掲載情報タブの「提携先ID」は分野をまたいで重ならないID：ペットタクシーは提携先シートの P…、ほかの分野は「hotel:◯◯」のように分野を前に付ける。
+// 新しい分野を足すときは、ここに1つ足し、ログインの相手（いまは partners_() と OPEN_PARTNERS）と pinfoPublic_ を読むカードの側をその分野にもつなぐ。
+var PINFO_CATS = {
+  taxi: { name: 'ペットタクシー', equip: PINFO_EQUIP, pay: PINFO_PAY, cred: PINFO_CRED, offers: PINFO_OFFER_FORM, photoKinds: PINFO_PHOTO_KINDS, sample: '/img/partner/card-sample.jpg', rules: '/partner/listing/' }
+};
+function pinfoCat_(pid) { var m = String(pid || '').match(/^([a-z]+):/); return m && PINFO_CATS[m[1]] ? m[1] : 'taxi'; }
+function pinfoConf_(pid) { return PINFO_CATS[pinfoCat_(pid)]; }
+// すでに分かっていること（公式サイト・提携の申し込み）。掲載情報をまだ送っていない会社は、はじめからこれを入れておく。
+// gen_areas.py が tools/licenses.json と display_companies.json の pay から、受付中の会社（OPEN_PARTNERS）の分だけ作る。キーは表示の会社のID（D…）
+/*PINFO_KNOWN*/var PINFO_KNOWN = {"De308905": {"pay": {"list": ["現金", "クレジットカード", "電子マネー", "QRコード決済"]}, "cred": {"list": ["運送の届出（黒ナンバー）", "動物の賠償保険"], "nos": {}, "until": ""}}, "D3661eb1": {"pay": {"list": ["現金", "電子マネー", "QRコード決済"]}, "cred": {"list": ["動物取扱業（保管）の登録", "動物取扱業（訓練）の登録", "運送の届出（黒ナンバー）", "愛玩動物飼養管理士1級"], "nos": {"動物取扱業（保管）の登録": "18東京都保第006003号", "動物取扱業（訓練）の登録": "18東京都訓第006003号"}, "until": "2028-08-08"}}, "D5598693": {"pay": {"list": ["現金", "クレジットカード", "電子マネー", "QRコード決済", "銀行振込"]}, "cred": {"list": ["運送の届出（黒ナンバー）", "介護の資格"], "nos": {}, "until": ""}}, "D13b7c6f": {"pay": {"list": ["現金", "クレジットカード", "QRコード決済"]}, "cred": {"list": ["運送の届出（黒ナンバー）", "動物の賠償保険"], "nos": {}, "until": ""}}, "Dd472236": {"pay": {"list": ["現金", "クレジットカード", "電子マネー", "QRコード決済"]}, "cred": {"list": ["運送の届出（黒ナンバー）", "動物の賠償保険"], "nos": {}, "until": ""}}, "D225080e": {"pay": {"list": ["現金", "クレジットカード", "電子マネー", "QRコード決済"]}, "cred": {"list": ["運送の届出（黒ナンバー）"], "nos": {}, "until": ""}}, "D0ec95b6": {"pay": {"list": ["現金", "クレジットカード", "電子マネー", "QRコード決済"]}, "cred": {"list": ["運送の届出（黒ナンバー）", "動物の賠償保険", "ペットケアアドバイザー", "ペットケアセラピスト"], "nos": {}, "until": ""}}, "Dcb3b5a2": {"pay": {"list": ["現金", "クレジットカード"]}, "cred": {"list": ["運送の届出（黒ナンバー）"], "nos": {}, "until": ""}}};/*/PINFO_KNOWN*/
+function pinfoKnown_(pid) { var d = (CONFIG.OPEN_PARTNERS || {})[pid]; return (d && PINFO_KNOWN[d]) || null; }
 // 載せられない言い方（docs/partner-info-rules.md の3）
 var PINFO_NG = [
   [/0\d{1,4}[-‐ー−\s]?\d{1,4}[-‐ー−\s]?\d{3,4}|\d{10,11}/, '電話番号'], [/https?:\/\/|www\.|\.(com|jp|net)\b/i, 'URL'], [/@[a-z0-9_.]{3,}|[^@\s]+@[^@\s]+\.[a-z]/i, 'メール・SNSのID'],
@@ -2710,7 +2725,8 @@ function pinfoSessionPid_(s, now) {
   if (!m || Number(m[2]) < (now || Date.now()) || m[3] !== sign_('pinfo-s:' + m[1] + ':' + m[2])) return '';
   return pinfoOpen_(m[1]) ? m[1] : '';
 }
-function pinfoPartner_(pid) { return partners_().filter(function(x) { return x.id === pid; })[0] || null; }
+var PINFO_PT_MEMO = null; // 1回の処理の中では提携先シートを1度だけ読む
+function pinfoPartner_(pid) { PINFO_PT_MEMO = PINFO_PT_MEMO || partners_(); return PINFO_PT_MEMO.filter(function(x) { return x.id === pid; })[0] || null; }
 // ログインのメールを頼む画面。登録のメールに届いたかどうかは、だれにも同じ文で答える（登録のアドレスを探られないように）
 function pinfoLogin_(q, msg) {
   var pid = q.t ? pinfoPid_(q.t) : '', pt = pid ? pinfoPartner_(pid) : null;
@@ -2743,7 +2759,15 @@ function pinfoReceipt_(pid, items) {
   mail_(pt.email, '【' + CONFIG.SERVICE_NAME + '】掲載情報を受け付けました', pt.name + ' さま\n\n掲載情報のページで、次の内容を受け付けました。運営者が確かめてから、お客さまが見るカードに出します。\n\n' +
     items.map(function(x) { return '・' + x; }).join('\n') + '\n\nお心当たりがないときは、このメールにそのまま返信してください。\n\n' + CONFIG.SERVICE_NAME);
 }
-function pinfoName_(pid) { var pt = partners_().filter(function(x) { return x.id === pid; })[0]; return pt ? pt.name : pid; }
+// 会社名は6時間の控えから（ページを開くたびに提携先シートを全部読まない。Nori 2026-11-15「サイトの読み込みが遅いので早くして」）
+function pinfoName_(pid) {
+  var c = null, k = 'PINFO_NAME_' + pid, hit = null;
+  try { c = CacheService.getScriptCache(); hit = c.get(k); } catch (e) {}
+  if (hit) return hit;
+  var pt = pinfoPartner_(pid), n = pt ? pt.name : pid;
+  try { if (c && pt) c.put(k, n, 21600); } catch (e) {}
+  return n;
+}
 function pinfoUrl_(pid) { return linkBase_() + '?a=pinfo&t=' + encodeURIComponent(demoToken_(pid)); }
 function pinfoRows_(pid) {
   var sh = sheet_(SHEET_PINFO);
@@ -2816,6 +2840,27 @@ function pinfoChips_(name, list, picked) {
     return '<label style="font-weight:400;margin:4px 0;display:inline-flex;gap:6px;align-items:center"><input type="checkbox" style="width:auto;display:inline;margin:0" name="' + name + '" value="' + esc_(x) + '"' + (picked.indexOf(x) >= 0 ? ' checked' : '') + '>' + esc_(x) + '</label>';
   }).join('') + '</div>';
 }
+// 反映のラグの説明（Nori 2026-11-15「各種反映は、リアルタイムではなくラグがあることも、書いておいて」）
+var PINFO_LAG_HTML = '<b>送った内容は、すぐにはカードに出ません。</b>運営者が確かめてから出します（ふつうは数日のうち）。確かめたあとも、お客さまの画面に出るまで<b>10分ほど</b>かかります。いまの状況は、いちばん下の「審査の状況」で見られます。';
+// 運営者の見本の画面で「入力済み」の見え方を見せるための例（実在の会社ではない）
+var PINFO_VIEW_KNOWN = { pay: { list: ['現金', 'クレジットカード', 'QRコード決済'] }, cred: { list: ['運送の届出（黒ナンバー）', '動物の賠償保険'], nos: {} } };
+function pinfoPre_(t) { return '<span style="display:inline-block;font-size:.78rem;font-weight:700;color:#1e6b34;background:#e6f4ea;border-radius:999px;padding:2px 10px;margin:0 0 6px">✓ ' + esc_(t) + '</span>'; }
+function pinfoPick_(o, keys) { var r = {}; keys.forEach(function(k) { if (pinfoNeedNo_(k)) r[k] = String((o || {})[k] || ''); }); return r; }
+// 許可・資格のデータをそろえる（前の形は番号が1つ（no）だけだったので、番号の要る最初の項目のものとして読む）
+function pinfoCredNos_(c) {
+  c = c || {}; var list = c.list || [], nos = {};
+  Object.keys(c.nos || {}).forEach(function(k) { nos[k] = c.nos[k]; });
+  if (c.no && !c.nos) { var f = list.filter(pinfoNeedNo_)[0]; if (f) nos[f] = c.no; }
+  return { list: list, nos: nos, until: c.until || '' };
+}
+// 許可・資格の選ぶ欄。登録・届出・許可は、選ぶとすぐ下に番号の欄が出る（CSS の :has。古いブラウザでは欄がいつも見える）
+function pinfoCredHtml_(list, cur) {
+  return '<style>.pcr .pno{margin:2px 0 6px 26px}.pcr:not(:has(input[type=checkbox]:checked)) .pno{display:none}.pcr .pno input:placeholder-shown{border-color:#e2560a}</style><div>' + list.map(function(x) {
+    var on = (cur.list || []).indexOf(x) >= 0;
+    return '<div class="pcr"><label style="font-weight:400;margin:4px 0;display:inline-flex;gap:6px;align-items:center"><input type="checkbox" style="width:auto;display:inline;margin:0" name="cred" value="' + esc_(x) + '"' + (on ? ' checked' : '') + '>' + esc_(x) + '</label>' +
+      (pinfoNeedNo_(x) ? '<div class="pno"><input name="no_' + esc_(x) + '" maxlength="60" placeholder="番号を入れてください" value="' + esc_((cur.nos || {})[x] || '') + '" aria-label="' + esc_(x) + 'の番号"></div>' : '') + '</div>';
+  }).join('') + '</div>';
+}
 function pinfoLatest_(rows, kind) {
   var r = rows.filter(function(v) { return v[3] === PINFO_KINDS[kind] && v[6] !== '直してください'; }).pop();
   try { return r ? JSON.parse(r[8] || '{}') : {}; } catch (e) { return {}; }
@@ -2842,7 +2887,10 @@ function pinfoViewPage_(q) {
 function pinfoPage_(q, view) {
   var pid = view ? '' : pinfoSessionPid_(q.s);
   if (!view && !pid) return pinfoLogin_(q, q.s ? 'ログインのリンクの期限が切れたか、正しくありません。もう一度メールで受け取ってください。' : '');
-  var name = view ? '見本ペットタクシー' : pinfoName_(pid), rows = view ? [] : pinfoRows_(pid), done = [], got = [];
+  var name = view ? '見本ペットタクシー' : pinfoName_(pid), rows = view ? [] : pinfoRows_(pid), done = [], got = [], errs = [];
+  var conf = pinfoConf_(pid), known = view ? PINFO_VIEW_KNOWN : (pinfoKnown_(pid) || {});
+  // すでに分かっている内容：前に送っていただいた内容 → なければ公式サイト・提携の申し込みでうかがった内容（Nori 2026-11-15「すでに回答もらってるものは入力済みになってるんだよね？」）
+  var base = function(kind) { var l = pinfoLatest_(rows, kind); if (l.list) return { v: l, src: 'sent' }; if (known[kind]) return { v: known[kind], src: 'known' }; return { v: {}, src: '' }; };
   if (q.go === '1' && !view) {
     var arr = function(k) { return [].concat(q[k] || []).map(String).filter(Boolean); };
     // 特典（同時に2つまで・終わりの日は必ず）
@@ -2850,42 +2898,52 @@ function pinfoPage_(q, view) {
     // （Nori 2026-11-15「何%オフの欄、何円オフの欄を作っておいて」「オフとか何円引きはそれぞれ期間入れられるようにして」）
     var offers = [], num = function(k) { return Number(String(q[k] || '').replace(/[^\d]/g, '')) || 0; };
     var today0 = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
-    PINFO_OFFER_FORM.forEach(function(k) {
+    conf.offers.forEach(function(k) {
       var o = PINFO_OFFERS.filter(function(y) { return y.k === k; })[0], n = o.unit ? num(k) : 0, on = o.unit ? !!n : q[k] === '1';
       if (!on) return;
-      if (o.unit && (n < o.min || n > o.max)) { done.push(o.t.replace('{n}', '◯') + 'は' + o.min.toLocaleString() + '〜' + o.max.toLocaleString() + o.unit + 'で入れてください'); return; }
+      if (o.unit && (n < o.min || n > o.max)) { errs.push(o.t.replace('{n}', '◯') + 'は' + o.min.toLocaleString() + '〜' + o.max.toLocaleString() + o.unit + 'で入れてください'); return; }
       var from = String(q[k + '_from'] || ''), until = String(q[k + '_until'] || ''), label = o.t.replace('{n}', n ? n.toLocaleString() : '');
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(until) || until < today0) { done.push('「' + label + '」の「いつまで」を入れてください'); return; }
-      if (from && (!/^\d{4}-\d{2}-\d{2}$/.test(from) || from > until)) { done.push('「' + label + '」の「いつから」は「いつまで」より前の日にしてください'); return; }
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(until) || until < today0) { errs.push('「' + label + '」の「いつまで」を入れてください'); return; }
+      if (from && (!/^\d{4}-\d{2}-\d{2}$/.test(from) || from > until)) { errs.push('「' + label + '」の「いつから」は「いつまで」より前の日にしてください'); return; }
       from = from > today0 ? from : '';
       offers.push({ k: k, n: n || null, from: from, until: until, label: label, text: label + '（' + (from ? from.replace(/-/g, '/') + '〜' : '') + until.replace(/-/g, '/') + 'まで）' });
     });
-    var before = { offer: pinfoLatest_(rows, 'offer'), equip: pinfoLatest_(rows, 'equip'), pay: pinfoLatest_(rows, 'pay'), cred: pinfoLatest_(rows, 'cred'), note: pinfoLatest_(rows, 'note') };
+    var before = { offer: pinfoLatest_(rows, 'offer'), equip: pinfoLatest_(rows, 'equip'), pay: base('pay').v, cred: pinfoCredNos_(base('cred').v), note: pinfoLatest_(rows, 'note') };
     var add = function(kind, text, data) { var r = pinfoAdd_(pid, kind, text, data); pinfoNotify_(pid, r, kind, text); done.push(PINFO_KINDS[kind]); got.push(PINFO_KINDS[kind] + '：' + text); };
     var same = function(a, b) { return JSON.stringify(a || []) === JSON.stringify(b || []); };
     if (!same(offers.map(function(o) { return o.text; }), (before.offer.list || []).map(function(o) { return o.text; })) && (offers.length || (before.offer.list || []).length))
       add('offer', offers.length ? offers.map(function(o) { return o.text; }).join('／') : '（特典をやめる）', { list: offers });
     ['equip', 'pay'].forEach(function(k) { var v = arr(k); if (!same(v, before[k].list)) add(k, v.join('・') || '（なし）', { list: v }); });
-    var cred = arr('cred'), credNo = String(q.cred_no || '').trim().slice(0, 40), credUntil = String(q.cred_until || '');
-    var needNo = cred.some(function(c) { return PINFO_CRED_NO.indexOf(c) >= 0; });
-    if (!same(cred, before.cred.list) || credNo !== (before.cred.no || '') || credUntil !== (before.cred.until || ''))
-      if (cred.length && needNo && !credNo) done.push('登録・届出・許可を選んだときは、その番号を入れてください');
-      else if (cred.length) add('cred', cred.join('・') + (credNo ? '／登録番号 ' + credNo : '') + (credUntil ? '／有効期限 ' + credUntil : ''), { list: cred, no: credNo, until: credUntil });
+    // 許可・資格：登録・届出・許可は、選んだ項目ごとに番号が要る（資格・保険は番号なし）
+    var cred = arr('cred'), nos = {}, credUntil = String(q.cred_until || '');
+    cred.forEach(function(c) { if (pinfoNeedNo_(c)) nos[c] = String(q['no_' + c] || '').trim().slice(0, 60); });
+    var noMiss = cred.filter(function(c) { return pinfoNeedNo_(c) && !nos[c]; });
+    if (!same(cred, before.cred.list) || JSON.stringify(nos) !== JSON.stringify(pinfoPick_(before.cred.nos, cred)) || credUntil !== (before.cred.until || ''))
+      if (noMiss.length) errs.push(noMiss.map(function(c) { return '「' + c + '」の番号'; }).join('・') + 'を入れてください（許可・資格は、まだ受け付けていません）');
+      else if (cred.length) add('cred', cred.map(function(c) { return c + (nos[c] ? '（' + nos[c] + '）' : ''); }).join('・') + (credUntil ? '／有効期限 ' + credUntil : ''), { list: cred, nos: nos, until: credUntil });
     var note = String(q.note || '').trim().slice(0, PINFO_NOTE_MAX);
     if (note !== (before.note.text || '')) add('note', note || '（ひとことを消す）', { text: note });
     pinfoReceipt_(pid, got);
     rows = pinfoRows_(pid);
   }
-  var cur = { offer: pinfoLatest_(rows, 'offer').list || [], equip: pinfoLatest_(rows, 'equip').list || [], pay: pinfoLatest_(rows, 'pay').list || [], cred: pinfoLatest_(rows, 'cred'), note: pinfoLatest_(rows, 'note').text || '' };
+  var bPay = base('pay'), bCred = base('cred');
+  var cur = { offer: pinfoLatest_(rows, 'offer').list || [], equip: pinfoLatest_(rows, 'equip').list || [], pay: bPay.v.list || [], cred: pinfoCredNos_(bCred.v), note: pinfoLatest_(rows, 'note').text || '' };
+  // 送ったときに番号が足りなかった項目は、入れた番号を残して見せる
+  if (errs.length && q.go === '1') { cur.cred = { list: [].concat(q.cred || []).map(String), nos: {}, until: String(q.cred_until || '') }; cur.cred.list.forEach(function(c) { cur.cred.nos[c] = String(q['no_' + c] || ''); }); }
+  var credList = conf.cred.concat((cur.cred.list || []).filter(function(c) { return conf.cred.indexOf(c) < 0; }));
+  var pre = function(b) { return b.src === 'known' ? pinfoPre_('入力済み（公式サイト・申し込みより）') : b.src === 'sent' ? pinfoPre_('入力済み（前に送っていただいた内容）') : ''; };
   var photos = rows.filter(function(v) { return v[3] === PINFO_KINDS.photo && v[6] !== '直してください' && v[6] !== '取り下げ'; });
-  var html = '<p>' + esc_(name) + ' さま</p><p>お客さまが見る候補のカードに、写真・特典・ひとことを足せます。<b>写真と特典がある会社は、お客さまに選ばれやすくなります。</b>' + pinfoEm_('運営者が確かめてから出します。') + '受け付けた内容は、登録のメールアドレスにもお知らせします。載せられるものの決まりは <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/listing/') + '">掲載の決まり</a> をご覧ください。</p>' +
+  var html = '<p>' + esc_(name) + ' さま</p><p>お客さまが見る候補のカードに、写真・特典・ひとことを足せます。<b>写真と特典がある会社は、お客さまに選ばれやすくなります。</b>受け付けた内容は、登録のメールアドレスにもお知らせします。載せられるものの決まりは <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + conf.rules) + '">掲載の決まり</a> をご覧ください。</p>' +
+    '<div class="box" style="font-size:.92rem">' + PINFO_LAG_HTML + '</div>' +
+    ((bPay.src || bCred.src || rows.length) ? '<div class="box" style="font-size:.92rem">' + pinfoPre_('入力済み') + ' の印がある項目は、' + (rows.length ? '前に送っていただいた内容' : '') + (rows.length && (bPay.src === 'known' || bCred.src === 'known') ? 'や、' : '') + ((bPay.src === 'known' || bCred.src === 'known') ? '公式サイト・提携の申し込みでうかがった内容' : '') + 'を、はじめから入れてあります。' + pinfoEm_('変わっていなければ、そのままで大丈夫です。') + '違うところだけ直してください。</div>' : '') +
     (view ? '<div class="box"><b>運営者だけが見られる見本です。</b>事業者がログインしたあとの画面と同じですが、送っても何も保存されず、どこにも届きません。</div>' : '') +
     (q.go === '1' && view ? '<div class="box">見本なので、保存していません。</div>' : '') +
-    (q.go === '1' && !view ? '<div class="box">' + (done.length ? esc_(done.join('、')) + ' を受け付けました。' : '変わったところはありませんでした。') + '</div>' : '');
+    (q.go === '1' && !view && errs.length ? '<div class="box" style="border-color:#c5221f;color:#c5221f"><b>' + esc_(errs.join('。')) + '。</b></div>' : '') +
+    (q.go === '1' && !view ? '<div class="box">' + (done.length ? esc_(done.join('、')) + ' を受け付けました。運営者が確かめてから、カードに出します（すぐには出ません）。' : errs.length ? 'ほかに変わったところはありませんでした。' : '変わったところはありませんでした。') + '</div>' : '');
   // カードの見え方の見本（写真・特典・運転手を入れたとき。画像は見本用に作ったもので、実在の会社・人ではない。Nori 2026-11-15）
   html +=
     '<h2>お客さまに見えるカード（見本）</h2><p class="note">この画面で入れたものは、カードの' + pinfoMark_('1') + '〜' + pinfoMark_('5') + 'の場所に出ます（見本の会社です）。下の項目にも同じ番号を付けています。</p>' +
-    '<img src="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/img/partner/card-sample.jpg') + '" alt="写真・特典・運転手の写真が入った候補のカードの見本。1が写真、2が運転手の写真、3が特典、4が設備、5がひとこと" width="390" style="display:block;width:100%;max-width:390px;height:auto;margin:8px 0 16px;border-radius:14px;box-shadow:0 1px 6px rgba(0,0,0,.12)">';
+    '<img src="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + conf.sample) + '" decoding="async" alt=""写真・特典・運転手の写真が入った候補のカードの見本。1が写真、2が運転手の写真、3が特典、4が設備、5がひとこと" width="390" style="display:block;width:100%;max-width:390px;height:auto;margin:8px 0 16px;border-radius:14px;box-shadow:0 1px 6px rgba(0,0,0,.12)">';
   // 写真（/go/ のページが data-pinfo-up を見て、縮めてから送る）
   html += '<h2>' + pinfoMark_('1') + '写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）・' + pinfoMark_('2') + '運転手</h2>' + pinfoWhere_(pinfoMark_('1') + '料金の右の写真（横にスワイプで次の写真）と、' + pinfoMark_('2') + '社名の横の丸（「写真の種類」で「運転手」を選んだ写真）が変わります。') +
     '<p class="note">' + pinfoEm_('スマホで撮った写真を、そのまま選んでください。') + '大きさや形はこちらで合わせます。選ぶと、カードに出る形の見本が出るので、つまみで位置を直してから送れます。</p>' +
@@ -2896,7 +2954,7 @@ function pinfoPage_(q, view) {
     '<li>' + pinfoEm_('ナンバープレート・電話番号が写らないように。') + '文字やスタンプは入れない。</li>' +
     '<li>「運転手」は<b>スマホは縦のまま</b>、顔が真ん中、胸から上。明るい場所で（会社名の横に丸く出ます。' + pinfoEm_('写っている方ご本人の了解が必要です') + '）。</li>' +
     '<li>運転手のほかは、人の顔が写らないように。' + pinfoEm_('ご自身で撮った実際の写真だけ') + 'にしてください。</li></ul></div>' +
-    (photos.length < PINFO_PHOTO_MAX ? '<div data-pinfo-up data-t="' + esc_(view ? '' : q.s) + '"' + (view ? ' data-view="1"' : '') + ' class="box"><label>写真の種類<select data-kind>' + PINFO_PHOTO_KINDS.map(function(k) { return '<option>' + esc_(k) + '</option>'; }).join('') + '</select></label>' +
+    (photos.length < PINFO_PHOTO_MAX ? '<div data-pinfo-up data-t="' + esc_(view ? '' : q.s) + '"' + (view ? ' data-view="1"' : '') + ' class="box"><label>写真の種類<select data-kind>' + conf.photoKinds.map(function(k) { return '<option>' + esc_(k) + '</option>'; }).join('') + '</select></label>' +
       '<label>写真を選ぶ<input type="file" accept="image/jpeg,image/png,image/heic,image/webp"></label>' +
       '<label style="font-weight:400;display:flex;gap:6px;align-items:center"><input type="checkbox" data-rights style="width:auto;display:inline;margin:0">自分（自社）で撮った写真で、載せる権利があります</label>' +
       '<button type="button" class="gray">この写真を送る</button><p class="note up-msg"></p></div>' : '<p class="note">いまは5枚そろっています。</p>');
@@ -2905,7 +2963,7 @@ function pinfoPage_(q, view) {
     '<h2>' + pinfoMark_('3') + '特典</h2>' + pinfoWhere_(pinfoMark_('3') + 'もとの料金に線が引かれて割引後の料金が並び、その下に「10%オフ　11/30まで」のように出ます。') +
     '<p class="note">' + pinfoEm_('このサイトから問い合わせたお客さまだけ') + 'の特典です。' + pinfoEm_('お返事の確定料金に特典を入れてから') + 'お送りください。使う特典に数字を入れるか印を付けて、' + pinfoEm_('それぞれ期間') + 'を入れてください。「いつまで」を過ぎると自動で消えます。</p>';
   var curK = function(k) { return cur.offer.filter(function(o) { return o.k === k; })[0] || {}; };
-  html += PINFO_OFFER_FORM.map(function(k) {
+  html += conf.offers.map(function(k) {
     var o = PINFO_OFFERS.filter(function(y) { return y.k === k; })[0], c = curK(k);
     var head = o.unit
       ? '<div style="display:flex;align-items:center;gap:8px"><input name="' + k + '" inputmode="numeric" placeholder="' + (o.unit === '%' ? '10' : '500') + '" value="' + esc_(c.n || '') + '" style="width:6.5em;display:inline-block;margin:0"><b style="white-space:nowrap">' + esc_(o.t.replace('{n}', '')) + '</b><span class="note" style="white-space:nowrap">（' + o.min.toLocaleString() + '〜' + o.max.toLocaleString() + o.unit + '）</span></div>'
@@ -2913,12 +2971,12 @@ function pinfoPage_(q, view) {
     return '<div class="pt">' + head + '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px"><label style="font-weight:400;flex:1;min-width:8.5em;margin:0;font-size:.9rem">いつから（空ならすぐ）<input type="date" name="' + k + '_from" value="' + esc_(c.from || '') + '"></label>' +
       '<label style="font-weight:400;flex:1;min-width:8.5em;margin:0;font-size:.9rem">いつまで<input type="date" name="' + k + '_until" value="' + esc_(c.until || '') + '"></label></div></div>';
   }).join('');
-  html += '<h2>' + pinfoMark_('4') + '設備・できること</h2>' + pinfoWhere_(pinfoMark_('4') + '特長のタグ（小さな札）に出ます。') + pinfoChips_('equip', PINFO_EQUIP, cur.equip) +
+  html += '<h2>' + pinfoMark_('4') + '設備・できること</h2>' + pinfoWhere_(pinfoMark_('4') + '特長のタグ（小さな札）に出ます。') + pinfoChips_('equip', conf.equip, cur.equip) +
     '<h2>' + pinfoMark_('5') + 'ひとこと（' + PINFO_NOTE_MAX + '字まで）</h2>' + pinfoWhere_(pinfoMark_('5') + 'いちばん下に「会社から：…」で出ます。') + '<p class="note">' + pinfoEm_('電話番号・URL・SNS・「最安」「No.1」などは載せられません。') + '</p><input name="note" maxlength="' + PINFO_NOTE_MAX + '" value="' + esc_(cur.note) + '">' +
-    '<h2 style="margin-top:28px">運営者へのお知らせ</h2><p class="note">' + pinfoEm_('ここはカードにすぐには出ません。') + '運営者が確かめてから、表示を直します。一緒に乗れる人数・頭数・お迎えの範囲・営業時間が変わったときは、運営者にメールでお知らせください。</p>' +
-    '<h3>お支払い方法</h3>' + pinfoChips_('pay', PINFO_PAY, cur.pay) +
-    '<h3>許可・資格・保険</h3><p class="note">' + pinfoEm_('登録・届出・許可を選んだときは番号が必要です。') + '</p>' + pinfoChips_('cred', PINFO_CRED, cur.cred.list || []) +
-    '<label style="font-weight:400">登録番号・届出番号・許可番号<input name="cred_no" maxlength="40" value="' + esc_(cur.cred.no || '') + '"></label><label style="font-weight:400">登録の有効期限（あれば）<input type="date" name="cred_until" value="' + esc_(cur.cred.until || '') + '"></label>' +
+    '<h2 style="margin-top:28px">運営者へのお知らせ</h2><p class="note">' + pinfoEm_('ここはカードに自動では出ません。') + '運営者が確かめてから、表示を直します（数日かかることがあります）。一緒に乗れる人数・頭数・お迎えの範囲・営業時間が変わったときは、運営者にメールでお知らせください。</p>' +
+    '<h3>お支払い方法</h3>' + pre(bPay) + pinfoChips_('pay', conf.pay, cur.pay) +
+    '<h3>許可・資格・保険</h3>' + pre(bCred) + '<p class="note">' + pinfoEm_('登録・届出・許可は、選ぶと番号の欄が出ます。それぞれの番号を入れてください。') + '資格・保険は番号はいりません。</p>' + pinfoCredHtml_(credList, cur.cred) +
+    '<label style="font-weight:400">動物取扱業の登録の有効期限（あれば）<input type="date" name="cred_until" value="' + esc_(cur.cred.until || '') + '"></label>' +
     '<button type="submit">確認して送る</button></form>';
   // 審査の状況
   html += '<h2>審査の状況</h2>' + (rows.length ? '<div class="box">' + rows.slice(-12).reverse().map(function(v) {
