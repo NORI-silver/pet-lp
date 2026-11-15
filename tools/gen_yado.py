@@ -319,8 +319,8 @@ def render_pref(ctx, pf):
     rel = [(a, h) for a, h in rel if os.path.exists(os.path.join(_D, "..", h.strip("/"), "index.html"))]
     rel += [("全国の犬と泊まれる宿", "/inu-yado/"), ("猫・うさぎなど犬以外と泊まれる宿", "/pet-yado/"), ("犬と一緒に入れるカフェ・ランチ", "/inu-cafe/")]
     body = (f'<div class="yd-ans"><h2>{e(pf)}の犬と泊まれる宿のポイント</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
-            + V.stats(tiles)
             + _fit(e, f"うちの子の大きさで、{pf}の宿を見る", f"{pf}の{n}軒を、泊まれる犬の大きさ（小型犬・中型犬・大型犬）と猫でしぼれます。犬種を選ぶと、その犬種の体重に合う宿だけが残ります。", xs)
+            + V.stats(tiles)
             + f'<h2 class="yd-h">{e(pf)}の{n}軒をくらべる</h2>' + table(e, xs)
             + f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{_faq_html(e, faq)}</dl></div>'
             + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">犬と泊まれる宿のえらび方</h2>' + "".join(f'<h4>{e(a)}</h4><p style="font-size:.9rem;margin:4px 0 10px">{e(b)}</p>' for a, b in TIPS) + "</div>"
@@ -375,12 +375,12 @@ def render_hub(ctx):
            ("猫やうさぎと泊まれる宿は？", f"猫も泊まれる宿は{len(cats)}軒です。うさぎ・フェレット・小鳥などは「犬以外と泊まれる宿」のページにまとめています。"),
            ("ワクチンの証明書は必要？", f"{n}軒のうち{vac}軒が証明を求めると書いています。1年以内の狂犬病予防注射と、混合ワクチン（多くは5種以上）の証明が多いです。")]
     body = (f'<div class="yd-ans"><h2>犬と泊まれる宿は、全国で{n}軒を確かめました</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
-            + V.stats(tiles) + bars
             + (f'<h2 class="yd-h">宿の種類からさがす</h2><ul class="yd-pref">' + "".join(f'<li><a href="/inu-yado/{t}/">{e(TYPE_NAME[t])}<small>{len(BYTYPE[t])}軒</small></a></li>' for t in TYPE_PAGES) + '</ul>' if TYPE_PAGES else "")
             + f'<h2 class="yd-h">都道府県からさがす</h2><p class="emg-tips-note">{PREF_MIN}軒以上の県は県のページで、うちの子の大きさでしぼって見られます。それより少ない県は、このページの下の地方の表に入れています。</p>{chips}'
             + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">犬以外のペットと泊まれる宿</h2><ul class="yd-pref">'
             + "".join(f'<li><a href="{animal_href(k)}">{e(nm)}<small>{len(OTHER[k])}軒</small></a></li>' for k, nm, _ in AN if OTHER[k]) + "</ul></div>"
             + (f'<h2 class="yd-h">県のページがまだない県の宿</h2>{sec}' if sec else "")
+            + V.stats(tiles) + bars
             + f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{_faq_html(e, faq)}</dl></div>'
             + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">犬と泊まれる宿のえらび方</h2>' + "".join(f'<h4>{e(a)}</h4><p style="font-size:.9rem;margin:4px 0 10px">{e(b)}</p>' for a, b in TIPS) + "</div>")
     title = f"犬と泊まれる宿 全国{n}軒｜都道府県別・大型犬OK・猫もOKを公式サイトで確認｜ペットのくらし窓口"
@@ -411,12 +411,15 @@ def render_animal(ctx, k):
            "犬と泊まれる宿でも、" + nm + "は泊まれないことが多いので、予約の前に必ず宿に確かめてください。"]
     rooms = [x for x in xs if re.search(nm[:2] + r"|部屋|ルーム", fact(x, "猫など犬以外"))]
     if rooms: ans.append(f"{nm}の泊まれる部屋が決まっている宿もあります（{_names(rooms, 3)}）。")
-    cards = "".join(f'<div class="emg-item yd-card" data-pref="{e(x["pref"])}">{card(e, x, "petyado_cards")}</div>' for x in xs)
+    cards = "".join(f'<div class="emg-item yd-card" data-pref="{e(x["pref"])}" data-ffi>{card(e, x, "petyado_cards")}</div>' for x in xs)
+    import uikit
+    opts = '<option value="">すべての都道府県</option>' + "".join(f"<option>{e(p)}</option>" for p in sorted(prefs, key=lambda p: PREF_ORDER(ctx, p)))
+    finder = uikit.box("pet-yado", q_ph="市町村・宿の名前（例：軽井沢）", opts=opts, unit="軒", noun="宿", go="この条件で宿を探す")
     faq = [(f"{nm}と泊まれる宿はどこ？", f"当サイトで公式サイトを確かめた中では、{_names(xs, 6)}です。"),
            (f"犬と泊まれる宿なら{nm}も泊まれる？", f"泊まれるとはかぎりません。犬だけと書いている宿も多いので、{nm}と泊まれるか、部屋のタイプとあわせて宿に確かめてください。")]
     body = (f'<div class="yd-ans"><h2>{e(nm)}と泊まれる宿は{n}軒</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
+            + f'<h2 class="yd-h">{e(nm)}と泊まれる{n}軒</h2>' + finder + f'<div class="bf-cards" style="display:grid;gap:10px">{cards}</div>'
             + V.stats([(f"{n}軒", f"{nm}と泊まれる宿"), (f"{len(prefs)}", "都道府県"), (f"{sum(1 for x in xs if has_dog(x))}軒", "犬も泊まれる")])
-            + f'<h2 class="yd-h">{e(nm)}と泊まれる{n}軒</h2><div class="bf-cards" style="display:grid;gap:10px">{cards}</div>'
             + f'<h2 class="yd-h">くらべる</h2>' + table(e, xs)
             + "".join(f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">{e(a)}</h2><p style="font-size:.9rem;margin:4px 0 10px">{e(b)}</p></div>' for a, b in ANIMAL_TIPS.get(k, []))
             + f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{_faq_html(e, faq)}</dl></div>'
@@ -500,8 +503,10 @@ def render_pethub(ctx):
     faq = [("犬と泊まれる宿なら、猫やうさぎも泊まれる？", "泊まれるとはかぎりません。「犬のみ」と書いている宿が多いので、公式サイトか宿に確かめてください。"),
            ("猫と泊まるときに用意するものは？", "キャリー、猫砂とトイレ、いつものごはん。混合ワクチンの証明を求める宿もあります。")]
     body = (f'<div class="yd-ans"><h2>犬以外のペットと泊まれる宿は{n}軒</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
-            + V.stats([(f"{len(OTHER[k])}軒", f"{nm}と泊まれる") for k, nm, _ in AN if OTHER[k]])
+            + '<h2 class="yd-h">どの子と泊まりますか？</h2><ul class="yd-pref">'
+            + "".join(f'<li><a href="{animal_href(k) if k in ANIMAL_PAGES else "#" + slug}">{e(nm)}<small>{len(OTHER[k])}軒</small></a></li>' for k, nm, slug in AN if OTHER[k]) + "</ul>"
             + sec
+            + V.stats([(f"{len(OTHER[k])}軒", f"{nm}と泊まれる") for k, nm, _ in AN if OTHER[k]])
             + f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{_faq_html(e, faq)}</dl></div>'
             + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">関連するページ</h2><ul class="other"><li><a href="/inu-yado/">犬と泊まれる宿</a></li><li><a href="/pet-hotel/">ペットホテル（預かり）</a></li><li><a href="/pet-sitter/">ペットシッター</a></li></ul></div>')
     title = f"猫・うさぎ・小鳥・フェレットと泊まれる宿{n}軒｜犬以外のペットOKの宿｜ペットのくらし窓口"

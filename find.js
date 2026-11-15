@@ -114,7 +114,7 @@ function prefGuess(sel, apply){
       var h = g.previousElementSibling;
       if (h && h.hasAttribute("data-ffh")) h.hidden = !vis;
       // 地域の見出しの件数を、いま見えている数に
-      var sm = g.querySelector(".fr-h small");
+      var sm = g.querySelector(".fr-h small, [data-ffn]");
       if (sm) sm.textContent = [].filter.call(g.querySelectorAll("[data-ffi]"), function(it){ return !it.hidden; }).length + unit;
     });
     [].forEach.call(document.querySelectorAll(".emg-region, .ux-region"), function(h){ h.hidden = !!(pf || ks.length || qs); });
