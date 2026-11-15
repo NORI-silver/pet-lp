@@ -57,7 +57,7 @@ def svc(c):
 def card(e, c, srcname):
     href = c["url"] or c["src"]
     rows = [("所在地", c["addr"]), ("診療時間", c["hours"]), ("休診日", c["closed"] or ("なし（年中無休）" if "年中無休" in c["hours"] else "")),
-            ("診る動物", animals_txt(c["animals"])), ("駐車場", parking(c)), ("ほかにしていること", svc(c)), ("お支払い", c["pay"]), ("予約", c.get("note", ""))]
+            ("診る動物", animals_txt(c["animals"])), ("診療科目", "・".join(c.get("depts") or [])), ("駐車場", parking(c)), ("ほかにしていること", svc(c)), ("お支払い", c["pay"]), ("予約", c.get("note", ""))]
     sm = "".join(f"<small>{e(k)}：{e(v)}</small>" for k, v in rows if v)
     ck = c["checked"]
     import faccard

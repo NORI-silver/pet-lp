@@ -156,7 +156,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 .fr{margin:4px 0 18px}
 .fr-h{font-size:1.05rem!important;font-weight:800;margin:10px 0 8px!important;display:flex;align-items:baseline;gap:8px}
 .fr-h small{font-size:.78rem;font-weight:600;color:var(--ink-3,#6b625b)}
-.fr-s{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.fr-s{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
 .fr-more{margin:4px 0 18px;font-size:14px}.fr-more a{color:#c2410c;font-weight:600}
 .fr-s>.emg-item.fc{flex:0 0 80%;max-width:330px;scroll-snap-align:start}
 .fr-s>.emg-item.fc[hidden],.fr-s>.emg-item.fac-off,.emg-item.fc.fc-off{display:none}
@@ -184,10 +184,10 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 .fc-k{font-size:.72rem;font-weight:700;color:var(--ink-3,#6b625b);background:#f4f1ee;border-radius:6px;padding:1px 6px;margin-right:6px}
 .fc-tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0!important;margin:8px 0 0!important}
 .fc-tags li{font-size:.74rem;line-height:1.3;padding:3px 8px;border-radius:6px;background:#f4f1ee;color:var(--ink-2,#5a524b);margin:0!important}
-.fc-fit{align-self:flex-start;font-size:.8rem;font-weight:800;line-height:1.4;margin:8px 0 0!important;padding:4px 10px;border-radius:999px}
-.fc-fit small{display:block;font-weight:500;font-size:.72rem}
-.fc-fit.ok small{display:none}
-.fc-fit.ok{background:#e8f5e9;color:#1b5e20}.fc-fit.unk{background:#f4f1ee;color:#5a524b}.fc-fit.ng{background:#fdecea;color:#a12a1b}
+.fc-fit{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 0!important}
+.fc-fit[hidden]{display:none}
+.fc-fb{font-size:.74rem;font-weight:800;line-height:1.3;padding:3px 8px;border-radius:999px}
+.fc-fb.ok{background:#e8f5e9;color:#1b5e20}.fc-fb.unk{background:#f4f1ee;color:#5a524b;font-weight:600}.fc-fb.ng{background:#fdecea;color:#a12a1b}
 .emg-item.fc.fc-ng{opacity:.62}
 .emg-item.fc.fc-hid{display:none}
 .fc-acts{display:flex;flex-wrap:wrap;gap:5px;margin:auto 0 0;padding-top:10px}
@@ -245,7 +245,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
   </div>
 </section>
 <section style="padding-top:8px">
-  <div class="wrap"><div class="emg"><div class="fp" data-fp><p class="fp-t"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-paw"/></svg>うちの子に合うところをさがす</p><div class="fp-row"><span class="fp-l">ほかに</span><div class="fp-btns" data-g="x"><button type="button" data-v="pup" aria-pressed="false">子犬（1歳まで）</button></div></div><div class="fac-filter" data-fac-chips="出張・訪問|教室・グループ|パピー|幼稚園・保育園|預かり訓練|オンライン" data-pref="大分県"></div><p class="fp-now" aria-live="polite"></p><label class="fp-hide"><input type="checkbox"> 合わないかもを隠す</label></div>
+  <div class="wrap"><div class="emg"><div class="fp" data-fp><p class="fp-t"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-paw"/></svg>うちの子に合うところをさがす</p><div class="fp-row"><span class="fp-l">ほかに</span><div class="fp-btns" data-g="x"><button type="button" data-v="pup" aria-pressed="false">子犬（1歳まで）</button></div></div><div class="fac-filter" data-fac-chips="出張・訪問|教室・グループ|パピー|幼稚園・保育園|預かり訓練|オンライン" data-pref="大分県"></div><p class="fp-now" aria-live="polite"></p><label class="fp-hide"><input type="checkbox"> 合わないところを隠す</label></div>
       <div class="emg-tips" style="margin-top:0"><h4>大分県のドッグトレーナー・しつけ教室の料金・条件をくらべる</h4><p>載せている2件のうち2件について、公式サイトに書いてある料金・交通費・キャンセル料などをまとめました。1回の料金を書いているのは1件です。</p><div class="tbl"><table class="pp-tbl t2 t2s"><thead><tr><th>名前</th><th>料金</th><th>初回・体験</th><th>出張費</th><th>対象の犬</th><th>しつけの方法</th></tr></thead><tbody><tr><th scope="row">大分県警察犬訓練所</th><td data-l="料金"><div>—</div></td><td data-l="初回・体験"><div>はじめての方だけのトライアルレッスン（料金はふつうのレッスンと同じ、時間は長め）</div></td><td data-l="出張費"><div>出張しつけで県内どこでも（大分市・別府市・中津市など18市町村）。出張費は記載なし</div></td><td data-l="対象の犬"><div>はじめて犬を飼う方・子犬の教室・かむなどの問題行動の相談</div></td><td data-l="しつけの方法"><div>犬の行動学にもとづき、ごほうびで犬が自分で考えて覚える方法。預かり訓練はあまりすすめない</div></td></tr><tr><th scope="row">ONE&#x27;S COOL<small class="sub">（わんずくーる）</small></th><td data-l="料金"><div><span class="ln"><span>しつけ方教室 単発</span><span class="p">6,500円</span></span><span class="ln"><span>パピー4回</span><span class="p">22,000円</span></span><span class="ln"><span>成犬4回</span><span class="p">24,000円</span></span><span class="tx">保育園 単発6,000円<small class="nt">（大型犬も同じ料金）</small><small class="nt">（税込）</small></span></div></td><td data-l="初回・体験"><div><span class="tx">入園前カウンセリング<small class="nt">（60〜90分）</small>6,000円が必須</span><span class="ln"><span>体験入園</span><span class="p">5,500円</span></span><span class="ln"><span>入園料</span><span class="p">6,000円</span></span></div></td><td data-l="出張費"><div>出張レッスンは出張料と交通費が別。保育園の送迎は店から2km以内無料、別府市内だけ</div></td><td data-l="対象の犬"><div>小型犬から大型犬まで。ヒート中は不可。犬種によって断ることがある</div></td><td data-l="しつけの方法"><div>力でおさえつけず、動物行動学にもとづく「褒めて伸ばす」陽性強化。動画でのフォローあり</div></td></tr></tbody></table></div><p class="emg-tips-note">「—」は公式サイトに書いていない・見つからなかった項目です（「しない」という意味ではありません）。2026年11月15日までに公式サイトで確かめました。料金は変わることがあるので、頼む前に必ず公式サイトでご確認ください。</p><details><summary>確かめた公式サイト</summary><ul><li><a href="http://www.oct-net.ne.jp/police-d/" target="_blank" rel="noopener">大分県警察犬訓練所の公式サイト</a></li><li><a href="https://www.onescool.com/" target="_blank" rel="noopener">ONE&#x27;S COOL（わんずくーる）の公式サイト</a></li></ul></details></div>
       
       

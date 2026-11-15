@@ -208,6 +208,15 @@ def _short(lab):
     return re.sub(r"[（(].*?[）)]", "", lab).strip() or lab
 
 _PREF_RX = re.compile(r"^(東京都|北海道|(?:京都|大阪)府|[^\s都道府県]{2,3}県)")
+DEPTS = [  # 診療科目（ほかの病院さがしのサイトでよく選べるもの）。公式サイトの言い方 → 選ぶ欄の名前
+    ("皮膚科", r"皮膚|アレルギー"), ("眼科", r"眼"), ("歯科", r"歯|口腔"), ("耳鼻科", r"耳"), ("整形外科", r"整形|骨|関節"),
+    ("腫瘍科", r"腫瘍|がん|癌"), ("循環器科", r"循環|心臓"), ("神経科", r"神経|脳"), ("腎臓・泌尿器", r"泌尿|腎"), ("消化器科", r"消化|内視鏡|胃腸"),
+    ("呼吸器科", r"呼吸"), ("内分泌科", r"内分泌|ホルモン|甲状腺|糖尿"), ("行動診療", r"行動"), ("東洋医学", r"鍼|はり|漢方|東洋"),
+    ("CT・MRI", r"CT|ＣＴ|MRI|ＭＲＩ"), ("健康診断", r"健康診断|健診|ドック"),
+]
+def depts_of(v):
+    return [n for n, rx in DEPTS if re.search(rx, v)]
+
 _FT_ORDER = ["24時間", "夜も", "日曜も", "駐車場", "カード払い", "来てくれる・送迎", "料金を公開"]
 
 def features(rows, rest, chips):
@@ -220,10 +229,11 @@ def features(rows, rest, chips):
     if hol and not any(re.search(r"日曜|日・|日祝|日、|・日|^日|、日|日$|不定", v) for v in hol): f.append("日曜も")
     for l, v, _ in rows:
         if re.search(r"駐車", l) and not re.search(r"なし|ありません|^0|ない", v): f.append("駐車場")
-        if re.search(r"支払", l) and re.search(r"カード|クレジット", v): f.append("カード払い")
+        if re.search(r"支払", l) and re.search(r"カード|クレジット|キャッシュレス", v) and not re.search(r"不可|使えない|できない", v): f.append("カード払い")
+        if re.search(r"ほかにしていること|併設", l): f += [x for x in _split_items(v) if 2 <= len(x) <= 8 and not re.search(r"駐車|パーキング|（", x)]
         if _PRICE.search(l): f.append("料金を公開")
     if any(re.search(r"送迎|出張|訪問|お迎え|往診", c) for c in chips): f.append("来てくれる・送迎")
-    return [x for x in _FT_ORDER if x in f]
+    return [x for x in _FT_ORDER if x in f] + [x for x in dict.fromkeys(f) if x not in _FT_ORDER]
 
 def build_card(card, conf, fit_by_name):
     m = _OPEN.match(card)
@@ -280,8 +290,10 @@ def build_card(card, conf, fit_by_name):
     if not take(_AREA, "car"): take(_ADDR, "pin")
     take(_PRICE, "yen"); take(_TIME, "clock"); take(_ANIM, "paw")
     if len(pick) < 4: take(_CERT, "badge")
+    dp = []
     for i, (lab, val, x) in enumerate(rows):
         if i in used: continue
+        if re.search(r"診療科目|専門", lab): dp = depts_of(val)
         if lab == "提供内容": svc_items = [x for x in _split_items(val) if not re.search(r"[。は]", x)]
         more.append(x)
     # チップ：印（data-flags）・タグ（data-tags）・提供内容の短い言葉
@@ -289,7 +301,7 @@ def build_card(card, conf, fit_by_name):
     tags = [html.unescape(x) for x in (re.search(r'data-tags="([^"]*)"', opentag) or [None, ""])[1].split("|") if x]
     ch = [FLAG_CHIP[f] for f in flags if f in FLAG_CHIP and not (f == "cat" and "cat_only" in flags)] + tags + chips
     ch += [s for s in svc_items if len(s) <= 12]
-    ch = list(dict.fromkeys(c for c in ch if c))[:6]
+    ch = list(dict.fromkeys(c for c in dp + ch if c))[:6]
     fors = list(dict.fromkeys(FOR_TEXT[k] for k in flags + tags if k in FOR_TEXT))[:3]
     # 合う・合わない（生成側で入れていればそれを使う）
     fit = "" if "data-fit=" in opentag else fit_by_name.get(name, "")
@@ -315,8 +327,9 @@ def build_card(card, conf, fit_by_name):
             if m: city = m.group(1); break
     if city and len(city) <= 14: ot = ot[:-1] + f' data-city="{html.escape(city)}">'
     # しぼりこみの印（カードに書いてあることだけから。書いていないカードは外れる）
-    ft = list(dict.fromkeys(features(rows, rest, ch) + [c for c in ch if len(c) <= 10 and "|" not in c]))
+    ft = list(dict.fromkeys(features(rows, rest, ch) + [c for c in ch if len(c) <= 10 and "|" not in c and c not in dp]))
     if ft: ot = ot[:-1] + f' data-ft="{html.escape("|".join(ft))}">'
+    if dp: ot = ot[:-1] + f' data-dp="{html.escape("|".join(dp))}">'
     # 見出しの「◯◯市の動物病院」は地域の見出しと重なるので出さない（Nori 2026-11-15「柏市の下に柏市の動物病院って全てのカードに入れてるけど不要」）
     body = [f'<div class="fc-name">{head}</div>']
     if fors: body.append(f'<p class="fc-catch">{html.escape("・".join(fors[:2]))}に</p>')
@@ -348,7 +361,7 @@ def build_card(card, conf, fit_by_name):
     return ot + ph + '<div class="fc-body">' + "".join(body) + "</div></div>"
 
 # ---- 「うちの子に合うところをさがす」 ----
-def panel(conf, kinds_used, has_size, has_sen, has_pup, n, fts=(), box=False):
+def panel(conf, kinds_used, has_size, has_sen, has_pup, n, fts=(), box=False, dps=()):
     import breeds as B
     want = conf.get("want")
     title = "迎えたい子でさがす" if want else "うちの子に合うところをさがす"
@@ -368,10 +381,12 @@ def panel(conf, kinds_used, has_size, has_sen, has_pup, n, fts=(), box=False):
     if has_sen and conf.get("senior"): ex.append('<button type="button" data-v="sen" aria-pressed="false">シニア・介護が必要</button>')
     if has_pup and conf.get("puppy"): ex.append('<button type="button" data-v="pup" aria-pressed="false">子犬（1歳まで）</button>')
     if ex: rows.append('<div class="fp-row"><span class="fp-l">ほかに</span><div class="fp-btns" data-g="x">' + "".join(ex) + "</div></div>")
+    if dps: rows.append('<div class="fp-row"><span class="fp-l">診療科目</span><div class="fp-btns fp-ft" data-g="d">' +
+                        "".join(f'<button type="button" data-v="{html.escape(v)}" aria-pressed="false">{html.escape(v)}</button>' for v in dps) + "</div></div>")
     if fts: rows.append('<div class="fp-row"><span class="fp-l">しぼる</span><div class="fp-btns fp-ft" data-g="f">' +
                         "".join(f'<button type="button" data-v="{html.escape(v)}" aria-pressed="false">{html.escape(v)}</button>' for v in fts) + "</div></div>")
     if not rows and not box: return ""
-    hide = '<label class="fp-hide"><input type="checkbox"> 合わないかもを隠す</label>' if (kinds or has_size or ex) else ""
+    hide = '<label class="fp-hide"><input type="checkbox"> 合わないところを隠す</label>' if (kinds or has_size or ex or dps) else ""
     return (f'<div class="fp" data-fp><p class="fp-t">{icon("paw")}{html.escape(title)}</p>'
             + "".join(rows) + '<p class="fp-now" aria-live="polite"></p>' + hide + '</div>')
 
@@ -380,7 +395,7 @@ CSS = """<style id="fccss">
 .fr{margin:4px 0 18px}
 .fr-h{font-size:1.05rem!important;font-weight:800;margin:10px 0 8px!important;display:flex;align-items:baseline;gap:8px}
 .fr-h small{font-size:.78rem;font-weight:600;color:var(--ink-3,#6b625b)}
-.fr-s{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.fr-s{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
 .fr-more{margin:4px 0 18px;font-size:14px}.fr-more a{color:#c2410c;font-weight:600}
 .fr-s>.emg-item.fc{flex:0 0 80%;max-width:330px;scroll-snap-align:start}
 .fr-s>.emg-item.fc[hidden],.fr-s>.emg-item.fac-off,.emg-item.fc.fc-off{display:none}
@@ -408,10 +423,10 @@ CSS = """<style id="fccss">
 .fc-k{font-size:.72rem;font-weight:700;color:var(--ink-3,#6b625b);background:#f4f1ee;border-radius:6px;padding:1px 6px;margin-right:6px}
 .fc-tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0!important;margin:8px 0 0!important}
 .fc-tags li{font-size:.74rem;line-height:1.3;padding:3px 8px;border-radius:6px;background:#f4f1ee;color:var(--ink-2,#5a524b);margin:0!important}
-.fc-fit{align-self:flex-start;font-size:.8rem;font-weight:800;line-height:1.4;margin:8px 0 0!important;padding:4px 10px;border-radius:999px}
-.fc-fit small{display:block;font-weight:500;font-size:.72rem}
-.fc-fit.ok small{display:none}
-.fc-fit.ok{background:#e8f5e9;color:#1b5e20}.fc-fit.unk{background:#f4f1ee;color:#5a524b}.fc-fit.ng{background:#fdecea;color:#a12a1b}
+.fc-fit{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 0!important}
+.fc-fit[hidden]{display:none}
+.fc-fb{font-size:.74rem;font-weight:800;line-height:1.3;padding:3px 8px;border-radius:999px}
+.fc-fb.ok{background:#e8f5e9;color:#1b5e20}.fc-fb.unk{background:#f4f1ee;color:#5a524b;font-weight:600}.fc-fb.ng{background:#fdecea;color:#a12a1b}
 .emg-item.fc.fc-ng{opacity:.62}
 .emg-item.fc.fc-hid{display:none}
 .fc-acts{display:flex;flex-wrap:wrap;gap:5px;margin:auto 0 0;padding-top:10px}
@@ -559,7 +574,12 @@ def _one(h, conf, fbn):
         fts = [x for x in fts if not re.search(r"シニア|介護|猫OK|犬OK|大型犬|猫専用|子犬|パピー", x)]  # 上の「どの子？」「大きさ」と重ねない
         if any("送迎" in x for x in fts if x != "来てくれる・送迎"): fts = [x for x in fts if x != "来てくれる・送迎"]
         fts = fts[:8] if nc >= 4 else []
-        pn = panel(conf, ku, any("s" in f or "kg" in f for f in fits), any(f.get("sen") for f in fits), any(f.get("pup") for f in fits), len(fits), fts, "data-fac-chips" in h2)
+        dpc = {}
+        for xs in re.findall(r'data-dp="([^"]*)"', h2):
+            for x in html.unescape(xs).split("|"): dpc[x] = dpc.get(x, 0) + 1
+        dps = [n for n, _ in DEPTS if dpc.get(n)]
+        fts = [x for x in fts if x not in dps]
+        pn = panel(conf, ku, any("s" in f or "kg" in f for f in fits), any(f.get("sen") for f in fits), any(f.get("pup") for f in fits), len(fits), fts, "data-fac-chips" in h2, dps)
         if pn:
             k = h2.find('class="emg-item emg-co fc')
             em = h2.rfind('<div class="emg">', 0, k)

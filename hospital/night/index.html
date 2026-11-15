@@ -56,7 +56,7 @@
 .fr{margin:4px 0 18px}
 .fr-h{font-size:1.05rem!important;font-weight:800;margin:10px 0 8px!important;display:flex;align-items:baseline;gap:8px}
 .fr-h small{font-size:.78rem;font-weight:600;color:var(--ink-3,#6b625b)}
-.fr-s{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.fr-s{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
 .fr-more{margin:4px 0 18px;font-size:14px}.fr-more a{color:#c2410c;font-weight:600}
 .fr-s>.emg-item.fc{flex:0 0 80%;max-width:330px;scroll-snap-align:start}
 .fr-s>.emg-item.fc[hidden],.fr-s>.emg-item.fac-off,.emg-item.fc.fc-off{display:none}
@@ -84,10 +84,10 @@
 .fc-k{font-size:.72rem;font-weight:700;color:var(--ink-3,#6b625b);background:#f4f1ee;border-radius:6px;padding:1px 6px;margin-right:6px}
 .fc-tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0!important;margin:8px 0 0!important}
 .fc-tags li{font-size:.74rem;line-height:1.3;padding:3px 8px;border-radius:6px;background:#f4f1ee;color:var(--ink-2,#5a524b);margin:0!important}
-.fc-fit{align-self:flex-start;font-size:.8rem;font-weight:800;line-height:1.4;margin:8px 0 0!important;padding:4px 10px;border-radius:999px}
-.fc-fit small{display:block;font-weight:500;font-size:.72rem}
-.fc-fit.ok small{display:none}
-.fc-fit.ok{background:#e8f5e9;color:#1b5e20}.fc-fit.unk{background:#f4f1ee;color:#5a524b}.fc-fit.ng{background:#fdecea;color:#a12a1b}
+.fc-fit{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 0!important}
+.fc-fit[hidden]{display:none}
+.fc-fb{font-size:.74rem;font-weight:800;line-height:1.3;padding:3px 8px;border-radius:999px}
+.fc-fb.ok{background:#e8f5e9;color:#1b5e20}.fc-fb.unk{background:#f4f1ee;color:#5a524b;font-weight:600}.fc-fb.ng{background:#fdecea;color:#a12a1b}
 .emg-item.fc.fc-ng{opacity:.62}
 .emg-item.fc.fc-hid{display:none}
 .fc-acts{display:flex;flex-wrap:wrap;gap:5px;margin:auto 0 0;padding-top:10px}
@@ -145,7 +145,7 @@
   </div>
 </section>
 <section style="padding-top:8px">
-  <div class="wrap"><div class="emg"><div class="fp" data-fp><p class="fp-t"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-paw"/></svg>うちの子に合うところをさがす</p><div class="fp-row"><span class="fp-l">どの子？</span><div class="fp-btns" data-g="a"><button type="button" data-v="dog" aria-pressed="false">犬</button><button type="button" data-v="cat" aria-pressed="false">猫</button><button type="button" data-v="small" aria-pressed="false">うさぎ・小動物</button><button type="button" data-v="exotic" aria-pressed="false">爬虫類など</button></div></div><div class="fp-row"><span class="fp-l">しぼる</span><div class="fp-btns fp-ft" data-g="f"><button type="button" data-v="24時間" aria-pressed="false">24時間</button><button type="button" data-v="夜も" aria-pressed="false">夜も</button></div></div><p class="fp-now" aria-live="polite"></p><label class="fp-hide"><input type="checkbox"> 合わないかもを隠す</label></div>
+  <div class="wrap"><div class="emg"><div class="fp" data-fp><p class="fp-t"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-paw"/></svg>うちの子に合うところをさがす</p><div class="fp-row"><span class="fp-l">どの子？</span><div class="fp-btns" data-g="a"><button type="button" data-v="dog" aria-pressed="false">犬</button><button type="button" data-v="cat" aria-pressed="false">猫</button><button type="button" data-v="small" aria-pressed="false">うさぎ・小動物</button><button type="button" data-v="exotic" aria-pressed="false">爬虫類など</button></div></div><div class="fp-row"><span class="fp-l">しぼる</span><div class="fp-btns fp-ft" data-g="f"><button type="button" data-v="24時間" aria-pressed="false">24時間</button><button type="button" data-v="夜も" aria-pressed="false">夜も</button></div></div><p class="fp-now" aria-live="polite"></p><label class="fp-hide"><input type="checkbox"> 合わないところを隠す</label></div>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref"><option value="">すべての都道府県</option><optgroup label="北海道・東北"><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option></optgroup><optgroup label="関東"><option>東京都</option><option>神奈川県</option><option>埼玉県</option><option>千葉県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option></optgroup><optgroup label="中部"><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option><option>静岡県</option><option>愛知県</option></optgroup><optgroup label="近畿"><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option></optgroup><optgroup label="中国・四国"><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option></optgroup><optgroup label="九州・沖縄"><option>福岡県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option></optgroup></select></div>
       <p class="emg-sum">ほかの条件：</p><ul class="other" style="justify-content:flex-start"><li><a href="/hospital/visit/">往診の動物病院</a></li><li><a href="/hospital/cat/">猫専門の動物病院</a></li><li><a href="/hospital/exotic/">エキゾチックアニマルの動物病院</a></li><li><a href="/hospital/large/">大型犬の設備の動物病院</a></li></ul>
       <h3 class="emg-region">北海道・東北</h3>
