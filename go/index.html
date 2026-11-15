@@ -33,6 +33,11 @@
 .go button.gray{background:var(--ink-2)}
 .go a.line{display:block;text-align:center;background:#06c755;color:#fff;border-radius:999px;padding:12px;font-weight:800;margin:8px 0;text-decoration:none}
 .go .msg{text-align:center;color:var(--ink-3);padding:24px 0}
+/* ご利用後のアンケート（a=ride&ans=done&sk=…）：サイトの中ですぐ出す星の画面（booking/Code.gs の surveyForm_ と同じ見た目） */
+.go .sv{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:14px 12px 10px;margin:12px 0}.go .sv .sq{font-weight:700;margin:0 0 4px;text-align:center}
+.go .stars{display:flex;flex-direction:row-reverse;justify-content:center;gap:4px}.go .stars input{position:absolute;opacity:0;width:1px;height:1px}
+.go .stars label{display:flex;align-items:center;justify-content:center;width:52px;height:52px;font-size:2.4rem;line-height:1;color:#ddd6ce;cursor:pointer;margin:0;padding:0;font-weight:400;-webkit-tap-highlight-color:transparent}
+.go .stars label:active{transform:scale(1.25)}.go .stars input:checked~label{color:#ffa41c}.go .sv .ends{display:flex;justify-content:space-between;font-size:.75rem;color:var(--ink-3);max-width:290px;margin:2px auto 0}
 </style>
 <script src="/ga.js"></script>
 </head>
@@ -128,6 +133,38 @@
       }).catch(function(){ btn.disabled = false; msg.textContent = "うまく送れませんでした。時間をおいてもう一度お試しください。"; });
     });
   }
+  // ご利用後のアンケート（Nori 2026-11-15「読み込みが少し長いので早くできるように」）：
+  // メールの「はい、送迎してもらいました」（a=ride&ans=done、アンケートの鍵 sk つき）は、受付の仕組みの返事を待たずにこのページで星の画面を出し、
+  // 「送る」で答えを裏で送ってすぐお礼を出す（記録は受付の仕組みの a=survey&ride=done。鍵が合わなければ記録されない）
+  function esc(t){ return String(t == null ? "" : t).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  function sendSurvey(form){
+    var p = new URLSearchParams(new FormData(form)); p.set("fmt", "json");
+    try { fetch(API + "?" + p.toString(), { mode: "no-cors", keepalive: true }); } catch (e) { new Image().src = API + "?" + p.toString(); }
+    title.textContent = "ありがとうございました"; title.hidden = false; document.title = "ありがとうございました｜ペットタクシー予約窓口";
+    body.innerHTML = '<p>お答えを受け付けました。いただいた声は、サイトとサービスをよくするために使わせていただきます。</p><p>またいつでもご利用ください。</p>';
+    window.scrollTo(0, 0);
+  }
+  function hookSurvey(){
+    var f = body.querySelector('form input[name="a"][value="survey"]');
+    f = f && f.form;
+    if (f) f.addEventListener("submit", function(e){ e.preventDefault(); sendSurvey(f); });
+  }
+  if (q.get("a") === "ride" && q.get("ans") === "done" && q.get("sk") && q.get("id") && !q.get("go")) {
+    var Q = [["sat", "全体の満足度"], ["staff", "ペットタクシーの会社の対応"], ["fare", "料金の納得感"]], h = "";
+    if (q.get("pn") || q.get("at")) h += '<div class="box">' + (q.get("pn") ? "ペットタクシー：" + esc(q.get("pn")) + "<br>" : "") + (q.get("at") ? "お迎え予定：" + esc(q.get("at")) : "") + "</div>";
+    h += '<h2>よろしければ、ご感想も教えてください</h2><p class="note">星をタップするだけです（3問・任意）。星を選ばずに「送る」を押してもかまいません。お答えはサービスをよくするためだけに使い、サイトに載せたり、会社にお名前とあわせて伝えたりはしません。</p><form>' +
+      '<input type="hidden" name="a" value="survey"><input type="hidden" name="id" value="' + esc(q.get("id")) + '"><input type="hidden" name="k" value="' + esc(q.get("sk")) + '"><input type="hidden" name="go" value="1"><input type="hidden" name="ride" value="done">';
+    Q.forEach(function(x){
+      h += '<div class="sv"><p class="sq">' + x[1] + '</p><div class="stars" role="radiogroup" aria-label="' + x[1] + '">';
+      for (var n = 5; n >= 1; n--) h += '<input type="radio" name="' + x[0] + '" value="' + n + '" id="sv_' + x[0] + n + '"><label for="sv_' + x[0] + n + '" aria-label="星' + n + 'つ">★</label>';
+      h += '</div><div class="ends"><span>いまひとつ</span><span>とてもよい</span></div></div>';
+    });
+    h += '<p style="font-weight:700;margin:16px 0 4px">ひとこと（任意）</p><textarea name="comment" maxlength="500" placeholder="よかったこと、こまったことなど"></textarea><p class="note">お名前・電話番号・住所は書かないでください。</p><button type="submit">送る</button></form>';
+    title.textContent = "送迎してもらいました"; title.hidden = false; document.title = "送迎してもらいました｜ペットタクシー予約窓口";
+    body.innerHTML = h;
+    hookSurvey();
+    return;
+  }
   fetch(API + "?" + q.toString())
     .then(function(r){ return r.json(); })
     .then(function(r){
@@ -138,6 +175,7 @@
       }
       body.innerHTML = r.html;
       upload();
+      hookSurvey();
     })
     .catch(fail);
 })();
