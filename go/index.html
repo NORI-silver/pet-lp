@@ -61,6 +61,34 @@
   function fail(){
     body.innerHTML = '<p class="msg">うまく表示できませんでした。時間をおいてもう一度お試しください。</p>';
   }
+  // 掲載情報の写真（a=pinfo）：端末の中で長いほう1600pxのJPEGに縮めてから送る（位置の情報などは消える）
+  function upload(){
+    var box = body.querySelector("[data-pinfo-up]");
+    if (!box) return;
+    var file = box.querySelector("input[type=file]"), btn = box.querySelector("button"), msg = box.querySelector(".up-msg");
+    btn.addEventListener("click", function(){
+      var f = file.files && file.files[0];
+      if (!f) { msg.textContent = "写真を選んでください。"; return; }
+      if (!box.querySelector("[data-rights]").checked) { msg.textContent = "「載せる権利があります」にチェックしてください。"; return; }
+      btn.disabled = true; msg.textContent = "送っています…";
+      var img = new Image(), url = URL.createObjectURL(f);
+      img.onerror = function(){ btn.disabled = false; msg.textContent = "この写真は読み込めませんでした。JPEGかPNGでお試しください。"; };
+      img.onload = function(){
+        var w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, 1600 / Math.max(w, h));
+        var c = document.createElement("canvas"); c.width = Math.round(w * k); c.height = Math.round(h * k);
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(url);
+        var b = new URLSearchParams({ kind: "pinfo_photo", t: box.getAttribute("data-t"), rights: "1", w: String(w), h: String(h),
+          data: c.toDataURL("image/jpeg", 0.85) });
+        b.set("photo_kind", box.querySelector("[data-kind]").value);
+        fetch(API, { method: "POST", body: b }).then(function(r){ return r.json(); }).then(function(r){
+          btn.disabled = false;
+          if (r && r.ok) { msg.textContent = "受け付けました（" + r.n + "枚め）。運営者が確かめてから公開します。"; file.value = ""; }
+          else msg.textContent = (r && r.error) || "うまく送れませんでした。";
+        }).catch(function(){ btn.disabled = false; msg.textContent = "うまく送れませんでした。時間をおいてもう一度お試しください。"; });
+      };
+      img.src = url;
+    });
+  }
   fetch(API + "?" + q.toString())
     .then(function(r){ return r.json(); })
     .then(function(r){
@@ -70,6 +98,7 @@
         document.title = r.title + "｜ペットタクシー予約窓口";
       }
       body.innerHTML = r.html;
+      upload();
     })
     .catch(fail);
 })();
