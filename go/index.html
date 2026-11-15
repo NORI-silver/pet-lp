@@ -64,7 +64,7 @@
   // 掲載情報の写真（a=pinfo）：端末の中で、カードと同じ横3：縦2に切り抜いて1500×1000pxのJPEGにしてから送る（位置の情報などは消える）。
   // 送る前にカードと同じ形の見本を出し、切り抜く位置はつまみで動かせる。切り抜いたあとが1200×800pxに足りない写真は送らない
   // 「運転手」は正方形（800×800、600px以上）で、カードでは丸く出す。了解のチェックが要る
-  var PW = 1500, PH = 1000, MINW = 1200, DRIVER = "運転手";
+  var PW = 1500, PH = 1000, MINW = 900, DRIVER = "運転手";
   function upload(){
     var box = body.querySelector("[data-pinfo-up]");
     if (!box) return;
@@ -92,7 +92,7 @@
       cap.textContent = "お客さまのカードでは、このように見えます。" + (Math.abs(w / h - sh.r) > 0.02 ? "つまみで切り抜く位置を動かせます。" : "");
       pos.style.display = Math.abs(w / h - sh.r) > 0.02 ? "block" : "none";
     }
-    function kindChanged(){ ok.style.display = kindSel.value === DRIVER ? "flex" : "none"; if (img) { if (Math.min(img.naturalWidth, img.naturalHeight * shape().r) < shape().min) { msg.textContent = "この写真は小さすぎます。"; } else msg.textContent = ""; draw(); } }
+    function kindChanged(){ ok.style.display = kindSel.value === DRIVER ? "flex" : "none"; if (img) { if (Math.min(img.naturalWidth, img.naturalHeight * shape().r) < shape().min) { msg.textContent = "この写真は小さいので使えません。スマホのカメラで撮った元の写真を選んでください（LINEなどで受け取った写真やスクリーンショットは小さくなっていることがあります）。"; } else msg.textContent = ""; draw(); } }
     kindSel.addEventListener("change", kindChanged); kindChanged();
     pos.addEventListener("input", draw);
     file.addEventListener("change", function(){
@@ -105,7 +105,7 @@
         URL.revokeObjectURL(url);
         var w = im.naturalWidth, h = im.naturalHeight;
         var sh = shape();
-        if (Math.min(w, h * sh.r) < sh.min) { msg.textContent = sh.r === 1 ? "写真が小さすぎます。正方形に切り抜いたあとで" + sh.min + "px以上になる写真にしてください。" : "写真が小さすぎます。横3：縦2に切り抜いたあとで、横" + sh.min + "px以上になる写真にしてください。"; file.value = ""; return; }
+        if (Math.min(w, h * sh.r) < sh.min) { msg.textContent = "この写真は小さいので使えません。スマホのカメラで撮った元の写真を選んでください（LINEなどで受け取った写真やスクリーンショットは小さくなっていることがあります）。"; file.value = ""; return; }
         img = im; pos.value = "50"; draw();
         prev.style.display = "block"; cap.style.display = "";
       };
@@ -115,7 +115,7 @@
       if (!img || !crop) { msg.textContent = "写真を選んでください。"; return; }
       if (!box.querySelector("[data-rights]").checked) { msg.textContent = "「載せる権利があります」にチェックしてください。"; return; }
       if (kindSel.value === DRIVER && !ok.querySelector("input").checked) { msg.textContent = "「写っている方ご本人の了解があります」にチェックしてください。"; return; }
-      if (Math.min(img.naturalWidth, img.naturalHeight * shape().r) < shape().min) { msg.textContent = "この写真は小さすぎます。"; return; }
+      if (Math.min(img.naturalWidth, img.naturalHeight * shape().r) < shape().min) { msg.textContent = "この写真は小さいので使えません。スマホのカメラで撮った元の写真を選んでください（LINEなどで受け取った写真やスクリーンショットは小さくなっていることがあります）。"; return; }
       if (box.getAttribute("data-view")) { msg.textContent = "見本なので、送っていません（事業者の画面では、ここで受け付けます）。"; return; }
       btn.disabled = true; msg.textContent = "送っています…";
       var b = new URLSearchParams({ kind: "pinfo_photo", t: box.getAttribute("data-t"), rights: "1", w: String(crop.w), h: String(crop.h),

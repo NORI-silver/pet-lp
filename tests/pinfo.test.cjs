@@ -33,29 +33,36 @@ assert.equal(ctx.pinfoSessionPid_(tok.replace('P063','P030')),'');
 ctx.PINFO_STOP.push('P063'); assert.equal(ctx.pinfoSessionPid_(tok),''); ctx.PINFO_STOP.pop();
 sent.length=0;
 const page=ctx.pinfoPage_({s:tok}).html;
-assert.ok(page.includes('PETTA東京') && page.includes('data-pinfo-up') && page.includes('◯%オフ') && page.includes('早朝・深夜の割増なし'));
+assert.ok(page.includes('PETTA東京') && page.includes('data-pinfo-up') && page.includes('%オフは5〜30%') && page.includes('早朝・深夜の割増なし'));
 // 特典は終わりの日と数字の上限、ひとことは禁止の言い方で止める
 const later=new Date(Date.now()+30*864e5).toISOString().slice(0,10);
-let r=ctx.pinfoPage_({s:tok,go:'1',of0:'first_pct',of0n:'50',of0u:later}).html;
+let r=ctx.pinfoPage_({s:tok,go:'1',off_pct:'50',off_until:later}).html;
 assert.ok(r.includes('5〜30%') && rows.length===0);
-r=ctx.pinfoPage_({s:tok,go:'1',of0:'pick_free',of0n:'5',of0u:later,equip:['ケージの貸し出し','ペットシーツ'],note:'地域最安！お電話は03-1234-5678'}).html;
+r=ctx.pinfoPage_({s:tok,go:'1',off_yen:'500',off_until:later,equip:['ケージの貸し出し','ペットシーツ'],note:'地域最安！お電話は03-1234-5678'}).html;
 assert.ok(rows.length===3, 'offer + equip + note');
-assert.equal(rows[0][3],'特典'); assert.ok(rows[0][4].startsWith('お迎え料金なし（5kmまで）')); assert.equal(rows[0][6],'確認待ち');
+assert.equal(rows[0][3],'特典'); assert.ok(rows[0][4].startsWith('500円オフ')); assert.equal(rows[0][6],'確認待ち');
 const note=rows.find(x=>x[3]==='ひとこと'); assert.equal(note[6],'直してください'); assert.ok(/電話番号/.test(note[7]) && /くらべる言い方/.test(note[7]));
 assert.ok(mails.length===3 && mails[0][1].includes('a=pinfo_ok'));
-assert.ok(sent.length===1 && sent[0][0]==='petta@example.jp' && sent[0][2].includes('お迎え料金なし（5kmまで）'), 'receipt to the partner');
+assert.ok(sent.length===1 && sent[0][0]==='petta@example.jp' && sent[0][2].includes('500円オフ'), 'receipt to the partner');
+// %と円の両方・期間なしは止める。数字のいらない特典はチェックで
+let n1=rows.length;
+r=ctx.pinfoPage_({s:tok,go:'1',off_pct:'10',off_yen:'500',off_until:later,equip:['ケージの貸し出し','ペットシーツ'],note:'地域最安！お電話は03-1234-5678'}).html;
+assert.ok(r.includes('どちらか1つ'));
+r=ctx.pinfoPage_({s:tok,go:'1',off_x:'早朝・深夜の割増なし',equip:['ケージの貸し出し','ペットシーツ'],note:'地域最安！お電話は03-1234-5678'}).html;
+assert.ok(r.includes('いつまで'));
+rows.splice(n1); sent.length=1; mails.length=3;
 // 同じ内容をもう一度送っても行は増えない
-ctx.pinfoPage_({s:tok,go:'1',of0:'pick_free',of0n:'5',of0u:later,equip:['ケージの貸し出し','ペットシーツ'],note:'地域最安！お電話は03-1234-5678'});
+ctx.pinfoPage_({s:tok,go:'1',off_yen:'500',off_until:later,equip:['ケージの貸し出し','ペットシーツ'],note:'地域最安！お電話は03-1234-5678'});
 assert.equal(rows.length,4, 'only the rejected note is re-sent');
 // 登録・届出を選んだら番号が要る。お支払い方法は受け付ける。人数・頭数の項目はない
 let n0=rows.length;
-r=ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],equip:['ケージの貸し出し','ペットシーツ'],of0:'pick_free',of0n:'5',of0u:later,note:''}).html;
+r=ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],equip:['ケージの貸し出し','ペットシーツ'],off_yen:'500',off_until:later,note:''}).html;
 assert.ok(r.includes('番号を入れてください') && !rows.slice(n0).some(x=>x[3]==='許可・資格・保険'));
-ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],cred_no:'関自貨第123号',pay:['現金','クレジットカード'],equip:['ケージの貸し出し','ペットシーツ'],of0:'pick_free',of0n:'5',of0u:later,note:''});
+ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],cred_no:'関自貨第123号',pay:['現金','クレジットカード'],equip:['ケージの貸し出し','ペットシーツ'],off_yen:'500',off_until:later,note:''});
 assert.ok(rows.some(x=>x[3]==='許可・資格・保険' && x[4].includes('関自貨第123号')) && rows.some(x=>x[3]==='お支払い方法' && x[4]==='現金・クレジットカード'));
 assert.ok(!page.includes('多頭の同乗') && !page.includes('飼い主さんの同乗') && !page.includes('得意な行き先'));
 // 写真はページが横3：縦2に切り抜いたものだけ。小さい・形がちがうものは断る
-assert.ok(/小さすぎ/.test(ctx.pinfoPhoto_({t:tok,rights:'1',w:'1000',h:'667',data:'x'}).error));
+assert.ok(/小さいので/.test(ctx.pinfoPhoto_({t:tok,rights:'1',w:'800',h:'533',data:'x'}).error));
 assert.ok(/形が合いません/.test(ctx.pinfoPhoto_({t:tok,rights:'1',w:'1600',h:'1200',data:'x'}).error));
 // 運転手の写真は正方形で、写っている方の了解が要る
 assert.ok(/了解/.test(ctx.pinfoPhoto_({t:tok,rights:'1',photo_kind:'運転手',w:'800',h:'800',data:'x'}).error));
