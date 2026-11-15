@@ -2582,6 +2582,27 @@ function pinfoOffDays_(pid) {
   try { if (!PINFO_ALL_) PINFO_ALL_ = pinfoRows_(''); PINFO_ALL_.filter(function(v) { return String(v[1]) === String(pid); }).forEach(function(v) { if (v[3] === PINFO_KINDS.off && v[6] === '公開') (JSON.parse(v[8] || '{}').days || []).forEach(function(d) { days[d] = 1; }); }); } catch (e) {}
   return days;
 }
+// 公開してよい掲載情報（候補カード用）。会社ごとに種類ごとの最新の「公開」の行だけ。特典は終わりの日を過ぎたら出さない
+function pinfoPublic_() {
+  var cache = null, hit = null;
+  try { cache = CacheService.getScriptCache(); hit = cache.get('PINFO_PUBLIC'); } catch (e) {}
+  if (hit) try { return JSON.parse(hit); } catch (e) {}
+  var out = {}, today = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
+  pinfoRows_('').forEach(function(v) {
+    if (v[6] !== '公開' || !pinfoOpen_(String(v[1]))) return;
+    var d; try { d = JSON.parse(v[8] || '{}'); } catch (e) { return; }
+    var o = out[v[1]] = out[v[1]] || { offers: [], tags: [], note: '', photos: [] };
+    if (v[3] === PINFO_KINDS.offer) o.offers = (d.list || []).filter(function(x) { return x.until >= today; }).map(function(x) { return x.text; });
+    else if (v[3] === PINFO_KINDS.equip) o.equip = d.list || [];
+    else if (v[3] === PINFO_KINDS.good) o.good = (d.list || []).map(function(x) { return x + 'の送迎'; });
+    else if (v[3] === PINFO_KINDS.note) o.note = d.text || '';
+    else if (v[3] === PINFO_KINDS.photo && d.file && d.w >= d.h) o.photos.push({ url: 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(d.file) + '&sz=w1200', kind: d.kind });
+  });
+  Object.keys(out).forEach(function(k) { var o = out[k]; o.tags = (o.equip || []).concat(o.good || []); delete o.equip; delete o.good; o.photos = o.photos.slice(-PINFO_PHOTO_MAX); });
+  try { if (cache) cache.put('PINFO_PUBLIC', JSON.stringify(out), 600); } catch (e) {}
+  return out;
+}
+function pinfoExtra_(pid) { try { return pinfoPublic_()[pid] || null; } catch (e) { return null; } }
 function pinfoReviewUrl_(row, act) { return webUrl_() + '?a=pinfo_ok&r=' + row + '&do=' + act + '&k=' + sign_('pinfo:' + row + ':' + act); }
 var PINFO_BACK = ['電話番号・連絡先が入っています', '使えない言い方が入っています', '写真の決まりに合いません', '内容を確かめられませんでした'];
 function pinfoNotify_(pid, row, kind, text) {
@@ -2597,9 +2618,15 @@ function pinfoReviewPage_(q) {
   var sh = sheet_(SHEET_PINFO), v = sh.getRange(row, 1, 1, PINFO_HEADERS.length).getValues()[0];
   var ok = act === 'ok', why = ok ? '' : (PINFO_BACK[Number(act.slice(1))] || '');
   sh.getRange(row, 7, 1, 2).setValues([[ok ? '公開' : '直してください', why]]);
+  // 写真は公開にしたときだけ、リンクを知っている人が見られるようにする（直してくださいにしたら戻す）
+  if (v[3] === PINFO_KINDS.photo) try {
+    var f = DriveApp.getFileById(JSON.parse(v[8] || '{}').file);
+    if (ok) f.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW); else f.setSharing(DriveApp.Access.PRIVATE, DriveApp.Permission.NONE);
+  } catch (e) { log_('掲載情報の写真の共有：エラー ' + e); }
+  try { CacheService.getScriptCache().remove('PINFO_PUBLIC'); } catch (e) {}
   log_('掲載情報の審査：' + row + '行め ' + v[1] + ' ' + (ok ? '公開' : why));
   return page_(ok ? '公開にしました' : '直してくださいにしました', '<p>' + esc_(v[2]) + '：' + esc_(v[3]) + '</p><p class="note">' + esc_(String(v[4]).slice(0, 200)) + '</p>' +
-    (ok ? '<p>サイトには、次に掲載情報をサイトへ写したときに出ます。</p>' : '<p>会社のページの「審査の状況」に「' + esc_(why) + '」と出ます。</p>'));
+    (ok ? '<p>10分ほどで、お客さまが見る候補のカードに出ます。</p>' : '<p>会社のページの「審査の状況」に「' + esc_(why) + '」と出ます。</p>'));
 }
 function pinfoChips_(name, list, picked) {
   return '<div style="display:flex;flex-wrap:wrap;gap:6px 14px">' + list.map(function(x) {
@@ -3166,7 +3193,7 @@ function quoteCards_(p) {
     if (od) return { id:pt.id, label:pt.name, listed:true, car:(/[ァ-ヴー]{3,}|N-?VAN/.test(pt.car || '') && !/^軽バン$/.test(pt.car) ? '車：' + pt.car : od.car_type ? '車：' + od.car_type + '（公式サイトの記載）' : pt.car || '車の詳細は引き受け時に確認'),
       points:od.points || [], limits:od.limits || [], shop:od.shop || null, cancelFree:cancelFree_(pt.cancelRule),
       payment:od.pay ? 'お支払い：' + od.pay + '（公式サイトの記載）' : [pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は引き受け時にご案内',
-      price:price, review:null, check:checks_(pt, r).ask, expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
+      price:price, review:null, check:checks_(pt, r).ask, expires:expires, token:quoteSignature_(p,pt.id,expires,price), extra:pinfoExtra_(pt.id) };
     if (CONFIG.SHOW_ALL_CANDIDATES) return anonCard_({ id:pt.id, label:pt.name, display_only:true, car:pt.car || '車の詳細は確認中です',
       payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は確認中です',
       price:price, review:null, check:[], points:PARTNER_POINTS[pt.id] || [], limits:PARTNER_LIMITS[pt.id] || [], shop:partnerShop_(pt.id) }, r['都府県'], '', p.demo_id);

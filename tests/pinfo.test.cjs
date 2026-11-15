@@ -61,3 +61,21 @@ console.log('PASS: partner listing page logs in by email link, accepts only part
   assert.ok(!res2.ng.some(x=>x.includes('臨時のお休み')));
   console.log('PASS: day-off excludes the partner from that day');
 }
+{
+  // 公開した行だけ・期限内の特典だけ・横長の写真だけを候補カード用に出す
+  rows.length=0; ctx.CacheService={getScriptCache:()=>({get:()=>null,put(){},remove(){}})};
+  const later=new Date(Date.now()+30*864e5).toISOString().slice(0,10), past='2020-01-01';
+  const row=(kind,state,data)=>rows.push([new Date(),'P063','PETTA東京',kind,'',  '○',state,'',JSON.stringify(data)]);
+  row('特典','公開',{list:[{text:'お迎え料金が5kmまで無料（'+later+'まで）',until:later},{text:'古い',until:past}]});
+  row('設備・できること','公開',{list:['ケージの貸し出し']});
+  row('得意な行き先','確認待ち',{list:['空港']});
+  row('ひとこと','公開',{text:'大型犬もどうぞ'});
+  row('写真','公開',{file:'abc',w:1600,h:1067,kind:'車の中'});
+  row('写真','公開',{file:'tall',w:900,h:1600,kind:'車の外'});
+  row('写真','直してください',{file:'ng',w:1600,h:1000,kind:'お店'});
+  const pub=ctx.pinfoPublic_()['P063'];
+  assert.deepEqual(pub.offers,['お迎え料金が5kmまで無料（'+later+'まで）']);
+  assert.deepEqual(pub.tags,['ケージの貸し出し']); assert.equal(pub.note,'大型犬もどうぞ');
+  assert.equal(pub.photos.length,1); assert.ok(pub.photos[0].url.includes('abc'));
+  console.log('PASS: only approved, unexpired, landscape items reach the cards');
+}
