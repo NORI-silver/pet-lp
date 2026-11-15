@@ -18,6 +18,7 @@ LIST_CATS = ["pet-sitter", "trimming", "dog-trainer", "rojin-home", "sougi", "jo
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 CSS = """<style id="uicss">
+[data-ffi][hidden],[data-ffg][hidden]{display:none!important}
 #ffRes{scroll-margin-top:110px;height:0;margin:0}
 [data-ffg]{margin:0;padding:0!important}[data-ffg]>h2{margin-top:18px!important}
 body.ux .emg{border:0;padding:0;background:none;box-shadow:none;border-radius:0}
@@ -322,6 +323,54 @@ def generic_list(h, cat, hub):
     if FIND_JS not in h: h = h.replace("</body>", FIND_JS + "\n</body>", 1)
     return h
 
+PREF47 = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"]
+
+def cafe_hub(h):
+    """カフェの一覧（地方ごとの表）：上に「どこで」のさがす箱、表の行が結果。「数えて分かったこと」は一覧の後ろへ。"""
+    if 'id="ffRes"' in h: return h
+    em = h.find('<div class="emg">')
+    if em < 0: return h
+    m = re.search(r'\s*<div class="emg-tips" style="margin-top:0"><h2[^>]*>数えて分かったこと</h2>', h[em:])
+    facts = ""
+    if m:
+        a = em + m.start(); b = _end(h, a + len(m.group(0)) - len(m.group(0).lstrip()), "div")
+        facts = h[a:b].strip(); h = h[:a] + h[b:]
+    seen = []
+    def row(m):
+        t = m.group(0)
+        pm = re.search(r'data-l="場所"><div>(' + "|".join(PREF47) + ')', t)
+        if not pm: return t
+        if pm.group(1) not in seen: seen.append(pm.group(1))
+        return '<tr data-ffi data-pref="' + pm.group(1) + '">' + t[4:]
+    h = re.sub(r'<tr><td><a href="/inu-cafe/.*?</tr>', row, h, flags=re.S)
+    h = re.sub(r'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">([^<（]*)（(\d+店)）</h2><div class="tbl"><table class="pp-tbl cmp',
+               lambda m: f'<div class="emg-tips" data-ffg><h2 style="font-size:1.05em;margin:0 0 6px">{m.group(1)}（<span data-ffn>{m.group(2)}</span>）</h2><div class="tbl"><table class="pp-tbl cmp', h)
+    opts = '<option value="">すべての都道府県</option>' + "".join(f"<option>{p}</option>" for p in PREF47 if p in seen)
+    bx = box("inu-cafe", q_ph="市区町村・お店の名前（例：札幌市）", opts=opts, unit="店", noun="お店", go="この条件でお店を探す")
+    em = h.find('<div class="emg">') + len('<div class="emg">')
+    h = h[:em] + bx + h[em:]
+    if facts:
+        last = h.rfind("<div class=\"emg-tips\" data-ffg>")
+        if last > 0:
+            j = _end(h, last, "div"); h = h[:j] + facts + h[j:]
+    if FIND_JS not in h: h = h.replace("</body>", FIND_JS + "\n</body>", 1)
+    return h
+
+def jichitai_hub(h):
+    """迷子・登録の窓口：「いますぐ知りたいこと」（場面ごとの答え）と都道府県の選択を先に、窓口の受け持ちの表は一覧の後ろへ。"""
+    if "data-uxmoved" in h: return h
+    em = h.find('<div class="emg">')
+    i = h.find('<div class="emg-tips"><h4>窓口ごとに受け付けていること</h4>', em)
+    if em < 0 or i < 0: return h
+    j = _end(h, i, "div"); blk = h[i:j]; h = h[:i] + h[j:]
+    m = re.search(r'\s*<p class="emg-free">.*?</p>', h[em:], re.S)
+    free = ""
+    if m and em + m.start() < h.find('<section class="emg-pref"', em):
+        free = m.group(0).strip(); h = h[:em + m.start()] + h[em + m.end():]
+    pos = _list_end(h, em)
+    if pos < 0: return h
+    return h[:pos] + "\n      " + blk.replace("<div class=\"emg-tips\">", '<div class="emg-tips" data-uxmoved>', 1) + free + h[pos:]
+
 def build(ROOT):
     n = 0
     sz = write_js(ROOT)
@@ -336,6 +385,9 @@ def build(ROOT):
             h = taxi(h, cat)
             if d == "pet-hotel" and len(parts) <= 2: h = facility_list(h, HOTEL, hub=len(parts) == 1)
             if d in LIST_CATS: h = generic_list(h, d, hub=len(parts) == 1)
+            if d == "inu-cafe" and len(parts) == 1: h = cafe_hub(h)
+            if d == "jichitai" and len(parts) == 1: h = jichitai_hub(h)
+            if 'data-ff="' in h and FIND_JS not in h: h = h.replace("</body>", FIND_JS + "\n</body>", 1)
             h = head(h)
             if h != old:
                 open(p, "w", encoding="utf-8").write(h); n += 1
