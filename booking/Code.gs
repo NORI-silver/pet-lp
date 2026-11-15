@@ -2964,7 +2964,7 @@ function pinfoPhoto_(p) {
 
 /* ───────── 提携規約への同意（a=agree。Nori 2026-11-09「サイト上でクリックして」「logをちゃんと取っておいて」） ───────── */
 // 提携規約の版（gen_areas.py が partner_terms.py から書き込む。改定日と本文の指紋）
-/*PTERMS_VER*/var PTERMS_VER = {"revised": "2026年11月9日", "hash": "898dc30393da"};/*/PTERMS_VER*/
+/*PTERMS_VER*/var PTERMS_VER = {"revised": "2026年11月16日", "hash": "c205cf6587c7"};/*/PTERMS_VER*/
 var AGREE_HEADERS = ['同意した日時', '提携先ID', '会社名', '同意した方のお名前', '役職・担当', '規約の改定日', '規約の版の番号', '規約のURL', '受け付けた画面'];
 function agreeUrl_(pid) { return linkBase_() + '?a=agree&p=' + encodeURIComponent(pid) + '&k=' + sign_('agree:' + pid); }
 function agreeRows_(pid) {
