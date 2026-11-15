@@ -68,6 +68,60 @@ def tags(d):
 def tags_html(e, d):
     return '<ul class="dr-tags">' + "".join(('<li class="ok">' if ok else "<li>") + e(x) + "</li>" for x, ok in tags(d)) + "</ul>"
 
+# ── さがす箱とカード（tools/uikit.py の共通の形。Nori 2026-11-15「全カテゴリUI/UX改善依頼」） ──
+KIND_K = {"公営": "public", "民間": "shop", "高速道路": "sapa"}
+_NOPARK = re.compile(r"^(専用)?駐車場(は)?(なし|ない|ありません)|駐車場はありません")
+def ff_keys(d):
+    k, no = [KIND_K[kind(d)]], []
+    f = fee_tag(d)
+    if f in ("無料", "利用は無料"): k.append("free")
+    elif f == "有料": no.append("free")
+    r = reg_tag(d)
+    if r == "登録なしで使える": k.append("noreg")
+    elif r == "登録がいる": no.append("noreg")
+    if is_small(d): k.append("small")
+    if is_large(d): k.append("large")
+    pk = d.get("parking", "")
+    if pk: (no if _NOPARK.search(pk) else k).append("park")
+    if "24時間" in d.get("hours", ""): k.append("h24")
+    return k, no
+
+def _short(v, n=34):
+    v = v.split("。")[0]
+    return v if len(v) <= n else v[:n] + "…"
+
+def ff_card(e, d, full=False):
+    from urllib.parse import quote as _q
+    k, no = ff_keys(d)
+    q = " ".join(x for x in (d["name"], d.get("city", ""), d.get("addr", ""), d.get("access", "")) if x)
+    pf = d["pref"]
+    lines = ""
+    for ic, f in (("🕒", "hours"), ("¥", "fee"), ("🐕", "size")):
+        if d.get(f): lines += f'<p class="ux-c-l"><i aria-hidden="true">{ic}</i><span>{e(_short(d[f]))}</span></p>'
+    dest = (d.get("addr") or "") and _q(f'{d["name"]} {pf}{d["addr"]}')
+    acts = f'<a class="ux-btn" href="{e(d["url"])}" target="_blank" rel="noopener">公式ページ ↗</a>'
+    if dest: acts += f'<a class="ux-btn l" href="https://www.google.com/maps/dir/?api=1&amp;destination={dest}" target="_blank" rel="noopener" data-route>経路を見る</a>'
+    sub = "" if full else f'<a href="{href(pf)}#{d["id"]}">くわしく見る</a>'
+    det = ""
+    if full:
+        rows = "".join(f"<dt>{e(lab)}</dt><dd>{e(d[f])}</dd>" for f, lab in FIELDS if d.get(f))
+        srcs = [u for u in d.get("src", []) if u != d["url"]]
+        more = ("<small>あわせて確かめたページ：" + "、".join(f'<a href="{e(u)}" target="_blank" rel="noopener">{i + 1}</a>' for i, u in enumerate(srcs)) + "</small>") if srcs else ""
+        det = f'<details class="ux-c-d"><summary>くわしく見る（料金・時間・登録・持ちもの）</summary><dl>{rows}</dl>{more}{_fac_link(e, d)}</details>'
+    hd = f'<h3 class="ux-c-n">{e(d["name"])}</h3>' if full else f'<a class="ux-c-n" href="{href(pf)}#{d["id"]}">{e(d["name"])}</a>'
+    idattr = f' id="{d["id"]}"' if full else ""
+    return (f'<div class="ux-c dr-card"{idattr} data-ffi data-k="{" ".join(k)}" data-no="{" ".join(no)}" data-q="{e(q)}">{hd}'
+            f'<p class="ux-c-m">{e(d.get("city", "") or pf)}</p>{tags_html(e, d)}{lines}<div class="ux-c-a">{acts}</div>'
+            + (f'<p class="ux-c-s">{sub}</p>' if sub else "") + det + "</div>")
+
+def ff_box(e, opts=None):
+    import uikit
+    return uikit.box("dogrun", q_ph="市区町村・公園の名前（例：世田谷区）", opts=opts, unit="か所", noun="ドッグラン", go="この条件でドッグランを探す",
+                     who=("どんな子ですか？", [("small", "小型犬エリアがある"), ("large", "大型犬も入れる")]),
+                     need=("どんなドッグランをお探しですか？", [("free", "無料"), ("noreg", "登録なしで使える"), ("park", "駐車場がある"), ("h24", "24時間")]),
+                     more=[("種類", [("public", "公園などの公営"), ("shop", "お店・施設"), ("sapa", "高速道路のSA・PA")])],
+                     guess=bool(opts), needpref=bool(opts))
+
 def nfree(rs): return sum(1 for d in rs if fee_tag(d) in ("無料", "利用は無料"))
 def nnoreg(rs): return sum(1 for d in rs if reg_tag(d) == "登録なしで使える")
 def nsmall(rs): return sum(1 for d in rs if is_small(d))
@@ -462,11 +516,11 @@ def render_hub(ctx):
         for pf in prefs:
             rs = BY.get(pf, [])
             if rs:
-                inner = "".join(f'<div class="dr-row"><a href="{href(pf)}#{d["id"]}">{e(d["name"])}</a><small>{e(d.get("city", ""))}</small>{tags_html(e, d)}</div>' for d in rs)
+                inner = '<div class="ux-list">' + "".join(ff_card(e, d) for d in rs) + "</div>"
                 inner += f'<p class="emg-all"><a href="{href(pf)}">{e(pf)}のドッグラン（料金・時間・登録のくわしい表）</a></p>'
+                body += f'<section class="emg-pref" data-pref="{e(pf)}"><h4><a href="{href(pf)}">{e(pf)}のドッグラン（{len(rs)}か所）</a></h4>{inner}</section>\n'
             else:
-                inner = f'<p class="emg-none">{e(NONE.get(pf, "まだ載せていません。"))}見つけしだい足します。</p>'
-            body += f'<section class="emg-pref" data-pref="{e(pf)}"><h4>{e(pf)}</h4>{inner}</section>\n'
+                body += f'<section class="emg-pref ux-nolist" data-pref="{e(pf)}"><h4>{e(pf)}</h4><p class="emg-none">{e(NONE.get(pf, "まだ載せていません。"))}見つけしだい足します。</p></section>\n'
     faq = faq_common(e)
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     ld = ld_json([
@@ -481,30 +535,35 @@ def render_hub(ctx):
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › 全国のドッグラン</nav>
     <h1><small>{npref}都道府県・{TOTAL}か所</small>全国のドッグラン</h1>
     <p class="lede">思いきり走らせてあげたい。でも、どこにあるの？　公園などの公営のドッグラン、お店や施設のドッグラン、高速道路のSA・PAのドッグランを、料金・利用登録・利用時間・エリアの区分つきで都道府県ごとにまとめました。</p>
-    {stats(RUNS)}
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="emg">
+      {ff_box(e, ctx["emg_opts"])}
+      <h2 class="emg-h">全国のドッグランの一覧</h2>
+      {body}
+    </div>
+  </div>
+</section>
+{taxi_band(e)}
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="emg">
+      <details class="ux-areas"><summary>都道府県のドッグランのページ</summary>{grid}</details>
+      {stats(RUNS)}
       <p class="emg-free">この一覧は無料の情報です。どれも公式ページで確かめたことだけを書いています。順番は都道府県ごとで、おすすめ順ではありません。お店や施設のドッグランは、公式ページで確かめられたところから順に足しています。</p>
-      <h2 class="emg-h">都道府県からさがす</h2>
-      {grid}
       <h2 class="emg-h">ドッグランの記事</h2>
       {art_links(e)}
       <div class="emg-tips"><h4>ドッグランの種類</h4><dl>{kinds}</dl><p class="emg-tips-note">くわしいちがいは「<a href="/{SLUG}/kouei-minkan/">公営と民間のドッグランのちがい</a>」にまとめています。</p></div>
       {guide_html(e)}
-      <h2 class="emg-h">全国のドッグランの一覧</h2>
-      <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
-      {body}
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
       <p class="emg-note">{e(CHECKED)}に公式ページで確かめた情報です。工事やイベント、天気で閉まることがあり、利用の方法も変わることがあるので、行く前に必ずリンク先でご確認ください。掲載の内容の誤りや、載せてほしいドッグランは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
 </section>
-{taxi_band(e)}
 </main>
-{prefkeep.LIST_JS}
+<script src="/find.js" defer></script>
 """ + ctx["foot_noband"]()
 
 def taxi_band(e, pf=None, pref_href=None):
@@ -562,7 +621,7 @@ def render_pref(ctx, pf, rs):
     for k, name, _, text in KINDS:
         ks = by_kind(rs, k)
         if not ks: continue
-        cards += f'<h2>{e(pf)}の{e(name)}（{len(ks)}か所）</h2><p>{e(text)}</p>' + "".join(card(e, d) for d in ks)
+        cards += f'<section data-ffg><h2>{e(pf)}の{e(name)}（{len(ks)}か所）</h2><p class="ux-g-p">{e(text)}</p><div class="ux-list">' + "".join(ff_card(e, d, True) for d in ks) + "</div></section>"
     faq = faq_pref(e, pf, rs)
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     region = next((ps for _, ps in ctx["emg_regions"] if pf in ps), [])
@@ -580,15 +639,20 @@ def render_pref(ctx, pf, rs):
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/{SLUG}/">全国のドッグラン</a> › {e(pf)}</nav>
     <h1><small>{n}か所・公式ページで確かめた情報</small>{e(pf)}のドッグラン</h1>
     <p class="lede">{e(pf)}の公園などの公営のドッグランや、お店・施設、高速道路のSA・PAのドッグランを、料金・利用登録・利用時間・エリアの区分つきでまとめました。行く前に、それぞれの公式ページで最新の情報を確かめてください。</p>
-    {stats(rs)}
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
+    {ff_box(e)}
+    {cards}
+  </article></div>
+</section>
+{taxi_band(e, pf, pref_href)}
+<section style="padding-top:0">
+  <div class="wrap"><article class="art">
     {_answer(e, pf, rs, faq)}
     <p class="emg-free">この一覧は無料の情報です。順番はおすすめ順ではありません。書いていない項目は、公式ページに書いていなかったものです。お店や施設のドッグランは、公式ページで確かめられたところから順に足しています。</p>
     <div class="tbl"><table class="dr-tbl"><thead><tr><th>ドッグラン（市町村）</th><th>種類</th><th>料金</th><th>登録</th></tr></thead><tbody>{table}</tbody></table></div>
-    {cards}
     {guide_html(e)}
     <div class="emg-tips"><h4>{e(pf)}のドッグラン よくある質問</h4><dl>{faq_html}</dl></div>
     <p class="emg-note">{e(CHECKED)}に公式ページで確かめた情報です。工事やイベント、天気で閉まることがあり、利用の方法や料金も変わることがあるので、行く前に必ずリンク先でご確認ください。掲載の内容の誤りや、載せてほしいドッグランは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
@@ -598,9 +662,8 @@ def render_pref(ctx, pf, rs):
     <ul class="other">{near}<li><a href="/{SLUG}/">全国のドッグラン（都道府県の一覧）</a></li></ul>
   </article></div>
 </section>
-{taxi_band(e, pf, pref_href)}
 </main>
-{prefkeep.LINKS_JS}
+<script src="/find.js" defer></script>
 """ + ctx["foot_noband"]()
 
 def urls(SITE):
