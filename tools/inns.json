@@ -25062,6 +25062,1767 @@
     "l"
    ],
    "id": "id88376"
+  },
+  {
+   "name": "奥入瀬渓流ホテル by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "青森県",
+   "city": "十和田市",
+   "url": "https://hoshinoresorts.com/ja/hotels/oirasekeiryu",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "青森県十和田市大字奥瀬字栃久保231",
+     "src": "https://hoshinoresorts.com/ja/hotels/oirasekeiryu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルームだけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/oirasekeiryu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/oirasekeiryu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "20kg以下",
+     "src": "https://hoshinoresorts.com/ja/hotels/oirasekeiryu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "プライベートテラスつきの部屋に、ケージ・足ふき・消臭スプレー・ペットシーツ。テラス横に足洗い場（冬はテラスを使えない）",
+     "src": "https://hoshinoresorts.com/jp/guide/area/hokkaidotohoku/aomori/towada/oirase_modelcourse_pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "渓流テラスの朝食（冬はなし）と渓流シャトルバスに一緒に乗れる",
+     "src": "https://hoshinoresorts.com/jp/guide/area/hokkaidotohoku/aomori/towada/oirase_modelcourse_pet/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "愛犬用の食事（1頭1,100円）",
+     "src": "https://hoshinoresorts.com/jp/guide/area/hokkaidotohoku/aomori/towada/oirase_modelcourse_pet/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "ie894a2"
+  },
+  {
+   "name": "星野リゾート 青森屋",
+   "kind": "旅館",
+   "pref": "青森県",
+   "city": "三沢市",
+   "url": "https://hoshinoresorts.com/ja/hotels/aomoriya",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "青森県三沢市字古間木山56",
+     "src": "https://hoshinoresorts.com/ja/hotels/aomoriya",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルームだけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/aomoriya",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/aomoriya",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "20kg以下",
+     "src": "https://hoshinoresorts.com/ja/hotels/aomoriya",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i097522"
+  },
+  {
+   "name": "磐梯山温泉ホテル",
+   "kind": "ホテル",
+   "pref": "福島県",
+   "city": "耶麻郡磐梯町",
+   "url": "https://hoshinoresorts.com/ja/hotels/bandai",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "福島県耶麻郡磐梯町大字更科字清水平6838-68",
+     "src": "https://hoshinoresorts.com/ja/hotels/bandai",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルームだけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/bandai",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/bandai",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "20kg以下",
+     "src": "https://hoshinoresorts.com/ja/hotels/bandai",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "ibad2ac"
+  },
+  {
+   "name": "BEB5軽井沢 by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "長野県",
+   "city": "北佐久郡軽井沢町",
+   "url": "https://hoshinoresorts.com/ja/hotels/beb5karuizawa",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県北佐久郡軽井沢町長倉3364-15",
+     "src": "https://hoshinoresorts.com/ja/hotels/beb5karuizawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルーム",
+     "src": "https://hoshinoresorts.com/ja/hotels/beb5karuizawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/beb5karuizawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "20kg以下",
+     "src": "https://hoshinoresorts.com/ja/hotels/beb5karuizawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i073c8e"
+  },
+  {
+   "name": "BEB5土浦 by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "茨城県",
+   "city": "土浦市",
+   "url": "https://hoshinoresorts.com/ja/hotels/beb5tsuchiura",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "茨城県土浦市有明町1-30",
+     "src": "https://hoshinoresorts.com/ja/hotels/beb5tsuchiura",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルーム",
+     "src": "https://hoshinoresorts.com/ja/hotels/beb5tsuchiura",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/beb5tsuchiura",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "20kg以下",
+     "src": "https://hoshinoresorts.com/ja/hotels/beb5tsuchiura",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i53c3fe"
+  },
+  {
+   "name": "界 鬼怒川",
+   "kind": "旅館",
+   "pref": "栃木県",
+   "city": "日光市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaikinugawa",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県日光市鬼怒川温泉滝308",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaikinugawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は1室だけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaikinugawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaikinugawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaikinugawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i556121"
+  },
+  {
+   "name": "界 遠州",
+   "kind": "旅館",
+   "pref": "静岡県",
+   "city": "浜松市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaienshu",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県浜松市中央区舘山寺町399-1",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaienshu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は1室だけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaienshu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaienshu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaienshu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "iacf5ea"
+  },
+  {
+   "name": "界 秋保",
+   "kind": "旅館",
+   "pref": "宮城県",
+   "city": "仙台市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaiakiu",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "宮城県仙台市太白区秋保町湯元平倉1",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiakiu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は1室だけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiakiu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiakiu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiakiu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i27f6ba"
+  },
+  {
+   "name": "界 蔵王",
+   "kind": "旅館",
+   "pref": "山形県",
+   "city": "山形市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaizao",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山形県山形市蔵王温泉903-2",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaizao",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は1室だけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaizao",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaizao",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaizao",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i3c984d"
+  },
+  {
+   "name": "界 草津",
+   "kind": "旅館",
+   "pref": "群馬県",
+   "city": "吾妻郡草津町",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaikusatsu",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "群馬県吾妻郡草津町大字草津字白根464-690",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaikusatsu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は3室",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaikusatsu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "大型犬は1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaikusatsu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬も泊まれる",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaikusatsu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "i6674f3"
+  },
+  {
+   "name": "界 箱根",
+   "kind": "旅館",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaihakone",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡箱根町湯本茶屋230",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaihakone",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は1室だけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaihakone",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaihakone",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaihakone",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i02567d"
+  },
+  {
+   "name": "界 アンジン",
+   "kind": "旅館",
+   "pref": "静岡県",
+   "city": "伊東市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaianjin",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊東市渚町5-12",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaianjin",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は1室だけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaianjin",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaianjin",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaianjin",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i961012"
+  },
+  {
+   "name": "界 伊東",
+   "kind": "旅館",
+   "pref": "静岡県",
+   "city": "伊東市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaiito",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊東市岡広町2-21",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiito",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は1室だけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiito",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiito",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiito",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i995ace"
+  },
+  {
+   "name": "界 アルプス",
+   "kind": "旅館",
+   "pref": "長野県",
+   "city": "大町市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaialps",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県大町市平2884-26",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaialps",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は1室だけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaialps",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaialps",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaialps",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i1f5fa5"
+  },
+  {
+   "name": "界 奥飛騨",
+   "kind": "旅館",
+   "pref": "岐阜県",
+   "city": "高山市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaiokuhida",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "岐阜県高山市奥飛騨温泉郷平湯138",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiokuhida",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は2室",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiokuhida",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiokuhida",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiokuhida",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i77223d"
+  },
+  {
+   "name": "界 宮島",
+   "kind": "旅館",
+   "pref": "広島県",
+   "city": "廿日市市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaimiyajima",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "広島県廿日市市宮島口西1-1-6",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaimiyajima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は2室",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaimiyajima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaimiyajima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaimiyajima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i94a612"
+  },
+  {
+   "name": "界 長門",
+   "kind": "旅館",
+   "pref": "山口県",
+   "city": "長門市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kainagato",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山口県長門市深川湯本2229-1",
+     "src": "https://hoshinoresorts.com/ja/hotels/kainagato",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は1室だけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/kainagato",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kainagato",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kainagato",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i2d25f0"
+  },
+  {
+   "name": "界 別府",
+   "kind": "旅館",
+   "pref": "大分県",
+   "city": "別府市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaibeppu",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大分県別府市北浜2-14-29",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaibeppu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は1室だけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaibeppu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaibeppu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaibeppu",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "ib7bd2d"
+  },
+  {
+   "name": "界 由布院",
+   "kind": "旅館",
+   "pref": "大分県",
+   "city": "由布市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaiyufuin",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大分県由布市湯布院町川上398",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiyufuin",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は1室だけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiyufuin",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "大型犬は1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiyufuin",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬も泊まれる",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiyufuin",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "iff9f07"
+  },
+  {
+   "name": "界 雲仙",
+   "kind": "旅館",
+   "pref": "長崎県",
+   "city": "雲仙市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaiunzen",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長崎県雲仙市小浜町雲仙321",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiunzen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は2室",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiunzen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiunzen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaiunzen",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "ibb46d2"
+  },
+  {
+   "name": "界 霧島",
+   "kind": "旅館",
+   "pref": "鹿児島県",
+   "city": "霧島市",
+   "url": "https://hoshinoresorts.com/ja/hotels/kaikirishima",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "鹿児島県霧島市霧島田口字霧島山2583-21",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaikirishima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれる部屋は1室だけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaikirishima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "1室2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaikirishima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬（20kg以下）",
+     "src": "https://hoshinoresorts.com/ja/hotels/kaikirishima",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "ic7d29c"
+  },
+  {
+   "name": "OMO5函館 by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "北海道",
+   "city": "函館市",
+   "url": "https://hoshinoresorts.com/ja/hotels/omo5hakodate",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "北海道函館市若松町24-1",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5hakodate",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルームだけ（愛犬ルームの宿泊者だけ入館）",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5hakodate",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "中型犬2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5hakodate",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "1頭20kgまで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5hakodate",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i7192d5"
+  },
+  {
+   "name": "OMO7旭川 by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "北海道",
+   "city": "旭川市",
+   "url": "https://hoshinoresorts.com/ja/hotels/omo7asahikawa",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "北海道旭川市6条通9丁目",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7asahikawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルームだけ（宿泊者だけ入館）",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7asahikawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "中型犬2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7asahikawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "1頭20kgまで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7asahikawa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i26981a"
+  },
+  {
+   "name": "OMO7高知 by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "高知県",
+   "city": "高知市",
+   "url": "https://hoshinoresorts.com/ja/hotels/omo7kochi",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "高知県高知市九反田9-15",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7kochi",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルームだけ（宿泊者だけ入館）",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7kochi",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "中型犬2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7kochi",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "1頭20kgまで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo7kochi",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i8fdd68"
+  },
+  {
+   "name": "OMO5熊本 by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "熊本県",
+   "city": "熊本市",
+   "url": "https://hoshinoresorts.com/ja/hotels/omo5kumamoto",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "熊本県熊本市中央区手取本町5-1",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5kumamoto",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルームだけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5kumamoto",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5kumamoto",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬まで・1頭20kgまで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5kumamoto",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i4977a9"
+  },
+  {
+   "name": "OMO5金沢片町 by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "石川県",
+   "city": "金沢市",
+   "url": "https://hoshinoresorts.com/ja/hotels/omo5kanazawakatamachi",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "石川県金沢市片町1丁目4-23",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5kanazawakatamachi",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルームだけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5kanazawakatamachi",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "中型犬2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5kanazawakatamachi",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "1頭20kgまで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5kanazawakatamachi",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i8fe8b2"
+  },
+  {
+   "name": "OMO5京都祇園 by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "京都府",
+   "city": "京都市",
+   "url": "https://hoshinoresorts.com/ja/hotels/omo5kyotogion",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "京都府京都市東山区四条通大和大路東入祇園町北側288",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5kyotogion",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルームだけ（宿泊者だけ入館）",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5kyotogion",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "中型犬2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5kyotogion",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "中型犬まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo5kyotogion",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i3ea70a"
+  },
+  {
+   "name": "OMO3京都東寺 by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "京都府",
+   "city": "京都市",
+   "url": "https://hoshinoresorts.com/ja/hotels/omo3kyototoji",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "京都府京都市南区西九条蔵王町11-6",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo3kyototoji",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルームだけ（宿泊者だけ入館）",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo3kyototoji",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "中型犬2頭まで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo3kyototoji",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "1頭20kgまで",
+     "src": "https://hoshinoresorts.com/ja/hotels/omo3kyototoji",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "ie9cb4b"
+  },
+  {
+   "name": "OMO関西空港 by 星野リゾート",
+   "kind": "ホテル",
+   "pref": "大阪府",
+   "city": "泉佐野市",
+   "url": "https://hoshinoresorts.com/ja/hotels/omokansaiairport",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "大阪府泉佐野市りんくう往来北1-833",
+     "src": "https://hoshinoresorts.com/ja/hotels/omokansaiairport",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬ルームだけ",
+     "src": "https://hoshinoresorts.com/ja/hotels/omokansaiairport",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "大型犬2頭まで（部屋のタイプで頭数・大きさがちがう）",
+     "src": "https://hoshinoresorts.com/ja/hotels/omokansaiairport",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれる犬の大きさ",
+     "v": "大型犬も泊まれる（部屋のタイプによる）",
+     "src": "https://hoshinoresorts.com/ja/hotels/omokansaiairport",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "1頭1泊5,093円（税込・施設で精算。星野リゾートの愛犬ルーム規約）",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "必要なもの",
+     "v": "狂犬病予防注射済票（または済証）と、接種から3年未満の5種以上の混合ワクチン証明書（または抗体検査の結果）。未接種の子は泊まれない",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "泊まれない子",
+     "v": "生理中・生理後2週間以内・妊娠中の子、攻撃性の強い犬種。部屋で留守番させるときはケージに入れる",
+     "src": "https://hoshinoresorts.com/ja/sp/petroompolicy",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m",
+    "l"
+   ],
+   "id": "ibab17c"
   }
  ]
 }
