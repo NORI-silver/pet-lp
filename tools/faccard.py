@@ -341,6 +341,7 @@ CSS = """<style id="fccss">
 .fr-h{font-size:1.05rem!important;font-weight:800;margin:10px 0 8px!important;display:flex;align-items:baseline;gap:8px}
 .fr-h small{font-size:.78rem;font-weight:600;color:var(--ink-3,#6b625b)}
 .fr-s{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.fr-more{margin:4px 0 18px;font-size:14px}.fr-more a{color:#c2410c;font-weight:600}
 .fr-s>.emg-item.fc{flex:0 0 80%;max-width:330px;scroll-snap-align:start}
 .fr-s>.emg-item.fc[hidden],.fr-s>.emg-item.fac-off{display:none}
 .fr:not(:has(.emg-item.fc:not([hidden]):not(.fac-off):not(.fc-hid))){display:none}
@@ -444,6 +445,70 @@ def _too_big(h):
     import gzip
     return len(gzip.compress(h.encode("utf-8"), 9)) > 59 * 1024
 
+def _trim(h, keep):
+    """全国のページで重すぎるとき、都道府県ごとの箱（emg-pref、見出しに県のページへのリンク）に最初の keep 件だけ残し、のこりは県のページへのリンクにする（施設は県のページにすべて載っている。tests/info-light の「上限を超えたら県のページへのリンクに」）"""
+    out, i = [], 0
+    for sm in re.finditer(r'<section class="emg-pref"[^>]*>', h):
+        if sm.start() < i: continue
+        se = _end(h, sm.start(), "section")
+        sec = h[sm.start():se]
+        lk = re.search(r'<h4><a href="([^"]+)">([^<（]+)', sec)
+        cards = [m for m in _OPEN.finditer(sec)]
+        if not lk or len(cards) <= keep:
+            out.append(h[i:se]); i = se; continue
+        parts, j, k, cut = [], 0, 0, 0
+        for m in cards:
+            if m.start() < j: continue
+            e = _end(sec, m.start(), "div")
+            k += 1
+            if k > keep:
+                parts.append(sec[j:m.start()]); j = e; cut += 1
+        parts.append(sec[j:])
+        sec2 = "".join(parts)
+        more = f'<p class="fr-more"><a href="{lk.group(1)}">{html.escape(lk.group(2))}のほかの{cut}件を見る →</a></p>'
+        sec2 = sec2[:sec2.rfind("</section>")] + more + "</section>"
+        out.append(h[i:sm.start()]); out.append(sec2); i = se
+    out.append(h[i:])
+    return "".join(out)
+
+def _one(h, conf, fbn):
+    """1ページを作りかえる。重すぎれば None"""
+    out, i = [], 0
+    for m in _OPEN.finditer(h):
+        if m.start() < i: continue
+        s = m.start(); e = _end(h, s, "div")
+        out.append(h[i:s])
+        c = h[s:e]
+        if " fc" in m.group(0).split('"')[1].split("emg-co", 1)[1] + " ": out.append(c)
+        else: out.append(build_card(c, conf, fbn))
+        i = e
+    out.append(h[i:])
+    h2 = "".join(out)
+    if "emg-item emg-co fc" not in h2: return h
+    h2 = rows(h2)
+    if 'id="fccss"' not in h2:
+        h2 = h2.replace("</head>", CSS + "\n</head>", 1)
+        h2 = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + SPRITE, h2, count=1)
+    if "data-fp" not in h2:
+        fits = [json.loads(html.unescape(x)) for x in re.findall(r'data-fit="([^"]+)"', h2)]
+        ku = {k for f in fits for k in f.get("a", [])}
+        pn = panel(conf, ku, any("s" in f or "kg" in f for f in fits), any(f.get("sen") for f in fits), any(f.get("pup") for f in fits), len(fits))
+        if pn and fits:
+            k = h2.find('class="emg-item emg-co fc')
+            em = h2.rfind('<div class="emg">', 0, k)
+            if em >= 0 and h2.count("</main>", em, k) == 0:  # 一覧の箱のいちばん上（答えの箱・数字のすぐ後ろ）
+                pos = em + len('<div class="emg">')
+            else:
+                # 最初のカードを含む一覧（emg-pref）の前。しぼりこみのチップや都道府県の選択が直前にあれば、その前に置く
+                sec = h2.rfind('<section class="emg-pref"', 0, k)
+                pos = sec if sec >= 0 else h2.rfind("<div", 0, k)
+                for mark in ('<div class="fac-filter"', '<div class="hosp-pref"', '<div class="trim-cond"', '<label for="hospPref"'):
+                    q = h2.rfind(mark, 0, pos)
+                    if q >= 0 and pos - q < 6000 and h2.count("<section", q, pos) <= 1: pos = min(pos, q)
+            h2 = h2[:pos] + pn + h2[pos:]
+            if FIT_JS not in h2: h2 = h2.replace("</body>", FIT_JS + "\n</body>", 1)
+    return None if h2 != h and _too_big(h2) else h2
+
 def build(ROOT):
     T = _fit_table()
     n = 0
@@ -455,46 +520,13 @@ def build(ROOT):
             p = os.path.join(base, "index.html")
             h = open(p, encoding="utf-8").read()
             if 'class="emg-item emg-co' not in h: continue
-            out, i, changed = [], 0, False
-            for m in _OPEN.finditer(h):
-                if m.start() < i: continue
-                s = m.start(); e = _end(h, s, "div")
-                out.append(h[i:s])
-                c = h[s:e]
-                if " fc" in m.group(0).split('"')[1].split("emg-co", 1)[1] + " ": out.append(c)
-                else:
-                    nc = build_card(c, conf, fbn); out.append(nc); changed |= nc != c
-                i = e
-            out.append(h[i:])
-            h2 = "".join(out)
-            if "emg-item emg-co fc" not in h2: continue
-            h2 = rows(h2)
-            if 'id="fccss"' not in h2:
-                h2 = h2.replace("</head>", CSS + "\n</head>", 1)
-                h2 = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + SPRITE, h2, count=1)
-            if "data-fp" not in h2:
-                fits = [json.loads(html.unescape(x)) for x in re.findall(r'data-fit="([^"]+)"', h2)]
-                ku = {k for f in fits for k in f.get("a", [])}
-                pn = panel(conf, ku, any("s" in f or "kg" in f for f in fits), any(f.get("sen") for f in fits), any(f.get("pup") for f in fits), len(fits))
-                if pn and fits:
-                    k = h2.find('class="emg-item emg-co fc')
-                    # 最初のカードを含む一覧（emg-pref）の前。しぼりこみのチップや都道府県の選択が直前にあれば、その前に置く
-                    em = h2.rfind('<div class="emg">', 0, k)
-                    if em >= 0 and h2.count("</main>", em, k) == 0:  # 一覧の箱のいちばん上（答えの箱・数字のすぐ後ろ）
-                        pos = em + len('<div class="emg">')
-                        h2 = h2[:pos] + pn + h2[pos:]
-                        if FIT_JS not in h2: h2 = h2.replace("</body>", FIT_JS + "\n</body>", 1)
-                        if _too_big(h2): print("faccard: 重すぎるので作りかえない", os.path.relpath(p, ROOT)); continue
-                        open(p, "w", encoding="utf-8").write(h2); n += 1
-                        continue
-                    sec = h2.rfind('<section class="emg-pref"', 0, k)
-                    pos = sec if sec >= 0 else h2.rfind("<div", 0, k)
-                    for mark in ('<div class="fac-filter"', '<div class="hosp-pref"', '<div class="trim-cond"', '<label for="hospPref"'):
-                        q = h2.rfind(mark, 0, pos)
-                        if q >= 0 and pos - q < 6000 and h2.count("<section", q, pos) <= 1: pos = min(pos, q)
-                    h2 = h2[:pos] + pn + h2[pos:]
-                    if FIT_JS not in h2: h2 = h2.replace("</body>", FIT_JS + "\n</body>", 1)
-            if h2 != h and _too_big(h2):
+            h2 = _one(h, conf, fbn)
+            # 全部の施設を並べる全国のページが重すぎるときは、県ごとに数件だけ残して県のページへのリンクにする（写真のない古い形のまま残さない）
+            for keep in (8, 6, 4, 3, 2):
+                if h2 is not None: break
+                h2 = _one(_trim(h, keep), conf, fbn)
+                if h2 is not None: print(f"faccard: 重いので県ごとに{keep}件まで", os.path.relpath(p, ROOT))
+            if h2 is None:
                 print("faccard: 重すぎるので作りかえない", os.path.relpath(p, ROOT)); continue
             if h2 != h:
                 open(p, "w", encoding="utf-8").write(h2); n += 1
