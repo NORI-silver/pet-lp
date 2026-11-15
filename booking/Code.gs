@@ -1027,6 +1027,7 @@ function doGet(e) {
     if (q.a === 'agree') return agreePage_(q);
     if (q.a === 'pconf') return pconfPage_(q);
     if (q.a === 'pinfo') return pinfoPage_(q);
+    if (q.a === 'pinfo_view') return pinfoViewPage_(q);
     if (q.a === 'pinfo_ok') return pinfoReviewPage_(q);
   } catch (err) {
     log_('ページエラー: ' + err);
@@ -2630,11 +2631,30 @@ function pinfoLatest_(rows, kind) {
   var r = rows.filter(function(v) { return v[3] === PINFO_KINDS[kind] && v[6] !== '直してください'; }).pop();
   try { return r ? JSON.parse(r[8] || '{}') : {}; } catch (e) { return {}; }
 }
-function pinfoPage_(q) {
-  var pid = pinfoSessionPid_(q.s);
-  if (!pid) return pinfoLogin_(q, q.s ? 'ログインのリンクの期限が切れたか、正しくありません。もう一度メールで受け取ってください。' : '');
-  var name = pinfoName_(pid), rows = pinfoRows_(pid), done = [], got = [];
-  if (q.go === '1') {
+// 運営者だけが見られる見本（ログインのあとの画面と同じ。何も保存しない・送らない。Nori 2026-11-15「僕だけがアクセスできるやつ」）
+// リンクは ?a=pinfo_view&send=1 を開くと運営者のメールに届く（10分に1回まで）。リンクの k は sign_('pinfo-view')
+function pinfoViewKey_() { return sign_('pinfo-view'); }
+function pinfoViewLink() { Logger.log(linkBase_() + '?a=pinfo_view&k=' + pinfoViewKey_()); } // エディタから実行するとリンクが出る
+function pinfoViewPage_(q) {
+  if (q.k !== pinfoViewKey_()) {
+    if (q.send === '1') {
+      var props = PropertiesService.getScriptProperties(), last = Number(props.getProperty('PINFO_VIEW_SENT')) || 0;
+      if (Date.now() - last > 10 * 60000) {
+        props.setProperty('PINFO_VIEW_SENT', String(Date.now()));
+        MailApp.sendEmail({ to: adminEmail_(), name: CONFIG.SERVICE_NAME, subject: '【社内用】事業者の掲載情報の画面（見本）のリンク',
+          body: '事業者がログインしたあとの「掲載情報の追加・変更」の画面の見本です。運営者だけが開けます。ほかの人には送らないでください。\n見本なので、送っても何も保存されません。\n\n' + linkBase_() + '?a=pinfo_view&k=' + pinfoViewKey_() + '\n' });
+      }
+      return page_('リンクを送りました', '<p>運営者のメールに見本のリンクを送りました。</p>');
+    }
+    return page_('リンクが正しくありません', '<p>運営者に届いたリンクから開いてください。</p>');
+  }
+  return pinfoPage_(q, true);
+}
+function pinfoPage_(q, view) {
+  var pid = view ? '' : pinfoSessionPid_(q.s);
+  if (!view && !pid) return pinfoLogin_(q, q.s ? 'ログインのリンクの期限が切れたか、正しくありません。もう一度メールで受け取ってください。' : '');
+  var name = view ? '見本ペットタクシー' : pinfoName_(pid), rows = view ? [] : pinfoRows_(pid), done = [], got = [];
+  if (q.go === '1' && !view) {
     var arr = function(k) { return [].concat(q[k] || []).map(String).filter(Boolean); };
     // 特典（同時に2つまで・終わりの日は必ず）
     var offers = [];
@@ -2665,15 +2685,17 @@ function pinfoPage_(q) {
   var cur = { offer: pinfoLatest_(rows, 'offer').list || [], equip: pinfoLatest_(rows, 'equip').list || [], pay: pinfoLatest_(rows, 'pay').list || [], cred: pinfoLatest_(rows, 'cred'), note: pinfoLatest_(rows, 'note').text || '' };
   var photos = rows.filter(function(v) { return v[3] === PINFO_KINDS.photo && v[6] !== '直してください' && v[6] !== '取り下げ'; });
   var html = '<p>' + esc_(name) + ' さま</p><p>お客さまが見る候補のカードに、写真・特典・ひとことを足せます。<b>写真と特典がある会社は、お客さまに選ばれやすくなります。</b>運営者が確かめてから出します。受け付けた内容は、登録のメールアドレスにもお知らせします。載せられるものの決まりは <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/listing/') + '">掲載の決まり</a> をご覧ください。</p>' +
-    (q.go === '1' ? '<div class="box">' + (done.length ? esc_(done.join('、')) + ' を受け付けました。' : '変わったところはありませんでした。') + '</div>' : '');
+    (view ? '<div class="box"><b>運営者だけが見られる見本です。</b>事業者がログインしたあとの画面と同じですが、送っても何も保存されず、どこにも届きません。</div>' : '') +
+    (q.go === '1' && view ? '<div class="box">見本なので、保存していません。</div>' : '') +
+    (q.go === '1' && !view ? '<div class="box">' + (done.length ? esc_(done.join('、')) + ' を受け付けました。' : '変わったところはありませんでした。') + '</div>' : '');
   // 写真（/go/ のページが data-pinfo-up を見て、縮めてから送る）
   html += '<h2>写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）</h2><p class="note">カードでは横3：縦2の枠で出します。選んだ写真をこの形に切り抜いて見本を出すので、見え方を確かめてから送ってください（横' + PINFO_PHOTO_MIN_PX + 'px以上になる写真）。1枚めは「車の外」がおすすめです（カードの最初に出ます）。昼の明るい場所で、背景にほかの車・人・看板が入らないように撮ってください。「運転手」は正方形に切り抜き、カードの会社名の横に丸く出します（顔がはっきり見える、明るい場所での写真。写っている方ご本人の了解が必要です）。ご自身で撮った実際の写真だけで、電話番号・ナンバープレートが写っていないもの。運転手のほかは、人の顔が写っていないものにしてください。文字やスタンプは入れないでください。</p>' +
-    (photos.length < PINFO_PHOTO_MAX ? '<div data-pinfo-up data-t="' + esc_(q.s) + '" class="box"><label>写真の種類<select data-kind>' + PINFO_PHOTO_KINDS.map(function(k) { return '<option>' + esc_(k) + '</option>'; }).join('') + '</select></label>' +
+    (photos.length < PINFO_PHOTO_MAX ? '<div data-pinfo-up data-t="' + esc_(view ? '' : q.s) + '"' + (view ? ' data-view="1"' : '') + ' class="box"><label>写真の種類<select data-kind>' + PINFO_PHOTO_KINDS.map(function(k) { return '<option>' + esc_(k) + '</option>'; }).join('') + '</select></label>' +
       '<label>写真を選ぶ<input type="file" accept="image/jpeg,image/png,image/heic,image/webp"></label>' +
       '<label style="font-weight:400;display:flex;gap:6px;align-items:center"><input type="checkbox" data-rights style="width:auto;display:inline;margin:0">自分（自社）で撮った写真で、載せる権利があります</label>' +
       '<button type="button" class="gray">この写真を送る</button><p class="note up-msg"></p></div>' : '<p class="note">いまは5枚そろっています。</p>');
   // そのほかの項目（ボタンで選ぶ）
-  html += '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pinfo') + hidden_('s', q.s) + hidden_('go', '1') +
+  html += '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + (view ? hidden_('a', 'pinfo_view') + hidden_('k', q.k) : hidden_('a', 'pinfo') + hidden_('s', q.s)) + hidden_('go', '1') +
     '<h2>特典（同時に' + PINFO_OFFER_MAX + 'つまで）</h2><p class="note">このサイトから問い合わせたお客さまだけの特典です。お返事の確定料金に特典を入れてからお送りください。終わりの日を過ぎると自動で消えます。</p>';
   for (var j = 0; j < PINFO_OFFER_MAX; j++) {
     var co = cur.offer[j] || {};

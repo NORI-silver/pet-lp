@@ -116,6 +116,7 @@
       if (!box.querySelector("[data-rights]").checked) { msg.textContent = "「載せる権利があります」にチェックしてください。"; return; }
       if (kindSel.value === DRIVER && !ok.querySelector("input").checked) { msg.textContent = "「写っている方ご本人の了解があります」にチェックしてください。"; return; }
       if (Math.min(img.naturalWidth, img.naturalHeight * shape().r) < shape().min) { msg.textContent = "この写真は小さすぎます。"; return; }
+      if (box.getAttribute("data-view")) { msg.textContent = "見本なので、送っていません（事業者の画面では、ここで受け付けます）。"; return; }
       btn.disabled = true; msg.textContent = "送っています…";
       var b = new URLSearchParams({ kind: "pinfo_photo", t: box.getAttribute("data-t"), rights: "1", w: String(crop.w), h: String(crop.h),
         data: prev.toDataURL("image/jpeg", 0.85) });
