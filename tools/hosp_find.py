@@ -263,13 +263,13 @@ def _btns(g, items, more_after=None, extra=False):
 NEED = [("", "指定なし"), ("night", "夜間・救急"), ("sunhol", "日曜・祝日"), ("h24", "24時間"), ("visit", "往診"), ("spec", "専門診療")]
 
 
-def html(e, emg_opts, depts, preset="", pref="", city=""):
+def html(e, emg_opts, depts, preset="", pref="", city="", night_href="/hospital/night/"):
     """さがす欄の箱。最初に見えるのは 地域・動物・診療ニーズ の3つだけ。ほかは「詳しい条件」の中。
     preset＝最初から選んでおく条件（例 night）、pref・city＝最初に選んでおく場所。"""
     d_items = [("d:" + n, n) for n in depts]
     need = "".join(f'<button type="button" data-need="{k}" aria-pressed="{"true" if (k == preset or (not k and not preset)) else "false"}">{lab}</button>' for k, lab in NEED)
     return (CSS + f'<div class="hf" id="hf" data-hf data-preset="{e(preset)}" data-pref="{e(pref)}" data-city="{e(city)}">'
-            '<a class="hf-sos" href="#hf" data-sos>いま具合が悪いとき：夜間・救急の病院をさがす</a>'
+            f'<a class="hf-sos" href="{e(night_href)}" data-sos>いま具合が悪いとき：夜間・救急の病院をさがす</a>'
             f'<div class="hf-r"><span class="hf-l">どこで探しますか？</span><div class="hf-c hf-p"><select id="hospPref" aria-label="都道府県">{emg_opts}</select>'
             f'<select id="hfCity" aria-label="市区町村" hidden><option value="">市区町村すべて</option></select>'
             '<input id="hfQ" type="search" list="hfCities" enterkeyhint="search" placeholder="市区町村・駅名" aria-label="市区町村・駅名・住所・病院名でさがす"><datalist id="hfCities"></datalist></div></div>'
