@@ -197,18 +197,27 @@ def pages(ctx):
         for ct in order:
             if ct in big: continue
             small_secs += f'<h3 class="emg-region">{e(ct)}（{len(cities[ct])}院）</h3>' + "".join(card(e, c, srcname) for c in _sort(cities[ct]))
+        def scope(c):
+            a = c["animals"]
+            return "犬・猫・小動物・鳥など" if "トリ" in a and any(x in a for x in SMALL) else "犬・猫・小動物" if any(x in a for x in SMALL) else animals_txt(a)
+        big_lists = "".join(
+            f'<h3 class="emg-region"><a href="/hospital/{ps}/{cslug(pf, ct)}/">{e(ct)}の動物病院（{len(cities[ct])}院）</a></h3>'
+            '<table><thead><tr><th>病院</th><th>休診日</th><th>診る動物</th></tr></thead><tbody>'
+            + "".join(f'<tr><th scope="row">{e(c["name"])}<small style="display:block">{e(re.sub(r"^.*?[区市町村]", "", c["addr"].replace(pf, "", 1)).split(" ")[0])}</small></th><td>{e(c["closed"]) or "—"}</td><td>{e(scope(c))}</td></tr>' for c in _sort(cities[ct]))
+            + '</tbody></table>' for ct in order if ct in big)
         rows_t = "".join(f'<tr><th scope="row">{e(ct)}</th><td>{len(cities[ct])}院</td><td>{sum(1 for c in cities[ct] if (end_min(c["hours"]) or 0) >= 1140)}院</td>'
                          f'<td>{sum(1 for c in cities[ct] if any(a in c["animals"] for a in SMALL))}院</td></tr>' for ct in order)
         inner = (_answer(e, pf, cs, srcname) + _taxi_box(e, pf, ps)
                  + (f'<div class="sh"><h2>市区町村でえらぶ</h2></div><ul class="other" style="justify-content:flex-start">{links}</ul>' if links else '')
                  + f'<div class="emg-tips"><h4>市区町村ごとの病院の数</h4><table><thead><tr><th>市区町村</th><th>病院</th><th>19時以降も</th><th>小動物も</th></tr></thead><tbody>{rows_t}</tbody></table>'
                  + '<p>まだ全部の市区町村を載せられていません。しらべたところから順に足しています。</p></div>'
+                 + (f'<div class="emg-tips"><h4>市区町村ごとの病院の名前・休診日・診る動物</h4><p>診療時間・駐車場などは、それぞれの市区町村のページのカードにあります。「—」は休診日を書いていない病院です。</p>{big_lists}</div>' if big_lists else '')
                  + (f'<div class="emg">{small_secs}</div>' if small_secs else '') + NOTE.format(src=e(srcname))
                  + f'<p class="emg-note">夜中・休日に具合が悪くなったら：<a href="/hospital/night/{ps}/">{e(pf)}の夜間・救急の動物病院</a></p>')
         out.append((f"hospital/{ps}/index.html", _page(ctx,
             f"{pf}の動物病院 {len(cs)}院｜市区町村ごとに診療時間・休診日・診る動物を一覧で",
             f"{pf}の動物病院{len(cs)}院を市区町村ごとにまとめた無料の一覧です。診療時間・休診日・診てもらえる動物（犬・猫・うさぎ・鳥など）・駐車場と公式サイトへのリンクがわかります。",
-            url, _ld(SITE, crumbs, url, cs, f"{pf}の動物病院"), crumb, f"{len(cs)}院・市区町村ごと・無料の一覧", f"{e(pf)}の動物病院",
+            url, _ld(SITE, crumbs, url, [c for c in cs if c["city"] not in big], f"{pf}の動物病院"), crumb, f"{len(cs)}院・市区町村ごと・無料の一覧", f"{e(pf)}の動物病院",
             f"近くのかかりつけの病院をさがすときに。{e(pf)}の動物病院を、市区町村ごとに診療時間・休診日・診てもらえる動物と一緒にまとめました。", inner)))
         urls.append(url)
     return out, urls
