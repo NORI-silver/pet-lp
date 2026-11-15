@@ -29005,6 +29005,160 @@
     "ペット用品は災害時に手に入りにくいので、長く保存できるドライフードや缶詰を備える。",
     "はぐれたときの手がかりに、飼い主とペットが一緒に写った写真を用意しておく。"
    ]
+  },
+  {
+   "pref": "三重県",
+   "name": "御浜町",
+   "kind": "city",
+   "policy": "阿田和公民館の避難所運営マニュアル（2020年2月）では、ペットは公民館の中に入れず、屋外にテントを張って種類ごとに分けて過ごす。えさなどは原則として飼い主が用意し、世話をする。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [
+    "ペットは公民館の中に入れない",
+    "えさなどは原則として飼い主が用意し、飼い主が世話をする",
+    "マニュアル作成会議で決めたペットスペースにつなぐ"
+   ],
+   "place": "公民館の外。屋外にテントを張り、種類ごとに分ける（阿田和公民館の場合）。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "御浜町「阿田和公民館 避難所運営マニュアル」（2020年2月、PDF）",
+     "https://www.town.mihama.mie.jp/material/files/group/2/hinansyo_atawa.pdf"
+    ],
+    [
+     "御浜町「防災情報について」",
+     "https://www.town.mihama.mie.jp/soshikikarasagasu/somuka/kurashinojoho/3/177.html"
+    ]
+   ],
+   "map": [
+    "御浜町「防災情報について」",
+    "https://www.town.mihama.mie.jp/soshikikarasagasu/somuka/kurashinojoho/3/177.html"
+   ],
+   "cage_req": false,
+   "details": [
+    "避難所運営で気をつける点のひとつに「ペットと衛生管理」を挙げている。",
+    "ペットは飼い主の心のよりどころになる一方、衛生管理やほかの避難者への配慮が必要としている。",
+    "町内の6か所の避難所ごとに運営マニュアルがあり、このルールは阿田和公民館のもの。"
+   ]
+  },
+  {
+   "pref": "沖縄県",
+   "name": "大宜味村",
+   "kind": "city",
+   "policy": "村の防災ガイドBook（2024年1月）では、避難所でのペットの受け入れの決まりは施設ごとに定めるとしている。大規模災害のときの避難所補完施設（大保ダム地域防災センター）では、車中避難とペット避難ができる。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [
+    "非常持ち出し品にペット用品を入れる"
+   ],
+   "place": "避難所ごとに決める。補完施設の大保ダム地域防災センターではペット避難ができる。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "大宜味村「防災ガイドBook」（2024年1月、PDF）",
+     "https://www.vill.ogimi.okinawa.jp/material/files/group/1/202401ogmisonbousaigensaigaidobook.pdf"
+    ],
+    [
+     "大宜味村「大宜味村防災減災ガイドBook」",
+     "https://www.vill.ogimi.okinawa.jp/soshiki/somu/gyomu/anzen_anshin/bosai/322.html"
+    ]
+   ],
+   "map": [
+    "大宜味村「防災ガイドBook（一時緊急避難・指定避難所一覧）」（PDF）",
+    "https://www.vill.ogimi.okinawa.jp/material/files/group/1/202401ogmisonbousaigensaigaidobook.pdf"
+   ],
+   "cage_req": false,
+   "details": [
+    "補完施設は、災害のあと仮設住宅ができるまでの間、一時的に過ごす避難所として考えられている。",
+    "安全な自宅にいることも「避難」になる、と案内している。",
+    "歩ける人は、車の渋滞をさけるため、原則として歩いて避難するよう呼びかけている。"
+   ]
+  },
+  {
+   "pref": "岡山県",
+   "name": "久米南町",
+   "kind": "city",
+   "policy": "町のハザードマップ（2024年3月）では、非常持ち出し品の例として、ペットのいる家庭はペットフード・ケージ・ふん尿の始末用品を用意するよう案内している。避難所でのペットの扱いは書いていない。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "非常持ち出し品の例にケージが入っている。",
+   "rules": [
+    "ペットフードを用意する",
+    "ケージを用意する",
+    "ふん尿の始末用品を用意する"
+   ],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "久米南町「災害ハザードマップ 防災に関する基礎情報」（2024年3月、PDF）",
+     "https://www.town.kumenan.lg.jp/living/bousai_bouhan/bousai/documents/kumenan_hazardmap_r603_jouhou.pdf"
+    ],
+    [
+     "久米南町「久米南町災害ハザードマップ」",
+     "https://www.town.kumenan.lg.jp/living/bousai_bouhan/bousai/hazardmap.html"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "鹿児島県",
+   "name": "湧水町",
+   "kind": "city",
+   "policy": "町の避難所開設ハンドブック（2024年4月）では、指定避難所のレイアウト例に、居住スペースなどとならんでペットスペースを設けている。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": "避難所のレイアウト例では、居住スペースとは別にペットスペースを設ける。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "湧水町「避難所開設ハンドブック」（2024年4月、PDF）",
+     "https://www.town.yusui.kagoshima.jp/uploaded/attachment/3654.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": [
+    "感染症に対応する避難所の受け入れの考え方として、家族単位での使用や、ペットなどへの配慮を挙げている。"
+   ]
   }
  ],
  "none": [
@@ -32967,6 +33121,11 @@
    "北海道",
    "羅臼町",
    "公式サイトにペットと避難のページが見つからない（防災お役立ち情報・避難所開設のお知らせにもペットの記述なし）"
+  ],
+  [
+   "鹿児島県",
+   "知名町",
+   "公式サイトにペットと避難のページが見つからない（防災マップ冊子の「避難所生活の心得」「非常時持ち出し品」にもペットの記述なし）"
   ]
  ]
 }
