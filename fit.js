@@ -13,6 +13,7 @@
   try { var sv = JSON.parse(localStorage.getItem("petMine") || "null"); if (sv) st = {a: sv.a || "", size: sv.size || "", x: sv.x || []}; } catch (e) {}
   function save(){ try { localStorage.setItem("petMine", JSON.stringify(st)); } catch (e) {} }
   function kg(){
+    if (st.x.indexOf("big") >= 0) return [25, 200, "大型犬"];
     if (!sel || !st.size) return null;
     var o = sel.querySelector('option[value="' + st.size + '"]');
     return o ? [parseFloat(o.getAttribute("data-lo")), parseFloat(o.getAttribute("data-hi")), o.textContent] : null;
@@ -25,6 +26,7 @@
       else r.push(["unk", L[st.a] + "は不明"]);
     }
     var dogOk = !st.a || st.a === "dog";
+    if (w && dogOk && f.a && f.o && f.a.indexOf("dog") < 0) r.push(["ng", "猫だけ"]);
     if (w && dogOk && !(f.a && f.o && f.a.indexOf("dog") < 0)) {
       var lo = w[0], hi = w[1];
       if (f.kg) {

@@ -235,6 +235,16 @@ def features(rows, rest, chips):
     if any(re.search(r"送迎|出張|訪問|お迎え|往診", c) for c in chips): f.append("来てくれる・送迎")
     return [x for x in _FT_ORDER if x in f] + [x for x in dict.fromkeys(f) if x not in _FT_ORDER]
 
+def _edge_line(ic, lab, val, conf):
+    """動物の行は、犬・猫のほかの動物（例外）だけを出す。犬・猫だけなら出さない（だれでも分かることは書かない）。片方だけなら「猫だけ」。"""
+    if ic != "paw": return (ic, lab, val)
+    ks = _kinds_in(val)
+    other = [x for x in _split_items(val) if not re.fullmatch(r"(犬|猫|イヌ|ネコ|ドッグ|キャット|犬猫|わんちゃん|ねこちゃん)(OK|可)?", x)]  # 条件つき（「犬（5kg未満）」など）は残す
+    if other: return (ic, lab, "・".join(other))
+    if ks == ["cat"] and "dog" in conf["kinds"]: return (ic, lab, "猫だけ")
+    if ks == ["dog"] and "cat" in conf["kinds"] and len(conf["kinds"]) > 1: return (ic, lab, "犬だけ")
+    return None
+
 def build_card(card, conf, fit_by_name):
     m = _OPEN.match(card)
     opentag = m.group(0)
@@ -299,7 +309,7 @@ def build_card(card, conf, fit_by_name):
     # チップ：印（data-flags）・タグ（data-tags）・提供内容の短い言葉
     flags = (re.search(r'data-flags="([^"]*)"', opentag) or [None, ""])[1].split()
     tags = [html.unescape(x) for x in (re.search(r'data-tags="([^"]*)"', opentag) or [None, ""])[1].split("|") if x]
-    ch = [FLAG_CHIP[f] for f in flags if f in FLAG_CHIP and not (f == "cat" and "cat_only" in flags)] + tags + chips
+    ch = [FLAG_CHIP[f] for f in flags if f in FLAG_CHIP and f != "cat"] + [t for t in tags + chips if not re.fullmatch(r"(犬|猫|犬・猫)(OK|可|も)?", t)]  # 犬OK・猫OK はだれでも分かるので出さない
     ch += [s for s in svc_items if len(s) <= 12]
     ch = list(dict.fromkeys(c for c in dp + ch if c))[:6]
     fors = list(dict.fromkeys(FOR_TEXT[k] for k in flags + tags if k in FOR_TEXT))[:3]
@@ -336,6 +346,7 @@ def build_card(card, conf, fit_by_name):
     lines = []
     if rest: lines.append(("clock", "", rest))
     lines += [(ic, lab, val) for ic, lab, val in pick if ic != "yen"]
+    lines = [x for x in (_edge_line(ic, lab, val, conf) for ic, lab, val in lines) if x]
     for ic, lab, val in lines[:3]:
         v = val
         body.append(f'<p class="fc-line" title="{html.escape(_short(lab))}">{icon(ic)}<span>{html.escape(v)}</span></p>')
@@ -362,31 +373,26 @@ def build_card(card, conf, fit_by_name):
 
 # ---- 「うちの子に合うところをさがす」 ----
 def panel(conf, kinds_used, has_size, has_sen, has_pup, n, fts=(), box=False, dps=()):
-    import breeds as B
     want = conf.get("want")
     title = "迎えたい子でさがす" if want else "うちの子に合うところをさがす"
-    kinds = [k for k in conf["kinds"] if k in kinds_used] if len(conf["kinds"]) > 1 else []
+    # 犬・猫はほとんどの施設が受けるので選ぶ欄に出さない。飼い主さんが気にするのは「例外」に合うか（Nori 2026-11-15「犬猫はだいたいオッケーでしょ」「エッジケースに対応できるかを気にしてる」）
+    if want: kinds = [k for k in conf["kinds"] if k in kinds_used] if len(conf["kinds"]) > 1 else []
+    else: kinds = [k for k in conf["kinds"] if k in kinds_used and k not in ("dog", "cat")]
     rows = []
-    if len(kinds) > 1:
-        rows.append('<div class="fp-row"><span class="fp-l">どの子？</span><div class="fp-btns" data-g="a">' +
+    if (want and len(kinds) > 1) or (not want and kinds):
+        rows.append(f'<div class="fp-row"><span class="fp-l">{"どの子？" if want else "動物"}</span><div class="fp-btns" data-g="a">' +
                     "".join(f'<button type="button" data-v="{k}" aria-pressed="false">{KIND_LABEL[k]}</button>' for k in kinds) + "</div></div>")
-    if has_size and "dog" in (kinds or conf["kinds"]):
-        opts = ['<option value="">えらばない</option><optgroup label="体重で選ぶ（ミックスの子も）">']
-        opts += [f'<option value="{k}" data-lo="{lo}" data-hi="{hi}">{html.escape(lab)}</option>' for k, lab, lo, hi in B.SIZES]
-        opts.append('</optgroup><optgroup label="犬種で選ぶ（体重の目安で判定）">')
-        opts += [f'<option value="{b["id"]}" data-lo="{b["kg"][0]}" data-hi="{b["kg"][1]}">{html.escape(b["name"])}</option>' for b in sorted(B.BREEDS, key=lambda b: (not b.get("rank"), b["name"]))]
-        opts.append("</optgroup>")
-        rows.append(f'<div class="fp-row fp-dog"><label class="fp-l" for="fp-size">犬の大きさ</label><select id="fp-size">{"".join(opts)}</select></div>')
     ex = []
-    if has_sen and conf.get("senior"): ex.append('<button type="button" data-v="sen" aria-pressed="false">シニア・介護が必要</button>')
-    if has_pup and conf.get("puppy"): ex.append('<button type="button" data-v="pup" aria-pressed="false">子犬（1歳まで）</button>')
-    if ex: rows.append('<div class="fp-row"><span class="fp-l">ほかに</span><div class="fp-btns" data-g="x">' + "".join(ex) + "</div></div>")
+    if has_size and "dog" in conf["kinds"]: ex.append('<button type="button" data-v="big" aria-pressed="false">大型犬（25kg以上）</button>')
+    if has_sen and conf.get("senior"): ex.append('<button type="button" data-v="sen" aria-pressed="false">シニア・介護</button>')
+    if has_pup and conf.get("puppy"): ex.append('<button type="button" data-v="pup" aria-pressed="false">子犬</button>')
+    if ex: rows.append('<div class="fp-row"><span class="fp-l">うちの子は</span><div class="fp-btns" data-g="x">' + "".join(ex) + "</div></div>")
     if dps: rows.append('<div class="fp-row"><span class="fp-l">診療科目</span><div class="fp-btns fp-ft" data-g="d">' +
                         "".join(f'<button type="button" data-v="{html.escape(v)}" aria-pressed="false">{html.escape(v)}</button>' for v in dps) + "</div></div>")
     if fts: rows.append('<div class="fp-row"><span class="fp-l">しぼる</span><div class="fp-btns fp-ft" data-g="f">' +
                         "".join(f'<button type="button" data-v="{html.escape(v)}" aria-pressed="false">{html.escape(v)}</button>' for v in fts) + "</div></div>")
     if not rows and not box: return ""
-    hide = '<label class="fp-hide"><input type="checkbox"> 合わないところを隠す</label>' if (kinds or has_size or ex or dps) else ""
+    hide = '<label class="fp-hide"><input type="checkbox"> 合わないところを隠す</label>' if (kinds or ex or dps) else ""
     return (f'<div class="fp" data-fp><p class="fp-t">{icon("paw")}{html.escape(title)}</p>'
             + "".join(rows) + '<p class="fp-now" aria-live="polite"></p>' + hide + '</div>')
 
