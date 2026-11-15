@@ -317,6 +317,7 @@ def render_hub(ctx):
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
+    {__import__("gen_vetclinics").hub_links(e)}
     <ul class="gcards">{cards}</ul>
     {matrix}
     <p class="emg-note" style="margin-top:18px">それぞれのページで都道府県をしぼりこめます。まだ載っていない県や病院は、見つけしだい足していきます。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
@@ -338,7 +339,8 @@ def review_rows():
     return [h for k in ("visit", "cat", "exotic", "large") for h in HOSP[k] if h.get("review_query")]
 
 def urls(SITE):
-    return [SITE + "/hospital/"] + [f'{SITE}/hospital/{c["slug"]}/' for c in CONDS]
+    import gen_vetclinics
+    return [SITE + "/hospital/"] + [f'{SITE}/hospital/{c["slug"]}/' for c in CONDS] + gen_vetclinics.urls(SITE)
 
 def write_all(ROOT, ctx):
     os.makedirs(os.path.join(ROOT, "hospital"), exist_ok=True)
@@ -347,3 +349,6 @@ def write_all(ROOT, ctx):
         d = os.path.join(ROOT, "hospital", c["slug"])
         os.makedirs(d, exist_ok=True)
         open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(render_cond(c, ctx))
+    # [B] 2026-11-15 ふつうの動物病院（県・市区町村ごと）
+    import gen_vetclinics
+    gen_vetclinics.write_all(ROOT, ctx)
