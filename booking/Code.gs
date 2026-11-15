@@ -2479,7 +2479,7 @@ var PINFO_HEADERS = ['受け付けた日時', '提携先ID', '会社名', '種�
 var PINFO_KINDS = { photo: '写真', offer: '特典', equip: '設備・できること', pay: 'お支払い方法', cred: '許可・資格・保険', note: 'ひとこと' };
 var PINFO_PHOTO_KINDS = ['車の外', '車の中', 'ケージ・設備', '運転手', 'お店'];
 var PINFO_DRIVER = '運転手'; // 正方形・顔あり（ご本人の了解つき）。カードでは名前の横に丸く出す（Nori 2026-11-15「車の写真と運転手の写真も載せられるように」）
-var PINFO_PHOTO_MAX = 5, PINFO_PHOTO_DAY = 10, PINFO_OFFER_MAX = 2, PINFO_NOTE_MAX = 60, PINFO_PHOTO_MIN_PX = 1200, PINFO_SESSION_H = 24;
+var PINFO_PHOTO_MAX = 5, PINFO_PHOTO_DAY = 10, PINFO_OFFER_MAX = 2, PINFO_NOTE_MAX = 60, PINFO_PHOTO_MIN_PX = 900, PINFO_SESSION_H = 24;
 var PINFO_STOP = []; // 掲載情報のページを止めた会社（提携先ID）。提携をやめた会社などをここに入れる
 // 特典の決まった形（{n} に数字。max は数字の上限）
 // 特典の決まった形（Nori 2026-11-15「期間限定10％オフとか、早朝深夜増なしとか、500円OFFとか。わかりやすいカタチ」）。
@@ -2693,7 +2693,14 @@ function pinfoPage_(q, view) {
     '<h2>お客さまに見えるカード（見本）</h2><p class="note">写真・特典・運転手の写真・ひとことを入れると、候補のカードはこのように見えます（見本の会社です）。</p>' +
     '<img src="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/img/partner/card-sample.jpg') + '" alt="写真・特典・運転手の写真が入った候補のカードの見本" width="390" style="display:block;width:100%;max-width:390px;height:auto;margin:8px 0 16px;border-radius:14px;box-shadow:0 1px 6px rgba(0,0,0,.12)">';
   // 写真（/go/ のページが data-pinfo-up を見て、縮めてから送る）
-  html += '<h2>写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）</h2><p class="note">カードでは横3：縦2の枠で出します。選んだ写真をこの形に切り抜いて見本を出すので、見え方を確かめてから送ってください（横' + PINFO_PHOTO_MIN_PX + 'px以上になる写真）。1枚めは「車の外」がおすすめです（カードの最初に出ます）。昼の明るい場所で、背景にほかの車・人・看板が入らないように撮ってください。「運転手」は正方形に切り抜き、カードの会社名の横に丸く出します（顔がはっきり見える、明るい場所での写真。写っている方ご本人の了解が必要です）。ご自身で撮った実際の写真だけで、電話番号・ナンバープレートが写っていないもの。運転手のほかは、人の顔が写っていないものにしてください。文字やスタンプは入れないでください。</p>' +
+  html += '<h2>写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）</h2><p class="note">スマホで撮った写真を、そのまま選んでください。大きさや形はこちらで合わせます。選ぶと、カードに出る形の見本が出るので、つまみで位置を直してから送れます。</p>' +
+    '<div class="box" style="font-size:.9rem"><b>スマホでの撮り方</b><ul style="margin:6px 0 0;padding-left:1.2em">' +
+    '<li>車・車の中・お店は、<b>スマホを横向き</b>にして撮る。車は全体が入るように少し離れて。</li>' +
+    '<li>1枚めは「車の外」がおすすめ（カードの最初に出ます）。</li>' +
+    '<li>昼の明るい場所で。うしろにほかの車・人・看板が入らないように。</li>' +
+    '<li>ナンバープレート・電話番号が写らないように。文字やスタンプは入れない。</li>' +
+    '<li>「運転手」は<b>スマホは縦のまま</b>、顔が真ん中、胸から上。明るい場所で（会社名の横に丸く出ます。写っている方ご本人の了解が必要です）。</li>' +
+    '<li>運転手のほかは、人の顔が写らないように。ご自身で撮った実際の写真だけにしてください。</li></ul></div>' +
     (photos.length < PINFO_PHOTO_MAX ? '<div data-pinfo-up data-t="' + esc_(view ? '' : q.s) + '"' + (view ? ' data-view="1"' : '') + ' class="box"><label>写真の種類<select data-kind>' + PINFO_PHOTO_KINDS.map(function(k) { return '<option>' + esc_(k) + '</option>'; }).join('') + '</select></label>' +
       '<label>写真を選ぶ<input type="file" accept="image/jpeg,image/png,image/heic,image/webp"></label>' +
       '<label style="font-weight:400;display:flex;gap:6px;align-items:center"><input type="checkbox" data-rights style="width:auto;display:inline;margin:0">自分（自社）で撮った写真で、載せる権利があります</label>' +
@@ -2730,10 +2737,10 @@ function pinfoPhoto_(p) {
   if (kind === PINFO_DRIVER) {
     // 運転手は正方形（ページが切り抜く）。写っている方ご本人の了解が要る
     if (p.consent !== '1') return { ok: false, error: '「写っている方ご本人の了解があります」にチェックしてください' };
-    if (w < PINFO_PHOTO_MIN_PX / 2 || Math.abs(w / h - 1) > 0.02) return { ok: false, error: '運転手の写真は、正方形に切り抜いたあとで' + PINFO_PHOTO_MIN_PX / 2 + 'px以上の写真にしてください' };
+    if (w < PINFO_PHOTO_MIN_PX / 2 || Math.abs(w / h - 1) > 0.02) return { ok: false, error: '写真が小さいので使えません。スマホのカメラで撮った元の写真を選んでください' };
   } else
   // ページが横3：縦2に切り抜いて送る（カードの枠と同じ）。w・h は切り抜いた大きさ
-  if (w < PINFO_PHOTO_MIN_PX || h < PINFO_PHOTO_MIN_PX * 2 / 3) return { ok: false, error: '写真が小さすぎます（横3：縦2に切り抜いたあとで、横' + PINFO_PHOTO_MIN_PX + 'px以上の写真にしてください）' };
+  if (w < PINFO_PHOTO_MIN_PX || h < PINFO_PHOTO_MIN_PX * 2 / 3) return { ok: false, error: '写真が小さいので使えません。スマホのカメラで撮った元の写真を選んでください' };
   if (Math.abs(w / h - 1.5) > 0.02) return { ok: false, error: '写真の形が合いません。ページを開き直してから、もう一度お送りください' };
   var mine = pinfoRows_(pid).filter(function(v) { return v[3] === PINFO_KINDS.photo; });
   var n = mine.filter(function(v) { return v[6] !== '直してください' && v[6] !== '取り下げ'; }).length;

@@ -55,7 +55,7 @@ ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],cred_
 assert.ok(rows.some(x=>x[3]==='許可・資格・保険' && x[4].includes('関自貨第123号')) && rows.some(x=>x[3]==='お支払い方法' && x[4]==='現金・クレジットカード'));
 assert.ok(!page.includes('多頭の同乗') && !page.includes('飼い主さんの同乗') && !page.includes('得意な行き先'));
 // 写真はページが横3：縦2に切り抜いたものだけ。小さい・形がちがうものは断る
-assert.ok(/小さすぎ/.test(ctx.pinfoPhoto_({t:tok,rights:'1',w:'1000',h:'667',data:'x'}).error));
+assert.ok(/小さいので/.test(ctx.pinfoPhoto_({t:tok,rights:'1',w:'800',h:'533',data:'x'}).error));
 assert.ok(/形が合いません/.test(ctx.pinfoPhoto_({t:tok,rights:'1',w:'1600',h:'1200',data:'x'}).error));
 // 運転手の写真は正方形で、写っている方の了解が要る
 assert.ok(/了解/.test(ctx.pinfoPhoto_({t:tok,rights:'1',photo_kind:'運転手',w:'800',h:'800',data:'x'}).error));
