@@ -844,14 +844,6 @@ function checks_(pt, r) {
     if (pt.rideHours) { if (!inHours_(hr, hoursOf_(pt.rideHours))) ng.push(label + '（送迎できる時間の外）'); }
     else if (!inHours_(hr, hoursOf_(pt.hours || CONFIG.DEFAULT_PARTNER_HOURS))) ask.push(label + 'に送迎できる');
   });
-  // 臨時のお休み（掲載情報で会社が入れた日。pinfoOffDays_）
-  var offd = pinfoOffDays_(pt.id);
-  [r['希望日時'], r['帰りの日時']].forEach(function (t, i) {
-    var at = t ? new Date(t) : null;
-    if (!at || !isFinite(at.getTime())) return;
-    var d = new Date(at.getTime() + 9 * 3600000).toISOString().slice(0, 10);
-    if (offd[d]) ng.push((i ? '帰りの' : '') + 'お迎えの日（' + d.slice(5).replace('-', '/') + '）は臨時のお休み');
-  });
   // 人数・頭数・荷物
   if (pt.riders !== null && n.riders > pt.riders) ng.push('大人' + n.riders + '人');
   else if (pt.riders === null && n.riders >= 2) ask.push('大人' + n.riders + '人が一緒に乗れる'); // 定員が分からない会社は2人から確かめる
@@ -2479,11 +2471,11 @@ function pconfStart_(q) {
    決まりは /partner/listing/（tools/partner_listing.py）。使えるのは提携している会社（OPEN_PARTNERS）で、PINFO_STOP に入れていない会社だけ。
    入るときは「メールでログイン」（Nori 2026-11-15「いっかいすすめてみて」）：提携先シートの登録メールに、24時間だけ使えるリンク（pinfoSession_）を送る。
    見本リンクと同じ合言葉（pinfoUrl_）は、ログインのメールを頼む画面を開くだけで、それだけでは中に入れない。
-   送られたものは「掲載情報」タブに「確認待ち」で残し、運営者がメールのリンクで公開／直してください（臨時のお休みもふくむ）。受け付けたら会社の登録メールに受付のメールを送る。
+   送られたものは「掲載情報」タブに「確認待ち」で残し、運営者がメールのリンクで公開／直してください。受け付けたら会社の登録メールに受付のメールを送る。
    公開してよいのは「公開」の行だけ（サイトへの反映は運営者がタブから tools/partner_info.json に写す）。 */
 var SHEET_PINFO = '掲載情報';
 var PINFO_HEADERS = ['受け付けた日時', '提携先ID', '会社名', '種類', '内容', '自動チェック', '状態', '理由', 'データ'];
-var PINFO_KINDS = { photo: '写真', offer: '特典', equip: '設備・できること', pay: 'お支払い方法', cred: '許可・資格・保険', off: '臨時のお休み', note: 'ひとこと' };
+var PINFO_KINDS = { photo: '写真', offer: '特典', equip: '設備・できること', pay: 'お支払い方法', cred: '許可・資格・保険', note: 'ひとこと' };
 var PINFO_PHOTO_KINDS = ['車の外', '車の中', 'ケージ・設備', 'お店', 'スタッフ'];
 var PINFO_PHOTO_MAX = 5, PINFO_PHOTO_DAY = 10, PINFO_OFFER_MAX = 2, PINFO_NOTE_MAX = 60, PINFO_PHOTO_MIN_PX = 1200, PINFO_SESSION_H = 24;
 var PINFO_STOP = []; // 掲載情報のページを止めた会社（提携先ID）。提携をやめた会社などをここに入れる
@@ -2577,13 +2569,6 @@ function pinfoAdd_(pid, kind, text, data, state) {
     return sh.getLastRow();
   } finally { lock.releaseLock(); }
 }
-// 臨時のお休み（運営者が「公開」にした行）。checks_ がこの日のお迎えを外す
-var PINFO_ALL_ = null; // 1回の実行の中で使い回す（候補を選ぶとき会社ごとにシートを読まない）
-function pinfoOffDays_(pid) {
-  var days = {};
-  try { if (!PINFO_ALL_) PINFO_ALL_ = pinfoRows_(''); PINFO_ALL_.filter(function(v) { return String(v[1]) === String(pid); }).forEach(function(v) { if (v[3] === PINFO_KINDS.off && v[6] === '公開') (JSON.parse(v[8] || '{}').days || []).forEach(function(d) { days[d] = 1; }); }); } catch (e) {}
-  return days;
-}
 // 公開してよい掲載情報（候補カード用）。会社ごとに種類ごとの最新の「公開」の行だけ。特典は終わりの日を過ぎたら出さない
 function pinfoPublic_() {
   var cache = null, hit = null;
@@ -2599,7 +2584,7 @@ function pinfoPublic_() {
     else if (v[3] === PINFO_KINDS.note) o.note = d.text || '';
     else if (v[3] === PINFO_KINDS.photo && d.file && d.w >= d.h) o.photos.push({ url: 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(d.file) + '&sz=w1200', kind: d.kind });
   });
-  Object.keys(out).forEach(function(k) { var o = out[k]; o.tags = o.equip || []; delete o.equip; o.photos = o.photos.slice(-PINFO_PHOTO_MAX); });
+  Object.keys(out).forEach(function(k) { var o = out[k]; o.tags = o.equip || []; delete o.equip; o.photos = o.photos.slice(-PINFO_PHOTO_MAX).sort(function(a, b) { return (a.kind === '車の外' ? 0 : 1) - (b.kind === '車の外' ? 0 : 1); }); });
   try { if (cache) cache.put('PINFO_PUBLIC', JSON.stringify(out), 600); } catch (e) {}
   return out;
 }
@@ -2667,22 +2652,15 @@ function pinfoPage_(q) {
       else if (cred.length) add('cred', cred.join('・') + (credNo ? '／登録番号 ' + credNo : '') + (credUntil ? '／有効期限 ' + credUntil : ''), { list: cred, no: credNo, until: credUntil });
     var note = String(q.note || '').trim().slice(0, PINFO_NOTE_MAX);
     if (note !== (before.note.text || '')) add('note', note || '（ひとことを消す）', { text: note });
-    var off = String(q.off || '').split(/[\s,、]+/).filter(function(d) { return /^\d{4}-\d{2}-\d{2}$/.test(d); }).slice(0, 31);
-    if (off.length) add('off', off.join('・'), { days: off });
     pinfoReceipt_(pid, got);
     rows = pinfoRows_(pid);
   }
   var cur = { offer: pinfoLatest_(rows, 'offer').list || [], equip: pinfoLatest_(rows, 'equip').list || [], pay: pinfoLatest_(rows, 'pay').list || [], cred: pinfoLatest_(rows, 'cred'), note: pinfoLatest_(rows, 'note').text || '' };
   var photos = rows.filter(function(v) { return v[3] === PINFO_KINDS.photo && v[6] !== '直してください' && v[6] !== '取り下げ'; });
-  var html = '<p>' + esc_(name) + ' さま</p><p>ここで足した内容は、運営者が確かめてから、お客さまが見る候補のカードに出ます。受け付けた内容は、登録のメールアドレスにもお知らせします。載せられるものの決まりは <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/listing/') + '">掲載の決まり</a> をご覧ください。</p>' +
+  var html = '<p>' + esc_(name) + ' さま</p><p>お客さまが見る候補のカードに、写真・特典・ひとことを足せます。<b>写真と特典がある会社は、お客さまに選ばれやすくなります。</b>運営者が確かめてから出します。受け付けた内容は、登録のメールアドレスにもお知らせします。載せられるものの決まりは <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/listing/') + '">掲載の決まり</a> をご覧ください。</p>' +
     (q.go === '1' ? '<div class="box">' + (done.length ? esc_(done.join('、')) + ' を受け付けました。' : '変わったところはありませんでした。') + '</div>' : '');
-  // 審査の状況
-  html += '<h2>審査の状況</h2>' + (rows.length ? '<div class="box">' + rows.slice(-12).reverse().map(function(v) {
-    var c = v[6] === '公開' ? '#1e8e3e' : v[6] === '直してください' ? '#c5221f' : '#b06000';
-    return '<div style="border-bottom:1px solid #eee5dc;padding:6px 0"><div>' + esc_(v[3]) + '：' + esc_(String(v[4]).slice(0, 40)) + '</div><div style="color:' + c + ';font-weight:700;font-size:.9rem">' + esc_(v[6]) + (v[7] ? '（' + esc_(v[7]) + '）' : '') + '</div></div>';
-  }).join('') + '</div>' : '<p class="note">まだ何も送られていません。</p>');
   // 写真（/go/ のページが data-pinfo-up を見て、縮めてから送る）
-  html += '<h2>写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）</h2><p class="note">ご自身で撮った、実際の車・設備・お店の写真だけ。横長で長いほうが' + PINFO_PHOTO_MIN_PX + 'px以上。電話番号・ナンバープレート・人の顔が写っていないもの。文字やスタンプは入れないでください。</p>' +
+  html += '<h2>写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）</h2><p class="note">カードでは横3：縦2の枠で出します。選んだ写真をこの形に切り抜いて見本を出すので、見え方を確かめてから送ってください（横' + PINFO_PHOTO_MIN_PX + 'px以上になる写真）。1枚めは「車の外」がおすすめです（カードの最初に出ます）。昼の明るい場所で、背景にほかの車・人・看板が入らないように撮ってください。ご自身で撮った実際の車・設備・お店の写真だけで、電話番号・ナンバープレート・人の顔が写っていないもの。文字やスタンプは入れないでください。</p>' +
     (photos.length < PINFO_PHOTO_MAX ? '<div data-pinfo-up data-t="' + esc_(q.s) + '" class="box"><label>写真の種類<select data-kind>' + PINFO_PHOTO_KINDS.map(function(k) { return '<option>' + esc_(k) + '</option>'; }).join('') + '</select></label>' +
       '<label>写真を選ぶ<input type="file" accept="image/jpeg,image/png,image/heic,image/webp"></label>' +
       '<label style="font-weight:400;display:flex;gap:6px;align-items:center"><input type="checkbox" data-rights style="width:auto;display:inline;margin:0">自分（自社）で撮った写真で、載せる権利があります</label>' +
@@ -2695,14 +2673,18 @@ function pinfoPage_(q) {
     html += '<div class="pt"><select name="of' + j + '"><option value="">（なし）</option>' + PINFO_OFFERS.map(function(o) { return '<option value="' + o.k + '"' + (co.k === o.k ? ' selected' : '') + '>' + esc_(o.t.replace('{n}', '◯')) + '</option>'; }).join('') + '</select>' +
       '<label style="font-weight:400">◯に入れる数字<input name="of' + j + 'n" inputmode="numeric" value="' + esc_(co.n || '') + '"></label><label style="font-weight:400">終わりの日<input type="date" name="of' + j + 'u" value="' + esc_(co.until || '') + '"></label></div>';
   }
-  html += '<h2>設備・できること</h2>' + pinfoChips_('equip', PINFO_EQUIP, cur.equip) +
-    '<p class="note">一緒に乗れる人数・頭数・お迎えの範囲・営業時間が変わったときは、運営者にメールでお知らせください（ここでは受け付けません）。</p>' +
-    '<h2>お支払い方法</h2><p class="note">使えるものを全部選んでください。運営者が確かめてから、カードのお支払いの表示を直します。</p>' + pinfoChips_('pay', PINFO_PAY, cur.pay) +
-    '<h2>許可・資格・保険</h2><p class="note">登録・届出・許可を選んだときは番号が必要です。運営者が番号を確かめてから、カードに緑のチェックで出します。</p>' + pinfoChips_('cred', PINFO_CRED, cur.cred.list || []) +
+  html += '<h2>設備・できること</h2><p class="note">カードに特長のタグで出ます。</p>' + pinfoChips_('equip', PINFO_EQUIP, cur.equip) +
+    '<h2>ひとこと（' + PINFO_NOTE_MAX + '字まで）</h2><p class="note">カードに「会社から：…」で出ます。電話番号・URL・SNS・「最安」「No.1」などは載せられません。</p><input name="note" maxlength="' + PINFO_NOTE_MAX + '" value="' + esc_(cur.note) + '">' +
+    '<h2 style="margin-top:28px">運営者へのお知らせ</h2><p class="note">ここはカードにすぐには出ません。運営者が確かめてから、表示を直します。一緒に乗れる人数・頭数・お迎えの範囲・営業時間が変わったときは、運営者にメールでお知らせください。</p>' +
+    '<h3>お支払い方法</h3>' + pinfoChips_('pay', PINFO_PAY, cur.pay) +
+    '<h3>許可・資格・保険</h3><p class="note">登録・届出・許可を選んだときは番号が必要です。</p>' + pinfoChips_('cred', PINFO_CRED, cur.cred.list || []) +
     '<label style="font-weight:400">登録番号・届出番号・許可番号<input name="cred_no" maxlength="40" value="' + esc_(cur.cred.no || '') + '"></label><label style="font-weight:400">登録の有効期限（あれば）<input type="date" name="cred_until" value="' + esc_(cur.cred.until || '') + '"></label>' +
-    '<h2>臨時のお休み</h2><p class="note">運営者が確かめたあと、この日はお客さまの候補に出なくなります。日付を「2026-12-31 2027-01-01」のように並べて入れてください。</p><input name="off" placeholder="2026-12-31 2027-01-01">' +
-    '<h2>ひとこと（' + PINFO_NOTE_MAX + '字まで）</h2><p class="note">電話番号・URL・SNS・「最安」「No.1」などは載せられません。</p><input name="note" maxlength="' + PINFO_NOTE_MAX + '" value="' + esc_(cur.note) + '">' +
     '<button type="submit">確認して送る</button></form>';
+  // 審査の状況
+  html += '<h2>審査の状況</h2>' + (rows.length ? '<div class="box">' + rows.slice(-12).reverse().map(function(v) {
+    var c = v[6] === '公開' ? '#1e8e3e' : v[6] === '直してください' ? '#c5221f' : '#b06000';
+    return '<div style="border-bottom:1px solid #eee5dc;padding:6px 0"><div>' + esc_(v[3]) + '：' + esc_(String(v[4]).slice(0, 40)) + '</div><div style="color:' + c + ';font-weight:700;font-size:.9rem">' + esc_(v[6]) + (v[7] ? '（' + esc_(v[7]) + '）' : '') + '</div></div>';
+  }).join('') + '</div>' : '<p class="note">まだ何も送られていません。</p>');
   return page_('掲載情報の追加・変更', html);
 }
 // 写真を受け取る（/go/ のページから POST kind=pinfo_photo。縮めてJPEGにしたもの＝位置の情報などは消えている）
@@ -2712,7 +2694,9 @@ function pinfoPhoto_(p) {
   if (p.rights !== '1') return { ok: false, error: '「載せる権利があります」にチェックしてください' };
   var kind = PINFO_PHOTO_KINDS.indexOf(p.photo_kind) >= 0 ? p.photo_kind : PINFO_PHOTO_KINDS[0];
   var w = Number(p.w) || 0, h = Number(p.h) || 0;
-  if (Math.max(w, h) < PINFO_PHOTO_MIN_PX) return { ok: false, error: '写真が小さすぎます（長いほうが' + PINFO_PHOTO_MIN_PX + 'px以上の写真にしてください）' };
+  // ページが横3：縦2に切り抜いて送る（カードの枠と同じ）。w・h は切り抜いた大きさ
+  if (w < PINFO_PHOTO_MIN_PX || h < PINFO_PHOTO_MIN_PX * 2 / 3) return { ok: false, error: '写真が小さすぎます（横3：縦2に切り抜いたあとで、横' + PINFO_PHOTO_MIN_PX + 'px以上の写真にしてください）' };
+  if (Math.abs(w / h - 1.5) > 0.02) return { ok: false, error: '写真の形が合いません。ページを開き直してから、もう一度お送りください' };
   var mine = pinfoRows_(pid).filter(function(v) { return v[3] === PINFO_KINDS.photo; });
   var n = mine.filter(function(v) { return v[6] !== '直してください' && v[6] !== '取り下げ'; }).length;
   if (n >= PINFO_PHOTO_MAX) return { ok: false, error: '写真は' + PINFO_PHOTO_MAX + '枚までです' };

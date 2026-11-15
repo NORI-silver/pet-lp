@@ -1,4 +1,4 @@
-// 掲載情報の追加（a=pinfo）：提携している会社だけが写真・特典・設備などを送れ、決まりに合わない言い方は止め、臨時のお休みは候補から外す（Nori 2026-11-15）
+// 掲載情報の追加（a=pinfo）：提携している会社だけが写真・特典・設備などを送れ、決まりに合わない言い方は止め、写真はカードと同じ横3：縦2だけを受け付ける
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 const rows=[],mails=[];
 const sheet={appendRow:r=>rows.push(r),getLastRow:()=>rows.length+1,getRange:()=>({setNumberFormat(){},getValues:()=>rows.map(r=>r.slice())})};
@@ -47,12 +47,6 @@ assert.ok(sent.length===1 && sent[0][0]==='petta@example.jp' && sent[0][2].inclu
 // 同じ内容をもう一度送っても行は増えない
 ctx.pinfoPage_({s:tok,go:'1',of0:'pick_free',of0n:'5',of0u:later,equip:['ケージの貸し出し','ペットシーツ'],note:'地域最安！お電話は03-1234-5678'});
 assert.equal(rows.length,4, 'only the rejected note is re-sent');
-// 臨時のお休みも確認を通し、公開にしたらその日のお迎えは候補から外す
-ctx.pinfoPage_({s:tok,go:'1',off:'2026-12-31 2027-01-01',equip:['ケージの貸し出し','ペットシーツ'],of0:'pick_free',of0n:'5',of0u:later,note:''});
-const off=rows.find(x=>x[3]==='臨時のお休み'); assert.equal(off[6],'確認待ち');
-ctx.PINFO_ALL_=null; assert.ok(!ctx.pinfoOffDays_('P063')['2027-01-01']);
-off[6]='公開'; ctx.PINFO_ALL_=null;
-assert.ok(ctx.pinfoOffDays_('P063')['2027-01-01']);
 // 登録・届出を選んだら番号が要る。お支払い方法は受け付ける。人数・頭数の項目はない
 let n0=rows.length;
 r=ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],equip:['ケージの貸し出し','ペットシーツ'],of0:'pick_free',of0n:'5',of0u:later,note:''}).html;
@@ -60,14 +54,11 @@ assert.ok(r.includes('番号を入れてください') && !rows.slice(n0).some(x
 ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],cred_no:'関自貨第123号',pay:['現金','クレジットカード'],equip:['ケージの貸し出し','ペットシーツ'],of0:'pick_free',of0n:'5',of0u:later,note:''});
 assert.ok(rows.some(x=>x[3]==='許可・資格・保険' && x[4].includes('関自貨第123号')) && rows.some(x=>x[3]==='お支払い方法' && x[4]==='現金・クレジットカード'));
 assert.ok(!page.includes('多頭の同乗') && !page.includes('飼い主さんの同乗') && !page.includes('得意な行き先'));
-console.log('PASS: partner listing page logs in by email link, accepts only partners, blocks banned wording, reviews day-offs');
-{
-  const res=ctx.checks_({id:'P063',hours:'0-24',rideHours:'0-24'},{'希望日時':'2027-01-01T01:00:00Z','ペット':'[]'});
-  assert.ok(res.ng.some(x=>x.includes('臨時のお休み')), JSON.stringify(res));
-  const res2=ctx.checks_({id:'P063',hours:'0-24',rideHours:'0-24'},{'希望日時':'2027-01-03T01:00:00Z','ペット':'[]'});
-  assert.ok(!res2.ng.some(x=>x.includes('臨時のお休み')));
-  console.log('PASS: day-off excludes the partner from that day');
-}
+// 写真はページが横3：縦2に切り抜いたものだけ。小さい・形がちがうものは断る
+assert.ok(/小さすぎ/.test(ctx.pinfoPhoto_({t:tok,rights:'1',w:'1000',h:'667',data:'x'}).error));
+assert.ok(/形が合いません/.test(ctx.pinfoPhoto_({t:tok,rights:'1',w:'1600',h:'1200',data:'x'}).error));
+assert.ok(!page.includes('臨時のお休み') && !page.includes('name="off"'));
+console.log('PASS: partner listing page logs in by email link, accepts only partners, blocks banned wording');
 {
   // 公開した行だけ・期限内の特典だけ・横長の写真だけを候補カード用に出す
   rows.length=0; ctx.CacheService={getScriptCache:()=>({get:()=>null,put(){},remove(){}})};
@@ -79,10 +70,11 @@ console.log('PASS: partner listing page logs in by email link, accepts only part
   row('ひとこと','公開',{text:'大型犬もどうぞ'});
   row('写真','公開',{file:'abc',w:1600,h:1067,kind:'車の中'});
   row('写真','公開',{file:'tall',w:900,h:1600,kind:'車の外'});
+  row('写真','公開',{file:'out',w:1500,h:1000,kind:'車の外'});
   row('写真','直してください',{file:'ng',w:1600,h:1000,kind:'お店'});
   const pub=ctx.pinfoPublic_()['P063'];
   assert.deepEqual(pub.offers,['お迎え料金が5kmまで無料（'+later+'まで）']);
   assert.deepEqual(pub.tags,['ケージの貸し出し']); assert.equal(pub.note,'大型犬もどうぞ');
-  assert.equal(pub.photos.length,1); assert.ok(pub.photos[0].url.includes('abc'));
+  assert.equal(pub.photos.length,2); assert.ok(pub.photos[0].url.includes('out') && pub.photos[1].url.includes('abc'), 'car outside first');
   console.log('PASS: only approved, unexpired, landscape items reach the cards');
 }
