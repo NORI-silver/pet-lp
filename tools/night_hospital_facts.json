@@ -1,5 +1,5 @@
 {
- "_説明": "夜間・救急の動物病院の施設ページ（/hospital/night/<県>/<id>/、tools/gen_facpages.py）の事実。公式サイトで確かめたことだけ（k・v・src・checked）。電話番号・個人名は入れない。5項目未満・閉院は ok:false。",
+ "_説明": "夜間・救急の動物病院の施設ページ（/hospital/night/<県>/<id>/、tools/gen_facpages.py）の事実。公式サイトで確かめたことだけ（k・v・src・checked）。個人名は入れない。電話番号は公式サイトに書いてある来院前の連絡先だけを tel（tel_src・tel_checked）に入れ、facts には入れない（Nori 2026-11-15 判断カードで「出す」）。5項目未満・閉院は ok:false。",
  "items": [
   {
    "id": "H033",
@@ -65,7 +65,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "受付時間はページ名に「24時間」とあるだけで、時間帯の記載は見つからず入れていない。"
+   "note": "受付時間はページ名に「24時間」とあるだけで、時間帯の記載は見つからず入れていない。",
+   "tel": "03-6432-4622",
+   "tel_src": "https://shiba-animalclinic.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H044",
@@ -131,7 +134,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "駐車場は「専用駐車場なし」とは明記されていないため、表示するなら言い方に注意。"
+   "note": "駐車場は「専用駐車場なし」とは明記されていないため、表示するなら言い方に注意。",
+   "tel": "045-320-9099",
+   "tel_src": "https://yokohama-dvms.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H026",
@@ -196,7 +202,10 @@
      "src": "https://mc.aeonpet.com/makuharishin/er/",
      "checked": "2026-11-09"
     }
-   ]
+   ],
+   "tel": "043-298-1124",
+   "tel_src": "https://mc.aeonpet.com/makuharishin/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H072",
@@ -261,7 +270,10 @@
      "src": "https://doubutsuyakan.jp/",
      "checked": "2026-11-09"
     }
-   ]
+   ],
+   "tel": "06-4259-1212",
+   "tel_src": "https://doubutsuyakan.jp/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H020",
@@ -339,7 +351,10 @@
      "checked": "2026-11-15"
     }
    ],
-   "note": "最寄り駅は「大宮駅そば」とだけあり、徒歩分数なし。休診日・対象動物・駐車場の記載なし。"
+   "note": "最寄り駅は「大宮駅そば」とだけあり、徒歩分数なし。休診日・対象動物・駐車場の記載なし。",
+   "tel": "048-788-3966",
+   "tel_src": "https://www.sonac.co.jp/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H067",
@@ -399,7 +414,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "2025年8月2日から夜間救急診療を開始と記載。"
+   "note": "2025年8月2日から夜間救急診療を開始と記載。",
+   "tel": "052-938-8053",
+   "tel_src": "https://ah.aeonpet.com/nagoya-yakan-emergency/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H001",
@@ -465,7 +483,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "土曜の時間は記載なし。"
+   "note": "土曜の時間は記載なし。",
+   "tel": "011-688-9960",
+   "tel_src": "https://www.sapporo1299.net/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H082",
@@ -531,7 +552,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "最寄り駅の記載なし（玉津ICから車で約6分）。"
+   "note": "最寄り駅の記載なし（玉津ICから車で約6分）。",
+   "tel": "078-939-5931",
+   "tel_src": "https://www.kobe-naec.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H013",
@@ -624,7 +648,10 @@
      "src": "https://gunma-neah.com/service/",
      "checked": "2026-11-09"
     }
-   ]
+   ],
+   "tel": "027-212-9246",
+   "tel_src": "https://gunma-neah.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H053",
@@ -690,7 +717,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "夜間専門ではなく一般病院の時間外対応。対応できない場合もあると記載。"
+   "note": "夜間専門ではなく一般病院の時間外対応。対応できない場合もあると記載。",
+   "tel": "0766-54-5013",
+   "tel_src": "https://yotsuya-ah.jp/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H059",
@@ -785,7 +815,10 @@
      "src": "https://naganoyakan-ah.com/about.html",
      "checked": "2026-11-15"
     }
-   ]
+   ],
+   "tel": "080-8904-7815",
+   "tel_src": "https://naganoyakan-ah.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H063",
@@ -845,7 +878,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "料金の金額の記載なし。最寄り駅の記載なし（日本平久能山スマートICから車で3分）。"
+   "note": "料金の金額の記載なし。最寄り駅の記載なし（日本平久能山スマートICから車で3分）。",
+   "tel": "054-269-4199",
+   "tel_src": "https://shizuoka-neah.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H073",
@@ -971,7 +1007,10 @@
      "checked": "2026-11-15"
     }
    ],
-   "note": "運営は京都市獣医師会。ペット保険の窓口精算は2026-10-01で終了のお知らせあり。対象動物の明記なし。アクセスのページのmeta説明は最寄りを「上鳥羽」と書くが本文は十条駅"
+   "note": "運営は京都市獣医師会。ペット保険の窓口精算は2026-10-01で終了のお知らせあり。対象動物の明記なし。アクセスのページのmeta説明は最寄りを「上鳥羽」と書くが本文は十条駅",
+   "tel": "075-693-9912",
+   "tel_src": "https://kyoto99.net/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H092",
@@ -1043,7 +1082,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "夜間救急の専門病院ではなく一般病院の時間外対応。曜日内でも夜間診療できない日あり"
+   "note": "夜間救急の専門病院ではなく一般病院の時間外対応。曜日内でも夜間診療できない日あり",
+   "tel": "0827-84-4077",
+   "tel_src": "https://ww52.tiki.ne.jp/~tamc/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H006",
@@ -1109,7 +1151,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "料金は2026-07-30改定後の表示"
+   "note": "料金は2026-07-30改定後の表示",
+   "tel": "022-794-9985",
+   "tel_src": "https://www.svet.jp/yakan/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H009",
@@ -1192,7 +1237,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "夜間料金の記載なし。一般診療は完全予約制"
+   "note": "夜間料金の記載なし。一般診療は完全予約制",
+   "tel": "055-233-4126",
+   "tel_src": "https://noah-vet.co.jp/hospital/joto-center",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H088",
@@ -1251,7 +1299,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "運営は広島県獣医師会。駐車場・最寄り駅・対象動物の記載なし"
+   "note": "運営は広島県獣医師会。駐車場・最寄り駅・対象動物の記載なし",
+   "tel": "082-508-6850",
+   "tel_src": "https://hiroshimayakan.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H098",
@@ -1311,7 +1362,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "駐車場はトップ側に「30台収容」の記載もあり食い違い。アクセスのページの11台を採用"
+   "note": "駐車場はトップ側に「30台収容」の記載もあり食い違い。アクセスのページの11台を採用",
+   "tel": "092-504-8999",
+   "tel_src": "https://pet99.net/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H099",
@@ -1371,7 +1425,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "一般病院の夜間診療。獣医師1名対応で、30分以上連絡がなければ他院も検討するよう案内"
+   "note": "一般病院の夜間診療。獣医師1名対応で、30分以上連絡がなければ他院も検討するよう案内",
+   "tel": "096-206-1765",
+   "tel_src": "https://hifumi-petclinic.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H102",
@@ -1431,7 +1488,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "時間外の料金の記載なし。休診日の火曜も時間外対応するかは書いていない"
+   "note": "時間外の料金の記載なし。休診日の火曜も時間外対応するかは書いていない",
+   "tel": "0985-48-0808",
+   "tel_src": "https://o-vet.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H103",
@@ -1485,7 +1545,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "夜間料金の記載なし。大学正門は平日17時30分以降は門衛不在で、時間外は電話で相談との記載"
+   "note": "夜間料金の記載なし。大学正門は平日17時30分以降は門衛不在で、時間外は電話で相談との記載",
+   "tel": "099-285-8671",
+   "tel_src": "https://www.vet.kagoshima-u.ac.jp/KUVTH/service/night-visit/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H105",
@@ -1539,7 +1602,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "最寄り駅の記載なし（那覇市中心部から車で約15分、国道507号線・国場十字路沿い）"
+   "note": "最寄り駅の記載なし（那覇市中心部から車で約15分、国道507号線・国場十字路沿い）",
+   "tel": "098-851-3700",
+   "tel_src": "https://okinawa-yakan-ah.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H008",
@@ -1593,7 +1659,10 @@
      "checked": "2026-11-09"
     }
    ],
-   "note": "新潟市周辺の38の動物病院が協力して運営。トップのお知らせ（2025-01-14）に電子マネー・QR決済対応ともあり、診療案内の「クレジットカードのみ」と食い違い"
+   "note": "新潟市周辺の38の動物病院が協力して運営。トップのお知らせ（2025-01-14）に電子マネー・QR決済対応ともあり、診療案内の「クレジットカードのみ」と食い違い",
+   "tel": "070-3258-1122",
+   "tel_src": "https://anecniigata.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H055",
@@ -1634,7 +1703,10 @@
      "src": "https://kanazawa-yakan.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "050-8889-5612",
+   "tel_src": "https://kanazawa-yakan.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H062",
@@ -1693,7 +1765,10 @@
      "src": "https://www.gifuyakan.jp/",
      "checked": "2026-11-09"
     }
-   ]
+   ],
+   "tel": "050-1721-8729",
+   "tel_src": "https://www.gifuyakan.jp/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H034",
@@ -1771,7 +1846,10 @@
      "checked": "2026-11-14"
     }
    ],
-   "note": "旧名 ER文京（2025年9月1日に名称変更）。"
+   "note": "旧名 ER文京（2025年9月1日に名称変更）。",
+   "tel": "03-3830-0889",
+   "tel_src": "https://er-animal.jp/er_bunkyo/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H045",
@@ -1837,7 +1915,10 @@
     }
    ],
    "note": "休診日の記載なし（年中無休の表記）。駐車場・最寄り駅はトップページの説明文から",
-   "ok": true
+   "ok": true,
+   "tel": "045-341-0856",
+   "tel_src": "https://veccs-yokohama.jp/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H077",
@@ -1909,7 +1990,10 @@
     }
    ],
    "note": "駐車場はトップ（病院横に駐車スペース）とアクセス（西隣のコインパーキング・割引券）で書き方が違うので入れていない。支払い方法の記載なし",
-   "ok": true
+   "ok": true,
+   "tel": "06-4306-4390",
+   "tel_src": "https://osaka-pet911.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H068",
@@ -1957,7 +2041,10 @@
     }
    ],
    "note": "対象の動物は本文に明記なし。駐車場・最寄り駅は夜間ページに記載なし",
-   "ok": true
+   "ok": true,
+   "tel": "052-739-1299",
+   "tel_src": "https://moriyama1299.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H021",
@@ -2011,7 +2098,10 @@
     }
    ],
    "note": "対象の動物は本文に明記なし（説明文に犬猫）。駐車場・最寄り駅は夜間ページに記載なし",
-   "ok": true
+   "ok": true,
+   "tel": "048-229-7299",
+   "tel_src": "https://vsec.jp/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H093",
@@ -2077,7 +2167,10 @@
     }
    ],
    "note": "駐車場の記載なし。料金改定のお知らせ https://kitakyu-vet.com/night-info/kaitei/ は未確認",
-   "ok": true
+   "ok": true,
+   "tel": "093-661-8822",
+   "tel_src": "https://kitakyu-vet.com/night/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H054",
@@ -2130,7 +2223,10 @@
      "src": "https://chelsea-animal.com/emergency/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "080-8082-6338",
+   "tel_src": "https://chelsea-animal.com/emergency/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H052",
@@ -2183,7 +2279,10 @@
      "src": "https://www.toyamavet.or.jp/vet_09.html",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "076-451-0120",
+   "tel_src": "https://www.toyamavet.or.jp/vet_09.html",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H064",
@@ -2248,7 +2347,10 @@
      "src": "http://hamamatsu-aer.jp/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "053-522-9071",
+   "tel_src": "https://hamamatsu-aer.jp/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H065",
@@ -2289,7 +2391,10 @@
      "src": "https://vcj-sulga.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "0550-83-5115",
+   "tel_src": "https://vcj-sulga.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H097",
@@ -2336,7 +2441,10 @@
      "src": "https://www.kochikenjuishikai.or.jp/article/archives/8",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "088-885-7002",
+   "tel_src": "https://www.kochikenjuishikai.or.jp/article/archives/8",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H101",
@@ -2418,7 +2526,10 @@
      "src": "https://www.ukyo-ah.com/service/night/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "075-406-5211",
+   "tel_src": "https://www.ukyo-ah.com/service/night/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H080",
@@ -2483,7 +2594,10 @@
      "src": "https://www.raema.or.jp/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "072-463-5939",
+   "tel_src": "https://www.raema.or.jp/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H018",
@@ -2542,7 +2656,10 @@
      "src": "https://i-ac.jp/night-emergency/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "0270-27-5868",
+   "tel_src": "https://i-ac.jp/night-emergency/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H019",
@@ -2590,7 +2707,10 @@
      "checked": "2026-11-14"
     }
    ],
-   "note": "受付時間は本文が18時〜翌2時、よくある質問が18時〜23時で食い違うため入れていない"
+   "note": "受付時間は本文が18時〜翌2時、よくある質問が18時〜23時で食い違うため入れていない",
+   "tel": "0274-64-0854",
+   "tel_src": "https://saitovet.com/medical/emergency/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H086",
@@ -2643,7 +2763,10 @@
      "src": "https://nara-amc.com/medical/emergency/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "0742-48-4111",
+   "tel_src": "https://nara-amc.com/medical/emergency/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H066",
@@ -2725,7 +2848,10 @@
      "src": "https://okurakaigan-vet.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "078-203-4407",
+   "tel_src": "https://okurakaigan-vet.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H085",
@@ -2767,7 +2893,10 @@
      "checked": "2026-11-14"
     }
    ],
-   "note": "受付時間は専用ダイヤルの案内が21時〜24時、料金表が21時〜23時で食い違うため入れていない"
+   "note": "受付時間は専用ダイヤルの案内が21時〜24時、料金表が21時〜23時で食い違うため入れていない",
+   "tel": "079-297-8182",
+   "tel_src": "https://www.elsa-hp.com/medicalcare/nighttime/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H074",
@@ -2838,7 +2967,10 @@
      "src": "https://heah.jp/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "072-730-2199",
+   "tel_src": "https://heah.jp/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H094",
@@ -2891,7 +3023,10 @@
      "src": "https://www.oshima-ah.com/%E5%A4%9C%E9%96%93%E6%95%91%E6%80%A5",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "088-693-1811",
+   "tel_src": "https://www.oshima-ah.com/%E5%A4%9C%E9%96%93%E6%95%91%E6%80%A5",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H091",
@@ -2932,7 +3067,10 @@
      "src": "https://konomiah.com/jikangai.html",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "082-516-8030",
+   "tel_src": "https://konomiah.com/jikangai.html",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H090",
@@ -3026,7 +3164,10 @@
      "src": "https://k1r4t3t0animalhospital.jp/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "096-227-9339",
+   "tel_src": "https://k1r4t3t0animalhospital.jp/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H060",
@@ -3073,7 +3214,10 @@
      "src": "https://sakukaruizawa-yakan.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "0267-88-8846",
+   "tel_src": "https://sakukaruizawa-yakan.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H061",
@@ -3132,7 +3276,10 @@
      "src": "https://koyama-ah.jp/annai/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "080-6994-3485",
+   "tel_src": "https://koyama-ah.jp/annai/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H058",
@@ -3179,7 +3326,10 @@
      "src": "https://www.kirara-vet-chizuka.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "055-287-9731",
+   "tel_src": "https://www.kirara-vet-chizuka.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H007",
@@ -3232,7 +3382,10 @@
      "src": "https://www.nagamachiminami-ah.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "022-702-3897",
+   "tel_src": "https://www.nagamachiminami-ah.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H014",
@@ -3291,7 +3444,10 @@
      "src": "https://utsunomiya-ah.com/night/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "028-671-1515",
+   "tel_src": "https://utsunomiya-ah.com/night/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H015",
@@ -3326,7 +3482,10 @@
      "src": "https://www.tochigi-svc.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "050-1794-2010",
+   "tel_src": "https://www.tochigi-svc.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H016",
@@ -3379,7 +3538,10 @@
      "src": "https://vets-tree.co.jp/night/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "0285-37-9211",
+   "tel_src": "https://vets-tree.co.jp/night/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H002",
@@ -3450,7 +3612,10 @@
      "src": "https://anes-amc.com/medical-night/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "011-522-7630",
+   "tel_src": "https://anes-amc.com/medical-night/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H005",
@@ -3491,7 +3656,10 @@
      "src": "https://ebetsu.lifemate-vh.com/night/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "011-382-2008",
+   "tel_src": "https://ebetsu.lifemate-vh.com/night/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H003",
@@ -3532,7 +3700,10 @@
      "src": "https://mc.aeonpet.com/sapporotsukisamu/er/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "011-598-9936",
+   "tel_src": "https://mc.aeonpet.com/sapporotsukisamu/er/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H004",
@@ -3585,7 +3756,10 @@
      "src": "https://www.vetmed.hokudai.ac.jp/VMTH/owner/nightandweekendandholidayservice/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "011-706-9592",
+   "tel_src": "https://www.vetmed.hokudai.ac.jp/VMTH/owner/nightandweekendandholidayservice/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H036",
@@ -3656,7 +3830,10 @@
      "src": "https://trva.jp/emergency/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "03-5760-1212",
+   "tel_src": "https://trva.jp/emergency/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H037",
@@ -3715,7 +3892,10 @@
      "src": "https://ah.aeonpet.com/tokyo-yakan-emergency/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "03-3334-2850",
+   "tel_src": "https://ah.aeonpet.com/tokyo-yakan-emergency/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H038",
@@ -3792,7 +3972,10 @@
      "src": "https://er-animal.jp/er_nerima/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "03-6913-4160",
+   "tel_src": "https://er-animal.jp/er_nerima/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H041",
@@ -3869,7 +4052,10 @@
      "src": "https://er-animal.jp/er_fuchu/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "042-306-8052",
+   "tel_src": "https://er-animal.jp/er_fuchu/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H040",
@@ -3922,7 +4108,10 @@
      "src": "http://center99.intellectual-japan.com/index.html",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "080-5487-6682",
+   "tel_src": "http://center99.intellectual-japan.com/index.html",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H035",
@@ -3999,7 +4188,10 @@
      "src": "https://www.yakan-99.com/guide/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "03-5720-1299",
+   "tel_src": "https://www.yakan-99.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H042",
@@ -4064,7 +4256,10 @@
      "src": "https://samsupvets.jp/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "042-506-1736",
+   "tel_src": "https://samsupvets.jp/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H043",
@@ -4141,7 +4336,10 @@
      "src": "https://er-animal.jp/er_hachioji/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "042-670-1277",
+   "tel_src": "https://er-animal.jp/er_hachioji/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H046",
@@ -4182,7 +4380,10 @@
      "src": "https://amc-japan.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "044-411-9999",
+   "tel_src": "https://amc-japan.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H047",
@@ -4235,7 +4436,10 @@
      "src": "https://kvma9950.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "044-811-9950",
+   "tel_src": "https://kvma9950.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H048",
@@ -4282,7 +4486,10 @@
      "src": "https://mc.aeonpet.com/sagamihara/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "042-757-3166",
+   "tel_src": "https://mc.aeonpet.com/sagamihara/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H049",
@@ -4335,7 +4542,10 @@
      "src": "https://www.fujisawa-vet-er.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "0466-47-7947",
+   "tel_src": "https://www.fujisawa-vet-er.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H050",
@@ -4400,7 +4610,10 @@
      "src": "https://yokosukayakan.jimdofree.com/診療費/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "046-876-6264",
+   "tel_src": "https://yokosukayakan.jimdofree.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H022",
@@ -4459,7 +4672,10 @@
      "src": "https://milainoanimal.jp/yakan/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "048-954-5266",
+   "tel_src": "https://milainoanimal.jp/yakan/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H023",
@@ -4535,7 +4751,10 @@
      "src": "https://kuki-er-ah.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "0480-26-1299",
+   "tel_src": "https://kuki-er-ah.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H025",
@@ -4600,7 +4819,10 @@
      "src": "https://www.kumagaya-er.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "050-8880-1616",
+   "tel_src": "https://www.kumagaya-er.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H028",
@@ -4665,7 +4887,10 @@
      "src": "https://kettlevet.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "047-489-1144",
+   "tel_src": "https://kettlevet.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H029",
@@ -4724,7 +4949,10 @@
      "src": "https://kn-yakan.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "04-7128-6760",
+   "tel_src": "https://kn-yakan.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H030",
@@ -4789,7 +5017,10 @@
      "src": "https://www.tokatu4699.com/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "090-8501-3337",
+   "tel_src": "https://www.tokatu4699.com/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H027",
@@ -4901,7 +5132,10 @@
      "src": "https://www.chiba-ah.com/clinical-services/emergency-services/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "04-7157-8618",
+   "tel_src": "https://www.chiba-ah.com/clinical-services/emergency-services/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H069",
@@ -5007,7 +5241,10 @@
      "src": "https://www.sugiuravet.com/ems/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "0566-98-3758",
+   "tel_src": "https://www.sugiuravet.com/ems/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H071",
@@ -5066,7 +5303,10 @@
      "src": "https://heart-ac.com/service/",
      "checked": "2026-11-14"
     }
-   ]
+   ],
+   "tel": "0532-52-8913",
+   "tel_src": "https://heart-ac.com/service/",
+   "tel_checked": "2026-11-15"
   },
   {
    "id": "H078",
