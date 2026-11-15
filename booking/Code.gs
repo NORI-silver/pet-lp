@@ -2688,6 +2688,10 @@ function pinfoPage_(q, view) {
     (view ? '<div class="box"><b>運営者だけが見られる見本です。</b>事業者がログインしたあとの画面と同じですが、送っても何も保存されず、どこにも届きません。</div>' : '') +
     (q.go === '1' && view ? '<div class="box">見本なので、保存していません。</div>' : '') +
     (q.go === '1' && !view ? '<div class="box">' + (done.length ? esc_(done.join('、')) + ' を受け付けました。' : '変わったところはありませんでした。') + '</div>' : '');
+  // カードの見え方の見本（写真・特典・運転手を入れたとき。画像は見本用に作ったもので、実在の会社・人ではない。Nori 2026-11-15）
+  html +=
+    '<h2>お客さまに見えるカード（見本）</h2><p class="note">写真・特典・運転手の写真・ひとことを入れると、候補のカードはこのように見えます（見本の会社です）。</p>' +
+    '<img src="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/img/partner/card-sample.jpg') + '" alt="写真・特典・運転手の写真が入った候補のカードの見本" width="390" style="display:block;width:100%;max-width:390px;height:auto;margin:8px 0 16px;border-radius:14px;box-shadow:0 1px 6px rgba(0,0,0,.12)">';
   // 写真（/go/ のページが data-pinfo-up を見て、縮めてから送る）
   html += '<h2>写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）</h2><p class="note">カードでは横3：縦2の枠で出します。選んだ写真をこの形に切り抜いて見本を出すので、見え方を確かめてから送ってください（横' + PINFO_PHOTO_MIN_PX + 'px以上になる写真）。1枚めは「車の外」がおすすめです（カードの最初に出ます）。昼の明るい場所で、背景にほかの車・人・看板が入らないように撮ってください。「運転手」は正方形に切り抜き、カードの会社名の横に丸く出します（顔がはっきり見える、明るい場所での写真。写っている方ご本人の了解が必要です）。ご自身で撮った実際の写真だけで、電話番号・ナンバープレートが写っていないもの。運転手のほかは、人の顔が写っていないものにしてください。文字やスタンプは入れないでください。</p>' +
     (photos.length < PINFO_PHOTO_MAX ? '<div data-pinfo-up data-t="' + esc_(view ? '' : q.s) + '"' + (view ? ' data-view="1"' : '') + ' class="box"><label>写真の種類<select data-kind>' + PINFO_PHOTO_KINDS.map(function(k) { return '<option>' + esc_(k) + '</option>'; }).join('') + '</select></label>' +
