@@ -34,7 +34,7 @@ def pick(posts, done, n=1):
     sns/feed.py の4つの形（あるある→クイズ→実用ワザ→調べた数字）を日がわりで出す。写真のない投稿はとばす。
     4つの形の投稿がなくなったら、前の並び（豆知識2本にほかの1本）に戻る。"""
     done = [str(d) for d in done]
-    left = [p for p in posts if str(p["no"]) not in done]
+    left = [p for p in posts if str(p["no"]) not in done and p.get("photo")]
     kind = {str(p["no"]): p.get("kind") for p in posts}
     out = []
     while left and len(out) < n:
