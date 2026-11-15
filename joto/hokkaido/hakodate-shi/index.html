@@ -110,7 +110,7 @@
 .fr{margin:4px 0 18px}
 .fr-h{font-size:1.05rem!important;font-weight:800;margin:10px 0 8px!important;display:flex;align-items:baseline;gap:8px}
 .fr-h small{font-size:.78rem;font-weight:600;color:var(--ink-3,#6b625b)}
-.fr-s{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.fr-s{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
 .fr-more{margin:4px 0 18px;font-size:14px}.fr-more a{color:#c2410c;font-weight:600}
 .fr-s>.emg-item.fc{flex:0 0 80%;max-width:330px;scroll-snap-align:start}
 .fr-s>.emg-item.fc[hidden],.fr-s>.emg-item.fac-off,.emg-item.fc.fc-off{display:none}
@@ -138,10 +138,10 @@
 .fc-k{font-size:.72rem;font-weight:700;color:var(--ink-3,#6b625b);background:#f4f1ee;border-radius:6px;padding:1px 6px;margin-right:6px}
 .fc-tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0!important;margin:8px 0 0!important}
 .fc-tags li{font-size:.74rem;line-height:1.3;padding:3px 8px;border-radius:6px;background:#f4f1ee;color:var(--ink-2,#5a524b);margin:0!important}
-.fc-fit{align-self:flex-start;font-size:.8rem;font-weight:800;line-height:1.4;margin:8px 0 0!important;padding:4px 10px;border-radius:999px}
-.fc-fit small{display:block;font-weight:500;font-size:.72rem}
-.fc-fit.ok small{display:none}
-.fc-fit.ok{background:#e8f5e9;color:#1b5e20}.fc-fit.unk{background:#f4f1ee;color:#5a524b}.fc-fit.ng{background:#fdecea;color:#a12a1b}
+.fc-fit{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 0!important}
+.fc-fit[hidden]{display:none}
+.fc-fb{font-size:.74rem;font-weight:800;line-height:1.3;padding:3px 8px;border-radius:999px}
+.fc-fb.ok{background:#e8f5e9;color:#1b5e20}.fc-fb.unk{background:#f4f1ee;color:#5a524b;font-weight:600}.fc-fb.ng{background:#fdecea;color:#a12a1b}
 .emg-item.fc.fc-ng{opacity:.62}
 .emg-item.fc.fc-hid{display:none}
 .fc-acts{display:flex;flex-wrap:wrap;gap:5px;margin:auto 0 0;padding-top:10px}
@@ -214,7 +214,7 @@
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    <div class="emg"><div class="fp" data-fp><p class="fp-t"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-paw"/></svg>迎えたい子でさがす</p><div class="fp-row"><span class="fp-l">どの子？</span><div class="fp-btns" data-g="a"><button type="button" data-v="dog" aria-pressed="false">犬</button><button type="button" data-v="cat" aria-pressed="false">猫</button></div></div><p class="fp-now" aria-live="polite"></p><label class="fp-hide"><input type="checkbox"> 合わないかもを隠す</label></div>
+    <div class="emg"><div class="fp" data-fp><p class="fp-t"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-paw"/></svg>迎えたい子でさがす</p><div class="fp-row"><span class="fp-l">どの子？</span><div class="fp-btns" data-g="a"><button type="button" data-v="dog" aria-pressed="false">犬</button><button type="button" data-v="cat" aria-pressed="false">猫</button></div></div><p class="fp-now" aria-live="polite"></p><label class="fp-hide"><input type="checkbox"> 合わないところを隠す</label></div>
       <div class="emg-tips jt-ans" style="margin-top:0"><h4>函館市の窓口と主な条件</h4>
       <p><a href="https://www.city.hakodate.hokkaido.jp/docs/2014010700414/" target="_blank" rel="noopener"><b>函館市動物愛護管理センター</b> ↗</a></p><ul><li>18歳以上</li><li>同居の家族全員が賛成</li><li>ひとり暮らし・同居者全員が60歳以上なら、代わりに飼える人がいる</li></ul>
       <p class="emg-tips-note">公式ページに書いてあるかどうか（✓＝書いてある。「書いていない」は「ない」ではなく、ページに書いていないという意味）</p><ul class="jt-chk"><li class="on">年齢</li><li class="on">住まい</li><li class="on">家族の賛成</li><li class="">講習：書いていない</li><li class="">お試し：書いていない</li><li class="">不妊去勢：書いていない</li><li class="">室内飼い：書いていない</li><li class="">費用：書いていない</li></ul></div>

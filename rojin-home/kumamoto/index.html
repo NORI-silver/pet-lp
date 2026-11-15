@@ -148,7 +148,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 .fr{margin:4px 0 18px}
 .fr-h{font-size:1.05rem!important;font-weight:800;margin:10px 0 8px!important;display:flex;align-items:baseline;gap:8px}
 .fr-h small{font-size:.78rem;font-weight:600;color:var(--ink-3,#6b625b)}
-.fr-s{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.fr-s{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
 .fr-more{margin:4px 0 18px;font-size:14px}.fr-more a{color:#c2410c;font-weight:600}
 .fr-s>.emg-item.fc{flex:0 0 80%;max-width:330px;scroll-snap-align:start}
 .fr-s>.emg-item.fc[hidden],.fr-s>.emg-item.fac-off,.emg-item.fc.fc-off{display:none}
@@ -176,10 +176,10 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 .fc-k{font-size:.72rem;font-weight:700;color:var(--ink-3,#6b625b);background:#f4f1ee;border-radius:6px;padding:1px 6px;margin-right:6px}
 .fc-tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0!important;margin:8px 0 0!important}
 .fc-tags li{font-size:.74rem;line-height:1.3;padding:3px 8px;border-radius:6px;background:#f4f1ee;color:var(--ink-2,#5a524b);margin:0!important}
-.fc-fit{align-self:flex-start;font-size:.8rem;font-weight:800;line-height:1.4;margin:8px 0 0!important;padding:4px 10px;border-radius:999px}
-.fc-fit small{display:block;font-weight:500;font-size:.72rem}
-.fc-fit.ok small{display:none}
-.fc-fit.ok{background:#e8f5e9;color:#1b5e20}.fc-fit.unk{background:#f4f1ee;color:#5a524b}.fc-fit.ng{background:#fdecea;color:#a12a1b}
+.fc-fit{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 0!important}
+.fc-fit[hidden]{display:none}
+.fc-fb{font-size:.74rem;font-weight:800;line-height:1.3;padding:3px 8px;border-radius:999px}
+.fc-fb.ok{background:#e8f5e9;color:#1b5e20}.fc-fb.unk{background:#f4f1ee;color:#5a524b;font-weight:600}.fc-fb.ng{background:#fdecea;color:#a12a1b}
 .emg-item.fc.fc-ng{opacity:.62}
 .emg-item.fc.fc-hid{display:none}
 .fc-acts{display:flex;flex-wrap:wrap;gap:5px;margin:auto 0 0;padding-top:10px}
@@ -237,10 +237,10 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
   </div>
 </section>
 <section style="padding-top:8px">
-  <div class="wrap"><div class="emg"><div class="fp" data-fp><p class="fp-t"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-paw"/></svg>うちの子に合うところをさがす</p><div class="fp-row"><span class="fp-l">どの子？</span><div class="fp-btns" data-g="a"><button type="button" data-v="dog" aria-pressed="false">犬</button><button type="button" data-v="cat" aria-pressed="false">猫</button></div></div><p class="fp-now" aria-live="polite"></p><label class="fp-hide"><input type="checkbox"> 合わないかもを隠す</label></div>
+  <div class="wrap"><div class="emg">
       
       
-      <section class="emg-pref" data-pref="熊本県"><h2 style="font-size:1.15em">老犬ホーム・老猫ホーム（熊本県・2施設）</h2><div class="fr"><div class="fr-s"><div class="emg-item emg-co fc" data-fit="{&quot;a&quot;:[&quot;dog&quot;,&quot;cat&quot;],&quot;o&quot;:1,&quot;at&quot;:&quot;犬・猫&quot;,&quot;sen&quot;:1}" data-city="菊池市"><div class="fc-body"><div class="fc-name"><a href="https://roukentop.co.jp/" target="_blank" rel="noopener"><b>老犬ホーム トップ</b></a></div><p class="fc-line" title="所在地"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-pin"/></svg><span>熊本県菊池市亘530</span></p><p class="fc-line" title="受け入れる動物"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-paw"/></svg><span>犬・猫</span></p><p class="fc-fit" hidden></p><div class="fc-acts"><div class="emg-score" data-id="R080"></div><details class="fc-more"><summary class="fc-a fc-a-more">そのほか</summary><div class="fc-more-b"><small class="emg-spec">短期〜長期の預かりと終身プラン（犬は10歳以上、猫は14歳以上）</small><small>動物取扱業の登録（公式サイトより）：熊本県 菊保R1保第2号</small><small>見学・面会：預かり中はブログ報告・面会あり</small></div></details></div></div></div><div class="emg-item emg-co fc" data-fit="{&quot;a&quot;:[&quot;dog&quot;,&quot;cat&quot;],&quot;o&quot;:1,&quot;at&quot;:&quot;犬・猫&quot;,&quot;sen&quot;:1}" data-city="熊本市西区"><div class="fc-body"><div class="fc-name"><a href="https://www.petlounge-lechien.com/old_dog_home.php" target="_blank" rel="noopener"><b>ペットラウンジ le chien（ルシアン） 老犬ホーム</b></a></div><p class="fc-line" title="所在地"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-pin"/></svg><span>熊本県熊本市西区松尾2-3-15</span></p><p class="fc-line" title="受け入れる動物"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-paw"/></svg><span>犬・猫</span></p><p class="fc-fit" hidden></p><div class="fc-acts"><div class="emg-score" data-id="R081"></div><details class="fc-more"><summary class="fc-a fc-a-more">そのほか</summary><div class="fc-more-b"><small class="emg-spec">ショートステイから生涯預かりまで（トリミングサロン・ペットホテル併設）</small><small>動物取扱業の登録（公式サイトより）：保管 熊市保第R6-23号・譲受飼養 熊市譲第R6-1号</small></div></details></div></div></div></div></div></section>
+      <section class="emg-pref" data-pref="熊本県"><h2 style="font-size:1.15em">老犬ホーム・老猫ホーム（熊本県・2施設）</h2><div class="fr"><div class="fr-s"><div class="emg-item emg-co fc" data-fit="{&quot;a&quot;:[&quot;dog&quot;,&quot;cat&quot;],&quot;o&quot;:1,&quot;at&quot;:&quot;犬・猫&quot;,&quot;sen&quot;:1}" data-city="菊池市"><div class="fc-body"><div class="fc-name"><a href="https://roukentop.co.jp/" target="_blank" rel="noopener"><b>老犬ホーム トップ</b></a></div><p class="fc-line" title="所在地"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-pin"/></svg><span>熊本県菊池市亘530</span></p><p class="fc-fit" hidden></p><div class="fc-acts"><div class="emg-score" data-id="R080"></div><details class="fc-more"><summary class="fc-a fc-a-more">そのほか</summary><div class="fc-more-b"><small class="emg-spec">短期〜長期の預かりと終身プラン（犬は10歳以上、猫は14歳以上）</small><small>動物取扱業の登録（公式サイトより）：熊本県 菊保R1保第2号</small><small>見学・面会：預かり中はブログ報告・面会あり</small></div></details></div></div></div><div class="emg-item emg-co fc" data-fit="{&quot;a&quot;:[&quot;dog&quot;,&quot;cat&quot;],&quot;o&quot;:1,&quot;at&quot;:&quot;犬・猫&quot;,&quot;sen&quot;:1}" data-city="熊本市西区"><div class="fc-body"><div class="fc-name"><a href="https://www.petlounge-lechien.com/old_dog_home.php" target="_blank" rel="noopener"><b>ペットラウンジ le chien（ルシアン） 老犬ホーム</b></a></div><p class="fc-line" title="所在地"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-pin"/></svg><span>熊本県熊本市西区松尾2-3-15</span></p><p class="fc-fit" hidden></p><div class="fc-acts"><div class="emg-score" data-id="R081"></div><details class="fc-more"><summary class="fc-a fc-a-more">そのほか</summary><div class="fc-more-b"><small class="emg-spec">ショートステイから生涯預かりまで（トリミングサロン・ペットホテル併設）</small><small>動物取扱業の登録（公式サイトより）：保管 熊市保第R6-23号・譲受飼養 熊市譲第R6-1号</small></div></details></div></div></div></div></div></section>
       <div class="emg-tips"><h4>条件をくらべる</h4><div class="tbl"><table class="pp-tbl t2"><thead><tr><th>名前</th><th>猫</th><th>大型犬の記載</th><th>見学・面会の記載</th><th>登録番号</th><th>市区町村</th></tr></thead><tbody><tr><td>老犬ホーム トップ</td><td class="c">○</td><td></td><td class="c">○</td><td class="c">○</td><td class="s">菊池市</td></tr><tr><td>ペットラウンジ le chien（ルシアン） 老犬ホーム</td><td class="c">○</td><td></td><td class="c"></td><td class="c">○</td><td class="s">熊本市西区</td></tr></tbody></table></div><p class="emg-tips-note">○は公式サイトにはっきり書いてあること。空欄は「しない」ではなく、公式サイトに書いていない・分からないという意味です。</p></div>
       <div class="emg-tips"><h4>この一覧に載せている施設の条件</h4><ul><li>シニアの犬・猫を長期または終生で預かることを、施設の公式サイトに今も書いていること。</li><li>公式サイトがあること。見つからない施設だけ、老犬ホームの情報サイト（老犬ケア）の施設紹介ページで確かめ、そのページにリンクしています。SNSだけの施設は今は載せていません。</li><li>ペットホテルやデイケア（日帰りのお預かり）だけの施設、受け入れをやめた・休んでいる施設は載せません。</li><li>書くのは、公式サイトに書いてある所在地・受け入れる動物・見学や面会のきまり・動物取扱業の登録番号だけです。料金・電話番号・順位は書きません。</li><li>施設からお金はもらっていません。載っていない施設もあるので、見つけしだい足します。</li></ul></div>
       <p>九州・沖縄のほかの県：<a href="/rojin-home/fukuoka/">福岡県の老犬ホーム・老猫ホーム（6施設）</a>、<a href="/rojin-home/saga/">佐賀県の老犬ホーム・老猫ホーム（2施設）</a>、<a href="/rojin-home/kagoshima/">鹿児島県の老犬ホーム・老猫ホーム（2施設）</a></p>
@@ -305,6 +305,5 @@ function prefKeep(sel, apply){
     <p>&copy; 2026 ペットのくらし窓口</p>
   </div>
 </footer>
-<script src="/fit.js" defer></script>
 </body>
 </html>

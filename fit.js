@@ -7,12 +7,13 @@
   var L = {dog: "犬", cat: "猫", small: "うさぎ・小動物", bird: "鳥", exotic: "爬虫類など"};
   var SZ = [["s", 0, 10], ["m", 10, 25], ["l", 25, 200]];
   var cards = [].slice.call(document.querySelectorAll(".emg-item.fc"));
-  cards.forEach(function(c, i){ c._ord = i; c._ft = "|" + (c.getAttribute("data-ft") || "") + "|"; try { c._fit = JSON.parse(c.getAttribute("data-fit") || "{}"); } catch (e) { c._fit = {}; } });
+  cards.forEach(function(c, i){ c._ord = i; c._ft = "|" + (c.getAttribute("data-ft") || "") + "|"; c._dp = c.getAttribute("data-dp"); try { c._fit = JSON.parse(c.getAttribute("data-fit") || "{}"); } catch (e) { c._fit = {}; } });
   var sel = box.querySelector("#fp-size"), dogRow = box.querySelector(".fp-dog"), now = box.querySelector(".fp-now"), hide = box.querySelector(".fp-hide input");
-  var st = {a: "", size: "", x: []}, ftOn = [];
+  var st = {a: "", size: "", x: []}, ftOn = [], dpOn = "";
   try { var sv = JSON.parse(localStorage.getItem("petMine") || "null"); if (sv) st = {a: sv.a || "", size: sv.size || "", x: sv.x || []}; } catch (e) {}
   function save(){ try { localStorage.setItem("petMine", JSON.stringify(st)); } catch (e) {} }
   function kg(){
+    if (st.x.indexOf("big") >= 0) return [25, 200, "大型犬"];
     if (!sel || !st.size) return null;
     var o = sel.querySelector('option[value="' + st.size + '"]');
     return o ? [parseFloat(o.getAttribute("data-lo")), parseFloat(o.getAttribute("data-hi")), o.textContent] : null;
@@ -22,9 +23,10 @@
     if (st.a) {
       if (f.a && f.a.indexOf(st.a) >= 0) r.push(["ok", L[st.a] + "OK"]);
       else if (f.a && f.o) r.push(["ng", "診る・受ける動物は" + (f.at || f.a.map(function(k){ return L[k]; }).join("・"))]);
-      else r.push(["unk", L[st.a] + "は書いていない"]);
+      else r.push(["unk", L[st.a] + "は不明"]);
     }
     var dogOk = !st.a || st.a === "dog";
+    if (w && dogOk && f.a && f.o && f.a.indexOf("dog") < 0) r.push(["ng", "猫だけ"]);
     if (w && dogOk && !(f.a && f.o && f.a.indexOf("dog") < 0)) {
       var lo = w[0], hi = w[1];
       if (f.kg) {
@@ -37,23 +39,24 @@
         if (all) r.push(["ok", need.indexOf("l") >= 0 ? "大型犬もOK" : "この大きさOK"]);
         else if (!some) r.push(["ng", f.s.join("") === "s" ? "小型犬だけ" : "この大きさは受けない"]);
         else r.push(["unk", "大きさで受けないことあり"]);
-      } else r.push(["unk", "大きさは書いていない"]);
+      } else r.push(["unk", "大きさは不明"]);
     }
-    if (st.x.indexOf("sen") >= 0) r.push(f.sen ? ["ok", "シニアOK"] : ["unk", "シニアは書いていない"]);
-    if (st.x.indexOf("pup") >= 0) r.push(f.pup ? ["ok", "子犬OK"] : ["unk", "子犬は書いていない"]);
+    if (dpOn) r.push(f._dp == null ? ["unk", "診療科目は不明"] : ("|" + f._dp + "|").indexOf("|" + dpOn + "|") >= 0 ? ["ok", dpOn + "あり"] : ["unk", dpOn + "は不明"]);
+    if (st.x.indexOf("sen") >= 0) r.push(f.sen ? ["ok", "シニアOK"] : ["unk", "シニアは不明"]);
+    if (st.x.indexOf("pup") >= 0) r.push(f.pup ? ["ok", "子犬OK"] : ["unk", "子犬は不明"]);
     return r;
   }
   var RANK = {ok: 0, unk: 1, ng: 2};
   function run(track){
     box.querySelectorAll(".fp-btns button").forEach(function(b){
       var g = b.parentNode.getAttribute("data-g"), v = b.getAttribute("data-v");
-      b.setAttribute("aria-pressed", String(g === "a" ? st.a === v : g === "f" ? ftOn.indexOf(v) >= 0 : st.x.indexOf(v) >= 0));
+      b.setAttribute("aria-pressed", String(g === "a" ? st.a === v : g === "f" ? ftOn.indexOf(v) >= 0 : g === "d" ? dpOn === v : st.x.indexOf(v) >= 0));
     });
     if (sel) sel.value = st.size;
     if (dogRow) dogRow.hidden = !!st.a && st.a !== "dog";
-    var w = kg(), any = !!(st.a || w || st.x.length), cnt = {ok: 0, unk: 0, ng: 0};
+    var w = kg(), any = !!(st.a || w || st.x.length || dpOn), cnt = {ok: 0, unk: 0, ng: 0};
     cards.forEach(function(c){
-      var p = c.querySelector(".fc-fit"), r = any ? judge(c._fit, w) : [];
+      c._fit._dp = c._dp; var p = c.querySelector(".fc-fit"), r = any ? judge(c._fit, w) : [];
       var s = !r.length ? "" : r.some(function(x){ return x[0] === "ng"; }) ? "ng" : r.every(function(x){ return x[0] === "ok"; }) ? "ok" : "unk";
       c._rank = s ? RANK[s] : 1;
       c.classList.toggle("fc-ng", s === "ng");
@@ -61,11 +64,9 @@
       c.classList.toggle("fc-off", !ftOn.every(function(v){ return c._ft.indexOf("|" + v + "|") >= 0; }));
       if (!p) return;
       if (!s) { p.hidden = true; return; }
-      var lab = {ok: "この子OK", unk: "要確認", ng: "合わないかも"}[s];
-      var why = r.filter(function(x){ return s === "ok" || x[0] !== "ok"; }).map(function(x){ return x[1]; });
-      p.className = "fc-fit " + s; p.hidden = false; p.textContent = "";
-      p.appendChild(document.createTextNode((s === "ok" ? "✓ " : s === "ng" ? "× " : "？ ") + lab));
-      var sm = document.createElement("small"); sm.textContent = why.join("・"); p.appendChild(sm);
+      // 何が合うかを、そのまま短い札で出す（「この子OK」のようなまとめの言葉は出さない。Nori 2026-11-15「この子オッケーって意味わからん」）
+      p.className = "fc-fit"; p.hidden = false; p.textContent = "";
+      r.forEach(function(x){ var b = document.createElement("span"); b.className = "fc-fb " + x[0]; b.textContent = (x[0] === "ok" ? "✓ " : x[0] === "ng" ? "× " : "？ ") + x[1]; p.appendChild(b); });
       if (!c.classList.contains("fc-off") && (c.offsetParent || c.classList.contains("fc-hid"))) cnt[s]++;
     });
     // 合う順に並べかえる（同じなら元の順）。選ぶのをやめたら元の順に戻す
@@ -79,14 +80,14 @@
     heads();
     now.textContent = "";
     if (any) {
-      var b1 = document.createElement("b"); b1.textContent = "OK " + cnt.ok + "件";
-      now.append(b1, "・要確認 " + cnt.unk + "・合わないかも " + cnt.ng + "（合う順）");
+      var b1 = document.createElement("b"); b1.textContent = "合う " + cnt.ok + "件";
+      now.append(b1, "・わからない " + cnt.unk + "件・合わない " + cnt.ng + "件（合う順に並べました）");
     } else if (ftOn.length) {
       var n = cards.filter(function(c){ return !c.classList.contains("fc-off") && (c.offsetParent || !c.closest(".emg-pref[hidden]")); }).length;
       var b2 = document.createElement("b"); b2.textContent = n + "件"; now.append(b2, "（カードに書いてあることで判定）");
     }
     save();
-    if (track && window.gtag) gtag("event", "fit_filter", {a: st.a || "", size: st.size || "", x: st.x.join(","), f: ftOn.join(",")});
+    if (track && window.gtag) gtag("event", "fit_filter", {a: st.a || "", size: st.size || "", x: st.x.join(","), f: ftOn.join(","), d: dpOn});
   }
   // しぼって1件もなくなった地域は、見出しごと隠す
   function heads(){
@@ -103,6 +104,7 @@
     var b = ev.target.closest(".fp-btns button"); if (!b) return;
     var g = b.parentNode.getAttribute("data-g"), v = b.getAttribute("data-v");
     if (g === "a") st.a = st.a === v ? "" : v;
+    else if (g === "d") dpOn = dpOn === v ? "" : v;
     else if (g === "f") { var j = ftOn.indexOf(v); if (j >= 0) ftOn.splice(j, 1); else ftOn.push(v); }
     else { var i = st.x.indexOf(v); if (i >= 0) st.x.splice(i, 1); else st.x.push(v); }
     run(true);

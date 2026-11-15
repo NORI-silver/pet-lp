@@ -609,7 +609,12 @@
    "pay": "カード利用不可",
    "url": "http://www.minamigaoka12-ah.com/",
    "src": "https://tvma.or.jp/clinic/南ヶ丘獣医科病院/",
-   "checked": "2026-11-15"
+   "checked": "2026-11-15",
+   "depts": [
+    "健康診断"
+   ],
+   "depts_src": "http://www.minamigaoka12-ah.com/",
+   "depts_checked": "2026-11-15"
   },
   {
    "id": "G13041",
@@ -624,7 +629,18 @@
    "pay": "カード利用不可",
    "url": "http://www.tamu-ah.com/",
    "src": "https://tvma.or.jp/clinic/タム動物病院/",
-   "checked": "2026-11-15"
+   "checked": "2026-11-15",
+   "depts": [
+    "内科",
+    "外科",
+    "皮膚科",
+    "消化器科",
+    "眼科",
+    "呼吸器科",
+    "健康診断"
+   ],
+   "depts_src": "http://www.tamu-ah.com/",
+   "depts_checked": "2026-11-15"
   },
   {
    "id": "G13042",
@@ -654,7 +670,13 @@
    "pay": "",
    "url": "https://www.tagaraah.com/",
    "src": "https://tvma.or.jp/clinic/田柄動物病院/",
-   "checked": "2026-11-15"
+   "checked": "2026-11-15",
+   "depts": [
+    "内科",
+    "外科"
+   ],
+   "depts_src": "https://www.tagaraah.com/",
+   "depts_checked": "2026-11-15"
   },
   {
    "id": "G13044",
@@ -684,7 +706,19 @@
    "pay": "",
    "url": "http://www.cocoonpetclinic.com/",
    "src": "https://tvma.or.jp/clinic/コクーンペットクリニック/",
-   "checked": "2026-11-15"
+   "checked": "2026-11-15",
+   "depts": [
+    "一般診療",
+    "内科",
+    "外科",
+    "眼科",
+    "耳鼻科",
+    "皮膚科",
+    "歯科",
+    "健康診断"
+   ],
+   "depts_src": "http://www.cocoonpetclinic.com/",
+   "depts_checked": "2026-11-15"
   },
   {
    "id": "G13046",
@@ -714,7 +748,12 @@
    "pay": "",
    "url": "https://www.tokyolovely.com/",
    "src": "https://tvma.or.jp/clinic/東京ラブリー動物病院/",
-   "checked": "2026-11-15"
+   "checked": "2026-11-15",
+   "depts": [
+    "健康診断（動物ドック）"
+   ],
+   "depts_src": "https://www.tokyolovely.com/",
+   "depts_checked": "2026-11-15"
   },
   {
    "id": "G13048",
@@ -759,7 +798,12 @@
    "pay": "",
    "url": "http://www7a.biglobe.ne.jp/~himawari-AH/",
    "src": "https://tvma.or.jp/clinic/ひまわり動物病院/",
-   "checked": "2026-11-15"
+   "checked": "2026-11-15",
+   "depts": [
+    "わんにゃんドック"
+   ],
+   "depts_src": "http://www7a.biglobe.ne.jp/~himawari-AH/",
+   "depts_checked": "2026-11-15"
   },
   {
    "id": "G13051",
@@ -774,7 +818,15 @@
    "pay": "",
    "url": "https://www.polan-ah.com/",
    "src": "https://tvma.or.jp/clinic/ポラン動物病院/",
-   "checked": "2026-11-15"
+   "checked": "2026-11-15",
+   "depts": [
+    "一般診療",
+    "行動治療科",
+    "歯科",
+    "動物ドック"
+   ],
+   "depts_src": "https://www.polan-ah.com/",
+   "depts_checked": "2026-11-15"
   },
   {
    "id": "G13052",
@@ -819,7 +871,12 @@
    "pay": "",
    "url": "https://www.nagawa-doubutsubyouin.com/",
    "src": "https://tvma.or.jp/clinic/ナガワ動物病院/",
-   "checked": "2026-11-15"
+   "checked": "2026-11-15",
+   "depts": [
+    "健康診断"
+   ],
+   "depts_src": "https://www.nagawa-doubutsubyouin.com/",
+   "depts_checked": "2026-11-15"
   },
   {
    "id": "G13055",
@@ -879,7 +936,12 @@
    "pay": "",
    "url": "https://akasaka.sakura.ne.jp/",
    "src": "https://tvma.or.jp/clinic/上田動物病院/",
-   "checked": "2026-11-15"
+   "checked": "2026-11-15",
+   "depts": [
+    "健康診断"
+   ],
+   "depts_src": "https://akasaka.sakura.ne.jp/",
+   "depts_checked": "2026-11-15"
   },
   {
    "id": "G13059",
