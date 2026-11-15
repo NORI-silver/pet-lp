@@ -72,17 +72,21 @@ def _facts(cs):
     n = len(cs)
     late = [c for c in cs if (end_min(c["hours"]) or 0) >= 19 * 60]
     latest = max((end_min(c["hours"]) or 0) for c in cs)
-    small = [c for c in cs if any(a in c["animals"] for a in SMALL)]
-    bird = [c for c in cs if "トリ" in c["animals"]]
+    small = [c for c in cs if any(a in c["animals"] for a in SMALL) or "小動物" in c["animals"]]
+    bird = [c for c in cs if "トリ" in c["animals"] or "鳥" in c["animals"]]
+    visit = [c for c in cs if "往診あり" in c["services"]]
+    night = [c for c in cs if "夜間対応あり" in c["services"]]
     park = [c for c in cs if re.search(r"駐車場\d+台", c["services"])]
     hotel = [c for c in cs if "ホテル" in c["services"]]
     trim = [c for c in cs if "トリミング" in c["services"]]
     sun = [c for c in cs if _closed_on(c, "日")]
-    return dict(n=n, late=late, latest=latest, small=small, bird=bird, park=park, hotel=hotel, trim=trim, sun=sun)
+    return dict(n=n, late=late, latest=latest, small=small, bird=bird, park=park, hotel=hotel, trim=trim, sun=sun, visit=visit, night=night)
 
 
 def _closed_on(c, d):
-    w = d + ("日" if d == "祝" else "曜")
+    if d == "祝":
+        return "祝" in c["closed"]
+    w = d + "曜"
     return w in c["closed"] or bool(re.search(rf"(^|[・、]){d}($|[・、])", c["closed"]))
 
 
@@ -102,13 +106,19 @@ def _answer(e, place, cs, srcname):
     hh, mm = divmod(f["latest"], 60)
     kv = [(f"{place}の動物病院は？", f"{srcname}に載っていて、診療時間などを確かめられた{f['n']}院を載せています。順番は町の名前の順で、おすすめ順ではありません。"),
           ("夕方は何時まで？", f"{f['n']}院のうち{len(f['late'])}院が19時かそれより遅くまで診ています（いちばん遅いのは{hh}時{mm:02d}分まで）。夜中は<a href=\"/hospital/night/\">夜間・救急の動物病院</a>へ。"),
-          ("うさぎ・小鳥も診てもらえる？", f"うさぎ・ハムスター・モルモット・フェレットのどれかを診ると書いているのは{len(f['small'])}院、鳥は{len(f['bird'])}院です。"),
-          ("車で行ける？", f"駐車場の台数を書いている病院は{len(f['park'])}院です。台数は病院ごとのカードに書いています。")]
+          ("うさぎ・小鳥も診てもらえる？", f"うさぎ・ハムスター・モルモット・フェレットなどの小動物を診ると書いているのは{len(f['small'])}院、鳥は{len(f['bird'])}院です。")]
+    if f["park"]:
+        kv.append(("車で行ける？", f"駐車場の台数を書いている病院は{len(f['park'])}院です。台数は病院ごとのカードに書いています。"))
+    if f["visit"]:
+        kv.append(("家に来てもらえる（往診）？", f"往診ありと書いている病院は{len(f['visit'])}院です。条件（予約・当院の患者だけなど）は病院ごとのカードに書いています。"))
+    if f["night"]:
+        kv.append(("診療時間のあとも診てもらえる？", f"夜間の対応ありと書いている病院は{len(f['night'])}院です。「再診の方のみ」「当院の患者のみ」などの条件がある病院もあるので、カードで確かめてください。"))
     li = "".join(f'<li><b class="k">{e(q)}</b>{a if "<a " in a else e(a)}</li>' for q, a in kv)
     tiles = [(f"{f['n']}院", "載せている動物病院"), (f"{len(f['late'])}院", "19時以降も診ている"),
-             (f"{len(f['small'])}院", "うさぎなど小動物も診る"), (f"{len(f['park'])}院", "駐車場の台数を書いている")]
+             (f"{len(f['small'])}院", "うさぎなど小動物も診る"),
+             ((f"{len(f['park'])}院", "駐車場の台数を書いている") if f["park"] else (f"{len(f['visit'])}院", "往診ありと書いている"))]
     return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">{e(place)}の動物病院のポイント</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}{_week_bars(cs)}'
-            f'<p>ペットホテルをしている病院は{len(f["hotel"])}院、トリミングは{len(f["trim"])}院、日曜日がお休みの病院は{len(f["sun"])}院です。</p></div>')
+            + (f'<p>ペットホテルをしている病院は{len(f["hotel"])}院、トリミングは{len(f["trim"])}院、日曜日がお休みの病院は{len(f["sun"])}院です。</p></div>' if f["hotel"] or f["trim"] else f'<p>日曜日がお休みの病院は{len(f["sun"])}院です。</p></div>'))
 
 
 def _taxi_box(e, pf, pslug):
