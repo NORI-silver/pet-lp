@@ -15,7 +15,7 @@ app = open(os.path.join(ROOT, "app.js"), encoding="utf-8").read()
 if m.group(1) != app:
     print("app.js とトップのプログラムが違うので、置きかえません")
     sys.exit(0)
-tag = '<script src="/app.js?v=' + hashlib.sha1(app.encode("utf-8")).hexdigest()[:10] + '"></script>'
+tag = '<script src="/app.js?v=' + hashlib.sha1(app.encode("utf-8")).hexdigest()[:10] + '" defer></script>'
 h = h[:m.start()] + tag + h[m.end():]
 open(p, "w", encoding="utf-8").write(h)
 print("トップのプログラムを", tag, "に置きかえました", len(h.encode("utf-8")), "バイト")

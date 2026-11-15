@@ -321,7 +321,7 @@ from urllib.parse import quote
 _APP_M = max(re.finditer(r"<script>(.*?)</script>", TOP_HTML, re.S), key=lambda m: len(m.group(1)))
 APP_JS = _APP_M.group(1)
 open(os.path.join(ROOT, "app.js"), "w", encoding="utf-8").write(APP_JS)
-APP_TAG = '<script src="/app.js?v=' + hashlib.sha1(APP_JS.encode("utf-8")).hexdigest()[:10] + '"></script>'
+APP_TAG = '<script src="/app.js?v=' + hashlib.sha1(APP_JS.encode("utf-8")).hexdigest()[:10] + '" defer></script>'  # defer：ga.js（defer）のあとに動く
 css = re.search(r"<style>(.*?)</style>", src, re.S).group(1)
 extra_css = """
 /* エリア別ページ */
@@ -602,7 +602,7 @@ def head(title, desc, url, extra_ld, og_img="/img/hero.jpg", og_w=1200, og_h=900
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/style.css">
 <script src="/ga.js"></script>
 {extra_ld}
