@@ -30,7 +30,7 @@ FEED = [
     ("howto", "winter-walk", "【保存版】冬のさんぽの4つ❄️\n1. 出る前に、部屋で少し体を動かす\n2. 帰ったら足をふく（道にまかれた融雪剤で、肉球が荒れることがあります）\n3. 暗い時間は、光るものを首輪やリードに\n4. 短毛やシニアの子は服も\n#犬の散歩", "dog walking in snow", None),
     # 2週目
     ("data", "dogrun-touroku", "ドッグランは「行けばすぐ入れる」とは限りません。\n公式ページで登録のことを書いている96か所のうち、92か所（96%）が先に利用登録がいるところでした。\n毎年登録しなおすところは31か所。\n行く前に、公式ページを見ておくと安心です🐕\n#ドッグラン", "dog behind fence dog park", None),
-    ("aru", "cat-busy", "猫あるある2🐈\n・高いおもちゃより、丸めたレシート\n・忙しいときに限って、甘えてくる\n・ごはんの5分前から、じっと見つめてくる\n「わかる」と思ったら、いいねしてください\n#猫のいる暮らし", "cat staring at camera", None),
+    ("aru", "cat-busy", "猫あるある🐈\n・高いおもちゃより、丸めたレシート\n・忙しいときに限って、甘えてくる\n・ごはんの5分前から、じっと見つめてくる\n「わかる」と思ったら、いいねしてください\n#猫のいる暮らし", "cat staring at camera", None),
     ("quiz", "dog-sweat", "Q. 犬が汗をかくのは、体のどこ？\nA. 全身\nB. 肉球\nC. 舌\n答えはあした🐾\n#犬のいる暮らし", "dog paw close up", "答え：B. 肉球\n舌は汗ではなく、ハァハァする息で体の熱を外に出しています。暖房の効いた部屋や車の中では、ハァハァが多くないか見てあげてください🌡"),
     ("howto", "cat-vet", "【保存版】猫を動物病院へ連れていくコツ🐈\n1. キャリーは、ふだんから部屋に出しておく\n2. 上が開くキャリーだと出し入れがらく\n3. タオルをかけて、外を見えなくする\n4. 待合室では、床ではなくひざや椅子の上に\n#猫のいる暮らし", "cat in pet carrier", None),
     ("data", "night-hospital", "夜間・救急の動物病院を、全国で公式サイトから確かめました。\n県の中で確かめられたのは107か所。\n47都道府県のうち10県では、県の中で確かめられる夜間の病院が見つかりませんでした。\nいざという時の病院、今のうちに調べておきませんか🏥\n#動物病院", "veterinarian examining dog", None),
@@ -78,7 +78,7 @@ def main():
     posts = data["posts"]
     have = {p.get("key") for p in posts}
     no = max(p["no"] for p in posts)
-    bad, new = [], []
+    bad, new, upd = [], [], []
     for kind, name, text, q, ans in FEED:
         x = x_text(text, ans)
         for label, t, lim in (("x", x, 280), ("th", text, 1000), ("ans", ans or "", 1000)):
@@ -86,7 +86,12 @@ def main():
             if width(t) > lim or ng:
                 bad.append((name, label, width(t), ng))
         key = f"{kind}:{name}"
-        if key in have:
+        photo = f"sns/img/{name}.jpg"
+        if key in have:  # 写真が入ったら、前に足した投稿にも付ける
+            for p in posts:
+                if p.get("key") == key and not p.get("photo") and os.path.exists(os.path.join(os.path.dirname(HERE), photo)):
+                    p["photo"] = photo
+                    upd.append(key)
             continue
         no += 1
         p = {"no": no, "key": key, "kind": kind, "x": x, "tag": f"{kind}・{name}", "head": text.split("\n")[0],
@@ -94,13 +99,12 @@ def main():
         if ans:
             p["th"] = text
             p["answer"] = ans
-        photo = f"sns/img/{name}.jpg"
         if os.path.exists(os.path.join(os.path.dirname(HERE), photo)):
             p["photo"] = photo
         new.append(p)
     for b in bad:
         print("長すぎるか使わない言葉:", b)
-    print("足す", len(new))
+    print("足す", len(new), "写真を付けた", upd)
     if bad:
         return 1
     if dry:

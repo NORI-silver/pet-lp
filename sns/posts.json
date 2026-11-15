@@ -1,5 +1,4 @@
 {
-  "meta_pause": "2026-11-15 Nori「SNSの投稿がほんとに面白くない」→ 新しい方向を決めるまで止める",
   "_note": "XとInstagramの投稿の元データ。リンクは入れない（Nori 2026-11-02「リンクは貼らない」）。数字はガイド記事（tools/guides.py）にあるものだけ。node sns/gen.cjs で画像と posts.md を作り直す。",
   "ig_tags_common": [
     "#ペットタクシー",
@@ -2702,7 +2701,8 @@
       "tag": "data・dogrun-free",
       "head": "全国のドッグラン194か所の公式ページを、ひとつずつ読みました。",
       "photo_q": "dogs playing in dog park",
-      "alt": "dogs playing in dog park"
+      "alt": "dogs playing in dog park",
+      "photo": "sns/img/dogrun-free.jpg"
     },
     {
       "no": 285,
@@ -2724,7 +2724,8 @@
       "photo_q": "tabby cat portrait",
       "alt": "tabby cat portrait",
       "th": "Q. 猫の祖先といわれる動物は？\nA. ライオン\nB. リビアヤマネコ\nC. トラ\nわかりますか？🐈\n#猫のいる暮らし",
-      "answer": "答え：B. リビアヤマネコ\n砂漠に近い場所でくらしていたので、猫には水をあまり飲まない子が多いと言われます。器を何か所かに置くと、飲む量が増えることも💧"
+      "answer": "答え：B. リビアヤマネコ\n砂漠に近い場所でくらしていたので、猫には水をあまり飲まない子が多いと言われます。器を何か所かに置くと、飲む量が増えることも💧",
+      "photo": "sns/img/cat-ancestor.jpg"
     },
     {
       "no": 287,
@@ -2750,11 +2751,12 @@
       "no": 289,
       "key": "aru:cat-busy",
       "kind": "aru",
-      "x": "猫あるある2🐈\n・高いおもちゃより、丸めたレシート\n・忙しいときに限って、甘えてくる\n・ごはんの5分前から、じっと見つめてくる\n「わかる」と思ったら、いいねしてください\n#猫のいる暮らし",
+      "x": "猫あるある🐈\n・高いおもちゃより、丸めたレシート\n・忙しいときに限って、甘えてくる\n・ごはんの5分前から、じっと見つめてくる\n「わかる」と思ったら、いいねしてください\n#猫のいる暮らし",
       "tag": "aru・cat-busy",
-      "head": "猫あるある2🐈",
+      "head": "猫あるある🐈",
       "photo_q": "cat staring at camera",
-      "alt": "cat staring at camera"
+      "alt": "cat staring at camera",
+      "photo": "sns/img/cat-busy.jpg"
     },
     {
       "no": 290,
@@ -2850,7 +2852,8 @@
       "photo_q": "dog with red ball on grass",
       "alt": "dog with red ball on grass",
       "th": "Q. 犬が見分けにくい色は？\nA. 青\nB. 黄色\nC. 赤と緑\nわかりますか？🐕\n#犬のいる暮らし",
-      "answer": "答え：C. 赤と緑\n青と黄色は見分けやすいと言われます。芝生の上で赤いボールを見失うのは、そのせいかも。おもちゃは青か黄色が見つけやすいですよ🎾"
+      "answer": "答え：C. 赤と緑\n青と黄色は見分けやすいと言われます。芝生の上で赤いボールを見失うのは、そのせいかも。おもちゃは青か黄色が見つけやすいですよ🎾",
+      "photo": "sns/img/dog-colors.jpg"
     },
     {
       "no": 299,
@@ -2860,7 +2863,8 @@
       "tag": "howto・disaster-kit",
       "head": "【保存版】災害にそなえて、ペットのために用意したいもの🎒",
       "photo_q": "dog with backpack",
-      "alt": "dog with backpack"
+      "alt": "dog with backpack",
+      "photo": "sns/img/disaster-kit.jpg"
     },
     {
       "no": 300,
@@ -2880,7 +2884,8 @@
       "tag": "aru・winter-pet",
       "head": "冬のペットあるある❄️",
       "photo_q": "cat sleeping on blanket",
-      "alt": "cat sleeping on blanket"
+      "alt": "cat sleeping on blanket",
+      "photo": "sns/img/winter-pet.jpg"
     },
     {
       "no": 302,
@@ -2922,7 +2927,8 @@
       "tag": "aru・photo",
       "head": "ペットの写真あるある📷",
       "photo_q": "dog looking away",
-      "alt": "dog looking away"
+      "alt": "dog looking away",
+      "photo": "sns/img/photo.jpg"
     },
     {
       "no": 306,
