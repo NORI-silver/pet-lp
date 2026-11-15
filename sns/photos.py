@@ -2,7 +2,8 @@
 """SNS の投稿に合う写真の候補を集める（GitHub Actions の sns-photos で動かす）。
 
 [B] SNS。2026-11-15 Nori「写真か動画は絶対いれて」。サイトの写真の使い回しはしない。
-- posts.json の photo_q（英語のことば）で、無料で使える写真（CC0・パブリックドメイン）を Openverse の公開APIからさがす。
+- posts.json の photo_q（英語のことば）で、無料で使える写真をさがす：
+  Unsplash（Unsplash ライセンス・有料の Unsplash+ は除く）→ Wikimedia Commons（CC0・パブリックドメインだけ）→ Openverse（CC0・パブリックドメイン）。
 - 投稿ごとに候補を6枚まで、長い辺1080pxにして sns/cand/<名前>_<番号>.jpg に置き、出どころを sns/cand/<名前>.json に書く。
 - 7投稿ずつ、候補を並べた一覧の画像（sns/cand/sheet<番号>.jpg）を作る。人かAIが見て、合う1枚を sns/img/<名前>.jpg にする。
 - 何も投稿しない。
@@ -24,6 +25,41 @@ def get(url, timeout=40):
         return f.read()
 
 
+def unsplash(q):
+    r = json.loads(get("https://unsplash.com/napi/search/photos?" + urllib.parse.urlencode({"query": q, "per_page": 15})))
+    out = []
+    for x in r.get("results", []):
+        if x.get("premium") or x.get("plus") or "plus.unsplash.com" in (x.get("urls", {}).get("raw") or ""):
+            continue
+        out.append({"source": "unsplash", "license": "Unsplash License", "url": x["urls"]["raw"] + "&w=1080&q=85&fm=jpg",
+                    "landing": x.get("links", {}).get("html"), "creator": (x.get("user") or {}).get("name"),
+                    "title": x.get("alt_description")})
+    return out
+
+
+def commons(q):
+    """Wikimedia Commons。CC0（Q6938433）かパブリックドメイン（P6216=Q19652）と書いてある写真だけ。"""
+    out = []
+    for flt in ("haswbstatement:P275=Q6938433", "haswbstatement:P6216=Q19652"):
+        r = json.loads(get("https://commons.wikimedia.org/w/api.php?" + urllib.parse.urlencode({
+            "action": "query", "format": "json", "generator": "search", "gsrnamespace": 6, "gsrlimit": 10,
+            "gsrsearch": f"{q} filetype:bitmap {flt}", "prop": "imageinfo", "iiprop": "url|extmetadata", "iiurlwidth": 1080})))
+        for pg in (r.get("query") or {}).get("pages", {}).values():
+            ii = (pg.get("imageinfo") or [{}])[0]
+            meta = ii.get("extmetadata") or {}
+            out.append({"source": "commons", "license": (meta.get("LicenseShortName") or {}).get("value"),
+                        "url": ii.get("thumburl") or ii.get("url"), "landing": ii.get("descriptionurl"),
+                        "creator": (meta.get("Artist") or {}).get("value"), "title": pg.get("title")})
+    return out
+
+
+def openverse(q):
+    r = json.loads(get(API + "?" + urllib.parse.urlencode({"q": q, "license": "cc0,pdm", "category": "photograph",
+                                                            "page_size": 12, "mature": "false"}), timeout=60))
+    return [{"source": "openverse", "license": x.get("license"), "url": x.get("url"), "landing": x.get("foreign_landing_url"),
+             "creator": x.get("creator"), "title": x.get("title")} for x in r.get("results", [])]
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     posts = json.load(open(os.path.join(HERE, "posts.json"), encoding="utf-8"))["posts"]
@@ -32,34 +68,34 @@ def main():
     rows = []
     for p in todo:
         name = p["key"].split(":", 1)[1]
-        q = urllib.parse.urlencode({"q": p["photo_q"], "license": "cc0,pdm", "category": "photograph",
-                                    "size": "large", "page_size": 12, "mature": "false"})
-        try:
-            res = json.loads(get(f"{API}?{q}"))["results"]
-        except Exception as e:  # noqa: BLE001
-            print(name, "さがせませんでした", e)
-            res = []
         got, info = [], []
-        for r in res:
+        for src in (unsplash, commons, openverse):
             if len(got) >= 6:
                 break
             try:
-                im = Image.open(io.BytesIO(get(r["url"]))).convert("RGB")
-            except Exception:  # noqa: BLE001
+                cands = src(p["photo_q"])
+            except Exception as e:  # noqa: BLE001
+                print(name, src.__name__, "さがせませんでした", e)
                 continue
-            if min(im.size) < 600:
-                continue
-            im.thumbnail((1080, 1080))
-            n = len(got)
-            im.save(os.path.join(OUT, f"{name}_{n}.jpg"), quality=86)
-            got.append(im)
-            info.append({"n": n, "title": r.get("title"), "creator": r.get("creator"), "license": r.get("license"),
-                         "landing": r.get("foreign_landing_url"), "url": r.get("url"), "source": r.get("source")})
-            time.sleep(0.5)
+            for c in cands:
+                if len(got) >= 6:
+                    break
+                try:
+                    im = Image.open(io.BytesIO(get(c["url"]))).convert("RGB")
+                except Exception:  # noqa: BLE001
+                    continue
+                if min(im.size) < 600:
+                    continue
+                im.thumbnail((1080, 1080))
+                n = len(got)
+                im.save(os.path.join(OUT, f"{name}_{n}.jpg"), quality=86)
+                got.append(im)
+                info.append({"n": n, **c})
+                time.sleep(0.3)
         json.dump(info, open(os.path.join(OUT, f"{name}.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         print(name, len(got))
         rows.append((name, got))
-        time.sleep(2)
+        time.sleep(1)
     # 一覧の画像（7投稿ずつ、1行に候補6枚）
     T = 220
     for s in range(0, len(rows), 7):
