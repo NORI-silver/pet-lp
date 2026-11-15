@@ -17,6 +17,13 @@ sys.path.insert(0, HERE)
 from schedule_x import BAN, pick  # noqa: E402
 
 SITE = "https://pet.shiokonbu.com/"
+GITHUB_MEDIA = "https://raw.githubusercontent.com/NORI-silver/pet-lp/main/"
+
+
+def photo_url(p):
+    """SNS専用写真はGitHub rawから配信。サイト掲載写真は従来のURLを使う。"""
+    path = p["photo"].lstrip("/")
+    return (GITHUB_MEDIA if path.startswith("sns/img/") else SITE) + path
 JST = dt.timezone(dt.timedelta(hours=9))
 IG = "https://graph.instagram.com/v21.0"
 TH = "https://graph.threads.net/v1.0"
@@ -40,7 +47,7 @@ def call(method, url, params, fatal=True):
 
 def caption_ig(p, common):
     body = "\n".join(l for l in p["x"].split("\n") if not l.startswith("#"))
-    tags = list(dict.fromkeys(common + p.get("ig_extra", []) + [w for w in p["x"].split() if w.startswith("#")]))
+    tags = [tag for tag in dict.fromkeys(common + p.get("ig_extra", []) + [w for w in p["x"].split() if w.startswith("#")]) if tag != "#ペットタクシー"]
     parts = [body]
     if p.get("ig_add"):
         parts.append(p["ig_add"])
@@ -60,7 +67,7 @@ def post_ig(token, p, common):
         sys.exit(f"Instagram のアカウントが違います: {me.get('username')}")
     cap = caption_ig(p, common)
     check(cap)
-    c = call("POST", f"{IG}/me/media", {"image_url": SITE + p["photo"], "caption": cap,
+    c = call("POST", f"{IG}/me/media", {"image_url": photo_url(p), "caption": cap,
                                          "alt_text": p.get("alt") or p["tag"], "access_token": token})
     for _ in range(30):
         st = call("GET", f"{IG}/{c['id']}", {"fields": "status_code", "access_token": token}).get("status_code")
@@ -91,7 +98,7 @@ def post_threads(token, p):
     # 写真か動画は必ず入れる（Nori 2026-11-15「写真か動画は絶対いれて」）
     if not p.get("photo"):
         sys.exit(f"投稿{p['no']}に写真がありません")
-    args = {"media_type": "IMAGE", "image_url": SITE + p["photo"], "text": text, "alt_text": p.get("alt") or p["tag"]}
+    args = {"media_type": "IMAGE", "image_url": photo_url(p), "text": text, "alt_text": p.get("alt") or p["tag"]}
     c = call("POST", f"{TH}/me/threads", {**args, "access_token": token})
     for _ in range(30):
         st = call("GET", f"{TH}/{c['id']}", {"fields": "status", "access_token": token}).get("status")
@@ -137,7 +144,7 @@ def main():
             print(kind, "出せる投稿が残っていません（写真のある投稿がない）")
             continue
         if dry:
-            print(f"== {kind} {nxt['no']} {nxt['tag']} {SITE + nxt['photo']}")
+            print(f"== {kind} {nxt['no']} {nxt['tag']} {photo_url(nxt)}")
             print(caption_ig(nxt, data["ig_tags_common"]) if kind == "ig" else text_threads(nxt))
             continue
         if not tokens[kind]:
