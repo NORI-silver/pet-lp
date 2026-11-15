@@ -2194,6 +2194,8 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
     if (box.dataset.id in memo) { if (memo[box.dataset.id]) paint(box, memo[box.dataset.id]); return; }
     queue.push(box.dataset.id); if (!timer) timer = setTimeout(flush, 300);
   }
+  // 後から並べたカード（/hosp.js の病院さがし）にも「口コミ」を付ける
+  window.petReviews = function(root){ root.querySelectorAll(".emg-score[data-id]").forEach(function(b){ if (!b.firstChild) lazy(b); }); };
   var boxes = document.querySelectorAll(".emg-score[data-id]");
   if (!boxes.length) return;
   boxes.forEach(photos);

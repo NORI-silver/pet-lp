@@ -564,7 +564,7 @@ def _one(h, conf, fbn):
     if 'id="fccss"' not in h2:
         h2 = h2.replace("</head>", CSS + "\n</head>", 1)
         h2 = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + SPRITE, h2, count=1)
-    if "data-fp" not in h2:
+    if "data-fp" not in h2 and "data-hf" not in h2:  # 動物病院は /hosp.js のさがす欄（tools/hosp_find.py）
         fits = [json.loads(html.unescape(x)) for x in re.findall(r'data-fit="([^"]+)"', h2)]
         ku = {k for f in fits for k in f.get("a", [])}
         fl = [html.unescape(x).split("|") for x in re.findall(r'data-ft="([^"]*)"', h2)]
