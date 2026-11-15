@@ -63,26 +63,28 @@
       var k = Math.round(car.scrollLeft / Math.max(1, car.clientWidth));
       [].forEach.call(dots.children, function(d, i){ d.className = i === k ? "on" : ""; });
     }, {passive: true});
-    var keep = slot.querySelector(".fc-badge");
     slot.replaceChildren(car); if (ps.length > 1) slot.appendChild(dots);
     slot.appendChild(el("span", "fc-src", "写真：Google Maps"));
-    if (keep) slot.appendChild(keep);
+    slot.hidden = false;
   }
   function photos(box){
     if (box.nextElementSibling && box.nextElementSibling.classList.contains("fac-photos")) return;
     var id = box.dataset.id, card = box.closest(".fc"), slot = card && card.querySelector(".fc-ph");
     if (slot) {
       if (slot.dataset.go) return; slot.dataset.go = "1";
+      var body = card.querySelector(".fc-body") || card, more = body.querySelector(".fc-more");
+      var put = function(n){ if (more && more.parentNode === body) body.insertBefore(n, more); else body.appendChild(n); };
       var b = el("button", "fc-phbtn", "写真を見る"); b.type = "button";
       var load = function(){
         b.disabled = true; b.textContent = "写真を読み込んでいます…";
-        getPhotos(id).then(function(ps){ carousel(slot, ps); }).catch(function(e){ b.remove(); if (e !== "none") { var x = el("button", "fc-phbtn", "写真をもう一度読み込む"); x.type = "button"; x.addEventListener("click", function(){ x.remove(); slot.appendChild(b); load(); }); slot.appendChild(x); } });
+        getPhotos(id).then(function(ps){ carousel(slot, ps); b.remove(); }).catch(function(e){ if (e === "none") { b.textContent = "写真はまだありません"; return; } b.remove(); var x = el("button", "fc-phbtn", "写真をもう一度読み込む"); x.type = "button"; x.addEventListener("click", function(){ x.remove(); put(b); load(); }); put(x); });
       };
       b.addEventListener("click", load);
+      put(b);
       if (PHOTO_AUTO && "IntersectionObserver" in window) {
-        var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting && x.target.offsetParent) { io.disconnect(); slot.appendChild(b); load(); } }); }, {rootMargin: "300px"});
-        io.observe(slot);
-      } else slot.appendChild(b);
+        var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting && x.target.offsetParent) { io.disconnect(); load(); } }); }, {rootMargin: "300px"});
+        io.observe(card);
+      }
       return;
     }
     var w = el("div", "fac-photos"); b = el("button", "partner-review-open", "写真を見る"); b.type = "button";
