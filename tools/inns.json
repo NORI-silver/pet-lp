@@ -26823,6 +26823,398 @@
     "l"
    ],
    "id": "ibab17c"
+  },
+  {
+   "name": "カーロ・リゾート 元箱根 LUCIA（ルチア）",
+   "kind": "ホテル",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://caro-foresta.com/lucia/index.html",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡箱根町元箱根103-78",
+     "src": "https://caro-foresta.com/lucia/index.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "室内ドッグラン、エントランス横の芝のドッグラン、中型・大型犬も遊べる林のドッグラン、屋根の下の室外ドッグラン",
+     "src": "https://caro-foresta.com/lucia/dog/index.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "ドッグランは宿泊者は無料（ほかは1頭1,155円/日・2頭目から577円/日）",
+     "src": "https://caro-foresta.com/lucia/dog/index.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室とレストランなど館内の多くの場所（館内のあちこちにドッグフック）",
+     "src": "https://caro-foresta.com/lucia/dog/index.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬用の温泉",
+     "v": "ワンコ温泉（1頭1時間1,155円・予約制）。セルフトリミングのタオル・ブロアー・ドライヤーは無料で借りられる",
+     "src": "https://caro-foresta.com/lucia/dog/index.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "オリジナルのドッグコース（チェックインのときに頼む）",
+     "src": "https://caro-foresta.com/lucia/qa/index.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ワイドのトイレトレーとペットシーツ・食器・消臭とアルコールのスプレー・散歩の袋（ほかは持ってくる）",
+     "src": "https://caro-foresta.com/lucia/qa/index.html",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i2d01bf"
+  },
+  {
+   "name": "カーロ・リゾート カーロ・フォレスタ（山中湖）",
+   "kind": "ホテル",
+   "pref": "山梨県",
+   "city": "南都留郡山中湖村",
+   "url": "https://caro-foresta.com/caroforesta/index.php",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "山梨県南都留郡山中湖村平野509-10",
+     "src": "https://caro-foresta.com/caroforesta/index.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "888㎡（テニスコート4面分）の全面ウッドチップのドッグラン。貸し切りもできる。雨の日用のコミュニティスペース",
+     "src": "https://caro-foresta.com/caroforesta/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "ドッグランは宿泊者は無料（ほかは1頭1,155円/日・2頭目から577円/日）",
+     "src": "https://caro-foresta.com/caroforesta/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室とレストランなど館内の多くの場所（館内のあちこちにドッグフック）",
+     "src": "https://caro-foresta.com/caroforesta/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "オリジナルのドッグコース。手作り食・生食も、部屋の電子レンジと冷凍冷蔵庫でふだんどおり",
+     "src": "https://caro-foresta.com/caroforesta/qa.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ワイドのトイレトレーとペットシーツ・食器・消臭とアルコールのスプレー・散歩の袋（ほかは持ってくる）",
+     "src": "https://caro-foresta.com/caroforesta/qa.php",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i4f587c"
+  },
+  {
+   "name": "カーロ・リゾート 軽井沢ジャルディーノ",
+   "kind": "ホテル",
+   "pref": "長野県",
+   "city": "北佐久郡軽井沢町",
+   "url": "https://caro-foresta.com/giardino/index.php",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "長野県北佐久郡軽井沢町長倉4614-3",
+     "src": "https://caro-foresta.com/giardino/index.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "テラスから見下ろせる150坪の全面ウッドチップのドッグラン（夏はドッグプール）",
+     "src": "https://caro-foresta.com/giardino/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "ドッグランは宿泊者は無料（ほかは1頭1,155円/日・2頭目から577円/日）",
+     "src": "https://caro-foresta.com/giardino/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室とレストランなど館内の多くの場所（館内のあちこちにドッグフック）",
+     "src": "https://caro-foresta.com/giardino/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "セルフトリミングルーム（タオル・ドライヤー・シャンプー）、温水の足洗い場2か所、大・中のケージを無料で貸し出し（予約制）、部屋に電子レンジと冷凍冷蔵庫",
+     "src": "https://caro-foresta.com/giardino/dog.php",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i3ad1ef"
+  },
+  {
+   "name": "カーロ・リゾート Cuore 伊豆高原",
+   "kind": "ホテル",
+   "pref": "静岡県",
+   "city": "伊東市",
+   "url": "https://caro-foresta.com/cuore/index.php",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "静岡県伊東市八幡野1131-60",
+     "src": "https://caro-foresta.com/cuore/index.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "桜のドッグラン（480㎡・芝）と梅のドッグラン（550㎡）、室内のプレイルーム（31㎡・小型犬向け）",
+     "src": "https://caro-foresta.com/cuore/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "ドッグランは宿泊者は無料（ほかは1頭1,155円/日・2頭目から577円/日）",
+     "src": "https://caro-foresta.com/cuore/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室とレストランなど館内の多くの場所（館内のあちこちにドッグフック）",
+     "src": "https://caro-foresta.com/cuore/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "セルフトリミングルーム、足洗い場、中のケージを無料で貸し出し（予約制）、すべりにくい床、部屋に冷凍冷蔵庫",
+     "src": "https://caro-foresta.com/cuore/dog.php",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i5b137d"
+  },
+  {
+   "name": "カーロ・リゾート 鬼怒川 湯わん。",
+   "kind": "ホテル",
+   "pref": "栃木県",
+   "city": "日光市",
+   "url": "https://caro-foresta.com/youwan/index.php",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木県日光市鬼怒川温泉大原358",
+     "src": "https://caro-foresta.com/youwan/index.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "宿泊者は無料のドッグラン（足洗い場つき）",
+     "src": "https://caro-foresta.com/youwan/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "ドッグランは宿泊者は無料（ほかは1頭1,155円/日・2頭目から577円/日）",
+     "src": "https://caro-foresta.com/youwan/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室とレストランなど館内の多くの場所（館内のあちこちにドッグフック）",
+     "src": "https://caro-foresta.com/youwan/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "テラスのトリミングスペース、水拭きできる畳、中のケージの貸し出し（予約制）、部屋に冷凍冷蔵庫",
+     "src": "https://caro-foresta.com/youwan/dog.php",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "ie249c5"
+  },
+  {
+   "name": "カーロ・リゾート 城ヶ島遊ヶ崎BASE",
+   "kind": "ホテル",
+   "pref": "神奈川県",
+   "city": "三浦市",
+   "url": "https://caro-foresta.com/base/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県三浦市三崎町城ヶ島372-1",
+     "src": "https://caro-foresta.com/base/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "レストラン前のテラスから行ける小型犬用のドッグラン",
+     "src": "https://caro-foresta.com/base/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "ドッグランは宿泊者は無料（ほかは1頭1,155円/日・2頭目から577円/日）",
+     "src": "https://caro-foresta.com/base/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室とレストランなど館内の多くの場所（館内のあちこちにドッグフック）",
+     "src": "https://caro-foresta.com/base/dog.php",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "屋外のセルフトリミング（タオル・ブロアー・ドライヤー・シャンプー）、温水の足洗い場、中のケージを無料で貸し出し（予約制）",
+     "src": "https://caro-foresta.com/base/dog.php",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i2a55a0"
+  },
+  {
+   "name": "SPRINGS VILLAGE 箱根グランピングリゾート",
+   "kind": "コテージ",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://www.springs-village.com/hakone/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "アパートメントエリア：神奈川県足柄下郡箱根町仙石原1034-50",
+     "src": "https://www.springs-village.com/hakone/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "犬と泊まれるのは別荘風のアパートメントエリアだけ（グランピングエリアは不可）",
+     "src": "https://www.springs-village.com/hakone/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の頭数",
+     "v": "小型犬は2頭まで、中型犬は1頭まで",
+     "src": "https://www.springs-village.com/hakone/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬の宿泊料金",
+     "v": "追加料金なし",
+     "src": "https://www.springs-village.com/hakone/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室と屋根つきのBBQスペース",
+     "src": "https://www.springs-village.com/hakone/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "ケージ",
+     "src": "https://www.springs-village.com/hakone/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "チェックイン・チェックアウト",
+     "v": "チェックイン15:00から（無人、前もってメールで登録）、チェックアウト10:00",
+     "src": "https://www.springs-village.com/hakone/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "sizes": [
+    "s",
+    "m"
+   ],
+   "id": "i11132b"
+  },
+  {
+   "name": "川涌の湯 マウントビュー箱根",
+   "kind": "旅館",
+   "pref": "神奈川県",
+   "city": "足柄下郡箱根町",
+   "url": "https://www.hakone-dog-resort.com/",
+   "ok": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "神奈川県足柄下郡箱根町仙石原885",
+     "src": "https://www.hakone-dog-resort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "部屋数・部屋の種類",
+     "v": "愛犬と泊まれる101号室（56㎡）と102号室（50㎡）、定員2名",
+     "src": "https://www.hakone-dog-resort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "ドッグラン",
+     "v": "各部屋に約8㎡のプライベートドッグラン、敷地に約30㎡のアジリティつきドッグラン",
+     "src": "https://www.hakone-dog-resort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬と一緒にいられる場所",
+     "v": "客室・ドッグテラス・敷地のドッグラン",
+     "src": "https://www.hakone-dog-resort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意されているもの",
+     "v": "部屋に犬用の足洗い場と専用のアメニティ",
+     "src": "https://www.hakone-dog-resort.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬のごはん",
+     "v": "愛犬用の食事あり（別料金）",
+     "src": "https://www.hakone-dog-resort.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "animals": [
+    "dog"
+   ],
+   "id": "i991e5e"
   }
  ]
 }
