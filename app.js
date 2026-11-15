@@ -598,7 +598,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 車・お支払いは、たたまずに出す（Nori 2026-11-08「支払い方法とかできるものは全部出しておいたほうが」）
       // 分からない項目（「まだ確認中です」）は行ごと出さない。お客さまが選んだ動物を乗せられるかの「確認中」だけは残す（2026-11-08 レビュー #3）
       // すっきり見せる（Nori 2026-11-14「ごみごみしてる。もっとすっきり」）：料金のすぐ下に許可・保険、その下に特長・条件・車・お支払いを1列のタグにまとめる
-      if (ex && ex.offers) ex.offers.forEach(function(o){ text("p", "このサイトから問い合わせた方：" + o, "partner-offer"); });
+      // 特典（掲載情報）：大きく「10%オフ」、下に小さく「期間限定・11/30まで／このサイトから問い合わせた方」
+      if (ex && ex.offers) ex.offers.forEach(function(o){
+        if (typeof o === "string") o = { t: o, until: "" };
+        var of = document.createElement("div"); of.className = "partner-offer";
+        var ot = document.createElement("b"); ot.textContent = o.t; of.appendChild(ot);
+        var os = document.createElement("small"); os.textContent = (o.until ? "期間限定・" + o.until + "まで／" : "") + "このサイトから問い合わせた方"; of.appendChild(os);
+        article.appendChild(of);
+      });
       var cr = credLine(card.id);
       if (cr.length) { var cl = document.createElement("ul"); cl.className = "partner-creds"; cl.setAttribute("aria-label", "公式サイトに書いてある許可・登録・資格・保険");
         cr.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; cl.appendChild(li); }); article.appendChild(cl); }

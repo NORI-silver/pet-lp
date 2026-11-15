@@ -561,7 +561,7 @@ footer a{color:var(--ink-2)}
 .partner-photos{position:relative;display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;margin:-4px 0 8px;border-radius:12px}
 .partner-photos img{flex:0 0 100%;aspect-ratio:3/2;object-fit:cover;scroll-snap-align:start;border-radius:12px;background:#f3eee8}
 .partner-photo-src{position:absolute;right:8px;bottom:6px;font-size:.68rem;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:1px 6px}
-.partner-offer{margin:6px 0 2px;padding:5px 10px;border:1.5px solid #e8590c;border-radius:10px;color:#b7470a;font-size:.84rem;font-weight:700}
+.partner-offer{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;margin:6px 0 2px;padding:6px 12px;border:1.5px solid #e8590c;border-radius:10px;background:#fff6ef;color:#b7470a}.partner-offer b{font-size:1.05rem;font-weight:800}.partner-offer small{font-size:.76rem;color:#8a4b1f}
 .partner-note{margin:6px 0 0;font-size:.82rem;color:#5b5650}
 .partner-creds{display:flex;flex-wrap:wrap;gap:4px 14px;list-style:none;margin:8px 0 2px;padding:0;font-size:.8rem;line-height:1.5;color:#3c4043;font-weight:500}
 .partner-creds li{display:inline-flex;align-items:flex-start;gap:5px}
@@ -1931,7 +1931,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 車・お支払いは、たたまずに出す（Nori 2026-11-08「支払い方法とかできるものは全部出しておいたほうが」）
       // 分からない項目（「まだ確認中です」）は行ごと出さない。お客さまが選んだ動物を乗せられるかの「確認中」だけは残す（2026-11-08 レビュー #3）
       // すっきり見せる（Nori 2026-11-14「ごみごみしてる。もっとすっきり」）：料金のすぐ下に許可・保険、その下に特長・条件・車・お支払いを1列のタグにまとめる
-      if (ex && ex.offers) ex.offers.forEach(function(o){ text("p", "このサイトから問い合わせた方：" + o, "partner-offer"); });
+      // 特典（掲載情報）：大きく「10%オフ」、下に小さく「期間限定・11/30まで／このサイトから問い合わせた方」
+      if (ex && ex.offers) ex.offers.forEach(function(o){
+        if (typeof o === "string") o = { t: o, until: "" };
+        var of = document.createElement("div"); of.className = "partner-offer";
+        var ot = document.createElement("b"); ot.textContent = o.t; of.appendChild(ot);
+        var os = document.createElement("small"); os.textContent = (o.until ? "期間限定・" + o.until + "まで／" : "") + "このサイトから問い合わせた方"; of.appendChild(os);
+        article.appendChild(of);
+      });
       var cr = credLine(card.id);
       if (cr.length) { var cl = document.createElement("ul"); cl.className = "partner-creds"; cl.setAttribute("aria-label", "公式サイトに書いてある許可・登録・資格・保険");
         cr.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; cl.appendChild(li); }); article.appendChild(cl); }
