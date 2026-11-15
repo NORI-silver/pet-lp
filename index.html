@@ -561,7 +561,7 @@ footer a{color:var(--ink-2)}
 .partner-photos{position:relative;display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;margin:-4px 0 8px;border-radius:12px}
 .partner-photos img{flex:0 0 100%;aspect-ratio:3/2;object-fit:cover;scroll-snap-align:start;border-radius:12px;background:#f3eee8}
 .partner-photo-src{position:absolute;right:8px;bottom:6px;font-size:.68rem;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:1px 6px}
-.partner-offer{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;margin:6px 0 2px;padding:6px 12px;border:1.5px solid #e8590c;border-radius:10px;background:#fff6ef;color:#b7470a}.partner-offer b{font-size:1.05rem;font-weight:800}.partner-offer small{font-size:.76rem;color:#8a4b1f}
+.partner-driver{width:40px;height:40px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:8px;background:#f3eee8}.partner-card .partner-price .partner-was{font-size:.95rem;font-weight:600;color:var(--ink-2);text-decoration-thickness:2px}.partner-offer{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;margin:6px 0 2px;font-size:.84rem;line-height:1.5;color:#3c4043}.partner-offer::before{content:"";flex:0 0 auto;width:15px;height:15px;align-self:center;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z' fill='none' stroke='%23c2410c' stroke-width='2.2' stroke-linejoin='round'/%3E%3Ccircle cx='8' cy='8' r='1.8' fill='%23c2410c'/%3E%3C/svg%3E") no-repeat center/15px}.partner-offer b{font-weight:800;color:#c2410c}.partner-offer small{font-size:.76rem;color:#5f6368}.partner-deal{display:inline-block;margin-left:2px;padding:1px 7px;border-radius:6px;background:#fde8dc;color:#c2410c;font-size:.72rem;font-weight:800;vertical-align:middle}
 .partner-note{margin:6px 0 0;font-size:.82rem;color:#5b5650}
 .partner-creds{display:flex;flex-wrap:wrap;gap:4px 14px;list-style:none;margin:8px 0 2px;padding:0;font-size:.8rem;line-height:1.5;color:#3c4043;font-weight:500}
 .partner-creds li{display:inline-flex;align-items:flex-start;gap:5px}
@@ -1887,6 +1887,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         article.appendChild(ph);
       }
       var h4 = text("h4", card.label);
+      // 運転手の写真（掲載情報）は名前の横に丸く（Nori 2026-11-15「運転手の写真も」）
+      if (ex && ex.driver) { var dv = document.createElement("img"); dv.className = "partner-driver"; dv.src = ex.driver; dv.alt = card.label + "の運転手"; dv.loading = "lazy"; dv.referrerPolicy = "no-referrer";
+        dv.addEventListener("error", function(){ dv.remove(); }); h4.insertBefore(dv, h4.firstChild); }
       // 問い合わせできる（提携している）会社には、名前の横にアイコンだけ付ける（Nori 2026-11-08「アイコンをつけて目立つように。文字はいらない」）
       if (!card.display_only) { article.classList.add("partner-open"); var ic = document.createElement("span"); ic.className = "open-icon"; ic.setAttribute("role", "img"); ic.setAttribute("aria-label", "このサイトから問い合わせできる会社"); ic.title = "このサイトから問い合わせできる会社"; ic.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M6.5 12.5l3.6 3.6 7.4-7.6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'; h4.prepend(ic); }
       if (card.demo) { var bd = document.createElement("span"); bd.className = "demo-badge"; bd.textContent = "提携（見本）"; h4.appendChild(bd); }
@@ -1917,7 +1920,16 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 料金（概算見積もり）。口コミと料金のほかの詳しい情報は、最初はたたんでおく（Nori 2026-10-31）
       var price = text("p", roundYenText(card.price.text), "partner-price");
       var tripName = leg ? "片道" : (form.querySelector("input[name=trip]:checked") || {}).value || "片道";
-      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? (routeDetails && Math.max(routeDetails.km || 0, routeDetails.highKm || 0) > 250 ? "長距離のため、お見積もり" : "料金表が未登録のため、お見積もり") : "一般道・" + tripName + "の概算" + (card.price.taxUnknown ? "（税は確認中）" : "（税込）"); price.appendChild(cap);
+      // 特典で安くなる分は、もとの概算に線を引いて、安い概算を並べる（Nori 2026-11-15「元の金額が消されて、安い料金が併記されてる感じがいい」）。
+      // もとの金額は会社の公式の料金表での概算（ふだんの料金）。この依頼に当てはまり、金額で計算できる特典だけ（いちばん安くなる1つ）。「〜」つきの概算には付けない
+      var deal = offerDeal(ex, card.price, tripName);
+      if (deal) {
+        price.textContent = "";
+        var was = document.createElement("s"); was.className = "partner-was"; was.textContent = yen(card.price.amount); price.appendChild(was);
+        price.appendChild(document.createTextNode(yen(deal.amount)));
+        var dl = document.createElement("span"); dl.className = "partner-deal"; dl.textContent = deal.label; price.appendChild(dl);
+      }
+      var cap = document.createElement("small"); cap.textContent = card.price.amount == null ? (routeDetails && Math.max(routeDetails.km || 0, routeDetails.highKm || 0) > 250 ? "長距離のため、お見積もり" : "料金表が未登録のため、お見積もり") : "一般道・" + tripName + "の概算" + (card.price.taxUnknown ? "（税は確認中）" : "（税込）") + (deal ? "・特典の割引後" : ""); price.appendChild(cap);
       if (card.price.local && card.price.local.nightExtra) text("p", "夜間・早朝の割増 " + yen(card.price.local.nightExtra) + "を含む", "partner-surcharge");
       // 概算の注意は料金のすぐ下に太字の1行（上のまとめの注意と合わせて「目立つ形」。2026-11-08 レビュー #2 でカードを短く）
       var caution = text("p", card.price.amount == null ? "確定料金は会社からお知らせします" : "概算です。確定料金ではありません", "partner-caution");
@@ -1936,7 +1948,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         if (typeof o === "string") o = { t: o, until: "" };
         var of = document.createElement("div"); of.className = "partner-offer";
         var ot = document.createElement("b"); ot.textContent = o.t; of.appendChild(ot);
-        var os = document.createElement("small"); os.textContent = (o.until ? "期間限定・" + o.until + "まで／" : "") + "このサイトから問い合わせた方"; of.appendChild(os);
+        var os = document.createElement("small"); os.textContent = (o.until ? o.until + "まで・" : "") + "このサイトから問い合わせた方"; of.appendChild(os);
         article.appendChild(of);
       });
       var cr = credLine(card.id);
@@ -2411,6 +2423,22 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var est = $("est"), geoCache = {}, pickedPlace = {}, estSeq = 0, lastKm = 0, lastKmHigh = 0, lastFare = "", lastFareNum = 0;
   // 料金の目安は100円単位にまるめて出す（Nori 2026-11-01「1円単位まで出さない方がいい」）。並び替えは計算どおりの金額で行う
   function yen(n){ return (n >= 100 ? Math.round(n / 100) * 100 : n).toLocaleString("ja-JP") + "円"; }
+  // 特典（掲載情報）を金額にあてはめる。この依頼に当てはまるものだけ、いちばん安くなる1つ。計算できない特典（ケージ・キャンセルなど）は枠で見せるだけ
+  function offerDeal(ex, pr, tripName){
+    if (!ex || !ex.offers || !pr || pr.amount == null || pr.incompleteFees || /〜/.test(pr.text || "")) return null;
+    var a = pr.amount, best = null;
+    ex.offers.forEach(function(o){
+      if (!o || typeof o !== "object") return;
+      var n = Number(o.n) || 0, off = 0;
+      if (o.k === "pct_off" || o.k === "first_pct") off = Math.floor(a * n / 100);
+      else if (o.k === "yen_off" || o.k === "first_yen") off = n;
+      else if (o.k === "round_yen" && tripName === "往復") off = n;
+      else if (o.k === "night_free" && pr.local && pr.local.nightExtra) off = pr.local.nightExtra;
+      off = Math.min(off, a);
+      if (off >= 100 && (!best || off > best.off)) best = { off: off, amount: a - off, label: o.t };
+    });
+    return best;
+  }
   function roundYenText(s){ return String(s == null ? "" : s).replace(/(\d{1,3}(?:,\d{3})+|\d+)円/g, function(m, d){ return yen(Number(d.replace(/,/g, ""))); }); }
   // 場所の検索は4都県の中だけで探す（遠くの同じ名前の場所を拾わないように）。選んだ都県の中の候補を優先する
   // 全国のお迎えも入れられる（Nori 2026-10-31「全国にして。絞らないで」）。予約の依頼は全社準備中のため送れない（Code.gs の CONFIG.SHOW_ALL_CANDIDATES）

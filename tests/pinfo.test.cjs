@@ -57,6 +57,9 @@ assert.ok(!page.includes('多頭の同乗') && !page.includes('飼い主さん�
 // 写真はページが横3：縦2に切り抜いたものだけ。小さい・形がちがうものは断る
 assert.ok(/小さすぎ/.test(ctx.pinfoPhoto_({t:tok,rights:'1',w:'1000',h:'667',data:'x'}).error));
 assert.ok(/形が合いません/.test(ctx.pinfoPhoto_({t:tok,rights:'1',w:'1600',h:'1200',data:'x'}).error));
+// 運転手の写真は正方形で、写っている方の了解が要る
+assert.ok(/了解/.test(ctx.pinfoPhoto_({t:tok,rights:'1',photo_kind:'運転手',w:'800',h:'800',data:'x'}).error));
+assert.ok(/正方形/.test(ctx.pinfoPhoto_({t:tok,rights:'1',consent:'1',photo_kind:'運転手',w:'1500',h:'1000',data:'x'}).error));
 assert.ok(!page.includes('臨時のお休み') && !page.includes('name="off"'));
 console.log('PASS: partner listing page logs in by email link, accepts only partners, blocks banned wording');
 {
@@ -71,11 +74,13 @@ console.log('PASS: partner listing page logs in by email link, accepts only part
   row('写真','公開',{file:'abc',w:1600,h:1067,kind:'車の中'});
   row('写真','公開',{file:'tall',w:900,h:1600,kind:'車の外'});
   row('写真','公開',{file:'out',w:1500,h:1000,kind:'車の外'});
+  row('写真','公開',{file:'drv',w:800,h:800,kind:'運転手'});
   row('写真','直してください',{file:'ng',w:1600,h:1000,kind:'お店'});
   const pub=ctx.pinfoPublic_()['P063'];
   const ud=Number(later.slice(5,7))+'/'+Number(later.slice(8,10));
-  assert.equal(JSON.stringify(pub.offers),JSON.stringify([{t:'10%オフ',until:ud},{t:'早朝・深夜の割増なし',until:ud}]));
+  assert.equal(JSON.stringify(pub.offers),JSON.stringify([{k:'',n:null,t:'10%オフ',until:ud},{k:'',n:null,t:'早朝・深夜の割増なし',until:ud}]));
   assert.deepEqual(pub.tags,['ケージの貸し出し']); assert.equal(pub.note,'大型犬もどうぞ');
-  assert.equal(pub.photos.length,2); assert.ok(pub.photos[0].url.includes('out') && pub.photos[1].url.includes('abc'), 'car outside first');
+  assert.equal(pub.photos.length,2); assert.ok(pub.photos[0].url.includes('out') && pub.photos[1].url.includes('abc'), 'car outside first'); assert.ok(pub.driver.includes('drv'), 'driver photo goes next to the name');
+  assert.equal(JSON.stringify(pub.offers.map(o=>o.k||'')),JSON.stringify(['','']));
   console.log('PASS: only approved, unexpired, landscape items reach the cards');
 }
