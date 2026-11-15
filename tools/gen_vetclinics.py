@@ -46,12 +46,12 @@ def end_min(h):
 def parking(c):
     m = re.search(r"駐車場(\d+)台", c["services"])
     if m: return f"{m.group(1)}台"
-    if "パーキング" in c["services"]: return "近くのコインパーキング（提携など）"
-    return ""
+    x = next((x for x in c["services"].split("・") if "駐車場" in x or "パーキング" in x), "")
+    return x
 
 
 def svc(c):
-    return "・".join(x for x in c["services"].split("・") if x and not x.startswith("駐車場") and "パーキング" not in x)
+    return "・".join(x for x in c["services"].split("・") if x and "駐車場" not in x and "パーキング" not in x)
 
 
 def card(e, c, srcname):
