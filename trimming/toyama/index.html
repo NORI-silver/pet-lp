@@ -144,27 +144,33 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 }
 </style>
 <style id="fccss">
-.emg-item.fc{display:block;background:#fff;border:1.5px solid var(--line,#ece6e0);border-radius:18px;padding:14px;margin:0 0 12px;box-shadow:0 2px 8px rgba(28,26,24,.04)}
-.fc-top{display:flex;gap:12px;align-items:flex-start}
-.fc-ph{position:relative;flex:0 0 76px;width:76px;height:76px;border-radius:16px;overflow:hidden;background:hsl(var(--fh) 60% 93%);color:hsl(var(--fh) 45% 32%);display:flex;align-items:center;justify-content:center}
-.fc-mono{font-size:1.9rem;font-weight:800;line-height:1}
-.fc-ci{position:absolute;right:5px;bottom:5px;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
-.fc-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.fc-phbtn{position:absolute;left:4px;right:4px;bottom:4px;font-size:.7rem;font-weight:700;padding:3px 0;border:0;border-radius:999px;background:rgba(255,255,255,.92);color:var(--ink,#2b2622);display:flex;align-items:center;justify-content:center;gap:3px;cursor:pointer}
-.fc-phbtn .fc-i{width:13px;height:13px}
-.fc-hd{min-width:0;flex:1}
-.fc-hd>a{font-size:1.04rem;line-height:1.45;text-decoration:none;color:var(--ink,#2b2622)}
-.fc-hd>a b{font-weight:800}
-.fc-loc{display:flex;gap:4px;align-items:flex-start;font-size:.84rem;color:var(--ink-2,#5a524b);margin:4px 0 0!important;line-height:1.5}
+.emg-item.fc{display:block;background:#fff;border:0;border-radius:20px;padding:0;margin:0 0 18px;box-shadow:0 2px 14px rgba(28,26,24,.10);overflow:hidden}
+.fc-ph{position:relative;aspect-ratio:16/10;background:linear-gradient(135deg,hsl(var(--fh) 62% 92%),hsl(calc(var(--fh) + 40) 55% 86%));color:hsl(var(--fh) 40% 30%);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.fc-mono{font-size:3.4rem;font-weight:800;line-height:1;opacity:.85}
+.fc-ci{position:absolute;right:12px;bottom:12px;width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.fc-badge{position:absolute;left:12px;top:12px;z-index:2;font-size:.78rem;font-weight:800;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink,#2b2622);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.fc-phbtn{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;font-size:.82rem;font-weight:800;padding:8px 16px;border:0;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink,#2b2622);display:flex;align-items:center;gap:6px;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.15);white-space:nowrap}
+.fc-phbtn .fc-i{width:16px;height:16px;margin:0}
+.fc-car{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.fc-car::-webkit-scrollbar{display:none}
+.fc-car figure{flex:0 0 100%;margin:0;position:relative;scroll-snap-align:start}
+.fc-car img{width:100%;height:100%;object-fit:cover;display:block}
+.fc-car figcaption{position:absolute;left:8px;bottom:8px;max-width:70%;font-size:.68rem;line-height:1.3;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:2px 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fc-car figcaption a{color:#fff}
+.fc-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:6px;z-index:2;pointer-events:none}
+.fc-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55)}.fc-dots i.on{background:#fff}
+.fc-src{position:absolute;right:8px;bottom:8px;z-index:2;font-size:.66rem;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:2px 6px}
+.fc-body{padding:12px 16px 14px}
+.fc-kind{font-size:.98rem;font-weight:800;color:var(--ink,#2b2622);margin:0!important;line-height:1.5}
+.fc-name{margin:2px 0 0}.fc-name>a{font-size:.95rem;line-height:1.5;color:var(--ink-2,#5a524b);text-decoration:none}.fc-name>a b{font-weight:600}
+.fc-catch{font-size:.9rem;font-weight:700;color:#a8410b;margin:4px 0 0!important;line-height:1.55}
+.fc-line,.fc-price{display:flex;gap:6px;align-items:flex-start;font-size:.86rem;line-height:1.55;color:var(--ink-2,#5a524b);margin:4px 0 0!important}
+.fc-line>span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-width:0}
+.fc-price{font-weight:800;color:var(--ink,#2b2622);font-size:.92rem}
 .fc-i{flex:0 0 auto;width:16px;height:16px;margin-top:2px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;color:var(--o,#e8590c)}
-.fc-chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0!important;margin:10px 0 0!important}
-.fc-chips li{font-size:.78rem;font-weight:700;line-height:1.3;padding:4px 10px;border-radius:999px;background:#fff3ea;color:#a8410b;margin:0!important}
-.fc-rows{list-style:none;padding:0!important;margin:10px 0 0!important;display:grid;gap:6px}
-.fc-rows li{display:flex;gap:6px;align-items:flex-start;font-size:.86rem;line-height:1.55;margin:0!important}
-.fc-k{flex:0 0 auto;max-width:6.5em;font-size:.72rem;font-weight:700;color:var(--ink-3,#6b625b);background:#f4f1ee;border-radius:6px;padding:1px 6px;margin-top:1px;line-height:1.5}
-.fc-v{min-width:0;overflow-wrap:anywhere}
-.fc-for{font-size:.84rem;line-height:1.6;margin:10px 0 0!important;padding:8px 10px;background:#f6faf6;border-radius:10px;color:#2f5130}
-.fc-for b{display:inline-block;font-size:.72rem;background:#2f7d32;color:#fff;border-radius:6px;padding:0 6px;margin-right:6px}
+.fc-k{font-size:.72rem;font-weight:700;color:var(--ink-3,#6b625b);background:#f4f1ee;border-radius:6px;padding:1px 6px;margin-right:6px}
+.fc-tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0!important;margin:8px 0 0!important}
+.fc-tags li{font-size:.74rem;line-height:1.3;padding:3px 8px;border-radius:6px;background:#f4f1ee;color:var(--ink-2,#5a524b);margin:0!important}
 .fc-fit{font-size:.84rem;font-weight:700;line-height:1.5;margin:10px 0 0!important;padding:7px 10px;border-radius:10px}
 .fc-fit small{display:block;font-weight:400;font-size:.78rem;margin-top:1px}
 .fc-fit.ok{background:#e8f5e9;color:#1b5e20}.fc-fit.unk{background:#f4f1ee;color:#5a524b}.fc-fit.ng{background:#fdecea;color:#a12a1b}
@@ -173,7 +179,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 .fc-more{margin:10px 0 0;font-size:.84rem}
 .fc-more summary{cursor:pointer;color:var(--ink-2,#5a524b);font-weight:700;font-size:.82rem;padding:2px 0}
 .fc-more>small,.fc-more>p,.fc-more>ul,.fc-more>dl{display:block;margin:6px 0 0!important}
-.emg-item.fc .fac-photos{margin-top:10px}
 .emg-item.fc .jt-c{margin-top:8px}
 .fp{background:#fffaf5;border:2px solid var(--o,#e8590c);border-radius:20px;padding:14px;margin:12px 0 16px}
 .fp-t{display:flex;gap:6px;align-items:center;font-weight:800;font-size:1.04rem;margin:0 0 4px!important;color:var(--ink,#2b2622)}
@@ -218,7 +223,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
       <p class="emg-free">この一覧は無料の情報です。事業者からお金をもらっていません。おすすめ順や点数順ではありません。料金は載せていないので、それぞれに直接おたずねください。</p>
       
       
-      <section class="emg-pref" data-pref="富山県"><h2 style="font-size:1.15em">出張トリミング・訪問トリミング（富山県・2件）</h2><div class="emg-item emg-co fc" data-flags="large senior car" data-fit="{&quot;a&quot;:[&quot;dog&quot;],&quot;s&quot;:[&quot;s&quot;,&quot;m&quot;,&quot;l&quot;],&quot;sen&quot;:1}"><div class="fc-top"><div class="fc-ph" style="--fh:31"><span class="fc-mono" aria-hidden="true">わ</span><svg class="fc-ci" aria-hidden="true" focusable="false"><use href="#fci-scissors"/></svg></div><div class="fc-hd"><a href="https://www.wanpad.jp/" target="_blank" rel="noopener"><b>わんpad</b></a><p class="fc-loc"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-pin"/></svg>富山市</p></div></div><p class="fc-fit" hidden></p><ul class="fc-chips"><li>大型犬OK</li><li>シニア・介護OK</li><li>トリミングカー</li></ul><ul class="fc-rows"><li><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-car"/></svg><span class="fc-k">出張エリア</span><span class="fc-v">富山市中心（エリア外も相談）</span></li></ul><p class="fc-for"><b>こんな人に</b>大型犬の子・シニアや持病のある子・家の前でトリミングしたい人</p><details class="fc-more"><summary>くわしく見る</summary><small class="emg-spec">公式サイトに書いてある条件：大型犬に対応・シニア犬・介護中の子に対応・トリミングカーで来る</small><small>内容：オリジナルトリミングカーでご自宅まで伺う出張トリミング</small></details></div><div class="emg-item emg-co fc" data-flags="car" data-fit="{&quot;a&quot;:[&quot;dog&quot;]}"><div class="fc-top"><div class="fc-ph" style="--fh:283"><span class="fc-mono" aria-hidden="true">ド</span><svg class="fc-ci" aria-hidden="true" focusable="false"><use href="#fci-scissors"/></svg></div><div class="fc-hd"><a href="https://a2jfl.crayonsite.com/" target="_blank" rel="noopener"><b>ドッグサロン CORNER</b></a><p class="fc-loc"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-pin"/></svg>黒部市</p></div></div><p class="fc-fit" hidden></p><ul class="fc-chips"><li>トリミングカー</li></ul><ul class="fc-rows"><li><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-car"/></svg><span class="fc-k">出張エリア</span><span class="fc-v">黒部市中心の新川地区</span></li></ul><p class="fc-for"><b>こんな人に</b>家の前でトリミングしたい人</p><details class="fc-more"><summary>くわしく見る</summary><small class="emg-spec">公式サイトに書いてある条件：トリミングカーで来る</small><small>内容：トリミングカーで出張トリミング。フード・用品の配達も</small></details></div></section>
+      <section class="emg-pref" data-pref="富山県"><h2 style="font-size:1.15em">出張トリミング・訪問トリミング（富山県・2件）</h2><div class="emg-item emg-co fc" data-flags="large senior car" data-fit="{&quot;a&quot;:[&quot;dog&quot;],&quot;s&quot;:[&quot;s&quot;,&quot;m&quot;,&quot;l&quot;],&quot;sen&quot;:1}"><div class="fc-ph" style="--fh:31"><span class="fc-mono" aria-hidden="true">わ</span><svg class="fc-ci" aria-hidden="true" focusable="false"><use href="#fci-scissors"/></svg><span class="fc-badge">大型犬OK</span></div><div class="fc-body"><p class="fc-kind">富山市の出張トリミング</p><div class="fc-name"><a href="https://www.wanpad.jp/" target="_blank" rel="noopener"><b>わんpad</b></a></div><p class="fc-catch">【大型犬の子・シニアや持病のある子に】</p><p class="fc-line"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-car"/></svg><span><span class="fc-k">出張エリア</span>富山市中心（エリア外も相談）</span></p><ul class="fc-tags"><li>シニア・介護OK</li><li>トリミングカー</li></ul><p class="fc-fit" hidden></p><details class="fc-more"><summary>くわしく見る</summary><small class="emg-spec">公式サイトに書いてある条件：大型犬に対応・シニア犬・介護中の子に対応・トリミングカーで来る</small><small>内容：オリジナルトリミングカーでご自宅まで伺う出張トリミング</small></details></div></div><div class="emg-item emg-co fc" data-flags="car" data-fit="{&quot;a&quot;:[&quot;dog&quot;]}"><div class="fc-ph" style="--fh:283"><span class="fc-mono" aria-hidden="true">ド</span><svg class="fc-ci" aria-hidden="true" focusable="false"><use href="#fci-scissors"/></svg><span class="fc-badge">トリミングカー</span></div><div class="fc-body"><p class="fc-kind">黒部市の出張トリミング</p><div class="fc-name"><a href="https://a2jfl.crayonsite.com/" target="_blank" rel="noopener"><b>ドッグサロン CORNER</b></a></div><p class="fc-catch">【家の前でトリミングしたい人に】</p><p class="fc-line"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-car"/></svg><span><span class="fc-k">出張エリア</span>黒部市中心の新川地区</span></p><p class="fc-fit" hidden></p><details class="fc-more"><summary>くわしく見る</summary><small class="emg-spec">公式サイトに書いてある条件：トリミングカーで来る</small><small>内容：トリミングカーで出張トリミング。フード・用品の配達も</small></details></div></div></section>
       <div class="emg-tips"><h4>条件をくらべる</h4><div class="tbl"><table class="pp-tbl t2"><thead><tr><th>名前</th><th>大型犬</th><th>シニア犬</th><th>猫</th><th>トリミングカーで来る</th><th>家の中で施術</th><th>最大の体重</th></tr></thead><tbody><tr><td>わんpad</td><td class="c">○</td><td class="c">○</td><td></td><td class="c">○</td><td></td><td></td></tr><tr><td>ドッグサロン CORNER</td><td class="c"></td><td class="c"></td><td></td><td class="c">○</td><td></td><td></td></tr></tbody></table></div><p class="emg-tips-note">○は公式サイトにはっきり書いてあること。空欄は「しない」ではなく、公式サイトに書いていない・分からないという意味です。</p></div>
       
       <p>中部のほかの県：<a href="/trimming/nagano/">長野県の出張トリミング・訪問トリミング（2件）</a>、<a href="/trimming/gifu/">岐阜県の出張トリミング・訪問トリミング（2件）</a>、<a href="/trimming/shizuoka/">静岡県の出張トリミング・訪問トリミング（4件）</a>、<a href="/trimming/aichi/">愛知県の出張トリミング・訪問トリミング（3件）</a></p>

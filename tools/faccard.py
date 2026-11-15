@@ -15,16 +15,18 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 # 分野ごとの設定。kinds＝「どの子？」に出す動物、size＝大きさ（犬）を聞く、senior／puppy＝シニア・介護／子犬を聞く
 CATS = {
-    "dog-trainer": dict(key="trainer", icon="dog", kinds=["dog"], puppy=True, label="ドッグトレーナー・しつけ教室"),
-    "pet-sitter": dict(key="sitter", icon="home", kinds=["dog", "cat", "small", "bird"], label="ペットシッター"),
-    "rojin-home": dict(key="rojin", icon="home", kinds=["dog", "cat"], size=True, label="老犬ホーム・老猫ホーム"),
-    "trimming": dict(key="trimming", icon="scissors", kinds=["dog", "cat"], size=True, senior=True, label="出張トリミング"),
-    "pet-hotel": dict(key="hotel", icon="bed", kinds=["dog", "cat"], size=True, senior=True, label="ペットホテル"),
-    "sougi": dict(key="sougi", icon="flower", kinds=[], label="ペット火葬・霊園"),
-    "hospital": dict(key="hospital", icon="cross", kinds=["dog", "cat", "small", "bird", "exotic"], size=True, label="動物病院"),
-    "joto": dict(key="joto", icon="heart", kinds=["dog", "cat"], want=True, label="譲渡の窓口・保護団体"),
+    "dog-trainer": dict(key="trainer", noun="しつけ教室", icon="dog", kinds=["dog"], puppy=True, label="ドッグトレーナー・しつけ教室"),
+    "pet-sitter": dict(key="sitter", noun="ペットシッター", icon="home", kinds=["dog", "cat", "small", "bird"], label="ペットシッター"),
+    "rojin-home": dict(key="rojin", noun="老犬ホーム", icon="home", kinds=["dog", "cat"], size=True, label="老犬ホーム・老猫ホーム"),
+    "trimming": dict(key="trimming", noun="出張トリミング", icon="scissors", kinds=["dog", "cat"], size=True, senior=True, label="出張トリミング"),
+    "pet-hotel": dict(key="hotel", noun="ペットホテル", icon="bed", kinds=["dog", "cat"], size=True, senior=True, label="ペットホテル"),
+    "sougi": dict(key="sougi", noun="ペット火葬・霊園", icon="flower", kinds=[], label="ペット火葬・霊園"),
+    "hospital": dict(key="hospital", noun="動物病院", icon="cross", kinds=["dog", "cat", "small", "bird", "exotic"], size=True, label="動物病院"),
+    "joto": dict(key="joto", noun="譲渡の窓口", icon="heart", kinds=["dog", "cat"], want=True, label="譲渡の窓口・保護団体"),
 }
 DIRS = set(CATS)
+# 写真をカードが画面に近づいたら自動で取り寄せるか（false＝「写真を見る」を押したときだけ。地図サービスの写真は1枚ごとに利用料がかかる。Nori の決定で切りかえ）
+PHOTO_AUTO = False
 KIND_LABEL = {"dog": "犬", "cat": "猫", "small": "うさぎ・小動物", "bird": "鳥", "exotic": "爬虫類など"}
 
 # ---- アイコン（線だけのSVG。文字の代わりにしない＝いつも横に文字がある） ----
@@ -277,20 +279,34 @@ def build_card(card, conf, fit_by_name):
     if fit: ot = ot[:-1] + fit + ">"
     hue = _hue(name)
     sid = re.search(r'class="emg-score" data-id="([^"]+)"', inner)
+    # 写真の枠（上に大きく）。写真が来るまでは名前の1文字。左上の札は要点の1つめ
+    badge = f'<span class="fc-badge">{html.escape(ch[0])}</span>' if ch else ""
     ph = (f'<div class="fc-ph" style="--fh:{hue}"' + (f' data-ph="{html.escape(sid.group(1))}"' if sid else "") +
-          f'><span class="fc-mono" aria-hidden="true">{html.escape(_mono(name))}</span>{icon(conf["icon"], "fc-ci")}</div>')
-    hd = (f'<div class="fc-hd">{head}' + (f'<p class="fc-loc">{icon("pin")}{html.escape(loc)}</p>' if loc else "") + '</div>')
-    out = [ot, f'<div class="fc-top">{ph}{hd}</div>', '<p class="fc-fit" hidden></p>']
-    if ch: out.append('<ul class="fc-chips">' + "".join(f"<li>{html.escape(c)}</li>" for c in ch) + "</ul>")
-    if pick:
-        out.append('<ul class="fc-rows">' + "".join(f'<li>{icon(ic)}<span class="fc-k">{html.escape(_short(lab))}</span><span class="fc-v">{html.escape(val)}</span></li>' for ic, lab, val in pick) + "</ul>")
-    out += keep
-    if fors: out.append(f'<p class="fc-for"><b>こんな人に</b>{html.escape("・".join(fors))}</p>')
-    if more:
-        out.append('<details class="fc-more"><summary>くわしく見る</summary>' + "".join(more) + "</details>")
-    out += tail
-    out.append("</div>")
-    return "".join(out)
+          f'><span class="fc-mono" aria-hidden="true">{html.escape(_mono(name))}</span>{icon(conf["icon"], "fc-ci")}{badge}</div>')
+    city = loc.split("・", 1)[0] if loc else ""
+    rest = loc.split("・", 1)[1] if loc and "・" in loc and conf["key"] != "joto" else ""
+    if conf["key"] == "joto": city = loc
+    if not city:  # 場所の行がないカードは所在地から市区町村を取る
+        for ic, lab, val in pick + [(None, l, v) for l, v, _ in rows]:
+            m = re.search(r"(?:都|道|府|県)?([^都道府県\s]{1,8}?(?:市|区|町|村))", val) if lab and _ADDR.search(lab) else None
+            if m: city = m.group(1); break
+    kind = f'{city}の{conf["noun"]}' if city and len(city) <= 14 and conf["key"] != "joto" else (city or conf["noun"])
+    body = [f'<p class="fc-kind">{html.escape(kind)}</p>', f'<div class="fc-name">{head}</div>']
+    if fors: body.append(f'<p class="fc-catch">【{html.escape("・".join(fors[:2]))}に】</p>')
+    lines = []
+    if rest: lines.append(("clock", "", rest))
+    lines += [(ic, lab, val) for ic, lab, val in pick if ic != "yen"]
+    for ic, lab, val in lines[:3]:
+        body.append(f'<p class="fc-line">{icon(ic)}<span>' + (f'<span class="fc-k">{html.escape(_short(lab))}</span>' if lab else "") + f'{html.escape(val)}</span></p>')
+    for ic, lab, val in pick:
+        if ic == "yen": body.append(f'<p class="fc-price">{icon("yen")}<span><span class="fc-k">{html.escape(_short(lab))}</span>{html.escape(val)}</span></p>')
+    more = [f'<small>{html.escape(lab)}：{html.escape(val)}</small>' for ic, lab, val in lines[3:]] + more
+    if len(ch) > 1: body.append('<ul class="fc-tags">' + "".join(f"<li>{html.escape(c)}</li>" for c in ch[1:]) + "</ul>")
+    body.append('<p class="fc-fit" hidden></p>')
+    body += keep
+    if more: body.append('<details class="fc-more"><summary>くわしく見る</summary>' + "".join(more) + "</details>")
+    body += tail
+    return ot + ph + '<div class="fc-body">' + "".join(body) + "</div></div>"
 
 # ---- 「うちの子に合うところをさがす」 ----
 def panel(conf, kinds_used, has_size, has_sen, has_pup, n):
@@ -321,27 +337,33 @@ def panel(conf, kinds_used, has_size, has_sen, has_pup, n):
             '<p class="fp-now" aria-live="polite"></p><label class="fp-hide"><input type="checkbox"> 合わないかもしれないところを隠す</label></div>')
 
 CSS = """<style id="fccss">
-.emg-item.fc{display:block;background:#fff;border:1.5px solid var(--line,#ece6e0);border-radius:18px;padding:14px;margin:0 0 12px;box-shadow:0 2px 8px rgba(28,26,24,.04)}
-.fc-top{display:flex;gap:12px;align-items:flex-start}
-.fc-ph{position:relative;flex:0 0 76px;width:76px;height:76px;border-radius:16px;overflow:hidden;background:hsl(var(--fh) 60% 93%);color:hsl(var(--fh) 45% 32%);display:flex;align-items:center;justify-content:center}
-.fc-mono{font-size:1.9rem;font-weight:800;line-height:1}
-.fc-ci{position:absolute;right:5px;bottom:5px;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
-.fc-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.fc-phbtn{position:absolute;left:4px;right:4px;bottom:4px;font-size:.7rem;font-weight:700;padding:3px 0;border:0;border-radius:999px;background:rgba(255,255,255,.92);color:var(--ink,#2b2622);display:flex;align-items:center;justify-content:center;gap:3px;cursor:pointer}
-.fc-phbtn .fc-i{width:13px;height:13px}
-.fc-hd{min-width:0;flex:1}
-.fc-hd>a{font-size:1.04rem;line-height:1.45;text-decoration:none;color:var(--ink,#2b2622)}
-.fc-hd>a b{font-weight:800}
-.fc-loc{display:flex;gap:4px;align-items:flex-start;font-size:.84rem;color:var(--ink-2,#5a524b);margin:4px 0 0!important;line-height:1.5}
+.emg-item.fc{display:block;background:#fff;border:0;border-radius:20px;padding:0;margin:0 0 18px;box-shadow:0 2px 14px rgba(28,26,24,.10);overflow:hidden}
+.fc-ph{position:relative;aspect-ratio:16/10;background:linear-gradient(135deg,hsl(var(--fh) 62% 92%),hsl(calc(var(--fh) + 40) 55% 86%));color:hsl(var(--fh) 40% 30%);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.fc-mono{font-size:3.4rem;font-weight:800;line-height:1;opacity:.85}
+.fc-ci{position:absolute;right:12px;bottom:12px;width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.fc-badge{position:absolute;left:12px;top:12px;z-index:2;font-size:.78rem;font-weight:800;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink,#2b2622);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.fc-phbtn{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;font-size:.82rem;font-weight:800;padding:8px 16px;border:0;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink,#2b2622);display:flex;align-items:center;gap:6px;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.15);white-space:nowrap}
+.fc-phbtn .fc-i{width:16px;height:16px;margin:0}
+.fc-car{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.fc-car::-webkit-scrollbar{display:none}
+.fc-car figure{flex:0 0 100%;margin:0;position:relative;scroll-snap-align:start}
+.fc-car img{width:100%;height:100%;object-fit:cover;display:block}
+.fc-car figcaption{position:absolute;left:8px;bottom:8px;max-width:70%;font-size:.68rem;line-height:1.3;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:2px 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fc-car figcaption a{color:#fff}
+.fc-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:6px;z-index:2;pointer-events:none}
+.fc-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55)}.fc-dots i.on{background:#fff}
+.fc-src{position:absolute;right:8px;bottom:8px;z-index:2;font-size:.66rem;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:2px 6px}
+.fc-body{padding:12px 16px 14px}
+.fc-kind{font-size:.98rem;font-weight:800;color:var(--ink,#2b2622);margin:0!important;line-height:1.5}
+.fc-name{margin:2px 0 0}.fc-name>a{font-size:.95rem;line-height:1.5;color:var(--ink-2,#5a524b);text-decoration:none}.fc-name>a b{font-weight:600}
+.fc-catch{font-size:.9rem;font-weight:700;color:#a8410b;margin:4px 0 0!important;line-height:1.55}
+.fc-line,.fc-price{display:flex;gap:6px;align-items:flex-start;font-size:.86rem;line-height:1.55;color:var(--ink-2,#5a524b);margin:4px 0 0!important}
+.fc-line>span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-width:0}
+.fc-price{font-weight:800;color:var(--ink,#2b2622);font-size:.92rem}
 .fc-i{flex:0 0 auto;width:16px;height:16px;margin-top:2px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;color:var(--o,#e8590c)}
-.fc-chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0!important;margin:10px 0 0!important}
-.fc-chips li{font-size:.78rem;font-weight:700;line-height:1.3;padding:4px 10px;border-radius:999px;background:#fff3ea;color:#a8410b;margin:0!important}
-.fc-rows{list-style:none;padding:0!important;margin:10px 0 0!important;display:grid;gap:6px}
-.fc-rows li{display:flex;gap:6px;align-items:flex-start;font-size:.86rem;line-height:1.55;margin:0!important}
-.fc-k{flex:0 0 auto;max-width:6.5em;font-size:.72rem;font-weight:700;color:var(--ink-3,#6b625b);background:#f4f1ee;border-radius:6px;padding:1px 6px;margin-top:1px;line-height:1.5}
-.fc-v{min-width:0;overflow-wrap:anywhere}
-.fc-for{font-size:.84rem;line-height:1.6;margin:10px 0 0!important;padding:8px 10px;background:#f6faf6;border-radius:10px;color:#2f5130}
-.fc-for b{display:inline-block;font-size:.72rem;background:#2f7d32;color:#fff;border-radius:6px;padding:0 6px;margin-right:6px}
+.fc-k{font-size:.72rem;font-weight:700;color:var(--ink-3,#6b625b);background:#f4f1ee;border-radius:6px;padding:1px 6px;margin-right:6px}
+.fc-tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0!important;margin:8px 0 0!important}
+.fc-tags li{font-size:.74rem;line-height:1.3;padding:3px 8px;border-radius:6px;background:#f4f1ee;color:var(--ink-2,#5a524b);margin:0!important}
 .fc-fit{font-size:.84rem;font-weight:700;line-height:1.5;margin:10px 0 0!important;padding:7px 10px;border-radius:10px}
 .fc-fit small{display:block;font-weight:400;font-size:.78rem;margin-top:1px}
 .fc-fit.ok{background:#e8f5e9;color:#1b5e20}.fc-fit.unk{background:#f4f1ee;color:#5a524b}.fc-fit.ng{background:#fdecea;color:#a12a1b}
@@ -350,7 +372,6 @@ CSS = """<style id="fccss">
 .fc-more{margin:10px 0 0;font-size:.84rem}
 .fc-more summary{cursor:pointer;color:var(--ink-2,#5a524b);font-weight:700;font-size:.82rem;padding:2px 0}
 .fc-more>small,.fc-more>p,.fc-more>ul,.fc-more>dl{display:block;margin:6px 0 0!important}
-.emg-item.fc .fac-photos{margin-top:10px}
 .emg-item.fc .jt-c{margin-top:8px}
 .fp{background:#fffaf5;border:2px solid var(--o,#e8590c);border-radius:20px;padding:14px;margin:12px 0 16px}
 .fp-t{display:flex;gap:6px;align-items:center;font-weight:800;font-size:1.04rem;margin:0 0 4px!important;color:var(--ink,#2b2622)}

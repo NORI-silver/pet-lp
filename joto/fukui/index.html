@@ -144,27 +144,33 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 }
 </style>
 <style id="fccss">
-.emg-item.fc{display:block;background:#fff;border:1.5px solid var(--line,#ece6e0);border-radius:18px;padding:14px;margin:0 0 12px;box-shadow:0 2px 8px rgba(28,26,24,.04)}
-.fc-top{display:flex;gap:12px;align-items:flex-start}
-.fc-ph{position:relative;flex:0 0 76px;width:76px;height:76px;border-radius:16px;overflow:hidden;background:hsl(var(--fh) 60% 93%);color:hsl(var(--fh) 45% 32%);display:flex;align-items:center;justify-content:center}
-.fc-mono{font-size:1.9rem;font-weight:800;line-height:1}
-.fc-ci{position:absolute;right:5px;bottom:5px;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
-.fc-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.fc-phbtn{position:absolute;left:4px;right:4px;bottom:4px;font-size:.7rem;font-weight:700;padding:3px 0;border:0;border-radius:999px;background:rgba(255,255,255,.92);color:var(--ink,#2b2622);display:flex;align-items:center;justify-content:center;gap:3px;cursor:pointer}
-.fc-phbtn .fc-i{width:13px;height:13px}
-.fc-hd{min-width:0;flex:1}
-.fc-hd>a{font-size:1.04rem;line-height:1.45;text-decoration:none;color:var(--ink,#2b2622)}
-.fc-hd>a b{font-weight:800}
-.fc-loc{display:flex;gap:4px;align-items:flex-start;font-size:.84rem;color:var(--ink-2,#5a524b);margin:4px 0 0!important;line-height:1.5}
+.emg-item.fc{display:block;background:#fff;border:0;border-radius:20px;padding:0;margin:0 0 18px;box-shadow:0 2px 14px rgba(28,26,24,.10);overflow:hidden}
+.fc-ph{position:relative;aspect-ratio:16/10;background:linear-gradient(135deg,hsl(var(--fh) 62% 92%),hsl(calc(var(--fh) + 40) 55% 86%));color:hsl(var(--fh) 40% 30%);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.fc-mono{font-size:3.4rem;font-weight:800;line-height:1;opacity:.85}
+.fc-ci{position:absolute;right:12px;bottom:12px;width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.fc-badge{position:absolute;left:12px;top:12px;z-index:2;font-size:.78rem;font-weight:800;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink,#2b2622);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.fc-phbtn{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;font-size:.82rem;font-weight:800;padding:8px 16px;border:0;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink,#2b2622);display:flex;align-items:center;gap:6px;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.15);white-space:nowrap}
+.fc-phbtn .fc-i{width:16px;height:16px;margin:0}
+.fc-car{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.fc-car::-webkit-scrollbar{display:none}
+.fc-car figure{flex:0 0 100%;margin:0;position:relative;scroll-snap-align:start}
+.fc-car img{width:100%;height:100%;object-fit:cover;display:block}
+.fc-car figcaption{position:absolute;left:8px;bottom:8px;max-width:70%;font-size:.68rem;line-height:1.3;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:2px 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fc-car figcaption a{color:#fff}
+.fc-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:6px;z-index:2;pointer-events:none}
+.fc-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55)}.fc-dots i.on{background:#fff}
+.fc-src{position:absolute;right:8px;bottom:8px;z-index:2;font-size:.66rem;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:2px 6px}
+.fc-body{padding:12px 16px 14px}
+.fc-kind{font-size:.98rem;font-weight:800;color:var(--ink,#2b2622);margin:0!important;line-height:1.5}
+.fc-name{margin:2px 0 0}.fc-name>a{font-size:.95rem;line-height:1.5;color:var(--ink-2,#5a524b);text-decoration:none}.fc-name>a b{font-weight:600}
+.fc-catch{font-size:.9rem;font-weight:700;color:#a8410b;margin:4px 0 0!important;line-height:1.55}
+.fc-line,.fc-price{display:flex;gap:6px;align-items:flex-start;font-size:.86rem;line-height:1.55;color:var(--ink-2,#5a524b);margin:4px 0 0!important}
+.fc-line>span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-width:0}
+.fc-price{font-weight:800;color:var(--ink,#2b2622);font-size:.92rem}
 .fc-i{flex:0 0 auto;width:16px;height:16px;margin-top:2px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;color:var(--o,#e8590c)}
-.fc-chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0!important;margin:10px 0 0!important}
-.fc-chips li{font-size:.78rem;font-weight:700;line-height:1.3;padding:4px 10px;border-radius:999px;background:#fff3ea;color:#a8410b;margin:0!important}
-.fc-rows{list-style:none;padding:0!important;margin:10px 0 0!important;display:grid;gap:6px}
-.fc-rows li{display:flex;gap:6px;align-items:flex-start;font-size:.86rem;line-height:1.55;margin:0!important}
-.fc-k{flex:0 0 auto;max-width:6.5em;font-size:.72rem;font-weight:700;color:var(--ink-3,#6b625b);background:#f4f1ee;border-radius:6px;padding:1px 6px;margin-top:1px;line-height:1.5}
-.fc-v{min-width:0;overflow-wrap:anywhere}
-.fc-for{font-size:.84rem;line-height:1.6;margin:10px 0 0!important;padding:8px 10px;background:#f6faf6;border-radius:10px;color:#2f5130}
-.fc-for b{display:inline-block;font-size:.72rem;background:#2f7d32;color:#fff;border-radius:6px;padding:0 6px;margin-right:6px}
+.fc-k{font-size:.72rem;font-weight:700;color:var(--ink-3,#6b625b);background:#f4f1ee;border-radius:6px;padding:1px 6px;margin-right:6px}
+.fc-tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0!important;margin:8px 0 0!important}
+.fc-tags li{font-size:.74rem;line-height:1.3;padding:3px 8px;border-radius:6px;background:#f4f1ee;color:var(--ink-2,#5a524b);margin:0!important}
 .fc-fit{font-size:.84rem;font-weight:700;line-height:1.5;margin:10px 0 0!important;padding:7px 10px;border-radius:10px}
 .fc-fit small{display:block;font-weight:400;font-size:.78rem;margin-top:1px}
 .fc-fit.ok{background:#e8f5e9;color:#1b5e20}.fc-fit.unk{background:#f4f1ee;color:#5a524b}.fc-fit.ng{background:#fdecea;color:#a12a1b}
@@ -173,7 +179,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 .fc-more{margin:10px 0 0;font-size:.84rem}
 .fc-more summary{cursor:pointer;color:var(--ink-2,#5a524b);font-weight:700;font-size:.82rem;padding:2px 0}
 .fc-more>small,.fc-more>p,.fc-more>ul,.fc-more>dl{display:block;margin:6px 0 0!important}
-.emg-item.fc .fac-photos{margin-top:10px}
 .emg-item.fc .jt-c{margin-top:8px}
 .fp{background:#fffaf5;border:2px solid var(--o,#e8590c);border-radius:20px;padding:14px;margin:12px 0 16px}
 .fp-t{display:flex;gap:6px;align-items:center;font-weight:800;font-size:1.04rem;margin:0 0 4px!important;color:var(--ink,#2b2622)}
@@ -232,7 +237,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
       <p class="emg-free">この一覧は無料の情報です。自治体や団体からお金をもらっていません。条件は公式ページに書いてあることを短くまとめたもので、変わることがあります。申し込む前に必ずリンク先でご確認ください。</p>
       
       
-      <section class="emg-pref" data-pref="福井県"><h2 style="font-size:1.15em">譲渡の窓口（県・市の動物愛護センター）（福井県・2か所）</h2><div class="emg-item emg-co fc jt-card" data-fit="{&quot;a&quot;:[&quot;dog&quot;,&quot;cat&quot;],&quot;o&quot;:1,&quot;at&quot;:&quot;犬・猫&quot;}"><div class="fc-top"><div class="fc-ph" style="--fh:298"><span class="fc-mono" aria-hidden="true">福</span><svg class="fc-ci" aria-hidden="true" focusable="false"><use href="#fci-heart"/></svg></div><div class="fc-hd"><a href="https://www.fapscsite.com/blank-14" target="_blank" rel="noopener"><b>福井県動物愛護センター</b></a><p class="fc-loc"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-pin"/></svg>福井県（都道府県）・犬・猫</p></div></div><p class="fc-fit" hidden></p><p class="jt-h">公式ページに書いてあること</p><ul class="jt-c"><li>センターの譲渡条件を満たす人（未成年は保護者の同意と同伴）</li><li>賃貸は飼育できる書類（契約書など）</li><li>犬・猫は適正飼育講習会の受講が必須</li><li>終生飼養の保証人を立てる</li><li>譲渡会の日や開所日（平日8時30分〜17時）に面会できる</li></ul><details class="fc-more"><summary>くわしく見る</summary><small class="sg-src">2026年11月14日に公式ページで確認</small></details></div><div class="emg-item emg-co fc jt-card" data-fit="{&quot;a&quot;:[&quot;dog&quot;,&quot;cat&quot;],&quot;o&quot;:1,&quot;at&quot;:&quot;犬・猫&quot;}"><div class="fc-top"><div class="fc-ph" style="--fh:241"><span class="fc-mono" aria-hidden="true">福</span><svg class="fc-ci" aria-hidden="true" focusable="false"><use href="#fci-heart"/></svg></div><div class="fc-hd"><a href="https://www.city.fukui.lg.jp/kurasi/kaiinu/dog/p021335.html" target="_blank" rel="noopener"><b>福井県動物愛護センター（福井市の犬・猫も譲渡）</b></a><p class="fc-loc"><svg class="fc-i" aria-hidden="true" focusable="false"><use href="#fci-pin"/></svg>福井市（中核市）・犬・猫</p></div></div><p class="fc-fit" hidden></p><p class="jt-h">公式ページに書いてあること</p><ul class="jt-c"><li>譲渡会とあわせて開く飼い主講習会を受ける</li><li>終生飼養保証人を立てる</li><li>賃貸は飼えることがわかる契約書などを持参</li><li>家族全員の賛成とアレルギーがないかを確かめる</li><li>未成年は保護者と一緒に</li></ul><details class="fc-more"><summary>くわしく見る</summary><p class="jt-h">あわせて見る（公式ページ）</p><ul class="jt-l"><li><a href="https://www.fapscsite.com/transfer_hope/" target="_blank" rel="noopener">譲渡までの流れ（福井県の受託団体） ↗</a></li><li><a href="https://www.fapscsite.com/adoptable_animal/" target="_blank" rel="noopener">譲渡できる動物たち ↗</a></li></ul><p class="jt-more"><a href="/joto/fukui/fukui-shi/">福井市で迎えるときの条件をくわしく見る →</a></p><small class="sg-src">2026年11月14日に公式ページで確認</small></details></div></section>
+      <section class="emg-pref" data-pref="福井県"><h2 style="font-size:1.15em">譲渡の窓口（県・市の動物愛護センター）（福井県・2か所）</h2><div class="emg-item emg-co fc jt-card" data-fit="{&quot;a&quot;:[&quot;dog&quot;,&quot;cat&quot;],&quot;o&quot;:1,&quot;at&quot;:&quot;犬・猫&quot;}"><div class="fc-ph" style="--fh:298"><span class="fc-mono" aria-hidden="true">福</span><svg class="fc-ci" aria-hidden="true" focusable="false"><use href="#fci-heart"/></svg></div><div class="fc-body"><p class="fc-kind">福井県（都道府県）・犬・猫</p><div class="fc-name"><a href="https://www.fapscsite.com/blank-14" target="_blank" rel="noopener"><b>福井県動物愛護センター</b></a></div><p class="fc-fit" hidden></p><p class="jt-h">公式ページに書いてあること</p><ul class="jt-c"><li>センターの譲渡条件を満たす人（未成年は保護者の同意と同伴）</li><li>賃貸は飼育できる書類（契約書など）</li><li>犬・猫は適正飼育講習会の受講が必須</li><li>終生飼養の保証人を立てる</li><li>譲渡会の日や開所日（平日8時30分〜17時）に面会できる</li></ul><details class="fc-more"><summary>くわしく見る</summary><small class="sg-src">2026年11月14日に公式ページで確認</small></details></div></div><div class="emg-item emg-co fc jt-card" data-fit="{&quot;a&quot;:[&quot;dog&quot;,&quot;cat&quot;],&quot;o&quot;:1,&quot;at&quot;:&quot;犬・猫&quot;}"><div class="fc-ph" style="--fh:241"><span class="fc-mono" aria-hidden="true">福</span><svg class="fc-ci" aria-hidden="true" focusable="false"><use href="#fci-heart"/></svg></div><div class="fc-body"><p class="fc-kind">福井市（中核市）・犬・猫</p><div class="fc-name"><a href="https://www.city.fukui.lg.jp/kurasi/kaiinu/dog/p021335.html" target="_blank" rel="noopener"><b>福井県動物愛護センター（福井市の犬・猫も譲渡）</b></a></div><p class="fc-fit" hidden></p><p class="jt-h">公式ページに書いてあること</p><ul class="jt-c"><li>譲渡会とあわせて開く飼い主講習会を受ける</li><li>終生飼養保証人を立てる</li><li>賃貸は飼えることがわかる契約書などを持参</li><li>家族全員の賛成とアレルギーがないかを確かめる</li><li>未成年は保護者と一緒に</li></ul><details class="fc-more"><summary>くわしく見る</summary><p class="jt-h">あわせて見る（公式ページ）</p><ul class="jt-l"><li><a href="https://www.fapscsite.com/transfer_hope/" target="_blank" rel="noopener">譲渡までの流れ（福井県の受託団体） ↗</a></li><li><a href="https://www.fapscsite.com/adoptable_animal/" target="_blank" rel="noopener">譲渡できる動物たち ↗</a></li></ul><p class="jt-more"><a href="/joto/fukui/fukui-shi/">福井市で迎えるときの条件をくわしく見る →</a></p><small class="sg-src">2026年11月14日に公式ページで確認</small></details></div></div></section>
       <div class="emg-tips"><h4>条件をくらべる</h4><div class="tbl"><table class="pp-tbl t2"><thead><tr><th>名前</th><th>年齢</th><th>住まい</th><th>家族の賛成</th><th>講習</th><th>お試し</th><th>不妊去勢</th><th>室内飼い</th><th>費用</th></tr></thead><tbody><tr><td>福井県動物愛護センター</td><td></td><td class="c">○</td><td class="c">○</td><td class="c">○</td><td></td><td></td><td></td><td></td></tr><tr><td>福井県動物愛護センター<small class="sub">（福井市の犬・猫も譲渡）</small></td><td></td><td class="c">○</td><td class="c">○</td><td class="c">○</td><td></td><td></td><td></td><td></td></tr></tbody></table></div><p class="emg-tips-note">○は公式サイトにはっきり書いてあること。空欄は「しない」ではなく、公式サイトに書いていない・分からないという意味です。</p></div>
       
       <p>中部のほかの県：<a href="/joto/niigata/">新潟県の保護犬・保護猫の譲渡（2か所）</a>、<a href="/joto/toyama/">富山県の保護犬・保護猫の譲渡（2か所）</a>、<a href="/joto/ishikawa/">石川県の保護犬・保護猫の譲渡（2か所）</a>、<a href="/joto/yamanashi/">山梨県の保護犬・保護猫の譲渡（2か所）</a>、<a href="/joto/nagano/">長野県の保護犬・保護猫の譲渡（3か所）</a>、<a href="/joto/gifu/">岐阜県の保護犬・保護猫の譲渡（2か所）</a>、<a href="/joto/shizuoka/">静岡県の保護犬・保護猫の譲渡（3か所）</a>、<a href="/joto/aichi/">愛知県の保護犬・保護猫の譲渡（6か所）</a></p>
