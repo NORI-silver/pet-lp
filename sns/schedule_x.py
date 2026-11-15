@@ -101,7 +101,7 @@ def main():
         for d in req("GET", f"/social-sets/{sid}/drafts?limit=10&order_by=-updated_at", key)["results"]:
             print(d.get("status"), d.get("scheduled_date"), d.get("published_at"), d.get("x_published_url"), (d.get("preview") or "")[:30].replace("\n", " "))
         return 0
-    if _cfg.get("x_pause") and not dry:
+    if _cfg.get("x_pause") and not dry and "--hold" not in sys.argv:  # 止めていても、予約を消す（--hold）はできる
         print("いまは止めています（posts.json の x_pause）:", _cfg["x_pause"])
         return 0
     hold = "--hold" in sys.argv  # 予約ずみ（まだ出ていない）ものを消して、入れ直さない
