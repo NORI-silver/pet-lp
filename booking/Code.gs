@@ -61,9 +61,6 @@ var CONFIG = {
   DISPLAY_FAR_KM: 250,
   // 道のりを聞く道路データの入口（OSRM と同じ形）。ページの ROAD_API と同じにする。いまの公開デモは非営利だけが条件なので、手数料を始める前に商用で使える入口へ替える
   ROAD_API: 'https://router.project-osrm.org',
-  // 料金に使うお迎え・回送の道のりを何倍に見るか。地図の最短の道のりは実際より短く出やすいので1割長めに見る
-  // （本当の料金が概算より高くならないように。Nori 2026-11-15。乗る距離はページの kmOf が同じく1.1倍にして送ってくる）
-  ROUTE_PAD: 1.1,
 
   // 決まらないときの待ち時間（分）。会社が動いている時間（OPEN_HOURS）だけ数える。夜の依頼は朝から数え始める
   OPEN_HOURS: '8-20',
@@ -3216,10 +3213,8 @@ function displayPriceCalc_(c, p) {
     if (rule.unsure && rule.per == null && rule.yen == null) return {yen:0, unknown:true};
     if (rule.per == null && rule.over == null && rule.unknownOver == null && !rule.tiers && !rule.bands && !rule.table) return {yen:rule.yen || 0, unknown:!!rule.unsure};
     if (!shop) return {yen:rule.yen || 0, unknown:true};
-    var road = roadKm_(shop, at, back);
-    if (road == null) legGuess = true;
-    var km = kmOf(road != null ? road * CONFIG.ROUTE_PAD : legKm_(shop, at, back)), // 直線×1.3の概算はもう長めなので、そのまま
-      free = rule.km || 0, yen = rule.yen || 0;
+    if (roadKm_(shop, at, back) == null) legGuess = true;
+    var km = kmOf(legKm_(shop, at, back)), free = rule.km || 0, yen = rule.yen || 0;
     if (rule.freeWithin != null && km <= rule.freeWithin) return {yen:0, unknown:!!rule.unsure}; // お店の近くはお迎え無料（返事で分かった会社）
     if (rule.unknownOver != null) return {yen:yen, unknown:km > rule.unknownOver}; // その距離を超えると別料金（金額は非公開）
     if (rule.tiers) { // 距離の段階で変わる迎車（base＝[円, 含まれるkm]、tiers は乗車と同じ形）
