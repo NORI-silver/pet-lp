@@ -63,7 +63,8 @@
   }
   // 掲載情報の写真（a=pinfo）：端末の中で、カードと同じ横3：縦2に切り抜いて1500×1000pxのJPEGにしてから送る（位置の情報などは消える）。
   // 送る前にカードと同じ形の見本を出し、切り抜く位置はつまみで動かせる。切り抜いたあとが1200×800pxに足りない写真は送らない
-  var PW = 1500, PH = 1000, MINW = 1200;
+  // 「運転手」は正方形（800×800、600px以上）で、カードでは丸く出す。了解のチェックが要る
+  var PW = 1500, PH = 1000, MINW = 1200, DRIVER = "運転手";
   function upload(){
     var box = body.querySelector("[data-pinfo-up]");
     if (!box) return;
@@ -75,13 +76,24 @@
     var pos = document.createElement("input"); pos.type = "range"; pos.min = "0"; pos.max = "100"; pos.value = "50";
     pos.style.cssText = "display:none;width:100%"; pos.setAttribute("aria-label", "切り抜く位置");
     file.parentNode.insertAdjacentElement("afterend", prev); prev.insertAdjacentElement("afterend", cap); cap.insertAdjacentElement("afterend", pos);
+    var kindSel = box.querySelector("[data-kind]");
+    var ok = document.createElement("label"); ok.style.cssText = "display:none;font-weight:400;gap:6px;align-items:center";
+    ok.innerHTML = '<input type="checkbox" data-consent style="width:auto;display:inline;margin:0">写っている方ご本人の了解があります';
+    box.querySelector("[data-rights]").parentNode.insertAdjacentElement("afterend", ok);
     var img = null, crop = null;
+    function shape(){ var d = kindSel.value === DRIVER; return d ? { r: 1, w: 800, h: 800, min: MINW / 2 } : { r: 1.5, w: PW, h: PH, min: MINW }; }
     function draw(){
       if (!img) return;
-      var w = img.naturalWidth, h = img.naturalHeight, cw = Math.min(w, h * 3 / 2), ch = cw * 2 / 3, k = pos.value / 100;
+      var sh = shape(), w = img.naturalWidth, h = img.naturalHeight, cw = Math.min(w, h * sh.r), ch = cw / sh.r, k = pos.value / 100;
       crop = { x: (w - cw) * k, y: (h - ch) * k, w: Math.round(cw), h: Math.round(ch) };
-      prev.getContext("2d").drawImage(img, crop.x, crop.y, cw, ch, 0, 0, PW, PH);
+      prev.width = sh.w; prev.height = sh.h;
+      prev.style.aspectRatio = sh.r === 1 ? "1/1" : "3/2"; prev.style.width = sh.r === 1 ? "60%" : "100%"; prev.style.borderRadius = sh.r === 1 ? "50%" : "12px";
+      prev.getContext("2d").drawImage(img, crop.x, crop.y, cw, ch, 0, 0, sh.w, sh.h);
+      cap.textContent = "お客さまのカードでは、このように見えます。" + (Math.abs(w / h - sh.r) > 0.02 ? "つまみで切り抜く位置を動かせます。" : "");
+      pos.style.display = Math.abs(w / h - sh.r) > 0.02 ? "block" : "none";
     }
+    function kindChanged(){ ok.style.display = kindSel.value === DRIVER ? "flex" : "none"; if (img) { if (Math.min(img.naturalWidth, img.naturalHeight * shape().r) < shape().min) { msg.textContent = "この写真は小さすぎます。"; } else msg.textContent = ""; draw(); } }
+    kindSel.addEventListener("change", kindChanged); kindChanged();
     pos.addEventListener("input", draw);
     file.addEventListener("change", function(){
       var f = file.files && file.files[0]; img = null; crop = null;
@@ -92,20 +104,22 @@
       im.onload = function(){
         URL.revokeObjectURL(url);
         var w = im.naturalWidth, h = im.naturalHeight;
-        if (Math.min(w, h * 3 / 2) < MINW) { msg.textContent = "写真が小さすぎます。横3：縦2に切り抜いたあとで、横" + MINW + "px以上になる写真にしてください。"; file.value = ""; return; }
+        var sh = shape();
+        if (Math.min(w, h * sh.r) < sh.min) { msg.textContent = sh.r === 1 ? "写真が小さすぎます。正方形に切り抜いたあとで" + sh.min + "px以上になる写真にしてください。" : "写真が小さすぎます。横3：縦2に切り抜いたあとで、横" + sh.min + "px以上になる写真にしてください。"; file.value = ""; return; }
         img = im; pos.value = "50"; draw();
         prev.style.display = "block"; cap.style.display = "";
-        if (Math.abs(w / h - 1.5) > 0.02) { pos.style.display = "block"; cap.textContent = "お客さまのカードでは、このように見えます。つまみで切り抜く位置を動かせます。"; }
       };
       im.src = url;
     });
     btn.addEventListener("click", function(){
       if (!img || !crop) { msg.textContent = "写真を選んでください。"; return; }
       if (!box.querySelector("[data-rights]").checked) { msg.textContent = "「載せる権利があります」にチェックしてください。"; return; }
+      if (kindSel.value === DRIVER && !ok.querySelector("input").checked) { msg.textContent = "「写っている方ご本人の了解があります」にチェックしてください。"; return; }
+      if (Math.min(img.naturalWidth, img.naturalHeight * shape().r) < shape().min) { msg.textContent = "この写真は小さすぎます。"; return; }
       btn.disabled = true; msg.textContent = "送っています…";
       var b = new URLSearchParams({ kind: "pinfo_photo", t: box.getAttribute("data-t"), rights: "1", w: String(crop.w), h: String(crop.h),
         data: prev.toDataURL("image/jpeg", 0.85) });
-      b.set("photo_kind", box.querySelector("[data-kind]").value);
+      b.set("photo_kind", kindSel.value); if (kindSel.value === DRIVER) b.set("consent", "1");
       fetch(API, { method: "POST", body: b }).then(function(r){ return r.json(); }).then(function(r){
         btn.disabled = false;
         if (r && r.ok) { msg.textContent = "受け付けました（" + r.n + "枚め）。運営者が確かめてから公開します。"; file.value = ""; img = null; prev.style.display = cap.style.display = pos.style.display = "none"; }

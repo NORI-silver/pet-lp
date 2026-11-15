@@ -2476,7 +2476,8 @@ function pconfStart_(q) {
 var SHEET_PINFO = '掲載情報';
 var PINFO_HEADERS = ['受け付けた日時', '提携先ID', '会社名', '種類', '内容', '自動チェック', '状態', '理由', 'データ'];
 var PINFO_KINDS = { photo: '写真', offer: '特典', equip: '設備・できること', pay: 'お支払い方法', cred: '許可・資格・保険', note: 'ひとこと' };
-var PINFO_PHOTO_KINDS = ['車の外', '車の中', 'ケージ・設備', 'お店', 'スタッフ'];
+var PINFO_PHOTO_KINDS = ['車の外', '車の中', 'ケージ・設備', '運転手', 'お店'];
+var PINFO_DRIVER = '運転手'; // 正方形・顔あり（ご本人の了解つき）。カードでは名前の横に丸く出す（Nori 2026-11-15「車の写真と運転手の写真も載せられるように」）
 var PINFO_PHOTO_MAX = 5, PINFO_PHOTO_DAY = 10, PINFO_OFFER_MAX = 2, PINFO_NOTE_MAX = 60, PINFO_PHOTO_MIN_PX = 1200, PINFO_SESSION_H = 24;
 var PINFO_STOP = []; // 掲載情報のページを止めた会社（提携先ID）。提携をやめた会社などをここに入れる
 // 特典の決まった形（{n} に数字。max は数字の上限）
@@ -2584,9 +2585,10 @@ function pinfoPublic_() {
     if (v[6] !== '公開' || !pinfoOpen_(String(v[1]))) return;
     var d; try { d = JSON.parse(v[8] || '{}'); } catch (e) { return; }
     var o = out[v[1]] = out[v[1]] || { offers: [], tags: [], note: '', photos: [] };
-    if (v[3] === PINFO_KINDS.offer) o.offers = (d.list || []).filter(function(x) { return x.until >= today; }).map(function(x) { return { t: x.label || String(x.text || '').replace(/（[\d/]+まで）$/, ''), until: Number(x.until.slice(5, 7)) + '/' + Number(x.until.slice(8, 10)) }; });
+    if (v[3] === PINFO_KINDS.offer) o.offers = (d.list || []).filter(function(x) { return x.until >= today; }).map(function(x) { return { k: x.k || '', n: x.n || null, t: x.label || String(x.text || '').replace(/（[\d/]+まで）$/, ''), until: Number(x.until.slice(5, 7)) + '/' + Number(x.until.slice(8, 10)) }; });
     else if (v[3] === PINFO_KINDS.equip) o.equip = d.list || [];
     else if (v[3] === PINFO_KINDS.note) o.note = d.text || '';
+    else if (v[3] === PINFO_KINDS.photo && d.file && d.kind === PINFO_DRIVER) o.driver = 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(d.file) + '&sz=w400';
     else if (v[3] === PINFO_KINDS.photo && d.file && d.w >= d.h) o.photos.push({ url: 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(d.file) + '&sz=w1200', kind: d.kind });
   });
   Object.keys(out).forEach(function(k) { var o = out[k]; o.tags = o.equip || []; delete o.equip; o.photos = o.photos.slice(-PINFO_PHOTO_MAX).sort(function(a, b) { return (a.kind === '車の外' ? 0 : 1) - (b.kind === '車の外' ? 0 : 1); }); });
@@ -2665,7 +2667,7 @@ function pinfoPage_(q) {
   var html = '<p>' + esc_(name) + ' さま</p><p>お客さまが見る候補のカードに、写真・特典・ひとことを足せます。<b>写真と特典がある会社は、お客さまに選ばれやすくなります。</b>運営者が確かめてから出します。受け付けた内容は、登録のメールアドレスにもお知らせします。載せられるものの決まりは <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/listing/') + '">掲載の決まり</a> をご覧ください。</p>' +
     (q.go === '1' ? '<div class="box">' + (done.length ? esc_(done.join('、')) + ' を受け付けました。' : '変わったところはありませんでした。') + '</div>' : '');
   // 写真（/go/ のページが data-pinfo-up を見て、縮めてから送る）
-  html += '<h2>写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）</h2><p class="note">カードでは横3：縦2の枠で出します。選んだ写真をこの形に切り抜いて見本を出すので、見え方を確かめてから送ってください（横' + PINFO_PHOTO_MIN_PX + 'px以上になる写真）。1枚めは「車の外」がおすすめです（カードの最初に出ます）。昼の明るい場所で、背景にほかの車・人・看板が入らないように撮ってください。ご自身で撮った実際の車・設備・お店の写真だけで、電話番号・ナンバープレート・人の顔が写っていないもの。文字やスタンプは入れないでください。</p>' +
+  html += '<h2>写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）</h2><p class="note">カードでは横3：縦2の枠で出します。選んだ写真をこの形に切り抜いて見本を出すので、見え方を確かめてから送ってください（横' + PINFO_PHOTO_MIN_PX + 'px以上になる写真）。1枚めは「車の外」がおすすめです（カードの最初に出ます）。昼の明るい場所で、背景にほかの車・人・看板が入らないように撮ってください。「運転手」は正方形に切り抜き、カードの会社名の横に丸く出します（顔がはっきり見える、明るい場所での写真。写っている方ご本人の了解が必要です）。ご自身で撮った実際の写真だけで、電話番号・ナンバープレートが写っていないもの。運転手のほかは、人の顔が写っていないものにしてください。文字やスタンプは入れないでください。</p>' +
     (photos.length < PINFO_PHOTO_MAX ? '<div data-pinfo-up data-t="' + esc_(q.s) + '" class="box"><label>写真の種類<select data-kind>' + PINFO_PHOTO_KINDS.map(function(k) { return '<option>' + esc_(k) + '</option>'; }).join('') + '</select></label>' +
       '<label>写真を選ぶ<input type="file" accept="image/jpeg,image/png,image/heic,image/webp"></label>' +
       '<label style="font-weight:400;display:flex;gap:6px;align-items:center"><input type="checkbox" data-rights style="width:auto;display:inline;margin:0">自分（自社）で撮った写真で、載せる権利があります</label>' +
@@ -2699,6 +2701,11 @@ function pinfoPhoto_(p) {
   if (p.rights !== '1') return { ok: false, error: '「載せる権利があります」にチェックしてください' };
   var kind = PINFO_PHOTO_KINDS.indexOf(p.photo_kind) >= 0 ? p.photo_kind : PINFO_PHOTO_KINDS[0];
   var w = Number(p.w) || 0, h = Number(p.h) || 0;
+  if (kind === PINFO_DRIVER) {
+    // 運転手は正方形（ページが切り抜く）。写っている方ご本人の了解が要る
+    if (p.consent !== '1') return { ok: false, error: '「写っている方ご本人の了解があります」にチェックしてください' };
+    if (w < PINFO_PHOTO_MIN_PX / 2 || Math.abs(w / h - 1) > 0.02) return { ok: false, error: '運転手の写真は、正方形に切り抜いたあとで' + PINFO_PHOTO_MIN_PX / 2 + 'px以上の写真にしてください' };
+  } else
   // ページが横3：縦2に切り抜いて送る（カードの枠と同じ）。w・h は切り抜いた大きさ
   if (w < PINFO_PHOTO_MIN_PX || h < PINFO_PHOTO_MIN_PX * 2 / 3) return { ok: false, error: '写真が小さすぎます（横3：縦2に切り抜いたあとで、横' + PINFO_PHOTO_MIN_PX + 'px以上の写真にしてください）' };
   if (Math.abs(w / h - 1.5) > 0.02) return { ok: false, error: '写真の形が合いません。ページを開き直してから、もう一度お送りください' };
