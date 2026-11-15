@@ -552,8 +552,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           im.referrerPolicy = "no-referrer"; im.addEventListener("error", function(){ im.remove(); if (!ph.querySelector("img")) ph.parentNode.remove(); }); ph.appendChild(im); });
         // 検索広告のように、写真は料金・特典の右に小さく（Nori 2026-11-15「このくらいの写真は？いちもふくめて」）。横にスワイプで次の写真
         var thumb = document.createElement("div"); thumb.className = "partner-thumb"; thumb.appendChild(ph);
-        if (ex.photos.length > 1) { var pn = document.createElement("span"); pn.className = "partner-photo-n"; pn.textContent = "写真" + ex.photos.length + "枚"; thumb.appendChild(pn); }
-        var pc = document.createElement("small"); pc.className = "partner-photo-src"; pc.textContent = "写真：" + card.label; thumb.appendChild(pc);
+        // 写真の下の文字は出さない（Nori 2026-11-15 の見本）。2枚以上なら小さな点で枚数だけ
+        if (ex.photos.length > 1) { var pn = document.createElement("span"); pn.className = "partner-photo-n"; pn.setAttribute("aria-hidden", "true"); pn.textContent = ex.photos.map(function(){ return "●"; }).join(""); thumb.appendChild(pn); }
       }
       var h4 = text("h4", card.label);
       // 運転手の写真（掲載情報）は名前の横に丸く（Nori 2026-11-15「運転手の写真も」）
