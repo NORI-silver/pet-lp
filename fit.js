@@ -13,7 +13,7 @@
   try { var sv = JSON.parse(localStorage.getItem("petMine") || "null"); if (sv) st = {a: sv.a || "", size: sv.size || "", x: sv.x || []}; } catch (e) {}
   function save(){ try { localStorage.setItem("petMine", JSON.stringify(st)); } catch (e) {} }
   function kg(){
-    if (st.x.indexOf("big") >= 0) return [25, 200, "大型犬"];
+    if (st.x.indexOf("big") >= 0) return [40, 200, "40kg以上"];
     if (!sel || !st.size) return null;
     var o = sel.querySelector('option[value="' + st.size + '"]');
     return o ? [parseFloat(o.getAttribute("data-lo")), parseFloat(o.getAttribute("data-hi")), o.textContent] : null;
@@ -36,7 +36,8 @@
       } else if (f.s) {
         var need = SZ.filter(function(z){ return lo < z[2] && z[1] < hi; }).map(function(z){ return z[0]; });
         var all = need.every(function(k){ return f.s.indexOf(k) >= 0; }), some = need.some(function(k){ return f.s.indexOf(k) >= 0; });
-        if (all) r.push(["ok", need.indexOf("l") >= 0 ? "大型犬もOK" : "この大きさOK"]);
+        if (all && lo >= 40) r.push(["unk", "大型犬OK・40kg以上は不明"]);  // 「大型犬OK」だけでは40kg以上まで受けるかは分からない（Nori 2026-11-15「40kg以上がエッジケース」）
+        else if (all) r.push(["ok", need.indexOf("l") >= 0 ? "大型犬もOK" : "この大きさOK"]);
         else if (!some) r.push(["ng", f.s.join("") === "s" ? "小型犬だけ" : "この大きさは受けない"]);
         else r.push(["unk", "大きさで受けないことあり"]);
       } else r.push(["unk", "大きさは不明"]);
