@@ -77,7 +77,7 @@ g = 1; unk.push(k);
 }
 return [g, unk];
 }
-function typed(){ return pick ? (pick.text() || "").trim() : ""; }
+function typed(){ return pick && !(pick.open && pick.open()) ? (pick.text() || "").trim() : ""; }
 function placeOk(r, p){
 var visitOk = function(x){ return r.y.indexOf("visit") >= 0 && (r.vz || (r.ar || "").indexOf(x) >= 0); };
 if (r._p !== p.p) return false;
