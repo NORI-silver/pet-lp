@@ -121,39 +121,6 @@
  }
 ]
 </script>
-<style id="t2css">
-table.t2.t2.t2.t2{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.6;background:#fff;color:var(--ink,#2b2622)}
-table.t2.t2.t2.t2 th,table.t2.t2.t2.t2 td{border:0;border-bottom:1px solid var(--line,#ece6e0);padding:10px 8px;text-align:left;vertical-align:top;font-weight:400;background:transparent;white-space:normal;font-size:inherit}
-table.t2.t2.t2.t2 thead th{background:#f7f4f1;color:var(--ink-3,#6b625b);font-size:.78rem;font-weight:600;white-space:nowrap;border-bottom:1.5px solid var(--line,#ece6e0)}
-table.t2.t2.t2.t2 tbody tr>:first-child{color:var(--ink,#2b2622);font-weight:600;min-width:7.5em}
-@media (max-width:480px){table.t2.has-bars.t2.t2 thead th{white-space:normal}table.t2.has-bars.t2.t2 tbody tr>:first-child{min-width:3.5em}table.t2.has-bars.t2.t2 th,table.t2.has-bars.t2.t2 td{padding:9px 5px}}
-table.t2.t2.t2.t2 .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-table.t2.t2.t2.t2 .c{text-align:center}
-table.t2.t2.t2.t2 .s{white-space:nowrap}
-table.t2.t2.t2.t2 small.sub{display:block;font-size:.76rem;font-weight:400;color:var(--ink-3,#6b625b);line-height:1.4;margin-top:1px}
-table.t2.t2.t2.t2 small.nt{font-size:.86em;color:var(--ink-3,#6b625b)}
-table.t2.t2.t2.t2 .ln{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:2px 0}
-table.t2.t2.t2.t2 .ln+.ln{border-top:1px dotted var(--line,#ece6e0)}
-table.t2.t2.t2.t2 .ln .p{white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink,#2b2622)}
-table.t2.t2.t2.t2 .tx{display:block;padding:2px 0}
-table.t2.t2.t2.t2 .tx+.ln,table.t2.t2.t2.t2 .ln+.tx,table.t2.t2.t2.t2 .tx+.tx{border-top:1px dotted var(--line,#ece6e0)}
-@media (max-width:599px){
-table.t2.t2.t2.t2 th,table.t2.t2.t2.t2 td{padding:9px 6px}
-table.t2.t2.t2.t2 .n{white-space:normal;word-break:keep-all}
-table.t2.t2.t2.t2 thead th{white-space:normal}
-table.t2s.t2s.t2s.t2s{background:transparent}
-table.t2s.t2s.t2s.t2s thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-table.t2s.t2s.t2s.t2s,table.t2s.t2s.t2s.t2s tbody{display:block}
-table.t2s.t2s.t2s.t2s tr{display:block;background:#fff;border:1.5px solid var(--line,#ece6e0);border-radius:14px;margin:0 0 10px;overflow:hidden}
-table.t2s.t2s.t2s.t2s tbody tr>:first-child{display:block;background:#f7f4f1;border:0;padding:10px 14px;font-size:.98rem;min-width:0}
-table.t2s.t2s.t2s.t2s td:not(:first-child){display:grid;grid-template-columns:5.6em 1fr;gap:8px;border:0;border-top:1px solid var(--line,#ece6e0);padding:9px 14px;text-align:left;white-space:normal}
-table.t2s.t2s.t2s.t2s td:not(:first-child)::before{content:attr(data-l);font-size:.74rem;color:var(--ink-3,#6b625b);line-height:1.5;padding-top:2px}
-table.t2s.t2s.t2s.t2s.one td:not(:first-child){display:block}
-table.t2s.t2s.t2s.t2s.one td:not(:first-child)::before{display:none}
-table.t2s.t2s.t2s.t2s td.n{text-align:left}
-table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:none}
-}
-</style>
 <style id="uicss">
 [data-ffi][hidden],[data-ffg][hidden]{display:none!important}
 #ffRes{scroll-margin-top:110px;height:0;margin:0}
@@ -246,6 +213,7 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 .hn-flags li{font-size:.78rem;border-radius:999px;padding:2px 10px;background:#f3f1ee;color:#3c4043}
 .hn-flags li.yes{background:#e6f4ea;color:#1e7d4f}.hn-flags li.no{background:#fde8e6;color:#b3261e}
 .hn-flags li.hard,.hn-flags li.cond{background:#fff4e0;color:#8a5300}
+.hn-wsel{width:100%;font-size:1rem;padding:10px;border:1.5px solid var(--line);border-radius:12px;background:#fff;margin:6px 0 0}
 .hn-src{font-size:.74rem;color:var(--ink-3);margin:10px 0 4px;line-height:1.6}
 .hn-src a{color:var(--ink-3)}
 .hn-reg{margin:0;padding:5px 0;border-bottom:1px solid var(--line);font-size:.86rem;line-height:1.9}
@@ -313,7 +281,29 @@ else h=n+'の決まりは、まだまとめていません。'+top+'で「ペッ
 if(r[5]){var K=[['🐕','犬'],['🦮','大型犬'],['🐈','猫'],['🐇','うさぎ・ハムスター'],['🐦','小鳥'],['🦎','爬虫類']],Mm={y:['○','受け入れる','yes'],n:['×','受け入れない','no'],h:['△','むずかしい場合あり','hard'],c:['△','条件つき','cond'],'-':['？','不明','unk']},g='<ul class="hn-ag">';
 K.forEach(function(k,i){var m=Mm[r[5].charAt(i)]||Mm['-'];g+='<li class="'+m[2]+'"><span class="i">'+k[0]+'</span><b>'+k[1]+'</b><span class="m" data-k="'+m[0]+'">'+m[1]+'</span></li>'});
 g+='</ul><ul class="hn-rows"><li><span class="i">🧺</span><span><b>ケージ</b>'+(r[5].charAt(6)=='1'?'持っていく（ケージの中で飼う）':'くわしくはリンク先で')+'</span></li></ul>';h=g+h}
-O.innerHTML=h;try{gtag('event','hinan_find',{pref:P.value,status:r[1]})}catch(e){}})})();</script>
+O.innerHTML=h;if(r[6]){var sw=document.createElement('div');sw.className='hn-shw';sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこんでいます…</p>';O.appendChild(sw);
+fetch('/hinan/s/'+r[6]+'.json').then(function(x){return x.json()}).then(function(L){function li(s){var q=s[2]+','+s[3];return '<li data-ll="'+q+'"><b>'+esc(s[0])+'</b><span>'+esc(s[1])+'</span>'+(s[5]?'<em>🐾 '+esc(s[5])+'</em>':'')+'<a href="https://www.google.com/maps/search/?api=1&amp;query='+q+'" target="_blank" rel="noopener">地図 ↗</a></li>'}
+var t='<h2>🏫 '+n+'の指定避難所（'+L.length+'か所）</h2><button type="button" class="hn-near">📍 近い避難所をさがす</button><div class="hn-nearout" aria-live="polite"></div><ol class="hn-sh">'+L.slice(0,5).map(li).join('')+'</ol>';
+if(L.length>5)t+=(r[1]=='page'?'<p class="hn-shn"><a href="'+esc(r[2])+'#shelters">'+n+'の避難所をすべて見る（'+L.length+'か所）→</a></p><ol class="hn-sh" hidden>'+L.slice(5).map(li).join('')+'</ol>':'<details class="hn-ward"><summary>ほかの'+(L.length-5)+'か所</summary><ol class="hn-sh">'+L.slice(5).map(li).join('')+'</ol></details>');
+sw.innerHTML=t+'<p class="hn-src">避難所の一覧：<a href="https://www.gsi.go.jp/bousaichiri/hinanbasho.html" target="_blank" rel="noopener">国土地理院「指定緊急避難場所・指定避難所データ」</a>（2026年11月時点）を加工して作成。開く避難所は災害の種類や状況で変わります。</p>'}).catch(function(){sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこめませんでした。</p>'})}
+try{gtag('event','hinan_find',{pref:P.value,status:r[1]})}catch(e){}})})();</script><style>
+.hn-sh{list-style:none;padding:0!important;margin:6px 0 0!important}
+.hn-sh li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);margin:0}
+.hn-sh li b{font-size:.92rem;line-height:1.45}
+.hn-sh li span{grid-column:1;font-size:.8rem;color:#5f6368;line-height:1.4}
+.hn-sh li em{grid-column:1;font-style:normal;font-size:.78rem;font-weight:700;color:#1e7a45}
+.hn-sh li a{grid-column:2;grid-row:1/span 3;font-size:.82rem;font-weight:700;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:4px 10px;text-decoration:none;background:#fff}
+.hn-sh li i{font-style:normal;font-size:.76rem;color:var(--accent,#e8590c);font-weight:700}
+.hn-shw{border:1.5px solid var(--line);border-radius:16px;padding:10px 14px;margin:14px 0;background:#fff}
+.hn-shw h2{margin:2px 0 4px!important;font-size:1.1rem}
+.hn-shw .hn-near{display:block;width:100%;margin:6px 0 2px;padding:10px;border-radius:12px;border:0;background:var(--ink,#2b2622);color:#fff;font-weight:700;font-size:.92rem}
+.hn-ward>summary{cursor:pointer;font-weight:700;font-size:.9rem;padding:7px 0;border-bottom:1px solid var(--line)}
+.hn-wsel{width:100%;font-size:1rem;padding:10px;border:1.5px solid var(--line);border-radius:12px;background:#fff;margin:6px 0 0}
+.hn-src{font-size:.74rem;color:#5f6368;margin:8px 0 0;line-height:1.5}
+.hn-shn{font-size:.82rem;color:#3c4043;margin:0 0 4px}
+</style><script>(function(){if(window.hnNearOn)return;window.hnNearOn=1;document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.hn-near');if(!b)return;var w=b.closest('.hn-shw'),o=w.querySelector('.hn-nearout');if(!navigator.geolocation){o.textContent='この端末では位置が使えません。';return}
+b.disabled=true;b.textContent='位置をたしかめています…';navigator.geolocation.getCurrentPosition(function(p){var la=p.coords.latitude,ln=p.coords.longitude,a=[];w.querySelectorAll('.hn-sh li[data-ll]').forEach(function(li){var q=li.getAttribute('data-ll').split(','),dy=(q[0]-la)*111,dx=(q[1]-ln)*91;a.push([Math.sqrt(dx*dx+dy*dy),li])});a.sort(function(x,y){return x[0]-y[0]});
+var ol=document.createElement('ol');ol.className='hn-sh';a.slice(0,5).forEach(function(x){var c=x[1].cloneNode(true),i=document.createElement('i');i.textContent='ここから'+(x[0]<1?Math.round(x[0]*1000)+'m':x[0].toFixed(1)+'km')+'（直線）';c.hidden=false;c.insertBefore(i,c.children[1]);ol.appendChild(c)});o.innerHTML='<p class="hn-shn"><b>近い避難所</b></p>';o.appendChild(ol);b.textContent='近い順に並べました';try{gtag('event','hinan_near',{})}catch(e){}},function(){b.disabled=false;b.textContent='📍 近い避難所をさがす';o.textContent='位置が使えませんでした。下の一覧からさがしてください。'},{timeout:10000,maximumAge:300000})})})();</script>
     <h2 id="answer">まず知っておきたいこと</h2>
     <ul class="hn-terms">
     <li><span class="i" aria-hidden="true">🐕‍🦺🏫</span><b>同行避難</b>いっしょに避難所まで逃げること。同じ部屋とは限らない</li>
@@ -324,9 +314,6 @@ O.innerHTML=h;try{gtag('event','hinan_find',{pref:P.value,status:r[1]})}catch(e)
     <li><span class="i" aria-hidden="true">🧺</span><b>ケージ</b>飼い主が持っていく。避難所に用意はないことが多い</li>
     </ul>
     <details class="hn-more hn-prefs"><summary>都道府県のページから見る</summary><p class="hn-reg"><b>北海道・東北</b><a href="/hinan/hokkaido/">北海道</a><a href="/hinan/aomori/">青森</a><a href="/hinan/iwate/">岩手</a><a href="/hinan/miyagi/">宮城</a><a href="/hinan/akita/">秋田</a><a href="/hinan/yamagata/">山形</a><a href="/hinan/fukushima/">福島</a></p><p class="hn-reg"><b>関東</b><a href="/hinan/tokyo/">東京</a><a href="/hinan/kanagawa/">神奈川</a><a href="/hinan/saitama/">埼玉</a><a href="/hinan/chiba/">千葉</a><a href="/hinan/ibaraki/">茨城</a><a href="/hinan/tochigi/">栃木</a><a href="/hinan/gunma/">群馬</a></p><p class="hn-reg"><b>中部</b><a href="/hinan/niigata/">新潟</a><a href="/hinan/toyama/">富山</a><a href="/hinan/ishikawa/">石川</a><a href="/hinan/fukui/">福井</a><a href="/hinan/yamanashi/">山梨</a><a href="/hinan/nagano/">長野</a><a href="/hinan/gifu/">岐阜</a><a href="/hinan/shizuoka/">静岡</a><a href="/hinan/aichi/">愛知</a></p><p class="hn-reg"><b>近畿</b><a href="/hinan/mie/">三重</a><a href="/hinan/shiga/">滋賀</a><a href="/hinan/kyoto/">京</a><a href="/hinan/osaka/">大阪</a><a href="/hinan/hyogo/">兵庫</a><a href="/hinan/nara/">奈良</a><a href="/hinan/wakayama/">和歌山</a></p><p class="hn-reg"><b>中国・四国</b><a href="/hinan/tottori/">鳥取</a><a href="/hinan/shimane/">島根</a><a href="/hinan/okayama/">岡山</a><a href="/hinan/hiroshima/">広島</a><a href="/hinan/yamaguchi/">山口</a><a href="/hinan/tokushima/">徳島</a><a href="/hinan/kagawa/">香川</a><a href="/hinan/ehime/">愛媛</a><a href="/hinan/kochi/">高知</a></p><p class="hn-reg"><b>九州・沖縄</b><a href="/hinan/fukuoka/">福岡</a><a href="/hinan/saga/">佐賀</a><a href="/hinan/nagasaki/">長崎</a><a href="/hinan/kumamoto/">熊本</a><a href="/hinan/oita/">大分</a><a href="/hinan/miyazaki/">宮崎</a><a href="/hinan/kagoshima/">鹿児島</a><a href="/hinan/okinawa/">沖縄</a></p></details>
-    <h2 id="seirei">政令指定都市の受け入れる動物</h2>
-    <p>○は受け入れると書いてある、△はむずかしい場合がある・一部は受け入れない、—は書いていない、です。ほかの市区町村は都道府県ごとのページにあります。</p>
-    <div class="tbl"><table class="t2"><thead><tr><th>自治体</th><th>犬</th><th>大型犬</th><th>猫</th><th>小動物・鳥</th><th>爬虫類</th></tr></thead><tbody><tr><th>札幌市</th><td class="c">—</td><td class="c">—</td><td class="c">—</td><td class="c">—</td><td class="c">—</td></tr><tr><th>仙台市</th><td class="c">—</td><td class="c">—</td><td class="c">—</td><td class="c">—</td><td class="c">—</td></tr><tr><th>さいたま市</th><td class="c">○</td><td class="c">△</td><td class="c">○</td><td class="c">○</td><td class="c">△</td></tr><tr><th>千葉市</th><td class="c">○</td><td class="c">—</td><td class="c">○</td><td class="c">○</td><td class="c">—</td></tr><tr><th>横浜市</th><td class="c">○</td><td class="c">—</td><td class="c">○</td><td class="c">—</td><td class="c">—</td></tr><tr><th>川崎市</th><td class="c">○</td><td class="c">○</td><td class="c">○</td><td class="c">△</td><td class="c">△</td></tr><tr><th>相模原市</th><td class="c">○</td><td class="c">—</td><td class="c">○</td><td class="c">○</td><td class="c">—</td></tr><tr><th>新潟市</th><td class="c">—</td><td class="c">—</td><td class="c">—</td><td class="c">—</td><td class="c">—</td></tr><tr><th>静岡市</th><td class="c">○</td><td class="c">—</td><td class="c">○</td><td class="c">○</td><td class="c">—</td></tr><tr><th>浜松市</th><td class="c">○</td><td class="c">—</td><td class="c">○</td><td class="c">○</td><td class="c">—</td></tr><tr><th>名古屋市</th><td class="c">○</td><td class="c">—</td><td class="c">○</td><td class="c">○</td><td class="c">—</td></tr><tr><th>京都市</th><td class="c">○</td><td class="c">—</td><td class="c">—</td><td class="c">—</td><td class="c">—</td></tr><tr><th>大阪市</th><td class="c">○</td><td class="c">△</td><td class="c">○</td><td class="c">—</td><td class="c">—</td></tr><tr><th>堺市</th><td class="c">○</td><td class="c">—</td><td class="c">○</td><td class="c">○</td><td class="c">—</td></tr><tr><th>神戸市</th><td class="c">○</td><td class="c">—</td><td class="c">○</td><td class="c">○</td><td class="c">△</td></tr><tr><th>岡山市</th><td class="c">○</td><td class="c">△</td><td class="c">○</td><td class="c">○</td><td class="c">△</td></tr><tr><th>広島市</th><td class="c">○</td><td class="c">—</td><td class="c">○</td><td class="c">○</td><td class="c">—</td></tr><tr><th>北九州市</th><td class="c">○</td><td class="c">△</td><td class="c">○</td><td class="c">○</td><td class="c">—</td></tr><tr><th>福岡市</th><td class="c">○</td><td class="c">△</td><td class="c">○</td><td class="c">○</td><td class="c">△</td></tr><tr><th>熊本市</th><td class="c">—</td><td class="c">—</td><td class="c">—</td><td class="c">—</td><td class="c">—</td></tr></tbody></table></div>
   </article></div>
 </section>
 <section style="padding-top:0">

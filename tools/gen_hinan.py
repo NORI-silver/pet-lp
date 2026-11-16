@@ -4,7 +4,7 @@
 #   避難所の一覧は作らない（公式の一覧・地図へのリンクだけ）。電話番号は載せない。順位・おすすめなし。
 #   ペットタクシーの話は、下の「前もって預け先へ移すとき」の節だけ（tools/taxi_cta.py がボタンを足す）。
 # 人口の多い県から順に足す（第1弾 2026-11-14：東京都・神奈川県・大阪府・愛知県・埼玉県）。
-import json, os
+import json, os, re
 import gen_dogrun
 import visual as V
 from guides_hinan import HINAN_GUIDES, ITEMS, CHECKED, MARK, table_rows, N, N_CAGE, SIZES, BREEDS, SEIREI
@@ -66,6 +66,7 @@ CSS = """<style>
 .hn-flags li{font-size:.78rem;border-radius:999px;padding:2px 10px;background:#f3f1ee;color:#3c4043}
 .hn-flags li.yes{background:#e6f4ea;color:#1e7d4f}.hn-flags li.no{background:#fde8e6;color:#b3261e}
 .hn-flags li.hard,.hn-flags li.cond{background:#fff4e0;color:#8a5300}
+.hn-wsel{width:100%;font-size:1rem;padding:10px;border:1.5px solid var(--line);border-radius:12px;background:#fff;margin:6px 0 0}
 .hn-src{font-size:.74rem;color:var(--ink-3);margin:10px 0 4px;line-height:1.6}
 .hn-src a{color:var(--ink-3)}
 .hn-reg{margin:0;padding:5px 0;border-bottom:1px solid var(--line);font-size:.86rem;line-height:1.9}
@@ -256,9 +257,6 @@ def render_top(ctx):
     <li><span class="i" aria-hidden="true">🧺</span><b>ケージ</b>飼い主が持っていく。避難所に用意はないことが多い</li>
     </ul>
     {_pref_links(e, done, regions=ctx["emg_regions"])}
-    <h2 id="seirei">政令指定都市の受け入れる動物</h2>
-    <p>○は受け入れると書いてある、△はむずかしい場合がある・一部は受け入れない、—は書いていない、です。ほかの市区町村は都道府県ごとのページにあります。</p>
-    {V.block(("table", table_rows(SEIREI)))}
   </article></div>
 </section>
 <section style="padding-top:0">
@@ -311,6 +309,7 @@ def render_pref(ctx, pf, its, done):
     lede = "市区町村をえらぶと、その市区町村の決まりがすぐ分かります。"
     pol = (prefs_it[0].get("policy") if prefs_it else None) or (allc[0].get("policy") if allc else "") or ""
     city_links = ('<ul class="hn-pref">' + "".join(f'<li><a href="{href_city(it)}">{e(it["name"])}</a></li>' for it in cities) + "</ul>") if cities else ""
+    if len(cities) > 12: city_links = f'<details class="hn-more" open><summary>市区町村のページ（{len(cities)}）</summary>{city_links}</details>'
     nf = [n for (p_, n) in NONE if p_ == pf]
     rest = [m["name"] for m in MUNI if m["pref"] == pf and m["name"] not in {x["name"] for x in allc} and m["name"] not in nf]
     oth = nf + rest
@@ -330,9 +329,6 @@ def render_pref(ctx, pf, its, done):
     <div class="answer"><h2 id="answer">{e(pf)}の避難所に連れて行ける動物</h2>{(agrid(e, prefs_it[0]) + '<p class="hn-none">' + e(pol) + '</p>') if prefs_it else '<p>' + e(pol) + '</p>'}</div>
     {('<h2 id="city">市区町村ごとのページ</h2>' + city_links) if cities else ""}
     {cov}
-    <h2 id="table">受け入れる動物とケージ（自治体ごと）</h2>
-    <p>○は受け入れると書いてある、△はむずかしい場合がある・一部は受け入れない、—は書いていない、です（{e(CHECKED)}に確認）。</p>
-    {V.block(("table", rows))}
     {fit}
     {('<h2 id="detail">' + e(pf) + 'の決まり</h2>' + "".join(card(e, it) for it in prefs_it)) if prefs_it else ""}
     {('<h2 id="more">ほかの市区町村の決まり</h2>' + "".join(card(e, it, True) for it in small) + HN_OPEN) if small else ""}
@@ -389,6 +385,7 @@ def render_city(ctx, pf, it, sibs, done):
     summ = e(" ".join(_answer(it)[1 if it.get("policy") else 0:]))
     others = [x for x in sibs if x is not it]
     sib = ('<ul class="hn-pref">' + "".join(f'<li><a href="{href_city(x)}">{e(x["name"])}</a></li>' for x in others) + "</ul>") if others else ""
+    if len(others) > 12: sib = f'<details class="hn-more"><summary>{e(pf)}のほかの市区町村（{len(others)}）</summary>{sib}</details>'
     return ctx["head"](title, desc, url, ld) + CSS + f"""
 <main>
 <section class="area-hero">
@@ -401,6 +398,7 @@ def render_city(ctx, pf, it, sibs, done):
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
     <div class="answer"><h2 id="answer">{e(nm)}の避難所に連れて行ける動物</h2>{pol}{agrid(e, it)}{arows(e, it)}</div>
+    {shelters_html(e, pf, it)}
     {fit}
     <h2 id="detail">{e(nm)}のくわしい決まり</h2>
     {card(e, it, grid=False)}
@@ -453,7 +451,7 @@ def _write(ROOT, ctx):
     done = [pf for _, ps in ctx["emg_regions"] for pf in ps if pf in bp and pref_ok(bp[pf])]
     import shutil
     for d in os.listdir(os.path.join(ROOT, SLUG)) if os.path.isdir(os.path.join(ROOT, SLUG)) else []:
-        if os.path.isdir(os.path.join(ROOT, SLUG, d)): shutil.rmtree(os.path.join(ROOT, SLUG, d))  # 前の作り直しの残り（薄くて外したページ）を消す
+        if d != "s" and os.path.isdir(os.path.join(ROOT, SLUG, d)): shutil.rmtree(os.path.join(ROOT, SLUG, d))  # 前の作り直しの残り（薄くて外したページ）を消す
     os.makedirs(os.path.join(ROOT, SLUG), exist_ok=True)
     page = render_top(ctx)
     if "data-bf" in page: page = _bf(page)
@@ -466,6 +464,69 @@ def _write(ROOT, ctx):
         for it in cities:
             cd = os.path.join(ROOT, SLUG, PSLUG[pf], CSLUG[(pf, it["name"])]); os.makedirs(cd, exist_ok=True)
             open(os.path.join(cd, "index.html"), "w", encoding="utf-8").write(_bf(render_city(ctx, pf, it, cities, done)))
+
+
+# ── 具体的な避難所（[B] Nori 2026-11-16「具体的な避難場所の情報ないし」） ──
+# 元は国土地理院「指定緊急避難場所・指定避難所データ」。tools/build_hinan_shelters.py が /hinan/s/<団体コード>.json に分ける。
+SH_SRC = ('<p class="hn-src">避難所の一覧：<a href="https://www.gsi.go.jp/bousaichiri/hinanbasho.html" target="_blank" rel="noopener">国土地理院「指定緊急避難場所・指定避難所データ」</a>'
+          '（2026年11月時点）を加工して作成。開く避難所は災害の種類や状況で変わります。</p>')
+MCODE = {(m["pref"], m["name"]): m["code"] for m in MUNI}
+SH_CSS = """<style>
+.hn-sh{list-style:none;padding:0!important;margin:6px 0 0!important}
+.hn-sh li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);margin:0}
+.hn-sh li b{font-size:.92rem;line-height:1.45}
+.hn-sh li span{grid-column:1;font-size:.8rem;color:#5f6368;line-height:1.4}
+.hn-sh li em{grid-column:1;font-style:normal;font-size:.78rem;font-weight:700;color:#1e7a45}
+.hn-sh li a{grid-column:2;grid-row:1/span 3;font-size:.82rem;font-weight:700;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:4px 10px;text-decoration:none;background:#fff}
+.hn-sh li i{font-style:normal;font-size:.76rem;color:var(--accent,#e8590c);font-weight:700}
+.hn-shw{border:1.5px solid var(--line);border-radius:16px;padding:10px 14px;margin:14px 0;background:#fff}
+.hn-shw h2{margin:2px 0 4px!important;font-size:1.1rem}
+.hn-shw .hn-near{display:block;width:100%;margin:6px 0 2px;padding:10px;border-radius:12px;border:0;background:var(--ink,#2b2622);color:#fff;font-weight:700;font-size:.92rem}
+.hn-ward>summary{cursor:pointer;font-weight:700;font-size:.9rem;padding:7px 0;border-bottom:1px solid var(--line)}
+.hn-wsel{width:100%;font-size:1rem;padding:10px;border:1.5px solid var(--line);border-radius:12px;background:#fff;margin:6px 0 0}
+.hn-src{font-size:.74rem;color:#5f6368;margin:8px 0 0;line-height:1.5}
+.hn-shn{font-size:.82rem;color:#3c4043;margin:0 0 4px}
+</style>"""
+NEAR_JS = r"""<script>(function(){if(window.hnNearOn)return;window.hnNearOn=1;document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.hn-near');if(!b)return;var w=b.closest('.hn-shw'),o=w.querySelector('.hn-nearout');if(!navigator.geolocation){o.textContent='この端末では位置が使えません。';return}
+b.disabled=true;b.textContent='位置をたしかめています…';navigator.geolocation.getCurrentPosition(function(p){var la=p.coords.latitude,ln=p.coords.longitude,a=[];w.querySelectorAll('.hn-sh li[data-ll]').forEach(function(li){var q=li.getAttribute('data-ll').split(','),dy=(q[0]-la)*111,dx=(q[1]-ln)*91;a.push([Math.sqrt(dx*dx+dy*dy),li])});a.sort(function(x,y){return x[0]-y[0]});
+var ol=document.createElement('ol');ol.className='hn-sh';a.slice(0,5).forEach(function(x){var c=x[1].cloneNode(true),i=document.createElement('i');i.textContent='ここから'+(x[0]<1?Math.round(x[0]*1000)+'m':x[0].toFixed(1)+'km')+'（直線）';c.hidden=false;c.insertBefore(i,c.children[1]);ol.appendChild(c)});o.innerHTML='<p class="hn-shn"><b>近い避難所</b></p>';o.appendChild(ol);b.textContent='近い順に並べました';try{gtag('event','hinan_near',{})}catch(e){}},function(){b.disabled=false;b.textContent='📍 近い避難所をさがす';o.textContent='位置が使えませんでした。下の一覧からさがしてください。'},{timeout:10000,maximumAge:300000})})})();</script>"""
+
+def _ward(r):
+    if r[4]: return r[4]
+    m = re.match(r"^([^0-9０-９\-]{1,5}?区)", r[1])
+    return m.group(1) if m else ""
+
+def _sh_li(e, r):
+    q = f"{r[2]},{r[3]}"
+    return (f'<li data-ll="{q}"><b>{e(r[0])}</b><span>{e(r[1])}</span>' + (f'<em>🐾 {e(r[5])}</em>' if r[5] else "")
+            + f'<a href="https://www.google.com/maps/search/?api=1&amp;query={q}" target="_blank" rel="noopener">地図 ↗</a></li>')
+
+def load_shelters(pf, nm):
+    c = MCODE.get((pf, nm))
+    f = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), SLUG, "s", f"{c}.json")
+    return json.load(open(f, encoding="utf-8")) if c and os.path.exists(f) else []
+
+def shelters_html(e, pf, it):
+    nm = it["name"]; rs = load_shelters(pf, nm)
+    if not rs: return ""
+    pets = sum(1 for r in rs if r[5])
+    head = (f'<div class="hn-shw" id="shelters"><h2>🏫 {e(nm)}の指定避難所（{len(rs)}か所）</h2>'
+            f'<p class="hn-shn">ペットを連れて行けるかは、上の{e(nm)}の決まりのとおりです。飼う場所は避難所ごとに違うことがあります。'
+            + (f'🐾の印は、ペットの受け入れが書いてある避難所（{pets}か所）です。' if pets else "") + '</p>'
+            '<button type="button" class="hn-near">📍 近い避難所をさがす</button><div class="hn-nearout" aria-live="polite"></div>')
+    wards = {}
+    for r in rs: wards.setdefault(_ward(r), []).append(r)
+    if len(wards) >= 3 and len(wards.get("", [])) < len(rs) / 4:
+        # 区の多い市は、区をえらぶ欄＋その区の一覧（ほかの区はHTMLに残して隠す）
+        ws = sorted(wards.items(), key=lambda x: (x[0] == "", x[0]))
+        opts = "".join(f'<option value="{i}">{e(w or "そのほか")}（{len(v)}か所）</option>' for i, (w, v) in enumerate(ws))
+        body = (f'<select class="hn-wsel" aria-label="区をえらぶ" onchange="var o=this.parentNode.querySelectorAll(\'.hn-wl\');for(var i=0;i<o.length;i++)o[i].hidden=(i!=this.value)">{opts}</select>'
+                + "".join(f'<ol class="hn-sh hn-wl"{" hidden" if i else ""}>' + "".join(_sh_li(e, r) for r in v) + "</ol>" for i, (w, v) in enumerate(ws)))
+    else:
+        top, rest = rs[:8], rs[8:]
+        body = '<ol class="hn-sh">' + "".join(_sh_li(e, r) for r in top) + "</ol>"
+        if rest: body += f'<details class="hn-ward"><summary>ほかの{len(rest)}か所</summary><ol class="hn-sh">' + "".join(_sh_li(e, r) for r in rest) + "</ol></details>"
+    return SH_CSS + head + body + SH_SRC + "</div>" + NEAR_JS
 
 def _bf(page):
     return page.replace("</head>", V.BF_CSS + "\n</head>", 1).replace("</body>", V.BF_JS + "\n</body>", 1)
@@ -486,8 +547,9 @@ def write_finder(ROOT):
         if it and has_page(it) and pf in pref_page: row = [nm, "page", href_city(it), top, "", fc]
         elif it and pf in pref_page: row = [nm, "card", href(pf) + "#" + nm, top, "", fc]
         elif it: row = [nm, "link", it["links"][0][1], top, it["links"][0][0], fc]
-        elif (pf, nm) in nf: row = [nm, "none", "", top]
-        else: row = [nm, "todo", "", top]
+        elif (pf, nm) in nf: row = [nm, "none", "", top, "", ""]
+        else: row = [nm, "todo", "", top, "", ""]
+        row.append(m["code"] if os.path.exists(os.path.join(ROOT, SLUG, "s", m["code"] + ".json")) else "")
         out.setdefault(pf, []).append(row)
     open(os.path.join(ROOT, SLUG, "munis.json"), "w", encoding="utf-8").write(json.dumps(out, ensure_ascii=False, separators=(",", ":")))
 
@@ -503,6 +565,7 @@ FINDER_CSS = """<style>
 
 def finder(e, prefs, pf=None):
     opts = "".join(f'<option{" selected" if p == pf else ""}>{e(p)}</option>' for p in prefs)
+    SH_SRC_JS = SH_SRC.replace("'", "\\'")
     return FINDER_CSS + f"""<div class="hn-find" id="find"><h2>📍 お住まいの市区町村をえらぶ</h2>
 <div class="row"><select id="hnP" aria-label="都道府県"><option value="">都道府県をえらぶ</option>{opts}</select>
 <select id="hnM" aria-label="市区町村" disabled><option value="">市区町村をえらぶ</option></select></div>
@@ -521,4 +584,9 @@ else h=n+'の決まりは、まだまとめていません。'+top+'で「ペッ
 if(r[5]){{var K=[['🐕','犬'],['🦮','大型犬'],['🐈','猫'],['🐇','うさぎ・ハムスター'],['🐦','小鳥'],['🦎','爬虫類']],Mm={{y:['○','受け入れる','yes'],n:['×','受け入れない','no'],h:['△','むずかしい場合あり','hard'],c:['△','条件つき','cond'],'-':['？','不明','unk']}},g='<ul class="hn-ag">';
 K.forEach(function(k,i){{var m=Mm[r[5].charAt(i)]||Mm['-'];g+='<li class="'+m[2]+'"><span class="i">'+k[0]+'</span><b>'+k[1]+'</b><span class="m" data-k="'+m[0]+'">'+m[1]+'</span></li>'}});
 g+='</ul><ul class="hn-rows"><li><span class="i">🧺</span><span><b>ケージ</b>'+(r[5].charAt(6)=='1'?'持っていく（ケージの中で飼う）':'くわしくはリンク先で')+'</span></li></ul>';h=g+h}}
-O.innerHTML=h;try{{gtag('event','hinan_find',{{pref:P.value,status:r[1]}})}}catch(e){{}}}})}})();</script>"""
+O.innerHTML=h;if(r[6]){{var sw=document.createElement('div');sw.className='hn-shw';sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこんでいます…</p>';O.appendChild(sw);
+fetch('/{SLUG}/s/'+r[6]+'.json').then(function(x){{return x.json()}}).then(function(L){{function li(s){{var q=s[2]+','+s[3];return '<li data-ll="'+q+'"><b>'+esc(s[0])+'</b><span>'+esc(s[1])+'</span>'+(s[5]?'<em>🐾 '+esc(s[5])+'</em>':'')+'<a href="https://www.google.com/maps/search/?api=1&amp;query='+q+'" target="_blank" rel="noopener">地図 ↗</a></li>'}}
+var t='<h2>🏫 '+n+'の指定避難所（'+L.length+'か所）</h2><button type="button" class="hn-near">📍 近い避難所をさがす</button><div class="hn-nearout" aria-live="polite"></div><ol class="hn-sh">'+L.slice(0,5).map(li).join('')+'</ol>';
+if(L.length>5)t+=(r[1]=='page'?'<p class="hn-shn"><a href="'+esc(r[2])+'#shelters">'+n+'の避難所をすべて見る（'+L.length+'か所）→</a></p><ol class="hn-sh" hidden>'+L.slice(5).map(li).join('')+'</ol>':'<details class="hn-ward"><summary>ほかの'+(L.length-5)+'か所</summary><ol class="hn-sh">'+L.slice(5).map(li).join('')+'</ol></details>');
+sw.innerHTML=t+'{SH_SRC_JS}'}}).catch(function(){{sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこめませんでした。</p>'}})}}
+try{{gtag('event','hinan_find',{{pref:P.value,status:r[1]}})}}catch(e){{}}}})}})();</script>""" + SH_CSS + NEAR_JS

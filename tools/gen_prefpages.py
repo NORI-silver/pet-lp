@@ -30,14 +30,15 @@ def pref_nav(cat, e, rows, regions, cur=None):
     for lab, prefs in regions:
         ls = [f'<a href="{href(cat, pf)}">{e(pf)}（{len(rows[pf])}）</a>' if pf != cur else f'<b>{e(pf)}（{len(rows[pf])}）</b>' for pf in prefs if pf in rows]
         if ls: out += f'<p class="pp-nav"><span>{e(lab)}</span>{" ".join(ls)}</p>'
-    return f'<div class="emg-tips"><h4>都道府県ごとの{e(cat["name"])}</h4>{out}</div>'
+    # [B] Nori 2026-11-16「うざい、もっとこんぱくとに」：都道府県のリンクはたたむ
+    return f'<details class="emg-tips pp-fold"><summary>都道府県ごとの{e(cat["name"])}</summary>{out}</details>'
 
 def _region_of(pf, regions):
     for lab, prefs in regions:
         if pf in prefs: return lab, prefs
     return "", []
 
-CSS = "<style>.emg .tbl{overflow-x:auto;max-width:100%}.pp-nav{margin:4px 0;line-height:1.9}.pp-nav span{display:inline-block;min-width:5em;font-weight:bold;margin-right:6px}.pp-nav a,.pp-nav b{margin-right:10px;white-space:nowrap}.pp-facts{margin:6px 0 10px;padding-left:1.2em}.pp-tbl th,.pp-tbl td{font-size:13px;padding:4px 6px;text-align:center;white-space:nowrap}.pp-tbl td:first-child,.pp-tbl th:first-child{text-align:left;white-space:normal;min-width:9em}.pp-ans{font-size:inherit}.pp-ans .answer{margin:0 0 14px}.pp-ans>ul{margin:0 0 14px;padding-left:1.2em;line-height:1.8}</style>"
+CSS = "<style>.emg .tbl{overflow-x:auto;max-width:100%}.pp-fold>summary{cursor:pointer;font-weight:700}.pp-nav{margin:4px 0;line-height:1.9;font-size:.88rem}.pp-nav span{display:inline-block;min-width:5em;font-weight:bold;margin-right:6px}.pp-nav a,.pp-nav b{margin-right:10px;white-space:nowrap}.pp-facts{margin:6px 0 10px;padding-left:1.2em}.pp-tbl th,.pp-tbl td{font-size:13px;padding:4px 6px;text-align:center;white-space:nowrap}.pp-tbl td:first-child,.pp-tbl th:first-child{text-align:left;white-space:normal;min-width:9em}.pp-ans{font-size:inherit}.pp-ans .answer{margin:0 0 14px}.pp-ans>ul{margin:0 0 14px;padding-left:1.2em;line-height:1.8}</style>"
 
 def table_html(e, cat, rs):
     """条件を1つの表でくらべる（○＝公式サイトに書いてある、空欄＝書いていない／分からない）。"""
