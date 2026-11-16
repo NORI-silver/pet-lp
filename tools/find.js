@@ -81,7 +81,7 @@
   }
   function el(t, c, x){ var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
   function apply(track){
-    var ks = on(), pf = places, qs = norm(pick ? pick.text() : ""), idle = needPref && !pf.length && !qs;
+    var ks = on(), pf = places, qs = norm(pick && !(pick.open && pick.open()) ? pick.text() : ""), idle = needPref && !pf.length && !qs;
     var c = [0, 0];
     items.forEach(function(it){
       var j = idle ? 2 : judge(it, ks, pf, qs);

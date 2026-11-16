@@ -34,7 +34,7 @@
     return [g, unk];
   }
   // どこで：選んだ場所（県・市区町村・駅。いくつでも）のどれかに合えばよい。往診は来てくれる地域で見る（Nori 2026-11-16）
-  function typed(){ return pick ? (pick.text() || "").trim() : ""; }
+  function typed(){ return pick && !(pick.open && pick.open()) ? (pick.text() || "").trim() : ""; }
   function placeOk(r, p){
     var visitOk = function(x){ return r.y.indexOf("visit") >= 0 && (r.vz || (r.ar || "").indexOf(x) >= 0); };
     if (r._p !== p.p) return false;
