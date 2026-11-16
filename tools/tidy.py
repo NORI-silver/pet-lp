@@ -6,6 +6,7 @@
 #  4. ガイドの記事で、読んでいるあいだ画面の下に出つづけるタクシーのボタン（.sticky）
 #  5. 「（公式サイトの記載）」の言い回し（nosrc.py が見ない譲渡のページも）
 #  6. いったん外した分野（tools/paused.py の宿・カフェ）へのリンク
+#  7. 結果の前の「この一覧は無料の情報です…」の断り書き（.emg-free）は、ページの下へ小さく移す（2026-11-16 スマホ点検：さがす人の最初の画面に要らない）
 import os, re
 
 SKIP_DIRS = ("tools", "img", "lib", "node_modules")
@@ -51,12 +52,22 @@ def _yd_ans(h):
     return re.sub(r'<div class="yd-ans">.*?</ul></div>', fix, h, flags=re.S)
 
 
+def _free_down(h):
+    ps = re.findall(r'<p class="emg-free">.*?</p>', h, re.S)
+    if not ps or "</main>" not in h: return h
+    for p in ps: h = h.replace(p, "", 1)
+    note = re.sub(r'^<p class="emg-free">', '<p class="emg-free ft" style="font-size:.78rem;color:#5f6368;background:none;padding:0;margin:16px 0">', ps[0])
+    i = h.rfind("</main>")
+    return h[:i] + f'<div class="wrap">{note}</div>' + h[i:]
+
+
 def clean(h):
     """本文の中の直し（thin_gate.py も同じものを数える）。"""
     h = re.sub(r"(<h1[^>]*>)<small>([^<]*)</small>", lambda m: m.group(1) if TALLY.search(m.group(2)) else m.group(0), h)
     h = _fold_cmp(h)
     h = _yd_ans(h)
     h = re.sub(r'<ul class="dr-stats">.*?</ul>', "", h, flags=re.S)
+    h = _free_down(h)
     for a in ("（公式サイトの記載）", "（公式サイトに記載）", "と公式サイトに書いている", "と公式サイトに書いてある"):
         h = h.replace(a, "")
     return h

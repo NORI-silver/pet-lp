@@ -56,7 +56,7 @@ p{margin:0 0 1em}
 .catch{display:block;font-size:2.3rem;font-weight:800;line-height:1.32;letter-spacing:.02em}
 .catch em{font-style:normal;color:var(--o)}
 .hero .lede{color:var(--ink-2);font-size:1.02rem;margin:20px 0 24px}
-.pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 28px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:20px 0 24px}
 .pills li{display:flex;align-items:center;gap:6px;background:#fff;border-radius:999px;padding:6px 14px 6px 8px;font-size:.86rem;font-weight:700;box-shadow:var(--shadow)}
 .pills li span{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--o-l);color:var(--o-d)}
 .pills li span svg{width:13px;height:13px}
@@ -74,6 +74,7 @@ p{margin:0 0 1em}
 .float.f1 span{color:var(--ink-3)}
 .float.f2{right:-6px;top:20px;text-align:center;padding:10px 14px}
 .float.f2 b{display:block;font-family:var(--round);font-size:1.3rem;color:var(--o-d);line-height:1.1}
+@media (max-width:759px){.hero .float,.hero .float.f1{display:none}.hero{padding:16px 0 32px}.catch{font-size:2rem}.hero .kicker{font-size:.72rem;margin-bottom:12px}.hero .lede{margin:12px 0 16px;font-size:.92rem;line-height:1.75}.pills{gap:6px;margin-bottom:16px}.pills li{font-size:.78rem;padding:4px 10px 4px 6px}.pills li span{width:18px;height:18px}.hero-fare{padding:10px 14px;margin-bottom:14px}.hero-fare b{font-size:.92rem}.hero-fare span{font-size:.8rem}.hero .grid{gap:14px}.hero-visual .photo{aspect-ratio:16/9}.hero .pills{margin-bottom:0}.hero{padding-bottom:20px}section.form-sec{padding-top:16px}.hero .btn{white-space:nowrap;font-size:.95rem;padding:15px 12px;justify-content:center;gap:6px}.hero .after{font-size:.76rem;margin-top:10px}}
 
 /* stats */
 .stats{background:var(--ink);color:#fff;padding:40px 0}
@@ -654,7 +655,7 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
 .crumb{font-size:.78rem;color:var(--ink-3);padding:14px 0 0}
 .crumb a{color:var(--ink-3);text-decoration:none}
 .crumb a:hover{text-decoration:underline}
-.area-hero{background:radial-gradient(90% 70% at 100% 0%,#ffe2cc 0%,rgba(255,226,204,0) 60%),var(--cream);padding:24px 0 56px}
+.area-hero{background:radial-gradient(90% 70% at 100% 0%,#ffe2cc 0%,rgba(255,226,204,0) 60%),var(--cream);padding:24px 0 24px}
 .area-hero h1{font-family:var(--round);font-size:1.6rem;font-weight:800;line-height:1.4;margin:18px 0 14px}
 .area-hero h1 small{display:block;font-size:.95rem;color:var(--o-d);margin-bottom:6px}
 .area-hero .lede{color:var(--ink-2);margin:0 0 22px}

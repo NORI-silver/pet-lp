@@ -444,7 +444,7 @@ extra_css = """
 .crumb{font-size:.78rem;color:var(--ink-3);padding:14px 0 0}
 .crumb a{color:var(--ink-3);text-decoration:none}
 .crumb a:hover{text-decoration:underline}
-.area-hero{background:radial-gradient(90% 70% at 100% 0%,#ffe2cc 0%,rgba(255,226,204,0) 60%),var(--cream);padding:24px 0 56px}
+.area-hero{background:radial-gradient(90% 70% at 100% 0%,#ffe2cc 0%,rgba(255,226,204,0) 60%),var(--cream);padding:24px 0 24px}
 .area-hero h1{font-family:var(--round);font-size:1.6rem;font-weight:800;line-height:1.4;margin:18px 0 14px}
 .area-hero h1 small{display:block;font-size:.95rem;color:var(--o-d);margin-bottom:6px}
 .area-hero .lede{color:var(--ink-2);margin:0 0 22px}
@@ -568,7 +568,8 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = t.replace('<a class="logo" href="#">', '<a class="logo" href="/">', 1)
     # h1 とリード文
     t = re.sub(r'(<span class="kicker">).*?(<b )', lambda m: m.group(1) + e(kicker) + " " + m.group(2), t, count=1, flags=re.S)
-    t = re.sub(r'(<section class="hero">.*?<p class="lede">).*?(</p>)', lambda m: m.group(1) + e(lede) + m.group(2), t, count=1, flags=re.S)
+    # トップにはリード文がない（Nori 2026-11-16「けずれるでしょ」）。地域ページは見出しのすぐ後ろに地域の文を入れる
+    t = re.sub(r'(<section class="hero">.*?</h1>)', lambda m: m.group(1) + f'\n      <p class="lede">{e(lede)}</p>', t, count=1, flags=re.S)
     t = t.replace('<section class="hero">', f'<div class="wrap"><nav class="crumb" aria-label="パンくずリスト">{crumb}</nav></div>\n<section class="hero">', 1)
     # フォームのお迎えの都道府県・緊急タブの都道府県を最初から選んでおく
     t = re.sub(r'(<select id="pref"[^>]*>.*?)<option>' + re.escape(pref) + '</option>', lambda m: m.group(1) + f'<option selected>{pref}</option>', t, count=1, flags=re.S)
@@ -629,7 +630,7 @@ AREAS = [
   route=("横浜駅周辺 → 羽田空港", 25),
   faq=[
    ("横浜・川崎に来てくれるペットタクシーは何社ありますか？", f"神奈川県のお迎えに対応している{_ncos('神奈川')}社のうち、公式サイトの対応エリアに「横浜」と書いている会社が{_ccos('神奈川','横浜')}社、「川崎」と書いている会社が{_ccos('神奈川','川崎')}社ありました。地名を書いていない会社が来てくれることもあるので、お迎えの場所をフォームに入れて確かめてください。"),
-   ("神奈川で夜間に診てもらえる動物病院はありますか？", f"横浜・川崎・相模原・藤沢・横須賀などの夜間・救急の動物病院を{_nhosp('神奈川県')}件載せています。受付時間は病院ごとに違うので、行く前に電話で受け入れてもらえるか確かめてください。このページの「緊急」タブや、夜間・救急の動物病院の一覧からさがせます。"),
+   ("神奈川で夜間に診てもらえる動物病院はありますか？", f"横浜・川崎・相模原・藤沢・横須賀などの夜間・救急の動物病院を{_nhosp('神奈川県')}件載せています。受付時間は病院ごとに違うので、行く前に電話で受け入れてもらえるか確かめてください。「緊急のときの連絡先」のページや、夜間・救急の動物病院の一覧からさがせます。"),
    ("横浜市の港北区・青葉区・戸塚区などからも頼めますか？", "はい。横浜市18区のどこからでもお迎えの場所に入れられます。会社ごとに来てくれる地域が違い、区の名前まで書いていない会社も多いので、お迎えの場所をフォームに入れて、来てもらえる会社と料金の目安を確かめてください。"),
    ("横浜から都内の動物病院まで頼めますか？", f"はい。県をまたぐ移動にも対応しています。横浜から都内までの20〜30kmなら、20kmで{nat_text(20)}、30kmで{nat_text(30)}が片道の目安です。"),
    ("川崎市からでもペットタクシーを予約できますか？", "はい。川崎市からのお迎えも選べます。場所・日時・ペットの大きさなどの条件に合う事業者と料金の目安を表示し、その中から何社でも選んで、空き状況と料金を問い合わせできます。会社から返事が届いたら、納得してから予約できます。"),
@@ -679,7 +680,7 @@ for _a in AREAS:
         f"{_a['pref']}のお迎えに対応している{_ncos(_k)}社のうち、公式サイトや会社からの返事に当日も受けると書いてある会社は{_nsame(_k)}社です。お迎えが今日のときは、この中から空いていて間に合う会社だけが候補に出ます。会社にメールで確認してから決まるしくみなので、お迎えの時刻は、いまから3時間以上あとで選んでください。"))
     if _a["slug"] != "kanagawa":
         _a["faq"].append((f"{_a['short'].split('・')[0]}で夜間に診てもらえる動物病院はありますか？",
-            f"{_a['pref']}の夜間・救急の動物病院を{_nhosp(_a['pref'])}件載せています。受付時間は病院ごとに違うので、行く前に電話で受け入れてもらえるか確かめてください。このページの「緊急」タブや、夜間・救急の動物病院の一覧からさがせます。"))
+            f"{_a['pref']}の夜間・救急の動物病院を{_nhosp(_a['pref'])}件載せています。受付時間は病院ごとに違うので、行く前に電話で受け入れてもらえるか確かめてください。「緊急のときの連絡先」のページや、夜間・救急の動物病院の一覧からさがせます。"))
 
 PAW = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="6" cy="9" r="2.2"/><circle cx="10" cy="5.5" r="2.2"/><circle cx="14" cy="5.5" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M12 11c-3 0-6 3.6-6 6.2 0 1.8 1.5 2.8 3 2.8 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.5 0 3-1 3-2.8C18 14.6 15 11 12 11z"/></svg>'
 ARROW = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>'
@@ -1207,7 +1208,7 @@ _GH_N = 6
 def _gh_body():
     import faccard as _fc
     T = [t for t in _gh_topics() if t[4]]
-    chips = "".join(f'<a href="#g-{k}">{_fc.icon(ic, "gh-i")}<b>{e(lab)}</b><small>{len(ss)}本</small></a>' for k, ic, lab, _, ss in T)
+    chips = "".join(f'<a href="#g-{k}">{_fc.icon(ic, "gh-i")}<b>{e(lab)}</b></a>' for k, ic, lab, _, ss in T)
     def row(s, ic):
         g = GBY[s]
         return f'<li><a href="/guide/{s}/">{_fc.icon(_gh_icon(s, ic), "gh-i")}<span><b>{e(g["title"])}</b><small>{e(g["lede"])}</small></span></a></li>'
@@ -1719,7 +1720,6 @@ ep = head("ペットの緊急搬送・動物救急車（緊急のペットタク
       <p class="emg-free">この一覧は無料の情報です。当サイトへのお申し込みやお支払いはありません。料金や受付は、それぞれの会社・病院に直接おたずねください。</p>
       <p class="emg-sum"><a href="/#emergency">現在地から近い病院を、車で行く時間と一緒にさがす</a></p>
       <h2 class="emg-h">夜間・救急の動物病院</h2>
-      <p class="emg-sum">夜間の病院が見つからない県には、近くの県の病院を（県名）つきで載せています。</p>
       {emg_prefs_html}
       <h2 class="emg-h">緊急の搬送をしている会社</h2>
       <div id="emgTaxiAll">{''.join(emg_company(t) for t in EMG["taxis"])}</div>
@@ -2197,7 +2197,7 @@ for slug, pf, short, cities in PREFS:
       {pref_hosp_html(pf)}
       <h3 class="emg-h">緊急の搬送をしている会社</h3>
       {taxi_html}
-      <p class="emg-note">当サイトとは別の会社・病院です（{e(EMG["checked"])}時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、お問い合わせからお知らせください。口コミはページ上の「緊急」タブで見られます。</p>
+      <p class="emg-note">当サイトとは別の会社・病院です（{e(EMG["checked"])}時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、お問い合わせからお知らせください。</p>
     </div>
     <p><a href="/emergency/">全国の緊急の連絡先の一覧</a>から、現在地から近い病院も探せます。</p>
     {pfaq_html}
@@ -2214,7 +2214,7 @@ for slug, pf, short, cities in PREFS:
 '''
     area_html = re.sub(r'<div class="emg-score" data-id="[^"]*"></div>', "", area_html)  # 口コミはトップの緊急タブの仕組みで見る（二重に読み込まない）
     if _ol: desc = desc.replace("料金の目安を、お迎えの場所を入れて無料でしらべられます。", "料金の目安がわかり、" + "・".join(n for n, _ in _ol) + "には空き状況と料金を無料で問い合わせできます。")
-    lede = open_lead(pf) + f"{pf}（{'・'.join(cities[:4])}など）で、犬や猫の移動の手段を探している方へ。" + ("" if _np else "フォームに入力すると、条件に合う事業者と料金の目安が見られます。") + "急ぐときの連絡先は「緊急」タブにまとめています。"
+    lede = open_lead(pf) + f"{pf}（{'・'.join(cities[:4])}など）で、犬や猫の移動の手段を探している方へ。" + ("" if _np else "フォームに入力すると、条件に合う事業者と料金の目安が見られます。") + "急ぐときの連絡先は「緊急のときの連絡先」のページにまとめています。"
     page = clone_top(title, desc, url, ld, f"{short}のペットタクシー", lede, pf, area_html,
                      f'<a href="/">ペットタクシー予約窓口</a> › <a href="/area/">全国のペットタクシー情報</a> › {e(short)}')
     os.makedirs(os.path.join(ROOT, "area", slug), exist_ok=True)
@@ -2725,6 +2725,9 @@ print("tidy", tidy.build(ROOT), "pages")
 # 事業者カードの写真（使ってよいと確かめた写真だけ・ない施設は共通の枠。tools/cardphoto.py、Nori 2026-11-16「事業者カードへの写真表示」）
 import cardphoto
 print("cardphoto", cardphoto.build(ROOT))
+# 各分野の入口にキービジュアル（自前の絵＋札1行。tools/keyvisual.py、Nori 2026-11-16「各カテゴリでキービジュアルいれて」）
+import keyvisual
+print("keyvisual", keyvisual.build(ROOT), "pages")
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] noindex.json のページに noindex,follow を入れる（ほかの後処理のあと）
 for _p in NOINDEX:

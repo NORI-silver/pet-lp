@@ -118,7 +118,7 @@ def render(ctx, f):
     g = GS._prices(f.get("price"))
     for k, lab, nat in TYP:
         if k in g:
-            pts.append(f"{nm}の{lab}は、公式サイトの料金の例で{g[k]:,}円からです（いちばん小さい区分。全国{nat['n']}か所の真ん中は{nat['med']}）。")
+            pts.append(f"{nm}の{lab}は、公式サイトの料金の例で{g[k]:,}円からです（いちばん小さい区分。ほかの施設の真ん中は{nat['med']}）。")
     if _has(f, "お迎え") or _has(f, "訪問火葬"):
         pts.append(f"{nm}は、{'家までのお迎え' if _has(f, 'お迎え') else ''}{'・' if _has(f, 'お迎え') and _has(f, '訪問火葬') else ''}{'家の近くでの訪問火葬' if _has(f, '訪問火葬') else ''}を公式サイトに書いています。")
     pts = pts[:5]

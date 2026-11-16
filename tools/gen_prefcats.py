@@ -29,11 +29,8 @@ def _price_lines(rs):
 
 def _sougi_facts(rs):
     n = len(rs)
-    pl = [f"{lab}の料金の例（{k}か所・猫や小型犬など小さい区分）：{rng}（全国{nat_n}か所の真ん中は{med}）"
-          for lab, k, rng, med in _price_lines(rs) for nat_n in [{"個別火葬（おまかせ）": _gs.SK, "立ち会い火葬": _gs.ST, "合同火葬": _gs.SG}[lab]["n"]]]
-    return pl + [f"個別火葬：{sum(_has(f, '個別火葬') for f in rs)}／{n}", f"立ち会い火葬：{sum(_has(f, '立ち会い火葬') for f in rs)}／{n}",
-            f"お迎え（家まで来てくれる）：{sum(_has(f, 'お迎え') for f in rs)}／{n}", f"霊園：{sum(_has(f, '霊園') for f in rs)}／{n}",
-            f"納骨堂：{sum(_has(f, '納骨堂') for f in rs)}／{n}", f"公式サイトに料金の例があるところ：{sum(bool(f.get('price')) for f in rs)}／{n}"]
+    pl = [f"{lab}の料金の例（猫や小型犬など小さい区分）：{rng}（全国の真ん中は{med}）" for lab, k, rng, med in _price_lines(rs)]
+    return pl  # 「個別火葬：3／5」のような運営側の集計は出さない（2026-11-16 スマホ点検）
 
 def _sougi_extra(e, pf):
     cs = _CITIES.get(pf, [])

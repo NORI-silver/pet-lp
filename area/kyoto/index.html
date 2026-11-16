@@ -86,7 +86,7 @@ p{margin:0 0 1em}
 .catch{display:block;font-size:2.3rem;font-weight:800;line-height:1.32;letter-spacing:.02em}
 .catch em{font-style:normal;color:var(--o)}
 .hero .lede{color:var(--ink-2);font-size:1.02rem;margin:20px 0 24px}
-.pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 28px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:20px 0 24px}
 .pills li{display:flex;align-items:center;gap:6px;background:#fff;border-radius:999px;padding:6px 14px 6px 8px;font-size:.86rem;font-weight:700;box-shadow:var(--shadow)}
 .pills li span{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--o-l);color:var(--o-d)}
 .pills li span svg{width:13px;height:13px}
@@ -104,6 +104,7 @@ p{margin:0 0 1em}
 .float.f1 span{color:var(--ink-3)}
 .float.f2{right:-6px;top:20px;text-align:center;padding:10px 14px}
 .float.f2 b{display:block;font-family:var(--round);font-size:1.3rem;color:var(--o-d);line-height:1.1}
+@media (max-width:759px){.hero .float,.hero .float.f1{display:none}.hero{padding:16px 0 32px}.catch{font-size:2rem}.hero .kicker{font-size:.72rem;margin-bottom:12px}.hero .lede{margin:12px 0 16px;font-size:.92rem;line-height:1.75}.pills{gap:6px;margin-bottom:16px}.pills li{font-size:.78rem;padding:4px 10px 4px 6px}.pills li span{width:18px;height:18px}.hero-fare{padding:10px 14px;margin-bottom:14px}.hero-fare b{font-size:.92rem}.hero-fare span{font-size:.8rem}.hero .grid{gap:14px}.hero-visual .photo{aspect-ratio:16/9}.hero .pills{margin-bottom:0}.hero{padding-bottom:20px}section.form-sec{padding-top:16px}.hero .btn{white-space:nowrap;font-size:.95rem;padding:15px 12px;justify-content:center;gap:6px}.hero .after{font-size:.76rem;margin-top:10px}}
 
 /* stats */
 .stats{background:var(--ink);color:#fff;padding:40px 0}
@@ -684,7 +685,7 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
 .crumb{font-size:.78rem;color:var(--ink-3);padding:14px 0 0}
 .crumb a{color:var(--ink-3);text-decoration:none}
 .crumb a:hover{text-decoration:underline}
-.area-hero{background:radial-gradient(90% 70% at 100% 0%,#ffe2cc 0%,rgba(255,226,204,0) 60%),var(--cream);padding:24px 0 56px}
+.area-hero{background:radial-gradient(90% 70% at 100% 0%,#ffe2cc 0%,rgba(255,226,204,0) 60%),var(--cream);padding:24px 0 24px}
 .area-hero h1{font-family:var(--round);font-size:1.6rem;font-weight:800;line-height:1.4;margin:18px 0 14px}
 .area-hero h1 small{display:block;font-size:.95rem;color:var(--o-d);margin-bottom:6px}
 .area-hero .lede{color:var(--ink-2);margin:0 0 22px}
@@ -1019,16 +1020,13 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
         <span class="kicker">京都のペットタクシー <b style="white-space:nowrap">無料</b></span>
         <span class="catch">家族だから、<br><em>移動もやさしく。</em></span>
       </h1>
-      <p class="lede">京都府（京都市・宇治市・亀岡市・長岡京市など）で、犬や猫の移動の手段を探している方へ。フォームに入力すると、条件に合う事業者と料金の目安が見られます。急ぐときの連絡先は「緊急」タブにまとめています。</p>
+      <p class="lede">京都府（京都市・宇治市・亀岡市・長岡京市など）で、犬や猫の移動の手段を探している方へ。フォームに入力すると、条件に合う事業者と料金の目安が見られます。急ぐときの連絡先は「緊急のときの連絡先」のページにまとめています。</p>
       <ul class="pills">
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>無料</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>何社にでもまとめて問い合わせ</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>連絡はメールだけ</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>多頭もOK</li>
       </ul>
-      <div class="hero-fare"><b>各社の料金を、その場でくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。各社の公式サイトの料金表から計算した概算で、確定料金ではありません。</span></div>
-      <a class="btn" href="#form" data-cta="hero-fare">空き状況と料金を問い合わせる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
-      <p class="after">無料で使えます（運賃は当日ペットタクシーへ直接お支払い）。当日の依頼もできます。</p>
     </div>
     <div class="hero-visual">
       <div class="photo">
@@ -1070,7 +1068,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 <!-- 6. フォーム -->
 <section class="form-sec" id="form">
   <div class="wrap">
-    <div class="sh"><h2>空き状況と料金を問い合わせる（無料）</h2></div>
 
     <div class="mode-tabs" id="modeTabs" role="tablist" hidden>
       <button type="button" role="tab" aria-selected="true" data-mode="normal">空き状況・料金の問い合わせ</button>
@@ -1079,7 +1076,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
     <div class="emg" id="emgBox" hidden>
       <h3>緊急のときの連絡先</h3>
       <p class="emg-lead">一刻を争う症状のときは、まずかかりつけや夜間・救急の動物病院に電話して、受け入れてもらえるか確かめてください。病院への移動の手段がないときは、緊急の搬送をしている会社に直接ご連絡ください。</p>
-      <p class="emg-free">このページの一覧は無料の情報です。当サイトへのお申し込みやお支払いはありません。料金や受付は、それぞれの会社・病院に直接おたずねください。</p>
+      
       <p class="emg-all"><a href="/emergency/">全国の一覧を1つのページで見る</a></p>
       <div class="f"><label for="emgPref">都道府県でしぼりこむ</label>
         <select id="emgPref"><optgroup label="北海道・東北"><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option></optgroup><optgroup label="関東"><option selected>東京都</option><option>神奈川県</option><option>埼玉県</option><option>千葉県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option></optgroup><optgroup label="中部"><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option><option>静岡県</option><option>愛知県</option></optgroup><optgroup label="近畿"><option>三重県</option><option>滋賀県</option><option selected>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option></optgroup><optgroup label="中国・四国"><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option></optgroup><optgroup label="九州・沖縄"><option>福岡県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option></optgroup></select></div>
@@ -1126,7 +1123,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
       <p class="emg-note" id="emgNote"></p>
     </div>
     <div class="form-card">
-      <div class="flow3" aria-label="ご利用の流れ"><p class="flow3-h">ご利用の流れ</p><ol><li><b>①</b>会社を選んで<wbr>問い合わせ<span>空き状況と料金を、選んだ会社に問い合わせます</span></li><li><b>②</b>会社から<wbr>返事が届く<span>この日時に空いているか、確定料金（税込）をメールでお知らせします</span></li><li><b>③</b>納得したら<wbr>予約を確定<span>メールの「この内容で予約する」を押した時点で予約が確定します</span></li></ol><p class="flow3-note">問い合わせを送っただけでは、まだ予約は確定していません。</p></div>
       <form id="petForm" novalidate>
         <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
@@ -1154,7 +1150,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
               <select id="hour" name="hour" required aria-label="時"><option value="">時</option><option value="00">0時</option><option value="01">1時</option><option value="02">2時</option><option value="03">3時</option><option value="04">4時</option><option value="05">5時</option><option value="06">6時</option><option value="07">7時</option><option value="08">8時</option><option value="09">9時</option><option value="10">10時</option><option value="11">11時</option><option value="12">12時</option><option value="13">13時</option><option value="14">14時</option><option value="15">15時</option><option value="16">16時</option><option value="17">17時</option><option value="18">18時</option><option value="19">19時</option><option value="20">20時</option><option value="21">21時</option><option value="22">22時</option><option value="23">23時</option></select>
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
-          <p class="note dt-note">当日も依頼できます。会社にメールで確かめるため、お迎えはいまから3時間以上あとで選んでください。</p>
           <div class="f"><span class="lbl">片道・往復<span class="need">必須</span></span>
             <div class="seg"><label><input type="radio" name="trip" value="片道" required><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復</span></label></div>
             <div class="via-box" id="retBox" hidden><label for="retDate" class="lbl">帰りのお迎え日時（用事が終わる時刻）<span class="need">必須</span></label>
@@ -1295,7 +1290,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
       <div class="emg-item emg-co cs"><div class="cs-ph cs-ph0" aria-hidden="true"></div><a class="ux-c-n" href="https://kyoto99.net/" target="_blank" rel="noopener"><b>京都夜間動物救急センター</b></a><p class="ux-c-m">京都市南区</p><p class="ux-c-l cs-l"><i aria-hidden="true">🕒</i><span>21時30分〜翌2時</span></p><p class="ux-c-l cs-l"><i aria-hidden="true">🩺</i><span>京都市獣医師会が運営する夜間救急センター</span></p><p class="ux-c-l cs-l"><i aria-hidden="true">📍</i><span>所在地：京都府京都市南区上鳥羽仏現寺町11番地 京都動物愛護センター内</span></p><div class="ux-c-a"><a href="https://kyoto99.net/" target="_blank" rel="noopener">公式サイト ↗</a><a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination=京都夜間動物救急センター%20京都府京都市南区上鳥羽仏現寺町11番地%20京都動物愛護センター内" target="_blank" rel="noopener" data-route>経路を見る</a></div><p class="ux-c-s"><a class="emg-taxi" href="/?to=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8D%97%E5%8C%BA%E4%B8%8A%E9%B3%A5%E7%BE%BD%E4%BB%8F%E7%8F%BE%E5%AF%BA%E7%94%BA11%E7%95%AA%E5%9C%B0%20%E4%BA%AC%E9%83%BD%E5%8B%95%E7%89%A9%E6%84%9B%E8%AD%B7%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E5%86%85#form">この病院までのペットタクシーの料金をくらべる →</a></p></div><div class="emg-item emg-co cs"><div class="cs-ph cs-ph0" aria-hidden="true"></div><a class="ux-c-n" href="http://nac-kyoto.com/" target="_blank" rel="noopener"><b>京都夜間どうぶつ診療所</b></a><p class="ux-c-m">久世郡久御山町</p><p class="ux-c-l cs-l"><i aria-hidden="true">🕒</i><span>20時〜24時</span></p><p class="ux-c-l cs-l"><i aria-hidden="true">🩺</i><span>夜間専門の動物診療所（犬・猫以外は問い合わせ）</span></p><p class="ux-c-l cs-l"><i aria-hidden="true">📍</i><span>所在地：京都府久世郡久御山町佐山西ノ口10-1 日本ファミリービル 1F</span></p><div class="ux-c-a"><a href="http://nac-kyoto.com/" target="_blank" rel="noopener">公式サイト ↗</a><a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination=京都夜間どうぶつ診療所%20京都府久世郡久御山町佐山西ノ口10-1%20日本ファミリービル%201F" target="_blank" rel="noopener" data-route>経路を見る</a></div><p class="ux-c-s"><a class="emg-taxi" href="/?to=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%B9%85%E4%B8%96%E9%83%A1%E4%B9%85%E5%BE%A1%E5%B1%B1%E7%94%BA%E4%BD%90%E5%B1%B1%E8%A5%BF%E3%83%8E%E5%8F%A310-1%20%E6%97%A5%E6%9C%AC%E3%83%95%E3%82%A1%E3%83%9F%E3%83%AA%E3%83%BC%E3%83%93%E3%83%AB%201F#form">この病院までのペットタクシーの料金をくらべる →</a></p></div><div class="emg-item emg-co cs"><div class="cs-ph cs-ph0" aria-hidden="true"></div><a class="ux-c-n" href="https://www.ukyo-ah.com/service/night/" target="_blank" rel="noopener"><b>右京動物病院 夜間救急</b></a><p class="ux-c-m">京都市右京区</p><p class="ux-c-l cs-l"><i aria-hidden="true">🕒</i><span>平日19時〜22時</span></p><p class="ux-c-l cs-l"><i aria-hidden="true">🩺</i><span>一般診療の病院の夜間救急外来（本院のみ）</span></p><p class="ux-c-l cs-l"><i aria-hidden="true">📍</i><span>所在地：京都府京都市右京区太秦京ノ道町12-2</span></p><div class="ux-c-a"><a href="https://www.ukyo-ah.com/service/night/" target="_blank" rel="noopener">公式サイト ↗</a><a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination=右京動物病院%20夜間救急%20京都府京都市右京区太秦京ノ道町12-2" target="_blank" rel="noopener" data-route>経路を見る</a></div><p class="ux-c-s"><a class="emg-taxi" href="/?to=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%A4%AA%E7%A7%A6%E4%BA%AC%E3%83%8E%E9%81%93%E7%94%BA12-2#form">この病院までのペットタクシーの料金をくらべる →</a></p></div>
       <h3 class="emg-h">緊急の搬送をしている会社</h3>
       <div class="emg-item emg-co cs" data-prefs="大阪府 京都府 兵庫県 奈良県 滋賀県"><div class="cs-ph cs-ph0" aria-hidden="true"></div><a class="ux-c-n" href="https://yakan-pet-rescue.com/" target="_blank" rel="noopener"><b>ペットレスキュー</b></a><p class="ux-c-l cs-l"><i aria-hidden="true">🗺</i><span>大阪・京都・兵庫・奈良・滋賀が中心。ペット専門の夜間救急搬送（20時〜翌5時・年中無休）</span></p><div class="ux-c-a"><a class="emg-tel" href="tel:08011017385">📞 080-1101-7385</a><a class="l" href="https://yakan-pet-rescue.com/" target="_blank" rel="noopener">公式サイト ↗</a></div></div><div class="emg-item emg-co cs" data-prefs="大阪府 京都府"><div class="cs-ph cs-ph0" aria-hidden="true"></div><a class="ux-c-n" href="https://comasuke.com/" target="_blank" rel="noopener"><b>ペットタクシー Comasuke（コマスケ）</b></a><p class="ux-c-l cs-l"><i aria-hidden="true">🗺</i><span>茨木・高槻・豊中・吹田・大阪市・堺など大阪府と、京都市・宇治・亀岡など京都府。夜間の救急送迎に対応（電話は24時間。夜間は折り返しのことあり。21時〜7時は割増）</span></p><div class="ux-c-a"><a class="emg-tel" href="tel:05088931378">📞 050-8893-1378</a><a class="l" href="https://comasuke.com/" target="_blank" rel="noopener">公式サイト ↗</a></div></div><div class="emg-item emg-co cs" data-prefs="京都府"><div class="cs-ph cs-ph0" aria-hidden="true"></div><a class="ux-c-n" href="https://ten-rin.jp/service/taxi/" target="_blank" rel="noopener"><b>ペットサポートてんりん</b></a><p class="ux-c-l cs-l"><i aria-hidden="true">🗺</i><span>京都市東山区の会社。京都市（京都駅・七条から10km以内はお迎え無料）と近畿。夜間の急病にも、車が空いていれば対応（電話受付は9時〜21時と案内。21時〜翌9時は25%増し）</span></p><div class="ux-c-a"><a class="emg-tel" href="tel:08042964932">📞 080-4296-4932</a><a class="l" href="https://ten-rin.jp/service/taxi/" target="_blank" rel="noopener">公式サイト ↗</a></div></div><div class="emg-item emg-co cs" data-prefs="奈良県 和歌山県 大阪府 京都府 兵庫県 滋賀県"><div class="cs-ph cs-ph0" aria-hidden="true"></div><a class="ux-c-n" href="https://pet-taxi-nara.com/" target="_blank" rel="noopener"><b>ペットタクシー COCOタク ならまち店</b></a><p class="ux-c-l cs-l"><i aria-hidden="true">🗺</i><span>奈良市の会社。奈良・大阪・兵庫・京都・滋賀・和歌山など近畿。24時間・365日予約制。すぐ病院へ連れて行きたいときも相談できる（21時〜5時は割増）</span></p><div class="ux-c-a"><a class="emg-tel" href="tel:0120516987">📞 0120-51-6987</a><a class="l" href="https://pet-taxi-nara.com/" target="_blank" rel="noopener">公式サイト ↗</a></div></div>
-      <p class="emg-note">当サイトとは別の会社・病院です（2026年10月31日時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、お問い合わせからお知らせください。口コミはページ上の「緊急」タブで見られます。</p>
+      <p class="emg-note">当サイトとは別の会社・病院です（2026年10月31日時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、お問い合わせからお知らせください。</p>
     </div>
     <p><a href="/emergency/">全国の緊急の連絡先の一覧</a>から、現在地から近い病院も探せます。</p>
     <h2>京都のペットタクシー よくある質問</h2><div class="faq-list"><details><summary>京都市内の動物病院まで、ペットタクシーはいくらですか？</summary><div class="a">京都府に来てくれる会社のうち料金表をのせている12社の料金表で計算すると、5kmで片道3,300円（2,000〜4,100円）が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。お迎えの料金や夜間の割増は会社ごとに違うので、フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。</div></details><details><summary>京都から伊丹空港まで、ペットタクシーはいくらですか？</summary><div class="a">京都府に来てくれる会社のうち料金表をのせている12社の料金表で計算すると、50kmで片道10,700円（3,600〜13,000円）が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。お迎えの料金や夜間の割増は会社ごとに違うので、フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。</div></details><details><summary>京都に来てくれるペットタクシーは何社ありますか？</summary><div class="a">当サイトに載せている全国の会社のうち、対応エリアに京都府を書いている会社は13社でした（2026年10月30日時点）。地名を書いていない場所に来てくれることもあるので、お迎えの場所をフォームに入れて確かめてください。</div></details><details><summary>京都で、車がなくても大型犬を動物病院へ連れて行けますか？</summary><div class="a">京都府のお迎えに対応している13社のうち、公式サイトに大型犬も乗せられると書いている会社は4社でした（2026年10月30日時点）。電車にはキャリーに入る小さな子しか乗れませんが、ペットタクシーなら車がなくても、大きな子と一緒に動物病院へ行けます。乗せられる頭数や一緒に乗れる人数は会社ごとに違うので、候補の会社の条件と公式サイトで確かめてください。</div></details><details><summary>京都で当日でもペットタクシーを頼めますか？</summary><div class="a">13社のうち、公式サイトや会社からの返事に当日も受けると書いてある会社は6社です。お迎えが今日のときは、この中から空いていて間に合う会社だけが候補に出ます。会社にメールで確認してから決まるしくみなので、お迎えの時刻は、いまから3時間以上あとで選んでください。</div></details><details><summary>京都で夜間に診てもらえる動物病院はありますか？</summary><div class="a">京都府の夜間・救急の動物病院を3件載せています（京都市南区・久世郡久御山町・京都市右京区など）。受付時間は病院ごとに違うので、行く前に電話で受け入れてもらえるか確かめてください。</div></details><details><summary>京都でペットの緊急搬送を頼める会社はありますか？</summary><div class="a">京都府で緊急の搬送をしている会社を4社載せています。急ぐときは、まず動物病院に電話して受け入れを確かめてから頼んでください。</div></details></div>
@@ -1624,7 +1619,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
   </div>
 </section>
 
-</main>
+<div class="wrap"><p class="emg-free ft" style="font-size:.78rem;color:#5f6368;background:none;padding:0;margin:16px 0">このページの一覧は無料の情報です。当サイトへのお申し込みやお支払いはありません。料金や受付は、それぞれの会社・病院に直接おたずねください。</p></div></main>
 
 <!-- 11. フッター -->
 <aside class="partner-band"><div class="wrap"><p><b>ペットタクシー会社の方へ</b>いっしょにペットと飼い主さんをお迎えしてくださる会社を探しています。</p><a href="/partner/">提携のご案内</a></div></aside>
@@ -1638,8 +1633,8 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
   </div>
 </footer>
 
-<div class="sticky"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
+<div class="sticky" style="visibility:hidden"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
 
-<script src="/app.js?v=e4ce032544" defer></script>
+<script src="/app.js?v=d7fea4ed93" defer></script>
 </body>
 </html>
