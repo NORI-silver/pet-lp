@@ -4,6 +4,8 @@
 - 何も送らない・どこにも書き込まない（公式サイトを読むだけ）。コンテナからは各社のサイトに届かないので、
   .github/workflows/photo-harvest.yml（GitHub Actions）で動かし、結果をブランチ photo-cand に置く。
 - 使ってよいか（利用許諾）が確かめられた写真だけを「候補」にする。無断転載はしない。
+  permit: 事業者が「サイトの写真を使ってよい」と言ってくれた（tools/photo_permits.json に、いつ・どの範囲で・どうやっての記録）。
+          → 公式サイト（と許可のページ）から写真を取り、人の顔・ロゴ・地図・一色の画像を外して5枚まで縮める
   ok    : サイトの決まり（著作権・サイトポリシーのページ、またはページの rel=license）に、
           CC BY / CC BY-SA / CC0 / 政府標準利用規約 / 公共データ利用規約 で使ってよいと書いてあり、
           写真がその対象から外されていない（「写真は除く」などがない）。→ 写真を縮めて候補にする（人が見て採る）
@@ -64,6 +66,27 @@ def get(url, timeout=25, binary=False):
 def text(t):
     t = re.sub(r'(?is)<(script|style|noscript)[^>]*>.*?</\1>', ' ', t)
     return re.sub(r'[\s　]+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', t)))
+
+
+def permits():
+    """事業者が「サイトの写真を使ってよい」と言ってくれた記録（tools/photo_permits.json）。キーは "分野:id"。"""
+    p = os.path.join(HERE, "photo_permits.json")
+    if not os.path.exists(p): return {}
+    return {f'{x["cat"]}:{x["id"]}': x for x in json.load(open(p, encoding="utf-8"))["permits"]}
+
+
+_FACE = None
+def has_face(im):
+    """人の顔が写った写真は使わない（正面・横顔）。opencv がなければ調べられないので、使わない側に倒す。"""
+    global _FACE
+    try:
+        import cv2, numpy as np
+    except Exception:
+        return True
+    if _FACE is None:
+        _FACE = [cv2.CascadeClassifier(cv2.data.haarcascades + n) for n in ("haarcascade_frontalface_default.xml", "haarcascade_profileface.xml")]
+    g = cv2.cvtColor(np.array(im.convert("RGB")), cv2.COLOR_RGB2GRAY)
+    return any(len(c.detectMultiScale(g, 1.1, 6, minSize=(max(24, im.width // 25),) * 2)) for c in _FACE)
 
 
 def items(cats):
@@ -144,6 +167,7 @@ def shrink(raw):
     if not (1.0 <= r <= 2.4): return None
     im = im.convert('RGB')
     if max(ImageStat.Stat(im.resize((32, 32))).stddev) < 18: return None  # 一色に近い（背景・飾り）
+    if has_face(im): return None  # 人の顔が写っている
     s = max(W / im.width, H / im.height)
     im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
     x, y = (im.width - W) // 2, (im.height - H) // 2
@@ -152,19 +176,33 @@ def shrink(raw):
     return b.getvalue()
 
 
+PERMITS = {}
+
+
 def one(it, out):
     try:
         t, real = get(it["url"])
     except Exception as e:
         return dict(it, status="fail", note=str(e)[:80])
+    pm = PERMITS.get(f'{it["cat"]}:{it["id"]}')
     title = re.search(r'(?is)<meta[^>]+property=["\']og:site_name["\'][^>]+content=["\']([^"\']+)', t) or re.search(r'(?is)<title[^>]*>(.*?)</title>', t)
     owner = re.sub(r'\s+', ' ', html.unescape(title.group(1))).strip()[:40] if title else ""
-    st, pol, note = judge(t, real)
+    if pm:  # 事業者の許可がある：許可の範囲（pages があればそのページ、なければ公式サイト）から取る
+        st, pol, note = "permit", pm.get("date", ""), f'{pm.get("by", "")}・{pm.get("scope", "")}'
+    else:
+        st, pol, note = judge(t, real)
     r = dict(it, status=st, policy=pol, note=note, owner=owner, photos=[])
-    if st != "ok": return r
+    if st not in ("ok", "permit"): return r
     d = os.path.join(out, "img", it["cat"]); os.makedirs(d, exist_ok=True)
-    for u in imgs(t, real):
-        if len(r["photos"]) >= 3: break
+    cand = imgs(t, real)
+    if pm:
+        for pg in pm.get("pages") or []:
+            try:
+                pt, preal = get(pg); cand += [u for u in imgs(pt, preal) if u not in cand]
+            except Exception:
+                pass
+    for u in cand[:16]:
+        if len(r["photos"]) >= (5 if pm else 3): break
         try:
             raw, ct = get(u, binary=True)
             w = shrink(raw)
@@ -179,7 +217,7 @@ def one(it, out):
 
 def sheets(out, rows):
     from PIL import Image, ImageDraw
-    pics = [(r, p) for r in rows for p in r["photos"]]
+    pics = [(r, p) for r in rows for p in r.get("photos", [])]
     for k in range(0, len(pics), 24):
         part = pics[k:k + 24]
         sh = Image.new("RGB", (4 * 260, ((len(part) + 3) // 4) * 200), "white")
@@ -195,6 +233,7 @@ def main():
     out = sys.argv[1] if len(sys.argv) > 1 else "photo-cand"
     cats = sys.argv[2:] or list(SRC)
     os.makedirs(out, exist_ok=True)
+    PERMITS.update(permits())
     its = items(cats)
     t0 = time.time()
     with ThreadPoolExecutor(16) as ex:
@@ -203,14 +242,14 @@ def main():
     sheets(out, rows)
     L = ["# 事業者カードの写真の候補（公式サイトの利用許諾）", "",
          f"{time.strftime('%Y-%m-%d')}・{len(rows)}件・{int(time.time() - t0)}秒", "",
-         "| 分野 | 件数 | ok（使ってよい） | check（人が読む） | no（転載禁止と明記） | none（書いていない） | fail（開けない） | 写真 |", "|---|---|---|---|---|---|---|---|"]
+         "| 分野 | 件数 | permit（事業者の許可） | ok（使ってよい） | check（人が読む） | no（転載禁止と明記） | none（書いていない） | fail（開けない） | 写真 |", "|---|---|---|---|---|---|---|---|---|"]
     for c in cats:
         rs = [r for r in rows if r["cat"] == c]
-        n = {s: sum(r["status"] == s for r in rs) for s in ("ok", "check", "no", "none", "fail")}
-        L.append(f'| {c} | {len(rs)} | {n["ok"]} | {n["check"]} | {n["no"]} | {n["none"]} | {n["fail"]} | {sum(len(r.get("photos", [])) for r in rs)} |')
-    L += ["", "## ok と check", "", "| 分野 | id | 名前 | 判定 | 決まりのページ | 根拠 | 写真 |", "|---|---|---|---|---|---|---|"]
+        n = {s: sum(r["status"] == s for r in rs) for s in ("permit", "ok", "check", "no", "none", "fail")}
+        L.append(f'| {c} | {len(rs)} | {n["permit"]} | {n["ok"]} | {n["check"]} | {n["no"]} | {n["none"]} | {n["fail"]} | {sum(len(r.get("photos", [])) for r in rs)} |')
+    L += ["", "## permit・ok・check", "", "| 分野 | id | 名前 | 判定 | 決まりのページ | 根拠 | 写真 |", "|---|---|---|---|---|---|---|"]
     for r in rows:
-        if r["status"] in ("ok", "check"):
+        if r["status"] in ("permit", "ok", "check"):
             L.append(f'| {r["cat"]} | {r["id"]} | {r["name"]} | {r["status"]} | {r.get("policy", "")} | {r.get("note", "")[:100].replace("|", "／")} | {len(r.get("photos", []))} |')
     open(os.path.join(out, "summary.md"), "w", encoding="utf-8").write("\n".join(L) + "\n")
     print("\n".join(L[:20]))
