@@ -112,17 +112,19 @@ window.PlacePick = function(opts){
   ul.addEventListener("click", function(ev){ var li = ev.target.closest("li[role=option]"); if (li) pick(+li.getAttribute("data-i")); });
   inp.addEventListener("focus", function(){ loadMuni(function(){}); show(); });
   inp.addEventListener("input", function(){ show(); if (opts.typed) opts.typed(inp.value); });
-  inp.addEventListener("blur", function(){ setTimeout(hide, 150); });
+  function close(){ var o = !ul.hidden; hide(); if (o && inp.value && opts.typed) opts.typed(inp.value); }
+  inp.addEventListener("blur", function(){ setTimeout(close, 150); });
   inp.addEventListener("keydown", function(ev){
     if (ev.key === "ArrowDown") { act = Math.min(act + 1, cur.length - 1); mark(); ev.preventDefault(); }
     else if (ev.key === "ArrowUp") { act = Math.max(act - 1, 0); mark(); ev.preventDefault(); }
-    else if (ev.key === "Enter") { if (!ul.hidden && act >= 0) { pick(act); ev.preventDefault(); } else { hide(); inp.blur(); } }
-    else if (ev.key === "Escape") hide();
+    else if (ev.key === "Enter") { if (!ul.hidden && act >= 0) { pick(act); ev.preventDefault(); } else { close(); inp.blur(); } }
+    else if (ev.key === "Escape") close();
     else if (ev.key === "Backspace" && !inp.value && places.length) remove(places.length - 1);
   });
   return {
     get: function(){ return places.slice(); },
     text: function(){ return inp.value; },
+    open: function(){ return !ul.hidden && cur.length > 0; },
     clearText: function(){ inp.value = ""; },
     set: function(ps, quiet){ places = (ps || []).filter(function(p){ return p && p.p && (!opts.fixed || p.p === opts.fixed); }); paint(); if (!quiet) { save(); opts.onChange(places.slice()); } },
     saved: function(){ try { return JSON.parse(localStorage.getItem(KEY) || "[]") || []; } catch (x) { return []; } },

@@ -717,6 +717,8 @@ from guides_jichitai import JICHITAI_GUIDES
 GUIDES.extend(JICHITAI_GUIDES)
 from guides_hinan import HINAN_GUIDES  # [B] ペットと避難（2026-11-14）
 GUIDES.extend(HINAN_GUIDES)
+from guides_hinan_survey import HINAN_SURVEY  # [B] 被リンク：全国ペット同行避難しらべ（2026-11-17）
+GUIDES.append(HINAN_SURVEY)
 # 老犬ホーム・ドッグトレーナー・ペットシッターのえらび方・頼み方の記事（tools/guides_care.py）。
 from guides_care import CARE_GUIDES
 GUIDES.extend(CARE_GUIDES)
