@@ -708,6 +708,8 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
 .art nav.art-toc::before{display:none}
 .art .tip::before{content:"POINT";display:block;font-size:.72rem;letter-spacing:.12em;color:var(--o-d);font-weight:800;margin-bottom:4px}
 .art .tbl{overflow-x:auto;margin:0 0 18px}
+.tbl{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+@media (max-width:480px){.tbl table th,.tbl table td{padding-left:4px;padding-right:4px;font-size:.8rem}}
 .art table{border-collapse:collapse;width:100%;font-size:.78rem;line-height:1.5;background:#fff}
 .art th,.art td{border:1px solid var(--line);padding:8px 4px;text-align:center}
 @media (min-width:600px){.art table{font-size:.88rem}.art th,.art td{padding:10px 8px}}
@@ -939,6 +941,7 @@ table.t2.t2.t2.t2{border-collapse:collapse;width:100%;font-size:.9rem;line-heigh
 table.t2.t2.t2.t2 th,table.t2.t2.t2.t2 td{border:0;border-bottom:1px solid var(--line,#ece6e0);padding:10px 8px;text-align:left;vertical-align:top;font-weight:400;background:transparent;white-space:normal;font-size:inherit}
 table.t2.t2.t2.t2 thead th{background:#f7f4f1;color:var(--ink-3,#6b625b);font-size:.78rem;font-weight:600;white-space:nowrap;border-bottom:1.5px solid var(--line,#ece6e0)}
 table.t2.t2.t2.t2 tbody tr>:first-child{color:var(--ink,#2b2622);font-weight:600;min-width:7.5em}
+@media (max-width:480px){table.t2.has-bars.t2.t2 thead th{white-space:normal}table.t2.has-bars.t2.t2 tbody tr>:first-child{min-width:3.5em}table.t2.has-bars.t2.t2 th,table.t2.has-bars.t2.t2 td{padding:9px 5px}}
 table.t2.t2.t2.t2 .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
 table.t2.t2.t2.t2 .c{text-align:center}
 table.t2.t2.t2.t2 .s{white-space:nowrap}
@@ -989,7 +992,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
         <span class="kicker">練馬区のペットタクシー <b style="white-space:nowrap">無料</b></span>
         <span class="catch">家族だから、<br><em>移動もやさしく。</em></span>
       </h1>
-      <p class="lede">練馬区の動物病院への通院から、お引っ越し、空港への送迎まで。フォームにお迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。無料で使えて、当日の依頼もできます。</p>
+      <p class="lede">練馬区を対応エリアに書いているペットタクシーは3社（2026年10月30日時点）。練馬区の動物病院への通院から、お引っ越し、空港への送迎まで。フォームにお迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。無料で使えて、当日の依頼もできます。</p>
       <ul class="pills">
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>無料</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>何社にでもまとめて問い合わせ</li>
@@ -1249,7 +1252,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
     <p class="small">ペットタクシー予約窓口　更新 2026.10.30</p>
     <h2>練馬区でペットタクシーを使うとき</h2>
     <p>練馬区は東西に長く、大泉学園や石神井から区の東側や都心の病院へ出ると10km以上になることもあります。埼玉県所沢市の専門の動物病院や、足立区の二次診療の病院へ通う人もいます。電車やバスにはキャリーに入る子しか乗れず、大型犬は乗れません。お引っ越しや空港への送迎にも使われます。</p>
-    <p>東京都のお迎えに対応している37社のうち、公式サイトの対応エリアに「練馬」と書いている会社は3社でした（2026年10月30日時点）。名前を書いていない市にも来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。</p>
+    <h2>練馬区を対応エリアに書いているペットタクシー3社</h2><p>東京都のお迎えに対応している会社のうち、公式サイトの対応エリアに練馬区の名前を書いている会社は3社でした（2026年10月30日時点）。そのうち3社は24時間受け付けていて、料金表をのせている会社は3社です。5kmの運賃の安い順に並べました。名前を書いていない会社も来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。</p><div class="tbl"><table class="t2 t2s"><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th class="n">受付</th><th class="n">5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody><tr><td>都内</td><td data-l="対応エリア（公式サイトの書き方）"><div>杉並区・中野区・世田谷区・練馬区・新宿区・渋谷区・武蔵野市・三鷹市を中心に東京・神奈川・千葉・埼玉</div></td><td class="n" data-l="受付"><div>24時間</div></td><td class="n" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>都内</td><td data-l="対応エリア（公式サイトの書き方）"><div>練馬区・杉並区を中心に中野区・板橋区・豊島区・新宿区・渋谷区・目黒区・世田谷区・武蔵野市・西東京市・三鷹市・調布市・小金井市など東京都全域</div></td><td class="n" data-l="受付"><div>24時間</div></td><td class="n" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>埼玉県</td><td data-l="対応エリア（公式サイトの書き方）"><div>新座市を中心に東京の練馬区・杉並区・世田谷区・板橋区、埼玉の和光・朝霞・志木・所沢・富士見・三芳</div></td><td class="n" data-l="受付"><div>24時間</div></td><td class="n" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr></tbody></table></div><p class="fare-flag"><b>確定料金ではありません。</b>各社の公式サイトの料金表をもとに計算した概算で、会社名は出していません。5kmの運賃は片道の金額で、お迎え料金・待ち時間・高速代は入っていません。当日の道順・渋滞・待ち時間などで変わります。フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p>
     <h3>練馬区からよく行く区間の料金の目安（片道）</h3>
     <table class="t2 t2s"><thead><tr><th>区間</th><th class="n">車の道のりの目安</th><th>料金の目安（まんなか・安い〜高い）</th></tr></thead><tbody><tr><td>練馬駅 → 渋谷区本町<small class="sub">（日本動物医療センターのあたり）</small></td><td class="n" data-l="車の道のりの目安"><div>9km</div></td><td data-l="料金の目安（まんなか・安い〜高い）"><div>4,000円（1,200〜5,500円）</div></td></tr><tr><td>練馬駅 → 東所沢<small class="sub">（日本小動物医療センターのあたり）</small></td><td class="n" data-l="車の道のりの目安"><div>18km</div></td><td data-l="料金の目安（まんなか・安い〜高い）"><div>5,400円（2,200〜7,500円）</div></td></tr><tr><td>練馬駅 → 足立区一ツ家<small class="sub">（日本動物高度医療センター東京病院のあたり）</small></td><td class="n" data-l="車の道のりの目安"><div>20km</div></td><td data-l="料金の目安（まんなか・安い〜高い）"><div>5,800円（2,400〜7,900円）</div></td></tr></tbody></table>
     <p class="small">東京都に来てくれる会社のうち料金表をのせている33社の公式サイトの料金表をもとに計算した、乗った距離の運賃の概算で、確定料金ではありません。お迎え料金・夜間の割増は入っていません。当日の道順・渋滞・待ち時間などで変わり、高速道路を使うときは高速代が別にかかります。</p>

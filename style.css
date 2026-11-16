@@ -678,6 +678,8 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
 .art nav.art-toc::before{display:none}
 .art .tip::before{content:"POINT";display:block;font-size:.72rem;letter-spacing:.12em;color:var(--o-d);font-weight:800;margin-bottom:4px}
 .art .tbl{overflow-x:auto;margin:0 0 18px}
+.tbl{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+@media (max-width:480px){.tbl table th,.tbl table td{padding-left:4px;padding-right:4px;font-size:.8rem}}
 .art table{border-collapse:collapse;width:100%;font-size:.78rem;line-height:1.5;background:#fff}
 .art th,.art td{border:1px solid var(--line);padding:8px 4px;text-align:center}
 @media (min-width:600px){.art table{font-size:.88rem}.art th,.art td{padding:10px 8px}}

@@ -708,6 +708,8 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
 .art nav.art-toc::before{display:none}
 .art .tip::before{content:"POINT";display:block;font-size:.72rem;letter-spacing:.12em;color:var(--o-d);font-weight:800;margin-bottom:4px}
 .art .tbl{overflow-x:auto;margin:0 0 18px}
+.tbl{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+@media (max-width:480px){.tbl table th,.tbl table td{padding-left:4px;padding-right:4px;font-size:.8rem}}
 .art table{border-collapse:collapse;width:100%;font-size:.78rem;line-height:1.5;background:#fff}
 .art th,.art td{border:1px solid var(--line);padding:8px 4px;text-align:center}
 @media (min-width:600px){.art table{font-size:.88rem}.art th,.art td{padding:10px 8px}}
@@ -939,6 +941,7 @@ table.t2.t2.t2.t2{border-collapse:collapse;width:100%;font-size:.9rem;line-heigh
 table.t2.t2.t2.t2 th,table.t2.t2.t2.t2 td{border:0;border-bottom:1px solid var(--line,#ece6e0);padding:10px 8px;text-align:left;vertical-align:top;font-weight:400;background:transparent;white-space:normal;font-size:inherit}
 table.t2.t2.t2.t2 thead th{background:#f7f4f1;color:var(--ink-3,#6b625b);font-size:.78rem;font-weight:600;white-space:nowrap;border-bottom:1.5px solid var(--line,#ece6e0)}
 table.t2.t2.t2.t2 tbody tr>:first-child{color:var(--ink,#2b2622);font-weight:600;min-width:7.5em}
+@media (max-width:480px){table.t2.has-bars.t2.t2 thead th{white-space:normal}table.t2.has-bars.t2.t2 tbody tr>:first-child{min-width:3.5em}table.t2.has-bars.t2.t2 th,table.t2.has-bars.t2.t2 td{padding:9px 5px}}
 table.t2.t2.t2.t2 .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
 table.t2.t2.t2.t2 .c{text-align:center}
 table.t2.t2.t2.t2 .s{white-space:nowrap}
@@ -989,7 +992,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
         <span class="kicker">大阪市のペットタクシー <b style="white-space:nowrap">無料</b></span>
         <span class="catch">家族だから、<br><em>移動もやさしく。</em></span>
       </h1>
-      <p class="lede">大阪市の動物病院への通院から、お引っ越し、空港への送迎まで。フォームにお迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。無料で使えて、当日の依頼もできます。</p>
+      <p class="lede">大阪市を対応エリアに書いているペットタクシーは5社（2026年10月30日時点）。大阪市の動物病院への通院から、お引っ越し、空港への送迎まで。フォームにお迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。無料で使えて、当日の依頼もできます。</p>
       <ul class="pills">
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>無料</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>何社にでもまとめて問い合わせ</li>
@@ -1249,7 +1252,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
     <p class="small">ペットタクシー予約窓口　更新 2026.10.30</p>
     <h2>大阪市でペットタクシーを使うとき</h2>
     <p>大阪市は24区あり、かかりつけの病院のほか、東成区の夜間の急病センターや、北摂の夜間救急の病院へ向かうときにも使われます。地下鉄や電車にはキャリーに入る子しか乗れず、大型犬は乗れません。伊丹空港・関西空港への送迎や、お引っ越しの移動にも使われます。</p>
-    <p>大阪府のお迎えに対応している18社のうち、公式サイトの対応エリアに「大阪市」と書いている会社は5社でした（2026年10月30日時点）。名前を書いていない市にも来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。</p>
+    <h2>大阪市を対応エリアに書いているペットタクシー5社</h2><p>大阪府のお迎えに対応している会社のうち、公式サイトの対応エリアに大阪市の名前を書いている会社は5社でした（2026年10月30日時点）。そのうち3社は24時間受け付けていて、料金表をのせている会社は5社です。5kmの運賃の安い順に並べました。名前を書いていない会社も来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。</p><div class="tbl"><table class="t2 t2s"><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th class="n">受付</th><th class="n">5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody><tr><td>府内</td><td data-l="対応エリア（公式サイトの書き方）"><div>大阪市内（北区）</div></td><td class="n" data-l="受付"><div>—</div></td><td class="n" data-l="5kmの運賃"><div>3,000円</div></td><td data-l="お迎え料金"><div>1kmごとに100円</div></td><td data-l="夜間・早朝"><div>料金表にない</div></td></tr><tr><td>府内</td><td data-l="対応エリア（公式サイトの書き方）"><div>大阪市</div></td><td class="n" data-l="受付"><div>24時間</div></td><td class="n" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>府内</td><td data-l="対応エリア（公式サイトの書き方）"><div>柏原市・八尾市・藤井寺市・羽曳野市・松原市・堺市・大阪市（天王寺・阿倍野・中央・平野）、関西全域</div></td><td class="n" data-l="受付"><div>24時間</div></td><td class="n" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>府内</td><td data-l="対応エリア（公式サイトの書き方）"><div>大阪市内と近隣市町、兵庫県の一部、伊丹・関西空港</div></td><td class="n" data-l="受付"><div>—</div></td><td class="n" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,000円</div></td></tr><tr><td>府内</td><td data-l="対応エリア（公式サイトの書き方）"><div>東大阪市を拠点に大阪東部</div></td><td class="n" data-l="受付"><div>24時間</div></td><td class="n" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr></tbody></table></div><p class="fare-flag"><b>確定料金ではありません。</b>各社の公式サイトの料金表をもとに計算した概算で、会社名は出していません。5kmの運賃は片道の金額で、お迎え料金・待ち時間・高速代は入っていません。当日の道順・渋滞・待ち時間などで変わります。フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p>
     <h3>大阪市からよく行く区間の料金の目安（片道）</h3>
     <table class="t2 t2s"><thead><tr><th>区間</th><th class="n">車の道のりの目安</th><th>料金の目安（まんなか・安い〜高い）</th></tr></thead><tbody><tr><td>梅田 → 玉造<small class="sub">（大阪どうぶつ夜間急病センターのあたり）</small></td><td class="n" data-l="車の道のりの目安"><div>5km</div></td><td data-l="料金の目安（まんなか・安い〜高い）"><div>3,300円（2,000〜4,100円）</div></td></tr><tr><td>梅田 → 伊丹空港</td><td class="n" data-l="車の道のりの目安"><div>15km</div></td><td data-l="料金の目安（まんなか・安い〜高い）"><div>5,000円（4,000〜6,000円）</div></td></tr><tr><td>梅田 → 関西空港</td><td class="n" data-l="車の道のりの目安"><div>50km</div></td><td data-l="料金の目安（まんなか・安い〜高い）"><div>10,700円（10,600〜13,400円）</div></td></tr></tbody></table>
     <p class="small">大阪府に来てくれる会社のうち料金表をのせている16社の公式サイトの料金表をもとに計算した、乗った距離の運賃の概算で、確定料金ではありません。お迎え料金・夜間の割増は入っていません。当日の道順・渋滞・待ち時間などで変わり、高速道路を使うときは高速代が別にかかります。</p>
