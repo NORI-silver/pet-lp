@@ -46,6 +46,15 @@ _P = {
     "cross": '<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/>',
     "heart": '<path d="M12 19s-7-4.4-7-9.3A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.1C19 14.6 12 19 12 19z"/>',
     "cam": '<path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.3"/>',
+    "user": '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/>',
+    "family": '<circle cx="8" cy="7.5" r="2.6"/><circle cx="16.5" cy="9" r="2.1"/><path d="M3.5 19c0-3 2-5.5 4.5-5.5s4.5 2.5 4.5 5.5M13 19c0-2.4 1.6-4.4 3.5-4.4s3.5 2 3.5 4.4"/>',
+    "book": '<path d="M12 6.5C10 5 7 4.5 4 5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V5c-3-.5-6 0-8 1.5zM12 6.5v13"/>',
+    "repeat": '<path d="M5 11V9a3 3 0 0 1 3-3h10M15 3l3 3-3 3M19 13v2a3 3 0 0 1-3 3H6M9 21l-3-3 3-3"/>',
+    "door": '<path d="M6 21V4h10v17M4 21h16"/><circle cx="13" cy="12.5" r=".9"/>',
+    "cal": '<rect x="4" y="5.5" width="16" height="14" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/>',
+    "bag": '<path d="M5 9h14l-1 11H6zM9 9V7a3 3 0 0 1 6 0v2"/>',
+    "check": '<circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.3l2.3 2.3 4.7-4.8"/>',
+    "map": '<path d="M9 5l-5 2v12l5-2 6 2 5-2V5l-5 2zM9 5v12M15 7v12"/>',
 }
 def icon(n, cls="fc-i"):
     # 形はページに1回だけ（SPRITE）。カードからは名前で呼ぶ（ページを軽くするため）
@@ -287,7 +296,7 @@ def build_card(card, conf, fit_by_name):
             tail.append(x); continue
         if tag == "a" and "emg-taxi" in cls:
             tail.append(x); continue
-        if conf["key"] == "joto" and ((tag == "p" and "jt-h" in cls and "公式ページに書いてあること" in t) or (tag == "ul" and "jt-c" in cls)):
+        if conf["key"] == "joto" and tag == "ul" and "jt-c" in cls:
             keep.append(x); continue
         more.append(x)
     # 見せる行：場所 → 料金 → 時間 → 動物 → 資格（4行まで）。のこりは「くわしく」

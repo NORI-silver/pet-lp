@@ -185,7 +185,7 @@ def render_top(ctx):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › ペットと避難</nav>
     <h1><small>同行避難・同伴避難・避難所で受け入れる動物の決まり</small>ペットと避難するとき</h1>
-    <p class="lede">災害のときは、ペットを連れて避難するのが原則です（同行避難）。ただし、避難所で同じ部屋にいられるとは限らず、受け入れる動物や飼う場所は市区町村・避難所ごとに違います。都道府県・市区の公式ページに書いてあることを、そのまままとめました。</p>
+    <p class="lede">災害のときは、ペットを連れて避難するのが原則です（同行避難）。ただし、避難所で同じ部屋にいられるとは限らず、受け入れる動物や飼う場所は市区町村・避難所ごとに違います。都道府県・市区の公式ページの情報をもとにまとめました。</p>
   </div>
 </section>
 <section style="padding-top:8px">
@@ -213,7 +213,7 @@ def render_top(ctx):
   <div class="wrap">
     <div class="emg">
       <h2 class="sh" id="list" style="scroll-margin-top:90px">都道府県ごとのページ</h2>
-      <p class="emg-free">それぞれの公式ページに書いてあることだけを載せています。書いていないことは「公式ページに書いていません（不明）」としています（「受け入れない」という意味ではありません）。</p>
+      <p class="emg-free">それぞれの公式ページの情報だけを載せています。書いていないことは「公式ページに書いていません（不明）」としています（「受け入れない」という意味ではありません）。</p>
       {summ}
       <div class="emg-tips" id="faq"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
       <p class="emg-note">{e(CHECKED)}時点の、公式ページに書いてある情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先と、お住まいの市区町村でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
@@ -255,7 +255,7 @@ def render_pref(ctx, pf, its, done):
          MARK[it["flags"].get("small") or it["flags"].get("bird")], MARK[it["flags"].get("reptile")], "要" if it.get("cage_req") else "—"] for it in show]
     fit_its = prefs_it + (big or allc)[:10]
     fit = V.block(("breeds", {"title": f"うちの子の大きさ・種類で、{pf}の決まりを見る", "rows": fit_rows(fit_its), "sizes": SIZES, "breeds": BREEDS,
-                              "lead": f"{'・'.join(it['name'] for it in fit_its)}の公式ページに書いてあることを、大きさ・種類ごとに並べました。"
+                              "lead": f"{'・'.join(it['name'] for it in fit_its)}の公式ページの情報をもとに、大きさ・種類ごとに並べました。"
                                       + ("ほかの市区町村は、下のそれぞれのページで見られます。" if len(allc) > len(fit_its) - len(prefs_it) else ""),
                               "note": "書いていない自治体も「受け入れない」という意味ではありません。避難所ごとの決まりもあるので、お住まいの市区町村で確かめてください。"}))
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
@@ -338,7 +338,7 @@ def render_city(ctx, pf, it, sibs, done):
              [("ペットタクシー予約窓口", "/"), ("ペットと避難", f"/{SLUG}/"), (pf, href(pf)), (nm, href_city(it))], faq)
     # 市区町村のページは体重と猫だけで選ぶ（決まりは犬種では変わらない。犬種名の一覧で本文をふくらませない。2026-11-14 薄いページの担当から）
     fit = V.block(("breeds", {"title": f"うちの子の大きさ・種類で、{nm}の決まりを見る", "rows": fit_rows([it]), "sizes": SIZES, "names": False,
-                              "lead": f"{nm}の公式ページに書いてあることを、大きさ・種類ごとに並べました。",
+                              "lead": f"{nm}の公式ページの情報をもとに、大きさ・種類ごとに並べました。",
                               "note": "書いていないことも「受け入れない」という意味ではありません。避難所ごとの決まりもあるので、市区町村や避難所で確かめてください。"}))
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     ans = "".join(f"<li>{e(x)}</li>" for x in _answer(it))
