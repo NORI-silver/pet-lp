@@ -1,0 +1,4 @@
+{
+ "_説明": "事業者カードに出す写真（使ってよいと確かめたものだけ。Nori 2026-11-16）。tools/photo_import.py が入れる（手で写さない）。by は owner（事業者が登録）・permit（事業者が公式サイトの写真の利用を許可。記録は photo_permits.json）・license（公式サイトの決まりで転載を許している。credit・license・lic_url の表示が要る）。photos は /img/fac/ の 520×347 の webp。並びは owner → permit → license。",
+ "items": []
+}
