@@ -252,7 +252,7 @@ def render(ctx):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › ペットが亡くなったら</nav>
     <h1><small>まずすること・火葬の種類と料金・死亡届・自治体の受付（全国）</small>ペットが亡くなったら</h1>
-    <p class="lede">あわてなくて大丈夫です。お住まいの都道府県をえらぶと、近くのペット火葬場・霊園（{len(F['facilities'])}か所）と市区の受け付けが出ます。まずすることは<a href="#after">下の記事</a>に。</p>
+    <p class="lede">あわてなくて大丈夫です。お住まいの都道府県をえらぶと、近くのペット火葬場・霊園と市区の受け付けが出ます。まずすることは<a href="#after">下の記事</a>に。</p>
   </div>
 </section>
 <section style="padding-top:8px">

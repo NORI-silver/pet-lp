@@ -2641,6 +2641,12 @@ print("nosrc", nosrc.build(ROOT), "pages")
 # 画面を何枚も占める並び（都道府県の箱・都道府県の表・行の多いカードの表）をたたむ（tools/compact.py、Nori 2026-11-16「もっとこんぱくとに」）
 import compact
 print("compact", compact.build(ROOT), "pages")
+# 施設のカードの形を全部の分野でそろえる（tools/cardskin.py、Nori 2026-11-16「カードもばらばら。統一してー」）
+import cardskin
+print("cardskin", cardskin.build(ROOT), "pages")
+# 運営側の集計・読めない表・ガイドの下のタクシーのボタンなどを取る（tools/tidy.py、Nori 2026-11-16 の見直し一覧）
+import tidy
+print("tidy", tidy.build(ROOT), "pages")
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] noindex.json のページに noindex,follow を入れる（ほかの後処理のあと）
 for _p in NOINDEX:

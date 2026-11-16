@@ -533,7 +533,7 @@ def rows(h):
 def _too_big(h):
     """情報ページの重さの上限（tests/info-light.test.cjs の60KB）を超えるなら作りかえない（全部の施設を並べる全国のページ。県のページで見せる）"""
     import gzip
-    return len(gzip.compress(h.encode("utf-8"), 9)) > 59 * 1024
+    return len(gzip.compress(h.encode("utf-8"), 9)) > 54 * 1024  # あとで cardskin.py がカードの形をそろえて少し重くなるので、余裕を残す
 
 def _trim(h, keep):
     """全国のページで重すぎるとき、都道府県ごとの箱（emg-pref、見出しに県のページへのリンク）に最初の keep 件だけ残し、のこりは県のページへのリンクにする（施設は県のページにすべて載っている。tests/info-light の「上限を超えたら県のページへのリンクに」）"""

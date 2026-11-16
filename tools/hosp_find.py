@@ -230,8 +230,8 @@ CSS = """<style id="hfcss">
 .hc-b span.u{background:#f2efec;color:#6b5f56;font-weight:400}
 .hc-l{margin:3px 0 0;font-size:.85rem;color:#4a3f37;display:flex;gap:6px;line-height:1.45}
 .hc-l i{font-style:normal;flex:0 0 1.2em;text-align:center}
-.hc-a{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.hc-a a,.hc-a .partner-review-open{font-size:.8rem;padding:5px 10px;border-radius:999px;border:1px solid #e3d3c6;background:#fff;color:#3c2f26;text-decoration:none}
+.hc-a{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 16px;margin-top:8px}
+.hc-a a,.hc-a .partner-review-open{font-size:.82rem;font-weight:700;padding:4px 0;border:0;background:none;color:#a8410a;text-decoration:none}
 .hc-a a.o{background:#e8590c;border-color:#e8590c;color:#fff;font-weight:700}
 .hc-a .emg-score{display:contents}.hc-a .partner-score{margin:0}
 .hc .review-panel{flex-basis:100%}
