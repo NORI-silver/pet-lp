@@ -382,6 +382,9 @@ def jichitai_hub(h):
 STOCK_KEY = {"hospital": "hospital", "hospital-night": "hospital-night", "pet-hotel": "pet-hotel", "trimming": "trimming", "dog-trainer": "dog-trainer",
              "pet-sitter": "pet-sitter", "rojin-home": "rojin-home", "sougi": "sougi", "joto": "joto", "dogrun": "dogrun",
              "inu-yado": "inu-yado", "pet-yado": "pet-yado", "inu-cafe": "inu-cafe"}
+# Nori 2026-11-16「写真はイメージじゃなくて、その施設のやつ使ってっていったよね」：汎用の写真はやめた。カードには何も足さない
+# （前に入れた写真と data-pics は消す）。その施設の写真は、使ってよいものだけ写真のスレッドが入れる。rules_check の [stock] で止める。
+STOCK_ON = False
 _STOCK = {}
 def _stock_files(ROOT, key):
     if key not in _STOCK:
@@ -392,6 +395,7 @@ def _stock_files(ROOT, key):
 _CARD_OPEN = re.compile(r'<div class="(?:emg-item emg-co fc[^"]*|ux-c dr-card[^"]*|emg-item yd-card[^"]*)"[^>]*>')
 def stock(h, ROOT, cat):
     h = re.sub(r'<div class="ux-img">.*?</div>', "", h, flags=re.S)
+    if not STOCK_ON: return re.sub(r' data-pics="[^"]*"', "", h)
     fs = _stock_files(ROOT, STOCK_KEY.get(cat, ""))
     if not fs: return h
     # さがす箱（/find.js）のあるページは、写真の一覧を箱に書いておき、find.js がカードに入れる（カードの数が多いページでも軽く）

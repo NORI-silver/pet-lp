@@ -53,6 +53,7 @@ HOLES = re.compile(r"(?<![「『])◯◯(?![」』一])|TODO|FIXME|XXX|\{\{|\}\}
 REMOVED = [
     (re.compile(r'class="hf-sos"|\bdata-sos\b|いま具合が悪いとき'), "動物病院の「いま具合が悪いとき」の箱（Nori 11/16 で消した）"),
     (re.compile(r'写真を見る</button>'), "「写真を見る」のボタン（Nori 11/15「いらない」）"),
+    (re.compile(r'/img/stock/|\bdata-pics="|class="ux-img"'), "カードの汎用の「イメージ」写真（Nori 11/16「その施設のやつ使って」。その施設の写真だけ）"),
     (re.compile(r'(?:くわしく|詳しく)はリンク先'), "「くわしくはリンク先で」（スクリプトの中も。Nori 11/16「価値ゼロ」）"),
     (re.compile(r'data-k="？"|\[\'？\',\'不明\''), "「？不明」の印を並べる（分からないことは並べず1行に。Nori 11/16）"),
 ]
