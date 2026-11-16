@@ -201,8 +201,8 @@ def check_page(root, path):
     bad = [u for u in re.findall(r'<div class="cs-ph"[^>]*><div class="cs-ph-s">(.*?)</div>', raw) for u in re.findall(r'src="([^"]+)"', u) if not u.startswith("/img/fac/") or u not in _photos_ok(root)]
     if bad: found.append(("photo", f"{len(bad)}枚（{bad[0][:60]}）"))
     if info and '<p class="emg-free">' in raw: found.append(("removed", "結果の前の「この一覧は無料の情報です」の断り書き（ページの下へ小さく。tidy.py）"))
-    # 分野の入口・県のページにはキービジュアル（tools/keyvisual.py、Nori 2026-11-16「各カテゴリでキービジュアルいれて」）
-    if parts and parts[0] in FAC_CATS and listing and "area-hero" in raw and "data-kv" not in raw: found.append(("kv", "キービジュアルがない（keyvisual.py の SCENES に分野を足す）"))
+    # 分野の入口にはキービジュアル（tools/keyvisual.py、Nori 2026-11-16「各カテゴリでキービジュアルいれて」）
+    if len(parts) == 1 and parts[0] in FAC_CATS and "data-kv" not in raw: found.append(("kv", "キービジュアルがない（keyvisual.py の KV に分野を足す）"))
     if p.walls and "terms" not in parts: found.append(("wall", f"{max(p.walls)}字"))  # 規約は条文なので除く
     return found
 
