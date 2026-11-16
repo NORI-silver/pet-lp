@@ -2069,6 +2069,79 @@
    "animals": "犬・猫",
    "review_query": "Smile Home 老犬介護 近江八幡市",
    "review_name": "SmileHome"
+  },
+  {
+   "id": "R095",
+   "name": "老犬ホームトップ 栃木犬舎",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "矢板市",
+   "url": "https://www.roukenhome.or.jp/homelist/toptochigi/",
+   "addr": "栃木県矢板市石関862-1",
+   "animals": "犬",
+   "visit": "見学できる",
+   "reg": "栃木県動愛セ 20保第003号",
+   "spec": "24時間スタッフが常駐。テニスコート1面より広いドッグラン",
+   "review_query": "老犬ホームトップ 栃木犬舎 矢板市",
+   "review_name": "栃木犬舎",
+   "facts": [
+    {
+     "k": "お世話",
+     "v": "24時間スタッフが常駐。ブログ・手紙・メールでふだんの様子を知らせる。介護室と中長期の預かりの場所があり、大きめのケージ、昼に自由に過ごせる場所、運動場から出られるドッグラン",
+     "src": "https://www.roukenhome.or.jp/homelist/toptochigi/",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "行き方",
+     "v": "東北道の矢板インターから車で5分ほど",
+     "src": "https://www.roukenhome.or.jp/homelist/toptochigi/",
+     "checked": "2026-11-16"
+    }
+   ]
+  },
+  {
+   "id": "R096",
+   "name": "ペットケア＆アダプションセンター日光",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "日光市",
+   "url": "https://nikko.pfirst.jp/care_center",
+   "addr": "栃木県日光市",
+   "animals": "犬・猫",
+   "visit": "見学は予約制",
+   "spec": "大型犬・猫も。年中無休で面会・外泊できる",
+   "review_query": "ペットケア＆アダプションセンター日光",
+   "review_name": "日光",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "月額：小型犬（10kg未満）65,000円、中型犬（20kg未満）70,000円、大型犬（20kg以上）75,000円、猫65,000円（税込）。入居のときに医療預かり金10万円",
+     "src": "https://nikko.pfirst.jp/care_center",
+     "checked": "2026-11-16",
+     "yen": 65000,
+     "tax": "込"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "年齢や持病に合わせた健康管理、混合ワクチン・狂犬病・フィラリア・ノミ・ダニの予防、毎月の写真入りの報告書。寝たきりの子の床ずれのケアや体位変換も",
+     "src": "https://nikko.pfirst.jp/care_center",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "病院",
+     "v": "提携の獣医師の定期の健康診断と検査、専属の獣医師の巡回。具合が悪いときは提携の病院で診てもらい、結果を知らせる",
+     "src": "https://nikko.pfirst.jp/care_center",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "部屋",
+     "v": "個室・サークル・ケージから、体の大きさや性格に合わせて",
+     "src": "https://nikko.pfirst.jp/care_center",
+     "checked": "2026-11-16"
+    }
+   ]
   }
  ]
 }
