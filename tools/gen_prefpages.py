@@ -45,8 +45,19 @@ def table_html(e, cat, rs):
     cols = cat.get("table")
     if not cols: return ""
     head = "<tr><th>名前</th>" + "".join(f"<th>{e(h)}</th>" for h, _ in cols) + "</tr>"
-    body = "".join("<tr><td>" + e(it["name"]) + "</td>" + "".join(f"<td>{e(f(it) or '')}</td>" for _, f in cols) + "</tr>" for it in rs)
-    return ('<div class="emg-tips"><h4>条件をくらべる</h4><div class="tbl"><table class="pp-tbl"><thead>' + head + '</thead><tbody>' + body +
+    # スマホでは1行ずつのカードにして、○の項目だけを札で見せる（縦書きのような細い列にしない。Nori 2026-11-16「統一してー」）
+    def _td(h, v):
+        v = v or ""
+        if not v: return '<td class="pp-no"></td>'
+        if v == "○": return f'<td class="pp-ok" data-l="{e(h)}">○</td>'
+        return f'<td class="pp-v" data-l="{e(h)}">{e(v)}</td>'
+    body = "".join('<tr><td class="pp-n">' + e(it["name"]) + "</td>" + "".join(_td(h, f(it)) for h, f in cols) + "</tr>" for it in rs)
+    css = ('<style>@media (max-width:640px){.pp-tbl thead{display:none}.pp-tbl,.pp-tbl tbody{display:block}'
+           '.pp-tbl tr{display:block;padding:9px 0;border-bottom:1px solid #efe0d3}.pp-tbl td{display:none;border:0!important;padding:0!important}'
+           '.pp-tbl td.pp-n{display:block;font-weight:700;margin:0 0 5px}'
+           '.pp-tbl td.pp-ok{display:inline-block;font-size:0!important;color:transparent;margin:0 5px 5px 0}.pp-tbl td.pp-ok::before{content:"✓ " attr(data-l);font-size:.78rem;background:#e6f4ea;color:#1e7d4f;border-radius:999px;padding:2px 9px;font-weight:700}'
+           '.pp-tbl td.pp-v{display:inline-block;font-size:.78rem;color:#5f5148;margin:0 8px 5px 0}.pp-tbl td.pp-v::before{content:attr(data-l) "：";color:#8a7b70}}</style>')
+    return (css + '<div class="emg-tips"><h4>条件をくらべる</h4><div class="tbl"><table class="pp-tbl"><thead>' + head + '</thead><tbody>' + body +
             '</tbody></table></div><p class="emg-tips-note">○は公式サイトにはっきり書いてあること。空欄は「しない」ではなく、公式サイトに書いていない・分からないという意味です。</p></div>')
 
 

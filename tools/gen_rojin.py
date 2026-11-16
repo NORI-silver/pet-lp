@@ -31,8 +31,9 @@ CRITERIA = [
  "施設からお金はもらっていません。載っていない施設もあるので、見つけしだい足します。",
 ]
 def criteria_html(e, pf=None):
-    return ('<div class="emg-tips"><h4>この一覧に載せている施設の条件</h4><ul>'
-            + "".join(f"<li>{e(t)}</li>" for t in CRITERIA) + "</ul></div>")
+    # 運営側の決まりは読む人の役に立たないので、小さく折りたたむ（AGENTS.md「品質の決まり」A2、Nori 2026-11-16）
+    return ('<details class="emg-tips pp-fold"><summary>この一覧について</summary><ul>'
+            + "".join(f"<li>{e(t)}</li>" for t in CRITERIA) + "</ul></details>")
 
 def _card(e, h):
     extra = ""
