@@ -2638,6 +2638,9 @@ print("uikit", uikit.build(ROOT))
 # 「公式サイトに書いてある」などを出さない・事実の表をアイコンつきの一覧に（tools/nosrc.py、Nori 2026-11-16）
 import nosrc
 print("nosrc", nosrc.build(ROOT), "pages")
+# 画面を何枚も占める並び（都道府県の箱・都道府県の表・行の多いカードの表）をたたむ（tools/compact.py、Nori 2026-11-16「もっとこんぱくとに」）
+import compact
+print("compact", compact.build(ROOT), "pages")
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] noindex.json のページに noindex,follow を入れる（ほかの後処理のあと）
 for _p in NOINDEX:
