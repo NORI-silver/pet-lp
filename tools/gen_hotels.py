@@ -3,6 +3,7 @@
 # 比べにくい条件（大型犬を泊められる・猫だけのホテル）でしぼった一覧にする（Nori 2026-11-02「SEOと相性がよいものを優先」）。
 # [C] 条件（large・cat_only・cat・vet・pickup・senior・night_staff・camera・run・max_kg）は公式サイトにはっきり書いてあるときだけ持つ（ない＝不明）。
 # 守ること：ホテルからお金をもらわない。順位・おすすめなし。料金・電話番号なし。公式サイトの情報。データ：tools/hotels.json。
+import visual as _V  # 「見ておく◯つ」は共通の部品（トレーナーと同じ見た目）
 import json, os
 import gen_grooming
 
@@ -27,23 +28,16 @@ BEFORE = [
 
 # 「預ける前に見る6つ」（結果のすぐ後ろ。アイコンのカード）。カードの緑のチェックと同じ順・同じ言葉にする
 CHECK = [
- ("🪪", "動物取扱業（保管）の登録", "登録番号と有効期限が店とサイトに出ているか。「登録一覧にも掲載」は、自治体の公開の一覧でも名前と番号が合ったホテルです。"),
- ("🌙", "夜はだれがいるか", "夜もスタッフが泊まりこむのか、夜はカメラで見るだけなのか。"),
- ("🏥", "具合が悪くなったとき", "併設・提携の動物病院はあるか。連れていく病院と費用の決め方。"),
- ("👀", "見学とお試し", "部屋・におい・音を見られるか。はじめての子は1泊のお試しで。"),
- ("📷", "預かり中の様子", "写真やメッセージで様子を送ってくれるか、カメラで見られるか。"),
- ("💉", "ワクチンの決まり", "証明を求めるホテルは、ほかの子から病気がうつる心配が少なくなります。"),
+ ("badge", "動物取扱業（保管）の登録", "登録番号と有効期限が店とサイトに出ているか。「登録一覧にも掲載」は、自治体の公開の一覧でも名前と番号が合ったホテルです。"),
+ ("moon", "夜はだれがいるか", "夜もスタッフが泊まりこむのか、夜はカメラで見るだけなのか。"),
+ ("cross", "具合が悪くなったとき", "併設・提携の動物病院はあるか。連れていく病院と費用の決め方。"),
+ ("eye", "見学とお試し", "部屋・におい・音を見られるか。はじめての子は1泊のお試しで。"),
+ ("camera", "預かり中の様子", "写真やメッセージで様子を送ってくれるか、カメラで見られるか。"),
+ ("shield", "ワクチンの決まり", "証明を求めるホテルは、ほかの子から病気がうつる心配が少なくなります。"),
 ]
-CHECK_CSS = ('<style id="ht-css">.ht-chk{margin:14px 0 18px}.ht-chk h3{font-size:1.05rem;margin:0 0 8px}'
-             '.ht-chk ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr;gap:8px}'
-             '@media(min-width:640px){.ht-chk ul{grid-template-columns:1fr 1fr}}'
-             '.ht-more{margin:8px 0 0;font-size:.92rem}.ht-chk li{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:8px 12px;margin:0}'
-             '.ht-chk li>i{font-style:normal;font-size:1.4rem;line-height:1;flex:0 0 1.6em;text-align:center;padding-top:2px}'
-             '.ht-chk li div{line-height:1.45}.ht-chk li b{display:block;font-size:.92rem;color:#2b2622;margin-bottom:1px;line-height:1.4}.ht-chk li span{display:block;font-size:.82rem;color:#4a3f37;line-height:1.5}</style>')
 
 def checklist(e):
-    li = "".join(f'<li><i aria-hidden="true">{ic}</i><div><b>{e(t)}</b><span>{e(d)}</span></div></li>' for ic, t, d in CHECK)
-    return CHECK_CSS + f'<div class="ht-chk"><h3>安心して預けるために、見ておく6つ</h3><ul>{li}</ul><p class="ht-more"><a href="/guide/choose-pet-hotel/">登録の確かめ方と、見学で見ること・預ける前の準備 →</a></p></div>'
+    return _V.checks("安心して預けるために、見ておく6つ", CHECK, more=("登録の確かめ方と、見学で見ること・預ける前の準備", "/guide/choose-pet-hotel/"), tag="h3")
 
 def _flags(h):
     return [k for k, _ in CONDS + EXTRA if h.get(k)]
