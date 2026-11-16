@@ -69,6 +69,7 @@ ICON_TOPICS = [
     ("住んでいる所", "map", ("県内", "市内", "在住", "住んで", "住む", "県外", "市外")),
 ]
 OTHER = ("ほかの条件", "check")
+SHOW = 4
 
 def _topic(x):
     for lab, ic, ws in ICON_TOPICS:
@@ -81,11 +82,13 @@ def icon_rows(e, conds, fees=()):
     grp, ics = {}, dict((t[0], t[1]) for t in ICON_TOPICS); ics[OTHER[0]] = OTHER[1]
     for x in conds: grp.setdefault(_topic(x)[0], []).append(x)
     for x in fees: grp.setdefault("費用", []).append(x)
-    li = "".join(
-        f'<li><span class="jt-ib">{icon(ics[lab], "jt-i")}</span><span class="jt-tx"><b>{e(lab)}</b>'
-        + "".join(f"<span>{e(x)}</span>" for x in grp[lab]) + "</span></li>"
-        for lab in order if lab in grp)
-    return f'<ul class="jt-c jt-ic">{li}</ul>'
+    labs = [lab for lab in order if lab in grp]
+    row = lambda lab, xs: (f'<li><span class="jt-ib">{icon(ics[lab], "jt-i")}</span><span class="jt-tx"><b>{e(lab)}</b>'
+                           + "".join(f"<span>{e(x)}</span>" for x in xs) + "</span></li>")
+    # カードの大きさをそろえる：見せるのは大事な順に4つの項目の1つめの文だけ（2行まで）。のこりは「そのほか」を開くと出る
+    top = "".join(row(lab, grp[lab][:1]) for lab in labs[:SHOW])
+    rest = "".join(row(lab, grp[lab][1:]) for lab in labs[:SHOW] if grp[lab][1:]) + "".join(row(lab, grp[lab]) for lab in labs[SHOW:])
+    return f'<ul class="jt-c jt-ic jt-top">{top}</ul>' + (f'<ul class="jt-ic jt-rest">{rest}</ul>' if rest else "")
 
 def card(e, c):
     links = "".join(f'<li><a href="{e(l["u"])}" target="_blank" rel="noopener">{e(l["t"])} ↗</a></li>' for l in c.get("links", []))
@@ -107,6 +110,9 @@ CSS = """<style>
 .jt-ic .jt-tx{display:block;min-width:0;font-size:.84rem;color:var(--ink,#2b2622)}
 .jt-ic .jt-tx b{display:inline-block;font-size:.72rem;color:#9a3412;background:#fff1e6;border-radius:999px;padding:0 8px;margin-right:6px;font-weight:800;text-decoration:none!important;vertical-align:1px}
 .jt-ic .jt-tx span{display:block}.jt-ic .jt-tx b+span{display:inline}
+.jt-top .jt-tx{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.emg-item:has(.fc-more[open]) .jt-top .jt-tx{display:block;-webkit-line-clamp:unset}
+.fc-more-b ul.jt-ic{margin:4px 0!important;grid-template-columns:1fr}
 .jt-card ul.jt-l{font-size:.84rem}
 .emg-item small.sg-src{color:var(--ink-3);font-size:.72rem;margin-top:6px}
 .jt-card .jt-more{margin:8px 0 0;font-size:.86rem;font-weight:700}
