@@ -19,7 +19,8 @@ def by_pref(cat):
     for it in cat["items"]:
         for pf in it["prefs"]:
             rows.setdefault(pf, []).append(it)
-    return {pf: rs for pf, rs in rows.items() if len(rs) >= cat.get("min", MIN)}
+    # no_page：件数は足りても中身が薄い県（新しい薄いページは作らない。全国のページには載る）
+    return {pf: rs for pf, rs in rows.items() if len(rs) >= cat.get("min", MIN) and pf not in cat.get("no_page", ())}
 
 def urls(SITE, cat):
     return [f"{SITE}{href(cat, pf)}" for pf in by_pref(cat)]
