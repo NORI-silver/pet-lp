@@ -412,6 +412,8 @@ extra_css = """
 .art nav.art-toc::before{display:none}
 .art .tip::before{content:"POINT";display:block;font-size:.72rem;letter-spacing:.12em;color:var(--o-d);font-weight:800;margin-bottom:4px}
 .art .tbl{overflow-x:auto;margin:0 0 18px}
+.tbl{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+@media (max-width:480px){.tbl table th,.tbl table td{padding-left:4px;padding-right:4px;font-size:.8rem}}
 .art table{border-collapse:collapse;width:100%;font-size:.78rem;line-height:1.5;background:#fff}
 .art th,.art td{border:1px solid var(--line);padding:8px 4px;text-align:center}
 @media (min-width:600px){.art table{font-size:.88rem}.art th,.art td{padding:10px 8px}}
@@ -694,6 +696,8 @@ def foot(cta_href, band=True):
 # ガイド（/guide/）
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from guides import GUIDES
+import guides_answers as _GA
+GUIDES = _GA.apply(GUIDES)  # 最初に答えの箱（2026-11-16 見直し。tools/guides_answers.py）
 GBY = {g["slug"]: g for g in GUIDES}
 
 def guide_cards(slugs, cls=""):
@@ -753,6 +757,28 @@ def pref_fare_stats(short, cs):
     if pk: out += f'<p>このほかにかかるお迎え料金（お店からお迎えの場所まで）のつけ方は、{e(pk)}です。お店が遠い会社ほどお迎え料金が高くなるので、フォームでは会社ごとに、お店からお迎えの場所までの車の道のりを入れた目安を出しています。</p>'
     return out
 
+def city_company_table(city, pf, cs):
+    """市区のページ：対応エリアにその市区の名前を書いている会社を、県のページと同じ形の表で（社名は出さない）"""
+    if not cs: return ""
+    rows = []
+    for c in cs:
+        F = c.get("fare") if c.get("fare") and c["fare"].get("kind", "dist") == "dist" and c["fare"].get("base") else None
+        h = c.get("hours") or ""
+        ht = "24時間" if h == "0-24" else (h.replace("-", "時〜") + "時" if h else "—")
+        r5 = f"{int(_nat_ride(F, 5) / 100 + 0.5) * 100:,}円" if F else "お見積もり"  # お客さまに見せる概算は100円単位（AGENTS.md）
+        home = c["pref"] if c["pref"] != pf else ("都内" if pf.endswith("都") else "府内" if pf.endswith("府") else "道内" if pf == "北海道" else "県内")
+        rows.append((_nat_ride(F, 5) if F else 10**9, f'<tr><td>{e(home)}</td><td>{e(c.get("area_text") or "")}</td><td>{e(ht)}</td><td>{e(r5)}</td><td>{e("—" if c.get("hide_formula") else _pick_txt(F))}</td><td>{e("—" if c.get("hide_formula") else _night_txt(F))}</td></tr>'))
+    rows.sort(key=lambda r: r[0])
+    n24 = sum(1 for c in cs if c.get("hours") == "0-24")
+    nf = sum(1 for c in cs if c.get("fare") and c["fare"].get("base"))
+    out = f'<h2>{e(city)}を対応エリアに書いているペットタクシー{len(cs)}社</h2>'
+    out += (f'<p>{e(pf)}のお迎えに対応している会社のうち、公式サイトの対応エリアに{e(city)}の名前を書いている会社は{len(cs)}社でした（{FARES_CHECKED}時点）。'
+            + (f'そのうち{n24}社は24時間受け付けていて、' if n24 else '') + f'料金表をのせている会社は{nf}社です。5kmの運賃の安い順に並べました。名前を書いていない会社も来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。</p>')
+    out += ('<div class="tbl"><table><thead><tr><th>お店の場所</th><th>対応エリア（公式サイトの書き方）</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody>'
+            + "".join(r[1] for r in rows) + '</tbody></table></div>')
+    out += f'<p class="fare-flag"><b>確定料金ではありません。</b>各社の公式サイトの料金表をもとに計算した概算で、会社名は出していません。5kmの運賃は片道の金額で、お迎え料金・待ち時間・高速代は入っていません。当日の道順・渋滞・待ち時間などで変わります。フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p>'
+    return out
+
 def pref_company_table(pf, short, cs, cities=()):
     key = pf if pf == "北海道" else pf[:-1]
     if not cs: return ""
@@ -767,7 +793,7 @@ def pref_company_table(pf, short, cs, cities=()):
         # hide_formula：料金の数字はよいが、計算のしかた（お迎え・夜間の式）は出さないでほしい会社（ふわふわ 2026-11-15「料金の公表は構いません。料金の計算方法の公式だけ非公開で」）
         h = c.get("hours") or ""
         ht = "24時間" if h == "0-24" else (h.replace("-", "時〜") + "時" if h else "—")
-        r5 = f"{_nat_ride(F, 5):,}円" if F else "お見積もり"
+        r5 = f"{int(_nat_ride(F, 5) / 100 + 0.5) * 100:,}円" if F else "お見積もり"  # お客さまに見せる概算は100円単位（AGENTS.md）
         home = "都内" if c["pref"] == pf and pf.endswith("都") else "府内" if c["pref"] == pf and pf.endswith("府") else ("道内" if c["pref"] == pf and pf == "北海道" else ("県内" if c["pref"] == pf else c["pref"]))
         rows.append((0 if c["pref"] == pf else 1, _nat_ride(F, 5) if F else 10**9, f'<tr><td>{e(home)}</td><td>{e(c.get("area_text") or "")}</td><td>{e(ht)}</td><td>{e(r5)}</td><td>{e("—" if c.get("hide_formula") else _pick_txt(F))}</td><td>{e("—" if c.get("hide_formula") else _night_txt(F))}</td></tr>'))
     rows.sort(key=lambda r: (r[0], r[1]))
@@ -996,8 +1022,14 @@ for g in GUIDES:
         toc = '<nav class="tip art-toc" aria-label="この記事の目次"><b>この記事で分かること</b><ol>' + "".join(
             f'<li><a href="#section-{i}">{e(h)}</a></li>' for i, (h, _) in enumerate(g["sections"], 1)) + '</ol></nav>'
         _st = {}
-        body = toc + "".join(f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b) for b in bs) + guide_next(g, i, h, bs, _st)
-                              for i, (h, bs) in enumerate(g["sections"], 1))
+        def _fsec(i, h, bs):
+            if i == 1 and _V.is_answer(h):
+                return f'<div class="answer"><h2 id="section-{i}" class="pill">{e(_V.answer_title(h))}</h2>' + "".join(block(b) for b in bs) + '</div>'
+            return f'<h2 id="section-{i}">{e(h)}</h2>' + "".join(block(b) for b in bs) + guide_next(g, i, h, bs, _st)
+        _secs = g["sections"]
+        if _secs and _V.is_answer(_secs[0][0]):
+            toc = toc.replace(f'<a href="#section-1">{e(_secs[0][0])}</a>', f'<a href="#section-1">{e(_V.answer_title(_secs[0][0]))}</a>')
+        body = toc + "".join(_fsec(i, h, bs) for i, (h, bs) in enumerate(_secs, 1))
         body += f'<p class="small">{e(g["facility_note"])}</p>'
     else:
         # 最初の「先に答え」の節は答えの箱に。節が5つ以上の記事は目次と節の番号を出す（図で読む、tools/visual.py）
@@ -2410,8 +2442,9 @@ for c in CITIES:
     url = SITE + c["path"]
     k, pf, city = c["key"], c["pref"], c["city"]
     n = _ncos(k)
-    cnt = [(st, _ccos(k, st)) for st in c["stems"]]
-    named = sum(x for _, x in cnt)
+    # 対応エリアに市区の名前を書いている会社（重ねて数えない。2026-11-16 見直し：市区のページにその市区に来てくれる会社の表を出す）
+    _cs_named = [x for x in _DISP if k in x.get("areas", []) and any(st in (x.get("area_text") or "") for st in c["stems"])]
+    named = len(_cs_named)
     rows = "".join(f"<tr><td>{e(r)}</td><td>{km}km</td><td>{_pref_text(k, km)[0]}</td></tr>" for r, km in c["routes"])
     basis = _pref_text(k, 10)[1]
     basis = f"{pf}に来てくれる会社のうち料金表をのせている{basis}" if basis != "全国" else "全国の会社"
@@ -2443,7 +2476,7 @@ for c in CITIES:
     <p class="small">ペットタクシー予約窓口　更新 {TODAY.replace("-", ".")}</p>
     <h2>{e(city)}でペットタクシーを使うとき</h2>
     <p>{e(c["why"])}</p>
-    {(f'<p>{e(pf)}のお迎えに対応している{n}社のうち、公式サイトの対応エリアに「{e(c["stems"][0])}」と書いている会社は{named}社でした（{_FC}時点）。名前を書いていない市にも来てくれることがあるので、お迎えの場所をフォームに入れて確かめてください。</p>' if n else '')}
+    {city_company_table(city, pf, _cs_named)}
     <h3>{e(city)}からよく行く区間の料金の目安（片道）</h3>
     <table><thead><tr><th>区間</th><th>車の道のりの目安</th><th>料金の目安（まんなか・安い〜高い）</th></tr></thead><tbody>{rows}</tbody></table>
     <p class="small">{e(basis)}の公式サイトの料金表をもとに計算した、乗った距離の運賃の概算で、確定料金ではありません。お迎え料金・夜間の割増は入っていません。当日の道順・渋滞・待ち時間などで変わり、高速道路を使うときは高速代が別にかかります。</p>
@@ -2455,7 +2488,7 @@ for c in CITIES:
     <ul><li><a href="{c["parent"][0]}">{e(c["parent"][1])}のペットタクシー（県全体の料金・会社の数・夜間の動物病院）</a></li>{"".join(f'<li><a href="{x["path"]}">{e(x["city"])}のペットタクシー</a></li>' for x in others)}<li><a href="/hospital/night/#pref={quote(pf)}">{e(pf)}の夜間・救急の動物病院</a></li><li><a href="/guide/large-dog/">{e(GBY["large-dog"]["title"])}</a></li></ul>
   </article></div>
 </section>'''
-    page = clone_top(title, desc, url, ld_html, f"{city}のペットタクシー", f"{city}の動物病院への通院から、お引っ越し、空港への送迎まで。フォームにお迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。無料で使えて、当日の依頼もできます。", pf, area_html,
+    page = clone_top(title, desc, url, ld_html, f"{city}のペットタクシー", (f"{city}を対応エリアに書いているペットタクシーは{named}社（{_FC}時点）。" if named else "") + f"{city}の動物病院への通院から、お引っ越し、空港への送迎まで。フォームにお迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。無料で使えて、当日の依頼もできます。", pf, area_html,
                      f'<a href="/">ペットタクシー予約窓口</a> › <a href="{c["parent"][0]}">{e(c["parent"][1])}のペットタクシー</a> › {e(city)}')
     os.makedirs(os.path.join(ROOT, c["path"].strip("/")), exist_ok=True)
     open(os.path.join(ROOT, c["path"].strip("/"), "index.html"), "w", encoding="utf-8").write(page)
