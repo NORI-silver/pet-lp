@@ -578,6 +578,12 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     # トップ（全国の入口）へ、「ペットタクシー」全体のことばでリンクする（トップとエリアページの役割を分ける）
     to_top = '<div class="wrap"><p class="to-top">ほかの都道府県の会社もふくめてさがすときは、<a href="/">全国のペットタクシーの料金をくらべる</a>ページへ。</p></div>'
     t = t.replace('<section id="how">', area_html + '\n' + to_top + '\n<section id="how">', 1)
+    # [B] SEO 11/17：Nori「中身がほぼ同じページを洗い出し…まとめる」。地域ページは本文の9割がトップと同じ文だった。
+    # 地域の節と同じ役割のトップの節（ならでは・全国の料金・数字・犬猫・場面・車・エリア・ガイド・よくある質問・想い）は外し、
+    # フォーム・使い方・規約の節（同意の文が「ページ下の…」を指す）は残す。リンクはトップの節へ。
+    t = re.sub(r'<section id="why">.*?(?=<section id="policy">)', '', t, count=1, flags=re.S)
+    for a in ("area", "faq", "guide", "price"):
+        t = t.replace(f'href="#{a}"', f'href="/#{a}"')
     # エリアページ用のCSS（.crumb .prose など）を足す
     t = t.replace("</style>", extra_css.strip() + "\n</style>", 1)
     # いちばん上の写真だけ、そのページの写真があれば置きかえる（tools/page_images.py）
