@@ -76,7 +76,7 @@ CSS = ("<style>.jc-ic{display:inline-block;width:22px;height:22px;flex:0 0 22px;
  ".jc-find{display:flex;gap:6px;margin:10px 0 0}.jc-find input{flex:1;min-width:0;padding:10px 12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
  ".jc-ans{margin:8px 0 0;font-size:.92rem;font-weight:700;color:#c2410c}"
  ".jc-card{background:#fff;border:1px solid #f1e3d6;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}"
- ".jc-card.hit{border:2px solid #c2410c}"
+ ".jc-card.hit,.cs.jc-card.hit{border:2px solid #c2410c}"
  ".jc-hd{display:flex;gap:10px;align-items:center}.jc-hd .jc-ic{width:40px;height:40px;flex-basis:40px;border-radius:12px;background-color:#fff1e6;background-size:24px}"
  ".jc-hd b{display:block;font-size:1.02rem;line-height:1.4}.jc-hd small{display:block;color:#6b5a4e;font-size:.82rem}"
  ".jc-can{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.jc-can span{display:inline-flex;gap:4px;align-items:center;background:#fff7ed;border-radius:999px;padding:4px 10px 4px 6px;font-size:.82rem}"
@@ -98,17 +98,18 @@ def _maps(name):
     return "https://www.google.com/maps/search/?api=1&query=" + quote(name)
 
 def _card(e, d, sub="", city="", joto=""):
-    can = [("search", "迷子・保護の相談"), ("hand", "保護された子の返還"), ("talk", "飼えなくなったときの相談")]
-    if joto: can.append(("home", "譲渡"))
-    chips = "".join(f'<span><i class="jc-ic i-{k}"></i>{t}</span>' for k, t in can)
-    btns = f'<a class="p" href="{e(d["url"])}" target="_blank" rel="noopener"><i class="jc-ic i-out"></i>公式ページ</a>'
-    for l in d["links"][:1]:
-        btns += f'<a href="{e(l["u"])}" target="_blank" rel="noopener" title="{e(l["t"])}"><i class="jc-ic i-list"></i>保護情報</a>'
-    if joto: btns += f'<a href="{e(joto)}"><i class="jc-ic i-home"></i>譲渡の条件</a>'
-    btns += f'<a href="{e(_maps(d["name"]))}" target="_blank" rel="noopener"><i class="jc-ic i-pin"></i>地図</a>'
+    # ほかの分野と同じ共通のカード（tools/cardskin.py の .cs。Nori 2026-11-16「タクシー以外のカードは共通のやつにして」）：
+    # 太字の名前・小さな受け持ちの行・札・大きいボタン2つ（公式ページ／地図）・小さな文字のリンク1行
+    # 迷子・保護・返還・飼えなくなったときの相談はどの窓口も受けるので札にしない（当たり前のことは出さない）。ちがいの出る譲渡だけ
+    tags = '<li class="ok">譲渡もしている</li>' if joto else ""
+    small = [f'<a href="{e(l["u"])}" target="_blank" rel="noopener" title="{e(l["t"])}">保護情報 ↗</a>' for l in d["links"][:1]]
+    if joto: small.append(f'<a href="{e(joto)}">譲渡の条件</a>')
     attr = f' data-city="{e(city)}"' if city else " data-main"
-    return (f'<div class="jc-card"{attr}><div class="jc-hd"><i class="jc-ic i-{"city" if city else "home"}"></i><div><b>{e(d["name"])}</b><small>{e(sub)}</small></div></div>'
-            f'<div class="jc-can">{chips}</div><div class="jc-btns">{btns}</div></div>')
+    return (f'<div class="jc-card cs"{attr}><a class="ux-c-n" href="{e(d["url"])}" target="_blank" rel="noopener"><b>{e(d["name"])}</b></a>'
+            f'<p class="ux-c-m">{e(sub)}</p>' + (f'<ul class="dr-tags">{tags}</ul>' if tags else "") +
+            f'<div class="ux-c-a"><a href="{e(d["url"])}" target="_blank" rel="noopener">公式ページ ↗</a>'
+            f'<a class="l" href="{e(_maps(d["name"]))}" target="_blank" rel="noopener">地図を見る</a></div>'
+            + (f'<p class="ux-c-s">{"　".join(small)}</p>' if small else "") + '</div>')
 
 def _police(e, pf):
     t, u = POLICE.get(pf, (f"{pf}警察の遺失届・落とし物の検索（警察庁のページから{pf}を選ぶ）", NPA_URL))
