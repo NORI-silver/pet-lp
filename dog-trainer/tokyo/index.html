@@ -318,6 +318,10 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 </style>
 <style id="uicss">
 [data-ffi][hidden],[data-ffg][hidden]{display:none!important}
+.ux-img{position:relative;aspect-ratio:3/2;overflow:hidden;background:#f4f1ee}
+.ux-img img{display:block;width:100%;height:100%;object-fit:cover}
+.ux-img::after{content:"イメージ";position:absolute;right:6px;bottom:6px;font-size:.66rem;line-height:1;padding:3px 6px;border-radius:6px;background:rgba(0,0,0,.45);color:#fff}
+.ux-c>.ux-img,.yd-card>.ux-img{margin:-12px -14px 10px;border-radius:13px 13px 0 0;aspect-ratio:2/1}
 #ffRes{scroll-margin-top:110px;height:0;margin:0}
 [data-ffg]{margin:0;padding:0!important}[data-ffg]>h2{margin-top:18px!important}
 body.ux .emg{border:0;padding:0;background:none;box-shadow:none;border-radius:0}
@@ -405,7 +409,7 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
   </div>
 </section>
 <section style="padding-top:8px">
-  <div class="wrap"><div class="emg"><div class="ux-find" data-ff="dog-trainer" data-unit="件" data-noun="ところ"><div class="ux-r"><span class="ux-l">どこで探しますか？</span><div class="ux-w"><input id="ffQ" type="search" placeholder="市区町村・名前（例：世田谷区）" aria-label="市区町村・名前（例：世田谷区）" autocomplete="off"></div></div><div class="ux-r"><span class="ux-l">どの子ですか？</span><div class="ux-w"><button type="button" data-k="pup" data-l="子犬" aria-pressed="false">子犬</button></div></div><div class="ux-r"><span class="ux-l">どんな教室・トレーナーをお探しですか？</span><div class="ux-need"><button type="button" data-k="出張・訪問" data-l="出張・訪問" aria-pressed="false">出張・訪問</button><button type="button" data-k="幼稚園・保育園" data-l="幼稚園・保育園" aria-pressed="false">幼稚園・保育園</button><button type="button" data-k="教室・グループ" data-l="教室・グループ" aria-pressed="false">教室・グループ</button><button type="button" data-k="オンライン" data-l="オンライン" aria-pressed="false">オンライン</button></div></div><details class="ux-det"><summary>詳しい条件で絞り込む<span></span></summary><span class="ux-l">そのほかの条件</span><div class="ux-w"><button type="button" data-k="預かり訓練" data-l="預かり訓練" aria-pressed="false">預かり訓練</button></div></details><button type="button" class="ux-go" id="ffGo">この条件で探す</button><div class="ux-foot"><p class="ux-sum" id="ffSum" aria-live="polite"></p><button type="button" class="ux-clear" id="ffClear" hidden>条件をクリア</button></div><div class="ux-alt" id="ffAlt"></div></div><div id="ffRes"></div>
+  <div class="wrap"><div class="emg"><div class="ux-find" data-ff="dog-trainer" data-pics="/img/stock/dog-trainer/|1.webp,2.webp,3.webp,4.webp,5.webp,6.webp" data-unit="件" data-noun="ところ"><div class="ux-r"><span class="ux-l">どこで探しますか？</span><div class="ux-w"><input id="ffQ" type="search" placeholder="市区町村・名前（例：世田谷区）" aria-label="市区町村・名前（例：世田谷区）" autocomplete="off"></div></div><div class="ux-r"><span class="ux-l">どの子ですか？</span><div class="ux-w"><button type="button" data-k="pup" data-l="子犬" aria-pressed="false">子犬</button></div></div><div class="ux-r"><span class="ux-l">どんな教室・トレーナーをお探しですか？</span><div class="ux-need"><button type="button" data-k="出張・訪問" data-l="出張・訪問" aria-pressed="false">出張・訪問</button><button type="button" data-k="幼稚園・保育園" data-l="幼稚園・保育園" aria-pressed="false">幼稚園・保育園</button><button type="button" data-k="教室・グループ" data-l="教室・グループ" aria-pressed="false">教室・グループ</button><button type="button" data-k="オンライン" data-l="オンライン" aria-pressed="false">オンライン</button></div></div><details class="ux-det"><summary>詳しい条件で絞り込む<span></span></summary><span class="ux-l">そのほかの条件</span><div class="ux-w"><button type="button" data-k="預かり訓練" data-l="預かり訓練" aria-pressed="false">預かり訓練</button></div></details><button type="button" class="ux-go" id="ffGo">この条件で探す</button><div class="ux-foot"><p class="ux-sum" id="ffSum" aria-live="polite"></p><button type="button" class="ux-clear" id="ffClear" hidden>条件をクリア</button></div><div class="ux-alt" id="ffAlt"></div></div><div id="ffRes"></div>
       
       
       

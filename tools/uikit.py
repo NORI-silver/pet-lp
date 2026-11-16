@@ -19,6 +19,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 CSS = """<style id="uicss">
 [data-ffi][hidden],[data-ffg][hidden]{display:none!important}
+.ux-img{position:relative;aspect-ratio:3/2;overflow:hidden;background:#f4f1ee}
+.ux-img img{display:block;width:100%;height:100%;object-fit:cover}
+.ux-img::after{content:"イメージ";position:absolute;right:6px;bottom:6px;font-size:.66rem;line-height:1;padding:3px 6px;border-radius:6px;background:rgba(0,0,0,.45);color:#fff}
+.ux-c>.ux-img,.yd-card>.ux-img{margin:-12px -14px 10px;border-radius:13px 13px 0 0;aspect-ratio:2/1}
 #ffRes{scroll-margin-top:110px;height:0;margin:0}
 [data-ffg]{margin:0;padding:0!important}[data-ffg]>h2{margin-top:18px!important}
 body.ux .emg{border:0;padding:0;background:none;box-shadow:none;border-radius:0}
@@ -371,6 +375,35 @@ def jichitai_hub(h):
     if pos < 0: return h
     return h[:pos] + "\n      " + blk.replace("<div class=\"emg-tips\">", '<div class="emg-tips" data-uxmoved>', 1) + free + h[pos:]
 
+# ── カードのイメージ写真（Nori 2026-11-16「無料の写真を使って。その都度読み込むのじゃなくて、アップロードして」）──
+# 無料の写真素材（Unsplash の無料の写真。tools/stock.json に写真ID・撮った人・ページを控える）を、縮めて img/stock/<分野>/<番号>.webp に置く。
+# 本物の施設の写真ではないので、写真の右下に小さく「イメージ」と書き、alt は空（その施設の写真だと読ませない）。
+# 同じページの中で、となりのカードが同じ写真にならないよう、カードの順番で回す。写真のファイルがない分野には何も足さない。
+STOCK_KEY = {"hospital": "hospital", "hospital-night": "hospital-night", "pet-hotel": "pet-hotel", "trimming": "trimming", "dog-trainer": "dog-trainer",
+             "pet-sitter": "pet-sitter", "rojin-home": "rojin-home", "sougi": "sougi", "joto": "joto", "dogrun": "dogrun",
+             "inu-yado": "inu-yado", "pet-yado": "pet-yado", "inu-cafe": "inu-cafe"}
+_STOCK = {}
+def _stock_files(ROOT, key):
+    if key not in _STOCK:
+        d = os.path.join(ROOT, "img", "stock", key)
+        _STOCK[key] = sorted(f for f in os.listdir(d) if f.endswith(".webp")) if os.path.isdir(d) else []
+    return _STOCK[key]
+
+_CARD_OPEN = re.compile(r'<div class="(?:emg-item emg-co fc[^"]*|ux-c dr-card[^"]*|emg-item yd-card[^"]*)"[^>]*>')
+def stock(h, ROOT, cat):
+    h = re.sub(r'<div class="ux-img">.*?</div>', "", h, flags=re.S)
+    fs = _stock_files(ROOT, STOCK_KEY.get(cat, ""))
+    if not fs: return h
+    # さがす箱（/find.js）のあるページは、写真の一覧を箱に書いておき、find.js がカードに入れる（カードの数が多いページでも軽く）
+    if 'data-ff="' in h:
+        h = re.sub(r'(<div class="ux-find" data-ff="[^"]*")(?: data-pics="[^"]*")?', lambda m: m.group(1) + f' data-pics="/img/stock/{STOCK_KEY[cat]}/|{",".join(fs)}"', h, count=1)
+        return h
+    i = [0]
+    def put(m):
+        f = fs[i[0] % len(fs)]; i[0] += 1
+        return m.group(0) + f'<div class="ux-img"><img src="/img/stock/{STOCK_KEY[cat]}/{f}" alt="" loading="lazy"></div>'  # 「イメージ」の字は CSS で（ページを軽く）
+    return _CARD_OPEN.sub(put, h)
+
 def build(ROOT):
     n = 0
     sz = write_js(ROOT)
@@ -388,6 +421,7 @@ def build(ROOT):
             if d == "inu-cafe" and len(parts) == 1: h = cafe_hub(h)
             if d == "jichitai" and len(parts) == 1: h = jichitai_hub(h)
             if 'data-ff="' in h and FIND_JS not in h: h = h.replace("</body>", FIND_JS + "\n</body>", 1)
+            h = stock(h, ROOT, cat)
             h = head(h)
             if h != old:
                 open(p, "w", encoding="utf-8").write(h); n += 1
