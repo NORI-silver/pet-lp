@@ -1,0 +1,35 @@
+# ペットホテルの「安心して預けられるか」の材料（動物取扱業の登録・夜のスタッフ・様子の報告・見学など）を、各ホテルの公式サイトから集める。
+# tools/hotel_trust_harvest.py が公式サイトを読み、ことばのまわりの文をブランチ hotel-trust-cand に置く（何も送らない・サイトは書き換えない）。
+# 採るかどうかは人が文を読んで決め、tools/hotels.json の trust に入れる。
+name: hotel-trust
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/**']
+    paths: ['tools/hotel_trust_harvest.py', '.github/workflows/hotel-trust.yml']
+permissions:
+  contents: write
+concurrency:
+  group: hotel-trust
+  cancel-in-progress: true
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: 公式サイトを読む
+        run: |
+          python3 tools/hotel_trust_harvest.py out
+          cat out/summary.md >> "$GITHUB_STEP_SUMMARY"
+      - name: 候補をブランチ hotel-trust-cand に置く
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mv out /tmp/out
+          git checkout -q --orphan hotel-trust-cand
+          git rm -rq --cached . && git clean -fdq
+          cp -r /tmp/out/. .
+          git add -A
+          git commit -qm "ペットホテルの信頼の材料の候補"
+          git push -q -f origin hotel-trust-cand
