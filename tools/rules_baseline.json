@@ -1,9 +1,4 @@
 {
 "_note": "2026-11-16 にもうあった違反（tools/rules_check.py）。直ったら --prune（gen_areas.py の最後でも動く）で消える。ここに足して逃げない",
-"known": [
-"/jichitai/ intro",
-"/jichitai/ search",
-"/sougi/ intro",
-"/sougi/ search"
-]
+"known": []
 }
