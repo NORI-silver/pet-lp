@@ -122,7 +122,7 @@
       copy(ta.value, function(ok){ bc.textContent = ok ? "コピーしました。公式サイトに貼ってください" : "コピーできませんでした。文を長押しして選んでください"; setTimeout(function(){ bc.textContent = "文をコピーする"; }, 4000); });
     });
     btns.appendChild(bc);
-    if (href) { var go = el("a", "fac-go", "公式サイトを開く ↗"); go.href = siteUrl(href, cat); go.target = "_blank"; go.rel = "noopener"; go.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: card.getAttribute("data-fid") || "", pref: prefOf(card), from: "dialog"}); }); btns.appendChild(go); }
+    if (href) { var go = el("a", "fac-go", "公式サイトを開く ↗"); go.setAttribute("data-ga", ""); go.href = siteUrl(href, cat); go.target = "_blank"; go.rel = "noopener"; go.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: card.getAttribute("data-fid") || "", pref: prefOf(card), from: "dialog"}); }); btns.appendChild(go); }
     var bx = el("button", "fac-x", "閉じる"); bx.value = "close"; btns.appendChild(bx);
     f.appendChild(btns);
     dlg.replaceChildren(f);
@@ -137,14 +137,14 @@
   cards.forEach(function(card){
     var cat = card.getAttribute("data-cat"), fid = card.getAttribute("data-fid") || "";
     var a = card.querySelector("a[href^='http']"), href = a ? a.getAttribute("href") : "";
-    if (href) { card.setAttribute("data-site", href); a.href = siteUrl(href, cat); a.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: fid, pref: prefOf(card), from: "name"}); }); }
+    if (href) { card.setAttribute("data-site", href); a.setAttribute("data-ga", ""); a.href = siteUrl(href, cat); a.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: fid, pref: prefOf(card), from: "name"}); }); }
     if (!card.getAttribute("data-name") && a) card.setAttribute("data-name", (a.textContent || "").trim());
     if (card.getAttribute("data-partner") === "1" && a) {
       var ic = el("span", "fac-ic"); ic.setAttribute("role", "img"); ic.setAttribute("aria-label", "このサイトから問い合わせできる事業者"); ic.title = "このサイトから問い合わせできる事業者"; ic.innerHTML = ICON;
       var b = a.querySelector("b") || a; b.insertBefore(ic, b.firstChild);
     }
     var acts = card.querySelector(".fc-acts"), row = el("div", "fac-act");
-    if (href) { var s = el("a", "fac-site", acts ? "公式サイト ↗" : "公式サイトを見る ↗"); s.href = siteUrl(href, cat); s.target = "_blank"; s.rel = "noopener"; s.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: fid, pref: prefOf(card), from: "button"}); }); row.appendChild(s); }
+    if (href) { var s = el("a", "fac-site", acts ? "公式サイト ↗" : "公式サイトを見る ↗"); s.setAttribute("data-ga", ""); s.href = siteUrl(href, cat); s.target = "_blank"; s.rel = "noopener"; s.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: fid, pref: prefOf(card), from: "button"}); }); row.appendChild(s); }
     if (CONF[cat]) { var q = el("button", acts ? "fc-a fc-a-note" : "", acts ? "問い合わせ文" : "問い合わせ文をつくる"); if (acts) q.setAttribute("aria-label", "問い合わせ文をつくる"); q.type = "button"; q.addEventListener("click", function(){ openAsk(card); }); row.appendChild(q); }
     var to = card.getAttribute("data-to");
     if (to) {
@@ -152,6 +152,7 @@
       var t = el("a", acts ? "fac-taxi fc-a fc-a-car" : "fac-taxi", acts ? "タクシー料金" : tl + " →"); if (acts) t.setAttribute("aria-label", tl);
       var pf = prefOf(card);
       t.href = "/?" + (pf ? "pref=" + encodeURIComponent(pf) + "&" : "") + "to=" + encodeURIComponent(to) + "#form";
+      t.setAttribute("data-ga", ""); // ga.js の taxi_cta と二重に数えない（2026-11-16）
       t.addEventListener("click", function(){ track("facility_taxi", {cat: cat, id: fid, pref: pf}); });
       row.appendChild(t);
     }
