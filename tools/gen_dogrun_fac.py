@@ -128,7 +128,8 @@ def render(ctx, d):
     faq_html = "".join(f"<dt>{e(a)}</dt><dd>{e(b)}</dd>" for a, b in _faq(d))
     css = ("<style>.emg .tbl{overflow-x:auto;max-width:100%}.pp-tbl th,.pp-tbl td{font-size:13px;padding:5px 6px;text-align:left;vertical-align:top}"
            ".pp-tbl.cmp td,.pp-tbl.cmp th{white-space:nowrap}.pp-tbl.cmp td:first-child{white-space:normal;min-width:9em}.fac-pts{margin:6px 0 4px;padding-left:1.2em}.fac-pts li{margin:3px 0}</style>")
-    return ctx["head"](title, lead1, url, ld) + css + f"""
+    _dsc = lead1.replace(f"（{ck(d)}時点の公式ページの情報）", f"（{ck(d)}時点）") + "".join(x for x in ["料金・利用時間・利用登録・エリアの大きさなどをまとめています。"])
+    return ctx["head"](title, _dsc, url, ld) + css + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">

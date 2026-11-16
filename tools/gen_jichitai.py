@@ -40,14 +40,98 @@ POLICE = {
  "大阪府": ("大阪府警察の落とし物の公表（遺失届は警察署・交番の窓口で）", "http://www.otoshimono.police.pref.osaka.jp/"),
 }
 
-def _card(e, d, sub=""):
-    links = "".join(f'<small>迷子・保護：<a href="{e(l["u"])}" target="_blank" rel="noopener">{e(l["t"])}</a></small>' for l in d["links"])
-    return (f'<div class="emg-item emg-co"><a href="{e(d["url"])}" target="_blank" rel="noopener"><b>{e(d["name"])}</b></a>'
-            f'<small>{e(sub)}</small>{links}</div>')
+# ---- 見て分かる形（Nori 2026-11-16「これももっとリッチにして」）：窓口ごとにできることをアイコンで、住まいでどの窓口かを図で、ボタンは大きく ----
+def _ic(p):
+    return ("url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c2410c' "
+            "stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E" + p + "%3C/svg%3E\")")
+IC = {
+ "search": "%3Ccircle cx='11' cy='11' r='6'/%3E%3Cpath d='M20 20l-4.5-4.5'/%3E",
+ "home": "%3Cpath d='M4 11l8-7 8 7v9h-5v-6H9v6H4z'/%3E",
+ "hand": "%3Cpath d='M12 20s-7-4.3-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.7-7 10-7 10z'/%3E",
+ "talk": "%3Cpath d='M4 5h16v11H9l-5 4z'/%3E%3Cpath d='M8 9.5h8M8 12.5h5'/%3E",
+ "doc": "%3Cpath d='M6 3.5h8l4 4v13H6z'/%3E%3Cpath d='M9 12h6M9 16h6'/%3E",
+ "move": "%3Cpath d='M3 13h11V6H3zM14 9h4l3 3v4h-7'/%3E%3Ccircle cx='7' cy='17' r='1.8'/%3E%3Ccircle cx='17' cy='17' r='1.8'/%3E",
+ "police": "%3Cpath d='M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z'/%3E%3Cpath d='M9.5 11.5l2 2 3.5-3.5'/%3E",
+ "moon": "%3Cpath d='M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5z'/%3E",
+ "pin": "%3Cpath d='M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z'/%3E%3Ccircle cx='12' cy='10' r='2.3'/%3E",
+ "list": "%3Cpath d='M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01'/%3E",
+ "out": "%3Cpath d='M14 5h5v5M19 5l-8 8M17 14v5H5V7h5'/%3E",
+ "city": "%3Cpath d='M4 20V9l5-3v14M9 20V4l7 3v13M16 20v-9l4 2v7M3 20h18'/%3E",
+}
+CSS = ("<style>.jc-ic{display:inline-block;width:22px;height:22px;flex:0 0 22px;background:center/22px no-repeat}"
+ + "".join(f".jc-ic.i-{k}{{background-image:{_ic(v)}}}" for k, v in IC.items()) +
+ ".jc-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 0}"
+ "@media(min-width:640px){.jc-tiles{grid-template-columns:1fr 1fr 1fr}}"
+ ".jc-tile{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid #f1e3d6;border-radius:14px;padding:10px}"
+ ".jc-tile .jc-ic{width:34px;height:34px;flex-basis:34px;border-radius:50%;background-color:#fff1e6;background-size:20px}"
+ ".jc-tt{display:block;font-size:.8rem;color:#6b5a4e;line-height:1.4}.jc-ta{display:block;font-size:.92rem;font-weight:700;line-height:1.4;margin-top:2px}"
+ ".jc-tile details{margin-top:4px}.jc-tile summary{font-size:.78rem;color:#c2410c;cursor:pointer}.jc-tile p{margin:4px 0 0;font-size:.82rem;line-height:1.6;color:#4a3d34}"
+ ".jc-map{background:#fff;border:1px solid #f1e3d6;border-radius:16px;padding:14px;margin:10px 0}"
+ ".jc-map h5{margin:0 0 8px;font-size:1rem;display:flex;gap:6px;align-items:center}"
+ ".jc-q{font-size:.85rem;color:#6b5a4e;font-weight:700;margin:0 0 6px}"
+ ".jc-br{display:grid;gap:6px}.jc-br>div{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:center}"
+ ".jc-br .w{background:#fff7ed;border-radius:10px;padding:8px 10px;font-size:.88rem;line-height:1.5}"
+ ".jc-br .a{color:#c2410c;font-weight:700}.jc-br .t{background:#c2410c;color:#fff;border-radius:10px;padding:8px 10px;font-size:.88rem;font-weight:700;line-height:1.45}"
+ ".jc-br .t.c2{background:#2b211b}"
+ ".jc-find{display:flex;gap:6px;margin:10px 0 0}.jc-find input{flex:1;min-width:0;padding:10px 12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
+ ".jc-ans{margin:8px 0 0;font-size:.92rem;font-weight:700;color:#c2410c}"
+ ".jc-card{background:#fff;border:1px solid #f1e3d6;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}"
+ ".jc-card.hit{border:2px solid #c2410c}"
+ ".jc-hd{display:flex;gap:10px;align-items:center}.jc-hd .jc-ic{width:40px;height:40px;flex-basis:40px;border-radius:12px;background-color:#fff1e6;background-size:24px}"
+ ".jc-hd b{display:block;font-size:1.02rem;line-height:1.4}.jc-hd small{display:block;color:#6b5a4e;font-size:.82rem}"
+ ".jc-can{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.jc-can span{display:inline-flex;gap:4px;align-items:center;background:#fff7ed;border-radius:999px;padding:4px 10px 4px 6px;font-size:.82rem}"
+ ".jc-can .jc-ic{width:18px;height:18px;flex-basis:18px;background-size:18px}"
+ ".jc-btns{display:flex;flex-wrap:wrap;gap:8px}.jc-btns a{flex:1 1 140px;display:flex;gap:6px;justify-content:center;align-items:center;padding:11px 10px;border-radius:12px;font-weight:700;font-size:.9rem;text-decoration:none;border:1px solid #e5d5c8;color:#2b211b;background:#fff}"
+ ".jc-btns a.p{background:#2b211b;color:#fff;border-color:#2b211b}.jc-btns a .jc-ic{width:18px;height:18px;flex-basis:18px;background-size:18px}"
+ ".jc-btns a.p .jc-ic{filter:brightness(0) invert(1)}"
+ ".jc-pol{display:flex;gap:10px;align-items:center;background:#f5f7ff;border-radius:14px;padding:12px;margin:10px 0}.jc-pol p{margin:0;font-size:.88rem}"
+ ".jc-pol b{display:block}</style>")
+
+FIND_JS = """<script>(function(){document.querySelectorAll('.jc-find input').forEach(function(i){var s=i.closest('.emg-pref'),o=s.querySelector('.jc-ans');
+function go(){var v=i.value.replace(/\\s/g,''),hit=null;s.querySelectorAll('.jc-card').forEach(function(c){c.classList.remove('hit')});
+if(!v){o.textContent='';return}s.querySelectorAll('.jc-card[data-city]').forEach(function(c){var n=c.getAttribute('data-city');if(n&&(v.indexOf(n)>=0||n.indexOf(v)>=0))hit=c});
+if(!hit)hit=s.querySelector('.jc-card[data-main]');if(hit){hit.classList.add('hit');o.textContent='→ '+hit.querySelector('b').textContent+' が窓口です';}}
+i.addEventListener('input',go);});})();</script>"""
+
+def _maps(name):
+    from urllib.parse import quote
+    return "https://www.google.com/maps/search/?api=1&query=" + quote(name)
+
+def _card(e, d, sub="", city="", joto=""):
+    can = [("search", "迷子・保護の相談"), ("hand", "保護された子の返還"), ("talk", "飼えなくなったときの相談")]
+    if joto: can.append(("home", "譲渡"))
+    chips = "".join(f'<span><i class="jc-ic i-{k}"></i>{t}</span>' for k, t in can)
+    btns = f'<a class="p" href="{e(d["url"])}" target="_blank" rel="noopener"><i class="jc-ic i-out"></i>公式ページ</a>'
+    for l in d["links"][:1]:
+        btns += f'<a href="{e(l["u"])}" target="_blank" rel="noopener" title="{e(l["t"])}"><i class="jc-ic i-list"></i>保護・収容の情報</a>'
+    if joto: btns += f'<a href="{e(joto)}"><i class="jc-ic i-home"></i>譲渡の条件</a>'
+    btns += f'<a href="{e(_maps(d["name"]))}" target="_blank" rel="noopener"><i class="jc-ic i-pin"></i>地図</a>'
+    attr = f' data-city="{e(city)}"' if city else " data-main"
+    return (f'<div class="jc-card"{attr}><div class="jc-hd"><i class="jc-ic i-{"city" if city else "home"}"></i><div><b>{e(d["name"])}</b><small>{e(sub)}</small></div></div>'
+            f'<div class="jc-can">{chips}</div><div class="jc-btns">{btns}</div></div>')
 
 def _police(e, pf):
     t, u = POLICE.get(pf, (f"{pf}警察の遺失届・落とし物の検索（警察庁のページから{pf}を選ぶ）", NPA_URL))
-    return f'<p class="emg-sum">警察：<a href="{e(u)}" target="_blank" rel="noopener">{e(t)}</a></p>'
+    return (f'<div class="jc-pol"><i class="jc-ic i-police"></i><p><b>警察（遺失届）</b><a href="{e(u)}" target="_blank" rel="noopener">{e(t)}</a></p></div>')
+
+def _route(e, pf, cs):
+    """住まい → 窓口 の図。"""
+    if cs:
+        names = "・".join(c["city"] for c in cs)
+        rows = (f'<div><span class="w">{e(names)}に住んでいる</span><span class="a">→</span><span class="t">市の窓口</span></div>'
+                f'<div><span class="w">{e(pf)}のそのほかの市町村</span><span class="a">→</span><span class="t">{e(pf)}の窓口</span></div>')
+    else:
+        rows = f'<div><span class="w">{e(pf)}のどの市町村でも</span><span class="a">→</span><span class="t">{e(pf)}の窓口</span></div>'
+    rows += '<div><span class="w">犬の登録・予防注射・引っ越し</span><span class="a">→</span><span class="t c2">お住まいの市区町村</span></div>'
+    find = ""
+    if cs:
+        find = (f'<div class="jc-find"><input type="text" inputmode="text" placeholder="お住まいの市区町村（例：{e(cs[0]["city"])}）" aria-label="お住まいの市区町村"></div>'
+                '<p class="jc-ans" aria-live="polite"></p>')
+    return (f'<div class="jc-map"><h5><i class="jc-ic i-pin"></i>どの窓口？</h5><p class="jc-q">迷子・保護・引き取りの相談</p>'
+            f'<div class="jc-br">{rows}</div>{find}</div>')
+
+TILE_IC = ["search", "hand", "doc", "move", "talk", "moon"]
+TILE_SHORT = ["動物愛護センター・保健所と警察", "首輪・鑑札あり→警察／なし→センター", "お住まいの市区町村", "市区町村へ30日以内に", "センター・保健所に相談", "夜間・救急の動物病院"]
 
 def render(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
@@ -57,19 +141,25 @@ def render(ctx):
     for c in J["cities"]:
         C.setdefault(c["pref"], []).append(c)
     body = ""
+    slug = ctx.get("pref_slug", {})
+    JOTO = {}
+    try:
+        for x in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "joto.json"), encoding="utf-8"))["centers"]:
+            JOTO[(x["pref"], x.get("city") or "")] = x
+    except Exception:
+        pass
     for lab, prefs in ctx["emg_regions"]:
         body += f'<h3 class="emg-region">{e(lab)}</h3>\n'
         for pf in prefs:
             cs = C.get(pf, [])
-            if cs:
-                names = "・".join(c["city"] for c in cs)
-                note = (f'<p class="emg-sum">{e(pf)}では、{e(names)}にお住まいの方は市の窓口、それ以外の市町村にお住まいの方は{e(pf)}の窓口です'
-                        f'（{len(cs) + 1}つの窓口）。犬の登録・予防注射・引っ越しの届け出は、どこにお住まいでも市区町村です。</p>')
-            else:
-                note = f'<p class="emg-sum">{e(pf)}では、迷子・保護・引き取りの相談はどの市町村も{e(pf)}の窓口です。犬の登録・予防注射・引っ越しの届け出は市町村です。</p>'
-            inner = _card(e, P[pf], f"{pf}の窓口") + "".join(_card(e, c, f'{c["city"]}（{c["kind"]}）の窓口') for c in cs)
-            body += f'<section class="emg-pref" data-pref="{e(pf)}"><h4>{e(pf)}</h4>{note}{inner}{_police(e, pf)}</section>\n'
-    where = "".join(f"<dt>{e(t)}</dt><dd>{d}</dd>" for t, d in WHERE)
+            js = JOTO.get((pf, ""))
+            jurl = f'/joto/{slug.get(pf)}/' if js and slug.get(pf) else ""
+            inner = _card(e, P[pf], f"{pf}の窓口（{'下の市をのぞく' if cs else 'すべての市町村'}）", "", jurl)
+            for c in cs:
+                cj = f'/joto/{slug.get(pf)}/' if JOTO.get((pf, c["city"])) and slug.get(pf) else ""
+                inner += _card(e, c, f'{c["city"]}（{c["kind"]}）に住んでいる方', c["city"], cj)
+            body += f'<section class="emg-pref" data-pref="{e(pf)}"><h4>{e(pf)}</h4>{_route(e, pf, cs)}{inner}{_police(e, pf)}</section>\n'
+    where = "".join(f'<div class="jc-tile"><i class="jc-ic i-{TILE_IC[n]}"></i><div><span class="jc-tt">{e(t)}</span><span class="jc-ta">{e(TILE_SHORT[n])}</span><details><summary>くわしく</summary><p>{d}</p></details></div></div>' for n, (t, d) in enumerate(WHERE))
     roles = "".join(f"<tr><th>{e(t)}</th><td>{e(d)}</td></tr>" for t, d in ROLES)
     faq = [
       ("迷子の犬・猫は、どこに連絡すればいいですか？", "住んでいる所と、いなくなった所の動物愛護センター・保健所（政令指定都市・中核市なら市の窓口）と、警察（遺失届）です。あわせて、市区町村の清掃の担当と近くの動物病院にも連絡しておくと安心です。このページの一覧から、各自治体の迷子の情報のページに行けます。"),
@@ -100,23 +190,23 @@ def render(ctx):
       {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
       ensure_ascii=False, indent=1) + "\n</script>"
-    return ctx["head"](TITLE, DESC, url, ld) + f"""
+    return ctx["head"](TITLE, DESC, url, ld).replace("</head>", CSS + "</head>", 1) + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › ペットの迷子・犬の登録・引取りの窓口</nav>
     <h1><small>全国47都道府県・政令指定都市・中核市（129自治体）</small>ペットの迷子・犬の登録・引取りの窓口</h1>
-    <p class="lede">「うちの子がいなくなった」「迷子の犬を保護した」「犬の登録はどこで？」「引っ越したら何を届ける？」。ペットのことで役所に相談したいとき、どこに連絡すればいいかと、全国の動物愛護センター・保健所の公式ページ、都道府県警察の落とし物の窓口をまとめました。</p>
+    <p class="lede">迷子・保護・犬の登録・引っ越しのとき、どこに連絡するかが分かります。都道府県をえらぶと、あなたの窓口が出ます。</p>
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="emg">
-      <div class="emg-tips" style="margin-top:0"><h4>いますぐ知りたいこと</h4><dl>{where}</dl></div>
+      <div class="emg-tips" style="margin-top:0"><h4>こんなときは、ここへ</h4><div class="jc-tiles">{where}</div></div>
       <div class="emg-tips"><h4>窓口ごとに受け付けていること</h4>
       <div class="tbl"><table><thead><tr><th>窓口</th><th>おもに受け付けていること</th></tr></thead><tbody>{roles}</tbody></table></div>
       <p class="emg-tips-note">迷子・保護・引き取りは都道府県（政令指定都市・中核市は市）、犬の登録と予防注射は市区町村、と受け持ちが分かれています。迷子のときは、動物愛護センター・保健所と警察の両方に届け出てください。見つけた人がどちらに届けるか分からないからです。</p></div>
-      <p class="emg-free">都道府県・政令指定都市・中核市が、それぞれ動物愛護の窓口（動物愛護センター・保健所）を持っています。政令指定都市・中核市にお住まいの方は市の窓口、それ以外の市町村の方は都道府県の窓口です。都道府県をえらぶと、その県の窓口と警察の落とし物の窓口が出ます。</p>
+      <p class="emg-free">政令指定都市・中核市に住んでいる方は市の窓口、それ以外の市町村の方は都道府県の窓口です。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       {body}
       <div class="emg-tips"><h4>迷子になったら、まずすること</h4><ol>
@@ -145,6 +235,7 @@ def render(ctx):
 </section>
 </main>
 {prefkeep.LIST_JS}
+{FIND_JS}
 """ + ctx["foot_noband"]()
 
 def urls(SITE):

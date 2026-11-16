@@ -4,6 +4,11 @@
 import json, os, re, sys, html
 
 ROOT = sys.argv[1]
+# [B] 前の公開でサイトマップにあったURLを覚えておく（ページをまとめて消えたURLは、最後に近いページへ移す案内を書く。tools/moved.json）
+try:
+    _OLD_URLS = re.findall(r"<loc>https://pet\.shiokonbu\.com(/[^<]*)</loc>", open(os.path.join(ROOT, "sitemap.xml"), encoding="utf-8").read())
+except Exception:
+    _OLD_URLS = []
 SITE = "https://pet.shiokonbu.com"
 TODAY = "2026-10-30"  # 更新日（sitemap と記事の dateModified）
 PUBLISHED = "2026-10-27"  # ガイド記事の公開日
@@ -2377,7 +2382,7 @@ _pp_ctx0 = dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, area_links=a
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False)))
 # ペットの迷子・犬の登録・引取りの窓口（/jichitai/）：お金を取らない情報ページ（tools/gen_jichitai.py）
 import gen_jichitai
-gen_jichitai.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
+gen_jichitai.write_all(ROOT, dict(head=head, e=e, SITE=SITE, pref_slug=PREF_SLUG, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_jichitai.urls(SITE)
 # 全国のドッグラン（/dogrun/ と /dogrun/<県>/ と記事）：お金を取らない情報ページ（tools/gen_dogrun.py、データ tools/dogrun.json）
@@ -2630,6 +2635,9 @@ print("portal", portal.build(ROOT), "pages")
 # 全カテゴリのUI/UX（さがす箱1つ・結果のカード・小さなタクシーの案内。tools/uikit.py、Nori 2026-11-15。まず病院・ホテル・ドッグラン）
 import uikit
 print("uikit", uikit.build(ROOT))
+# 「公式サイトに書いてある」などを出さない・事実の表をアイコンつきの一覧に（tools/nosrc.py、Nori 2026-11-16）
+import nosrc
+print("nosrc", nosrc.build(ROOT), "pages")
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] noindex.json のページに noindex,follow を入れる（ほかの後処理のあと）
 for _p in NOINDEX:
@@ -2640,3 +2648,21 @@ for _p in NOINDEX:
   _t = _t.replace("</title>", '</title>\n<meta name="robots" content="noindex,follow">', 1)
   open(_f, "w", encoding="utf-8").write(_t)
 print("noindex", len(NOINDEX), "pages")
+# [B] 消えたURLに、いちばん近い上のページへ移す案内（noindex・サイトマップに入れない）を書く。一度消えたURLは tools/moved.json に覚えて毎回書く
+_mv_f = os.path.join(ROOT, "tools", "moved.json")
+try: _MOVED = json.load(open(_mv_f, encoding="utf-8"))
+except Exception: _MOVED = {"_note": "gen_areas.py が作る。前の公開にあって、いまはない（まとめた）ページのURLと、移す先。手で直さない", "pages": {}}
+for _u in _OLD_URLS:
+  if _u.endswith("/") and not os.path.exists(os.path.join(ROOT, _u.strip("/"), "index.html")) and _u not in _MOVED["pages"]:
+    _to = _u.rstrip("/").rsplit("/", 1)[0] + "/"
+    while _to != "/" and not os.path.exists(os.path.join(ROOT, _to.strip("/"), "index.html")): _to = _to.rstrip("/").rsplit("/", 1)[0] + "/"
+    _MOVED["pages"][_u] = _to
+_nm = 0
+for _u, _to in sorted(_MOVED["pages"].items()):
+  _f = os.path.join(ROOT, _u.strip("/"), "index.html")
+  if os.path.exists(_f) and "http-equiv=\"refresh\"" not in open(_f, encoding="utf-8").read(): continue  # ページが戻った
+  os.makedirs(os.path.dirname(_f), exist_ok=True)
+  open(_f, "w", encoding="utf-8").write(f'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow"><link rel="canonical" href="{SITE}{_to}"><meta http-equiv="refresh" content="0; url={_to}"><title>移動しました</title></head><body><p><a href="{_to}">こちらのページにまとめました</a></p></body></html>\n')
+  _nm += 1
+json.dump(_MOVED, open(_mv_f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+print("moved", _nm, "pages")
