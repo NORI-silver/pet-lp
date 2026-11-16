@@ -56,6 +56,8 @@ REMOVED = [
     (re.compile(r'/img/stock/|\bdata-pics="|class="ux-img"'), "カードの汎用の「イメージ」写真（Nori 11/16「その施設のやつ使って」。その施設の写真だけ）"),
     (re.compile(r'(?:くわしく|詳しく)はリンク先'), "「くわしくはリンク先で」（スクリプトの中も。Nori 11/16「価値ゼロ」）"),
     (re.compile(r'data-k="？"|\[\'？\',\'不明\''), "「？不明」の印を並べる（分からないことは並べず1行に。Nori 11/16）"),
+    (re.compile(r'<select id="(?:ffPref|hospPref)" aria-label="都道府県"(?![^>]*\bhidden\b)|id="hfQ"|id="ffQ"|<datalist id="hfCities"'), "さがす欄の「どこで」を県の選択欄＋文字の欄に戻した（1つの入力で県をいくつでも・市区町村の候補。Nori 11/16。/place.js）"),
+    (re.compile(r'data-k="(?:a:small|a:bird|big|sen)"[^>]*>[^<]*</button>(?:(?!</div>).)*data-k="猫"|data-k="cat_only" data-l="猫専用"'), "さがす欄の軸がまざっている（どの動物・うちの子の条件・サービスの内容を分ける。Nori 11/16「意味不明」）"),
     (re.compile(r'の案内には書かれていません|class="hn-unk"'), "「どの動物を受け入れるかは…書かれていません」の箱（Nori 11/16 佐倉市のスクショ。書いていないことは出さない）"),
     (re.compile(r'class="jc-br"|のページの中）を見る'), "迷子の窓口の「住まい → 窓口」の図・分かりにくいボタン（Nori 11/16「何を言ってるかわからない」。市区町村を入れて窓口1枚）"),
 ]
