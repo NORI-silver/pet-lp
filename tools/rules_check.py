@@ -33,11 +33,11 @@ PREF_SLUGS = {"hokkaido", "aomori", "iwate", "miyagi", "akita", "yamagata", "fuk
               "tokushima", "kagawa", "ehime", "kochi", "fukuoka", "saga", "nagasaki", "kumamoto", "oita", "miyazaki", "kagoshima", "okinawa",
               }  # 県のページ
 HOSP_SUB = {"night", "cat", "exotic", "large-dog", "visit"}  # 動物病院の条件のページ
-PREF_RE = re.compile(r"^(%s)(都|道|府|県)?(\s*[（(]?\d+[)）]?件?)?$" % "|".join(PREFS))
+PREF_RE = re.compile(r"^(%s)(都|道|府|県)?(・[^\d（(]{1,8})?\s*([（(]?\d+\s*(件|軒|か所|院|社|施設|団体|店|頭)?[)）]?|[（(]?(0件|しらべ中|まだ)[)）]?)?$" % "|".join(PREFS))
 
 # 使わない言葉（seo_check.py の BAN・VERIFY_CLAIM のほか）。(正規表現, 理由)
 WORDS = [
-    (r"使える会社", "「条件に合う会社」と書く（Nori 11/15）"),
+    (r"(?<![にて])使える会社", "「条件に合う会社」と書く（Nori 11/15）"),
     (r"公式(?:サイト|ページ)に書いて(?:ある|あった)こと", "「公式ページに書いてあること」はやめる（Nori 11/16）"),
     (r"当サイトで(?:調べ|しらべ)", "運営側の作業を見せない（Nori 11/16）"),
     (r"手配料", "「無料」と書く（Nori 10/31）"),
@@ -58,7 +58,7 @@ REMOVED = [
 ]
 TALLY = re.compile(r"(?:しらべ|調べ|確かめ|確認し)た(?:自治体|市区町村|施設|病院|会社|件|数)|(?:しらべ|調べ)た数|しらべ済み|調査済みの(?:自治体|市区町村)")
 INTRO_MAX = 120      # 施設の分野で、さがす欄・最初の見出しの前に置いてよい文の字数（h1 の下のリード文をふくむ）
-INTRO_MAX_GUIDE = 200  # 記事で、最初の見出し（答えの箱）の前に置いてよい字数
+INTRO_MAX_GUIDE = 250  # 記事で、最初の見出しの前に置いてよい字数（リード文と、答えの「まとめ」の文まで）
 WALL_MAX = 500       # 図・表・箇条書き・見出しなしで続けてよい文の字数
 PREFGRID_MAX = 19    # たたまずに並べてよい都道府県のボタン・リンクの数
 # 施設の分野（さがす欄が先に来ること）。tools/uikit.py の ALL と同じ。病院は /hospital/ の下の夜間などもふくむ
@@ -68,7 +68,8 @@ SEARCH_MARK = re.compile(r'class="(?:[^"]*\s)?(?:ux-find|hf|hn-find|bf|ff-box|fi
 REASONS = {
     "words": "使わない言葉", "hole": "下書きの穴（◯◯など）", "removed": "消した部品がもどった", "tally": "運営側の集計を見せている",
     "prefgrid": f"都道府県のボタンを{PREFGRID_MAX + 1}個以上たたまずに並べている", "intro": f"さがす欄・見出しの前の文が{INTRO_MAX}字を超える",
-    "search": "施設の分野で、さがす欄より前に記事・目次がある", "wall": f"図・表・箇条書きのない文が{WALL_MAX}字を超えて続く",
+    "search": "施設の分野で、さがす欄より前に記事・目次がある",
+    "card": "タクシー以外の施設のカードが共通のカード（tools/cardskin.py の形）になっていない", "wall": f"図・表・箇条書きのない文が{WALL_MAX}字を超えて続く",
 }
 BLOCK_BREAK = {"h2", "h3", "h4", "ul", "ol", "table", "figure", "img", "svg", "picture", "details", "dl", "blockquote", "form", "select", "button"}
 VOID = {"br", "img", "input", "meta", "link", "hr", "source", "wbr", "area", "col", "embed", "param", "track"}
@@ -90,7 +91,7 @@ class Page(HTMLParser):
         s.pos = 0
 
     def folded(s):
-        return any(t in ("details", "select", "footer", "header", "noscript") or "catbar" in c or "hub" in c or "crumb" in c
+        return any(t in ("details", "select", "footer", "header", "noscript", "table") or "catbar" in c or "hub" in c or "crumb" in c
                    for t, c in s.stack)
 
     def handle_starttag(s, tag, a):
@@ -137,7 +138,9 @@ class Page(HTMLParser):
         s.text.append(d)
         inner = [t for t, _ in s.stack]
         in_p = "p" in inner and not any(t in ("li", "td", "th", "button", "a", "label", "summary") for t in inner[-2:])
-        if not s.intro_done and "h1" not in inner and "nav" not in inner and "small" not in inner:
+        pcls = next((c for t, c in reversed(s.stack) if t == "p"), None)
+        # 前置きに数えるのは、ふつうの文（クラスなしの p とリード文）だけ。日付・写真の説明・注意書きは数えない
+        if not s.intro_done and pcls is not None and pcls in ("", "lede") and "h1" not in inner and "nav" not in inner and "small" not in inner:
             s.intro += len(d2)
         if in_p and not s.folded(): s.wall += len(d2)
 
@@ -161,7 +164,7 @@ def check_page(root, path):
     for pat, why in WORDS:
         m = re.search(pat, body)
         if m: found.append(("words", f"「{m.group()}」 {why}"))
-    m = next((m for m in HOLES.finditer(body) if body.rfind("「", 0, m.start()) <= body.rfind("」", 0, m.start())), None)  # 「」の中の書き方の例は除く
+    m = next((m for m in HOLES.finditer(body) if body.rfind("「", 0, m.start()) <= body.rfind("」", 0, m.start()) and "◯月" not in body[max(0, m.start() - 40):m.start()]), None)  # 「」の中や、「◯月◯日」のような書き方の例は除く
     if m: found.append(("hole", f"「{body[max(0, m.start() - 12):m.end() + 12].strip()}」"))
     for pat, why in REMOVED:
         if pat.search(raw): found.append(("removed", why))
@@ -171,9 +174,16 @@ def check_page(root, path):
     parts = [x for x in path.split("/") if x]
     info = bool(parts) and (parts[0] in FAC_CATS or parts[0] == "guide")
     # タクシーのページ（トップの写し）はフォームが先にあり、形が決まっているので入口の文は数えない。記事はリード文が少し長くてよい
-    if info and p.intro > (INTRO_MAX if parts[0] != "guide" else INTRO_MAX_GUIDE): found.append(("intro", f"{p.intro}字"))
+    listing = len(parts) == 1 or len(parts) == 2 and (parts[1] in PREF_SLUGS or parts[0] == "hospital" and parts[1] in HOSP_SUB)
+    if info and p.intro > (INTRO_MAX if parts[0] != "guide" and listing else INTRO_MAX_GUIDE): found.append(("intro", f"{p.intro}字"))
     if parts and parts[0] in FAC_CATS and (len(parts) == 1 or len(parts) == 2 and (parts[1] in PREF_SLUGS or parts[0] == "hospital" and parts[1] in HOSP_SUB)) and p.first_toc is not None and (p.first_search is None or p.first_toc < p.first_search):
         found.append(("search", "さがす欄がない" if p.first_search is None else "目次・記事のリンクがさがす欄より前"))
+    # タクシー以外のカードは共通のカード1つ（Nori 2026-11-16「タクシー以外のカードは共通のやつにして」）。
+    # 施設1つのページの入口の枠（data-cat つきの emg-co）だけは除く
+    if parts and parts[0] in FAC_CATS:
+        odd = [m for m in re.finditer(r'<div class="(emg-item[^"]*|yd-card[^"]*)"([^>]*)>', raw)
+               if not re.search(r"\b(cs|ux-c|jc-card)\b", m.group(1)) and not ("data-cat=" in m.group(2) and " fc" not in m.group(1))]
+        if odd: found.append(("card", f"{len(odd)}枚（{odd[0].group(1)}）"))
     if p.walls and "terms" not in parts: found.append(("wall", f"{max(p.walls)}字"))  # 規約は条文なので除く
     return found
 

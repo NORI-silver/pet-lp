@@ -35,33 +35,41 @@
   // data-taxi-cta のボタン（tools/taxi_cta.py）と、フォームのないページにあるフォームへのリンクを数える。入力内容は送らない
   document.addEventListener("click", function(e){
     var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
-    if (!a) return;
+    if (!a || a.hasAttribute("data-ga")) return; // data-ga＝hosp.js・facility.js が自分で数えるリンク（二重に数えない。2026-11-16）
     var cta = a.getAttribute("data-taxi-cta"), href = a.getAttribute("href") || "";
     if (!cta) { if (document.getElementById("petForm") || !/#form$/.test(href)) return; cta = "link"; }
     gtag("event", "taxi_cta", {cta: cta, from: location.pathname.split("/")[1] || "top", transport_type: "beacon"});
   }, true);
   // 押したリンクがどの会社・施設か（集計で会社ごとに分けるため。カードの見出しか、リンクの文字）
-  function nameOf(a){ var c = a.closest(".emg-item, article, li, .card, tr"), h = c && c.querySelector("b, h3, h4, strong"); return String((h ? h.textContent : a.textContent) || "").replace(/\s+/g, " ").trim().slice(0, 80); }
+  // 新しいカード（.ux-c＝ドッグランなど、.jc-card＝迷子の窓口、.fc＝施設、.hc＝病院）も見る。いちばん近い枠の名前を使う（2026-11-16）
+  function nameOf(a){ var c = a.closest(".hc, .ux-c, .jc-card, .fc, .emg-item, .card, li, tr, article"), h = c && c.querySelector(".hc-n, .ux-c-n, .fc-name, .jc-hd b, b, h3, h4, strong"); return String((h ? h.textContent : a.textContent) || "").replace(/\s+/g, " ").replace(/\s*↗$/, "").trim().slice(0, 80); }
   // 緊急の搬送の会社の電話を押した回数（Nori 2026-11-10「すすめて！両方」）。番号は送らず、会社の名前とページだけ。
   // トップ・エリアページの緊急タブから病院・搬送の会社の公式サイトへ出た回数も official_site（cat=emergency, from=emg_tab）で数える
   document.addEventListener("click", function(e){
     var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
-    if (!a) return;
+    if (!a || a.hasAttribute("data-ga")) return;
     var item = a.closest(".emg-item"), name = nameOf(a);
     var from = location.pathname.split("/")[1] || "top";
-    if (/^tel:/i.test(a.getAttribute("href") || "")) { gtag("event", "tel_click", {cat: "emergency", company_name: name, from: from, transport_type: "beacon"}); return; }
+    if (/^tel:/i.test(a.getAttribute("href") || "")) { gtag("event", "tel_click", {cat: INFO.test(location.pathname) ? from : "emergency", company_name: name, from: from, transport_type: "beacon"}); return; }
     if (item && !INFO.test(location.pathname) && /^https?:$/.test(a.protocol) && a.host !== location.host && !/(^|\.)google\.|goo\.gl$/.test(a.hostname))
       gtag("event", "official_site", {cat: "emergency", host: a.hostname, company_name: name, from: "emg_tab", transport_type: "beacon"});
   }, true);
-  // 情報ページから施設の公式サイトへ出た回数（2026-11-08 戦略「訪問を導線に」）。facility.js が印を付けたリンク（utm_source=pet.shiokonbu.com）は facility.js が数えるので、ここでは数えない。
+  // 情報ページから施設の公式サイトへ出た回数（2026-11-08 戦略「訪問を導線に」）。facility.js・hosp.js が自分で数えるリンクには data-ga が付いているので、ここでは数えない。
   // 施設のサイトには当サイトから来た印（utm）を付ける。役所のページ（jichitai）と地図・口コミのリンクには付けない。押した先の場所（ホスト名）とカテゴリだけ送る
-  var INFO = /^\/(hospital|dogrun|jichitai|sougi|pet-hotel|pet-sitter|trimming|dog-trainer|rojin-home|emergency)\//, UTM = {hospital: 1, dogrun: 1, "pet-hotel": 1, trimming: 1, "rojin-home": 1, emergency: 1};
-  if (INFO.test(location.pathname)) document.addEventListener("click", function(e){
+  // 2026-11-16 計測漏れの点検：犬と泊まれる宿・カフェ・譲渡（保護団体・譲渡の窓口）も施設の公式サイトとして数える。
+  // それ以外のページ（ガイド・避難など）から外のサイトへ出たリンクは outbound_link（送客には数えない）で数える。
+  var INFO = /^\/(hospital|dogrun|jichitai|sougi|pet-hotel|pet-sitter|trimming|dog-trainer|rojin-home|emergency|inu-yado|pet-yado|inu-cafe|joto)\//, UTM = {hospital: 1, dogrun: 1, "pet-hotel": 1, trimming: 1, "rojin-home": 1, emergency: 1, "inu-yado": 1, "pet-yado": 1, "inu-cafe": 1};
+  document.addEventListener("click", function(e){
     var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
-    if (!a || !/^https?:$/.test(a.protocol) || a.host === location.host || /utm_source=pet\.shiokonbu\.com/.test(a.href) || /(^|\.)google\.|goo\.gl$/.test(a.hostname)) return;
+    if (!a || !/^https?:$/.test(a.protocol) || a.host === location.host || /(^|\.)google\.|goo\.gl$/.test(a.hostname)) return;
     var cat = location.pathname.split("/")[1];
-    if (UTM[cat]) { try { var x = new URL(a.href); x.searchParams.set("utm_source", "pet.shiokonbu.com"); x.searchParams.set("utm_medium", "referral"); x.searchParams.set("utm_campaign", cat.replace(/-/g, "_") + "_list"); a.href = x.toString(); } catch (y) {} }
-    gtag("event", "official_site", {cat: cat, host: a.hostname, company_name: nameOf(a), from: "page", transport_type: "beacon"});
+    // 宿のカードのようにページに最初から utm が付いたリンクも数える（前は utm 付き＝facility.js が数える、として飛ばしていたため宿の送客が0だった。2026-11-16）
+    if (UTM[cat] && INFO.test(location.pathname) && !/utm_source=pet\.shiokonbu\.com/.test(a.href)) { try { var x = new URL(a.href); x.searchParams.set("utm_source", "pet.shiokonbu.com"); x.searchParams.set("utm_medium", "referral"); x.searchParams.set("utm_campaign", cat.replace(/-/g, "_") + "_list"); a.href = x.toString(); } catch (y) {} }
+    if (a.hasAttribute("data-ga")) return;
+    if (INFO.test(location.pathname)) { gtag("event", "official_site", {cat: cat, host: a.hostname, company_name: nameOf(a), from: "page", transport_type: "beacon"}); return; }
+    // フォームのあるページ（トップ・エリア・市区）は候補カード（app.js）と緊急タブ（上）で数えている
+    if (document.getElementById("petForm") || a.closest(".emg-item")) return;
+    gtag("event", "outbound_link", {cat: cat || "top", host: a.hostname, from: "page", transport_type: "beacon"});
   }, true);
 })();
 

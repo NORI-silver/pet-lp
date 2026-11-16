@@ -1,24 +1,4 @@
 {
 "_note": "2026-11-16 にもうあった違反（tools/rules_check.py）。直ったら --prune（gen_areas.py の最後でも動く）で消える。ここに足して逃げない",
-"known": [
-"/area/ prefgrid",
-"/dogrun/survey/ intro",
-"/guide/lost-flyer/ hole",
-"/guide/multi-pet/ wall",
-"/guide/multi-pet/ words",
-"/guide/night-emergency-survey/ tally",
-"/guide/pet-insurance/ wall",
-"/guide/pet-taxi-fare-survey/ tally",
-"/guide/rojin-home-cost/ words",
-"/guide/rojin-home/ words",
-"/guide/trva-yakan-taxi/ intro",
-"/guide/what-is-pet-taxi/ tally",
-"/pet-sitter/ intro",
-"/rojin-home/gunma/ intro",
-"/rojin-home/hiroshima/ intro",
-"/rojin-home/kanagawa/ intro",
-"/rojin-home/saitama/ intro",
-"/rojin-home/shizuoka/ intro",
-"/trimming/nara/ intro"
-]
+"known": []
 }

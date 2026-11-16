@@ -829,7 +829,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       es.forEach(function(x){ seen[x.target.id || "hero"] = x.isIntersecting; });
       sticky.style.visibility = (seen.hero || seen.form) ? "hidden" : "visible";
     });
-    io.observe(document.querySelector(".hero .btn")); io.observe($("form"));
+    io.observe(document.querySelector(".hero")); io.observe($("form"));
   }
 
   // 経由地（ありを選んだときだけ入力欄を出す）

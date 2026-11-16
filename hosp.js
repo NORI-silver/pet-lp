@@ -116,12 +116,12 @@ function prefGuess(sel, apply){
     FEAT.forEach(function(f){ if (f[0] === "late" && r.y.indexOf("night") >= 0) return; if (b.length < 6 && r.y.indexOf(f[0]) >= 0) b.push('<span>' + esc(f[1]) + '</span>'); });
     keys().forEach(function(k){ if (k.slice(0, 2) === "d:" && has(r, k)) b.push('<span>' + esc(k.slice(2)) + '</span>'); });
     unk.forEach(function(k){ b.push('<span class="u">' + esc(LABEL[k] || NEEDL[k] || k.slice(2)) + 'は不明</span>'); });
-    var top = r.tel ? '<a href="tel:' + esc(r.tel) + '" data-k="tel">📞 電話する</a>' : '<a href="' + esc(r.u) + '" target="_blank" rel="noopener" data-k="site">公式サイト ↗</a>';
+    var top = r.tel ? '<a href="tel:' + esc(r.tel) + '" data-k="tel" data-ga>📞 電話する</a>' : '<a href="' + esc(r.u) + '" target="_blank" rel="noopener" data-k="site" data-ga>公式サイト ↗</a>';
     var route = r.ad ? '<a class="l" href="https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(r.ad) + '" target="_blank" rel="noopener" data-k="route">📍 経路を見る</a>' : '';
     var sub = [];
-    if (r.tel) sub.push('<a href="' + esc(r.u) + '" target="_blank" rel="noopener" data-k="site">公式サイト</a>');
+    if (r.tel) sub.push('<a href="' + esc(r.u) + '" target="_blank" rel="noopener" data-k="site" data-ga>公式サイト</a>');
     if (r.pg) sub.push('<a href="' + esc(r.pg) + '">診療内容の詳細</a>');
-    if (r.ad && r.y.indexOf("visit") < 0) sub.push('<a href="/?to=' + encodeURIComponent(r.ad) + '#form" data-k="taxi">🚕 ペットタクシーの料金</a>');
+    if (r.ad && r.y.indexOf("visit") < 0) sub.push('<a href="/?to=' + encodeURIComponent(r.ad) + '#form" data-k="taxi" data-ga>🚕 ペットタクシーの料金</a>');
     return '<div class="hc">' + picHtml(r) + '<a class="hc-n" href="' + esc(r.pg || r.u) + '"' + (r.pg ? '' : ' target="_blank" rel="noopener"') + '>' + esc(r.n) + '</a>'
       + (b.length ? '<p class="hc-b">' + b.join("") + '</p>' : '')
       + ((r.ad || r.c) ? '<p class="hc-l"><i aria-hidden="true">📍</i><span>' + esc(r.ad || r.c) + '</span></p>' : '')
@@ -228,7 +228,9 @@ function prefGuess(sel, apply){
     var m = ev.target.closest(".hf-more"); if (m) { shown += 30; draw(); return; }
     var d = ev.target.closest("button[data-drop]");
     if (d) { var k = d.dataset.drop; if (k === "place") { csel.value = ""; q.value = ""; } else if (on[k]) delete on[k]; else need = ""; draw(); return; }
-    var a = ev.target.closest("a[data-k]"); if (a) try { window.gtag && gtag("event", {taxi: "facility_taxi", tel: "tel_click", route: "hosp_route"}[a.dataset.k] || "official_site", {cat: "hospital", from: "hosp_find"}); } catch (x) {}
+    // 公式サイト・電話・タクシー・経路はここだけで数える（ga.js は data-ga のリンクを数えない）。会社ごとに集計できるよう病院名と行き先のホストも送る（2026-11-16）
+    var a = ev.target.closest("a[data-k]"), c = a && a.closest(".hc"), nm = c && c.querySelector(".hc-n");
+    if (a) try { window.gtag && gtag("event", {taxi: "facility_taxi", tel: "tel_click", route: "hosp_route"}[a.dataset.k] || "official_site", {cat: "hospital", from: "hosp_find", company_name: nm ? nm.textContent.trim().slice(0, 80) : "", host: a.dataset.k === "site" ? a.hostname : "", pref: sel.value || "", transport_type: "beacon"}); } catch (x) {}
   });
   if (box.dataset.pref) { sel.value = box.dataset.pref; }
   function apply(){ load(); }

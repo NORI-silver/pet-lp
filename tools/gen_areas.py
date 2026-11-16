@@ -242,6 +242,32 @@ CITIES = [
     why="仙台市は5区あり、泉区や太白区の住宅地から青葉区の中心へ通うと10km以上になります。冬は雪や凍った道で、ペットを連れて歩いたりバスを待ったりするのが大変な日もあります。地下鉄や電車にはキャリーに入る子しか乗れず、大型犬は乗れません。仙台空港への送迎や、お引っ越しの移動にも使われます。",
     routes=[("仙台駅 → 長町", 4), ("仙台駅 → 泉中央", 12), ("仙台駅 → 仙台空港", 20)],
     guides=["airport-moving", "large-dog"]),
+  # [B] SEO 11/16 夜：対応エリアに市の名前を書く会社がある市（北摂・北九州・京都・広島）
+  dict(slug="toyonaka", path="/area/osaka/toyonaka/", pref="大阪府", key="大阪", city="豊中市", stems=["豊中"], parent=("/area/osaka/", "大阪"),
+    wards="豊中駅・千里中央・庄内・服部のまわりなど",
+    why="豊中市は大阪市の北にとなりあう市で、箕面市の北摂夜間救急動物病院まで近く、夜の急変のときにも使われます。大阪市内の病院へ通う人もいます。電車やバスにはキャリーに入る子しか乗れず、大型犬は乗れません。伊丹空港が近く、空港への送迎やお引っ越しの移動にも使われます。",
+    routes=[("豊中駅 → 伊丹空港", 5), ("豊中駅 → 箕面（北摂夜間救急動物病院のあたり）", 6), ("豊中駅 → 梅田", 12)],
+    guides=["hokusetsu-yakan-taxi", "osaka-yakan-taxi", "airport-moving"]),
+  dict(slug="suita", path="/area/osaka/suita/", pref="大阪府", key="大阪", city="吹田市", stems=["吹田"], parent=("/area/osaka/", "大阪"),
+    wards="江坂・千里山・万博記念公園・岸辺のまわりなど",
+    why="吹田市は大阪市の北の市で、箕面市の北摂夜間救急動物病院や、大阪市内の病院へ通うときに使われます。千里ニュータウンなど坂のある住宅地も多く、大きな子を抱えて駅まで歩くのは大変です。電車やバスにはキャリーに入る子しか乗れず、大型犬は乗れません。伊丹空港への送迎やお引っ越しにも使われます。",
+    routes=[("江坂 → 梅田", 8), ("江坂 → 箕面（北摂夜間救急動物病院のあたり）", 10), ("江坂 → 伊丹空港", 10)],
+    guides=["hokusetsu-yakan-taxi", "osaka-yakan-taxi", "airport-moving"]),
+  dict(slug="kyoto-shi", path="/area/kyoto/kyoto-shi/", pref="京都府", key="京都", city="京都市", stems=["京都市"], parent=("/area/kyoto/", "京都"),
+    wards="中京区・左京区・右京区・伏見区など11区",
+    why="京都市は11区あり、伏見区や左京区の北のほうから市の中心の病院へ通うと10km以上になることもあります。細い道や一方通行が多く、ペットを連れて歩いたりバスを乗りついだりするのは大変です。電車やバスにはキャリーに入る子しか乗れず、大型犬は乗れません。伊丹空港・関西空港への送迎や、お引っ越しの移動にも使われます。",
+    routes=[("京都駅 → 四条河原町", 4), ("京都駅 → 梅田", 50), ("京都駅 → 伊丹空港", 50)],
+    guides=["airport-moving", "large-dog"]),
+  dict(slug="hiroshima-shi", path="/area/hiroshima/hiroshima-shi/", pref="広島県", key="広島", city="広島市", stems=["広島市"], parent=("/area/hiroshima/", "広島"),
+    wards="中区・南区・西区・安佐南区・佐伯区など8区",
+    why="広島市は8区あり、安佐北区や佐伯区の住宅地から中区の病院へ通うと15km以上になることもあります。路面電車やバスにはキャリーに入る子しか乗れず、大型犬は乗れません。広島空港は市の中心から50kmほど離れていて、空港への送迎やお引っ越しの移動にも使われます。",
+    routes=[("広島駅 → 紙屋町", 3), ("広島駅 → 呉駅", 30), ("広島駅 → 広島空港", 50)],
+    guides=["airport-moving", "large-dog"]),
+  dict(slug="kitakyushu", path="/area/fukuoka/kitakyushu/", pref="福岡県", key="福岡", city="北九州市", stems=["北九州"], parent=("/area/fukuoka/", "福岡"),
+    wards="小倉北区・小倉南区・八幡西区・門司区など7区",
+    why="北九州市は7区あり、東西に長いので、門司区や八幡西区から小倉の病院へ通うと10〜20kmになります。電車やバスにはキャリーに入る子しか乗れず、大型犬は乗れません。北九州空港への送迎や、福岡市へのお引っ越しの移動にも使われます。",
+    routes=[("小倉駅 → 黒崎駅", 12), ("小倉駅 → 北九州空港", 20), ("小倉駅 → 博多駅", 70)],
+    guides=["airport-moving", "large-dog"]),
   dict(slug="sapporo", path="/area/hokkaido/sapporo/", pref="北海道", key="北海道", city="札幌市", stems=["札幌"], parent=("/area/hokkaido/", "北海道"),
     wards="中央区・北区・東区・白石区・手稲区など10区",
     why="札幌市は10区あり、手稲区や清田区から中央区・北区の専門の動物病院へ通うと、10km以上の移動になることもあります。冬は雪道で、ペットを連れて歩いたりバスや地下鉄を待ったりするのが大変な日もあります。地下鉄や電車にはキャリーに入る子しか乗れず、大型犬は乗れません。新千歳空港への送迎や、お引っ越しの移動にも使われます。",
@@ -540,7 +566,7 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = t.replace('<a class="logo" href="#">', '<a class="logo" href="/">', 1)
     # h1 とリード文
     t = re.sub(r'(<span class="kicker">).*?(<b )', lambda m: m.group(1) + e(kicker) + " " + m.group(2), t, count=1, flags=re.S)
-    t = re.sub(r'(<section class="hero">.*?<p class="lede">).*?(</p>)', lambda m: m.group(1) + e(lede) + m.group(2), t, count=1, flags=re.S)
+    t = re.sub(r'(<section class="top-about"[^>]*><div class="wrap"><p class="lede">).*?(</p>)', lambda m: m.group(1) + e(lede) + m.group(2), t, count=1, flags=re.S)  # リード文はフォームの後ろ（2026-11-16）
     t = t.replace('<section class="hero">', f'<div class="wrap"><nav class="crumb" aria-label="パンくずリスト">{crumb}</nav></div>\n<section class="hero">', 1)
     # フォームのお迎えの都道府県・緊急タブの都道府県を最初から選んでおく
     t = re.sub(r'(<select id="pref"[^>]*>.*?)<option>' + re.escape(pref) + '</option>', lambda m: m.group(1) + f'<option selected>{pref}</option>', t, count=1, flags=re.S)
@@ -548,7 +574,7 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     # 地域の説明はフォームの後ろ（「使い方」の前）に
     # トップ（全国の入口）へ、「ペットタクシー」全体のことばでリンクする（トップとエリアページの役割を分ける）
     to_top = '<div class="wrap"><p class="to-top">ほかの都道府県の会社もふくめてさがすときは、<a href="/">全国のペットタクシーの料金をくらべる</a>ページへ。</p></div>'
-    t = t.replace('<section id="how">', area_html + '\n' + to_top + '\n<section id="how">', 1)
+    t = t.replace('<!--AFTER_FORM-->', area_html + '\n' + to_top + '\n<!--AFTER_FORM-->', 1)
     # エリアページ用のCSS（.crumb .prose など）を足す
     t = t.replace("</style>", extra_css.strip() + "\n</style>", 1)
     # いちばん上の写真だけ、そのページの写真があれば置きかえる（tools/page_images.py）
@@ -1710,8 +1736,9 @@ PREF_CHECKS = [
 def pref_fare_html(pf):
     rows = PREF_FARES.get(pf)
     if not rows:
-        return (f'<p>{e(pf)}のペットタクシーの料金は、当サイトにはまだ載っていません。料金は会社ごとに決まっていて、多くは乗る距離で計算します。'
-                'そのほかに、お迎え料金や待ち時間の料金、夜間・早朝の割増がかかることがあります。頼む前に、どこまでが基本料金に入っているかを確かめてください。</p>')
+        return (f'<p>{e(pf)}のペットタクシーの料金は、当サイトにはまだ載っていません。料金は会社ごとに決まっていて、多くは次のものを足して計算します。</p>'
+                '<ul><li>乗る料金（多くは乗る距離で決まります）</li><li>お迎え料金（お店からお迎えの場所まで）</li><li>待ち時間の料金</li><li>夜間・早朝の割増</li></ul>'
+                '<p>頼む前に、どこまでが基本料金に入っているかを確かめてください。</p>')
     return ('<p>' + e(pf) + 'のペットタクシー会社が公式サイトに書いている料金の例です。同じ「基本料金」でも、含まれる距離やお迎え・待ち時間の扱いは会社ごとに違います。</p>'
             '<div class="tbl"><table><thead><tr><th>会社のある場所</th><th>乗る料金</th><th>お迎えなど</th></tr></thead><tbody>' +
             ''.join(f'<tr><th>{e(w)}</th><td>{e(f)}</td><td>{e(pk)}</td></tr>' for w, f, pk in rows) + '</tbody></table></div>'
@@ -2157,6 +2184,11 @@ hub_regions = ""
 for lab, ps in emg_regions:
     lis = "".join(f'<li><a href="{pref_href(p)}">{e(AREA_SHORT.get(p) or next(x[2] for x in PREFS if x[1] == p))}</a></li>' for p in ps)
     hub_regions += f'<h3 class="emg-region" style="text-align:center">{e(lab)}</h3><ul class="other">{lis}</ul>'
+# 47県の大きなボタンは何画面も使うので、選ぶ欄1つにして、一覧は折りたたむ（AGENTS.md「品質の決まり」B5、Nori 2026-11-16）
+_hub_opts = "".join(f'<option value="{pref_href(p)}">{e(p)}</option>' for _lab, _ps in emg_regions for p in _ps)
+hub_pick = ('<div class="hub-pick" style="display:flex;gap:8px;margin:4px 0 10px"><select aria-label="都道府県" style="flex:1;min-width:0;font-size:1rem;padding:11px;border-radius:12px;border:1px solid #d9c9bb;background:#fff" '
+            'onchange="if(this.value)location.href=this.value"><option value="">📍 都道府県をえらぶ</option>' + _hub_opts + '</select></div>'
+            '<details class="pp-fold" style="margin:0 0 14px"><summary style="cursor:pointer;font-weight:700;color:#a8410a;padding:6px 0">地方ごとの一覧を開く</summary>' + hub_regions + '</details>')
 # [B] 2026-11-03「中身の薄いページを充実させる」：都道府県ごとの数の表（会社の数・10kmの運賃・夜間の病院・搬送の会社）。うちのデータで数えたもの、社名なし。
 def _hub_table():
     trs, found, many = "", 0, 0
@@ -2192,7 +2224,7 @@ ph = head("全国のペットタクシー情報｜都道府県ごとの料金の
   </div>
 </section>
 <section style="padding-top:8px">
-  <div class="wrap">{hub_regions}{_hub_table()}</div>
+  <div class="wrap">{hub_pick}{_hub_table()}</div>
 </section>
 <section style="padding-top:0">
   <div class="wrap">
@@ -2641,6 +2673,12 @@ print("nosrc", nosrc.build(ROOT), "pages")
 # 画面を何枚も占める並び（都道府県の箱・都道府県の表・行の多いカードの表）をたたむ（tools/compact.py、Nori 2026-11-16「もっとこんぱくとに」）
 import compact
 print("compact", compact.build(ROOT), "pages")
+# 施設のカードの形を全部の分野でそろえる（tools/cardskin.py、Nori 2026-11-16「カードもばらばら。統一してー」）
+import cardskin
+print("cardskin", cardskin.build(ROOT), "pages")
+# 運営側の集計・読めない表・ガイドの下のタクシーのボタンなどを取る（tools/tidy.py、Nori 2026-11-16 の見直し一覧）
+import tidy
+print("tidy", tidy.build(ROOT), "pages")
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] noindex.json のページに noindex,follow を入れる（ほかの後処理のあと）
 for _p in NOINDEX:
