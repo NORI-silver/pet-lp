@@ -86,7 +86,7 @@ p{margin:0 0 1em}
 .catch{display:block;font-size:2.3rem;font-weight:800;line-height:1.32;letter-spacing:.02em}
 .catch em{font-style:normal;color:var(--o)}
 .hero .lede{color:var(--ink-2);font-size:1.02rem;margin:20px 0 24px}
-.pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 28px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:20px 0 24px}
 .pills li{display:flex;align-items:center;gap:6px;background:#fff;border-radius:999px;padding:6px 14px 6px 8px;font-size:.86rem;font-weight:700;box-shadow:var(--shadow)}
 .pills li span{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--o-l);color:var(--o-d)}
 .pills li span svg{width:13px;height:13px}
@@ -104,6 +104,7 @@ p{margin:0 0 1em}
 .float.f1 span{color:var(--ink-3)}
 .float.f2{right:-6px;top:20px;text-align:center;padding:10px 14px}
 .float.f2 b{display:block;font-family:var(--round);font-size:1.3rem;color:var(--o-d);line-height:1.1}
+@media (max-width:759px){.hero .float,.hero .float.f1{display:none}.hero{padding:16px 0 32px}.catch{font-size:2rem}.hero .kicker{font-size:.72rem;margin-bottom:12px}.hero .lede{margin:12px 0 16px;font-size:.92rem;line-height:1.75}.pills{gap:6px;margin-bottom:16px}.pills li{font-size:.78rem;padding:4px 10px 4px 6px}.pills li span{width:18px;height:18px}.hero-fare{padding:10px 14px;margin-bottom:14px}.hero-fare b{font-size:.92rem}.hero-fare span{font-size:.8rem}.hero .grid{gap:14px}.hero-visual .photo{aspect-ratio:16/9}.hero .pills{margin-bottom:0}.hero{padding-bottom:20px}section.form-sec{padding-top:16px}.hero .btn{white-space:nowrap;font-size:.95rem;padding:15px 12px;justify-content:center;gap:6px}.hero .after{font-size:.76rem;margin-top:10px}}
 
 /* stats */
 .stats{background:var(--ink);color:#fff;padding:40px 0}
@@ -1002,9 +1003,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>連絡はメールだけ</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>多頭もOK</li>
       </ul>
-      <div class="hero-fare"><b>各社の料金を、その場でくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。各社の公式サイトの料金表から計算した概算で、確定料金ではありません。</span></div>
-      <a class="btn" href="#form" data-cta="hero-fare">空き状況と料金を問い合わせる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
-      <p class="after">無料で使えます（運賃は当日ペットタクシーへ直接お支払い）。当日の依頼もできます。</p>
     </div>
     <div class="hero-visual">
       <div class="photo">
@@ -1046,7 +1044,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 <!-- 6. フォーム -->
 <section class="form-sec" id="form">
   <div class="wrap">
-    <div class="sh"><h2>空き状況と料金を問い合わせる（無料）</h2></div>
 
     <div class="mode-tabs" id="modeTabs" role="tablist" hidden>
       <button type="button" role="tab" aria-selected="true" data-mode="normal">空き状況・料金の問い合わせ</button>
@@ -1102,7 +1099,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
       <p class="emg-note" id="emgNote"></p>
     </div>
     <div class="form-card">
-      <div class="flow3" aria-label="ご利用の流れ"><p class="flow3-h">ご利用の流れ</p><ol><li><b>①</b>会社を選んで<wbr>問い合わせ<span>空き状況と料金を、選んだ会社に問い合わせます</span></li><li><b>②</b>会社から<wbr>返事が届く<span>この日時に空いているか、確定料金（税込）をメールでお知らせします</span></li><li><b>③</b>納得したら<wbr>予約を確定<span>メールの「この内容で予約する」を押した時点で予約が確定します</span></li></ol><p class="flow3-note">問い合わせを送っただけでは、まだ予約は確定していません。</p></div>
       <form id="petForm" novalidate>
         <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
@@ -1130,7 +1126,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
               <select id="hour" name="hour" required aria-label="時"><option value="">時</option><option value="00">0時</option><option value="01">1時</option><option value="02">2時</option><option value="03">3時</option><option value="04">4時</option><option value="05">5時</option><option value="06">6時</option><option value="07">7時</option><option value="08">8時</option><option value="09">9時</option><option value="10">10時</option><option value="11">11時</option><option value="12">12時</option><option value="13">13時</option><option value="14">14時</option><option value="15">15時</option><option value="16">16時</option><option value="17">17時</option><option value="18">18時</option><option value="19">19時</option><option value="20">20時</option><option value="21">21時</option><option value="22">22時</option><option value="23">23時</option></select>
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
-          <p class="note dt-note">当日も依頼できます。会社にメールで確かめるため、お迎えはいまから3時間以上あとで選んでください。</p>
           <div class="f"><span class="lbl">片道・往復<span class="need">必須</span></span>
             <div class="seg"><label><input type="radio" name="trip" value="片道" required><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復</span></label></div>
             <div class="via-box" id="retBox" hidden><label for="retDate" class="lbl">帰りのお迎え日時（用事が終わる時刻）<span class="need">必須</span></label>
@@ -1589,8 +1584,8 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
   </div>
 </footer>
 
-<div class="sticky"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
+<div class="sticky" style="visibility:hidden"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
 
-<script src="/app.js?v=e4ce032544" defer></script>
+<script src="/app.js?v=d7fea4ed93" defer></script>
 </body>
 </html>
