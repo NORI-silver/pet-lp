@@ -118,6 +118,16 @@ function prefGuess(sel, apply){
       if (sm) sm.textContent = [].filter.call(g.querySelectorAll("[data-ffi]"), function(it){ return !it.hidden; }).length + unit;
     });
     [].forEach.call(document.querySelectorAll(".emg-region, .ux-region"), function(h){ h.hidden = !!(pf || ks.length || qs); });
+    // 長い一覧は、はじめの N 件だけ見せて「のこり◯件を見る」（data-ffmore="N"。中身はHTMLにあるので検索にも読める。2026-11-16 見直し）
+    [].forEach.call(document.querySelectorAll("[data-ffmore]"), function(g){
+      var N = +g.getAttribute("data-ffmore") || 12, vis = [].filter.call(g.querySelectorAll("[data-ffi]"), function(it){ return !it.hidden; });
+      var mb = g.nextElementSibling && g.nextElementSibling.classList.contains("ff-more") ? g.nextElementSibling : null;
+      vis.forEach(function(it, i){ it.classList.toggle("ff-cut", !g._open && i >= N); });
+      if (!g._open && vis.length > N) {
+        if (!mb) { mb = el("button", "ff-more"); mb.type = "button"; g.after(mb); mb.onclick = function(){ g._open = true; apply(false); }; }
+        mb.textContent = "のこり" + (vis.length - N) + unit + "を見る"; mb.hidden = false;
+      } else if (mb) mb.hidden = true;
+    });
     // 条件のボタン：いまの場所で1件もないものは隠す（押しているものは残す）
     btns.forEach(function(b){
       var k = b.getAttribute("data-k"), n = count([k], pf, qs)[0];
