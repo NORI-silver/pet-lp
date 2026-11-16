@@ -24,7 +24,8 @@ BEFORE = [
 
 # 一覧に載せる条件（Nori 2026-11-10「それの条件とかもサイトに書いといてね」）。全国のページと県のページの両方に出す。
 CRITERIA = [
- "シニアの犬・猫を長期または終生で預かることを、施設の公式サイトに今も書いていること。",
+ "シニアの犬・猫を長期または終生で預かること、または寝たきり・看取りまでの介護つきのお預かりをしていることを、施設の公式サイトに今も書いていること。",
+ "県の中に施設が少ない県では、近くの県の施設も同じ欄に出しています（所在地の県はカードに書いています）。",
  "公式サイトがあること。見つからない施設だけ、老犬ホームの情報サイト（老犬ケア）の施設紹介ページで確かめ、そのページにリンクしています。SNSだけの施設は今は載せていません。",
  "ペットホテルやデイケア（日帰りのお預かり）だけの施設、受け入れをやめた・休んでいる施設は載せません。",
  "書くのは、公式サイトに書いてある所在地・受け入れる動物・見学や面会のきまり・動物取扱業の登録番号だけです。料金・電話番号・順位は書きません。",
@@ -47,6 +48,16 @@ def _card(e, h):
             f'<small>{e(h["city"])}</small>{extra}'
             + (f'<div class="emg-score" data-id="{e(h["id"])}"></div>' if h.get("review_query") else "") + "</div>")
 
+# 県の中に施設が0〜1か所の県は、近くの県の施設も同じ欄に出す（rojin.json の near。「0件」「まだ載せていません」の箱は出さない。2026-11-17）
+_BYID = {h["id"]: h for h in J["homes"]}
+def _near_html(e, pf):
+    ids = J.get("near", {}).get(pf) or []
+    hs = [_BYID[i] for i in ids if i in _BYID]
+    if not hs: return ""
+    others = "・".join(dict.fromkeys(p for h in hs for p in h["prefs"]))
+    cards = "".join(_card(e, h).replace('<div class="emg-item emg-co"', '<div class="emg-item emg-co" data-near="1"', 1) for h in hs)
+    return f'<p class="emg-near-h" data-near-h style="font-size:.9rem;font-weight:700;color:#3c4043;margin:14px 0 6px">📍 {e(pf)}から近い{e(others)}の施設</p>{cards}'
+
 def render(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
     url = f"{SITE}/{SLUG}/"
@@ -60,7 +71,7 @@ def render(ctx):
         body += f'<h3 class="emg-region">{e(lab)}</h3>\n'
         for pf in prefs:
             hs = rows.get(pf, [])
-            inner = "".join(_card(e, h) for h in hs) or f'<p class="emg-none">{e(pf)}の老犬ホーム・老猫ホームは、まだ載せていません。見つけしだい足します。近くの県の施設も、送迎や面会の方法とあわせてご検討ください。</p>'
+            inner = "".join(_card(e, h) for h in hs) + _near_html(e, pf)
             body += f'<section class="emg-pref" data-pref="{e(pf)}"><h4>{e(pf)}</h4>{inner}</section>\n'
     before = "".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in BEFORE)
     faq = [
