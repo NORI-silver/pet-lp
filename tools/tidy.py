@@ -5,6 +5,7 @@
 #  3. 宿の答えの箱（yd-ans）の「当サイトに◯軒を載せています」の行と、ドッグランの数字のタイル（dr-stats）
 #  4. ガイドの記事で、読んでいるあいだ画面の下に出つづけるタクシーのボタン（.sticky）
 #  5. 「（公式サイトの記載）」の言い回し（nosrc.py が見ない譲渡のページも）
+#  6. いったん外した分野（tools/paused.py の宿・カフェ）へのリンク
 import os, re
 
 SKIP_DIRS = ("tools", "img", "lib", "node_modules")
@@ -62,7 +63,9 @@ def clean(h):
 
 
 def page(h, rel):
+    import paused
     h = clean(h)
+    h = paused.unlink(h)  # いったん外した分野（宿・カフェ）へのリンクを消す
     top = rel.split("/")[0]
     if "data-cpt" in h and 'id="cpt-css"' not in h:
         import compact

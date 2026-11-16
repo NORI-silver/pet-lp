@@ -32,6 +32,8 @@ CATBAR = [
     ("亡くなったら", "/sougi/"),
     ("ガイド", "/guide/"),
 ]
+import paused
+CATBAR = [c for c in CATBAR if not paused.is_paused(c[1])]  # いったん外した分野（tools/paused.py）
 TAXI_PREFIX = ("/tokyo/", "/kanagawa/", "/saitama/", "/chiba/", "/area/")
 
 
@@ -98,6 +100,7 @@ HUB = [
         ("ペットが亡くなったら", "/sougi/", "まずすること・火葬の種類と料金・自治体の受付", "pet_funeral"),
     ]),
 ]
+HUB = [(g, [it for it in items if not paused.is_paused(it[1])]) for g, items in HUB]  # いったん外した分野（tools/paused.py）
 
 
 def hub_html(root):

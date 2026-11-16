@@ -2691,13 +2691,15 @@ for _p in NOINDEX:
 print("noindex", len(NOINDEX), "pages")
 # [B] 消えたURLに、いちばん近い上のページへ移す案内（noindex・サイトマップに入れない）を書く。一度消えたURLは tools/moved.json に覚えて毎回書く
 _mv_f = os.path.join(ROOT, "tools", "moved.json")
+import paused  # いったん外した分野（宿・カフェ）は案内を書かず 404 にする（検索から外す）
 try: _MOVED = json.load(open(_mv_f, encoding="utf-8"))
 except Exception: _MOVED = {"_note": "gen_areas.py が作る。前の公開にあって、いまはない（まとめた）ページのURLと、移す先。手で直さない", "pages": {}}
 for _u in _OLD_URLS:
-  if _u.endswith("/") and not os.path.exists(os.path.join(ROOT, _u.strip("/"), "index.html")) and _u not in _MOVED["pages"]:
+  if _u.endswith("/") and not paused.is_paused(_u) and not os.path.exists(os.path.join(ROOT, _u.strip("/"), "index.html")) and _u not in _MOVED["pages"]:
     _to = _u.rstrip("/").rsplit("/", 1)[0] + "/"
     while _to != "/" and not os.path.exists(os.path.join(ROOT, _to.strip("/"), "index.html")): _to = _to.rstrip("/").rsplit("/", 1)[0] + "/"
     _MOVED["pages"][_u] = _to
+_MOVED["pages"] = {_u: _to for _u, _to in _MOVED["pages"].items() if not paused.is_paused(_u)}
 _nm = 0
 for _u, _to in sorted(_MOVED["pages"].items()):
   _f = os.path.join(ROOT, _u.strip("/"), "index.html")

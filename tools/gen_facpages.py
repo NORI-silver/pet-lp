@@ -10,6 +10,7 @@ from urllib.parse import quote
 import gen_dogrun
 import facility_cards as FC
 import gen_yado as Y
+import paused
 
 PSLUG = gen_dogrun.PSLUG
 _D = os.path.dirname(os.path.abspath(__file__))
@@ -387,6 +388,7 @@ def render_cafe_hub(ctx):
 
 
 def urls(SITE):
+    if paused.PAUSED: return [SITE + hhref(x) for x in HOSPS]  # 宿・カフェはいったん外した（tools/paused.py）
     return ([SITE + hhref(x) for x in HOSPS] + Y.urls(SITE) + [SITE + ihref(x) for x in INNS if x.get("page", True)]
             + ([SITE + "/inu-cafe/"] if CAFES else []) + [SITE + chref(x) for x in CAFES])
 
@@ -403,6 +405,11 @@ def write_all(ROOT, ctx):
         w(hhref(x), f'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow">'
                     f'<link rel="canonical" href="{ctx["SITE"]}{to}"><meta http-equiv="refresh" content="0; url={to}">'
                     f'<title>{x["pref"]}の夜間・救急の動物病院</title></head><body><p><a href="{to}">{x["pref"]}の夜間・救急の動物病院</a>に移しました。</p></body></html>\n')
+    if paused.PAUSED:
+        # 宿・カフェはいったんサイトから外した（Nori 2026-11-16）。前のページは消して 404 にし、検索から外す
+        import shutil
+        for d in paused.PAUSED: shutil.rmtree(os.path.join(ROOT, d), ignore_errors=True)
+        return
     # 宿1軒のページは、そのページだけの字数（tools/thin_gate.py と同じ数え方）が足りるときだけ作る（Nori 2026-11-14「そもそも薄い記事作らないで」）。
     # 足りない宿は県・全国の一覧のカードに入れ、名前は公式サイトへ。サイト全体ではひな形の文がもっと多いので、余裕をみて INN_MIN_CHARS で切る。
     import thin_gate as TG
