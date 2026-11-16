@@ -27,9 +27,21 @@ CATS = {
 CATS = {k: re.compile(v) for k, v in CATS.items()}
 
 
+def raw_page(url):
+    import urllib.request
+    req = urllib.request.Request(sg.sw.iri(url), headers={'User-Agent': sg.sw.UA, 'Accept-Language': 'ja,en;q=0.5'})
+    with urllib.request.urlopen(req, timeout=15) as r:
+        raw, cs = r.read(), r.headers.get_content_charset()
+    cs = cs or (re.search(rb'charset=["\']?([\w-]+)', raw[:3000]) or [None, b'utf-8'])[1].decode()
+    try:
+        return raw.decode(cs, 'replace')
+    except LookupError:
+        return raw.decode('utf-8', 'replace')
+
+
 def page(url):
     try:
-        t = sg.raw_page(url)
+        t = raw_page(url)
         return t, sg.text_of(t)
     except Exception as ex:
         return None, [f'!! 開けない: {ex.__class__.__name__}']
@@ -84,12 +96,14 @@ def main():
     only = set(sys.argv[2:])
     os.makedirs(out, exist_ok=True)
     H = json.load(open(os.path.join(ROOT, 'tools/hotels.json'), encoding='utf-8'))['hotels']
-    allres = []
-    for h in H:
-        if only and h['id'] not in only: continue
+    from concurrent.futures import ThreadPoolExecutor
+    todo = [h for h in H if not only or h['id'] in only]
+    def one(h):
         r = harvest(h)
-        allres.append(r)
         print(h['id'], h['name'], len(r['pages']), 'pages', flush=True)
+        return r
+    with ThreadPoolExecutor(10) as ex:
+        allres = list(ex.map(one, todo))
     json.dump(allres, open(os.path.join(out, 'hotel_trust.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     md = []
     for r in allres:

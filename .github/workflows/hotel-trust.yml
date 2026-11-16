@@ -4,9 +4,14 @@
 name: hotel-trust
 on:
   workflow_dispatch:
+    inputs:
+      only:
+        description: 'registry だけ（公式サイトは読まない）なら registry'
+        type: string
+        default: ''
   push:
     branches: ['claude/**']
-    paths: ['tools/hotel_trust_harvest.py', '.github/workflows/hotel-trust.yml']
+    paths: ['tools/hotel_trust_harvest.py', 'tools/hotel_registry.py', 'tools/hotel_registries.json', '.github/workflows/hotel-trust.yml']
 permissions:
   contents: write
 concurrency:
@@ -18,10 +23,19 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+      - run: pip install -q openpyxl pdfplumber xlrd
+      - name: 前の結果を残す
+        run: |
+          mkdir -p out
+          git fetch -q origin hotel-trust-cand && git show origin/hotel-trust-cand:hotel_trust.json > out/hotel_trust.json && git show origin/hotel-trust-cand:hotel_trust.md > out/hotel_trust.md || true
       - name: 公式サイトを読む
+        if: ${{ !contains(github.event.head_commit.message, '[registry]') && inputs.only != 'registry' }}
         run: |
           python3 tools/hotel_trust_harvest.py out
           cat out/summary.md >> "$GITHUB_STEP_SUMMARY"
+      - name: 自治体の一覧と照らし合わせる
+        continue-on-error: true
+        run: python3 tools/hotel_registry.py out
       - name: 候補をブランチ hotel-trust-cand に置く
         run: |
           git config user.name "github-actions[bot]"
