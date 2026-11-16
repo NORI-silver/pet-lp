@@ -65,7 +65,7 @@ CSS = ("<style>.jc-ic{display:inline-block;width:22px;height:22px;flex:0 0 22px;
  ".jc-tile{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid #f1e3d6;border-radius:14px;padding:10px}"
  ".jc-tile .jc-ic{width:34px;height:34px;flex-basis:34px;border-radius:50%;background-color:#fff1e6;background-size:20px}"
  ".jc-tt{display:block;font-size:.8rem;color:#6b5a4e;line-height:1.4}.jc-ta{display:block;font-size:.92rem;font-weight:700;line-height:1.4;margin-top:2px}"
- ".jc-tile details{margin-top:4px}.jc-tile summary{font-size:.78rem;color:#c2410c;cursor:pointer}.jc-tile p{margin:4px 0 0;font-size:.82rem;line-height:1.6;color:#4a3d34}"
+ ".jc-tile details{margin-top:auto;padding:0!important;background:none!important;border:0!important;box-shadow:none!important}.jc-tile details>summary{all:unset;display:inline-block;font-size:.78rem;color:#c2410c;cursor:pointer;text-decoration:underline;padding:2px 0}.jc-tile details>summary::after,.jc-tile details>summary::before{display:none!important;content:none!important}.jc-tile details>summary::-webkit-details-marker{display:none}.jc-tile p{margin:4px 0 0;font-size:.82rem;line-height:1.6;color:#4a3d34}"
  ".jc-map{background:#fff;border:1px solid #f1e3d6;border-radius:16px;padding:14px;margin:10px 0}"
  ".jc-map h5{margin:0 0 8px;font-size:1rem;display:flex;gap:6px;align-items:center}"
  ".jc-q{font-size:.85rem;color:#6b5a4e;font-weight:700;margin:0 0 6px}"
@@ -103,7 +103,7 @@ def _card(e, d, sub="", city="", joto=""):
     chips = "".join(f'<span><i class="jc-ic i-{k}"></i>{t}</span>' for k, t in can)
     btns = f'<a class="p" href="{e(d["url"])}" target="_blank" rel="noopener"><i class="jc-ic i-out"></i>公式ページ</a>'
     for l in d["links"][:1]:
-        btns += f'<a href="{e(l["u"])}" target="_blank" rel="noopener" title="{e(l["t"])}"><i class="jc-ic i-list"></i>保護・収容の情報</a>'
+        btns += f'<a href="{e(l["u"])}" target="_blank" rel="noopener" title="{e(l["t"])}"><i class="jc-ic i-list"></i>保護情報</a>'
     if joto: btns += f'<a href="{e(joto)}"><i class="jc-ic i-home"></i>譲渡の条件</a>'
     btns += f'<a href="{e(_maps(d["name"]))}" target="_blank" rel="noopener"><i class="jc-ic i-pin"></i>地図</a>'
     attr = f' data-city="{e(city)}"' if city else " data-main"

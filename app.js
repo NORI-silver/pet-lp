@@ -918,7 +918,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       '<div class="f"><span class="lbl">種類<span class="need">必須</span></span>' + seg(k + "_species", [["犬","わんちゃん"],["猫","ねこちゃん"],["その他","そのほかの動物"]], true) +
         '<div class="kind-box" hidden><label for="' + k + '_kind" class="lbl" style="margin-top:10px;font-weight:700">どんな動物ですか？<span class="need">必須</span></label><select id="' + k + '_kind" name="' + k + '_kind"><option value="">選んでください</option>' +
         KINDS.map(function(o){ return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('') + '</select>' +
-        '<p style="margin:6px 0 0;font-size:.8rem;color:var(--ink-3)">乗せられる動物は会社ごとに違います。乗せられると公式サイトに書いてある会社を先に出します。</p></div></div>' +
+        '<p style="margin:6px 0 0;font-size:.8rem;color:var(--ink-3)">乗せられる動物は会社ごとに違います。乗せられる会社を先に出します。</p></div></div>' +
       '<div class="two">' +
         '<div class="f opt-lite"><label for="' + k + '_breed"><span class="breed-lbl">犬種・猫種</span><span class="any">わかれば</span></label><div class="cb"><input type="text" id="' + k + '_breed" name="' + k + '_breed" class="breed" placeholder="選ぶか、入力してしぼりこみ" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><ul class="cb-list" role="listbox" hidden></ul></div></div>' +
         '<div class="f"><label for="' + k + '_weight">体重（kg）<span class="need">必須</span></label><input type="number" id="' + k + '_weight" name="' + k + '_weight" min="0.01" max="120" step="any" inputmode="decimal" placeholder="例：8（小さな子は 0.3 など）" required></div>' +
