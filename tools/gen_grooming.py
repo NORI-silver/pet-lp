@@ -36,7 +36,8 @@ def _card(e, g):
     tags = _tags(g)
     if tags: extra += '<small class="emg-spec">公式サイトに書いてある条件：' + e("・".join(tags)) + '</small>'
     city = f'<small>{e(g["city"])}</small>' if g.get("city") else ""
-    return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"><a href="{e(g["url"])}" target="_blank" rel="noopener"><b>{e(g["name"])}</b></a>'
+    fa = f' data-cat="trim" data-fid="{e(g["id"])}" data-name="{e(g["name"])}"' + (' data-partner="1"' if g.get("partner") else '')  # facility.js
+    return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"{fa}><a href="{e(g["url"])}" target="_blank" rel="noopener"><b>{e(g["name"])}</b></a>'
             f'{city}{extra}</div>')
 
 # 都道府県の選択（prefkeep）と、条件のしぼりこみを合わせて動かす
@@ -137,6 +138,7 @@ def render(ctx):
 </section>
 </main>
 {JS}
+<script src="/facility.js" defer></script>
 """ + ctx["foot_noband"]()
 
 def urls(SITE):

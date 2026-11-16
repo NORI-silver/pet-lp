@@ -199,6 +199,7 @@ def build(ROOT, ctx, CONDS, rows_of, hhref_of, vet_by_pref, vet_page_of, pslug, 
 
 
 CSS = """<style id="hfcss">
+@media(max-width:640px){.area-hero{padding-bottom:14px!important}.area-hero .lede{font-size:.9rem!important;line-height:1.65!important;margin-bottom:0!important}}
 .hf{background:#fff;border:1px solid #efe0d3;border-radius:18px;padding:14px 14px 10px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin:4px 0 14px}
 .hf-r{padding:7px 0 6px;border-top:1px solid #f5ebe2}
 .hf-r:first-child{border-top:0;padding-top:0}
@@ -242,7 +243,7 @@ CSS = """<style id="hfcss">
 .hf-more{display:block;margin:12px auto 0;border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:9px 18px;font-size:.9rem;cursor:pointer}
 .hf-none{background:#fff8f2;border-radius:12px;padding:12px;font-size:.9rem}
 .hf-on .hf-static{display:none}
-.hf-p input{flex:1 1 100%;min-width:0;font-size:.95rem;padding:9px 10px;border-radius:10px;border:1px solid #d9c9bb}
+.hf-p .pp-root{flex:1 1 100%;min-width:0}.hf-p input{flex:1 1 100%;min-width:0;font-size:.95rem;padding:9px 10px;border-radius:10px;border:1px solid #d9c9bb}
 .hf-det{border-top:1px solid #f5ebe2;padding-top:6px;margin-top:2px}
 .hf-det summary{cursor:pointer;font-weight:700;font-size:.88rem;color:#a8410a;padding:6px 0;list-style:none}
 .hf-det summary::-webkit-details-marker{display:none}
@@ -281,9 +282,9 @@ def html(e, emg_opts, depts, preset="", pref="", city="", night_href="/hospital/
     need = "".join(f'<button type="button" data-need="{k}" aria-pressed="{"true" if (k == preset or (not k and not preset)) else "false"}">{lab}</button>' for k, lab in NEED)
     return (CSS + f'<div class="hf" id="hf" data-hf data-preset="{e(preset)}" data-pref="{e(pref)}" data-city="{e(city)}">'
             # 上の赤い「いま具合が悪いとき」の箱は出さない（Nori 2026-11-16「いらんって言ったよね」。夜間・救急は「どんな病院」のボタンで選ぶ）
-            f'<div class="hf-r"><span class="hf-l">どこで探しますか？</span><div class="hf-c hf-p"><select id="hospPref" aria-label="都道府県">{emg_opts}</select>'
-            f'<select id="hfCity" aria-label="市区町村" hidden><option value="">市区町村すべて</option></select>'
-            '<input id="hfQ" type="search" list="hfCities" enterkeyhint="search" placeholder="市区町村・駅名" aria-label="市区町村・駅名・住所・病院名でさがす"><datalist id="hfCities"></datalist></div></div>'
+            f'<div class="hf-r"><span class="hf-l">どこで探しますか？</span><div class="hf-c hf-p"><select id="hospPref" aria-label="都道府県" hidden>{emg_opts}</select>'
+            # 1つの入力で、都道府県（いくつでも）・市区町村・駅の候補を出す（/place.js。Nori 2026-11-16「県とか複数選択」「市町村とかサジェスト」）
+            '<div id="hfPlace" class="pp-root"></div></div></div>'
             f'<div class="hf-r"><span class="hf-l">どの動物ですか？</span><div class="hf-c hf-w">{_btns("a", ANIMALS[:3] + [ANIMALS[5]], None)}<button type="button" class="hf-mo">その他</button>{_btns("a", ANIMALS[3:5] + ANIMALS[6:], None, True)}</div></div>'
             f'<div class="hf-r"><span class="hf-l">どんな病院をお探しですか？</span><div class="hf-need">{need}</div></div>'
             '<details class="hf-det" id="hfDet"><summary>詳しい条件で絞り込む<span id="hfDetN"></span></summary>'
