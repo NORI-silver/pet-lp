@@ -71,6 +71,7 @@ function prefGuess(sel, apply){
     var p = it.closest("[data-pref]");
     it._p = it.getAttribute("data-pref") || (p ? p.getAttribute("data-pref") : "");
     it._q = (it.getAttribute("data-q") || it.textContent).toLowerCase();
+    it._near = it.hasAttribute("data-near") || !!it.closest("[data-near]");
   });
   // カードのイメージ写真（無料の写真素材。本物の施設の写真ではないので「イメージ」と出し、alt は空）。となりが同じにならないよう順番に回す
   var pics = (box.getAttribute("data-pics") || "").split("|");
@@ -88,6 +89,7 @@ function prefGuess(sel, apply){
   // 1件の判定：0＝合う、1＝書いていない、2＝合わない（県・入力に合わないか、しないと書いてある）
   function judge(it, ks, pf, qs){
     if (pf && it._p !== pf) return 2;
+    if (!pf && it._near) return 2; // 近くの県の施設（老犬ホームなど）は、その県を選んだときだけ（県を選ばないと同じ施設が2回出るため）
     if (qs && qs.split(" ").some(function(w){ return it._q.indexOf(w) < 0; })) return 2;
     var r = 0;
     for (var i = 0; i < ks.length; i++) {
@@ -127,6 +129,7 @@ function prefGuess(sel, apply){
       var sm = g.querySelector(".fr-h small, [data-ffn]");
       if (sm) sm.textContent = [].filter.call(g.querySelectorAll("[data-ffi]"), function(it){ return !it.hidden; }).length + unit;
     });
+    [].forEach.call(document.querySelectorAll("[data-near-h]"), function(h){ h.hidden = !pf; });
     [].forEach.call(document.querySelectorAll(".emg-region, .ux-region"), function(h){ h.hidden = !!(pf || ks.length || qs) || idle; });
     // 県が決まらないとき（位置が分からないときなど）は、空のままにせず、地方ごとの県のボタン（件数つき）を出す
     if (idle && sel && !box._pk) {
@@ -136,12 +139,12 @@ function prefGuess(sel, apply){
         heads.forEach(function(h){
           var bs = [], n = h.nextElementSibling;
           while (n && !n.classList.contains("emg-region")) {
-            if (n.matches && n.matches(".emg-pref[data-pref]")) { var c = n.querySelectorAll("[data-ffi]").length; if (c) bs.push([n.getAttribute("data-pref"), c]); }
+            if (n.matches && n.matches(".emg-pref[data-pref]")) { var c = [].filter.call(n.querySelectorAll("[data-ffi]"), function(it){ return !it._near; }).length, nn = n.querySelectorAll("[data-ffi]").length - c; if (c || nn) bs.push([n.getAttribute("data-pref"), c, nn]); }
             n = n.nextElementSibling;
           }
           if (!bs.length) return;
           var d = el("details", "pk-g"), su = el("summary", "", h.textContent), w = el("div", "pk-b");
-          bs.forEach(function(x){ var b = el("button", "", x[0]); b.type = "button"; b.setAttribute("data-pk", x[0]); b.append(el("small", "", x[1] + unit)); w.append(b); });
+          bs.forEach(function(x){ var b = el("button", "", x[0]); b.type = "button"; b.setAttribute("data-pk", x[0]); b.append(el("small", "", x[1] ? x[1] + unit : "近くの県")); w.append(b); });
           d.append(su, w); pk.append(d);
         });
         pk.addEventListener("click", function(ev){ var b = ev.target.closest("button[data-pk]"); if (!b) return; sel.value = b.getAttribute("data-pk"); sel.dispatchEvent(new Event("change")); box.scrollIntoView({behavior: "smooth", block: "start"}); });
