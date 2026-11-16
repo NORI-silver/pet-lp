@@ -68,8 +68,12 @@ CSS = """<style>
 .hn-flags li.hard,.hn-flags li.cond{background:#fff4e0;color:#8a5300}
 .hn-src{font-size:.74rem;color:var(--ink-3);margin:10px 0 4px;line-height:1.6}
 .hn-src a{color:var(--ink-3)}
-.hn-pref{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:8px 0 16px}
-.hn-pref a{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;background:#fff;font-weight:700;text-decoration:none}
+.hn-reg{margin:0;padding:5px 0;border-bottom:1px solid var(--line);font-size:.86rem;line-height:1.9}
+.hn-reg b{display:inline-block;min-width:6.5em;color:var(--ink-3,#777);font-size:.76rem;font-weight:700}
+.hn-reg a{margin-right:.9em;white-space:nowrap}
+.hn-reg a[aria-current]{font-weight:800;color:var(--ink,#222);text-decoration:none}
+.hn-pref{display:flex;flex-wrap:wrap;gap:4px 6px;list-style:none;padding:0;margin:6px 0 14px}
+.hn-pref a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 10px;background:#fff;font-size:.84rem;font-weight:700;text-decoration:none}
 .hn-none{font-size:.84rem;color:var(--ink-3);line-height:1.7}
 </style>"""
 
@@ -98,12 +102,12 @@ AG_CSS = """<style>
 .hn-rows .i{font-size:1.4rem;line-height:1.2;flex:0 0 1.8em;text-align:center}
 .hn-sum{font-size:.8rem;color:var(--ink-3);line-height:1.7;margin:6px 0 0}
 .hn-rows b{display:block;font-size:.76rem;color:var(--ink-3)}
-.hn-terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;list-style:none;padding:0;margin:10px 0 18px}
-.hn-terms li{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px;line-height:1.55;font-size:.86rem;color:#3c4043}
-.hn-terms .i{font-size:2rem;display:block;line-height:1.2;margin-bottom:4px}
-.hn-terms b{display:block;font-size:.98rem;color:var(--ink,#222);margin-bottom:2px}
-.hn-terms li.wide{grid-column:1/-1}
-@media(min-width:720px){.hn-ag{grid-template-columns:repeat(6,minmax(0,1fr))}.hn-terms{grid-template-columns:repeat(3,minmax(0,1fr))}.hn-terms li.wide{grid-column:auto}}
+.art ul.hn-terms,.hn-terms{list-style:none;padding:0!important;margin:8px 0 16px;border-top:1px solid var(--line)}
+.hn-terms li{display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);line-height:1.5;font-size:.84rem;color:#3c4043;margin:0}
+.hn-terms .i{flex:0 0 3.2em;font-size:1.15rem;line-height:1;text-align:center;letter-spacing:-.1em}
+.hn-terms b{flex:0 0 6.6em;font-size:.88rem;color:var(--ink,#222)}
+.hn-terms li.wide{grid-column:auto}
+@media(min-width:720px){.hn-ag{grid-template-columns:repeat(6,minmax(0,1fr))}}
 </style>"""
 
 CSS = CSS + AG_CSS
@@ -208,9 +212,15 @@ def _taxi(e, where=""):
 def _guides(e):
     return '<ul class="other">' + "".join(f'<li><a href="/guide/{e(g["slug"])}/">{e(g["title"])}</a></li>' for g in HINAN_GUIDES) + "</ul>"
 
-def _pref_links(e, done, cur=None):
-    return '<ul class="hn-pref">' + "".join(
-        (f'<li><a href="{href(pf)}"' + (' aria-current="page"' if pf == cur else "") + f'>{e(pf)}</a></li>') for pf in done) + "</ul>"
+def _pref_links(e, done, cur=None, regions=None, title="都道府県のページから見る"):
+    # [B] Nori 2026-11-16「うざい、もっとこんぱくとに」：47の大きなボタンはやめ、地方ごと1行の小さな文字のリンクをたたむ
+    regions = regions or [("", done)]
+    rows = "".join(
+        f'<p class="hn-reg">' + (f'<b>{e(r)}</b>' if r else "") + "".join(
+            (f'<a href="{href(pf)}"' + (' aria-current="page"' if pf == cur else "") + f'>{e(pf.rstrip("県府都") if pf != "北海道" else pf)}</a>')
+            for pf in ps if pf in done) + "</p>"
+        for r, ps in regions if any(pf in done for pf in ps))
+    return f'<details class="hn-more hn-prefs"><summary>{e(title)}</summary>{rows}</details>'
 
 def render_top(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
@@ -223,13 +233,6 @@ def render_top(ctx):
             f"{len(done)}都道府県・{N}の自治体ごとにまとめました。")
     faq = HINAN_GUIDES[0]["faq"][:6]
     ld = _ld(SITE, url, "ペットの同行避難と避難所の決まり", desc, [("ペットタクシー予約窓口", "/"), ("ペットと避難", f"/{SLUG}/")], faq)
-    stats = V.stats([(f"{N}", "しらべた都道府県・市区"), (f"{N_CAGE}", "ケージを持っていく決まり"),
-                     (f"{sum(1 for x in ITEMS if x['flags'].get('cat') == 'yes')}", "猫を受け入れる")])
-    pref_rows = [["都道府県", "しらべた自治体", "犬", "猫", "ケージ持参"]] + [
-        [pf, str(len(bp[pf])), str(sum(1 for x in bp[pf] if x["flags"].get("dog") == "yes")),
-         str(sum(1 for x in bp[pf] if x["flags"].get("cat") == "yes")), str(sum(1 for x in bp[pf] if x.get("cage_req")))] for pf in done]
-    rest_txt = (f'<p class="hn-none">{e("・".join(rest))}は、まだ決まりが見つかっていません。お住まいの市区町村のホームページで「ペット 避難」と検索すると見つかることがあります。</p>' if rest else "")
-    summ = "".join(f'<h3 class="emg-region"><a href="{href(pf)}">{e(pf)}のペット同行避難 →</a></h3><p class="hn-none">{e("・".join(it["name"] for it in bp[pf]))}の、受け入れる動物・大きさ・ケージ・飼う場所。</p>' for pf in done)
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     return ctx["head"](title, desc, url, ld) + CSS + f"""
 <main>
@@ -248,17 +251,11 @@ def render_top(ctx):
     <li><span class="i" aria-hidden="true">🐕‍🦺🏫</span><b>同行避難</b>いっしょに避難所まで逃げること。同じ部屋とは限らない</li>
     <li><span class="i" aria-hidden="true">🏠🐈</span><b>同伴避難</b>避難所で飼い主が世話をすること。これも同じ部屋とは限らない</li>
     <li><span class="i" aria-hidden="true">🐕🐈</span><b>犬・猫</b>多くの自治体が受け入れる</li>
-    <li><span class="i" aria-hidden="true">🐇🐦🦎</span><b>うさぎ・小鳥・爬虫類</b>市区町村ごとに違う</li>
+    <li><span class="i" aria-hidden="true">🐇🐦🦎</span><b>うさぎ・小鳥など</b>市区町村ごとに違う</li>
     <li><span class="i" aria-hidden="true">🦮</span><b>大型犬</b>決まりを書く自治体は少ない。預け先も決めておく</li>
     <li><span class="i" aria-hidden="true">🧺</span><b>ケージ</b>飼い主が持っていく。避難所に用意はないことが多い</li>
     </ul>
-    {stats}
-    <h2 id="pref">都道府県ごとのくわしい決まり</h2>
-    {_pref_links(e, done)}
-    {rest_txt}
-    <h2 id="table">都道府県ごとのしらべた自治体の数</h2>
-    <p>「犬」「猫」は、受け入れるとはっきりしている自治体の数です（{e(CHECKED)}時点）。数に入らない自治体も「受け入れない」という意味ではありません。</p>
-    {V.block(("table", pref_rows))}
+    {_pref_links(e, done, regions=ctx["emg_regions"])}
     <h2 id="seirei">政令指定都市の受け入れる動物</h2>
     <p>○は受け入れると書いてある、△はむずかしい場合がある・一部は受け入れない、—は書いていない、です。ほかの市区町村は都道府県ごとのページにあります。</p>
     {V.block(("table", table_rows(SEIREI)))}
@@ -316,11 +313,8 @@ def render_pref(ctx, pf, its, done):
     city_links = ('<ul class="hn-pref">' + "".join(f'<li><a href="{href_city(it)}">{e(it["name"])}</a></li>' for it in cities) + "</ul>") if cities else ""
     nf = [n for (p_, n) in NONE if p_ == pf]
     rest = [m["name"] for m in MUNI if m["pref"] == pf and m["name"] not in {x["name"] for x in allc} and m["name"] not in nf]
-    cov = ""
-    if nf:
-        cov += f'<details class="hn-more"><summary>決まりが見つからなかった市区町村（{len(nf)}）</summary><p class="hn-none">{e("・".join(nf))}（{e(CHECKED)}時点）。避難所の決まりは、それぞれの市町村の防災の担当にご確認ください。</p></details>'
-    if rest:
-        cov += f'<details class="hn-more"><summary>まだまとめていない市区町村（{len(rest)}）</summary><p class="hn-none">{e("・".join(rest))}。順に足していきます。</p></details>'
+    oth = nf + rest
+    cov = (f'<details class="hn-more"><summary>ほかの市区町村（{len(oth)}）</summary><p class="hn-none">{e("・".join(oth))}。避難所の決まりは、それぞれの市区町村の防災の担当にご確認ください。</p></details>') if oth else ""
     return ctx["head"](title, desc, url, ld) + CSS + f"""
 <main>
 <section class="area-hero">
@@ -351,8 +345,7 @@ def render_pref(ctx, pf, its, done):
   <div class="wrap">
     <div class="sh"><h2>くわしい記事</h2><p>同行避難と同伴避難のちがい、持ち出し品のリストなど。</p></div>
     {_guides(e)}
-    <div class="sh"><h2>ほかの都道府県</h2><p>ほかの都道府県の決まりも見られます。</p></div>
-    {_pref_links(e, done, pf)}
+    {_pref_links(e, done, pf, ctx["emg_regions"], "ほかの都道府県の決まりを見る")}
     <ul class="other"><li><a href="/{SLUG}/">ペットと避難するとき（全国の一覧）</a></li><li><a href="/jichitai/">ペットの迷子・犬の登録・引取りの窓口</a></li><li><a href="/guide/lost-pet/">ペットが迷子になったら</a></li></ul>
   </div>
 </section>
