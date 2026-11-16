@@ -2640,3 +2640,7 @@ for _p in NOINDEX:
   _t = _t.replace("</title>", '</title>\n<meta name="robots" content="noindex,follow">', 1)
   open(_f, "w", encoding="utf-8").write(_t)
 print("noindex", len(NOINDEX), "pages")
+# [G] 品質の決まりの点検（tools/rules_check.py、Nori 2026-11-16「指示しなくてもできるようにしたい」）。直った前からの違反を
+# tools/rules_baseline.json から消す（いちばん最後。新しい違反で止めるのは seo-check.yml の rules_check.py）
+import rules_check
+print("rules_check 直って消した", rules_check.prune(ROOT))
