@@ -2158,6 +2158,11 @@ hub_regions = ""
 for lab, ps in emg_regions:
     lis = "".join(f'<li><a href="{pref_href(p)}">{e(AREA_SHORT.get(p) or next(x[2] for x in PREFS if x[1] == p))}</a></li>' for p in ps)
     hub_regions += f'<h3 class="emg-region" style="text-align:center">{e(lab)}</h3><ul class="other">{lis}</ul>'
+# 47県の大きなボタンは何画面も使うので、選ぶ欄1つにして、一覧は折りたたむ（AGENTS.md「品質の決まり」B5、Nori 2026-11-16）
+_hub_opts = "".join(f'<option value="{pref_href(p)}">{e(p)}</option>' for _lab, _ps in emg_regions for p in _ps)
+hub_pick = ('<div class="hub-pick" style="display:flex;gap:8px;margin:4px 0 10px"><select aria-label="都道府県" style="flex:1;min-width:0;font-size:1rem;padding:11px;border-radius:12px;border:1px solid #d9c9bb;background:#fff" '
+            'onchange="if(this.value)location.href=this.value"><option value="">📍 都道府県をえらぶ</option>' + _hub_opts + '</select></div>'
+            '<details class="pp-fold" style="margin:0 0 14px"><summary style="cursor:pointer;font-weight:700;color:#a8410a;padding:6px 0">地方ごとの一覧を開く</summary>' + hub_regions + '</details>')
 # [B] 2026-11-03「中身の薄いページを充実させる」：都道府県ごとの数の表（会社の数・10kmの運賃・夜間の病院・搬送の会社）。うちのデータで数えたもの、社名なし。
 def _hub_table():
     trs, found, many = "", 0, 0
@@ -2193,7 +2198,7 @@ ph = head("全国のペットタクシー情報｜都道府県ごとの料金の
   </div>
 </section>
 <section style="padding-top:8px">
-  <div class="wrap">{hub_regions}{_hub_table()}</div>
+  <div class="wrap">{hub_pick}{_hub_table()}</div>
 </section>
 <section style="padding-top:0">
   <div class="wrap">
