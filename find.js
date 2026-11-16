@@ -50,7 +50,7 @@ function prefGuess(sel, apply){
 // 施設の一覧の「さがす箱」（共通。tools/uikit.py が /find.js に書き出す。前に prefkeep の関数が付く）。
 // 箱 [data-ff]：都道府県（#ffPref、ないページもある）・市区町村や名前の入力（#ffQ）・条件のボタン（data-k）。
 // 施設 [data-ffi]：data-k＝公式サイトに書いてある条件、data-q＝名前・市区町村など、data-no＝はっきり「しない」と書いてある条件。
-// 書いていない条件は「書いていない（分からない）」として数え、押せば見られる。合わないと決めつけない。入れた文字は解析に送らない。
+// 書いていない条件は「条件が公式サイトに書いていない」として数え（「分からない」とは出さない）、押せば見られる。合わないと決めつけない。入れた文字は解析に送らない。
 (function(){
   var box = document.querySelector("[data-ff]");
   if (!box) return;
@@ -141,7 +141,7 @@ function prefGuess(sel, apply){
       if (j === 1) {
         if (!note) { note = el("p", "ux-unk-n"); var b = it.querySelector(".fc-body") || it; b.insertBefore(note, b.children[1] || null); }
         var miss = ks.filter(function(k){ return it._k.indexOf(" " + k + " ") < 0 && k !== "a:dog"; }).map(function(k){ return LBL[k]; });
-        note.textContent = (placeJ(it, pf) === 1 ? "来てくれる地域に、えらんだ場所がはっきり書いていません（「" + it._area.slice(0, 30) + "」）。" : "") + (miss.length ? "公式サイトに書いていない条件があります（" + miss.join("・") + "）" : "");
+        note.textContent = (placeJ(it, pf) === 1 ? "近くの地域も相談できます（来てくれる地域：" + it._area.slice(0, 40) + "）。" : "") + (miss.length ? "公式サイトに書いていない条件があります（" + miss.join("・") + "）" : "");
       } else if (note) note.remove();
     });
     // 中身のなくなったまとまり・見出しを隠す
@@ -202,7 +202,9 @@ function prefGuess(sel, apply){
       var cond = pf.map(PlacePick.label).concat(qs ? ["「" + qs + "」"] : []).concat(ks.map(function(k){ return LBL[k]; })).filter(Boolean);
       if (cond.length) sum.append(el("small", "", cond.join("・") + (ks.length ? "が公式サイトに書いてある" : "")));
       if (c[1]) {
-        var u = el("button", "ux-alt-b", showUnk ? "書いていない" + c[1] + unit + "を隠す" : "書いていない" + c[1] + unit + "も見る（分からない）");
+        var cp = items.filter(function(it){ return it.classList.contains("ux-unk") && placeJ(it, pf) === 1; }).length;
+        var lab = cp === c[1] ? "近くの地域も相談できる" : "条件が公式サイトに書いていない";
+        var u = el("button", "ux-alt-b", showUnk ? lab + c[1] + unit + "を隠す" : lab + c[1] + unit + "も見る");
         u.type = "button"; u.onclick = function(){ showUnk = !showUnk; apply(false); };
         alt.append(u);
       }
