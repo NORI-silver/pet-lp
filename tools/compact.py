@@ -18,7 +18,8 @@ CSS = ('<style id="cpt-css">details.cpt{margin:10px 0;border:1px solid var(--lin
        'details.cpt>.cpt-b{padding:0 12px 12px}details.cpt>.cpt-b>.emg-tips,details.cpt>.cpt-b>.tbl{margin-top:0}'
        'details.cpt.more{border:0;background:none;margin:4px 0 12px}details.cpt.more>summary{justify-content:center;border:1px solid var(--line,#eadfd5);border-radius:999px;color:#c2410c;font-size:.9rem;padding:9px 14px;background:#fff}'
        'details.cpt.more>summary::after{content:"";}details.cpt.more>.cpt-b{padding:0}'
-       '@media(max-width:640px){.area-hero .lede.cpt-l{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}</style>')
+       # 前置きは「…」で切らずに全部見せ、字を少し小さく・下の余白を詰める（Nori 2026-11-16 のスクショ：文が「…」で切れて下が空いていた）
+       '@media(max-width:640px){.area-hero:has(.lede.cpt-l){padding-bottom:10px}.area-hero .lede.cpt-l{font-size:.9rem;line-height:1.65;margin-bottom:0}}</style>')
 
 
 def _end(h, i, tag):

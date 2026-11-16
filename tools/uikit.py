@@ -34,6 +34,7 @@ CSS = """<style id="uicss">
 #ffRes{scroll-margin-top:110px;height:0;margin:0}
 [data-ffg]{margin:0;padding:0!important}[data-ffg]>h2{margin-top:18px!important}
 body.ux .emg{border:0;padding:0;background:none;box-shadow:none;border-radius:0}
+@media(max-width:640px){.area-hero{padding-bottom:14px!important}.area-hero .lede{font-size:.9rem!important;line-height:1.65!important;margin-bottom:0!important}}
 .ux-find{background:#fff;border:1px solid #efe0d3;border-radius:18px;padding:14px 14px 10px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin:4px 0 14px}
 .ux-r{padding:8px 0 6px;border-top:1px solid #f5ebe2}.ux-r:first-child{border-top:0;padding-top:0}
 .ux-l{display:block;font-size:.8rem;font-weight:700;color:#7a6a5e;margin:0 0 6px}
@@ -104,14 +105,18 @@ CAR = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=
 
 def e(x): return _h.escape(str(x), quote=True)
 
-def _b(items, cls=""):
-    return "".join(f'<button type="button" data-k="{e(k)}" data-l="{e(l)}" aria-pressed="false">{e(l)}</button>' for k, l in items)
+def _b(items, cls="", g=""):
+    ga = f' data-g="{g}"' if g else ""
+    return "".join(f'<button type="button" data-k="{e(k)}" data-l="{e(l)}"{ga} aria-pressed="false">{e(l)}</button>' for k, l in items)
 
-def box(cat, *, q_ph, opts=None, who=None, need=None, more=(), unit="件", noun="ところ", go="この条件でさがす", guess=False, needpref=False):
-    """さがす箱。opts＝都道府県の <option>（全国のページだけ）、who＝(質問, [(key, 名前)])、need＝(質問, [(key, 名前)])、more＝[(小見出し, [(key, 名前)])]。"""
+def box(cat, *, q_ph, opts=None, animals=None, who=None, need=None, more=(), unit="件", noun="ところ", go="この条件でさがす", guess=False, needpref=False):
+    """さがす箱。opts＝都道府県の <option>（全国のページだけ）、animals＝(質問, [(key, 名前)])＝どの動物（1つだけ選ぶ）、
+    who＝(質問, [(key, 名前)])＝うちの子の条件（大型犬・シニアなど）、need＝(質問, [(key, 名前)])＝サービスの内容、more＝[(小見出し, [(key, 名前)])]。
+    どこで は /place.js の入力1つ（都道府県はいくつでも・市区町村の候補つき。Nori 2026-11-16）。"""
     rows = []
-    place = (f'<select id="ffPref" aria-label="都道府県">{opts}</select>' if opts else "") + f'<input id="ffQ" type="search" placeholder="{e(q_ph)}" aria-label="{e(q_ph)}" autocomplete="off">'
+    place = (f'<select id="ffPref" aria-label="都道府県" hidden>{opts}</select>' if opts else "") + f'<div id="ffPlace" class="pp-root" data-ph="{e(q_ph)}"></div>'
     rows.append(f'<div class="ux-r"><span class="ux-l">どこで探しますか？</span><div class="ux-w">{place}</div></div>')
+    if animals and animals[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(animals[0])}</span><div class="ux-w">{_b(animals[1], g="a")}</div></div>')
     if who and who[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(who[0])}</span><div class="ux-w">{_b(who[1])}</div></div>')
     if need and need[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(need[0])}</span><div class="ux-need">{_b(need[1])}</div></div>')
     if more:
@@ -122,9 +127,20 @@ def box(cat, *, q_ph, opts=None, who=None, need=None, more=(), unit="件", noun=
             '<div class="ux-foot"><p class="ux-sum" id="ffSum" aria-live="polite"></p><button type="button" class="ux-clear" id="ffClear" hidden>条件をクリア</button></div>'
             '<div class="ux-alt" id="ffAlt"></div></div><div id="ffRes"></div>')
 
-FIND_JS = '<script src="/find.js" defer></script>'
+PLACE_JS = '<script src="/place.js" defer></script>'
+FIND_JS = PLACE_JS + '<script src="/find.js" defer></script>'
+
+def write_place(ROOT):
+    """/place.js（どこでの入力）と /place-data.json（市区町村の名前・読み・県の番号。tools/municipalities.json から）。"""
+    import json as _j
+    js = open(os.path.join(HERE, "place.js"), encoding="utf-8").read().replace("__LL__", prefkeep._PL)
+    open(os.path.join(ROOT, "place.js"), "w", encoding="utf-8").write("// 生成：tools/uikit.py（元は tools/place.js）\n" + js)
+    ms = _j.load(open(os.path.join(HERE, "municipalities.json"), encoding="utf-8"))
+    rows = [[m["name"], m.get("kana", ""), PREF47.index(m["pref"])] for m in ms if m.get("pref") in PREF47]
+    open(os.path.join(ROOT, "place-data.json"), "w", encoding="utf-8").write(_j.dumps(rows, ensure_ascii=False, separators=(",", ":")))
 
 def write_js(ROOT):
+    write_place(ROOT)
     js = open(os.path.join(HERE, "find.js"), encoding="utf-8").read()
     out = "// 生成：tools/uikit.py（元は tools/find.js と tools/prefkeep.py）\n" + prefkeep.FN + prefkeep.GUESS + "\n" + js
     open(os.path.join(ROOT, "find.js"), "w", encoding="utf-8").write(out)
@@ -192,10 +208,12 @@ def taxi(h, cat):
 
 # ── ペットホテル（faccard のカードの一覧）の上を、さがす箱1つにまとめる ──
 HOTEL = dict(
-    cat="pet-hotel", unit="件", noun="ホテル", q_ph="市区町村（例：世田谷区、札幌市）",
-    who=("どの子を預けますか？", [("large", "大型犬"), ("cat", "猫"), ("senior", "シニア・介護")]),
-    need=("どんなホテルをお探しですか？", [("cat_only", "猫専用"), ("vet", "病院が併設"), ("pickup", "送迎あり"), ("night_staff", "夜もスタッフ")]),
-    more=[("設備", [("private_room", "個室"), ("camera", "カメラで見守り"), ("run", "ドッグラン")])],
+    cat="pet-hotel", unit="件", noun="ホテル", q_ph="都道府県・市区町村",
+    # 軸を分ける（Nori 2026-11-16「意味不明」）：どの動物（1つ）／うちの子の条件／ホテルの内容。猫専用は「猫」に含まれ、犬では外れる
+    animals=("どの子を預けますか？", [("a:dog", "犬"), ("cat", "猫")]),
+    who=("うちの子の条件", [("large", "大型犬"), ("senior", "シニア・介護")]),
+    need=("どんなホテルをお探しですか？", [("vet", "病院が併設"), ("pickup", "送迎あり"), ("night_staff", "夜もスタッフ"), ("private_room", "個室")]),
+    more=[("設備", [("camera", "カメラで見守り"), ("run", "ドッグラン")])],
     go="この条件でホテルを探す")
 
 def _end(h, i, tag="div"):
@@ -244,7 +262,7 @@ def facility_list(h, conf, hub):
     m = re.search(r"<select[^>]*>(.*)</select>", pf, re.S)
     if m: opts = m.group(1)
     h = _move_below(h)
-    bx = box(conf["cat"], q_ph=conf["q_ph"], opts=opts if hub else None, who=conf["who"], need=conf["need"], more=conf["more"],
+    bx = box(conf["cat"], q_ph=conf["q_ph"], opts=opts if hub else None, animals=conf.get("animals"), who=conf["who"], need=conf["need"], more=conf["more"],
              unit=conf["unit"], noun=conf["noun"], go=conf["go"], guess=hub)
     em = h.find('<div class="emg">')
     h = h[:em + len('<div class="emg">')] + bx + h[em + len('<div class="emg">'):]
@@ -252,7 +270,8 @@ def facility_list(h, conf, hub):
     def card(m):
         t = m.group(0)
         fl = re.search(r'data-flags="([^"]*)"', t)
-        return t[:-1] + f' data-ffi data-k="{fl.group(1) if fl else ""}">'
+        no = ' data-no="a:dog"' if fl and "cat_only" in fl.group(1).split() else ""
+        return t[:-1] + f' data-ffi data-k="{fl.group(1) if fl else ""}"{no}>'
     h = re.sub(r'<div class="emg-item emg-co fc[^"]*"[^>]*>', card, h)
     h = re.sub(r'(<div class="fc-name"><a href="([^"]*)"[^>]*>.*?</div>)((?:(?!class="fc-name").)*?)<div class="fc-acts">',
                lambda m: m.group(1) + m.group(3) + f'<div class="fc-acts"><a class="ux-btn" href="{m.group(2)}" target="_blank" rel="noopener">公式サイトを見る ↗</a>', h, flags=re.S)
@@ -264,66 +283,94 @@ def facility_list(h, conf, hub):
 
 
 # ── 施設のカードの一覧（シッター・トリミング・しつけ・老犬ホーム・火葬・譲渡）。条件はカードに書いてあることだけから作る ──
-WHO_L = {"a:dog": "犬", "a:cat": "猫", "a:small": "うさぎ・小動物", "a:bird": "鳥", "a:exotic": "爬虫類など", "big": "大型犬", "sen": "シニア・介護", "pup": "子犬"}
+# 軸を3つに分ける（Nori 2026-11-16「このフィルター意味不明」）：どの動物（犬・猫…、1つだけ）／うちの子の条件（大型犬・シニア・子犬）／
+# サービスの内容（分野ごとに決めた言葉だけ。似た言葉はまとめる）。件数が少ない・全部に当てはまる条件は出さない。
+ANIMAL = [("a:dog", "犬"), ("a:cat", "猫"), ("a:small", "うさぎ・小動物"), ("a:bird", "鳥"), ("a:exotic", "爬虫類など")]
+ANIMAL_SYN = {"a:cat": {"猫", "猫OK", "猫も"}, "a:small": {"小動物", "うさぎ", "うさぎ・小動物"}, "a:bird": {"鳥", "小鳥"}, "a:exotic": {"爬虫類", "爬虫類など"}}
+COND = [("big", "大型犬"), ("sen", "シニア・介護"), ("pup", "子犬")]
+COND_SYN = {"big": {"大型犬", "大型犬OK"}, "sen": {"シニア", "シニア・介護OK", "シニア・介護"}, "pup": {"パピー", "子犬"}}
+WHO_L = dict(ANIMAL + COND)
+# 分野ごと：(どの動物の質問 or None, サービスの質問, [(key, 表示, 似た言葉)], 詳しい条件 [(key, 表示, 似た言葉)])
+SVC = {
+    "pet-sitter": ("どの子のお世話ですか？", "お願いしたいこと", [("散歩", "犬の散歩も", ["お散歩"])], []),
+    "trimming": ("どの子ですか？", "どこでトリミングしますか？", [("トリミングカー", "車の中で（トリミングカー）", []), ("家の中で", "家の中で", [])], []),
+    "dog-trainer": (None, "どんな形がいいですか？",
+                    [("出張・訪問", "家に来てくれる", ["出張トレーニング", "出張訓練", "出張しつけ"]), ("教室・グループ", "教室・グループ", ["しつけ教室", "グループレッスン", "パピー教室", "パピークラス"]),
+                     ("幼稚園・保育園", "犬の幼稚園", ["犬の幼稚園", "幼稚園", "デイケア"]), ("預かり訓練", "預かり訓練", ["お預かり", "一時預かり"])],
+                    [("オンライン", "オンライン", ["オンラインレッスン"]), ("問題行動", "問題行動の相談", ["しつけ相談"])]),
+    "rojin-home": ("どの子ですか？", "", [], []),
+    "sougi": (None, "どんな見送り方をお考えですか？",
+              [("個別火葬", "個別に火葬", ["立ち会い火葬"]), ("お迎え・訪問火葬", "家に来てくれる", ["お迎え"]), ("立ち会い", "立ち会える", ["立ち会い火葬"]), ("霊園・納骨", "霊園・納骨堂", ["霊園", "納骨堂", "納骨"])],
+              [("お骨を返してもらえる", "お骨を返してもらえる", []), ("料金を公開", "料金が書いてある", [])]),
+    "joto": ("迎えたい子は？", "", [], []),
+}
 LCONF = {
-    "pet-sitter": ("シッター", "どの子のお世話ですか？", "どんなシッターをお探しですか？", "この条件でシッターを探す"),
-    "trimming": ("ところ", "どの子ですか？", "どんなトリミングをお探しですか？", "この条件で探す"),
-    "dog-trainer": ("ところ", "どの子ですか？", "どんな教室・トレーナーをお探しですか？", "この条件で探す"),
-    "rojin-home": ("ホーム", "どの子ですか？", "どんなホームをお探しですか？", "この条件でホームを探す"),
-    "sougi": ("ところ", "どの子ですか？", "どんな見送り方をお考えですか？", "この条件で探す"),
-    "joto": ("窓口", "迎えたい子は？", "知りたいことは？", "この条件で窓口を探す"),
+    "pet-sitter": ("シッター", "この条件でシッターを探す"),
+    "trimming": ("ところ", "この条件で探す"),
+    "dog-trainer": ("ところ", "この条件で探す"),
+    "rojin-home": ("ホーム", "この条件でホームを探す"),
+    "sougi": ("ところ", "この条件で探す"),
+    "joto": ("窓口", "この条件で窓口を探す"),
 }
 _ATTR = lambda t, a: html_unescape((re.search(r'\b%s="([^"]*)"' % a, t) or [None, ""])[1])
 def html_unescape(x): return _h.unescape(x)
 
 def _keys(t, cat):
+    """カード1枚の条件（決まった key だけ）と、はっきり合わない条件。"""
     import json as _j
     k, no = [], []
-    # 印は、公式サイトの文から選んだ data-tags があればそれだけ（似た言葉が並ばないように）。なければ data-ft
-    src = _ATTR(t, "data-tags") or _ATTR(t, "data-ft")
-    k += [x.strip().replace(" ", "_") for x in src.split("|") if x.strip()]
+    raw = {x.strip() for x in (_ATTR(t, "data-tags") + "|" + _ATTR(t, "data-ft")).split("|") if x.strip()}
     try: f = _j.loads(_ATTR(t, "data-fit") or "{}")
     except Exception: f = {}
-    kinds = ("dog", "cat", "small", "bird", "exotic") if cat == "joto" else ("small", "bird", "exotic")
     a = f.get("a") or []
-    for x in kinds:
-        if x in a: k.append("a:" + x)
-        elif a and f.get("o"): no.append("a:" + x)
+    for key, syn in ANIMAL_SYN.items():
+        if raw & syn or key[2:] in a: k.append(key)
+        elif a and f.get("o"): no.append(key)
+    if cat == "joto":
+        if "dog" in a: k.append("a:dog")
+        elif a and f.get("o"): no.append("a:dog")
     if cat != "joto" and "cat" in _ATTR(t, "data-flags").split(): k.append("a:cat")  # トリミングの「猫に対応」
+    if a and "dog" not in a and f.get("o"): no.append("a:dog")
     if cat != "joto":
-        if f.get("kg"): (k if f["kg"] >= 25 else no).append("big")
+        if raw & COND_SYN["big"]: k.append("big")
+        elif f.get("kg"): (k if f["kg"] >= 25 else no).append("big")
         elif f.get("s"): (k if "l" in f["s"] else no).append("big")
-        if f.get("sen"): k.append("sen")
-        if f.get("pup"): k.append("pup")
-    return list(dict.fromkeys(k)), list(dict.fromkeys(no))
+        if f.get("sen") or raw & COND_SYN["sen"]: k.append("sen")
+        if f.get("pup") or raw & COND_SYN["pup"]: k.append("pup")
+    _, _, sv, mv = SVC[cat]
+    for key, _l, syn in sv + mv:
+        if key in raw or raw & set(syn): k.append(key)
+    return list(dict.fromkeys(k)), list(dict.fromkeys(x for x in no if x not in k))
 
 def generic_list(h, cat, hub):
     if 'id="ffRes"' in h or '<div class="fp" data-fp>' not in h: return h
-    noun, qwho, qneed, go = LCONF[cat]
+    noun, go = LCONF[cat]
+    qan, qsv, sv, mv = SVC[cat]
     h, _ = _cut(h, '<div class="fp" data-fp>')
     h, pf = _cut(h, '<div class="f"><label for="hospPref">')
     h, _ = _cut(h, '<div class="f"><span>条件でしぼりこむ')
     opts = (re.search(r"<select[^>]*>(.*)</select>", pf, re.S) or [None, ""])[1] if pf else ""
     if h.find('<div class="emg">') < 0: return h
     h = _move_below(h)
-    cnt = {}
+    cnt, tot = {}, [0]
     def card(m):
         t = m.group(0)
         ks, no = _keys(t, cat)
+        tot[0] += 1
         for x in ks: cnt[x] = cnt.get(x, 0) + 1
-        own = [x for x in ks if x in WHO_L]  # data-ft・data-tags にある条件は find.js がそこから読む（ページを軽く）
-        return t[:-1] + " data-ffi" + (f' data-k="{e(" ".join(own))}"' if own else "") + (f' data-no="{e(" ".join(no))}"' if no else "") + ">"
+        return t[:-1] + " data-ffi" + (f' data-k="{e(" ".join(ks))}"' if ks else "") + (f' data-no="{e(" ".join(no))}"' if no else "") + ">"
     h = re.sub(r'<div class="emg-item emg-co fc[^"]*"[^>]*>', card, h)
-    who = [(x, WHO_L[x]) for x in WHO_L if cnt.get(x)]
-    dup = {"a:small": {"小動物", "うさぎ・小動物", "うさぎ"}, "a:bird": {"鳥", "小鳥"}, "a:exotic": {"爬虫類", "爬虫類など"}, "big": {"大型犬", "大型犬OK"}, "sen": {"シニア", "シニア・介護OK", "シニア・介護"}, "pup": {"パピー", "子犬"}, "a:cat": {"猫"}}
-    drop = set().union(*[v for k, v in dup.items() if cnt.get(k)]) if cnt else set()
-    rest = sorted((x for x in cnt if x not in WHO_L and x not in drop), key=lambda x: (-cnt[x], x))
-    rest = [x for x in rest if cnt[x] >= (2 if hub else 1)]
-    need = [(x, x.replace("_", " ")) for x in rest[:4]]
-    more = [(x, x.replace("_", " ")) for x in rest[4:14]]
-    n_items = h.count(" data-ffi ")
-    bx = box(cat, q_ph="市区町村・名前（例：世田谷区）", opts=opts if (hub and opts) else None, who=(qwho, who), need=(qneed, need),
-             more=[("そのほかの条件", more)] if more else (), unit="件", noun=noun, go=go, guess=bool(hub and opts))
+    n, lo = tot[0], (3 if hub else 1)
+    use = lambda k: lo <= cnt.get(k, 0) and (cnt.get(k, 0) < n * 0.9 or n <= 3)  # 少なすぎる・ほぼ全部に当てはまる条件は出さない
+    animals = None
+    if qan:
+        an = [(k, l) for k, l in ANIMAL if k == "a:dog" or cnt.get(k, 0) >= lo]
+        if len(an) >= 2: animals = (qan, an)
+    who = [(k, l) for k, l in COND if use(k) and not (cat == "dog-trainer" and k == "big")]
+    need = [(k, l) for k, l, _ in sv if use(k)]
+    more = [(k, l) for k, l, _ in mv if use(k)]
+    bx = box(cat, q_ph="都道府県・市区町村", opts=opts if (hub and opts) else None, animals=animals,
+             who=("うちの子の条件", who), need=(qsv, need), more=[("そのほかの条件", more)] if more else (), unit="件", noun=noun, go=go, guess=bool(hub and opts))
     em = h.find('<div class="emg">')
     h = h[:em + len('<div class="emg">')] + bx + h[em + len('<div class="emg">'):]
     if "/facility.js" not in h:
@@ -426,6 +473,8 @@ def build(ROOT):
             parts = os.path.relpath(r, ROOT).split(os.sep)
             h = open(p, encoding="utf-8").read()
             old = h
+            # /place.js を /find.js・/hosp.js の前に1回だけ
+            h = h.replace(PLACE_JS, "").replace('<script src="/find.js" defer></script>', FIND_JS).replace('<script src="/hosp.js" defer></script>', PLACE_JS + '<script src="/hosp.js" defer></script>')
             cat = "hospital-night" if parts[:2] == ["hospital", "night"] else d
             h = taxi(h, cat)
             if d == "pet-hotel" and len(parts) <= 2: h = facility_list(h, HOTEL, hub=len(parts) == 1)

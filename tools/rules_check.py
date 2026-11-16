@@ -56,6 +56,8 @@ REMOVED = [
     (re.compile(r'/img/stock/|\bdata-pics="|class="ux-img"'), "カードの汎用の「イメージ」写真（Nori 11/16「その施設のやつ使って」。その施設の写真だけ）"),
     (re.compile(r'(?:くわしく|詳しく)はリンク先'), "「くわしくはリンク先で」（スクリプトの中も。Nori 11/16「価値ゼロ」）"),
     (re.compile(r'data-k="？"|\[\'？\',\'不明\''), "「？不明」の印を並べる（分からないことは並べず1行に。Nori 11/16）"),
+    (re.compile(r'<select id="(?:ffPref|hospPref)" aria-label="都道府県"(?![^>]*\bhidden\b)|id="hfQ"|id="ffQ"|<datalist id="hfCities"'), "さがす欄の「どこで」を県の選択欄＋文字の欄に戻した（1つの入力で県をいくつでも・市区町村の候補。Nori 11/16。/place.js）"),
+    (re.compile(r'data-k="(?:a:small|a:bird|big|sen)"[^>]*>[^<]*</button>(?:(?!</div>).)*data-k="猫"|data-k="cat_only" data-l="猫専用"'), "さがす欄の軸がまざっている（どの動物・うちの子の条件・サービスの内容を分ける。Nori 11/16「意味不明」）"),
 ]
 TALLY = re.compile(r"(?:しらべ|調べ|確かめ|確認し)た(?:自治体|市区町村|施設|病院|会社|件|数)|(?:しらべ|調べ)た数|しらべ済み|調査済みの(?:自治体|市区町村)")
 INTRO_MAX = 120      # 施設の分野で、さがす欄・最初の見出しの前に置いてよい文の字数（h1 の下のリード文をふくむ）
