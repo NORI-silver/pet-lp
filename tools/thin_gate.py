@@ -5,7 +5,7 @@
 # タクシーのページ（トップ・エリア・市・規約・提携）は対象外。検索の多いページで答えがはっきりしているものだけ
 # tools/thin_keep.json に理由つきで入れて残す。どの分野の新しいページも、gen_areas.py を通ればこの決まりに従う。
 import os, re, json
-import nosrc
+import nosrc, tidy
 from collections import Counter
 
 MIN_CHARS = 900
@@ -17,6 +17,7 @@ def _segments(html):
     m = re.search(r"<main[^>]*>(.*)</main>", html, re.S)
     t = m.group(1) if m else ""
     t = nosrc.clean(t)  # 出さない言い回し（tools/nosrc.py）は数えない
+    t = tidy.clean(t)  # 運営側の集計など、あとで取るもの（tools/tidy.py）は数えない
     for tag in SKIP_TAGS:
         t = re.sub(r"<%s\b.*?</%s>" % (tag, tag), " ", t, flags=re.S)
     t = re.sub(r'<details class="toc2".*?</details>', " ", t, flags=re.S)

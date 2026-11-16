@@ -18,7 +18,7 @@ CSS = ('<style id="cpt-css">details.cpt{margin:10px 0;border:1px solid var(--lin
        'details.cpt>.cpt-b{padding:0 12px 12px}details.cpt>.cpt-b>.emg-tips,details.cpt>.cpt-b>.tbl{margin-top:0}'
        'details.cpt.more{border:0;background:none;margin:4px 0 12px}details.cpt.more>summary{justify-content:center;border:1px solid var(--line,#eadfd5);border-radius:999px;color:#c2410c;font-size:.9rem;padding:9px 14px;background:#fff}'
        'details.cpt.more>summary::after{content:"";}details.cpt.more>.cpt-b{padding:0}'
-       '@media(max-width:640px){.area-hero .lede.cpt-l{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}}</style>')
+       '@media(max-width:640px){.area-hero .lede.cpt-l{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}</style>')
 
 
 def _end(h, i, tag):
@@ -67,6 +67,7 @@ def tables(h):
         if "<table" in t[6:]: continue  # 入れ子は見ない
         tb = re.search(r"<tbody>(.*)</tbody>", t, re.S)
         if not tb: continue
+        if "<tr data-ffi" in t: continue  # さがす箱でしぼる一覧の表は切らない（cardskin.py がカードにする）
         rows = _rows(tb.group(1))
         data = [r for r in rows if "colspan" not in r]
         firsts = [_text((re.search(r"<t[hd]\b[^>]*>(.*?)</t[hd]>", r, re.S) or [None, ""])[1]) for r in data]
@@ -107,7 +108,7 @@ def page(h):
     if not m: return h
     b = m.group(0)
     b2 = area_grid(tables(pref_boxes(b)))
-    if not re.search(r'id="form"', b):  # 情報ページの長い前置きはスマホで3行まで（文は残す）
+    if not re.search(r'id="form"', b):  # 情報ページの長い前置きはスマホで2行まで（文は残す）
         b2 = re.sub(r'<p class="lede">([^<]{90,}?)</p>', r'<p class="lede cpt-l">\1</p>', b2, count=1)
     if b2 == b: return h
     h = h[:m.start()] + b2 + h[m.end():]

@@ -65,7 +65,8 @@ SEARCH_MARK = re.compile(r'class="(?:[^"]*\s)?(?:ux-find|hf|hn-find|bf|ff-box|fi
 REASONS = {
     "words": "使わない言葉", "hole": "下書きの穴（◯◯など）", "removed": "消した部品がもどった", "tally": "運営側の集計を見せている",
     "prefgrid": f"都道府県のボタンを{PREFGRID_MAX + 1}個以上たたまずに並べている", "intro": f"さがす欄・見出しの前の文が{INTRO_MAX}字を超える",
-    "search": "施設の分野で、さがす欄より前に記事・目次がある", "wall": f"図・表・箇条書きのない文が{WALL_MAX}字を超えて続く",
+    "search": "施設の分野で、さがす欄より前に記事・目次がある",
+    "card": "タクシー以外の施設のカードが共通のカード（tools/cardskin.py の形）になっていない", "wall": f"図・表・箇条書きのない文が{WALL_MAX}字を超えて続く",
 }
 BLOCK_BREAK = {"h2", "h3", "h4", "ul", "ol", "table", "figure", "img", "svg", "picture", "details", "dl", "blockquote", "form", "select", "button"}
 VOID = {"br", "img", "input", "meta", "link", "hr", "source", "wbr", "area", "col", "embed", "param", "track"}
@@ -174,6 +175,12 @@ def check_page(root, path):
     if info and p.intro > (INTRO_MAX if parts[0] != "guide" and listing else INTRO_MAX_GUIDE): found.append(("intro", f"{p.intro}字"))
     if parts and parts[0] in FAC_CATS and (len(parts) == 1 or len(parts) == 2 and (parts[1] in PREF_SLUGS or parts[0] == "hospital" and parts[1] in HOSP_SUB)) and p.first_toc is not None and (p.first_search is None or p.first_toc < p.first_search):
         found.append(("search", "さがす欄がない" if p.first_search is None else "目次・記事のリンクがさがす欄より前"))
+    # タクシー以外のカードは共通のカード1つ（Nori 2026-11-16「タクシー以外のカードは共通のやつにして」）。
+    # 施設1つのページの入口の枠（data-cat つきの emg-co）だけは除く
+    if parts and parts[0] in FAC_CATS:
+        odd = [m for m in re.finditer(r'<div class="(emg-item[^"]*|yd-card[^"]*)"([^>]*)>', raw)
+               if not re.search(r"\b(cs|ux-c|jc-card)\b", m.group(1)) and not ("data-cat=" in m.group(2) and " fc" not in m.group(1))]
+        if odd: found.append(("card", f"{len(odd)}枚（{odd[0].group(1)}）"))
     if p.walls and "terms" not in parts: found.append(("wall", f"{max(p.walls)}字"))  # 規約は条文なので除く
     return found
 
