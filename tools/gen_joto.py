@@ -69,6 +69,7 @@ ICON_TOPICS = [
     ("住んでいる所", "map", ("県内", "市内", "在住", "住んで", "住む", "県外", "市外")),
 ]
 OTHER = ("ほかの条件", "check")
+SHOW = 4
 
 def _topic(x):
     for lab, ic, ws in ICON_TOPICS:
@@ -81,11 +82,13 @@ def icon_rows(e, conds, fees=()):
     grp, ics = {}, dict((t[0], t[1]) for t in ICON_TOPICS); ics[OTHER[0]] = OTHER[1]
     for x in conds: grp.setdefault(_topic(x)[0], []).append(x)
     for x in fees: grp.setdefault("費用", []).append(x)
-    li = "".join(
-        f'<li><span class="jt-ib">{icon(ics[lab], "jt-i")}</span><span class="jt-tx"><b>{e(lab)}</b>'
-        + "".join(f"<span>{e(x)}</span>" for x in grp[lab]) + "</span></li>"
-        for lab in order if lab in grp)
-    return f'<ul class="jt-c jt-ic">{li}</ul>'
+    labs = [lab for lab in order if lab in grp]
+    row = lambda lab, xs: (f'<li><span class="jt-ib">{icon(ics[lab], "jt-i")}</span><span class="jt-tx"><b>{e(lab)}</b>'
+                           + "".join(f"<span>{e(x)}</span>" for x in xs) + "</span></li>")
+    # カードの大きさをそろえる：見せるのは大事な順に4つの項目の1つめの文だけ（2行まで）。のこりは「そのほか」を開くと出る
+    top = "".join(row(lab, grp[lab][:1]) for lab in labs[:SHOW])
+    rest = "".join(row(lab, grp[lab][1:]) for lab in labs[:SHOW] if grp[lab][1:]) + "".join(row(lab, grp[lab]) for lab in labs[SHOW:])
+    return f'<ul class="jt-c jt-ic jt-top">{top}</ul>' + (f'<ul class="jt-ic jt-rest">{rest}</ul>' if rest else "")
 
 def card(e, c):
     links = "".join(f'<li><a href="{e(l["u"])}" target="_blank" rel="noopener">{e(l["t"])} ↗</a></li>' for l in c.get("links", []))
@@ -107,6 +110,9 @@ CSS = """<style>
 .jt-ic .jt-tx{display:block;min-width:0;font-size:.84rem;color:var(--ink,#2b2622)}
 .jt-ic .jt-tx b{display:inline-block;font-size:.72rem;color:#9a3412;background:#fff1e6;border-radius:999px;padding:0 8px;margin-right:6px;font-weight:800;text-decoration:none!important;vertical-align:1px}
 .jt-ic .jt-tx span{display:block}.jt-ic .jt-tx b+span{display:inline}
+.jt-top .jt-tx{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.emg-item:has(.fc-more[open]) .jt-top .jt-tx{display:block;-webkit-line-clamp:unset}
+.fc-more-b ul.jt-ic{margin:4px 0!important;grid-template-columns:1fr}
 .jt-card ul.jt-l{font-size:.84rem}
 .emg-item small.sg-src{color:var(--ink-3);font-size:.72rem;margin-top:6px}
 .jt-card .jt-more{margin:8px 0 0;font-size:.86rem;font-weight:700}
@@ -142,7 +148,7 @@ BEFORE = [
 
 def faq(n_pref, n_city, n_core=0):
     return [
-     ("保護犬・保護猫はどこで迎えられますか？", f"都道府県・政令指定都市・中核市の動物愛護センターや保健所（公的なシェルター）と、民間の保護団体・ボランティアの譲渡会や施設です。このページでは{n_pref}都道府県・{n_city}の政令指定都市・{n_core}の中核市の公式の譲渡の案内をまとめています。"),
+     ("保護犬・保護猫はどこで迎えられますか？", f"都道府県・政令指定都市・中核市の動物愛護センターや保健所（公的なシェルター）と、民間の保護団体・ボランティアの譲渡会や施設です。このページでは、都道府県・政令指定都市・中核市の譲渡の案内をまとめています。"),
      ("譲渡会はどこでさがせますか？", "県や市のセンターの公式ページの「譲渡会」「お知らせ」に出ます。センターが開くもののほか、県に登録した保護団体の譲渡会を案内している自治体もあります。開く日や予約のしかたは毎回変わるので、各センターの案内をご確認ください。"),
      ("一人暮らしや高齢でも里親になれますか？", "自治体によって違います。一人暮らしや60〜66歳以上の人は、代わりに飼う人（後見人）を決めれば申し込める自治体が多く、一人暮らしを原則受けない県（兵庫県・茨城県など）もあります。このページの各県の条件をご覧ください。"),
      ("譲渡の費用はいくらですか？", "無料の自治体（広島県・愛媛県など）と、手数料がかかる自治体（例：青森県3,000円、福島県4,000円、岐阜県7,900円、愛知県9,000円、長野県の犬13,000円・猫12,000円）があります。民間の保護団体は、医療費などの実費を譲渡費用として求めることが多く、金額は団体ごとに違います。"),
@@ -184,7 +190,7 @@ def render(ctx):
 <section class="area-hero">
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › {e(H1)}</nav>
-    <h1><small>{n_pref}都道府県・{n_city}政令市・{n_core}中核市の公式の案内</small>{e(H1)}</h1>
+    <h1><small>動物愛護センター・保健所の譲渡の案内</small>{e(H1)}</h1>
     <p class="lede">保護犬・保護猫の里親になるには、まず住んでいる県や市の動物愛護センター（公的なシェルター）の案内を見るのが近道です。申し込める人の条件・講習会・トライアル・費用は自治体ごとに違うので、都道府県ごとにまとめました。</p>
   </div>
 </section>
