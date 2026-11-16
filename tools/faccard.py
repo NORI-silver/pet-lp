@@ -261,7 +261,30 @@ def cred_chips(val):
             reg = True; continue
         items.append(x)
     if reg: items.append("動物取扱業の登録あり")
-    return "".join(f'<span class="cr">{html.escape(x)}</span>' for x in dict.fromkeys(items))
+    out = []
+    for x in dict.fromkeys(items):
+        note = cred_note(x)
+        out.append(f'<span class="crd" tabindex="0" role="button" aria-label="{html.escape(x)}の説明"><span class="cr">{html.escape(x)}</span><span class="crx">{html.escape(note)}</span></span>' if note
+                   else f'<span class="cr">{html.escape(x)}</span>')
+    return "".join(out)
+
+# 資格の札を押したときの1行の説明（2026-11-16 Nori「どういう基準でえらべばいいかわからん。いろんな資格があるから」）。
+# 中身は各団体の公式ページの説明だけ（くわしくは記事 /guide/choose-dog-trainer/ の表。出どころもそこ）。
+CRED_NOTES = [
+ (r"CPDT|CCPDT", "米国の認定団体 CCPDT の資格。300時間以上の指導経験のうえで試験に合格し、3年ごとに更新します。"),
+ (r"JAHA", "日本動物病院協会の認定。養成コースのあと、筆記・面接と、ごほうびで教える実技の試験があります。"),
+ (r"JKC.*訓練士|公認訓練士（JKC", "ジャパンケネルクラブの公認資格。自分で訓練した犬を試験に合格させた実績が要り、6つの段階があります。"),
+ (r"JKC愛犬飼育管理士", "ジャパンケネルクラブの、犬の飼い方の知識の資格です。"),
+ (r"警察犬協会", "日本警察犬協会の公認資格。警察犬の訓練から始まった資格で、等級があります。"),
+ (r"愛玩動物看護師", "2022年にできた国家資格。獣医師の指示のもとで動物の看護をする資格で、しつけ専門の資格ではありません。"),
+ (r"愛玩動物飼養管理士", "日本愛玩動物協会の資格。ペットの飼い方と法律の知識を学ぶもので、1級と2級があります。"),
+ (r"シェパード|JSV", "日本シェパード犬登録協会の訓練士の資格です。"),
+ (r"^動物取扱業の登録あり$", "お金をもらって犬の訓練・預かりをするのに法律で必要な、自治体への登録です。"),
+]
+def cred_note(x):
+    for pat, note in CRED_NOTES:
+        if re.search(pat, x): return note
+    return ""
 
 
 def _edge_line(ic, lab, val, conf):
