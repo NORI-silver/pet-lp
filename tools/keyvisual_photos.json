@@ -1,0 +1,159 @@
+{
+ "_note": "各分野の入口のキービジュアルの写真（tools/keyvisual.py）。どれも Unsplash の無料の写真（Unsplash+ ではない）。1枚を1か所だけで使う。特定の施設・会社の写真ではない",
+ "photos": {
+  "hospital": {
+   "file": "img/kv/hospital.jpg",
+   "alt": "動物病院で診てもらう黒いダックスフント",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/veterinarian-holding-dachshund-e4f87NzUJsU",
+   "image": "https://images.unsplash.com/photo-1770836037793-95bdbf190f71",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  },
+  "trimming": {
+   "file": "img/kv/trimming.jpg",
+   "alt": "はさみで毛を整えてもらう白い小型犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/a-small-white-dog-being-cut-with-a-pair-of-scissors-LpK2xddrElI",
+   "image": "https://images.unsplash.com/photo-1719464454959-9cf304ef4774",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  },
+  "dog-trainer": {
+   "file": "img/kv/dog-trainer.jpg",
+   "alt": "おやつを見上げる黒い犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/a-black-dog-looks-up-at-a-treat-dv7P6xHocKo",
+   "image": "https://images.unsplash.com/photo-1778703939325-333519519bd4",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  },
+  "rojin-home": {
+   "file": "img/kv/rojin-home.jpg",
+   "alt": "日だまりで休むシニアの犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/a-dog-is-laying-down-on-a-blanket-zkwXS7I9U0w",
+   "image": "https://images.unsplash.com/photo-1684176655400-5c461357b73e",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  },
+  "dogrun": {
+   "file": "img/kv/dogrun.jpg",
+   "alt": "芝生の上を元気に走る犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/dog-jumping-on-lawn-during-daytime-VQJXJ4IaU_o",
+   "image": "https://images.unsplash.com/photo-1514373941175-0a141072bbc8",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  },
+  "hinan": {
+   "file": "img/kv/hinan.jpg",
+   "alt": "キャリーバッグから顔を出すヨークシャー・テリア",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/a-small-dog-peeks-out-from-a-carrier-w-eUGI_5bJU",
+   "image": "https://images.unsplash.com/photo-1765045952615-9e28d239f053",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  },
+  "sougi": {
+   "file": "img/kv/sougi.jpg",
+   "alt": "木の箱に添えられたピンクと白の花",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/pink-and-white-flowers-mibn6LLm9kA",
+   "image": "https://images.unsplash.com/photo-1544813545-4827b64fcacb",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  },
+  "pet-sitter": {
+   "file": "img/kv/pet-sitter.jpg",
+   "alt": "家でくつろぐ犬と猫と飼い主さん",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/person-with-dog-cat-and-terrier-gWzTum_yMCg",
+   "image": "https://images.unsplash.com/photo-1601758177266-bc599de87707",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  },
+  "area": {
+   "file": "img/kv/area.jpg",
+   "alt": "車の窓から顔を出すパグ",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/black-pug-puppy-on-car-seat-YvdB5kLQPl0",
+   "image": "https://images.unsplash.com/photo-1597893503977-e51f98d178e1",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  },
+  "guide": {
+   "file": "img/kv/guide.jpg",
+   "alt": "車の窓から外をながめる犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/dog-leaning-his-head-on-car-window-2dkgXTfPfTg",
+   "image": "https://images.unsplash.com/photo-1578346693440-3dcedf4b7b81",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  },
+  "joto": {
+   "file": "img/kv/joto.jpg",
+   "alt": "人にあごをなでてもらう子犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/person-holding-brown-and-white-short-coated-dog-O3L9n7_QI70",
+   "image": "https://images.unsplash.com/photo-1594004844563-536a03a6e532",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  },
+  "jichitai": {
+   "file": "img/kv/jichitai.jpg",
+   "alt": "名前入りの迷子札をつけたシェルティ",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/a-fluffy-shetland-sheepdog-wearing-a-red-tag-IipyyiSPLfA",
+   "image": "https://images.unsplash.com/photo-1770462873640-dfee87bb3d14",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  },
+  "pet-hotel": {
+   "file": "img/kv/pet-hotel.jpg",
+   "alt": "ベッドでくつろぐ茶色の犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/brown-puppy-on-bed-gRHEt2kF3NU",
+   "image": "https://images.unsplash.com/photo-1546447147-3fc2b8181a74",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  },
+  "emergency": {
+   "file": "img/kv/emergency.jpg",
+   "alt": "毛布にくるまって休む犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/a-dog-lying-on-a-bed-pyGFBVhHBBY",
+   "image": "https://images.unsplash.com/photo-1668795490332-557c01835892",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って1000×500に縮小"
+  }
+ }
+}
