@@ -56,6 +56,8 @@ REMOVED = [
     (re.compile(r'/img/stock/|\bdata-pics="|class="ux-img"'), "カードの汎用の「イメージ」写真（Nori 11/16「その施設のやつ使って」。その施設の写真だけ）"),
     (re.compile(r'(?:くわしく|詳しく)はリンク先'), "「くわしくはリンク先で」（スクリプトの中も。Nori 11/16「価値ゼロ」）"),
     (re.compile(r'data-k="？"|\[\'？\',\'不明\''), "「？不明」の印を並べる（分からないことは並べず1行に。Nori 11/16）"),
+    (re.compile(r'<select id="(?:ffPref|hospPref)" aria-label="都道府県"(?![^>]*\bhidden\b)|id="hfQ"|id="ffQ"|<datalist id="hfCities"'), "さがす欄の「どこで」を県の選択欄＋文字の欄に戻した（1つの入力で県をいくつでも・市区町村の候補。Nori 11/16。/place.js）"),
+    (re.compile(r'data-k="(?:a:small|a:bird|big|sen)"[^>]*>[^<]*</button>(?:(?!</div>).)*data-k="猫"|data-k="cat_only" data-l="猫専用"'), "さがす欄の軸がまざっている（どの動物・うちの子の条件・サービスの内容を分ける。Nori 11/16「意味不明」）"),
     (re.compile(r'の案内には書かれていません|class="hn-unk"'), "「どの動物を受け入れるかは…書かれていません」の箱（Nori 11/16 佐倉市のスクショ。書いていないことは出さない）"),
     (re.compile(r'class="jc-br"|のページの中）を見る'), "迷子の窓口の「住まい → 窓口」の図・分かりにくいボタン（Nori 11/16「何を言ってるかわからない」。市区町村を入れて窓口1枚）"),
 ]
@@ -70,7 +72,7 @@ FAC_CATS = ["hospital", "pet-hotel", "dogrun", "pet-sitter", "trimming", "dog-tr
             "inu-yado", "pet-yado", "inu-cafe", "jichitai", "hinan", "emergency"]
 SEARCH_MARK = re.compile(r'class="(?:[^"]*\s)?(?:ux-find|hf|hn-find|bf|ff-box|fit-box|pref-pick|ux-c|emg-item|fr)(?:\s[^"]*)?"|<select\b|<input\b(?![^>]*type="hidden")')
 REASONS = {
-    "words": "使わない言葉", "hole": "下書きの穴（◯◯など）", "removed": "消した部品がもどった", "tally": "運営側の集計を見せている", "kv": "キービジュアルがない",
+    "words": "使わない言葉", "hole": "下書きの穴（◯◯など）", "removed": "消した部品がもどった", "tally": "運営側の集計を見せている", "kv": "キービジュアルがない", "trust": "運営者と掲載の基準への表示がない",
     "prefgrid": f"都道府県のボタンを{PREFGRID_MAX + 1}個以上たたまずに並べている", "intro": f"さがす欄・見出しの前の文が{INTRO_MAX}字を超える",
     "search": "施設の分野で、さがす欄より前に記事・目次がある",
     "card": "タクシー以外の施設のカードが共通のカード（tools/cardskin.py の形）になっていない", "wall": f"図・表・箇条書きのない文が{WALL_MAX}字を超えて続く",
@@ -202,6 +204,7 @@ def check_page(root, path):
     if bad: found.append(("photo", f"{len(bad)}枚（{bad[0][:60]}）"))
     if info and '<p class="emg-free">' in raw: found.append(("removed", "結果の前の「この一覧は無料の情報です」の断り書き（ページの下へ小さく。tidy.py）"))
     # 分野の入口にはキービジュアル（tools/keyvisual.py、Nori 2026-11-16「各カテゴリでキービジュアルいれて」）
+    if "</footer>" in raw and 'href="/about/"' not in raw: found.append(("trust", "ページの下に運営者と掲載の基準への表示がない（portal.py の TRUST）"))
     if len(parts) == 1 and parts[0] in FAC_CATS and "data-kv" not in raw: found.append(("kv", "キービジュアルがない（keyvisual.py の KV に分野を足す）"))
     if p.walls and "terms" not in parts: found.append(("wall", f"{max(p.walls)}字"))  # 規約は条文なので除く
     return found

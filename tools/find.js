@@ -1,12 +1,12 @@
 // 施設の一覧の「さがす箱」（共通。tools/uikit.py が /find.js に書き出す。前に prefkeep の関数が付く）。
 // 箱 [data-ff]：都道府県（#ffPref、ないページもある）・市区町村や名前の入力（#ffQ）・条件のボタン（data-k）。
 // 施設 [data-ffi]：data-k＝公式サイトに書いてある条件、data-q＝名前・市区町村など、data-no＝はっきり「しない」と書いてある条件。
-// 書いていない条件は「書いていない（分からない）」として数え、押せば見られる。合わないと決めつけない。入れた文字は解析に送らない。
+// 書いていない条件は「条件が公式サイトに書いていない」として数え（「分からない」とは出さない）、押せば見られる。合わないと決めつけない。入れた文字は解析に送らない。
 (function(){
   var box = document.querySelector("[data-ff]");
   if (!box) return;
   var cat = box.getAttribute("data-ff"), unit = box.getAttribute("data-unit") || "件";
-  var sel = document.getElementById("ffPref"), q = document.getElementById("ffQ");
+  var sel = document.getElementById("ffPref"), q = null, pick = null, places = [];
   var sum = document.getElementById("ffSum"), alt = document.getElementById("ffAlt"), clr = document.getElementById("ffClear");
   var res = document.getElementById("ffRes"), det = box.querySelector(".ux-det");
   var needPref = box.hasAttribute("data-needpref");
@@ -22,6 +22,9 @@
     var p = it.closest("[data-pref]");
     it._p = it.getAttribute("data-pref") || (p ? p.getAttribute("data-pref") : "");
     it._q = (it.getAttribute("data-q") || it.textContent).toLowerCase();
+    // 来てくれる地域（🚗 の行）。出張・訪問の施設は、所在地ではなくこの地域でしぼる（Nori 2026-11-16）
+    it._area = "";
+    [].forEach.call(it.querySelectorAll(".ux-c-l"), function(r){ var i = r.querySelector("i"); if (i && i.textContent.indexOf("🚗") >= 0) it._area = r.textContent.replace("🚗", "").trim(); });
   });
   // カードのイメージ写真（無料の写真素材。本物の施設の写真ではないので「イメージ」と出し、alt は空）。となりが同じにならないよう順番に回す
   var pics = (box.getAttribute("data-pics") || "").split("|");
@@ -37,12 +40,35 @@
   function on(){ return btns.filter(function(b){ return b.getAttribute("aria-pressed") === "true"; }).map(function(b){ return b.getAttribute("data-k"); }); }
   function norm(s){ return (s || "").trim().toLowerCase().replace(/[\s　]+/g, " "); }
   // 1件の判定：0＝合う、1＝書いていない、2＝合わない（県・入力に合わないか、しないと書いてある）
+  // 場所の判定：0＝合う、1＝来てくれる地域にはっきり書いていない（近郊・相談など）、2＝合わない
+  function cityJ(it, p){
+    var c = p.c, base = c.replace(/^(.+?市).+区$/, "$1"), a = it._area;
+    if (!a) return (it._q.indexOf(c.toLowerCase()) >= 0 || it._q.indexOf(base.toLowerCase()) >= 0) ? 0 : 2;
+    if (a.indexOf(c) >= 0 || a.indexOf(base) >= 0) return 0;
+    if (p.p === "東京都" && /区$/.test(c) && /23区/.test(a)) return 0;
+    var pn = p.p.replace(/[都道府県]$/, "");
+    if (new RegExp(pn + "[都道府県]?(内)?(全域|全体|一円)|^全域").test(a)) return 0;
+    return /近郊|周辺|近隣|相談|など|ほか|他|その他/.test(a) ? 1 : 2;
+  }
+  function placeJ(it, ps){
+    if (!ps.length) return 0;
+    var best = 2;
+    for (var i = 0; i < ps.length; i++) {
+      if (it._p && it._p !== ps[i].p) continue;
+      if (!ps[i].c) return 0;
+      best = Math.min(best, cityJ(it, ps[i]));
+      if (!best) return 0;
+    }
+    return best;
+  }
   function judge(it, ks, pf, qs){
-    if (pf && it._p !== pf) return 2;
+    var pj = placeJ(it, pf || []);
+    if (pj === 2) return 2;
     if (qs && qs.split(" ").some(function(w){ return it._q.indexOf(w) < 0; })) return 2;
-    var r = 0;
+    var r = pj;
     for (var i = 0; i < ks.length; i++) {
       if (it._k.indexOf(" " + ks[i] + " ") >= 0) continue;
+      if (ks[i] === "a:dog" && it._no.indexOf(" a:dog ") < 0) continue;  // 犬は「犬は受けない」と書いていなければ合う
       if (it._no.indexOf(" " + ks[i] + " ") >= 0) return 2;
       r = 1;
     }
@@ -55,7 +81,7 @@
   }
   function el(t, c, x){ var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
   function apply(track){
-    var ks = on(), pf = sel ? sel.value : "", qs = norm(q ? q.value : ""), idle = needPref && !pf && !qs;
+    var ks = on(), pf = places, qs = norm(pick ? pick.text() : ""), idle = needPref && !pf.length && !qs;
     var c = [0, 0];
     items.forEach(function(it){
       var j = idle ? 2 : judge(it, ks, pf, qs);
@@ -65,7 +91,8 @@
       var note = it.querySelector(".ux-unk-n");
       if (j === 1) {
         if (!note) { note = el("p", "ux-unk-n"); var b = it.querySelector(".fc-body") || it; b.insertBefore(note, b.children[1] || null); }
-        note.textContent = "公式サイトに書いていない条件があります（" + ks.filter(function(k){ return it._k.indexOf(" " + k + " ") < 0; }).map(function(k){ return LBL[k]; }).join("・") + "）";
+        var miss = ks.filter(function(k){ return it._k.indexOf(" " + k + " ") < 0 && k !== "a:dog"; }).map(function(k){ return LBL[k]; });
+        note.textContent = (placeJ(it, pf) === 1 ? "近くの地域も相談できます（来てくれる地域：" + it._area.slice(0, 40) + "）。" : "") + (miss.length ? "公式サイトに書いていない条件があります（" + miss.join("・") + "）" : "");
       } else if (note) note.remove();
     });
     // 中身のなくなったまとまり・見出しを隠す
@@ -78,7 +105,7 @@
       var sm = g.querySelector(".fr-h small, [data-ffn]");
       if (sm) sm.textContent = [].filter.call(g.querySelectorAll("[data-ffi]"), function(it){ return !it.hidden; }).length + unit;
     });
-    [].forEach.call(document.querySelectorAll(".emg-region, .ux-region"), function(h){ h.hidden = !!(pf || ks.length || qs) || idle; });
+    [].forEach.call(document.querySelectorAll(".emg-region, .ux-region"), function(h){ h.hidden = !!(pf.length || ks.length || qs) || idle; });
     // 県が決まらないとき（位置が分からないときなど）は、空のままにせず、地方ごとの県のボタン（件数つき）を出す
     if (idle && sel && !box._pk) {
       var heads = [].slice.call(document.querySelectorAll(".emg-region"));
@@ -95,7 +122,7 @@
           bs.forEach(function(x){ var b = el("button", "", x[0]); b.type = "button"; b.setAttribute("data-pk", x[0]); b.append(el("small", "", x[1] + unit)); w.append(b); });
           d.append(su, w); pk.append(d);
         });
-        pk.addEventListener("click", function(ev){ var b = ev.target.closest("button[data-pk]"); if (!b) return; sel.value = b.getAttribute("data-pk"); sel.dispatchEvent(new Event("change")); box.scrollIntoView({behavior: "smooth", block: "start"}); });
+        pk.addEventListener("click", function(ev){ var b = ev.target.closest("button[data-pk]"); if (!b) return; pick.set([{p: b.getAttribute("data-pk")}]); box.scrollIntoView({behavior: "smooth", block: "start"}); });
         heads[0].parentNode.insertBefore(pk, heads[0]);
       }
     }
@@ -110,21 +137,25 @@
         mb.textContent = "のこり" + (vis.length - N) + unit + "を見る"; mb.hidden = false;
       } else if (mb) mb.hidden = true;
     });
-    // 条件のボタン：いまの場所で1件もないものは隠す（押しているものは残す）
+    // 条件のボタン：いまの場所で1件もないもの・全部に当てはまって意味のないものは隠す（押しているもの・どの動物は残す）
+    var all0 = count([], pf, qs)[0];
     btns.forEach(function(b){
-      var k = b.getAttribute("data-k"), n = count([k], pf, qs)[0];
-      b.hidden = !n && b.getAttribute("aria-pressed") !== "true" && !idle;
+      var k = b.getAttribute("data-k"), n = count([k], pf, qs)[0], an = b.getAttribute("data-g") === "a";
+      b.hidden = b.getAttribute("aria-pressed") !== "true" && !idle && (an ? !n : (!n || (n >= all0 && all0 > 3)));
     });
+    [].forEach.call(box.querySelectorAll(".ux-r, .ux-det"), function(r){ var bs = r.querySelectorAll("button[data-k]"); if (bs.length) r.hidden = ![].some.call(bs, function(b){ return !b.hidden; }); });
     if (det) { var dn = det.querySelectorAll('button[aria-pressed="true"]').length; var sp = det.querySelector("summary span"); if (sp) sp.textContent = dn ? String(dn) : ""; }
     // まとめの行
     sum.textContent = ""; alt.textContent = "";
     if (idle) { sum.append(el("b", "", "都道府県を選ぶか、市区町村の名前を入れると並びます")); }
     else {
       sum.append(el("b", "", c[0] + unit));
-      var cond = [pf].concat(qs ? ["「" + qs + "」"] : []).concat(ks.map(function(k){ return LBL[k]; })).filter(Boolean);
+      var cond = pf.map(PlacePick.label).concat(qs ? ["「" + qs + "」"] : []).concat(ks.map(function(k){ return LBL[k]; })).filter(Boolean);
       if (cond.length) sum.append(el("small", "", cond.join("・") + (ks.length ? "が公式サイトに書いてある" : "")));
       if (c[1]) {
-        var u = el("button", "ux-alt-b", showUnk ? "書いていない" + c[1] + unit + "を隠す" : "書いていない" + c[1] + unit + "も見る（分からない）");
+        var cp = items.filter(function(it){ return it.classList.contains("ux-unk") && placeJ(it, pf) === 1; }).length;
+        var lab = cp === c[1] ? "近くの地域も相談できる" : "条件が公式サイトに書いていない";
+        var u = el("button", "ux-alt-b", showUnk ? lab + c[1] + unit + "を隠す" : lab + c[1] + unit + "も見る");
         u.type = "button"; u.onclick = function(){ showUnk = !showUnk; apply(false); };
         alt.append(u);
       }
@@ -137,22 +168,59 @@
           b.onclick = function(){ btns.forEach(function(x){ if (x.getAttribute("data-k") === k) x.setAttribute("aria-pressed", "false"); }); apply(true); };
           alt.append(b);
         });
-        if (qs) { var n2 = count(ks, pf, "")[0]; if (n2) { var b2 = el("button", "ux-alt-b", "「" + qs + "」を外す（" + n2 + unit + "）"); b2.type = "button"; b2.onclick = function(){ q.value = ""; apply(true); }; alt.append(b2); } }
-        if (pf) { var n3 = count(ks, "", qs)[0]; if (n3) { var b3 = el("button", "ux-alt-b", "全国で見る（" + n3 + unit + "）"); b3.type = "button"; b3.onclick = function(){ sel.value = ""; sel.dispatchEvent(new Event("change")); }; alt.append(b3); } }
+        if (qs) { var n2 = count(ks, pf, "")[0]; if (n2) { var b2 = el("button", "ux-alt-b", "「" + qs + "」を外す（" + n2 + unit + "）"); b2.type = "button"; b2.onclick = function(){ pick.clearText(); apply(true); }; alt.append(b2); } }
+        var cityPs = pf.filter(function(p){ return p.c; });
+        if (cityPs.length) { var wide = pf.map(function(p){ return {p: p.p}; }), n4 = count(ks, wide, qs)[0]; if (n4) { var b4 = el("button", "ux-alt-b", wide.map(PlacePick.label).filter(function(x, i, a){ return a.indexOf(x) === i; }).join("・") + "の全体で見る（" + n4 + unit + "）"); b4.type = "button"; b4.onclick = function(){ pick.set(wide.filter(function(x, i){ return !wide.slice(0, i).some(function(y){ return y.p === x.p; }); })); }; alt.append(b4); } }
+        if (pf.length && sel) { var n3 = count(ks, [], qs)[0]; if (n3) { var b3 = el("button", "ux-alt-b", "全国で見る（" + n3 + unit + "）"); b3.type = "button"; b3.onclick = function(){ pick.set([]); }; alt.append(b3); } }
       }
     }
     clr.hidden = !(ks.length || qs);
-    box.classList.toggle("ux-busy", !!(ks.length || qs || pf));
-    if (track && window.gtag) gtag("event", "ff_filter", {cat: cat, k: ks.join(","), pref: pf, n: c[0]});
+    box.classList.toggle("ux-busy", !!(ks.length || qs || pf.length));
+    if (track && window.gtag) gtag("event", "ff_filter", {cat: cat, k: ks.join(","), pref: pf.map(function(p){ return p.p; }).join(","), places: pf.length, n: c[0]});
   }
   box.addEventListener("click", function(ev){
     var b = ev.target.closest("button[data-k]");
-    if (b) { b.setAttribute("aria-pressed", String(b.getAttribute("aria-pressed") !== "true")); apply(true); return; }
+    if (b) {
+      var was = b.getAttribute("aria-pressed") === "true";
+      // どの動物は1つだけ（犬を押したら猫は外す）
+      if (b.getAttribute("data-g") === "a") btns.forEach(function(x){ if (x.getAttribute("data-g") === "a") x.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", String(!was)); apply(true); return;
+    }
     if (ev.target.closest("#ffGo")) { apply(false); var t = res || document.querySelector("[data-ffi]:not([hidden])"); if (t) t.scrollIntoView({behavior: "smooth", block: "start"}); }
   });
-  clr.addEventListener("click", function(){ btns.forEach(function(b){ b.setAttribute("aria-pressed", "false"); }); if (q) q.value = ""; showUnk = false; apply(true); });
-  if (q) { var tm; q.addEventListener("input", function(){ clearTimeout(tm); tm = setTimeout(function(){ apply(false); }, 150); }); }
+  clr.addEventListener("click", function(){ btns.forEach(function(b){ b.setAttribute("aria-pressed", "false"); }); pick.clearText(); showUnk = false; apply(true); });
+  // どこで：都道府県（いくつでも）・市区町村の候補つきの入力（/place.js）
+  var spot = document.getElementById("ffPlace"), byPref = {}, fixed = "";
+  items.forEach(function(it){ if (it._p) byPref[it._p] = (byPref[it._p] || 0) + 1; });
+  if (!sel) { var ks0 = Object.keys(byPref); if (ks0.length === 1) fixed = ks0[0]; }
+  var prefs = sel ? [].filter.call(sel.options, function(o){ return o.value; }).map(function(o){ return [o.value, byPref[o.value] || 0]; }) : Object.keys(byPref).map(function(k){ return [k, byPref[k]]; });
+  var tm;
+  pick = PlacePick({root: spot, prefs: prefs, fixed: fixed, unit: unit,
+    ph: spot.getAttribute("data-ph") || "都道府県・市区町村",
+    cnt: function(p){ var n = 0; items.forEach(function(it){ if (placeJ(it, [p]) === 0) n++; }); return n; },
+    extra: fixed ? function(t){ return []; } : null,
+    typed: function(){ clearTimeout(tm); tm = setTimeout(function(){ apply(false); }, 150); },
+    onChange: function(ps){
+      places = ps;
+      [].forEach.call(box.querySelectorAll(".pref-guess"), function(g){ g.remove(); });
+      var first = ps.length ? ps[0].p : "";
+      if (sel) { sel.value = first; if (first) prefPut(first); prefLinks(first); try { history.replaceState(null, "", location.pathname + location.search + (first ? "#pref=" + encodeURIComponent(first) : "")); } catch (x) {} }
+      apply(true);
+    }});
   if (!sel) prefLinks(prefGet());
-  if (sel) { prefKeep(sel, function(){ apply(false); }); if (!sel.value && box.hasAttribute("data-guess")) prefGuess(sel, function(){ apply(false); }); }
+  if (sel) {
+    // 前に選んだ場所（ほかの分野で選んだものも）→ URL の #pref= → 覚えた県 → 位置からの推測
+    var sv = pick.saved().filter(function(p){ return byPref[p.p] !== undefined || [].some.call(sel.options, function(o){ return o.value === p.p; }); });
+    var m = location.hash.match(/^#pref=(.+)$/), hv = null;
+    if (m) { try { hv = decodeURIComponent(m[1]); } catch (x) {} }
+    if (hv && !sv.some(function(p){ return p.p === hv; })) sv = [{p: hv}];
+    if (!sv.length && prefGet()) sv = [{p: prefGet()}];
+    sv = sv.filter(function(p){ return [].some.call(sel.options, function(o){ return o.value === p.p; }); });
+    if (sv.length) { pick.set(sv, true); places = sv; sel.value = sv[0].p; prefLinks(sel.value); }
+    else if (box.hasAttribute("data-guess")) prefGuess(sel, function(){ if (sel.value && !places.length) { pick.set([{p: sel.value}], true); places = pick.get(); } apply(false); });
+  } else if (fixed) {
+    var sv2 = pick.saved().filter(function(p){ return p.p === fixed && p.c; });
+    if (sv2.length) { pick.set(sv2, true); places = sv2; }
+  }
   apply(false);
 })();
