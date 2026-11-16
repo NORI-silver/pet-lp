@@ -305,7 +305,7 @@ def render_cafe(ctx, x):
                  f"<td>{'○' if fact(y, '犬用メニュー') and not re.search('なし|ない|ありません', fact(y, '犬用メニュー')) else ''}</td></tr>")
     cmp = (f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">近くの犬と入れるお店とくらべる</h2><div class="tbl"><table class="pp-tbl cmp">'
            f'<thead><tr><th>名前</th><th>場所</th><th>犬と入れる席</th><th>犬の大きさ</th><th>犬用メニュー</th></tr></thead><tbody>{body}</tbody></table></div>'
-           '<p class="emg-tips-note">各店の公式サイトに書いてあることです。空欄は公式サイトに見つからなかったもの。並びは順位ではありません。<a href="/inu-cafe/">全部のお店の一覧</a></p></div>')
+           '<p class="emg-tips-note">各店の公式サイトの情報です。空欄は公式サイトに見つからなかったもの。並びは順位ではありません。<a href="/inu-cafe/">全部のお店の一覧</a></p></div>')
     faq = [(f"{nm}は店内に犬と入れますか？", f"{nm}の公式サイトには、犬と入れる席について「{seat.rstrip('。')}」と書いてあります（{ck}に確認）。")]
     if fact(x, "犬の大きさ"): faq.append((f"{nm}に大型犬は入れますか？", f"{nm}の公式サイトには「{fact(x, '犬の大きさ').rstrip('。')}」と書いてあります。"))
     if fact(x, "犬のルール"): faq.append((f"{nm}で犬について決まりはありますか？", f"{nm}の公式サイトには「{fact(x, '犬のルール').rstrip('。')}」と書いてあります。"))

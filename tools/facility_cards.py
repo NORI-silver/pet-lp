@@ -1,6 +1,6 @@
 # [B][F] 情報ページ（ペット火葬・霊園／ペットシッター／ドッグトレーナー）のカードに付ける印と、しぼりこみのタグ。
 # Nori 2026-11-08「ペットタクシーと同じように、SEOもそうだけどマネタイズを意識して」。動きは /facility.js（手書き）。
-# タグは公式サイトに書いてあること（データの services・kinds・animals、グループの説明）だけから作る。書いていない＝タグなし（「しない」ではない）。
+# タグは公式サイトの情報（データの services・kinds・animals、グループの説明）だけから作る。書いていない＝タグなし（「しない」ではない）。
 # 提携した事業者はデータに "partner": true を入れる → カードにオレンジの丸にチェックのアイコンだけが付く（文字なし。ペットタクシーと同じ）。
 # 問い合わせを当サイトから事業者へ送るしくみはまだない（許可のない事業者に転送しない）。
 import re
@@ -67,7 +67,7 @@ def attrs(e, cat, item, tags, name, to="", to_label=""):
 
 def chips(e, labels, pf=""):
     return (f'<div class="fac-filter" data-fac-chips="{e("|".join(labels))}"' + (f' data-pref="{e(pf)}"' if pf else '') +
-            '><p class="emg-tips-note" style="margin:8px 0 0">条件でしぼりこむ（公式サイトに書いてあることだけで判定します）</p></div>')
+            '><p class="emg-tips-note" style="margin:8px 0 0">条件でしぼりこむ（公式サイトの情報だけで判定します）</p></div>')
 
 
 def biz(e, word):
