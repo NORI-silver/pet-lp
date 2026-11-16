@@ -170,7 +170,15 @@ def shrink(raw):
     if has_face(im): return None  # 人の顔が写っている
     s = max(W / im.width, H / im.height)
     im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
-    x, y = (im.width - W) // 2, (im.height - H) // 2
+    # カードの枠（横3：縦2）にきれいに収まるように切る。まん中ではなく、写っているもの（輪郭の多いところ）が入る位置を選ぶ
+    from PIL import ImageFilter
+    e = im.convert("L").filter(ImageFilter.FIND_EDGES)
+    best, x, y = -1, 0, 0
+    for k in range(9):
+        cx, cy = (im.width - W) * k // 8, (im.height - H) * k // 8
+        v = sum(e.crop((cx, cy, cx + W, cy + H)).resize((26, 17)).getdata())
+        v *= 1.0 - abs(k - 4) * 0.04  # まん中を少しだけ優先
+        if v > best: best, x, y = v, cx, cy
     im = im.crop((x, y, x + W, y + H))
     b = io.BytesIO(); im.save(b, 'WEBP', quality=62, method=6)
     return b.getvalue()
