@@ -1104,12 +1104,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
         <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
         <div class="group">
           <div class="group-h"><span>1</span>いつ、どこへ行きますか？</div>
-          <div class="f pref-pick"><label for="pref" id="prefLbl">お迎えの都道府県<span class="need">必須</span></label>
-            <button type="button" id="prefBtn" class="pref-btn" aria-labelledby="prefLbl prefBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="prefPanel" hidden>選んでください</button>
-            <div class="pref-panel" id="prefPanel" hidden><input type="search" id="prefQ" class="pref-q" placeholder="県名で検索（例：かながわ、ふくおか）" autocomplete="off" aria-label="お迎えの都道府県を県名で検索" enterkeyhint="search"><ul class="pref-list" id="prefList" role="listbox" aria-label="お迎えの都道府県"></ul></div>
-            <select id="pref" name="pref" required><option value="">選んでください</option><option selected>東京都</option><option>神奈川県</option><option>大阪府</option><option>愛知県</option><option>埼玉県</option><option>千葉県</option><option>兵庫県</option><option>北海道</option><option>福岡県</option><option>静岡県</option><option>茨城県</option><option>広島県</option><option>京都府</option><option>宮城県</option><option>新潟県</option><option>長野県</option><option>岐阜県</option><option>群馬県</option><option>栃木県</option><option>岡山県</option><option>福島県</option><option>三重県</option><option>熊本県</option><option>鹿児島県</option><option>沖縄県</option><option>滋賀県</option><option>山口県</option><option>愛媛県</option><option>奈良県</option><option>長崎県</option><option>青森県</option><option>岩手県</option><option>石川県</option><option>大分県</option><option>宮崎県</option><option>山形県</option><option>富山県</option><option>秋田県</option><option>香川県</option><option>和歌山県</option><option>佐賀県</option><option>山梨県</option><option>福井県</option><option>徳島県</option><option>高知県</option><option>島根県</option><option>鳥取県</option></select>
-            <p class="pref-fix" id="prefFix" role="status" hidden></p>
-            <p class="open-note" id="openNote" role="status" hidden></p></div>
           <div class="f"><label for="pickup">お迎えの場所<span class="need">必須</span></label>
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button>
             <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
@@ -1120,6 +1114,12 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
           <div class="f"><label for="dropoff">行き先<span class="need">必須</span></label>
             <input type="text" id="dropoff" autocomplete="off" name="dropoff" placeholder="例：代々木公園／〇〇動物病院（目黒区）" required>
             <button type="button" class="hist-clear" id="histClear" hidden>この端末に残っている場所の候補を消す</button></div>
+          <div class="f pref-pick"><label for="pref" id="prefLbl">お迎えの都道府県<span class="any">場所から自動で入ります</span></label>
+            <button type="button" id="prefBtn" class="pref-btn" aria-labelledby="prefLbl prefBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="prefPanel" hidden>選んでください</button>
+            <div class="pref-panel" id="prefPanel" hidden><input type="search" id="prefQ" class="pref-q" placeholder="県名で検索（例：かながわ、ふくおか）" autocomplete="off" aria-label="お迎えの都道府県を県名で検索" enterkeyhint="search"><ul class="pref-list" id="prefList" role="listbox" aria-label="お迎えの都道府県"></ul></div>
+            <select id="pref" name="pref" required><option value="">選んでください</option><option selected>東京都</option><option>神奈川県</option><option>大阪府</option><option>愛知県</option><option>埼玉県</option><option>千葉県</option><option>兵庫県</option><option>北海道</option><option>福岡県</option><option>静岡県</option><option>茨城県</option><option>広島県</option><option>京都府</option><option>宮城県</option><option>新潟県</option><option>長野県</option><option>岐阜県</option><option>群馬県</option><option>栃木県</option><option>岡山県</option><option>福島県</option><option>三重県</option><option>熊本県</option><option>鹿児島県</option><option>沖縄県</option><option>滋賀県</option><option>山口県</option><option>愛媛県</option><option>奈良県</option><option>長崎県</option><option>青森県</option><option>岩手県</option><option>石川県</option><option>大分県</option><option>宮崎県</option><option>山形県</option><option>富山県</option><option>秋田県</option><option>香川県</option><option>和歌山県</option><option>佐賀県</option><option>山梨県</option><option>福井県</option><option>徳島県</option><option>高知県</option><option>島根県</option><option>鳥取県</option></select>
+            <p class="pref-fix" id="prefFix" role="status" hidden></p>
+            <p class="open-note" id="openNote" role="status" hidden></p></div>
           <div class="f"><label for="date">お迎えの希望日時<span class="need">必須</span></label>
             <div class="dt">
               <input type="date" id="date" name="date" required aria-label="日付">
@@ -1127,7 +1127,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
           <div class="f"><span class="lbl">片道・往復<span class="need">必須</span></span>
-            <div class="seg"><label><input type="radio" name="trip" value="片道" required><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復</span></label></div>
+            <div class="seg"><label><input type="radio" name="trip" value="片道" required checked><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復</span></label></div>
             <div class="via-box" id="retBox" hidden><label for="retDate" class="lbl">帰りのお迎え日時（用事が終わる時刻）<span class="need">必須</span></label>
               <div class="dt">
                 <input type="date" id="retDate" name="ret_date" aria-label="帰りの日付">
@@ -1153,14 +1153,14 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
           <p class="pet-hint" id="petHint" hidden></p>
           <div id="pets"></div>
           <div class="f opt-lite" id="ridersF"><label for="riders">一緒に乗る人数<span class="need">必須</span></label>
-            <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option>1人</option><option>2人</option><option>3人</option></select></div>
+            <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option selected>1人</option><option>2人</option><option>3人</option></select></div>
           <label class="chk opt-lite" hidden><input type="checkbox" id="petOnly" name="pet_only" value="1"> ペットだけで乗る（飼い主さんは乗らない）</label>
           <div class="only-box opt-lite" id="onlyBox" hidden>
             <div class="f"><label for="handFrom">お迎えでペットを渡す人<span class="need">必須</span></label><input type="text" id="handFrom" name="hand_from" maxlength="100" placeholder="例：家族（母）・ペットホテルの受付"></div>
             <div class="f"><label for="handTo">行き先で受け取る人<span class="need">必須</span></label><input type="text" id="handTo" name="hand_to" maxlength="100" placeholder="例：動物病院の受付・祖父"></div>
           </div>
           <div class="f opt-lite"><label for="luggage">荷物の量<span class="need">必須</span></label>
-            <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
+            <select id="luggage" name="luggage" required><option value="">選んでください</option><option selected>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
         <p class="form-foot">条件を入れると、合う会社と料金の目安が出ます（まだ送信されません）。料金は当日の道路事情や待ち時間で変わることがあります。</p>
@@ -1586,6 +1586,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 
 <div class="sticky" style="visibility:hidden"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
 
-<script src="/app.js?v=d7fea4ed93" defer></script>
+<script src="/app.js?v=880060a1a0" defer></script>
 </body>
 </html>
