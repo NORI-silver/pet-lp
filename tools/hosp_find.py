@@ -238,8 +238,6 @@ CSS = """<style id="hfcss">
 .hf-more{display:block;margin:12px auto 0;border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:9px 18px;font-size:.9rem;cursor:pointer}
 .hf-none{background:#fff8f2;border-radius:12px;padding:12px;font-size:.9rem}
 .hf-on .hf-static{display:none}
-.hf-sos{display:block;margin:0 0 10px;padding:10px 12px;border-radius:12px;background:#fdecea;color:#b3261e;font-weight:800;font-size:.9rem;text-decoration:none}
-.hf-sos::after{content:" →"}
 .hf-p input{flex:1 1 100%;min-width:0;font-size:.95rem;padding:9px 10px;border-radius:10px;border:1px solid #d9c9bb}
 .hf-det{border-top:1px solid #f5ebe2;padding-top:6px;margin-top:2px}
 .hf-det summary{cursor:pointer;font-weight:700;font-size:.88rem;color:#a8410a;padding:6px 0;list-style:none}
@@ -269,7 +267,7 @@ def html(e, emg_opts, depts, preset="", pref="", city="", night_href="/hospital/
     d_items = [("d:" + n, n) for n in depts]
     need = "".join(f'<button type="button" data-need="{k}" aria-pressed="{"true" if (k == preset or (not k and not preset)) else "false"}">{lab}</button>' for k, lab in NEED)
     return (CSS + f'<div class="hf" id="hf" data-hf data-preset="{e(preset)}" data-pref="{e(pref)}" data-city="{e(city)}">'
-            f'<a class="hf-sos" href="{e(night_href)}" data-sos>いま具合が悪いとき：夜間・救急の病院をさがす</a>'
+            # 上の赤い「いま具合が悪いとき」の箱は出さない（Nori 2026-11-16「いらんって言ったよね」。夜間・救急は「どんな病院」のボタンで選ぶ）
             f'<div class="hf-r"><span class="hf-l">どこで探しますか？</span><div class="hf-c hf-p"><select id="hospPref" aria-label="都道府県">{emg_opts}</select>'
             f'<select id="hfCity" aria-label="市区町村" hidden><option value="">市区町村すべて</option></select>'
             '<input id="hfQ" type="search" list="hfCities" enterkeyhint="search" placeholder="市区町村・駅名" aria-label="市区町村・駅名・住所・病院名でさがす"><datalist id="hfCities"></datalist></div></div>'
