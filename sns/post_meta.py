@@ -130,6 +130,8 @@ def answer_quiz(token, state):
         if not r.get("id"):
             raise RuntimeError("Threads reply publish returned no id")
         state.pop("threads_quiz", None)
+        with open(os.path.join(HERE, "state.json"), "w", encoding="utf-8") as f:
+            json.dump(state, f, ensure_ascii=False, indent=1)
         print("threads クイズの答えを返信", r["id"])
     except Exception as e:  # noqa: BLE001
         print("threads クイズの答えを返信できませんでした。次回再試行します:", e)
