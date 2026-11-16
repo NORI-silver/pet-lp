@@ -59,6 +59,12 @@ _P = {
 def icon(n, cls="fc-i"):
     # 形はページに1回だけ（SPRITE）。カードからは名前で呼ぶ（ページを軽くするため）
     return f'<svg class="{cls}" aria-hidden="true" focusable="false"><use href="#fci-{n}"/></svg>'
+_BASE = {"pin", "yen", "clock", "paw", "car", "badge", "list", "dog", "home", "scissors", "bed", "flower", "cross", "heart", "cam"}
+def sprite_for(h):
+    """ページで使う形だけを入れる（ページを軽くするため）"""
+    used = set(re.findall(r'href="#fci-([a-z]+)"', h)) | _BASE  # もとからの形はいつも入れる（あとから足すカードがある）
+    return ('<svg width="0" height="0" style="position:absolute" aria-hidden="true">' +
+            "".join(f'<symbol id="fci-{k}" viewBox="0 0 24 24">{v}</symbol>' for k, v in _P.items() if k in used) + '</svg>')
 SPRITE = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true">' +
           "".join(f'<symbol id="fci-{k}" viewBox="0 0 24 24">{v}</symbol>' for k, v in _P.items()) + '</svg>')
 
@@ -572,7 +578,7 @@ def _one(h, conf, fbn):
     h2 = rows(h2)
     if 'id="fccss"' not in h2:
         h2 = h2.replace("</head>", CSS + "\n</head>", 1)
-        h2 = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + SPRITE, h2, count=1)
+        h2 = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + sprite_for(h2), h2, count=1)
     if "data-fp" not in h2 and "data-hf" not in h2:  # 動物病院は /hosp.js のさがす欄（tools/hosp_find.py）
         fits = [json.loads(html.unescape(x)) for x in re.findall(r'data-fit="([^"]+)"', h2)]
         ku = {k for f in fits for k in f.get("a", [])}
