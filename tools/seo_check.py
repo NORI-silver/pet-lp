@@ -12,6 +12,8 @@ SITE = "https://pet.shiokonbu.com"
 # 「公式サイトで確かめた」のような、当サイトが確かめたと言う書き方はしない（Nori 2026-11-15「公式サイトで確かめたっていう文言もなし。これはサイトの中もそう」）。
 # お客さまへの「公式サイトでご確認ください」「確かめてください」はよい。日付は「◯年◯月◯日時点」と書く。
 VERIFY_CLAIM = re.compile(r"公式(?:サイト|ページ)[^。]{0,8}(?:で|を)(?:確かめ|たしかめ)(?:た|まし|られ)|公式(?:サイト|ページ)(?:など)?で確認(?:した|しまし|）)|に(?:各)?公式(?:サイト|ページ)で確認|公式情報の確認|ひとつずつ確かめ|確かめた公式サイト")
+# 「公式サイトに書いてある」「公式ページによると」も出さない（Nori 2026-11-16。tools/nosrc.py が取る。/joto/ は担当のスレッドが直す）
+SRC_PHRASE = re.compile(r"公式(?:サイト|ページ)(?:に書いてある|によると)")
 BAN = ["Gmail", "スプレッドシート", "Apps Script", "まるっと", "代理予約", "代理人", "取り次", "お取次", "手配", "お客さまに代わって", "に代わって探", "代わりに探す", "予約をお手伝い", "空いている車をさがす", "空いている車をお探し"]
 TEL_OK = ("emergency/", "area/")  # 緊急の搬送会社の電話だけ例外（tools/emergency.json の tel）
 PHONE = re.compile(r"0\d{1,4}-\d{1,4}-\d{3,4}|0120-?\d{3}-?\d{3}")
@@ -65,6 +67,9 @@ def main():
             if w in body: ng.append(f"{u}: 使わない言葉「{w}」")
         _vc = VERIFY_CLAIM.search(body + " " + (p.desc or "") + " " + p.title)
         if _vc: ng.append(f"{u}: 「公式サイトで確かめた」のような書き方「{_vc.group()}」（「◯日時点」などに）")
+        if not rel.startswith("joto/"):
+            _sp = SRC_PHRASE.search(body)
+            if _sp: ng.append(f"{u}: 「{_sp.group()}」は出さない（tools/nosrc.py）")
         if re.search(r"Google(?! Maps)", body): ng.append(f"{u}: 「Google」（Google Maps の出どころ表示以外）")
         if re.search(r"\d[\d,]*円まで", body): ng.append(f"{u}: 「◯円まで」の上限表示")
         if not rel.startswith(TEL_OK):
