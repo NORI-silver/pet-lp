@@ -145,7 +145,9 @@ def card(e, it, fold=False, grid=True):
     rules = ("<dt>そのほかの決まり・備え</dt><dd><ul>" + "".join(f"<li>{e(r)}</li>" for r in it["rules"]) + "</ul></dd>") if it.get("rules") else ""
     if it.get("details"):  # 公式ページに書いてある、そのほかのこと（在宅避難・協定・受付のしかたなど）
         rules += "<dt>そのほかのこと</dt><dd><ul>" + "".join(f"<li>{e(r)}</li>" for r in it["details"]) + "</ul></dd>"
-    links = "".join(f'<li><a href="{e(u)}" target="_blank" rel="noopener">{e(t)}</a></li>' for t, u in it["links"])
+    links = "".join(f'<li><a href="{e(u)}" target="_blank" rel="noopener">{e(t)}</a></li>' for t, u in it.get("links") or [])
+    # 自治体にメールでたずねて分かったこと（Nori 2026-11-16「知りたい情報がしれたのなら記事に反映」）：出どころは「◯◯市の回答（2026年11月）」
+    if it.get("reply"): links = f'<li>{e(it["reply"])}</li>' + links
     mp = f'<dt>避難所の場所</dt><dd><a href="{e(it["map"][1])}" target="_blank" rel="noopener">{e(it["map"][0])}</a></dd>' if it.get("map") else ""
     # fold：県のページの「ほかの市区町村」は、印（受け入れる動物）だけ見せて、くわしい決まりはたたむ（2026-11-16 見直し「1ページが長すぎる」。中身はHTMLに残す）
     return (f'<section class="hn-card" id="{e(it["name"])}"><h3>{e(it["name"])}</h3>{agrid(e, it) if grid else ""}'
@@ -559,7 +561,8 @@ def write_finder(ROOT):
         fc = ("".join(CODE[it["flags"].get(k)] for k, _ in KINDS) + ("1" if it.get("cage_req") else "0")) if it else ""
         if it and has_page(it) and pf in pref_page: row = [nm, "page", href_city(it), top, "", fc]
         elif it and pf in pref_page: row = [nm, "card", href(pf) + "#" + nm, top, "", fc]
-        elif it: row = [nm, "link", it["links"][0][1], top, it["links"][0][0], fc]
+        elif it and it.get("links"): row = [nm, "link", it["links"][0][1], top, it["links"][0][0], fc]
+        elif it: row = [nm, "link", top, top, it.get("reply") or nm, fc]
         elif (pf, nm) in nf: row = [nm, "none", "", top, "", ""]
         else: row = [nm, "todo", "", top, "", ""]
         row.append(m["code"] if os.path.exists(os.path.join(ROOT, SLUG, "s", m["code"] + ".json")) else "")
