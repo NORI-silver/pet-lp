@@ -12,7 +12,7 @@ PREF = re.compile(r"^(北海道|青森|岩手|宮城|秋田|山形|福島|東京
 CUT = 4  # カード型の表で最初に見せる行
 
 CSS = ('<style id="cpt-css">details.cpt{margin:10px 0;border:1px solid var(--line,#eadfd5);border-radius:12px;background:#fff}'
-       'details.cpt>summary{list-style:none;cursor:pointer;padding:12px 14px;font-weight:700;font-size:.95rem;display:flex;justify-content:space-between;gap:8px;align-items:center}'
+       'details.cpt>summary{list-style:none;cursor:pointer;padding:12px 48px 12px 14px;font-weight:700;font-size:.95rem;display:flex;justify-content:space-between;gap:8px;align-items:center}'
        'details.cpt>summary::-webkit-details-marker{display:none}'
        
        'details.cpt>.cpt-b{padding:0 12px 12px}details.cpt>.cpt-b>.emg-tips,details.cpt>.cpt-b>.tbl{margin-top:0}'
