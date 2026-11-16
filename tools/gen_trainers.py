@@ -33,6 +33,8 @@ def _card(e, t):
     if t.get("assoc"):
         extra += '<small>協会の一覧：' + e("・".join(ASSOC.get(a, a) for a in t["assoc"].split("・"))) + '</small>'
     if t.get("addr"): extra += f'<small>所在地：{e(t["addr"])}</small>'
+    # [B] 11/16 Nori「ドッグトレーナー歴とか」：公式サイトに書いてある教室だけ
+    if t.get("career"): extra += f'<small>トレーナー歴：{e(t["career"])}</small>'
     # 教室の会場が所在地と別のとき（事業者本人のお申し出。エコル 2026-11-09）。タクシーの行き先も会場にする
     if t.get("venue"): extra += f'<small>教室の会場：{e(t["venue"])}</small>'
     tags = FC.trainer_tags(t)
@@ -144,10 +146,8 @@ def _free_class(e, pf):
     if not ws: return ""
     li = "".join(f'<li><a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["name"])} ↗</a>' + (f'（{e(x["city"])}）' if x.get("city") else "") + "</li>" for x in ws)
     return (f'<div class="emg-tips"><h4>{e(pf)}の無料の「犬のしつけ方教室」は、県や市の窓口へ</h4>'
-            f'<p>都道府県や市の動物愛護センター・保健所が、無料の「犬のしつけ方教室」や、吠え・かみつきなどの相談を開いていることがあります。'
-            f'開く日・場所・申し込みのしかた・参加できる犬の条件（狂犬病の予防注射や混合ワクチンを済ませているかなど）は自治体と年ごとに変わるので、下の公式ページの「お知らせ」や「しつけ方教室」の案内でたしかめてください。'
-            f'市に窓口があるところでは、住んでいる市の窓口が受け付けます。</p><ul>{li}</ul>'
-            f'<p class="emg-tips-note">一覧はペットの迷子・犬の登録・引取りの窓口のページ（<a href="/jichitai/">全国の窓口</a>）と同じ公式ページです。教室を開いているかどうかは、このサイトではまだ確かめていません。</p></div>')
+            f'<p>県や市の動物愛護センター・保健所が、無料の「犬のしつけ方教室」や吠え・かみつきの相談を開いていることがあります。'
+            f'日程や参加の条件（狂犬病の予防注射・混合ワクチンなど）は年ごとに変わるので、下の公式ページでたしかめてください。</p><ul>{li}</ul></div>')
 def _fee(pf, rs):
     pr = sorted([(t["name"], f) for t in rs for f in t.get("facts", []) if f["k"] == "料金" and f.get("yen")], key=lambda x: x[1]["yen"])
     if len(pr) < 2:
