@@ -997,7 +997,7 @@ def guide_hub(slug):
         return "/pet-sitter/", "ペットシッター", "都道府県ごとのペットシッターを見る"
     if slug in ("large-dog-hotel", "cat-hotel"):
         return "/pet-hotel/", "ペットホテル", "大型犬OK・猫専用のペットホテルを見る"
-    if slug in ("pet-evacuation", "pet-disaster-prep"):
+    if slug in ("pet-evacuation", "pet-disaster-prep", "pet-evacuation-survey"):
         return "/hinan/", "ペットと避難（同行避難）", "都道府県・市区の避難所の決まりを見る"
     if slug == "adopt-pet":
         return "/joto/", "保護犬・保護猫の譲渡の窓口", "住んでいる都道府県の譲渡の条件と譲渡会を見る"
