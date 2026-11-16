@@ -384,7 +384,7 @@ def render_hub(ctx):
             'onchange="if(this.value)location.href=this.value"><option value="">📍 都道府県をえらぶ</option>' + opts + '</select></div>')
     body = (pick
             + (f'<h2 class="yd-h">宿の種類からさがす</h2><ul class="yd-pref">' + "".join(f'<li><a href="/inu-yado/{t}/">{e(TYPE_NAME[t])}<small>{len(BYTYPE[t])}軒</small></a></li>' for t in TYPE_PAGES) + '</ul>' if TYPE_PAGES else "")
-            + f'<h2 class="yd-h">都道府県からさがす</h2><p class="emg-tips-note">{PREF_MIN}軒以上の県は県のページで、うちの子の大きさでしぼって見られます。それより少ない県は、このページの下の地方の表に入れています。</p>{chips}'
+            + f'<details class="pp-fold" style="margin:0 0 14px"><summary style="cursor:pointer;font-weight:700;color:#a8410a;padding:6px 0">都道府県の一覧を開く</summary>{chips}</details>'
             + f'<div class="yd-ans"><h2>犬と泊まれる宿は、全国で{n}軒を載せています</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
             + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">犬以外のペットと泊まれる宿</h2><ul class="yd-pref">'
             + "".join(f'<li><a href="{animal_href(k)}">{e(nm)}<small>{len(OTHER[k])}軒</small></a></li>' for k, nm, _ in AN if OTHER[k]) + "</ul></div>"
@@ -467,12 +467,12 @@ def render_type(ctx, slug):
     if big: faq.append((f"大型犬と泊まれる{nm}は？", f"公式サイトに大型犬も泊まれると書いているのは、{_names(big, 6)}です。頭数や体重の上限は宿ごとに違います。"))
     if fees: faq.append((f"{nm}の犬の料金はいくら？", f"犬の料金を書いている{len(fees)}軒では、いちばん安い区分で{fees[0]:,}円〜{fees[-1]:,}円でした。無料のところもあります。"))
     others = "".join(f'<li><a href="/inu-yado/{t}/">{e(TYPE_NAME[t])}<small>{len(BYTYPE[t])}軒</small></a></li>' for t in TYPE_PAGES if t != slug)
-    body = (f'<div class="yd-ans"><h2>犬と泊まれる{e(nm)}のポイント</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
+    body = (_fit(e, f"うちの子の大きさで、{nm}を見る", f"{n}軒を、泊まれる犬の大きさ（小型犬・中型犬・大型犬）と猫でしぼれます。", xs)
+            + f'<div class="yd-ans"><h2>犬と泊まれる{e(nm)}のポイント</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
             + V.stats(tiles)
-            + _fit(e, f"うちの子の大きさで、{nm}を見る", f"{n}軒を、泊まれる犬の大きさ（小型犬・中型犬・大型犬）と猫でしぼれます。", xs)
             + (f'<h2 class="yd-h">{e(nm)}{n}軒をくらべる</h2>' + table(e, xs) if n <= TYPE_TABLE_MAX else
-               f'<h2 class="yd-h">都道府県ごとの{e(nm)}</h2><p class="emg-tips-note">軒数が多いので、くらべる表は都道府県のページにあります。</p><ul class="yd-pref">'
-               + "".join(f'<li><a href="{pref_href(pf)}">{e(pf)}<small>{sum(1 for x in xs if x["pref"] == pf)}軒</small></a></li>' for pf in prefs) + '</ul>')
+               f'<h2 class="yd-h">都道府県ごとの{e(nm)}</h2><details class="pp-fold"><summary style="cursor:pointer;font-weight:700;color:#a8410a;padding:6px 0">都道府県の一覧を開く</summary><ul class="yd-pref">'
+               + "".join(f'<li><a href="{pref_href(pf)}">{e(pf)}<small>{sum(1 for x in xs if x["pref"] == pf)}軒</small></a></li>' for pf in prefs) + '</ul></details>')
             + "".join(f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">{e(a)}</h2><p style="font-size:.9rem;margin:4px 0 10px">{e(b)}</p></div>' for a, b in TYPE_TIPS.get(slug, []))
             + f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{_faq_html(e, faq)}</dl></div>'
             + (f'<h2 class="yd-h">ほかの種類の宿</h2><ul class="yd-pref">{others}</ul>' if others else "")

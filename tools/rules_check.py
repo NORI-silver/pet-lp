@@ -33,7 +33,7 @@ PREF_SLUGS = {"hokkaido", "aomori", "iwate", "miyagi", "akita", "yamagata", "fuk
               "tokushima", "kagawa", "ehime", "kochi", "fukuoka", "saga", "nagasaki", "kumamoto", "oita", "miyazaki", "kagoshima", "okinawa",
               }  # 県のページ
 HOSP_SUB = {"night", "cat", "exotic", "large-dog", "visit"}  # 動物病院の条件のページ
-PREF_RE = re.compile(r"^(%s)(都|道|府|県)?(\s*[（(]?\d+[)）]?件?)?$" % "|".join(PREFS))
+PREF_RE = re.compile(r"^(%s)(都|道|府|県)?(・[^\d（(]{1,8})?\s*([（(]?\d+\s*(件|軒|か所|院|社|施設|団体|店|頭)?[)）]?|[（(]?(0件|しらべ中|まだ)[)）]?)?$" % "|".join(PREFS))
 
 # 使わない言葉（seo_check.py の BAN・VERIFY_CLAIM のほか）。(正規表現, 理由)
 WORDS = [
