@@ -753,7 +753,6 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>連絡はメールだけ</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>多頭もOK</li>
       </ul>
-      <a class="btn" href="#form" data-cta="hero-fare">空き状況と料金を問い合わせる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
     </div>
     <div class="hero-visual">
       <div class="photo">
@@ -2151,13 +2150,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 入力欄が見えている間は下部の固定ボタンを隠す
   var sticky = document.querySelector(".sticky");
   if ("IntersectionObserver" in window) {
-    // ヒーローのボタンかフォームが見えている間は隠す
+    // キービジュアルかフォームが見えている間（まだフォームの前にいる間も）は隠す
     var seen = {};
     var io = new IntersectionObserver(function(es){
       es.forEach(function(x){ var k = x.target.id || "hero"; seen[k] = x.isIntersecting || (k === "hero" && x.boundingClientRect.top > 0); });
       sticky.style.visibility = (seen.hero || seen.form) ? "hidden" : "visible";
     });
-    io.observe(document.querySelector(".hero .btn")); io.observe($("form"));
+    io.observe(document.querySelector(".hero")); io.observe($("form"));
   }
 
   // 経由地（ありを選んだときだけ入力欄を出す）
