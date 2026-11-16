@@ -1958,7 +1958,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         article.insertBefore(body, price); var n = price; while (n) { var nx = n.nextSibling; mainCol.appendChild(n); n = nx; }
         body.append(mainCol, thumb); }
       var cr = credLine(card.id);
-      if (cr.length) { var cl = document.createElement("ul"); cl.className = "partner-creds"; cl.setAttribute("aria-label", "公式サイトに書いてある許可・登録・資格・保険");
+      if (cr.length) { var cl = document.createElement("ul"); cl.className = "partner-creds"; cl.setAttribute("aria-label", "許可・登録・資格・保険");
         cr.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; cl.appendChild(li); }); article.appendChild(cl); }
       var fit = fitPoints(card), tags = fit.limits.slice();
       if (ex && ex.tags) ex.tags.forEach(function(x){ if (fit.points.indexOf(x) < 0 && tags.indexOf(x) < 0) fit.points.push(x); });
@@ -1969,7 +1969,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var payTag = String(card.payment || "").replace(/^お支払い：/, "").replace(/（[^）]*）/g, "").trim();
       if (payTag && !/確認中|ご案内/.test(payTag) && !tags.concat(fit.points).some(function(x){ return /現金のみ|カード払い/.test(x); })) tags.push("お支払い：" + payTag);
       if (fit.points.length || tags.length) {
-        var pts = document.createElement("ul"); pts.className = "partner-points"; pts.setAttribute("aria-label", "公式サイトに書いてある特長と条件");
+        var pts = document.createElement("ul"); pts.className = "partner-points"; pts.setAttribute("aria-label", "特長と条件");
         fit.points.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; pts.appendChild(li); });
         tags.forEach(function(x){ var li = document.createElement("li"); li.className = "lim"; li.textContent = x; pts.appendChild(li); });
         article.appendChild(pts);

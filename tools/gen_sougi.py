@@ -252,19 +252,14 @@ def render(ctx):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › ペットが亡くなったら</nav>
     <h1><small>まずすること・火葬の種類と料金・死亡届・自治体の受付（全国）</small>ペットが亡くなったら</h1>
-    <p class="lede">長い時間を一緒に過ごした家族とのお別れは、とてもつらいものです。あわてなくて大丈夫です。亡くなった直後にすること、火葬の種類と自治体の料金、手続き、お骨の供養、ペットロスの相談先、全国{n_city}の市区の受け付けと、都道府県ごとの民間のペット火葬場・霊園・納骨堂{len(F['facilities'])}か所をまとめました。</p>
+    <p class="lede">あわてなくて大丈夫です。お住まいの都道府県をえらぶと、近くのペット火葬場・霊園（{len(F['facilities'])}か所）と市区の受け付けが出ます。まずすることは<a href="#after">下の記事</a>に。</p>
   </div>
 </section>
 <section style="padding-top:8px">
-  <div class="wrap"><article class="art">
-    {art}
-  </article></div>
-</section>
-<section style="padding-top:0">
   <div class="wrap">
     <div class="emg">
-      <h2 id="list" class="sh" style="scroll-margin-top:90px">都道府県ごとの自治体の受け付けと、民間のペット火葬場・霊園</h2>
-      <p class="emg-free">自治体の受け付け方（引き取り・持ち込み・斎場での火葬・費用）は、市区町村ごとに違います。下の一覧は、各都道府県の県庁所在地（東京都は新宿区。23区は区ごと。県庁所在地の案内が見つからない県はほかの市）と政令指定都市の公式ページです。ほかの市町村にお住まいの方は、お住まいの市町村のサイトでご確認ください。民間のペット火葬場・霊園・納骨堂は、各都道府県の一部を、公式サイトに書いてある名前・市区町村・できること・料金の例で載せています（順位やおすすめではなく、市区町村の順に並べています。料金は変わることがあるので、必ず公式サイトで確かめてください）。</p>
+      <h2 id="list" class="sh" style="scroll-margin-top:90px">近くのペット火葬場・霊園と、市区の受け付けをさがす</h2>
+      <p class="emg-free">並びは順位ではなく、市区町村の順です。料金は変わることがあるので、公式サイトでご確認ください。市区の受け付けは県庁所在地と政令指定都市の分で、ほかの市町村はお住まいの市町村のサイトでご確認ください。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       {FC.chips(e, FC.SOUGI_CHIPS)}
       {body}
@@ -273,6 +268,11 @@ def render(ctx):
       <p class="emg-note">{e(J["checked"])}時点の、各自治体の公式ページに書いてある情報です。受け付けの方法や費用は変わることがあるので、必ずリンク先でご確認ください。掲載の内容の誤りは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
+</section>
+<section style="padding-top:8px">
+  <div class="wrap"><article class="art"><h2 class="sh" id="after" style="margin-top:0">お別れのときに知っておきたいこと</h2>
+    {art}
+  </article></div>
 </section>
 <section style="padding-top:0">
   <div class="wrap">

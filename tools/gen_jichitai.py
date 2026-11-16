@@ -202,13 +202,13 @@ def render(ctx):
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="emg">
-      <div class="emg-tips" style="margin-top:0"><h4>こんなときは、ここへ</h4><div class="jc-tiles">{where}</div></div>
       <div class="emg-tips"><h4>窓口ごとに受け付けていること</h4>
       <div class="tbl"><table><thead><tr><th>窓口</th><th>おもに受け付けていること</th></tr></thead><tbody>{roles}</tbody></table></div>
       <p class="emg-tips-note">迷子・保護・引き取りは都道府県（政令指定都市・中核市は市）、犬の登録と予防注射は市区町村、と受け持ちが分かれています。迷子のときは、動物愛護センター・保健所と警察の両方に届け出てください。見つけた人がどちらに届けるか分からないからです。</p></div>
       <p class="emg-free">政令指定都市・中核市に住んでいる方は市の窓口、それ以外の市町村の方は都道府県の窓口です。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       {body}
+      <div class="emg-tips"><h4>こんなときは、ここへ</h4><div class="jc-tiles">{where}</div></div>
       <div class="emg-tips"><h4>迷子になったら、まずすること</h4><ol>
         <li><b>すぐにさがし始める</b><br>猫は家の中と、家のまわりの狭くて暗い場所（物置、室外機の下、植え込み、縁の下）。犬はいなくなった場所を中心に円をえがくように広げます。</li>
         <li><b>その日のうちに届け出る</b><br>動物愛護センター・保健所（住んでいる所と、いなくなった所）、警察（遺失届）、市区町村の清掃の担当、近くの動物病院。マイクロチップの登録の連絡先がいまのものかも確かめます。</li>
