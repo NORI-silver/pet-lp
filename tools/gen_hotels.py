@@ -25,17 +25,94 @@ BEFORE = [
  ("持っていくもの・必要な書類", "多くのホテルで、1年以内の混合ワクチンの接種証明と、犬は狂犬病予防注射の証明が必要です。ノミ・ダニの予防を求めるホテルもあります。"),
 ]
 
+# 「預ける前に見る6つ」（結果のすぐ後ろ。アイコンのカード）。カードの緑のチェックと同じ順・同じ言葉にする
+CHECK = [
+ ("🪪", "動物取扱業（保管）の登録", "登録番号と有効期限が店とサイトに出ているか。「登録一覧にも掲載」は、自治体の公開の一覧でも名前と番号が合ったホテルです。"),
+ ("🌙", "夜はだれがいるか", "夜もスタッフが泊まりこむのか、夜はカメラで見るだけなのか。"),
+ ("🏥", "具合が悪くなったとき", "併設・提携の動物病院はあるか。連れていく病院と費用の決め方。"),
+ ("👀", "見学とお試し", "部屋・におい・音を見られるか。はじめての子は1泊のお試しで。"),
+ ("📷", "預かり中の様子", "写真やメッセージで様子を送ってくれるか、カメラで見られるか。"),
+ ("💉", "ワクチンの決まり", "証明を求めるホテルは、ほかの子から病気がうつる心配が少なくなります。"),
+]
+CHECK_CSS = ('<style id="ht-css">.ht-chk{margin:14px 0 18px}.ht-chk h3{font-size:1.05rem;margin:0 0 8px}'
+             '.ht-chk ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr;gap:8px}'
+             '@media(min-width:640px){.ht-chk ul{grid-template-columns:1fr 1fr}}'
+             '.ht-more{margin:8px 0 0;font-size:.92rem}.ht-chk li{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:8px 12px;margin:0}'
+             '.ht-chk li>i{font-style:normal;font-size:1.4rem;line-height:1;flex:0 0 1.6em;text-align:center;padding-top:2px}'
+             '.ht-chk li div{line-height:1.45}.ht-chk li b{display:block;font-size:.92rem;color:#2b2622;margin-bottom:1px;line-height:1.4}.ht-chk li span{display:block;font-size:.82rem;color:#4a3f37;line-height:1.5}</style>')
+
+def checklist(e):
+    li = "".join(f'<li><i aria-hidden="true">{ic}</i><div><b>{e(t)}</b><span>{e(d)}</span></div></li>' for ic, t, d in CHECK)
+    return CHECK_CSS + f'<div class="ht-chk"><h3>安心して預けるために、見ておく6つ</h3><ul>{li}</ul><p class="ht-more"><a href="/guide/choose-pet-hotel/">登録の確かめ方と、見学で見ること・預ける前の準備 →</a></p></div>'
+
 def _flags(h):
     return [k for k, _ in CONDS + EXTRA if h.get(k)]
+
+# ── 安心の材料（Nori 2026-11-16「預けようと思ったが、どこが信用できるかわからない」） ──
+# hotels.json の trust：公式サイト（src・quote・checked）に書いてあることだけ。書いていない項目は出さない（「不明」も出さない）。
+#   reg      動物取扱業（保管）の登録。no＝登録番号、auth＝登録した自治体、until＝有効期限。
+#            registry＝自治体が公開している登録の一覧でも、名前・番号が合った（name・asof・page）。
+#   night・vet・report・visit・trial・vaccine：v＝カードに出す短い言葉
+TRUST = [("reg", None), ("night", "夜もスタッフがいる"), ("vet", "提携の動物病院あり"), ("report", "預かり中の様子を報告"), ("camera", "カメラで様子を見られる"),
+         ("visit", "見学できる"), ("trial", "お試しの預かり"), ("vaccine", "ワクチンの証明が必要")]
+
+def _jd(d):
+    y, m, dd = (d or "--").split("-")[:3] if d and d.count("-") == 2 else ("", "", "")
+    return f"{int(y)}年{int(m)}月{int(dd)}日" if y else ""
+
+def _reg(h):
+    r = (h.get("trust") or {}).get("reg")
+    return r if r and r.get("no") and (not r.get("until") or r["until"] >= TODAY) else None
+
+def trust_labels(h):
+    t = h.get("trust") or {}
+    out = []
+    r = _reg(h)
+    if r:
+        out.append(f'動物取扱業（{r["kind"]}）の登録あり' if r.get("kind") else "動物取扱業の登録あり")
+        if r.get("registry"): out.append(f'{r["registry"]["name"]}の登録一覧に掲載')
+    for k, lab in TRUST[1:]:
+        x = t.get(k)
+        if x: out.append(x.get("v") or lab)
+    if h.get("camera") and not t.get("camera"): out.append("カメラで様子を見られる")
+    if h.get("night_staff") and not t.get("night"): out.append("夜もスタッフがいる")
+    return list(dict.fromkeys(out))
+
+def trust_detail(h):
+    """「そのほか」に入れる、何をもとにしたか（登録番号・一覧の時点・公式サイトの文）。"""
+    t = h.get("trust") or {}
+    out = []
+    r = _reg(h)
+    if r:
+        head = "・".join(x for x in (r.get("auth"), r.get("kind")) if x)
+        s = f'動物取扱業の登録：{head + " " if head else ""}{r["no"]}'
+        if r.get("until"): s += f'（有効期限 {_jd(r["until"])}）'
+        g = r.get("registry")
+        if r.get("by") == "registry":
+            s += f'。{g["name"]}が公開している第一種動物取扱業者の一覧（{_jd(g["asof"])}時点）に載っている番号です'
+        else:
+            s += "。ホテルが出している番号です"
+            if g: s += f'。{g["name"]}が公開している第一種動物取扱業者の一覧（{_jd(g["asof"])}時点）にも載っています'
+        out.append(s)
+    for k, lab in TRUST[1:]:
+        x = t.get(k)
+        if x and x.get("quote"): out.append(f'{x.get("v") or lab}：「{x["quote"]}」')
+    return out
+
+TODAY = __import__("datetime").date.today().isoformat()
 
 def _card(e, h):
     flags = " ".join(_flags(h))
     tags = [lab for k, lab in CONDS + EXTRA if h.get(k)]
+    tl = trust_labels(h)
+    if tl: tags = [x for x in tags if x not in ("夜もスタッフがいる", "カメラで様子を見られる")]
     if h.get("max_kg"): tags.append(f'{h["max_kg"]}kgまで')
     if h.get("separate"): tags.append(h["separate"])
     extra = ""
     if h.get("services"): extra += f'<small>内容：{e(h["services"])}</small>'
     if tags: extra += '<small class="emg-spec">公式サイトに書いてある条件：' + e("・".join(tags)) + '</small>'
+    if tl: extra = f'<small>安心の材料：{e("、".join(tl[:5]))}</small>' + extra
+    for d in trust_detail(h): extra += f'<small class="emg-spec">{e(d)}</small>'
     city = f'<small>{e(h["city"])}</small>' if h.get("city") else ""
     return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>{city}{extra}</div>')
 
@@ -59,10 +136,10 @@ def render(ctx):
                 inner = f'<p class="emg-none">{e(pf)}の大型犬OK・猫専用のペットホテルは、まだ載せていません。見つけしだい足します。</p>'
             body += f'<section class="emg-pref" data-pref="{e(pf)}"><h4>{e(pf)}</h4>{inner}</section>\n'
     conds = "".join(f'<label><input type="checkbox" value="{k}"> {e(lab)}</label>' for k, lab in CONDS)
-    before = "".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in BEFORE)
     faq = [
       ("大型犬を泊められるペットホテルはどうさがせばいいですか？", f"この一覧では、大型犬を受けると公式サイトにはっきり書いているホテルを{nl}件載せています。「条件でしぼりこむ」で「大型犬を泊められる」をえらび、都道府県でしぼってください。体重の上限が書いてあるホテルは、カードに「◯kgまで」と出ます。"),
       ("猫専用のペットホテル（キャットホテル）はありますか？", f"猫だけを預かるホテルと、犬とは別のフロア・部屋で猫を預かるホテルを、あわせて{nc}件載せています。「猫専用のホテル」でしぼりこめます。"),
+      ("ペットホテルが登録を受けているかは、どう確かめられますか？", "ペットを預かる仕事には動物取扱業（保管）の登録が要り、登録番号と有効期限を店の標識とホームページなどの広告に出すことになっています。東京都・大阪府・埼玉県・千葉市・札幌市・北九州市などは、登録している業者の一覧を公開しています。このページのカードの「登録一覧に掲載」は、その一覧でも名前と番号が合ったホテルです。"),
       ("ペットホテルの料金はいくらですか？", "この一覧には料金を載せていません。体の大きさ・日数・季節（連休や年末年始）で変わり、散歩やおやつ、送迎が別料金のこともあります。"),
       ("ペットホテルとペットシッター、どちらがいいですか？", "家から出ると落ち着かない子や猫はシッター、人やほかの動物に慣れている子や長い日数はホテル、などが目安です。記事「ペットシッターとペットホテル、どちらがいい？」にまとめました。"),
       ("ホテルまでの送り迎えはどうすれば？", "送迎をしているホテルもあります（「送迎がある」でしぼりこめます）。送迎の範囲や料金はホテルごとに違うので、公式サイトで確かめてください。"),
@@ -92,7 +169,7 @@ def render(ctx):
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       <div class="f"><span>条件でしぼりこむ（公式サイトに書いてある条件だけで判定しています）</span><div class="trim-cond">{conds}</div><span id="trimCount" aria-live="polite"></span></div>
       {body}
-      <div class="emg-tips"><h4>ペットホテルに預ける前に確かめること</h4><dl>{before}</dl></div>
+      {checklist(e)}
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
       <p class="emg-note">当サイトとは別の事業者です（{e(J["checked"])}時点の情報）。受け入れの条件は変わることがあるので、預ける前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
@@ -125,6 +202,7 @@ def _faq(pf, rs, n):
     return [
      (f"{pf}で大型犬を泊められるペットホテルは？", f"この一覧の{pf}の{n}件のうち、大型犬を受けると公式サイトに書いているのは{c('large')}件です。体重の上限はカードでご確認ください。"),
      (f"{pf}に猫専用のペットホテルはありますか？", f"猫専用、または犬とは別の部屋・フロアで猫を預かると書いているのは{sum(bool(h.get('cat_only') or h.get('separate')) for h in rs)}件です。"),
+     ("ペットホテルが登録を受けているかは、どう確かめられますか？", "ペットを預かる仕事には動物取扱業（保管）の登録が要り、登録番号と有効期限を店の標識とホームページなどの広告に出すことになっています。東京都・大阪府・埼玉県・千葉市・札幌市・北九州市などは、登録している業者の一覧を公開しています。このページのカードの「登録一覧に掲載」は、その一覧でも名前と番号が合ったホテルです。"),
      ("料金はいくらですか？", "この一覧には料金を載せていません。体の大きさ・日数・季節で変わります。"),
      ("ホテルまでの送り迎えは？", f"送迎があると書いているのは{c('pickup')}件です。送迎の範囲や料金はホテルごとに違うので、公式サイトで確かめてください。"),
     ]
@@ -132,7 +210,7 @@ CAT = dict(slug=SLUG, name="大型犬OK・猫専用のペットホテル", unit=
   title_word="大型犬OK・猫専用のペットホテル", title_tail="動物病院併設・送迎・シニア",
   desc_tail="大型犬を泊められるホテルと猫だけのホテルを、動物病院の併設・送迎・シニアの子・夜のスタッフとあわせて載せています。料金や順位は載せていません。",
   lede=lambda pf, n: f"{pf}で、大型犬を泊められるペットホテルと猫専用のホテルを{n}件まとめました。公式サイトに書いてある受け入れの条件だけを載せています。",
-  facts=_facts, faq=_faq, before_title="ペットホテルに預ける前に確かめること", before=BEFORE,
+  facts=_facts, faq=_faq, before_title="ペットホテルに預ける前に確かめること", before=[], extra_after=lambda e, pf: checklist(e),
   taxi_h="ホテルへの送り迎えは、ペットタクシーで", taxi_p="大型犬やキャリーの猫も、飼い主さまと一緒に家の前からホテルの前まで移動できます。",
   links=[("大型犬を預けられるペットホテルの探し方", "/guide/large-dog-hotel/"), ("猫をペットホテルに預けるとき", "/guide/cat-hotel/"), ("ペットシッターとペットホテル、どちらがいい？", "/guide/sitter-or-hotel/"), ("トリミング・ペットホテルへの送迎ガイド", "/guide/grooming-hotel/"), ("全国のペットシッター", "/pet-sitter/")])
 

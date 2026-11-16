@@ -86,7 +86,7 @@ p{margin:0 0 1em}
 .catch{display:block;font-size:2.3rem;font-weight:800;line-height:1.32;letter-spacing:.02em}
 .catch em{font-style:normal;color:var(--o)}
 .hero .lede{color:var(--ink-2);font-size:1.02rem;margin:20px 0 24px}
-.pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 28px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:20px 0 24px}
 .pills li{display:flex;align-items:center;gap:6px;background:#fff;border-radius:999px;padding:6px 14px 6px 8px;font-size:.86rem;font-weight:700;box-shadow:var(--shadow)}
 .pills li span{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--o-l);color:var(--o-d)}
 .pills li span svg{width:13px;height:13px}
@@ -104,6 +104,7 @@ p{margin:0 0 1em}
 .float.f1 span{color:var(--ink-3)}
 .float.f2{right:-6px;top:20px;text-align:center;padding:10px 14px}
 .float.f2 b{display:block;font-family:var(--round);font-size:1.3rem;color:var(--o-d);line-height:1.1}
+@media (max-width:759px){.hero .float,.hero .float.f1{display:none}.hero{padding:16px 0 32px}.catch{font-size:2rem}.hero .kicker{font-size:.72rem;margin-bottom:12px}.hero .lede{margin:12px 0 16px;font-size:.92rem;line-height:1.75}.pills{gap:6px;margin-bottom:16px}.pills li{font-size:.78rem;padding:4px 10px 4px 6px}.pills li span{width:18px;height:18px}.hero-fare{padding:10px 14px;margin-bottom:14px}.hero-fare b{font-size:.92rem}.hero-fare span{font-size:.8rem}.hero .grid{gap:14px}.hero-visual .photo{aspect-ratio:16/9}.hero .pills{margin-bottom:0}.hero{padding-bottom:20px}section.form-sec{padding-top:16px}.hero .btn{white-space:nowrap;font-size:.95rem;padding:15px 12px;justify-content:center;gap:6px}.hero .after{font-size:.76rem;margin-top:10px}}
 
 /* stats */
 .stats{background:var(--ink);color:#fff;padding:40px 0}
@@ -1019,16 +1020,13 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
         <span class="kicker">岩手のペットタクシー <b style="white-space:nowrap">無料</b></span>
         <span class="catch">家族だから、<br><em>移動もやさしく。</em></span>
       </h1>
-      <p class="lede">岩手県（盛岡市・一関市・奥州市など）で、犬や猫の移動の手段を探している方へ。フォームに入力すると、条件に合う事業者と料金の目安が見られます。急ぐときの連絡先は「緊急」タブにまとめています。</p>
+      <p class="lede">岩手県（盛岡市・一関市・奥州市など）で、犬や猫の移動の手段を探している方へ。フォームに入力すると、条件に合う事業者と料金の目安が見られます。急ぐときの連絡先は「緊急のときの連絡先」のページにまとめています。</p>
       <ul class="pills">
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>無料</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>何社にでもまとめて問い合わせ</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>連絡はメールだけ</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>多頭もOK</li>
       </ul>
-      <div class="hero-fare"><b>各社の料金を、その場でくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。各社の公式サイトの料金表から計算した概算で、確定料金ではありません。</span></div>
-      <a class="btn" href="#form" data-cta="hero-fare">空き状況と料金を問い合わせる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
-      <p class="after">無料で使えます（運賃は当日ペットタクシーへ直接お支払い）。当日の依頼もできます。</p>
     </div>
     <div class="hero-visual">
       <div class="photo">
@@ -1070,7 +1068,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 <!-- 6. フォーム -->
 <section class="form-sec" id="form">
   <div class="wrap">
-    <div class="sh"><h2>空き状況と料金を問い合わせる（無料）</h2></div>
 
     <div class="mode-tabs" id="modeTabs" role="tablist" hidden>
       <button type="button" role="tab" aria-selected="true" data-mode="normal">空き状況・料金の問い合わせ</button>
@@ -1126,18 +1123,11 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
       <p class="emg-note" id="emgNote"></p>
     </div>
     <div class="form-card">
-      <div class="flow3" aria-label="ご利用の流れ"><p class="flow3-h">ご利用の流れ</p><ol><li><b>①</b>会社を選んで<wbr>問い合わせ<span>空き状況と料金を、選んだ会社に問い合わせます</span></li><li><b>②</b>会社から<wbr>返事が届く<span>この日時に空いているか、確定料金（税込）をメールでお知らせします</span></li><li><b>③</b>納得したら<wbr>予約を確定<span>メールの「この内容で予約する」を押した時点で予約が確定します</span></li></ol><p class="flow3-note">問い合わせを送っただけでは、まだ予約は確定していません。</p></div>
       <form id="petForm" novalidate>
         <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
         <div class="group">
           <div class="group-h"><span>1</span>いつ、どこへ行きますか？</div>
-          <div class="f pref-pick"><label for="pref" id="prefLbl">お迎えの都道府県<span class="need">必須</span></label>
-            <button type="button" id="prefBtn" class="pref-btn" aria-labelledby="prefLbl prefBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="prefPanel" hidden>選んでください</button>
-            <div class="pref-panel" id="prefPanel" hidden><input type="search" id="prefQ" class="pref-q" placeholder="県名で検索（例：かながわ、ふくおか）" autocomplete="off" aria-label="お迎えの都道府県を県名で検索" enterkeyhint="search"><ul class="pref-list" id="prefList" role="listbox" aria-label="お迎えの都道府県"></ul></div>
-            <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>大阪府</option><option>愛知県</option><option>埼玉県</option><option>千葉県</option><option>兵庫県</option><option>北海道</option><option>福岡県</option><option>静岡県</option><option>茨城県</option><option>広島県</option><option>京都府</option><option>宮城県</option><option>新潟県</option><option>長野県</option><option>岐阜県</option><option>群馬県</option><option>栃木県</option><option>岡山県</option><option>福島県</option><option>三重県</option><option>熊本県</option><option>鹿児島県</option><option>沖縄県</option><option>滋賀県</option><option>山口県</option><option>愛媛県</option><option>奈良県</option><option>長崎県</option><option>青森県</option><option selected>岩手県</option><option>石川県</option><option>大分県</option><option>宮崎県</option><option>山形県</option><option>富山県</option><option>秋田県</option><option>香川県</option><option>和歌山県</option><option>佐賀県</option><option>山梨県</option><option>福井県</option><option>徳島県</option><option>高知県</option><option>島根県</option><option>鳥取県</option></select>
-            <p class="pref-fix" id="prefFix" role="status" hidden></p>
-            <p class="open-note" id="openNote" role="status" hidden></p></div>
           <div class="f"><label for="pickup">お迎えの場所<span class="need">必須</span></label>
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button>
             <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
@@ -1148,15 +1138,20 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
           <div class="f"><label for="dropoff">行き先<span class="need">必須</span></label>
             <input type="text" id="dropoff" autocomplete="off" name="dropoff" placeholder="例：代々木公園／〇〇動物病院（目黒区）" required>
             <button type="button" class="hist-clear" id="histClear" hidden>この端末に残っている場所の候補を消す</button></div>
+          <div class="f pref-pick"><label for="pref" id="prefLbl">お迎えの都道府県<span class="any">場所から自動で入ります</span></label>
+            <button type="button" id="prefBtn" class="pref-btn" aria-labelledby="prefLbl prefBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="prefPanel" hidden>選んでください</button>
+            <div class="pref-panel" id="prefPanel" hidden><input type="search" id="prefQ" class="pref-q" placeholder="県名で検索（例：かながわ、ふくおか）" autocomplete="off" aria-label="お迎えの都道府県を県名で検索" enterkeyhint="search"><ul class="pref-list" id="prefList" role="listbox" aria-label="お迎えの都道府県"></ul></div>
+            <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>大阪府</option><option>愛知県</option><option>埼玉県</option><option>千葉県</option><option>兵庫県</option><option>北海道</option><option>福岡県</option><option>静岡県</option><option>茨城県</option><option>広島県</option><option>京都府</option><option>宮城県</option><option>新潟県</option><option>長野県</option><option>岐阜県</option><option>群馬県</option><option>栃木県</option><option>岡山県</option><option>福島県</option><option>三重県</option><option>熊本県</option><option>鹿児島県</option><option>沖縄県</option><option>滋賀県</option><option>山口県</option><option>愛媛県</option><option>奈良県</option><option>長崎県</option><option>青森県</option><option selected>岩手県</option><option>石川県</option><option>大分県</option><option>宮崎県</option><option>山形県</option><option>富山県</option><option>秋田県</option><option>香川県</option><option>和歌山県</option><option>佐賀県</option><option>山梨県</option><option>福井県</option><option>徳島県</option><option>高知県</option><option>島根県</option><option>鳥取県</option></select>
+            <p class="pref-fix" id="prefFix" role="status" hidden></p>
+            <p class="open-note" id="openNote" role="status" hidden></p></div>
           <div class="f"><label for="date">お迎えの希望日時<span class="need">必須</span></label>
             <div class="dt">
               <input type="date" id="date" name="date" required aria-label="日付">
               <select id="hour" name="hour" required aria-label="時"><option value="">時</option><option value="00">0時</option><option value="01">1時</option><option value="02">2時</option><option value="03">3時</option><option value="04">4時</option><option value="05">5時</option><option value="06">6時</option><option value="07">7時</option><option value="08">8時</option><option value="09">9時</option><option value="10">10時</option><option value="11">11時</option><option value="12">12時</option><option value="13">13時</option><option value="14">14時</option><option value="15">15時</option><option value="16">16時</option><option value="17">17時</option><option value="18">18時</option><option value="19">19時</option><option value="20">20時</option><option value="21">21時</option><option value="22">22時</option><option value="23">23時</option></select>
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
-          <p class="note dt-note">当日も依頼できます。会社にメールで確かめるため、お迎えはいまから3時間以上あとで選んでください。</p>
           <div class="f"><span class="lbl">片道・往復<span class="need">必須</span></span>
-            <div class="seg"><label><input type="radio" name="trip" value="片道" required><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復</span></label></div>
+            <div class="seg"><label><input type="radio" name="trip" value="片道" required checked><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復</span></label></div>
             <div class="via-box" id="retBox" hidden><label for="retDate" class="lbl">帰りのお迎え日時（用事が終わる時刻）<span class="need">必須</span></label>
               <div class="dt">
                 <input type="date" id="retDate" name="ret_date" aria-label="帰りの日付">
@@ -1182,14 +1177,14 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
           <p class="pet-hint" id="petHint" hidden></p>
           <div id="pets"></div>
           <div class="f opt-lite" id="ridersF"><label for="riders">一緒に乗る人数<span class="need">必須</span></label>
-            <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option>1人</option><option>2人</option><option>3人</option></select></div>
+            <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option selected>1人</option><option>2人</option><option>3人</option></select></div>
           <label class="chk opt-lite" hidden><input type="checkbox" id="petOnly" name="pet_only" value="1"> ペットだけで乗る（飼い主さんは乗らない）</label>
           <div class="only-box opt-lite" id="onlyBox" hidden>
             <div class="f"><label for="handFrom">お迎えでペットを渡す人<span class="need">必須</span></label><input type="text" id="handFrom" name="hand_from" maxlength="100" placeholder="例：家族（母）・ペットホテルの受付"></div>
             <div class="f"><label for="handTo">行き先で受け取る人<span class="need">必須</span></label><input type="text" id="handTo" name="hand_to" maxlength="100" placeholder="例：動物病院の受付・祖父"></div>
           </div>
           <div class="f opt-lite"><label for="luggage">荷物の量<span class="need">必須</span></label>
-            <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
+            <select id="luggage" name="luggage" required><option value="">選んでください</option><option selected>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
         <p class="form-foot">条件を入れると、合う会社と料金の目安が出ます（まだ送信されません）。料金は当日の道路事情や待ち時間で変わることがあります。</p>
@@ -1295,7 +1290,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
       <p class="emg-sum">岩手県の中で夜間に診てもらえる病院が見つからなかったため、近くの県の病院を載せています。</p><div class="emg-item emg-co cs"><div class="cs-ph cs-ph0" aria-hidden="true"></div><a class="ux-c-n" href="https://www.svet.jp/yakan/" target="_blank" rel="noopener"><b>協同組合 仙台獣医師会 夜間救急動物病院</b></a><p class="ux-c-m">仙台市宮城野区（宮城県）</p><p class="ux-c-l cs-l"><i aria-hidden="true">🕒</i><span>21時〜翌5時</span></p><p class="ux-c-l cs-l"><i aria-hidden="true">🩺</i><span>仙台獣医師会の夜間救急病院（犬・猫。小鳥不可）</span></p><p class="ux-c-l cs-l"><i aria-hidden="true">📍</i><span>所在地：宮城県仙台市宮城野区苦竹1丁目2-51</span></p><div class="ux-c-a"><a href="https://www.svet.jp/yakan/" target="_blank" rel="noopener">公式サイト ↗</a><a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination=協同組合%20仙台獣医師会%20夜間救急動物病院%20宮城県仙台市宮城野区苦竹1丁目2-51" target="_blank" rel="noopener" data-route>経路を見る</a></div><p class="ux-c-s"><a class="emg-taxi" href="/?to=%E5%AE%AE%E5%9F%8E%E7%9C%8C%E4%BB%99%E5%8F%B0%E5%B8%82%E5%AE%AE%E5%9F%8E%E9%87%8E%E5%8C%BA%E8%8B%A6%E7%AB%B91%E4%B8%81%E7%9B%AE2-51#form">この病院までのペットタクシーの料金をくらべる →</a></p></div>
       <h3 class="emg-h">緊急の搬送をしている会社</h3>
       <p class="emg-none">岩手県で緊急の搬送をしている会社は、まだ載せていません。まずは動物病院に電話して、受け入れと行き方をご相談ください。</p>
-      <p class="emg-note">当サイトとは別の会社・病院です（2026年10月31日時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、お問い合わせからお知らせください。口コミはページ上の「緊急」タブで見られます。</p>
+      <p class="emg-note">当サイトとは別の会社・病院です（2026年10月31日時点の情報）。受付時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、お問い合わせからお知らせください。</p>
     </div>
     <p><a href="/emergency/">全国の緊急の連絡先の一覧</a>から、現在地から近い病院も探せます。</p>
     <h2>岩手のペットタクシー よくある質問</h2><div class="faq-list"><details><summary>盛岡市内の動物病院まで、ペットタクシーはいくらですか？</summary><div class="a">全国の会社の料金表で計算すると、5kmで片道3,300円（800〜6,400円）が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。お迎えの料金や夜間の割増は会社ごとに違うので、フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。</div></details><details><summary>盛岡からいわて花巻空港まで、ペットタクシーはいくらですか？</summary><div class="a">全国の会社の料金表で計算すると、35kmで片道8,300円（3,500〜15,500円）が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。お迎えの料金や夜間の割増は会社ごとに違うので、フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。</div></details><details><summary>岩手に来てくれるペットタクシーは何社ありますか？</summary><div class="a">当サイトに載せている全国の会社のうち、対応エリアに岩手県を書いている会社は1社でした（2026年10月30日時点）。地名を書いていない場所に来てくれることもあるので、お迎えの場所をフォームに入れて確かめてください。</div></details><details><summary>岩手で、車がなくても大型犬を動物病院へ連れて行けますか？</summary><div class="a">岩手県のお迎えに対応している1社の中に、公式サイトに大型犬を乗せられるとはっきり書いている会社はまだ見つかっていません（2026年10月30日時点）。書いていなくても乗せてもらえることがあるので、フォームにペットの種類と体重を入れてさがし、候補の会社の公式サイトで確かめてください。</div></details><details><summary>岩手で当日でもペットタクシーを頼めますか？</summary><div class="a">1社のうち、公式サイトや会社からの返事に当日も受けると書いてある会社は1社です。お迎えが今日のときは、この中から空いていて間に合う会社だけが候補に出ます。会社にメールで確認してから決まるしくみなので、お迎えの時刻は、いまから3時間以上あとで選んでください。</div></details><details><summary>岩手で夜間に診てもらえる動物病院はありますか？</summary><div class="a">岩手県の中で夜間に診てもらえる病院は見つからなかったため、近くの県の夜間・救急の動物病院を1件載せています。行く前に電話で受け入れてもらえるか確かめてください。</div></details><details><summary>岩手でペットの緊急搬送を頼める会社はありますか？</summary><div class="a">岩手県で緊急の搬送をしている会社は、まだ載せていません。急ぐときは、まず動物病院に電話して、受け入れと行き方をご相談ください。</div></details></div>
@@ -1638,8 +1633,8 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
   </div>
 </footer>
 
-<div class="sticky"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
+<div class="sticky" style="visibility:hidden"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
 
-<script src="/app.js?v=e4ce032544" defer></script>
+<script src="/app.js?v=880060a1a0" defer></script>
 </body>
 </html>

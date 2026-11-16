@@ -104,6 +104,7 @@ def fact_table_html(e, cat, pf, rs):
 # 答えの文は、よくある質問と同じ（このページだけの数・名前から作った文）。のこりの質問は下の「よくある質問」に出す。構造化データは全部。
 def _before_html(cat, e, pf):
     if cat.get("before_html"): return cat["before_html"](e, pf)
+    if not cat.get("before"): return ""
     dl = "".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in cat["before"])
     return f'<div class="emg-tips"><h4>{e(cat["before_title"])}</h4><dl>{dl}</dl></div>'
 
