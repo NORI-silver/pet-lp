@@ -74,7 +74,8 @@ CSS = ("<style>.jc-ic{display:inline-block;width:22px;height:22px;flex:0 0 22px;
  ".jc-br .a{color:#c2410c;font-weight:700}.jc-br .t{background:#c2410c;color:#fff;border-radius:10px;padding:8px 10px;font-size:.88rem;font-weight:700;line-height:1.45}"
  ".jc-br .t.c2{background:#2b211b}"
  ".jc-find{display:flex;gap:6px;margin:10px 0 0}.jc-find input{flex:1;min-width:0;padding:10px 12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
- ".jc-ans{margin:8px 0 0;font-size:.92rem;font-weight:700;color:#c2410c}"
+ ".jc-ans{margin:8px 0 0;font-size:.92rem;color:#2b211b}.jc-ans:empty{display:none}.jc-ans button{margin:4px 4px 0 0;padding:8px 12px;border:1px solid #c2410c;border-radius:999px;background:#fff;color:#c2410c;font-weight:700;font-size:.9rem}"
+ ".jc-q1{background:#fff;border:2px solid #c2410c;border-radius:16px;padding:12px 14px;margin:6px 0 10px}.jc-q1 label{display:flex;gap:6px;align-items:center;font-weight:700;margin:0 0 6px}.jc-sub{margin:0 0 8px;font-size:.84rem;color:#4a3d34;line-height:1.6}.jc-q1 input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
  ".jc-card{background:#fff;border:1px solid #f1e3d6;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}"
  ".jc-card.hit,.cs.jc-card.hit{border:2px solid #c2410c}"
  ".jc-hd{display:flex;gap:10px;align-items:center}.jc-hd .jc-ic{width:40px;height:40px;flex-basis:40px;border-radius:12px;background-color:#fff1e6;background-size:24px}"
@@ -87,11 +88,31 @@ CSS = ("<style>.jc-ic{display:inline-block;width:22px;height:22px;flex:0 0 22px;
  ".jc-pol{display:flex;gap:10px;align-items:center;background:#f5f7ff;border-radius:14px;padding:12px;margin:10px 0}.jc-pol p{margin:0;font-size:.88rem}"
  ".jc-pol b{display:block}</style>")
 
-FIND_JS = """<script>(function(){document.querySelectorAll('.jc-find input').forEach(function(i){var s=i.closest('.emg-pref'),o=s.querySelector('.jc-ans');
-function go(){var v=i.value.replace(/\\s/g,''),hit=null;s.querySelectorAll('.jc-card').forEach(function(c){c.classList.remove('hit')});
-if(!v){o.textContent='';return}s.querySelectorAll('.jc-card[data-city]').forEach(function(c){var n=c.getAttribute('data-city');if(n&&(v.indexOf(n)>=0||n.indexOf(v)>=0))hit=c});
-if(!hit)hit=s.querySelector('.jc-card[data-main]');if(hit){hit.classList.add('hit');o.textContent='→ '+hit.querySelector('b').textContent+' が窓口です';}}
-i.addEventListener('input',go);});})();</script>"""
+# 住まいの市区町村を入れる → その人の窓口のカード1枚だけを出す（Nori 2026-11-16「どこの窓口って書いてあるところが何を言ってるかわからない」）。
+# 対応の図（住まい → 窓口）はやめた。市区町村の一覧は /jichitai/munis.json（入れはじめたときだけ読む。都道府県は名前から自動で選ぶ）
+FIND_JS = """<script>(function(){var i=document.getElementById('jcQ'),o=document.getElementById('jcA'),sel=document.getElementById('hospPref'),D=null;if(!i)return;
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function show(pf,nm){if(sel.value!==pf){sel.value=pf;sel.dispatchEvent(new Event('change'))}var s=document.querySelector('.emg-pref[data-pref="'+pf+'"]');if(!s)return;var hit=null;
+s.querySelectorAll('.jc-card[data-city]').forEach(function(c){if(c.getAttribute('data-city')===nm)hit=c});if(!hit)hit=s.querySelector('.jc-card[data-main]');
+s.querySelectorAll('.jc-card').forEach(function(c){c.hidden=c!==hit;c.classList.toggle('hit',c===hit)});o.innerHTML='<b>'+esc(pf+nm)+'</b>の迷子・保護の窓口です。';if(hit){var c=hit.cloneNode(true);c.hidden=false;c.removeAttribute('data-city');c.removeAttribute('data-main');o.appendChild(c)}try{gtag('event','jichitai_find',{pref:pf})}catch(e){}}
+function reset(){document.querySelectorAll('.emg-pref .jc-card').forEach(function(c){c.hidden=false;c.classList.remove('hit')});o.textContent=''}
+function go(){var v=i.value.replace(/[\\s　]/g,'');if(!v){reset();return}if(!D){fetch('/jichitai/munis.json').then(function(r){return r.json()}).then(function(j){D=j;go()});return}
+var h=[];Object.keys(D).forEach(function(pf){var w=v.indexOf(pf)===0?v.slice(pf.length):v;if(!w)return;D[pf].split(',').forEach(function(n){if(w===n||w.indexOf(n)===0||(w.length>=2&&n.indexOf(w)===0))h.push([pf,n])})});
+var ex=h.filter(function(x){return x[1]===v||x[0]+x[1]===v});if(ex.length===1)h=ex;
+if(h.length===1)return show(h[0][0],h[0][1]);reset();
+if(h.length>1&&h.length<=8){o.innerHTML='どちらですか？ '+h.map(function(x,k){return '<button type="button" data-k="'+k+'">'+esc(x[0]+x[1])+'</button>'}).join(' ');o.querySelectorAll('button').forEach(function(b){b.onclick=function(){var x=h[+b.getAttribute('data-k')];i.value=x[1];show(x[0],x[1])}})}
+else if(h.length>8)o.textContent='続けて入れてください';else o.textContent='見つかりません。市区町村の名前で入れてください（例：佐倉市）';}
+i.addEventListener('input',go);})();</script>"""
+
+def write_munis():
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    out = {}
+    for m in json.load(open(os.path.join(root, "tools", "municipalities.json"), encoding="utf-8")):
+        out.setdefault(m["pref"], []).append(m["name"])
+    os.makedirs(os.path.join(root, SLUG), exist_ok=True)
+    open(os.path.join(root, SLUG, "munis.json"), "w", encoding="utf-8").write(
+        json.dumps({k: ",".join(v) for k, v in out.items()}, ensure_ascii=False, separators=(",", ":")))
+
 
 def _maps(name):
     from urllib.parse import quote
@@ -155,11 +176,12 @@ def render(ctx):
             cs = C.get(pf, [])
             js = JOTO.get((pf, ""))
             jurl = f'/joto/{slug.get(pf)}/' if js and slug.get(pf) else ""
-            inner = _card(e, P[pf], f"{pf}の窓口（{'下の市をのぞく' if cs else 'すべての市町村'}）", "", jurl)
+            others = "・".join(c["city"] for c in cs)
+            inner = _card(e, P[pf], (f"{others}以外の{pf}にお住まいの方" if cs else f"{pf}のどの市町村にお住まいの方も"), "", jurl)
             for c in cs:
                 cj = f'/joto/{slug.get(pf)}/' if JOTO.get((pf, c["city"])) and slug.get(pf) else ""
-                inner += _card(e, c, f'{c["city"]}（{c["kind"]}）に住んでいる方', c["city"], cj)
-            body += f'<section class="emg-pref" data-pref="{e(pf)}"><h4>{e(pf)}</h4>{_route(e, pf, cs)}{inner}{_police(e, pf)}</section>\n'
+                inner += _card(e, c, f'{c["city"]}にお住まいの方', c["city"], cj)
+            body += f'<section class="emg-pref" data-pref="{e(pf)}"><h4>{e(pf)}</h4>{inner}{_police(e, pf)}</section>\n'
     where = "".join(f'<div class="jc-tile"><i class="jc-ic i-{TILE_IC[n]}"></i><div><span class="jc-tt">{e(t)}</span><span class="jc-ta">{e(TILE_SHORT[n])}</span><details><summary>くわしく</summary><p>{d}</p></details></div></div>' for n, (t, d) in enumerate(WHERE))
     roles = "".join(f"<tr><th>{e(t)}</th><td>{e(d)}</td></tr>" for t, d in ROLES)
     faq = [
@@ -197,18 +219,18 @@ def render(ctx):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › ペットの迷子・犬の登録・引取りの窓口</nav>
     <h1><small>全国47都道府県・政令指定都市・中核市（129自治体）</small>ペットの迷子・犬の登録・引取りの窓口</h1>
-    <p class="lede">迷子・保護・犬の登録・引っ越しのとき、どこに連絡するかが分かります。都道府県をえらぶと、あなたの窓口が出ます。</p>
+    <p class="lede">迷子・保護・犬の登録・引っ越しのとき、どこに連絡するかが分かります。</p>
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="emg">
+      <div class="jc-q1"><label for="jcQ"><i class="jc-ic i-pin"></i>迷子をさがす・保護したときの窓口</label><p class="jc-sub">飼い主さんはお住まいの、保護した人は見つけた場所の市区町村を入れてください。</p><input id="jcQ" type="text" placeholder="市区町村（例：佐倉市）" autocomplete="address-level2"><p id="jcA" class="jc-ans" aria-live="polite"></p></div>
+      <div class="f"><label for="hospPref">都道府県</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
+      {body}
       <div class="emg-tips"><h4>窓口ごとに受け付けていること</h4>
       <div class="tbl"><table><thead><tr><th>窓口</th><th>おもに受け付けていること</th></tr></thead><tbody>{roles}</tbody></table></div>
       <p class="emg-tips-note">迷子・保護・引き取りは都道府県（政令指定都市・中核市は市）、犬の登録と予防注射は市区町村、と受け持ちが分かれています。迷子のときは、動物愛護センター・保健所と警察の両方に届け出てください。見つけた人がどちらに届けるか分からないからです。</p></div>
-      <p class="emg-free">政令指定都市・中核市に住んでいる方は市の窓口、それ以外の市町村の方は都道府県の窓口です。</p>
-      <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
-      {body}
       <div class="emg-tips"><h4>こんなときは、ここへ</h4><div class="jc-tiles">{where}</div></div>
       <div class="emg-tips"><h4>迷子になったら、まずすること</h4><ol>
         <li><b>すぐにさがし始める</b><br>猫は家の中と、家のまわりの狭くて暗い場所（物置、室外機の下、植え込み、縁の下）。犬はいなくなった場所を中心に円をえがくように広げます。</li>
@@ -245,3 +267,4 @@ def urls(SITE):
 def write_all(ROOT, ctx):
     os.makedirs(os.path.join(ROOT, SLUG), exist_ok=True)
     open(os.path.join(ROOT, SLUG, "index.html"), "w", encoding="utf-8").write(render(ctx))
+    write_munis()
