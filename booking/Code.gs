@@ -255,6 +255,9 @@ function doPost(e) {
   if ((e.parameter || {}).kind === 'photos') {
     try { return json_(facilityPhotos_(String(e.parameter.partner_id || ''), demoId_(e.parameter.demo))); } catch (err) { return json_({ok:false,error:'photos_unavailable'}); }
   }
+  if ((e.parameter || {}).kind === 'fac_ask') {
+    try { return json_(facAsk_(e.parameter)); } catch (err) { log_('施設の問い合わせでエラー: ' + err); return json_({ ok: false }); }
+  }
   if ((e.parameter || {}).kind === 'reviews') {
     try { return json_(selectionReviews_(String(e.parameter.partner_id || ''), demoId_(e.parameter.demo))); } catch (err) { return json_({ok:false,error:'reviews_unavailable'}); }
   }
@@ -266,6 +269,42 @@ function doPost(e) {
     notifyAdmin_('【要確認】受付でエラー', '受付の途中でエラーが出ました。\n' + err + '\n\n入力内容:\n' + JSON.stringify(e.parameter, null, 1));
     return json_({ ok: false });
   }
+}
+
+/* ───────── 施設（葬儀・しつけ・老犬ホーム・シッター・トリミング）への問い合わせ（2026-11-17 Nori「売上を作れ」） ─────────
+   一覧のカードの「問い合わせ文」から、提携した施設（「施設の提携先」タブで受付中が○）にだけ送る。飼い主さまがお名前・メールを入れ、
+   送ることに同意したときだけ（facility.js）。施設あてのメールは返信先を飼い主さまにし、飼い主さまにも控えを送る。記録は「施設の問い合わせ」タブ。
+   受付中が○でない・タブにない施設には送らない（許可のない事業者に転送しない）。お名前が「テスト」で始まる・運営のアドレスからの問い合わせは運営者あて。 */
+var FAC_CATS = { sougi: '火葬・霊園', trainer: 'しつけ・トレーニング', rojin: '老犬ホーム', sitter: 'ペットシッター', trim: 'トリミング' };
+var FAC_SITE_NAME = 'ペットのくらし窓口';
+function facPartner_(cat, fid) {
+  var sh = ensureSheet_(SpreadsheetApp.getActive(), '施設の提携先', ['分野', 'ID', '名前', 'メール', '受付中', 'メモ']);
+  if (sh.getLastRow() < 2) return null;
+  var v = sh.getRange(2, 1, sh.getLastRow() - 1, 5).getValues();
+  for (var i = 0; i < v.length; i++) if (String(v[i][0]).trim() === cat && String(v[i][1]).trim() === fid)
+    return String(v[i][4]).trim() === '○' && /@/.test(v[i][3]) ? { name: String(v[i][2]), email: String(v[i][3]).trim() } : null;
+  return null;
+}
+function facAsk_(p) {
+  var cat = clip_(p.cat, 20), fid = clip_(p.fid, 40), name = clip_(p.name, 60).trim(), email = clip_(p.email, 120).trim(), text = clip_(p.text, 3000).trim();
+  if (!FAC_CATS[cat] || !fid || !name || !text || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { ok: false, error: 'missing' };
+  var fac = facPartner_(cat, fid);
+  if (!fac) return { ok: false, error: 'not_partner' };
+  var test = /^\s*テスト/.test(name) || email.toLowerCase() === String(adminEmail_()).toLowerCase();
+  var to = test ? adminEmail_() : fac.email, id = 'F' + Utilities.formatDate(new Date(), 'Asia/Tokyo', 'MMddHHmmss');
+  var sh = ensureSheet_(SpreadsheetApp.getActive(), '施設の問い合わせ', ['受付日時', '受付番号', '分野', '施設ID', '施設', 'お名前', 'メール', '内容', 'ページ', 'テスト', '結果']);
+  sh.appendRow([new Date(), id, FAC_CATS[cat], fid, fac.name, name, email, text, clip_(p.page, 200), test ? '○' : '', '']);
+  MailApp.sendEmail({ to: to, replyTo: email, name: FAC_SITE_NAME,
+    subject: (test ? '[テスト] ' : '') + '【' + FAC_SITE_NAME + '】' + name + ' 様からのお問い合わせ（' + FAC_CATS[cat] + '）',
+    body: fac.name + ' ご担当者さま\n\n' + FAC_SITE_NAME + '（pet.shiokonbu.com）をご覧になった飼い主さまから、お問い合わせが届きました。\n' +
+      'このメールにそのまま返信すると、飼い主さま（' + email + '）に届きます。\n\n■ お名前：' + name + ' 様\n■ メール：' + email + '\n■ 受付番号：' + id + '\n\n' + text +
+      '\n\n――――――――――\n飼い主さまは、このお問い合わせを貴社にお送りすることに同意していらっしゃいます。お名前・連絡先は、このお問い合わせへのお返事のためだけにお使いください。\n' + FAC_SITE_NAME });
+  MailApp.sendEmail({ to: email, name: FAC_SITE_NAME,
+    subject: '【' + FAC_SITE_NAME + '】' + fac.name + ' にお問い合わせをお送りしました',
+    body: name + ' 様\n\n' + FAC_SITE_NAME + 'をご利用いただき、ありがとうございます。\n次の内容を ' + fac.name + ' にお送りしました。お返事は ' + fac.name + ' から、このメールアドレスに直接届きます。\n\n■ 受付番号：' + id + '\n\n' + text +
+      '\n\n――――――――――\n料金や日程は、' + fac.name + ' からのお返事でご確認ください。このメールへのご返信は、' + FAC_SITE_NAME + 'の運営者に届きます。\n' + FAC_SITE_NAME + '　https://pet.shiokonbu.com/' });
+  try { notifyAdmin_((test ? '[テスト] ' : '') + '[施設の問い合わせ] ' + fac.name, id + ' ' + FAC_CATS[cat] + ' / ' + name + ' 様\n\n' + text); } catch (err) {}
+  return { ok: true, id: id };
 }
 
 /* ───────── お問い合わせ（LPの /contact/） ───────── */
