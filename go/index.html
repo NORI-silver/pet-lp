@@ -41,9 +41,6 @@
 .go .stars label{display:flex;align-items:center;justify-content:center;width:52px;height:52px;font-size:2.4rem;line-height:1;color:#ddd6ce;cursor:pointer;margin:0;padding:0;font-weight:400;-webkit-tap-highlight-color:transparent}
 .go .stars label:active{transform:scale(1.25)}.go .stars input:checked~label{color:#ffa41c}.go .sv .ends{display:flex;justify-content:space-between;font-size:.75rem;color:var(--ink-3);max-width:290px;margin:2px auto 0}
 .go .svh{font-weight:800;margin:22px 0 2px}.go .svc{font-weight:700;margin:12px 0 4px;font-size:.92rem}.go .sv textarea{min-height:64px}
-.go .svag{border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;margin:20px 0 0;background:#fff}.go .svag .agt{font-weight:800;margin:0 0 4px}
-.go .svag label{display:flex;gap:10px;align-items:flex-start;padding:9px 0;font-weight:400;font-size:.92rem;line-height:1.5;cursor:pointer;margin:0;border-top:1px solid var(--line)}
-.go .svag input[type=checkbox]{width:22px;height:22px;flex:none;margin:1px 0 0;padding:0;accent-color:var(--o)}.go .svag .note{margin:6px 0 0}
 </style>
 <script src="/ga.js"></script>
 </head>
@@ -156,7 +153,7 @@
     if (f) f.addEventListener("submit", function(e){ e.preventDefault(); sendSurvey(f); });
   }
   if (q.get("a") === "ride" && q.get("ans") === "done" && q.get("sk") && q.get("id") && !q.get("go")) {
-    // 星とえらぶ欄（booking/Code.gs の surveyForm_ と同じ形。Nori 2026-11-15 サイトの使いやすさ、11-16 最後に載せてよいかのチェック）
+    // 星とえらぶ欄（booking/Code.gs の surveyForm_ と同じ形。Nori 2026-11-15 サイトの使いやすさ、11-16 載せることは利用規約の第9条で）
     var stars = function(key, label){
       var t = '<p class="sq">' + label + '</p><div class="stars" role="radiogroup" aria-label="' + label + '">';
       for (var n = 5; n >= 1; n--) t += '<input type="radio" name="' + key + '" value="' + n + '" id="sv_' + key + n + '"><label for="sv_' + key + n + '" aria-label="星' + n + 'つ">★</label>';
@@ -173,7 +170,7 @@
       '<p class="svh">このサイトについて</p>' +
       '<div class="sv">' + stars("site", "このサイトの使いやすさ") +
       '<p class="svc">サイトへのひとこと（任意）</p><textarea name="scomment" maxlength="500" placeholder="使いやすかったこと、わかりにくかったことなど"></textarea></div>' +
-      '<div class="svag"><p class="agt">ご感想のサイトへの掲載について（任意）</p><label><input type="checkbox" name="pub_co" value="1"><span>会社へのご感想（星・ひとこと）を、サイトに載せてもよい</span></label><label><input type="checkbox" name="pub_site" value="1"><span>このサイトへのご感想（星・ひとこと）を、サイトに載せてもよい</span></label><label><input type="checkbox" name="pub_name" value="1"><span>載せるときに、ご予約のときのお名前を出してもよい（チェックがなければ匿名で載せます）</span></label><p class="note">チェックがなければ載せません。載せる前に、運営者が中身を読みます。ひとことには電話番号・住所は書かないでください。</p></div><button type="submit">送る</button></form>';
+      '<p class="note">いただいたご感想は、<a href="/terms/" target="_blank" rel="noopener">利用規約</a>の第9条にしたがって、お名前・連絡先を出さずにサイトに載せることがあります。ひとことには電話番号・住所は書かないでください。</p><button type="submit">送る</button></form>';
     title.textContent = "送迎してもらいました"; title.hidden = false; document.title = "送迎してもらいました｜ペットタクシー予約窓口";
     body.innerHTML = h;
     hookSurvey();

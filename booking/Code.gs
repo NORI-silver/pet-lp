@@ -1637,15 +1637,16 @@ function ridePage_(q) {
    「無事に送迎できましたか？」で「送迎してもらいました」「予定と違いました」と答えた方に、続けて聞く。
    答えは「アンケート」タブに1件1行。連絡先は入れない（受付番号と会社だけ）。
    Nori 2026-11-15「サイトの利用に関しての満足も聞けるように」「匿名でウェブに掲載していいか、実名で掲載していいかのパーミッションもとって。サイトと事業者に対する」「ユーザにとって負担なく」：
-   Nori 2026-11-16「最後に利用規約じゃないけど、そんな感じでチェックをつける形に」：アンケートのいちばん最後に、
-   「会社へのご感想を載せてもよい」「このサイトへのご感想を載せてもよい」「お名前を出してもよい（なければ匿名）」のチェック（はじめはチェックなし）。
-   お名前は「お名前を出してもよい」にチェックし、どちらかの掲載にもチェックした方だけ、予約のときのお名前を残す。サイトに載せるのは、運営者が読んでから。 */
+   Nori 2026-11-16「アンケートの許諾のやつは違うな。そもそものサイトの利用規約の方に入れておこう」：載せてよいかは聞かない。
+   利用規約の第9条（ご利用後のアンケート）で、感想はお名前・連絡先を出さずに載せることがあると決め、画面にはその一文とリンクだけ出す。
+   載せてほしくない方はお問い合わせから（受付番号で探して載せない）。お名前は残さない。サイトに載せるのは、運営者が読んでから。 */
 var SHEET_SURVEY = 'アンケート';
 var SURVEY_HEADERS = ['答えた日時', '受付番号', '提携先ID', '会社', 'お迎えの都道府県', 'お迎え予定', '全体の満足度（星）', '会社の対応（星）', '料金の納得感（星）', '会社へのひとこと',
-  'サイトの使いやすさ（星）', 'サイトへのひとこと', '会社への感想の掲載', 'サイトへの感想の掲載', 'お名前（実名でOKの方だけ）'];
+  'サイトの使いやすさ（星）', 'サイトへのひとこと', '会社への感想の掲載', 'サイトへの感想の掲載', 'お名前（11/16より前に実名でOKを選んだ方だけ）'];
 // Nori 2026-11-14「簡単に答えられるように。基本星で回答」。11-15 にサイトの使いやすさを足した
 var SURVEY_Q = { sat: '全体の満足度', staff: 'ペットタクシーの会社の対応', fare: '料金の納得感', site: 'このサイトの使いやすさ' };
-var SURVEY_PUB_TEXT = { no: '載せない', anon: '匿名でOK', name: '実名でOK' };
+var SURVEY_PUB_TEXT = { no: '載せない', anon: '匿名でOK', name: '実名でOK' }; // 11/15〜16 の形で届いた答えのため
+var SURVEY_TERMS_NOTE = 'いただいたご感想は、<a href="https://pet.shiokonbu.com/terms/" target="_blank" rel="noopener">利用規約</a>の第9条にしたがって、お名前・連絡先を出さずにサイトに載せることがあります。ひとことには電話番号・住所は書かないでください。';
 function surveySheet_() {
   var sh = ensureSheet_(SpreadsheetApp.getActive(), SHEET_SURVEY, SURVEY_HEADERS);
   // 前からあるタブは見出しを今の形にそろえる（列は後ろに足しただけなので、前の行はそのまま）
@@ -1668,9 +1669,7 @@ function surveyForm_(id, r, ride) {
     '.stars label:active{transform:scale(1.25)}.stars input:checked~label{color:#ffa41c}.stars input:focus-visible+label{outline:2px solid #ff6a1a;border-radius:10px}' +
     '.sv .ends{display:flex;justify-content:space-between;font-size:.75rem;color:#8a837c;max-width:290px;margin:2px auto 0}' +
     '.svh{font-weight:800;margin:22px 0 2px}.svc{font-weight:700;margin:12px 0 4px;font-size:.92rem}.sv textarea{min-height:64px}' +
-    '.svag{border:1.5px solid #e2d8ce;border-radius:14px;padding:12px 14px;margin:20px 0 0;background:#fff}.svag .agt{font-weight:800;margin:0 0 4px}' +
-    '.svag label{display:flex;gap:10px;align-items:flex-start;padding:9px 0;font-weight:400;font-size:.92rem;line-height:1.5;cursor:pointer;margin:0;border-top:1px solid #f1ebe4}' +
-    '.svag input{width:22px;height:22px;flex:none;margin:1px 0 0;padding:0;accent-color:#ff6a1a}.svag .note{margin:6px 0 0}</style>';
+    '</style>';
   var stars = function (key) {
     var h = '<p class="sq">' + esc_(SURVEY_Q[key]) + '</p><div class="stars" role="radiogroup" aria-label="' + esc_(SURVEY_Q[key]) + '">';
     for (var n = 5; n >= 1; n--) {
@@ -1689,7 +1688,7 @@ function surveyForm_(id, r, ride) {
     '<p class="svh">このサイトについて</p>' +
     '<div class="sv">' + stars('site') +
     '<p class="svc">サイトへのひとこと（任意）</p><textarea name="scomment" maxlength="500" placeholder="使いやすかったこと、わかりにくかったことなど"></textarea></div>' +
-    '<div class="svag"><p class="agt">ご感想のサイトへの掲載について（任意）</p><label><input type="checkbox" name="pub_co" value="1"><span>会社へのご感想（星・ひとこと）を、サイトに載せてもよい</span></label><label><input type="checkbox" name="pub_site" value="1"><span>このサイトへのご感想（星・ひとこと）を、サイトに載せてもよい</span></label><label><input type="checkbox" name="pub_name" value="1"><span>載せるときに、ご予約のときのお名前を出してもよい（チェックがなければ匿名で載せます）</span></label><p class="note">チェックがなければ載せません。載せる前に、運営者が中身を読みます。ひとことには電話番号・住所は書かないでください。</p></div>' +
+    '<p class="note">' + SURVEY_TERMS_NOTE + '</p>' +
     '<button type="submit">' + (ride ? '送る' : 'アンケートを送る') + '</button></form>';
   return html;
 }
@@ -1705,8 +1704,8 @@ function surveyPage_(q) {
   if (surveyDone_(q.id)) return page_('ありがとうございました', '<p>お答えを受け付けました。またいつでもご利用ください。</p>');
   if (q.go !== '1') return page_('ご利用後のアンケート', surveyForm_(q.id, r));
   var pick = function (key) { var v = Number(q[key]); return v >= 1 && v <= 5 && Math.floor(v) === v ? v : ''; };
-  // 最後のチェック（pub_co・pub_site・pub_name が 1）。前の形（no／anon／name）で届いたものも読めるようにしておく
-  var pubOf = function (key) { return q[key] === '1' ? (q.pub_name === '1' ? 'name' : 'anon') : SURVEY_PUB_TEXT[q[key]] ? q[key] : 'no'; };
+  // 載せてよいかはもう聞かない（利用規約の第9条で匿名で載せることがある）。前の形で届いたものだけ、その答えを残す
+  var pubOf = function (key) { return q[key] === '1' ? (q.pub_name === '1' ? 'name' : 'anon') : SURVEY_PUB_TEXT[q[key]] ? q[key] : ''; };
   var safe = function (t) { return /^[=+\-@]/.test(t) ? "'" + t : t; };
   var a = { sat: pick('sat'), staff: pick('staff'), fare: pick('fare'), site: pick('site'),
     comment: clip_(String(q.comment || '').trim(), 500), scomment: clip_(String(q.scomment || '').trim(), 500), pubCo: pubOf('pub_co'), pubSite: pubOf('pub_site') };
@@ -1721,7 +1720,7 @@ function surveyPage_(q) {
   try {
     if (surveyDone_(q.id)) return page_('ありがとうございました', '<p>アンケートはすでにお答えいただいています。</p>');
     surveySheet_().appendRow([new Date(), String(q.id), r['決定した提携先ID'], r['決定した提携先'], r['都府県'], r['お迎え予定'], a.sat, a.staff, a.fare, safe(a.comment),
-      a.site, safe(a.scomment), SURVEY_PUB_TEXT[a.pubCo], SURVEY_PUB_TEXT[a.pubSite], safe(realName)]);
+      a.site, safe(a.scomment), SURVEY_PUB_TEXT[a.pubCo] || '利用規約（匿名）', SURVEY_PUB_TEXT[a.pubSite] || '利用規約（匿名）', safe(realName)]);
     SpreadsheetApp.flush();
   } finally {
     lock.releaseLock();
@@ -1730,8 +1729,8 @@ function surveyPage_(q) {
   var star = function (v) { return v ? '星' + v : '―'; };
   notifyAdmin_('アンケート ' + q.id + '：' + r['決定した提携先'] + (a.sat ? '（満足度 ' + a.sat + '）' : ''),
     '■ 会社：' + r['決定した提携先'] + '\n■ お迎え予定：' + fmt_(r['お迎え予定']) + '\n■ 全体の満足度：' + star(a.sat) +
-    '\n\n【会社について】\n■ 会社の対応：' + star(a.staff) + '\n■ 料金の納得感：' + star(a.fare) + '\n■ ひとこと：' + (a.comment || '―') + '\n■ サイトに載せる：' + SURVEY_PUB_TEXT[a.pubCo] +
-    '\n\n【サイトについて】\n■ サイトの使いやすさ：' + star(a.site) + '\n■ ひとこと：' + (a.scomment || '―') + '\n■ サイトに載せる：' + SURVEY_PUB_TEXT[a.pubSite] +
+    '\n\n【会社について】\n■ 会社の対応：' + star(a.staff) + '\n■ 料金の納得感：' + star(a.fare) + '\n■ ひとこと：' + (a.comment || '―') +
+    '\n\n【サイトについて】\n■ サイトの使いやすさ：' + star(a.site) + '\n■ ひとこと：' + (a.scomment || '―') +
     (realName ? '\n\n■ 実名で載せるときのお名前：' + realName : '') + '\n\n「アンケート」タブにも入っています。');
   return page_('ありがとうございました', '<p>アンケートを受け付けました。いただいた声は、サイトとサービスをよくするために使わせていただきます。</p><p>またいつでもご利用ください。</p>');
 }
