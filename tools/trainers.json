@@ -1,5 +1,5 @@
 {
- "_説明": "ドッグトレーナー・犬のしつけ教室の全国一覧（/dog-trainer/）のデータ。公式サイトで確かめたことだけ書く（料金・順位・電話番号は書かない）。services＝公式サイトに書いてある提供内容、area＝公式サイトに書いてある対応エリア、cert＝公式サイトに書いてある資格・登録、assoc＝協会の会員一覧に載っていること（JAPDT＝日本ペットドッグトレーナーズ協会の会員ドッグトレーナー一覧、JAHA＝日本動物病院協会のしつけ教室一覧）。review_query/review_name は口コミの星（booking/Code.gs の EMG_REVIEWS）。載せない：新規の受付をやめている教室、公式サイトのない・開けない教室、住所も対応エリアも分からない教室。 2026-11-14 から、公式サイトで確かめた料金・出張費・初回の費用・方法を facts（k・v・src・checked、料金は yen＝1回のレッスンの金額・min・tax）に入れる。",
+ "_説明": "ドッグトレーナー・犬のしつけ教室の全国一覧（/dog-trainer/）のデータ。公式サイトで確かめたことだけ書く（料金・順位・電話番号は書かない）。services＝公式サイトに書いてある提供内容、area＝公式サイトに書いてある対応エリア、cert＝公式サイトに書いてある資格・登録、assoc＝協会の会員一覧に載っていること（JAPDT＝日本ペットドッグトレーナーズ協会の会員ドッグトレーナー一覧、JAHA＝日本動物病院協会のしつけ教室一覧）。review_query/review_name は口コミの星（booking/Code.gs の EMG_REVIEWS）。載せない：新規の受付をやめている教室、公式サイトのない・開けない教室、住所も対応エリアも分からない教室。 2026-11-14 から、公式サイトで確かめた料金・出張費・初回の費用・方法を facts（k・v・src・checked、料金は yen＝1回のレッスンの金額・min・tax）に入れる。 career＝公式サイトに書いてあるトレーナー歴・開業の年（書いてある教室だけ）。src・checked＝確かめたページと日（2026-11-16 の追加分から）。",
  "checked": "2026年11月2日",
  "trainers": [
   {
@@ -2438,8 +2438,8 @@
    "city": "つくば市",
    "url": "https://dogtrainer-run.com/",
    "services": "自宅への出張のマンツーマンのしつけ（カウンセリング・ふだんの困りごと・子犬）",
-   "review_query": "つくばドッグトレーニングラン",
-   "review_name": "ドッグ・トレーニング・ラン",
+   "review_query": "つくばドッグ・トレーナー・ラン つくば市",
+   "review_name": ["つくばドッグ", "ラン"],
    "facts": [
     {
      "k": "料金",
@@ -2456,6 +2456,1271 @@
      "checked": "2026-11-16"
     }
    ]
+  },
+  {
+   "id": "T117",
+   "name": "岡部ドッグスクール",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "https://t-ods.com/",
+   "addr": "東京都大田区南六郷2-39-7",
+   "services": "パピートレーニング、出張トレーニング、オーナーレッスン（飼い主さんへの指導）、訓練競技会",
+   "area": "東京都（港区・品川区・大田区・目黒区・世田谷区）、神奈川県（川崎市川崎区）。ほかの地域は相談",
+   "cert": "登録 13東京都訓第002292号（訓練）",
+   "review_query": "岡部ドッグスクール 大田区",
+   "review_name": "岡部",
+   "src": "https://t-ods.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T118",
+   "name": "ドッグリサーチカンパニー",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "練馬区・杉並区",
+   "url": "https://dogresearch.jp/",
+   "addr": "東京都練馬区春日町5-33-29 かすがコーポラス109（練馬春日町店）／東京都杉並区荻窪4-7-12（荻窪店）",
+   "services": "犬の保育園（日中のお預かりで社会化・基礎トレーニング）、アジリティ、お預かり・ドッグホテル",
+   "area": "練馬区・中野区・世田谷区・杉並区のあたり",
+   "cert": "登録 練馬春日町店 22東京都保第007537号（保管）・22東京都訓第007537号（訓練）、荻窪店 25東京都保第008784号（保管）・25東京都訓第008784号（訓練）",
+   "review_query": "ドッグリサーチカンパニー 練馬区",
+   "review_name": "ドッグリサーチ",
+   "src": "https://dogresearch.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T119",
+   "name": "出張しつけ専門 DOGLIFE Corinth",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中央区",
+   "url": "https://doglifecorinth1313.com/",
+   "addr": "東京都中央区日本橋人形町2-20-12",
+   "services": "出張しつけ（かみつき・吠え・トイレ・散歩の悩み）",
+   "area": "東京・神奈川・埼玉・千葉を中心に、遠方は出張料が別",
+   "career": "ドッグトレーナーとして9年",
+   "review_query": "出張しつけ専門 DOGLIFE Corinth 中央区",
+   "review_name": "Corinth",
+   "src": "https://doglifecorinth1313.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T120",
+   "name": "ドッグ・インデックス（Dog index）",
+   "prefs": [
+    "東京都",
+    "神奈川県"
+   ],
+   "city": "調布市・府中市など",
+   "url": "https://www.dogindex.jp/",
+   "services": "出張ドッグトレーニング（おやつや力を使わない）",
+   "area": "東京都（調布・府中・多摩・小金井・武蔵野・立川・日野・国立・国分寺・稲城・町田・三鷹・狛江・西東京・世田谷・杉並・渋谷・目黒・豊島・新宿・板橋・練馬・品川・大田）、神奈川県（大和市・綾瀬市・藤沢市・横浜市瀬谷区・泉区）",
+   "cert": "愛玩動物飼養管理士、ペットマッサージ・セラピスト（日本ペットマッサージ協会）",
+   "src": "https://www.dogindex.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T121",
+   "name": "DOG TRAINING KURAMOCHI",
+   "prefs": [
+    "東京都",
+    "神奈川県"
+   ],
+   "city": "稲城市・調布市など",
+   "url": "https://www.kuramochi-doglife.jp/",
+   "services": "しつけ相談、パピーレッスン、出張しつけ教室、出張トレーニング、お散歩レッスン、日帰り・長期のお預かりトレーニング",
+   "area": "東京都（稲城市・狛江市・調布市、多摩市・府中市の一部）、神奈川県（川崎市麻生区・多摩区）",
+   "src": "https://www.kuramochi-doglife.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T122",
+   "name": "大島ドッグトレーニングスクール",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市泉区",
+   "url": "https://www.odts.jp/",
+   "services": "家庭犬の基本しつけ、パピートレーニング、犬のしつけ教室、お預かりトレーニング、救助犬・警察犬などの訓練",
+   "area": "横浜市とそのまわり（遠方は交通費が別）",
+   "cert": "登録 88-052（訓練）・88-051（販売）",
+   "src": "https://www.odts.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T123",
+   "name": "わんこの学校 ドッグベースキャンプ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://dogbc.jp/",
+   "addr": "神奈川県横浜市青葉区美しが丘4-7-28 メゾンドアミ1F",
+   "services": "教室でのプライベートトレーニング、出張トレーニング",
+   "area": "横浜市青葉区・都筑区を中心に、港北区・緑区、川崎市麻生区・宮前区など",
+   "review_query": "わんこの学校 ドッグベースキャンプ 横浜市青葉区",
+   "review_name": "ドッグベースキャンプ",
+   "src": "https://dogbc.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T124",
+   "name": "白川ドッグスクール",
+   "prefs": [
+    "神奈川県",
+    "東京都"
+   ],
+   "city": "横浜市緑区",
+   "url": "https://www.shirakawadog.com/",
+   "services": "お預かりトレーニング（半日）、体験レッスン、出張訪問しつけ教室、葉山フィールドでのしつけ教室、アジリティーレッスン",
+   "area": "横浜市・鎌倉市・逗子市・横須賀市、東京都の品川・大田・目黒・世田谷の一部（出張）",
+   "cert": "JKC公認訓練士、日本シェパード犬登録協会公認訓練士、日本警察犬協会公認訓練士、登録 81-008（訓練）・81-007（保管）・81-006（販売）",
+   "src": "https://www.shirakawadog.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T125",
+   "name": "いぬのトレーニング HAPPY WAN",
+   "prefs": [
+    "神奈川県",
+    "東京都"
+   ],
+   "city": "相模原市",
+   "url": "https://www.happywan.net/",
+   "services": "出張ドッグトレーニング（吠え・かみ・散歩の引っぱり・トイレなどの改善）",
+   "area": "相模原市・町田市・八王子市を中心に、座間市・愛川町・日野市・多摩市。一部は横浜市・川崎市・立川市・厚木市・海老名市・大和市・昭島市・あきる野市",
+   "cert": "JKC公認訓練士、登録 203-00014号（訓練）・203-00181号（保管）",
+   "src": "https://www.happywan.net/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T126",
+   "name": "YUMA DOG SCHOOL（ゆまドッグスクール）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "鎌倉市",
+   "url": "https://yuma-dogschool.jp/pages/top.php",
+   "addr": "神奈川県鎌倉市腰越1667",
+   "services": "犬のしつけ・訓練、ドッグホテル、老犬の介護のお預かり、お散歩代行",
+   "area": "湘南（鎌倉・藤沢・茅ヶ崎・横浜・横須賀・逗子）を中心",
+   "cert": "登録 第220182号（訓練）・第220180号（保管）・第220179号（販売）・第220181号（貸出）",
+   "review_query": "YUMA DOG SCHOOL 鎌倉市",
+   "review_name": "YUMA",
+   "src": "https://yuma-dogschool.jp/pages/top.php",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T127",
+   "name": "WAG TAIL（ワグテイル）",
+   "prefs": [
+    "神奈川県",
+    "東京都"
+   ],
+   "city": "横浜市・川崎市",
+   "url": "https://www.wagtail-dog.com/",
+   "services": "出張トレーニング（自宅・散歩コース・公園。子犬のしつけ、吠え・かみつき・引っぱりの相談）",
+   "area": "神奈川県（横浜市・川崎市）、東京都（世田谷区・目黒区・大田区など）",
+   "src": "https://www.wagtail-dog.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T128",
+   "name": "ドッグスクール Visse",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市",
+   "url": "https://visse.co.jp/",
+   "services": "子犬のしつけレッスン、吠え・かみなどの問題行動のレッスン、出張レッスン、オンラインカウンセリング",
+   "area": "横浜市（オンラインは全国）",
+   "src": "https://visse.co.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T129",
+   "name": "ABOUT DOGS（アバウトドッグス）",
+   "prefs": [
+    "千葉県",
+    "東京都"
+   ],
+   "city": "船橋市",
+   "url": "https://www.ab-dogs.com/",
+   "addr": "千葉県船橋市西船1-21-7（事務所）",
+   "services": "出張ドッグトレーニング・行動相談、1日保育園（デイケア）、お散歩会",
+   "area": "千葉県（船橋・市川・浦安・習志野・千葉・松戸・鎌ケ谷・柏・流山・白井・八千代・佐倉・四街道など）、東京23区（江戸川区・江東区など）",
+   "cert": "愛玩動物看護師、登録 第10号4-1号（訓練）・第10号2-3号（保管）",
+   "review_query": "ABOUT DOGS 船橋市",
+   "review_name": "ABOUT DOGS",
+   "src": "https://www.ab-dogs.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T130",
+   "name": "Leon's Doggy ドッグトレーニング教室",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://leonsdoggy.net/",
+   "addr": "千葉県松戸市六実2-13-1",
+   "services": "基本のしつけ、かみ癖・吠え癖の相談、子犬の社会化トレーニング（保育園）、ペットホテル、出張での初回レッスン",
+   "area": "千葉のあたり",
+   "cert": "日本ドッグトレーナー協会（JTDA）A級ライセンス、愛玩動物救命士、登録 17-松健福446-4",
+   "review_query": "Leon's Doggy ドッグトレーニング教室 松戸市",
+   "review_name": "Leon",
+   "src": "https://leonsdoggy.net/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T131",
+   "name": "Dog School Spica（ドッグスクールスピカ）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "東金市",
+   "url": "https://dog-school-spica.com/",
+   "addr": "千葉県東金市関内611-3",
+   "services": "家庭犬のしつけ、問題行動の改善、子犬のトレーニング、出張レッスン、お預かりレッスン、ペットホテル、送迎",
+   "area": "東金市・八街市・富里市・山武市・成田市・千葉市・佐倉市・酒々井町など（遠方は送迎で相談）",
+   "cert": "登録 19-山健福432-1（訓練）・19-山健福354-2（保管）",
+   "review_query": "Dog School Spica 東金市",
+   "review_name": "Spica",
+   "src": "https://dog-school-spica.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T132",
+   "name": "いぬとれ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://www.inutore.net/",
+   "addr": "千葉県船橋市前原東1-4-5",
+   "services": "問題行動（吠える・かむ・引っぱる）の改善、パピートレーニング、いぬとれようちえん（生後3か月〜1歳半）、しつけカウンセリング",
+   "review_query": "いぬとれ 船橋市",
+   "review_name": "いぬとれ",
+   "src": "https://www.inutore.net/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T133",
+   "name": "DOG TRAINING バロン",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "https://baron-dog-t.com/",
+   "addr": "千葉県流山市北134-23",
+   "services": "犬のしつけ・訓練、お預かり（ホテル）、保育園・ドッグラン",
+   "area": "千葉県（流山・柏・松戸・野田・我孫子・市川）、埼玉県（三郷・吉川）、東京都（葛飾・江戸川）。20km以上は交通費が別",
+   "cert": "日本警察犬協会公認訓練士、愛玩動物飼養管理士1級、登録 15-松健福184-7（訓練）・15-松健福793-2（保管）・20-松健福211-6（販売）",
+   "review_query": "DOG TRAINING バロン 流山市",
+   "review_name": "バロン",
+   "src": "https://baron-dog-t.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T134",
+   "name": "ドッグスクール シュパース（Dog School Spaß）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://www.dogschoolsyupas.com/",
+   "addr": "千葉県松戸市小金458",
+   "services": "出張レッスン・カウンセリング、お預かりトレーニング、少人数の犬の保育園、服従訓練",
+   "area": "松戸市を中心に、市川市・流山市・柏市・葛飾区など",
+   "cert": "JKC公認訓練士、日本警察犬協会公認三等訓練士、登録 23-松健福350-4（訓練）",
+   "review_query": "ドッグスクール シュパース 松戸市",
+   "review_name": "シュパース",
+   "src": "https://www.dogschoolsyupas.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T135",
+   "name": "犬のしつけとトリミング専門店 MoveOn（ムーヴオン）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://www.dms-moveon.com/",
+   "services": "犬のしつけ、犬の保育園、パピーパーティー、1dayレッスン、カウンセリング、トリミング、ペットホテル（送迎あり）",
+   "area": "船橋・市川・浦安",
+   "cert": "登録 第13-4-12号（訓練）・第13-2-12号（保管）・第23-1-4号（販売）",
+   "src": "https://www.dms-moveon.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T136",
+   "name": "遠藤ドッグトレーニング",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://endogtraining.com/",
+   "services": "訪問指導、預託訓練、しつけ教室、子犬の学校、ペットホテル",
+   "area": "柏市・松戸市・流山市・野田市・市川市、東京都・埼玉県・神奈川県（訪問指導）",
+   "cert": "JKC公認訓練士",
+   "src": "https://endogtraining.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T137",
+   "name": "ナカムラ・ドッグ・スクール",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://nakamura-ds.com/",
+   "services": "犬のようちえん・託児所（ほかの犬と交流しながら社会性づくり）、マンツーマンのプライベートレッスン（出張あり）",
+   "cert": "日英家庭犬トレーニング協会認定トレーナー、登録 06-柏保16-4",
+   "src": "https://nakamura-ds.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T138",
+   "name": "Bande（バンデ）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市・習志野市など",
+   "url": "http://bande.jellybean.jp/",
+   "services": "出張トレーニング、オンラインレッスン、グループレッスン、保護犬コース",
+   "area": "船橋市・習志野市・千葉市（一部）・市川市・八千代市・印西市・白井市。ほかの地域も相談（出張費は別）",
+   "src": "http://bande.jellybean.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T139",
+   "name": "よいわんわん",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "酒々井町",
+   "url": "https://4111-yoiwanwan.com/",
+   "services": "家庭犬のしつけ、犬の保育園（幼稚園コース）、お預かりコース、出張コース、天然芝のドッググランドで見学・体験",
+   "area": "千葉市・四街道市・佐倉市は送迎・出張あり。佐倉市・四街道市・印西市・成田市を中心に、ほかは相談",
+   "src": "https://4111-yoiwanwan.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T140",
+   "name": "市原市犬のしつけ教室 ONLY WAN（オンリー・ワン）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市原市",
+   "url": "https://i-onlywan.com/",
+   "addr": "千葉県市原市今富472-2",
+   "services": "しつけ・訓練コース、アジリティー、フライボール教室、ペットホテル（送迎は有料）",
+   "cert": "JKC公認訓練士、日本警察犬協会公認訓練士、登録 18-市原健福777-3（訓練）・18-市原健福284-9（保管）・18-市原健福177-10（販売）・18-市原健福1070-2（貸出）",
+   "review_query": "市原市犬のしつけ教室 ONLY WAN 市原市",
+   "review_name": "ONLY WAN",
+   "src": "https://i-onlywan.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T141",
+   "name": "With dog（ウィズドッグ）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "浦安市",
+   "url": "https://www.withdog11.com/",
+   "addr": "千葉県浦安市堀江4-16-2-102",
+   "services": "しつけ教室（パピーからシニアまで）、プライベートレッスン、お預かり、オンラインレッスン、グルーミング",
+   "review_query": "With dog 浦安市",
+   "review_name": "With dog",
+   "src": "https://www.withdog11.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T142",
+   "name": "成田ドッグガーデン",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "富里市",
+   "url": "https://naritadog.com/",
+   "addr": "千葉県富里市日吉倉276",
+   "services": "家庭犬のしつけ（ドッグトレーナーのマンツーマンレッスン）、ドッグラン",
+   "cert": "登録 09-印健福215-2（訓練）・09-印旛福214-2（保管）",
+   "review_query": "成田ドッグガーデン 富里市",
+   "review_name": "成田ドッグガーデン",
+   "src": "https://naritadog.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T143",
+   "name": "犬のしつけ幼稚園 WONEMAKE（ワンメイク）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "木更津市・富津市",
+   "url": "https://www.wonemake.jp/",
+   "services": "しつけ幼稚園（日中のお預かり）、マンツーマンレッスン・グループレッスン、飼い主さんへの指導、オンラインレッスン、ディスクドッグ",
+   "area": "木更津市・袖ケ浦市・君津市・市原市・富津市・鴨川市・南房総市・館山市・外房",
+   "cert": "登録 11-君健福1169-7（訓練）・09-君健福83-4（保管）・10-君健福2359-4（販売）",
+   "src": "https://www.wonemake.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T144",
+   "name": "東京DOGS（埼玉の店）",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "越谷市・所沢市・春日部市・さいたま市南区",
+   "url": "https://tokyo-dogs.com/",
+   "services": "預かりしつけ教室、犬の幼稚園、パピーパーティー、出張しつけ教室、来店型のしつけ教室、ペットホテル、無料体験会",
+   "area": "越谷・所沢・春日部・浦和に店",
+   "cert": "JKC公認訓練士、日本警察犬協会公認訓練士（代表トレーナー）",
+   "src": "https://tokyo-dogs.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T145",
+   "name": "西原ドッグスクール",
+   "prefs": [
+    "埼玉県",
+    "東京都"
+   ],
+   "city": "朝霞市",
+   "url": "https://www.nishihara-dog.com/",
+   "addr": "埼玉県朝霞市浜崎",
+   "services": "出張訓練、預かり訓練、グループのしつけ教室、一時預かり",
+   "area": "しつけ教室は東京都内と埼玉県南部。出張訓練はほかの地域も相談",
+   "cert": "登録 第55-0146号（訓練）・第55-0145号（保管）",
+   "review_query": "西原ドッグスクール 朝霞市",
+   "review_name": "西原ドッグスクール",
+   "src": "https://www.nishihara-dog.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T146",
+   "name": "ペットスタジオ ホッチ（Pet Studio Hocci）",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "入間市",
+   "url": "https://www.hocci-pal.jp/",
+   "addr": "埼玉県入間市東町1-2-22 ジョンソンタウン2428S",
+   "services": "パピートレーニング、スクールコース（平日のお預かり型）、お泊りトレーニング、レッスンコース、ドッグダンス、オンライントレーニング",
+   "review_query": "ペットスタジオ ホッチ 入間市",
+   "review_name": "ホッチ",
+   "src": "https://www.hocci-pal.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T147",
+   "name": "犬の学び場 わんとわん",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川口市",
+   "url": "https://wan-to-wan.jp/",
+   "addr": "埼玉県川口市戸塚東2-25-8",
+   "services": "犬の幼稚園、パピークラス（1歳未満）、ゲーム形式のしつけ教室、しつけカウンセリング",
+   "area": "川口市（越谷市・さいたま市からも）",
+   "review_query": "犬の学び場 わんとわん 川口市",
+   "review_name": "わんとわん",
+   "src": "https://wan-to-wan.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T148",
+   "name": "Peach Lily Dog School（ピーチリリードッグスクール）",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://peach-lily-dog-school.com/",
+   "addr": "茨城県つくば市遠東452-3",
+   "services": "犬の幼稚園（送迎は相談）、出張訓練、預かり訓練（2週間・1か月）、無料のオンライン相談",
+   "area": "つくば市・土浦市・牛久市・守谷市・取手市・下妻市・常総市（出張はつくば市を中心とした県南）",
+   "cert": "JKC公認訓練士、愛玩動物看護師、登録 茨城県第3578号（訓練）・第3577号（保管）・第3575号（販売）・第3576号（貸出し）",
+   "review_query": "Peach Lily Dog School つくば市",
+   "review_name": "Peach Lily",
+   "src": "https://peach-lily-dog-school.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T149",
+   "name": "ドッグスクール山口",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://dogschool-yamaguchi.jp/price",
+   "addr": "茨城県つくば市要544-1",
+   "services": "出張コース、保育園コース、預かり訓練",
+   "area": "つくば地方を中心に県南。預かり訓練は茨城県全域と東京・千葉・埼玉・神奈川・栃木・群馬",
+   "cert": "登録 茨城県第1914号（訓練）・第2321号（保管）・第2602号（販売）",
+   "review_query": "ドッグスクール山口 つくば市",
+   "review_name": "ドッグスクール山口",
+   "src": "https://dogschool-yamaguchi.jp/price",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T150",
+   "name": "出張ドッグトレーニング Wanlife（わんらいふ）",
+   "prefs": [
+    "茨城県",
+    "栃木県"
+   ],
+   "city": "古河市",
+   "url": "https://dogtrainingwanlife.com/",
+   "addr": "茨城県古河市駒羽根17-7",
+   "services": "出張トレーニング、合宿トレーニング（3か月単位のお預かり）、わんちゃん幼稚園（日中のお預かり）",
+   "area": "茨城県（古河市・結城市）、栃木県（小山市・野木町・佐野市・栃木市）、群馬県（館林市・板倉町）、埼玉県（加須市・久喜市・羽生市など）。ほかも相談",
+   "cert": "JDAホームドッグトレーナー1級、愛玩動物飼養管理士1級、登録 茨城県第3305号（訓練）・第3304号（保管）",
+   "review_query": "出張ドッグトレーニング Wanlife 古河市",
+   "review_name": "Wanlife",
+   "src": "https://dogtrainingwanlife.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T151",
+   "name": "水戸警察犬訓練所",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://www.mito-policedog-school.com/",
+   "addr": "茨城県水戸市見和1-411-1",
+   "services": "しつけ・訓練、お預かり、個別トレーニング、ペットホテル、入所・退所の送迎",
+   "cert": "日本警察犬協会公認訓練所、JKC公認訓練士、登録 茨城県第0448号（訓練）・第0447号（保管）・第0446号（販売）",
+   "review_query": "水戸警察犬訓練所 水戸市",
+   "review_name": "水戸警察犬訓練所",
+   "src": "https://www.mito-policedog-school.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T152",
+   "name": "永田ドッグスクール",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "笠間市",
+   "url": "https://www.nagata-dog.com/",
+   "addr": "茨城県笠間市片庭2791",
+   "services": "犬のしつけ（基礎クラス）、アジリティー、見学",
+   "review_query": "永田ドッグスクール 笠間市",
+   "review_name": "永田ドッグスクール",
+   "src": "https://www.nagata-dog.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T153",
+   "name": "ワンダフルパートナー",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://wonderful-partner.jp/",
+   "addr": "茨城県水戸市大塚町1803-3",
+   "services": "しつけ・問題行動のトレーニング（教室・オンライン）、飼い主さんの相談、日帰りのお預かり、ペットホテル、会員制ドッグラン",
+   "area": "水戸市のあたり（遠方はオンライン）。小型犬から大型犬まで",
+   "cert": "登録 茨城県1260号（訓練）・1259号（保管）",
+   "review_query": "ワンダフルパートナー 水戸市",
+   "review_name": "ワンダフルパートナー",
+   "src": "https://wonderful-partner.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T154",
+   "name": "ドッグスクール小佐野",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "佐野市",
+   "url": "https://www.dogschool-kosano.net/",
+   "addr": "栃木県佐野市上羽田町515",
+   "services": "しつけ教室、お預かり・出張のトレーニング、犬のようちえん、お泊り保育",
+   "review_query": "ドッグスクール小佐野 佐野市",
+   "review_name": "小佐野",
+   "src": "https://www.dogschool-kosano.net/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T155",
+   "name": "ママダドッグスクール",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "小山市",
+   "url": "https://www.mamadadogschool.com/",
+   "addr": "栃木県小山市間々田1471-3",
+   "services": "家庭犬のしつけ・訓練、犬についての相談",
+   "cert": "登録 栃木県動愛セ17訓第004号（訓練）",
+   "review_query": "ママダドッグスクール 小山市",
+   "review_name": "ママダ",
+   "src": "https://www.mamadadogschool.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T156",
+   "name": "ドッグトレーニング ELF（エルフ）",
+   "prefs": [
+    "栃木県",
+    "群馬県"
+   ],
+   "city": "足利市",
+   "url": "https://elf.chiharuya.com/",
+   "addr": "栃木県足利市通5-3218",
+   "services": "しつけ教室・出張しつけ、問題行動の改善、お預かりトレーニング、ペットホテル",
+   "area": "足利市のあたり（館林・桐生・太田・佐野）、伊勢崎市、深谷市など。ほかも相談",
+   "review_query": "ドッグトレーニング ELF 足利市",
+   "review_name": "ELF",
+   "src": "https://elf.chiharuya.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T157",
+   "name": "犬の学校 栃木県警察犬訓練所",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "下野市",
+   "url": "https://www.tochigi-dogschool.com/",
+   "addr": "栃木県下野市中大領406-2",
+   "services": "預かり訓練、しつけ方教室、犬の幼稚園、ペットホテル（かみつき・無駄吠え・トイレ・引っぱりの改善）",
+   "area": "下野市・壬生町・宇都宮市・佐野市・小山市・栃木市・真岡市、茨城県結城市・筑西市のあたり",
+   "review_query": "犬の学校 栃木県警察犬訓練所 下野市",
+   "review_name": "栃木県警察犬訓練所",
+   "src": "https://www.tochigi-dogschool.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T158",
+   "name": "幸せペットライフの家 わんず",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "下野市・宇都宮市",
+   "url": "https://www.yano-dog1.com/",
+   "addr": "栃木県下野市下長田350-4",
+   "services": "犬のしつけ・訓練、問題行動の改善（無駄吠え・かみ癖・引っぱり）、訓練のあとの飼い主さんへの指導、出張トレーニング",
+   "area": "宇都宮市",
+   "cert": "公認訓練士（日本シェパード犬登録協会・日本警察犬協会・JKC）",
+   "review_query": "幸せペットライフの家 わんず 下野市",
+   "review_name": "わんず",
+   "src": "https://www.yano-dog1.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T159",
+   "name": "ドッグトレーニング アイズ",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://www.dogtrainerayes.com/",
+   "addr": "群馬県高崎市中尾町26-1",
+   "services": "しつけ・訓練、犬の幼稚園（一日・お泊り、送迎バスあり）、パピー教室、トイレトレーニングのコース、ペットホテル",
+   "area": "前橋市・高崎市・伊勢崎市・藤岡市・安中市・富岡市・玉村町・渋川市・沼田市・吉岡町・榛東村・昭和村のあたり",
+   "cert": "JKC公認訓練士、日本警察犬協会公認訓練士",
+   "review_query": "ドッグトレーニング アイズ 高崎市",
+   "review_name": "アイズ",
+   "src": "https://www.dogtrainerayes.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T160",
+   "name": "犬の学校 goodone（ぐっどわん）伊勢崎店",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "伊勢崎市",
+   "url": "https://www.fukaya-dogschool.com/facility/goodone_isesaki.html",
+   "addr": "群馬県伊勢崎市宮子町3200 カインズホーム伊勢崎店2F",
+   "services": "ふれあい保育、パピー教室、犬の幼稚園、お泊り保育、しつけ方教室、ペットホテル",
+   "area": "伊勢崎市・前橋市・玉村町・高崎市・太田市・大泉町・桐生市・みどり市、埼玉県深谷市・熊谷市・本庄市のあたり",
+   "cert": "JKC公認訓練士、愛玩動物飼養管理士2級、登録 0825-012（訓練）・0825-011（保管）",
+   "review_query": "犬の学校 goodone 伊勢崎市",
+   "review_name": "goodone",
+   "src": "https://www.fukaya-dogschool.com/facility/goodone_isesaki.html",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T161",
+   "name": "犬のしつけ専門店 ぽぽハウス",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "前橋市",
+   "url": "https://popo-house.com/",
+   "addr": "群馬県前橋市富士見町小沢355",
+   "services": "お預かりトレーニング、日帰りのお預かり、カウンセリング、オンラインレッスン",
+   "area": "前橋市（オンラインは遠方も）",
+   "cert": "愛玩動物飼養管理士2級、登録 第010000-22-7号（訓練）",
+   "review_query": "犬のしつけ専門店 ぽぽハウス 前橋市",
+   "review_name": "ぽぽハウス",
+   "src": "https://popo-house.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T162",
+   "name": "ミキコドッグスクール",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市山科区",
+   "url": "https://mikikodogschool.com/",
+   "addr": "京都府京都市山科区大塚高岩12-142",
+   "services": "犬との暮らし方教室（パピークラスなどのグループレッスン）、プライベートレッスン、出張レッスン、犬の幼稚園",
+   "area": "京都市内の会場（京滋の動物病院と提携）",
+   "cert": "登録 京都市第250054号（訓練）",
+   "review_query": "ミキコドッグスクール 京都市山科区",
+   "review_name": "ミキコ",
+   "src": "https://mikikodogschool.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T163",
+   "name": "京洛警察犬訓練所",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市西京区",
+   "url": "https://kyorak.com/",
+   "addr": "京都府京都市西京区大原野上里南ノ町82",
+   "services": "家庭犬のしつけ・訓練、しつけ教室、ドッグホテル、ドッグラン",
+   "cert": "登録 060181号（訓練）・060180号（保管）・060179号（販売）・110046号（貸出し）",
+   "review_query": "京洛警察犬訓練所 京都市西京区",
+   "review_name": "京洛警察犬",
+   "src": "https://kyorak.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T164",
+   "name": "アイソピア☆ドッグスクール",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "大津市",
+   "url": "https://aisopia-dog.exp.jp/school/",
+   "addr": "滋賀県大津市仰木7-1-8",
+   "services": "依託訓練、出張訓練、しつけ訓練",
+   "cert": "JKC公認訓練士、登録 大健保動セ第157-10132-04号（訓練）・第157-10132-02号（保管）",
+   "review_query": "アイソピア☆ドッグスクール 大津市",
+   "review_name": "アイソピア",
+   "src": "https://aisopia-dog.exp.jp/school/",
+   "checked": "2026-11-16",
+   "facts": [
+    {
+     "k": "預かり",
+     "v": "依託訓練は犬をあずかって3〜6か月で家庭犬の基本（お座り・脚側行進・まて・呼び込み・ふせ）を教え、問題行動の改善も並行する。訓練中に会いに行け、週末に家へ帰すことも相談できる",
+     "src": "https://aisopia-dog.exp.jp/itaku/",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "出張費",
+     "v": "出張訓練はトレーナーが家に来て、グラウンドや公園で週1〜2回続ける。期間と内容は希望に合わせて決める",
+     "src": "https://aisopia-dog.exp.jp/visit/",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "しつけの方法",
+     "v": "犬の性格に合わせた訓練・しつけを、飼い主さんと一緒に行う",
+     "src": "https://aisopia-dog.exp.jp/school/",
+     "checked": "2026-11-16"
+    }
+   ]
+  },
+  {
+   "id": "T165",
+   "name": "Sherpa Pet Service（シェルパ・ペットサービス）",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "長浜市",
+   "url": "https://sherpadog.jp/profile",
+   "services": "動物福祉を大切にした出張ドッグトレーニング、飼い主さん向けセミナー（ペットシッター・出張トリミングも）",
+   "area": "長浜市・米原市・彦根市（一部）、岐阜県の関ケ原町・垂井町・大垣市など。ほかは相談",
+   "cert": "CPDT-KA、Fear Free Certified Animal Trainer、愛玩動物看護師、登録 滋賀県動保セ第60061-04号（訓練）・第60061-02号（保管）",
+   "src": "https://sherpadog.jp/profile",
+   "checked": "2026-11-16",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "成犬トレーニングは1回60分5,500円（4回21,120円・8回39,600円）。パピートレーニング（生後6か月未満）は1回60分4,400円（4回16,720円・8回30,800円）。税込",
+     "yen": 5500,
+     "src": "https://sherpadog.jp/dogtraining",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "初回・体験",
+     "v": "初回カウンセリングは必須で約2時間4,400円（税込、延長は30分ごと1,100円）。家に来て悩みと暮らし方を聞き、方針を出す。そのあとの契約は強制しない",
+     "src": "https://sherpadog.jp/dogtraining",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "出張費",
+     "v": "長浜市役所浅井支所からの直線距離1kmあたり55円（税込）を往復分。高速道路の料金は実費",
+     "src": "https://sherpadog.jp/dogtraining",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "対象の犬",
+     "v": "生後6か月未満の子犬、吠えやかみなどの困りごとのある成犬、迎えたばかりの保護犬（お迎えから半年以内は保護犬割引あり）",
+     "src": "https://sherpadog.jp/dogtraining",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "しつけの方法",
+     "v": "体罰・脅し・チョークチェーンなどは使わず、応用行動分析にもとづいて食べ物などのごほうびで教える。問題行動は環境の調整から始め、体の調子にも気を配る",
+     "src": "https://sherpadog.jp/trainingpolicy",
+     "checked": "2026-11-16"
+    }
+   ]
+  },
+  {
+   "id": "T166",
+   "name": "Doglogue（ドッグローグ）",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "東大阪市",
+   "url": "https://doglogue.studio.site/",
+   "services": "しつけ・問題行動（吠え・かみ・トイレなど）の相談",
+   "area": "東大阪市を中心に",
+   "src": "https://doglogue.studio.site/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T167",
+   "name": "新大阪警察犬訓練所",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "摂津市",
+   "url": "https://www.shin-osaka-pd.com/",
+   "addr": "大阪府摂津市南別府町8-43",
+   "services": "しつけ相談、基本・高等訓練、出張訓練、預託訓練",
+   "area": "出張は地域により交通費が別",
+   "cert": "登録 大阪府412-4（訓練）・412-2（保管）・412-1（販売）",
+   "review_query": "新大阪警察犬訓練所 摂津市",
+   "review_name": "新大阪警察犬訓練所",
+   "src": "https://www.shin-osaka-pd.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T168",
+   "name": "School of DOG（スクールオブドッグ）",
+   "prefs": [
+    "大阪府",
+    "東京都"
+   ],
+   "city": "大阪市西区",
+   "url": "https://schoolofdog.tokyo/",
+   "services": "しつけ教室、預かり、無駄吠え・トイレ・散歩のトレーニング、ペットホテル、送迎",
+   "area": "東京（目黒区・世田谷区）、大阪（西区）に店",
+   "src": "https://schoolofdog.tokyo/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T169",
+   "name": "Dog&Owner support Liofriends（リオフレンズ）",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "吹田市",
+   "url": "https://www.liofriends.com/",
+   "addr": "大阪府吹田市青山台2-1-7 青山台近隣センター内",
+   "services": "平日の犬の幼稚園（朝から夕方までのお預かり）、土日のレッスン（パピー・ジュニア・シニア・歯みがき教室）",
+   "cert": "愛玩動物看護師、登録 5093-2・5093-4",
+   "review_query": "Dog&Owner support Liofriends 吹田市",
+   "review_name": "Liofriends",
+   "src": "https://www.liofriends.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T170",
+   "name": "犬のしつけ教室 ドッグトレーナー田口",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "八尾市",
+   "url": "https://www.dogtrainertaguchi.com/",
+   "services": "出張しつけ（問題行動の相談・基礎訓練・トリック・ドッグダンス）、1日フリーパスコース",
+   "area": "大阪市・八尾市（家か家の近くまで）",
+   "cert": "登録 4537-4（訓練）・4537-2（保管）",
+   "src": "https://www.dogtrainertaguchi.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T171",
+   "name": "One Partner（ワンパートナー）",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市鶴見区",
+   "url": "https://www.one-partner.jp/",
+   "addr": "大阪府大阪市鶴見区浜1-2-62（鶴見緑地パートナードッグタウン）",
+   "services": "犬の幼稚園・ドッグスクール（日中のお預かり）、訪問しつけ、しつけ教室・セミナー、ドッグラン",
+   "cert": "登録 第20039D号（訓練）",
+   "review_query": "One Partner 大阪市鶴見区",
+   "review_name": "One Partner",
+   "src": "https://www.one-partner.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T172",
+   "name": "六甲警察犬訓練所・六甲ドッグスクール",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "三木市",
+   "url": "https://www.rokko-dog.net/",
+   "addr": "兵庫県三木市別所町下石野1108-456",
+   "services": "預託訓練、出張訓練、通いのしつけ教室、ペットホテル、無料相談",
+   "area": "神戸市のあたり",
+   "career": "1971年に開業",
+   "review_query": "六甲警察犬訓練所・六甲ドッグスクール 三木市",
+   "review_name": "六甲警察犬訓練所",
+   "src": "https://www.rokko-dog.net/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T173",
+   "name": "digdagdog（ディグダグドッグ）",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市・芦屋市・西宮市",
+   "url": "https://www.digdagdog.net/",
+   "services": "初回カウンセリング、問題行動のコンサルティング、出張トレーニング、オンラインサポート",
+   "area": "神戸・芦屋・西宮（家に来てくれる）。オンラインはほかの地域も",
+   "cert": "CPDT-KA、愛玩動物飼養管理士、登録 神健保第0122011号",
+   "career": "犬の幼稚園でドッグトレーナーとして7年",
+   "src": "https://www.digdagdog.net/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T174",
+   "name": "littledog家庭犬しつけ教室",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "姫路市",
+   "url": "https://littledoghimejisituke.com/",
+   "addr": "兵庫県姫路市南条477-2",
+   "services": "家庭犬のしつけ教室（パピーから成犬まで、マンツーマンと合同クラス）、オンラインしつけ教室、卒業後のフォロー教室",
+   "area": "姫路市とそのまわり（オンラインは全国）",
+   "cert": "登録 第413-02602号（訓練）・第210-08903号（保管）",
+   "review_query": "littledog家庭犬しつけ教室 姫路市",
+   "review_name": "littledog",
+   "src": "https://littledoghimejisituke.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T175",
+   "name": "DOCROVER（ドックローバー）",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "姫路市",
+   "url": "https://docrover2012.com/",
+   "addr": "兵庫県姫路市別所町別所1-57",
+   "services": "犬の幼稚園、パピーレッスン（6か月まで）、スターター・ベーシックレッスン、ドッグスポーツ、ドッグホテル（生徒の犬だけ）",
+   "area": "姫路・高砂・加古川",
+   "cert": "登録 姫路第424-051（訓練）・姫路第224-275（保管）",
+   "review_query": "DOCROVER 姫路市",
+   "review_name": "DOCROVER",
+   "src": "https://docrover2012.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T176",
+   "name": "おりこうさん。",
+   "prefs": [
+    "兵庫県",
+    "大阪府"
+   ],
+   "city": "芦屋市・西宮市など",
+   "url": "https://orikosan.com/",
+   "services": "家に来てくれるしつけトレーニング、お散歩代行",
+   "area": "芦屋市・西宮市・宝塚市・川西市・伊丹市・尼崎市・神戸市の一部、大阪府の北摂",
+   "cert": "カレン・プライヤーアカデミー認定トレーナー、登録 兵動第0814023号（訓練）・兵動第0812022号（保管）",
+   "src": "https://orikosan.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T177",
+   "name": "ドッグライフプランナーズ 西宮校",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "西宮市",
+   "url": "https://www.dog-lp.com/nishinomiya/",
+   "addr": "兵庫県西宮市甲陽園本庄町8-17",
+   "services": "しつけ教室・トレーニング、犬の保育園、ドッグホテル",
+   "cert": "登録 西宮市第184367号（訓練）・第182366号（保管）",
+   "review_query": "ドッグライフプランナーズ 西宮校 西宮市",
+   "review_name": "ドッグライフプランナーズ",
+   "src": "https://www.dog-lp.com/nishinomiya/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T178",
+   "name": "関西ドッグスクール",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "三宅町",
+   "url": "https://www.kansaidogschool.com/",
+   "addr": "奈良県磯城郡三宅町但馬102-1",
+   "services": "しつけ教室、預かり訓練、出張訓練、ペットホテル、老犬ホーム",
+   "cert": "登録 第1063057号ほか",
+   "career": "30年をこえる業歴",
+   "review_query": "関西ドッグスクール 三宅町",
+   "review_name": "関西ドッグスクール",
+   "src": "https://www.kansaidogschool.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T179",
+   "name": "FunBloom（ファンブルーム）",
+   "prefs": [
+    "奈良県",
+    "京都府"
+   ],
+   "city": "生駒市",
+   "url": "https://funbloom.jp/",
+   "services": "家に来てくれる出張トレーニング（相談・体験・通常コース）、LINEでの相談、卒業後のフォロー",
+   "area": "奈良県北部（奈良市・生駒市のあたり）、京都府南部（木津川市・城陽市・宇治市・京都市伏見区のあたり）",
+   "cert": "登録 第1213018号（訓練）・第1213023号（保管）",
+   "src": "https://funbloom.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T180",
+   "name": "K'sドッグスクール 生駒校",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "生駒市",
+   "url": "https://www.ksdog-ikoma.jp/",
+   "addr": "奈良県生駒市小明町548-1",
+   "services": "問題行動の改善（吠え癖・かみ癖・引っぱり）、パピートレーニング、お預かり、トリミング",
+   "review_query": "K'sドッグスクール 生駒校 生駒市",
+   "review_name": "K'sドッグスクール",
+   "src": "https://www.ksdog-ikoma.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T181",
+   "name": "生駒警察犬訓練所",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "生駒市",
+   "url": "https://www.ikoma-keisatsuken.com/",
+   "addr": "奈良県生駒市高山町8164",
+   "services": "家庭犬訓練、しつけ方教室、預託・出張訓練、老犬ホーム、訓練のあとの無料フォロー",
+   "review_query": "生駒警察犬訓練所 生駒市",
+   "review_name": "生駒警察犬訓練所",
+   "src": "https://www.ikoma-keisatsuken.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T182",
+   "name": "ツチヤドッグスクール",
+   "prefs": [
+    "和歌山県"
+   ],
+   "city": "和歌山市",
+   "url": "https://www.eonet.ne.jp/~ttdog/",
+   "addr": "和歌山県和歌山市川辺64-1",
+   "services": "犬の保育（1日）、しつけ（1日）、預託訓練（1か月）、1泊2日のお預かり",
+   "cert": "日本警察犬協会公認訓練士、JKC公認訓練士、登録 第793号（訓練）",
+   "review_query": "ツチヤドッグスクール 和歌山市",
+   "review_name": "ツチヤドッグスクール",
+   "src": "https://www.eonet.ne.jp/~ttdog/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T183",
+   "name": "ペットシッター・ドッグトレーナー くろき",
+   "prefs": [
+    "和歌山県",
+    "大阪府"
+   ],
+   "city": "和歌山市",
+   "url": "https://www.ls-matsumoto.com/html/page4.html",
+   "services": "しつけ教室（初回カウンセリング、レッスン、家でのしつけ）、お散歩代行",
+   "area": "和歌山市・岩出市・海南市・阪南市（交通費が別）",
+   "cert": "愛玩動物飼養管理士、登録 4503号（訓練）・第2150号（保管）",
+   "src": "https://www.ls-matsumoto.com/html/page4.html",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T184",
+   "name": "DOG DUCA（ドッグデュッカ）",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市守山区・春日井市",
+   "url": "https://dogduca.com/",
+   "addr": "愛知県名古屋市守山区金屋1-23-26（守山本店）／愛知県春日井市旭町1-6 ままま勝川1F（勝川店）",
+   "services": "家庭犬のしつけ教室・トレーニング、わんわん保育園、トリミング",
+   "area": "守山区・名東区・東区・千種区・北区・西区・中区・春日井・尾張旭・北名古屋・長久手など",
+   "cert": "登録 第0713044号（訓練）・第0813062号（保管）、勝川店 動尾第1055号",
+   "career": "2001年から活動",
+   "review_query": "DOG DUCA 名古屋市守山区",
+   "review_name": "DOG DUCA",
+   "src": "https://dogduca.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T185",
+   "name": "ドギーデイケアショップ Pooches（プーチーズ）",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市緑区・守山区",
+   "url": "https://pooches.jp/",
+   "addr": "愛知県名古屋市緑区鳴海町有松裏71-38（有松店）／愛知県名古屋市守山区森孝3-122（引山店）",
+   "services": "犬のデイケア、しつけ教室、パピーケア・シニアケア、犬の学校、オンラインレッスン、ドッグホテル、グルーミング",
+   "review_query": "ドギーデイケアショップ Pooches 名古屋市緑区",
+   "review_name": "Pooches",
+   "src": "https://pooches.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T186",
+   "name": "ドッグスクールシェリー 内山校",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市千種区",
+   "url": "https://dog-cherie.com/shop/schoolcheries",
+   "addr": "愛知県名古屋市千種区内山1-1-26 パラッツォヨシダ",
+   "services": "プライベートレッスン、お預かりレッスン、出張レッスン、ペアグループレッスン",
+   "cert": "登録 第270409号（訓練）",
+   "review_query": "ドッグスクールシェリー 内山校 名古屋市千種区",
+   "review_name": "シェリー",
+   "src": "https://dog-cherie.com/shop/schoolcheries",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T187",
+   "name": "犬のしつけ学園",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "あま市",
+   "url": "https://www.inunogakuen.com/",
+   "addr": "愛知県あま市丹波堂立16",
+   "services": "家庭犬しつけ教室コース、出張しつけ指導コース、預かり訓練コース（1か月）、トリミング、ペットホテル",
+   "area": "出張は愛知県内（あま市・名古屋市のあたりを中心）",
+   "cert": "登録 第196号（訓練）・第195号（保管）",
+   "career": "25年以上のトレーニングの実績",
+   "review_query": "犬のしつけ学園 あま市",
+   "review_name": "犬のしつけ学園",
+   "src": "https://www.inunogakuen.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T188",
+   "name": "ドッグトレーニングスクール ワンラブ（WAN LOVE）",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "春日井市",
+   "url": "https://wanlovego.com/",
+   "addr": "愛知県春日井市上田楽町柳ケ坪571-1",
+   "services": "犬の保育園、基本トレーニング、パピーコース、問題行動の改善（引っぱり・かみぐせ・トイレ・無駄吠え）、ステップアップコース",
+   "area": "名古屋・一宮・春日井・小牧・犬山など（出張）",
+   "cert": "日本警察犬協会公認訓練士、JKC公認訓練士、災害救助犬訓練士、登録 動尾第1340号（訓練）・動尾第1339号（保管）・動尾第1338号（販売）",
+   "review_query": "ドッグトレーニングスクール ワンラブ 春日井市",
+   "review_name": "ワンラブ",
+   "src": "https://wanlovego.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T189",
+   "name": "Dog Training Service てぃーだ",
+   "prefs": [
+    "愛知県",
+    "三重県"
+   ],
+   "city": "春日井市",
+   "url": "https://tida-kankan.jp/",
+   "addr": "愛知県春日井市小木田町",
+   "services": "しつけ・トレーニング、攻撃性・多頭飼い・臆病な犬の相談、保護犬の相談、屋外教室（パックウォーク）、出張レッスン、パピー教室、オンラインレッスン",
+   "area": "春日井市（出張）、名古屋市守山区（屋外教室）、三重県（四日市市から出張）",
+   "career": "2015年に開業",
+   "src": "https://tida-kankan.jp/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T190",
+   "name": "イケガミドッグスクール",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "東郷町",
+   "url": "https://www.ikegami-dogschool.com/",
+   "addr": "愛知県愛知郡東郷町和合牛廻間113-2",
+   "services": "預託・出張の訓練、レッスン、かみ癖・無駄吠えの相談、ペットホテル、訓練の見学",
+   "area": "名古屋市・日進市のあたり",
+   "cert": "公認訓練士（日本警察犬協会・日本シェパード犬登録協会・JKC）、登録 動本第343号（訓練）・動本第344号（販売）・動本第808号（保管）",
+   "review_query": "イケガミドッグスクール 東郷町",
+   "review_name": "イケガミ",
+   "src": "https://www.ikegami-dogschool.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T191",
+   "name": "ANドッグスクール",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "半田市",
+   "url": "https://an-dogschool.jp/about/",
+   "addr": "愛知県半田市乙川薬師町2-32",
+   "services": "家に来てくれる出張しつけ教室、家庭犬の出張訓練、高等訓練、しつけの相談",
+   "cert": "日本警察犬協会公認二等訓練士、登録 動知第245号（訓練）・動知第371号（保管）・動知第244号（販売）",
+   "career": "2009年に開校",
+   "review_query": "ANドッグスクール 半田市",
+   "review_name": "ANドッグスクール",
+   "src": "https://an-dogschool.jp/about/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T192",
+   "name": "Dog Lover Aichi（ドッグラバーアイチ）",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "岡崎市",
+   "url": "https://doglover-aichi.com/",
+   "services": "出張ドッグトレーニング（しつけ・社会化・問題行動の改善・ディスクドッグ）、オンラインレッスン",
+   "area": "岡崎・豊田・みよし・知立・安城・刈谷・碧南・蒲郡・豊橋・豊川・幸田・西尾・田原・新城。ほかも相談",
+   "src": "https://doglover-aichi.com/",
+   "checked": "2026-11-16"
+  },
+  {
+   "id": "T193",
+   "name": "平井ドッグスクール",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "豊川市",
+   "url": "https://hiraidog.school/",
+   "services": "ドッグトレーニング・しつけ、出張コース、預託・合宿トレーニング、オビディエンス、ドッグラン、セミナー・競技への付き添い",
+   "area": "豊川市を中心に、名古屋市・豊田市・岡崎市・豊橋市・蒲郡市・新城市・田原市（出張）",
+   "cert": "JKC公認訓練士",
+   "src": "https://hiraidog.school/",
+   "checked": "2026-11-16"
   }
  ]
 }

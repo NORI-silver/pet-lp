@@ -202,7 +202,7 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 .ux-btn{display:inline-flex;align-items:center;gap:4px;border-radius:10px;background:#2b2622;color:#fff!important;font-weight:700;font-size:.82rem;padding:7px 12px;text-decoration:none}
 @media (min-width:760px){.ux-list{grid-template-columns:1fr 1fr}.ux-need{grid-template-columns:repeat(4,1fr)}.ux-w select{flex:0 0 14em}.ux-w input{flex:1 1 auto}}
 </style>
-</head>
+<style id="kv-css">.area-hero.kvh{padding:12px 0 8px;min-height:0}.kvh .wrap{display:flex;flex-direction:column}.kvh .kv{order:-1;position:relative;margin:0 0 10px;border-radius:24px;overflow:hidden;aspect-ratio:20/9;box-shadow:0 14px 34px rgba(226,86,10,.12)}.kvh .kv>svg{position:absolute;inset:0;width:100%;height:100%;display:block}.kvh .kv-chip{position:absolute;left:10px;bottom:10px;max-width:58%;display:flex;gap:8px;align-items:center;margin:0;background:#fff;border-radius:14px;padding:7px 11px 7px 8px;font-size:.78rem;font-weight:700;color:#2b2622;line-height:1.4;box-shadow:0 6px 18px rgba(28,26,24,.10)}.kvh .kv-chip i{flex:none;width:24px;height:24px;border-radius:50%;background:#e8f7ee;color:#1f9d55;display:grid;place-items:center}.kvh .crumb{margin:0}.kvh h1{margin:6px 0 2px;font-size:1.45rem}.kvh h1 small{font-size:.8rem;margin-bottom:2px}@media(min-width:760px){.area-hero.kvh{padding:24px 0 16px}.kvh .kv{max-width:760px;aspect-ratio:20/7}.kvh .kv-chip{font-size:.92rem;left:16px;bottom:16px;padding:10px 16px 10px 10px}.kvh h1{font-size:2.1rem}}</style></head>
 <body class="ux">
 <header class="top">
   <div class="wrap">
@@ -249,7 +249,9 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 .hn-rows li:first-child{border-top:0}
 .hn-rows .i{font-size:1.4rem;line-height:1.2;flex:0 0 1.8em;text-align:center}
 .hn-sum{font-size:.8rem;color:var(--ink-3);line-height:1.7;margin:6px 0 0}
-.hn-rows b{display:block;font-size:.76rem;color:var(--ink-3)}
+.hn-rows b{display:inline-block;font-size:.78rem;color:var(--ink-3);margin-right:.5em;white-space:nowrap}
+.hn-rows li{padding:6px 0;font-size:.88rem;line-height:1.55}
+.hn-n{font-size:.8rem;color:var(--ink-3);white-space:nowrap;font-weight:600}
 .art ul.hn-terms,.hn-terms{list-style:none;padding:0!important;margin:8px 0 16px;border-top:1px solid var(--line)}
 .hn-terms li{display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);line-height:1.5;font-size:.84rem;color:#3c4043;margin:0}
 .hn-terms .i{flex:0 0 3.2em;font-size:1.15rem;line-height:1;text-align:center;letter-spacing:-.1em}
@@ -259,11 +261,11 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 @media(min-width:720px){.hn-ag{grid-template-columns:repeat(6,minmax(0,1fr))}}
 </style>
 <main>
-<section class="area-hero">
+<section class="area-hero kvh">
   <div class="wrap">
+    <figure class="kv" data-kv="hinan"><svg viewBox="0 0 400 180" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false"><defs><linearGradient id="kvg-hinan" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e3eef8"/><stop offset="1" stop-color="#fff6ee"/></linearGradient></defs><rect width="400" height="180" fill="url(#kvg-hinan)"/><g transform="translate(34 0)"><ellipse cx="270" cy="168" rx="110" ry="9" fill="#000" opacity=".06"/><path d="M120 30l-4 10" stroke="#9fc5e8" stroke-width="3" stroke-linecap="round"/><path d="M136 60l-4 10" stroke="#9fc5e8" stroke-width="3" stroke-linecap="round"/><path d="M104 74l-4 10" stroke="#9fc5e8" stroke-width="3" stroke-linecap="round"/><path d="M360 40l-4 10" stroke="#9fc5e8" stroke-width="3" stroke-linecap="round"/><path d="M378 70l-4 10" stroke="#9fc5e8" stroke-width="3" stroke-linecap="round"/><path d="M356 96l-4 10" stroke="#9fc5e8" stroke-width="3" stroke-linecap="round"/><path d="M140 100l-4 10" stroke="#9fc5e8" stroke-width="3" stroke-linecap="round"/><path d="M150 70a92 50 0 0 1 184 0z" fill="#ff6a1a"/><path d="M150 70c15-10 31-10 46 0 15-10 31-10 46 0 15-10 31-10 46 0 15-10 31-10 46 0" fill="#e2560a"/><path d="M242 20v-6M242 70v24" stroke="#1c1a18" stroke-width="4" stroke-linecap="round"/><rect x="186" y="104" width="78" height="62" rx="12" fill="#ffd2b3"/><path d="M206 104v-10a19 19 0 0 1 38 0v10" stroke="#e2560a" stroke-width="5" fill="none"/><rect x="196" y="116" width="40" height="40" rx="6" fill="#fff"/><path d="M204 152c0-14 5-20 12-20s12 6 12 20z" fill="#8c867f"/><path d="M206 138l-1-10 8 6zM226 138l1-10-8 6z" fill="#8c867f"/><circle cx="212" cy="142" r="1.8" fill="#1c1a18"/><circle cx="220" cy="142" r="1.8" fill="#1c1a18"/><path d="M204 116v40" stroke="#e2560a" stroke-width="2.4"/><path d="M212 116v40" stroke="#e2560a" stroke-width="2.4"/><path d="M220 116v40" stroke="#e2560a" stroke-width="2.4"/><path d="M228 116v40" stroke="#e2560a" stroke-width="2.4"/><g transform="translate(296 110) scale(0.7)"><path d="M20 56c16 2 22-14 15-24" stroke="#c98a52" stroke-width="7" fill="none" stroke-linecap="round"/><ellipse cx="0" cy="42" rx="25" ry="28" fill="#c98a52"/><ellipse cx="0" cy="46" rx="13" ry="17" fill="#f1d3b3"/><rect x="-16" y="54" width="11" height="18" rx="5.5" fill="#c98a52"/><rect x="5" y="54" width="11" height="18" rx="5.5" fill="#c98a52"/><circle cx="0" cy="0" r="23" fill="#c98a52"/><path d="M-18-14c-12-5-19 8-15 22 2 10 9 12 13 7z" fill="#8e5a2e"/><path d="M18-14c12-5 19 8 15 22-2 10-9 12-13 7z" fill="#8e5a2e"/><ellipse cx="0" cy="9" rx="12" ry="9" fill="#f1d3b3"/><circle cx="-9" cy="-3" r="3.2" fill="#1c1a18"/><circle cx="9" cy="-3" r="3.2" fill="#1c1a18"/><ellipse cx="0" cy="5" rx="4.5" ry="3.2" fill="#1c1a18"/><path d="M0 9v3m-5 1c3 3 7 3 10 0" stroke="#1c1a18" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><rect x="326" y="118" width="40" height="48" rx="9" fill="#e85d5d"/><rect x="334" y="110" width="24" height="12" rx="5" fill="none" stroke="#c94747" stroke-width="4"/><path d="M346 132v18M337 141h18" stroke="#fff" stroke-width="5" stroke-linecap="round"/></g></svg><p class="kv-chip"><i aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>避難所に連れて行ける動物と、ケージの決まり</p></figure>
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットのくらし窓口</a> › ペットと避難</nav>
     <h1><small>同行避難・同伴避難・避難所で受け入れる動物の決まり</small>ペットと避難するとき</h1>
-    <p class="lede">市区町村をえらぶと、避難所に連れて行ける動物とケージの決まりがすぐ分かります。</p>
   </div>
 </section>
 <section style="padding-top:8px">
@@ -286,20 +288,19 @@ function fill(){M.innerHTML='<option value="">市区町村をえらぶ</option>'
 function load(cb){if(D)return cb();fetch('/hinan/munis.json').then(function(r){return r.json()}).then(function(j){D=j;cb()}).catch(function(){O.textContent='読み込めませんでした。時間をおいてお試しください。'})}
 P.addEventListener('change',function(){load(fill)});if(P.value)load(fill);
 M.addEventListener('change',function(){var r=(D[P.value]||[])[M.value];if(!r){O.innerHTML='';return}var n=esc(r[0]),top=r[3]?'<a href="'+esc(r[3])+'" target="_blank" rel="noopener">'+n+'の公式サイト ↗</a>':'',h='';
-if(r[1]=='page')h='<a href="'+esc(r[2])+'">'+n+'のペットと避難の決まりを見る</a>';
-else if(r[1]=='card')h='<a href="'+esc(r[2])+'">'+n+'の決まり（'+esc(P.value)+'のページの中）を見る</a>';
+if(r[1]=='page'||r[1]=='card')h='<a href="'+esc(r[2])+'">'+n+'の決まりをくわしく →</a>';
 else if(r[1]=='link')h=n+'の決まり：<a href="'+esc(r[2])+'" target="_blank" rel="noopener">'+esc(r[4]||'ペットと避難')+' ↗</a>';
 else if(r[1]=='none')h=n+'では、ペットと避難の決まりが見つかりませんでした。'+top+'の防災のページか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
 else h=n+'の決まりは、まだまとめていません。'+top+'で「ペット 避難」とさがすか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
 if(r[5]){var K=[['🐕','犬'],['🦮','大型犬'],['🐈','猫'],['🐇','うさぎ・ハムスター'],['🐦','小鳥'],['🦎','爬虫類']],Mm={y:['○','受け入れる','yes'],n:['×','受け入れない','no'],h:['△','むずかしい場合あり','hard'],c:['△','条件つき','cond']},g='',t=r[7]||[],w='';
 K.forEach(function(k,i){var m=Mm[r[5].charAt(i)];if(m)g+='<li class="'+m[2]+'"><span class="i">'+k[0]+'</span><b>'+k[1]+'</b><span class="m" data-k="'+m[0]+'">'+m[1]+'</span></li>'});
-g=g?'<ul class="hn-ag">'+g+'</ul>':'<p class="hn-unk">ℹ️ どの動物を受け入れるかは、'+n+'の案内には書かれていません。避難する前に、'+n+'の防災の担当か避難所でご確認ください。</p>';
+g=g?'<ul class="hn-ag">'+g+'</ul>':'';
 function rw(i,b,v){if(v)w+='<li><span class="i">'+i+'</span><span><b>'+b+'</b>'+esc(v)+'</span></li>'}
-rw('📣','考え方',t[0]);rw('🧺','ケージ・リード',r[5].charAt(6)=='1'?'持っていく（ケージの中で飼う）':t[1]);rw('🏠','避難所で飼う場所',t[2]);rw('⚠️','受け入れない動物',t[3]);
+rw('🧺','ケージ',r[5].charAt(6)=='1'?'持っていく（ケージの中で飼う）':t[1]);rw('🏠','飼う場所',t[2]);rw('⚠️','受け入れない動物',t[3]);
 h=g+(w?'<ul class="hn-rows">'+w+'</ul>':'')+h}
 O.innerHTML=h;if(r[6]){var sw=document.createElement('div');sw.className='hn-shw';sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこんでいます…</p>';O.appendChild(sw);
 fetch('/hinan/s/'+r[6]+'.json').then(function(x){return x.json()}).then(function(L){function li(s){var q=s[2]+','+s[3];return '<li data-ll="'+q+'"><b>'+esc(s[0])+'</b><span>'+esc(s[1])+'</span>'+(s[5]?'<em>🐾 '+esc(s[5])+'</em>':'')+'<a href="https://www.google.com/maps/search/?api=1&amp;query='+q+'" target="_blank" rel="noopener">地図 ↗</a></li>'}
-var t='<h2>🏫 '+n+'の指定避難所（'+L.length+'か所）</h2><button type="button" class="hn-near">📍 近い避難所をさがす</button><div class="hn-nearout" aria-live="polite"></div><ol class="hn-sh">'+L.slice(0,5).map(li).join('')+'</ol>';
+var t='<h2>🏫 '+n+'の指定避難所 <small class="hn-n">'+L.length+'か所</small></h2><button type="button" class="hn-near">📍 近い避難所をさがす</button><div class="hn-nearout" aria-live="polite"></div><ol class="hn-sh">'+L.slice(0,5).map(li).join('')+'</ol>';
 if(L.length>5)t+=(r[1]=='page'?'<p class="hn-shn"><a href="'+esc(r[2])+'#shelters">'+n+'の避難所をすべて見る（'+L.length+'か所）→</a></p><ol class="hn-sh" hidden>'+L.slice(5).map(li).join('')+'</ol>':'<details class="hn-ward"><summary>ほかの'+(L.length-5)+'か所</summary><ol class="hn-sh">'+L.slice(5).map(li).join('')+'</ol></details>');
 sw.innerHTML=t+'<p class="hn-src">避難所の一覧：<a href="https://www.gsi.go.jp/bousaichiri/hinanbasho.html" target="_blank" rel="noopener">国土地理院「指定緊急避難場所・指定避難所データ」</a>（2026年11月時点）を加工して作成。開く避難所は災害の種類や状況で変わります。</p>'}).catch(function(){sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこめませんでした。</p>'})}
 try{gtag('event','hinan_find',{pref:P.value,status:r[1]})}catch(e){}})})();</script><style>

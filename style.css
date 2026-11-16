@@ -655,7 +655,7 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
 .crumb{font-size:.78rem;color:var(--ink-3);padding:14px 0 0}
 .crumb a{color:var(--ink-3);text-decoration:none}
 .crumb a:hover{text-decoration:underline}
-.area-hero{background:radial-gradient(90% 70% at 100% 0%,#ffe2cc 0%,rgba(255,226,204,0) 60%),var(--cream);padding:24px 0 56px}
+.area-hero{background:radial-gradient(90% 70% at 100% 0%,#ffe2cc 0%,rgba(255,226,204,0) 60%),var(--cream);padding:24px 0 24px}
 .area-hero h1{font-family:var(--round);font-size:1.6rem;font-weight:800;line-height:1.4;margin:18px 0 14px}
 .area-hero h1 small{display:block;font-size:.95rem;color:var(--o-d);margin-bottom:6px}
 .area-hero .lede{color:var(--ink-2);margin:0 0 22px}
