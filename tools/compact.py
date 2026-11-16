@@ -18,8 +18,7 @@ CSS = ('<style id="cpt-css">details.cpt{margin:10px 0;border:1px solid var(--lin
        'details.cpt>.cpt-b{padding:0 12px 12px}details.cpt>.cpt-b>.emg-tips,details.cpt>.cpt-b>.tbl{margin-top:0}'
        'details.cpt.more{border:0;background:none;margin:4px 0 12px}details.cpt.more>summary{justify-content:center;border:1px solid var(--line,#eadfd5);border-radius:999px;color:#c2410c;font-size:.9rem;padding:9px 14px;background:#fff}'
        'details.cpt.more>summary::after{content:"";}details.cpt.more>.cpt-b{padding:0}'
-       # 前置きは「…」で切らずに全部見せ、字を少し小さく・下の余白を詰める（Nori 2026-11-16 のスクショ：文が「…」で切れて下が空いていた）
-       '@media(max-width:640px){.area-hero:has(.lede.cpt-l){padding-bottom:10px}.area-hero .lede.cpt-l{font-size:.9rem;line-height:1.65;margin-bottom:0}}</style>')
+       '@media(max-width:640px){.area-hero .lede.cpt-l .cpt-r{display:none}}</style>')
 
 
 def _end(h, i, tag):
@@ -110,7 +109,13 @@ def page(h):
     b = m.group(0)
     b2 = area_grid(tables(pref_boxes(b)))
     if not re.search(r'id="form"', b):  # 情報ページの長い前置きはスマホで2行まで（文は残す）
-        b2 = re.sub(r'<p class="lede">([^<]{90,}?)</p>', r'<p class="lede cpt-l">\1</p>', b2, count=1)
+        # 2行で「…」と切ると文の途中で切れて読めない（2026-11-16 スマホ点検）。スマホでは最初の1文だけ見せ、のこりは隠す（文は残す）
+        def _lede(m):
+            t = m.group(1); k = t.find("。")
+            if 0 < k <= 70 and k + 1 < len(t):
+                return f'<p class="lede cpt-l">{t[:k + 1]}<span class="cpt-r">{t[k + 1:]}</span></p>'
+            return m.group(0)
+        b2 = re.sub(r'<p class="lede">([^<]{90,}?)</p>', _lede, b2, count=1)
     if b2 == b: return h
     h = h[:m.start()] + b2 + h[m.end():]
     if 'id="cpt-css"' not in h: h = h.replace("</head>", CSS + "</head>", 1)

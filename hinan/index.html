@@ -250,7 +250,9 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 .hn-rows li:first-child{border-top:0}
 .hn-rows .i{font-size:1.4rem;line-height:1.2;flex:0 0 1.8em;text-align:center}
 .hn-sum{font-size:.8rem;color:var(--ink-3);line-height:1.7;margin:6px 0 0}
-.hn-rows b{display:block;font-size:.76rem;color:var(--ink-3)}
+.hn-rows b{display:inline-block;font-size:.78rem;color:var(--ink-3);margin-right:.5em;white-space:nowrap}
+.hn-rows li{padding:6px 0;font-size:.88rem;line-height:1.55}
+.hn-n{font-size:.8rem;color:var(--ink-3);white-space:nowrap;font-weight:600}
 .art ul.hn-terms,.hn-terms{list-style:none;padding:0!important;margin:8px 0 16px;border-top:1px solid var(--line)}
 .hn-terms li{display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);line-height:1.5;font-size:.84rem;color:#3c4043;margin:0}
 .hn-terms .i{flex:0 0 3.2em;font-size:1.15rem;line-height:1;text-align:center;letter-spacing:-.1em}
@@ -287,20 +289,19 @@ function fill(){M.innerHTML='<option value="">市区町村をえらぶ</option>'
 function load(cb){if(D)return cb();fetch('/hinan/munis.json').then(function(r){return r.json()}).then(function(j){D=j;cb()}).catch(function(){O.textContent='読み込めませんでした。時間をおいてお試しください。'})}
 P.addEventListener('change',function(){load(fill)});if(P.value)load(fill);
 M.addEventListener('change',function(){var r=(D[P.value]||[])[M.value];if(!r){O.innerHTML='';return}var n=esc(r[0]),top=r[3]?'<a href="'+esc(r[3])+'" target="_blank" rel="noopener">'+n+'の公式サイト ↗</a>':'',h='';
-if(r[1]=='page')h='<a href="'+esc(r[2])+'">'+n+'のペットと避難の決まりを見る</a>';
-else if(r[1]=='card')h='<a href="'+esc(r[2])+'">'+n+'の決まり（'+esc(P.value)+'のページの中）を見る</a>';
+if(r[1]=='page'||r[1]=='card')h='<a href="'+esc(r[2])+'">'+n+'の決まりをくわしく →</a>';
 else if(r[1]=='link')h=n+'の決まり：<a href="'+esc(r[2])+'" target="_blank" rel="noopener">'+esc(r[4]||'ペットと避難')+' ↗</a>';
 else if(r[1]=='none')h=n+'では、ペットと避難の決まりが見つかりませんでした。'+top+'の防災のページか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
 else h=n+'の決まりは、まだまとめていません。'+top+'で「ペット 避難」とさがすか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
 if(r[5]){var K=[['🐕','犬'],['🦮','大型犬'],['🐈','猫'],['🐇','うさぎ・ハムスター'],['🐦','小鳥'],['🦎','爬虫類']],Mm={y:['○','受け入れる','yes'],n:['×','受け入れない','no'],h:['△','むずかしい場合あり','hard'],c:['△','条件つき','cond']},g='',t=r[7]||[],w='';
 K.forEach(function(k,i){var m=Mm[r[5].charAt(i)];if(m)g+='<li class="'+m[2]+'"><span class="i">'+k[0]+'</span><b>'+k[1]+'</b><span class="m" data-k="'+m[0]+'">'+m[1]+'</span></li>'});
-g=g?'<ul class="hn-ag">'+g+'</ul>':'<p class="hn-unk">ℹ️ どの動物を受け入れるかは、'+n+'の案内には書かれていません。避難する前に、'+n+'の防災の担当か避難所でご確認ください。</p>';
+g=g?'<ul class="hn-ag">'+g+'</ul>':'';
 function rw(i,b,v){if(v)w+='<li><span class="i">'+i+'</span><span><b>'+b+'</b>'+esc(v)+'</span></li>'}
-rw('📣','考え方',t[0]);rw('🧺','ケージ・リード',r[5].charAt(6)=='1'?'持っていく（ケージの中で飼う）':t[1]);rw('🏠','避難所で飼う場所',t[2]);rw('⚠️','受け入れない動物',t[3]);
+rw('🧺','ケージ',r[5].charAt(6)=='1'?'持っていく（ケージの中で飼う）':t[1]);rw('🏠','飼う場所',t[2]);rw('⚠️','受け入れない動物',t[3]);
 h=g+(w?'<ul class="hn-rows">'+w+'</ul>':'')+h}
 O.innerHTML=h;if(r[6]){var sw=document.createElement('div');sw.className='hn-shw';sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこんでいます…</p>';O.appendChild(sw);
 fetch('/hinan/s/'+r[6]+'.json').then(function(x){return x.json()}).then(function(L){function li(s){var q=s[2]+','+s[3];return '<li data-ll="'+q+'"><b>'+esc(s[0])+'</b><span>'+esc(s[1])+'</span>'+(s[5]?'<em>🐾 '+esc(s[5])+'</em>':'')+'<a href="https://www.google.com/maps/search/?api=1&amp;query='+q+'" target="_blank" rel="noopener">地図 ↗</a></li>'}
-var t='<h2>🏫 '+n+'の指定避難所（'+L.length+'か所）</h2><button type="button" class="hn-near">📍 近い避難所をさがす</button><div class="hn-nearout" aria-live="polite"></div><ol class="hn-sh">'+L.slice(0,5).map(li).join('')+'</ol>';
+var t='<h2>🏫 '+n+'の指定避難所 <small class="hn-n">'+L.length+'か所</small></h2><button type="button" class="hn-near">📍 近い避難所をさがす</button><div class="hn-nearout" aria-live="polite"></div><ol class="hn-sh">'+L.slice(0,5).map(li).join('')+'</ol>';
 if(L.length>5)t+=(r[1]=='page'?'<p class="hn-shn"><a href="'+esc(r[2])+'#shelters">'+n+'の避難所をすべて見る（'+L.length+'か所）→</a></p><ol class="hn-sh" hidden>'+L.slice(5).map(li).join('')+'</ol>':'<details class="hn-ward"><summary>ほかの'+(L.length-5)+'か所</summary><ol class="hn-sh">'+L.slice(5).map(li).join('')+'</ol></details>');
 sw.innerHTML=t+'<p class="hn-src">避難所の一覧：<a href="https://www.gsi.go.jp/bousaichiri/hinanbasho.html" target="_blank" rel="noopener">国土地理院「指定緊急避難場所・指定避難所データ」</a>（2026年11月時点）を加工して作成。開く避難所は災害の種類や状況で変わります。</p>'}).catch(function(){sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこめませんでした。</p>'})}
 try{gtag('event','hinan_find',{pref:P.value,status:r[1]})}catch(e){}})})();</script><style>
