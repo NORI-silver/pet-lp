@@ -170,7 +170,7 @@ def apply(s, path, hub=None):
     # トップの全分野の入口（トップだけ）
     s = re.sub(r'<!--KURASHI-->.*?<!--/KURASHI-->\n*', '', s, flags=re.S)
     if hub:
-        s = s.replace('<!--AFTER_FORM-->', hub + "\n\n" + '<!--AFTER_FORM-->', 1)
+        s = s.replace('<section id="how">', hub + "\n\n" + '<section id="how">', 1)
     return s
 
 
