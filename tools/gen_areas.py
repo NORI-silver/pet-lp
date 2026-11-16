@@ -2725,6 +2725,9 @@ print("tidy", tidy.build(ROOT), "pages")
 # 事業者カードの写真（使ってよいと確かめた写真だけ・ない施設は共通の枠。tools/cardphoto.py、Nori 2026-11-16「事業者カードへの写真表示」）
 import cardphoto
 print("cardphoto", cardphoto.build(ROOT))
+# 各分野の入口にキービジュアル（自前の絵＋札1行。tools/keyvisual.py、Nori 2026-11-16「各カテゴリでキービジュアルいれて」）
+import keyvisual
+print("keyvisual", keyvisual.build(ROOT), "pages")
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] noindex.json のページに noindex,follow を入れる（ほかの後処理のあと）
 for _p in NOINDEX:
