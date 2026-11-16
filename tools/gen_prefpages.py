@@ -112,6 +112,24 @@ def answer_html(e, cat, pf, rs, faq, facts):
     return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">{e(pf)}の{e(cat["name"])}のポイント</h2><ul class="kv">{kv}</ul></div>'
             f'{_V.stats(tiles)}{more}</div>')
 
+# [B] 2026-11-16 GSC：県のページが「料金」の検索で出てもクリックが少ない。説明文で、公式サイトに書いてあるいちばん安い1回の料金を先に答える。
+def _price_lead(cat, rs):
+    # 老犬ホームは月の料金で入所金などの形がまちまち、しつけは計測中なので出さない
+    lab = {"trimming": "コース", "pet-sitter": "1回"}.get(cat.get("slug"))
+    if not lab: return ""
+    pk = cat.get("price_key", "料金")
+    pr = sorted([(it, _fv(it, pk)) for it in rs if (_fv(it, pk) or {}).get("yen")], key=lambda x: x[1]["yen"])
+    if not pr: return ""
+    it, f = pr[0]
+    tax = {"込": "（税込）", "抜": "（税抜）"}.get(f.get("tax"), "")
+    mins = f"・{f['min']}分" if f.get("min") else ""
+    if len(pr) == 1:
+        return f'料金が公式サイトにある{it["name"]}は、{lab}{f["yen"]:,}円{tax}{mins}から。'
+    return f'料金が公式サイトにある{len(pr)}{cat["unit"]}では、{it["name"]}の{lab}{f["yen"]:,}円{tax}{mins}がいちばん手ごろ。'
+def _with_price(cat, rs):
+    lead = _price_lead(cat, rs)
+    if not lead: return cat["desc_tail"]
+    return lead + "順位はつけていません。"
 def render_pref(ctx, cat, pf, rows):
     e, SITE = ctx["e"], ctx["SITE"]
     rs = rows[pf]
@@ -125,7 +143,7 @@ def render_pref(ctx, cat, pf, rows):
     if near:
         near_html = (f'<p>{e(lab)}のほかの県：' + "、".join(f'<a href="{href(cat, p)}">{e(p)}の{e(name)}（{len(rows[p])}{e(unit)}）</a>' for p in near) + '</p>')
     title = cat["title_fn"](pf, rs, n) if cat.get("title_fn") else f'{pf}の{cat["title_word"]}｜{n}{unit}の一覧（{cat["title_tail"]}）｜ペットタクシー予約窓口'
-    desc = cat["desc_fn"](pf, rs, n) if cat.get("desc_fn") else f'{pf}の{name}を{n}{unit}、公式サイトの情報をもとにまとめた無料の一覧です。' + cat["desc_tail"]
+    desc = cat["desc_fn"](pf, rs, n) if cat.get("desc_fn") else f'{pf}の{name}を{n}{unit}、公式サイトの情報をもとにまとめた無料の一覧です。' + _with_price(cat, rs)
     faq = cat["faq"](pf, rs, n)
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     ld = '<script type="application/ld+json">\n' + json.dumps([
