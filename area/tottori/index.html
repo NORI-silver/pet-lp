@@ -188,7 +188,7 @@ p{margin:0 0 1em}
 
 /* form */
 .form-sec{background:linear-gradient(180deg,#fff 0%,var(--cream) 100%)}
-.form-sec{padding-top:14px}
+.form-sec{padding-top:12px}
 .form-sec .sh{margin-bottom:12px}
 @media (max-width:759px){.form-sec .sh h2{font-size:1.08rem;white-space:nowrap}.form-card{padding:16px 16px;border-radius:24px}.form-sec .mode-tabs{margin-bottom:10px;padding:3px}.form-sec .mode-tabs button{padding:8px 4px;font-size:.78rem;line-height:1.3;letter-spacing:0;white-space:nowrap}.form-card .group-h{margin-bottom:10px}}
 .form-card{background:#fff;border-radius:32px;padding:28px 20px;box-shadow:0 2px 4px rgba(28,26,24,.04),0 28px 56px rgba(28,26,24,.09);max-width:740px;margin:0 auto}
@@ -1029,7 +1029,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
       </div>
     </div>
     <ul class="pills">
-        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>無料</li>
+        
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>何社にでもまとめて問い合わせ</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>連絡はメールだけ</li>
         <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>多頭もOK</li>
@@ -1040,10 +1040,9 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 <!-- 6. フォーム -->
 <section class="form-sec" id="form">
   <div class="wrap">
-    <div class="sh"><h2>空き状況と料金を問い合わせる（無料）</h2><!--PREP: 依頼の送信を再開したら消す--><p class="prep-note">準備中のため、問い合わせを送れるのは社名の横にオレンジのチェックがある会社だけです。ほかの会社は料金の目安と公式サイトを見られます。</p><!--/PREP--></div>
 
     <div class="mode-tabs" id="modeTabs" role="tablist" hidden>
-      <button type="button" role="tab" aria-selected="true" data-mode="normal">空き状況・料金の問い合わせ</button>
+      <button type="button" role="tab" aria-selected="true" data-mode="normal">料金をくらべて問い合わせ</button>
       <button type="button" role="tab" aria-selected="false" data-mode="emg">緊急のとき</button>
     </div>
     <div class="emg" id="emgBox" hidden>
@@ -1096,7 +1095,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
       <p class="emg-note" id="emgNote"></p>
     </div>
     <div class="form-card">
-      <div class="flow3" id="how" aria-label="ご利用の流れ"><p class="flow3-h">ご利用の流れ（無料）</p><ol><li><b>①</b>会社を選んで<wbr>問い合わせ<span>空き状況と料金を、選んだ会社に問い合わせます</span></li><li><b>②</b>会社から<wbr>返事が届く<span>この日時に空いているか、確定料金（税込）をメールでお知らせします</span></li><li><b>③</b>納得したら<wbr>予約を確定<span>メールの「この内容で予約する」を押した時点で予約が確定します</span></li></ol><p class="flow3-note">問い合わせを送っただけでは、まだ予約は確定していません。</p></div>
+      <div class="flow3" id="how" aria-label="ご利用の流れ"><p class="flow3-h">ご利用の流れ</p><ol><li><b>①</b>会社を選んで<wbr>問い合わせ<span>空き状況と料金を、選んだ会社に問い合わせます</span></li><li><b>②</b>会社から<wbr>返事が届く<span>この日時に空いているか、確定料金（税込）をメールでお知らせします</span></li><li><b>③</b>納得したら<wbr>予約を確定<span>メールの「この内容で予約する」を押した時点で予約が確定します</span></li></ol><p class="flow3-note">問い合わせを送っただけでは、まだ予約は確定していません。</p></div>
       <form id="petForm" novalidate>
         <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
@@ -1240,7 +1239,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
   </div>
 </section>
 
-<section class="top-about" aria-label="このサイトについて"><div class="wrap"><p class="lede">鳥取県（鳥取市・米子市・倉吉市など）で、犬や猫の移動の手段を探している方へ。フォームに入力すると、条件に合う事業者と料金の目安が見られます。急ぐときの連絡先は「緊急」タブにまとめています。</p><ul class="pills about-pts"><li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>当サイトは無料（運賃は当日ペットタクシーへ直接お支払い）</li><li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>当日の依頼もできます</li></ul></div></section>
+<section class="top-about" aria-label="このサイトについて"><div class="wrap"><p class="lede">鳥取県（鳥取市・米子市・倉吉市など）で、犬や猫の移動の手段を探している方へ。フォームに入力すると、条件に合う事業者と料金の目安が見られます。急ぐときの連絡先は「緊急」タブにまとめています。</p><ul class="pills about-pts"><li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>運賃は当日ペットタクシーへ直接お支払い</li><li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>当日の依頼もできます</li></ul></div></section>
 <!-- 3. 3ステップ -->
 
 <!-- 地域の説明（gen_areas.py の PREFS） -->

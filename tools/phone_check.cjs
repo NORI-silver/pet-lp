@@ -18,6 +18,7 @@
 //   textonly  アイコン・図・表・ボタンのない、文字だけの画面がある（2画面目より下）
 //   tiny      本文の字が 11px より小さい
 //   form      ペットタクシーのページで、フォームの最初の入力欄（お迎えの都道府県）が最初の1画面に入っていない
+//   dup       フォームの上に「無料」が2回以上・準備中のお知らせがある
 const {chromium} = require('playwright');
 const http = require('http'), fs = require('fs'), path = require('path'), {execSync} = require('child_process');
 
@@ -156,6 +157,9 @@ async function measure(page) {
         m.out.unshift(['first', m.firstTop === null ? 'さがす欄も結果のカードもない' : `さがす欄・結果が ${Math.round(m.firstTop / H * 10) / 10} 画面目から`]);
       // ペットタクシーのページ（トップ・地域）は、フォームの最初の入力欄（お迎えの都道府県）が最初の1画面に入る（Nori 2026-11-16「フォームに行くまでスクロールが長すぎる」）
       const prefTop = await page.evaluate(() => { const e = document.getElementById('pref'); return e && document.getElementById('petForm') ? Math.round(e.getBoundingClientRect().top + scrollY) : null; });
+      // フォームの上で同じことを2回言わない（「無料」は1か所・準備中のお知らせなし。Nori 2026-11-16「端折れる部分はなくして」）
+      const above = await page.evaluate(() => { const f = document.getElementById('petForm'), mn = document.querySelector('main'); if (!f || !mn) return null; const w = document.createTreeWalker(mn, NodeFilter.SHOW_TEXT); let t = '', n; while ((n = w.nextNode())) { if (f.compareDocumentPosition(n) & Node.DOCUMENT_POSITION_PRECEDING && !f.contains(n) && n.parentElement && n.parentElement.getClientRects().length) t += n.textContent; } return t; }); // 見えている文字だけ
+      if (above !== null) { const nf = (above.match(/無料/g) || []).length; if (nf > 1 || /準備中/.test(above)) m.out.unshift(['dup', `フォームの上に「無料」が${nf}回${/準備中/.test(above) ? '・準備中のお知らせ' : ''}（1回に）`]); }
       if (prefTop !== null && prefTop + 40 > H) m.out.unshift(['form', `フォームの最初の入力欄が ${Math.round(prefTop / H * 10) / 10} 画面目から（1画面目に入れる）`]);
       const shot = path.join(OUT, (p.replace(/^\/|\/$/g, '').replace(/\//g, '_') || 'top') + '.png');
       await page.screenshot({path: shot, clip: {x: 0, y: 0, width: W, height: Math.min(H * 2, m.height)}});
