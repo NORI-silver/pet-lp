@@ -319,6 +319,9 @@ def build_card(card, conf, fit_by_name):
         if conf["key"] == "joto" and tag == "ul" and "jt-c" in cls:
             keep.append(x); continue
         more.append(x)
+    # 安心の材料（ペットホテルの動物取扱業の登録・夜のスタッフなど。Nori 2026-11-16「どこが信用できるかわからない」）：緑のチェックの札で、名前のすぐ下に
+    trust = [v for l, v, _ in rows if l == "安心の材料"]
+    rows = [r for r in rows if r[0] != "安心の材料"]
     # 見せる行：場所 → 料金 → 時間 → 動物 → 資格（4行まで）。のこりは「くわしく」
     pick, used = [], set()
     def take(rx, ic):
@@ -341,6 +344,9 @@ def build_card(card, conf, fit_by_name):
     tags = [html.unescape(x) for x in (re.search(r'data-tags="([^"]*)"', opentag) or [None, ""])[1].split("|") if x]
     ch = [FLAG_CHIP[f] for f in flags if f in FLAG_CHIP and f != "cat"] + [t for t in tags + chips if not re.fullmatch(r"(犬|猫|犬・猫)(OK|可|も)?", t)]  # 犬OK・猫OK はだれでも分かるので出さない
     ch += [s for s in svc_items if len(s) <= 12]
+    if trust:  # 緑のチェックに出したことは札にくり返さない（「夜もスタッフ」など）
+        _tl = [x.strip() for x in re.split(r"[、,]", trust[0])]
+        ch = [c for c in ch if not any(c in t for t in _tl)]
     ch = list(dict.fromkeys(c for c in dp + ch if c))[:6]
     fors = list(dict.fromkeys(FOR_TEXT[k] for k in flags + tags if k in FOR_TEXT))[:3]
     # 合う・合わない（生成側で入れていればそれを使う）
@@ -373,6 +379,9 @@ def build_card(card, conf, fit_by_name):
     # 見出しの「◯◯市の動物病院」は地域の見出しと重なるので出さない（Nori 2026-11-15「柏市の下に柏市の動物病院って全てのカードに入れてるけど不要」）
     body = [f'<div class="fc-name">{head}</div>']
     if fors: body.append(f'<p class="fc-catch">{html.escape("・".join(fors[:2]))}に</p>')
+    if trust:
+        cr = "".join(f'<span class="cr">{html.escape(x.strip())}</span>' for x in dict.fromkeys(re.split(r"[、,]", trust[0])) if x.strip())
+        body.append(f'<p class="fc-line" title="安心の材料">{icon("badge")}<span>{cr}</span></p>')
     lines = []
     if rest: lines.append(("clock", "", rest))
     lines += [(ic, lab, val) for ic, lab, val in pick if ic != "yen"]

@@ -196,7 +196,7 @@ def render_pref(ctx, cat, pf, rows):
       {fact_table_html(e, cat, pf, rs)}
       {cat["extra_after"](e, pf) if cat.get("extra_after") else ""}
       {near_html}
-      <div class="emg-tips"><h4>{e(cat['before_title'])}</h4><dl>{"".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in cat['before'])}</dl></div>
+      {f'<div class="emg-tips"><h4>{e(cat["before_title"])}</h4><dl>{"".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in cat["before"])}</dl></div>' if cat['before'] else ""}
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
       {pref_nav(cat, e, rows, ctx["emg_regions"], cur=pf)}{chr(10) + "      " + cat["fac_biz"](e) if cat.get("fac_biz") else ""}
       <p class="emg-note">当サイトとは別の事業者です（{e(cat['checked'])}時点の情報）。内容は変わることがあるので、頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
