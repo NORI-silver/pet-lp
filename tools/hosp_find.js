@@ -54,6 +54,14 @@
     var n = Object.keys(on).filter(function(k){ return !box.querySelector('.hf-det button[data-v="' + k + '"]') ? false : true; }).length;
     detN.textContent = n ? n : "";
   }
+  // カードのイメージ写真（無料の写真素材。本物の病院の写真ではないので「イメージ」と書き、alt は空）。となりが同じ写真にならないよう順番に回す
+  var PICS = __PICS__, pic = 0;
+  function picHtml(r){
+    var k = r.y.indexOf("night") >= 0 && PICS["hospital-night"].length ? "hospital-night" : "hospital", fs = PICS[k];
+    if (!fs.length) return "";
+    var f = fs[pic++ % fs.length];
+    return '<div class="ux-img"><img src="/img/stock/' + k + '/' + f + '" alt="" width="600" height="400" loading="lazy" decoding="async"><span>イメージ</span></div>';
+  }
   function card(r, unk){
     var b = [];
     if (r.a) b.push('<span>' + esc(r.a.length > 22 ? r.a.slice(0, 22) + "…" : r.a) + '</span>');
@@ -66,7 +74,7 @@
     if (r.tel) sub.push('<a href="' + esc(r.u) + '" target="_blank" rel="noopener" data-k="site" data-ga>公式サイト</a>');
     if (r.pg) sub.push('<a href="' + esc(r.pg) + '">診療内容の詳細</a>');
     if (r.ad && r.y.indexOf("visit") < 0) sub.push('<a href="/?to=' + encodeURIComponent(r.ad) + '#form" data-k="taxi" data-ga>🚕 ペットタクシーの料金</a>');
-    return '<div class="hc"><a class="hc-n" href="' + esc(r.pg || r.u) + '"' + (r.pg ? '' : ' target="_blank" rel="noopener"') + '>' + esc(r.n) + '</a>'
+    return '<div class="hc">' + picHtml(r) + '<a class="hc-n" href="' + esc(r.pg || r.u) + '"' + (r.pg ? '' : ' target="_blank" rel="noopener"') + '>' + esc(r.n) + '</a>'
       + (b.length ? '<p class="hc-b">' + b.join("") + '</p>' : '')
       + ((r.ad || r.c) ? '<p class="hc-l"><i aria-hidden="true">📍</i><span>' + esc(r.ad || r.c) + '</span></p>' : '')
       + (r.h ? '<p class="hc-l"><i aria-hidden="true">🕘</i><span>診療時間：' + esc(r.h) + '</span></p>' : '')
@@ -96,7 +104,7 @@
     var t = (q.value || "").trim(), pl = v + (csel.value ? " " + csel.value : t ? "「" + t + "」" : "");
     sum.innerHTML = esc(pl) + "で合う病院 " + ok.length + "院" + (unk.length ? "<small>ほかに、公式の情報に書いていないので要確認 " + unk.length + "院</small>" : "")
       + (nightFirst && ok.some(function(x){ return x[0].y.indexOf("night") >= 0; }) ? "<small>夜の時間なので、夜間・救急の病院を先に並べています</small>" : "");
-    var all = ok.concat(unk), html = "";
+    var all = ok.concat(unk), html = ""; pic = 0;
     all.slice(0, shown).forEach(function(x, i){
       if (i === ok.length && unk.length) html += '<p class="hf-h">条件が公式の情報に書いていない病院（行く前に確かめてください）</p>';
       html += card(x[0], x[1]);

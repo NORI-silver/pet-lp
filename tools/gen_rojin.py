@@ -1,7 +1,7 @@
 # お金を取らない情報ページ「全国の老犬ホーム・老猫ホーム」（/rojin-home/）。gen_areas.py が読み込んで使う。
 # Nori 2026-11-02「老犬ホーム、トレーナー、シッター」「今どんどん拡大していってよ」（拡充の1つめ）。
 # 守ること：施設からお金をもらわない。順位・おすすめをつけない。電話番号を載せない。料金は県のページで、公式サイトに書いてある金額だけ（2026-11-14、出どころと確認日つき）。
-# 公式サイトに書いてあることだけ書く（受け入れる動物・見学・登録番号・所在地）。データ：tools/rojin.json。
+# 公式サイトの情報だけ書く（受け入れる動物・見学・登録番号・所在地）。データ：tools/rojin.json。
 # 口コミの星は動物病院のページと同じしくみ（/reviews.js → booking/Code.gs の EMG_REVIEWS）。
 import json, os
 import prefkeep
@@ -31,8 +31,9 @@ CRITERIA = [
  "施設からお金はもらっていません。載っていない施設もあるので、見つけしだい足します。",
 ]
 def criteria_html(e, pf=None):
-    return ('<div class="emg-tips"><h4>この一覧に載せている施設の条件</h4><ul>'
-            + "".join(f"<li>{e(t)}</li>" for t in CRITERIA) + "</ul></div>")
+    # 運営側の決まりは読む人の役に立たないので、小さく折りたたむ（AGENTS.md「品質の決まり」A2、Nori 2026-11-16）
+    return ('<details class="emg-tips pp-fold"><summary>この一覧について</summary><ul>'
+            + "".join(f"<li>{e(t)}</li>" for t in CRITERIA) + "</ul></details>")
 
 def _card(e, h):
     extra = ""
@@ -83,7 +84,7 @@ def render(ctx):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › {e(H1)}</nav>
     <h1><small>全国{total}施設・都道府県でしぼりこめます</small>{e(H1)}</h1>
-    <p class="lede">自分で世話ができなくなったとき、介護が夜も続くとき、最後まで安心して暮らせる場所をさがしている方へ。シニアの犬や猫を長期・終生で預かる老犬ホーム・老猫ホームを、公式サイトの情報をもとに都道府県ごとにまとめました。見学で確かめたいことも一緒にどうぞ。</p>
+    <p class="lede">自分で世話ができなくなったとき、介護が夜も続くとき、最後まで安心して暮らせる場所をさがしている方へ。シニアの犬や猫を長期・終生で預かる老犬ホーム・老猫ホームを、公式サイトの情報をもとに都道府県ごとにまとめました。</p>
   </div>
 </section>
 <section style="padding-top:8px">
@@ -147,7 +148,7 @@ def _faq(pf, rs, n):
 CAT = dict(slug=SLUG, name="老犬ホーム・老猫ホーム", unit="施設", h1=H1, items=J["homes"], card=_card, checked=J["checked"], reviews=True,
   title_word="老犬ホーム・老猫ホーム", title_tail="受け入れる動物・見学・登録番号つき",
   desc_tail="所在地・受け入れる動物（犬・猫・大型犬）・見学のきまり・動物取扱業の登録番号と、口コミの星を載せています。料金は公式サイトに書いてある施設だけ載せています。順位はつけていません。",
-  lede=lambda pf, n: f"{pf}で、シニアの犬や猫を長期・終生で預かってくれる老犬ホーム・老猫ホームを{n}施設まとめました。公式サイトに書いてある所在地・受け入れる動物・見学のきまり・登録番号だけを載せています。見学の前に確かめたいことも一緒にどうぞ。",
+  lede=lambda pf, n: f"{pf}で、シニアの犬や猫を長期・終生で預かってくれる老犬ホーム・老猫ホームを{n}施設まとめました。",
   fact_cols=[("料金", ("料金",)), ("別料金", ("別料金",)), ("ふくまれるお世話", ("ふくまれるお世話",)), ("受け入れ条件", ("受け入れ条件",)), ("見学・面会", ("見学・面会",)), ("病院", ("病院",))],
   price_title="月ごとの料金（いちばん小さい区分・公式サイトの表示どおり）",
   facts=_facts, faq=_faq, extra_after=criteria_html, before_title="老犬ホームをえらぶときに確かめること", before=BEFORE,
