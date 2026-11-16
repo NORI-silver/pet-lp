@@ -72,7 +72,7 @@ FAC_CATS = ["hospital", "pet-hotel", "dogrun", "pet-sitter", "trimming", "dog-tr
             "inu-yado", "pet-yado", "inu-cafe", "jichitai", "hinan", "emergency"]
 SEARCH_MARK = re.compile(r'class="(?:[^"]*\s)?(?:ux-find|hf|hn-find|bf|ff-box|fit-box|pref-pick|ux-c|emg-item|fr)(?:\s[^"]*)?"|<select\b|<input\b(?![^>]*type="hidden")')
 REASONS = {
-    "words": "使わない言葉", "hole": "下書きの穴（◯◯など）", "removed": "消した部品がもどった", "tally": "運営側の集計を見せている", "kv": "キービジュアルがない",
+    "words": "使わない言葉", "hole": "下書きの穴（◯◯など）", "removed": "消した部品がもどった", "tally": "運営側の集計を見せている", "kv": "キービジュアルがない", "trust": "運営者と掲載の基準への表示がない",
     "prefgrid": f"都道府県のボタンを{PREFGRID_MAX + 1}個以上たたまずに並べている", "intro": f"さがす欄・見出しの前の文が{INTRO_MAX}字を超える",
     "search": "施設の分野で、さがす欄より前に記事・目次がある",
     "card": "タクシー以外の施設のカードが共通のカード（tools/cardskin.py の形）になっていない", "wall": f"図・表・箇条書きのない文が{WALL_MAX}字を超えて続く",
@@ -204,6 +204,7 @@ def check_page(root, path):
     if bad: found.append(("photo", f"{len(bad)}枚（{bad[0][:60]}）"))
     if info and '<p class="emg-free">' in raw: found.append(("removed", "結果の前の「この一覧は無料の情報です」の断り書き（ページの下へ小さく。tidy.py）"))
     # 分野の入口にはキービジュアル（tools/keyvisual.py、Nori 2026-11-16「各カテゴリでキービジュアルいれて」）
+    if "</footer>" in raw and 'href="/about/"' not in raw: found.append(("trust", "ページの下に運営者と掲載の基準への表示がない（portal.py の TRUST）"))
     if len(parts) == 1 and parts[0] in FAC_CATS and "data-kv" not in raw: found.append(("kv", "キービジュアルがない（keyvisual.py の KV に分野を足す）"))
     if p.walls and "terms" not in parts: found.append(("wall", f"{max(p.walls)}字"))  # 規約は条文なので除く
     return found
