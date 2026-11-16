@@ -103,12 +103,11 @@ function prefGuess(sel, apply){
     detN.textContent = n ? n : "";
   }
   // カードのイメージ写真（無料の写真素材。本物の病院の写真ではないので「イメージ」と書き、alt は空）。となりが同じ写真にならないよう順番に回す
-  var PICS = {"hospital":[],"hospital-night":[]}, pic = 0;
+  // カードの写真（使ってよいと確かめた写真だけ。tools/cardphoto.py と同じ形）。ない病院は共通の枠（Nori 2026-11-16）
   function picHtml(r){
-    var k = r.y.indexOf("night") >= 0 && PICS["hospital-night"].length ? "hospital-night" : "hospital", fs = PICS[k];
-    if (!fs.length) return "";
-    var f = fs[pic++ % fs.length];
-    return '<div class="ux-img"><img src="/img/stock/' + k + '/' + f + '" alt="" width="600" height="400" loading="lazy" decoding="async"><span>イメージ</span></div>';
+    if (!r.ph) return '<div class="cs-ph cs-ph0"' + (r.rv ? ' data-gph="' + esc(r.rv) + '"' : '') + ' aria-hidden="true"></div>';
+    var ps = r.ph[0], im = ps.map(function(p, i){ return '<img src="' + esc(p) + '" alt="' + esc(r.n) + 'の写真' + (i + 1) + '" width="520" height="347" loading="lazy" decoding="async">'; }).join("");
+    return '<div class="cs-ph"><div class="cs-ph-s">' + im + '</div>' + (ps.length > 1 ? '<span class="cs-ph-n" aria-hidden="true">📷 ' + ps.length + '</span>' : '') + (r.ph[1] ? '<small class="cs-ph-c">' + esc(r.ph[1]) + '</small>' : '') + '</div>';
   }
   function card(r, unk){
     var b = [];

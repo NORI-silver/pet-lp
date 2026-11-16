@@ -127,6 +127,9 @@ def record(h, pref, tags, depts_of):
     dps = depts_of(_t(" ".join(h.get("depts") or []), spec, svc))
     if re.search(r"CT|MRI", every + " ".join(h.get("depts") or [])): y.add("ct")
     r = {"n": h["name"], "c": h.get("city", ""), "u": h.get("url", "")}
+    import cardphoto  # 使ってよいと確かめた写真（tools/photos.json）があれば、カードの上に出す（Nori 2026-11-16）
+    _ph = cardphoto.hosp_photo(h)
+    if _ph: r["ph"] = _ph
     if h.get("addr"): r["ad"] = h["addr"]
     hv = h.get("hours") or _facts(h, "診療時間", "受付時間")
     if hv: r["h"] = hv

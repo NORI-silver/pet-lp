@@ -41,7 +41,7 @@ SRC = {
     "dogrun": ("dogrun.json", "dogruns", "url"),
 }
 
-OK = re.compile(r'クリエイティブ・?コモンズ[^。]{0,60}(表示|BY|ＢＹ)|CC[ \-]?BY|creativecommons\.org/(licenses/by(-sa)?/|publicdomain)|政府標準利用規約|公共データ利用規約|CC0', re.I)
+OK = re.compile(r'クリエイティブ・?コモンズ[^。]{0,60}(表示|BY|ＢＹ)|CC[ \-]?BY|creativecommons\.org/(licenses/by(-sa)?/|publicdomain)|政府標準利用規約|公共データ利用規約|(?-i:\bCC0\b)', re.I)
 NC = re.compile(r'by-nc|by-nd|非営利|改変禁止|NC[ \-]?ND|BY-NC|BY-ND', re.I)
 PHOTO_EXCL = re.compile(r'(写真|画像|イラスト|図版)[^。]{0,60}(除|対象外|含まれ(ません|ない)|適用され(ません|ない)|別途|第三者)')
 FREE = re.compile(r'転載(は|も)?(自由|可|OK|歓迎)|自由に(ご)?(利用|使用|転載)|ご自由にお使い|フリー素材')
