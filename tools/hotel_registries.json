@@ -1,0 +1,123 @@
+{
+ "_説明": "自治体が公開している第一種動物取扱業者の一覧（tools/hotel_registry.py が読む）。prefs＝その一覧で照らし合わせるホテルの都道府県。except＝その一覧に入っていない市（その市が自分で登録している）。asof＝一覧の時点。page＝一覧を載せている公式ページ（カードの出どころ）。",
+ "registries": {
+  "東京都": {
+   "prefs": [
+    "東京都"
+   ],
+   "asof": "2026-10-01",
+   "page": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html",
+   "files": [
+    "https://www.hokeniryo.metro.tokyo.lg.jp/documents/d/hokeniryo/2026-10-02-163921-880",
+    "https://www.hokeniryo.metro.tokyo.lg.jp/documents/d/hokeniryo/2026-10-02-163918-404",
+    "https://www.hokeniryo.metro.tokyo.lg.jp/documents/d/hokeniryo/2026-10-02-163914-371",
+    "https://www.hokeniryo.metro.tokyo.lg.jp/documents/d/hokeniryo/2026-10-02-163909-740",
+    "https://www.hokeniryo.metro.tokyo.lg.jp/documents/d/hokeniryo/2026-10-02-163905-532",
+    "https://www.hokeniryo.metro.tokyo.lg.jp/documents/d/hokeniryo/2026-10-02-163901-882"
+   ]
+  },
+  "大阪府": {
+   "prefs": [
+    "大阪府"
+   ],
+   "except": [
+    "大阪市",
+    "堺市"
+   ],
+   "asof": "2026-10-17",
+   "page": "https://www.pref.osaka.lg.jp/o120200/doaicenter/doaicenter/gyoushakoukai.html",
+   "files": [
+    "https://www.pref.osaka.lg.jp/documents/1501/20261017.xlsx"
+   ]
+  },
+  "愛知県": {
+   "prefs": [
+    "愛知県"
+   ],
+   "except": [
+    "名古屋市",
+    "岡崎市"
+   ],
+   "asof": "2026-10-02",
+   "page": "https://www.pref.aichi.jp/soshiki/doukan-c/tourokubo.html",
+   "files": [
+    "https://www.pref.aichi.jp/uploaded/attachment/632668.pdf"
+   ]
+  },
+  "埼玉県": {
+   "prefs": [
+    "埼玉県"
+   ],
+   "except": [
+    "さいたま市",
+    "川越市",
+    "越谷市",
+    "川口市"
+   ],
+   "asof": "2026-10-16",
+   "page": "https://www.pref.saitama.lg.jp/a0706/doubutu-touroku/toriatukaimeibo.html",
+   "files": [
+    "https://www.pref.saitama.lg.jp/documents/58027/list_20261016.xlsx"
+   ]
+  },
+  "千葉市": {
+   "prefs": [
+    "千葉県"
+   ],
+   "cities": [
+    "千葉市"
+   ],
+   "asof": "2026-10-23",
+   "page": "https://www.city.chiba.jp/hokenfukushi/kenkou/seikatsueisei/dobutsuhogo/toriatukaigyou.html",
+   "files": [
+    "https://www.city.chiba.jp/hokenfukushi/iryoeisei/seikatsueisei/dobutsuhogo/documents/202601023.xlsx"
+   ]
+  },
+  "北九州市": {
+   "prefs": [
+    "福岡県"
+   ],
+   "cities": [
+    "北九州市"
+   ],
+   "asof": "2026-09-30",
+   "page": "https://www.city.kitakyushu.lg.jp/contents/18500074.html",
+   "files": [
+    "https://www.city.kitakyushu.lg.jp/files/001021857.pdf"
+   ]
+  },
+  "札幌市": {
+   "prefs": [
+    "北海道"
+   ],
+   "cities": [
+    "札幌市"
+   ],
+   "asof": "2026-11-04",
+   "page": "https://www.city.sapporo.jp/inuneko/main/toriatsukai.html",
+   "files": [
+    "https://www.city.sapporo.jp/inuneko/main/documents/20261104_hp_openlist.pdf"
+   ]
+  },
+  "静岡県": {
+   "prefs": [
+    "静岡県"
+   ],
+   "except": [
+    "静岡市",
+    "浜松市"
+   ],
+   "asof": "2026-09-30",
+   "page": "https://www.pref.shizuoka.jp/kenkofukushi/eiseiyakuji/dobutsuaigo/1003147/1025198.html",
+   "files": [
+    "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/025/198/20260930_01_kamo.pdf",
+    "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/025/198/20260930_02_atami.pdf",
+    "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/025/198/20260930_03_toubu.pdf",
+    "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/025/198/20260930_04_gotenba.pdf",
+    "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/025/198/20260930_05_fuji.pdf",
+    "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/025/198/20260930_06_chubu.pdf",
+    "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/025/198/20260930_07_seibu.pdf"
+   ]
+  }
+ }
+}
