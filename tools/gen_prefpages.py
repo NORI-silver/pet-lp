@@ -3,7 +3,7 @@
 # その県の一覧だけのページが出るようにする（全国のページは1つのURLで、県の選択はブラウザの中だけだったため）。
 # 中身は全国のページと同じデータ（公式サイトの情報）。県ごとの数・条件の数・よくある質問は自動で数える。順位・料金・電話番号なし。
 # 1件もない県のページは作らない（全国のページに「まだ載せていません」と出る）。件数が少ない県は、同じ地方のほかの県のページへのリンクを出す。
-import json, os
+import json, os, re
 import gen_dogrun
 import prefkeep
 
@@ -149,7 +149,7 @@ def render_pref(ctx, cat, pf, rows):
     n = len(rs)
     url = SITE + href(cat, pf)
     name, unit = cat["name"], cat["unit"]
-    facts = [f for f in cat["facts"](rs) if f]
+    facts = [f for f in cat["facts"](rs) if f and not re.search(r"：\d+／\d+$", f)]  # 「猫も受ける施設：3／5」のような運営側の集計は出さない（2026-11-16 スマホ点検）
     lab, rprefs = _region_of(pf, ctx["emg_regions"])
     near = [p for p in rprefs if p != pf and p in rows]
     near_html = ""

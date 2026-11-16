@@ -444,7 +444,7 @@ extra_css = """
 .crumb{font-size:.78rem;color:var(--ink-3);padding:14px 0 0}
 .crumb a{color:var(--ink-3);text-decoration:none}
 .crumb a:hover{text-decoration:underline}
-.area-hero{background:radial-gradient(90% 70% at 100% 0%,#ffe2cc 0%,rgba(255,226,204,0) 60%),var(--cream);padding:24px 0 56px}
+.area-hero{background:radial-gradient(90% 70% at 100% 0%,#ffe2cc 0%,rgba(255,226,204,0) 60%),var(--cream);padding:24px 0 24px}
 .area-hero h1{font-family:var(--round);font-size:1.6rem;font-weight:800;line-height:1.4;margin:18px 0 14px}
 .area-hero h1 small{display:block;font-size:.95rem;color:var(--o-d);margin-bottom:6px}
 .area-hero .lede{color:var(--ink-2);margin:0 0 22px}
@@ -1207,7 +1207,7 @@ _GH_N = 6
 def _gh_body():
     import faccard as _fc
     T = [t for t in _gh_topics() if t[4]]
-    chips = "".join(f'<a href="#g-{k}">{_fc.icon(ic, "gh-i")}<b>{e(lab)}</b><small>{len(ss)}本</small></a>' for k, ic, lab, _, ss in T)
+    chips = "".join(f'<a href="#g-{k}">{_fc.icon(ic, "gh-i")}<b>{e(lab)}</b></a>' for k, ic, lab, _, ss in T)
     def row(s, ic):
         g = GBY[s]
         return f'<li><a href="/guide/{s}/">{_fc.icon(_gh_icon(s, ic), "gh-i")}<span><b>{e(g["title"])}</b><small>{e(g["lede"])}</small></span></a></li>'
@@ -1719,7 +1719,6 @@ ep = head("ペットの緊急搬送・動物救急車（緊急のペットタク
       <p class="emg-free">この一覧は無料の情報です。当サイトへのお申し込みやお支払いはありません。料金や受付は、それぞれの会社・病院に直接おたずねください。</p>
       <p class="emg-sum"><a href="/#emergency">現在地から近い病院を、車で行く時間と一緒にさがす</a></p>
       <h2 class="emg-h">夜間・救急の動物病院</h2>
-      <p class="emg-sum">夜間の病院が見つからない県には、近くの県の病院を（県名）つきで載せています。</p>
       {emg_prefs_html}
       <h2 class="emg-h">緊急の搬送をしている会社</h2>
       <div id="emgTaxiAll">{''.join(emg_company(t) for t in EMG["taxis"])}</div>
@@ -2725,6 +2724,9 @@ print("tidy", tidy.build(ROOT), "pages")
 # 事業者カードの写真（使ってよいと確かめた写真だけ・ない施設は共通の枠。tools/cardphoto.py、Nori 2026-11-16「事業者カードへの写真表示」）
 import cardphoto
 print("cardphoto", cardphoto.build(ROOT))
+# 分野ごとのキービジュアル（tools/keyvisual.py、Nori 2026-11-16「各カテゴリでキービジュアルいれて」）
+import keyvisual
+print("keyvisual", keyvisual.build(ROOT), "pages")
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] noindex.json のページに noindex,follow を入れる（ほかの後処理のあと）
 for _p in NOINDEX:
