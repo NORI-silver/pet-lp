@@ -250,6 +250,15 @@ CSS = """<style id="hfcss">
 .hf-det summary span:empty{display:none}
 .hf-alt{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .hf-alt button,.hf-alt a{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:7px 11px;font-size:.85rem;color:#3c2f26;text-decoration:none;cursor:pointer}
+.pk{display:grid;gap:8px;margin:4px 0 6px}
+.pk-h{margin:0 0 2px;font-size:.9rem;font-weight:700;color:#2b2622}
+.pk-g{background:#fff;border:1px solid #efe0d3;border-radius:12px;padding:0 12px}
+.pk-g summary{cursor:pointer;list-style:none;font-weight:700;font-size:.92rem;color:#2b2622;padding:11px 34px 11px 0;position:relative;display:block}
+.pk-g summary::-webkit-details-marker{display:none}
+
+.pk-b{display:flex;flex-wrap:wrap;gap:6px;padding:0 0 12px}
+.pk-b button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:7px 11px;font-size:.88rem;color:#3c2f26;cursor:pointer;line-height:1.2}
+.pk-b button small{margin-left:4px;font-size:.76rem;color:#6b5f56}
 @media (min-width:760px){.hf-list{grid-template-columns:1fr 1fr}.hf-p select{flex:0 0 14em}.hf-p input{flex:1 1 auto}.hf-need{grid-template-columns:repeat(3,1fr)}.hf-c{flex-wrap:wrap;overflow:visible;margin:0;padding:0}}
 </style>"""
 
@@ -306,13 +315,25 @@ def _pics(ROOT):
         out[k] = sorted(f for f in os.listdir(d) if f.endswith(".webp")) if os.path.isdir(d) else []
     return out
 
-def write_js(ROOT, avail, pslug):
+# 都道府県を地方ごとに（さがす前の「県を選ぶ」ボタンの並び。2026-11-16 一覧が空に見えた見直し）
+REGIONS = [("北海道・東北", ["北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県"]),
+           ("関東", ["茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県"]),
+           ("中部", ["新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県"]),
+           ("近畿", ["三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県"]),
+           ("中国・四国", ["鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県"]),
+           ("九州・沖縄", ["福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"])]
+
+
+def write_js(ROOT, avail, pslug, counts=None):
     import prefkeep
     body = open(os.path.join(HERE, "hosp_find.js"), encoding="utf-8").read()
     body = (body.replace("__SLUG__", json.dumps(pslug, ensure_ascii=False))
                 .replace("__LABEL__", json.dumps(LABEL, ensure_ascii=False))
                 .replace("__NEAR__", json.dumps(near_prefs(), ensure_ascii=False, separators=(",", ":")))
-                .replace("__PICS__", json.dumps(_pics(ROOT), separators=(",", ":"))))
+                .replace("__PICS__", json.dumps(_pics(ROOT), separators=(",", ":")))
+                .replace("__REG__", json.dumps([[g, [[pf, (counts or {}).get(pf, 0)] for pf in ps if (counts or {}).get(pf)]] for g, ps in REGIONS], ensure_ascii=False, separators=(",", ":"))))
+    # 行だけのコメントと行頭の空白を落として軽くする（/hosp.js は 24KB まで）
+    body = "\n".join(l.strip() for l in body.split("\n") if l.strip() and not l.strip().startswith("//"))
     js = "// 生成ファイル（tools/hosp_find.py）。手で直さない\n(function(){" + prefkeep.FN + prefkeep.GUESS + body + "\n})();\n"
     open(os.path.join(ROOT, "hosp.js"), "w", encoding="utf-8").write(js)
     return len(js.encode())

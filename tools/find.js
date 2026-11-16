@@ -78,7 +78,28 @@
       var sm = g.querySelector(".fr-h small, [data-ffn]");
       if (sm) sm.textContent = [].filter.call(g.querySelectorAll("[data-ffi]"), function(it){ return !it.hidden; }).length + unit;
     });
-    [].forEach.call(document.querySelectorAll(".emg-region, .ux-region"), function(h){ h.hidden = !!(pf || ks.length || qs); });
+    [].forEach.call(document.querySelectorAll(".emg-region, .ux-region"), function(h){ h.hidden = !!(pf || ks.length || qs) || idle; });
+    // 県が決まらないとき（位置が分からないときなど）は、空のままにせず、地方ごとの県のボタン（件数つき）を出す
+    if (idle && sel && !box._pk) {
+      var heads = [].slice.call(document.querySelectorAll(".emg-region"));
+      if (heads.length) {
+        var pk = el("div", "pk"); box._pk = pk;
+        heads.forEach(function(h){
+          var bs = [], n = h.nextElementSibling;
+          while (n && !n.classList.contains("emg-region")) {
+            if (n.matches && n.matches(".emg-pref[data-pref]")) { var c = n.querySelectorAll("[data-ffi]").length; if (c) bs.push([n.getAttribute("data-pref"), c]); }
+            n = n.nextElementSibling;
+          }
+          if (!bs.length) return;
+          var d = el("details", "pk-g"), su = el("summary", "", h.textContent), w = el("div", "pk-b");
+          bs.forEach(function(x){ var b = el("button", "", x[0]); b.type = "button"; b.setAttribute("data-pk", x[0]); b.append(el("small", "", x[1] + unit)); w.append(b); });
+          d.append(su, w); pk.append(d);
+        });
+        pk.addEventListener("click", function(ev){ var b = ev.target.closest("button[data-pk]"); if (!b) return; sel.value = b.getAttribute("data-pk"); sel.dispatchEvent(new Event("change")); box.scrollIntoView({behavior: "smooth", block: "start"}); });
+        heads[0].parentNode.insertBefore(pk, heads[0]);
+      }
+    }
+    if (box._pk) box._pk.hidden = !idle;
     // 長い一覧は、はじめの N 件だけ見せて「のこり◯件を見る」（data-ffmore="N"。中身はHTMLにあるので検索にも読める。2026-11-16 見直し）
     [].forEach.call(document.querySelectorAll("[data-ffmore]"), function(g){
       var N = +g.getAttribute("data-ffmore") || 12, vis = [].filter.call(g.querySelectorAll("[data-ffi]"), function(it){ return !it.hidden; });
