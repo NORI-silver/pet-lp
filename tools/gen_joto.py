@@ -52,31 +52,61 @@ def topic_mark(c, words):
     if any(("ない" in x and ("トライアル" in x)) for x in hit) and words == TOPICS[4][1]: return "なし"
     return "○"
 
-# [B] Nori 2026-11-16「文字ばかりで辛いからアイコンなどVisualで」：条件の行は、なんの条件かアイコンで先に見せる
-ICONS = [("👪", ("賛成", "同意", "家族", "同居")), ("🏠", TOPICS[1][1]), ("🎂", ("歳", "成人", "年齢")), ("📖", TOPICS[3][1]),
-         ("🏡", TOPICS[4][1]), ("🩺", ("不妊", "去勢", "繁殖", "ワクチン", "マイクロチップ")), ("🛋️", TOPICS[6][1]), ("💴", TOPICS[7][1]),
-         ("🔎", ("訪問", "面会", "面接", "見学")), ("📝", ("申込", "申し込", "登録", "誓約"))]
-def cond_icon(x):
-    for ic, ws in ICONS:
-        if any(w in x for w in ws): return ic
-    return "✅"
+# 条件は「アイコン＋短い言葉」の行にまとめる（文字は消さない。1つの条件は1つの span のまま）
+ICON_TOPICS = [
+    ("費用", "yen", ("円", "無料", "無償", "手数料", "費用", "実費", "負担")),
+    ("家族", "family", ("家族", "同居", "同意", "賛成", "ひとり暮らし", "一人暮らし", "単身", "子ども", "子供")),
+    ("年齢", "user", ("歳", "成人", "未成年", "高齢", "後見")),
+    ("住まい", "home", ("住まい", "住宅", "賃貸", "借家", "集合", "住居", "公営", "マンション", "持ち家")),
+    ("お試し", "repeat", ("トライアル", "お試し", "体験飼育")),
+    ("家庭訪問・報告", "door", ("訪問", "報告", "追跡", "アンケート", "近況", "飼育状況")),
+    ("講習", "book", ("講習", "教室", "講座", "説明を受け", "動画", "研修")),
+    ("不妊去勢・登録", "cross", ("不妊", "去勢", "繁殖", "ワクチン", "狂犬病", "マイクロチップ", "登録")),
+    ("室内飼い", "home", ("室内", "屋内", "外飼い", "完全室内")),
+    ("頭数・先住の子", "paw", ("先住", "頭数", "1頭", "一頭", "2頭", "多頭")),
+    ("見学・面会", "cal", ("見学", "お見合い", "面会", "予約", "譲渡会", "マッチング", "審査")),
+    ("持ち物", "bag", ("持って", "持参", "キャリー", "ケージ", "首輪", "リード")),
+    ("住んでいる所", "map", ("県内", "市内", "在住", "住んで", "住む", "県外", "市外")),
+]
+OTHER = ("ほかの条件", "check")
+
+def _topic(x):
+    for lab, ic, ws in ICON_TOPICS:
+        if any(w in x for w in ws): return lab, ic
+    return OTHER
+
+def icon_rows(e, conds, fees=()):
+    from faccard import icon
+    order = [t[0] for t in ICON_TOPICS] + [OTHER[0]]
+    grp, ics = {}, dict((t[0], t[1]) for t in ICON_TOPICS); ics[OTHER[0]] = OTHER[1]
+    for x in conds: grp.setdefault(_topic(x)[0], []).append(x)
+    for x in fees: grp.setdefault("費用", []).append(x)
+    li = "".join(
+        f'<li><span class="jt-ib">{icon(ics[lab], "jt-i")}</span><span class="jt-tx"><b>{e(lab)}</b>'
+        + "".join(f"<span>{e(x)}</span>" for x in grp[lab]) + "</span></li>"
+        for lab in order if lab in grp)
+    return f'<ul class="jt-c jt-ic">{li}</ul>'
 
 def card(e, c):
-    conds = "".join(f'<li><span class="jt-i" aria-hidden="true">{cond_icon(x)}</span><span>{e(x)}</span></li>' for x in c["conds"])
     links = "".join(f'<li><a href="{e(l["u"])}" target="_blank" rel="noopener">{e(l["t"])} ↗</a></li>' for l in c.get("links", []))
     return (f'<div class="emg-item emg-co jt-card"><a href="{e(c["url"])}" target="_blank" rel="noopener"><b>{e(c["name"])}</b></a>'
             f'<small>{e(_kind(c))}・{e(c["animals"])}</small>'
-            f'<p class="jt-h">申し込みの条件</p><ul class="jt-c">{conds}</ul>'
+            + icon_rows(e, c["conds"])
             + (f'<p class="jt-h">あわせて見る</p><ul class="jt-l">{links}</ul>' if links else "")
             + (f'<p class="jt-more"><a href="{city_href(c)}">{e(c["city"])}で迎えるときの条件をくわしく見る →</a></p>' if city_href(c) and not c.get("_nolink") else "")
-            + f'<small class="sg-src">{e(J["checked"])}時点</small></div>')
+            + f'<small class="sg-src">{e(J["checked"])}時点の情報</small></div>')
 
 CSS = """<style>
 .jt-card .jt-h{font-size:.76rem;font-weight:700;color:var(--ink-2);margin:10px 0 2px}
 .jt-card ul{margin:0;padding-left:1.2em;font-size:.86rem;line-height:1.7}
-.jt-card ul.jt-c{list-style:none;padding-left:0}
-.jt-card ul.jt-c li{display:flex;gap:8px;align-items:flex-start;padding:3px 0}
-.jt-card .jt-i{flex:0 0 1.5em;font-size:1.05rem;line-height:1.5;text-align:center}
+.jt-card ul.jt-ic,.emg-item ul.jt-ic{list-style:none;padding:0!important;margin:10px 0 2px!important;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0 14px}
+.jt-ic li{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid #f3e6da;line-height:1.55}
+.jt-ic li:last-child{border-bottom:0}
+.jt-ic .jt-ib{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:#ffe8d6;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.jt-ic .jt-i{width:16px;height:16px;fill:none;stroke:#c2410c;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.jt-ic .jt-tx{display:block;min-width:0;font-size:.84rem;color:var(--ink,#2b2622)}
+.jt-ic .jt-tx b{display:inline-block;font-size:.72rem;color:#9a3412;background:#fff1e6;border-radius:999px;padding:0 8px;margin-right:6px;font-weight:800;text-decoration:none!important;vertical-align:1px}
+.jt-ic .jt-tx span{display:block}.jt-ic .jt-tx b+span{display:inline}
 .jt-card ul.jt-l{font-size:.84rem}
 .emg-item small.sg-src{color:var(--ink-3);font-size:.72rem;margin-top:6px}
 .jt-card .jt-more{margin:8px 0 0;font-size:.86rem;font-weight:700}
@@ -234,10 +264,9 @@ def groups_html(e, pf):
     cards = "".join(
         f'<div class="emg-item emg-co jt-card"><a href="{e(g["url"])}" target="_blank" rel="noopener"><b>{e(g["name"])}</b></a>'
         f'<small>民間の保護団体・{e(g["animals"])}{("・" + e(g["area"])) if g["area"] else ""}</small>'
-        '<p class="jt-h">おもな条件（団体の公式サイトより）</p><ul class="jt-c">' + "".join(f"<li>{e(x)}</li>" for x in g["conds"]) + "</ul>"
-        '<p class="jt-h">費用</p><ul class="jt-c">' + "".join(f"<li>{e(x)}</li>" for x in g["fees"]) + "</ul>"
+        + icon_rows(e, g["conds"], g["fees"]) +
         f'<p class="jt-more"><a href="{e(g["cond_url"])}" target="_blank" rel="noopener">条件・費用のページ（団体の公式サイト） ↗</a></p>'
-        f'<small class="sg-src">{e(G["checked"])}時点の公式サイト</small></div>'
+        f'<small class="sg-src">{e(G["checked"])}時点の情報</small></div>'
         for g in gs)
     regs = G["registries"].get(pf, [])
     src = "・".join(f'<a href="{e(r["u"])}" target="_blank" rel="noopener">{e(r["t"])} ↗</a>' for r in regs) or "自治体の登録団体の一覧"
