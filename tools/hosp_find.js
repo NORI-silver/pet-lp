@@ -5,7 +5,8 @@
   var sel = document.getElementById("hospPref"), csel = document.getElementById("hfCity"), q = document.getElementById("hfQ"),
       dl = document.getElementById("hfCities"), det = document.getElementById("hfDet"), detN = document.getElementById("hfDetN"),
       list = document.getElementById("hfList"), sum = document.getElementById("hfSum");
-  var SLUG = __SLUG__, LABEL = __LABEL__, NEAR = __NEAR__, av = null;
+  var SLUG = __SLUG__, LABEL = __LABEL__, NEAR = __NEAR__, REG = __REG__, av = null;
+  list.addEventListener("click", function(ev){ var b = ev.target.closest("button[data-pk]"); if (!b) return; sel.value = b.getAttribute("data-pk"); sel.dispatchEvent(new Event("change")); box.scrollIntoView({behavior: "smooth", block: "start"}); });
   var NEED = {night: ["night"], sunhol: ["sun", "hol"], h24: ["h24"], visit: ["visit"], spec: ["spec"]};
   var NEEDL = {night: "夜間・救急", sunhol: "日曜・祝日", h24: "24時間", visit: "往診", spec: "専門診療"};
   // 病院の種類は「そういう病院か」なので、書いていなければ合わない（要確認には入れない）
@@ -95,7 +96,15 @@
   function draw(){
     paintBtns();
     var v = sel.value;
-    if (!v) { list.innerHTML = ""; sum.innerHTML = "都道府県を選ぶと、合う病院が下に並びます"; box.parentNode.classList.remove("hf-on"); return; }
+    if (!v) {
+      // 県がまだ決まっていないとき（位置が分からないときなど）は、空のままにせず、地方ごとの県のボタン（病院の数つき）を出す
+      sum.innerHTML = "都道府県を選ぶと、合う病院が並びます"; box.parentNode.classList.remove("hf-on");
+      list.innerHTML = '<div class="pk">' + REG.map(function(g){
+        return '<details class="pk-g"><summary>' + esc(g[0]) + '</summary><div class="pk-b">' + g[1].map(function(x){
+          return '<button type="button" data-pk="' + esc(x[0]) + '">' + esc(x[0]) + '<small>' + x[1] + '</small></button>'; }).join("") + '</div></details>';
+      }).join("") + '</div>';
+      return;
+    }
     if (!data) { sum.textContent = "読み込んでいます…"; return; }
     var ks = keys(), m = match(data.filter(function(r){ return !r.far; }), ks, true), ok = m[0], unk = m[1];
     // 夜の時間に開いたときは、夜間・救急の病院を先に（受付中とは言い切らない）

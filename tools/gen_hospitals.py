@@ -430,9 +430,9 @@ def write_all(ROOT, ctx):
         n = sum(1 for c in cs if c["city"] == h["city"])
         sl = gen_vetclinics.cslug(pf, h["city"])
         return f"/hospital/{gen_dogrun.PSLUG[pf]}/{sl}/" if n >= gen_vetclinics.CITY_MIN and sl else f"/hospital/{gen_dogrun.PSLUG[pf]}/"
-    avail, _ = hosp_find.build(ROOT, ctx, CONDS, lambda c: _rows(c, ctx["EMG"]), lambda h: fac.get(h.get("id"), ""),
+    avail, counts = hosp_find.build(ROOT, ctx, CONDS, lambda c: _rows(c, ctx["EMG"]), lambda h: fac.get(h.get("id"), ""),
                                gen_vetclinics.by_pref, vet_page, gen_dogrun.PSLUG, faccard.depts_of)
-    hosp_find.write_js(ROOT, avail, gen_dogrun.PSLUG)
+    hosp_find.write_js(ROOT, avail, gen_dogrun.PSLUG, counts)
     open(os.path.join(ROOT, "hospital", "index.html"), "w", encoding="utf-8").write(render_hub(ctx))
     for c in CONDS:
         d = os.path.join(ROOT, "hospital", c["slug"])
