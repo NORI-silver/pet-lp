@@ -75,6 +75,7 @@ _PRICE = re.compile(r"料金|費用|手数料|金額")
 _TIME = re.compile(r"時間|受付|営業|定休|休み")
 _ANIM = re.compile(r"動物|受け入れ")
 _CERT = re.compile(r"資格|登録|認定")
+_CAREER = re.compile(r"^トレーナー歴$")  # [B] 11/16 Nori「ドッグトレーナー歴とか」：公式サイトに年数・開業年が書いてある教室だけ
 _SVC = re.compile(r"^(提供内容|内容|できること|サービス)$")
 
 # 条件の印（data-flags）を、カードのチップと「こんな人に」の言葉にする（公式サイトの情報から作った印だけ）
@@ -87,7 +88,7 @@ FOR_TEXT = {
     "large": "大型犬の子", "cat_only": "犬の声が苦手な猫", "senior": "シニアや持病のある子", "pickup": "送り迎えしてほしい人",
     "vet": "病院が近いと安心な人", "camera": "留守中も様子を見たい人", "private_room": "静かな個室がいい子", "run": "体を動かしたい子",
     "night_staff": "夜も人がいると安心な人", "car": "家の前でトリミングしたい人", "in_home": "家の中でしてほしい人",
-    "出張・訪問": "家での困りごとを家で見てほしい人", "教室・グループ": "ほかの犬と一緒に練習したい人", "パピー": "子犬を迎えたばかりの人",
+    "出張・訪問": "家での困りごとを家で見てほしい人", "教室・グループ": "ほかの犬と一緒に練習したい人", "パピー": "子犬を迎えたばかりの人", "問題行動": "吠え・かみ癖に困っている人",
     "幼稚園・保育園": "日中あずけて社会性を育てたい人", "預かり訓練": "まとめて預けて練習したい人", "オンライン": "近くに教室がない人",
     "猫": "猫を家で留守番させたい人", "小動物": "うさぎ・小動物の飼い主", "鳥": "鳥の飼い主", "散歩": "散歩も頼みたい人",
     "個別火葬": "お骨を返してほしい人", "立ち会い": "最後まで見送りたい人", "お迎え・訪問火葬": "家まで来てほしい人", "霊園・納骨": "納骨の場所もさがしている人",
@@ -250,6 +251,19 @@ def features(rows, rest, chips):
     if any(re.search(r"送迎|出張|訪問|お迎え|往診", c) for c in chips): f.append("来てくれる・送迎")
     return [x for x in _FT_ORDER if x in f] + [x for x in dict.fromkeys(f) if x not in _FT_ORDER]
 
+def cred_chips(val):
+    """資格・登録の行 → 緑のチェックの札（ショッピング広告の注記のように）。登録番号の項目は「動物取扱業の登録あり」1つにまとめる。"""
+    items, reg = [], False
+    for x in re.split(r"[、,，]", val):
+        x = x.strip()
+        if not x: continue
+        if re.match(r"(第一種動物取扱業|動物取扱業|登録)", x) or re.search(r"第?[0-9０-９\-－]+号", x):
+            reg = True; continue
+        items.append(x)
+    if reg: items.append("動物取扱業の登録あり")
+    return "".join(f'<span class="cr">{html.escape(x)}</span>' for x in dict.fromkeys(items))
+
+
 def _edge_line(ic, lab, val, conf):
     """動物の行は、犬・猫のほかの動物（例外）だけを出す。犬・猫だけなら出さない（だれでも分かることは書かない）。片方だけなら「猫だけ」。"""
     if ic != "paw": return (ic, lab, val)
@@ -315,6 +329,7 @@ def build_card(card, conf, fit_by_name):
     if not take(_AREA, "car"): take(_ADDR, "pin")
     take(_PRICE, "yen"); take(_TIME, "clock"); take(_ANIM, "paw")
     if len(pick) < 4: take(_CERT, "badge")
+    if conf["key"] == "trainer": take(_CAREER, "clock")
     dp = []
     for i, (lab, val, x) in enumerate(rows):
         if i in used: continue
@@ -364,6 +379,12 @@ def build_card(card, conf, fit_by_name):
     lines = [x for x in (_edge_line(ic, lab, val, conf) for ic, lab, val in lines) if x]
     for ic, lab, val in lines[:3]:
         v = val
+        if ic == "badge" and conf["key"] == "trainer":
+            cr = cred_chips(val)
+            if cr:
+                body.append(f'<p class="fc-line" title="{html.escape(_short(lab))}">{icon(ic)}<span>{cr}</span></p>')
+                if re.search(r"登録", val): more.append(f'<small>登録番号：{html.escape(val)}</small>')
+                continue
         body.append(f'<p class="fc-line" title="{html.escape(_short(lab))}">{icon(ic)}<span>{html.escape(v)}</span></p>')
     for ic, lab, val in pick:
         if ic == "yen": body.append(f'<p class="fc-price" title="{html.escape(_short(lab))}">{icon("yen")}<span>{html.escape(val)}</span></p>')
