@@ -272,7 +272,7 @@ def page(h):
     h2 = "".join(out)
     if 'data-cat="cafe"' in h2 or "/inu-cafe/" in h2[:3000] or 'href="/inu-cafe/' in h2:
         h2, k = cafe_hub(h2); n += k
-    if n:
+    if n or 'class="jc-card cs' in h2:  # 迷子・登録の窓口のカードは生成側（gen_jichitai.py）が共通の形で出す
         h2 = h2.replace("</head>", CSS + "</head>", 1)
     return h2
 
