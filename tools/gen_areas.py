@@ -1176,6 +1176,65 @@ def _basic_first(slugs): return [x for x in _BASIC if x in slugs] + [x for x in 
 hub_ld = '<script type="application/ld+json">\n' + json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
   {"@type":"ListItem","position":1,"name":"ペットタクシー予約窓口","item":SITE+"/"},
   {"@type":"ListItem","position":2,"name":"ペットの移動ガイド","item":hub_url}]}, ensure_ascii=False, indent=1) + '\n</script>'
+
+# ---- ガイドの一覧（/guide/）：話題のボタン（アイコンつき）→ 話題ごとのアイコンつきの小さなカード（2026-11-16 見直し） ----
+_GH_DEATH = ("pet-died-first", "pet-cremation", "pet-death", "pet-memorial", "pet-loss", "pet-funeral", "pet-ashes")
+def _gh_topics():
+    G = [g for g in GUIDES]
+    cat = lambda g: g.get("category")
+    death = [g["slug"] for g in G if cat(g) == "procedure" and g["slug"].startswith(_GH_DEATH)]
+    return [
+        ("move", "car", "ペットとの移動", "通院・引っ越し・空港・ペットタクシーの料金や選び方",
+         _basic_first([g["slug"] for g in G if cat(g) not in ("facility", "procedure", "care", "money")])),
+        ("bye", "flower", "亡くなったとき", "火葬・お葬式・供養・手続き・ペットロス", death),
+        ("care", "home", "預ける・しつけ・迎える", "老犬ホーム・しつけ・シッター・ホテル・保護犬", [g["slug"] for g in G if cat(g) == "care"]),
+        ("proc", "map", "迷子・登録・避難", "迷子・犬の登録・マイクロチップ・引っ越し・防災",
+         [g["slug"] for g in G if cat(g) == "procedure" and g["slug"] not in death]),
+        ("money", "yen", "病院代とペット保険", "手術・夜間の料金と保険の考え方", [g["slug"] for g in G if cat(g) == "money"]),
+        ("fac", "pin", "病院・施設への行き方", "大きな病院・夜間の病院・施設ごとの乗り降り", [g["slug"] for g in G if cat(g) == "facility"]),
+    ]
+_GH_ICON = [(r"cat|roneko", "paw"), (r"dog|puppy|trainer|large", "dog"), (r"hospital|vet|discharge|jarmec|jsamc|jamc|yakan|trva|dvms|veccs|emergency", "cross"),
+            (r"fare|cost|fee|insurance|survey", "yen"), (r"night|same-day", "clock"), (r"lost|found|flyer", "map"), (r"microchip|registration", "badge"),
+            (r"sitter|hotel", "bed"), (r"rojin", "home"), (r"adopt|new-family", "heart"), (r"disaster|evacuation", "bag"), (r"moving|airport|train|long", "car"),
+            (r"cremation|died|memorial|ashes|funeral|death|farewell", "flower"), (r"loss", "heart"), (r"grooming", "scissors"), (r"choose|what-is", "check")]
+def _gh_icon(slug, default):
+    for pat, ic in _GH_ICON:
+        if re.search(pat, slug): return ic
+    return default
+_GH_N = 6
+def _gh_body():
+    import faccard as _fc
+    T = [t for t in _gh_topics() if t[4]]
+    chips = "".join(f'<a href="#g-{k}">{_fc.icon(ic, "gh-i")}<b>{e(lab)}</b><small>{len(ss)}本</small></a>' for k, ic, lab, _, ss in T)
+    def row(s, ic):
+        g = GBY[s]
+        return f'<li><a href="/guide/{s}/">{_fc.icon(_gh_icon(s, ic), "gh-i")}<span><b>{e(g["title"])}</b><small>{e(g["lede"])}</small></span></a></li>'
+    secs = ""
+    for k, ic, lab, sub, ss in T:
+        first, rest = ss[:_GH_N], ss[_GH_N:]
+        secs += (f'<div class="gh-s" id="g-{k}"><h2>{_fc.icon(ic, "gh-i")}{e(lab)}</h2><p class="gh-sub">{e(sub)}</p>'
+                 f'<ul class="gh-l">' + "".join(row(x, ic) for x in first) + '</ul>'
+                 + (f'<details class="gh-more"><summary>のこり{len(rest)}本を見る</summary><ul class="gh-l">' + "".join(row(x, ic) for x in rest) + '</ul></details>' if rest else "")
+                 + '</div>')
+    css = """<style id="ghcss">
+.gh-t{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 6px}
+.gh-t a{display:flex;flex-direction:column;align-items:flex-start;gap:4px;background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px;text-decoration:none;color:#2b2622}
+.gh-t a b{font-size:.92rem;line-height:1.35}.gh-t a small{font-size:.76rem;color:#6b5f56}
+.gh-i{width:22px;height:22px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;color:#e8590c}
+.gh-s{margin:26px 0 0;scroll-margin-top:120px}
+.gh-s h2{display:flex;align-items:center;gap:8px;font-size:1.15rem;margin:0 0 2px;text-align:left}
+.gh-sub{margin:0 0 10px;font-size:.84rem;color:#6b5f56}
+.gh-l{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.gh-l a{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px;text-decoration:none;color:#2b2622;height:100%;box-sizing:border-box}
+.gh-l .gh-i{width:36px;height:36px;padding:7px;border-radius:10px;background:#fff1e6;box-sizing:border-box}
+.gh-l span{min-width:0}.gh-l b{display:block;font-size:.95rem;line-height:1.45}
+.gh-l small{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:3px;font-size:.8rem;line-height:1.55;color:#6b5f56}
+.gh-more{margin-top:8px}.gh-more summary{cursor:pointer;font-weight:700;font-size:.9rem;color:#a8410a;padding:8px 0}.gh-more[open] summary{margin-bottom:6px}
+@media (min-width:760px){.gh-t{grid-template-columns:repeat(3,1fr)}.gh-l{grid-template-columns:1fr 1fr}}
+</style>"""
+    return (css + _fc.sprite_for(chips + secs) + '<section style="padding-top:8px">\n  <div class="wrap">\n'
+            f'<nav class="gh-t" aria-label="話題でさがす">{chips}</nav>{secs}\n  </div>\n</section>')
+
 hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、空港への移動とペットタクシー｜ペットタクシー予約窓口",
   "犬や猫と一緒に移動するときの悩みと、その解決のしかたをまとめたガイドです。動物病院への通院、猫のキャリーの慣らし方、シニア・介護中の子、大型犬、引っ越しや空港への送迎まで。", hub_url, hub_ld) + f"""
 <main>
@@ -1186,24 +1245,7 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
     <p class="lede">通院、引っ越し、帰省、お別れのとき。家族の一員だからこそ、移動もその子にとって楽な方法を選んであげたい。そのためのヒントをまとめました。</p>
   </div>
 </section>
-<section style="padding-top:8px">
-  <div class="wrap">
-    <div class="sh"><h2>はじめての方へ・移動の困りごとから調べる</h2></div>
-    {guide_cards(_basic_first([g["slug"] for g in GUIDES if g.get("category") not in ("facility", "procedure", "care", "money")]))}
-    <div class="sh"><h2>病院・施設名から移動を調べる</h2></div>
-    <p>通院先や宿泊先ごとの行き方、受付・乗降場所、帰りの車で確かめたいことをまとめました。</p>
-    {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "facility"])}
-    <div class="sh"><h2>迷子・犬の登録・引っ越しの手続き</h2></div>
-    <p>迷子になったとき、迷子を保護したとき、犬の登録、引っ越し、飼えなくなったときの相談先と、災害のときの避難と備え。全国の窓口は<a href="/jichitai/">迷子・犬の登録・引取りの窓口</a>、避難所の決まりは<a href="/hinan/">ペットと避難</a>の一覧から。</p>
-    {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "procedure"])}
-    <div class="sh"><h2>老犬ホーム・ドッグトレーナー・ペットシッターのえらび方</h2></div>
-    <p>預ける・頼む前に知っておきたいこと。全国の一覧は<a href="/rojin-home/">老犬ホーム・老猫ホーム</a>、<a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a>、<a href="/pet-sitter/">ペットシッター</a>、<a href="/trimming/">出張トリミング</a>、<a href="/pet-hotel/">大型犬OK・猫専用のペットホテル</a>から。</p>
-    {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "care"])}
-    <div class="sh"><h2>病院代とペット保険</h2></div>
-    <p>手術や入院にかかるお金と、保険に入るかどうかの考え方。</p>
-    {guide_cards([g["slug"] for g in GUIDES if g.get("category") == "money"])}
-  </div>
-</section>
+{_gh_body()}
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sh"><h2>エリアからさがす</h2></div>
