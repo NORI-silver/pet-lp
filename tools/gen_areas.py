@@ -392,6 +392,8 @@ def _creds():
         if d in out: out[p] = out[d]
     return out
 src = re.sub(r"/\*CREDS\*/.*?/\*/CREDS\*/", lambda m: "/*CREDS*/var CREDS = " + json.dumps(_creds(), ensure_ascii=False) + ";/*/CREDS*/", src, count=1, flags=re.S)
+import cardphoto as _cp  # タクシーの候補カードの写真（事業者が登録した掲載情報の写真がないときに使う。Nori 2026-11-16）
+src = re.sub(r"/\*CO_PH\*/.*?/\*/CO_PH\*/", lambda m: "/*CO_PH*/var CO_PH = " + json.dumps(_cp.taxi_map(), ensure_ascii=False) + ";/*/CO_PH*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*CO_SITE\*/.*?/\*/CO_SITE\*/", lambda m: "/*CO_SITE*/var CO_SITE = " + json.dumps(_co_site(), ensure_ascii=False) + ";/*/CO_SITE*/", src, count=1, flags=re.S)
 # 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、県の中に会社がない県は「（県外の会社のみ）」を付けるか、選択欄から消す）
 src = re.sub(r"/\*AREA_PREFS\*/.*?/\*/AREA_PREFS\*/", lambda m: "/*AREA_PREFS*/var AREA_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}), ensure_ascii=False) + ";/*/AREA_PREFS*/", src, count=1, flags=re.S)
@@ -2720,6 +2722,9 @@ print("cardskin", cardskin.build(ROOT), "pages")
 # 運営側の集計・読めない表・ガイドの下のタクシーのボタンなどを取る（tools/tidy.py、Nori 2026-11-16 の見直し一覧）
 import tidy
 print("tidy", tidy.build(ROOT), "pages")
+# 事業者カードの写真（使ってよいと確かめた写真だけ・ない施設は共通の枠。tools/cardphoto.py、Nori 2026-11-16「事業者カードへの写真表示」）
+import cardphoto
+print("cardphoto", cardphoto.build(ROOT))
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] noindex.json のページに noindex,follow を入れる（ほかの後処理のあと）
 for _p in NOINDEX:

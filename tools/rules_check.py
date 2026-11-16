@@ -156,6 +156,15 @@ def pages(root):
     return sorted(out)
 
 
+_PH = None
+def _photos_ok(root):
+    global _PH
+    if _PH is None:
+        try: _PH = {f for x in json.load(open(os.path.join(root, "tools", "photos.json"), encoding="utf-8"))["items"] for f in x.get("photos", [])}
+        except Exception: _PH = set()
+    return _PH
+
+
 def check_page(root, path):
     raw = open(os.path.join(root, path.strip("/"), "index.html"), encoding="utf-8").read()
     if 'http-equiv="refresh"' in raw[:3000]: return []
@@ -185,6 +194,9 @@ def check_page(root, path):
         odd = [m for m in re.finditer(r'<div class="(emg-item[^"]*|yd-card[^"]*)"([^>]*)>', raw)
                if not re.search(r"\b(cs|ux-c|jc-card)\b", m.group(1)) and not ("data-cat=" in m.group(2) and " fc" not in m.group(1))]
         if odd: found.append(("card", f"{len(odd)}枚（{odd[0].group(1)}）"))
+    # カードの写真は、使ってよいと確かめた写真（tools/photos.json の /img/fac/）だけ（Nori 2026-11-16「利用許諾が確認できる写真のみ掲載」「無断転載はしない」）
+    bad = [u for u in re.findall(r'<div class="cs-ph"[^>]*><div class="cs-ph-s">(.*?)</div>', raw) for u in re.findall(r'src="([^"]+)"', u) if not u.startswith("/img/fac/") or u not in _photos_ok(root)]
+    if bad: found.append(("photo", f"{len(bad)}枚（{bad[0][:60]}）"))
     if p.walls and "terms" not in parts: found.append(("wall", f"{max(p.walls)}字"))  # 規約は条文なので除く
     return found
 

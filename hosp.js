@@ -98,12 +98,10 @@ box.querySelectorAll(".hf-det .hf-r").forEach(function(r){ r.hidden = ![].some.c
 var n = Object.keys(on).filter(function(k){ return !box.querySelector('.hf-det button[data-v="' + k + '"]') ? false : true; }).length;
 detN.textContent = n ? n : "";
 }
-var PICS = {"hospital":[],"hospital-night":[]}, pic = 0;
 function picHtml(r){
-var k = r.y.indexOf("night") >= 0 && PICS["hospital-night"].length ? "hospital-night" : "hospital", fs = PICS[k];
-if (!fs.length) return "";
-var f = fs[pic++ % fs.length];
-return '<div class="ux-img"><img src="/img/stock/' + k + '/' + f + '" alt="" width="600" height="400" loading="lazy" decoding="async"><span>イメージ</span></div>';
+if (!r.ph) return '<div class="cs-ph cs-ph0"' + (r.rv ? ' data-gph="' + esc(r.rv) + '"' : '') + ' aria-hidden="true"></div>';
+var ps = r.ph[0], im = ps.map(function(p, i){ return '<img src="' + esc(p) + '" alt="' + esc(r.n) + 'の写真' + (i + 1) + '" width="520" height="347" loading="lazy" decoding="async">'; }).join("");
+return '<div class="cs-ph"><div class="cs-ph-s">' + im + '</div>' + (ps.length > 1 ? '<span class="cs-ph-n" aria-hidden="true">📷 ' + ps.length + '</span>' : '') + (r.ph[1] ? '<small class="cs-ph-c">' + esc(r.ph[1]) + '</small>' : '') + '</div>';
 }
 function card(r, unk){
 var b = [];
