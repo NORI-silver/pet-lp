@@ -94,7 +94,7 @@ def render(ctx):
       {body}
       <div class="emg-tips"><h4>ペットホテルに預ける前に確かめること</h4><dl>{before}</dl></div>
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
-      <p class="emg-note">当サイトとは別の事業者です（{e(J["checked"])}時点の、公式サイトに書いてある情報）。受け入れの条件は変わることがあるので、預ける前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+      <p class="emg-note">当サイトとは別の事業者です（{e(J["checked"])}時点の情報）。受け入れの条件は変わることがあるので、預ける前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
 </section>

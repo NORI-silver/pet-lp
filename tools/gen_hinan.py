@@ -14,7 +14,7 @@ PSLUG = gen_dogrun.PSLUG
 PUBLISHED = "2026-11-14"
 MODIFIED = "2026-11-14"
 
-FLAG_TXT = {"yes": "受け入れる", "no": "受け入れない", "hard": "むずかしい場合がある", "cond": "条件つき・一部は受け入れない", None: "書いていない"}
+FLAG_TXT = {"yes": "受け入れる", "no": "受け入れない", "hard": "むずかしい場合がある", "cond": "条件つき・一部は受け入れない", None: "不明"}
 KINDS = [("dog", "犬"), ("large", "大型犬"), ("cat", "猫"), ("small", "うさぎ・ハムスターなど"), ("bird", "小鳥"), ("reptile", "爬虫類")]
 
 def by_pref():
@@ -77,20 +77,64 @@ def _flags(e, it):
     return '<ul class="hn-flags">' + "".join(
         f'<li class="{it["flags"].get(k) or "unk"}">{e(lab)}：{e(FLAG_TXT[it["flags"].get(k)])}</li>' for k, lab in KINDS) + "</ul>"
 
+# [B] Nori 2026-11-16「文字ばかりで辛いからアイコンなどVisualでわかりやすく」：動物ごとの決まりはアイコンのマスで見せる（文字は残す・JSなし）
+ICON = {"dog": "🐕", "large": "🦮", "cat": "🐈", "small": "🐇", "bird": "🐦", "reptile": "🦎"}
+SHORT = {"dog": "犬", "large": "大型犬", "cat": "猫", "small": "うさぎ・ハムスター", "bird": "小鳥", "reptile": "爬虫類"}
+MK = {"yes": ("○", "受け入れる", "yes"), "no": ("×", "受け入れない", "no"), "hard": ("△", "むずかしい場合あり", "hard"),
+      "cond": ("△", "条件つき", "cond"), None: ("？", "不明", "unk")}
+CODE = {"yes": "y", "no": "n", "hard": "h", "cond": "c", None: "-"}
+AG_CSS = """<style>
+.hn-ag{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;list-style:none;padding:0!important;margin:8px 0 10px!important}
+.hn-ag li{border-radius:14px;padding:10px 4px 8px;text-align:center;background:#f3f1ee;color:#3c4043;line-height:1.3}
+.hn-ag .i{font-size:1.9rem;display:block;line-height:1.15}
+.hn-ag b{display:block;font-size:.8rem;margin:2px 0}
+.hn-ag .m{display:block;font-size:.78rem;font-weight:700}
+.hn-ag .m::before{content:attr(data-k);display:block;font-size:1.15rem;line-height:1.1}
+.hn-ag li.yes{background:#e6f4ea;color:#1e7d4f}.hn-ag li.no{background:#fde8e6;color:#b3261e}
+.hn-ag li.hard,.hn-ag li.cond{background:#fff4e0;color:#8a5300}.hn-ag li.unk{color:#80868b}
+.hn-rows{list-style:none;padding:0!important;margin:6px 0 4px!important}
+.hn-rows li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px dashed var(--line);font-size:.92rem;line-height:1.7}
+.hn-rows li:first-child{border-top:0}
+.hn-rows .i{font-size:1.4rem;line-height:1.2;flex:0 0 1.8em;text-align:center}
+.hn-sum{font-size:.8rem;color:var(--ink-3);line-height:1.7;margin:6px 0 0}
+.hn-rows b{display:block;font-size:.76rem;color:var(--ink-3)}
+.hn-terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;list-style:none;padding:0;margin:10px 0 18px}
+.hn-terms li{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px;line-height:1.55;font-size:.86rem;color:#3c4043}
+.hn-terms .i{font-size:2rem;display:block;line-height:1.2;margin-bottom:4px}
+.hn-terms b{display:block;font-size:.98rem;color:var(--ink,#222);margin-bottom:2px}
+.hn-terms li.wide{grid-column:1/-1}
+@media(min-width:720px){.hn-ag{grid-template-columns:repeat(6,minmax(0,1fr))}.hn-terms{grid-template-columns:repeat(3,minmax(0,1fr))}.hn-terms li.wide{grid-column:auto}}
+</style>"""
+
+CSS = CSS + AG_CSS
+
+def agrid(e, it):
+    f = it["flags"]
+    return '<ul class="hn-ag">' + "".join(
+        f'<li class="{MK[f.get(k)][2]}"><span class="i" aria-hidden="true">{ICON[k]}</span><b>{e(SHORT[k])}</b>'
+        f'<span class="m" data-k="{MK[f.get(k)][0]}">{e(MK[f.get(k)][1])}</span></li>' for k, _ in KINDS) + "</ul>"
+
+def arows(e, it):
+    cage = "持っていく（ケージの中で飼う）" if it.get("cage_req") else (it.get("cage") or "不明")
+    rows = [("🧺", "ケージ・リード", cage), ("🏠", "避難所で飼う場所", it.get("place") or "不明"),
+            ("📏", "大きさの決まり", it.get("size") or "不明")]
+    if it.get("no"): rows.append(("⚠️", "受け入れない・むずかしい動物", it["no"]))
+    return '<ul class="hn-rows">' + "".join(f'<li><span class="i" aria-hidden="true">{i}</span><span><b>{e(t)}</b>{e(v)}</span></li>' for i, t, v in rows) + "</ul>"
+
 # 市区町村の名前のリンク（#名前）で来たら、その市区町村のたたんだ決まりを開く
 HN_OPEN = "<script>(function(){function o(){try{var t=document.getElementById(decodeURIComponent(location.hash.slice(1)));var d=t&&t.querySelector('details.hn-more');if(d)d.open=true}catch(e){}}o();addEventListener('hashchange',o)})();</script>"
 
-def card(e, it, fold=False):
+def card(e, it, fold=False, grid=True):
     def row(t, v):
-        return f"<dt>{e(t)}</dt><dd>{e(v)}</dd>" if v else f'<dt>{e(t)}</dt><dd class="hn-none">公式ページに書いていません（不明）</dd>'
+        return f"<dt>{e(t)}</dt><dd>{e(v)}</dd>" if v else f'<dt>{e(t)}</dt><dd class="hn-none">不明</dd>'
     rules = ("<dt>そのほかの決まり・備え</dt><dd><ul>" + "".join(f"<li>{e(r)}</li>" for r in it["rules"]) + "</ul></dd>") if it.get("rules") else ""
     if it.get("details"):  # 公式ページに書いてある、そのほかのこと（在宅避難・協定・受付のしかたなど）
-        rules += "<dt>公式ページに書いてある、そのほかのこと</dt><dd><ul>" + "".join(f"<li>{e(r)}</li>" for r in it["details"]) + "</ul></dd>"
+        rules += "<dt>そのほかのこと</dt><dd><ul>" + "".join(f"<li>{e(r)}</li>" for r in it["details"]) + "</ul></dd>"
     links = "".join(f'<li><a href="{e(u)}" target="_blank" rel="noopener">{e(t)}</a></li>' for t, u in it["links"])
     mp = (f'<dt>避難所の場所</dt><dd><a href="{e(it["map"][1])}" target="_blank" rel="noopener">{e(it["map"][0])}</a></dd>' if it.get("map")
-          else '<dt>避難所の場所</dt><dd class="hn-none">ペットを受け入れる避難所の一覧・地図は、公式ページにはありませんでした。お住まいの市区町村のページでご確認ください。</dd>')
+          else '<dt>避難所の場所</dt><dd class="hn-none">ペットを受け入れる避難所の一覧は見つかりませんでした。お住まいの市区町村でご確認ください。</dd>')
     # fold：県のページの「ほかの市区町村」は、印（受け入れる動物）だけ見せて、くわしい決まりはたたむ（2026-11-16 見直し「1ページが長すぎる」。中身はHTMLに残す）
-    return (f'<section class="hn-card" id="{e(it["name"])}"><h3>{e(it["name"])}</h3>{_flags(e, it)}'
+    return (f'<section class="hn-card" id="{e(it["name"])}"><h3>{e(it["name"])}</h3>{agrid(e, it) if grid else ""}'
             + ('<details class="hn-more"><summary>くわしい決まりと出どころを見る</summary>' if fold else '') + '<dl>'
             + row("考え方", it.get("policy")) + row("受け入れる動物", it.get("animals"))
             + (row("受け入れない・むずかしい動物", it["no"]) if it.get("no") else "")
@@ -125,13 +169,21 @@ def faq_for(pf, its):
     for it in its:
         nm = it["name"]
         a = it.get("animals")
+        if it.get("policy"):
+            out.append((f"{nm}では、ペットと同行避難できますか？", f"{nm}では「{it['policy']}」とされています。"))
         out.append((f"{nm}の避難所には、どんな動物を連れて行けますか？",
-                    (f"{nm}の公式ページには「{a}」と書いてあります。" if a else f"{nm}の公式ページには、受け入れる動物の種類は書いてありません。")
+                    (f"{nm}では「{a}」とされています。" if a else f"{nm}では、受け入れる動物の種類は分かりませんでした。")
                     + (f"{it['no']}" if it.get("no") else "") + "避難所ごとの決まりや災害の状況で変わることがあるので、確かめてください。"))
         sz = it.get("size")
         if sz:
-            out.append((f"{nm}の避難所に大型犬は入れますか？", f"{nm}の公式ページには「{sz}」と書いてあります。"))
-    return out[:8]
+            out.append((f"{nm}の避難所に大型犬は入れますか？", f"{nm}では「{sz}」とされています。"))
+        if it.get("cage") or it.get("cage_req"):
+            out.append((f"{nm}の避難所にケージは必要ですか？", f"{nm}では「{it.get('cage') or 'ケージを持っていく'}」とされています。"))
+        if it.get("no"):
+            out.append((f"{nm}の避難所で受け入れない動物はいますか？", f"{nm}では「{it['no']}」とされています。"))
+        if it.get("place"):
+            out.append((f"{nm}の避難所では、ペットはどこで過ごしますか？", f"{nm}では「{it['place']}」とされています。避難所ごとに違うこともあります。"))
+    return out[:10]
 
 def _ld(SITE, url, title, desc, crumbs, faq):
     items = [{"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + u} for i, (n, u) in enumerate(crumbs)]
@@ -168,16 +220,16 @@ def render_top(ctx):
     rest = [pf for _, ps in ctx["emg_regions"] for pf in ps if pf not in done]
     title = "ペットの同行避難と避難所の決まり｜受け入れる動物・大型犬・ケージ（都道府県・市区ごと）｜ペットタクシー予約窓口"
     desc = (f"ペットと避難するときの「同行避難」と「同伴避難」のちがい、避難所で受け入れる動物（犬・猫・うさぎ・小鳥・爬虫類）、大型犬の扱い、ケージの決まりを、"
-            f"{len(done)}都道府県・{N}の自治体の公式ページからまとめました。")
+            f"{len(done)}都道府県・{N}の自治体ごとにまとめました。")
     faq = HINAN_GUIDES[0]["faq"][:6]
     ld = _ld(SITE, url, "ペットの同行避難と避難所の決まり", desc, [("ペットタクシー予約窓口", "/"), ("ペットと避難", f"/{SLUG}/")], faq)
-    stats = V.stats([(f"{N}", "しらべた都道府県・市区"), (f"{N_CAGE}", "ケージを持っていく・入れると書いている"),
-                     (f"{sum(1 for x in ITEMS if x['flags'].get('cat') == 'yes')}", "猫を受け入れると書いている")])
+    stats = V.stats([(f"{N}", "しらべた都道府県・市区"), (f"{N_CAGE}", "ケージを持っていく決まり"),
+                     (f"{sum(1 for x in ITEMS if x['flags'].get('cat') == 'yes')}", "猫を受け入れる")])
     pref_rows = [["都道府県", "しらべた自治体", "犬", "猫", "ケージ持参"]] + [
         [pf, str(len(bp[pf])), str(sum(1 for x in bp[pf] if x["flags"].get("dog") == "yes")),
          str(sum(1 for x in bp[pf] if x["flags"].get("cat") == "yes")), str(sum(1 for x in bp[pf] if x.get("cage_req")))] for pf in done]
-    rest_txt = (f'<p class="hn-none">{e("・".join(rest))}は、ペットと避難の決まりを書いた公式ページが見つからなかったか、まだ確かめていません。お住まいの市区町村のホームページで「ペット 避難」と検索すると、受け入れの決まりが見つかることがあります。</p>' if rest else "")
-    summ = "".join(f'<h3 class="emg-region"><a href="{href(pf)}">{e(pf)}のペット同行避難 →</a></h3><p class="hn-none">{e("・".join(it["name"] for it in bp[pf]))}の公式ページに書いてある、受け入れる動物・大きさ・ケージ・飼う場所と、避難所の調べ方。</p>' for pf in done)
+    rest_txt = (f'<p class="hn-none">{e("・".join(rest))}は、まだ決まりが見つかっていません。お住まいの市区町村のホームページで「ペット 避難」と検索すると見つかることがあります。</p>' if rest else "")
+    summ = "".join(f'<h3 class="emg-region"><a href="{href(pf)}">{e(pf)}のペット同行避難 →</a></h3><p class="hn-none">{e("・".join(it["name"] for it in bp[pf]))}の、受け入れる動物・大きさ・ケージ・飼う場所。</p>' for pf in done)
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     return ctx["head"](title, desc, url, ld) + CSS + f"""
 <main>
@@ -185,24 +237,27 @@ def render_top(ctx):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › ペットと避難</nav>
     <h1><small>同行避難・同伴避難・避難所で受け入れる動物の決まり</small>ペットと避難するとき</h1>
-    <p class="lede">災害のときは、ペットを連れて避難するのが原則です（同行避難）。ただし、避難所で同じ部屋にいられるとは限らず、受け入れる動物や飼う場所は市区町村・避難所ごとに違います。都道府県・市区の公式ページの情報をもとにまとめました。</p>
+    <p class="lede">市区町村をえらぶと、避難所に連れて行ける動物とケージの決まりがすぐ分かります。</p>
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
-    <div class="answer"><h2 id="answer">ペットと避難するときのポイント</h2>
-    <ul class="kv"><li><b class="k">同行避難</b>ペットを連れて避難所などまで逃げること。同じ部屋で過ごせるという意味ではない（環境省）</li>
-    <li><b class="k">同伴避難</b>避難所で飼い主がペットを飼って世話をしている状態。これも同じ部屋とは限らない（環境省）</li>
-    <li><b class="k">連れて行ける動物</b>犬・猫は多くの自治体が受け入れる。うさぎ・小鳥・爬虫類は自治体で違う</li>
-    <li><b class="k">大型犬</b>はっきり書いた自治体は少なく、「小型」「小動物」に限る市が多い。ケージに入らなければリードでつなぐ、と書く市も（川崎市・大阪市）。預け先も決めておく</li>
-    <li><b class="k">ケージ</b>飼い主が持っていくのが基本。避難所にペット用の備蓄はないと書く市が多い</li></ul></div>
     {finder(e, [p for _, ps in ctx["emg_regions"] for p in ps])}
+    <h2 id="answer">まず知っておきたいこと</h2>
+    <ul class="hn-terms">
+    <li><span class="i" aria-hidden="true">🐕‍🦺🏫</span><b>同行避難</b>いっしょに避難所まで逃げること。同じ部屋とは限らない</li>
+    <li><span class="i" aria-hidden="true">🏠🐈</span><b>同伴避難</b>避難所で飼い主が世話をすること。これも同じ部屋とは限らない</li>
+    <li><span class="i" aria-hidden="true">🐕🐈</span><b>犬・猫</b>多くの自治体が受け入れる</li>
+    <li><span class="i" aria-hidden="true">🐇🐦🦎</span><b>うさぎ・小鳥・爬虫類</b>市区町村ごとに違う</li>
+    <li><span class="i" aria-hidden="true">🦮</span><b>大型犬</b>決まりを書く自治体は少ない。預け先も決めておく</li>
+    <li><span class="i" aria-hidden="true">🧺</span><b>ケージ</b>飼い主が持っていく。避難所に用意はないことが多い</li>
+    </ul>
     {stats}
     <h2 id="pref">都道府県ごとのくわしい決まり</h2>
     {_pref_links(e, done)}
     {rest_txt}
     <h2 id="table">都道府県ごとのしらべた自治体の数</h2>
-    <p>「犬」「猫」は、受け入れると公式ページに書いてある自治体の数です。書いていない自治体も「受け入れない」という意味ではありません（{e(CHECKED)}に確認）。</p>
+    <p>「犬」「猫」は、受け入れるとはっきりしている自治体の数です（{e(CHECKED)}時点）。数に入らない自治体も「受け入れない」という意味ではありません。</p>
     {V.block(("table", pref_rows))}
     <h2 id="seirei">政令指定都市の受け入れる動物</h2>
     <p>○は受け入れると書いてある、△はむずかしい場合がある・一部は受け入れない、—は書いていない、です。ほかの市区町村は都道府県ごとのページにあります。</p>
@@ -212,11 +267,8 @@ def render_top(ctx):
 <section style="padding-top:0">
   <div class="wrap">
     <div class="emg">
-      <h2 class="sh" id="list" style="scroll-margin-top:90px">都道府県ごとのページ</h2>
-      <p class="emg-free">それぞれの公式ページの情報だけを載せています。書いていないことは「公式ページに書いていません（不明）」としています（「受け入れない」という意味ではありません）。</p>
-      {summ}
       <div class="emg-tips" id="faq"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
-      <p class="emg-note">{e(CHECKED)}時点の、公式ページに書いてある情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先と、お住まいの市区町村でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+      <p class="emg-note">{e(CHECKED)}時点の情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先と、お住まいの市区町村でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
 </section>
@@ -243,9 +295,9 @@ def render_pref(ctx, pf, its, done):
     head_names = "・".join(x["name"] for x in (big or allc)[:3])
     title = (f"{pf}のペット同行避難｜市区町村ごとの避難所の決まり（{head_names}など）｜ペットタクシー予約窓口" if allc else
              f"{pf}のペット同行避難｜避難所で受け入れる動物・大型犬・ケージの決まり｜ペットタクシー予約窓口")
-    desc = (f"{pf}でペットと避難するときの決まりを、{pf}と{len(allc)}の市区町村の公式ページからまとめました。避難所で受け入れる動物（犬・猫・うさぎ・小鳥・爬虫類）、"
+    desc = (f"{pf}でペットと避難するときの決まりを、{pf}と{len(allc)}の市区町村ごとにまとめました。避難所で受け入れる動物（犬・猫・うさぎ・小鳥・爬虫類）、"
             f"大型犬の扱い、ケージ・リード、避難所で飼う場所、受付の手続き、ペットを受け入れる避難所の調べ方。" if allc else
-            f"{pf}でペットと避難するときの決まりを、{pf}の公式ページからまとめました。避難所で受け入れる動物、大型犬の扱い、ケージ・リード、避難所で飼う場所、ペットを受け入れる避難所の調べ方。")
+            f"{pf}でペットと避難するときの決まりを、{pf}の決まりをまとめました。避難所で受け入れる動物、大型犬の扱い、ケージ・リード、避難所で飼う場所、ペットを受け入れる避難所の調べ方。")
     faq = faq_for(pf, prefs_it + big[:3] if big else prefs_it + allc[:3])
     ld = _ld(SITE, url, f"{pf}のペット同行避難と避難所の決まり", desc,
              [("ペットタクシー予約窓口", "/"), ("ペットと避難", f"/{SLUG}/"), (pf, href(pf))], faq)
@@ -255,21 +307,20 @@ def render_pref(ctx, pf, its, done):
          MARK[it["flags"].get("small") or it["flags"].get("bird")], MARK[it["flags"].get("reptile")], "要" if it.get("cage_req") else "—"] for it in show]
     fit_its = prefs_it + (big or allc)[:10]
     fit = V.block(("breeds", {"title": f"うちの子の大きさ・種類で、{pf}の決まりを見る", "rows": fit_rows(fit_its), "sizes": SIZES, "breeds": BREEDS,
-                              "lead": f"{'・'.join(it['name'] for it in fit_its)}の公式ページの情報をもとに、大きさ・種類ごとに並べました。"
+                              "lead": f"{'・'.join(it['name'] for it in fit_its)}の決まりを、大きさ・種類ごとに並べました。"
                                       + ("ほかの市区町村は、下のそれぞれのページで見られます。" if len(allc) > len(fit_its) - len(prefs_it) else ""),
                               "note": "書いていない自治体も「受け入れない」という意味ではありません。避難所ごとの決まりもあるので、お住まいの市区町村で確かめてください。"}))
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
-    lede = (f"{pf}と{len(allc)}の市区町村の公式ページに書いてある、ペットと避難するときの決まりです。" if allc else
-            f"{pf}の公式ページに書いてある、ペットと避難するときの決まりです。") + "避難所で受け入れる動物や飼う場所は、市区町村・避難所ごとに違います。"
+    lede = "市区町村をえらぶと、その市区町村の決まりがすぐ分かります。"
     pol = (prefs_it[0].get("policy") if prefs_it else None) or (allc[0].get("policy") if allc else "") or ""
     city_links = ('<ul class="hn-pref">' + "".join(f'<li><a href="{href_city(it)}">{e(it["name"])}</a></li>' for it in cities) + "</ul>") if cities else ""
     nf = [n for (p_, n) in NONE if p_ == pf]
     rest = [m["name"] for m in MUNI if m["pref"] == pf and m["name"] not in {x["name"] for x in allc} and m["name"] not in nf]
     cov = ""
     if nf:
-        cov += f'<p class="hn-none">{e("・".join(nf))}は、ペットと避難について書いた公式ページが見つかりませんでした（{e(CHECKED)}にしらべました）。避難所の決まりは、それぞれの市町村の防災の担当にご確認ください。</p>'
+        cov += f'<details class="hn-more"><summary>決まりが見つからなかった市区町村（{len(nf)}）</summary><p class="hn-none">{e("・".join(nf))}（{e(CHECKED)}時点）。避難所の決まりは、それぞれの市町村の防災の担当にご確認ください。</p></details>'
     if rest:
-        cov += f'<p class="hn-none">{e("・".join(rest))}は、まだ確かめていません。順に足していきます。</p>'
+        cov += f'<details class="hn-more"><summary>まだまとめていない市区町村（{len(rest)}）</summary><p class="hn-none">{e("・".join(rest))}。順に足していきます。</p></details>'
     return ctx["head"](title, desc, url, ld) + CSS + f"""
 <main>
 <section class="area-hero">
@@ -281,8 +332,8 @@ def render_pref(ctx, pf, its, done):
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
-    <div class="answer"><h2 id="answer">{e(pf)}のペットと避難のポイント</h2><p>{e(pol)}</p></div>
     {finder(e, [p for _, ps in ctx["emg_regions"] for p in ps], pf)}
+    <div class="answer"><h2 id="answer">{e(pf)}の避難所に連れて行ける動物</h2>{(agrid(e, prefs_it[0]) + '<p class="hn-none">' + e(pol) + '</p>') if prefs_it else '<p>' + e(pol) + '</p>'}</div>
     {('<h2 id="city">市区町村ごとのページ</h2>' + city_links) if cities else ""}
     {cov}
     <h2 id="table">受け入れる動物とケージ（自治体ごと）</h2>
@@ -293,14 +344,14 @@ def render_pref(ctx, pf, its, done):
     {('<h2 id="more">ほかの市区町村の決まり</h2>' + "".join(card(e, it, True) for it in small) + HN_OPEN) if small else ""}
     <h2 id="faq">よくある質問</h2>
     <dl class="emg-tips">{faq_html}</dl>
-    <p class="emg-note">{e(CHECKED)}時点の、公式ページに書いてある情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+    <p class="emg-note">{e(CHECKED)}時点の情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
   </article></div>
 </section>
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sh"><h2>くわしい記事</h2><p>同行避難と同伴避難のちがい、持ち出し品のリストなど。</p></div>
     {_guides(e)}
-    <div class="sh"><h2>ほかの都道府県</h2><p>ほかの都道府県の決まりも、公式ページからまとめています。</p></div>
+    <div class="sh"><h2>ほかの都道府県</h2><p>ほかの都道府県の決まりも見られます。</p></div>
     {_pref_links(e, done, pf)}
     <ul class="other"><li><a href="/{SLUG}/">ペットと避難するとき（全国の一覧）</a></li><li><a href="/jichitai/">ペットの迷子・犬の登録・引取りの窓口</a></li><li><a href="/guide/lost-pet/">ペットが迷子になったら</a></li></ul>
   </div>
@@ -315,13 +366,13 @@ def _answer(it):
     acc = [lab for k, lab in KINDS if f.get(k) == "yes" and k != "large"]
     out = []
     if it.get("policy"): out.append(it["policy"])
-    out.append(("受け入れると書いてある動物：" + "・".join(acc) + "。") if acc else "受け入れる動物の種類は、公式ページに書いていません（不明）。")
+    out.append(("受け入れる動物：" + "・".join(acc) + "。") if acc else "受け入れる動物の種類は不明。")
     cnd = [lab for k, lab in KINDS if f.get(k) in ("cond", "hard") and k != "large"]
     if cnd: out.append("条件つき・むずかしい場合があると書いてある動物：" + "・".join(cnd) + (f"（{it['no']}）" if it.get("no") else "") + "。")
     ng = [lab for k, lab in KINDS if f.get(k) == "no" and k != "large"]
     if ng: out.append("受け入れないと書いてある動物：" + "・".join(ng) + "。")
     out.append("大型犬：" + (it.get("size") or FLAG_TXT[f.get("large")] + ("（避難所に確かめる）" if not f.get("large") else "")) )
-    out.append("ケージ・キャリー：" + ("持っていく、またはケージの中で飼うと書いてある。" if it.get("cage_req") else (it.get("cage") or "公式ページに決まりは書いていません。")))
+    out.append("ケージ・キャリー：" + ("持っていく、またはケージの中で飼うと書いてある。" if it.get("cage_req") else (it.get("cage") or "決まりは不明。")))
     return out
 
 def render_city(ctx, pf, it, sibs, done):
@@ -330,7 +381,7 @@ def render_city(ctx, pf, it, sibs, done):
     url = f"{SITE}{href_city(it)}"
     title = f"{nm}のペット同行避難｜避難所で受け入れる動物・大型犬・ケージ（{pf}）｜ペットタクシー予約窓口"
     acc = [lab for k, lab in KINDS if it["flags"].get(k) == "yes" and k != "large"]
-    desc = (f"{pf}{nm}でペットと避難するときの決まりを、{nm}の公式ページからまとめました。"
+    desc = (f"{pf}{nm}でペットと避難するときの決まりをまとめました。"
             + (f"避難所で受け入れると書いてある動物（{'・'.join(acc)}）、" if acc else "避難所で受け入れる動物、")
             + "大型犬の扱い、ケージ・リード、避難所で飼う場所、ペットを受け入れる避難所の調べ方。")
     faq = faq_for(pf, [it])
@@ -338,10 +389,11 @@ def render_city(ctx, pf, it, sibs, done):
              [("ペットタクシー予約窓口", "/"), ("ペットと避難", f"/{SLUG}/"), (pf, href(pf)), (nm, href_city(it))], faq)
     # 市区町村のページは体重と猫だけで選ぶ（決まりは犬種では変わらない。犬種名の一覧で本文をふくらませない。2026-11-14 薄いページの担当から）
     fit = V.block(("breeds", {"title": f"うちの子の大きさ・種類で、{nm}の決まりを見る", "rows": fit_rows([it]), "sizes": SIZES, "names": False,
-                              "lead": f"{nm}の公式ページの情報をもとに、大きさ・種類ごとに並べました。",
+                              "lead": f"{nm}の決まりを、大きさ・種類ごとに並べました。",
                               "note": "書いていないことも「受け入れない」という意味ではありません。避難所ごとの決まりもあるので、市区町村や避難所で確かめてください。"}))
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
-    ans = "".join(f"<li>{e(x)}</li>" for x in _answer(it))
+    pol = f'<p style="margin:0 0 4px">{e(it["policy"])}</p>' if it.get("policy") else ""
+    summ = e(" ".join(_answer(it)[1 if it.get("policy") else 0:]))
     others = [x for x in sibs if x is not it]
     sib = ('<ul class="hn-pref">' + "".join(f'<li><a href="{href_city(x)}">{e(x["name"])}</a></li>' for x in others) + "</ul>") if others else ""
     return ctx["head"](title, desc, url, ld) + CSS + f"""
@@ -350,18 +402,18 @@ def render_city(ctx, pf, it, sibs, done):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/{SLUG}/">ペットと避難</a> › <a href="{href(pf)}">{e(pf)}</a> › {e(nm)}</nav>
     <h1><small>避難所で受け入れる動物・大型犬・ケージの決まり</small>{e(nm)}のペット同行避難</h1>
-    <p class="lede">{e(nm)}（{e(pf)}）の公式ページに書いてある、ペットと避難するときの決まりです。書いていないことは「不明」としています（「受け入れない」という意味ではありません）。</p>
+    <p class="lede">{e(nm)}（{e(pf)}）の避難所に、ペットを連れて行けるか。○は受け入れる、×は受け入れない、？は不明です。</p>
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
-    <div class="answer"><h2 id="answer">{e(nm)}のペットと避難のポイント</h2><ul>{ans}</ul></div>
+    <div class="answer"><h2 id="answer">{e(nm)}の避難所に連れて行ける動物</h2>{pol}{agrid(e, it)}{arows(e, it)}</div>
     {fit}
     <h2 id="detail">{e(nm)}のくわしい決まり</h2>
-    {card(e, it)}
+    {card(e, it, grid=False)}
     <h2 id="faq">よくある質問</h2>
     <dl class="emg-tips">{faq_html}</dl>
-    <p class="emg-note">{e(CHECKED)}時点の、{e(nm)}の公式ページに書いてある情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+    <p class="emg-note">{e(CHECKED)}時点の情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
   </article></div>
 </section>
 <section style="padding-top:0">
@@ -437,9 +489,10 @@ def write_finder(ROOT):
     for m in MUNI:
         pf, nm, top = m["pref"], m["name"], m.get("url") or ""
         it = have.get((pf, nm))
-        if it and has_page(it) and pf in pref_page: row = [nm, "page", href_city(it), top]
-        elif it and pf in pref_page: row = [nm, "card", href(pf) + "#" + nm, top]
-        elif it: row = [nm, "link", it["links"][0][1], top, it["links"][0][0]]
+        fc = ("".join(CODE[it["flags"].get(k)] for k, _ in KINDS) + ("1" if it.get("cage_req") else "0")) if it else ""
+        if it and has_page(it) and pf in pref_page: row = [nm, "page", href_city(it), top, "", fc]
+        elif it and pf in pref_page: row = [nm, "card", href(pf) + "#" + nm, top, "", fc]
+        elif it: row = [nm, "link", it["links"][0][1], top, it["links"][0][0], fc]
         elif (pf, nm) in nf: row = [nm, "none", "", top]
         else: row = [nm, "todo", "", top]
         out.setdefault(pf, []).append(row)
@@ -447,7 +500,8 @@ def write_finder(ROOT):
 
 FINDER_CSS = """<style>
 .hn-find{background:#fff;border:2px solid var(--accent,#e8590c);border-radius:18px;padding:14px 16px;margin:12px 0 18px}
-.hn-find h2{font-size:1.05rem;margin:0 0 8px}
+.hn-find h2{font-size:1.15rem;margin:0 0 10px}
+.hn-find .out>a{display:block;text-align:center;background:var(--accent,#e8590c);color:#fff;border-radius:12px;padding:12px;margin-top:6px;text-decoration:none}
 .hn-find .row{display:flex;flex-wrap:wrap;gap:8px}
 .hn-find select{flex:1 1 140px;min-width:0;font-size:1rem;padding:10px;border:1.5px solid var(--line);border-radius:12px;background:#fff}
 .hn-find .out{margin-top:10px;line-height:1.8;font-size:.95rem}
@@ -456,8 +510,7 @@ FINDER_CSS = """<style>
 
 def finder(e, prefs, pf=None):
     opts = "".join(f'<option{" selected" if p == pf else ""}>{e(p)}</option>' for p in prefs)
-    return FINDER_CSS + f"""<div class="hn-find" id="find"><h2>お住まいの市区町村の決まりをさがす</h2>
-<p style="margin:0 0 8px;font-size:.9rem">全国の市区町村から、当サイトでまとめた決まりか、市区町村の公式サイトへご案内します。</p>
+    return FINDER_CSS + f"""<div class="hn-find" id="find"><h2>📍 お住まいの市区町村をえらぶ</h2>
 <div class="row"><select id="hnP" aria-label="都道府県"><option value="">都道府県をえらぶ</option>{opts}</select>
 <select id="hnM" aria-label="市区町村" disabled><option value="">市区町村をえらぶ</option></select></div>
 <div class="out" id="hnO" aria-live="polite"></div></div>
@@ -469,7 +522,10 @@ P.addEventListener('change',function(){{load(fill)}});if(P.value)load(fill);
 M.addEventListener('change',function(){{var r=(D[P.value]||[])[M.value];if(!r){{O.innerHTML='';return}}var n=esc(r[0]),top=r[3]?'<a href="'+esc(r[3])+'" target="_blank" rel="noopener">'+n+'の公式サイト ↗</a>':'',h='';
 if(r[1]=='page')h='<a href="'+esc(r[2])+'">'+n+'のペットと避難の決まりを見る</a>';
 else if(r[1]=='card')h='<a href="'+esc(r[2])+'">'+n+'の決まり（'+esc(P.value)+'のページの中）を見る</a>';
-else if(r[1]=='link')h=n+'の公式ページ：<a href="'+esc(r[2])+'" target="_blank" rel="noopener">'+esc(r[4]||'ペットと避難')+' ↗</a>';
-else if(r[1]=='none')h=n+'の公式サイトには、ペットと避難について書いたページが見つかりませんでした。'+top+'の防災のページか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
-else h=n+'は、まだ当サイトで確かめていません。'+top+'で「ペット 避難」とさがすか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
+else if(r[1]=='link')h=n+'の決まり：<a href="'+esc(r[2])+'" target="_blank" rel="noopener">'+esc(r[4]||'ペットと避難')+' ↗</a>';
+else if(r[1]=='none')h=n+'では、ペットと避難の決まりが見つかりませんでした。'+top+'の防災のページか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
+else h=n+'の決まりは、まだまとめていません。'+top+'で「ペット 避難」とさがすか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
+if(r[5]){{var K=[['🐕','犬'],['🦮','大型犬'],['🐈','猫'],['🐇','うさぎ・ハムスター'],['🐦','小鳥'],['🦎','爬虫類']],Mm={{y:['○','受け入れる','yes'],n:['×','受け入れない','no'],h:['△','むずかしい場合あり','hard'],c:['△','条件つき','cond'],'-':['？','不明','unk']}},g='<ul class="hn-ag">';
+K.forEach(function(k,i){{var m=Mm[r[5].charAt(i)]||Mm['-'];g+='<li class="'+m[2]+'"><span class="i">'+k[0]+'</span><b>'+k[1]+'</b><span class="m" data-k="'+m[0]+'">'+m[1]+'</span></li>'}});
+g+='</ul><ul class="hn-rows"><li><span class="i">🧺</span><span><b>ケージ</b>'+(r[5].charAt(6)=='1'?'持っていく（ケージの中で飼う）':'くわしくはリンク先で')+'</span></li></ul>';h=g+h}}
 O.innerHTML=h;try{{gtag('event','hinan_find',{{pref:P.value,status:r[1]}})}}catch(e){{}}}})}})();</script>"""

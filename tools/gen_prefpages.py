@@ -81,7 +81,7 @@ def fact_table_html(e, cat, pf, rs):
     srcs = "".join(f'<li><a href="{e(it["url"])}" target="_blank" rel="noopener">{e(it["name"])}の公式サイト</a></li>' for it in hs)
     out += ('<div class="tbl"><table class="pp-tbl"><thead><tr><th>名前</th>' + "".join(f"<th>{e(lab)}</th>" for lab, _ in cols) +
             f'</tr></thead><tbody>{rows}</tbody></table></div>'
-            f'<p class="emg-tips-note">「—」は公式サイトに書いていない・見つからなかった項目です（「しない」という意味ではありません）。{_jd(dates[-1] if dates else "")}時点の、公式サイトに書いてある情報です。料金は変わることがあるので、頼む前に必ず公式サイトでご確認ください。</p>'
+            f'<p class="emg-tips-note">「—」は分からなかった項目です（「しない」という意味ではありません）。{_jd(dates[-1] if dates else "")}時点の情報です。料金は変わることがあるので、頼む前に必ず公式サイトでご確認ください。</p>'
             f'<details><summary>出どころの公式サイト</summary><ul>{srcs}</ul></details></div>')
     return out
 
@@ -186,7 +186,7 @@ def render_pref(ctx, cat, pf, rows):
       <div class="emg-tips"><h4>{e(cat['before_title'])}</h4><dl>{"".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in cat['before'])}</dl></div>
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
       {pref_nav(cat, e, rows, ctx["emg_regions"], cur=pf)}{chr(10) + "      " + cat["fac_biz"](e) if cat.get("fac_biz") else ""}
-      <p class="emg-note">当サイトとは別の事業者です（{e(cat['checked'])}時点の、公式サイトに書いてある情報）。内容は変わることがあるので、頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+      <p class="emg-note">当サイトとは別の事業者です（{e(cat['checked'])}時点の情報）。内容は変わることがあるので、頼む前に必ずリンク先でご確認ください。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
 </section>
