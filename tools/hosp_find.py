@@ -298,8 +298,10 @@ def near_prefs():
 
 def _pics(ROOT):
     """カードのイメージ写真（uikit.stock と同じ img/stock/<分野>/ の webp）。分野ごとのファイル名の一覧。"""
+    import uikit
     out = {}
     for k in ("hospital", "hospital-night"):
+        if not uikit.STOCK_ON: out[k] = []; continue
         d = os.path.join(ROOT, "img", "stock", k)
         out[k] = sorted(f for f in os.listdir(d) if f.endswith(".webp")) if os.path.isdir(d) else []
     return out

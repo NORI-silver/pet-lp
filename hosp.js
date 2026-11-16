@@ -103,7 +103,7 @@ function prefGuess(sel, apply){
     detN.textContent = n ? n : "";
   }
   // カードのイメージ写真（無料の写真素材。本物の病院の写真ではないので「イメージ」と書き、alt は空）。となりが同じ写真にならないよう順番に回す
-  var PICS = {"hospital":["1.webp","2.webp","3.webp","4.webp","5.webp","6.webp"],"hospital-night":["1.webp","2.webp","3.webp","4.webp","5.webp","6.webp"]}, pic = 0;
+  var PICS = {"hospital":[],"hospital-night":[]}, pic = 0;
   function picHtml(r){
     var k = r.y.indexOf("night") >= 0 && PICS["hospital-night"].length ? "hospital-night" : "hospital", fs = PICS[k];
     if (!fs.length) return "";
