@@ -17,6 +17,7 @@
 //   uneven    横にならんだカードの高さがそろっていない（8px 以上の差）
 //   textonly  アイコン・図・表・ボタンのない、文字だけの画面がある（2画面目より下）
 //   tiny      本文の字が 11px より小さい
+//   form      ペットタクシーのページで、フォームの最初の入力欄（お迎えの都道府県）が最初の1画面に入っていない
 const {chromium} = require('playwright');
 const http = require('http'), fs = require('fs'), path = require('path'), {execSync} = require('child_process');
 
@@ -153,6 +154,9 @@ async function measure(page) {
       const cat = p.split('/')[1];
       if (FAC.includes(cat) && p.split('/').filter(Boolean).length <= 2 && (m.firstTop === null || m.firstTop > H * 1.3))
         m.out.unshift(['first', m.firstTop === null ? 'さがす欄も結果のカードもない' : `さがす欄・結果が ${Math.round(m.firstTop / H * 10) / 10} 画面目から`]);
+      // ペットタクシーのページ（トップ・地域）は、フォームの最初の入力欄（お迎えの都道府県）が最初の1画面に入る（Nori 2026-11-16「フォームに行くまでスクロールが長すぎる」）
+      const prefTop = await page.evaluate(() => { const e = document.getElementById('pref'); return e && document.getElementById('petForm') ? Math.round(e.getBoundingClientRect().top + scrollY) : null; });
+      if (prefTop !== null && prefTop + 40 > H) m.out.unshift(['form', `フォームの最初の入力欄が ${Math.round(prefTop / H * 10) / 10} 画面目から（1画面目に入れる）`]);
       const shot = path.join(OUT, (p.replace(/^\/|\/$/g, '').replace(/\//g, '_') || 'top') + '.png');
       await page.screenshot({path: shot, clip: {x: 0, y: 0, width: W, height: Math.min(H * 2, m.height)}});
       rep.push(`## ${p} ${m.out.length ? '— ' + m.out.length + '件' : '— OK'}`, `写真: ${shot}`, ...m.out.map(([k, v]) => `- [${k}] ${v}`), '');

@@ -96,7 +96,9 @@ p{margin:0 0 1em}
 .hero-visual{position:relative;max-width:520px;width:100%;margin:0 auto}
 .hero-visual .photo{aspect-ratio:1/1;border-radius:36px;box-shadow:0 30px 60px rgba(226,86,10,.18)}
 .hero-visual .photo .fallback svg{width:92%}
-@media (max-width:759px){.hero{padding:20px 0 40px}.hero .grid{gap:20px}.hero-visual{order:-1}.hero-visual .photo{aspect-ratio:16/10;border-radius:24px}.hero .float{display:none}.hero .lede{margin:14px 0 18px;font-size:.96rem}.pills{margin-bottom:20px}}
+@media (max-width:759px){.hero{padding:10px 0 2px;background:var(--cream)}.hero .grid{grid-template-columns:1fr 76px;gap:8px 12px;align-items:center}.hero h1{margin:0}.hero .kicker{background:none;box-shadow:none;padding:0;margin:0 0 4px;font-size:.69rem;letter-spacing:0;line-height:1.45}.catch{font-size:1.34rem;line-height:1.35}.hero-visual .photo{aspect-ratio:1/1;border-radius:18px;box-shadow:none}.hero-visual .photo .fallback{display:none}.hero .pills{display:none}.hero{padding-bottom:8px}}
+.top-about{padding:28px 0 8px}.top-about .lede{color:var(--ink-2);margin:0 auto;max-width:740px}.top-about .about-pts{max-width:740px;margin:10px auto 0;flex-wrap:wrap}.top-about .about-pts li{border-radius:14px}
+.prep-note{font-size:.76rem;background:#fff4e5;border-radius:12px;padding:8px 12px;margin:8px auto 0!important;text-align:left;line-height:1.55;color:var(--ink)!important}
 .float{position:absolute;z-index:2;background:#fff;border-radius:18px;box-shadow:0 14px 34px rgba(28,26,24,.14);padding:12px 16px;font-size:.8rem;line-height:1.5}
 .float.f1{left:-8px;bottom:22px;display:flex;gap:10px;align-items:center;max-width:250px}
 .float.f1 .ok{flex:none;width:34px;height:34px;border-radius:50%;background:#e8f8ee;color:var(--green);display:grid;place-items:center}
@@ -186,8 +188,9 @@ p{margin:0 0 1em}
 
 /* form */
 .form-sec{background:linear-gradient(180deg,#fff 0%,var(--cream) 100%)}
-.form-sec{padding-top:40px}
-.form-sec .sh{margin-bottom:20px}
+.form-sec{padding-top:14px}
+.form-sec .sh{margin-bottom:12px}
+@media (max-width:759px){.form-sec .sh h2{font-size:1.08rem;white-space:nowrap}.form-card{padding:16px 16px;border-radius:24px}.form-sec .mode-tabs{margin-bottom:10px;padding:3px}.form-sec .mode-tabs button{padding:8px 4px;font-size:.78rem;line-height:1.3;letter-spacing:0;white-space:nowrap}.form-card .group-h{margin-bottom:10px}}
 .form-card{background:#fff;border-radius:32px;padding:28px 20px;box-shadow:0 2px 4px rgba(28,26,24,.04),0 28px 56px rgba(28,26,24,.09);max-width:740px;margin:0 auto}
 .group{margin-bottom:30px}
 .group-h{display:flex;align-items:center;gap:10px;font-family:var(--round);font-weight:800;font-size:1.06rem;margin-bottom:16px}
@@ -465,9 +468,11 @@ footer a{color:var(--ink-2)}
   section{padding:104px 0}
   .top nav{display:flex;gap:26px;margin-left:auto;margin-right:24px}
   .top nav a{color:var(--ink-2);text-decoration:none;font-size:.86rem;font-weight:600}
-  .hero{padding:64px 0 96px}
-  .hero .grid{grid-template-columns:1.05fr .95fr;gap:56px}
-  .catch{font-size:3.1rem}
+  .hero{padding:28px 0 8px}
+  .hero .grid{grid-template-columns:1fr 200px;gap:12px 40px;align-items:center}
+  .catch{font-size:2.3rem}
+  .hero .pills{margin:0}
+  .form-sec{padding-top:24px}
   .sh h2{font-size:2.1rem}
   .stats .grid{grid-template-columns:repeat(4,1fr)}
   .steps{grid-template-columns:repeat(3,1fr)}
@@ -521,7 +526,7 @@ footer a{color:var(--ink-2)}
 .flow3 li{color:var(--ink);font-weight:700}
 .flow3 li b{display:inline-block;margin-right:6px}
 .flow3 li span{display:block;font-weight:400;font-size:.8rem;color:var(--ink-2);margin-left:1.6em}
-@media (max-width:719px){.flow3{padding:12px 14px;margin-bottom:16px}.flow3 ol{gap:2px}.flow3 li span{display:none}}
+@media (max-width:719px){.flow3{padding:0;background:none;margin-bottom:14px}.flow3-h{display:none}.flow3 ol{grid-template-columns:repeat(3,1fr);gap:6px}.flow3 li{font-size:.72rem;line-height:1.35;letter-spacing:0;background:#f7f4f1;border-radius:10px;padding:6px 4px 6px 6px;word-break:keep-all;overflow-wrap:anywhere;display:block;gap:4px;align-items:flex-start}.flow3 li b{margin:0 2px 0 0;color:var(--o-d)}.flow3 li span{display:none}.flow3-note{margin-top:6px;font-size:.76rem;text-align:center}}
 .flow3-note{margin:10px 0 0;font-size:.8rem;font-weight:700;color:var(--ink)}
 @media (min-width:720px){.flow3 ol{grid-template-columns:repeat(3,1fr)}}
 .yoyaku{background:#f7f4f1;border-radius:16px;padding:14px 16px;font-size:.86rem;color:var(--ink-2);margin:0 0 22px;line-height:1.7}
@@ -983,26 +988,14 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 
 <main>
 
-<!-- 1. ヒーロー -->
+<!-- 1. ヒーロー（スマホの最初の画面にフォームが入るよう、見出し・写真・ひとことだけ。Nori 2026-11-16「フォームに行くまでスクロールが長すぎる」） -->
 <div class="wrap"><nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットのくらし窓口</a> › <a href="/area/osaka/">大阪のペットタクシー</a> › 堺市</nav></div>
 <section class="hero">
   <div class="wrap grid">
-    <div>
-      <h1>
-        <span class="kicker">堺市のペットタクシー <b style="white-space:nowrap">無料</b></span>
-        <span class="catch">家族だから、<br><em>移動もやさしく。</em></span>
-      </h1>
-      <p class="lede">堺市を対応エリアに書いているペットタクシーは4社（2026年10月30日時点）。堺市の動物病院への通院から、お引っ越し、空港への送迎まで。フォームにお迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。無料で使えて、当日の依頼もできます。</p>
-      <ul class="pills">
-        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>無料</li>
-        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>何社にでもまとめて問い合わせ</li>
-        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>連絡はメールだけ</li>
-        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>多頭もOK</li>
-      </ul>
-      <div class="hero-fare"><b>各社の料金を、その場でくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。各社の公式サイトの料金表から計算した概算で、確定料金ではありません。</span></div>
-      <a class="btn" href="#form" data-cta="hero-fare">空き状況と料金を問い合わせる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
-      <p class="after">無料で使えます（運賃は当日ペットタクシーへ直接お支払い）。当日の依頼もできます。</p>
-    </div>
+    <h1>
+      <span class="kicker">堺市のペットタクシー <b style="white-space:nowrap">無料</b></span>
+      <span class="catch">家族だから、<br><em>移動もやさしく。</em></span>
+    </h1>
     <div class="hero-visual">
       <div class="photo">
         <div class="fallback" aria-hidden="true">
@@ -1034,16 +1027,20 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
         </div>
         <picture><source srcset="/img/hero.webp" type="image/webp"><img src="/img/hero.jpg" alt="ペットタクシーの座席でキャリーに入ってくつろぐトイプードル" width="1200" height="900" style="object-position:62% center" fetchpriority="high" onerror="this.remove()"></picture>
       </div>
-      <div class="float f1" aria-hidden="true"><span class="ok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><b>問い合わせ → 返事 → 予約</b><span>料金を見て、納得してから決められます</span></div></div>
-      <div class="float f2" aria-hidden="true"><b>無料</b>何度でも</div>
     </div>
+    <ul class="pills">
+        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>無料</li>
+        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>何社にでもまとめて問い合わせ</li>
+        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>連絡はメールだけ</li>
+        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>多頭もOK</li>
+      </ul>
   </div>
 </section>
 
 <!-- 6. フォーム -->
 <section class="form-sec" id="form">
   <div class="wrap">
-    <div class="sh"><span class="eyebrow">REQUEST</span><h2>空き状況と料金を問い合わせる（無料）</h2><p>条件を入力して、料金の目安を見ながら事業者を選べます。会社から空き状況と確定料金がメールで届いたら、納得してから予約を確定してください。</p><!--PREP: 依頼の送信を再開したら消す--><p style="font-size:.86rem;background:#fff4e5;border-radius:12px;padding:10px 14px;margin-top:10px">いまはサイトの準備中のため、問い合わせを送れるのは、社名の横にオレンジのチェックの印がある会社だけです。ほかの会社は、料金の目安と公式サイトへのリンクをご覧いただけます。</p><!--/PREP--></div>
+    <div class="sh"><h2>空き状況と料金を問い合わせる（無料）</h2><!--PREP: 依頼の送信を再開したら消す--><p class="prep-note">準備中のため、問い合わせを送れるのは社名の横にオレンジのチェックがある会社だけです。ほかの会社は料金の目安と公式サイトを見られます。</p><!--/PREP--></div>
 
     <div class="mode-tabs" id="modeTabs" role="tablist" hidden>
       <button type="button" role="tab" aria-selected="true" data-mode="normal">空き状況・料金の問い合わせ</button>
@@ -1099,7 +1096,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
       <p class="emg-note" id="emgNote"></p>
     </div>
     <div class="form-card">
-      <div class="flow3" aria-label="ご利用の流れ"><p class="flow3-h">ご利用の流れ（無料）</p><ol><li><b>①</b>会社を選んで問い合わせ<span>空き状況と料金を、選んだ会社に問い合わせます</span></li><li><b>②</b>会社から返事が届く<span>この日時に空いているか、確定料金（税込）をメールでお知らせします</span></li><li><b>③</b>納得したら予約を確定<span>メールの「この内容で予約する」を押した時点で予約が確定します</span></li></ol><p class="flow3-note">問い合わせを送っただけでは、まだ予約は確定していません。</p></div>
+      <div class="flow3" id="how" aria-label="ご利用の流れ"><p class="flow3-h">ご利用の流れ（無料）</p><ol><li><b>①</b>会社を選んで<wbr>問い合わせ<span>空き状況と料金を、選んだ会社に問い合わせます</span></li><li><b>②</b>会社から<wbr>返事が届く<span>この日時に空いているか、確定料金（税込）をメールでお知らせします</span></li><li><b>③</b>納得したら<wbr>予約を確定<span>メールの「この内容で予約する」を押した時点で予約が確定します</span></li></ol><p class="flow3-note">問い合わせを送っただけでは、まだ予約は確定していません。</p></div>
       <form id="petForm" novalidate>
         <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
@@ -1243,6 +1240,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
   </div>
 </section>
 
+<section class="top-about" aria-label="このサイトについて"><div class="wrap"><p class="lede">堺市を対応エリアに書いているペットタクシーは4社（2026年10月30日時点）。堺市の動物病院への通院から、お引っ越し、空港への送迎まで。フォームにお迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。無料で使えて、当日の依頼もできます。</p><ul class="pills about-pts"><li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>当サイトは無料（運賃は当日ペットタクシーへ直接お支払い）</li><li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>当日の依頼もできます</li></ul></div></section>
 <!-- 3. 3ステップ -->
 
 <!-- 市の説明（gen_areas.py の CITIES） -->
@@ -1265,16 +1263,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
   </article></div>
 </section>
 <div class="wrap"><p class="to-top">ほかの都道府県の会社もふくめてさがすときは、<a href="/">全国のペットタクシーの料金をくらべる</a>ページへ。</p></div>
-<section id="how">
-  <div class="wrap">
-    <div class="sh"><span class="eyebrow">HOW IT WORKS</span><h2>ペットタクシーの頼み方は、<br>3ステップだけ。</h2><p>アプリのダウンロードも会員登録もいりません。</p></div>
-    <ol class="steps">
-      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span class="no">01</span><h3>フォームに入力</h3><p>どこからどこへ、何日に、どんな子か。2匹以上でも、まとめて1回で入力できます。</p></li>
-      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span><span class="no">02</span><h3>会社を選んで問い合わせ</h3><p>エリアやその子の大きさ、頭数、ケージの希望に合う事業者を表示します。料金の目安を比べて、お願いしたい会社に空き状況と料金を問い合わせます。</p></li>
-      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/></svg></span><span class="no">03</span><h3>返事を見て予約を確定</h3><p>会社から、ご希望の日時で受けられるかと確定料金（税込）がメールで届きます。納得できたら「この内容で予約する」を押すと、予約が確定します。</p></li>
-    </ol>
-  </div>
-</section>
+<!--AFTER_FORM-->
 
 <!-- 7. 選ばれる理由 -->
 <section id="why">
@@ -1590,6 +1579,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 
 <div class="sticky"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
 
-<script src="/app.js?v=01e7f283d8" defer></script>
+<script src="/app.js?v=c4237cf9b4" defer></script>
 </body>
 </html>
