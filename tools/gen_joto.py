@@ -52,19 +52,61 @@ def topic_mark(c, words):
     if any(("ない" in x and ("トライアル" in x)) for x in hit) and words == TOPICS[4][1]: return "なし"
     return "○"
 
+# 条件は「アイコン＋短い言葉」の行にまとめる（文字は消さない。1つの条件は1つの span のまま）
+ICON_TOPICS = [
+    ("費用", "yen", ("円", "無料", "無償", "手数料", "費用", "実費", "負担")),
+    ("家族", "family", ("家族", "同居", "同意", "賛成", "ひとり暮らし", "一人暮らし", "単身", "子ども", "子供")),
+    ("年齢", "user", ("歳", "成人", "未成年", "高齢", "後見")),
+    ("住まい", "home", ("住まい", "住宅", "賃貸", "借家", "集合", "住居", "公営", "マンション", "持ち家")),
+    ("お試し", "repeat", ("トライアル", "お試し", "体験飼育")),
+    ("家庭訪問・報告", "door", ("訪問", "報告", "追跡", "アンケート", "近況", "飼育状況")),
+    ("講習", "book", ("講習", "教室", "講座", "説明を受け", "動画", "研修")),
+    ("不妊去勢・登録", "cross", ("不妊", "去勢", "繁殖", "ワクチン", "狂犬病", "マイクロチップ", "登録")),
+    ("室内飼い", "home", ("室内", "屋内", "外飼い", "完全室内")),
+    ("頭数・先住の子", "paw", ("先住", "頭数", "1頭", "一頭", "2頭", "多頭")),
+    ("見学・面会", "cal", ("見学", "お見合い", "面会", "予約", "譲渡会", "マッチング", "審査")),
+    ("持ち物", "bag", ("持って", "持参", "キャリー", "ケージ", "首輪", "リード")),
+    ("住んでいる所", "map", ("県内", "市内", "在住", "住んで", "住む", "県外", "市外")),
+]
+OTHER = ("ほかの条件", "check")
+
+def _topic(x):
+    for lab, ic, ws in ICON_TOPICS:
+        if any(w in x for w in ws): return lab, ic
+    return OTHER
+
+def icon_rows(e, conds, fees=()):
+    from faccard import icon
+    order = [t[0] for t in ICON_TOPICS] + [OTHER[0]]
+    grp, ics = {}, dict((t[0], t[1]) for t in ICON_TOPICS); ics[OTHER[0]] = OTHER[1]
+    for x in conds: grp.setdefault(_topic(x)[0], []).append(x)
+    for x in fees: grp.setdefault("費用", []).append(x)
+    li = "".join(
+        f'<li><span class="jt-ib">{icon(ics[lab], "jt-i")}</span><span class="jt-tx"><b>{e(lab)}</b>'
+        + "".join(f"<span>{e(x)}</span>" for x in grp[lab]) + "</span></li>"
+        for lab in order if lab in grp)
+    return f'<ul class="jt-c jt-ic">{li}</ul>'
+
 def card(e, c):
-    conds = "".join(f"<li>{e(x)}</li>" for x in c["conds"])
     links = "".join(f'<li><a href="{e(l["u"])}" target="_blank" rel="noopener">{e(l["t"])} ↗</a></li>' for l in c.get("links", []))
     return (f'<div class="emg-item emg-co jt-card"><a href="{e(c["url"])}" target="_blank" rel="noopener"><b>{e(c["name"])}</b></a>'
             f'<small>{e(_kind(c))}・{e(c["animals"])}</small>'
-            f'<p class="jt-h">公式ページに書いてあること</p><ul class="jt-c">{conds}</ul>'
-            + (f'<p class="jt-h">あわせて見る（公式ページ）</p><ul class="jt-l">{links}</ul>' if links else "")
+            + icon_rows(e, c["conds"])
+            + (f'<p class="jt-h">あわせて見る</p><ul class="jt-l">{links}</ul>' if links else "")
             + (f'<p class="jt-more"><a href="{city_href(c)}">{e(c["city"])}で迎えるときの条件をくわしく見る →</a></p>' if city_href(c) and not c.get("_nolink") else "")
-            + f'<small class="sg-src">{e(J["checked"])}時点の公式ページ</small></div>')
+            + f'<small class="sg-src">{e(J["checked"])}時点の情報</small></div>')
 
 CSS = """<style>
 .jt-card .jt-h{font-size:.76rem;font-weight:700;color:var(--ink-2);margin:10px 0 2px}
 .jt-card ul{margin:0;padding-left:1.2em;font-size:.86rem;line-height:1.7}
+.jt-card ul.jt-ic,.emg-item ul.jt-ic{list-style:none;padding:0!important;margin:10px 0 2px!important;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0 14px}
+.jt-ic li{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid #f3e6da;line-height:1.55}
+.jt-ic li:last-child{border-bottom:0}
+.jt-ic .jt-ib{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:#ffe8d6;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.jt-ic .jt-i{width:16px;height:16px;fill:none;stroke:#c2410c;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.jt-ic .jt-tx{display:block;min-width:0;font-size:.84rem;color:var(--ink,#2b2622)}
+.jt-ic .jt-tx b{display:inline-block;font-size:.72rem;color:#9a3412;background:#fff1e6;border-radius:999px;padding:0 8px;margin-right:6px;font-weight:800;text-decoration:none!important;vertical-align:1px}
+.jt-ic .jt-tx span{display:block}.jt-ic .jt-tx b+span{display:inline}
 .jt-card ul.jt-l{font-size:.84rem}
 .emg-item small.sg-src{color:var(--ink-3);font-size:.72rem;margin-top:6px}
 .jt-card .jt-more{margin:8px 0 0;font-size:.86rem;font-weight:700}
@@ -141,7 +183,7 @@ def render(ctx):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › {e(H1)}</nav>
     <h1><small>{n_pref}都道府県・{n_city}政令市・{n_core}中核市の公式の案内</small>{e(H1)}</h1>
-    <p class="lede">保護犬・保護猫の里親になるには、まず住んでいる県や市の動物愛護センター（公的なシェルター）の案内を見るのが近道です。申し込める人の条件・講習会・トライアル・費用は自治体ごとに違うので、公式ページに書いてあることを都道府県ごとにまとめました。</p>
+    <p class="lede">保護犬・保護猫の里親になるには、まず住んでいる県や市の動物愛護センター（公的なシェルター）の案内を見るのが近道です。申し込める人の条件・講習会・トライアル・費用は自治体ごとに違うので、公式ページの情報をもとに都道府県ごとにまとめました。</p>
   </div>
 </section>
 <section style="padding-top:8px">
@@ -200,9 +242,9 @@ def _desc(pf, rs, n):
             + "の譲渡の案内を、公式ページに書いてある条件（年齢・住まい・家族・講習会・トライアル・費用）と、譲渡会・登録団体のリンクと一緒にまとめました。")[:160]
 
 CAT = dict(slug=SLUG, name="保護犬・保護猫の譲渡", unit="か所", h1=H1, items=ITEMS, card=card, checked=J["checked"], min=1, css=CSS,
-  free="この一覧は無料の情報です。自治体や団体からお金をもらっていません。条件は公式ページに書いてあることを短くまとめたもので、変わることがあります。申し込む前に必ずリンク先でご確認ください。",
+  free="この一覧は無料の情報です。自治体や団体からお金をもらっていません。条件は公式ページの情報を短くまとめたもので、変わることがあります。申し込む前に必ずリンク先でご確認ください。",
   list_h="譲渡の窓口（県・市の動物愛護センター）",
-  lede=lambda pf, n: f"{pf}で保護犬・保護猫を迎えたいときの窓口と、申し込める人の条件・講習会・トライアル・費用を、公式ページに書いてあることだけでまとめました。譲渡会や県に登録した保護団体のページへのリンクも一緒にどうぞ。",
+  lede=lambda pf, n: f"{pf}で保護犬・保護猫を迎えたいときの窓口と、申し込める人の条件・講習会・トライアル・費用を、公式ページに書いてある内容をもとにまとめました。譲渡会や県に登録した保護団体のページへのリンクも一緒にどうぞ。",
   facts=_facts, faq=_faq, title_fn=_title, desc_fn=_desc,
   before_title="申し込む前に確かめること", before=BEFORE,
   taxi_h="迎える日の移動は、ペットタクシーでも", taxi_p="車がないとき、大きな犬のとき、家族と一緒に新しい子を家まで連れて帰れます。",
@@ -220,15 +262,14 @@ def groups_html(e, pf):
     cards = "".join(
         f'<div class="emg-item emg-co jt-card"><a href="{e(g["url"])}" target="_blank" rel="noopener"><b>{e(g["name"])}</b></a>'
         f'<small>民間の保護団体・{e(g["animals"])}{("・" + e(g["area"])) if g["area"] else ""}</small>'
-        '<p class="jt-h">おもな条件（団体の公式サイトより）</p><ul class="jt-c">' + "".join(f"<li>{e(x)}</li>" for x in g["conds"]) + "</ul>"
-        '<p class="jt-h">費用</p><ul class="jt-c">' + "".join(f"<li>{e(x)}</li>" for x in g["fees"]) + "</ul>"
+        + icon_rows(e, g["conds"], g["fees"]) +
         f'<p class="jt-more"><a href="{e(g["cond_url"])}" target="_blank" rel="noopener">条件・費用のページ（団体の公式サイト） ↗</a></p>'
-        f'<small class="sg-src">{e(G["checked"])}時点の公式サイト</small></div>'
+        f'<small class="sg-src">{e(G["checked"])}時点の情報</small></div>'
         for g in gs)
     regs = G["registries"].get(pf, [])
     src = "・".join(f'<a href="{e(r["u"])}" target="_blank" rel="noopener">{e(r["t"])} ↗</a>' for r in regs) or "自治体の登録団体の一覧"
     return (f'<section class="emg-pref"><h2 style="font-size:1.15em">{e(pf)}の自治体に登録された保護団体（{len(gs)}団体）</h2>'
-            f'<p class="emg-note">{src}に載っている団体のうち、公式サイトに譲渡の条件や費用が書いてある団体です。条件と費用は団体ごとにちがい、自治体の窓口より細かいことが多いので、くらべてから申し込んでください（{e(G["checked"])}時点の、公式ページに書いてある内容。おすすめ順ではありません）。</p>'
+            f'<p class="emg-note">{src}に載っている団体のうち、公式サイトに譲渡の条件や費用が書いてある団体です。条件と費用は団体ごとにちがい、自治体の窓口より細かいことが多いので、くらべてから申し込んでください（{e(G["checked"])}時点の情報。おすすめ順ではありません）。</p>'
             + cards + '</section>')
 
 CAT["extra_after"] = groups_html
@@ -283,7 +324,7 @@ def render_city(ctx, c):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/{SLUG}/">{e(H1)}</a> › <a href="{ppage}">{e(pf)}</a> › {e(city)}</nav>
     <h1><small>{e(c.get('kind') or '')}・公式ページに書いてある条件</small>{e(city)}で保護犬・保護猫を迎える（譲渡・里親）</h1>
-    <p class="lede">{e(city)}で保護犬・保護猫の里親になりたいときの窓口は、{e(c['name'])}です。申し込める人の条件・講習・お試し・費用を、公式ページに書いてあることだけで短くまとめました。</p>
+    <p class="lede">{e(city)}で保護犬・保護猫の里親になりたいときの窓口は、{e(c['name'])}です。申し込める人の条件・講習・お試し・費用を、公式ページに書いてある内容をもとに短くまとめました。</p>
   </div>
 </section>
 <section style="padding-top:8px">
