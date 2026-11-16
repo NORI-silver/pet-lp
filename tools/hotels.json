@@ -1,5 +1,5 @@
 {
- "_説明": "大型犬OK・猫専用のペットホテルの一覧（/pet-hotel/）のデータ。公式サイトで確かめたことだけ（料金・順位・電話番号は書かない）。large＝大型犬を受けると公式サイトに書いてある（large_basis：『文』＝大型犬OKなどの文、『料金表』＝ホテルの料金表に大型犬・超大型犬・30kg以上などの区分がある）。large_from_kg＝その施設の料金表で『大型犬』が始まる体重、max_kg＝受けられる上限。cat_only＝猫専用の施設、separate＝犬も預かるが猫を分けている形。cat・vet（動物病院の併設・運営）・pickup・senior・night_staff・camera・run・private_room は公式サイトにはっきり書いてあるときだけ。載せない：大型犬は『ご相談』だけ、猫を犬と同じ部屋で預かる、新規停止・中止、公式サイトのない・開けない、予約仲介サイト。",
+ "_説明": "大型犬OK・猫専用のペットホテルの一覧（/pet-hotel/）のデータ。公式サイトで確かめたことだけ（料金・順位・電話番号は書かない）。large＝大型犬を受けると公式サイトに書いてある（large_basis：『文』＝大型犬OKなどの文、『料金表』＝ホテルの料金表に大型犬・超大型犬・30kg以上などの区分がある）。large_from_kg＝その施設の料金表で『大型犬』が始まる体重、max_kg＝受けられる上限。cat_only＝猫専用の施設、separate＝犬も預かるが猫を分けている形。cat・vet（動物病院の併設・運営）・pickup・senior・night_staff・camera・run・private_room は公式サイトにはっきり書いてあるときだけ。載せない：大型犬は『ご相談』だけ、猫を犬と同じ部屋で預かる、新規停止・中止、公式サイトのない・開けない、予約仲介サイト。 trust＝安心して預けるための材料（2026-11-16、tools/hotel_trust_harvest.py で公式サイトの文を集め、人が読んで入れた）：reg＝動物取扱業の登録（no・kind・auth・until、by＝site はホテルの公式サイト・registry は自治体が公開している登録の一覧、registry＝一覧でも合った）、night・vet・report・camera・visit・trial・vaccine＝v（カードの言葉）・quote（公式サイトの文）・src・checked。書いていないことは入れない。",
  "checked": "2026-11-02",
  "hotels": [
   {
@@ -13,7 +13,16 @@
    "large": true,
    "services": "ペットホテル、送迎",
    "pickup": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "ペットの様子を写真付きのLINEでお送りします",
+     "src": "https://www.dogstyle-2008.com/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH002",
@@ -27,7 +36,37 @@
    "services": "ドッグホテル、キャットホテル、宿泊専用室内ドッグラン",
    "cat": true,
    "run": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "vet": {
+     "v": "提携の動物病院あり",
+     "quote": "提携の動物病院（ふらっと動物病院 ）にて治療を行います",
+     "src": "https://www.doglovequa.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "画像つきメールでご報告いたします",
+     "src": "https://www.doglovequa.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学希望の際は、事前にお電話でご予約いただける",
+     "src": "https://www.doglovequa.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内の狂犬病予防注射と5種以上の混合ワクチンの接種証明書をご提示ください",
+     "src": "https://www.doglovequa.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH003",
@@ -43,7 +82,36 @@
    "pickup": true,
    "night_staff": true,
    "large_basis": "料金表",
-   "large_from_kg": 18
+   "large_from_kg": 18,
+   "trust": {
+    "night": {
+     "v": "夜もスタッフがいる",
+     "quote": "夜間もスタッフ常駐",
+     "src": "https://www.only-wan.net/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内に接種した5種以上の混合ワクチン、狂犬病予防接種の証明書",
+     "src": "https://www.only-wan.net/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "第302号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "札幌市",
+     "by": "registry",
+     "src": "https://www.city.sapporo.jp/inuneko/main/toriatsukai.html",
+     "registry": {
+      "name": "札幌市",
+      "asof": "2026-11-04",
+      "page": "https://www.city.sapporo.jp/inuneko/main/toriatsukai.html"
+     }
+    }
+   }
   },
   {
    "id": "PH004",
@@ -56,7 +124,22 @@
    "large": true,
    "services": "ペットホテル（犬・猫）、ランコース",
    "cat": true,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "reg": {
+     "no": "第1459号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "札幌市",
+     "by": "registry",
+     "src": "https://www.city.sapporo.jp/inuneko/main/toriatsukai.html",
+     "registry": {
+      "name": "札幌市",
+      "asof": "2026-11-04",
+      "page": "https://www.city.sapporo.jp/inuneko/main/toriatsukai.html"
+     }
+    }
+   }
   },
   {
    "id": "PH005",
@@ -72,7 +155,31 @@
    "senior": true,
    "camera": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "見守りカメラで",
+     "src": "https://myuan-cat.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン接種証明書の提示をお願いします",
+     "src": "https://myuan-cat.com/guide/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "札保動セ登録第2304号",
+     "checked": "2026-11-16",
+     "auth": "札幌市",
+     "by": "site",
+     "src": "https://myuan-cat.com/",
+     "quote": "第一種動物取扱業：札保動セ登録第2304号"
+    }
+   }
   },
   {
    "id": "PH006",
@@ -84,7 +191,37 @@
    "url": "https://petbuddy.jp/wordpress/",
    "cat_only": true,
    "services": "ケージフリーの猫専用ホテル",
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "1日1回、登録して頂いたメールやラインに写真付きで報告いたします",
+     "src": "https://petbuddy.jp/wordpress/cat-hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチンの予防接種証明書",
+     "src": "https://petbuddy.jp/wordpress/cat-hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "札保動セ登録第1430号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "札幌市",
+     "by": "site",
+     "src": "https://petbuddy.jp/wordpress/company-profile/",
+     "quote": "札保動セ登録第1430号",
+     "registry": {
+      "name": "札幌市",
+      "asof": "2026-11-04",
+      "page": "https://www.city.sapporo.jp/inuneko/main/toriatsukai.html"
+     }
+    }
+   }
   },
   {
    "id": "PH007",
@@ -98,7 +235,16 @@
    "services": "全室個室。一部エリアへ送迎あり。体力の落ちた高齢猫・投薬のある猫は原則不可",
    "pickup": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "画像つきメールで ご報告いたします",
+     "src": "https://www.doglovequa.jp/nyansroom/",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH008",
@@ -112,7 +258,23 @@
    "services": "介護が必要な高齢猫も可（介護料金あり）。LINEで写真・動画の報告",
    "senior": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "写真や動画でお預かり中の 様子をご報告いたします",
+     "src": "https://ofuro-wonwon.com/catpethotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内に接種したワクチン証明書のご提示をお願いいたします",
+     "src": "https://ofuro-wonwon.com/catpethotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH009",
@@ -127,7 +289,18 @@
    "cat": true,
    "vet": true,
    "run": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "reg": {
+     "no": "第1120031号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "until": "2028-12-18",
+     "by": "site",
+     "src": "https://galfar.jp/access/",
+     "quote": "登録番号：第1120031号"
+    }
+   }
   },
   {
    "id": "PH010",
@@ -155,7 +328,23 @@
    "large": true,
    "services": "ペットホテル（犬・猫・小動物）",
    "cat": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "宿泊中の写真または動画をメールにて配信致します",
+     "src": "https://www.pet-onelove.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "１年以内のワクチン接種証明書・狂犬病予防接種証明書をご持参ください",
+     "src": "https://www.pet-onelove.com/hotel/page189.php",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH012",
@@ -168,7 +357,23 @@
    "cat_only": true,
    "services": "猫専門ホテル・保護猫カフェ・キャットシッター。大きな個室（成猫2匹まで同室）",
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "visit": {
+     "v": "見学できる",
+     "quote": "ご予約の前にぜひ１度見学にお越しください",
+     "src": "https://www.matatabitei.com/blank-1",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン未接種の場合はお預かりできません",
+     "src": "https://www.matatabitei.com/blank-1",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH013",
@@ -181,7 +386,33 @@
    "cat_only": true,
    "services": "広い個室6室の猫専門ホテル",
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "visit": {
+     "v": "見学できる",
+     "quote": "ご見学については",
+     "src": "https://nekonoyakata-htl.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "３種混合ワクチン接種証明書（一年以内の日付のもの",
+     "src": "https://nekonoyakata-htl.com/free/page-address",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "仙台市(R5健保動)指令第18127024号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "仙台市",
+     "until": "2028-09-19",
+     "by": "site",
+     "src": "https://nekonoyakata-htl.com/about",
+     "quote": "指令第18127024号"
+    }
+   }
   },
   {
    "id": "PH014",
@@ -207,7 +438,39 @@
    "large": true,
    "services": "ペットホテル（犬舎・猫舎）",
    "cat": true,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "report": {
+     "v": "様子をLINEで報告",
+     "quote": "ホテル中のご様子をメールもしくはLINE@でお送りしておりましたが",
+     "src": "http://www.pch-ocean.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "各部屋の見学できますので、お問い合わせください",
+     "src": "http://www.pch-ocean.com/shop.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内に接種したワクチンの証明書",
+     "src": "http://www.pch-ocean.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "第901号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "until": "2031-02-15",
+     "by": "site",
+     "src": "http://www.pch-ocean.com/hotel.html",
+     "quote": "登録番号 ：第901号"
+    }
+   }
   },
   {
    "id": "PH016",
@@ -280,7 +543,53 @@
    "senior": true,
    "camera": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "獣医師が診る体制",
+     "quote": "何かおかしいと感じたら獣医師が診察・治療を行い適切に対応します",
+     "src": "https://nekobeya.pechika.jp/houses/omiya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子をLINEで報告",
+     "quote": "LINEでの様子のご報告も行っております",
+     "src": "https://nekobeya.pechika.jp/faq",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "24時間いつでも外出先からスマートフォンのアプリで愛猫の様子が確認できます",
+     "src": "https://nekobeya.pechika.jp/houses/omiya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学いただけます。見学は事前予約制",
+     "src": "https://nekobeya.pechika.jp/houses/omiya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンの証明書を確認させていただいております",
+     "src": "https://nekobeya.pechika.jp/houses/omiya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "第1124号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "until": "2030-10-07",
+     "by": "site",
+     "src": "https://nekobeya.pechika.jp/houses/omiya.html",
+     "quote": "登録番号： 第1124号"
+    }
+   }
   },
   {
    "id": "PH021",
@@ -296,7 +605,53 @@
    "senior": true,
    "camera": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "提携の動物病院あり",
+     "quote": "社内獣医師と連携して提携の動物病院にお連れします",
+     "src": "https://nekobeya.pechika.jp/houses/koshigaya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "その様子も写真でお届けします",
+     "src": "https://nekobeya.pechika.jp/houses/koshigaya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "24時間いつでも外出先からスマートフォンのアプリで愛猫の様子が確認できます",
+     "src": "https://nekobeya.pechika.jp/houses/koshigaya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学いただけます。見学は事前予約制",
+     "src": "https://nekobeya.pechika.jp/houses/koshigaya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンの証明書を確認させていただいております",
+     "src": "https://nekobeya.pechika.jp/houses/koshigaya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "第185号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "until": "2030-12-19",
+     "by": "site",
+     "src": "https://nekobeya.pechika.jp/houses/koshigaya.html",
+     "quote": "登録番号： 第185号"
+    }
+   }
   },
   {
    "id": "PH022",
@@ -311,7 +666,32 @@
    "senior": true,
    "camera": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "提携の動物病院あり",
+     "quote": "提携動物病院 ほーむず動物病院",
+     "src": "https://www.hotelnekoto.jp/about",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "5種もしくは3種混合ワクチンの接種証明書のご提示をお願いしております",
+     "src": "https://www.hotelnekoto.jp/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "第085号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "until": "2030-04-20",
+     "by": "site",
+     "src": "https://www.hotelnekoto.jp/plan",
+     "quote": "第085、086号"
+    }
+   }
   },
   {
    "id": "PH023",
@@ -326,7 +706,25 @@
    "cat": true,
    "vet": true,
    "run": true,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンと狂犬病予防接種の証明書のご提示をお願いしております",
+     "src": "https://fvh2014.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "第13-2-15",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "until": "2029-03-19",
+     "by": "site",
+     "src": "https://fvh2014.com/",
+     "quote": "第13-2-15"
+    }
+   }
   },
   {
    "id": "PH024",
@@ -340,7 +738,25 @@
    "services": "動物病院のペットホテル（犬・猫）",
    "cat": true,
    "vet": true,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "report": {
+     "v": "預かり中の様子を報告",
+     "quote": "ご希望の方にはホテル中のご様子をInstagramにてお伝えいたします",
+     "src": "https://twvc.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "22-2-3",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "until": "2027-07-03",
+     "by": "site",
+     "src": "https://twvc.jp/hotel/",
+     "quote": "登録番号 / 22-2-3"
+    }
+   }
   },
   {
    "id": "PH025",
@@ -370,7 +786,59 @@
    "senior": true,
    "camera": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "獣医師が診る体制",
+     "quote": "何かおかしいと感じたら獣医師が診察・治療を行い適切に対応します",
+     "src": "https://nekobeya.pechika.jp/houses/chiba_chuo.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "愛猫ちゃんのかわいいお写真お届けします",
+     "src": "https://nekobeya.pechika.jp/houses/chiba_chuo.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "24時間いつでも外出先からスマートフォンのアプリで愛猫の様子が確認できます",
+     "src": "https://nekobeya.pechika.jp/houses/chiba_chuo.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学いただけます。見学は事前予約制",
+     "src": "https://nekobeya.pechika.jp/houses/chiba_chuo.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンの証明書を確認させていただいております",
+     "src": "https://nekobeya.pechika.jp/houses/chiba_chuo.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "第20541号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "千葉市",
+     "until": "2030-07-17",
+     "by": "site",
+     "src": "https://nekobeya.pechika.jp/houses/chiba_chuo.html",
+     "quote": "登録番号： 第20541号",
+     "registry": {
+      "name": "千葉市",
+      "asof": "2026-10-23",
+      "page": "https://www.city.chiba.jp/hokenfukushi/kenkou/seikatsueisei/dobutsuhogo/toriatukaigyou.html"
+     }
+    }
+   }
   },
   {
    "id": "PH027",
@@ -386,7 +854,53 @@
    "senior": true,
    "camera": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "提携の動物病院あり",
+     "quote": "社内獣医師と連携して提携の動物病院にお連れします",
+     "src": "https://nekobeya.pechika.jp/houses/matsudo.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "写真でのご報告を担当しています",
+     "src": "https://nekobeya.pechika.jp/houses/matsudo.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "24時間いつでも外出先からスマートフォンのアプリで愛猫の様子が確認できます",
+     "src": "https://nekobeya.pechika.jp/houses/matsudo.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学いただけます。見学は事前予約制",
+     "src": "https://nekobeya.pechika.jp/houses/matsudo.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンの証明書を確認させていただいております",
+     "src": "https://nekobeya.pechika.jp/houses/matsudo.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "26-松健福130-1",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "until": "2031-04-02",
+     "by": "site",
+     "src": "https://nekobeya.pechika.jp/houses/matsudo.html",
+     "quote": "26-松健福130-1"
+    }
+   }
   },
   {
    "id": "PH028",
@@ -399,7 +913,23 @@
    "cat_only": true,
    "services": "自宅で営む猫専用ホテル。ミニ個室あり",
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "預かり中の様子を報告",
+     "quote": "ブログにてご様子を報告いたします",
+     "src": "https://nekonotsuki.jimdofree.com/ご利用の流れ/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "血液検査とワクチン接種は必須です",
+     "src": "https://nekonotsuki.jimdofree.com/お預かり条件等/",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH029",
@@ -427,7 +957,23 @@
    "services": "動物病院のペットホテル（犬・猫）",
    "cat": true,
    "vet": true,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "reg": {
+     "no": "24東京都保第004669号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "東京都",
+     "until": "2030-04-06",
+     "by": "registry",
+     "src": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html",
+     "registry": {
+      "name": "東京都",
+      "asof": "2026-10-01",
+      "page": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html"
+     }
+    }
+   }
   },
   {
    "id": "PH031",
@@ -443,7 +989,37 @@
    "pickup": true,
    "senior": true,
    "night_staff": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "night": {
+     "v": "夜もスタッフがいる",
+     "quote": "夜間もスタッフ常駐",
+     "src": "https://azabupet.jp/service/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "写真付きメールでご報告",
+     "src": "https://azabupet.jp/service/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "事前のご見学も大歓迎です",
+     "src": "https://azabupet.jp/shop/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内に接種している混合ワクチンの証明書",
+     "src": "https://azabupet.jp/service/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH032",
@@ -459,7 +1035,31 @@
    "vet": true,
    "max_kg": 30,
    "large_basis": "料金表",
-   "large_from_kg": 20
+   "large_from_kg": 20,
+   "trust": {
+    "report": {
+     "v": "預かり中の様子を報告",
+     "quote": "ホテル中の様子をお伝えする報告書付き",
+     "src": "https://seisekifamily.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "22東京都保第103295号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "東京都",
+     "until": "2027-09-28",
+     "by": "site",
+     "src": "https://seisekifamily.com/hotel/",
+     "quote": "22東京都保第103295号",
+     "registry": {
+      "name": "東京都",
+      "asof": "2026-10-01",
+      "page": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html"
+     }
+    }
+   }
   },
   {
    "id": "PH033",
@@ -474,7 +1074,23 @@
    "cat": true,
    "vet": true,
    "senior": true,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "reg": {
+     "no": "25東京都保第103730号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "東京都",
+     "until": "2030-09-25",
+     "by": "registry",
+     "src": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html",
+     "registry": {
+      "name": "東京都",
+      "asof": "2026-10-01",
+      "page": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html"
+     }
+    }
+   }
   },
   {
    "id": "PH034",
@@ -488,7 +1104,59 @@
    "services": "猫専門の個室ホテル。送迎サービスあり（要問い合わせ）。夜間はWebカメラとアラームで見守り",
    "pickup": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "提携の動物病院あり",
+     "quote": "速やかに提携動物病院を受診いたします",
+     "src": "https://premiercathoteltokyo.com/free/qa",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "毎日の写真・レポート配信が含まれます",
+     "src": "https://premiercathoteltokyo.com/menu",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "Webカメラによる夜間管理",
+     "src": "https://premiercathoteltokyo.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学は可能ですか？ A：はい、可能です",
+     "src": "https://premiercathoteltokyo.com/free/qa",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内の「混合ワクチン接種証明書」のご提示をお願いしており",
+     "src": "https://premiercathoteltokyo.com/free/qa",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "24東京都保第006344号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "東京都",
+     "until": "2029-06-27",
+     "by": "site",
+     "src": "https://premiercathoteltokyo.com/",
+     "quote": "24東京都保第006344号",
+     "registry": {
+      "name": "東京都",
+      "asof": "2026-10-01",
+      "page": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html"
+     }
+    }
+   }
   },
   {
    "id": "PH035",
@@ -502,7 +1170,59 @@
    "services": "猫だけの個室ホテル。送迎サービスあり。投薬は事前相談で判断。毎日LINEで写真・動画の報告",
    "pickup": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "提携の動物病院あり",
+     "quote": "提携先の動物病院で診ていただきます",
+     "src": "https://premiercathoteltokyoiidabashi.com/faq",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子をLINEで報告",
+     "quote": "1日の終わりにLINEでご報告",
+     "src": "https://premiercathoteltokyoiidabashi.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "Webカメラによる夜間管理",
+     "src": "https://premiercathoteltokyoiidabashi.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学は可能ですか？ はい、可能です",
+     "src": "https://premiercathoteltokyoiidabashi.com/faq",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン接種をご利用条件とさせていただきます",
+     "src": "https://premiercathoteltokyoiidabashi.com/price",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "24東京都保第008144号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "東京都",
+     "until": "2029-04-24",
+     "by": "site",
+     "src": "https://premiercathoteltokyoiidabashi.com/",
+     "quote": "24東京都保第008144号",
+     "registry": {
+      "name": "東京都",
+      "asof": "2026-10-01",
+      "page": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html"
+     }
+    }
+   }
   },
   {
    "id": "PH036",
@@ -516,7 +1236,59 @@
    "services": "猫専門の個室ホテル。送迎サービスあり。投薬は事前相談",
    "pickup": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "提携の動物病院あり",
+     "quote": "提携動物病院を受診します",
+     "src": "https://premiercathoteltokyo-shinjukuyoyogi.com/faq",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子をLINEで報告",
+     "quote": "LINEで毎日ご報告",
+     "src": "https://premiercathoteltokyo-shinjukuyoyogi.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "Webカメラによる夜間管理",
+     "src": "https://premiercathoteltokyo-shinjukuyoyogi.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "事前のご見学も大歓迎です",
+     "src": "https://premiercathoteltokyo-shinjukuyoyogi.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内の「ワクチン接種証明書」のご提示を",
+     "src": "https://premiercathoteltokyo-shinjukuyoyogi.com/faq",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "25東京都保第008903号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "東京都",
+     "until": "2030-12-23",
+     "by": "site",
+     "src": "https://premiercathoteltokyo-shinjukuyoyogi.com/",
+     "quote": "25東京都保第008903号",
+     "registry": {
+      "name": "東京都",
+      "asof": "2026-10-01",
+      "page": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html"
+     }
+    }
+   }
   },
   {
    "id": "PH037",
@@ -533,7 +1305,59 @@
    "camera": true,
    "night_staff": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "獣医師が診る体制",
+     "quote": "何かおかしいと感じたら獣医師が診察",
+     "src": "https://nekobeya.pechika.jp/houses/minato.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "預かり中の様子を報告",
+     "quote": "夜の様子も翌朝のご報告でお伝えします",
+     "src": "https://nekobeya.pechika.jp/houses/minato.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "24時間いつでも外出先からスマートフォンのアプリで愛猫の様子が確認できます",
+     "src": "https://nekobeya.pechika.jp/houses/minato.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学いただけます。見学は事前予約制",
+     "src": "https://nekobeya.pechika.jp/houses/minato.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンの証明書を確認させていただいております",
+     "src": "https://nekobeya.pechika.jp/houses/minato.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "25東京都保第008887号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "東京都",
+     "until": "2030-11-30",
+     "by": "site",
+     "src": "https://nekobeya.pechika.jp/houses/minato.html",
+     "quote": "25東京都保第008887号",
+     "registry": {
+      "name": "東京都",
+      "asof": "2026-10-01",
+      "page": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html"
+     }
+    }
+   }
   },
   {
    "id": "PH038",
@@ -550,7 +1374,66 @@
    "camera": true,
    "night_staff": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "獣医師が診る体制",
+     "quote": "11月1日より獣医師が在籍しております",
+     "src": "https://nekobeya.pechika.jp/houses/haneda.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "スタッフが写真や動画をLINE",
+     "src": "https://nekobeya.pechika.jp/houses/haneda.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "24時間いつでも外出先からスマートフォンのアプリで愛猫の様子が確認できます",
+     "src": "https://nekobeya.pechika.jp/houses/haneda.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学いただけます。見学は事前予約制",
+     "src": "https://nekobeya.pechika.jp/houses/haneda.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "trial": {
+     "v": "お試しの預かり",
+     "quote": "はじめてで不安な場合は、日帰りや1泊のお試し利用もご相",
+     "src": "https://nekobeya.pechika.jp/houses/haneda.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンの証明書を確認させていただいております",
+     "src": "https://nekobeya.pechika.jp/houses/haneda.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "23東京都保第007945号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "東京都",
+     "until": "2028-11-01",
+     "by": "site",
+     "src": "https://nekobeya.pechika.jp/houses/haneda.html",
+     "quote": "23東京都保第007945号",
+     "registry": {
+      "name": "東京都",
+      "asof": "2026-10-01",
+      "page": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html"
+     }
+    }
+   }
   },
   {
    "id": "PH039",
@@ -566,7 +1449,59 @@
    "senior": true,
    "camera": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "獣医師が診る体制",
+     "quote": "何かおかしいと感じたら獣医師が診察・治療",
+     "src": "https://nekobeya.pechika.jp/houses/suginami.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子をLINEで報告",
+     "quote": "LINEでの様子の",
+     "src": "https://nekobeya.pechika.jp/faq",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "24時間いつでも外出先からスマートフォンのアプリで愛猫の様子が確認できます",
+     "src": "https://nekobeya.pechika.jp/houses/suginami.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学いただけます。見学は事前予約制",
+     "src": "https://nekobeya.pechika.jp/houses/suginami.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンの証明書を確認させていただいております",
+     "src": "https://nekobeya.pechika.jp/houses/suginami.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "25東京都保第008723号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "東京都",
+     "until": "2030-08-03",
+     "by": "site",
+     "src": "https://nekobeya.pechika.jp/houses/suginami.html",
+     "quote": "25東京都保第008723号",
+     "registry": {
+      "name": "東京都",
+      "asof": "2026-10-01",
+      "page": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html"
+     }
+    }
+   }
   },
   {
    "id": "PH040",
@@ -578,7 +1513,40 @@
    "url": "https://nekohotel-manekineko.com/",
    "cat_only": true,
    "services": "大崎の猫専用ホテル",
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "その日の様子とお写真 をお送りします",
+     "src": "https://nekohotel-manekineko.com/menu",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学も随時受け付けております",
+     "src": "https://nekohotel-manekineko.com/info",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内のワクチン接種証明書",
+     "src": "https://nekohotel-manekineko.com/free/belongings",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "23東京都保第007774号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "東京都",
+     "until": "2028-06-06",
+     "by": "site",
+     "src": "https://nekohotel-manekineko.com/about",
+     "quote": "23東京都保第007774号"
+    }
+   }
   },
   {
    "id": "PH041",
@@ -592,7 +1560,37 @@
    "services": "ケージフリーの猫用フロア。送迎あり（別料金・距離や時期による）。投薬は注意事項に同意のうえ",
    "pickup": true,
    "senior": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "visit": {
+     "v": "見学できる",
+     "quote": "ペットホテル内の見学ができます",
+     "src": "https://www.nunoclub.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン接種証明書の確認等の手続きを行います",
+     "src": "https://www.nunoclub.com/lp/cathotel_lp.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "22東京都保第001525号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "東京都",
+     "until": "2027-05-30",
+     "by": "registry",
+     "src": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html",
+     "registry": {
+      "name": "東京都",
+      "asof": "2026-10-01",
+      "page": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html"
+     }
+    }
+   }
   },
   {
    "id": "PH042",
@@ -605,7 +1603,24 @@
    "cat_only": true,
    "services": "猫専門の動物病院に併設の猫専用ホテル。預け入れ・お迎えは診察時間内",
    "vet": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "reg": {
+     "no": "24東京都保第006539号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "東京都",
+     "until": "2029-12-22",
+     "by": "site",
+     "src": "https://catcs.jp/free/hotel",
+     "quote": "19東京都保第006539号",
+     "registry": {
+      "name": "東京都",
+      "asof": "2026-10-01",
+      "page": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html"
+     }
+    }
+   }
   },
   {
    "id": "PH043",
@@ -618,7 +1633,38 @@
    "cat_only": true,
    "services": "完全個室の猫専用ホテル（池尻）",
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "お泊り中の猫ちゃんのお写真、または、動画をメールにて送らせていただきます",
+     "src": "https://www.necomama.com/howto/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "猫ちゃんのワクチン証明書",
+     "src": "https://www.necomama.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "22東京都保第002019号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "東京都",
+     "until": "2028-03-13",
+     "by": "site",
+     "src": "https://www.necomama.com/access/",
+     "quote": "22東京都保第002019号",
+     "registry": {
+      "name": "東京都",
+      "asof": "2026-10-01",
+      "page": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html"
+     }
+    }
+   }
   },
   {
    "id": "PH044",
@@ -633,7 +1679,16 @@
    "cat": true,
    "pickup": true,
    "night_staff": true,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "night": {
+     "v": "夜もスタッフがいる",
+     "quote": "夜間もスタッフが常駐しておりますので",
+     "src": "https://www.dogsalon-donny.com/%E3%83%9A%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB/",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH045",
@@ -647,7 +1702,30 @@
    "services": "ドッグホテル、ドッグパーク、ドッグナーシング",
    "senior": true,
    "night_staff": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "visit": {
+     "v": "見学できる",
+     "quote": "会員登録前に施設を見学いただく事も可能です",
+     "src": "https://www.wancott.com/doghotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "trial": {
+     "v": "お試しの預かり",
+     "quote": "お泊り本番前には慣らし練習をお願",
+     "src": "https://www.wancott.com/faq/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内の混合ワクチン接種証明書(5種以上)",
+     "src": "https://www.wancott.com/faq/",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH046",
@@ -662,7 +1740,26 @@
    "cat": true,
    "vet": true,
    "large_basis": "料金表",
-   "large_from_kg": 20
+   "large_from_kg": 20,
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "１年以内のワクチン接種と１ヶ月以内のノミ・ダニ駆除剤(動物医薬品)の投与を確認させていただきます",
+     "src": "https://www.kayama-ah.jp/14892399984009",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "相模原市指令(生衛)第201-00220号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "相模原市",
+     "until": "2027-04-09",
+     "by": "site",
+     "src": "https://www.kayama-ah.jp/14892399984009",
+     "quote": "相模原市指令(生衛)第201-00220号"
+    }
+   }
   },
   {
    "id": "PH047",
@@ -690,7 +1787,16 @@
    "url": "https://www.nekocafe-leon.com/cat-hotel",
    "cat_only": true,
    "services": "猫カフェが営む猫専用のペットホテル。10歳以上は要相談",
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "１年以内に摂取したワクチン証明書",
+     "src": "https://www.nekocafe-leon.com/cat-hotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH049",
@@ -705,7 +1811,54 @@
    "pickup": true,
    "camera": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "お泊まり中は毎日猫ちゃんの様子をお写真・動画を添",
+     "src": "https://nekobeya.pechika.jp/houses/kannai.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "ウェブカメラ完備でお泊まり中は24時間いつでもチェック",
+     "src": "https://nekobeya.pechika.jp/houses/kannai.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "全店舗で見学いただけます",
+     "src": "https://nekobeya.pechika.jp/faq",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "trial": {
+     "v": "お試しの預かり",
+     "quote": "はじめてで不安な場合は、日帰りや1泊のお試し利用もご相",
+     "src": "https://nekobeya.pechika.jp/faq",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンの証明書を確認させていただいております",
+     "src": "https://nekobeya.pechika.jp/houses/kannai.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "30-0434",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "横浜市",
+     "until": "2029-07-04",
+     "by": "site",
+     "src": "https://nekobeya.pechika.jp/houses/kannai.html",
+     "quote": "登録番号： 30-0434"
+    }
+   }
   },
   {
    "id": "PH050",
@@ -718,7 +1871,40 @@
    "cat_only": true,
    "services": "オーナー宅の約6畳の個室を1家族で貸切。ケージレス。LINEで写真・動画の報告",
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "night": {
+     "v": "夜もスタッフがいる",
+     "quote": "夜間も同じ建物にいます",
+     "src": "https://cats-carlton.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "写真や動画で滞在中の様子をこまめに報告",
+     "src": "https://cats-carlton.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "見守りカメラによる見守り",
+     "src": "https://cats-carlton.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "10-0244",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "横浜市",
+     "until": "2030-01-30",
+     "by": "site",
+     "src": "https://cats-carlton.com/",
+     "quote": "登録番号：10-0244"
+    }
+   }
   },
   {
    "id": "PH051",
@@ -732,7 +1918,19 @@
    "services": "ねこ専門クリニックが運営する完全個室のホテル。体調に気になる点があれば獣医師が診察",
    "vet": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "reg": {
+     "no": "10-061",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "横浜市",
+     "until": "2027-07-17",
+     "by": "site",
+     "src": "https://yokoneko.net/hotel/",
+     "quote": "登録番号 / 10-061"
+    }
+   }
   },
   {
    "id": "PH052",
@@ -746,7 +1944,30 @@
    "services": "ドッグホテル、専用ドッグラン",
    "night_staff": true,
    "run": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "night": {
+     "v": "夜もスタッフがいる",
+     "quote": "丸塚本店は毎日夜もスタッフが専属で常駐しております",
+     "src": "https://www.hostfamily2012.com/doghotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "24時間ウェブカメラでにゃんこの様子をお届け中です",
+     "src": "https://www.hostfamily2012.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン接種が済んでいることが確認できるもの（必須）",
+     "src": "https://www.hostfamily2012.com/doghotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH053",
@@ -772,7 +1993,23 @@
    "large": true,
    "services": "ペットホテル（犬・猫）",
    "cat": true,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "宿泊中の写真または",
+     "src": "https://www.pet-onelove.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "１年以内のワクチン接種証明書・狂犬病予",
+     "src": "https://www.pet-onelove.com/hotel/page238.php",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH055",
@@ -784,7 +2021,17 @@
    "url": "https://ichigomilk-salon.jp/hotel/",
    "cat_only": true,
    "services": "猫専用ホテル。他のお宅の犬・猫と接触しない",
-   "cat": true
+   "cat": true,
+   "trust": {
+    "reg": {
+     "no": "第220111008号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "by": "site",
+     "src": "https://ichigomilk-salon.jp/salon-sena",
+     "quote": "保管：第220111008号"
+    }
+   }
   },
   {
    "id": "PH056",
@@ -799,7 +2046,23 @@
    "senior": true,
    "camera": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "24時間ウェブカメラでにゃんこの様子をお届け中です",
+     "src": "https://www.hostfamily2012.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン接種が済んでいることが確認できるもの（必須）",
+     "src": "https://www.hostfamily2012.com/cathotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH057",
@@ -826,7 +2089,31 @@
    "services": "ドッグホテル、老犬介護",
    "senior": true,
    "night_staff": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "night": {
+     "v": "夜もスタッフがいる",
+     "quote": "24時間スタッフ",
+     "src": "https://doghotel-noa.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "ぜひ一度見学にいらしてください",
+     "src": "https://doghotel-noa.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "第031128号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "by": "site",
+     "src": "https://doghotel-noa.com/about/",
+     "quote": "第031128号"
+    }
+   }
   },
   {
    "id": "PH059",
@@ -841,7 +2128,24 @@
    "cat": true,
    "pickup": true,
    "senior": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "・狂犬病予防接種証明書 ・混合ワクチン接種証明書 をご持参ください",
+     "src": "https://dogcatcoco.net/first-trimming-nagoya-trimmingsalon",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "第031132号",
+     "checked": "2026-11-16",
+     "until": "2027-02-23",
+     "by": "site",
+     "src": "https://dogcatcoco.net/shop/",
+     "quote": "第031132"
+    }
+   }
   },
   {
    "id": "PH060",
@@ -854,7 +2158,25 @@
    "large": true,
    "services": "ペットホテル、ドッグラン",
    "run": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "狂犬病ワクチンの接種を証明できるもの（１年以内に接種したもの）",
+     "src": "https://e-rm.co.jp/shop/okazaki/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "20動第1002-1号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "until": "2028-04-03",
+     "by": "site",
+     "src": "https://e-rm.co.jp/shop/okazaki",
+     "quote": "20動第1002-1号"
+    }
+   }
   },
   {
    "id": "PH061",
@@ -869,7 +2191,25 @@
    "cat": true,
    "vet": true,
    "run": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "過去１年以内の狂犬病および混合ワクチンの接種証明書をお持ちください",
+     "src": "https://oi-anihos.com/free/hotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "動尾第1384号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "until": "2030-03-12",
+     "by": "site",
+     "src": "https://oi-anihos.com/free/hotel",
+     "quote": "動尾第1384号"
+    }
+   }
   },
   {
    "id": "PH062",
@@ -898,7 +2238,25 @@
    "vet": true,
    "senior": true,
    "run": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "狂犬病、混合ワクチン（一年以内）、ノミ、ダニ予防の実施が証明できる書類",
+     "src": "https://www.kanakubo-vet.com/pethotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "動本第928号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "until": "2029-03-26",
+     "by": "site",
+     "src": "https://www.kanakubo-vet.com/pethotel/",
+     "quote": "動本第928号"
+    }
+   }
   },
   {
    "id": "PH064",
@@ -915,7 +2273,61 @@
    "camera": true,
    "night_staff": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "提携の動物病院あり",
+     "quote": "当社提携の動物病",
+     "src": "https://nekobeya.pechika.jp/houses/nagoya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子をLINEで報告",
+     "quote": "お預けの間毎日猫ちゃんの様子をお写真を添えてLIN",
+     "src": "https://nekobeya.pechika.jp/houses/nagoya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "ウェブカメラを全室完備",
+     "src": "https://nekobeya.pechika.jp/houses/nagoya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学いただけます。見学は事前予約制",
+     "src": "https://nekobeya.pechika.jp/houses/nagoya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "trial": {
+     "v": "お試しの預かり",
+     "quote": "はじめてで不安な場合は、日帰りや1泊のお試し利用もご相",
+     "src": "https://nekobeya.pechika.jp/houses/nagoya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンの証明書を確認させていただいております",
+     "src": "https://nekobeya.pechika.jp/houses/nagoya.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "動保護第300687号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "名古屋市",
+     "until": "2028-05-27",
+     "by": "site",
+     "src": "https://nekobeya.pechika.jp/houses/nagoya.html",
+     "quote": "動保護第300687号"
+    }
+   }
   },
   {
    "id": "PH065",
@@ -931,7 +2343,30 @@
    "camera": true,
    "night_staff": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "室内にWEBカメラを設置し",
+     "src": "https://www.cat-jasmine.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "キャットホテルの見学の際、お電話での事前予約が必要です",
+     "src": "https://www.cat-jasmine.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチンの証明書（1年以内の証明書をご持参ください）",
+     "src": "https://www.cat-jasmine.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH066",
@@ -947,7 +2382,23 @@
    "camera": true,
    "night_staff": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "night": {
+     "v": "夜もスタッフがいる",
+     "quote": "資格を有するスタッフが２４時間常駐",
+     "src": "https://www.nekohotel.jp/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン接種証明書等",
+     "src": "https://www.nekohotel.jp/howto.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH067",
@@ -961,7 +2412,25 @@
    "services": "1部屋1家族。常駐シッターが夜間も見守り。15才以上は断る場合あり",
    "night_staff": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "3種もしくは5種混合ワクチンの接種証明書（３年以内のもの）",
+     "src": "https://sites.google.com/view/moffmate/home",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "動尾第1641号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "until": "2028-03-05",
+     "by": "site",
+     "src": "https://sites.google.com/view/moffmate/home",
+     "quote": "動尾第1641号"
+    }
+   }
   },
   {
    "id": "PH068",
@@ -975,7 +2444,16 @@
    "services": "ペットホテル、送迎、介護用品",
    "pickup": true,
    "max_kg": 30,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内の狂犬病と5種以上のワクチン接種の証明が必要となります",
+     "src": "https://www.dogandlife.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH069",
@@ -1002,7 +2480,33 @@
    "large": true,
    "services": "ペットホテル、送迎",
    "pickup": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "ホテルにはWEBカメラ",
+     "src": "https://www.atto-dog.com/hotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン証明書（1年以内のもの）",
+     "src": "https://www.atto-dog.com/flow",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "京都市登録第060202号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "京都市",
+     "until": "2027-03-26",
+     "by": "site",
+     "src": "https://www.atto-dog.com/about",
+     "quote": "京都市登録第060202号"
+    }
+   }
   },
   {
    "id": "PH071",
@@ -1014,7 +2518,26 @@
    "url": "https://www.nekorusukyoto.com/",
    "cat_only": true,
    "services": "二条の猫に特化したホテル（シッターは他の動物も）",
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内かつ1週間間以上前のワクチン接種証明書",
+     "src": "https://www.nekorusukyoto.com/cathotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "京都市登録第180001号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "京都市",
+     "until": "2028-03-31",
+     "by": "site",
+     "src": "https://www.nekorusukyoto.com/",
+     "quote": "京都市登録第180001号"
+    }
+   }
   },
   {
    "id": "PH072",
@@ -1027,7 +2550,23 @@
    "separate": "他のペットと分けた猫専用のスペース",
    "services": "病気・高齢の子、薬が必要な子も事前相談で預かり",
    "senior": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "預かり中の様子を報告",
+     "quote": "お泊り中に気づいた点やペットの様子を飼い主様にお伝えいたします",
+     "src": "https://wanwanhouse.kyoto.jp/guide",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン接種証明書をお持ちいただく必要があります",
+     "src": "https://wanwanhouse.kyoto.jp/guide",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH073",
@@ -1039,7 +2578,16 @@
    "url": "https://intopet.jp/retonowa/pet-hotel/",
    "large": true,
    "services": "ペットホテル（一時預かり・お泊り）",
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "お泊まり中の様子は写真付きのメールでリアルタ",
+     "src": "https://intopet.jp/retonowa/flow/",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH074",
@@ -1069,7 +2617,22 @@
    "cat": true,
    "vet": true,
    "max_kg": 50,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "reg": {
+     "no": "01608-2",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "大阪府",
+     "by": "registry",
+     "src": "https://www.pref.osaka.lg.jp/o120200/doaicenter/doaicenter/gyoushakoukai.html",
+     "registry": {
+      "name": "大阪府",
+      "asof": "2026-10-17",
+      "page": "https://www.pref.osaka.lg.jp/o120200/doaicenter/doaicenter/gyoushakoukai.html"
+     }
+    }
+   }
   },
   {
    "id": "PH076",
@@ -1096,7 +2659,40 @@
    "url": "https://scatworks.com/hotel/",
    "cat_only": true,
    "services": "犬などのいない猫専用ホテル。個別ケージ。朝晩LINEで写真",
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "様子をLINEで報告",
+     "quote": "朝晩のLINE報告で",
+     "src": "https://scatworks.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学可能です。（予約不要）",
+     "src": "https://scatworks.com/faq/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "3 年以内に 3 種混",
+     "src": "https://scatworks.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "240146B",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "大阪市",
+     "until": "2030-02-19",
+     "by": "site",
+     "src": "https://scatworks.com/company/",
+     "quote": "保管/240146B"
+    }
+   }
   },
   {
    "id": "PH078",
@@ -1109,7 +2705,32 @@
    "cat_only": true,
    "services": "完全個室の猫専用ホテル",
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "様子をLINEで報告",
+     "quote": "LINEからのみ1日1回画像等送信させていただきます",
+     "src": "https://www.sweet-dandelion.com/cat-hotel/お預かりできない猫ちゃんについて/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "3種混合ワクチン接種証",
+     "src": "https://www.sweet-dandelion.com/cat-hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "170061B",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "大阪市",
+     "by": "site",
+     "src": "https://www.sweet-dandelion.com/cat-hotel/",
+     "quote": "170061Ａ/170061B"
+    }
+   }
   },
   {
    "id": "PH079",
@@ -1122,7 +2743,23 @@
    "cat_only": true,
    "services": "完全個室の猫専用ホテル。朝晩2回LINEで様子を配信",
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "様子をLINEで報告",
+     "quote": "お泊り中の猫ちゃんの様子をLINE@にて朝晩2回配信します",
+     "src": "http://nyankonchi.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "3年以内のワクチン接種3種証明書",
+     "src": "http://nyankonchi.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH080",
@@ -1135,7 +2772,16 @@
    "separate": "犬とは完全に別の猫用ホテル",
    "services": "動物病院のホテル。獣医師による無料健康チェック",
    "vet": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内の混合ワクチン接種および1カ月以内のノミダニ予防をきちんと行っている場合に限らせていただきます",
+     "src": "https://uehommachi-animal.com/pethotel-2.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH081",
@@ -1149,7 +2795,26 @@
    "services": "患者さま専用。獣医師と病院スタッフがお世話。病気・投薬が必要な子・シニアも可",
    "vet": true,
    "senior": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン・狂犬病接種証明書",
+     "src": "https://www.umedaeast-ah.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "160112B",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "大阪市",
+     "until": "2027-02-05",
+     "by": "site",
+     "src": "https://www.umedaeast-ah.com/hotel/",
+     "quote": "登録番号 160112B 保管"
+    }
+   }
   },
   {
    "id": "PH082",
@@ -1164,7 +2829,25 @@
    "vet": true,
    "senior": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "他院でワクチン接種を受けられている方は証明書が必要となりま",
+     "src": "https://www.yuunagiah.com/pethotel/index.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "120001B",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "大阪市",
+     "by": "site",
+     "src": "https://www.yuunagiah.com/pethotel/index.html",
+     "quote": "登録番号 120001B"
+    }
+   }
   },
   {
    "id": "PH083",
@@ -1178,7 +2861,39 @@
    "services": "8泊以上の長期専門の猫の預かり。個室。シニア・投薬の相談可",
    "senior": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "night": {
+     "v": "夜もスタッフがいる",
+     "quote": "24時間在住し",
+     "src": "https://cat-funfun.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子をLINEで報告",
+     "quote": "毎日のLINE報告",
+     "src": "https://cat-funfun.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "事前の施設見学や面談も承っております",
+     "src": "https://cat-funfun.com/flow/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "第2913-2号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "until": "2030-10-15",
+     "by": "site",
+     "src": "https://cat-funfun.com/",
+     "quote": "保管（第2913-2号"
+    }
+   }
   },
   {
    "id": "PH084",
@@ -1191,7 +2906,25 @@
    "large": true,
    "services": "ペットホテル（犬・猫）、トリミング",
    "cat": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "「混合ワクチン接種証明書（5種以上",
+     "src": "https://www.sheraton-kobe.co.jp/dog/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "神保保0119008号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "神戸市",
+     "by": "site",
+     "src": "https://www.sheraton-kobe.co.jp/dog/",
+     "quote": "神保保0119008号（保管業）"
+    }
+   }
   },
   {
    "id": "PH085",
@@ -1204,7 +2937,44 @@
    "large": true,
    "services": "ペットホテル、ドッグラン",
    "run": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "night": {
+     "v": "夜もスタッフがいる",
+     "quote": "自宅型なので夜も人がいて安心",
+     "src": "https://www.wanwanhotelkobe.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "1日の様子を夜に写真や動画でご報告いたします",
+     "src": "https://www.wanwanhotelkobe.com/pethotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "初めてのお客様は事前のご見学が必要です",
+     "src": "https://www.wanwanhotelkobe.com/pethotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "trial": {
+     "v": "お試しの預かり",
+     "quote": "1泊のお試しお預りをお願いしております",
+     "src": "https://www.wanwanhotelkobe.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "わんちゃんのワクチン証明書",
+     "src": "https://www.wanwanhotelkobe.com/pethotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH086",
@@ -1219,7 +2989,26 @@
    "cat": true,
    "vet": true,
    "max_kg": 50,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "visit": {
+     "v": "見学できる",
+     "quote": "お部屋は事前に見学していただくことも可能です",
+     "src": "https://www.takeda-ah.com/pet/pethotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "神保保第0718012号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "神戸市",
+     "until": "2029-03-07",
+     "by": "site",
+     "src": "https://www.takeda-ah.com/pet/pethotel/",
+     "quote": "神保保第0718012号"
+    }
+   }
   },
   {
    "id": "PH087",
@@ -1234,7 +3023,26 @@
    "cat": true,
    "vet": true,
    "max_kg": 45,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンの証明書をご持参の上",
+     "src": "https://dongrinomori.com/hotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "神保保第0118010号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "神戸市",
+     "until": "2028-12-10",
+     "by": "site",
+     "src": "https://dongrinomori.com/hotel",
+     "quote": "神保保第0118010号"
+    }
+   }
   },
   {
    "id": "PH088",
@@ -1248,7 +3056,19 @@
    "services": "動物病院のペットホテル（犬・猫）",
    "cat": true,
    "vet": true,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "reg": {
+     "no": "神保保第0712001号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "神戸市",
+     "until": "2027-05-06",
+     "by": "site",
+     "src": "https://www.tamura-ah.jp/%E3%83%9A%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB",
+     "quote": "神保保第0712001号"
+    }
+   }
   },
   {
    "id": "PH089",
@@ -1277,7 +3097,16 @@
    "pickup": true,
    "night_staff": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "証明書のご提示出来ない場合不可",
+     "src": "https://nekomori-kobe.com/",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH091",
@@ -1292,7 +3121,40 @@
    "senior": true,
    "camera": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "LINE(写真付き)でお知らせ",
+     "src": "http://www.kuschel-groomers.com/hotel-cat.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "外出先からもペットの様子が見られます",
+     "src": "http://www.kuschel-groomers.com/hotel-cat.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "営業時間前の8:30のみご見学いただけます",
+     "src": "http://www.kuschel-groomers.com/hotel-cat.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "姫路市保管 第217-188号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "姫路市",
+     "until": "2027-10-22",
+     "by": "site",
+     "src": "http://www.kuschel-groomers.com/hotel-cat.html",
+     "quote": "姫路市保管 第217-188号"
+    }
+   }
   },
   {
    "id": "PH092",
@@ -1350,7 +3212,16 @@
    "services": "ペットホテル（犬・猫）、送迎",
    "cat": true,
    "pickup": true,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン証明書・慣れているエサ",
+     "src": "https://pet-charmant.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH096",
@@ -1363,7 +3234,16 @@
    "cat_only": true,
    "services": "猫専門病院のホテル（広いゲージ4部屋・猫棚あり）。初めての方は事前に受診",
    "vet": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンの接種、ノミ・ダニ予防をお願いしています",
+     "src": "https://cat-clinic-hiroshima.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH097",
@@ -1432,7 +3312,29 @@
    "services": "ペットホテル（犬・猫）、送迎、トリミング",
    "cat": true,
    "pickup": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "visit": {
+     "v": "見学できる",
+     "quote": "見学はできますが、事前にご連絡頂き",
+     "src": "https://eightwan.wixsite.com/8wan/qa",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "第07118号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "北九州市",
+     "by": "registry",
+     "src": "https://www.city.kitakyushu.lg.jp/contents/18500074.html",
+     "registry": {
+      "name": "北九州市",
+      "asof": "2026-09-30",
+      "page": "https://www.city.kitakyushu.lg.jp/contents/18500074.html"
+     }
+    }
+   }
   },
   {
    "id": "PH102",
@@ -1447,7 +3349,18 @@
    "cat": true,
    "vet": true,
    "senior": true,
-   "large_basis": "料金表"
+   "large_basis": "料金表",
+   "trust": {
+    "reg": {
+     "no": "E2301010号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "福岡市",
+     "by": "site",
+     "src": "https://midorigaoka.vet/pethotel",
+     "quote": "E2301010号"
+    }
+   }
   },
   {
    "id": "PH103",
@@ -1460,7 +3373,23 @@
    "large": true,
    "services": "ペットホテル、送迎（福岡市内無料）",
    "pickup": true,
-   "large_basis": "文"
+   "large_basis": "文",
+   "trust": {
+    "night": {
+     "v": "夜もスタッフがいる",
+     "quote": "専任のスタッフが常駐させて頂だいております",
+     "src": "http://rankin-dog.com/pethotel_faq.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内の混合ワクチン接種証明書（5種以上）",
+     "src": "http://rankin-dog.com/pethotel_faq.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH104",
@@ -1476,7 +3405,61 @@
    "senior": true,
    "camera": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "提携の動物病院あり",
+     "quote": "近隣には提携の",
+     "src": "https://nekobeya.pechika.jp/houses/fukuoka_jyonan.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "私達もお写真",
+     "src": "https://nekobeya.pechika.jp/houses/fukuoka_jyonan.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "24時間いつでも外出先からスマートフォンのアプリで愛猫の様子が確認できます",
+     "src": "https://nekobeya.pechika.jp/houses/fukuoka_jyonan.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "全店舗で見学いただけます",
+     "src": "https://nekobeya.pechika.jp/faq",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "trial": {
+     "v": "お試しの預かり",
+     "quote": "はじめてで不安な場合は、日帰りや1泊のお試し利用もご相",
+     "src": "https://nekobeya.pechika.jp/faq",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンの証明書を確認させていただいております",
+     "src": "https://nekobeya.pechika.jp/houses/fukuoka_jyonan.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "E0601046号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "福岡市",
+     "until": "2029-09-08",
+     "by": "site",
+     "src": "https://nekobeya.pechika.jp/houses/fukuoka_jyonan.html",
+     "quote": "登録番号： E0601046号"
+    }
+   }
   },
   {
    "id": "PH105",
@@ -1492,7 +3475,51 @@
    "senior": true,
    "camera": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vet": {
+     "v": "提携の動物病院あり",
+     "quote": "近隣には提携の",
+     "src": "https://nekobeya.pechika.jp/houses/fukuoka_minami.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "私達もお写真",
+     "src": "https://nekobeya.pechika.jp/houses/fukuoka_minami.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "24時間いつでも外出先からスマートフォンのアプリで愛猫の様子が確認できます",
+     "src": "https://nekobeya.pechika.jp/houses/fukuoka_minami.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "全店舗で見学いただけます",
+     "src": "https://nekobeya.pechika.jp/faq",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "trial": {
+     "v": "お試しの預かり",
+     "quote": "はじめてで不安な場合は、日帰りや1泊のお試し利用もご相",
+     "src": "https://nekobeya.pechika.jp/faq",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "混合ワクチンの証明書を確認させていただいております",
+     "src": "https://nekobeya.pechika.jp/houses/fukuoka_minami.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH106",
@@ -1506,7 +3533,47 @@
    "services": "キャットシッターの自宅を改装した4〜6畳の完全個室（3室）。送迎オプションあり",
    "pickup": true,
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "お世話中の様子を写真",
+     "src": "https://fukuneco.jp/cat-hotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "camera": {
+     "v": "カメラで様子を見られる",
+     "quote": "見守りWebカメラ（常時）",
+     "src": "https://fukuneco.jp/cat-hotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "visit": {
+     "v": "見学できる",
+     "quote": "ホテル事前見学のご希望",
+     "src": "https://fukuneco.jp/cat-hotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内の日付のワクチン接種証明書（コピー可）",
+     "src": "https://fukuneco.jp/cat-hotel/tos",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "reg": {
+     "no": "第E0601082号",
+     "kind": "保管",
+     "checked": "2026-11-16",
+     "auth": "福岡市",
+     "until": "2030-04-02",
+     "by": "site",
+     "src": "https://fukuneco.jp/cat-hotel",
+     "quote": "第E0601082号"
+    }
+   }
   },
   {
    "id": "PH107",
@@ -1519,7 +3586,16 @@
    "separate": "猫専用ホテル（個室）・猫専用プレミアホテル",
    "services": "ペットホテル・トリミング店の各店に猫専用の個室ホテル",
    "private_room": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "一年以内のワクチン接種の証明書をご提示ください",
+     "src": "https://b-spa.co.jp/nekohotel.html",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   },
   {
    "id": "PH108",
@@ -1532,7 +3608,23 @@
    "cat_only": true,
    "services": "譲渡型保護猫カフェの猫専用ホテル。シニア猫の受け入れ実績多数。投薬は事前相談（点滴・注射は不可）",
    "senior": true,
-   "cat": true
+   "cat": true,
+   "trust": {
+    "report": {
+     "v": "様子を写真で報告",
+     "quote": "毎日の様子を写真や動画で報告",
+     "src": "https://www.pucocnchi.com/hotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    },
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "2年以内のワクチン接種証明書（原本）",
+     "src": "https://www.pucocnchi.com/hotel",
+     "by": "site",
+     "checked": "2026-11-16"
+    }
+   }
   }
  ]
 }
