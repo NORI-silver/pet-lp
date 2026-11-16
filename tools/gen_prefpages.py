@@ -30,14 +30,15 @@ def pref_nav(cat, e, rows, regions, cur=None):
     for lab, prefs in regions:
         ls = [f'<a href="{href(cat, pf)}">{e(pf)}（{len(rows[pf])}）</a>' if pf != cur else f'<b>{e(pf)}（{len(rows[pf])}）</b>' for pf in prefs if pf in rows]
         if ls: out += f'<p class="pp-nav"><span>{e(lab)}</span>{" ".join(ls)}</p>'
-    return f'<div class="emg-tips"><h4>都道府県ごとの{e(cat["name"])}</h4>{out}</div>'
+    # 47県のリンクは何画面も使うので折りたたむ（AGENTS.md「品質の決まり」B5、Nori 2026-11-16）
+    return f'<details class="emg-tips pp-fold"><summary><b>都道府県ごとの{e(cat["name"])}</b></summary>{out}</details>'
 
 def _region_of(pf, regions):
     for lab, prefs in regions:
         if pf in prefs: return lab, prefs
     return "", []
 
-CSS = "<style>.emg .tbl{overflow-x:auto;max-width:100%}.pp-nav{margin:4px 0;line-height:1.9}.pp-nav span{display:inline-block;min-width:5em;font-weight:bold;margin-right:6px}.pp-nav a,.pp-nav b{margin-right:10px;white-space:nowrap}.pp-facts{margin:6px 0 10px;padding-left:1.2em}.pp-tbl th,.pp-tbl td{font-size:13px;padding:4px 6px;text-align:center;white-space:nowrap}.pp-tbl td:first-child,.pp-tbl th:first-child{text-align:left;white-space:normal;min-width:9em}.pp-ans{font-size:inherit}.pp-ans .answer{margin:0 0 14px}.pp-ans>ul{margin:0 0 14px;padding-left:1.2em;line-height:1.8}</style>"
+CSS = "<style>.pp-fold summary{cursor:pointer;padding:4px 0}.pp-fold summary b{font-size:1rem}.emg .tbl{overflow-x:auto;max-width:100%}.pp-nav{margin:4px 0;line-height:1.9}.pp-nav span{display:inline-block;min-width:5em;font-weight:bold;margin-right:6px}.pp-nav a,.pp-nav b{margin-right:10px;white-space:nowrap}.pp-facts{margin:6px 0 10px;padding-left:1.2em}.pp-tbl th,.pp-tbl td{font-size:13px;padding:4px 6px;text-align:center;white-space:nowrap}.pp-tbl td:first-child,.pp-tbl th:first-child{text-align:left;white-space:normal;min-width:9em}.pp-ans{font-size:inherit}.pp-ans .answer{margin:0 0 14px}.pp-ans>ul{margin:0 0 14px;padding-left:1.2em;line-height:1.8}</style>"
 
 def table_html(e, cat, rs):
     """条件を1つの表でくらべる（○＝公式サイトに書いてある、空欄＝書いていない／分からない）。"""
@@ -50,7 +51,7 @@ def table_html(e, cat, rs):
 
 
 # [B] 2026-11-14 Nori「薄い記事は撲滅させてね。全部濃い記事にして」：一覧のデータに facts（k・v・src・checked、料金は yen・min・tax）が
-# ある店・施設は、県のページに「料金・条件をくらべる」表と、料金の棒を出す。公式サイトに書いてあることだけ。書いていない項目は「—」。
+# ある店・施設は、県のページに「料金・条件をくらべる」表と、料金の棒を出す。公式サイトの情報だけ。書いていない項目は「—」。
 def _fv(it, k):
     for f in it.get("facts", []):
         if f["k"] == k: return f
@@ -177,10 +178,10 @@ def render_pref(ctx, cat, pf, rows):
     {answer_html(e, cat, pf, rs, faq, facts)}
     <div class="emg">
       <p class="emg-free">{e(cat.get("free", "この一覧は無料の情報です。事業者からお金をもらっていません。おすすめ順や点数順ではありません。" + ("料金は公式サイトに書いてあるものだけを、情報の時点つきで載せています。" if any(it.get("facts") for it in rs) else "料金は載せていないので、それぞれに直接おたずねください。")))}</p>
-      {fact_table_html(e, cat, pf, rs)}
       {cat["extra"](e, pf) if cat.get("extra") else ""}
       {cat["fac_chips"](e, pf) + chr(10) + "      " if cat.get("fac_chips") else ""}<section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(cat.get("list_h", name))}（{e(pf)}・{n}{e(unit)}）</h2>{cards}</section>
       {table_html(e, cat, rs)}
+      {fact_table_html(e, cat, pf, rs)}
       {cat["extra_after"](e, pf) if cat.get("extra_after") else ""}
       {near_html}
       <div class="emg-tips"><h4>{e(cat['before_title'])}</h4><dl>{"".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in cat['before'])}</dl></div>

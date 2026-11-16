@@ -4,7 +4,7 @@
 # 同日「網羅性弱すぎ。ドッグランは公営以外も。一覧表は一覧でいいけど、記事も拡充してね」で、民間（お店・商業施設・レジャー施設）と
 # 高速道路のSA・PAのドッグラン（kind）と、記事（ARTICLES）を足した。
 # 守ること：順位・おすすめなし。電話番号なし。
-# 公式ページに書いてあることだけ書く（書いていない項目は出さない）。データ：tools/dogrun.json（src は参考にした公式ページ）。
+# 公式ページの情報だけ書く（書いていない項目は出さない）。データ：tools/dogrun.json（src は参考にした公式ページ）。
 import json, os, re
 from urllib.parse import quote
 import prefkeep
@@ -228,7 +228,7 @@ def _cost_examples(e):
 
 
 # [B] 2026-11-03「中身の薄いページを充実させる」：記事に、一覧のデータ（公式ページに書いてある各ランの項目）を数えた表を足す。
-# 数えるのは公式ページに書いてあることだけ。書いていないランは分母に入れない（「書いていない」は「しない」ではない）。
+# 数えるのは公式ページの情報だけ。書いていないランは分母に入れない（「書いていない」は「しない」ではない）。
 _KCOLS = [("公営", "公営"), ("民間", "お店・施設"), ("高速道路", "SA・PA")]
 def _cnt(rs, field, pat):
     w = [d for d in rs if d.get(field)]
@@ -392,7 +392,7 @@ ARTICLES = [
  {"slug": "survey", "short": "全国のドッグランしらべ",
   "title": lambda: f"全国のドッグランしらべ{TOTAL}か所｜無料は{_pct(nfree(RUNS), sum(1 for d in RUNS if fee_tag(d)))}・登録やワクチンの条件を数えました",
   "desc": lambda: f"載せている全国のドッグラン{TOTAL}か所の料金・利用登録・ワクチンの条件・小型犬エリアを、公営・お店や施設・高速道路のSA・PAごとに数えました。都道府県ごとの数の表と、データの引用のしかたも。",
-  "lede": "「ドッグランって無料なの？」「登録はいるの？」に、全国のドッグランの公式ページを1つずつ読んで数えた数字で答えます。数字は一覧のデータから自動で数えていて、ドッグランを足すとこのページも変わります。",
+  "lede": "「ドッグランって無料なの？」「登録はいるの？」に、全国のドッグランの数字で答えます。",
   "list": None,
   "body": lambda e: _survey_body(e, SURVEY_ORDER)},
 ]
@@ -413,7 +413,7 @@ def _survey_body(e, order):
     nfee = sum(1 for d in RUNS if fee_tag(d)); nreg = sum(1 for d in RUNS if reg_tag(d)); nsz = sum(1 for d in RUNS if d.get("size"))
     nv, nvw = _cnt(RUNS, "need", r"混合|[0-9]種")
     cite = "ペットタクシー予約窓口「全国のドッグランしらべ（2026年11月）」https://pet.shiokonbu.com/dogrun/survey/"
-    return (_p(f'<b>まとめ</b>：公式ページに書いてある全国のドッグラン{TOTAL}か所（{len(BY)}都道府県）をしらべました。利用料が無料なのは、料金を書いている{nfee}か所のうち{nfree(RUNS)}か所（{_pct(nfree(RUNS), nfee)}）。'
+    return (_p(f'<b>まとめ</b>：全国のドッグラン{TOTAL}か所（{len(BY)}都道府県）のうち、利用料が無料なのは、料金を書いている{nfee}か所のうち{nfree(RUNS)}か所（{_pct(nfree(RUNS), nfee)}）。'
                f'はじめに利用登録がいるのは、登録のことを書いている{nreg}か所のうち{nreg - nnoreg(RUNS)}か所（{_pct(nreg - nnoreg(RUNS), nreg)}）。小型犬のエリアがあるのは、エリアの区分を書いている{nsz}か所のうち{nsmall(RUNS)}か所（{_pct(nsmall(RUNS), nsz)}）。混合ワクチンの証明を求めるのは、必要なものを書いている{nvw}か所のうち{nv}か所（{_pct(nv, nvw)}）でした。')
             + _h("公営・お店や施設・高速道路のSA・PAでくらべる") + _kind_table(e)
             + _p(f"数字は「当てはまる数／その項目を公式ページに書いているランの数」です（{e(CHECKED)}時点）。公式ページに書いていないことは「しない」と数えず、分母から外しています。")

@@ -1,6 +1,6 @@
 # お金を取らない情報ページ「条件でさがす動物病院」（/hospital/）。gen_areas.py が読み込んで使う。
 # Nori 2026-11-02「病院は？全部マネタイズじゃなくていい。SEO的なコンテンツでもいい」「全国で」「口コミもつけて」。
-# 守ること：病院からお金をもらわない。順位や「おすすめ」をつけない。電話番号は載せない。公式サイトに書いてあることだけ書く。
+# 守ること：病院からお金をもらわない。順位や「おすすめ」をつけない。電話番号は載せない。公式サイトの情報だけ書く。
 # データ：夜間・救急＝tools/emergency.json（緊急タブと同じ）、往診・猫専門・エキゾチック・大型犬の設備＝tools/hospitals.json。
 import json, os, re
 import prefkeep
@@ -139,7 +139,7 @@ def _visit_answer(e, rows):
     rows_h = "".join(f'<tr><th scope="row">{e(h["name"])}<small>（{e(h["prefs"][0])}）</small></th><td>{cell(h, "往診料")}</td><td>{cell(h, "受付時間")}</td><td>{cell(h, "家でできること")}</td><td>{cell(h, "家でできないこと")}</td><td>{cell(h, "支払い方法")}</td></tr>' for h in tx)
     return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">往診の動物病院のポイント</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}</div>'
             f'<div class="emg-tips" style="margin-top:0"><h4>往診料・家でできること・できないことをくらべる（{len(tx)}院）</h4>'
-            '<p>公式サイトに書いてあることを写しました。金額は税込・税抜が病院ごとに違うので、そのままです。「—」は分からなかった項目です（「しない」という意味ではありません）。</p>'
+            '<p>公式サイトの情報を写しました。金額は税込・税抜が病院ごとに違うので、そのままです。「—」は分からなかった項目です（「しない」という意味ではありません）。</p>'
             f'<table><thead><tr><th>病院</th><th>往診料</th><th>受付時間</th><th>家でできること</th><th>家でできないこと</th><th>お支払い</th></tr></thead><tbody>{rows_h}</tbody></table></div>')
 
 def _cat_answer(e, rows):
@@ -164,7 +164,7 @@ def _cat_answer(e, rows):
     rows_h = "".join(f'<tr><th scope="row">{e(h["name"])}<small>（{e(h["prefs"][0])}）</small></th><td>{cell(h, "休診日")}</td><td>{cell(h, "予約のしかた")}</td><td>{cell(h, "猫にやさしい工夫")}</td><td>{cell(h, "設備")}</td><td>{cell(h, "駐車場")}</td></tr>' for h in tx)
     return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">猫専門の動物病院のポイント</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}</div>'
             f'<div class="emg-tips" style="margin-top:0"><h4>予約・猫にやさしい工夫・設備をくらべる（{len(tx)}院）</h4>'
-            '<p>公式サイトに書いてあることを短くしました。「—」は分からなかった項目です（「ない」という意味ではありません）。</p>'
+            '<p>公式サイトの情報を短くしました。「—」は分からなかった項目です（「ない」という意味ではありません）。</p>'
             f'<table><thead><tr><th>病院</th><th>休診日</th><th>予約</th><th>猫にやさしい工夫</th><th>設備</th><th>駐車場</th></tr></thead><tbody>{rows_h}</tbody></table></div>')
 
 def _spec_box(e, title, kv, tiles, cap, cols, tx):
@@ -176,7 +176,7 @@ def _spec_box(e, title, kv, tiles, cap, cols, tx):
     rows_h = "".join(f'<tr><th scope="row">{e(h["name"])}<small>（{e(h["prefs"][0])}）</small></th>' + "".join(f"<td>{e(fv(h, k)) or '—'}</td>" for _, k in cols) + "</tr>" for h in tx)
     return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">{e(title)}</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}</div>'
             f'<div class="emg-tips" style="margin-top:0"><h4>{e(cap)}（{len(tx)}院）</h4>'
-            '<p>公式サイトに書いてあることを短くしました。「—」は分からなかった項目です（「ない」という意味ではありません）。</p>'
+            '<p>公式サイトの情報を短くしました。「—」は分からなかった項目です（「ない」という意味ではありません）。</p>'
             f'<table><thead><tr><th>病院</th>{th}</tr></thead><tbody>{rows_h}</tbody></table></div>')
 
 def _exotic_answer(e, rows):

@@ -1,5 +1,5 @@
 {
- "_説明": "お金を取らない情報ページ（/hospital/）のデータ。Nori 2026-11-02「病院は？全部マネタイズじゃなくていい」「全国で」「口コミもつけて」。公式サイトに書いてあることだけ書く（確認日 checked）。電話番号は載せない。順位や評価はつけない。病院からお金はもらわない。夜間・救急の病院は tools/emergency.json を使う。往診は、往診獣医師協会の一覧（https://jhvca.main.jp/owner/）で見つけて公式サイトに書いてある。review_query・review_name は口コミ（緊急タブと同じしくみ、booking/Code.gs の EMG_REVIEWS）。 exotic＝エキゾチックアニマル専門、large＝大型犬の設備がある病院（どちらも公式サイトの記述）。",
+ "_説明": "お金を取らない情報ページ（/hospital/）のデータ。Nori 2026-11-02「病院は？全部マネタイズじゃなくていい」「全国で」「口コミもつけて」。公式サイトの情報だけ書く（確認日 checked）。電話番号は載せない。順位や評価はつけない。病院からお金はもらわない。夜間・救急の病院は tools/emergency.json を使う。往診は、往診獣医師協会の一覧（https://jhvca.main.jp/owner/）で見つけて公式サイトに書いてある。review_query・review_name は口コミ（緊急タブと同じしくみ、booking/Code.gs の EMG_REVIEWS）。 exotic＝エキゾチックアニマル専門、large＝大型犬の設備がある病院（どちらも公式サイトの記述）。",
  "checked": "2026年11月2日",
  "visit": [
   {
