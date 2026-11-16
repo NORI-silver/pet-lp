@@ -485,7 +485,7 @@ def render_article(ctx, a):
   <div class="wrap"><article class="art">
     {a["body"](e)}
     {lst}
-    <p class="emg-note">{e(CHECKED)}時点の、公式サイトに書いてある情報です。料金や決まりは変わることがあるので、行く前に必ずそれぞれの公式ページでご確認ください。掲載の内容の誤りや、載せてほしいドッグランは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+    <p class="emg-note">{e(CHECKED)}時点の情報です。料金や決まりは変わることがあるので、行く前に必ずそれぞれの公式ページでご確認ください。掲載の内容の誤りや、載せてほしいドッグランは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     <h2>ドッグランの記事</h2>
     {art_links(e, a["slug"])}
     <p><a href="/{SLUG}/">全国のドッグラン（都道府県の一覧）</a></p>
@@ -558,7 +558,7 @@ def render_hub(ctx):
       <div class="emg-tips"><h4>ドッグランの種類</h4><dl>{kinds}</dl><p class="emg-tips-note">くわしいちがいは「<a href="/{SLUG}/kouei-minkan/">公営と民間のドッグランのちがい</a>」にまとめています。</p></div>
       {guide_html(e)}
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
-      <p class="emg-note">{e(CHECKED)}時点の、公式サイトに書いてある情報です。工事やイベント、天気で閉まることがあり、利用の方法も変わることがあるので、行く前に必ずリンク先でご確認ください。掲載の内容の誤りや、載せてほしいドッグランは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+      <p class="emg-note">{e(CHECKED)}時点の情報です。工事やイベント、天気で閉まることがあり、利用の方法も変わることがあるので、行く前に必ずリンク先でご確認ください。掲載の内容の誤りや、載せてほしいドッグランは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
 </section>
@@ -655,7 +655,7 @@ def render_pref(ctx, pf, rs):
     <div class="tbl"><table class="dr-tbl"><thead><tr><th>ドッグラン（市町村）</th><th>種類</th><th>料金</th><th>登録</th></tr></thead><tbody>{table}</tbody></table></div>
     {guide_html(e)}
     <div class="emg-tips"><h4>{e(pf)}のドッグラン よくある質問</h4><dl>{faq_html}</dl></div>
-    <p class="emg-note">{e(CHECKED)}時点の、公式サイトに書いてある情報です。工事やイベント、天気で閉まることがあり、利用の方法や料金も変わることがあるので、行く前に必ずリンク先でご確認ください。掲載の内容の誤りや、載せてほしいドッグランは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+    <p class="emg-note">{e(CHECKED)}時点の情報です。工事やイベント、天気で閉まることがあり、利用の方法や料金も変わることがあるので、行く前に必ずリンク先でご確認ください。掲載の内容の誤りや、載せてほしいドッグランは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     <h2>ドッグランの記事</h2>
     {art_links(e)}
     <h2>ほかの地域のドッグラン</h2>

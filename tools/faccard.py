@@ -287,7 +287,7 @@ def build_card(card, conf, fit_by_name):
             tail.append(x); continue
         if tag == "a" and "emg-taxi" in cls:
             tail.append(x); continue
-        if conf["key"] == "joto" and ((tag == "p" and "jt-h" in cls and "公式ページに書いてあること" in t) or (tag == "ul" and "jt-c" in cls)):
+        if conf["key"] == "joto" and ((tag == "p" and "jt-h" in cls and "申し込みの条件" in t) or (tag == "ul" and "jt-c" in cls)):
             keep.append(x); continue
         more.append(x)
     # 見せる行：場所 → 料金 → 時間 → 動物 → 資格（4行まで）。のこりは「くわしく」
