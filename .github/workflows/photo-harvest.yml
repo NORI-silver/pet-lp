@@ -1,0 +1,43 @@
+# 事業者カードの写真の候補を、各事業者の公式サイトから集める（Nori 2026-11-16「事業者カードへの写真表示 実装指示」）。
+# tools/photo_harvest.py が公式サイトとサイトの決まり（著作権・サイトポリシー）を読み、使ってよいと書いてある写真だけを縮めて、
+# ブランチ photo-cand に置く（何も送らない・サイトは書き換えない）。採るかどうかは人が一覧を見て決め、tools/photo_import.py で入れる。
+name: photo-harvest
+on:
+  schedule:
+    - cron: '0 1 1 * *' # 毎月1日 10:00（日本時間）。決まりが変わったサイト・新しく載せた事業者を拾う
+  workflow_dispatch:
+    inputs:
+      cats:
+        description: '分野（空白区切り。空なら全部）'
+        type: string
+        default: ''
+  push:
+    branches: ['claude/**']
+    paths: ['tools/photo_harvest.py', '.github/workflows/photo-harvest.yml']
+permissions:
+  contents: write
+concurrency:
+  group: photo-harvest
+  cancel-in-progress: true
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q pillow
+      - name: 公式サイトを読む
+        run: |
+          python3 tools/photo_harvest.py out ${{ inputs.cats }}
+          cat out/summary.md >> "$GITHUB_STEP_SUMMARY"
+      - name: 候補をブランチ photo-cand に置く
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mv out /tmp/out
+          git checkout -q --orphan photo-cand
+          git rm -rq --cached . && git clean -fdq
+          cp -r /tmp/out/. .
+          git add -A
+          git commit -qm "事業者カードの写真の候補"
+          git push -q -f origin photo-cand
