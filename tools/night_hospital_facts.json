@@ -3148,9 +3148,9 @@
     },
     {
      "k": "来院前の連絡",
-     "v": "電話（順番の予約はできない）",
-     "src": "https://k1r4t3t0animalhospital.jp/",
-     "checked": "2026-11-14"
+     "v": "夜は直接行かず、必ず先に電話する（順番の予約はできない）。15分たっても折り返しがないときはほかの病院へ。電話のときに着く時間を伝える",
+     "src": "https://k1r4t3t0animalhospital.jp/how-to-visit/",
+     "checked": "2026-11-16"
     },
     {
      "k": "駐車場",
@@ -3174,6 +3174,24 @@
      "k": "アクセス",
      "v": "JR鹿児島本線「西熊本」駅から歩いて5分。熊本市立力合中学校のすぐ横",
      "src": "https://k1r4t3t0animalhospital.jp/",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "夜間の料金",
+     "v": "診療費に時間外の診察料が加わる。救急なので血液検査とレントゲンが基本。かかりつけの病院があれば紹介状の料金もかかる",
+     "src": "https://k1r4t3t0animalhospital.jp/how-to-visit/",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "支払い方法",
+     "v": "当日払い。現金・クレジットカード・ペット保険の窓口払い（アニコム・アイペット）",
+     "src": "https://k1r4t3t0animalhospital.jp/how-to-visit/",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "対象の動物",
+     "v": "主に犬・猫。エキゾチックアニマルは基本的に診ていない（相談はできる）",
+     "src": "https://k1r4t3t0animalhospital.jp/how-to-visit/",
      "checked": "2026-11-16"
     }
    ],
