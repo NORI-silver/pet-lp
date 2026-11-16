@@ -32,7 +32,7 @@ def checked(f): return f.get("checked", CHECKED)
 
 
 def facts(f):
-    """事実の表（項目・内容）。公式サイトに書いてあることだけ。書いていない項目は行ごと出さない。docs/facility-page.md の型。"""
+    """事実の表（項目・内容）。公式サイトの情報だけ。書いていない項目は行ごと出さない。docs/facility-page.md の型。"""
     out = [("所在地", f"{f['pref']}{f['city']}")] if f.get("city") else []
     for k, lab, note in SVC:
         if _has(f, k): out.append((lab, f"あり（{note}）"))
@@ -102,7 +102,7 @@ def _cmp(e, f):
     return (f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">{e(f["pref"])}のほかのペット火葬・霊園とくらべる</h2><div class="tbl"><table class="pp-tbl cmp"><thead><tr>'
             '<th>名前</th><th>市区町村</th><th>個別（おまかせ）</th><th>立ち会い火葬</th><th>合同火葬</th><th>立ち会い</th><th>お迎え</th><th>霊園・納骨堂</th></tr></thead>'
             f'<tbody>{body}</tbody></table></div><p class="emg-tips-note">料金は公式サイトに書いてある、猫や小型犬など「いちばん小さい区分」の金額です（全国の真ん中は {e(nat)}）。'
-            '体重の区分・税込かどうか・お迎えの料金の含み方は施設ごとに違います。○は公式サイトに書いてあること、空欄は書いていない・見つからないという意味です。並びは順位ではありません。</p></div>')
+            '体重の区分・税込かどうか・お迎えの料金の含み方は施設ごとに違います。○は公式サイトの情報、空欄は書いていない・見つからないという意味です。並びは順位ではありません。</p></div>')
 
 
 def render(ctx, f):

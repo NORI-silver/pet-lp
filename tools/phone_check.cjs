@@ -17,6 +17,8 @@
 //   uneven    横にならんだカードの高さがそろっていない（8px 以上の差）
 //   textonly  アイコン・図・表・ボタンのない、文字だけの画面がある（2画面目より下）
 //   tiny      本文の字が 11px より小さい
+//   form      ペットタクシーのページで、フォームの最初の入力欄（お迎えの都道府県）が最初の1画面に入っていない
+//   dup       フォームの上に「無料」が2回以上・準備中のお知らせがある
 const {chromium} = require('playwright');
 const http = require('http'), fs = require('fs'), path = require('path'), {execSync} = require('child_process');
 
@@ -27,6 +29,8 @@ const OUT = opt('--out', '/tmp/phone-check'), MAX = +opt('--max', 40);
 const FAC = ['hospital', 'pet-hotel', 'dogrun', 'pet-sitter', 'trimming', 'dog-trainer', 'rojin-home', 'sougi', 'joto',
   'inu-yado', 'pet-yado', 'inu-cafe', 'jichitai', 'hinan', 'emergency'];
 const W = 390, H = 844;
+// 県のページ（さがす欄が先に来るべきページ）。記事（/dogrun/survey/ など）は入れない
+const PREF = new Set('hokkaido aomori iwate miyagi akita yamagata fukushima ibaraki tochigi gunma saitama chiba tokyo kanagawa niigata toyama ishikawa fukui yamanashi nagano gifu shizuoka aichi mie shiga kyoto osaka hyogo nara wakayama tottori shimane okayama hiroshima yamaguchi tokushima kagawa ehime kochi fukuoka saga nagasaki kumamoto oita miyazaki kagoshima okinawa night cat exotic large-dog visit'.split(' '));
 
 function pagesFromArgs() {
   if (args.includes('--changed')) {
@@ -54,7 +58,7 @@ function pagesFromArgs() {
     for (let i = 0; i < 4; i++) list.push(`/guide/${guides[Math.floor(Math.random() * guides.length)]}/`);
     return list;
   }
-  return args.filter(a => a.startsWith('/'));
+  return args.filter((a, i) => a.startsWith('/') && !['--out', '--base', '--max'].includes(args[i - 1]));
 }
 function pickSpread(list) { // 同じ型のページばかりにならないよう、フォルダごとに散らして MAX まで
   if (list.length <= MAX) return list;
@@ -88,7 +92,7 @@ async function measure(page) {
     }
     const main = document.querySelector('main') || document.body;
     // さがす欄・結果が先か（施設の分野だけ。呼ぶ側で判断）
-    const first = [...main.querySelectorAll('select,input:not([type=hidden]),.ux-find,.hf,.hn-find,.ux-c,.emg-item,.fr')].filter(vis)[0];
+    const first = [...main.querySelectorAll('select,input:not([type=hidden]),.ux-find,.hf,.hn-find,.ux-c,.emg-item,.fr,.yd-pref,.yd-pick')].filter(vis)[0];
     const firstTop = first ? Math.round(top(first)) : null;
     // ボタン・リンクの箱が高すぎる
     for (const box of main.querySelectorAll('div,p,ul,nav,section')) {
@@ -151,8 +155,15 @@ async function measure(page) {
       await page.waitForTimeout(400);
       const m = await measure(page);
       const cat = p.split('/')[1];
-      if (FAC.includes(cat) && p.split('/').filter(Boolean).length <= 2 && (m.firstTop === null || m.firstTop > H * 1.3))
+      const seg = p.split('/').filter(Boolean);
+      if (FAC.includes(cat) && (seg.length === 1 || seg.length === 2 && PREF.has(seg[1])) && (m.firstTop === null || m.firstTop > H * 1.3))
         m.out.unshift(['first', m.firstTop === null ? 'さがす欄も結果のカードもない' : `さがす欄・結果が ${Math.round(m.firstTop / H * 10) / 10} 画面目から`]);
+      // ペットタクシーのページ（トップ・地域）は、フォームの最初の入力欄（お迎えの都道府県）が最初の1画面に入る（Nori 2026-11-16「フォームに行くまでスクロールが長すぎる」）
+      const prefTop = await page.evaluate(() => { const e = document.getElementById('pref'); return e && document.getElementById('petForm') ? Math.round(e.getBoundingClientRect().top + scrollY) : null; });
+      // フォームの上で同じことを2回言わない（「無料」は1か所・準備中のお知らせなし。Nori 2026-11-16「端折れる部分はなくして」）
+      const above = await page.evaluate(() => { const f = document.getElementById('petForm'), mn = document.querySelector('main'); if (!f || !mn) return null; const w = document.createTreeWalker(mn, NodeFilter.SHOW_TEXT); let t = '', n; while ((n = w.nextNode())) { if (f.compareDocumentPosition(n) & Node.DOCUMENT_POSITION_PRECEDING && !f.contains(n) && n.parentElement && n.parentElement.getClientRects().length) t += n.textContent; } return t; }); // 見えている文字だけ
+      if (above !== null) { const nf = (above.match(/無料/g) || []).length; if (nf > 1 || /準備中/.test(above)) m.out.unshift(['dup', `フォームの上に「無料」が${nf}回${/準備中/.test(above) ? '・準備中のお知らせ' : ''}（1回に）`]); }
+      if (prefTop !== null && prefTop + 40 > H) m.out.unshift(['form', `フォームの最初の入力欄が ${Math.round(prefTop / H * 10) / 10} 画面目から（1画面目に入れる）`]);
       const shot = path.join(OUT, (p.replace(/^\/|\/$/g, '').replace(/\//g, '_') || 'top') + '.png');
       await page.screenshot({path: shot, clip: {x: 0, y: 0, width: W, height: Math.min(H * 2, m.height)}});
       rep.push(`## ${p} ${m.out.length ? '— ' + m.out.length + '件' : '— OK'}`, `写真: ${shot}`, ...m.out.map(([k, v]) => `- [${k}] ${v}`), '');

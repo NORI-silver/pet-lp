@@ -72,6 +72,16 @@ function prefGuess(sel, apply){
     it._p = it.getAttribute("data-pref") || (p ? p.getAttribute("data-pref") : "");
     it._q = (it.getAttribute("data-q") || it.textContent).toLowerCase();
   });
+  // カードのイメージ写真（無料の写真素材。本物の施設の写真ではないので「イメージ」と出し、alt は空）。となりが同じにならないよう順番に回す
+  var pics = (box.getAttribute("data-pics") || "").split("|");
+  if (pics[1]) {
+    var pf = pics[1].split(",");
+    [].forEach.call(document.querySelectorAll(".emg-item.fc[data-ffi], .ux-c.dr-card[data-ffi], .yd-card[data-ffi]"), function(c, i){
+      if (c.querySelector(".ux-img")) return;
+      var d = el("div", "ux-img"), im = document.createElement("img");
+      im.src = pics[0] + pf[i % pf.length]; im.alt = ""; im.loading = "lazy"; d.appendChild(im); c.insertBefore(d, c.firstChild);
+    });
+  }
   var showUnk = false;
   function on(){ return btns.filter(function(b){ return b.getAttribute("aria-pressed") === "true"; }).map(function(b){ return b.getAttribute("data-k"); }); }
   function norm(s){ return (s || "").trim().toLowerCase().replace(/[\s　]+/g, " "); }

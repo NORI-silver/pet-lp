@@ -540,7 +540,7 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = t.replace('<a class="logo" href="#">', '<a class="logo" href="/">', 1)
     # h1 とリード文
     t = re.sub(r'(<span class="kicker">).*?(<b )', lambda m: m.group(1) + e(kicker) + " " + m.group(2), t, count=1, flags=re.S)
-    t = re.sub(r'(<section class="hero">.*?<p class="lede">).*?(</p>)', lambda m: m.group(1) + e(lede) + m.group(2), t, count=1, flags=re.S)
+    t = re.sub(r'(<section class="top-about"[^>]*><div class="wrap"><p class="lede">).*?(</p>)', lambda m: m.group(1) + e(lede) + m.group(2), t, count=1, flags=re.S)  # リード文はフォームの後ろ（2026-11-16）
     t = t.replace('<section class="hero">', f'<div class="wrap"><nav class="crumb" aria-label="パンくずリスト">{crumb}</nav></div>\n<section class="hero">', 1)
     # フォームのお迎えの都道府県・緊急タブの都道府県を最初から選んでおく
     t = re.sub(r'(<select id="pref"[^>]*>.*?)<option>' + re.escape(pref) + '</option>', lambda m: m.group(1) + f'<option selected>{pref}</option>', t, count=1, flags=re.S)
@@ -548,7 +548,7 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     # 地域の説明はフォームの後ろ（「使い方」の前）に
     # トップ（全国の入口）へ、「ペットタクシー」全体のことばでリンクする（トップとエリアページの役割を分ける）
     to_top = '<div class="wrap"><p class="to-top">ほかの都道府県の会社もふくめてさがすときは、<a href="/">全国のペットタクシーの料金をくらべる</a>ページへ。</p></div>'
-    t = t.replace('<section id="how">', area_html + '\n' + to_top + '\n<section id="how">', 1)
+    t = t.replace('<!--AFTER_FORM-->', area_html + '\n' + to_top + '\n<!--AFTER_FORM-->', 1)
     # エリアページ用のCSS（.crumb .prose など）を足す
     t = t.replace("</style>", extra_css.strip() + "\n</style>", 1)
     # いちばん上の写真だけ、そのページの写真があれば置きかえる（tools/page_images.py）
@@ -1710,8 +1710,9 @@ PREF_CHECKS = [
 def pref_fare_html(pf):
     rows = PREF_FARES.get(pf)
     if not rows:
-        return (f'<p>{e(pf)}のペットタクシーの料金は、当サイトにはまだ載っていません。料金は会社ごとに決まっていて、多くは乗る距離で計算します。'
-                'そのほかに、お迎え料金や待ち時間の料金、夜間・早朝の割増がかかることがあります。頼む前に、どこまでが基本料金に入っているかを確かめてください。</p>')
+        return (f'<p>{e(pf)}のペットタクシーの料金は、当サイトにはまだ載っていません。料金は会社ごとに決まっていて、多くは次のものを足して計算します。</p>'
+                '<ul><li>乗る料金（多くは乗る距離で決まります）</li><li>お迎え料金（お店からお迎えの場所まで）</li><li>待ち時間の料金</li><li>夜間・早朝の割増</li></ul>'
+                '<p>頼む前に、どこまでが基本料金に入っているかを確かめてください。</p>')
     return ('<p>' + e(pf) + 'のペットタクシー会社が公式サイトに書いている料金の例です。同じ「基本料金」でも、含まれる距離やお迎え・待ち時間の扱いは会社ごとに違います。</p>'
             '<div class="tbl"><table><thead><tr><th>会社のある場所</th><th>乗る料金</th><th>お迎えなど</th></tr></thead><tbody>' +
             ''.join(f'<tr><th>{e(w)}</th><td>{e(f)}</td><td>{e(pk)}</td></tr>' for w, f, pk in rows) + '</tbody></table></div>'
@@ -2157,6 +2158,11 @@ hub_regions = ""
 for lab, ps in emg_regions:
     lis = "".join(f'<li><a href="{pref_href(p)}">{e(AREA_SHORT.get(p) or next(x[2] for x in PREFS if x[1] == p))}</a></li>' for p in ps)
     hub_regions += f'<h3 class="emg-region" style="text-align:center">{e(lab)}</h3><ul class="other">{lis}</ul>'
+# 47県の大きなボタンは何画面も使うので、選ぶ欄1つにして、一覧は折りたたむ（AGENTS.md「品質の決まり」B5、Nori 2026-11-16）
+_hub_opts = "".join(f'<option value="{pref_href(p)}">{e(p)}</option>' for _lab, _ps in emg_regions for p in _ps)
+hub_pick = ('<div class="hub-pick" style="display:flex;gap:8px;margin:4px 0 10px"><select aria-label="都道府県" style="flex:1;min-width:0;font-size:1rem;padding:11px;border-radius:12px;border:1px solid #d9c9bb;background:#fff" '
+            'onchange="if(this.value)location.href=this.value"><option value="">📍 都道府県をえらぶ</option>' + _hub_opts + '</select></div>'
+            '<details class="pp-fold" style="margin:0 0 14px"><summary style="cursor:pointer;font-weight:700;color:#a8410a;padding:6px 0">地方ごとの一覧を開く</summary>' + hub_regions + '</details>')
 # [B] 2026-11-03「中身の薄いページを充実させる」：都道府県ごとの数の表（会社の数・10kmの運賃・夜間の病院・搬送の会社）。うちのデータで数えたもの、社名なし。
 def _hub_table():
     trs, found, many = "", 0, 0
@@ -2192,7 +2198,7 @@ ph = head("全国のペットタクシー情報｜都道府県ごとの料金の
   </div>
 </section>
 <section style="padding-top:8px">
-  <div class="wrap">{hub_regions}{_hub_table()}</div>
+  <div class="wrap">{hub_pick}{_hub_table()}</div>
 </section>
 <section style="padding-top:0">
   <div class="wrap">

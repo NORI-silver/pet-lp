@@ -223,7 +223,8 @@ CSS = """<style id="hfcss">
 .hf-clear{white-space:nowrap;border:0;background:none;color:#7a6a5e;text-decoration:underline;font-size:.82rem;cursor:pointer}
 .hf-list{display:grid;gap:10px}
 .hf-h{margin:14px 0 2px;font-size:.88rem;color:#7a6a5e;font-weight:700}
-.hc{background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px}
+.hc{background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px;overflow:hidden}
+.hc>.ux-img{position:relative;margin:-12px -14px 10px;aspect-ratio:2/1;overflow:hidden;background:#f4f1ee}.hc>.ux-img img{display:block;width:100%;height:100%;object-fit:cover}.hc>.ux-img span{position:absolute;right:6px;bottom:6px;font-size:.66rem;line-height:1;padding:3px 6px;border-radius:6px;background:rgba(0,0,0,.45);color:#fff}
 .hc-n{display:block;font-weight:800;font-size:1.02rem;color:#2b2622;text-decoration:none;line-height:1.35}
 .hc-b{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0 4px}
 .hc-b span{font-size:.74rem;padding:2px 8px;border-radius:999px;background:#fff1e6;color:#a8410a;font-weight:700}
@@ -295,12 +296,21 @@ def near_prefs():
     return out
 
 
+def _pics(ROOT):
+    """カードのイメージ写真（uikit.stock と同じ img/stock/<分野>/ の webp）。分野ごとのファイル名の一覧。"""
+    out = {}
+    for k in ("hospital", "hospital-night"):
+        d = os.path.join(ROOT, "img", "stock", k)
+        out[k] = sorted(f for f in os.listdir(d) if f.endswith(".webp")) if os.path.isdir(d) else []
+    return out
+
 def write_js(ROOT, avail, pslug):
     import prefkeep
     body = open(os.path.join(HERE, "hosp_find.js"), encoding="utf-8").read()
     body = (body.replace("__SLUG__", json.dumps(pslug, ensure_ascii=False))
                 .replace("__LABEL__", json.dumps(LABEL, ensure_ascii=False))
-                .replace("__NEAR__", json.dumps(near_prefs(), ensure_ascii=False, separators=(",", ":"))))
+                .replace("__NEAR__", json.dumps(near_prefs(), ensure_ascii=False, separators=(",", ":")))
+                .replace("__PICS__", json.dumps(_pics(ROOT), separators=(",", ":"))))
     js = "// 生成ファイル（tools/hosp_find.py）。手で直さない\n(function(){" + prefkeep.FN + prefkeep.GUESS + body + "\n})();\n"
     open(os.path.join(ROOT, "hosp.js"), "w", encoding="utf-8").write(js)
     return len(js.encode())
