@@ -112,16 +112,27 @@ def post_threads(token, p):
 
 def answer_quiz(token, state):
     """きのうのクイズの答えを、その投稿への返信で出す。うまくいかなくても今日の投稿は止めない。"""
-    q = state.pop("threads_quiz")
+    q = state["threads_quiz"]
     try:
         check(q["answer"])
         c = call("POST", f"{TH}/me/threads", {"media_type": "TEXT", "text": q["answer"], "reply_to_id": q["id"],
                                               "access_token": token}, fatal=False)
-        time.sleep(5)
+        for _ in range(30):
+            st = call("GET", f"{TH}/{c['id']}", {"fields": "status", "access_token": token}, fatal=False).get("status")
+            if st == "FINISHED":
+                break
+            if st in ("ERROR", "EXPIRED"):
+                raise RuntimeError(f"Threads reply container: {st}")
+            time.sleep(2)
+        else:
+            raise RuntimeError("Threads reply container did not finish")
         r = call("POST", f"{TH}/me/threads_publish", {"creation_id": c["id"], "access_token": token}, fatal=False)
-        print("threads クイズの答えを返信", r.get("id"))
+        if not r.get("id"):
+            raise RuntimeError("Threads reply publish returned no id")
+        state.pop("threads_quiz", None)
+        print("threads クイズの答えを返信", r["id"])
     except Exception as e:  # noqa: BLE001
-        print("threads クイズの答えを返信できませんでした", e)
+        print("threads クイズの答えを返信できませんでした。次回再試行します:", e)
 
 
 def main():
