@@ -43,7 +43,8 @@ def _card(e, h):
     if h.get("reg"): extra += f'<small>動物取扱業の登録（公式サイトより）：{e(h["reg"])}</small>'
     extra += f'<small>所在地：{e(h["addr"])}</small>'
     if h.get("src"): extra += '<small>公式サイトが見つからないため、老犬ケア（老犬ホームの情報サイト）の施設の紹介ページにリンクしています</small>'
-    return (f'<div class="emg-item emg-co"><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>'
+    fa = f' data-cat="rojin" data-fid="{e(h["id"])}" data-name="{e(h["name"])}"' + (' data-partner="1"' if h.get("partner") else '')  # facility.js（問い合わせ文・提携先へは当サイトから送る）
+    return (f'<div class="emg-item emg-co"{fa}><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>'
             f'<small>{e(h["city"])}</small>{extra}'
             + (f'<div class="emg-score" data-id="{e(h["id"])}"></div>' if h.get("review_query") else "") + "</div>")
 
@@ -111,6 +112,7 @@ def render(ctx):
 </main>
 {prefkeep.LIST_JS}
 <script src="/reviews.js" defer></script>
+<script src="/facility.js" defer></script>
 """ + ctx["foot_noband"]()
 
 def review_rows():

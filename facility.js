@@ -7,10 +7,12 @@
 //  - 条件のしぼりこみ（公式サイトに書いてあることから作ったタグだけ）。押した条件と県は facility_filter（どんな条件の人が多いか＝提携のお誘いに使う。個人の情報は送らない）
 //  - 所在地の分かる施設は「ここまでのペットタクシーの料金をくらべる」（トップのフォームの行き先に入れる）。数は facility_taxi
 //  - 提携した事業者（カードの data-partner="1"）は、名前の前にオレンジの丸にチェックのアイコンだけを付ける（文字は付けない）
-// 問い合わせを当サイトから事業者へ送ることはしない（許可のない事業者に転送しない）。
+// 提携した事業者（data-partner="1"）にだけ、飼い主さまがお名前・メールを入れて同意したときに当サイトから問い合わせを送る（kind=fac_ask、booking/Code.gs の facAsk_。2026-11-17 Nori「売上を作れ」）。
+// 提携していない事業者には今までどおり送らない（文をコピーして公式サイトに貼るだけ）。
 (function(){
   function track(n, p){ if (window.gtag) gtag("event", n, p || {}); }
-  var CAMP = {sougi: "sougi_cards", sitter: "sitter_cards", trainer: "trainer_cards", hosp: "hospital_pages", inn: "inn_pages", cafe: "cafe_pages"};
+  var GAS = "https://script.google.com/macros/s/AKfycbyy-cTvD-t8DFGhEyA2IbFiXWoB50kl_2_97WiVdMlXec8sIbI2NVUkkyn-45VkIMc_5g/exec";
+  var CAMP = {sougi: "sougi_cards", sitter: "sitter_cards", trainer: "trainer_cards", rojin: "rojin_cards", trim: "trim_cards", hosp: "hospital_pages", inn: "inn_pages", cafe: "cafe_pages"};
   var CONF = {
     sougi: {
       title: "火葬・霊園への問い合わせ文をつくる",
@@ -55,6 +57,16 @@
       ],
       head: "犬のトレーニングについて相談したいです。",
       tail: "受けていただけるかと、料金を教えていただけますか。"
+    },
+    rojin: {
+      title: "老犬ホームへの問い合わせ文をつくる", lead: "入れたところだけ文に入ります。空のままでもかまいません。",
+      fields: [["dog", "犬種・年齢・体重", "text", "例：柴犬・15歳・9kg"], ["state", "いまの様子", "text", "例：歩けるが夜鳴きがある"], ["stay", "希望の預け方", ["", "ずっと預けたい（終生）", "短い期間だけ", "見学したい", "まだ決めていない"]], ["when", "いつごろから", "text", "例：来年1月から"], ["city", "お住まいの市区町村", "text", "例：横浜市港北区"], ["memo", "そのほか", "text", ""]],
+      head: "老犬ホームについて相談したいです。", tail: "受け入れていただけるかと、料金・見学の日程を教えていただけますか。"
+    },
+    trim: {
+      title: "トリミングサロンへの問い合わせ文をつくる", lead: "入れたところだけ文に入ります。空のままでもかまいません。",
+      fields: [["dog", "犬種・体重", "text", "例：トイプードル・3kg"], ["menu", "希望のメニュー", "text", "例：シャンプーとカット"], ["when", "希望の日時", "text", "例：12月の土曜の午前"], ["memo", "そのほか", "text", "例：シニアで長く立てない"]],
+      head: "トリミングの予約について教えてください。", tail: "空いている日時と料金を教えていただけますか。"
     }
   };
   var ICON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M6.5 12.5l3.6 3.6 7.4-7.6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -72,6 +84,7 @@
     ".fac-dlg input,.fac-dlg select,.fac-dlg textarea{width:100%;box-sizing:border-box;font-size:16px;padding:7px 9px;border:1px solid #ccc;border-radius:8px;font-family:inherit}" +
     ".fac-dlg textarea{height:9em;font-size:14px;margin-top:4px}.fac-dlg .fac-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}" +
     ".fac-dlg .fac-btns button,.fac-dlg .fac-btns a{flex:1 1 auto;text-align:center;border:0;border-radius:999px;padding:10px 14px;font-weight:700;font-size:.9rem;cursor:pointer;font-family:inherit;text-decoration:none}" +
+    ".fac-send{margin-top:14px;padding-top:10px;border-top:1px solid #eee}.fac-send input{margin-top:6px}.fac-send input[type=checkbox]{width:auto;margin-right:6px}.fac-msg{font-weight:700}.fac-send .fac-copy{width:100%;margin-top:8px;border:0;border-radius:999px;padding:10px;font-weight:700;color:#fff;background:var(--o,#e67e22)}" +
     ".fac-dlg .fac-copy{background:var(--o,#e67e22);color:#fff}.fac-dlg .fac-go{background:#fff;border:1px solid var(--o,#e67e22)!important;color:var(--o-d,#a84300)}.fac-dlg .fac-x{background:#eee;color:#333}";
   var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
 
@@ -102,7 +115,7 @@
     if (!dlg) { dlg = el("dialog", "fac-dlg"); document.body.appendChild(dlg); }
     var f = el("form"); f.method = "dialog";
     f.appendChild(el("h3", "", c.title));
-    f.appendChild(el("p", "", "あて先：" + name + "。" + c.lead + "お名前・連絡先は入れていないので、公式サイトのお問い合わせ欄に貼ったあと、ご自分で書き足してください。当サイトからは何も送りません。"));
+    f.appendChild(el("p", "", "あて先：" + name + "。" + c.lead + (card.getAttribute("data-partner") === "1" ? "下の「このサイトから問い合わせる」から、そのままお送りできます。" : "お名前・連絡先は入れていないので、公式サイトのお問い合わせ欄に貼ったあと、ご自分で書き足してください。当サイトからは何も送りません。")));
     var ta = el("textarea"); ta.setAttribute("aria-label", "問い合わせ文");
     function sync(){ ta.value = buildText(cat, name); }
     c.fields.forEach(function(fd){
@@ -122,6 +135,23 @@
       copy(ta.value, function(ok){ bc.textContent = ok ? "コピーしました。公式サイトに貼ってください" : "コピーできませんでした。文を長押しして選んでください"; setTimeout(function(){ bc.textContent = "文をコピーする"; }, 4000); });
     });
     btns.appendChild(bc);
+    if (card.getAttribute("data-partner") === "1") { // 提携した事業者だけ：当サイトから送る
+      var sb = el("div", "fac-send"), nm = el("input"), em = el("input"), ag = el("input"), ms = el("p", "fac-msg"), sd = el("button", "fac-copy", "この内容で問い合わせる");
+      nm.placeholder = "お名前（必須）"; nm.maxLength = 60; em.type = "email"; em.placeholder = "メールアドレス（必須・お返事が届きます）"; em.maxLength = 120; ag.type = "checkbox"; ag.id = "facAg"; sd.type = "button";
+      var al = el("label", "", " 上の文とお名前・メールを " + name + " にお送りすることに同意します"); al.htmlFor = "facAg"; al.prepend(ag); al.style.fontWeight = "400";
+      sb.append(el("h3", "", "このサイトから問い合わせる"), nm, em, al, sd, ms);
+      sd.addEventListener("click", function(){
+        if (!nm.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())) { ms.textContent = "お名前とメールアドレスを入れてください。"; return; }
+        if (!ag.checked) { ms.textContent = "お送りしてよいかの印を付けてください。"; return; }
+        sd.disabled = true; ms.textContent = "送っています…";
+        var b = new URLSearchParams({kind: "fac_ask", cat: cat, fid: card.getAttribute("data-fid") || "", fname: name, name: nm.value.trim(), email: em.value.trim(), text: ta.value, page: location.pathname});
+        fetch(GAS, {method: "POST", body: b}).then(function(r){ return r.json(); }).then(function(j){
+          if (j && j.ok) { ms.textContent = "お送りしました。" + name + " から、入れたメールアドレスにお返事が届きます。確認のメールもお送りしました。"; track("generate_lead", {cat: cat, id: card.getAttribute("data-fid") || "", pref: prefOf(card), from: "facility"}); }
+          else { sd.disabled = false; ms.textContent = "送れませんでした。文をコピーして公式サイトからお問い合わせください。"; }
+        }).catch(function(){ sd.disabled = false; ms.textContent = "送れませんでした。文をコピーして公式サイトからお問い合わせください。"; });
+      });
+      f.appendChild(sb);
+    }
     if (href) { var go = el("a", "fac-go", "公式サイトを開く ↗"); go.setAttribute("data-ga", ""); go.href = siteUrl(href, cat); go.target = "_blank"; go.rel = "noopener"; go.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: card.getAttribute("data-fid") || "", pref: prefOf(card), from: "dialog"}); }); btns.appendChild(go); }
     var bx = el("button", "fac-x", "閉じる"); bx.value = "close"; btns.appendChild(bx);
     f.appendChild(btns);
