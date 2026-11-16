@@ -682,6 +682,72 @@ footer a{color:var(--ink-2)}
 @media (min-width:1000px){.hub{grid-template-columns:repeat(3,1fr)}}
 .foot-cats{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:14px}
 footer .foot-cats a{font-weight:700;color:var(--ink)}
+
+/* 2026-11-16: request-first UI polish. Keep all existing fields and IDs. */
+:root{--o:#e96222;--o-d:#b94916;--o-l:#fff2e8;--cream:#faf8f5;--line:#e7e1da;--shadow:0 8px 30px rgba(42,31,23,.055)}
+body{line-height:1.7;letter-spacing:0}
+#form{scroll-margin-top:78px}
+.form-sec{background:#faf8f5;padding:18px 0 70px}
+.form-card{border:1px solid #eee6df;box-shadow:0 16px 52px rgba(45,32,22,.07);border-radius:24px}
+.form-card .group{padding-top:12px;border-top:1px solid #f0eae5;margin-bottom:26px}
+.form-card .group:first-of-type{border-top:0}
+.form-card .group-h{font-size:1.12rem;color:#27221d;margin:0 0 18px;gap:12px}
+.form-card .group-h span{width:34px;height:34px;background:#282521;font-size:.88rem}
+.form-card .f{margin-bottom:19px}
+.form-card .f>label,.form-card .f>.lbl{font-size:.91rem;color:#332c27;margin-bottom:7px}
+.form-card .need{background:#fff0e5;color:#a63e0d;vertical-align:baseline;font-size:.66rem;letter-spacing:0}
+.form-card input[type=text],.form-card input[type=tel],.form-card input[type=email],.form-card input[type=number],.form-card input[type=date],.form-card select,.form-card textarea{background:#fff;border-color:#d8d1ca;border-radius:12px;min-height:54px}
+.form-card input:focus-visible,.form-card select:focus-visible,.form-card textarea:focus-visible,.form-card button:focus-visible,.optional-disclosure summary:focus-visible{outline:3px solid #f9ae78;outline-offset:2px;border-color:var(--o)}
+.form-card .seg{gap:8px}
+.form-card .seg label{flex:1;min-width:max-content;text-align:center}
+.form-card .seg span{padding:12px 14px;border-radius:12px;border-color:#d8d1ca;background:#fff}
+.form-card .seg input:checked+span{box-shadow:inset 0 0 0 1px var(--o);background:#fff2e8}
+.form-card .pet{background:#fefdfb;border-color:#e2dad2}
+.form-card .note,.form-card .small{line-height:1.65}
+.form-card .flow3{border:1px solid #ece5de;background:#fbf8f4;margin-bottom:24px}
+.form-card .flow3 li b{color:var(--o-d)}
+.form-card .flow3-note{font-weight:600}
+.form-card .contact-safe{background:#f4f8f4;color:#2c4935}
+.optional-disclosure{margin:5px 0 20px;border:1px solid #ded8d1;border-radius:14px;background:#fff;box-shadow:none;overflow:hidden}
+.optional-disclosure>summary{padding:13px 44px 13px 16px;color:#534a43;font-size:.89rem;font-weight:700}
+.optional-disclosure>summary::after{background-color:#f4eee9}
+.optional-disclosure[open]>summary{border-bottom:1px solid #eee8e1}
+.optional-disclosure>.f{padding:14px 16px 1px;margin-bottom:0}
+.optional-disclosure>.f>label,.optional-disclosure>.f>.lbl{margin-top:0}
+.form-card .btn{border-radius:14px;min-height:54px;box-shadow:0 6px 18px rgba(185,73,22,.15);letter-spacing:0}
+.form-card .partner-results{border-top:2px solid #eee9e4;padding-top:24px}
+.form-card .partner-card{border-radius:16px}
+.form-foot{padding:12px 14px;border-radius:12px;background:#f7f5f2;text-align:left}
+@media(max-width:759px){
+ .hero{background:#faf8f5;padding:16px 0 8px}
+ .hero .grid{grid-template-columns:minmax(0,1fr) 92px;gap:8px 14px}
+ .hero .kicker{font-size:.68rem;color:#735e50}
+ .hero .catch{font-size:clamp(1.38rem,5.3vw,1.8rem);letter-spacing:-.025em}
+ .hero-visual .photo{border-radius:20px}
+ .form-sec{padding:10px 0 48px}
+ .form-sec>.wrap{padding:0 12px}
+ .form-card{padding:20px 17px 26px;border-radius:20px}
+ .form-card .flow3{padding:10px;margin-bottom:20px}
+ .form-card .flow3 ol{gap:5px}
+ .form-card .flow3 li{background:#fff;border:1px solid #ece4dc;border-radius:9px;padding:9px 6px}
+ .form-card .group-h{font-size:1rem}
+ .form-card .f{margin-bottom:16px}
+ .form-card .dt{gap:8px}
+ .form-card .dt select{padding-left:12px;padding-right:26px;background-position:right 10px center}
+ .form-card .seg label{min-width:0}
+ .form-card .seg span{font-size:.9rem;padding:12px 9px}
+ .form-card .partner-grid{grid-template-columns:1fr}
+ .sticky .btn{border-radius:14px;box-shadow:0 6px 16px rgba(185,73,22,.15)}
+}
+@media(min-width:760px){
+ .hero{background:#faf8f5;padding:32px 0 24px}
+ .hero .grid{grid-template-columns:minmax(0,1fr) 180px;gap:14px 40px}
+ .hero .catch{font-size:2.5rem}
+ .hero-visual .photo{border-radius:24px;box-shadow:0 12px 30px rgba(42,31,23,.08)}
+ .form-sec{padding-top:28px}
+ .form-card{padding:34px 46px 42px}
+}
+
 </style>
 <script type="application/ld+json">
 {
@@ -3796,5 +3862,42 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   syncOpenNote(); // 地域ページ・前回の入力で県が入っているとき
 })();
 </script>
+
+<script>
+/* Progressive enhancement: optional fields stay in the form and keep their IDs/names. */
+document.addEventListener('DOMContentLoaded',function(){
+  var form=document.getElementById('petForm');
+  if(!form)return;
+  function collapseField(node,label){
+    if(!node||node.closest('.optional-disclosure'))return;
+    var details=document.createElement('details');
+    details.className='optional-disclosure';
+    var summary=document.createElement('summary');
+    summary.textContent=label;
+    node.parentNode.insertBefore(details,node);
+    details.appendChild(summary);
+    details.appendChild(node);
+    node.addEventListener('focusin',function(){details.open=true;});
+    return details;
+  }
+  var via=form.querySelector('.f.opt-lite .seg input[name="via_on"]');
+  if(via){
+    var viaField=via.closest('.f');
+    var viaDetails=collapseField(viaField,'＋ 経由地を追加する（任意）');
+    if(viaDetails){
+      function syncVia(){if(form.querySelector('input[name="via_on"]:checked')?.value==='あり')viaDetails.open=true;}
+      form.querySelectorAll('input[name="via_on"]').forEach(function(r){r.addEventListener('change',syncVia);});
+      syncVia();
+    }
+  }
+  var memo=document.getElementById('notes');
+  if(memo){
+    var memoDetails=collapseField(memo.closest('.f'),'＋ メモ・要望を書く（任意）');
+    if(memoDetails&&memo.value.trim())memoDetails.open=true;
+    if(memoDetails)memo.addEventListener('input',function(){if(memo.value.trim())memoDetails.open=true;});
+  }
+});
+</script>
+
 </body>
 </html>
