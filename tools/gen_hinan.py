@@ -56,6 +56,8 @@ def href_city(it):
 CSS = """<style>
 .hn-card{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:14px 16px 8px;margin:0 0 14px}
 .hn-card h3{margin:0 0 8px;font-size:1.08rem}
+.hn-more>summary{cursor:pointer;font-weight:700;color:var(--o-d,#c2410c);font-size:.9rem;padding:8px 0}
+.hn-more[open]>summary{margin-bottom:4px}
 .hn-card dl{margin:0;display:grid;grid-template-columns:1fr;gap:2px 0}
 .hn-card dt{font-size:.74rem;font-weight:700;color:var(--ink-3);margin-top:8px}
 .hn-card dd{margin:0;line-height:1.75;font-size:.92rem}
@@ -75,7 +77,10 @@ def _flags(e, it):
     return '<ul class="hn-flags">' + "".join(
         f'<li class="{it["flags"].get(k) or "unk"}">{e(lab)}：{e(FLAG_TXT[it["flags"].get(k)])}</li>' for k, lab in KINDS) + "</ul>"
 
-def card(e, it):
+# 市区町村の名前のリンク（#名前）で来たら、その市区町村のたたんだ決まりを開く
+HN_OPEN = "<script>(function(){function o(){try{var t=document.getElementById(decodeURIComponent(location.hash.slice(1)));var d=t&&t.querySelector('details.hn-more');if(d)d.open=true}catch(e){}}o();addEventListener('hashchange',o)})();</script>"
+
+def card(e, it, fold=False):
     def row(t, v):
         return f"<dt>{e(t)}</dt><dd>{e(v)}</dd>" if v else f'<dt>{e(t)}</dt><dd class="hn-none">公式ページに書いていません（不明）</dd>'
     rules = ("<dt>そのほかの決まり・備え</dt><dd><ul>" + "".join(f"<li>{e(r)}</li>" for r in it["rules"]) + "</ul></dd>") if it.get("rules") else ""
@@ -84,12 +89,14 @@ def card(e, it):
     links = "".join(f'<li><a href="{e(u)}" target="_blank" rel="noopener">{e(t)}</a></li>' for t, u in it["links"])
     mp = (f'<dt>避難所の場所</dt><dd><a href="{e(it["map"][1])}" target="_blank" rel="noopener">{e(it["map"][0])}</a></dd>' if it.get("map")
           else '<dt>避難所の場所</dt><dd class="hn-none">ペットを受け入れる避難所の一覧・地図は、公式ページにはありませんでした。お住まいの市区町村のページでご確認ください。</dd>')
-    return (f'<section class="hn-card" id="{e(it["name"])}"><h3>{e(it["name"])}</h3>{_flags(e, it)}<dl>'
+    # fold：県のページの「ほかの市区町村」は、印（受け入れる動物）だけ見せて、くわしい決まりはたたむ（2026-11-16 見直し「1ページが長すぎる」。中身はHTMLに残す）
+    return (f'<section class="hn-card" id="{e(it["name"])}"><h3>{e(it["name"])}</h3>{_flags(e, it)}'
+            + ('<details class="hn-more"><summary>くわしい決まりと出どころを見る</summary>' if fold else '') + '<dl>'
             + row("考え方", it.get("policy")) + row("受け入れる動物", it.get("animals"))
             + (row("受け入れない・むずかしい動物", it["no"]) if it.get("no") else "")
             + row("大きさの決まり", it.get("size")) + row("ケージ・リード", it.get("cage")) + row("避難所で飼う場所", it.get("place"))
             + rules + mp + "</dl>"
-            + f'<p class="hn-src">出どころ（{e(CHECKED)}に確認）：</p><ul class="hn-src">{links}</ul></section>')
+            + f'<p class="hn-src">出どころ（{e(CHECKED)}時点）：</p><ul class="hn-src">{links}</ul>' + ('</details>' if fold else '') + '</section>')
 
 def fit_rows(its):
     """県のページの「うちの子で見る」：大きさ・種類ごとに、その県の自治体の記載をならべる"""
@@ -283,7 +290,7 @@ def render_pref(ctx, pf, its, done):
     {V.block(("table", rows))}
     {fit}
     {('<h2 id="detail">' + e(pf) + 'の決まり</h2>' + "".join(card(e, it) for it in prefs_it)) if prefs_it else ""}
-    {('<h2 id="more">ほかの市区町村の決まり</h2>' + "".join(card(e, it) for it in small)) if small else ""}
+    {('<h2 id="more">ほかの市区町村の決まり</h2>' + "".join(card(e, it, True) for it in small) + HN_OPEN) if small else ""}
     <h2 id="faq">よくある質問</h2>
     <dl class="emg-tips">{faq_html}</dl>
     <p class="emg-note">{e(CHECKED)}時点の、公式ページに書いてある情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>

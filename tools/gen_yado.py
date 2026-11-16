@@ -178,6 +178,9 @@ CSS = """<style>
 .yd-tbl th,.yd-tbl td{font-size:13px;padding:5px 6px;text-align:left;vertical-align:top}
 .yd-tbl td:first-child{min-width:9em}
 .yd-h{font-size:1.08rem;margin:22px 0 8px}
+.ff-cut{display:none!important}
+.ff-more{display:block;width:100%;margin:10px 0 0;padding:12px 14px;font:inherit;font-weight:700;color:var(--o-d,#c2410c);background:#fff;border:1.5px solid var(--line);border-radius:14px;cursor:pointer}
+.yd-rest>summary{cursor:pointer;font-weight:700;color:var(--o-d,#c2410c);padding:12px 14px;background:#fff;border:1.5px solid var(--line);border-radius:14px;margin-top:10px;list-style-position:inside}
 </style>"""
 
 
@@ -418,9 +421,9 @@ def render_animal(ctx, k):
     faq = [(f"{nm}と泊まれる宿はどこ？", f"当サイトに載せている中では、{_names(xs, 6)}です。"),
            (f"犬と泊まれる宿なら{nm}も泊まれる？", f"泊まれるとはかぎりません。犬だけと書いている宿も多いので、{nm}と泊まれるか、部屋のタイプとあわせて宿に確かめてください。")]
     body = (f'<div class="yd-ans"><h2>{e(nm)}と泊まれる宿は{n}軒</h2><ul>{"".join(f"<li>{e(a)}</li>" for a in ans)}</ul></div>'
-            + f'<h2 class="yd-h">{e(nm)}と泊まれる{n}軒</h2>' + finder + f'<div class="bf-cards" style="display:grid;gap:10px">{cards}</div>'
+            + f'<h2 class="yd-h">{e(nm)}と泊まれる{n}軒</h2>' + finder + f'<div class="bf-cards" data-ffmore="12" style="display:grid;gap:10px">{cards}</div>'
             + V.stats([(f"{n}軒", f"{nm}と泊まれる宿"), (f"{len(prefs)}", "都道府県"), (f"{sum(1 for x in xs if has_dog(x))}軒", "犬も泊まれる")])
-            + f'<h2 class="yd-h">くらべる</h2>' + table(e, xs)
+            + f'<h2 class="yd-h">くらべる</h2><details class="yd-rest"><summary>{n}軒をくらべる表を開く</summary>' + table(e, xs) + '</details>'
             + "".join(f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">{e(a)}</h2><p style="font-size:.9rem;margin:4px 0 10px">{e(b)}</p></div>' for a, b in ANIMAL_TIPS.get(k, []))
             + f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{_faq_html(e, faq)}</dl></div>'
             + '<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">関連するページ</h2><ul class="other"><li><a href="/pet-yado/">犬以外のペットと泊まれる宿</a></li><li><a href="/inu-yado/">犬と泊まれる宿</a></li><li><a href="/guide/small-animals/">うさぎ・小動物の移動</a></li></ul></div>')
@@ -498,7 +501,11 @@ def render_pethub(ctx):
         xs = OTHER[k]
         if not xs: continue
         more = f'<p class="yd-go"><a href="/pet-yado/{slug}/">{e(nm)}と泊まれる宿のページへ（{len(xs)}軒）→</a></p>' if k in ANIMAL_PAGES else ""
-        cards = "".join(f'<div class="emg-item yd-card" data-pref="{e(x["pref"])}">{card(e, x, "petyado_cards")}</div>' for x in xs[:6 if k in ANIMAL_PAGES else 99])
+        _c = lambda ys: "".join(f'<div class="emg-item yd-card" data-pref="{e(x["pref"])}">{card(e, x, "petyado_cards")}</div>' for x in ys)
+        # 自分のページがない動物も、はじめの6軒だけ見せて、のこりはたたむ（2026-11-16 見直し「1ページが長すぎる」。中身はHTMLに残す）
+        cards = _c(xs[:6]) if k in ANIMAL_PAGES or len(xs) <= 8 else (
+            _c(xs[:6]) + f'<details class="yd-rest"><summary>のこり{len(xs) - 6}軒を見る</summary><div style="display:grid;gap:10px;margin-top:10px">{_c(xs[6:])}</div></details>')
+        if k not in ANIMAL_PAGES and len(xs) <= 8: cards = _c(xs)
         sec += f'<h2 class="yd-h" id="{slug}">{e(nm)}と泊まれる宿（{len(xs)}軒）</h2>{more}<div style="display:grid;gap:10px">{cards}</div>{more}'
     faq = [("犬と泊まれる宿なら、猫やうさぎも泊まれる？", "泊まれるとはかぎりません。「犬のみ」と書いている宿が多いので、公式サイトか宿に確かめてください。"),
            ("猫と泊まるときに用意するものは？", "キャリー、猫砂とトイレ、いつものごはん。混合ワクチンの証明を求める宿もあります。")]
