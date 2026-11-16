@@ -179,7 +179,7 @@ dict(slug="pet-evacuation",
   ("ペットを受け入れる避難所はどこで調べられますか？", "お住まいの市区町村のホームページや防災マップで確かめます。堺市のように、避難所ごとのペットの飼育スペースを一覧で出している市もあります。このサイトの都道府県ごとのページに、自治体の公式ページへのリンクをまとめています。"),
   ("避難所にワクチンの証明はいりますか？", "世田谷区は、狂犬病の予防注射を済ませていない犬は受け入れできない、と書いています。埼玉県は、混合ワクチンや寄生虫の予防が受け入れの条件になる場合がある、としています。犬の登録と狂犬病の予防注射は法律の義務なので、毎年済ませておきます。"),
  ],
- sources=[ENV_GL, ENV_OWNER, ENV_DRAFT] + [x["links"][0] for x in ITEMS],
+ sources=[ENV_GL, ENV_OWNER, ENV_DRAFT] + [x["links"][0] for x in ITEMS if x.get("links")],
  related=["pet-disaster-prep", "lost-pet", "microchip"]),
 
 dict(slug="pet-disaster-prep",
