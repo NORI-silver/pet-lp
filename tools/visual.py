@@ -118,6 +118,10 @@ _ICON = {
  "badge": '<circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 21l5-3 5 3-1.5-7"/>',
  "home": '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/>',
  "chat": '<path d="M4 5h16v11H9l-5 4z"/>',
+ "moon": '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+ "cross": '<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/>',
+ "camera": '<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
+ "shield": '<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>',
 }
 CHK_CSS = ('<style>.v-chk{margin:14px 0 18px}.v-chk>h2,.v-chk>h3{font-size:1.05rem;margin:0 0 8px}.v-chk ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}'
  '@media(min-width:720px){.v-chk ol{grid-template-columns:1fr 1fr}}'
