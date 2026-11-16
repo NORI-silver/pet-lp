@@ -826,7 +826,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     // ヒーローのボタンかフォームが見えている間は隠す
     var seen = {};
     var io = new IntersectionObserver(function(es){
-      es.forEach(function(x){ seen[x.target.id || "hero"] = x.isIntersecting; });
+      es.forEach(function(x){ var k = x.target.id || "hero"; seen[k] = x.isIntersecting || (k === "hero" && x.boundingClientRect.top > 0); });
       sticky.style.visibility = (seen.hero || seen.form) ? "hidden" : "visible";
     });
     io.observe(document.querySelector(".hero .btn")); io.observe($("form"));

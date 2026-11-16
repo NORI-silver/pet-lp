@@ -74,6 +74,7 @@ p{margin:0 0 1em}
 .float.f1 span{color:var(--ink-3)}
 .float.f2{right:-6px;top:20px;text-align:center;padding:10px 14px}
 .float.f2 b{display:block;font-family:var(--round);font-size:1.3rem;color:var(--o-d);line-height:1.1}
+@media (max-width:759px){.hero .float,.hero .float.f1{display:none}.hero{padding:16px 0 32px}.catch{font-size:2rem}.hero .kicker{font-size:.72rem;margin-bottom:12px}.hero .lede{margin:12px 0 16px;font-size:.92rem;line-height:1.75}.pills{gap:6px;margin-bottom:16px}.pills li{font-size:.78rem;padding:4px 10px 4px 6px}.pills li span{width:18px;height:18px}.hero-fare{padding:10px 14px;margin-bottom:14px}.hero-fare b{font-size:.92rem}.hero-fare span{font-size:.8rem}.hero .grid{gap:14px}.hero-visual .photo{aspect-ratio:16/9}.hero .btn{white-space:nowrap;font-size:.95rem;padding:15px 12px;justify-content:center;gap:6px}.hero .after{font-size:.76rem;margin-top:10px}}
 
 /* stats */
 .stats{background:var(--ink);color:#fff;padding:40px 0}
