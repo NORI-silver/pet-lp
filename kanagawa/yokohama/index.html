@@ -96,9 +96,7 @@ p{margin:0 0 1em}
 .hero-visual{position:relative;max-width:520px;width:100%;margin:0 auto}
 .hero-visual .photo{aspect-ratio:1/1;border-radius:36px;box-shadow:0 30px 60px rgba(226,86,10,.18)}
 .hero-visual .photo .fallback svg{width:92%}
-@media (max-width:759px){.hero{padding:10px 0 2px;background:var(--cream)}.hero .grid{grid-template-columns:1fr 76px;gap:8px 12px;align-items:center}.hero h1{margin:0}.hero .kicker{background:none;box-shadow:none;padding:0;margin:0 0 4px;font-size:.69rem;letter-spacing:0;line-height:1.45}.catch{font-size:1.34rem;line-height:1.35}.hero-visual .photo{aspect-ratio:1/1;border-radius:18px;box-shadow:none}.hero-visual .photo .fallback{display:none}.hero .pills{display:none}.hero{padding-bottom:8px}}
-.top-about{padding:28px 0 8px}.top-about .lede{color:var(--ink-2);margin:0 auto;max-width:740px}.top-about .about-pts{max-width:740px;margin:10px auto 0;flex-wrap:wrap}.top-about .about-pts li{border-radius:14px}
-.prep-note{font-size:.76rem;background:#fff4e5;border-radius:12px;padding:8px 12px;margin:8px auto 0!important;text-align:left;line-height:1.55;color:var(--ink)!important}
+@media (max-width:759px){.hero{padding:20px 0 40px}.hero .grid{gap:20px}.hero-visual{order:-1}.hero-visual .photo{aspect-ratio:16/10;border-radius:24px}.hero .float{display:none}.hero .lede{margin:14px 0 18px;font-size:.96rem}.pills{margin-bottom:20px}}
 .float{position:absolute;z-index:2;background:#fff;border-radius:18px;box-shadow:0 14px 34px rgba(28,26,24,.14);padding:12px 16px;font-size:.8rem;line-height:1.5}
 .float.f1{left:-8px;bottom:22px;display:flex;gap:10px;align-items:center;max-width:250px}
 .float.f1 .ok{flex:none;width:34px;height:34px;border-radius:50%;background:#e8f8ee;color:var(--green);display:grid;place-items:center}
@@ -188,9 +186,8 @@ p{margin:0 0 1em}
 
 /* form */
 .form-sec{background:linear-gradient(180deg,#fff 0%,var(--cream) 100%)}
-.form-sec{padding-top:12px}
-.form-sec .sh{margin-bottom:12px}
-@media (max-width:759px){.form-sec .sh h2{font-size:1.08rem;white-space:nowrap}.form-card{padding:16px 16px;border-radius:24px}.form-sec .mode-tabs{margin-bottom:10px;padding:3px}.form-sec .mode-tabs button{padding:8px 4px;font-size:.78rem;line-height:1.3;letter-spacing:0;white-space:nowrap}.form-card .group-h{margin-bottom:10px}}
+.form-sec{padding-top:40px}
+.form-sec .sh{margin-bottom:20px}
 .form-card{background:#fff;border-radius:32px;padding:28px 20px;box-shadow:0 2px 4px rgba(28,26,24,.04),0 28px 56px rgba(28,26,24,.09);max-width:740px;margin:0 auto}
 .group{margin-bottom:30px}
 .group-h{display:flex;align-items:center;gap:10px;font-family:var(--round);font-weight:800;font-size:1.06rem;margin-bottom:16px}
@@ -221,6 +218,8 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--o);backgrou
 .dt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
 .dt input{grid-column:1/-1}
 @media(min-width:600px){.dt{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr)}.dt input{grid-column:auto}}
+.dt-note{font-size:.8rem;color:var(--ink-3);margin:-8px 0 14px;line-height:1.55}
+details.more{margin:0 0 14px;background:none;box-shadow:none;border:0;padding:0}details.more>summary{font-weight:700;color:var(--o-d);font-size:.84rem;padding:2px 0;text-align:left;background:none;box-shadow:none}details.more>summary::after{content:" ▸";position:static;display:inline;width:auto;height:auto;margin:0;background:none;border-radius:0;transform:none}details.more[open]>summary::after{content:" ▾";transform:none}details.more[open]>summary{margin-bottom:8px}
 .via-box[hidden],.pet-hint[hidden],#retPlaces[hidden],#retRoute[hidden]{display:none}
 .via-box{margin-top:10px}
 .mode-tabs{display:flex;gap:6px;max-width:560px;margin:0 auto 14px;background:#fff;border-radius:999px;padding:5px;box-shadow:0 2px 8px rgba(28,26,24,.06)}
@@ -468,11 +467,9 @@ footer a{color:var(--ink-2)}
   section{padding:104px 0}
   .top nav{display:flex;gap:26px;margin-left:auto;margin-right:24px}
   .top nav a{color:var(--ink-2);text-decoration:none;font-size:.86rem;font-weight:600}
-  .hero{padding:28px 0 8px}
-  .hero .grid{grid-template-columns:1fr 200px;gap:12px 40px;align-items:center}
-  .catch{font-size:2.3rem}
-  .hero .pills{margin:0}
-  .form-sec{padding-top:24px}
+  .hero{padding:64px 0 96px}
+  .hero .grid{grid-template-columns:1.05fr .95fr;gap:56px}
+  .catch{font-size:3.1rem}
   .sh h2{font-size:2.1rem}
   .stats .grid{grid-template-columns:repeat(4,1fr)}
   .steps{grid-template-columns:repeat(3,1fr)}
@@ -526,7 +523,7 @@ footer a{color:var(--ink-2)}
 .flow3 li{color:var(--ink);font-weight:700}
 .flow3 li b{display:inline-block;margin-right:6px}
 .flow3 li span{display:block;font-weight:400;font-size:.8rem;color:var(--ink-2);margin-left:1.6em}
-@media (max-width:719px){.flow3{padding:0;background:none;margin-bottom:14px}.flow3-h{display:none}.flow3 ol{grid-template-columns:repeat(3,1fr);gap:6px}.flow3 li{font-size:.72rem;line-height:1.35;letter-spacing:0;background:#f7f4f1;border-radius:10px;padding:6px 4px 6px 6px;word-break:keep-all;overflow-wrap:anywhere;display:block;gap:4px;align-items:flex-start}.flow3 li b{margin:0 2px 0 0;color:var(--o-d)}.flow3 li span{display:none}.flow3-note{margin-top:6px;font-size:.76rem;text-align:center}}
+@media (max-width:719px){.flow3{padding:0;background:none;margin-bottom:14px}.flow3-h{display:none}.flow3 ol{grid-template-columns:repeat(3,1fr);gap:6px}.flow3 li{font-size:.72rem;line-height:1.35;letter-spacing:0;background:#f7f4f1;border-radius:10px;padding:6px 4px 6px 6px;word-break:keep-all;overflow-wrap:anywhere}.flow3 li b{margin:0 2px 0 0;color:var(--o-d)}.flow3 li span{display:none}.flow3-note{margin-top:6px;font-size:.76rem;text-align:center}.form-sec .mode-tabs{padding:3px}.form-sec .mode-tabs button{padding:8px 4px;font-size:.78rem;line-height:1.3;letter-spacing:0;white-space:nowrap}}
 .flow3-note{margin:10px 0 0;font-size:.8rem;font-weight:700;color:var(--ink)}
 @media (min-width:720px){.flow3 ol{grid-template-columns:repeat(3,1fr)}}
 .yoyaku{background:#f7f4f1;border-radius:16px;padding:14px 16px;font-size:.86rem;color:var(--ink-2);margin:0 0 22px;line-height:1.7}
@@ -564,7 +561,6 @@ footer a{color:var(--ink-2)}
 .partner-points li{font-size:.72rem;background:#eef6ee;color:#2f5d34;border-radius:999px;padding:2px 8px;line-height:1.5}
 .partner-points li.lim{background:#f1f0ee;color:#55504a}
 .partner-body{display:flex;gap:12px;align-items:flex-start}.partner-main{flex:1;min-width:0}.partner-main .partner-price small{display:block;line-height:1.45;margin-top:2px}.partner-main .partner-caution{margin-top:2px!important}.partner-thumb{position:relative;flex:0 0 37%;max-width:220px;align-self:center}.partner-main .partner-price small,.partner-main .partner-offer small{font-size:.68rem;letter-spacing:-.01em}.partner-main .partner-caution{font-size:.72rem!important}.partner-photos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:12px;scrollbar-width:none}.partner-photos::-webkit-scrollbar{display:none}
-.partner-thumb0{aspect-ratio:3/2;border-radius:12px;background:#f8f3ee url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23e3cdb9'%3E%3Cellipse cx='32' cy='42' rx='13' ry='11'/%3E%3Cellipse cx='16' cy='28' rx='5.5' ry='7'/%3E%3Cellipse cx='48' cy='28' rx='5.5' ry='7'/%3E%3Cellipse cx='25' cy='17' rx='5.5' ry='7.5'/%3E%3Cellipse cx='39' cy='17' rx='5.5' ry='7.5'/%3E%3C/svg%3E") center/30px no-repeat}
 .partner-photos img{flex:0 0 100%;width:100%;aspect-ratio:3/2;object-fit:cover;scroll-snap-align:start;border-radius:12px;background:#f3eee8}
 .partner-photo-src{display:block;margin-top:3px;font-size:.62rem;line-height:1.3;color:#5f6368;overflow-wrap:anywhere}.partner-photo-n{position:absolute;left:0;right:0;bottom:5px;text-align:center;font-size:.4rem;letter-spacing:3px;color:rgba(255,255,255,.9);text-shadow:0 0 3px rgba(0,0,0,.6);pointer-events:none}
 .partner-driver{display:inline-block;width:48px;height:48px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:8px;background:#f3eee8}.partner-card .partner-price .partner-was{font-size:.95rem;font-weight:600;color:var(--ink-2);text-decoration-thickness:2px}.partner-offer{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;margin:6px 0 2px;font-size:.84rem;line-height:1.5;color:#3c4043}.partner-offer::before{content:"";flex:0 0 auto;width:15px;height:15px;align-self:center;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z' fill='none' stroke='%23c2410c' stroke-width='2.2' stroke-linejoin='round'/%3E%3Ccircle cx='8' cy='8' r='1.8' fill='%23c2410c'/%3E%3C/svg%3E") no-repeat center/15px}.partner-offer b{font-weight:800;color:#c2410c}.partner-offer small{font-size:.76rem;color:#5f6368}.partner-deal{display:inline-block;margin-left:2px;padding:1px 7px;border-radius:6px;background:#fde8dc;color:#c2410c;font-size:.72rem;font-weight:800;vertical-align:middle}
@@ -989,14 +985,26 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 
 <main>
 
-<!-- 1. ヒーロー（スマホの最初の画面にフォームが入るよう、見出し・写真・ひとことだけ。Nori 2026-11-16「フォームに行くまでスクロールが長すぎる」） -->
+<!-- 1. ヒーロー -->
 <div class="wrap"><nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットのくらし窓口</a> › <a href="/kanagawa/">神奈川のペットタクシー</a> › 横浜市</nav></div>
 <section class="hero">
   <div class="wrap grid">
-    <h1>
-      <span class="kicker">横浜市のペットタクシー <b style="white-space:nowrap">無料</b></span>
-      <span class="catch">家族だから、<br><em>移動もやさしく。</em></span>
-    </h1>
+    <div>
+      <h1>
+        <span class="kicker">横浜市のペットタクシー <b style="white-space:nowrap">無料</b></span>
+        <span class="catch">家族だから、<br><em>移動もやさしく。</em></span>
+      </h1>
+      <p class="lede">横浜市を対応エリアに書いているペットタクシーは7社（2026年10月30日時点）。横浜市の動物病院への通院から、お引っ越し、空港への送迎まで。フォームにお迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。無料で使えて、当日の依頼もできます。</p>
+      <ul class="pills">
+        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>無料</li>
+        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>何社にでもまとめて問い合わせ</li>
+        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>連絡はメールだけ</li>
+        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>多頭もOK</li>
+      </ul>
+      <div class="hero-fare"><b>各社の料金を、その場でくらべられます</b><span>お迎えの場所と行き先を入れると、来てもらえる会社ごとの料金の目安が並びます。各社の公式サイトの料金表から計算した概算で、確定料金ではありません。</span></div>
+      <a class="btn" href="#form" data-cta="hero-fare">空き状況と料金を問い合わせる（無料）<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
+      <p class="after">無料で使えます（運賃は当日ペットタクシーへ直接お支払い）。当日の依頼もできます。</p>
+    </div>
     <div class="hero-visual">
       <div class="photo">
         <div class="fallback" aria-hidden="true">
@@ -1028,22 +1036,19 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
         </div>
         <picture><source srcset="/img/area/kanagawa-yokohama.webp" type="image/webp"><img src="/img/area/kanagawa-yokohama.jpg" alt="横浜の港の見える坂の住宅街で、キャバリアの入ったキャリーをワゴン車の座席に乗せる飼い主" width="1200" height="900" style="object-position:70% 40%" fetchpriority="high" onerror="this.remove()"></picture>
       </div>
+      <div class="float f1" aria-hidden="true"><span class="ok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><b>問い合わせ → 返事 → 予約</b><span>料金を見て、納得してから決められます</span></div></div>
+      <div class="float f2" aria-hidden="true"><b>無料</b>何度でも</div>
     </div>
-    <ul class="pills">
-        
-        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>何社にでもまとめて問い合わせ</li>
-        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>連絡はメールだけ</li>
-        <li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>多頭もOK</li>
-      </ul>
   </div>
 </section>
 
 <!-- 6. フォーム -->
 <section class="form-sec" id="form">
   <div class="wrap">
+    <div class="sh"><h2>空き状況と料金を問い合わせる（無料）</h2></div>
 
     <div class="mode-tabs" id="modeTabs" role="tablist" hidden>
-      <button type="button" role="tab" aria-selected="true" data-mode="normal">料金をくらべて問い合わせ</button>
+      <button type="button" role="tab" aria-selected="true" data-mode="normal">空き状況・料金の問い合わせ</button>
       <button type="button" role="tab" aria-selected="false" data-mode="emg">緊急のとき</button>
     </div>
     <div class="emg" id="emgBox" hidden>
@@ -1096,7 +1101,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
       <p class="emg-note" id="emgNote"></p>
     </div>
     <div class="form-card">
-      <div class="flow3" id="how" aria-label="ご利用の流れ"><p class="flow3-h">ご利用の流れ</p><ol><li><b>①</b>会社を選んで<wbr>問い合わせ<span>空き状況と料金を、選んだ会社に問い合わせます</span></li><li><b>②</b>会社から<wbr>返事が届く<span>この日時に空いているか、確定料金（税込）をメールでお知らせします</span></li><li><b>③</b>納得したら<wbr>予約を確定<span>メールの「この内容で予約する」を押した時点で予約が確定します</span></li></ol><p class="flow3-note">問い合わせを送っただけでは、まだ予約は確定していません。</p></div>
+      <div class="flow3" aria-label="ご利用の流れ"><p class="flow3-h">ご利用の流れ</p><ol><li><b>①</b>会社を選んで<wbr>問い合わせ<span>空き状況と料金を、選んだ会社に問い合わせます</span></li><li><b>②</b>会社から<wbr>返事が届く<span>この日時に空いているか、確定料金（税込）をメールでお知らせします</span></li><li><b>③</b>納得したら<wbr>予約を確定<span>メールの「この内容で予約する」を押した時点で予約が確定します</span></li></ol><p class="flow3-note">問い合わせを送っただけでは、まだ予約は確定していません。</p></div>
       <form id="petForm" novalidate>
         <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
@@ -1112,9 +1117,9 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button>
             <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
             <p class="geo-msg" id="geoMsg" aria-live="polite"></p></div>
-          <div class="f opt-lite"><span class="lbl">経由地<span class="any">任意</span></span>
+          <details class="f opt-lite more"><summary>途中で寄るところがあるとき</summary><span class="lbl">経由地</span>
             <div class="seg"><label><input type="radio" name="via_on" value="なし" checked><span>なし</span></label><label><input type="radio" name="via_on" value="あり"><span>あり（途中で寄る）</span></label></div>
-            <div class="via-box" id="viaBox" hidden><input type="text" id="via" autocomplete="off" name="via" placeholder="例：〇〇トリミングサロン（渋谷区）" aria-label="経由地"></div></div>
+            <div class="via-box" id="viaBox" hidden><input type="text" id="via" autocomplete="off" name="via" placeholder="例：〇〇トリミングサロン（渋谷区）" aria-label="経由地"></div></details>
           <div class="f"><label for="dropoff">行き先<span class="need">必須</span></label>
             <input type="text" id="dropoff" autocomplete="off" name="dropoff" placeholder="例：代々木公園／〇〇動物病院（目黒区）" required>
             <button type="button" class="hist-clear" id="histClear" hidden>この端末に残っている場所の候補を消す</button></div>
@@ -1124,7 +1129,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
               <select id="hour" name="hour" required aria-label="時"><option value="">時</option><option value="00">0時</option><option value="01">1時</option><option value="02">2時</option><option value="03">3時</option><option value="04">4時</option><option value="05">5時</option><option value="06">6時</option><option value="07">7時</option><option value="08">8時</option><option value="09">9時</option><option value="10">10時</option><option value="11">11時</option><option value="12">12時</option><option value="13">13時</option><option value="14">14時</option><option value="15">15時</option><option value="16">16時</option><option value="17">17時</option><option value="18">18時</option><option value="19">19時</option><option value="20">20時</option><option value="21">21時</option><option value="22">22時</option><option value="23">23時</option></select>
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
-          <p class="note">当日の依頼もできます（空いていて間に合う会社だけ候補に出ます）。会社にメールで確認するため、お迎えの時刻は、いまから3時間以上あとで選んでください。</p>
+          <p class="note dt-note">当日も依頼できます。会社にメールで確かめるため、お迎えはいまから3時間以上あとで選んでください。</p>
           <div class="f"><span class="lbl">片道・往復<span class="need">必須</span></span>
             <div class="seg"><label><input type="radio" name="trip" value="片道" required><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復</span></label></div>
             <div class="via-box" id="retBox" hidden><label for="retDate" class="lbl">帰りのお迎え日時（用事が終わる時刻）<span class="need">必須</span></label>
@@ -1134,8 +1139,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
                 <select id="retMinute" name="ret_minute" aria-label="帰りの分"></select>
               </div>
               <p class="note" id="retRoute">帰りは、行き先でお迎えして、お迎えの場所までお送りします。</p>
-              <p class="note">待っていてもらうか、あらためて迎えに来てもらうかは、安くなるほうを会社が返事でご案内します。</p>
-              <p class="note wait-note"><b>待ち時間の料金がかかる会社では、待ち時間は当日の実際の時間で精算します。</b>用事が長引いたときなど、最終的なお支払いは会社の返事の料金から変わることがあります（待ち時間の料金がない会社は、候補のカードにこの注意が出ません）。</p>
+              <p class="note wait-note"><b>待ち時間の料金は、当日の実際の時間で精算します</b>（待ち時間の料金がかかる会社だけ）。</p>
               <label class="chk"><input type="checkbox" id="retOther" name="ret_other" value="1"> 帰りの場所を変える</label>
               <div id="retPlaces" hidden>
                 <label for="retPickup" class="lbl">帰りのお迎えの場所<span class="need">必須</span></label>
@@ -1150,16 +1154,15 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
           <div class="group-h"><span>2</span>どんな子ですか？</div>
           <div class="f"><label for="petCount">一緒に乗る子の数<span class="need">必須</span></label>
             <select id="petCount" required><option value="">選んでください</option><option value="1" selected>1匹</option><option value="2">2匹</option><option value="3">3匹</option><option value="4">4匹</option><option value="5">5匹</option></select></div>
-          <p class="pet-hint" id="petHint">頭数を選ぶと、1匹ずつの入力欄が出ます。</p>
+          <p class="pet-hint" id="petHint" hidden></p>
           <div id="pets"></div>
-          <label class="chk opt-lite"><input type="checkbox" id="petOnly" name="pet_only" value="1"> ペットだけで乗る（飼い主さんは乗らない）</label>
+          <div class="f opt-lite" id="ridersF"><label for="riders">一緒に乗る人数<span class="need">必須</span></label>
+            <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option>1人</option><option>2人</option><option>3人</option></select></div>
+          <label class="chk opt-lite" hidden><input type="checkbox" id="petOnly" name="pet_only" value="1"> ペットだけで乗る（飼い主さんは乗らない）</label>
           <div class="only-box opt-lite" id="onlyBox" hidden>
-            <p class="small" style="margin:0 0 6px">ペットだけの送迎を受けるかは会社によって違います。会社からの空き状況と料金の返事でお知らせします。</p>
             <div class="f"><label for="handFrom">お迎えでペットを渡す人<span class="need">必須</span></label><input type="text" id="handFrom" name="hand_from" maxlength="100" placeholder="例：家族（母）・ペットホテルの受付"></div>
             <div class="f"><label for="handTo">行き先で受け取る人<span class="need">必須</span></label><input type="text" id="handTo" name="hand_to" maxlength="100" placeholder="例：動物病院の受付・祖父"></div>
           </div>
-          <div class="f opt-lite" id="ridersF"><label for="riders">一緒に乗る人数<span class="need">必須</span><span class="any">飼い主さんは付き添いとして同乗します。同乗できる人数は会社によって違います</span></label>
-            <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option>1人</option><option>2人</option><option>3人</option></select></div>
           <div class="f opt-lite"><label for="luggage">荷物の量<span class="need">必須</span></label>
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
@@ -1240,7 +1243,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
   </div>
 </section>
 
-<section class="top-about" aria-label="このサイトについて"><div class="wrap"><p class="lede">横浜市を対応エリアに書いているペットタクシーは7社（2026年10月30日時点）。横浜市の動物病院への通院から、お引っ越し、空港への送迎まで。フォームにお迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。無料で使えて、当日の依頼もできます。</p><ul class="pills about-pts"><li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>運賃は当日ペットタクシーへ直接お支払い</li><li><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>当日の依頼もできます</li></ul></div></section>
 <!-- 3. 3ステップ -->
 
 <!-- 市の説明（gen_areas.py の CITIES） -->
@@ -1263,7 +1265,16 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
   </article></div>
 </section>
 <div class="wrap"><p class="to-top">ほかの都道府県の会社もふくめてさがすときは、<a href="/">全国のペットタクシーの料金をくらべる</a>ページへ。</p></div>
-<!--AFTER_FORM-->
+<section id="how">
+  <div class="wrap">
+    <div class="sh"><span class="eyebrow">HOW IT WORKS</span><h2>ペットタクシーの頼み方は、<br>3ステップだけ。</h2><p>アプリのダウンロードも会員登録もいりません。</p></div>
+    <ol class="steps">
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span class="no">01</span><h3>フォームに入力</h3><p>どこからどこへ、何日に、どんな子か。2匹以上でも、まとめて1回で入力できます。</p></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span><span class="no">02</span><h3>会社を選んで問い合わせ</h3><p>エリアやその子の大きさ、頭数、ケージの希望に合う事業者を表示します。料金の目安を比べて、お願いしたい会社に空き状況と料金を問い合わせます。</p></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/></svg></span><span class="no">03</span><h3>返事を見て予約を確定</h3><p>会社から、ご希望の日時で受けられるかと確定料金（税込）がメールで届きます。納得できたら「この内容で予約する」を押すと、予約が確定します。</p></li>
+    </ol>
+  </div>
+</section>
 
 <!-- 7. 選ばれる理由 -->
 <section id="why">
@@ -1579,6 +1590,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 
 <div class="sticky"><a class="btn" href="#form">空き状況と料金を問い合わせる（無料）</a></div>
 
-<script src="/app.js?v=b0c590d30a" defer></script>
+<script src="/app.js?v=d32f968b43" defer></script>
 </body>
 </html>

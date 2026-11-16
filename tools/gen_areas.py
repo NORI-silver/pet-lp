@@ -568,7 +568,7 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = t.replace('<a class="logo" href="#">', '<a class="logo" href="/">', 1)
     # h1 とリード文
     t = re.sub(r'(<span class="kicker">).*?(<b )', lambda m: m.group(1) + e(kicker) + " " + m.group(2), t, count=1, flags=re.S)
-    t = re.sub(r'(<section class="top-about"[^>]*><div class="wrap"><p class="lede">).*?(</p>)', lambda m: m.group(1) + e(lede) + m.group(2), t, count=1, flags=re.S)  # リード文はフォームの後ろ（2026-11-16）
+    t = re.sub(r'(<section class="hero">.*?<p class="lede">).*?(</p>)', lambda m: m.group(1) + e(lede) + m.group(2), t, count=1, flags=re.S)
     t = t.replace('<section class="hero">', f'<div class="wrap"><nav class="crumb" aria-label="パンくずリスト">{crumb}</nav></div>\n<section class="hero">', 1)
     # フォームのお迎えの都道府県・緊急タブの都道府県を最初から選んでおく
     t = re.sub(r'(<select id="pref"[^>]*>.*?)<option>' + re.escape(pref) + '</option>', lambda m: m.group(1) + f'<option selected>{pref}</option>', t, count=1, flags=re.S)
@@ -576,7 +576,7 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     # 地域の説明はフォームの後ろ（「使い方」の前）に
     # トップ（全国の入口）へ、「ペットタクシー」全体のことばでリンクする（トップとエリアページの役割を分ける）
     to_top = '<div class="wrap"><p class="to-top">ほかの都道府県の会社もふくめてさがすときは、<a href="/">全国のペットタクシーの料金をくらべる</a>ページへ。</p></div>'
-    t = t.replace('<!--AFTER_FORM-->', area_html + '\n' + to_top + '\n<!--AFTER_FORM-->', 1)
+    t = t.replace('<section id="how">', area_html + '\n' + to_top + '\n<section id="how">', 1)
     # エリアページ用のCSS（.crumb .prose など）を足す
     t = t.replace("</style>", extra_css.strip() + "\n</style>", 1)
     # いちばん上の写真だけ、そのページの写真があれば置きかえる（tools/page_images.py）
@@ -1738,9 +1738,8 @@ PREF_CHECKS = [
 def pref_fare_html(pf):
     rows = PREF_FARES.get(pf)
     if not rows:
-        return (f'<p>{e(pf)}のペットタクシーの料金は、当サイトにはまだ載っていません。料金は会社ごとに決まっていて、多くは次のものを足して計算します。</p>'
-                '<ul><li>乗る料金（多くは乗る距離で決まります）</li><li>お迎え料金（お店からお迎えの場所まで）</li><li>待ち時間の料金</li><li>夜間・早朝の割増</li></ul>'
-                '<p>頼む前に、どこまでが基本料金に入っているかを確かめてください。</p>')
+        return (f'<p>{e(pf)}のペットタクシーの料金は、当サイトにはまだ載っていません。料金は会社ごとに決まっていて、多くは乗る距離で計算します。'
+                'そのほかに、お迎え料金や待ち時間の料金、夜間・早朝の割増がかかることがあります。頼む前に、どこまでが基本料金に入っているかを確かめてください。</p>')
     return ('<p>' + e(pf) + 'のペットタクシー会社が公式サイトに書いている料金の例です。同じ「基本料金」でも、含まれる距離やお迎え・待ち時間の扱いは会社ごとに違います。</p>'
             '<div class="tbl"><table><thead><tr><th>会社のある場所</th><th>乗る料金</th><th>お迎えなど</th></tr></thead><tbody>' +
             ''.join(f'<tr><th>{e(w)}</th><td>{e(f)}</td><td>{e(pk)}</td></tr>' for w, f, pk in rows) + '</tbody></table></div>'

@@ -833,7 +833,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       es.forEach(function(x){ seen[x.target.id || "hero"] = x.isIntersecting; });
       sticky.style.visibility = (seen.hero || seen.form) ? "hidden" : "visible";
     });
-    io.observe(document.querySelector(".hero")); io.observe($("form"));
+    io.observe(document.querySelector(".hero .btn")); io.observe($("form"));
   }
 
   // 経由地（ありを選んだときだけ入力欄を出す）
@@ -923,16 +923,17 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         '<div class="kind-box" hidden><label for="' + k + '_kind" class="lbl" style="margin-top:10px;font-weight:700">どんな動物ですか？<span class="need">必須</span></label><select id="' + k + '_kind" name="' + k + '_kind"><option value="">選んでください</option>' +
         KINDS.map(function(o){ return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('') + '</select>' +
         '<p style="margin:6px 0 0;font-size:.8rem;color:var(--ink-3)">乗せられる動物は会社ごとに違います。乗せられる会社を先に出します。</p></div></div>' +
-      '<div class="two">' +
+      '<div class="f"><label for="' + k + '_weight">体重（kg）<span class="need">必須</span></label><input type="number" id="' + k + '_weight" name="' + k + '_weight" min="0.01" max="120" step="any" inputmode="decimal" placeholder="例：8（小さな子は 0.3 など）" required></div>' +
+      '<div class="f opt-lite"><span class="lbl">ケージ・キャリー<span class="need">必須</span></span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true) + '</div>' +
+      '<details class="more opt-lite"><summary>犬種・年齢・予防接種など（任意）</summary><div class="two">' +
         '<div class="f opt-lite"><label for="' + k + '_breed"><span class="breed-lbl">犬種・猫種</span><span class="any">わかれば</span></label><div class="cb"><input type="text" id="' + k + '_breed" name="' + k + '_breed" class="breed" placeholder="選ぶか、入力してしぼりこみ" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><ul class="cb-list" role="listbox" hidden></ul></div></div>' +
-        '<div class="f"><label for="' + k + '_weight">体重（kg）<span class="need">必須</span></label><input type="number" id="' + k + '_weight" name="' + k + '_weight" min="0.01" max="120" step="any" inputmode="decimal" placeholder="例：8（小さな子は 0.3 など）" required></div>' +
         '<div class="f opt-lite"><label for="' + k + '_age">年齢<span class="any">わかれば</span></label><input type="number" id="' + k + '_age" name="' + k + '_age" min="0" max="40" inputmode="numeric" placeholder="例：12"></div>' +
         '<div class="f opt-lite"><span class="lbl">性別<span class="any">わかれば</span></span>' + seg(k + "_sex", [["オス","男の子"],["メス","女の子"]], false) + '</div>' +
       '</div>' +
-      '<div class="f opt-lite"><span class="lbl">ケージ・キャリー<span class="need">必須</span></span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true) + '</div>' +
       '<div class="f opt-lite"><span class="lbl">予防接種<span class="any">済んでいるものにチェック</span></span><div class="chks">' +
         '<label class="chk"><input type="checkbox" name="' + k + '_vac" value="1"> 混合ワクチン</label>' +
         '<label class="chk rabies"><input type="checkbox" name="' + k + '_rabies" value="1"> 狂犬病の予防注射</label></div></div>' +
+      '</details>' +
       '<div class="f opt-lite"><span class="lbl">介護は必要ですか？<span class="need">必須</span></span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true) +
         '<div class="care-box" hidden><span class="lbl">どんな手助けが必要ですか？<span class="any">あてはまるものすべて</span></span><div class="chks">' +
         CARE_OPTS.map(function(c){ return '<label class="chk"><input type="checkbox" name="' + k + '_care_need" value="' + c + '"> ' + c + '</label>'; }).join('') + '</div>' +
@@ -962,7 +963,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     else if (/^0/.test($("riders").value)) $("riders").value = "";
   }
   $("petOnly").addEventListener("change", function(){ syncOnly(); $("riders").dispatchEvent(new Event("change", {bubbles: true})); });
-  $("riders").addEventListener("change", function(){ if (/^0/.test($("riders").value) && !$("petOnly").checked) { $("petOnly").checked = true; syncOnly(); } });
+  $("riders").addEventListener("change", function(){ var z = /^0/.test($("riders").value); if (z !== $("petOnly").checked) { $("petOnly").checked = z; syncOnly(); } });
 
   // ── 犬種・猫種：一覧から選ぶか、入力するとしぼりこみ（一覧にない種類はそのまま入力できる）──
   var BREEDS = {
