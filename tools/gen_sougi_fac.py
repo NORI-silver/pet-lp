@@ -153,7 +153,7 @@ def render(ctx, f):
   <div class="wrap">
     <div class="emg">
       <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts">{"".join(f"<li>{e(x)}</li>" for x in pts)}</ul></div>
-      <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">公式サイトに書いてあること</h2><div class="tbl"><table class="pp-tbl"><thead><tr><th>項目</th><th>内容</th><th>出どころ</th></tr></thead><tbody>{rows}</tbody></table></div></div>
+      <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">基本の情報</h2><div class="tbl"><table class="pp-tbl"><thead><tr><th>項目</th><th>内容</th><th>出どころ</th></tr></thead><tbody>{rows}</tbody></table></div></div>
       {card}
       {_cmp(e, f)}
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{faq_html}</dl></div>

@@ -139,7 +139,7 @@ def _visit_answer(e, rows):
     rows_h = "".join(f'<tr><th scope="row">{e(h["name"])}<small>（{e(h["prefs"][0])}）</small></th><td>{cell(h, "往診料")}</td><td>{cell(h, "受付時間")}</td><td>{cell(h, "家でできること")}</td><td>{cell(h, "家でできないこと")}</td><td>{cell(h, "支払い方法")}</td></tr>' for h in tx)
     return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">往診の動物病院のポイント</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}</div>'
             f'<div class="emg-tips" style="margin-top:0"><h4>往診料・家でできること・できないことをくらべる（{len(tx)}院）</h4>'
-            '<p>公式サイトに書いてあることを写しました。金額は税込・税抜が病院ごとに違うので、そのままです。「—」は公式サイトに書いていない・見つからなかった項目です（「しない」という意味ではありません）。</p>'
+            '<p>公式サイトに書いてあることを写しました。金額は税込・税抜が病院ごとに違うので、そのままです。「—」は分からなかった項目です（「しない」という意味ではありません）。</p>'
             f'<table><thead><tr><th>病院</th><th>往診料</th><th>受付時間</th><th>家でできること</th><th>家でできないこと</th><th>お支払い</th></tr></thead><tbody>{rows_h}</tbody></table></div>')
 
 def _cat_answer(e, rows):
@@ -164,7 +164,7 @@ def _cat_answer(e, rows):
     rows_h = "".join(f'<tr><th scope="row">{e(h["name"])}<small>（{e(h["prefs"][0])}）</small></th><td>{cell(h, "休診日")}</td><td>{cell(h, "予約のしかた")}</td><td>{cell(h, "猫にやさしい工夫")}</td><td>{cell(h, "設備")}</td><td>{cell(h, "駐車場")}</td></tr>' for h in tx)
     return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">猫専門の動物病院のポイント</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}</div>'
             f'<div class="emg-tips" style="margin-top:0"><h4>予約・猫にやさしい工夫・設備をくらべる（{len(tx)}院）</h4>'
-            '<p>公式サイトに書いてあることを短くしました。「—」は公式サイトに書いていない・見つからなかった項目です（「ない」という意味ではありません）。</p>'
+            '<p>公式サイトに書いてあることを短くしました。「—」は分からなかった項目です（「ない」という意味ではありません）。</p>'
             f'<table><thead><tr><th>病院</th><th>休診日</th><th>予約</th><th>猫にやさしい工夫</th><th>設備</th><th>駐車場</th></tr></thead><tbody>{rows_h}</tbody></table></div>')
 
 def _spec_box(e, title, kv, tiles, cap, cols, tx):
@@ -176,7 +176,7 @@ def _spec_box(e, title, kv, tiles, cap, cols, tx):
     rows_h = "".join(f'<tr><th scope="row">{e(h["name"])}<small>（{e(h["prefs"][0])}）</small></th>' + "".join(f"<td>{e(fv(h, k)) or '—'}</td>" for _, k in cols) + "</tr>" for h in tx)
     return (f'<div class="art pp-ans"><div class="answer"><h2 id="answer">{e(title)}</h2><ul class="kv">{li}</ul></div>{_V.stats(tiles)}</div>'
             f'<div class="emg-tips" style="margin-top:0"><h4>{e(cap)}（{len(tx)}院）</h4>'
-            '<p>公式サイトに書いてあることを短くしました。「—」は公式サイトに書いていない・見つからなかった項目です（「ない」という意味ではありません）。</p>'
+            '<p>公式サイトに書いてあることを短くしました。「—」は分からなかった項目です（「ない」という意味ではありません）。</p>'
             f'<table><thead><tr><th>病院</th>{th}</tr></thead><tbody>{rows_h}</tbody></table></div>')
 
 def _exotic_answer(e, rows):
@@ -266,7 +266,7 @@ def render_cond(cond, ctx):
       <p class="emg-free">この一覧は無料の情報です。病院からお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金や受け入れは、それぞれの病院に直接おたずねください。</p>
       <div class="emg-tips"><h4>{e(cond["short"])}の病院にかかるときに</h4><dl>{tips}</dl>
       <p class="emg-tips-note">ここに書いたのは一般的な心がけです。ペットの様子にあわせて、病院の指示にしたがってください。</p></div>
-      <p class="emg-note">当サイトとは別の病院です（{e(checked)}時点の、公式サイトに書いてある情報）。診療時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。口コミの星と本文は地図サービスから取り寄せたもので、当サイトの評価ではありません。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+      <p class="emg-note">当サイトとは別の病院です（{e(checked)}時点の情報）。診療時間や対応は変わることがあるので、行く前・頼む前に必ずリンク先でご確認ください。口コミの星と本文は地図サービスから取り寄せたもので、当サイトの評価ではありません。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
 </section>

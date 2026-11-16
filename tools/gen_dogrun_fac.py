@@ -76,7 +76,7 @@ def _cmp(e, d):
                  f"<td>{e(reg)}</td><td>{'○' if G.is_small(x) else ''}</td><td>{'○' if x.get('parking') else ''}</td></tr>")
     return (f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">{e(d["pref"])}のほかのドッグランとくらべる</h2><div class="tbl"><table class="pp-tbl cmp"><thead><tr>'
             '<th>名前</th><th>市区町村</th><th>種類</th><th>料金</th><th>利用登録</th><th>小型犬エリア</th><th>駐車場の記載</th></tr></thead>'
-            f'<tbody>{body}</tbody></table></div><p class="emg-tips-note">公式ページに書いてあることだけで作った表です。空欄は「ない」ではなく、書いていない・分からないという意味です。並びは順位ではありません。</p></div>')
+            f'<tbody>{body}</tbody></table></div><p class="emg-tips-note">公式ページの情報をもとに作った表です。空欄は「ない」ではなく、書いていない・分からないという意味です。並びは順位ではありません。</p></div>')
 
 
 def _faq(d):
@@ -141,7 +141,7 @@ def render(ctx, d):
   <div class="wrap">
     <div class="emg">
       <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts">{"".join(f"<li>{e(x)}</li>" for x in pts)}</ul></div>
-      <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">公式ページに書いてあること</h2><div class="tbl"><table class="pp-tbl"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody>{rows}</tbody></table></div>
+      <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">基本の情報</h2><div class="tbl"><table class="pp-tbl"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody>{rows}</tbody></table></div>
       <p class="emg-tips-note">出どころ：{src_html}。書いていない項目は載せていません。変わることがあるので、出かける前に必ず公式ページでご確認ください。</p></div>
       {taxi}
       {_cmp(e, d)}

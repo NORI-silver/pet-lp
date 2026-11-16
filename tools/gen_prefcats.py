@@ -170,7 +170,7 @@ def _night_fact_table(e, pf, rs):
             '夜間は、診察料のほかに検査・処置・お薬の料金が加わります。金額は税込・税抜が病院ごとに違うので、そのまま写しています。'
             '<a href="/guide/night-vet-fee/">夜間の動物病院の料金の相場と、夜に受診したほうがいい症状</a>もあわせてどうぞ。</p>'
             f'<table><thead><tr><th>病院</th>' + "".join(f"<th>{lab}</th>" for lab, _ in _FCOLS) + f'</tr></thead><tbody>{rows}</tbody></table>'
-            f'<p class="emg-tips-note">「—」は公式サイトに書いていない・見つからなかった項目です（「しない」という意味ではありません）。{jd}時点の、公式サイトに書いてある情報です。料金や受け入れは変わることがあるので、行く前に電話でたずねてください。</p>'
+            f'<p class="emg-tips-note">「—」は分からなかった項目です（「しない」という意味ではありません）。{jd}時点の情報です。料金や受け入れは変わることがあるので、行く前に電話でたずねてください。</p>'
             f'<details><summary>出どころの公式サイト</summary><ul>{srcs}</ul></details></div>')
 
 

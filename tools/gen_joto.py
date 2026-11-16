@@ -16,7 +16,7 @@ H1 = "保護犬・保護猫を迎える（譲渡・里親）"
 NAME = "保護犬・保護猫の譲渡の窓口"
 TITLE = "保護犬・保護猫の譲渡（里親）｜全国の動物愛護センターの条件・費用・譲渡会を都道府県でさがす｜ペットタクシー予約窓口"
 DESC = ("保護犬・保護猫の里親になりたい人のために、47都道府県・政令指定都市・中核市の動物愛護センター（公的なシェルター）の譲渡の案内を、"
-        "公式ページに書いてある条件（年齢・住まい・家族・講習会・トライアル・費用）と一緒にまとめました。譲渡会や県に登録した保護団体の一覧へのリンクも。")
+        "条件（年齢・住まい・家族・講習会・トライアル・費用）と一緒にまとめました。譲渡会や県に登録した保護団体の一覧へのリンクも。")
 
 ITEMS = [dict(c, prefs=[c["pref"]]) for c in J["centers"]]
 
@@ -52,19 +52,61 @@ def topic_mark(c, words):
     if any(("ない" in x and ("トライアル" in x)) for x in hit) and words == TOPICS[4][1]: return "なし"
     return "○"
 
+# 条件は「アイコン＋短い言葉」の行にまとめる（文字は消さない。1つの条件は1つの span のまま）
+ICON_TOPICS = [
+    ("費用", "yen", ("円", "無料", "無償", "手数料", "費用", "実費", "負担")),
+    ("家族", "family", ("家族", "同居", "同意", "賛成", "ひとり暮らし", "一人暮らし", "単身", "子ども", "子供")),
+    ("年齢", "user", ("歳", "成人", "未成年", "高齢", "後見")),
+    ("住まい", "home", ("住まい", "住宅", "賃貸", "借家", "集合", "住居", "公営", "マンション", "持ち家")),
+    ("お試し", "repeat", ("トライアル", "お試し", "体験飼育")),
+    ("家庭訪問・報告", "door", ("訪問", "報告", "追跡", "アンケート", "近況", "飼育状況")),
+    ("講習", "book", ("講習", "教室", "講座", "説明を受け", "動画", "研修")),
+    ("不妊去勢・登録", "cross", ("不妊", "去勢", "繁殖", "ワクチン", "狂犬病", "マイクロチップ", "登録")),
+    ("室内飼い", "home", ("室内", "屋内", "外飼い", "完全室内")),
+    ("頭数・先住の子", "paw", ("先住", "頭数", "1頭", "一頭", "2頭", "多頭")),
+    ("見学・面会", "cal", ("見学", "お見合い", "面会", "予約", "譲渡会", "マッチング", "審査")),
+    ("持ち物", "bag", ("持って", "持参", "キャリー", "ケージ", "首輪", "リード")),
+    ("住んでいる所", "map", ("県内", "市内", "在住", "住んで", "住む", "県外", "市外")),
+]
+OTHER = ("ほかの条件", "check")
+
+def _topic(x):
+    for lab, ic, ws in ICON_TOPICS:
+        if any(w in x for w in ws): return lab, ic
+    return OTHER
+
+def icon_rows(e, conds, fees=()):
+    from faccard import icon
+    order = [t[0] for t in ICON_TOPICS] + [OTHER[0]]
+    grp, ics = {}, dict((t[0], t[1]) for t in ICON_TOPICS); ics[OTHER[0]] = OTHER[1]
+    for x in conds: grp.setdefault(_topic(x)[0], []).append(x)
+    for x in fees: grp.setdefault("費用", []).append(x)
+    li = "".join(
+        f'<li><span class="jt-ib">{icon(ics[lab], "jt-i")}</span><span class="jt-tx"><b>{e(lab)}</b>'
+        + "".join(f"<span>{e(x)}</span>" for x in grp[lab]) + "</span></li>"
+        for lab in order if lab in grp)
+    return f'<ul class="jt-c jt-ic">{li}</ul>'
+
 def card(e, c):
-    conds = "".join(f"<li>{e(x)}</li>" for x in c["conds"])
     links = "".join(f'<li><a href="{e(l["u"])}" target="_blank" rel="noopener">{e(l["t"])} ↗</a></li>' for l in c.get("links", []))
     return (f'<div class="emg-item emg-co jt-card"><a href="{e(c["url"])}" target="_blank" rel="noopener"><b>{e(c["name"])}</b></a>'
             f'<small>{e(_kind(c))}・{e(c["animals"])}</small>'
-            f'<p class="jt-h">公式ページに書いてあること</p><ul class="jt-c">{conds}</ul>'
-            + (f'<p class="jt-h">あわせて見る（公式ページ）</p><ul class="jt-l">{links}</ul>' if links else "")
+            + icon_rows(e, c["conds"])
+            + (f'<p class="jt-h">あわせて見る</p><ul class="jt-l">{links}</ul>' if links else "")
             + (f'<p class="jt-more"><a href="{city_href(c)}">{e(c["city"])}で迎えるときの条件をくわしく見る →</a></p>' if city_href(c) and not c.get("_nolink") else "")
-            + f'<small class="sg-src">{e(J["checked"])}時点の公式ページ</small></div>')
+            + f'<small class="sg-src">{e(J["checked"])}時点の情報</small></div>')
 
 CSS = """<style>
 .jt-card .jt-h{font-size:.76rem;font-weight:700;color:var(--ink-2);margin:10px 0 2px}
 .jt-card ul{margin:0;padding-left:1.2em;font-size:.86rem;line-height:1.7}
+.jt-card ul.jt-ic,.emg-item ul.jt-ic{list-style:none;padding:0!important;margin:10px 0 2px!important;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0 14px}
+.jt-ic li{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid #f3e6da;line-height:1.55}
+.jt-ic li:last-child{border-bottom:0}
+.jt-ic .jt-ib{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:#ffe8d6;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.jt-ic .jt-i{width:16px;height:16px;fill:none;stroke:#c2410c;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.jt-ic .jt-tx{display:block;min-width:0;font-size:.84rem;color:var(--ink,#2b2622)}
+.jt-ic .jt-tx b{display:inline-block;font-size:.72rem;color:#9a3412;background:#fff1e6;border-radius:999px;padding:0 8px;margin-right:6px;font-weight:800;text-decoration:none!important;vertical-align:1px}
+.jt-ic .jt-tx span{display:block}.jt-ic .jt-tx b+span{display:inline}
 .jt-card ul.jt-l{font-size:.84rem}
 .emg-item small.sg-src{color:var(--ink-3);font-size:.72rem;margin-top:6px}
 .jt-card .jt-more{margin:8px 0 0;font-size:.86rem;font-weight:700}
@@ -75,6 +117,7 @@ CSS = """<style>
 .jt-flow{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px;padding:0;list-style:none;counter-reset:jt}
 .jt-flow li{flex:1 1 140px;background:var(--cream);border-radius:10px;padding:8px 10px;font-size:.84rem;counter-increment:jt}
 .jt-flow li b{display:block;font-size:.88rem}
+.jt-flow .jt-fi{display:block;font-size:1.8rem;line-height:1.2}
 .jt-flow li b::before{content:counter(jt) ". "}
 </style>"""
 
@@ -85,7 +128,8 @@ FLOW = [("さがす", "県や市の動物愛護センター、譲渡会、保護
         ("迎えたあと", "不妊去勢・マイクロチップ・犬の登録、決まった時期の近況報告")]
 
 def flow_html(e):
-    return '<ol class="jt-flow">' + "".join(f"<li><b>{e(t)}</b>{e(s)}</li>" for t, s in FLOW) + "</ol>"
+    ic = ["🔍", "📖", "🤝", "🏡", "💉"]
+    return '<ol class="jt-flow">' + "".join(f'<li><span class="jt-fi" aria-hidden="true">{ic[i]}</span><b>{e(t)}</b>{e(s)}</li>' for i, (t, s) in enumerate(FLOW)) + "</ol>"
 
 BEFORE = [
  ("住んでいる県・市の窓口へ", "多くの自治体は、原則として住んでいる都道府県・市の人に譲渡します（神奈川県は東京都・山梨県・静岡県も、奈良県・高知県・広島県・静岡県は県外も可など、広げているところもあります）。政令指定都市に住んでいる人は、市のセンターが窓口です。"),
@@ -99,7 +143,7 @@ BEFORE = [
 def faq(n_pref, n_city, n_core=0):
     return [
      ("保護犬・保護猫はどこで迎えられますか？", f"都道府県・政令指定都市・中核市の動物愛護センターや保健所（公的なシェルター）と、民間の保護団体・ボランティアの譲渡会や施設です。このページでは{n_pref}都道府県・{n_city}の政令指定都市・{n_core}の中核市の公式の譲渡の案内をまとめています。"),
-     ("譲渡会はどこでさがせますか？", "県や市のセンターの公式ページの「譲渡会」「お知らせ」に出ます。センターが開くもののほか、県に登録した保護団体の譲渡会を案内している自治体もあります。開く日や予約のしかたは毎回変わるので、公式ページで確かめてください。"),
+     ("譲渡会はどこでさがせますか？", "県や市のセンターの公式ページの「譲渡会」「お知らせ」に出ます。センターが開くもののほか、県に登録した保護団体の譲渡会を案内している自治体もあります。開く日や予約のしかたは毎回変わるので、各センターの案内をご確認ください。"),
      ("一人暮らしや高齢でも里親になれますか？", "自治体によって違います。一人暮らしや60〜66歳以上の人は、代わりに飼う人（後見人）を決めれば申し込める自治体が多く、一人暮らしを原則受けない県（兵庫県・茨城県など）もあります。このページの各県の条件をご覧ください。"),
      ("譲渡の費用はいくらですか？", "無料の自治体（広島県・愛媛県など）と、手数料がかかる自治体（例：青森県3,000円、福島県4,000円、岐阜県7,900円、愛知県9,000円、長野県の犬13,000円・猫12,000円）があります。民間の保護団体は、医療費などの実費を譲渡費用として求めることが多く、金額は団体ごとに違います。"),
      ("トライアル（お試し）はありますか？", "あるところとないところがあります。このページに載せている例では、茨城県・千葉県・大阪府・熊本県・札幌市（先住動物がいるときだけ）などが2週間ほどのトライアルを書いていて、神奈川県や和歌山県は「していない」と書いています。"),
@@ -141,7 +185,7 @@ def render(ctx):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › {e(H1)}</nav>
     <h1><small>{n_pref}都道府県・{n_city}政令市・{n_core}中核市の公式の案内</small>{e(H1)}</h1>
-    <p class="lede">保護犬・保護猫の里親になるには、まず住んでいる県や市の動物愛護センター（公的なシェルター）の案内を見るのが近道です。申し込める人の条件・講習会・トライアル・費用は自治体ごとに違うので、公式ページに書いてあることを都道府県ごとにまとめました。</p>
+    <p class="lede">保護犬・保護猫の里親になるには、まず住んでいる県や市の動物愛護センター（公的なシェルター）の案内を見るのが近道です。申し込める人の条件・講習会・トライアル・費用は自治体ごとに違うので、都道府県ごとにまとめました。</p>
   </div>
 </section>
 <section style="padding-top:8px">
@@ -149,7 +193,7 @@ def render(ctx):
     <div class="emg">
       <div class="emg-tips jt-ans" style="margin-top:0"><h4>迎えるまでの流れ</h4>{flow_html(e)}
       <p class="emg-tips-note">くわしい条件・費用・保護団体のえらび方は、記事「<a href="/guide/adopt-pet/">保護犬・保護猫を迎えるには</a>」に。</p></div>
-      <p class="emg-free">この一覧は無料の情報です。自治体や団体からお金をもらっていません。条件は{e(J["checked"])}時点の、公式ページに書いてある内容を短くまとめたもので、変わることがあります。申し込む前に、必ずリンク先の公式ページでご確認ください。</p>
+      <p class="emg-free">この一覧は無料の情報です。自治体や団体からお金をもらっていません。条件は{e(J["checked"])}時点のもので、変わることがあります。申し込む前に、必ずリンク先でご確認ください。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       {body}
       <div class="emg-tips"><h4>申し込む前に確かめること</h4><dl>{before}</dl></div>
@@ -186,7 +230,7 @@ def _facts(rs):
 def _faq(pf, rs, n):
     names = "、".join(c["name"] for c in rs)
     return [
-     (f"{pf}で保護犬・保護猫を迎えるにはどこに申し込みますか？", f"{pf}では{names}が譲渡の窓口です（政令指定都市・中核市に住んでいる人は、まず市の窓口。市ごとの条件はそれぞれの欄で）。条件と流れはこのページの各窓口の欄と、リンク先の公式ページでご確認ください。"),
+     (f"{pf}で保護犬・保護猫を迎えるにはどこに申し込みますか？", f"{pf}では{names}が譲渡の窓口です（政令指定都市・中核市に住んでいる人は、まず市の窓口。市ごとの条件はそれぞれの欄で）。条件と流れはこのページの各窓口の欄と、リンク先でご確認ください。"),
      (f"{pf}の譲渡会はどこでわかりますか？", "県や市の窓口の公式ページの「譲渡会」「お知らせ」に出ます。このページの「あわせて見る」に、譲渡会や登録団体のページを載せています。"),
      ("譲渡の費用はかかりますか？", "自治体ごとに違います。手数料が書いてある窓口は、このページの条件の欄にその金額を載せています。迎えたあとの食事・医療・犬の登録の費用は飼い主の負担です。"),
      ("迎える日はどうやって連れて帰りますか？", "キャリーや首輪・リードを持って迎えに行きます。車がないときや大きな犬のときは、ペットタクシーで家まで一緒に帰る方法もあります。"),
@@ -197,12 +241,12 @@ def _title(pf, rs, n):
 
 def _desc(pf, rs, n):
     return (f"{pf}で保護犬・保護猫の里親になりたい人へ。" + "・".join(c["name"] for c in rs)
-            + "の譲渡の案内を、公式ページに書いてある条件（年齢・住まい・家族・講習会・トライアル・費用）と、譲渡会・登録団体のリンクと一緒にまとめました。")[:160]
+            + "の譲渡の案内を、条件（年齢・住まい・家族・講習会・トライアル・費用）と、譲渡会・登録団体のリンクと一緒にまとめました。")[:160]
 
 CAT = dict(slug=SLUG, name="保護犬・保護猫の譲渡", unit="か所", h1=H1, items=ITEMS, card=card, checked=J["checked"], min=1, css=CSS,
-  free="この一覧は無料の情報です。自治体や団体からお金をもらっていません。条件は公式ページに書いてあることを短くまとめたもので、変わることがあります。申し込む前に必ずリンク先でご確認ください。",
+  free="この一覧は無料の情報です。自治体や団体からお金をもらっていません。条件は短くまとめたもので、変わることがあります。申し込む前に必ずリンク先でご確認ください。",
   list_h="譲渡の窓口（県・市の動物愛護センター）",
-  lede=lambda pf, n: f"{pf}で保護犬・保護猫を迎えたいときの窓口と、申し込める人の条件・講習会・トライアル・費用を、公式ページに書いてあることだけでまとめました。譲渡会や県に登録した保護団体のページへのリンクも一緒にどうぞ。",
+  lede=lambda pf, n: f"{pf}で保護犬・保護猫を迎えたいときの窓口と、申し込める人の条件・講習会・トライアル・費用をまとめました。譲渡会や県に登録した保護団体のページへのリンクも一緒にどうぞ。",
   facts=_facts, faq=_faq, title_fn=_title, desc_fn=_desc,
   before_title="申し込む前に確かめること", before=BEFORE,
   taxi_h="迎える日の移動は、ペットタクシーでも", taxi_p="車がないとき、大きな犬のとき、家族と一緒に新しい子を家まで連れて帰れます。",
@@ -220,15 +264,14 @@ def groups_html(e, pf):
     cards = "".join(
         f'<div class="emg-item emg-co jt-card"><a href="{e(g["url"])}" target="_blank" rel="noopener"><b>{e(g["name"])}</b></a>'
         f'<small>民間の保護団体・{e(g["animals"])}{("・" + e(g["area"])) if g["area"] else ""}</small>'
-        '<p class="jt-h">おもな条件（団体の公式サイトより）</p><ul class="jt-c">' + "".join(f"<li>{e(x)}</li>" for x in g["conds"]) + "</ul>"
-        '<p class="jt-h">費用</p><ul class="jt-c">' + "".join(f"<li>{e(x)}</li>" for x in g["fees"]) + "</ul>"
+        + icon_rows(e, g["conds"], g["fees"]) +
         f'<p class="jt-more"><a href="{e(g["cond_url"])}" target="_blank" rel="noopener">条件・費用のページ（団体の公式サイト） ↗</a></p>'
-        f'<small class="sg-src">{e(G["checked"])}時点の公式サイト</small></div>'
+        f'<small class="sg-src">{e(G["checked"])}時点の情報</small></div>'
         for g in gs)
     regs = G["registries"].get(pf, [])
     src = "・".join(f'<a href="{e(r["u"])}" target="_blank" rel="noopener">{e(r["t"])} ↗</a>' for r in regs) or "自治体の登録団体の一覧"
     return (f'<section class="emg-pref"><h2 style="font-size:1.15em">{e(pf)}の自治体に登録された保護団体（{len(gs)}団体）</h2>'
-            f'<p class="emg-note">{src}に載っている団体のうち、公式サイトに譲渡の条件や費用が書いてある団体です。条件と費用は団体ごとにちがい、自治体の窓口より細かいことが多いので、くらべてから申し込んでください（{e(G["checked"])}時点の、公式ページに書いてある内容。おすすめ順ではありません）。</p>'
+            f'<p class="emg-note">{src}に載っている団体のうち、公式サイトに譲渡の条件や費用が書いてある団体です。条件と費用は団体ごとにちがい、自治体の窓口より細かいことが多いので、くらべてから申し込んでください（{e(G["checked"])}時点。おすすめ順ではありません）。</p>'
             + cards + '</section>')
 
 CAT["extra_after"] = groups_html
@@ -247,11 +290,11 @@ def city_faq(c, pref_c):
     fee = _fee(c)
     tri = [x for x in c["conds"] if any(w in x for w in ("トライアル", "お試し", "体験飼育"))]
     q = [(f"{city}で保護犬・保護猫を迎えるにはどこに申し込みますか？",
-          f"{city}の譲渡の窓口は{name}です。申し込める人の条件と流れは公式ページで確かめてください（このページは{J['checked']}時点の、公式ページに書いてある内容です）。"
+          f"{city}の譲渡の窓口は{name}です。申し込める人の条件と流れはリンク先でご確認ください（このページは{J['checked']}時点の情報です）。"
           + (f"市の外に住んでいる人や、県のセンターの子を迎えたいときは{pref_c['name']}の案内もご覧ください。" if pref_c else "")),
-         (f"{city}の譲渡の条件は？", "公式ページに書いてある主な条件は、" + "、".join(c["conds"][:4]) + "などです。"),
-         (f"{city}の譲渡の費用はかかりますか？", (f"公式ページには「{fee}」と書いてあります。" if fee else "公式ページには譲渡の費用は書いてありません。申し込むときにたずねてください。") + "迎えたあとの食事・医療・犬の登録の費用は飼い主の負担です。"),
-         (f"{city}の譲渡にトライアル（お試し）はありますか？", ("公式ページには「" + "・".join(tri) + "」と書いてあります。") if tri else "公式ページにはトライアルのことは書いてありません。気になるときは申し込むときにたずねてください。"),
+         (f"{city}の譲渡の条件は？", "主な条件は、" + "、".join(c["conds"][:4]) + "などです。"),
+         (f"{city}の譲渡の費用はかかりますか？", (f"「{fee}」とされています。" if fee else "譲渡の費用は分かりませんでした。申し込むときにたずねてください。") + "迎えたあとの食事・医療・犬の登録の費用は飼い主の負担です。"),
+         (f"{city}の譲渡にトライアル（お試し）はありますか？", ("「" + "・".join(tri) + "」とされています。") if tri else "トライアルのことは分かりませんでした。気になるときは申し込むときにたずねてください。"),
          ("迎える日はどうやって連れて帰りますか？", "キャリーや首輪・リードを持って迎えに行きます。車がないときや大きな犬のときは、ペットタクシーで家まで一緒に帰る方法もあります。")]
     return q
 
@@ -266,7 +309,7 @@ def render_city(ctx, c):
     before = "".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in BEFORE)
     ppage = f"/{SLUG}/{PSLUG[pf]}/"
     title = f"{city}の保護犬・保護猫の譲渡（里親）｜{c['name']}の条件・講習・譲渡会｜ペットのくらし窓口"
-    desc = (f"{city}で保護犬・保護猫の里親になりたい人へ。{c['name']}の譲渡の条件（" + "、".join(c["conds"][:2]) + "など）と流れ・譲渡会のリンクを、公式ページの情報をもとにまとめました。")[:150]
+    desc = (f"{city}で保護犬・保護猫の里親になりたい人へ。{c['name']}の譲渡の条件（" + "、".join(c["conds"][:2]) + "など）と流れ・譲渡会のリンクをまとめました。")[:150]
     ld = _ld(SITE, url, f"{city}の保護犬・保護猫の譲渡", fq,
              [("ペットタクシー予約窓口", SITE + "/"), (H1, f"{SITE}/{SLUG}/"), (f"{pf}の保護犬・保護猫の譲渡", SITE + ppage), (city, url)])
     lead3 = "".join(f"<li>{e(x)}</li>" for x in c["conds"][:3])
@@ -282,8 +325,8 @@ def render_city(ctx, c):
 <section class="area-hero">
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/{SLUG}/">{e(H1)}</a> › <a href="{ppage}">{e(pf)}</a> › {e(city)}</nav>
-    <h1><small>{e(c.get('kind') or '')}・公式ページに書いてある条件</small>{e(city)}で保護犬・保護猫を迎える（譲渡・里親）</h1>
-    <p class="lede">{e(city)}で保護犬・保護猫の里親になりたいときの窓口は、{e(c['name'])}です。申し込める人の条件・講習・お試し・費用を、公式ページに書いてあることだけで短くまとめました。</p>
+    <h1><small>{e(c.get('kind') or '')}・申し込みの条件</small>{e(city)}で保護犬・保護猫を迎える（譲渡・里親）</h1>
+    <p class="lede">{e(city)}で保護犬・保護猫の里親になりたいときの窓口は、{e(c['name'])}です。申し込める人の条件・講習・お試し・費用を短くまとめました。</p>
   </div>
 </section>
 <section style="padding-top:8px">
@@ -291,10 +334,10 @@ def render_city(ctx, c):
     <div class="emg">
       <div class="emg-tips jt-ans" style="margin-top:0"><h4>{e(city)}の窓口と主な条件</h4>
       <p><a href="{e(c['url'])}" target="_blank" rel="noopener"><b>{e(c['name'])}</b> ↗</a></p><ul>{lead3}</ul>
-      <p class="emg-tips-note">公式ページに書いてあるかどうか（✓＝書いてある。「書いていない」は「ない」ではなく、ページに書いていないという意味）</p>{chk_html(e, c)}</div>
-      <p class="emg-free">この案内は無料の情報です。自治体からお金をもらっていません。{e(J['checked'])}時点の、公式ページに書いてある内容を短くまとめたもので、変わることがあります。申し込む前に、必ずリンク先でご確認ください。</p>
+      <p class="emg-tips-note">✓＝決まりがある。—＝分からない（「ない」という意味ではありません）</p>{chk_html(e, c)}</div>
+      <p class="emg-free">この案内は無料の情報です。自治体からお金をもらっていません。{e(J['checked'])}時点の内容を短くまとめたもので、変わることがあります。申し込む前に、必ずリンク先でご確認ください。</p>
       <section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(city)}の譲渡の窓口</h2>{card(e, dict(c, _nolink=True))}</section>
-      <div class="emg-tips"><h4>迎えるまでのふつうの流れ</h4>{flow_html(e)}<p class="emg-tips-note">順番や中身は自治体ごとに少しずつ違います。{e(city)}の流れは上の公式ページで確かめてください。</p></div>
+      <div class="emg-tips"><h4>迎えるまでのふつうの流れ</h4>{flow_html(e)}<p class="emg-tips-note">順番や中身は自治体ごとに少しずつ違います。{e(city)}の流れは上のリンク先でご確認ください。</p></div>
       {pref_html}
       <div class="emg-tips"><h4>申し込む前に確かめること</h4><dl>{before}</dl></div>
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
