@@ -992,7 +992,7 @@ def _related_info(g):
 def taxi_intent(g): return g.get("category") not in NON_TAXI_CATS
 def guide_hub(slug):
     if slug.startswith(("lost-", "found-")) or slug in ("microchip", "dog-registration", "moving-with-pet", "cant-keep-pet"):
-        return "/jichitai/", "迷子・犬の登録の窓口", "お住まいの市区町村の窓口をさがす"
+        return ("/jichitai/maigo/", "迷子になったら：今日やること", "いなくなった市区町村で、今日やることを見る") if slug.startswith(("lost-", "found-")) else ("/jichitai/", "迷子・犬の登録・飼えなくなったとき", "困りごとから、次にやることを見る")
     if slug.startswith(("pet-cremation", "pet-died", "pet-death", "pet-memorial", "pet-loss", "pet-funeral", "pet-ashes")):
         return "/sougi/", "ペットが亡くなったら", "近くのペット火葬・霊園と、自治体の受付をさがす"
     if slug in ("rojin-home-cost", "rojin-home-prepare", "roneko-home"):
@@ -2466,6 +2466,11 @@ import gen_jichitai
 gen_jichitai.write_all(ROOT, dict(head=head, e=e, SITE=SITE, pref_slug=PREF_SLUG, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_jichitai.urls(SITE)
+# 迷子・犬の登録・飼えなくなったときを分けたページ（/jichitai/maigo/ ほか、tools/gen_maigo.py。Nori 2026-11-17「全然違うテーマ」）
+import gen_maigo
+gen_maigo.write_all(ROOT, dict(head=head, e=e, SITE=SITE, pref_slug=PREF_SLUG,
+  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_maigo.urls(SITE)
 # 運営者と掲載の基準（/about/、tools/gen_about.py。どのページの下からも portal.py の TRUST で来られる）
 import gen_about
 gen_about.write_all(ROOT, dict(head=head, e=e, SITE=SITE, foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))

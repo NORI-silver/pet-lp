@@ -24,8 +24,8 @@ CSS = ('<style id="cp-css">'
        '.cs-ph-s::-webkit-scrollbar{display:none}'
        '.cs-ph-s img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start;display:block}'
        '.cs-ph-n{position:absolute;right:8px;top:8px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;pointer-events:none}'
-       '.cs-ph-c{position:absolute;left:0;bottom:0;max-width:100%;background:rgba(0,0,0,.5);color:#fff;font-size:11px;padding:1px 6px;border-top-right-radius:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
-       '.cs-ph-c a{color:#fff}'
+       '.cs-ph .cs-ph-c{position:absolute;left:0;bottom:0;max-width:100%;background:rgba(0,0,0,.55);color:#fff;opacity:1;font-size:11px;font-weight:400;padding:1px 6px;border-top-right-radius:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
+       '.cs-ph .cs-ph-c a{color:#fff}'
        '.cs:not(.fc)>.cs-ph,.ux-c>.cs-ph{margin:-12px -14px 10px;border-radius:14px 14px 0 0}'
        '.hc>.cs-ph{margin:-14px -14px 10px;border-radius:14px 14px 0 0}'
        '</style>')
@@ -61,7 +61,7 @@ def strip(x, name, gph=""):
     imgs = "".join(f'<img src="{html.escape(p)}" alt="{alt}の写真{i + 1}" width="520" height="347" loading="lazy" decoding="async">' for i, p in enumerate(ps))
     n = f'<span class="cs-ph-n" aria-hidden="true">📷 {len(ps)}</span>' if len(ps) > 1 else ""
     cr = ""
-    if x.get("by") == "license" and x.get("credit"):  # 転載を許すサイトの決まり（CC BY など）で出どころの表示が要る
+    if x.get("by") != "owner" and x.get("credit"):  # サイトの決まり（CC BY など）や事業者の許可の条件で出どころの表示が要る
         cr = f'<small class="cs-ph-c">{html.escape(x["credit"])}' + (f'（<a href="{html.escape(x["lic_url"])}" target="_blank" rel="noopener">{html.escape(x.get("license", ""))}</a>）' if x.get("lic_url") else "") + "</small>"
     return f'<div class="cs-ph"{g}><div class="cs-ph-s">{imgs}</div>{n}{cr}</div>'
 
@@ -130,7 +130,7 @@ def taxi_map():
     out = {}
     for i, x in by_id.items():
         if x.get("cat") in ("taxi", "emergency"):
-            out[i] = [x["photos"][:5], x.get("credit", "") if x.get("by") == "license" else ""]
+            out[i] = [x["photos"][:5], x.get("credit", "") if x.get("by") != "owner" else ""]
     return out
 
 
@@ -142,7 +142,7 @@ def hosp_photo(h):
     by_id, by_url = _H
     x = by_id.get(h.get("id", "")) or by_url.get(norm(h.get("url", "")))
     if not x: return None
-    return [x["photos"][:5], x.get("credit", "") if x.get("by") == "license" else ""]
+    return [x["photos"][:5], x.get("credit", "") if x.get("by") != "owner" else ""]
 
 
 if __name__ == "__main__":
