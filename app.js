@@ -223,6 +223,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id); if (DEMO.tok) body.set("demo", DEMO.tok);
       fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
         if (j && j.ok && !(j.rating > 0)) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
+        if (j && j.error === "limit") throw "limit"; // 月の取り寄せの上限（毎月1日にもどる）
         if (!j || !j.ok) throw 0;
         var rv = {rating: j.rating, count: j.count}; save(rv);
         // 星の行（出どころの表示「Google Maps」は規約で必要）と、取り寄せた口コミを開いた枠
@@ -237,7 +238,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var panel = document.createElement("div"); panel.className = "review-panel";
         open.addEventListener("click", function(){ toggleReviews(id, panel, open); });
         holder.replaceChildren(score, panel); fillReviews(panel, j); open.setAttribute("aria-expanded", "true");
-      }).catch(function(e){ save(null); var n = document.createElement("p"); n.className = "partner-review-src"; n.textContent = e === "none" ? "Googleマップの口コミはまだありません" : "口コミを読み込めませんでした。時間をおいてもう一度お試しください"; holder.replaceChildren(n); });
+      }).catch(function(e){ save(null); var n = document.createElement("p"); n.className = "partner-review-src"; n.textContent = e === "none" ? "Googleマップの口コミはまだありません" : e === "limit" ? "今月は口コミの表示を休んでいます（来月1日から表示します）" : "口コミを読み込めませんでした。時間をおいてもう一度お試しください"; holder.replaceChildren(n); });
     });
     return holder;
   }
@@ -563,6 +564,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 運転手の写真（掲載情報）は名前の横に丸く（Nori 2026-11-15「運転手の写真も」）
       if (ex && ex.driver) { var dv = document.createElement("img"); dv.className = "partner-driver"; dv.src = ex.driver; dv.alt = card.label + "の運転手"; dv.loading = "lazy"; dv.referrerPolicy = "no-referrer";
         dv.addEventListener("error", function(){ dv.remove(); }); h4.insertBefore(dv, h4.firstChild); }
+      // 会社のロゴ（掲載情報の「ロゴ」）は社名の横に小さく（COCOタク本部 2026-11-16「ロゴを載せたい」）
+      if (ex && ex.logo) { var lg = document.createElement("img"); lg.className = "partner-logo"; lg.src = ex.logo; lg.alt = card.label + "のロゴ"; lg.loading = "lazy"; lg.referrerPolicy = "no-referrer";
+        lg.addEventListener("error", function(){ lg.remove(); }); h4.insertBefore(lg, h4.firstChild); }
       // 問い合わせできる（提携している）会社には、名前の横にアイコンだけ付ける（Nori 2026-11-08「アイコンをつけて目立つように。文字はいらない」）
       if (!card.display_only) { article.classList.add("partner-open"); var ic = document.createElement("span"); ic.className = "open-icon"; ic.setAttribute("role", "img"); ic.setAttribute("aria-label", "このサイトから問い合わせできる会社"); ic.title = "このサイトから問い合わせできる会社"; ic.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M6.5 12.5l3.6 3.6 7.4-7.6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'; h4.prepend(ic); }
       if (card.demo) { var bd = document.createElement("span"); bd.className = "demo-badge"; bd.textContent = "提携（見本）"; h4.appendChild(bd); }
@@ -894,9 +898,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   ["retOther","pickup","dropoff","date"].forEach(function(id){ $(id).addEventListener("change", syncTrip); });
 
   // ペットの入力欄（頭数を選ぶと、その数だけカードを出す）
-  function seg(name, items, req){
+  // def：最初から選んでおく値（いちばん広く探せる値。候補が出るまでの入力を減らす。2026-11-17 問い合わせKPI）
+  function seg(name, items, req, def){
     return '<div class="seg">' + items.map(function(it, i){
-      return '<label><input type="radio" name="' + name + '" value="' + it[0] + '"' + (req && i === 0 ? ' required' : '') + '><span>' + it[1] + '</span></label>';
+      return '<label><input type="radio" name="' + name + '" value="' + it[0] + '"' + (req && i === 0 ? ' required' : '') + (def === it[0] ? ' checked' : '') + '><span>' + it[1] + '</span></label>';
     }).join('') + '</div>';
   }
   // 介護が必要なときに出す選択肢（会社によって受けられるかが変わるもの）
@@ -924,7 +929,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         KINDS.map(function(o){ return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('') + '</select>' +
         '<p style="margin:6px 0 0;font-size:.8rem;color:var(--ink-3)">乗せられる動物は会社ごとに違います。乗せられる会社を先に出します。</p></div></div>' +
       '<div class="f"><label for="' + k + '_weight">体重（kg）<span class="need">必須</span></label><input type="number" id="' + k + '_weight" name="' + k + '_weight" min="0.01" max="120" step="any" inputmode="decimal" placeholder="例：8（小さな子は 0.3 など）" required></div>' +
-      '<div class="f opt-lite"><span class="lbl">ケージ・キャリー<span class="need">必須</span></span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true) + '</div>' +
+      '<div class="f opt-lite"><span class="lbl">ケージ・キャリー<span class="need">必須</span></span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true, "どれでも") + '</div>' +
       '<details class="more opt-lite"><summary>犬種・年齢・予防接種など（任意）</summary><div class="two">' +
         '<div class="f opt-lite"><label for="' + k + '_breed"><span class="breed-lbl">犬種・猫種</span><span class="any">わかれば</span></label><div class="cb"><input type="text" id="' + k + '_breed" name="' + k + '_breed" class="breed" placeholder="選ぶか、入力してしぼりこみ" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><ul class="cb-list" role="listbox" hidden></ul></div></div>' +
         '<div class="f opt-lite"><label for="' + k + '_age">年齢<span class="any">わかれば</span></label><input type="number" id="' + k + '_age" name="' + k + '_age" min="0" max="40" inputmode="numeric" placeholder="例：12"></div>' +
@@ -934,7 +939,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         '<label class="chk"><input type="checkbox" name="' + k + '_vac" value="1"> 混合ワクチン</label>' +
         '<label class="chk rabies"><input type="checkbox" name="' + k + '_rabies" value="1"> 狂犬病の予防注射</label></div></div>' +
       '</details>' +
-      '<div class="f opt-lite"><span class="lbl">介護は必要ですか？<span class="need">必須</span></span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true) +
+      '<div class="f opt-lite"><span class="lbl">介護は必要ですか？<span class="need">必須</span></span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true, "不要") +
         '<div class="care-box" hidden><span class="lbl">どんな手助けが必要ですか？<span class="any">あてはまるものすべて</span></span><div class="chks">' +
         CARE_OPTS.map(function(c){ return '<label class="chk"><input type="checkbox" name="' + k + '_care_need" value="' + c + '"> ' + c + '</label>'; }).join('') + '</div>' +
         '<label for="' + k + '_care_note" class="lbl" style="margin-top:6px">くわしいこと<span class="any">わかれば</span></label><input type="text" id="' + k + '_care_note" name="' + k + '_care_note" maxlength="200" placeholder="例：後ろ足が立たない。3階でエレベーターなし"></div></div>';
@@ -1543,7 +1548,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           setSelect($("pref"), pp);
           var fx = $("prefFix");
           fx.textContent = "お迎えの場所が" + pp + "のようなので、お迎えの都道府県を" + (was ? "「" + was + "」から" : "") + "「" + pp + "」に直しました。違うときは、お迎えの場所をくわしく入れてください。";
-          fx.hidden = false;
+          fx.hidden = !was; // 空だったときは、欄に入るのを見れば分かるので知らせない（2026-11-17 都道府県を場所の後ろへ）
           estNow();
           return;
         }

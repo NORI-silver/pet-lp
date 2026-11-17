@@ -565,7 +565,7 @@ footer a{color:var(--ink-2)}
 .partner-thumb0{aspect-ratio:3/2;border-radius:12px;background:#f8f3ee url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23e3cdb9'%3E%3Cellipse cx='32' cy='42' rx='13' ry='11'/%3E%3Cellipse cx='16' cy='28' rx='5.5' ry='7'/%3E%3Cellipse cx='48' cy='28' rx='5.5' ry='7'/%3E%3Cellipse cx='25' cy='17' rx='5.5' ry='7.5'/%3E%3Cellipse cx='39' cy='17' rx='5.5' ry='7.5'/%3E%3C/svg%3E") center/30px no-repeat}
 .partner-photos img{flex:0 0 100%;width:100%;aspect-ratio:3/2;object-fit:cover;scroll-snap-align:start;border-radius:12px;background:#f3eee8}
 .partner-photo-src{display:block;margin-top:3px;font-size:.62rem;line-height:1.3;color:#5f6368;overflow-wrap:anywhere}.partner-photo-n{position:absolute;left:0;right:0;bottom:5px;text-align:center;font-size:.4rem;letter-spacing:3px;color:rgba(255,255,255,.9);text-shadow:0 0 3px rgba(0,0,0,.6);pointer-events:none}
-.partner-driver{display:inline-block;width:48px;height:48px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:8px;background:#f3eee8}.partner-card .partner-price .partner-was{font-size:.95rem;font-weight:600;color:var(--ink-2);text-decoration-thickness:2px}.partner-offer{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;margin:6px 0 2px;font-size:.84rem;line-height:1.5;color:#3c4043}.partner-offer::before{content:"";flex:0 0 auto;width:15px;height:15px;align-self:center;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z' fill='none' stroke='%23c2410c' stroke-width='2.2' stroke-linejoin='round'/%3E%3Ccircle cx='8' cy='8' r='1.8' fill='%23c2410c'/%3E%3C/svg%3E") no-repeat center/15px}.partner-offer b{font-weight:800;color:#c2410c}.partner-offer small{font-size:.76rem;color:#5f6368}.partner-deal{display:inline-block;margin-left:2px;padding:1px 7px;border-radius:6px;background:#fde8dc;color:#c2410c;font-size:.72rem;font-weight:800;vertical-align:middle}
+.partner-driver{display:inline-block;width:48px;height:48px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:8px;background:#f3eee8}.partner-logo{display:inline-block;width:36px;height:36px;border-radius:8px;object-fit:contain;vertical-align:middle;margin-right:8px;background:#fff;border:1px solid #eee5dc}.partner-card .partner-price .partner-was{font-size:.95rem;font-weight:600;color:var(--ink-2);text-decoration-thickness:2px}.partner-offer{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;margin:6px 0 2px;font-size:.84rem;line-height:1.5;color:#3c4043}.partner-offer::before{content:"";flex:0 0 auto;width:15px;height:15px;align-self:center;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z' fill='none' stroke='%23c2410c' stroke-width='2.2' stroke-linejoin='round'/%3E%3Ccircle cx='8' cy='8' r='1.8' fill='%23c2410c'/%3E%3C/svg%3E") no-repeat center/15px}.partner-offer b{font-weight:800;color:#c2410c}.partner-offer small{font-size:.76rem;color:#5f6368}.partner-deal{display:inline-block;margin-left:2px;padding:1px 7px;border-radius:6px;background:#fde8dc;color:#c2410c;font-size:.72rem;font-weight:800;vertical-align:middle}
 .partner-note{margin:6px 0 0;font-size:.82rem;color:#5b5650}
 .partner-creds{display:flex;flex-wrap:wrap;gap:4px 14px;list-style:none;margin:8px 0 2px;padding:0;font-size:.8rem;line-height:1.5;color:#3c4043;font-weight:500}
 .partner-creds li{display:inline-flex;align-items:flex-start;gap:5px}
@@ -855,12 +855,6 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
         <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
         <div class="group">
           <div class="group-h"><span>1</span>いつ、どこへ行きますか？</div>
-          <div class="f pref-pick"><label for="pref" id="prefLbl">お迎えの都道府県<span class="need">必須</span></label>
-            <button type="button" id="prefBtn" class="pref-btn" aria-labelledby="prefLbl prefBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="prefPanel" hidden>選んでください</button>
-            <div class="pref-panel" id="prefPanel" hidden><input type="search" id="prefQ" class="pref-q" placeholder="県名で検索（例：かながわ、ふくおか）" autocomplete="off" aria-label="お迎えの都道府県を県名で検索" enterkeyhint="search"><ul class="pref-list" id="prefList" role="listbox" aria-label="お迎えの都道府県"></ul></div>
-            <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>大阪府</option><option>愛知県</option><option>埼玉県</option><option>千葉県</option><option>兵庫県</option><option>北海道</option><option>福岡県</option><option>静岡県</option><option>茨城県</option><option>広島県</option><option>京都府</option><option>宮城県</option><option>新潟県</option><option>長野県</option><option>岐阜県</option><option>群馬県</option><option>栃木県</option><option>岡山県</option><option>福島県</option><option>三重県</option><option>熊本県</option><option>鹿児島県</option><option>沖縄県</option><option>滋賀県</option><option>山口県</option><option>愛媛県</option><option>奈良県</option><option>長崎県</option><option>青森県</option><option>岩手県</option><option>石川県</option><option>大分県</option><option>宮崎県</option><option>山形県</option><option>富山県</option><option>秋田県</option><option>香川県</option><option>和歌山県</option><option>佐賀県</option><option>山梨県</option><option>福井県</option><option>徳島県</option><option>高知県</option><option>島根県</option><option>鳥取県</option></select>
-            <p class="pref-fix" id="prefFix" role="status" hidden></p>
-            <p class="open-note" id="openNote" role="status" hidden></p></div>
           <div class="f"><label for="pickup">お迎えの場所<span class="need">必須</span></label>
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button>
             <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
@@ -871,6 +865,12 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
           <div class="f"><label for="dropoff">行き先<span class="need">必須</span></label>
             <input type="text" id="dropoff" autocomplete="off" name="dropoff" placeholder="例：代々木公園／〇〇動物病院（目黒区）" required>
             <button type="button" class="hist-clear" id="histClear" hidden>この端末に残っている場所の候補を消す</button></div>
+          <div class="f pref-pick"><label for="pref" id="prefLbl">お迎えの都道府県<span class="any">場所から自動で入ります</span></label>
+            <button type="button" id="prefBtn" class="pref-btn" aria-labelledby="prefLbl prefBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="prefPanel" hidden>選んでください</button>
+            <div class="pref-panel" id="prefPanel" hidden><input type="search" id="prefQ" class="pref-q" placeholder="県名で検索（例：かながわ、ふくおか）" autocomplete="off" aria-label="お迎えの都道府県を県名で検索" enterkeyhint="search"><ul class="pref-list" id="prefList" role="listbox" aria-label="お迎えの都道府県"></ul></div>
+            <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option>神奈川県</option><option>大阪府</option><option>愛知県</option><option>埼玉県</option><option>千葉県</option><option>兵庫県</option><option>北海道</option><option>福岡県</option><option>静岡県</option><option>茨城県</option><option>広島県</option><option>京都府</option><option>宮城県</option><option>新潟県</option><option>長野県</option><option>岐阜県</option><option>群馬県</option><option>栃木県</option><option>岡山県</option><option>福島県</option><option>三重県</option><option>熊本県</option><option>鹿児島県</option><option>沖縄県</option><option>滋賀県</option><option>山口県</option><option>愛媛県</option><option>奈良県</option><option>長崎県</option><option>青森県</option><option>岩手県</option><option>石川県</option><option>大分県</option><option>宮崎県</option><option>山形県</option><option>富山県</option><option>秋田県</option><option>香川県</option><option>和歌山県</option><option>佐賀県</option><option>山梨県</option><option>福井県</option><option>徳島県</option><option>高知県</option><option>島根県</option><option>鳥取県</option></select>
+            <p class="pref-fix" id="prefFix" role="status" hidden></p>
+            <p class="open-note" id="openNote" role="status" hidden></p></div>
           <div class="f"><label for="date">お迎えの希望日時<span class="need">必須</span></label>
             <div class="dt">
               <input type="date" id="date" name="date" required aria-label="日付">
@@ -878,7 +878,7 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
           <div class="f"><span class="lbl">片道・往復<span class="need">必須</span></span>
-            <div class="seg"><label><input type="radio" name="trip" value="片道" required><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復</span></label></div>
+            <div class="seg"><label><input type="radio" name="trip" value="片道" required checked><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復</span></label></div>
             <div class="via-box" id="retBox" hidden><label for="retDate" class="lbl">帰りのお迎え日時（用事が終わる時刻）<span class="need">必須</span></label>
               <div class="dt">
                 <input type="date" id="retDate" name="ret_date" aria-label="帰りの日付">
@@ -904,14 +904,14 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
           <p class="pet-hint" id="petHint" hidden></p>
           <div id="pets"></div>
           <div class="f opt-lite" id="ridersF"><label for="riders">一緒に乗る人数<span class="need">必須</span></label>
-            <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option>1人</option><option>2人</option><option>3人</option></select></div>
+            <select id="riders" name="riders" required><option value="">選んでください</option><option>0人（ペットだけ）</option><option selected>1人</option><option>2人</option><option>3人</option></select></div>
           <label class="chk opt-lite" hidden><input type="checkbox" id="petOnly" name="pet_only" value="1"> ペットだけで乗る（飼い主さんは乗らない）</label>
           <div class="only-box opt-lite" id="onlyBox" hidden>
             <div class="f"><label for="handFrom">お迎えでペットを渡す人<span class="need">必須</span></label><input type="text" id="handFrom" name="hand_from" maxlength="100" placeholder="例：家族（母）・ペットホテルの受付"></div>
             <div class="f"><label for="handTo">行き先で受け取る人<span class="need">必須</span></label><input type="text" id="handTo" name="hand_to" maxlength="100" placeholder="例：動物病院の受付・祖父"></div>
           </div>
           <div class="f opt-lite"><label for="luggage">荷物の量<span class="need">必須</span></label>
-            <select id="luggage" name="luggage" required><option value="">選んでください</option><option>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
+            <select id="luggage" name="luggage" required><option value="">選んでください</option><option selected>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
         <p class="form-foot">条件を入れると、合う会社と料金の目安が出ます（まだ送信されません）。料金は当日の道路事情や待ち時間で変わることがあります。</p>
@@ -1273,7 +1273,7 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
         <ul><li>ペットタクシー会社への空き状況と料金の問い合わせ、お迎え時間・料金・予約の確定のご連絡</li><li>キャンセルやお問い合わせへの対応</li><li>送迎のあとに、送迎があったかどうかをおたずねするご連絡（提携の会社とのご利用の確認に使います）と、ご利用の感想をうかがうアンケートのお願い（お答えは任意です。サービスの改善に使います。ご感想（星の評価とひとこと）は、<a href="/terms/">利用規約</a>の第9条にしたがって、お名前・連絡先を出さずにサイトに載せることがあります。お名前とあわせて会社に伝えることはしません）</li><li>サービスの改善（個人が特定できない形の集計に限ります）</li><li>候補をさがした地域（市区町村まで）と日付だけを集計し、その地域のペットタクシー会社さまに「この地域でご利用の希望がありました」とお伝えすることがあります。お名前・連絡先・番地・ペットの情報は含みません</li><li>ペットタクシー会社さまから提携のお申し込みやお問い合わせをいただいたときは、その内容の確認、ご連絡、提携した会社さまの掲載に使います</li></ul>
         <p>ご本人の同意なく、この目的のほかに使うことはありません。</p>
         <h4>3. ペットタクシー事業者へのお伝え</h4>
-        <ul><li>空きを確認する段階では、お迎えの場所・行き先・日時（往復のときは帰りの日時とやり方）・同乗する人数・荷物・介助の要否・ペットの情報・料金の目安・メモを、お客さまが選んだ会社にだけお伝えします。お名前と連絡先（メール・電話番号）はお伝えしません。</li><li>お客さまが予約を確定した1社にだけ、送迎のためにお名前と連絡先をお伝えします。</li><li>法令にもとづく場合を除き、ご本人の同意なくそれ以外の第三者に提供することはありません。</li></ul>
+        <ul><li>空きを確認する段階では、お迎えの場所・行き先・日時（往復のときは帰りの日時とやり方）・同乗する人数・荷物・介助の要否・ペットの情報・料金の目安・メモを、お客さまが選んだ会社にだけお伝えします。お名前と連絡先（メール・電話番号）はお伝えしません。</li><li>お客さまが予約を確定した1社にだけ、送迎のためにお名前と連絡先をお伝えします。</li><li>葬儀・しつけ・老犬ホーム・ペットシッター・トリミングの一覧で、提携している施設に「このサイトから問い合わせる」で送るときは、入力した内容とお名前・メールアドレスを、お客さまが選んだその施設にだけお伝えします（送る前に同意をうかがいます）。</li><li>法令にもとづく場合を除き、ご本人の同意なくそれ以外の第三者に提供することはありません。</li></ul>
         <h4>4. 安全な管理</h4>
         <ul><li>フォームの送信内容は、暗号化された通信（HTTPS）でお送りいただきます。</li><li>お預かりした情報は、セキュリティ対策の整った大手クラウドサービス上で保管し、見られるのは運営者だけに限っています。保管先のサーバーは、日本の国外（アメリカ合衆国など）にある場合があります。その国の個人情報の保護の制度を確かめたうえで、必要な安全管理を行っています（各国の制度は個人情報保護委員会が公開しています）。</li><li>なくしたり、漏れたり、勝手に使われたりしないよう、アクセスの制限やログインの保護などの安全管理に努めます。</li><li>お名前・電話番号・メールアドレス・お迎えの場所や行き先などは、お迎えの日（お問い合わせは受付の日）から1年たったら消します。手数料の確認と会計の記録のため、日時・ペットタクシー会社・料金は残します。</li><li>料金の目安を出すため、入力した場所（「いまいる場所を入れる」を使ったときは端末の位置）を地図の検索サービスに送り、距離を調べます。端末の位置は、ボタンを押してご自身で許可したときだけ使い、当サイトには保存しません。</li><li>サイトをよりよくするため、大手の解析サービスを使って、見られたページや「緊急のとき」タブ・問い合わせなどの操作の回数、フォームのどの項目まで入力したか（項目の名前だけ）、どのページからフォームに来たかを、個人が特定できない形で集計しています。このためにクッキーなどを使います。お名前・連絡先・場所などの入力内容は送りません。集計を止めたいときは、ブラウザの設定でクッキーを止めるか、<a href="https://tools.google.com/dlpage/gaoptout?hl=ja" target="_blank" rel="noopener">解析を止める追加機能</a>をお使いください（解析サービスによる情報の扱いは<a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener">こちら</a>）。</li><li>送ったことのある場所は、次に入力するときの候補として、お使いの端末のブラウザの中だけに保存します（当サイトには届きません）。フォームの「場所の候補を消す」でいつでも消せます。</li></ul>
         <h4>5. ほかのサービスに送られる情報（外部送信）</h4>
@@ -1317,9 +1317,10 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
 <footer>
   <div class="wrap">
     <!--FOOTCATS--><nav class="foot-cats" aria-label="ペットのくらし窓口のすべての分野"><a href="/hospital/night/">夜間・救急の動物病院</a><a href="/hospital/">条件でさがす動物病院</a><a href="/emergency/">緊急のときの連絡先</a><a href="/#form">ペットタクシー</a><a href="/dogrun/">ドッグラン</a><a href="/pet-hotel/">ペットホテル</a><a href="/pet-sitter/">ペットシッター</a><a href="/trimming/">出張トリミング</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/joto/">保護犬・保護猫を迎える</a><a href="/jichitai/">迷子・犬の登録・引取り</a><a href="/hinan/">ペットと避難</a><a href="/sougi/">ペットが亡くなったら</a><a href="/guide/">ガイド</a></nav><!--/FOOTCATS-->
-                <nav><a href="#how">ペットタクシーの使い方</a><a href="#area">対応エリア</a><a href="#price">ペットタクシーの料金の目安</a><a href="#faq">ペットタクシーのよくある質問</a><a href="#policy">ペットタクシーのキャンセル</a><a href="#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
+                <nav><a href="#how">ペットタクシーの使い方</a><a href="#area">対応エリア</a><a href="#price">ペットタクシーの料金の目安</a><a href="#faq">ペットタクシーのよくある質問</a><a href="#policy">ペットタクシーのキャンセル</a><a href="#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/about/">運営者と掲載の基準</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav><a href="/area/">全国のペットタクシー情報</a><a href="/tokyo/">東京のペットタクシー</a><a href="/chiba/">千葉のペットタクシー</a><a href="/kanagawa/">神奈川・横浜のペットタクシー</a><a href="/saitama/">埼玉のペットタクシー</a></nav>
     <p>ペットのくらし窓口（ペットタクシーは「ペットタクシー予約窓口」）</p>
+    <!--TRUST--><p class="foot-trust" style="font-size:.78rem;line-height:1.7;color:#5f6368;margin:10px 0">公式サイトや自治体などの公開情報をもとに、各ページに時点を書いて載せています。掲載は無料で、お金で並び順は変わりません。<a href="/about/">運営者と掲載の基準</a>・<a href="/contact/">まちがいを知らせる</a></p><!--/TRUST-->
     <p>&copy; 2026 ペットのくらし窓口</p>
   </div>
 </footer>
@@ -1551,6 +1552,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id); if (DEMO.tok) body.set("demo", DEMO.tok);
       fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
         if (j && j.ok && !(j.rating > 0)) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
+        if (j && j.error === "limit") throw "limit"; // 月の取り寄せの上限（毎月1日にもどる）
         if (!j || !j.ok) throw 0;
         var rv = {rating: j.rating, count: j.count}; save(rv);
         // 星の行（出どころの表示「Google Maps」は規約で必要）と、取り寄せた口コミを開いた枠
@@ -1565,7 +1567,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var panel = document.createElement("div"); panel.className = "review-panel";
         open.addEventListener("click", function(){ toggleReviews(id, panel, open); });
         holder.replaceChildren(score, panel); fillReviews(panel, j); open.setAttribute("aria-expanded", "true");
-      }).catch(function(e){ save(null); var n = document.createElement("p"); n.className = "partner-review-src"; n.textContent = e === "none" ? "Googleマップの口コミはまだありません" : "口コミを読み込めませんでした。時間をおいてもう一度お試しください"; holder.replaceChildren(n); });
+      }).catch(function(e){ save(null); var n = document.createElement("p"); n.className = "partner-review-src"; n.textContent = e === "none" ? "Googleマップの口コミはまだありません" : e === "limit" ? "今月は口コミの表示を休んでいます（来月1日から表示します）" : "口コミを読み込めませんでした。時間をおいてもう一度お試しください"; holder.replaceChildren(n); });
     });
     return holder;
   }
@@ -1891,6 +1893,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 運転手の写真（掲載情報）は名前の横に丸く（Nori 2026-11-15「運転手の写真も」）
       if (ex && ex.driver) { var dv = document.createElement("img"); dv.className = "partner-driver"; dv.src = ex.driver; dv.alt = card.label + "の運転手"; dv.loading = "lazy"; dv.referrerPolicy = "no-referrer";
         dv.addEventListener("error", function(){ dv.remove(); }); h4.insertBefore(dv, h4.firstChild); }
+      // 会社のロゴ（掲載情報の「ロゴ」）は社名の横に小さく（COCOタク本部 2026-11-16「ロゴを載せたい」）
+      if (ex && ex.logo) { var lg = document.createElement("img"); lg.className = "partner-logo"; lg.src = ex.logo; lg.alt = card.label + "のロゴ"; lg.loading = "lazy"; lg.referrerPolicy = "no-referrer";
+        lg.addEventListener("error", function(){ lg.remove(); }); h4.insertBefore(lg, h4.firstChild); }
       // 問い合わせできる（提携している）会社には、名前の横にアイコンだけ付ける（Nori 2026-11-08「アイコンをつけて目立つように。文字はいらない」）
       if (!card.display_only) { article.classList.add("partner-open"); var ic = document.createElement("span"); ic.className = "open-icon"; ic.setAttribute("role", "img"); ic.setAttribute("aria-label", "このサイトから問い合わせできる会社"); ic.title = "このサイトから問い合わせできる会社"; ic.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M6.5 12.5l3.6 3.6 7.4-7.6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'; h4.prepend(ic); }
       if (card.demo) { var bd = document.createElement("span"); bd.className = "demo-badge"; bd.textContent = "提携（見本）"; h4.appendChild(bd); }
@@ -2222,9 +2227,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   ["retOther","pickup","dropoff","date"].forEach(function(id){ $(id).addEventListener("change", syncTrip); });
 
   // ペットの入力欄（頭数を選ぶと、その数だけカードを出す）
-  function seg(name, items, req){
+  // def：最初から選んでおく値（いちばん広く探せる値。候補が出るまでの入力を減らす。2026-11-17 問い合わせKPI）
+  function seg(name, items, req, def){
     return '<div class="seg">' + items.map(function(it, i){
-      return '<label><input type="radio" name="' + name + '" value="' + it[0] + '"' + (req && i === 0 ? ' required' : '') + '><span>' + it[1] + '</span></label>';
+      return '<label><input type="radio" name="' + name + '" value="' + it[0] + '"' + (req && i === 0 ? ' required' : '') + (def === it[0] ? ' checked' : '') + '><span>' + it[1] + '</span></label>';
     }).join('') + '</div>';
   }
   // 介護が必要なときに出す選択肢（会社によって受けられるかが変わるもの）
@@ -2252,7 +2258,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         KINDS.map(function(o){ return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('') + '</select>' +
         '<p style="margin:6px 0 0;font-size:.8rem;color:var(--ink-3)">乗せられる動物は会社ごとに違います。乗せられる会社を先に出します。</p></div></div>' +
       '<div class="f"><label for="' + k + '_weight">体重（kg）<span class="need">必須</span></label><input type="number" id="' + k + '_weight" name="' + k + '_weight" min="0.01" max="120" step="any" inputmode="decimal" placeholder="例：8（小さな子は 0.3 など）" required></div>' +
-      '<div class="f opt-lite"><span class="lbl">ケージ・キャリー<span class="need">必須</span></span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true) + '</div>' +
+      '<div class="f opt-lite"><span class="lbl">ケージ・キャリー<span class="need">必須</span></span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true, "どれでも") + '</div>' +
       '<details class="more opt-lite"><summary>犬種・年齢・予防接種など（任意）</summary><div class="two">' +
         '<div class="f opt-lite"><label for="' + k + '_breed"><span class="breed-lbl">犬種・猫種</span><span class="any">わかれば</span></label><div class="cb"><input type="text" id="' + k + '_breed" name="' + k + '_breed" class="breed" placeholder="選ぶか、入力してしぼりこみ" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><ul class="cb-list" role="listbox" hidden></ul></div></div>' +
         '<div class="f opt-lite"><label for="' + k + '_age">年齢<span class="any">わかれば</span></label><input type="number" id="' + k + '_age" name="' + k + '_age" min="0" max="40" inputmode="numeric" placeholder="例：12"></div>' +
@@ -2262,7 +2268,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         '<label class="chk"><input type="checkbox" name="' + k + '_vac" value="1"> 混合ワクチン</label>' +
         '<label class="chk rabies"><input type="checkbox" name="' + k + '_rabies" value="1"> 狂犬病の予防注射</label></div></div>' +
       '</details>' +
-      '<div class="f opt-lite"><span class="lbl">介護は必要ですか？<span class="need">必須</span></span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true) +
+      '<div class="f opt-lite"><span class="lbl">介護は必要ですか？<span class="need">必須</span></span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true, "不要") +
         '<div class="care-box" hidden><span class="lbl">どんな手助けが必要ですか？<span class="any">あてはまるものすべて</span></span><div class="chks">' +
         CARE_OPTS.map(function(c){ return '<label class="chk"><input type="checkbox" name="' + k + '_care_need" value="' + c + '"> ' + c + '</label>'; }).join('') + '</div>' +
         '<label for="' + k + '_care_note" class="lbl" style="margin-top:6px">くわしいこと<span class="any">わかれば</span></label><input type="text" id="' + k + '_care_note" name="' + k + '_care_note" maxlength="200" placeholder="例：後ろ足が立たない。3階でエレベーターなし"></div></div>';
@@ -2871,7 +2877,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           setSelect($("pref"), pp);
           var fx = $("prefFix");
           fx.textContent = "お迎えの場所が" + pp + "のようなので、お迎えの都道府県を" + (was ? "「" + was + "」から" : "") + "「" + pp + "」に直しました。違うときは、お迎えの場所をくわしく入れてください。";
-          fx.hidden = false;
+          fx.hidden = !was; // 空だったときは、欄に入るのを見れば分かるので知らせない（2026-11-17 都道府県を場所の後ろへ）
           estNow();
           return;
         }

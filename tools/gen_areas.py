@@ -578,6 +578,12 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     # トップ（全国の入口）へ、「ペットタクシー」全体のことばでリンクする（トップとエリアページの役割を分ける）
     to_top = '<div class="wrap"><p class="to-top">ほかの都道府県の会社もふくめてさがすときは、<a href="/">全国のペットタクシーの料金をくらべる</a>ページへ。</p></div>'
     t = t.replace('<section id="how">', area_html + '\n' + to_top + '\n<section id="how">', 1)
+    # [B] SEO 11/17：Nori「中身がほぼ同じページを洗い出し…まとめる」。地域ページは本文の9割がトップと同じ文だった。
+    # 地域の節と同じ役割のトップの節（ならでは・全国の料金・数字・犬猫・場面・車・エリア・ガイド・よくある質問・想い）は外し、
+    # フォーム・使い方・規約の節（同意の文が「ページ下の…」を指す）は残す。リンクはトップの節へ。
+    t = re.sub(r'<section id="why">.*?(?=<section id="policy">)', '', t, count=1, flags=re.S)
+    for a in ("area", "faq", "guide", "price"):
+        t = t.replace(f'href="#{a}"', f'href="/#{a}"')
     # エリアページ用のCSS（.crumb .prose など）を足す
     t = t.replace("</style>", extra_css.strip() + "\n</style>", 1)
     # いちばん上の写真だけ、そのページの写真があれば置きかえる（tools/page_images.py）
@@ -742,7 +748,7 @@ PARTNER_BAND = '''<aside class="partner-band"><div class="wrap"><p><b>ペット�
 def foot(cta_href, band=True):
     return (PARTNER_BAND if band else '') + f'''<footer>
   <div class="wrap">
-    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国のドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/trimming/">出張トリミング</a><a href="/pet-hotel/">大型犬OK・猫専用のペットホテル</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/#operator">運営者情報</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
+    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国のドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/trimming/">出張トリミング</a><a href="/pet-hotel/">大型犬OK・猫専用のペットホテル</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/about/">運営者と掲載の基準</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav><a href="/area/">全国</a>{''.join(f'<a href="/{a["slug"]}/">{e(a["short"])}</a>' for a in AREAS)}</nav>
     <p>ペットタクシー予約窓口</p>
     <p>&copy; 2026 ペットタクシー予約窓口</p>
@@ -986,7 +992,7 @@ def _related_info(g):
 def taxi_intent(g): return g.get("category") not in NON_TAXI_CATS
 def guide_hub(slug):
     if slug.startswith(("lost-", "found-")) or slug in ("microchip", "dog-registration", "moving-with-pet", "cant-keep-pet"):
-        return "/jichitai/", "迷子・犬の登録の窓口", "お住まいの市区町村の窓口をさがす"
+        return ("/jichitai/maigo/", "迷子になったら：今日やること", "いなくなった市区町村で、今日やることを見る") if slug.startswith(("lost-", "found-")) else ("/jichitai/", "迷子・犬の登録・飼えなくなったとき", "困りごとから、次にやることを見る")
     if slug.startswith(("pet-cremation", "pet-died", "pet-death", "pet-memorial", "pet-loss", "pet-funeral", "pet-ashes")):
         return "/sougi/", "ペットが亡くなったら", "近くのペット火葬・霊園と、自治体の受付をさがす"
     if slug in ("rojin-home-cost", "rojin-home-prepare", "roneko-home"):
@@ -997,7 +1003,7 @@ def guide_hub(slug):
         return "/pet-sitter/", "ペットシッター", "都道府県ごとのペットシッターを見る"
     if slug in ("large-dog-hotel", "cat-hotel"):
         return "/pet-hotel/", "ペットホテル", "大型犬OK・猫専用のペットホテルを見る"
-    if slug in ("pet-evacuation", "pet-disaster-prep"):
+    if slug in ("pet-evacuation", "pet-disaster-prep", "pet-evacuation-survey"):
         return "/hinan/", "ペットと避難（同行避難）", "都道府県・市区の避難所の決まりを見る"
     if slug == "adopt-pet":
         return "/joto/", "保護犬・保護猫の譲渡の窓口", "住んでいる都道府県の譲渡の条件と譲渡会を見る"
@@ -2460,6 +2466,15 @@ import gen_jichitai
 gen_jichitai.write_all(ROOT, dict(head=head, e=e, SITE=SITE, pref_slug=PREF_SLUG, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_jichitai.urls(SITE)
+# 迷子・犬の登録・飼えなくなったときを分けたページ（/jichitai/maigo/ ほか、tools/gen_maigo.py。Nori 2026-11-17「全然違うテーマ」）
+import gen_maigo
+gen_maigo.write_all(ROOT, dict(head=head, e=e, SITE=SITE, pref_slug=PREF_SLUG,
+  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_maigo.urls(SITE)
+# 運営者と掲載の基準（/about/、tools/gen_about.py。どのページの下からも portal.py の TRUST で来られる）
+import gen_about
+gen_about.write_all(ROOT, dict(head=head, e=e, SITE=SITE, foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_about.urls(SITE)
 # 全国のドッグラン（/dogrun/ と /dogrun/<県>/ と記事）：お金を取らない情報ページ（tools/gen_dogrun.py、データ tools/dogrun.json）
 gen_dogrun.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links, pref_href=pref_href,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
@@ -2725,7 +2740,7 @@ print("tidy", tidy.build(ROOT), "pages")
 # 事業者カードの写真（使ってよいと確かめた写真だけ・ない施設は共通の枠。tools/cardphoto.py、Nori 2026-11-16「事業者カードへの写真表示」）
 import cardphoto
 print("cardphoto", cardphoto.build(ROOT))
-# 各分野の入口にキービジュアル（自前の絵＋札1行。tools/keyvisual.py、Nori 2026-11-16「各カテゴリでキービジュアルいれて」）
+# 各分野の入口にキービジュアル（気持ちに合う写真＋解決の1行。tools/keyvisual.py、Nori 2026-11-16「各カテゴリでキービジュアルいれて」）
 import keyvisual
 print("keyvisual", keyvisual.build(ROOT), "pages")
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")

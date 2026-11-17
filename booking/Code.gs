@@ -255,6 +255,9 @@ function doPost(e) {
   if ((e.parameter || {}).kind === 'photos') {
     try { return json_(facilityPhotos_(String(e.parameter.partner_id || ''), demoId_(e.parameter.demo))); } catch (err) { return json_({ok:false,error:'photos_unavailable'}); }
   }
+  if ((e.parameter || {}).kind === 'fac_ask') {
+    try { return json_(facAsk_(e.parameter)); } catch (err) { log_('施設の問い合わせでエラー: ' + err); return json_({ ok: false }); }
+  }
   if ((e.parameter || {}).kind === 'reviews') {
     try { return json_(selectionReviews_(String(e.parameter.partner_id || ''), demoId_(e.parameter.demo))); } catch (err) { return json_({ok:false,error:'reviews_unavailable'}); }
   }
@@ -266,6 +269,42 @@ function doPost(e) {
     notifyAdmin_('【要確認】受付でエラー', '受付の途中でエラーが出ました。\n' + err + '\n\n入力内容:\n' + JSON.stringify(e.parameter, null, 1));
     return json_({ ok: false });
   }
+}
+
+/* ───────── 施設（葬儀・しつけ・老犬ホーム・シッター・トリミング）への問い合わせ（2026-11-17 Nori「売上を作れ」） ─────────
+   一覧のカードの「問い合わせ文」から、提携した施設（「施設の提携先」タブで受付中が○）にだけ送る。飼い主さまがお名前・メールを入れ、
+   送ることに同意したときだけ（facility.js）。施設あてのメールは返信先を飼い主さまにし、飼い主さまにも控えを送る。記録は「施設の問い合わせ」タブ。
+   受付中が○でない・タブにない施設には送らない（許可のない事業者に転送しない）。お名前が「テスト」で始まる・運営のアドレスからの問い合わせは運営者あて。 */
+var FAC_CATS = { sougi: '火葬・霊園', trainer: 'しつけ・トレーニング', rojin: '老犬ホーム', sitter: 'ペットシッター', trim: 'トリミング' };
+var FAC_SITE_NAME = 'ペットのくらし窓口';
+function facPartner_(cat, fid) {
+  var sh = ensureSheet_(SpreadsheetApp.getActive(), '施設の提携先', ['分野', 'ID', '名前', 'メール', '受付中', 'メモ']);
+  if (sh.getLastRow() < 2) return null;
+  var v = sh.getRange(2, 1, sh.getLastRow() - 1, 5).getValues();
+  for (var i = 0; i < v.length; i++) if (String(v[i][0]).trim() === cat && String(v[i][1]).trim() === fid)
+    return String(v[i][4]).trim() === '○' && /@/.test(v[i][3]) ? { name: String(v[i][2]), email: String(v[i][3]).trim() } : null;
+  return null;
+}
+function facAsk_(p) {
+  var cat = clip_(p.cat, 20), fid = clip_(p.fid, 40), name = clip_(p.name, 60).trim(), email = clip_(p.email, 120).trim(), text = clip_(p.text, 3000).trim();
+  if (!FAC_CATS[cat] || !fid || !name || !text || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { ok: false, error: 'missing' };
+  var fac = facPartner_(cat, fid);
+  if (!fac) return { ok: false, error: 'not_partner' };
+  var test = /^\s*テスト/.test(name) || email.toLowerCase() === String(adminEmail_()).toLowerCase();
+  var to = test ? adminEmail_() : fac.email, id = 'F' + Utilities.formatDate(new Date(), 'Asia/Tokyo', 'MMddHHmmss');
+  var sh = ensureSheet_(SpreadsheetApp.getActive(), '施設の問い合わせ', ['受付日時', '受付番号', '分野', '施設ID', '施設', 'お名前', 'メール', '内容', 'ページ', 'テスト', '結果']);
+  sh.appendRow([new Date(), id, FAC_CATS[cat], fid, fac.name, name, email, text, clip_(p.page, 200), test ? '○' : '', '']);
+  MailApp.sendEmail({ to: to, replyTo: email, name: FAC_SITE_NAME,
+    subject: (test ? '[テスト] ' : '') + '【' + FAC_SITE_NAME + '】' + name + ' 様からのお問い合わせ（' + FAC_CATS[cat] + '）',
+    body: fac.name + ' ご担当者さま\n\n' + FAC_SITE_NAME + '（pet.shiokonbu.com）をご覧になった飼い主さまから、お問い合わせが届きました。\n' +
+      'このメールにそのまま返信すると、飼い主さま（' + email + '）に届きます。\n\n■ お名前：' + name + ' 様\n■ メール：' + email + '\n■ 受付番号：' + id + '\n\n' + text +
+      '\n\n――――――――――\n飼い主さまは、このお問い合わせを貴社にお送りすることに同意していらっしゃいます。お名前・連絡先は、このお問い合わせへのお返事のためだけにお使いください。\n' + FAC_SITE_NAME });
+  MailApp.sendEmail({ to: email, name: FAC_SITE_NAME,
+    subject: '【' + FAC_SITE_NAME + '】' + fac.name + ' にお問い合わせをお送りしました',
+    body: name + ' 様\n\n' + FAC_SITE_NAME + 'をご利用いただき、ありがとうございます。\n次の内容を ' + fac.name + ' にお送りしました。お返事は ' + fac.name + ' から、このメールアドレスに直接届きます。\n\n■ 受付番号：' + id + '\n\n' + text +
+      '\n\n――――――――――\n料金や日程は、' + fac.name + ' からのお返事でご確認ください。このメールへのご返信は、' + FAC_SITE_NAME + 'の運営者に届きます。\n' + FAC_SITE_NAME + '　https://pet.shiokonbu.com/' });
+  try { notifyAdmin_((test ? '[テスト] ' : '') + '[施設の問い合わせ] ' + fac.name, id + ' ' + FAC_CATS[cat] + ' / ' + name + ' 様\n\n' + text); } catch (err) {}
+  return { ok: true, id: id };
 }
 
 /* ───────── お問い合わせ（LPの /contact/） ───────── */
@@ -2693,7 +2732,8 @@ function pconfStart_(q) {
 var SHEET_PINFO = '掲載情報';
 var PINFO_HEADERS = ['受け付けた日時', '提携先ID', '会社名', '種類', '内容', '自動チェック', '状態', '理由', 'データ'];
 var PINFO_KINDS = { photo: '写真', offer: '特典', equip: '設備・できること', pay: 'お支払い方法', cred: '許可・資格・保険', note: 'ひとこと' };
-var PINFO_PHOTO_KINDS = ['車の外', '車の中', 'ケージ・設備', '運転手', 'お店'];
+var PINFO_PHOTO_KINDS = ['車の外', '車の中', 'ケージ・設備', '運転手', 'お店', 'ロゴ'];
+var PINFO_LOGO = 'ロゴ'; // 会社のロゴ。白い正方形に収めて、カードでは社名の横に小さく出す。写真の枚数には数えない（COCOタク本部 2026-11-16 の打合せ「ロゴを載せたい」）
 var PINFO_DRIVER = '運転手'; // 正方形・顔あり（ご本人の了解つき）。カードでは名前の横に丸く出す（Nori 2026-11-15「車の写真と運転手の写真も載せられるように」）
 var PINFO_PHOTO_MAX = 5, PINFO_PHOTO_DAY = 10, PINFO_OFFER_MAX = 2, PINFO_NOTE_MAX = 60, PINFO_PHOTO_MIN_PX = 900, PINFO_SESSION_H = 24;
 var PINFO_STOP = []; // 掲載情報のページを止めた会社（提携先ID）。提携をやめた会社などをここに入れる
@@ -2831,6 +2871,7 @@ function pinfoPublic_() {
     if (v[3] === PINFO_KINDS.offer) o.offers = (d.list || []).filter(function(x) { return x.until >= today && !(x.from && x.from > today); }).map(function(x) { return { k: x.k || '', n: x.n || null, t: x.label || String(x.text || '').replace(/（[\d/]+まで）$/, ''), until: Number(x.until.slice(5, 7)) + '/' + Number(x.until.slice(8, 10)) }; });
     else if (v[3] === PINFO_KINDS.equip) o.equip = d.list || [];
     else if (v[3] === PINFO_KINDS.note) o.note = d.text || '';
+    else if (v[3] === PINFO_KINDS.photo && d.file && d.kind === PINFO_LOGO) o.logo = 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(d.file) + '&sz=w200';
     else if (v[3] === PINFO_KINDS.photo && d.file && d.kind === PINFO_DRIVER) o.driver = 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(d.file) + '&sz=w400';
     else if (v[3] === PINFO_KINDS.photo && d.file && d.w >= d.h) o.photos.push({ url: 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(d.file) + '&sz=w1200', kind: d.kind });
   });
@@ -2965,7 +3006,7 @@ function pinfoPage_(q, view) {
   if (errs.length && q.go === '1') { cur.cred = { list: [].concat(q.cred || []).map(String), nos: {}, until: String(q.cred_until || '') }; cur.cred.list.forEach(function(c) { cur.cred.nos[c] = String(q['no_' + c] || ''); }); }
   var credList = conf.cred.concat((cur.cred.list || []).filter(function(c) { return conf.cred.indexOf(c) < 0; }));
   var pre = function(b) { return b.src === 'known' ? pinfoPre_('入力済み（公式サイト・申し込みより）') : b.src === 'sent' ? pinfoPre_('入力済み（前に送っていただいた内容）') : ''; };
-  var photos = rows.filter(function(v) { return v[3] === PINFO_KINDS.photo && v[6] !== '直してください' && v[6] !== '取り下げ'; });
+  var photos = rows.filter(function(v) { var d = {}; try { d = JSON.parse(v[8] || '{}'); } catch (e) {} return v[3] === PINFO_KINDS.photo && v[6] !== '直してください' && v[6] !== '取り下げ' && d.kind !== PINFO_LOGO; });
   var html = '<p>' + esc_(name) + ' さま</p><p>お客さまが見る候補のカードに、写真・特典・ひとことを足せます。<b>写真と特典がある会社は、お客さまに選ばれやすくなります。</b>受け付けた内容は、登録のメールアドレスにもお知らせします。載せられるものの決まりは <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + conf.rules) + '">掲載の決まり</a> をご覧ください。</p>' +
     '<div class="box" style="font-size:.92rem">' + PINFO_LAG_HTML + '</div>' +
     ((bPay.src || bCred.src || rows.length) ? '<div class="box" style="font-size:.92rem">' + pinfoPre_('入力済み') + ' の印がある項目は、' + (rows.length ? '前に送っていただいた内容' : '') + (rows.length && (bPay.src === 'known' || bCred.src === 'known') ? 'や、' : '') + ((bPay.src === 'known' || bCred.src === 'known') ? '公式サイト・提携の申し込みでうかがった内容' : '') + 'を、はじめから入れてあります。' + pinfoEm_('変わっていなければ、そのままで大丈夫です。') + '違うところだけ直してください。</div>' : '') +
@@ -2978,14 +3019,16 @@ function pinfoPage_(q, view) {
     '<h2>お客さまに見えるカード（見本）</h2><p class="note">この画面で入れたものは、カードの' + pinfoMark_('1') + '〜' + pinfoMark_('5') + 'の場所に出ます（見本の会社です）。下の項目にも同じ番号を付けています。</p>' +
     '<img src="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + conf.sample) + '" decoding="async" alt=""写真・特典・運転手の写真が入った候補のカードの見本。1が写真、2が運転手の写真、3が特典、4が設備、5がひとこと" width="390" style="display:block;width:100%;max-width:390px;height:auto;margin:8px 0 16px;border-radius:14px;box-shadow:0 1px 6px rgba(0,0,0,.12)">';
   // 写真（/go/ のページが data-pinfo-up を見て、縮めてから送る）
-  html += '<h2>' + pinfoMark_('1') + '写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）・' + pinfoMark_('2') + '運転手</h2>' + pinfoWhere_(pinfoMark_('1') + '料金の右の写真（横にスワイプで次の写真）と、' + pinfoMark_('2') + '社名の横の丸（「写真の種類」で「運転手」を選んだ写真）が変わります。') +
+  html += '<h2>' + pinfoMark_('1') + '写真（' + photos.length + '／' + PINFO_PHOTO_MAX + '枚）・' + pinfoMark_('2') + '運転手</h2>' + pinfoWhere_(pinfoMark_('1') + '料金の右の写真（横にスワイプで次の写真）と、' + pinfoMark_('2') + '社名の横の丸（「写真の種類」で「運転手」を選んだ写真）が変わります。「ロゴ」を選ぶと、社名の横に会社のロゴが小さく出ます。') +
     '<p class="note">' + pinfoEm_('スマホで撮った写真を、そのまま選んでください。') + '大きさや形はこちらで合わせます。選ぶと、カードに出る形の見本が出るので、つまみで位置を直してから送れます。</p>' +
     '<div class="box" style="font-size:.9rem"><b>スマホでの撮り方</b><ul style="margin:6px 0 0;padding-left:1.2em">' +
     '<li>車・車の中・お店は、<b>スマホを横向き</b>にして撮る。車は全体が入るように少し離れて。</li>' +
     '<li>1枚めは「車の外」がおすすめ（カードの最初に出ます）。</li>' +
     '<li>昼の明るい場所で。うしろにほかの車・人・看板が入らないように。</li>' +
-    '<li>' + pinfoEm_('ナンバープレート・電話番号が写らないように。') + '文字やスタンプは入れない。</li>' +
+    // ナンバーは写ってよい（ふわふわ 2026-11-15 の提案。黒・緑ナンバーが信頼の印になる）
+    '<li>車の外の写真は、ナンバープレートが写っていてかまいません（黒・緑のナンバーは、きちんと届け出た車だと伝わります）。' + pinfoEm_('電話番号は写らないように。') + '文字やスタンプは入れない。</li>' +
     '<li>「運転手」は<b>スマホは縦のまま</b>、顔が真ん中、胸から上。明るい場所で（会社名の横に丸く出ます。' + pinfoEm_('写っている方ご本人の了解が必要です') + '）。</li>' +
+    '<li>「ロゴ」は会社のロゴの画像（ホームページや名刺に使っているもの）。白い四角の中に収めて、社名の横に小さく出ます。写真の枚数には数えません。</li>' +
     '<li>運転手のほかは、人の顔が写らないように。' + pinfoEm_('ご自身で撮った実際の写真だけ') + 'にしてください。</li></ul></div>' +
     (photos.length < PINFO_PHOTO_MAX ? '<div data-pinfo-up data-t="' + esc_(view ? '' : q.s) + '"' + (view ? ' data-view="1"' : '') + ' class="box"><label>写真の種類<select data-kind>' + conf.photoKinds.map(function(k) { return '<option>' + esc_(k) + '</option>'; }).join('') + '</select></label>' +
       '<label>写真を選ぶ<input type="file" accept="image/jpeg,image/png,image/heic,image/webp"></label>' +
@@ -3025,7 +3068,10 @@ function pinfoPhoto_(p) {
   if (p.rights !== '1') return { ok: false, error: '「載せる権利があります」にチェックしてください' };
   var kind = PINFO_PHOTO_KINDS.indexOf(p.photo_kind) >= 0 ? p.photo_kind : PINFO_PHOTO_KINDS[0];
   var w = Number(p.w) || 0, h = Number(p.h) || 0;
-  if (kind === PINFO_DRIVER) {
+  if (kind === PINFO_LOGO) {
+    // ロゴはページが白い正方形（600×600）に収めて送る
+    if (Math.abs(w / h - 1) > 0.02) return { ok: false, error: 'ロゴの形が合いません。ページを開き直してから、もう一度お送りください' };
+  } else if (kind === PINFO_DRIVER) {
     // 運転手は正方形（ページが切り抜く）。写っている方ご本人の了解が要る
     if (p.consent !== '1') return { ok: false, error: '「写っている方ご本人の了解があります」にチェックしてください' };
     if (Math.abs(w / h - 1) > 0.02) return { ok: false, error: '運転手の写真は正方形にしてお送りください。ページを開き直してから、もう一度お送りください' };
@@ -3035,7 +3081,8 @@ function pinfoPhoto_(p) {
   if (w < PINFO_PHOTO_MIN_PX || h < PINFO_PHOTO_MIN_PX * 2 / 3) return { ok: false, error: '写真が小さいので使えません。スマホのカメラで撮った元の写真を選んでください' };
   if (Math.abs(w / h - 1.5) > 0.02) return { ok: false, error: '写真の形が合いません。ページを開き直してから、もう一度お送りください' };
   var mine = pinfoRows_(pid).filter(function(v) { return v[3] === PINFO_KINDS.photo; });
-  var n = mine.filter(function(v) { return v[6] !== '直してください' && v[6] !== '取り下げ'; }).length;
+  var n = mine.filter(function(v) { var d = {}; try { d = JSON.parse(v[8] || '{}'); } catch (e) {} return v[6] !== '直してください' && v[6] !== '取り下げ' && d.kind !== PINFO_LOGO; }).length;
+  if (kind === PINFO_LOGO) n = 0;
   if (n >= PINFO_PHOTO_MAX) return { ok: false, error: '写真は' + PINFO_PHOTO_MAX + '枚までです' };
   var today = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
   if (mine.filter(function(v) { return new Date(new Date(v[0]).getTime() + 9 * 3600000).toISOString().slice(0, 10) === today; }).length >= PINFO_PHOTO_DAY)
@@ -4140,6 +4187,9 @@ function selectionScores_(ids, demoId) {
 function selectionReviews_(partnerId, demoId) {
   if (!reviewTarget_(partnerId) || isAnon_(partnerId, demoId)) return {ok:false,error:'unknown'};
   try {
+    // 月の取り寄せの上限に達しているときは、ページに「来月から」と出せるよう limit を返す（2026-11-17、12/1 まで上限のため）
+    var ym = Utilities.formatDate(new Date(), TZ, 'yyyyMM');
+    if ((Number(PropertiesService.getScriptProperties().getProperty('REVIEW_COUNT_' + ym)) || 0) >= CONFIG.REVIEW_MONTHLY_LIMIT) return {ok:false,error:'limit'};
     var v = reviewPlace_(partnerId, 'rating,userRatingCount,reviews');
     if (!v) return {ok:false,error:'reviews_unavailable'};
     return {ok:true, rating:v.rating || 0, count:Number(v.userRatingCount) || 0, reviews:(v.reviews || []).slice(0, 5).map(function(x) {

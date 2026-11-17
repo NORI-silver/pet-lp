@@ -72,7 +72,7 @@
   // 掲載情報の写真（a=pinfo）：端末の中で、カードと同じ横3：縦2に切り抜いて1500×1000pxのJPEGにしてから送る（位置の情報などは消える）。
   // 送る前にカードと同じ形の見本を出し、切り抜く位置はつまみで動かせる。切り抜いたあとが1200×800pxに足りない写真は送らない
   // 「運転手」は正方形（800×800、600px以上）で、カードでは丸く出す。了解のチェックが要る
-  var PW = 1500, PH = 1000, MINW = 900, DRIVER = "運転手";
+  var PW = 1500, PH = 1000, MINW = 900, DRIVER = "運転手", LOGO = "ロゴ";
   function upload(){
     var box = body.querySelector("[data-pinfo-up]");
     if (!box) return;
@@ -89,10 +89,16 @@
     ok.innerHTML = '<input type="checkbox" data-consent style="width:auto;display:inline;margin:0">写っている方ご本人の了解があります';
     box.querySelector("[data-rights]").parentNode.insertAdjacentElement("afterend", ok);
     var img = null, crop = null;
-    function shape(){ var d = kindSel.value === DRIVER; return d ? { r: 1, w: 800, h: 800, min: MINW / 2 } : { r: 1.5, w: PW, h: PH, min: MINW }; }
+    // ロゴは切らずに白い正方形の中に収める（COCOタク本部 2026-11-16 の打合せで「ロゴを載せたい」）
+    function shape(){ if (kindSel.value === LOGO) return { r: 1, w: 600, h: 600, min: 150, fit: true }; var d = kindSel.value === DRIVER; return d ? { r: 1, w: 800, h: 800, min: MINW / 2 } : { r: 1.5, w: PW, h: PH, min: MINW }; }
+    function tooSmall(m){ var sh = shape(); return sh.fit ? Math.max(m.naturalWidth, m.naturalHeight) < sh.min : Math.min(m.naturalWidth, m.naturalHeight * sh.r) < sh.min; }
     function draw(){
       if (!img) return;
       var sh = shape(), w = img.naturalWidth, h = img.naturalHeight, cw = Math.min(w, h * sh.r), ch = cw / sh.r, k = pos.value / 100;
+      if (sh.fit) { prev.width = sh.w; prev.height = sh.h; prev.style.aspectRatio = "1/1"; prev.style.width = "40%"; prev.style.borderRadius = "12px";
+        var g = prev.getContext("2d"), s = Math.min(sh.w * 0.9 / w, sh.h * 0.9 / h); g.fillStyle = "#fff"; g.fillRect(0, 0, sh.w, sh.h);
+        g.drawImage(img, (sh.w - w * s) / 2, (sh.h - h * s) / 2, w * s, h * s); crop = { x: 0, y: 0, w: sh.w, h: sh.h };
+        cap.textContent = "お客さまのカードでは、社名の横にこのように小さく出ます。"; pos.style.display = "none"; return; }
       crop = { x: (w - cw) * k, y: (h - ch) * k, w: Math.round(cw), h: Math.round(ch) };
       prev.width = sh.w; prev.height = sh.h;
       prev.style.aspectRatio = sh.r === 1 ? "1/1" : "3/2"; prev.style.width = sh.r === 1 ? "60%" : "100%"; prev.style.borderRadius = sh.r === 1 ? "50%" : "12px";
@@ -100,7 +106,7 @@
       cap.textContent = "お客さまのカードでは、このように見えます。" + (Math.abs(w / h - sh.r) > 0.02 ? "つまみで切り抜く位置を動かせます。" : "");
       pos.style.display = Math.abs(w / h - sh.r) > 0.02 ? "block" : "none";
     }
-    function kindChanged(){ ok.style.display = kindSel.value === DRIVER ? "flex" : "none"; if (img) { if (Math.min(img.naturalWidth, img.naturalHeight * shape().r) < shape().min) { msg.textContent = "この写真は小さいので使えません。スマホのカメラで撮った元の写真を選んでください（LINEなどで受け取った写真やスクリーンショットは小さくなっていることがあります）。"; } else msg.textContent = ""; draw(); } }
+    function kindChanged(){ ok.style.display = kindSel.value === DRIVER ? "flex" : "none"; if (img) { if (tooSmall(img)) { msg.textContent = "この写真は小さいので使えません。スマホのカメラで撮った元の写真を選んでください（LINEなどで受け取った写真やスクリーンショットは小さくなっていることがあります）。"; } else msg.textContent = ""; draw(); } }
     kindSel.addEventListener("change", kindChanged); kindChanged();
     pos.addEventListener("input", draw);
     file.addEventListener("change", function(){
@@ -113,7 +119,7 @@
         URL.revokeObjectURL(url);
         var w = im.naturalWidth, h = im.naturalHeight;
         var sh = shape();
-        if (Math.min(w, h * sh.r) < sh.min) { msg.textContent = "この写真は小さいので使えません。スマホのカメラで撮った元の写真を選んでください（LINEなどで受け取った写真やスクリーンショットは小さくなっていることがあります）。"; file.value = ""; return; }
+        if (tooSmall(im)) { msg.textContent = "この写真は小さいので使えません。スマホのカメラで撮った元の写真を選んでください（LINEなどで受け取った写真やスクリーンショットは小さくなっていることがあります）。"; file.value = ""; return; }
         img = im; pos.value = "50"; draw();
         prev.style.display = "block"; cap.style.display = "";
       };
@@ -123,11 +129,11 @@
       if (!img || !crop) { msg.textContent = "写真を選んでください。"; return; }
       if (!box.querySelector("[data-rights]").checked) { msg.textContent = "「載せる権利があります」にチェックしてください。"; return; }
       if (kindSel.value === DRIVER && !ok.querySelector("input").checked) { msg.textContent = "「写っている方ご本人の了解があります」にチェックしてください。"; return; }
-      if (Math.min(img.naturalWidth, img.naturalHeight * shape().r) < shape().min) { msg.textContent = "この写真は小さいので使えません。スマホのカメラで撮った元の写真を選んでください（LINEなどで受け取った写真やスクリーンショットは小さくなっていることがあります）。"; return; }
+      if (tooSmall(img)) { msg.textContent = "この写真は小さいので使えません。スマホのカメラで撮った元の写真を選んでください（LINEなどで受け取った写真やスクリーンショットは小さくなっていることがあります）。"; return; }
       if (box.getAttribute("data-view")) { msg.textContent = "見本なので、送っていません（事業者の画面では、ここで受け付けます）。"; return; }
       btn.disabled = true; msg.textContent = "送っています…";
       var b = new URLSearchParams({ kind: "pinfo_photo", t: box.getAttribute("data-t"), rights: "1", w: String(crop.w), h: String(crop.h),
-        data: prev.toDataURL("image/jpeg", 0.85) });
+        data: prev.toDataURL("image/jpeg", 0.9) });
       b.set("photo_kind", kindSel.value); if (kindSel.value === DRIVER) b.set("consent", "1");
       fetch(API, { method: "POST", body: b }).then(function(r){ return r.json(); }).then(function(r){
         btn.disabled = false;

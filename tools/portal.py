@@ -125,6 +125,11 @@ FOOT = ('<!--FOOTCATS--><nav class="foot-cats" aria-label="ペットのくらし
         + "".join(f'<a href="{u}">{n}</a>' for g, items in HUB for n, u, d, k in items)
         + '<a href="/guide/">ガイド</a></nav><!--/FOOTCATS-->')
 
+# どのページの下にも出す短い表示（運営・出どころ・並び順・誤りの報告。2026-11-16「信頼されるサイトにする」）。くわしくは /about/
+TRUST = ('<!--TRUST--><p class="foot-trust" style="font-size:.78rem;line-height:1.7;color:#5f6368;margin:10px 0">'
+         '公式サイトや自治体などの公開情報をもとに、各ページに時点を書いて載せています。掲載は無料で、お金で並び順は変わりません。'
+         '<a href="/about/">運営者と掲載の基準</a>・<a href="/contact/">まちがいを知らせる</a></p><!--/TRUST-->')
+
 _LD = re.compile(r'(<script type="application/ld\+json">)(.*?)(</script>)', re.S)
 _LD_NAME = re.compile(r'("@type":\s*"(?:Organization|WebSite|ListItem)"[^{}]*?"name":\s*)"' + TAXI + '"')
 _LD_ALT = re.compile(r'("@id":\s*"https://pet\.shiokonbu\.com/#website",\s*"name":\s*"' + INFO + r'",\s*"alternateName":\s*)\[[^\]]*\]')
@@ -157,6 +162,9 @@ def apply(s, path, hub=None):
     # 分野の一覧（下）
     s = re.sub(r'[ \t]*<!--FOOTCATS-->.*?<!--/FOOTCATS-->\n?', '', s, flags=re.S)
     s = re.sub(r'(<footer>\s*<div class="wrap">\n?)', lambda m: m.group(1) + "    " + FOOT + "\n", s, count=1)
+    s = re.sub(r'[ \t]*<!--TRUST-->.*?<!--/TRUST-->\n?', '', s, flags=re.S)
+    s = re.sub(r'(<p>&copy; 2026 )', lambda m: TRUST + "\n    " + m.group(1), s, count=1)
+    s = s.replace('<a href="/#operator">運営者情報</a>', '<a href="/about/">運営者と掲載の基準</a>')
     # 前からある下のメニューから、上の一覧と同じ分野のリンクを外す（同じリンクが2回並ばないように）
     hubs = {u for g, items in HUB for n, u, d, k in items} | {"/guide/"}
     s = re.sub(r'(<!--/FOOTCATS-->\s*<nav>)(.*?)(</nav>)',

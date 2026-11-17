@@ -40,11 +40,16 @@ def _card(e, h):
     extra = ""
     if h.get("spec"): extra += f'<small class="emg-spec">{e(h["spec"])}</small>'
     extra += f'<small>受け入れる動物：{e(h["animals"])}</small>'
+    # うちの子に合うか（公式サイトの文から。Nori 2026-11-17「自分の子にあてはまるものを探してる」）
+    import ownerfit
+    ok = [ownerfit.SHORT[k] for k in ("bed", "night", "med", "big") if k in ownerfit.keys("rojin-home", h["url"])[0]]
+    if ok: extra += f'<small>こんな子も相談できる：{e("・".join(ok))}</small>'
     if h.get("visit"): extra += f'<small>見学・面会：{e(h["visit"])}</small>'
     if h.get("reg"): extra += f'<small>動物取扱業の登録（公式サイトより）：{e(h["reg"])}</small>'
     extra += f'<small>所在地：{e(h["addr"])}</small>'
-    if h.get("src"): extra += '<small>公式サイトが見つからないため、老犬ケア（老犬ホームの情報サイト）の施設の紹介ページにリンクしています</small>'
-    return (f'<div class="emg-item emg-co"><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>'
+    if h.get("src"): extra += '<small>公式サイトが見つからないため、' + ('老犬ホーム協会' if h["src"] == "roukenhome" else '老犬ケア（老犬ホームの情報サイト）') + 'の施設の紹介ページにリンクしています</small>'
+    fa = f' data-cat="rojin" data-fid="{e(h["id"])}" data-name="{e(h["name"])}"' + (' data-partner="1"' if h.get("partner") else '')  # facility.js（問い合わせ文・提携先へは当サイトから送る）
+    return (f'<div class="emg-item emg-co"{fa}><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>'
             f'<small>{e(h["city"])}</small>{extra}'
             + (f'<div class="emg-score" data-id="{e(h["id"])}"></div>' if h.get("review_query") else "") + "</div>")
 
@@ -122,6 +127,7 @@ def render(ctx):
 </main>
 {prefkeep.LIST_JS}
 <script src="/reviews.js" defer></script>
+<script src="/facility.js" defer></script>
 """ + ctx["foot_noband"]()
 
 def review_rows():

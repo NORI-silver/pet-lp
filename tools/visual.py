@@ -106,6 +106,35 @@ def flow(items):
     """短い流れ（→でつなぐ）。items = [(見出し, ひとこと), ...]"""
     return '<ol class="flow">' + "".join(f'<li><b>{e(t)}</b>{("<span>" + e(s) + "</span>") if s else ""}</li>' for t, s in items) + "</ol>"
 
+# ---- 「選ぶときに見る◯つ」（2026-11-16 Nori「ドッグトレーナーをどういう基準でえらべばいいかわからん」。ホテルの「見ておく6つ」と同じ形）----
+# アイコン＋太字の見出し＋1文の白いカード。スマホは1列、広い画面は2列。一覧の結果のすぐ後ろと、記事の答えの節に置く。
+# items = [(アイコンのキー, 見出し, 1文), ...]。more = (文字, URL) で下に記事へのリンク1行。
+_ICON = {
+ "doc": '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/>',
+ "heart": '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+ "eye": '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+ "yen": '<path d="M6 4l6 8 6-8M12 12v8M8 13h8M8 17h8"/>',
+ "star": '<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
+ "badge": '<circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 21l5-3 5 3-1.5-7"/>',
+ "home": '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/>',
+ "chat": '<path d="M4 5h16v11H9l-5 4z"/>',
+ "moon": '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+ "cross": '<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/>',
+ "camera": '<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
+ "shield": '<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>',
+}
+CHK_CSS = ('<style>.v-chk{margin:14px 0 18px}.v-chk>h2,.v-chk>h3{font-size:1.05rem;margin:0 0 8px}.v-chk ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}'
+ '@media(min-width:720px){.v-chk ol{grid-template-columns:1fr 1fr}}'
+ '.v-chk li{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1.5px solid var(--line,#e6dfd8);border-radius:16px;padding:10px 12px;margin:0}'
+ '.v-chk li svg{flex:0 0 34px;width:34px;height:34px;padding:7px;box-sizing:border-box;border-radius:50%;background:var(--o-l,#fff1e6);stroke:var(--o-d,#c2551a);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}'
+ '.v-chk li b{display:block;color:var(--ink,#2a2420);font-size:.95rem;line-height:1.45}.v-chk li span{display:block;font-size:.86rem;color:var(--ink-2,#5f5148);line-height:1.65;margin-top:2px}'
+ '.v-chk .v-more{margin:8px 2px 0;font-size:.9rem}</style>')
+def checks(title, items, more=None, tag="h2"):
+    li = "".join(f'<li><svg viewBox="0 0 24 24" aria-hidden="true">{_ICON.get(k, _ICON["star"])}</svg><div><b>{e(h)}</b><span>{rich(t)}</span></div></li>' for k, h, t in items)
+    hd = f"<{tag}>{e(title)}</{tag}>" if title else ""
+    mo = f'<p class="v-more"><a href="{e(more[1])}">{e(more[0])} →</a></p>' if more else ""
+    return f'{CHK_CSS}<div class="v-chk">{hd}<ol>{li}</ol>{mo}</div>'
+
 # ---- 犬種・体重で「うちの子で見る」（2026-11-14 Nori「全部犬種ごとにフィルターして、それぞれの情報があるほうがいいね」）----
 # カードは全部HTMLに出す（最初は全部見える。検索・AIにも全部読める）。選ぶと、合わないカードだけを hidden にする小さなJS（BF_JS）。
 # 選んだ犬種・体重はブラウザに覚えて（petBreed）、ほかの記事でも同じ子で見られる。保険の記事（guides_insurance.py）と共通の部品。
@@ -236,6 +265,7 @@ def block(b, arrow="", heading=""):
     if k == "bars": return bars(v)
     if k == "vs": return vs(v)
     if k == "flow": return flow(v)
+    if k == "checks": return checks("", v)
     if k == "breeds": return breeds(v, arrow, heading)
     if k == "html": return v  # 生成側で作ったHTML（エスケープ済みのものだけ）
     raise ValueError(k)

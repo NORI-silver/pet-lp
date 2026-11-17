@@ -261,7 +261,30 @@ def cred_chips(val):
             reg = True; continue
         items.append(x)
     if reg: items.append("動物取扱業の登録あり")
-    return "".join(f'<span class="cr">{html.escape(x)}</span>' for x in dict.fromkeys(items))
+    out = []
+    for x in dict.fromkeys(items):
+        note = cred_note(x)
+        out.append(f'<span class="crd" tabindex="0" role="button" aria-label="{html.escape(x)}の説明"><span class="cr">{html.escape(x)}</span><span class="crx">{html.escape(note)}</span></span>' if note
+                   else f'<span class="cr">{html.escape(x)}</span>')
+    return "".join(out)
+
+# 資格の札を押したときの1行の説明（2026-11-16 Nori「どういう基準でえらべばいいかわからん。いろんな資格があるから」）。
+# 中身は各団体の公式ページの説明だけ（くわしくは記事 /guide/choose-dog-trainer/ の表。出どころもそこ）。
+CRED_NOTES = [
+ (r"CPDT|CCPDT", "米国の認定団体 CCPDT の資格。300時間以上の指導経験のうえで試験に合格し、3年ごとに更新します。"),
+ (r"JAHA", "日本動物病院協会の認定。養成コースのあと、筆記・面接と、ごほうびで教える実技の試験があります。"),
+ (r"JKC.*訓練士|公認訓練士（JKC", "ジャパンケネルクラブの公認資格。自分で訓練した犬を試験に合格させた実績が要り、6つの段階があります。"),
+ (r"JKC愛犬飼育管理士", "ジャパンケネルクラブの、犬の飼い方の知識の資格です。"),
+ (r"警察犬協会", "日本警察犬協会の公認資格。警察犬の訓練から始まった資格で、等級があります。"),
+ (r"愛玩動物看護師", "2022年にできた国家資格。獣医師の指示のもとで動物の看護をする資格で、しつけ専門の資格ではありません。"),
+ (r"愛玩動物飼養管理士", "日本愛玩動物協会の資格。ペットの飼い方と法律の知識を学ぶもので、1級と2級があります。"),
+ (r"シェパード|JSV", "日本シェパード犬登録協会の訓練士の資格です。"),
+ (r"^動物取扱業の登録あり$", "お金をもらって犬の訓練・預かりをするのに法律で必要な、自治体への登録です。"),
+]
+def cred_note(x):
+    for pat, note in CRED_NOTES:
+        if re.search(pat, x): return note
+    return ""
 
 
 def _edge_line(ic, lab, val, conf):
@@ -319,6 +342,9 @@ def build_card(card, conf, fit_by_name):
         if conf["key"] == "joto" and tag == "ul" and "jt-c" in cls:
             keep.append(x); continue
         more.append(x)
+    # 安心の材料（ペットホテルの動物取扱業の登録・夜のスタッフなど。Nori 2026-11-16「どこが信用できるかわからない」）：緑のチェックの札で、名前のすぐ下に
+    trust = [v for l, v, _ in rows if l == "安心の材料"]
+    rows = [r for r in rows if r[0] != "安心の材料"]
     # 見せる行：場所 → 料金 → 時間 → 動物 → 資格（4行まで）。のこりは「くわしく」
     pick, used = [], set()
     def take(rx, ic):
@@ -341,6 +367,9 @@ def build_card(card, conf, fit_by_name):
     tags = [html.unescape(x) for x in (re.search(r'data-tags="([^"]*)"', opentag) or [None, ""])[1].split("|") if x]
     ch = [FLAG_CHIP[f] for f in flags if f in FLAG_CHIP and f != "cat"] + [t for t in tags + chips if not re.fullmatch(r"(犬|猫|犬・猫)(OK|可|も)?", t)]  # 犬OK・猫OK はだれでも分かるので出さない
     ch += [s for s in svc_items if len(s) <= 12]
+    if trust:  # 緑のチェックに出したことは札にくり返さない（「夜もスタッフ」など）
+        _tl = [x.strip() for x in re.split(r"[、,]", trust[0])]
+        ch = [c for c in ch if not any(c in t for t in _tl)]
     ch = list(dict.fromkeys(c for c in dp + ch if c))[:6]
     fors = list(dict.fromkeys(FOR_TEXT[k] for k in flags + tags if k in FOR_TEXT))[:3]
     # 合う・合わない（生成側で入れていればそれを使う）
@@ -373,6 +402,9 @@ def build_card(card, conf, fit_by_name):
     # 見出しの「◯◯市の動物病院」は地域の見出しと重なるので出さない（Nori 2026-11-15「柏市の下に柏市の動物病院って全てのカードに入れてるけど不要」）
     body = [f'<div class="fc-name">{head}</div>']
     if fors: body.append(f'<p class="fc-catch">{html.escape("・".join(fors[:2]))}に</p>')
+    if trust:
+        cr = "".join(f'<span class="cr">{html.escape(x.strip())}</span>' for x in dict.fromkeys(re.split(r"[、,]", trust[0])) if x.strip())
+        body.append(f'<p class="fc-line" title="安心の材料">{icon("badge")}<span>{cr}</span></p>')
     lines = []
     if rest: lines.append(("clock", "", rest))
     lines += [(ic, lab, val) for ic, lab, val in pick if ic != "yen"]
@@ -554,7 +586,7 @@ def rows(h):
 def _too_big(h):
     """情報ページの重さの上限（tests/info-light.test.cjs の60KB）を超えるなら作りかえない（全部の施設を並べる全国のページ。県のページで見せる）"""
     import gzip
-    return len(gzip.compress(h.encode("utf-8"), 9)) > 54 * 1024  # あとで cardskin.py がカードの形をそろえて少し重くなるので、余裕を残す
+    return len(gzip.compress(h.encode("utf-8"), 9)) > 52 * 1024  # あとで cardskin.py がカードの形をそろえて少し重くなるので、余裕を残す
 
 def _trim(h, keep):
     """全国のページで重すぎるとき、都道府県ごとの箱（emg-pref、見出しに県のページへのリンク）に最初の keep 件だけ残し、のこりは県のページへのリンクにする（施設は県のページにすべて載っている。tests/info-light の「上限を超えたら県のページへのリンクに」）"""

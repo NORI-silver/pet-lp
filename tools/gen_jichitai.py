@@ -8,8 +8,8 @@ import prefkeep
 J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "jichitai.json"), encoding="utf-8"))
 
 SLUG = "jichitai"
-TITLE = "ペットの迷子・犬の登録・引取りの窓口｜全国の動物愛護センター・保健所の一覧（47都道府県・129自治体）｜ペットタクシー予約窓口"
-DESC = "犬や猫が迷子になったとき、保護したとき、犬の登録や狂犬病の予防注射、引っ越し、飼えなくなったときの相談先を、全国47都道府県と政令指定都市・中核市の動物愛護センター・保健所、都道府県警察の公式ページでまとめた無料の一覧です。窓口ごとに受け付けていることと、迷子のときにすることもわかります。"
+TITLE = "迷子・犬の登録・飼えなくなったとき｜困りごとから、次にやることと全国の動物愛護センター・保健所がわかる｜ペットのくらし窓口"
+DESC = "迷子になった、犬を迎えた、飼い続けるのが難しくなった。困りごとを選ぶと、その町で次にやることが順番にわかります。全国の動物愛護センター・保健所（47都道府県と政令市・中核市）も市区町村からさがせます。"
 
 # どこに連絡するか（どれも法律と各自治体の案内に書いてあること）
 WHERE = [
@@ -75,6 +75,7 @@ CSS = ("<style>.jc-ic{display:inline-block;width:22px;height:22px;flex:0 0 22px;
  ".jc-br .t.c2{background:#2b211b}"
  ".jc-find{display:flex;gap:6px;margin:10px 0 0}.jc-find input{flex:1;min-width:0;padding:10px 12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
  ".jc-ans{margin:8px 0 0;font-size:.92rem;color:#2b211b}.jc-ans:empty{display:none}.jc-ans button{margin:4px 4px 0 0;padding:8px 12px;border:1px solid #c2410c;border-radius:999px;background:#fff;color:#c2410c;font-weight:700;font-size:.9rem}"
+ ".jc-pick{display:grid;gap:8px;margin:0 0 6px}.jc-pk{display:block;background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px;text-decoration:none;color:#2b2622}.jc-pk b{display:block;font-size:1.05rem}.jc-pk span{display:block;font-size:.85rem;color:#4a3d34;line-height:1.55;margin-top:2px}.jc-pk.u{background:#c2410c;border-color:#c2410c;color:#fff}.jc-pk.u span{color:#fff}.jc-pk::after{content:'›';float:right;margin-top:-1.6em;font-size:1.4rem}"
  ".jc-q1{background:#fff;border:2px solid #c2410c;border-radius:16px;padding:12px 14px;margin:6px 0 10px}.jc-q1 label{display:flex;gap:6px;align-items:center;font-weight:700;margin:0 0 6px}.jc-sub{margin:0 0 8px;font-size:.84rem;color:#4a3d34;line-height:1.6}.jc-q1 input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
  ".jc-card{background:#fff;border:1px solid #f1e3d6;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}"
  ".jc-card.hit,.cs.jc-card.hit{border:2px solid #c2410c}"
@@ -208,8 +209,8 @@ def render(ctx):
     guides_html = "".join(f'<li><a href="{u}">{e(t)}</a></li>' for t, u in guides)
     ld = '<script type="application/ld+json">\n' + json.dumps([
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
-        {"@type": "ListItem", "position": 2, "name": "ペットの迷子・犬の登録・引取りの窓口", "item": url}]},
+        {"@type": "ListItem", "position": 1, "name": "ペットのくらし窓口", "item": SITE + "/"},
+        {"@type": "ListItem", "position": 2, "name": "迷子・登録・飼えなくなったとき", "item": url}]},
       {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
       ensure_ascii=False, indent=1) + "\n</script>"
@@ -217,32 +218,31 @@ def render(ctx):
 <main>
 <section class="area-hero">
   <div class="wrap">
-    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › ペットの迷子・犬の登録・引取りの窓口</nav>
-    <h1><small>全国47都道府県・政令指定都市・中核市（129自治体）</small>ペットの迷子・犬の登録・引取りの窓口</h1>
-    <p class="lede">迷子・保護・犬の登録・引っ越しのとき、どこに連絡するかが分かります。</p>
+    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットのくらし窓口</a> › 迷子・登録・飼えなくなったとき</nav>
+    <h1>迷子・犬の登録・飼えなくなったとき</h1>
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
+    <div class="sh"><h2>いま、どれで困っていますか？</h2></div>
+    <div class="jc-pick">
+      <a class="jc-pk u" href="/jichitai/maigo/"><b>迷子になった</b><span>市区町村を入れると、その町で今日やることが順番に。届け出先・チラシ作り・ペット探偵の料金も</span></a>
+      <a class="jc-pk" href="/jichitai/maigo/#found"><b>迷子の子を見つけた・保護した</b><span>警察とセンターのどちらに届けるか</span></a>
+      <a class="jc-pk" href="/jichitai/touroku/"><b>犬を迎えた（登録・予防注射）</b><span>迎えた日から期限の日と窓口がわかる</span></a>
+      <a class="jc-pk" href="/jichitai/tebanasu/"><b>飼い続けるのが難しくなった</b><span>預ける・老犬ホーム・新しい家族。手放す前にできること</span></a>
+    </div>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sh"><h2>動物愛護センター・保健所をさがす</h2></div>
     <div class="emg">
-      <div class="jc-q1"><label for="jcQ"><i class="jc-ic i-pin"></i>迷子をさがす・保護したときの窓口</label><p class="jc-sub">飼い主さんはお住まいの、保護した人は見つけた場所の市区町村を入れてください。</p><input id="jcQ" type="text" placeholder="市区町村（例：佐倉市）" autocomplete="address-level2"><p id="jcA" class="jc-ans" aria-live="polite"></p></div>
+      <div class="jc-q1"><label for="jcQ"><i class="jc-ic i-pin"></i>市区町村から、受け持ちのセンター・保健所をさがす</label><input id="jcQ" type="text" placeholder="市区町村（例：佐倉市）" autocomplete="address-level2"><p id="jcA" class="jc-ans" aria-live="polite"></p></div>
       <div class="f"><label for="hospPref">都道府県</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       {body}
       <div class="emg-tips"><h4>窓口ごとに受け付けていること</h4>
       <div class="tbl"><table><thead><tr><th>窓口</th><th>おもに受け付けていること</th></tr></thead><tbody>{roles}</tbody></table></div>
       <p class="emg-tips-note">迷子・保護・引き取りは都道府県（政令指定都市・中核市は市）、犬の登録と予防注射は市区町村、と受け持ちが分かれています。迷子のときは、動物愛護センター・保健所と警察の両方に届け出てください。見つけた人がどちらに届けるか分からないからです。</p></div>
-      <div class="emg-tips"><h4>こんなときは、ここへ</h4><div class="jc-tiles">{where}</div></div>
-      <div class="emg-tips"><h4>迷子になったら、まずすること</h4><ol>
-        <li><b>すぐにさがし始める</b><br>猫は家の中と、家のまわりの狭くて暗い場所（物置、室外機の下、植え込み、縁の下）。犬はいなくなった場所を中心に円をえがくように広げます。</li>
-        <li><b>その日のうちに届け出る</b><br>動物愛護センター・保健所（住んでいる所と、いなくなった所）、警察（遺失届）、市区町村の清掃の担当、近くの動物病院。マイクロチップの登録の連絡先がいまのものかも確かめます。</li>
-        <li><b>収容情報のページを毎日見る</b><br>東京都は収容期限を7日間としているので、問い合わせの間をあけすぎないように。上の一覧の「迷子・保護」のリンクや、<a href="https://www.env.go.jp/nature/dobutsu/aigo/shuyo/link.html" target="_blank" rel="noopener">環境省の自治体リンク一覧</a>から。となりの市や県も。</li>
-        <li><b>チラシ・掲示板・SNSで知らせる</b><br>写真、いなくなった日時と場所、特徴、連絡先（自宅の住所は書かない）。</li>
-      </ol><p class="emg-tips-note">さがし方・チラシの書き方・犬と猫のちがい・見つかったあとの手続きは<a href="/guide/lost-pet/">ペットが迷子になったら</a>にまとめています。</p></div>
-      <div class="emg-tips"><h4>保護された子を迎えに行くとき</h4><dl>
-        <dt>持っていくもの</dt><dd>飼い主と分かるもの（写真、鑑札やマイクロチップの番号）と、本人確認の書類。リードやキャリーも。</dd>
-        <dt>手数料</dt><dd>返還には手数料がかかることが多く、金額は自治体ごとに違います。行く前に窓口に確かめてください。</dd>
-        <dt>迎えに行ったあと</dt><dd>警察やほかの窓口に出した届け出を取り下げ、動物病院で一度みてもらうと安心です。動物愛護センターは駅から遠いこともあるので、移動はケージごと乗れる車が便利です。</dd>
-      </dl></div>
       <div class="emg-tips"><h4>手続きと相談のガイド</h4><ul class="other">{guides_html}</ul></div>
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
       <p class="emg-note">どの自治体がどの地域を受け持つかは、環境省の<a href="{e(J["source"])}" target="_blank" rel="noopener">地方自治体連絡先一覧</a>に合わせています。リンク先は各自治体と警察の公式ページです（{e(J["checked"])}に確認）。ページの場所や受付の方法は変わることがあるので、つながらないときは自治体のサイトの中でさがしてください。電話番号は各自治体のページでご確認ください。掲載の内容の誤りは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
