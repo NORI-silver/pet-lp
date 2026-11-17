@@ -22,6 +22,7 @@ def main():
         if x in S: mode = x; continue
         S[mode].add(x)
     drop, keep_flag, only = S["--drop"], S["--keep"], S["--only"]
+    PM = {f'{x["cat"]}:{x["id"]}': x for x in json.load(open(os.path.join(HERE, "photo_permits.json"), encoding="utf-8"))["permits"]}
     rows = json.load(open(os.path.join(src, "index.json"), encoding="utf-8"))
     pj = os.path.join(HERE, "photos.json")
     P = json.load(open(pj, encoding="utf-8"))
@@ -42,8 +43,10 @@ def main():
         if not fs: continue
         it = {"cat": r["cat"], "id": r["id"], "name": r["name"], "url": r["url"], "by": "permit" if r["status"] == "permit" else "license",
               "src": r.get("policy", ""), "checked": time.strftime("%Y-%m-%d"), "photos": fs}
+        pm = PM.get(f'{r["cat"]}:{r["id"]}', {})
+        if pm.get("credit"): it["credit"] = pm["credit"]  # 許可の条件で出どころを書く
         if it["by"] == "license":
-            it.update(credit="写真：" + (r.get("owner") or r["name"])[:30], license=r.get("note", "")[:30])
+            it.update(credit="出典：" + (r.get("owner") or r["name"])[:30], license=r.get("note", "")[:30], lic_url=r.get("policy", ""))
         old[(r["cat"], r["id"])] = it; n += 1
     P["items"] = keep + sorted(old.values(), key=lambda x: (x["cat"], x["id"]))
     json.dump(P, open(pj, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
