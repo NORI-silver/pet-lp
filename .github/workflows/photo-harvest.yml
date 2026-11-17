@@ -25,7 +25,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
-      - run: pip install -q pillow opencv-python-headless
+      - run: pip install -q pillow "opencv-python-headless<5"  # 5.0 で CascadeClassifier（顔の見分け）がなくなった
       - name: 公式サイトを読む
         run: |
           python3 tools/photo_harvest.py out ${{ inputs.cats }}

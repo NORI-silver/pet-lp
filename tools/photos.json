@@ -1,4 +1,34 @@
 {
  "_説明": "事業者カードに出す写真（使ってよいと確かめたものだけ。Nori 2026-11-16）。tools/photo_import.py が入れる（手で写さない）。by は owner（事業者が登録）・permit（事業者が公式サイトの写真の利用を許可。記録は photo_permits.json）・license（公式サイトの決まりで転載を許している。credit・license・lic_url の表示が要る）。photos は /img/fac/ の 520×347 の webp。並びは owner → permit → license。",
- "items": []
+ "items": [
+  {
+   "cat": "dogrun",
+   "id": "D043",
+   "name": "岡山県動物愛護センター 北広場（ドッグラン）",
+   "url": "https://www.pref.okayama.jp/page/detail-28533.html",
+   "by": "license",
+   "src": "https://www.pref.okayama.lg.jp/page/detail-4318.html",
+   "checked": "2026-11-17",
+   "photos": [
+    "/img/fac/dogrun/D043_1.webp"
+   ],
+   "credit": "出典：岡山県ホームページ",
+   "license": "公共データ利用規約",
+   "lic_url": "https://www.pref.okayama.lg.jp/page/detail-4318.html"
+  },
+  {
+   "cat": "trainer",
+   "id": "T068",
+   "name": "ZONOWA dog training&lounge",
+   "url": "https://zonowa-dog.com/",
+   "by": "permit",
+   "src": "2026-11-16",
+   "checked": "2026-11-17",
+   "photos": [
+    "/img/fac/trainer/T068_2.webp",
+    "/img/fac/trainer/T068_3.webp"
+   ],
+   "credit": "写真：ZONOWA dog training&lounge"
+  }
+ ]
 }
