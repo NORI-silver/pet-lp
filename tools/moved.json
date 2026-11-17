@@ -1,6 +1,12 @@
 {
  "_note": "gen_areas.py が作る。前の公開にあって、いまはない（まとめた）ページのURLと、移す先。手で直さない",
  "pages": {
-  "/hinan/saitama/miyoshi-machi/": "/hinan/saitama/"
+  "/hinan/saitama/miyoshi-machi/": "/hinan/saitama/",
+  "/hinan/tokyo/koganei-shi/": "/hinan/tokyo/",
+  "/hinan/kanagawa/hayama-machi/": "/hinan/kanagawa/",
+  "/hinan/kanagawa/kaisei-machi/": "/hinan/kanagawa/",
+  "/hinan/fukuoka/ashiya-machi/": "/hinan/fukuoka/",
+  "/hinan/hokkaido/otobe-cho/": "/hinan/hokkaido/",
+  "/hinan/tochigi/kaminokawa-machi/": "/hinan/tochigi/"
  }
 }

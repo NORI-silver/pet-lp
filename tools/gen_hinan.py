@@ -7,6 +7,7 @@
 import json, os, re
 import gen_dogrun
 import visual as V
+import hinan_ans as HA
 from guides_hinan import HINAN_GUIDES, ITEMS, CHECKED, MARK, table_rows, N, N_CAGE, SIZES, BREEDS, SEIREI
 
 SLUG = "hinan"
@@ -110,16 +111,10 @@ AG_CSS = """<style>
 .hn-terms .i{flex:0 0 3.2em;font-size:1.15rem;line-height:1;text-align:center;letter-spacing:-.1em}
 .hn-terms b{flex:0 0 6.6em;font-size:.88rem;color:var(--ink,#222)}
 .hn-terms li.wide{grid-column:auto}
-.hn-unk{background:#f1f3f4;border-radius:12px;padding:10px 12px;font-size:.9rem;line-height:1.7;color:#3c4043;margin:8px 0}
 @media(min-width:720px){.hn-ag{grid-template-columns:repeat(6,minmax(0,1fr))}}
 </style>"""
 
 CSS = CSS + AG_CSS
-
-# 分からないことは並べない（Nori 2026-11-16「詳しくはリンク先では価値ゼロです」）：書いてある印だけを出し、
-# 動物の種類がひとつも書いていない自治体は、6枚の「？」の代わりに1行だけ（UNK_LINE）
-def unk_line(it):
-    return f"どの動物を受け入れるかは、{it['name']}の案内には書かれていません。避難する前に、{it['name']}の防災の担当か避難所でご確認ください。"
 
 def agrid(e, it):
     f = it["flags"]
@@ -143,8 +138,9 @@ def no_text(t):
 
 def arows(e, it):
     cage = "持っていく（ケージの中で飼う）" if it.get("cage_req") else first(it.get("cage"))
-    rows = [("🧺", "ケージ", cage), ("🏠", "飼う場所", first(it.get("place"))),
-            ("📏", "大きさ", first(it.get("size"))), ("⚠️", "受け入れない動物", no_text(it.get("no")))]
+    lk, la = large_answer(it)
+    rows = [("🦮", "大型犬は？", large_short(it)), ("🧺", "ケージ", cage), ("🏠", "飼う場所", first(it.get("place"))),
+            ("⚠️", "受け入れない動物", no_text(it.get("no")))]
     rows = [r for r in rows if r[2]]
     if not rows: return ""
     return '<ul class="hn-rows">' + "".join(f'<li><span class="i" aria-hidden="true">{i}</span><span><b>{e(t)}</b>{e(v)}</span></li>' for i, t, v in rows) + "</ul>"
@@ -192,31 +188,73 @@ def fit_rows(its):
         return rows
     return known([
         {"k": ["s"], "h": "小型犬（10kg未満）", "items": [line(it, flag(it, "dog")) for it in its if it["flags"].get("dog")]},
-        {"k": ["m", "l"], "h": "中型犬・大型犬（10kg以上）", "items": [line(it, large(it)) for it in its if it.get("size") or it["flags"].get("large")]},
+        {"k": ["m", "l"], "h": "中型犬・大型犬（10kg以上）", "items": [line(it, large_short(it)) for it in its]},
         {"k": ["cat"], "h": "猫", "items": [line(it, flag(it, "cat")) for it in its if it["flags"].get("cat")]},
         {"k": ["all"], "tag": "ほかの動物", "h": "うさぎ・ハムスター・小鳥・爬虫類", "items": [line(it, small(it)) for it in its if it["flags"].get("small") or it["flags"].get("bird")]},
     ])
 
+# 大型犬はどうなる？（Nori 2026-11-16「飼い主は自分の子はどうなるんだろうを心配してる。それに回答が得られるようにしないと意味ない」）
+# 自治体の文から、大型犬についての答えを1つに決める。犬のことと読めないもの（「大型の動物」だけ）は、犬について言い切らない。
+_DOG = r"(?:大型犬|中型犬|特定犬|大型の犬|\d+kg|体高|秋田犬|土佐犬)"
+def large_answer(it):
+    """(種類, 答えの文)。種類：ok つないで受け入れ／cage ケージに入る大きさまで／no 大型犬は受け入れない／hard 大型の動物はむずかしい／small 小型が対象／none 書いていない"""
+    if it.get("large_ans"):  # 問い合わせのお答えや、読んで決めた答え
+        return it.get("large_kind", "ok"), it["large_ans"]
+    nm = it["name"]; s = it.get("size") or ""; no = it.get("no") or ""; t = s + "／" + no
+    f = it["flags"].get("large")
+    m = re.search(_DOG + r"[^。]*?(?:受け入れ(?:ない|できない|られない)|対象外|同行避難できない|入れない|断る|禁止)", t) or re.search(r"(?:受け入れ(?:ない|できない))[^。]*" + _DOG, t)
+    if m:
+        why = next((x for x in re.split(r"(?<=。)", t.replace("／", "。")) if re.search(_DOG, x)), "")
+        may = re.search(r"(?:こと|場合)がある", why or m.group(0))
+        return "no", f"{nm}は、大型犬を避難所で受け入れ{'ないことがある' if may else 'ない'}としています。" + (f"（{why.strip('。')}）" if why else "")
+    if re.search(r"(?:ケージ|キャリー|クレート)[^。]{0,12}(?:入る|入れられる|入りきら)|片手で持ち運べる|ケージに入れることが条件|入ることが条件|入るか", s):
+        return "cage", f"{nm}は、ケージやキャリーに入る大きさの子までとしています。入らない大型犬は、避難所に入れないことがあります。"
+    if f == "no" or re.search(r"大型(?:の)?(?:動物|ペット)[^。]*(?:受け入れ(?:ない|できない)|断る|不可|連れて行けない|入れない)", t):
+        return "nobig", f"{nm}は「大型の動物は避難所で受け入れない」としています。大型犬がこれにあたるかは書いていないので、入れないこともあると考えておきましょう。"
+    if re.search(r"(?:大型犬|入らない(?:子|犬|ペット|大型))[^。]*(?:つな|係留|リード)|大きさの(?:決まり|上限|制限)は(?:ない|ありません)|大型犬用|中型犬以上の犬が対象|小型犬と大型犬で場所を分け|大きさに関わらず|大型犬も", s) or f == "yes":
+        return "ok", f"{nm}は、大型犬も同行避難の対象です。ケージに入らない子は、決められた場所にリードでつなぐ形になります。"
+    if re.search(r"大型の(?:動物|ペット)|大型動物", t) or f in ("hard", "cond"):
+        return "hard", f"{nm}は「大型の動物は避難所での受け入れがむずかしい」としていて、大型犬が入れるかは、はっきり書いていません。"
+    if re.search(r"小型", s):
+        return "small", f"{nm}は「比較的小型の動物」を対象にしていて、大型犬が入れるかは、はっきり書いていません。"
+    return "none", f"{nm}は、ペットの体の大きさの決まりを書いていません。国の手引きでは、同行避難の対象は「犬や猫など」で、大きさの区別はありません。"
+
+def large_short(it):
+    """大型犬の答えを1文で（一覧の行・さがす欄用）。「書いていません」とは言わない"""
+    k, a = large_answer(it)
+    if k == "none": return "犬の大きさによる区別はありません。"
+    return a.split("。")[0].replace(it["name"] + "は、", "") + "。"
+
+LARGE_TIP = {
+    "ok": "じょうぶなリード（つなぐ用の長いもの）・マット・ふんの袋を持って行きましょう。屋外につなぐことが多いので、雨や暑さ・寒さの対策もしておくと安心です。",
+    "cage": "大型犬は、車の中で過ごす・親戚や知人の家・ペットホテルや動物病院など、避難所のほかの行き先を前もって決めておきましょう。",
+    "nobig": "大型犬は、車の中で過ごす・親戚や知人の家・ペットホテルや動物病院など、避難所のほかの行き先を前もって決めておきましょう。",
+    "no": "大型犬は、車の中で過ごす・親戚や知人の家・ペットホテルや動物病院など、避難所のほかの行き先を前もって決めておきましょう。",
+    "hard": "入れないときに備えて、車の中で過ごす・親戚や知人の家・ペットホテルなどの行き先も決めておきましょう。連れて行くときは、じょうぶなリードとクレートを持って行きます。",
+    "small": "入れないときに備えて、車の中で過ごす・親戚や知人の家・ペットホテルなどの行き先も決めておきましょう。連れて行くときは、じょうぶなリードとクレートを持って行きます。",
+    "none": "避難所では、人と別の場所でケージに入れるか、リードでつなぐ形がほとんどです。大型犬はケージに入らないことが多いので、じょうぶなリードを持って行き、入れないときの行き先（車・親戚や知人の家・ペットホテル）も決めておきましょう。",
+}
+
 def faq_for(pf, its):
+    """飼い主が知りたいこと（うちの子は連れて行ける？どこで過ごす？何を持って行く？）に、そのまま答える。引用の「…とされています」は使わない"""
     out = []
     for it in its:
         nm = it["name"]
-        a = it.get("animals")
         if it.get("policy"):
-            out.append((f"{nm}では、ペットと同行避難できますか？", f"{nm}では「{it['policy']}」とされています。"))
-        if a:
-            out.append((f"{nm}の避難所には、どんな動物を連れて行けますか？",
-                        f"{nm}では「{a}」とされています。" + (f"{it['no']}" if it.get("no") else "") + "避難所ごとの決まりや災害の状況で変わることがあるので、確かめてください。"))
-        sz = it.get("size")
-        if sz:
-            out.append((f"{nm}の避難所に大型犬は入れますか？", f"{nm}では「{sz}」とされています。"))
-        if it.get("cage") or it.get("cage_req"):
-            out.append((f"{nm}の避難所にケージは必要ですか？", f"{nm}では「{it.get('cage') or 'ケージを持っていく'}」とされています。"))
-        if it.get("no"):
-            out.append((f"{nm}の避難所で受け入れない動物はいますか？", f"{nm}では「{it['no']}」とされています。"))
+            out.append((f"{nm}では、ペットと一緒に避難できますか？", f"{nm}では、{it['policy']}"))
+        k, ans = large_answer(it)
+        out.append((f"{nm}の避難所に、大型犬は連れて行けますか？", ans + LARGE_TIP[k]))
         if it.get("place"):
-            out.append((f"{nm}の避難所では、ペットはどこで過ごしますか？", f"{nm}では「{it['place']}」とされています。避難所ごとに違うこともあります。"))
-    return out[:10]
+            out.append((f"{nm}の避難所で、ペットはどこで過ごしますか？",
+                        f"{nm}では、{it['place']}" + ("" if "避難所ごと" in it["place"] else "くわしい場所は避難所ごとに決まります。")))
+        if it.get("cage") or it.get("cage_req"):
+            out.append((f"{nm}の避難所に、ケージは持って行きますか？", f"{nm}では、" + (it.get("cage") or "ケージを持って行きます。")))
+        a = it.get("animals")
+        if a:
+            out.append((f"{nm}の避難所には、どんな動物を連れて行けますか？", f"{nm}では、{a}" + (f"なお、{it['no']}" if it.get("no") else "")))
+        elif it.get("no"):
+            out.append((f"{nm}の避難所に連れて行けない動物はいますか？", f"{nm}では、{it['no']}"))
+    return out[:12]
 
 def _ld(SITE, url, title, desc, crumbs, faq):
     items = [{"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + u} for i, (n, u) in enumerate(crumbs)]
@@ -354,11 +392,12 @@ def render_pref(ctx, pf, its, done):
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
     {finder(e, [p for _, ps in ctx["emg_regions"] for p in ps], pf)}
-    <div class="answer"><h2 id="answer">{e(pf)}の避難所に連れて行ける動物</h2>{(agrid(e, prefs_it[0]) + '<p class="hn-none">' + e(pol) + '</p>') if prefs_it else '<p>' + e(pol) + '</p>'}</div>
+    {HA.block(e, prefs_it[0], pf, large_answer(prefs_it[0]), title=f"うちの子は、{pf}の避難所でどうなる？") if prefs_it else ""}
+    <div class="answer"><h2 id="answer">{e(pf)}の決まり</h2>{(agrid(e, prefs_it[0]) + '<p class="hn-none">' + e(pol) + '</p>') if prefs_it else '<p>' + e(pol) + '</p>'}</div>
     {('<h2 id="city">市区町村ごとのページ</h2>' + city_links) if cities else ""}
     {cov}
     {fit}
-    {('<h2 id="detail">' + e(pf) + 'の決まり</h2>' + "".join(card(e, it) for it in prefs_it)) if prefs_it else ""}
+    {('<h2 id="detail">' + e(pf) + 'が出している決まりの全文と出どころ</h2>' + "".join(card(e, it) for it in prefs_it)) if prefs_it else ""}
     {('<h2 id="more">ほかの市区町村の決まり</h2>' + "".join(card(e, it, True) for it in small) + HN_OPEN) if small else ""}
     <h2 id="faq">よくある質問</h2>
     <dl class="emg-tips">{faq_html}</dl>
@@ -404,10 +443,6 @@ def render_city(ctx, pf, it, sibs, done):
     faq = faq_for(pf, [it])
     ld = _ld(SITE, url, f"{nm}のペット同行避難と避難所の決まり", desc,
              [("ペットタクシー予約窓口", "/"), ("ペットと避難", f"/{SLUG}/"), (pf, href(pf)), (nm, href_city(it))], faq)
-    # 市区町村のページは体重と猫だけで選ぶ（決まりは犬種では変わらない。犬種名の一覧で本文をふくらませない。2026-11-14 薄いページの担当から）
-    fit = "" if not (any(it["flags"].values()) or it.get("size")) else V.block(("breeds", {"title": f"うちの子の大きさ・種類で、{nm}の決まりを見る", "rows": fit_rows([it]), "sizes": SIZES, "names": False,
-                              "lead": f"{nm}の決まりを、大きさ・種類ごとに並べました。",
-                              "note": "書いていないことも「受け入れない」という意味ではありません。避難所ごとの決まりもあるので、市区町村や避難所で確かめてください。"}))
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     pol = f'<p style="margin:0 0 4px">{e(it["policy"])}</p>' if it.get("policy") else ""
     summ = e(" ".join(_answer(it)[1 if it.get("policy") else 0:]))
@@ -420,16 +455,16 @@ def render_city(ctx, pf, it, sibs, done):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/{SLUG}/">ペットと避難</a> › <a href="{href(pf)}">{e(pf)}</a> › {e(nm)}</nav>
     <h1><small>避難所で受け入れる動物・大型犬・ケージの決まり</small>{e(nm)}のペット同行避難</h1>
-    <p class="lede">{e(nm)}（{e(pf)}）の避難所に、ペットを連れて行けるか。○は受け入れる、×は受け入れない、△は条件つきです。</p>
+    <p class="lede">うちの子をえらぶと、{e(nm)}の避難所に連れて行けるか・どこで過ごすか・今日やる準備が分かります。</p>
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
-    <div class="answer"><h2 id="answer">{e(nm)}の避難所に連れて行ける動物</h2>{pol}{agrid(e, it)}{arows(e, it)}</div>
+    {HA.block(e, it, pf, large_answer(it), shelter_note=has_sh_place(pf, it))}
     {shelters_html(e, pf, it)}
-    {fit}
-    <h2 id="detail">{e(nm)}のくわしい決まり</h2>
-    {card(e, it, grid=False)}
+    <h2 id="detail">{e(nm)}の決まり（上の答えのもと）</h2>
+    <div class="answer">{pol}{agrid(e, it)}{arows(e, it)}</div>
+    <details class="hn-more"><summary>{e(nm)}が出している決まりの全文と出どころ</summary>{card(e, it, grid=False)}</details>
     <h2 id="faq">よくある質問</h2>
     <dl class="emg-tips">{faq_html}</dl>
     <p class="emg-note">{e(CHECKED)}時点の情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
@@ -534,6 +569,18 @@ def load_shelters(pf, nm):
     f = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), SLUG, "s", f"{c}.json")
     return json.load(open(f, encoding="utf-8")) if c and os.path.exists(f) else []
 
+_SITES = None
+def site_src(pf, nm):
+    """避難所ごとのペットの場所の出どころ（tools/hinan_sites.json）"""
+    global _SITES
+    if _SITES is None:
+        f = os.path.join(os.path.dirname(os.path.abspath(__file__)), "hinan_sites.json")
+        _SITES = json.load(open(f, encoding="utf-8")) if os.path.exists(f) else {}
+    return _SITES.get(f"{pf}|{nm}")
+
+def has_sh_place(pf, it):
+    return any(r[5] for r in load_shelters(pf, it["name"]))
+
 def shelters_html(e, pf, it):
     nm = it["name"]; rs = load_shelters(pf, nm)
     if not rs: return ""
@@ -554,7 +601,9 @@ def shelters_html(e, pf, it):
         top, rest = rs[:8], rs[8:]
         body = '<ol class="hn-sh">' + "".join(_sh_li(e, r) for r in top) + "</ol>"
         if rest: body += f'<details class="hn-ward"><summary>ほかの{len(rest)}か所</summary><ol class="hn-sh">' + "".join(_sh_li(e, r) for r in rest) + "</ol></details>"
-    return SH_CSS + head + body + SH_SRC + "</div>" + NEAR_JS
+    v = site_src(pf, nm) if pets else None
+    src2 = (f'<p class="hn-src">🐾ペットの場所：<a href="{e(v["src"])}" target="_blank" rel="noopener">{e(v["title"])}</a>をもとに作成。</p>') if v else ""
+    return SH_CSS + head + body + src2 + SH_SRC + "</div>" + NEAR_JS
 
 def _bf(page):
     return page.replace("</head>", V.BF_CSS + "\n</head>", 1).replace("</body>", V.BF_JS + "\n</body>", 1)
@@ -580,7 +629,12 @@ def write_finder(ROOT):
         else: row = [nm, "todo", "", top, "", ""]
         row.append(m["code"] if os.path.exists(os.path.join(ROOT, SLUG, "s", m["code"] + ".json")) else "")
         if it:  # 書いてあること（考え方・ケージ・飼う場所・受け入れない動物）を短く。分からない項目は空
-            row.append(["", "" if it.get("cage_req") else first(it.get("cage")), first(it.get("place")), no_text(it.get("no"))])
+            row.append(["", "" if it.get("cage_req") else first(it.get("cage")), first(it.get("place")), no_text(it.get("no")),
+                        large_short(it)])
+        v = site_src(pf, nm)
+        if v:
+            if len(row) < 8: row.append([])
+            row.append([v["title"], v["src"]])
         out.setdefault(pf, []).append(row)
     open(os.path.join(ROOT, SLUG, "munis.json"), "w", encoding="utf-8").write(json.dumps(out, ensure_ascii=False, separators=(",", ":")))
 
@@ -615,11 +669,11 @@ if(r[5]){{var K=[['🐕','犬'],['🦮','大型犬'],['🐈','猫'],['🐇','う
 K.forEach(function(k,i){{var m=Mm[r[5].charAt(i)];if(m)g+='<li class="'+m[2]+'"><span class="i">'+k[0]+'</span><b>'+k[1]+'</b><span class="m" data-k="'+m[0]+'">'+m[1]+'</span></li>'}});
 g=g?'<ul class="hn-ag">'+g+'</ul>':'';
 function rw(i,b,v){{if(v)w+='<li><span class="i">'+i+'</span><span><b>'+b+'</b>'+esc(v)+'</span></li>'}}
-rw('🧺','ケージ',r[5].charAt(6)=='1'?'持っていく（ケージの中で飼う）':t[1]);rw('🏠','飼う場所',t[2]);rw('⚠️','受け入れない動物',t[3]);
+rw('🦮','大型犬は？',t[4]);rw('🧺','ケージ',r[5].charAt(6)=='1'?'持っていく（ケージの中で飼う）':t[1]);rw('🏠','飼う場所',t[2]);rw('⚠️','受け入れない動物',t[3]);
 h=g+(w?'<ul class="hn-rows">'+w+'</ul>':'')+h}}
 O.innerHTML=h;if(r[6]){{var sw=document.createElement('div');sw.className='hn-shw';sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこんでいます…</p>';O.appendChild(sw);
 fetch('/{SLUG}/s/'+r[6]+'.json').then(function(x){{return x.json()}}).then(function(L){{function li(s){{var q=s[2]+','+s[3];return '<li data-ll="'+q+'"><b>'+esc(s[0])+'</b><span>'+esc(s[1])+'</span>'+(s[5]?'<em>🐾 '+esc(s[5])+'</em>':'')+'<a href="https://www.google.com/maps/search/?api=1&amp;query='+q+'" target="_blank" rel="noopener">地図 ↗</a></li>'}}
 var t='<h2>🏫 '+n+'の指定避難所 <small class="hn-n">'+L.length+'か所</small></h2><button type="button" class="hn-near">📍 近い避難所をさがす</button><div class="hn-nearout" aria-live="polite"></div><ol class="hn-sh">'+L.slice(0,5).map(li).join('')+'</ol>';
 if(L.length>5)t+=(r[1]=='page'?'<p class="hn-shn"><a href="'+esc(r[2])+'#shelters">'+n+'の避難所をすべて見る（'+L.length+'か所）→</a></p><ol class="hn-sh" hidden>'+L.slice(5).map(li).join('')+'</ol>':'<details class="hn-ward"><summary>ほかの'+(L.length-5)+'か所</summary><ol class="hn-sh">'+L.slice(5).map(li).join('')+'</ol></details>');
-sw.innerHTML=t+'{SH_SRC_JS}'}}).catch(function(){{sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこめませんでした。</p>'}})}}
+sw.innerHTML=t+(r[8]?'<p class="hn-src">🐾ペットの場所：<a href="'+esc(r[8][1])+'" target="_blank" rel="noopener">'+esc(r[8][0])+'</a>をもとに作成。</p>':'')+'{SH_SRC_JS}'}}).catch(function(){{sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこめませんでした。</p>'}})}}
 try{{gtag('event','hinan_find',{{pref:P.value,status:r[1]}})}}catch(e){{}}}})}})();</script>""" + SH_CSS + NEAR_JS

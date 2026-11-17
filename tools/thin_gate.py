@@ -16,6 +16,8 @@ SKIP_TAGS = ("script", "style", "nav", "footer", "form", "noscript", "template")
 def _segments(html):
     m = re.search(r"<main[^>]*>(.*)</main>", html, re.S)
     t = m.group(1) if m else ""
+    # 決まった形で作る答えの箱（ペットと避難の「うちの子は？」など。tools/hinan_ans.py）は、名前が入っていてもひな形なので数えない
+    t = re.sub(r"<!--thin0-->.*?<!--/thin0-->", " ", t, flags=re.S)
     t = nosrc.clean(t)  # 出さない言い回し（tools/nosrc.py）は数えない
     t = tidy.clean(t)  # 運営側の集計など、あとで取るもの（tools/tidy.py）は数えない
     for tag in SKIP_TAGS:
