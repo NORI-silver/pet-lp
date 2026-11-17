@@ -569,6 +569,15 @@ def load_shelters(pf, nm):
     f = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), SLUG, "s", f"{c}.json")
     return json.load(open(f, encoding="utf-8")) if c and os.path.exists(f) else []
 
+_SITES = None
+def site_src(pf, nm):
+    """避難所ごとのペットの場所の出どころ（tools/hinan_sites.json）"""
+    global _SITES
+    if _SITES is None:
+        f = os.path.join(os.path.dirname(os.path.abspath(__file__)), "hinan_sites.json")
+        _SITES = json.load(open(f, encoding="utf-8")) if os.path.exists(f) else {}
+    return _SITES.get(f"{pf}|{nm}")
+
 def has_sh_place(pf, it):
     return any(r[5] for r in load_shelters(pf, it["name"]))
 
@@ -592,7 +601,9 @@ def shelters_html(e, pf, it):
         top, rest = rs[:8], rs[8:]
         body = '<ol class="hn-sh">' + "".join(_sh_li(e, r) for r in top) + "</ol>"
         if rest: body += f'<details class="hn-ward"><summary>ほかの{len(rest)}か所</summary><ol class="hn-sh">' + "".join(_sh_li(e, r) for r in rest) + "</ol></details>"
-    return SH_CSS + head + body + SH_SRC + "</div>" + NEAR_JS
+    v = site_src(pf, nm) if pets else None
+    src2 = (f'<p class="hn-src">🐾ペットの場所：<a href="{e(v["src"])}" target="_blank" rel="noopener">{e(v["title"])}</a>をもとに作成。</p>') if v else ""
+    return SH_CSS + head + body + src2 + SH_SRC + "</div>" + NEAR_JS
 
 def _bf(page):
     return page.replace("</head>", V.BF_CSS + "\n</head>", 1).replace("</body>", V.BF_JS + "\n</body>", 1)
@@ -620,6 +631,10 @@ def write_finder(ROOT):
         if it:  # 書いてあること（考え方・ケージ・飼う場所・受け入れない動物）を短く。分からない項目は空
             row.append(["", "" if it.get("cage_req") else first(it.get("cage")), first(it.get("place")), no_text(it.get("no")),
                         large_short(it)])
+        v = site_src(pf, nm)
+        if v:
+            if len(row) < 8: row.append([])
+            row.append([v["title"], v["src"]])
         out.setdefault(pf, []).append(row)
     open(os.path.join(ROOT, SLUG, "munis.json"), "w", encoding="utf-8").write(json.dumps(out, ensure_ascii=False, separators=(",", ":")))
 
@@ -660,5 +675,5 @@ O.innerHTML=h;if(r[6]){{var sw=document.createElement('div');sw.className='hn-sh
 fetch('/{SLUG}/s/'+r[6]+'.json').then(function(x){{return x.json()}}).then(function(L){{function li(s){{var q=s[2]+','+s[3];return '<li data-ll="'+q+'"><b>'+esc(s[0])+'</b><span>'+esc(s[1])+'</span>'+(s[5]?'<em>🐾 '+esc(s[5])+'</em>':'')+'<a href="https://www.google.com/maps/search/?api=1&amp;query='+q+'" target="_blank" rel="noopener">地図 ↗</a></li>'}}
 var t='<h2>🏫 '+n+'の指定避難所 <small class="hn-n">'+L.length+'か所</small></h2><button type="button" class="hn-near">📍 近い避難所をさがす</button><div class="hn-nearout" aria-live="polite"></div><ol class="hn-sh">'+L.slice(0,5).map(li).join('')+'</ol>';
 if(L.length>5)t+=(r[1]=='page'?'<p class="hn-shn"><a href="'+esc(r[2])+'#shelters">'+n+'の避難所をすべて見る（'+L.length+'か所）→</a></p><ol class="hn-sh" hidden>'+L.slice(5).map(li).join('')+'</ol>':'<details class="hn-ward"><summary>ほかの'+(L.length-5)+'か所</summary><ol class="hn-sh">'+L.slice(5).map(li).join('')+'</ol></details>');
-sw.innerHTML=t+'{SH_SRC_JS}'}}).catch(function(){{sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこめませんでした。</p>'}})}}
+sw.innerHTML=t+(r[8]?'<p class="hn-src">🐾ペットの場所：<a href="'+esc(r[8][1])+'" target="_blank" rel="noopener">'+esc(r[8][0])+'</a>をもとに作成。</p>':'')+'{SH_SRC_JS}'}}).catch(function(){{sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこめませんでした。</p>'}})}}
 try{{gtag('event','hinan_find',{{pref:P.value,status:r[1]}})}}catch(e){{}}}})}})();</script>""" + SH_CSS + NEAR_JS
