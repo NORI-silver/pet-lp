@@ -77,26 +77,34 @@
   "mainEntity": [
    {
     "@type": "Question",
-    "name": "仙台市では、ペットと同行避難できますか？",
+    "name": "仙台市では、ペットと一緒に避難できますか？",
     "acceptedAnswer": {
      "@type": "Answer",
-     "text": "仙台市では「地震などで避難するときは、ペットを置き去りにせず同行することが必要としている。市の避難所運営マニュアルで、ペットを連れてきた人の受付と飼う場所を決めている。」とされています。"
+     "text": "仙台市では、地震などで避難するときは、ペットを置き去りにせず同行することが必要としている。市の避難所運営マニュアルで、ペットを連れてきた人の受付と飼う場所を決めている。"
     }
    },
    {
     "@type": "Question",
-    "name": "仙台市の避難所にケージは必要ですか？",
+    "name": "仙台市の避難所に、大型犬は連れて行けますか？",
     "acceptedAnswer": {
      "@type": "Answer",
-     "text": "仙台市では「避難所では、決められた場所で必ずケージに入れるか、リードでつないで飼う。ふだんからケージなどで過ごせるよう慣らしておく。」とされています。"
+     "text": "仙台市は、ペットの体の大きさの決まりを書いていません。国の手引きでは、同行避難の対象は「犬や猫など」で、大きさの区別はありません。避難所では、人と別の場所でケージに入れるか、リードでつなぐ形がほとんどです。大型犬はケージに入らないことが多いので、じょうぶなリードを持って行き、入れないときの行き先（車・親戚や知人の家・ペットホテル）も決めておきましょう。"
     }
    },
    {
     "@type": "Question",
-    "name": "仙台市の避難所では、ペットはどこで過ごしますか？",
+    "name": "仙台市の避難所で、ペットはどこで過ごしますか？",
     "acceptedAnswer": {
      "@type": "Answer",
-     "text": "仙台市では「屋外で飼えるペットは原則として屋外のスペースにつなぐ。屋外がむずかしいペットは、ほかの避難者と分けた屋内のスペースを検討する。」とされています。避難所ごとに違うこともあります。"
+     "text": "仙台市では、屋外で飼えるペットは原則として屋外のスペースにつなぐ。屋外がむずかしいペットは、ほかの避難者と分けた屋内のスペースを検討する。くわしい場所は避難所ごとに決まります。"
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "仙台市の避難所に、ケージは持って行きますか？",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "仙台市では、避難所では、決められた場所で必ずケージに入れるか、リードでつないで飼う。ふだんからケージなどで過ごせるよう慣らしておく。"
     }
    }
   ]
@@ -266,7 +274,6 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 .hn-terms .i{flex:0 0 3.2em;font-size:1.15rem;line-height:1;text-align:center;letter-spacing:-.1em}
 .hn-terms b{flex:0 0 6.6em;font-size:.88rem;color:var(--ink,#222)}
 .hn-terms li.wide{grid-column:auto}
-.hn-unk{background:#f1f3f4;border-radius:12px;padding:10px 12px;font-size:.9rem;line-height:1.7;color:#3c4043;margin:8px 0}
 @media(min-width:720px){.hn-ag{grid-template-columns:repeat(6,minmax(0,1fr))}}
 </style>
 <main>
@@ -305,7 +312,7 @@ if(r[5]){var K=[['🐕','犬'],['🦮','大型犬'],['🐈','猫'],['🐇','う�
 K.forEach(function(k,i){var m=Mm[r[5].charAt(i)];if(m)g+='<li class="'+m[2]+'"><span class="i">'+k[0]+'</span><b>'+k[1]+'</b><span class="m" data-k="'+m[0]+'">'+m[1]+'</span></li>'});
 g=g?'<ul class="hn-ag">'+g+'</ul>':'';
 function rw(i,b,v){if(v)w+='<li><span class="i">'+i+'</span><span><b>'+b+'</b>'+esc(v)+'</span></li>'}
-rw('🧺','ケージ',r[5].charAt(6)=='1'?'持っていく（ケージの中で飼う）':t[1]);rw('🏠','飼う場所',t[2]);rw('⚠️','受け入れない動物',t[3]);
+rw('🦮','大型犬は？',t[4]);rw('🧺','ケージ',r[5].charAt(6)=='1'?'持っていく（ケージの中で飼う）':t[1]);rw('🏠','飼う場所',t[2]);rw('⚠️','受け入れない動物',t[3]);
 h=g+(w?'<ul class="hn-rows">'+w+'</ul>':'')+h}
 O.innerHTML=h;if(r[6]){var sw=document.createElement('div');sw.className='hn-shw';sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこんでいます…</p>';O.appendChild(sw);
 fetch('/hinan/s/'+r[6]+'.json').then(function(x){return x.json()}).then(function(L){function li(s){var q=s[2]+','+s[3];return '<li data-ll="'+q+'"><b>'+esc(s[0])+'</b><span>'+esc(s[1])+'</span>'+(s[5]?'<em>🐾 '+esc(s[5])+'</em>':'')+'<a href="https://www.google.com/maps/search/?api=1&amp;query='+q+'" target="_blank" rel="noopener">地図 ↗</a></li>'}
@@ -330,14 +337,15 @@ try{gtag('event','hinan_find',{pref:P.value,status:r[1]})}catch(e){}})})();</scr
 </style><script>(function(){if(window.hnNearOn)return;window.hnNearOn=1;document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.hn-near');if(!b)return;var w=b.closest('.hn-shw'),o=w.querySelector('.hn-nearout');if(!navigator.geolocation){o.textContent='この端末では位置が使えません。';return}
 b.disabled=true;b.textContent='位置をたしかめています…';navigator.geolocation.getCurrentPosition(function(p){var la=p.coords.latitude,ln=p.coords.longitude,a=[];w.querySelectorAll('.hn-sh li[data-ll]').forEach(function(li){var q=li.getAttribute('data-ll').split(','),dy=(q[0]-la)*111,dx=(q[1]-ln)*91;a.push([Math.sqrt(dx*dx+dy*dy),li])});a.sort(function(x,y){return x[0]-y[0]});
 var ol=document.createElement('ol');ol.className='hn-sh';a.slice(0,5).forEach(function(x){var c=x[1].cloneNode(true),i=document.createElement('i');i.textContent='ここから'+(x[0]<1?Math.round(x[0]*1000)+'m':x[0].toFixed(1)+'km')+'（直線）';c.hidden=false;c.insertBefore(i,c.children[1]);ol.appendChild(c)});o.innerHTML='<p class="hn-shn"><b>近い避難所</b></p>';o.appendChild(ol);b.textContent='近い順に並べました';try{gtag('event','hinan_near',{})}catch(e){}},function(){b.disabled=false;b.textContent='📍 近い避難所をさがす';o.textContent='位置が使えませんでした。下の一覧からさがしてください。'},{timeout:10000,maximumAge:300000})})})();</script>
-    <div class="answer"><h2 id="answer">宮城県の避難所に連れて行ける動物</h2><p>地震などで避難するときは、ペットを置き去りにせず同行することが必要としている。市の避難所運営マニュアルで、ペットを連れてきた人の受付と飼う場所を決めている。</p></div>
+    
+    <div class="answer"><h2 id="answer">宮城県の決まり</h2><p>地震などで避難するときは、ペットを置き去りにせず同行することが必要としている。市の避難所運営マニュアルで、ペットを連れてきた人の受付と飼う場所を決めている。</p></div>
     <h2 id="city">市区町村ごとのページ</h2><ul class="hn-pref"><li><a href="/hinan/miyagi/tomiya-shi/">富谷市</a></li></ul>
     <details class="hn-more"><summary>ほかの市区町村（25）</summary><p class="hn-none">宮城県・石巻市・塩竈市・気仙沼市・白石市・角田市・多賀城市・岩沼市・栗原市・東松島市・蔵王町・大河原町・村田町・柴田町・丸森町・山元町・大郷町・色麻町・加美町・涌谷町・美里町・女川町・南三陸町・大衡村・大和町。避難所の決まりは、それぞれの市区町村の防災の担当にご確認ください。</p></details>
     
     
     <h2 id="more">ほかの市区町村の決まり</h2><section class="hn-card" id="仙台市"><h3>仙台市</h3><details class="hn-more"><summary>くわしい決まりと出どころを見る</summary><dl><dt>考え方</dt><dd>地震などで避難するときは、ペットを置き去りにせず同行することが必要としている。市の避難所運営マニュアルで、ペットを連れてきた人の受付と飼う場所を決めている。</dd><dt>ケージ・リード</dt><dd>避難所では、決められた場所で必ずケージに入れるか、リードでつないで飼う。ふだんからケージなどで過ごせるよう慣らしておく。</dd><dt>避難所で飼う場所</dt><dd>屋外で飼えるペットは原則として屋外のスペースにつなぐ。屋外がむずかしいペットは、ほかの避難者と分けた屋内のスペースを検討する。</dd><dt>そのほかの決まり・備え</dt><dd><ul><li>受付で「ペット登録台帳」に書く</li><li>衛生とアレルギーのため、ほかの避難者の居住スペースにはペットを入れない</li><li>飼育と飼育場所の掃除は飼い主の責任。えさは時間を決めて片付け、運動やブラッシングは屋外で</li></ul></dd></dl><p class="hn-src">出どころ（2026-11-14時点）：</p><ul class="hn-src"><li><a href="https://www.city.sendai.jp/dobutsu/kurashi/shizen/petto/hogodobutsu/aigo/dobutsu/saigai.html" target="_blank" rel="noopener">仙台市「ペットのための災害対策関連情報」</a></li><li><a href="https://www.city.sendai.jp/kekaku/kurashi/anzen/saigaitaisaku/hinanjo/documents/210302_sheet.pdf" target="_blank" rel="noopener">仙台市「避難所運営マニュアル マニュアルシート集」（PDF）</a></li></ul></details></section><section class="hn-card" id="名取市"><h3>名取市</h3><details class="hn-more"><summary>くわしい決まりと出どころを見る</summary><dl><dt>考え方</dt><dd>市のページで、ペットとの防災や災害時の行動をまとめたパンフレット（日本愛玩動物協会）を紹介している。避難所での受け入れ方は、このページには書いていない。</dd><dt>そのほかのこと</dt><dd><ul><li>パンフレット「人と動物の防災を考えよう」「いざというときのために ペットと被災したら」を見られる。</li><li>パンフレットは自由に印刷して配ってよい。</li></ul></dd><dt>避難所の場所</dt><dd><a href="https://www.city.natori.miyagi.jp/site/bousai-keiiban/35743.html" target="_blank" rel="noopener">名取市「名取市内の避難所について」</a></dd></dl><p class="hn-src">出どころ（2026-11-14時点）：</p><ul class="hn-src"><li><a href="https://www.city.natori.miyagi.jp/page/33820.html" target="_blank" rel="noopener">名取市「ペット防災について」</a></li></ul></details></section><section class="hn-card" id="登米市"><h3>登米市</h3><details class="hn-more"><summary>くわしい決まりと出どころを見る</summary><dl><dt>考え方</dt><dd>避難所運営マニュアル（2021年8月）で、避難所の居住部分へのペットの持ち込みは原則として禁止し、敷地内の屋外にペット専用スペースをつくるとしている。</dd><dt>避難所で飼う場所</dt><dd>敷地内の屋外につくるペット専用スペース（鳴き声やにおいが迷惑にならない場所）。余裕があれば屋内も可。</dd><dt>そのほかの決まり・備え</dt><dd><ul><li>居住部分へのペットの持ち込みは原則できない</li><li>ペット専用スペースの掃除は飼い主が責任をもって行う</li><li>飼い主の名前やペットの種類・特徴を届け出て、名簿をつくる</li></ul></dd><dt>そのほかのこと</dt><dd><ul><li>ペットの持ち込みを制限するのは、飼い方をめぐるトラブルや動物アレルギーの人への配慮のため。</li><li>マニュアルには「ペット飼育者名簿」の様式がついている。</li></ul></dd></dl><p class="hn-src">出どころ（2026-11-14時点）：</p><ul class="hn-src"><li><a href="https://www.city.tome.miyagi.jp/somu-somu/kurashi/anzen/bosai/bosaijoho/documents/kaihinanjyouneimanyuaru.pdf" target="_blank" rel="noopener">登米市「避難所運営マニュアル」（2021年8月、PDF）</a></li></ul></details></section><section class="hn-card" id="大崎市"><h3>大崎市</h3><details class="hn-more"><summary>くわしい決まりと出どころを見る</summary><dl><dt>考え方</dt><dd>避難所運営マニュアル（2021年5月）で、ペットは屋外に設けた専用スペースで、ケージなどを使って飼うとしている。</dd><dt>ケージ・リード</dt><dd>ケージなどを使って飼うよう周知する。</dd><dt>避難所で飼う場所</dt><dd>屋外に設けた専用スペース。</dd><dt>そのほかの決まり・備え</dt><dd><ul><li>飼い主の名前とペットの種類などを届け出て、ペット登録台帳をつくる</li><li>掃除は飼い主の責任で行う</li></ul></dd><dt>そのほかのこと</dt><dd><ul><li>避難所では保健・衛生班がペットの飼育を受け持つ。</li><li>避難者の情報カードに「ペットの避難 有・無」を書く欄がある。</li><li>車の中で避難する人には、エコノミークラス症候群の予防を知らせる。</li></ul></dd><dt>避難所の場所</dt><dd><a href="https://www.city.osaki.miyagi.jp/shisei/kurashinojoho/bosai_anzen_anshin/4/index.html" target="_blank" rel="noopener">大崎市「指定避難場所・避難所」</a></dd></dl><p class="hn-src">出どころ（2026-11-14時点）：</p><ul class="hn-src"><li><a href="https://www.city.osaki.miyagi.jp/material/files/group/9/20240903.pdf" target="_blank" rel="noopener">大崎市「避難所運営マニュアル」（2021年5月、PDF）</a></li></ul></details></section><section class="hn-card" id="七ヶ宿町"><h3>七ヶ宿町</h3><details class="hn-more"><summary>くわしい決まりと出どころを見る</summary><dl><dt>考え方</dt><dd>町の地域防災計画（風水害等災害対策編）に「愛玩動物の収容対策」の節があり、避難所での動物の適正な飼育を取り上げている。</dd><dt>そのほかのこと</dt><dd><ul><li>同じ節で、被災地域での動物の保護も取り上げている（担当は町民税務班）。</li></ul></dd></dl><p class="hn-src">出どころ（2026-11-14時点）：</p><ul class="hn-src"><li><a href="https://town.shichikashuku.miyagi.jp/upload_images/0602db4824667c68b94ff5e8cac0bd16386f6f0a.pdf" target="_blank" rel="noopener">七ヶ宿町「地域防災計画 災害応急対策」（PDF）</a></li></ul></details></section><section class="hn-card" id="川崎町"><h3>川崎町</h3><details class="hn-more"><summary>くわしい決まりと出どころを見る</summary><dl><dt>考え方</dt><dd>ペットは家族の一員で、守るのは飼い主の役割。同行できる避難所は、避難のときにエリアメールなどで知らせる。</dd><dt>ケージ・リード</dt><dd>避難所ではケージなどで、人とは別の場所で過ごすことになる。ふだんからケージでおとなしくできるようしつける。</dd><dt>避難所で飼う場所</dt><dd>人とは別の場所。</dd><dt>そのほかの決まり・備え</dt><dd><ul><li>避難所や仮設住宅でのペットの管理とマナーを守る</li><li>ペット用の災害備蓄やケージなどの避難用品を用意する</li><li>鑑札・迷子札・マイクロチップで迷子対策をする</li></ul></dd><dt>そのほかのこと</dt><dd><ul><li>人と同じ空間でペットを飼うのはむずかしいとしている。</li><li>ふだんからペットの預け先を確保しておく。</li></ul></dd></dl><p class="hn-src">出どころ（2026-11-14時点）：</p><ul class="hn-src"><li><a href="https://www.town.kawasaki.miyagi.jp/soshiki/chomin/187.html" target="_blank" rel="noopener">川崎町「ペットとの同行避難について」</a></li></ul></details></section><section class="hn-card" id="亘理町"><h3>亘理町</h3><ul class="hn-ag"><li class="yes"><span class="i" aria-hidden="true">🐕</span><b>犬</b><span class="m" data-k="○">受け入れる</span></li><li class="yes"><span class="i" aria-hidden="true">🐈</span><b>猫</b><span class="m" data-k="○">受け入れる</span></li></ul><details class="hn-more"><summary>くわしい決まりと出どころを見る</summary><dl><dt>考え方</dt><dd>町の「避難所開設・運営マニュアル」（2022年4月）で、飼い主と一緒に避難した犬・猫などのペットの飼い方を決めている。</dd><dt>受け入れる動物</dt><dd>飼い主と一緒に避難した犬・猫などのペット。</dd><dt>避難所で飼う場所</dt><dd>衛生面から、屋外の屋根（おおい）のある場所を飼育場所にして、まとめて飼うのが基本。</dd><dt>そのほかの決まり・備え</dt><dd><ul><li>犬・猫などのペットは避難所の居住スペースに入れない（盲導犬などの補助犬は除く）</li><li>保健衛生班がペットの飼育ルールを作って知らせる</li></ul></dd><dt>そのほかのこと</dt><dd><ul><li>町は県と協力して、避難所でのペットの飼育指導を行う。</li><li>ペットの救護活動などの情報を飼い主に伝える。</li><li>動物愛護団体は、避難所から保護施設への受け入れや譲渡の調整を手伝う。</li></ul></dd></dl><p class="hn-src">出どころ（2026-11-14時点）：</p><ul class="hn-src"><li><a href="https://www.town.watari.miyagi.jp/common/img/content/content_20220819_113903.pdf" target="_blank" rel="noopener">亘理町「避難所開設・運営マニュアル」（2022年4月、PDF）</a></li></ul></details></section><section class="hn-card" id="松島町"><h3>松島町</h3><details class="hn-more"><summary>くわしい決まりと出どころを見る</summary><dl><dt>考え方</dt><dd>同行避難は、飼い主がペットと一緒に避難場所まで避難すること。避難所で人とペットが同じ空間で暮らせるという意味ではない。自宅が安全なら在宅避難も選択肢の一つ。</dd><dt>そのほかの決まり・備え</dt><dd><ul><li>フードと水は5日分以上と食器</li><li>犬は鑑札と狂犬病予防注射済票を両方着ける</li><li>療法食・薬が必要なペットは必ず用意する</li></ul></dd><dt>そのほかのこと</dt><dd><ul><li>盲導犬・介助犬・聴導犬は、身体障害者補助犬法により避難所へ一緒に避難できる。</li><li>ペットとどこにどう避難するか、前もって考えておく。</li><li>近くの動物病院や、一時的に預かってくれる友人・親戚を考えておく。</li><li>マイクロチップは壊れたりなくしたりする心配がないとしてすすめている。</li><li>ワクチン接種やノミ・ダニの駆除をしておく。</li></ul></dd></dl><p class="hn-src">出どころ（2026-11-14時点）：</p><ul class="hn-src"><li><a href="https://www.town.miyagi-matsushima.lg.jp/page/1083.html" target="_blank" rel="noopener">松島町「ペットの災害対策について」</a></li></ul></details></section><section class="hn-card" id="七ヶ浜町"><h3>七ヶ浜町</h3><details class="hn-more"><summary>くわしい決まりと出どころを見る</summary><dl><dt>考え方</dt><dd>町の「避難所運営マニュアル」（2014年4月）で、避難所でのペットの持ち込みルールを決めている。</dd><dt>避難所で飼う場所</dt><dd>学校の避難所では「ペット飼育場所」を決める（台帳では外か内かを書く）。</dd><dt>そのほかの決まり・備え</dt><dd><ul><li>犬・猫などの動物は施設の中に入れない。屋外で放し飼いにしない</li><li>避難所ペット登録台帳に、種類・特徴・飼育場所などを書く</li><li>衛生班がルールを知らせ、飼育状況を確かめる</li></ul></dd><dt>そのほかのこと</dt><dd><ul><li>避難者の家族票にも、ペットの種類と頭数を書く欄がある。</li></ul></dd></dl><p class="hn-src">出どころ（2026-11-14時点）：</p><ul class="hn-src"><li><a href="https://www.shichigahama.com/benricho/joho/assets/%E4%B8%83%E3%83%B6%E6%B5%9C%E7%94%BA%E9%81%BF%E9%9B%A3%E6%89%80%E9%81%8B%E5%96%B6%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB.pdf" target="_blank" rel="noopener">七ヶ浜町「避難所運営マニュアル」（2014年4月、PDF）</a></li></ul></details></section><section class="hn-card" id="利府町"><h3>利府町</h3><details class="hn-more"><summary>くわしい決まりと出どころを見る</summary><dl><dt>考え方</dt><dd>災害のときは、まず自分の安全を確保してから、ペットの安全と健康を守る。避難所は動物が苦手な人やアレルギーの人も共同生活をする場所なので、鳴き声・毛・においに配慮する。</dd><dt>ケージ・リード</dt><dd>簡易ケージを用意しておく。</dd><dt>そのほかの決まり・備え</dt><dd><ul><li>首輪・リード・迷子札・動物の写真・3日分のえさ・常備薬・排せつ用品を用意する</li><li>犬は登録とワクチン接種をする</li><li>猫はふだんから室内で飼い、いつでも一緒に避難できるようにする</li></ul></dd><dt>そのほかのこと</dt><dd><ul><li>宮城県獣医師会と協力して、人とペットの防災訓練をしている。</li><li>災害時に役立つペットの情報を書く「ペット防災手帳」を作り、印刷して持ち出し品と一緒に保管するようすすめている。</li><li>倒れるおそれのあるブロック塀の近くで飼わないようにする。</li></ul></dd></dl><p class="hn-src">出どころ（2026-11-14時点）：</p><ul class="hn-src"><li><a href="https://www.town.rifu.miyagi.jp/gyosei/soshikikarasagasu/seikatu/kankyou/7/1210.html" target="_blank" rel="noopener">利府町「人とペットの災害対策について」</a></li></ul></details></section><script>(function(){function o(){try{var t=document.getElementById(decodeURIComponent(location.hash.slice(1)));var d=t&&t.querySelector('details.hn-more');if(d)d.open=true}catch(e){}}o();addEventListener('hashchange',o)})();</script>
     <h2 id="faq">よくある質問</h2>
-    <dl class="emg-tips"><dt>仙台市では、ペットと同行避難できますか？</dt><dd>仙台市では「地震などで避難するときは、ペットを置き去りにせず同行することが必要としている。市の避難所運営マニュアルで、ペットを連れてきた人の受付と飼う場所を決めている。」とされています。</dd><dt>仙台市の避難所にケージは必要ですか？</dt><dd>仙台市では「避難所では、決められた場所で必ずケージに入れるか、リードでつないで飼う。ふだんからケージなどで過ごせるよう慣らしておく。」とされています。</dd><dt>仙台市の避難所では、ペットはどこで過ごしますか？</dt><dd>仙台市では「屋外で飼えるペットは原則として屋外のスペースにつなぐ。屋外がむずかしいペットは、ほかの避難者と分けた屋内のスペースを検討する。」とされています。避難所ごとに違うこともあります。</dd></dl>
+    <dl class="emg-tips"><dt>仙台市では、ペットと一緒に避難できますか？</dt><dd>仙台市では、地震などで避難するときは、ペットを置き去りにせず同行することが必要としている。市の避難所運営マニュアルで、ペットを連れてきた人の受付と飼う場所を決めている。</dd><dt>仙台市の避難所に、大型犬は連れて行けますか？</dt><dd>仙台市は、ペットの体の大きさの決まりを書いていません。国の手引きでは、同行避難の対象は「犬や猫など」で、大きさの区別はありません。避難所では、人と別の場所でケージに入れるか、リードでつなぐ形がほとんどです。大型犬はケージに入らないことが多いので、じょうぶなリードを持って行き、入れないときの行き先（車・親戚や知人の家・ペットホテル）も決めておきましょう。</dd><dt>仙台市の避難所で、ペットはどこで過ごしますか？</dt><dd>仙台市では、屋外で飼えるペットは原則として屋外のスペースにつなぐ。屋外がむずかしいペットは、ほかの避難者と分けた屋内のスペースを検討する。くわしい場所は避難所ごとに決まります。</dd><dt>仙台市の避難所に、ケージは持って行きますか？</dt><dd>仙台市では、避難所では、決められた場所で必ずケージに入れるか、リードでつないで飼う。ふだんからケージなどで過ごせるよう慣らしておく。</dd></dl>
     <p class="emg-note">2026-11-14時点の情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
   </article></div>
 </section>

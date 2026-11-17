@@ -83,10 +83,34 @@
   "mainEntity": [
    {
     "@type": "Question",
-    "name": "日進市では、ペットと同行避難できますか？",
+    "name": "日進市では、ペットと一緒に避難できますか？",
     "acceptedAnswer": {
      "@type": "Answer",
-     "text": "日進市では「市の避難所運営マニュアルの資料（日進市開業獣医師会の作成）で、ペット同行避難の受け入れ体制を考えている。同行避難できないと、避難をためらったり置き去りにしたりする問題が起きるとしている。」とされています。"
+     "text": "日進市では、市の避難所運営マニュアルの資料（日進市開業獣医師会の作成）で、ペット同行避難の受け入れ体制を考えている。同行避難できないと、避難をためらったり置き去りにしたりする問題が起きるとしている。"
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "日進市の避難所に、大型犬は連れて行けますか？",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "日進市は、ペットの体の大きさの決まりを書いていません。国の手引きでは、同行避難の対象は「犬や猫など」で、大きさの区別はありません。避難所では、人と別の場所でケージに入れるか、リードでつなぐ形がほとんどです。大型犬はケージに入らないことが多いので、じょうぶなリードを持って行き、入れないときの行き先（車・親戚や知人の家・ペットホテル）も決めておきましょう。"
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "日進市の避難所で、ペットはどこで過ごしますか？",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "日進市では、人とは別の場所。屋外なら駐輪場・渡り廊下・軒下など風雨をしのげる所、屋内なら人の通り道と交わらない1室や階段下など。犬・猫・小動物は分ける。くわしい場所は避難所ごとに決まります。"
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "日進市の避難所に、ケージは持って行きますか？",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "日進市では、避難所ではケージで飼うのが原則。"
     }
    },
    {
@@ -94,31 +118,7 @@
     "name": "日進市の避難所には、どんな動物を連れて行けますか？",
     "acceptedAnswer": {
      "@type": "Answer",
-     "text": "日進市では「資料では、受け入れの対象を犬・猫・小鳥・小動物としている。」とされています。人に危害を加えるおそれのある状態の動物は受け入れない。避難所ごとの決まりや災害の状況で変わることがあるので、確かめてください。"
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "日進市の避難所にケージは必要ですか？",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "日進市では「避難所ではケージで飼うのが原則。」とされています。"
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "日進市の避難所で受け入れない動物はいますか？",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "日進市では「人に危害を加えるおそれのある状態の動物は受け入れない。」とされています。"
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "日進市の避難所では、ペットはどこで過ごしますか？",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "日進市では「人とは別の場所。屋外なら駐輪場・渡り廊下・軒下など風雨をしのげる所、屋内なら人の通り道と交わらない1室や階段下など。犬・猫・小動物は分ける。」とされています。避難所ごとに違うこともあります。"
+     "text": "日進市では、資料では、受け入れの対象を犬・猫・小鳥・小動物としている。なお、人に危害を加えるおそれのある状態の動物は受け入れない。"
     }
    }
   ]
@@ -288,7 +288,6 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 .hn-terms .i{flex:0 0 3.2em;font-size:1.15rem;line-height:1;text-align:center;letter-spacing:-.1em}
 .hn-terms b{flex:0 0 6.6em;font-size:.88rem;color:var(--ink,#222)}
 .hn-terms li.wide{grid-column:auto}
-.hn-unk{background:#f1f3f4;border-radius:12px;padding:10px 12px;font-size:.9rem;line-height:1.7;color:#3c4043;margin:8px 0}
 @media(min-width:720px){.hn-ag{grid-template-columns:repeat(6,minmax(0,1fr))}}
 </style>
 <main>
@@ -296,12 +295,38 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットのくらし窓口</a> › <a href="/hinan/">ペットと避難</a> › <a href="/hinan/aichi/">愛知県</a> › 日進市</nav>
     <h1><small>避難所で受け入れる動物・大型犬・ケージの決まり</small>日進市のペット同行避難</h1>
-    <p class="lede">日進市（愛知県）の避難所に、ペットを連れて行けるか。○は受け入れる、×は受け入れない、△は条件つきです。</p>
+    <p class="lede">うちの子をえらぶと、日進市の避難所に連れて行けるか・どこで過ごすか・今日やる準備が分かります。</p>
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
-    <div class="answer"><h2 id="answer">日進市の避難所に連れて行ける動物</h2><p style="margin:0 0 4px">市の避難所運営マニュアルの資料（日進市開業獣医師会の作成）で、ペット同行避難の受け入れ体制を考えている。同行避難できないと、避難をためらったり置き去りにしたりする問題が起きるとしている。</p><ul class="hn-rows"><li><span class="i" aria-hidden="true">🧺</span><span><b>ケージ</b>持っていく（ケージの中で飼う）</span></li><li><span class="i" aria-hidden="true">🏠</span><span><b>飼う場所</b>人とは別の場所。</span></li></ul></div>
+    <!--thin0--><style>
+.hk{background:#fff;border:2px solid var(--accent,#e8590c);border-radius:18px;padding:14px 14px 10px;margin:4px 0 18px}
+.hk h2{font-size:1.12rem;margin:0 0 10px;line-height:1.5}
+.hk>input{position:absolute;opacity:0;pointer-events:none}
+.hk-t{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0 0 10px}
+.hk-t label{display:flex;flex-direction:column;align-items:center;gap:1px;border:1.5px solid var(--line);border-radius:12px;padding:6px 2px;font-size:.8rem;font-weight:700;cursor:pointer;background:#fff;line-height:1.3;text-align:center}
+.hk-t label span{font-size:1.5rem;line-height:1.2}
+.hk-p{display:none}
+.hk-v{display:flex;gap:10px;align-items:flex-start;border-radius:14px;padding:10px 12px;margin:0 0 8px;line-height:1.6}
+.hk-v b{display:block;font-size:1.05rem}
+.hk-v p{margin:2px 0 0;font-size:.88rem}
+.hk-v .i{font-size:1.6rem;line-height:1.2}
+.hk-v.yes{background:#e6f4ea;color:#14532d}.hk-v.hard{background:#fff4e0;color:#6b4100}.hk-v.no{background:#fde8e6;color:#8c1d18}
+.hk h3{font-size:.95rem;margin:12px 0 4px}
+.hk p.hk-x{font-size:.88rem;line-height:1.7;margin:0;color:#3c4043}
+.hk ul.hk-c{list-style:none;padding:0!important;margin:4px 0 0!important}
+.hk ul.hk-c li{position:relative;padding:4px 0 4px 1.7em;font-size:.88rem;line-height:1.6;border-top:1px dashed var(--line);margin:0}
+.hk ul.hk-c li:first-child{border-top:0}
+.hk ul.hk-c li::before{content:"☐";position:absolute;left:.2em;top:3px;font-size:1rem;color:var(--accent,#e8590c)}
+.hk ul.hk-a{list-style:none;padding:0!important;margin:4px 0 0!important;display:grid;gap:6px}
+.hk ul.hk-a li{margin:0}
+.hk ul.hk-a a{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:8px 10px;text-decoration:none;color:inherit;line-height:1.45}
+.hk ul.hk-a a .i{font-size:1.4rem}
+.hk ul.hk-a a b{display:block;font-size:.9rem;color:var(--accent-ink,#b3420a)}
+.hk ul.hk-a a small{font-size:.78rem;color:#5f6368}
+@media(min-width:720px){.hk-t{grid-template-columns:repeat(6,minmax(0,1fr))}}
+#hk-s:checked~.hk-ps .hk-p-s{display:block}#hk-s:checked~.hk-t label[for=hk-s]{border-color:var(--accent,#e8590c);background:#fff4ec}#hk-l:checked~.hk-ps .hk-p-l{display:block}#hk-l:checked~.hk-t label[for=hk-l]{border-color:var(--accent,#e8590c);background:#fff4ec}#hk-c:checked~.hk-ps .hk-p-c{display:block}#hk-c:checked~.hk-t label[for=hk-c]{border-color:var(--accent,#e8590c);background:#fff4ec}#hk-r:checked~.hk-ps .hk-p-r{display:block}#hk-r:checked~.hk-t label[for=hk-r]{border-color:var(--accent,#e8590c);background:#fff4ec}#hk-b:checked~.hk-ps .hk-p-b{display:block}#hk-b:checked~.hk-t label[for=hk-b]{border-color:var(--accent,#e8590c);background:#fff4ec}#hk-t:checked~.hk-ps .hk-p-t{display:block}#hk-t:checked~.hk-t label[for=hk-t]{border-color:var(--accent,#e8590c);background:#fff4ec}</style><div class="hk" id="uchinoko"><h2>うちの子は、日進市の避難所でどうなる？</h2><input type="radio" name="hkpet" id="hk-s" value="s" checked><input type="radio" name="hkpet" id="hk-l" value="l"><input type="radio" name="hkpet" id="hk-c" value="c"><input type="radio" name="hkpet" id="hk-r" value="r"><input type="radio" name="hkpet" id="hk-b" value="b"><input type="radio" name="hkpet" id="hk-t" value="t"><div class="hk-t" role="radiogroup" aria-label="うちの子をえらぶ"><label for="hk-s"><span aria-hidden="true">🐕</span>小型犬</label><label for="hk-l"><span aria-hidden="true">🦮</span>中・大型犬</label><label for="hk-c"><span aria-hidden="true">🐈</span>猫</label><label for="hk-r"><span aria-hidden="true">🐇</span>うさぎ・小動物</label><label for="hk-b"><span aria-hidden="true">🐦</span>鳥</label><label for="hk-t"><span aria-hidden="true">🦎</span>爬虫類</label></div><div class="hk-ps"><div class="hk-p hk-p-s"><div class="hk-v yes"><span class="i" aria-hidden="true">✅</span><div><b>小型犬：同行避難の対象です</b><p>国の手引きでは、犬は同行避難の対象です。日進市でも、連れて行く前提で準備しましょう。</p></div></div><h3>🏠 どこで過ごす？</h3><p class="hk-x">日進市では、ペットは人とは別の場所で過ごします。屋内（空き教室・倉庫など）のことも、屋外（軒下・テントなど）のこともあり、場所は避難所ごとに決まります。</p><h3>☑️ 今日やっておく準備</h3><ul class="hk-c"><li>キャリーかクレートに入って静かに過ごせるように慣らす</li><li>リード2本・首輪（迷子札つき）</li><li>狂犬病とワクチンの接種の記録</li><li>トイレシーツ・ふんの袋</li><li>5日分以上のフード・水と、ふだんの薬</li><li>うちの子の写真（スマホに）と、迷子札・マイクロチップの登録の確認</li></ul><h3>🚗 避難所に入れないとき・長引くとき</h3><p class="hk-x">在宅避難（家が安全なら）・車の中・親戚や知人の家のほか、民間の預け先もあります。車の中で過ごすときは、エコノミークラス症候群と暑さに気をつけ、ペットは車内に置きっぱなしにしない。</p><ul class="hk-a"><li><a href="/pet-hotel/aichi/"><span class="i" aria-hidden="true">🏨</span><span><b>ペットホテル</b><small>家がこわれた・避難が長引くときに、しばらく預ける</small></span></a></li><li><a href="/pet-sitter/aichi/"><span class="i" aria-hidden="true">🏠</span><span><b>ペットシッター</b><small>在宅避難や車中避難のあいだ、家で世話をしてもらう</small></span></a></li><li><a href="/emergency/"><span class="i" aria-hidden="true">🩺</span><span><b>夜間・救急の動物病院</b><small>けが・体調がくずれたとき</small></span></a></li></ul></div><div class="hk-p hk-p-l"><div class="hk-v yes"><span class="i" aria-hidden="true">✅</span><div><b>中・大型犬：大きさで分けていません</b><p>日進市の決まりに、犬の大きさによる区別はありません。国の手引きでも、同行避難は大きさにかかわらず「犬や猫など」が対象です。ケージに入らない子は、人と別の場所にリードでつなぐ形がほとんどです。</p></div></div><h3>🏠 どこで過ごす？</h3><p class="hk-x">日進市では、ペットは人とは別の場所で過ごします。屋内（空き教室・倉庫など）のことも、屋外（軒下・テントなど）のこともあり、場所は避難所ごとに決まります。</p><h3>☑️ 今日やっておく準備</h3><ul class="hk-c"><li>じょうぶなリードと、つなぐ用の長いリード</li><li>敷くマット・雨や暑さ寒さの対策（屋外につなぐことが多い）</li><li>狂犬病とワクチンの接種の記録</li><li>避難所に入れないときの行き先（車・親戚や知人の家・預け先）を決めておく</li><li>5日分以上のフード・水と、ふだんの薬</li><li>うちの子の写真（スマホに）と、迷子札・マイクロチップの登録の確認</li></ul><h3>🚗 避難所に入れないとき・長引くとき</h3><p class="hk-x">在宅避難（家が安全なら）・車の中・親戚や知人の家のほか、民間の預け先もあります。車の中で過ごすときは、エコノミークラス症候群と暑さに気をつけ、ペットは車内に置きっぱなしにしない。</p><ul class="hk-a"><li><a href="/pet-hotel/aichi/"><span class="i" aria-hidden="true">🏨</span><span><b>ペットホテル（大型犬OK）</b><small>家がこわれた・避難が長引くときに、しばらく預ける</small></span></a></li><li><a href="/pet-sitter/aichi/"><span class="i" aria-hidden="true">🏠</span><span><b>ペットシッター</b><small>在宅避難や車中避難のあいだ、家で世話をしてもらう</small></span></a></li><li><a href="/hospital/large/"><span class="i" aria-hidden="true">🩺</span><span><b>大型犬の設備がある動物病院</b><small>けが・体調がくずれたとき</small></span></a></li></ul></div><div class="hk-p hk-p-c"><div class="hk-v yes"><span class="i" aria-hidden="true">✅</span><div><b>猫：同行避難の対象です</b><p>国の手引きでは、猫は同行避難の対象です。日進市でも、連れて行く前提で準備しましょう。</p></div></div><h3>🏠 どこで過ごす？</h3><p class="hk-x">日進市では、ペットは人とは別の場所で過ごします。屋内（空き教室・倉庫など）のことも、屋外（軒下・テントなど）のこともあり、場所は避難所ごとに決まります。</p><h3>☑️ 今日やっておく準備</h3><ul class="hk-c"><li>キャリー（洗濯ネットに入れてから入れると逃げにくい）</li><li>猫砂と小さなトイレ</li><li>キャリーをふだんから部屋に置いて慣らす</li><li>ワクチンの接種の記録</li><li>5日分以上のフード・水と、ふだんの薬</li><li>うちの子の写真（スマホに）と、迷子札・マイクロチップの登録の確認</li></ul><h3>🚗 避難所に入れないとき・長引くとき</h3><p class="hk-x">在宅避難（家が安全なら）・車の中・親戚や知人の家のほか、民間の預け先もあります。</p><ul class="hk-a"><li><a href="/pet-hotel/aichi/"><span class="i" aria-hidden="true">🏨</span><span><b>ペットホテル（猫専用も）</b><small>家がこわれた・避難が長引くときに、しばらく預ける</small></span></a></li><li><a href="/pet-sitter/aichi/"><span class="i" aria-hidden="true">🏠</span><span><b>ペットシッター</b><small>在宅避難や車中避難のあいだ、家で世話をしてもらう</small></span></a></li><li><a href="/emergency/"><span class="i" aria-hidden="true">🩺</span><span><b>夜間・救急の動物病院</b><small>けが・体調がくずれたとき</small></span></a></li></ul></div><div class="hk-p hk-p-r"><div class="hk-v hard"><span class="i" aria-hidden="true">⚠️</span><div><b>うさぎ・小動物：ケージに入れて相談</b><p>日進市はうさぎ・小動物について決まりを出していません。ケージに入れて連れて行き、受付で飼う場所を相談します。入れないときの預け先も決めておくと安心です。</p></div></div><h3>🏠 どこで過ごす？</h3><p class="hk-x">日進市では、ペットは人とは別の場所で過ごします。屋内（空き教室・倉庫など）のことも、屋外（軒下・テントなど）のこともあり、場所は避難所ごとに決まります。</p><h3>☑️ 今日やっておく準備</h3><ul class="hk-c"><li>持ち運べるケージ（外が見えないよう布をかける）</li><li>冬はカイロ・夏は保冷剤（温度に弱い）</li><li>ふだんの牧草・ペレット</li><li>避難所に入れないときの預け先を決めておく</li><li>5日分以上のフード・水と、ふだんの薬</li><li>うちの子の写真（スマホに）と、迷子札・マイクロチップの登録の確認</li></ul><h3>🚗 避難所に入れないとき・長引くとき</h3><p class="hk-x">在宅避難（家が安全なら）・車の中・親戚や知人の家のほか、民間の預け先もあります。</p><ul class="hk-a"><li><a href="/pet-hotel/aichi/"><span class="i" aria-hidden="true">🏨</span><span><b>ペットホテル</b><small>家がこわれた・避難が長引くときに、しばらく預ける</small></span></a></li><li><a href="/pet-sitter/aichi/"><span class="i" aria-hidden="true">🏠</span><span><b>ペットシッター</b><small>在宅避難や車中避難のあいだ、家で世話をしてもらう</small></span></a></li><li><a href="/hospital/exotic/"><span class="i" aria-hidden="true">🩺</span><span><b>エキゾチックアニマルを診る病院</b><small>温度や体調がくずれたとき・預かりの相談</small></span></a></li></ul></div><div class="hk-p hk-p-b"><div class="hk-v hard"><span class="i" aria-hidden="true">⚠️</span><div><b>鳥：ケージに入れて相談</b><p>日進市は鳥について決まりを出していません。ケージに入れて連れて行き、受付で飼う場所を相談します。入れないときの預け先も決めておくと安心です。</p></div></div><h3>🏠 どこで過ごす？</h3><p class="hk-x">日進市では、ペットは人とは別の場所で過ごします。屋内（空き教室・倉庫など）のことも、屋外（軒下・テントなど）のこともあり、場所は避難所ごとに決まります。</p><h3>☑️ 今日やっておく準備</h3><ul class="hk-c"><li>持ち運べる小さなケージと、かける布</li><li>保温のカイロ（寒さに弱い）</li><li>ふだんのエサ・水入れ</li><li>鳴き声が気になるときの預け先を決めておく</li><li>5日分以上のフード・水と、ふだんの薬</li><li>うちの子の写真（スマホに）と、迷子札・マイクロチップの登録の確認</li></ul><h3>🚗 避難所に入れないとき・長引くとき</h3><p class="hk-x">在宅避難（家が安全なら）・車の中・親戚や知人の家のほか、民間の預け先もあります。</p><ul class="hk-a"><li><a href="/pet-hotel/aichi/"><span class="i" aria-hidden="true">🏨</span><span><b>ペットホテル</b><small>家がこわれた・避難が長引くときに、しばらく預ける</small></span></a></li><li><a href="/pet-sitter/aichi/"><span class="i" aria-hidden="true">🏠</span><span><b>ペットシッター</b><small>在宅避難や車中避難のあいだ、家で世話をしてもらう</small></span></a></li><li><a href="/hospital/exotic/"><span class="i" aria-hidden="true">🩺</span><span><b>エキゾチックアニマルを診る病院</b><small>温度や体調がくずれたとき・預かりの相談</small></span></a></li></ul></div><div class="hk-p hk-p-t"><div class="hk-v hard"><span class="i" aria-hidden="true">⚠️</span><div><b>爬虫類：ケージに入れて相談</b><p>日進市は爬虫類について決まりを出していません。ケージに入れて連れて行き、受付で飼う場所を相談します。入れないときの預け先も決めておくと安心です。</p></div></div><h3>🏠 どこで過ごす？</h3><p class="hk-x">日進市では、ペットは人とは別の場所で過ごします。屋内（空き教室・倉庫など）のことも、屋外（軒下・テントなど）のこともあり、場所は避難所ごとに決まります。</p><h3>☑️ 今日やっておく準備</h3><ul class="hk-c"><li>フタのしっかりしまる容器</li><li>保温のカイロ・断熱の袋</li><li>ふだんのエサ</li><li>避難所に入れないときの預け先を決めておく</li><li>5日分以上のフード・水と、ふだんの薬</li><li>うちの子の写真（スマホに）と、迷子札・マイクロチップの登録の確認</li></ul><h3>🚗 避難所に入れないとき・長引くとき</h3><p class="hk-x">在宅避難（家が安全なら）・車の中・親戚や知人の家のほか、民間の預け先もあります。</p><ul class="hk-a"><li><a href="/pet-hotel/aichi/"><span class="i" aria-hidden="true">🏨</span><span><b>ペットホテル</b><small>家がこわれた・避難が長引くときに、しばらく預ける</small></span></a></li><li><a href="/pet-sitter/aichi/"><span class="i" aria-hidden="true">🏠</span><span><b>ペットシッター</b><small>在宅避難や車中避難のあいだ、家で世話をしてもらう</small></span></a></li><li><a href="/hospital/exotic/"><span class="i" aria-hidden="true">🩺</span><span><b>エキゾチックアニマルを診る病院</b><small>温度や体調がくずれたとき・預かりの相談</small></span></a></li></ul></div></div></div><script>(function(){try{var v=localStorage.getItem('hnPet'),r=v&&document.getElementById('hk-'+v);if(r)r.checked=true;document.querySelectorAll('input[name=hkpet]').forEach(function(x){x.addEventListener('change',function(){try{localStorage.setItem('hnPet',x.value)}catch(e){}})})}catch(e){}})();</script><!--/thin0-->
     <style>
 .hn-sh{list-style:none;padding:0!important;margin:6px 0 0!important}
 .hn-sh li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);margin:0}
@@ -320,11 +345,11 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 </style><div class="hn-shw" id="shelters"><h2>🏫 日進市の指定避難所 <small class="hn-n">22か所</small></h2><p class="hn-shn">ペットを連れて行けるかは、上の日進市の決まりのとおりです。飼う場所は避難所ごとに違うことがあります。</p><button type="button" class="hn-near">📍 近い避難所をさがす</button><div class="hn-nearout" aria-live="polite"></div><ol class="hn-sh"><li data-ll="35.12973,137.03914"><b>日進市スポーツセンター</b><span>蟹甲町家布58-1</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.12973,137.03914" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.14955,137.04846"><b>北小学校</b><span>岩崎町芝内2-1</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.14955,137.04846" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.14316,137.04311"><b>北部福祉会館</b><span>岩崎町大塚1034</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.14316,137.04311" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.14406,137.0288"><b>岩崎台・香久山福祉会館</b><span>香久山4-201-14</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.14406,137.0288" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.14213,137.02896"><b>香久山小学校</b><span>香久山5-1701</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.14213,137.02896" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.11806,137.01665"><b>赤池小学校</b><span>赤池3-2101</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.11806,137.01665" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.12605,137.01469"><b>西部福祉会館</b><span>赤池町下郷222</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.12605,137.01469" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.12321,137.04512"><b>南部福祉会館</b><span>折戸町寺脇123-6</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.12321,137.04512" target="_blank" rel="noopener">地図 ↗</a></li></ol><details class="hn-ward"><summary>ほかの14か所</summary><ol class="hn-sh"><li data-ll="35.12429,137.0449"><b>南小学校</b><span>折戸町中屋敷70-3</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.12429,137.0449" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.12088,137.05705"><b>梨の木小学校</b><span>折戸町梨子ノ木28-31</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.12088,137.05705" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.11991,137.03323"><b>県立日進西高等学校</b><span>浅田町上小深田8-4</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.11991,137.03323" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.12584,137.01635"><b>上納池スポーツ公園体育館</b><span>浅田町西田面155-1</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.12584,137.01635" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.12866,137.02887"><b>西小学校</b><span>浅田町東田面76</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.12866,137.02887" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.15288,137.03308"><b>竹の山小学校・日進北中学校</b><span>竹の山4-502</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.15288,137.03308" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.13647,137.05633"><b>日進東中学校</b><span>藤島町相山77</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.13647,137.05633" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.12923,137.01782"><b>日進西中学校</b><span>梅森町向江1597-1</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.12923,137.01782" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.14572,137.09284"><b>県立日進高等学校</b><span>米野木町三ケ峯4-18</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.14572,137.09284" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.13295,137.0615"><b>東部福祉会館</b><span>米野木町仲田35-23</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.13295,137.0615" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.1376,137.06388"><b>東小学校</b><span>米野木町北畑8-3</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.1376,137.06388" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.15263,137.05888"><b>相野山小学校</b><span>北新町相野山1331-3</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.15263,137.05888" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.15631,137.05729"><b>相野山福祉会館</b><span>北新町二段場920-8</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.15631,137.05729" target="_blank" rel="noopener">地図 ↗</a></li><li data-ll="35.13585,137.03984"><b>日進中学校</b><span>本郷町西原中通980-1</span><a href="https://www.google.com/maps/search/?api=1&amp;query=35.13585,137.03984" target="_blank" rel="noopener">地図 ↗</a></li></ol></details><p class="hn-src">避難所の一覧：<a href="https://www.gsi.go.jp/bousaichiri/hinanbasho.html" target="_blank" rel="noopener">国土地理院「指定緊急避難場所・指定避難所データ」</a>（2026年11月時点）を加工して作成。開く避難所は災害の種類や状況で変わります。</p></div><script>(function(){if(window.hnNearOn)return;window.hnNearOn=1;document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.hn-near');if(!b)return;var w=b.closest('.hn-shw'),o=w.querySelector('.hn-nearout');if(!navigator.geolocation){o.textContent='この端末では位置が使えません。';return}
 b.disabled=true;b.textContent='位置をたしかめています…';navigator.geolocation.getCurrentPosition(function(p){var la=p.coords.latitude,ln=p.coords.longitude,a=[];w.querySelectorAll('.hn-sh li[data-ll]').forEach(function(li){var q=li.getAttribute('data-ll').split(','),dy=(q[0]-la)*111,dx=(q[1]-ln)*91;a.push([Math.sqrt(dx*dx+dy*dy),li])});a.sort(function(x,y){return x[0]-y[0]});
 var ol=document.createElement('ol');ol.className='hn-sh';a.slice(0,5).forEach(function(x){var c=x[1].cloneNode(true),i=document.createElement('i');i.textContent='ここから'+(x[0]<1?Math.round(x[0]*1000)+'m':x[0].toFixed(1)+'km')+'（直線）';c.hidden=false;c.insertBefore(i,c.children[1]);ol.appendChild(c)});o.innerHTML='<p class="hn-shn"><b>近い避難所</b></p>';o.appendChild(ol);b.textContent='近い順に並べました';try{gtag('event','hinan_near',{})}catch(e){}},function(){b.disabled=false;b.textContent='📍 近い避難所をさがす';o.textContent='位置が使えませんでした。下の一覧からさがしてください。'},{timeout:10000,maximumAge:300000})})})();</script>
-    
-    <h2 id="detail">日進市のくわしい決まり</h2>
-    <section class="hn-card" id="日進市"><h3>日進市</h3><dl><dt>考え方</dt><dd>市の避難所運営マニュアルの資料（日進市開業獣医師会の作成）で、ペット同行避難の受け入れ体制を考えている。同行避難できないと、避難をためらったり置き去りにしたりする問題が起きるとしている。</dd><dt>受け入れる動物</dt><dd>資料では、受け入れの対象を犬・猫・小鳥・小動物としている。</dd><dt>受け入れない・むずかしい動物</dt><dd>人に危害を加えるおそれのある状態の動物は受け入れない。</dd><dt>ケージ・リード</dt><dd>避難所ではケージで飼うのが原則。</dd><dt>避難所で飼う場所</dt><dd>人とは別の場所。屋外なら駐輪場・渡り廊下・軒下など風雨をしのげる所、屋内なら人の通り道と交わらない1室や階段下など。犬・猫・小動物は分ける。</dd><dt>そのほかの決まり・備え</dt><dd><ul><li>受け入れのときに動物と飼い主の情報を集める</li><li>飼い主会をつくり、えさやり・ふん尿や抜け毛の始末・掃除を飼い主同士で分担する</li><li>ペットの場所はブルーシートで汚れないようにする</li></ul></dd><dt>そのほかのこと</dt><dd><ul><li>車の中は動物の居場所には向くが、飼い主が車で暮らすことはすすめていない。</li><li>補助犬も動物として分けるが、いろいろな場所に一緒に行けるよう配慮する。</li><li>ケガや病気は近くの動物病院が対応するとしている。</li><li>受け入れられないときは、移る先を紹介できるまで安全な場所で待ってもらう。</li><li>浸水のおそれがある場所は、使えなくなったときの代わりの場所も考えておく。</li></ul></dd><dt>避難所の場所</dt><dd><a href="https://www.city.nisshin.lg.jp/department/soumu/bousai/5/2/2/hinanjo/5193.html" target="_blank" rel="noopener">日進市「災害発生時の避難場所・避難所について」</a></dd></dl><p class="hn-src">出どころ（2026-11-14時点）：</p><ul class="hn-src"><li><a href="https://www.city.nisshin.lg.jp/material/files/group/165/04_petto.pdf" target="_blank" rel="noopener">日進市「ペット同行避難の受け入れ体制の整備について考える」（PDF）</a></li></ul></section>
+    <h2 id="detail">日進市の決まり（上の答えのもと）</h2>
+    <div class="answer"><p style="margin:0 0 4px">市の避難所運営マニュアルの資料（日進市開業獣医師会の作成）で、ペット同行避難の受け入れ体制を考えている。同行避難できないと、避難をためらったり置き去りにしたりする問題が起きるとしている。</p><ul class="hn-rows"><li><span class="i" aria-hidden="true">🦮</span><span><b>大型犬は？</b>犬の大きさによる区別はありません。</span></li><li><span class="i" aria-hidden="true">🧺</span><span><b>ケージ</b>持っていく（ケージの中で飼う）</span></li><li><span class="i" aria-hidden="true">🏠</span><span><b>飼う場所</b>人とは別の場所。</span></li></ul></div>
+    <details class="hn-more"><summary>日進市が出している決まりの全文と出どころ</summary><section class="hn-card" id="日進市"><h3>日進市</h3><dl><dt>考え方</dt><dd>市の避難所運営マニュアルの資料（日進市開業獣医師会の作成）で、ペット同行避難の受け入れ体制を考えている。同行避難できないと、避難をためらったり置き去りにしたりする問題が起きるとしている。</dd><dt>受け入れる動物</dt><dd>資料では、受け入れの対象を犬・猫・小鳥・小動物としている。</dd><dt>受け入れない・むずかしい動物</dt><dd>人に危害を加えるおそれのある状態の動物は受け入れない。</dd><dt>ケージ・リード</dt><dd>避難所ではケージで飼うのが原則。</dd><dt>避難所で飼う場所</dt><dd>人とは別の場所。屋外なら駐輪場・渡り廊下・軒下など風雨をしのげる所、屋内なら人の通り道と交わらない1室や階段下など。犬・猫・小動物は分ける。</dd><dt>そのほかの決まり・備え</dt><dd><ul><li>受け入れのときに動物と飼い主の情報を集める</li><li>飼い主会をつくり、えさやり・ふん尿や抜け毛の始末・掃除を飼い主同士で分担する</li><li>ペットの場所はブルーシートで汚れないようにする</li></ul></dd><dt>そのほかのこと</dt><dd><ul><li>車の中は動物の居場所には向くが、飼い主が車で暮らすことはすすめていない。</li><li>補助犬も動物として分けるが、いろいろな場所に一緒に行けるよう配慮する。</li><li>ケガや病気は近くの動物病院が対応するとしている。</li><li>受け入れられないときは、移る先を紹介できるまで安全な場所で待ってもらう。</li><li>浸水のおそれがある場所は、使えなくなったときの代わりの場所も考えておく。</li></ul></dd><dt>避難所の場所</dt><dd><a href="https://www.city.nisshin.lg.jp/department/soumu/bousai/5/2/2/hinanjo/5193.html" target="_blank" rel="noopener">日進市「災害発生時の避難場所・避難所について」</a></dd></dl><p class="hn-src">出どころ（2026-11-14時点）：</p><ul class="hn-src"><li><a href="https://www.city.nisshin.lg.jp/material/files/group/165/04_petto.pdf" target="_blank" rel="noopener">日進市「ペット同行避難の受け入れ体制の整備について考える」（PDF）</a></li></ul></section></details>
     <h2 id="faq">よくある質問</h2>
-    <dl class="emg-tips"><dt>日進市では、ペットと同行避難できますか？</dt><dd>日進市では「市の避難所運営マニュアルの資料（日進市開業獣医師会の作成）で、ペット同行避難の受け入れ体制を考えている。同行避難できないと、避難をためらったり置き去りにしたりする問題が起きるとしている。」とされています。</dd><dt>日進市の避難所には、どんな動物を連れて行けますか？</dt><dd>日進市では「資料では、受け入れの対象を犬・猫・小鳥・小動物としている。」とされています。人に危害を加えるおそれのある状態の動物は受け入れない。避難所ごとの決まりや災害の状況で変わることがあるので、確かめてください。</dd><dt>日進市の避難所にケージは必要ですか？</dt><dd>日進市では「避難所ではケージで飼うのが原則。」とされています。</dd><dt>日進市の避難所で受け入れない動物はいますか？</dt><dd>日進市では「人に危害を加えるおそれのある状態の動物は受け入れない。」とされています。</dd><dt>日進市の避難所では、ペットはどこで過ごしますか？</dt><dd>日進市では「人とは別の場所。屋外なら駐輪場・渡り廊下・軒下など風雨をしのげる所、屋内なら人の通り道と交わらない1室や階段下など。犬・猫・小動物は分ける。」とされています。避難所ごとに違うこともあります。</dd></dl>
+    <dl class="emg-tips"><dt>日進市では、ペットと一緒に避難できますか？</dt><dd>日進市では、市の避難所運営マニュアルの資料（日進市開業獣医師会の作成）で、ペット同行避難の受け入れ体制を考えている。同行避難できないと、避難をためらったり置き去りにしたりする問題が起きるとしている。</dd><dt>日進市の避難所に、大型犬は連れて行けますか？</dt><dd>日進市は、ペットの体の大きさの決まりを書いていません。国の手引きでは、同行避難の対象は「犬や猫など」で、大きさの区別はありません。避難所では、人と別の場所でケージに入れるか、リードでつなぐ形がほとんどです。大型犬はケージに入らないことが多いので、じょうぶなリードを持って行き、入れないときの行き先（車・親戚や知人の家・ペットホテル）も決めておきましょう。</dd><dt>日進市の避難所で、ペットはどこで過ごしますか？</dt><dd>日進市では、人とは別の場所。屋外なら駐輪場・渡り廊下・軒下など風雨をしのげる所、屋内なら人の通り道と交わらない1室や階段下など。犬・猫・小動物は分ける。くわしい場所は避難所ごとに決まります。</dd><dt>日進市の避難所に、ケージは持って行きますか？</dt><dd>日進市では、避難所ではケージで飼うのが原則。</dd><dt>日進市の避難所には、どんな動物を連れて行けますか？</dt><dd>日進市では、資料では、受け入れの対象を犬・猫・小鳥・小動物としている。なお、人に危害を加えるおそれのある状態の動物は受け入れない。</dd></dl>
     <p class="emg-note">2026-11-14時点の情報です。避難所の決まりは変わることがあり、災害の状況や避難所ごとにも違います。必ずリンク先でご確認ください。誤りは<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
   </article></div>
 </section>
