@@ -2699,6 +2699,8 @@ nf = head("ページが見つかりません｜ペットタクシー予約窓口
 <main><section class="area-hero"><div class="wrap" style="text-align:center">
 <h1>ページが見つかりませんでした</h1><p class="lede">URLが変わったか、削除された可能性があります。</p>
 <a class="btn center" href="/">トップページへ{ARROW}</a></div></section>
+<script>/* 2026-11-18：メールで URL の後ろに「）を…」などがつながって壊れたリンクは、日本語の前までのページへ移す */
+(function(){{try{{var p=decodeURIComponent(location.pathname),i=p.search(/[^\x21-\x7e]/);if(i>0){{var q=p.slice(0,i);q=q.slice(0,q.lastIndexOf("/")+1)||"/";location.replace(q+location.search+location.hash)}}}}catch(e){{}}}})();</script>
 <section><div class="wrap"><div class="sh"><h2>エリアからさがす</h2></div>{area_links()}</div></section></main>
 ''' + foot("/#form")
 open(os.path.join(ROOT, "404.html"), "w", encoding="utf-8").write(nf)
