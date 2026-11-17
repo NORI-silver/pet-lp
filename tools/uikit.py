@@ -109,7 +109,7 @@ def _b(items, cls="", g=""):
     ga = f' data-g="{g}"' if g else ""
     return "".join(f'<button type="button" data-k="{e(k)}" data-l="{e(l)}"{ga} aria-pressed="false">{e(l)}</button>' for k, l in items)
 
-def box(cat, *, q_ph, opts=None, animals=None, who=None, need=None, more=(), unit="件", noun="ところ", go="この条件でさがす", guess=False, needpref=False):
+def box(cat, *, q_ph, opts=None, animals=None, who=None, when=None, need=None, more=(), unit="件", noun="ところ", go="この条件でさがす", guess=False, needpref=False):
     """さがす箱。opts＝都道府県の <option>（全国のページだけ）、animals＝(質問, [(key, 名前)])＝どの動物（1つだけ選ぶ）、
     who＝(質問, [(key, 名前)])＝うちの子の条件（大型犬・シニアなど）、need＝(質問, [(key, 名前)])＝サービスの内容、more＝[(小見出し, [(key, 名前)])]。
     どこで は /place.js の入力1つ（都道府県はいくつでも・市区町村の候補つき。Nori 2026-11-16）。"""
@@ -118,6 +118,7 @@ def box(cat, *, q_ph, opts=None, animals=None, who=None, need=None, more=(), uni
     rows.append(f'<div class="ux-r"><span class="ux-l">どこで探しますか？</span><div class="ux-w">{place}</div></div>')
     if animals and animals[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(animals[0])}</span><div class="ux-w">{_b(animals[1], g="a")}</div></div>')
     if who and who[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(who[0])}</span><div class="ux-w">{_b(who[1])}</div></div>')
+    if when and when[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(when[0])}</span><div class="ux-w">{_b(when[1])}</div></div>')
     if need and need[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(need[0])}</span><div class="ux-need">{_b(need[1])}</div></div>')
     if more:
         inner = "".join(f'<span class="ux-l">{e(t)}</span><div class="ux-w">{_b(it)}</div>' for t, it in more if it)
@@ -211,7 +212,7 @@ HOTEL = dict(
     cat="pet-hotel", unit="件", noun="ホテル", q_ph="都道府県・市区町村",
     # 軸を分ける（Nori 2026-11-16「意味不明」）：どの動物（1つ）／うちの子の条件／ホテルの内容。猫専用は「猫」に含まれ、犬では外れる
     animals=("どの子を預けますか？", [("a:dog", "犬"), ("cat", "猫")]),
-    who=("うちの子の条件", [("large", "大型犬"), ("senior", "シニア・介護")]),
+    who=("うちの子にあてはまるもの", [("big", "大型犬（25kg以上）"), ("sen", "シニア・介護が必要"), ("pup", "子犬・子猫"), ("med", "薬・持病がある"), ("multi", "2頭以上いる"), ("shy", "かむ・ほえる・こわがり")]),
     need=("どんなホテルをお探しですか？", [("vet", "病院が併設"), ("pickup", "送迎あり"), ("night_staff", "夜もスタッフ"), ("private_room", "個室")]),
     more=[("設備", [("camera", "カメラで見守り"), ("run", "ドッグラン")])],
     go="この条件でホテルを探す")
@@ -251,6 +252,21 @@ def _move_below(h):
     add = "".join((f'<details class="ux-areas"><summary>{t}</summary>{blk}</details>' if t.startswith("都道府県ごとの") else blk) for blk, t in navs) + "".join(c.strip() for c in chunks)
     return h[:pos] + "\n      " + add + h[pos:]
 
+def _card_url(h, end):
+    """カードの開きタグの後ろ（次のカードまで）にある、いちばん最初の公式サイトのURL。"""
+    nx = h.find('class="emg-item', end)
+    seg = h[end: nx if nx > 0 else end + 4000]
+    m = re.search(r'href="(https?://[^"]+)"', seg)
+    return m.group(1) if m else ""
+
+def _sub_cards(h, fn):
+    """カードの開きタグごとに fn(タグ, 公式サイトのURL) で置きかえる。"""
+    out, i = [], 0
+    for m in re.finditer(r'<div class="emg-item emg-co fc[^"]*"[^>]*>', h):
+        out.append(h[i:m.start()]); out.append(fn(m.group(0), _card_url(h, m.end()))); i = m.end()
+    out.append(h[i:])
+    return "".join(out)
+
 def facility_list(h, conf, hub):
     if 'id="ffRes"' in h: return h
     em = h.find('<div class="emg">')
@@ -267,12 +283,17 @@ def facility_list(h, conf, hub):
     em = h.find('<div class="emg">')
     h = h[:em + len('<div class="emg">')] + bx + h[em + len('<div class="emg">'):]
     # 施設に印（data-flags をそのまま条件に）と「公式サイト」のボタン
-    def card(m):
-        t = m.group(0)
+    import ownerfit
+    def card(t, url):
         fl = re.search(r'data-flags="([^"]*)"', t)
-        no = ' data-no="a:dog"' if fl and "cat_only" in fl.group(1).split() else ""
-        return t[:-1] + f' data-ffi data-k="{fl.group(1) if fl else ""}"{no}>'
-    h = re.sub(r'<div class="emg-item emg-co fc[^"]*"[^>]*>', card, h)
+        ks = fl.group(1).split() if fl else []
+        ks += [{"large": "big", "senior": "sen"}[k] for k in ks if k in ("large", "senior")]
+        y, n = ownerfit.keys(conf["cat"], url)
+        ks = list(dict.fromkeys(ks + y))
+        n = [x for x in n if x not in ks] + (["a:dog"] if "cat_only" in ks else [])
+        no = f' data-no="{e(" ".join(n))}"' if n else ""
+        return t[:-1] + f' data-ffi data-k="{e(" ".join(ks))}"{no}>'
+    h = _sub_cards(h, card)
     h = re.sub(r'(<div class="fc-name"><a href="([^"]*)"[^>]*>.*?</div>)((?:(?!class="fc-name").)*?)<div class="fc-acts">',
                lambda m: m.group(1) + m.group(3) + f'<div class="fc-acts"><a class="ux-btn" href="{m.group(2)}" target="_blank" rel="noopener">公式サイトを見る ↗</a>', h, flags=re.S)
     # 前の動き（fit.js・条件のチェック）を外して /find.js に
@@ -297,7 +318,7 @@ SVC = {
     "dog-trainer": (None, "どんな形がいいですか？",
                     [("出張・訪問", "家に来てくれる", ["出張トレーニング", "出張訓練", "出張しつけ"]), ("教室・グループ", "教室・グループ", ["しつけ教室", "グループレッスン", "パピー教室", "パピークラス"]),
                      ("幼稚園・保育園", "犬の幼稚園", ["犬の幼稚園", "幼稚園", "デイケア"]), ("預かり訓練", "預かり訓練", ["お預かり", "一時預かり"])],
-                    [("オンライン", "オンライン", ["オンラインレッスン"]), ("問題行動", "問題行動の相談", ["しつけ相談"])]),
+                    [("オンライン", "オンライン", ["オンラインレッスン"])]),
     "rojin-home": ("どの子ですか？", "", [], []),
     "sougi": (None, "どんな見送り方をお考えですか？",
               [("個別火葬", "個別に火葬", ["立ち会い火葬"]), ("お迎え・訪問火葬", "家に来てくれる", ["お迎え"]), ("立ち会い", "立ち会える", ["立ち会い火葬"]), ("霊園・納骨", "霊園・納骨堂", ["霊園", "納骨堂", "納骨"])],
@@ -315,9 +336,9 @@ LCONF = {
 _ATTR = lambda t, a: html_unescape((re.search(r'\b%s="([^"]*)"' % a, t) or [None, ""])[1])
 def html_unescape(x): return _h.unescape(x)
 
-def _keys(t, cat):
-    """カード1枚の条件（決まった key だけ）と、はっきり合わない条件。"""
-    import json as _j
+def _keys(t, cat, url=""):
+    """カード1枚の条件（決まった key だけ）と、はっきり合わない条件。公式サイトの文からの「うちの子」の条件（ownerfit）も足す。"""
+    import json as _j, ownerfit
     k, no = [], []
     raw = {x.strip() for x in (_ATTR(t, "data-tags") + "|" + _ATTR(t, "data-ft")).split("|") if x.strip()}
     try: f = _j.loads(_ATTR(t, "data-fit") or "{}")
@@ -340,7 +361,12 @@ def _keys(t, cat):
     _, _, sv, mv = SVC[cat]
     for key, _l, syn in sv + mv:
         if key in raw or raw & set(syn): k.append(key)
-    return list(dict.fromkeys(k)), list(dict.fromkeys(x for x in no if x not in k))
+    if cat == "dog-trainer" and raw & {"問題行動", "しつけ相談"}: k.append("shy")
+    y, n = ownerfit.joto_keys(url) if cat == "joto" else ownerfit.keys(cat, url)
+    k += y
+    k = list(dict.fromkeys(k))
+    no = [x for x in no + n if x not in k]
+    return k, list(dict.fromkeys(no))
 
 def generic_list(h, cat, hub):
     if 'id="ffRes"' in h or '<div class="fp" data-fp>' not in h: return h
@@ -353,24 +379,31 @@ def generic_list(h, cat, hub):
     if h.find('<div class="emg">') < 0: return h
     h = _move_below(h)
     cnt, tot = {}, [0]
-    def card(m):
-        t = m.group(0)
-        ks, no = _keys(t, cat)
+    def card(t, url):
+        ks, no = _keys(t, cat, url)
         tot[0] += 1
         for x in ks: cnt[x] = cnt.get(x, 0) + 1
         return t[:-1] + " data-ffi" + (f' data-k="{e(" ".join(ks))}"' if ks else "") + (f' data-no="{e(" ".join(no))}"' if no else "") + ">"
-    h = re.sub(r'<div class="emg-item emg-co fc[^"]*"[^>]*>', card, h)
+    h = _sub_cards(h, card)
     n, lo = tot[0], (3 if hub else 1)
     use = lambda k: lo <= cnt.get(k, 0) and (cnt.get(k, 0) < n * 0.9 or n <= 3)  # 少なすぎる・ほぼ全部に当てはまる条件は出さない
     animals = None
     if qan:
         an = [(k, l) for k, l in ANIMAL if k == "a:dog" or cnt.get(k, 0) >= lo]
         if len(an) >= 2: animals = (qan, an)
-    who = [(k, l) for k, l in COND if use(k) and not (cat == "dog-trainer" and k == "big")]
+    import ownerfit
+    if cat == "joto":
+        who = ("迎える人のこと", [(k, l) for k, l in ownerfit.JOTO_WHO.items() if use(k)])
+    else:
+        wl = [(k, ownerfit.WHO[k]) for k in ownerfit.CAT_WHO.get(cat, [])]
+        if cat == "sougi":  # 犬・猫はどこも受けるので、うさぎ・小鳥などだけを「うちの子」に
+            wl += [("a:small", "うさぎ・ハムスターなど"), ("a:bird", "小鳥・インコ"), ("a:exotic", "爬虫類など")]
+        who = ("うちの子にあてはまるもの", [(k, l) for k, l in wl if use(k)])
+    when = ("いつ", [(k, l) for k, l in ownerfit.WHEN.items() if use(k)]) if cat == "sougi" else None
     need = [(k, l) for k, l, _ in sv if use(k)]
     more = [(k, l) for k, l, _ in mv if use(k)]
     bx = box(cat, q_ph="都道府県・市区町村", opts=opts if (hub and opts) else None, animals=animals,
-             who=("うちの子の条件", who), need=(qsv, need), more=[("そのほかの条件", more)] if more else (), unit="件", noun=noun, go=go, guess=bool(hub and opts))
+             who=who, when=when, need=(qsv, need), more=[("そのほかの条件", more)] if more else (), unit="件", noun=noun, go=go, guess=bool(hub and opts))
     em = h.find('<div class="emg">')
     h = h[:em + len('<div class="emg">')] + bx + h[em + len('<div class="emg">'):]
     if "/facility.js" not in h:
