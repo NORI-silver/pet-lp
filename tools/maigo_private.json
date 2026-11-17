@@ -740,7 +740,15 @@
     "チラシ・ポスター・聞き込み",
     "けがをさせる捕獲器は使わない"
    ],
-   "src": "https://petsosaku.localinfo.jp/"
+   "src": "https://petsosaku.localinfo.jp/",
+   "near": [
+    "鳥取県",
+    "島根県",
+    "岡山県",
+    "広島県",
+    "山口県"
+   ],
+   "near_note": "広島・岡山・山口・島根・鳥取は交通費1万円（ほかの地域より安い）"
   },
   {
    "name": "ミケネコ探偵社",
@@ -848,9 +856,10 @@
     }
    ],
    "near": [],
-   "near_note": "都道府県ごとの地域ページあり",
+   "near_note": "都道府県ごとのページあり",
    "src": "https://otasuke-plus.com/lp_pet-tantei",
-   "checked": "2026-11-17"
+   "checked": "2026-11-17",
+   "pref_url": "https://otasuke-plus.com/{slug}/lp_pet-tantei"
   },
   {
    "name": "ペット探偵ペットヘルプ",
@@ -932,6 +941,59 @@
     }
    ],
    "src": "https://www.ivservice.co.jp/pet/",
+   "checked": "2026-11-17"
+  },
+  {
+   "name": "鹿児島ペット探偵RESCUE",
+   "kind": "operator",
+   "url": "https://kagoshima-rescue.com/",
+   "price_url": "https://kagoshima-rescue.com/menu-03.html",
+   "base": "鹿児島県鹿児島市",
+   "area": "鹿児島県",
+   "area_quote": "鹿児島で最も発見率の高い、ペット捜索を専門で行なうペット探偵",
+   "animals": "犬・猫・鳥など",
+   "plans": [
+    {
+     "name": "3日間（1日8時間・捜索員とオペレーター）",
+     "yen": 96000,
+     "tax": "税込",
+     "extra": "前払い。成功報酬なし",
+     "quote": "￥96,000(税込)"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "打ち合わせ",
+     "text": "事前の打ち合わせ費 5,000円"
+    }
+   ],
+   "near": [
+    "鹿児島県"
+   ],
+   "near_note": "鹿児島市が拠点",
+   "src": "https://kagoshima-rescue.com/menu-03.html",
+   "checked": "2026-11-17"
+  },
+  {
+   "name": "総合探偵社プライベートアイ（ペット捜索）",
+   "kind": "operator",
+   "url": "https://www.privateeye.co.jp/miyagi-pet-sousaku",
+   "price_url": "https://www.privateeye.co.jp/miyagi-pet-sousaku",
+   "base": "記載なし",
+   "area": "全国",
+   "area_quote": "宮城県内全域にて対応可能。／沖縄県内全域にて対応可能。（県ごとのページあり）",
+   "animals": "猫・犬・鳥・小動物・爬虫類",
+   "plans": [
+    {
+     "name": "8時間",
+     "yen": 50000,
+     "tax": "税別",
+     "extra": "交通費・宿泊費・機材費は諸経費で別",
+     "quote": "８時間：５０,０００円〜(諸経費・消費税別)"
+    }
+   ],
+   "near_note": "県ごとのページあり",
+   "src": "https://www.privateeye.co.jp/okinawa-pet-sousaku",
    "checked": "2026-11-17"
   }
  ],

@@ -36,15 +36,15 @@ function pick(m){S.innerHTML='';Q.value=m[1];ls('jcMuni',m[0]+'|'+m[1]);var P=D.
   slot('joto',P.j?a(P.j,pf+'の譲渡の窓口と団体'):a('/joto/','譲渡の窓口と団体'));
   slot('center',card(c,c&&c[3]===city?city+'の窓口':pf+'の窓口（'+city+'はこの窓口の受け持ち）'));ev('jichitai_find',{pref:pf,page:K})}}
 function covers(d,pf){var ar=d.areas||[];return ar.indexOf('全国')>=0||ar.indexOf(pf)>=0||(d.near||[]).indexOf(pf)>=0}
-function local(d,pf){return(d.near||[]).indexOf(pf)>=0||((d.areas||[]).indexOf(pf)>=0&&(d.areas||[])[0]!=='全国')}
+function local(d,pf){return(d.near||[]).indexOf(pf)>=0||!!(d.u&&d.u[pf])||((d.areas||[]).indexOf(pf)>=0&&(d.areas||[])[0]!=='全国')}
 /* ペット探偵：その県に来てくれる会社だけを、地元・出張費なしの会社を先にして1つの表に並べる（表は最初の4件と「のこり」に分かれているので、全部の行を集める） */
 function pro(pf){var el=document.getElementById('jcPro');if(!el||!D.d||!D.d.length)return;var tb=el.querySelector('tbody');if(!tb)return;
  var rows=pro.rows||(pro.rows=[].slice.call(el.querySelectorAll('tbody tr'))),more=el.querySelector('details.more'),near=[],far=[],off=[];
- D.d.forEach(function(d,i){var r=rows[i];if(!r)return;(covers(d,pf)?(local(d,pf)?near:far):off).push(r)});
+ D.d.forEach(function(d,i){var r=rows[i];if(!r)return;if(d.u&&d.u[pf]){var l=r.querySelector('th a');if(l)l.href=d.u[pf]}(covers(d,pf)?(local(d,pf)?near:far):off).push(r)});
  near.concat(far,off).forEach(function(r){tb.appendChild(r)});near.concat(far).forEach(function(r){r.style.display=''});off.forEach(function(r){r.style.display='none'});
  if(more)more.hidden=true;
  var n=el.querySelector('.jc-pn');if(!n){n=document.createElement('p');n.className='jc-pn jc-src';el.insertBefore(n,el.firstChild)}
- n.innerHTML='<b>'+esc(pf)+'に来てくれる会社は'+(near.length+far.length)+'社</b>です。'+(near.length?esc(pf)+'が地元・出張費なしの'+near.length+'社を先に、そのあとに全国に出張する会社を出しています。':'全国に出張する会社です（交通費は会社ごとに別）。')+(off.length?' <button type="button" class="jc-all" style="border:0;background:none;color:#c2410c;text-decoration:underline;padding:0">ほかの地域の会社も見る</button>':'');
+ n.innerHTML='<b>'+esc(pf)+'に来てくれる会社は'+(near.length+far.length)+'社</b>です。'+(near.length?esc(pf)+'で受けている'+near.length+'社（地元・出張費なし・県ごとの窓口がある会社）を先に、そのあとに全国に出張する会社を出しています。':'全国に出張する会社です（交通費は会社ごとに別）。')+(off.length?' <button type="button" class="jc-all" style="border:0;background:none;color:#c2410c;text-decoration:underline;padding:0">ほかの地域の会社も見る</button>':'');
  var b=n.querySelector('.jc-all');if(b)b.onclick=function(){off.forEach(function(r){r.style.display=''});b.remove()}}
 /* 犬か猫か */
 var an=box.querySelectorAll('[data-an]');function setAn(v){an.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-an')===v)});if(R){R.classList.toggle('jc-dog',v==='dog');R.classList.toggle('jc-cat',v==='cat')}ls('jcAn',v)}
