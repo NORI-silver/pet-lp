@@ -50,7 +50,7 @@ def detectives():
         if ex: txt += "。" + "。".join(dict.fromkeys(ex))
         ar = _areas(d)
         out.append({"name": d["name"], "url": d.get("price_url") or d.get("url"), "areas": ar, "plan": txt,
-                    "animals": "" if "明記なし" in d.get("animals", "") else d.get("animals", ""), "area_text": "全国" if ar == ["全国"] else (d.get("area") if d.get("area") not in (None, "", "記載なし") else d.get("base", ""))})
+                    "animals": "" if "明記なし" in d.get("animals", "") else d.get("animals", ""), "near": d.get("near") or [], "near_note": d.get("near_note") or "", "area_text": "全国" if ar == ["全国"] else (d.get("area") if d.get("area") not in (None, "", "記載なし") else d.get("base", ""))})
     return out
 
 # 警察の遺失届（警察庁「落とし物の届出・検索」2026-11-17 時点：46道府県は警察庁の共通のオンラインの受付、東京都は警視庁の受付）
@@ -108,7 +108,7 @@ def data(ROOT, pref_slug):
         sl = pref_slug.get(pf, "")
         hv = f"/hospital/{sl}/{m['slug']}/" if sl and has("hospital", sl, m["slug"]) else ""
         M.append([pf, nm, m.get("kana", ""), m.get("url", ""), k, hv])
-    D = [{"areas": d["areas"]} for d in detectives()]
+    D = [{"areas": d["areas"], "near": d["near"]} for d in detectives()]
     return {"c": C, "p": P, "m": M, "d": D}
 
 
@@ -194,7 +194,7 @@ def maigo(ctx):
     det_rows = "".join(
         f'<tr><th><a href="{e(d.get("price_url") or d["url"])}" target="_blank" rel="noopener">{e(d["name"])}</a></th>'
         f'<td>{e(d["plan"])}' + (f'<br><small>{e(d["animals"])}</small>' if d["animals"] else "") + '</td>'
-        f'<td>{e(d["area_text"])}</td></tr>' for d in dets)
+        f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + '</td></tr>' for d in dets)
     det_tbl = (f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域</th></tr></thead><tbody>{det_rows}</tbody></table></div>'
                f'<p class="jc-src">金額は税込（税別・税の記載がない会社は印つき）。各社の公式サイトの情報をもとに（{CHECKED}時点）。順番に意味はありません。発見率など会社の発表の数字は、くらべ方がそろっていないので載せていません。</p>') if dets else ""
     ins = [i for i in PRIV.get("insurance", []) if not i.get("doubt")]

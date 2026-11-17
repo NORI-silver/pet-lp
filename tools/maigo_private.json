@@ -1,443 +1,1197 @@
 {
-  "checked": "2026-11-17",
-  "note": "各社の公式サイトに書いてあることだけ。電話番号・発見率は入れていない。税込の記載がない金額は tax に「記載なし」「税別」と書いた。",
-  "detectives": [
+ "checked": "2026-11-17",
+ "note": "各社の公式サイトに書いてあることだけ。電話番号・発見率は入れていない。税込の記載がない金額は tax に「記載なし」「税別」と書いた。",
+ "detectives": [
+  {
+   "name": "PET RESCUE（ペットレスキュー）",
+   "operator": "ペットレスキュー（代表 藤原博史）",
+   "kind": "operator",
+   "url": "https://rescue-pet.com/",
+   "price_url": "https://rescue-pet.com/business-trip-search/",
+   "base": "神奈川県藤沢市（関東・関西を拠点）",
+   "area": "全国（出張）",
+   "area_quote": "関東、関西を拠点に…全国出張いたします。",
+   "animals": "迷子のペット（動物の種類の明記なし）",
+   "plans": [
     {
-      "name": "PET RESCUE（ペットレスキュー）",
-      "operator": "ペットレスキュー（代表 藤原博史）",
-      "kind": "operator",
-      "url": "https://rescue-pet.com/",
-      "price_url": "https://rescue-pet.com/business-trip-search/",
-      "base": "神奈川県藤沢市（関東・関西を拠点）",
-      "area": "全国（出張）",
-      "area_quote": "関東、関西を拠点に…全国出張いたします。",
-      "animals": "迷子のペット（動物の種類の明記なし）",
-      "plans": [
-        {"name": "出張捜索 1日", "yen": 33000, "tax": "税込", "includes": "8時間の現場捜索・捕獲作業、住宅地図への作業記録、期間中と終了後のLINE相談", "extra": "経費（迷子チラシ・交通費）は別", "quote": "33,000円（税込）＋ 経費"}
-      ],
-      "extra_fees": [
-        {"what": "出張費", "text": "東京都・神奈川県・大阪府・兵庫県以外は別途出張費。遠方は宿泊費・機材運搬費も", "quote": "東京都、神奈川県、大阪府、兵庫県以外は別途出張費"}
-      ],
-      "cancel": [
-        {"when": "契約成立から出張捜索の前日まで", "yen": 16500},
-        {"when": "出張捜索の当日", "yen": 33000},
-        {"when": "チラシ原稿の確認中", "yen": 5500}
-      ],
-      "methods": ["トレイルカメラ", "暗視カメラ", "ドロップ式捕獲器"],
-      "src": "https://rescue-pet.com/business-trip-search/"
-    },
-    {
-      "name": "ジャパンロストペットレスキュー（JLPR）",
-      "operator": "一般社団法人アニマリア",
-      "kind": "operator",
-      "url": "https://www.jlpr.net/",
-      "price_url": "https://www.jlpr.net/investigation",
-      "base": "東京都小平市",
-      "area": "全国",
-      "area_quote": "24時間全国対応　年中無休",
-      "animals": "猫・犬・小動物（よくある質問では鳥・爬虫類などペット全般）",
-      "plans": [
-        {"name": "猫・小型犬・小動物 3日間", "yen": 93500, "tax": "税込", "includes": "1日8時間×3日（深夜も同料金）、事前打ち合わせ、ポスター・チラシ作成費などの実費込み", "quote": "￥85,000(税込￥93,500)"},
-        {"name": "中型犬・大型犬 3日間", "yen": 104500, "tax": "税込", "includes": "同上", "quote": "￥95,000(税込￥104,500)"},
-        {"name": "延長 1日", "yen": 22000, "tax": "税込", "quote": "￥20,000(税込￥22,000)"}
-      ],
-      "extra_fees": [
-        {"what": "距離の割増", "text": "東京都・神奈川県・埼玉県・千葉県（島しょの一部を除く）以外は距離により割増（出張料金表はPDF）"}
-      ],
-      "cancel": "記載なし",
-      "payment": "原則前払い（現金・振込・電子決済）。成功報酬などの追加請求はなし",
-      "methods": ["現場での聞き込み", "ポスター・チラシ・メールで目撃情報を集める", "潜伏場所が分かれば捕獲器"],
-      "note": "アニコム損保・ソニー損保などの契約者向けの迷子捜索サービスを行う会社",
-      "src": "https://www.jlpr.net/investigation"
-    },
-    {
-      "name": "キャットプロ",
-      "operator": "キャットプロ株式会社",
-      "kind": "operator",
-      "url": "https://catpro.jp/",
-      "price_url": "https://catpro.jp/",
-      "base": "記載なし（全国の提携捜索員）",
-      "area": "全国",
-      "area_quote": "全国の提携捜索員ネットワーク",
-      "animals": "猫だけ",
-      "animals_quote": "弊社は猫ちゃん捜索に特化しており、他の動物は対象外です。",
-      "plans": [
-        {"name": "お試しプラン", "yen": 10780, "tax": "税込", "includes": "2時間×1日の現地サポート"},
-        {"name": "初動プラン", "yen": 39800, "tax": "税込", "includes": "8時間×1日（ポスティングなし）"},
-        {"name": "集中プラン", "yen": 69800, "tax": "税込", "includes": "8時間×2日、チラシ配布（200〜300部のポスティング）"},
-        {"name": "徹底プラン", "yen": 99800, "tax": "税込", "includes": "8時間×3日、昼夜の捜索、チラシ配布"},
-        {"name": "成功報酬", "yen": 50000, "tax": "税込", "includes": "保護できたときだけ"},
-        {"name": "延長 1日", "yen": 45000, "tax": "税込"}
-      ],
-      "extra_fees": [{"what": "交通費など", "text": "料金表に記載なし（返金の注記で諸経費＝交通費・機材設置費・印刷費など）"}],
-      "cancel": "記載なし",
-      "methods": ["聞き込み", "チラシ", "捕獲機の設置", "カメラ", "張り込み（徹底プラン）"],
-      "src": "https://catpro.jp/"
-    },
-    {
-      "name": "ネコちゃん探偵のプロ（迷子のネコちゃん110番）",
-      "operator": "株式会社キャットバンク",
-      "kind": "operator",
-      "url": "https://catbank.co.jp/lp01/",
-      "price_url": "https://catbank.co.jp/lp01/",
-      "base": "東京都中央区（東京・千葉・横浜・名古屋・和歌山・富山・大阪・福岡などに拠点と案内）",
-      "area": "全国（と案内）",
-      "animals": "猫だけ",
-      "plans": [
-        {"name": "スピード初動プラン", "yen": 39800, "tax": "税込", "includes": "8時間×1日、チラシ50枚", "extra": "交通費別"},
-        {"name": "集中しっかり捜索", "yen": 69800, "tax": "税込", "includes": "8時間×2日、チラシ100枚", "extra": "交通費別"},
-        {"name": "とことん徹底捜索", "yen": 99800, "tax": "税込", "includes": "8時間×3日、チラシ300枚", "extra": "交通費別"},
-        {"name": "成功報酬", "yen": 50000, "tax": "税込", "includes": "保護できたときだけ（終了後30日以内に第三者が保護した場合も）"}
-      ],
-      "extra_fees": [{"what": "交通費・連休の追加", "text": "交通費は別（金額の記載なし）。年末年始・GW・お盆は追加費用の可能性"}],
-      "cancel": "入金後のお客さま都合のキャンセル・返金は原則なし",
-      "cancel_quote": "ご入金後のお客様都合のキャンセル＆ご返金は原則承っておりません。",
-      "cancel_src": "https://catbank.co.jp/prtokusho/",
-      "payment": "原則前払い。カード・振込",
-      "methods": ["聞き取り", "カメラ・捕獲機の設置", "迷子猫チラシ・聞き込み"],
-      "doubt": "「とことん徹底捜索」を8時間×3日と書く所と24時間と書く所がある",
-      "src": "https://catbank.co.jp/lp01/"
-    },
-    {
-      "name": "猫専門探偵社ファインドキャット",
-      "operator": "猫専門探偵社ファインドキャット",
-      "kind": "operator",
-      "url": "https://findcat.main.jp/",
-      "price_url": "https://findcat.main.jp/",
-      "base": "東京都新宿区",
-      "area": "全国（北海道・沖縄は相談）",
-      "area_quote": "日本全国24時間対応！猫探しのプロ",
-      "animals": "猫だけ",
-      "plans": [
-        {"name": "1日", "yen": 66000, "tax": "税込", "includes": "旅費交通費・諸経費・チラシ作成費込み", "extra_day_yen": 66000},
-        {"name": "2日", "yen": 132000, "tax": "税込", "includes": "同上", "extra_day_yen": 58000},
-        {"name": "3日", "yen": 178000, "tax": "税込", "includes": "同上", "extra_day_yen": 45000}
-      ],
-      "includes_quote": "旅費交通費、諸経費、チラシ作成費用など全て込みのお値段です。",
-      "cancel": "記載なし",
-      "methods": ["チラシのポスティング", "夜間のペンライト捜索", "カメラの設置", "捕獲器の設置"],
-      "src": "https://findcat.main.jp/"
-    },
-    {
-      "name": "猫探偵センター",
-      "operator": "株式会社シジョウ",
-      "kind": "operator",
-      "url": "https://neko-tantei-center.com/",
-      "price_url": "https://neko-tantei-center.com/price/",
-      "base": "東京都品川区（探偵は全国各地に所属と案内）",
-      "area": "全国（福岡県全域などの地域ページあり）",
-      "animals": "猫が中心。犬・鳥・爬虫類も",
-      "plans": [
-        {"name": "1日プラン", "yen": 50000, "tax": "記載なし", "extra": "交通費・経費は別", "quote": "50,000円＋交通費＋経費"},
-        {"name": "3日プラン", "yen": 150000, "tax": "記載なし", "extra": "交通費・経費は別", "quote": "150,000円＋交通費＋経費"}
-      ],
-      "extra_fees": [
-        {"what": "交通費", "text": "ガソリン代・高速道路料金・駐車場代・遠方の宿泊費"},
-        {"what": "経費", "text": "チラシ印刷費・ポスター作成費・捕獲器などの資材費"}
-      ],
-      "cancel": "時期によりキャンセル料がかかる場合あり（金額の記載なし）",
-      "no_success_fee": "見つからなくても捜索作業の料金はかかる",
-      "methods": ["聞き込み・チラシ", "赤外線・暗視カメラ", "捕獲器", "夜間捜索"],
-      "doubt": "福岡のページは「＋交通費、消費税」と書き、税込かどうかが料金ページで分からない",
-      "src": "https://neko-tantei-center.com/price/"
-    },
-    {
-      "name": "名探偵キャッツ",
-      "operator": "名探偵キャッツ",
-      "kind": "operator",
-      "url": "https://www.meitanteicats119.com/",
-      "price_url": "https://www.meitanteicats119.com/%E6%96%99%E9%87%91%E8%A1%A8",
-      "base": "埼玉（本社）・大阪（支社）とページの題に書いてある",
-      "area": "関東・関西（本文では全国）",
-      "animals": "猫だけ",
-      "plans": [
-        {"name": "発見・保護", "yen": 107800, "tax": "税込", "includes": "捜索期間合計18時間。見つからなければ0円と案内", "quote": "￥98,000(税込￥107,800)"},
-        {"name": "捕獲のみ（1日8時間）", "yen": 44000, "tax": "税込", "includes": "事前打ち合わせ費込み・捜索は含まない", "quote": "￥40,000(税込￥44,000)"}
-      ],
-      "extra_fees": [
-        {"what": "交通費", "text": "一律3日間分を預かる"},
-        {"what": "チラシ", "yen": 8000, "text": "400枚"},
-        {"what": "駐車場代", "text": "別"}
-      ],
-      "cancel": "訪問前のお客さま都合の取り消しはキャンセル料（金額の記載なし）。捜索開始後の解除は成功報酬と同額",
-      "methods": ["チラシの作成・配布", "現場確認", "書面・画像・動画での報告"],
-      "doubt": "拠点の書き方が「埼玉本社」と「東京本社」で食い違う",
-      "src": "https://www.meitanteicats119.com/%E6%96%99%E9%87%91%E8%A1%A8"
-    },
-    {
-      "name": "ペット探偵事務所（日本動物探偵社）",
-      "operator": "有限会社日本動物探偵社",
-      "kind": "operator",
-      "url": "https://www.pet-tantei.info/",
-      "price_url": "https://www.pet-tantei.info/price/index.html",
-      "base": "東京都板橋区",
-      "area": "全国",
-      "area_quote": "全国どこでもすぐ伺います",
-      "animals": "猫・犬・鳥（鳥は手乗りであること）",
-      "plans": [
-        {"name": "捜索 1日から", "yen": 19000, "tax": "記載なし", "includes": "1日8時間（猫の捜索）", "quote": "1日19,000円からの低料金でペット捜索いたします"}
-      ],
-      "extra_fees": [{"what": "地方の捜索", "text": "3時間以上の契約ではホテル・交通費は別"}],
-      "cancel": "記載なし",
-      "methods": ["聞き込み・ポスター", "飼い主さんの声の録音を流す", "自社の捕獲器", "熱を見るドローン", "必要なときは捜索犬"],
-      "doubt": "料金表が画像で読めず、日数ごとの金額は確かめられていない",
-      "src": "https://www.pet-tantei.info/"
-    },
-    {
-      "name": "総合調査 紫苑（ペット捜索）",
-      "operator": "総合調査 紫苑",
-      "kind": "operator",
-      "url": "https://shion-sp.jp/service/pets/",
-      "price_url": "https://shion-sp.jp/pay/",
-      "base": "北海道札幌市",
-      "area": "北海道",
-      "area_quote": "札幌をはじめ北海道内どこでも対応いたします",
-      "animals": "猫・犬（ほかは相談）",
-      "plans": [
-        {"name": "基本料金", "yen": 33000, "tax": "税込", "from": true, "includes": "基本料金だけ。捜索時間の調査料金・機材料金・諸経費は別", "quote": "ペット捜索の基本料金は33,000円〜（税込）です。"}
-      ],
-      "extra_fees": [{"what": "諸経費", "text": "車両代・交通費など。遠方は交通費・宿泊費"}],
-      "cancel": "記載なし",
-      "methods": ["チラシ・ポスター", "目視の捜索", "張り込み", "捕獲機材・小型カメラ"],
-      "note": "一般の探偵社がペット捜索も受けている",
-      "src": "https://shion-sp.jp/service/pets/"
-    },
-    {
-      "name": "いちご探偵事務所（猫探偵）",
-      "operator": "いちご探偵事務所",
-      "kind": "operator",
-      "url": "https://ichigotantei.com/free/pet",
-      "price_url": "https://ichigotantei.com/free/pet",
-      "base": "岩手県盛岡市",
-      "area": "記載なし",
-      "animals": "猫だけ（犬・亀・鳥は受けていない）",
-      "plans": [
-        {"name": "猫探偵 1日8時間", "yen": 38000, "tax": "記載なし", "quote": "猫探偵・調査費用1日8時間 38,000円"}
-      ],
-      "cancel": "記載なし",
-      "methods": ["トレイルカメラ（赤外線）", "サーマルスコープ", "チラシ"],
-      "src": "https://ichigotantei.com/free/pet"
-    },
-    {
-      "name": "ファミリー調査事務所 新潟支店（ペット捜索）",
-      "operator": "ファミリー調査事務所",
-      "kind": "operator",
-      "url": "https://www.fam-niigata.com/service/for-personal/pet-search/",
-      "price_url": "https://www.fam-niigata.com/service/for-personal/pet-search/",
-      "base": "新潟県新潟市中央区",
-      "area": "新潟県全域・長野県（長野市・松本市など）・石川県（金沢市・能登方面）",
-      "animals": "猫が中心。犬も受ける",
-      "plans": [
-        {"name": "5日間（目安）", "yen": 150000, "tax": "記載なし", "extra": "交通費・諸経費は別"},
-        {"name": "10日間に延長（目安）", "yen": 250000, "tax": "記載なし"}
-      ],
-      "no_success_fee": "当方は成功報酬制をとっていません。",
-      "cancel": "記載なし",
-      "methods": ["聞き取り", "地形の確認", "夜間・明け方の確認", "餌とカメラ・捕獲器"],
-      "src": "https://www.fam-niigata.com/service/for-personal/pet-search/"
-    },
-    {
-      "name": "ペット探偵オリネコ",
-      "operator": "ペット探偵オリネコ（代表 片木和博）",
-      "kind": "operator",
-      "url": "https://www.cat-tantei.jp/",
-      "price_url": "https://cat-tantei.jp/#price",
-      "base": "愛知県",
-      "area": "愛知県・岐阜県・三重県（岐阜・三重は一部対応できない地域あり）",
-      "animals": "猫だけ",
-      "plans": [
-        {"name": "ご相談コース", "yen": 0, "tax": "—", "includes": "初日無料・現地調査（捜索ポイントの調査結果）。交通費は必要"},
-        {"name": "お手伝いコース 着手金（愛知県）", "yen": 55000, "tax": "税込"},
-        {"name": "お手伝いコース 着手金（岐阜県・三重県）", "yen": 77000, "tax": "税込"},
-        {"name": "成功報酬", "yen": 100000, "tax": "税込"}
-      ],
-      "extra_fees": [{"what": "必要経費", "text": "交通費・チラシ印刷費（自分で用意すれば不要）・ほかの猫のTNR手術の実費"}],
-      "cancel": "基本、キャンセル料はなし。ただし捜索期間中の解除で着手金は返らない",
-      "cancel_quote": "基本、キャンセル料はいただいておりません。",
-      "payment": "現金",
-      "methods": ["現地調査", "迷子チラシの作成・印刷", "保護団体のインスタグラムで拡散"],
-      "src": "https://www.cat-tantei.jp/"
-    },
-    {
-      "name": "猫専門ペット探偵キャットワン",
-      "operator": "猫専門ペット探偵キャットワン",
-      "kind": "operator",
-      "url": "https://neko-rescue.jp/",
-      "price_url": "https://neko-rescue.jp/%e3%82%ad%e3%83%a3%e3%83%83%e3%83%88%e3%83%af%e3%83%b3%e3%81%ae%e5%bc%b7%e3%81%bf%e3%81%a8%e6%96%99%e9%87%91%e4%bd%93%e7%b3%bb/",
-      "base": "京都府（大阪市に支店、滋賀県にも拠点）",
-      "area": "近畿2府4県・三重県・福井県",
-      "animals": "猫だけ",
-      "plans": [
-        {"name": "3日間の集中捜索＋3か月サポート", "yen": 135800, "tax": "税込", "includes": "1日最大12時間・高速代・交通費・出張費・延長料金・夜間捜索費込み（重点対応エリアの料金）", "quote": "135,800円（税込）"}
-      ],
-      "extra_fees": [{"what": "重点対応エリアの外", "text": "高速道路料金（実費）だけ別"}],
-      "no_success_fee": "成功報酬はなし",
-      "cancel": "記載なし",
-      "methods": ["足跡・体毛の確認", "カメラ10台（うち2台はリアルタイム）", "ファイバースコープ", "大・中・小とドロップ式の捕獲器", "チラシ100〜500枚"],
-      "doubt": "サイトは各社比較の記事も載せている（自社を含むランキング）。料金は自社のページの記載を採用",
-      "src": "https://neko-rescue.jp/%e3%82%ad%e3%83%a3%e3%83%83%e3%83%88%e3%83%af%e3%83%b3%e3%81%ae%e5%bc%b7%e3%81%bf%e3%81%a8%e6%96%99%e9%87%91%e4%bd%93%e7%b3%bb/"
-    },
-    {
-      "name": "ペット探偵 滋賀プロテクトアイ",
-      "operator": "プロテクトアイ",
-      "kind": "operator",
-      "url": "http://pet-ss21.x0.com/shiga/index.html",
-      "price_url": "http://pet-ss21.x0.com/shiga/index.html",
-      "base": "大阪府大阪市都島区",
-      "area": "滋賀県全域（大津市・彦根市・守山市・近江八幡市・米原市・高島市など）",
-      "animals": "猫・犬（同じ料金）",
-      "plans": [
-        {"name": "1日目 8時間", "yen": 25000, "tax": "税込", "quote": "1日８時間　　￥２５，０００円 税込"},
-        {"name": "2日目以降 8時間", "yen": 20000, "tax": "税込", "quote": "２日以降８時間 ￥２０，０００円 税込"},
-        {"name": "チラシ100枚", "yen": 1000, "tax": "記載なし"},
-        {"name": "3日間で成果がないとき4日目", "yen": 0, "tax": "—"}
-      ],
-      "extra_fees": [
-        {"what": "交通費", "text": "高速道路料金・ガソリン代などの実費"},
-        {"what": "遠距離の宿泊・滞在費", "yen": 5000, "text": "一律"}
-      ],
-      "cancel": "キャンセル料なし（当日も可）。現場へ向かっている場合は交通費の請求あり",
-      "cancel_quote": "キャンセル料金はありません　当日キャンセルもOKです",
-      "methods": ["トレイルカメラ", "捕獲器", "チラシ・SNS"],
-      "src": "http://pet-ss21.x0.com/shiga/index.html"
-    },
-    {
-      "name": "アニマルブレイン",
-      "operator": "アニマルブレイン（グループ会社：総合探偵社リーチアウト）",
-      "kind": "operator",
-      "url": "https://animal-brain.com/",
-      "price_url": "https://animal-brain.com/",
-      "base": "大阪府大阪市（京都・東京に支社）",
-      "area": "関西・関東・東海が中心（全国対応と案内）",
-      "animals": "猫・犬など",
-      "plans": [
-        {"name": "基本捜索", "yen": 35000, "tax": "税別", "from": true, "quote": "35,000円～（税別）"},
-        {"name": "猫用捕獲機のレンタル（1〜7日）", "yen": 5000, "tax": "税別", "from": true},
-        {"name": "トレイルカメラのレンタル（1〜7日）", "yen": 7000, "tax": "税別", "from": true}
-      ],
-      "cancel": "別ページ（未確認）",
-      "methods": ["現地捜索", "捕獲機・トレイルカメラの貸し出し", "チラシ・ポスティング", "捜索マニュアル"],
-      "doubt": "見出しの「3,980円から」に当たる料金が本文にない。税込の総額は書いていない",
-      "src": "https://animal-brain.com/"
-    },
-    {
-      "name": "ペット探偵イブ",
-      "operator": "ペット探偵イブ",
-      "kind": "operator",
-      "url": "https://pet-chousa-eve.com/",
-      "price_url": "https://pet-chousa-eve.com/",
-      "base": "記載なし",
-      "area": "大阪府・京都府・兵庫県・奈良県・和歌山県・三重県（ほかは相談）",
-      "animals": "猫・犬・小動物・鳥・爬虫類など",
-      "plans": [
-        {"name": "捜索 1時間", "yen": 4200, "tax": "税別", "from": true, "extra": "出張費は別（契約前に合計を案内）", "quote": "1時間4,200円から（諸経費・消費税別）"}
-      ],
-      "cancel": "本予約の前は無料。本予約の後はキャンセルポリシー",
-      "cancel_src": "https://pet-chousa-eve.com/cancellation-policy/",
-      "methods": ["トレイルカメラ", "サーマルカメラ", "ファイバースコープ", "捕獲器・サークルトラップ"],
-      "doubt": "規約に成功報酬を決められる条がある",
-      "src": "https://pet-chousa-eve.com/"
-    },
-    {
-      "name": "迷いペット捜索隊",
-      "operator": "迷いペット捜索隊",
-      "kind": "operator",
-      "url": "https://petsosaku.localinfo.jp/",
-      "price_url": "https://petsosaku.localinfo.jp/",
-      "base": "記載なし（交通費が広島・岡山・山口・島根・鳥取で最も安いので中国地方と思われる）",
-      "area": "全国",
-      "area_quote": "全国捜索対応しております。",
-      "animals": "犬・猫・小動物",
-      "plans": [
-        {"name": "基本捜索料 1日8時間", "yen": 25000, "tax": "記載なし", "includes": "ポスター・チラシ作成費・事前打ち合わせ費込み", "quote": "￥２５,０００-"}
-      ],
-      "extra_fees": [
-        {"what": "交通費（都道府県ごとの定額）", "text": "広島・岡山・山口・島根・鳥取 1万円、関東・新潟 4.5万円、東北 5万円、北海道 6万円 など"},
-        {"what": "宿泊費（1泊）", "yen": 8000}
-      ],
-      "cancel": "キャンセル・返金はなし（現地払いの場合は交通費のみ）",
-      "methods": ["チラシ・ポスター・聞き込み", "けがをさせる捕獲器は使わない"],
-      "src": "https://petsosaku.localinfo.jp/"
+     "name": "出張捜索 1日",
+     "yen": 33000,
+     "tax": "税込",
+     "includes": "8時間の現場捜索・捕獲作業、住宅地図への作業記録、期間中と終了後のLINE相談",
+     "extra": "経費（迷子チラシ・交通費）は別",
+     "quote": "33,000円（税込）＋ 経費"
     }
-  ],
-  "matching": [
+   ],
+   "extra_fees": [
     {
-      "name": "ペット探偵おたすけプラス",
-      "kind": "matching",
-      "url": "https://otasuke-plus.com/lp_pet-tantei",
-      "area": "全国（47都道府県のページ）",
-      "plans": [{"name": "捜索 1時間", "yen": 4980, "tax": "記載なし", "from": true, "includes": "人件費・チラシ費用など", "quote": "捜索1時間あたり、4,980円〜"}],
-      "extra_fees": [{"what": "交通費", "text": "電車代・高速代などは原則実費"}],
-      "cancel": "見積もりに納得できない場合は無料。依頼の後は原則返金なし",
-      "note": "基準を満たした加盟の事業者が捜索する形。依頼でははじめに出てこない会社が来る",
-      "src": "https://otasuke-plus.com/lp_pet-tantei"
+     "what": "出張費",
+     "text": "東京都・神奈川県・大阪府・兵庫県以外は別途出張費。遠方は宿泊費・機材運搬費も",
+     "quote": "東京都、神奈川県、大阪府、兵庫県以外は別途出張費"
     }
-  ],
-  "no_price": [
-    {"name": "ペット探偵ラクヤス", "url": "https://pet-tantei.com/", "reason": "業者紹介（マッチング）。県のページに料金の記載なし。飼い主さんへの紹介料はなしと案内", "src": "https://pet-tantei.com/pro_area/kagawa/"},
-    {"name": "総合探偵社プライベートアイ（ペット捜索）", "url": "https://www.privateeye.co.jp/ehime-pet-sousaku", "reason": "8時間 50,000円〜（諸経費・消費税別）だけ。税込の額・含まれるものの記載なし。全国の県別ページあり", "src": "https://www.privateeye.co.jp/ehime-pet-sousaku"},
-    {"name": "ペット探偵センター（neko-tantei.com）", "url": "https://neko-tantei.com/", "reason": "1日 50,000円〜（諸経費・消費税別）。猫探偵センターと文面がほぼ同じで、同じ運営かどうか未確認。ペット探偵のランキング記事も載せている", "src": "https://neko-tantei.com/"},
-    {"name": "探偵法人調査士会", "url": "https://www.tanteihojin.jp/shozai/chousa/pet-sagashi.html", "reason": "料金は事例（猫3日 15万円・犬5日 25万円、経費別、税の記載なし）だけ。一般の探偵社", "src": "https://www.tanteihojin.jp/shozai/chousa/pet-sagashi.html"}
-  ],
-  "insurance": [
+   ],
+   "cancel": [
     {
-      "name": "アニコム損保の迷子捜索サービス",
-      "insurer": "アニコム損害保険株式会社",
-      "who": "アニコムのペット保険の契約者（契約しているどうぶつ）",
-      "free": "3日間の捜索料金と出張料",
-      "free_quote": "3日間の捜索料金と出張料は無料です。",
-      "paid": "4日目からの延長は自己負担",
-      "by": "ジャパンロストペットレスキュー（JLPR）",
-      "how": "電話で申し込み、契約者であることと証券番号を伝える",
-      "limits": "離島など一部地域や集中豪雨などのときは着手が遅れる・使えないことがある",
-      "src": "https://www.anicom-sompo.co.jp/special/maigo/"
+     "when": "契約成立から出張捜索の前日まで",
+     "yen": 16500
     },
     {
-      "name": "ソニー損保のペット保険 迷子関連サービス",
-      "insurer": "ソニー損害保険株式会社",
-      "who": "ソニー損保のペット保険の契約者（依頼のとき証券番号を伝える）",
-      "free": "3日間の捜索・出張",
-      "free_quote": "3日間の探索・出張に追加費用はかかりません。",
-      "paid": "延長は自己負担",
-      "by": "ジャパンロストペットレスキュー（JLPR）。迷子捜索サポート（地図での呼びかけ）はアニコムパフェ株式会社",
-      "note": "迷子捜索依頼のメール配信は停止中と案内",
-      "src": "https://www.sonysonpo.co.jp/pet/service/incidental/lost_pet_rescure.html"
+     "when": "出張捜索の当日",
+     "yen": 33000
     },
     {
-      "name": "三井住友銀行で扱うペット保険の迷子捜索サービス",
-      "insurer": "三井住友銀行のペット保険のページ（引受会社はページで要確認）",
-      "who": "契約しているペット",
-      "free": "3日間の捜索料金と出張料",
-      "free_quote": "3日間の捜索料金と出張料は無料",
-      "by": "提携会社（名前の記載なし）",
-      "doubt": "アニコム損保の商品（どうぶつ健保）と思われるが、ページの範囲では引受会社を確かめていない",
-      "src": "https://www.smbc.co.jp/kojin/seiho/pet/"
+     "when": "チラシ原稿の確認中",
+     "yen": 5500
     }
-  ],
-  "insurance_none": [
-    {"name": "SBIペット少短", "text": "付帯サービスは24時間の健康相談だけで、迷子捜索はなし", "src": "https://www.sbipet-ssi.co.jp/customers/service.html"}
-  ],
-  "boards": [
-    {"name": "迷子ペット.NET（迷子猫・迷子犬の掲示板）", "url": "https://maigo-pet.net/cat/", "fee": "無料", "what": "迷子・保護の投稿と編集、県・状態・性別で検索、迷子猫の行動範囲の目安の地図。投稿はXとFacebookに連動", "quote": "【無料】「猫が迷子になった」、「猫を保護した」などの情報を登録できる掲示板です。", "src": "https://maigo-pet.net/cat/"},
-    {"name": "ペットの迷子検索.com", "url": "https://www.maigokensaku.com/community", "fee": "無料", "what": "迷子・保護・目撃の投稿と検索、ポスター作成、SNS（X・Threads・Instagram・Facebook・Bluesky）への連携。鳥・猫・犬・その他の掲示板", "quote": "全て無料でご利用可能です。", "src": "https://www.maigokensaku.com/community"},
-    {"name": "ネコサーチ", "url": "https://neko-search.com/", "operator": "kiki verb Co., Ltd.", "fee": "無料", "what": "迷子猫の投稿・検索、再会できた猫の一覧", "src": "https://neko-search.com/"}
-  ],
-  "flyer_print": [
-    {"name": "迷子ペット.net（迷子ペット探しのチラシ作成専門店）", "operator": "シティライフ株式会社（千葉県市原市）", "url": "https://maigopet.net/", "prices": [{"qty": 100, "yen": 9900}, {"qty": 200, "yen": 13200}, {"qty": 500, "yen": 18150}, {"qty": 1000, "yen": 21450}, {"qty": 3000, "yen": 40700}], "tax": "税込", "shipping": "2万円以上は送料無料", "speed": "14時までにデザインのOKで当日発送（北海道・沖縄は中1日）", "animals": "猫・犬・鳥など", "src": "https://maigopet.net/"},
-    {"name": "PET RESCUE 迷子チラシ作成", "operator": "ペットレスキュー", "url": "https://rescue-pet.com/lost-child-flyer/", "prices": [{"qty": 100, "yen": 13570}, {"qty": 300, "yen": 13960}, {"qty": 500, "yen": 14360}, {"qty": 1000, "yen": 15350}, {"qty": 2000, "yen": 18150}, {"qty": 3000, "yen": 20950}, {"qty": 4000, "yen": 23750}, {"qty": 5000, "yen": 26350}], "tax": "税込（と思われる。ページの要約で税の記載を確かめきれていない）", "includes": "作成料・送料込み、B5の光沢紙", "speed": "原稿確認と入金確認の後、原則翌営業日に出荷", "src": "https://rescue-pet.com/lost-child-flyer/"}
-  ],
-  "excluded": [
-    {"name": "ペット探偵トランペット（株式会社KARUBI）", "reason": "2026年6月4日〜2026年12月31日は休業。料金は出張捜索 税込99,000円（8時間×3日）・延長1日 税込19,800円・捕獲セット 税込15,000円・チラシ1,000枚とポスター100枚 税込15,000円。1都3県以外は距離で割増", "src": "https://pettantei-trumpet.jp/"},
-    {"name": "ペット探偵ペットヘルプ", "reason": "公式サイトが読めなかった（取得を拒否）", "src": "https://pethelp-nippontansa.com/"},
-    {"name": "ペット探偵ニャンピース（大阪）", "reason": "料金ページが読めなかった", "src": "https://www.pettantei-nyanpeace.com/"},
-    {"name": "ペットサーチアイ", "reason": "料金ページが読めなかった", "src": "http://petsearcheye.com/price/"},
-    {"name": "鹿児島ペット探偵RESCUE", "reason": "料金ページが読めなかった（九州の候補）", "src": "https://kagoshima-rescue.com/menu-03.html"},
-    {"name": "猫の探偵（nekonotantei.jp）", "reason": "料金ページが読めなかった（検索結果の題は「2日間 ¥52,800・チラシ制作費込み」）", "src": "https://nekonotantei.jp/pet-detective-price/"},
-    {"name": "ペット探偵プライベートアイ（pet-privateeye.com）", "reason": "サイトが読めなかった", "src": "https://pet-privateeye.com/"},
-    {"name": "ペット探偵ルウルウ（福岡・九州・山口）", "reason": "料金のnoteが読めなかった", "src": "https://note.com/tantei_ru_ru_/n/n1ea75bc856d9"},
-    {"name": "犬猫探偵団", "reason": "サイトが読めなかった", "src": "https://inunekotanteidan.com/"},
-    {"name": "シークレットジャパンエール（ペット捜索）", "reason": "サイトが読めなかった", "src": "https://secret-japan-yell.jp/detective4/lp017/"},
-    {"name": "迷子猫のチラシ屋さん", "reason": "サイトが読めなかった", "src": "https://lost-cat-leaflet.com/"},
-    {"name": "searily・ペット探偵団ブログ・ミツモア など", "reason": "比較・アフィリエイトのサイトなので使わない"}
-  ]
+   ],
+   "methods": [
+    "トレイルカメラ",
+    "暗視カメラ",
+    "ドロップ式捕獲器"
+   ],
+   "src": "https://rescue-pet.com/business-trip-search/",
+   "near": [
+    "東京都",
+    "神奈川県",
+    "大阪府",
+    "兵庫県"
+   ],
+   "near_note": "東京都・神奈川県・大阪府・兵庫県は出張費なし"
+  },
+  {
+   "name": "ジャパンロストペットレスキュー（JLPR）",
+   "operator": "一般社団法人アニマリア",
+   "kind": "operator",
+   "url": "https://www.jlpr.net/",
+   "price_url": "https://www.jlpr.net/investigation",
+   "base": "東京都小平市",
+   "area": "全国",
+   "area_quote": "24時間全国対応　年中無休",
+   "animals": "猫・犬・小動物（よくある質問では鳥・爬虫類などペット全般）",
+   "plans": [
+    {
+     "name": "猫・小型犬・小動物 3日間",
+     "yen": 93500,
+     "tax": "税込",
+     "includes": "1日8時間×3日（深夜も同料金）、事前打ち合わせ、ポスター・チラシ作成費などの実費込み",
+     "quote": "￥85,000(税込￥93,500)"
+    },
+    {
+     "name": "中型犬・大型犬 3日間",
+     "yen": 104500,
+     "tax": "税込",
+     "includes": "同上",
+     "quote": "￥95,000(税込￥104,500)"
+    },
+    {
+     "name": "延長 1日",
+     "yen": 22000,
+     "tax": "税込",
+     "quote": "￥20,000(税込￥22,000)"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "距離の割増",
+     "text": "東京都・神奈川県・埼玉県・千葉県（島しょの一部を除く）以外は距離により割増（出張料金表はPDF）"
+    }
+   ],
+   "cancel": "記載なし",
+   "payment": "原則前払い（現金・振込・電子決済）。成功報酬などの追加請求はなし",
+   "methods": [
+    "現場での聞き込み",
+    "ポスター・チラシ・メールで目撃情報を集める",
+    "潜伏場所が分かれば捕獲器"
+   ],
+   "note": "アニコム損保・ソニー損保などの契約者向けの迷子捜索サービスを行う会社",
+   "src": "https://www.jlpr.net/investigation",
+   "near": [
+    "東京都",
+    "神奈川県",
+    "埼玉県",
+    "千葉県"
+   ],
+   "near_note": "東京都・神奈川県・埼玉県・千葉県は距離の割増なし"
+  },
+  {
+   "name": "キャットプロ",
+   "operator": "キャットプロ株式会社",
+   "kind": "operator",
+   "url": "https://catpro.jp/",
+   "price_url": "https://catpro.jp/",
+   "base": "記載なし（全国の提携捜索員）",
+   "area": "全国",
+   "area_quote": "全国の提携捜索員ネットワーク",
+   "animals": "猫だけ",
+   "animals_quote": "弊社は猫ちゃん捜索に特化しており、他の動物は対象外です。",
+   "plans": [
+    {
+     "name": "お試しプラン",
+     "yen": 10780,
+     "tax": "税込",
+     "includes": "2時間×1日の現地サポート"
+    },
+    {
+     "name": "初動プラン",
+     "yen": 39800,
+     "tax": "税込",
+     "includes": "8時間×1日（ポスティングなし）"
+    },
+    {
+     "name": "集中プラン",
+     "yen": 69800,
+     "tax": "税込",
+     "includes": "8時間×2日、チラシ配布（200〜300部のポスティング）"
+    },
+    {
+     "name": "徹底プラン",
+     "yen": 99800,
+     "tax": "税込",
+     "includes": "8時間×3日、昼夜の捜索、チラシ配布"
+    },
+    {
+     "name": "成功報酬",
+     "yen": 50000,
+     "tax": "税込",
+     "includes": "保護できたときだけ"
+    },
+    {
+     "name": "延長 1日",
+     "yen": 45000,
+     "tax": "税込"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "交通費など",
+     "text": "料金表に記載なし（返金の注記で諸経費＝交通費・機材設置費・印刷費など）"
+    }
+   ],
+   "cancel": "記載なし",
+   "methods": [
+    "聞き込み",
+    "チラシ",
+    "捕獲機の設置",
+    "カメラ",
+    "張り込み（徹底プラン）"
+   ],
+   "src": "https://catpro.jp/"
+  },
+  {
+   "name": "ネコちゃん探偵のプロ（迷子のネコちゃん110番）",
+   "operator": "株式会社キャットバンク",
+   "kind": "operator",
+   "url": "https://catbank.co.jp/lp01/",
+   "price_url": "https://catbank.co.jp/lp01/",
+   "base": "東京都中央区（東京・千葉・横浜・名古屋・和歌山・富山・大阪・福岡などに拠点と案内）",
+   "area": "全国（と案内）",
+   "animals": "猫だけ",
+   "plans": [
+    {
+     "name": "スピード初動プラン",
+     "yen": 39800,
+     "tax": "税込",
+     "includes": "8時間×1日、チラシ50枚",
+     "extra": "交通費別"
+    },
+    {
+     "name": "集中しっかり捜索",
+     "yen": 69800,
+     "tax": "税込",
+     "includes": "8時間×2日、チラシ100枚",
+     "extra": "交通費別"
+    },
+    {
+     "name": "とことん徹底捜索",
+     "yen": 99800,
+     "tax": "税込",
+     "includes": "8時間×3日、チラシ300枚",
+     "extra": "交通費別"
+    },
+    {
+     "name": "成功報酬",
+     "yen": 50000,
+     "tax": "税込",
+     "includes": "保護できたときだけ（終了後30日以内に第三者が保護した場合も）"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "交通費・連休の追加",
+     "text": "交通費は別（金額の記載なし）。年末年始・GW・お盆は追加費用の可能性"
+    }
+   ],
+   "cancel": "入金後のお客さま都合のキャンセル・返金は原則なし",
+   "cancel_quote": "ご入金後のお客様都合のキャンセル＆ご返金は原則承っておりません。",
+   "cancel_src": "https://catbank.co.jp/prtokusho/",
+   "payment": "原則前払い。カード・振込",
+   "methods": [
+    "聞き取り",
+    "カメラ・捕獲機の設置",
+    "迷子猫チラシ・聞き込み"
+   ],
+   "doubt": "「とことん徹底捜索」を8時間×3日と書く所と24時間と書く所がある",
+   "src": "https://catbank.co.jp/lp01/"
+  },
+  {
+   "name": "猫専門探偵社ファインドキャット",
+   "operator": "猫専門探偵社ファインドキャット",
+   "kind": "operator",
+   "url": "https://findcat.main.jp/",
+   "price_url": "https://findcat.main.jp/",
+   "base": "東京都新宿区",
+   "area": "全国（北海道・沖縄は相談）",
+   "area_quote": "日本全国24時間対応！猫探しのプロ",
+   "animals": "猫だけ",
+   "plans": [
+    {
+     "name": "1日",
+     "yen": 66000,
+     "tax": "税込",
+     "includes": "旅費交通費・諸経費・チラシ作成費込み",
+     "extra_day_yen": 66000
+    },
+    {
+     "name": "2日",
+     "yen": 132000,
+     "tax": "税込",
+     "includes": "同上",
+     "extra_day_yen": 58000
+    },
+    {
+     "name": "3日",
+     "yen": 178000,
+     "tax": "税込",
+     "includes": "同上",
+     "extra_day_yen": 45000
+    }
+   ],
+   "includes_quote": "旅費交通費、諸経費、チラシ作成費用など全て込みのお値段です。",
+   "cancel": "記載なし",
+   "methods": [
+    "チラシのポスティング",
+    "夜間のペンライト捜索",
+    "カメラの設置",
+    "捕獲器の設置"
+   ],
+   "src": "https://findcat.main.jp/"
+  },
+  {
+   "name": "猫探偵センター",
+   "operator": "株式会社シジョウ",
+   "kind": "operator",
+   "url": "https://neko-tantei-center.com/",
+   "price_url": "https://neko-tantei-center.com/price/",
+   "base": "東京都品川区（探偵は全国各地に所属と案内）",
+   "area": "全国（福岡県全域などの地域ページあり）",
+   "animals": "猫が中心。犬・鳥・爬虫類も",
+   "plans": [
+    {
+     "name": "1日プラン",
+     "yen": 50000,
+     "tax": "記載なし",
+     "extra": "交通費・経費は別",
+     "quote": "50,000円＋交通費＋経費"
+    },
+    {
+     "name": "3日プラン",
+     "yen": 150000,
+     "tax": "記載なし",
+     "extra": "交通費・経費は別",
+     "quote": "150,000円＋交通費＋経費"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "交通費",
+     "text": "ガソリン代・高速道路料金・駐車場代・遠方の宿泊費"
+    },
+    {
+     "what": "経費",
+     "text": "チラシ印刷費・ポスター作成費・捕獲器などの資材費"
+    }
+   ],
+   "cancel": "時期によりキャンセル料がかかる場合あり（金額の記載なし）",
+   "no_success_fee": "見つからなくても捜索作業の料金はかかる",
+   "methods": [
+    "聞き込み・チラシ",
+    "赤外線・暗視カメラ",
+    "捕獲器",
+    "夜間捜索"
+   ],
+   "doubt": "福岡のページは「＋交通費、消費税」と書き、税込かどうかが料金ページで分からない",
+   "src": "https://neko-tantei-center.com/price/"
+  },
+  {
+   "name": "名探偵キャッツ",
+   "operator": "名探偵キャッツ",
+   "kind": "operator",
+   "url": "https://www.meitanteicats119.com/",
+   "price_url": "https://www.meitanteicats119.com/%E6%96%99%E9%87%91%E8%A1%A8",
+   "base": "埼玉（本社）・大阪（支社）とページの題に書いてある",
+   "area": "関東・関西（本文では全国）",
+   "animals": "猫だけ",
+   "plans": [
+    {
+     "name": "発見・保護",
+     "yen": 107800,
+     "tax": "税込",
+     "includes": "捜索期間合計18時間。見つからなければ0円と案内",
+     "quote": "￥98,000(税込￥107,800)"
+    },
+    {
+     "name": "捕獲のみ（1日8時間）",
+     "yen": 44000,
+     "tax": "税込",
+     "includes": "事前打ち合わせ費込み・捜索は含まない",
+     "quote": "￥40,000(税込￥44,000)"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "交通費",
+     "text": "一律3日間分を預かる"
+    },
+    {
+     "what": "チラシ",
+     "yen": 8000,
+     "text": "400枚"
+    },
+    {
+     "what": "駐車場代",
+     "text": "別"
+    }
+   ],
+   "cancel": "訪問前のお客さま都合の取り消しはキャンセル料（金額の記載なし）。捜索開始後の解除は成功報酬と同額",
+   "methods": [
+    "チラシの作成・配布",
+    "現場確認",
+    "書面・画像・動画での報告"
+   ],
+   "doubt": "拠点の書き方が「埼玉本社」と「東京本社」で食い違う",
+   "src": "https://www.meitanteicats119.com/%E6%96%99%E9%87%91%E8%A1%A8"
+  },
+  {
+   "name": "ペット探偵事務所（日本動物探偵社）",
+   "operator": "有限会社日本動物探偵社",
+   "kind": "operator",
+   "url": "https://www.pet-tantei.info/",
+   "price_url": "https://www.pet-tantei.info/price/index.html",
+   "base": "東京都板橋区",
+   "area": "全国",
+   "area_quote": "全国どこでもすぐ伺います",
+   "animals": "猫・犬・鳥（鳥は手乗りであること）",
+   "plans": [
+    {
+     "name": "捜索 1日から",
+     "yen": 19000,
+     "tax": "記載なし",
+     "includes": "1日8時間（猫の捜索）",
+     "quote": "1日19,000円からの低料金でペット捜索いたします"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "地方の捜索",
+     "text": "3時間以上の契約ではホテル・交通費は別"
+    }
+   ],
+   "cancel": "記載なし",
+   "methods": [
+    "聞き込み・ポスター",
+    "飼い主さんの声の録音を流す",
+    "自社の捕獲器",
+    "熱を見るドローン",
+    "必要なときは捜索犬"
+   ],
+   "doubt": "料金表が画像で読めず、日数ごとの金額は確かめられていない",
+   "src": "https://www.pet-tantei.info/"
+  },
+  {
+   "name": "総合調査 紫苑（ペット捜索）",
+   "operator": "総合調査 紫苑",
+   "kind": "operator",
+   "url": "https://shion-sp.jp/service/pets/",
+   "price_url": "https://shion-sp.jp/pay/",
+   "base": "北海道札幌市",
+   "area": "北海道",
+   "area_quote": "札幌をはじめ北海道内どこでも対応いたします",
+   "animals": "猫・犬（ほかは相談）",
+   "plans": [
+    {
+     "name": "基本料金",
+     "yen": 33000,
+     "tax": "税込",
+     "from": true,
+     "includes": "基本料金だけ。捜索時間の調査料金・機材料金・諸経費は別",
+     "quote": "ペット捜索の基本料金は33,000円〜（税込）です。"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "諸経費",
+     "text": "車両代・交通費など。遠方は交通費・宿泊費"
+    }
+   ],
+   "cancel": "記載なし",
+   "methods": [
+    "チラシ・ポスター",
+    "目視の捜索",
+    "張り込み",
+    "捕獲機材・小型カメラ"
+   ],
+   "note": "一般の探偵社がペット捜索も受けている",
+   "src": "https://shion-sp.jp/service/pets/"
+  },
+  {
+   "name": "いちご探偵事務所（猫探偵）",
+   "operator": "いちご探偵事務所",
+   "kind": "operator",
+   "url": "https://ichigotantei.com/free/pet",
+   "price_url": "https://ichigotantei.com/free/pet",
+   "base": "岩手県盛岡市",
+   "area": "記載なし",
+   "animals": "猫だけ（犬・亀・鳥は受けていない）",
+   "plans": [
+    {
+     "name": "猫探偵 1日8時間",
+     "yen": 38000,
+     "tax": "記載なし",
+     "quote": "猫探偵・調査費用1日8時間 38,000円"
+    }
+   ],
+   "cancel": "記載なし",
+   "methods": [
+    "トレイルカメラ（赤外線）",
+    "サーマルスコープ",
+    "チラシ"
+   ],
+   "src": "https://ichigotantei.com/free/pet"
+  },
+  {
+   "name": "ファミリー調査事務所 新潟支店（ペット捜索）",
+   "operator": "ファミリー調査事務所",
+   "kind": "operator",
+   "url": "https://www.fam-niigata.com/service/for-personal/pet-search/",
+   "price_url": "https://www.fam-niigata.com/service/for-personal/pet-search/",
+   "base": "新潟県新潟市中央区",
+   "area": "新潟県全域・長野県（長野市・松本市など）・石川県（金沢市・能登方面）",
+   "animals": "猫が中心。犬も受ける",
+   "plans": [
+    {
+     "name": "5日間（目安）",
+     "yen": 150000,
+     "tax": "記載なし",
+     "extra": "交通費・諸経費は別"
+    },
+    {
+     "name": "10日間に延長（目安）",
+     "yen": 250000,
+     "tax": "記載なし"
+    }
+   ],
+   "no_success_fee": "当方は成功報酬制をとっていません。",
+   "cancel": "記載なし",
+   "methods": [
+    "聞き取り",
+    "地形の確認",
+    "夜間・明け方の確認",
+    "餌とカメラ・捕獲器"
+   ],
+   "src": "https://www.fam-niigata.com/service/for-personal/pet-search/"
+  },
+  {
+   "name": "ペット探偵オリネコ",
+   "operator": "ペット探偵オリネコ（代表 片木和博）",
+   "kind": "operator",
+   "url": "https://www.cat-tantei.jp/",
+   "price_url": "https://cat-tantei.jp/#price",
+   "base": "愛知県",
+   "area": "愛知県・岐阜県・三重県（岐阜・三重は一部対応できない地域あり）",
+   "animals": "猫だけ",
+   "plans": [
+    {
+     "name": "ご相談コース",
+     "yen": 0,
+     "tax": "—",
+     "includes": "初日無料・現地調査（捜索ポイントの調査結果）。交通費は必要"
+    },
+    {
+     "name": "お手伝いコース 着手金（愛知県）",
+     "yen": 55000,
+     "tax": "税込"
+    },
+    {
+     "name": "お手伝いコース 着手金（岐阜県・三重県）",
+     "yen": 77000,
+     "tax": "税込"
+    },
+    {
+     "name": "成功報酬",
+     "yen": 100000,
+     "tax": "税込"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "必要経費",
+     "text": "交通費・チラシ印刷費（自分で用意すれば不要）・ほかの猫のTNR手術の実費"
+    }
+   ],
+   "cancel": "基本、キャンセル料はなし。ただし捜索期間中の解除で着手金は返らない",
+   "cancel_quote": "基本、キャンセル料はいただいておりません。",
+   "payment": "現金",
+   "methods": [
+    "現地調査",
+    "迷子チラシの作成・印刷",
+    "保護団体のインスタグラムで拡散"
+   ],
+   "src": "https://www.cat-tantei.jp/"
+  },
+  {
+   "name": "猫専門ペット探偵キャットワン",
+   "operator": "猫専門ペット探偵キャットワン",
+   "kind": "operator",
+   "url": "https://neko-rescue.jp/",
+   "price_url": "https://neko-rescue.jp/%e3%82%ad%e3%83%a3%e3%83%83%e3%83%88%e3%83%af%e3%83%b3%e3%81%ae%e5%bc%b7%e3%81%bf%e3%81%a8%e6%96%99%e9%87%91%e4%bd%93%e7%b3%bb/",
+   "base": "京都府（大阪市に支店、滋賀県にも拠点）",
+   "area": "近畿2府4県・三重県・福井県",
+   "animals": "猫だけ",
+   "plans": [
+    {
+     "name": "3日間の集中捜索＋3か月サポート",
+     "yen": 135800,
+     "tax": "税込",
+     "includes": "1日最大12時間・高速代・交通費・出張費・延長料金・夜間捜索費込み（重点対応エリアの料金）",
+     "quote": "135,800円（税込）"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "重点対応エリアの外",
+     "text": "高速道路料金（実費）だけ別"
+    }
+   ],
+   "no_success_fee": "成功報酬はなし",
+   "cancel": "記載なし",
+   "methods": [
+    "足跡・体毛の確認",
+    "カメラ10台（うち2台はリアルタイム）",
+    "ファイバースコープ",
+    "大・中・小とドロップ式の捕獲器",
+    "チラシ100〜500枚"
+   ],
+   "doubt": "サイトは各社比較の記事も載せている（自社を含むランキング）。料金は自社のページの記載を採用",
+   "src": "https://neko-rescue.jp/%e3%82%ad%e3%83%a3%e3%83%83%e3%83%88%e3%83%af%e3%83%b3%e3%81%ae%e5%bc%b7%e3%81%bf%e3%81%a8%e6%96%99%e9%87%91%e4%bd%93%e7%b3%bb/"
+  },
+  {
+   "name": "ペット探偵 滋賀プロテクトアイ",
+   "operator": "プロテクトアイ",
+   "kind": "operator",
+   "url": "http://pet-ss21.x0.com/shiga/index.html",
+   "price_url": "http://pet-ss21.x0.com/shiga/index.html",
+   "base": "大阪府大阪市都島区",
+   "area": "滋賀県全域（大津市・彦根市・守山市・近江八幡市・米原市・高島市など）",
+   "animals": "猫・犬（同じ料金）",
+   "plans": [
+    {
+     "name": "1日目 8時間",
+     "yen": 25000,
+     "tax": "税込",
+     "quote": "1日８時間　　￥２５，０００円 税込"
+    },
+    {
+     "name": "2日目以降 8時間",
+     "yen": 20000,
+     "tax": "税込",
+     "quote": "２日以降８時間 ￥２０，０００円 税込"
+    },
+    {
+     "name": "チラシ100枚",
+     "yen": 1000,
+     "tax": "記載なし"
+    },
+    {
+     "name": "3日間で成果がないとき4日目",
+     "yen": 0,
+     "tax": "—"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "交通費",
+     "text": "高速道路料金・ガソリン代などの実費"
+    },
+    {
+     "what": "遠距離の宿泊・滞在費",
+     "yen": 5000,
+     "text": "一律"
+    }
+   ],
+   "cancel": "キャンセル料なし（当日も可）。現場へ向かっている場合は交通費の請求あり",
+   "cancel_quote": "キャンセル料金はありません　当日キャンセルもOKです",
+   "methods": [
+    "トレイルカメラ",
+    "捕獲器",
+    "チラシ・SNS"
+   ],
+   "src": "http://pet-ss21.x0.com/shiga/index.html"
+  },
+  {
+   "name": "アニマルブレイン",
+   "operator": "アニマルブレイン（グループ会社：総合探偵社リーチアウト）",
+   "kind": "operator",
+   "url": "https://animal-brain.com/",
+   "price_url": "https://animal-brain.com/",
+   "base": "大阪府大阪市（京都・東京に支社）",
+   "area": "関西・関東・東海が中心（全国対応と案内）",
+   "animals": "猫・犬など",
+   "plans": [
+    {
+     "name": "基本捜索",
+     "yen": 35000,
+     "tax": "税別",
+     "from": true,
+     "quote": "35,000円～（税別）"
+    },
+    {
+     "name": "猫用捕獲機のレンタル（1〜7日）",
+     "yen": 5000,
+     "tax": "税別",
+     "from": true
+    },
+    {
+     "name": "トレイルカメラのレンタル（1〜7日）",
+     "yen": 7000,
+     "tax": "税別",
+     "from": true
+    }
+   ],
+   "cancel": "別ページ（未確認）",
+   "methods": [
+    "現地捜索",
+    "捕獲機・トレイルカメラの貸し出し",
+    "チラシ・ポスティング",
+    "捜索マニュアル"
+   ],
+   "doubt": "見出しの「3,980円から」に当たる料金が本文にない。税込の総額は書いていない",
+   "src": "https://animal-brain.com/"
+  },
+  {
+   "name": "ペット探偵イブ",
+   "operator": "ペット探偵イブ",
+   "kind": "operator",
+   "url": "https://pet-chousa-eve.com/",
+   "price_url": "https://pet-chousa-eve.com/",
+   "base": "記載なし",
+   "area": "大阪府・京都府・兵庫県・奈良県・和歌山県・三重県（ほかは相談）",
+   "animals": "猫・犬・小動物・鳥・爬虫類など",
+   "plans": [
+    {
+     "name": "捜索 1時間",
+     "yen": 4200,
+     "tax": "税別",
+     "from": true,
+     "extra": "出張費は別（契約前に合計を案内）",
+     "quote": "1時間4,200円から（諸経費・消費税別）"
+    }
+   ],
+   "cancel": "本予約の前は無料。本予約の後はキャンセルポリシー",
+   "cancel_src": "https://pet-chousa-eve.com/cancellation-policy/",
+   "methods": [
+    "トレイルカメラ",
+    "サーマルカメラ",
+    "ファイバースコープ",
+    "捕獲器・サークルトラップ"
+   ],
+   "doubt": "規約に成功報酬を決められる条がある",
+   "src": "https://pet-chousa-eve.com/"
+  },
+  {
+   "name": "迷いペット捜索隊",
+   "operator": "迷いペット捜索隊",
+   "kind": "operator",
+   "url": "https://petsosaku.localinfo.jp/",
+   "price_url": "https://petsosaku.localinfo.jp/",
+   "base": "記載なし（交通費が広島・岡山・山口・島根・鳥取で最も安いので中国地方と思われる）",
+   "area": "全国",
+   "area_quote": "全国捜索対応しております。",
+   "animals": "犬・猫・小動物",
+   "plans": [
+    {
+     "name": "基本捜索料 1日8時間",
+     "yen": 25000,
+     "tax": "記載なし",
+     "includes": "ポスター・チラシ作成費・事前打ち合わせ費込み",
+     "quote": "￥２５,０００-"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "交通費（都道府県ごとの定額）",
+     "text": "広島・岡山・山口・島根・鳥取 1万円、関東・新潟 4.5万円、東北 5万円、北海道 6万円 など"
+    },
+    {
+     "what": "宿泊費（1泊）",
+     "yen": 8000
+    }
+   ],
+   "cancel": "キャンセル・返金はなし（現地払いの場合は交通費のみ）",
+   "methods": [
+    "チラシ・ポスター・聞き込み",
+    "けがをさせる捕獲器は使わない"
+   ],
+   "src": "https://petsosaku.localinfo.jp/"
+  },
+  {
+   "name": "ミケネコ探偵社",
+   "kind": "operator",
+   "url": "https://www.mikeneko222.com/",
+   "price_url": "https://www.mikeneko222.com/%E6%96%99%E9%87%91%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0/",
+   "base": "千葉県",
+   "area": "千葉県（ほかの地域は交通費が別のことがある）",
+   "area_quote": "※千葉県内交通費無料 ※地域により別途交通費が発生する場合があります",
+   "animals": "猫だけ",
+   "plans": [
+    {
+     "name": "1日短期捜索",
+     "yen": 40000,
+     "tax": "",
+     "quote": "1日短期捜索 40,000円 成功報酬なし"
+    },
+    {
+     "name": "3日間捜索",
+     "yen": 48000,
+     "tax": "",
+     "extra": "見つかったときだけ成功報酬85,000円",
+     "quote": "3日間捜索 48,000円／成功報酬 85,000円"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "ポスター",
+     "text": "ポスター制作 7,000円",
+     "quote": "ポスター制作 7,000円"
+    }
+   ],
+   "near": [
+    "千葉県"
+   ],
+   "near_note": "千葉県内は交通費なし",
+   "src": "https://www.mikeneko222.com/",
+   "checked": "2026-11-17"
+  },
+  {
+   "name": "猫捜索のニャン吉",
+   "kind": "operator",
+   "url": "https://www.nankich222.com/",
+   "price_url": "https://www.nankich222.com/",
+   "base": "記載なし",
+   "area": "東京都・千葉県・埼玉県・神奈川県が中心（ほかの地域は相談）",
+   "area_quote": "東京都・千葉県・埼玉県・神奈川県を中心に、迷子猫の捜索・発見・保護に対応しています。",
+   "animals": "猫だけ",
+   "plans": [
+    {
+     "name": "1日捜索（6時間）",
+     "yen": 22000,
+     "tax": "税込"
+    },
+    {
+     "name": "3日間パック（18時間）",
+     "yen": 66000,
+     "tax": "税込"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "交通費",
+     "text": "交通費は別",
+     "quote": "※交通費経費別途"
+    }
+   ],
+   "near": [
+    "東京都",
+    "神奈川県",
+    "埼玉県",
+    "千葉県"
+   ],
+   "near_note": "東京都・千葉県・埼玉県・神奈川県が中心",
+   "src": "https://www.nankich222.com/",
+   "checked": "2026-11-17"
+  },
+  {
+   "name": "おたすけプラス（ペット捜索）",
+   "kind": "operator",
+   "url": "https://otasuke-plus.com/lp_pet-tantei",
+   "price_url": "https://otasuke-plus.com/lp_pet-tantei",
+   "base": "記載なし",
+   "area": "全国",
+   "area_quote": "お住まいの地域全域に対応しております。（47都道府県の地域ページあり）",
+   "animals": "猫・犬",
+   "plans": [
+    {
+     "name": "捜索 1時間あたり（むずかしさの低い場合）",
+     "yen": 4980,
+     "tax": "",
+     "extra": "1〜4日のプランを時間で計算",
+     "quote": "捜索1時間あたり、4,980円〜"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "チラシ",
+     "text": "チラシ代は料金にふくむ"
+    },
+    {
+     "what": "交通費",
+     "text": "出張の交通費は実費",
+     "quote": "基本的には実費を負担いただきます。"
+    }
+   ],
+   "near": [],
+   "near_note": "都道府県ごとの地域ページあり",
+   "src": "https://otasuke-plus.com/lp_pet-tantei",
+   "checked": "2026-11-17"
+  },
+  {
+   "name": "ペット探偵ペットヘルプ",
+   "kind": "operator",
+   "url": "https://pethelp-nippontansa.com/",
+   "price_url": "https://pethelp-nippontansa.com/",
+   "base": "記載なし",
+   "area": "全国",
+   "area_quote": "沖縄から北海道、４７都道府県、全国どこでも。",
+   "animals": "犬・猫・鳥",
+   "plans": [
+    {
+     "name": "6時間",
+     "yen": 42000,
+     "tax": "税込"
+    },
+    {
+     "name": "12時間",
+     "yen": 84000,
+     "tax": "税込"
+    },
+    {
+     "name": "18時間",
+     "yen": 126000,
+     "tax": "税込"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "経費",
+     "text": "往復の交通費・出張費は別",
+     "quote": "42000円(税込)+経費"
+    },
+    {
+     "what": "チラシ",
+     "text": "迷子チラシ300枚 10,000円（要るときだけ）"
+    }
+   ],
+   "src": "https://pethelp-nippontansa.com/",
+   "checked": "2026-11-17"
+  },
+  {
+   "name": "ペット探偵センター",
+   "kind": "operator",
+   "url": "https://neko-tantei.com/",
+   "price_url": "https://neko-tantei.com/#pricing",
+   "base": "記載なし",
+   "area": "全国",
+   "area_quote": "対応地域：関東、関西、東北、四国、九州、中部、北陸、北海道、沖縄",
+   "animals": "猫・犬が中心。鳥・爬虫類も",
+   "plans": [
+    {
+     "name": "1日捜査",
+     "yen": 50000,
+     "tax": "税別",
+     "extra": "諸経費は別。交通費をふくめた見積もりを出す",
+     "quote": "50,000円〜 諸経費・消費税別"
+    }
+   ],
+   "src": "https://neko-tantei.com/",
+   "checked": "2026-11-17"
+  },
+  {
+   "name": "アイヴィ・サービス（ペット探偵）",
+   "kind": "operator",
+   "url": "https://www.ivservice.co.jp/pet/",
+   "price_url": "https://www.ivservice.co.jp/pet/",
+   "base": "記載なし（全国15支店と案内）",
+   "area": "全国",
+   "area_quote": "全国15支店のネットワークで全国即日調査いたします",
+   "animals": "犬・猫・鳥",
+   "plans": [
+    {
+     "name": "基本料金",
+     "yen": 55000,
+     "tax": "税込",
+     "extra": "内容や日数で変わる",
+     "quote": "基本料金 55,000円（税込） ※調査料金は調査内容や日数により異なります"
+    }
+   ],
+   "src": "https://www.ivservice.co.jp/pet/",
+   "checked": "2026-11-17"
+  }
+ ],
+ "matching": [
+  {
+   "name": "ペット探偵おたすけプラス",
+   "kind": "matching",
+   "url": "https://otasuke-plus.com/lp_pet-tantei",
+   "area": "全国（47都道府県のページ）",
+   "plans": [
+    {
+     "name": "捜索 1時間",
+     "yen": 4980,
+     "tax": "記載なし",
+     "from": true,
+     "includes": "人件費・チラシ費用など",
+     "quote": "捜索1時間あたり、4,980円〜"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "交通費",
+     "text": "電車代・高速代などは原則実費"
+    }
+   ],
+   "cancel": "見積もりに納得できない場合は無料。依頼の後は原則返金なし",
+   "note": "基準を満たした加盟の事業者が捜索する形。依頼でははじめに出てこない会社が来る",
+   "src": "https://otasuke-plus.com/lp_pet-tantei"
+  }
+ ],
+ "no_price": [
+  {
+   "name": "ペット探偵ラクヤス",
+   "url": "https://pet-tantei.com/",
+   "reason": "業者紹介（マッチング）。県のページに料金の記載なし。飼い主さんへの紹介料はなしと案内",
+   "src": "https://pet-tantei.com/pro_area/kagawa/"
+  },
+  {
+   "name": "総合探偵社プライベートアイ（ペット捜索）",
+   "url": "https://www.privateeye.co.jp/ehime-pet-sousaku",
+   "reason": "8時間 50,000円〜（諸経費・消費税別）だけ。税込の額・含まれるものの記載なし。全国の県別ページあり",
+   "src": "https://www.privateeye.co.jp/ehime-pet-sousaku"
+  },
+  {
+   "name": "ペット探偵センター（neko-tantei.com）",
+   "url": "https://neko-tantei.com/",
+   "reason": "1日 50,000円〜（諸経費・消費税別）。猫探偵センターと文面がほぼ同じで、同じ運営かどうか未確認。ペット探偵のランキング記事も載せている",
+   "src": "https://neko-tantei.com/"
+  },
+  {
+   "name": "探偵法人調査士会",
+   "url": "https://www.tanteihojin.jp/shozai/chousa/pet-sagashi.html",
+   "reason": "料金は事例（猫3日 15万円・犬5日 25万円、経費別、税の記載なし）だけ。一般の探偵社",
+   "src": "https://www.tanteihojin.jp/shozai/chousa/pet-sagashi.html"
+  }
+ ],
+ "insurance": [
+  {
+   "name": "アニコム損保の迷子捜索サービス",
+   "insurer": "アニコム損害保険株式会社",
+   "who": "アニコムのペット保険の契約者（契約しているどうぶつ）",
+   "free": "3日間の捜索料金と出張料",
+   "free_quote": "3日間の捜索料金と出張料は無料です。",
+   "paid": "4日目からの延長は自己負担",
+   "by": "ジャパンロストペットレスキュー（JLPR）",
+   "how": "電話で申し込み、契約者であることと証券番号を伝える",
+   "limits": "離島など一部地域や集中豪雨などのときは着手が遅れる・使えないことがある",
+   "src": "https://www.anicom-sompo.co.jp/special/maigo/"
+  },
+  {
+   "name": "ソニー損保のペット保険 迷子関連サービス",
+   "insurer": "ソニー損害保険株式会社",
+   "who": "ソニー損保のペット保険の契約者（依頼のとき証券番号を伝える）",
+   "free": "3日間の捜索・出張",
+   "free_quote": "3日間の探索・出張に追加費用はかかりません。",
+   "paid": "延長は自己負担",
+   "by": "ジャパンロストペットレスキュー（JLPR）。迷子捜索サポート（地図での呼びかけ）はアニコムパフェ株式会社",
+   "note": "迷子捜索依頼のメール配信は停止中と案内",
+   "src": "https://www.sonysonpo.co.jp/pet/service/incidental/lost_pet_rescure.html"
+  },
+  {
+   "name": "三井住友銀行で扱うペット保険の迷子捜索サービス",
+   "insurer": "三井住友銀行のペット保険のページ（引受会社はページで要確認）",
+   "who": "契約しているペット",
+   "free": "3日間の捜索料金と出張料",
+   "free_quote": "3日間の捜索料金と出張料は無料",
+   "by": "提携会社（名前の記載なし）",
+   "doubt": "アニコム損保の商品（どうぶつ健保）と思われるが、ページの範囲では引受会社を確かめていない",
+   "src": "https://www.smbc.co.jp/kojin/seiho/pet/"
+  }
+ ],
+ "insurance_none": [
+  {
+   "name": "SBIペット少短",
+   "text": "付帯サービスは24時間の健康相談だけで、迷子捜索はなし",
+   "src": "https://www.sbipet-ssi.co.jp/customers/service.html"
+  }
+ ],
+ "boards": [
+  {
+   "name": "迷子ペット.NET（迷子猫・迷子犬の掲示板）",
+   "url": "https://maigo-pet.net/cat/",
+   "fee": "無料",
+   "what": "迷子・保護の投稿と編集、県・状態・性別で検索、迷子猫の行動範囲の目安の地図。投稿はXとFacebookに連動",
+   "quote": "【無料】「猫が迷子になった」、「猫を保護した」などの情報を登録できる掲示板です。",
+   "src": "https://maigo-pet.net/cat/"
+  },
+  {
+   "name": "ペットの迷子検索.com",
+   "url": "https://www.maigokensaku.com/community",
+   "fee": "無料",
+   "what": "迷子・保護・目撃の投稿と検索、ポスター作成、SNS（X・Threads・Instagram・Facebook・Bluesky）への連携。鳥・猫・犬・その他の掲示板",
+   "quote": "全て無料でご利用可能です。",
+   "src": "https://www.maigokensaku.com/community"
+  },
+  {
+   "name": "ネコサーチ",
+   "url": "https://neko-search.com/",
+   "operator": "kiki verb Co., Ltd.",
+   "fee": "無料",
+   "what": "迷子猫の投稿・検索、再会できた猫の一覧",
+   "src": "https://neko-search.com/"
+  }
+ ],
+ "flyer_print": [
+  {
+   "name": "迷子ペット.net（迷子ペット探しのチラシ作成専門店）",
+   "operator": "シティライフ株式会社（千葉県市原市）",
+   "url": "https://maigopet.net/",
+   "prices": [
+    {
+     "qty": 100,
+     "yen": 9900
+    },
+    {
+     "qty": 200,
+     "yen": 13200
+    },
+    {
+     "qty": 500,
+     "yen": 18150
+    },
+    {
+     "qty": 1000,
+     "yen": 21450
+    },
+    {
+     "qty": 3000,
+     "yen": 40700
+    }
+   ],
+   "tax": "税込",
+   "shipping": "2万円以上は送料無料",
+   "speed": "14時までにデザインのOKで当日発送（北海道・沖縄は中1日）",
+   "animals": "猫・犬・鳥など",
+   "src": "https://maigopet.net/"
+  },
+  {
+   "name": "PET RESCUE 迷子チラシ作成",
+   "operator": "ペットレスキュー",
+   "url": "https://rescue-pet.com/lost-child-flyer/",
+   "prices": [
+    {
+     "qty": 100,
+     "yen": 13570
+    },
+    {
+     "qty": 300,
+     "yen": 13960
+    },
+    {
+     "qty": 500,
+     "yen": 14360
+    },
+    {
+     "qty": 1000,
+     "yen": 15350
+    },
+    {
+     "qty": 2000,
+     "yen": 18150
+    },
+    {
+     "qty": 3000,
+     "yen": 20950
+    },
+    {
+     "qty": 4000,
+     "yen": 23750
+    },
+    {
+     "qty": 5000,
+     "yen": 26350
+    }
+   ],
+   "tax": "税込（と思われる。ページの要約で税の記載を確かめきれていない）",
+   "includes": "作成料・送料込み、B5の光沢紙",
+   "speed": "原稿確認と入金確認の後、原則翌営業日に出荷",
+   "src": "https://rescue-pet.com/lost-child-flyer/"
+  }
+ ],
+ "excluded": [
+  {
+   "name": "ペット探偵トランペット（株式会社KARUBI）",
+   "reason": "2026年6月4日〜2026年12月31日は休業。料金は出張捜索 税込99,000円（8時間×3日）・延長1日 税込19,800円・捕獲セット 税込15,000円・チラシ1,000枚とポスター100枚 税込15,000円。1都3県以外は距離で割増",
+   "src": "https://pettantei-trumpet.jp/"
+  },
+  {
+   "name": "ペット探偵ペットヘルプ",
+   "reason": "公式サイトが読めなかった（取得を拒否）",
+   "src": "https://pethelp-nippontansa.com/"
+  },
+  {
+   "name": "ペット探偵ニャンピース（大阪）",
+   "reason": "料金ページが読めなかった",
+   "src": "https://www.pettantei-nyanpeace.com/"
+  },
+  {
+   "name": "ペットサーチアイ",
+   "reason": "料金ページが読めなかった",
+   "src": "http://petsearcheye.com/price/"
+  },
+  {
+   "name": "鹿児島ペット探偵RESCUE",
+   "reason": "料金ページが読めなかった（九州の候補）",
+   "src": "https://kagoshima-rescue.com/menu-03.html"
+  },
+  {
+   "name": "猫の探偵（nekonotantei.jp）",
+   "reason": "料金ページが読めなかった（検索結果の題は「2日間 ¥52,800・チラシ制作費込み」）",
+   "src": "https://nekonotantei.jp/pet-detective-price/"
+  },
+  {
+   "name": "ペット探偵プライベートアイ（pet-privateeye.com）",
+   "reason": "サイトが読めなかった",
+   "src": "https://pet-privateeye.com/"
+  },
+  {
+   "name": "ペット探偵ルウルウ（福岡・九州・山口）",
+   "reason": "料金のnoteが読めなかった",
+   "src": "https://note.com/tantei_ru_ru_/n/n1ea75bc856d9"
+  },
+  {
+   "name": "犬猫探偵団",
+   "reason": "サイトが読めなかった",
+   "src": "https://inunekotanteidan.com/"
+  },
+  {
+   "name": "シークレットジャパンエール（ペット捜索）",
+   "reason": "サイトが読めなかった",
+   "src": "https://secret-japan-yell.jp/detective4/lp017/"
+  },
+  {
+   "name": "迷子猫のチラシ屋さん",
+   "reason": "サイトが読めなかった",
+   "src": "https://lost-cat-leaflet.com/"
+  },
+  {
+   "name": "searily・ペット探偵団ブログ・ミツモア など",
+   "reason": "比較・アフィリエイトのサイトなので使わない"
+  }
+ ]
 }
