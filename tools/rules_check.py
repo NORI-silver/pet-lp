@@ -70,11 +70,13 @@ PREFGRID_MAX = 19    # たたまずに並べてよい都道府県のボタン・
 # 施設の分野（さがす欄が先に来ること）。tools/uikit.py の ALL と同じ。病院は /hospital/ の下の夜間などもふくむ
 FAC_CATS = ["hospital", "pet-hotel", "dogrun", "pet-sitter", "trimming", "dog-trainer", "rojin-home", "sougi", "joto",
             "inu-yado", "pet-yado", "inu-cafe", "jichitai", "hinan", "emergency"]
+OWNER_CATS = ["pet-hotel", "pet-sitter", "trimming", "dog-trainer", "rojin-home", "sougi"]  # tools/ownerfit.py の CAT_WHO と同じ
 SEARCH_MARK = re.compile(r'class="(?:[^"]*\s)?(?:ux-find|hf|hn-find|bf|ff-box|fit-box|pref-pick|ux-c|emg-item|fr)(?:\s[^"]*)?"|<select\b|<input\b(?![^>]*type="hidden")')
 REASONS = {
     "words": "使わない言葉", "hole": "下書きの穴（◯◯など）", "removed": "消した部品がもどった", "tally": "運営側の集計を見せている", "kv": "キービジュアルがない", "trust": "運営者と掲載の基準への表示がない",
     "prefgrid": f"都道府県のボタンを{PREFGRID_MAX + 1}個以上たたまずに並べている", "intro": f"さがす欄・見出しの前の文が{INTRO_MAX}字を超える",
     "search": "施設の分野で、さがす欄より前に記事・目次がある",
+    "owner": "施設の一覧のさがす欄に「うちの子にあてはまるもの」がない（Nori 11/17「自分の子にあてはまるものを探してる」。tools/ownerfit.py）",
     "card": "タクシー以外の施設のカードが共通のカード（tools/cardskin.py の形）になっていない", "wall": f"図・表・箇条書きのない文が{WALL_MAX}字を超えて続く",
 }
 BLOCK_BREAK = {"h2", "h3", "h4", "ul", "ol", "table", "figure", "img", "svg", "picture", "details", "dl", "blockquote", "form", "select", "button"}
@@ -193,6 +195,9 @@ def check_page(root, path):
     if info and p.intro > (INTRO_MAX if parts[0] != "guide" and listing else INTRO_MAX_GUIDE): found.append(("intro", f"{p.intro}字"))
     if parts and parts[0] in FAC_CATS and (len(parts) == 1 or len(parts) == 2 and (parts[1] in PREF_SLUGS or parts[0] == "hospital" and parts[1] in HOSP_SUB)) and p.first_toc is not None and (p.first_search is None or p.first_toc < p.first_search):
         found.append(("search", "さがす欄がない" if p.first_search is None else "目次・記事のリンクがさがす欄より前"))
+    # 施設の一覧は、うちの子のこと（大きさ・シニア・薬・2頭以上など）でしぼれる（Nori 2026-11-17。tools/ownerfit.py の CAT_WHO）
+    if len(parts) == 1 and parts[0] in OWNER_CATS and 'class="ux-find"' in raw and "うちの子にあてはまるもの" not in raw:
+        found.append(("owner", "全国の一覧のさがす欄"))
     # タクシー以外のカードは共通のカード1つ（Nori 2026-11-16「タクシー以外のカードは共通のやつにして」）。
     # 施設1つのページの入口の枠（data-cat つきの emg-co）だけは除く
     if parts and parts[0] in FAC_CATS:

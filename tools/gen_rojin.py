@@ -39,6 +39,10 @@ def _card(e, h):
     extra = ""
     if h.get("spec"): extra += f'<small class="emg-spec">{e(h["spec"])}</small>'
     extra += f'<small>受け入れる動物：{e(h["animals"])}</small>'
+    # うちの子に合うか（公式サイトの文から。Nori 2026-11-17「自分の子にあてはまるものを探してる」）
+    import ownerfit
+    ok = [ownerfit.SHORT[k] for k in ("bed", "night", "med", "big") if k in ownerfit.keys("rojin-home", h["url"])[0]]
+    if ok: extra += f'<small>こんな子も相談できる：{e("・".join(ok))}</small>'
     if h.get("visit"): extra += f'<small>見学・面会：{e(h["visit"])}</small>'
     if h.get("reg"): extra += f'<small>動物取扱業の登録（公式サイトより）：{e(h["reg"])}</small>'
     extra += f'<small>所在地：{e(h["addr"])}</small>'
