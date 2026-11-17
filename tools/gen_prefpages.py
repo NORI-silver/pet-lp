@@ -71,8 +71,9 @@ def _fv(it, k):
 def _jd(d): return f"{int(d[:4])}年{int(d[5:7])}月{int(d[8:10])}日" if d and len(d) == 10 else (d or "")
 def fact_table_html(e, cat, pf, rs):
     cols = cat.get("fact_cols")
-    hs = [it for it in rs if it.get("facts")]
-    if not cols or not hs: return ""
+    if not cols: return ""
+    hs = [it for it in rs if any(_fv(it, k) for _, ks in cols for k in ks)]  # 表の列にない事実（うちの子に合うかの文など）だけの施設は並べない
+    if not hs: return ""
     import visual as _V
     def cell(it, ks):
         vs = [f["v"] for f in (_fv(it, k) for k in ks) if f]

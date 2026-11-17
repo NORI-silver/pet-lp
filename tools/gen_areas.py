@@ -992,7 +992,7 @@ def _related_info(g):
 def taxi_intent(g): return g.get("category") not in NON_TAXI_CATS
 def guide_hub(slug):
     if slug.startswith(("lost-", "found-")) or slug in ("microchip", "dog-registration", "moving-with-pet", "cant-keep-pet"):
-        return "/jichitai/", "迷子・犬の登録の窓口", "お住まいの市区町村の窓口をさがす"
+        return ("/jichitai/maigo/", "迷子になったら：今日やること", "いなくなった市区町村で、今日やることを見る") if slug.startswith(("lost-", "found-")) else ("/jichitai/", "迷子・犬の登録・飼えなくなったとき", "困りごとから、次にやることを見る")
     if slug.startswith(("pet-cremation", "pet-died", "pet-death", "pet-memorial", "pet-loss", "pet-funeral", "pet-ashes")):
         return "/sougi/", "ペットが亡くなったら", "近くのペット火葬・霊園と、自治体の受付をさがす"
     if slug in ("rojin-home-cost", "rojin-home-prepare", "roneko-home"):
@@ -2466,6 +2466,11 @@ import gen_jichitai
 gen_jichitai.write_all(ROOT, dict(head=head, e=e, SITE=SITE, pref_slug=PREF_SLUG, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_jichitai.urls(SITE)
+# 迷子・犬の登録・飼えなくなったときを分けたページ（/jichitai/maigo/ ほか、tools/gen_maigo.py。Nori 2026-11-17「全然違うテーマ」）
+import gen_maigo
+gen_maigo.write_all(ROOT, dict(head=head, e=e, SITE=SITE, pref_slug=PREF_SLUG,
+  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + gen_maigo.urls(SITE)
 # 運営者と掲載の基準（/about/、tools/gen_about.py。どのページの下からも portal.py の TRUST で来られる）
 import gen_about
 gen_about.write_all(ROOT, dict(head=head, e=e, SITE=SITE, foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
@@ -2573,6 +2578,19 @@ for c in CITIES:
             f"{basis}の料金表で計算すると、道のり{km}kmで片道{_pref_text(k, km)[0]}が目安です（各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません）。お迎えの料金や夜間の割増は会社ごとに違い、当日の道順・渋滞・待ち時間などでも変わります。フォームに場所と日時を入れると、来てもらえる会社ごとの目安が出ます。"))
     _bf = big_faq(city, pf, k)
     if _bf: faq.append(_bf)
+    # [B] SEO 11/17：「ペットタクシー＋市区町村＋夜間・当日」のような言葉に、市区のページの中で答える（Nori「1ページで答えが全部わかるように」）
+    if named:
+        _n24 = sum(1 for x in _cs_named if x.get("hours") == "0-24" or "24時間受付" in x.get("points", []))
+        _nnt = sum(1 for x in _cs_named if (x.get("fare") or {}).get("night") and not x.get("hide_formula"))
+        _nsd = sum(1 for x in _cs_named if "当日予約可" in x.get("points", []))
+        faq.append((f"{city}で、夜間や早朝に来てくれるペットタクシーはありますか？",
+            f"対応エリアに「{c['stems'][0]}」と書いている{named}社のうち、公式サイトに24時間受け付けると書いている会社は{_n24}社でした（{_FC}時点）。"
+            + (f"料金表に夜間・早朝の割増を書いている会社は{_nnt}社で、割増の時間帯や金額は会社ごとに違います。" if _nnt else "")
+            + f"急な体調不良のときは、先に夜間・救急の動物病院に電話して、受け入れと来院の時刻を決めてから移動の方法を考えてください。{pf}の夜間・救急の動物病院は、当サイトの一覧で受付時間とあわせて見られます。"))
+        faq.append((f"{city}で、当日にペットタクシーを頼めますか？",
+            (f"対応エリアに「{c['stems'][0]}」と書いている{named}社のうち、公式サイトや会社の返事に当日の予約も受けるとはっきり書いている会社は{_nsd}社でした（{_FC}時点）。" if _nsd else
+             f"対応エリアに「{c['stems'][0]}」と書いている{named}社の公式サイトには、当日の予約も受けるとはっきり書いている会社は見つかりませんでした（{_FC}時点）。空いていれば受ける会社もあります。")
+            + "当サイトのフォームでは、お迎えの時刻をいまから3時間以上あとで選べます。会社にメールで空きを確かめてから決まるしくみのためです。"))
     title = f"{city}のペットタクシー｜{SCENE_T}｜ペットタクシー予約窓口"
     desc = scene_desc(f"{city}（{c['wards']}）", c["pref"])
     ld = [
