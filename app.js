@@ -223,6 +223,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id); if (DEMO.tok) body.set("demo", DEMO.tok);
       fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
         if (j && j.ok && !(j.rating > 0)) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
+        if (j && j.error === "limit") throw "limit"; // 月の取り寄せの上限（毎月1日にもどる）
         if (!j || !j.ok) throw 0;
         var rv = {rating: j.rating, count: j.count}; save(rv);
         // 星の行（出どころの表示「Google Maps」は規約で必要）と、取り寄せた口コミを開いた枠
@@ -237,7 +238,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         var panel = document.createElement("div"); panel.className = "review-panel";
         open.addEventListener("click", function(){ toggleReviews(id, panel, open); });
         holder.replaceChildren(score, panel); fillReviews(panel, j); open.setAttribute("aria-expanded", "true");
-      }).catch(function(e){ save(null); var n = document.createElement("p"); n.className = "partner-review-src"; n.textContent = e === "none" ? "Googleマップの口コミはまだありません" : "口コミを読み込めませんでした。時間をおいてもう一度お試しください"; holder.replaceChildren(n); });
+      }).catch(function(e){ save(null); var n = document.createElement("p"); n.className = "partner-review-src"; n.textContent = e === "none" ? "Googleマップの口コミはまだありません" : e === "limit" ? "今月は口コミの表示を休んでいます（来月1日から表示します）" : "口コミを読み込めませんでした。時間をおいてもう一度お試しください"; holder.replaceChildren(n); });
     });
     return holder;
   }
@@ -563,6 +564,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 運転手の写真（掲載情報）は名前の横に丸く（Nori 2026-11-15「運転手の写真も」）
       if (ex && ex.driver) { var dv = document.createElement("img"); dv.className = "partner-driver"; dv.src = ex.driver; dv.alt = card.label + "の運転手"; dv.loading = "lazy"; dv.referrerPolicy = "no-referrer";
         dv.addEventListener("error", function(){ dv.remove(); }); h4.insertBefore(dv, h4.firstChild); }
+      // 会社のロゴ（掲載情報の「ロゴ」）は社名の横に小さく（COCOタク本部 2026-11-16「ロゴを載せたい」）
+      if (ex && ex.logo) { var lg = document.createElement("img"); lg.className = "partner-logo"; lg.src = ex.logo; lg.alt = card.label + "のロゴ"; lg.loading = "lazy"; lg.referrerPolicy = "no-referrer";
+        lg.addEventListener("error", function(){ lg.remove(); }); h4.insertBefore(lg, h4.firstChild); }
       // 問い合わせできる（提携している）会社には、名前の横にアイコンだけ付ける（Nori 2026-11-08「アイコンをつけて目立つように。文字はいらない」）
       if (!card.display_only) { article.classList.add("partner-open"); var ic = document.createElement("span"); ic.className = "open-icon"; ic.setAttribute("role", "img"); ic.setAttribute("aria-label", "このサイトから問い合わせできる会社"); ic.title = "このサイトから問い合わせできる会社"; ic.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M6.5 12.5l3.6 3.6 7.4-7.6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'; h4.prepend(ic); }
       if (card.demo) { var bd = document.createElement("span"); bd.className = "demo-badge"; bd.textContent = "提携（見本）"; h4.appendChild(bd); }
