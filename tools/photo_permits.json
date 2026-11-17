@@ -1,5 +1,5 @@
 {
- "_説明": "事業者が「公式サイトの写真をこのサイトのカードに使ってよい」と言ってくれた記録（Nori 2026-11-16）。ここにある事業者だけ、tools/photo_harvest.py が公式サイトから写真を取ってくる。cat は photo_harvest.py の SRC の分野（taxi・sougi・rojin・trainer・sitter・trimming・hotel・hospital・night・dogrun・emergency）、id は各データの id。scope は許可の範囲（例：公式サイトの写真すべて／車の写真だけ）、pages は写真を取るページ（なければ公式サイトのトップ）、by は許可のもらい方（メール・申し込み・掲載情報のページ）、date は許可の日、ref はメールの件名など（個人名・メールアドレスは書かない）。許可を取り消されたら行を消し、tools/photos.json からも消す。",
+ "_説明": "事業者が「公式サイトの写真をこのサイトのカードに使ってよい」と言ってくれた記録（Nori 2026-11-16）。ここにある事業者だけ、tools/photo_harvest.py が公式サイトから写真を取ってくる。cat は photo_harvest.py の SRC の分野（taxi・sougi・rojin・trainer・sitter・trimming・hotel・hospital・night・dogrun・emergency）、id は各データの id。scope は許可の範囲（例：公式サイトの写真すべて／車の写真だけ）、pages は写真を取るページ（なければ公式サイトのトップ）、by は許可のもらい方（メール・申し込み・掲載情報のページ）、date は許可の日、ref はメールの件名など（個人名・メールアドレスは書かない）。許可を取り消されたら行を消し、tools/photos.json からも消す。 no_people: true は「人が写っている写真は使わない」という条件つきの許可（photo_harvest.py が人の体・上半身の印も付け、入れる前に人が一覧で確かめる）。",
  "permits": [
   {
    "cat": "trainer",
@@ -24,7 +24,8 @@
    ],
    "by": "メール",
    "date": "2026-11-17",
-   "ref": "写真の掲載についての返信（ドッグトレーナー廣瀬さま）。載せたら一報がほしい"
+   "ref": "写真の掲載についての返信（ドッグトレーナー廣瀬さま）。載せたら一報がほしい",
+   "no_people": true
   }
  ],
  "declined": [

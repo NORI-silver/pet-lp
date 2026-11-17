@@ -5,7 +5,7 @@
   .github/workflows/photo-harvest.yml（GitHub Actions）で動かし、結果をブランチ photo-cand に置く。
 - 使ってよいか（利用許諾）が確かめられた写真だけを「候補」にする。無断転載はしない。
   permit: 事業者が「サイトの写真を使ってよい」と言ってくれた（tools/photo_permits.json に、いつ・どの範囲で・どうやっての記録）。
-          → 公式サイト（と許可のページ）から写真を取り、人の顔・ロゴ・地図・一色の画像を外して5枚まで縮める
+          → 公式サイト（と許可のページ）から写真を取り、ロゴ・地図・一色の画像を外して5枚まで縮める（人の顔らしいものは印を付け、入れるかは人が見て決める）
   ok    : サイトの決まり（著作権・サイトポリシーのページ、またはページの rel=license）に、
           CC BY / CC BY-SA / CC0 / 政府標準利用規約 / 公共データ利用規約 で使ってよいと書いてあり、
           写真がその対象から外されていない（「写真は除く」などがない）。→ 写真を縮めて候補にする（人が見て採る）
@@ -17,7 +17,9 @@
 - 結果：OUT/index.json（全件の判定と出どころ）、OUT/summary.md（分野ごとの数）、OUT/img/<分野>/<id>_<n>.webp（ok の写真、520×347）、
   OUT/sheet_<n>.jpg（人が見て選ぶための一覧）。採った写真は tools/photo_import.py で img/fac/ と tools/photos.json に入れる。
 
-使い方：python3 tools/photo_harvest.py OUT [分野 ...]
+使い方：python3 tools/photo_harvest.py OUT [分野 ... | 分野:id ...]
+  permit の行に "no_people": true があれば、顔だけでなく人の体・上半身が写る写真も外す（人の写る写真は使わない、という条件の許可）。
+  index.json の skipped に、使わなかった写真と理由（小さい・縦長・人の顔など）を残す。
 """
 import html, io, json, os, re, sys, time, urllib.parse, urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -81,12 +83,25 @@ def has_face(im):
     global _FACE
     try:
         import cv2, numpy as np
+        cv2.CascadeClassifier
     except Exception:
         return True
     if _FACE is None:
         _FACE = [cv2.CascadeClassifier(cv2.data.haarcascades + n) for n in ("haarcascade_frontalface_default.xml", "haarcascade_profileface.xml")]
     g = cv2.cvtColor(np.array(im.convert("RGB")), cv2.COLOR_RGB2GRAY)
     return any(len(c.detectMultiScale(g, 1.1, 6, minSize=(max(24, im.width // 25),) * 2)) for c in _FACE)
+
+
+_BODY = None
+def has_person(im):
+    """人が写っている写真（顔のほか、体・上半身）。「人の写る写真は使わない」という条件つきの許可のとき。"""
+    global _BODY
+    if has_face(im): return True
+    import cv2, numpy as np  # has_face が False なら opencv はある
+    if _BODY is None:
+        _BODY = [cv2.CascadeClassifier(cv2.data.haarcascades + n) for n in ("haarcascade_fullbody.xml", "haarcascade_upperbody.xml")]
+    g = cv2.cvtColor(np.array(im.convert("RGB")), cv2.COLOR_RGB2GRAY)
+    return any(len(c.detectMultiScale(g, 1.05, 5, minSize=(max(40, im.width // 10),) * 2)) for c in _BODY)
 
 
 def items(cats):
@@ -138,36 +153,49 @@ def judge(t, base):
     return "none", pages[-1][0] if len(pages) > 1 else base, ""
 
 
-def imgs(t, base):
+def imgs(t, base, deep=False):
+    """ページの写真のURL。deep（事業者の許可がある）のときは srcset・背景の画像・ページの中に書かれた画像のURLも拾う。"""
     out = []
     for m in re.findall(r'(?is)<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)', t):
         out.append(m)
-    for tag in re.findall(r'(?is)<img\b[^>]*>', t):
+    for tag in re.findall(r'(?is)<(?:img|source)\b[^>]*>', t):
         a = dict((k.lower(), v) for k, v in re.findall(r'([\w-]+)=["\']([^"\']*)["\']', tag))
-        s = a.get('data-src') or a.get('data-lazy-src') or a.get('src') or ''
-        if not s or s.startswith('data:'): continue
-        if BAD_IMG.search(s) or BAD_IMG.search(a.get('alt', '')) or BAD_IMG.search(a.get('class', '')): continue
+        if BAD_IMG.search(a.get('alt', '')) or BAD_IMG.search(a.get('class', '')): continue
         try:
             if int(a.get('width', '999')) < 300: continue
         except ValueError:
             pass
-        out.append(s)
+        ss = a.get('data-srcset') or a.get('srcset') or ''
+        if ss:  # いちばん大きいもの
+            c = [x.strip().split() for x in ss.split(',') if x.strip()]
+            c = sorted(c, key=lambda x: float(re.sub(r'[^\d.]', '', x[1]) or 0) if len(x) > 1 else 0)
+            if c: out.append(c[-1][0])
+        s = a.get('data-src') or a.get('data-lazy-src') or a.get('data-original') or a.get('src') or ''
+        if s and not s.startswith('data:'): out.append(s)
+    if deep:
+        out += re.findall(r'(?is)background(?:-image)?\s*:[^;"]*url\(\s*["\']?([^"\')]+)', t)
+        out += re.findall(r'(?is)data-(?:bg|background|image)=["\']([^"\']+)', t)
+        out += re.findall(r'https?:(?:\\?/){2}[^"\'\s<>()]+?\.(?:jpe?g|png|webp)', t, re.I)
     res = []
     for s in out:
-        u = urllib.parse.urljoin(base, html.unescape(s))
-        if re.search(r'\.(jpe?g|png|webp)(\?|$)', u, re.I) and u not in res: res.append(u)
-    return res[:8]
+        u = urllib.parse.urljoin(base, html.unescape(s.replace('\\/', '/')))
+        if BAD_IMG.search(urllib.parse.urlsplit(u).path): continue
+        if re.search(r'\.(jpe?g|png|webp)(\?|$|/)', u, re.I) and u not in res: res.append(u)
+    return res[:40 if deep else 8]
 
 
-def shrink(raw):
+def shrink(raw, no_people=False):
+    """(縮めた webp, 人の印) を返す。使わないときは理由の文字列を返す。
+    人の顔・体の見分け（opencv）は犬や猫の顔でも反応し、後ろ姿は見のがすので、ここでは外さずに印（"face"／"person"）を付ける。
+    印のある写真は photo_import.py が入れない（人が一覧を見て、写っていないと確かめたものだけ --keep で入れる）。"""
     from PIL import Image, ImageStat
     im = Image.open(io.BytesIO(raw)); im.load()
-    if im.width < 480 or im.height < 300: return None
+    if im.width < 480 or im.height < 300: return f"小さい {im.width}x{im.height}"
     r = im.width / im.height
-    if not (1.0 <= r <= 2.4): return None
+    if not (1.0 <= r <= 2.4): return f"縦長・細長 {im.width}x{im.height}"
     im = im.convert('RGB')
-    if max(ImageStat.Stat(im.resize((32, 32))).stddev) < 18: return None  # 一色に近い（背景・飾り）
-    if has_face(im): return None  # 人の顔が写っている
+    if max(ImageStat.Stat(im.resize((32, 32))).stddev) < 18: return "一色に近い"  # 背景・飾り
+    flag = ("person" if has_person(im) else "") if no_people else ("face" if has_face(im) else "")
     s = max(W / im.width, H / im.height)
     im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
     # カードの枠（横3：縦2）にきれいに収まるように切る。まん中ではなく、写っているもの（輪郭の多いところ）が入る位置を選ぶ
@@ -181,7 +209,7 @@ def shrink(raw):
         if v > best: best, x, y = v, cx, cy
     im = im.crop((x, y, x + W, y + H))
     b = io.BytesIO(); im.save(b, 'WEBP', quality=62, method=6)
-    return b.getvalue()
+    return b.getvalue(), flag
 
 
 PERMITS = {}
@@ -199,27 +227,31 @@ def one(it, out):
         st, pol, note = "permit", pm.get("date", ""), f'{pm.get("by", "")}・{pm.get("scope", "")}'
     else:
         st, pol, note = judge(t, real)
-    r = dict(it, status=st, policy=pol, note=note, owner=owner, photos=[])
-    if st not in ("ok", "permit"): return r
+    r = dict(it, status=st, policy=pol, note=note, owner=owner, photos=[], skipped=[])
+    if st not in ("ok", "permit"): r.pop("skipped"); return r
     d = os.path.join(out, "img", it["cat"]); os.makedirs(d, exist_ok=True)
-    cand = imgs(t, real)
+    cand = imgs(t, real, deep=bool(pm))
     if pm:
         for pg in pm.get("pages") or []:
             try:
-                pt, preal = get(pg); cand += [u for u in imgs(pt, preal) if u not in cand]
-            except Exception:
-                pass
-    for u in cand[:16]:
+                pt, preal = get(pg); cand += [u for u in imgs(pt, preal, deep=True) if u not in cand]
+            except Exception as e:
+                r["skipped"].append([pg, "ページを開けない " + str(e)[:60]])
+    if not cand: r["skipped"].append([real, "写真のURLが見つからない（ページを動かすプログラムが出す写真かもしれない）"])
+    no_people = bool(pm and pm.get("no_people"))
+    for u in cand[:40 if pm else 16]:
         if len(r["photos"]) >= (5 if pm else 3): break
         try:
             raw, ct = get(u, binary=True)
-            w = shrink(raw)
-        except Exception:
-            continue
-        if not w: continue
+            w = shrink(raw, no_people)
+        except Exception as e:
+            r["skipped"].append([u, "開けない " + str(e)[:60]]); continue
+        if isinstance(w, str):
+            r["skipped"].append([u, w]); continue
+        w, flag = w
         fn = f'{it["id"]}_{len(r["photos"]) + 1}.webp'
         open(os.path.join(d, fn), "wb").write(w)
-        r["photos"].append({"file": f'img/{it["cat"]}/{fn}', "src": u, "page": real})
+        r["photos"].append({"file": f'img/{it["cat"]}/{fn}', "src": u, "page": real, **({"flag": flag} if flag else {})})
     return r
 
 
@@ -239,10 +271,12 @@ def sheets(out, rows):
 
 def main():
     out = sys.argv[1] if len(sys.argv) > 1 else "photo-cand"
-    cats = sys.argv[2:] or list(SRC)
+    args = sys.argv[2:]
+    only = {a for a in args if ":" in a}  # 「分野:id」で1社だけやり直す
+    cats = [a for a in args if ":" not in a] or sorted({a.split(":")[0] for a in only}) or list(SRC)
     os.makedirs(out, exist_ok=True)
     PERMITS.update(permits())
-    its = items(cats)
+    its = [it for it in items(cats) if not only or f'{it["cat"]}:{it["id"]}' in only]
     t0 = time.time()
     with ThreadPoolExecutor(16) as ex:
         rows = list(ex.map(lambda it: one(it, out), its))
@@ -259,6 +293,9 @@ def main():
     for r in rows:
         if r["status"] in ("permit", "ok", "check"):
             L.append(f'| {r["cat"]} | {r["id"]} | {r["name"]} | {r["status"]} | {r.get("policy", "")} | {r.get("note", "")[:100].replace("|", "／")} | {len(r.get("photos", []))} |')
+    for r in rows:
+        if r["status"] == "permit":
+            L += ["", f'### {r["cat"]}:{r["id"]} {r["name"]}（写真 {len(r["photos"])}枚）', ""] + [f'- {u} … {why}' for u, why in r.get("skipped", [])[:30]]
     open(os.path.join(out, "summary.md"), "w", encoding="utf-8").write("\n".join(L) + "\n")
     print("\n".join(L[:20]))
 
