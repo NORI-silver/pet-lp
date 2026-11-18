@@ -322,6 +322,7 @@ def render_top(ctx):
     <li><span class="i" aria-hidden="true">🦮</span><b>大型犬</b>決まりを書く自治体は少ない。預け先も決めておく</li>
     <li><span class="i" aria-hidden="true">🧺</span><b>ケージ</b>飼い主が持っていく。避難所に用意はないことが多い</li>
     </ul>
+    <p class="hn-x">ペットと過ごせる動物避難所（民間の施設をふくむ）は、NPO法人が運営する<a href="https://uchitoko.jp/" target="_blank" rel="noopener">うちトコ動物避難所マップ</a>でもさがせます。</p>
     {_pref_links(e, done, regions=ctx["emg_regions"])}
   </article></div>
 </section>
