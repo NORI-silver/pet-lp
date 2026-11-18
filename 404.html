@@ -40,6 +40,8 @@
 <main><section class="area-hero"><div class="wrap" style="text-align:center">
 <h1>ページが見つかりませんでした</h1><p class="lede">URLが変わったか、削除された可能性があります。</p>
 <a class="btn center" href="/">トップページへ<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a></div></section>
+<script>/* 2026-11-18：メールで URL の後ろに「）を…」などがつながって壊れたリンクは、日本語の前までのページへ移す */
+(function(){try{var p=decodeURIComponent(location.pathname),i=p.search(/[^!-~]/);if(i>0){var q=p.slice(0,i);q=q.slice(0,q.lastIndexOf("/")+1)||"/";location.replace(q+location.search+location.hash)}}catch(e){}})();</script>
 <section><div class="wrap"><div class="sh"><h2>エリアからさがす</h2></div><ul class="other"><li><a href="/tokyo/">東京のペットタクシー</a></li><li><a href="/kanagawa/">神奈川・横浜のペットタクシー</a></li><li><a href="/chiba/">千葉のペットタクシー</a></li><li><a href="/saitama/">埼玉のペットタクシー</a></li><li><a href="/area/">ほかの道府県（全国）</a></li></ul></div></section></main>
 <aside class="partner-band"><div class="wrap"><p><b>ペットタクシー会社の方へ</b>いっしょにペットと飼い主さんをお迎えしてくださる会社を探しています。</p><a href="/partner/">提携のご案内</a></div></aside>
 <footer>
