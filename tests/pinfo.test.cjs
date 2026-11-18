@@ -42,8 +42,8 @@ ctx.PINFO_STOP.push('P063'); assert.equal(ctx.pinfoSessionPid_(tok),''); ctx.PIN
   // 番号の要る項目を足して番号がなければ、その項目の名前を出して止める
   const r2=ctx.pinfoPage_(Object.assign({},q,{cred:k.cred.list.concat(['タクシー事業の許可（緑ナンバー）'])})).html;
   assert.ok(r2.includes('「タクシー事業の許可（緑ナンバー）」の番号を入れてください') && rows.length===0);
-  // 資格・保険は番号の欄がない。登録・届出・許可は項目ごとに欄がある
-  assert.ok(!kn.includes('name="no_動物の賠償保険"') && kn.includes('name="no_運送の届出（黒ナンバー）"') && kn.includes('name="no_動物取扱業（保管）の登録"'));
+  // 資格・保険と黒ナンバーの運送の届出（届出の制度で番号がない）は番号の欄がない。登録・許可は項目ごとに欄がある
+  assert.ok(!kn.includes('name="no_動物の賠償保険"') && !kn.includes('name="no_運送の届出（黒ナンバー）"') && kn.includes('name="no_動物取扱業（保管）の登録"'));
   ctx.PINFO_KNOWN={};
 }
 sent.length=0;
@@ -67,11 +67,11 @@ rows.splice(n1); sent.length=1; mails.length=3;
 // 同じ内容をもう一度送っても行は増えない
 ctx.pinfoPage_({s:tok,go:'1',yen_off:'500',yen_off_until:later,equip:['ケージの貸し出し','ペットシーツ'],note:'地域最安！お電話は03-1234-5678'});
 assert.equal(rows.length,4, 'only the rejected note is re-sent');
-// 登録・届出を選んだら番号が要る。お支払い方法は受け付ける。人数・頭数の項目はない
+// 登録を選んだら番号が要る（黒ナンバーの届出はいらない）。お支払い方法は受け付ける。人数・頭数の項目はない
 let n0=rows.length;
-r=ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],equip:['ケージの貸し出し','ペットシーツ'],yen_off:'500',yen_off_until:later,note:''}).html;
+r=ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）','動物取扱業（保管）の登録'],equip:['ケージの貸し出し','ペットシーツ'],yen_off:'500',yen_off_until:later,note:''}).html;
 assert.ok(r.includes('番号を入れてください') && !rows.slice(n0).some(x=>x[3]==='許可・資格・保険'));
-ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）'],'no_運送の届出（黒ナンバー）':'関自貨第123号',pay:['現金','クレジットカード'],equip:['ケージの貸し出し','ペットシーツ'],yen_off:'500',yen_off_until:later,note:''});
+ctx.pinfoPage_({s:tok,go:'1',cred:['運送の届出（黒ナンバー）','動物取扱業（保管）の登録'],'no_動物取扱業（保管）の登録':'関自貨第123号',pay:['現金','クレジットカード'],equip:['ケージの貸し出し','ペットシーツ'],yen_off:'500',yen_off_until:later,note:''});
 assert.ok(rows.some(x=>x[3]==='許可・資格・保険' && x[4].includes('関自貨第123号')) && rows.some(x=>x[3]==='お支払い方法' && x[4]==='現金・クレジットカード'));
 assert.ok(!page.includes('多頭の同乗') && !page.includes('飼い主さんの同乗') && !page.includes('得意な行き先'));
 // 写真はページが横3：縦2に切り抜いたものだけ。小さい・形がちがうものは断る
