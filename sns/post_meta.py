@@ -170,7 +170,11 @@ def main():
             print(kind, "キーは使えます" if ok else "アカウントが違います", me.get("username"))
             continue
         if kind == "threads" and state.get("threads_quiz"):
+            # 未返信のクイズを次のクイズで上書きしない。返信できなければ新規クイズを保留する。
             answer_quiz(tokens[kind], state)
+            if state.get("threads_quiz") and nxt.get("answer"):
+                print("前のクイズの答えが未返信のため、新しいクイズは保留:", nxt["no"])
+                continue
         pid = post_ig(tokens[kind], nxt, data["ig_tags_common"]) if kind == "ig" else post_threads(tokens[kind], nxt)
         if kind == "threads" and nxt.get("answer"):
             state["threads_quiz"] = {"id": pid, "answer": nxt["answer"]}
