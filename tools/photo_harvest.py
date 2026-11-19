@@ -184,7 +184,15 @@ def imgs(t, base, deep=False):
     return res[:40 if deep else 8]
 
 
-def shrink(raw, no_people=False):
+def dhash(w):
+    """よく似た写真（同じ写真の大きさちがい・切りちがい）を見分ける印。"""
+    from PIL import Image
+    g = Image.open(io.BytesIO(w)).convert("L").resize((9, 8))
+    px = list(g.getdata())
+    return sum(1 << i for i in range(64) if px[(i // 8) * 9 + i % 8] > px[(i // 8) * 9 + i % 8 + 1])
+
+
+def shrink(raw, no_people=False, loose=False):
     """(縮めた webp, 人の印) を返す。使わないときは理由の文字列を返す。
     人の顔・体の見分け（opencv）は犬や猫の顔でも反応し、後ろ姿は見のがすので、ここでは外さずに印（"face"／"person"）を付ける。
     印のある写真は photo_import.py が入れない（人が一覧を見て、写っていないと確かめたものだけ --keep で入れる）。"""
@@ -192,7 +200,9 @@ def shrink(raw, no_people=False):
     im = Image.open(io.BytesIO(raw)); im.load()
     if im.width < 480 or im.height < 300: return f"小さい {im.width}x{im.height}"
     r = im.width / im.height
-    if not (1.0 <= r <= 2.4): return f"縦長・細長 {im.width}x{im.height}"
+    if not (1.0 <= r <= 2.4):
+        # 許可のある会社（loose）は、横長・縦長の写真も枠（3:2）に切れる大きさなら使う
+        if not loose or im.width < W or im.height < H or not (0.6 <= r <= 4.0): return f"縦長・細長 {im.width}x{im.height}"
     im = im.convert('RGB')
     if max(ImageStat.Stat(im.resize((32, 32))).stddev) < 18: return "一色に近い"  # 背景・飾り
     flag = ("person" if has_person(im) else "") if no_people else ("face" if has_face(im) else "")
@@ -239,16 +249,21 @@ def one(it, out):
                 r["skipped"].append([pg, "ページを開けない " + str(e)[:60]])
     if not cand: r["skipped"].append([real, "写真のURLが見つからない（ページを動かすプログラムが出す写真かもしれない）"])
     no_people = bool(pm and pm.get("no_people"))
+    seen_h = []
     for u in cand[:40 if pm else 16]:
         if len(r["photos"]) >= (5 if pm else 3): break
         try:
             raw, ct = get(u, binary=True)
-            w = shrink(raw, no_people)
+            w = shrink(raw, no_people, loose=bool(pm))
         except Exception as e:
             r["skipped"].append([u, "開けない " + str(e)[:60]]); continue
         if isinstance(w, str):
             r["skipped"].append([u, w]); continue
         w, flag = w
+        h = dhash(raw)  # 元の写真で見る（同じ写真の大きさちがい）
+        if any(bin(h ^ k).count("1") <= 10 for k in seen_h):
+            r["skipped"].append([u, "前の写真とほぼ同じ"]); continue
+        seen_h.append(h)
         fn = f'{it["id"]}_{len(r["photos"]) + 1}.webp'
         open(os.path.join(d, fn), "wb").write(w)
         r["photos"].append({"file": f'img/{it["cat"]}/{fn}', "src": u, "page": real, **({"flag": flag} if flag else {})})

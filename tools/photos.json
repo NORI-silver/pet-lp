@@ -17,6 +17,60 @@
    "lic_url": "https://www.pref.okayama.lg.jp/page/detail-4318.html"
   },
   {
+   "cat": "rojin",
+   "id": "R069",
+   "name": "ペットホテル里親（終身・長期預かり）",
+   "url": "https://sato-oya.com/",
+   "by": "permit",
+   "src": "2026-11-17",
+   "checked": "2026-11-19",
+   "photos": [
+    "/img/fac/rojin/R069_2.webp",
+    "/img/fac/rojin/R069_3.webp",
+    "/img/fac/rojin/R069_4.webp"
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R094",
+   "name": "家庭的老犬介護施設 Smile Home",
+   "url": "https://www.smilehomefordog.com/",
+   "by": "permit",
+   "src": "2026-11-17",
+   "checked": "2026-11-19",
+   "photos": [
+    "/img/fac/rojin/R094_1.webp",
+    "/img/fac/rojin/R094_2.webp",
+    "/img/fac/rojin/R094_3.webp"
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R096",
+   "name": "ペットケア＆アダプションセンター日光",
+   "url": "https://nikko.pfirst.jp/care_center",
+   "by": "permit",
+   "src": "2026-11-17",
+   "checked": "2026-11-19",
+   "photos": [
+    "/img/fac/rojin/R096_1.webp",
+    "/img/fac/rojin/R096_4.webp"
+   ]
+  },
+  {
+   "cat": "sougi",
+   "id": "S0801bc",
+   "name": "てんのうじペット霊園（泰聖寺）",
+   "url": "https://www.mspet.net/",
+   "by": "permit",
+   "src": "2026-11-18",
+   "checked": "2026-11-19",
+   "photos": [
+    "/img/fac/sougi/S0801bc_3.webp"
+   ],
+   "credit": "泰聖寺（てんのうじペット霊園）ホームページからの引用"
+  },
+  {
    "cat": "trainer",
    "id": "T024",
    "name": "wamiハッピードッグ（ワンちゃんまなび園）",
@@ -26,6 +80,19 @@
    "checked": "2026-11-18",
    "photos": [
     "/img/fac/trainer/T024_3.webp"
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T025",
+   "name": "空ドッグスクール",
+   "url": "https://www.dear-tails.com/",
+   "by": "permit",
+   "src": "2026-11-17",
+   "checked": "2026-11-19",
+   "photos": [
+    "/img/fac/trainer/T025_1.webp",
+    "/img/fac/trainer/T025_5.webp"
    ]
   },
   {
