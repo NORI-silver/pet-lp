@@ -24,7 +24,7 @@ CSS = ('<style id="cp-css">'
        '.cs-ph-s::-webkit-scrollbar{display:none}'
        '.cs-ph-s img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start;display:block}'
        '.cs-ph-n{position:absolute;right:8px;top:8px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;pointer-events:none}'
-       '.cs-ph .cs-ph-c{position:absolute;left:0;bottom:0;max-width:100%;background:rgba(0,0,0,.55);color:#fff;opacity:1;font-size:11px;font-weight:400;padding:1px 6px;border-top-right-radius:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
+       '.cs-ph .cs-ph-c{position:absolute;left:0;bottom:0;max-width:100%;background:rgba(0,0,0,.55);color:#fff;opacity:1;font-size:11px;font-weight:400;padding:1px 6px;border-top-right-radius:6px;white-space:normal;line-height:1.35}'  # 出どころの文は省かずに出す（許可の条件の表記）
        '.cs-ph .cs-ph-c a{color:#fff}'
        '.cs:not(.fc)>.cs-ph,.ux-c>.cs-ph{margin:-12px -14px 10px;border-radius:14px 14px 0 0}'
        '.hc>.cs-ph{margin:-14px -14px 10px;border-radius:14px 14px 0 0}'
