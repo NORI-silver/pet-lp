@@ -82,7 +82,10 @@ def post_ig(token, p, common):
 def text_threads(p):
     """Threads の文。ハッシュタグは最初の1つだけ（Threads はトピックが1つ）。クイズは問いだけ（答えは次の日に返信で）。"""
     lines = p.get("th", p["x"]).split("\n")
-    if p.get("answer") and not any(l.startswith("答えは") for l in lines):
+    if p.get("answer"):
+        # 元のX用文面には正解が書かれている場合がある。Threadsでは翌日の返信まで隠す。
+        # 「答え：」「正解：」から始まる行は削除し、翌日返信の案内を1回だけ付ける。
+        lines = [l for l in lines if not l.strip().startswith(("答え：", "答え:", "正解：", "正解:", "答えは"))]
         lines = [l for l in lines if not l.startswith("#")] + ["答えは、あしたこの投稿への返信で🐾"] + [l for l in lines if l.startswith("#")]
     tags = [w for l in lines if l.startswith("#") for w in l.split() if w.startswith("#")]
     body = "\n".join(l for l in lines if not l.startswith("#"))
