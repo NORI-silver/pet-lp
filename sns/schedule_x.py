@@ -36,7 +36,8 @@ def pick(posts, done, n=1):
     done = [str(d) for d in done]
     # No.281-308 are the current canonical queue; never recycle historical posts.
     current = [p for p in posts if isinstance(p.get("no"), int) and 281 <= p["no"] <= 308]
-    left = [p for p in current if str(p["no"]) not in done and p.get("photo") and not p.get("hold_reason")]
+    # Only explicitly verified, newly generated images are eligible; legacy photo paths are not approval.
+    left = [p for p in current if str(p["no"]) not in done and p.get("photo") and p.get("photo_verified_new") is True and not p.get("hold_reason")]
     kind = {str(p["no"]): p.get("kind") for p in posts}
     out = []
     while left and len(out) < n:
