@@ -2704,7 +2704,8 @@
       "head": "全国のドッグラン194か所の公式ページを、ひとつずつ読みました。",
       "photo_q": "dogs playing in dog park",
       "alt": "dogs playing in dog park",
-      "photo": "sns/img/dogrun-free.jpg"
+      "photo": "sns/img/dogrun-free.jpg",
+      "hold_reason": "過去投稿との内容重複: 過去No.240と同じ無料率・同じ集計。新しい一次情報と切り口を確認して改稿するまで保留"
     },
     {
       "no": 285,
@@ -2747,7 +2748,8 @@
       "tag": "data・dogrun-touroku",
       "head": "ドッグランは「行けばすぐ入れる」とは限りません。",
       "photo_q": "dog behind fence dog park",
-      "alt": "dog behind fence dog park"
+      "alt": "dog behind fence dog park",
+      "hold_reason": "過去投稿との内容重複: 過去No.242と同じ登録率・同じ集計。新しい一次情報と切り口を確認して改稿するまで保留"
     },
     {
       "no": 289,
@@ -2832,7 +2834,8 @@
       "tag": "data・dogrun-shorui",
       "head": "ドッグランで求められるもの、全国で数えました（必要なものを書いている103か所）。",
       "photo_q": "dog vaccination veterinarian",
-      "alt": "dog vaccination veterinarian"
+      "alt": "dog vaccination veterinarian",
+      "hold_reason": "過去投稿との内容重複: 過去No.244と同じ持ち物集計。新しい一次情報と切り口を確認して改稿するまで保留"
     },
     {
       "no": 297,
@@ -2919,7 +2922,8 @@
       "tag": "data・dogrun-kogata",
       "head": "小型犬のエリアがあるドッグランは、どれだけある？",
       "photo_q": "small dog running",
-      "alt": "small dog running"
+      "alt": "small dog running",
+      "hold_reason": "過去投稿との内容重複: 過去No.246と同じ小型犬エリア集計。新しい一次情報と切り口を確認して改稿するまで保留"
     },
     {
       "no": 305,
@@ -2952,7 +2956,8 @@
       "tag": "howto・winter-room",
       "head": "【保存版】冬の部屋で気をつけたいこと🔥",
       "photo_q": "cat near fireplace",
-      "alt": "cat near fireplace"
+      "alt": "cat near fireplace",
+      "hold_reason": "過去投稿との内容重複: 過去No.280と同じ冬の暖房注意点。新しい一次情報と切り口を確認して改稿するまで保留"
     },
     {
       "no": 308,
@@ -2962,7 +2967,13 @@
       "tag": "data・dogrun-ryokin",
       "head": "お金がかかるドッグランの料金のかたち（料金を書いている146か所）",
       "photo_q": "two dogs running together",
-      "alt": "two dogs running together"
+      "alt": "two dogs running together",
+      "hold_reason": "過去投稿との内容重複: 過去No.248と同じ料金内訳集計。新しい一次情報と切り口を確認して改稿するまで保留"
     }
-  ]
+  ],
+  "x_days": [
+    1,
+    4
+  ],
+  "x_hour": 9
 }
