@@ -2639,23 +2639,17 @@
    "pref": "島根県",
    "city": "",
    "name": "島根県（各保健所）",
-   "url": "https://www.pref.shimane.lg.jp/infra/nature/animal/aigo_izumo/doubutu_jyouhou/inunekonokainusibosyuu.html",
+   "url": "https://www.pref.shimane.lg.jp/infra/nature/animal/animal_protection/jyoto/",
    "animals": "犬・猫",
    "conds": [
-    "保健所ごとに譲渡の情報（松江・出雲・浜田・雲南など）を出している（出雲保健所の回答、2026年11月）",
-    "近所に迷惑をかけず法令を守る、最後まで飼うと誓える",
-    "65歳以上は65歳未満の家族などの飼育同意書",
-    "1年以内に保健所へ引き取りを頼んだり譲り受けたりした人には譲らない",
-    "家族の同意がない・動物アレルギーの家族がいる・飼育禁止の住まいは不可",
-    "断られた人の代わりに譲り受けることはできない",
-    "18歳未満・3年以内に関係法令で罰せられた人は不可",
-    "譲渡前適正講習会を受けた人に譲り、誓約書を出す",
-    "トライアル（お試し飼育）はない",
-    "不妊・去勢手術は迎えたあとに飼い主がする",
-    "猫は室内で飼うのがおすすめ",
-    "手数料はかからない"
+    "募集状況や譲渡の条件は保健所ごとに確認する。",
+    "マイクロチップが装着された犬猫は譲渡後に登録手続きと登録手数料が必要。"
    ],
    "links": [
+    {
+     "t": "出雲保健所の譲渡情報",
+     "u": "https://www.pref.shimane.lg.jp/infra/nature/animal/aigo_izumo/doubutu_jyouhou/inunekonokainusibosyuu.html"
+    },
     {
      "t": "松江・安来の譲渡情報",
      "u": "https://www.pref.shimane.lg.jp/infra/nature/animal/matsue_hoken/jyouto/jyotojyoho.html"
@@ -2666,6 +2660,31 @@
     }
    ],
    "kind": "都道府県"
+  },
+  {
+   "pref": "島根県",
+   "city": "出雲市",
+   "name": "出雲保健所",
+   "url": "https://www.pref.shimane.lg.jp/infra/nature/animal/aigo_izumo/doubutu_jyouhou/inunekonokainusibosyuu.html",
+   "animals": "犬・猫",
+   "conds": [
+    "申込者は18歳以上。65歳以上は、65歳未満の家族などによる飼育の同意書を提出する。",
+    "家族の同意が必要。動物アレルギーがある家族がいる場合や、集合住宅・借家で飼育が禁止されている場合は対象外。",
+    "終生飼養などを誓約する書類を提出し、譲渡前適正講習会を受ける。",
+    "過去1年以内に引取りを求めたり保健所から譲り受けたりした場合や、過去3年以内に関係法令違反で罰を受けた場合は対象外。",
+    "第三者への販売や、譲渡を断られた人に代わって申し込むことはできない。",
+    "トライアル制度はない。譲渡後に不妊・去勢手術が必要。猫は室内飼いをすすめている。",
+    "保健所の譲渡手数料はない。マイクロチップの登録手数料は県の案内を参照。",
+    "出どころ：出雲保健所の回答（2026年11月17日）。"
+   ],
+   "links": [
+    {
+     "t": "島根県の譲渡動物情報",
+     "u": "https://www.pref.shimane.lg.jp/infra/nature/animal/animal_protection/jyoto/"
+    }
+   ],
+   "kind": "保健所",
+   "scope": "保健所"
   },
   {
    "pref": "島根県",

@@ -27,11 +27,12 @@ PREP = {
     "t": ["フタのしっかりしまる容器", "保温のカイロ・断熱の袋", "ふだんのエサ", "避難所に入れないときの預け先を決めておく"],
 }
 
-def _verdict(nm, pid, f, large):
+def _verdict(nm, pid, f, large, policy_uncertain=False):
     """(色, 一言, 説明)。書いていないときも「分からない」とは言わず、国の手引きにそって、どう動けばいいかを言う"""
     if pid == "l":
         k, txt = large
-        head = {"ok": ("yes", "連れて行けます（つないで過ごす）"), "cage": ("hard", "ケージに入る大きさまで"),
+        head = {"check": ("hard", "受け入れを確認"), "allowed": ("yes", "一律の大きさ制限なし"),
+                "ok": ("yes", "連れて行けます（つないで過ごす）"), "cage": ("hard", "ケージに入る大きさまで"),
                 "no": ("no", "避難所に入れないことがあります"), "nobig": ("hard", "入れないこともあります"),
                 "hard": ("hard", "むずかしいことがあります"), "small": ("hard", "むずかしいことがあります"),
                 "none": ("yes", "大きさで分けていません")}[k]
@@ -44,6 +45,8 @@ def _verdict(nm, pid, f, large):
     if v == "cond": return "hard", "条件つきで連れて行けます", f"{nm}は、{lab}を条件つきで受け入れるとしています（条件は下の「{nm}の決まり」に）。"
     if v == "hard": return "hard", "むずかしいことがあります", f"{nm}は、{lab}は避難所での受け入れがむずかしいことがあるとしています。"
     if v == "no": return "no", "避難所には入れません", f"{nm}は、{lab}を避難所で受け入れないとしています。前もって預け先を決めておきましょう。"
+    if policy_uncertain:
+        return "hard", "受け入れを確認", f"{nm}で開設する避難所に、{lab}の受け入れや過ごす場所を確認してください。"
     if pid in ("s", "c"):
         return "yes", "同行避難の対象です", f"国の手引きでは、{lab}は同行避難の対象です。{nm}でも、連れて行く前提で準備しましょう。"
     return "hard", "ケージに入れて相談", f"{nm}は{lab}について決まりを出していません。ケージに入れて連れて行き、受付で飼う場所を相談します。入れないときの預け先も決めておくと安心です。"
@@ -132,7 +135,7 @@ def block(e, it, pf, large, shelter_note=False, title=None):
     where = _where(nm, it.get("place")) + ("避難所ごとのペットの場所は、下の避難所の一覧の🐾に書いています。" if shelter_note else "")
     panels = []
     for p, lab, ic, _ in PETS:
-        cls, head, why = _verdict(nm, p, f, large)
+        cls, head, why = _verdict(nm, p, f, large, it.get("policy_uncertain", False))
         ic2 = {"yes": "✅", "hard": "⚠️", "no": "⛔"}[cls]
         alts = "".join(f'<li><a href="{e(u)}"><span class="i" aria-hidden="true">{i}</span><span><b>{e(t)}</b><small>{e(s)}</small></span></a></li>'
                        for i, t, u, s in private_links(pf, p))
