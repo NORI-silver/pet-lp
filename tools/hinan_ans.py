@@ -129,10 +129,14 @@ def block(e, it, pf, large, shelter_note=False, title=None):
     radios = "".join(f'<input type="radio" name="hkpet" id="hk-{p}" value="{p}"{" checked" if i == 0 else ""}>' for i, (p, *_) in enumerate(PETS))
     labels = '<div class="hk-t" role="radiogroup" aria-label="うちの子をえらぶ">' + "".join(
         f'<label for="hk-{p}"><span aria-hidden="true">{ic}</span>{e(lab)}</label>' for p, lab, ic, _ in PETS) + "</div>"
-    where = _where(nm, it.get("place")) + ("避難所ごとのペットの場所は、下の避難所の一覧の🐾に書いています。" if shelter_note else "")
+    where = (it.get("decision_place") or _where(nm, it.get("place"))) + ("避難所ごとのペットの場所は、下の避難所の一覧の🐾に書いています。" if shelter_note else "")
     panels = []
     for p, lab, ic, _ in PETS:
         cls, head, why = _verdict(nm, p, f, large)
+        if p != "l" and it.get("decision_species"):
+            cls, head, why = it["decision_species"]
+        elif p == "l" and it.get("decision_large_head"):
+            head = it["decision_large_head"]
         ic2 = {"yes": "✅", "hard": "⚠️", "no": "⛔"}[cls]
         alts = "".join(f'<li><a href="{e(u)}"><span class="i" aria-hidden="true">{i}</span><span><b>{e(t)}</b><small>{e(s)}</small></span></a></li>'
                        for i, t, u, s in private_links(pf, p))
