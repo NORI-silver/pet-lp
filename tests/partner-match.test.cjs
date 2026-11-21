@@ -56,7 +56,17 @@ assert.ok(ck({ careTri:false }, care(5, [])).ng.includes('介護が必要な子'
 assert.equal(ck({ careTri:true, careBigSet:true, careBig:false }, care(8, ['寝たきり（担架やマットで運ぶ）'])).ng.filter(x => /介護/.test(x)).length, 0);
 assert.ok(ck({ careTri:true, careBigSet:true, careBig:false }, care(32, ['歩けない（抱っこで運ぶ）'])).ng[0].includes('介護が必要な大型犬'));
 assert.ok(ck({ careTri:true, careBigSet:true, careBig:null }, care(32, [])).ask[0].includes('32kg'));
-assert.equal(ck({ careTri:true, careBigSet:true, careBig:true }, care(40, ['寝たきり（担架やマットで運ぶ）'])).ask.filter(x => /介護/.test(x)).length, 0);
+const liftNeeds = ['寝たきり（担架やマットで運ぶ）', '階段で運び出す（エレベーターなし）'];
+const careCase = ck({ careTri:true, careBigSet:true, careBig:true }, care(50, liftNeeds));
+assert.equal(careCase.ng.length, 0);
+assert.equal(careCase.ask.filter(x => x.includes('介助の個別条件')).length, 1);
+assert.ok(careCase.ask.some(x => x.includes('50kg') && x.includes('担架') && x.includes('階段') && x.includes('人数と道具')));
+assert.equal(ck({ careTri:true, careBigSet:true, careBig:true }, care(50, [])).ask.filter(x => x.includes('介助')).length, 0);
+assert.ok(ck({ careTri:true, careBigSet:true, careBig:null }, care(50, liftNeeds)).ask.some(x => x.includes('50kg') && x.includes('階段')));
+assert.ok(!ck({ careTri:true, careBigSet:true, careBig:false }, care(50, liftNeeds)).ask.some(x => x.includes('介助の個別条件')));
+const gearCase = ck({ careTri:true, careBigSet:true, careBig:true }, care(8, ['酸素や点滴などの医療機器がある']));
+assert.ok(gearCase.ask.some(x => x.includes('8kg') && x.includes('酸素')));
+
 assert.ok(ck({}, care(5, ['寝たきり（担架やマットで運ぶ）'])).ask[0].includes('寝たきり')); // 申し込みの答えがない会社はいままでどおり
 // ワクチンの証明：狂犬病だけの会社は、狂犬病の記入がない犬だけ確かめる
 assert.ok(ck({ vacProof:'証明が必要（狂犬病の予防注射だけ）' }, req({ 'ペットJSON': pets([{ species:'犬', weight:'5', vaccine:'済' }]) })).ask[0].includes('狂犬病'));

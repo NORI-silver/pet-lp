@@ -993,10 +993,16 @@ function careChecks_(pt, pets, ng, ask) {
   if (pt.careTri === false) { ng.push('介護が必要な子'); return; }
   var cared = pets.filter(function (p) { return p.care === '必要'; });
   if (!cared.length) cared = pets;
-  // 新しい申し込みは「介護が必要な大型犬を運べるか」だけで決める。小さい子は飼い主さんが抱っこできるので問わない（Nori 2026-11-10）
+  // 申込みの大型犬可否は入口の条件。担架・階段などの具体的な介助まで可能とみなさない。
   if (pt.careBigSet) {
     var bigCare = cared.filter(function (p) { return p.kg >= CONFIG.LARGE_DOG_KG; });
-    if (bigCare.length && pt.careBig === false) ng.push('介護が必要な大型犬（' + CONFIG.LARGE_DOG_KG + 'kg以上）');
+    if (bigCare.length && pt.careBig === false) { ng.push('介護が必要な大型犬（' + CONFIG.LARGE_DOG_KG + 'kg以上）'); return; }
+    // 必要な子と介助を組み合わせて表示する。複数頭でも別の子の体重で確認しない。
+    var caseNeeds = cared.map(function (p) {
+      var list = (p.needList || []).filter(function (x) { return /歩けない|寝たきり|階段|酸素|点滴|カート|バギー/.test(x); });
+      return list.length ? (p.kg ? p.kg + 'kg：' : '') + list.join('／') : '';
+    }).filter(Boolean);
+    if (caseNeeds.length) ask.push('介助の個別条件（' + caseNeeds.join('；') + '）に、当日用意できる人数と道具で対応できる');
     else if (bigCare.length && pt.careBig === null) ask.push('介護が必要な大型犬（' + Math.max.apply(null, bigCare.map(function (p) { return p.kg; })) + 'kg）を運べる');
     else if (pt.careTri === null) ask.push('介護が必要な子の送迎ができる');
     return;
