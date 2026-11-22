@@ -31,7 +31,7 @@ FACT = [
     ('送迎', re.compile(r'送迎|送り迎え'), re.compile(r'円|無料|km|ｋｍ|キロ|エリア|[区市]内|片道|往復')),
     ('お支払い', re.compile(r'お支払|支払い方法|クレジットカード|PayPay|現金のみ'), re.compile(r'現金|カード|PayPay|ペイペイ|振込|電子マネー|QR|交通系')),
 ]
-NOISE = re.compile(r'[？?]\s*$|キャンセル|求人|採用|スタッフ募集|アルバイト|Copyright|©|cookie|ログイン|カート|送料|通販|商品|フード|ブログ|ニュース|お知らせ|\d{4}[./年]\d{1,2}[./月]\d{1,2}')
+NOISE = re.compile(r'[？?]\s*$|[0-9０-９]{2,4}[-－‐ー][0-9０-９]{2,4}[-－‐ー][0-9０-９]{3,4}|@|TEL|Tel|FAX|電話|LINE|キャンセル|求人|採用|スタッフ募集|アルバイト|Copyright|©|cookie|ログイン|カート|送料|通販|商品|フード|ブログ|ニュース|お知らせ|\d{4}[./年]\d{1,2}[./月]\d{1,2}')
 
 
 def host(u):
@@ -59,6 +59,8 @@ def facts_of(x, cat):
             v = c['v'].strip()
             if NOISE.search(v) or not rxk.search(v) or (need and not need.search(v)):
                 continue
+            if k == '料金' and re.search(r'[×✖︎xX＝=＋+※]|追加|割増|特別|割引|延長|約|オプション|お散歩|ポイント|クーポン|オフ|OFF|合計|総額.*総額', v):
+                continue
             if 6 <= len(v) <= 160 and (best is None or len(v) < len(best['v'])):
                 best = c
         if best:
@@ -81,12 +83,9 @@ def main():
         if NOT_OFFICIAL.search(host(u)) or NOT_OFFICIAL.search(urlparse(u).path.split('/')[1] if '/' in urlparse(u).path else ''):
             stat['not_official_host'] += 1
             continue
-        text = ' '.join(v['v'] for vs in x['facts'].values() for v in vs) + ' ' + x.get('title', '')
-        cats = []
-        for _, k in SVC:
-            ck = {'hotels': 'hotel', 'sitters': 'sitter', 'trainers': 'trainer', 'homes': 'rojin', 'groomers': 'grooming'}[k]
-            if ck in x.get('cats', []) or CATS[k].search(text):
-                cats.append(k)
+        lines = [l for l in x.get('lines', []) if not re.search(r'おすすめ|お勧め|お薦め|紹介|一覧|件のサロン|件の', l)]
+        text = ' '.join(lines) + ' ' + x.get('title', '')
+        cats = [k for _, k in SVC if CATS[k].search(text)]
         if 'trainers' in cats and '訓練' not in x.get('types', []):
             # しつけは「訓練」の登録がある事業所だけ（登録のないしつけは受けられないため）
             cats.remove('trainers')
@@ -101,8 +100,24 @@ def main():
             h = hashlib.sha1((x['name'] + x['addr']).encode()).hexdigest()[:7]
             row = {'id': PFX[k] + h, 'name': re.sub(r'\s+', ' ', x['name']).strip(), 'prefs': [x['pref']], 'city': x['city'],
                    'url': u, 'services': svc, 'facts': facts_of(x, k), 'checked': TODAY}
+            fa = {f['k']: f['v'] for f in row['facts']}
+            if k == 'sitters':
+                hh = host(u)
+                row['chain'] = 'nihon' if 'pet-ss.com' in hh else 'SOS' if 'petsitter-sos' in hh or 'SOS' in x['name'] else 'penguin' if 'penguinsitter' in hh else 'intopet' if 'intopet' in hh else 'indie'
+                row['area'] = fa.get('対応エリア', x['city'] + 'とその周り（くわしくは公式サイト）')
+            if k == 'trainers':
+                row['addr'] = x['addr'] if x['addr'].startswith(x['pref']) else x['pref'] + x['addr']
+                row['src'] = u
+            if k == 'groomers':
+                row['area'] = fa.get('対応エリア', x['city'] + 'とその周り（くわしくは公式サイト）')
+                if re.search(r'トリミングカー|移動トリミング車|専用車', text): row['car'] = True
+            if k == 'hotels':
+                if re.search(r'猫(?:ちゃん)?(?:の|も)?(?:お預かり|ホテル)|キャットホテル|猫(?:ちゃん)?.{0,4}(?:OK|可)', text): row['cat'] = True
+                if '送迎' in fa: row['pickup'] = True
             if k == 'homes':
                 row['spec'] = svc
+                row['addr'] = x['addr'] if x['addr'].startswith(x['pref']) else x['pref'] + x['addr']
+                row['animals'] = '犬・猫' if re.search(r'老猫|猫の(?:お預かり|ホーム|介護)', text) else '犬'
             add[k].append(row)
     out = os.path.join(HERE, 'kanto_add.json')
     old = json.load(open(out)) if os.path.exists(out) else {}

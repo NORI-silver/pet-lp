@@ -9010,6 +9010,514 @@
      "checked": "2026-11-16"
     }
    ]
+  },
+  {
+   "id": "St5197c1c",
+   "name": "ペットシッター・ひぐらしの里",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "荒川区",
+   "url": "https://catloaf.tokyo/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00～19:00",
+     "src": "https://catloaf.tokyo/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "お支払い",
+     "v": "初回お打ち合わせまたは鍵お預かりの際に現金でお支払いいただくか、ご訪問 2 日前までに銀行振込をお願いいたします。",
+     "src": "https://catloaf.tokyo/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "荒川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St0920cdb",
+   "name": "ペットホテル まんまる",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "板橋区",
+   "url": "https://intopet.jp/manmaru/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間】9:00-19:00",
+     "src": "https://intopet.jp/manmaru/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "料金",
+     "v": "1回 550円（税込）",
+     "src": "https://intopet.jp/manmaru/price/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "用意するもの",
+     "v": "A. 「ワクチン接種証明書」と「狂犬病予防注射済書（またはプレート）」の2点を必ずお持ちください。",
+     "src": "https://intopet.jp/manmaru/p77342/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "intopet",
+   "area": "板橋区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St6b49d24",
+   "name": "ペットシッターサービス ふくふく",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://fuku-pet.jp/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9：00～19：00",
+     "src": "https://fuku-pet.jp/?page_id=60",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St644a130",
+   "name": "o3care",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://www.o3care.jp/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "可能な限り細かなことに配慮してお世話したいため、またケア担当が変わった際に速やかに引き継ぎできるように、その子の体重や健康状態、アレルギー、性格やクセ、好きなこと、嫌いなことなどをお聞きしカルテを作成します。3種/5種ワクチン接種や狂犬病ワクチン接種などの証明書もご用意ください。",
+     "src": "https://www.o3care.jp/?page=service",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St3b5c7bd",
+   "name": "ペットシッター・ボビーズマム",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "板橋区",
+   "url": "https://ps-bobbysmam.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "大型犬3,500円より、中型犬3,000円より、小型犬、猫、うさぎ2,500円より.お世話内容によって料金の増減があります。",
+     "src": "https://ps-bobbysmam.com/content2.html",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "板橋区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St42eb559",
+   "name": "キャットシッターゆうねこ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江戸川区",
+   "url": "https://www.youneko.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "江戸川区・船堀を拠点に、自転車で25分圏内までを対応エリアとしています。",
+     "src": "https://www.youneko.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "お支払い",
+     "v": "​ （クレジットカード、電子マネーなどでのお支払いについては現在調整中となります）",
+     "src": "https://www.youneko.com/prise2",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区・船堀を拠点に、自転車で25分圏内までを対応エリアとしています。"
+  },
+  {
+   "id": "Stf3e54a6",
+   "name": "ペットシッター ゆきんこ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://xn--w8jm5m1b.jp/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：9：００～１9：００",
+     "src": "https://xn--w8jm5m1b.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Ste1c1d30",
+   "name": "ペットシッター&犬のしつけ Smile",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江戸川区",
+   "url": "https://www.petsmile-web.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "1km以上のエリアにつきましては、公共交通機関を使った実費を頂きます。（1km～2kmの地域の方は駐車場代になる場合がございます）",
+     "src": "https://www.petsmile-web.com/petsitter/petsitter_price/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St022f913",
+   "name": "WAN-PO COMPANY",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://wan-poco.jimdofree.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St84859fa",
+   "name": "IVORY",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "板橋区",
+   "url": "https://hide16.wixsite.com/ivory",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "†ご自宅にお伺いし、料金説明、同意書のサイン、ワクチン接種証明書の提示、ペットのお世話方法等をお伺いします。",
+     "src": "https://hide16.wixsite.com/ivory/about",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "板橋区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Ste764c2e",
+   "name": "Mermaid",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江戸川区",
+   "url": "https://mermaid2018.pet/access",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間8:00〜20:00 メールは24時間受付",
+     "src": "https://mermaid2018.pet/access",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・1年以内の狂犬病ワクチン接種証明書",
+     "src": "https://mermaid2018.pet/sitterhotel",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "お支払い",
+     "v": "※お支払いは現金のみになります、お手数をおかけ致します。",
+     "src": "https://mermaid2018.pet/price",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St1a3056d",
+   "name": "Doggy Care Malachite",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://d-c-malachite.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "当日、現金でのお支払い 又は事前のお振込みをお願いいたします",
+     "src": "https://d-c-malachite.com/rriha/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St6573d11",
+   "name": "わんさんぽ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江戸川区",
+   "url": "https://www.wansanpo.com/%E3%81%8A%E5%95%8F%E5%90%88%E3%82%8F%E3%81%9B/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St8bc8632",
+   "name": "キャットシッターりあん",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江戸川区",
+   "url": "https://cslien.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付営業時間は9時～18時までとまります。それ以降のご連絡は翌日あつかいとなります。",
+     "src": "https://cslien.com/price/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "お支払い",
+     "v": "・お支払い方法（クレジットカード・お振込み・その他）",
+     "src": "https://cslien.com/orderflow/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stde022f1",
+   "name": "PETS",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://pet-pet.shop/",
+   "services": "ペットホテル、ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "ホテル営業時間10:00～19:00(トリミング18:00",
+     "src": "https://pet-pet.shop/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St9f4a29b",
+   "name": "アニマル ファースト",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://www.animal1st.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "猫の場合、三種以上の混合ワクチン接種していることをお申し込みの条件とさせていただいております。",
+     "src": "https://www.animal1st.com/faq/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "お支払い",
+     "v": "・PayPay払い",
+     "src": "https://www.animal1st.com/terms/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stb4dfb84",
+   "name": "halcyon",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江戸川区",
+   "url": "https://www.petsitter-halcyon.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "対応エリアは江戸川区･​葛飾区･江東区･千葉県市川市を中心に",
+     "src": "https://www.petsitter-halcyon.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "対応エリアは江戸川区･​葛飾区･江東区･千葉県市川市を中心に"
+  },
+  {
+   "id": "St52af0aa",
+   "name": "都 MIYAKO ペットシッター",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江戸川区",
+   "url": "http://www.miyako-petsitter.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "クレジットカード、銀行振り込み（手数料お客様負担）によるお支払いが可能です。",
+     "src": "http://www.miyako-petsitter.com/%e6%96%99%e9%87%91%e8%a1%a8-2/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St7f49e31",
+   "name": "はーとあいらんど 日本ペットシッターサービス王子神谷店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://www.pet-ss.com/heartisland/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間9：00～20：00",
+     "src": "https://www.pet-ss.com/heartisland/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "nihon",
+   "area": "足立区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St38e92eb",
+   "name": "Doggy Heart",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "荒川区",
+   "url": "https://www.doggyheart.net/",
+   "services": "ペットホテル、ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：9時～18時",
+     "src": "https://www.doggyheart.net/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：日曜・月曜",
+     "src": "https://www.doggyheart.net/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・初回ご利用時に、1年以内の混合ワクチン接種証明書・狂犬病予防接種証明書を ご持参下さい。",
+     "src": "https://www.doggyheart.net/blank-ck7s",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "荒川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St6cfd7ea",
+   "name": "CS たま",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江戸川区",
+   "url": "https://r.goope.jp/cs-tama/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区とその周り（くわしくは公式サイト）"
   }
  ]
 }

@@ -97,7 +97,7 @@
    "facts": [
     {
      "k": "営業・受付時間",
-     "v": "ホテル 9:00〜19:00",
+     "v": "受付時間 : 8：00〜20：00(不定休)",
      "src": "https://wanpeace111.com/",
      "by": "site",
      "checked": "2026-11-22"
@@ -252,7 +252,8 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "cat": true
   },
   {
    "id": "PHta050c98",
@@ -340,13 +341,6 @@
      "checked": "2026-11-22"
     },
     {
-     "k": "料金",
-     "v": "宿泊代 1泊 約8,640円 × 30泊 = 259,200円",
-     "src": "https://wankoto-wa.com/training-2/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
      "k": "用意するもの",
      "v": "・利用日から一年以内の狂犬病の予防接種",
      "src": "https://wankoto-wa.com/tos/",
@@ -361,7 +355,8 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "pickup": true
   },
   {
    "id": "PHt79e0efd",
@@ -433,13 +428,6 @@
    "services": "ペットホテル",
    "facts": [
     {
-     "k": "営業・受付時間",
-     "v": "お電話受付時間は9:00〜18:00です。",
-     "src": "https://cats-karton.com/utilization/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
      "k": "料金",
      "v": "1泊税込総額 6,000円",
      "src": "https://cats-karton.com/service/",
@@ -481,7 +469,8 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "pickup": true
   },
   {
    "id": "PHt764c0f2",
@@ -495,7 +484,7 @@
    "facts": [
     {
      "k": "営業・受付時間",
-     "v": "​ホテル受付 10:00 - 18:00",
+     "v": "営業時間：9:00 - 19:00 （年中無休）",
      "src": "https://www.uno-dog-cat.com/",
      "by": "site",
      "checked": "2026-11-22"
@@ -513,13 +502,6 @@
    "url": "https://th-twinkle.littlestar.jp/",
    "services": "ペットホテル",
    "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "営業時間・電話受付 9:30〜18:00",
-     "src": "http://th-twinkle.littlestar.jp/shop/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
     {
      "k": "駐車場",
      "v": "当店には、駐車場はございません。ご来店・お迎えの際は、お店の前に一時止めていただくか、近隣のコインパーキングをご利用ください。",
@@ -542,14 +524,7 @@
    "facts": [
     {
      "k": "営業・受付時間",
-     "v": "TEL＆FAX: 03-5656-5650 (受付時間 10:00〜18:00)",
-     "src": "https://pethouse-baron.com/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "料金",
-     "v": "以下の期間は、1泊2日／1頭あたり 500円の追加料金が掛かります。",
+     "v": "●受付時間／チェックイン10:00、チェックアウトは原則18:00（18時以降はご相談ください）",
      "src": "https://pethouse-baron.com/price.html",
      "by": "site",
      "checked": "2026-11-22"
@@ -666,6 +641,18 @@
    "checked": "2026-11-22"
   },
   {
+   "id": "PHt349e8e8",
+   "name": "ペットプラス板橋店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "板橋区",
+   "url": "https://www.ahb.jpn.com/shops/01273",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-22"
+  },
+  {
    "id": "PHt41e9611",
    "name": "furifuri ITABASHI",
    "prefs": [
@@ -679,26 +666,6 @@
      "k": "お支払い",
      "v": "クレジットカード、PayPay に対応しています。",
      "src": "https://furifuridogs.com/",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
-   "checked": "2026-11-22"
-  },
-  {
-   "id": "PHt7731edb",
-   "name": "ペットサロン PONちゃん",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "板橋区",
-   "url": "https://takashimadairatown-pc.com/?p=2705",
-   "services": "ペットホテル",
-   "facts": [
-    {
-     "k": "送迎",
-     "v": "ネコ 2,000円 板橋区内、練馬区の一部は無料送迎できます。",
-     "src": "https://takashimadairatown-pc.com/?p=2705",
      "by": "site",
      "checked": "2026-11-22"
     }
@@ -721,13 +688,6 @@
      "src": "https://www.bishuw.jp/",
      "by": "site",
      "checked": "2026-11-22"
-    },
-    {
-     "k": "お支払い",
-     "v": "キャンセル料は現金・クレジットカード・銀行振込にてお支払いをお願いいたします。",
-     "src": "https://www.bishuw.jp/service/",
-     "by": "site",
-     "checked": "2026-11-22"
     }
    ],
    "checked": "2026-11-22"
@@ -742,13 +702,6 @@
    "url": "https://www.petsmile-web.com/",
    "services": "ペットホテル、ペットシッター",
    "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "7日～4日前キャンセルの場合はお支払料金の30％、3日～2日前キャンセルは50％、1日前と当日 キャンセルは100％とさせていただきます。（営業時間の夜8時までにご連絡下さい）",
-     "src": "https://www.petsmile-web.com/petsitter/petsitter_price/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
     {
      "k": "駐車場",
      "v": "1km以上のエリアにつきましては、公共交通機関を使った実費を頂きます。（1km～2kmの地域の方は駐車場代になる場合がございます）",
@@ -862,7 +815,8 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "pickup": true
   },
   {
    "id": "PHt9e25493",
@@ -946,40 +900,6 @@
    "checked": "2026-11-22"
   },
   {
-   "id": "PHt1940ef2",
-   "name": "ワンワン 美容室 クラモチ",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "足立区",
-   "url": "https://scarecrow-inc.jp/trimming/salon/tokyo/10281/",
-   "services": "ペットホテル、出張トリミング",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "10:00-19:00 不定休",
-     "src": "https://scarecrow-inc.jp/trimming/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "定休日",
-     "v": "10:00-19:00 不定休",
-     "src": "https://scarecrow-inc.jp/trimming/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "送迎",
-     "v": "摂津、一部茨木、高槻、吹田送迎無料 です！",
-     "src": "https://scarecrow-inc.jp/trimming/",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
-   "checked": "2026-11-22"
-  },
-  {
    "id": "PHtd99d703",
    "name": "トリミングサロン アラモード足立",
    "prefs": [
@@ -993,13 +913,6 @@
      "k": "駐車場",
      "v": "店舗前駐車場10台",
      "src": "https://www.ts-alamode.com/salon-list/adachi/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "お支払い",
-     "v": "クレジットカードやキャッシュレス決済は使えますか？",
-     "src": "https://www.ts-alamode.com/faq/",
      "by": "site",
      "checked": "2026-11-22"
     }
@@ -1063,13 +976,6 @@
    "services": "ペットホテル",
    "facts": [
     {
-     "k": "営業・受付時間",
-     "v": "犬猫生体のみ13:00〜19:00",
-     "src": "https://www.petshop-kanedai.jp/adachi_tokyo/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
      "k": "駐車場",
      "v": "専用駐車場には限りがございます。ご不便をおかけいたしますが、満車の場合はお近くのコインパーキングをご利用くださいませ。尚、近隣にお住まいの方のご迷惑となりますので、路上駐車やゴルフパートナー様など当店とは無関係の施設への無断駐車はお止めください。",
      "src": "https://www.petshop-kanedai.jp/adachi_tokyo/",
@@ -1097,13 +1003,6 @@
    "services": "ペットホテル",
    "facts": [
     {
-     "k": "営業・受付時間",
-     "v": "12:00〜21:00\r定休日なし",
-     "src": "https://recrested.com/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
      "k": "料金",
      "v": "1泊2,000円",
      "src": "https://recrested.com/pet-hotel/",
@@ -1112,7 +1011,7 @@
     },
     {
      "k": "駐車場",
-     "v": "駐車場はありますか？",
+     "v": "専用駐車場はございません。",
      "src": "https://recrested.com/faq/",
      "by": "site",
      "checked": "2026-11-22"
@@ -1199,7 +1098,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "cat": true,
+   "pickup": true
   },
   {
    "id": "PHt6573d11",
@@ -1285,13 +1186,6 @@
      "checked": "2026-11-22"
     },
     {
-     "k": "料金",
-     "v": "東京足立区でペットホテルやトリミングをご提供している「Love＆Dog」 (ラブアンドドック)では、日ごろの感謝を込めて30ポイントごとに1,000円割引の特典を適用させていただいております。",
-     "src": "http://loveanddog.com/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
      "k": "用意するもの",
      "v": "お預けいただく際は「狂犬病予防接種証明書」「ワクチン接種証明書」をご提示いただくようお願いいたします。",
      "src": "http://loveanddog.com/hotel/",
@@ -1306,7 +1200,8 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "pickup": true
   },
   {
    "id": "PHt0396327",
@@ -1316,18 +1211,11 @@
    ],
    "city": "足立区",
    "url": "https://louis-no-siqqo.jimdoweb.com/%E3%81%94%E5%88%A9%E7%94%A8%E6%96%99%E9%87%91%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85/",
-   "services": "ペットホテル、しつけ、老犬ホーム",
+   "services": "ペットホテル、しつけ",
    "facts": [
     {
      "k": "定休日",
      "v": "お預かり頭数の制限や 不定休などの兼ね合いでお受けできない場合もございます。",
-     "src": "https://louis-no-siqqo.jimdoweb.com/%E3%81%94%E5%88%A9%E7%94%A8%E6%96%99%E9%87%91%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "料金",
-     "v": "犬◇一泊・6000円※最終日 午前11時までにお迎えの場合",
      "src": "https://louis-no-siqqo.jimdoweb.com/%E3%81%94%E5%88%A9%E7%94%A8%E6%96%99%E9%87%91%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85/",
      "by": "site",
      "checked": "2026-11-22"
@@ -1360,13 +1248,6 @@
      "checked": "2026-11-22"
     },
     {
-     "k": "駐車場",
-     "v": "トリミング・ペットホテル・ドッグラン・ショップに対応し、LINEでのご予約や滞在中の写真報告、送迎サービスなど飼い主さまの利便性も追求。駐車場を完備しているので、お車でのご来店も安心です。足立区のコミュニティに根差した“第二のリビング”のように、五反野・北千住の飼い主さまが気軽に立ち寄れる温かな空間をご用意しています。",
-     "src": "https://stella83.net/dog-salon/adachi/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
      "k": "用意するもの",
      "v": "お持物：各種ワクチン証明書",
      "src": "https://stella83.net/hotel/",
@@ -1381,7 +1262,8 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "pickup": true
   },
   {
    "id": "PHt4ce2dc4",
@@ -1472,13 +1354,6 @@
      "src": "https://pet-pet.shop/",
      "by": "site",
      "checked": "2026-11-22"
-    },
-    {
-     "k": "料金",
-     "v": "⚫︎お預かりでのトレーニング１日4900円〜",
-     "src": "https://pet-pet.shop/home/flowtouse/",
-     "by": "site",
-     "checked": "2026-11-22"
     }
    ],
    "checked": "2026-11-22"
@@ -1493,13 +1368,6 @@
    "url": "https://www.trimeet.jp/search/detail/270",
    "services": "ペットホテル",
    "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "10:00〜19:00（休憩1時間／実働8時間勤務）",
-     "src": "https://www.trimeet.jp/search/detail/270",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
     {
      "k": "定休日",
      "v": "定休日：不定休",
@@ -1529,7 +1397,7 @@
     },
     {
      "k": "駐車場",
-     "v": "駐車場はありますか？",
+     "v": "当店で契約している駐車場はございませんので、お近くのコインパーキングをご利用ください。",
      "src": "https://animal-house-r.com/",
      "by": "site",
      "checked": "2026-11-22"
@@ -1553,15 +1421,7 @@
    "city": "荒川区",
    "url": "https://arch-dogtraining.com/",
    "services": "ペットホテル、しつけ",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "電話受付時間：8:00～20:00 年中無休",
-     "src": "https://arch-dogtraining.com/",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
+   "facts": [],
    "checked": "2026-11-22"
   },
   {
@@ -1577,40 +1437,6 @@
    "checked": "2026-11-22"
   },
   {
-   "id": "PHt86d493d",
-   "name": "ペットサロン アンファン",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "板橋区",
-   "url": "https://scarecrow-inc.jp/trimming/salon/tokyo/10342/",
-   "services": "ペットホテル、出張トリミング",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "10:00-19:00 不定休",
-     "src": "https://scarecrow-inc.jp/trimming/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "定休日",
-     "v": "10:00-19:00 不定休",
-     "src": "https://scarecrow-inc.jp/trimming/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "送迎",
-     "v": "摂津、一部茨木、高槻、吹田送迎無料 です！",
-     "src": "https://scarecrow-inc.jp/trimming/",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
-   "checked": "2026-11-22"
-  },
-  {
    "id": "PHtf311118",
    "name": "Dog Luck",
    "prefs": [
@@ -1618,7 +1444,7 @@
    ],
    "city": "板橋区",
    "url": "https://dogluck.info/",
-   "services": "ペットホテル、ペットシッター",
+   "services": "ペットホテル",
    "facts": [
     {
      "k": "定休日",
@@ -1674,13 +1500,6 @@
    "url": "https://puppy-club.tokyo/slider/",
    "services": "ペットホテル",
    "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "電話受付 平日：12:00～19:00",
-     "src": "https://puppy-club.tokyo/slider/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
     {
      "k": "定休日",
      "v": "定休日 年中無休",
@@ -1740,13 +1559,6 @@
    "url": "https://petmi.jp/shop/detail/162b4f17-be70-44d5-aef1-2abf3a8cbf4d/",
    "services": "ペットホテル",
    "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "11：00～20：00/トリミングサロン11：00～19：00",
-     "src": "https://petmi.jp/shop/detail/162b4f17-be70-44d5-aef1-2abf3a8cbf4d/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
     {
      "k": "定休日",
      "v": "定休: 年中無休",
@@ -1884,7 +1696,8 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "pickup": true
   },
   {
    "id": "PHte74ad71",
@@ -1904,7 +1717,8 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "pickup": true
   },
   {
    "id": "PHt30f68be",
@@ -1966,18 +1780,6 @@
    "checked": "2026-11-22"
   },
   {
-   "id": "PHt6c21a2a",
-   "name": "Coussinet",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "荒川区",
-   "url": "https://www.pet2211.com/coussinet/",
-   "services": "ペットホテル、ペットシッター",
-   "facts": [],
-   "checked": "2026-11-22"
-  },
-  {
    "id": "PHt38e92eb",
    "name": "Doggy Heart",
    "prefs": [
@@ -2021,7 +1823,8 @@
    "url": "http://www.mili2015.jp/",
    "services": "ペットホテル",
    "facts": [],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "cat": true
   },
   {
    "id": "PHte826cd9",
@@ -2032,15 +1835,7 @@
    "city": "板橋区",
    "url": "http://www.momdog.net/",
    "services": "ペットホテル",
-   "facts": [
-    {
-     "k": "定休日",
-     "v": "TEL.03-6909-9811 （水曜日定休）",
-     "src": "http://www.momdog.net/access.html",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
+   "facts": [],
    "checked": "2026-11-22"
   },
   {
@@ -2076,13 +1871,14 @@
     },
     {
      "k": "送迎",
-     "v": "送迎サービスのエリアはどこまでですか？",
+     "v": "送迎サービスのエリアは決まっておりませんが、基本料金5kmまで片道700円1km毎に110円の距離で料金が加算されます。詳細はお問い合わせ下さい。",
      "src": "https://stella83.net/dog-salon/itabashi/",
      "by": "site",
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "pickup": true
   },
   {
    "id": "PHteddb1e9",
@@ -2244,13 +2040,6 @@
      "checked": "2026-11-22"
     },
     {
-     "k": "料金",
-     "v": "※当日のお世話のご依頼は特別料金（+1,000 円）となります。",
-     "src": "https://catloaf.tokyo/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
      "k": "お支払い",
      "v": "初回お打ち合わせまたは鍵お預かりの際に現金でお支払いいただくか、ご訪問 2 日前までに銀行振込をお願いいたします。",
      "src": "https://catloaf.tokyo/",
@@ -2258,7 +2047,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "荒川区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St0920cdb",
@@ -2292,7 +2083,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "intopet",
+   "area": "板橋区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St6b49d24",
@@ -2310,50 +2103,11 @@
      "src": "https://fuku-pet.jp/?page_id=60",
      "by": "site",
      "checked": "2026-11-22"
-    },
-    {
-     "k": "料金",
-     "v": "8月8日(土)〜8月16日(日)まで夏の繁忙期間としてご予約は基本料金＋繁忙期手数料600円を頂戴いたします。キャンセル料発生日も通常とは異なりますので詳しくは料金表をご確認お願いいたします。",
-     "src": "https://fuku-pet.jp/",
-     "by": "site",
-     "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
-  },
-  {
-   "id": "St3407741",
-   "name": "Apsey DogSALON",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "板橋区",
-   "url": "https://apsey.biz/",
-   "services": "ペットシッター",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "営業時間内、最初の1時間",
-     "src": "https://apsey.biz/menu/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "定休日",
-     "v": "定休 火曜・水曜",
-     "src": "https://apsey.biz/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "お支払い",
-     "v": "QRコード決済 ：PayPay／楽天ペイ／いたばしPay",
-     "src": "https://apsey.biz/faq/",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St644a130",
@@ -2366,13 +2120,6 @@
    "services": "ペットシッター",
    "facts": [
     {
-     "k": "営業・受付時間",
-     "v": "電話受付時間を変更いたしました。9:00〜18:00",
-     "src": "https://www.o3care.jp/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
      "k": "用意するもの",
      "v": "可能な限り細かなことに配慮してお世話したいため、またケア担当が変わった際に速やかに引き継ぎできるように、その子の体重や健康状態、アレルギー、性格やクセ、好きなこと、嫌いなことなどをお聞きしカルテを作成します。3種/5種ワクチン接種や狂犬病ワクチン接種などの証明書もご用意ください。",
      "src": "https://www.o3care.jp/?page=service",
@@ -2380,7 +2127,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St3b5c7bd",
@@ -2400,7 +2149,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "板橋区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St42eb559",
@@ -2412,20 +2163,6 @@
    "url": "https://www.youneko.com/",
    "services": "ペットシッター",
    "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "Mail｜ csinfo@youneko.com TEL/FAX｜03-5676-4540 営業時間｜9：00～19：00",
-     "src": "https://www.youneko.com/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "料金",
-     "v": "また 基本料金に＋500円が加算 となります。何卒、ご理解ご了承いただきたく存じます。",
-     "src": "https://www.youneko.com/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
     {
      "k": "対応エリア",
      "v": "江戸川区・船堀を拠点に、自転車で25分圏内までを対応エリアとしています。",
@@ -2441,7 +2178,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区・船堀を拠点に、自転車で25分圏内までを対応エリアとしています。"
   },
   {
    "id": "Stf3e54a6",
@@ -2461,7 +2200,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "Ste1c1d30",
@@ -2474,13 +2215,6 @@
    "services": "ペットホテル、ペットシッター",
    "facts": [
     {
-     "k": "営業・受付時間",
-     "v": "7日～4日前キャンセルの場合はお支払料金の30％、3日～2日前キャンセルは50％、1日前と当日 キャンセルは100％とさせていただきます。（営業時間の夜8時までにご連絡下さい）",
-     "src": "https://www.petsmile-web.com/petsitter/petsitter_price/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
      "k": "駐車場",
      "v": "1km以上のエリアにつきましては、公共交通機関を使った実費を頂きます。（1km～2kmの地域の方は駐車場代になる場合がございます）",
      "src": "https://www.petsmile-web.com/petsitter/petsitter_price/",
@@ -2488,7 +2222,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St022f913",
@@ -2500,7 +2236,9 @@
    "url": "https://wan-poco.jimdofree.com/",
    "services": "ペットホテル、ペットシッター",
    "facts": [],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St84859fa",
@@ -2520,7 +2258,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "板橋区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "Ste764c2e",
@@ -2554,7 +2294,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St1a3056d",
@@ -2574,7 +2316,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St6573d11",
@@ -2586,7 +2330,9 @@
    "url": "https://www.wansanpo.com/%E3%81%8A%E5%95%8F%E5%90%88%E3%82%8F%E3%81%9B/",
    "services": "ペットホテル、ペットシッター",
    "facts": [],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St8bc8632",
@@ -2613,7 +2359,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "Stde022f1",
@@ -2631,43 +2379,11 @@
      "src": "https://pet-pet.shop/",
      "by": "site",
      "checked": "2026-11-22"
-    },
-    {
-     "k": "料金",
-     "v": "１日1回お散歩付き 追加回数✖️500円",
-     "src": "https://pet-pet.shop/%e3%83%9a%e3%83%83%e3%83%88%e3%83%9b%e3%83%86%e3%83%ab/",
-     "by": "site",
-     "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
-  },
-  {
-   "id": "Stf311118",
-   "name": "Dog Luck",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "板橋区",
-   "url": "https://dogluck.info/",
-   "services": "ペットホテル、ペットシッター",
-   "facts": [
-    {
-     "k": "定休日",
-     "v": "※不定休・完全ご予約制",
-     "src": "https://dogluck.info/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "用意するもの",
-     "v": "■１年以内に各種混合ワクチン、狂犬病の予防接種をしていないワンちゃんはご利用になれません。事前にお済せ下さい。（お預かりの時に接種証明書等で確認させて頂きます）",
-     "src": "https://dogluck.info/category7/",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St9f4a29b",
@@ -2679,13 +2395,6 @@
    "url": "https://www.animal1st.com/",
    "services": "ペットシッター",
    "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "電話受付時間 10:00〜18:00",
-     "src": "https://www.animal1st.com/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
     {
      "k": "用意するもの",
      "v": "猫の場合、三種以上の混合ワクチン接種していることをお申し込みの条件とさせていただいております。",
@@ -2701,7 +2410,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "Stb4dfb84",
@@ -2721,7 +2432,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "対応エリアは江戸川区･​葛飾区･江東区･千葉県市川市を中心に"
   },
   {
    "id": "St52af0aa",
@@ -2741,7 +2454,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St7f49e31",
@@ -2761,19 +2476,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
-  },
-  {
-   "id": "St6c21a2a",
-   "name": "Coussinet",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "荒川区",
-   "url": "https://www.pet2211.com/coussinet/",
-   "services": "ペットホテル、ペットシッター",
-   "facts": [],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "nihon",
+   "area": "足立区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St38e92eb",
@@ -2807,7 +2512,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "荒川区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "St6cfd7ea",
@@ -2819,7 +2526,9 @@
    "url": "https://r.goope.jp/cs-tama/",
    "services": "ペットホテル、ペットシッター",
    "facts": [],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "chain": "indie",
+   "area": "江戸川区とその周り（くわしくは公式サイト）"
   }
  ],
  "trainers": [
@@ -2839,16 +2548,11 @@
      "src": "https://kmdog11.com/kmdog4.html",
      "by": "site",
      "checked": "2026-11-22"
-    },
-    {
-     "k": "用意するもの",
-     "v": "狂犬病ワクチンと混合ワクチンは必要？",
-     "src": "https://kmdog11.com/",
-     "by": "site",
-     "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "addr": "東京都足立区江北七丁目26番3号",
+   "src": "https://kmdog11.com/"
   },
   {
    "id": "Tt95533b1",
@@ -2875,13 +2579,6 @@
      "checked": "2026-11-22"
     },
     {
-     "k": "料金",
-     "v": "面会レッスン代 1回 5,000円 × 3回 = 15,000円",
-     "src": "https://wankoto-wa.com/training-2/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
      "k": "用意するもの",
      "v": "・利用日から一年以内の狂犬病の予防接種",
      "src": "https://wankoto-wa.com/tos/",
@@ -2896,7 +2593,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "addr": "東京都足立区入谷一丁目9番18号",
+   "src": "https://wankoto-wa.com/"
   },
   {
    "id": "Ttd367c1a",
@@ -2923,7 +2622,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "addr": "東京都足立区東和五丁目5番25号",
+   "src": "https://tokyo-dogs.com/store/adachi/"
   },
   {
    "id": "Tt162b640",
@@ -2936,13 +2637,6 @@
    "services": "しつけ",
    "facts": [
     {
-     "k": "営業・受付時間",
-     "v": "開院時間 午前 10:00～12:30",
-     "src": "https://dogtown-azusawa-clinic.com/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
      "k": "駐車場",
      "v": "駐車場 3台",
      "src": "https://dogtown-azusawa-clinic.com/",
@@ -2950,7 +2644,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "addr": "東京都板橋区小豆沢二丁目35番8号",
+   "src": "https://dogtown-azusawa-clinic.com/"
   },
   {
    "id": "Tt9da6169",
@@ -2970,7 +2666,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "addr": "東京都足立区平野一丁目27番20号",
+   "src": "https://wi-thdog.com/"
   },
   {
    "id": "Tt3b3fbed",
@@ -2990,7 +2688,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "addr": "東京都足立区小台二丁目10番18号",
+   "src": "https://www.crown-dog.com/"
   },
   {
    "id": "Tt1d349a0",
@@ -3002,7 +2702,9 @@
    "url": "https://totalanimaladvice.wixsite.com/mysite",
    "services": "しつけ",
    "facts": [],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "addr": "東京都足立区関原二丁目5番7号",
+   "src": "https://totalanimaladvice.wixsite.com/mysite"
   },
   {
    "id": "Ttd4c4313",
@@ -3029,7 +2731,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "addr": "東京都板橋区東坂下二丁目12番8号",
+   "src": "https://www.olympic-corp.co.jp/petia/shop/P48"
   },
   {
    "id": "Tt2399af4",
@@ -3057,7 +2761,7 @@
     },
     {
      "k": "料金",
-     "v": "＊オプション自宅レッスン1回1時間 3,000円（税込）",
+     "v": "１レッスン（1時間くらい）5,000円 4回コース 18,000円",
      "src": "https://fairy-dog.com/training.html",
      "by": "site",
      "checked": "2026-11-22"
@@ -3077,7 +2781,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "addr": "東京都足立区栗原三丁目12番8号",
+   "src": "https://fairy-dog.com/"
   },
   {
    "id": "Tt0396327",
@@ -3087,7 +2793,7 @@
    ],
    "city": "足立区",
    "url": "https://louis-no-siqqo.jimdoweb.com/%E3%81%94%E5%88%A9%E7%94%A8%E6%96%99%E9%87%91%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85/",
-   "services": "ペットホテル、しつけ、老犬ホーム",
+   "services": "ペットホテル、しつけ",
    "facts": [
     {
      "k": "定休日",
@@ -3097,7 +2803,9 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "addr": "東京都足立区中川三丁目8番15号",
+   "src": "https://louis-no-siqqo.jimdoweb.com/%E3%81%94%E5%88%A9%E7%94%A8%E6%96%99%E9%87%91%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85/"
   },
   {
    "id": "Ttde022f1",
@@ -3115,16 +2823,11 @@
      "src": "https://pet-pet.shop/",
      "by": "site",
      "checked": "2026-11-22"
-    },
-    {
-     "k": "料金",
-     "v": "１日1回お散歩付き 追加回数✖️500円",
-     "src": "https://pet-pet.shop/%e3%83%9a%e3%83%83%e3%83%88%e3%83%9b%e3%83%86%e3%83%ab/",
-     "by": "site",
-     "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "addr": "東京都足立区舎人五丁目27番12号",
+   "src": "https://pet-pet.shop/"
   },
   {
    "id": "Tt53a437a",
@@ -3135,16 +2838,10 @@
    "city": "荒川区",
    "url": "https://arch-dogtraining.com/",
    "services": "ペットホテル、しつけ",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "電話受付時間：8:00～20:00 年中無休",
-     "src": "https://arch-dogtraining.com/",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
-   "checked": "2026-11-22"
+   "facts": [],
+   "checked": "2026-11-22",
+   "addr": "東京都荒川区西日暮里六丁目30番7号",
+   "src": "https://arch-dogtraining.com/"
   },
   {
    "id": "Tt38e92eb",
@@ -3178,23 +2875,12 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "addr": "東京都荒川区町屋一丁目19番6号",
+   "src": "https://www.doggyheart.net/"
   }
  ],
  "homes": [
-  {
-   "id": "Rt17036b6",
-   "name": "ペットサロンCOCOSIA板橋店",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "板橋区",
-   "url": "https://cocosia-pet.com/",
-   "services": "老犬ホーム",
-   "facts": [],
-   "checked": "2026-11-22",
-   "spec": "老犬ホーム"
-  },
   {
    "id": "Rt3b3fbed",
    "name": "CROWN DOG",
@@ -3214,28 +2900,9 @@
     }
    ],
    "checked": "2026-11-22",
-   "spec": "ペットホテル、しつけ、老犬ホーム"
-  },
-  {
-   "id": "Rt0396327",
-   "name": "Dog Owner’s Lab「ルイスの尻尾」",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "足立区",
-   "url": "https://louis-no-siqqo.jimdoweb.com/%E3%81%94%E5%88%A9%E7%94%A8%E6%96%99%E9%87%91%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85/",
-   "services": "ペットホテル、しつけ、老犬ホーム",
-   "facts": [
-    {
-     "k": "定休日",
-     "v": "お預かり頭数の制限や 不定休などの兼ね合いでお受けできない場合もございます。",
-     "src": "https://louis-no-siqqo.jimdoweb.com/%E3%81%94%E5%88%A9%E7%94%A8%E6%96%99%E9%87%91%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85/",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
-   "checked": "2026-11-22",
-   "spec": "ペットホテル、しつけ、老犬ホーム"
+   "spec": "ペットホテル、しつけ、老犬ホーム",
+   "addr": "東京都足立区小台二丁目10番18号",
+   "animals": "犬"
   }
  ],
  "groomers": [
@@ -3264,89 +2931,8 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
-  },
-  {
-   "id": "Gt1940ef2",
-   "name": "ワンワン 美容室 クラモチ",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "足立区",
-   "url": "https://scarecrow-inc.jp/trimming/salon/tokyo/10281/",
-   "services": "ペットホテル、出張トリミング",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "10:00-19:00 不定休",
-     "src": "https://scarecrow-inc.jp/trimming/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "定休日",
-     "v": "10:00-19:00 不定休",
-     "src": "https://scarecrow-inc.jp/trimming/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "料金",
-     "v": "初回限定でのご来店者様は、基本料金より1000円割引致します。是非、ワンちゃんにあったトリミング技術をご体感下さい！！...",
-     "src": "https://scarecrow-inc.jp/trimming/salon/tokyo/10281/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "送迎",
-     "v": "摂津、一部茨木、高槻、吹田送迎無料 です！",
-     "src": "https://scarecrow-inc.jp/trimming/",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
-   "checked": "2026-11-22"
-  },
-  {
-   "id": "Gt86d493d",
-   "name": "ペットサロン アンファン",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "板橋区",
-   "url": "https://scarecrow-inc.jp/trimming/salon/tokyo/10342/",
-   "services": "ペットホテル、出張トリミング",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "10:00-19:00 不定休",
-     "src": "https://scarecrow-inc.jp/trimming/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "定休日",
-     "v": "10:00-19:00 不定休",
-     "src": "https://scarecrow-inc.jp/trimming/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "料金",
-     "v": "初回限定でのご来店者様は、基本料金より1000円割引致します。是非、ワンちゃんにあったトリミング技術をご体感下さい！！...",
-     "src": "https://scarecrow-inc.jp/trimming/salon/tokyo/10342/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "送迎",
-     "v": "摂津、一部茨木、高槻、吹田送迎無料 です！",
-     "src": "https://scarecrow-inc.jp/trimming/",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "area": "出張エリア、 足立区 、 葛飾区 、荒川区、サービス内容"
   },
   {
    "id": "Gt7f49e31",
@@ -3366,7 +2952,8 @@
      "checked": "2026-11-22"
     }
    ],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "area": "足立区とその周り（くわしくは公式サイト）"
   },
   {
    "id": "Gte7bba97",
@@ -3378,7 +2965,8 @@
    "url": "https://r.goope.jp/ktch2017/",
    "services": "出張トリミング",
    "facts": [],
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "area": "足立区とその周り（くわしくは公式サイト）"
   }
  ]
 }

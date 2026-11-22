@@ -103,7 +103,7 @@ def main():
         stat['closed' if closed else 'official'] += 1
         res.append({**{k: it[k] for k in ('id', 'pref', 'city', 'name', 'addr', 'types')},
                     'state': 'closed' if closed else 'official', 'match': ('addr' if a else '') + ('name' if n else ''),
-                    'url': s.get('final') or s.get('url'), 'title': s.get('title', ''), 'cats': cats, 'facts': facts_of(s)})
+                    'url': s.get('final') or s.get('url'), 'title': s.get('title', ''), 'cats': cats, 'facts': facts_of(s), 'lines': [l for pg in s.get('pages', []) for l in (pg.get('lines') or [])][:400]})
     json.dump(res, open(dst, 'w'), ensure_ascii=False, indent=0)
     import collections
     c = collections.Counter(c for r in res if r['state'] == 'official' for c in (r['cats'] or ['none']))
