@@ -1,5 +1,5 @@
 {
- "_説明": "大型犬OK・猫専用のペットホテルの一覧（/pet-hotel/）のデータ。公式サイトで確かめたことだけ（料金・順位・電話番号は書かない）。large＝大型犬を受けると公式サイトに書いてある（large_basis：『文』＝大型犬OKなどの文、『料金表』＝ホテルの料金表に大型犬・超大型犬・30kg以上などの区分がある）。large_from_kg＝その施設の料金表で『大型犬』が始まる体重、max_kg＝受けられる上限。cat_only＝猫専用の施設、separate＝犬も預かるが猫を分けている形。cat・vet（動物病院の併設・運営）・pickup・senior・night_staff・camera・run・private_room は公式サイトにはっきり書いてあるときだけ。載せない：大型犬は『ご相談』だけ、猫を犬と同じ部屋で預かる、新規停止・中止、公式サイトのない・開けない、予約仲介サイト。 trust＝安心して預けるための材料（2026-11-16、tools/hotel_trust_harvest.py で公式サイトの文を集め、人が読んで入れた）：reg＝動物取扱業の登録（no・kind・auth・until、by＝site はホテルの公式サイト・registry は自治体が公開している登録の一覧、registry＝一覧でも合った）、night・vet・report・camera・visit・trial・vaccine＝v（カードの言葉）・quote（公式サイトの文）・src・checked。書いていないことは入れない。",
+ "_説明": "大型犬OK・猫専用のペットホテルの一覧（/pet-hotel/）のデータ。公式サイトで確かめたことだけ（料金は公式サイトに書いてある分だけ facts に。順位・電話番号は書かない）。large＝大型犬を受けると公式サイトに書いてある（large_basis：『文』＝大型犬OKなどの文、『料金表』＝ホテルの料金表に大型犬・超大型犬・30kg以上などの区分がある）。large_from_kg＝その施設の料金表で『大型犬』が始まる体重、max_kg＝受けられる上限。cat_only＝猫専用の施設、separate＝犬も預かるが猫を分けている形。cat・vet（動物病院の併設・運営）・pickup・senior・night_staff・camera・run・private_room は公式サイトにはっきり書いてあるときだけ。載せない：大型犬は『ご相談』だけ、猫を犬と同じ部屋で預かる、新規停止・中止、公式サイトのない・開けない、予約仲介サイト。 trust＝安心して預けるための材料（2026-11-16、tools/hotel_trust_harvest.py で公式サイトの文を集め、人が読んで入れた）：reg＝動物取扱業の登録（no・kind・auth・until、by＝site はホテルの公式サイト・registry は自治体が公開している登録の一覧、registry＝一覧でも合った）、night・vet・report・camera・visit・trial・vaccine＝v（カードの言葉）・quote（公式サイトの文）・src・checked。書いていないことは入れない。",
  "checked": "2026-11-02",
  "hotels": [
   {
@@ -3625,6 +3625,1658 @@
      "checked": "2026-11-16"
     }
    }
+  },
+  {
+   "id": "PH109",
+   "name": "猫専用マアル",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "旭川市",
+   "url": "https://psmaaru.com/cat-hotel/",
+   "services": "猫だけを預かるペットホテル。ペットシッターも",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊3,400円から",
+     "src": "https://psmaaru.com/cat-hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付は9時から19時",
+     "src": "https://psmaaru.com/cat-hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ご飯・猫トイレ・ワクチン接種証明書・お気に入りの物",
+     "src": "https://psmaaru.com/cat-hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ご飯・猫トイレ・ワクチン接種証明書・お気に入りの物をご用意ください。",
+     "src": "https://psmaaru.com/cat-hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH110",
+   "name": "キャットホテル猫八",
+   "prefs": [
+    "青森県"
+   ],
+   "city": "八戸市",
+   "url": "https://www.cafeneko8.com/%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E7%8C%AB%E5%85%AB",
+   "services": "ねこカフェ猫八の猫専用ホテル",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00（最終受付18:30）",
+     "src": "https://www.cafeneko8.com/%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E7%8C%AB%E5%85%AB",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "3種混合ワクチンを1年以内に接種済みで、接種後1週間以上経過していること",
+     "src": "https://www.cafeneko8.com/%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E7%8C%AB%E5%85%AB",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH111",
+   "name": "青森動物医療センター ペットホテル",
+   "prefs": [
+    "青森県"
+   ],
+   "city": "青森市",
+   "url": "https://aamc.aomori.jp/%e6%8f%90%e4%be%9b%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9/%e3%83%9a%e3%83%83%e3%83%88%e3%83%9b%e3%83%86%e3%83%ab/",
+   "services": "動物病院のペットホテル。大型犬・超大型犬も料金表あり",
+   "large": true,
+   "large_basis": "料金表",
+   "vet": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日 1,450円から。大型犬3,800円・超大型犬5,500円",
+     "src": "https://aamc.aomori.jp/%e6%8f%90%e4%be%9b%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9/%e3%83%9a%e3%83%83%e3%83%88%e3%83%9b%e3%83%86%e3%83%ab/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチン接種済みの子だけ",
+     "quote": "お預かりはワクチン接種済みの動物に限ります。",
+     "src": "https://aamc.aomori.jp/%e6%8f%90%e4%be%9b%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9/%e3%83%9a%e3%83%83%e3%83%88%e3%83%9b%e3%83%86%e3%83%ab/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH112",
+   "name": "完全個室ペットホテル てん",
+   "prefs": [
+    "岩手県"
+   ],
+   "city": "滝沢市",
+   "url": "https://www.pethotelricky.com/",
+   "services": "完全個室のペットホテル（盛岡市・滝沢市）",
+   "large": true,
+   "max_kg": 30,
+   "private_room": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬1泊5,500円（2匹目から4,500円）、ショートステイ3,300円",
+     "src": "https://www.pethotelricky.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://www.pethotelricky.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.pethotelricky.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH113",
+   "name": "withDOG ペットホテル",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市",
+   "url": "https://withdog-sendai.jp/pethotel/",
+   "services": "トリミングサロンのペットホテル。運動タイムあり。大型犬・超大型犬の料金表あり",
+   "large": true,
+   "large_basis": "料金表",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:30（時間外は8:00〜19:00で別料金）",
+     "src": "https://withdog-sendai.jp/pethotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "料金",
+     "v": "多頭は2頭目から20%オフ（連休などは除く）。繁忙期は1泊+500円",
+     "src": "https://withdog-sendai.jp/pethotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH114",
+   "name": "DOGHEARTS ペットホテル",
+   "prefs": [
+    "山形県"
+   ],
+   "city": "村山市",
+   "url": "https://www.doghearts2010.com/hotel/",
+   "services": "ペットサロンのペットホテル。大型犬の料金表あり。営業時間外も相談可",
+   "large": true,
+   "large_basis": "料金表",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "2,000円から。大型犬3,000円・4,500円",
+     "src": "https://www.doghearts2010.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "対象の動物",
+     "v": "年に一度のワクチン接種と健康診断が必要",
+     "src": "https://www.doghearts2010.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH115",
+   "name": "大竹動物病院 ペットホテル",
+   "prefs": [
+    "山形県"
+   ],
+   "city": "南陽市",
+   "url": "https://otake-m.com/hotel/",
+   "services": "動物病院のペットホテル。大型犬・超大型犬の料金表あり。キャットホテルは別",
+   "large": true,
+   "large_basis": "料金表",
+   "vet": true,
+   "separate": "キャットホテルは別",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9時〜17時",
+     "src": "https://otake-m.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日",
+     "src": "https://otake-m.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "他院で接種済みの方は証明書をお持ちください。",
+     "src": "https://otake-m.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH116",
+   "name": "Peach Lily Dog Hotel",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://peach-lily-dog-hotel.com/",
+   "services": "動物病院併設の犬のホテル。大型犬の料金表あり",
+   "large": true,
+   "large_basis": "料金表",
+   "vet": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬1泊2日4,295円から。滞在中に併設サロンを使うと美容料金1,000円引き",
+     "src": "https://peach-lily-dog-hotel.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "予約フォームの送信で受付",
+     "src": "https://peach-lily-dog-hotel.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH117",
+   "name": "ビークラブ猫店 猫専用ペットホテル",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://cats.beeclub.co.jp/hotel",
+   "services": "猫専門スタッフの猫専用ホテル",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日6,600円（報告付き7,150円）。年末年始・お盆は1泊+550円。連泊は10〜30%オフ",
+     "src": "https://cats.beeclub.co.jp/hotel",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH118",
+   "name": "ANIMA動物医療センター ペットホテル",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "土浦市",
+   "url": "https://www.animavetlife.com/admission-guidance",
+   "services": "動物病院のペットホテル。エキゾチックアニマルも",
+   "large": true,
+   "large_basis": "料金表",
+   "max_kg": 30,
+   "vet": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型〜中型犬（15kg以下）・猫3,000円、大型犬（15〜30kg）4,000円、超大型犬（30kg以上）相談、エキゾチック3,500円から。お盆・年末年始は+500円",
+     "src": "https://www.animavetlife.com/admission-guidance",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH119",
+   "name": "動物病院ハートランド ペットホテル",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://ah-heartland.jp/service/hotel/",
+   "services": "動物病院のペットホテル。超大型犬（30kg〜）まで料金表あり",
+   "large": true,
+   "large_basis": "料金表",
+   "vet": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付 9:00〜11:30／16:00〜18:30",
+     "src": "https://ah-heartland.jp/service/hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "駐車場",
+     "v": "第2駐車場あり 計35台",
+     "src": "https://ah-heartland.jp/service/hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ご利用には、1年以内の混合ワクチン・狂犬病ワクチンの接種、フィラリア・ノミダニ予防が必要です。",
+     "src": "https://ah-heartland.jp/service/hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH120",
+   "name": "ペットホテル アットホームプレイス",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://catathomeplace.wixsite.com/-site",
+   "services": "猫専門のペットホテル",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊（24時間）4,000円から。2匹目は1泊500円引き",
+     "src": "https://catathomeplace.wixsite.com/-site",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金",
+     "src": "https://catathomeplace.wixsite.com/-site",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH121",
+   "name": "宇都宮白沢動物病院 ペットホテル",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://utsunomiya-ah.com/pet_hotel/",
+   "services": "動物病院のペットホテル。大型犬は体重別の追加料金",
+   "large": true,
+   "large_basis": "料金表",
+   "vet": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日3,500円（診察料別）。20kg〜+1,000円、30kg〜+2,000円、40kg〜+3,000円",
+     "src": "https://utsunomiya-ah.com/pet_hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "駐車場",
+     "v": "5台",
+     "src": "https://utsunomiya-ah.com/pet_hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "電話",
+     "src": "https://utsunomiya-ah.com/pet_hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH122",
+   "name": "安中動物病院 ペットホテル",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://annaka-animal.com/pethotel/",
+   "services": "動物病院のペットホテル。特大犬（25kg〜）まで料金表あり。送迎あり",
+   "large": true,
+   "large_basis": "料金表",
+   "vet": true,
+   "pickup": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "3,850円から（小型犬7kgまで）、特大犬（25kg〜）5,500円",
+     "src": "https://annaka-animal.com/pethotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎費用1,650円から",
+     "src": "https://annaka-animal.com/pethotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付 9:00〜11:30、16:00〜18:30",
+     "src": "https://annaka-animal.com/pethotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "1年以内の混合ワクチンが必要",
+     "quote": "１年以内の混合ワクチン接種・ノミダニ予防をしているペットのみの",
+     "src": "https://annaka-animal.com/pethotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH123",
+   "name": "のんびーはうす",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市見沼区",
+   "url": "https://www.nonby-house.com/",
+   "services": "犬と猫のペットホテル・トリミング・幼稚園。大型犬はスイートルーム",
+   "large": true,
+   "large_basis": "文",
+   "pickup": true,
+   "separate": "猫ちゃんのお部屋あり",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "火曜日（祝日・繁忙期は営業のことあり）",
+     "src": "https://www.nonby-house.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "駐車場",
+     "v": "敷地内とお店の正面",
+     "src": "https://www.nonby-house.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "料金",
+     "v": "朝9:00〜翌日18:00までで1泊の料金",
+     "src": "https://www.nonby-house.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "お支払い",
+     "v": "預けるときに一括",
+     "src": "https://www.nonby-house.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH124",
+   "name": "CATオアシス",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市花見川区",
+   "url": "https://cat-oasis.jp/",
+   "services": "猫だけを預かる猫専用ホテル（幕張駅・新検見川駅）",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊（24時間）3,850円、延長1時間275円",
+     "src": "https://cat-oasis.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "水・木曜（相談可）",
+     "src": "https://cat-oasis.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH125",
+   "name": "dog studio LOVE WOOF!! ペットホテル",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "新宿区",
+   "url": "https://lovewoof.co.jp/hotel.html",
+   "services": "犬のペットホテル・一時預かり。大型犬（16〜30kg）向けの部屋あり",
+   "large": true,
+   "large_basis": "料金表",
+   "max_kg": 30,
+   "pickup": true,
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "利用確定分は先払い",
+     "src": "https://lovewoof.co.jp/hotel.html",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH126",
+   "name": "キャッツカートン",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "荒川区",
+   "url": "https://cats-karton.com/",
+   "services": "猫専用のペットホテル。広い個室で全室ウェブカメラ",
+   "cat_only": true,
+   "cat": true,
+   "camera": true,
+   "private_room": true,
+   "facts": [],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH127",
+   "name": "ニャンズルーム",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市南区",
+   "url": "http://nyansroom.jp/",
+   "services": "猫だけを預かる猫ホテル",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "2,000円〜3,000円（スプレー癖などは1日1,000円加算）",
+     "src": "http://nyansroom.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休（予約のない日は休み）",
+     "src": "http://nyansroom.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン接種を原則と致します。ワクチン接種証明書をご掲示下さい",
+     "src": "http://nyansroom.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH128",
+   "name": "わんちゃんの広場ohana. ペットホテル",
+   "prefs": [
+    "富山県"
+   ],
+   "city": "中新川郡立山町",
+   "url": "https://wankohiroba.com/hotel",
+   "services": "超大型犬も大歓迎の犬のホテル。専用の個室とドッグランでのお散歩",
+   "large": true,
+   "large_basis": "文",
+   "private_room": true,
+   "run": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "平日9:00〜17:00、土日祝9:00〜18:00（引き渡しは営業時間のみ）",
+     "src": "https://wankohiroba.com/hotel",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "送迎",
+     "v": "要相談",
+     "src": "https://wankohiroba.com/hotel",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH129",
+   "name": "cat salon Yuki ペットホテル",
+   "prefs": [
+    "富山県"
+   ],
+   "city": "富山市",
+   "url": "https://catsalonyuki.com/pethotel.html",
+   "services": "猫ちゃん専用のホテル（予約制）",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "火曜日",
+     "src": "https://catsalonyuki.com/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "１年以内に混合ワクチンを接種している（ワクチン証明書の提示をお願いいたします。）",
+     "src": "https://catsalonyuki.com/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH130",
+   "name": "ペッテルかなざわ",
+   "prefs": [
+    "石川県"
+   ],
+   "city": "金沢市",
+   "url": "https://pettel-k.com/",
+   "services": "犬猫のトリミングサロン・ホテル。猫・大型犬・シニア犬もOK",
+   "large": true,
+   "large_basis": "文",
+   "senior": true,
+   "pickup": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00（受付は営業時間内だけ）",
+     "src": "https://pettel-k.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "年中無休",
+     "src": "https://pettel-k.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "送迎",
+     "v": "自宅からの送迎あり（有料）",
+     "src": "https://pettel-k.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH131",
+   "name": "VOWWOW（バウワウ）",
+   "prefs": [
+    "福井県"
+   ],
+   "city": "福井市",
+   "url": "https://www.vowwow.net/hotel",
+   "services": "完全個室のペットホテル。大型犬はデラックスルーム以上、猫も",
+   "large": true,
+   "large_basis": "料金表",
+   "private_room": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日5,000円から。金土日祝・祝前日は1頭1,000円アップ、大型連休は2,000円アップ",
+     "src": "https://www.vowwow.net/hotel",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "アーリーチェックイン（9:10〜15:00）・レイトチェックアウト（12:00〜18:00）は各2,000円",
+     "src": "https://www.vowwow.net/hotel",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ご利用前1年以内に5種類以上の混合ワクチンおよび狂犬病のワクチンを接種されている",
+     "src": "https://www.vowwow.net/hotel",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH132",
+   "name": "小春どうぶつクリニック ペットホテル",
+   "prefs": [
+    "福井県"
+   ],
+   "city": "福井市",
+   "url": "https://www.koharuacl.com/hotel",
+   "services": "動物病院のペットホテル。一泊・半日預かり。大型犬の料金表あり",
+   "large": true,
+   "large_basis": "料金表",
+   "vet": true,
+   "separate": "猫ちゃん専用のお部屋",
+   "facts": [],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH133",
+   "name": "松崎動物病院 ペットホテル",
+   "prefs": [
+    "福井県"
+   ],
+   "city": "坂井市",
+   "url": "https://matsuzaki-ah.co.jp/pet-hotel/",
+   "services": "動物病院のペットホテル。大型犬（20kg以上）も",
+   "large": true,
+   "large_basis": "料金表",
+   "vet": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "一泊2,500円から。大型犬（20kg以上）一泊3,500円（翌日昼12:00までの引き取り）",
+     "src": "https://matsuzaki-ah.co.jp/pet-hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "この病院で1年以内にワクチンを受けた子だけ",
+     "quote": "当院にて1年以内にワクチン接種を受けているペットに限ります",
+     "src": "https://matsuzaki-ah.co.jp/pet-hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH134",
+   "name": "猫ホテル 宿と猫",
+   "prefs": [
+    "福井県"
+   ],
+   "city": "福井市",
+   "url": "https://yadotoneko.com/service/",
+   "services": "猫専用のホテル",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "https://yadotoneko.com/service/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://yadotoneko.com/service/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "必ずワクチン接種証明が必要",
+     "src": "https://yadotoneko.com/service/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH135",
+   "name": "ペットサロン テディーハウス ペットホテル",
+   "prefs": [
+    "山梨県"
+   ],
+   "city": "甲斐市",
+   "url": "https://teddyhouse.jp/pet_hotel/",
+   "services": "ペットサロンのホテル。大型犬の料金表あり。室内ドッグラン",
+   "large": true,
+   "large_basis": "料金表",
+   "pickup": true,
+   "run": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00",
+     "src": "https://teddyhouse.jp/pet_hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "年中無休",
+     "src": "https://teddyhouse.jp/pet_hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "送迎",
+     "v": "半径10km以内は無料",
+     "src": "https://teddyhouse.jp/pet_hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "料金",
+     "v": "1週間以上は2泊目から毎日550円引き",
+     "src": "https://teddyhouse.jp/pet_hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH136",
+   "name": "ノア動物病院 ペットホテル",
+   "prefs": [
+    "山梨県"
+   ],
+   "city": "甲府市",
+   "url": "https://noah-vet.co.jp/services/hotel/",
+   "services": "動物病院のペットホテル。犬は40kgまで体重別の料金表",
+   "large": true,
+   "large_basis": "料金表",
+   "max_kg": 40,
+   "vet": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "犬5kg以下 4,620円から（体重別）",
+     "src": "https://noah-vet.co.jp/services/hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH137",
+   "name": "MC Kofu ペットホテル",
+   "prefs": [
+    "山梨県"
+   ],
+   "city": "甲府市",
+   "url": "http://www.mycatkofu.com/?page=page16",
+   "services": "猫専用のホテル",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "11:00〜19:00",
+     "src": "http://www.mycatkofu.com/?page=page16",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "料金",
+     "v": "年末年始は1泊3,100円",
+     "src": "http://www.mycatkofu.com/?page=page16",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン接種証明書（1年以内のもの）",
+     "src": "http://www.mycatkofu.com/?page=page16",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH138",
+   "name": "甲府ユリイカ動物病院 ペットホテル",
+   "prefs": [
+    "山梨県"
+   ],
+   "city": "甲府市",
+   "url": "https://eureka-ah.com/pethotel/",
+   "services": "動物病院のペットホテル。大型犬（30kg位まで）",
+   "large": true,
+   "large_basis": "料金表",
+   "max_kg": 30,
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "11台",
+     "src": "https://eureka-ah.com/pethotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内の狂犬病予防注射・混合ワクチン（証明書をお持ちください。）",
+     "src": "https://eureka-ah.com/pethotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH139",
+   "name": "佐々木動物病院 ペットホテル",
+   "prefs": [
+    "長野県"
+   ],
+   "city": "飯田市",
+   "url": "https://officesasaki.co.jp/about/pethotel/",
+   "services": "動物病院のペットホテル。大型犬（ゴールデン・シェパードなど）も",
+   "large": true,
+   "large_basis": "料金表",
+   "vet": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "3,800円から。大型犬5,500円〜6,000円（24時間以内）",
+     "src": "https://officesasaki.co.jp/about/pethotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "犬は10種混合ワクチンが必要",
+     "quote": "犬はレプトスピラを含めた10種混合ワクチン接種",
+     "src": "https://officesasaki.co.jp/about/pethotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH140",
+   "name": "RAGMEE 猫専門サロン",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "羽島郡笠松町",
+   "url": "https://ragmee.com/",
+   "services": "猫専門のトリミングサロン・ペットホテル",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜16:30",
+     "src": "https://ragmee.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://ragmee.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH141",
+   "name": "Pet HOTEL mimi",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "多治見市",
+   "url": "https://pethotel-mimi.com/plan/",
+   "services": "猫専用ペットホテル（宿泊だけ）",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日1匹6,000円、1泊追加ごとに+5,000円（ハイシーズン料金あり）",
+     "src": "https://pethotel-mimi.com/plan/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日",
+     "src": "https://pethotel-mimi.com/plan/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH142",
+   "name": "HAPPY WITH 猫専用ホテル",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市中川区",
+   "url": "https://happywith.pet/cathotel/",
+   "services": "猫専用ホテル。送迎もあり（別料金）",
+   "cat_only": true,
+   "cat": true,
+   "pickup": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜20:00（受付9:00〜18:00）",
+     "src": "https://happywith.pet/cathotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "料金",
+     "v": "1匹6,710円、2匹7,260円、3匹8,360円",
+     "src": "https://happywith.pet/cathotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH143",
+   "name": "ねこのホテル ちぐら",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市西区",
+   "url": "https://www.nekocigura.com/",
+   "services": "ケージレスの猫のペットホテル",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日6,000円から",
+     "src": "https://www.nekocigura.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "駐車場",
+     "v": "1Fに2台と近くに1台",
+     "src": "https://www.nekocigura.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン接種証明書、身分証明書、利用規約への同意書の確認をさせていただきます。",
+     "src": "https://www.nekocigura.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH144",
+   "name": "猫専用ホテルにゃん",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "三重郡川越町",
+   "url": "https://cathotel-nyan.com/",
+   "services": "猫専用ホテル。見学会あり",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日6,050円、2匹目から同室1,100円、朝6時からの預かり・夜21時までのお迎えは1時間880円",
+     "src": "https://cathotel-nyan.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "1年以内の混合ワクチンが必要",
+     "quote": "1年以内に混合ワクチンを接種していないとお預かりできません。",
+     "src": "https://cathotel-nyan.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH145",
+   "name": "ドッグサロンワンワン ドッグホテル",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "守山市",
+   "url": "https://www.dogsalonwanwan.com/hotel",
+   "services": "ドッグサロンの犬のホテル。大型犬の料金表あり",
+   "large": true,
+   "large_basis": "料金表",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "2,200円×日数から（大型犬3,300円×日数）",
+     "src": "https://www.dogsalonwanwan.com/hotel",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00（時間外は相談）",
+     "src": "https://www.dogsalonwanwan.com/hotel",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH146",
+   "name": "ドッグサロンOz ペットホテル",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "栗東市",
+   "url": "https://dogsalon-oz.com/pet-hotel",
+   "services": "ドッグサロンのホテル。20kg以上の料金表あり、大型犬はVIPルーム",
+   "large": true,
+   "large_basis": "料金表",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬1泊4,400円（24時間を超えると預かり料金）。年末年始・お盆・GWは20%増し",
+     "src": "https://dogsalon-oz.com/pet-hotel",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH147",
+   "name": "下京ねこの宿",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市下京区",
+   "url": "https://www.ani-vet.com/neconoyado",
+   "services": "猫専門の獣医師が管理する個室の猫ホテル（四条烏丸から徒歩約10分）",
+   "cat_only": true,
+   "cat": true,
+   "vet": true,
+   "private_room": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1部屋1頭6,000円（税別）、同室に1頭追加4,000円（税別）",
+     "src": "https://www.ani-vet.com/neconoyado",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "送迎",
+     "v": "応相談",
+     "src": "https://www.ani-vet.com/neconoyado",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "1年以内のワクチン接種",
+     "src": "https://www.ani-vet.com/neconoyado",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH148",
+   "name": "ねこのホテルsumi",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "西宮市",
+   "url": "https://www.nekohotel-sumi.com/",
+   "services": "猫のホテル",
+   "cat_only": true,
+   "cat": true,
+   "facts": [],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチンの証明が必要",
+     "quote": "ワクチン証明書。（紛失した場合はご相談ください）",
+     "src": "https://www.nekohotel-sumi.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH149",
+   "name": "にゃんこのおやど",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "尼崎市",
+   "url": "https://hccweb5.bai.ne.jp/nyankonooyado/",
+   "services": "猫好きの夫婦がつくった猫専用ペットホテル",
+   "cat_only": true,
+   "cat": true,
+   "facts": [],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH150",
+   "name": "あや動物病院 ペットホテル",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "奈良市",
+   "url": "https://aya-ah.com/hotel/",
+   "services": "動物病院のペットホテル。大型犬・超大型犬の料金表あり",
+   "large": true,
+   "large_basis": "料金表",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "無料25台（第1駐車場18台・第2駐車場7台）",
+     "src": "https://aya-ah.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "この病院で混合ワクチンとノミダニ予防をした子だけ",
+     "quote": "当院にて混合ワクチン&ノミダニ予防をされている方に限らせていただきます",
+     "src": "https://aya-ah.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH151",
+   "name": "ペット美容&ペットホテル チャシロー",
+   "prefs": [
+    "和歌山県"
+   ],
+   "city": "和歌山市",
+   "url": "https://www.chashirooo.com/",
+   "services": "大型犬から小型の室内犬・猫まで預かるペットホテル",
+   "large": true,
+   "large_basis": "文",
+   "facts": [],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "ワクチン接種とノミ・ダニ駆除が必要",
+     "quote": "ワクチン未接種、ノミ・ダニ駆除をしていないワンちゃんネコちゃんはお預かりできません",
+     "src": "https://www.chashirooo.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH152",
+   "name": "猫・夢空間 気ままなみーこ",
+   "prefs": [
+    "和歌山県"
+   ],
+   "city": "和歌山市",
+   "url": "https://www.kimamana-miiko.jp/",
+   "services": "猫カフェ・猫美容・猫のペットホテル",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊3,500円（ハウス持ち込み3,000円）。年末年始は1日1,000円から割増",
+     "src": "https://www.kimamana-miiko.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "11時〜16時（時間外は延長料金1,000円から相談可）",
+     "src": "https://www.kimamana-miiko.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日・第1水曜日",
+     "src": "https://www.kimamana-miiko.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "不妊・去勢手術、ワクチン、ノミ取りが済んだ猫だけ",
+     "quote": "基本手術、ワクチン、ノミ取り薬が済みの猫ちゃんに限ります",
+     "src": "https://www.kimamana-miiko.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH153",
+   "name": "しまね ねこといぬのおうち",
+   "prefs": [
+    "島根県"
+   ],
+   "city": "松江市",
+   "url": "https://shimane-nekonoouchi.crayonsite.info/",
+   "services": "ペットホテル・ペットシッター。大型犬（20kg以上）の料金あり",
+   "large": true,
+   "large_basis": "料金表",
+   "pickup": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "猫1匹1泊3,800円から、小型犬4,500円から、大型犬（20kg以上）7,000円から",
+     "src": "https://shimane-nekonoouchi.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://shimane-nekonoouchi.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり",
+     "src": "https://shimane-nekonoouchi.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "送迎",
+     "v": "松江市内",
+     "src": "https://shimane-nekonoouchi.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH154",
+   "name": "みにまるず",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "丸亀市",
+   "url": "https://minimaruzu.com/",
+   "services": "ペットシッター＆ペットホテル。小型〜大型犬・猫・小動物・鳥",
+   "large": true,
+   "large_basis": "文",
+   "pickup": true,
+   "facts": [],
+   "checked": "2026-11-22",
+   "night_staff": true
+  },
+  {
+   "id": "PH155",
+   "name": "PAWSOME（パウサム）",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "松山市",
+   "url": "https://pawsome-ehime.jp/",
+   "services": "犬の保育園&ペットホテル。超大型犬も泊まれる",
+   "large": true,
+   "large_basis": "文",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "超大型犬（40kg以上）は1泊1,000円追加",
+     "src": "https://pawsome-ehime.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "送迎",
+     "v": "松山市内（オプション）",
+     "src": "https://pawsome-ehime.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり",
+     "src": "https://pawsome-ehime.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH156",
+   "name": "ねこちゃる キャットホテル",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "松山市",
+   "url": "https://necocyaru.com/",
+   "services": "猫のホテル（長期も）",
+   "cat_only": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00",
+     "src": "https://necocyaru.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://necocyaru.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "はじめての方はホームページの問い合わせから（当日・直前は受けない）",
+     "src": "https://necocyaru.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "混合ワクチンが必要",
+     "quote": "混合ワクチンを未接種の猫ちゃんは、お預かりできません。",
+     "src": "https://necocyaru.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH157",
+   "name": "ペットStep ペットホテル",
+   "prefs": [
+    "高知県"
+   ],
+   "city": "高知市",
+   "url": "https://www.petstep.jp/trimming_hoterl/hotel.html",
+   "services": "1泊2日単位のペットホテル。大型犬も",
+   "large": true,
+   "large_basis": "料金表",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "大型犬は1泊1,100円追加。営業時間外の対応は1頭1,100円",
+     "src": "https://www.petstep.jp/trimming_hoterl/hotel.html",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "1年以内のワクチンが必要",
+     "quote": "1年以内に狂犬病、伝染病のワクチンを接種されているワンちゃんに限ります。",
+     "src": "https://www.petstep.jp/trimming_hoterl/hotel.html",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH158",
+   "name": "ドックカールトン大分店",
+   "prefs": [
+    "大分県"
+   ],
+   "city": "大分市",
+   "url": "https://dockcarlton.jp/",
+   "services": "泊まって健康になれるペットホテル。大型犬はデラックス・コネクティングルームも",
+   "large": true,
+   "large_basis": "料金表",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "大型犬6,600円（デラックスルーム8,800円、コネクティングルーム15,400円）",
+     "src": "https://dockcarlton.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:30〜18:00",
+     "src": "https://dockcarlton.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週月曜日・日曜日",
+     "src": "https://dockcarlton.jp/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "PH159",
+   "name": "カレン動物病院 ペットホテル",
+   "prefs": [
+    "鹿児島県"
+   ],
+   "city": "鹿児島市",
+   "url": "https://kalen.pet/hotel",
+   "services": "動物病院のペットホテル・トリミング。超大型犬（30kg〜）まで料金表あり",
+   "large": true,
+   "large_basis": "料金表",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-22",
+   "trust": {
+    "vaccine": {
+     "v": "1年以内の混合ワクチンが必要",
+     "quote": "1年以内の混合ワクチン接種 （ワンちゃん・ネコちゃん）",
+     "src": "https://kalen.pet/hotel",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   }
+  },
+  {
+   "id": "PH160",
+   "name": "ねこたび",
+   "prefs": [
+    "沖縄県"
+   ],
+   "city": "浦添市",
+   "url": "https://nekotabi.okinawa/",
+   "services": "猫専用の個室ホテル",
+   "cat_only": true,
+   "cat": true,
+   "private_room": true,
+   "facts": [],
+   "checked": "2026-11-22"
   }
  ]
 }
