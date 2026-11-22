@@ -28,9 +28,11 @@ jobs:
       - uses: actions/configure-pages@v5
       # [B] 2026-11-13 トップページを軽くする：公開する写しだけ、トップの大きなプログラムを /app.js の読み込みに置きかえる（tools/slim_top.py）
       - run: python3 tools/slim_top.py .
+      # 公開用ファイルだけ別の場所にまとめる。運用資料・生成元・テストは公開しない。
+      - run: python3 tools/stage_public_pages.py . "$RUNNER_TEMP/pet-public"
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: ${{ runner.temp }}/pet-public
       # 2026-11-10：GitHub 側の公開が「syncing_files」「finished_file_sync」のまま10分をこえて止まり、取り消されることがある。
       # deploy-pages の待ち時間は10分（600000）が上限なので、のばせない。かわりに、同じ中身でもう2回まで公開しなおす。
       - id: deployment
