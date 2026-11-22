@@ -33,17 +33,21 @@ def search(it):
     r = dict(it)
     q = f"{it['name']} {it['city']}"
     r['q'] = q
-    if FAILS[0] >= 8:
+    if FAILS[0] >= 12:
         r['search_error'] = 'skipped (検索が続けて取れない)'; return r
-    try:
-        res = yahoo(q)
-        r['results'] = res
-        FAILS[0] = 0 if res else FAILS[0] + 1
-        if not res: r['search_error'] = 'empty'
-    except Exception as e:
+    for i in range(5):
+        try:
+            res = yahoo(q)
+            r['results'] = res; r.pop('search_error', None)
+            FAILS[0] = 0
+            if not res: r['search_error'] = 'empty'
+            break
+        except Exception as e:
+            r['results'] = []; r['search_error'] = str(e)[:100]
+            time.sleep(60 * (i + 1))  # 429 などは待ってからやり直す
+    else:
         FAILS[0] += 1
-        r['results'] = []; r['search_error'] = str(e)[:100]
-    time.sleep(2.5)
+    time.sleep(4)
     return r
 
 def snaps(r):
