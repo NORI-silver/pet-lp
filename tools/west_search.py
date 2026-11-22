@@ -53,12 +53,16 @@ def main():
                 got = fn(j['q'])
             except Exception as e:
                 got = []; r.setdefault('err', []).append(name + ' ' + str(e)[:80])
+                if '429' in str(e):
+                    time.sleep(40)
+                    try: got = fn(j['q'])
+                    except Exception: got = []
             if got:
                 r['engine'] = name; r['results'] = got[:8]; fails[name] = 0
                 break
             fails[name] += 1
         res.append(r)
-        time.sleep(2.5)
+        time.sleep(4)
     json.dump(res, open(os.path.join(out, f'search_{shard}.json'), 'w'), ensure_ascii=False, indent=0)
     print('shard', shard, len(res), 'found', sum(1 for r in res if r.get('results')))
 
