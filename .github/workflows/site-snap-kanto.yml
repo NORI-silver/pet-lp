@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches: ['claude/project-thread-ccgock']
-    paths: ['tools/crawl/queue*.json', 'tools/crawl/reg*.json', 'tools/site_snap.py', 'tools/reg_fetch.py']
+    paths: ['tools/crawl/queue*.json', 'tools/crawl/reg_*.json', 'tools/site_snap.py', 'tools/reg_fetch.py']
 permissions:
   contents: write
 concurrency:
