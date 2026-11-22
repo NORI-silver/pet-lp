@@ -21,6 +21,15 @@ def _pslug():
     return gen_dogrun.PSLUG
 
 
+def _w(v):
+    """カードに出る中身の量（診療時間・休診日・診る動物など）。名前と住所だけの病院が多い地域は薄いページになるので、量が足りるときだけページにする（2026-11-22）。"""
+    return sum(len(c.get(k) or "") for c in v for k in ("hours", "closed", "animals", "services", "pay"))
+
+
+def _page_ok(v, n):
+    return len(v) >= n and (_w(v) >= 500 or len(v) >= (26 if n == CITY_MIN else 35))
+
+
 def by_pref():
     out = {}
     for c in VC["clinics"]:
@@ -189,12 +198,12 @@ def pages(ctx):
     out, urls = [], []
     lede_c = lambda ct: f"かかりつけの病院さがし、引っ越してきたばかりのとき、いつもの病院がお休みの日に。{e(ct)}の動物病院を、診療時間・休診日・診てもらえる動物と一緒にまとめました。"
     for pf, cs in by_pref().items():
-        if len(cs) < PREF_MIN: continue
+        if not _page_ok(cs, PREF_MIN): continue
         srcname = VC["sources"][pf]["name"]
         ps = PS[pf]
         cities = {}
         for c in cs: cities.setdefault(c["city"], []).append(c)
-        big = {ct: v for ct, v in cities.items() if len(v) >= CITY_MIN and cslug(pf, ct)}
+        big = {ct: v for ct, v in cities.items() if _page_ok(v, CITY_MIN) and cslug(pf, ct)}
         # 市区町村のページ
         for ct, v in big.items():
             v = _sort(v)
@@ -258,7 +267,7 @@ def pages(ctx):
 def hub_links(e):
     """/hospital/ のいちばん上に出す「地域でさがす」。"""
     PS = _pslug()
-    bp = {pf: cs for pf, cs in by_pref().items() if len(cs) >= PREF_MIN}
+    bp = {pf: cs for pf, cs in by_pref().items() if _page_ok(cs, PREF_MIN)}
     if not bp: return ""
     li = "".join(f'<li><a href="/hospital/{PS[pf]}/">{e(pf)}の動物病院<small>{len(cs)}院</small></a></li>' for pf, cs in bp.items())
     return (f'<div class="sh" style="margin-top:8px"><h2>地域でさがす（ふつうの動物病院）</h2><p>診療時間・休診日・診てもらえる動物を、市区町村ごとにまとめています。順に地域を足しています。</p></div>'
@@ -269,10 +278,10 @@ def urls(SITE):
     PS = _pslug()
     out = []
     for pf, cs in by_pref().items():
-        if len(cs) < PREF_MIN: continue
+        if not _page_ok(cs, PREF_MIN): continue
         cities = {}
         for c in cs: cities.setdefault(c["city"], []).append(c)
-        out += [f"{SITE}/hospital/{PS[pf]}/{cslug(pf, ct)}/" for ct, v in cities.items() if len(v) >= CITY_MIN and cslug(pf, ct)]
+        out += [f"{SITE}/hospital/{PS[pf]}/{cslug(pf, ct)}/" for ct, v in cities.items() if _page_ok(v, CITY_MIN) and cslug(pf, ct)]
         out.append(f"{SITE}/hospital/{PS[pf]}/")
     return out
 

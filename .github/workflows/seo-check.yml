@@ -27,6 +27,8 @@ jobs:
         run: python3 tools/seo_check.py .
       - name: 品質の決まりの点検（使わない言葉・◯◯・消した部品・集計・都道府県のボタン・長い前置き・さがす欄が先か。AGENTS.md「品質の決まり」）
         run: python3 tools/rules_check.py .
+      - name: 指摘の台帳の点検（Nori さんの指摘に止めるしくみがあるか。docs/ai/feedback.json）
+        run: python3 tools/feedback_check.py .
       - name: 食い違いの点検（提携先の届出・税・お迎えの範囲と県・手で書いた社数・会社のない県の文）
         run: python3 tools/consistency_check.py .
       - uses: actions/setup-node@v4
