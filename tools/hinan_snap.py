@@ -67,45 +67,105 @@ def search(q):
     return res
 
 
+def bing(q):
+    raw, ct, _ = get('https://www.bing.com/search?setlang=ja&cc=JP&q=' + urllib.parse.quote(q))
+    h = decode(raw, ct)
+    return [[html.unescape(re.sub(r'<[^>]+>', '', lab)).strip(), u] for u, lab in
+            re.findall(r'(?is)<li class="b_algo".*?<h2[^>]*>\s*<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>', h)]
+
+
+NAV = re.compile(r'防災|災害|避難|ペット|動物|犬|猫|危機管理|安全|くらし|暮らし|生活|環境|bousai|bosai|saigai|hinan|kurashi|pet|animal', re.I)
+HOT = re.compile(r'ペット|同行避難|動物')
+
+
+def crawl(home, limit=30):
+    """トップから「防災・避難・ペット」のリンクをたどり、ペットの話のあるページ・PDFのURLを集める。"""
+    host = urllib.parse.urlparse(home).netloc
+    todo, seen, hits = [home], set(), []
+    while todo and len(seen) < limit:
+        u = todo.pop(0)
+        if u in seen:
+            continue
+        seen.add(u)
+        try:
+            raw, ct, final = get(u, 2_000_000)
+        except Exception:
+            continue
+        if 'html' not in ct.lower():
+            continue
+        h = decode(raw, ct)
+        for href, label in re.findall(r'(?is)<a[^>]+href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', h):
+            v = urllib.parse.urljoin(final, href)
+            pu = urllib.parse.urlparse(v)
+            if pu.netloc != host:
+                continue
+            lab = re.sub(r'<[^>]+>|\s+', '', label)
+            if v.lower().endswith('.pdf'):
+                if HOT.search(lab) and v not in hits:
+                    hits.append(v)
+                continue
+            if HOT.search(lab) and v not in hits:
+                hits.append(v)
+            if (NAV.search(lab) or NAV.search(pu.path)) and v not in seen and v not in todo and len(todo) < 200:
+                todo.append(v)
+    return hits[:8]
+
+
 def read(url):
     try:
         raw, ct, final = get(url)
         if 'pdf' in ct.lower() or final.lower().endswith('.pdf') or raw[:5] == b'%PDF-':
             lines, kind = pdf_lines(raw), 'pdf'
+            mails = []
         else:
             h = decode(raw, ct)
             lines, kind = text_lines(h), 'html'
+            mails = sorted(set(re.findall(r'[\w.+-]+@[\w-]+(?:\.[\w-]+)*\.jp', html.unescape(h))))
             m = re.search(r'(?is)<title[^>]*>(.*?)</title>', h)
             if m:
                 lines.insert(0, '【title】' + html.unescape(re.sub(r'\s+', ' ', m.group(1))).strip())
-        return {'url': final, 'kind': kind, 'lines': pick(lines)}
+        r = {'url': final, 'kind': kind, 'lines': pick(lines)}
+        if kind == 'html' and mails:
+            r['mails'] = mails[:6]
+        return r
     except Exception as e:
         return {'url': url, 'error': str(e)[:200]}
+
+
+def one(job):
+    it, res, urls, out = job
+    try:
+        for u in crawl(it['url']):
+            if u not in urls:
+                urls.append(u)
+    except Exception as e:
+        res.append(['crawl-error', str(e)[:100]])
+    pages = [read(u) for u in urls[:10]]
+    json.dump({**it, 'search': res[:12], 'pages': pages}, open(f"{out}/{it['code']}.json", 'w'), ensure_ascii=False, indent=1)
+    return it['name'], len(urls), sum(len(p.get('lines', [])) for p in pages)
 
 
 def main(out):
     q = json.load(open('tools/crawl/hinan_queue.json'))
     os.makedirs(out, exist_ok=True)
-    found = {}
+    jobs = []
     for it in q:  # 検索は順番に、間をあける
         host = urllib.parse.urlparse(it['url']).netloc
         res = []
-        for qq in (f'site:{host} ペット 避難', f'{it["pref"]}{it["name"]} ペット 同行避難'):
+        for fn, qq in ((bing, f'site:{host} ペット 避難'), (search, f'site:{host} ペット 避難')):
             try:
-                res += search(qq)
+                res += fn(qq)
             except Exception as e:
                 res.append(['error', str(e)[:100]])
-            time.sleep(2)
+            time.sleep(1.5)
         urls = []
         for lab, u in res:
-            if u.startswith('http') and host.split('.', 1)[-1] in u and u not in urls:
+            if u.startswith('http') and urllib.parse.urlparse(u).netloc == host and u not in urls:
                 urls.append(u)
-        found[it['code']] = (it, res, urls[:5])
-        print(it['pref'] + it['name'], len(urls), flush=True)
-    with cf.ThreadPoolExecutor(8) as ex:
-        for code, (it, res, urls) in found.items():
-            pages = list(ex.map(read, urls))
-            json.dump({**it, 'search': res[:12], 'pages': pages}, open(f'{out}/{code}.json', 'w'), ensure_ascii=False, indent=1)
+        jobs.append((it, res, urls[:5], out))
+    with cf.ThreadPoolExecutor(12) as ex:
+        for r in ex.map(one, jobs):
+            print(*r, flush=True)
 
 
 if __name__ == '__main__':
