@@ -79,6 +79,20 @@ def snap(item):
     if 'q' in item and 'url' not in item:
         return search(item)
     url = item['url']
+    if item.get('alive'):
+        # 開けるかだけ見る（Nori 2026-11-22「サイト開けなくて問い合わせないところは掲載しない」）。2回ためす
+        r = dict(item)
+        for _ in range(2):
+            try:
+                h, final = get(url)
+                r.pop('error', None)
+                r['final'] = final
+                r['title'] = title_of(h)[:80]
+                r['size'] = len(h)
+                break
+            except Exception as e:
+                r['error'] = str(e)[:200]
+        return r
     if item.get('raw'):
         # 一覧のページ（獣医師会の会員一覧など）は、ページをそのまま置いて、コンテナで読み分ける
         r = dict(item)

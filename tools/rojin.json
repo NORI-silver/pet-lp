@@ -4385,6 +4385,364 @@
    "checked": "2026-11-22",
    "review_query": "すもも便利屋 老犬ホーム 甲府市",
    "review_name": "すもも便利屋"
+  },
+  {
+   "id": "R154",
+   "name": "マイ・ドッグ・クラブ",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市",
+   "url": "https://mydogclub.net/",
+   "animals": "犬",
+   "spec": "老犬ホーム・ペットホテル",
+   "checked": "2026-11-23",
+   "review_query": "マイ・ドッグ・クラブ 札幌市",
+   "review_name": "マイ・ドッグ・クラブ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小形犬 48,000円／1ヶ月。中形犬 63,000円／1ヶ月",
+     "src": "https://mydogclub.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間／AM7:00 ～ PM22:00",
+     "src": "https://mydogclub.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内にワクチンを接種しているワンちゃんに限ります。",
+     "src": "https://mydogclub.net/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R155",
+   "name": "ららねこ",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "旭川市",
+   "url": "https://lalaneko.com/",
+   "addr": "北海道旭川市五条通12丁目1217-2",
+   "animals": "犬・猫",
+   "spec": "老犬老猫ホーム、ペットホテル・ペットシッター",
+   "checked": "2026-11-23",
+   "review_query": "ららねこ 旭川市",
+   "review_name": "ららねこ",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "犬猫さんのワクチン接種の証明書を拝見します。",
+     "src": "https://lalaneko.com/service.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは、現金でお願いしております。",
+     "src": "https://lalaneko.com/fees.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R156",
+   "name": "ぺっとはうす あるポカ",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市豊平区",
+   "url": "https://arupoka.com/service/kaigo.html",
+   "animals": "犬・猫",
+   "spec": "シニア犬・猫の介護（長期・終生預かりも相談）、ペットホテル",
+   "checked": "2026-11-23",
+   "review_query": "ぺっとはうす あるポカ 札幌市豊平区",
+   "review_name": "ぺっとはうす あるポカ",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "また、安心安全のため初回時にはワクチン証明書をご掲示ください。",
+     "src": "https://arupoka.com/service/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R157",
+   "name": "ドギーズガーデン",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印西市",
+   "url": "https://doggies-garden.com/",
+   "addr": "千葉県印西市笠神1149-3",
+   "animals": "犬",
+   "spec": "長期預かり（介護・通院も）、ホテル・ようちえん",
+   "checked": "2026-11-23",
+   "review_query": "ドギーズガーデン 印西市",
+   "review_name": "ドギーズガーデン",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "月額38,500円〜。転勤・入院・リフォームなどのときの預かり先に。。ようちえんが入ったお得なメンバー制度です。ドッグランも1ヶ月使い放題。Standard 17,600円/月〜（税込）",
+     "src": "https://doggies-garden.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初めてご利用のお客様及び以前にご利用頂いたが１年以上経過しているお客様はワクチン証明書のコピーの提出をお願いします。",
+     "src": "https://doggies-garden.com/doghote.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場（有り）無料でご利用いただけます。",
+     "src": "https://doggies-garden.com/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R158",
+   "name": "Companion Animal Merci",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "足柄下郡真鶴町",
+   "url": "https://ca-merci.com/",
+   "addr": "神奈川県足柄下郡真鶴町真鶴1930-45",
+   "animals": "犬・猫",
+   "spec": "老犬・老猫ホーム（要介護も）",
+   "checked": "2026-11-23",
+   "review_query": "Companion Animal Merci 足柄下郡真鶴町",
+   "review_name": "Companion Animal Merci",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://ca-merci.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 7:00〜18:00（時間外対応不可）",
+     "src": "https://ca-merci.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ごはん（1回分ずつ小分け）、必要に応じておやつ・介護用品、首輪、胴輪、リード、狂犬病予防注射・ワクチン接種証明書",
+     "src": "https://ca-merci.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R159",
+   "name": "ペットサポートnico",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "賀茂郡東伊豆町",
+   "url": "https://pet-nico.com/",
+   "addr": "静岡県賀茂郡東伊豆町白田328",
+   "animals": "犬・猫",
+   "spec": "介護・長期預かり、ペットホテル（24時間スタッフ常駐）",
+   "checked": "2026-11-23",
+   "review_query": "ペットサポートnico 賀茂郡東伊豆町",
+   "review_name": "ペットサポートnico",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：8:00〜17:00",
+     "src": "https://pet-nico.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金・クレジットカード・各種QRコード決済に対応しています。",
+     "src": "https://pet-nico.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン接種が必要です。",
+     "src": "https://pet-nico.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R160",
+   "name": "Dog Answer（ドッグアンサー）",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "四日市市",
+   "url": "https://www.dogschool-tanaka.jp/",
+   "addr": "三重県四日市市尾平町3232-4",
+   "animals": "犬",
+   "spec": "長期預かり・生涯預かり、老犬介護、しつけ",
+   "checked": "2026-11-23",
+   "review_query": "Dog Answer（ドッグアンサー） 四日市市",
+   "review_name": "Dog Answer（ドッグアンサー）"
+  },
+  {
+   "id": "R161",
+   "name": "ペットのおうちタケガワ",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "松阪市",
+   "url": "https://pet-takegawa.jp/",
+   "addr": "三重県松阪市久米町1149-2",
+   "animals": "犬・猫",
+   "spec": "長期預かり・生涯預かり、一時預かり",
+   "checked": "2026-11-23",
+   "review_query": "ペットのおうちタケガワ 松阪市",
+   "review_name": "ペットのおうちタケガワ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "24時間、スタッフが常駐して、受付時間外でもお預かりやお迎えのご対応が可能です（事前予約要）。",
+     "src": "https://pet-takegawa.jp/information",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "料金は、月々お支払いプランと年払いプラン、一括お支払いプランがございます。いずれも指定口座に前払いでお振込みください。",
+     "src": "https://pet-takegawa.jp/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "全ての預かりに関して、「狂犬病ワクチン」「混合ワクチン」の証明書が必要です。※紛失した場合は事前にご連絡ください。",
+     "src": "https://pet-takegawa.jp/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R162",
+   "name": "愛犬総合施設 AK STYLE",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "亀岡市",
+   "url": "https://aiken-akstyle.net/",
+   "addr": "京都府亀岡市畑野町千ケ畑高橋5-168",
+   "animals": "犬",
+   "spec": "老犬ホーム・長期預かり（持病・介護の子も）、ペットホテル",
+   "checked": "2026-11-23",
+   "review_query": "愛犬総合施設 AK STYLE 亀岡市",
+   "review_name": "愛犬総合施設 AK STYLE",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "送迎あり（有料） ＊駐車場あり２台",
+     "src": "https://aiken-akstyle.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "短期ご利用の際は、現金でのお支払い、長期のご利用の際は、請求書でのお支払いで対応しております。",
+     "src": "https://aiken-akstyle.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R163",
+   "name": "cocoon",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "糸島市",
+   "url": "https://cocoon-itoshima.jimdofree.com/",
+   "addr": "福岡県糸島市志摩吉田1203-1",
+   "animals": "犬・猫",
+   "spec": "老犬猫の終生お預かり、長期・短期お預かり",
+   "checked": "2026-11-23",
+   "review_query": "cocoon 糸島市",
+   "review_name": "cocoon"
+  },
+  {
+   "id": "R164",
+   "name": "ねこぷらすホーム",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市上京区",
+   "url": "https://nekoplus.co.jp/wp/nekoplus_home/",
+   "addr": "京都府京都市上京区有馬町184-2-671",
+   "animals": "猫",
+   "spec": "猫の長期お預かり（入院・転勤などのとき）",
+   "checked": "2026-11-23",
+   "review_query": "ねこぷらすホーム 京都市上京区",
+   "review_name": "ねこぷらすホーム",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払い方法は「銀行振込」または「現金」のみ、前払い制となります。ご利用日の3日前までにお願いします。",
+     "src": "https://nekoplus.co.jp/wp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R165",
+   "name": "Pet Care Home RIKU",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "総社市",
+   "url": "https://petcarehome-riku.jimdosite.com/",
+   "addr": "岡山県総社市溝口10-3",
+   "animals": "犬",
+   "spec": "老犬ホーム・ロングステイ、ペットホテル",
+   "checked": "2026-11-23",
+   "review_query": "Pet Care Home RIKU 総社市",
+   "review_name": "Pet Care Home RIKU"
+  },
+  {
+   "id": "R166",
+   "name": "愛犬ホーム わんわんパーク",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "小樽市",
+   "url": "http://www.xn--u9j870rtoo6nh.com/",
+   "addr": "北海道小樽市天神2丁目20-21",
+   "animals": "犬",
+   "spec": "愛犬ホーム（1997年開園）、犬の里親",
+   "checked": "2026-11-23",
+   "review_query": "愛犬ホーム わんわんパーク 小樽市",
+   "review_name": "愛犬ホーム わんわんパーク"
   }
  ],
  "near": {
