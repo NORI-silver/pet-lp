@@ -1,0 +1,33 @@
+# 掲載の候補の公式サイトを読んで、確かめに要る文だけをブランチ crawl-out に置く（Nori 2026-11-22「漏れなく掲載して」）。
+# tools/crawl/queue*.json のURLを tools/site_snap.py が読む。何も送らない・サイトは書き換えない。載せるかは人（AI）が文を読んで決める。
+name: site-snap
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/**']
+    paths: ['tools/crawl/queue*.json', 'tools/crawl/reg*.json', 'tools/site_snap.py', 'tools/reg_fetch.py']
+permissions:
+  contents: write
+concurrency:
+  group: site-snap
+  cancel-in-progress: false
+jobs:
+  snap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: 公式サイトを読む
+        run: python3 tools/site_snap.py /tmp/out
+      - name: 動物取扱業の登録一覧を取る
+        run: python3 tools/reg_fetch.py /tmp/out
+      - name: 結果をブランチ crawl-out に置く
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q --orphan crawl-out
+          git rm -rq --cached . && git clean -fdq
+          cp -r /tmp/out/. .
+          git add -A
+          git commit -qm "公式サイトの抜き出し ${GITHUB_SHA::7}"
+          git push -q -f origin crawl-out

@@ -322,10 +322,10 @@ def render_hub(ctx):
                 loc = [h for h in hs if not re.search(r"（[^）]+[都道府県]）$", h.get("city", ""))]
                 d[c["slug"]] = [len(loc), len(hs) - len(loc)]
             nv = len(VB.get(pf, []))
-            d["vet"] = [nv if nv >= gen_vetclinics.PREF_MIN else 0, 0]
+            d["vet"] = [nv if gen_vetclinics._page_ok(VB.get(pf, []), gen_vetclinics.PREF_MIN) else 0, 0]
             d["s"] = gen_dogrun.PSLUG[pf]
             data[pf] = d
-    nvet = sum(len(v) for pf, v in VB.items() if len(v) >= gen_vetclinics.PREF_MIN)
+    nvet = sum(len(v) for pf, v in VB.items() if gen_vetclinics._page_ok(v, gen_vetclinics.PREF_MIN))
     TILES = [("vet", "🏥", "いつもの病院", "近くの動物病院・診療時間"),
              ("night", "🌙", "夜間・救急", "夜中・休日に診てほしい"),
              ("visit", "🏠", "往診", "家に来てほしい"),
@@ -426,10 +426,10 @@ def write_all(ROOT, ctx):
     fac = {x["id"]: gen_facpages.hhref(x) for x in gen_facpages.HOSPS}
     def vet_page(pf, h):
         cs = gen_vetclinics.by_pref().get(pf, [])
-        if len(cs) < gen_vetclinics.PREF_MIN or h.get("pref") != pf: return ""
-        n = sum(1 for c in cs if c["city"] == h["city"])
+        if not gen_vetclinics._page_ok(cs, gen_vetclinics.PREF_MIN) or h.get("pref") != pf: return ""
+        v = [c for c in cs if c["city"] == h["city"]]
         sl = gen_vetclinics.cslug(pf, h["city"])
-        return f"/hospital/{gen_dogrun.PSLUG[pf]}/{sl}/" if n >= gen_vetclinics.CITY_MIN and sl else f"/hospital/{gen_dogrun.PSLUG[pf]}/"
+        return f"/hospital/{gen_dogrun.PSLUG[pf]}/{sl}/" if gen_vetclinics._page_ok(v, gen_vetclinics.CITY_MIN) and sl else f"/hospital/{gen_dogrun.PSLUG[pf]}/"
     avail, counts = hosp_find.build(ROOT, ctx, CONDS, lambda c: _rows(c, ctx["EMG"]), lambda h: fac.get(h.get("id"), ""),
                                gen_vetclinics.by_pref, vet_page, gen_dogrun.PSLUG, faccard.depts_of)
     hosp_find.write_js(ROOT, avail, gen_dogrun.PSLUG, counts)
