@@ -196,10 +196,15 @@ def render_hosp(ctx, x):
     if fact(x, "支払い方法"): faq.append((f"{nm}ではカードで払えますか？", f"{nm}の公式サイトには「{fact(x, '支払い方法').rstrip('。')}」と書いてあります。"))
     if hours: faq.append((f"{nm}は何時に受け付けていますか？", f"{nm}の公式サイトには「{hours.rstrip('。')}」と書いてあります（{ck}に確認）。"))
     if fact(x, "来院前の連絡"): faq.append((f"{nm}に行く前に電話は必要ですか？", f"{nm}の公式サイトには「{fact(x, '来院前の連絡').rstrip('。')}」と書いてあります。夜間の病院は手術中などで受け入れられないこともあるので、行く前に電話で確かめてください。"))
+    # [B] SEO 11/22：「夜間救急 持ち物」「病院名 行き方」「病院名 保険」の検索にも答える（公式サイトの文のまま。書いてある病院だけ）
+    if fact(x, "持ち物"): faq.append((f"{nm}に行くとき、何を持っていけばいいですか？", f"{nm}の公式サイトには「{fact(x, '持ち物').rstrip('。')}」と書いてあります（{ck}に確認）。"))
+    if fact(x, "動物保険"): faq.append((f"{nm}でペット保険は使えますか？", f"{nm}の公式サイトには「{fact(x, '動物保険').rstrip('。')}」と書いてあります。"))
+    if fact(x, "診療のあと"): faq.append((f"{nm}で診てもらったあとは、どうすればいいですか？", f"{nm}の公式サイトには「{fact(x, '診療のあと').rstrip('。')}」と書いてあります。"))
     if fact(x, "対象の動物"): faq.append((f"{nm}では犬と猫以外も診てもらえますか？", f"{nm}の公式サイトには「{fact(x, '対象の動物').rstrip('。')}」と書いてあります（{ck}に確認）。"))
     if fact(x, "駐車場"): faq.append((f"{nm}に駐車場はありますか？", f"{nm}の公式サイトには「{fact(x, '駐車場').rstrip('。')}」と書いてあります。"))
     if fact(x, "最寄り駅"): faq.append((f"{nm}へは電車で行けますか？", f"{nm}の公式サイトには「{fact(x, '最寄り駅').rstrip('。')}」と書いてあります。"))
-    faq = faq[:7]
+    if fact(x, "行き方"): faq.append((f"{nm}へはどう行けばいいですか？", f"{nm}の公式サイトには「{fact(x, '行き方').rstrip('。')}」と書いてあります。"))
+    faq = faq[:10]
     ld_main = {"@type": "VeterinaryCare", "name": nm, "url": x["url"],
                "address": dict({"@type": "PostalAddress", "addressRegion": pf, "addressCountry": "JP"},
                                **({"addressLocality": x["city"]} if x.get("city") else {}), **({"streetAddress": fact(x, "所在地")} if fact(x, "所在地") else {}))}
