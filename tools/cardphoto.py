@@ -104,7 +104,12 @@ def page(h, by_id, by_url):
     out.append(h[pos:])
     h2 = "".join(out)
     if n or "/hosp.js" in h2:
-        h2 = h2.replace("</head>", CSS + "</head>", 1)
+        # T114 の写真は被写体が上端に近いため、既存画像の全範囲を見せる。
+        photo_css = CSS
+        if 'class="cs-ph" data-gph="T114"' in h2:
+            photo_css = CSS.replace('</style>', '.cs-ph[data-gph="T114"]{aspect-ratio:520/347}'
+                                    '.cs-ph[data-gph="T114"] img{object-fit:contain}</style>')
+        h2 = h2.replace("</head>", photo_css + "</head>", 1)
     return h2, n
 
 
