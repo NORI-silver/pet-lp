@@ -1,0 +1,46 @@
+# 関東（東京23区）の網羅スレッド専用：登録一覧の事業所の公式サイトをさがして読む。結果は crawl-out-kanto-find（queue には個人名らしい名前を入れない）。
+# 何も送らない・サイトは書き換えない。
+name: regsite-kanto
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/project-thread-ccgock']
+    paths: ['tools/crawl/regq_*.json', 'tools/regsite.py', '.github/workflows/regsite-kanto.yml']
+permissions:
+  contents: write
+concurrency:
+  group: regsite-kanto
+  cancel-in-progress: false
+jobs:
+  snap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11]
+    steps:
+      - uses: actions/checkout@v4
+      - run: SHARD=${{ matrix.shard }} NSHARD=12 python3 tools/regsite.py /tmp/out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: out-${{ matrix.shard }}
+          path: /tmp/out
+  push:
+    needs: snap
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: /tmp/arts
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q --orphan crawl-out-kanto-find
+          git rm -rq --cached . && git clean -fdq
+          mkdir -p out && find /tmp/arts -name '*.json' -exec cp {} out/ \;
+          git add -A
+          git commit -qm "公式サイトさがし ${GITHUB_SHA::7}"
+          git push -q -f origin crawl-out-kanto-find
