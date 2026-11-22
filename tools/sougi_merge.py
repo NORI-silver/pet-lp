@@ -31,7 +31,7 @@ def main(paths):
             if set(f.get("kinds", [])) - KINDS: why.append("kinds")
             if set(f.get("services", [])) - SERVICES: why.append("services")
             if f.get("price") and BAN.search(f["price"]): why.append("price words")
-            if re.search(r"\d+[-－]\d+", f.get("city", "")): why.append("番地")
+            if re.search(r"\d+[-－]\d+", f.get("city") or ""): why.append("番地")
             if (f.get("pref"), norm(f.get("name"))) in names: why.append("same name")
             if (host(f.get("u")), f.get("city")) in urls: why.append("same url")
             if (f.get("pref"), f.get("city"), host(f.get("u"))[0]) in sites: why.append("same site and city")
@@ -44,7 +44,9 @@ def main(paths):
             rec["review_query"] = f"{f['name']} {f['city']}"
             rec["review_name"] = f.get("review_name") or f["name"]
             if f.get("checked"): rec["checked"] = f["checked"]
-            if f.get("more"): rec["more"] = f["more"]
+            m = f.get("more")
+            if isinstance(m, dict): m = [{"k": k, "v": v if isinstance(v, str) else "、".join(map(str, v))} for k, v in m.items() if v]
+            if m: rec["more"] = m
             F.append(rec); names.add((rec["pref"], norm(rec["name"]))); urls.add((host(rec["u"]), rec["city"])); sites.add((rec["pref"], rec["city"], host(rec["u"])[0])); added += 1
     P.write_text(json.dumps(D, ensure_ascii=False, indent=1) + "\n")
     print("added", added, "total", len(F))

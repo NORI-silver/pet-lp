@@ -2,7 +2,7 @@
  "_note": "gen_areas.py が毎回作る。薄くて検索に出していないページと字数（tools/thin_gate.py）。手で直さない",
  "min_chars": 900,
  "pages": {
-  "/dog-trainer/ehime/": 571,
+  "/dog-trainer/ehime/": 567,
   "/dog-trainer/hiroshima/": 883,
   "/dog-trainer/ishikawa/": 596,
   "/dog-trainer/miyazaki/": 855,
