@@ -79,6 +79,16 @@ def snap(item):
     if 'q' in item and 'url' not in item:
         return search(item)
     url = item['url']
+    if item.get('raw'):
+        # 一覧のページ（獣医師会の会員一覧など）は、ページをそのまま置いて、コンテナで読み分ける
+        r = dict(item)
+        try:
+            h, final = get(url)
+            r['final'] = final
+            r['html'] = h
+        except Exception as e:
+            r['error'] = str(e)[:200]
+        return r
     r = dict(item)
     try:
         h, final = get(url)
