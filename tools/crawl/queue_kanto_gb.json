@@ -2,54 +2,79 @@
 {
 "cat": "index",
 "pref": "",
-"url": "https://www.dog-ruffian.jp/feature/registry/",
+"url": "https://www.dog-ruffian.jp/category/tochigi/",
 "raw": true
 },
 {
 "cat": "index",
 "pref": "",
-"url": "https://animals-peace.net/companionanimal/link",
+"url": "https://www.dog-ruffian.jp/category/chiba/",
 "raw": true
 },
 {
 "cat": "index",
 "pref": "",
-"url": "https://www.hokeniryo.metro.tokyo.lg.jp/douso/dt_gyou/dt_gyou.html",
+"url": "https://www.dog-ruffian.jp/category/kanagawa/",
 "raw": true
 },
 {
-"cat": "search",
+"cat": "index",
 "pref": "",
-"q": "川崎市 動物取扱業 登録簿 site:city.kawasaki.jp"
+"url": "https://www.dog-ruffian.jp/category/gunma/",
+"raw": true
 },
 {
-"cat": "search",
+"cat": "index",
 "pref": "",
-"q": "船橋市 動物取扱業者 登録簿 site:city.funabashi.lg.jp"
+"url": "https://www.dog-ruffian.jp/category/ibaraki/",
+"raw": true
 },
 {
-"cat": "search",
+"cat": "index",
 "pref": "",
-"q": "川口市 動物取扱業 登録簿 site:city.kawaguchi.lg.jp"
+"url": "https://www.dog-ruffian.jp/category/saitama/",
+"raw": true
 },
 {
-"cat": "search",
+"cat": "index",
 "pref": "",
-"q": "宇都宮市 動物取扱業 登録 一覧 site:city.utsunomiya.lg.jp"
+"url": "https://www.tochigi-douai.net/gyousya.html",
+"raw": true
 },
 {
-"cat": "search",
+"cat": "index",
 "pref": "",
-"q": "水戸市 動物取扱業 登録簿 site:city.mito.lg.jp"
+"url": "https://www.city.yokosuka.kanagawa.jp/3180/g_info/toriatukaigyo1.html",
+"raw": true
 },
 {
-"cat": "search",
+"cat": "index",
 "pref": "",
-"q": "栃木県 動物取扱業 登録簿 site:pref.tochigi.lg.jp"
+"url": "https://www.city.chiba.jp/hokenfukushi/iryoeisei/seikatsueisei/dobutsuhogo/toriatukaigyou.html",
+"raw": true
 },
 {
-"cat": "search",
+"cat": "index",
 "pref": "",
-"q": "横須賀市 動物取扱業 登録簿"
+"url": "https://www.city.funabashi.lg.jp/jigyou/iji_yakuji_eisei/005/p026865.html",
+"raw": true
+},
+{
+"cat": "index",
+"pref": "",
+"url": "https://www.city.kawasaki.jp/350/page/0000035635.html",
+"raw": true
+},
+{
+"cat": "index",
+"pref": "",
+"url": "https://data.bodik.jp/dataset/102016_doutorigyou",
+"raw": true
+},
+{
+"cat": "index",
+"pref": "",
+"url": "https://opendata.city.sagamihara.kanagawa.jp/dataset/daiisshudobutsu",
+"raw": true
 }
 ]
