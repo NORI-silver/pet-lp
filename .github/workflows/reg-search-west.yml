@@ -1,6 +1,6 @@
 # 中国・四国・九州沖縄：登録一覧の事業者の公式サイトを検索でさがす（Nori 2026-11-22「漏れ一切なくね」）。
 # tools/crawl/search_*.json の言葉を tools/reg_search.py が検索し、結果だけをブランチ search-out-<ブランチの最後> に置く。何も送らない。
-# ほかのスレッドと Actions の枠を分け合うため、同時に動かすのは6台まで。
+# ほかのスレッドと Actions の枠を分け合うため、同時に動かすのは4台まで。
 name: reg-search-west
 on:
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 150
     strategy:
       fail-fast: false
-      max-parallel: 6
+      max-parallel: 4
       matrix:
         shard: [0, 1, 2, 3, 4, 5]
     steps:
