@@ -9010,6 +9010,46 @@
      "checked": "2026-11-16"
     }
    ]
+  },
+  {
+   "id": "SW001",
+   "name": "ペットケアステーション YOI",
+   "prefs": [
+    "広島県"
+   ],
+   "area": "廿日市",
+   "url": "https://www.petcarestation-yoi.jp/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "9:00~19:00/不定休",
+     "src": "https://www.petcarestation-yoi.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW002",
+   "name": "ペットシッター・アニマルハウス・チャッピー",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "福岡市南区",
+   "url": "https://animal-house-chappy.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業時間",
+     "v": "受付時間 8:00~21:00",
+     "src": "https://animal-house-chappy.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }

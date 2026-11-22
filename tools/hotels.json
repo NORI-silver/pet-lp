@@ -7291,6 +7291,642 @@
     }
    ],
    "checked": "2026-11-22"
+  },
+  {
+   "id": "PHW001",
+   "name": "かも動物病院",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "東広島市",
+   "url": "https://www.kamoanimalclinic.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "50台 駐車料金 無料",
+     "src": "https://www.kamoanimalclinic.jp/about.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "支払い",
+     "v": "電子マネー、QRコード決済(PayPay・iD・楽天ペイ等)各種対応しております。",
+     "src": "https://www.kamoanimalclinic.jp/about.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW002",
+   "name": "村上愛犬警察犬訓練所",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "東広島市",
+   "url": "https://www.murakamidog.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW003",
+   "name": "なかもと動物病院",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "安芸高田市",
+   "url": "https://www.nakamoto-ah.com/",
+   "services": "ペットホテル",
+   "cat": true,
+   "large": true,
+   "large_basis": "文",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "当院のすぐ前に6台分の駐車場をご用意しています。",
+     "src": "https://www.nakamoto-ah.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "ワクチン",
+     "v": "ご利用の際には、健康管理のため1年以内の混合ワクチンの接種が必要です。",
+     "src": "https://www.nakamoto-ah.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ",
+     "v": "小型犬から大型犬、猫まで。この病院を受診しているペットだけ",
+     "src": "https://www.nakamoto-ah.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW004",
+   "name": "もぐ動物病院",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "尾道市",
+   "url": "https://mogu-pet.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "年末年始、GW、お盆期間中は一泊当たり+1000円加算",
+     "src": "https://mogu-pet.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "病院前に駐車場6台分ご用意しております。",
+     "src": "https://mogu-pet.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "ワクチン",
+     "v": "当院で定期的に混合ワクチンを接種している、またはワクチン抗体価検査を受けて効果が持続している証明が必要です。",
+     "src": "https://mogu-pet.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW005",
+   "name": "Dog School Ease",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "安芸郡海田町",
+   "url": "https://dogschoolease.wixsite.com/dogschoolease",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "9時以前、17時以降のお預かりは、時間外料金(1,000円/h)がかかります​",
+     "src": "https://dogschoolease.wixsite.com/dogschoolease/%E3%81%94%E6%96%99%E9%87%91",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW006",
+   "name": "もみじ動物病院",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "東広島市",
+   "url": "http://www.momiji-animalclinic.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場あり。",
+     "src": "http://www.momiji-animalclinic.com/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW007",
+   "name": "Cleo ~grooming salon for dogs~",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "尾道市",
+   "url": "https://cleo-pet.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業時間",
+     "v": "営業時間10:00〜17:00",
+     "src": "https://cleo-pet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW008",
+   "name": "土肥動物病院",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "山県郡北広島町",
+   "url": "https://doivet-hiroshima.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "第1駐車場(病院前)7台",
+     "src": "https://doivet-hiroshima.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "ワクチン",
+     "v": "※当院以外で接種されている場合は、ワクチン証明書をご持参願います。",
+     "src": "https://doivet-hiroshima.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "1泊3,630円から（体の大きさで5段階、いちばん大きい区分は8,250円から）",
+     "src": "https://doivet-hiroshima.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW009",
+   "name": "杉野動物病院",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市南区",
+   "url": "https://sugino-vet.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "近隣駐車場あり",
+     "src": "https://sugino-vet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "ワクチン",
+     "v": "• 混合ワクチン・狂犬病ワクチン接種済みであること",
+     "src": "https://sugino-vet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "支払い",
+     "v": "お支払い:現金 / クレジットカード / PayPay",
+     "src": "https://sugino-vet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW010",
+   "name": "東広島警察犬訓練所",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "東広島市",
+   "url": "http://zweistern.net/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "ワクチン",
+     "v": "※毎年狂犬病ワクチンと混合ワクチン接種済みのワンちゃんに限ります。(ワクチン未接種のワンちゃんはお預かりできません)",
+     "src": "http://zweistern.net/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW011",
+   "name": "おおはし動物病院",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "安芸郡府中町",
+   "url": "https://www.ohashi-ah.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "府中町立府中小学校隣 駐車場4台完備",
+     "src": "https://www.ohashi-ah.com/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW012",
+   "name": "maison de chloe",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "廿日市",
+   "url": "https://maisondechloe.jimdofree.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業時間",
+     "v": "営業時間9:00〜19:00",
+     "src": "https://maisondechloe.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW013",
+   "name": "Lemon",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "廿日市",
+   "url": "https://www.dog-cat-lemon.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "※ 1泊単位(24時間につき)繁忙期はプラス1100円。",
+     "src": "https://www.dog-cat-lemon.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業時間",
+     "v": "営業時間:9:30〜18:00",
+     "src": "https://www.dog-cat-lemon.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW014",
+   "name": "Waggy Dayz",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "大竹市",
+   "url": "https://waggydayz.jp/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW015",
+   "name": "寺園動物病院",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "安芸郡府中町",
+   "url": "https://terazono-ah.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "▶ 当院横に駐車場8台完備",
+     "src": "https://terazono-ah.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "ワクチン",
+     "v": "当院にて混合ワクチンを接種された動物のみお預かりいたします。ノミ・ダニなどの外部寄生虫がいない、または予防されている動物のみお預かりいたします。長期休暇等、混み合う時期は早めのご予約をお願いします",
+     "src": "https://terazono-ah.jp/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "支払い",
+     "v": "お支払いは現金、又は電子マネーpaypayを使えます。",
+     "src": "https://terazono-ah.jp/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW016",
+   "name": "ペットショップ ジョイナス",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市南区",
+   "url": "https://joint-us.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業時間",
+     "v": "営業時間 10:00~19:00",
+     "src": "https://joint-us.jp/aboutus/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW017",
+   "name": "のば動物病院 三次動物CTセンター",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "三次市",
+   "url": "https://noba-ah.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW018",
+   "name": "ペットドクター動物病院",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "東広島市",
+   "url": "https://www.pet-doctor.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "ワクチン",
+     "v": "健康診断、ワクチン接種、避妊・去勢、血液検査、レントゲン検査、エコー検査、CT検査、フィラリア予防、入院の他、当院でワクチン接種を受けたペットに限り、ペットホテルとしてのご利用も可能です。",
+     "src": "https://www.pet-doctor.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW019",
+   "name": "広島おはな警察犬訓練所",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "東広島市",
+   "url": "https://hiroshima-ohana-dog.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日 3,000円〜",
+     "src": "https://hiroshima-ohana-dog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "スタッフ24時間常駐、定休日:年中無休",
+     "src": "https://hiroshima-ohana-dog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW020",
+   "name": "八本松動物病院",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "東広島市",
+   "url": "https://www.hachihonmatsuah.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "ワクチン",
+     "v": "​お預かりするにあたり、1年以上の混合ワクチンの接種と、1か月以内のノミ・マダニ駆除薬の使用をお願いしております。",
+     "src": "https://www.hachihonmatsuah.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW021",
+   "name": "六花愛犬・警察犬訓練所",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "廿日市",
+   "url": "https://rikka-dogschool.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業時間",
+     "v": "受付時間 9:00〜18:00(不定休)",
+     "src": "https://rikka-dogschool.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "受付時間 9:00〜18:00(不定休)",
+     "src": "https://rikka-dogschool.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW022",
+   "name": "トリミングルーム ドッグスリー",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "廿日市",
+   "url": "https://www.dogthree.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業時間",
+     "v": "営業時間 : 10:00~17:00 定休日 : 水・木曜日",
+     "src": "https://www.dogthree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "営業時間 : 10:00~17:00 定休日 : 水・木曜日",
+     "src": "https://www.dogthree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "ワクチン",
+     "v": "トリミングorグルーミング(ご予約時間に余裕をもってご来店ください。ワクチン接種証明書の提示をお願いします。)",
+     "src": "https://www.dogthree.com/salon/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW023",
+   "name": "ペットハウスウインク 前空店",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "廿日市",
+   "url": "https://www.worldpet.co.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業時間",
+     "v": "営業時間 10:00~18:00",
+     "src": "https://www.worldpet.co.jp/store-list",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "ワクチン",
+     "v": "混合ワクチン・狂犬病予防接種証明書(1年以内のもの)",
+     "src": "https://www.worldpet.co.jp/pethotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "1泊1頭4,400円（税込）から。ワイドルームは5,500円（税込）から",
+     "src": "https://www.worldpet.co.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW024",
+   "name": "オークどうぶつ病院",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市西区",
+   "url": "https://www.oak-animal.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW025",
+   "name": "さくらの木",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市東区",
+   "url": "https://dog.sakuranoki.biz/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "AM9:00〜PM8:00 毎週火曜定休日",
+     "src": "https://dog.sakuranoki.biz/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場あり(6台) 名島駅より徒歩7分",
+     "src": "https://dog.sakuranoki.biz/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW026",
+   "name": "ペットランド",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市東区",
+   "url": "https://www.petland-chihaya.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "ワクチン",
+     "v": "​ *初めてのお客様はワクチン証明書および運転免許書等をご提示いただきます*",
+     "src": "https://www.petland-chihaya.com/blank-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }

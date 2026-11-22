@@ -8166,6 +8166,172 @@
      "checked": "2026-11-22"
     }
    ]
+  },
+  {
+   "id": "TW001",
+   "name": "村上愛犬警察犬訓練所",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "東広島市",
+   "url": "https://www.murakamidog.com/",
+   "services": "しつけ・訓練",
+   "addr": "広島県東広島市西条町田口731-5",
+   "src": "https://www.murakamidog.com/",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ワンレッスン 3,300円",
+     "src": "https://www.murakamidog.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW002",
+   "name": "Dog School Ease",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "安芸郡海田町",
+   "url": "https://dogschoolease.wixsite.com/dogschoolease",
+   "services": "しつけ・訓練",
+   "addr": "広島県安芸郡海田町砂走7-8",
+   "src": "https://dogschoolease.wixsite.com/dogschoolease",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW003",
+   "name": "東広島警察犬訓練所",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "東広島市",
+   "url": "http://zweistern.net/",
+   "services": "しつけ・訓練",
+   "addr": "広島県東広島市高屋町杵原242-1",
+   "src": "http://zweistern.net/",
+   "facts": [
+    {
+     "k": "ワクチン",
+     "v": "※毎年狂犬病ワクチンと混合ワクチン接種済みのワンちゃんに限ります。(ワクチン未接種のワンちゃんはお預かりできません)",
+     "src": "http://zweistern.net/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW004",
+   "name": "ペットショップ ジョイナス",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市南区",
+   "url": "https://joint-us.jp/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県福岡市南区老司四丁目2番6号",
+   "src": "https://joint-us.jp/",
+   "facts": [
+    {
+     "k": "営業時間",
+     "v": "営業時間 10:00~19:00",
+     "src": "https://joint-us.jp/aboutus/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW005",
+   "name": "広島おはな警察犬訓練所",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "東広島市",
+   "url": "https://hiroshima-ohana-dog.jp/",
+   "services": "しつけ・訓練",
+   "addr": "広島県東広島市志和町奥屋1545-1",
+   "src": "https://hiroshima-ohana-dog.jp/",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "超大型犬 一か月70,000円 (税別)",
+     "src": "https://hiroshima-ohana-dog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "スタッフ24時間常駐、定休日:年中無休",
+     "src": "https://hiroshima-ohana-dog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW006",
+   "name": "あかりのこころ",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市城南区",
+   "url": "http://akarinococoro.com/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県福岡市城南区南片江一丁目4番8号",
+   "src": "http://akarinococoro.com/",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW007",
+   "name": "六花愛犬・警察犬訓練所",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "廿日市",
+   "url": "https://rikka-dogschool.com/",
+   "services": "しつけ・訓練",
+   "addr": "広島県廿日市市上平良1787",
+   "src": "https://rikka-dogschool.com/",
+   "facts": [
+    {
+     "k": "営業時間",
+     "v": "受付時間 9:00〜18:00(不定休)",
+     "src": "https://rikka-dogschool.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "受付時間 9:00〜18:00(不定休)",
+     "src": "https://rikka-dogschool.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW008",
+   "name": "ドッグスクール小野",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市早良区",
+   "url": "http://www.ds-ono.com/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県福岡市早良区西入部741番地の1",
+   "src": "http://www.ds-ono.com/",
+   "facts": [],
+   "checked": "2026-11-23"
   }
  ]
 }
