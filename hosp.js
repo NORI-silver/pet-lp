@@ -154,6 +154,7 @@ return;
 if (!data) { sum.textContent = "読み込んでいます…"; return; }
 var ks = keys(), m = match(data.filter(function(r){ return !r.far; }), ks, true), ok = m[0], unk = m[1];
 var nightFirst = night() && need !== "night";
+ok.sort(function(a, b){ return (b[0].ph ? 1 : 0) - (a[0].ph ? 1 : 0); });  // 写真のある病院を先に（Nori 2026-11-22）
 if (nightFirst) ok.sort(function(a, b){ return (b[0].y.indexOf("night") >= 0) - (a[0].y.indexOf("night") >= 0); });
 var t = typed(), pl = plabel() + (t ? "「" + t + "」" : "");
 sum.innerHTML = esc(pl) + "で合う病院 " + ok.length + "院" + (unk.length ? "<small>ほかに、公式の情報に書いていないので要確認 " + unk.length + "院</small>" : "")
