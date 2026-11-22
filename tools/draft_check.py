@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """[G] メールの下書きを保存する前の点検（AGENTS.md「品質の決まり」C。Nori 2026-11-16）。
-使い方: python3 tools/draft_check.py 下書き.txt [--to 会社|施設|団体|自治体]   → 直すところがあれば終了コード1
+使い方: python3 tools/draft_check.py 下書き.txt [--to 会社|施設|団体|自治体] [--about 依頼した人 --replied 返事した日] [--read-latest]
+        → 直すところがあれば終了コード1
+--about：お客さま・提携先から頼まれた件で、ほかの人（会社・施設など）に連絡するとき。頼んだ人に先に
+         「受け取りました、いま確認しています」と返事した日を --replied に入れないと止める（Nori 2026-11-22
+         「加茂さんには先に返信すべきじゃない？」「この指摘とかさせるなよ」）。
+--read-latest：送る相手から、まだ返事していない新しいメールがないかを読んだしるし。ないと止める（同日）。
 見ること: ◯◯ などの穴、旅行業法の言葉、お金・手数料の話、「公式サイトで確かめた」、こちらの都合が先に立つ言い方、ツール名。
 保存は pettaxi.yoyaku の Gmail の下書きに（「下書きして」＝Gmail の下書き）。送るのは Nori さんの「送って」のあと。
 """
@@ -30,8 +35,15 @@ def check(text):
 
 
 if __name__ == "__main__":
-    t = open(sys.argv[1], encoding="utf-8").read() if len(sys.argv) > 1 and sys.argv[1] != "-" else sys.stdin.read()
+    a = sys.argv[1:]
+    def opt(k):
+        return a[a.index(k) + 1] if k in a and a.index(k) + 1 < len(a) else None
+    t = open(a[0], encoding="utf-8").read() if a and a[0] != "-" else sys.stdin.read()
     res = check(t)
+    if opt("--about") and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", opt("--replied") or ""):
+        res.append(f"「{opt('--about')}」さんの件でほかの人に連絡する前に、{opt('--about')}さんへ先に「受け取りました、いま確認しています」と返事する（返事した日を --replied YYYY-MM-DD で）")
+    if "--read-latest" not in a:
+        res.append("送る相手から、まだ返事していない新しいメールがないかを読んでから送る（読んだら --read-latest を付ける）")
     for r in res: print("直す:", r)
     print("OK" if not res else f"{len(res)}か所")
     sys.exit(1 if res else 0)
