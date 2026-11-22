@@ -1,0 +1,33 @@
+# ペットと避難：問い合わせ先（防災の担当課のメール・フォーム）を集めてブランチ hinan-contact-out2 に置く（Nori 2026-11-23）。
+# 何も送らない・サイトは書き換えない。送るのはメールの係（文）だけ。
+name: hinan-contact2
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/**']
+    paths: ['tools/crawl/hinan_contact_queue2.json']
+permissions:
+  contents: write
+concurrency:
+  group: hinan-contact2
+  cancel-in-progress: false
+jobs:
+  snap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: PDFを読む道具
+        run: sudo apt-get install -y -q poppler-utils >/dev/null
+      - name: 自治体のサイトを読む
+        run: QUEUE=tools/crawl/hinan_contact_queue2.json python3 tools/hinan_contact.py /tmp/out
+      - name: 結果をブランチ hinan-contact-out2 に置く
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q --orphan hinan-contact-out2
+          git rm -rq --cached . && git clean -fdq
+          cp -r /tmp/out/. .
+          git add -A
+          git commit -qm "避難の公式サイトの抜き出し ${GITHUB_SHA::7}"
+          git push -q -f origin hinan-contact-out2
