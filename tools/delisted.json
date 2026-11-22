@@ -1,0 +1,166 @@
+{
+ "_説明": "公式サイトが開けず、ほかに問い合わせる手立てもない施設（Nori 2026-11-22「サイト開けなくて問い合わせないところは掲載しない」）。removed の施設は一覧に戻さない（網羅のしらべで見つけても足さない）。動物病院は獣医師会の一覧に載っていて連絡できるので掲載は残し、開けない公式サイトのリンクだけ外す（url_removed）。",
+ "checked": "2026-11-23",
+ "removed": [
+  {
+   "id": "T018",
+   "name": "しつけ方教室Play Bow",
+   "cat": "trainer",
+   "url": "http://playbow.sakura.ne.jp/",
+   "why": "公式サイトのアドレスがもう使われていない（ほかの問い合わせ先なし）"
+  },
+  {
+   "id": "S319",
+   "name": "わんにゃんシッター春",
+   "cat": "sitter",
+   "url": "https://wannyan-haru.club/",
+   "why": "公式サイトのアドレスがもう使われていない（ほかの問い合わせ先なし）"
+  }
+ ],
+ "url_removed": [
+  {
+   "id": "G13002",
+   "name": "成城こばやし動物病院",
+   "url": "http://feegoo.jp",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13014",
+   "name": "千歳船橋あむ動物病院",
+   "url": "http://am-ah.vets.tokyo/",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13017",
+   "name": "池村ペットクリニック",
+   "url": "http://www.ikemura-petclinic.com/index.html",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13042",
+   "name": "酒井獣医科病院",
+   "url": "http://www002.upp.so-net.ne.jp/vetsakai/index.html",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13053",
+   "name": "大泉動物病院",
+   "url": "http://www.oizumi-ah.com",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13054",
+   "name": "ナガワ動物病院",
+   "url": "https://www.nagawa-doubutsubyouin.com/",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13069",
+   "name": "大恵動物病院",
+   "url": "http://大恵動物病院.com",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13084",
+   "name": "ウルトラ動物病院",
+   "url": "http://www.ultra-vet.com",
+   "why": "ドメインが売りに出ている"
+  },
+  {
+   "id": "G13087",
+   "name": "おさだ獣医科病院",
+   "url": "http://osada.html.xdomain.jp/index.html",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13097",
+   "name": "なかむらペットクリニック",
+   "url": "http://www.nakamura-vet.net/",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13131",
+   "name": "ショウ動物病院",
+   "url": "http://www013.upp.so-net.ne.jp/sho-pc/",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13203",
+   "name": "ワトソン動物病院",
+   "url": "http://watson.animal.hospital.hp-bond.com/",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13207",
+   "name": "動友ペットランドクリニック",
+   "url": "http://www.doyou.animal-clinic.jp/HP/HOME.html",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13224",
+   "name": "犬猫病院青山",
+   "url": "http://www013.upp.so-net.ne.jp/aoyamavet/",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13234",
+   "name": "トリトン動物病院",
+   "url": "http://triton-animal.com/",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13242",
+   "name": "秋永動物病院",
+   "url": "http://www.animal119.jp",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13260",
+   "name": "フーレップ動物病院",
+   "url": "https://www.fureppu-ah.com/index.html",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13264",
+   "name": "ファミーユどうぶつ病院",
+   "url": "https://www.famille-ah.com",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13288",
+   "name": "ふじもと動物病院",
+   "url": "https://www.fujimoto-ah.com/",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13294",
+   "name": "グリーンパーク動物病院",
+   "url": "http://www.gpah.sakura.ne.jp/",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13308",
+   "name": "山口ペットクリニック",
+   "url": "http://www.yamaguchi-petclinic.com/",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13311",
+   "name": "石部どうぶつ病院",
+   "url": "http://www.ishibe-ah.com/",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G13336",
+   "name": "新ゆりがおか動物病院",
+   "url": "http://shinyuri.vets.tokyo/",
+   "why": "公式サイトのアドレスがもう使われていない"
+  },
+  {
+   "id": "G12039",
+   "name": "ル・クールどうぶつ病院",
+   "url": "https://le-coeur-ah.com/",
+   "why": "公式サイトのアドレスがもう使われていない"
+  }
+ ]
+}
