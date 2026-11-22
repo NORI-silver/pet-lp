@@ -77,6 +77,7 @@ REASONS = {
     "words": "使わない言葉", "hole": "下書きの穴（◯◯など）", "removed": "消した部品がもどった", "tally": "運営側の集計を見せている", "kv": "キービジュアルがない", "trust": "運営者と掲載の基準への表示がない",
     "prefgrid": f"都道府県のボタンを{PREFGRID_MAX + 1}個以上たたまずに並べている", "intro": f"さがす欄・見出しの前の文が{INTRO_MAX}字を超える",
     "search": "施設の分野で、さがす欄より前に記事・目次がある",
+    "rival": "ほかのペット情報サイト・まとめサイト（競合）へリンクしている（Nori 11/22「老犬ケアのサイトにとばすとか強豪にリンクしてどうすんの？やめて」。施設の公式サイトに替えるか、公式サイトがなければ載せない。競合の一覧は rules_check.py の RIVALS）",
     "contact": "公式サイトも問い合わせ先もない施設を載せている（Nori 11/22「サイト開けなくて問い合わせないところは掲載しない」。データから外すか、公式サイト・獣医師会の一覧の電話（tel・tel_src）を入れる）",
     "owner": "施設の一覧のさがす欄に「うちの子にあてはまるもの」がない（Nori 11/17「自分の子にあてはまるものを探してる」。tools/ownerfit.py）",
     "card": "タクシー以外の施設のカードが共通のカード（tools/cardskin.py の形）になっていない", "wall": f"図・表・箇条書きのない文が{WALL_MAX}字を超えて続く",
@@ -187,6 +188,8 @@ def check_page(root, path):
     if m: found.append(("hole", f"「{body[max(0, m.start() - 12):m.end() + 12].strip()}」"))
     for pat, why in REMOVED:
         if pat.search(raw): found.append(("removed", why))
+    m = RIVAL_RE.search(raw)
+    if m: found.append(("rival", m.group(1)))
     m = TALLY.search(body)
     if m: found.append(("tally", f"「{body[max(0, m.start() - 10):m.end() + 10].strip()}」"))
     if len(p.prefs) > PREFGRID_MAX: found.append(("prefgrid", f"{len(p.prefs)}個（<details> でたたむか、選択欄にする）"))
@@ -223,6 +226,12 @@ CONTACT_DATA = {"hotels.json": "url", "rojin.json": "url", "grooming.json": "url
                 "dogrun.json": "url", "joto_groups.json": "url", "sougi_facilities.json": "u", "vet_clinics.json": "url"}
 
 
+# 競合のペット情報サイト・まとめサイト（Nori 11/22）。施設の公式サイトの代わりにリンクしない。見つけたら足す
+RIVALS = ("rouken-care.jp", "rou-ken.com", "roukenhome-navi.com", "roukenhome.or.jp", "petlife.asia", "ipetclub.jp", "1-2-pet.com",
+          "goodbreeder.jp", "ekiten.jp", "trimtrim.jp", "localplace.jp", "inudia.com", "wanstown.com", "kyoshippo.jp",
+          "dogparkjp.com", "wannyan-navi.jp", "miokuri-navi.com", "hug-u.pet", "catcafemap.com", "petpedia.jp", "epark.jp")
+RIVAL_RE = re.compile(r'href="https?://(?:[\w-]+\.)*(' + "|".join(re.escape(r) for r in RIVALS) + r')[/"?]')
+
 def check_data(root):
     out = {}
     for fn, k in CONTACT_DATA.items():
@@ -235,6 +244,10 @@ def check_data(root):
             if not isinstance(x, dict) or x.get(k) or x.get("url") or (x.get("tel") and x.get("tel_src")):
                 continue
             out.setdefault(f"/data/{fn}/{x.get('id') or x.get('name')}", []).append(("contact", x.get("name", "")))
+        for x in L:
+            u = isinstance(x, dict) and (x.get(k) or x.get("url") or "")
+            if u and RIVAL_RE.search(f'href="{u}"'):
+                out.setdefault(f"/data/{fn}/{x.get('id') or x.get('name')}", []).append(("rival", u))
     return out
 
 
