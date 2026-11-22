@@ -9,6 +9,7 @@ import json, os
 import prefkeep
 import facility_cards as FC
 from guides_sougi import SOUGI_GUIDES
+from gen_dogrun import PSLUG as _PS
 
 J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sougi.json"), encoding="utf-8"))
 F = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sougi_facilities.json"), encoding="utf-8"))
@@ -119,7 +120,9 @@ def render(ctx):
         for pf in prefs:
             cs = by_pref.get(pf, [])
             fs = sorted(by_fac.get(pf, []), key=lambda f: f["city"])
-            pv = (f'<p class="sg-pvh">民間のペット火葬場・霊園・納骨堂（{len(fs)}か所・公式サイトの情報）</p>' + "".join(_fcard(e, f) for f in fs)) if fs else ""
+            # 全国のページは軽く保つ（tests/info-light の60KB）。施設は県のページに全部、ここは3か所と県のページへのリンクだけ（2026-11-22 全国の網羅で件数が増えるため）
+            more_link = (f'<a class="emg-taxi" href="/{SLUG}/{_PS[pf]}/">{e(pf)}のペット火葬・霊園をすべて見る（{len(fs)}か所）→</a>' if len(fs) > 3 and pf in _PS else "")
+            pv = (f'<p class="sg-pvh">民間のペット火葬場・霊園・納骨堂（{len(fs)}か所・公式サイトの情報）</p>' + "".join(_fcard(e, f) for f in fs[:3]) + more_link) if fs else ""
             inner = ("".join(_card(e, c) for c in cs) + pv) if cs else f'<p class="emg-none">{e(pf)}の案内は、まだ載せていません。お住まいの市町村のサイトで「ペット 亡くなった」と検索すると見つかることがあります。</p>'
             body += f'<section class="emg-pref" data-pref="{e(pf)}"><h4>{e(pf)}</h4>{inner}</section>\n'
 

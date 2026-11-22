@@ -7361,6 +7361,1221 @@
    "review_query": "沖縄ペットエンゼル 中頭郡西原町",
    "review_name": "沖縄ペットエンゼル",
    "checked": "2026年11月16日"
+  },
+  {
+   "pref": "東京都",
+   "name": "城東動物霊園",
+   "city": "江戸川区",
+   "kinds": [
+    "火葬",
+    "納骨堂"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "納骨"
+   ],
+   "price": "立会火葬 猫・極小犬 24,000円・小型犬 28,000円（税込）",
+   "u": "https://kousaiji.net/price/",
+   "id": "S6acf91",
+   "review_query": "城東動物霊園 江戸川区",
+   "review_name": "城東動物霊園",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "さかうえペット霊園",
+   "city": "板橋区",
+   "kinds": [
+    "火葬",
+    "霊園"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "納骨"
+   ],
+   "price": "猫・小型犬（5kg未満） 合同火葬 19,485円・個別火葬 24,200円（税込）",
+   "u": "https://sakaue-pet.com/price.html",
+   "id": "S5efb8e",
+   "review_query": "さかうえペット霊園 板橋区",
+   "review_name": "さかうえペット霊園",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "動物ねむりの里",
+   "city": "町田市",
+   "kinds": [
+    "火葬",
+    "霊園",
+    "納骨堂"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "納骨"
+   ],
+   "price": "小型犬（10kg未満） 合同火葬 28,000円・立会火葬 53,000円",
+   "u": "https://www.nemurinosato.com/c_price/",
+   "id": "Seaf0dd",
+   "review_query": "動物ねむりの里 町田市",
+   "review_name": "動物ねむりの里",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "深大寺動物霊園",
+   "city": "調布市",
+   "kinds": [
+    "火葬",
+    "霊園"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "納骨"
+   ],
+   "price": "猫・小型犬（5kg以下） 合同火葬 18,500円・一任火葬 30,620円（税込）",
+   "u": "https://www.musashinokk.co.jp/tomonokai/ryoukin/",
+   "id": "S37d5b1",
+   "review_query": "深大寺動物霊園 調布市",
+   "review_name": "深大寺動物霊園",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "せたがやペット斎場",
+   "city": "世田谷区",
+   "kinds": [
+    "火葬",
+    "霊園",
+    "納骨堂"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "納骨"
+   ],
+   "price": "一任個別火葬 極小動物 16,500円・立会個別火葬 1〜5kg 38,500円",
+   "u": "https://pet-ceremony.com/plan/",
+   "id": "S299355",
+   "review_query": "せたがやペット斎場 世田谷区",
+   "review_name": "せたがやペット斎場",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "高尾霊園犬猫墓地",
+   "city": "八王子市",
+   "kinds": [
+    "火葬",
+    "霊園"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え"
+   ],
+   "price": "猫 合同火葬 8,800円・個別火葬（お預かり一任） 22,000円",
+   "u": "https://takaoreien.com/petkasou/",
+   "id": "S3c7c5b",
+   "review_query": "高尾霊園犬猫墓地 八王子市",
+   "review_name": "高尾霊園犬猫墓地",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "アーバンペット葬儀社",
+   "city": "江戸川区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "訪問火葬"
+   ],
+   "price": null,
+   "u": "https://www.420160.jp/",
+   "id": "S20c5fa",
+   "review_query": "アーバンペット葬儀社 江戸川区",
+   "review_name": "アーバンペット葬儀社",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "訪問火葬専門 ペットの小さな家",
+   "city": "新宿区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬"
+   ],
+   "price": "おまかせ火葬プラン 22,000円（税込）〜・立会い火葬プラン 27,500円（税込）〜",
+   "u": "https://pet-sogi.net/",
+   "id": "Scfbd06",
+   "review_query": "訪問火葬専門 ペットの小さな家 新宿区",
+   "review_name": "訪問火葬専門 ペットの小さな家",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "東京動物霊園",
+   "city": "北区",
+   "kinds": [
+    "火葬",
+    "霊園",
+    "納骨堂"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "納骨"
+   ],
+   "price": "合同葬 7,700円（税込）〜・個別葬 14,300円（税込）〜",
+   "u": "https://www.tdr.co.jp/",
+   "id": "S34fdcf",
+   "review_query": "東京動物霊園 北区",
+   "review_name": "東京動物霊園",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "グリムペット霊園",
+   "city": "八王子市",
+   "kinds": [
+    "火葬",
+    "霊園"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "納骨"
+   ],
+   "price": "個別一任 小型犬・猫・うさぎ（4.9kgまでの区分） 19,800円（税込）",
+   "u": "https://grimm-pet.jp/",
+   "id": "S66da16",
+   "review_query": "グリムペット霊園 八王子市",
+   "review_name": "グリムペット霊園",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "ペットPaPa",
+   "city": "練馬区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "訪問火葬",
+    "納骨"
+   ],
+   "price": "家族葬 基本プラン 2kg〜5kg未満（猫・チワワなど） 27,000円",
+   "u": "https://www.petpapa.jp/product/kazokusou/",
+   "id": "S454ab2",
+   "review_query": "ペットPaPa 練馬区",
+   "review_name": "ペットPaPa",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "西信寺別院 大泉霊園",
+   "city": "練馬区",
+   "kinds": [
+    "火葬",
+    "霊園"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "納骨"
+   ],
+   "price": "合同 小動物 8,800円〜・個別 犬（柴犬など） 35,200円〜（税込）",
+   "u": "https://oizumi-daisenji.jp/price/",
+   "id": "Se029c4",
+   "review_query": "西信寺別院 大泉霊園 練馬区",
+   "review_name": "西信寺別院 大泉霊園",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "VIPペットサービス",
+   "city": "足立区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え"
+   ],
+   "price": "犬（5kgの区分） 合同葬 25,300円・個別葬 37,400円",
+   "u": "https://vip-pet-service.com/price/",
+   "id": "S4f3e7e",
+   "review_query": "VIPペットサービス 足立区",
+   "review_name": "VIPペットサービス",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "ペット葬祭・霊園ヘブンパーク",
+   "city": "青梅市",
+   "kinds": [
+    "火葬",
+    "霊園",
+    "納骨堂"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "納骨"
+   ],
+   "price": "小型犬 合同火葬 16,500円・一任個別火葬 25,000円（税込）",
+   "u": "https://www.heaven-p.info/fee",
+   "id": "Sea5995",
+   "review_query": "ペット葬祭・霊園ヘブンパーク 青梅市",
+   "review_name": "ペット葬祭・霊園ヘブンパーク",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "ペットメモリアル昭島",
+   "city": "昭島市",
+   "kinds": [
+    "火葬",
+    "霊園",
+    "納骨堂"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "納骨"
+   ],
+   "price": "5kg未満 合同火葬 11,000円・立会火葬 30,800円（税込）",
+   "u": "https://kenyuusha.co.jp/akishima/",
+   "id": "Se98408",
+   "review_query": "ペットメモリアル昭島 昭島市",
+   "review_name": "ペットメモリアル昭島",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "武蔵村山ペットメモリアルパーク",
+   "city": "武蔵村山市",
+   "kinds": [
+    "火葬",
+    "霊園",
+    "納骨堂"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "納骨"
+   ],
+   "price": "小型犬・猫（5kgの区分） 合同 16,500円・個別一任 33,000円（税込）",
+   "u": "https://www.m-pet-m.info/price",
+   "id": "S0c4f9d",
+   "review_query": "武蔵村山ペットメモリアルパーク 武蔵村山市",
+   "review_name": "武蔵村山ペットメモリアルパーク",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "永昌院ペットパレス",
+   "city": "足立区",
+   "kinds": [
+    "火葬",
+    "霊園"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "納骨"
+   ],
+   "price": "小動物・鳥・兎・猫（1〜5kg未満） 合同葬 15,900円・立会葬 49,100円",
+   "u": "https://eisyouin.com/pp/",
+   "id": "S65f8ee",
+   "review_query": "永昌院ペットパレス 足立区",
+   "review_name": "永昌院ペットパレス",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "アメリカンペットメモリアル",
+   "city": "西東京市",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "訪問火葬"
+   ],
+   "price": "猫・犬・ウサギ（3.9〜7.9kgの区分） 29,000円（税込）",
+   "u": "https://ame-pet.com/",
+   "id": "S778a9d",
+   "review_query": "アメリカンペットメモリアル 西東京市",
+   "review_name": "アメリカンペットメモリアル",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "ペットセレモニーWITH東京",
+   "city": "足立区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬"
+   ],
+   "price": null,
+   "u": "https://withtokyo.net/htm/service.htm",
+   "id": "S8fea8a",
+   "review_query": "ペットセレモニーWITH東京 足立区",
+   "review_name": "ペットセレモニーWITH東京",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "エンジェルロード",
+   "city": "福生市",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "訪問火葬"
+   ],
+   "price": "返骨プラン 1kgの区分 15,000円（税込）",
+   "u": "https://angel-road.jp/return-bone/",
+   "id": "S62e155",
+   "review_query": "エンジェルロード 福生市",
+   "review_name": "エンジェルロード",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "ペットメモリアル麻布称名寺",
+   "city": "港区",
+   "kinds": [
+    "霊園",
+    "納骨堂"
+   ],
+   "services": [
+    "納骨"
+   ],
+   "price": "合同墓地の納骨料 22,000円（税込・火葬代は別）",
+   "u": "https://www.pet-azabu.com/",
+   "id": "S29a4c3",
+   "review_query": "ペットメモリアル麻布称名寺 港区",
+   "review_name": "ペットメモリアル麻布称名寺",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "すみだ動物慰霊堂",
+   "city": "墨田区",
+   "kinds": [
+    "火葬",
+    "納骨堂"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "納骨"
+   ],
+   "price": "個別一任火葬 小型（10kgの区分） 35,000円（税込）",
+   "u": "https://www.sumida-doubutu.com/pet-memorialservice/",
+   "id": "S7f4bb0",
+   "review_query": "すみだ動物慰霊堂 墨田区",
+   "review_name": "すみだ動物慰霊堂",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "優心セレモニー",
+   "city": "港区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "納骨"
+   ],
+   "price": "1〜3kg お引取り合同火葬 16,500円・個別火葬（お骨上げなし） 24,000円（税込）",
+   "u": "https://yushin.life/price/index.html",
+   "id": "Sda23d9",
+   "review_query": "優心セレモニー 港区",
+   "review_name": "優心セレモニー",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "ペットセレモニープレア東京",
+   "city": "足立区",
+   "kinds": [
+    "火葬",
+    "納骨堂"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬",
+    "納骨"
+   ],
+   "price": "立会火葬 小型（8kg以下） 30,800円（税込）",
+   "u": "https://www.petceremony.jp/price/adachi.html",
+   "id": "S34594c",
+   "review_query": "ペットセレモニープレア東京 足立区",
+   "review_name": "ペットセレモニープレア東京",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "訪問ペット火葬オーナーズアイ",
+   "city": "渋谷区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬"
+   ],
+   "price": "基本プラン 15,400円・おすすめプラン 20,900円（税込）",
+   "u": "https://www.owners-i.com/lp/",
+   "id": "S8db209",
+   "review_query": "訪問ペット火葬オーナーズアイ 渋谷区",
+   "review_name": "訪問ペット火葬オーナーズアイ",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "杉並区ベストペット&ペット霊堂",
+   "city": "中野区",
+   "kinds": [
+    "火葬",
+    "霊園"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "訪問火葬",
+    "納骨"
+   ],
+   "price": "合同火葬 9,000円〜・個別火葬 犬・猫（5kgの区分） 40,000円〜（税別）",
+   "u": "https://suginami-pet-ceremony.com/plan/",
+   "id": "Sdad407",
+   "review_query": "杉並区ベストペット&ペット霊堂 中野区",
+   "review_name": "杉並区ベストペット&ペット霊堂",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "ペット花葬儀",
+   "city": "足立区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬"
+   ],
+   "price": null,
+   "u": "https://pethanasougi.com/",
+   "id": "S2df4ff",
+   "review_query": "ペット花葬儀 足立区",
+   "review_name": "ペット花葬儀",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "トワペット",
+   "city": "あきる野市",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "お迎え",
+    "訪問火葬"
+   ],
+   "price": "エコノミープラン（1〜4kg） 19,800円〜（税込）",
+   "u": "https://tia-towapet.com/",
+   "id": "S3f48ae",
+   "review_query": "トワペット あきる野市",
+   "review_name": "トワペット",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "天国への扉 ペットメモリアル東京板橋",
+   "city": "板橋区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬",
+    "納骨"
+   ],
+   "price": "立ち会い火葬 拾骨ありプラン 19,800円（税込）",
+   "u": "https://www.tengokutobira.jp/",
+   "id": "S0ec3b8",
+   "review_query": "天国への扉 ペットメモリアル東京板橋 板橋区",
+   "review_name": "天国への扉 ペットメモリアル東京板橋",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "東長寺 ペット火葬",
+   "city": "新宿区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬"
+   ],
+   "price": "小型（3kg以下） おまかせ（個別一任火葬） 28,500円・ファミリー（立ち合い個別火葬） 34,000円（税込）",
+   "u": "https://tochoji.info/pet-memorial/",
+   "id": "S8bddbf",
+   "review_query": "東長寺 ペット火葬 新宿区",
+   "review_name": "東長寺 ペット火葬",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "ヤマトペット霊園",
+   "city": "杉並区",
+   "kinds": [
+    "火葬",
+    "霊園"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "納骨"
+   ],
+   "price": "猫・小型犬（5kgの区分） 合同火葬 16,300円・個別火葬 37,700円（税込）",
+   "u": "https://yamatopetreien.jp/cremation/price/",
+   "id": "Sccfc1e",
+   "review_query": "ヤマトペット霊園 杉並区",
+   "review_name": "ヤマトペット霊園",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "ペットセレモニーあえか",
+   "city": "江戸川区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "訪問火葬"
+   ],
+   "price": "5kgの区分 一任 21,000円・立会 25,000円",
+   "u": "https://www.aeka-pet.com/kasou",
+   "id": "S965363",
+   "review_query": "ペットセレモニーあえか 江戸川区",
+   "review_name": "ペットセレモニーあえか",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "東京都",
+   "name": "ステラ☆ミラ小平",
+   "city": "小平市",
+   "kinds": [
+    "納骨堂"
+   ],
+   "services": [
+    "納骨"
+   ],
+   "price": null,
+   "u": "https://www.stella-mira.com/location/kodaira.html",
+   "id": "Sde9ab4",
+   "review_query": "ステラ☆ミラ小平 小平市",
+   "review_name": "ステラ☆ミラ小平",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "千葉県",
+   "name": "ステラ☆ミラ行徳",
+   "city": "市川市",
+   "kinds": [
+    "火葬",
+    "納骨堂"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "納骨"
+   ],
+   "price": null,
+   "u": "https://www.stella-mira.com/location/gyoutoku.html",
+   "id": "S735745",
+   "review_query": "ステラ☆ミラ行徳 市川市",
+   "review_name": "ステラ☆ミラ行徳",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "埼玉県",
+   "name": "ステラ☆ミラ蓮田",
+   "city": "蓮田市",
+   "kinds": [
+    "火葬",
+    "納骨堂"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "納骨"
+   ],
+   "price": null,
+   "u": "https://www.stella-mira.com/location/hasuda.html",
+   "id": "Sc0ed0c",
+   "review_query": "ステラ☆ミラ蓮田 蓮田市",
+   "review_name": "ステラ☆ミラ蓮田",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "神奈川県",
+   "name": "ステラ☆ミラ川崎",
+   "city": "川崎市川崎区",
+   "kinds": [
+    "火葬",
+    "納骨堂"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "納骨"
+   ],
+   "price": null,
+   "u": "https://www.stella-mira.com/location/kawasaki.html",
+   "id": "S6a58bf",
+   "review_query": "ステラ☆ミラ川崎 川崎市川崎区",
+   "review_name": "ステラ☆ミラ川崎",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "神奈川県",
+   "name": "ペットセレモニーファミリア",
+   "city": "相模原市中央区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "訪問火葬"
+   ],
+   "price": "火葬のプラン 6,600円（税込）〜",
+   "u": "https://pet-ceremony-familia.com/",
+   "id": "Sed0b98",
+   "review_query": "ペットセレモニーファミリア 相模原市中央区",
+   "review_name": "ペットセレモニーファミリア",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "神奈川県",
+   "name": "アニマルズ・セレモニー 相模原",
+   "city": "相模原市中央区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬"
+   ],
+   "price": "5kg未満 お引き取り（合同）火葬 13,800円・ご返骨（個別火葬） 18,700円（税込）",
+   "u": "https://animals-ceremony.com/",
+   "id": "S905649",
+   "review_query": "アニマルズ・セレモニー 相模原 相模原市中央区",
+   "review_name": "アニマルズ・セレモニー 相模原",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "埼玉県",
+   "name": "ペット火葬真愛メモリアル",
+   "city": "川口市",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬"
+   ],
+   "price": "小動物 あずかり葬 8,000円・2〜5kg未満（猫・チワワなど） あずかり葬 18,000円（税抜き）",
+   "u": "https://saitama-pet-memorial.com/price",
+   "id": "Sc07e68",
+   "review_query": "ペット火葬真愛メモリアル 川口市",
+   "review_name": "ペット火葬真愛メモリアル",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "埼玉県",
+   "name": "ペット火葬プリエール",
+   "city": "川口市",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬",
+    "納骨"
+   ],
+   "price": "2〜5kg（猫・うさぎ・トイプードルなど） 合同火葬 16,500円・個別一任火葬 19,800円（税込）",
+   "u": "https://priere-petceremony.jp/",
+   "id": "S863e81",
+   "review_query": "ペット火葬プリエール 川口市",
+   "review_name": "ペット火葬プリエール",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "埼玉県",
+   "name": "埼玉動物靈園",
+   "city": "上尾市",
+   "kinds": [
+    "霊園",
+    "納骨堂"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "納骨"
+   ],
+   "price": "猫・うさぎ・小型犬（5kg以下） 合同火葬 16,500円・個別火葬 22,000円（税込）",
+   "u": "https://www.saitamadoubutureien.com/fee",
+   "id": "Sff5d16",
+   "review_query": "埼玉動物靈園 上尾市",
+   "review_name": "埼玉動物靈園",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "栃木県",
+   "name": "ペット霊園メモリー",
+   "city": "那須塩原市",
+   "kinds": [
+    "火葬",
+    "霊園"
+   ],
+   "services": [
+    "個別火葬",
+    "お迎え"
+   ],
+   "price": null,
+   "u": "https://www.petreien-memory.com/",
+   "id": "S6e165a",
+   "review_query": "ペット霊園メモリー 那須塩原市",
+   "review_name": "ペット霊園メモリー",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "埼玉県",
+   "name": "ディアペット川越",
+   "city": "比企郡鳩山町",
+   "kinds": [
+    "火葬",
+    "霊園"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "お迎え",
+    "訪問火葬",
+    "納骨"
+   ],
+   "price": "お参り火葬（収骨・埋葬一任） 1〜10kg 21,000円（税込）",
+   "u": "https://dearpet-kawagoe.jp/",
+   "id": "S75f237",
+   "review_query": "ディアペット川越 比企郡鳩山町",
+   "review_name": "ディアペット川越",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "埼玉県",
+   "name": "ペットメモリアルぽちたま",
+   "city": "春日部市",
+   "kinds": [
+    "火葬",
+    "霊園",
+    "納骨堂"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "納骨"
+   ],
+   "price": "納骨堂 13,200円（税込）〜",
+   "u": "https://potitama.com/",
+   "id": "S9c2cde",
+   "review_query": "ペットメモリアルぽちたま 春日部市",
+   "review_name": "ペットメモリアルぽちたま",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "千葉県",
+   "name": "トゥハート・ペットセレモニー 松戸",
+   "city": "松戸市",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬"
+   ],
+   "price": "2〜5kg未満（うさぎ・猫・チワワなど） 合同火葬 18,150円・立会い個別火葬 21,450円",
+   "u": "https://www.th-pc.jp/price.html",
+   "id": "S2f9634",
+   "review_query": "トゥハート・ペットセレモニー 松戸 松戸市",
+   "review_name": "トゥハート・ペットセレモニー 松戸",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "茨城県",
+   "name": "トゥハート・ペットセレモニー 常総",
+   "city": "常総市",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬"
+   ],
+   "price": "2〜5kg未満（うさぎ・猫・チワワなど） 合同火葬 18,150円・立会い個別火葬 21,450円",
+   "u": "https://www.th-pc.jp/plan.html",
+   "id": "Sf1306e",
+   "review_query": "トゥハート・ペットセレモニー 常総 常総市",
+   "review_name": "トゥハート・ペットセレモニー 常総",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "埼玉県",
+   "name": "トゥハート・ペットセレモニー 三郷",
+   "city": "三郷市",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬"
+   ],
+   "price": "2〜5kg未満（うさぎ・猫・チワワなど） 合同火葬 18,150円・立会い個別火葬 21,450円",
+   "u": "https://www.th-pc.jp/",
+   "id": "S4496f4",
+   "review_query": "トゥハート・ペットセレモニー 三郷 三郷市",
+   "review_name": "トゥハート・ペットセレモニー 三郷",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "埼玉県",
+   "name": "なんさいがーでん",
+   "city": "川口市",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬"
+   ],
+   "price": "猫・小型犬（5kg未満の目安） 合同火葬 13,200円〜・個別火葬 16,500円〜（税込）",
+   "u": "https://www.nansaikaikan.com/",
+   "id": "S7866ff",
+   "review_query": "なんさいがーでん 川口市",
+   "review_name": "なんさいがーでん",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "埼玉県",
+   "name": "ペットセレモニー美空",
+   "city": "川口市",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え"
+   ],
+   "price": "合同火葬 14,850円〜・個別火葬 18,150円〜（税込）",
+   "u": "https://misora-pet.com/price/index.html",
+   "id": "S46df76",
+   "review_query": "ペットセレモニー美空 川口市",
+   "review_name": "ペットセレモニー美空",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "千葉県",
+   "name": "ペットメモリーポラリス",
+   "city": "船橋市",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬"
+   ],
+   "price": "2〜5kg（猫・うさぎ・チワワなど） 立会個別火葬 23,100円",
+   "u": "https://pet-polaris.com/price/",
+   "id": "Sb821f7",
+   "review_query": "ペットメモリーポラリス 船橋市",
+   "review_name": "ペットメモリーポラリス",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "千葉県",
+   "name": "Ohanaペットメモリアル",
+   "city": "印西市",
+   "kinds": [
+    "火葬",
+    "霊園"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬"
+   ],
+   "price": null,
+   "u": "https://reien-ohana.com/",
+   "id": "S8292f1",
+   "review_query": "Ohanaペットメモリアル 印西市",
+   "review_name": "Ohanaペットメモリアル",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "茨城県",
+   "name": "水戸ペットセレモニー",
+   "city": "水戸市",
+   "kinds": [
+    "火葬",
+    "霊園",
+    "納骨堂"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬",
+    "納骨"
+   ],
+   "price": "〜5kg 一任合同火葬 7,700円・立会個別火葬 16,500円（税込）",
+   "u": "https://www.mitopet.com/chages.html",
+   "id": "S075055",
+   "review_query": "水戸ペットセレモニー 水戸市",
+   "review_name": "水戸ペットセレモニー",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "茨城県",
+   "name": "ペット霊園 慈苑",
+   "city": "笠間市",
+   "kinds": [
+    "火葬",
+    "霊園"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え"
+   ],
+   "price": "個別葬 一任 17,000円〜・立会い 22,000円〜、合同葬 11,000円〜",
+   "u": "https://jien-pet.com/price/",
+   "id": "Secd8bc",
+   "review_query": "ペット霊園 慈苑 笠間市",
+   "review_name": "ペット霊園 慈苑",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "大阪府",
+   "name": "ペットマザー大阪火葬斎場",
+   "city": "大阪市中央区",
+   "kinds": [
+    "火葬",
+    "納骨堂"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "納骨"
+   ],
+   "price": "合同ペット火葬 8,500円〜（墓地埋葬料を含む）",
+   "u": "https://pet-mother.jp/price",
+   "id": "Sb9d9c0",
+   "review_query": "ペットマザー大阪火葬斎場 大阪市中央区",
+   "review_name": "ペットマザー大阪火葬斎場",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "大阪府",
+   "name": "大阪ペット火葬メモリアル",
+   "city": "大阪市西区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "個別火葬",
+    "立ち会い火葬",
+    "訪問火葬"
+   ],
+   "price": "お任せ火葬 16,000円（税込）〜・立会家族葬 19,000円（税込）〜",
+   "u": "https://osaka-pet-funeral.com/",
+   "id": "S71bb62",
+   "review_query": "大阪ペット火葬メモリアル 大阪市西区",
+   "review_name": "大阪ペット火葬メモリアル",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "大阪府",
+   "name": "天国への扉 ペットメモリアル大阪南",
+   "city": "大阪市城東区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "立ち会い火葬",
+    "お迎え"
+   ],
+   "price": null,
+   "u": "https://pet-funeral-tengoku.jp/price",
+   "id": "Sc328e1",
+   "review_query": "天国への扉 ペットメモリアル大阪南 大阪市城東区",
+   "review_name": "天国への扉 ペットメモリアル大阪南",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "兵庫県",
+   "name": "宝塚動物霊園",
+   "city": "宝塚市",
+   "kinds": [
+    "火葬",
+    "霊園",
+    "納骨堂"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "お迎え",
+    "納骨"
+   ],
+   "price": "小鳥・ハムスターなど 火葬料 15,400円（税込）",
+   "u": "https://www.animals.co.jp/price/",
+   "id": "Sdfeaeb",
+   "review_query": "宝塚動物霊園 宝塚市",
+   "review_name": "宝塚動物霊園",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "愛知県",
+   "name": "ペットセレモニーリリーフ",
+   "city": "名古屋市中区",
+   "kinds": [
+    "火葬"
+   ],
+   "services": [
+    "合同火葬",
+    "個別火葬",
+    "立ち会い火葬",
+    "お迎え",
+    "訪問火葬"
+   ],
+   "price": "小・中型犬・猫（2〜5kg） 個別火葬 21,450円・小動物（1kg未満） 個別火葬 13,750円",
+   "u": "https://relief-pet.com/plan",
+   "id": "Se8235c",
+   "review_query": "ペットセレモニーリリーフ 名古屋市中区",
+   "review_name": "ペットセレモニーリリーフ",
+   "checked": "2026-11-22"
+  },
+  {
+   "pref": "愛知県",
+   "name": "東海動物霊苑",
+   "city": "豊田市",
+   "kinds": [
+    "火葬",
+    "霊園",
+    "納骨堂"
+   ],
+   "services": [
+    "合同火葬",
+    "立ち会い火葬",
+    "納骨"
+   ],
+   "price": "1kg未満 合同火葬 18,000円・立会個別火葬 25,000円（税込）",
+   "u": "https://hozumikk.co.jp/price/",
+   "id": "Sbed418",
+   "review_query": "東海動物霊苑 豊田市",
+   "review_name": "東海動物霊苑",
+   "checked": "2026-11-22"
   }
  ]
 }
