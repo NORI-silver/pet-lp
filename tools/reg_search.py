@@ -14,6 +14,20 @@ def get(url):
 def strip(s):
     return html.unescape(re.sub(r'<[^>]+>', '', s)).strip()
 
+def yahoo(q):
+    h = get('https://search.yahoo.co.jp/search?ei=UTF-8&p=' + urllib.parse.quote(q))
+    res = []
+    for m in re.finditer(r'(?is)<a[^>]+href="(https?://[^"]+)"[^>]*>\s*(?:<[^>]+>\s*)*<h3[^>]*>(.*?)</h3>', h):
+        u = html.unescape(m.group(1))
+        if 'yahoo.co.jp' in u: continue
+        res.append([strip(m.group(2)), u])
+    if not res:
+        for m in re.finditer(r'(?is)<h3[^>]*>\s*<a[^>]+href="(https?://[^"]+)"[^>]*>(.*?)</a>', h):
+            u = html.unescape(m.group(1))
+            if 'yahoo.co.jp' not in u: res.append([strip(m.group(2)), u])
+    return res
+
+
 def ddg(q):
     h = get('https://html.duckduckgo.com/html/?kl=jp-jp&q=' + urllib.parse.quote(q))
     res = []
@@ -51,7 +65,7 @@ def brave(q):
     return res
 
 
-ENGINES = (('ddg', ddg), ('brave', brave), ('bing', bing))
+ENGINES = (('yahoo', yahoo), ('ddg', ddg))  # Actions からは Bing・Brave が使えない（2026-11-22）
 
 
 def main():
@@ -63,7 +77,7 @@ def main():
         if fn.startswith('search') and fn.endswith('.json'):
             jobs += json.load(open(os.path.join(base, fn)))
     jobs = jobs[shard::n]
-    res = []; fails = {'ddg': 0, 'brave': 0, 'bing': 0}
+    res = []; fails = {'yahoo': 0, 'ddg': 0}
     for j in jobs:
         r = dict(j)
         for name, fn in ENGINES:
