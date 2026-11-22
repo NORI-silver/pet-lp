@@ -438,6 +438,41 @@ def _answer(it):
     if it.get("cage_req") or it.get("cage"): out.append("ケージ・キャリー：" + ("持っていく、またはケージの中で飼うと書いてある。" if it.get("cage_req") else it["cage"]))
     return out
 
+def nobeoka_action(e):
+    """Pilot: current operation, hazard designation, and individual fit are separate."""
+    # City R8 (June) wind/water list, p. 1: yellow facility row AND ● in the pet-space column.
+    priority = (
+        ("東海", "港小学校 2階図書室（東海町）・東海東小学校 普通教室棟1階（柚の木田町）"),
+        ("岡富", "岡富コミュニティセンター（幸町）"),
+        ("川中", "延岡市民協働まちづくりセンター 3階（東本小路）"),
+        ("南方", "南方東コミュニティセンター（西階町）・延岡市水防センター（天下町）"),
+        ("恒富", "延岡市社会福祉センター（三ツ瀬町）・恒富中学校 南校舎2階（古城町）"),
+        ("伊形", "延岡市職業訓練支援センター 3階（土々呂町）"),
+        ("北方", "北方勤労者体育センター（北方町川水流卯）"),
+        ("北浦", "北浦公民館（北浦町古江）"),
+        ("北川", "北川コミュニティセンター（北川町川内名）"),
+    )
+    list_html = "".join(f"<li><b>{e(area)}</b>：{e(places)}</li>" for area, places in priority)
+    return f'''<section class="answer" id="nobeoka-action" aria-labelledby="nobeoka-action-title">
+<h2 id="nobeoka-action-title">いま開いている場所と、うちの子を連れて行けるか</h2>
+<p><strong>危険が迫っているときは、問い合わせの返事を待たず、市の避難情報に従い、安全の確保を最優先にしてください。</strong></p>
+<h3>1. いま開いている場所</h3>
+<p><strong><a href="https://www.city.nobeoka.miyazaki.jp/">延岡市の最新の避難情報・開設場所を見る ↗</a></strong><br>市は開設場所を公式サイトのトップに掲載します。このページの一覧は開設状況を示すものではありません。</p>
+<p>別の確認先：<a href="https://bosai.pref.miyazaki.lg.jp/SaigaiTask/pub">宮崎県の防災情報 ↗</a>の「避難所運営情報一覧」。</p>
+<h3>2. 大雨・洪水・土砂災害で、ペット用の場所がある候補</h3>
+<p>市の風水害用の一覧で「ペット避難スペース」に●がある施設を候補にします。<strong>●はペット用の場所の目印で、開設中・大型犬OK・ケージの貸出を意味しません。</strong>自分の地区と、今回の災害に対して安全な経路も確かめてください。</p>
+<p><a href="https://www.city.nobeoka.miyazaki.jp/uploaded/attachment/27370.pdf">市の風水害時一覧でペット欄を見る（2026年6月・PDF） ↗</a> ／
+<a href="https://www.city.nobeoka.miyazaki.jp/soshiki/64/3341.html">洪水・土砂災害ハザードマップ ↗</a>。
+<a href="https://www.city.nobeoka.miyazaki.jp/site/disaster/3334.html">地震・津波などは災害別の指定一覧へ ↗</a></p>
+<details class="hn-more"><summary>風水害で優先開設（黄色）かつペット欄が●の施設を、地区で見る</summary>
+<ul>{list_html}</ul>
+<p>南浦の「いのちの杜」は優先開設ですがペット欄は空白です。南浦中学校と浦城小学校にはペット欄に●がありますが、優先開設の印はありません。いずれも今回開くかは、市の最新案内で確認してください。</p>
+</details>
+<h3>3. 犬が入れるケージがないとき</h3>
+<p>市の案内では<strong>避難場所で必ずケージに入れます。リードだけでは条件を満たしません。</strong>安全なうちに<a href="https://www.city.nobeoka.miyazaki.jp/site/disaster/3360.html#section_footer">市の災害支援課の連絡先 ↗</a>で、犬の体重（例：50kg）、ケージがないこと、希望する施設名を伝え、その子を受け入れられるか、難しければどこへ行くかを確認してください。平時は、安全な場所にある親戚・知人宅や、犬を受け入れられる宿も候補にします。</p>
+</section>'''
+
+
 def render_city(ctx, pf, it, sibs, done):
     e, SITE = ctx["e"], ctx["SITE"]
     nm = it["name"]
@@ -456,19 +491,22 @@ def render_city(ctx, pf, it, sibs, done):
     others = [x for x in sibs if x is not it]
     sib = ('<ul class="hn-pref">' + "".join(f'<li><a href="{href_city(x)}">{e(x["name"])}</a></li>' for x in others) + "</ul>") if others else ""
     if len(others) > 12: sib = f'<details class="hn-more"><summary>{e(pf)}のほかの市区町村（{len(others)}）</summary>{sib}</details>'
+    nobeoka = pf == "宮崎県" and nm == "延岡市"
+    lede = ("避難所の開設状況、ペット用スペースの候補、受け入れを確認する方法が分かります。" if nobeoka else
+            f"うちの子をえらぶと、{nm}の避難所に連れて行けるか・どこで過ごすか・今日やる準備が分かります。")
     return ctx["head"](title, desc, url, ld) + CSS + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/{SLUG}/">ペットと避難</a> › <a href="{href(pf)}">{e(pf)}</a> › {e(nm)}</nav>
     <h1><small>避難所で受け入れる動物・大型犬・ケージの決まり</small>{e(nm)}のペット同行避難</h1>
-    <p class="lede">うちの子をえらぶと、{e(nm)}の避難所に連れて行けるか・どこで過ごすか・今日やる準備が分かります。</p>
+    <p class="lede">{e(lede)}</p>
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
-    {HA.block(e, it, pf, large_answer(it), shelter_note=has_sh_place(pf, it))}
-    {shelters_html(e, pf, it)}
+    {nobeoka_action(e) if nobeoka else ""}{HA.block(e, it, pf, large_answer(it), shelter_note=False if nobeoka else has_sh_place(pf, it))}
+    {shelters_html(e, pf, it, reference_only=nobeoka)}
     <h2 id="detail">{e(nm)}の決まり（上の答えのもと）</h2>
     <div class="answer">{pol}{agrid(e, it)}{arows(e, it)}</div>
     <details class="hn-more"><summary>{e(nm)}が出している決まりの全文と出どころ</summary>{card(e, it, grid=False)}</details>
@@ -588,7 +626,12 @@ def site_src(pf, nm):
 def has_sh_place(pf, it):
     return any(r[5] for r in load_shelters(pf, it["name"]))
 
-def shelters_html(e, pf, it):
+def shelters_html(e, pf, it, reference_only=False):
+    if reference_only:
+        return ('<div class="hn-shw" id="shelters"><h2>指定避難場所の地図（平時の確認用）</h2>'
+                '<p>地図の登録や距離は、開設中・安全な経路・ペットの受け入れを示すものではありません。</p>'
+                '<p><a href="https://www.city.nobeoka.miyazaki.jp/site/disaster/3334.html">市の災害別の指定緊急避難場所を見る ↗</a>'
+                ' ／ <a href="https://www.city.nobeoka.miyazaki.jp/">市の最新の開設場所を見る ↗</a></p></div>')
     nm = it["name"]; rs = load_shelters(pf, nm)
     if not rs: return ""
     pets = sum(1 for r in rs if r[5])
