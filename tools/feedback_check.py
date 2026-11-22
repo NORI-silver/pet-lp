@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""[G] Nori さんの指摘の台帳（docs/ai/feedback.json）の点検（Nori 2026-11-22「同じような指摘を今後なくしたい」）。
+"""[G]（AI-KIT。どの事業でも同じ）Nori さんの指摘の台帳（docs/ai/feedback.json）の点検（Nori 2026-11-22「同じような指摘を今後なくしたい」）。
 
 使い方:
   python3 tools/feedback_check.py .          → 止めるしくみ（check）のない指摘・存在しないしくみの名前があれば終了コード1（PRごと）
@@ -10,11 +10,16 @@ import json, os, re, sys, collections
 
 LENSES = {"persona", "business", "seo", "partner"}
 
+def _read(root, f):
+    # 事業によっては無い点検もある（AI-KIT。ない点検の名前を台帳に書けば NG になる）
+    p = os.path.join(root, f)
+    return open(p, encoding="utf-8").read() if os.path.exists(p) else ""
+
 def codes(root):
-    rc = open(os.path.join(root, "tools/rules_check.py"), encoding="utf-8").read()
-    pc = open(os.path.join(root, "tools/phone_check.cjs"), encoding="utf-8").read()
-    sc = open(os.path.join(root, "tools/seo_check.py"), encoding="utf-8").read()
-    rp = open(os.path.join(root, "tools/report_check.cjs"), encoding="utf-8").read()
+    rc = _read(root, "tools/rules_check.py")
+    pc = _read(root, "tools/phone_check.cjs")
+    sc = _read(root, "tools/seo_check.py")
+    rp = _read(root, "tools/report_check.cjs")
     return {
         "report": set(re.findall(r"ng\.push\(`?'?(\w+):", rp)),
         "rules": set(re.findall(r'found\.append\(\("(\w+)"', rc)),
