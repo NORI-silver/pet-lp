@@ -26,9 +26,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -q --orphan crawl-out-kanto-kanto
+          git checkout -q --orphan crawl-out-kanto
           git rm -rq --cached . && git clean -fdq
           cp -r /tmp/out/. .
           git add -A
           git commit -qm "公式サイトの抜き出し ${GITHUB_SHA::7}"
-          git push -q -f origin crawl-out-kanto-kanto
+          git push -q -f origin crawl-out-kanto
