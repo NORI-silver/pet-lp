@@ -30,6 +30,7 @@ FACT = [
     ('ワクチン', re.compile(r'ワクチン|狂犬病|予防接種|混合')),
     ('対応エリア', re.compile(r'対応エリア|対応地域|サービスエリア|訪問エリア|出張エリア|対象エリア|対応区域')),
     ('送迎', re.compile(r'送迎|お迎え|送り迎え')),
+    ('お支払い', re.compile(r'お支払|支払い方法|クレジットカード|PayPay|現金のみ')),
     ('受ける動物', re.compile(r'大型犬|中型犬|小型犬|超大型|kg|ｋｇ|キロ|猫|うさぎ|ウサギ|小動物|鳥')),
 ]
 
@@ -65,7 +66,7 @@ def facts_of(s):
             for k, rx in FACT:
                 if rx.search(l):
                     out.setdefault(k, [])
-                    if len(out[k]) < 6 and all(l != x['v'] for x in out[k]):
+                    if len(out[k]) < 12 and all(l != x['v'] for x in out[k]):
                         out[k].append({'v': l, 'src': p.get('url')})
     return out
 
@@ -87,7 +88,9 @@ def main():
         best = None
         for s in snaps:
             a, n, text = official(it, s)
-            if a or n:
+            # 住所（町名まで）が合い、名前の頭（4文字）もページにあるときだけ公式サイトとみる（同じ会社の別の店・まとめのページを外す）
+            head = norm(re.sub(r'(?:本店|店|支店)$', '', it['name']))[:4]
+            if a and (n or (len(head) >= 2 and head in norm(text))):
                 best = (s, a, n, text)
                 break
         if not best:
