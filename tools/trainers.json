@@ -8282,6 +8282,56 @@
    "checked": "2026-11-23"
   },
   {
+   "id": "Tk39c1f5",
+   "name": "公益財団法人日本アニマルトラスト",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "能勢町",
+   "url": "https://happyhouse.or.jp/",
+   "addr": "大阪府能勢町野間大原",
+   "services": "しつけ、送迎",
+   "facts": [],
+   "src": "https://happyhouse.or.jp/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "Tk16d6c6",
+   "name": "南大阪警察犬・愛犬訓練所",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "〒583-0992 大阪府南河内郡太子町",
+   "url": "https://www.minamiosaka-dogts.jp/",
+   "addr": "〒583-0992 大阪府南河内郡太子町山田3861-3",
+   "services": "ペットホテル、しつけ、送迎",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 7:00~20:00",
+     "src": "https://www.minamiosaka-dogts.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防・混合ワクチンを1年以上未接種のワンちゃんの入所は固くお断り致します。 / --> ワンちゃんの健康状態や特徴(性格)などの確認、ワクチン接種の確認、緊急ご連絡先、送迎が必要か、否かなどスタッフがヒヤリングをさせていただきます。",
+     "src": "https://www.minamiosaka-dogts.jp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "出張訓練(送迎あり)",
+     "src": "https://www.minamiosaka-dogts.jp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "src": "https://www.minamiosaka-dogts.jp/",
+   "checked": "2026-11-23"
+  },
+  {
    "id": "Tkbd559e",
    "name": "八尾愛犬スクール",
    "prefs": [

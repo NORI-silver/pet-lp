@@ -2731,6 +2731,48 @@
    "checked": "2026-11-23"
   },
   {
+   "id": "PHk4ab3c3",
+   "name": "月と太陽",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "〒611-0002 京都府宇治市",
+   "url": "https://tukitotaiyou.jp/",
+   "services": "ペットホテル、トリミング、送迎",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://tukitotaiyou.jp/informaition/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場 14台駐車可",
+     "src": "https://tukitotaiyou.jp/informaition/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明書のご提示をお願い致します。万が一持病などの理由で接種できない場合はご相談下さい。",
+     "src": "https://tukitotaiyou.jp/%e3%81%94%e5%88%a9%e7%94%a8%e8%a6%8f%e7%b4%84/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "片道送迎 無料",
+     "src": "https://tukitotaiyou.jp/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "pickup": true
+  },
+  {
    "id": "PHk6ead3d",
    "name": "ペットサロンアイリー",
    "prefs": [
@@ -6781,6 +6823,41 @@
    "pickup": true
   },
   {
+   "id": "PHk16d6c6",
+   "name": "南大阪警察犬・愛犬訓練所",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "〒583-0992 大阪府南河内郡太子町",
+   "url": "https://www.minamiosaka-dogts.jp/",
+   "services": "ペットホテル、しつけ、送迎",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 7:00~20:00",
+     "src": "https://www.minamiosaka-dogts.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防・混合ワクチンを1年以上未接種のワンちゃんの入所は固くお断り致します。 / --> ワンちゃんの健康状態や特徴(性格)などの確認、ワクチン接種の確認、緊急ご連絡先、送迎が必要か、否かなどスタッフがヒヤリングをさせていただきます。",
+     "src": "https://www.minamiosaka-dogts.jp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "出張訓練(送迎あり)",
+     "src": "https://www.minamiosaka-dogts.jp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "pickup": true
+  },
+  {
    "id": "PHkbd559e",
    "name": "八尾愛犬スクール",
    "prefs": [
@@ -8379,6 +8456,111 @@
    "checked": "2026-11-23"
   },
   {
+   "id": "PHkc399e5",
+   "name": "Pethotel あっぷるへっど",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "豊能町",
+   "url": "https://pethotel-applehead.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "• 1年以内のワクチン接種証明書(証明書がない場合はご予約当日でもご宿泊、ご利用をお断りさせて頂きます。) / • 狂犬病ワクチン接種証明書",
+     "src": "https://pethotel-applehead.com/pet-hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "土・日・祝日限定、送迎します。",
+     "src": "https://pethotel-applehead.com/pet-hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "pickup": true
+  },
+  {
+   "id": "PHk0e503b",
+   "name": "うさぎとわたし 大阪本店",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "〒598-0092 大阪府泉南郡田尻町",
+   "url": "https://usagitowatashi.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1ぴょんにつき1泊1000円です🐰 / 下記特別期間は1泊1500円です🙌 / 1ぴょんにつき1泊2000円",
+     "src": "https://usagitowatashi.com/p/7/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "お店から送迎場所までの往復距離×100円",
+     "src": "https://usagitowatashi.com/p/7/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "pickup": true
+  },
+  {
+   "id": "PHk722f26",
+   "name": "エステカーサ太子店",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "太子町",
+   "url": "https://petplus-trimming.com/shop/taishi/",
+   "services": "ペットホテル、トリミング",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン接種証明書 / 1年以内に接種された狂犬病予防注射及び、混合ワクチン接種証明書",
+     "src": "https://petplus-trimming.com/shop/taishi/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "cat": true
+  },
+  {
+   "id": "PHk0969a2",
+   "name": "トリミングサロンSeri",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "〒585-0033 大阪府南河内郡河南町",
+   "url": "http://www.salonseri.com/triming.html",
+   "services": "ペットホテル、トリミング、送迎",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "料金・・・ 1泊3,000円 (1週間以内)",
+     "src": "http://www.salonseri.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "無料送迎あります",
+     "src": "http://www.salonseri.com/triming.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "pickup": true
+  },
+  {
    "id": "PHk42dddb",
    "name": "ATK Pets",
    "prefs": [
@@ -8742,6 +8924,103 @@
      "k": "用意するもの",
      "v": "混合ワクチン1回目済",
      "src": "https://dyna-group.jp/pet/arrivals/91638",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "cat": true
+  },
+  {
+   "id": "PHk4f615e",
+   "name": "Petsalon Forest",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "〒611-0013 京都府宇治市",
+   "url": "https://www.petsalon-forest.com/",
+   "services": "ペットホテル、トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "[営業時間]9:00~18:00[定休日]金曜日",
+     "src": "https://www.petsalon-forest.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "[営業時間]9:00~18:00[定休日]金曜日",
+     "src": "https://www.petsalon-forest.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "※狂犬病・混合ワクチン証明書のご提示をお願い致します。",
+     "src": "https://www.petsalon-forest.com/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHke673ae",
+   "name": "さくらのおうち",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "〒611-0021 京都府宇治市",
+   "url": "https://sakuranoouchi88.com/",
+   "services": "ペットホテル、しつけ、ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "※早朝・延長お預かりの場合は、30分毎に550円(税込)の料金にて対応いたします。",
+     "src": "https://sakuranoouchi88.com/daycare/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "先にお預かりしているワンちゃんとの相性・狂犬病&混合ワクチン未接種・しつけ(噛む・吠える)等によりお受けできない場合がございます。まずはご相談ください。 / 狂犬病注射接種証明書",
+     "src": "https://sakuranoouchi88.com/daycare/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "お近くですので無料送迎いたします(送迎は距離や時間によってできない場合がございます)",
+     "src": "https://sakuranoouchi88.com/procedure/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "pickup": true
+  },
+  {
+   "id": "PHk67c708",
+   "name": "ペットハウスtakao",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "〒629-3101京都府京丹後市",
+   "url": "https://www.kyotango.gr.jp/shops/52412/",
+   "services": "ペットホテル、トリミング",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2食付き 30,300 円/人 /泊 ~ / 1泊2食付き 63,000 円/人 /泊 ~ / 1泊2食付き 31,428 円/人 /泊 ~",
+     "src": "https://www.kyotango.gr.jp/stay-top/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:8:30-17:15 / 営業日:月~土曜日",
+     "src": "https://www.kyotango.gr.jp/shops/52412/",
      "by": "site",
      "checked": "2026-11-23"
     }
@@ -10842,6 +11121,56 @@
    "services": "しつけ",
    "facts": [],
    "src": "http://dog-masuda.com/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "Tk39c1f5",
+   "name": "公益財団法人日本アニマルトラスト",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "能勢町",
+   "url": "https://happyhouse.or.jp/",
+   "addr": "大阪府能勢町野間大原",
+   "services": "しつけ、送迎",
+   "facts": [],
+   "src": "https://happyhouse.or.jp/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "Tk16d6c6",
+   "name": "南大阪警察犬・愛犬訓練所",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "〒583-0992 大阪府南河内郡太子町",
+   "url": "https://www.minamiosaka-dogts.jp/",
+   "addr": "〒583-0992 大阪府南河内郡太子町山田3861-3",
+   "services": "ペットホテル、しつけ、送迎",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 7:00~20:00",
+     "src": "https://www.minamiosaka-dogts.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防・混合ワクチンを1年以上未接種のワンちゃんの入所は固くお断り致します。 / --> ワンちゃんの健康状態や特徴(性格)などの確認、ワクチン接種の確認、緊急ご連絡先、送迎が必要か、否かなどスタッフがヒヤリングをさせていただきます。",
+     "src": "https://www.minamiosaka-dogts.jp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "出張訓練(送迎あり)",
+     "src": "https://www.minamiosaka-dogts.jp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "src": "https://www.minamiosaka-dogts.jp/",
    "checked": "2026-11-23"
   },
   {
@@ -14561,6 +14890,39 @@
    "url": "https://www.cs-nekonote.jp/profile.html",
    "chain": "indie",
    "facts": []
+  },
+  {
+   "id": "Ske673ae",
+   "name": "さくらのおうち",
+   "prefs": [
+    "京都府"
+   ],
+   "area": "〒611-0021 京都府宇治市",
+   "url": "https://sakuranoouchi88.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "※早朝・延長お預かりの場合は、30分毎に550円(税込)の料金にて対応いたします。",
+     "src": "https://sakuranoouchi88.com/daycare/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "先にお預かりしているワンちゃんとの相性・狂犬病&混合ワクチン未接種・しつけ(噛む・吠える)等によりお受けできない場合がございます。まずはご相談ください。 / 狂犬病注射接種証明書",
+     "src": "https://sakuranoouchi88.com/daycare/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "お近くですので無料送迎いたします(送迎は距離や時間によってできない場合がございます)",
+     "src": "https://sakuranoouchi88.com/procedure/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   },
   {
    "id": "Sk5be003",
