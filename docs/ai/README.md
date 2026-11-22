@@ -5,7 +5,8 @@
 
 ## 1. 作業の前に読む（この順）
 
-1. `AGENTS.md`（このリポジトリ）：全部の決まり。とくに「品質の決まり」の一覧。
+1. `AGENTS.md`（このリポジトリ）：全部の決まり。とくに「いちばん上の決まり（4つのバランス）」と「品質の決まり」の一覧。
+   - 仕事の進め方の型：`docs/ai/framework/README.md`（どの事業にも使える）と、このサイトの記入例 `docs/ai/pet-operating.md`。指摘の台帳は `docs/ai/feedback.json`。
 2. pet-db（非公開）の `docs/ai-memory/MEMORY.md`：Nori さんの方針・戦略・進行中のこと・使わない言葉。必要な話題のファイルも読む。
 3. `docs/ai/handoff.md`：ほかのAIの直近の引き継ぎ。
 4. GitHub の開いているPRと、最近のコミット（同じところを二重に直さないため）。
@@ -42,4 +43,4 @@
 ## 5. 終わるとき
 
 - `docs/ai/handoff.md` のいちばん上に1行（日付・AI名・分類・やったこと・PR・残り）を足す（PRに入れる）。
-- Nori さんに新しい決まりを言われたら、`AGENTS.md` の一覧と `tools/rules_check.py` に足す。進行中のことは pet-db の `docs/ai-memory/` の話題のファイルに日付つきで足す。
+- Nori さんに新しい決まりを言われたら、`AGENTS.md` の一覧と `tools/rules_check.py` と指摘の台帳 `docs/ai/feedback.json` に足す（`python3 tools/feedback_check.py .` を通す）。進行中のことは pet-db の `docs/ai-memory/` の話題のファイルに日付つきで足す。
