@@ -49,8 +49,11 @@ def links_of(h, base):
     host = urllib.parse.urlparse(base).netloc
     out = []
     for href, label in re.findall(r'(?is)<a[^>]+href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', h):
-        u = urllib.parse.urljoin(base, href)
-        p = urllib.parse.urlparse(u)
+        try:
+            u = urllib.parse.urljoin(base, href)
+            p = urllib.parse.urlparse(u)
+        except ValueError:
+            continue
         if p.netloc != host or re.search(r'\.(jpg|png|pdf|gif|zip)$', p.path, re.I):
             continue
         lab = re.sub(r'<[^>]+>', '', label)
