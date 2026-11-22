@@ -492,13 +492,15 @@ def render_city(ctx, pf, it, sibs, done):
     sib = ('<ul class="hn-pref">' + "".join(f'<li><a href="{href_city(x)}">{e(x["name"])}</a></li>' for x in others) + "</ul>") if others else ""
     if len(others) > 12: sib = f'<details class="hn-more"><summary>{e(pf)}のほかの市区町村（{len(others)}）</summary>{sib}</details>'
     nobeoka = pf == "宮崎県" and nm == "延岡市"
+    lede = ("避難所の開設状況、ペット用スペースの候補、受け入れを確認する方法が分かります。" if nobeoka else
+            f"うちの子をえらぶと、{nm}の避難所に連れて行けるか・どこで過ごすか・今日やる準備が分かります。")
     return ctx["head"](title, desc, url, ld) + CSS + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/{SLUG}/">ペットと避難</a> › <a href="{href(pf)}">{e(pf)}</a> › {e(nm)}</nav>
     <h1><small>避難所で受け入れる動物・大型犬・ケージの決まり</small>{e(nm)}のペット同行避難</h1>
-    <p class="lede">うちの子をえらぶと、{e(nm)}の避難所に連れて行けるか・どこで過ごすか・今日やる準備が分かります。</p>
+    <p class="lede">{e(lede)}</p>
   </div>
 </section>
 <section style="padding-top:8px">
