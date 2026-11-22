@@ -77,6 +77,7 @@ REASONS = {
     "words": "使わない言葉", "hole": "下書きの穴（◯◯など）", "removed": "消した部品がもどった", "tally": "運営側の集計を見せている", "kv": "キービジュアルがない", "trust": "運営者と掲載の基準への表示がない",
     "prefgrid": f"都道府県のボタンを{PREFGRID_MAX + 1}個以上たたまずに並べている", "intro": f"さがす欄・見出しの前の文が{INTRO_MAX}字を超える",
     "search": "施設の分野で、さがす欄より前に記事・目次がある",
+    "contact": "公式サイトも問い合わせ先もない施設を載せている（Nori 11/22「サイト開けなくて問い合わせないところは掲載しない」。データから外すか、公式サイト・獣医師会の一覧の電話（tel・tel_src）を入れる）",
     "owner": "施設の一覧のさがす欄に「うちの子にあてはまるもの」がない（Nori 11/17「自分の子にあてはまるものを探してる」。tools/ownerfit.py）",
     "card": "タクシー以外の施設のカードが共通のカード（tools/cardskin.py の形）になっていない", "wall": f"図・表・箇条書きのない文が{WALL_MAX}字を超えて続く",
 }
@@ -216,8 +217,31 @@ def check_page(root, path):
     return found
 
 
+# 掲載するのは、公式サイトがあるか問い合わせ先（病院は獣医師会の一覧の電話）があるところだけ
+# （Nori 2026-11-22「サイト開けなくて問い合わせないところは掲載しない」）。開けるかは tools/site_snap.py の alive で見る
+CONTACT_DATA = {"hotels.json": "url", "rojin.json": "url", "grooming.json": "url", "trainers.json": "url", "sitters.json": "url",
+                "dogrun.json": "url", "joto_groups.json": "url", "sougi_facilities.json": "u", "vet_clinics.json": "url"}
+
+
+def check_data(root):
+    out = {}
+    for fn, k in CONTACT_DATA.items():
+        try:
+            d = json.load(open(os.path.join(root, "tools", fn), encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        L = d if isinstance(d, list) else max([v for v in d.values() if isinstance(v, list)], key=len)
+        for x in L:
+            if not isinstance(x, dict) or x.get(k) or x.get("url") or (x.get("tel") and x.get("tel_src")):
+                continue
+            out.setdefault(f"/data/{fn}/{x.get('id') or x.get('name')}", []).append(("contact", x.get("name", "")))
+    return out
+
+
 def run(root):
-    return {path: v for path in pages(root) if (v := check_page(root, path))}
+    res = {path: v for path in pages(root) if (v := check_page(root, path))}
+    res.update(check_data(root))
+    return res
 
 
 def key(path, rule):
