@@ -1,0 +1,50 @@
+# 中部：登録一覧の事業者の公式サイトを検索でさがす（Nori 2026-11-22「漏れ一切なくね」）。
+# tools/crawl/search_*.json の言葉を tools/west_search.py が検索し、結果だけをブランチ search-out-<ブランチの最後> に置く。何も送らない。
+# ほかのスレッドと Actions の枠を分け合うため、同時に動かすのは4台まで。
+name: reg-search-chubu
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/project-thread-6ina7k']
+    paths: ['tools/crawl/search*.json']
+permissions:
+  contents: write
+concurrency:
+  group: reg-search-chubu
+  cancel-in-progress: false
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5]
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/west_search.py /tmp/out ${{ matrix.shard }} 6
+      - uses: actions/upload-artifact@v4
+        with:
+          name: s${{ matrix.shard }}
+          path: /tmp/out
+  collect:
+    needs: search
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: /tmp/all
+          merge-multiple: true
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          B="search-out-${GITHUB_REF_NAME##*/}"
+          git checkout -q --orphan "$B"
+          git rm -rq --cached . && git clean -fdq
+          cp -r /tmp/all/. .
+          git add -A
+          git commit -qm "検索の結果 ${GITHUB_SHA::7}"
+          git push -q -f origin "$B"
