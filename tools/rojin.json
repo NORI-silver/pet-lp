@@ -3214,6 +3214,209 @@
    ],
    "review_query": "D&C 亀岡市西別院町",
    "review_name": "D&C"
+  },
+  {
+   "id": "R126",
+   "name": "老犬ホーム スマイルフラワー",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "https://roukenhome.com/",
+   "addr": "千葉県千葉市緑区平川町1349-11",
+   "animals": "犬",
+   "spec": "動物病院グループと連携した老犬ホーム",
+   "visit": "面会は10時〜15時（前に連絡）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1か月：小型犬・中型犬 55,916円〜110,000円、大型犬 61,416円〜140,000円（税込、預ける期間で変わる）",
+     "src": "https://roukenhome.com/",
+     "checked": "2026-11-22",
+     "yen": 55916,
+     "tax": "込"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "1日2回の食事と散歩、ドッグラン、月1回のシャンプー、排せつ・歩行のサポート、投薬、床ずれのケア",
+     "src": "https://roukenhome.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "病院",
+     "v": "月1回の獣医師の往診、年1回のワクチンと健康診断、提携の動物病院の医療費が2割引（1か月以上あずける場合）",
+     "src": "https://roukenhome.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "若い子から介護が必要な子まで。持病のある子・寝たきりの子も。重い介護での追加料金なし",
+     "src": "https://roukenhome.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "見学・面会",
+     "v": "見学は前日までに予約、10時〜15時",
+     "src": "https://roukenhome.com/",
+     "checked": "2026-11-22"
+    }
+   ],
+   "review_query": "老犬ホーム スマイルフラワー 千葉市緑区平川町",
+   "review_name": "スマイルフラワー"
+  },
+  {
+   "id": "R127",
+   "name": "老犬ホーム スマイルフラワー大阪",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "八尾市",
+   "url": "https://osaka.roukenhome.com/",
+   "addr": "大阪府八尾市西山本町1丁目1-50（JPB動物医療センター八尾内）",
+   "animals": "犬",
+   "spec": "動物病院の中にある老犬ホーム",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1か月：小型犬・中型犬 55,916円〜110,000円、大型犬 61,416円〜140,000円（税込、預ける期間で変わる）",
+     "src": "https://osaka.roukenhome.com/",
+     "checked": "2026-11-22",
+     "yen": 55916,
+     "tax": "込"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "1日2回の食事と散歩、排せつ・歩行のサポート、投薬、床ずれのケア、シャンプーと2か月に1回のトリミング",
+     "src": "https://osaka.roukenhome.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "病院",
+     "v": "動物病院の中。月1回の獣医師の往診、年1回のワクチンと健康診断、医療費2割引（1か月以上あずける場合）",
+     "src": "https://osaka.roukenhome.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "介護が必要な子・持病のある子も、短期から終身まで",
+     "src": "https://osaka.roukenhome.com/",
+     "checked": "2026-11-22"
+    }
+   ],
+   "review_query": "スマイルフラワー大阪 八尾市西山本町",
+   "review_name": "スマイルフラワー"
+  },
+  {
+   "id": "R128",
+   "name": "動物病院ヘルスペット 老犬ホーム",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横須賀市",
+   "url": "https://www.animalhospital-healthpet.com/old-dog-home",
+   "addr": "神奈川県横須賀市日の出町1丁目8-7",
+   "animals": "犬・猫",
+   "spec": "動物病院の老犬・老猫ホーム（生涯あずかり）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "月額105,600円。ほかに保証金30万円（亡くなったとき・退去のとき全額返金）",
+     "src": "https://www.animalhospital-healthpet.com/old-dog-home",
+     "checked": "2026-11-22",
+     "yen": 105600
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "自分で食べられないときの補液、排せつの処置、爪切り・目やに・耳そうじ、薬、トリミング",
+     "src": "https://www.animalhospital-healthpet.com/old-dog-home",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "病気や家の事情で家で飼うのがむずかしい、15kg以下の小型犬と猫。生涯あずかる",
+     "src": "https://www.animalhospital-healthpet.com/old-dog-home",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "病院",
+     "v": "獣医師が365日24時間いる",
+     "src": "https://www.animalhospital-healthpet.com/old-dog-home",
+     "checked": "2026-11-22"
+    }
+   ],
+   "review_query": "動物病院ヘルスペット 横須賀市日の出町",
+   "review_name": "ヘルスペット"
+  },
+  {
+   "id": "R129",
+   "name": "わんダ〜らん 老犬ホーム",
+   "prefs": [
+    "新潟県"
+   ],
+   "city": "新潟市西区",
+   "url": "https://wonderrun.com/dog-home/",
+   "addr": "新潟県新潟市西区槇尾275-1",
+   "animals": "犬",
+   "spec": "10歳以上の犬の老犬ホーム",
+   "visit": "営業時間（9時〜19時）ならいつでも。前に連絡を",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1か月：小型犬（10kgまで）88,000円、中型犬（20kgまで）99,000円、大型犬（30kgまで）110,000円、超大型犬 143,000円（税込）。入所金は小型犬165,000円〜（病院の治療代・葬儀代をふくむ）",
+     "src": "https://wonderrun.com/dog-home/",
+     "checked": "2026-11-22",
+     "yen": 88000,
+     "tax": "込"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "食事・トリミング・毎日のケア・介護・シーツ・おむつなど",
+     "src": "https://wonderrun.com/dog-home/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "基本10歳以上。夜鳴き・徘徊・寝たきりの子も",
+     "src": "https://wonderrun.com/dog-home/",
+     "checked": "2026-11-22"
+    }
+   ],
+   "review_query": "わんダーらん 新潟市西区槇尾",
+   "review_name": "わんダ"
+  },
+  {
+   "id": "R130",
+   "name": "陽だまりドッグヴィレッジ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "山武郡芝山町",
+   "url": "https://www.hidamari-dog-village.com/senior-dog-care.html",
+   "addr": "千葉県山武郡芝山町新井田253番13",
+   "animals": "犬",
+   "spec": "老犬介護のあずかり（ペットホテル・ドッグランも）",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "細やかなケアが必要な子、長いお留守番がむずかしくなった子。飼い主さんが年をとってお世話がむずかしくなったときも",
+     "src": "https://www.hidamari-dog-village.com/senior-dog-care.html",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "見学・面会",
+     "v": "カウンセリングのときに施設の見学ができる",
+     "src": "https://www.hidamari-dog-village.com/senior-dog-care.html",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "報告",
+     "v": "希望すれば写真やメッセージで毎日の様子を知らせる",
+     "src": "https://www.hidamari-dog-village.com/senior-dog-care.html",
+     "checked": "2026-11-22"
+    }
+   ],
+   "review_query": "陽だまりドッグヴィレッジ 芝山町",
+   "review_name": "陽だまりドッグヴィレッジ"
   }
  ],
  "near": {
