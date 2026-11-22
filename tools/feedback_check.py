@@ -30,7 +30,7 @@ def problems(root, items):
             if not i.get(k): out.append(f"{iid}: {k} がない")
         if not ch: out.append(f"{iid}: 止めるしくみ（check）がない「{i.get('pattern','')}」"); continue
         kind, _, name = ch.partition(":")
-        if kind in ("draft", "consistency") and not name:
+        if kind in ("draft", "consistency", "proposal") and not name:
             if not os.path.exists(os.path.join(root, f"tools/{kind}_check.py")): out.append(f"{iid}: tools/{kind}_check.py がない")
         elif kind == "critic":
             if name not in LENSES: out.append(f"{iid}: 批判役の目線は {sorted(LENSES)} のどれか（{ch}）")
