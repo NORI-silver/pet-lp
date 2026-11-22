@@ -9,11 +9,12 @@ import concurrent.futures as cf, html, json, os, re, sys, urllib.parse
 sys.path.insert(0, os.path.dirname(__file__))
 from hinan_snap import get, decode
 
-NAV = re.compile(r'防災|危機管理|災害|避難')
 FORM_T = re.compile(r'(お)?問い?合わ?せ(フォーム)?|問合せ|メールフォーム|メールでのお問い合わせ|ご意見')
 FORM_U = re.compile(r'inquiry|toiawase|otoiawase|mailform|formmail|contact|form|enquete|cgi-bin', re.I)
 MAIL = re.compile(r'[\w.+-]+@[\w-]+(?:\.[\w-]+)*\.(?:lg\.jp|jp)')
-DEPT = re.compile(r'([^\s　「」（）()、。:：]{0,12}(?:危機管理|防災|地域安全|安全安心|安心安全|総務)[^\s　「」（）()、。:：]{0,8}(?:課|室|係|局|部))')
+DEPT_W = os.environ.get('DEPT_WORDS', '危機管理|防災|地域安全|安全安心|安心安全|総務')
+DEPT = re.compile(r'([^\s　「」（）()、。:：]{0,12}(?:' + DEPT_W + r')[^\s　「」（）()、。:：]{0,8}(?:課|室|係|局|部|センター|保健所))')
+NAV = re.compile(os.environ.get('NAV_WORDS', '防災|危機管理|災害|避難'))
 
 
 def scan(u, host):

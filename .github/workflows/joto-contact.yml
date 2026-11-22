@@ -1,0 +1,33 @@
+# 譲渡：問い合わせ先（動物愛護センター・保健所のメール・フォーム）を集めてブランチ joto-contact-out に置く（Nori 2026-11-23）。
+# 何も送らない・サイトは書き換えない。送るのはメールの係（文）だけ。
+name: joto-contact
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/**']
+    paths: ['tools/crawl/joto_contact_queue.json']
+permissions:
+  contents: write
+concurrency:
+  group: joto-contact
+  cancel-in-progress: false
+jobs:
+  snap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: PDFを読む道具
+        run: sudo apt-get install -y -q poppler-utils >/dev/null
+      - name: 自治体のサイトを読む
+        run: DEPT_WORDS="動物|愛護|衛生|保健|生活衛生" NAV_WORDS="動物|ペット|譲渡|愛護" QUEUE=tools/crawl/joto_contact_queue.json python3 tools/hinan_contact.py /tmp/out
+      - name: 結果をブランチ joto-contact-out に置く
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q --orphan joto-contact-out
+          git rm -rq --cached . && git clean -fdq
+          cp -r /tmp/out/. .
+          git add -A
+          git commit -qm "避難の公式サイトの抜き出し ${GITHUB_SHA::7}"
+          git push -q -f origin joto-contact-out

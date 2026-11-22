@@ -1,0 +1,1943 @@
+[
+{
+"pref": "北海道",
+"name": "北海道立動物愛護センター（あいにきた）",
+"code": "j000",
+"url": "https://www.pref.hokkaido.lg.jp/ks/awc/jouto.html",
+"pages": [
+"https://www.pref.hokkaido.lg.jp/ks/awc/jouto.html",
+"https://www.pref.hokkaido.lg.jp/ks/awc/shinsakoumoku.html"
+],
+"miss": [
+"講習",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "北海道",
+"name": "札幌市動物愛護管理センター（あいまる さっぽろ）",
+"code": "j001",
+"url": "https://www.city.sapporo.jp/inuneko/syuuyou_doubutsu/joutoinuneko.html",
+"pages": [
+"https://www.city.sapporo.jp/inuneko/syuuyou_doubutsu/joutoinuneko.html"
+],
+"miss": [
+"年齢",
+"講習",
+"不妊去勢",
+"室内飼い"
+]
+},
+{
+"pref": "北海道",
+"name": "函館市動物愛護管理センター",
+"code": "j002",
+"url": "https://www.city.hakodate.hokkaido.jp/docs/2014010700414/",
+"pages": [
+"https://www.city.hakodate.hokkaido.jp/docs/2014010700414/",
+"https://nyantomo.jp/donanhakodate/"
+],
+"miss": [
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "北海道",
+"name": "旭川市動物愛護センター（あにまある）",
+"code": "j003",
+"url": "https://www.douaicenter.jp/joto",
+"pages": [
+"https://www.douaicenter.jp/joto",
+"https://www.douaicenter.jp/animal/list/transfer"
+],
+"miss": [
+"お試し",
+"室内飼い"
+]
+},
+{
+"pref": "青森県",
+"name": "青森県動物愛護センター",
+"code": "j004",
+"url": "https://www.pref.aomori.lg.jp/soshiki/kenko/dobutu/adopt.html",
+"pages": [
+"https://www.pref.aomori.lg.jp/soshiki/kenko/dobutu/adopt.html",
+"http://www.aomori-animal.jp/adopt_omukae_joken.html"
+],
+"miss": [
+"お試し",
+"室内飼い"
+]
+},
+{
+"pref": "青森県",
+"name": "青森市保健所 動物愛護チーム",
+"code": "j005",
+"url": "https://www.city.aomori.aomori.jp/kurashi_kankyo/kankyo/1002067/1002077/index.html",
+"pages": [
+"https://www.city.aomori.aomori.jp/kurashi_kankyo/kankyo/1002067/1002077/index.html",
+"https://www.city.aomori.aomori.jp/kurashi_kankyo/kankyo/1002067/1009227.html",
+"https://www.city.aomori.aomori.jp/kurashi_kankyo/kankyo/1002067/1008071/index.html"
+],
+"miss": [
+"お試し",
+"費用"
+]
+},
+{
+"pref": "青森県",
+"name": "八戸市保健所 衛生課",
+"code": "j006",
+"url": "https://www.city.hachinohe.aomori.jp/soshikikarasagasu/eiseika/1/20081.html",
+"pages": [
+"https://www.city.hachinohe.aomori.jp/soshikikarasagasu/eiseika/1/20081.html",
+"https://www.city.hachinohe.aomori.jp/soshikikarasagasu/eiseika/1/23139.html"
+],
+"miss": [
+"お試し",
+"室内飼い"
+]
+},
+{
+"pref": "岩手県",
+"name": "岩手県（保健所・動物愛護センター）",
+"code": "j007",
+"url": "https://www.pref.iwate.jp/kurashikankyou/anzenanshin/pet/1004616.html",
+"pages": [
+"https://www.pref.iwate.jp/kurashikankyou/anzenanshin/pet/1004616.html",
+"https://www.pref.iwate.jp/kurashikankyou/anzenanshin/pet/1057667.html"
+],
+"miss": [
+"お試し",
+"費用"
+]
+},
+{
+"pref": "岩手県",
+"name": "盛岡市保健所 生活衛生課",
+"code": "j008",
+"url": "https://www.city.morioka.iwate.jp/kurashi/pet/pet_kurashi/1032474.html",
+"pages": [
+"https://www.city.morioka.iwate.jp/kurashi/pet/pet_kurashi/1032474.html",
+"https://www.city.morioka.iwate.jp/kurashi/pet/pet_kurashi/1001657.html"
+],
+"miss": [
+"お試し",
+"費用"
+]
+},
+{
+"pref": "宮城県",
+"name": "宮城県動物愛護センター",
+"code": "j009",
+"url": "https://www.pref.miyagi.jp/soshiki/doubutuaigo/jyoto-inu-nagare.html",
+"pages": [
+"https://www.pref.miyagi.jp/soshiki/doubutuaigo/jyoto-inu-nagare.html",
+"https://www.pref.miyagi.jp/soshiki/doubutuaigo/joutodoubutu.html",
+"https://wannyan-musubi.pref.miyagi.jp/",
+"https://www.pref.miyagi.jp/soshiki/doubutuaigo/jyoto-neko-nagare.html"
+],
+"miss": [
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "宮城県",
+"name": "仙台市動物管理センター（アニパル仙台）",
+"code": "j010",
+"url": "https://www.city.sendai.jp/dobutsu/kurashi/shizen/petto/hogodobutsu/joho/jyoutojigyou.html",
+"pages": [
+"https://www.city.sendai.jp/dobutsu/kurashi/shizen/petto/hogodobutsu/joho/jyoutojigyou.html",
+"https://www.city.sendai.jp/dobutsu/kurashi/shizen/petto/hogodobutsu/joho/nekobiyorijotokai.html"
+],
+"miss": [
+"講習",
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "秋田県",
+"name": "秋田県動物愛護センター",
+"code": "j011",
+"url": "https://www.pref.akita.lg.jp/pages/archive/54",
+"pages": [
+"https://www.pref.akita.lg.jp/pages/archive/54"
+],
+"miss": [
+"年齢",
+"住まい",
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "秋田県",
+"name": "秋田市保健所 衛生検査課",
+"code": "j012",
+"url": "https://www.city.akita.lg.jp/kurashi/pet/1005363/1005513.html",
+"pages": [
+"https://www.city.akita.lg.jp/kurashi/pet/1005363/1005513.html",
+"https://www.city.akita.lg.jp/kurashi/pet/1005363/1012582.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"お試し",
+"不妊去勢",
+"室内飼い"
+]
+},
+{
+"pref": "山形県",
+"name": "山形県（動物愛護センター・保健所）",
+"code": "j013",
+"url": "https://www.pref.yamagata.jp/020071/kenfuku/doubutsuaigo/aigo/kainushisagashi/jyoto.html",
+"pages": [
+"https://www.pref.yamagata.jp/020071/kenfuku/doubutsuaigo/aigo/kainushisagashi/jyoto.html",
+"https://www.pref.yamagata.jp/301025/kenfuku/doubutsuaigo/aigo/kainushisagashi/koushuukai.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "山形県",
+"name": "山形市動物愛護センター（わんにゃんポート）",
+"code": "j014",
+"url": "https://www.city.yamagata-yamagata.lg.jp/kurashi/pet/1006550/1005143.html",
+"pages": [
+"https://www.city.yamagata-yamagata.lg.jp/kurashi/pet/1006550/1005143.html",
+"https://www.city.yamagata-yamagata.lg.jp/kurashi/pet/1006550/1005144.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "福島県",
+"name": "福島県動物愛護センター",
+"code": "j015",
+"url": "https://www.pref.fukushima.lg.jp/sec/21620a/joto-about.html",
+"pages": [
+"https://www.pref.fukushima.lg.jp/sec/21620a/joto-about.html"
+],
+"miss": [
+"お試し"
+]
+},
+{
+"pref": "福島県",
+"name": "郡山市保健所 生活衛生課",
+"code": "j016",
+"url": "https://www.city.koriyama.lg.jp/soshiki/74/7192.html",
+"pages": [
+"https://www.city.koriyama.lg.jp/soshiki/74/7192.html",
+"https://www.city.koriyama.lg.jp/soshiki/74/7185.html",
+"https://www.city.koriyama.lg.jp/soshiki/74/7177.html"
+],
+"miss": [
+"講習",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "福島県",
+"name": "いわき市保健所 生活衛生課",
+"code": "j017",
+"url": "https://www.city.iwaki.lg.jp/www/contents/1001000000338/index.html",
+"pages": [
+"https://www.city.iwaki.lg.jp/www/contents/1001000000338/index.html",
+"https://www.city.iwaki.lg.jp/www/contents/1777267193348/index.html",
+"https://www.city.iwaki.lg.jp/www/contents/1777271747780/index.html"
+],
+"miss": [
+"費用"
+]
+},
+{
+"pref": "福島県",
+"name": "福島市保健所 衛生課",
+"code": "j018",
+"url": "https://www.city.fukushima.fukushima.jp/soshiki/9/1046/3/5964.html",
+"pages": [
+"https://www.city.fukushima.fukushima.jp/soshiki/9/1046/3/5964.html"
+],
+"miss": [
+"お試し",
+"費用"
+]
+},
+{
+"pref": "茨城県",
+"name": "茨城県動物指導センター",
+"code": "j019",
+"url": "https://www.pref.ibaraki.jp/hokenfukushi/doshise/aigo/jyoutokaikopi-.html",
+"pages": [
+"https://www.pref.ibaraki.jp/hokenfukushi/doshise/aigo/jyoutokaikopi-.html"
+],
+"miss": [
+"年齢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "茨城県",
+"name": "水戸市動物愛護センター",
+"code": "j020",
+"url": "https://www.city.mito.lg.jp/site/doubutsuaigo/52107.html",
+"pages": [
+"https://www.city.mito.lg.jp/site/doubutsuaigo/52107.html",
+"https://www.city.mito.lg.jp/site/doubutsuaigo/2041.html",
+"https://www.city.mito.lg.jp/site/doubutsuaigo/2039.html",
+"https://www.city.mito.lg.jp/site/doubutsuaigo/list359-1258.html"
+],
+"miss": [
+"住まい",
+"費用"
+]
+},
+{
+"pref": "栃木県",
+"name": "栃木県動物愛護指導センター",
+"code": "j021",
+"url": "https://www.douai.pref.tochigi.lg.jp/jyouto/",
+"pages": [
+"https://www.douai.pref.tochigi.lg.jp/jyouto/",
+"https://www.douai.pref.tochigi.lg.jp/work/jyouto-conditions/",
+"https://www.douai.pref.tochigi.lg.jp/work/group-list/"
+],
+"miss": [
+"お試し",
+"室内飼い"
+]
+},
+{
+"pref": "栃木県",
+"name": "宇都宮市保健所 生活衛生課",
+"code": "j022",
+"url": "https://www.city.utsunomiya.lg.jp/kurashi/pet/pet/1005585.html",
+"pages": [
+"https://www.city.utsunomiya.lg.jp/kurashi/pet/pet/1005585.html",
+"https://www.city.utsunomiya.lg.jp/kurashi/pet/pet/1005585.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"お試し"
+]
+},
+{
+"pref": "群馬県",
+"name": "群馬県動物愛護センター",
+"code": "j023",
+"url": "https://www.pref.gunma.jp/page/7901.html",
+"pages": [
+"https://www.pref.gunma.jp/page/7901.html",
+"https://www.pref.gunma.jp/page/7986.html"
+],
+"miss": [
+"お試し",
+"費用"
+]
+},
+{
+"pref": "群馬県",
+"name": "前橋市動物愛護管理センター（まえばしっぽ）",
+"code": "j024",
+"url": "https://www.city.maebashi.gunma.jp/soshiki/kenko/eiseikensa/gyomu/1/1/3/4126.html",
+"pages": [
+"https://www.city.maebashi.gunma.jp/soshiki/kenko/eiseikensa/gyomu/1/1/3/4126.html",
+"https://www.city.maebashi.gunma.jp/soshiki/kenko/eiseikensa/gyomu/1/1/3/9483.html",
+"https://www.city.maebashi.gunma.jp/kurashi_tetsuzuki/1/1/3/18317.html",
+"https://www.city.maebashi.gunma.jp/kurashi_tetsuzuki/1/1/3/18316.html"
+],
+"miss": [
+"費用"
+]
+},
+{
+"pref": "群馬県",
+"name": "高崎市動物愛護センター",
+"code": "j025",
+"url": "https://www.city.takasaki.gunma.jp/page/4509.html",
+"pages": [
+"https://www.city.takasaki.gunma.jp/page/4509.html",
+"https://www.city.takasaki.gunma.jp/page/4510.html",
+"https://www.city.takasaki.gunma.jp/page/4511.html",
+"https://www.city.takasaki.gunma.jp/page/62112.html"
+],
+"miss": [
+"講習",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "埼玉県",
+"name": "埼玉県動物指導センター",
+"code": "j026",
+"url": "https://www.pref.saitama.lg.jp/a0706/doubutu/jouto.html",
+"pages": [
+"https://www.pref.saitama.lg.jp/a0706/doubutu/jouto.html",
+"https://www.pref.saitama.lg.jp/b0716/joutokai202612.html",
+"https://www.pref.saitama.lg.jp/b0716/doubutu-link-jyoutoninnteidanntai.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "埼玉県",
+"name": "さいたま市動物愛護ふれあいセンター",
+"code": "j027",
+"url": "https://www.city.saitama.lg.jp/008/004/003/005/p007933.html",
+"pages": [
+"https://www.city.saitama.lg.jp/008/004/003/005/p007933.html"
+],
+"miss": [
+"費用"
+]
+},
+{
+"pref": "埼玉県",
+"name": "川越市保健所",
+"code": "j028",
+"url": "https://www.city.kawagoe.saitama.jp/kurashi/s-kankyo/1002982/1002989/1002994.html",
+"pages": [
+"https://www.city.kawagoe.saitama.jp/kurashi/s-kankyo/1002982/1002989/1002994.html",
+"https://www.city.kawagoe.saitama.jp/kurashi/s-kankyo/1002982/1002989/1002993.html",
+"https://www.city.kawagoe.saitama.jp/kurashi/s-kankyo/1002982/1002989/1002995.html"
+],
+"miss": [
+"年齢",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "埼玉県",
+"name": "越谷市保健所（動物管理センター）",
+"code": "j029",
+"url": "https://www.city.koshigaya.saitama.jp/kurashi_shisei/fukushi/hokenjo/pet/jouto/nekojyouto.html",
+"pages": [
+"https://www.city.koshigaya.saitama.jp/kurashi_shisei/fukushi/hokenjo/pet/jouto/nekojyouto.html",
+"https://www.city.koshigaya.saitama.jp/kurashi_shisei/fukushi/hokenjo/pet/jouto/index.html",
+"https://www.city.koshigaya.saitama.jp/kurashi_shisei/fukushi/hokenjo/pet/jouto/keijiban.html"
+],
+"miss": [
+"年齢",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "埼玉県",
+"name": "川口市保健所 生活衛生課",
+"code": "j030",
+"url": "https://www.city.kawaguchi.lg.jp/soshiki/01090/seikatueiseika/doubutsu/give/21012.html",
+"pages": [
+"https://www.city.kawaguchi.lg.jp/soshiki/01090/seikatueiseika/doubutsu/give/21012.html",
+"https://www.city.kawaguchi.lg.jp/soshiki/01090/seikatueiseika/doubutsu/give/46106.html"
+],
+"miss": [
+"年齢",
+"費用"
+]
+},
+{
+"pref": "千葉県",
+"name": "千葉県動物愛護センター",
+"code": "j031",
+"url": "https://www.pref.chiba.lg.jp/aigo/kainushi-bosyu-honsyo.html",
+"pages": [
+"https://www.pref.chiba.lg.jp/aigo/kainushi-bosyu-honsyo.html",
+"https://www.pref.chiba.lg.jp/aigo/godojotokai.html",
+"https://www.pref.chiba.lg.jp/aigo/dogcat-meeting.html",
+"https://www.pref.chiba.lg.jp/aigo/bora-katudou.html"
+],
+"miss": [
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "千葉県",
+"name": "千葉市動物保護指導センター",
+"code": "j032",
+"url": "https://www.city.chiba.jp/hokenfukushi/iryoeisei/seikatsueisei/dobutsuhogo/060_transfer.html",
+"pages": [
+"https://www.city.chiba.jp/hokenfukushi/iryoeisei/seikatsueisei/dobutsuhogo/060_transfer.html"
+],
+"miss": [
+"住まい",
+"講習",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "千葉県",
+"name": "船橋市動物愛護指導センター",
+"code": "j033",
+"url": "https://www.city.funabashi.lg.jp/kurashi/doubutsu/003/joutoindex.html",
+"pages": [
+"https://www.city.funabashi.lg.jp/kurashi/doubutsu/003/joutoindex.html",
+"https://www.city.funabashi.lg.jp/event/others/p038131.html",
+"https://www.city.funabashi.lg.jp/kurashi/doubutsu/001/p009778.html"
+],
+"miss": [
+"年齢",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い"
+]
+},
+{
+"pref": "千葉県",
+"name": "柏市動物愛護ふれあいセンター",
+"code": "j034",
+"url": "https://www.city.kashiwa.lg.jp/dobutsuaigo/shiseijoho/shisei/health_hospital/mainmenu/dobutsu/hogo/joto.html",
+"pages": [
+"https://www.city.kashiwa.lg.jp/dobutsuaigo/shiseijoho/shisei/health_hospital/mainmenu/dobutsu/hogo/joto.html",
+"https://www.city.kashiwa.lg.jp/dobutsuaigo/shiseijoho/shisei/health_hospital/mainmenu/dobutsu/hogo/satoya.html"
+],
+"miss": [
+"講習",
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "神奈川県",
+"name": "神奈川県動物愛護センター",
+"code": "j035",
+"url": "https://www.pref.kanagawa.jp/osirase/1594/awc/receive/about.html",
+"pages": [
+"https://www.pref.kanagawa.jp/osirase/1594/awc/receive/about.html",
+"https://www.pref.kanagawa.jp/osirase/1594/awc/receive/sinia.html",
+"https://www.pref.kanagawa.jp/osirase/1594/awc/receive/dog.html",
+"https://www.pref.kanagawa.jp/osirase/1594/awc/receive/cat.html"
+],
+"miss": [
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "神奈川県",
+"name": "横浜市動物愛護センター",
+"code": "j036",
+"url": "https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/pet-dobutsu/aigo/joto/kojin.html",
+"pages": [
+"https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/pet-dobutsu/aigo/joto/kojin.html"
+],
+"miss": [
+"講習",
+"お試し",
+"不妊去勢"
+]
+},
+{
+"pref": "神奈川県",
+"name": "相模原市（動物愛護の担当）",
+"code": "j038",
+"url": "https://www.city.sagamihara.kanagawa.jp/kosodate/kenko/1026628/pet/1022974.html",
+"pages": [
+"https://www.city.sagamihara.kanagawa.jp/kosodate/kenko/1026628/pet/1022974.html",
+"https://www.city.sagamihara.kanagawa.jp/kosodate/kenko/1026628/pet/1007473.html"
+],
+"miss": [
+"お試し",
+"費用"
+]
+},
+{
+"pref": "神奈川県",
+"name": "横須賀市動物愛護センター",
+"code": "j039",
+"url": "https://www.city.yokosuka.kanagawa.jp/3180/g_info/l100000667.html",
+"pages": [
+"https://www.city.yokosuka.kanagawa.jp/3180/g_info/l100000667.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "新潟県",
+"name": "新潟県動物愛護センター",
+"code": "j040",
+"url": "https://www.pref.niigata.lg.jp/sec/seikatueisei/nekoinunojouto.html",
+"pages": [
+"https://www.pref.niigata.lg.jp/sec/seikatueisei/nekoinunojouto.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "新潟県",
+"name": "新潟市動物愛護センター",
+"code": "j041",
+"url": "https://www.city.niigata.lg.jp/kurashi/animal/animal_aigo/jyouto/index.html",
+"pages": [
+"https://www.city.niigata.lg.jp/kurashi/animal/animal_aigo/jyouto/index.html",
+"https://www.city.niigata.lg.jp/kurashi/animal/animal_aigo/jyouto/dobutsuaigo2021n.html",
+"https://www.city.niigata.lg.jp/kurashi/animal/animal_aigo/jyouto/dobutsuaigo2021i.html"
+],
+"miss": [
+"住まい",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "富山県",
+"name": "富山県動物管理センター",
+"code": "j042",
+"url": "https://www.pref.toyama.jp/1207/kurashi/seikatsu/seikatsu/doubutsuaigo/dog.html",
+"pages": [
+"https://www.pref.toyama.jp/1207/kurashi/seikatsu/seikatsu/doubutsuaigo/dog.html",
+"https://www.pref.toyama.jp/1207/kurashi/seikatsu/seikatsu/doubutsuaigo/cat.html",
+"https://www.pref.toyama.jp/1207/kurashi/seikatsu/seikatsu/doubutsuaigo/tyuukai-zyouto.html"
+],
+"miss": [
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "富山県",
+"name": "富山市保健所 生活衛生課",
+"code": "j043",
+"url": "https://www.city.toyama.lg.jp/kurashi/seikatsu/1010313/1015825/1015834.html",
+"pages": [
+"https://www.city.toyama.lg.jp/kurashi/seikatsu/1010313/1015825/1015834.html",
+"https://www.city.toyama.lg.jp/kurashi/seikatsu/1010313/1015825/index.html"
+],
+"miss": [
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "石川県",
+"name": "いしかわ動物愛護センター",
+"code": "j044",
+"url": "https://aigo-ishikawa.jp/transfer/",
+"pages": [
+"https://aigo-ishikawa.jp/transfer/",
+"https://aigo-ishikawa.jp/steps-to-transfer/"
+],
+"miss": [
+"講習",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "石川県",
+"name": "金沢市動物愛護管理センター",
+"code": "j045",
+"url": "https://www4.city.kanazawa.lg.jp/soshikikarasagasu/dobutsuaigokanricenter/gyomuannai/1/jouto_info/5386.html",
+"pages": [
+"https://www4.city.kanazawa.lg.jp/soshikikarasagasu/dobutsuaigokanricenter/gyomuannai/1/jouto_info/5386.html",
+"https://www4.city.kanazawa.lg.jp/soshikikarasagasu/dobutsuaigokanricenter/gyomuannai/1/jouto_info/index.html"
+],
+"miss": [
+"講習",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "福井県",
+"name": "福井県動物愛護センター",
+"code": "j046",
+"url": "https://www.fapscsite.com/blank-14",
+"pages": [
+"https://www.fapscsite.com/blank-14"
+],
+"miss": [
+"年齢",
+"お試し",
+"不妊去勢",
+"室内飼い"
+]
+},
+{
+"pref": "福井県",
+"name": "福井県動物愛護センター（福井市の犬・猫も譲渡）",
+"code": "j047",
+"url": "https://www.city.fukui.lg.jp/kurasi/kaiinu/dog/p021335.html",
+"pages": [
+"https://www.city.fukui.lg.jp/kurasi/kaiinu/dog/p021335.html",
+"https://www.fapscsite.com/transfer_hope/",
+"https://www.fapscsite.com/adoptable_animal/"
+],
+"miss": [
+"年齢",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "山梨県",
+"name": "山梨県動物愛護指導センター",
+"code": "j048",
+"url": "https://www.pref.yamanashi.jp/doubutsu/be_a_foster.html",
+"pages": [
+"https://www.pref.yamanashi.jp/doubutsu/be_a_foster.html"
+],
+"miss": [
+"お試し",
+"費用"
+]
+},
+{
+"pref": "山梨県",
+"name": "甲府市 衛生薬務課",
+"code": "j049",
+"url": "https://www.city.kofu.lg.jp/k053/p001748.html",
+"pages": [
+"https://www.city.kofu.lg.jp/k053/p001748.html",
+"https://www.city.kofu.lg.jp/k053/p007058.html"
+],
+"miss": [
+"住まい",
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "長野県",
+"name": "長野県動物愛護センター（ハローアニマル）",
+"code": "j050",
+"url": "https://www.pref.nagano.lg.jp/dobutsuaigo/joto/inu-neko/index.html",
+"pages": [
+"https://www.pref.nagano.lg.jp/dobutsuaigo/joto/inu-neko/index.html",
+"https://www.pref.nagano.lg.jp/dobutsuaigo/joto/inu-neko/jotoyoryo.html"
+],
+"miss": [
+"お試し",
+"室内飼い"
+]
+},
+{
+"pref": "長野県",
+"name": "長野市保健所動物愛護センター",
+"code": "j051",
+"url": "https://www.city.nagano.nagano.jp/site/naganoshiaigo/94840.html",
+"pages": [
+"https://www.city.nagano.nagano.jp/site/naganoshiaigo/94840.html",
+"https://www.city.nagano.nagano.jp/n107000/event/p000002.html",
+"https://www.city.nagano.nagano.jp/n107000/contents/p001118.html"
+],
+"miss": [
+"講習",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "長野県",
+"name": "松本市保健所 食品・生活衛生課",
+"code": "j052",
+"url": "https://www.city.matsumoto.nagano.jp/soshiki/231/1529.html",
+"pages": [
+"https://www.city.matsumoto.nagano.jp/soshiki/231/1529.html",
+"https://www.city.matsumoto.nagano.jp/soshiki/231/1534.html"
+],
+"miss": [
+"住まい",
+"講習",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "岐阜県",
+"name": "岐阜県動物愛護センター",
+"code": "j053",
+"url": "https://www.pref.gifu.lg.jp/page/11544.html",
+"pages": [
+"https://www.pref.gifu.lg.jp/page/11544.html",
+"https://www.pref.gifu.lg.jp/page/488240.html"
+],
+"miss": [
+"お試し"
+]
+},
+{
+"pref": "岐阜県",
+"name": "岐阜市保健所 生活衛生課（畜犬管理センター）",
+"code": "j054",
+"url": "https://www.city.gifu.lg.jp/kurashi/seikatukankyo/1002857/1025360/1025374/1025432.html",
+"pages": [
+"https://www.city.gifu.lg.jp/kurashi/seikatukankyo/1002857/1025360/1025374/1025432.html",
+"https://www.city.gifu.lg.jp/kurashi/seikatukankyo/1002857/1025360/1025374/1025434.html"
+],
+"miss": [
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "静岡県",
+"name": "静岡県動物愛護センター",
+"code": "j055",
+"url": "https://www.pref.shizuoka.jp/kenkofukushi/eiseiyakuji/dobutsuaigo/1081733/index.html",
+"pages": [
+"https://www.pref.shizuoka.jp/kenkofukushi/eiseiyakuji/dobutsuaigo/1081733/index.html"
+],
+"miss": [
+"家族",
+"お試し",
+"不妊去勢",
+"室内飼い"
+]
+},
+{
+"pref": "静岡県",
+"name": "静岡市動物愛護館",
+"code": "j056",
+"url": "https://www.city.shizuoka.lg.jp/000_003534.html",
+"pages": [
+"https://www.city.shizuoka.lg.jp/000_003534.html",
+"https://www.city.shizuoka.lg.jp/s3276/s001872.html"
+],
+"miss": [
+"住まい",
+"講習",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "愛知県",
+"name": "愛知県動物愛護センター",
+"code": "j058",
+"url": "https://wannyan-navi.pref.aichi.jp/",
+"pages": [
+"https://wannyan-navi.pref.aichi.jp/",
+"https://www.pref.aichi.jp/soshiki/doukan-c/jyoutotesuuryou.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"お試し",
+"室内飼い"
+]
+},
+{
+"pref": "愛知県",
+"name": "名古屋市動物愛護センター",
+"code": "j059",
+"url": "https://www.city.nagoya.jp/kenkofukushi/page/0000010005.html",
+"pages": [
+"https://www.city.nagoya.jp/kenkofukushi/page/0000010005.html",
+"https://www.city.nagoya.jp/kurashi/pet/1015473/1015483/1015487.html",
+"https://www.city.nagoya.jp/kurashi/pet/1015473/1015483/1015484.html"
+],
+"miss": [
+"講習"
+]
+},
+{
+"pref": "愛知県",
+"name": "豊田市動物愛護センター",
+"code": "j060",
+"url": "https://www.city.toyota.aichi.jp/kurashi/sumai/pet/1003691.html",
+"pages": [
+"https://www.city.toyota.aichi.jp/kurashi/sumai/pet/1003691.html",
+"https://www.city.toyota.aichi.jp/event/event/1077496.html",
+"https://www.city.toyota.aichi.jp/kurashi/sumai/pet/1072625.html"
+],
+"miss": [
+"お試し",
+"費用"
+]
+},
+{
+"pref": "愛知県",
+"name": "豊橋市動物愛護センター（あいくる）",
+"code": "j061",
+"url": "https://toyohashi-aikuru.jp/",
+"pages": [
+"https://toyohashi-aikuru.jp/",
+"https://toyohashi-aikuru.jp/animal_category/adoptions-available?animal_type=dog",
+"https://toyohashi-aikuru.jp/animal_category/adoptions-available?animal_type=cat"
+],
+"miss": [
+"住まい",
+"お試し"
+]
+},
+{
+"pref": "愛知県",
+"name": "岡崎市動物総合センター（Animo あにも）",
+"code": "j062",
+"url": "https://www.city.okazaki.lg.jp/1100/1107/1149/p005769.html",
+"pages": [
+"https://www.city.okazaki.lg.jp/1100/1107/1149/p005769.html",
+"https://www.city.okazaki.lg.jp/kurashi/pet/1012462/1002168.html"
+],
+"miss": [
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "愛知県",
+"name": "一宮市保健所 保健衛生課",
+"code": "j063",
+"url": "https://www.city.ichinomiya.aichi.jp/hokenjo/hoken-eisei/1044007/1000182/1037886.html",
+"pages": [
+"https://www.city.ichinomiya.aichi.jp/hokenjo/hoken-eisei/1044007/1000182/1037886.html",
+"https://www.city.ichinomiya.aichi.jp/hokenjo/hoken-eisei/1044007/1000182/1055447.html",
+"https://www.pref.aichi.jp/soshiki/doukan-c/"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "三重県",
+"name": "三重県動物愛護推進センター（あすまいる）",
+"code": "j064",
+"url": "https://www.pref.mie.lg.jp/common/01/ci500012678.htm",
+"pages": [
+"https://www.pref.mie.lg.jp/common/01/ci500012678.htm",
+"https://www.pref.mie.lg.jp/ASMILE/83583044512_00003.htm",
+"https://www.pref.mie.lg.jp/ASMILE/83583044512_00004.htm",
+"https://www.pref.mie.lg.jp/ASMILE/70463044506.htm"
+],
+"miss": [
+"講習",
+"お試し"
+]
+},
+{
+"pref": "滋賀県",
+"name": "滋賀県動物保護管理センター",
+"code": "j065",
+"url": "https://www.pref.shiga.lg.jp/doubutsuhogo/hoshii/102884.html",
+"pages": [
+"https://www.pref.shiga.lg.jp/doubutsuhogo/hoshii/102884.html"
+],
+"miss": [
+"お試し",
+"費用"
+]
+},
+{
+"pref": "滋賀県",
+"name": "大津市動物愛護センター",
+"code": "j066",
+"url": "https://www.city.otsu.lg.jp/soshiki/021/1442/g/pet/joto/1387765231474.html",
+"pages": [
+"https://www.city.otsu.lg.jp/soshiki/021/1442/g/pet/joto/1387765231474.html",
+"https://www.city.otsu.lg.jp/soshiki/021/1442/g/pet/joto/1387765793546.html",
+"https://www.city.otsu.lg.jp/soshiki/021/1442/g/pet/joto/1387766373402.html"
+],
+"miss": [
+"お試し",
+"不妊去勢",
+"費用"
+]
+},
+{
+"pref": "京都府",
+"name": "京都動物愛護センター（京都府・京都市の共同）",
+"code": "j067",
+"url": "https://kyoto-ani-love.com/information/owner/recruit/",
+"pages": [
+"https://kyoto-ani-love.com/information/owner/recruit/",
+"https://kyoto-ani-love.com/information/owner/"
+],
+"miss": [
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "大阪府",
+"name": "大阪府動物愛護管理センター",
+"code": "j068",
+"url": "https://www.pref.osaka.lg.jp/o120200/doaicenter/doaicenter/zyotonituite.html",
+"pages": [
+"https://www.pref.osaka.lg.jp/o120200/doaicenter/doaicenter/zyotonituite.html"
+],
+"miss": [
+"家族",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "大阪府",
+"name": "おおさかワンニャンセンター（大阪市）",
+"code": "j069",
+"url": "https://www.city.osaka.lg.jp/kenko/page/0000225856.html",
+"pages": [
+"https://www.city.osaka.lg.jp/kenko/page/0000225856.html"
+],
+"miss": [
+"家族",
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "大阪府",
+"name": "堺市動物指導センター",
+"code": "j070",
+"url": "https://www.city.sakai.lg.jp/kurashi/dobutsu/dogcat/inunekojoto/joto.html",
+"pages": [
+"https://www.city.sakai.lg.jp/kurashi/dobutsu/dogcat/inunekojoto/joto.html",
+"https://www.city.sakai.lg.jp/shisei/sonota/jyorei/youkou/hokeneisei/71309420211209165757235.html"
+],
+"miss": [
+"家族",
+"講習",
+"不妊去勢",
+"室内飼い"
+]
+},
+{
+"pref": "大阪府",
+"name": "高槻市保健所 保健衛生課",
+"code": "j071",
+"url": "https://www.city.takatsuki.osaka.jp/soshiki/39/2753.html",
+"pages": [
+"https://www.city.takatsuki.osaka.jp/soshiki/39/2753.html",
+"https://www.pref.osaka.lg.jp/doaicenter/doaicenter/zyotonituite.html",
+"https://www.city.takatsuki.osaka.jp/soshiki/39/2759.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "大阪府",
+"name": "東大阪市動物指導センター",
+"code": "j072",
+"url": "https://www.city.higashiosaka.lg.jp/0000000089.html",
+"pages": [
+"https://www.city.higashiosaka.lg.jp/0000000089.html",
+"https://www.city.higashiosaka.lg.jp/0000008118.html",
+"https://www.city.higashiosaka.lg.jp/0000011324.html"
+],
+"miss": [
+"年齢",
+"家族",
+"講習",
+"不妊去勢",
+"室内飼い"
+]
+},
+{
+"pref": "大阪府",
+"name": "豊中市保健所 保健安全課",
+"code": "j073",
+"url": "https://www.city.toyonaka.osaka.jp/kurashi/pettp-inuneko/kaiinu_kaineko/joto.html",
+"pages": [
+"https://www.city.toyonaka.osaka.jp/kurashi/pettp-inuneko/kaiinu_kaineko/joto.html",
+"https://www.pref.osaka.lg.jp/doaicenter/doaicenter/zyotonituite.html",
+"https://animal-osaka.com/index.php"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "大阪府",
+"name": "枚方市保健所 保健衛生課",
+"code": "j074",
+"url": "https://www.city.hirakata.osaka.jp/0000007674.html",
+"pages": [
+"https://www.city.hirakata.osaka.jp/0000007674.html",
+"https://www.city.hirakata.osaka.jp/0000021704.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"講習",
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "大阪府",
+"name": "八尾市保健所 保健衛生課",
+"code": "j075",
+"url": "https://www.city.yao.osaka.jp/kurashi_tetsuzuki/sumai_kurashi_seikatsu/1012763/1003039/1003061.html",
+"pages": [
+"https://www.city.yao.osaka.jp/kurashi_tetsuzuki/sumai_kurashi_seikatsu/1012763/1003039/1003061.html",
+"https://www.pref.osaka.lg.jp/doaicenter/doaicenter/zyotonituite.html",
+"https://www.city.yao.osaka.jp/kurashi_tetsuzuki/sumai_kurashi_seikatsu/1012763/1003039/1018487.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "大阪府",
+"name": "寝屋川市保健所 保健衛生課",
+"code": "j076",
+"url": "https://www.city.neyagawa.osaka.jp/organization_list/kenkou/hokeneisei/doubutu/inuneko_kankei/aigodoubutu_jouto/1555993190376.html",
+"pages": [
+"https://www.city.neyagawa.osaka.jp/organization_list/kenkou/hokeneisei/doubutu/inuneko_kankei/aigodoubutu_jouto/1555993190376.html",
+"https://www.pref.osaka.lg.jp/doaicenter/doaicenter/zyotonituite.html",
+"https://www.city.neyagawa.osaka.jp/organization_list/kenkou/hokeneisei/doubutu/inuneko_kankei/aigodoubutu_jouto/26620.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "大阪府",
+"name": "吹田市 衛生管理課",
+"code": "j077",
+"url": "https://www.city.suita.osaka.jp/kurashi/1018501/1018506/1018507/1015346.html",
+"pages": [
+"https://www.city.suita.osaka.jp/kurashi/1018501/1018506/1018507/1015346.html",
+"https://animal-osaka.com/"
+],
+"miss": [
+"年齢",
+"家族",
+"講習",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "奈良県",
+"name": "奈良県うだ・アニマルパーク（動物愛護センター）",
+"code": "j078",
+"url": "https://www.pref.nara.lg.jp/n070/3371.html",
+"pages": [
+"https://www.pref.nara.lg.jp/n070/3371.html"
+],
+"miss": [
+"家族",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "奈良県",
+"name": "奈良市保健所 保健衛生課",
+"code": "j079",
+"url": "https://www.city.nara.lg.jp/soshiki/97/7968.html",
+"pages": [
+"https://www.city.nara.lg.jp/soshiki/97/7968.html",
+"https://www.city.nara.lg.jp/soshiki/97/10799.html"
+],
+"miss": [
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い"
+]
+},
+{
+"pref": "和歌山県",
+"name": "和歌山県動物愛護センター",
+"code": "j080",
+"url": "https://www.pref.wakayama.lg.jp/prefg/031601/d00221328.html",
+"pages": [
+"https://www.pref.wakayama.lg.jp/prefg/031601/d00221328.html"
+],
+"miss": [
+"年齢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "和歌山県",
+"name": "和歌山市動物愛護管理センター",
+"code": "j081",
+"url": "https://www.city.wakayama.wakayama.jp/kurashi/kenko_iryo/1009125/1067073/1002092.html",
+"pages": [
+"https://www.city.wakayama.wakayama.jp/kurashi/kenko_iryo/1009125/1067073/1002092.html",
+"https://www.city.wakayama.wakayama.jp/kurashi/kenko_iryo/1009125/1035775/1002096.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"お試し",
+"不妊去勢",
+"室内飼い"
+]
+},
+{
+"pref": "鳥取県",
+"name": "鳥取県（中部・西部の保健所・動物愛護センター アミティエ）",
+"code": "j082",
+"url": "https://www.pref.tottori.lg.jp/220718.htm",
+"pages": [
+"https://www.pref.tottori.lg.jp/220718.htm",
+"https://www.pref.tottori.lg.jp/255878.htm",
+"https://www.pref.tottori.lg.jp/251718.htm"
+],
+"miss": [
+"年齢",
+"住まい",
+"講習",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "鳥取県",
+"name": "鳥取市保健所 生活安全課",
+"code": "j083",
+"url": "https://www.city.tottori.lg.jp/www/contents/1750728908382/index.html",
+"pages": [
+"https://www.city.tottori.lg.jp/www/contents/1750728908382/index.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "広島県",
+"name": "広島県動物愛護センター",
+"code": "j084",
+"url": "https://www.pref.hiroshima.lg.jp/site/apc/contents-sincenterinunekonojouto.html",
+"pages": [
+"https://www.pref.hiroshima.lg.jp/site/apc/contents-sincenterinunekonojouto.html"
+],
+"miss": [
+"お試し"
+]
+},
+{
+"pref": "広島県",
+"name": "広島市動物管理センター",
+"code": "j085",
+"url": "https://www.city.hiroshima.lg.jp/living/pet-doubutsu/1021301/1026246/1023087.html",
+"pages": [
+"https://www.city.hiroshima.lg.jp/living/pet-doubutsu/1021301/1026246/1023087.html"
+],
+"miss": [
+"講習",
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "広島県",
+"name": "福山市動物愛護センター",
+"code": "j086",
+"url": "https://www.city.fukuyama.hiroshima.jp/soshiki/dobutsuaigo/11114.html",
+"pages": [
+"https://www.city.fukuyama.hiroshima.jp/soshiki/dobutsuaigo/11114.html",
+"https://www.city.fukuyama.hiroshima.jp/soshiki/dobutsuaigo/326010.html",
+"https://www.city.fukuyama.hiroshima.jp/soshiki/dobutsuaigo/380139.html",
+"https://www.city.fukuyama.hiroshima.jp/soshiki/dobutsuaigo/255650.html"
+],
+"miss": [
+"お試し",
+"費用"
+]
+},
+{
+"pref": "広島県",
+"name": "呉市動物愛護センター",
+"code": "j087",
+"url": "https://www.city.kure.lg.jp/soshiki/127/jyouto.html",
+"pages": [
+"https://www.city.kure.lg.jp/soshiki/127/jyouto.html",
+"https://www.city.kure.lg.jp/soshiki/127/joutonagare.html",
+"https://www.city.kure.lg.jp/soshiki/127/jouto.html",
+"https://www.city.kure.lg.jp/soshiki/127/jyoutokai.html"
+],
+"miss": [
+"講習",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "山口県",
+"name": "山口県動物愛護センター",
+"code": "j088",
+"url": "https://www.pref.yamaguchi.lg.jp/site/doubutuaigo/list24.html",
+"pages": [
+"https://www.pref.yamaguchi.lg.jp/site/doubutuaigo/list24.html",
+"https://www.pref.yamaguchi.lg.jp/site/doubutuaigo/list24-149.html",
+"https://www.pref.yamaguchi.lg.jp/site/doubutuaigo/10030.html",
+"https://www.pref.yamaguchi.lg.jp/site/doubutuaigo/167618.html"
+],
+"miss": [
+"お試し",
+"費用"
+]
+},
+{
+"pref": "山口県",
+"name": "下関市動物愛護管理センター（動物ふれ愛ランド下関）",
+"code": "j089",
+"url": "https://www.city.shimonoseki.lg.jp/soshiki/52/1784.html",
+"pages": [
+"https://www.city.shimonoseki.lg.jp/soshiki/52/1784.html",
+"https://www.city.shimonoseki.lg.jp/soshiki/52/1805.html",
+"https://www.city.shimonoseki.lg.jp/soshiki/52/1803.html"
+],
+"miss": [
+"家族",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "香川県",
+"name": "さぬき動物愛護センター しっぽの森",
+"code": "j090",
+"url": "https://www.pref.kagawa.lg.jp/s-doubutuaigo/sanukidouaicenter/jyouto/joutonagare.html",
+"pages": [
+"https://www.pref.kagawa.lg.jp/s-doubutuaigo/sanukidouaicenter/jyouto/joutonagare.html",
+"https://www.pref.kagawa.lg.jp/s-doubutuaigo/sanukidouaicenter/jyouto/s04u6e190311095146.html"
+],
+"miss": [
+"住まい",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "香川県",
+"name": "さぬき動物愛護センター しっぽの森（香川県・高松市）",
+"code": "j091",
+"url": "https://www.city.takamatsu.kagawa.jp/smph/kurashi/kurashi/pet/animo.html",
+"pages": [
+"https://www.city.takamatsu.kagawa.jp/smph/kurashi/kurashi/pet/animo.html",
+"https://www.pref.kagawa.lg.jp/content/etc/subsite/sanukidouaicenter/index.shtml"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "愛媛県",
+"name": "愛媛県動物愛護センター",
+"code": "j092",
+"url": "https://www.pref.ehime.jp/page/16990.html",
+"pages": [
+"https://www.pref.ehime.jp/page/16990.html",
+"https://www.pref.ehime.jp/page/17002.html"
+],
+"miss": [
+"お試し",
+"不妊去勢",
+"室内飼い"
+]
+},
+{
+"pref": "愛媛県",
+"name": "松山市動物愛護センター（はぴまるの丘）",
+"code": "j093",
+"url": "https://www.city.matsuyama.ehime.jp/kurashi/kurashi/aigo/hogoinu/pet-jyouto.html",
+"pages": [
+"https://www.city.matsuyama.ehime.jp/kurashi/kurashi/aigo/hogoinu/pet-jyouto.html",
+"https://www.city.matsuyama.ehime.jp/kurashi/kurashi/aigo/index.html"
+],
+"miss": [
+"講習",
+"お試し",
+"室内飼い"
+]
+},
+{
+"pref": "佐賀県",
+"name": "佐賀県犬猫譲渡センター（いっしょけんね）",
+"code": "j096",
+"url": "https://www.pref.saga.lg.jp/kiji00314888/index.html",
+"pages": [
+"https://www.pref.saga.lg.jp/kiji00314888/index.html"
+],
+"miss": [
+"講習",
+"お試し",
+"費用"
+]
+},
+{
+"pref": "徳島県",
+"name": "徳島県動物愛護管理センター",
+"code": "j099",
+"url": "https://www.douai-tokushima.com/transfer/",
+"pages": [
+"https://www.douai-tokushima.com/transfer/",
+"https://www.douai-tokushima.com/foster",
+"https://douai-tokushima.com/foster"
+],
+"miss": [
+"お試し"
+]
+},
+{
+"pref": "岡山県",
+"name": "岡山県動物愛護センター",
+"code": "j100",
+"url": "https://www.pref.okayama.jp/page/435473.html",
+"pages": [
+"https://www.pref.okayama.jp/page/435473.html",
+"https://www.pref.okayama.jp/page/429012.html",
+"https://www.pref.okayama.jp/page/952330.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "岡山県",
+"name": "岡山市保健所",
+"code": "j101",
+"url": "https://www.city.okayama.jp/kurashi/0000016432.html",
+"pages": [
+"https://www.city.okayama.jp/kurashi/0000016432.html",
+"https://www.city.okayama.jp/kurashi/0000016366.html",
+"https://www.city.okayama.jp/kurashi/0000028599.html",
+"https://www.city.okayama.jp/kurashi/0000030181.html"
+],
+"miss": [
+"お試し",
+"費用"
+]
+},
+{
+"pref": "岡山県",
+"name": "倉敷市保健所 生活衛生課",
+"code": "j102",
+"url": "https://www.city.kurashiki.okayama.jp/kurashi/pet/1004989/1011402.html",
+"pages": [
+"https://www.city.kurashiki.okayama.jp/kurashi/pet/1004989/1011402.html",
+"https://www.city.kurashiki.okayama.jp/kurashi/pet/1004989/1022282.html",
+"https://www.city.kurashiki.okayama.jp/kurashi/pet/1004989/1004991.html"
+],
+"miss": [
+"お試し",
+"費用"
+]
+},
+{
+"pref": "熊本県",
+"name": "熊本県動物愛護センター（アニマルフレンズ熊本）",
+"code": "j103",
+"url": "https://www.kumamoto-doubutuaigo.jp/",
+"pages": [
+"https://www.kumamoto-doubutuaigo.jp/",
+"https://www.pref.kumamoto.jp/soshiki/217/208357.html",
+"https://www.pref.kumamoto.jp/soshiki/217/205685.html",
+"https://www.pref.kumamoto.jp/soshiki/30/4958.html"
+],
+"miss": [
+"費用"
+]
+},
+{
+"pref": "島根県",
+"name": "島根県（各保健所）",
+"code": "j105",
+"url": "https://www.pref.shimane.lg.jp/infra/nature/animal/animal_protection/jyoto/",
+"pages": [
+"https://www.pref.shimane.lg.jp/infra/nature/animal/animal_protection/jyoto/",
+"https://www.pref.shimane.lg.jp/infra/nature/animal/aigo_izumo/doubutu_jyouhou/inunekonokainusibosyuu.html",
+"https://www.pref.shimane.lg.jp/infra/nature/animal/matsue_hoken/jyouto/jyotojyoho.html",
+"https://www.pref.shimane.lg.jp/infra/nature/animal/hamada_hoken/joutojouhou.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い"
+]
+},
+{
+"pref": "島根県",
+"name": "松江保健所（松江市・島根県共同設置）",
+"code": "j107",
+"url": "https://www.pref.shimane.lg.jp/infra/nature/animal/matsue_hoken/jyouto/jyotojyoho.html",
+"pages": [
+"https://www.pref.shimane.lg.jp/infra/nature/animal/matsue_hoken/jyouto/jyotojyoho.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "長崎県",
+"name": "長崎県（アニマルポートながさき・ながさき犬猫ネット）",
+"code": "j108",
+"url": "https://animal-net.pref.nagasaki.jp/",
+"pages": [
+"https://animal-net.pref.nagasaki.jp/",
+"https://animal-net.pref.nagasaki.jp/jyoutoflow"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "長崎県",
+"name": "長崎市動物愛護管理センター",
+"code": "j109",
+"url": "https://www.city.nagasaki.lg.jp/site/doubutsuaigo/4368.html",
+"pages": [
+"https://www.city.nagasaki.lg.jp/site/doubutsuaigo/4368.html",
+"https://www.city.nagasaki.lg.jp/site/doubutsuaigo/1370.html",
+"https://www.city.nagasaki.lg.jp/site/doubutsuaigo/list7-19.html",
+"https://www.city.nagasaki.lg.jp/site/doubutsuaigo/list7-18.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "東京都",
+"name": "東京都動物愛護相談センター",
+"code": "j111",
+"url": "https://www.hokeniryo.metro.tokyo.lg.jp/shisetsu/jigyosyo/douso/e092000020240329143058713",
+"pages": [
+"https://www.hokeniryo.metro.tokyo.lg.jp/shisetsu/jigyosyo/douso/e092000020240329143058713",
+"https://www.hokeniryo.metro.tokyo.lg.jp/kankyo/aigo/wannyan"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "東京都",
+"name": "八王子市保健所 生活衛生課",
+"code": "j112",
+"url": "https://www.city.hachioji.tokyo.jp/kurashi/hoken/007/001/001/p002916.html",
+"pages": [
+"https://www.city.hachioji.tokyo.jp/kurashi/hoken/007/001/001/p002916.html",
+"https://wannyan.metro.tokyo.lg.jp/",
+"https://www.city.hachioji.tokyo.jp/kurashi/hoken/007/001/001/p020741.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "兵庫県",
+"name": "兵庫県動物愛護センター",
+"code": "j113",
+"url": "https://hyogo-douai.sakura.ne.jp/jouto.html",
+"pages": [
+"https://hyogo-douai.sakura.ne.jp/jouto.html"
+],
+"miss": [
+"年齢",
+"家族",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "兵庫県",
+"name": "神戸市動物管理センター",
+"code": "j114",
+"url": "https://www.city.kobe.lg.jp/a84140/kenko/health/hygiene/animal/jotokai/index.html",
+"pages": [
+"https://www.city.kobe.lg.jp/a84140/kenko/health/hygiene/animal/jotokai/index.html",
+"https://www.city.kobe.lg.jp/a84140/kenko/health/hygiene/animal/dantaijoto.html",
+"https://kobe-chai.jp/",
+"https://kobe-chai.jp/dogcat/dog/"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "兵庫県",
+"name": "姫路市動物管理センター",
+"code": "j115",
+"url": "https://www.city.himeji.lg.jp/kurashi/0000001391.html",
+"pages": [
+"https://www.city.himeji.lg.jp/kurashi/0000001391.html",
+"https://www.city.himeji.lg.jp/kurashi/0000001495.html",
+"https://www.city.himeji.lg.jp/kurashi/0000026391.html"
+],
+"miss": [
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "兵庫県",
+"name": "西宮市動物管理センター",
+"code": "j116",
+"url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/dobutsujodo.html",
+"pages": [
+"https://www.nishi.or.jp/kenko/hokenjojoho/pet/dobutsujodo.html",
+"https://www.nishi.or.jp/kenko/hokenjojoho/pet/kainushinokata/Seniorwithpets.html"
+],
+"miss": [
+"家族",
+"講習",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "兵庫県",
+"name": "尼崎市動物愛護センター",
+"code": "j117",
+"url": "https://www.city.amagasaki.hyogo.jp/kurashi/iryou/pet/051jyouto.html",
+"pages": [
+"https://www.city.amagasaki.hyogo.jp/kurashi/iryou/pet/051jyouto.html",
+"https://www.city.amagasaki.hyogo.jp/kurashi/iryou/pet/1017176.html"
+],
+"miss": [
+"講習",
+"費用"
+]
+},
+{
+"pref": "兵庫県",
+"name": "あかし動物センター（あかしっぽ）",
+"code": "j118",
+"url": "https://www.city.akashi.lg.jp/kankyou/dobutsu/info/boshu.html",
+"pages": [
+"https://www.city.akashi.lg.jp/kankyou/dobutsu/info/boshu.html",
+"https://www.city.akashi.lg.jp/kankyou/dobutsu/info/boshu/cat.html"
+],
+"miss": [
+"講習",
+"費用"
+]
+},
+{
+"pref": "鹿児島県",
+"name": "鹿児島県動物愛護センター",
+"code": "j119",
+"url": "https://www.pref.kagoshima.jp/kenko-fukushi/yakuji-eisei/dobotu/jouto/index.html",
+"pages": [
+"https://www.pref.kagoshima.jp/kenko-fukushi/yakuji-eisei/dobotu/jouto/index.html",
+"https://www.pref.kagoshima.jp/ae09/kenko-fukushi/yakuji-eisei/dobotu/jouto/inunekojouto.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"お試し",
+"不妊去勢",
+"室内飼い"
+]
+},
+{
+"pref": "鹿児島県",
+"name": "鹿児島市動物愛護管理センター",
+"code": "j120",
+"url": "https://www.city.kagoshima.lg.jp/kenkofukushi/hokenjo/seiei-jueki/kurashi/dobutsu/kainushi/boshu/index.html",
+"pages": [
+"https://www.city.kagoshima.lg.jp/kenkofukushi/hokenjo/seiei-jueki/kurashi/dobutsu/kainushi/boshu/index.html",
+"https://www.city.kagoshima.lg.jp/kenkofukushi/hokenjo/seiei-jueki/kurashi/dobutsu/kainushi/boshu/inu.html",
+"https://www.city.kagoshima.lg.jp/kenkofukushi/hokenjo/seiei-jueki/kurashi/dobutsu/kainushi/boshu/neko.html"
+],
+"miss": [
+"お試し",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "沖縄県",
+"name": "沖縄県動物愛護管理センター",
+"code": "j121",
+"url": "https://www.pref.okinawa.jp/kurashikankyo/petgaiju/1018720/1005084.html",
+"pages": [
+"https://www.pref.okinawa.jp/kurashikankyo/petgaiju/1018720/1005084.html",
+"https://www.pref.okinawa.lg.jp/kurashikankyo/petgaiju/1018720/1005101.html",
+"https://www.pref.okinawa.jp/kurashikankyo/petgaiju/1018720/1005101.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "宮崎県",
+"name": "宮崎県（みやざきドッグ愛ランド）",
+"code": "j123",
+"url": "https://dog.pref.miyazaki.lg.jp/modules/pico01/index.php?content_id=1",
+"pages": [
+"https://dog.pref.miyazaki.lg.jp/modules/pico01/index.php?content_id=1"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢"
+]
+},
+{
+"pref": "宮崎県",
+"name": "みやざき動物愛護センター（宮崎県・宮崎市）",
+"code": "j124",
+"url": "https://www.city.miyazaki.miyazaki.jp/life/pet/protection/307703.html",
+"pages": [
+"https://www.city.miyazaki.miyazaki.jp/life/pet/protection/307703.html",
+"https://www.city.miyazaki.miyazaki.jp/life/pet/service/109756.html"
+],
+"miss": [
+"費用"
+]
+},
+{
+"pref": "福岡県",
+"name": "福岡県（保健福祉環境事務所・動物愛護センター）",
+"code": "j125",
+"url": "https://www.pref.fukuoka.lg.jp/life/1/6/361/",
+"pages": [
+"https://www.pref.fukuoka.lg.jp/life/1/6/361/"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"講習",
+"お試し",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "福岡県",
+"name": "北九州市動物愛護センター",
+"code": "j126",
+"url": "https://www.city.kitakyushu.lg.jp/contents/924_11834.html",
+"pages": [
+"https://www.city.kitakyushu.lg.jp/contents/924_11834.html",
+"https://www.city.kitakyushu.lg.jp/contents/924_11835.html"
+],
+"miss": [
+"お試し",
+"室内飼い"
+]
+},
+{
+"pref": "福岡県",
+"name": "福岡市動物愛護管理センター（わんにゃんよかネット）",
+"code": "j127",
+"url": "https://www.wannyan.city.fukuoka.lg.jp/yokanet/assignment",
+"pages": [
+"https://www.wannyan.city.fukuoka.lg.jp/yokanet/assignment",
+"https://www.wannyan.city.fukuoka.lg.jp/yokanet/news/archives/459",
+"https://www.wannyan.city.fukuoka.lg.jp/yokanet/adoption/adoption_posts/index"
+],
+"miss": [
+"住まい",
+"家族",
+"講習",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+},
+{
+"pref": "福岡県",
+"name": "久留米市動物愛護センター",
+"code": "j128",
+"url": "https://www.city.kurume.fukuoka.jp/1070kenkou/2040hokeneisei/3115doubutsuaigo/2010-0707-1600-465.html",
+"pages": [
+"https://www.city.kurume.fukuoka.jp/1070kenkou/2040hokeneisei/3115doubutsuaigo/2010-0707-1600-465.html",
+"https://www.city.kurume.fukuoka.jp/1070kenkou/2040hokeneisei/3115doubutsuaigo/2016-0406-1637-187.html",
+"https://www.city.kurume.fukuoka.jp/1070kenkou/2040hokeneisei/3115doubutsuaigo/2025-0821-0935-205.html"
+],
+"miss": [
+"年齢",
+"住まい",
+"家族",
+"不妊去勢",
+"室内飼い",
+"費用"
+]
+}
+]
