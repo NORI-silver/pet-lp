@@ -1,0 +1,56 @@
+# 埼玉の網羅：tools/crawl/saitama/find/c*.json（cid と q）を、チャンクごとに別の実行機で検索し、結果をブランチ crawl-out-saitama-find に置く。何も送らない。
+name: site-find-saitama
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/project-thread-h58oyn']
+    paths: ['tools/crawl/saitama/find/**', 'tools/region_find.py']
+permissions:
+  contents: write
+concurrency:
+  group: site-find-saitama
+  cancel-in-progress: false
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    outputs:
+      chunks: ${{ steps.l.outputs.chunks }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: l
+        run: echo "chunks=$(ls tools/crawl/saitama/find/ | grep '^c.*\.json$' | python3 -c 'import sys,json;print(json.dumps([l.strip() for l in sys.stdin]))')" >> $GITHUB_OUTPUT
+  search:
+    needs: list
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        chunk: ${{ fromJson(needs.list.outputs.chunks) }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p out && python3 tools/region_find.py tools/crawl/saitama/find/${{ matrix.chunk }} out/s_${{ matrix.chunk }} 6
+      - uses: actions/upload-artifact@v4
+        with:
+          name: s_${{ matrix.chunk }}
+          path: out/
+  collect:
+    needs: search
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: /tmp/art
+          merge-multiple: true
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q --orphan crawl-out-saitama-find
+          git rm -rq --cached . && git clean -fdq
+          cp -r /tmp/art/. .
+          git add -A
+          git commit -qm "埼玉の検索と読み取り ${GITHUB_SHA::7}"
+          git push -q -f origin crawl-out-saitama-find
