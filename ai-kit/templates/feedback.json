@@ -1,0 +1,4 @@
+{
+ "_about": "{{OWNER}} さんの指摘の台帳。指摘を受けたら1行足す。check は止めるしくみ：draft／reply／proposal／report:<記号>／critic:<persona|business|seo|partner>（事業の点検があれば rules:・phone:・seo:・consistency も）。2回目の指摘は repeat_of に前の id。tools/feedback_check.py が PR ごとに確かめる。",
+ "items": []
+}

@@ -4849,10 +4849,13 @@
     "ケージの中で長い時間おとなしくできるよう、ふだんから練習しておく。",
     "飼い主がわかるよう、マイクロチップの装着をすすめている。",
     "いざというとき助けてもらえるよう、近所の人と顔見知りになっておく。",
-    "ケージに付ける札の申込書は「ペットのための防災ノート」にある。",
-    "2027年1月17日の防災訓練の中で、ペット防災講座を開く（池田市の回答、2026年11月）。"
+    "ケージに付ける札の申込書は「ペットのための防災ノート」にある。"
    ],
-   "reply": "池田市の回答（2026年11月）"
+   "decision_species": [
+    "hard",
+    "避難所で受け入れを確認",
+    "池田市の案内には、どの動物を受け入れるかは書かれていません。避難所によっては受け入れられないこともあるので、親戚・知人の家や預け先も前もって決めておきましょう。"
+   ]
   },
   {
    "pref": "大阪府",
@@ -5561,9 +5564,9 @@
    "name": "半田市",
    "kind": "city",
    "policy": "飼い主の安全が先。ペットと避難所へ行く同行避難が基本だが、避難所の状況によっては受け入れられないことがあるので、避難の前に防災安全課に確かめる。",
-   "animals": null,
+   "animals": "犬・猫・小鳥などの小動物。これより細かな区分は決まっていない。",
    "no": null,
-   "size": null,
+   "size": "大きさについて決まりはない。",
    "cage": "同行避難のときは必ずケージを持っていく。",
    "rules": [
     "フードと水と食器は7日分以上",
@@ -5572,12 +5575,12 @@
    ],
    "place": "避難先では避難者とペットは同じ場所で暮らせない。",
    "flags": {
-    "dog": null,
-    "cat": null,
+    "dog": "cond",
+    "cat": "cond",
     "small": null,
-    "bird": null,
+    "bird": "cond",
     "reptile": null,
-    "large": null
+    "large": "cond"
    },
    "links": [
     [
@@ -5598,6 +5601,24 @@
     "ペットと同行避難できる施設の一覧をPDFで出している。",
     "災害のときペットを守れるのは飼い主だけ、としている。",
     "市はコンテナハウスでのペット避難体験会も開いている。"
+   ],
+   "large_kind": "check",
+   "large_ans": "ケージの持参が必要で、受け入れは開設先の状況によります。",
+   "reply": "半田市の回答（2026年11月18日）",
+   "decision_large_short": "ケージの持参が必要で、受け入れは開設先の状況によります。",
+   "decision_large_head": "ケージの持参が必要",
+   "decision_place": "人とペットは別の場所で過ごします。受け入れ先と過ごす場所は市の防災安全課に事前に確認してください。",
+   "decision_place_short": "人とペットは別の場所で過ごします。受け入れ先と過ごす場所は市の防災安全課に事前に確認してください。",
+   "decision_large_prep": [
+    "持参するケージを準備する",
+    "ケージに入れない場合の扱いを事前に確認する"
+   ],
+   "decision_large_tip": "受け入れ・管理方法を防災安全課に確かめてください。",
+   "decision_cage": "必ずケージを持参します。入れない子の扱いは事前に市に確認してください。",
+   "decision_species": [
+    "hard",
+    "受け入れは開設先の状況次第",
+    "対象かどうかと過ごす場所は、市の防災安全課に事前に確認してください。ケージの持参が必要です。"
    ]
   },
   {
@@ -5876,9 +5897,9 @@
    "name": "犬山市",
    "kind": "city",
    "policy": "同行避難は避難所までペットと一緒に避難すること。2024年4月から、33か所の指定避難所のうち3か所をペットと同じ部屋で過ごせる避難所（同室避難）にしている。",
-   "animals": null,
+   "animals": "市からの回答では、受け入れる動物の種類に制限は設けていない。",
    "no": null,
-   "size": null,
+   "size": "大きさによる一律の制限はない。同室避難スペースでは原則としてケージに入れるため、ケージの準備をする。",
    "cage": "避難のときはクレート（ケージ）に入れ、リードを付ける。小型犬や猫はキャリー、中型犬はクレートをベッドにしておくとよい。",
    "rules": [
     "フードと水は最低5日分",
@@ -5888,12 +5909,12 @@
    ],
    "place": "同室避難ができるのは、市民交流センター「フロイデ」1階協働プラザ、市体育館1階多目的スタジオ、楽田ふれあいセンター2階情報工房。",
    "flags": {
-    "dog": null,
-    "cat": null,
-    "small": null,
-    "bird": null,
-    "reptile": null,
-    "large": null
+    "dog": "cond",
+    "cat": "cond",
+    "small": "cond",
+    "bird": "cond",
+    "reptile": "cond",
+    "large": "cond"
    },
    "links": [
     [
@@ -5916,7 +5937,20 @@
     "療法食や、エキゾチックアニマルのえさは救援物資で手に入りにくいので多めに。",
     "2026年1月に楽田ふれあいセンターで同室避難の訓練をした。",
     "犬は「NO」「STAY」「COME」と決まった場所での排せつを教えておく。"
-   ]
+   ],
+   "large_kind": "check",
+   "large_ans": "震災時の同室避難は指定の3施設が対象で、原則ケージに入れます。",
+   "reply": "犬山市の回答（2026年11月18日）",
+   "decision_large_short": "震災時の同室避難は指定の3施設が対象で、原則ケージに入れます。",
+   "decision_large_head": "同室では原則ケージ",
+   "decision_place": "震災時の同室避難はフロイデ、市体育館、楽田ふれあいセンターの指定スペースです。開設状況とケージに入れない場合の扱いは別に確認してください。",
+   "decision_place_short": "震災時の同室避難はフロイデ、市体育館、楽田ふれあいセンターの指定スペースです。開設状況とケージに入れない場合の扱いは別に確認してください。",
+   "decision_large_prep": [
+    "同室の指定スペースで使うケージとリードを用意する",
+    "ケージに入れない場合は同室にできると考えず、市の案内を確認する"
+   ],
+   "decision_large_tip": "同室避難先の開設と、ケージに入れない場合の扱いを確認してください。",
+   "decision_cage": "同室避難スペースでは原則ケージに入れます。リードも準備します。"
   },
   {
    "pref": "愛知県",
@@ -6281,16 +6315,16 @@
    "name": "愛西市",
    "kind": "city",
    "policy": "ペットと一緒に安全に避難できるよう、日ごろから備えておくことをすすめている。",
-   "animals": null,
+   "animals": "種類は決まっていない。",
    "no": null,
-   "size": null,
+   "size": "大きさの決まりはまだない。",
    "cage": "ケージやキャリーバッグを用意し、ふだんから慣らしておく。",
    "rules": [
     "ペットフードと水は最低5日分以上",
     "首輪と伸びないリード、トイレ用品、療法食や薬、食器を用意する",
     "迷子札やマイクロチップで飼い主がわかるようにする"
    ],
-   "place": null,
+   "place": "市は屋外にペット用の場所を設ける想定ですが、開設先での設置や受け入れは確約されていません。",
    "flags": {
     "dog": null,
     "cat": null,
@@ -6315,6 +6349,23 @@
     "むだ吠えをしないようにしつけておくと、避難所でのトラブルが減る。",
     "家具を固定し、ペットがいつもいる場所が安全か確かめておく。",
     "避難所の場所と避難の道を前もって確かめておく。"
+   ],
+   "large_kind": "check",
+   "large_ans": "大型犬を含め、開設先での受け入れや過ごす場所を確認してください。",
+   "reply": "愛西市の回答（2026年11月19日）",
+   "decision_large_short": "大型犬を含め、開設先での受け入れや過ごす場所を確認してください。",
+   "decision_large_head": "受け入れ・場所は要確認",
+   "decision_place": "市は屋外にペット用の場所を設ける想定ですが、開設先での設置や受け入れは確約されていません。",
+   "decision_place_short": "市は屋外にペット用の場所を設ける想定ですが、開設先での設置や受け入れは確約されていません。",
+   "decision_large_prep": [
+    "ケージまたはキャリー、伸びないリードを準備する",
+    "開設先で受け入れられないときの行き先を前もって考える"
+   ],
+   "decision_large_tip": "設置や受け入れは開設先の案内を確認してください。",
+   "decision_species_fallback": [
+    "hard",
+    "受け入れ・場所は要確認",
+    "種類や大きさだけでは判断できません。開設された避難所で受け入れるか確認してください。"
    ]
   },
   {
@@ -7236,10 +7287,10 @@
    "name": "志木市",
    "kind": "city",
    "policy": "ペットを連れて避難する同行避難をすすめている。市内の小学校・中学校が避難所として開いたとき、ペットと同行避難できる。",
-   "animals": null,
+   "animals": "小・中学校の避難所で受け入れる際、種類の一律の制限は原則ない。",
    "no": null,
-   "size": null,
-   "cage": "キャリーバッグやケージを持っていく。",
+   "size": "大きさの一律の制限は原則ない。",
+   "cage": "ケージやリードを持参し、給餌や排せつ物の清掃などは飼い主が責任を持つ。",
    "rules": [
     "災害のときはリードを付ける",
     "避難所でのペットの飼い方のマナーを守る",
@@ -7248,12 +7299,12 @@
    ],
    "place": "居室への持ち込みは原則禁止。避難所の敷地内の屋外にペット専用のスペースを設ける。",
    "flags": {
-    "dog": null,
-    "cat": null,
-    "small": null,
-    "bird": null,
-    "reptile": null,
-    "large": null
+    "dog": "cond",
+    "cat": "cond",
+    "small": "cond",
+    "bird": "cond",
+    "reptile": "cond",
+    "large": "cond"
    },
    "links": [
     [
@@ -7270,7 +7321,20 @@
     "飼い主の情報と、ペットの健康やワクチンの記録をまとめておく。",
     "日ごろから、しつけ・健康管理・ワクチン・不妊去勢手術・迷子の予防をしておく。",
     "避難所と避難の道を前もって確かめておく。"
-   ]
+   ],
+   "large_kind": "check",
+   "large_ans": "小・中学校が避難所として開いた場合が対象です。ケージやリードを持参します。",
+   "reply": "志木市の回答（2026年11月18日）",
+   "decision_large_short": "小・中学校が避難所として開いた場合が対象です。ケージやリードを持参します。",
+   "decision_large_head": "開設された小・中学校が対象",
+   "decision_place": "小・中学校が開設された場合、敷地内の屋外スペースを使います。人が過ごす部屋には原則入れません。",
+   "decision_place_short": "小・中学校が開設された場合、敷地内の屋外スペースを使います。人が過ごす部屋には原則入れません。",
+   "decision_large_prep": [
+    "ケージやリードを準備する",
+    "市内の小・中学校の開設状況を確認する"
+   ],
+   "decision_large_tip": "学校の開設状況と現地の案内を確認してください。",
+   "decision_cage": "ケージやリードを持参します。"
   },
   {
    "pref": "埼玉県",
@@ -8179,10 +8243,10 @@
    "pref": "千葉県",
    "name": "佐倉市",
    "kind": "city",
-   "policy": "ペットと一緒に避難所へ行く同行避難ができる。ペットは人の生活スペースとは別のつなぎ場所に置き、飼い主が自分で管理する。",
-   "animals": null,
+   "policy": "市のすべての指定避難所にペットと同行避難できる。現地のルールに従い、人の生活場所と分け、飼い主が管理する。",
+   "animals": "家庭動物など。危険な動物は除く。",
    "no": "危険な動物は同行避難できない。",
-   "size": null,
+   "size": "市の一律の決まりはない。指定避難所ごとのルールに従う。",
    "cage": "雨風に強いケージを使い、毛布などで寒さを防ぐ。ケージがないときはリードでつなぐ。",
    "rules": [
     "ペットの様子をこまめに見て、ふんの始末や体調の管理をする",
@@ -8204,13 +8268,34 @@
      "https://www.city.sakura.lg.jp/soshiki/seikatsukankyoka/146/2931.html"
     ]
    ],
-   "map": null,
+   "map": [
+    "佐倉市の指定避難所一覧",
+    "https://www.city.sakura.lg.jp/material/files/group/48/32516486.pdf"
+   ],
    "cage_req": false,
    "details": [
     "むだ吠えをしない、ケージに落ち着いて入る、決まった場所でトイレをするしつけをしておく。",
     "狂犬病の予防注射とほかのワクチンを受けておく。",
     "避難所までの道を前もって確かめておく。",
     "台風など前もってわかる災害では、ペットホテルを使うことも考える。"
+   ],
+   "large_kind": "allowed",
+   "large_ans": "人と別の指定場所で管理し、ケージがないときはリードでつなぎます。",
+   "reply": "佐倉市の回答（2026年11月18日）",
+   "decision_large_short": "人と別の指定場所で管理し、ケージがないときはリードでつなぎます。",
+   "decision_large_head": "指定場所でケージまたはリード",
+   "decision_place": "人の居住スペースと分けた指定の場所です。ケージがない場合、市はリードでつなぐ方法を案内しています。",
+   "decision_place_short": "人の居住スペースと分けた指定の場所です。ケージがない場合、市はリードでつなぐ方法を案内しています。",
+   "decision_large_prep": [
+    "雨風に強いケージと防寒用の毛布を準備する",
+    "ケージがない場合はリードを用意し、指定された場所で管理する"
+   ],
+   "decision_large_tip": "開設状況と指定場所は避難所の案内を確認してください。",
+   "decision_cage": "雨風に強いケージを用意し、ケージがない場合はリードでつなぎます。",
+   "decision_species_fallback": [
+    "hard",
+    "人と別の指定場所で管理",
+    "市は家庭動物の同行避難を案内しています。危険な動物は対象外で、過ごす場所は現地の案内に従います。"
    ]
   },
   {
@@ -18732,23 +18817,23 @@
    "name": "延岡市",
    "kind": "city",
    "policy": "同行避難は飼い主がペットを連れて一緒に避難することで、避難場所の同じスペースで一緒に過ごすことではない。指定緊急避難場所でペットを受け入れられるか、前もって確かめる。",
-   "animals": null,
+   "animals": "種類だけを理由に断ることはないが、毒を持つ、人や他のペットに危害を及ぼすおそれがあるなどの場合は飼い主が安全を確保する。",
    "no": null,
-   "size": null,
+   "size": "大きさだけでは断らない。避難所で安全を確保できない場合は、避難先の変更を求められたり、受け入れられなかったりする。",
    "cage": "避難場所ではペットを必ずケージに入れ、指定のスペースで管理する。ケージやキャリーバッグに慣らしておく。",
    "rules": [
     "予防接種や寄生虫の駆除をしておく",
     "ペットフード・首輪・トイレ用品など避難セットを準備する",
     "避難場所のルールに従い、責任をもって世話をする"
    ],
-   "place": "人とペットの生活空間を分けた、指定のスペース。",
+   "place": "人と別の指定スペースで、必ずケージに入れて管理する。",
    "flags": {
     "dog": null,
     "cat": null,
     "small": null,
     "bird": null,
     "reptile": null,
-    "large": null
+    "large": "hard"
    },
    "links": [
     [
@@ -18770,6 +18855,24 @@
     "親戚や知人宅、ペットホテルなどストレスの少ない一時預け先を考えておく。",
     "ハザードマップで地域の災害の特徴を知り、ペットとの避難経路を確かめておく。",
     "市はペット防災講演会の動画も公開している。"
+   ],
+   "large_kind": "hard",
+   "large_ans": "避難場所では必ずケージに入れます。入れない場合は事前に避難先を確認してください。大きさだけでは断られませんが、安全を確保できない場合は受け入れられないことがあります。",
+   "reply": "延岡市の回答（2026年11月18日）",
+   "decision_large_short": "避難場所では必ずケージに入れます。入れない場合は事前に避難先を確認してください。",
+   "decision_large_head": "ケージに入れることが必要",
+   "decision_place": "人と別の指定スペースで、必ずケージに入れて管理します。リードだけでは市が案内する条件を満たしません。",
+   "decision_place_short": "人と別の指定スペースで、必ずケージに入れて管理します。リードだけでは市が案内する条件を満たしません。",
+   "decision_large_prep": [
+    "犬が入れるケージを準備する",
+    "ケージに入れない場合は事前に市の案内を確認し、別の避難先も決めておく"
+   ],
+   "decision_large_tip": "ケージに入れない場合はリードだけで受け入れられると考えず、事前に避難先を確認してください。",
+   "decision_cage": "避難場所では必ずケージに入れます。",
+   "decision_species_fallback": [
+    "hard",
+    "ケージ必須・受け入れ要確認",
+    "連れて行く予定の指定緊急避難場所に、受け入れを事前に確認してください。避難場所では必ずケージに入れます。"
    ]
   },
   {
@@ -19260,10 +19363,10 @@
    "name": "丸亀市",
    "kind": "city",
    "policy": "同行避難は、飼い主がペットを連れて避難所まで安全に移動すること。市立小中学校が避難所として開いたときは、ペットとの同行避難を受け入れる避難所になる。",
-   "animals": null,
+   "animals": "飼い主が適切に管理できるペットの受け入れが基本。種類の細かな基準はなく、危険や管理の難しさがあるときは個別判断。",
    "no": null,
-   "size": null,
-   "cage": "屋内でも屋外でも、ケージに入れて飼うのが原則。ふだんからケージやキャリーバッグで過ごせるようにしておく。",
+   "size": "大きさによる一律の制限はない。大型犬などケージでの管理が難しい場合は、屋外の指定場所に係留し、飼い主が管理する想定。",
+   "cage": "原則としてケージやキャリーを使う。難しい場合の屋外係留は避難所の状況による。",
    "rules": [
     "迷子札・鑑札・マイクロチップで飼い主が分かるようにする",
     "予防注射やワクチンで健康管理をする",
@@ -19277,7 +19380,7 @@
     "small": null,
     "bird": null,
     "reptile": null,
-    "large": null
+    "large": "cond"
    },
    "links": [
     [
@@ -19286,11 +19389,29 @@
     ]
    ],
    "map": null,
-   "cage_req": true,
+   "cage_req": false,
    "details": [
     "ペットのストレスを考え、安全な親戚・知人の家やペットホテルなどの預け先も考えておく。",
     "散歩の時間やコース、えさの与え方、ふん尿の処理などは飼い主どうしで決める。",
     "飼い主の中から責任者を選び、トラブルはグループで対応する。大きなトラブルは避難所の責任者に知らせる。"
+   ],
+   "large_kind": "check",
+   "large_ans": "ケージに入れにくい場合、屋外でつなげるかは避難所の状況によります。",
+   "reply": "丸亀市の回答（2026年11月18日）",
+   "decision_large_short": "ケージに入れにくい場合、屋外でつなげるかは避難所の状況によります。",
+   "decision_large_head": "屋外でつなげるかは現地次第",
+   "decision_place": "市立小・中学校が避難所として開いたときが対象です。ペットの場所は各避難所が屋内・屋外から決めます。",
+   "decision_place_short": "市立小・中学校が避難所として開いたときが対象です。ペットの場所は各避難所が屋内・屋外から決めます。",
+   "decision_large_prep": [
+    "ケージやキャリーとリードを用意する",
+    "ケージに入れにくい場合は、屋外でつなげるかを確認する"
+   ],
+   "decision_large_tip": "開設された学校の案内を確認してください。",
+   "decision_cage": "原則ケージ。屋外でつなげるかは避難所の状況によります。",
+   "decision_species_fallback": [
+    "hard",
+    "開設された学校が対象",
+    "市立小・中学校が避難所として開いた場合が対象です。飼い主が管理し、個別の可否は開設先で確認してください。"
    ]
   },
   {
@@ -24470,10 +24591,10 @@
    "pref": "新潟県",
    "name": "関川村",
    "kind": "city",
-   "policy": "村の地域防災計画で、住民がペットと一緒に避難できるよう配慮するとしている。ペットはすべての避難所で受け入れできる。",
-   "animals": null,
+   "policy": "村は地域防災計画でペットとの同行避難に配慮している。公開案内では全避難所での受け入れを案内しているが、村への確認では受け入れ可否を避難所ごとに示した一覧はない。開設後の受け入れは村や避難所に確認する。",
+   "animals": "対象の種類は決まっていない。",
    "no": null,
-   "size": null,
+   "size": "大きさによる扱いは決まっていない。",
    "cage": "安全と衛生のため、ペットは必ずケージに入れる。",
    "rules": [
     "動物が苦手な人やアレルギーの人に配慮する",
@@ -24492,7 +24613,7 @@
    "links": [
     [
      "関川村「ペットを飼っている方へ ～災害時のペットとの同行避難と日頃からの備えについて～」",
-     "https://www.vill.sekikawa.niigata.jp/life/12/680/962cc8be9990/index.html"
+     "https://www.vill.sekikawa.niigata.jp/life/12/962cc8be9990/index.html"
     ],
     [
      "関川村「災害時にペットを連れて避難する際のお願い」（PDF）",
@@ -24507,6 +24628,24 @@
     "鑑札・注射済票や、連絡先を書いた迷子札を着ける。",
     "ペットホテルや親戚・知人宅など、一時預かり先を前もって考えておく。",
     "犬は「待て」「おいで」などの基本のしつけ、猫はケージやキャリーに慣らしておく。"
+   ],
+   "large_kind": "check",
+   "large_ans": "避難所では必ずケージに入れます。大型犬を受け入れるかは開設先に確認してください。",
+   "reply": "関川村の回答（2026年11月20日）",
+   "decision_large_short": "避難所では必ずケージに入れます。大型犬を受け入れるかは開設先に確認してください。",
+   "decision_large_head": "ケージ必須・受け入れ要確認",
+   "decision_place": "原則屋外で、必ずケージに入れます。開設先の受け入れと管理場所は村や避難所に確認してください。",
+   "decision_place_short": "原則屋外で、必ずケージに入れます。開設先の受け入れと管理場所は村や避難所に確認してください。",
+   "decision_large_prep": [
+    "犬が入れるケージを準備する",
+    "ケージに入れない場合の避難先を前もって決める"
+   ],
+   "decision_large_tip": "ケージに入れない場合はリードだけを当てにせず、開設先に確認してください。",
+   "decision_cage": "避難所では必ずケージに入れます。",
+   "decision_species_fallback": [
+    "hard",
+    "ケージ必須・受け入れ要確認",
+    "村の案内ではケージでの管理が必要です。開設された避難所の受け入れは村や避難所に確認してください。"
    ]
   },
   {
@@ -29393,6 +29532,1213 @@
     "避難所に入れないので、親戚・知人の家やペットホテルなど、ペットの預け先を前もって決めておく。"
    ],
    "reply": "十津川村の回答（2026年11月）"
+  },
+  {
+   "pref": "新潟県",
+   "name": "胎内市",
+   "kind": "city",
+   "policy": "市内すべての指定避難所でペットと同行避難できる。",
+   "animals": "犬・猫のほか、小動物・小鳥・爬虫類も対象。過ごす場所や広さは避難所で異なる。",
+   "size": "一律の大きさ制限はない。避難所によって指定スペースの広さが異なる。",
+   "no": null,
+   "cage": "ケージやキャリーの持参が必要。",
+   "rules": [],
+   "place": "避難所ごとに異なり、車庫・倉庫、屋外の駐輪場、避難者の車内など。",
+   "flags": {
+    "dog": "yes",
+    "cat": "yes",
+    "small": "yes",
+    "bird": "yes",
+    "reptile": "yes",
+    "large": "cond"
+   },
+   "links": [
+    [
+     "胎内市「自主避難所の開設」（ペットの事前相談）",
+     "https://www.city.tainai.niigata.jp/kurashi/bosai/bosai/kunren/jisyuhinan.html"
+    ]
+   ],
+   "map": [
+    "胎内市の指定避難所案内（一般の一覧）",
+    "https://www.city.tainai.niigata.jp/kurashi/bosai/bosai/siteifukusihinanjyo.html"
+   ],
+   "cage_req": true,
+   "large_kind": "check",
+   "large_ans": "一律の大きさ制限はありませんが、ケージ持参と開設先の広さの確認が必要です。",
+   "reply": "胎内市の回答（2026年11月19日）",
+   "decision_large_short": "一律の大きさ制限はありませんが、ケージ持参と開設先の広さの確認が必要です。",
+   "decision_large_head": "ケージ持参・置き場所を確認",
+   "decision_place": "車庫・倉庫、駐輪場、飼い主の車内など、開設された避難所ごとに異なります。",
+   "decision_place_short": "車庫・倉庫、駐輪場、飼い主の車内など、開設された避難所ごとに異なります。",
+   "decision_large_prep": [
+    "犬に合うケージかキャリーを用意する",
+    "開設先でケージを置ける広さと管理場所を確認する"
+   ],
+   "decision_large_tip": "台風・大雨などの自主避難所は別の案内で、ペットを連れて行くときは事前に相談します。",
+   "decision_cage": "ケージやキャリーの持参が必要です。"
+  },
+  {
+   "pref": "長野県",
+   "name": "豊丘村",
+   "kind": "city",
+   "policy": "指定避難所24か所のうち豊丘北小学校・豊丘南小学校・豊丘中学校の3か所だけで同行避難ができる。",
+   "animals": "原則として犬・猫・小動物。",
+   "size": null,
+   "no": null,
+   "cage": "ケージやキャリーの持参が基本。係留できる場所もあるが数に限りがある。",
+   "rules": [],
+   "place": "屋外。軒下や簡易の屋根がある場所。",
+   "flags": {
+    "dog": "cond",
+    "cat": "cond",
+    "small": "cond",
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "豊丘村のペット防災案内",
+     "https://www.vill.nagano-toyooka.lg.jp/09sumai/04pet/2026-0715-1000-7.html"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": [
+    "同行避難先は豊丘北小学校、豊丘南小学校、豊丘中学校。",
+    "避難所でのペットの世話と衛生管理は飼い主が行う。"
+   ],
+   "large_kind": "check",
+   "large_ans": "同行避難先は3校です。係留場所に限りがあるため、大型犬の受け入れは確認してください。",
+   "reply": "豊丘村の回答（2026年11月19日）",
+   "decision_large_short": "同行避難先は3校です。係留場所に限りがあるため、大型犬の受け入れは確認してください。",
+   "decision_large_head": "3校のみ・係留場所に限りあり",
+   "decision_place": "豊丘北小、豊丘南小、豊丘中の屋外で、軒下や簡易の屋根がある場所です。",
+   "decision_place_short": "豊丘北小、豊丘南小、豊丘中の屋外で、軒下や簡易の屋根がある場所です。",
+   "decision_large_prep": [
+    "ケージかキャリーを用意する",
+    "ケージが使えない場合、係留場所の空きと大型犬の扱いを確認する"
+   ],
+   "decision_large_tip": "開設状況と受け入れ状況を確認してください。",
+   "decision_cage": "ケージやキャリーが基本で、係留できる場所には限りがあります。",
+   "decision_species_fallback": [
+    "hard",
+    "開設先で受け入れを確認",
+    "同行避難先は3校です。原則の対象は犬・猫・小動物で、そのほかの動物は開設先で確認してください。"
+   ]
+  },
+  {
+   "pref": "新潟県",
+   "name": "妙高市",
+   "kind": "city",
+   "policy": "すべての指定避難所で同行避難できる。人とペットの生活場所は分ける。",
+   "animals": "犬・猫・小鳥、ウサギやハムスターなどの小動物。",
+   "size": "県の条例で特別な飼養施設基準が定められている大型犬は対象外。市の案内に対象犬種の例あり。",
+   "no": "特定動物、県条例の特定基準が定められた大型犬、家畜、事業用小動物、ヒーターやポンプなど付帯設備が必要な動物は受け入れ対象外。",
+   "cage": "ケージかキャリーを持参し、避難所の案内に沿って管理する。",
+   "rules": [
+    "給餌・排せつ物の処理・健康管理は飼い主が行う",
+    "リード、飲み水、フード、薬などは飼い主が用意する"
+   ],
+   "place": "人の生活場所とは別の、避難所が指定するスペース。主に屋外。",
+   "flags": {
+    "dog": "cond",
+    "cat": "yes",
+    "small": "yes",
+    "bird": "yes",
+    "reptile": "hard",
+    "large": "cond"
+   },
+   "links": [
+    [
+     "妙高市のペット防災案内",
+     "https://www.city.myoko.niigata.jp/docs/75334.html"
+    ]
+   ],
+   "map": [
+    "妙高市の指定避難所一覧",
+    "https://www.city.myoko.niigata.jp/docs/695.html"
+   ],
+   "cage_req": true,
+   "details": [
+    "盲導犬・介助犬・聴導犬は同じ避難スペースで過ごせる。受付で申し出る。"
+   ],
+   "large_kind": "hard",
+   "large_ans": "県の条例で特別な飼養施設基準の対象となる大型犬は、同行避難の対象外です。",
+   "reply": "妙高市の回答（2026年11月18日）",
+   "decision_large_short": "県の条例で特別な飼養施設基準の対象となる大型犬は、同行避難の対象外です。",
+   "decision_large_head": "県の条例の対象犬は不可",
+   "decision_place": "人とは別に避難所が指定する場所で、主に屋外です。現地の案内に従ってください。",
+   "decision_place_short": "人とは別に避難所が指定する場所で、主に屋外です。現地の案内に従ってください。",
+   "decision_large_prep": [
+    "市の案内で、県の飼養基準の対象に該当する犬か確認する",
+    "対象外の犬は別の避難先を前もって決める"
+   ],
+   "decision_large_tip": "市の案内には秋田犬・土佐犬・シェパード・グレートデンなどの例があります。該当するかは市の案内を確認してください。",
+   "decision_cage": "持参のケージやキャリーが原則で、現地の判断で屋外につなぐ場合もあります。"
+  },
+  {
+   "pref": "北海道",
+   "name": "豊富町",
+   "kind": "city",
+   "policy": "指定避難所への同行避難は可能。ペット専用の一覧はない。",
+   "animals": "家庭動物が対象。種類ごとの扱いは避難所に確認する。",
+   "size": "大きさについて特別な定めはない。",
+   "no": null,
+   "cage": "計画上、持参の決まりはないが、避難所のマニュアルにはケージ等を用意するとある。",
+   "rules": [],
+   "place": "ペットの場所は事前に調整して決める。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [],
+   "map": [
+    "豊富町の指定避難所案内（一般の一覧）",
+    "https://www.town.toyotomi.hokkaido.jp/section/soumuka/tdlqvk000000jvel.html"
+   ],
+   "cage_req": false,
+   "large_kind": "check",
+   "large_ans": "一律の大きさ制限は示されていませんが、受け入れと場所は事前の調整が必要です。",
+   "reply": "豊富町の回答（2026年11月18日）",
+   "decision_large_short": "一律の大きさ制限は示されていませんが、受け入れと場所は事前の調整が必要です。",
+   "decision_large_head": "受け入れ・場所は事前に確認",
+   "decision_place": "ペットが過ごす場所は事前の調整で決まります。開設先の案内を確認してください。",
+   "decision_place_short": "ペットが過ごす場所は事前の調整で決まります。開設先の案内を確認してください。",
+   "decision_large_prep": [
+    "受け入れ、過ごす場所、必要な持ち物を町や避難所に確認する"
+   ],
+   "decision_large_tip": "持ち物も町や避難所に確認してください。",
+   "decision_species_fallback": [
+    "hard",
+    "受け入れ・場所は事前に確認",
+    "町は家庭動物の同行避難を案内しています。種類ごとの扱いと過ごす場所は事前に調整してください。"
+   ]
+  },
+  {
+   "pref": "三重県",
+   "name": "亀山市",
+   "kind": "city",
+   "policy": "避難先で飼い主が世話と管理を行うことを前提に、同行避難が可能。ペット専用の一覧はない。",
+   "animals": "種類・大きさの一律の決まりはない。一方、爬虫類など特定のペットは想定せず、安全・衛生を保てない場合は受け入れが難しい。",
+   "size": "一律の決まりはないが、避難所の状況により受け入れが難しい場合がある。",
+   "no": null,
+   "cage": "ケージやキャリーバッグなどに入れて連れて行く。",
+   "rules": [],
+   "place": "人の生活場所とは分け、避難所に隣接した雨風のしのげる屋外などを基本とする。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": "hard",
+    "large": "hard"
+   },
+   "links": [
+    [
+     "亀山市地域防災計画（PDF）",
+     "https://www.city.kameyama.mie.jp/_files/00201421/bousai.pdf"
+    ]
+   ],
+   "map": [
+    "亀山市の指定避難所案内（一般の一覧）",
+    "https://www.city.kameyama.mie.jp/docs/2024061700035/"
+   ],
+   "cage_req": true,
+   "large_kind": "hard",
+   "large_ans": "安全・衛生を保てない場合は受け入れが難しく、ケージなどに入れて避難します。",
+   "reply": "亀山市の回答（2026年11月18日）",
+   "decision_large_short": "安全・衛生を保てない場合は受け入れが難しく、ケージなどに入れて避難します。",
+   "decision_large_head": "受け入れは安全・衛生の条件つき",
+   "decision_place": "人と別で、避難所の近くにある雨風をしのげる屋外などが基本です。",
+   "decision_place_short": "人と別で、避難所の近くにある雨風をしのげる屋外などが基本です。",
+   "decision_large_prep": [
+    "犬が入れるケージやキャリーを準備する",
+    "安全や衛生の条件を満たせないときの別の避難先を考える"
+   ],
+   "decision_large_tip": "開設先での受け入れと管理場所は確認してください。",
+   "decision_cage": "ケージやキャリーバッグなどに入れて連れて行きます。",
+   "decision_species_fallback": [
+    "hard",
+    "受け入れは安全・衛生の条件つき",
+    "ケージやキャリーなどに入れて避難します。安全と衛生を保って管理できるか、開設先で確認してください。"
+   ]
+  },
+  {
+   "pref": "北海道",
+   "name": "新篠津村",
+   "kind": "city",
+   "policy": "村は、避難所ごとにどの種類の動物と同行避難できるかを前もって決め、災害のときはペットと避難できる避難所を知らせることにしている（地域防災計画）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [
+    "世話と飼育場所の掃除は飼い主が責任をもって行う",
+    "避難所の受付で、連れてきたペットを届け出る"
+   ],
+   "place": "人が寝起きする部屋にはペットを入れず、避難所の敷地に設けるペットの飼育スペースで飼う。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "新篠津村「地域防災計画」（PDF）",
+     "https://www.vill.shinshinotsu.hokkaido.jp/hotnews/files/00000200/00000264/20220624084742.pdf"
+    ],
+    [
+     "新篠津村「避難所運営マニュアル」（PDF）",
+     "https://www.vill.shinshinotsu.hokkaido.jp/hotnews/files/00000200/00000264/20220930114528.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "北海道",
+   "name": "森町",
+   "kind": "city",
+   "policy": "町は、避難所ごとにどの種類の動物と同行避難できるかを前もって決め、災害のときはペットと避難できる避難所を知らせることにしている（地域防災計画）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [
+    "同行避難は飼い主が自分の責任で行う（北海道の条例）"
+   ],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "森町「地域防災計画」（PDF）",
+     "https://www.town.hokkaido-mori.lg.jp/material/files/group/3/ippannsaigaitaisakuhen.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "北海道",
+   "name": "洞爺湖町",
+   "kind": "city",
+   "policy": "町は、避難所ごとにどの種類の動物と同行避難できるかを前もって決め、災害のときはペットと避難できる避難所を知らせることにしている（地域防災計画）。 町は、ペットと同行避難できる施設か飼育スペースを用意するよう努める。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [
+    "同行避難は飼い主が自分の責任で行う（北海道の条例）"
+   ],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "洞爺湖町「地域防災計画」（PDF）",
+     "http://www.town.toyako.hokkaido.jp/file/contents/1416/10537/01_toyako_bosaiplan_honpen.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "青森県",
+   "name": "田舎館村",
+   "kind": "city",
+   "policy": "避難所ではペットの飼育スペースを用意する。受付で申し出る。",
+   "animals": null,
+   "no": "大型の動物や危険な動物は、原則として避難所に連れてこられない。",
+   "size": null,
+   "cage": "指定された場所でつなぐか、オリ（ケージ）に入れて飼う。",
+   "rules": [
+    "世話と飼育場所の掃除は飼い主が責任をもって行う",
+    "避難所の受付で、連れてきたペットを届け出る"
+   ],
+   "place": "人が寝起きする部屋にはペットを入れない。敷地内の屋外（余裕があれば室内も）に専用のスペースを設けて飼う。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": "hard"
+   },
+   "links": [
+    [
+     "田舎館村「避難所運営マニュアル」（PDF）",
+     "http://www.vill.inakadate.lg.jp/docs/2026032700013/files/manual.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "岩手県",
+   "name": "矢巾町",
+   "kind": "city",
+   "policy": "町は、ペットと同行避難してきた人を避難所で受け入れることにしている（地域防災計画）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "矢巾町「地域防災計画」（PDF）",
+     "https://www.town.yahaba.iwate.jp/yahabatown/001_soumu/bousai/bousai/tiikibousaikeikaku.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "岩手県",
+   "name": "軽米町",
+   "kind": "city",
+   "policy": "町は、ペットと同行避難してきた人を避難所で受け入れることにしている（地域防災計画）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "軽米町「地域防災計画」（PDF）",
+     "https://www.town.karumai.iwate.jp/article/docs/kakukapage/soumu/karumaimachibousaikeikaku_honpen_261020.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "秋田県",
+   "name": "井川町",
+   "kind": "city",
+   "policy": "町は、ペットと避難できる避難所を決めて知らせることにしている（避難所運営マニュアル）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [
+    "避難所の受付で、連れてきたペットを届け出る"
+   ],
+   "place": "人が寝起きする場所にペットを入れない。ペットと避難できる避難所にはペットスペースを設ける。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "井川町「避難所運営マニュアル」（PDF）",
+     "https://www.town.ikawa.akita.jp/uploaded/life/1555_5355_misc.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "福島県",
+   "name": "石川町",
+   "kind": "city",
+   "policy": "避難所では、ペットの飼育スペースと飼育のための道具を用意する（地域防災計画）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": "人が寝起きする部屋には動物を入れず、敷地内の屋外に設ける飼育専用のスペースで飼う。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "石川町「地域防災計画」（PDF）",
+     "https://www.town.ishikawa.fukushima.jp/bousai/340b10aac548488e858f190316ebde9b.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "福島県",
+   "name": "浅川町",
+   "kind": "city",
+   "policy": "町は、ペットと同行避難してきた人を避難所で受け入れることにしている（地域防災計画）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "浅川町「地域防災計画」（PDF）",
+     "https://www.town.asakawa.fukushima.jp/uploads/2025/04/R7.04keikaku.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "石川県",
+   "name": "内灘町",
+   "kind": "city",
+   "policy": "避難所では、屋外にペットの飼育スペースを設ける（避難所運営マニュアル）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "指定された場所でつなぐか、檻（ケージ）に入れて飼う。",
+   "rules": [
+    "世話と飼育場所の掃除は飼い主が責任をもって行う",
+    "避難所の受付で、連れてきたペットを届け出る"
+   ],
+   "place": "人が寝起きする場所にはペットを入れず、原則として屋外の飼育スペースで飼う。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "内灘町「避難所運営マニュアル」（PDF）",
+     "https://www.town.uchinada.lg.jp/uploaded/life/5947_6017_misc.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "石川県",
+   "name": "津幡町",
+   "kind": "city",
+   "policy": "町は、ペットと同行避難してきた人を避難所で受け入れることにしている（地域防災計画）。 必要に応じて、ペットのための避難スペースを用意する。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "津幡町「地域防災計画」（PDF）",
+     "https://www.town.tsubata.lg.jp/uploaded/attachment/8138.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "長野県",
+   "name": "上松町",
+   "kind": "city",
+   "policy": "町は、避難所でペットのためのスペースを用意するなど、同行避難の体制づくりに努める（地域防災計画）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "上松町「地域防災計画」（PDF）",
+     "https://www.town.agematsu.nagano.jp/kurashi/anzen_anshin/bosai/documents/agematumatitiikibousaikeikakuhonpen.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "愛知県",
+   "name": "幸田町",
+   "kind": "city",
+   "policy": "避難所では、ペットは人の生活場所とは別の場所で受け入れる（避難所運営マニュアル）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "指定された場所につなぐか、檻（ケージなど）に入れて飼う。",
+   "rules": [
+    "世話と飼育場所の掃除は飼い主が責任をもって行う",
+    "避難所の受付で、連れてきたペットを届け出る"
+   ],
+   "place": "人の生活場所とは別の場所。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "幸田町「避難所運営マニュアル」（PDF）",
+     "https://www.town.kota.lg.jp/uploaded/attachment/14534.pdf"
+    ],
+    [
+     "幸田町「避難所運営マニュアル（様式）」（PDF）",
+     "https://www.town.kota.lg.jp/uploaded/attachment/14535.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "三重県",
+   "name": "伊勢市",
+   "kind": "city",
+   "policy": "市はペットと同行避難ができる避難所を決め、一覧を出している。同行避難は、避難所でペットと同じ場所で過ごす（同伴避難）こととはちがう。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "飼い主の名前・連絡先・ペットの名前を付けて、確実につなぐか、ケージ（おり）に入れて飼う。",
+   "rules": [
+    "世話と飼育場所の掃除は飼い主が責任をもって行う",
+    "フードと水は少なくとも5日分、キャリーバッグやケージ・リードも用意する"
+   ],
+   "place": "避難所の隅などに、ペットの一時飼育場所を決める。飼い主どうしで飼い主の会をつくって世話をする。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "伊勢市「ペットの災害対策」",
+     "https://www.city.ise.mie.jp/bousai_kyukyu/bousai/sonae/1001559.html"
+    ],
+    [
+     "伊勢市「ペットの災害対策」（PDF）",
+     "https://www.city.ise.mie.jp/_res/projects/default_project/_page_/001/001/559/pettaisaku.pdf"
+    ]
+   ],
+   "map": [
+    "伊勢市「ペットの同行避難が可能な避難所一覧」（ペットの災害対策のページ）",
+    "https://www.city.ise.mie.jp/bousai_kyukyu/bousai/sonae/1001559.html"
+   ],
+   "cage_req": true,
+   "details": []
+  },
+  {
+   "pref": "滋賀県",
+   "name": "甲良町",
+   "kind": "city",
+   "policy": "町は、指定避難所のグラウンドなどにペットのスペースと簡易な施設を用意するよう努める（地域防災計画）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": "指定避難所のグラウンドなどの屋外。原則としてペットは建物の中に入れない。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "甲良町「地域防災計画」（PDF）",
+     "https://www.kouratown.jp/material/files/group/57/bousaikeikaku1.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "大阪府",
+   "name": "島本町",
+   "kind": "city",
+   "policy": "避難所では、ペットはケージに入れて職員が指定する場所に置く。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "ケージに入れて連れていく。避難所では指示された場所でつなぐか、檻（ケージ）に入れて飼う。",
+   "rules": [
+    "世話と飼育場所の掃除は飼い主が責任をもって行う",
+    "避難所の受付で、連れてきたペットを届け出る"
+   ],
+   "place": "人が寝起きする部屋にはペットを入れない。原則として敷地内の屋外（余裕があれば室内も）に飼育場所を設ける。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "島本町「避難所でのペットの受け入れ」",
+     "https://www.town.shimamoto.lg.jp/site/bousai/1598.html"
+    ],
+    [
+     "島本町「避難所運営マニュアル」（PDF）",
+     "https://www.town.shimamoto.lg.jp/uploaded/attachment/12075.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": true,
+   "details": []
+  },
+  {
+   "pref": "兵庫県",
+   "name": "養父市",
+   "kind": "city",
+   "policy": "避難所にペットを受け入れるときは、人の居住スペースと動物の飼育場所を分ける（避難所運営マニュアル）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "ケージに入れるか、つないで飼う。",
+   "rules": [
+    "世話と飼育場所の掃除は飼い主が責任をもって行う",
+    "避難所の受付で、連れてきたペットを届け出る"
+   ],
+   "place": "人が寝起きする部屋にはペットを入れない（補助犬はのぞく）。原則として敷地内の屋外に専用スペースを設ける。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "養父市「避難所運営マニュアル」（PDF）",
+     "https://www.city.yabu.hyogo.jp/material/files/group/9/hinannsyounneimanyuaru.pdf"
+    ],
+    [
+     "養父市「地域防災計画」（PDF）",
+     "https://www.city.yabu.hyogo.jp/material/files/group/9/tiikibousaikeikakuhonpen.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "奈良県",
+   "name": "王寺町",
+   "kind": "city",
+   "policy": "避難所では、人とペットのスペースを分けるのが基本。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "ケージに入れるか、つないで飼う。",
+   "rules": [],
+   "place": "雨にぬれないように対策した、人とは別の飼育スペース。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "王寺町「避難所でのペットの受け入れ」",
+     "https://www.town.oji.nara.jp/bosai_bohan/bosai/hinan/12052.html"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "和歌山県",
+   "name": "九度山町",
+   "kind": "city",
+   "policy": "町は、ペットと同行避難してきた人を避難所で受け入れることにしている（地域防災計画）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "九度山町「地域防災計画」（PDF）",
+     "https://www.town.kudoyama.lg.jp/bousai/bousai/files/02-kihon.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "岡山県",
+   "name": "矢掛町",
+   "kind": "city",
+   "policy": "町は、ペットと同行避難してきた人を避難所で受け入れることにしている（地域防災計画）。 必要に応じて、ペットのための避難スペースを用意する。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "矢掛町「地域防災計画」（PDF）",
+     "https://www.town.yakage.okayama.jp/files/%E7%9F%A2%E6%8E%9B%E7%94%BA%E5%9C%B0%E5%9F%9F%E9%98%B2%E7%81%BD%E8%A8%88%E7%94%BB%EF%BC%88%E9%A2%A8%E6%B0%B4%E5%AE%B3%E7%AD%89%E5%AF%BE%E7%AD%96%E7%B7%A8%EF%BC%89.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "徳島県",
+   "name": "神山町",
+   "kind": "city",
+   "policy": "避難所の敷地にペット専用のスペースを設ける（避難所運営マニュアル）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [
+    "世話と飼育場所の掃除は飼い主が責任をもって行う",
+    "避難所の受付で、連れてきたペットを届け出る"
+   ],
+   "place": "人が寝起きする場所にはペットを入れない（補助犬・盲導犬はのぞく）。敷地内のペット専用スペースで飼う。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "神山町「避難所運営マニュアル」（PDF）",
+     "https://www.town.kamiyama.lg.jp/docs/2025111200239/file_contents/2025111200239_office_soumu_cd133d7e3c323c8a5bc9cc4fad153e4518063c90.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "徳島県",
+   "name": "東みよし町",
+   "kind": "city",
+   "policy": "町は、ペットと同行避難できる避難所を開設する（地域防災計画）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [
+    "ペットスペースの掃除はペットを連れてきた人が行う",
+    "避難所の受付で、連れてきたペットを届け出る"
+   ],
+   "place": "人が寝起きする場所にはペットを入れない。ペットスペースは原則として屋外で、屋外で飼えないペットは空いた部屋を使うこともある。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "東みよし町「避難所運営マニュアル」（PDF）",
+     "https://www.town.higashimiyoshi.lg.jp/fs/5/5/6/8/1/2/_/01%E6%9D%B1%E3%81%BF%E3%82%88%E3%81%97%E7%94%BA%E9%81%BF%E9%9B%A3%E6%89%80%E9%81%8B%E5%96%B6%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "徳島県",
+   "name": "海陽町",
+   "kind": "city",
+   "policy": "町は、ペットと同行避難できる避難所を開設するよう努め、開設できないときは県などと協力して受け入れ先を整える（地域防災計画）。受け入れられるかは避難所の状況による。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "海陽町「地域防災計画」（PDF）",
+     "https://www.town.kaiyo.lg.jp/docs/2024091000013/file_contents/kaiyotyoutiikibousaikeikaku2.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "徳島県",
+   "name": "つるぎ町",
+   "kind": "city",
+   "policy": "避難所では、大型の動物と危険な動物をのぞくペットを受け入れ、避難所の屋外に飼育スペースを設ける（地域防災計画）。",
+   "animals": null,
+   "no": "大型の動物と危険な動物は受け入れない。",
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": "避難所の屋外。鳴き声・におい・毛が飛ぶことを考えて場所を決める。補助犬は部屋に入れる。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": "no"
+   },
+   "links": [
+    [
+     "つるぎ町「地域防災計画」（PDF）",
+     "https://www.town.tokushima-tsurugi.lg.jp/fs/5/8/3/2/6/6/_/R6.12%E4%BF%AE%E6%AD%A3%E3%80%90%E3%81%A4%E3%82%8B%E3%81%8E%E7%94%BA%E5%9C%B0%E5%9F%9F%E9%98%B2%E7%81%BD%E8%A8%88%E7%94%BB%E3%80%91%E6%9C%AC%E7%B7%A8.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "愛媛県",
+   "name": "上島町",
+   "kind": "city",
+   "policy": "町は「上島町ペット同行避難計画」をつくり、避難所でのペットの受け入れはこの計画に沿って行う。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "上島町「上島町ペット同行避難計画について」",
+     "https://www.town.kamijima.lg.jp/soshiki/14/27286.html"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "愛媛県",
+   "name": "伊方町",
+   "kind": "city",
+   "policy": "避難所までペットと一緒に避難できる（同行避難）。避難所で人とペットが同じ場所で過ごせるとは限らず、避難所ごとのルールに従う。",
+   "animals": "犬・猫・小鳥・小型のげっ歯類などの一般的なペット。",
+   "no": "それ以外の動物は、避難所での受け入れが難しいことがある。預け先を前もって決めておく。",
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "伊方町「ペットの同行避難」",
+     "https://www.town.ikata.ehime.jp/site/bousai/9705.html"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "愛媛県",
+   "name": "松野町",
+   "kind": "city",
+   "policy": "避難所の敷地にペット専用のスペースを設ける（避難所運営マニュアル）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "指定された場所で、必ずつなぐか、ケージ（オリ）に入れて飼う。",
+   "rules": [
+    "世話と飼育場所の掃除は飼い主が責任をもって行う",
+    "避難所の受付で、連れてきたペットを届け出る",
+    "ケージなどの道具と当面のえさは飼い主が用意する"
+   ],
+   "place": "人が寝起きする場所にはペットを入れない（盲導犬などはのぞく）。ほかの避難者と動線が交わらない場所にペットスペースを設ける。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "松野町「避難所運営マニュアル」（PDF）",
+     "https://www.town.matsuno.ehime.jp/uploaded/attachment/2860.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": true,
+   "details": []
+  },
+  {
+   "pref": "熊本県",
+   "name": "多良木町",
+   "kind": "city",
+   "policy": "町は、避難所にペットのスペースを用意するなどして、同行避難した人を受け入れる（地域防災計画）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": null,
+   "rules": [],
+   "place": null,
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "多良木町「地域防災計画」（PDF）",
+     "https://www.town.taragi.lg.jp/material/files/group/19/8bousaikeikaku.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "熊本県",
+   "name": "あさぎり町",
+   "kind": "city",
+   "policy": "避難所の敷地内でペットを飼える。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "敷地内でつなぐか、ケージなどに入れて飼う。",
+   "rules": [
+    "世話と飼育場所の掃除は飼い主が責任をもって行う",
+    "避難所運営委員会の指示に従う"
+   ],
+   "place": "人が寝起きする場所にはペットを入れない。避難所の敷地内。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "あさぎり町「ペットの災害対策」",
+     "https://www.town.asagiri.lg.jp/kiji0034363/index.html"
+    ]
+   ],
+   "map": null,
+   "cage_req": false,
+   "details": []
+  },
+  {
+   "pref": "宮崎県",
+   "name": "木城町",
+   "kind": "city",
+   "policy": "町はペットを受け入れる避難所を決めている。同行避難は、避難所で人とペットが同じ場所で過ごすこととはちがう。",
+   "animals": "犬・猫・げっ歯類・鳥など、比較的小さくケージで飼える動物。",
+   "no": "特定動物（ワニガメ・ニシキヘビなど）、特定外来生物、大型の動物、たくさんの動物、特別な設備が要る動物は受け入れない。",
+   "size": "ケージで飼える比較的小さい動物まで。",
+   "cage": "飼い主がケージなどを用意し、避難所ではケージなどに入れて飼う。",
+   "rules": [
+    "犬は狂犬病の予防注射を受けていないと、受け入れられないことがある",
+    "フードと水は5日分以上用意する"
+   ],
+   "place": null,
+   "flags": {
+    "dog": "cond",
+    "cat": "cond",
+    "small": "yes",
+    "bird": "yes",
+    "reptile": "hard",
+    "large": "no"
+   },
+   "links": [
+    [
+     "木城町「ペットの災害対策」",
+     "https://www.town.kijo.lg.jp/sosikikarasagasu/soumuzaiseika/1/2/2698.html"
+    ]
+   ],
+   "map": [
+    "木城町「ペットの災害対策」（ペット受け入れ可能避難所）",
+    "https://www.town.kijo.lg.jp/sosikikarasagasu/soumuzaiseika/1/2/2698.html"
+   ],
+   "cage_req": true,
+   "details": []
+  },
+  {
+   "pref": "鹿児島県",
+   "name": "東串良町",
+   "kind": "city",
+   "policy": "避難所の敷地内の屋外にペットスペースを設ける（避難所運営マニュアル）。",
+   "animals": null,
+   "no": null,
+   "size": null,
+   "cage": "ケージやキャリーケースなどに入れて飼う。",
+   "rules": [
+    "世話と飼育場所の掃除は飼い主が責任をもって行う",
+    "避難所の受付で、連れてきたペットを届け出る",
+    "迷子札を付ける"
+   ],
+   "place": "人が寝起きする場所にはペットを入れない。敷地内の屋外のペットスペース。放し飼いはできない。",
+   "flags": {
+    "dog": null,
+    "cat": null,
+    "small": null,
+    "bird": null,
+    "reptile": null,
+    "large": null
+   },
+   "links": [
+    [
+     "東串良町「避難所運営マニュアル」（PDF）",
+     "https://www.higashikushira.com/docs/2019112600020/file_contents/_04_05_202403.pdf"
+    ]
+   ],
+   "map": null,
+   "cage_req": true,
+   "details": []
   }
  ],
  "none": [
@@ -30098,11 +31444,6 @@
   ],
   [
    "新潟県",
-   "妙高市",
-   "公式サイトにペットと避難のページが見つからない"
-  ],
-  [
-   "新潟県",
    "五泉市",
    "公式サイトにペットと避難のページが見つからない"
   ],
@@ -30134,11 +31475,6 @@
   [
    "新潟県",
    "南魚沼市",
-   "公式サイトにペットと避難のページが見つからない"
-  ],
-  [
-   "新潟県",
-   "胎内市",
    "公式サイトにペットと避難のページが見つからない"
   ],
   [
@@ -30289,11 +31625,6 @@
   [
    "三重県",
    "尾鷲市",
-   "公式サイトにペットと避難のページが見つからない"
-  ],
-  [
-   "三重県",
-   "亀山市",
    "公式サイトにペットと避難のページが見つからない"
   ],
   [
@@ -31588,11 +32919,6 @@
   ],
   [
    "北海道",
-   "豊富町",
-   "「日ごろからの備えを心がけましょう」のページを開いたが、ペットの記載はなかった。サイト内検索でも見つからない"
-  ],
-  [
-   "北海道",
    "礼文町",
    "「指定緊急避難場所及び指定避難所の変更について」を開いたが、ペットの記載はなかった。サイト内検索でも見つからない"
   ],
@@ -32115,11 +33441,6 @@
    "長野県",
    "泰阜村",
    "サイト内検索でペットと避難のページが見つからない"
-  ],
-  [
-   "長野県",
-   "豊丘村",
-   "「犬の飼い主の皆様へ」と非常持出品のチェックリストを見たが、ペットと避難のことは書いていない"
   ],
   [
    "長野県",
@@ -33335,6 +34656,1111 @@
    "長野県",
    "筑北村",
    "ペットとの避難の方針は今のところ決まっていない（筑北村の回答、2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "久米島町",
+   "避難所でペットを受け入れるかは、町はまだ決めていない（久米島町の回答、2026年11月）"
+  ],
+  [
+   "北海道",
+   "島牧村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "北海道",
+   "浜頓別町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "北海道",
+   "日高町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "北海道",
+   "釧路町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "北海道",
+   "弟子屈町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "北海道",
+   "鶴居村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "平内町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "外ヶ浜町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "鰺ヶ沢町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "西目屋村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "藤崎町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "大鰐町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "野辺地町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "七戸町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "横浜町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "東北町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "おいらせ町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "佐井村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "三戸町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "五戸町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "田子町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "青森県",
+   "階上町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "岩手県",
+   "岩手町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "岩手県",
+   "紫波町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "岩手県",
+   "西和賀町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "岩手県",
+   "金ケ崎町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "岩手県",
+   "岩泉町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "岩手県",
+   "田野畑村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "岩手県",
+   "普代村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "岩手県",
+   "野田村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "岩手県",
+   "一戸町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "宮城県",
+   "大和町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "秋田県",
+   "北秋田市",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "秋田県",
+   "八峰町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山形県",
+   "南陽市",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山形県",
+   "河北町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山形県",
+   "西川町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山形県",
+   "朝日町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山形県",
+   "大江町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山形県",
+   "大石田町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山形県",
+   "最上町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山形県",
+   "舟形町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山形県",
+   "大蔵村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山形県",
+   "鮭川村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山形県",
+   "川西町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山形県",
+   "小国町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "川俣町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "只見町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "南会津町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "三島町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "棚倉町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "矢祭町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "塙町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "鮫川村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "玉川村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "平田村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "古殿町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "三春町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "小野町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "楢葉町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "富岡町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "川内村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "大熊町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "双葉町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "葛尾村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福島県",
+   "新地町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "栃木県",
+   "那須塩原市",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "栃木県",
+   "芳賀町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "群馬県",
+   "高山村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "群馬県",
+   "片品村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "群馬県",
+   "川場村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "群馬県",
+   "板倉町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "群馬県",
+   "千代田町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "埼玉県",
+   "松伏町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "千葉県",
+   "御宿町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "新潟県",
+   "阿賀町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "富山県",
+   "南砺市",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "富山県",
+   "舟橋村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "石川県",
+   "小松市",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "石川県",
+   "志賀町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "石川県",
+   "宝達志水町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "石川県",
+   "穴水町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "石川県",
+   "能登町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福井県",
+   "福井市",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福井県",
+   "越前町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福井県",
+   "高浜町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福井県",
+   "若狭町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山梨県",
+   "道志村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山梨県",
+   "富士河口湖町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山梨県",
+   "小菅村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "長野県",
+   "松川町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "長野県",
+   "天龍村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "長野県",
+   "喬木村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "岐阜県",
+   "川辺町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "岐阜県",
+   "東白川村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "岐阜県",
+   "白川村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "静岡県",
+   "西伊豆町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "静岡県",
+   "吉田町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "三重県",
+   "大台町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "三重県",
+   "玉城町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "滋賀県",
+   "日野町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "奈良県",
+   "三郷町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "奈良県",
+   "川西町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "奈良県",
+   "三宅町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "奈良県",
+   "田原本町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "奈良県",
+   "上牧町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "奈良県",
+   "河合町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "奈良県",
+   "吉野町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "奈良県",
+   "黒滝村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "奈良県",
+   "野迫川村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "和歌山県",
+   "美浜町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "和歌山県",
+   "由良町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "和歌山県",
+   "日高川町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "和歌山県",
+   "すさみ町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "和歌山県",
+   "太地町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "和歌山県",
+   "北山村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "鳥取県",
+   "若桜町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "鳥取県",
+   "江府町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "岡山県",
+   "和気町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山口県",
+   "周防大島町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山口県",
+   "田布施町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "山口県",
+   "阿武町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "徳島県",
+   "勝浦町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "徳島県",
+   "上勝町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "徳島県",
+   "佐那河内村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "徳島県",
+   "美波町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "徳島県",
+   "松茂町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "徳島県",
+   "板野町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "徳島県",
+   "上板町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "香川県",
+   "土庄町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "香川県",
+   "まんのう町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "愛媛県",
+   "西予市",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "愛媛県",
+   "久万高原町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "愛媛県",
+   "内子町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "土佐市",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "東洋町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "奈半利町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "田野町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "安田町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "北川村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "馬路村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "本山町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "土佐町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "大川村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "仁淀川町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "中土佐町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "檮原町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "日高村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "津野町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "三原村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "高知県",
+   "黒潮町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福岡県",
+   "田川市",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福岡県",
+   "須恵町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福岡県",
+   "添田町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福岡県",
+   "みやこ町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福岡県",
+   "吉富町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福岡県",
+   "上毛町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "福岡県",
+   "築上町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "長崎県",
+   "波佐見町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "熊本県",
+   "南関町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "熊本県",
+   "菊陽町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "熊本県",
+   "西原村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "熊本県",
+   "嘉島町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "熊本県",
+   "甲佐町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "熊本県",
+   "芦北町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "熊本県",
+   "津奈木町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "熊本県",
+   "湯前町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "熊本県",
+   "水上村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "熊本県",
+   "相良村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "熊本県",
+   "球磨村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "熊本県",
+   "苓北町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "大分県",
+   "姫島村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "大分県",
+   "九重町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "宮崎県",
+   "高原町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "宮崎県",
+   "国富町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "宮崎県",
+   "西米良村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "宮崎県",
+   "川南町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "宮崎県",
+   "諸塚村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "宮崎県",
+   "椎葉村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "宮崎県",
+   "美郷町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "宮崎県",
+   "高千穂町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "宮崎県",
+   "五ヶ瀬町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "鹿児島県",
+   "長島町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "鹿児島県",
+   "南大隅町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "鹿児島県",
+   "肝付町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "鹿児島県",
+   "中種子町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "鹿児島県",
+   "南種子町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "鹿児島県",
+   "屋久島町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "鹿児島県",
+   "大和村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "鹿児島県",
+   "天城町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "鹿児島県",
+   "伊仙町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "鹿児島県",
+   "和泊町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "鹿児島県",
+   "与論町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "国頭村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "東村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "今帰仁村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "本部町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "恩納村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "宜野座村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "金武町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "伊江村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "読谷村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "嘉手納町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "北谷町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "北中城村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "中城村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "与那原町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "南風原町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "渡嘉敷村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "座間味村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "粟国村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "渡名喜村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "南大東村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "北大東村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "伊平屋村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "伊是名村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "八重瀬町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "多良間村",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "竹富町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
+  ],
+  [
+   "沖縄県",
+   "与那国町",
+   "公式サイトと地域防災計画などの資料に、避難所でのペットの受け入れの決まりが見つからない（2026年11月）"
   ]
  ]
 }
