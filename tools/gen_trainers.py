@@ -47,6 +47,12 @@ def _card(e, t):
     if t.get("assoc"):
         extra += '<small>協会の一覧：' + e("・".join(ASSOC.get(a, a) for a in t["assoc"].split("・"))) + '</small>'
     if t.get("addr"): extra += f'<small>所在地：{e(t["addr"])}</small>'
+    # [B] 2026-11-22 Nori「他のサイトにいって追加で調べることがないように」：公式サイトに書いてある料金・時間・休み・対象・出張費・お支払いもカードに
+    fx = {}
+    for f in t.get("facts", []):
+        if f["k"] in ("料金", "営業・受付時間", "定休日", "対象の犬", "出張費", "お支払い", "初回・体験") and f["k"] not in fx: fx[f["k"]] = f["v"]
+    for k in ("料金", "初回・体験", "営業・受付時間", "定休日", "対象の犬", "出張費", "お支払い"):
+        if fx.get(k): extra += f'<small>{e(k)}：{e(fx[k])}</small>'
     # [B] 11/16 Nori「ドッグトレーナー歴とか」：公式サイトに書いてある教室だけ
     if t.get("career"): extra += f'<small>トレーナー歴：{e(t["career"])}</small>'
     # 教室の会場が所在地と別のとき（事業者本人のお申し出。エコル 2026-11-09）。タクシーの行き先も会場にする

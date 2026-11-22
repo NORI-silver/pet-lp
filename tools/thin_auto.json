@@ -2,11 +2,9 @@
  "_note": "gen_areas.py が毎回作る。薄くて検索に出していないページと字数（tools/thin_gate.py）。手で直さない",
  "min_chars": 900,
  "pages": {
-  "/dog-trainer/ishikawa/": 799,
   "/dog-trainer/nagasaki/": 634,
-  "/dog-trainer/niigata/": 845,
   "/dog-trainer/shimane/": 541,
-  "/dog-trainer/tokushima/": 651,
+  "/dog-trainer/tokushima/": 667,
   "/dogrun/aichi/d181/": 797,
   "/dogrun/akita/": 349,
   "/dogrun/aomori/": 570,

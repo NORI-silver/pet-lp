@@ -3742,6 +3742,12 @@
      "v": "1レッスン5,000円（または5クーポン）",
      "src": "https://dogschoolujin.com/?page_id=51",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "6:00〜20:00",
+     "src": "https://dogschoolujin.com/",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -3769,7 +3775,21 @@
    "services": "出張（訪問）トレーニング、教室に通うレッスン、犬の幼稚園、問題行動（かむ・ほえる）の相談、ペットホテル",
    "addr": "宮城県仙台市青葉区旭ヶ丘２−４−１４SQビル１F",
    "src": "https://withdog-sendai.jp/dogtraining/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:30",
+     "src": "https://withdog-sendai.jp/%e5%ba%97%e8%88%97%e4%b8%80%e8%a6%a7/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "なし（年末年始は休み）",
+     "src": "https://withdog-sendai.jp/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T197",
@@ -3789,6 +3809,12 @@
      "v": "初回5,000円、2回目から1回4,000円",
      "src": "https://dogschool-matsumoto.com/",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "訪問のときは出張費が別にかかる",
+     "src": "https://dogschool-matsumoto.com/",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -3803,7 +3829,15 @@
    "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談",
    "addr": "宮城県亘理郡亘理町字新井町26",
    "src": "https://nagominchi.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "宮城の県南が中心。ほかの地域は交通費が別",
+     "src": "https://nagominchi.com/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T199",
@@ -3816,7 +3850,15 @@
    "services": "出張（訪問）トレーニング、預かり訓練、ペットホテル",
    "addr": "山形県東村山郡山辺町緑ヶ丘3丁目1-16",
    "src": "http://www.yamagata-dog-school.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "入会金・出張費などはかからない",
+     "src": "http://www.yamagata-dog-school.com/training.html",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T200",
@@ -3876,7 +3918,27 @@
    "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
    "addr": "栃木県真岡市熊倉町4927-1",
    "src": "http://dogtraining-kizuna.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜19:00",
+     "src": "http://dogtraining-kizuna.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "http://dogtraining-kizuna.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "遠い場合・時間外は交通費・時間外料金がかかることがある",
+     "src": "http://dogtraining-kizuna.com/price/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T204",
@@ -3894,6 +3956,18 @@
     {
      "k": "料金",
      "v": "60分3,000円（税別）",
+     "src": "https://discovery-dogs.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00",
+     "src": "https://discovery-dogs.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
      "src": "https://discovery-dogs.com/",
      "checked": "2026-11-22"
     }
@@ -3944,6 +4018,12 @@
      "v": "1回1,650円（税込）。この病院にかかっている子は1回無料",
      "src": "https://www.ishiyama-animalhospital.com/lesson",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "対象の犬",
+     "v": "1年以内に狂犬病の予防注射と混合ワクチンを済ませた子だけ",
+     "src": "https://www.ishiyama-animalhospital.com/service",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -3958,7 +4038,15 @@
    "services": "預かり訓練、ペットホテル",
    "addr": "新潟県新潟市東区幸栄3-10-34",
    "src": "http://www.dsy5.net/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "対象の犬",
+     "v": "狂犬病の予防接種を済ませた犬だけ",
+     "src": "http://www.dsy5.net/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T209",
@@ -3999,6 +4087,12 @@
      "v": "1回5,000円（税込）",
      "src": "https://dogschoolfukui.com/training/",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜20:00",
+     "src": "https://dogschoolfukui.com/",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -4013,7 +4107,15 @@
    "services": "出張（訪問）トレーニング、教室に通うレッスン、問題行動（かむ・ほえる）の相談、ペットホテル",
    "addr": "山梨県南都留郡忍野村忍草3226-6",
    "src": "https://yamanashi-dogschool.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜17:00",
+     "src": "https://yamanashi-dogschool.com/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T212",
@@ -4033,6 +4135,12 @@
      "v": "カウンセリングの基本料3,300円",
      "src": "https://tomo-iki.jp/catlesson",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜17:00",
+     "src": "https://tomo-iki.jp/catlesson",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -4047,7 +4155,21 @@
    "services": "出張（訪問）トレーニング、預かり訓練、犬の幼稚園、子犬（パピー）のレッスン",
    "addr": "岐阜県各務原市那加土山町２丁目１２７",
    "src": "https://www.dogschoolroot.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜20:00",
+     "src": "https://www.dogschoolroot.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.dogschoolroot.com/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T214",
@@ -4060,7 +4182,21 @@
    "services": "出張（訪問）トレーニング、教室に通うレッスン、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
    "addr": "静岡県静岡市清水区庵原町577-8",
    "src": "https://dt-kouyama.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "対象の犬",
+     "v": "ワクチンが終わっていない子は自宅でのレッスン",
+     "src": "https://dt-kouyama.com/menu-price/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "出張レッスンは場所により出張料金が加わる",
+     "src": "https://dt-kouyama.com/menu-price/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T215",
@@ -4086,7 +4222,21 @@
    "services": "問題行動（かむ・ほえる）の相談、オンライン相談",
    "addr": "愛知県名古屋市緑区乗鞍1丁目201",
    "src": "https://www.empathy-dog.org/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00",
+     "src": "https://www.empathy-dog.org/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "年中無休（年始を除く）",
+     "src": "https://www.empathy-dog.org/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T217",
@@ -4133,7 +4283,15 @@
    "services": "問題行動（かむ・ほえる）の相談、ペットホテル",
    "addr": "滋賀県大津市雄琴2丁目15-30",
    "src": "http://dog-hand.net/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "6:00〜20:00",
+     "src": "http://dog-hand.net/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T220",
@@ -4146,7 +4304,15 @@
    "services": "出張（訪問）トレーニング、預かり訓練",
    "addr": "滋賀県蒲生郡竜王町岡屋2678-26",
    "src": "http://56-dog.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "出張の交通費は料金にふくまれる",
+     "src": "http://56-dog.com/training/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T221",
@@ -4172,7 +4338,15 @@
    "services": "犬の幼稚園、問題行動（かむ・ほえる）の相談、ペットホテル",
    "addr": "京都府京都市伏見区醍醐南端山町15-31",
    "src": "https://ginga2019.com/dogkindergarten/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "7:00〜20:00",
+     "src": "https://ginga2019.com/dogkindergarten/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T223",
@@ -4185,7 +4359,21 @@
    "services": "出張（訪問）トレーニング、預かり訓練、犬の幼稚園、問題行動（かむ・ほえる）の相談、ペットホテル",
    "addr": "大阪府大阪市東淀川区西淡路3丁目15番18号",
    "src": "https://www.dog1st.net/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜21:00",
+     "src": "https://www.dog1st.net/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "出張料は無料",
+     "src": "https://www.dog1st.net/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T224",
@@ -4198,7 +4386,21 @@
    "services": "出張（訪問）トレーニング、教室に通うレッスン、犬の幼稚園、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、ペットホテル",
    "addr": "大阪府大阪市東淀川区北江口4-4-33",
    "src": "https://www.angedog.net/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://www.angedog.net/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "出張の交通費は料金にふくまれる",
+     "src": "https://www.angedog.net/price/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T225",
@@ -4218,6 +4420,18 @@
      "k": "料金",
      "v": "出張教室1回5,000円",
      "src": "http://shibata-dogschool.com/price",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "7:00〜22:00",
+     "src": "http://shibata-dogschool.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "出張費は無料",
+     "src": "http://shibata-dogschool.com/training",
      "checked": "2026-11-22"
     }
    ]
@@ -4239,6 +4453,12 @@
      "k": "料金",
      "v": "1時間3,000円（税込）",
      "src": "https://www.dog-garden-hori.com/blank-8",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜18:00",
+     "src": "https://www.dog-garden-hori.com/blank-5",
      "checked": "2026-11-22"
     }
    ]
@@ -4288,6 +4508,12 @@
      "v": "1回4,000円",
      "src": "http://www.kajitani-dogschool.com/",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "海田町から1時間ほどの範囲は出張料500円",
+     "src": "http://www.kajitani-dogschool.com/",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -4309,6 +4535,18 @@
      "v": "個別1回3,000円",
      "src": "http://www.dogschoolsue.com/service/breeding.html",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "対象の犬",
+     "v": "子犬のクラスは混合ワクチン1回目のあとから6か月ごろまで",
+     "src": "http://www.dogschoolsue.com/service/breeding.html",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "訓練所の近くは無料、遠い場合は交通費がかかることがある",
+     "src": "http://www.dogschoolsue.com/service/training.html",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -4324,7 +4562,27 @@
    "addr": "香川県高松市東山崎町555-6",
    "area": "をご案内いたします。ご確認の上、お気軽にご相談ください。",
    "src": "https://www.aincrad-ww.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜18:00",
+     "src": "https://www.aincrad-ww.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.aincrad-ww.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "出張費が別にかかる",
+     "src": "https://www.aincrad-ww.com/training",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T232",
@@ -4337,7 +4595,15 @@
    "services": "犬の幼稚園",
    "addr": "香川県丸亀市飯野町東分1399-2",
    "src": "https://www.uk-dog-academy.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "8:30〜17:00",
+     "src": "https://www.uk-dog-academy.com/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T233",
@@ -4363,7 +4629,27 @@
    "services": "出張（訪問）トレーニング、預かり訓練、問題行動（かむ・ほえる）の相談",
    "addr": "香川県高松市六条町183-1",
    "src": "https://www.cheesedog.net/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.cheesedog.net/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "対象の犬",
+     "v": "訪問のレッスンでは1年以内のワクチン接種証明書を見せる",
+     "src": "https://www.cheesedog.net/visit",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "交通費は料金にふくまれる",
+     "src": "https://www.cheesedog.net/visit",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T235",
@@ -4428,6 +4714,18 @@
     {
      "k": "料金",
      "v": "1時間4,000円から",
+     "src": "https://saijodog.jp/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜19:00",
+     "src": "https://saijodog.jp/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "西条市の外は出張料金がかかる",
      "src": "https://saijodog.jp/",
      "checked": "2026-11-22"
     }
@@ -4498,7 +4796,15 @@
    "url": "https://apollo-dog.jp/on-the-go-training/",
    "services": "出張（訪問）トレーニング、犬の幼稚園、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
    "src": "https://apollo-dog.jp/on-the-go-training/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "交通費が別にかかる",
+     "src": "https://apollo-dog.jp/counseling/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T243",
@@ -4524,7 +4830,15 @@
    "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
    "addr": "佐賀県佐賀市駅前中央3丁目15-21",
    "src": "https://www.training-dog-studio.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "地域によって交通費が別にかかる",
+     "src": "https://www.training-dog-studio.com/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T245",
@@ -4563,7 +4877,21 @@
    "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談、ペットホテル",
    "addr": "秋田県秋田市下新城中野字街道端西92-2",
    "src": "http://www.k9-house.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "7:00〜19:00",
+     "src": "http://www.k9-house.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "http://www.k9-house.com/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T248",
@@ -4577,7 +4905,15 @@
    "addr": "宮崎県宮崎市清武町加納乙320-38",
    "area": "外だけどスクールのサービスを受けたい",
    "src": "https://hthdogschool.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "遠い場合は出張料金が別にかかる",
+     "src": "https://hthdogschool.com/service.html",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T249",
@@ -4624,7 +4960,15 @@
    "services": "出張（訪問）トレーニング、預かり訓練、犬の幼稚園、問題行動（かむ・ほえる）の相談、ペットホテル",
    "addr": "奈良県大和郡山市矢田町1888",
    "src": "http://koriyama-dogschool.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "対象の犬",
+     "v": "子犬のクラスは生後3か月から、ワクチン接種済みの子",
+     "src": "http://koriyama-dogschool.com/service/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T252",
@@ -4644,6 +4988,12 @@
      "v": "12回58,000円（税込・出張費込み）",
      "src": "https://kaidogtraining.com/course/",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "料金に出張費がふくまれる",
+     "src": "https://kaidogtraining.com/course/",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -4658,7 +5008,27 @@
    "services": "出張（訪問）トレーニング、預かり訓練、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
    "addr": "茨城県稲敷郡河内町金江津4615",
    "src": "https://www.tanikawa-dog.com/service_price.html",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜19:00",
+     "src": "https://www.tanikawa-dog.com/service_price.html",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.tanikawa-dog.com/service_price.html",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "遠い場合は出張費がかかる",
+     "src": "https://www.tanikawa-dog.com/service_price.html",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T254",
@@ -4684,7 +5054,15 @@
    "services": "出張（訪問）トレーニング、教室に通うレッスン、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
    "addr": "群馬県利根郡みなかみ町向山６−２",
    "src": "https://www.buddiesdogservice.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "訪問ごとに交通費がかかる",
+     "src": "https://www.buddiesdogservice.com/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T256",
@@ -4697,7 +5075,15 @@
    "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
    "addr": "群馬県太田市台之郷町836-9",
    "src": "https://dogbeans.crayonsite.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "太田市は出張費無料",
+     "src": "https://dogbeans.crayonsite.com/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T257",
@@ -4709,7 +5095,27 @@
    "url": "https://www.wandaywanday.com/",
    "services": "出張（訪問）トレーニング、教室に通うレッスン、犬の幼稚園、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
    "src": "https://www.wandaywanday.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜17:00",
+     "src": "https://www.wandaywanday.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "土日祝日",
+     "src": "https://www.wandaywanday.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "移動に1時間以上かかる場合は交通費と移動手数料がかかる",
+     "src": "https://www.wandaywanday.com/money-area",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T258",
@@ -4729,6 +5135,12 @@
      "v": "1回6,000円",
      "src": "http://wan-one-wonderful.com/price.php",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "http://wan-one-wonderful.com/",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -4744,7 +5156,15 @@
    "addr": "埼玉県北葛飾郡杉戸町鷲巣３７０−８",
    "area": "としております。",
    "src": "https://dogschool-amy.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜20:00",
+     "src": "https://dogschool-amy.com/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T260",
@@ -4778,6 +5198,18 @@
      "v": "1回7,000円",
      "src": "https://www.wan-playl.com/price",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "7:00〜21:00",
+     "src": "https://www.wan-playl.com/training",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日",
+     "src": "https://www.wan-playl.com/training",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -4798,6 +5230,12 @@
     {
      "k": "料金",
      "v": "1時間6,600円",
+     "src": "https://joiedelavie.org/utilization",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "片道1時間以内は出張費1,100円",
      "src": "https://joiedelavie.org/utilization",
      "checked": "2026-11-22"
     }
@@ -4827,7 +5265,27 @@
    "services": "出張（訪問）トレーニング、教室に通うレッスン、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
    "addr": "神奈川県横浜市鶴見区鶴見中央4丁目38番26",
    "src": "https://www.dogservice-coco.jp/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜17:00",
+     "src": "https://www.dogservice-coco.jp/aboutcoco/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日",
+     "src": "https://www.dogservice-coco.jp/aboutcoco/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "横浜市鶴見区からの出張交通費がかかる",
+     "src": "https://www.dogservice-coco.jp/training/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T265",
@@ -4840,7 +5298,15 @@
    "services": "出張（訪問）トレーニング、犬の幼稚園、問題行動（かむ・ほえる）の相談、オンライン相談",
    "addr": "新潟県三条市上須頃大割428番1",
    "src": "https://kenkohmura.jp/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "1回の訪問6,600円（税込）と交通費",
+     "src": "https://kenkohmura.jp/service/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T266",
@@ -4853,7 +5319,15 @@
    "services": "出張（訪問）トレーニング",
    "addr": "石川県白山市小柳町ろ１１４－５",
    "src": "https://dog-believe.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "初回カウンセリング（1時間30分）3,000円、交通費は別",
+     "src": "https://dog-believe.com/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T267",
@@ -4879,7 +5353,27 @@
    "services": "出張（訪問）トレーニング、預かり訓練、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
    "addr": "山梨県甲州市勝沼町等々力1552",
    "src": "https://amemiya-dog-t.boo.jp/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜21:00",
+     "src": "https://amemiya-dog-t.boo.jp/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "年中無休",
+     "src": "https://amemiya-dog-t.boo.jp/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "遠い場合は勝沼ぶどう郷駅から最寄り駅までの往復の交通費がかかる",
+     "src": "https://amemiya-dog-t.boo.jp/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T269",
@@ -4933,6 +5427,12 @@
      "v": "1回3,000円から",
      "src": "https://www.dogtrainingh.com/pet_hotel/index.html",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "交通費は相談",
+     "src": "https://www.dogtrainingh.com/training/index.html",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -4947,7 +5447,21 @@
    "services": "出張（訪問）トレーニング、犬の幼稚園、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、オンライン相談、ペットホテル",
    "addr": "長野県長野市松代町松代176",
    "src": "https://ken-129.com/kindergarden/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜19:00",
+     "src": "https://ken-129.com/kindergarden/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日",
+     "src": "https://ken-129.com/kindergarden/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T273",
@@ -4965,6 +5479,24 @@
     {
      "k": "料金",
      "v": "1回10,000円、4回35,000円",
+     "src": "https://www.doglibre.jp/menu",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜20:00",
+     "src": "https://www.doglibre.jp/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.doglibre.jp/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "往復の交通費は1kmあたり25円",
      "src": "https://www.doglibre.jp/menu",
      "checked": "2026-11-22"
     }
@@ -4993,7 +5525,15 @@
    "url": "https://www.amanodogschool.com/",
    "services": "出張（訪問）トレーニング",
    "src": "https://www.amanodogschool.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "出張の場合は交通費が加わる",
+     "src": "https://www.amanodogschool.com/service/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T276",
@@ -5024,6 +5564,18 @@
     {
      "k": "料金",
      "v": "1回1,000円から",
+     "src": "https://dogschoolpoo.main.jp/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "訪問のたびに往復の交通費がかかる",
+     "src": "https://dogschoolpoo.main.jp/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみ",
      "src": "https://dogschoolpoo.main.jp/",
      "checked": "2026-11-22"
     }
@@ -5060,6 +5612,18 @@
      "v": "1時間2,000円",
      "src": "https://dogtraining-home.com/price.php",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "7:00〜19:00",
+     "src": "https://dogtraining-home.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "料金に交通費がふくまれる。20時〜6時は500円増し",
+     "src": "https://dogtraining-home.com/price.php",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -5087,7 +5651,21 @@
    "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談",
    "addr": "兵庫県宝塚市光明町11-4",
    "src": "https://www.kuramadogschool.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "7:00〜20:00",
+     "src": "https://www.kuramadogschool.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "日曜日",
+     "src": "https://www.kuramadogschool.com/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T282",
@@ -5101,7 +5679,21 @@
    "addr": "兵庫県高砂市荒井町小松原4-6-26",
    "area": "】高砂市、姫路市、加古川市、明石市、神戸市、播磨町、稲美町、三木市、小野市、三田市、西脇市、加東市、加西市（その他の地域もご相談ください）",
    "src": "https://www.sunshinedogdays.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "https://www.sunshinedogdays.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.sunshinedogdays.com/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T283",
@@ -5119,6 +5711,12 @@
     {
      "k": "料金",
      "v": "1レッスン4,000円",
+     "src": "https://decodog.net/menu/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "料金に出張費はふくまれない",
      "src": "https://decodog.net/menu/",
      "checked": "2026-11-22"
     }
@@ -5142,6 +5740,12 @@
      "v": "出張レッスン4,000円",
      "src": "https://www.dogschool-toitoitoi.com/",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜21:00",
+     "src": "https://www.dogschool-toitoitoi.com/",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -5156,7 +5760,21 @@
    "services": "出張（訪問）トレーニング、預かり訓練、問題行動（かむ・ほえる）の相談、ペットホテル",
    "addr": "岡山県赤磐市殿谷607",
    "src": "https://www.dog-training-fugue.com/traning",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://www.dog-training-fugue.com/traning",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.dog-training-fugue.com/traning",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T286",
@@ -5198,6 +5816,24 @@
      "v": "1時間10,000円（出張料などは別）",
      "src": "https://www.credo-k-9.com/training",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜17:00",
+     "src": "https://www.credo-k-9.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.credo-k-9.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "出張料はエリアによって別にかかる",
+     "src": "https://www.credo-k-9.com/training",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -5212,7 +5848,21 @@
    "services": "出張（訪問）トレーニング、教室に通うレッスン、預かり訓練、問題行動（かむ・ほえる）の相談、ペットホテル",
    "addr": "広島県広島市安佐北区白木町井原1325-1",
    "src": "https://hinoka-dog-school.com/training/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "7:00〜20:00",
+     "src": "https://hinoka-dog-school.com/training/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "日曜日",
+     "src": "https://hinoka-dog-school.com/training/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T289",
@@ -5246,6 +5896,18 @@
      "v": "1回8,000円",
      "src": "https://dogschoolito.com/",
      "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜19:00",
+     "src": "https://dogschoolito.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://dogschoolito.com/",
+     "checked": "2026-11-22"
     }
    ]
   },
@@ -5265,6 +5927,18 @@
     {
      "k": "料金",
      "v": "ベーシックコース2時間10,000円（税込）",
+     "src": "https://www.k9doglifeadviser.com/training",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "6:30〜19:00",
+     "src": "https://www.k9doglifeadviser.com/training",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "地域によって交通費がかかることがある",
      "src": "https://www.k9doglifeadviser.com/training",
      "checked": "2026-11-22"
     }
@@ -5315,7 +5989,15 @@
    "services": "出張（訪問）トレーニング",
    "addr": "福岡県久留米市上津町2228-834",
    "src": "http://www.dogschooloka.com/tra/index.html",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "対象の犬",
+     "v": "狂犬病のワクチン接種と登録が済んでいること",
+     "src": "http://www.dogschooloka.com/tra/index.html",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T295",
@@ -5328,7 +6010,15 @@
    "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、オンライン相談",
    "addr": "福岡県糸島市二丈吉井3815−107",
    "src": "https://www.inu-to-ippo.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "料金とは別に交通費がかかる",
+     "src": "https://www.inu-to-ippo.com/scheme.html",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T296",
@@ -5340,7 +6030,21 @@
    "url": "https://goodog.site/",
    "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談",
    "src": "https://goodog.site/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "対象の犬",
+     "v": "個別レッスンはワクチンを打っていない子も受ける",
+     "src": "https://goodog.site/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "出張費",
+     "v": "基本の出張料と往復の交通費・駐車料金がかかる",
+     "src": "https://goodog.site/area/",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T297",
@@ -5366,7 +6070,15 @@
    "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談、ペットホテル",
    "addr": "熊本県阿蘇郡西原村河原1631",
    "src": "https://www.gtp03.net/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "料金に交通費がふくまれる",
+     "src": "https://www.gtp03.net/system-price",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T299",
@@ -5379,7 +6091,15 @@
    "services": "出張（訪問）トレーニング、教室に通うレッスン、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
    "addr": "熊本県熊本市東区若葉5‐8",
    "src": "https://www.lightendogschool.com/",
-   "checked": "2026-11-22"
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "出張の交通費は別",
+     "src": "https://www.lightendogschool.com/blank-1",
+     "checked": "2026-11-22"
+    }
+   ]
   },
   {
    "id": "T300",
