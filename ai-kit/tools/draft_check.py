@@ -16,6 +16,10 @@
          料金はまず「目安（概算）」を聞いているかを見る（具体的な場所のあとの確定料金のときは --exact。Nori 2026-11-22「まずは、おおよそで…確定料金をだすとか」）。
 --kind invite --terms 決めた条件のファイル：提携のお誘い・提携の内容の説明。Nori さんが決めたお金の条件の文（ファイルの1行と同じ行）だけは
          お金の話でも通す。条件は最初に書き、あとから出さない。ほかのお金の話は止める。条件のファイルは公開のリポジトリに置かない。
+会社・施設・提携先あて（--to 会社|施設|提携先、--kind invite|referral）では、率・割合・手数料の金額（何％・何割・手数料の円など）を
+         いつでも止める。通すのは --terms のファイルにある Nori さんがOKした文の行だけ（Nori 2026-11-22「（率）とかまだなにもいえるわけないじゃん」）。
+--thread 前のやりとり.txt（または --asked-phone）：相手が「お電話で」と頼んでいるのにメールで返すときは、
+         「お電話ではなくメールでのご連絡となり失礼いたします」のような短いおわびがないと止める（同日「電話してっていわれてるのにメールしてるんだからエクスキューズつけろよ」）。
 保存は、その事業の送る係のメールの下書きに（「下書きして」＝メールの下書き。ai-kit.json の sender）。送るのは Nori さんの「送って」のあと。
 """
 import json, os, re, sys
@@ -54,6 +58,15 @@ REFERRAL = [
 ]
 
 
+# 率・割合・手数料の金額（会社あて）。Nori さんがOKした文の行だけ通す
+FEE_NUM = r"[0-9０-９.．]+\s*(?:%|％|パーセント)|[0-9０-９一二三四五六七八九十]+\s*割(?!引|り|増)"
+FEE_LINE = r"手数料|紹介料|掲載料|取り分|マージン|上乗せ|成約|成果報酬|仲介料"
+YEN = r"[0-9０-９,，]+\s*円|[一二三四五六七八九十百千万]+円"
+# 相手が電話を頼んでいるか・メールで返すおわびがあるか
+ASK_PHONE = r"お電話(?:で|にて|を|いただ|ください|下さい|頂)|電話(?:で|にて)(?:ご連絡|お話|相談|ご説明|お願い)|電話(?:ください|下さい|をください|をお願い)"
+PHONE_SORRY = r"(?:お電話|電話)[^。\n]{0,24}(?:ではなく|でなく|できず|できない|かなわず|叶わず|代わり|かわり)|メール(?:にて|で)(?:の)?(?:ご連絡|ご返信|お返事|失礼)[^。\n]{0,20}(?:失礼|申し訳|恐れ入|お許し)"
+
+
 def check(text):
     out = []
     ref = "--kind" in sys.argv and "referral" in sys.argv
@@ -73,6 +86,15 @@ def check(text):
                 if ln in ok_lines: continue
             line = text.count("\n", 0, m.start()) + 1
             out.append(f"{line}行目「{m.group()}」: {why}")
+    out_to = any(f"--to={k}" in sys.argv for k in ("会社", "施設", "提携先")) or ("--to" in sys.argv and sys.argv[sys.argv.index("--to") + 1:sys.argv.index("--to") + 2] in (["会社"], ["施設"], ["提携先"]))
+    if out_to or ("--kind" in sys.argv and ("invite" in sys.argv or "referral" in sys.argv)):
+        lines = text.splitlines()
+        for n, ln in enumerate(lines, 1):
+            if ln.strip() in ok_lines: continue
+            hits = [m.group() for m in re.finditer(FEE_NUM, ln)]
+            if re.search(FEE_LINE, ln): hits += [m.group() for m in re.finditer(YEN, ln)]
+            for h in hits:
+                out.append(f"{n}行目「{h.strip()}」: 率・割合・手数料の金額は書かない（Noriさんが決めてOKした文の行だけ。届出の前はお金の数字は出さない）")
     for m in re.finditer(HYPO, text):
         if "--confirmed" not in sys.argv:
             out.append(f"{text.count(chr(10), 0, m.start()) + 1}行目「{m.group()}」: 相手が言っていない前提・約束を足さない（相手に確かめたら --confirmed）")
@@ -108,6 +130,10 @@ if __name__ == "__main__":
             res.append("送るときは --approved にNoriさんがOKした下書きのファイルを入れる（OKの文のまま送る）")
         elif open(ap, encoding="utf-8").read().strip() != t.strip():
             res.append("NoriさんがOKした下書きと文がちがう（穴を埋める・直すなら、もう一度OKをもらう）")
+    th = opt("--thread")
+    asked = "--asked-phone" in a or (th and re.search(ASK_PHONE, open(th, encoding="utf-8").read()))
+    if asked and not re.search(PHONE_SORRY, t):
+        res.append("相手は電話を頼んでいる。メールで返すなら、最初に短いおわびを入れる（例：「お電話ではなくメールでのご連絡となり、失礼いたします。」）")
     if "--read-latest" not in a:
         res.append("送る相手から、まだ返事していない新しいメールがないかを読んでから送る（読んだら --read-latest を付ける）")
     for r in res: print("直す:", r)
