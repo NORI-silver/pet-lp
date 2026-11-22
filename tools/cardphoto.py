@@ -102,7 +102,7 @@ def page(h, by_id, by_url):
         out += [h[pos:m.start()], ot, s, blk[len(ot):]]
         pos = j; n += 1
     out.append(h[pos:])
-    h2 = "".join(out)
+    h2 = front("".join(out))
     if n or "/hosp.js" in h2:
         # T114 の写真は被写体が上端に近いため、既存画像の全範囲を見せる。
         photo_css = CSS
@@ -111,6 +111,45 @@ def page(h, by_id, by_url):
                                     '.cs-ph[data-gph="T114"] img{object-fit:contain}</style>')
         h2 = h2.replace("</head>", photo_css + "</head>", 1)
     return h2, n
+
+
+def rich(blk):
+    """カードの情報の多さ（公式サイトの情報からできた行・札・資格・ひとことの数）。"""
+    return (blk.count('class="ux-c-l') + min(blk.count("<li>"), 6) + blk.count('class="crd"')
+            + 2 * ('class="fc-catch"' in blk) + min(blk.count("<small>"), 6))
+
+
+def front(h):
+    h = _front(h, _OPEN, lambda t: (-('class="cs-ph"' in t), -rich(t)))
+    # 写真のあるカードがある地域の列も、そのページの先頭のほうへ（地域の中の順は上で決まる）
+    return _front(h, re.compile(r'<div class="fr">'), lambda t: -('class="cs-ph"' in t))
+
+
+def _front(h, pat, key):
+    """写真のあるカード・情報の多いカードを、同じ並び（横スワイプの列・一覧）の先頭へ。
+    Nori 2026-11-22「写真付きとかの事業者は一番前に動かしてね」。同じなら元の順（安定な並べかえ）。"""
+    blks = []
+    for m in pat.finditer(h):
+        if blks and m.start() < blks[-1][1]: continue
+        j = _end(h, m.start())
+        if j > 0: blks.append((m.start(), j))
+    runs, cur = [], []
+    for b in blks:
+        if cur and h[cur[-1][1]:b[0]].strip() == "": cur.append(b)
+        else:
+            if len(cur) > 1: runs.append(cur)
+            cur = [b]
+    if len(cur) > 1: runs.append(cur)
+    out, pos = [], 0
+    for run in runs:
+        parts = [h[a:b] for a, b in run]
+        gaps = [h[run[k][1]:run[k + 1][0]] for k in range(len(run) - 1)]
+        srt = sorted(parts, key=key)
+        if srt == parts: continue
+        out += [h[pos:run[0][0]], srt[0]] + [g + t for g, t in zip(gaps, srt[1:])]
+        pos = run[-1][1]
+    out.append(h[pos:])
+    return "".join(out)
 
 
 def build(root):
