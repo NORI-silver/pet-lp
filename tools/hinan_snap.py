@@ -12,7 +12,7 @@ UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like 
 KEY = re.compile(r'ペット|同行|同伴|動物|犬|猫|ケージ|キャリー|リード|飼い主|飼養|愛玩|小鳥|うさぎ|ウサギ|爬虫|特定動物|盲導|補助犬')
 
 
-def get(url, limit=8_000_000):
+def get(url, limit=40_000_000):
     req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept-Language': 'ja'})
     with urllib.request.urlopen(req, timeout=40) as r:
         return r.read(limit), r.headers.get('Content-Type', ''), r.geturl()
@@ -76,9 +76,11 @@ def bing(q):
 
 NAV = re.compile(r'防災|災害|避難|ペット|動物|犬|猫|危機管理|安全|くらし|暮らし|生活|環境|bousai|bosai|saigai|hinan|kurashi|pet|animal', re.I)
 HOT = re.compile(r'ペット|同行避難|動物')
+PLAN = re.compile(r'防災計画|防災ガイド|防災マップ|ハザードマップ|防災ハンドブック|避難所運営|防災のしおり|防災手帳')
+MAIL = re.compile(r'[\w.+-]+@[\w-]+(?:\.[\w-]+)*\.jp')
 
 
-def crawl(home, limit=30):
+def crawl(home, limit=60, mails=None):
     """トップから「防災・避難・ペット」のリンクをたどり、ペットの話のあるページ・PDFのURLを集める。"""
     host = urllib.parse.urlparse(home).netloc
     todo, seen, hits = [home], set(), []
@@ -94,6 +96,9 @@ def crawl(home, limit=30):
         if 'html' not in ct.lower():
             continue
         h = decode(raw, ct)
+        if mails is not None and re.search(r'防災|危機管理|災害', h[:20000]):
+            for a in MAIL.findall(html.unescape(h)):
+                mails.setdefault(a, final)
         for href, label in re.findall(r'(?is)<a[^>]+href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', h):
             v = urllib.parse.urljoin(final, href)
             pu = urllib.parse.urlparse(v)
@@ -101,14 +106,17 @@ def crawl(home, limit=30):
                 continue
             lab = re.sub(r'<[^>]+>|\s+', '', label)
             if v.lower().endswith('.pdf'):
-                if HOT.search(lab) and v not in hits:
+                if (HOT.search(lab) or PLAN.search(lab)) and v not in hits:
                     hits.append(v)
                 continue
             if HOT.search(lab) and v not in hits:
                 hits.append(v)
-            if (NAV.search(lab) or NAV.search(pu.path)) and v not in seen and v not in todo and len(todo) < 200:
-                todo.append(v)
-    return hits[:8]
+            if (NAV.search(lab) or NAV.search(pu.path)) and v not in seen and v not in todo and len(todo) < 300:
+                if re.search(r'防災|避難|ペット|災害|危機', lab):
+                    todo.insert(0, v)
+                else:
+                    todo.append(v)
+    return hits[:10]
 
 
 def read(url):
@@ -134,14 +142,15 @@ def read(url):
 
 def one(job):
     it, res, urls, out = job
+    mails = {}
     try:
-        for u in crawl(it['url']):
+        for u in crawl(it['url'], mails=mails):
             if u not in urls:
                 urls.append(u)
     except Exception as e:
         res.append(['crawl-error', str(e)[:100]])
-    pages = [read(u) for u in urls[:10]]
-    json.dump({**it, 'search': res[:12], 'pages': pages}, open(f"{out}/{it['code']}.json", 'w'), ensure_ascii=False, indent=1)
+    pages = [read(u) for u in urls[:12]]
+    json.dump({**it, 'mails': mails, 'pages': pages}, open(f"{out}/{it['code']}.json", 'w'), ensure_ascii=False, indent=1)
     return it['name'], len(urls), sum(len(p.get('lines', [])) for p in pages)
 
 
@@ -152,12 +161,6 @@ def main(out):
     for it in q:  # 検索は順番に、間をあける
         host = urllib.parse.urlparse(it['url']).netloc
         res = []
-        for fn, qq in ((bing, f'site:{host} ペット 避難'), (search, f'site:{host} ペット 避難')):
-            try:
-                res += fn(qq)
-            except Exception as e:
-                res.append(['error', str(e)[:100]])
-            time.sleep(1.5)
         urls = []
         for lab, u in res:
             if u.startswith('http') and urllib.parse.urlparse(u).netloc == host and u not in urls:
