@@ -1,35 +1,94 @@
 [
-{"key":"福岡県","url":"https://www.pref.fukuoka.lg.jp/contents/animalhandlingbusiness-type1-inspection.html"},
-{"key":"福岡県b","url":"https://www.pref.fukuoka.lg.jp/contents/animalhandlingbusiness-type1.html"},
-{"key":"福岡市","url":"https://www.city.fukuoka.lg.jp/hofuku/dobutsukanri/life/dealer.html"},
-{"key":"北九州市","url":"https://www.city.kitakyushu.lg.jp/contents/18500074.html"},
-{"key":"広島県","url":"https://www.pref.hiroshima.lg.jp/site/apc/contents-daiissyu.html"},
-{"key":"広島市","url":"https://www.city.hiroshima.lg.jp/living/pet-doubutsu/1021301/1026247/1023102.html"},
-{"key":"広島市b","url":"https://www.city.hiroshima.lg.jp/soshiki/77/66.html"},
-{"key":"岡山県","url":"https://www.pref.okayama.jp/page/detail-29797.html"},
-{"key":"岡山市","url":"https://www.city.okayama.jp/jigyosha/0000016405.html"},
-{"key":"熊本県","url":"https://www.pref.kumamoto.jp/soshiki/30/108813.html"},
-{"key":"熊本県pdf","url":"https://www.pref.kumamoto.jp/uploaded/attachment/317197.pdf"},
-{"key":"熊本市","url":"https://www.city.kumamoto.jp/doubutuaigo/kiji00341121/index.html"},
-{"key":"鳥取県","url":"https://www.pref.tottori.lg.jp/225012.htm"},
-{"key":"鳥取市","url":"https://www.city.tottori.lg.jp/www/contents/1520329649657/simple/R7.9.30.pdf"},
-{"key":"鳥取市p","url":"https://www.city.tottori.lg.jp/www/contents/1520329649657/index.html"},
-{"key":"島根県松江","url":"https://www.pref.shimane.lg.jp/infra/nature/animal/matsue_hoken/doubututoriatukaigyou/toriatukaigyou.html"},
-{"key":"島根県","url":"https://www.pref.shimane.lg.jp/infra/nature/animal/animal_protection/hourei/2013doubututoriatuykaigyou.html"},
-{"key":"山口県pdf","url":"https://www.pref.yamaguchi.lg.jp/uploaded/attachment/103250.pdf"},
-{"key":"徳島県pdf","url":"https://www.pref.tokushima.lg.jp/file/attachment/916698.pdf"},
-{"key":"香川県","url":"https://www.pref.kagawa.lg.jp/eisei/doubutsuaigo/toriatukai/daiissyu.html"},
-{"key":"愛媛県pdf","url":"https://www.pref.ehime.jp/uploaded/attachment/126785.pdf"},
-{"key":"高知県doc","url":"https://www.pref.kochi.lg.jp/doc/2024112500201/"},
-{"key":"佐賀県a","url":"https://www.pref.saga.lg.jp/kiji00373193/index.html"},
-{"key":"佐賀県b","url":"https://www.pref.saga.lg.jp/kiji00314987/index.html"},
-{"key":"長崎県pdf","url":"https://www.pref.nagasaki.jp/shared/uploads/2025/06/1750636478.pdf"},
-{"key":"鹿児島県","url":"https://www.pref.kagoshima.jp/ae09/kenko-fukushi/yakuji-eisei/dobotu/toriatukai/documents/43878_20260716100346-1.pdf"},
-{"key":"鹿児島県p","url":"https://www.pref.kagoshima.jp/ae09/kenko-fukushi/yakuji-eisei/dobotu/toriatukai/index.html"},
-{"key":"鹿児島市","url":"https://www.city.kagoshima.lg.jp/kenkofukushi/hokenjo/seiei-jueki/kurashi/dobutsu/toriatsukaigyo/index.html"},
-{"key":"沖縄県","url":"https://www.pref.okinawa.jp/iryokenko/hokenjo/1008016/1007097/1018706/1006691.html"},
-{"key":"沖縄県宮古","url":"https://www.pref.okinawa.jp/site/hoken/hoken-miyako/kankyo/doubutsu/doubututoriatukai.html"},
-{"key":"goodbreeder","url":"https://goodbreeder.jp/registry/"},
-{"key":"gb_train","url":"https://goodbreeder.jp/registry/category_train/"},
-{"key":"gb_keep","url":"https://goodbreeder.jp/registry/category_keep/"}
+{
+"key": "熊本県全",
+"url": "https://www.pref.kumamoto.jp/soshiki/30/51349.html"
+},
+{
+"key": "熊本県317192",
+"url": "https://www.pref.kumamoto.jp/uploaded/attachment/317192.pdf"
+},
+{
+"key": "熊本県317193",
+"url": "https://www.pref.kumamoto.jp/uploaded/attachment/317193.pdf"
+},
+{
+"key": "熊本県317194",
+"url": "https://www.pref.kumamoto.jp/uploaded/attachment/317194.pdf"
+},
+{
+"key": "熊本県317195",
+"url": "https://www.pref.kumamoto.jp/uploaded/attachment/317195.pdf"
+},
+{
+"key": "熊本県317196",
+"url": "https://www.pref.kumamoto.jp/uploaded/attachment/317196.pdf"
+},
+{
+"key": "熊本県317198",
+"url": "https://www.pref.kumamoto.jp/uploaded/attachment/317198.pdf"
+},
+{
+"key": "熊本県317199",
+"url": "https://www.pref.kumamoto.jp/uploaded/attachment/317199.pdf"
+},
+{
+"key": "熊本県317200",
+"url": "https://www.pref.kumamoto.jp/uploaded/attachment/317200.pdf"
+},
+{
+"key": "熊本県317201",
+"url": "https://www.pref.kumamoto.jp/uploaded/attachment/317201.pdf"
+},
+{
+"key": "熊本県317202",
+"url": "https://www.pref.kumamoto.jp/uploaded/attachment/317202.pdf"
+},
+{
+"key": "熊本県319477",
+"url": "https://www.pref.kumamoto.jp/uploaded/attachment/319477.pdf"
+},
+{
+"key": "岡山市",
+"url": "https://www.city.okayama.jp/kurashi/0000019770.html"
+},
+{
+"key": "沖縄408",
+"url": "https://www.pref.okinawa.jp/_res/projects/default_project/_page_/001/016/408/56.pdf"
+},
+{
+"key": "沖縄408b",
+"url": "https://www.pref.okinawa.jp/_res/projects/default_project/_page_/001/016/408/54.pdf"
+},
+{
+"key": "沖縄408c",
+"url": "https://www.pref.okinawa.jp/_res/projects/default_project/_page_/001/016/408/53.pdf"
+},
+{
+"key": "沖縄408d",
+"url": "https://www.pref.okinawa.jp/_res/projects/default_project/_page_/001/016/408/34.pdf"
+},
+{
+"key": "長崎県a",
+"url": "https://www.pref.nagasaki.jp/shared/uploads/2024/09/1726639490.pdf"
+},
+{
+"key": "長崎県b",
+"url": "https://www.pref.nagasaki.jp/shared/uploads/2025/06/1750143739.pdf"
+},
+{
+"key": "大分県pdf",
+"url": "https://www.pref.oita.jp/uploaded/attachment/2202966.pdf"
+},
+{
+"key": "宮崎県pdf",
+"url": "https://www.pref.miyazaki.lg.jp/documents/7217/7217_20250410150510-1.pdf"
+},
+{
+"key": "広島県登録",
+"url": "https://www.pref.hiroshima.lg.jp/site/apc/contents-toriatsukaigyoutouroku.html"
+},
+{
+"key": "佐賀県pdf",
+"url": "https://www.pref.saga.lg.jp/kiji00314987/3_14987_199594_up_r11re16z.pdf"
+}
 ]
