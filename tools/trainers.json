@@ -2438,7 +2438,10 @@
    "url": "https://dogtrainer-run.com/",
    "services": "自宅への出張のマンツーマンのしつけ（カウンセリング・ふだんの困りごと・子犬）",
    "review_query": "つくばドッグ・トレーナー・ラン つくば市",
-   "review_name": ["つくばドッグ", "ラン"],
+   "review_name": [
+    "つくばドッグ",
+    "ラン"
+   ],
    "facts": [
     {
      "k": "料金",
@@ -3720,6 +3723,1697 @@
    "cert": "JKC公認訓練士",
    "src": "https://hiraidog.school/",
    "checked": "2026-11-16"
+  },
+  {
+   "id": "T194",
+   "name": "ドッグスクール・ゆうじん",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "恵庭市",
+   "url": "https://dogschoolujin.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練、ペットホテル",
+   "addr": "北海道恵庭市盤尻20-4",
+   "src": "https://dogschoolujin.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1レッスン5,000円（または5クーポン）",
+     "src": "https://dogschoolujin.com/?page_id=51",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T195",
+   "name": "ライズドッグスクール",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "夕張郡長沼町",
+   "url": "https://www.rise-dog.com/",
+   "services": "ペットホテル",
+   "addr": "北海道夕張郡長沼町東２線北１２番地",
+   "src": "https://www.rise-dog.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T196",
+   "name": "withDOG わんわん幼稚園としつけ教室",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市",
+   "url": "https://withdog-sendai.jp/dogtraining/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、犬の幼稚園、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "宮城県仙台市青葉区旭ヶ丘２−４−１４SQビル１F",
+   "src": "https://withdog-sendai.jp/dogtraining/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T197",
+   "name": "ドッグスクールマツモト（警察犬松本訓練所）",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "大崎市",
+   "url": "https://dogschool-matsumoto.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練、ペットホテル",
+   "addr": "宮城県大崎市古川清水沢字向原６－５",
+   "src": "https://dogschool-matsumoto.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "初回5,000円、2回目から1回4,000円",
+     "src": "https://dogschool-matsumoto.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T198",
+   "name": "ドッグスクール 和 -なごみ-",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "亘理郡亘理町",
+   "url": "https://nagominchi.com/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談",
+   "addr": "宮城県亘理郡亘理町字新井町26",
+   "src": "https://nagominchi.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T199",
+   "name": "山形ドッグスクール",
+   "prefs": [
+    "山形県"
+   ],
+   "city": "東村山郡山辺町",
+   "url": "http://www.yamagata-dog-school.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練、ペットホテル",
+   "addr": "山形県東村山郡山辺町緑ヶ丘3丁目1-16",
+   "src": "http://www.yamagata-dog-school.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T200",
+   "name": "DOG SCHOOL＆SALON わんぱくズKomm!",
+   "prefs": [
+    "福島県"
+   ],
+   "city": "福島市",
+   "url": "https://www.wanpakus-komm.com/",
+   "services": "教室に通うレッスン",
+   "addr": "福島県福島市笹谷字片目清水30-7",
+   "src": "https://www.wanpakus-komm.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T201",
+   "name": "K9クラブ レッド",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "那珂市",
+   "url": "https://dogschool-red.localinfo.jp/",
+   "services": "預かり訓練",
+   "addr": "茨城県那珂市鴻巣3718-1",
+   "src": "https://dogschool-red.localinfo.jp/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T202",
+   "name": "TOCHIGI出張訓練所",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "小山市",
+   "url": "http://moon.gmobb.jp/inuinudog/",
+   "services": "出張（訪問）トレーニング、犬の幼稚園",
+   "addr": "栃木県小山市間々田１６−５",
+   "src": "http://moon.gmobb.jp/inuinudog/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回60分ほど3,000円（税込）",
+     "src": "http://moon.gmobb.jp/inuinudog/chamaru.html",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T203",
+   "name": "ドッグトレーニング・絆",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "真岡市",
+   "url": "http://dogtraining-kizuna.com/",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "栃木県真岡市熊倉町4927-1",
+   "src": "http://dogtraining-kizuna.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T204",
+   "name": "Discovery dogs（ディスカバリードッグス）",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "前橋市",
+   "url": "https://discovery-dogs.com/",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "群馬県前橋市田口町616-1",
+   "src": "https://discovery-dogs.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "60分3,000円（税別）",
+     "src": "https://discovery-dogs.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T205",
+   "name": "群馬ドッグセンター",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "太田市",
+   "url": "https://www.gunma-dog.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練",
+   "addr": "群馬県太田市大原町1748-8",
+   "src": "https://www.gunma-dog.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T206",
+   "name": "ドッグスクール ユナイテッド",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "座間市",
+   "url": "https://www.dogschoolunited.com/",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "神奈川県座間市座間2丁目1129",
+   "area": "神奈川県（座間市、大和市、海老名市、厚木市、綾瀬市、相模原市南区）",
+   "src": "https://www.dogschoolunited.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T207",
+   "name": "石山動物病院 しつけ教室",
+   "prefs": [
+    "新潟県"
+   ],
+   "city": "新潟市",
+   "url": "https://www.ishiyama-animalhospital.com/lesson",
+   "services": "問題行動（かむ・ほえる）の相談",
+   "addr": "新潟県新潟市東区東中野山1丁目2-11",
+   "src": "https://www.ishiyama-animalhospital.com/lesson",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回1,650円（税込）。この病院にかかっている子は1回無料",
+     "src": "https://www.ishiyama-animalhospital.com/lesson",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T208",
+   "name": "ドッグスクールヤチヨ5",
+   "prefs": [
+    "新潟県"
+   ],
+   "city": "新潟市",
+   "url": "http://www.dsy5.net/",
+   "services": "預かり訓練、ペットホテル",
+   "addr": "新潟県新潟市東区幸栄3-10-34",
+   "src": "http://www.dsy5.net/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T209",
+   "name": "犬の学校MIKA",
+   "prefs": [
+    "石川県"
+   ],
+   "city": "白山市",
+   "url": "https://popoace.crayonsite.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練、犬の幼稚園、問題行動（かむ・ほえる）の相談",
+   "addr": "石川県白山市福留町１８６番地",
+   "src": "https://popoace.crayonsite.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張訓練6,600円（2時間ほど）",
+     "src": "https://popoace.crayonsite.com/p/2/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T210",
+   "name": "福井警察犬・家庭犬訓練所",
+   "prefs": [
+    "福井県"
+   ],
+   "city": "三方郡美浜町",
+   "url": "https://dogschoolfukui.com/",
+   "services": "出張（訪問）トレーニング、犬の幼稚園、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "福井県三方郡美浜町佐田23-24",
+   "src": "https://dogschoolfukui.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回5,000円（税込）",
+     "src": "https://dogschoolfukui.com/training/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T211",
+   "name": "山梨愛犬訓練学校",
+   "prefs": [
+    "山梨県"
+   ],
+   "city": "南都留郡忍野村",
+   "url": "https://yamanashi-dogschool.com/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "山梨県南都留郡忍野村忍草3226-6",
+   "src": "https://yamanashi-dogschool.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T212",
+   "name": "ONELife行動クリニック 岐阜",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "岐阜市",
+   "url": "https://tomo-iki.jp/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、問題行動（かむ・ほえる）の相談、オンライン相談、ペットホテル",
+   "addr": "岐阜県岐阜市岩地2-4-3",
+   "src": "https://tomo-iki.jp/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "カウンセリングの基本料3,300円",
+     "src": "https://tomo-iki.jp/catlesson",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T213",
+   "name": "ドッグスクールROOT",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "各務原市",
+   "url": "https://www.dogschoolroot.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練、犬の幼稚園、子犬（パピー）のレッスン",
+   "addr": "岐阜県各務原市那加土山町２丁目１２７",
+   "src": "https://www.dogschoolroot.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T214",
+   "name": "ドッグトレーニング光山",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "静岡市",
+   "url": "https://dt-kouyama.com/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "静岡県静岡市清水区庵原町577-8",
+   "src": "https://dt-kouyama.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T215",
+   "name": "ドッグライフパートナーハレ",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "静岡市",
+   "url": "https://www.dog-life-partner-hare.com/",
+   "services": "犬の幼稚園、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "静岡県静岡市駿河区西脇522－1",
+   "src": "https://www.dog-life-partner-hare.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T216",
+   "name": "エンパシードッグトレーニング協会",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市",
+   "url": "https://www.empathy-dog.org/",
+   "services": "問題行動（かむ・ほえる）の相談、オンライン相談",
+   "addr": "愛知県名古屋市緑区乗鞍1丁目201",
+   "src": "https://www.empathy-dog.org/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T217",
+   "name": "三重県伊賀第一ドッグスクール",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "伊賀市",
+   "url": "https://www.miedai1dog.com/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、犬の幼稚園、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "三重県伊賀市丸柱419-2",
+   "src": "https://www.miedai1dog.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回4,000円",
+     "src": "https://www.miedai1dog.com/price/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T218",
+   "name": "ちきちきルーム",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "栗東市",
+   "url": "http://tikitiki-room.com/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談",
+   "addr": "滋賀県栗東市霊仙寺2-4-6",
+   "src": "http://tikitiki-room.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T219",
+   "name": "ドッグスクールHAND",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "大津市",
+   "url": "http://dog-hand.net/",
+   "services": "問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "滋賀県大津市雄琴2丁目15-30",
+   "src": "http://dog-hand.net/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T220",
+   "name": "栗東ドッグスクール",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "蒲生郡竜王町",
+   "url": "http://56-dog.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練",
+   "addr": "滋賀県蒲生郡竜王町岡屋2678-26",
+   "src": "http://56-dog.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T221",
+   "name": "ダクタリ学園",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市",
+   "url": "https://www.daktari-gakuen.info/",
+   "services": "しつけ・トレーニング",
+   "addr": "京都府京都市西京区御陵塚ノ越町20-9ダクタリ学園",
+   "src": "https://www.daktari-gakuen.info/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T222",
+   "name": "犬のしつけ教室 GINGA",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市",
+   "url": "https://ginga2019.com/dogkindergarten/",
+   "services": "犬の幼稚園、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "京都府京都市伏見区醍醐南端山町15-31",
+   "src": "https://ginga2019.com/dogkindergarten/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T223",
+   "name": "1stドッグスクール",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市",
+   "url": "https://www.dog1st.net/",
+   "services": "出張（訪問）トレーニング、預かり訓練、犬の幼稚園、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "大阪府大阪市東淀川区西淡路3丁目15番18号",
+   "src": "https://www.dog1st.net/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T224",
+   "name": "アンジュドッグ",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市",
+   "url": "https://www.angedog.net/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、犬の幼稚園、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "大阪府大阪市東淀川区北江口4-4-33",
+   "src": "https://www.angedog.net/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T225",
+   "name": "シバタドッグスクール",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "加古川市",
+   "url": "http://shibata-dogschool.com/",
+   "services": "出張（訪問）トレーニング",
+   "addr": "兵庫県加古川市西神吉町宮前707-2",
+   "area": "と料金表",
+   "src": "http://shibata-dogschool.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張教室1回5,000円",
+     "src": "http://shibata-dogschool.com/price",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T226",
+   "name": "ドッグガーデンほり",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "姫路市",
+   "url": "https://www.dog-garden-hori.com/",
+   "services": "預かり訓練、ペットホテル",
+   "addr": "兵庫県姫路市西脇857",
+   "src": "https://www.dog-garden-hori.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1時間3,000円（税込）",
+     "src": "https://www.dog-garden-hori.com/blank-8",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T227",
+   "name": "DOG SCHOOL ONE LIFE",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "岡山市",
+   "url": "https://www.dogschool-onelife.co.jp/",
+   "services": "出張（訪問）トレーニング、犬の幼稚園、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "岡山県岡山市南区中畦1031-5",
+   "src": "https://www.dogschool-onelife.co.jp/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T228",
+   "name": "dogschool-haco",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "安芸郡海田町",
+   "url": "https://www.dogschool-haco.com/",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン",
+   "addr": "広島県安芸郡海田町日の出町1-26",
+   "src": "https://www.dogschool-haco.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T229",
+   "name": "カジタニドッグスクール",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "安芸郡海田町",
+   "url": "http://www.kajitani-dogschool.com/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "広島県安芸郡海田町南昭和町11-16",
+   "area": "は、500円です。",
+   "src": "http://www.kajitani-dogschool.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回4,000円",
+     "src": "http://www.kajitani-dogschool.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T230",
+   "name": "Dog School Sue",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "宇部市",
+   "url": "http://www.dogschoolsue.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練、犬の幼稚園、問題行動（かむ・ほえる）の相談、オンライン相談、ペットホテル",
+   "addr": "山口県宇部市大字妻崎開作45-2",
+   "src": "http://www.dogschoolsue.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "個別1回3,000円",
+     "src": "http://www.dogschoolsue.com/service/breeding.html",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T231",
+   "name": "Aincrad（アインクラッド）",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "高松市",
+   "url": "https://www.aincrad-ww.com/",
+   "services": "出張（訪問）トレーニング、犬の幼稚園、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "香川県高松市東山崎町555-6",
+   "area": "をご案内いたします。ご確認の上、お気軽にご相談ください。",
+   "src": "https://www.aincrad-ww.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T232",
+   "name": "UKドッグアカデミー",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "丸亀市",
+   "url": "https://www.uk-dog-academy.com/",
+   "services": "犬の幼稚園",
+   "addr": "香川県丸亀市飯野町東分1399-2",
+   "src": "https://www.uk-dog-academy.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T233",
+   "name": "青空ドッグスクール",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "木田郡三木町",
+   "url": "https://www.aozora-dogschool.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "香川県木田郡三木町鹿庭2570-3",
+   "src": "https://www.aozora-dogschool.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T234",
+   "name": "Cheese Dog Academy",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "高松市",
+   "url": "https://www.cheesedog.net/",
+   "services": "出張（訪問）トレーニング、預かり訓練、問題行動（かむ・ほえる）の相談",
+   "addr": "香川県高松市六条町183-1",
+   "src": "https://www.cheesedog.net/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T235",
+   "name": "川西警察犬訓練所",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "高松市",
+   "url": "https://kawanishi-dogschool.com/",
+   "services": "預かり訓練、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "香川県高松市香南町由佐57-6",
+   "src": "https://kawanishi-dogschool.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1クール（12回）25,000円",
+     "src": "https://kawanishi-dogschool.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T236",
+   "name": "伊予家庭犬・警察犬訓練所",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "伊予郡松前町",
+   "url": "https://www.iyo-dogschool.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練",
+   "addr": "愛媛県伊予郡松前町大字鶴吉864",
+   "src": "https://www.iyo-dogschool.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T237",
+   "name": "いぬ暮らす（Dog Life Class）",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "松山市",
+   "url": "https://www.inuclass.net/",
+   "services": "犬の幼稚園",
+   "addr": "愛媛県松山市高木町257-1",
+   "src": "https://www.inuclass.net/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T238",
+   "name": "西条ドッグスクール",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "西条市",
+   "url": "https://saijodog.jp/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、預かり訓練",
+   "addr": "愛媛県西条市大町1163-10",
+   "src": "https://saijodog.jp/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1時間4,000円から",
+     "src": "https://saijodog.jp/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T239",
+   "name": "えひめドッグスクール",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "新居浜市",
+   "url": "https://ehime-ds.jimdofree.com/",
+   "services": "子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "愛媛県新居浜市多喜浜2-6-20",
+   "src": "https://ehime-ds.jimdofree.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T240",
+   "name": "Good Boy Heart（グッドボーイハート）",
+   "prefs": [
+    "佐賀県"
+   ],
+   "city": "唐津市",
+   "url": "https://goodboyheart.com/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、オンライン相談",
+   "addr": "佐賀県唐津市七山池原甲2416-4",
+   "src": "https://goodboyheart.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "90分15,000円（税込）",
+     "src": "https://goodboyheart.com/class/training.php",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T241",
+   "name": "松岡警察犬・家庭犬訓練所",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市",
+   "url": "https://www.dogschool-matsuoka.com/",
+   "services": "預かり訓練",
+   "addr": "福岡県福岡市東区蒲田1-23-15",
+   "src": "https://www.dogschool-matsuoka.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "初級クラス1レッスン3,500円",
+     "src": "https://www.dogschool-matsuoka.com/training.html",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T242",
+   "name": "APOLLO Dog Training",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "練馬区",
+   "url": "https://apollo-dog.jp/on-the-go-training/",
+   "services": "出張（訪問）トレーニング、犬の幼稚園、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "src": "https://apollo-dog.jp/on-the-go-training/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T243",
+   "name": "PLAYBOW",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "稲城市",
+   "url": "https://playbow.jp/onsite-training/",
+   "services": "出張（訪問）トレーニング、犬の幼稚園、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "東京都稲城市大丸327-2",
+   "src": "https://playbow.jp/onsite-training/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T244",
+   "name": "トレーニングドッグスタジオ",
+   "prefs": [
+    "佐賀県"
+   ],
+   "city": "佐賀市",
+   "url": "https://www.training-dog-studio.com/",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "佐賀県佐賀市駅前中央3丁目15-21",
+   "src": "https://www.training-dog-studio.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T245",
+   "name": "犬の教室ワンチョイス",
+   "prefs": [
+    "熊本県"
+   ],
+   "city": "熊本市",
+   "url": "https://www.wanchoice.net/",
+   "services": "ペットホテル",
+   "addr": "熊本県熊本市西区蓮台寺1-2-71",
+   "src": "https://www.wanchoice.net/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T246",
+   "name": "松尾愛犬訓練学校",
+   "prefs": [
+    "熊本県"
+   ],
+   "city": "宇土市",
+   "url": "https://matsuoaiken.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練、問題行動（かむ・ほえる）の相談",
+   "addr": "熊本県宇土市栗崎町958",
+   "src": "https://matsuoaiken.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T247",
+   "name": "K-9 HOUSE（ケーナインハウス）",
+   "prefs": [
+    "秋田県"
+   ],
+   "city": "秋田市",
+   "url": "http://www.k9-house.com/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "秋田県秋田市下新城中野字街道端西92-2",
+   "src": "http://www.k9-house.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T248",
+   "name": "HTH Dog School",
+   "prefs": [
+    "宮崎県"
+   ],
+   "city": "宮崎市",
+   "url": "https://hthdogschool.com/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談、オンライン相談、ペットホテル",
+   "addr": "宮崎県宮崎市清武町加納乙320-38",
+   "area": "外だけどスクールのサービスを受けたい",
+   "src": "https://hthdogschool.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T249",
+   "name": "木村訓練所（犬の学校）",
+   "prefs": [
+    "宮崎県"
+   ],
+   "city": "宮崎市",
+   "url": "http://dogschool.server-shared.com/top.htm",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、預かり訓練、犬の幼稚園",
+   "addr": "宮崎県宮崎市佐土原町下郡珂１３０２－１",
+   "src": "http://dogschool.server-shared.com/top.htm",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "レッスン券1回3,000円（10枚単位）",
+     "src": "https://dogschool.server-shared.com/owners.htm",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T250",
+   "name": "ボンドドッグスクール",
+   "prefs": [
+    "福島県"
+   ],
+   "city": "福島市",
+   "url": "https://bonddogschool.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "福島県福島市荒井字横塚3-19",
+   "src": "https://bonddogschool.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T251",
+   "name": "郡山ドッグスクール",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "大和郡山市",
+   "url": "http://koriyama-dogschool.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練、犬の幼稚園、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "奈良県大和郡山市矢田町1888",
+   "src": "http://koriyama-dogschool.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T252",
+   "name": "KAIドッグトレーニング",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://kaidogtraining.com/",
+   "services": "出張（訪問）トレーニング、犬の幼稚園、問題行動（かむ・ほえる）の相談",
+   "addr": "茨城県つくば市高見原2丁目1-41",
+   "src": "https://kaidogtraining.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "12回58,000円（税込・出張費込み）",
+     "src": "https://kaidogtraining.com/course/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T253",
+   "name": "ドッグトレーニング谷川",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "稲敷郡河内町",
+   "url": "https://www.tanikawa-dog.com/service_price.html",
+   "services": "出張（訪問）トレーニング、預かり訓練、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "茨城県稲敷郡河内町金江津4615",
+   "src": "https://www.tanikawa-dog.com/service_price.html",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T254",
+   "name": "東江愛犬警察犬訓練所",
+   "prefs": [
+    "沖縄県"
+   ],
+   "city": "中頭郡北中城村",
+   "url": "https://agarie-aiken.com/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "沖縄県中頭郡北中城村安谷屋399-1",
+   "src": "https://agarie-aiken.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T255",
+   "name": "Buddies Dog Service",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "利根郡みなかみ町",
+   "url": "https://www.buddiesdogservice.com/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "群馬県利根郡みなかみ町向山６−２",
+   "src": "https://www.buddiesdogservice.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T256",
+   "name": "ドッグトレーニングBeans",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "太田市",
+   "url": "https://dogbeans.crayonsite.com/",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "群馬県太田市台之郷町836-9",
+   "src": "https://dogbeans.crayonsite.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T257",
+   "name": "wanday Dog Training",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川口市",
+   "url": "https://www.wandaywanday.com/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、犬の幼稚園、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "src": "https://www.wandaywanday.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T258",
+   "name": "Wan! One! わんだふる",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "桶川市",
+   "url": "http://wan-one-wonderful.com/",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン",
+   "addr": "埼玉県桶川市上日出谷1246-25",
+   "src": "http://wan-one-wonderful.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回6,000円",
+     "src": "http://wan-one-wonderful.com/price.php",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T259",
+   "name": "ドッグスクールアミー",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "北葛飾郡杉戸町",
+   "url": "https://dogschool-amy.com/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、犬の幼稚園、問題行動（かむ・ほえる）の相談",
+   "addr": "埼玉県北葛飾郡杉戸町鷲巣３７０−８",
+   "area": "としております。",
+   "src": "https://dogschool-amy.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T260",
+   "name": "ぽちのせんせい（わんちゃんの家庭教師）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "東金市",
+   "url": "https://pochinosensei.jimdofree.com/",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン",
+   "addr": "千葉県東金市極楽寺４２５−２６７",
+   "area": "東金市 八街市 佐倉市 四街道市 千葉市 など",
+   "src": "https://pochinosensei.jimdofree.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T261",
+   "name": "トガシドッグスクール",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://www.wan-playl.com/training",
+   "services": "出張（訪問）トレーニング、預かり訓練、犬の幼稚園、問題行動（かむ・ほえる）の相談",
+   "addr": "東京都足立区西新井1-12-10",
+   "src": "https://www.wan-playl.com/training",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回7,000円",
+     "src": "https://www.wan-playl.com/price",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T262",
+   "name": "JOIE DE LA VIE（ジョワドラビ）",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "https://joiedelavie.org/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談、オンライン相談",
+   "addr": "東京都杉並区堀ノ内1-9-5",
+   "area": "は東京都、神奈川県、千葉県、埼玉県です（東京都杉並区からの出張となります）。遠方の方はzoomを使用したオンラインでのトレーニングも可能です。",
+   "src": "https://joiedelavie.org/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1時間6,600円",
+     "src": "https://joiedelavie.org/utilization",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T263",
+   "name": "inucco（いぬっこ）",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://inucco.tokyo/",
+   "services": "出張（訪問）トレーニング、犬の幼稚園、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、オンライン相談",
+   "area": "は、東京都世田谷区、調布市、三鷹市、狛江市、武蔵野市、京王線沿線の都内各所。",
+   "src": "https://inucco.tokyo/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T264",
+   "name": "Dog Service COCO",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市",
+   "url": "https://www.dogservice-coco.jp/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "神奈川県横浜市鶴見区鶴見中央4丁目38番26",
+   "src": "https://www.dogservice-coco.jp/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T265",
+   "name": "犬幸村",
+   "prefs": [
+    "新潟県"
+   ],
+   "city": "三条市",
+   "url": "https://kenkohmura.jp/",
+   "services": "出張（訪問）トレーニング、犬の幼稚園、問題行動（かむ・ほえる）の相談、オンライン相談",
+   "addr": "新潟県三条市上須頃大割428番1",
+   "src": "https://kenkohmura.jp/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T266",
+   "name": "マスターズスクール ビリーヴ",
+   "prefs": [
+    "石川県"
+   ],
+   "city": "白山市",
+   "url": "https://dog-believe.com/",
+   "services": "出張（訪問）トレーニング",
+   "addr": "石川県白山市小柳町ろ１１４－５",
+   "src": "https://dog-believe.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T267",
+   "name": "サクラドッグトレーニング",
+   "prefs": [
+    "福井県"
+   ],
+   "city": "吉田郡永平寺町",
+   "url": "https://r.goope.jp/sakuradog/",
+   "services": "しつけ・トレーニング",
+   "addr": "福井県吉田郡永平寺町松岡石舟3-1-66",
+   "src": "https://r.goope.jp/sakuradog/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T268",
+   "name": "アメミヤドッグトレーニング",
+   "prefs": [
+    "山梨県"
+   ],
+   "city": "甲州市",
+   "url": "https://amemiya-dog-t.boo.jp/",
+   "services": "出張（訪問）トレーニング、預かり訓練、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "山梨県甲州市勝沼町等々力1552",
+   "src": "https://amemiya-dog-t.boo.jp/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T269",
+   "name": "ドッグスクールクイック",
+   "prefs": [
+    "長野県"
+   ],
+   "city": "佐久市",
+   "url": "https://dogschool-quick.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練",
+   "addr": "長野県佐久市新子田1700-110",
+   "src": "https://dogschool-quick.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T270",
+   "name": "いぬとくらす。",
+   "prefs": [
+    "長野県"
+   ],
+   "city": "諏訪市",
+   "url": "https://inutoyuki.amebaownd.com/",
+   "services": "出張（訪問）トレーニング、犬の幼稚園、子犬（パピー）のレッスン",
+   "area": "長野県諏訪市・下諏訪町・茅野市・岡谷市・富士見町・原村・伊那市・塩尻市など。",
+   "src": "https://inutoyuki.amebaownd.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "60分3,500円（平日）",
+     "src": "https://inutoyuki.amebaownd.com/pages/5040894/static",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T271",
+   "name": "ドッグトレーニングH",
+   "prefs": [
+    "長野県"
+   ],
+   "city": "上田市",
+   "url": "https://www.dogtrainingh.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練、ペットホテル",
+   "addr": "長野県上田市緑が丘1-24-8",
+   "src": "https://www.dogtrainingh.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回3,000円から",
+     "src": "https://www.dogtrainingh.com/pet_hotel/index.html",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T272",
+   "name": "KEN dog training ようちえん",
+   "prefs": [
+    "長野県"
+   ],
+   "city": "長野市",
+   "url": "https://ken-129.com/kindergarden/",
+   "services": "出張（訪問）トレーニング、犬の幼稚園、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、オンライン相談、ペットホテル",
+   "addr": "長野県長野市松代町松代176",
+   "src": "https://ken-129.com/kindergarden/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T273",
+   "name": "Dog Libre（ドッグリーブル）",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "浜松市",
+   "url": "https://www.doglibre.jp/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談",
+   "addr": "静岡県浜松市中央区有玉南町2084-2",
+   "src": "https://www.doglibre.jp/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回10,000円、4回35,000円",
+     "src": "https://www.doglibre.jp/menu",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T274",
+   "name": "calmly 出張ドッグトレーニング",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "静岡市",
+   "url": "https://calmlydog.wixsite.com/calmly",
+   "services": "出張（訪問）トレーニング",
+   "addr": "静岡県静岡市駿河区みずほ1-4-9",
+   "src": "https://calmlydog.wixsite.com/calmly",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T275",
+   "name": "天野ドッグスクール",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "静岡市",
+   "url": "https://www.amanodogschool.com/",
+   "services": "出張（訪問）トレーニング",
+   "src": "https://www.amanodogschool.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T276",
+   "name": "グッドドッグ",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "碧南市",
+   "url": "http://good-dog.jp/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、預かり訓練、犬の幼稚園、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "愛知県碧南市城山町4-19-5",
+   "src": "http://good-dog.jp/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T277",
+   "name": "訪問しつけ教室Poo",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "大津市",
+   "url": "https://dogschoolpoo.main.jp/",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "滋賀県大津市今堅田3丁目3-39",
+   "src": "https://dogschoolpoo.main.jp/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回1,000円から",
+     "src": "https://dogschoolpoo.main.jp/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T278",
+   "name": "DOG ASH&MARO",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市",
+   "url": "http://dog-ashmaro.com/",
+   "services": "出張（訪問）トレーニング、ペットホテル",
+   "area": "』京都市内を中心にしております。その他の地域についてはご相談ください。",
+   "src": "http://dog-ashmaro.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T279",
+   "name": "ドッグトレーニングHOME",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市",
+   "url": "https://dogtraining-home.com/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "大阪府大阪市住之江区新北島2-6",
+   "src": "https://dogtraining-home.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1時間2,000円",
+     "src": "https://dogtraining-home.com/price.php",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T280",
+   "name": "FAMILIARIS",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "東大阪市",
+   "url": "https://www.familiaris-dogtraining.com/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談、オンライン相談",
+   "addr": "大阪府東大阪市稲田本町3-5-14​",
+   "src": "https://www.familiaris-dogtraining.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T281",
+   "name": "クラマドッグスクール",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "宝塚市",
+   "url": "https://www.kuramadogschool.com/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談",
+   "addr": "兵庫県宝塚市光明町11-4",
+   "src": "https://www.kuramadogschool.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T282",
+   "name": "SUNSHINE DOG DAYS",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "高砂市",
+   "url": "https://www.sunshinedogdays.com/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談",
+   "addr": "兵庫県高砂市荒井町小松原4-6-26",
+   "area": "】高砂市、姫路市、加古川市、明石市、神戸市、播磨町、稲美町、三木市、小野市、三田市、西脇市、加東市、加西市（その他の地域もご相談ください）",
+   "src": "https://www.sunshinedogdays.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T283",
+   "name": "Decodog",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "奈良市",
+   "url": "https://decodog.net/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、子犬（パピー）のレッスン",
+   "addr": "奈良県奈良市鳥見町1-6-5",
+   "src": "https://decodog.net/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1レッスン4,000円",
+     "src": "https://decodog.net/menu/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T284",
+   "name": "犬の出張トレーニング トイ・トイ・トイ",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "葛城市",
+   "url": "https://www.dogschool-toitoitoi.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練",
+   "addr": "奈良県葛城市疋田249-11",
+   "src": "https://www.dogschool-toitoitoi.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張レッスン4,000円",
+     "src": "https://www.dogschool-toitoitoi.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T285",
+   "name": "ドッグトレーニング FUGUE",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "赤磐市",
+   "url": "https://www.dog-training-fugue.com/traning",
+   "services": "出張（訪問）トレーニング、預かり訓練、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "岡山県赤磐市殿谷607",
+   "src": "https://www.dog-training-fugue.com/traning",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T286",
+   "name": "Doggy Tree",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市",
+   "url": "https://doggy-tree.com/",
+   "services": "出張（訪問）トレーニング、預かり訓練、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "広島県広島市中区宝町9-5-1Ｆ)",
+   "src": "https://doggy-tree.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "4回13,000円（1回3,500円）",
+     "src": "https://doggy-tree.com/training/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T287",
+   "name": "credo K-9",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市",
+   "url": "https://www.credo-k-9.com/",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、オンライン相談、ペットホテル",
+   "addr": "広島県広島市安佐北区亀山西2-24-4",
+   "area": "は広島県内だけでなく、山口や鳥取など中国地方全域です。",
+   "src": "https://www.credo-k-9.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1時間10,000円（出張料などは別）",
+     "src": "https://www.credo-k-9.com/training",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T288",
+   "name": "ひのか愛犬警察犬訓練所",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市",
+   "url": "https://hinoka-dog-school.com/training/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、預かり訓練、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "広島県広島市安佐北区白木町井原1325-1",
+   "src": "https://hinoka-dog-school.com/training/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T289",
+   "name": "徳島小松警察犬訓練所",
+   "prefs": [
+    "徳島県"
+   ],
+   "city": "徳島市",
+   "url": "https://www.dogskomatsu.com/",
+   "services": "出張（訪問）トレーニング",
+   "addr": "徳島県徳島市住吉3丁目6-53",
+   "src": "https://www.dogskomatsu.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T290",
+   "name": "ドッグスクールいと",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "東かがわ市",
+   "url": "https://dogschoolito.com/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談",
+   "addr": "香川県東かがわ市水主4208",
+   "area": "は、 東かがわ市、さぬき市、高松市 です。その他についてもご相談ください。",
+   "src": "https://dogschoolito.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回8,000円",
+     "src": "https://dogschoolito.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T291",
+   "name": "K9 Dog Life Adviser",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "松山市",
+   "url": "https://www.k9doglifeadviser.com/training",
+   "services": "出張（訪問）トレーニング、犬の幼稚園、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "愛媛県松山市井門町199-2",
+   "src": "https://www.k9doglifeadviser.com/training",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ベーシックコース2時間10,000円（税込）",
+     "src": "https://www.k9doglifeadviser.com/training",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T292",
+   "name": "ウタライフ",
+   "prefs": [
+    "高知県"
+   ],
+   "city": "高知市",
+   "url": "https://uta.life/lesson/",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、オンライン相談",
+   "area": "は、高知市内を中心に、市外への出張レッスンも可能です。",
+   "src": "https://uta.life/lesson/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回のみ7,500円",
+     "src": "https://uta.life/lesson/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "T293",
+   "name": "ドッグトレーナーセンダ",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "那珂川市",
+   "url": "https://dog-ts.jp/",
+   "services": "出張（訪問）トレーニング",
+   "addr": "福岡県那珂川市上梶原794-9",
+   "src": "https://dog-ts.jp/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T294",
+   "name": "Dog School Oka",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "久留米市",
+   "url": "http://www.dogschooloka.com/tra/index.html",
+   "services": "出張（訪問）トレーニング",
+   "addr": "福岡県久留米市上津町2228-834",
+   "src": "http://www.dogschooloka.com/tra/index.html",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T295",
+   "name": "いぬといっぽ",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "糸島市",
+   "url": "https://www.inu-to-ippo.com/",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、オンライン相談",
+   "addr": "福岡県糸島市二丈吉井3815−107",
+   "src": "https://www.inu-to-ippo.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T296",
+   "name": "家庭犬マナートレーニングGooDog",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "宗像市",
+   "url": "https://goodog.site/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談",
+   "src": "https://goodog.site/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T297",
+   "name": "ドッグスクールノックス",
+   "prefs": [
+    "佐賀県"
+   ],
+   "city": "小城市",
+   "url": "https://www.nocks-ds.jp/price",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "佐賀県小城市三日月町堀江360-17",
+   "src": "https://www.nocks-ds.jp/price",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T298",
+   "name": "グットパートナー",
+   "prefs": [
+    "熊本県"
+   ],
+   "city": "阿蘇郡西原村",
+   "url": "https://www.gtp03.net/",
+   "services": "出張（訪問）トレーニング、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "熊本県阿蘇郡西原村河原1631",
+   "src": "https://www.gtp03.net/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T299",
+   "name": "ライトンドッグスクール",
+   "prefs": [
+    "熊本県"
+   ],
+   "city": "熊本市",
+   "url": "https://www.lightendogschool.com/",
+   "services": "出張（訪問）トレーニング、教室に通うレッスン、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談",
+   "addr": "熊本県熊本市東区若葉5‐8",
+   "src": "https://www.lightendogschool.com/",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T300",
+   "name": "HAPPY ワンコ LIFE",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "小金井市",
+   "url": "http://happy-wanko-life.com/training.html",
+   "services": "出張（訪問）トレーニング、子犬（パピー）のレッスン、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "東京都小金井市梶野町1丁目",
+   "src": "http://happy-wanko-life.com/training.html",
+   "checked": "2026-11-22"
+  },
+  {
+   "id": "T301",
+   "name": "井東警察犬・愛犬訓練所",
+   "prefs": [
+    "宮崎県"
+   ],
+   "city": "東臼杵郡門川町",
+   "url": "https://www.itoukeisatsuken.com/",
+   "services": "預かり訓練、犬の幼稚園、問題行動（かむ・ほえる）の相談、ペットホテル",
+   "addr": "宮崎県東臼杵郡門川町南町６丁目４－４",
+   "src": "https://www.itoukeisatsuken.com/",
+   "checked": "2026-11-22",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回5,500円から",
+     "src": "https://www.itoukeisatsuken.com/",
+     "checked": "2026-11-22"
+    }
+   ]
   }
  ]
 }
