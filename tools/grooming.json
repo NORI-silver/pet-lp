@@ -3545,6 +3545,131 @@
      "checked": "2026-11-22"
     }
    ]
+  },
+  {
+   "id": "Gked4df0",
+   "name": "Dog Salon moana",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "羽曳野市",
+   "url": "https://smile-moana.com/",
+   "area": "羽曳野市",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10:00~18:00",
+     "src": "https://smile-moana.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://smile-moana.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン等は、予防の為にも済ませておいてください。",
+     "src": "https://smile-moana.com/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "さらにお近くであれば送迎も可能です。",
+     "src": "https://smile-moana.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Gk87cd6a",
+   "name": "キャットサロン アイル",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "茨木市",
+   "url": "https://www.catsalonaile.com/",
+   "area": "茨木市",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間】10:00~20:00",
+     "src": "https://www.catsalonaile.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Gk066981",
+   "name": "ドッグサロン LUPU",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "豊中市",
+   "url": "https://lu00lupu00pu.my.canva.site/lupu",
+   "area": "豊中市",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": []
+  },
+  {
+   "id": "Gk280fea",
+   "name": "アイドッグシャンプーサービス奈良",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "北葛城郡",
+   "url": "https://i-dog.group/nara/",
+   "area": "北葛城郡",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間9:00~18:00(要予約)",
+     "src": "https://i-dog.group/nara/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Gk7f5098",
+   "name": "Dog salon Raywan",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "八尾市",
+   "url": "https://dogsalon-raywan.com/",
+   "area": "八尾市",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://dogsalon-raywan.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "店舗裏に駐車場あり🅿️",
+     "src": "https://dogsalon-raywan.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }
