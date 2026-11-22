@@ -83,10 +83,14 @@ def main():
         for name, fn in ENGINES:
             if fails[name] >= 8:
                 continue
-            try:
-                got = fn(j['q'])
-            except Exception as e:
-                got = []; r.setdefault('err', []).append(name + ' ' + str(e)[:80])
+            got = []
+            for wait in (0, 45, 90):
+                time.sleep(wait)
+                try:
+                    got = fn(j['q']); break
+                except Exception as e:
+                    r.setdefault('err', []).append(name + ' ' + str(e)[:80])
+                    if '429' not in str(e): break
             if got:
                 r['engine'] = name; r['results'] = got[:8]; fails[name] = 0
                 break
