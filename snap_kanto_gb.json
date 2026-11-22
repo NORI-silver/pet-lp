@@ -1,0 +1,30 @@
+[
+ {
+  "cat": "index",
+  "pref": "",
+  "url": "https://goodbreeder.jp/registry/",
+  "raw": true,
+  "error": "HTTP Error 403: Forbidden"
+ },
+ {
+  "cat": "index",
+  "pref": "",
+  "url": "https://goodbreeder.jp/registry/category_train/",
+  "raw": true,
+  "error": "HTTP Error 403: Forbidden"
+ },
+ {
+  "cat": "index",
+  "pref": "",
+  "url": "https://goodbreeder.jp/registry/category_keep/",
+  "raw": true,
+  "error": "HTTP Error 403: Forbidden"
+ },
+ {
+  "cat": "index",
+  "pref": "",
+  "url": "https://goodbreeder.jp/registry/category_adopt/",
+  "raw": true,
+  "error": "HTTP Error 403: Forbidden"
+ }
+]
