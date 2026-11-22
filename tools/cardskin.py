@@ -210,8 +210,11 @@ def fc(blk):
     btn = [f'<a href="{href}" target="_blank" rel="noopener">{lab}</a>']
     to = a0.get("data-to", "")
     if to and re.search(r"[都道府県市区町村郡]", to):
-        dest = to if name in to else f"{name} {to}"
-        btn.append('<a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination=' + quote(dest) + '" target="_blank" rel="noopener" data-route>経路を見る</a>')
+        # 廣瀬さん指定の京都の事業所。店名で検索すると別の教室が選ばれる場合がある。
+        office_pin = a0.get("data-cat") == "trainer" and a0.get("data-fid") == "T114"
+        dest = to if office_pin or name in to else f"{name} {to}"
+        route_label = "事業所への経路" if office_pin else "経路を見る"
+        btn.append('<a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination=' + quote(dest) + f'" target="_blank" rel="noopener" data-route>{route_label}</a>')
     grid = '<div class="ux-c-a">' + "".join(btn) + "</div>"
     b = b[:acts.start()] + grid + b[acts.start():]
     return _add_cls(b[:len(ot)]) + b[len(ot):]
