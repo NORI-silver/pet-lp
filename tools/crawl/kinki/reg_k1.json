@@ -1,10 +1,66 @@
-[{"key":"大阪府","url":"https://www.pref.osaka.lg.jp/o120200/doaicenter/doaicenter/gyoushakoukai.html"},
- {"key":"大阪市","url":"https://www.city.osaka.lg.jp/kenko/page/0000476234.html"},
- {"key":"兵庫県","url":"https://hyogo-douai.sakura.ne.jp/toriatsukaigyou.html"},
- {"key":"兵庫県2","url":"https://web.pref.hyogo.lg.jp/kf14/hw14_000000009.html"},
- {"key":"京都府","url":"https://www.pref.kyoto.jp/doubutsu/gyoitiran.html"},
- {"key":"京都市","url":"https://kyoto-ani-love.com/animal/first/%E7%AC%AC%E4%B8%80%E7%A8%AE%E5%8B%95%E7%89%A9%E5%8F%96%E6%89%B1%E6%A5%AD%E7%99%BB%E9%8C%B2%E7%B0%BF%E3%81%AE%E6%83%85%E5%A0%B1%E5%85%AC%E9%96%8B/"},
- {"key":"奈良県","url":"https://www.pref.nara.lg.jp/n009/7759.html"},
- {"key":"奈良県2","url":"https://www.pref.nara.lg.jp/kurashi/doubutsuaigo/pets/toriatsukaigyou/index.html"},
- {"key":"三重県","url":"https://data.bodik.jp/dataset/240001_dai1shu_animal"},
- {"key":"三重県2","url":"https://www.pref.mie.lg.jp/common/01/ci600012689.htm"}]
+[
+{
+"key": "京都府",
+"url": "https://www.pref.kyoto.jp/doubutsu/documents/otokuni20260930.pdf"
+},
+{
+"key": "京都府",
+"url": "https://www.pref.kyoto.jp/doubutsu/documents/yamakita20260930.pdf"
+},
+{
+"key": "京都府",
+"url": "https://www.pref.kyoto.jp/doubutsu/documents/yamaminami20260930.pdf"
+},
+{
+"key": "京都府",
+"url": "https://www.pref.kyoto.jp/doubutsu/documents/nantan20260930.pdf"
+},
+{
+"key": "京都府",
+"url": "https://www.pref.kyoto.jp/doubutsu/documents/chutannishi20260930.pdf"
+},
+{
+"key": "京都府",
+"url": "https://www.pref.kyoto.jp/doubutsu/documents/chutanhigashi20260930.pdf"
+},
+{
+"key": "京都府",
+"url": "https://www.pref.kyoto.jp/doubutsu/documents/tango20260930.pdf"
+},
+{
+"key": "大阪市",
+"url": "https://www.city.osaka.lg.jp/kenko/cmsfiles/contents/0000476/476234/tourokubo20260625HP.xlsx"
+},
+{
+"key": "滋賀県",
+"url": "https://www.pref.shiga.lg.jp/doubutsuhogo/14466.html"
+},
+{
+"key": "滋賀県2",
+"url": "https://www.pref.shiga.lg.jp/doubutsuhogo/tourokukyoka/103675.html"
+},
+{
+"key": "堺市",
+"url": "https://www.city.sakai.lg.jp/kurashi/dobutsu/tokuteidobutsu/animalhandingbusinesslist.html"
+},
+{
+"key": "神戸市",
+"url": "https://www.city.kobe.lg.jp/a84140/operator_list.html"
+},
+{
+"key": "和歌山県",
+"url": "https://www.pref.wakayama.lg.jp/prefg/031600/80_doubutsu/touroku_itiran.html"
+},
+{
+"key": "和歌山市",
+"url": "http://www.city.wakayama.wakayama.jp/kurashi/kenko_iryo/1009125/1035775/1003051.html"
+},
+{
+"key": "大津市",
+"url": "https://www.city.otsu.lg.jp/soshiki/021/1442/g/pet/toriatsukai/1387775404491.html"
+},
+{
+"key": "三重県3",
+"url": "https://www.pref.mie.lg.jp/SHOKUSEI/HP/70462044645.htm"
+}
+]
