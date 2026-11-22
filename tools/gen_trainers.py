@@ -47,6 +47,12 @@ def _card(e, t):
     if t.get("assoc"):
         extra += '<small>協会の一覧：' + e("・".join(ASSOC.get(a, a) for a in t["assoc"].split("・"))) + '</small>'
     if t.get("addr"): extra += f'<small>所在地：{e(t["addr"])}</small>'
+    # [B] 2026-11-22 Nori「他のサイトにいって追加で調べることがないように」：公式サイトに書いてある料金・時間・休み・対象・出張費・お支払いもカードに
+    fx = {}
+    for f in t.get("facts", []):
+        if f["k"] in ("料金", "営業・受付時間", "定休日", "対象の犬", "出張費", "お支払い", "初回・体験", "駐車場", "用意するもの") and f["k"] not in fx: fx[f["k"]] = f["v"]
+    for k in ("料金", "初回・体験", "営業・受付時間", "定休日", "対象の犬", "出張費", "お支払い", "駐車場", "用意するもの"):
+        if fx.get(k): extra += f'<small>{e(k)}：{e(fx[k])}</small>'
     # [B] 11/16 Nori「ドッグトレーナー歴とか」：公式サイトに書いてある教室だけ
     if t.get("career"): extra += f'<small>トレーナー歴：{e(t["career"])}</small>'
     # 教室の会場が所在地と別のとき（事業者本人のお申し出。エコル 2026-11-09）。タクシーの行き先も会場にする
@@ -184,6 +190,8 @@ CAT = dict(slug=SLUG, name="ドッグトレーナー・しつけ教室", unit="�
   taxi_h="教室や幼稚園への送り迎えは、ペットタクシーで", taxi_p="車がないとき、大型犬のとき、飼い主さまと一緒に家の前から教室の前まで移動できます。",
   links=[("ドッグトレーナーのえらび方", "/guide/choose-dog-trainer/"), ("子犬のしつけはいつから？", "/guide/puppy-class/"), ("問題行動の相談先", "/guide/dog-behavior-help/"), ("全国のドッグラン", "/dogrun/")])
 
+# 2026-11-22：件数は足りても中身が薄い県（新しい薄いページは作らない。全国のページと近くの県には載る）。中身を足したら外す
+CAT["no_page"] = ("秋田県", "福井県", "高知県", "熊本県", "佐賀県", "山形県", "山梨県")
 CAT["table"] = [("出張", lambda t: "○" if _has(t, "出張", "訪問", "お家", "ご自宅") else ""), ("教室", lambda t: "○" if _has(t, "教室", "グループ", "クラス") else ""), ("幼稚園", lambda t: "○" if _has(t, "幼稚園", "保育園") else ""), ("預かり", lambda t: "○" if _has(t, "預かり") else ""), ("オンライン", lambda t: "○" if _has(t, "オンライン") else ""), ("市区町村", lambda t: t.get("city", ""))]
 CAT["fac_chips"] = lambda e, pf: FC.chips(e, FC.TRAINER_CHIPS, pf)
 CAT["extra_after"] = _free_class
