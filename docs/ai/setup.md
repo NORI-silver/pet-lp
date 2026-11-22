@@ -28,7 +28,7 @@
 
 ## Muse（Meta）
 
-Meta の Muse は、アプリかウェブ（muse.ai）で使うAIです。はじまったときは米国だけと案内されていたので、日本のアカウントで開けないときは、その旨だけ教えてください（そのときは Muse の設定はとばします）。
+Meta の Muse は、アプリかウェブ（muse.ai）で使うAIです。Nori さんのアカウントで使えることを確かめました（2026-11-22）。接続はリンクをタップして Nori さんが許可します。SHIOKONBU SEO の URL は、Claude の「設定 → コネクタ」か ChatGPT のアプリの設定にある SHIOKONBU SEO の画面で見られます。
 
 1. **GitHub・Gmail**：設定 →「Connectors」→ GitHub と Gmail（pettaxi.yoyaku）をつなぐ。GitHub は pet-lp・pet-db を許可。
 2. **承認の設定**：同じ画面で、送る・書きこむ動きは「毎回確認（require approval）」にしておく。
