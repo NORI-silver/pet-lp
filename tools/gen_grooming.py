@@ -33,6 +33,9 @@ def _card(e, g):
     extra = ""
     if g.get("services"): extra += f'<small>内容：{e(g["services"])}</small>'
     if g.get("area"): extra += f'<small>出張エリア：{e(g["area"])}</small>'
+    for f in g.get("facts", []):
+        if f["k"] in ("料金", "出張費", "営業・受付時間", "定休日", "予約", "予約のしかた", "お支払い", "犬・猫・大きさ", "駐車場", "用意するもの"):
+            extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
     tags = _tags(g)
     if tags: extra += '<small class="emg-spec">公式サイトに書いてある条件：' + e("・".join(tags)) + '</small>'
     city = f'<small>{e(g["city"])}</small>' if g.get("city") else ""
@@ -174,6 +177,8 @@ CAT = dict(slug=SLUG, name="出張トリミング・訪問トリミング", unit
   taxi_h="サロンへの送り迎えは、ペットタクシーで", taxi_p="大型犬やシニアの子も、飼い主さまと一緒に家の前からサロンの前まで移動できます。",
   links=[("トリミング・ペットホテルへの送迎ガイド", "/guide/grooming-hotel/"), ("シニア犬・シニア猫、介護中の子の移動", "/guide/senior/"), ("大型犬の移動のガイド", "/guide/large-dog/"), ("全国のペットシッター", "/pet-sitter/")])
 
+# 2026-11-22：件数は足りても中身が薄い県（新しい薄いページは作らない。全国のページには載る）。中身を足したら外す
+CAT["no_page"] = ('群馬県', '三重県', '熊本県', '沖縄県', '石川県')
 CAT["fact_cols"] = [("料金", ("料金",)), ("出張費", ("出張費",)), ("犬・猫・大きさ", ("犬・猫・大きさ",)), ("お支払い", ("支払い", "予約")), ("用意するもの", ("用意するもの",)), ("キャンセル料", ("キャンセル料",))]
 CAT["price_title"] = "いちばん安いコースの料金（小型犬のシャンプーなど・公式サイトの表示どおり）"
 CAT["table"] = [(lab.replace("に対応", "").replace("・介護中の子", ""), (lambda k: lambda g: "○" if g.get(k) else "")(k)) for k, lab in CONDS] + [("最大の体重", lambda g: f'{g["max_kg"]}kg' if g.get("max_kg") else "")]
