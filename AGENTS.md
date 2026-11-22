@@ -1,7 +1,7 @@
 # AGENTS.md — ペットタクシー予約窓口（pet.shiokonbu.com）
 
 このファイルは、このリポジトリで作業するすべてのAI（Claude・Codex・ほかのモデル）と人のための共通ルールです。
-モデルが入れ替わっても、このファイルを読めば同じ決まりで作業できるようにしています。`CLAUDE.md` はこのファイルを読み込むだけです。
+モデルが入れ替わっても、このファイルを読めば同じ決まりで作業できるようにしています。`CLAUDE.md`・`GEMINI.md` はこのファイルを読み込むだけです（ChatGPT・Codex・Jules はこのファイルを直接読みます）。どのAIも、作業の前に `docs/ai/README.md`（始め方・道具・引き継ぎ）と pet-db の `docs/ai-memory/MEMORY.md`（Nori さんの方針と進行中のこと）を読み、終わりに `docs/ai/handoff.md` へ1行残します。Nori さんの設定は `docs/ai/setup.md`。
 
 オーナーは Nori さん（個人、会社ではありません）。やりとりは日本語で、やさしく短く。Nori さんは手でファイルを直したりアップロードしたりするのが苦手なので、編集・反映はAIが行います。
 
@@ -181,6 +181,7 @@ Nori さんに同じことを2回言わせないための、いちばん大事�
 | `tools/match_audit.cjs` | マッチング検査。フォームの全組み合わせを全国の事業者に当て、しぼりこめない点（黙って除外・見落とし・しくみ外・要確認）を事業者ごとに出す。`node tools/match_audit.cjs --companies <ダッシュボードの companies.json> --sheet <提携先タブの写し> --out <フォルダ>`。事業者データは公開リポジトリに置かない。何も送らない |
 | `booking/Code.gs` | 予約の仕組み（Apps Script）。**リポジトリにあっても本番には自動で反映されません**（下記） |
 | `booking/accept-preview.html` | 会社の引き受け画面の見た目確認用 |
+| `docs/ai/` `GEMINI.md` | どのAI（Claude・ChatGPT・Gemini・Muse）でも同じ作業をするための始め方・Nori さんの設定・AIどうしの引き継ぎメモ（2026-11-22 Nori「あなたがやってることは全部、ChatGPTもmuseもgeminiもできるようにして」） |
 | `docs/` | 手順書（`hosting-cloudflare.md`＝公開先を Cloudflare Pages へ移す手順と戻し方（月5万PVか手数料を始める前に）、`facility-page.md`＝施設1つずつのページの型（要点が先・事実の表に出どころと確認日・構造化データ・作る条件。新しく施設ページを作るときは必ずこれに合わせる）、`codex.md`＝Codexの使い方、`ai-backup.md`＝GitHubで動く予備のAI、`seo-agents.md`＝エリア担当のSEO Agent（担当・順番・手順）、`seo-agents/`＝担当ごとの候補、`seo-log.md`＝SEOの作業メモ） |
 | `sns/` | XとInstagramの専用アカウント（名前は「ペットのくらし窓口」。shiokonbu は使わない。Nori 2026-11-03）の計画・プロフィール・投稿の元データ（`posts.json`）と画像（`node sns/gen.cjs` で作る）。投稿にはリンクを貼らない（Nori 2026-11-02）。Xは `.github/workflows/sns-x.yml` が毎週日曜に `sns/schedule_x.py` で火・金20時に自動で予約する（Nori「僕の作業はゼロにしたい」、確認なし）。サイトのページではない |
 | `tools/partner_shots.cjs` | 提携のご案内ページの「画面の見本」（`img/partner/`）を、`booking/Code.gs` の本物の文面・画面と架空の依頼で撮り直す（`node tools/partner_shots.cjs`）。会社あてのメールや引き受け画面を変えたら撮り直す。何も送らない |
