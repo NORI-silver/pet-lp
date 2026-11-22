@@ -1,0 +1,123 @@
+{
+"pref": "兵庫県",
+"name": "西宮市動物管理センター",
+"code": "j116",
+"url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/dobutsujodo.html",
+"found": [
+{
+"url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/dobutsujodo.html",
+"bousai": true,
+"forms": [
+[
+"https://www.nishi.or.jp/cgi-bin/formmail/formmail.cgi?d=doubutsu",
+"お問合せメールフォーム"
+]
+],
+"mails": [],
+"dept": "生活衛生課"
+},
+{
+"url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/kainushinokata/Seniorwithpets.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "生活衛生課"
+},
+{
+"url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "保健統計・保健所"
+},
+{
+"url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/kainushinokata/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "動物管理センター"
+},
+{
+"url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/kansensyou/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "動物管理センター"
+},
+{
+"url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/jigyousyanokata/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "動物管理センター"
+},
+{
+"url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/doubutsuaigokikin.html",
+"bousai": true,
+"forms": [
+[
+"https://www.nishi.or.jp/cgi-bin/formmail/formmail.cgi?d=doubutsu",
+"メールフォームからお申込みください"
+],
+[
+"https://www.nishi.or.jp/shisei/kifu/furusatonozei/20250401.html",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": "動物管理センター"
+},
+{
+"url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/InjuredAnimal.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "動物管理センター"
+},
+{
+"url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/EnlightenmentReport.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "生活衛生課"
+},
+{
+"url": "https://www.nishi.or.jp/soshiki/00940026/0111002640/011399999755/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.nishi.or.jp/cgi-bin/formmail/formmail.cgi?d=doubutsu",
+"お問合せメールフォーム"
+]
+],
+"mails": [],
+"dept": "動物管理センター"
+},
+{
+"url": "https://www.nishi.or.jp/cgi-bin/formmail/formmail.cgi?d=doubutsu",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "生活衛生課"
+},
+{
+"url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/kainushinokata/pet-maigo.html",
+"bousai": true,
+"forms": [
+[
+"https://www.nishi.or.jp/cgi-bin/formmail/formmail.cgi?d=011600268511",
+"お問合せメールフォーム"
+]
+],
+"mails": [],
+"dept": "生活衛生課"
+},
+{
+"url": "https://www.nishi.or.jp/kenko/hokenjojoho/pet/kainushinokata/pet-bosai.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "生活衛生課"
+}
+]
+}

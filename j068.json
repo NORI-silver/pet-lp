@@ -1,0 +1,69 @@
+{
+"pref": "大阪府",
+"name": "大阪府動物愛護管理センター",
+"code": "j068",
+"url": "https://www.pref.osaka.lg.jp/o120200/doaicenter/doaicenter/zyotonituite.html",
+"found": [
+{
+"url": "https://www.pref.osaka.lg.jp/o120200/doaicenter/doaicenter/zyotonituite.html",
+"bousai": true,
+"forms": [
+[
+"https://www.pref.osaka.lg.jp/o070050/koho/information/index.html",
+"各種お問合わせ"
+]
+],
+"mails": [
+"dobutsuaigokanri-c@sbox.pref.osaka.lg.jp"
+],
+"dept": "環境農林水産部動物愛護管理センター"
+},
+{
+"url": "https://www.pref.osaka.lg.jp/kurashi/pet/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.pref.osaka.lg.jp/o120140/doubutu/yaseidoubutu/renraku.html",
+"鳥獣行政に関する問い合わせ先"
+],
+[
+"https://www.pref.osaka.lg.jp/o070050/koho/information/index.html",
+"各種お問合わせ"
+]
+],
+"mails": [],
+"dept": "動物愛護管理センター"
+},
+{
+"url": "https://www.pref.osaka.lg.jp/kurashi/pet/kanricenter/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.pref.osaka.lg.jp/o070050/koho/information/index.html",
+"各種お問合わせ"
+]
+],
+"mails": [],
+"dept": "動物愛護管理センター"
+},
+{
+"url": "https://www.pref.osaka.lg.jp/kurashi/pet/kanricenter/jouto/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.pref.osaka.lg.jp/o070050/koho/information/index.html",
+"各種お問合わせ"
+]
+],
+"mails": [],
+"dept": "動物愛護管理センター"
+},
+{
+"url": "https://www.pref.osaka.lg.jp/o120200/doaicenter/doaicenter/jyoutoinunekoigai.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "環境農林水産部動物愛護管理センター"
+}
+]
+}

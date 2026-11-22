@@ -1,0 +1,132 @@
+{
+"pref": "愛知県",
+"name": "岡崎市動物総合センター（Animo あにも）",
+"code": "j062",
+"url": "https://www.city.okazaki.lg.jp/1100/1107/1149/p005769.html",
+"found": [
+{
+"url": "https://www.city.okazaki.lg.jp/kurashi/pet/1012464/1013129/1002172.html",
+"bousai": true,
+"forms": [
+[
+"https://cdp.city.okazaki.lg.jp/help_portal?id=hp_sc_cat_item&sys_id=b622ee562bb47e104461f77ace91bf14&ref=hp&dep=100055400000",
+"動物総合センター動物1係へのお問い合わせは専用のフォームをご"
+]
+],
+"mails": [],
+"dept": "動物1係"
+},
+{
+"url": "https://www.city.okazaki.lg.jp/kurashi/pet/1012462/1002168.html",
+"bousai": true,
+"forms": [
+[
+"https://cdp.city.okazaki.lg.jp/help_portal?id=hp_sc_cat_item&sys_id=b622ee562bb47e104461f77ace91bf14&ref=hp&dep=100055400000",
+"動物総合センター動物1係へのお問い合わせは専用のフォームをご"
+]
+],
+"mails": [],
+"dept": "動物1係"
+},
+{
+"url": "https://www.city.okazaki.lg.jp/zoo/index.html",
+"bousai": true,
+"forms": [
+[
+"https://cdp.city.okazaki.lg.jp/help_portal?id=hp_sc_cat_item&sys_id=b622ee562bb47e104461f77ace91bf14&ref=hp&dep=100055400000",
+"動物総合センター動物2係へのお問い合わせは専用のフォームをご"
+]
+],
+"mails": [],
+"dept": "動物2係"
+},
+{
+"url": "https://cdp.city.okazaki.lg.jp/help_portal?id=hp_sc_cat_item&sys_id=b622ee562bb47e104461f77ace91bf14&ref=hp&dep=100055400000",
+"bousai": false,
+"forms": [],
+"mails": [
+"{{field.stagedValue}}"
+],
+"dept": null
+},
+{
+"url": "https://www.city.okazaki.lg.jp/kurashi/pet/1012462/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "岡崎市動物総合センター"
+},
+{
+"url": "https://www.city.okazaki.lg.jp/kurashi/pet/1012462/1012046.html",
+"bousai": true,
+"forms": [
+[
+"https://cdp.city.okazaki.lg.jp/help_portal?id=hp_sc_cat_item&sys_id=b622ee562bb47e104461f77ace91bf14&ref=hp&dep=100055400000",
+"動物総合センター動物1係へのお問い合わせは専用のフォームをご"
+]
+],
+"mails": [],
+"dept": "動物1係"
+},
+{
+"url": "https://www.city.okazaki.lg.jp/kurashi/pet/1012462/1002175.html",
+"bousai": true,
+"forms": [
+[
+"https://cdp.city.okazaki.lg.jp/help_portal?id=hp_sc_cat_item&sys_id=b622ee562bb47e104461f77ace91bf14&ref=hp&dep=100055400000",
+"動物総合センター動物1係へのお問い合わせは専用のフォームをご"
+]
+],
+"mails": [],
+"dept": "動物1係"
+},
+{
+"url": "https://www.city.okazaki.lg.jp/kurashi/pet/1012462/1011192.html",
+"bousai": true,
+"forms": [
+[
+"https://cdp.city.okazaki.lg.jp/help_portal?id=hp_sc_cat_item&sys_id=b622ee562bb47e104461f77ace91bf14&ref=hp&dep=100055400000",
+"動物総合センターへのお問い合わせは専用のフォームをご利用くだ"
+]
+],
+"mails": [],
+"dept": "動物総合センター"
+},
+{
+"url": "https://www.city.okazaki.lg.jp/kurashi/pet/1012462/1002179.html",
+"bousai": true,
+"forms": [
+[
+"https://cdp.city.okazaki.lg.jp/help_portal?id=hp_sc_cat_item&sys_id=b622ee562bb47e104461f77ace91bf14&ref=hp&dep=100055400000",
+"動物総合センター動物1係へのお問い合わせは専用のフォームをご"
+]
+],
+"mails": [],
+"dept": "動物1係"
+},
+{
+"url": "https://www.city.okazaki.lg.jp/zoo/tanosimu/1013177/1017642.html",
+"bousai": true,
+"forms": [
+[
+"https://cdp.city.okazaki.lg.jp/help_portal?id=hp_sc_cat_item&sys_id=b622ee562bb47e104461f77ace91bf14&ref=hp&dep=100055400000",
+"動物総合センターへのお問い合わせは専用のフォームをご利用くだ"
+]
+],
+"mails": [],
+"dept": "動物総合センター"
+},
+{
+"url": "https://www.city.okazaki.lg.jp/zoo/tanosimu/1013176/1014356.html",
+"bousai": true,
+"forms": [
+[
+"https://cdp.city.okazaki.lg.jp/help_portal?id=hp_sc_cat_item&sys_id=b622ee562bb47e104461f77ace91bf14&ref=hp&dep=100055400000",
+"動物総合センター動物2係へのお問い合わせは専用のフォームをご"
+]
+],
+"mails": [],
+"dept": "動物2係"
+}
+]
+}

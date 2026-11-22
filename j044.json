@@ -1,0 +1,127 @@
+{
+"pref": "石川県",
+"name": "いしかわ動物愛護センター",
+"code": "j044",
+"url": "https://aigo-ishikawa.jp/transfer/",
+"found": [
+{
+"url": "https://aigo-ishikawa.jp/transfer/",
+"bousai": true,
+"forms": [],
+"mails": [
+"douai@pref.ishikawa.lg.jp"
+],
+"dept": "©いしかわ動物愛護センター"
+},
+{
+"url": "https://aigo-ishikawa.jp/steps-to-transfer/",
+"bousai": true,
+"forms": [],
+"mails": [
+"douai@pref.ishikawa.lg.jp"
+],
+"dept": "©いしかわ動物愛護センター"
+},
+{
+"url": "https://aigo-ishikawa.jp/petadoption_list/",
+"bousai": true,
+"forms": [],
+"mails": [
+"douai@pref.ishikawa.lg.jp"
+],
+"dept": "©いしかわ動物愛護センター"
+},
+{
+"url": "https://www.pref.ishikawa.lg.jp/yakuji/doubutsu/saigaiji.html",
+"bousai": true,
+"forms": [
+[
+"https://www.pref.ishikawa.lg.jp/kensei/soshiki/soshiki/renrakusaki/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "健康福祉部薬事衛生課"
+},
+{
+"url": "https://www.pref.ishikawa.lg.jp/yakuji/doubutsu/tokuteidoubustu.html",
+"bousai": true,
+"forms": [
+[
+"https://www.pref.ishikawa.lg.jp/kensei/soshiki/soshiki/renrakusaki/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "健康福祉部薬事衛生課"
+},
+{
+"url": "https://www.pref.ishikawa.lg.jp/yakuji/doubutsu/toriatsukaigyou.html",
+"bousai": true,
+"forms": [
+[
+"https://www.pref.ishikawa.lg.jp/kensei/soshiki/soshiki/renrakusaki/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "健康福祉部薬事衛生課"
+},
+{
+"url": "https://www.pref.ishikawa.lg.jp/kurashi/seikatsu/pet/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.pref.ishikawa.lg.jp/kensei/soshiki/soshiki/renrakusaki/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "いしかわ動物愛護センター"
+},
+{
+"url": "https://www4.city.kanazawa.lg.jp/soshikikarasagasu/dobutsuaigokanricenter/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "動物愛護管理センター"
+},
+{
+"url": "https://www.env.go.jp/nature/dobutsu/aigo/",
+"bousai": true,
+"forms": [
+[
+"https://www.env.go.jp/nature/dobutsu/aigo/3_contact/inquiry",
+"動物愛護管理行政に関するお問合せ窓口はこちら"
+]
+],
+"mails": [],
+"dept": "動物愛護管理室"
+},
+{
+"url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou18/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.mhlw.go.jp/otoiawase/index.html",
+"お問合わせ窓口"
+],
+[
+"https://www.mhlw.go.jp/form/pub/mhlw01/getmail",
+"ホームページへのご意見"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://aigo-ishikawa.jp/transfer/",
+"bousai": true,
+"forms": [],
+"mails": [
+"douai@pref.ishikawa.lg.jp"
+],
+"dept": "©いしかわ動物愛護センター"
+}
+]
+}
