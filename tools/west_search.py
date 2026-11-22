@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """[B] 中国・四国・九州沖縄：登録一覧の事業所の公式サイトを検索でさがす（Nori 2026-11-22「漏れ一切なくね」）。
 tools/crawl/search_*.json（[{"id","q"}...]）をシャードに分け、日本語の検索（Yahoo! JAPAN → DuckDuckGo lite → Bing）で1件ずつ調べ、
-見出しとURLを out/search_<shard>.json に書く。何も送らない。どれが公式サイトかは人（AI）が決める。
+見出しとURLを out/search_<shard>.json に書く（1件ずつ書き足すので、時間切れでもそこまでの結果は残る）。何も送らない。どれが公式サイトかは人（AI）が決める。
 """
 import html, json, os, re, sys, time, urllib.parse, urllib.request
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36'
@@ -44,21 +44,25 @@ def main():
         if fn.startswith('search') and fn.endswith('.json'):
             jobs += json.load(open(os.path.join(base, fn)))
     jobs = jobs[shard::n]
-    res = []; fails = {'yahoo': 0, 'ddg': 0}
+    res = []; t0 = time.time(); limit = float(os.environ.get('SEARCH_MINUTES', '140')) * 60
     for j in jobs:
+        if time.time() - t0 > limit: break
         r = dict(j)
-        for name, fn in (('yahoo', yahoo), ('ddg', ddg)):
-            if fails[name] >= 6: continue
+        # 「多すぎる」（429）と言われたら、待ってから同じ言葉でもう一度（あきらめない）
+        for wait in (0, 60, 120, 240, 480):
+            if wait: time.sleep(wait)
             try:
-                got = fn(j['q'])
+                got = yahoo(j['q'])
             except Exception as e:
-                got = []; r.setdefault('err', []).append(name + ' ' + str(e)[:80])
-            if got:
-                r['engine'] = name; r['results'] = got[:8]; fails[name] = 0
-                break
-            fails[name] += 1
+                got = None; err = str(e)[:80]
+                r['err'] = 'yahoo ' + err
+                if '429' in err or '500' in err or 'timed out' in err: continue
+            if got is not None: break
+        if got:
+            r['engine'] = 'yahoo'; r['results'] = got[:8]; r.pop('err', None)
         res.append(r)
-        time.sleep(2.5)
+        json.dump(res, open(os.path.join(out, f'search_{shard}.json'), 'w'), ensure_ascii=False, indent=0)
+        time.sleep(4)
     json.dump(res, open(os.path.join(out, f'search_{shard}.json'), 'w'), ensure_ascii=False, indent=0)
     print('shard', shard, len(res), 'found', sum(1 for r in res if r.get('results')))
 
