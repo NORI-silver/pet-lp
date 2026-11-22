@@ -1,4 +1,5 @@
 # 掲載の候補の公式サイトを読んで、確かめに要る文だけをブランチ crawl-out に置く（Nori 2026-11-22「漏れなく掲載して」）。
+# ブランチごとに結果の置き場を分ける（全分野網羅のブランチと main は crawl-out、ほかは crawl-out-<ブランチの最後>）。
 # tools/crawl/queue*.json のURLを tools/site_snap.py が読む。何も送らない・サイトは書き換えない。載せるかは人（AI）が文を読んで決める。
 name: site-snap
 on:
@@ -9,7 +10,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: site-snap
+  group: site-snap-${{ github.ref_name }}
   cancel-in-progress: false
 jobs:
   snap:
@@ -25,9 +26,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -q --orphan crawl-out
+          OUT=crawl-out; case "$GITHUB_REF_NAME" in claude/project-thread-vowqa9|main) ;; *) OUT="crawl-out-${GITHUB_REF_NAME##*/}";; esac
+          git checkout -q --orphan "$OUT"
           git rm -rq --cached . && git clean -fdq
           cp -r /tmp/out/. .
           git add -A
           git commit -qm "公式サイトの抜き出し ${GITHUB_SHA::7}"
-          git push -q -f origin crawl-out
+          git push -q -f origin "$OUT"
