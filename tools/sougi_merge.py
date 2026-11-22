@@ -23,6 +23,18 @@ def main(paths):
     urls = {(host(f["u"]), f["city"]) for f in F}  # チェーンの別の店（市がちがう）は同じURLでもよい
     sites = {(f["pref"], f["city"], host(f["u"])[0]) for f in F}
     added, skipped = 0, []
+    # 外した施設（サイトが開けない・連絡手段なし）は戻さない（tools/delisted.json の removed）
+    dl = ROOT / "delisted.json"
+    gone = set()
+    if dl.exists():
+        def walk(x):
+            if isinstance(x, dict):
+                for v in x.values(): walk(v)
+            elif isinstance(x, list):
+                for v in x: walk(v)
+            elif isinstance(x, str): gone.add(norm(x)); gone.add(host(x)[0])
+        walk(json.loads(dl.read_text()).get("removed", []))
+        gone.discard("")
     for p in paths:
         for f in json.loads(pathlib.Path(p).read_text()):
             why = []
@@ -35,6 +47,7 @@ def main(paths):
             if (f.get("pref"), norm(f.get("name"))) in names: why.append("same name")
             if (host(f.get("u")), f.get("city")) in urls: why.append("same url")
             if (f.get("pref"), f.get("city"), host(f.get("u"))[0]) in sites: why.append("same site and city")
+            if norm(f.get("name")) in gone or (host(f.get("u"))[0] and host(f.get("u"))[0] in gone and host(f.get("u"))[0] not in {"pet-tabi.jp"}): why.append("delisted")
             if why:
                 skipped.append((f.get("pref"), f.get("name"), why)); continue
             rec = {k: f[k] for k in ("pref", "name", "city", "kinds", "services")}
