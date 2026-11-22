@@ -155,7 +155,7 @@ def one(job):
 
 
 def main(out):
-    q = json.load(open('tools/crawl/hinan_queue.json'))
+    q = json.load(open(os.environ.get('QUEUE', 'tools/crawl/hinan_queue.json')))
     os.makedirs(out, exist_ok=True)
     jobs = []
     for it in q:  # 検索は順番に、間をあける

@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   push:
     branches: ['claude/**']
-    paths: ['tools/crawl/hinan_queue.json', 'tools/hinan_snap.py']
+    paths: ['tools/crawl/hinan_queue.json']
 permissions:
   contents: write
 concurrency:

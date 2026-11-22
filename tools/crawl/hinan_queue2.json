@@ -1,0 +1,2402 @@
+[
+{
+"pref": "東京都",
+"name": "台東区",
+"code": "131067",
+"url": "https://www.city.taito.lg.jp/"
+},
+{
+"pref": "東京都",
+"name": "立川市",
+"code": "132021",
+"url": "https://www.city.tachikawa.lg.jp/"
+},
+{
+"pref": "東京都",
+"name": "昭島市",
+"code": "132071",
+"url": "https://www.city.akishima.lg.jp/"
+},
+{
+"pref": "東京都",
+"name": "東村山市",
+"code": "132136",
+"url": "https://www.city.higashimurayama.tokyo.jp/"
+},
+{
+"pref": "東京都",
+"name": "国立市",
+"code": "132152",
+"url": "https://www.city.kunitachi.tokyo.jp/"
+},
+{
+"pref": "東京都",
+"name": "東大和市",
+"code": "132209",
+"url": "https://www.city.higashiyamato.lg.jp/"
+},
+{
+"pref": "東京都",
+"name": "あきる野市",
+"code": "132284",
+"url": "https://www.city.akiruno.tokyo.jp/"
+},
+{
+"pref": "神奈川県",
+"name": "三浦市",
+"code": "142107",
+"url": "https://www.city.miura.kanagawa.jp/"
+},
+{
+"pref": "神奈川県",
+"name": "秦野市",
+"code": "142115",
+"url": "https://www.city.hadano.kanagawa.jp/www/index.html"
+},
+{
+"pref": "神奈川県",
+"name": "伊勢原市",
+"code": "142140",
+"url": "https://www.city.isehara.kanagawa.jp/"
+},
+{
+"pref": "神奈川県",
+"name": "綾瀬市",
+"code": "142182",
+"url": "https://www.city.ayase.kanagawa.jp/"
+},
+{
+"pref": "大阪府",
+"name": "泉大津市",
+"code": "272060",
+"url": "https://www.city.izumiotsu.lg.jp/"
+},
+{
+"pref": "大阪府",
+"name": "枚方市",
+"code": "272108",
+"url": "https://www.city.hirakata.osaka.jp/"
+},
+{
+"pref": "大阪府",
+"name": "富田林市",
+"code": "272141",
+"url": "https://www.city.tondabayashi.lg.jp/"
+},
+{
+"pref": "大阪府",
+"name": "松原市",
+"code": "272175",
+"url": "https://www.city.matsubara.lg.jp/"
+},
+{
+"pref": "大阪府",
+"name": "和泉市",
+"code": "272191",
+"url": "https://www.city.osaka-izumi.lg.jp/"
+},
+{
+"pref": "大阪府",
+"name": "箕面市",
+"code": "272205",
+"url": "https://www.city.minoh.lg.jp/"
+},
+{
+"pref": "大阪府",
+"name": "高石市",
+"code": "272256",
+"url": "https://www.city.takaishi.lg.jp/"
+},
+{
+"pref": "大阪府",
+"name": "藤井寺市",
+"code": "272264",
+"url": "https://www.city.fujiidera.lg.jp/"
+},
+{
+"pref": "大阪府",
+"name": "四條畷市",
+"code": "272299",
+"url": "https://www.city.shijonawate.lg.jp/"
+},
+{
+"pref": "愛知県",
+"name": "豊橋市",
+"code": "232017",
+"url": "https://www.city.toyohashi.lg.jp/"
+},
+{
+"pref": "愛知県",
+"name": "瀬戸市",
+"code": "232041",
+"url": "https://www.city.seto.aichi.jp/"
+},
+{
+"pref": "愛知県",
+"name": "豊川市",
+"code": "232076",
+"url": "https://www.city.toyokawa.lg.jp/"
+},
+{
+"pref": "愛知県",
+"name": "津島市",
+"code": "232084",
+"url": "https://www.city.tsushima.lg.jp/"
+},
+{
+"pref": "愛知県",
+"name": "豊田市",
+"code": "232114",
+"url": "https://www.city.toyota.aichi.jp/"
+},
+{
+"pref": "愛知県",
+"name": "稲沢市",
+"code": "232203",
+"url": "https://www.city.inazawa.aichi.jp/"
+},
+{
+"pref": "愛知県",
+"name": "新城市",
+"code": "232211",
+"url": "https://www.city.shinshiro.lg.jp/"
+},
+{
+"pref": "愛知県",
+"name": "東海市",
+"code": "232220",
+"url": "https://www.city.tokai.aichi.jp/"
+},
+{
+"pref": "愛知県",
+"name": "知多市",
+"code": "232246",
+"url": "https://www.city.chita.lg.jp/"
+},
+{
+"pref": "愛知県",
+"name": "高浜市",
+"code": "232271",
+"url": "https://www.city.takahama.lg.jp/"
+},
+{
+"pref": "愛知県",
+"name": "豊明市",
+"code": "232297",
+"url": "https://www.city.toyoake.lg.jp/"
+},
+{
+"pref": "愛知県",
+"name": "北名古屋市",
+"code": "232343",
+"url": "https://www.city.kitanagoya.lg.jp/"
+},
+{
+"pref": "愛知県",
+"name": "田原市",
+"code": "232319",
+"url": "https://www.city.tahara.aichi.jp/"
+},
+{
+"pref": "愛知県",
+"name": "みよし市",
+"code": "232360",
+"url": "https://www.city.aichi-miyoshi.lg.jp/"
+},
+{
+"pref": "愛知県",
+"name": "あま市",
+"code": "232378",
+"url": "https://www.city.ama.aichi.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "秩父市",
+"code": "112071",
+"url": "https://www.city.chichibu.lg.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "飯能市",
+"code": "112097",
+"url": "https://www.city.hanno.lg.jp"
+},
+{
+"pref": "埼玉県",
+"name": "深谷市",
+"code": "112186",
+"url": "https://www.city.fukaya.saitama.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "朝霞市",
+"code": "112275",
+"url": "https://www.city.asaka.lg.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "和光市",
+"code": "112291",
+"url": "https://www.city.wako.lg.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "八潮市",
+"code": "112348",
+"url": "https://www.city.yashio.lg.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "坂戸市",
+"code": "112399",
+"url": "https://www.city.sakado.lg.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "日高市",
+"code": "112429",
+"url": "https://www.city.hidaka.lg.jp/"
+},
+{
+"pref": "千葉県",
+"name": "木更津市",
+"code": "122068",
+"url": "https://www.city.kisarazu.lg.jp/"
+},
+{
+"pref": "千葉県",
+"name": "勝浦市",
+"code": "122181",
+"url": "https://www.city.katsuura.lg.jp/forms/top/top.aspx"
+},
+{
+"pref": "千葉県",
+"name": "富津市",
+"code": "122262",
+"url": "https://www.city.futtsu.lg.jp/"
+},
+{
+"pref": "千葉県",
+"name": "富里市",
+"code": "122335",
+"url": "https://www.city.tomisato.lg.jp/"
+},
+{
+"pref": "千葉県",
+"name": "市原市",
+"code": "122190",
+"url": "https://www.city.ichihara.chiba.jp/"
+},
+{
+"pref": "千葉県",
+"name": "南房総市",
+"code": "122343",
+"url": "https://www.city.minamiboso.chiba.jp/"
+},
+{
+"pref": "千葉県",
+"name": "匝瑳市",
+"code": "122351",
+"url": "https://www.city.sosa.lg.jp/"
+},
+{
+"pref": "千葉県",
+"name": "山武市",
+"code": "122378",
+"url": "https://www.city.sammu.lg.jp/"
+},
+{
+"pref": "千葉県",
+"name": "いすみ市",
+"code": "122386",
+"url": "https://www.city.isumi.lg.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "洲本市",
+"code": "282057",
+"url": "https://www.city.sumoto.lg.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "西脇市",
+"code": "282138",
+"url": "https://www.city.nishiwaki.lg.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "三木市",
+"code": "282154",
+"url": "https://www.city.miki.lg.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "高砂市",
+"code": "282162",
+"url": "https://www.city.takasago.lg.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "小野市",
+"code": "282189",
+"url": "https://www.city.ono.hyogo.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "加西市",
+"code": "282201",
+"url": "https://www.city.kasai.hyogo.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "丹波市",
+"code": "282235",
+"url": "https://www.city.tamba.lg.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "南あわじ市",
+"code": "282243",
+"url": "https://www.city.minamiawaji.hyogo.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "朝来市",
+"code": "282251",
+"url": "https://www.city.asago.hyogo.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "淡路市",
+"code": "282260",
+"url": "https://www.city.awaji.lg.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "宍粟市",
+"code": "282278",
+"url": "https://www.city.shiso.lg.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "たつの市",
+"code": "282294",
+"url": "https://www.city.tatsuno.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "小樽市",
+"code": "012033",
+"url": "https://www.city.otaru.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "室蘭市",
+"code": "012050",
+"url": "https://www.city.muroran.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "北見市",
+"code": "012084",
+"url": "https://www.city.kitami.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "夕張市",
+"code": "012092",
+"url": "https://www.city.yubari.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "網走市",
+"code": "012114",
+"url": "https://www.city.abashiri.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "稚内市",
+"code": "012149",
+"url": "https://www.city.wakkanai.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "留萌市",
+"code": "012122",
+"url": "https://www.e-rumoi.jp/"
+},
+{
+"pref": "北海道",
+"name": "芦別市",
+"code": "012165",
+"url": "https://www.city.ashibetsu.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "赤平市",
+"code": "012181",
+"url": "https://www.city.akabira.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "紋別市",
+"code": "012190",
+"url": "https://mombetsu.jp/"
+},
+{
+"pref": "北海道",
+"name": "士別市",
+"code": "012203",
+"url": "https://www.city.shibetsu.lg.jp/www/index.html"
+},
+{
+"pref": "北海道",
+"name": "名寄市",
+"code": "012211",
+"url": "http://www.city.nayoro.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "三笠市",
+"code": "012220",
+"url": "https://www.city.mikasa.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "千歳市",
+"code": "012246",
+"url": "https://www.city.chitose.lg.jp"
+},
+{
+"pref": "北海道",
+"name": "砂川市",
+"code": "012262",
+"url": "https://www.city.sunagawa.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "歌志内市",
+"code": "012271",
+"url": "https://www.city.utashinai.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "深川市",
+"code": "012289",
+"url": "https://www.city.fukagawa.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "伊達市",
+"code": "012335",
+"url": "https://www.city.date.hokkaido.jp/"
+},
+{
+"pref": "福岡県",
+"name": "直方市",
+"code": "402044",
+"url": "https://www.city.nogata.fukuoka.jp/"
+},
+{
+"pref": "福岡県",
+"name": "大川市",
+"code": "402125",
+"url": "https://www.city.okawa.lg.jp/index.html"
+},
+{
+"pref": "福岡県",
+"name": "豊前市",
+"code": "402141",
+"url": "https://www.city.buzen.lg.jp/"
+},
+{
+"pref": "福岡県",
+"name": "宗像市",
+"code": "402206",
+"url": "https://www.city.munakata.lg.jp/"
+},
+{
+"pref": "福岡県",
+"name": "古賀市",
+"code": "402231",
+"url": "https://www.city.koga.fukuoka.jp/"
+},
+{
+"pref": "福岡県",
+"name": "福津市",
+"code": "402249",
+"url": "https://www.city.fukutsu.lg.jp/"
+},
+{
+"pref": "福岡県",
+"name": "宮若市",
+"code": "402265",
+"url": "https://www.city.miyawaka.lg.jp/"
+},
+{
+"pref": "福岡県",
+"name": "嘉麻市",
+"code": "402273",
+"url": "https://www.city.kama.lg.jp/"
+},
+{
+"pref": "福岡県",
+"name": "朝倉市",
+"code": "402281",
+"url": "https://www.city.asakura.lg.jp/www/toppage/0000000000000/APM03000.html"
+},
+{
+"pref": "福岡県",
+"name": "那珂川市",
+"code": "402311",
+"url": "https://www.city.nakagawa.lg.jp/"
+},
+{
+"pref": "福岡県",
+"name": "飯塚市",
+"code": "402052",
+"url": "https://www.city.iizuka.lg.jp/"
+},
+{
+"pref": "静岡県",
+"name": "島田市",
+"code": "222097",
+"url": "https://www.city.shimada.shizuoka.jp/"
+},
+{
+"pref": "静岡県",
+"name": "藤枝市",
+"code": "222143",
+"url": "https://www.city.fujieda.shizuoka.jp/"
+},
+{
+"pref": "静岡県",
+"name": "袋井市",
+"code": "222160",
+"url": "https://www.city.fukuroi.shizuoka.jp/"
+},
+{
+"pref": "静岡県",
+"name": "御前崎市",
+"code": "222232",
+"url": "https://www.city.omaezaki.shizuoka.jp/"
+},
+{
+"pref": "静岡県",
+"name": "菊川市",
+"code": "222241",
+"url": "https://www.city.kikugawa.shizuoka.jp/"
+},
+{
+"pref": "静岡県",
+"name": "牧之原市",
+"code": "222267",
+"url": "https://www.city.makinohara.shizuoka.jp/"
+},
+{
+"pref": "茨城県",
+"name": "結城市",
+"code": "082074",
+"url": "https://www.city.yuki.lg.jp/"
+},
+{
+"pref": "茨城県",
+"name": "常総市",
+"code": "082112",
+"url": "https://www.city.joso.lg.jp/"
+},
+{
+"pref": "茨城県",
+"name": "常陸太田市",
+"code": "082121",
+"url": "https://www.city.hitachiota.ibaraki.jp/"
+},
+{
+"pref": "茨城県",
+"name": "高萩市",
+"code": "082147",
+"url": "https://www.city.takahagi.ibaraki.jp/index.html"
+},
+{
+"pref": "茨城県",
+"name": "北茨城市",
+"code": "082155",
+"url": "https://www.city.kitaibaraki.lg.jp/"
+},
+{
+"pref": "茨城県",
+"name": "牛久市",
+"code": "082198",
+"url": "https://www.city.ushiku.lg.jp/"
+},
+{
+"pref": "茨城県",
+"name": "鹿嶋市",
+"code": "082228",
+"url": "https://www.city.kashima.ibaraki.jp/"
+},
+{
+"pref": "茨城県",
+"name": "潮来市",
+"code": "082236",
+"url": "https://www.city.itako.lg.jp/"
+},
+{
+"pref": "茨城県",
+"name": "常陸大宮市",
+"code": "082252",
+"url": "https://www.city.hitachiomiya.lg.jp/"
+},
+{
+"pref": "茨城県",
+"name": "那珂市",
+"code": "082261",
+"url": "https://www.city.naka.lg.jp/"
+},
+{
+"pref": "茨城県",
+"name": "筑西市",
+"code": "082279",
+"url": "https://www.city.chikusei.lg.jp/index.html"
+},
+{
+"pref": "茨城県",
+"name": "かすみがうら市",
+"code": "082309",
+"url": "https://www.city.kasumigaura.lg.jp/"
+},
+{
+"pref": "茨城県",
+"name": "桜川市",
+"code": "082317",
+"url": "https://www.city.sakuragawa.lg.jp/index.html"
+},
+{
+"pref": "茨城県",
+"name": "行方市",
+"code": "082333",
+"url": "https://www.city.namegata.ibaraki.jp/"
+},
+{
+"pref": "茨城県",
+"name": "鉾田市",
+"code": "082341",
+"url": "https://www.city.hokota.lg.jp/"
+},
+{
+"pref": "茨城県",
+"name": "つくばみらい市",
+"code": "082350",
+"url": "https://www.city.tsukubamirai.lg.jp/"
+},
+{
+"pref": "茨城県",
+"name": "小美玉市",
+"code": "082368",
+"url": "https://www.city.omitama.lg.jp/"
+},
+{
+"pref": "広島県",
+"name": "竹原市",
+"code": "342033",
+"url": "https://www.city.takehara.lg.jp/"
+},
+{
+"pref": "広島県",
+"name": "庄原市",
+"code": "342106",
+"url": "https://www.city.shobara.hiroshima.jp/"
+},
+{
+"pref": "広島県",
+"name": "安芸高田市",
+"code": "342149",
+"url": "https://www.akitakata.jp/ja/"
+},
+{
+"pref": "京都府",
+"name": "宇治市",
+"code": "262048",
+"url": "https://www.city.uji.kyoto.jp/"
+},
+{
+"pref": "京都府",
+"name": "宮津市",
+"code": "262056",
+"url": "https://www.city.miyazu.kyoto.jp/www/normal_top.jsp"
+},
+{
+"pref": "京都府",
+"name": "城陽市",
+"code": "262072",
+"url": "https://www.city.joyo.kyoto.jp/"
+},
+{
+"pref": "京都府",
+"name": "向日市",
+"code": "262081",
+"url": "https://www.city.muko.kyoto.jp/"
+},
+{
+"pref": "広島県",
+"name": "江田島市",
+"code": "342157",
+"url": "https://www.city.etajima.hiroshima.jp/cms/"
+},
+{
+"pref": "宮城県",
+"name": "石巻市",
+"code": "042021",
+"url": "https://www.city.ishinomaki.lg.jp/index.html"
+},
+{
+"pref": "宮城県",
+"name": "塩竈市",
+"code": "042030",
+"url": "https://www.city.shiogama.miyagi.jp/"
+},
+{
+"pref": "宮城県",
+"name": "気仙沼市",
+"code": "042056",
+"url": "https://www.kesennuma.miyagi.jp/"
+},
+{
+"pref": "宮城県",
+"name": "白石市",
+"code": "042064",
+"url": "https://www.city.shiroishi.miyagi.jp/"
+},
+{
+"pref": "宮城県",
+"name": "角田市",
+"code": "042081",
+"url": "https://www.city.kakuda.lg.jp/"
+},
+{
+"pref": "宮城県",
+"name": "多賀城市",
+"code": "042099",
+"url": "https://www.city.tagajo.miyagi.jp/"
+},
+{
+"pref": "宮城県",
+"name": "岩沼市",
+"code": "042111",
+"url": "https://www.city.iwanuma.miyagi.jp/"
+},
+{
+"pref": "宮城県",
+"name": "栗原市",
+"code": "042137",
+"url": "https://www.kuriharacity.jp/"
+},
+{
+"pref": "宮城県",
+"name": "東松島市",
+"code": "042145",
+"url": "https://www.city.higashimatsushima.miyagi.jp/"
+},
+{
+"pref": "新潟県",
+"name": "見附市",
+"code": "152111",
+"url": "https://www.city.mitsuke.niigata.jp/"
+},
+{
+"pref": "新潟県",
+"name": "燕市",
+"code": "152137",
+"url": "https://www.city.tsubame.niigata.jp/"
+},
+{
+"pref": "新潟県",
+"name": "糸魚川市",
+"code": "152161",
+"url": "https://www.city.itoigawa.lg.jp/"
+},
+{
+"pref": "新潟県",
+"name": "五泉市",
+"code": "152188",
+"url": "https://www.city.gosen.lg.jp/"
+},
+{
+"pref": "新潟県",
+"name": "加茂市",
+"code": "152099",
+"url": "https://www.city.kamo.niigata.jp/"
+},
+{
+"pref": "新潟県",
+"name": "十日町市",
+"code": "152102",
+"url": "https://www.city.tokamachi.lg.jp/"
+},
+{
+"pref": "新潟県",
+"name": "阿賀野市",
+"code": "152234",
+"url": "https://www.city.agano.niigata.jp/"
+},
+{
+"pref": "新潟県",
+"name": "佐渡市",
+"code": "152242",
+"url": "https://www.city.sado.niigata.jp/"
+},
+{
+"pref": "新潟県",
+"name": "魚沼市",
+"code": "152251",
+"url": "https://www.city.uonuma.lg.jp/"
+},
+{
+"pref": "新潟県",
+"name": "南魚沼市",
+"code": "152269",
+"url": "https://www.city.minamiuonuma.niigata.jp/"
+},
+{
+"pref": "長野県",
+"name": "小諸市",
+"code": "202088",
+"url": "https://www.city.komoro.lg.jp/"
+},
+{
+"pref": "長野県",
+"name": "大町市",
+"code": "202126",
+"url": "https://www.city.omachi.nagano.jp/"
+},
+{
+"pref": "岐阜県",
+"name": "大垣市",
+"code": "212024",
+"url": "https://www.city.ogaki.lg.jp/"
+},
+{
+"pref": "岐阜県",
+"name": "中津川市",
+"code": "212067",
+"url": "https://www.city.nakatsugawa.lg.jp/"
+},
+{
+"pref": "岐阜県",
+"name": "美濃市",
+"code": "212075",
+"url": "https://www.city.mino.gifu.jp/"
+},
+{
+"pref": "岐阜県",
+"name": "瑞浪市",
+"code": "212083",
+"url": "https://www.city.mizunami.lg.jp/"
+},
+{
+"pref": "岐阜県",
+"name": "郡上市",
+"code": "212199",
+"url": "https://www.city.gujo.gifu.jp/"
+},
+{
+"pref": "岐阜県",
+"name": "多治見市",
+"code": "212041",
+"url": "https://www.city.tajimi.lg.jp/"
+},
+{
+"pref": "岐阜県",
+"name": "飛騨市",
+"code": "212172",
+"url": "https://www.city.hida.gifu.jp/"
+},
+{
+"pref": "岐阜県",
+"name": "山県市",
+"code": "212156",
+"url": "https://www.city.yamagata.gifu.jp/"
+},
+{
+"pref": "栃木県",
+"name": "真岡市",
+"code": "092096",
+"url": "https://www.city.moka.lg.jp/"
+},
+{
+"pref": "栃木県",
+"name": "日光市",
+"code": "092061",
+"url": "https://www.city.nikko.lg.jp/"
+},
+{
+"pref": "栃木県",
+"name": "小山市",
+"code": "092088",
+"url": "https://www.city.oyama.tochigi.jp/"
+},
+{
+"pref": "栃木県",
+"name": "下野市",
+"code": "092169",
+"url": "https://www.city.shimotsuke.lg.jp/"
+},
+{
+"pref": "栃木県",
+"name": "那須烏山市",
+"code": "092151",
+"url": "https://www.city.nasukarasuyama.lg.jp/"
+},
+{
+"pref": "群馬県",
+"name": "沼田市",
+"code": "102067",
+"url": "https://www.city.numata.gunma.jp/"
+},
+{
+"pref": "群馬県",
+"name": "館林市",
+"code": "102075",
+"url": "https://www.city.tatebayashi.gunma.jp/"
+},
+{
+"pref": "群馬県",
+"name": "渋川市",
+"code": "102083",
+"url": "https://www.city.shibukawa.lg.jp/"
+},
+{
+"pref": "群馬県",
+"name": "藤岡市",
+"code": "102091",
+"url": "https://www.city.fujioka.gunma.jp/"
+},
+{
+"pref": "群馬県",
+"name": "富岡市",
+"code": "102105",
+"url": "https://www.city.tomioka.lg.jp/www/index.html"
+},
+{
+"pref": "群馬県",
+"name": "みどり市",
+"code": "102121",
+"url": "https://www.city.midori.gunma.jp/www/index.html"
+},
+{
+"pref": "岡山県",
+"name": "津山市",
+"code": "332038",
+"url": "https://www.city.tsuyama.lg.jp/"
+},
+{
+"pref": "岡山県",
+"name": "玉野市",
+"code": "332046",
+"url": "https://www.city.tamano.lg.jp/"
+},
+{
+"pref": "岡山県",
+"name": "井原市",
+"code": "332071",
+"url": "https://www.city.ibara.okayama.jp/"
+},
+{
+"pref": "岡山県",
+"name": "新見市",
+"code": "332101",
+"url": "https://www.city.niimi.okayama.jp/"
+},
+{
+"pref": "岡山県",
+"name": "瀬戸内市",
+"code": "332127",
+"url": "https://www.city.setouchi.lg.jp/"
+},
+{
+"pref": "岡山県",
+"name": "赤磐市",
+"code": "332135",
+"url": "https://www.city.akaiwa.lg.jp/"
+},
+{
+"pref": "岡山県",
+"name": "美作市",
+"code": "332151",
+"url": "https://www.city.mimasaka.lg.jp/"
+},
+{
+"pref": "岡山県",
+"name": "浅口市",
+"code": "332160",
+"url": "https://www.city.asakuchi.lg.jp/"
+},
+{
+"pref": "三重県",
+"name": "尾鷲市",
+"code": "242098",
+"url": "https://www.city.owase.lg.jp/public/sougou_top/index_sou.html"
+},
+{
+"pref": "三重県",
+"name": "鳥羽市",
+"code": "242110",
+"url": "https://www.city.toba.mie.jp/"
+},
+{
+"pref": "三重県",
+"name": "熊野市",
+"code": "242128",
+"url": "https://www.city.kumano.lg.jp/"
+},
+{
+"pref": "三重県",
+"name": "いなべ市",
+"code": "242144",
+"url": "https://www.city.inabe.mie.jp/"
+},
+{
+"pref": "熊本県",
+"name": "人吉市",
+"code": "432032",
+"url": "https://www.city.hitoyoshi.lg.jp/"
+},
+{
+"pref": "熊本県",
+"name": "荒尾市",
+"code": "432041",
+"url": "https://www.city.arao.lg.jp/"
+},
+{
+"pref": "熊本県",
+"name": "水俣市",
+"code": "432059",
+"url": "https://www.city.minamata.lg.jp/"
+},
+{
+"pref": "熊本県",
+"name": "玉名市",
+"code": "432067",
+"url": "https://www.city.tamana.lg.jp/"
+},
+{
+"pref": "熊本県",
+"name": "山鹿市",
+"code": "432083",
+"url": "https://www.city.yamaga.kumamoto.jp/www/toppage/0000000000000/APM03000.html"
+},
+{
+"pref": "熊本県",
+"name": "菊池市",
+"code": "432105",
+"url": "https://www.city.kikuchi.lg.jp/"
+},
+{
+"pref": "熊本県",
+"name": "宇土市",
+"code": "432113",
+"url": "https://www.city.uto.lg.jp/"
+},
+{
+"pref": "熊本県",
+"name": "上天草市",
+"code": "432121",
+"url": "https://www.city.kamiamakusa.kumamoto.jp/"
+},
+{
+"pref": "熊本県",
+"name": "阿蘇市",
+"code": "432148",
+"url": "https://www.city.aso.kumamoto.jp/"
+},
+{
+"pref": "熊本県",
+"name": "天草市",
+"code": "432156",
+"url": "https://www.city.amakusa.kumamoto.jp/"
+},
+{
+"pref": "熊本県",
+"name": "合志市",
+"code": "432164",
+"url": "https://www.city.koshi.lg.jp/"
+},
+{
+"pref": "鹿児島県",
+"name": "垂水市",
+"code": "462144",
+"url": "https://www.city.tarumizu.lg.jp/"
+},
+{
+"pref": "鹿児島県",
+"name": "日置市",
+"code": "462161",
+"url": "https://www.city.hioki.kagoshima.jp/"
+},
+{
+"pref": "鹿児島県",
+"name": "曽於市",
+"code": "462179",
+"url": "https://www.city.soo.kagoshima.jp/"
+},
+{
+"pref": "鹿児島県",
+"name": "いちき串木野市",
+"code": "462195",
+"url": "https://www.city.ichikikushikino.lg.jp/"
+},
+{
+"pref": "鹿児島県",
+"name": "南さつま市",
+"code": "462209",
+"url": "https://www.city.minamisatsuma.lg.jp/"
+},
+{
+"pref": "鹿児島県",
+"name": "枕崎市",
+"code": "462047",
+"url": "https://www.city.makurazaki.lg.jp/"
+},
+{
+"pref": "鹿児島県",
+"name": "西之表市",
+"code": "462136",
+"url": "https://www.city.nishinoomote.lg.jp/"
+},
+{
+"pref": "鹿児島県",
+"name": "志布志市",
+"code": "462217",
+"url": "https://www.city.shibushi.lg.jp/"
+},
+{
+"pref": "鹿児島県",
+"name": "南九州市",
+"code": "462233",
+"url": "https://www.city.minamikyushu.lg.jp/"
+},
+{
+"pref": "鹿児島県",
+"name": "伊佐市",
+"code": "462241",
+"url": "https://www.city.isa.kagoshima.jp/"
+},
+{
+"pref": "沖縄県",
+"name": "宜野湾市",
+"code": "472051",
+"url": "https://www.city.ginowan.lg.jp/"
+},
+{
+"pref": "沖縄県",
+"name": "浦添市",
+"code": "472085",
+"url": "https://www.city.urasoe.lg.jp/home"
+},
+{
+"pref": "沖縄県",
+"name": "名護市",
+"code": "472093",
+"url": "https://www.city.nago.okinawa.jp/"
+},
+{
+"pref": "沖縄県",
+"name": "糸満市",
+"code": "472107",
+"url": "https://www.city.itoman.lg.jp/"
+},
+{
+"pref": "沖縄県",
+"name": "うるま市",
+"code": "472131",
+"url": "https://www.city.uruma.lg.jp/"
+},
+{
+"pref": "沖縄県",
+"name": "宮古島市",
+"code": "472140",
+"url": "https://www.city.miyakojima.lg.jp/"
+},
+{
+"pref": "山口県",
+"name": "柳井市",
+"code": "352128",
+"url": "https://www.city-yanai.jp/"
+},
+{
+"pref": "愛媛県",
+"name": "大洲市",
+"code": "382078",
+"url": "https://www.city.ozu.ehime.jp/"
+},
+{
+"pref": "奈良県",
+"name": "天理市",
+"code": "292044",
+"url": "https://www.city.tenri.nara.jp/"
+},
+{
+"pref": "奈良県",
+"name": "五條市",
+"code": "292079",
+"url": "https://www.city.gojo.lg.jp/"
+},
+{
+"pref": "奈良県",
+"name": "御所市",
+"code": "292087",
+"url": "https://www.city.gose.nara.jp/"
+},
+{
+"pref": "奈良県",
+"name": "宇陀市",
+"code": "292125",
+"url": "https://www.city.uda.nara.jp/"
+},
+{
+"pref": "長崎県",
+"name": "西海市",
+"code": "422126",
+"url": "https://www.city.saikai.nagasaki.jp/"
+},
+{
+"pref": "滋賀県",
+"name": "守山市",
+"code": "252077",
+"url": "https://www.city.moriyama.lg.jp/"
+},
+{
+"pref": "滋賀県",
+"name": "野洲市",
+"code": "252107",
+"url": "https://www.city.yasu.lg.jp/"
+},
+{
+"pref": "山口県",
+"name": "美祢市",
+"code": "352136",
+"url": "https://www2.city.mine.lg.jp/www/toppage/0000000000000/APM03000.html"
+},
+{
+"pref": "山口県",
+"name": "周南市",
+"code": "352152",
+"url": "https://www.city.shunan.lg.jp/"
+},
+{
+"pref": "山口県",
+"name": "長門市",
+"code": "352110",
+"url": "https://www.city.nagato.yamaguchi.jp/"
+},
+{
+"pref": "滋賀県",
+"name": "高島市",
+"code": "252123",
+"url": "https://www.city.takashima.lg.jp/www/toppage/0000000000000/APM03000.html"
+},
+{
+"pref": "滋賀県",
+"name": "米原市",
+"code": "252140",
+"url": "https://www.city.maibara.lg.jp/"
+},
+{
+"pref": "愛媛県",
+"name": "八幡浜市",
+"code": "382043",
+"url": "https://www.city.yawatahama.ehime.jp/"
+},
+{
+"pref": "長崎県",
+"name": "島原市",
+"code": "422037",
+"url": "https://www.city.shimabara.lg.jp/"
+},
+{
+"pref": "長崎県",
+"name": "壱岐市",
+"code": "422100",
+"url": "https://www.city.iki.nagasaki.jp/"
+},
+{
+"pref": "沖縄県",
+"name": "南城市",
+"code": "472158",
+"url": "https://www.city.nanjo.okinawa.jp/"
+},
+{
+"pref": "愛媛県",
+"name": "四国中央市",
+"code": "382132",
+"url": "https://www.city.shikokuchuo.ehime.jp/"
+},
+{
+"pref": "岩手県",
+"name": "滝沢市",
+"code": "032166",
+"url": "https://www.city.takizawa.iwate.jp/"
+},
+{
+"pref": "石川県",
+"name": "輪島市",
+"code": "172049",
+"url": "https://www.city.wajima.ishikawa.jp/"
+},
+{
+"pref": "岩手県",
+"name": "八幡平市",
+"code": "032140",
+"url": "https://www.city.hachimantai.lg.jp/"
+},
+{
+"pref": "岩手県",
+"name": "陸前高田市",
+"code": "032107",
+"url": "https://www.city.rikuzentakata.iwate.jp/"
+},
+{
+"pref": "岩手県",
+"name": "奥州市",
+"code": "032158",
+"url": "https://www.city.oshu.iwate.jp/"
+},
+{
+"pref": "宮崎県",
+"name": "えびの市",
+"code": "452092",
+"url": "https://www.city.ebino.lg.jp/"
+},
+{
+"pref": "宮崎県",
+"name": "小林市",
+"code": "452050",
+"url": "https://www.city.kobayashi.lg.jp/"
+},
+{
+"pref": "宮崎県",
+"name": "日南市",
+"code": "452041",
+"url": "https://www.city.nichinan.lg.jp/"
+},
+{
+"pref": "大分県",
+"name": "津久見市",
+"code": "442071",
+"url": "https://www.city.tsukumi.oita.jp/"
+},
+{
+"pref": "大分県",
+"name": "杵築市",
+"code": "442101",
+"url": "https://www.city.kitsuki.lg.jp/"
+},
+{
+"pref": "大分県",
+"name": "竹田市",
+"code": "442089",
+"url": "https://www.city.taketa.oita.jp/"
+},
+{
+"pref": "大分県",
+"name": "国東市",
+"code": "442143",
+"url": "https://www.city.kunisaki.oita.jp/"
+},
+{
+"pref": "宮崎県",
+"name": "西都市",
+"code": "452084",
+"url": "https://www.city.saito.lg.jp/"
+},
+{
+"pref": "青森県",
+"name": "黒石市",
+"code": "022047",
+"url": "https://www.city.kuroishi.aomori.jp/"
+},
+{
+"pref": "青森県",
+"name": "つがる市",
+"code": "022098",
+"url": "https://www.city.tsugaru.aomori.jp/"
+},
+{
+"pref": "青森県",
+"name": "平川市",
+"code": "022101",
+"url": "https://www.city.hirakawa.lg.jp/"
+},
+{
+"pref": "青森県",
+"name": "三沢市",
+"code": "022071",
+"url": "https://www.city.misawa.lg.jp/"
+},
+{
+"pref": "岩手県",
+"name": "大船渡市",
+"code": "032034",
+"url": "https://www.city.ofunato.iwate.jp/"
+},
+{
+"pref": "岩手県",
+"name": "久慈市",
+"code": "032077",
+"url": "https://www.city.kuji.iwate.jp/index.html"
+},
+{
+"pref": "岩手県",
+"name": "遠野市",
+"code": "032085",
+"url": "https://www.city.tono.iwate.jp/"
+},
+{
+"pref": "岩手県",
+"name": "二戸市",
+"code": "032131",
+"url": "https://www.city.ninohe.lg.jp/"
+},
+{
+"pref": "石川県",
+"name": "加賀市",
+"code": "172065",
+"url": "https://www.city.kaga.ishikawa.jp/"
+},
+{
+"pref": "石川県",
+"name": "七尾市",
+"code": "172022",
+"url": "https://www.city.nanao.lg.jp/"
+},
+{
+"pref": "石川県",
+"name": "珠洲市",
+"code": "172057",
+"url": "https://www.city.suzu.lg.jp/"
+},
+{
+"pref": "山形県",
+"name": "新庄市",
+"code": "062057",
+"url": "https://www.city.shinjo.yamagata.jp/"
+},
+{
+"pref": "山形県",
+"name": "上山市",
+"code": "062073",
+"url": "https://www.city.kaminoyama.yamagata.jp/"
+},
+{
+"pref": "山形県",
+"name": "長井市",
+"code": "062090",
+"url": "https://www.city.nagai.yamagata.jp/"
+},
+{
+"pref": "山形県",
+"name": "東根市",
+"code": "062111",
+"url": "https://www.city.higashine.yamagata.jp/"
+},
+{
+"pref": "山形県",
+"name": "尾花沢市",
+"code": "062120",
+"url": "https://www.city.obanazawa.yamagata.jp/"
+},
+{
+"pref": "富山県",
+"name": "魚津市",
+"code": "162043",
+"url": "https://www.city.uozu.toyama.jp/"
+},
+{
+"pref": "富山県",
+"name": "氷見市",
+"code": "162051",
+"url": "https://www.city.himi.toyama.jp/"
+},
+{
+"pref": "富山県",
+"name": "滑川市",
+"code": "162060",
+"url": "https://www.city.namerikawa.toyama.jp/"
+},
+{
+"pref": "富山県",
+"name": "小矢部市",
+"code": "162094",
+"url": "https://www.city.oyabe.toyama.jp/"
+},
+{
+"pref": "富山県",
+"name": "射水市",
+"code": "162116",
+"url": "https://www.city.imizu.toyama.jp/"
+},
+{
+"pref": "秋田県",
+"name": "横手市",
+"code": "052035",
+"url": "https://www.city.yokote.lg.jp/"
+},
+{
+"pref": "秋田県",
+"name": "大館市",
+"code": "052043",
+"url": "https://www.city.odate.lg.jp/"
+},
+{
+"pref": "秋田県",
+"name": "男鹿市",
+"code": "052060",
+"url": "https://www.city.oga.akita.jp/"
+},
+{
+"pref": "秋田県",
+"name": "湯沢市",
+"code": "052078",
+"url": "https://www.city-yuzawa.jp/"
+},
+{
+"pref": "秋田県",
+"name": "鹿角市",
+"code": "052094",
+"url": "https://www.city.kazuno.lg.jp/"
+},
+{
+"pref": "秋田県",
+"name": "潟上市",
+"code": "052116",
+"url": "https://www.city.katagami.lg.jp/"
+},
+{
+"pref": "秋田県",
+"name": "大仙市",
+"code": "052124",
+"url": "https://www.city.daisen.lg.jp/"
+},
+{
+"pref": "秋田県",
+"name": "にかほ市",
+"code": "052141",
+"url": "https://www.city.nikaho.akita.jp/"
+},
+{
+"pref": "秋田県",
+"name": "仙北市",
+"code": "052159",
+"url": "https://www.city.semboku.akita.jp/"
+},
+{
+"pref": "香川県",
+"name": "さぬき市",
+"code": "372064",
+"url": "https://www.city.sanuki.kagawa.jp/"
+},
+{
+"pref": "香川県",
+"name": "三豊市",
+"code": "372081",
+"url": "https://www.city.mitoyo.lg.jp"
+},
+{
+"pref": "和歌山県",
+"name": "有田市",
+"code": "302040",
+"url": "https://www.city.arida.lg.jp/"
+},
+{
+"pref": "和歌山県",
+"name": "御坊市",
+"code": "302058",
+"url": "https://www.city.gobo.lg.jp/"
+},
+{
+"pref": "和歌山県",
+"name": "紀の川市",
+"code": "302082",
+"url": "https://www.city.kinokawa.lg.jp/"
+},
+{
+"pref": "和歌山県",
+"name": "岩出市",
+"code": "302091",
+"url": "https://www.city.iwade.lg.jp/"
+},
+{
+"pref": "佐賀県",
+"name": "佐賀市",
+"code": "412015",
+"url": "https://www.city.saga.lg.jp/"
+},
+{
+"pref": "佐賀県",
+"name": "多久市",
+"code": "412040",
+"url": "https://www.city.taku.lg.jp/"
+},
+{
+"pref": "佐賀県",
+"name": "鹿島市",
+"code": "412074",
+"url": "https://www.city.saga-kashima.lg.jp/"
+},
+{
+"pref": "佐賀県",
+"name": "小城市",
+"code": "412082",
+"url": "https://www.city.ogi.lg.jp/"
+},
+{
+"pref": "佐賀県",
+"name": "嬉野市",
+"code": "412091",
+"url": "https://www.city.ureshino.lg.jp/"
+},
+{
+"pref": "佐賀県",
+"name": "神埼市",
+"code": "412104",
+"url": "https://www.city.kanzaki.saga.jp/"
+},
+{
+"pref": "山梨県",
+"name": "甲府市",
+"code": "192015",
+"url": "https://www.city.kofu.yamanashi.jp/"
+},
+{
+"pref": "山梨県",
+"name": "富士吉田市",
+"code": "192023",
+"url": "https://www.city.fujiyoshida.yamanashi.jp/"
+},
+{
+"pref": "山梨県",
+"name": "山梨市",
+"code": "192058",
+"url": "https://www.city.yamanashi.yamanashi.jp/"
+},
+{
+"pref": "山梨県",
+"name": "大月市",
+"code": "192066",
+"url": "https://www.city.otsuki.yamanashi.jp/"
+},
+{
+"pref": "山梨県",
+"name": "南アルプス市",
+"code": "192082",
+"url": "https://www.city.minami-alps.yamanashi.jp/"
+},
+{
+"pref": "山梨県",
+"name": "北杜市",
+"code": "192091",
+"url": "https://www.city.hokuto.yamanashi.jp/"
+},
+{
+"pref": "山梨県",
+"name": "笛吹市",
+"code": "192112",
+"url": "https://www.city.fuefuki.yamanashi.jp/"
+},
+{
+"pref": "山梨県",
+"name": "上野原市",
+"code": "192121",
+"url": "https://www.city.uenohara.yamanashi.jp/"
+},
+{
+"pref": "山梨県",
+"name": "甲州市",
+"code": "192139",
+"url": "https://www.city.koshu.yamanashi.jp/"
+},
+{
+"pref": "山梨県",
+"name": "中央市",
+"code": "192147",
+"url": "https://www.city.chuo.yamanashi.jp/"
+},
+{
+"pref": "福井県",
+"name": "大野市",
+"code": "182052",
+"url": "https://www.city.ono.fukui.jp/"
+},
+{
+"pref": "福井県",
+"name": "越前市",
+"code": "182095",
+"url": "https://www.city.echizen.lg.jp/"
+},
+{
+"pref": "福井県",
+"name": "坂井市",
+"code": "182109",
+"url": "https://www.city.fukui-sakai.lg.jp/"
+},
+{
+"pref": "徳島県",
+"name": "鳴門市",
+"code": "362026",
+"url": "https://www.city.naruto.tokushima.jp/"
+},
+{
+"pref": "徳島県",
+"name": "阿南市",
+"code": "362042",
+"url": "https://www.city.anan.tokushima.jp/"
+},
+{
+"pref": "徳島県",
+"name": "吉野川市",
+"code": "362051",
+"url": "https://www.city.yoshinogawa.lg.jp/"
+},
+{
+"pref": "徳島県",
+"name": "阿波市",
+"code": "362069",
+"url": "https://www.city.awa.lg.jp/"
+},
+{
+"pref": "徳島県",
+"name": "美馬市",
+"code": "362077",
+"url": "https://www.city.mima.lg.jp/"
+},
+{
+"pref": "徳島県",
+"name": "三好市",
+"code": "362085",
+"url": "https://www.miyoshi.i-tokushima.jp/"
+},
+{
+"pref": "高知県",
+"name": "室戸市",
+"code": "392022",
+"url": "https://www.city.muroto.kochi.jp/"
+},
+{
+"pref": "高知県",
+"name": "安芸市",
+"code": "392031",
+"url": "https://www.city.aki.kochi.jp/"
+},
+{
+"pref": "高知県",
+"name": "南国市",
+"code": "392049",
+"url": "https://www.city.nankoku.lg.jp/"
+},
+{
+"pref": "高知県",
+"name": "須崎市",
+"code": "392065",
+"url": "https://www.city.susaki.lg.jp/"
+},
+{
+"pref": "高知県",
+"name": "宿毛市",
+"code": "392081",
+"url": "https://www.city.sukumo.kochi.jp/"
+},
+{
+"pref": "高知県",
+"name": "土佐清水市",
+"code": "392090",
+"url": "https://www.city.tosashimizu.kochi.jp/"
+},
+{
+"pref": "高知県",
+"name": "香美市",
+"code": "392120",
+"url": "https://www.city.kami.lg.jp/"
+},
+{
+"pref": "島根県",
+"name": "浜田市",
+"code": "322024",
+"url": "https://www.city.hamada.shimane.jp/www/toppage/0000000000000/APM03000.html"
+},
+{
+"pref": "島根県",
+"name": "大田市",
+"code": "322059",
+"url": "https://www.city.oda.lg.jp/"
+},
+{
+"pref": "島根県",
+"name": "安来市",
+"code": "322067",
+"url": "https://www.city.yasugi.shimane.jp/"
+},
+{
+"pref": "島根県",
+"name": "江津市",
+"code": "322075",
+"url": "https://www.city.gotsu.lg.jp/"
+},
+{
+"pref": "島根県",
+"name": "雲南市",
+"code": "322091",
+"url": "https://www.city.unnan.shimane.jp/unnan/"
+},
+{
+"pref": "鳥取県",
+"name": "鳥取市",
+"code": "312011",
+"url": "https://www.city.tottori.lg.jp/www/index.html"
+},
+{
+"pref": "福島県",
+"name": "会津若松市",
+"code": "072028",
+"url": "https://www.city.aizuwakamatsu.fukushima.jp/"
+},
+{
+"pref": "福島県",
+"name": "喜多方市",
+"code": "072087",
+"url": "https://www.city.kitakata.fukushima.jp/"
+},
+{
+"pref": "福島県",
+"name": "相馬市",
+"code": "072095",
+"url": "https://www.city.soma.fukushima.jp/"
+},
+{
+"pref": "福島県",
+"name": "二本松市",
+"code": "072109",
+"url": "https://www.city.nihonmatsu.lg.jp/"
+},
+{
+"pref": "福島県",
+"name": "田村市",
+"code": "072117",
+"url": "https://www.city.tamura.lg.jp/"
+},
+{
+"pref": "福島県",
+"name": "南相馬市",
+"code": "072125",
+"url": "https://www.city.minamisoma.lg.jp/"
+},
+{
+"pref": "福島県",
+"name": "伊達市",
+"code": "072133",
+"url": "https://www.city.fukushima-date.lg.jp/"
+},
+{
+"pref": "鳥取県",
+"name": "倉吉市",
+"code": "312037",
+"url": "https://www.city.kurayoshi.lg.jp/"
+},
+{
+"pref": "東京都",
+"name": "檜原村",
+"code": "133078",
+"url": "https://www.vill.hinohara.tokyo.jp/"
+},
+{
+"pref": "東京都",
+"name": "奥多摩町",
+"code": "133086",
+"url": "https://www.town.okutama.tokyo.jp/"
+},
+{
+"pref": "東京都",
+"name": "大島町",
+"code": "133612",
+"url": "https://www.town.oshima.tokyo.jp/"
+},
+{
+"pref": "東京都",
+"name": "利島村",
+"code": "133621",
+"url": "https://www.toshimamura.org/"
+},
+{
+"pref": "東京都",
+"name": "新島村",
+"code": "133639",
+"url": "https://www.niijima.com/"
+},
+{
+"pref": "東京都",
+"name": "神津島村",
+"code": "133647",
+"url": "https://vill.kouzushima.tokyo.jp/"
+},
+{
+"pref": "東京都",
+"name": "御蔵島村",
+"code": "133825",
+"url": "https://www.vill.mikurasima.tokyo.jp/"
+},
+{
+"pref": "東京都",
+"name": "青ヶ島村",
+"code": "134023",
+"url": "https://www.vill.aogashima.tokyo.jp/"
+},
+{
+"pref": "東京都",
+"name": "小笠原村",
+"code": "134210",
+"url": "https://www.vill.ogasawara.tokyo.jp/"
+},
+{
+"pref": "東京都",
+"name": "三宅村",
+"code": "133817",
+"url": "https://www.vill.miyake.tokyo.jp/"
+},
+{
+"pref": "東京都",
+"name": "八丈町",
+"code": "134015",
+"url": "https://www.town.hachijo.tokyo.jp/"
+},
+{
+"pref": "神奈川県",
+"name": "山北町",
+"code": "143642",
+"url": "https://www.town.yamakita.kanagawa.jp/"
+},
+{
+"pref": "神奈川県",
+"name": "真鶴町",
+"code": "143839",
+"url": "https://www.town.manazuru.kanagawa.jp/"
+},
+{
+"pref": "神奈川県",
+"name": "清川村",
+"code": "144029",
+"url": "https://www.town.kiyokawa.kanagawa.jp/"
+},
+{
+"pref": "大阪府",
+"name": "豊能町",
+"code": "273210",
+"url": "https://www.town.toyono.osaka.jp/"
+},
+{
+"pref": "大阪府",
+"name": "能勢町",
+"code": "273228",
+"url": "https://www.town.nose.osaka.jp/"
+},
+{
+"pref": "大阪府",
+"name": "忠岡町",
+"code": "273414",
+"url": "https://www.town.tadaoka.osaka.jp/"
+},
+{
+"pref": "大阪府",
+"name": "田尻町",
+"code": "273627",
+"url": "https://www.town.tajiri.osaka.jp/"
+},
+{
+"pref": "大阪府",
+"name": "太子町",
+"code": "273813",
+"url": "https://www.town.taishi.osaka.jp/"
+},
+{
+"pref": "大阪府",
+"name": "河南町",
+"code": "273821",
+"url": "https://www.town.kanan.osaka.jp/"
+},
+{
+"pref": "大阪府",
+"name": "千早赤阪村",
+"code": "273830",
+"url": "https://www.vill.chihayaakasaka.osaka.jp/"
+},
+{
+"pref": "愛知県",
+"name": "南知多町",
+"code": "234451",
+"url": "https://www.town.minamichita.lg.jp/"
+},
+{
+"pref": "愛知県",
+"name": "設楽町",
+"code": "235610",
+"url": "https://www.town.shitara.lg.jp/"
+},
+{
+"pref": "愛知県",
+"name": "東栄町",
+"code": "235628",
+"url": "https://www.town.toei.aichi.jp/"
+},
+{
+"pref": "愛知県",
+"name": "豊根村",
+"code": "235636",
+"url": "https://www.vill.toyone.aichi.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "毛呂山町",
+"code": "113263",
+"url": "https://www.town.moroyama.saitama.jp/www/index.html"
+},
+{
+"pref": "埼玉県",
+"name": "越生町",
+"code": "113271",
+"url": "https://www.town.ogose.saitama.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "滑川町",
+"code": "113417",
+"url": "https://www.town.namegawa.saitama.jp/index.html"
+},
+{
+"pref": "埼玉県",
+"name": "嵐山町",
+"code": "113425",
+"url": "https://www.town.ranzan.saitama.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "小川町",
+"code": "113433",
+"url": "https://www.town.ogawa.saitama.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "鳩山町",
+"code": "113484",
+"url": "https://www.town.hatoyama.saitama.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "ときがわ町",
+"code": "113492",
+"url": "https://www.town.tokigawa.lg.jp/forms/top/top.aspx"
+},
+{
+"pref": "埼玉県",
+"name": "横瀬町",
+"code": "113611",
+"url": "https://www.town.yokoze.saitama.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "皆野町",
+"code": "113620",
+"url": "https://www.town.minano.saitama.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "長瀞町",
+"code": "113638",
+"url": "https://www.town.nagatoro.saitama.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "東秩父村",
+"code": "113697",
+"url": "https://www.vill.higashichichibu.saitama.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "美里町",
+"code": "113816",
+"url": "https://www.town.saitama-misato.lg.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "神川町",
+"code": "113832",
+"url": "https://www.town.kamikawa.saitama.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "上里町",
+"code": "113859",
+"url": "https://www.town.kamisato.saitama.jp/"
+},
+{
+"pref": "埼玉県",
+"name": "寄居町",
+"code": "114081",
+"url": "https://www.town.yorii.saitama.jp/"
+},
+{
+"pref": "千葉県",
+"name": "多古町",
+"code": "123471",
+"url": "https://www.town.tako.chiba.jp/"
+},
+{
+"pref": "千葉県",
+"name": "横芝光町",
+"code": "124109",
+"url": "https://www.town.yokoshibahikari.chiba.jp/"
+},
+{
+"pref": "千葉県",
+"name": "神崎町",
+"code": "123421",
+"url": "https://www.town.kozaki.chiba.jp/"
+},
+{
+"pref": "千葉県",
+"name": "睦沢町",
+"code": "124222",
+"url": "https://www.town.mutsuzawa.chiba.jp/"
+},
+{
+"pref": "千葉県",
+"name": "長南町",
+"code": "124273",
+"url": "https://www.town.chonan.chiba.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "多可町",
+"code": "283657",
+"url": "https://www.town.taka.lg.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "稲美町",
+"code": "283819",
+"url": "https://www.town.hyogo-inami.lg.jp/"
+},
+{
+"pref": "兵庫県",
+"name": "上郡町",
+"code": "284815",
+"url": "https://www.town.kamigori.hyogo.jp/cms-sypher/www/index.jsp"
+},
+{
+"pref": "兵庫県",
+"name": "佐用町",
+"code": "285013",
+"url": "https://www.town.sayo.lg.jp/cms-sypher/www/normal_top.jsp"
+},
+{
+"pref": "兵庫県",
+"name": "香美町",
+"code": "285854",
+"url": "https://www.town.mikata-kami.lg.jp/www/index.html"
+},
+{
+"pref": "兵庫県",
+"name": "新温泉町",
+"code": "285862",
+"url": "https://www.town.shinonsen.hyogo.jp/"
+},
+{
+"pref": "北海道",
+"name": "松前町",
+"code": "013315",
+"url": "https://www.town.matsumae.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "福島町",
+"code": "013323",
+"url": "https://www.town.fukushima.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "知内町",
+"code": "013331",
+"url": "https://www.town.shiriuchi.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "木古内町",
+"code": "013340",
+"url": "https://www.town.kikonai.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "鹿部町",
+"code": "013439",
+"url": "https://www.town.shikabe.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "八雲町",
+"code": "013463",
+"url": "https://www.town.yakumo.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "長万部町",
+"code": "013471",
+"url": "https://www.town.oshamambe.lg.jp/index.php"
+},
+{
+"pref": "北海道",
+"name": "上ノ国町",
+"code": "013625",
+"url": "https://www.town.kaminokuni.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "厚沢部町",
+"code": "013633",
+"url": "https://www.town.assabu.lg.jp/index.php"
+},
+{
+"pref": "北海道",
+"name": "奥尻町",
+"code": "013676",
+"url": "https://www.town.okushiri.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "今金町",
+"code": "013706",
+"url": "https://www.town.imakane.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "せたな町",
+"code": "013714",
+"url": "https://www.town.setana.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "寿都町",
+"code": "013927",
+"url": "http://www.town.suttu.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "黒松内町",
+"code": "013935",
+"url": "http://www.kuromatsunai.com/"
+},
+{
+"pref": "北海道",
+"name": "ニセコ町",
+"code": "013951",
+"url": "https://www.town.niseko.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "真狩村",
+"code": "013960",
+"url": "https://www.vill.makkari.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "留寿都村",
+"code": "013978",
+"url": "https://www.vill.rusutsu.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "京極町",
+"code": "013994",
+"url": "https://www.town-kyogoku.jp/"
+},
+{
+"pref": "北海道",
+"name": "倶知安町",
+"code": "014001",
+"url": "https://www.town.kutchan.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "共和町",
+"code": "014010",
+"url": "https://www.town.kyowa.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "岩内町",
+"code": "014028",
+"url": "https://www.town.iwanai.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "泊村",
+"code": "014036",
+"url": "https://www.vill.tomari.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "神恵内村",
+"code": "014044",
+"url": "https://www.vill.kamoenai.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "積丹町",
+"code": "014052",
+"url": "https://www.town.shakotan.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "古平町",
+"code": "014061",
+"url": "https://www.town.furubira.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "仁木町",
+"code": "014079",
+"url": "https://www.town.niki.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "余市町",
+"code": "014087",
+"url": "https://www.town.yoichi.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "赤井川村",
+"code": "014095",
+"url": "https://www.akaigawa.com/"
+},
+{
+"pref": "北海道",
+"name": "奈井江町",
+"code": "014249",
+"url": "https://www.town.naie.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "上砂川町",
+"code": "014257",
+"url": "https://town.kamisunagawa.hokkaido.jp/"
+},
+{
+"pref": "北海道",
+"name": "由仁町",
+"code": "014273",
+"url": "https://www.town.yuni.lg.jp/"
+},
+{
+"pref": "北海道",
+"name": "長沼町",
+"code": "014281",
+"url": "https://www.maoi-net.jp/"
+}
+]
