@@ -47,7 +47,7 @@ def main():
     base = os.path.join(os.path.dirname(__file__), 'crawl')
     jobs = []
     for fn in sorted(os.listdir(base)):
-        if fn.startswith('reg') and fn.endswith('.json'): jobs += json.load(open(os.path.join(base, fn)))
+        if fn.startswith('reg_') and fn.endswith('.json'): jobs += json.load(open(os.path.join(base, fn)))
     if not jobs: return
     with cf.ThreadPoolExecutor(8) as ex:
         logs = list(ex.map(lambda j: one(j, out), jobs))
