@@ -1,0 +1,72 @@
+{
+"pref": "長野県",
+"name": "根羽村",
+"code": "204102",
+"url": "http://nebamura.jp/",
+"found": [
+{
+"url": "https://www.nebamura.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.nebamura.jp/contact",
+"お問い合わせ"
+],
+[
+"https://www.nebamura.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.nebamura.jp/nebatopics/disasterinfo/",
+"bousai": true,
+"forms": [
+[
+"https://www.nebamura.jp/contact",
+"お問い合わせ"
+],
+[
+"https://www.nebamura.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.nebamura.jp/nebatopics/cat_news/%e7%81%bd%e5%ae%b3/",
+"bousai": true,
+"forms": [
+[
+"https://www.nebamura.jp/contact",
+"お問い合わせ"
+],
+[
+"https://www.nebamura.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.nebamura.jp/nebatopics/news/3053/",
+"bousai": true,
+"forms": [
+[
+"https://www.nebamura.jp/contact",
+"お問い合わせ"
+],
+[
+"https://www.nebamura.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

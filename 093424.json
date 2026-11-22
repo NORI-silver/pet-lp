@@ -1,0 +1,28 @@
+{
+"pref": "栃木県",
+"name": "益子町",
+"code": "093424",
+"url": "http://www.town.mashiko.tochigi.jp/",
+"found": [
+{
+"url": "https://www.town.mashiko.lg.jp:443/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.mashiko.lg.jp:443/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.town.mashiko.lg.jp:443/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.town.mashiko.lg.jp:443/mailform.php?code=6",
+"ご意見・ご要望"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

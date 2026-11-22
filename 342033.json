@@ -1,0 +1,148 @@
+{
+"pref": "広島県",
+"name": "竹原市",
+"code": "342033",
+"url": "http://www.city.takehara.lg.jp/",
+"found": [
+{
+"url": "https://www.city.takehara.lg.jp/kurashi_tetsuzuki/pet_dobutsu/index.html",
+"bousai": false,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.takehara.lg.jp/",
+"bousai": false,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.takehara.lg.jp/mokutekibetsudesagasu/bosai_shobo/4865.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.takehara.lg.jp/mokutekibetsudesagasu/bosai_shobo/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.takehara.lg.jp/kurashi_tetsuzuki/bosai/1/3893.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.takehara.lg.jp/cgi-bin/inquiry.php/5?page_no=3893",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.takehara.lg.jp/kurashi_tetsuzuki/bosai/2/3899.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.takehara.lg.jp/cgi-bin/inquiry.php/5?page_no=3899",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.takehara.lg.jp/kurashi_tetsuzuki/bosai/2/3889.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.takehara.lg.jp/cgi-bin/inquiry.php/5?page_no=3889",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.takehara.lg.jp/kurashi_tetsuzuki/bosai/2/3905.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.takehara.lg.jp/cgi-bin/inquiry.php/12?page_no=3905",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.takehara.lg.jp/kurashi_tetsuzuki/bosai/3/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.takehara.lg.jp/kurashi_tetsuzuki/bosai/3/3890.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.takehara.lg.jp/cgi-bin/inquiry.php/5?page_no=3890",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.takehara.lg.jp/kurashi_tetsuzuki/bosai/3/3451.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.takehara.lg.jp/cgi-bin/inquiry.php/14?page_no=3451",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.takehara.lg.jp/kurashi_tetsuzuki/bosai/4/3897.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.takehara.lg.jp/cgi-bin/inquiry.php/5?page_no=3897",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [
+"takehara-city@raiden3.ktaiwork.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.takehara.lg.jp/kurashi_tetsuzuki/bosai/5/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.takehara.lg.jp/kurashi_tetsuzuki/bosai/5/3906.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.takehara.lg.jp/cgi-bin/inquiry.php/5?page_no=3906",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

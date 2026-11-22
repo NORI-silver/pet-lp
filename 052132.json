@@ -1,0 +1,219 @@
+{
+"pref": "秋田県",
+"name": "北秋田市",
+"code": "052132",
+"url": "http://www.city.kitaakita.akita.jp/",
+"found": [
+{
+"url": "https://www.city.kitaakita.akita.jp/genre/shisei",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kitaakita.akita.jp/contact",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.kitaakita.akita.jp/genre/shigoto/soumu_soumu/kikikanri",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kitaakita.akita.jp/contact?contents_number=110&amp;group_id=126",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.kitaakita.akita.jp/contact",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kitaakita.akita.jp/genre/syoubou_honbu/p11122",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kitaakita.akita.jp/contact?contents_number=11122&amp;group_id=179",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.kitaakita.akita.jp/contact",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.kitaakita.akita.jp/genre/syoubou_honbu/guide",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kitaakita.akita.jp/contact?contents_number=2639&amp;group_id=179",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.kitaakita.akita.jp/contact",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.kitaakita.akita.jp/genre/kurashi/bousai",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kitaakita.akita.jp/contact?contents_number=203&amp;group_id=126",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.kitaakita.akita.jp/contact",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kitaakita.akita.jp/archive/p20260416154038",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kitaakita.akita.jp/contact?contents_number=20309&amp;group_id=126",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.kitaakita.akita.jp/contact",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kitaakita.akita.jp/ex/hazardmap/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課危機管理係"
+},
+{
+"url": "https://www.city.kitaakita.akita.jp/archive/contents-5718",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kitaakita.akita.jp/contact?contents_number=5695&amp;group_id=126",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.kitaakita.akita.jp/contact",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kitaakita.akita.jp/archive/contents-5719",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kitaakita.akita.jp/contact?contents_number=5707&amp;group_id=126",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.kitaakita.akita.jp/contact",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kitaakita.akita.jp/archive/contents-5720",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kitaakita.akita.jp/contact?contents_number=5710&amp;group_id=126",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.kitaakita.akita.jp/contact",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kitaakita.akita.jp/archive/contents-5722",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kitaakita.akita.jp/contact?contents_number=5713&amp;group_id=126",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.kitaakita.akita.jp/contact",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kitaakita.akita.jp/archive/contents-5721",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kitaakita.akita.jp/contact?contents_number=5712&amp;group_id=149",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.kitaakita.akita.jp/contact",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kitaakita.akita.jp/archive/contents-5723",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kitaakita.akita.jp/contact?contents_number=5708&amp;group_id=126",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.kitaakita.akita.jp/contact",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kitaakita.akita.jp/archive/contents-5725",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kitaakita.akita.jp/contact?contents_number=5715&amp;group_id=126",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.kitaakita.akita.jp/contact",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+}
+]
+}

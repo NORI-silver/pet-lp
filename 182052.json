@@ -1,0 +1,62 @@
+{
+"pref": "福井県",
+"name": "大野市",
+"code": "182052",
+"url": "http://www.city.ono.fukui.jp/",
+"found": [
+{
+"url": "http://www.city.ono.fukui.jp/kurashi/bousai-anzen/bousai_saigai_LINK.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"yamabiko@city.fukui-ono.lg.jp"
+],
+"dept": null
+},
+{
+"url": "http://www.city.ono.fukui.jp/kurashi/bousai-anzen/bousai/sougoubousaimap/sougoubousaimap.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bosai@city.fukui-ono.lg.jp"
+],
+"dept": "防災防犯課"
+},
+{
+"url": "http://www.city.ono.fukui.jp/shisei/kouho-koucho/sonota/dairikeisai-saigai.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"hisyo@city.fukui-ono.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.ono.fukui.jp/kurashi/bousai-anzen/kobetsujyushinki.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bosai@city.fukui-ono.lg.jp"
+],
+"dept": "防災防犯課"
+},
+{
+"url": "https://www.city.ono.fukui.jp/kurashi/bousai-anzen/bousai_saigai_LINK.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"yamabiko@city.fukui-ono.lg.jp"
+],
+"dept": null
+},
+{
+"url": "http://www.city.ono.fukui.jp/kurashi/bousai-anzen/kobetsujyushinki.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bosai@city.fukui-ono.lg.jp"
+],
+"dept": "防災防犯課"
+}
+]
+}

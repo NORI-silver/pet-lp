@@ -1,0 +1,36 @@
+{
+"pref": "北海道",
+"name": "札幌市",
+"code": "011002",
+"url": "http://www.city.sapporo.jp/",
+"found": [
+{
+"url": "https://www.city.sapporo.jp/kikikanri/hinanjyouneimanyuaru.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "札幌市危機管理局危機管理部危機管理課"
+},
+{
+"url": "https://www.city.sapporo.jp/kikikanri/higoro/hinan/hinan_index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "札幌市危機管理局危機管理部危機管理課"
+},
+{
+"url": "https://www.city.sapporo.jp/kikikanri/higoro/hinan/hinanbasyo.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "札幌市危機管理局危機管理部危機管理課"
+},
+{
+"url": "https://www.city.sapporo.jp/kikikanri/torikumi/hinanjyounei.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "札幌市危機管理局危機管理部危機管理課"
+}
+]
+}

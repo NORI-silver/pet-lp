@@ -1,0 +1,53 @@
+{
+"pref": "愛知県",
+"name": "津島市",
+"code": "232084",
+"url": "http://www.city.tsushima.lg.jp/",
+"found": [
+{
+"url": "https://www.city.tsushima.lg.jp/kurashi/anshinanzen/bousai/saigaihasseizitaiou/saigaipeta.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "http://www.city.tsushima.lg.jp/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災教室"
+},
+{
+"url": "http://www.city.tsushima.lg.jp/kurashi/anshinanzen/bousai/saigaisonae/bousaikyoushitsu.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "http://www.city.tsushima.lg.jp/kurashi/anshinanzen/bousai/saigaihasseizitaiou/hinanzyokitakusien/hinanjyo.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "http://www.city.tsushima.lg.jp/kurashi/anshinanzen/bousai/bousaijoho/mailbousaizyouhou/bousaimail.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"aichi-tsushima-city@raiden2.ktaiwork.jp",
+"bousai.aichi-tsushima-city@raiden2.ktaiwork.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.tsushima.lg.jp/kurashi/anshinanzen/bousai/saigaisonae/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "自助・共助防災学習センター"
+}
+]
+}

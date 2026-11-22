@@ -1,0 +1,45 @@
+{
+"pref": "滋賀県",
+"name": "大津市",
+"code": "252018",
+"url": "http://www.city.otsu.lg.jp/",
+"found": [
+{
+"url": "https://www.city.otsu.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.otsu-city-callcenter.jp/",
+"大津市コールセンターお問い合わせ・ご意見・ご要望を受付"
+],
+[
+"https://www.city.otsu.lg.jp/d_news/77921.html",
+"大津市ホームページ「お問い合わせフォーム」の一時停止について"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.otsu.lg.jp/i/65547.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "大津市危機・防災対策課"
+},
+{
+"url": "https://www.city.otsu.lg.jp/d_news/77298.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機・防災対策課"
+},
+{
+"url": "https://www.city.otsu.lg.jp/bosai/b/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "大津市危機・防災対策課"
+}
+]
+}
