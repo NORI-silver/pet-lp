@@ -1,4 +1,4 @@
-# 案の型（かっこの中を答えに書きかえてから `python3 tools/proposal_check.py <案> --type money` を通す。型のままでは通らない）
+# 案の型（かっこの中を答えに書きかえてから `python3 tools/proposal_check.py <案> --type money --saku 日付 --soroban 日付 --reviewed 日付` を通す。順は 策（さく）→ 算（そろばん）→ 問・鏡。型のままでは通らない）
 
 ## 図
 

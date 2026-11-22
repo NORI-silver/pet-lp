@@ -4,7 +4,7 @@
 提案・計画・下書きの説明（.md か .html）を Nori さんに出す前に必ず通す。関（せき）がここで止める。
 - Nori さんが聞きそうなことに、先に答えているか（`docs/ai/framework/toi-questions.md` の問い。種類ごとに必須がちがう）
 - 図があるか（箱と矢印・表・svg・mermaid。文字だけの提案は出さない）
-使い方: python3 tools/proposal_check.py 提案.md [--reviewed 鏡と問が読んだ日] --type money|partner|page|mail|system   → 足りなければ終了コード1
+使い方: python3 tools/proposal_check.py 提案.md [--reviewed 鏡と問が読んだ日] [--saku 策が読んだ日 --soroban 算が読んだ日（money・partner は必須）] --type money|partner|page|mail|system   → 足りなければ終了コード1
 書き方: 見出し「## 先回りの答え」の下に「- お金の流れ：…」のように1行ずつ。答えが「なし」でも理由を書く（「未定」「TODO」「あとで」は答えではない）。
 """
 import re, sys
@@ -49,6 +49,12 @@ if __name__ == "__main__":
     # 鏡（かがみ）と問（とい）が「Noriさんならどこで突っこむか」を読んだしるし（Nori 2026-11-22「こういうことが起こらないように体制組んでるのじゃないの？」）
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", (a[a.index("--reviewed") + 1] if "--reviewed" in a and a.index("--reviewed") + 1 < len(a) else "")):
         res.append("鏡（かがみ）と問（とい）が「Noriさんならどこで突っこむか」を読み、直す所0にしてから --reviewed YYYY-MM-DD を付ける")
+    # お金・提携の案は 策（さく）→ 算（そろばん）→ 問・鏡 の順に通す（2026-11-22 体制：策は戦略の関門、算はお金・契約・法律）
+    if kind in ("money", "partner"):
+        for flag, who in (("--saku", "策（さく）が戦略（目標の鎖のどこを動かすか・ほかの案とのくらべ）"), ("--soroban", "算（そろばん）がお金・契約・法律")):
+            v = a[a.index(flag) + 1] if flag in a and a.index(flag) + 1 < len(a) else ""
+            if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", v):
+                res.append(f"{who}を読んでから {flag} YYYY-MM-DD を付ける（順は 策→算→問・鏡→Noriさん）")
     for r in res: print("直す:", r)
     print("OK" if not res else f"{len(res)}か所（関で止めています。答えてから出す）")
     sys.exit(1 if res else 0)
