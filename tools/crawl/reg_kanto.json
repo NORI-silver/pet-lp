@@ -1,34 +1,22 @@
 [
 {
-"key": "栃木県",
-"url": "https://www.tochigi-douai.net/gyousya.html"
-},
-{
-"key": "川口市",
-"url": "https://www.city.kawaguchi.lg.jp/soshiki/01090/seikatueiseika/doubutsu/shop/34812.html"
-},
-{
-"key": "川崎市",
-"url": "https://www.city.kawasaki.jp/350/page/0000035635.html"
-},
-{
-"key": "相模原市",
-"url": "https://opendata.city.sagamihara.kanagawa.jp/dataset/daiisshudobutsu"
+"key": "千葉市",
+"url": "https://www.city.chiba.jp/hokenfukushi/iryoeisei/seikatsueisei/dobutsuhogo/documents/202601023.xlsx"
 },
 {
 "key": "前橋市",
-"url": "https://data.bodik.jp/dataset/102016_doutorigyou/resource/25f3d101-d380-4069-9589-79f3df0b59a2"
+"url": "https://data.bodik.jp/api/3/action/resource_show?id=25f3d101-d380-4069-9589-79f3df0b59a2"
 },
 {
-"key": "千葉市",
-"url": "https://www.city.chiba.jp/hokenfukushi/iryoeisei/seikatsueisei/dobutsuhogo/toriatukaigyou.html"
-},
-{
-"key": "船橋市",
-"url": "https://www.city.funabashi.lg.jp/jigyou/iji_yakuji_eisei/005/p026865.html"
+"key": "相模原市",
+"url": "https://opendata.city.sagamihara.kanagawa.jp/api/3/action/package_show?id=daiisshudobutsu"
 },
 {
 "key": "横須賀市",
-"url": "https://www.city.yokosuka.kanagawa.jp/3180/g_info/toriatukaigyo1.html"
+"url": "http://yokosuka-city.site.ktaiwork.jp/"
+},
+{
+"key": "栃木県",
+"url": "https://www.tochigi-douai.net/gyousya.html"
 }
 ]
