@@ -40,6 +40,20 @@ def bing(q):
             res.append([strip(m.group(2)), u, strip(sn.group(1))[:160] if sn else ''])
     return res
 
+def brave(q):
+    h = get('https://search.brave.com/search?source=web&q=' + urllib.parse.quote(q))
+    res = []
+    for blk in re.findall(r'(?is)<div[^>]+class="[^"]*snippet[^"]*"[^>]*data-type="web".*?</div>\s*</div>', h):
+        m = re.search(r'(?is)<a[^>]+href="(https?://[^"]+)"', blk)
+        t = re.search(r'(?is)class="[^"]*title[^"]*"[^>]*>(.*?)</', blk)
+        if m:
+            res.append([strip(t.group(1)) if t else '', html.unescape(m.group(1)), ''])
+    return res
+
+
+ENGINES = (('ddg', ddg), ('brave', brave), ('bing', bing))
+
+
 def main():
     out = sys.argv[1]; shard = int(sys.argv[2]); n = int(sys.argv[3])
     os.makedirs(out, exist_ok=True)
@@ -49,10 +63,10 @@ def main():
         if fn.startswith('search') and fn.endswith('.json'):
             jobs += json.load(open(os.path.join(base, fn)))
     jobs = jobs[shard::n]
-    res = []; fails = {'ddg': 0, 'bing': 0}
+    res = []; fails = {'ddg': 0, 'brave': 0, 'bing': 0}
     for j in jobs:
         r = dict(j)
-        for name, fn in (('bing', bing), ('ddg', ddg)):
+        for name, fn in ENGINES:
             if fails[name] >= 8:
                 continue
             try:
@@ -64,7 +78,7 @@ def main():
                 break
             fails[name] += 1
         res.append(r)
-        time.sleep(1.2)
+        time.sleep(2.5)
     json.dump(res, open(os.path.join(out, f'search_{shard}.json'), 'w'), ensure_ascii=False, indent=0)
     print('shard', shard, len(res), 'found', sum(1 for r in res if r.get('results')))
 
