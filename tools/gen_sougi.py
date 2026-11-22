@@ -5,7 +5,7 @@
 # 言い方はやさしく（「死体」などのことばは自分の文では使わない。ペットは家族）。
 # 料金の数字は、自治体（tools/sougi.json）と民間の施設（tools/sougi_facilities.json）の公式ページに書いてある数字だけを使う。
 # データ：tools/sougi.json（県庁所在地（東京都は新宿区、見つからない県はほかの市）と政令指定都市。how/fee/bone/k）。
-import json, os
+import json, os, re
 import prefkeep
 import facility_cards as FC
 from guides_sougi import SOUGI_GUIDES
@@ -43,11 +43,20 @@ def _fcard(e, f):
     import gen_sougi_fac  # 施設ページ（試しの30施設）があれば、カードからつなぐ
     more = f'<a class="emg-taxi" href="{gen_sougi_fac.href(f)}">{e(f["name"])}のくわしい情報（できること・料金の比較）→</a>' if f["id"] in gen_sougi_fac.IDS else ""
     # 施設ページのない施設も、公式サイトに書いてあるくわしい項目（more）をカードの中に出す（県のページを濃くする。2026-11-15）
-    if f.get("more") and f["id"] not in gen_sougi_fac.IDS:
-        more = ('<dl class="sg-more">' + "".join(f'<dt>{e(x["k"])}</dt><dd>{e(x["v"])}</dd>' for x in f["more"])
+    # 来てくれる地域・受付・受ける動物は、カードの行（🚗・🕒・🐾）に出して、さがす欄の「どこで」「いつ」で使う（Nori 2026-11-22「マッチング精度を上げられるように」）
+    rows, rest = "", []
+    for x in f.get("more", []):
+        k = x["k"]
+        if re.search(r"来てくれる|対応エリア|訪問エリア|お迎えの地域|出張エリア", k): lab = "来てくれる地域"
+        elif re.fullmatch(r"受付(時間)?|受付・(営業|休み)|営業(時間)?|いつ", k): lab = "受付"
+        elif re.fullmatch(r"対応する動物|受ける動物", k): lab = "受ける動物"
+        else: rest.append(x); continue
+        rows += f'<small><b class="sg-k">{lab}</b>{e(x["v"])}</small>'
+    if rest and f["id"] not in gen_sougi_fac.IDS:
+        more = ('<dl class="sg-more">' + "".join(f'<dt>{e(x["k"])}</dt><dd>{e(x["v"])}</dd>' for x in rest)
                 + f'</dl><small class="sg-src">{e(f.get("checked", ""))}時点の公式サイト</small>')
     return (f'<div class="emg-item emg-co sg-pv"{FC.attrs(e, "sougi", f, FC.sougi_tags(f), f["name"], to, "この施設")}><a href="{e(f["u"])}" target="_blank" rel="noopener"><b>{e(f["name"])}</b></a>'
-            f'<small>{e(f["city"])}</small><div class="sg-tags">{tags}</div>{price}'
+            f'<small>{e(f["city"])}</small><div class="sg-tags">{tags}</div>{rows}{price}'
             + (f'<div class="emg-score" data-id="{e(f["id"])}"></div>' if f.get("review_query") else "") + more + '</div>')
 
 

@@ -20,6 +20,10 @@ def sougi_tags(f):
     if "お迎え" in s or "訪問火葬" in s: t.append("お迎え・訪問火葬")
     if s & {"霊園", "納骨", "納骨堂"}: t.append("霊園・納骨")
     if f.get("price"): t.append("料金を公開")
+    # 公式サイトの文（more）に書いてあるときだけ。24時間受付は「いつ」（ownerfit.WHEN）、お骨の持ち帰りは個別火葬と同じなので札にしない（Nori 2026-11-22「他のサイトにいって追加で調べることがないように」）
+    mt = {x["k"]: x["v"] for x in f.get("more", [])}
+    al = " ".join(mt.values())
+    if any(re.search(r"支払", k) and re.search(r"カード", v) and not re.search(r"カード[^。、]{0,4}(不可|使えません|使えない)", v) for k, v in mt.items()): t.append("カード払い")
     return t
 
 

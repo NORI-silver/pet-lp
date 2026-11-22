@@ -1068,7 +1068,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
     <div class="emg" id="emgBox" hidden>
       <h3>緊急のときの連絡先</h3>
       <p class="emg-lead">一刻を争う症状のときは、まずかかりつけや夜間・救急の動物病院に電話して、受け入れてもらえるか確かめてください。病院への移動の手段がないときは、緊急の搬送をしている会社に直接ご連絡ください。</p>
-      
+      <p class="emg-free">このページの一覧は無料の情報です。当サイトへのお申し込みやお支払いはありません。料金や受付は、それぞれの会社・病院に直接おたずねください。</p>
       <p class="emg-all"><a href="/emergency/">全国の一覧を1つのページで見る</a></p>
       <div class="f"><label for="emgPref">都道府県でしぼりこむ</label>
         <select id="emgPref"><optgroup label="北海道・東北"><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option></optgroup><optgroup label="関東"><option selected>東京都</option><option>神奈川県</option><option>埼玉県</option><option>千葉県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option></optgroup><optgroup label="中部"><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option><option>静岡県</option><option selected>愛知県</option></optgroup><optgroup label="近畿"><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option></optgroup><optgroup label="中国・四国"><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option></optgroup><optgroup label="九州・沖縄"><option>福岡県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option></optgroup></select></div>
@@ -1372,7 +1372,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
   </div>
 </section>
 
-<div class="wrap"><p class="emg-free ft" style="font-size:.78rem;color:#5f6368;background:none;padding:0;margin:16px 0">このページの一覧は無料の情報です。当サイトへのお申し込みやお支払いはありません。料金や受付は、それぞれの会社・病院に直接おたずねください。</p></div></main>
+</main>
 
 <!-- 11. フッター -->
 <aside class="partner-band"><div class="wrap"><p><b>ペットタクシー会社の方へ</b>いっしょにペットと飼い主さんをお迎えしてくださる会社を探しています。</p><a href="/partner/">提携のご案内</a></div></aside>
@@ -2028,7 +2028,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         cr.forEach(function(x){ var li = document.createElement("li"); li.textContent = x; cl.appendChild(li); }); article.appendChild(cl); }
       var fit = fitPoints(card), tags = fit.limits.slice();
       if (ex && ex.tags) ex.tags.forEach(function(x){ if (fit.points.indexOf(x) < 0 && tags.indexOf(x) < 0) fit.points.push(x); });
-      // 車・お支払いは、たたまずに出す（Nori 2026-11-08）。タグと同じ内容を本文に二重に出さない。などの出どころの注記はタグでははぶく（タグは全部、公式サイトか会社の返事に書いてあることだけ）
+      // 車・お支払いは、たたまずに出す（Nori 2026-11-08）。タグと同じ内容を本文に二重に出さない。（公式サイトの記載）などの出どころの注記はタグでははぶく（タグは全部、公式サイトか会社の返事に書いてあることだけ）
       // 分からない項目（「確認中」）は出さない（2026-11-08 レビュー #3）
       var carTag = String(card.car || "").split("。")[0].replace(/（[^）]*）/g, "").trim();
       if (carTag && !/確認中/.test(carTag) && !tags.some(function(x){ return /^車：/.test(x); })) tags.push(/^車：/.test(carTag) ? carTag : "車：" + carTag);

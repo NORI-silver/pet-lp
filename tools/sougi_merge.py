@@ -13,14 +13,14 @@ def norm(s):
     return re.sub(r"[\s・（）()【】「」]", "", s or "")
 
 def host(u):
-    m = re.match(r"https?://([^/]+)(/[^?#]*)?", u or "")
-    return (m.group(1).lower().removeprefix("www."), (m.group(2) or "/").rstrip("/")) if m else ("", "")
+    m = re.match(r"https?://([^/]+)(/[^?#]*)?(\?[^#]*)?", u or "")
+    return (m.group(1).lower().removeprefix("www."), (m.group(2) or "/").rstrip("/") + (m.group(3) or "")) if m else ("", "")
 
 def main(paths):
     D = json.loads(P.read_text())
     F = D["facilities"]
     names = {(f["pref"], norm(f["name"])) for f in F}
-    urls = {host(f["u"]) for f in F}
+    urls = {(host(f["u"]), f["city"]) for f in F}  # チェーンの別の店（市がちがう）は同じURLでもよい
     sites = {(f["pref"], f["city"], host(f["u"])[0]) for f in F}
     added, skipped = 0, []
     for p in paths:
@@ -33,7 +33,7 @@ def main(paths):
             if f.get("price") and BAN.search(f["price"]): why.append("price words")
             if re.search(r"\d+[-－]\d+", f.get("city", "")): why.append("番地")
             if (f.get("pref"), norm(f.get("name"))) in names: why.append("same name")
-            if host(f.get("u")) in urls: why.append("same url")
+            if (host(f.get("u")), f.get("city")) in urls: why.append("same url")
             if (f.get("pref"), f.get("city"), host(f.get("u"))[0]) in sites: why.append("same site and city")
             if why:
                 skipped.append((f.get("pref"), f.get("name"), why)); continue
@@ -44,7 +44,8 @@ def main(paths):
             rec["review_query"] = f"{f['name']} {f['city']}"
             rec["review_name"] = f.get("review_name") or f["name"]
             if f.get("checked"): rec["checked"] = f["checked"]
-            F.append(rec); names.add((rec["pref"], norm(rec["name"]))); urls.add(host(rec["u"])); sites.add((rec["pref"], rec["city"], host(rec["u"])[0])); added += 1
+            if f.get("more"): rec["more"] = f["more"]
+            F.append(rec); names.add((rec["pref"], norm(rec["name"]))); urls.add((host(rec["u"]), rec["city"])); sites.add((rec["pref"], rec["city"], host(rec["u"])[0])); added += 1
     P.write_text(json.dumps(D, ensure_ascii=False, indent=1) + "\n")
     print("added", added, "total", len(F))
     for s in skipped: print("skip", *s)
