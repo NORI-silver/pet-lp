@@ -20,6 +20,7 @@ svg text{font-family:var(--f);fill:var(--fg)}
 .t{font-size:14px;font-weight:700}
 .s{font-size:11px;fill:var(--muted)}
 .call{font-size:11px;font-weight:700}
+.pp{font-size:15px;font-weight:700}
 .legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.78rem;color:var(--muted);margin:6px 0 4px}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
 h2{font-size:1.05rem;margin:26px 0 10px;font-weight:900}
@@ -34,87 +35,114 @@ h2{font-size:1.05rem;margin:26px 0 10px;font-weight:900}
 <div class="w">
 <h1>AIチームの体制図</h1>
 <p class="sub">ペットのくらし窓口・2026年11月22日</p>
-<div class="legend"><span><i style="background:var(--own)"></i>決める人</span><span><i style="background:var(--hub)"></i>全体を見る</span><span><i style="background:var(--sup)"></i>支える役</span><span><i style="background:var(--goal)"></i>目標</span><span><i style="background:var(--gate)"></i>出す前の関所</span></div>
+<div class="legend"><span>↑ 一方向＝決める・止める権限があるところだけ</span><span>⇄ 両方向＝対等にやりとり</span></div>
 
-<svg viewBox="0 0 360 700" role="img" aria-label="体制図：Noriさん、司令塔、問いかけ役と見張り役、目標までの6つの担当、出す前の関所">
+<svg viewBox="0 0 360 716" role="img" aria-label="体制図：Noriさんと司令塔は報告と判断でやりとり。司令塔の横に問いかけ役と見張り役。担当チーム6つは横並びで互いに渡し合う。批判役とは両方向、機械の点検だけが止める。">
 <defs>
  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" style="fill:var(--line)"/></marker>
  <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" style="fill:var(--gate)"/></marker>
+ <marker id="as" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" style="fill:var(--sup)"/></marker>
+ <marker id="hb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" style="fill:var(--hub)"/></marker>
 </defs>
 
 <!-- owner -->
-<rect x="20" y="8" width="320" height="62" rx="12" style="fill:var(--ownbg);stroke:var(--own);stroke-width:2"/>
-<circle cx="46" cy="39" r="14" style="fill:var(--own)"/><circle cx="46" cy="34" r="5" style="fill:var(--ownbg)"/><path d="M37 47a9 7 0 0 1 18 0z" style="fill:var(--ownbg)"/>
-<text x="70" y="34" class="t">Noriさん（オーナー）</text>
-<text x="70" y="54" class="s">決めるのは：お金の話・届出・送信の再開・削除</text>
+<rect x="20" y="8" width="320" height="58" rx="12" style="fill:var(--ownbg);stroke:var(--own);stroke-width:2"/>
+<circle cx="46" cy="37" r="14" style="fill:var(--own)"/><circle cx="46" cy="32" r="5" style="fill:var(--ownbg)"/><path d="M37 45a9 7 0 0 1 18 0z" style="fill:var(--ownbg)"/>
+<text x="70" y="32" class="t">Noriさん（オーナー）</text>
+<text x="70" y="52" class="s">お金・届出・送信の再開・削除だけ決める</text>
 
-<!-- report arrow -->
-<line x1="180" y1="118" x2="180" y2="74" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
-<rect x="190" y="82" width="150" height="28" rx="14" style="fill:var(--card);stroke:var(--own)"/>
-<text x="265" y="100" text-anchor="middle" class="call" style="fill:var(--own)">毎日1回・3行の報告</text>
-<text x="20" y="93" class="s">状況／判断が要ること／</text>
-<text x="20" y="107" class="s">困りごとと乗り切り方</text>
+<!-- report up / decide down -->
+<line x1="150" y1="116" x2="150" y2="70" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
+<line x1="210" y1="70" x2="210" y2="116" style="stroke:var(--own);stroke-width:2" marker-end="url(#ah)"/>
+<text x="142" y="98" text-anchor="end" class="call">毎日の報告（3つ）</text>
+<text x="218" y="98" class="call" style="fill:var(--own)">判断（選ぶだけ）</text>
 
-<!-- coordinator -->
-<rect x="60" y="120" width="240" height="58" rx="12" style="fill:var(--hubbg);stroke:var(--hub);stroke-width:2"/>
-<circle cx="86" cy="149" r="13" style="fill:none;stroke:var(--hub);stroke-width:2.5"/><circle cx="86" cy="149" r="4" style="fill:var(--hub)"/>
-<text x="108" y="145" class="t">司令塔</text>
-<text x="108" y="165" class="s">順番を決める・振る・実物で確かめる</text>
+<!-- hub row -->
+<rect x="4" y="120" width="88" height="56" rx="10" style="fill:var(--supbg);stroke:var(--sup);stroke-width:1.5"/>
+<text x="48" y="143" text-anchor="middle" class="t" style="fill:var(--sup)">問いかけ役</text>
+<text x="48" y="162" text-anchor="middle" class="s">当たり前の指摘</text>
+<rect x="112" y="120" width="136" height="56" rx="12" style="fill:var(--hubbg);stroke:var(--hub);stroke-width:2"/>
+<text x="180" y="143" text-anchor="middle" class="t">司令塔</text>
+<text x="180" y="162" text-anchor="middle" class="s">順番・振る・確かめる</text>
+<rect x="268" y="120" width="88" height="56" rx="10" style="fill:var(--supbg);stroke:var(--sup);stroke-width:1.5"/>
+<text x="312" y="143" text-anchor="middle" class="t" style="fill:var(--sup)">見張り役</text>
+<text x="312" y="162" text-anchor="middle" class="s">返信の遅れ・穴</text>
+<text x="102" y="154" text-anchor="middle" class="pp" style="fill:var(--sup)">⇄</text>
+<text x="258" y="154" text-anchor="middle" class="pp" style="fill:var(--sup)">⇄</text>
 
-<!-- support -->
-<rect x="8" y="210" width="150" height="58" rx="10" style="fill:var(--supbg);stroke:var(--sup);stroke-width:1.5"/>
-<text x="20" y="233" class="t" style="fill:var(--sup)">問いかけ役</text>
-<text x="20" y="252" class="s">当たり前の指摘を先に</text>
-<rect x="202" y="210" width="150" height="58" rx="10" style="fill:var(--supbg);stroke:var(--sup);stroke-width:1.5"/>
-<text x="214" y="233" class="t" style="fill:var(--sup)">見張り役</text>
-<text x="214" y="252" class="s">返信の遅れ・データの穴</text>
-<line x1="83" y1="208" x2="110" y2="182" style="stroke:var(--sup);stroke-width:1.5" marker-end="url(#ah)"/>
-<line x1="277" y1="208" x2="250" y2="182" style="stroke:var(--sup);stroke-width:1.5" marker-end="url(#ah)"/>
+<!-- assign / evidence -->
+<line x1="160" y1="179" x2="160" y2="218" style="stroke:var(--hub);stroke-width:2.5" marker-end="url(#hb)"/>
+<line x1="200" y1="218" x2="200" y2="179" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
+<text x="152" y="204" text-anchor="end" class="call" style="fill:var(--hub)">優先順位で振る</text>
+<text x="208" y="204" class="call">結果と証拠</text>
 
-<!-- assign arrow -->
-<line x1="180" y1="180" x2="180" y2="318" style="stroke:var(--hub);stroke-width:2.5" marker-end="url(#ah)"/>
-<rect x="160" y="282" width="40" height="20" rx="10" style="fill:var(--hub)"/>
-<text x="180" y="296" text-anchor="middle" class="call" style="fill:#fff">振る</text>
-
-<!-- chain -->
-<text x="180" y="336" text-anchor="middle" class="call" style="fill:var(--goal)">目標までの線（担当ごとに1つ）</text>
+<!-- teams -->
+<rect x="4" y="222" width="352" height="186" rx="12" style="fill:none;stroke:var(--work);stroke-width:1.5"/>
+<text x="180" y="242" text-anchor="middle" class="call">担当チーム（横並び・上下なし）</text>
 <g>
- <rect x="8" y="346" width="104" height="58" rx="10" style="fill:var(--workbg);stroke:var(--work)"/>
- <text x="60" y="370" text-anchor="middle" class="t">提携を増やす</text><text x="60" y="390" text-anchor="middle" class="s">新しい提携</text>
- <rect x="128" y="346" width="104" height="58" rx="10" style="fill:var(--workbg);stroke:var(--work)"/>
- <text x="180" y="370" text-anchor="middle" class="t">独自の中身</text><text x="180" y="390" text-anchor="middle" class="s">質問・写真・表</text>
- <rect x="248" y="346" width="104" height="58" rx="10" style="fill:var(--workbg);stroke:var(--work)"/>
- <text x="300" y="370" text-anchor="middle" class="t">被リンク</text><text x="300" y="390" text-anchor="middle" class="s">新しいリンク</text>
- <line x1="112" y1="375" x2="126" y2="375" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
- <line x1="232" y1="375" x2="246" y2="375" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
- <path d="M300 404 V418 H60 V432" style="fill:none;stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
- <rect x="8" y="434" width="104" height="58" rx="10" style="fill:var(--workbg);stroke:var(--work)"/>
- <text x="60" y="458" text-anchor="middle" class="t">SEO・集客</text><text x="60" y="478" text-anchor="middle" class="s">クリック</text>
- <rect x="128" y="434" width="104" height="58" rx="10" style="fill:var(--workbg);stroke:var(--work)"/>
- <text x="180" y="458" text-anchor="middle" class="t">問い合わせ</text><text x="180" y="478" text-anchor="middle" class="s">問い合わせ率</text>
- <rect x="248" y="434" width="104" height="58" rx="10" style="fill:var(--goalbg);stroke:var(--goal);stroke-width:2.5"/>
- <text x="300" y="458" text-anchor="middle" class="t" style="fill:var(--goal)">売上</text><text x="300" y="478" text-anchor="middle" class="s">いちばんの目標</text>
- <line x1="112" y1="463" x2="126" y2="463" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
- <line x1="232" y1="463" x2="246" y2="463" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
+ <rect x="12" y="252" width="100" height="50" rx="9" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="62" y="273" text-anchor="middle" class="t">提携</text><text x="62" y="291" text-anchor="middle" class="s">新しい提携</text>
+ <rect x="130" y="252" width="100" height="50" rx="9" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="180" y="273" text-anchor="middle" class="t">独自の中身</text><text x="180" y="291" text-anchor="middle" class="s">質問・写真・表</text>
+ <rect x="248" y="252" width="100" height="50" rx="9" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="298" y="273" text-anchor="middle" class="t">被リンク</text><text x="298" y="291" text-anchor="middle" class="s">新しいリンク</text>
+ <rect x="12" y="322" width="100" height="50" rx="9" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="62" y="343" text-anchor="middle" class="t">SEO・集客</text><text x="62" y="361" text-anchor="middle" class="s">クリック</text>
+ <rect x="130" y="322" width="100" height="50" rx="9" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="180" y="343" text-anchor="middle" class="t">画面・UX</text><text x="180" y="361" text-anchor="middle" class="s">問い合わせ率</text>
+ <rect x="248" y="322" width="100" height="50" rx="9" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="298" y="343" text-anchor="middle" class="t">メール</text><text x="298" y="361" text-anchor="middle" class="s">返信の早さ</text>
+ <g class="pp" style="fill:var(--muted)">
+  <text x="121" y="283" text-anchor="middle">⇄</text><text x="239" y="283" text-anchor="middle">⇄</text>
+  <text x="121" y="353" text-anchor="middle">⇄</text><text x="239" y="353" text-anchor="middle">⇄</text>
+  <text x="62" y="317" text-anchor="middle">⇅</text><text x="180" y="317" text-anchor="middle">⇅</text><text x="298" y="317" text-anchor="middle">⇅</text>
+ </g>
+ <text x="180" y="394" text-anchor="middle" class="s">となり同士は直接渡し合う（司令塔を通さない）</text>
 </g>
 
-<!-- gate -->
-<line x1="180" y1="494" x2="180" y2="530" style="stroke:var(--gate);stroke-width:2" marker-end="url(#ag)"/>
-<text x="188" y="517" class="s">出す前に必ず</text>
-<rect x="8" y="532" width="344" height="92" rx="12" style="fill:var(--gatebg);stroke:var(--gate);stroke-width:2"/>
-<path d="M26 552 l10 -5 l10 5 v9 c0 7 -5 11 -10 13 c-5 -2 -10 -6 -10 -13z" style="fill:var(--gate)"/>
-<text x="56" y="562" class="t" style="fill:var(--gate)">出す前の関所</text>
-<text x="22" y="588" class="s">批判役：飼い主・ビジネス・集客・提携先の目で見る</text>
-<text x="22" y="606" class="s">機械の点検：言葉・形・スマホの見た目・指摘の台帳</text>
-<path d="M352 560 h4 V149 H302" style="fill:none;stroke:var(--gate);stroke-width:1.5;stroke-dasharray:4 3" marker-end="url(#ag)"/>
-<rect x="250" y="292" width="102" height="22" rx="11" style="fill:var(--card);stroke:var(--gate)"/>
-<text x="301" y="307" text-anchor="middle" class="call" style="fill:var(--gate)">直す所0で報告へ</text>
+<!-- critics two-way, checks one-way -->
+<text x="87" y="431" text-anchor="middle" class="pp" style="fill:var(--gate);font-size:18px">⇅</text>
+<text x="95" y="427" class="call" style="fill:var(--gate)">見せる⇄直す</text>
+<line x1="273" y1="411" x2="273" y2="434" style="stroke:var(--gate);stroke-width:2.5" marker-end="url(#ag)"/>
+<text x="265" y="427" text-anchor="end" class="call" style="fill:var(--gate)">止める</text>
+<rect x="4" y="438" width="166" height="56" rx="10" style="fill:var(--gatebg);stroke:var(--gate);stroke-width:1.5"/>
+<text x="87" y="461" text-anchor="middle" class="t" style="fill:var(--gate)">批判役（4つの目）</text>
+<text x="87" y="480" text-anchor="middle" class="s">飼い主・お金・集客・提携先</text>
+<rect x="190" y="438" width="166" height="56" rx="10" style="fill:var(--gatebg);stroke:var(--gate);stroke-width:2"/>
+<path d="M204 452 l8 -4 l8 4 v7 c0 6 -4 9 -8 11 c-4 -2 -8 -5 -8 -11z" style="fill:var(--gate)"/>
+<text x="228" y="461" class="t" style="fill:var(--gate)">機械の点検</text>
+<text x="273" y="480" text-anchor="middle" class="s">言葉・形・スマホ・台帳</text>
+
+<!-- publish -->
+<line x1="180" y1="496" x2="180" y2="514" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
+<rect x="4" y="516" width="352" height="34" rx="17" style="fill:var(--ownbg);stroke:var(--own);stroke-dasharray:4 3"/>
+<text x="180" y="538" text-anchor="middle" class="call" style="fill:var(--own)">送信は1つの係だけ・OKの文のまま／消す・お金はNoriさん</text>
+
+<!-- goal chain -->
+<text x="180" y="576" text-anchor="middle" class="call" style="fill:var(--goal)">目標の鎖＝仕事の流れ（上下関係ではない）</text>
+<g>
+ <rect x="8" y="586" width="96" height="26" rx="13" style="fill:var(--workbg);stroke:var(--work)"/><text x="56" y="604" text-anchor="middle" class="call">提携</text>
+ <rect x="132" y="586" width="96" height="26" rx="13" style="fill:var(--workbg);stroke:var(--work)"/><text x="180" y="604" text-anchor="middle" class="call">独自の中身</text>
+ <rect x="256" y="586" width="96" height="26" rx="13" style="fill:var(--workbg);stroke:var(--work)"/><text x="304" y="604" text-anchor="middle" class="call">被リンク</text>
+ <rect x="8" y="626" width="96" height="26" rx="13" style="fill:var(--workbg);stroke:var(--work)"/><text x="56" y="644" text-anchor="middle" class="call">集客</text>
+ <rect x="132" y="626" width="96" height="26" rx="13" style="fill:var(--workbg);stroke:var(--work)"/><text x="180" y="644" text-anchor="middle" class="call">問い合わせ</text>
+ <rect x="256" y="626" width="96" height="26" rx="13" style="fill:var(--goalbg);stroke:var(--goal);stroke-width:2"/><text x="304" y="644" text-anchor="middle" class="call" style="fill:var(--goal)">売上</text>
+ <g style="stroke:var(--line);stroke-width:1.8"><line x1="106" y1="599" x2="130" y2="599" marker-end="url(#ah)"/><line x1="230" y1="599" x2="254" y2="599" marker-end="url(#ah)"/>
+ <path d="M304 613 V619 H56 V624" style="fill:none" marker-end="url(#ah)"/>
+ <line x1="106" y1="639" x2="130" y2="639" marker-end="url(#ah)"/><line x1="230" y1="639" x2="254" y2="639" marker-end="url(#ah)"/></g>
+</g>
 
 <!-- other AIs -->
-<rect x="8" y="642" width="344" height="48" rx="10" style="fill:none;stroke:var(--line);stroke-dasharray:5 4"/>
-<text x="22" y="662" class="t" style="font-size:13px">ほかのAIも同じ決まりで担当に入る</text>
-<text x="22" y="680" class="s">ChatGPT（SNS）・Gemini・Muse ／ AGENTS.md と docs/ai</text>
+<rect x="4" y="664" width="352" height="46" rx="10" style="fill:none;stroke:var(--line);stroke-dasharray:5 4"/>
+<text x="16" y="683" class="t" style="font-size:13px">ほかのAIもチームや批判役に入る</text>
+<text x="16" y="701" class="s">ChatGPT（SNS）・Gemini・Muse ／ 同じ決まり</text>
 </svg>
+
+<h2>なぜこの形か</h2>
+<div class="cards">
+ <div class="c"><div class="ic" style="background:var(--ownbg)"><svg viewBox="0 0 24 24" width="18"><path d="M12 4v16M6 10l6-6 6 6" style="fill:none;stroke:var(--own);stroke-width:2.5"/></svg></div><b>一方向は「権限」だけ</b><small>Noriさんの判断・司令塔の振り分け・機械の点検の「止める」</small></div>
+ <div class="c"><div class="ic" style="background:var(--supbg)"><svg viewBox="0 0 24 24" width="18"><path d="M4 9h16M16 5l4 4-4 4M20 15H4M8 11l-4 4 4 4" style="fill:none;stroke:var(--sup);stroke-width:2.2"/></svg></div><b>チームどうしは対等</b><small>例：火葬の写真→被リンクの材料に。司令塔を待たない</small></div>
+</div>
 
 <h2>世界の事例から入れた6つの決まり</h2>
 <div class="cards">

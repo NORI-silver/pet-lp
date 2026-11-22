@@ -5,6 +5,8 @@
 --about：お客さま・提携先から頼まれた件で、ほかの人（会社・施設など）に連絡するとき。頼んだ人に先に
          「受け取りました、いま確認しています」と返事した日を --replied に入れないと止める（Nori 2026-11-22
          「加茂さんには先に返信すべきじゃない？」「この指摘とかさせるなよ」）。
+--send --approved 承認した下書き：送る直前。Nori さんがOKした下書きと1字でもちがえば止める（穴を自分で埋めて送らない。
+         Nori 2026-11-22 の事故：「下書きを全部見せて」を送ってよいと読み、穴を自分で埋め、手数料の約束まで書いて送った）。
 --read-latest：送る相手から、まだ返事していない新しいメールがないかを読んだしるし。ないと止める（同日）。
 見ること: ◯◯ などの穴、旅行業法の言葉、お金・手数料の話、「公式サイトで確かめた」、こちらの都合が先に立つ言い方、ツール名。
 保存は pettaxi.yoyaku の Gmail の下書きに（「下書きして」＝Gmail の下書き）。送るのは Nori さんの「送って」のあと。
@@ -42,6 +44,12 @@ if __name__ == "__main__":
     res = check(t)
     if opt("--about") and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", opt("--replied") or ""):
         res.append(f"「{opt('--about')}」さんの件でほかの人に連絡する前に、{opt('--about')}さんへ先に「受け取りました、いま確認しています」と返事する（返事した日を --replied YYYY-MM-DD で）")
+    if "--send" in a:
+        ap = opt("--approved")
+        if not ap:
+            res.append("送るときは --approved にNoriさんがOKした下書きのファイルを入れる（OKの文のまま送る）")
+        elif open(ap, encoding="utf-8").read().strip() != t.strip():
+            res.append("NoriさんがOKした下書きと文がちがう（穴を埋める・直すなら、もう一度OKをもらう）")
     if "--read-latest" not in a:
         res.append("送る相手から、まだ返事していない新しいメールがないかを読んでから送る（読んだら --read-latest を付ける）")
     for r in res: print("直す:", r)
