@@ -14,6 +14,8 @@
 --confirmed：相手が言っていない前提・約束（「難しければ電車で」など）は、相手に確かめたときだけ付ける（Nori 2026-11-22「これとかなんで勝手につけるの？保証できる？」）。
 --kind referral：会社に送客・紹介を頼むメール。だれが・なぜ・経路・日付・頼むこと・お支払い・連絡のしかたが全部あるか、
          料金はまず「目安（概算）」を聞いているかを見る（具体的な場所のあとの確定料金のときは --exact。Nori 2026-11-22「まずは、おおよそで…確定料金をだすとか」）。
+--kind invite --terms 決めた条件のファイル：提携のお誘い・提携の内容の説明。Nori さんが決めたお金の条件の文（ファイルの1行と同じ行）だけは
+         お金の話でも通す。条件は最初に書き、あとから出さない。ほかのお金の話は止める。条件のファイルは公開のリポジトリに置かない。
 保存は pettaxi.yoyaku の Gmail の下書きに（「下書きして」＝Gmail の下書き）。送るのは Nori さんの「送って」のあと。
 """
 import re, sys
@@ -51,10 +53,20 @@ REFERRAL = [
 def check(text):
     out = []
     ref = "--kind" in sys.argv and "referral" in sys.argv
+    # 提携のお誘い・提携の内容の説明では、Noriさんが決めたお金の条件の文だけはそのまま通す（Nori 2026-11-22「お金の条件は最初に伝える・あとからは絶対ない」）。
+    # 条件の文は率をふくむので公開のリポジトリに置かず、--terms に pet-db などのファイルを渡す。お客さま・自治体・被リンクのお願いでは今までどおり止める。
+    ok_lines = set()
+    if "--kind" in sys.argv and "invite" in sys.argv and "--terms" in sys.argv:
+        i = sys.argv.index("--terms")
+        if i + 1 < len(sys.argv):
+            ok_lines = {l.strip() for l in open(sys.argv[i + 1], encoding="utf-8").read().splitlines() if l.strip()}
     for pat, why in RULES:
         if ref and why.startswith("当サイトのお金"):
             pat = pat.replace("|お支払いいただ", "")  # 送客の依頼では、飼い主さまから会社へのお支払いのしかたは書く（要るもの）
         for m in re.finditer(pat, text):
+            if why.startswith("当サイトのお金") and ok_lines:
+                ln = text[text.rfind("\n", 0, m.start()) + 1: (text.find("\n", m.start()) + 1 or len(text) + 1) - 1].strip()
+                if ln in ok_lines: continue
             line = text.count("\n", 0, m.start()) + 1
             out.append(f"{line}行目「{m.group()}」: {why}")
     for m in re.finditer(HYPO, text):
