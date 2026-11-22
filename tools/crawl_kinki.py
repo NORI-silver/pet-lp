@@ -23,6 +23,16 @@ def main():
                     res = list(ex.map(site_snap.snap, items))
             json.dump(res, open(os.path.join(out, fn.replace('queue', 'snap')), 'w'), ensure_ascii=False, indent=1)
             print(fn, len(res), 'errors', sum(1 for x in res if x.get('error')))
+        elif fn.startswith('post') and fn.endswith('.json'):  # POST で配るオープンデータ（京都市）
+            import urllib.request, urllib.parse
+            for it in json.load(open(p)):
+                try:
+                    req = urllib.request.Request(it['url'], data=urllib.parse.urlencode(it['form']).encode(), headers={'User-Agent': site_snap.UA})
+                    raw = urllib.request.urlopen(req, timeout=60).read()
+                    d = os.path.join(out, 'reg', it['key']); os.makedirs(d, exist_ok=True)
+                    open(os.path.join(d, it['name']), 'wb').write(raw); print('post', it['key'], len(raw))
+                except Exception as e:
+                    print('post', it['key'], e)
         elif fn.startswith('reg') and fn.endswith('.json'):
             jobs += json.load(open(p))
     if jobs:
