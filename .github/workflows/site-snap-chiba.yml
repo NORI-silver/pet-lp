@@ -1,0 +1,28 @@
+# 千葉県の網羅スレッド専用（結果は crawl-out-chiba）。tools/crawl/chiba/ の queue*.json・reg*.json を読む。何も送らない・サイトは書き換えない。
+name: site-snap-chiba
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/project-thread-ghgojz']
+    paths: ['tools/crawl/chiba/**', 'tools/chiba_crawl.py']
+permissions:
+  contents: write
+concurrency:
+  group: site-snap-chiba
+  cancel-in-progress: false
+jobs:
+  snap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/chiba_crawl.py /tmp/out
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q --orphan crawl-out-chiba
+          git rm -rq --cached . && git clean -fdq
+          cp -r /tmp/out/. .
+          git add -A
+          git commit -qm "千葉の抜き出し ${GITHUB_SHA::7}"
+          git push -q -f origin crawl-out-chiba
