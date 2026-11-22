@@ -3,7 +3,7 @@
 queue の行に "raw": true があればページをそのまま置く（登録簿の一覧など）。何も送らない。"""
 import concurrent.futures as cf, json, os, sys, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import site_snap, reg_fetch
+import site_snap, reg_fetch, snap_full
 
 def safe(it):
     try:
@@ -20,7 +20,15 @@ def main():
         p = os.path.join(qdir, fn)
         if fn.startswith('queue') and fn.endswith('.json'):
             items = json.load(open(p))
-            if fn.startswith('queue_q'):  # 検索はひとつずつ間をあけて（続けて聞くと結果が空になる）
+            if fn.startswith('queue_f'):  # 全文で読む（料金表の行をつなげる）
+                def f1(it):
+                    try:
+                        return snap_full.full(it)
+                    except Exception as e:
+                        r = dict(it); r['error'] = str(e)[:150]; return r
+                with cf.ThreadPoolExecutor(12) as ex:
+                    res = list(ex.map(f1, items))
+            elif fn.startswith('queue_q'):  # 検索はひとつずつ間をあけて（続けて聞くと結果が空になる）
                 res = []
                 for it in items:
                     res.append(safe(it)); time.sleep(12)
