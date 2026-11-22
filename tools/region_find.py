@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""[B] 地域の網羅スレッド用：登録一覧の事業所を検索し（DuckDuckGo → DuckDuckGo lite → Bing の順に、空なら次へ）、
+"""[B] 地域の網羅スレッド用：登録一覧の事業所を検索し（Yahoo! JAPAN → DuckDuckGo → DuckDuckGo lite → Bing の順に、空なら次へ）、
 まとめサイト以外の上位2件の公式サイトらしいページを site_snap と同じ形で読む。何も送らない。
 使い方: python3 tools/region_find.py <chunk.json（[{cid,q}]）> <out.json> [間隔秒]"""
 import json, os, re, sys, time, html, urllib.parse
@@ -29,7 +29,19 @@ def _bing(h):
         if m: res.append([html.unescape(re.sub(r'<[^>]+>', '', m.group(2))).strip(), html.unescape(m.group(1))])
     return res
 
-ENG = [('ddg', 'https://html.duckduckgo.com/html/?kl=jp-jp&q=', _ddg),
+def _yahoo(h):
+    res = []
+    for m in re.finditer(r'(?is)<a[^>]+href="(https?://[^"]+)"[^>]*>\s*(?:<[^>]+>\s*)*<h3[^>]*>(.*?)</h3>', h):
+        u = html.unescape(m.group(1))
+        if 'yahoo.co.jp' not in u: res.append([html.unescape(re.sub(r'<[^>]+>', '', m.group(2))).strip(), u])
+    if not res:
+        for m in re.finditer(r'(?is)<h3[^>]*>\s*<a[^>]+href="(https?://[^"]+)"[^>]*>(.*?)</a>', h):
+            u = html.unescape(m.group(1))
+            if 'yahoo.co.jp' not in u: res.append([html.unescape(re.sub(r'<[^>]+>', '', m.group(2))).strip(), u])
+    return res
+
+ENG = [('yahoo', 'https://search.yahoo.co.jp/search?ei=UTF-8&p=', _yahoo),
+       ('ddg', 'https://html.duckduckgo.com/html/?kl=jp-jp&q=', _ddg),
        ('lite', 'https://lite.duckduckgo.com/lite/?kl=jp-jp&q=', _lite),
        ('bing', 'https://www.bing.com/search?setlang=ja&cc=JP&q=', _bing)]
 
