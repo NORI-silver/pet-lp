@@ -1,5 +1,5 @@
 {
- "_about": "[G] Nori さんの指摘の台帳（2026-11-22「何回も何回も同じような指摘をしてきてるのを今後なくしたい」）。指摘を受けたら1行足す。check は止めるしくみの名前：rules:<rules_check の記号>／phone:<phone_check の記号>／seo:<seo_check の名前>／draft（draft_check）／consistency（consistency_check）／critic:<persona|business|seo|partner>（機械で見られないものは批判役の確認項目）。同じ型が前にあれば repeat_of にその id を入れる（2回目の指摘。月曜の見回りで数える）。tools/feedback_check.py が PR ごとに確かめる。",
+ "_about": "[G] Nori さんの指摘の台帳（2026-11-22「何回も何回も同じような指摘をしてきてるのを今後なくしたい」）。指摘を受けたら1行足す。check は止めるしくみの名前：rules:<rules_check の記号>／phone:<phone_check の記号>／report:<report_check の記号>（Nori さん向けの資料・報告のページ）／seo:<seo_check の名前>／draft（draft_check）／consistency（consistency_check）／critic:<persona|business|seo|partner>（機械で見られないものは批判役の確認項目）。同じ型が前にあれば repeat_of にその id を入れる（2回目の指摘。月曜の見回りで数える）。tools/feedback_check.py が PR ごとに確かめる。",
  "items": [
   {
    "id": "f001",
@@ -225,6 +225,21 @@
    "quote": "体制図作って共有して",
    "pattern": "体制・担当が図で共有されていない",
    "check": "critic:business"
+  },
+  {
+   "id": "f033",
+   "date": "2026-11-22",
+   "quote": "体制図がまず見にくい。図にして。説明を要所に加えて。この指摘はずっとしてます",
+   "pattern": "Nori さん向けの資料・報告を文字の羅列にする（図が基本、説明は要所に短く、スマホ1画面で分かる）",
+   "check": "report:first",
+   "repeat_of": "f010"
+  },
+  {
+   "id": "f034",
+   "date": "2026-11-22",
+   "quote": "体制図がまず見にくい",
+   "pattern": "資料の図の文字が箱からはみ出す・横にはみ出す",
+   "check": "report:svgtext"
   }
  ]
 }

@@ -1,0 +1,128 @@
+<title>AIチームの体制図</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap">
+<style>
+/* layout: one tall diagram (phone first), then 5 lesson cards */
+:root{--bg:#f6f7f5;--fg:#1c2320;--muted:#5f6a64;--card:#ffffff;--line:#8a958f;
+--own:#e2771f;--ownbg:#fdf0e4;--hub:#22805a;--hubbg:#e3f3eb;--sup:#2f6fb5;--supbg:#e5eef9;
+--work:#4a5550;--workbg:#ffffff;--gate:#7a4bb8;--gatebg:#f0e9fa;--goal:#c23b5a;--goalbg:#fbe8ed;
+--f:"Noto Sans JP",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131816;--fg:#e9eeeb;--muted:#a6b0aa;--card:#1c2320;--line:#7d8883;
+--own:#f39a4c;--ownbg:#3a2716;--hub:#58c393;--hubbg:#16322a;--sup:#7aaeea;--supbg:#192a40;--work:#c9d2cd;--workbg:#1c2320;--gate:#b892ec;--gatebg:#2c2240;--goal:#f07c97;--goalbg:#3d1d26;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#131816;--fg:#e9eeeb;--muted:#a6b0aa;--card:#1c2320;--line:#7d8883;
+--own:#f39a4c;--ownbg:#3a2716;--hub:#58c393;--hubbg:#16322a;--sup:#7aaeea;--supbg:#192a40;--work:#c9d2cd;--workbg:#1c2320;--gate:#b892ec;--gatebg:#2c2240;--goal:#f07c97;--goalbg:#3d1d26;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f);line-height:1.6}
+.w{max-width:560px;margin:0 auto;padding-block:16px 40px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+h1{font-size:1.35rem;margin:0 0 2px;font-weight:900}
+.sub{color:var(--muted);font-size:.85rem;margin:0 0 10px}
+svg{width:100%;height:auto;display:block}
+svg text{font-family:var(--f);fill:var(--fg)}
+.t{font-size:14px;font-weight:700}
+.s{font-size:11px;fill:var(--muted)}
+.call{font-size:11px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.78rem;color:var(--muted);margin:6px 0 4px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+h2{font-size:1.05rem;margin:26px 0 10px;font-weight:900}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.c{background:var(--card);border-radius:10px;padding:10px;border:1px solid color-mix(in srgb,var(--line) 35%,transparent)}
+.c .ic{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;margin-bottom:6px}
+.c b{display:block;font-size:.9rem;line-height:1.35}
+.c small{display:block;color:var(--muted);font-size:.74rem;margin-top:4px;line-height:1.4}
+.c a{color:var(--muted)}
+@media (max-width:340px){.cards{grid-template-columns:1fr}}
+</style>
+<div class="w">
+<h1>AIチームの体制図</h1>
+<p class="sub">ペットのくらし窓口・2026年11月22日</p>
+<div class="legend"><span><i style="background:var(--own)"></i>決める人</span><span><i style="background:var(--hub)"></i>全体を見る</span><span><i style="background:var(--sup)"></i>支える役</span><span><i style="background:var(--goal)"></i>目標</span><span><i style="background:var(--gate)"></i>出す前の関所</span></div>
+
+<svg viewBox="0 0 360 700" role="img" aria-label="体制図：Noriさん、司令塔、問いかけ役と見張り役、目標までの6つの担当、出す前の関所">
+<defs>
+ <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" style="fill:var(--line)"/></marker>
+ <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" style="fill:var(--gate)"/></marker>
+</defs>
+
+<!-- owner -->
+<rect x="20" y="8" width="320" height="62" rx="12" style="fill:var(--ownbg);stroke:var(--own);stroke-width:2"/>
+<circle cx="46" cy="39" r="14" style="fill:var(--own)"/><circle cx="46" cy="34" r="5" style="fill:var(--ownbg)"/><path d="M37 47a9 7 0 0 1 18 0z" style="fill:var(--ownbg)"/>
+<text x="70" y="34" class="t">Noriさん（オーナー）</text>
+<text x="70" y="54" class="s">決めるのは：お金の話・届出・送信の再開・削除</text>
+
+<!-- report arrow -->
+<line x1="180" y1="118" x2="180" y2="74" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
+<rect x="190" y="82" width="150" height="28" rx="14" style="fill:var(--card);stroke:var(--own)"/>
+<text x="265" y="100" text-anchor="middle" class="call" style="fill:var(--own)">毎日1回・3行の報告</text>
+<text x="20" y="93" class="s">状況／判断が要ること／</text>
+<text x="20" y="107" class="s">困りごとと乗り切り方</text>
+
+<!-- coordinator -->
+<rect x="60" y="120" width="240" height="58" rx="12" style="fill:var(--hubbg);stroke:var(--hub);stroke-width:2"/>
+<circle cx="86" cy="149" r="13" style="fill:none;stroke:var(--hub);stroke-width:2.5"/><circle cx="86" cy="149" r="4" style="fill:var(--hub)"/>
+<text x="108" y="145" class="t">司令塔</text>
+<text x="108" y="165" class="s">順番を決める・振る・実物で確かめる</text>
+
+<!-- support -->
+<rect x="8" y="210" width="150" height="58" rx="10" style="fill:var(--supbg);stroke:var(--sup);stroke-width:1.5"/>
+<text x="20" y="233" class="t" style="fill:var(--sup)">問いかけ役</text>
+<text x="20" y="252" class="s">当たり前の指摘を先に</text>
+<rect x="202" y="210" width="150" height="58" rx="10" style="fill:var(--supbg);stroke:var(--sup);stroke-width:1.5"/>
+<text x="214" y="233" class="t" style="fill:var(--sup)">見張り役</text>
+<text x="214" y="252" class="s">返信の遅れ・データの穴</text>
+<line x1="83" y1="208" x2="110" y2="182" style="stroke:var(--sup);stroke-width:1.5" marker-end="url(#ah)"/>
+<line x1="277" y1="208" x2="250" y2="182" style="stroke:var(--sup);stroke-width:1.5" marker-end="url(#ah)"/>
+
+<!-- assign arrow -->
+<line x1="180" y1="180" x2="180" y2="318" style="stroke:var(--hub);stroke-width:2.5" marker-end="url(#ah)"/>
+<rect x="160" y="282" width="40" height="20" rx="10" style="fill:var(--hub)"/>
+<text x="180" y="296" text-anchor="middle" class="call" style="fill:#fff">振る</text>
+
+<!-- chain -->
+<text x="180" y="336" text-anchor="middle" class="call" style="fill:var(--goal)">目標までの線（担当ごとに1つ）</text>
+<g>
+ <rect x="8" y="346" width="104" height="58" rx="10" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="60" y="370" text-anchor="middle" class="t">提携を増やす</text><text x="60" y="390" text-anchor="middle" class="s">新しい提携</text>
+ <rect x="128" y="346" width="104" height="58" rx="10" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="180" y="370" text-anchor="middle" class="t">独自の中身</text><text x="180" y="390" text-anchor="middle" class="s">質問・写真・表</text>
+ <rect x="248" y="346" width="104" height="58" rx="10" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="300" y="370" text-anchor="middle" class="t">被リンク</text><text x="300" y="390" text-anchor="middle" class="s">新しいリンク</text>
+ <line x1="112" y1="375" x2="126" y2="375" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
+ <line x1="232" y1="375" x2="246" y2="375" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
+ <path d="M300 404 V418 H60 V432" style="fill:none;stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
+ <rect x="8" y="434" width="104" height="58" rx="10" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="60" y="458" text-anchor="middle" class="t">SEO・集客</text><text x="60" y="478" text-anchor="middle" class="s">クリック</text>
+ <rect x="128" y="434" width="104" height="58" rx="10" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="180" y="458" text-anchor="middle" class="t">問い合わせ</text><text x="180" y="478" text-anchor="middle" class="s">問い合わせ率</text>
+ <rect x="248" y="434" width="104" height="58" rx="10" style="fill:var(--goalbg);stroke:var(--goal);stroke-width:2.5"/>
+ <text x="300" y="458" text-anchor="middle" class="t" style="fill:var(--goal)">売上</text><text x="300" y="478" text-anchor="middle" class="s">いちばんの目標</text>
+ <line x1="112" y1="463" x2="126" y2="463" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
+ <line x1="232" y1="463" x2="246" y2="463" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
+</g>
+
+<!-- gate -->
+<line x1="180" y1="494" x2="180" y2="530" style="stroke:var(--gate);stroke-width:2" marker-end="url(#ag)"/>
+<text x="188" y="517" class="s">出す前に必ず</text>
+<rect x="8" y="532" width="344" height="92" rx="12" style="fill:var(--gatebg);stroke:var(--gate);stroke-width:2"/>
+<path d="M26 552 l10 -5 l10 5 v9 c0 7 -5 11 -10 13 c-5 -2 -10 -6 -10 -13z" style="fill:var(--gate)"/>
+<text x="56" y="562" class="t" style="fill:var(--gate)">出す前の関所</text>
+<text x="22" y="588" class="s">批判役：飼い主・ビジネス・集客・提携先の目で見る</text>
+<text x="22" y="606" class="s">機械の点検：言葉・形・スマホの見た目・指摘の台帳</text>
+<path d="M352 560 h4 V149 H302" style="fill:none;stroke:var(--gate);stroke-width:1.5;stroke-dasharray:4 3" marker-end="url(#ag)"/>
+<rect x="250" y="292" width="102" height="22" rx="11" style="fill:var(--card);stroke:var(--gate)"/>
+<text x="301" y="307" text-anchor="middle" class="call" style="fill:var(--gate)">直す所0で報告へ</text>
+
+<!-- other AIs -->
+<rect x="8" y="642" width="344" height="48" rx="10" style="fill:none;stroke:var(--line);stroke-dasharray:5 4"/>
+<text x="22" y="662" class="t" style="font-size:13px">ほかのAIも同じ決まりで担当に入る</text>
+<text x="22" y="680" class="s">ChatGPT（SNS）・Gemini・Muse ／ AGENTS.md と docs/ai</text>
+</svg>
+
+<h2>世界の事例から入れた6つの決まり</h2>
+<div class="cards">
+ <div class="c"><div class="ic" style="background:var(--ownbg)"><svg viewBox="0 0 24 24" width="18"><text x="12" y="17" text-anchor="middle" style="font-size:15px;font-weight:900;fill:var(--own)">¥</text></svg></div><b>お金・値引き・約束はAIだけで決めない</b><small>AIの売店は頼まれて値引きし赤字に（<a href="https://www.anthropic.com/research/project-vend-1">出典</a>）</small></div>
+ <div class="c"><div class="ic" style="background:var(--gatebg)"><svg viewBox="0 0 24 24" width="18"><path d="M5 12l4 4 10-10" style="fill:none;stroke:var(--gate);stroke-width:3"/></svg></div><b>役を足すより、手順と点検</b><small>手順を決めたら赤字の週がほぼ消えた（<a href="https://www.anthropic.com/research/project-vend-2">出典</a>）</small></div>
+ <div class="c"><div class="ic" style="background:var(--hubbg)"><svg viewBox="0 0 24 24" width="18"><circle cx="11" cy="11" r="6" style="fill:none;stroke:var(--hub);stroke-width:2.5"/><path d="M16 16l5 5" style="stroke:var(--hub);stroke-width:2.5"/></svg></div><b>報告には証拠。実物で確かめるまで「済み」にしない</b><small>AIは終わったふりをする（<a href="https://www.cs.cmu.edu/news/2025/agent-company">出典</a>）</small></div>
+ <div class="c"><div class="ic" style="background:var(--goalbg)"><svg viewBox="0 0 24 24" width="18"><rect x="6" y="10" width="12" height="10" rx="2" style="fill:var(--goal)"/><path d="M9 10V7a3 3 0 0 1 6 0v3" style="fill:none;stroke:var(--goal);stroke-width:2"/></svg></div><b>消す・送る・公開は人のOK</b><small>AIが本番のデータを消した（<a href="https://fortune.com/2025/07/23/ai-coding-tool-replit-wiped-database-called-it-a-catastrophic-failure/">出典</a>）</small></div>
+ <div class="c"><div class="ic" style="background:var(--supbg)"><svg viewBox="0 0 24 24" width="18"><path d="M4 7h16M4 12h16M4 17h16" style="stroke:var(--sup);stroke-width:2.5"/></svg></div><b>並べるのは調べる・批判する仕事。書くのは1人</b><small>並行は速いが量は約15倍、境目があいまいだと重なる（<a href="https://www.anthropic.com/engineering/multi-agent-research-system">出典</a>）</small></div>
+ <div class="c"><div class="ic" style="background:var(--ownbg)"><svg viewBox="0 0 24 24" width="18"><path d="M4 18l5-6 4 3 7-9" style="fill:none;stroke:var(--own);stroke-width:2.5"/></svg></div><b>量より質の数字で見る</b><small>AI中心の窓口は質が下がり人を再雇用（<a href="https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396">出典</a>）</small></div>
+</div>
+</div>

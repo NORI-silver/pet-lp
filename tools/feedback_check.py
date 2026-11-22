@@ -14,7 +14,9 @@ def codes(root):
     rc = open(os.path.join(root, "tools/rules_check.py"), encoding="utf-8").read()
     pc = open(os.path.join(root, "tools/phone_check.cjs"), encoding="utf-8").read()
     sc = open(os.path.join(root, "tools/seo_check.py"), encoding="utf-8").read()
+    rp = open(os.path.join(root, "tools/report_check.cjs"), encoding="utf-8").read()
     return {
+        "report": set(re.findall(r"ng\.push\(`?'?(\w+):", rp)),
         "rules": set(re.findall(r'found\.append\(\("(\w+)"', rc)),
         "phone": set(re.findall(r"['\"](\w+)['\"]", pc)),
         "seo": set(re.findall(r"\b([A-Za-z_]\w*)\b", sc)),
