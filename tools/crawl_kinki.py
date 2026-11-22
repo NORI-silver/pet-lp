@@ -5,6 +5,20 @@ import concurrent.futures as cf, json, os, sys, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import site_snap, reg_fetch
 
+_orig_links = site_snap.links_of
+def _safe_links(h, base):
+    try:
+        return _orig_links(h, base)
+    except Exception:
+        return []
+site_snap.links_of = _safe_links
+
+def safe_snap(it):
+    try:
+        return site_snap.snap(it)
+    except Exception as e:
+        return dict(it, error=str(e)[:200])
+
 def main():
     out = sys.argv[1] if len(sys.argv) > 1 else 'out'
     os.makedirs(out, exist_ok=True)
@@ -17,10 +31,10 @@ def main():
             if fn.startswith('queue_q'):  # 検索はひとつずつ間をあけて（続けて聞くと結果が空になる）
                 res = []
                 for it in items:
-                    res.append(site_snap.snap(it)); time.sleep(12)
+                    res.append(safe_snap(it)); time.sleep(12)
             else:
                 with cf.ThreadPoolExecutor(12) as ex:
-                    res = list(ex.map(site_snap.snap, items))
+                    res = list(ex.map(safe_snap, items))
             json.dump(res, open(os.path.join(out, fn.replace('queue', 'snap')), 'w'), ensure_ascii=False, indent=1)
             print(fn, len(res), 'errors', sum(1 for x in res if x.get('error')))
         elif fn.startswith('post') and fn.endswith('.json'):  # POST で配るオープンデータ（京都市）
