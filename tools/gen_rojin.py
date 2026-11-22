@@ -49,7 +49,7 @@ def _card(e, h):
     extra += f'<small>所在地：{e(h["addr"])}</small>'
     # [B] 2026-11-22 Nori「他のサイトにいって追加で調べることがないように」：公式サイトに書いてある料金・条件・時間などもカードに
     for f in h.get("facts", []):
-        if f["k"] in ("料金", "別料金", "受け入れ条件", "見学・面会", "病院", "用意するもの", "営業・受付時間", "お支払い", "部屋", "お世話", "1泊・日帰り") and not (f["k"] == "見学・面会" and h.get("visit")):
+        if f["k"] in ("料金", "別料金", "受け入れ条件", "見学・面会", "病院", "用意するもの", "営業・受付時間", "お支払い", "部屋", "お世話", "1泊・日帰り", "定休日", "駐車場") and not (f["k"] == "見学・面会" and h.get("visit")):
             extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
     if h.get("src"): extra += '<small>公式サイトが見つからないため、' + ('老犬ホーム協会' if h["src"] == "roukenhome" else '老犬ケア（老犬ホームの情報サイト）') + 'の施設の紹介ページにリンクしています</small>'
     fa = f' data-cat="rojin" data-fid="{e(h["id"])}" data-name="{e(h["name"])}"' + (' data-partner="1"' if h.get("partner") else '')  # facility.js（問い合わせ文・提携先へは当サイトから送る）

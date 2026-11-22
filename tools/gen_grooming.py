@@ -34,7 +34,7 @@ def _card(e, g):
     if g.get("services"): extra += f'<small>内容：{e(g["services"])}</small>'
     if g.get("area"): extra += f'<small>出張エリア：{e(g["area"])}</small>'
     for f in g.get("facts", []):
-        if f["k"] in ("料金", "出張費", "営業・受付時間", "定休日", "予約", "予約のしかた", "お支払い", "犬・猫・大きさ"):
+        if f["k"] in ("料金", "出張費", "営業・受付時間", "定休日", "予約", "予約のしかた", "お支払い", "犬・猫・大きさ", "駐車場", "用意するもの"):
             extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
     tags = _tags(g)
     if tags: extra += '<small class="emg-spec">公式サイトに書いてある条件：' + e("・".join(tags)) + '</small>'

@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   push:
     branches: ['claude/**']
-    paths: ['tools/crawl/queue*.json', 'tools/site_snap.py']
+    paths: ['tools/crawl/queue*.json', 'tools/crawl/reg*.json', 'tools/site_snap.py', 'tools/reg_fetch.py']
 permissions:
   contents: write
 concurrency:
@@ -19,6 +19,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: 公式サイトを読む
         run: python3 tools/site_snap.py /tmp/out
+      - name: 動物取扱業の登録一覧を取る
+        run: python3 tools/reg_fetch.py /tmp/out
       - name: 結果をブランチ crawl-out に置く
         run: |
           git config user.name "github-actions[bot]"
