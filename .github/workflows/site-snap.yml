@@ -14,9 +14,14 @@ concurrency:
 jobs:
   snap:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
+      - name: 中部の分だけ
+        run: |
+          find tools/crawl -name 'queue*' ! -name '*chubu*' -delete
+          find tools/crawl -name 'reg*' ! -name '*chubu*' -delete
+          sed -i 's/timeout=25/timeout=12/' tools/site_snap.py
       - name: 公式サイトを読む
         run: python3 tools/site_snap.py /tmp/out
       - name: 動物取扱業の登録一覧を取る
