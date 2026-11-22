@@ -31,7 +31,8 @@ def _verdict(nm, pid, f, large):
     """(色, 一言, 説明)。書いていないときも「分からない」とは言わず、国の手引きにそって、どう動けばいいかを言う"""
     if pid == "l":
         k, txt = large
-        head = {"ok": ("yes", "連れて行けます（つないで過ごす）"), "cage": ("hard", "ケージに入る大きさまで"),
+        head = {"check": ("hard", "受け入れを確認"), "allowed": ("yes", "一律の大きさ制限なし"),
+                "ok": ("yes", "連れて行けます（つないで過ごす）"), "cage": ("hard", "ケージに入る大きさまで"),
                 "no": ("no", "避難所に入れないことがあります"), "nobig": ("hard", "入れないこともあります"),
                 "hard": ("hard", "むずかしいことがあります"), "small": ("hard", "むずかしいことがあります"),
                 "none": ("yes", "大きさで分けていません")}[k]
@@ -131,20 +132,23 @@ def block(e, it, pf, large, shelter_note=False, title=None):
         f'<label for="hk-{p}"><span aria-hidden="true">{ic}</span>{e(lab)}</label>' for p, lab, ic, _ in PETS) + "</div>"
     where = (it.get("decision_place") or _where(nm, it.get("place"))) + ("避難所ごとのペットの場所は、下の避難所の一覧の🐾に書いています。" if shelter_note else "")
     panels = []
-    for p, lab, ic, _ in PETS:
+    for p, lab, ic, flag in PETS:
         cls, head, why = _verdict(nm, p, f, large)
         if p != "l" and it.get("decision_species"):
             cls, head, why = it["decision_species"]
+        elif p != "l" and not f.get(flag) and it.get("decision_species_fallback"):
+            cls, head, why = it["decision_species_fallback"]
         elif p == "l" and it.get("decision_large_head"):
             head = it["decision_large_head"]
         ic2 = {"yes": "✅", "hard": "⚠️", "no": "⛔"}[cls]
         alts = "".join(f'<li><a href="{e(u)}"><span class="i" aria-hidden="true">{i}</span><span><b>{e(t)}</b><small>{e(s)}</small></span></a></li>'
                        for i, t, u, s in private_links(pf, p))
         car = "車の中で過ごすときは、エコノミークラス症候群と暑さに気をつけ、ペットは車内に置きっぱなしにしない。" if p in ("s", "l") else ""
+        prep = (it.get("decision_large_prep") or PREP[p]) if p == "l" else PREP[p]
         panels.append(
             f'<div class="hk-p hk-p-{p}"><div class="hk-v {cls}"><span class="i" aria-hidden="true">{ic2}</span><div><b>{e(lab)}：{e(head)}</b><p>{e(why)}</p></div></div>'
             f'<h3>🏠 どこで過ごす？</h3><p class="hk-x">{e(where)}</p>'
-            f'<h3>☑️ 今日やっておく準備</h3><ul class="hk-c">' + "".join(f"<li>{e(x)}</li>" for x in PREP[p] + COMMON) + "</ul>"
+            f'<h3>☑️ 今日やっておく準備</h3><ul class="hk-c">' + "".join(f"<li>{e(x)}</li>" for x in prep + COMMON) + "</ul>"
             f'<h3>🚗 避難所に入れないとき・長引くとき</h3><p class="hk-x">在宅避難（家が安全なら）・車の中・親戚や知人の家のほか、民間の預け先もあります。{e(car)}</p>'
             f'<ul class="hk-a">{alts}</ul></div>')
     remember = ("<script>(function(){try{var v=localStorage.getItem('hnPet'),r=v&&document.getElementById('hk-'+v);if(r)r.checked=true;"
