@@ -3,6 +3,9 @@
 
 このリポジトリでは、Claude・ChatGPT（Codex）・Gemini のどれも、次の決まりと体制で動きます（Nori 2026-11-22「カタナとかほかのサービスでもこの体制撮れるようにしてくれる」）。体制図は `docs/ai/framework/org-chart.md`、型は `docs/ai/framework/README.md`、この事業での記入は `docs/ai/operating.md`、設定は `ai-kit.json`。
 
+### 判断の土台
+いちばん先に `docs/ai/vision.md`（{{OWNER}} さんのビジョンと共通方針。原文のまま、全事業共通）を読む。決まりにない場面は、この方針から考える。
+
 ### いちばん最初：{{OWNER}} さんへは図で、日本語で
 - まとめ・計画・お金・流れ・くらべは、スマホ1画面の図（箱と矢印・色・アイコン）で送り、文字は要所に1〜2行（図があるときは3行まで）。文字だけの返信は5行まで。{{OWNER}} さんへの文は日本語だけ。
 - 送る前に `python3 tools/reply_check.py <返信> [--diagram <図>] [--reviewed 日付]`、図は `node tools/report_check.cjs <図.html>` を通し、スマホの写真を自分の目で見る。
