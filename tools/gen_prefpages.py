@@ -218,10 +218,10 @@ def render_pref(ctx, cat, pf, rows, city=None):
         {"@type": "ListItem", "position": 2, "name": cat["h1"], "item": f'{SITE}/{cat["slug"]}/'},
         {"@type": "ListItem", "position": 3, "name": f"{pf}の{name}", "item": SITE + href(cat, pf)}] + ([{"@type": "ListItem", "position": 4, "name": f"{place}の{name}", "item": url}] if city else [])},
       {"@context": "https://schema.org", "@type": "ItemList", "name": f"{place}の{name}", "numberOfItems": len(show),
-       "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it["name"], "url": it["url"]} for i, it in enumerate(show)]},
+       "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it["name"], "url": it["url"]} for i, it in enumerate(show[:100])]},  # 100件まで（構造化データのスクリプトが24KBを超えないように）
       {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
-      ensure_ascii=False, indent=1) + "\n</script>"
+      ensure_ascii=False, separators=(",", ":")) + "\n</script>"
     cards = "".join(cat["card"](e, it) for it in show)
     import faccard as _FC
     if cat.get("bf_keys") and n >= 3 and cat["slug"] not in _FC.DIRS:  # 施設カードの分野は「うちの子に合うところをさがす」（tools/faccard.py）にまとめた  # うちの子（体重・猫）でしぼる。公式サイトに書いてある受け入れの決まりだけで分け、書いていない店・施設はいつも出す

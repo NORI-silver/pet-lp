@@ -27,8 +27,15 @@ def walk(x):
         for v in x.values(): walk(v)
     elif isinstance(x, list):
         for v in x: walk(v)
+SITTER_NAME = re.compile(r'シッター|sitter', re.I)
+def drop_sitters_as_hotels(d):
+    """名前がシッターでホテルと名乗っていない事業者は、ホテルの一覧に入れない（シッターのページの「ホテルとちがって」の文で分野をまちがえるため）。"""
+    def bad(x): return isinstance(x, dict) and str(x.get('id', '')).startswith('PHt') and SITTER_NAME.search(x.get('name', '')) and not re.search(r'ホテル|hotel|預か', x.get('name', ''), re.I)
+    if isinstance(d, dict):
+        for k, v in d.items():
+            if isinstance(v, list): d[k] = [x for x in v if not bad(x)]
 for fn in FILES:
-    s = open(fn).read(); d = json.loads(s); walk(d)
+    s = open(fn).read(); d = json.loads(s); walk(d); drop_sitters_as_hotels(d)
     t = json.dumps(d, ensure_ascii=False, indent=1)
     # 元の書き方（インデント）を保つため、変わったときだけ書く
     if json.loads(t) != json.loads(s):

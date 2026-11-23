@@ -9343,28 +9343,6 @@
    "src": "https://bonheur-dog.com/"
   },
   {
-   "id": "Tte042d11",
-   "name": "coexistence",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "横浜市鶴見区",
-   "url": "https://localstyle-yokohama.jp/tsurumi-ku/area_list/facilities/11453",
-   "services": "ペットホテル、ペットシッター、しつけ",
-   "facts": [
-    {
-     "k": "定休日",
-     "v": "月曜日 ※加えて不定休あり",
-     "src": "https://localstyle-yokohama.jp/tsurumi-ku/area_list/food",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23",
-   "addr": "神奈川県横浜市鶴見区馬場",
-   "src": "https://localstyle-yokohama.jp/tsurumi-ku/area_list/facilities/11453"
-  },
-  {
    "id": "Tt2816c46",
    "name": "ドッグ ノーティカ",
    "prefs": [
@@ -9830,20 +9808,6 @@
    "checked": "2026-11-23",
    "addr": "神奈川県三浦郡葉山町下山口1363-1",
    "src": "https://www.ohana-dog-academy.com/"
-  },
-  {
-   "id": "Ttd79fd39",
-   "name": "いぬの学び舎",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "茅ヶ崎市",
-   "url": "https://kawaii-wanko.com/kanagawa/chigasaki/inunomanabiya.html",
-   "services": "ペットホテル、ペットシッター、しつけ",
-   "facts": [],
-   "checked": "2026-11-23",
-   "addr": "神奈川県茅ヶ崎市小和田3-12-20",
-   "src": "https://kawaii-wanko.com/kanagawa/chigasaki/inunomanabiya.html"
   },
   {
    "id": "Ttd2239e4",
@@ -11118,6 +11082,1035 @@
    "checked": "2026-11-23",
    "addr": "東京都町田市木曽西五丁目5番8号",
    "src": "https://dogandyou.info/"
+  },
+  {
+   "id": "Ttea8c7e1",
+   "name": "DOG TRAINING りーど",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "瑞穂町",
+   "url": "http://dogtraining-lead.com/about/",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "年中無休(不定休)",
+     "src": "http://dogtraining-lead.com",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "1回 5,000円",
+     "src": "http://dogtraining-lead.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "東京都西多摩郡瑞穂町箱根ケ崎784番地27",
+   "src": "http://dogtraining-lead.com/about/"
+  },
+  {
+   "id": "Ttcf24d5a",
+   "name": "出張しつけ相談 With Dog",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市幸区",
+   "url": "https://www.aries-ah.com/discipline/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金の他、クレジットカードやペット保険でもお支払いいただけます。ご不明な点はお支払い時にご相談ください。",
+     "src": "https://www.aries-ah.com/first/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県川崎市幸区小向西町3-96",
+   "src": "https://www.aries-ah.com/discipline/"
+  },
+  {
+   "id": "Tt2a7dd70",
+   "name": "一般社団法人 優良家庭犬普及協会",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市都筑区",
+   "url": "https://www.cgcjp.net/school/%E5%8B%95%E7%89%A9%E5%8F%96%E6%89%B1%E6%A5%AD%E8%A1%A8%E7%A4%BA/",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市都筑区茅ケ崎南",
+   "src": "https://www.cgcjp.net/school/%E5%8B%95%E7%89%A9%E5%8F%96%E6%89%B1%E6%A5%AD%E8%A1%A8%E7%A4%BA/"
+  },
+  {
+   "id": "Tt69b7ad1",
+   "name": "BigBlue for Doggy",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "https://www.bigblue.jp/dogwalker/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払いは、現金またはPayPayがご利用いただけます。",
+     "src": "https://www.bigblue.jp/training/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市中区本牧三之谷",
+   "src": "https://www.bigblue.jp/dogwalker/"
+  },
+  {
+   "id": "Tt298c3e9",
+   "name": "とのとの",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "町田市",
+   "url": "https://tonotono.jp/",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "★不定休 ★駐車場有り",
+     "src": "https://tonotono.jp/pethotel-accsess/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "★不定休 ★駐車場有り",
+     "src": "https://tonotono.jp/pethotel-accsess/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "※カウンセリングの際は狂犬病と混合ワクチンの予防接種証明書をご持参ください。規定によりコピーを取らせていただきます。また、場合によっては飼い主様の運転免許証等の個人情報をコピーさせていただく場合がございます。",
+     "src": "https://tonotono.jp/users-guide/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "東京都町田市金井二丁目28番地16",
+   "src": "https://tonotono.jp/"
+  },
+  {
+   "id": "Tt0f7ac23",
+   "name": "Sunny Side Dogs",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "八王子市",
+   "url": "https://tetsukohs.wixsite.com/sunnysidedogs/gaiyo",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "ご予約 ＆ お問い合わせ （月曜定休 受付時間 9:00〜18:00）",
+     "src": "https://tetsukohs.wixsite.com/sunnysidedogs/gaiyo",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "ご予約 ＆ お問い合わせ （月曜定休 受付時間 9:00〜18:00）",
+     "src": "https://tetsukohs.wixsite.com/sunnysidedogs/gaiyo",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "東京都八王子市打越町1193番地1",
+   "src": "https://tetsukohs.wixsite.com/sunnysidedogs/gaiyo"
+  },
+  {
+   "id": "Ttef63ec1",
+   "name": "Homecare For Animals",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市港南区",
+   "url": "https://homecare-for-animals.jimdoweb.com/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "初回カウンセリング（30分・無料）終了後に、4回分のレッスン料のお支払いをお願いいたします。後日、お振込みいただいても構いません。",
+     "src": "https://homecare-for-animals.jimdoweb.com/%E7%8A%AC%E3%81%AE%E3%81%97%E3%81%A4%E3%81%91%E3%83%AC%E3%83%83%E3%82%B9%E3%83%B3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市港南区芹が谷",
+   "src": "https://homecare-for-animals.jimdoweb.com/"
+  },
+  {
+   "id": "Tte187652",
+   "name": "FLUFFY DAYS(フラッフィーデイズ)",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://fluffydays.com/archives/20467",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "車を駐車する場所の確保をお願いします。コインパーキングを利用する場合は実費を請求させていただきます。",
+     "src": "https://fluffydays.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "「狂犬病予防注射」および「混合ワクチン」の接種証明書を確認させていただきます。病気等の事情で接種できない場合はあらかじめお教えください。",
+     "src": "https://fluffydays.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市青葉区荏田西",
+   "src": "https://fluffydays.com/archives/20467"
+  },
+  {
+   "id": "Tt433bba3",
+   "name": "DOGWILL",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "茅ヶ崎市",
+   "url": "https://pochica.jp/spots/11222",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明が必要な店を除く",
+     "src": "https://pochica.jp/spots/11222",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県茅ヶ崎市柳島1589-21",
+   "src": "https://pochica.jp/spots/11222"
+  },
+  {
+   "id": "Tt4013e88",
+   "name": "ワンコのおうち アプルール",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "秦野市",
+   "url": "https://r-guide.jp/facility/793/",
+   "services": "しつけ、老犬ホーム",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間／10：00～20：00 年中無休（年末年始を除く）",
+     "src": "https://r-guide.jp/sakoujyu/companies/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "自宅や最寄り駅まで無料送迎を行っております。",
+     "src": "https://r-guide.jp/sakoujyu/companies/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県秦野市平沢321-1",
+   "src": "https://r-guide.jp/facility/793/"
+  },
+  {
+   "id": "Ttdad3ca7",
+   "name": "おりこうワンちゃん",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://orikou-wanchan.com/profile/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "平日: 9:00 AM – 6:00 PM 土曜日・日曜日: 10:00 AM – 5:00 PM ※季節変動あり （不定休）",
+     "src": "https://orikou-wanchan.com/profile/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "※駐車スペースがない場合：コインパーキング費用の一部負担（500円）をお願いします",
+     "src": "https://orikou-wanchan.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市青葉区新石川",
+   "src": "https://orikou-wanchan.com/profile/"
+  },
+  {
+   "id": "Ttdf1333b",
+   "name": "ふんわりわん・はあと",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "青梅市",
+   "url": "https://www.funwari-wanone.com/%E3%81%B5%E3%82%93%E3%82%8F%E3%82%8A-%E3%82%8F%E3%82%93%E3%81%AF%E3%81%82%E3%81%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "東京都青梅市友田町一丁目855番地の10",
+   "src": "https://www.funwari-wanone.com/%E3%81%B5%E3%82%93%E3%82%8F%E3%82%8A-%E3%82%8F%E3%82%93%E3%81%AF%E3%81%82%E3%81%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/"
+  },
+  {
+   "id": "Ttb7ebe04",
+   "name": "Canis Minor",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "三浦市",
+   "url": "https://www.canis-minor-koinuza.com/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "午前 10 時〜午後 6 時 不定休",
+     "src": "https://www.canis-minor-koinuza.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "1回9,900円 （出張費等別）",
+     "src": "https://www.canis-minor-koinuza.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県三浦市三崎5丁目12-3-303",
+   "src": "https://www.canis-minor-koinuza.com/"
+  },
+  {
+   "id": "Tta30f10c",
+   "name": "オオイドッグスクール",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "藤沢市",
+   "url": "https://ivry.jp/telsearch/0466501239/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "クレジットカード（カード会社：JCB/マスターカード/VISA/AMEX）決済をお願いしております。",
+     "src": "https://ivry.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県藤沢市柄沢2-27-23",
+   "src": "https://ivry.jp/telsearch/0466501239/"
+  },
+  {
+   "id": "Tta5107f8",
+   "name": "わんこといっしょ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "三浦市",
+   "url": "https://dogtogether66.com/",
+   "services": "ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "[定休日] 年中無休 ※基本的には年中無休ですが、臨時にお休みさせていただくことがあります。",
+     "src": "https://dogtogether66.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "ペットを送迎できるよう駐車場を完備",
+     "src": "https://dogtogether66.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン、狂犬病ワクチンの証明書",
+     "src": "https://dogtogether66.com/service/kinder/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払方法は現金、またはお振込みとなります。",
+     "src": "https://dogtogether66.com/service/kinder/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県三浦市栄町20-40",
+   "src": "https://dogtogether66.com/"
+  },
+  {
+   "id": "Tte597937",
+   "name": "Dog Signal",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://group.kadokawa.co.jp/information/promotional_topics/article-14935.html",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市青葉区しらとり台",
+   "src": "https://group.kadokawa.co.jp/information/promotional_topics/article-14935.html"
+  },
+  {
+   "id": "Tt15c006a",
+   "name": "そらぐみさん~出張ドッグトレーニング&ケア~",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市南区",
+   "url": "https://soragumisan.amebaownd.com/",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市南区井土ケ谷下町",
+   "src": "https://soragumisan.amebaownd.com/"
+  },
+  {
+   "id": "Tt31d3576",
+   "name": "ドッグスクール わん! ステップ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://www.dogschoolwanstep.com/",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市青葉区桜台",
+   "src": "https://www.dogschoolwanstep.com/"
+  },
+  {
+   "id": "Tt9277d0c",
+   "name": "ドッグトレーニング ナカムラ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市宮前区",
+   "url": "https://www.monetrack.com/dog-training/",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県川崎市宮前区菅生ケ丘36番1号",
+   "src": "https://www.monetrack.com/dog-training/"
+  },
+  {
+   "id": "Tt581addf",
+   "name": "Sempre insieme",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "府中市",
+   "url": "https://sempre-insieme.jp/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "・交通費： 電車移動となります。乗換案内での最短料金を都度、現金にてお支払いいただきます。",
+     "src": "https://sempre-insieme.jp/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "東京都府中市府中町一丁目1番地1",
+   "src": "https://sempre-insieme.jp/"
+  },
+  {
+   "id": "Tt8704e7a",
+   "name": "KOKUA DOG",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市港南区",
+   "url": "https://kokua-empathy.jimdofree.com/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 不定休※お問い合わせ下さい",
+     "src": "https://kokua-empathy.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市港南区下永谷",
+   "src": "https://kokua-empathy.jimdofree.com/"
+  },
+  {
+   "id": "Tt6cc9160",
+   "name": "ペットのお世話屋さん 福笑い",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://fukuwarai.sakuraweb.com/index.html",
+   "services": "ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "※お近くに駐車スペースが無く、コインパーキングを使用する場合は、別途駐車場代を頂きます。",
+     "src": "https://fukuwarai.sakuraweb.com/entrance5.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市青葉区あかね台",
+   "src": "https://fukuwarai.sakuraweb.com/index.html"
+  },
+  {
+   "id": "Tta88699b",
+   "name": "佐々木ドッグトレーニング",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "大磯町",
+   "url": "https://sasakidogtraining.com/",
+   "services": "ペットシッター、しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県中郡大磯町東小磯107-35",
+   "src": "https://sasakidogtraining.com/"
+  },
+  {
+   "id": "Tt18a38b6",
+   "name": "Bellsch",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "https://wdc-bellsch.com/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払いは事前振込となります。",
+     "src": "https://wdc-bellsch.com/food/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市中区本牧三之谷",
+   "src": "https://wdc-bellsch.com/"
+  },
+  {
+   "id": "Tte8dabd3",
+   "name": "Laf DOG",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://lafdog.com/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10時〜17時",
+     "src": "https://lafdog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "★駐車場4台分あり",
+     "src": "https://lafdog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市青葉区市ケ尾町",
+   "src": "https://lafdog.com/"
+  },
+  {
+   "id": "Tt123e940",
+   "name": "Dog Life Support CLEA",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "平塚市",
+   "url": "https://www.doglifesupportclea.com/",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県平塚市四之宮3-12-41",
+   "src": "https://www.doglifesupportclea.com/"
+  },
+  {
+   "id": "Tt4ae4873",
+   "name": "kay dog school",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市川崎区",
+   "url": "https://kaydogschool.mystrikingly.com/",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県川崎市川崎区渡田山王町25番7号",
+   "src": "https://kaydogschool.mystrikingly.com/"
+  },
+  {
+   "id": "Tt2257f30",
+   "name": "Inutelligence Laboratory (いぬらぼ)",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://inulabo.com/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場をご用意いただけない場合、コインパーキング代は実費をご負担ください。",
+     "src": "https://inulabo.com/price-simulator.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは現金でお願いしています。",
+     "src": "https://inulabo.com/price-simulator.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市青葉区柿の木台",
+   "src": "https://inulabo.com/"
+  },
+  {
+   "id": "Tt911f7ac",
+   "name": "Helfen iii",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "昭島市",
+   "url": "https://www.helfen3i.com/%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB/",
+   "services": "ペットシッター、しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "東京都昭島市中神町1148番地74",
+   "src": "https://www.helfen3i.com/%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB/"
+  },
+  {
+   "id": "Tt08f02a5",
+   "name": "pompocorin",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "https://www.pompocorin.com/",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市中区桜木町",
+   "src": "https://www.pompocorin.com/"
+  },
+  {
+   "id": "Tta9c4a01",
+   "name": "有限会社 ヤトノペット",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://www.yatonopet.com/",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ワクチン、狂犬病登録証明書",
+     "src": "https://www.yatonopet.com/pet-hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市青葉区元石川町",
+   "src": "https://www.yatonopet.com/"
+  },
+  {
+   "id": "Ttc9fa334",
+   "name": "ドッグ トレーニング リアン",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市都筑区",
+   "url": "https://riansaki.wixsite.com/riansaki88",
+   "services": "ペットホテル、しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市都筑区牛久保",
+   "src": "https://riansaki.wixsite.com/riansaki88"
+  },
+  {
+   "id": "Tt89975dc",
+   "name": "Dogs laugh",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市宮前区",
+   "url": "https://www.dogslaugh.com/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "レッスン・対面カウンセリング：現金にてお支払いお願いいたします。",
+     "src": "https://www.dogslaugh.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県川崎市宮前区犬蔵2丁目43番13‐1号",
+   "src": "https://www.dogslaugh.com/"
+  },
+  {
+   "id": "Tt4cd8671",
+   "name": "Glucken CLUB",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市港南区",
+   "url": "https://gluckenclub.com/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10:00〜21:00（休業日を除く）",
+     "src": "https://gluckenclub.com/about/schedule.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "生後5カ月までで、ご家族と一緒に暮らし始めて7日以上、2回目ワクチン接種済みであること。",
+     "src": "https://gluckenclub.com/about/news.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市港南区日野",
+   "src": "https://gluckenclub.com/"
+  },
+  {
+   "id": "Tt6c8caea",
+   "name": "OHANA with dog",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "福生市",
+   "url": "https://www.ohana-withdog.com/",
+   "services": "ペットシッター、しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "東京都福生市本町117番地1",
+   "src": "https://www.ohana-withdog.com/"
+  },
+  {
+   "id": "Ttb640928",
+   "name": "神田ドッグスクール",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市多摩区",
+   "url": "http://www.kanda-dogschool.com/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "5,000 円 ／ 1レッスン",
+     "src": "http://www.kanda-dogschool.com/plan/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "出張エリア｜犬のしつけ教室【神田ドッグスクール】川崎市多摩区",
+     "src": "http://www.kanda-dogschool.com/area/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県川崎市多摩区南生田2-31-29",
+   "src": "http://www.kanda-dogschool.com/"
+  },
+  {
+   "id": "Tt82ce758",
+   "name": "ドッグスクールKOKORO",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市栄区",
+   "url": "https://rarea.events/event/213500",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市栄区中野町",
+   "src": "https://rarea.events/event/213500"
+  },
+  {
+   "id": "Tt2217bfc",
+   "name": "DEEP BOND",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市泉区",
+   "url": "https://deepbond.net/",
+   "services": "ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "出張エリア ： 神奈川県内、湘南、横浜市、藤沢市、平塚市、鎌倉市など",
+     "src": "https://deepbond.net/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市泉区和泉町",
+   "src": "https://deepbond.net/"
+  },
+  {
+   "id": "Ttd2e78b7",
+   "name": "Dogsalon Littlesnow",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市保土ケ谷区",
+   "url": "https://dogsalonlittlesnow.com/",
+   "services": "ペットホテル、しつけ、出張トリミング",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "10:00～18:00（水曜定休）",
+     "src": "https://dogsalonlittlesnow.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "●1回：5,500円",
+     "src": "https://dogsalonlittlesnow.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカードは、JCB・Diners Club・Discover Card・VISA・MasterCard・American Express に対応しております。",
+     "src": "https://dogsalonlittlesnow.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市保土ケ谷区帷子町",
+   "src": "https://dogsalonlittlesnow.com/"
+  },
+  {
+   "id": "Tt4bcc250",
+   "name": "いぬのとびら",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市神奈川区",
+   "url": "https://refcy-ako.jimdofree.com/",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市神奈川区羽沢町",
+   "src": "https://refcy-ako.jimdofree.com/"
+  },
+  {
+   "id": "Tt4c9efa8",
+   "name": "ポジティブ・ドッグ・トレーニング",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市西区",
+   "url": "http://positive-dogtraining.net/about-us",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市西区みなとみらい",
+   "src": "http://positive-dogtraining.net/about-us"
+  },
+  {
+   "id": "Ttfc2df98",
+   "name": "株式会社ユアペティア 港北ニュータウン店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市都筑区",
+   "url": "https://www.olympic-corp.co.jp/petia/shop/P36",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "店舗営業時間： 9:00-20:00",
+     "src": "https://www.olympic-corp.co.jp/petia/shopsearch",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：火曜・金曜",
+     "src": "https://www.olympic-corp.co.jp/petia/shop/P36",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "10歳未満の年1回各種ワクチンを接種している健康なワンちゃんが対象となります。",
+     "src": "https://www.olympic-corp.co.jp/petia/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市都筑区茅ケ崎中央",
+   "src": "https://www.olympic-corp.co.jp/petia/shop/P36"
+  },
+  {
+   "id": "Tt0b253eb",
+   "name": "有限会社横浜安達ドッグスクール",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市旭区",
+   "url": "https://adachidogschool.com/",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回 3,850円 / 10回 38,500円",
+     "src": "https://adachidogschool.com/lesson.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "◆ 生後3～5ヵ月の混合ワクチン接種済の犬が対象となります。",
+     "src": "https://adachidogschool.com/puppy-lesson.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市旭区市沢町",
+   "src": "https://adachidogschool.com/"
+  },
+  {
+   "id": "Tt38eb957",
+   "name": "Dog Sunny",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市緑区",
+   "url": "https://dogsunny.com/",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市緑区長津田町",
+   "src": "https://dogsunny.com/"
+  },
+  {
+   "id": "Tt6b38a22",
+   "name": "viva dog",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "厚木市",
+   "url": "https://vivadog.life/",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県厚木市妻田北3-16-10",
+   "src": "https://vivadog.life/"
+  },
+  {
+   "id": "Tt93c4961",
+   "name": "ReBorn Dog55",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市泉区",
+   "url": "https://reborn-dog55.com/",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横浜市泉区領家",
+   "src": "https://reborn-dog55.com/"
+  },
+  {
+   "id": "Ttbce3b34",
+   "name": "Paw-house",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "平塚市",
+   "url": "https://pet-dog-training.jp/277/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：8:00-8:30",
+     "src": "https://pet-dog-training.jp/about/official-tournament/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "事前にPayPalアカウントを作成し、クレジットカードまたは銀行口座を登録して準備の上でエントリー開始をお待ち下さい。",
+     "src": "https://pet-dog-training.jp/about/official-tournament/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県平塚市長持510-10",
+   "src": "https://pet-dog-training.jp/277/"
   }
  ]
 }

@@ -4686,6 +4686,58 @@
    "spec": "ペットホテル、老犬ホーム",
    "addr": "神奈川県川崎市川崎区渡田1丁目9番2号",
    "animals": "犬・猫"
+  },
+  {
+   "id": "Rt4013e88",
+   "name": "ワンコのおうち アプルール",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "秦野市",
+   "url": "https://r-guide.jp/facility/793/",
+   "services": "しつけ、老犬ホーム",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間／10：00～20：00 年中無休（年末年始を除く）",
+     "src": "https://r-guide.jp/sakoujyu/companies/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "一般的な方の負担限度額は44,400円ですが、非課税世帯の場合は、24600円または15,000円になります。制度改正により、昨年の8月から、一定年収以上の高所得者の自己負担限度額が上がりました。",
+     "src": "https://r-guide.jp/media/roujin-home-qa/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "自宅や最寄り駅まで無料送迎を行っております。",
+     "src": "https://r-guide.jp/sakoujyu/companies/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "spec": "しつけ、老犬ホーム",
+   "addr": "神奈川県秦野市平沢321-1",
+   "animals": "犬"
+  },
+  {
+   "id": "Rtf47ad3f",
+   "name": "株式会社 アサワペットサービス",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "小田原市",
+   "url": "http://www5d.biglobe.ne.jp/asawa/toten.html",
+   "services": "ペットホテル、老犬ホーム",
+   "facts": [],
+   "checked": "2026-11-23",
+   "spec": "ペットホテル、老犬ホーム",
+   "addr": "神奈川県小田原市沼代756-6",
+   "animals": "犬"
   }
  ],
  "near": {

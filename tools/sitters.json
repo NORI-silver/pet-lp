@@ -10333,28 +10333,6 @@
    "area": "横浜市港南区とその周り"
   },
   {
-   "id": "Ste042d11",
-   "name": "coexistence",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "横浜市鶴見区",
-   "url": "https://localstyle-yokohama.jp/tsurumi-ku/area_list/facilities/11453",
-   "services": "ペットホテル、ペットシッター、しつけ",
-   "facts": [
-    {
-     "k": "定休日",
-     "v": "月曜日 ※加えて不定休あり",
-     "src": "https://localstyle-yokohama.jp/tsurumi-ku/area_list/food",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23",
-   "chain": "indie",
-   "area": "横浜市鶴見区とその周り"
-  },
-  {
    "id": "St8522f98",
    "name": "いぬねこLua",
    "prefs": [
@@ -10841,20 +10819,6 @@
    "checked": "2026-11-23",
    "chain": "indie",
    "area": "武蔵村とその周り"
-  },
-  {
-   "id": "Std79fd39",
-   "name": "いぬの学び舎",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "茅ヶ崎市",
-   "url": "https://kawaii-wanko.com/kanagawa/chigasaki/inunomanabiya.html",
-   "services": "ペットホテル、ペットシッター、しつけ",
-   "facts": [],
-   "checked": "2026-11-23",
-   "chain": "indie",
-   "area": "茅ヶ崎市とその周り"
   },
   {
    "id": "St0d0eb92",
@@ -11685,6 +11649,1486 @@
    "checked": "2026-11-23",
    "chain": "indie",
    "area": "秦野市とその周り"
+  },
+  {
+   "id": "St4fa405a",
+   "name": "ペット・シッターズ矢向「ハッピーハンド」",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市鶴見区",
+   "url": "http://www.happyhand-yakou.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00～21:00",
+     "src": "http://www.happyhand-yakou.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市鶴見区とその周り"
+  },
+  {
+   "id": "St245f92c",
+   "name": "ペットのお世話ぶんぶく",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市神奈川区",
+   "url": "https://www.bunbukupetcare.com/about",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間： 9:00〜19:00",
+     "src": "https://www.bunbukupetcare.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "​混合ワクチン・狂犬病ワクチンの証明書（猶予証明でも可）",
+     "src": "https://www.bunbukupetcare.com/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "横浜 ペットシッター | 対応エリア｜神奈川・横浜・桜木町| ペットのお世話ぶんぶく",
+     "src": "https://www.bunbukupetcare.com/area",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "・お支払い： 原則事前振込",
+     "src": "https://www.bunbukupetcare.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜 ペットシッター | 対応エリア｜神奈川・横浜・桜木町| ペットのお世話ぶんぶく"
+  },
+  {
+   "id": "Sta853215",
+   "name": "アンディローレル",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "西東京市",
+   "url": "https://andylaurel.com/profile.html",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "ご都合のよい日時に鍵をお預かりに伺いますので、その際に現金でお支払い下さい。鍵を郵送でお送りいただく場合は、事前にお振込をお願いいたします。",
+     "src": "https://andylaurel.com/flow.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "西東京市とその周り"
+  },
+  {
+   "id": "St1c93c8c",
+   "name": "dog very",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "大井町",
+   "url": "https://www.dogvery.com/salon/",
+   "services": "ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "その際は近隣のコインパーキング等を利用いたしますので、恐れ入りますが駐車料金の実費分のみご負担をお願いしております。",
+     "src": "https://www.dogvery.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "Ａ． 初回ご利用時に、狂犬病予防注射済票および混合ワクチンの接種証明書のご提示をお願いしております。",
+     "src": "https://www.dogvery.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "大井町とその周り"
+  },
+  {
+   "id": "St154b140",
+   "name": "Comfy(コンフィー)",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市都筑区",
+   "url": "https://comfy.pittinn.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "横浜市都筑区、港北区、青葉区、川崎市宮前区周辺の範囲を訪問エリアとして対応してまいります。",
+     "src": "https://comfy.pittinn.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード決済",
+     "src": "https://comfy.pittinn.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市都筑区、港北区、青葉区、川崎市宮前区周辺の範囲を訪問エリアとして対応してまいります。"
+  },
+  {
+   "id": "St7de4d37",
+   "name": "ジョンのいえ 日本ペットシッターサービス町田店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "町田市",
+   "url": "http://p13.everytown.info/p13/457/0428128457/%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E3%81%84%E3%81%88%E6%97%A5%E6%9C%AC%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E7%94%BA%E7%94%B0%E5%BA%97/top.html",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "町田市とその周り"
+  },
+  {
+   "id": "St86bd1bc",
+   "name": "ペットシッター・くらら",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "鎌倉市",
+   "url": "https://www.matkaa.com/map/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "鎌倉市とその周り"
+  },
+  {
+   "id": "Ste9ecf89",
+   "name": "Cat Resort にゃん小町 鎌倉",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "鎌倉市",
+   "url": "https://www.catresortkamakura.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "🐈 全猫種 基本料金 朝１回/日 2000円 4頭目から500円",
+     "src": "https://www.catresortkamakura.com/about-5",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金：クレジットカード（VISA,Master,JCB):paypay,aupay",
+     "src": "https://www.catresortkamakura.com/%E5%BA%97%E8%88%97%E6%A1%88%E5%86%85",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "鎌倉市とその周り"
+  },
+  {
+   "id": "St5434c89",
+   "name": "ペットシッター しっぽ屋",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "平塚市",
+   "url": "http://www.kit.hi-ho.ne.jp/melu/shippoya/contact.html",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "* 多数のお客様のペットと接する都合上、安全面に配慮し、基本的な予防注射（狂犬病・三種混合など）を接種していない場合、",
+     "src": "http://www.kit.hi-ho.ne.jp/melu/shippoya/step.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "平塚市とその周り"
+  },
+  {
+   "id": "Sta6485cd",
+   "name": "ペットシッターサービス Bee-chan 湘南藤沢",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "藤沢市",
+   "url": "https://pbc.jp.net/staff.html",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：7:30〜19:00",
+     "src": "https://pbc.jp.net/staff.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "藤沢市とその周り"
+  },
+  {
+   "id": "St883d2e6",
+   "name": "ペットシッター ポウプリンツ 山手",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "https://petsitteryokohama.jimdofree.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "コインパーキング代0円",
+     "src": "https://petsitteryokohama.jimdofree.com/%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC-%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "※事前に掛かり付けのペットの病院の診察券、ワクチン接種証明書、ご印鑑、ご利用料金、ご自宅の合鍵の準備をお願いします。",
+     "src": "https://petsitteryokohama.jimdofree.com/%E3%81%94%E5%88%A9%E7%94%A8%E3%81%AE%E6%B5%81%E3%82%8C-1/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "ペットシッターポウプリンツでは 横浜市中区と南区の一部地域が対応エリア となります。",
+     "src": "https://petsitteryokohama.jimdofree.com/%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC-%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "ペットシッターポウプリンツでは 横浜市中区と南区の一部地域が対応エリア となります。"
+  },
+  {
+   "id": "Stc458bf7",
+   "name": "ペットサービス わんにゃふる",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "稲城市",
+   "url": "https://pet-wannyaful.jimdofree.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本的に交通費は、以下の営業エリア内で一律、往復500円です。",
+     "src": "https://pet-wannyaful.jimdofree.com/%E3%81%94%E5%88%A9%E7%94%A8%E6%96%99%E9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "稲城市とその周り"
+  },
+  {
+   "id": "St2268364",
+   "name": "わんこファースト",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://side8freitag.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：9:00～18:00",
+     "src": "https://side8freitag.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "青葉区すすき野を拠点に、地域密着型の派遣型サービスをはじめました。横浜市青葉区や都筑区を中心に、サービスエリア外のご相談も随時承っております。",
+     "src": "https://side8freitag.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "青葉区すすき野を拠点に、地域密着型の派遣型サービスをはじめました。横浜市青葉区や都筑区を中心に、サービスエリア外のご相談も随時承っております。"
+  },
+  {
+   "id": "St711ae5e",
+   "name": "R134STUDIO",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "藤沢市",
+   "url": "https://r134studio.jimdofree.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC-1/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "＊お支払いは事前入金となります。お振込みのほか、Paypal（クレジットカード）にも対応しております。",
+     "src": "https://r134studio.jimdofree.com/%E3%82%A2%E3%83%8B%E3%83%9E%E3%83%AB-%E3%82%B3%E3%83%9F%E3%83%A5%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/%E6%96%99%E9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "藤沢市とその周り"
+  },
+  {
+   "id": "St7c8a93e",
+   "name": "ペットシッター たろう",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "日野市",
+   "url": "https://poppins-petcare.jp/category/tokyo/%E6%97%A5%E9%87%8E%E5%B8%82/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日：年中無休",
+     "src": "https://poppins-petcare.jp/area/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "訪問シッティング4,400円/時間よりご提供しております。 介護プラン・カスタマイズプランは こちら からご確認ください。",
+     "src": "https://poppins-petcare.jp/category/tokyo/%E6%97%A5%E9%87%8E%E5%B8%82/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法はクレジットカード決済のみとなっております（1回払/VISA,Master,JCB,Amex等利用可）。",
+     "src": "https://poppins-petcare.jp/service-price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "日野市とその周り"
+  },
+  {
+   "id": "St48aa434",
+   "name": "ピアツリー",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "大和市",
+   "url": "https://www.peartree-pet.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間9：00～19：00の間にお願いいたします。",
+     "src": "https://www.peartree-pet.com/%e3%83%9a%e3%83%83%e3%83%88%e3%83%9b%e3%83%86%e3%83%ab/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車料金 実費 （駐車場がない場合などコインパーキング料金）",
+     "src": "https://www.peartree-pet.com/%e3%83%9a%e3%83%83%e3%83%88%e3%82%b7%e3%83%83%e3%82%bf%e3%83%bc/%e6%96%99%e9%87%91%e8%a1%a8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "基本的に作業開始前に、現金のみでお願いしております。",
+     "src": "https://www.peartree-pet.com/%e3%83%9a%e3%83%83%e3%83%88%e3%82%b7%e3%83%83%e3%82%bf%e3%83%bc/%e6%96%99%e9%87%91%e8%a1%a8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "大和市とその周り"
+  },
+  {
+   "id": "Stfaa5619",
+   "name": "ペット シッター コザキ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "清瀬市",
+   "url": "https://www.petsitterkozaki.com/profile.html",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "※ 狂犬病の接種証明書もしくは注射済票が必要となります。",
+     "src": "https://www.petsitterkozaki.com/info.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "清瀬市とその周り"
+  },
+  {
+   "id": "St159974f",
+   "name": "sora",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://petschool.jp/schooling/list-sitter/1214yokohamashi-aobaku/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市青葉区とその周り"
+  },
+  {
+   "id": "Stfc52481",
+   "name": "ペットシッター NOEL",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "町田市",
+   "url": "https://www.pet-mama.net/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "町田市とその周り"
+  },
+  {
+   "id": "St8ae2b58",
+   "name": "CARE PETS 鎌倉",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "鎌倉市",
+   "url": "https://care-pets-kamakura.jp/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "鎌倉市とその周り"
+  },
+  {
+   "id": "Sta5107f8",
+   "name": "わんこといっしょ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "三浦市",
+   "url": "https://dogtogether66.com/",
+   "services": "ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "[定休日] 年中無休 ※基本的には年中無休ですが、臨時にお休みさせていただくことがあります。",
+     "src": "https://dogtogether66.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "ペットを送迎できるよう駐車場を完備",
+     "src": "https://dogtogether66.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン、狂犬病ワクチンの証明書",
+     "src": "https://dogtogether66.com/service/kinder/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払方法は現金、またはお振込みとなります。",
+     "src": "https://dogtogether66.com/service/kinder/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "三浦市とその周り"
+  },
+  {
+   "id": "St7148adc",
+   "name": "ぎゅっとポケット",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "多摩市",
+   "url": "https://www.gyutto-pocket.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "ご予約受付時間 8：30～16：30",
+     "src": "https://www.gyutto-pocket.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは前払いで、口座振込または現金でお願いいたします。",
+     "src": "https://www.gyutto-pocket.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "多摩市とその周り"
+  },
+  {
+   "id": "St9ca5282",
+   "name": "Pet Care Teate",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市戸塚区",
+   "url": "https://petcareteate.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "鎌倉市・藤沢市・横浜市南部を中心に、茅ヶ崎・平塚・逗子・みなとみらい方面にも対応エリアを広げています。距離に応じて出張費を申し受けます（3km以内は無料）。10km以上は応相談です。エリア外も、まずはお気軽にご相談ください。",
+     "src": "https://petcareteate.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "訪問ケアなどは、当日現金のみでのお支払いとなります。",
+     "src": "https://petcareteate.com/menu.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "鎌倉市・藤沢市・横浜市南部を中心に、茅ヶ崎・平塚・逗子・みなとみらい方面にも対応エリアを広げています。距離に応じて出張費を申し受けます（3km以内は無料）。10km以上は応相談です。エリア外も、まずはお気軽にご相談ください。"
+  },
+  {
+   "id": "St62bcd7d",
+   "name": "ペットシッターわんにゃふる",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "府中市",
+   "url": "https://www.wannyaful-pet-fuchu.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "対応エリア／ 府中市とその 周辺地域",
+     "src": "https://www.wannyaful-pet-fuchu.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "対応エリア／ 府中市とその 周辺地域"
+  },
+  {
+   "id": "St1bbce8d",
+   "name": "HAPPY/日本ペットシッターサービス多摩地区店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "多摩市",
+   "url": "https://www.pet-ss.com/happy/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00～21:00",
+     "src": "https://www.pet-ss.com/happy/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "nihon",
+   "area": "多摩市とその周り"
+  },
+  {
+   "id": "St6cc9160",
+   "name": "ペットのお世話屋さん 福笑い",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://fukuwarai.sakuraweb.com/index.html",
+   "services": "ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "※お近くに駐車スペースが無く、コインパーキングを使用する場合は、別途駐車場代を頂きます。",
+     "src": "https://fukuwarai.sakuraweb.com/entrance5.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市青葉区とその周り"
+  },
+  {
+   "id": "Sta88699b",
+   "name": "佐々木ドッグトレーニング",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "大磯町",
+   "url": "https://sasakidogtraining.com/",
+   "services": "ペットシッター、しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "大磯町とその周り"
+  },
+  {
+   "id": "St69efbc2",
+   "name": "Lavie Dog",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "町田市",
+   "url": "https://laviedog.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 10:00〜18:00(土日祝を除く)",
+     "src": "https://laviedog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "町田市とその周り"
+  },
+  {
+   "id": "Sta7b7916",
+   "name": "Moff Jet",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "逗子市",
+   "url": "https://moffjet.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "初めてご利用の際は、事前にご自宅へお伺いし、性格や普段のお世話の様子、注意事項などを丁寧にヒアリングいたします。(2,200円）",
+     "src": "https://moffjet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "主な出張対応エリア：逗子市・鎌倉市・葉山町",
+     "src": "https://moffjet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "⭐︎カウンセリング料は、当日現金にてお支払いをお願いしております",
+     "src": "https://moffjet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "主な出張対応エリア：逗子市・鎌倉市・葉山町"
+  },
+  {
+   "id": "Stbee5495",
+   "name": "キャットシッターおうちくらぶ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "https://xn--p8jhq5e4eze5n9b8ab7c8mpq.com/profile/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間 9時‐18時 不定休】",
+     "src": "https://xn--p8jhq5e4eze5n9b8ab7c8mpq.com/%e6%96%99%e9%87%91%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "【営業時間 9時‐18時 不定休】",
+     "src": "https://xn--p8jhq5e4eze5n9b8ab7c8mpq.com/%e6%96%99%e9%87%91%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市中区とその周り"
+  },
+  {
+   "id": "St911f7ac",
+   "name": "Helfen iii",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "昭島市",
+   "url": "https://www.helfen3i.com/%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB/",
+   "services": "ペットシッター、しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "昭島市とその周り"
+  },
+  {
+   "id": "Stcf175af",
+   "name": "ペットシッター Anief みくにゃん",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "座間市",
+   "url": "http://sitter-anief.com/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "座間市とその周り"
+  },
+  {
+   "id": "St6062f7f",
+   "name": "テイルズ テイル",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "東久留米市",
+   "url": "https://tails-tale.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "対応エリア 東久留米市を中心に、東村山市・清瀬市・小平市・所沢市ほか、周辺地域もご相談ください。",
+     "src": "https://tails-tale.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "対応エリア 東久留米市を中心に、東村山市・清瀬市・小平市・所沢市ほか、周辺地域もご相談ください。"
+  },
+  {
+   "id": "St152f4fc",
+   "name": "ペットシッター青い鳥",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "海老名市",
+   "url": "https://petsitteraoitori.amebaownd.com/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "海老名市とその周り"
+  },
+  {
+   "id": "St33342c6",
+   "name": "KOTAKOTA",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "小田原市",
+   "url": "https://komaca.app/kota8kota129/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場の無いご自宅の場合コインパーキング代を別途、",
+     "src": "https://komaca.app/kota8kota129/pages/%e3%81%94%e5%88%a9%e7%94%a8%e6%a1%88%e5%86%85/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "•狂犬病、ワクチンの接種証明書",
+     "src": "https://komaca.app/kota8kota129/pages/%e3%81%94%e5%88%a9%e7%94%a8%e6%a1%88%e5%86%85/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "小田原市とその周り"
+  },
+  {
+   "id": "St476e739",
+   "name": "ペットシッター木の葉",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市金沢区",
+   "url": "https://www.katysat.net/1/2026/01/30/18788",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市金沢区とその周り"
+  },
+  {
+   "id": "St6c8caea",
+   "name": "OHANA with dog",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "福生市",
+   "url": "https://www.ohana-withdog.com/",
+   "services": "ペットシッター、しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "福生市とその周り"
+  },
+  {
+   "id": "St69c78c1",
+   "name": "ペットシッター マフィン",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "青梅市",
+   "url": "https://ps-muffin.jimdofree.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "青梅市とその周り"
+  },
+  {
+   "id": "St050d3ff",
+   "name": "ペットサポート愛",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "真鶴町",
+   "url": "https://pet-support-ai.wixsite.com/mysite",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "​【営業時間】8:00～20:00",
+     "src": "https://pet-support-ai.wixsite.com/mysite",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "​ペットちゃんを車にお乗せし送迎する（大切な命を運ぶ）には、車内の安全確保・衛生管理・見守りを含みますため、別途１回1,000円をお願いしています。",
+     "src": "https://pet-support-ai.wixsite.com/mysite",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "真鶴町とその周り"
+  },
+  {
+   "id": "St4831618",
+   "name": "ペットシッター 犬の整体 ぴーち",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "青梅市",
+   "url": "https://petsitter-peach.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 平日10:00～17:00",
+     "src": "https://petsitter-peach.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※お支払いは現金または振り込みまたはPayPay対応のみになります。",
+     "src": "https://petsitter-peach.com/%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9%e6%96%99%e9%87%91%e8%a1%a8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "青梅市とその周り"
+  },
+  {
+   "id": "St2217bfc",
+   "name": "DEEP BOND",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市泉区",
+   "url": "https://deepbond.net/",
+   "services": "ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "出張エリア ： 神奈川県内、湘南、横浜市、藤沢市、平塚市、鎌倉市など",
+     "src": "https://deepbond.net/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "出張エリア ： 神奈川県内、湘南、横浜市、藤沢市、平塚市、鎌倉市など"
+  },
+  {
+   "id": "Stf279a4f",
+   "name": "キャットシッタ-Loop",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市保土ケ谷区",
+   "url": "https://www.cs-loop.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "神奈川区（一部）・泉区（一部）・瀬谷区（一部）などの 近郊地域または相鉄線鶴ヶ峰駅より片道45分程度が対象サービスエリアになります。 現在、大和・ゆめが丘・湘南台駅には訪問していません 。",
+     "src": "https://www.cs-loop.com/area.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法は、「横浜銀行 振り込み」または「現金」のみです。",
+     "src": "https://www.cs-loop.com/rate.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "神奈川区（一部）・泉区（一部）・瀬谷区（一部）などの 近郊地域または相鉄線鶴ヶ峰駅より片道45分程度が対象サービスエリアになります。 現在、大和・ゆめが丘・湘南台駅には訪問していません 。"
+  },
+  {
+   "id": "Stff063e2",
+   "name": "ペットシッター・クラーチュカ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "東久留米市",
+   "url": "https://pet-kouken.jp/alignment/assistance/tokyo-assistance/2042/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "不定休 / 8:00-20:00",
+     "src": "https://pet-kouken.jp/alignment/assistance/tokyo-assistance/2042/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "東久留米市とその周り"
+  },
+  {
+   "id": "Stb41e586",
+   "name": "あるまっとペットシッター",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市麻生区",
+   "url": "https://arumatpet.hp.peraichi.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間  :  8:00～20:00    (応相談)",
+     "src": "https://arumatpet.hp.peraichi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "川崎市麻生区とその周り"
+  },
+  {
+   "id": "Stdbc1f2e",
+   "name": "ペットケア Happiness",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "あきる野市",
+   "url": "https://www.ome-aoiro.com/member/detail.html?1791436879",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 8:00～20：00",
+     "src": "https://www.ome-aoiro.com/member/detail.html?1791436879",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定  休 日 不定休",
+     "src": "https://www.ome-aoiro.com/member/detail.html?1791436879",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "あきる野市とその周り"
+  },
+  {
+   "id": "St3442985",
+   "name": "おかえり",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "鎌倉市",
+   "url": "https://www.pet-ss.com/okaeri/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 8:00～19:00",
+     "src": "https://www.pet-ss.com/okaeri/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "〇お支払い方法は、現金・お振込よりお選びください。",
+     "src": "https://www.pet-ss.com/okaeri/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "nihon",
+   "area": "鎌倉市とその周り"
+  },
+  {
+   "id": "St27bf288",
+   "name": "ライム ペットシッターサービス",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "平塚市",
+   "url": "https://limepetsitter.sakura.ne.jp/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お見積料金算出、鍵お預り、お支払い(現金又は銀行振込み)",
+     "src": "https://limepetsitter.sakura.ne.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "平塚市とその周り"
+  },
+  {
+   "id": "Stca90bff",
+   "name": "ペットシッター besmile",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市旭区",
+   "url": "https://www.petsitter-besmile.jp/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場がない場合は、近隣のコインパーキングを利用させていただきますので、",
+     "src": "https://www.petsitter-besmile.jp/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市旭区とその周り"
+  },
+  {
+   "id": "Sta17dba2",
+   "name": "アンドペット",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市神奈川区",
+   "url": "https://petsitter-yokohama.net/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "送迎",
+     "v": "送迎代行サービス（往復5キロ以内）",
+     "src": "https://petsitter-yokohama.net/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "シッター料金は、ご依頼日1週間前までにお支払いください。お支払い方法は、 お振込、paypay、現金 となります。",
+     "src": "https://petsitter-yokohama.net/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市神奈川区とその周り"
+  },
+  {
+   "id": "St4b3b90e",
+   "name": "キャットシッター 月の猫",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市旭区",
+   "url": "https://tsukinoneko.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本料金 3,500 円",
+     "src": "https://tsukinoneko.com/fee/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市旭区とその周り"
+  },
+  {
+   "id": "St3b3d759",
+   "name": "ペットシッターじゃんけんPaw",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "八王子市",
+   "url": "https://janken-paw.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:8:00～21:00 定休日:不定休",
+     "src": "https://janken-paw.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "営業時間:8:00～21:00 定休日:不定休",
+     "src": "https://janken-paw.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "A9: 当店の訪問エリアは八王子市およびその周辺地域の町田市、相模原市、日野市の一部となります。詳細なエリアにつきましてはお問い合わせください。可能な限りご対応させていただきます。",
+     "src": "https://janken-paw.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "A5: 現金、PayPay、銀行振り込みでのお支払いが可能です。金額はお打ち合わせ時にお伝えさせていただきます。お支払いに関しましては前払い、後払いどちらにも対応いたします。",
+     "src": "https://janken-paw.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "A9: 当店の訪問エリアは八王子市およびその周辺地域の町田市、相模原市、日野市の一部となります。詳細なエリアにつきましてはお問い合わせください。可能な限りご対応させていただきます。"
+  },
+  {
+   "id": "St5677b6b",
+   "name": "ペットシッター シュシュ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市瀬谷区",
+   "url": "https://petsitterchouchou.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車料金 実費 （駐車場がない場合などコインパーキング料金）",
+     "src": "https://petsitterchouchou.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "基本作業開始前、現金のみでお願いしております。",
+     "src": "https://petsitterchouchou.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市瀬谷区とその周り"
+  },
+  {
+   "id": "St2669a0d",
+   "name": "キャットシッター ねこかわいがり",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "秦野市",
+   "url": "https://www.nekokawaigari.jp/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "秦野市とその周り"
+  },
+  {
+   "id": "Ste503fca",
+   "name": "日本ペットシッターサービス逗子・鎌倉店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "葉山町",
+   "url": "https://www.pet-ss.com/luna-merumo/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00～20:00",
+     "src": "https://www.pet-ss.com/luna-merumo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "■自動車を利用して移動する場合は、1kmにつき50円とさせていただきます。また、コインパーキングなどの有料駐車場を利用する場合は、実費のご負担をお願いしております。",
+     "src": "https://www.pet-ss.com/luna-merumo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "nihon",
+   "area": "葉山町とその周り"
+  },
+  {
+   "id": "St05a79b8",
+   "name": "うにたけ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "鎌倉市",
+   "url": "https://www.pet-ss.com/unitake/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00～21:00",
+     "src": "https://www.pet-ss.com/unitake/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "nihon",
+   "area": "鎌倉市とその周り"
+  },
+  {
+   "id": "St8a60c5b",
+   "name": "Dogsalon Stable",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "鎌倉市",
+   "url": "https://dog-friendly.jp/spot/dogsalon-stable/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "鎌倉市とその周り"
+  },
+  {
+   "id": "St6a27534",
+   "name": "ウェルフェア ホーム",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市西区",
+   "url": "https://welfare-home.com/160112-2/",
+   "services": "ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金にて前払い、もしくは当日払いにてお支払いいただきます。",
+     "src": "https://welfare-home.com/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市西区とその周り"
+  },
+  {
+   "id": "St7079a77",
+   "name": "グランテイル",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市多摩区",
+   "url": "https://grantail.jimdofree.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "・公共交通機関の交通費（片道６0分ほど）の地域は1回1,100円（往復）",
+     "src": "https://grantail.jimdofree.com/%E6%96%99%E9%87%91%E8%A1%A8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "活動エリアの出張交通費は無料です。 ※有料パーキングを使用の際は実費をご負担頂く場合がございます。 ※公共交通機関利用で片道６０分ほどの地域においては１回１,1００円（往復代）かかります。",
+     "src": "https://grantail.jimdofree.com/%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E8%A6%8F%E5%AE%9A-%E5%85%8D%E8%B2%AC%E4%BA%8B%E9%A0%85/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "ご利用代金につきましては、原則、その場で現金をお支払い下さい。領収書を発行します。",
+     "src": "https://grantail.jimdofree.com/%E3%81%94%E5%88%A9%E7%94%A8%E3%81%AE%E6%B5%81%E3%82%8C/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "川崎市多摩区とその周り"
+  },
+  {
+   "id": "Stdb0e0bd",
+   "name": "ペットシッター&",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "調布市",
+   "url": "https://petsitter-and.com/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "調布市とその周り"
+  },
+  {
+   "id": "St79282c2",
+   "name": "キャットシッター香箱座り",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "狛江市",
+   "url": "https://reserva.be/koubakozuwari/about",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "狛江市とその周り"
+  },
+  {
+   "id": "St73d4e5c",
+   "name": "ペットシッター きゃすと",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市保土ケ谷区",
+   "url": "https://yokohamaps-cast.life.coocan.jp/index.htm",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市保土ケ谷区とその周り"
+  },
+  {
+   "id": "St97b2adb",
+   "name": "petmore",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "https://www.petmore.net/about",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "リスクマネジメント ： 事業継続計画（BCP）の策定と実施。大規模自然災害への対応として、一日複数件の対応を行う場合にも迅速に飼い主様のペットを安全な場所へ避難させるために、対応エリアを限定しています。災害時には飼い主様の許可を得て、中区指定の避難場所へ同伴します。",
+     "src": "https://www.petmore.net/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金 でのお支払い：鍵をお預かりする日にお支払い",
+     "src": "https://www.petmore.net/service/home-pet-sitter/price-plan-home",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "リスクマネジメント ： 事業継続計画（BCP）の策定と実施。大規模自然災害への対応として、一日複数件の対応を行う場合にも迅速に飼い主様のペットを安全な場所へ避難させるために、対応エリアを限定しています。災害時には飼い主様の許可を得て、中区指定の避難場所へ同伴します。"
   }
  ]
 }
