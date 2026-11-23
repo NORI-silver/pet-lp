@@ -456,7 +456,7 @@ footer a{color:var(--ink-2)}
 #petForm.lite .opt-lite{display:none}
 #petForm.s1 .s1-hide{display:none}
 #petForm.s1 .pref-pick:not(.show){display:none}
-.see-btn{display:block;width:100%;margin:6px 0 4px}
+.see-btn{display:block;width:100%;margin:6px 0 4px;padding-inline:12px;box-shadow:0 6px 18px rgba(255,106,26,.24);text-wrap:balance}
 .see-sub{margin:0 0 12px;text-align:center;font-size:.8rem;color:var(--ink-3)}
 .refine-bar{margin:4px 0 14px}
 .refine-bar p{margin:0 0 8px;font-size:.84rem;color:var(--ink-2)}
@@ -1206,8 +1206,8 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
               <select id="hour" name="hour" required aria-label="時"><option value="">時</option><option value="00">0時</option><option value="01">1時</option><option value="02">2時</option><option value="03">3時</option><option value="04">4時</option><option value="05">5時</option><option value="06">6時</option><option value="07">7時</option><option value="08">8時</option><option value="09">9時</option><option value="10">10時</option><option value="11">11時</option><option value="12">12時</option><option value="13">13時</option><option value="14">14時</option><option value="15">15時</option><option value="16">16時</option><option value="17">17時</option><option value="18">18時</option><option value="19">19時</option><option value="20">20時</option><option value="21">21時</option><option value="22">22時</option><option value="23">23時</option></select>
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
-          <button type="button" class="btn see-btn" id="seeBtn">来てくれる会社と料金を見る（無料）</button>
-          <p class="see-sub">ペットのことやご連絡先は、会社を見てから入れます。まだどこにも送信されません。</p>
+          <button type="button" class="btn see-btn" id="seeBtn" aria-describedby="seeBtnHelp">会社と料金を見る</button>
+          <p class="see-sub" id="seeBtnHelp">料金の確認は無料です。ペットのことやご連絡先は、会社を見てから入れます。まだどこにも送信されません。</p>
           <div class="est" id="est" hidden aria-live="polite"></div>
         </div>
 
