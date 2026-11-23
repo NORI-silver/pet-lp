@@ -58,8 +58,8 @@ console.log('PASS: every company with site data gets a prefilled confirm page; n
   assert.equal(ctx.pconfFarePilot_('P064').id,c.id);
   const fv=ctx.pconfFareToken_(c.id,Date.now()+3600000,'testNonceOnly');
   const p=ctx.pconfPage_({a:'pconf',t,fv}).html;
-  assert.doesNotMatch(ctx.pconfPage_({a:'pconf',t}).html,/お迎え20km：/);
-  assert.doesNotMatch(ctx.pconfPage_({a:'pconf',new:'1',step:'2',site:'https://pettaxi-osanpo.com'},true).html,/お迎え20km：/);
+  assert.doesNotMatch(ctx.pconfPage_({a:'pconf',t}).html,/お迎え20km・乗る距離5km：/);
+  assert.doesNotMatch(ctx.pconfPage_({a:'pconf',new:'1',step:'2',site:'https://pettaxi-osanpo.com'},true).html,/お迎え20km・乗る距離5km：/);
   assert.match(ctx.pconfPage_({a:'pconf',t,fv:fv+'bad'}).html,/受け付けていません/);
   assert.match(ctx.pconfPage_({a:'pconf',t,fv:ctx.pconfFareToken_(c.id,Date.now()-10,'testNonceOnly')}).html,/受け付けていません/);
   assert.match(p,/data-pconf method="post"/);
@@ -69,7 +69,7 @@ console.log('PASS: every company with site data gets a prefilled confirm page; n
   assert.match(p,/公式サイトの料金/);
   assert.match(p,/お迎え20km/);
   assert.doesNotMatch(p,/6. 料金の例/);
-  const q={a:'pconf',t,fv,go:'1',name:'テスト',
+  const q={a:'pconf',t,fv,pv:ctx.PCONF_FARE_VERSION,go:'1',name:'テスト',
     pf_limit:'20000',pf_mode:'flat',pf_add:'1234',pf_basis:'road',pf_pickround:'ceil',pf_round:'ceil',pf_tax:'incl',
     pf_near:'4500',pf_at:'3900',pf_far:'5434'};
   Object.keys(ctx.PCONF_PUBLIC_FARE).forEach(k=>q['f_'+k]=ctx.PCONF_PUBLIC_FARE[k]);
@@ -80,6 +80,18 @@ console.log('PASS: every company with site data gets a prefilled confirm page; n
   assert.equal(d.check.cases[0].actual,4200);
   assert.equal(d.check.cases[2].actual,5434);
   assert.equal(d.check.cases[2].shown,5400);
+  // A verified amount can reject the wrong mode on either leg independently.
+  const quotes={...q,pf_add:'600',pf_near:'4200',pf_at:'4200',pf_far:'4800'};
+  assert.equal(ctx.pconfFareDraft_(c,quotes).check.status,'examples_passed');
+  const wrongRide=ctx.pconfFareDraft_(c,{...quotes,pf_round:'floor'}).check;
+  assert.equal(wrongRide.cases[0].actual,3720);
+  assert.equal(wrongRide.status,'mismatch');
+  const wrongPickup=ctx.pconfFareDraft_(c,{...quotes,pf_pickround:'floor'}).check;
+  assert.equal(wrongPickup.cases[2].actual,4200);
+  assert.equal(wrongPickup.status,'mismatch');
+  // First-party price page's 20km worked example is occupied fare only, not an operator's verified total.
+  const official=ctx.pconfFareFixture_(c,5000,20000);
+  assert.equal(ctx.displayPrice_(c,official.input,official.lookup).local.ride,7350);
   const roundedGap=ctx.pconfFareDraft_(c,{...q,pf_add:'260',pf_far:'4160'}).check;
   assert.equal(roundedGap.cases[2].actual,4460);
   assert.equal(roundedGap.cases[2].shown,4500);
@@ -111,7 +123,10 @@ console.log('PASS: every company with site data gets a prefilled confirm page; n
   assert.equal(n.ride,3300);
   assert.equal(n.pickup,1650);
   assert.equal(n.nightExtra,3300);
+  assert.match(p,/name="pv" value="pconf-display-v2"/);
   const getCount=rows.length;
+  assert.match(ctx.doPost({parameter:{...q,pv:'pconf-display-v1'}}).html,/開き直してください/);
+  assert.equal(rows.length,getCount);
   assert.match(ctx.pconfPage_(q).html,/受け付けられません/);
   assert.equal(rows.length,getCount);
   const webReply=ctx.doPost({parameter:{...q,fmt:'json'}});
@@ -131,7 +146,7 @@ console.log('PASS: every company with site data gets a prefilled confirm page; n
   assert.equal(rows.length,count);
   assert.equal(mails.length,mailCount);
   privateConfigured=false;
-  assert.doesNotMatch(ctx.pconfPage_({a:'pconf',t}).html,/お迎え20km：/);
+  assert.doesNotMatch(ctx.pconfPage_({a:'pconf',t}).html,/お迎え20km・乗る距離5km：/);
   assert.match(ctx.doPost({parameter:q}).html,/受け付けていません/);
   const legacy={a:'pconf',t:ctx.demoToken_('De5faaf3'),go:'1',name:'テスト'};
   assert.match(ctx.doPost({parameter:legacy}).html,/ありがとうございました/);

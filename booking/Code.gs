@@ -2684,7 +2684,7 @@ function pconfAnswers_(c, q) {
   return { obj: out, text: lines.join('\n') };
 }
 // Pilot: only audited public fields are prefilled. Provider answers are private pending review, never live tariff input.
-var PCONF_FARE_VERSION = 'pconf-display-v1';
+var PCONF_FARE_VERSION = 'pconf-display-v2';
 var PCONF_FARE_LIMIT = 300;
 var PCONF_WAIT_STAGE_COUNT = 5;
 var PCONF_PUBLIC_FARE = {ride:'最初の5kmは1kmごと480円、50kmまでは330円、以降230円', back:'回送料金なし', wait:'10分ごとに300円', night:'21時〜翌6時はお迎え・乗車・待機が20%増し', toll:'有料道路代は実費', pick_public:'1,800円'};
@@ -2723,10 +2723,10 @@ function pconfFareFields_() {
     '<label>お迎え距離の端数<select name="pf_pickround"><option value="">選んでください</option><option value="ceil">1km未満切り上げ</option><option value="floor">1km未満切り捨て</option><option value="other">別の数え方</option></select></label>' +
     '<label>乗る距離の端数<select name="pf_round"><option value="">選んでください</option><option value="ceil">1km未満切り上げ</option><option value="floor">1km未満切り捨て</option><option value="other">別の数え方</option></select></label>' +
     '<label>料金表の税<select name="pf_tax"><option value="">選んでください</option><option value="incl">税込・消費税なし</option><option value="excl">税別</option></select></label>' +
-    '<p class="note">いずれも朝9時、犬1頭・10.5kg、乗る距離5km、一般道、待機なしです。お迎え距離だけが異なります。</p>' +
-    pconfFareInput_('pf_near', 'お迎え19km：お支払い総額（税込・円）', q) +
-    pconfFareInput_('pf_at', 'お迎え20km：お支払い総額（税込・円）', q) +
-    pconfFareInput_('pf_far', 'お迎え21km：お支払い総額（税込・円）', q) +
+    '<p class="note">いずれも朝9時、犬1頭・10.5kg、一般道、待機なし。距離の端数と料金が変わる境目を確かめるための例です。</p>' +
+    pconfFareInput_('pf_near', 'お迎え19km・乗る距離4km999m：お支払い総額（税込・円）', q) +
+    pconfFareInput_('pf_at', 'お迎え20km・乗る距離5km：お支払い総額（税込・円）', q) +
+    pconfFareInput_('pf_far', 'お迎え20km1m・乗る距離5km：お支払い総額（税込・円）', q) +
     '</div>';
 }
 function pconfFareSelect_(name,label,options,defaultValue) {
@@ -2834,14 +2834,15 @@ function pconfFareCheck_(c,d) {
   delete pk.unknownOver;
   pk.kmMode = d.pickupRounding;
   if (d.mode !== 'none') { pk.km = d.limitM/1000; pk[d.mode === 'per' ? 'per' : 'over'] = d.addYen; }
-  var cases = [19000,20000,21000].map(function(m,i) {
+  // Vary only one leg at a time, and use a non-integer distance so a ceil/floor choice cannot trivially pass.
+  var cases = [[19000,4999],[20000,5000],[20001,5000]].map(function(k,i) {
     // The customer estimator is used directly, with a known directional road distance (not synthetic address geocoding).
-    var fixture = pconfFareFixture_(candidate,m,5000), price = displayPrice_(candidate,fixture.input,fixture.lookup);
+    var fixture = pconfFareFixture_(candidate,k[0],k[1]), price = displayPrice_(candidate,fixture.input,fixture.lookup);
     var total = price && !price.incompleteFees && !price.taxUnknown && price.local && !price.local.pickMissing && !price.local.backMissing && price.local.amount;
     var actual = typeof total === 'number' ? total : null, expected = d.expected[i];
     // Same nearest-¥100 text rule as the partner-price card; compare both to the actual provider quote, not a rounded quote.
     var shown = actual == null ? null : Number(roundYenText_(yen_(actual)).replace(/[^0-9]/g,''));
-    return {pickupM:m, actual:actual, shown:shown, expected:expected,
+    return {pickupM:k[0], rideM:k[1], actual:actual, shown:shown, expected:expected,
       within:actual != null && Math.abs(actual-expected) <= PCONF_FARE_LIMIT && Math.abs(shown-expected) <= PCONF_FARE_LIMIT};
   });
   // These are three no-wait, daytime scenarios, not approval for other shifts, waiting or round trips.
@@ -2896,6 +2897,9 @@ function pconfPage_(q, posted) {
   if ((q.fv || (q.go === '1' && Object.keys(q).some(function(k) { return /^pf_/.test(k); }))) && !pilot) {
     return page_('送信できませんでした', '<p>料金の回答は受け付けていません。最初のページを開き直してください。</p>');
   }
+  if (pilot && posted && q.go === '1' && q.pv !== PCONF_FARE_VERSION) {
+    return page_('最初のページを開き直してください', '<p>料金の例を更新しました。前の画面からの回答は受け付けていません。</p>');
+  }
   var coName = isNew ? String(q.co || '').trim().slice(0, 80) : c.name, email = String(q.email || '').trim().slice(0, 120);
   if (q.go === '1') {
     var name = String(q.name || '').trim().slice(0, 60);
@@ -2926,7 +2930,7 @@ function pconfPage_(q, posted) {
     ? '<p>公式サイト（<a href="' + esc_(c.site) + '" target="_blank">' + esc_(c.site.replace(/^https?:\/\//, '').replace(/\/$/, '')) + '</a>' + (c.read ? '、' + esc_(c.read) + '時点' : '') + '）の内容を、先に入れておきました。まちがいがあれば直して、「入力してください」のところだけ埋めてください。' + ((!pilot && (c.examples || []).length) ? '最後に、この内容で計算した料金の例を確かめてください。' : '') + '</p>'
     : '<p>ご依頼をお送りする条件と、料金の計算に使う内容をうかがいます。選ぶところがほとんどです。</p>') +
     (q.err ? '<p style="color:#c0392b;font-weight:700">' + (isNew ? '会社名・メールアドレス・' : '') + 'ご担当のお名前を入れてください。</p>' : '') +
-    '<form data-pconf method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('a', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) + hidden_('site', q.site || '') : hidden_('t', q.t)) + (pilot ? hidden_('fv', q.fv) : '') + hidden_('go', '1');
+    '<form data-pconf method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('a', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) + hidden_('site', q.site || '') : hidden_('t', q.t)) + (pilot ? hidden_('fv', q.fv) + hidden_('pv', PCONF_FARE_VERSION) : '') + hidden_('go', '1');
   c.sections.forEach(function(s) {
     html += '<h2>' + esc_(s.h) + '</h2>';
     if (!pilot || s.h !== '4. 料金') { html += s.items.map(function(it) { return pconfItem_(it, q); }).join(''); return; }
