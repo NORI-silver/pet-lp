@@ -36,8 +36,17 @@ CAT_WHO = {
 # 施設の内容のキー（うちの子の条件ではなく、施設がしていること。uikit の SVC の「サービスの内容」に出す）。
 # 判定は CAT_WHO と同じ _find（公式サイトの文・同じ文に「不可・お断り」があれば合わない）。
 FAC = {
-    "rojin-home": ["mitori", "long", "menkai"],
+    "rojin-home": ["mitori", "long", "menkai", "pickup", "staff24"],
     "pet-hotel": ["cagefree", "walk"],
+    "pet-sitter": ["cert"],
+    "trimming": ["bubun", "pickup"],
+}
+
+# しつけ：困りごとから探す（施設の公式サイトの文に、その困りごとへの対応が明記してあるときだけ。Nori 2026-11-23 第2弾）
+CONCERNS = {
+    "bark": "無駄吠え", "bite": "噛みつき・噛み癖", "toilet": "トイレの失敗", "pull": "散歩の引っ張り",
+    "basic": "基本の号令（お座り・待て）", "social": "社会化", "jump": "飛びつき", "leave": "分離不安・留守番ができない",
+    "dogfear": "他の犬が苦手", "call": "呼び戻しができない", "care": "お手入れを嫌がる",
 }
 
 NEG = r"(不可|お断り|断り|受けて(い)?ません|受けない|預から(ない|ず)|預かり(でき|出来)ません|対象外|ご遠慮|お受けできません|受け付けて(い)?ません|入所(でき|出来)(ない|ません)|NG)"
@@ -56,6 +65,23 @@ PAT = {
     "menkai": r"面会",
     "cagefree": r"ケージフリー|ケージレス",
     "walk": r"散歩",
+    # 施設の内容（FAC の続き）
+    "pickup": r"送迎",
+    "staff24": r"24時間(スタッフ|常駐|体制|在住|見守り|介護|お世話|対応)",
+    "cert": r"資格保有|資格を保有|資格取得者|有資格|認定ペットシッター|ペットシッターの資格|資格を持",
+    "bubun": r"部分(ケア|カット|コース|メニュー|のみ)|単品(メニュー|料金|OK|可)|爪切り(のみ|だけ|単品)",
+    # しつけの困りごと（CONCERNS）
+    "bark": r"無駄吠え|吠え癖|吠えすぎ|よく吠える",
+    "bite": r"本気噛み|噛みつき|咬みつき|噛み癖|かみ癖",
+    "toilet": r"トイレ",
+    "pull": r"引っ張り|引っぱり",
+    "basic": r"お座り|待て|伏せ|服従|基本(の)?(しつけ|トレーニング|訓練|コマンド)",
+    "social": r"社会化|社会性",
+    "jump": r"飛びつき|飛び付き|飛びつく",
+    "leave": r"分離不安|留守番",
+    "dogfear": r"他の犬|ほかの犬|犬同士|犬見知り|犬が苦手",
+    "call": r"呼び戻し",
+    "care": r"爪切り|歯磨き|ブラッシング|お手入れ|グルーミング",
     "big": r"大型犬|超大型|ラブラドール|ゴールデン|大型",
     "a:small": r"うさぎ|ウサギ|小動物|ハムスター|フェレット|モルモット",
     "a:bird": r"小鳥|鳥類|インコ|文鳥|オウム|鳥さん|鳥など|鳥・",
@@ -133,11 +159,23 @@ def _load(cat):
     _MAP[cat] = m
     return m
 
+_CHAINS = {}
+def _chain_note(cat, r):
+    """グループ（チェーン）の公式サイトの説明文。店ごとの文にない、グループ全体の決まりを見るため。"""
+    if cat != "pet-sitter": return ""
+    if "sitters" not in _CHAINS:
+        d = json.load(open(os.path.join(HERE, "sitters.json"), encoding="utf-8"))
+        _CHAINS["sitters"] = d.get("chains", {})
+    ch = _CHAINS["sitters"].get(r.get("chain"), {})
+    return ch.get("note", "") if r.get("chain") != "indie" else ""
+
 def keys(cat, url):
     """カードの公式サイトのURLから、(合うkey, 合わないkey) を返す。データにない施設は ([], [])。"""
     r = _load(cat).get(_norm(url))
     if not r: return [], []
     t = _text(r)
+    note = _chain_note(cat, r)
+    if note: t += "。" + note
     yes, no = [], []
     def put(k, v):
         if v == 1 and k not in yes: yes.append(k)
@@ -156,6 +194,9 @@ def keys(cat, url):
             put(k, _find(t, k))
     for k in FAC.get(cat, []):
         put(k, _find(t, k))
+    if cat == "dog-trainer":
+        for k in CONCERNS: put(k, _find(t, k))
+        if r.get("cert"): put("cert", 1)  # 公式サイトに資格・認定が書いてある（データの cert）
     if cat in ("sougi", "pet-sitter"):
         for k in ("a:small", "a:bird", "a:exotic"): put(k, _find(t, k))
     if cat == "sougi":
@@ -172,13 +213,31 @@ _BACKUP = re.compile(r"誓約|同意書|保証人|引受|引き受け|後見|後
 _STOP = re.compile(r"受けられない|できない|でない|不可|申し込めない|\d+歳(未満|以下|まで)")
 _JOTO = {}
 
+_JOTO_NEG = re.compile(r"(制度|仕組み|トライアル|お試し|譲渡会).{0,8}(ない|なし|できません|行って(い)?ません|実施して(い)?ません|やって(い)?ません)")
+
+def _joto_flag(conds, rx):
+    """1＝ある（条件の文に明記）、2＝ない（はっきり書いてある）、0＝書いていない。"""
+    hit = 0
+    for x in conds:
+        for s in _segs(x):
+            if not re.search(rx, s): continue
+            if _JOTO_NEG.search(s): return 2
+            hit = 1
+    return hit
+
 def joto_keys(url):
     if not _JOTO:
         for c in json.load(open(os.path.join(HERE, "joto.json"), encoding="utf-8"))["centers"]:
             _JOTO.setdefault(_norm(c.get("url")), c)
     c = _JOTO.get(_norm(url))
     if not c: return [], []
-    cs = [x for x in c.get("conds", []) if re.search(r"[5-7]\d歳|高齢|ひとり暮らし|一人暮らし|単身|独居", x)]
-    if any(_BACKUP.search(x) for x in cs): return ["older"], []
-    if any(_STOP.search(x) and re.search(r"[5-7]\d歳|ひとり暮らし|一人暮らし|高齢", x) for x in cs): return [], ["older"]
-    return [], []
+    yes, no = [], []
+    conds = c.get("conds", [])
+    for k, rx in (("event", r"譲渡会"), ("trial", r"トライアル|お試し(期間|飼育|預かり)")):
+        v = _joto_flag(conds, rx)
+        if v == 1: yes.append(k)
+        elif v == 2: no.append(k)
+    cs = [x for x in conds if re.search(r"[5-7]\d歳|高齢|ひとり暮らし|一人暮らし|単身|独居", x)]
+    if any(_BACKUP.search(x) for x in cs): yes.append("older")
+    elif any(_STOP.search(x) and re.search(r"[5-7]\d歳|ひとり暮らし|一人暮らし|高齢", x) for x in cs): no.append("older")
+    return yes, [k for k in no if k not in yes]
