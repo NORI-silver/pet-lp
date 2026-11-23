@@ -1,5 +1,5 @@
 # [C] 施設名とリンク先の題の突き合わせ（2026-11-23。「わんず」のリンク先が別の方のサイトだった件から）。
-# 使い方：tools/crawl/queue_namecheck.json（全分野の url・name、alive）を push → crawl-out の snap_namecheck.json を
+# 使い方：tools/crawl/queue_namecheck.json（全分野の url・name、alive）を push → crawl-out-<ブランチの最後の名前> の snap_namecheck.json を
 #   python3 tools/name_check.py <snap_namecheck.json> で読み、名前の言葉がリンク先の題にもアドレスにも1つも出てこない行を出す。
 # 出た行は人（AI）がリンク先を見て決める：別の施設・乗っ取られたアドレス → 外すか url を消す（tools/delisted.json に記録）。
 import json, re, sys, unicodedata
