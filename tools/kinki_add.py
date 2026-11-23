@@ -47,6 +47,10 @@ def main():
         names = {re.sub(r"\s", "", r["name"]) for r in L}
         n = 0
         for x in add.get(k, []):
+            if x["id"] in ids and x["id"] not in gone:  # 近畿で入れた行は、新しい読み取りで置きかえる
+                i = next(j for j, r in enumerate(L) if r["id"] == x["id"])
+                if L[i] != x: L[i] = x; n += 1
+                continue
             if x["id"] in ids or x["id"] in gone or key(x["url"]) in keys or key(x["url"]) in gone \
                     or re.sub(r"\s", "", x["name"]) in names:
                 continue
@@ -66,6 +70,10 @@ def main():
         names = {re.sub(r"\s", "", r["name"]) for r in L}
         n = 0
         for x in add.get("salons", []):
+            if x["id"] in ids and x["id"] not in gone:  # 近畿で入れた行は、新しい読み取りで置きかえる
+                i = next(j for j, r in enumerate(L) if r["id"] == x["id"])
+                if L[i] != x: L[i] = x; n += 1
+                continue
             if x["id"] in ids or x["id"] in gone or key(x["url"]) in keys or key(x["url"]) in gone \
                     or re.sub(r"\s", "", x["name"]) in names:
                 continue

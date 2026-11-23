@@ -22,7 +22,7 @@ KV = {
     "rojin-home": ("年をとったこの子を、<br>やさしく見てくれる場所", "warm", "bottom", "2/1"),
     "dog-trainer": ("吠える・かむ・引っぱる。<br>プロと一緒に直していく", "bright", "bottom", "2/1"),
     "pet-sitter": ("留守のあいだも、<br>いつもの家で過ごせるように", "warm", "bottom", "2/1"),
-    "trimming": ("お店に行かなくても、<br>家まで来てくれるトリマーさん", "bright", "bottom", "2/1"),
+    "trimming": ("近くのサロンも、<br>家まで来てくれるトリマーさんも", "bright", "bottom", "2/1"),
     "pet-hotel": ("旅行や入院のあいだも、<br>安心して預けられる場所", "warm", "bottom", "2/1"),
     "hinan": ("災害のとき、<br>この子と一緒に避難するために", "care", "bottom", "2/1"),
     "jichitai": ("迷子・犬の登録・飼えなくなった。<br>困りごとから次にやることへ", "care", "top", "2/1"),

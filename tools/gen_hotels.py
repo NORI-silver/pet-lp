@@ -1,6 +1,6 @@
-# [B] SEO：お金を取らない情報ページ「大型犬OK・猫専用のペットホテル」（/pet-hotel/、県ごとの /pet-hotel/<県>/）。gen_areas.py が読み込んで使う。
-# 「ペットホテル」は全国 月110,000回（キーワードプランナー 2026-11-02、docs/seo-agents.md）で、大手の比較サイトが強い。全部を網羅せず、
-# 比べにくい条件（大型犬を泊められる・猫だけのホテル）でしぼった一覧にする（Nori 2026-11-02「SEOと相性がよいものを優先」）。
+# [B] SEO：お金を取らない情報ページ「ペットホテル」（全部のペットホテルを載せる。Nori 2026-11-22「全部のペットホテルを載せる」。大型犬OK・猫専用は しぼりこみと印で見せる）（/pet-hotel/、県ごとの /pet-hotel/<県>/）。gen_areas.py が読み込んで使う。
+# 「ペットホテル」は全国 月110,000回（キーワードプランナー 2026-11-02）。前は大型犬OK・猫専用だけにしぼっていたが、2026-11-22 から全部を載せる。
+# 「大型犬 ペットホテル」「猫 ペットホテル」で来る人のために、タイトル・説明・しぼりこみ・FAQに大型犬OK・猫専用の言葉は残す。
 # [C] 条件（large・cat_only・cat・vet・pickup・senior・night_staff・camera・run・max_kg）は公式サイトにはっきり書いてあるときだけ持つ（ない＝不明）。
 # 守ること：ホテルからお金をもらわない。順位・おすすめなし。料金は公式サイトに書いてある分だけ。電話番号なし。公式サイトの情報。データ：tools/hotels.json。
 import visual as _V  # 「見ておく◯つ」は共通の部品（トレーナーと同じ見た目）
@@ -10,9 +10,9 @@ import gen_grooming
 J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "hotels.json"), encoding="utf-8"))
 
 SLUG = "pet-hotel"
-H1 = "大型犬OK・猫専用のペットホテル"
-TITLE = "大型犬OK・猫専用のペットホテル｜大型犬を泊められるホテルと猫だけのキャットホテルを都道府県でさがせる一覧｜ペットタクシー予約窓口"
-DESC = "大型犬を泊められるペットホテルと、猫だけを預かる猫専用のホテル（キャットホテル）を、都道府県ごとにまとめた無料の一覧です。公式サイトの情報をもとに、動物病院の併設・送迎・シニアの子・夜のスタッフでもしぼりこめます。料金は公式サイトに書いてあるホテルだけ載せ、順位は付けていません。"
+H1 = "全国のペットホテル"
+TITLE = "ペットホテルを都道府県でさがす｜大型犬OK・猫専用（キャットホテル）・送迎・動物病院併設でしぼれる一覧｜ペットタクシー予約窓口"
+DESC = "全国のペットホテルを都道府県ごとにまとめた無料の一覧です。公式サイトの情報をもとに、大型犬を泊められるホテル・猫専用のホテル（キャットホテル）・動物病院の併設・送迎・シニアの子・夜のスタッフでしぼりこめます。料金は公式サイトに書いてあるホテルだけ載せ、順位は付けていません。"
 
 CONDS = [("large", "大型犬を泊められる"), ("cat_only", "猫専用のホテル"), ("cat", "猫も泊められる"), ("vet", "動物病院が併設・運営"),
          ("pickup", "送迎がある"), ("senior", "シニア・介護・投薬の子を受ける"), ("night_staff", "夜もスタッフがいる")]
@@ -131,7 +131,7 @@ def render(ctx):
             if hs:
                 inner = "".join(_card(e, h) for h in hs) + '<p class="emg-none trim-none" hidden>えらんだ条件をすべて公式サイトに書いているホテルは、この県ではまだ載せていません。条件を減らすか、ホテルに直接おたずねください。</p>'
             else:
-                inner = f'<p class="emg-none">{e(pf)}の大型犬OK・猫専用のペットホテルは、まだ載せていません。見つけしだい足します。</p>'
+                inner = f'<p class="emg-none">{e(pf)}のペットホテルは、まだ載せていません。見つけしだい足します。</p>'
             body += f'<section class="emg-pref" data-pref="{e(pf)}"><h4>{e(pf)}</h4>{inner}</section>\n'
     conds = "".join(f'<label><input type="checkbox" value="{k}"> {e(lab)}</label>' for k, lab in CONDS)
     faq = [
@@ -157,13 +157,13 @@ def render(ctx):
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › {e(H1)}</nav>
     <h1><small>全国{total}件（大型犬OK {nl}件・猫専用 {nc}件）・条件でしぼりこめます</small>{e(H1)}</h1>
-    <p class="lede">「大型犬は泊められません」と断られた、猫を犬と同じ部屋に預けるのが心配。ペットホテルは数が多いぶん、条件に合うところをさがすのが大変です。大型犬を泊められるホテルと猫専用のホテルにしぼって、公式サイトの情報をもとにまとめました。</p>
+    <p class="lede">全国のペットホテルを、公式サイトの情報をもとに都道府県ごとにまとめました。大型犬OK・猫専用・送迎・動物病院の併設でしぼりこめます。</p>
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="emg">
-      <p class="emg-free">この一覧は無料の情報です。ホテルからお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金は公式サイトに書いてある分だけ載せています。すべてのペットホテルではなく、大型犬OKと猫専用のホテルだけを載せています。</p>
+      <p class="emg-free">この一覧は無料の情報です。ホテルからお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金は公式サイトに書いてある分だけ載せています。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       <div class="f"><span>条件でしぼりこむ（公式サイトに書いてある条件だけで判定しています）</span><div class="trim-cond">{conds}</div><span id="trimCount" aria-live="polite"></span></div>
       {body}
@@ -204,10 +204,10 @@ def _faq(pf, rs, n):
      ("料金はいくらですか？", "公式サイトに料金が書いてあるホテルは、カードに料金の目安を出しています。体の大きさ・日数・季節で変わります。"),
      ("ホテルまでの送り迎えは？", f"送迎があると書いているのは{c('pickup')}件です。送迎の範囲や料金はホテルごとに違うので、公式サイトで確かめてください。"),
     ]
-CAT = dict(slug=SLUG, name="大型犬OK・猫専用のペットホテル", unit="件", h1=H1, items=J["hotels"], card=_card, checked=J["checked"], reviews=False,
-  title_word="大型犬OK・猫専用のペットホテル", title_tail="動物病院併設・送迎・シニア",
-  desc_tail="大型犬を泊められるホテルと猫だけのホテルを、動物病院の併設・送迎・シニアの子・夜のスタッフとあわせて載せています。料金は公式サイトに書いてあるホテルだけ載せ、順位は付けていません。",
-  lede=lambda pf, n: f"{pf}で、大型犬を泊められるペットホテルと猫専用のホテルを{n}件まとめました。公式サイトに書いてある受け入れの条件だけを載せています。",
+CAT = dict(slug=SLUG, name="ペットホテル", unit="件", h1=H1, items=J["hotels"], card=_card, checked=J["checked"], reviews=False,
+  title_word="ペットホテル", title_tail="大型犬OK・猫専用・送迎・動物病院併設",
+  desc_tail="ペットホテルを、大型犬を泊められるか・猫専用か・動物病院の併設・送迎・シニアの子・夜のスタッフとあわせて載せています。料金は公式サイトに書いてあるホテルだけ載せ、順位は付けていません。",
+  lede=lambda pf, n: f"{pf}のペットホテルを{n}件まとめました。大型犬OK・猫専用でもしぼれます。公式サイトに書いてある受け入れの条件だけを載せています。",
   facts=_facts, faq=_faq, before_title="ペットホテルに預ける前に確かめること", before=[], extra_after=lambda e, pf: checklist(e),
   taxi_h="ホテルへの送り迎えは、ペットタクシーで", taxi_p="大型犬やキャリーの猫も、飼い主さまと一緒に家の前からホテルの前まで移動できます。",
   links=[("大型犬を預けられるペットホテルの探し方", "/guide/large-dog-hotel/"), ("猫をペットホテルに預けるとき", "/guide/cat-hotel/"), ("ペットシッターとペットホテル、どちらがいい？", "/guide/sitter-or-hotel/"), ("トリミング・ペットホテルへの送迎ガイド", "/guide/grooming-hotel/"), ("全国のペットシッター", "/pet-sitter/")])
