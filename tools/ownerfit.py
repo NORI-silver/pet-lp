@@ -21,16 +21,23 @@ WHO = {
     "shy": "かむ・ほえる・こわがり",
     "bed": "寝たきり",
     "night": "夜鳴き・認知症",
+    "care": "介護が必要",
 }
-SHORT = {"big": "大型犬", "sen": "シニア・介護", "pup": "子犬・子猫", "med": "薬・持病", "multi": "2頭以上", "shy": "かむ・ほえる子", "bed": "寝たきり", "night": "夜鳴き・認知症"}
+SHORT = {"big": "大型犬", "sen": "シニア・介護", "pup": "子犬・子猫", "med": "薬・持病", "multi": "2頭以上", "shy": "かむ・ほえる子", "bed": "寝たきり", "night": "夜鳴き・認知症", "care": "介護"}
 # 分野ごとに聞くこと（順番もこのまま）。件数が少ない・ほぼ全部に当てはまるものは uikit が出さない
 CAT_WHO = {
     "pet-hotel": ["big", "sen", "pup", "med", "multi", "shy"],
     "pet-sitter": ["big", "sen", "med", "multi"],
     "trimming": ["big", "sen", "pup", "shy", "med"],
     "dog-trainer": ["shy", "pup", "big", "multi"],
-    "rojin-home": ["big", "bed", "night", "med"],
+    "rojin-home": ["big", "bed", "night", "med", "care"],
     "sougi": ["big"],
+}
+# 施設の内容のキー（うちの子の条件ではなく、施設がしていること。uikit の SVC の「サービスの内容」に出す）。
+# 判定は CAT_WHO と同じ _find（公式サイトの文・同じ文に「不可・お断り」があれば合わない）。
+FAC = {
+    "rojin-home": ["mitori", "long", "menkai"],
+    "pet-hotel": ["cagefree", "walk"],
 }
 
 NEG = r"(不可|お断り|断り|受けて(い)?ません|受けない|預から(ない|ず)|預かり(でき|出来)ません|対象外|ご遠慮|お受けできません|受け付けて(い)?ません|入所(でき|出来)(ない|ません)|NG)"
@@ -42,6 +49,13 @@ PAT = {
     "shy": r"噛む|噛み|咬|攻撃性|吠え|臆病|怖がり|こわがり|神経質|問題行動|しつけ相談",
     "bed": r"寝たきり|全介助|歩行困難|立ち上がり困難|自力で(歩|立)|歩けな|歩行(でき|出来)な|起き上が(れな|ることができな)|立てな",
     "night": r"夜鳴き|夜泣き|認知症|徘徊",
+    "care": r"介護",
+    # 施設の内容（FAC）
+    "mitori": r"看取り|看取",
+    "long": r"終身|生涯|終生|長期",
+    "menkai": r"面会",
+    "cagefree": r"ケージフリー|ケージレス",
+    "walk": r"散歩",
     "big": r"大型犬|超大型|ラブラドール|ゴールデン|大型",
     "a:small": r"うさぎ|ウサギ|小動物|ハムスター|フェレット|モルモット",
     "a:bird": r"小鳥|鳥類|インコ|文鳥|オウム|鳥さん|鳥など|鳥・",
@@ -140,6 +154,8 @@ def keys(cat, url):
                 put("big", v)
         else:
             put(k, _find(t, k))
+    for k in FAC.get(cat, []):
+        put(k, _find(t, k))
     if cat in ("sougi", "pet-sitter"):
         for k in ("a:small", "a:bird", "a:exotic"): put(k, _find(t, k))
     if cat == "sougi":

@@ -69,8 +69,18 @@ def links_of(h, base, n=4):
 
 
 def search(item):
-    """q だけの行は検索の結果のURLと見出しを返す（候補さがし。結果は人が見て公式サイトかを決める）。"""
+    """q だけの行は検索の結果のURLと見出しを返す（候補さがし。結果は人が見て公式サイトかを決める）。Yahoo! JAPAN を先に。"""
     r = dict(item)
+    try:
+        h, _ = get('https://search.yahoo.co.jp/search?ei=UTF-8&p=' + urllib.parse.quote(item['q']))
+        res = []
+        for m in re.finditer(r'(?is)<a[^>]+href="(https?://[^"]+)"[^>]*>\s*(?:<[^>]+>\s*)*<h3[^>]*>(.*?)</h3>', h):
+            u = html.unescape(m.group(1))
+            if 'yahoo.co.jp' not in u: res.append([html.unescape(re.sub(r'<[^>]+>', '', m.group(2))).strip(), u])
+        if res:
+            r['results'] = res[:10]; return r
+    except Exception:
+        pass
     try:
         h, _ = get('https://html.duckduckgo.com/html/?kl=jp-jp&q=' + urllib.parse.quote(item['q']))
         res = []

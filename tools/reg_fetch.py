@@ -22,7 +22,7 @@ def one(job, out):
         raw, final, ct = get(url)
     except Exception as e:
         log['error'] = str(e)[:120]; return log
-    if FILE.search(final) or 'pdf' in ct or 'sheet' in ct or 'excel' in ct:
+    if FILE.search(final) or 'zip' in ct or 'pdf' in ct or 'sheet' in ct or 'excel' in ct:
         fn = os.path.basename(urllib.parse.urlparse(final).path) or 'file'
         open(os.path.join(d, fn), 'wb').write(raw); log['files'].append(final); return log
     h = raw.decode('utf-8', 'replace')
@@ -47,7 +47,7 @@ def main():
     base = os.path.join(os.path.dirname(__file__), 'crawl')
     jobs = []
     for fn in sorted(os.listdir(base)):
-        if fn.startswith('reg') and fn.endswith('.json'): jobs += json.load(open(os.path.join(base, fn)))
+        if fn.startswith('reg_') and fn.endswith('.json'): jobs += json.load(open(os.path.join(base, fn)))
     if not jobs: return
     with cf.ThreadPoolExecutor(8) as ex:
         logs = list(ex.map(lambda j: one(j, out), jobs))
