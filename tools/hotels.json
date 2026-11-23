@@ -7311,7 +7311,7 @@
      "checked": "2026-11-23"
     },
     {
-     "k": "支払い",
+     "k": "お支払い",
      "v": "電子マネー、QRコード決済(PayPay・iD・楽天ペイ等)各種対応しております。",
      "src": "https://www.kamoanimalclinic.jp/about.html",
      "by": "site",
@@ -7354,14 +7354,14 @@
      "checked": "2026-11-23"
     },
     {
-     "k": "ワクチン",
+     "k": "用意するもの",
      "v": "ご利用の際には、健康管理のため1年以内の混合ワクチンの接種が必要です。",
      "src": "https://www.nakamoto-ah.com/",
      "by": "site",
      "checked": "2026-11-23"
     },
     {
-     "k": "受け入れ",
+     "k": "対象の動物",
      "v": "小型犬から大型犬、猫まで。この病院を受診しているペットだけ",
      "src": "https://www.nakamoto-ah.com/",
      "by": "site",
@@ -7396,7 +7396,7 @@
      "checked": "2026-11-23"
     },
     {
-     "k": "ワクチン",
+     "k": "用意するもの",
      "v": "当院で定期的に混合ワクチンを接種している、またはワクチン抗体価検査を受けて効果が持続している証明が必要です。",
      "src": "https://mogu-pet.com/hotel/",
      "by": "site",
@@ -7417,7 +7417,7 @@
    "facts": [
     {
      "k": "料金",
-     "v": "9時以前、17時以降のお預かりは、時間外料金(1,000円/h)がかかります​",
+     "v": "9時以前、17時以降のお預かりは、時間外料金(1,000円/h)がかかります",
      "src": "https://dogschoolease.wixsite.com/dogschoolease/%E3%81%94%E6%96%99%E9%87%91",
      "by": "site",
      "checked": "2026-11-23"
@@ -7457,7 +7457,7 @@
    "services": "ペットホテル",
    "facts": [
     {
-     "k": "営業時間",
+     "k": "営業・受付時間",
      "v": "営業時間10:00〜17:00",
      "src": "https://cleo-pet.com/",
      "by": "site",
@@ -7485,8 +7485,8 @@
      "checked": "2026-11-23"
     },
     {
-     "k": "ワクチン",
-     "v": "※当院以外で接種されている場合は、ワクチン証明書をご持参願います。",
+     "k": "用意するもの",
+     "v": "当院以外で接種されている場合は、ワクチン証明書をご持参願います。",
      "src": "https://doivet-hiroshima.com/trimming/",
      "by": "site",
      "checked": "2026-11-23"
@@ -7520,15 +7520,15 @@
      "checked": "2026-11-23"
     },
     {
-     "k": "ワクチン",
+     "k": "用意するもの",
      "v": "• 混合ワクチン・狂犬病ワクチン接種済みであること",
      "src": "https://sugino-vet.com/",
      "by": "site",
      "checked": "2026-11-23"
     },
     {
-     "k": "支払い",
-     "v": "お支払い:現金 / クレジットカード / PayPay",
+     "k": "お支払い",
+     "v": "現金 / クレジットカード / PayPay",
      "src": "https://sugino-vet.com/",
      "by": "site",
      "checked": "2026-11-23"
@@ -7547,8 +7547,8 @@
    "services": "ペットホテル",
    "facts": [
     {
-     "k": "ワクチン",
-     "v": "※毎年狂犬病ワクチンと混合ワクチン接種済みのワンちゃんに限ります。(ワクチン未接種のワンちゃんはお預かりできません)",
+     "k": "用意するもの",
+     "v": "毎年狂犬病ワクチンと混合ワクチン接種済みのワンちゃんに限ります。(ワクチン未接種のワンちゃんはお預かりできません)",
      "src": "http://zweistern.net/hotel/",
      "by": "site",
      "checked": "2026-11-23"
@@ -7588,7 +7588,7 @@
    "services": "ペットホテル",
    "facts": [
     {
-     "k": "営業時間",
+     "k": "営業・受付時間",
      "v": "営業時間9:00〜19:00",
      "src": "https://maisondechloe.jimdofree.com/",
      "by": "site",
@@ -7609,14 +7609,14 @@
    "facts": [
     {
      "k": "料金",
-     "v": "※ 1泊単位(24時間につき)繁忙期はプラス1100円。",
+     "v": "1泊単位(24時間につき)繁忙期はプラス1100円。",
      "src": "https://www.dog-cat-lemon.com/hotel.html",
      "by": "site",
      "checked": "2026-11-23"
     },
     {
-     "k": "営業時間",
-     "v": "営業時間:9:30〜18:00",
+     "k": "営業・受付時間",
+     "v": "9:30〜18:00",
      "src": "https://www.dog-cat-lemon.com/",
      "by": "site",
      "checked": "2026-11-23"
@@ -7649,20 +7649,20 @@
    "facts": [
     {
      "k": "駐車場",
-     "v": "▶ 当院横に駐車場8台完備",
+     "v": "当院横に駐車場8台完備",
      "src": "https://terazono-ah.jp/",
      "by": "site",
      "checked": "2026-11-23"
     },
     {
-     "k": "ワクチン",
+     "k": "用意するもの",
      "v": "当院にて混合ワクチンを接種された動物のみお預かりいたします。ノミ・ダニなどの外部寄生虫がいない、または予防されている動物のみお預かりいたします。長期休暇等、混み合う時期は早めのご予約をお願いします",
      "src": "https://terazono-ah.jp/information/",
      "by": "site",
      "checked": "2026-11-23"
     },
     {
-     "k": "支払い",
+     "k": "お支払い",
      "v": "お支払いは現金、又は電子マネーpaypayを使えます。",
      "src": "https://terazono-ah.jp/flow/",
      "by": "site",
@@ -7682,7 +7682,7 @@
    "services": "ペットホテル",
    "facts": [
     {
-     "k": "営業時間",
+     "k": "営業・受付時間",
      "v": "営業時間 10:00~19:00",
      "src": "https://joint-us.jp/aboutus/",
      "by": "site",
@@ -7716,7 +7716,7 @@
    "vet": true,
    "facts": [
     {
-     "k": "ワクチン",
+     "k": "用意するもの",
      "v": "健康診断、ワクチン接種、避妊・去勢、血液検査、レントゲン検査、エコー検査、CT検査、フィラリア予防、入院の他、当院でワクチン接種を受けたペットに限り、ペットホテルとしてのご利用も可能です。",
      "src": "https://www.pet-doctor.jp/",
      "by": "site",
@@ -7764,8 +7764,8 @@
    "vet": true,
    "facts": [
     {
-     "k": "ワクチン",
-     "v": "​お預かりするにあたり、1年以上の混合ワクチンの接種と、1か月以内のノミ・マダニ駆除薬の使用をお願いしております。",
+     "k": "用意するもの",
+     "v": "お預かりするにあたり、1年以上の混合ワクチンの接種と、1か月以内のノミ・マダニ駆除薬の使用をお願いしております。",
      "src": "https://www.hachihonmatsuah.com/",
      "by": "site",
      "checked": "2026-11-23"
@@ -7784,7 +7784,7 @@
    "services": "ペットホテル",
    "facts": [
     {
-     "k": "営業時間",
+     "k": "営業・受付時間",
      "v": "受付時間 9:00〜18:00(不定休)",
      "src": "https://rikka-dogschool.com/",
      "by": "site",
@@ -7811,21 +7811,21 @@
    "services": "ペットホテル",
    "facts": [
     {
-     "k": "営業時間",
-     "v": "営業時間 : 10:00~17:00 定休日 : 水・木曜日",
+     "k": "営業・受付時間",
+     "v": "10:00~17:00 定休日 : 水・木曜日",
      "src": "https://www.dogthree.com/",
      "by": "site",
      "checked": "2026-11-23"
     },
     {
      "k": "定休日",
-     "v": "営業時間 : 10:00~17:00 定休日 : 水・木曜日",
+     "v": "10:00~17:00 定休日 : 水・木曜日",
      "src": "https://www.dogthree.com/",
      "by": "site",
      "checked": "2026-11-23"
     },
     {
-     "k": "ワクチン",
+     "k": "用意するもの",
      "v": "トリミングorグルーミング(ご予約時間に余裕をもってご来店ください。ワクチン接種証明書の提示をお願いします。)",
      "src": "https://www.dogthree.com/salon/",
      "by": "site",
@@ -7845,14 +7845,14 @@
    "services": "ペットホテル",
    "facts": [
     {
-     "k": "営業時間",
+     "k": "営業・受付時間",
      "v": "営業時間 10:00~18:00",
      "src": "https://www.worldpet.co.jp/store-list",
      "by": "site",
      "checked": "2026-11-23"
     },
     {
-     "k": "ワクチン",
+     "k": "用意するもの",
      "v": "混合ワクチン・狂犬病予防接種証明書(1年以内のもの)",
      "src": "https://www.worldpet.co.jp/pethotel",
      "by": "site",
@@ -7919,9 +7919,2747 @@
    "services": "ペットホテル",
    "facts": [
     {
-     "k": "ワクチン",
-     "v": "​ *初めてのお客様はワクチン証明書および運転免許書等をご提示いただきます*",
+     "k": "用意するもの",
+     "v": "*初めてのお客様はワクチン証明書および運転免許書等をご提示いただきます*",
      "src": "https://www.petland-chihaya.com/blank-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW027",
+   "name": "くぼた動物病院",
+   "prefs": [
+    "鳥取県"
+   ],
+   "city": "鳥取市",
+   "url": "https://www.aniba.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW028",
+   "name": "ULU",
+   "prefs": [
+    "鳥取県"
+   ],
+   "city": "鳥取市",
+   "url": "https://ulueight0601.crayonsite.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "1年以内のワクチン接種証明書・狂犬病予防接種証明書をご持参ください。 ワンちゃん:5種以上の混合ワクチン、ネコちゃん:3種混合ワクチン",
+     "src": "https://ulueight0601.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW029",
+   "name": "のび動物病院",
+   "prefs": [
+    "鳥取県"
+   ],
+   "city": "鳥取市",
+   "url": "http://www.nobi-ah.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "日曜日は不定休です(上記診療カレンダーにてご確認ください)",
+     "src": "http://www.nobi-ah.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ご予約は当院にて定期的に(1年に1回)混合ワクチンを接種している",
+     "src": "http://www.nobi-ah.jp/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW030",
+   "name": "さわずみ動物病院",
+   "prefs": [
+    "鳥取県"
+   ],
+   "city": "倉吉市",
+   "url": "https://sawa-ah.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場あり",
+     "src": "https://sawa-ah.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW031",
+   "name": "ペットショップわんわんにゃんにゃん",
+   "prefs": [
+    "鳥取県"
+   ],
+   "city": "境港市",
+   "url": "https://www.11-22.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "飼主様の身分証明書(免許証または保険証)、同意書にサインしていただくための印鑑、1年以内に接種したワクチン接種証明書(狂犬病・その他)をお持ちください。",
+     "src": "https://www.11-22.jp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW032",
+   "name": "やじまアニマルクリニック",
+   "prefs": [
+    "鳥取県"
+   ],
+   "city": "境港市",
+   "url": "https://www.yajimaac.biz/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "QRコード、バーコード決済、カード決済対応",
+     "src": "https://www.yajimaac.biz/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW033",
+   "name": "ペットハウス のん",
+   "prefs": [
+    "島根県"
+   ],
+   "city": "松江市",
+   "url": "https://www.pethouse-non.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "2,500円 (3泊目以降は1泊2,000円)",
+     "src": "https://www.pethouse-non.com/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "日曜日(ホテルは日曜日も営業)※祝日・振替休日は営業",
+     "src": "https://www.pethouse-non.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "有り(2台)当サロンから西に20m(美談ガレージ)",
+     "src": "https://www.pethouse-non.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初めてご利用の方は、飼い主様の身分証明書およびワクチン接種証明書、狂犬病/抗体検査結果証明書をお持ちください。",
+     "src": "https://www.pethouse-non.com/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW034",
+   "name": "ドッグサロン1",
+   "prefs": [
+    "島根県"
+   ],
+   "city": "松江市",
+   "url": "https://dog-salon1.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防接種証明書・ワクチン接種証明書を必ずご持参ください。(1年以内のものに限ります。)",
+     "src": "https://dog-salon1.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW035",
+   "name": "Miel Sourire salon",
+   "prefs": [
+    "島根県"
+   ],
+   "city": "浜田市",
+   "url": "https://www.dogsalonmiel.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "木曜日・祝日",
+     "src": "https://www.dogsalonmiel.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチンおよび狂犬病の接種証明をご持参ください。",
+     "src": "https://www.dogsalonmiel.com/dogtrimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW036",
+   "name": "さくら通り動物病院",
+   "prefs": [
+    "島根県"
+   ],
+   "city": "雲南市",
+   "url": "https://sakuradoori-ah.info/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場あり",
+     "src": "https://sakuradoori-ah.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "いずれも、1年以内に狂犬病(犬)・3種以上の混合ワクチン接種済みの子",
+     "src": "https://sakuradoori-ah.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW037",
+   "name": "ノエルペットクリニック",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "岡山市北区",
+   "url": "https://noelpet.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00~19:00",
+     "src": "https://noelpet.com/trmservice/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 なし (日祝も営業しております)",
+     "src": "https://noelpet.com/trmservice/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "他院で接種されている場合はワクチン証明書をご持参ください。",
+     "src": "https://noelpet.com/htlservice/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW038",
+   "name": "ペットサロン フェリーチェ",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "岡山市",
+   "url": "https://felice-pet.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付 9:30~19:00/年中無休",
+     "src": "https://felice-pet.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW039",
+   "name": "倉敷いぬとねこの病院",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "倉敷市",
+   "url": "https://www.kura-inuneko.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "(診察受付時間 9:00 ~ 11:00)",
+     "src": "https://www.kura-inuneko.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW040",
+   "name": "犬のお宿 ももさく",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "倉敷市",
+   "url": "http://www.momosaku.net/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬(20kgまで) 一泊目4,000円 二泊目以降 3,000円",
+     "src": "http://www.momosaku.net/syukuhaku-ryoukin.htm",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW041",
+   "name": "カニスプレイス",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "津山市",
+   "url": "https://canis-place.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW042",
+   "name": "ペットショップ にゃぁ〜とかわん1",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "津山市",
+   "url": "https://nya-wan.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "月曜~日曜 10:00~18:30(最終受付:17:00)・祝日(最終受付:17:00)定休日:不定休",
+     "src": "https://nya-wan.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "月曜~日曜 10:00~18:30(最終受付:17:00)・祝日(最終受付:17:00)定休日:不定休",
+     "src": "https://nya-wan.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW043",
+   "name": "Cotton Dog&Cat",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "玉野市",
+   "url": "https://cotton-dog.storeinfo.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "09:30~18:00",
+     "src": "https://cotton-dog.storeinfo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://cotton-dog.storeinfo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場完備しています。",
+     "src": "https://cotton-dog.storeinfo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW044",
+   "name": "クリア動物病院",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "笠岡市",
+   "url": "https://www.clearvetclinic.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW045",
+   "name": "ペットハウスべリー",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "井原市",
+   "url": "http://pet-house-berry.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW046",
+   "name": "だて動物病院",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "総社市",
+   "url": "https://date-vet.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場 サロン前:3台、病院奥:29台",
+     "src": "https://date-vet.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW047",
+   "name": "Dog garden",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "高梁市",
+   "url": "https://www.petshop-doggarden.jp/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW048",
+   "name": "LALA HOUSE",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "新見市",
+   "url": "https://lalahouse.pet/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "1台分の駐車スペースあり",
+     "src": "https://lalahouse.pet/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "小型犬から大型犬、ワクチン接種の終わった子犬や老犬も出来る限り対応致します。お預かりしている間の様子や写真を飼い主様とへLINEやメール等でお伝えするサービスもしています。",
+     "src": "https://lalahouse.pet/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW049",
+   "name": "ドッグサロン&ドッグホテル happiness",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "赤磐市",
+   "url": "https://happiness-dog.jimdofree.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00~18:00",
+     "src": "https://happiness-dog.jimdofree.com/%E3%83%89%E3%83%83%E3%82%B0%E3%83%9B%E3%83%86%E3%83%AB/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 毎週水曜/第1・第3日曜",
+     "src": "https://happiness-dog.jimdofree.com/%E5%BA%97%E8%88%97%E6%A1%88%E5%86%85/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場3台あり",
+     "src": "https://happiness-dog.jimdofree.com/%E5%BA%97%E8%88%97%E6%A1%88%E5%86%85/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初めてご利用される方は、身分証明書とワクチン証明書(狂犬病・混合ワクチン)をご持参ください。",
+     "src": "https://happiness-dog.jimdofree.com/%E3%83%89%E3%83%83%E3%82%B0%E3%83%9B%E3%83%86%E3%83%AB/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW050",
+   "name": "ひらい動物病院",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "浅口市",
+   "url": "https://www.hirai-ah.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "1年以内に混合ワクチンを接種していることが条件になります。",
+     "src": "https://www.hirai-ah.com/%E3%83%9B%E3%83%86%E3%83%AB",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW051",
+   "name": "ペットホテル シュバルツ",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市",
+   "url": "https://www.dogsalon-schwarz.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "通常の1泊目料金に1,000円 加算",
+     "src": "https://www.dogsalon-schwarz.jp/cont13/main.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW052",
+   "name": "ペットハウスマリー",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "呉市",
+   "url": "https://pethouse-mary.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW053",
+   "name": "ヤンキーエンジェル",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "尾道市",
+   "url": "https://yankeeangel.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10時〜18時",
+     "src": "https://yankeeangel.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 月曜",
+     "src": "https://yankeeangel.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内に発行されたワクチンの証明書",
+     "src": "https://yankeeangel.com/?page_id=507",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW054",
+   "name": "ふじい動物病院",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "福山市",
+   "url": "https://www.fujii-animalclinic.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 09:00~21:00】",
+     "src": "https://www.fujii-animalclinic.com/pet-hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン(犬、猫)、狂犬病(犬)の予防接種が必要です。未接種の場合は、当院で接種をさせていただきます。",
+     "src": "https://www.fujii-animalclinic.com/pet-hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW055",
+   "name": "ペッツジョイ",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "福山市",
+   "url": "https://www.pets-joy-fukuyama.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ワクチンの証明書をご持参ください。",
+     "src": "https://www.pets-joy-fukuyama.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW056",
+   "name": "つむぎ動物病院",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "福山市",
+   "url": "https://tsumugi-ah-clossgarden.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW057",
+   "name": "前田動物病院",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "三次市",
+   "url": "https://www.maeda-vet.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種、ノミダニ予防が必要です。",
+     "src": "https://www.maeda-vet.com/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW058",
+   "name": "かわむら動物病院",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "下関市",
+   "url": "https://kawamura-pet.net/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "トリミング定休日・・・毎週月曜日・水曜日、第3日曜日",
+     "src": "https://kawamura-pet.net/trimming.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "入口について・駐車場完備 ●",
+     "src": "https://kawamura-pet.net/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "(1)原則として、当院にカルテがある方で、1年以内に混合ワクチンを接種していることが必要です。",
+     "src": "https://kawamura-pet.net/trimming.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW059",
+   "name": "ペットショップわんぽ",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "宇部市",
+   "url": "https://wanpo-llc.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "1月1日~3日、第1水曜日、第3火曜日",
+     "src": "https://wanpo-llc.jp/reservation",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内に5~9種の伝染病ワクチンを接種しているわんちゃん、猫ちゃんのみお預かりいたします。(ワクチン証明書が必要です。)",
+     "src": "https://wanpo-llc.jp/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW060",
+   "name": "ワンダーペットII",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "宇部市",
+   "url": "https://www.wonder-pet2.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "9:00~18:00|不定休",
+     "src": "https://www.wonder-pet2.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW061",
+   "name": "Pet hotel Laster hill",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "山口市",
+   "url": "https://laster-hill.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチン、狂犬病予防接種証明書",
+     "src": "https://laster-hill.com/cms/page104.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW062",
+   "name": "なかの動物病院",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "防府市",
+   "url": "https://nakanoah.info/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場10台完備",
+     "src": "https://nakanoah.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW063",
+   "name": "はなおかペットクリニック",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "下松市",
+   "url": "https://www.hanaoka-pet.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場 5台有",
+     "src": "https://www.hanaoka-pet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW064",
+   "name": "Dog salon Cherish.",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "下松市",
+   "url": "https://www.cherish-y.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 4000円",
+     "src": "https://www.cherish-y.com/pricelist",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜16:00 / 定休日:不定期(特定の曜日は無し)",
+     "src": "https://www.cherish-y.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "9:00〜16:00 / 定休日:不定期(特定の曜日は無し)",
+     "src": "https://www.cherish-y.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防のワクチンを接種していない場合は入店をお断りしております。",
+     "src": "https://www.cherish-y.com/pricelist",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW065",
+   "name": "ふじしま動物病院",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "岩国市",
+   "url": "https://fujishima-ah.main.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ゴールデンウィーク・盆・年末年始は別料金(1泊あたり+1000円)がかかります。",
+     "src": "https://fujishima-ah.main.jp/index.php?%E3%83%9A%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場7台あり",
+     "src": "https://fujishima-ah.main.jp/index.php?%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン、狂犬病ワクチン(犬のみ)の接種済みの子に限らせていただきます。",
+     "src": "https://fujishima-ah.main.jp/index.php?%E3%83%9A%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW066",
+   "name": "ドッグハウス優",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "長門市",
+   "url": "https://doghouse-yu.jimdofree.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "1年以内 の混合ワクチン接種証明書 及び 1年以内 の狂犬病予防接種証明書  (接種1週間以降)",
+     "src": "https://doghouse-yu.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW067",
+   "name": "あくあ動物病院",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "長門市",
+   "url": "https://www.aqua-ah.net/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "1年以内の7~10種混合ワクチン接種が必要となります。(病気やワクチンアレルギーなどでワクチン接種ができない子はご相談ください)",
+     "src": "https://www.aqua-ah.net/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いはクレジットカード各種ご利用いただけます。",
+     "src": "https://www.aqua-ah.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW068",
+   "name": "グルーミングハウス ランディー",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "美祢市",
+   "url": "http://randy.suzuko.net/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2800円〜 (税別)",
+     "src": "http://randy.suzuko.net/category2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10:00〜18:00",
+     "src": "http://randy.suzuko.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW069",
+   "name": "Pet House わん’s",
+   "prefs": [
+    "徳島県"
+   ],
+   "city": "徳島市",
+   "url": "https://www.pethouse-wans.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ホテル繁忙期(GW/お盆/年末年始)は上記価格より+600円になります。",
+     "src": "https://www.pethouse-wans.com/hotel.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチンを接種していないワンちゃんやノミ・ダニ対策をしていないワンちゃんはお断りさせていただく場合があります。",
+     "src": "https://www.pethouse-wans.com/salon.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW070",
+   "name": "リューネ動物病院",
+   "prefs": [
+    "徳島県"
+   ],
+   "city": "鳴門市",
+   "url": "https://www.lune-animalclinic.net/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "6台収容可能の駐車場がございます。",
+     "src": "https://www.lune-animalclinic.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW071",
+   "name": "ちとせばし動物病院",
+   "prefs": [
+    "徳島県"
+   ],
+   "city": "小松島市",
+   "url": "https://www.chitosebashi-animalhospital.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW072",
+   "name": "サニーテラス動物病院",
+   "prefs": [
+    "徳島県"
+   ],
+   "city": "阿南市",
+   "url": "https://www.sunnyterrace-animalhospital.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW073",
+   "name": "ロビンス動物病院",
+   "prefs": [
+    "徳島県"
+   ],
+   "city": "徳島市",
+   "url": "https://www.robins-animalhospital.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW074",
+   "name": "晴れたひ動物病院",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "高松市",
+   "url": "https://haretahi.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW075",
+   "name": "秋山どうぶつ病院",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "丸亀市",
+   "url": "http://akiyama-vet.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW076",
+   "name": "ドッグサロンチュチュ",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "丸亀市",
+   "url": "https://dogsalon-chuchu.studio.site/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW077",
+   "name": "あず〜る",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "坂出市",
+   "url": "https://azu-ru.crayonsite.info/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "12時間超...1泊料金と同じ2500円",
+     "src": "https://azu-ru.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "...不定休有り",
+     "src": "https://azu-ru.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW078",
+   "name": "うらら動物病院",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "坂出市",
+   "url": "https://www.urara-ah.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ウサギ(1日)3000円 ハムスター(1日)2000円 (税抜)",
+     "src": "https://www.urara-ah.com/trimming.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "犬猫ともに1年以内の混合ワクチン接種、1ヶ月以内のノミ・ダニの駆除(受けられていない方は当院で受けられます)が必要となります。当院以外で接種された方は、必ず証明書を提示して下さい。",
+     "src": "https://www.urara-ah.com/trimming.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW079",
+   "name": "うたづ動物病院",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "綾歌郡宇多津町",
+   "url": "https://utazu-petclinic.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW080",
+   "name": "はるひな動物病院",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "観音寺市",
+   "url": "https://haru-hina.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン証明書",
+     "src": "https://haru-hina.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW081",
+   "name": "ドッグコテージランラン",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "さぬき市",
+   "url": "https://www.dog-runrun.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "(受付時間:9:00~19:00)",
+     "src": "https://www.dog-runrun.com/pricing1",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "遠方の送迎やサービスエリア、インターチェンジなどでの受け渡しなども可能です。",
+     "src": "https://www.dog-runrun.com/pricing1",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW082",
+   "name": "Dog Garden SHIDO",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "さぬき市",
+   "url": "https://www.doggarden-shido.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00~18:00",
+     "src": "https://www.doggarden-shido.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "月曜日",
+     "src": "https://www.doggarden-shido.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "美容メニューをご利用の場合は、必ずワクチンの接種をお願いいたします。",
+     "src": "https://www.doggarden-shido.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW083",
+   "name": "犬床屋",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "東かがわ市",
+   "url": "https://inutokoya-k.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "2,200 円 (1日につき)",
+     "src": "https://inutokoya-k.com/inuyadoya",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "9:00〜18:00(火曜定休)",
+     "src": "https://inutokoya-k.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "送迎あり/ 当日対応OK/ 駐車場あり/ 空気清浄機/ ペット用トイレ/ 女性スタッフの在籍/ グッズ販売/ ワクチン接種の証明書提示が必要",
+     "src": "https://inutokoya-k.com/inuyadoya",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "送迎あり/ 当日対応OK/ 駐車場あり/ 空気清浄機/ ペット用トイレ/ 女性スタッフの在籍/ グッズ販売/ ワクチン接種の証明書提示が必要",
+     "src": "https://inutokoya-k.com/inuyadoya",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW084",
+   "name": "たかせ動物病院",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "三豊市",
+   "url": "https://takase-ah.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場あり",
+     "src": "https://takase-ah.com/recruitinfo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "伝染病予防のため1年以内の混合ワクチンの接種、1か月以内のノミの予防をお願いいたします。",
+     "src": "https://takase-ah.com/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW085",
+   "name": "ここわ動物病院",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "三豊市",
+   "url": "https://cocowa-ah.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "猫 1泊2500円",
+     "src": "https://cocowa-ah.com/free/pethotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "感染症予防のため、1年以内の混合ワクチン接種をお願いします。",
+     "src": "https://cocowa-ah.com/free/pethotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW086",
+   "name": "ZOOの森",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "松山市",
+   "url": "https://petzoo.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "当店をご利用の際は、犬、1年以内に(狂犬病ワクチン)と1年毎~3年毎の(混合ワクチン接種)を受けていることが必要です ※混合ワクチンの代わりに獣医 の健康 診断書でもOK           猫、(混合ワクチン)",
+     "src": "https://petzoo.jp/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW087",
+   "name": "ペットホテル・チャーリー",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "松山市",
+   "url": "https://pethotel-charlie.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00~18:00(ご来店は完全予約制)",
+     "src": "https://pethotel-charlie.com/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://pethotel-charlie.com/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "感染症ワクチンを接種していないペットはお預かりできません。",
+     "src": "https://pethotel-charlie.com/terms_of_use/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW088",
+   "name": "ドッグハウスONE&WAN",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "今治市",
+   "url": "https://one-wan.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 小型犬4000円・中型犬4500円・大型犬5000円",
+     "src": "https://one-wan.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 水・木曜日",
+     "src": "https://one-wan.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチンの証明書をご持参ください。",
+     "src": "https://one-wan.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW089",
+   "name": "MIRU動物病院",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "今治市",
+   "url": "https://miru-ah.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 3,500円/1時間 580円(6時間を超えたら1泊料金)",
+     "src": "https://miru-ah.jp/pet-hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "(最終受付:11:30)",
+     "src": "https://miru-ah.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内に、狂犬病予防注射と混合ワクチンを両方接種していること",
+     "src": "https://miru-ah.jp/pet-hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW090",
+   "name": "ひまわり動物病院",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "今治市",
+   "url": "https://www.himawari-veterinary.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW091",
+   "name": "アニマルファームガーデン伯方",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "今治市",
+   "url": "https://9n0y1.crayonsite.com/p/2/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 8:00-17:00",
+     "src": "https://9n0y1.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW092",
+   "name": "愛犬美容室セシル",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "宇和島市",
+   "url": "https://dogsalon-cecil.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種の証明書提示が必要",
+     "src": "https://dogsalon-cecil.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW093",
+   "name": "おおず森のどうぶつ病院",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "大洲市",
+   "url": "http://www.nishioozu-ah.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW094",
+   "name": "ドッグサロン ハティ",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "大洲市",
+   "url": "http://dogsalon-hati.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "お泊り(散歩付き)】 受付時間10:00~18:30",
+     "src": "http://dogsalon-hati.com/page-29/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ご利用に際して、1年以内のワクチン接種と1ヶ月以内のノミダニ予防(フロントライン等)をお願いいたします。",
+     "src": "http://dogsalon-hati.com/page-29/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW095",
+   "name": "トリミングサロンminami",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "四国中央市",
+   "url": "https://pet-minami.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ワクチン、狂犬病の証明書",
+     "src": "https://pet-minami.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW096",
+   "name": "カットハウスDOG STAR",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "四国中央市",
+   "url": "https://www.dog-star.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://www.dog-star.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場 有り(3台)",
+     "src": "https://www.dog-star.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種証明書のご提示は不要です。",
+     "src": "https://www.dog-star.jp/shop",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW097",
+   "name": "セントラルシティ動物病院",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "四国中央市",
+   "url": "https://unoanimal.co.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "病院にはいろんな子が来院しますので、 ワクチンの接種をお願いいたします。",
+     "src": "https://unoanimal.co.jp/aboutus/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW098",
+   "name": "らいおん動物病院",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "東温市",
+   "url": "https://lion-animalclinic.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "1年以内のワクチン接種が必要です。他院にてワクチン接種されている場合はワクチン証明書を持参ください。",
+     "src": "https://lion-animalclinic.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW099",
+   "name": "Dog Healing Salon bibi",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "東温市",
+   "url": "https://www.bibi1313.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチン証明書・狂犬病ワクチン証明書(鑑札)",
+     "src": "https://www.bibi1313.com/%E3%83%9B%E3%83%86%E3%83%AB",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW100",
+   "name": "ペットサロン しゃぼん玉",
+   "prefs": [
+    "高知県"
+   ],
+   "city": "四万十市",
+   "url": "https://syabondama.info/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW101",
+   "name": "ペットサロン Dspace",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "北九州市小倉南区",
+   "url": "https://www.dspace-kokura.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "特別料金について...【3月・7月・8月】宿泊日数と宿泊ペット数に対して各550円(税込)プラスされます。",
+     "src": "https://www.dspace-kokura.com/price.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "(営業時間 9:00~18:30)",
+     "src": "https://www.dspace-kokura.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "月曜日",
+     "src": "https://www.dspace-kokura.com/service.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW102",
+   "name": "くるめ犬猫クリニック",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "久留米市",
+   "url": "https://krmdcclinic.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW103",
+   "name": "ワン・ピース",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "直方市",
+   "url": "https://wanpeace-web.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW104",
+   "name": "白木原動物病院",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "田川郡川崎町",
+   "url": "https://shirakihara-ah.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW105",
+   "name": "ペット美容&ホテル ブルーポイント",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "筑後市",
+   "url": "https://www.bluepoint-f.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00~18:00",
+     "src": "https://www.bluepoint-f.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日  水曜日",
+     "src": "https://www.bluepoint-f.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "2 ワクチン未接種(お客様の大切なワンちゃんの健康を守る為)につきましては、お預かり出来ない場合が御座います、又ノミ、ダニの事前予防(駆除)をお願い致しております。",
+     "src": "https://www.bluepoint-f.com/post/%E7%BE%8E%E3%81%97%E3%81%84%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW106",
+   "name": "わかな動物病院",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "筑後市",
+   "url": "https://wakana-ah.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ワンちゃん:一年以内の混合ワクチンと狂犬病予防接種、及びフィラリア予防が必要です。",
+     "src": "https://wakana-ah.com/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW107",
+   "name": "Bonn grain ボーングライン",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "行橋市",
+   "url": "https://bonngrain5035.wixsite.com/bonngrain",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ドッグラン有り。駐車場5台分あり。犬ホテルは小型犬から大型犬まで対応。猫ホテルは全て2段ゲージでのお泊まりとキャットタワーも完備 ドッグラン1日300円",
+     "src": "https://bonngrain5035.wixsite.com/bonngrain",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "月曜〜日曜:10:00〜19:00           定休日:木曜",
+     "src": "https://bonngrain5035.wixsite.com/bonngrain",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "ドッグラン有り。駐車場5台分あり。犬ホテルは小型犬から大型犬まで対応。猫ホテルは全て2段ゲージでのお泊まりとキャットタワーも完備 ドッグラン1日300円",
+     "src": "https://bonngrain5035.wixsite.com/bonngrain",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW108",
+   "name": "原田動物病院",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "行橋市",
+   "url": "https://haradaanihos.jimdofree.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "(年中無休・不定休等あり)",
+     "src": "https://haradaanihos.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "病院から西に10m先の第二駐車場(13台分)",
+     "src": "https://haradaanihos.jimdofree.com/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW109",
+   "name": "YIP-YIP",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "行橋市",
+   "url": "https://www.yip-yip-yukuhashi.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW110",
+   "name": "dog salon oneday",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "行橋市",
+   "url": "https://dogsalon-oneday.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日 5,500円(税込み)",
+     "src": "https://dogsalon-oneday.com/%e3%83%9a%e3%83%83%e3%83%88%e3%83%9b%e3%83%86%e3%83%ab/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:30~18:30",
+     "src": "https://dogsalon-oneday.com/accesc/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 日曜日",
+     "src": "https://dogsalon-oneday.com/accesc/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内に打たれた混合ワクチン、狂犬病の証明が必要になります。",
+     "src": "https://dogsalon-oneday.com/%e3%83%9a%e3%83%83%e3%83%88%e3%83%9b%e3%83%86%e3%83%ab/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW111",
+   "name": "ドッグサロン さんぽ",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "豊前市",
+   "url": "https://sanpo.heavy.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "火曜日・水曜日(定休日)にホテルをご利用の際、定休日お預り料金と致しまして、追加で1,000円頂きます。",
+     "src": "https://sanpo.heavy.jp/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00〜18:00",
+     "src": "https://sanpo.heavy.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 火曜日-水曜日",
+     "src": "https://sanpo.heavy.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場あり",
+     "src": "https://sanpo.heavy.jp/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ご利用の際には、混合ワクチンと狂犬病予防接種の一年以内の証明書を見せて頂く必要があります。",
+     "src": "https://sanpo.heavy.jp/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW112",
+   "name": "ドッグバーバーシルクハウス",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "中間市",
+   "url": "https://dog-sirukuhouse.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "木曜・第2第3水曜",
+     "src": "https://dog-sirukuhouse.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW113",
+   "name": "プルメリアドッグ",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福津市",
+   "url": "https://pet.plumeria.cc/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "あり/店舗前に4台分あります",
+     "src": "https://pet.plumeria.cc/salon-info/fukutu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ホテルでお預かりする際にはワクチン証明書を必ず、お持ち下さい。",
+     "src": "https://pet.plumeria.cc/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "キャッシュレス決済のご利用/PayPay・楽天pay",
+     "src": "https://pet.plumeria.cc/salon-info/fukutu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW114",
+   "name": "macdog(マクドッグ)",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "中間市",
+   "url": "https://macdog-nakama.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 3,300円(税込)",
+     "src": "https://macdog-nakama.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回のみワクチン証明書の提示をお願いしています。",
+     "src": "https://macdog-nakama.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW115",
+   "name": "KINDOG HOME",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "中間市",
+   "url": "https://kindoghome.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00",
+     "src": "https://kindoghome.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://kindoghome.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "噛み癖や、吠え癖のあるわんちゃん、またワクチンを接種していないわんちゃんはお断りする場合があります。",
+     "src": "https://kindoghome.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW116",
+   "name": "とまと動物病院",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "春日市",
+   "url": "https://tomato-a-h.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "1年以内のワクチン接種、1ヶ月以内のノミ・ダニの予防をお願いしております。",
+     "src": "https://tomato-a-h.com/trim_pethotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW117",
+   "name": "あけぼの動物病院",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "大野城市",
+   "url": "https://akebonoac.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場完備(9台)",
+     "src": "https://akebonoac.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "3年以内のワクチン接種証明書、または抗体価検査の結果を持参できること",
+     "src": "https://akebonoac.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW118",
+   "name": "ペットサロンNana",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "太宰府市",
+   "url": "https://salonnana.shulogi.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "送り迎え時の駐車場があります。ワンちゃんの乗り降りのスペースも十分です。",
+     "src": "https://salonnana.shulogi.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払は、現金・Paypay・QR決済・各種クレジットカードが使えます。",
+     "src": "https://salonnana.shulogi.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW119",
+   "name": "ペットケア わんにゃんプラス",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "古賀市",
+   "url": "https://w59340040.wixsite.com/home",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "一年以内の狂犬病・混合ワクチン接種証明書",
+     "src": "https://w59340040.wixsite.com/home/%E3%81%94%E5%88%A9%E7%94%A8%E3%81%AE%E5%89%8D%E3%81%AB",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW120",
+   "name": "PETSHOPJII’S",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福津市",
+   "url": "https://www.jiis.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00~19:00",
+     "src": "https://www.jiis.jp/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.jiis.jp/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW121",
+   "name": "ドッグサロン ドルチェ(福岡県 千早店/福津店)",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市東区",
+   "url": "https://dog-dolce.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "必ず、年1度のワクチンの接種をお願い致します。",
+     "src": "https://dog-dolce.com/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW122",
+   "name": "よしもと動物病院",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "宮若市",
+   "url": "https://www.yoshimoto-ah.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "クレジットカードのみ可",
+     "src": "https://www.yoshimoto-ah.com/hospital.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW123",
+   "name": "ビューティパピーペット",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "みやま市",
+   "url": "https://www.beauty-puppy2002.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW124",
+   "name": "ゆじ動物病院",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "糸島市",
+   "url": "http://www.yuji-hospital.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "(最終受付6:00)",
+     "src": "http://www.yuji-hospital.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "ゆじ動物病院の診療案内。朝は9時から12時までとお昼は3時から7時まで診察中。定休日は水曜・祝日となります。福岡前原のゆじ動物病院では土日も診療を行っておりますので、是非ご利用下さい。",
+     "src": "http://www.yuji-hospital.com/data/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW125",
+   "name": "トリミングサロン ダンドゥビ",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "糸島市",
+   "url": "https://www.dandubi.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日】年中無休",
+     "src": "https://www.dandubi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW126",
+   "name": "ドッグサロン リク&ラヴィ",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "糸島市",
+   "url": "https://riku-lavie.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00~18:00 定休日:日祝",
+     "src": "https://riku-lavie.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "9:00~18:00 定休日:日祝",
+     "src": "https://riku-lavie.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW127",
+   "name": "むく動物病院",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "那珂川市",
+   "url": "https://muku-club.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "午前 09:00~12:00(最終受付11:30)",
+     "src": "https://muku-club.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW128",
+   "name": "SaPone(サポネ)",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "那珂川市",
+   "url": "https://dog-sapone.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "前面駐車場2台ございます",
+     "src": "https://dog-sapone.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回はワクチンの証明書の掲示をお願いしています。",
+     "src": "https://dog-sapone.com/dog-hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW129",
+   "name": "唐津ケンネル",
+   "prefs": [
+    "佐賀県"
+   ],
+   "city": "唐津市",
+   "url": "https://www.pets-kennel.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "30台駐車可",
+     "src": "https://www.pets-kennel.com/shop/category/karatsu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW130",
+   "name": "中央犬猫医院",
+   "prefs": [
+    "佐賀県"
+   ],
+   "city": "鳥栖市",
+   "url": "http://chuoinuneko.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "過去1年以内に 当院 でワクチン接種をおこなっているワンちゃん・ネコちゃんに限ります。",
+     "src": "http://chuoinuneko.com/aboutmedical/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW131",
+   "name": "わんちゃんHouse てくてく",
+   "prefs": [
+    "佐賀県"
+   ],
+   "city": "武雄市",
+   "url": "https://wanteku.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW132",
+   "name": "崇福寺前どうぶつ病院",
+   "prefs": [
+    "長崎県"
+   ],
+   "city": "長崎市",
+   "url": "https://sofukuji-ah.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "2,200円/1日",
+     "src": "https://sofukuji-ah.jp/pet_hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "15:00 〜19:00 (最終受付18:30)",
+     "src": "https://sofukuji-ah.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "病院の1階に5台分の駐車スペースをご用意しております。1階と病院は直結していますので雨でも濡れずにご利用いただけます。",
+     "src": "https://sofukuji-ah.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW133",
+   "name": "島原動物病院",
+   "prefs": [
+    "長崎県"
+   ],
+   "city": "島原市",
+   "url": "https://www.shimabara-pet.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW134",
+   "name": "タルタ動物病院",
+   "prefs": [
+    "長崎県"
+   ],
+   "city": "南島原市",
+   "url": "https://www.taruta-ah.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "■ 混合ワクチンの証明書(1年以内に接種)",
+     "src": "https://www.taruta-ah.com/medicaltreatment",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW135",
+   "name": "かとう動物病院",
+   "prefs": [
+    "長崎県"
+   ],
+   "city": "諫早市",
+   "url": "https://kato-vet.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW136",
+   "name": "はらだ動物病院",
+   "prefs": [
+    "長崎県"
+   ],
+   "city": "大村市",
+   "url": "https://harada-animalhospital.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "車でお越しの方 駐車場12台対応",
+     "src": "https://harada-animalhospital.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "他院でワクチン接種をされた場合は証明書を持参してください。",
+     "src": "https://harada-animalhospital.com/pethotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW137",
+   "name": "堤動物病院",
+   "prefs": [
+    "長崎県"
+   ],
+   "city": "大村市",
+   "url": "http://tsutsumi-vet.com/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "一年以内に混合ワクチンを接種されている動物に限ります。他院にて接種されている方は、必ずその接種証明書をご提示ください。",
+     "src": "http://tsutsumi-vet.com/service.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW138",
+   "name": "対馬動物医療センター",
+   "prefs": [
+    "長崎県"
+   ],
+   "city": "対馬市",
+   "url": "https://yamaneko2010.jimdoweb.com/%E5%AF%BE%E9%A6%AC%E5%8B%95%E7%89%A9%E5%8C%BB%E7%99%82%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "1 年以内の狂犬病ワクチン接種 ※証明書(鑑札)を持参してください",
+     "src": "https://yamaneko2010.jimdoweb.com/%E5%AF%BE%E9%A6%AC%E5%8B%95%E7%89%A9%E5%8C%BB%E7%99%82%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW139",
+   "name": "竜之介動物病院",
+   "prefs": [
+    "熊本県"
+   ],
+   "city": "熊本市",
+   "url": "https://ryunosuke.co.jp/",
+   "services": "ペットホテル",
+   "vet": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場27台",
+     "src": "https://ryunosuke.co.jp/information/firstvisit/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "処置前には血液検査と健康診断、およびワクチンの接種が必要となります。",
+     "src": "https://ryunosuke.co.jp/information/firstvisit/medical-treatment/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW140",
+   "name": "ドッグサロンたね",
+   "prefs": [
+    "熊本県"
+   ],
+   "city": "八代市",
+   "url": "https://dogsalon-tane.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "日曜・祝日は定休日のため夕方のお迎えのみになります。",
+     "src": "https://dogsalon-tane.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "年1回の狂犬病・混合ワクチンの接種をお願いしています。また、春〜秋にかけてはフィラリア・ノミ・ダニ予防も大切です。我が子を守るため、他の子へ迷惑をかけないためにも御協力をお願いします。",
+     "src": "https://dogsalon-tane.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW141",
+   "name": "いぬのとこ屋さんMuu",
+   "prefs": [
+    "熊本県"
+   ],
+   "city": "球磨郡相良村",
+   "url": "https://tokoyasan-muu.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00~17:00(トリミング最終受付15:00)",
+     "src": "https://tokoyasan-muu.com/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "支払い方法は現金のみです。相良村の商品券もご利用頂けます。",
+     "src": "https://tokoyasan-muu.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHW142",
+   "name": "Pet design Grassland",
+   "prefs": [
+    "熊本県"
+   ],
+   "city": "人吉市",
+   "url": "https://pet-design-grassland.hp.peraichi.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "(受付時間9:00〜18:00)",
+     "src": "https://pet-design-grassland.hp.peraichi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "営業時間】09:00〜18:00 【店休日】水曜",
+     "src": "https://pet-design-grassland.hp.peraichi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "*初回来店時に混合ワクチンの接種証明書を確認させていただきます。",
+     "src": "https://pet-design-grassland.hp.peraichi.com/",
      "by": "site",
      "checked": "2026-11-23"
     }

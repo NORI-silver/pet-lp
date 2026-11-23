@@ -9042,9 +9042,625 @@
    "chain": "indie",
    "facts": [
     {
-     "k": "営業時間",
+     "k": "営業・受付時間",
      "v": "受付時間 8:00~21:00",
      "src": "https://animal-house-chappy.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW003",
+   "name": "ペットシッター One's Color",
+   "prefs": [
+    "島根県"
+   ],
+   "area": "浜田市",
+   "url": "https://hownylove.wixsite.com/onescolor-4/blank-6",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW004",
+   "name": "ペットシッターももはる",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "大牟田市",
+   "url": "https://momoharu2111.jimdofree.com/%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明書",
+     "src": "https://momoharu2111.jimdofree.com/%E3%81%94%E5%88%A9%E7%94%A8%E6%89%8B%E9%A0%86/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "契約時に現金でお支払いください。 (クレジットカードなどはご利用いただけません)",
+     "src": "https://momoharu2111.jimdofree.com/%E3%81%94%E5%88%A9%E7%94%A8%E6%89%8B%E9%A0%86/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW005",
+   "name": "トムトンハウス",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "古賀市",
+   "url": "http://www.tomton.jp/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "交通費無料対応エリア >>",
+     "src": "http://www.tomton.jp/service.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW006",
+   "name": "ペットケアサービスkoko松江",
+   "prefs": [
+    "島根県"
+   ],
+   "area": "松江市",
+   "url": "https://koko-matsue.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日2回(朝夕)訪問 の場合、 割引 がございます。(例 小型犬:1回2,900円 → 2回5,600円)。",
+     "src": "https://koko-matsue.com/service/petsitter/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "訪問ペット介護サービスの対応範囲",
+     "src": "https://koko-matsue.com/service/visitingcare/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは原則、前払いでお願いいたします。指定口座へお世話日の前日までにお振り込み いただきます。(お振込が難しい場合はご相談ください。)",
+     "src": "https://koko-matsue.com/service/petsitter/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW007",
+   "name": "ペットシッターハウオリ",
+   "prefs": [
+    "島根県"
+   ],
+   "area": "出雲市",
+   "url": "https://petst-hauoli.jimdofree.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW008",
+   "name": "Q+ キュート・ペットシッティング",
+   "prefs": [
+    "岡山県"
+   ],
+   "area": "岡山市",
+   "url": "https://qto-ps.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回のご訪問につき交通費300円〜が別途必要になります。",
+     "src": "https://qto-ps.com/plan/plan.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW009",
+   "name": "Pet Sitter with P",
+   "prefs": [
+    "岡山県"
+   ],
+   "area": "倉敷市",
+   "url": "https://with-p.sakura.ne.jp/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本料金 1回あたり 犬 2,500円~",
+     "src": "https://with-p.sakura.ne.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00〜21:00(年中無休)",
+     "src": "https://with-p.sakura.ne.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "ホーム with Pについて サービス ご利用の流れ 料金 対応エリア よくある質問 お問い合わせ プライバシーポリシー",
+     "src": "https://with-p.sakura.ne.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW010",
+   "name": "ねことぽの",
+   "prefs": [
+    "広島県"
+   ],
+   "area": "広島市",
+   "url": "https://neko-to-pono.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日】不定休",
+     "src": "https://neko-to-pono.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW011",
+   "name": "ドッグシッターオオクボ",
+   "prefs": [
+    "広島県"
+   ],
+   "area": "呉市",
+   "url": "http://www.dogsitterokubo0127.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "お預かりする場合は、狂犬病・ワクチン接種の証明書を提出していただきます。",
+     "src": "http://www.dogsitterokubo0127.com/blog.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW012",
+   "name": "ペットシッターわんにゃふる",
+   "prefs": [
+    "広島県"
+   ],
+   "area": "府中市",
+   "url": "https://www.wannyaful-pet-fuchu.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "再打合わせ 550円(お世話の内容などが変わり再度打合せが必要な場合、お引越しや長期間ご依頼のなかった場合など)",
+     "src": "https://www.wannyaful-pet-fuchu.com/%E6%96%99%E9%87%91%E3%83%97%E3%83%A9%E3%83%B3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日/ 不定休「お知らせ」にて掲載",
+     "src": "https://www.wannyaful-pet-fuchu.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "周辺状況により敷地内にバイクを駐車させていただけるスペースがない場合や、近隣にバイク駐輪場がない場合にはお伺いさせていただくことができない場合がございます。",
+     "src": "https://www.wannyaful-pet-fuchu.com/%E5%BA%97%E8%88%97%E6%83%85%E5%A0%B1/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア/ 府中市とその 周辺地域",
+     "src": "https://www.wannyaful-pet-fuchu.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW013",
+   "name": "ペットシッター・クローバー",
+   "prefs": [
+    "山口県"
+   ],
+   "area": "宇部市",
+   "url": "https://pet-clover.sakura.ne.jp/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "A. 申し訳ございませんが、当店では現金のみのお取扱いとさせていただいております。",
+     "src": "https://pet-clover.sakura.ne.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW014",
+   "name": "Merry Life",
+   "prefs": [
+    "徳島県"
+   ],
+   "area": "阿南市",
+   "url": "https://merrylife-tokushima.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "室内でのお世話 2,750 円",
+     "src": "https://merrylife-tokushima.com/merrypetsitting",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://merrylife-tokushima.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW015",
+   "name": "ペットケアステーションLoVe(ロべ)",
+   "prefs": [
+    "香川県"
+   ],
+   "area": "高松市",
+   "url": "https://petcarestation-love.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00~18:00",
+     "src": "https://petcarestation-love.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "9:00~18:00(時間外受付あり) 定休日:不定休",
+     "src": "https://petcarestation-love.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW016",
+   "name": "AMO PETS",
+   "prefs": [
+    "香川県"
+   ],
+   "area": "坂出市",
+   "url": "https://amopets-2016.wixsite.com/amopets",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "狂犬病ワクチン・混合ワクチンの接種、必要な予防薬の投与をお願いします。(未接種の場合にお断りすることがございます。)",
+     "src": "https://amopets-2016.wixsite.com/amopets/%E3%81%8A%E4%B8%96%E8%A9%B1%E4%BB%A3%E8%A1%8C%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW017",
+   "name": "動物の訪問看護・シッター peace",
+   "prefs": [
+    "愛媛県"
+   ],
+   "area": "松山市",
+   "url": "https://vetnurse-peace.crayonsite.info/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "訪問料 1400円",
+     "src": "https://vetnurse-peace.crayonsite.info/p/10/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00~20:00",
+     "src": "https://vetnurse-peace.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お見積り,ご契約,鍵預かり,ご精算(カウンセリング料金/現金のみ)となります。",
+     "src": "https://vetnurse-peace.crayonsite.info/p/10/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW018",
+   "name": "ペットサービスあいはぶ",
+   "prefs": [
+    "愛媛県"
+   ],
+   "area": "松山市",
+   "url": "https://petservice-ihave.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "営業時間】月曜日~日曜日7:00~19:00   不定休",
+     "src": "https://petservice-ihave.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW019",
+   "name": "ジルペットサービス",
+   "prefs": [
+    "愛媛県"
+   ],
+   "area": "今治市",
+   "url": "https://www.zilpetservice.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "8:00~20:00(不定休)",
+     "src": "https://www.zilpetservice.com/about-2",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "打ち合わせまでに狂犬病ワクチン・混合ワクチンの接種証明書(1年以内)、かかりつけの動物病院の診察券、印鑑、シッティング料金のご用意をお願いいたします。",
+     "src": "https://www.zilpetservice.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "サービス対応エリア",
+     "src": "https://www.zilpetservice.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW020",
+   "name": "キャットシッターねこの木",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "福岡市城南区",
+   "url": "https://nekonoki.net/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "*シッティングには、車でお伺いします。駐車場のご用意がなく、近隣(徒歩10分以内)にコインパーキングなど駐車可能な場所がない場合は、ご利用をお断りすることがあります。",
+     "src": "https://nekonoki.net/fee/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW021",
+   "name": "合同会社しっぽ",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "北九州市小倉北区",
+   "url": "https://www.shippo21.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "• 一般ペットシッター(犬・猫・小動物)オーダーメイド制 1時間 4,500円+交通費(詳細\u0000はご相談下さい)",
+     "src": "https://www.shippo21.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "ご予約受付時間8:00〜21:00",
+     "src": "https://www.shippo21.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW022",
+   "name": "猫専門にゃっトシッター",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "久留米市",
+   "url": "https://nyattositter.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW023",
+   "name": "ペットシッターれおん",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "遠賀郡芦屋町",
+   "url": "https://www.leon-2010.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "年末年始、ゴールデンウィーク、お盆は基本料金に550円プラスとなります。",
+     "src": "https://www.leon-2010.com/service.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 8:00~18:00",
+     "src": "https://www.leon-2010.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW024",
+   "name": "キャットシッター猫彩葉 -ねこいろ-",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "春日市",
+   "url": "https://nekoiro-catsitter.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回訪問につき500円",
+     "src": "https://nekoiro-catsitter.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "ご自宅敷地内に駐車(平置き)させていただく場合は、コインパーキング代はいただきません。",
+     "src": "https://nekoiro-catsitter.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "シッティング対応エリア",
+     "src": "https://nekoiro-catsitter.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW025",
+   "name": "ペットシッターしまみけ堂",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "糟屋郡宇美町",
+   "url": "https://shimamike-do.jimdofree.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "出張範囲は、福岡市・糟屋郡・大野城市・太宰府市 などです。",
+     "src": "https://shimamike-do.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは現金のみです",
+     "src": "https://shimamike-do.jimdofree.com/%E3%81%94%E5%88%A9%E7%94%A8%E6%96%99%E9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW026",
+   "name": "ペットシッターmofl",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "古賀市",
+   "url": "https://mofl.main.jp/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "対応エリア🚗",
+     "src": "https://mofl.main.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW027",
+   "name": "わんにゃんシッターニココ",
+   "prefs": [
+    "佐賀県"
+   ],
+   "area": "小城市",
+   "url": "https://nicoco-sitter.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 | 月曜午前中・金曜午前",
+     "src": "https://nicoco-sitter.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "AREA 対応エリア",
+     "src": "https://nicoco-sitter.com/about/",
      "by": "site",
      "checked": "2026-11-23"
     }

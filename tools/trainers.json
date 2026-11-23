@@ -8216,8 +8216,8 @@
    "src": "http://zweistern.net/",
    "facts": [
     {
-     "k": "ワクチン",
-     "v": "※毎年狂犬病ワクチンと混合ワクチン接種済みのワンちゃんに限ります。(ワクチン未接種のワンちゃんはお預かりできません)",
+     "k": "用意するもの",
+     "v": "毎年狂犬病ワクチンと混合ワクチン接種済みのワンちゃんに限ります。(ワクチン未接種のワンちゃんはお預かりできません)",
      "src": "http://zweistern.net/hotel/",
      "by": "site",
      "checked": "2026-11-23"
@@ -8238,7 +8238,7 @@
    "src": "https://joint-us.jp/",
    "facts": [
     {
-     "k": "営業時間",
+     "k": "営業・受付時間",
      "v": "営業時間 10:00~19:00",
      "src": "https://joint-us.jp/aboutus/",
      "by": "site",
@@ -8303,7 +8303,7 @@
    "src": "https://rikka-dogschool.com/",
    "facts": [
     {
-     "k": "営業時間",
+     "k": "営業・受付時間",
      "v": "受付時間 9:00〜18:00(不定休)",
      "src": "https://rikka-dogschool.com/",
      "by": "site",
@@ -8330,6 +8330,677 @@
    "services": "しつけ・訓練",
    "addr": "福岡県福岡市早良区西入部741番地の1",
    "src": "http://www.ds-ono.com/",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW009",
+   "name": "ワン's パートナー",
+   "prefs": [
+    "鳥取県"
+   ],
+   "city": "倉吉市",
+   "url": "https://www.wans-partner.com/",
+   "services": "しつけ・訓練",
+   "addr": "鳥取県鳥取県倉吉市",
+   "src": "https://www.wans-partner.com/",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防接種・混合ワクチン接種後は、3日以上空けてからのご利用をお願い致します。",
+     "src": "https://www.wans-partner.com/terms",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW010",
+   "name": "邑南ドッグスクール",
+   "prefs": [
+    "島根県"
+   ],
+   "city": "大田市",
+   "url": "https://ohnandogschool.wixsite.com/mysite",
+   "services": "しつけ・訓練",
+   "addr": "島根県島根県大田市",
+   "src": "https://ohnandogschool.wixsite.com/mysite",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "2022年1月より、トレーニング料金を3,500円~とさせていただきます。",
+     "src": "https://ohnandogschool.wixsite.com/mysite/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW011",
+   "name": "Animalwithalways",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "総社市",
+   "url": "https://animalwithalways720.wixsite.com/animalwithalways/blank-3",
+   "services": "しつけ・訓練",
+   "addr": "岡山県〒719-1114岡山県総社市金井戸336-1",
+   "src": "https://animalwithalways720.wixsite.com/animalwithalways/blank-3",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW012",
+   "name": "ドッグスクールダンケ",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市",
+   "url": "https://danke2019.jimdofree.com/",
+   "services": "しつけ・訓練",
+   "addr": "広島県広島県広島市",
+   "src": "https://danke2019.jimdofree.com/",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW013",
+   "name": "ドッグトレーニングスクールPIA",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "呉市",
+   "url": "http://dtspia.s323.xrea.com/",
+   "services": "しつけ・訓練",
+   "addr": "広島県広島県呉市",
+   "src": "http://dtspia.s323.xrea.com/",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防・混合ワクチン・ノミダニ予防をしている事が条件となりますので、証明書をご提示下さい。",
+     "src": "http://dtspia.s323.xrea.com/info.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW014",
+   "name": "ドッグスクールひまわり",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "福山市",
+   "url": "https://ds-hima.com/",
+   "services": "しつけ・訓練",
+   "addr": "広島県〒720-1143広島県福山市駅家町下山守42-1",
+   "src": "https://ds-hima.com/",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW015",
+   "name": "ドッグスクールnicole",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "福山市",
+   "url": "https://www.dogschoolnicole.com/",
+   "services": "しつけ・訓練",
+   "addr": "広島県広島県福山市",
+   "src": "https://www.dogschoolnicole.com/",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW016",
+   "name": "BIG SMILE DOG TRAINING",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "廿日市",
+   "url": "http://www.bigsmiledogtraining.com/",
+   "services": "しつけ・訓練",
+   "addr": "広島県〒738-0026広島県廿日市市上平良1797-2",
+   "src": "http://www.bigsmiledogtraining.com/",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回3,000円",
+     "src": "http://www.bigsmiledogtraining.com/dogtraining.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休(応相談)",
+     "src": "http://www.bigsmiledogtraining.com/Information.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "事前に混合ワクチン証明書及び狂犬病ワクチン証明書をLINEもしくはメールにてご提示ください。",
+     "src": "http://www.bigsmiledogtraining.com/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみ対応。",
+     "src": "http://www.bigsmiledogtraining.com/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW017",
+   "name": "Dog School Grass",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "下関市",
+   "url": "http://dog-salon-grass.com/",
+   "services": "しつけ・訓練",
+   "addr": "山口県〒751-0864山口県下関市伊倉町3-3-30",
+   "src": "http://dog-salon-grass.com/",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00 ~ 18:00",
+     "src": "http://dog-salon-grass.com/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "(定休日)不定休・完全予約制",
+     "src": "http://dog-salon-grass.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "一 年以内の 混合ワクチン ・ 狂犬病ワクチン 接種(証明書確認)",
+     "src": "http://dog-salon-grass.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW018",
+   "name": "ドッグライフサポートセンター",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "防府市",
+   "url": "https://www.dlsc-relist.com/",
+   "services": "しつけ・訓練",
+   "addr": "山口県所在地:山口県防府市大字江泊1745-4",
+   "src": "https://www.dlsc-relist.com/",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1,111円(月額)",
+     "src": "https://www.dlsc-relist.com/service/fee/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00(定休日:毎週金曜日)",
+     "src": "https://www.dlsc-relist.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "10:00〜19:00(定休日:毎週金曜日)",
+     "src": "https://www.dlsc-relist.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW019",
+   "name": "ドッグアドベンチャー",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "高松市",
+   "url": "https://www.dogschool-murao.com/",
+   "services": "しつけ・訓練",
+   "addr": "香川県香川県高松市",
+   "src": "https://www.dogschool-murao.com/",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "12月生募集( 3回)12月6.13.20日(日)9:30~(約50分) 金額は3回9900円",
+     "src": "https://www.dogschool-murao.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種済みであること(接種後1週間立っていること)",
+     "src": "https://www.dogschool-murao.com/training/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW020",
+   "name": "丸亀警察犬訓練所",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "丸亀市",
+   "url": "https://marugamedog.com/",
+   "services": "しつけ・訓練",
+   "addr": "香川県香川県丸亀市",
+   "src": "https://marugamedog.com/",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "大型犬:月額 77,000円 (税込)",
+     "src": "https://marugamedog.com/training.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "2019年10月より働き方改革の一環として、毎週水曜日を定休日とさせて頂きます。",
+     "src": "https://marugamedog.com/training.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "入所時に証明書の確認をさせていただきます。年に一度の混合ワクチン接種をして下さい。",
+     "src": "https://marugamedog.com/training.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW021",
+   "name": "犬の七宝荘",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "観音寺市",
+   "url": "http://www.shipposow.com/",
+   "services": "しつけ・訓練",
+   "addr": "香川県香川県観音寺市",
+   "src": "http://www.shipposow.com/",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW022",
+   "name": "Dog for Life Japan",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "松山市",
+   "url": "https://dogforlife.org/",
+   "services": "しつけ・訓練",
+   "addr": "愛媛県〒790-0914愛媛県松山市三町3丁目3番26号",
+   "src": "https://dogforlife.org/",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間9:00 - 17:00",
+     "src": "https://dogforlife.org/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW023",
+   "name": "北九州市八幡警察犬訓練所",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "北九州市若松区",
+   "url": "https://www.hachidog.com/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県〒808-0123福岡県北九州市若松区大字有毛728-8",
+   "src": "https://www.hachidog.com/",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "月額  :  66,000円",
+     "src": "https://www.hachidog.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場完備 初心者歓迎 予約不要",
+     "src": "https://www.hachidog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回ご利用時はワクチン・狂犬病の証明書を持参ください。",
+     "src": "https://www.hachidog.com/service/shitsuke/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW024",
+   "name": "ドッグズライフサポート",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "北九州市小倉南区",
+   "url": "https://www.dogslifesupport.jp/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県〒803-0187福岡県北九州市小倉南区母原内河野924",
+   "src": "https://www.dogslifesupport.jp/",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "2ヶ月コース:90,000円~/月",
+     "src": "https://www.dogslifesupport.jp/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW025",
+   "name": "ドッグスクールSOL",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "北九州市小倉南区",
+   "url": "https://www.dogschool-sol.com/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県〒803-0261福岡県北九州市小倉南区",
+   "src": "https://www.dogschool-sol.com/",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "CLOSE]不定休",
+     "src": "https://www.dogschool-sol.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種の証明書",
+     "src": "https://www.dogschool-sol.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW026",
+   "name": "WOODY DOG SCHOOL",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "北九州市八幡西区",
+   "url": "https://4111.dog/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県〒807-0863福岡県北九州市八幡西区大膳2-18-14",
+   "src": "https://4111.dog/",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "40,000円~/月",
+     "src": "https://4111.dog/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW027",
+   "name": "吉武ドッグトレーニングスクール",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "八女郡広川町",
+   "url": "https://www.yoshitake-dog.com/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県〒834-0122福岡県八女郡広川町一条1402−1",
+   "src": "https://www.yoshitake-dog.com/",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1レッスン 3,500円 (約1時間)",
+     "src": "https://www.yoshitake-dog.com/menu.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病の予防接種は生後 90 日以降、30 日以内に接種の義務があります。またそれ以前に混合ワクチンの接種が必要です。ワクチンは生後 60 日に 1 回目を、生後 910 日に 2 回目を接種するのが一般的です。",
+     "src": "https://www.yoshitake-dog.com/qa.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW028",
+   "name": "直方ドッグスクール",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "直方市",
+   "url": "https://www.nogata-dogschool.jp/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県福岡県直方市",
+   "src": "https://www.nogata-dogschool.jp/",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW029",
+   "name": "アンディシマダドッグスクール",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "直方市",
+   "url": "https://www.andyshimada.com/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県〒822-0031福岡県直方市植木3070",
+   "src": "https://www.andyshimada.com/",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "週3コース 1ヶ月 45,000円",
+     "src": "https://www.andyshimada.com/price_list.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 / 不定休",
+     "src": "https://www.andyshimada.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場 / 有り",
+     "src": "https://www.andyshimada.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW030",
+   "name": "犬の学校白川警察犬訓練所",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "飯塚市",
+   "url": "https://www.inunogakkou-shirakawakunrensyo.com/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県福岡県飯塚市",
+   "src": "https://www.inunogakkou-shirakawakunrensyo.com/",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "出張対応地域:北九州地区・筑豊地区",
+     "src": "https://www.inunogakkou-shirakawakunrensyo.com/course",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW031",
+   "name": "マーブルテイルわっか家",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福津市",
+   "url": "https://fullfulldoggo.crayonsite.com/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県福岡県福津市",
+   "src": "https://fullfulldoggo.crayonsite.com/",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "無料駐車場完備",
+     "src": "https://fullfulldoggo.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW032",
+   "name": "ドッグスクール・ミッキー",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "糸島市",
+   "url": "http://ds-mickey.com/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県福岡県糸島市",
+   "src": "http://ds-mickey.com/",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "保育園・トレーニングを、毎月ご利用いただいている場合は、ホテル1泊料金を500円割引きさせていただきます。",
+     "src": "http://ds-mickey.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW033",
+   "name": "Top Dog",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市西区",
+   "url": "https://www.topdog.jp/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県〒819-0163福岡市西区今宿上ノ原751-1",
+   "src": "https://www.topdog.jp/",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "火曜日(不定休あり)",
+     "src": "https://www.topdog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW034",
+   "name": "せんだ警察犬・家庭犬訓練所",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "那珂川市",
+   "url": "https://senda.official.ec/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県〒811-1241福岡県那珂川市大字後野937-6",
+   "src": "https://senda.official.ec/",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "水曜日定休",
+     "src": "https://senda.official.ec/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "当ホテルをご利用いただくワンちゃんには、1年以内に狂犬病の予防接種・混合ワクチン接種の2つを受けている必要があります。証明書などは必要有りませんが、必ず接種を済ませてお預けください。",
+     "src": "https://senda.official.ec/items/85208796",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW035",
+   "name": "長崎ウィズワンスポーツクラブ",
+   "prefs": [
+    "長崎県"
+   ],
+   "city": "長崎市",
+   "url": "https://www.ngsk-wwsc.com/",
+   "services": "しつけ・訓練",
+   "addr": "長崎県〒852-8142長崎県長崎市三ツ山町193-1-3",
+   "src": "https://www.ngsk-wwsc.com/",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW036",
+   "name": "ドッグスクール野岳",
+   "prefs": [
+    "長崎県"
+   ],
+   "city": "大村市",
+   "url": "https://dogschool-nodake.com/",
+   "services": "しつけ・訓練",
+   "addr": "長崎県長崎県大村市",
+   "src": "https://dogschool-nodake.com/",
    "facts": [],
    "checked": "2026-11-23"
   }

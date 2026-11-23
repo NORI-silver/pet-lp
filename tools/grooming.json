@@ -3545,6 +3545,34 @@
      "checked": "2026-11-22"
     }
    ]
+  },
+  {
+   "id": "GW001",
+   "name": "クープードッグシャンプーサービス福岡",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://www.coopoo-fukuoka.jp/",
+   "area": "福岡市",
+   "services": "出張・訪問のシャンプー・トリミング",
+   "city": "福岡市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "営業時間】9:00〜18:00【定休日】不定休",
+     "src": "https://www.coopoo-fukuoka.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "出張エリアについて",
+     "src": "https://www.coopoo-fukuoka.jp/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }
