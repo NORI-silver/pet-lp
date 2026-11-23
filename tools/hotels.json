@@ -14764,6 +14764,1272 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "PH-HT277",
+   "name": "POCO PERRO 宮の森",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://poco-perro.com/",
+   "city": "札幌市",
+   "services": "ペットホテル、トリミング",
+   "addr": "北海道札幌市中央区宮の森4条6丁目2-16宮の森パークハイム1F",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-HT278",
+   "name": "株式会社ノルド動物病院",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "http://nord-ah.com/%E3%83%8E%E3%83%AB%E3%83%89%E5%8B%95%E7%89%A9%E7%97%85%E9%99%A2",
+   "city": "札幌市",
+   "services": "ペットホテル、動物病院",
+   "addr": "北海道札幌市清田区北野3条3丁目1-1",
+   "cat": true,
+   "vet": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場 4台完備",
+     "src": "http://nord-ah.com/%E3%83%8E%E3%83%AB%E3%83%89%E5%8B%95%E7%89%A9%E7%97%85%E9%99%A2/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT279",
+   "name": "dog salon Lelien",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://lelien111.com/priceimg.html",
+   "city": "札幌市",
+   "services": "ペットホテル、トリミング",
+   "addr": "北海道札幌市中央区北10条西15丁目1-6クリーンリバー桑園駅前1F",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-HT280",
+   "name": "合同会社ひろた動物病院",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://hirotaah.com/",
+   "city": "札幌市",
+   "services": "ペットホテル、動物病院",
+   "addr": "北海道札幌市白石区北郷5条8丁目10-1",
+   "cat": true,
+   "vet": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シングル 5部屋（1泊3,300円プラス散歩500/回）",
+     "src": "https://hirotaah.com/hospitalinfomation.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3300
+    },
+    {
+     "k": "料金",
+     "v": "ダブルの場合は1泊5,500円で大きさによって散歩料金は変わります",
+     "src": "https://hirotaah.com/hospitalinfomation.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 5500
+    },
+    {
+     "k": "料金",
+     "v": "ダブル 3部屋1泊5,500円",
+     "src": "https://hirotaah.com/hospitalinfomation.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 5500
+    },
+    {
+     "k": "駐車場",
+     "v": "◆◇◆駐車場有（３台）◆◇◆",
+     "src": "https://hirotaah.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは郵便局振込、又は窓口の支払いとなります。",
+     "src": "https://hirotaah.com/hospitalinfomation.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT281",
+   "name": "バウワールド",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.bow-world.info/",
+   "city": "札幌市",
+   "services": "ペットホテル、トリミング",
+   "addr": "北海道札幌市豊平区平岸4条8丁目6-1",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00～18:00",
+     "src": "https://www.bow-world.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT282",
+   "name": "ペットホテル らんらん",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://pethotelranran.com/",
+   "city": "雨竜郡秩父別町",
+   "services": "ペットホテル",
+   "addr": "北海道雨竜郡秩父別町1537-7",
+   "pickup": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 8:00〜19:00",
+     "src": "https://pethotelranran.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎・出張料金",
+     "src": "https://pethotelranran.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT283",
+   "name": "ペットホテルMORI-ペットの託児所-",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://mori.pet/t.htm",
+   "city": "江別市",
+   "services": "ペットホテル",
+   "addr": "北海道江別市野幌住吉町23-8",
+   "pickup": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "送迎",
+     "v": "天然芝ドッグラン、お散歩、送迎、割引有。見学可要予約。",
+     "src": "https://mori.pet/t.htm",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT284",
+   "name": "ペットサロンpegada",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.pegada.jp/",
+   "city": "北広島市",
+   "services": "ペットホテル、トリミング",
+   "addr": "北海道北広島市大曲末広5丁目10番地16",
+   "pickup": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 ９：００～１８：００",
+     "src": "https://www.pegada.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 毎週木曜日・第3水曜日",
+     "src": "https://www.pegada.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "北広島市・近郊、無料送迎もやっております！",
+     "src": "https://www.pegada.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT285",
+   "name": "Timのいえ",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://timnoie.com/",
+   "city": "石狩市",
+   "services": "ペットホテル、トリミング、動物病院",
+   "addr": "北海道石狩市花川南1条2丁目6番地",
+   "pickup": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "送迎",
+     "v": "・料金表 ・使用シャンプー ・送迎費",
+     "src": "https://timnoie.com/?page_id=2280",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT286",
+   "name": "マイティードッグ",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://mighty-dog23.com/",
+   "city": "千歳市",
+   "services": "ペットホテル、トリミング、一時預かり",
+   "addr": "北海道千歳市富丘2丁目11-7",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "・ホテル中歯磨き：１回２２０円（税込）",
+     "src": "https://mighty-dog23.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 220
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10:00〜18:00",
+     "src": "https://mighty-dog23.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "※ 初めてのご利用の際は、狂犬病・混合ワクチン接種証明書のご提示をお願いいたします。",
+     "src": "https://mighty-dog23.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT287",
+   "name": "Adorable Angel ドッグラン",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.adorable-angel.com/menu_dog_run.html",
+   "city": "北広島市",
+   "services": "ペットホテル、トリミング",
+   "addr": "北海道北広島市島松434番地11号",
+   "large": true,
+   "large_basis": "文",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 4,400 円",
+     "src": "https://www.adorable-angel.com/menu_dog_hotel.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 4400
+    },
+    {
+     "k": "料金",
+     "v": "1泊 5,000 円",
+     "src": "https://www.adorable-angel.com/menu_dog_hotel.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 5000
+    },
+    {
+     "k": "用意するもの",
+     "v": "◆ 狂犬病・混合ワクチンの接種証明書が必要です（1年以内）",
+     "src": "https://www.adorable-angel.com/menu_dog_run.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT288",
+   "name": "knit",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://dogsalon-knit.com/",
+   "city": "小樽市",
+   "services": "ペットホテル、トリミング",
+   "addr": "北海道小樽市桜2丁目36-23",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-HT289",
+   "name": "ドッグサロン Mahalo",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://dogsalonmahalo.amebaownd.com/pages/356380/menu",
+   "city": "小樽市",
+   "services": "ペットホテル、トリミング、一時預かり",
+   "addr": "北海道小樽市銭函3丁目185-51Ｆ左",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-HT290",
+   "name": "犬の美容室 Lovers Dog",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://loversdog.jp/archives/2696",
+   "city": "室蘭市",
+   "services": "ペットホテル、トリミング",
+   "addr": "北海道室蘭市輪西町2丁目5番1号",
+   "cat": true,
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-HT291",
+   "name": "ドッグコミュニティ Going Merry",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://going-merry.jp/",
+   "city": "旭川市",
+   "services": "ペットホテル、トリミング",
+   "addr": "北海道旭川市西神楽1線5号67-46",
+   "pickup": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "3,735円(宿泊料金) x 4日 + 580円(送迎料) x 2回 = 16,100円",
+     "src": "https://going-merry.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3735
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10:00～18:00",
+     "src": "https://going-merry.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場 5台",
+     "src": "https://going-merry.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "旭川空港までの送迎サービスあり",
+     "src": "https://going-merry.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT292",
+   "name": "わんわんサロンMIMI",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://mimisalon7716.com/",
+   "city": "旭川市",
+   "services": "ペットホテル、トリミング",
+   "addr": "北海道旭川市神楽岡6条7丁目5-4",
+   "pickup": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00-18:00",
+     "src": "https://mimisalon7716.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場あり",
+     "src": "https://mimisalon7716.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎オプションもあります",
+     "src": "https://mimisalon7716.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT293",
+   "name": "DOG SALON MOFF",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://dogsalon-moff.com/menu/",
+   "city": "名寄市",
+   "services": "ペットホテル、トリミング、一時預かり",
+   "addr": "北海道名寄市西3条南6丁目16-11F",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "店舗前駐車場あり（３台）",
+     "src": "https://dogsalon-moff.com/shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT294",
+   "name": "北見熱帯魚センター",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "http://relax-kitami.com/",
+   "city": "北見市",
+   "services": "ペットホテル、トリミング",
+   "addr": "北海道北見市北4条西6丁目10番地",
+   "cat": true,
+   "pickup": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間／10：00～18：00",
+     "src": "http://relax-kitami.com/shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日／火曜日",
+     "src": "http://relax-kitami.com/shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "北見市内なら送迎（有料）もいたします。",
+     "src": "http://relax-kitami.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT295",
+   "name": "Fish and beetle World",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://naobest123.wixsite.com/website",
+   "city": "網走市",
+   "services": "ペットホテル、一時預かり",
+   "addr": "北海道網走市卯原内5番地の91",
+   "cat": true,
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-HT296",
+   "name": "アース動物病院",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.earth-pet.jp/",
+   "city": "北見市",
+   "services": "ペットホテル、トリミング、動物病院",
+   "addr": "北海道北見市北進町4丁目3番43号",
+   "cat": true,
+   "vet": true,
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-HT297",
+   "name": "ペットサロンシュシュ",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.chouchou-tvc.jp/",
+   "city": "北見市",
+   "services": "ペットホテル、トリミング",
+   "addr": "北海道北見市とん田西町218番地25",
+   "cat": true,
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-HT298",
+   "name": "ペットサロンWave",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://obihiro-petsalon-wave.jimdofree.com/",
+   "city": "帯広市",
+   "services": "ペットホテル、トリミング、一時預かり",
+   "addr": "北海道帯広市西１３条南１６丁目１番地４",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 AM10:00-19:00(LO18:00)",
+     "src": "https://obihiro-petsalon-wave.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 火曜日(不定休も有)",
+     "src": "https://obihiro-petsalon-wave.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場 店舗裏(一軒挟んだ裏側)",
+     "src": "https://obihiro-petsalon-wave.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT299",
+   "name": "株式会社 すずらん動物病院",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://suzurann-ah.com/",
+   "city": "河東郡音更町",
+   "services": "ペットホテル、トリミング、動物病院",
+   "addr": "北海道河東郡音更町木野大通東13-4-4",
+   "large": true,
+   "large_basis": "文",
+   "cat": true,
+   "vet": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "※病院の診察時間外のペットホテルのご対応については、お時間の指定と追加料金1,100円がかかります。",
+     "src": "https://suzurann-ah.com/pet-hotel/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 1100
+    }
+   ]
+  },
+  {
+   "id": "PH-HT300",
+   "name": "ジュミズワールド",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "http://www.jumisworld.com/info.html",
+   "city": "仙台市",
+   "services": "ペットホテル、トリミング、一時預かり",
+   "addr": "宮城県仙台市若林区上飯田二丁目1-1",
+   "cat": true,
+   "pickup": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間/9:30～18:30",
+     "src": "http://www.jumisworld.com/info.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日/水曜日",
+     "src": "http://www.jumisworld.com/info.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎システム",
+     "src": "http://www.jumisworld.com/trimming.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT301",
+   "name": "ドッグサロンRubbyRed",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://rubby-red.com/",
+   "city": "仙台市",
+   "services": "ペットホテル、トリミング、一時預かり、動物病院",
+   "addr": "宮城県仙台市宮城野区西宮城野1-10",
+   "large": true,
+   "large_basis": "文",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "営業時間外は、朝は9:00からの1時間、夜は19:30までの1時間対応可能ですが、ホテル料金に別途1時間2,200円掛かります。",
+     "src": "https://rubby-red.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2200
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：10:00～18:00",
+     "src": "https://rubby-red.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT302",
+   "name": "Dog station D'z(ドッグ ステーション ディー ズ)",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "http://dogstation-dz.jp/shop/index.html",
+   "city": "仙台市",
+   "services": "ペットホテル、トリミング、一時預かり",
+   "addr": "宮城県仙台市青葉区上愛子字街道44-1",
+   "cat": true,
+   "pickup": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "2,100円×泊数",
+     "src": "http://dogstation-dz.jp/service/hotel/index.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2100
+    },
+    {
+     "k": "料金",
+     "v": "3,150円×泊数",
+     "src": "http://dogstation-dz.jp/service/hotel/index.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3150
+    },
+    {
+     "k": "料金",
+     "v": "5,250円×泊数",
+     "src": "http://dogstation-dz.jp/service/hotel/index.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 5250
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：AM10:00〜PM7:00",
+     "src": "http://dogstation-dz.jp/shop/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "ホテル／一時預かりの料金表です。お預けになる際、必要な物がございます。よくご確認下さい。また、ご予約優先となっておりますので、あらかじめご連絡下さい。送迎もご利用可能です。",
+     "src": "http://dogstation-dz.jp/service/hotel/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT303",
+   "name": "ワンダーランド",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://www.wanderland-sendai.com/",
+   "city": "仙台市",
+   "services": "ペットホテル、トリミング、一時預かり、動物病院",
+   "addr": "宮城県仙台市若林区南材木町85",
+   "large": true,
+   "large_basis": "文",
+   "pickup": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "＊日中お預かりのみの場合、お散歩代行は1回550円別途頂戴致しております。",
+     "src": "https://www.wanderland-sendai.com/hotel/index.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 550
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間は７時～１９時までとなっております。その時間帯でお預入れ＆お迎えをお願い致します。",
+     "src": "https://www.wanderland-sendai.com/new_customer/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車スペースが無い場合等には、停車場所までお連れ頂く場合もございますので予めご了承下さい。",
+     "src": "https://www.wanderland-sendai.com/new_customer/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎サービス",
+     "src": "https://www.wanderland-sendai.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT304",
+   "name": "La petite patte",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://lapetitepatte.jp/",
+   "city": "仙台市",
+   "services": "ペットホテル、トリミング",
+   "addr": "宮城県仙台市若林区中倉三丁目10-5",
+   "large": true,
+   "large_basis": "文",
+   "pickup": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場がございますので、お車でお越し頂けます。",
+     "src": "https://lapetitepatte.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "※当店はトリミング専門ですので、ペットホテルと送迎は行っておりません。",
+     "src": "https://lapetitepatte.jp/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT305",
+   "name": "なちゅるむ natu-room",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://natu-room.com/",
+   "city": "仙台市",
+   "services": "ペットホテル",
+   "addr": "宮城県仙台市太白区秋保町湯向5-11",
+   "cat": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10：00～19：00",
+     "src": "https://natu-room.com/?page_id=32",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 なし ※時間外対応可能（応相談）",
+     "src": "https://natu-room.com/?page_id=32",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT306",
+   "name": "キャットシッター福猫本舗",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://catsitter.fukunekohonpo.com/",
+   "city": "仙台市",
+   "services": "ペットホテル、動物病院",
+   "addr": "宮城県仙台市宮城野区銀杏町7-39",
+   "cat": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "大変恐縮ではございますが、有料駐車場を利用しなければならない場合、一律400円ご負担いただけますよう、お願い致します。",
+     "src": "https://catsitter.fukunekohonpo.com/sitter_ryoukin.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT307",
+   "name": "ビバペッツ仙台中山店",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://dcdogcollection.com/store/sendai-nakayama/",
+   "city": "仙台市",
+   "services": "ペットホテル、トリミング",
+   "addr": "宮城県仙台市泉区実沢字中山南31-8スーパービバホーム仙台中山店内",
+   "cat": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10：00～19：00",
+     "src": "https://dcdogcollection.com/stores/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT308",
+   "name": "猫と犬の美容室 Salon de Noel",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://www.salon-de-noel.com/",
+   "city": "仙台市",
+   "services": "ペットホテル、トリミング",
+   "addr": "宮城県仙台市宮城野区鉄砲町東1-5Peaceful201",
+   "cat": true,
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-HT309",
+   "name": "ドッグサロン&ホテル Ragdoll",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://ragdoll.salon-de-one.com/booking/hotel/yoyaku",
+   "city": "仙台市",
+   "services": "ペットホテル、トリミング",
+   "addr": "宮城県仙台市太白区長町南三丁目1-32126BL",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-HT310",
+   "name": "わんにゃんらんど Buddy (バ ディ)",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://onenyan-buddy.jimdofree.com/",
+   "city": "須賀川市",
+   "services": "ペットホテル、トリミング",
+   "addr": "福島県須賀川市森宿字関表３７－１",
+   "pickup": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "●小型犬：1泊2,500円(税別)～",
+     "src": "https://onenyan-buddy.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2500
+    },
+    {
+     "k": "料金",
+     "v": "●中型犬：1泊3,500円(税別)～",
+     "src": "https://onenyan-buddy.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3500
+    },
+    {
+     "k": "料金",
+     "v": "●大型犬：1泊4,500円(税別)～",
+     "src": "https://onenyan-buddy.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 4500
+    },
+    {
+     "k": "送迎",
+     "v": "ペット送迎(有料) - onenyan-buddy ページ！",
+     "src": "https://onenyan-buddy.jimdofree.com/%E3%81%9D%E3%81%AE%E4%BB%96%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT311",
+   "name": "ドッグサロン COCO",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://coco-dog.com/trimming/",
+   "city": "岩瀬郡鏡石町",
+   "services": "ペットホテル、トリミング、動物病院",
+   "addr": "福島県岩瀬郡鏡石町本町９８番１",
+   "large": true,
+   "large_basis": "文",
+   "cat": true,
+   "pickup": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:30 ～ 18:00 年中無休",
+     "src": "https://coco-dog.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎サービス",
+     "src": "https://coco-dog.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT312",
+   "name": "ペットサロン アンジュ",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://petsalon-ange.jp/sitemap/",
+   "city": "相馬市",
+   "services": "ペットホテル、トリミング、一時預かり",
+   "addr": "福島県相馬市日下石字高根沢５５９－１",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-HT313",
+   "name": "ティンカーベル・JP",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://www.t-bell.jp/",
+   "city": "会津若松市",
+   "services": "ペットホテル、トリミング、動物病院",
+   "addr": "福島県会津若松市行仁町7-22",
+   "cat": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間】 9:00～18:00【定休日】 毎週木曜日",
+     "src": "https://www.t-bell.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "【3】ペットホテルのご利用料金は各種クレジットカード、paypayでのお支払いが可能です。",
+     "src": "https://www.t-bell.jp/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT314",
+   "name": "ペットサロン chou chou",
+   "prefs": [
+    "山形県"
+   ],
+   "url": "https://chouchou-petsalon.com/",
+   "city": "長井市",
+   "services": "ペットホテル、トリミング",
+   "addr": "山形県長井市中伊佐沢48-7",
+   "cat": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬：1泊3,500円 大型犬：1泊5,500円 猫：1泊3,000円～-->",
+     "src": "https://chouchou-petsalon.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3500
+    },
+    {
+     "k": "料金",
+     "v": "1時間からのお預かりも可能です。1時間あたり500円となります。",
+     "src": "https://chouchou-petsalon.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 500
+    },
+    {
+     "k": "駐車場",
+     "v": "店舗のすぐ隣に駐車場があります。",
+     "src": "https://chouchou-petsalon.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初めてのご利用の際は狂犬病予防接種表または鑑札、混合ワクチン接種証明書をお持ちください。",
+     "src": "https://chouchou-petsalon.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT315",
+   "name": "M-Heart",
+   "prefs": [
+    "山形県"
+   ],
+   "url": "https://www.dogsalon-mheart.com/contact/",
+   "city": "上山市",
+   "services": "ペットホテル、トリミング",
+   "addr": "山形県上山市沢丁6－1",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：9:00～18:00 ／定休日：水曜、第 1・3 木曜",
+     "src": "https://www.dogsalon-mheart.com/contact/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT316",
+   "name": "Dog&CommunicationClubPiccola",
+   "prefs": [
+    "山形県"
+   ],
+   "url": "https://dogandcommunicationclub-piccola.com/",
+   "city": "酒田市",
+   "services": "ペットホテル、トリミング、動物病院",
+   "addr": "山形県酒田市宮海字砂飛１５８－１２６",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-HT317",
+   "name": "PetSalon&Hotelききらら",
+   "prefs": [
+    "山形県"
+   ],
+   "url": "https://pet-salon-hotel--kiki-rara.simdif.com/",
+   "city": "鶴岡市",
+   "services": "ペットホテル、トリミング",
+   "addr": "山形県鶴岡市美原町５－５２",
+   "cat": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "日帰り 2,500円、1泊2日 5,000円(税込)",
+     "src": "https://pet-salon-hotel--kiki-rara.simdif.com/%F0%9F%90%BEpet_hotel.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2500
+    },
+    {
+     "k": "料金",
+     "v": "日帰り 3,300円、1泊2日 6,600円(税込)",
+     "src": "https://pet-salon-hotel--kiki-rara.simdif.com/%F0%9F%90%BEpet_hotel.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3300
+    },
+    {
+     "k": "料金",
+     "v": "日帰り 4,400円、1泊2日 8,800円(税込)",
+     "src": "https://pet-salon-hotel--kiki-rara.simdif.com/%F0%9F%90%BEpet_hotel.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 4400
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場4台",
+     "src": "https://pet-salon-hotel--kiki-rara.simdif.com/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT318",
+   "name": "愛犬の美容とホテル パル",
+   "prefs": [
+    "山形県"
+   ],
+   "url": "https://dog-pal.com/shop.html",
+   "city": "山形市",
+   "services": "ペットホテル、トリミング",
+   "addr": "山形県山形市木の実町９－４",
+   "cat": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車料金無料 3台完備 ＜ 駐車場のご案内 ＞",
+     "src": "https://dog-pal.com/shop.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT319",
+   "name": "Wan's care",
+   "prefs": [
+    "山形県"
+   ],
+   "url": "https://wans-care.com/",
+   "city": "山形市",
+   "services": "ペットホテル",
+   "addr": "山形県山形市松見町１１－１",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "【サービス内容】 1泊：3,300円（税込）",
+     "src": "https://wans-care.com/menu.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3300
+    }
+   ]
+  },
+  {
+   "id": "PH-HT320",
+   "name": "株式会社エスティー動物病院",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://st-ah.com/",
+   "city": "郡山市",
+   "services": "ペットホテル、トリミング、動物病院",
+   "addr": "福島県郡山市御前南三丁目146",
+   "cat": true,
+   "vet": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付 9:00-12:00 / 16:00-19:00",
+     "src": "https://st-ah.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT321",
+   "name": "ペットシッターひだまり",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://www.pet-hidamari.com/sitemap/",
+   "city": "郡山市",
+   "services": "ペットホテル",
+   "addr": "福島県郡山市字北畑26-8",
+   "cat": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "一泊 7560円",
+     "src": "https://www.pet-hidamari.com/%E4%B8%80%E6%97%A5%E4%B8%80%E7%B5%84%E9%99%90%E5%AE%9A%E3%81%AE%E3%83%9A%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 7560
+    }
+   ]
+  },
+  {
+   "id": "PH-HT322",
+   "name": "ちゃる・る 倶楽部",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://www.charu-ru.club/",
+   "city": "郡山市",
+   "services": "ペットホテル、トリミング、動物病院",
+   "addr": "福島県郡山市桑野二丁目37-1",
+   "cat": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払いは当日現金支払いまたは後日お振込みでお願い致します。",
+     "src": "https://www.charu-ru.club/guide",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT323",
+   "name": "合同会社 たちばな動物病院",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://www.tachibana-ahp.com/access/",
+   "city": "郡山市",
+   "services": "ペットホテル、トリミング、動物病院",
+   "addr": "福島県郡山市安積荒井一丁目113番地",
+   "large": true,
+   "large_basis": "文",
+   "cat": true,
+   "vet": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場のご案内",
+     "src": "https://www.tachibana-ahp.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "シャンプーを ご利用いただけるのは、1年以内に当院にて狂犬病、混合ワクチン接種済みのわんちゃんに限ります。",
+     "src": "https://www.tachibana-ahp.com/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }

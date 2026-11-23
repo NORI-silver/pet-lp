@@ -9667,6 +9667,145 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "T-HT061",
+   "name": "dog salon Lelien",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://lelien111.com/priceimg.html",
+   "city": "札幌市",
+   "services": "出張しつけ、犬の幼稚園、問題行動の相談",
+   "addr": "北海道札幌市中央区北10条西15丁目1-6クリーンリバー桑園駅前1F",
+   "src": "https://lelien111.com/priceimg.html",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "・会員様ではない場合、PARK利用 1回 1,500円",
+     "src": "https://lelien111.com/trimming.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 1500
+    }
+   ]
+  },
+  {
+   "id": "T-HT062",
+   "name": "Adorable Angel ドッグラン",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.adorable-angel.com/menu_dog_run.html",
+   "city": "北広島市",
+   "services": "ペットホテル",
+   "addr": "北海道北広島市島松434番地11号",
+   "src": "https://www.adorable-angel.com/menu_dog_run.html",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "月4回 17,600 円",
+     "src": "https://www.adorable-angel.com/menu_training.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 17600
+    },
+    {
+     "k": "用意するもの",
+     "v": "◆ 狂犬病・混合ワクチンの接種証明書が必要です（1年以内）",
+     "src": "https://www.adorable-angel.com/menu_dog_run.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT063",
+   "name": "ライラのしっぽ",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://usp01.hp.peraichi.com/",
+   "city": "苫小牧市",
+   "services": "しつけ教室",
+   "addr": "北海道苫小牧市しらかば町3丁目21-4",
+   "src": "https://usp01.hp.peraichi.com/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT064",
+   "name": "ドッグトレーニング1st",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://dog-training-1st.com/contact/",
+   "city": "仙台市",
+   "services": "しつけ・トレーニング",
+   "addr": "宮城県仙台市太白区西多賀四丁目3-5-102",
+   "src": "https://dog-training-1st.com/contact/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 8:30-18:00 / 定休日:不定休",
+     "src": "https://dog-training-1st.com/contact/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT065",
+   "name": "Dog&CommunicationClubPiccola",
+   "prefs": [
+    "山形県"
+   ],
+   "url": "https://dogandcommunicationclub-piccola.com/",
+   "city": "酒田市",
+   "services": "ペットホテル",
+   "addr": "山形県酒田市宮海字砂飛１５８－１２６",
+   "src": "https://dogandcommunicationclub-piccola.com/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT066",
+   "name": "株式会社エスティー動物病院",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://st-ah.com/",
+   "city": "郡山市",
+   "services": "しつけ教室、パピー教室、ペットホテル",
+   "addr": "福島県郡山市御前南三丁目146",
+   "src": "https://st-ah.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "≪参加費≫ 全６回 計12000円 (参考書代別途1429円、全て税抜き)",
+     "src": "https://st-ah.com/puppy-class/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 12000
+    },
+    {
+     "k": "料金",
+     "v": "≪参加費≫ 全３回 計３０００円 (税抜き)",
+     "src": "https://st-ah.com/puppy-class/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3000
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付 9:00-12:00 / 16:00-19:00",
+     "src": "https://st-ah.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }
