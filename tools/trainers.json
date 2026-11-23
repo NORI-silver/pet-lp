@@ -20747,48 +20747,6 @@
    ]
   },
   {
-   "id": "TC088",
-   "name": "Wan’s Ohana",
-   "prefs": [
-    "千葉県"
-   ],
-   "city": "市原市",
-   "url": "https://wan-ohana.com/blog/",
-   "services": "犬のしつけ",
-   "src": "https://wan-ohana.com/blog/",
-   "checked": "2026-11-23",
-   "facts": [
-    {
-     "k": "駐車場",
-     "v": "店舗無料駐車場 有り",
-     "src": "https://wan-ohana.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
-  },
-  {
-   "id": "TC089",
-   "name": "ドッグサロン ベティーズハウス",
-   "prefs": [
-    "千葉県"
-   ],
-   "city": "松戸市",
-   "url": "https://bestie-s.com/",
-   "services": "問題行動の相談",
-   "src": "https://bestie-s.com/",
-   "checked": "2026-11-23",
-   "facts": [
-    {
-     "k": "送迎",
-     "v": "送迎費1000円~",
-     "src": "https://bestie-s.com/trimming/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
-  },
-  {
    "id": "TC090",
    "name": "ドッグトレーニング アッシュ",
    "prefs": [
@@ -20804,34 +20762,6 @@
      "k": "お支払い",
      "v": "Q:支払いは現金のみですか?",
      "src": "https://dog-ash.net/course/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
-  },
-  {
-   "id": "TC091",
-   "name": "Dog Trainer Lab・Bernard",
-   "prefs": [
-    "千葉県"
-   ],
-   "city": "柏市",
-   "url": "https://dogtraining-lab.com/",
-   "services": "出張トレーニング、問題行動の相談",
-   "src": "https://dogtraining-lab.com/",
-   "checked": "2026-11-23",
-   "facts": [
-    {
-     "k": "料金",
-     "v": "そのため、当社Dogtraining Labでは、「1回5,000円」といったチケット制では無く、 問題行動が改善するまでの金額 でご提案させて頂いております。",
-     "src": "https://dogtraining-lab.com/service/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "営業・受付時間",
-     "v": "受付時間:9:00~17:00",
-     "src": "https://dogtraining-lab.com/",
      "by": "site",
      "checked": "2026-11-23"
     }

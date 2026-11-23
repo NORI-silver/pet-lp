@@ -34091,35 +34091,6 @@
    "checked": "2026-11-23"
   },
   {
-   "id": "GC011",
-   "name": "ドッグサロン ベティーズハウス",
-   "prefs": [
-    "千葉県"
-   ],
-   "city": "松戸市",
-   "url": "https://bestie-s.com/",
-   "area": "松戸市と周辺",
-   "services": "出張トリミング",
-   "car": true,
-   "facts": [
-    {
-     "k": "料金",
-     "v": "トリミングセット 6,000円〜",
-     "src": "https://bestie-s.com/trimming/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "送迎",
-     "v": "送迎費1000円~",
-     "src": "https://bestie-s.com/trimming/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23"
-  },
-  {
    "id": "GC012",
    "name": "ペットサロン chouchou *シュシュ*",
    "prefs": [
@@ -36769,34 +36740,6 @@
    "checked": "2026-11-23"
   },
   {
-   "id": "GC120",
-   "name": "AINAILONA",
-   "prefs": [
-    "千葉県"
-   ],
-   "city": "木更津市",
-   "url": "https://ainailona128.com/",
-   "services": "トリミングサロン",
-   "shop": true,
-   "facts": [
-    {
-     "k": "定休日",
-     "v": "【定休日】月曜日・第1、3火曜日",
-     "src": "https://ainailona128.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "駐車場",
-     "v": "専用駐車場はございません。",
-     "src": "https://ainailona128.com/access/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23"
-  },
-  {
    "id": "GC121",
    "name": "愛犬美容室 わんわんクラブONE'S",
    "prefs": [
@@ -38146,19 +38089,6 @@
    ],
    "city": "千葉市花見川区",
    "url": "https://dogsaloncolore.com/",
-   "services": "トリミングサロン",
-   "shop": true,
-   "facts": [],
-   "checked": "2026-11-23"
-  },
-  {
-   "id": "GC174",
-   "name": "Wise Dog",
-   "prefs": [
-    "千葉県"
-   ],
-   "city": "千葉市緑区",
-   "url": "https://doglife.kumorinochihare.net/hokkaido/sapporo.html",
    "services": "トリミングサロン",
    "shop": true,
    "facts": [],
