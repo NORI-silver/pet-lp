@@ -6,12 +6,12 @@ const [root, kind, out] = process.argv.slice(2).map((v,i)=>i===1?v:path.resolve(
 const origin = 'http://pet.test';
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.svg':'image/svg+xml'};
 const specs=kind==='photo'?[['/dog-trainer/kyoto/','.cs-ph[data-gph="T114"]'],['/dogrun/okayama/','.cs-ph:has(.cs-ph-c)'],['/rojin-home/','.cs-ph:has(.cs-ph-n)'],['/','.partner-card.qa-taxi']]:
-  kind==='cta'?[['/sougi/hyogo/','[data-taxi-cta]'],['/dogrun/chiba/','[data-taxi-cta]'],['/pet-hotel/hyogo/','[data-taxi-cta]']]:[['/jichitai/maigo/','#jcPro']];
+  kind==='cta'?[['/','#seeBtn'],['/chiba/','#seeBtn']]:[['/jichitai/maigo/','#jcPro']];
 (async()=>{
  fs.mkdirSync(out,{recursive:true}); const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||undefined});
  let failed=false;
  try {
- for (const width of [375,390]) {
+ for (const width of (kind==='cta'?[320,375,390]:[375,390])) {
   const context=await browser.newContext({viewport:{width,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:1,serviceWorkers:'block'});
   await context.route('**/*', async r=>{
    const url=new URL(r.request().url());
@@ -73,9 +73,26 @@ const specs=kind==='photo'?[['/dog-trainer/kyoto/','.cs-ph[data-gph="T114"]'],['
      assert.deepEqual([stats.fit,stats.loaded,stats.within,stats.creditWrap,stats.overlap],['contain',true,true,true,false]);
      if(stats.count>1)assert.ok(stats.scroll>10,'multiple images must swipe');
     } else if(kind==='cta') {
-     const m=await candidate.evaluate(el=>{const a=el.getBoundingClientRect();return {left:a.left,right:a.right,height:a.height,nativeFit:el.scrollWidth<=el.clientWidth+1,parentFit:el.parentElement.scrollWidth<=el.parentElement.clientWidth+1, href:el.getAttribute('href')};});
-     assert.ok(m.left>=-1&&m.right<=width+1&&m.height>0&&m.nativeFit&&m.parentFit,JSON.stringify(m));
-     assert.match(m.href,/^\/[^?#]*#form$/);
+     const b=page.getByRole('button',{name:'会社と料金を見る',exact:true});
+     assert.equal(await b.count(),1,'accessible label must match exactly');
+     assert.ok(await b.isVisible());
+     const m=await candidate.evaluate(el=>{
+      const label=el.textContent.trim(), a=el.getBoundingClientRect();
+      const text=document.createRange();text.selectNodeContents(el);
+      const rects=[...text.getClientRects()].filter(x=>x.width>0&&x.height>0);
+      const described=el.getAttribute('aria-describedby');
+      const help=document.getElementById(described), h=help?.getBoundingClientRect(), cs=help&&getComputedStyle(help);
+      return {label,left:a.left,right:a.right,top:a.top,bottom:a.bottom,nativeFit:el.scrollWidth<=el.clientWidth+1,
+       lines:new Set(rects.map(x=>Math.round(x.top))).size,glyphsWithin:rects.every(x=>x.left>=a.left-1&&x.right<=a.right+1),
+       type:el.type,described,helpText:help?.textContent.trim(),separate:!!help&&!el.contains(help)&&el.nextElementSibling===help,
+       helpVisible:!!h&&h.width>0&&h.height>0&&cs.visibility==='visible'&&cs.display!=='none',
+       helpBelow:!!h&&h.top>=a.bottom-1,helpFits:!!h&&h.left>=-1&&h.right<=innerWidth+1&&help.scrollWidth<=help.clientWidth+1};
+     });
+     assert.deepEqual([m.label,m.lines,m.glyphsWithin,m.nativeFit,m.type,m.described,m.separate,m.helpVisible,m.helpBelow,m.helpFits],
+      ['会社と料金を見る',1,true,true,'button','seeBtnHelp',true,true,true,true],JSON.stringify(m));
+     assert.ok(m.left>=-1&&m.right<=width+1,JSON.stringify(m));
+     assert.match(m.helpText,/料金の確認は無料です/);
+     console.log('BOOKING_CTA',p,width,JSON.stringify(m));
     } else if(kind==='maigo') {
      const rows=await candidate.locator('tbody tr').count();
      assert.equal(rows,31);
@@ -86,7 +103,7 @@ const specs=kind==='photo'?[['/dog-trainer/kyoto/','.cs-ph[data-gph="T114"]'],['
    }catch(e){failed=true;console.error('FAIL',p,width,selector,e.message);}
    try {
     await page.screenshot({path:path.join(out,tag+'.png')});
-    if (p==='/') await page.locator('.qa-credit').screenshot({path:path.join(out,tag+'-credit.png'),timeout:3000});
+    if (kind==='photo'&&p==='/') await page.locator('.qa-credit').screenshot({path:path.join(out,tag+'-credit.png'),timeout:3000});
    }catch{}
    await page.close();
   }
