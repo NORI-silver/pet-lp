@@ -1,0 +1,72 @@
+{
+ "pref": "和歌山県",
+ "name": "日高川町",
+ "code": "303925",
+ "url": "https://www.town.hidakagawa.lg.jp/",
+ "mails": {
+  "c.bousai@town.hidakagawa.lg.jp": "https://www.town.hidakagawa.lg.jp/bousai/bousai_shoubou/bousai_center/index.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.hidakagawa.lg.jp/kurashi/pet_dobutsu/index.html",
+   "kind": "html",
+   "lines": [
+    "【title】ペット・動物｜日高川町",
+    "ペット・動物｜日高川町",
+    "本文へ移動",
+    "メニュー",
+    "ペット・動物",
+    "犬を飼われる方へ",
+    "蜂などの害虫駆除について"
+   ]
+  },
+  {
+   "url": "https://www.town.hidakagawa.lg.jp/kurashi/pet_dobutsu/",
+   "kind": "html",
+   "lines": [
+    "【title】ペット・動物｜日高川町",
+    "ペット・動物｜日高川町",
+    "本文へ移動",
+    "メニュー",
+    "ペット・動物",
+    "犬を飼われる方へ",
+    "蜂などの害虫駆除について"
+   ]
+  },
+  {
+   "url": "https://www.town.hidakagawa.lg.jp/kurashi/gomi_kankyo/gomi_recycle/gomi_kyotennkaisyu.html",
+   "kind": "html",
+   "lines": [
+    "【title】拠点回収について（ペットボトル）｜日高川町",
+    "拠点回収について（ペットボトル）｜日高川町",
+    "本文へ移動",
+    "メニュー",
+    "拠点回収について（ペットボトル）",
+    "ペットボトルは再資源化を目的に拠点回収をしています。",
+    "手順"
+   ]
+  },
+  {
+   "url": "https://www.town.hidakagawa.lg.jp/bousai/hazardmap/files/hidakagawa.pdf",
+   "kind": "pdf",
+   "lines": [
+    "道",
+    "薬師谷山 後山 犬ｹ丈山",
+    "城が峰 路",
+    "25",
+    "犬ｹ丈山 熊野川",
+    "小釜本"
+   ]
+  },
+  {
+   "url": "https://www.town.hidakagawa.lg.jp/bousai/hazardmap/files/hanadatehazardmap.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.hidakagawa.lg.jp/bousai/hazardmap/files/hatahazardmap.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

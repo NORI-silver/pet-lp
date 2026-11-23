@@ -1,0 +1,20 @@
+{
+ "pref": "高知県",
+ "name": "土佐市",
+ "code": "392057",
+ "url": "https://www.city.tosa.lg.jp/",
+ "mails": {
+  "choju@city.tosa.lg.jp": "https://www.city.tosa.lg.jp/life/detail.php?hdnKey=5025"
+ },
+ "pages": [
+  {
+   "url": "https://www.city.tosa.lg.jp/life/detail.php?hdnKey=6565",
+   "kind": "html",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.tosa.lg.jp/life/detail.php?hdnKey=6424",
+   "error": "HTTP Error 403: Forbidden"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "pref": "福井県",
+ "name": "福井市",
+ "code": "182010",
+ "url": "https://www.city.fukui.lg.jp/",
+ "mails": {
+  "bousai.fukui-city@raiden3.ktaiwork.jp": "https://www.city.fukui.lg.jp/kurasi/bosai/bosai/bousai-me-ru.html",
+  "bousai-c@city.fukui.lg.jp": "https://www.city.fukui.lg.jp/kurasi/bosai/bosai/p000109.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.city.fukui.lg.jp/kurasi/bosai/bosai/handbook_d/fil/p19-20.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.fukui.lg.jp/kurasi/bosai/bosai/handbook_d/fil/p29-30.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.fukui.lg.jp/kurasi/bosai/bosai/handbook_d/fil/p30.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.fukui.lg.jp/kurasi/bosai/bosai/chibou_d/fil/21_shusei.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

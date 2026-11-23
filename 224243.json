@@ -1,0 +1,76 @@
+{
+ "pref": "静岡県",
+ "name": "吉田町",
+ "code": "224243",
+ "url": "https://www.town.yoshida.shizuoka.jp/",
+ "mails": {
+  "bousai@town.yoshida.shizuoka.jp": "https://www.town.yoshida.shizuoka.jp/6154.htm",
+  "toshi@town.yoshida.shizuoka.jp": "https://www.town.yoshida.shizuoka.jp/9386.htm",
+  "choumin@town.yoshida.shizuoka.jp": "https://www.town.yoshida.shizuoka.jp/9464.htm"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.yoshida.shizuoka.jp/1025.htm",
+   "kind": "html",
+   "lines": [
+    "【title】ペット/ようこそ吉田町へ",
+    "ペット/ようこそ吉田町へ",
+    "くらし・手続き",
+    "引越し・住まい",
+    "ペット",
+    "文化・スポーツ・生涯学習",
+    "お知らせ",
+    "ペットを飼い始めた方へ",
+    "添付資料を見るためにはビューワソフトが必要な場合があります。詳しくはこちらをご覧ください。"
+   ]
+  },
+  {
+   "url": "https://www.town.yoshida.shizuoka.jp/secure/9447/吉田町地域防災計画.pdf",
+   "error": "'ascii' codec can't encode characters in position 17-25: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.town.yoshida.shizuoka.jp/secure/7719/hinannbasyo_hinannjyo.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.yoshida.shizuoka.jp/secure/2303/download.pdf",
+   "kind": "pdf",
+   "lines": [
+    "ガスの元栓、 家具などを",
+    "プロパンガスボンベ 消火器・ 倒れないように ペットの世話",
+    "のバルブを締める バケツの用意 する"
+   ]
+  },
+  {
+   "url": "https://www.town.yoshida.shizuoka.jp/secure/2309/05_map_omote.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.yoshida.shizuoka.jp/secure/2309/05_map_ura.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.yoshida.shizuoka.jp/secure/2309/05_map_omote1-4.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.yoshida.shizuoka.jp/secure/2309/05_map_omote2-4.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.yoshida.shizuoka.jp/secure/2309/05_map_omote3-4.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.yoshida.shizuoka.jp/secure/2309/05_map_omote4-4.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

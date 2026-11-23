@@ -1,0 +1,59 @@
+{
+ "pref": "山形県",
+ "name": "大石田町",
+ "code": "063410",
+ "url": "https://www.town.oishida.yamagata.jp/",
+ "mails": {
+  "somu@town.oishida.yamagata.jp": "https://www.town.oishida.yamagata.jp/life/iza/bousaimap/bosaimap.html",
+  "seikatu@town.oishida.yamagata.jp": "https://www.town.oishida.yamagata.jp/life/anzenpet/koutsuuanzen.html",
+  "hokeneisei@town.oishida.yamagata.jp": "https://www.town.oishida.yamagata.jp/life/anzenpet/dog.html",
+  "nosonse@town.oishida.yamagata.jp": "https://www.town.oishida.yamagata.jp/life/nougyou/midorikankyozei.html",
+  "seisaku@town.oishida.yamagata.jp": "https://www.town.oishida.yamagata.jp/chousei/kankyo/kankyoasess.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.oishida.yamagata.jp/life/anzenpet/index.html",
+   "kind": "html",
+   "lines": [
+    "【title】安全・ペット：大石田町公式ウェブサイト",
+    "安全・ペット：大石田町公式ウェブサイト",
+    "このページの本文へ移動",
+    "福祉・健康",
+    "安全・ペット",
+    "ごみ・環境保全",
+    "暮らし・手続き",
+    "生活道路における自動車の法定速度が引き下げられます！",
+    "いざという時のために！正しい119番通報を身につけましょう",
+    "犬や猫の飼い方注意点",
+    "犬の登録と狂犬病予防注射",
+    "「犬猫の新しい飼い主探し」について",
+    "大石田町猫不妊・去勢手術費補助金について【令和8年度】",
+    "犬や猫を捨てないでください",
+    "やまがた消防団応援事業所を募集します",
+    "NET119登録情報の外部漏洩の可能性について",
+    "規制情報"
+   ]
+  },
+  {
+   "url": "https://www.town.oishida.yamagata.jp/life/gomikankyou/index.html",
+   "kind": "html",
+   "lines": [
+    "福祉・健康",
+    "安全・ペット",
+    "ごみ・環境保全",
+    "NET119登録情報の外部漏洩の可能性について",
+    "規制情報"
+   ]
+  },
+  {
+   "url": "https://www.town.oishida.yamagata.jp/life/iza/bousaimap/bosaimap.files/bousaimap.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.oishida.yamagata.jp/life/iza/bousaimap/hinanjyo.files/youkou.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

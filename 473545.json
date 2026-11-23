@@ -1,0 +1,19 @@
+{
+ "pref": "沖縄県",
+ "name": "座間味村",
+ "code": "473545",
+ "url": "https://www.vill.zamami.okinawa.jp/",
+ "mails": {
+  "bousai@vill.zamami.lg.jp": "https://www.vill.zamami.okinawa.jp/jigyousha/keiyaku/1787732100/"
+ },
+ "pages": [
+  {
+   "url": "https://www.vill.zamami.okinawa.jp/userfiles/files/防災/mwz1zoa07vyz.pdf",
+   "error": "'ascii' codec can't encode characters in position 21-22: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.vill.zamami.okinawa.jp/userfiles/files/防災/m5p3t8pvfylr.pdf",
+   "error": "'ascii' codec can't encode characters in position 21-22: ordinal not in range(128)"
+  }
+ ]
+}

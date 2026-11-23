@@ -1,0 +1,41 @@
+{
+ "pref": "静岡県",
+ "name": "西伊豆町",
+ "code": "223069",
+ "url": "https://www.town.nishiizu.shizuoka.jp/",
+ "mails": {
+  "bousai@town.nishiizu.lg.jp": "https://www.town.nishiizu.shizuoka.jp/bousai/",
+  "bousai@town.nishiizu.shizuoka.jp": "https://www.town.nishiizu.shizuoka.jp/kakuka/bousai/bousai/higaisoutei.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.nishiizu.shizuoka.jp/kurashi/pet/",
+   "kind": "html",
+   "lines": [
+    "【title】ペット | くらし | 西伊豆町役場",
+    "ペット | くらし | 西伊豆町役場",
+    "このページの本文へ",
+    "ペット",
+    "ホーム > くらし > ペット",
+    "愛犬の手続き",
+    "くらしの一覧ページ"
+   ]
+  },
+  {
+   "url": "https://www.town.nishiizu.shizuoka.jp/kakuka/kankyou/kankyou/subsidy_1.html",
+   "kind": "html",
+   "lines": [
+    "【title】ペットへの助成金・補助金 | 環境保全係 | 環境課 | 西伊豆町役場",
+    "ペットへの助成金・補助金 | 環境保全係 | 環境課 | 西伊豆町役場",
+    "このページの本文へ",
+    "ペットへの助成金・補助金",
+    "ホーム > 各課情報 > 環境課 > 環境保全係 > ペットへの助成金・補助金",
+    "猫の避妊・去勢手術費用の補助",
+    "このページに関するお問い合わせ"
+   ],
+   "mails": [
+    "kankyou@town.nishiizu.lg.jp"
+   ]
+  }
+ ]
+}

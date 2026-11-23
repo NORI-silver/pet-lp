@@ -1,0 +1,65 @@
+{
+ "pref": "沖縄県",
+ "name": "竹富町",
+ "code": "473812",
+ "url": "https://www.town.taketomi.lg.jp/",
+ "mails": {
+  "machi@town.taketomi.okinawa.jp": "https://www.town.taketomi.lg.jp/topics/1794880417/",
+  "bousai@town.taketomi.okinawa.jp": "https://www.town.taketomi.lg.jp/bousai/bousaimusen/",
+  "taketomi@sg-p.jp": "https://www.town.taketomi.lg.jp/bousai/bousaikisyo/sugumail/",
+  "t-taketomi@sg-p.jp": "https://www.town.taketomi.lg.jp/bousai/bousaikisyo/sugumail/",
+  "sizenkanko@town.taketomi.okinawa.jp": "https://www.town.taketomi.lg.jp/guide/todokede/cat/"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.taketomi.lg.jp/userfiles/files/hazardmap/images/taketomi.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.taketomi.lg.jp/userfiles/files/hazardmap/images/kohama.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.taketomi.lg.jp/userfiles/files/hazardmap/images/kurosima.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.taketomi.lg.jp/userfiles/files/hazardmap/images/aragusuku.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.taketomi.lg.jp/userfiles/files/hazardmap/images/seibu1.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.taketomi.lg.jp/userfiles/files/hazardmap/images/hatoma.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.taketomi.lg.jp/userfiles/files/hazardmap/images/seibu2_1.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.taketomi.lg.jp/userfiles/files/hazardmap/images/toubu.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.taketomi.lg.jp/userfiles/files/hazardmap/images/hateruma.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.taketomi.lg.jp/userfiles/files/hazardmap/images/hyousi0.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

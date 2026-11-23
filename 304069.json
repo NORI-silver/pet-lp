@@ -1,0 +1,33 @@
+{
+ "pref": "和歌山県",
+ "name": "すさみ町",
+ "code": "304069",
+ "url": "https://www.town.susami.lg.jp/",
+ "mails": {},
+ "pages": [
+  {
+   "url": "https://www.town.susami.lg.jp/bousai/02/files/Hazard_map2021_2.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.susami.lg.jp/bousai/02/files/09_10_2.pdf",
+   "error": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+   "url": "https://www.town.susami.lg.jp/bousai/02/files/P1-11.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.susami.lg.jp/bousai/02/files/P12-37.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.susami.lg.jp/bousai/02/files/kozui-hm.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

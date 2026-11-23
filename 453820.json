@@ -1,0 +1,45 @@
+{
+ "pref": "宮崎県",
+ "name": "国富町",
+ "code": "453820",
+ "url": "https://www.town.kunitomi.miyazaki.jp/",
+ "mails": {
+  "info@town.kunitomi.miyazaki.jp": "https://www.town.kunitomi.miyazaki.jp/",
+  "soumu@town.kunitomi.miyazaki.jp": "http://www.town.kunitomi.miyazaki.jp/main/disaster/page002556.html",
+  "choumin@town.kunitomi.miyazaki.jp": "http://www.town.kunitomi.miyazaki.jp/main/living/pet/page000275.html"
+ },
+ "pages": [
+  {
+   "url": "http://www.town.kunitomi.miyazaki.jp/main/disaster/page001571.html",
+   "kind": "html",
+   "lines": [
+    "【title】ペット避難について - 宮崎県国富町ホームページ",
+    "ペット避難について - 宮崎県国富町ホームページ",
+    "トップページ",
+    "防災情報",
+    "ペット避難について",
+    "お問い合わせはこちら",
+    "「あれっ停電？」と思ったら・・・（九州電力送配電からのお知らせ）",
+    "要配慮者利用施設における避難確保計画の作成について"
+   ],
+   "mails": [
+    "info@town.kunitomi.miyazaki.jp"
+   ]
+  },
+  {
+   "url": "http://www.town.kunitomi.miyazaki.jp/main/disaster/3b6a12c70e9855d87ef1e444c0ed54ca_1.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "http://www.town.kunitomi.miyazaki.jp/main/disaster/e189b1b26d1f0b5a8a77632ae13ea382.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "http://www.town.kunitomi.miyazaki.jp/main/disaster/0de342dd6e3f8dd83609c9b89c53b3c7.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}
