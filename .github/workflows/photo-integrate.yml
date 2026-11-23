@@ -44,15 +44,21 @@ jobs:
           git add -A
           git commit -qm "写真と、写真の枠のページを最新の main で作りなおし" || true
           git push --force origin HEAD:refs/heads/instinct/photos-integrated
-      - name: 診断（生成ファイルの差分を別ブランチに書く）
+      - name: 診断（PR の merge ref を浅く取り、検査と同じ手順の差分を別ブランチに書く）
         run: |
-          python3 tools/gen_areas.py . > /tmp/gen.log 2>&1 || true
+          D="$RUNNER_TEMP/mr"
+          git clone -q --no-checkout --depth 1 "https://github.com/${{ github.repository }}" "$D"
+          cd "$D"
+          git fetch -q --depth=1 origin refs/pull/717/merge
+          git checkout -q FETCH_HEAD
+          git log -1 --format='merge-ref %H parents: %P' > /tmp/info.txt
+          python3 tools/gen_areas.py . > /tmp/gen.log 2>&1; echo "exit $?" >> /tmp/info.txt
           rm -rf tools/__pycache__
-          { git diff --stat | tail -40; echo ---; git diff -U0 | head -150 | cut -c1-240; } > /tmp/gen_diff.txt
-          git stash -q || true
+          { cat /tmp/info.txt; git diff --stat | tail -40; echo ---; git diff -U0 | head -120 | cut -c1-240; echo ---; tail -15 /tmp/gen.log; } > /tmp/gen_diff.txt
+          cd "$GITHUB_WORKSPACE"
           git checkout -q --orphan dbg
           git rm -rq --cached . >/dev/null 2>&1 || true
-          cp /tmp/gen_diff.txt gen_diff.txt; tail -20 /tmp/gen.log > gen_tail.txt
-          git add gen_diff.txt gen_tail.txt
-          git commit -qm "diag"
+          cp /tmp/gen_diff.txt gen_diff.txt
+          git add gen_diff.txt
+          git commit -qm "diag merge-ref"
           git push --force origin HEAD:refs/heads/instinct/photos-diag
