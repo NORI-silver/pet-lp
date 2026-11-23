@@ -21177,6 +21177,1507 @@
    "city": "鹿児島市",
    "facts": [],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "GW224",
+   "name": "ぽちの床屋さん",
+   "prefs": [
+    "鳥取県"
+   ],
+   "url": "http://www.pochi-toko.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "米子市",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW225",
+   "name": "ワンワン美容室 えんじぇるまりん",
+   "prefs": [
+    "岡山県"
+   ],
+   "url": "http://angelmarine.inukubou.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "美作市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日/毎週月曜日、第1第3火曜日(完全予約制)",
+     "src": "http://angelmarine.inukubou.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW226",
+   "name": "Dog Salon furiru",
+   "prefs": [
+    "広島県"
+   ],
+   "url": "https://dogsalonfuriru.wixsite.com/index",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "東広島市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "*  不定休 *",
+     "src": "https://dogsalonfuriru.wixsite.com/index",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "*お車でお越しの方も駐車スペースはご用意してあります。",
+     "src": "https://dogsalonfuriru.wixsite.com/index/shop-guide",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW227",
+   "name": "ドッグサロンPEARL",
+   "prefs": [
+    "山口県"
+   ],
+   "url": "https://dogsalon-pearl.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "長門市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "営業時間】9:00~18:00 / 不定休",
+     "src": "https://dogsalon-pearl.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "車をご利用のお客様は店舗の敷地内に駐車場がございますのでご利用ください。",
+     "src": "https://dogsalon-pearl.com/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "年一回の混合ワクチン接種と狂犬病予防接種を済ませているワンちゃんのご利用に限ります。(年に一度、証明書又は鑑札を確認させて頂きます。)",
+     "src": "https://dogsalon-pearl.com/rules/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW228",
+   "name": "ドッグサロンRepo",
+   "prefs": [
+    "山口県"
+   ],
+   "url": "https://yumiyorepo.wixsite.com/website",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "長門市",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00~18:00",
+     "src": "https://yumiyorepo.wixsite.com/website",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 月曜日",
+     "src": "https://yumiyorepo.wixsite.com/website",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン証明書",
+     "src": "https://yumiyorepo.wixsite.com/website",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW229",
+   "name": "プティ ファミーユ",
+   "prefs": [
+    "高知県"
+   ],
+   "url": "http://www.petite-famille.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "高知市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーのみの場合−2,000〜2,500円引きで対応いたします。",
+     "src": "http://www.petite-famille.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 / 毎週日曜",
+     "src": "http://www.petite-famille.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場 / 1台",
+     "src": "http://www.petite-famille.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW230",
+   "name": "ドッグサロンnicoco",
+   "prefs": [
+    "高知県"
+   ],
+   "url": "https://dogsalon-nicoco.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "四万十市",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00~18:00",
+     "src": "https://dogsalon-nicoco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜・第2、4木曜",
+     "src": "https://dogsalon-nicoco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW231",
+   "name": "Trimming Salon PURIL",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://www.trimmingsalon-puril.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "福岡市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "デザインカット、オールシザーは別料金となります ¥800円~",
+     "src": "https://www.trimmingsalon-puril.com/%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC-%E6%96%99%E9%87%91",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00~18:00",
+     "src": "https://www.trimmingsalon-puril.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.trimmingsalon-puril.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内にワクチンを接種していることの確認をお願いしております。",
+     "src": "https://www.trimmingsalon-puril.com/%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC-%E6%96%99%E9%87%91",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW232",
+   "name": "ペット美容室のHAPPY",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://happy-fukutsu.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "福津市",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW233",
+   "name": "Dog Salon Rojie",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://dogsalonrojie.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "朝倉市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 日曜日+不定休",
+     "src": "https://dogsalonrojie.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場完備",
+     "src": "https://dogsalonrojie.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW234",
+   "name": "Dog Salon COCOLAB.",
+   "prefs": [
+    "宮崎県"
+   ],
+   "url": "https://cocolab.wixsite.com/dogsalon",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "日向市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 日曜、祝日、土曜午後",
+     "src": "https://cocolab.wixsite.com/dogsalon",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW235",
+   "name": "DogSalon Fleur",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://fleur.chichibu.net/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "朝倉市",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00~17:00",
+     "src": "https://fleur.chichibu.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週月曜日 第2・4日曜日",
+     "src": "https://fleur.chichibu.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW236",
+   "name": "dogsalon biene",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://biene217.wordpress.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "糸島市",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW237",
+   "name": "TRIMMING＊Rococo's room",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://rococosroom.crayonsite.info/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "春日市",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチンと狂犬病予防接種、ノミ.ダニ予防をお願いいたします。",
+     "src": "https://rococosroom.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW238",
+   "name": "DOGSALON PEPE(ドッグサロン ペペ)",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "http://dogsalonpepe.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "糟屋郡粕屋町",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "薬用シャンプー +600円",
+     "src": "http://dogsalonpepe.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "一年以内の狂犬病予防注射、3種以上のワクチン証明書をお持ちください。",
+     "src": "http://dogsalonpepe.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW239",
+   "name": "Dog Salon Cheese",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://www.dog-cheese.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "糟屋郡久山町",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ひげカット+550円",
+     "src": "https://www.dog-cheese.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00~18:00(カット最終受付15時迄)",
+     "src": "https://www.dog-cheese.com/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "三日月渓流公園そば (トリアス久山から車で3分)  駐車場完備",
+     "src": "https://www.dog-cheese.com/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW240",
+   "name": "HanaTail",
+   "prefs": [
+    "鳥取県"
+   ],
+   "url": "https://hana-tail.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "鳥取市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "プードル、Mシュナウザーは前回のトリミングから35日以内で8800円とさせて頂いてます",
+     "src": "https://hana-tail.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "OPEN 9:00 CLOSE 17:00(日/不定休)",
+     "src": "https://hana-tail.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチン・狂犬病予防接種をお願いします。",
+     "src": "https://hana-tail.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW241",
+   "name": "ドッグサロンポワ",
+   "prefs": [
+    "鳥取県"
+   ],
+   "url": "http://dogsalonpoir.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "鳥取市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "受付/9:00~18:00 【定休日】水曜日、第3火曜日",
+     "src": "http://dogsalonpoir.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW242",
+   "name": "ワンちゃんの美容室 POUDER",
+   "prefs": [
+    "鳥取県"
+   ],
+   "url": "https://poupou111.crayonsite.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "鳥取市",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:30~17:30",
+     "src": "https://poupou111.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週火曜日 不定休",
+     "src": "https://poupou111.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW243",
+   "name": "ペットサロン Luana",
+   "prefs": [
+    "島根県"
+   ],
+   "url": "https://luana-shimane.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "松江市",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチン接種の証明書",
+     "src": "https://luana-shimane.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW244",
+   "name": "Dogsalon wag",
+   "prefs": [
+    "岡山県"
+   ],
+   "url": "https://www.dogsalon-wag.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "岡山市中区",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "(最終受付15:00)",
+     "src": "https://www.dogsalon-wag.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日】不定休(Instagramに掲載)",
+     "src": "https://www.dogsalon-wag.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "子犬の場合、ワクチンを3回接種済であれば施術可能です。※送迎・ホテルは対応しておりません。",
+     "src": "https://www.dogsalon-wag.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW245",
+   "name": "Dog Salon STAR",
+   "prefs": [
+    "岡山県"
+   ],
+   "url": "https://dogsalonstar.jimdofree.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "笠岡市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "顔カット    800円~1000円",
+     "src": "https://dogsalonstar.jimdofree.com/%E6%96%99%E9%87%91%E8%A1%A8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW246",
+   "name": "Luca(ルカ)",
+   "prefs": [
+    "岡山県"
+   ],
+   "url": "https://luca-trim.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "真庭市",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW247",
+   "name": "Dog Salon Sunny",
+   "prefs": [
+    "広島県"
+   ],
+   "url": "https://dogsalonsunny.net/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "呉市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日】日・祝",
+     "src": "https://dogsalonsunny.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場はありますか?",
+     "src": "https://dogsalonsunny.net/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "A.現金のみとなります。ご了承ください。",
+     "src": "https://dogsalonsunny.net/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW248",
+   "name": "Dog salon Lien",
+   "prefs": [
+    "広島県"
+   ],
+   "url": "https://lien-kure.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "呉市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "デザインカット1,650 円〜",
+     "src": "https://lien-kure.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜・第2日曜日",
+     "src": "https://lien-kure.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場2台(店舗前横付け)",
+     "src": "https://lien-kure.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW249",
+   "name": "ドッグサロン Petit",
+   "prefs": [
+    "広島県"
+   ],
+   "url": "https://www.dogsalon-petit.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "福山市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "予約時間、お迎え時間は営業時間内でお願いします。時間外も対応はしていますが、 トリミング、ホテルの営業時間外でのお預かりお迎えは時間外対応30分ごとに550円発生します。",
+     "src": "https://www.dogsalon-petit.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日】木曜日、日曜日",
+     "src": "https://www.dogsalon-petit.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "有り(1台)",
+     "src": "https://www.dogsalon-petit.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW250",
+   "name": "Dog サロン Peko",
+   "prefs": [
+    "山口県"
+   ],
+   "url": "https://dogsalonpeko.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "萩市",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://dogsalonpeko.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "月曜日",
+     "src": "https://dogsalonpeko.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW251",
+   "name": "Dog Salon Tree",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://www.dogsalontree.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "北九州市小倉北区",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "9:00~18:00 [定休日]月曜日 [駐車場]1台分有り",
+     "src": "https://www.dogsalontree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "9:00~18:00 [定休日]月曜日 [駐車場]1台分有り",
+     "src": "https://www.dogsalontree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種証明",
+     "src": "https://www.dogsalontree.com/guide",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "バーコード決済(PayPay/楽天ペイ)",
+     "src": "https://www.dogsalontree.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW252",
+   "name": "ドッグサロンSHIRO",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://dog-salon-shiro.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "北九州市小倉北区",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "コース料金から 460円OFF",
+     "src": "https://dog-salon-shiro.com/menu.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:30 ~ 18:00(最終受付)",
+     "src": "https://dog-salon-shiro.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日(不定休あり)",
+     "src": "https://dog-salon-shiro.com/about.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW253",
+   "name": "Cat&Dog Salon ChouChou(キャット&ドッグサロン シュシュ)",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://www.cat-and-dog-chouchou.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "那珂川市",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW254",
+   "name": "DOG SALON Iris",
+   "prefs": [
+    "長崎県"
+   ],
+   "url": "https://dogsalon-iris.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "佐世保市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "部分カット (+500円〜) お尻、前胸、お腹など",
+     "src": "https://dogsalon-iris.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "https://dogsalon-iris.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日・第2第4水曜日",
+     "src": "https://dogsalon-iris.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW255",
+   "name": "ペットサロンエムズ",
+   "prefs": [
+    "熊本県"
+   ],
+   "url": "https://www.psms.co.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "上益城郡益城町",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00~19:00",
+     "src": "https://www.psms.co.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW256",
+   "name": "DOG LIFE STYLE BLUE",
+   "prefs": [
+    "大分県"
+   ],
+   "url": "https://doglifestyleblue.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "中津市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "日曜・祝日・不定休あり",
+     "src": "https://doglifestyleblue.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場はありますか?",
+     "src": "https://doglifestyleblue.jp/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチンの証明書 ※3年以内に接種されたもの",
+     "src": "https://doglifestyleblue.jp/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW257",
+   "name": "わんちゃんの美容室AICO",
+   "prefs": [
+    "大分県"
+   ],
+   "url": "https://www.wanchan-aico.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "中津市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "毎週火曜日・第3水曜日",
+     "src": "https://www.wanchan-aico.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW258",
+   "name": "ドッグサロンしおん",
+   "prefs": [
+    "宮崎県"
+   ],
+   "url": "https://www.dogsalon-sion.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "宮崎市",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "□混合ワクチン接種証明書",
+     "src": "https://www.dogsalon-sion.com/pethotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW259",
+   "name": "ドッグサロン carone(カロネ)",
+   "prefs": [
+    "沖縄県"
+   ],
+   "url": "https://www.dogsalon-carone.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "那覇市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "10:00~18:00[定休日]火曜日",
+     "src": "https://www.dogsalon-carone.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病・各種ワクチン接種証明書を確認いたしますのでお持ちください。(コピー可・1年以内のもの)ワクチンを接種できない犬もいることは承知しておりますので、何らかの理由があり未接種の場合は理由をお聞かせください。",
+     "src": "https://www.dogsalon-carone.com/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW260",
+   "name": "春日ペットショップ",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://www.kasuga-pet.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "春日市",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "あり(4台) ※駐車場の場所が変わりました。",
+     "src": "https://www.kasuga-pet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW261",
+   "name": "トーイパスティ",
+   "prefs": [
+    "島根県"
+   ],
+   "url": "https://gotsu-petshop.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "江津市",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW262",
+   "name": "dog salon YUZU",
+   "prefs": [
+    "広島県"
+   ],
+   "url": "https://www.dog-salon-yuzu2021.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "廿日市市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日】月曜日・木曜日(臨時休業あり)",
+     "src": "https://www.dog-salon-yuzu2021.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "当サロンのご利用には、ワクチンの証明書が必要です。初めてお越しになる方は、まずはこちらのページをご確認ください。完全予約制です。送迎サービスも行っておりますので、お気軽にお問い合わせください",
+     "src": "https://www.dog-salon-yuzu2021.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW263",
+   "name": "空港通りペットホテル＆ヘルスケア",
+   "prefs": [
+    "山口県"
+   ],
+   "url": "https://sky-petcare.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "宇部市",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW264",
+   "name": "ドッグサロンデイジー",
+   "prefs": [
+    "山口県"
+   ],
+   "url": "https://dogsalondaisy.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "下松市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "デザインカット 1 ,000円",
+     "src": "https://dogsalondaisy.com/menu.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 8:30-施術終了まで",
+     "src": "https://dogsalondaisy.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "完全予約制・不定休",
+     "src": "https://dogsalondaisy.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW265",
+   "name": "パピーシュシュ",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://www.puppy-chouchou.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "八女郡広川町",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00 ~ 18:30",
+     "src": "https://www.puppy-chouchou.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "アクセス国道3号線 川瀬バス停より徒歩6分 駐車場あり",
+     "src": "https://www.puppy-chouchou.com/shopinfo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW266",
+   "name": "trimming salon Bloom",
+   "prefs": [
+    "宮崎県"
+   ],
+   "url": "https://vli78.crayonsite.info/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "延岡市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "日祝日定休・駐車場1〜2台",
+     "src": "https://vli78.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "日祝日定休・駐車場1〜2台",
+     "src": "https://vli78.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "駆虫、ワクチン接種、狂犬病予防注射をお願い致します。ノミ、ダニがいるわんちゃんはトリミングを中断する場合があります。",
+     "src": "https://vli78.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW267",
+   "name": "K-nine in the life OKAYAMA",
+   "prefs": [
+    "岡山県"
+   ],
+   "url": "http://k-nine-dog.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "岡山市南区",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "通常のトリミング料金+2,200円",
+     "src": "http://k-nine-dog.com/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "12/31は営業17時まで",
+     "src": "http://k-nine-dog.com/access",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週水曜日、月2日程度の不定休",
+     "src": "http://k-nine-dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "トリミングに関しては、一年以内にワクチンをされている犬に限ります。",
+     "src": "http://k-nine-dog.com/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW268",
+   "name": "ペットサロン グレース",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://grace.salon-de-one.com/booking/trimming/net",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "太宰府市",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW269",
+   "name": "Trimming Salon Se-ra",
+   "prefs": [
+    "広島県"
+   ],
+   "url": "https://www.trimmingsalon-sera.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "広島市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日】不定休",
+     "src": "https://www.trimmingsalon-sera.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回来店時にはワクチン接種の証明書提示が必要となります。",
+     "src": "https://www.trimmingsalon-sera.com/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW270",
+   "name": "ドッグサロンHIRO",
+   "prefs": [
+    "山口県"
+   ],
+   "url": "http://dogsalon-hiro.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "山口市",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW271",
+   "name": "どっぐぱーる",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://www.dog-pearl.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "久留米市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "9:00~18:00(予約優先)[定休日]不定休",
+     "src": "https://www.dog-pearl.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場は有りますか?",
+     "src": "https://www.dog-pearl.com/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "当サロンを初めてご利用の方は、飼い主さまの身分証明およびワンちゃんのワクチン・狂犬病の接種証明書をお持ちください。",
+     "src": "https://www.dog-pearl.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW272",
+   "name": "ワンワン広場カムカム",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://04.c-craftlab.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "柳川市",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00~18:00",
+     "src": "https://04.c-craftlab.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種証明書",
+     "src": "https://04.c-craftlab.com/%E3%83%89%E3%83%83%E3%82%B0%E3%83%9B%E3%83%86%E3%83%AB/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW273",
+   "name": "ライフパートナー 大村店",
+   "prefs": [
+    "長崎県"
+   ],
+   "url": "https://life-partner.pet/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "大村市",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "狂犬病、ワクチン等の接種をお願いします。子犬は必ずワクチン接種後にご来店ください。",
+     "src": "https://life-partner.pet/menu.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW274",
+   "name": "atelier-b",
+   "prefs": [
+    "大分県"
+   ],
+   "url": "https://erikowithunclejam.wixsite.com/atelier-b",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "臼杵市",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW275",
+   "name": "いぬのホテル&美容 しあん",
+   "prefs": [
+    "大分県"
+   ],
+   "url": "https://tcj18.crayonsite.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "国東市",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付9:00〜19:00",
+     "src": "https://tcj18.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "店舗前 駐車場あり",
+     "src": "https://tcj18.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW276",
+   "name": "K's Farm",
+   "prefs": [
+    "沖縄県"
+   ],
+   "url": "https://ks-farm-2023.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "浦添市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "10:00~18:00 (水曜定休)",
+     "src": "https://ks-farm-2023.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場も完備しておりますので、浦添市・那覇市にお住まいの方はぜひK's Farmまでお越しください!",
+     "src": "https://ks-farm-2023.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW277",
+   "name": "Dog Style",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://www.dogstyle34.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "大野城市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "各コース料金+1000円",
+     "src": "https://www.dogstyle34.jp/menus",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 毎週水曜日、第3木曜",
+     "src": "https://www.dogstyle34.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW278",
+   "name": "ドッグサロン シャンプー",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://www.dogsalonshampoo.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "春日市",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00~17:30",
+     "src": "https://www.dogsalonshampoo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "日曜日",
+     "src": "https://www.dogsalonshampoo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW279",
+   "name": "ドッグサロン KUKUNA",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://www.kukuna.dog/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "糟屋郡志免町",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場あります!",
+     "src": "https://www.kukuna.dog/information.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病ワクチン接種証明書または鑑札(過去1年以内のもの)",
+     "src": "https://www.kukuna.dog/guide.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW280",
+   "name": "トリミングCOCO(ココ)",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "http://houmon-coco.com/",
+   "area": "糟屋郡新宮町",
+   "services": "出張・訪問のシャンプー・トリミング",
+   "city": "糟屋郡新宮町",
+   "facts": [],
+   "checked": "2026-11-23"
   }
  ]
 }
