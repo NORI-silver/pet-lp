@@ -28,7 +28,8 @@ assert.ok(cards[0].display_only); assert.equal(cards[0].token,undefined); assert
 assert.ok(cards.every(c=>c.display_only && c.token===undefined));
 const shown=cards.filter(c=>c.id!=='P002');
 // お迎えの都道府県に対応している会社だけ（Nori 2026-10-31「大阪の住所で全国の会社が出た」）。お店が遠すぎる会社も外す
-const inT=c=>disp.find(d=>d.id===c.id).areas.includes('東京');
+// お迎えの範囲に上限がない会社（anywhere。COCOタク春日部 2026-11-23 の申し込み）は県のリストの外でも出る
+const inT=c=>{const d=disp.find(d=>d.id===c.id); return d.areas.includes('東京') || d.anywhere;};
 assert.ok(shown.length>0 && shown.every(inT));
 assert.equal(shown.length, disp.filter(c=>!ctx.openDisplayIds_().includes(c.id)&&ctx.displayServes_(c,'東京',point)&&ctx.displayInTime_(c,ctx.selectionRide_(p)['希望日時'],new Date())).length);
 shown.forEach(c=>{ assert.equal(c.token,undefined); assert.equal(c.review,null); });
