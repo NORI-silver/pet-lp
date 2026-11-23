@@ -1,0 +1,37 @@
+# 写真の積み重ね (#708 から #716) を、最新の main の上に1本のブランチとして作りなおす。main には何も書かない・公開しない。
+name: photo-integrate
+on:
+  push:
+    branches: ['instinct/photos-integrate-run']
+    paths: ['tools/integrate_trigger.txt']
+permissions:
+  contents: write
+concurrency:
+  group: photo-integrate
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: pip install -q pillow
+      - name: main を取りこむ（ページは main 側を取り、あとで作りなおす）
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git merge origin/main -X theirs --no-edit -m "最新の main を取りこむ（写真の積み重ね用）"
+      - run: python3 tools/regen_cards.py
+      - run: python3 tools/taxi_render_patch.py
+      - name: 補助ワークフローと印を消す
+        run: |
+          git rm -q -f --ignore-unmatch .github/workflows/photo-curated*.yml .github/workflows/photo-integrate.yml tools/integrate_trigger.txt
+      - run: python3 tools/rules_check.py
+      - name: 新しいブランチに入れる
+        run: |
+          git add -A
+          git commit -qm "写真と、写真の枠のページを最新の main で作りなおし" || true
+          git push origin HEAD:refs/heads/instinct/photos-integrated
