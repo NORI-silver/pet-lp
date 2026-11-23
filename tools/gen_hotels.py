@@ -213,7 +213,7 @@ CAT = dict(slug=SLUG, name="大型犬OK・猫専用のペットホテル", unit=
   links=[("大型犬を預けられるペットホテルの探し方", "/guide/large-dog-hotel/"), ("猫をペットホテルに預けるとき", "/guide/cat-hotel/"), ("ペットシッターとペットホテル、どちらがいい？", "/guide/sitter-or-hotel/"), ("トリミング・ペットホテルへの送迎ガイド", "/guide/grooming-hotel/"), ("全国のペットシッター", "/pet-sitter/")])
 
 # 2026-11-22：件数は足りても中身が薄い県（新しい薄いページは作らない。全国のページには載る）。中身を足したら外す
-CAT["no_page"] = ('青森県', '和歌山県', '岐阜県', '滋賀県', '山梨県', '愛媛県', '富山県', '山形県')
+CAT["no_page"] = ('和歌山県', '岐阜県', '滋賀県', '山梨県', '愛媛県', '富山県')
 CAT["fact_cols"] = [("料金", ("料金",)), ("営業・受付時間", ("営業・受付時間",)), ("定休日", ("定休日",)), ("駐車場", ("駐車場",)), ("送迎", ("送迎",))]
 CAT["price_title"] = "料金（公式サイトの表示どおり）"
 CAT["table"] = [("大型犬", lambda h: (f'○（{h["max_kg"]}kgまで）' if h.get("max_kg") else "○") if h.get("large") else ""), ("猫", lambda h: "猫専用" if h.get("cat_only") else ("別室" if h.get("separate") else ("○" if h.get("cat") else ""))), ("病院併設", lambda h: "○" if h.get("vet") else ""), ("送迎", lambda h: "○" if h.get("pickup") else ""), ("シニア", lambda h: "○" if h.get("senior") else ""), ("夜のスタッフ", lambda h: "○" if h.get("night_staff") else "")]

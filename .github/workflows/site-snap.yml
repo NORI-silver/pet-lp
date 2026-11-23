@@ -25,9 +25,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -q --orphan "crawl-out-${GITHUB_REF_NAME##*/}"
+          git checkout -q --orphan crawl-out
           git rm -rq --cached . && git clean -fdq
           cp -r /tmp/out/. .
           git add -A
           git commit -qm "公式サイトの抜き出し ${GITHUB_SHA::7}"
-          git push -q -f origin "crawl-out-${GITHUB_REF_NAME##*/}"
+          git push -q -f origin crawl-out

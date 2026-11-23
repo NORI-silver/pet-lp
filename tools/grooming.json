@@ -3545,6 +3545,377 @@
      "checked": "2026-11-22"
     }
    ]
+  },
+  {
+   "id": "G-HT001",
+   "name": "ペットシッター・はなはな",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.petsitter-hanahana.com/",
+   "area": "10.1km以上はエリア外料金となります",
+   "services": "出張トリミング",
+   "city": "札幌市",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "◇有料駐車場使用時の料金はお客様のご負担となります。",
+     "src": "https://www.petsitter-hanahana.com/itemlist.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは原則前払いで現金支払いとなります。",
+     "src": "https://www.petsitter-hanahana.com/recruit.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "わんちゃんの送迎はご希望により対応しております。",
+     "src": "https://www.petsitter-hanahana.com/concept.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G-HT002",
+   "name": "チーム・シッターズ",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.team-sitters.jp/",
+   "area": "札幌市",
+   "services": "出張トリミング",
+   "city": "札幌市",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "お申し込み時に必要なもの（印鑑・各種ワクチン証明書・身分を証明するもの）",
+     "src": "https://www.team-sitters.jp/services/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G-HT003",
+   "name": "ドッグサロン DOGGY STYLE",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://doggystyle-2007.wixsite.com/info",
+   "area": "千歳市",
+   "services": "出張トリミング",
+   "city": "千歳市",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "◆営業時間 9：00～18：00",
+     "src": "https://doggystyle-2007.wixsite.com/info",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "また火葬場までの送迎など",
+     "src": "https://doggystyle-2007.wixsite.com/info/about-6",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G-HT004",
+   "name": "S-dogs",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://s-dogs.com/",
+   "area": "は、札幌、北広島、恵庭、千歳近郊で出張トリミングをしています",
+   "services": "出張トリミング",
+   "city": "北広島市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張料金は一律 2000円 いただいております。",
+     "src": "https://s-dogs.com/price-list/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2000
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場の有無の確認： 有料駐車場利用の場合、トリミングにかかった時間の駐車場料金を追加 となります。",
+     "src": "https://s-dogs.com/price-list/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※現金でお支払いになります。カード不可です。",
+     "src": "https://s-dogs.com/price-list/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G-HT005",
+   "name": "Pet-Concierge-Nana",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "http://pet-concierge-nana.sun.bindcloud.jp/",
+   "area": "その他の地域（交通費 要相談） ※ 車でお伺いしますので、近隣に駐車スペースがない場合は お受けできません",
+   "services": "出張トリミング",
+   "city": "江別市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "※ ドライヤー（無料）、トリミング台（別途￥５５０円～）を",
+     "src": "http://pet-concierge-nana.sun.bindcloud.jp/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 550
+    },
+    {
+     "k": "駐車場",
+     "v": "お受けできません。（有料駐車場の場合は実費を頂きます）",
+     "src": "http://pet-concierge-nana.sun.bindcloud.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G-HT006",
+   "name": "アイドッグシャンプーサービス札幌",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://idog-hitujigaoka.com/",
+   "area": "小樽市",
+   "services": "出張トリミング",
+   "city": "小樽市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "＊シャンプーしないワンちゃんだけの場合は、3,000円(税込3,300円)〜です。",
+     "src": "https://idog-hitujigaoka.com/shampooprice/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3000
+    },
+    {
+     "k": "料金",
+     "v": "『宿泊中にシャンプーすると、ホテル１泊につき500円割引』いたします。",
+     "src": "https://idog-hitujigaoka.com/doghotel/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 500
+    },
+    {
+     "k": "料金",
+     "v": "シャンプー付500円引",
+     "src": "https://idog-hitujigaoka.com/doghotel/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 500
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間９:００～１８:００",
+     "src": "https://idog-hitujigaoka.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 ◎シャンプー 毎週日曜、月曜 ◎ホテル 不定休",
+     "src": "https://idog-hitujigaoka.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "②駐車スペースをお借りします。（軽自動車ですが車高2.6ｍですので、カーポートはご注意下さい。）",
+     "src": "https://idog-hitujigaoka.com/shampooprice/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは、現金、クレジットカード・アプリ決済・電子マネーOK‼️",
+     "src": "https://idog-hitujigaoka.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "（９）送迎サービスは、店主が送迎可能な場合のみ有料にて承ります。",
+     "src": "https://idog-hitujigaoka.com/doghotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G-HT007",
+   "name": "ペットきらら",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://petkirara.amebaownd.com/",
+   "area": "旭川市",
+   "services": "出張トリミング",
+   "city": "旭川市"
+  },
+  {
+   "id": "G-HT008",
+   "name": "ペットサロン&ホテル ぽちたま",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://potitama.info/",
+   "area": "網走郡美幌町",
+   "services": "出張トリミング",
+   "city": "網走郡美幌町",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "顔カット［1,000円～］",
+     "src": "http://potitama.info/trimming/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 1000
+    },
+    {
+     "k": "料金",
+     "v": "各種薬用シャンプー［500円〜］",
+     "src": "http://potitama.info/trimming/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 500
+    },
+    {
+     "k": "料金",
+     "v": "エステ（クレンジング→シャンプー→保湿ジェル→トリートメント）［1,000円〜］",
+     "src": "http://potitama.info/trimming/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 1000
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間/9:00～19:00まで（時間外応相談）",
+     "src": "http://potitama.info/hotel1/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "車でご来店のお客様はふたば美容室駐車場をお使い下さい。",
+     "src": "http://potitama.info/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "■ 美幌町内の方は無料送迎致します",
+     "src": "http://potitama.info/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G-HT009",
+   "name": "Pokke",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://petpokke.crayonsite.net/",
+   "area": "北見市",
+   "services": "出張トリミング",
+   "city": "北見市"
+  },
+  {
+   "id": "G-HT010",
+   "name": "ペットシッターENNA",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://petshitter-enna.crayonsite.net/",
+   "area": "帯広市",
+   "services": "出張トリミング",
+   "city": "帯広市",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：8:00〜21:00",
+     "src": "https://petshitter-enna.crayonsite.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "・車でお伺いしますので駐車場所がない場合。",
+     "src": "https://petshitter-enna.crayonsite.net/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "🚗ペットサロンへの送迎代行",
+     "src": "https://petshitter-enna.crayonsite.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G-HT011",
+   "name": "わんにゃん出張トリミングエンゼル",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://ay2023.crayonsite.net/",
+   "area": "帯広市",
+   "services": "出張トリミング",
+   "city": "帯広市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "❀部分カット １０００円〜",
+     "src": "https://ay2023.crayonsite.net/p/2/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 1000
+    }
+   ]
+  },
+  {
+   "id": "G-HT012",
+   "name": "ペットサロンフェアリー",
+   "prefs": [
+    "山形県"
+   ],
+   "url": "https://fairypaani.grupo.jp/free1959793",
+   "area": "",
+   "services": "出張トリミング",
+   "city": "",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "入店には１年以内の混合ワクチン接種が必要となっております",
+     "src": "https://fairypaani.grupo.jp/free1959793",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }

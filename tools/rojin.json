@@ -4566,6 +4566,63 @@
    "checked": "2026-11-23",
    "review_query": "愛犬ホーム わんわんパーク 小樽市",
    "review_name": "愛犬ホーム わんわんパーク"
+  },
+  {
+   "id": "R-HT001",
+   "name": "ペットショップ アリス",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://petshop-alice.com/",
+   "city": "札幌市",
+   "addr": "北海道札幌市豊平区西岡1条8丁目8-1DCMホーマック西岡店内",
+   "animals": "犬・猫",
+   "spec": "老犬ホーム",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10:00～19:00",
+     "src": "https://petshop-alice.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R-HT002",
+   "name": "わんこのしっぽ",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://www.wanshippo.com/",
+   "city": "福島市",
+   "addr": "福島県福島市飯野町青木字長畑１０－１",
+   "animals": "犬・猫",
+   "spec": "老犬ホーム・老猫ホーム",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "送迎",
+     "v": "送迎なし(必要な場合、要相談)",
+     "src": "https://www.wanshippo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R-HT003",
+   "name": "にゃーご花巻",
+   "prefs": [
+    "岩手県"
+   ],
+   "url": "https://nya-go.p-kit.com/userblog/index.php?action=view&blog_id=2158369",
+   "city": "花巻市",
+   "addr": "岩手県花巻市",
+   "animals": "犬・猫",
+   "spec": "老犬ホーム・老猫ホーム",
+   "checked": "2026-11-23"
   }
  ],
  "near": {
