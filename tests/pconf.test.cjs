@@ -10,19 +10,25 @@ const ctx=vm.createContext({Date,JSON,Math,Number,String,Object,Array,isFinite,i
   SpreadsheetApp:{getActive:()=>({})}});
 vm.runInContext(fs.readFileSync('booking/Code.gs','utf8'),ctx);
 ctx.ensureSheet_=()=>sheet; ctx.log_=()=>{}; ctx.notifyAdmin_=(s,t)=>mails.push([s,t]);
-const id='D5598693', tok=ctx.demoToken_(id);
-assert.ok(ctx.PCONF[id] && ctx.DISPLAY_COMPANIES.some(c=>c.id===id));                   // 見本のリンクと同じ合言葉で開ける会社
+const id='De5faaf3', tok=ctx.demoToken_(id);
+assert.ok(ctx.DISPLAY_COMPANIES.some(c=>c.id===id));
+ctx.PCONF[id] = {name:'テスト会社', sections:[{h:'条件', items:[
+  {k:'origin', l:'お迎えの起点', tag:'site', type:'text', v:'テスト駅'},
+  {k:'ng_area', l:'行けない地域', tag:'site', type:'check', o:['沖縄県','離島'], v:['沖縄県','離島']},
+  {k:'back', l:'戻る分', tag:'need', type:'text'}
+]}], examples:[{l:'テスト区間', yen:'1,234円', d:'内訳は例'}]};
 const page=ctx.pconfPage_({a:'pconf',t:tok}).html;
-assert.ok(page.includes('緑園都市駅') && page.includes('入力してください') && page.includes('107,600円'));
+assert.ok(page.includes('テスト駅') && page.includes('入力してください') && page.includes('1,234円'));
 assert.ok(/name="f_ng_area_0" value="1" checked/.test(page));                              // サイトの内容は先に選んである
 assert.ok(ctx.pconfPage_({a:'pconf',t:id+'.xxxxxxxxxxxxxxxx'}).html.includes('リンクが正しくありません'));
 assert.ok(ctx.pconfPage_({a:'pconf',t:tok,go:'1'}).html.includes('お名前を入れてください'));   // 名前がなければ送らない
 assert.equal(rows.length,0);
-const done=ctx.pconfPage_({a:'pconf',t:tok,go:'1',name:'平',f_origin:'相鉄線 緑園都市駅（車両基地）',f_ng_area_0:'1',f_back:'かかる（下に書いてください）',f_back_more:'1km100円',ex0:'ちがう',ex0_fix:'4,600円'}).html;
+const done=ctx.pconfPage_({a:'pconf',t:tok,go:'1',name:'テスト',f_origin:'テスト駅',f_ng_area_0:'1',f_back:'別途確認',f_back_more:'確認用',ex0:'ちがう',ex0_fix:'4,600円'}).html;
 assert.ok(done.includes('ありがとうございました') && rows.length===1 && mails.length===1);
-assert.ok(rows[0][4].includes('行けない地域：沖縄県　←') && rows[0][4].includes('1km100円') && rows[0][5].includes('ちがう（4,600円）'));
+assert.ok(rows[0][4].includes('行けない地域：沖縄県　←') && rows[0][4].includes('確認用') && rows[0][5].includes('ちがう（4,600円）'));
 assert.ok(mails[0][1].includes('受付を始めるのは、運営者が確かめてから'));
 console.log('PASS: partner confirm page opens prefilled with the demo token and records answers without touching the partner sheet');
+delete ctx.PCONF[id];
 // 全社：公式サイトの情報（DISPLAY_COMPANIES）から下書きを作る。新しい会社は会社名・メール・ホームページから始める（2026-11-15）
 {
   const c=ctx.DISPLAY_COMPANIES.find(x=>x.id==='De5faaf3'), tok=ctx.demoToken_(c.id);

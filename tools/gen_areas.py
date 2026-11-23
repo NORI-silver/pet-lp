@@ -22,9 +22,12 @@ def _apply_provider():
     import display_companies as _dc
     _p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json")
     _j = json.load(open(_p, encoding="utf-8")); _before = json.dumps(_j, ensure_ascii=False)
+    _j["companies"] = [r for r in _j["companies"] if r["id"] not in _dc.PUBLIC_PAUSES.values()]
     for _r in _j["companies"]: _dc.apply_provider(_r)
     if json.dumps(_j, ensure_ascii=False) != _before: json.dump(_j, open(_p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 _apply_provider()
+from display_companies import PUBLIC_PAUSES
+_HIDDEN_PUBLIC_IDS = sorted(set(PUBLIC_PAUSES) | set(PUBLIC_PAUSES.values()))
 FARES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fares.json"), encoding="utf-8"))
 CO = FARES["companies"]
 ALL_PREFS = list(FARES["areas"])
@@ -91,6 +94,7 @@ _EMG_RV = _EMG_RV + gen_hospitals.review_rows() + gen_rojin.review_rows() + gen_
 booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG_REVIEWS*/var EMG_REVIEWS = " + json.dumps({t["id"]: {"query": t["review_query"], "name": t["review_name"]} for t in _EMG_RV if t.get("review_query")}, ensure_ascii=False) + ";/*/EMG_REVIEWS*/", booking_src, count=1, flags=re.S)
 # 候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る
 _DISP = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))["companies"]
+booking_src = re.sub(r"/\*PUBLIC_PAUSE\*/.*?/\*/PUBLIC_PAUSE\*/", lambda m: "/*PUBLIC_PAUSE*/var PUBLIC_PAUSE = " + json.dumps(_HIDDEN_PUBLIC_IDS) + ";/*/PUBLIC_PAUSE*/", booking_src, count=1, flags=re.S)
 booking_src = re.sub(r"/\*DISPLAY_COMPANIES\*/.*?/\*/DISPLAY_COMPANIES\*/", lambda m: "/*DISPLAY_COMPANIES*/var DISPLAY_COMPANIES = " + json.dumps(_DISP, ensure_ascii=False) + ";/*/DISPLAY_COMPANIES*/", booking_src, count=1, flags=re.S)
 # 掲載情報のページで、はじめから入れておく内容（受付中の会社だけ。公式サイト・提携の申し込みでうかがったこと。Nori 2026-11-15「すでに回答もらってるものは入力済みになってるんだよね？」）
 def _pinfo_known():
@@ -399,13 +403,14 @@ def _creds():
     lic = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "licenses.json"), encoding="utf-8"))["companies"]
     gs = open(os.path.join(ROOT, "booking", "Code.gs"), encoding="utf-8").read()
     m = re.search(r"OPEN_PARTNERS:\s*\{([^}]*)\}", gs)
-    out = {k: {x: v[x] for x in ("reg", "transport", "ins", "quals") if x in v} for k, v in lic.items()}
+    out = {k: {x: v[x] for x in ("reg", "transport", "ins", "quals") if x in v} for k, v in lic.items() if k not in _HIDDEN_PUBLIC_IDS}
     for p, d in (re.findall(r"'([^']+)'\s*:\s*'([^']+)'", m.group(1)) if m else []):
         if d in out: out[p] = out[d]
     return out
 src = re.sub(r"/\*CREDS\*/.*?/\*/CREDS\*/", lambda m: "/*CREDS*/var CREDS = " + json.dumps(_creds(), ensure_ascii=False) + ";/*/CREDS*/", src, count=1, flags=re.S)
 import cardphoto as _cp  # タクシーの候補カードの写真（事業者が登録した掲載情報の写真がないときに使う。Nori 2026-11-16）
-src = re.sub(r"/\*CO_PH\*/.*?/\*/CO_PH\*/", lambda m: "/*CO_PH*/var CO_PH = " + json.dumps(_cp.taxi_map(), ensure_ascii=False) + ";/*/CO_PH*/", src, count=1, flags=re.S)
+src = re.sub(r"/\*CO_PH\*/.*?/\*/CO_PH\*/", lambda m: "/*CO_PH*/var CO_PH = " + json.dumps({k: v for k, v in _cp.taxi_map().items() if k not in _HIDDEN_PUBLIC_IDS}, ensure_ascii=False) + ";/*/CO_PH*/", src, count=1, flags=re.S)
+src = re.sub(r"/\*PUBLIC_PAUSE\*/.*?/\*/PUBLIC_PAUSE\*/", lambda m: "/*PUBLIC_PAUSE*/var PUBLIC_PAUSE = " + json.dumps(_HIDDEN_PUBLIC_IDS) + ";/*/PUBLIC_PAUSE*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*CO_SITE\*/.*?/\*/CO_SITE\*/", lambda m: "/*CO_SITE*/var CO_SITE = " + json.dumps(_co_site(), ensure_ascii=False) + ";/*/CO_SITE*/", src, count=1, flags=re.S)
 # 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、県の中に会社がない県は「（県外の会社のみ）」を付けるか、選択欄から消す）
 src = re.sub(r"/\*AREA_PREFS\*/.*?/\*/AREA_PREFS\*/", lambda m: "/*AREA_PREFS*/var AREA_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}), ensure_ascii=False) + ";/*/AREA_PREFS*/", src, count=1, flags=re.S)
@@ -878,7 +883,7 @@ def pref_company_table(pf, short, cs, cities=()):
         home = "都内" if c["pref"] == pf and pf.endswith("都") else "府内" if c["pref"] == pf and pf.endswith("府") else ("道内" if c["pref"] == pf and pf == "北海道" else ("県内" if c["pref"] == pf else c["pref"]))
         rows.append((0 if c["pref"] == pf else 1, _nat_ride(F, 5) if F else 10**9, f'<tr><td>{e(home)}</td><td>{e(c.get("area_text") or "")}</td><td>{e(ht)}</td><td>{e(r5)}</td><td>{e("—" if c.get("hide_formula") else _pick_txt(F))}</td><td>{e("—" if c.get("hide_formula") else _night_txt(F))}</td></tr>'))
     rows.sort(key=lambda r: (r[0], r[1]))
-    out = f'<h2>{e(short)}に来てくれるペットタクシー{len(cs)}社の、対応エリアと料金のしくみ</h2>'
+    out = f'<h2 id="cos">{e(short)}に来てくれるペットタクシー{len(cs)}社の、対応エリアと料金のしくみ</h2>'
     out += f'<p>{e(pf)}のお迎えに対応している{len(cs)}社について、公式サイトに書かれている対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p>'
     if summ:  # 数は棒で見せる（文字はラベルとして残す。図で読む、2026-11-14）
         out += _V.bars({"title": f"公式サイトに書いている内容を数えると（{len(cs)}社のうち）", "max": len(cs),
