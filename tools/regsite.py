@@ -34,7 +34,7 @@ BUDGET = int(os.environ.get('REG_BUDGET_SEC', 1500))
 def search(it):
     """1つのIPで約40回を超えると 429 になるので、1つのシャードは少ない件数にし、429 が2回続いたらそのシャードは止める（残りは not_searched で次に回す）。"""
     r = dict(it)
-    q = f"{it['name']} {it['city']}"
+    q = it.get('q') or f"{it['name']} {it['city']}"
     r['q'] = q
     if STOP[0] or time.time() - T0 > BUDGET:
         r['results'] = []; r['search_error'] = 'not_searched'; return r
@@ -53,7 +53,8 @@ def search(it):
     return r
 
 def snaps(r):
-    cands = [u for _, u in r.get('results', []) if u.startswith('http') and not SKIP.search(u)][:2]
+    skip = set(r.get('skip') or [])
+    cands = [u for _, u in r.get('results', []) if u.startswith('http') and not SKIP.search(u) and u not in skip][:r.get('ncand', 2)]
     r['snaps'] = []
     for u in cands:
         s = ss.snap({'url': u}); s.pop('cat', None); r['snaps'].append(s)
