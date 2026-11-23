@@ -619,12 +619,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (ex && ex.photos && ex.photos.length) {
         var ph = document.createElement("div"); ph.className = "partner-photos";
         ex.photos.forEach(function(p, i){ var im = document.createElement("img"); im.src = p.url; im.alt = card.label + "の" + (p.kind || "写真"); im.loading = "lazy"; im.decoding = "async";
-          im.referrerPolicy = "no-referrer"; im.addEventListener("error", function(){ im.remove(); if (!ph.querySelector("img")) ph.parentNode.remove(); }); ph.appendChild(im); });
+          im.referrerPolicy = "no-referrer"; im.addEventListener("error", function(){ im.remove(); if (!ph.querySelector("img")) thumb.remove(); }); ph.appendChild(im); });
         // 検索広告のように、写真は料金・特典の右に小さく（Nori 2026-11-15「このくらいの写真は？いちもふくめて」）。横にスワイプで次の写真
-        var thumb = document.createElement("div"); thumb.className = "partner-thumb"; thumb.appendChild(ph);
+        var thumb = document.createElement("div"); thumb.className = "partner-thumb";
+        var frame = document.createElement("div"); frame.className = "partner-photo-frame"; frame.appendChild(ph); thumb.appendChild(frame);
         if (official && official[1]) { var credit = document.createElement("small"); credit.className = "partner-photo-credit"; credit.textContent = official[1]; thumb.appendChild(credit); }
         // 写真の下の文字は出さない（Nori 2026-11-15 の見本）。2枚以上なら小さな点で枚数だけ
-        if (ex.photos.length > 1) { var pn = document.createElement("span"); pn.className = "partner-photo-n"; pn.setAttribute("aria-hidden", "true"); pn.textContent = ex.photos.map(function(){ return "●"; }).join(""); thumb.appendChild(pn); }
+        if (ex.photos.length > 1) { var pn = document.createElement("span"); pn.className = "partner-photo-n"; pn.setAttribute("aria-hidden", "true"); pn.textContent = ex.photos.map(function(){ return "●"; }).join(""); frame.appendChild(pn); }
       }
       var h4 = text("h4", card.label);
       // 運転手の写真（掲載情報）は名前の横に丸く（Nori 2026-11-15「運転手の写真も」）

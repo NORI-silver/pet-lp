@@ -573,7 +573,7 @@ footer a{color:var(--ink-2)}
 .partner-points{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0}
 .partner-points li{font-size:.72rem;background:#eef6ee;color:#2f5d34;border-radius:999px;padding:2px 8px;line-height:1.5}
 .partner-points li.lim{background:#f1f0ee;color:#55504a}
-.partner-body{display:flex;gap:12px;align-items:flex-start}.partner-main{flex:1;min-width:0}.partner-main .partner-price small{display:block;line-height:1.45;margin-top:2px}.partner-main .partner-caution{margin-top:2px!important}.partner-thumb{position:relative;flex:0 0 37%;max-width:220px;align-self:center}.partner-main .partner-price small,.partner-main .partner-offer small{font-size:.68rem;letter-spacing:-.01em}.partner-main .partner-caution{font-size:.72rem!important}.partner-photos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:12px;scrollbar-width:none}.partner-photos::-webkit-scrollbar{display:none}
+.partner-body{display:flex;gap:12px;align-items:flex-start}.partner-main{flex:1;min-width:0}.partner-main .partner-price small{display:block;line-height:1.45;margin-top:2px}.partner-main .partner-caution{margin-top:2px!important}.partner-thumb{position:relative;flex:0 0 37%;max-width:220px;align-self:center}.partner-main .partner-price small,.partner-main .partner-offer small{font-size:.68rem;letter-spacing:-.01em}.partner-main .partner-caution{font-size:.72rem!important}.partner-photo-frame{position:relative}.partner-photos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:12px;scrollbar-width:none}.partner-photos::-webkit-scrollbar{display:none}
 .partner-thumb0{aspect-ratio:3/2;border-radius:12px;background:#f8f3ee url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23e3cdb9'%3E%3Cellipse cx='32' cy='42' rx='13' ry='11'/%3E%3Cellipse cx='16' cy='28' rx='5.5' ry='7'/%3E%3Cellipse cx='48' cy='28' rx='5.5' ry='7'/%3E%3Cellipse cx='25' cy='17' rx='5.5' ry='7.5'/%3E%3Cellipse cx='39' cy='17' rx='5.5' ry='7.5'/%3E%3C/svg%3E") center/30px no-repeat}
 .partner-photos img{flex:0 0 100%;width:100%;aspect-ratio:3/2;object-fit:contain;scroll-snap-align:start;border-radius:12px;background:#f3eee8}
 .partner-photo-src{display:block;margin-top:3px;font-size:.62rem;line-height:1.3;color:#5f6368;overflow-wrap:anywhere}.partner-photo-n{position:absolute;left:0;right:0;bottom:5px;text-align:center;font-size:.4rem;letter-spacing:3px;color:rgba(255,255,255,.9);text-shadow:0 0 3px rgba(0,0,0,.6);pointer-events:none}
@@ -2134,12 +2134,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (ex && ex.photos && ex.photos.length) {
         var ph = document.createElement("div"); ph.className = "partner-photos";
         ex.photos.forEach(function(p, i){ var im = document.createElement("img"); im.src = p.url; im.alt = card.label + "の" + (p.kind || "写真"); im.loading = "lazy"; im.decoding = "async";
-          im.referrerPolicy = "no-referrer"; im.addEventListener("error", function(){ im.remove(); if (!ph.querySelector("img")) ph.parentNode.remove(); }); ph.appendChild(im); });
+          im.referrerPolicy = "no-referrer"; im.addEventListener("error", function(){ im.remove(); if (!ph.querySelector("img")) thumb.remove(); }); ph.appendChild(im); });
         // 検索広告のように、写真は料金・特典の右に小さく（Nori 2026-11-15「このくらいの写真は？いちもふくめて」）。横にスワイプで次の写真
-        var thumb = document.createElement("div"); thumb.className = "partner-thumb"; thumb.appendChild(ph);
+        var thumb = document.createElement("div"); thumb.className = "partner-thumb";
+        var frame = document.createElement("div"); frame.className = "partner-photo-frame"; frame.appendChild(ph); thumb.appendChild(frame);
         if (official && official[1]) { var credit = document.createElement("small"); credit.className = "partner-photo-credit"; credit.textContent = official[1]; thumb.appendChild(credit); }
         // 写真の下の文字は出さない（Nori 2026-11-15 の見本）。2枚以上なら小さな点で枚数だけ
-        if (ex.photos.length > 1) { var pn = document.createElement("span"); pn.className = "partner-photo-n"; pn.setAttribute("aria-hidden", "true"); pn.textContent = ex.photos.map(function(){ return "●"; }).join(""); thumb.appendChild(pn); }
+        if (ex.photos.length > 1) { var pn = document.createElement("span"); pn.className = "partner-photo-n"; pn.setAttribute("aria-hidden", "true"); pn.textContent = ex.photos.map(function(){ return "●"; }).join(""); frame.appendChild(pn); }
       }
       var h4 = text("h4", card.label);
       // 運転手の写真（掲載情報）は名前の横に丸く（Nori 2026-11-15「運転手の写真も」）
