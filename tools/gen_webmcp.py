@@ -19,11 +19,11 @@ CATS = [
     ("senior_dog_home", "老犬ホーム・老猫ホーム", "/rojin-home/"),
     ("pet_sitter", "ペットシッター", "/pet-sitter/"),
     ("dog_trainer", "ドッグトレーナー・しつけ教室", "/dog-trainer/"),
-    ("pet_hotel", "ペットホテル（大型犬OK・猫専用）", "/pet-hotel/"),
+    ("pet_hotel", "ペットホテル（大型犬OK・猫専用でもしぼれる）", "/pet-hotel/"),
     ("mobile_grooming", "出張トリミング", "/trimming/"),
     ("pet_funeral", "ペット火葬・霊園・納骨堂（民間）", "/sougi/"),
     ("city_animal_office", "自治体の動物愛護センター・保健所（迷子・登録・引取り）", "/jichitai/"),
-    ("adoption_center", "保護犬・保護猫の譲渡の窓口（都道府県・政令市の動物愛護センター）", "/joto/"),
+    ("adoption_center", "保護犬・保護猫の譲渡の窓口（自治体の動物愛護センター・保健所）", "/joto/"),
 ]
 
 def _j(root, name):

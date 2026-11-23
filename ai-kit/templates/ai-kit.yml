@@ -1,0 +1,22 @@
+# AI-KIT：指摘の台帳と点検の道具が動くかを PR ごとに確かめる（公開リポジトリなのでお金はかからない）
+name: AI-KIT check
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 指摘の台帳（止めるしくみのない指摘は通さない）
+        run: python3 tools/feedback_check.py .
+      - name: 点検の道具が動くか
+        run: |
+          python3 -m py_compile tools/draft_check.py tools/reply_check.py tools/proposal_check.py tools/feedback_check.py

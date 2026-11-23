@@ -1,0 +1,167 @@
+<title>AIチームの体制図</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap">
+<style>
+/* layout: one tall diagram (phone first), then 5 lesson cards */
+:root{--bg:#f6f7f5;--fg:#1c2320;--muted:#5f6a64;--card:#ffffff;--line:#8a958f;
+--own:#e2771f;--ownbg:#fdf0e4;--hub:#22805a;--hubbg:#e3f3eb;--sup:#2f6fb5;--supbg:#e5eef9;
+--work:#4a5550;--workbg:#ffffff;--gate:#7a4bb8;--gatebg:#f0e9fa;--goal:#c23b5a;--goalbg:#fbe8ed;
+--f:"Noto Sans JP",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131816;--fg:#e9eeeb;--muted:#a6b0aa;--card:#1c2320;--line:#7d8883;
+--own:#f39a4c;--ownbg:#3a2716;--hub:#58c393;--hubbg:#16322a;--sup:#7aaeea;--supbg:#192a40;--work:#c9d2cd;--workbg:#1c2320;--gate:#b892ec;--gatebg:#2c2240;--goal:#f07c97;--goalbg:#3d1d26;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#131816;--fg:#e9eeeb;--muted:#a6b0aa;--card:#1c2320;--line:#7d8883;
+--own:#f39a4c;--ownbg:#3a2716;--hub:#58c393;--hubbg:#16322a;--sup:#7aaeea;--supbg:#192a40;--work:#c9d2cd;--workbg:#1c2320;--gate:#b892ec;--gatebg:#2c2240;--goal:#f07c97;--goalbg:#3d1d26;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f);line-height:1.6}
+.w{max-width:560px;margin:0 auto;padding-block:16px 40px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+h1{font-size:1.35rem;margin:0 0 2px;font-weight:900}
+.sub{color:var(--muted);font-size:.85rem;margin:0 0 10px}
+svg{width:100%;height:auto;display:block}
+svg text{font-family:var(--f);fill:var(--fg)}
+.t{font-size:14px;font-weight:700}
+.s{font-size:11px;fill:var(--muted)}
+.call{font-size:11px;font-weight:700}
+.pp{font-size:15px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.78rem;color:var(--muted);margin:6px 0 4px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+h2{font-size:1.05rem;margin:26px 0 10px;font-weight:900}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.c{background:var(--card);border-radius:10px;padding:10px;border:1px solid color-mix(in srgb,var(--line) 35%,transparent)}
+.c .ic{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;margin-bottom:6px}
+.c b{display:block;font-size:.9rem;line-height:1.35}
+.c small{display:block;color:var(--muted);font-size:.74rem;margin-top:4px;line-height:1.4}
+.c a{color:var(--muted)}
+@media (max-width:340px){.cards{grid-template-columns:1fr}}
+</style>
+<div class="w">
+<h1>AIチームの体制図</h1>
+<p class="sub">ペットのくらし窓口・2026年11月22日</p>
+<div class="legend"><span>↑ 一方向＝決める・止める権限があるところだけ</span><span>⇄ 両方向＝対等にやりとり</span></div>
+
+<svg viewBox="0 0 360 892" role="img" aria-label="体制図：司令塔の下に戦略の関門の策（要・結・算と両方向）。お金・提携の案は策・算・問・鏡を通ってからNoriさんへ。Noriさんと司令塔は報告と判断でやりとり。司令塔の横に問いかけ役と見張り役。担当チーム7つ（お金・契約の算は提携の結と両方向）は横並びで互いに渡し合う。批判役とは両方向、機械の点検だけが止める。">
+<defs>
+ <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" style="fill:var(--line)"/></marker>
+ <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" style="fill:var(--gate)"/></marker>
+ <marker id="as" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" style="fill:var(--sup)"/></marker>
+ <marker id="hb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" style="fill:var(--hub)"/></marker>
+</defs>
+
+<!-- owner -->
+<rect x="20" y="8" width="320" height="58" rx="12" style="fill:var(--ownbg);stroke:var(--own);stroke-width:2"/>
+<circle cx="46" cy="37" r="14" style="fill:var(--own)"/><circle cx="46" cy="32" r="5" style="fill:var(--ownbg)"/><path d="M37 45a9 7 0 0 1 18 0z" style="fill:var(--ownbg)"/>
+<text x="70" y="32" class="t">Noriさん（オーナー）</text>
+<text x="70" y="52" class="s">お金・届出・送信の再開・削除だけ決める</text>
+
+<!-- report up / decide down -->
+<line x1="150" y1="116" x2="150" y2="70" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
+<line x1="210" y1="70" x2="210" y2="116" style="stroke:var(--own);stroke-width:2" marker-end="url(#ah)"/>
+<text x="142" y="98" text-anchor="end" class="call">毎日の報告（3つ）</text>
+<text x="218" y="98" class="call" style="fill:var(--own)">判断（選ぶだけ）</text>
+
+<!-- hub row -->
+<rect x="4" y="120" width="88" height="56" rx="10" style="fill:var(--supbg);stroke:var(--sup);stroke-width:1.5"/>
+<text x="48" y="143" text-anchor="middle" class="t" style="fill:var(--sup)">問（とい）</text>
+<text x="48" y="162" text-anchor="middle" class="s">問いかけ役</text>
+<rect x="112" y="120" width="136" height="56" rx="12" style="fill:var(--hubbg);stroke:var(--hub);stroke-width:2"/>
+<text x="180" y="143" text-anchor="middle" class="t">要（かなめ）</text>
+<text x="180" y="162" text-anchor="middle" class="s">司令塔・毎日の報告</text>
+<rect x="268" y="120" width="88" height="56" rx="10" style="fill:var(--supbg);stroke:var(--sup);stroke-width:1.5"/>
+<text x="312" y="143" text-anchor="middle" class="t" style="fill:var(--sup)">灯（あかり）</text>
+<text x="312" y="162" text-anchor="middle" class="s">見張り役</text>
+<text x="102" y="154" text-anchor="middle" class="pp" style="fill:var(--sup)">⇄</text>
+<text x="258" y="154" text-anchor="middle" class="pp" style="fill:var(--sup)">⇄</text>
+
+<!-- assign / evidence -->
+<rect x="4" y="194" width="176" height="56" rx="10" style="fill:var(--ownbg);stroke:var(--own);stroke-width:2"/>
+<text x="92" y="217" text-anchor="middle" class="t" style="fill:var(--own)">策（さく）戦略の関門</text>
+<text x="92" y="236" text-anchor="middle" class="s">全担当の計画を見る・毎週月曜</text>
+<text x="146" y="191" text-anchor="middle" class="pp" style="fill:var(--own)">⇅</text>
+<text x="62" y="273" text-anchor="middle" class="pp" style="fill:var(--own)">⇅</text>
+<text x="74" y="274" class="call" style="fill:var(--own)">計画の確認</text>
+<line x1="214" y1="179" x2="214" y2="284" style="stroke:var(--hub);stroke-width:2.5" marker-end="url(#hb)"/>
+<line x1="322" y1="284" x2="322" y2="179" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
+<text x="222" y="214" class="call" style="fill:var(--hub)">振る</text>
+<text x="314" y="250" text-anchor="end" class="call">結果と証拠</text>
+
+<!-- teams -->
+<rect x="4" y="288" width="352" height="256" rx="12" style="fill:none;stroke:var(--work);stroke-width:1.5"/>
+<text x="180" y="308" text-anchor="middle" class="call">担当チーム（横並び・上下なし）</text>
+<g>
+ <rect x="12" y="318" width="100" height="50" rx="9" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="62" y="339" text-anchor="middle" class="t">結（ゆい）</text><text x="62" y="357" text-anchor="middle" class="s">提携</text>
+ <rect x="130" y="318" width="100" height="50" rx="9" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="180" y="339" text-anchor="middle" class="t">種（たね）</text><text x="180" y="357" text-anchor="middle" class="s">独自の中身</text>
+ <rect x="248" y="318" width="100" height="50" rx="9" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="298" y="339" text-anchor="middle" class="t">縁（えにし）</text><text x="298" y="357" text-anchor="middle" class="s">被リンク</text>
+ <rect x="12" y="388" width="100" height="50" rx="9" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="62" y="409" text-anchor="middle" class="t">算（そろばん）</text><text x="62" y="427" text-anchor="middle" class="s">お金・契約・法律</text>
+ <rect x="130" y="388" width="100" height="50" rx="9" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="180" y="409" text-anchor="middle" class="t">道（みち）</text><text x="180" y="427" text-anchor="middle" class="s">SEO・集客</text>
+ <rect x="248" y="388" width="100" height="50" rx="9" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="298" y="409" text-anchor="middle" class="t">形（かたち）</text><text x="298" y="427" text-anchor="middle" class="s">画面・UX</text>
+ <rect x="248" y="458" width="100" height="50" rx="9" style="fill:var(--workbg);stroke:var(--work)"/>
+ <text x="298" y="479" text-anchor="middle" class="t">文（ふみ）</text><text x="298" y="497" text-anchor="middle" class="s">メール（送る係）</text>
+ <g class="pp" style="fill:var(--muted)">
+  <text x="121" y="349" text-anchor="middle">⇄</text><text x="239" y="349" text-anchor="middle">⇄</text>
+  <text x="121" y="419" text-anchor="middle">⇄</text><text x="239" y="419" text-anchor="middle">⇄</text>
+  <text x="62" y="383" text-anchor="middle">⇅</text><text x="180" y="383" text-anchor="middle">⇅</text><text x="298" y="383" text-anchor="middle">⇅</text><text x="298" y="453" text-anchor="middle">⇅</text>
+ </g>
+ <text x="180" y="530" text-anchor="middle" class="s">となり同士は直接渡し合う（司令塔を通さない）</text>
+</g>
+
+<!-- critics two-way, checks one-way -->
+<text x="87" y="567" text-anchor="middle" class="pp" style="fill:var(--gate);font-size:18px">⇅</text>
+<text x="95" y="563" class="call" style="fill:var(--gate)">見せる⇄直す</text>
+<line x1="273" y1="547" x2="273" y2="570" style="stroke:var(--gate);stroke-width:2.5" marker-end="url(#ag)"/>
+<text x="265" y="563" text-anchor="end" class="call" style="fill:var(--gate)">止める</text>
+<rect x="4" y="574" width="166" height="56" rx="10" style="fill:var(--gatebg);stroke:var(--gate);stroke-width:1.5"/>
+<text x="87" y="597" text-anchor="middle" class="t" style="fill:var(--gate)">鏡（かがみ）・批判役</text>
+<text x="87" y="616" text-anchor="middle" class="s">飼い主・お金・集客・提携先</text>
+<rect x="190" y="574" width="166" height="56" rx="10" style="fill:var(--gatebg);stroke:var(--gate);stroke-width:2"/>
+<path d="M204 588 l8 -4 l8 4 v7 c0 6 -4 9 -8 11 c-4 -2 -8 -5 -8 -11z" style="fill:var(--gate)"/>
+<text x="228" y="597" class="t" style="fill:var(--gate)">関（せき）</text>
+<text x="273" y="616" text-anchor="middle" class="s">機械の点検・止める</text>
+
+<!-- publish -->
+<line x1="180" y1="632" x2="180" y2="650" style="stroke:var(--line);stroke-width:2" marker-end="url(#ah)"/>
+<rect x="4" y="652" width="352" height="34" rx="17" style="fill:var(--ownbg);stroke:var(--own);stroke-dasharray:4 3"/>
+<text x="180" y="674" text-anchor="middle" class="call" style="fill:var(--own)">送るのは文（ふみ）だけ・OKの文のまま／消す・お金はNoriさん</text>
+
+<rect x="4" y="696" width="352" height="34" rx="17" style="fill:var(--ownbg);stroke:var(--own);stroke-width:1.5"/>
+<text x="180" y="718" text-anchor="middle" class="call" style="fill:var(--own)">お金・提携の案：策→算→問・鏡→Noriさん</text>
+
+<!-- goal chain -->
+<text x="180" y="752" text-anchor="middle" class="call" style="fill:var(--goal)">目標の鎖＝仕事の流れ（上下関係ではない）</text>
+<g>
+ <rect x="8" y="762" width="96" height="26" rx="13" style="fill:var(--workbg);stroke:var(--work)"/><text x="56" y="780" text-anchor="middle" class="call">提携</text>
+ <rect x="132" y="762" width="96" height="26" rx="13" style="fill:var(--workbg);stroke:var(--work)"/><text x="180" y="780" text-anchor="middle" class="call">独自の中身</text>
+ <rect x="256" y="762" width="96" height="26" rx="13" style="fill:var(--workbg);stroke:var(--work)"/><text x="304" y="780" text-anchor="middle" class="call">被リンク</text>
+ <rect x="8" y="802" width="96" height="26" rx="13" style="fill:var(--workbg);stroke:var(--work)"/><text x="56" y="820" text-anchor="middle" class="call">集客</text>
+ <rect x="132" y="802" width="96" height="26" rx="13" style="fill:var(--workbg);stroke:var(--work)"/><text x="180" y="820" text-anchor="middle" class="call">問い合わせ</text>
+ <rect x="256" y="802" width="96" height="26" rx="13" style="fill:var(--goalbg);stroke:var(--goal);stroke-width:2"/><text x="304" y="820" text-anchor="middle" class="call" style="fill:var(--goal)">売上</text>
+ <g style="stroke:var(--line);stroke-width:1.8"><line x1="106" y1="775" x2="130" y2="775" marker-end="url(#ah)"/><line x1="230" y1="775" x2="254" y2="775" marker-end="url(#ah)"/>
+ <path d="M304 789 V795 H56 V800" style="fill:none" marker-end="url(#ah)"/>
+ <line x1="106" y1="815" x2="130" y2="815" marker-end="url(#ah)"/><line x1="230" y1="815" x2="254" y2="815" marker-end="url(#ah)"/></g>
+</g>
+
+<!-- other AIs -->
+<rect x="4" y="840" width="352" height="46" rx="10" style="fill:none;stroke:var(--line);stroke-dasharray:5 4"/>
+<text x="16" y="859" class="t" style="font-size:13px">ほかのAIもチームや批判役に入る</text>
+<text x="16" y="877" class="s">ChatGPT（SNS）・Gemini・Muse ／ 同じ決まり</text>
+</svg>
+
+<h2>なぜこの形か</h2>
+<div class="cards">
+ <div class="c"><div class="ic" style="background:var(--ownbg)"><svg viewBox="0 0 24 24" width="18"><path d="M12 4v16M6 10l6-6 6 6" style="fill:none;stroke:var(--own);stroke-width:2.5"/></svg></div><b>一方向は「権限」だけ</b><small>Noriさんの判断・司令塔の振り分け・機械の点検の「止める」</small></div>
+ <div class="c"><div class="ic" style="background:var(--supbg)"><svg viewBox="0 0 24 24" width="18"><path d="M4 9h16M16 5l4 4-4 4M20 15H4M8 11l-4 4 4 4" style="fill:none;stroke:var(--sup);stroke-width:2.2"/></svg></div><b>チームどうしは対等</b><small>例：火葬の写真→被リンクの材料に。司令塔を待たない</small></div>
+</div>
+
+<h2>世界の事例から入れた6つの決まり</h2>
+<div class="cards">
+ <div class="c"><div class="ic" style="background:var(--ownbg)"><svg viewBox="0 0 24 24" width="18"><text x="12" y="17" text-anchor="middle" style="font-size:15px;font-weight:900;fill:var(--own)">¥</text></svg></div><b>お金・値引き・約束はAIだけで決めない</b><small>AIの売店は頼まれて値引きし赤字に（<a href="https://www.anthropic.com/research/project-vend-1">出典</a>）</small></div>
+ <div class="c"><div class="ic" style="background:var(--gatebg)"><svg viewBox="0 0 24 24" width="18"><path d="M5 12l4 4 10-10" style="fill:none;stroke:var(--gate);stroke-width:3"/></svg></div><b>役を足すより、手順と点検</b><small>手順を決めたら赤字の週がほぼ消えた（<a href="https://www.anthropic.com/research/project-vend-2">出典</a>）</small></div>
+ <div class="c"><div class="ic" style="background:var(--hubbg)"><svg viewBox="0 0 24 24" width="18"><circle cx="11" cy="11" r="6" style="fill:none;stroke:var(--hub);stroke-width:2.5"/><path d="M16 16l5 5" style="stroke:var(--hub);stroke-width:2.5"/></svg></div><b>報告には証拠。実物で確かめるまで「済み」にしない</b><small>AIは終わったふりをする（<a href="https://www.cs.cmu.edu/news/2025/agent-company">出典</a>）</small></div>
+ <div class="c"><div class="ic" style="background:var(--goalbg)"><svg viewBox="0 0 24 24" width="18"><rect x="6" y="10" width="12" height="10" rx="2" style="fill:var(--goal)"/><path d="M9 10V7a3 3 0 0 1 6 0v3" style="fill:none;stroke:var(--goal);stroke-width:2"/></svg></div><b>消す・送る・公開は人のOK</b><small>AIが本番のデータを消した（<a href="https://fortune.com/2025/07/23/ai-coding-tool-replit-wiped-database-called-it-a-catastrophic-failure/">出典</a>）</small></div>
+ <div class="c"><div class="ic" style="background:var(--supbg)"><svg viewBox="0 0 24 24" width="18"><path d="M4 7h16M4 12h16M4 17h16" style="stroke:var(--sup);stroke-width:2.5"/></svg></div><b>並べるのは調べる・批判する仕事。書くのは1人</b><small>並行は速いが量は約15倍、境目があいまいだと重なる（<a href="https://www.anthropic.com/engineering/multi-agent-research-system">出典</a>）</small></div>
+ <div class="c"><div class="ic" style="background:var(--ownbg)"><svg viewBox="0 0 24 24" width="18"><path d="M4 18l5-6 4 3 7-9" style="fill:none;stroke:var(--own);stroke-width:2.5"/></svg></div><b>量より質の数字で見る</b><small>AI中心の窓口は質が下がり人を再雇用（<a href="https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396">出典</a>）</small></div>
+</div>
+</div>
