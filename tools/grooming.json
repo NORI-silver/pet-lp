@@ -1,5 +1,5 @@
 {
- "_説明": "出張トリミング・訪問トリミングの全国一覧（/trimming/）のデータ。公式サイトで確かめたことだけ書く（料金・順位・電話番号は書かない）。area＝公式サイトに書いてある出張エリア、services＝公式サイトに書いてある内容。条件の large（大型犬）・cat（猫）・senior（シニア犬・介護中の子）・car（トリミングカー）・in_home（家の中で施術）・max_kg（最大の体重）は公式サイトにはっきり書いてあるときだけ入れる（ない＝不明。対応しないという意味ではない）。載せない：店舗だけのサロン、シャンプーだけでカットのない出張、新規受付の停止・閉業、公式サイトのない・開けない事業者、登録期限切れのまま更新のないサイト。 2026-11-14 から、公式サイトで確かめた料金・出張費・支払い・用意するものを facts（k・v・src・checked、料金は yen＝いちばん安いコースの金額・tax）に入れる。",
+ "_説明": "出張トリミング・訪問トリミングの全国一覧（/trimming/）のデータ。公式サイトで確かめたことだけ書く（料金・順位・電話番号は書かない）。area＝公式サイトに書いてある出張エリア、services＝公式サイトに書いてある内容。条件の large（大型犬）・cat（猫）・senior（シニア犬・介護中の子）・car（トリミングカー）・in_home（家の中で施術）・max_kg（最大の体重）は公式サイトにはっきり書いてあるときだけ入れる（ない＝不明。対応しないという意味ではない）。載せない：シャンプーだけでカットのない出張、新規受付の停止・閉業、公式サイトのない・開けない事業者、登録期限切れのまま更新のないサイト。 2026-11-14 から、公式サイトで確かめた料金・出張費・支払い・用意するものを facts（k・v・src・checked、料金は yen＝いちばん安いコースの金額・tax）に入れる。 2026-11-23 から、千葉県の店舗のトリミングサロン（お店）も載せる（Nori「載せる」）：shop＝お店で施術する。services は「トリミングサロン」、area は持たない。",
  "checked": "2026-11-02",
  "groomers": [
   {
@@ -33843,6 +33843,4651 @@
    ],
    "checked": "2026-11-23",
    "shop": true
+  },
+  {
+   "id": "GC001",
+   "name": "trim-N",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印西市",
+   "url": "https://www.trim-n.com/",
+   "area": "印西市と周辺",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 平日 9:00~18:00",
+     "src": "https://www.trim-n.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC002",
+   "name": "出張トリミング もーりー",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://morry-grooming.com/",
+   "area": "柏市と周辺",
+   "services": "出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC003",
+   "name": "Dog in boots",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://doginboots39.com/",
+   "area": "船橋市と周辺",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間|09:00~18:00",
+     "src": "https://doginboots39.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC004",
+   "name": "ペットサロン SNOOP（出張トリミング）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://petsalon-snoop.com/home-trimming/",
+   "area": "船橋市と周辺",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬/1,100円",
+     "src": "https://petsalon-snoop.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 10:00 - 19:00",
+     "src": "https://petsalon-snoop.com/home-trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:月曜日(ペットホテルの業務は行っています)",
+     "src": "https://petsalon-snoop.com/company/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初めてご利用の場合、LINEの事前登録・ワクチン証明書・狂犬病予防接種のご登録と同意書のチェックをお願いいたします。 ご新規様はこちら",
+     "src": "https://petsalon-snoop.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC005",
+   "name": "myboo（出張トリミング）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://www.myboo-hometrimming.com/",
+   "area": "船橋市と周辺",
+   "services": "出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC006",
+   "name": "kijimagic 訪問トリミング鬼島",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "http://kijimagic.com/",
+   "area": "千葉市緑区と周辺",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型3,000円",
+     "src": "http://kijimagic.com/dog_hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場2台完備",
+     "src": "http://kijimagic.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC007",
+   "name": "SOPRA GINZA 流山セントラルパーク店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "https://www.sopraginza.com/shop/nagareyama/",
+   "area": "流山市と周辺",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:10:00〜19:00 定休日:年中無休",
+     "src": "https://www.sopraginza.com/shop/nagareyama/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "広い駐車場があり、車での来店に便利。",
+     "src": "https://www.sopraginza.com/shop/nagareyama/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎:880円~",
+     "src": "https://www.sopraginza.com/shop/nagareyama/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC008",
+   "name": "犬のとこやさん るか",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "成田市",
+   "url": "http://inunotokoyasan.com/profile",
+   "area": "成田市と周辺",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "狂犬病ワクチン・混合ワクチンの証明書をご持参ください",
+     "src": "http://inunotokoyasan.com/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC009",
+   "name": "アイネクルネ 富里ベース店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "富里市",
+   "url": "https://tomisato.ainekurune.com/",
+   "area": "富里市と周辺",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00〜18:00(完全予約制)",
+     "src": "https://tomisato.ainekurune.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休(当日受付も可能な場合がございます)",
+     "src": "https://tomisato.ainekurune.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC010",
+   "name": "トリミングハウス うる",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "成田市",
+   "url": "https://urutrim.amebaownd.com/",
+   "area": "成田市と周辺",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "部分カット...500円〜",
+     "src": "https://urutrim.amebaownd.com/pages/7189867/page_202308091001",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC011",
+   "name": "ドッグサロン ベティーズハウス",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://bestie-s.com/",
+   "area": "松戸市と周辺",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "トリミングセット 6,000円〜",
+     "src": "https://bestie-s.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎費1000円~",
+     "src": "https://bestie-s.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC012",
+   "name": "ペットサロン chouchou *シュシュ*",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "習志野市",
+   "url": "https://www.petsalon-chouchou2022.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:(月曜・土曜・祝日)10:00〜17:00",
+     "src": "https://www.petsalon-chouchou2022.com/shop-info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://www.petsalon-chouchou2022.com/shop-info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場はありますので、お車でお越しの場合も大丈夫です。",
+     "src": "https://www.petsalon-chouchou2022.com/qa/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現在お支払い方法は現金、クレジットカード、電子マネー、QR決済がご利用いただけます。詳しくは店頭にてお問い合わせください。",
+     "src": "https://www.petsalon-chouchou2022.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC013",
+   "name": "ドッグサロン イチカワ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "鎌ケ谷市",
+   "url": "https://ichikawa-pecha.crayonsite.net/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "無料送迎受付時間6:00~19:00",
+     "src": "https://ichikawa-pecha.crayonsite.net/p/3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC014",
+   "name": "トリミングサロン・ラム",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "習志野市",
+   "url": "http://salon-ramu.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:30AM–6:00PM",
+     "src": "http://salon-ramu.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日は定休日、火曜日は不定休",
+     "src": "http://salon-ramu.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC015",
+   "name": "犬の美容室 コロン",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "習志野市",
+   "url": "https://collon.main.jp/goannai/index.html",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC016",
+   "name": "トリミングサロン sweet dog",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "習志野市",
+   "url": "https://www.e-fweb.com/sweetdog/info.html",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC017",
+   "name": "DOG STUDIOSAKURA",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "習志野市",
+   "url": "https://skr39.hp.peraichi.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00~18:00(完全予約制)",
+     "src": "https://skr39.hp.peraichi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC018",
+   "name": "Dog SalonFigaro",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "八千代市",
+   "url": "https://www.dogsalon-figaro.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC019",
+   "name": "ドッグフレンドメロディー",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "八千代市",
+   "url": "https://oya-ub.com/shop/3384/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "平均営業時間帯が夕方17時~翌朝5時ごろ",
+     "src": "https://oya-ub.com//yofukashi/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC020",
+   "name": "Trimming Salon Sonrisa",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "八千代市",
+   "url": "https://trimmingsalonsonrisa.amebaownd.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬カットコース¥6050(ロングチワワ)〜",
+     "src": "https://trimmingsalonsonrisa.amebaownd.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 6050
+    },
+    {
+     "k": "駐車場",
+     "v": "🚗駐車場15台",
+     "src": "https://trimmingsalonsonrisa.amebaownd.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC021",
+   "name": "Foster Salon Rip",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "八千代市",
+   "url": "https://dogsalon-rip.official.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:30〜18:00",
+     "src": "https://dogsalon-rip.official.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休 ※1月1日は完全休業です",
+     "src": "https://dogsalon-rip.official.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC022",
+   "name": "nico",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://www.nico-ichi.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "​営業時間 9:00~18:00 / 最終受付 カット18:00 / 白髪染め16:00",
+     "src": "https://www.nico-ichi.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC024",
+   "name": "TeRRIeRge",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "浦安市",
+   "url": "https://terrierge.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "・初回来店時にワクチン接種・狂犬病接種の証明書をお持ちください。(グルーミング・ホテルメニューご希望の方)",
+     "src": "https://terrierge.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC025",
+   "name": "Dog salon Sta",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://dogsalonsta.net/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース ¥3,850",
+     "src": "https://dogsalonsta.net/menu/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3850
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:10:00~17:00",
+     "src": "https://dogsalonsta.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:水曜日",
+     "src": "https://dogsalonsta.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場なし",
+     "src": "https://dogsalonsta.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "決済方法:現金・カード・QR決済",
+     "src": "https://dogsalonsta.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC026",
+   "name": "プードルと小型犬 ドッグサロンきらりん",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://kirarin.dog/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ロングダックス ,ロングチワワ: 6300円〜 シャンプーコース",
+     "src": "https://kirarin.dog/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 6300
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:完全予約制 通常は10:00から夕方",
+     "src": "https://kirarin.dog/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "パーキングはありませんので、斜め前の提携コインパーキングをご利用ください。20分無料サービス券を差し上げます。ご来店時とお迎え時とで、2枚差し上げます。",
+     "src": "https://kirarin.dog/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ご愛犬の狂犬病ワクチンと各種ワクチン接種の証明書をご持参ください。証明書がないと受付できません。",
+     "src": "https://kirarin.dog/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC027",
+   "name": "Dog Salon D-Lian",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://dog-salon-d-lian.amebaownd.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース:チワワ(スムース) ¥ 2,500~",
+     "src": "https://dog-salon-d-lian.amebaownd.com/pages/2619631/menu",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2500
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC028",
+   "name": "mofu mofu",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "浦安市",
+   "url": "https://www.mofumofu.love/contact/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC029",
+   "name": "dogsalon WAN BOO",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "浦安市",
+   "url": "https://www.ds-wanboo.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "※定休日:日・月・火",
+     "src": "https://www.ds-wanboo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC030",
+   "name": "Supreme maihama studio",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "浦安市",
+   "url": "https://supreme-maihama.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 : 10:00~ラスト",
+     "src": "https://supreme-maihama.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 : 火曜日(研修・イベントによる臨時休業あり。年末年始・お盆は休業となります。)",
+     "src": "https://supreme-maihama.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC032",
+   "name": "dog salon JEWEL",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://dogsalon-jewel2014.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:平日10:00~17:00",
+     "src": "https://dogsalon-jewel2014.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://dogsalon-jewel2014.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法:現金 / クレジットカード/ 電子マネー/QRコード決済",
+     "src": "https://dogsalon-jewel2014.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC033",
+   "name": "DogSalon LOOP",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://www.dogsalonloop.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:30〜18:30",
+     "src": "https://www.dogsalonloop.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:木曜日・その他不定休 / 営業時間:9:30〜18:30",
+     "src": "https://www.dogsalonloop.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "専用駐車場はございません。近隣のコインパーキングをご利用の場合、220円割引いたします。",
+     "src": "https://www.dogsalonloop.com/kounodai-trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ご利用時、狂犬病予防接種・混合ワクチン接種の証明書・マイクロチップ登録証をご持参いただくか、コピーのご提示をお願いいたします",
+     "src": "https://www.dogsalonloop.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い:現金 / クレジットカード / 電子マネー(iD・QUICPay) / 交通系IC / QRコード決済(PayPay・楽天ペイ 他) / ICHICO",
+     "src": "https://www.dogsalonloop.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC034",
+   "name": "PETSAM",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://petsam.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "cat": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース:¥3,850~",
+     "src": "https://petsam.jp/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3850
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00-16:30 (不定休)",
+     "src": "https://petsam.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場あり(1台)",
+     "src": "https://petsam.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "支払い方法:現金・カード・交通機関IC",
+     "src": "https://petsam.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC036",
+   "name": "DogSalon Crescendo",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://dogsalon-crescendo.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "【Sコース】¥4,400",
+     "src": "https://dogsalon-crescendo.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 4400
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://dogsalon-crescendo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC037",
+   "name": "トリミングサロン ichifuji",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://torimingsalon-ichifuji.jimdofree.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:30~17:00",
+     "src": "https://torimingsalon-ichifuji.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:水曜・日曜・祝日",
+     "src": "https://torimingsalon-ichifuji.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:1台",
+     "src": "https://torimingsalon-ichifuji.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC038",
+   "name": "Lyrrm",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://lyrrm.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "cat": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払いはキャッシュレス決済のみ対応しております。現金はご利用いただけません。",
+     "src": "https://lyrrm.jp/policy.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC039",
+   "name": "Dog Salon Naffy",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://coccole.wepage.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00〜16:00",
+     "src": "https://coccole.wepage.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://coccole.wepage.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC040",
+   "name": "BonBon.trimming",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://www.bonbon-trimming.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "お返事は営業時間内に致します(9:00~18:00)",
+     "src": "https://www.bonbon-trimming.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://www.bonbon-trimming.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは現金か上記QR決済のみになります",
+     "src": "https://www.bonbon-trimming.com/p/4/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC041",
+   "name": "トリミングハウスami",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://www.mypups.net/stores/721",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日:火曜日",
+     "src": "https://www.mypups.net/stores/721",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場あり",
+     "src": "https://www.mypups.net/requests",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC042",
+   "name": "トリミングサロン peua peu",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://www.inu-notoya.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "両店舗ともに営業時間は9:00〜18:00(最終入店16:00)となっております。",
+     "src": "https://www.inu-notoya.com/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:火曜日、水曜日(年始とお盆は休み)※都合により臨時休業日あり",
+     "src": "https://www.inu-notoya.com/salon",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:なし(短時間であれば、お店前に停めていただいて大丈夫です)",
+     "src": "https://www.inu-notoya.com/salon",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "基本的にはワクチン証明書が必要となりますが、事情により証明書がない場合は別途ご相談ください。",
+     "src": "https://www.inu-notoya.com/guide",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "是非お気軽にご利用ください。 また、「犬のとこや のと」では送迎サービス(550円)を行っております。",
+     "src": "https://www.inu-notoya.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "支払い方法は、現金、クレジットカード(Visa・Mastercard・JCB・American Express・Diners Club)電子マネー(PayPay)となっております。",
+     "src": "https://www.inu-notoya.com/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC043",
+   "name": "ペットサロン M DOG",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://mdog.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "全身ハサミカット:¥2,200",
+     "src": "https://mdog.jp/trimming-menu/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2200
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間【完全予約制】10:00~18:00",
+     "src": "https://mdog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 水・木曜日",
+     "src": "https://mdog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎:半径3km~:有料になりますので事前にご相談ください",
+     "src": "https://mdog.jp/trimming-menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC044",
+   "name": "犬の美容室 ジェイリー",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://www.jeylly.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース:¥4,000~",
+     "src": "https://www.jeylly.com/menu",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 4000
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00~19:00 不定休",
+     "src": "https://www.jeylly.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://www.jeylly.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:有り(3台)",
+     "src": "https://www.jeylly.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "支払い方法:現金のみ",
+     "src": "https://www.jeylly.com/shop",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC045",
+   "name": "ドッグサロン JUJU",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "https://dogsalon-juju.jimdofree.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC046",
+   "name": "DOGdesign reMore+",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "https://dogdonut.jp/shops/shop_a0d4034c82b67b449e92e6d5/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC047",
+   "name": "ball",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://balltrimmingsalon.wixsite.com/ball",
+   "services": "トリミングサロン",
+   "shop": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9: 00-終わり次第",
+     "src": "https://balltrimmingsalon.wixsite.com/ball",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "​定休日 金曜日",
+     "src": "https://balltrimmingsalon.wixsite.com/ball",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC048",
+   "name": "La queue",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "https://la-queue.shopinfo.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "店休日 月,火,他",
+     "src": "https://la-queue.shopinfo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "※1年以内の狂犬病接種証明、5種以上の混合ワクチンの接種証明書または抗体検査結果のご提示をお願いいたします。",
+     "src": "https://la-queue.shopinfo.jp/pages/7129093/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC050",
+   "name": "犬の美容室 COWAN",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://www.cowan.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "お好きなスタイルを自由に選べるコース:¥9,900",
+     "src": "https://www.cowan.jp/price",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 9900
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "[営業時間]9:00~18:00 [定休日]毎週月曜日・火曜日",
+     "src": "https://www.cowan.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日毎週月曜日・火曜日",
+     "src": "https://www.cowan.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:有り",
+     "src": "https://www.cowan.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "●当店は混合ワクチン・狂犬病ワクチンを年1回接種しているワンちゃんにご利用を限らせていただいております。ご来店の際にワクチン証明書をお持ちください。",
+     "src": "https://www.cowan.jp/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払方法:現金・各種クレジットカード・PayPay・d払い・メルペイ・LINEペイ",
+     "src": "https://www.cowan.jp/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC051",
+   "name": "トリミングサロン VISAGEDOGS SUPPORTED BY わんのはな",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://visage.co.jp/shop/visage-dogs/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日:火曜日",
+     "src": "https://visage.co.jp/shop/visage-dogs/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "※1年以内に5種以上の混合ワクチンを接種されているワンちゃんのみ受付可能です。初回トリミングご来店の際にワクチン証明書のご提示をお願いします。",
+     "src": "https://visage.co.jp/shop/visage-dogs/menu.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC052",
+   "name": "ペットサロン らぷす",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://raps-petsalon.net/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10時〜19時(不定休)",
+     "src": "https://raps-petsalon.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "無料駐車場1台",
+     "src": "https://raps-petsalon.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・狂犬病、混合ワクチンの接種証明書のご提示(写真可)をお願いいたします。",
+     "src": "https://raps-petsalon.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "支払方法:現金/クレジットカード/PayPay",
+     "src": "https://raps-petsalon.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC054",
+   "name": "須藤",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "我孫子市",
+   "url": "https://tobe-life.com/sudo-shun-face/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC055",
+   "name": "トリミングサロンアラモード松戸胡録台店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://ts-alamode.salon-de-one.com/booking/trimming/matsudo",
+   "services": "トリミングサロン",
+   "shop": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~18:00",
+     "src": "https://ts-alamode.salon-de-one.com/booking/trimming/matsudo",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC056",
+   "name": "トリミングサロンアラモード松戸駅前店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://ts-alamode.salon-de-one.com/booking/trimming/matsudo-ekimae",
+   "services": "トリミングサロン",
+   "shop": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~18:00",
+     "src": "https://ts-alamode.salon-de-one.com/booking/trimming/matsudo-ekimae",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC057",
+   "name": "ドッグサロン チャーリー",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "我孫子市",
+   "url": "https://dogsalon-charlie8611.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "[営業時間]9:00~18:00(定休日:水曜日・金曜日)",
+     "src": "https://dogsalon-charlie8611.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:水曜日・金曜日",
+     "src": "https://dogsalon-charlie8611.com/shop",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "※駐車場:1台",
+     "src": "https://dogsalon-charlie8611.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "年一回のワクチン、狂犬病の接種の証明書をご提示頂いております。",
+     "src": "https://dogsalon-charlie8611.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法:現金、ペイペイのみ(クレジット不可)",
+     "src": "https://dogsalon-charlie8611.com/shop",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC058",
+   "name": "Dog Salon Riku",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "https://riku-dogsalon.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間】9:00~18:00",
+     "src": "https://riku-dogsalon.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "【定休日】月・木曜日 (変更などはInstagram、公式LINEでご確認ください)",
+     "src": "https://riku-dogsalon.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場あり",
+     "src": "https://riku-dogsalon.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC059",
+   "name": "トリミングサロン セントラルパークカフェ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "https://trimmingsalon-centralparkcafe.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "お手入れセット<上記から選べる5点セット>:(小・中型犬)2200円 (大型犬)3520円",
+     "src": "https://trimmingsalon-centralparkcafe.com/free/pricelist",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2200
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:09:00 ~ 18:00",
+     "src": "https://trimmingsalon-centralparkcafe.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場3台完備。『流山(流山おおたかの森、南流山、初石、深井、江戸川台)、柏(豊四季、南柏)、松戸(北小金、新松戸)三郷、野田』からのアクセスも良好です。",
+     "src": "https://trimmingsalon-centralparkcafe.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回と1年に1回、狂犬病ワクチンと混合ワクチン接種証明書を確認させていただきます。狂犬病、混合ワクチンの接種から5日を経過していない場合の施術はお断りしております。",
+     "src": "https://trimmingsalon-centralparkcafe.com/free/info",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC060",
+   "name": "ドッグサロン&アロマ由莉",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://genbanikki.exblog.jp/26682528/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC061",
+   "name": "犬・猫 カトリ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "我孫子市",
+   "url": "https://petkatori.jimdofree.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC062",
+   "name": "トリミングサロン STAR DOG",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "https://www.familydog.store/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:月〜金:10:00〜19:00",
+     "src": "https://www.familydog.store/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 : 水曜日",
+     "src": "https://www.familydog.store/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC063",
+   "name": "Beauty Dog モカ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "野田市",
+   "url": "https://www.beautydog-moca.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:30~トリミング終了次第",
+     "src": "https://www.beautydog-moca.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:毎週月曜日 (不定休あります)",
+     "src": "https://www.beautydog-moca.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC064",
+   "name": "DOGSALONSTELLAUNO",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "野田市",
+   "url": "https://www.stellauno.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:午前9時~午後6時",
+     "src": "https://www.stellauno.com/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:水曜日",
+     "src": "https://www.stellauno.com/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場完備",
+     "src": "https://www.stellauno.com/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・初回のカウンセリング時に、狂犬病予防接種・混合ワクチン接種の証明書のご提示をお願いしております。",
+     "src": "https://www.stellauno.com/%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC065",
+   "name": "らいふたいむ L",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "野田市",
+   "url": "https://br-road.jp/lifetime-l/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:12時~18時 毎週木曜・金曜定休",
+     "src": "https://br-road.jp/lifetime-l/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "【混合ワクチンと狂犬病予防接種の証明書の確認】",
+     "src": "https://br-road.jp/lifetime-l/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※お支払いは現金のみとなっております。",
+     "src": "https://br-road.jp/lifetime-l/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC066",
+   "name": "ワンニャン美容室 ペロ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://pero.work/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:09:00 ~ 17:00",
+     "src": "https://pero.work/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:月曜日・金曜日",
+     "src": "https://pero.work/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場なし",
+     "src": "https://pero.work/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回に限り1年以内に接種した混合ワクチンと狂犬病ワクチンの証明書をご提示頂きます。",
+     "src": "https://pero.work/free/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC067",
+   "name": "アンジュ ブランド ナナ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://teacup-tiny-poodle.com/?page_id=73",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【受付時間】AM9:00~PM22:00",
+     "src": "https://teacup-tiny-poodle.com/?page_id=73",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC068",
+   "name": "とりむ Mina",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://mina0715sakura.crayonsite.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:平日:9時~18時",
+     "src": "https://mina0715sakura.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:毎週木曜日/第2、4日曜日",
+     "src": "https://mina0715sakura.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:有り(1台)",
+     "src": "https://mina0715sakura.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC069",
+   "name": "THE DOG SalonTrimming Wagon 佐倉店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://thedog-wagon.jp/news/n0015/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "トリミングコース参考価格:¥ 7,500 〜 ¥ 12,000",
+     "src": "https://thedog-wagon.jp/menu/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 7500
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC070",
+   "name": "Dog salon shiny",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://dogsalon-shiny.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~18:00",
+     "src": "https://dogsalon-shiny.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://dogsalon-shiny.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:1台",
+     "src": "https://dogsalon-shiny.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回来店時にはワクチン証明証(抗体検査証明書も可)、狂犬病予防注射済証をご提示お願いいたします。",
+     "src": "https://dogsalon-shiny.com/free/tos",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "決済方法:現金、クレジットカード、電子マネー",
+     "src": "https://dogsalon-shiny.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC071",
+   "name": "POLUPO dogsalon&cafe (ポルポ ドッグサロンアンドカフェ)",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "四街道市",
+   "url": "https://siseijyuku.com/businesscompass/1523/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:30-19:00",
+     "src": "https://siseijyuku.com/businesscompass/1767/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC072",
+   "name": "ペットの専門店コジマ 四街道店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "四街道市",
+   "url": "https://kojima.salon-de-one.com/booking/trimming/yotsukaido",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00~20:00",
+     "src": "https://kojima.salon-de-one.com/booking/trimming/yotsukaido",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:あり",
+     "src": "https://kojima.salon-de-one.com/booking/trimming/yotsukaido",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "●原則的に本年度のワクチン接種を終えていることを条件とし、1年以内の混合ワクチン及び狂犬病注射接種証明書のご提示をお願いしております。",
+     "src": "https://kojima.salon-de-one.com/booking/trimming/yotsukaido",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC073",
+   "name": "おうち",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "四街道市",
+   "url": "https://0uchi.crayonsite.net/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC074",
+   "name": "Santa-Fe",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "四街道市",
+   "url": "https://santafe-dog.wixsite.com/trimming",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "カットコース:【1】 4500円",
+     "src": "https://santafe-dog.wixsite.com/trimming/price",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 4500
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:AM9:00~PM5:00",
+     "src": "https://santafe-dog.wixsite.com/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC076",
+   "name": "RAO",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "八街市",
+   "url": "https://raoraorao.amebaownd.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10:00~17:00 (完全予約制)",
+     "src": "https://raoraorao.amebaownd.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://raoraorao.amebaownd.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC079",
+   "name": "n-dog",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印西市",
+   "url": "https://www.n-dog.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:​9:00~18:00",
+     "src": "https://www.n-dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:日曜日・木曜日",
+     "src": "https://www.n-dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC080",
+   "name": "いぬの美容室Poohさん",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印西市",
+   "url": "https://www.trimming-poohsann.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー 4,800円~",
+     "src": "https://www.trimming-poohsann.com/menu",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 4800
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 平日9:00~17:30/土曜日・日曜日・祝日9:00~18:00",
+     "src": "https://www.trimming-poohsann.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 毎週水曜日・土曜日もしくは日曜日",
+     "src": "https://www.trimming-poohsann.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC081",
+   "name": "LUANA",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "白井市",
+   "url": "https://www.luana-salon-style.com/c-shiroi.html",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC082",
+   "name": "B-DOG",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印旛郡栄町",
+   "url": "https://b-dog.amebaownd.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間・9:00〜17:00",
+     "src": "https://b-dog.amebaownd.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日・水曜",
+     "src": "https://b-dog.amebaownd.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC083",
+   "name": "Dog salon FLAN",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印旛郡栄町",
+   "url": "https://dogsalon-flan.shopinfo.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:30~終了次第閉店",
+     "src": "https://dogsalon-flan.shopinfo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休(ご予約が入っていない日はお休みです)",
+     "src": "https://dogsalon-flan.shopinfo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC084",
+   "name": "LiLico’s",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印旛郡酒々井町",
+   "url": "https://lilicos.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC085",
+   "name": "ドッグケアサロン sweet calm",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印旛郡酒々井町",
+   "url": "https://sweet-calm.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "cat": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00 〜 18:00",
+     "src": "https://sweet-calm.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:木曜日",
+     "src": "https://sweet-calm.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場は2台完備しております",
+     "src": "https://sweet-calm.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC086",
+   "name": "トリミングサロン T-SQUARE",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印旛郡栄町",
+   "url": "https://t-square-salon.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~18:00(犬種やメニューによって、最終受付時間は異なります。)",
+     "src": "https://t-square-salon.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:月曜日、金曜日、年始1/1~1/3",
+     "src": "https://t-square-salon.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC087",
+   "name": "犬の美容室 ポチのいえ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印旛郡栄町",
+   "url": "https://pochino-ie.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:8:00~17:00",
+     "src": "https://pochino-ie.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:水曜日、木曜日",
+     "src": "https://pochino-ie.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC088",
+   "name": "ROCA.STYLE",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "成田市",
+   "url": "https://www.rocastyle222.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース 5,100円 ~ 16,600円",
+     "src": "https://www.rocastyle222.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 5100
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "​(受付時間:9:30~17:00)",
+     "src": "https://www.rocastyle222.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 毎週土曜(変動あり)",
+     "src": "https://www.rocastyle222.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC089",
+   "name": "Trimming salon Bonheur",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "成田市",
+   "url": "https://www.trimmingsalonbonheur.net/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00~17 :00 [不定休]",
+     "src": "https://www.trimmingsalonbonheur.net/%E5%BA%97%E8%88%97%E3%81%94%E6%A1%88%E5%86%85",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "毎年接種後に接種証明書の確認をいたします、 接種後はワクチン接種を証明できるものを御持参ください。 ​",
+     "src": "https://www.trimmingsalonbonheur.net/%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC091",
+   "name": "トリミングサロン のんの",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "成田市",
+   "url": "https://nonno-trimming.jimdofree.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10:00〜19:00",
+     "src": "https://nonno-trimming.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 毎週水曜日",
+     "src": "https://nonno-trimming.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC092",
+   "name": "dog communityhouse Cu Sith",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "富里市",
+   "url": "http://cu-sith.sakura.ne.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "■営業時間:10時〜19時",
+     "src": "http://cu-sith.sakura.ne.jp/access1.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC093",
+   "name": "Snappy Dog",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "香取市",
+   "url": "https://www.naturalanimalcare.co.jp/salon/snappy-dog/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 / 10:00~18:00(土日祝日定休)",
+     "src": "https://www.naturalanimalcare.co.jp/salon/snappy-dog/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC094",
+   "name": "Dog Salon Famille",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "匝瑳市",
+   "url": "https://dogsalonfamille.crayonsite.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース:4500円",
+     "src": "https://dogsalonfamille.crayonsite.com/p/3/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 4500
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:open 10:00 ~ close 17:00",
+     "src": "https://dogsalonfamille.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:月曜日",
+     "src": "https://dogsalonfamille.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC096",
+   "name": "PURE DOG",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "大網白里市",
+   "url": "http://puredog.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "クイックカット:30分3,300円",
+     "src": "http://puredog.jp/trimming/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3300
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~18:30(受付終了)",
+     "src": "http://puredog.jp/shopinfo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:月曜日 木曜日",
+     "src": "http://puredog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC097",
+   "name": "DAISY",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "山武市",
+   "url": "https://p502r.crayonsite.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬シャンプーカット6000円〜(6キロまで)",
+     "src": "https://p502r.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 6000
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10時〜",
+     "src": "https://p502r.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎10キロ圏内500円",
+     "src": "https://p502r.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC098",
+   "name": "ドッグサロン・ザ・ガーデン",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "山武市",
+   "url": "https://dogsalonthegarden.hp.peraichi.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00〜18:00",
+     "src": "https://dogsalonthegarden.hp.peraichi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:月曜・水曜(午後)・金曜",
+     "src": "https://dogsalonthegarden.hp.peraichi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "●当店をご利用の際には、1年以内のワクチン接種、狂犬病の証明書をご持参ください。",
+     "src": "https://dogsalonthegarden.hp.peraichi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法:当店は、現金及び主要クレジットカード、交通系電子マネーのほか「ApplePay」「iD」「QUICPay」及び、各種QR決済サービスでのお支払も可能です。",
+     "src": "https://dogsalonthegarden.hp.peraichi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC099",
+   "name": "pet salon pyonpyon",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "東金市",
+   "url": "https://www.country-base.com/works/works-13623/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00〜17:00",
+     "src": "https://www.country-base.com/pf_training/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC100",
+   "name": "SEASIDEDOG",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "山武郡九十九里町",
+   "url": "https://dogdonut.jp/shops/shop_7dd7899a22ef248d18c567a9/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC102",
+   "name": "Trimmingsalon Rico*",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "長生郡長南町",
+   "url": "https://www.trimmingsalonrico.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間】9:00~17:00【定休日】木曜日、第1・第3日曜日",
+     "src": "https://www.trimmingsalonrico.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:木曜日、第1・第3日曜日(インスタグラムを確認してください)",
+     "src": "https://www.trimmingsalonrico.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:有り(2台)",
+     "src": "https://www.trimmingsalonrico.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回ご利用時に1年以内に接種した狂犬病ワクチン、5種以上の混合ワクチンの証明書、お客様の身分証明書の3点をお持ちください。",
+     "src": "https://www.trimmingsalonrico.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC103",
+   "name": "Dog salonRotti",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "茂原市",
+   "url": "https://dogrotti.wixsite.com/rotti",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "​水曜定休日・当日予約可",
+     "src": "https://dogrotti.wixsite.com/rotti",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC106",
+   "name": "DOGGY BASE",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "茂原市",
+   "url": "https://doggy-base.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "各種ワクチンの接種/証明書の提示をお願いします。ご提示のない場合はお預かりできません。",
+     "src": "https://doggy-base.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC107",
+   "name": "Dee O Gee",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "長生郡一宮町",
+   "url": "http://dee-o-gee.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC108",
+   "name": "ペットサロン ピンクビーチ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "長生郡一宮町",
+   "url": "https://petsalonpinkbeach.jp/tag/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B5%E3%83%AD%E3%83%B3/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC109",
+   "name": "ディアワンズ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "茂原市",
+   "url": "https://speedy-one.jp/mobara.html",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00~20:00 最終受付19:00迄",
+     "src": "https://speedy-one.jp/mobara.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:年中無休",
+     "src": "https://speedy-one.jp/shop.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC110",
+   "name": "トリミングサロンいぬきち",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "茂原市",
+   "url": "https://www.inukichi.info/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC111",
+   "name": "犬の美容室シェトゥトゥ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "長生郡一宮町",
+   "url": "https://cold-naha-5032.daa.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC112",
+   "name": "Condor Cut",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "いすみ市",
+   "url": "https://condorsurfandcafe.jimdofree.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC113",
+   "name": "Dogsalon Chocotan",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "いすみ市",
+   "url": "https://chocotan.stars.ne.jp/dogsalon/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 火・金 / OPEN 9:00-18:00",
+     "src": "https://chocotan.stars.ne.jp/dogsalon/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC114",
+   "name": "Doraちゃんの犬の美容室",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "いすみ市",
+   "url": "https://dorachansdogsalon.amebaownd.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC115",
+   "name": "ドッグサロン わんSmile",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "南房総市",
+   "url": "https://dswan-smile.crayonsite.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "電話受付時間:9:00〜19:00",
+     "src": "https://dswan-smile.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "不定休・駐車場2台",
+     "src": "https://dswan-smile.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC117",
+   "name": "マム",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "君津市",
+   "url": "https://www.style-adp.com/top/%E7%94%9F%E6%B4%BB%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9/%E3%83%96%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BCdog-cat-%E3%83%9E%E3%83%A0/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10:00~17:00",
+     "src": "https://www.style-adp.com/top/%E7%94%9F%E6%B4%BB%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9/%E3%83%96%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BCdog-cat-%E3%83%9E%E3%83%A0/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC118",
+   "name": "Dog Salon ALBA",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "木更津市",
+   "url": "http://dogsalon-alba.net/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC119",
+   "name": "CHAKRA",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "木更津市",
+   "url": "https://www.trimmingsalon-chakra.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース+全体カット:6,050円~7,700円",
+     "src": "https://www.trimmingsalon-chakra.com/trimming",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 6050
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:30~19:00",
+     "src": "https://www.trimmingsalon-chakra.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://www.trimmingsalon-chakra.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "A.混合ワクチン・狂犬病予防注射の接種証明書をお持ちください。他に持ち物は必要ございません。",
+     "src": "https://www.trimmingsalon-chakra.com/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "支払方法:現金、PayPay",
+     "src": "https://www.trimmingsalon-chakra.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC120",
+   "name": "AINAILONA",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "木更津市",
+   "url": "https://ainailona128.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "【定休日】月曜日・第1、3火曜日",
+     "src": "https://ainailona128.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "専用駐車場はございません。",
+     "src": "https://ainailona128.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC121",
+   "name": "愛犬美容室 わんわんクラブONE'S",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "富津市",
+   "url": "https://futtsu-ones.jimdofree.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:30~18:00",
+     "src": "https://futtsu-ones.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 : 毎週金曜日 &",
+     "src": "https://futtsu-ones.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC122",
+   "name": "PET salon Peter pan",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "富津市",
+   "url": "https://petsaron-peterpan.jimdofree.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "cat": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00/Open 16:00close",
+     "src": "https://petsaron-peterpan.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://petsaron-peterpan.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎料金➕100いただいております。15分以内無料",
+     "src": "https://petsaron-peterpan.jimdofree.com/%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC-%E6%96%99%E9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC123",
+   "name": "グルーミングサロンラブアンドクー(LOVE&COO)",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "木更津市",
+   "url": "https://www.love-coo.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00~18:00 (時間外応相談)",
+     "src": "https://www.love-coo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:木曜日 及び 不定休",
+     "src": "https://www.love-coo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:有り(1台)",
+     "src": "https://www.love-coo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "※初めてご来店のお客様は、1年以内の狂犬病・混合ワクチン各々の「接種証明書」をお持ちください。",
+     "src": "https://www.love-coo.jp/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "有料(送迎1,600円、片道800円になります)",
+     "src": "https://www.love-coo.jp/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "決済方法:クレジットカード(VISA・マスターカード)・PayPay(ペイペイ)可",
+     "src": "https://www.love-coo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC124",
+   "name": "トリミングサロン フワモコ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "君津市",
+   "url": "https://fuwamoko.net/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00-19:00※カットの最終受付は15:30まで",
+     "src": "https://fuwamoko.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:毎週火曜日",
+     "src": "https://fuwamoko.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC125",
+   "name": "DogSalon Fluffy",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "袖ケ浦市",
+   "url": "https://www.dogsalonfluffy.shop/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC126",
+   "name": "Le Sourire",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "木更津市",
+   "url": "https://www.petsaron-le-sourire.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00~19:00",
+     "src": "https://www.petsaron-le-sourire.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://www.petsaron-le-sourire.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC128",
+   "name": "Dog SalonPetit Mignon",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "木更津市",
+   "url": "https://dogsalonpetit2023.wixsite.com/petit/petit",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間9:30~17:30",
+     "src": "https://dogsalonpetit2023.wixsite.com/petit/petit",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "​定休日 月曜日",
+     "src": "https://dogsalonpetit2023.wixsite.com/petit/petit",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "​駐車場 3台",
+     "src": "https://dogsalonpetit2023.wixsite.com/petit/petit",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "​​当日、1年以内のワクチン接種の証明書と、狂犬病予防注射済みの証明書をお持ちください。",
+     "src": "https://dogsalonpetit2023.wixsite.com/petit/%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC129",
+   "name": "CHIPS",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "木更津市",
+   "url": "https://chips-groomingsalon.com/gallery-2/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "※駐車場2台あり",
+     "src": "https://chips-groomingsalon.com/infomation/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC130",
+   "name": "PET SALONIRIE 木更津店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "木更津市",
+   "url": "https://iriekisarazu.crayonsite.info/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース 4kg未満 ¥7,000",
+     "src": "https://iriekisarazu.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 7000
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:30〜18:00",
+     "src": "https://iriekisarazu.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 火曜・水曜",
+     "src": "https://iriekisarazu.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:有り(3台)",
+     "src": "https://iriekisarazu.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法:現金のみ",
+     "src": "https://iriekisarazu.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC131",
+   "name": "ドッグサロン スタイル",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市原市",
+   "url": "https://happystyle2016.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間9:00-18:00",
+     "src": "https://happystyle2016.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休(年末年始・夏季休業・臨時休業あり)",
+     "src": "https://happystyle2016.com/shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC132",
+   "name": "Dog Salon an LILY's.",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市原市",
+   "url": "https://anlilys.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~18:00",
+     "src": "https://anlilys.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:水曜日",
+     "src": "https://anlilys.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC133",
+   "name": "ペットの専門店コジマ アリオ市原店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市原市",
+   "url": "https://kojima.salon-de-one.com/booking/trimming/ichihara",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00~21:00",
+     "src": "https://kojima.salon-de-one.com/booking/trimming/ichihara",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:有(アリオ市原内駐車場)",
+     "src": "https://kojima.salon-de-one.com/booking/trimming/ichihara",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "●原則的に本年度のワクチン接種を終えていることを条件とし、1年以内の混合ワクチン及び狂犬病注射接種証明書のご提示をお願いしております。",
+     "src": "https://kojima.salon-de-one.com/booking/trimming/ichihara",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC134",
+   "name": "PET SALON IRIE",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市原市",
+   "url": "https://www.petsalon-irie.info/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース ¥3,700",
+     "src": "https://www.petsalon-irie.info/p/6/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3700
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:30~18:00",
+     "src": "https://www.petsalon-irie.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日(火曜・水曜)",
+     "src": "https://www.petsalon-irie.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "支払い方法:※現金のみ対応",
+     "src": "https://www.petsalon-irie.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC135",
+   "name": "DOG&CAT JOKER ユニモちはら台店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市原市",
+   "url": "https://unimo-chiharadai.com/shopguide/joker/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10:00〜21:00 ※年中無休・一部の店舗営業時間が異なります。",
+     "src": "https://unimo-chiharadai.com/shopguide/joker/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC136",
+   "name": "トリミングサロンアラモード柏",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://ts-alamode.salon-de-one.com/booking/trimming/kashiwa",
+   "services": "トリミングサロン",
+   "shop": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~19:00",
+     "src": "https://ts-alamode.salon-de-one.com/booking/trimming/kashiwa",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC137",
+   "name": "ドッグサロン チャオ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://cao-jp.com/price/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00~ 18:00 現在ご予約のお客様が終わり次第閉店しております",
+     "src": "https://cao-jp.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "《定休日》木曜日(他に臨時休業あり・ 営業日カレンダー をご覧ください)",
+     "src": "https://cao-jp.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "またワクチン接種証明書(混合ワクチン・狂犬病ワクチン)をご提示",
+     "src": "https://cao-jp.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC138",
+   "name": "犬の美容室 さとう",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://inunobiyoushitsusatou.jimdofree.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC139",
+   "name": "トリミングサロンアラモード豊四季店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://ts-alamode.salon-de-one.com/booking/trimming/toyoshiki",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~18:00",
+     "src": "https://ts-alamode.salon-de-one.com/booking/trimming/toyoshiki",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC140",
+   "name": "KAPUA",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://kapua.shopinfo.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "⭐︎虫バイバイコース1〜3 ¥2530〜",
+     "src": "https://kapua.shopinfo.jp/pages/1662083/static",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2530
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC141",
+   "name": "トリミングハウス MOCO",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://mocooyabe219.amebaownd.com/pages/5061760/static",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC142",
+   "name": "ドッグサロン パンナ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://panna.jp/free/kensha",
+   "services": "トリミングサロン",
+   "shop": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払い方法は現金、振込(PayPay銀行or楽天銀行)、クレジットカードとなります。",
+     "src": "https://panna.jp/free/kounyu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC143",
+   "name": "Petsalon MAU",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://petsalon.mau-schoenmarie.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "cat": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC145",
+   "name": "Dog salon Carina",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://dog-carina.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場:あり",
+     "src": "https://dog-carina.com/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC146",
+   "name": "two",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://twodogcat.base.shop/blog/2024/05/01/010304",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間10〜18時です♪",
+     "src": "https://twodogcat.base.shop/blog/2024/05/01/010304",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 月曜日",
+     "src": "https://twodogcat.base.shop/p/00003",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC147",
+   "name": "Dog salon Blanc",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://dogsalon-blanc.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~19:00",
+     "src": "https://dogsalon-blanc.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休(完全予約制)",
+     "src": "https://dogsalon-blanc.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC148",
+   "name": "PET'S MAX 千葉美浜店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市美浜区",
+   "url": "https://mrmax.co.jp/shops/0000000032/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~20:00",
+     "src": "https://mrmax.co.jp/shops/0000000032/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:祝日は休み",
+     "src": "https://mrmax.co.jp/shops/0000000032/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC149",
+   "name": "PCP千葉北店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市稲毛区",
+   "url": "https://pcp.main.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC150",
+   "name": "ペットステーションハセガワ ビバホームあすみが丘店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "https://store.musashi.vivahome.com/vivamusashi/spot/detail?code=asumigaoka_vh",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "無料駐車場完備",
+     "src": "https://store.musashi.vivahome.com/vivamusashi/spot/detail?code=asumigaoka_vh",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "ご利用可能な決済方法:PayPay",
+     "src": "https://store.musashi.vivahome.com/vivamusashi/spot/detail?code=asumigaoka_vh",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC151",
+   "name": "ペットショップ ラビータ そごう千葉店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://lavita-pet.com/sogou-chiba",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00〜20:00",
+     "src": "https://lavita-pet.com/sogou-chiba",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC152",
+   "name": "ペットの専門店コジマ アリオ蘇我店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://soga.ario.jp/shop/2100000081/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00-21:00",
+     "src": "https://soga.ario.jp/shop/2100000081/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC153",
+   "name": "ペットサロン piari",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市若葉区",
+   "url": "https://petsalon-piari.webnode.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:お店 10:00~18:00 (年中無休)",
+     "src": "https://petsalon-piari.webnode.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC154",
+   "name": "うさぎのしっぽ幕張新都心店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市美浜区",
+   "url": "https://www.usaginosippo.co.jp/shop/makuharishintoshin/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:/ 平日 10:00~20:00 土日祝祭日 10:00~20:00",
+     "src": "https://www.usaginosippo.co.jp/shop/makuharishintoshin/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:/ 月・火曜日(祝日営業)",
+     "src": "https://www.usaginosippo.co.jp/shop/kichijoji/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC155",
+   "name": "Petty coco",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市花見川区",
+   "url": "https://www.pettycoco.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 午前 10:00 ~ 午後 18:00 定休日:なし",
+     "src": "https://www.pettycoco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:あり(18台)",
+     "src": "https://www.pettycoco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "1現金でのお支払い:2クレジットカード払い",
+     "src": "https://www.pettycoco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC156",
+   "name": "サモエドカフェ PIO",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://samoyed-pio.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間: 10:00〜19:00(最終回 18:00)",
+     "src": "https://samoyed-pio.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日: 不定休",
+     "src": "https://samoyed-pio.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "・ 専用駐車場はございません。お車でお越しの場合は、近隣のコインパーキングをご利用ください。",
+     "src": "https://samoyed-pio.jp/first-visit/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC157",
+   "name": "ペットの美容室 Bow Wow",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "https://bowwow0807oyumi29.wixsite.com/bowwow",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "​営業時間 9:30~18:00",
+     "src": "https://bowwow0807oyumi29.wixsite.com/bowwow",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "​定休日 毎週木曜日 / 第1,3日曜日",
+     "src": "https://bowwow0807oyumi29.wixsite.com/bowwow",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC158",
+   "name": "ペットサービス藤ママ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市花見川区",
+   "url": "https://chibacity-trimming.jimdofree.com/%E8%8A%B1%E8%A6%8B%E5%B7%9D%E5%8C%BA/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E8%97%A4%E3%83%9E%E3%83%9E/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC159",
+   "name": "Trimming Salon アフロディーテ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://www.trimming-aphrodite.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "[営業時間]9:30~17:00 最終受付16:30 [定休日]木曜日",
+     "src": "https://www.trimming-aphrodite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "[定休日]木曜日",
+     "src": "https://www.trimming-aphrodite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:無し(近隣にコインパーキング有り)",
+     "src": "https://www.trimming-aphrodite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC160",
+   "name": "ペットサロン Espoir",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "https://espoir2012.net/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "スキンケアセレクトコース:¥2,750~",
+     "src": "https://espoir2012.net/?page_id=38",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2750
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "最終受付時間:シャンプーコース 17:00",
+     "src": "https://espoir2012.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:火曜日、第2,第4月曜日,祝日",
+     "src": "https://espoir2012.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC161",
+   "name": "solari",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市美浜区",
+   "url": "http://solari.jp/access/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00〜17:30",
+     "src": "http://solari.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:毎週火曜日 第1・第3・第5水曜日(祝日の場合は翌日に振替)",
+     "src": "http://solari.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場有り",
+     "src": "http://solari.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC162",
+   "name": "トリミングSalon Lily Lake",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市稲毛区",
+   "url": "https://anlilys.com/menu/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~18:00",
+     "src": "https://anlilys.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:水曜日",
+     "src": "https://anlilys.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC163",
+   "name": "ドッグサロン ZEN",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://dogsalonezenzen.amebaownd.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC164",
+   "name": "Sparkle",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "https://la-felicite.co.jp/sparkle/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00 – 18:00",
+     "src": "https://la-felicite.co.jp/sparkle/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC165",
+   "name": "ELUCO dog grooming",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://eluco-dog.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間: 09:30~18:00",
+     "src": "https://eluco-dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日: 不定休(→ カレンダーで確認する )",
+     "src": "https://eluco-dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "※駐車場はございませんが、お店の並びにあるナビパーク千葉末広第4をご利用の方にサービスコインをお渡しします。会計時に駐車証明書をご提示ください。",
+     "src": "https://eluco-dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初めてのご来店には、1年以内に接種した狂犬病ワクチン、混合ワクチンの接種証明書をご持参ください。",
+     "src": "https://eluco-dog.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC166",
+   "name": "トリミングハウス ボニート・ペロ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市若葉区",
+   "url": "https://perro-bonito.jimdofree.com/%E6%96%99%E9%87%91%E8%A1%A8/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "バセットハウンド:6,000円~",
+     "src": "https://perro-bonito.jimdofree.com/%E6%96%99%E9%87%91%E8%A1%A8/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 6000
+    },
+    {
+     "k": "用意するもの",
+     "v": "また、感染予防のため接種後一年以内の混合ワクチン、狂犬病ワクチンの証明書が必要です。",
+     "src": "https://perro-bonito.jimdofree.com/%E6%96%99%E9%87%91%E8%A1%A8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC167",
+   "name": "トリミング HOUSE Tiara",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市若葉区",
+   "url": "https://mymerody0918.amebaownd.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "☆シャンプーコース2000円",
+     "src": "https://mymerody0918.amebaownd.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2000
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場2台可能",
+     "src": "https://mymerody0918.amebaownd.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC168",
+   "name": "La・petite S",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市若葉区",
+   "url": "https://lapetites.crayonsite.net/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "⭐ 初回ご利用時、現在より1年以内に接種したワクチンの証明書とお客様の身分証明書をご持参ください。",
+     "src": "https://lapetites.crayonsite.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC170",
+   "name": "woofin'dog",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://woofin-dog.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00~19:00",
+     "src": "https://woofin-dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:火、水",
+     "src": "https://woofin-dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC171",
+   "name": "Coruppy",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市美浜区",
+   "url": "https://coruppy.com/about",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00 ~ 19:00",
+     "src": "https://coruppy.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:毎週水曜日 月1回月曜日",
+     "src": "https://coruppy.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場なし",
+     "src": "https://coruppy.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC172",
+   "name": "トリミングサロンそらぷぷ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市稲毛区",
+   "url": "https://dogdonut.jp/shops/shop_cdfdf26b777bce79a061acb4/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC173",
+   "name": "Dogsalon Colore",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市花見川区",
+   "url": "https://dogsaloncolore.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC174",
+   "name": "Wise Dog",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "https://doglife.kumorinochihare.net/hokkaido/sapporo.html",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC175",
+   "name": "トリミングサロン・pink",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://www.trimmingsalon-pink.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー&カット:7,700円~",
+     "src": "https://www.trimmingsalon-pink.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 7700
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC176",
+   "name": "ペットプラストリミングサロン かわまち矢作モール店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://www.native-trust.co.jp/spot_nt/shisetsu_nt12101/cate_nt0901/spotdetail_nt10841197/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00~18:00",
+     "src": "https://www.native-trust.co.jp/spot_nt/shisetsu_nt12101/cate_nt0901/spotdetail_nt10841197/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:毎週水曜日・第1、第3火曜日",
+     "src": "https://www.native-trust.co.jp/spot_nt/shisetsu_nt12101/cate_nt0901/spotdetail_nt10841197/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC177",
+   "name": "PET HOTEL&SALON JUYELL",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://juyell.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00~19:00",
+     "src": "https://juyell.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:年中無休",
+     "src": "https://juyell.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎料金は片道3キロまで¥940、1キロ追加ごとに¥390となります。",
+     "src": "https://juyell.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "支払い方法:現金・クレジット・QRコード決済",
+     "src": "https://juyell.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC178",
+   "name": "Cat Salon ねこふわり",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "https://nekofuwari.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース 8,800円〜 税込・料金を見る",
+     "src": "https://nekofuwari.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 8800
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00〜18:00 (月・火・木・土・日)",
+     "src": "https://nekofuwari.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:水曜・金曜 /完全予約制",
+     "src": "https://nekofuwari.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場 1台",
+     "src": "https://nekofuwari.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い:現金・各種カード・キャッシュレス決済対応",
+     "src": "https://nekofuwari.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC179",
+   "name": "Grooming Salon Kulta",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市稲毛区",
+   "url": "https://groomingsalonkulta.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00 – 17:00",
+     "src": "https://groomingsalonkulta.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場は2台ご用意がございます。",
+     "src": "https://groomingsalonkulta.com/%e5%ba%97%e8%88%97%e3%81%b8%e3%81%ae%e8%a1%8c%e3%81%8d%e6%96%b9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内に接種した狂犬病・混合ワクチンの接種証明書のご提示が必要となります。",
+     "src": "https://groomingsalonkulta.com/price-list/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC180",
+   "name": "犬の美容室 Fuwari",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://dsfuwari.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC181",
+   "name": "dogsalon rafu",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "浦安市",
+   "url": "https://dogsalon-rafu.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00～19:00(最終受付17:00)が営業時間で木曜日は定休日となっております。",
+     "src": "https://dogsalon-rafu.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 木曜日",
+     "src": "https://dogsalon-rafu.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金/各種クレジットカード/QRコード決済",
+     "src": "https://dogsalon-rafu.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC182",
+   "name": "犬のとこやさん",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "銚子市",
+   "url": "https://inuno-tokoyasan.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース チワワ（L） 4400円〜",
+     "src": "https://inuno-tokoyasan.jp/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:30 〜 18:00",
+     "src": "https://inuno-tokoyasan.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "ご希望のお客様には、施術後のペットの送迎も行っております。",
+     "src": "https://inuno-tokoyasan.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "※ 初回ご利用時に、1年以内に摂取した混合ワクチン・狂犬病予防接種の証明書のご掲示をお願いしています。",
+     "src": "https://inuno-tokoyasan.jp/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC183",
+   "name": "犬の美容室RJ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市原市",
+   "url": "https://dogsalon-rj.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://dogsalon-rj.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "なし（店舗前に一時的に駐車できるスペースあり）",
+     "src": "https://dogsalon-rj.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは、現金・クレジットカード・PayPay・d払いに対応しています。",
+     "src": "https://dogsalon-rj.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC184",
+   "name": "小型犬専門 トリミングハウス RiRi",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印西市",
+   "url": "https://trim-riri.seesaa.net/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "★駐車場 1台分あります。",
+     "src": "https://trim-riri.seesaa.net/article/2018-11-09.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   },
   {
    "id": "G-HT001",

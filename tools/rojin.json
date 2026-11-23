@@ -4822,6 +4822,47 @@
    "animals": "犬"
   },
   {
+   "id": "RC001",
+   "name": "NEWS DOG",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市花見川区",
+   "url": "https://news-dog.jp/",
+   "animals": "犬・猫",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "以後1日ごとに3800円",
+     "src": "https://news-dog.jp/dog_hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:保育園は20:00まで対応 不定休あり",
+     "src": "https://news-dog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回の方は混合ワクチンと狂犬病の接種証明書をお持ち下さい。接種していないワンちゃんはお預かりできません。",
+     "src": "https://news-dog.jp/dog_hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お会計はチェックアウトの際に現金のみのお支払いになります。",
+     "src": "https://news-dog.jp/dog_hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
    "id": "R-HT001",
    "name": "ペットショップ アリス",
    "prefs": [
