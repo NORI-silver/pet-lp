@@ -10744,6 +10744,49 @@
     }
    ],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1219",
+   "name": "ペットコンシェルジュ OHANA CARE",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "戸田市",
+   "url": "https://ohanacare.jp/",
+   "chain": "indie",
+   "animals": "犬・猫・うさぎ・小動物・鳥",
+   "area": "料金プラン",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "対応エリア内でご自宅敷地内に駐車場があり",
+     "src": "https://ohanacare.jp/plan/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "□ 狂犬病・ワクチン証明証",
+     "src": "https://ohanacare.jp/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いもお打合せ時に現金にてお願いしております。",
+     "src": "https://ohanacare.jp/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア：料金プラン",
+     "src": "https://ohanacare.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }

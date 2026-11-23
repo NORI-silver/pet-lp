@@ -228,7 +228,7 @@ CONTACT_DATA = {"hotels.json": "url", "rojin.json": "url", "grooming.json": "url
 
 
 # 競合のペット情報サイト・まとめサイト（Nori 11/22）。施設の公式サイトの代わりにリンクしない。見つけたら足す
-RIVALS = ("rouken-care.jp", "rou-ken.com", "roukenhome-navi.com", "roukenhome.or.jp", "petlife.asia", "ipetclub.jp", "1-2-pet.com",
+RIVALS = ("rouken-care.jp", "uchinokono.jp", "cosewa.jp", "hotlines.shop", "wanco-professional.com", "inugoe.com", "rou-ken.com", "roukenhome-navi.com", "roukenhome.or.jp", "petlife.asia", "ipetclub.jp", "1-2-pet.com",
           "goodbreeder.jp", "ekiten.jp", "trimtrim.jp", "localplace.jp", "inudia.com", "wanstown.com", "kyoshippo.jp",
           "dogparkjp.com", "wannyan-navi.jp", "miokuri-navi.com", "hug-u.pet", "catcafemap.com", "petpedia.jp", "epark.jp",
           "hotpepper.jp", "curama.jp", "zehitomo.com", "meetsmore.com", "itsumo.dog", "petpet.ne.jp", "torepet.com", "petsitter-search.com",

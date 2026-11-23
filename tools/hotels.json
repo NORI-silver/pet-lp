@@ -15376,6 +15376,82 @@
     }
    ],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-ST1625",
+   "name": "はなぶさ堂 ‐cotorikatta‐",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川越市",
+   "url": "https://hanabusado.sakura.ne.jp/",
+   "services": "ペットホテル",
+   "pickup": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "■営業時間：13時~17時までご予約なしでお越し頂けます。",
+     "src": "https://hanabusado.sakura.ne.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "近隣に1台分の駐車場をご用意しております。(狭目なので大型車の駐車は難しいです)",
+     "src": "https://hanabusado.sakura.ne.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金またはクレジットカード(来訪時にお支払いください)。",
+     "src": "https://hanabusado.sakura.ne.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "※駅までの送迎には対応しておりません。",
+     "src": "https://hanabusado.sakura.ne.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PH-ST1353",
+   "name": "ドッグライフ 浦和店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市浦和区",
+   "url": "http://www.dog-life.co.jp/shoplist/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:10:00〜19:00",
+     "src": "http://www.dog-life.co.jp/shoplist/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:第1・3火曜日",
+     "src": "http://www.dog-life.co.jp/shoplist/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "年1回のワクチン、狂犬病接種はおすませください。",
+     "src": "http://www.dog-life.co.jp/service/trimming.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }

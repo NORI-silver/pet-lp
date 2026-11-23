@@ -10368,6 +10368,70 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "T-ST0615",
+   "name": "ドッグトレーニング イタクラ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "春日部市",
+   "url": "https://www.dogschool-quirrly.com/",
+   "services": "しつけ・トレーニング",
+   "addr": "埼玉県春日部市下蛭田42-1",
+   "src": "https://www.dogschool-quirrly.com/",
+   "checked": "2026-11-23",
+   "review_query": "ドッグトレーニング イタクラ 春日部市",
+   "review_name": "ドッグトレーニング イタクラ",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://www.dogschool-quirrly.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-ST0765",
+   "name": "ドッグ・トレーニング ARUNA",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "毛呂山町",
+   "url": "https://www.dogtraining-aruna.com/",
+   "services": "しつけ教室、出張（訪問）トレーニング、預託訓練",
+   "addr": "埼玉県入間郡毛呂山町川角1866",
+   "src": "https://www.dogtraining-aruna.com/",
+   "checked": "2026-11-23",
+   "review_query": "ドッグ・トレーニング ARUNA 毛呂山町",
+   "review_name": "ドッグ・トレーニング ARUNA",
+   "facts": [
+    {
+     "k": "送迎",
+     "v": "送迎と出張レッスンのエリア",
+     "src": "https://www.dogtraining-aruna.com/lesson/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-ST0215",
+   "name": "K9フリースタイル Espressivo",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "鴻巣市",
+   "url": "https://espressivo-dogdance.com/",
+   "services": "しつけ教室",
+   "addr": "埼玉県鴻巣市天神3-10-27",
+   "src": "https://espressivo-dogdance.com/",
+   "checked": "2026-11-23",
+   "review_query": "K9フリースタイル Espressivo 鴻巣市",
+   "review_name": "K9フリースタイル Espressivo",
+   "facts": []
   }
  ]
 }
