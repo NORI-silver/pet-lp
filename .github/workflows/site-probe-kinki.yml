@@ -1,0 +1,23 @@
+# 近畿の網羅：どの検索サービスが Actions から使えるかを少しだけためす（tools/kinki_probe.py）。結果はブランチ crawl-out-kinki-probe。何も送らない。
+name: site-probe-kinki
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/project-thread-q4p8u2']
+    paths: ['tools/kinki_probe.py']
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p /tmp/out && python3 tools/kinki_probe.py /tmp/out/probe.json
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q --orphan crawl-out-kinki-probe
+          git rm -rq --cached . && git clean -fdq
+          cp -r /tmp/out/. .
+          git add -A && git commit -qm "probe ${GITHUB_SHA::7}" && git push -q -f origin crawl-out-kinki-probe
