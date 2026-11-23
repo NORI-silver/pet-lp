@@ -5899,6 +5899,230 @@
    "ratio": [
     1.5
    ]
+  },
+  {
+   "cat": "taxi",
+   "id": "Dcfbfbf2",
+   "name": "COCOタク 船橋店",
+   "url": "https://cocotaku-funabashi.moe/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/taxi/Dcfbfbf2_1.webp"
+   ],
+   "credit": "写真：COCOタク 船橋店",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "taxi",
+   "id": "De3f35f2",
+   "name": "コインペットタクシー シエロ",
+   "url": "https://pettaxi.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/taxi/De3f35f2_1.webp"
+   ],
+   "credit": "写真：コインペットタクシー シエロ",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "emergency",
+   "id": "E05",
+   "name": "コインペットタクシー シエロ",
+   "url": "https://pettaxi.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/emergency/E05_1.webp"
+   ],
+   "credit": "写真：コインペットタクシー シエロ",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hospital",
+   "id": "G12033",
+   "name": "八幡みなみ動物病院",
+   "url": "https://yawataminami.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hospital/G12033_1.webp"
+   ],
+   "credit": "写真：八幡みなみ動物病院",
+   "ratio": [
+    0.96
+   ]
+  },
+  {
+   "cat": "hospital",
+   "id": "G12040",
+   "name": "ユーカリが丘動物病院",
+   "url": "https://www.yu-karigaoka-ah.com/medical/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hospital/G12040_1.webp"
+   ],
+   "credit": "写真：ユーカリが丘動物病院",
+   "ratio": [
+    2.439
+   ]
+  },
+  {
+   "cat": "hospital",
+   "id": "G12042",
+   "name": "ユーミーどうぶつ病院",
+   "url": "https://youme-ah.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hospital/G12042_1.webp"
+   ],
+   "credit": "写真：ユーミーどうぶつ病院",
+   "ratio": [
+    1.498
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H027",
+   "name": "JPB動物医療センター千葉",
+   "url": "https://jpbvet.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/night/H027_1.webp"
+   ],
+   "credit": "写真：JPB動物医療センター千葉",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H029",
+   "name": "柏流山夜間どうぶつ病院",
+   "url": "https://kn-yakan.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/night/H029_1.webp"
+   ],
+   "credit": "写真：柏流山夜間どうぶつ病院",
+   "ratio": [
+    1.768
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H031",
+   "name": "千葉どうぶつ総合病院",
+   "url": "https://www.chiba-ah.com/clinical-services/emergency-services/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/night/H031_1.webp"
+   ],
+   "credit": "写真：千葉どうぶつ総合病院",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "sougi",
+   "id": "S06fda3",
+   "name": "八千代ペット霊園",
+   "url": "https://ypet.info/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sougi/S06fda3_1.webp"
+   ],
+   "credit": "写真：八千代ペット霊園",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "sougi",
+   "id": "S5299d7",
+   "name": "竺園寺別院 慈生院（ケンユーペットセレモニー）",
+   "url": "https://kenyuusha.co.jp/jisyoin/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sougi/S5299d7_1.webp"
+   ],
+   "credit": "写真：竺園寺別院 慈生院（ケンユーペットセレモニー）",
+   "ratio": [
+    1.775
+   ]
+  },
+  {
+   "cat": "sougi",
+   "id": "Sa2fae7",
+   "name": "市川ペット霊園",
+   "url": "https://ichikawa-pet.co.jp/about",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sougi/Sa2fae7_1.webp"
+   ],
+   "credit": "写真：市川ペット霊園",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "sougi",
+   "id": "Sb22bec",
+   "name": "不動の杜ペット霊園",
+   "url": "https://www.yaku-yoke.com/doubutukuyo.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sougi/Sb22bec_1.webp"
+   ],
+   "credit": "写真：不動の杜ペット霊園",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "sougi",
+   "id": "Se0a0fe",
+   "name": "ペットセレモニープレア千葉式場",
+   "url": "https://www.petceremony.jp/chiba/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sougi/Se0a0fe_1.webp"
+   ],
+   "credit": "写真：ペットセレモニープレア千葉式場",
+   "ratio": [
+    1.505
+   ]
   }
  ]
 }
