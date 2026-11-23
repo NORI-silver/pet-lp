@@ -10635,6 +10635,26 @@
     }
    ],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "SC073",
+   "name": "ペットシッターPet Heart",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "茂原市",
+   "url": "https://petsitter-oneheart.com/course/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払いは、現金での対応をお願いします。",
+     "src": "https://petsitter-oneheart.com/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }

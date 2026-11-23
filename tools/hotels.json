@@ -13788,6 +13788,249 @@
     }
    ],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC272",
+   "name": "チャッピー",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "http://www.petshop-chappy.co.jp/",
+   "services": "ペットホテル",
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間: 11:00~18:00",
+     "src": "http://www.petshop-chappy.co.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日: 月曜日・水曜日",
+     "src": "http://www.petshop-chappy.co.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場2台分あり",
+     "src": "http://www.petshop-chappy.co.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC273",
+   "name": "ペッツワン 市原店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市原市",
+   "url": "https://petsone.cainz.com/shop/779/",
+   "services": "ペットホテル",
+   "cat": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 1月1日",
+     "src": "https://petsone.cainz.com/shop/779/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC274",
+   "name": "DOG&CAT JOKER 千葉Mio店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://ww.joker.co.jp/mio/index.html",
+   "services": "ペットホテル",
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "駐車場はホテルミラマーレの駐車場をご利用ください。 3,000円以上お買い上げで1時間、6,000円以上お買い上げで2時間無料となります。",
+     "src": "https://ww.joker.co.jp/mio/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 11:00~20:00",
+     "src": "https://ww.joker.co.jp/service/shop.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ご来店の際はワクチン(予防注射)証明書をお持ちください。",
+     "src": "https://ww.joker.co.jp/service/trimming.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC275",
+   "name": "センチュリーペット新浦安店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "浦安市",
+   "url": "https://www.century-pet.co.jp/?action_store_detail=true&str_id=7",
+   "services": "ペットホテル",
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10:00〜20:00",
+     "src": "https://www.century-pet.co.jp/?action_store_list=true",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC276",
+   "name": "ドッグサロンOHANA(オハナ)",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "野田市",
+   "url": "http://ohana.capoo.jp/access/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間/トリミング・電話受付 10:00〜16:00",
+     "src": "http://ohana.capoo.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日/木曜日・日曜日(定休日のお泊まり保育は事前にご予約頂ければ承ります。)",
+     "src": "http://ohana.capoo.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初めてご来店されるお客様は、混合ワクチン・狂犬病ワクチンの接種証明書をお持ち頂くようお願い致します。",
+     "src": "http://ohana.capoo.jp/trim/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは現金のみとなります。ご注意ください。",
+     "src": "http://ohana.capoo.jp/trim/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC277",
+   "name": "ペットケアサロンえがお",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://pet-care-egao.com/",
+   "services": "ペットホテル",
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "午前7時以前のお預かり、及び夜21時以降のお迎えは、それぞれ別途500円頂戴します",
+     "src": "https://pet-care-egao.com/info",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車スペースあり",
+     "src": "https://pet-care-egao.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC278",
+   "name": "鴨川シーサイドドッグトレーニング-ガーデンホテル",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "鴨川市",
+   "url": "https://obuchidogschool.wixsite.com/obuchidogschool/about",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "20泊21日未満 3週間コース 96800円シャンプー2回",
+     "src": "https://obuchidogschool.wixsite.com/obuchidogschool/services",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "お取扱い 受付時間 午前8時~午後6時以内",
+     "src": "https://obuchidogschool.wixsite.com/obuchidogschool/services",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC279",
+   "name": "リトルホースガーデンSTELLA(ステラ)",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "茂原市",
+   "url": "https://stella-ah.com/",
+   "services": "ペットホテル",
+   "cat": true,
+   "large": true,
+   "large_basis": "文",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ワクチン未接種の場合、原則1週間前までに接種をお願いします。他院にてワクチンを接種している場合は、証明書をご持参ください。",
+     "src": "https://stella-ah.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC280",
+   "name": "101ペットビューティスタジオ&ホテル",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市花見川区",
+   "url": "https://pet.ks-product.com/jigyosho/972c0a0f/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
   }
  ]
 }

@@ -10113,6 +10113,68 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "TC092",
+   "name": "花房ボクサー犬訓練所",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "富里市",
+   "url": "http://cashbox.cocolog-nifty.com/",
+   "services": "犬のしつけ",
+   "src": "http://cashbox.cocolog-nifty.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC093",
+   "name": "いぬとかんがえる",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印旛郡栄町",
+   "url": "https://www.inutokangaeru.com/about.html",
+   "services": "問題行動の相談",
+   "src": "https://www.inutokangaeru.com/about.html",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日:木曜日 (シッターのご依頼は事前予約で承ります)",
+     "src": "https://www.inutokangaeru.com/policy.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC094",
+   "name": "鴨川シーサイドドッグトレーニング-ガーデンホテル",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "鴨川市",
+   "url": "https://obuchidogschool.wixsite.com/obuchidogschool/about",
+   "services": "問題行動の相談",
+   "src": "https://obuchidogschool.wixsite.com/obuchidogschool/about",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "躾及び訓練 1頭 条件在り 要相談 4,400円/回",
+     "src": "https://obuchidogschool.wixsite.com/obuchidogschool/services",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "お取扱い 受付時間 午前8時~午後6時以内",
+     "src": "https://obuchidogschool.wixsite.com/obuchidogschool/services",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }
