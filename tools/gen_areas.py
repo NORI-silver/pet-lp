@@ -564,8 +564,16 @@ AIRPORT_OF = {"東京都": "羽田空港", "神奈川県": "羽田空港", "千�
               "北海道": "新千歳空港", "宮城県": "仙台空港", "愛知県": "中部国際空港（セントレア）", "大阪府": "伊丹空港・関西国際空港",
               "兵庫県": "神戸空港・伊丹空港", "広島県": "広島空港", "福岡県": "福岡空港", "沖縄県": "那覇空港"}
 def scene_desc(where, pref):
-    return (f"{where}で、動物病院、トリミング、ペットホテル、{AIRPORT_OF.get(pref, '空港')}への送迎、お引っ越し、家族でのお出かけに。"
-            "犬・猫を乗せてくれるペットタクシーの料金の目安を、お迎えの場所を入れて会社ごとに無料でくらべられます。")
+    d = (f"{where}で、動物病院、トリミング、ペットホテル、{AIRPORT_OF.get(pref, '空港')}への送迎、お引っ越し、家族でのお出かけに。"
+         "犬・猫を乗せてくれるペットタクシーの料金の目安を、お迎えの場所を入れて会社ごとに無料でくらべられます。")
+    # [B] SEO 11/23：検索結果で料金の数字が見えるように（「ペットタクシー 料金」は7〜8位でクリック0）。数字は県のページの「10kmの運賃のまんなか」と同じ計算。160字に収まるときだけ
+    key = pref if pref == "北海道" else pref[:-1]
+    fs = [x for x in _DISP if key in x.get("areas", []) and x.get("fare") and x["fare"].get("kind", "dist") == "dist" and x["fare"].get("base")]
+    if len(fs) >= 3:
+        v = sorted(_r100(_nat_ride(x["fare"], 10)) for x in fs)
+        add = f"10km乗ったときの運賃は、{len(fs)}社のまんなかで{v[(len(v) - 1) // 2]:,}円（概算）。"
+        if len(d) + len(add) <= 160: d = d.replace("家族でのお出かけに。", "家族でのお出かけに。" + add, 1)
+    return d
 def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = re.sub(r"\s*<!--NAT_STATS-->.*?<!--/NAT_STATS-->", "", TOP_HTML, flags=re.S)
     t = re.sub(r"\s*<!--KURASHI-->.*?<!--/KURASHI-->", "", t, flags=re.S)  # 全分野の入口はトップだけ（tools/portal.py）
