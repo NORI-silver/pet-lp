@@ -44,3 +44,15 @@ jobs:
           git add -A
           git commit -qm "写真と、写真の枠のページを最新の main で作りなおし" || true
           git push --force origin HEAD:refs/heads/instinct/photos-integrated
+      - name: 診断（生成ファイルの差分を別ブランチに書く）
+        run: |
+          python3 tools/gen_areas.py . > /tmp/gen.log 2>&1 || true
+          rm -rf tools/__pycache__
+          { git diff --stat | tail -40; echo ---; git diff -U0 | head -150 | cut -c1-240; } > /tmp/gen_diff.txt
+          git stash -q || true
+          git checkout -q --orphan dbg
+          git rm -rq --cached . >/dev/null 2>&1 || true
+          cp /tmp/gen_diff.txt gen_diff.txt; tail -20 /tmp/gen.log > gen_tail.txt
+          git add gen_diff.txt gen_tail.txt
+          git commit -qm "diag"
+          git push --force origin HEAD:refs/heads/instinct/photos-diag
