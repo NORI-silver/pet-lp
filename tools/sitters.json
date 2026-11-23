@@ -10385,6 +10385,81 @@
     }
    ],
    "chain": "indie"
+  },
+  {
+   "id": "Snk040",
+   "name": "ペットシッターholoholo",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://petsitter-holoholo.com/",
+   "services": "訪問ペットシッター（犬・猫・小動物）・散歩代行・動物病院への付きそい",
+   "cat": true,
+   "small": true,
+   "large": true,
+   "area": "水戸市の周り",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "60分まで 小型犬（10kg未満）3,300円・中型犬・大型犬4,400円・猫（2匹まで）3,300円・小動物（2匹まで）1,650円（税込）",
+     "src": "https://petsitter-holoholo.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "水戸市・ひたちなか市・鉾田市などは550円。ほかに水戸市川又町からの往復1kmごとに50円",
+     "src": "https://petsitter-holoholo.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "散歩代行は中型犬2頭まで、大型犬は1頭ずつ",
+     "src": "https://petsitter-holoholo.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk041",
+   "name": "ペットシッターさんらすく",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://3rask.web.fc2.com/toriatukai.html",
+   "services": "訪問ペットシッター（犬・猫・小動物）",
+   "cat": true,
+   "small": true,
+   "area": "宇都宮市の周り",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日1回2,000円・1日2回3,000円（1回1時間ほど）",
+     "src": "https://3rask.web.fc2.com/QA.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "往復14kmで700円",
+     "src": "https://3rask.web.fc2.com/QA.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "時間外は30分ごとに500円",
+     "src": "https://3rask.web.fc2.com/QA.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
   }
  ]
 }

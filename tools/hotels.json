@@ -12201,6 +12201,171 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "PHnk153",
+   "name": "ペッツファースト土浦店",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "土浦市",
+   "url": "https://petsfirst.salon-de-one.com/booking/hotel/tsuchiura",
+   "services": "ペットショップのペットホテル（犬・猫）",
+   "cat": true,
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "土浦市上高津（イオン土浦ショッピングセンター1階）",
+     "src": "https://petsfirst.salon-de-one.com/booking/hotel/tsuchiura",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "体長37cm・体高26cm（猫は17cm）より大きい子は預かれない",
+     "src": "https://petsfirst.salon-de-one.com/booking/hotel/tsuchiura",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk154",
+   "name": "ペッツマックス倉賀野店",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://salon-torimate.com/shop/kuragano/",
+   "services": "ペットショップのトリミング・ペットホテル（犬・猫）",
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "一時預かり 1時間525円から（税込）",
+     "src": "https://salon-torimate.com/pet_hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種の証明書",
+     "src": "https://salon-torimate.com/pet_hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "生後120日以内の子犬・子猫、10歳以上、持病がある子、かむ子は断ることがある",
+     "src": "https://salon-torimate.com/pet_hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk155",
+   "name": "トリミングサロンやくも",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "栃木市",
+   "url": "https://www.trimmingsalonyakumo.com/",
+   "services": "トリミング・ペットホテル（小型犬・中型犬）",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "栃木市大宮町",
+     "src": "https://www.trimmingsalonyakumo.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "大型犬は預からない",
+     "src": "https://www.trimmingsalonyakumo.com/pet-hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチン・狂犬病予防注射の証明書（または抗体価検査の書類）",
+     "src": "https://www.trimmingsalonyakumo.com/pet-hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk156",
+   "name": "Dog Salon IPU",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "那須塩原市",
+   "url": "https://dogsalon-ipu.com/",
+   "services": "トリミング・ペットホテル・一時預かり・室内ドッグラン",
+   "run": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "https://dogsalon-ipu.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日",
+     "src": "https://dogsalon-ipu.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病予防注射・混合ワクチン（5種以上）の証明書と、はじめては身分証明書",
+     "src": "https://dogsalon-ipu.com/terms-of-service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk157",
+   "name": "わんず",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://wans.info/",
+   "services": "ペットホテル（犬・猫）・トリミング・幼稚園・しつけ・老犬の預かり",
+   "cat": true,
+   "large": true,
+   "senior": true,
+   "pickup": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 犬・猫4,000円（連泊は1泊3,500円）・大型犬4,500円（連泊は4,000円）",
+     "src": "https://wans.info/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜18:00",
+     "src": "https://wans.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎 500円から",
+     "src": "https://wans.info/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }
