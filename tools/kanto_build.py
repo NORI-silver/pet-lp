@@ -11,7 +11,7 @@ from urllib.parse import urlparse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TODAY = datetime.date.today().isoformat()
-NOT_OFFICIAL = re.compile(r'stanby|localplace|animalcampus|ameblo\.jp|trimtrim|japanpetsalon|wanstown|scarecrow-inc|pet2211|takashimadairatown|dog-shitsuke-portal|trimmingwan|zpk\.or\.jp|prtimes|olivesitter|airrsv|select-type|machinavi|dogspecialist-navi|allets|edogawa-jikan|microbubble|jalan|hotpepper|curama|zehitomo|meetsmore|itsumo\.dog|petpet|torepet|petsitter-search|petokoto|pet-home\.jp|jmty|satoya-boshu|omusubi-pet|godog-run|dogrun-uzuz|animaru-navi|animalpark-pv|uchinoshippo|rouken|rou-ken|olddogcat|iconia|rakuten|ikyu|tabelog|retty|e-sogi|anicom-page|breeder-navi|minnanobreeder|goodbreeder|ekiten|ipet|petlife|caloo|mapion|navitime|townpage|epark|instagram|facebook|twitter|x\.com|tiktok|youtube|line\.me|note\.com|hatenablog|fc2\.com|livedoor|goo\.ne\.jp|indeed|baitoru|mynavi|townwork|en-gage|doda|recruit|kyujin|houjin|baseconnect|wikipedia|lg\.jp|go\.jp|google\.|yahoo\.|bing\.|navi|portal|matome|ranking|hikaku|kuchikomi|review', re.I)
+NOT_OFFICIAL = re.compile(r'stanby|trimeet|mypl\.net|localplace|animalcampus|ameblo\.jp|trimtrim|japanpetsalon|wanstown|scarecrow-inc|pet2211|takashimadairatown|dog-shitsuke-portal|trimmingwan|zpk\.or\.jp|prtimes|olivesitter|airrsv|select-type|machinavi|dogspecialist-navi|allets|edogawa-jikan|microbubble|jalan|hotpepper|curama|zehitomo|meetsmore|itsumo\.dog|petpet|torepet|petsitter-search|petokoto|pet-home\.jp|jmty|satoya-boshu|omusubi-pet|godog-run|dogrun-uzuz|animaru-navi|animalpark-pv|uchinoshippo|rouken|rou-ken|olddogcat|iconia|rakuten|ikyu|tabelog|retty|e-sogi|anicom-page|breeder-navi|minnanobreeder|goodbreeder|ekiten|ipet|petlife|caloo|mapion|navitime|townpage|epark|instagram|facebook|twitter|x\.com|tiktok|youtube|line\.me|note\.com|hatenablog|fc2\.com|livedoor|goo\.ne\.jp|indeed|baitoru|mynavi|townwork|en-gage|doda|recruit|kyujin|houjin|baseconnect|wikipedia|lg\.jp|go\.jp|google\.|yahoo\.|bing\.|navi|portal|matome|ranking|hikaku|kuchikomi|review', re.I)
 CATS = {
     'hotels': re.compile(r'ペットホテル|ドッグホテル|キャットホテル|猫(?:の)?ホテル|犬(?:の)?ホテル|ホテル(?:料金|利用|のご案内|サービス)|お預かり(?:料金|サービス|プラン)|[1一]泊'),
     'sitters': re.compile(r'ペットシッター|キャットシッター|シッターサービス|訪問(?:して|で)?(?:の)?お世話'),
@@ -31,7 +31,7 @@ FACT = [
     ('送迎', re.compile(r'送迎|送り迎え'), re.compile(r'円|無料|km|ｋｍ|キロ|エリア|[区市]内|片道|往復')),
     ('お支払い', re.compile(r'お支払|支払い方法|クレジットカード|PayPay|現金のみ'), re.compile(r'現金|カード|PayPay|ペイペイ|振込|電子マネー|QR|交通系')),
 ]
-NOISE = re.compile(r'[？?]\s*$|[0-9０-９]{2,4}[-－‐ー][0-9０-９]{2,4}[-－‐ー][0-9０-９]{3,4}|@|TEL|Tel|FAX|電話|LINE|キャンセル|求人|採用|スタッフ募集|アルバイト|Copyright|©|cookie|ログイン|カート|送料|通販|商品|フード|ブログ|ニュース|お知らせ|\d{4}[./年]\d{1,2}[./月]\d{1,2}')
+NOISE = re.compile(r'手配|取り次|代理|円まで|[？?]\s*$|[0-9０-９]{2,4}[-－‐ー][0-9０-９]{2,4}[-－‐ー][0-9０-９]{3,4}|@|TEL|Tel|FAX|電話|LINE|キャンセル|求人|採用|スタッフ募集|アルバイト|Copyright|©|cookie|ログイン|カート|送料|通販|商品|フード|ブログ|ニュース|お知らせ|\d{4}[./年]\d{1,2}[./月]\d{1,2}')
 
 
 def host(u):
@@ -89,6 +89,12 @@ def main():
         if 'trainers' in cats and '訓練' not in x.get('types', []):
             # しつけは「訓練」の登録がある事業所だけ（登録のないしつけは受けられないため）
             cats.remove('trainers')
+        head = x.get('title', '') + ' ' + x['name']
+        # 老犬ホーム・出張トリミングは、ページの中の宣伝やメニューの1語では決めない（題か名前に書いてあるときだけ）
+        if 'homes' in cats and not re.search(r'老犬|老猫|シニア', head):
+            cats.remove('homes')
+        if 'groomers' in cats and not re.search(r'出張|訪問|移動|トリミングカー|トリミング車', head):
+            cats.remove('groomers')
         if not cats:
             stat['out_of_scope'] += 1
             continue

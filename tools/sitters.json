@@ -9518,6 +9518,3205 @@
    "checked": "2026-11-22",
    "chain": "indie",
    "area": "江戸川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St361d34b",
+   "name": "B.B.ペットサービス",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://intopet.jp/bbpetservice/info/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00 - 20:00",
+     "src": "https://intopet.jp/bbpetservice/info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "intopet",
+   "area": "足立区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St6dae65f",
+   "name": "パウ東京",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "品川区",
+   "url": "https://pawtokyo.com/",
+   "services": "ペットホテル、ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：10：00 ～ 18:00 (土日祝を除く)",
+     "src": "https://pawtokyo.com/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチンが未接種、または接種済み証の提示ができない場合",
+     "src": "https://pawtokyo.com/terms/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカードまたは銀行振込にて、請求書の期限までにお支払いください。",
+     "src": "https://pawtokyo.com/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "品川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stcbd9032",
+   "name": "FluvJapan株式会社",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://www.fluv.com/jp/ja/company-introduction",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "オンラインクレジットカード決済により、サービス開始前にお支払いください。対応カード：Visa",
+     "src": "https://www.fluv.com/jp/ja/company-introduction",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "渋谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St96d2c6f",
+   "name": "ペットケアサービス Smiles",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "https://petsitter-smiles.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "・料金はサービス前にお支払いをお願いしております。打ち合わせ後に頂くか、サービス日の 2日前までに指定口座にお振込み下さい。※カードはご利用いただけません。",
+     "src": "https://petsitter-smiles.com/petsitter-service/petsitterservice-flow-of-use",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "大田区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St0e6d7ea",
+   "name": "ペットシッター usa to neko",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "葛飾区",
+   "url": "https://usatoneko.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "対応エリア ：京成線【日暮里、新三河島、町屋、千住大橋、京成関屋、堀切菖蒲園、お花茶屋、青砥】駅から徒歩10分以内",
+     "src": "https://usatoneko.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金、銀行振込、PayPay送金",
+     "src": "https://usatoneko.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "対応エリア ：京成線【日暮里、新三河島、町屋、千住大橋、京成関屋、堀切菖蒲園、お花茶屋、青砥】駅から徒歩10分以内"
+  },
+  {
+   "id": "St0b7ac41",
+   "name": "ドッグリサーチカンパニー荻窪店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "https://dogresearch.jp/ogikubo/",
+   "services": "ペットホテル、ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ワクチンを接種して3日以内。",
+     "src": "https://dogresearch.jp/ogikubo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "杉並区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Ste901b89",
+   "name": "ねこ係",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://nekogakari.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 / 10:00 - 18:00",
+     "src": "https://nekogakari.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ホテルのご利用には原則３年以内の混合ワクチンの予防接種が必要です。",
+     "src": "https://nekogakari.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St254b309",
+   "name": "保護猫喫茶 要にゃんこ亭",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "豊島区",
+   "url": "https://nyankotei.com/shop/kanameten/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "事前にご来店いただき、実際のご様子を見学いただきます。カウンセリングや問診票の記入、書類（ワクチン接種証明書など）の提出をしていただきます。",
+     "src": "https://nyankotei.com/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "豊島区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stfba9249",
+   "name": "ねこべや羽田空港/Laki to Laki",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "https://nekobeya.pechika.jp/houses/haneda.html",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "お預け・お迎えの受付時間は 9:00〜19:00 です（羽田空港店・羽田空港2号店は 9:00〜20:00）。",
+     "src": "https://nekobeya.pechika.jp/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "【中央線沿線で選ばれる】武蔵野・三鷹エリアの猫専門ペットホテル。広々個室・全室窓あり・24時間WEBカメラ設置で外出先からも安心、駐車場完備でアクセス便利。",
+     "src": "https://nekobeya.pechika.jp/houses.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内に混合ワクチンを接種した証明書を確認させていただいております。証明書を紛失した場合は、接種時の領収書や抗体検査の証明書などでも代用できます。",
+     "src": "https://nekobeya.pechika.jp/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎エリア ：",
+     "src": "https://nekobeya.pechika.jp/houses/haneda.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "PayPay決済",
+     "src": "https://nekobeya.pechika.jp/houses/haneda.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "大田区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Sta1ad2be",
+   "name": "ペットシッター あむれっと",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "墨田区",
+   "url": "https://paw-tokyo.com/area/sumida",
+   "services": "ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "サービス内容 ／ 料金表 ／ オンラインドッグトレーニング（全国対応・月額29,800円） ／ 訪問ドッグトレーニング（東京23区・初回体験6,300円）",
+     "src": "https://paw-tokyo.com/area/sumida",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "墨田区の対応エリア・駅",
+     "src": "https://paw-tokyo.com/area/sumida",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード",
+     "src": "https://paw-tokyo.com/dog-training",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "墨田区の対応エリア・駅"
+  },
+  {
+   "id": "St95214e7",
+   "name": "ドッグトレーニング WAN’S",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://wans11.com/",
+   "services": "ペットホテル、ペットシッター、しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "足立区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Std44ec06",
+   "name": "PSI Iijima",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "https://psiiijima.jimdofree.com/?srsltid=AYCX9vJpwJNLS40iY3fScpVsh9gjyttZbOQhYd7eLtvMoEyB2S-cUU76",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "※基本的営業時間帯は、9：00～20：00です。",
+     "src": "https://psiiijima.jimdofree.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "設定させていただきます( 500円/1回)。",
+     "src": "https://psiiijima.jimdofree.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応地域：大田区多摩川を中心とした自転車圏内",
+     "src": "https://psiiijima.jimdofree.com/?srsltid=AYCX9vJpwJNLS40iY3fScpVsh9gjyttZbOQhYd7eLtvMoEyB2S-cUU76",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "対応地域：大田区多摩川を中心とした自転車圏内"
+  },
+  {
+   "id": "St6c37201",
+   "name": "ペットサロン Woof",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江東区",
+   "url": "https://dog-grooming-woof-kiba.jimdofree.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10:00～18:00",
+     "src": "https://dog-grooming-woof-kiba.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週火曜日定休",
+     "src": "https://dog-grooming-woof-kiba.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・ 初回ご来店時に、ワンちゃんの混合ワクチン、狂犬病ワクチンの接種証明書の確認をさせていただきますのでご持参ください。",
+     "src": "https://dog-grooming-woof-kiba.jimdofree.com/hotel-%E4%B8%80%E6%99%82%E9%A0%90%E3%81%8B%E3%82%8A/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "江東区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stedf8536",
+   "name": "お留守番猫シッター パセリ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "品川区",
+   "url": "https://orusuban-neko.com/greeting",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：9：00-20：00",
+     "src": "https://orusuban-neko.com/greeting",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "また、訪問希望の場合 ご相談のうえお伺いし、「お世話依頼書」への署名をお願いしますとともに代金のお受け取り、スペアキーのお預かりをいたします。( この場合、出張費300円をいただきます。)",
+     "src": "https://orusuban-neko.com/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "品川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Sted40f1a",
+   "name": "リンバード",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "https://limbird.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回につき 2200円",
+     "src": "https://limbird.com/art/annnai_price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "杉並区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stc7fdada",
+   "name": "MoffWell",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中央区",
+   "url": "https://moffwell.manaplanet.jp/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "​（受付時間：10:00〜19:00）",
+     "src": "https://moffwell.manaplanet.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "・お受け取りのためのご訪問（別途、訪問料2,000円が発生します）",
+     "src": "https://moffwell.manaplanet.jp/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは、銀行振込またはクレジットカードとなります。",
+     "src": "https://moffwell.manaplanet.jp/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "中央区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St6960fe6",
+   "name": "ペットケアサポート KuLaKu",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "練馬区",
+   "url": "https://www.kulaku-pet.com/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "練馬区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Sta0a2109",
+   "name": "LC 荏原中延店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "品川区",
+   "url": "https://www.lc-dog.com/shop/ebaranakanobu",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "店舗周辺にはコインパーキングが多数ございますので、お車での送り迎えも非常にスムーズです。",
+     "src": "https://www.lc-dog.com/shop/komazawa",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "当サロンは第二京浜（国道1号線）や中原街道、環七通りといった主要道路からアクセスしやすく、五反田・大崎エリア、また馬込・上池台周辺といった各地域からお車一本で大変通いやすいロケーションです。近隣にはコインパーキングも多数充実しておりますので、天候の悪い日やお車でのスムーズな送り迎えにも非常に便利な環境です。",
+     "src": "https://www.lc-dog.com/shop/ebaranakanobu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "品川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St0751398",
+   "name": "ペットサロン Bliss of Paradise",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://blipara.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：8：00～20：00",
+     "src": "https://blipara.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "渋谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St723888b",
+   "name": "ペットシッター・いらは",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "墨田区",
+   "url": "https://pet-ss-iraha.crayonsite.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "3. 打合せの結果、ご契約されましたら、お支払い・合鍵のお預かりを致します。 基本的には前金制で、現金か振込です。",
+     "src": "https://pet-ss-iraha.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "墨田区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stbc8731a",
+   "name": "Cocona-B8",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "目黒区",
+   "url": "https://cocona-b8.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "また、今回の見直しに伴い、 クレジットカードでのお支払い・後払い にも対応いたします。",
+     "src": "https://cocona-b8.com/sitter-service-3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "目黒区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St5bdbaf3",
+   "name": "ペットシッター みらい",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "葛飾区",
+   "url": "https://www.petsitter-mirai.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：9:00-17:30",
+     "src": "https://www.petsitter-mirai.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "葛飾区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St5d4a1de",
+   "name": "アイノス板橋・赤羽店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "北区",
+   "url": "https://itabashi-pet.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00~20:00",
+     "src": "https://itabashi-pet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "店舗情報・対応エリア｜板橋区のペットシッター アイノス板橋 赤羽店",
+     "src": "https://itabashi-pet.com/about_shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "店舗情報・対応エリア｜板橋区のペットシッター アイノス板橋 赤羽店"
+  },
+  {
+   "id": "Stc9f3d09",
+   "name": "ペットシッターの萌生",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "https://petmofu.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "2．事前お打合せ（基本料金 1h／2,000円）",
+     "src": "https://petmofu.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "※ワクチン接種証明書をご提示ください。",
+     "src": "https://petmofu.com/terms-of-use/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "お客様ご自身での送迎であっても時間外料金として2,000円を頂戴いたします。",
+     "src": "https://petmofu.com/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払方法は、現金または指定口座への振込をお願いいたします。（振込手数料はお客様ご負担となります。）",
+     "src": "https://petmofu.com/terms-of-use/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "大田区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stdabbffc",
+   "name": "トゥトゥサービス",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江東区",
+   "url": "https://www.toutouservice.com/koto/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "対応いたしかねます。狂犬病の予防接種およびワクチン接種は、初回カウンセリング時に必ず証明書を確認させていただいております。",
+     "src": "https://www.toutouservice.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア：豊洲、東雲、有明、門前仲町、木場、清澄白河、白河、南砂、北砂、森下、住吉など江東区全域",
+     "src": "https://www.toutouservice.com/koto/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード",
+     "src": "https://www.toutouservice.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "対応エリア：豊洲、東雲、有明、門前仲町、木場、清澄白河、白河、南砂、北砂、森下、住吉など江東区全域"
+  },
+  {
+   "id": "Stb08de14",
+   "name": "バウ・カプチーノ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "品川区",
+   "url": "https://www.bowcappuccino.com/?page_id=9",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 11:00〜19:00 年中無休",
+     "src": "https://www.bowcappuccino.com/?page_id=9",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "▪️３種混合ワクチンを定期的に接種しているネコちゃん",
+     "src": "https://www.bowcappuccino.com/?page_id=25",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "▪️当店では、実費（往復のタクシー代）にて送迎サービスを致しております。",
+     "src": "https://www.bowcappuccino.com/?page_id=496",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "▪️各種クレジットカード等のご利用も承っております。",
+     "src": "https://www.bowcappuccino.com/?page_id=496",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "品川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St1bf91d9",
+   "name": "OLY HOUSE",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "港区",
+   "url": "https://www.olyhouse.info/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お打ち合わせ内容にご納得いただけましたらご利用料金のお支払い。予め現金のご用意をお願いします。",
+     "src": "https://www.olyhouse.info/%E3%81%94%E5%88%A9%E7%94%A8%E3%81%AE%E6%B5%81%E3%82%8C-3",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "港区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St4614408",
+   "name": "木下トリミングサービス",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "http://www.miku-kurumi.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "*出張トリミングの定休日は木、日曜日です。",
+     "src": "http://www.miku-kurumi.com/company.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St94a0f95",
+   "name": "EL OSO DOGWORKS",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://el-oso.tokyo/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "8 時より前、21 時より後の訪問は、営業時間外料金として 500 円いただきます。",
+     "src": "https://el-oso.tokyo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Ste22660f",
+   "name": "キャットシッター+",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "豊島区",
+   "url": "http://www.ikesen.net/etc/hozuki/index.html",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "不可 ※お支払い方法は現金かお振込にて。",
+     "src": "http://www.ikesen.net/etc/hozuki/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "豊島区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stfbb3079",
+   "name": "Casa de Perrito",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "豊島区",
+   "url": "https://petcasadeperrito.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "お問い合わせ・シッティングの受付時間は 9:00〜18:00 です。ご連絡をいただく時間帯は問いませんが、お返事はこの時間内に差し上げております。",
+     "src": "https://petcasadeperrito.com/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "料金・対応エリア｜豊島区・文京区・新宿区のペットシッター",
+     "src": "https://petcasadeperrito.com/%e5%af%be%e8%b1%a1%e5%9c%b0%e5%9f%9f%e3%83%bb%e6%96%99%e9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "プランのご案内と、ご料金のご提示・お支払い （現金の場合はこの日に）",
+     "src": "https://petcasadeperrito.com/%e3%81%8a%e7%94%b3%e3%81%97%e8%be%bc%e3%81%bf%e3%81%8b%e3%82%89%e3%81%ae%e6%b5%81%e3%82%8c/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "料金・対応エリア｜豊島区・文京区・新宿区のペットシッター"
+  },
+  {
+   "id": "Stf0328d3",
+   "name": "『おりこうさん』",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "墨田区",
+   "url": "https://orikosan-orikosan.jp/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 7:00～20:00",
+     "src": "https://orikosan-orikosan.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "墨田区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St3e79d78",
+   "name": "日本ペットシッターサービス&ペットタクシー成城店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://www.pet-ss.com/pal-joy/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "●PayPay",
+     "src": "https://www.pet-ss.com/pal-joy/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "nihon",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stdc20d17",
+   "name": "日本橋人形町キャットシッターねこ秘書",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中央区",
+   "url": "https://nekohisho.sakura.ne.jp/hp/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "中央区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stdfab4b5",
+   "name": "ペットママ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "港区",
+   "url": "https://www.pet-mama.net/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "港区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St93552e8",
+   "name": "CAT LIVING",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "目黒区",
+   "url": "https://cat-living.co.jp/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "※お車の方：駐車場はございませんので 最寄りのパーキングをご利用ください（自費負担）",
+     "src": "https://cat-living.co.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "目黒区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St2f57967",
+   "name": "いぬとねこのペットシッター SIBLINGS",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://inuneco-siblings.tokyo/about",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "・お支払いは鍵のお預かり時に現金・せたペイ・楽天ペイでお支払いいただくか、ご利用日1週間前まで に銀行振込にてご入金をお願いいたします。",
+     "src": "https://inuneco-siblings.tokyo/free/sittingfee",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St92be271",
+   "name": "麻布PET 代々木公園店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://azabupet.jp/shop/",
+   "services": "ペットホテル、ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "※駐車場はございませんので、近隣のコインパーキングをご利用ください。",
+     "src": "https://azabupet.jp/shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内に接種している狂犬病の証明書",
+     "src": "https://azabupet.jp/service/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "当社は送迎料金込みですので、大変お得です。（一部エリアは有料となりますので、お問合せください）",
+     "src": "https://azabupet.jp/service/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "ご請求書を発行いたしますので、指定日までにクレジットカードにてお支払いをお願いいたします。",
+     "src": "https://azabupet.jp/service/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "渋谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St9b3d63e",
+   "name": "Pet Service en",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "文京区",
+   "url": "https://pet-en.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9：00〜18：00",
+     "src": "https://pet-en.com/area",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "ドックシッティングでは、1回当たり500円お得な10回回数券を。",
+     "src": "https://pet-en.com/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "文京区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stee0c316",
+   "name": "メイちゃんのお家",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "https://www.petsitter-mei.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "大田区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St5842f42",
+   "name": "Blue Garden Cat",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://cat.bgp2021.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "2匹まで1回のシッター45分 3300円",
+     "src": "https://cat.bgp2021.com/goriyou/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "★ 渋谷区・世田谷区 出張費無料対応エリア多数★ 2匹まで1回のシッター45分 3300円",
+     "src": "https://cat.bgp2021.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "★ 渋谷区・世田谷区 出張費無料対応エリア多数★ 2匹まで1回のシッター45分 3300円"
+  },
+  {
+   "id": "St9fb1aa9",
+   "name": "ペットシッター箱舟",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "文京区",
+   "url": "https://pet-sitter-hakobune.storeinfo.jp/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "文京区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stfb3e186",
+   "name": "ペットシッター Dan",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "港区",
+   "url": "https://dararin0604.com/about-us/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "（お支払い方法：クレジットカード、銀行振込、現金でお願いします。）",
+     "src": "https://dararin0604.com/service/basic/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "港区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stc1472d3",
+   "name": "らくーんファミリー東京城北",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "北区",
+   "url": "https://racoonfamily-tokyo.com/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "北区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stb2c76db",
+   "name": "ペットシッター&老犬介護 minto",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "http://minto-pet.net/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "杉並区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Std245c94",
+   "name": "ミルプランタン",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "豊島区",
+   "url": "https://www.542dog.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：9:00～19:00",
+     "src": "https://www.542dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：不定休",
+     "src": "https://www.542dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場はございません。 カウンセリング時は近隣のコインパーキングをご利用ください。お迎えなど短時間であれば、お車で直接いらしてください。",
+     "src": "https://www.542dog.com/category/1869323.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "以下に該当する場合はお預かりを致しかねます。 ・特別な事情がなく1年以内に狂犬病、混合ワクチンが未接種。・ひどい噛み癖や吠え癖がある。・通院、治療中の重篤な疾患がある。これ以外にもお預かりができかねると判断させていただく場合があります。",
+     "src": "https://www.542dog.com/category/1869323.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは 現金での前払いかPayPay となります。",
+     "src": "https://www.542dog.com/category/1869323.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "豊島区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St5da8852",
+   "name": "キャットシッターねころ陽",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://csnekorobi.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "滞在時間は、 駐車場からの移動を含めて約1時間 が基本です。 ※ミドルプラン・ロングプラン・一晩プランは各時間に準じます ※繁忙時は、1回あたり10分ほど短縮となる場合があります。",
+     "src": "https://csnekorobi.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリアはこれまでの杉並区・世田谷区に加え、三鷹市・武蔵野市・調布市・府中市の一部が新たに加わりました。（その他の地域もご相談ください） 移動手段は軽自動車になりました。",
+     "src": "https://csnekorobi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "対応エリアはこれまでの杉並区・世田谷区に加え、三鷹市・武蔵野市・調布市・府中市の一部が新たに加わりました。（その他の地域もご相談ください） 移動手段は軽自動車になりました。"
+  },
+  {
+   "id": "St30e42ed",
+   "name": "Smile with DoG",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "板橋区",
+   "url": "https://smile-with-dog.com/",
+   "services": "ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金またはお振込み、クレジットカード決済がご利用いただけます。",
+     "src": "https://smile-with-dog.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "板橋区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St7fbd228",
+   "name": "ラブリー",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "https://violetbat7.sakura.ne.jp/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【受付時間】9：00〜18：00",
+     "src": "https://violetbat7.sakura.ne.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "③狂犬病予防接種・5種（以上）混合の証明書のコピー",
+     "src": "https://violetbat7.sakura.ne.jp/%e3%83%9a%e3%83%83%e3%83%88%e3%83%9b%e3%83%86%e3%83%ab%e3%83%bb%e4%bf%9d%e8%82%b2%e5%9c%92/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "(トライアルで送迎をご利用の場合は送迎代として500円かかります)",
+     "src": "https://violetbat7.sakura.ne.jp/%e3%83%9a%e3%83%83%e3%83%88%e3%83%9b%e3%83%86%e3%83%ab%e3%83%bb%e4%bf%9d%e8%82%b2%e5%9c%92/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "送迎をご利用されるお客様のご精算は現金のみとなります。",
+     "src": "https://violetbat7.sakura.ne.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "杉並区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St1856153",
+   "name": "寺薗不動産株式会社",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "新宿区",
+   "url": "https://terazono.c.ooco.jp/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間: 午前10時～午後5時",
+     "src": "https://terazono.c.ooco.jp/aboutus/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日: 水・日・祝",
+     "src": "https://terazono.c.ooco.jp/aboutus/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "木曽駐車場 バイク区画１号車（屋根有り）",
+     "src": "https://terazono.c.ooco.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "新宿区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stfbc2776",
+   "name": "ねこ屋ペットシッターS",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "練馬区",
+   "url": "http://www.zb.em-net.ne.jp/~nekoya/toriatukai.htm",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "練馬区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St731ee8b",
+   "name": "エーアイエンタープライズ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "北区",
+   "url": "https://rairai.net/petsalontop/shop/12796",
+   "services": "ペットホテル、ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "無料駐車場あり",
+     "src": "https://rairai.net/petsalontop/search/all",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカードOK",
+     "src": "https://rairai.net/petsalontop/search/all",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "北区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stbcc4845",
+   "name": "猫と。。",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中央区",
+   "url": "https://www.manaplanet.jp/nekoto",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "中央区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St6ca5b37",
+   "name": "Doken Pet",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://www.dokenpet.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日は第１、第３水曜日となります。",
+     "src": "https://www.dokenpet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "料金：お世話毎に １回 3,800円 ケージ数（作業時間）により金額が変わることがあります。",
+     "src": "https://www.dokenpet.com/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "渋谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St617330b",
+   "name": "Petsitter Mouma",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://petsitter.mouma.jp/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "対応銀行：三井住友銀行 / PayPay銀行 / 埼玉りそな銀行",
+     "src": "https://petsitter.mouma.jp/%e6%96%99%e9%87%91%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St2715196",
+   "name": "上池台ペットシッターりんご",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "https://petsitter-ringo.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "①混合ワクチン又は狂犬病ワクチンの接種証明書。",
+     "src": "https://petsitter-ringo.com/free/nagare",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "大田区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stc770b11",
+   "name": "ワールド ワン",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "目黒区",
+   "url": "https://world-wan.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：10:00〜19:00 年中無休",
+     "src": "https://world-wan.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎（1kmまで）",
+     "src": "https://world-wan.com/price.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "目黒区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stb740c20",
+   "name": "ペットシッター・ココロ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "品川区",
+   "url": "https://petsitter-cocoro.jimdofree.com/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "品川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St9dd3b18",
+   "name": "ポピンズ ペットケア",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://poppins-petcare.jp/category/tokyo/%E6%B8%8B%E8%B0%B7%E5%8C%BA/",
+   "services": "ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日：年中無休",
+     "src": "https://poppins-petcare.jp/area/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "訪問シッティング4,400円/時間よりご提供しております。 介護プラン・カスタマイズプランは こちら からご確認ください。",
+     "src": "https://poppins-petcare.jp/category/tokyo/%E6%B8%8B%E8%B0%B7%E5%8C%BA/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法はクレジットカード決済のみとなっております（1回払/VISA,Master,JCB,Amex等利用可）。",
+     "src": "https://poppins-petcare.jp/service-price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "渋谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St1ab8c8c",
+   "name": "ペットシッター・雅",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "港区",
+   "url": "http://petsittermiyabi.g2.xrea.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "港区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St805b901",
+   "name": "キャットシッターるす猫",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江東区",
+   "url": "https://rusuneko.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回：3,500円〜（税込）",
+     "src": "https://rusuneko.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア：墨田区・江東区",
+     "src": "https://rusuneko.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "対応エリア：墨田区・江東区"
+  },
+  {
+   "id": "St72bf924",
+   "name": "DOG donn",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://dogdonn.shopinfo.jp/",
+   "services": "ペットシッター、しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stcd51d89",
+   "name": "ペットシッター Mitten",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://mitten-petsitter.com/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St9ebddde",
+   "name": "Pet sitter FAMILIA",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://petsitterfamilia.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 ７:00～19：00",
+     "src": "https://petsitterfamilia.com/about-us/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード",
+     "src": "https://petsitterfamilia.com/howto/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St93865bc",
+   "name": "ペットシッター・池袋はうす",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "豊島区",
+   "url": "https://pet-ikebukurohausu.jimdofree.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "ご利用料金のお支払いを現金にてお願いします。領収書を発行 いたします。",
+     "src": "https://pet-ikebukurohausu.jimdofree.com/%E3%83%9B%E3%83%BC%E3%83%A0/%E3%81%94%E5%88%A9%E7%94%A8%E3%81%AE%E6%B5%81%E3%82%8C/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "豊島区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St9a12e61",
+   "name": "城東ペットシッターサービス",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "葛飾区",
+   "url": "https://www.joutou-petsitter.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "※ 葛飾区の対応エリアの目安は、京成立石駅を起点に「環七通りの内側（環七を越えないエリア）」となります。",
+     "src": "https://www.joutou-petsitter.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "PayPay利用で最大20％戻ってくるキャンペーン開催！",
+     "src": "https://www.joutou-petsitter.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "※ 葛飾区の対応エリアの目安は、京成立石駅を起点に「環七通りの内側（環七を越えないエリア）」となります。"
+  },
+  {
+   "id": "St4b39e0a",
+   "name": "anicas",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://anicas.jp/advantage/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stbc055cb",
+   "name": "ヌーノクラブ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中野区",
+   "url": "https://www.nunoclub.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10時～19時",
+     "src": "https://www.nunoclub.com/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：木曜日",
+     "src": "https://www.nunoclub.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン接種証明書、（犬は加えて狂犬病ワクチン接種証明書）※2",
+     "src": "https://www.nunoclub.com/faq.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "トリミング無料送迎範囲 拡大しました。",
+     "src": "https://www.nunoclub.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※5）先払いの現金のみのお取り扱いとなります、予めご用意お願い致します。",
+     "src": "https://www.nunoclub.com/faq.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "中野区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St8816b61",
+   "name": "キャットシッター Mie-Mu",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "https://mie-mu.net/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "杉並区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St1edb788",
+   "name": "ペットシッター Fun Fam",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://pet-funfam.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間外（19時以降～朝9時まで） 2,200円",
+     "src": "https://pet-funfam.com/terms-of-use/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St46539a4",
+   "name": "ペットシッター sippo",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "https://sippo.hp.peraichi.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間： 8:00～19:00",
+     "src": "https://sippo.hp.peraichi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "杉並区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St7e1e448",
+   "name": "キャットシッターよもねこ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://yomoneko.com/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stba24197",
+   "name": "ラビットシッター らぱん・あじる",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://lapinagile.jp/html/profile.html",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払いは銀行振込、または打ち合わせ時にお願いいたします。",
+     "src": "https://lapinagile.jp/html/price.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St04ac361",
+   "name": "アニマルサロン チェリー",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中野区",
+   "url": "https://www.cherry-nakano.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：AM10:00～",
+     "src": "https://www.cherry-nakano.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：火曜日（Tuesday）・不定休あり",
+     "src": "https://www.cherry-nakano.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "※駐車場は近隣のコインパーキングをご利用ください。",
+     "src": "https://www.cherry-nakano.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "中野区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St140271a",
+   "name": "株式会社ライフウィズ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://www.lifewith.co.jp/corporate_data",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "対応エリア：東京23区",
+     "src": "https://www.lifewith.co.jp/corporate_data",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "対応エリア：東京23区"
+  },
+  {
+   "id": "St61e7f99",
+   "name": "ペットシッター PoPo",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "新宿区",
+   "url": "https://hot2.jp/shinjukuku/shop.php?id=5214",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "新宿区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Sta0955bc",
+   "name": "CARE PETS本店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "千代田区",
+   "url": "https://care-pets.jp/company/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "千代田区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Sta0b3a24",
+   "name": "フランクリンペット",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "港区",
+   "url": "http://www.franklin-pet.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "ペットショップ 11:00～18:00 ★ 定休日 火曜日",
+     "src": "http://www.franklin-pet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初めてご来店の場合は狂犬病・ワクチン予防接種の証明書の提示が必要になりますのでご持参願います。",
+     "src": "http://www.franklin-pet.com/trimming.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "近隣（白金、南麻布）は無料にて送迎しております。",
+     "src": "http://www.franklin-pet.com/trimming.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "港区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Ste9b3c95",
+   "name": "ペットシッター パプリカ商店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "https://paprikaschoten.jp/petsitter/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "杉並区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stb446afa",
+   "name": "ハナペットクラブ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "http://hanapetclub.jp/add.html",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St40c8336",
+   "name": "日本ペットシッターサービス青山店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "港区",
+   "url": "https://www.pet-ss.com/noru/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 10:00～19:00",
+     "src": "https://www.pet-ss.com/noru/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "nihon",
+   "area": "港区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stdf818f2",
+   "name": "B&Sカンパニー",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "http://b-and-s-co.jp/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "杉並区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stee4158c",
+   "name": "犬ともクラブ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中野区",
+   "url": "http://inutomo-club.jp/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "中野区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Ste56a0c7",
+   "name": "ペットシッター&ホテル のほほん",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "墨田区",
+   "url": "https://12-nohohon.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "使用規約にも記載されていますが、ペットシッター&ホテル のほほんは自宅でお預かりするホテルではありますが、営業時間は【9時〜17時】となっております。",
+     "src": "https://12-nohohon.com/info",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "墨田区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stcd34f7f",
+   "name": "ペットシッターたまゆら",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中野区",
+   "url": "https://tamayura-cat.net/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "●繁忙期は1回 500 円増。",
+     "src": "https://tamayura-cat.net/free/ryoukin",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "中野区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St7e4df3a",
+   "name": "ペットシッター Bobtail",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "練馬区",
+   "url": "https://petsitter-12-bobtail.jimdofree.com/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "練馬区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St20f63ae",
+   "name": "ペットシッターHAL",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江戸川区",
+   "url": "https://petsitterhal.jimdofree.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 : 07:00～21:00",
+     "src": "https://petsitterhal.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "近隣エリア 500円/1回",
+     "src": "https://petsitterhal.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "江戸川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stab8c3f2",
+   "name": "ペットシッター momoroco",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "品川区",
+   "url": "https://petsittermomoroco.wixsite.com/site",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "※お支払いはすべて前払い現金とさせていただいております。",
+     "src": "https://petsittermomoroco.wixsite.com/site",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "品川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St70e7f5c",
+   "name": "自宅・個室ペットホテル 幸せのしっぽ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中野区",
+   "url": "http://r.goope.jp/shippo1908/about",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間9：00以前のお預かりは１時間５００円(1匹につき)の追加料金が加算させていただきます。",
+     "src": "http://r.goope.jp/shippo1908/info",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "中野区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St77fba64",
+   "name": "MOFA petsitting TOKYO",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://www.mofapetsittingtokyo.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "◉初回、お世話ご利用時に500円引き！",
+     "src": "https://www.mofapetsittingtokyo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "料金のお支払いは、現金または指定口座へのお振込。",
+     "src": "https://www.mofapetsittingtokyo.com/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "渋谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St0495965",
+   "name": "ペットシッター ポペット",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://petsitterpoppet.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "◆ お支払方法：ご登録・お申込み時に、現金でお支払いただきます。",
+     "src": "https://petsitterpoppet.com/fee/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stba8087f",
+   "name": "Grooming Shop WONWON",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中野区",
+   "url": "https://groomingshopwonwon.jimdofree.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：9:00～19:00（年中無休）",
+     "src": "https://groomingshopwonwon.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "1日1回 2500円（税別）",
+     "src": "https://groomingshopwonwon.jimdofree.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC-%E3%81%97%E3%81%A4%E3%81%91%E7%9B%B8%E8%AB%87/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・1年以内に接種したワクチンの接種証明書",
+     "src": "https://groomingshopwonwon.jimdofree.com/%E3%83%9B%E3%83%86%E3%83%AB-%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%B9%E3%83%86%E3%82%A4/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "ー無料送迎範囲ー",
+     "src": "https://groomingshopwonwon.jimdofree.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC-%E3%81%97%E3%81%A4%E3%81%91%E7%9B%B8%E8%AB%87/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "中野区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stc5d9ada",
+   "name": "パートナーズシッター",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "港区",
+   "url": "https://www.partnerssitter.com/contact",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "・クレジットカード情報、銀行口座情報、電子マネー情報等決済手段に関する情報",
+     "src": "https://www.partnerssitter.com/contact",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "港区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St7abf7a9",
+   "name": "アニケアどうぶつ訪問看護",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "https://www.anicare-hv.net/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：9：00~18：00",
+     "src": "https://www.anicare-hv.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "料金は「クレジットカード」「PayPay」「銀行振込」または「コンビニ後払い」でお支払いいただけます。",
+     "src": "https://www.anicare-hv.net/contents/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "大田区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St8782f38",
+   "name": "キャドッグ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "豊島区",
+   "url": "https://kuroco.amebaownd.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "時間単位で料金を設定しています。頭数は料金に関係しませんが、頭数が増えたときにはお世話のためのお時間を多めにいただく場合がございます。 30分 1,400円1時間 2,300円1時間30分 3,000円別途、交通費を実費でいただきます。初回にご利用いただく場合、事前にお打合せさせ...",
+     "src": "https://kuroco.amebaownd.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "・現金でのお支払い",
+     "src": "https://kuroco.amebaownd.com/posts/7938389",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "豊島区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stb9aef5b",
+   "name": "Lina huelo",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江東区",
+   "url": "https://linahuelo.com/about",
+   "services": "ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間8:00〜20:00",
+     "src": "https://linahuelo.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防接種、各種ワクチン接種証明書をご用意下さい。",
+     "src": "https://linahuelo.com/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "料金は合鍵お預かり時もしくはシッティング前日までにお振込み（手数料はお客様負担）、又はシッティング時にお支払下さい。",
+     "src": "https://linahuelo.com/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "江東区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St7eea0f1",
+   "name": "Necoist",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "品川区",
+   "url": "https://necoist.tokyo/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "投薬処置：1回500円〜",
+     "src": "https://necoist.tokyo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "品川区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St5737809",
+   "name": "Tokyo Sitter Service",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://tokyositterservice.jp/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払いは銀行振込または クレジットカード決済を ご利用いただけます。",
+     "src": "https://tokyositterservice.jp/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "渋谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St6a720ef",
+   "name": "ペットシッターサービス ちゃみ~",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "台東区",
+   "url": "https://www.pet-ss.com/taito/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 10:00～19:00",
+     "src": "https://www.pet-ss.com/taito/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※お支払いは銀行振り込みとなります。振込手数料は、基本的にお客様にてご負担をお願いしております。",
+     "src": "https://www.pet-ss.com/taito/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "nihon",
+   "area": "台東区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St3b1fa29",
+   "name": "Pet-me ペットミー",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "練馬区",
+   "url": "https://pet-me.shopinfo.jp/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "練馬区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St5f3bb2e",
+   "name": "ペットシッター ねこざわ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "練馬区",
+   "url": "https://nekozawa.jp/about",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "※駐車場代などは別途必要とな る場合が ございます。",
+     "src": "https://nekozawa.jp/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "出張エリア：西東京市・武蔵野市・三鷹市＋東久留米市、小平市、練馬区の一部地域",
+     "src": "https://nekozawa.jp/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "paypay、クレジットカード決済がご利用いただけます。",
+     "src": "https://nekozawa.jp/info",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "出張エリア：西東京市・武蔵野市・三鷹市＋東久留米市、小平市、練馬区の一部地域"
+  },
+  {
+   "id": "Sta89d9ac",
+   "name": "ペットシッター ANNA",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江東区",
+   "url": "https://anna-petservice.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "一回の訪問につき400円頂戴します。",
+     "src": "https://anna-petservice.com/%e3%81%94%e5%88%a9%e7%94%a8%e6%96%99%e9%87%91",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "シッティング対応エリア：江東区の 一部（砂町・東陽町周辺）",
+     "src": "https://anna-petservice.com/%e5%af%be%e5%bf%9c%e3%82%a8%e3%83%aa%e3%82%a2",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "銀行振込、現金、PayPayのいずれか（銀行振込の振込手数料はお客様ご負担でお願いします）",
+     "src": "https://anna-petservice.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "シッティング対応エリア：江東区の 一部（砂町・東陽町周辺）"
+  },
+  {
+   "id": "Std615b0e",
+   "name": "グッドわんドッグトレーニング",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "https://goodwan-dogtraining.com/",
+   "services": "ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:9:00～19:00",
+     "src": "https://goodwan-dogtraining.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場がない場合はお近くのコインパーキングを利用し駐車料金（実費）を別途頂戴いたします。",
+     "src": "https://goodwan-dogtraining.com/?page_id=3494",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金または銀行振込でのお支払いになります。",
+     "src": "https://goodwan-dogtraining.com/?page_id=1023",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "杉並区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St0b65658",
+   "name": "キャットシッター キャットン",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://cscatten.jp/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "3,500円 （2匹まで同料金、基本は1日1回訪問）",
+     "src": "https://cscatten.jp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "キャットシッター キャットン（Catsitter Catten) は、世田谷区 用賀・二子玉川を拠点に、用賀、二子玉川、桜新町、上野毛、等々力、尾山台周辺を対応エリアとしております。ご不明点などありましたら、お気軽にお問い合わせください。",
+     "src": "https://cscatten.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "キャットシッター キャットン（Catsitter Catten) は、世田谷区 用賀・二子玉川を拠点に、用賀、二子玉川、桜新町、上野毛、等々力、尾山台周辺を対応エリアとしております。ご不明点などありましたら、お気軽にお問い合わせください。"
+  },
+  {
+   "id": "St8a0cd0a",
+   "name": "ペットシッター ジニー",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "墨田区",
+   "url": "https://www.jiny-pet.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間8:00~20:00",
+     "src": "https://www.jiny-pet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：不定休",
+     "src": "https://www.jiny-pet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "また、お支払い方法は、現金・振込み・paypay・楽天payが可能です。",
+     "src": "https://www.jiny-pet.com/service/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "墨田区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St2c24f36",
+   "name": "R pet sitter",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://www.rpetsitter.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金払い、銀行振込、各種クレジット、PayPayによるお支払いを承っております。",
+     "src": "https://www.rpetsitter.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stf24d867",
+   "name": "まめねこさん",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://mamenekosan.tokyo/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回の訪問につき 500円",
+     "src": "https://mamenekosan.tokyo/guide/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Sta3e6d9c",
+   "name": "キャットシッター ねこのしっぽ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中野区",
+   "url": "https://www.cs-nekonoshippo.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【受付時間】 09：00 ～ 18：00",
+     "src": "https://www.cs-nekonoshippo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは現金または銀行振込のみとなります",
+     "src": "https://www.cs-nekonoshippo.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "中野区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St48c15d8",
+   "name": "ペットシッター ファンドリー",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://www.ps-fondly.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "8:00～20:00(不定休)",
+     "src": "https://www.ps-fondly.com/shop.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stf9314a6",
+   "name": "ねこのスプーン",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "https://www.nekonospoon.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "​コロナ対策のため、2020年8月以降のお申込みには消毒費用として1回のご依頼につき300円(1回～4回までの場合、回数毎に加算）を頂くこととなりました。ご理解の程宜しくお願い申し上げます。",
+     "src": "https://www.nekonospoon.com/blank-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "杉並区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St4522b40",
+   "name": "ミスターペットシッター",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "https://mrsitting.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "カード、銀行振込(手数料お客様負担)、前払いにてお支払いが可能です。",
+     "src": "https://mrsitting.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "杉並区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Sta83e7a5",
+   "name": "ペットシッター池尻大橋店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "目黒区",
+   "url": "https://ikejiri-ohashi.jimdoweb.com/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "目黒区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St57162af",
+   "name": "フェアリー ペット サービス",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://fairy-ps.com/free/greeting",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "渋谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St64ae9d2",
+   "name": "fluffy tails",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中央区",
+   "url": "https://fluffytails975.wixsite.com/sitter",
+   "services": "ペットホテル、ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お世話当日までに現金、または銀行振り込みでお支払いをお願いしております",
+     "src": "https://fluffytails975.wixsite.com/sitter/pricelist",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "中央区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St387944a",
+   "name": "ペットシッター Welina",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "港区",
+   "url": "https://www.c-welina.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "カウンセリング後、金額をご確認の上クレジットカードか、銀行振り込みにてお支払いをお願いいたします。",
+     "src": "https://www.c-welina.com/services",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "港区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St21e1f8d",
+   "name": "ペットシッター・ひだまり",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "練馬区",
+   "url": "https://pethidamari.sakura.ne.jp/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "練馬区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stfdd577c",
+   "name": "犬の保育園 LEMON HEART",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "港区",
+   "url": "https://services.cheriee.jp/interviews/lemon-heart/",
+   "services": "ペットホテル、ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "通常、お支払いはクレジットカード払いのみですが、請求書払い（銀行振込）にすることもできます。",
+     "src": "https://services.cheriee.jp/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "港区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St011a098",
+   "name": "ペットシッターうちのコ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "目黒区",
+   "url": "http://sitter-uchinoko.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "お打ち合わせ時にワクチン接種証明書の提示をお願い致して居ります。",
+     "src": "http://sitter-uchinoko.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "↓ お支払い方法は、前金で現金払いか",
+     "src": "http://sitter-uchinoko.com/nagare/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "目黒区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St29be319",
+   "name": "PEACE ペットシッター",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "新宿区",
+   "url": "https://www.ppsitter.tokyo/top",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間     平日9時から17時30分（シッター終了時間）",
+     "src": "https://www.ppsitter.tokyo/top",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "休業日：土曜日、日曜日、祝日",
+     "src": "https://www.ppsitter.tokyo/top",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "シッターをご依頼いただける場合は書類を取り交わし、必要な場合は合鍵をお預かりいたします。 ご依頼の際にご用意頂くもの ・1年以内に接種した混合ワクチン、狂犬病ワクチンの接種証明書（犬のみ） ・シッターご利用料金 ・ご自宅の合い鍵",
+     "src": "https://www.ppsitter.tokyo/step",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "新宿区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St00511ed",
+   "name": "harucaruha",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江東区",
+   "url": "https://h-petsitter.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "江東区の訪問型ペットシッター 料金 60分4,800円 | ペットシッターharucaruha（ハルカルハ）",
+     "src": "https://h-petsitter.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "振り込み、PayPay",
+     "src": "https://h-petsitter.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "江東区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stcc61d84",
+   "name": "bien",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "目黒区",
+   "url": "https://www.bien.rocks/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:9:00-20:00",
+     "src": "https://www.bien.rocks/j/shop/terms",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払方法 銀行振込、クレジットカード",
+     "src": "https://www.bien.rocks/j/shop/terms",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "目黒区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stff8cb8d",
+   "name": "ペットサロン ジェニーズ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "http://pet-jannies.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "毎週木曜日 定休日10月5日（月）定休日10月19日（月）定休日…",
+     "src": "http://pet-jannies.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回、1年以内に接種した混合ワクチンと狂犬病注射の証明書のご用意をお願いいたします。",
+     "src": "http://pet-jannies.com/trimming-menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stbcd1f0f",
+   "name": "キャットシッター ねこもり屋",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "練馬区",
+   "url": "https://www.nekomoriya.net/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日1回／３匹まで  2,800円",
+     "src": "https://www.nekomoriya.net/blank-2",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ねこもり屋がお世話するのは「完全室内飼い」「不妊・去勢済みの成猫」「ワクチン接種済み」「ノミ対策済み」の猫さんになります。",
+     "src": "https://www.nekomoriya.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※2 ご相談後、期日までにご入金が確認された時点でご成約成立とさせていただきます。ご入金が休日にかかるなど、シッティングの前日までにお振込確認ができないと予測される場合は 現金でのお支払いをお願いすることもございます。",
+     "src": "https://www.nekomoriya.net/blank-2",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "練馬区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stc737a98",
+   "name": "ペットシッターあにふる",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "練馬区",
+   "url": "https://ani-full.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払いは現金または銀行振り込みにて、前払いでお願いいたします。",
+     "src": "https://ani-full.com/charge",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "練馬区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St7e47042",
+   "name": "ペットシッター けい",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "目黒区",
+   "url": "https://www.petsitter-kei.com/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "目黒区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St0e03a48",
+   "name": "ペットシッター マックス&ショコラ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://www.maxandchocolat.com/",
+   "services": "ペットホテル、ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シッター料金の他に別途、出張費 1,500円をいただきます。",
+     "src": "https://www.maxandchocolat.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St7f6f43a",
+   "name": "necotomo",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "中央区",
+   "url": "https://necotomo.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：朝8:00～夜19:00",
+     "src": "https://necotomo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：不定休",
+     "src": "https://necotomo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "・「シッティング1回につき100円を保護猫活動をされている団体さんへの寄付」とさせていただきます",
+     "src": "https://necotomo.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "・クレジットカード",
+     "src": "https://necotomo.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "中央区とその周り（くわしくは公式サイト）"
   }
  ]
 }

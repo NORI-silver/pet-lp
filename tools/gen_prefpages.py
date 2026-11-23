@@ -194,11 +194,11 @@ def render_pref(ctx, cat, pf, rows):
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    {answer_html(e, cat, pf, rs, faq, facts)}
     <div class="emg">
       <p class="emg-free">{e(cat.get("free", "この一覧は無料の情報です。事業者からお金をもらっていません。おすすめ順や点数順ではありません。" + ("料金は公式サイトに書いてあるものだけを、情報の時点つきで載せています。" if any(it.get("facts") for it in rs) else "料金は載せていないので、それぞれに直接おたずねください。")))}</p>
       {cat["extra"](e, pf) if cat.get("extra") else ""}
       {cat["fac_chips"](e, pf) + chr(10) + "      " if cat.get("fac_chips") else ""}<section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(cat.get("list_h", name))}（{e(pf)}・{n}{e(unit)}）</h2>{cards}</section>
+      {answer_html(e, cat, pf, rs, faq, facts)}
       {table_html(e, cat, rs)}
       {fact_table_html(e, cat, pf, rs)}
       {cat["extra_after"](e, pf) if cat.get("extra_after") else ""}
