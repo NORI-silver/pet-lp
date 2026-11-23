@@ -238,6 +238,8 @@ def main():
     for fn in sorted(os.listdir(qdir)):
         if not (fn.startswith('queue') and fn.endswith('.json')):
             continue
+        if os.environ.get('SNAP_ONLY') and not fn.startswith(os.environ['SNAP_ONLY']):
+            continue
         items = json.load(open(os.path.join(qdir, fn)))
         with cf.ThreadPoolExecutor(12) as ex:
             res = list(ex.map(snap, items))

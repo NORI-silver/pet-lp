@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+"""[B] 中国・四国・九州沖縄：登録一覧の事業所の公式サイトを検索でさがす（Nori 2026-11-22「漏れ一切なくね」）。
+tools/crawl/search_*.json（[{"id","q"}...]）をシャードに分け、日本語の検索（Yahoo! JAPAN → DuckDuckGo lite → Bing）で1件ずつ調べ、
+見出しとURLを out/search_<shard>.json に書く（1件ずつ書き足すので、時間切れでもそこまでの結果は残る）。何も送らない。どれが公式サイトかは人（AI）が決める。
+"""
+import html, json, os, re, sys, time, urllib.parse, urllib.request
+UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36'
+
+def get(url):
+    req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept-Language': 'ja,en;q=0.5'})
+    with urllib.request.urlopen(req, timeout=20) as r:
+        return r.read(1_000_000).decode('utf-8', 'replace')
+
+def strip(s):
+    return html.unescape(re.sub(r'<[^>]+>', '', s)).strip()
+
+def yahoo(q):
+    h = get('https://search.yahoo.co.jp/search?ei=UTF-8&p=' + urllib.parse.quote(q))
+    res = []
+    for m in re.finditer(r'(?is)<a[^>]+href="(https?://[^"]+)"[^>]*>\s*(?:<[^>]+>\s*)*<h3[^>]*>(.*?)</h3>', h):
+        u = html.unescape(m.group(1))
+        if 'yahoo.co.jp' in u: continue
+        res.append([strip(m.group(2)), u])
+    if not res:
+        for m in re.finditer(r'(?is)<h3[^>]*>\s*<a[^>]+href="(https?://[^"]+)"[^>]*>(.*?)</a>', h):
+            u = html.unescape(m.group(1))
+            if 'yahoo.co.jp' not in u: res.append([strip(m.group(2)), u])
+    return res
+
+def ddg(q):
+    h = get('https://lite.duckduckgo.com/lite/?kl=jp-jp&q=' + urllib.parse.quote(q))
+    res = []
+    for href, label in re.findall(r"(?is)<a[^>]+href=\"([^\"]+)\"[^>]*class=['\"]result-link['\"][^>]*>(.*?)</a>", h):
+        m = re.search(r'uddg=([^&]+)', href)
+        res.append([strip(label), urllib.parse.unquote(m.group(1)) if m else href])
+    return res
+
+def main():
+    out = sys.argv[1]; shard = int(sys.argv[2]); n = int(sys.argv[3])
+    os.makedirs(out, exist_ok=True)
+    base = os.path.join(os.path.dirname(__file__), 'crawl')
+    jobs = []
+    for fn in sorted(os.listdir(base)):
+        if fn.startswith('search') and fn.endswith('.json'):
+            jobs += json.load(open(os.path.join(base, fn)))
+    jobs = jobs[shard::n]
+    res = []; t0 = time.time(); limit = float(os.environ.get('SEARCH_MINUTES', '140')) * 60
+    for j in jobs:
+        if time.time() - t0 > limit: break
+        r = dict(j)
+        # 「多すぎる」（429）と言われたら、待ってから同じ言葉でもう一度（あきらめない）
+        for wait in (0, 60, 120, 240, 480):
+            if wait: time.sleep(wait)
+            try:
+                got = yahoo(j['q'])
+            except Exception as e:
+                got = None; err = str(e)[:80]
+                r['err'] = 'yahoo ' + err
+                if '429' in err or '500' in err or 'timed out' in err: continue
+            if got is not None: break
+        if got:
+            r['engine'] = 'yahoo'; r['results'] = got[:8]; r.pop('err', None)
+        res.append(r)
+        json.dump(res, open(os.path.join(out, f'search_{shard}.json'), 'w'), ensure_ascii=False, indent=0)
+        time.sleep(4)
+    json.dump(res, open(os.path.join(out, f'search_{shard}.json'), 'w'), ensure_ascii=False, indent=0)
+    print('shard', shard, len(res), 'found', sum(1 for r in res if r.get('results')))
+
+if __name__ == '__main__':
+    main()
