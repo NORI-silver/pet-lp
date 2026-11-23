@@ -3545,6 +3545,118 @@
      "checked": "2026-11-22"
     }
    ]
+  },
+  {
+   "id": "GC001",
+   "name": "trim-N",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印西市",
+   "url": "https://www.trim-n.com/",
+   "area": "印西市と周辺",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 平日 9:00~18:00",
+     "src": "https://www.trim-n.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC002",
+   "name": "出張トリミング もーりー",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://morry-grooming.com/",
+   "area": "柏市と周辺",
+   "services": "出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC003",
+   "name": "Dog in boots",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://doginboots39.com/",
+   "area": "船橋市と周辺",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間|09:00~18:00",
+     "src": "https://doginboots39.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC004",
+   "name": "ペットサロン SNOOP（出張トリミング）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://petsalon-snoop.com/home-trimming/",
+   "area": "船橋市と周辺",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬/1,100円",
+     "src": "https://petsalon-snoop.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 10:00 - 19:00",
+     "src": "https://petsalon-snoop.com/home-trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:月曜日(ペットホテルの業務は行っています)",
+     "src": "https://petsalon-snoop.com/company/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初めてご利用の場合、LINEの事前登録・ワクチン証明書・狂犬病予防接種のご登録と同意書のチェックをお願いいたします。 ご新規様はこちら",
+     "src": "https://petsalon-snoop.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC005",
+   "name": "myboo（出張トリミング）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://www.myboo-hometrimming.com/",
+   "area": "船橋市と周辺",
+   "services": "出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23"
   }
  ]
 }

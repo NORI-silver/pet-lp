@@ -8166,6 +8166,1660 @@
      "checked": "2026-11-22"
     }
    ]
+  },
+  {
+   "id": "TC001",
+   "name": "小田ドッグスクール",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "http://odadogschool.com/profile.html",
+   "services": "しつけ教室、問題行動の相談",
+   "src": "http://odadogschool.com/profile.html",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC002",
+   "name": "Suzuki Dog Training",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "https://suzuki-dog.com/",
+   "services": "しつけ教室",
+   "src": "https://suzuki-dog.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "出張範囲は主に、流山市、野田市、柏市、我孫子市、松戸市、市川市、鎌ヶ谷市等です。",
+     "src": "https://suzuki-dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC003",
+   "name": "ドッグトレーニング古海",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "野田市",
+   "url": "https://dogtraining-f.com/",
+   "services": "しつけ教室、問題行動の相談",
+   "src": "https://dogtraining-f.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間|7:00〜19:00|不定休|",
+     "src": "https://dogtraining-f.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "Q:支払いは現金のみですか?",
+     "src": "https://dogtraining-f.com/qa/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC004",
+   "name": "Cane Felice",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://cane-dog.com/",
+   "services": "犬の幼稚園、問題行動の相談",
+   "src": "https://cane-dog.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間は、 朝10:00〜夕方19:00まで です。",
+     "src": "https://cane-dog.com/kiyaku/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC005",
+   "name": "Dog School JACK",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "長生郡長柄町",
+   "url": "https://www.dogschooljack.jp/",
+   "services": "しつけ教室、問題行動の相談",
+   "src": "https://www.dogschooljack.jp/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC006",
+   "name": "Ruff Life",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "南房総市",
+   "url": "https://rufflife.sunnyday.jp/",
+   "services": "問題行動の相談",
+   "src": "https://rufflife.sunnyday.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "契約時に1年以内の狂犬病予防接種証明書、鑑札、1年以内の混合ワクチン接種証明書の提示が必要となります。",
+     "src": "https://rufflife.sunnyday.jp/system.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC007",
+   "name": "てぃーだwan",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市稲毛区",
+   "url": "https://tidawan.com/",
+   "services": "出張トレーニング、問題行動の相談",
+   "src": "https://tidawan.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:出張レッスン 10:00~19:00",
+     "src": "https://tidawan.com/sample-page/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://tidawan.com/sample-page/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "支払方法は、現金または口座振込にてお願いいたしております。",
+     "src": "https://tidawan.com/%e3%83%ac%e3%83%83%e3%82%b9%e3%83%b3%e3%83%bb%e6%96%99%e9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC008",
+   "name": "犬の保育園Baby",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "習志野市",
+   "url": "https://www.inuhoiku-baby.com/",
+   "services": "しつけ教室",
+   "src": "https://www.inuhoiku-baby.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:09:30~19:00",
+     "src": "https://www.inuhoiku-baby.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:月曜日・水曜日",
+     "src": "https://www.inuhoiku-baby.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC009",
+   "name": "Hope73",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://www.hope73.jp/",
+   "services": "しつけ教室、出張トレーニング",
+   "src": "https://www.hope73.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "≪受付時間≫10:00~18:00",
+     "src": "https://www.hope73.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC010",
+   "name": "わんぷぷ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://www.wanpupu.jp/",
+   "services": "問題行動の相談",
+   "src": "https://www.wanpupu.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場:2台(1台軽自動車のみ)",
+     "src": "https://www.wanpupu.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC011",
+   "name": "犬育て塾101 ワンオーワン",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "八街市",
+   "url": "https://dogschool-101.com/",
+   "services": "しつけ教室、問題行動の相談",
+   "src": "https://dogschool-101.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "好評!パピートレーニングコース 全3回 18000円",
+     "src": "https://dogschool-101.com/service.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "お預かりトレーニングはどちらからでもお預かりいたします(送迎無料)",
+     "src": "https://dogschool-101.com/service.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC012",
+   "name": "有限会社ハウスショウ(SKフィールド)",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "大網白里市",
+   "url": "https://www.skfield.com/",
+   "services": "しつけ教室",
+   "src": "https://www.skfield.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC013",
+   "name": "BONHEUR",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市稲毛区",
+   "url": "https://happybonheur.net/",
+   "services": "しつけ教室",
+   "src": "https://happybonheur.net/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC014",
+   "name": "Perrito",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "習志野市",
+   "url": "https://www.perrito-dogschool.com/",
+   "services": "犬のしつけ",
+   "src": "https://www.perrito-dogschool.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC015",
+   "name": "香取警察犬愛犬訓練所",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "山武郡芝山町",
+   "url": "http://dogdog.iinaa.net/index.html",
+   "services": "犬のしつけ",
+   "src": "http://dogdog.iinaa.net/index.html",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC016",
+   "name": "ペピカファミリー松戸店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://pepica.shop-pro.jp/?mode=cate&cbid=2152724&csid=1&sort=n",
+   "services": "犬のしつけ",
+   "src": "https://pepica.shop-pro.jp/?mode=cate&cbid=2152724&csid=1&sort=n",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC017",
+   "name": "わんだふるライフ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://wonderful-life-dog.com/",
+   "services": "出張トレーニング",
+   "src": "https://wonderful-life-dog.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間| 9:00 〜 19:00(日曜定休)",
+     "src": "https://wonderful-life-dog.com/shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC018",
+   "name": "BUBU’S PAW",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://dogschool.co.jp/bubu/dogcafe.html",
+   "services": "しつけ教室、預かり訓練、問題行動の相談",
+   "src": "https://dogschool.co.jp/bubu/dogcafe.html",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:8:00~20:00",
+     "src": "https://dogschool.co.jp/bubu/dogcafe.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 月・水",
+     "src": "https://dogschool.co.jp/bubu/dogcafe.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC019",
+   "name": "特定非営利活動法人PAL",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://pal-doglesson.jimdofree.com/pal%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/%E6%89%80%E5%9C%A8%E5%9C%B0-%E9%80%A3%E7%B5%A1%E5%85%88/",
+   "services": "しつけ教室",
+   "src": "https://pal-doglesson.jimdofree.com/pal%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/%E6%89%80%E5%9C%A8%E5%9C%B0-%E9%80%A3%E7%B5%A1%E5%85%88/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC020",
+   "name": "Dog ゆいまーる ユーリア",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "https://dogyuimal.com/",
+   "services": "しつけ教室",
+   "src": "https://dogyuimal.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC021",
+   "name": "ペット行動コンサルタント SENDA",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "https://www.withpawsenda.com/",
+   "services": "しつけ教室、問題行動の相談",
+   "src": "https://www.withpawsenda.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC022",
+   "name": "遠藤警察犬家庭犬訓練所",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://dogschool.co.jp/school/dogschoolendo.html",
+   "services": "しつけ教室、預かり訓練、問題行動の相談",
+   "src": "https://dogschool.co.jp/school/dogschoolendo.html",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:8:00~20:00",
+     "src": "https://dogschool.co.jp/school/dogschoolendo.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 : 不定休",
+     "src": "https://dogschool.co.jp/school/dogschoolendo.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC023",
+   "name": "遠藤愛犬学校",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "http://www.dogschool.jp/breeder/",
+   "services": "しつけ教室、問題行動の相談",
+   "src": "http://www.dogschool.jp/breeder/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "ホテル受付時間は、受付開始は8:00から、最終引き渡しは18:00までとなります。",
+     "src": "http://www.dogschool.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "※出張エリア:松戸市、市川市、",
+     "src": "http://www.dogschool.jp/training/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC024",
+   "name": "Comfy Dogs",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "富津市",
+   "url": "https://comfydogs11.com/",
+   "services": "犬のしつけ",
+   "src": "https://comfydogs11.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC025",
+   "name": "株式会社ユアペティア 千葉東店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://www.olympic-corp.co.jp/petia/shop/p50",
+   "services": "犬のしつけ",
+   "src": "https://www.olympic-corp.co.jp/petia/shop/p50",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "店舗営業時間: 10:00-20:00",
+     "src": "https://www.olympic-corp.co.jp/petia/shopsearch",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC026",
+   "name": "石田愛犬訓練所",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "我孫子市",
+   "url": "https://wan-derful.com/kindergarten/detail/kg-ChIJsYCSfv6DGGARHol5",
+   "services": "しつけ教室、犬の幼稚園",
+   "src": "https://wan-derful.com/kindergarten/detail/kg-ChIJsYCSfv6DGGARHol5",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:平日 10:00〜18:00(土日祝・年末年始を除く)",
+     "src": "https://wan-derful.com/kindergarten/terms",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC027",
+   "name": "ツリー・キュービック(Tree Cubic)",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://www.tree-cubic.com/",
+   "services": "犬のしつけ",
+   "src": "https://www.tree-cubic.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:11:00〜17:00",
+     "src": "https://www.tree-cubic.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:日曜日",
+     "src": "https://www.tree-cubic.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC028",
+   "name": "ケネル ラミュエル",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "木更津市",
+   "url": "https://lamiuelle.jp/",
+   "services": "しつけ教室、問題行動の相談",
+   "src": "https://lamiuelle.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 11:00〜19:00",
+     "src": "https://lamiuelle.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日は月曜~水曜になります。営業は木曜~日曜と祝日になります。営業時間は11:00~19:00(最終受付18:30)です。",
+     "src": "https://lamiuelle.jp/faq-2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン・狂犬病ワクチン共に接種出来ない場合は、それぞれの抗体検査証明書が必要となります。",
+     "src": "https://lamiuelle.jp/faq-2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC029",
+   "name": "NEWS DOG",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市花見川区",
+   "url": "https://news-dog.jp/",
+   "services": "問題行動の相談",
+   "src": "https://news-dog.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:保育園は20:00まで対応 不定休あり",
+     "src": "https://news-dog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回の方は混合ワクチンと狂犬病の接種証明書をお持ち下さい。接種していないワンちゃんはお預かりできません。",
+     "src": "https://news-dog.jp/dog_hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お会計はチェックアウトの際に現金のみのお支払いになります。",
+     "src": "https://news-dog.jp/dog_hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC030",
+   "name": "AniHaB ドッグトレーニングジム",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://anihabgym.animalhands.co.jp/",
+   "services": "しつけ教室、預かり訓練、犬の幼稚園、問題行動の相談",
+   "src": "https://anihabgym.animalhands.co.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "平面駐車場2台[要予約]",
+     "src": "https://anihabgym.animalhands.co.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC031",
+   "name": "ペットケアサービス ☆ユキLoop☆",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://www.business-plus.net/interview/1804/k4040.html",
+   "services": "犬のしつけ",
+   "src": "https://www.business-plus.net/interview/1804/k4040.html",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC032",
+   "name": "出張トレーニング HEARTof DOG",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://heartofdog715.wixsite.com/training",
+   "services": "しつけ教室、出張トレーニング、問題行動の相談",
+   "src": "https://heartofdog715.wixsite.com/training",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "トレーニングお試しコース・・全4回 60分 25,000円",
+     "src": "https://heartofdog715.wixsite.com/training/blank-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間8:00~19:00",
+     "src": "https://heartofdog715.wixsite.com/training",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "​定休日 月曜日",
+     "src": "https://heartofdog715.wixsite.com/training",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC033",
+   "name": "Manahau Dog",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://manahaudog.com/",
+   "services": "しつけ教室、出張トレーニング、問題行動の相談",
+   "src": "https://manahaudog.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "料金は一回 3,000円です。",
+     "src": "https://manahaudog.com/course/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "出張エリア:Manahau Dog (マナハウドッグ)は千葉県松戸市を拠点に犬の出張・プライベートレッスンを専門に行っております。",
+     "src": "https://manahaudog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC034",
+   "name": "MJ WANS",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://www.mjwans.com/",
+   "services": "出張トレーニング",
+   "src": "https://www.mjwans.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ご利用が初めての方は、ワクチンの証明書をご提示ください。",
+     "src": "https://www.mjwans.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "​出張エリア:千葉県佐倉市・四街道市を中心に",
+     "src": "https://www.mjwans.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※ お支払いは現金のみとなります。",
+     "src": "https://www.mjwans.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC035",
+   "name": "水口ドッグスクール",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印西市",
+   "url": "https://mizuguchi-dogschool.com/",
+   "services": "預かり訓練、問題行動の相談",
+   "src": "https://mizuguchi-dogschool.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ドックフード持参の飼い主様は訓練費の5000円お引きします。",
+     "src": "https://mizuguchi-dogschool.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "有料送迎サービス印西市内片道500円、市外1000円",
+     "src": "https://mizuguchi-dogschool.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "出張範囲:印西市、佐倉市、白井市、四街道市、我孫子市など",
+     "src": "https://mizuguchi-dogschool.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC036",
+   "name": "ペットホテル セカンドファミリー",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "富里市",
+   "url": "https://second-family.com/",
+   "services": "問題行動の相談",
+   "src": "https://second-family.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 7:00〜20:00",
+     "src": "https://second-family.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ご予約の際にワクチンを接種した病院名と連絡先をお知らせ下さい。事前にこちらで確認させて頂きます。(狂犬病と混合ワクチンの証明書が必要です。)",
+     "src": "https://second-family.com/qa/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "富里市・成田市・八街市・芝山町 等での送迎:片道1,100円〜 / 往復2,200円〜",
+     "src": "https://second-family.com/plan-2-2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC037",
+   "name": "Dog school&hotel Gaw",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "我孫子市",
+   "url": "https://www.dogschool-gaw.jp/",
+   "services": "しつけ教室",
+   "src": "https://www.dogschool-gaw.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間】9:30~17:30",
+     "src": "https://www.dogschool-gaw.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "【定休日】定休日は こちら をご確認ください。",
+     "src": "https://www.dogschool-gaw.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC038",
+   "name": "ドッグスクールOne'sWish",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "野田市",
+   "url": "https://ones-wish.com/",
+   "services": "しつけ教室、問題行動の相談",
+   "src": "https://ones-wish.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC039",
+   "name": "ドック トレーニングスクール 牛山",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "八千代市",
+   "url": "https://www.minamibosocity-iju.jp/work/1727/",
+   "services": "問題行動の相談",
+   "src": "https://www.minamibosocity-iju.jp/work/1727/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "・営業時間:7:00~20:00",
+     "src": "https://www.minamibosocity-iju.jp/work/1727/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "【定休日】木曜日",
+     "src": "https://www.minamibosocity-iju.jp/work/1727/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC040",
+   "name": "ドッグトレーニングmoto",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "木更津市",
+   "url": "https://dogmoto.simdif.com/",
+   "services": "しつけ教室、出張トレーニング",
+   "src": "https://dogmoto.simdif.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC041",
+   "name": "Marilyn Mom",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://www.marilynmom.com/",
+   "services": "問題行動の相談",
+   "src": "https://www.marilynmom.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "カウンセリング後のご契約で、トレーニング料金からカウンセリング料3,300円をお引きします。",
+     "src": "https://www.marilynmom.com/dogtraning",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "犬の保育園 営業時間:17:00くらいまでにお迎えに来てください。 17:00以降はホテル・デイサービスと同様の金額でお預かりいたします(1時間350円〜)",
+     "src": "https://www.marilynmom.com/dogtraning",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎については往復10km圏内のみ承ります(片道1km 110円〜)時間指定はできません。",
+     "src": "https://www.marilynmom.com/dogtraning",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC042",
+   "name": "わんこのお家 SEASONS",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "南房総市",
+   "url": "https://seasons2020.net/",
+   "services": "しつけ教室、問題行動の相談",
+   "src": "https://seasons2020.net/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC043",
+   "name": "ドッグスクール日向",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市花見川区",
+   "url": "https://www.hinata-dog.com/",
+   "services": "しつけ教室、預かり訓練",
+   "src": "https://www.hinata-dog.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC044",
+   "name": "PETEMO しつけ教室 幕張新都心",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市美浜区",
+   "url": "https://www.aeonpet.com/service/training/p_makuhari/index.html",
+   "services": "しつけ教室",
+   "src": "https://www.aeonpet.com/service/training/p_makuhari/index.html",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "4回コース 1回4,500円(税込 4,950円)※都度払い",
+     "src": "https://www.aeonpet.com/service/training/p_makuhari/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:受付 10:00~17:00まで",
+     "src": "https://www.aeonpet.com/service/training/p_makuhari/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC045",
+   "name": "犬の家庭教師 Wando",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "http://wan-do.com/",
+   "services": "しつけ教室、出張トレーニング、問題行動の相談",
+   "src": "http://wan-do.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日:(祝日の場合は営業。翌日にお休みを振替)",
+     "src": "http://wan-do.com/about.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC046",
+   "name": "Billy Dogs&Cats 物井駅前店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "四街道市",
+   "url": "https://billydogsandcats.net/91_price_01.html",
+   "services": "出張トレーニング、犬の幼稚園",
+   "src": "https://billydogsandcats.net/91_price_01.html",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "※入会時に別途、入会金(10,000円/税抜)が必要です。",
+     "src": "https://billydogsandcats.net/91_price_01.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "・各店舗の営業時間は10:00~19:00です。早期、延長もご用意しています。(オプション)",
+     "src": "https://billydogsandcats.net/91_price_01.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC047",
+   "name": "Angel Dog",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市美浜区",
+   "url": "https://www.angel-dogs.jp/shop",
+   "services": "出張トレーニング",
+   "src": "https://www.angel-dogs.jp/shop",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回分:4,600円(税込)",
+     "src": "https://www.angel-dogs.jp/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払方法:各種クレジットカード、電子マネーでのお支払いも可能",
+     "src": "https://www.angel-dogs.jp/shop",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC048",
+   "name": "屋内型ドッグラン CoCo",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://coco-dogpark.com/",
+   "services": "しつけ教室、出張トレーニング、問題行動の相談",
+   "src": "https://coco-dogpark.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "入会金 11,000円",
+     "src": "https://coco-dogpark.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間: 10:00 - 17:00",
+     "src": "https://coco-dogpark.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "10時から17時までご利用の方のみ送迎いたします。当施設より3km園内は送迎無料、3km以上は有料となります。ご相談ください。",
+     "src": "https://coco-dogpark.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは現金のみでお願い致します。",
+     "src": "https://coco-dogpark.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC049",
+   "name": "HundeschuleInagaki",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://www.hundeschule-inagaki.net/",
+   "services": "しつけ教室、パピー教室",
+   "src": "https://www.hundeschule-inagaki.net/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC050",
+   "name": "All for Wan",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市原市",
+   "url": "http://allforwan.p-kit.com/",
+   "services": "しつけ教室、出張トレーニング",
+   "src": "http://allforwan.p-kit.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場:駐車台数:約3台 店舗前に2台、隣接の駐車場5番 にお停め下さい。",
+     "src": "https://allforwan.p-kit.com/page0005.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC051",
+   "name": "ドッグスクールK",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "http://www.dogschool-k.com/",
+   "services": "預かり訓練、犬の幼稚園",
+   "src": "http://www.dogschool-k.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC052",
+   "name": "DogTrainingOLINA",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "野田市",
+   "url": "https://www.dog-olina.com/",
+   "services": "しつけ教室、犬の幼稚園",
+   "src": "https://www.dog-olina.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間10:00~17:00",
+     "src": "https://www.dog-olina.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC053",
+   "name": "ポポちゃん ドッグスクール",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "木更津市",
+   "url": "https://www.popochandogschool.com/",
+   "services": "犬のしつけ",
+   "src": "https://www.popochandogschool.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC054",
+   "name": "Dog Training Luuna",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://dt03luuna.crayonsite.net/",
+   "services": "出張トレーニング",
+   "src": "https://dt03luuna.crayonsite.net/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "・1回単発コース 2530円(税込み)",
+     "src": "https://dt03luuna.crayonsite.net/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC055",
+   "name": "ドッグスクール KEZ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "http://shinoharadogschool.jp/",
+   "services": "しつけ教室、預かり訓練、問題行動の相談",
+   "src": "http://shinoharadogschool.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:6:00~18:00",
+     "src": "http://shinoharadogschool.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC056",
+   "name": "Echoes",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "いすみ市",
+   "url": "https://echoes.main.jp/",
+   "services": "出張トレーニング",
+   "src": "https://echoes.main.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "初回・1回単発 10,000円",
+     "src": "https://echoes.main.jp/service.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "◆お支払い方法:現金またはお振込みとなります。",
+     "src": "https://echoes.main.jp/service.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC057",
+   "name": "Wan's ドッグスクール",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市原市",
+   "url": "https://www.dog-ruffian.jp/5069/",
+   "services": "しつけ教室、問題行動の相談",
+   "src": "https://www.dog-ruffian.jp/5069/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "グループレッスン(パピー):1回4,000円〜",
+     "src": "https://www.dog-ruffian.jp/5069/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC058",
+   "name": "Dog’s home SUNKS",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://sunks.jp/",
+   "services": "しつけ教室、犬の幼稚園、問題行動の相談",
+   "src": "https://sunks.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払方法:現金/銀行振込/クレジットカード/QR決済",
+     "src": "https://sunks.jp/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC059",
+   "name": "ドッグサロンMahalo",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市花見川区",
+   "url": "https://mahalo-dog.net/",
+   "services": "しつけ教室",
+   "src": "https://mahalo-dog.net/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00 ~ 18:00",
+     "src": "https://mahalo-dog.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 水曜日",
+     "src": "https://mahalo-dog.net/blog/4036/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "*ワクチン証明書をご提示下さい。",
+     "src": "https://mahalo-dog.net/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC060",
+   "name": "TONAKAI",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "http://www.doghotel-tonakai.com/",
+   "services": "パピー教室、犬の幼稚園",
+   "src": "http://www.doghotel-tonakai.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "送迎",
+     "v": "送迎は千葉県柏市を中心に20km圏内",
+     "src": "http://www.doghotel-tonakai.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC061",
+   "name": "Letsgodogs",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "野田市",
+   "url": "https://ub3zr7eru.wixsite.com/letsgodogs-1",
+   "services": "犬のしつけ",
+   "src": "https://ub3zr7eru.wixsite.com/letsgodogs-1",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC062",
+   "name": "ちば愛犬動物フラワー学園 おゆみ野ドッグサイト",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "https://www.aik.ac.jp/oyumino.html",
+   "services": "犬のしつけ",
+   "src": "https://www.aik.ac.jp/oyumino.html",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC063",
+   "name": "WAN PARK とわSKY ~dogtraining&doghotel~",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "野田市",
+   "url": "https://wanpark-towasky.com/",
+   "services": "しつけ教室、出張トレーニング",
+   "src": "https://wanpark-towasky.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:AM8:00〜PM7:00",
+     "src": "https://wanpark-towasky.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://wanpark-towasky.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC064",
+   "name": "ドッグトレーニングLEAP",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "東金市",
+   "url": "https://www.dg-leap.com/",
+   "services": "犬のしつけ",
+   "src": "https://www.dg-leap.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC065",
+   "name": "PLAYGROUNDdog fun",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "富津市",
+   "url": "https://www.playgrounddogfun.com/",
+   "services": "犬のしつけ",
+   "src": "https://www.playgrounddogfun.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "​定休日 月曜・火曜",
+     "src": "https://www.playgrounddogfun.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "​駐車スペース5台程度",
+     "src": "https://www.playgrounddogfun.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC066",
+   "name": "外房ドッグスクール",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "いすみ市",
+   "url": "https://sotobou-dog-school.wixsite.com/sotobou-dog-school",
+   "services": "犬の幼稚園",
+   "src": "https://sotobou-dog-school.wixsite.com/sotobou-dog-school",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC067",
+   "name": "犬のペットホテルPooch",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://www.pooch1.com/",
+   "services": "出張トレーニング、問題行動の相談",
+   "src": "https://www.pooch1.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 8:00~19:00 (年中無休)",
+     "src": "https://www.pooch1.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "東船橋駅までの送迎無料",
+     "src": "https://www.pooch1.com/receive.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC068",
+   "name": "くみドッグスクール",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://kumidogschool.com/",
+   "services": "しつけ教室、出張トレーニング、問題行動の相談",
+   "src": "https://kumidogschool.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC069",
+   "name": "船橋さきがおか動物病院 しつけ教室",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "http://saki-ah.com/shitsuke.html",
+   "services": "しつけ教室、問題行動の相談",
+   "src": "http://saki-ah.com/shitsuke.html",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回:7,500円",
+     "src": "http://saki-ah.com/shitsuke.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内に混合ワクチン、狂犬病ワクチンを摂取していること(必ず証明書をお持ちください)(※2)",
+     "src": "http://saki-ah.com/shitsuke.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC070",
+   "name": "goodone 船橋習志野店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://asuka860112.wixsite.com/goodonecainz",
+   "services": "しつけ教室、問題行動の相談",
+   "src": "https://asuka860112.wixsite.com/goodonecainz",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC071",
+   "name": "愛犬ハッピートレーニング ハピトレ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://happy-dog1.com/access-2/",
+   "services": "しつけ教室、パピー教室",
+   "src": "https://happy-dog1.com/access-2/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "17500円(1回5,833円相当)",
+     "src": "https://happy-dog1.com/course/training/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "●メインの出張エリア:千葉市、八千代市、松戸市などの地域(1時間内) 遠方の場合はご相談下さいませ。",
+     "src": "https://happy-dog1.com/access-2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC072",
+   "name": "ドッグスクール Perrito",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "習志野市",
+   "url": "https://www.perrito-dogschool.com/",
+   "services": "犬のしつけ",
+   "src": "https://www.perrito-dogschool.com/",
+   "checked": "2026-11-23",
+   "facts": []
+  },
+  {
+   "id": "TC073",
+   "name": "アプリコット動物病院 しつけ教室",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "習志野市",
+   "url": "http://www.apricot-ah.jp/upbringing/",
+   "services": "しつけ教室",
+   "src": "http://www.apricot-ah.jp/upbringing/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 年中無休",
+     "src": "http://www.apricot-ah.jp/upbringing/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC074",
+   "name": "しらかば動物病院 しつけ教室",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://funabashi-animal.com/puppy-party/first_toward.html",
+   "services": "しつけ教室、問題行動の相談",
+   "src": "https://funabashi-animal.com/puppy-party/first_toward.html",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場完備",
+     "src": "https://funabashi-animal.com/puppy-party/first_toward.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明書等が必要になる場合もありますので、必要な場合はご予約時にお伝えいたします。",
+     "src": "https://funabashi-animal.com/puppy-party/first_toward.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC075",
+   "name": "ドッグサロン Ruu",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "船橋市",
+   "url": "https://ruu0.webnode.jp/",
+   "services": "犬のしつけ",
+   "src": "https://ruu0.webnode.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "※営業時間外の場合は1時間ごとに2,000円(税抜)を頂きますのでご了承ください。",
+     "src": "https://ruu0.webnode.jp/%e3%83%89%e3%83%83%e3%82%b0%e3%83%9b%e3%83%86%e3%83%ab/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }
