@@ -20,6 +20,17 @@ jobs:
           python-version: '3.12'
       - run: pip install -q pillow
       - run: python3 tools/fetch_curated.py tools/curated_tokyo_small.json
+      - name: 公園の景色だけで、ドッグランが写っていない写真を外す
+        run: |
+          rm -f img/fac/dogrun/D001_*.webp
+          rm -f img/fac/dogrun/D002_*.webp
+          rm -f img/fac/dogrun/D003_*.webp
+          rm -f img/fac/dogrun/D004_*.webp
+          rm -f img/fac/dogrun/D005_*.webp
+          rm -f img/fac/dogrun/D006_*.webp
+          rm -f img/fac/dogrun/D007_*.webp
+          rm -f img/fac/dogrun/D011_*.webp
+          rm -f img/fac/dogrun/D012_*.webp
       - run: python3 tools/gen_areas.py .
       - run: python3 tools/rules_check.py
       - name: このブランチに入れる
