@@ -20,17 +20,33 @@ jobs:
           python-version: '3.12'
       - run: pip install -q pillow
       - run: python3 tools/fetch_curated.py tools/curated_tokyo_small.json
-      - name: 公園の景色だけで、ドッグランが写っていない写真を外す
+      - name: 被写体チェックで外した写真のファイルを消す（tools/photo_audit.json に理由）
         run: |
-          rm -f img/fac/dogrun/D001_*.webp
-          rm -f img/fac/dogrun/D002_*.webp
-          rm -f img/fac/dogrun/D003_*.webp
-          rm -f img/fac/dogrun/D004_*.webp
-          rm -f img/fac/dogrun/D005_*.webp
-          rm -f img/fac/dogrun/D006_*.webp
-          rm -f img/fac/dogrun/D007_*.webp
-          rm -f img/fac/dogrun/D011_*.webp
-          rm -f img/fac/dogrun/D012_*.webp
+          rm -f ./img/fac/rojin/R096_1.webp
+          rm -f ./img/fac/trainer/TC023_1.webp
+          rm -f ./img/fac/trainer/TC029_1.webp
+          rm -f ./img/fac/trainer/TC033_1.webp
+          rm -f ./img/fac/trainer/TC045_1.webp
+          rm -f ./img/fac/trainer/TC069_1.webp
+          rm -f ./img/fac/trainer/TC070_1.webp
+          rm -f ./img/fac/trainer/TC073_1.webp
+          rm -f ./img/fac/trainer/TC077_1.webp
+          rm -f ./img/fac/trainer/TC088_1.webp
+          rm -f ./img/fac/trainer/T020_1.webp
+          rm -f ./img/fac/trainer/T022_1.webp
+          rm -f ./img/fac/trainer/T129_1.webp
+          rm -f ./img/fac/trainer/T132_1.webp
+          rm -f ./img/fac/trainer/T136_1.webp
+          rm -f ./img/fac/trainer/T137_1.webp
+          rm -f ./img/fac/trainer/T138_1.webp
+          rm -f ./img/fac/trainer/T142_1.webp
+          rm -f ./img/fac/trainer/T143_1.webp
+          rm -f ./img/fac/trainer/TC004_1.webp
+          rm -f ./img/fac/trainer/TC010_1.webp
+          rm -f ./img/fac/trimming/GC003_1.webp
+          rm -f ./img/fac/trimming/GC022_1.webp
+          rm -f ./img/fac/trimming/GC061_1.webp
+          rm -f ./img/fac/trimming/GC076_1.webp
       - run: python3 tools/gen_areas.py .
       - run: python3 tools/rules_check.py
       - name: このブランチに入れる
