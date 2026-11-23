@@ -219,11 +219,9 @@
    "src": "2026-11-17",
    "checked": "2026-11-19",
    "photos": [
-    "/img/fac/rojin/R096_1.webp",
     "/img/fac/rojin/R096_4.webp"
    ],
    "ratio": [
-    1.499,
     1.499
    ]
   },
@@ -475,22 +473,6 @@
   },
   {
    "cat": "trainer",
-   "id": "TC023",
-   "name": "遠藤愛犬学校",
-   "url": "http://www.dogschool.jp/breeder/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/TC023_1.webp"
-   ],
-   "credit": "写真：遠藤愛犬学校",
-   "ratio": [
-    1.907
-   ]
-  },
-  {
-   "cat": "trainer",
    "id": "TC024",
    "name": "Comfy Dogs",
    "url": "https://comfydogs11.com/",
@@ -555,22 +537,6 @@
   },
   {
    "cat": "trainer",
-   "id": "TC029",
-   "name": "NEWS DOG",
-   "url": "https://news-dog.jp/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/TC029_1.webp"
-   ],
-   "credit": "写真：NEWS DOG",
-   "ratio": [
-    1.205
-   ]
-  },
-  {
-   "cat": "trainer",
    "id": "TC032",
    "name": "出張トレーニング HEARTof DOG",
    "url": "https://heartofdog715.wixsite.com/training",
@@ -583,22 +549,6 @@
    "credit": "写真：出張トレーニング HEARTof DOG",
    "ratio": [
     1.863
-   ]
-  },
-  {
-   "cat": "trainer",
-   "id": "TC033",
-   "name": "Manahau Dog",
-   "url": "https://manahaudog.com/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/TC033_1.webp"
-   ],
-   "credit": "写真：Manahau Dog",
-   "ratio": [
-    1.333
    ]
   },
   {
@@ -743,22 +693,6 @@
    "credit": "写真：ドッグスクール日向",
    "ratio": [
     1.0
-   ]
-  },
-  {
-   "cat": "trainer",
-   "id": "TC045",
-   "name": "犬の家庭教師 Wando",
-   "url": "http://wan-do.com/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/TC045_1.webp"
-   ],
-   "credit": "写真：犬の家庭教師 Wando",
-   "ratio": [
-    1.529
    ]
   },
   {
@@ -1019,54 +953,6 @@
   },
   {
    "cat": "trainer",
-   "id": "TC069",
-   "name": "船橋さきがおか動物病院 しつけ教室",
-   "url": "http://saki-ah.com/shitsuke.html",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/TC069_1.webp"
-   ],
-   "credit": "写真：船橋さきがおか動物病院 しつけ教室",
-   "ratio": [
-    1.51
-   ]
-  },
-  {
-   "cat": "trainer",
-   "id": "TC070",
-   "name": "goodone 船橋習志野店",
-   "url": "https://asuka860112.wixsite.com/goodonecainz",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/TC070_1.webp"
-   ],
-   "credit": "写真：goodone 船橋習志野店",
-   "ratio": [
-    1.44
-   ]
-  },
-  {
-   "cat": "trainer",
-   "id": "TC073",
-   "name": "アプリコット動物病院 しつけ教室",
-   "url": "http://www.apricot-ah.jp/upbringing/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/TC073_1.webp"
-   ],
-   "credit": "写真：アプリコット動物病院 しつけ教室",
-   "ratio": [
-    2.778
-   ]
-  },
-  {
-   "cat": "trainer",
    "id": "TC075",
    "name": "ドッグサロン Ruu",
    "url": "https://ruu0.webnode.jp/",
@@ -1095,22 +981,6 @@
    "credit": "写真：Zephyros",
    "ratio": [
     0.75
-   ]
-  },
-  {
-   "cat": "trainer",
-   "id": "TC077",
-   "name": "Happy×2 トレーニング",
-   "url": "https://www.happy-happy-training.com/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/TC077_1.webp"
-   ],
-   "credit": "写真：Happy×2 トレーニング",
-   "ratio": [
-    1.059
    ]
   },
   {
@@ -1211,22 +1081,6 @@
   },
   {
    "cat": "trainer",
-   "id": "TC088",
-   "name": "Wan’s Ohana",
-   "url": "https://wan-ohana.com/blog/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/TC088_1.webp"
-   ],
-   "credit": "写真：Wan’s Ohana",
-   "ratio": [
-    1.0
-   ]
-  },
-  {
-   "cat": "trainer",
    "id": "TC089",
    "name": "ドッグサロン ベティーズハウス",
    "url": "https://bestie-s.com/",
@@ -1307,22 +1161,6 @@
   },
   {
    "cat": "trainer",
-   "id": "T020",
-   "name": "Everyday Dogs Club",
-   "url": "http://everydaydogsclub.jp",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/T020_1.webp"
-   ],
-   "credit": "写真：Everyday Dogs Club",
-   "ratio": [
-    2.022
-   ]
-  },
-  {
-   "cat": "trainer",
    "id": "T021",
    "name": "Dog Training School WARABY",
    "url": "http://www.waraby.com/",
@@ -1339,38 +1177,6 @@
   },
   {
    "cat": "trainer",
-   "id": "T022",
-   "name": "LEAD（犬のしつけレッスン）",
-   "url": "https://www.lead-dogtraining.com/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/T022_1.webp"
-   ],
-   "credit": "写真：LEAD（犬のしつけレッスン）",
-   "ratio": [
-    1.682
-   ]
-  },
-  {
-   "cat": "trainer",
-   "id": "T129",
-   "name": "ABOUT DOGS（アバウトドッグス）",
-   "url": "https://www.ab-dogs.com/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/T129_1.webp"
-   ],
-   "credit": "写真：ABOUT DOGS（アバウトドッグス）",
-   "ratio": [
-    1.5
-   ]
-  },
-  {
-   "cat": "trainer",
    "id": "T131",
    "name": "Dog School Spica（ドッグスクールスピカ）",
    "url": "https://dog-school-spica.com/",
@@ -1383,22 +1189,6 @@
    "credit": "写真：Dog School Spica（ドッグスクールスピカ）",
    "ratio": [
     1.505
-   ]
-  },
-  {
-   "cat": "trainer",
-   "id": "T132",
-   "name": "いぬとれ",
-   "url": "https://www.inutore.net/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/T132_1.webp"
-   ],
-   "credit": "写真：いぬとれ",
-   "ratio": [
-    1.503
    ]
   },
   {
@@ -1451,54 +1241,6 @@
   },
   {
    "cat": "trainer",
-   "id": "T136",
-   "name": "遠藤ドッグトレーニング",
-   "url": "https://endogtraining.com/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/T136_1.webp"
-   ],
-   "credit": "写真：遠藤ドッグトレーニング",
-   "ratio": [
-    1.499
-   ]
-  },
-  {
-   "cat": "trainer",
-   "id": "T137",
-   "name": "ナカムラ・ドッグ・スクール",
-   "url": "https://nakamura-ds.com/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/T137_1.webp"
-   ],
-   "credit": "写真：ナカムラ・ドッグ・スクール",
-   "ratio": [
-    2.305
-   ]
-  },
-  {
-   "cat": "trainer",
-   "id": "T138",
-   "name": "Bande（バンデ）",
-   "url": "http://bande.jellybean.jp/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/T138_1.webp"
-   ],
-   "credit": "写真：Bande（バンデ）",
-   "ratio": [
-    2.564
-   ]
-  },
-  {
-   "cat": "trainer",
    "id": "T139",
    "name": "よいわんわん",
    "url": "https://4111-yoiwanwan.com/",
@@ -1547,38 +1289,6 @@
   },
   {
    "cat": "trainer",
-   "id": "T142",
-   "name": "成田ドッグガーデン",
-   "url": "https://naritadog.com/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/T142_1.webp"
-   ],
-   "credit": "写真：成田ドッグガーデン",
-   "ratio": [
-    2.0
-   ]
-  },
-  {
-   "cat": "trainer",
-   "id": "T143",
-   "name": "犬のしつけ幼稚園 WONEMAKE（ワンメイク）",
-   "url": "https://www.wonemake.jp/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/T143_1.webp"
-   ],
-   "credit": "写真：犬のしつけ幼稚園 WONEMAKE（ワンメイク）",
-   "ratio": [
-    1.721
-   ]
-  },
-  {
-   "cat": "trainer",
    "id": "T260",
    "name": "ぽちのせんせい（わんちゃんの家庭教師）",
    "url": "https://pochinosensei.jimdofree.com/",
@@ -1607,22 +1317,6 @@
    "credit": "写真：ドッグトレーニング古海",
    "ratio": [
     1.544
-   ]
-  },
-  {
-   "cat": "trainer",
-   "id": "TC004",
-   "name": "Cane Felice",
-   "url": "https://cane-dog.com/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/TC004_1.webp"
-   ],
-   "credit": "写真：Cane Felice",
-   "ratio": [
-    1.948
    ]
   },
   {
@@ -1689,22 +1383,6 @@
    "credit": "写真：Hope73",
    "ratio": [
     0.668
-   ]
-  },
-  {
-   "cat": "trainer",
-   "id": "TC010",
-   "name": "わんぷぷ",
-   "url": "https://www.wanpupu.jp/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/TC010_1.webp"
-   ],
-   "credit": "写真：わんぷぷ",
-   "ratio": [
-    1.645
    ]
   },
   {
@@ -2829,22 +2507,6 @@
   },
   {
    "cat": "trimming",
-   "id": "GC003",
-   "name": "Dog in boots",
-   "url": "https://doginboots39.com/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trimming/GC003_1.webp"
-   ],
-   "credit": "写真：Dog in boots",
-   "ratio": [
-    1.779
-   ]
-  },
-  {
-   "cat": "trimming",
    "id": "GC005",
    "name": "myboo（出張トリミング）",
    "url": "https://www.myboo-hometrimming.com/",
@@ -3001,22 +2663,6 @@
    "credit": "写真：Foster Salon Rip",
    "ratio": [
     1.0
-   ]
-  },
-  {
-   "cat": "trimming",
-   "id": "GC022",
-   "name": "nico",
-   "url": "https://www.nico-ichi.jp/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trimming/GC022_1.webp"
-   ],
-   "credit": "写真：nico",
-   "ratio": [
-    1.5
    ]
   },
   {
@@ -3581,22 +3227,6 @@
   },
   {
    "cat": "trimming",
-   "id": "GC061",
-   "name": "犬・猫 カトリ",
-   "url": "https://petkatori.jimdofree.com/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trimming/GC061_1.webp"
-   ],
-   "credit": "写真：犬・猫 カトリ",
-   "ratio": [
-    1.333
-   ]
-  },
-  {
-   "cat": "trimming",
    "id": "GC062",
    "name": "トリミングサロン STAR DOG",
    "url": "https://www.familydog.store/",
@@ -3721,22 +3351,6 @@
    "credit": "写真：Santa-Fe",
    "ratio": [
     1.4
-   ]
-  },
-  {
-   "cat": "trimming",
-   "id": "GC076",
-   "name": "RAO",
-   "url": "https://raoraorao.amebaownd.com/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trimming/GC076_1.webp"
-   ],
-   "credit": "写真：RAO",
-   "ratio": [
-    1.333
    ]
   },
   {
