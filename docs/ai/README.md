@@ -5,6 +5,8 @@
 
 ## 1. 作業の前に読む（この順）
 
+まず `docs/ai/vision.md`（Nori さんのビジョンと共通方針。全事業共通・原文のまま）を読みます。すべての判断の土台です。
+
 1. `AGENTS.md`（このリポジトリ）：全部の決まり。とくに「いちばん上の決まり（4つのバランス）」と「品質の決まり」の一覧。
    - 仕事の進め方の型：`docs/ai/framework/README.md`（どの事業にも使える）と、このサイトの記入例 `docs/ai/pet-operating.md`。指摘の台帳は `docs/ai/feedback.json`。
 2. pet-db（非公開）の `docs/ai-memory/MEMORY.md`：Nori さんの方針・戦略・進行中のこと・使わない言葉。必要な話題のファイルも読む。
