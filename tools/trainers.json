@@ -8957,6 +8957,49 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "Tnk032",
+   "name": "まなかドッグスクール",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "筑西市",
+   "url": "https://manakadogschool.com/about",
+   "services": "出張訓練・しつけ教室・預かり訓練（入所は全国から）",
+   "large": true,
+   "pickup": true,
+   "area": "筑西市・下妻市・つくば市など茨城県西部",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張トレーニング 週1回コース5回27,500円・週2回コース9回49,500円",
+     "src": "https://manakadogschool.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "茨城県（筑西市・下妻市・結城市・つくば市・桜川市・常総市・坂東市・古河市・五霞町・石岡市・笠間市の西部など）と栃木県の一部",
+     "src": "https://manakadogschool.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "訓練所から30〜40kmは1回800円、それより遠いと10kmごとに300円増し",
+     "src": "https://manakadogschool.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の伝染病ワクチンの注射済証",
+     "src": "https://manakadogschool.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }

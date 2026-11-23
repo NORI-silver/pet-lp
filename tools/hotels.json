@@ -12366,6 +12366,51 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "PHnk158",
+   "name": "ファミリードッグ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://family-dog-mitosi.com/",
+   "services": "トリミング・ペットホテル",
+   "facts": [
+    {
+     "k": "所在地",
+     "v": "水戸市石川",
+     "src": "https://family-dog-mitosi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk159",
+   "name": "ハッピーベル 龍ヶ崎中根台店",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "龍ヶ崎市",
+   "url": "https://happybell.co.jp/shop/shop-nakanedai/",
+   "services": "ペットショップのトリミング・ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "施設の休業日と同じ",
+     "src": "https://happybell.co.jp/shop/shop-nakanedai/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり",
+     "src": "https://happybell.co.jp/shop/shop-nakanedai/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }
