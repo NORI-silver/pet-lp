@@ -69,6 +69,8 @@ def _fv(it, k):
         if f["k"] == k: return f
     return None
 def _jd(d): return f"{int(d[:4])}年{int(d[5:7])}月{int(d[8:10])}日" if d and len(d) == 10 else (d or "")
+LD_MAX = 100  # 構造化データの一覧に入れるのは最初の100件まで（件数は numberOfItems に全部。tests/info-light.test.cjs の24KB）
+BIG_TABLE = 80  # これより多い県は、料金・条件の表を出さない（カードと同じ内容でページが重くなるため）
 def fact_table_html(e, cat, pf, rs):
     cols = cat.get("fact_cols")
     if not cols: return ""
@@ -92,6 +94,11 @@ def fact_table_html(e, cat, pf, rs):
                                  for it, f in pr],
                         "note": "店ごとにコースの時間・税の表示がちがうので、そのまま並べています。交通費・初回の費用は別です。"})
     dates = sorted({f.get("checked", "") for it in hs for f in it["facts"]})
+    if len(hs) > BIG_TABLE:
+        # 2026-11-23 千葉県のホテルが279件になり、ページが重くなった（tests/info-light.test.cjs の60KB）。件数の多い県は、
+        # 表はカードと同じ内容なので出さず、料金の棒だけにする（料金・時間・休みは上のカードに出ている）
+        return out + (f'<p class="emg-tips-note">料金・営業時間・休み・駐車場・送迎は、上のカードに公式サイトの文のまま出しています。'
+                      f'{_jd(dates[-1] if dates else "")}時点の情報です。頼む前に必ず公式サイトでご確認ください。</p></div>')
     srcs = "".join(f'<li><a href="{e(it["url"])}" target="_blank" rel="noopener">{e(it["name"])}の公式サイト</a></li>' for it in hs)
     out += ('<div class="tbl"><table class="pp-tbl"><thead><tr><th>名前</th>' + "".join(f"<th>{e(lab)}</th>" for lab, _ in cols) +
             f'</tr></thead><tbody>{rows}</tbody></table></div>'
@@ -172,7 +179,7 @@ def render_pref(ctx, cat, pf, rows):
         {"@type": "ListItem", "position": 2, "name": cat["h1"], "item": f'{SITE}/{cat["slug"]}/'},
         {"@type": "ListItem", "position": 3, "name": f"{pf}の{name}", "item": url}]},
       {"@context": "https://schema.org", "@type": "ItemList", "name": f"{pf}の{name}", "numberOfItems": n,
-       "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it["name"], "url": it["url"]} for i, it in enumerate(rs)]},
+       "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it["name"], "url": it["url"]} for i, it in enumerate(rs[:LD_MAX])]},
       {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
       ensure_ascii=False, indent=1) + "\n</script>"
