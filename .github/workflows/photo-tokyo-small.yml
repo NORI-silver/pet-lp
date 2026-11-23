@@ -1,0 +1,31 @@
+# 選んだ写真の取りなおしとページの作りなおし。この作業ブランチだけで動く（main には何も書かない・公開しない）。
+name: photo-tokyo-small
+on:
+  push:
+    branches: ['instinct/photos-tokyo-small']
+    paths: ['tools/curated_tokyo_small.json']
+permissions:
+  contents: write
+concurrency:
+  group: photo-tokyo-small
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q pillow
+      - run: python3 tools/fetch_curated.py tools/curated_tokyo_small.json
+      - run: python3 tools/gen_areas.py .
+      - run: python3 tools/rules_check.py
+      - name: このブランチに入れる
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -qm "写真と、写真の枠のページを作りなおし（東京・小分類）" || { echo "変更なし"; exit 0; }
+          git push origin HEAD:${GITHUB_REF_NAME}
