@@ -4,7 +4,7 @@
   if (!box) return;
   var sel = document.getElementById("hospPref"), det = document.getElementById("hfDet"), detN = document.getElementById("hfDetN"),
       list = document.getElementById("hfList"), sum = document.getElementById("hfSum");
-  var SLUG = __SLUG__, LABEL = __LABEL__, REG = __REG__, av = null;
+  var SLUG = __SLUG__, LABEL = __LABEL__, REG = __REG__, SYM = __SYM__, av = null;
   list.addEventListener("click", function(ev){ var b = ev.target.closest("button[data-pk]"); if (!b) return; pick.set([{p: b.getAttribute("data-pk")}]); box.scrollIntoView({behavior: "smooth", block: "start"}); });
   var NEED = {night: ["night"], sunhol: ["sun", "hol"], h24: ["h24"], visit: ["visit"], spec: ["spec"]};
   var NEEDL = {night: "夜間・救急", sunhol: "日曜・祝日", h24: "24時間", visit: "往診", spec: "専門診療"};
@@ -20,13 +20,23 @@
   function has(r, k){
     if (k === "spec") return ["catspec", "exospec", "large"].some(function(x){ return r.y.indexOf(x) >= 0; }) || !!(r.d && r.d.length);
     if (k.slice(0, 2) === "d:") return !!(r.d && r.d.indexOf(k.slice(2)) >= 0);
+    if (k.slice(0, 2) === "y:") return (r.d || []).some(function(d){ return (SYM[k] || []).indexOf(d) >= 0; });
     return r.y.indexOf(k) >= 0;
+  }
+  // いま受付中か：受付時間（曜日で変わらない病院だけ t がある）と休診の文から。分からないときは null（要確認に回す）
+  function openNow(r){
+    if (!r.t) return null;
+    var d = new Date(), wd = "日月火水木金土"[d.getDay()];
+    if (r.x && r.x.indexOf(wd + "曜") >= 0) return false;
+    var m = d.getHours() * 60 + d.getMinutes();
+    return r.t.some(function(t){ return (m >= t[0] && m < t[1]) || (t[1] > 1440 && m < t[1] - 1440); });
   }
   function judge(r, ks){
     // 0＝合う、1＝書いていない（要確認）、2＝合わない
     var g = 0, unk = [];
     for (var i = 0; i < ks.length; i++) {
       var k = ks[i];
+      if (k === "open") { var o = openNow(r); if (o === true) continue; if (o === false) return [2, []]; g = 1; unk.push(k); continue; }
       if (has(r, k)) continue;
       if (r.no.indexOf(k) >= 0 || STRICT[k]) return [2, []];
       g = 1; unk.push(k);
@@ -169,7 +179,7 @@
     Promise.all(ps.map(get)).then(function(js){
       if (load.k !== key) return;
       data = [].concat.apply([], js); av = {};  // 選んだ県のデータで1院以上に当てはまる条件
-      data.forEach(function(r){ if (!r.far) { r.y.forEach(function(k){ av[k] = 1; }); (r.d || []).forEach(function(d){ av["d:" + d] = 1; }); } });
+      data.forEach(function(r){ if (!r.far) { r.y.forEach(function(k){ av[k] = 1; }); (r.d || []).forEach(function(d){ av["d:" + d] = 1; }); if (r.t) av["open"] = 1; Object.keys(SYM).forEach(function(k){ if (has(r, k)) av[k] = 1; }); } });
       shown = 30; draw();
     });
   }
