@@ -1,5 +1,5 @@
 {
- "_説明": "大型犬OK・猫専用のペットホテルの一覧（/pet-hotel/）のデータ。公式サイトで確かめたことだけ（料金は公式サイトに書いてある分だけ facts に。順位・電話番号は書かない）。large＝大型犬を受けると公式サイトに書いてある（large_basis：『文』＝大型犬OKなどの文、『料金表』＝ホテルの料金表に大型犬・超大型犬・30kg以上などの区分がある）。large_from_kg＝その施設の料金表で『大型犬』が始まる体重、max_kg＝受けられる上限。cat_only＝猫専用の施設、separate＝犬も預かるが猫を分けている形。cat・vet（動物病院の併設・運営）・pickup・senior・night_staff・camera・run・private_room は公式サイトにはっきり書いてあるときだけ。載せない：大型犬は『ご相談』だけ、猫を犬と同じ部屋で預かる、新規停止・中止、公式サイトのない・開けない、予約仲介サイト。 trust＝安心して預けるための材料（2026-11-16、tools/hotel_trust_harvest.py で公式サイトの文を集め、人が読んで入れた）：reg＝動物取扱業の登録（no・kind・auth・until、by＝site はホテルの公式サイト・registry は自治体が公開している登録の一覧、registry＝一覧でも合った）、night・vet・report・camera・visit・trial・vaccine＝v（カードの言葉）・quote（公式サイトの文）・src・checked。書いていないことは入れない。",
+ "_説明": "ペットホテルの一覧（/pet-hotel/）のデータ。公式サイトで確かめたことだけ（料金は公式サイトに書いてある分だけ facts に。順位・電話番号は書かない）。large＝大型犬を受けると公式サイトに書いてある（large_basis：『文』＝大型犬OKなどの文、『料金表』＝ホテルの料金表に大型犬・超大型犬・30kg以上などの区分がある）。large_from_kg＝その施設の料金表で『大型犬』が始まる体重、max_kg＝受けられる上限。cat_only＝猫専用の施設、separate＝犬も預かるが猫を分けている形。cat・vet（動物病院の併設・運営）・pickup・senior・night_staff・camera・run・private_room は公式サイトにはっきり書いてあるときだけ。載せない：大型犬は『ご相談』だけ、猫を犬と同じ部屋で預かる、新規停止・中止、公式サイトのない・開けない、予約仲介サイト。 trust＝安心して預けるための材料（2026-11-16、tools/hotel_trust_harvest.py で公式サイトの文を集め、人が読んで入れた）：reg＝動物取扱業の登録（no・kind・auth・until、by＝site はホテルの公式サイト・registry は自治体が公開している登録の一覧、registry＝一覧でも合った）、night・vet・report・camera・visit・trial・vaccine＝v（カードの言葉）・quote（公式サイトの文）・src・checked。書いていないことは入れない。",
  "checked": "2026-11-02",
  "hotels": [
   {
@@ -4466,79 +4466,6 @@
      "k": "定休日",
      "v": "定休日:ホテル…無休 グルーミング・トリミング…毎週火・水曜日及びお盆年末年始",
      "src": "https://www.sheraton-kobe.co.jp/contact/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
-  },
-  {
-   "id": "PH085",
-   "name": "ワンワンホテル",
-   "prefs": [
-    "兵庫県"
-   ],
-   "city": "神戸市中央区",
-   "url": "https://www.wanwanhotelkobe.com/pethotel",
-   "large": true,
-   "services": "ペットホテル、ドッグラン",
-   "run": true,
-   "large_basis": "文",
-   "trust": {
-    "night": {
-     "v": "夜もスタッフがいる",
-     "quote": "自宅型なので夜も人がいて安心",
-     "src": "https://www.wanwanhotelkobe.com/",
-     "by": "site",
-     "checked": "2026-11-16"
-    },
-    "report": {
-     "v": "様子を写真で報告",
-     "quote": "1日の様子を夜に写真や動画でご報告いたします",
-     "src": "https://www.wanwanhotelkobe.com/pethotel",
-     "by": "site",
-     "checked": "2026-11-16"
-    },
-    "visit": {
-     "v": "見学できる",
-     "quote": "初めてのお客様は事前のご見学が必要です",
-     "src": "https://www.wanwanhotelkobe.com/pethotel",
-     "by": "site",
-     "checked": "2026-11-16"
-    },
-    "trial": {
-     "v": "お試しの預かり",
-     "quote": "1泊のお試しお預りをお願いしております",
-     "src": "https://www.wanwanhotelkobe.com/",
-     "by": "site",
-     "checked": "2026-11-16"
-    },
-    "vaccine": {
-     "v": "ワクチンの証明が必要",
-     "quote": "わんちゃんのワクチン証明書",
-     "src": "https://www.wanwanhotelkobe.com/pethotel",
-     "by": "site",
-     "checked": "2026-11-16"
-    }
-   },
-   "facts": [
-    {
-     "k": "料金",
-     "v": "持ち込みされない場合は1日300円頂いております。。またハイシーズンは1日あたり追加料金1000円を頂いております。",
-     "src": "https://www.wanwanhotelkobe.com/pethotel",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "営業・受付時間",
-     "v": "また営業時間外（朝6時～8時、夜17時～19時） でのお預けやお迎えは、",
-     "src": "https://www.wanwanhotelkobe.com/pethotel",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "用意するもの",
-     "v": "○飼い主\u0000\u0000様の身分証明書とわんちゃんのワクチン証明書",
-     "src": "https://www.wanwanhotelkobe.com/pethotel",
      "by": "site",
      "checked": "2026-11-23"
     }

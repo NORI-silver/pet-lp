@@ -6,7 +6,7 @@ from guides_care import ENV_TRADER, L_SITTER
 import guides_breed as _GB  # 犬種・体重の「うちの子で見る」（2026-11-14）
 
 H = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "hotels.json"), encoding="utf-8"))["hotels"]
-L_HOTEL = ("大型犬OK・猫専用のペットホテルの一覧", "/pet-hotel/")
+L_HOTEL = ("全国のペットホテルの一覧（大型犬OK・猫専用でしぼれる）", "/pet-hotel/")
 
 _L = [h for h in H if h.get("large")]
 _C = [h for h in H if h.get("cat_only") or h.get("separate")]

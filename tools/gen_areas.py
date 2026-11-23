@@ -763,7 +763,7 @@ PARTNER_BAND = '''<aside class="partner-band"><div class="wrap"><p><b>ペット�
 def foot(cta_href, band=True):
     return (PARTNER_BAND if band else '') + f'''<footer>
   <div class="wrap">
-    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国のドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/trimming/">出張トリミング</a><a href="/pet-hotel/">大型犬OK・猫専用のペットホテル</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/about/">運営者と掲載の基準</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
+    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国のドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/trimming/">出張トリミング</a><a href="/pet-hotel/">ペットホテル</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/about/">運営者と掲載の基準</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav><a href="/area/">全国</a>{''.join(f'<a href="/{a["slug"]}/">{e(a["short"])}</a>' for a in AREAS)}</nav>
     <p>ペットタクシー予約窓口</p>
     <p>&copy; 2026 ペットタクシー予約窓口</p>
@@ -1017,7 +1017,7 @@ def guide_hub(slug):
     if slug in ("how-to-use-pet-sitter", "sitter-or-hotel", "cat-sitter"):
         return "/pet-sitter/", "ペットシッター", "都道府県ごとのペットシッターを見る"
     if slug in ("large-dog-hotel", "cat-hotel"):
-        return "/pet-hotel/", "ペットホテル", "大型犬OK・猫専用のペットホテルを見る"
+        return "/pet-hotel/", "ペットホテル", "ペットホテル（大型犬OK・猫専用もしぼれる）を見る"
     if slug in ("pet-evacuation", "pet-disaster-prep", "pet-evacuation-survey"):
         return "/hinan/", "ペットと避難（同行避難）", "都道府県・市区の避難所の決まりを見る"
     if slug in ("adopt-pet", "adopt-senior-survey"):
@@ -2567,7 +2567,7 @@ _pp_ctx = dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, area_links=ar
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False)))
 gen_prefpages.write_all(ROOT, _pp_ctx, gen_grooming.CAT); gen_prefpages.link_national(ROOT, _pp_ctx, gen_grooming.CAT)
 hosp_urls = hosp_urls + gen_prefpages.urls(SITE, gen_grooming.CAT)
-# [B] 大型犬OK・猫専用のペットホテル（/pet-hotel/、tools/gen_hotels.py、データ tools/hotels.json）
+# [B] ペットホテル（全部。大型犬OK・猫専用はしぼりこみ）（/pet-hotel/、tools/gen_hotels.py、データ tools/hotels.json）
 gen_hotels.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_hotels.urls(SITE)
