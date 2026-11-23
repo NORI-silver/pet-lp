@@ -9437,13 +9437,6 @@
    "services": "ペットホテル",
    "facts": [
     {
-     "k": "営業・受付時間",
-     "v": "[営業時間]10:00～19:00（完全予約制）営業時間外もご相談ください",
-     "src": "https://www.dogsalon-li-s.jp/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
      "k": "定休日",
      "v": "[定休日]不定休",
      "src": "https://www.dogsalon-li-s.jp/",
@@ -10684,27 +10677,6 @@
     }
    ],
    "checked": "2026-11-23"
-  },
-  {
-   "id": "PHtb585046",
-   "name": "トリミングペットサロンJeaM",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "大田区",
-   "url": "https://trimmingfan.com/tokyo/tokyo05oota/tokyo05_21.html",
-   "services": "ペットホテル",
-   "facts": [
-    {
-     "k": "送迎",
-     "v": "大田区内限定エリア送迎無料",
-     "src": "https://trimmingfan.com/tokyo/tokyo05oota/tokyo05_21.html",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23",
-   "pickup": true
   },
   {
    "id": "PHt5bdbaf3",
@@ -14996,13 +14968,6 @@
    "services": "ペットホテル",
    "facts": [
     {
-     "k": "営業・受付時間",
-     "v": "OPEN 7：00～22：00（年中無休・完全予約制）",
-     "src": "https://www.haneda-pet.jp/legal/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
      "k": "駐車場",
      "v": "第２ターミナルＰ４駐車場１Ｆ・大型ドッグラン完備 羽田空港ペットホテル",
      "src": "https://www.haneda-pet.jp/legal/",
@@ -18551,13 +18516,6 @@
    "url": "https://lulumalu.jimdofree.com/",
    "services": "ペットホテル",
    "facts": [
-    {
-     "k": "定休日",
-     "v": "完全予約制・不定休",
-     "src": "https://lulumalu.jimdofree.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
     {
      "k": "駐車場",
      "v": "※駐車場があります。",
