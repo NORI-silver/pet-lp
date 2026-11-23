@@ -55,6 +55,27 @@ def main():
             with open(path, "w", encoding="utf-8") as f:
                 json.dump(d, f, ensure_ascii=False, indent=1)
         print(fn, "+", n)
+    # お店で施術するトリミングサロン（Nori 11/23「載せる」）。grooming.json の groomers に "shop": true で入れる（千葉 #682 と同じ形）。
+    # /trimming/ がお店の印を分けて出せるようになってから入れる（gen_grooming.py に _has_shop があるとき）。
+    if "_has_shop" in open(os.path.join(HERE, "gen_grooming.py"), encoding="utf-8").read():
+        path = os.path.join(HERE, "grooming.json")
+        d = json.load(open(path, encoding="utf-8"))
+        L = d["groomers"]
+        ids = {r["id"] for r in L}
+        keys = {key(r.get("url", "")) for r in L}
+        names = {re.sub(r"\s", "", r["name"]) for r in L}
+        n = 0
+        for x in add.get("salons", []):
+            if x["id"] in ids or x["id"] in gone or key(x["url"]) in keys or key(x["url"]) in gone \
+                    or re.sub(r"\s", "", x["name"]) in names:
+                continue
+            L.append(x); ids.add(x["id"]); keys.add(key(x["url"])); n += 1
+        if n:
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(d, f, ensure_ascii=False, indent=1)
+        print("grooming.json（サロン）+", n)
+    else:
+        print("サロン", len(add.get("salons", [])), "件は /trimming/ のお店の印ができてから入れる")
 
 
 if __name__ == "__main__":
