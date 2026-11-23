@@ -1,0 +1,32 @@
+[
+ {
+  "key": "前橋市",
+  "url": "https://data.bodik.jp/dataset/b3b168de-c15d-43d3-aae3-577f82e4feeb/resource/25f3d101-d380-4069-9589-79f3df0b59a2/download/doutori_maebashir8.4.1.csv",
+  "files": [
+   "https://data.bodik.jp/dataset/b3b168de-c15d-43d3-aae3-577f82e4feeb/resource/25f3d101-d380-4069-9589-79f3df0b59a2/download/doutori_maebashir8.4.1.csv"
+  ]
+ },
+ {
+  "key": "栃木県",
+  "url": "https://www.douai.pref.tochigi.lg.jp/work/animal-business/",
+  "files": []
+ },
+ {
+  "key": "栃木県_2",
+  "url": "https://www.douai.pref.tochigi.lg.jp/work/procedure/",
+  "files": []
+ },
+ {
+  "key": "栃木県_old",
+  "url": "https://www.douai.pref.tochigi.lg.jp/wp/wp-content/uploads/2025/04/cf1704cbce15e8a20cd5ceb1490faecc-1.pdf",
+  "files": [
+   "https://www.douai.pref.tochigi.lg.jp/wp/wp-content/uploads/2025/04/cf1704cbce15e8a20cd5ceb1490faecc-1.pdf"
+  ]
+ },
+ {
+  "key": "相模原市",
+  "url": "https://opendata.city.sagamihara.kanagawa.jp/dataset/daiisshudobutsu",
+  "files": [],
+  "error": "HTTP Error 504: Gateway Timeout"
+ }
+]
