@@ -232,6 +232,11 @@ function ensureSheet_(ss, name, headers) {
 /* ───────── 受付（LPフォーム / LINE） ───────── */
 
 function doPost(e) {
+  var q = (e && e.parameter) || {};
+  if (q.a === 'pconf') {
+    JSON_PAGE = q.fmt === 'json';
+    try { return pconfPage_(q, true); } finally { JSON_PAGE = false; }
+  }
   var body = e && e.postData && e.postData.contents;
   if (body && body.charAt(0) === '{') {
     try { handleLine_(JSON.parse(body)); } catch (err) { log_('LINEエラー: ' + err); }
@@ -2639,10 +2644,12 @@ function pconfExamples_(c) {
 }
 // 新しく申し込む会社の入り口（a=pconf&new=1）：会社名・メール・ホームページだけを聞き、当サイトに公式サイトの情報がある会社は下書きを入れた確認ページを出す
 function pconfFind_(site) {
-  var h = String(site || '').toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[\/?#]/)[0];
+  function page(v) { return String(v||'').trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[?#]/)[0].replace(/\/+$/, ''); }
+  var pageKey = page(site), h = pageKey.split('/')[0];
   if (!h || h.indexOf('.') < 0) return '';
-  var c = DISPLAY_COMPANIES.filter(function(x) { return x.url && String(x.url).toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[\/?#]/)[0] === h; })[0];
-  return c ? c.id : '';
+  var found = DISPLAY_COMPANIES.filter(function(x) { return page(x.url).split('/')[0] === h; });
+  var exact = found.filter(function(x) { return page(x.url) === pageKey; });
+  return exact.length === 1 ? exact[0].id : found.length === 1 ? found[0].id : '';
 }
 function pconfUrl_(id) { return linkBase_() + '?a=pconf&t=' + encodeURIComponent(demoToken_(id)); }
 var PCONF_TAG = { site: ['サイトより', '#2e8b57'], chk: ['ご確認ください', '#b7791f'], need: ['入力してください', '#c0392b'] };
@@ -2676,42 +2683,189 @@ function pconfAnswers_(c, q) {
   }); });
   return { obj: out, text: lines.join('\n') };
 }
-function pconfPage_(q) {
+// Pilot: only audited public fields are prefilled. Provider answers are private pending review, never live tariff input.
+var PCONF_FARE_VERSION = 'pconf-display-v1';
+var PCONF_FARE_LIMIT = 300;
+var PCONF_PUBLIC_FARE = {ride:'最初の5kmは1kmごと480円、50kmまでは330円、以降230円', back:'回送料金なし', wait:'10分ごとに300円', night:'21時〜翌6時はお迎え・乗車・待機が20%増し', toll:'有料道路代は実費', pick_public:'1,800円'};
+function pconfPublicFareItem_(it) {
+  return {k:it.k,l:it.l,tag:'site',type:'text',v:PCONF_PUBLIC_FARE[it.k]};
+}
+function pconfWithPublicFare_(c) {
+  return {sections:c.sections.map(function(s) {
+    if (s.h !== '4. 料金') return s;
+    var items = s.items.filter(function(it) { return ['pick','tax'].indexOf(it.k) < 0; }).map(function(it) {
+      return PCONF_PUBLIC_FARE[it.k] ? pconfPublicFareItem_(it) : it;
+    });
+    items.push(pconfPublicFareItem_({k:'pick_public',l:'通常のお迎え料金'}));
+    return {h:s.h,items:items};
+  })};
+}
+function pconfFarePilot_(id) {
+  if (id !== 'Dcb3b5a2' && id !== 'P064') return null;
+  var c = DISPLAY_COMPANIES.filter(function(v) { return v.id === 'Dcb3b5a2'; })[0];
+  return c && c.fare && c.shop ? c : null;
+}
+function pconfFareInt_(v, max) {
+  return /^\d{1,7}$/.test(String(v == null ? '' : v)) && Number(v) <= max ? Number(v) : null;
+}
+function pconfFareInput_(n,l,q) {
+  return '<label>' + esc_(l) + '<input type="number" min="0" step="1" name="' + n + '" value="' + esc_(String(q[n] == null ? '' : q[n]).replace(/[^0-9]/g,'').slice(0,7)) + '"></label>';
+}
+function pconfFareFields_() {
+  // No submitted prices or pricing rules are echoed by the pricing review.
+  var q = {};
+  return '<div class="pt"><b>お迎えの料金が変わる条件</b><p class="note">公開の料金では遠いお迎えは相談となっています。計算できる条件だけ教えてください。無料なら0を入れてください。</p>' +
+    pconfFareInput_('pf_limit', '料金が同じ範囲の最後の距離（m）', q) +
+    '<label>その距離を超えたときの加算<select name="pf_mode"><option value="">選んでください</option><option value="flat">定額を足す</option><option value="per">超えた分1kmごとに足す</option><option value="none">加算なし</option><option value="manual">区間や条件によって異なる</option></select></label>' +
+    pconfFareInput_('pf_add', '足す金額（円、上で定額・1kmごとを選んだ場合）', q) +
+    '<label>お迎え距離の測り方<select name="pf_basis"><option value="">選んでください</option><option value="road">営業所から車で走る距離</option><option value="other">営業所以外・直線距離など</option></select></label>' +
+    '<label>お迎え距離の端数<select name="pf_pickround"><option value="">選んでください</option><option value="ceil">1km未満切り上げ</option><option value="floor">1km未満切り捨て</option><option value="other">別の数え方</option></select></label>' +
+    '<label>乗る距離の端数<select name="pf_round"><option value="">選んでください</option><option value="ceil">1km未満切り上げ</option><option value="floor">1km未満切り捨て</option><option value="other">別の数え方</option></select></label>' +
+    '<label>料金表の税<select name="pf_tax"><option value="">選んでください</option><option value="incl">税込・消費税なし</option><option value="excl">税別</option></select></label>' +
+    '<p class="note">いずれも朝9時、犬1頭・10.5kg、乗る距離5km、一般道、待機なしです。お迎え距離だけが異なります。</p>' +
+    pconfFareInput_('pf_near', 'お迎え19km：お支払い総額（税込・円）', q) +
+    pconfFareInput_('pf_at', 'お迎え20km：お支払い総額（税込・円）', q) +
+    pconfFareInput_('pf_far', 'お迎え21km：お支払い総額（税込・円）', q) +
+    '</div>';
+}
+function pconfFareDraft_(c,q) {
+  var l = pconfFareInt_(q.pf_limit,1000000), a = pconfFareInt_(q.pf_add,1000000);
+  var mode = String(q.pf_mode || ''), rounding = String(q.pf_round || ''), tax = String(q.pf_tax || '');
+  var draft = {version:PCONF_FARE_VERSION, id:c.id,
+    source:'https://pettaxi-osanpo.com/pettaxi', sourceDate:'2026-11-23',
+    limitM:l, mode:mode, addYen:a, distanceRounding:rounding, pickupRounding:String(q.pf_pickround||''), basis:String(q.pf_basis||''), tax:tax,
+    expected:[q.pf_near,q.pf_at,q.pf_far].map(function(v) { return pconfFareInt_(v,1000000); })};
+  var inputs = ['pf_limit','pf_mode','pf_add','pf_basis','pf_pickround','pf_round','pf_tax','pf_near','pf_at','pf_far'];
+  if (!inputs.some(function(k) { return String(q[k] == null ? '' : q[k]).trim() !== ''; })) return null;
+  draft.check = pconfFareCheck_(c,draft);
+  return draft;
+}
+function pconfFareFixture_(c,m,rideM,clock) {
+  var shop = {lat:c.shop[0],lng:c.shop[1]}, from = {lat:shop.lat+0.1,lng:shop.lng}, to = {lat:shop.lat+0.2,lng:shop.lng};
+  return {input:{trip:'片道', pref:c.pref || '', datetime:'2026-11-27T'+(clock || '09:00'), weight:10.5, pet_count:1,
+    route_details:JSON.stringify({km:rideM/1000,backKm:rideM/1000,from:from,to:to})},
+    lookup:function(_, at, back) { return !back && at.lat === from.lat ? m/1000 : null; }};
+}
+function pconfFareCheck_(c,d) {
+  var ok = !!(c.fare && c.fare.pick && c.fare.back && c.fare.tiers) && d.limitM === 20000 && d.basis === 'road' && ['ceil','floor'].indexOf(d.pickupRounding) >= 0 && ['ceil','floor'].indexOf(d.distanceRounding) >= 0 && ['incl','excl'].indexOf(d.tax) >= 0 &&
+    (d.mode === 'none' || (['per','flat'].indexOf(d.mode) >= 0 && d.addYen !== null)) &&
+    d.expected.every(function(y) { return y !== null; });
+  if (!ok) return {status:'needs_review', cases:[], ready:false};
+  // Only a distance-based, public baseline is staged. Edited public text is reviewed separately, not parsed into prices.
+  var candidate = JSON.parse(JSON.stringify(c));
+  candidate.fare.kmMode = d.distanceRounding;
+  candidate.fare.tax = d.tax === 'incl' ? '税込' : '税別';
+  var pk = candidate.fare.pick;
+  delete pk.unknownOver;
+  pk.kmMode = d.pickupRounding;
+  if (d.mode !== 'none') { pk.km = d.limitM/1000; pk[d.mode === 'per' ? 'per' : 'over'] = d.addYen; }
+  var cases = [19000,20000,21000].map(function(m,i) {
+    // The customer estimator is used directly, with a known directional road distance (not synthetic address geocoding).
+    var fixture = pconfFareFixture_(candidate,m,5000), price = displayPrice_(candidate,fixture.input,fixture.lookup);
+    var total = price && !price.incompleteFees && !price.taxUnknown && price.local && !price.local.pickMissing && !price.local.backMissing && price.local.amount;
+    var actual = typeof total === 'number' ? total : null, expected = d.expected[i];
+    // Same nearest-¥100 text rule as the partner-price card; compare both to the actual provider quote, not a rounded quote.
+    var shown = actual == null ? null : Number(roundYenText_(yen_(actual)).replace(/[^0-9]/g,''));
+    return {pickupM:m, actual:actual, shown:shown, expected:expected,
+      within:actual != null && Math.abs(actual-expected) <= PCONF_FARE_LIMIT && Math.abs(shown-expected) <= PCONF_FARE_LIMIT};
+  });
+  // These are three no-wait, daytime scenarios, not approval for other shifts, waiting or round trips.
+  return {status:cases.every(function(v) { return v.within; }) ? 'examples_passed' : 'mismatch', cases:cases, ready:false};
+}
+function pconfFareToken_(id, expires, nonce) {
+  return [expires, nonce, sign_('pconf-fare:v1:' + id + ':' + expires + ':' + nonce)].join('.');
+}
+function pconfFareKey_(id, token) {
+  var x = String(token || '').match(/^(\d{13})\.([a-zA-Z0-9_-]{8,45})\.([a-zA-Z0-9_-]{22})$/);
+  var now = Date.now();
+  if (!x || Number(x[1]) < now || Number(x[1]) > now + 7*86400000 || pconfFareToken_(id,x[1],x[2]) !== token) return '';
+  return 'fare:' + sign_('pconf-fare:submission:' + id + ':' + token);
+}
+// Manual Apps Script call only, after verifying the recipient and separate workbook restrictions.
+function makePconfFareLink_(id) {
+  if (!pconfFarePilot_(id) || !pconfPrivateId_()) return '';
+  return pconfUrl_(id) + '&fv=' + encodeURIComponent(pconfFareToken_(id,Date.now()+7*86400000,Utilities.getUuid()));
+}
+function pconfPrivateId_() {
+  var properties = PropertiesService.getScriptProperties();
+  if (properties.getProperty('PCONF_FARE_PILOT') !== 'on') return '';
+  var id = properties.getProperty('PCONF_PRIVATE_FILE_ID');
+  return id && id !== SpreadsheetApp.getActive().getId() ? id : '';
+}
+function pconfPrivateStore_(row, privateId, fareKey) {
+  // Only the pilot can collect new nonpublic fare cases. Legacy onboarding continues in its existing workbook.
+  try {
+    var ss = privateId ? SpreadsheetApp.openById(privateId) : SpreadsheetApp.getActive();
+    var sh = ensureSheet_(ss,SHEET_PCONF,privateId ? PCONF_HEADERS.concat(['回答識別子']) : PCONF_HEADERS);
+    if (privateId && fareKey) {
+      var n = sh.getLastRow();
+      if (n > 1 && sh.getRange(2,8,n-1,1).createTextFinder(fareKey).matchEntireCell(true).findNext()) return 'duplicate';
+      row.push(fareKey);
+    }
+    sh.appendRow(row.map(function(v) { return typeof v === 'string' && /^[=+@-]/.test(v.trim()) ? "'" + v : v; }));
+    return true;
+  } catch (_) { return false; } // do not log a URL, quote, or submitted data
+}
+function pconfPage_(q, posted) {
+  if (q.go === '1' && !posted) return page_('入力を受け付けられません', '<p>最初に届いた確認のページから開き直してください。</p>');
+  if (!posted) q = {a:'pconf',new:q.new,t:q.t,fv:q.fv};
   var isNew = q['new'] === '1', id = isNew ? '' : demoId_(q.t), c = null;
   if (isNew && q.step !== '2' && q.go !== '1') return pconfStart_(q);
   if (isNew) { id = pconfFind_(q.site); c = id ? pconfOf_(id) : pconfAuto_({ name: String(q.co || '').trim().slice(0, 80) }); }
-  else c = id && pconfOf_(id);
+  else c = id && pconfOf_(id === 'P064' ? 'Dcb3b5a2' : id);
   if (!c) return page_('リンクが正しくありません', '<p>お手数ですが、届いたメールのリンクからもう一度開いてください。</p>');
+  var supportedPilot = !isNew && pconfFarePilot_(id);
+  var fareKey = supportedPilot ? pconfFareKey_(id,q.fv) : '';
+  var privateId = fareKey ? pconfPrivateId_() : '';
+  var pilot = privateId ? supportedPilot : null;
+  if ((q.fv || (q.go === '1' && Object.keys(q).some(function(k) { return /^pf_/.test(k); }))) && !pilot) {
+    return page_('送信できませんでした', '<p>料金の回答は受け付けていません。最初のページを開き直してください。</p>');
+  }
   var coName = isNew ? String(q.co || '').trim().slice(0, 80) : c.name, email = String(q.email || '').trim().slice(0, 120);
   if (q.go === '1') {
     var name = String(q.name || '').trim().slice(0, 60);
     if (!name || (isNew && (!coName || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)))) q.err = 1;
     else {
-      var a = pconfAnswers_(c, q);
-      var ex = (c.examples || []).map(function(e, i) { var v = String(q['ex' + i] || ''), fix = String(q['ex' + i + '_fix'] || '').trim().slice(0, 200);
+      var a = pconfAnswers_(pilot ? pconfWithPublicFare_(c) : c, q);
+      var ex = (pilot ? [] : c.examples || []).map(function(e, i) { var v = String(q['ex' + i] || ''), fix = String(q['ex' + i + '_fix'] || '').trim().slice(0, 200);
         return '・' + e.l + '：' + e.yen + ' → ' + (v || '（未回答）') + (fix ? '（' + fix + '）' : ''); }).join('\n');
       var memo = String(q.memo || '').trim().slice(0, 2000);
       var head = isNew ? '・メール：' + email + '\n・ホームページ：' + String(q.site || '').trim().slice(0, 200) + (id ? '\n・当サイトの公式サイトの情報：あり（' + id + '）' : '') + '\n' : '';
+      var draft = pilot && pconfFareDraft_(pilot,q);
+      if (draft && Object.keys(PCONF_PUBLIC_FARE).some(function(k) { return String(q['f_'+k] || '').trim() !== PCONF_PUBLIC_FARE[k]; })) {
+        draft.check = {status:'public_correction_needs_review',cases:[],ready:false};
+      }
       var lock = LockService.getScriptLock();
       lock.waitLock(20000);
       try {
-        var sh = ensureSheet_(SpreadsheetApp.getActive(), SHEET_PCONF, PCONF_HEADERS);
-        sh.appendRow([new Date(), id || '（新規）', coName, name, head + a.text + (memo ? '\n・ほかに伝えたいこと：' + memo : ''), ex, JSON.stringify({ a: a.obj, memo: memo, email: isNew ? email : undefined, site: isNew ? String(q.site || '') : undefined }).slice(0, 45000)]);
-        sh.getRange(sh.getLastRow(), 1).setNumberFormat('yyyy/MM/dd HH:mm:ss');
+        var received = pconfPrivateStore_([new Date(), id || '（新規）', coName, name, head + a.text + (memo ? '\n・ほかに伝えたいこと：' + memo : ''), ex, JSON.stringify({a:a.obj, memo:memo, email:isNew ? email : undefined, site:isNew ? String(q.site || '').slice(0,200) : undefined, fareReview:draft}).slice(0,45000)], privateId, fareKey);
+        if (!received) return page_('送信できませんでした', '<p>入力内容は受け付けていません。時間をおいて再度お試しください。</p>');
       } finally { lock.releaseLock(); }
-      log_('提携の確認：' + (id || '新規') + ' ' + coName + ' ' + name);
-      notifyAdmin_((isNew ? '提携の申し込みが届きました：' : '提携の確認が届きました：') + coName, coName + (id ? '（' + id + '）' : '') + 'から、' + (isNew ? '提携の申し込み' : '公式サイトの内容の確認') + 'が届きました。\nご担当：' + name + '\n' + head + '\n■ 答え\n' + a.text +
-        (memo ? '\n\n■ ほかに伝えたいこと\n' + memo : '') + (ex ? '\n\n■ 料金の例\n' + ex : '') + '\n\n記録：予約シートの「' + SHEET_PCONF + '」タブ\n受付を始めるのは、運営者が確かめてからです。');
+      if (received !== 'duplicate') {
+        try { notifyAdmin_('提携フォームに回答が届きました', '運営用の回答一覧をご確認ください。送信だけでは受付や料金の変更は始まりません。'); } catch (_) {}
+      }
       return page_('ありがとうございました', '<p>' + esc_(coName) + ' さま、お答えを受け付けました。</p><p>いただいた内容で登録し、料金の計算と、お送りするご依頼の条件をそろえます。わからないところがあれば、メールでおうかがいします。</p>');
     }
   }
   var html = '<p>' + esc_(coName) + ' さま</p>' + (c.site
-    ? '<p>公式サイト（<a href="' + esc_(c.site) + '" target="_blank">' + esc_(c.site.replace(/^https?:\/\//, '').replace(/\/$/, '')) + '</a>' + (c.read ? '、' + esc_(c.read) + '時点' : '') + '）の内容を、先に入れておきました。まちがいがあれば直して、「入力してください」のところだけ埋めてください。' + ((c.examples || []).length ? '最後に、この内容で計算した料金の例を確かめてください。' : '') + '</p>'
+    ? '<p>公式サイト（<a href="' + esc_(c.site) + '" target="_blank">' + esc_(c.site.replace(/^https?:\/\//, '').replace(/\/$/, '')) + '</a>' + (c.read ? '、' + esc_(c.read) + '時点' : '') + '）の内容を、先に入れておきました。まちがいがあれば直して、「入力してください」のところだけ埋めてください。' + ((!pilot && (c.examples || []).length) ? '最後に、この内容で計算した料金の例を確かめてください。' : '') + '</p>'
     : '<p>ご依頼をお送りする条件と、料金の計算に使う内容をうかがいます。選ぶところがほとんどです。</p>') +
     (q.err ? '<p style="color:#c0392b;font-weight:700">' + (isNew ? '会社名・メールアドレス・' : '') + 'ご担当のお名前を入れてください。</p>' : '') +
-    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) + hidden_('site', q.site || '') : hidden_('t', q.t)) + hidden_('go', '1');
-  c.sections.forEach(function(s) { html += '<h2>' + esc_(s.h) + '</h2>' + s.items.map(function(it) { return pconfItem_(it, q); }).join(''); });
-  if ((c.examples || []).length) html += '<h2>6. 料金の例</h2><p class="note">上の内容で計算しました。高速料金は含みません。</p>' + c.examples.map(function(e, i) {
+    '<form data-pconf method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('a', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) + hidden_('site', q.site || '') : hidden_('t', q.t)) + (pilot ? hidden_('fv', q.fv) : '') + hidden_('go', '1');
+  c.sections.forEach(function(s) {
+    html += '<h2>' + esc_(s.h) + '</h2>';
+    if (!pilot || s.h !== '4. 料金') { html += s.items.map(function(it) { return pconfItem_(it, q); }).join(''); return; }
+    var facts = PCONF_PUBLIC_FARE;
+    html += '<details><summary>公開の料金を確認・訂正する</summary><p class="note">出どころ：<a rel="noreferrer" target="_blank" href="https://pettaxi-osanpo.com/pettaxi">公式サイトの料金</a>（2026年11月23日）</p>' +
+      s.items.filter(function(it) { return facts[it.k]; }).map(function(it) {
+        return pconfItem_(pconfPublicFareItem_(it), {});
+      }).join('') +
+      pconfItem_({k:'pick_public',l:'通常のお迎え料金',tag:'site',type:'text',v:facts.pick_public}, {}) + '</details>' +
+      pconfFareFields_() + s.items.filter(function(it) { return !facts[it.k] && ['pick','tax'].indexOf(it.k) < 0; }).map(function(it) {
+        return pconfItem_(it, {});
+      }).join('');
+  });
+  if (!pilot && (c.examples || []).length) html += '<h2>6. 料金の例</h2><p class="note">上の内容で計算しました。高速料金は含みません。</p>' + c.examples.map(function(e, i) {
     return '<div class="pt"><b>' + esc_(e.l) + '</b><div style="font-size:1.1rem;font-weight:800;margin:4px 0">' + esc_(e.yen) + '</div><div class="note">' + esc_(e.d) + '</div>' +
       ['合っている', 'ちがう'].map(function(o) { return '<label style="font-weight:400;margin:6px 0;display:inline-block;margin-right:16px"><input type="radio" name="ex' + i + '" value="' + o + '"' + (q['ex' + i] === o ? ' checked' : '') + '>' + o + '</label>'; }).join('') +
       '<input name="ex' + i + '_fix" maxlength="200" value="' + esc_(q['ex' + i + '_fix'] || '') + '" placeholder="ちがうときは、正しい金額や理由"></div>';
@@ -2724,7 +2878,7 @@ function pconfPage_(q) {
 // 新しい申し込みの最初の画面：会社名・メール・ホームページだけ
 function pconfStart_(q) {
   var html = '<p>まず、会社名・ご連絡先・ホームページを教えてください。当サイトで公式サイトの料金や条件を集めている会社さまは、次の画面にその内容を先に入れてお出しします。</p>' +
-    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pconf') + hidden_('new', '1') + hidden_('step', '2') +
+    '<form data-pconf method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('a', 'pconf') + hidden_('new', '1') + hidden_('step', '2') +
     '<label>会社名・屋号（必須）<input name="co" required maxlength="80" value="' + esc_(q.co || '') + '"></label>' +
     '<label>お問い合わせを受け取るメールアドレス（必須）<input name="email" type="email" required maxlength="120" value="' + esc_(q.email || '') + '"></label>' +
     '<label>ホームページのURL（あれば）<input name="site" maxlength="200" placeholder="https://" value="' + esc_(q.site || '') + '"></label>' +
@@ -3812,13 +3966,13 @@ function displayFixed_(c, p) {
   return {amount:y, text:yen_(y), local:l, highway:null, fixed:true, cap:!!z.cap, tollIncluded:!!z.toll, incompleteFees:false, taxUnknown:false, night:'', pickupNote:'', routeNote:'',
     planNote:'公式サイトに書いてある定額（' + z.label + '）で出した目安です。' + (round ? (z.round ? '往復の定額です。' : '行きと帰りの2回分です。') : '') + (z.tax ? '定額は税別のため、消費税10%を足しています。' : '') + (z.toll ? '' : '有料道路を使うときは実費が別にかかります。')};
 }
-function displayPrice_(c, p) {
+function displayPrice_(c, p, knownRoadKm) {
   var fx = c.fare && c.fare.fixed ? displayFixed_(c, p) : null;
   if (fx && !fx.cap) return fx;
-  var r = displayPriceCalc_(c, p);
+  var r = displayPriceCalc_(c, p, knownRoadKm);
   return fx && (!r || fx.amount < r.amount) ? fx : r; // cap：距離の式のほうが安ければそちら（aiai の返事は札幌市東区→新千歳で式どおり17,325円。パック便は20,000円）
 }
-function displayPriceCalc_(c, p) {
+function displayPriceCalc_(c, p, knownRoadKm) {
   var F = c.fare;
   if (!F) return null;
   var d;
@@ -3840,7 +3994,7 @@ function displayPriceCalc_(c, p) {
   if (F.kind === 'zones' && (!zoneHit || (round && findZone(p.return_pickup || p.dropoff, p.return_dropoff || p.pickup) !== zoneHit))) return null; // 区間の料金表にない
   if (F.kind === 'zone' && !(inZone(p.pickup) && inZone(p.dropoff) && (!round || (inZone(p.return_pickup || p.dropoff) && inZone(p.return_dropoff || p.pickup))))) return null; // 市の外は料金表にない
   // 距離の数え方：ふつうは1km単位に切り上げ。kmMode 'exact'＝小数のまま（円未満は切り捨て）、'floor'＝1km未満を切り捨て（返事の内訳で分かった会社）
-  function kmOf(km) { return F.kmMode === 'exact' ? Math.round(km * 10) / 10 : F.kmMode === 'floor' ? Math.floor(km) : Math.ceil(km); }
+  function kmOf(km, mode) { mode = mode || F.kmMode; return mode === 'exact' ? Math.round(km * 10) / 10 : mode === 'floor' ? Math.floor(km) : Math.ceil(km); }
   function distRide(km) { // 乗った距離の運賃
     km = kmOf(km);
     var amount = F.base[0], bk = F.base[1];
@@ -3863,8 +4017,10 @@ function displayPriceCalc_(c, p) {
     if (rule.unsure && rule.per == null && rule.yen == null) return {yen:0, unknown:true};
     if (rule.per == null && rule.over == null && rule.unknownOver == null && !rule.tiers && !rule.bands && !rule.table) return {yen:rule.yen || 0, unknown:!!rule.unsure};
     if (!shop) return {yen:rule.yen || 0, unknown:true};
-    if (roadKm_(shop, at, back) == null) legGuess = true;
-    var km = kmOf(legKm_(shop, at, back)), free = rule.km || 0, yen = rule.yen || 0;
+    var road = knownRoadKm ? knownRoadKm(shop,at,back) : roadKm_(shop, at, back);
+    if (road == null && knownRoadKm) return {yen:rule.yen || 0, unknown:true}; // validation never substitutes an estimated distance
+    if (road == null) legGuess = true;
+    var km = kmOf(road != null ? road : kmBetween_(shop,at) * 1.3, rule.kmMode), free = rule.km || 0, yen = rule.yen || 0;
     if (rule.freeWithin != null && km <= rule.freeWithin) return {yen:0, unknown:!!rule.unsure}; // お店の近くはお迎え無料（返事で分かった会社）
     if (rule.unknownOver != null) return {yen:yen, unknown:km > rule.unknownOver}; // その距離を超えると別料金（金額は非公開）
     if (rule.tiers) { // 距離の段階で変わる迎車（base＝[円, 含まれるkm]、tiers は乗車と同じ形）
