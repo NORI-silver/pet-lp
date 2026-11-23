@@ -65,6 +65,9 @@
   var API = "https://script.google.com/macros/s/AKfycbyy-cTvD-t8DFGhEyA2IbFiXWoB50kl_2_97WiVdMlXec8sIbI2NVUkkyn-45VkIMc_5g/exec";
   var body = document.getElementById("body"), title = document.getElementById("title");
   var q = new URLSearchParams(location.search);
+  if (q.get("a") === "pconf") {
+    q = new URLSearchParams(Array.from(q).filter(function(p){ return ["a","new","t","fv"].indexOf(p[0]) >= 0; }));
+  }
   q.set("fmt", "json");
   function fail(){
     body.innerHTML = '<p class="msg">うまく表示できませんでした。時間をおいてもう一度お試しください。</p>';
@@ -186,12 +189,37 @@
   // 開いたらすぐそれを見せて、受付の仕組みの返事が来たら最新に置きかえる（それまでは押せない。Nori 2026-11-15「サイトの読み込みが遅いので早くして」）
   var CK = "", stale = false;
   if (!q.get("go") && ((q.get("a") === "pinfo" && q.get("s")) || (q.get("a") === "pinfo_view" && q.get("k")))) CK = "go:" + q.get("a") + ":" + (q.get("s") || q.get("k"));
+  // Keep private partner answers in the POST body; never append form fields to this page's URL.
+  function hookPartnerConfirm(){
+    var form = body.querySelector("form[data-pconf]");
+    if (!form || form.dataset.pconfHook) return;
+    form.dataset.pconfHook = "1";
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      var button = form.querySelector('button[type="submit"]');
+      if (!button || button.disabled) return;
+      var p = new URLSearchParams(new FormData(form)), msg = form.querySelector("[data-pconf-msg]");
+      if (!msg) { msg = document.createElement("p"); msg.setAttribute("data-pconf-msg",""); msg.setAttribute("role","status"); button.after(msg); }
+      button.disabled = true;
+      msg.textContent = "送っています…";
+      p.set("fmt", "json");
+      fetch(API, {method:"POST", body:p}).then(function(res){ return res.json(); }).then(function(res){
+        if (!res || !res.ok || typeof res.html !== "string") throw new Error("invalid response");
+        show(res);
+        window.scrollTo(0,0);
+      }).catch(function(){
+        button.disabled = false;
+        msg.textContent = "結果を確認できませんでした。再度送る前に、しばらくして確認してください。";
+      });
+    });
+  }
   function show(r){
     if (r.title) {
       title.textContent = r.title; title.hidden = false;
       document.title = r.title + "｜ペットタクシー予約窓口";
     }
     body.innerHTML = r.html;
+    hookPartnerConfirm();
   }
   if (CK) try {
     var c = JSON.parse(localStorage.getItem(CK) || "null");

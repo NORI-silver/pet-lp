@@ -232,6 +232,11 @@ function ensureSheet_(ss, name, headers) {
 /* ───────── 受付（LPフォーム / LINE） ───────── */
 
 function doPost(e) {
+  var q = (e && e.parameter) || {};
+  if (q.a === 'pconf') {
+    JSON_PAGE = q.fmt === 'json';
+    try { return pconfPage_(q, true); } finally { JSON_PAGE = false; }
+  }
   var body = e && e.postData && e.postData.contents;
   if (body && body.charAt(0) === '{') {
     try { handleLine_(JSON.parse(body)); } catch (err) { log_('LINEエラー: ' + err); }
@@ -2639,10 +2644,12 @@ function pconfExamples_(c) {
 }
 // 新しく申し込む会社の入り口（a=pconf&new=1）：会社名・メール・ホームページだけを聞き、当サイトに公式サイトの情報がある会社は下書きを入れた確認ページを出す
 function pconfFind_(site) {
-  var h = String(site || '').toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[\/?#]/)[0];
+  function page(v) { return String(v||'').trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[?#]/)[0].replace(/\/+$/, ''); }
+  var pageKey = page(site), h = pageKey.split('/')[0];
   if (!h || h.indexOf('.') < 0) return '';
-  var c = DISPLAY_COMPANIES.filter(function(x) { return x.url && String(x.url).toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[\/?#]/)[0] === h; })[0];
-  return c ? c.id : '';
+  var found = DISPLAY_COMPANIES.filter(function(x) { return page(x.url).split('/')[0] === h; });
+  var exact = found.filter(function(x) { return page(x.url) === pageKey; });
+  return exact.length === 1 ? exact[0].id : found.length === 1 ? found[0].id : '';
 }
 function pconfUrl_(id) { return linkBase_() + '?a=pconf&t=' + encodeURIComponent(demoToken_(id)); }
 var PCONF_TAG = { site: ['サイトより', '#2e8b57'], chk: ['ご確認ください', '#b7791f'], need: ['入力してください', '#c0392b'] };
@@ -2676,42 +2683,264 @@ function pconfAnswers_(c, q) {
   }); });
   return { obj: out, text: lines.join('\n') };
 }
-function pconfPage_(q) {
+// Pilot: only audited public fields are prefilled. Provider answers are private pending review, never live tariff input.
+var PCONF_FARE_VERSION = 'pconf-display-v1';
+var PCONF_FARE_LIMIT = 300;
+var PCONF_WAIT_STAGE_COUNT = 5;
+var PCONF_PUBLIC_FARE = {ride:'最初の5kmは1kmごと480円、50kmまでは330円、以降230円', back:'回送料金なし', wait:'10分ごとに300円', night:'21時〜翌6時はお迎え・乗車・待機が20%増し', toll:'有料道路代は実費', pick_public:'1,800円'};
+function pconfPublicFareItem_(it) {
+  return {k:it.k,l:it.l,tag:'site',type:'text',v:PCONF_PUBLIC_FARE[it.k]};
+}
+function pconfWithPublicFare_(c) {
+  return {sections:c.sections.map(function(s) {
+    if (s.h !== '4. 料金') return s;
+    var items = s.items.filter(function(it) { return ['pick','tax'].indexOf(it.k) < 0; }).map(function(it) {
+      return PCONF_PUBLIC_FARE[it.k] ? pconfPublicFareItem_(it) : it;
+    });
+    items.push(pconfPublicFareItem_({k:'pick_public',l:'通常のお迎え料金'}));
+    return {h:s.h,items:items};
+  })};
+}
+function pconfFarePilot_(id) {
+  if (id !== 'Dcb3b5a2' && id !== 'P064') return null;
+  var c = DISPLAY_COMPANIES.filter(function(v) { return v.id === 'Dcb3b5a2'; })[0];
+  return c && c.fare && c.shop ? c : null;
+}
+function pconfFareInt_(v, max) {
+  return /^\d{1,7}$/.test(String(v == null ? '' : v)) && Number(v) <= max ? Number(v) : null;
+}
+function pconfFareInput_(n,l,q) {
+  return '<label>' + esc_(l) + '<input type="number" min="0" step="1" name="' + n + '" value="' + esc_(String(q[n] == null ? '' : q[n]).replace(/[^0-9]/g,'').slice(0,7)) + '"></label>';
+}
+function pconfFareFields_() {
+  // No submitted prices or pricing rules are echoed by the pricing review.
+  var q = {};
+  return '<div class="pt"><b>お迎えの料金が変わる条件</b><p class="note">公開の料金では遠いお迎えは相談となっています。計算できる条件だけ教えてください。無料なら0を入れてください。</p>' +
+    pconfFareInput_('pf_limit', '料金が同じ範囲の最後の距離（m）', q) +
+    '<label>その距離を超えたときの加算<select name="pf_mode"><option value="">選んでください</option><option value="flat">定額を足す</option><option value="per">超えた分1kmごとに足す</option><option value="none">加算なし</option><option value="manual">区間や条件によって異なる</option></select></label>' +
+    pconfFareInput_('pf_add', '足す金額（円、上で定額・1kmごとを選んだ場合）', q) +
+    '<label>お迎え距離の測り方<select name="pf_basis"><option value="">選んでください</option><option value="road">営業所から車で走る距離</option><option value="other">営業所以外・直線距離など</option></select></label>' +
+    '<label>お迎え距離の端数<select name="pf_pickround"><option value="">選んでください</option><option value="ceil">1km未満切り上げ</option><option value="floor">1km未満切り捨て</option><option value="other">別の数え方</option></select></label>' +
+    '<label>乗る距離の端数<select name="pf_round"><option value="">選んでください</option><option value="ceil">1km未満切り上げ</option><option value="floor">1km未満切り捨て</option><option value="other">別の数え方</option></select></label>' +
+    '<label>料金表の税<select name="pf_tax"><option value="">選んでください</option><option value="incl">税込・消費税なし</option><option value="excl">税別</option></select></label>' +
+    '<p class="note">いずれも朝9時、犬1頭・10.5kg、乗る距離5km、一般道、待機なしです。お迎え距離だけが異なります。</p>' +
+    pconfFareInput_('pf_near', 'お迎え19km：お支払い総額（税込・円）', q) +
+    pconfFareInput_('pf_at', 'お迎え20km：お支払い総額（税込・円）', q) +
+    pconfFareInput_('pf_far', 'お迎え21km：お支払い総額（税込・円）', q) +
+    '</div>';
+}
+function pconfFareSelect_(name,label,options,defaultValue) {
+  return '<label>' + esc_(label) + '<select name="' + name + '"><option value="">選んでください</option>' +
+    options.map(function(v) { return '<option value="' + esc_(v[0]) + '"' + (v[0] === defaultValue ? ' selected' : '') + '>' + esc_(v[1]) + '</option>'; }).join('') + '</select></label>';
+}
+function pconfTimingFields_() {
+  var trigger = [['start','基準の開始時刻が時間帯内'],['overlap','時間帯に少しでもかかれば全額'],['prorate','時間帯内の経過時間の割合で按分（距離ではない）'],['not_charged','割増なし'],['manual','別の数え方・未確認']];
+  var clock = [['component','この料金が発生する区間・待機の時刻'],['ride','お客様を乗せる区間の時刻'],['manual','別の基準・未確認']];
+  return '<div class="pt"><b>深夜・早朝の割増：いつ、どの料金にかかりますか？</b>' +
+    '<p class="note">公開表では21時〜翌6時、お迎え・乗車・待機に20%増し。時刻の判定方法は記載がありません。たとえば20:50に始まり21:20に終わるときです。乗車・お迎えは昼で、待機だけが21時をまたぐ場合も、待機欄で選んでください。回送は料金なしと記載されています。</p>' +
+    [['pickup','お迎え'],['ride','乗車'],['wait','待機'],['return','お送りしたあとの回送']].map(function(x) {
+      return '<details' + (x[0]==='ride' ? ' open' : '') + '><summary>' + x[1] + '</summary>' +
+        pconfFareSelect_('pf_n_'+x[0]+'_trigger',x[1]+'の割増方法',trigger,x[0]==='return' ? 'not_charged' : '') +
+        (x[0]==='ride' ? '' : pconfFareSelect_('pf_n_'+x[0]+'_clock',x[1]+'の判定に使う時刻',clock)) + '</details>';
+    }).join('') +
+    '<p class="note">21時ちょうどと翌6時ちょうどの扱いを教えてください。</p>' +
+    pconfFareSelect_('pf_n_boundary','割増の切り替わり', [['from_in_to_out','21時ちょうどから、6時ちょうどは通常料金'],['manual','それ以外・未確認']]) +
+    pconfFareSelect_('pf_n_round','割増が1円未満の端数になる場合', [['floor_each','料金の項目ごとに切り捨て'],['ceil_each','料金の項目ごとに切り上げ'],['floor_total','割増の合計を切り捨て'],['ceil_total','割増の合計を切り上げ']]) + '</div>' +
+    '<div class="pt"><b>待機料金：途中で単価が変わる場合</b><p class="note">公開表は10分ごと300円。無料になる最初の時間や、端数・上限は未確認です。最初から有料なら無料時間は0、以降も無料ならその段階の金額は0を入れてください。わからない欄は空欄で構いません。</p>' +
+    pconfFareInput_('pf_w_free','最初の無料時間（分）',{}) +
+    Array.from({length:PCONF_WAIT_STAGE_COUNT},function(_,n) { return n+1; }).map(function(i) {
+      var k = 'pf_w_'+i+'_';
+      return '<details' + (i===1 ? ' open' : '') + '><summary>料金の段階 ' + i + '</summary>' +
+        pconfFareSelect_(k+'end','この料金が続く範囲', [['until','指定した時間まで'],['open','その先も同じ']]) +
+        pconfFareInput_(k+'until','待ち始めから何分まで（「指定した時間まで」の場合）',{}) +
+        pconfFareSelect_(k+'mode','その段階での数え方', [['ceil','端数は切り上げ'],['floor','端数は切り捨て'],['exact','1分単位で比例'],['flat','段階に入ると定額']]) +
+        pconfFareInput_(k+'unit','何分ごと（定額なら不要）',i===1 ? {[k+'unit']:'10'} : {}) +
+        pconfFareInput_(k+'yen','その単位・段階での金額（円）',i===1 ? {[k+'yen']:'300'} : {}) + '</details>';
+    }).join('') +
+    pconfFareSelect_('pf_w_cap_mode','待機料金の上限', [['cap','上限あり'],['none','上限なし']]) +
+    pconfFareInput_('pf_w_cap','上限額（円、上限ありの場合）',{}) +
+    pconfFareSelect_('pf_w_round','比例料金が1円未満の端数になる場合', [['floor','切り捨て'],['ceil','切り上げ']]) + '</div>';
+}
+function pconfTimingDraft_(q) {
+  var result = {night:null,wait:null,review:'independent_cases_needed'};
+  if (q.pf_n_boundary === 'from_in_to_out') {
+    var parts = {}, names = ['pickup','ride','wait','return'];
+    var complete = names.every(function(k) {
+      var trigger = String(q['pf_n_'+k+'_trigger']||''), clock = k === 'ride' ? 'component' : String(q['pf_n_'+k+'_clock']||'');
+      if (trigger === 'not_charged') { parts[k] = false; return true; }
+      if (['start','overlap','prorate'].indexOf(trigger) < 0 || ['component','ride'].indexOf(clock) < 0 || (trigger === 'prorate' && clock !== 'component')) return false;
+      parts[k] = {trigger:trigger,clock:clock};
+      return true;
+    });
+    // 21:00–06:00 and 20% are public only; no clock or component defaults are assumed.
+    if (complete) result.night = {from:1260,to:360,basisPoints:2000,round:['floor_each','ceil_each','floor_total','ceil_total'].indexOf(q.pf_n_round)>=0 ? q.pf_n_round : null,components:parts};
+  }
+  var capMode = q.pf_w_cap_mode, free = pconfFareInt_(q.pf_w_free,1440), cap = pconfFareInt_(q.pf_w_cap,1000000);
+  if (free != null && (capMode === 'none' || capMode === 'cap' && cap != null)) {
+    var tiers = [], valid = true;
+    for (var i=1;i<=PCONF_WAIT_STAGE_COUNT;i++) {
+      var k = 'pf_w_'+i+'_';
+      if (!['end','until','mode','unit','yen'].some(function(n) { return String(q[k+n] == null ? '' : q[k+n]).trim() !== ''; })) continue;
+      var end = q[k+'end'], mode = q[k+'mode'], until = pconfFareInt_(q[k+'until'],1440), unit = pconfFareInt_(q[k+'unit'],1440), yen = pconfFareInt_(q[k+'yen'],1000000);
+      if (['until','open'].indexOf(end) < 0 || end === 'until' && until == null || !mode || (mode !== 'flat' && !unit) || yen == null) valid=false;
+      tiers.push({until:end==='until' ? until : null, mode:mode, unit:unit, yen:yen});
+    }
+    var wait = {free:free,cap:capMode==='cap' ? cap : null,tiers:tiers,final:['floor','ceil'].indexOf(q.pf_w_round)>=0 ? q.pf_w_round : null};
+    if (valid && fareWaitTiered_(wait,0) != null) result.wait = wait;
+  }
+  // Preserve safe structured choices even when incomplete; do not equate absent rates to zero.
+  result.answers = {};
+  Object.keys(q).filter(function(k) {
+    var stage = k.match(/^pf_w_(\d+)_(?:end|until|mode|unit|yen)$/);
+    return stage ? +stage[1] >= 1 && +stage[1] <= PCONF_WAIT_STAGE_COUNT :
+      /^pf_(?:n_(?:boundary|round|(?:pickup|ride|wait|return)_(?:trigger|clock))|w_(?:free|round|cap(?:_mode)?))$/.test(k);
+  })
+    .forEach(function(k) { result.answers[k] = String(q[k]).slice(0,40); });
+  if (!result.night || !result.wait) result.review = 'timing_terms_incomplete';
+  return result;
+}
+function pconfFareDraft_(c,q) {
+  var l = pconfFareInt_(q.pf_limit,1000000), a = pconfFareInt_(q.pf_add,1000000);
+  var mode = String(q.pf_mode || ''), rounding = String(q.pf_round || ''), tax = String(q.pf_tax || '');
+  var draft = {version:PCONF_FARE_VERSION, id:c.id,
+    source:'https://pettaxi-osanpo.com/pettaxi', sourceDate:'2026-11-23',
+    timing:pconfTimingDraft_(q),
+    limitM:l, mode:mode, addYen:a, distanceRounding:rounding, pickupRounding:String(q.pf_pickround||''), basis:String(q.pf_basis||''), tax:tax,
+    expected:[q.pf_near,q.pf_at,q.pf_far].map(function(v) { return pconfFareInt_(v,1000000); })};
+  var inputs = ['pf_limit','pf_mode','pf_add','pf_basis','pf_pickround','pf_round','pf_tax','pf_near','pf_at','pf_far'];
+  if (!inputs.some(function(k) { return String(q[k] == null ? '' : q[k]).trim() !== ''; }) && !Object.keys(draft.timing.answers).some(function(k) {
+    var published = {pf_n_return_trigger:'not_charged',pf_w_1_unit:'10',pf_w_1_yen:'300'};
+    return draft.timing.answers[k] !== '' && draft.timing.answers[k] !== published[k];
+  })) return null;
+  draft.check = pconfFareCheck_(c,draft);
+  return draft;
+}
+function pconfFareFixture_(c,m,rideM,clock) {
+  var shop = {lat:c.shop[0],lng:c.shop[1]}, from = {lat:shop.lat+0.1,lng:shop.lng}, to = {lat:shop.lat+0.2,lng:shop.lng};
+  return {input:{trip:'片道', pref:c.pref || '', datetime:'2026-11-27T'+(clock || '09:00'), weight:10.5, pet_count:1,
+    route_details:JSON.stringify({km:rideM/1000,backKm:rideM/1000,from:from,to:to})},
+    lookup:function(_, at, back) { return !back && at.lat === from.lat ? m/1000 : null; }};
+}
+function pconfFareCheck_(c,d) {
+  var ok = !!(c.fare && c.fare.pick && c.fare.back && c.fare.tiers) && d.limitM === 20000 && d.basis === 'road' && ['ceil','floor'].indexOf(d.pickupRounding) >= 0 && ['ceil','floor'].indexOf(d.distanceRounding) >= 0 && ['incl','excl'].indexOf(d.tax) >= 0 &&
+    (d.mode === 'none' || (['per','flat'].indexOf(d.mode) >= 0 && d.addYen !== null)) &&
+    d.expected.every(function(y) { return y !== null; });
+  if (!ok) return {status:'needs_review', cases:[], ready:false};
+  // Only a distance-based, public baseline is staged. Edited public text is reviewed separately, not parsed into prices.
+  var candidate = JSON.parse(JSON.stringify(c));
+  candidate.fare.kmMode = d.distanceRounding;
+  candidate.fare.tax = d.tax === 'incl' ? '税込' : '税別';
+  var pk = candidate.fare.pick;
+  delete pk.unknownOver;
+  pk.kmMode = d.pickupRounding;
+  if (d.mode !== 'none') { pk.km = d.limitM/1000; pk[d.mode === 'per' ? 'per' : 'over'] = d.addYen; }
+  var cases = [19000,20000,21000].map(function(m,i) {
+    // The customer estimator is used directly, with a known directional road distance (not synthetic address geocoding).
+    var fixture = pconfFareFixture_(candidate,m,5000), price = displayPrice_(candidate,fixture.input,fixture.lookup);
+    var total = price && !price.incompleteFees && !price.taxUnknown && price.local && !price.local.pickMissing && !price.local.backMissing && price.local.amount;
+    var actual = typeof total === 'number' ? total : null, expected = d.expected[i];
+    // Same nearest-¥100 text rule as the partner-price card; compare both to the actual provider quote, not a rounded quote.
+    var shown = actual == null ? null : Number(roundYenText_(yen_(actual)).replace(/[^0-9]/g,''));
+    return {pickupM:m, actual:actual, shown:shown, expected:expected,
+      within:actual != null && Math.abs(actual-expected) <= PCONF_FARE_LIMIT && Math.abs(shown-expected) <= PCONF_FARE_LIMIT};
+  });
+  // These are three no-wait, daytime scenarios, not approval for other shifts, waiting or round trips.
+  return {status:cases.every(function(v) { return v.within; }) ? 'examples_passed' : 'mismatch', cases:cases, ready:false};
+}
+function pconfFareToken_(id, expires, nonce) {
+  return [expires, nonce, sign_('pconf-fare:v1:' + id + ':' + expires + ':' + nonce)].join('.');
+}
+function pconfFareKey_(id, token) {
+  var x = String(token || '').match(/^(\d{13})\.([a-zA-Z0-9_-]{8,45})\.([a-zA-Z0-9_-]{22})$/);
+  var now = Date.now();
+  if (!x || Number(x[1]) < now || Number(x[1]) > now + 7*86400000 || pconfFareToken_(id,x[1],x[2]) !== token) return '';
+  return 'fare:' + sign_('pconf-fare:submission:' + id + ':' + token);
+}
+// Manual Apps Script call only, after verifying the recipient and separate workbook restrictions.
+function makePconfFareLink_(id) {
+  if (!pconfFarePilot_(id) || !pconfPrivateId_()) return '';
+  return pconfUrl_(id) + '&fv=' + encodeURIComponent(pconfFareToken_(id,Date.now()+7*86400000,Utilities.getUuid()));
+}
+function pconfPrivateId_() {
+  var properties = PropertiesService.getScriptProperties();
+  if (properties.getProperty('PCONF_FARE_PILOT') !== 'on') return '';
+  var id = properties.getProperty('PCONF_PRIVATE_FILE_ID');
+  return id && id !== SpreadsheetApp.getActive().getId() ? id : '';
+}
+function pconfPrivateStore_(row, privateId, fareKey) {
+  // Only the pilot can collect new nonpublic fare cases. Legacy onboarding continues in its existing workbook.
+  try {
+    var ss = privateId ? SpreadsheetApp.openById(privateId) : SpreadsheetApp.getActive();
+    var sh = ensureSheet_(ss,SHEET_PCONF,privateId ? PCONF_HEADERS.concat(['回答識別子']) : PCONF_HEADERS);
+    if (privateId && fareKey) {
+      var n = sh.getLastRow();
+      if (n > 1 && sh.getRange(2,8,n-1,1).createTextFinder(fareKey).matchEntireCell(true).findNext()) return 'duplicate';
+      row.push(fareKey);
+    }
+    sh.appendRow(row.map(function(v) { return typeof v === 'string' && /^[=+@-]/.test(v.trim()) ? "'" + v : v; }));
+    return true;
+  } catch (_) { return false; } // do not log a URL, quote, or submitted data
+}
+function pconfPage_(q, posted) {
+  if (q.go === '1' && !posted) return page_('入力を受け付けられません', '<p>最初に届いた確認のページから開き直してください。</p>');
+  if (!posted) q = {a:'pconf',new:q.new,t:q.t,fv:q.fv};
   var isNew = q['new'] === '1', id = isNew ? '' : demoId_(q.t), c = null;
   if (isNew && q.step !== '2' && q.go !== '1') return pconfStart_(q);
   if (isNew) { id = pconfFind_(q.site); c = id ? pconfOf_(id) : pconfAuto_({ name: String(q.co || '').trim().slice(0, 80) }); }
-  else c = id && pconfOf_(id);
+  else c = id && pconfOf_(id === 'P064' ? 'Dcb3b5a2' : id);
   if (!c) return page_('リンクが正しくありません', '<p>お手数ですが、届いたメールのリンクからもう一度開いてください。</p>');
+  var supportedPilot = !isNew && pconfFarePilot_(id);
+  var fareKey = supportedPilot ? pconfFareKey_(id,q.fv) : '';
+  var privateId = fareKey ? pconfPrivateId_() : '';
+  var pilot = privateId ? supportedPilot : null;
+  if ((q.fv || (q.go === '1' && Object.keys(q).some(function(k) { return /^pf_/.test(k); }))) && !pilot) {
+    return page_('送信できませんでした', '<p>料金の回答は受け付けていません。最初のページを開き直してください。</p>');
+  }
   var coName = isNew ? String(q.co || '').trim().slice(0, 80) : c.name, email = String(q.email || '').trim().slice(0, 120);
   if (q.go === '1') {
     var name = String(q.name || '').trim().slice(0, 60);
     if (!name || (isNew && (!coName || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)))) q.err = 1;
     else {
-      var a = pconfAnswers_(c, q);
-      var ex = (c.examples || []).map(function(e, i) { var v = String(q['ex' + i] || ''), fix = String(q['ex' + i + '_fix'] || '').trim().slice(0, 200);
+      var a = pconfAnswers_(pilot ? pconfWithPublicFare_(c) : c, q);
+      var ex = (pilot ? [] : c.examples || []).map(function(e, i) { var v = String(q['ex' + i] || ''), fix = String(q['ex' + i + '_fix'] || '').trim().slice(0, 200);
         return '・' + e.l + '：' + e.yen + ' → ' + (v || '（未回答）') + (fix ? '（' + fix + '）' : ''); }).join('\n');
       var memo = String(q.memo || '').trim().slice(0, 2000);
       var head = isNew ? '・メール：' + email + '\n・ホームページ：' + String(q.site || '').trim().slice(0, 200) + (id ? '\n・当サイトの公式サイトの情報：あり（' + id + '）' : '') + '\n' : '';
+      var draft = pilot && pconfFareDraft_(pilot,q);
+      if (draft && Object.keys(PCONF_PUBLIC_FARE).some(function(k) { return String(q['f_'+k] || '').trim() !== PCONF_PUBLIC_FARE[k]; })) {
+        draft.check = {status:'public_correction_needs_review',cases:[],ready:false};
+      }
       var lock = LockService.getScriptLock();
       lock.waitLock(20000);
       try {
-        var sh = ensureSheet_(SpreadsheetApp.getActive(), SHEET_PCONF, PCONF_HEADERS);
-        sh.appendRow([new Date(), id || '（新規）', coName, name, head + a.text + (memo ? '\n・ほかに伝えたいこと：' + memo : ''), ex, JSON.stringify({ a: a.obj, memo: memo, email: isNew ? email : undefined, site: isNew ? String(q.site || '') : undefined }).slice(0, 45000)]);
-        sh.getRange(sh.getLastRow(), 1).setNumberFormat('yyyy/MM/dd HH:mm:ss');
+        var received = pconfPrivateStore_([new Date(), id || '（新規）', coName, name, head + a.text + (memo ? '\n・ほかに伝えたいこと：' + memo : ''), ex, JSON.stringify({a:a.obj, memo:memo, email:isNew ? email : undefined, site:isNew ? String(q.site || '').slice(0,200) : undefined, fareReview:draft}).slice(0,45000)], privateId, fareKey);
+        if (!received) return page_('送信できませんでした', '<p>入力内容は受け付けていません。時間をおいて再度お試しください。</p>');
       } finally { lock.releaseLock(); }
-      log_('提携の確認：' + (id || '新規') + ' ' + coName + ' ' + name);
-      notifyAdmin_((isNew ? '提携の申し込みが届きました：' : '提携の確認が届きました：') + coName, coName + (id ? '（' + id + '）' : '') + 'から、' + (isNew ? '提携の申し込み' : '公式サイトの内容の確認') + 'が届きました。\nご担当：' + name + '\n' + head + '\n■ 答え\n' + a.text +
-        (memo ? '\n\n■ ほかに伝えたいこと\n' + memo : '') + (ex ? '\n\n■ 料金の例\n' + ex : '') + '\n\n記録：予約シートの「' + SHEET_PCONF + '」タブ\n受付を始めるのは、運営者が確かめてからです。');
+      if (received !== 'duplicate') {
+        try { notifyAdmin_('提携フォームに回答が届きました', '運営用の回答一覧をご確認ください。送信だけでは受付や料金の変更は始まりません。'); } catch (_) {}
+      }
       return page_('ありがとうございました', '<p>' + esc_(coName) + ' さま、お答えを受け付けました。</p><p>いただいた内容で登録し、料金の計算と、お送りするご依頼の条件をそろえます。わからないところがあれば、メールでおうかがいします。</p>');
     }
   }
   var html = '<p>' + esc_(coName) + ' さま</p>' + (c.site
-    ? '<p>公式サイト（<a href="' + esc_(c.site) + '" target="_blank">' + esc_(c.site.replace(/^https?:\/\//, '').replace(/\/$/, '')) + '</a>' + (c.read ? '、' + esc_(c.read) + '時点' : '') + '）の内容を、先に入れておきました。まちがいがあれば直して、「入力してください」のところだけ埋めてください。' + ((c.examples || []).length ? '最後に、この内容で計算した料金の例を確かめてください。' : '') + '</p>'
+    ? '<p>公式サイト（<a href="' + esc_(c.site) + '" target="_blank">' + esc_(c.site.replace(/^https?:\/\//, '').replace(/\/$/, '')) + '</a>' + (c.read ? '、' + esc_(c.read) + '時点' : '') + '）の内容を、先に入れておきました。まちがいがあれば直して、「入力してください」のところだけ埋めてください。' + ((!pilot && (c.examples || []).length) ? '最後に、この内容で計算した料金の例を確かめてください。' : '') + '</p>'
     : '<p>ご依頼をお送りする条件と、料金の計算に使う内容をうかがいます。選ぶところがほとんどです。</p>') +
     (q.err ? '<p style="color:#c0392b;font-weight:700">' + (isNew ? '会社名・メールアドレス・' : '') + 'ご担当のお名前を入れてください。</p>' : '') +
-    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) + hidden_('site', q.site || '') : hidden_('t', q.t)) + hidden_('go', '1');
-  c.sections.forEach(function(s) { html += '<h2>' + esc_(s.h) + '</h2>' + s.items.map(function(it) { return pconfItem_(it, q); }).join(''); });
-  if ((c.examples || []).length) html += '<h2>6. 料金の例</h2><p class="note">上の内容で計算しました。高速料金は含みません。</p>' + c.examples.map(function(e, i) {
+    '<form data-pconf method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('a', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) + hidden_('site', q.site || '') : hidden_('t', q.t)) + (pilot ? hidden_('fv', q.fv) : '') + hidden_('go', '1');
+  c.sections.forEach(function(s) {
+    html += '<h2>' + esc_(s.h) + '</h2>';
+    if (!pilot || s.h !== '4. 料金') { html += s.items.map(function(it) { return pconfItem_(it, q); }).join(''); return; }
+    var facts = PCONF_PUBLIC_FARE;
+    html += '<details><summary>公開の料金を確認・訂正する</summary><p class="note">出どころ：<a rel="noreferrer" target="_blank" href="https://pettaxi-osanpo.com/pettaxi">公式サイトの料金</a>（2026年11月23日）</p>' +
+      s.items.filter(function(it) { return facts[it.k]; }).map(function(it) {
+        return pconfItem_(pconfPublicFareItem_(it), {});
+      }).join('') +
+      pconfItem_({k:'pick_public',l:'通常のお迎え料金',tag:'site',type:'text',v:facts.pick_public}, {}) + '</details>' +
+      pconfFareFields_() + pconfTimingFields_() + s.items.filter(function(it) { return !facts[it.k] && ['pick','tax','night_how'].indexOf(it.k) < 0; }).map(function(it) {
+        return pconfItem_(it, {});
+      }).join('');
+  });
+  if (!pilot && (c.examples || []).length) html += '<h2>6. 料金の例</h2><p class="note">上の内容で計算しました。高速料金は含みません。</p>' + c.examples.map(function(e, i) {
     return '<div class="pt"><b>' + esc_(e.l) + '</b><div style="font-size:1.1rem;font-weight:800;margin:4px 0">' + esc_(e.yen) + '</div><div class="note">' + esc_(e.d) + '</div>' +
       ['合っている', 'ちがう'].map(function(o) { return '<label style="font-weight:400;margin:6px 0;display:inline-block;margin-right:16px"><input type="radio" name="ex' + i + '" value="' + o + '"' + (q['ex' + i] === o ? ' checked' : '') + '>' + o + '</label>'; }).join('') +
       '<input name="ex' + i + '_fix" maxlength="200" value="' + esc_(q['ex' + i + '_fix'] || '') + '" placeholder="ちがうときは、正しい金額や理由"></div>';
@@ -2724,7 +2953,7 @@ function pconfPage_(q) {
 // 新しい申し込みの最初の画面：会社名・メール・ホームページだけ
 function pconfStart_(q) {
   var html = '<p>まず、会社名・ご連絡先・ホームページを教えてください。当サイトで公式サイトの料金や条件を集めている会社さまは、次の画面にその内容を先に入れてお出しします。</p>' +
-    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pconf') + hidden_('new', '1') + hidden_('step', '2') +
+    '<form data-pconf method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('a', 'pconf') + hidden_('new', '1') + hidden_('step', '2') +
     '<label>会社名・屋号（必須）<input name="co" required maxlength="80" value="' + esc_(q.co || '') + '"></label>' +
     '<label>お問い合わせを受け取るメールアドレス（必須）<input name="email" type="email" required maxlength="120" value="' + esc_(q.email || '') + '"></label>' +
     '<label>ホームページのURL（あれば）<input name="site" maxlength="200" placeholder="https://" value="' + esc_(q.site || '') + '"></label>' +
@@ -3812,13 +4041,85 @@ function displayFixed_(c, p) {
   return {amount:y, text:yen_(y), local:l, highway:null, fixed:true, cap:!!z.cap, tollIncluded:!!z.toll, incompleteFees:false, taxUnknown:false, night:'', pickupNote:'', routeNote:'',
     planNote:'公式サイトに書いてある定額（' + z.label + '）で出した目安です。' + (round ? (z.round ? '往復の定額です。' : '行きと帰りの2回分です。') : '') + (z.tax ? '定額は税別のため、消費税10%を足しています。' : '') + (z.toll ? '' : '有料道路を使うときは実費が別にかかります。')};
 }
-function displayPrice_(c, p) {
-  var fx = c.fare && c.fare.fixed ? displayFixed_(c, p) : null;
+// Exact, opt-in checks. Old price rules must not inherit these semantics.
+function fareWaitTiered_(rule, min) {
+  function nat(v) { return Number.isInteger(v) && v >= 0; }
+  if (!rule || !nat(rule.free) || !Number.isFinite(min) || min < 0 || !Array.isArray(rule.tiers) || !rule.tiers.length ||
+      (rule.cap != null && !nat(rule.cap))) return null;
+  var cursor = rule.free, total = 0;
+  for (var i = 0; i < rule.tiers.length; i++) {
+    var t = rule.tiers[i], end = t && t.until;
+    if (!t || (end == null ? i !== rule.tiers.length-1 : (!nat(end) || end <= cursor)) ||
+        !nat(t.yen) || (t.mode !== 'flat' && (!nat(t.unit) || !t.unit || ['ceil','floor','exact'].indexOf(t.mode) < 0))) return null;
+    var span = Math.max(0, (end == null ? min : Math.min(min, end)) - cursor);
+    if (t.mode === 'flat') { if (span > 0) total += t.yen; }
+    else {
+      var units = span / t.unit;
+      total += (t.mode === 'ceil' ? Math.ceil(units) : t.mode === 'floor' ? Math.floor(units) : units) * t.yen;
+    }
+    cursor = end == null ? Infinity : end;
+  }
+  if (min > cursor) return null; // finite undisclosed tail is not free
+  total = rule.cap == null ? total : Math.min(rule.cap,total);
+  if (Number.isInteger(total)) return total;
+  return rule.final === 'floor' ? Math.floor(total) : rule.final === 'ceil' ? Math.ceil(total) : null;
+}
+function fareNightSpanJst_(start, end, from, to) {
+  var zoneOffset = 9*60, day = 24*60;
+  var minute = function(v) { return Number.isFinite(v) && v >= 0 && v < day; };
+  if (!minute(from) || !minute(to) || from === to || !Number.isFinite(start) || !Number.isFinite(end) || end < start || end-start > 7*day) return null;
+  // Minutes since epoch; window [from,to) is half-open, and may cross midnight.
+  start += zoneOffset; end += zoneOffset;
+  var origin = Math.floor(start/day)*day, overlap = 0, starts = false;
+  for (var dayStart = origin-day; dayStart <= end; dayStart += day) {
+    var a = dayStart + from, b = dayStart + to + (to < from ? day : 0);
+    starts = starts || (start >= a && start < b);
+    overlap += Math.max(0,Math.min(end,b)-Math.max(start,a));
+  }
+  return {starts:starts, overlap:overlap, duration:end-start};
+}
+function fareNightExact_(rule, amounts, schedule) {
+  var keys = ['pickup','ride','wait','return'], charges = [];
+  function epoch(v) {
+    if (typeof v !== 'string' || !/^\d{4}-\d\d-\d\dT(?:[01]\d|2[0-3]):[0-5]\d$/.test(v)) return NaN;
+    var t = parseJst_(v);
+    var local = new Date(t.getTime()+9*3600000).toISOString().slice(0,16);
+    return local === v ? t.getTime()/60000 : NaN;
+  }
+  if (!rule || !Number.isInteger(rule.basisPoints) || rule.basisPoints < 0 || rule.basisPoints > 10000 || !rule.components || !amounts) return null;
+  for (var k = 0; k < keys.length; k++) {
+    var name = keys[k], spec = rule.components[name], a = amounts[name] || [];
+    if (spec === false) continue; // Explicit exclusion, distinct from an unresolved component.
+    if (!spec || ['start','overlap','prorate'].indexOf(spec.trigger) < 0 || ['component','ride'].indexOf(spec.clock) < 0) return null;
+    if (spec.trigger === 'prorate' && spec.clock !== 'component') return null; // no ratio estimated using a different charge
+    if (!a.some(function(y) { return y !== 0; })) continue;
+    var times = schedule && schedule[spec.clock === 'ride' ? 'ride' : name];
+    if (!times || a.length !== times.length) return null;
+    for (var i = 0; i < a.length; i++) {
+      if (a[i] === 0) continue;
+      var t = times[i];
+      if (!t || !Number.isFinite(a[i]) || a[i] < 0) return null;
+      var from = epoch(t.start), to = spec.trigger === 'start' ? from : epoch(t.end);
+      var span = fareNightSpanJst_(from,to,rule.from,rule.to);
+      if (!span || (spec.trigger !== 'start' && span.duration <= 0)) return null;
+      var share = spec.trigger === 'start' ? (span.starts ? 1 : 0) : spec.trigger === 'overlap' ? (span.overlap > 0 ? 1 : 0) : span.overlap/span.duration;
+      charges.push(a[i] * rule.basisPoints * share / 10000);
+    }
+  }
+  var sum = function(v) { return v.reduce(function(x,y) {return x+y;},0); };
+  if (rule.round === 'floor_each') return sum(charges.map(Math.floor));
+  if (rule.round === 'ceil_each') return sum(charges.map(Math.ceil));
+  if (rule.round === 'floor_total') return Math.floor(sum(charges));
+  if (rule.round === 'ceil_total') return Math.ceil(sum(charges));
+  return charges.every(Number.isInteger) ? sum(charges) : null;
+}
+function displayPrice_(c, p, knownRoadKm, verified) {
+  var fx = !verified && c.fare && c.fare.fixed ? displayFixed_(c, p) : null;
   if (fx && !fx.cap) return fx;
-  var r = displayPriceCalc_(c, p);
+  var r = displayPriceCalc_(c, p, knownRoadKm, verified);
   return fx && (!r || fx.amount < r.amount) ? fx : r; // cap：距離の式のほうが安ければそちら（aiai の返事は札幌市東区→新千歳で式どおり17,325円。パック便は20,000円）
 }
-function displayPriceCalc_(c, p) {
+function displayPriceCalc_(c, p, knownRoadKm, verified) {
   var F = c.fare;
   if (!F) return null;
   var d;
@@ -3830,6 +4131,7 @@ function displayPriceCalc_(c, p) {
   function pt(v) { return v && isFinite(v.lat) && isFinite(v.lng) && v.lat >= 20 && v.lat <= 46 && v.lng >= 122 && v.lng <= 154; }
   if (!d || !validKm(d.km) || !validKm(d.backKm) || !pt(d.from) || !pt(d.to)) return null;
   var round = p.trip === '往復';
+  if (verified && (F.kind || F.fixed || F.roundContinuous || F.roundBack || F.pickEachLeg || F.oneWayRate || (round && ['wait','split'].indexOf(verified.strategy) < 0))) return null;
   if (round && (!pt(d.backFrom) || !pt(d.backTo))) return null;
   var shop = c.shop ? {lat:c.shop[0], lng:c.shop[1]} : null;
   if (F.quotePickKm && shop && legKm_(shop, d.from) > F.quotePickKm) return null; // 遠くからのお迎えは会社の割引があり計算できない（お見積もり。ふわふわの答え）
@@ -3840,7 +4142,7 @@ function displayPriceCalc_(c, p) {
   if (F.kind === 'zones' && (!zoneHit || (round && findZone(p.return_pickup || p.dropoff, p.return_dropoff || p.pickup) !== zoneHit))) return null; // 区間の料金表にない
   if (F.kind === 'zone' && !(inZone(p.pickup) && inZone(p.dropoff) && (!round || (inZone(p.return_pickup || p.dropoff) && inZone(p.return_dropoff || p.pickup))))) return null; // 市の外は料金表にない
   // 距離の数え方：ふつうは1km単位に切り上げ。kmMode 'exact'＝小数のまま（円未満は切り捨て）、'floor'＝1km未満を切り捨て（返事の内訳で分かった会社）
-  function kmOf(km) { return F.kmMode === 'exact' ? Math.round(km * 10) / 10 : F.kmMode === 'floor' ? Math.floor(km) : Math.ceil(km); }
+  function kmOf(km, mode) { mode = mode || F.kmMode; return mode === 'exact' ? Math.round(km * 10) / 10 : mode === 'floor' ? Math.floor(km) : Math.ceil(km); }
   function distRide(km) { // 乗った距離の運賃
     km = kmOf(km);
     var amount = F.base[0], bk = F.base[1];
@@ -3863,8 +4165,10 @@ function displayPriceCalc_(c, p) {
     if (rule.unsure && rule.per == null && rule.yen == null) return {yen:0, unknown:true};
     if (rule.per == null && rule.over == null && rule.unknownOver == null && !rule.tiers && !rule.bands && !rule.table) return {yen:rule.yen || 0, unknown:!!rule.unsure};
     if (!shop) return {yen:rule.yen || 0, unknown:true};
-    if (roadKm_(shop, at, back) == null) legGuess = true;
-    var km = kmOf(legKm_(shop, at, back)), free = rule.km || 0, yen = rule.yen || 0;
+    var road = knownRoadKm ? knownRoadKm(shop,at,back) : roadKm_(shop, at, back);
+    if (road == null && knownRoadKm) return {yen:rule.yen || 0, unknown:true}; // validation never substitutes an estimated distance
+    if (road == null) legGuess = true;
+    var km = kmOf(road != null ? road : kmBetween_(shop,at) * 1.3, rule.kmMode), free = rule.km || 0, yen = rule.yen || 0;
     if (rule.freeWithin != null && km <= rule.freeWithin) return {yen:0, unknown:!!rule.unsure}; // お店の近くはお迎え無料（返事で分かった会社）
     if (rule.unknownOver != null) return {yen:yen, unknown:km > rule.unknownOver}; // その距離を超えると別料金（金額は非公開）
     if (rule.tiers) { // 距離の段階で変わる迎車（base＝[円, 含まれるkm]、tiers は乗車と同じ形）
@@ -3892,6 +4196,15 @@ function displayPriceCalc_(c, p) {
     return {yen:Math.floor(yen), unknown:!!rule.unsure};
   }
   var nightUnknown = false;
+  // Public night amount is known for this listing, but what clock governs the affected legs is not.
+  // Estimates can flag possible overlap; never apply that time assumption as a surcharge.
+  var verifyNightClock = !verified && c.id === 'Dcb3b5a2';
+  function nightRisk_(at,before,after) {
+    var dt = parseJst_(at), n = F.night;
+    if (!dt || !n) return true;
+    var minute = dt.getTime()/60000, risk = fareNightSpanJst_(minute-before,minute+after,n.from*60,n.to*60);
+    return !risk || risk.starts || risk.overlap > 0;
+  }
   function hourOf(at) { var dt = parseJst_(at); return dt ? (dt.getUTCHours() + 9) % 24 : -1; }
   // 夜間・早朝の割増。乗っているあいだ（乗る時刻〜着く時刻）に少しでも割増の時間帯に入れば、その乗車の全部にかける。
   // 着く時刻は1kmを2.4分とみる（見積もりの返事：D-RIDE 23kmで50分、ペッタク 23kmで55分）
@@ -3911,7 +4224,7 @@ function displayPriceCalc_(c, p) {
     var inN = function(h) { return N.from > N.to ? (h >= N.from || h < N.to) : (h >= N.from && h < N.to); };
     var on = hours.some(inN);
     if (!on) return 0;
-    if (N.unknown) { nightUnknown = true; return 0; } // 割増はあるが金額が書いていない
+    if (N.unknown || verifyNightClock) { nightUnknown = true; return 0; } // 割増はあるが金額が書いていない
     // 長距離（250km超）で割合の割増の会社は、夜間・早朝に走る分だけにかける（一部が夜にかかるだけで運賃全部を割増にしない。Nori 2026-11-08）
     // by='driven'：その時間帯に走った分だけにかける（会社の答え。ふわふわ「22時〜翌8時は実走料金の3割増し」）
     if (N.rate && (km > 250 || N.by === 'driven')) return Math.floor(amount * N.rate * hours.filter(inN).length / hours.length);
@@ -3972,14 +4285,21 @@ function displayPriceCalc_(c, p) {
     var pk = [leg(F.pick, d.from, null, false, p.pickup, d.to)], bk = [leg(F.back, d.to, r1, true, p.dropoff)];
     if (round) { pk.push(leg(F.pick, d.backFrom, null, false, p.return_pickup || p.dropoff, d.backTo)); bk.push(leg(F.back, d.backTo, r2, true, p.return_dropoff || p.pickup)); }
     var nAll = F.night && F.night.onAll; // 割増を迎車・回送にもかける会社
-    var n1 = nightExtra(r1 + (nAll ? pk[0].yen + bk[0].yen : 0), p.datetime, km), n2 = round ? nightExtra(r2 + (nAll ? pk[1].yen + bk[1].yen : 0), p.return_datetime, backKm) : 0;
+    var n1 = verified ? 0 : nightExtra(r1 + (nAll ? pk[0].yen + bk[0].yen : 0), p.datetime, km);
+    var n2 = verified || !round ? 0 : nightExtra(r2 + (nAll ? pk[1].yen + bk[1].yen : 0), p.return_datetime, backKm);
+    if (verifyNightClock) {
+      // The routing input has no dispatch timestamp: use the distance-based timing only to identify uncertainty.
+      var pickupRisk = function(at) { return Math.ceil((shop && at ? legKm_(shop,at,false) : 0)*3); };
+      if (nightRisk_(p.datetime,pickupRisk(d.from),runMin(km)) ||
+          (round && nightRisk_(p.return_datetime,pickupRisk(d.backFrom),runMin(backKm)))) nightUnknown = true;
+    }
     function add(list) { return list.reduce(function(s, x) { return s + x.yen; }, 0); }
     function unk(list) { return list.some(function(x) { return x.unknown; }); }
     var pkUse = F.pickOnce ? pk.slice(0, 1) : pk; // 往復でもお迎え料金は行きの1回だけの会社（ふわふわの答え）
     var chosen = {ride:r1 + r2, pickup:add(pkUse), returnFee:add(bk), nightExtra:n1 + n2, wait:0, pickupUnknown:unk(pkUse), returnUnknown:unk(bk),
       backMissing:bk[0].missing, pickMissing:pk[0].missing, method:round ? '帰りにあらためてお迎え' : '片道'};
     // 往復で、病院などで待っていてもらうほうが安ければそちら（行き1回の迎車＋帰り1回の回送＋待ち時間）
-    if (round && (F.wait || F.kind === 'time' || F.kind === 'zone' || F.kind === 'zones' || F.roundTable) && p.return_pickup === p.dropoff && p.return_dropoff === p.pickup) {
+    if (!verified && round && (F.wait || F.kind === 'time' || F.kind === 'zone' || F.kind === 'zones' || F.roundTable) && p.return_pickup === p.dropoff && p.return_dropoff === p.pickup) {
       var gap = (parseJst_(p.return_datetime) - parseJst_(p.datetime)) / 60000 - runMin(km);
       if (gap > 0 && gap <= 180) {
         var w = {ride:r1 + r2, pickup:pk[0].yen, returnFee:bk[1].yen, nightExtra:n1 + n2, wait:F.wait ? waitFee(Math.ceil(gap)) : 0, pickupUnknown:pk[0].unknown, returnUnknown:bk[1].unknown,
@@ -3993,8 +4313,45 @@ function displayPriceCalc_(c, p) {
         if (F.kind === 'zones') w.ride = zoneHit.round;
         if (F.pickEachLeg) { w.pickup = pk[0].yen + pk[1].yen; w.pickupUnknown = pk[0].unknown || pk[1].unknown; } // 往復でもお迎え料金が2回分の会社
         if (F.kind === 'table' && F.roundTable) w.ride = tableFee(Math.max(km, backKm), F.roundTable); // 往復の料金表
-        if (sum(w) < sum(chosen)) chosen = w;
+        if (sum(w) < sum(chosen)) {
+          chosen = w;
+          if (verifyNightClock) {
+            var backAt = parseJst_(p.return_datetime);
+            if (backAt && nightRisk_(p.return_datetime,gap,0)) nightUnknown = true;
+          }
+        }
       }
+    }
+    if (verified) {
+      // This parameter is passed by server-side evidence checks only, never accepted from booking/form JSON.
+      var waitPlan = round && verified.strategy === 'wait', schedule = verified.schedule || {}, rides = schedule.ride;
+      if (!Array.isArray(rides) || rides.length !== (round ? 2 : 1) || rides.some(function(t,i) {
+        var request = parseJst_(i ? p.return_datetime : p.datetime);
+        var start = t && parseJst_(t.start), end = t && parseJst_(t.end);
+        return !request || !start || !end || start.getTime() !== request.getTime() || end <= start;
+      })) return null;
+      if (round && parseJst_(rides[0].end) > parseJst_(rides[1].start)) return null;
+      if (!Number.isFinite(verified.waitMinutes) || verified.waitMinutes < 0 || (!waitPlan && round && verified.waitMinutes !== 0)) return null;
+      var waitYen = verified.waitMinutes === 0 ? 0 : fareWaitTiered_(verified.wait,verified.waitMinutes);
+      if (waitYen == null) return null;
+      if (verified.waitMinutes > 0) {
+        var wt = verified.schedule && verified.schedule.wait;
+        if (!wt || wt.length !== 1 || !wt[0] || typeof wt[0].start !== 'string' || typeof wt[0].end !== 'string') return null;
+        var wtStart = parseJst_(wt[0].start), wtEnd = parseJst_(wt[0].end);
+        var waitLower = parseJst_(round ? rides[0].end : rides[0].start), waitUpper = parseJst_(round ? rides[1].start : rides[0].end);
+        if (!wtStart || !wtEnd || (wtEnd-wtStart)/60000 !== verified.waitMinutes || wtStart < waitLower || wtEnd > waitUpper) return null;
+      }
+      chosen.wait = waitYen;
+      if (waitPlan) {
+        chosen.pickup = pk[0].yen; chosen.pickupUnknown = pk[0].unknown;
+        chosen.returnFee = bk[1].yen; chosen.returnUnknown = bk[1].unknown;
+        chosen.method = '待っていてもらう往復';
+      }
+      var services = {ride:round ? [r1,r2] : [r1], pickup:(waitPlan ? pk.slice(0,1) : pkUse).map(function(x) { return x.yen; }),
+        return:(waitPlan ? bk.slice(-1) : bk).map(function(x) { return x.yen; }), wait:waitYen ? [waitYen] : []};
+      var surcharge = fareNightExact_(verified.night,services,verified.schedule);
+      if (surcharge == null) return null;
+      chosen.nightExtra = surcharge;
     }
     // 往復のときだけ、目的地からお迎えの場所に戻る回送代（距離×円）がかかる会社（COCOタク福岡東の返事 2026-11-10）
     if (round && F.roundBack && F.roundBack.per) chosen.returnFee += Math.floor(kmOf(km) * F.roundBack.per);
@@ -4011,7 +4368,8 @@ function displayPriceCalc_(c, p) {
     var raw = sum(chosen) + chosen.areaAdd, unit = F.round || 1; chosen.amount = Math.floor(raw / unit) * unit; chosen.rounding = chosen.amount - raw;
     return chosen;
   }
-  var local = total(d.km, d.backKm), highway = validKm(d.highKm) && validKm(d.highBackKm) ? total(d.highKm, d.highBackKm) : null;
+  var local = total(d.km, d.backKm), highway = !verified && validKm(d.highKm) && validKm(d.highBackKm) ? total(d.highKm, d.highBackKm) : null;
+  if (!local) return null;
   var notes = [];
   if (round) notes.push(local.method + 'で計算しています。');
   if (/税抜|税別/.test(F.tax) && !/税込/.test(F.tax)) notes.push('料金表は税抜のため、消費税10%を足しています。');
@@ -4021,7 +4379,7 @@ function displayPriceCalc_(c, p) {
   if (F.kind === 'zones') notes.push('区間ごとの定額（' + zoneHit.label + '）で計算しています。');
   if (local.discount) notes.push('合計の金額による割引 ' + yen_(local.discount) + 'を引いています。');
   if (F.heavy && Number(p.weight) >= F.heavy.kg) notes.push(F.heavy.kg + 'kg以上の子の基本料金で計算しています。');
-  if (nightUnknown) notes.push('この時間は割増がありますが、金額が公式サイトに書いていないため含めていません。');
+  if (nightUnknown) notes.push(verifyNightClock ? '深夜・早朝の割増のかかり方が未確認のため、この目安には含めていません。' : 'この時間は割増がありますが、金額が公式サイトに書いていないため含めていません。');
   if (F.kind === 'zone') notes.push(F.zone.city + 'の中の移動の定額で計算しています。');
   if (F.base && F.base[0] > 0 && F.base[1] === 0 && !F.perkmFromStart) notes.push('基本料金に含まれる距離の記載がないため、1km目から距離の料金を足しています。');
   if (local.pickMissing) notes.push('迎車料金は料金表に記載がないため0円で計算しています。');
@@ -4034,7 +4392,7 @@ function displayPriceCalc_(c, p) {
   var nt = local.nightExtra > 0;
   return {amount:local.amount, text:yen_(local.amount) + (local.pickupUnknown || local.returnUnknown || nightUnknown ? '〜' : ''), local:local, highway:highway,
     incompleteFees:local.pickupUnknown || local.returnUnknown || nightUnknown, taxUnknown:!F.tax,
-    night:nt ? '夜間・早朝の割増 ' + yen_(local.nightExtra) + 'を含みます' : F.night ? '指定時刻は夜間・早朝の割増対象外です' : '料金表に夜間・早朝の割増の記載はありません',
+    night:nt ? '夜間・早朝の割増 ' + yen_(local.nightExtra) + 'を含みます' : (verifyNightClock && nightUnknown) ? '深夜・早朝の割増は事業者のお見積もりでご確認ください' : F.night ? '指定時刻は夜間・早朝の割増対象外です' : '料金表に夜間・早朝の割増の記載はありません',
     pickupNote:F.pick && F.pick.per != null ? (!shop ? 'お店の場所が分からないため、迎車の距離の分は含めていません。' : legGuess ? '迎車・回送の距離は、道路データが取れなかったため、お店のある市区町村からの直線距離をもとにした概算です。' : '迎車・回送の距離は、お店のある市区町村から車の道のりで計算しています。') : '',
     planNote:('公式サイトの料金表から計算した目安です。' + notes.join('')),
     routeNote:d.routeEstimated ? '道のりを取得できなかったため、距離は直線距離からの概算です。' : d.localEstimated ? '一般道の距離は、高速区間から長めに推定しています。' : ''};
