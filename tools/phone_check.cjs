@@ -90,7 +90,7 @@ async function measure(page) {
     }
     const main = document.querySelector('main') || document.body;
     // さがす欄・結果が先か（施設の分野だけ。呼ぶ側で判断）
-    const first = [...main.querySelectorAll('select,input:not([type=hidden]),.ux-find,.hf,.hn-find,.ux-c,.emg-item,.fr,.yd-pref,.yd-pick')].filter(vis)[0];
+    const first = [...main.querySelectorAll('select,input:not([type=hidden]),.ux-find,.hf,.hn-find,.ux-c,.emg-item,.fr,.yd-pref,.yd-pick,.jc-pick')].filter(vis)[0];
     const firstTop = first ? Math.round(top(first)) : null;
     // ボタン・リンクの箱が高すぎる
     for (const box of main.querySelectorAll('div,p,ul,nav,section')) {
