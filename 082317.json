@@ -1,0 +1,42 @@
+{
+ "pref": "茨城県",
+ "name": "桜川市",
+ "code": "082317",
+ "url": "https://www.city.sakuragawa.lg.jp/index.html",
+ "mails": {
+  "hisyoka_s@city.sakuragawa.lg.jp": "https://www.city.sakuragawa.lg.jp/kurashi/digital_city/page002344.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.city.sakuragawa.lg.jp/lifeevent.php?code=6",
+   "kind": "html",
+   "lines": [
+    "印刷する",
+    "ごみ・環境・動物",
+    "ごみの収集日程について",
+    "犬・ねこ等の情報",
+    "桜川市の放射線量"
+   ]
+  },
+  {
+   "url": "https://www.city.sakuragawa.lg.jp/kurashi/seikatsu_kankyou/pet/",
+   "kind": "html",
+   "lines": [
+    "【title】ペットの管理 | 桜川市公式ホームページ",
+    "ペットの管理 | 桜川市公式ホームページ",
+    "【ID】 D-67",
+    "印刷する",
+    "ペットの管理",
+    "犬の登録と狂犬病予防注射について",
+    "飼い主のマナーについて",
+    "犬・ねこ等の情報",
+    "生活環境",
+    "「いばらき食べきりキャンペーン」参加店募集",
+    "飼い主のいない猫の不妊去勢手術を支援します",
+    "海の日から9月1日は「霞ヶ浦水質浄化強調月間」です",
+    "騒音・振動",
+    "下水道"
+   ]
+  }
+ ]
+}

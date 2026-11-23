@@ -1,0 +1,53 @@
+{
+ "pref": "静岡県",
+ "name": "御前崎市",
+ "code": "222232",
+ "url": "https://www.city.omaezaki.shizuoka.jp/",
+ "mails": {
+  "digital@city.omaezaki.shizuoka.jp": "https://www.city.omaezaki.shizuoka.jp/kurashi/important/11345.html",
+  "fukushi@city.omaezaki.shizuoka.jp": "https://www.city.omaezaki.shizuoka.jp/kurashi/important/11345.html",
+  "bousai.omaezaki-city@raiden3.ktaiwork.jp": "https://www.city.omaezaki.shizuoka.jp/soshiki/kikikanri/saigaijijohoteikyo/bosaimail.html",
+  "omaezaki-city@raiden3.ktaiwork.jp": "https://www.city.omaezaki.shizuoka.jp/soshiki/kikikanri/saigaijijohoteikyo/bosaimail.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.city.omaezaki.shizuoka.jp/material/files/group/7/bousaiguidebook.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.omaezaki.shizuoka.jp/material/files/group/7/gensiryokugaidobukku2024.pdf",
+   "kind": "pdf",
+   "lines": [
+    "バス等に乗り換えて避難先に向かう手法 \u0007誰 がするの?",
+    "を検討しています。 Q18 \u0007ペットは同行してよいの?",
+    "A 静 岡 県 が 避 難 先に受 入 可 否を確 認しま",
+    "す。 避難先で受入可能なことを確認した A 避難受け入れ先と調整中ですが、各家庭",
+    "Q6 \u0007避 難先での生活はどうなるの? で同行するようにしていただきます。 同",
+    "うえで避難指示しますので、避難途中に",
+    "A 体育館などの公共施設を避難所として開 避難先が変わることはありません。 行避難に必要な水やフード、ケージやリー",
+    "放していただきます。 避難所では、避難 ドなどの用意と周囲に迷惑を掛けないよ"
+   ]
+  },
+  {
+   "url": "https://www.city.omaezaki.shizuoka.jp/material/files/group/7/bousaimap_2024.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.omaezaki.shizuoka.jp/material/files/group/7/kouzuidosyasaigaihaza-domap.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.omaezaki.shizuoka.jp/material/files/group/7/R5bousaimaptizu.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.omaezaki.shizuoka.jp/material/files/group/7/R6bousaimapsetumei.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

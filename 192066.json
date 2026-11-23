@@ -1,0 +1,22 @@
+{
+ "pref": "山梨県",
+ "name": "大月市",
+ "code": "192066",
+ "url": "https://www.city.otsuki.yamanashi.jp/",
+ "mails": {
+  "otsuki@sg-m.jp": "https://www.city.otsuki.yamanashi.jp/anshin/bosai_saigai/bousaianzen.html",
+  "bousai-19206@city.otsuki.lg.jp": "https://www.city.otsuki.yamanashi.jp/anshin/bosai_saigai/leaderyouseikouza241028.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.city.otsuki.yamanashi.jp/anshin/files/asaribousaikai.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.otsuki.yamanashi.jp/anshin/bosai_saigai/files/gakusyumen.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "pref": "秋田県",
+ "name": "大館市",
+ "code": "052043",
+ "url": "https://www.city.odate.lg.jp/",
+ "mails": {
+  "bousai@city.odate.lg.jp": "https://www.city.odate.lg.jp/city/handbook/handbook11/page54",
+  "syobo@city.odate.lg.jp": "https://www.city.odate.lg.jp/city/handbook/handbook11/page48/page51/p437",
+  "kouryu@city.odate.lg.jp": "https://www.city.odate.lg.jp/kurashi/akiya/p10438",
+  "kentiku@city.odate.lg.jp": "https://www.city.odate.lg.jp/city/soshiki/k-kentikusidou/p11760"
+ },
+ "pages": [
+  {
+   "url": "https://www.city.odate.lg.jp/city/handbook/handbook6/page33",
+   "kind": "html",
+   "lines": [
+    "【title】ペット | 大館市公式サイト｜観光・市政・暮らし情報｜大館というところ。",
+    "ペット | 大館市公式サイト｜観光・市政・暮らし情報｜大館というところ。",
+    "ペット",
+    "読み上げる"
+   ]
+  },
+  {
+   "url": "https://www.city.odate.lg.jp/uploads/public/pages_0000000765_00/R4　大館市防災マップ.pdf",
+   "error": "'ascii' codec can't encode characters in position 42-50: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.city.odate.lg.jp/uploads/public/pages_0000000765_00/【圧縮】大館市防災マップall_300_A4.pdf",
+   "error": "'ascii' codec can't encode characters in position 40-51: ordinal not in range(128)"
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "pref": "石川県",
+ "name": "珠洲市",
+ "code": "172057",
+ "url": "https://www.city.suzu.lg.jp/",
+ "mails": {
+  "suzu@entry.mail-dpt.jp": "https://www.city.suzu.lg.jp/site/bousaisuzu/1404.html",
+  "suzu@check.mail-dpt.jp": "https://www.city.suzu.lg.jp/site/bousaisuzu/1404.html",
+  "suzu@cancel.mail-dpt.jp": "https://www.city.suzu.lg.jp/site/bousaisuzu/1404.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.city.suzu.lg.jp/uploaded/attachment/3538.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.suzu.lg.jp/uploaded/attachment/6054.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.suzu.lg.jp/uploaded/attachment/1816.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

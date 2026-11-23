@@ -1,0 +1,38 @@
+{
+ "pref": "北海道",
+ "name": "知内町",
+ "code": "013331",
+ "url": "https://www.town.shiriuchi.hokkaido.jp/",
+ "mails": {
+  "kaigo1@town.shiriuchi.hokkaido.jp": "https://www.town.shiriuchi.hokkaido.jp/kurashi/zieitaibosyuu.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.shiriuchi.hokkaido.jp/files/00004800/00004851/20220607125317.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.shiriuchi.hokkaido.jp/files/00007500/00007543/20250922154914.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.shiriuchi.hokkaido.jp/files/00007500/00007543/20250922154851.pdf",
+   "kind": "pdf",
+   "lines": [
+    "（８）公益社団法人北海道獣医師会道南支部",
+    "災害時における飼養動物の対応に関すること。",
+    "（９）一般社団法人北海道バス協会",
+    "避難者の順位は、老人、幼児、傷病者、肢体不自由児者等の災害弱者及び婦人を優先",
+    "的に避難させる。ただし、家族から隔離した状況で避難させるのではなく、家族を同伴",
+    "させて避難させる。"
+   ]
+  },
+  {
+   "url": "https://www.town.shiriuchi.hokkaido.jp/files/00007500/00007543/20240322110932.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

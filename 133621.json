@@ -1,0 +1,45 @@
+{
+ "pref": "東京都",
+ "name": "利島村",
+ "code": "133621",
+ "url": "https://www.toshimamura.org/",
+ "mails": {},
+ "pages": [
+  {
+   "url": "https://www.toshimamura.org/fs/9/3/0/7/0/_/01-1-tunami_hazardmap_gaiyou.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.toshimamura.org/fs/9/3/0/7/1/_/01-2-tunami_hazardmap_kakudai.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.toshimamura.org/fs/9/3/0/7/2/_/02-1-dosha_hazardmap_cyuui.pdf",
+   "kind": "pdf",
+   "lines": [
+    "・避難の妨げにならないように、軽くコンパクトにまとめましょう",
+    "(リードタイム)は、気象警報・注意報が防災関係機関や住民に伝わり安全確",
+    "保行動がとられるまでにかかる時間を考慮して設けていますが、予測が難し ・自分や家族の状況に応じて必要なものを選びましょう",
+    "い場合にはリードタイムが確保できない場合もありますので、十分にご注意",
+    "・自分に必要なものの優先順位を決めて準備しておきましょう"
+   ]
+  },
+  {
+   "url": "https://www.toshimamura.org/fs/9/3/0/7/3/_/02-2-dosha_hazardmap_zentai.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.toshimamura.org/fs/9/3/0/7/4/_/02-3-dosha_hazardmap_kakudai.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.toshimamura.org/fs/1/7/7/9/7/4/_/03-2-kazan_hazardmap.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

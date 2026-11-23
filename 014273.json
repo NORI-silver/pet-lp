@@ -1,0 +1,71 @@
+{
+ "pref": "北海道",
+ "name": "由仁町",
+ "code": "014273",
+ "url": "https://www.town.yuni.lg.jp/",
+ "mails": {},
+ "pages": [
+  {
+   "url": "https://www.town.yuni.lg.jp/kurashi/gomi_kankyou_pet",
+   "kind": "html",
+   "lines": [
+    "【title】ごみ・環境・ペット – 由仁町",
+    "ごみ・環境・ペット – 由仁町",
+    "くらし・手続き",
+    "ごみ・環境・ペット",
+    "ごみの分け方・処分方法について",
+    "ペットの飼い主へ",
+    "PCB処分",
+    "教育",
+    "結婚・離婚",
+    "各様式ダウンロード",
+    "-->"
+   ]
+  },
+  {
+   "url": "https://www.town.yuni.lg.jp/wp-content/uploads/2026/04/由仁町地域防災計画.pdf",
+   "error": "'ascii' codec can't encode characters in position 32-40: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.town.yuni.lg.jp/wp-content/uploads/2024/11/情報面（a修正版）-1.pdf",
+   "error": "'ascii' codec can't encode characters in position 32-35: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.town.yuni.lg.jp/wp-content/uploads/2022/04/haza-dochizu030226.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.yuni.lg.jp/wp-content/uploads/2022/04/tameike_hazardmap_zentai.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.yuni.lg.jp/kurashi/gomi_kankyou_pet/pet",
+   "kind": "html",
+   "lines": [
+    "【title】ペットの飼い主へ – 由仁町",
+    "ペットの飼い主へ – 由仁町",
+    "くらし・手続き",
+    "ペットの飼い主へ",
+    "犬の登録と狂犬病予防",
+    "犬の登録と狂犬病予防注射は法律（狂犬病予防法）で義務付けられています。",
+    "犬を飼い始めた方は、30日以内に登録しなければなりません。",
+    "生後91日以上の飼い犬には、年１回の狂犬病予防注射を受けさせなければなりません。",
+    "住所（転出・転入）や所有者の変更、犬の死亡など、犬の登録事項に変更があった場合は届出が必要です。",
+    "飼い主のマナー",
+    "犬の散歩をするときは、人に迷惑がかからないよう引き綱や鎖につないで散歩しください。",
+    "また、ビニール袋などを持参し、ふんの後始末を必ず行ってください。",
+    "犬を散歩させるときは袋を持ち、道ばたにふんを残さず必ず持ち帰りましょう。",
+    "ふんの放置行為は条例で禁止しており、2万円以下の金銭罰を執行することがあります。",
+    "ペット（犬・猫など）が死んだら",
+    "ペットが死んだ場合、伏古斎苑で火葬できます。",
+    "あらかじめ、伏古斎苑（☎0123-88-1390）に連絡し、日程・時間を調整してください。",
+    "ごみ・環境・ペット",
+    "ごみの分け方・処分方法について",
+    "PCB処分",
+    "-->"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "pref": "秋田県",
+ "name": "大仙市",
+ "code": "052124",
+ "url": "https://www.city.daisen.lg.jp/",
+ "mails": {
+  "bousai@city.daisen.akita.jp": "https://www.city.daisen.lg.jp/archive/contents-10959",
+  "kouryu@city.daisen.lg.jp": "https://www.city.daisen.lg.jp/archive/contents-12104",
+  "bousai@city.daisen.lg.jp": "https://www.city.daisen.lg.jp/archive/contents-12140"
+ },
+ "pages": [
+  {
+   "url": "https://www.city.daisen.lg.jp/uploads/public/archive_0000001382_00/shisetuitiranR1.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.daisen.lg.jp/uploads/public/archive_0000001374_00/coronahinan2.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.daisen.lg.jp/uploads/public/archive_0000001354_01/地区防災マップ作成の手引き【自主防用】（8.4.21）.pdf",
+   "error": "'ascii' codec can't encode characters in position 42-61: ordinal not in range(128)"
+  }
+ ]
+}

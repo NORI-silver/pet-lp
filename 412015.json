@@ -1,0 +1,40 @@
+{
+ "pref": "佐賀県",
+ "name": "佐賀市",
+ "code": "412015",
+ "url": "https://www.city.saga.lg.jp/",
+ "mails": {
+  "hinankakuhokeikaku@city.saga.lg.jp": "https://www.city.saga.lg.jp/bosai-anzen/bosai/2/3567.html",
+  "bousai.saga-city@raiden3.ktaiwork.jp": "https://www.city.saga.lg.jp/bosai-anzen/bosai/4/1/1105.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.city.saga.lg.jp/material/files/group/33/R8_naisuiHM_A1_zyouhoumen_2.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.saga.lg.jp/material/files/group/33/R8_naisuiHM_A1_tizumen_1_ver2.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.city.saga.lg.jp/material/files/group/33/R8_naisuiHM_A1_tizumen_2_ver2.pdf",
+   "kind": "pdf",
+   "lines": [
+    "スポーツパーク川副武道館 南川副公民館",
+    "犬井道交番",
+    "川副支所（佐賀市役所）"
+   ]
+  },
+  {
+   "url": "https://www.city.saga.lg.jp/material/files/group/33/R8_naisuiHM_A1_tizumen_3_ver2.pdf",
+   "kind": "pdf",
+   "lines": [
+    "２次避難所：小中学校等 スポーツパーク川副体育センター 川副町鹿江700 3次",
+    "犬井道交番",
+    "川副支所（佐賀市役所）"
+   ]
+  }
+ ]
+}
