@@ -11954,6 +11954,253 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "PHnk146",
+   "name": "ペットサロン・リボン",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "http://pet-ribbon.com/",
+   "services": "トリミング・ペットホテル（犬・猫）・一時預かり",
+   "cat": true,
+   "pickup": true,
+   "area": "水戸市内（送迎）",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜19:00",
+     "src": "http://pet-ribbon.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "水戸市内は無料で送迎",
+     "src": "http://pet-ribbon.com/about/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "カメラで24時間見守り、スタッフが住みこみ",
+     "src": "http://pet-ribbon.com/hotel/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk147",
+   "name": "ペットサロン 恋するしっぽ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "龍ケ崎市",
+   "url": "https://koishippo0613.jimdofree.com/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/",
+   "services": "トリミング・ペットホテル（犬・猫）",
+   "cat": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "お店の横にあり",
+     "src": "https://koishippo0613.jimdofree.com/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン・狂犬病ワクチンの証明書",
+     "src": "https://koishippo0613.jimdofree.com/%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC/%E3%83%9B%E3%83%86%E3%83%AB/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk148",
+   "name": "ドッグサロン&ホテル NOSCA",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "龍ケ崎市",
+   "url": "https://www.nosca.jp/trimming",
+   "services": "トリミング・ペットホテル・しつけ教室",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00（預け・お迎えも営業時間内）",
+     "src": "https://www.nosca.jp/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週火曜日・1月1日〜5日",
+     "src": "https://www.nosca.jp/info",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病・混合ワクチンの証明書と、飼い主さんの身分証明書",
+     "src": "https://www.nosca.jp/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "闘犬・超大型犬など、お店で受けるのがむずかしい犬は受けない",
+     "src": "https://www.nosca.jp/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk149",
+   "name": "MAINE BROS（キャットホテル）",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "http://mainebros.server-shared.com/custom3.html",
+   "services": "猫だけのキャットホテル",
+   "cat": true,
+   "cat_only": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日3,300円（税込）。1泊2日は6,600円",
+     "src": "http://mainebros.server-shared.com/custom3.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00（受付は18:30まで）。20時より後のお迎えは30分ごとに500円",
+     "src": "http://mainebros.server-shared.com/custom3.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "前払い・現金",
+     "src": "http://mainebros.server-shared.com/custom3.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内のワクチン証明書",
+     "src": "http://mainebros.server-shared.com/custom3.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk150",
+   "name": "子犬のワルツ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "龍ケ崎市",
+   "url": "http://www.toipu-koi.com/",
+   "services": "トイプードルのブリーダー・トリミング・ペットホテル",
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日 小型犬（6kgまで）3,000円・中型犬（10kgまで）3,500円・大型犬（20kgまで）4,500円・大型犬（30kgまで）5,500円",
+     "src": "http://www.toipu-koi.com/company/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "http://www.toipu-koi.com/company/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "正月のほかは年中無休",
+     "src": "http://www.toipu-koi.com/company/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk151",
+   "name": "Dog Salon Mahalo",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "常陸太田市",
+   "url": "https://dogsalonmahalo.amebaownd.com/pages/356380/menu",
+   "services": "トリミング・ペットホテル（ご利用のことがある犬だけ）",
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 シングルルーム（5kgまで）3,500円・ラージルーム（10kgまで）4,500円・ビッグルーム（35kgまで）5,500円",
+     "src": "https://dogsalonmahalo.amebaownd.com/pages/361676/page_201603081415",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "日中はケージに入れずフリーで預かる。ほかの犬に攻撃的な子はケージ",
+     "src": "https://dogsalonmahalo.amebaownd.com/pages/361676/page_201603081415",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病ワクチンの証明書",
+     "src": "https://dogsalonmahalo.amebaownd.com/pages/361676/page_201603081415",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk152",
+   "name": "犬と猫の美容室 あしあと",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "潮来市",
+   "url": "https://www.petsalon-ashiato.com/",
+   "services": "トリミング・ペットホテル（犬・猫、猫の部屋は別）",
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "預け・引き取りは9:00〜19:00",
+     "src": "https://www.petsalon-ashiato.com/%E3%83%9A%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB/%E6%96%99%E9%87%91%E8%A1%A8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週月曜日・毎月第2日曜日",
+     "src": "https://www.petsalon-ashiato.com/%E3%83%9A%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB/%E6%96%99%E9%87%91%E8%A1%A8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチンと狂犬病ワクチンの証明書（年に一度）",
+     "src": "https://www.petsalon-ashiato.com/%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0/%E6%96%99%E9%87%91%E8%A1%A8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }

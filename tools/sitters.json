@@ -10312,6 +10312,79 @@
    "area": "前橋市の周り",
    "facts": [],
    "chain": "indie"
+  },
+  {
+   "id": "Snk038",
+   "name": "AnimaRooM",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "常総市",
+   "url": "https://www.animaroom.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC/",
+   "services": "訪問ペットシッター（犬・猫・小動物、シニア・介護も）",
+   "cat": true,
+   "small": true,
+   "senior": true,
+   "area": "常総市の近く（守谷市・つくば市も）",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "常総市の近く（守谷市・つくば市も）",
+     "src": "https://www.animaroom.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "ショート40分3,800円（猫・小動物・散歩のいらない犬）、通常60分4,300円、散歩代行40分3,800円（税込）。種類・頭数・大きさで料金は変わらない",
+     "src": "https://www.animaroom.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "15km圏内は無料、その先は1km往復ごとに100円",
+     "src": "https://www.animaroom.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "はじめての訪問・打ち合わせは無料。登録料1,000円",
+     "src": "https://www.animaroom.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk039",
+   "name": "愛玩動物飼養サービスSupport",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://animal-support-mito.amebaownd.com/pages/4553055/STATIC",
+   "services": "ペットシッター・お預かり・しつけ",
+   "area": "水戸市を中心とした茨城県内",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "水戸市を中心とした茨城県内",
+     "src": "https://animal-support-mito.amebaownd.com/pages/4553055/STATIC",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病予防注射・混合ワクチンの証明書",
+     "src": "https://animal-support-mito.amebaownd.com/pages/4558582/STATIC",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
   }
  ]
 }

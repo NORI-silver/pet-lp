@@ -8855,6 +8855,108 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "Tnk027",
+   "name": "ドッグスクール L&J",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "http://www.dogschool-landj.com/",
+   "services": "家庭犬のしつけ・高等訓練（茨城県南を中心に）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "家庭犬のしつけ 10回セット50,000円（1回1時間まで）、週2回・月8回40,000円、高等訓練 1回6,000円",
+     "src": "http://www.dogschool-landj.com/training.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "つくば市外でのレッスンは交通費1,000円",
+     "src": "http://www.dogschool-landj.com/training.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk028",
+   "name": "ドッグ・スクール You & Dog",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "那珂郡東海村",
+   "url": "http://dogschoolyouanddog.blog.fc2.com/",
+   "services": "出張・ドッグランでの犬のしつけレッスン、日帰りの預かりトレーニング",
+   "pickup": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "初回（カウンセリングつき）1.5時間5,500円、2回目から1時間4,000円。ほかに出張の交通費かドッグランの使用料",
+     "src": "http://dogschoolyouanddog.blog.fc2.com/blog-category-3.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "預かりトレーニングは8:00〜19:00（土日・祝日をのぞく）",
+     "src": "http://dogschoolyouanddog.blog.fc2.com/blog-category-3.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk029",
+   "name": "DOGGY FRIENDS",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくばみらい市",
+   "url": "https://doggy-friends.com/profile",
+   "services": "家庭犬のしつけ方教室",
+   "facts": []
+  },
+  {
+   "id": "Tnk030",
+   "name": "株式会社ドッグトレーニングロード",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくばみらい市",
+   "url": "https://wanwanstudio.com/company/",
+   "services": "犬のしつけ教室",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付 9:00〜17:00",
+     "src": "https://wanwanstudio.com/company/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk031",
+   "name": "栃木ドッグトレーニングセンター",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "塩谷郡塩谷町",
+   "url": "https://four-clover-n.jimdofree.com/%E6%A0%83%E6%9C%A8%E3%83%89%E3%83%83%E3%82%B0%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC/",
+   "services": "家庭犬の基本訓練・高等訓練（預かり・出張）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "預かり訓練 1か月60,000円から、出張 1回5,000円",
+     "src": "https://four-clover-n.jimdofree.com/%E6%A0%83%E6%9C%A8%E3%83%89%E3%83%83%E3%82%B0%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }
