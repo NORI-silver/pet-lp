@@ -17816,6 +17816,78 @@
    "src": "https://www.wiz-dog.com/",
    "facts": [],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "TW068",
+   "name": "Dog Service Bow!Wow!365",
+   "prefs": [
+    "熊本県"
+   ],
+   "city": "熊本市中央区",
+   "url": "https://bowwow365.school/",
+   "services": "しつけ・訓練",
+   "addr": "熊本県熊本市中央区本荘5丁目",
+   "src": "https://bowwow365.school/",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW069",
+   "name": "Dog Salon Le・Lien",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "京都郡みやこ町",
+   "url": "https://lelien111.com/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県京都郡みやこ町勝山黒田615-3",
+   "src": "https://lelien111.com/",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "会員様ではない場合、PARK利用 1回 1,500円",
+     "src": "https://lelien111.com/trimming.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "TW070",
+   "name": "ペットサロン COCONA",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "豊前市",
+   "url": "https://dogsalon-cocona.com/",
+   "services": "しつけ・訓練",
+   "addr": "福岡県豊前市吉木396-8",
+   "src": "https://dogsalon-cocona.com/",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00~17:00",
+     "src": "https://dogsalon-cocona.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "年中無休",
+     "src": "https://dogsalon-cocona.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "店舗前に共同駐車場8台",
+     "src": "https://dogsalon-cocona.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }
