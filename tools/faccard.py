@@ -365,7 +365,7 @@ def build_card(card, conf, fit_by_name):
     # チップ：印（data-flags）・タグ（data-tags）・提供内容の短い言葉
     flags = (re.search(r'data-flags="([^"]*)"', opentag) or [None, ""])[1].split()
     tags = [html.unescape(x) for x in (re.search(r'data-tags="([^"]*)"', opentag) or [None, ""])[1].split("|") if x]
-    ch = [FLAG_CHIP[f] for f in flags if f in FLAG_CHIP and f != "cat"] + [t for t in tags + chips if not re.fullmatch(r"(犬|猫|犬・猫)(OK|可|も)?", t)]  # 犬OK・猫OK はだれでも分かるので出さない
+    ch = [FLAG_CHIP[f] for f in flags if f in FLAG_CHIP and f != "cat"] + [t for t in tags + chips if not re.fullmatch(r"(犬|猫|犬・猫)(OK|可|も)?", t) and not re.fullmatch(r"p\d+", t)]  # 犬OK・猫OK はだれでも分かるので出さない。p◯◯ は費用の帯のしぼりこみ専用の印（facility_cards.sougi_tags）で、チップには出さない
     ch += [s for s in svc_items if len(s) <= 12]
     if trust:  # 緑のチェックに出したことは札にくり返さない（「夜もスタッフ」など）
         _tl = [x.strip() for x in re.split(r"[、,]", trust[0])]
