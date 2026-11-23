@@ -13,6 +13,15 @@ SUB = re.compile(r'price|fee|ryokin|料金|menu|メニュー|access|アクセス
 
 
 def get(url):
+    # 日本語のURL（tvma.or.jp/clinic/◯◯/ など）・日本語ドメインも開けるようにする
+    u = urllib.parse.urlsplit(url)
+    try:
+        host = u.hostname.encode('idna').decode() if u.hostname else ''
+    except Exception:
+        host = u.hostname or ''
+    netloc = host + (f':{u.port}' if u.port else '')
+    url = urllib.parse.urlunsplit((u.scheme, netloc, urllib.parse.quote(u.path, safe='/%:@!$&\'()*+,;=~-._'),
+                                   urllib.parse.quote(u.query, safe='=&%+/:;,~-._'), ''))
     req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept-Language': 'ja'})
     with urllib.request.urlopen(req, timeout=25) as r:
         raw = r.read(1_500_000)
