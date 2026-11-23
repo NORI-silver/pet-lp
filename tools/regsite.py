@@ -27,27 +27,29 @@ def yahoo(q):
             if 'yahoo.co.jp' not in u: res.append([_strip(m.group(2)), u])
     return res[:10]
 
-FAILS = [0]
+STOP = [False]
+T0 = time.time()
+BUDGET = int(os.environ.get('REG_BUDGET_SEC', 1500))
 
 def search(it):
+    """1つのIPで約40回を超えると 429 になるので、1つのシャードは少ない件数にし、429 が2回続いたらそのシャードは止める（残りは not_searched で次に回す）。"""
     r = dict(it)
     q = f"{it['name']} {it['city']}"
     r['q'] = q
-    if FAILS[0] >= 12:
-        r['search_error'] = 'skipped (検索が続けて取れない)'; return r
-    for i in range(5):
+    if STOP[0] or time.time() - T0 > BUDGET:
+        r['results'] = []; r['search_error'] = 'not_searched'; return r
+    for i in range(2):
         try:
             res = yahoo(q)
             r['results'] = res; r.pop('search_error', None)
-            FAILS[0] = 0
             if not res: r['search_error'] = 'empty'
             break
         except Exception as e:
-            r['results'] = []; r['search_error'] = str(e)[:100]
-            time.sleep(60 * (i + 1))  # 429 などは待ってからやり直す
+            r['results'] = []; r['search_error'] = 'not_searched:' + str(e)[:80]
+            if i == 0: time.sleep(30)
     else:
-        FAILS[0] += 1
-    time.sleep(4)
+        STOP[0] = True
+    time.sleep(3 + random.random() * 2)
     return r
 
 def snaps(r):
