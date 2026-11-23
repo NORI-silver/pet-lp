@@ -58,11 +58,8 @@ def links_of(h, base, n=4):
     host = urllib.parse.urlparse(base).netloc
     out = []
     for href, label in re.findall(r'(?is)<a[^>]+href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', h):
-        try:
-            u = urllib.parse.urljoin(base, href)
-            p = urllib.parse.urlparse(u)
-        except ValueError:  # 全角の＃など、URLにならないリンクは飛ばす
-            continue
+        u = urllib.parse.urljoin(base, href)
+        p = urllib.parse.urlparse(u)
         if p.netloc != host or re.search(r'\.(jpg|png|pdf|gif|zip)$', p.path, re.I):
             continue
         lab = re.sub(r'<[^>]+>', '', label)
@@ -235,13 +232,6 @@ def snap(item):
     return r
 
 
-def snap_safe(item):
-    try:
-        return snap(item)
-    except Exception as e:  # 1件の失敗で全体を止めない
-        r = dict(item); r['error'] = str(e)[:200]; return r
-
-
 def main():
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     out = sys.argv[1] if len(sys.argv) > 1 else 'out'
@@ -252,7 +242,7 @@ def main():
             continue
         items = json.load(open(os.path.join(qdir, fn)))
         with cf.ThreadPoolExecutor(12) as ex:
-            res = list(ex.map(snap_safe, items))
+            res = list(ex.map(snap, items))
         json.dump(res, open(os.path.join(out, fn.replace('queue', 'snap')), 'w'), ensure_ascii=False, indent=1)
         print(fn, len(res), 'errors', sum(1 for x in res if x.get('error')), 'empty', sum(1 for x in res if x.get('empty')))
 
