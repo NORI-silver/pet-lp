@@ -6,7 +6,7 @@
 import json, os
 
 _J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "joto.json"), encoding="utf-8"))
-_C = _J["centers"]
+_C = [c for c in _J["centers"] if c.get("scope") != "保健所"]
 N_PREF = len({c["pref"] for c in _C if not c.get("city")})
 N_CITY = sum(1 for c in _C if c.get("kind") == "政令指定都市")
 N_CORE = sum(1 for c in _C if c.get("kind") == "中核市")
