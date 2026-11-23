@@ -74,6 +74,7 @@ def fact_table_html(e, cat, pf, rs):
     if not cols: return ""
     hs = [it for it in rs if any(_fv(it, k) for _, ks in cols for k in ks)]  # 表の列にない事実（うちの子に合うかの文など）だけの施設は並べない
     if not hs: return ""
+    if len(hs) > 60: return ""  # 施設が多い県は、カードと同じ中身の表でページが重くなるだけ（info-light の上限。中身は各カードにある）
     import visual as _V
     def cell(it, ks):
         vs = [f["v"] for f in (_fv(it, k) for k in ks) if f]
@@ -172,10 +173,10 @@ def render_pref(ctx, cat, pf, rows):
         {"@type": "ListItem", "position": 2, "name": cat["h1"], "item": f'{SITE}/{cat["slug"]}/'},
         {"@type": "ListItem", "position": 3, "name": f"{pf}の{name}", "item": url}]},
       {"@context": "https://schema.org", "@type": "ItemList", "name": f"{pf}の{name}", "numberOfItems": n,
-       "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it["name"], "url": it["url"]} for i, it in enumerate(rs)]},
+       "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it["name"], "url": it["url"]} for i, it in enumerate(rs[:100])]},  # 施設が多い県は先頭の100件まで（info-light のインラインの上限）
       {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
-      ensure_ascii=False, indent=1) + "\n</script>"
+      ensure_ascii=False, indent=1 if n <= 60 else None) + "\n</script>"
     cards = "".join(cat["card"](e, it) for it in rs)
     import faccard as _FC
     if cat.get("bf_keys") and n >= 3 and cat["slug"] not in _FC.DIRS:  # 施設カードの分野は「うちの子に合うところをさがす」（tools/faccard.py）にまとめた  # うちの子（体重・猫）でしぼる。公式サイトに書いてある受け入れの決まりだけで分け、書いていない店・施設はいつも出す

@@ -3545,6 +3545,165 @@
      "checked": "2026-11-22"
     }
    ]
+  },
+  {
+   "id": "G-ST1649",
+   "name": "ソプラ銀座株式会社",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川越市",
+   "url": "https://www.sopraginza.com/shop/kawagoe/",
+   "services": "出張トリミング",
+   "in_home": true,
+   "large": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張トリミングサービスについて：出張費=12,000円",
+     "src": "https://www.sopraginza.com/shop/kawagoe/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:10:00〜19:00 定休日:年中無休",
+     "src": "https://www.sopraginza.com/shop/kawagoe/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "受付時間:10:00〜19:00 定休日:年中無休",
+     "src": "https://www.sopraginza.com/shop/kawagoe/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "国道15号川越日高線沿いにあり、川越整形外科内科医院の隣に立地。店舗前に駐車スペースをご用意。",
+     "src": "https://www.sopraginza.com/shop/kawagoe/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回の方はワクチン証明書が必要となりますのでご持参ください。",
+     "src": "https://www.sopraginza.com/service/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード",
+     "src": "https://www.sopraginza.com/shop/kawagoe/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎サービスをご利用の方は地域・距離によって価格が変動する場合や対応できかねない",
+     "src": "https://www.sopraginza.com/service/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "G-ST0150",
+   "name": "おうちペットケア",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "新座市",
+   "url": "https://ouchi-petcare.com/",
+   "services": "出張トリミング",
+   "in_home": true,
+   "area": "+ 現在の対応エリアは埼玉県の新座・朝霞・志木・所沢を中心としています。それ以外のエリアもご相談ください。",
+   "senior": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "・駐車スペースがない場合は、近隣コインパーキング代の実費をご負担いただきます",
+     "src": "https://ouchi-petcare.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "+ 現在の対応エリアは埼玉県の新座・朝霞・志木・所沢を中心としています。それ以外のエリアもご相談ください。",
+     "src": "https://ouchi-petcare.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "G-ST0269",
+   "name": "BeBe",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "伊奈町",
+   "url": "https://www.trimmingcarbebe.com/",
+   "services": "出張トリミング",
+   "in_home": false,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "✳️営業時間9:30〜17:00",
+     "src": "https://www.trimmingcarbebe.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "✳️定休日*日曜・祝日(他不定休)",
+     "src": "https://www.trimmingcarbebe.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "G-ST0134",
+   "name": "トリミングカー めろん",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "ふじみ野市",
+   "url": "https://trimmingcar-melon.crayonsite.com/",
+   "services": "出張トリミング",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "・出張時、自宅に停車スペースがない場合は、コインパーキングも可能になりますが、駐車料金はお客様ご負担になります。",
+     "src": "https://trimmingcar-melon.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・混合ワクチンと狂犬病予防接種の接種証明書を確認させて頂きます。",
+     "src": "https://trimmingcar-melon.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみ",
+     "src": "https://trimmingcar-melon.crayonsite.com/p/3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }
