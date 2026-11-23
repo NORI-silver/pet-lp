@@ -3670,6 +3670,48 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "Gk131312",
+   "name": "ペットシッター Cotty",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "八尾市",
+   "url": "https://nmfbric.wixsite.com/cotty",
+   "area": "八尾市",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチンの接種をお願いします。",
+     "src": "https://nmfbric.wixsite.com/cotty/blank-2",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Gk1e6523",
+   "name": "K&Mモアナ",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "津市",
+   "url": "https://fssev.crayonsite.com/",
+   "area": "津市",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "※時間は、基本はトリミングと同じ10時~17時の営業時間内ですが、時間外や1日2回の場合は何日目かに関係なく4,000円になります。",
+     "src": "https://fssev.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }
