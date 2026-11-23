@@ -196,28 +196,18 @@ def shrink(raw, no_people=False, loose=False):
     """(縮めた webp, 人の印) を返す。使わないときは理由の文字列を返す。
     人の顔・体の見分け（opencv）は犬や猫の顔でも反応し、後ろ姿は見のがすので、ここでは外さずに印（"face"／"person"）を付ける。
     印のある写真は photo_import.py が入れない（人が一覧を見て、写っていないと確かめたものだけ --keep で入れる）。"""
-    from PIL import Image, ImageStat
-    im = Image.open(io.BytesIO(raw)); im.load()
+    from PIL import Image, ImageOps, ImageStat
+    im = ImageOps.exif_transpose(Image.open(io.BytesIO(raw))); im.load()
     if im.width < 480 or im.height < 300: return f"小さい {im.width}x{im.height}"
     r = im.width / im.height
     if not (1.0 <= r <= 2.4):
-        # 許可のある会社（loose）は、横長・縦長の写真も枠（3:2）に切れる大きさなら使う
+        # 許可のある会社（loose）は、横長・縦長の写真も表示に十分な大きさなら使う
         if not loose or im.width < W or im.height < H or not (0.6 <= r <= 4.0): return f"縦長・細長 {im.width}x{im.height}"
     im = im.convert('RGB')
     if max(ImageStat.Stat(im.resize((32, 32))).stddev) < 18: return "一色に近い"  # 背景・飾り
     flag = ("person" if has_person(im) else "") if no_people else ("face" if has_face(im) else "")
-    s = max(W / im.width, H / im.height)
-    im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
-    # カードの枠（横3：縦2）にきれいに収まるように切る。まん中ではなく、写っているもの（輪郭の多いところ）が入る位置を選ぶ
-    from PIL import ImageFilter
-    e = im.convert("L").filter(ImageFilter.FIND_EDGES)
-    best, x, y = -1, 0, 0
-    for k in range(9):
-        cx, cy = (im.width - W) * k // 8, (im.height - H) * k // 8
-        v = sum(e.crop((cx, cy, cx + W, cy + H)).resize((26, 17)).getdata())
-        v *= 1.0 - abs(k - 4) * 0.04  # まん中を少しだけ優先
-        if v > best: best, x, y = v, cx, cy
-    im = im.crop((x, y, x + W, y + H))
+    # 公式写真は車体や施設を切らず、元画像と同じ縦横比で縮める。
+    im.thumbnail((720, 540), Image.Resampling.LANCZOS)
     b = io.BytesIO(); im.save(b, 'WEBP', quality=62, method=6)
     return b.getvalue(), flag
 
@@ -278,9 +268,9 @@ def sheets(out, rows):
         sh = Image.new("RGB", (4 * 260, ((len(part) + 3) // 4) * 200), "white")
         dr = ImageDraw.Draw(sh)
         for i, (r, p) in enumerate(part):
-            im = Image.open(os.path.join(out, p["file"])).resize((260, 173))
+            im = Image.open(os.path.join(out, p["file"])); im.thumbnail((260, 173))
             x, y = (i % 4) * 260, (i // 4) * 200
-            sh.paste(im, (x, y)); dr.text((x + 4, y + 176), f'{k + i} {r["cat"]}:{r["id"]}', fill="black")
+            sh.paste(im, (x + (260-im.width)//2, y)); dr.text((x + 4, y + 176), f'{k + i} {r["cat"]}:{r["id"]}', fill="black")
         sh.save(os.path.join(out, f"sheet_{k // 24 + 1}.jpg"), quality=80)
 
 
