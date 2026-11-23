@@ -10730,6 +10730,25 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "S-HT065",
+   "name": "あにまるロック診療所",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://animal-rock.com/",
+   "area": "仙台市",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日  不定休",
+     "src": "https://animal-rock.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }

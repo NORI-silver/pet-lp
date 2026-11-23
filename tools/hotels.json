@@ -16030,6 +16030,60 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "PH-HT324",
+   "name": "Pet Station Lavie",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://www.petstationlavie.com/",
+   "city": "仙台市",
+   "services": "ペットホテル、トリミング、一時預かり",
+   "addr": "宮城県仙台市青葉区本町一丁目15-8ミヨタビル1F",
+   "large": true,
+   "large_basis": "文",
+   "cat": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "●受付：10:00～ ●お迎え：～18:30",
+     "src": "https://www.petstationlavie.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PH-HT325",
+   "name": "ほまれだ動物病院",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.homareda-ah.com/",
+   "city": "苫小牧市",
+   "services": "ペットホテル、動物病院",
+   "addr": "北海道苫小牧市拓勇西町4丁目2-4",
+   "cat": true,
+   "vet": true,
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 : 9:00〜11:45 / 15:00〜18:00",
+     "src": "https://www.homareda-ah.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "メイン駐車場に7台、医院の裏に3台の合計10台分完備",
+     "src": "https://www.homareda-ah.com/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }
