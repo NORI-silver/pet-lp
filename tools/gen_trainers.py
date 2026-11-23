@@ -191,7 +191,7 @@ CAT = dict(slug=SLUG, name="ドッグトレーナー・しつけ教室", unit="�
   links=[("ドッグトレーナーのえらび方", "/guide/choose-dog-trainer/"), ("子犬のしつけはいつから？", "/guide/puppy-class/"), ("問題行動の相談先", "/guide/dog-behavior-help/"), ("全国のドッグラン", "/dogrun/")])
 
 # 2026-11-22：件数は足りても中身が薄い県（新しい薄いページは作らない。全国のページと近くの県には載る）。中身を足したら外す
-CAT["no_page"] = ("秋田県", "福井県", "高知県", "熊本県", "佐賀県", "山形県", "山梨県")
+CAT["no_page"] = ("秋田県", "福井県", "高知県", "熊本県", "佐賀県", "山形県", "山梨県", "富山県")
 CAT["table"] = [("出張", lambda t: "○" if _has(t, "出張", "訪問", "お家", "ご自宅") else ""), ("教室", lambda t: "○" if _has(t, "教室", "グループ", "クラス") else ""), ("幼稚園", lambda t: "○" if _has(t, "幼稚園", "保育園") else ""), ("預かり", lambda t: "○" if _has(t, "預かり") else ""), ("オンライン", lambda t: "○" if _has(t, "オンライン") else ""), ("市区町村", lambda t: t.get("city", ""))]
 CAT["fac_chips"] = lambda e, pf: FC.chips(e, FC.TRAINER_CHIPS, pf)
 CAT["extra_after"] = _free_class

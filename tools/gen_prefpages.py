@@ -193,7 +193,7 @@ def render_pref(ctx, cat, pf, rows, city=None):
     n = len(rs)
     url = SITE + (chref(cat, pf, city) if city else href(cat, pf))
     place = city or pf
-    name, unit = cat["name"], cat["unit"]
+    name, unit = (cat["name_fn"](pf) if cat.get("name_fn") else cat["name"]), cat["unit"]
     facts = [f for f in cat["facts"](rs) if f and not re.search(r"：\d+／\d+$", f)]  # 「猫も受ける施設：3／5」のような運営側の集計は出さない（2026-11-16 スマホ点検）
     lab, rprefs = _region_of(pf, ctx["emg_regions"])
     near = [p for p in rprefs if p != pf and p in rows]

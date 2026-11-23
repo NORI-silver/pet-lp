@@ -29,5 +29,6 @@ jobs:
           git rm -rq --cached . && git clean -fdq
           cp -r /tmp/out/. .
           git add -A
+          if git diff --cached --quiet; then echo "読むページがありません（queue が空）"; exit 0; fi
           git commit -qm "公式サイトの抜き出し ${GITHUB_SHA::7}"
           git push -q -f origin crawl-out
