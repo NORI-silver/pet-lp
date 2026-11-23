@@ -7,6 +7,7 @@
 入れるもの:
   tools/  draft_check.py reply_check.py proposal_check.py feedback_check.py report_check.cjs（同じ名前の別物があれば止める）
   docs/ai/framework/  README・lessons・toi-questions・proposal-template・org-chart・daily-report
+  docs/ai/vision.md（Nori さんのビジョンと共通方針。いつも最新に）
   docs/ai/feedback.json・docs/ai/operating.md（なければ）、ai-kit.json（なければ）
   AGENTS.md の AI-KIT の節（<!-- AI-KIT:START --> 〜 END を入れかえ。なければ先頭の見出しの後ろに足す）
   CLAUDE.md・GEMINI.md（なければ「@AGENTS.md」だけ）、.github/workflows/ai-kit.yml
@@ -59,6 +60,7 @@ def main():
     for src, dst in (("templates/feedback.json", "docs/ai/feedback.json"), ("templates/operating.md", "docs/ai/operating.md")):
         if write(os.path.join(root, dst), fill(open(os.path.join(KIT, src), encoding="utf-8").read(), cfg), keep=True): changed.append(dst)
     if write(cfgp, json.dumps(cfg, ensure_ascii=False, indent=1) + "\n", keep=True): changed.append("ai-kit.json")
+    if write(os.path.join(root, "docs/ai/vision.md"), open(os.path.join(KIT, "templates/vision.md"), encoding="utf-8").read()): changed.append("docs/ai/vision.md")
     if write(os.path.join(root, ".github/workflows/ai-kit.yml"), open(os.path.join(KIT, "templates/ai-kit.yml"), encoding="utf-8").read()): changed.append(".github/workflows/ai-kit.yml")
     block = fill(open(os.path.join(KIT, "AGENTS.kit.md"), encoding="utf-8").read(), cfg).strip() + "\n"
     ap = os.path.join(root, "AGENTS.md")

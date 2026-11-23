@@ -4568,39 +4568,176 @@
    "review_name": "愛犬ホーム わんわんパーク"
   },
   {
-   "id": "Rc8b985c",
-   "name": "メゾンドファミーユ",
+   "id": "Rt5bd4f3d",
+   "name": "エヌワンエイト",
    "prefs": [
-    "愛知県"
+    "神奈川県"
    ],
-   "city": "名古屋市千種区",
-   "url": "https://www.maison-de-famille.org/",
-   "addr": "愛知県名古屋市千種区",
-   "animals": "犬",
+   "city": "平塚市",
+   "url": "http://www.nwan8-info.com/",
+   "services": "ペットホテル、ペットシッター、老犬ホーム",
    "facts": [
     {
      "k": "営業・受付時間",
-     "v": "受付時間 / 10:00~12:00 14:00~17:00",
-     "src": "https://www.maison-de-famille.org/",
+     "v": "営業時間10時～18時",
+     "src": "http://www.nwan8-info.com/",
      "by": "site",
      "checked": "2026-11-23"
     },
     {
-     "k": "駐車場",
-     "v": "ちなみに、右側には有料駐車場がございます。",
-     "src": "https://www.maison-de-famille.org/access/",
+     "k": "定休日",
+     "v": "（定休日火曜日）",
+     "src": "http://www.nwan8-info.com/",
      "by": "site",
      "checked": "2026-11-23"
     },
     {
      "k": "用意するもの",
-     "v": "1年以内に摂取した混合ワクチン証明書(猫3種)",
-     "src": "https://www.maison-de-famille.org/pet-hotel/",
+     "v": "◇ワクチン接種証明書（狂犬病・混合ワクチン）",
+     "src": "http://www.nwan8-info.com/concept.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "◇お支払いは現金・ＰａｙＰａｙのみ",
+     "src": "http://www.nwan8-info.com/",
      "by": "site",
      "checked": "2026-11-23"
     }
    ],
-   "checked": "2026-11-23"
+   "checked": "2026-11-23",
+   "spec": "ペットホテル、ペットシッター、老犬ホーム",
+   "addr": "神奈川県平塚市宝町5-28",
+   "animals": "犬"
+  },
+  {
+   "id": "Rt9928d49",
+   "name": "保護猫施設 猫学園",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "町田市",
+   "url": "https://nekogakuen2020222.amebaownd.com/",
+   "services": "ペットホテル、老犬ホーム",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "〇 専用駐車場はございません。",
+     "src": "https://nekogakuen2020222.amebaownd.com/pages/4161404/page_202008211417",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "spec": "ペットホテル、老犬ホーム",
+   "addr": "東京都町田市忠生四丁目11番地24",
+   "animals": "犬・猫"
+  },
+  {
+   "id": "Rtc2887d1",
+   "name": "しっぽの子",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市多摩区",
+   "url": "https://shipponoko.main.jp/",
+   "services": "ペットホテル、ペットシッター、老犬ホーム",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "・駐車場の有無、近くのコインパーキングの有無",
+     "src": "https://shipponoko.main.jp/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "spec": "ペットホテル、ペットシッター、老犬ホーム",
+   "addr": "神奈川県川崎市多摩区宿河原5丁目9番30号",
+   "animals": "犬・猫"
+  },
+  {
+   "id": "Rt33ff67b",
+   "name": "Pet Dream",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市川崎区",
+   "url": "https://pet-dream.jp/",
+   "services": "ペットホテル、老犬ホーム",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00～19:00 年中無休",
+     "src": "https://pet-dream.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "・ワンちゃんの送迎を致します！(1回550円)",
+     "src": "https://pet-dream.jp/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "spec": "ペットホテル、老犬ホーム",
+   "addr": "神奈川県川崎市川崎区渡田1丁目9番2号",
+   "animals": "犬・猫"
+  },
+  {
+   "id": "Rt4013e88",
+   "name": "ワンコのおうち アプルール",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "秦野市",
+   "url": "https://r-guide.jp/facility/793/",
+   "services": "しつけ、老犬ホーム",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間／10：00～20：00 年中無休（年末年始を除く）",
+     "src": "https://r-guide.jp/sakoujyu/companies/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "一般的な方の負担限度額は44,400円ですが、非課税世帯の場合は、24600円または15,000円になります。制度改正により、昨年の8月から、一定年収以上の高所得者の自己負担限度額が上がりました。",
+     "src": "https://r-guide.jp/media/roujin-home-qa/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "自宅や最寄り駅まで無料送迎を行っております。",
+     "src": "https://r-guide.jp/sakoujyu/companies/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "spec": "しつけ、老犬ホーム",
+   "addr": "神奈川県秦野市平沢321-1",
+   "animals": "犬"
+  },
+  {
+   "id": "Rtf47ad3f",
+   "name": "株式会社 アサワペットサービス",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "小田原市",
+   "url": "http://www5d.biglobe.ne.jp/asawa/toten.html",
+   "services": "ペットホテル、老犬ホーム",
+   "facts": [],
+   "checked": "2026-11-23",
+   "spec": "ペットホテル、老犬ホーム",
+   "addr": "神奈川県小田原市沼代756-6",
+   "animals": "犬"
   }
  ],
  "near": {
