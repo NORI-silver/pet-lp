@@ -4,24 +4,19 @@ name: site-snap
 on:
   workflow_dispatch:
   push:
-    branches: ['claude/project-thread-6ina7k']
+    branches: ['claude/**']
     paths: ['tools/crawl/queue*.json', 'tools/crawl/reg*.json', 'tools/site_snap.py', 'tools/reg_fetch.py']
 permissions:
   contents: write
 concurrency:
-  group: site-snap-chubu
+  group: site-snap
   cancel-in-progress: false
 jobs:
   snap:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
-      - name: 中部の分だけ
-        run: |
-          find tools/crawl -name 'queue*' ! -name '*chubu*' -delete
-          find tools/crawl -name 'reg*' ! -name '*chubu*' -delete
-          sed -i 's/timeout=25/timeout=12/' tools/site_snap.py
       - name: 公式サイトを読む
         run: python3 tools/site_snap.py /tmp/out
       - name: 動物取扱業の登録一覧を取る
@@ -30,9 +25,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -q --orphan crawl-out-chubu
+          git checkout -q --orphan crawl-out
           git rm -rq --cached . && git clean -fdq
           cp -r /tmp/out/. .
           git add -A
           git commit -qm "公式サイトの抜き出し ${GITHUB_SHA::7}"
-          git push -q -f origin crawl-out-chubu
+          git push -q -f origin crawl-out
