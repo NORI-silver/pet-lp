@@ -30,7 +30,7 @@ jobs:
         chunk: ${{ fromJson(needs.list.outputs.chunks) }}
     steps:
       - uses: actions/checkout@v4
-      - run: mkdir -p out && python3 tools/chiba_search.py tools/crawl/chiba_search/${{ matrix.chunk }} out/s_${{ matrix.chunk }} 2.5
+      - run: mkdir -p out && python3 tools/chiba_search.py tools/crawl/chiba_search/${{ matrix.chunk }} out/s_${{ matrix.chunk }} 5
       - uses: actions/upload-artifact@v4
         with:
           name: s_${{ matrix.chunk }}
