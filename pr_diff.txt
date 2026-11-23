@@ -1,0 +1,17 @@
+merge 0928a5628ce0b8dcf2fb8e788eae47b46919ac8c parents: 
+Python 3.12.16
+exit 0
+ hospital/data/chiba.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+---
+ M hospital/data/chiba.json
+---
+diff --git a/hospital/data/chiba.json b/hospital/data/chiba.json
+index 75de483..16e3e85 100644
+--- a/hospital/data/chiba.json
++++ b/hospital/data/chiba.json
+@@ -1 +1 @@
+-[{"n":"しらい動物病院 中志津本院","c":"佐倉市","u":"https://sakura-shirai-ah.com/","ph":[["/img/fac/hospital/G12043_1.webp"],"写真：しらい動物病院 中志津本院",1.061],"ad":"千葉県佐倉市中志津2-36-6","h":"9:00〜11:30・15:00〜18:30（日曜・祝日は午前のみ）","a":"犬・猫・ウサギ・ハムスター・フェレット・ハリネズミ・小型哺乳類・鳥・
+\ No newline at end of file
++[{"n":"しらい動物病院 中志津本院","c":"佐倉市","u":"https://sakura-shirai-ah.com/","ph":[["/img/fac/hospital/G12043_1.webp"],"写真：しらい動物病院 中志津本院",0],"ad":"千葉県佐倉市中志津2-36-6","h":"9:00〜11:30・15:00〜18:30（日曜・祝日は午前のみ）","a":"犬・猫・ウサギ・ハムスター・フェレット・ハリネズミ・小型哺乳類・鳥・爬虫類（
+\ No newline at end of file
