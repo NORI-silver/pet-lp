@@ -8,7 +8,7 @@ const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'
 const specs=kind==='photo'?[['/dog-trainer/kyoto/','.cs-ph[data-gph="T114"]'],['/dogrun/okayama/','.cs-ph:has(.cs-ph-c)'],['/rojin-home/','.cs-ph:has(.cs-ph-n)'],['/','.partner-card.qa-taxi']]:
   kind==='cta'?[['/sougi/hyogo/','[data-taxi-cta]'],['/dogrun/chiba/','[data-taxi-cta]'],['/pet-hotel/hyogo/','[data-taxi-cta]']]:[['/jichitai/maigo/','#jcPro']];
 (async()=>{
- fs.mkdirSync(out,{recursive:true}); const browser=await chromium.launch({headless:true});
+ fs.mkdirSync(out,{recursive:true}); const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||undefined});
  let failed=false;
  try {
  for (const width of [375,390]) {
