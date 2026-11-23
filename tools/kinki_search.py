@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """[B] 近畿の網羅：登録簿の事業者の名前と市区町村で検索し、上位の結果（見出しとURL）だけを書く（site-search-kinki.yml）。
 どれが公式サイトかは人（AI）が結果を見て決める。何も送らない。
-2026-11-23：DuckDuckGo が Actions からは全部空になったので、Bing を先に使い、空なら DuckDuckGo。
+2026-11-23：DuckDuckGo は Actions から全部空、Bing は語を無視した的外れの結果だったので、Yahoo! JAPAN の検索を使う
+（tools/kinki_probe.py でためして、名前に合う結果が返ったのは Yahoo! JAPAN だけ）。
 続けて空が 20 回出たら止める（何時間も空のまま回さない）。
 使い方: python3 tools/kinki_search.py <chunk.json> <out.json> [間隔秒]"""
 import json, sys, time, os, re, html, base64, urllib.parse
@@ -28,16 +29,26 @@ def bing(q):
             re.findall(r'(?is)<li class="b_algo".*?<h2[^>]*>\s*<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>', h)][:10]
 
 
+def yahoo(q):
+    h, _ = site_snap.get('https://search.yahoo.co.jp/search?p=' + urllib.parse.quote(q))
+    out, seen = [], set()
+    for u, lab in re.findall(r'(?is)<a[^>]+href="(https?://[^"]+)"[^>]*>(.*?)</a>', h):
+        u = html.unescape(u)
+        host = urllib.parse.urlparse(u).netloc
+        if 'yahoo.co.jp' in host or 'yimg.jp' in host or u in seen: continue
+        t = html.unescape(re.sub(r'<[^>]+>', ' ', lab))
+        t = re.sub(r'\s+', ' ', t).strip()
+        if not t: continue
+        seen.add(u); out.append([t[:120], u])
+    return out[:10]
+
+
 def one(q):
     r = {'q': q}
     try:
-        r['results'] = bing(q); r['by'] = 'bing'
+        r['results'] = yahoo(q); r['by'] = 'yahoo'
     except Exception as e:
-        r['error'] = str(e)[:200]
-    if not r.get('results'):
-        d = site_snap.search({'q': q})
-        if d.get('results'):
-            r = d; r['by'] = 'ddg'
+        r['error'] = str(e)[:200]; r['results'] = []
     return r
 
 
