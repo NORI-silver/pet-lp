@@ -14,9 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {kind: photo, sha: ed01d8416c1224fb3b7b44d1039d3d503bfa285a}
-          - {kind: cta, sha: 0ed45d6786447ea4ec21833215bf01f094c14af8}
-          - {kind: maigo, sha: 8852c77508d5951da221077acd4668c687c0c362}
+          - {kind: cta, sha: 0fb79f0bb3598dc00d11da571c52565a73737687}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -33,6 +31,9 @@ jobs:
         run: |
           npm install --prefix .mobile --ignore-scripts --no-audit --no-fund playwright@1.62.1
           test -x /usr/bin/google-chrome
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-match -f '%{family}\n' :lang=ja | grep 'Noto Sans CJK' 
       - name: Verify exact candidate and render locally
         env:
           TEST_SHA: ${{ matrix.sha }}
