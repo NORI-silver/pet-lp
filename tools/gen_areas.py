@@ -22,9 +22,12 @@ def _apply_provider():
     import display_companies as _dc
     _p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json")
     _j = json.load(open(_p, encoding="utf-8")); _before = json.dumps(_j, ensure_ascii=False)
+    _j["companies"] = [r for r in _j["companies"] if r["id"] not in _dc.PUBLIC_PAUSES.values()]
     for _r in _j["companies"]: _dc.apply_provider(_r)
     if json.dumps(_j, ensure_ascii=False) != _before: json.dump(_j, open(_p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 _apply_provider()
+from display_companies import PUBLIC_PAUSES
+_HIDDEN_PUBLIC_IDS = sorted(set(PUBLIC_PAUSES) | set(PUBLIC_PAUSES.values()))
 FARES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fares.json"), encoding="utf-8"))
 CO = FARES["companies"]
 ALL_PREFS = list(FARES["areas"])
@@ -91,6 +94,7 @@ _EMG_RV = _EMG_RV + gen_hospitals.review_rows() + gen_rojin.review_rows() + gen_
 booking_src = re.sub(r"/\*EMG_REVIEWS\*/.*?/\*/EMG_REVIEWS\*/", lambda m: "/*EMG_REVIEWS*/var EMG_REVIEWS = " + json.dumps({t["id"]: {"query": t["review_query"], "name": t["review_name"]} for t in _EMG_RV if t.get("review_query")}, ensure_ascii=False) + ";/*/EMG_REVIEWS*/", booking_src, count=1, flags=re.S)
 # 候補カードに表示だけする会社（依頼は送れない）。tools/display_companies.py で作る
 _DISP = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json"), encoding="utf-8"))["companies"]
+booking_src = re.sub(r"/\*PUBLIC_PAUSE\*/.*?/\*/PUBLIC_PAUSE\*/", lambda m: "/*PUBLIC_PAUSE*/var PUBLIC_PAUSE = " + json.dumps(_HIDDEN_PUBLIC_IDS) + ";/*/PUBLIC_PAUSE*/", booking_src, count=1, flags=re.S)
 booking_src = re.sub(r"/\*DISPLAY_COMPANIES\*/.*?/\*/DISPLAY_COMPANIES\*/", lambda m: "/*DISPLAY_COMPANIES*/var DISPLAY_COMPANIES = " + json.dumps(_DISP, ensure_ascii=False) + ";/*/DISPLAY_COMPANIES*/", booking_src, count=1, flags=re.S)
 # 掲載情報のページで、はじめから入れておく内容（受付中の会社だけ。公式サイト・提携の申し込みでうかがったこと。Nori 2026-11-15「すでに回答もらってるものは入力済みになってるんだよね？」）
 def _pinfo_known():
@@ -399,13 +403,14 @@ def _creds():
     lic = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "licenses.json"), encoding="utf-8"))["companies"]
     gs = open(os.path.join(ROOT, "booking", "Code.gs"), encoding="utf-8").read()
     m = re.search(r"OPEN_PARTNERS:\s*\{([^}]*)\}", gs)
-    out = {k: {x: v[x] for x in ("reg", "transport", "ins", "quals") if x in v} for k, v in lic.items()}
+    out = {k: {x: v[x] for x in ("reg", "transport", "ins", "quals") if x in v} for k, v in lic.items() if k not in _HIDDEN_PUBLIC_IDS}
     for p, d in (re.findall(r"'([^']+)'\s*:\s*'([^']+)'", m.group(1)) if m else []):
         if d in out: out[p] = out[d]
     return out
 src = re.sub(r"/\*CREDS\*/.*?/\*/CREDS\*/", lambda m: "/*CREDS*/var CREDS = " + json.dumps(_creds(), ensure_ascii=False) + ";/*/CREDS*/", src, count=1, flags=re.S)
 import cardphoto as _cp  # タクシーの候補カードの写真（事業者が登録した掲載情報の写真がないときに使う。Nori 2026-11-16）
-src = re.sub(r"/\*CO_PH\*/.*?/\*/CO_PH\*/", lambda m: "/*CO_PH*/var CO_PH = " + json.dumps(_cp.taxi_map(), ensure_ascii=False) + ";/*/CO_PH*/", src, count=1, flags=re.S)
+src = re.sub(r"/\*CO_PH\*/.*?/\*/CO_PH\*/", lambda m: "/*CO_PH*/var CO_PH = " + json.dumps({k: v for k, v in _cp.taxi_map().items() if k not in _HIDDEN_PUBLIC_IDS}, ensure_ascii=False) + ";/*/CO_PH*/", src, count=1, flags=re.S)
+src = re.sub(r"/\*PUBLIC_PAUSE\*/.*?/\*/PUBLIC_PAUSE\*/", lambda m: "/*PUBLIC_PAUSE*/var PUBLIC_PAUSE = " + json.dumps(_HIDDEN_PUBLIC_IDS) + ";/*/PUBLIC_PAUSE*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*CO_SITE\*/.*?/\*/CO_SITE\*/", lambda m: "/*CO_SITE*/var CO_SITE = " + json.dumps(_co_site(), ensure_ascii=False) + ";/*/CO_SITE*/", src, count=1, flags=re.S)
 # 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、県の中に会社がない県は「（県外の会社のみ）」を付けるか、選択欄から消す）
 src = re.sub(r"/\*AREA_PREFS\*/.*?/\*/AREA_PREFS\*/", lambda m: "/*AREA_PREFS*/var AREA_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}), ensure_ascii=False) + ";/*/AREA_PREFS*/", src, count=1, flags=re.S)
@@ -559,8 +564,16 @@ AIRPORT_OF = {"東京都": "羽田空港", "神奈川県": "羽田空港", "千�
               "北海道": "新千歳空港", "宮城県": "仙台空港", "愛知県": "中部国際空港（セントレア）", "大阪府": "伊丹空港・関西国際空港",
               "兵庫県": "神戸空港・伊丹空港", "広島県": "広島空港", "福岡県": "福岡空港", "沖縄県": "那覇空港"}
 def scene_desc(where, pref):
-    return (f"{where}で、動物病院、トリミング、ペットホテル、{AIRPORT_OF.get(pref, '空港')}への送迎、お引っ越し、家族でのお出かけに。"
-            "犬・猫を乗せてくれるペットタクシーの料金の目安を、お迎えの場所を入れて会社ごとに無料でくらべられます。")
+    d = (f"{where}で、動物病院、トリミング、ペットホテル、{AIRPORT_OF.get(pref, '空港')}への送迎、お引っ越し、家族でのお出かけに。"
+         "犬・猫を乗せてくれるペットタクシーの料金の目安を、お迎えの場所を入れて会社ごとに無料でくらべられます。")
+    # [B] SEO 11/23：検索結果で料金の数字が見えるように（「ペットタクシー 料金」は7〜8位でクリック0）。数字は県のページの「10kmの運賃のまんなか」と同じ計算。160字に収まるときだけ
+    key = pref if pref == "北海道" else pref[:-1]
+    fs = [x for x in _DISP if key in x.get("areas", []) and x.get("fare") and x["fare"].get("kind", "dist") == "dist" and x["fare"].get("base")]
+    if len(fs) >= 3:
+        v = sorted(_r100(_nat_ride(x["fare"], 10)) for x in fs)
+        add = f"10km乗ったときの運賃は、{len(fs)}社のまんなかで{v[(len(v) - 1) // 2]:,}円（概算）。"
+        if len(d) + len(add) <= 160: d = d.replace("家族でのお出かけに。", "家族でのお出かけに。" + add, 1)
+    return d
 def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = re.sub(r"\s*<!--NAT_STATS-->.*?<!--/NAT_STATS-->", "", TOP_HTML, flags=re.S)
     t = re.sub(r"\s*<!--KURASHI-->.*?<!--/KURASHI-->", "", t, flags=re.S)  # 全分野の入口はトップだけ（tools/portal.py）
@@ -763,7 +776,7 @@ PARTNER_BAND = '''<aside class="partner-band"><div class="wrap"><p><b>ペット�
 def foot(cta_href, band=True):
     return (PARTNER_BAND if band else '') + f'''<footer>
   <div class="wrap">
-    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国のドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/trimming/">出張トリミング</a><a href="/pet-hotel/">大型犬OK・猫専用のペットホテル</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/about/">運営者と掲載の基準</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
+    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国のドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/trimming/">出張トリミング</a><a href="/pet-hotel/">ペットホテル</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/about/">運営者と掲載の基準</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav><a href="/area/">全国</a>{''.join(f'<a href="/{a["slug"]}/">{e(a["short"])}</a>' for a in AREAS)}</nav>
     <p>ペットタクシー予約窓口</p>
     <p>&copy; 2026 ペットタクシー予約窓口</p>
@@ -1017,7 +1030,7 @@ def guide_hub(slug):
     if slug in ("how-to-use-pet-sitter", "sitter-or-hotel", "cat-sitter"):
         return "/pet-sitter/", "ペットシッター", "都道府県ごとのペットシッターを見る"
     if slug in ("large-dog-hotel", "cat-hotel"):
-        return "/pet-hotel/", "ペットホテル", "大型犬OK・猫専用のペットホテルを見る"
+        return "/pet-hotel/", "ペットホテル", "ペットホテル（大型犬OK・猫専用もしぼれる）を見る"
     if slug in ("pet-evacuation", "pet-disaster-prep", "pet-evacuation-survey"):
         return "/hinan/", "ペットと避難（同行避難）", "都道府県・市区の避難所の決まりを見る"
     if slug in ("adopt-pet", "adopt-senior-survey"):
@@ -2567,7 +2580,7 @@ _pp_ctx = dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, area_links=ar
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False)))
 gen_prefpages.write_all(ROOT, _pp_ctx, gen_grooming.CAT); gen_prefpages.link_national(ROOT, _pp_ctx, gen_grooming.CAT)
 hosp_urls = hosp_urls + gen_prefpages.urls(SITE, gen_grooming.CAT)
-# [B] 大型犬OK・猫専用のペットホテル（/pet-hotel/、tools/gen_hotels.py、データ tools/hotels.json）
+# [B] ペットホテル（全部。大型犬OK・猫専用はしぼりこみ）（/pet-hotel/、tools/gen_hotels.py、データ tools/hotels.json）
 gen_hotels.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_hotels.urls(SITE)

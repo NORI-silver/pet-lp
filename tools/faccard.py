@@ -18,7 +18,7 @@ CATS = {
     "dog-trainer": dict(key="trainer", noun="しつけ教室", icon="dog", kinds=["dog"], puppy=True, label="ドッグトレーナー・しつけ教室"),
     "pet-sitter": dict(key="sitter", noun="ペットシッター", icon="home", kinds=["dog", "cat", "small", "bird"], label="ペットシッター"),
     "rojin-home": dict(key="rojin", noun="老犬ホーム", icon="home", kinds=["dog", "cat"], size=True, label="老犬ホーム・老猫ホーム"),
-    "trimming": dict(key="trimming", noun="出張トリミング", icon="scissors", kinds=["dog", "cat"], size=True, senior=True, label="出張トリミング"),
+    "trimming": dict(key="trimming", noun="トリミング", icon="scissors", kinds=["dog", "cat"], size=True, senior=True, label="出張トリミング・トリミングサロン"),
     "pet-hotel": dict(key="hotel", noun="ペットホテル", icon="bed", kinds=["dog", "cat"], size=True, senior=True, label="ペットホテル"),
     "sougi": dict(key="sougi", noun="ペット火葬・霊園", icon="flower", kinds=[], label="ペット火葬・霊園"),
     "hospital": dict(key="hospital", noun="動物病院", icon="cross", kinds=["dog", "cat", "small", "bird", "exotic"], size=True, label="動物病院"),
@@ -81,13 +81,13 @@ _SVC = re.compile(r"^(提供内容|内容|できること|サービス)$")
 # 条件の印（data-flags）を、カードのチップと「こんな人に」の言葉にする（公式サイトの情報から作った印だけ）
 FLAG_CHIP = {
     "large": "大型犬OK", "cat_only": "猫専用", "cat": "猫OK", "vet": "病院が併設", "pickup": "送迎あり", "senior": "シニア・介護OK",
-    "night_staff": "夜もスタッフ", "camera": "カメラで見守り", "run": "ドッグラン", "private_room": "個室", "car": "トリミングカー", "in_home": "家の中で",
+    "night_staff": "夜もスタッフ", "camera": "カメラで見守り", "run": "ドッグラン", "private_room": "個室", "car": "トリミングカー", "in_home": "家の中で", "shop": "お店で（サロン）",
 }
 FOR_TEXT = {
     # 印・タグ → こんな人に（短く。言い切りすぎない）
     "large": "大型犬の子", "cat_only": "犬の声が苦手な猫", "senior": "シニアや持病のある子", "pickup": "送り迎えしてほしい人",
     "vet": "病院が近いと安心な人", "camera": "留守中も様子を見たい人", "private_room": "静かな個室がいい子", "run": "体を動かしたい子",
-    "night_staff": "夜も人がいると安心な人", "car": "家の前でトリミングしたい人", "in_home": "家の中でしてほしい人",
+    "night_staff": "夜も人がいると安心な人", "car": "家の前でトリミングしたい人", "in_home": "家の中でしてほしい人", "shop": "近くのお店に連れていける人",
     "出張・訪問": "家での困りごとを家で見てほしい人", "教室・グループ": "ほかの犬と一緒に練習したい人", "パピー": "子犬を迎えたばかりの人", "問題行動": "吠え・かみ癖に困っている人",
     "幼稚園・保育園": "日中あずけて社会性を育てたい人", "預かり訓練": "まとめて預けて練習したい人", "オンライン": "近くに教室がない人",
     "猫": "猫を家で留守番させたい人", "小動物": "うさぎ・小動物の飼い主", "鳥": "鳥の飼い主", "散歩": "散歩も頼みたい人",
@@ -365,7 +365,7 @@ def build_card(card, conf, fit_by_name):
     # チップ：印（data-flags）・タグ（data-tags）・提供内容の短い言葉
     flags = (re.search(r'data-flags="([^"]*)"', opentag) or [None, ""])[1].split()
     tags = [html.unescape(x) for x in (re.search(r'data-tags="([^"]*)"', opentag) or [None, ""])[1].split("|") if x]
-    ch = [FLAG_CHIP[f] for f in flags if f in FLAG_CHIP and f != "cat"] + [t for t in tags + chips if not re.fullmatch(r"(犬|猫|犬・猫)(OK|可|も)?", t)]  # 犬OK・猫OK はだれでも分かるので出さない
+    ch = [FLAG_CHIP[f] for f in flags if f in FLAG_CHIP and f != "cat"] + [t for t in tags + chips if not re.fullmatch(r"(犬|猫|犬・猫)(OK|可|も)?", t) and not re.fullmatch(r"p\d+", t)]  # 犬OK・猫OK はだれでも分かるので出さない。p◯◯ は費用の帯のしぼりこみ専用の印（facility_cards.sougi_tags）で、チップには出さない
     ch += [s for s in svc_items if len(s) <= 12]
     if trust:  # 緑のチェックに出したことは札にくり返さない（「夜もスタッフ」など）
         _tl = [x.strip() for x in re.split(r"[、,]", trust[0])]

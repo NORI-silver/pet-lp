@@ -25,7 +25,7 @@ BEFORE = [
 
 def _card(e, s):
     ch = J["chains"][s["chain"]]
-    extra = f'<small>対応エリア：{e(s["area"])}</small>'
+    extra = f'<small>対応エリア：{e(s["area"])}</small>' if s.get("area") else ''
     if s.get("animals"): extra += f'<small>対象：{e(s["animals"])}</small>'
     for f in s.get("facts", []):
         if f["k"] in ("料金", "交通費・出張費", "初回・契約", "営業・受付時間", "定休日", "お支払い", "用意するもの", "キャンセル料"): extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
@@ -136,7 +136,7 @@ def _faq(pf, rs, n):
      ("留守中に病院へ連れていってもらえますか？", "通院の付き添いを受ける店もあります。移動の方法（ペットタクシーなど）もあわせて打ち合わせで決めておくと安心です。"),
     ]
 # 富山県は2店で県のページには中身が足りない（2026-11-16）。3店目が見つかったら外す
-CAT = dict(slug=SLUG, name="ペットシッター", no_page=("富山県",), unit="店", h1=H1, items=J["sitters"], card=_card, checked=J["checked"], reviews=False,
+CAT = dict(slug=SLUG, name="ペットシッター", no_page=("富山県", "福井県"), unit="店", h1=H1, items=J["sitters"], card=_card, checked=J["checked"], reviews=False,
   title_word="ペットシッター", title_tail="自宅でお世話・散歩代行・対応エリアつき",
   desc_tail="旅行や出張、入院のあいだに自宅へ来てお世話や散歩をしてくれるシッターの対応エリアと、頼む前に確かめたいことを載せています。料金は公式サイトに書いてある店だけ載せています。順位はつけていません。",
   lede=lambda pf, n: f"旅行や出張、入院のあいだ、ペットを家に残したままお世話や散歩をしてくれるペットシッターを、{pf}で{n}店まとめました。各グループの公式サイトの店舗一覧にある対応エリアだけを載せています。",

@@ -49,7 +49,7 @@ WORDS = [
     (r"(?:くわしく|詳しく|詳細)は(?:リンク先|公式(?:サイト|ページ)|各(?:自治体|施設)のページ)(?:で|を|へ)", "読む人には価値がない。書いてあることを読んで書く（Nori 11/16「詳しくはリンク先では価値ゼロです」）"),
 ]
 # ○ は表の印にも使うので、穴は「◯◯」（「」の中の例は除く）と TODO などだけ
-HOLES = re.compile(r"(?<![「『])◯◯(?![」』一])|TODO|FIXME|XXX|\{\{|\}\}")
+HOLES = re.compile(r"(?<![「『])◯◯(?![」』一])|(?<![A-Za-z])(?:TODO|FIXME|XXX)(?![A-Za-z])|\{\{|\}\}")
 # 消した部品（クラス・属性・文）。Nori さんが消すように言ったもの
 REMOVED = [
     (re.compile(r'class="hf-sos"|\bdata-sos\b|いま具合が悪いとき'), "動物病院の「いま具合が悪いとき」の箱（Nori 11/16 で消した）"),
@@ -228,7 +228,7 @@ CONTACT_DATA = {"hotels.json": "url", "rojin.json": "url", "grooming.json": "url
 
 
 # 競合のペット情報サイト・まとめサイト（Nori 11/22）。施設の公式サイトの代わりにリンクしない。見つけたら足す
-RIVALS = ("rouken-care.jp", "rou-ken.com", "roukenhome-navi.com", "roukenhome.or.jp", "petlife.asia", "ipetclub.jp", "1-2-pet.com",
+RIVALS = ("rouken-care.jp", "trimeet.jp", "trimmingfan.com", "scarecrow-inc.jp", "ikeruwan.com", "uchinokono.jp", "cosewa.jp", "hotlines.shop", "wanco-professional.com", "inugoe.com", "rou-ken.com", "roukenhome-navi.com", "roukenhome.or.jp", "petlife.asia", "ipetclub.jp", "1-2-pet.com",
           "goodbreeder.jp", "ekiten.jp", "trimtrim.jp", "localplace.jp", "inudia.com", "wanstown.com", "kyoshippo.jp",
           "dogparkjp.com", "wannyan-navi.jp", "miokuri-navi.com", "hug-u.pet", "catcafemap.com", "petpedia.jp", "epark.jp",
           "hotpepper.jp", "curama.jp", "zehitomo.com", "meetsmore.com", "itsumo.dog", "petpet.ne.jp", "torepet.com", "petsitter-search.com",

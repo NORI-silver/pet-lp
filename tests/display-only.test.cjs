@@ -28,7 +28,7 @@ assert.ok(cards[0].display_only); assert.equal(cards[0].token,undefined); assert
 assert.ok(cards.every(c=>c.display_only && c.token===undefined));
 const shown=cards.filter(c=>c.id!=='P002');
 // お迎えの都道府県に対応している会社だけ（Nori 2026-10-31「大阪の住所で全国の会社が出た」）。お店が遠すぎる会社も外す
-const inT=c=>disp.find(d=>d.id===c.id).areas.includes('東京');
+const inT=c=>{const d=disp.find(d=>d.id===c.id); return d.areas.includes('東京')||(d.far||[]).includes('東京');};  // お迎えの範囲に上限のない会社（anywhere）は far に入る（tools/display_companies.py の apply_provider）
 assert.ok(shown.length>0 && shown.every(inT));
 assert.equal(shown.length, disp.filter(c=>!ctx.openDisplayIds_().includes(c.id)&&ctx.displayServes_(c,'東京',point)&&ctx.displayInTime_(c,ctx.selectionRide_(p)['希望日時'],new Date())).length);
 shown.forEach(c=>{ assert.equal(c.token,undefined); assert.equal(c.review,null); });
@@ -56,7 +56,7 @@ assert.equal(call('selectionQuotes_',round).legs,undefined);
 const sakai={lat:34.573,lng:135.483}, umeda={lat:34.702,lng:135.496};
 const osaka=call('selectionQuotes_',{...p,pref:'大阪府',pickup:'堺市堺区',dropoff:'大阪市北区',route_details:JSON.stringify({km:16,backKm:16,from:sakai,to:umeda,backFrom:umeda,backTo:sakai})});
 assert.ok(osaka.ok && osaka.cards.length>0 && osaka.cards.every(c=>c.display_only));
-assert.ok(osaka.cards.every(c=>disp.find(d=>d.id===c.id).areas.includes('大阪')), osaka.cards.map(c=>c.label).join(','));
+assert.ok(osaka.cards.every(c=>{const d=disp.find(d=>d.id===c.id); return d.areas.includes('大阪')||(d.far||[]).includes('大阪');}), osaka.cards.map(c=>c.label).join(','));
 assert.ok(!osaka.cards.some(c=>/東京|神奈川|札幌|福岡|広島/.test(disp.find(d=>d.id===c.id).pref)));
 assert.ok(osaka.cards.some(c=>c.price.amount>0), '大阪でも料金が出る');
 // 料金の計算（決まった式）：COCOタク 東京小平店 3,300円（5kmまで）＋165円/km、お迎え 165円/km（お店から）、回送なし、21〜8時は3,300円
