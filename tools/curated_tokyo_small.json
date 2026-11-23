@@ -166,6 +166,7 @@
   "page": "https://cocotaxi-saitama.com/",
   "sha256": "7474fa7e4b05f3f0be3262f0e595a4dba1b4dd3bcb46cdbbfeb805f755a54b39",
   "bytes": 52028,
-  "manual": true
+  "manual": true,
+  "_audit": "2026-11-24 manual: sha256 照合のみ。再取得はタイムアウト"
  }
 ]
