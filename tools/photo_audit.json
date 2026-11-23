@@ -200,6 +200,22 @@
    "file": "/img/fac/trimming/GC076_1.webp",
    "status": "removed_from_display",
    "reason": "画像が写真ではない（ロゴ・文字入りバナー・切り抜き・見本の電話番号入り）"
+  },
+  {
+   "id": "SC069",
+   "cat": "sitter",
+   "name": "chat concierge",
+   "file": "/img/fac/sitter/SC069_1.webp",
+   "status": "removed_from_display",
+   "reason": "掲載元が ameblo.jp のブログ記事。ブログ自身は流山市でペットホテル・シッターを運営と書くが、公式サイトとの結びつきは確認できず、運営者の本人性を確かめられない（疑い）"
+  },
+  {
+   "id": "PHC241",
+   "cat": "hotel",
+   "name": "chat concierge",
+   "file": "/img/fac/hotel/PHC241_1.webp",
+   "status": "removed_from_display",
+   "reason": "掲載元が ameblo.jp のブログ記事。ブログ自身は流山市でペットホテル・シッターを運営と書くが、公式サイトとの結びつきは確認できず、運営者の本人性を確かめられない（疑い）"
   }
  ],
  "kept_checked_with_page_context": [
@@ -245,7 +261,7 @@
   },
   {
    "id": "SC069/PHC241",
-   "status": "同じ事業者（ameblo.jp の同じブログ記事）がシッターとホテルの2分類に載る。ブログ記事の写真で、公式サイトではない。"
+   "status": "同じブログ記事を指す2分類。ブログの自己紹介は運営を名乗るが、運営者の本人性を確認できないため両方外した。"
   }
  ],
  "duplicates_checked": "全 403 件の写真を 8x8 の平均ハッシュで照合。同じ画像を別の事業者が使っている例はなし。同じ画像の組はすべて同じドメインの別分類（トレーナーとホテルなど）。"
