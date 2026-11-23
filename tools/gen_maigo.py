@@ -118,6 +118,10 @@ def data(ROOT, pref_slug):
 
 # ---------- 見た目（共通のカード .cs は cardskin.py。ここは手順の線・チェック・チラシ） ----------
 CSS = ("<style>"
+ ".jc-3{list-style:none;margin:4px 0 10px;padding:12px 14px;background:#fff;border:1px solid #efe0d3;border-radius:16px;display:grid;gap:8px}"
+ ".jc-3 li{display:flex;gap:10px;align-items:center;font-size:1rem;line-height:1.45;font-weight:700;color:#2b2622}"
+ ".jc-3 i{flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#c2410c;color:#fff;font-style:normal;font-weight:800;display:flex;align-items:center;justify-content:center}"
+ ".jc-3 small{display:block;font-weight:400;font-size:.82rem;color:#5a4a3f}"
  ".jc-q1{background:#fff;border:2px solid #c2410c;border-radius:16px;padding:12px 14px;margin:6px 0 12px}"
  ".jc-q1 label{display:block;font-weight:800;margin:0 0 6px}.jc-q1 input[type=text]{width:100%;box-sizing:border-box;padding:12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
  ".jc-sg{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}.jc-sg:empty{display:none}.jc-sg button{padding:8px 12px;border:1px solid #c2410c;border-radius:999px;background:#fff;color:#c2410c;font-weight:700;font-size:.9rem}"
@@ -172,6 +176,11 @@ def _ask(kind, label, ph, animal=False):
             f'<input id="jcQ" type="text" placeholder="{ph}" autocomplete="address-level2" enterkeyhint="search">'
             f'<div class="jc-sg" id="jcS" aria-live="polite"></div>{an}<p class="jc-hd" id="jcH" hidden></p></div>')
 
+def _three(head, steps):
+    """最初の画面で「何をすればいいか」が3行で分かる箱（Nori 2026-11-23「迷子登録のページがわかりにくい」）。"""
+    li = "".join(f'<li><i>{n}</i><span>{t}<small>{s}</small></span></li>' for n, (t, s) in enumerate(steps, 1))
+    return f'<ol class="jc-3" aria-label="{head}">{li}</ol>'
+
 def _li(slot, title, body, go="", a=""):
     aa = f' data-a="{a}"' if a else ""
     return (f'<li data-ck="{slot}"{aa}><label><input type="checkbox">{title}</label><p data-slot="{slot}-t">{body}</p>'
@@ -215,6 +224,7 @@ def maigo(ctx):
 </section>
 <section style="padding-top:4px">
   <div class="wrap">
+    {_three("まず、この3つ", [("家のまわりを、近い所からさがす", "猫は家のすぐ近くに隠れていることが多い"), ("今日のうちに、センター・警察・市役所へ届け出る", "下に市区町村を入れると、その町の窓口が出ます"), ("チラシを作って、近所と動物病院に", "このページで作って印刷できます")])}
     {_ask("maigo", "いなくなった場所の市区町村", "例：佐倉市・世田谷区", True)}
     <div id="jcR" class="jc-dog">
     <ol class="jc-tl">
@@ -320,6 +330,7 @@ def touroku(ctx):
 </section>
 <section style="padding-top:4px">
   <div class="wrap">
+    {_three("やることは3つ", [("30日以内に、市区町村で登録する", "一生に1回。主な市は3,000円"), ("毎年4〜6月に、狂犬病の予防注射", "動物病院か、市区町村の集合注射で"), ("もらった鑑札と注射済票を首輪につける", "迷子のとき、飼い主が分かります")])}
     {_ask("touroku", "住んでいる市区町村", "例：佐倉市・世田谷区")}
     <div class="jc-q1" style="border-width:1px"><div class="jc-ff" style="margin:0"><label>迎えた日<input id="jcD" type="date"></label><label>生まれた日（生後90日より前に迎えたときだけ）<input id="jcB" type="date"></label></div>
       <p class="jc-due" id="jcDue" aria-live="polite"></p></div>
