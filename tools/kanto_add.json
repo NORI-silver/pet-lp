@@ -1861,33 +1861,6 @@
    "checked": "2026-11-22"
   },
   {
-   "id": "PHtbfc1905",
-   "name": "ペットサロン アイミー",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "江戸川区",
-   "url": "https://rairai.net/petsalontop/shop/13357",
-   "services": "ペットホテル",
-   "facts": [
-    {
-     "k": "駐車場",
-     "v": "無料駐車場あり",
-     "src": "https://rairai.net/petsalontop/search/all",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "お支払い",
-     "v": "クレジットカードOK",
-     "src": "https://rairai.net/petsalontop/search/all",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
-   "checked": "2026-11-22"
-  },
-  {
    "id": "PHtf3f9307",
    "name": "ハートフルペット平井店",
    "prefs": [
@@ -3539,33 +3512,6 @@
    ],
    "checked": "2026-11-23",
    "cat": true
-  },
-  {
-   "id": "PHt4e4d147",
-   "name": "ドッグハウス エル",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "練馬区",
-   "url": "https://rairai.net/petsalontop/shop/13403",
-   "services": "ペットホテル",
-   "facts": [
-    {
-     "k": "駐車場",
-     "v": "無料駐車場あり",
-     "src": "https://rairai.net/petsalontop/search/all",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "お支払い",
-     "v": "クレジットカードOK",
-     "src": "https://rairai.net/petsalontop/search/all",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23"
   },
   {
    "id": "PHt3bfbe1d",
@@ -7239,33 +7185,6 @@
    "url": "https://yotsuba-ah.jp/pethotel/",
    "services": "ペットホテル",
    "facts": [],
-   "checked": "2026-11-23"
-  },
-  {
-   "id": "PHt731ee8b",
-   "name": "エーアイエンタープライズ",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "北区",
-   "url": "https://rairai.net/petsalontop/shop/12796",
-   "services": "ペットホテル、ペットシッター、しつけ",
-   "facts": [
-    {
-     "k": "駐車場",
-     "v": "無料駐車場あり",
-     "src": "https://rairai.net/petsalontop/search/all",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "お支払い",
-     "v": "クレジットカードOK",
-     "src": "https://rairai.net/petsalontop/search/all",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
    "checked": "2026-11-23"
   },
   {
@@ -16043,6 +15962,139 @@
    "services": "ペットホテル",
    "facts": [],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt6d89b2f",
+   "name": "ペテモ南砂店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江東区",
+   "url": "https://www.aeonpet.com/shop/minamisuna/access/index.html",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "【駐車場】980台",
+     "src": "https://www.aeonpet.com/shop/minamisuna/access/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHteaf714b",
+   "name": "with D",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://with-d.jp/%E4%BA%8B%E5%8B%99%E6%89%80%E6%A6%82%E8%A6%81/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt741b55f",
+   "name": "アニプラシッター",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://www.aniplasitter.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "公共交通機関を利用した場合、往復代金を実費精算とさせて頂きます。またコインパーキング等駐車場料金が発生した場合、別途頂戴する場合あり。",
+     "src": "https://www.aniplasitter.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "楽天ペイ・PayPay・各種クレジットカード・お振込",
+     "src": "https://www.aniplasitter.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt0e3d76f",
+   "name": "ペテモ板橋店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "板橋区",
+   "url": "https://www.aeonpet.com/shop/itabashi/access/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "【駐車場】約920台",
+     "src": "https://www.aeonpet.com/shop/itabashi/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt31fd87e",
+   "name": "ILIO",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江東区",
+   "url": "https://ilio.jp/stores/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "・受付時間10:00～19:30（お迎えの最終時間は20:30までとさせていただきます。）",
+     "src": "https://ilio.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "4,800円／1日 (税込)",
+     "src": "https://ilio.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・受付の際、「狂犬病予防注射」及び「混合ワクチン」の接種証明書をご提示いただきます。",
+     "src": "https://ilio.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt53c9e4e",
+   "name": "WAN DOG",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "http://wandog.jp/Page/access.html",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "・ ワクチン証明書、ご住所の確認の出来る物（運転免許証など）をご持参下さい。",
+     "src": "http://wandog.jp/Page/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ],
  "sitters": [
@@ -20983,6 +21035,78 @@
    "checked": "2026-11-23",
    "chain": "indie",
    "area": "対応エリア | 世田谷区 自由が丘 九品仏 等々力 上野毛でペットシッターをお探しなら dog nanny"
+  },
+  {
+   "id": "Std235132",
+   "name": "シッターらいとろ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://raitoro.jp/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stbd100f2",
+   "name": "Pet Nursing Service LUKE",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "新宿区",
+   "url": "https://www.petnursingservice.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "6,600円 / 1回",
+     "src": "https://www.petnursingservice.com/page",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い：事前お支払い（銀行振込 / クレジットカード 等）",
+     "src": "https://www.petnursingservice.com/page",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "新宿区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St741b55f",
+   "name": "アニプラシッター",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://www.aniplasitter.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "公共交通機関を利用した場合、往復代金を実費精算とさせて頂きます。またコインパーキング等駐車場料金が発生した場合、別途頂戴する場合あり。",
+     "src": "https://www.aniplasitter.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "楽天ペイ・PayPay・各種クレジットカード・お振込",
+     "src": "https://www.aniplasitter.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
   }
  ],
  "trainers": [

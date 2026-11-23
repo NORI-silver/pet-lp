@@ -13091,6 +13091,78 @@
    "checked": "2026-11-23",
    "chain": "indie",
    "area": "対応エリア | 世田谷区 自由が丘 九品仏 等々力 上野毛でペットシッターをお探しなら dog nanny"
+  },
+  {
+   "id": "Std235132",
+   "name": "シッターらいとろ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://raitoro.jp/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "Stbd100f2",
+   "name": "Pet Nursing Service LUKE",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "新宿区",
+   "url": "https://www.petnursingservice.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "6,600円 / 1回",
+     "src": "https://www.petnursingservice.com/page",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い：事前お支払い（銀行振込 / クレジットカード 等）",
+     "src": "https://www.petnursingservice.com/page",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "新宿区とその周り（くわしくは公式サイト）"
+  },
+  {
+   "id": "St741b55f",
+   "name": "アニプラシッター",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://www.aniplasitter.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "公共交通機関を利用した場合、往復代金を実費精算とさせて頂きます。またコインパーキング等駐車場料金が発生した場合、別途頂戴する場合あり。",
+     "src": "https://www.aniplasitter.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "楽天ペイ・PayPay・各種クレジットカード・お振込",
+     "src": "https://www.aniplasitter.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "世田谷区とその周り（くわしくは公式サイト）"
   }
  ]
 }

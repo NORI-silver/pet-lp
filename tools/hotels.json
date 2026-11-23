@@ -20672,6 +20672,139 @@
    "services": "ペットホテル",
    "facts": [],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt6d89b2f",
+   "name": "ペテモ南砂店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江東区",
+   "url": "https://www.aeonpet.com/shop/minamisuna/access/index.html",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "【駐車場】980台",
+     "src": "https://www.aeonpet.com/shop/minamisuna/access/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHteaf714b",
+   "name": "with D",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://with-d.jp/%E4%BA%8B%E5%8B%99%E6%89%80%E6%A6%82%E8%A6%81/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt741b55f",
+   "name": "アニプラシッター",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://www.aniplasitter.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "公共交通機関を利用した場合、往復代金を実費精算とさせて頂きます。またコインパーキング等駐車場料金が発生した場合、別途頂戴する場合あり。",
+     "src": "https://www.aniplasitter.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "楽天ペイ・PayPay・各種クレジットカード・お振込",
+     "src": "https://www.aniplasitter.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt0e3d76f",
+   "name": "ペテモ板橋店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "板橋区",
+   "url": "https://www.aeonpet.com/shop/itabashi/access/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "【駐車場】約920台",
+     "src": "https://www.aeonpet.com/shop/itabashi/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt31fd87e",
+   "name": "ILIO",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江東区",
+   "url": "https://ilio.jp/stores/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "・受付時間10:00～19:30（お迎えの最終時間は20:30までとさせていただきます。）",
+     "src": "https://ilio.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "4,800円／1日 (税込)",
+     "src": "https://ilio.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・受付の際、「狂犬病予防注射」及び「混合ワクチン」の接種証明書をご提示いただきます。",
+     "src": "https://ilio.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt53c9e4e",
+   "name": "WAN DOG",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "http://wandog.jp/Page/access.html",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "・ ワクチン証明書、ご住所の確認の出来る物（運転免許証など）をご持参下さい。",
+     "src": "http://wandog.jp/Page/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }
