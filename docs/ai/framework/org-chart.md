@@ -22,7 +22,7 @@ flowchart TB
   end
   K["鏡（かがみ）批判役（4つの目）<br/>飼い主・お金・集客・提携先"]
   G["関（せき）機械の点検（PRごと）<br/>rules・seo・phone・feedback・draft・consistency"]
-  SEND["送るのは文（ふみ）だけ・OKの文のまま"]
+  SEND["門（もん）送信の関所<br/>外に出るメール・フォームは全部ここを通る（tools/mon.py）"]
   X["ほかのAI（ChatGPT・Gemini・Muse）<br/>同じ決まりでチーム・批判役に入る"]
 
   C -->|毎日の報告| O
@@ -63,6 +63,7 @@ Nori 2026-11-22「これの担当誰？」「担当に名前つけて」。ど�
 | 形（かたち） | 画面・UX | フォームのスレッド | 問い合わせ率・離脱の場所 |
 | 文（ふみ） | メール（pettaxi.yoyaku から送るのはここだけ） | Mac のメールのスレッド | 返信までの時間 |
 | 鏡（かがみ） | 批判役（飼い主・お金・集客・提携先の4つの目） | 仕事ごとに別のエージェント（Claude の別エージェント、または ChatGPT・Gemini・Muse） | 直さないと出せない＝0 |
+| 門（もん） | 送信の関所：外に出るメール・フォームを送る直前に止める（1社1通・重なり・費用の一文・ほかの会社の名前・連絡しない相手・時間と回数） | `tools/mon.py`・台帳 `/mnt/project-files/mon/ledger.tsv` | 二重送信・追いメール＝0 |
 | 関（せき） | 機械の点検（NGなら止める） | `rules_check`・`seo_check`・`phone_check`・`feedback_check`・`draft_check`・`consistency_check` | NG＝0 |
 
 ほかのAI：ChatGPT＝SNS（道の手伝い）。ほかは `docs/ai/README.md` の手順で、どれかの担当に入る。
