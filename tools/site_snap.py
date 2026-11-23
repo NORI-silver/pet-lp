@@ -130,6 +130,16 @@ def _grams(s):
     return g
 
 
+def _rival(u):
+    """競合のサイト（rules_check.RIVALS）は結果に入れない（AGENTS.md B16）。"""
+    try:
+        from rules_check import RIVALS
+    except Exception:
+        return False
+    host = urllib.parse.urlparse(u).netloc.lower()
+    return any(host == r or host.endswith('.' + r) for r in RIVALS)
+
+
 def relevant(q, res):
     """検索の結果のうち、さがした名前（q の最初の語）の言葉が見出しかアドレスに出るものの数。0 なら的外れとみなす。"""
     name = (q.split() or [''])[0]
@@ -154,7 +164,7 @@ def search(item):
     for name, base, parse in ENGINES:
         try:
             h, _ = get(base + urllib.parse.quote(q))
-            res = [x for x in parse(h) if x[1].startswith('http')][:10]
+            res = [x for x in parse(h) if x[1].startswith('http') and not _rival(x[1])][:10]
         except Exception as e:
             tried.append(name + ':' + str(e)[:60])
             continue
