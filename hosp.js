@@ -50,7 +50,7 @@ var box = document.getElementById("hf");
 if (!box) return;
 var sel = document.getElementById("hospPref"), det = document.getElementById("hfDet"), detN = document.getElementById("hfDetN"),
 list = document.getElementById("hfList"), sum = document.getElementById("hfSum");
-var SLUG = {"北海道": "hokkaido", "青森県": "aomori", "岩手県": "iwate", "宮城県": "miyagi", "秋田県": "akita", "山形県": "yamagata", "福島県": "fukushima", "茨城県": "ibaraki", "栃木県": "tochigi", "群馬県": "gunma", "新潟県": "niigata", "富山県": "toyama", "石川県": "ishikawa", "福井県": "fukui", "山梨県": "yamanashi", "長野県": "nagano", "岐阜県": "gifu", "静岡県": "shizuoka", "愛知県": "aichi", "三重県": "mie", "滋賀県": "shiga", "京都府": "kyoto", "大阪府": "osaka", "兵庫県": "hyogo", "奈良県": "nara", "和歌山県": "wakayama", "鳥取県": "tottori", "島根県": "shimane", "岡山県": "okayama", "広島県": "hiroshima", "山口県": "yamaguchi", "徳島県": "tokushima", "香川県": "kagawa", "愛媛県": "ehime", "高知県": "kochi", "福岡県": "fukuoka", "佐賀県": "saga", "長崎県": "nagasaki", "熊本県": "kumamoto", "大分県": "oita", "宮崎県": "miyazaki", "鹿児島県": "kagoshima", "沖縄県": "okinawa", "東京都": "tokyo", "神奈川県": "kanagawa", "埼玉県": "saitama", "千葉県": "chiba"}, LABEL = {"dog": "犬", "cat": "猫", "rabbit": "うさぎ", "hamster": "ハムスター・モルモット", "ferret": "フェレット", "bird": "鳥", "reptile": "爬虫類", "fish": "魚", "night": "夜間・救急", "h24": "24時間", "late": "19時以降も", "early": "朝9時前から", "sat": "土曜も", "sun": "日曜も", "hol": "祝日も", "nohol": "年中無休", "nolunch": "昼休みなし", "visit": "家に来てくれる（往診）", "catspec": "猫専門", "exospec": "うさぎ・鳥などの専門", "large": "大型犬の設備", "catroom": "猫用の待合室", "noresv": "予約なしでも", "resv": "予約できる", "park": "駐車場", "card": "カード払い", "hotel": "ペットホテル", "trim": "トリミング", "school": "しつけ教室・パピークラス", "ct": "CT・MRI"}, REG = [["北海道・東北",[["北海道",391],["宮城県",48],["山形県",40],["福島県",1]]],["関東",[["茨城県",158],["栃木県",5],["群馬県",112],["埼玉県",20],["千葉県",54],["東京都",380],["神奈川県",196]]],["中部",[["新潟県",122],["富山県",40],["石川県",70],["福井県",33],["山梨県",64],["長野県",5],["岐阜県",118],["静岡県",165],["愛知県",11]]],["近畿",[["三重県",70],["滋賀県",60],["京都府",165],["大阪府",266],["兵庫県",9],["奈良県",84],["和歌山県",56]]],["中国・四国",[["島根県",18],["岡山県",111],["広島県",173],["山口県",88],["徳島県",45],["香川県",1],["愛媛県",62],["高知県",42]]],["九州・沖縄",[["福岡県",36],["佐賀県",32],["長崎県",54],["熊本県",42],["大分県",2],["宮崎県",6],["鹿児島県",3],["沖縄県",63]]]], av = null;
+var SLUG = {"北海道": "hokkaido", "青森県": "aomori", "岩手県": "iwate", "宮城県": "miyagi", "秋田県": "akita", "山形県": "yamagata", "福島県": "fukushima", "茨城県": "ibaraki", "栃木県": "tochigi", "群馬県": "gunma", "新潟県": "niigata", "富山県": "toyama", "石川県": "ishikawa", "福井県": "fukui", "山梨県": "yamanashi", "長野県": "nagano", "岐阜県": "gifu", "静岡県": "shizuoka", "愛知県": "aichi", "三重県": "mie", "滋賀県": "shiga", "京都府": "kyoto", "大阪府": "osaka", "兵庫県": "hyogo", "奈良県": "nara", "和歌山県": "wakayama", "鳥取県": "tottori", "島根県": "shimane", "岡山県": "okayama", "広島県": "hiroshima", "山口県": "yamaguchi", "徳島県": "tokushima", "香川県": "kagawa", "愛媛県": "ehime", "高知県": "kochi", "福岡県": "fukuoka", "佐賀県": "saga", "長崎県": "nagasaki", "熊本県": "kumamoto", "大分県": "oita", "宮崎県": "miyazaki", "鹿児島県": "kagoshima", "沖縄県": "okinawa", "東京都": "tokyo", "神奈川県": "kanagawa", "埼玉県": "saitama", "千葉県": "chiba"}, LABEL = {"dog": "犬", "cat": "猫", "rabbit": "うさぎ", "hamster": "ハムスター・モルモット", "ferret": "フェレット", "bird": "鳥", "reptile": "爬虫類", "fish": "魚", "open": "いま受付中", "night": "夜間・救急", "h24": "24時間", "late": "19時以降も", "early": "朝9時前から", "sat": "土曜も", "sun": "日曜も", "hol": "祝日も", "nohol": "年中無休", "nolunch": "昼休みなし", "visit": "家に来てくれる（往診）", "catspec": "猫専門", "exospec": "うさぎ・鳥などの専門", "large": "大型犬の設備", "catroom": "猫用の待合室", "noresv": "予約なしでも", "resv": "予約できる", "park": "駐車場", "card": "カード払い", "ins": "ペット保険が使える", "hotel": "ペットホテル", "trim": "トリミング", "school": "しつけ教室・パピークラス", "ct": "CT・MRI", "y:吐く・下痢": "吐く・下痢", "y:皮膚のかゆみ": "皮膚のかゆみ", "y:咳": "咳", "y:歩き方がおかしい": "歩き方がおかしい", "y:目・耳の異常": "目・耳の異常"}, REG = [["北海道・東北",[["北海道",391],["宮城県",48],["福島県",1]]],["関東",[["茨城県",158],["栃木県",5],["群馬県",112],["埼玉県",20],["千葉県",54],["東京都",381],["神奈川県",196]]],["中部",[["新潟県",2],["富山県",40],["石川県",70],["福井県",1],["山梨県",64],["長野県",5],["岐阜県",118],["静岡県",165],["愛知県",11]]],["近畿",[["三重県",70],["滋賀県",60],["京都府",165],["大阪府",266],["兵庫県",9],["奈良県",84],["和歌山県",56]]],["中国・四国",[["島根県",18],["岡山県",111],["広島県",173],["山口県",88],["徳島県",45],["香川県",1],["愛媛県",62],["高知県",42]]],["九州・沖縄",[["福岡県",36],["佐賀県",32],["長崎県",54],["熊本県",42],["大分県",2],["宮崎県",6],["鹿児島県",3],["沖縄県",63]]]], SYM = {"y:吐く・下痢": ["消化器科"], "y:皮膚のかゆみ": ["皮膚科"], "y:咳": ["呼吸器科", "循環器科"], "y:歩き方がおかしい": ["整形外科", "神経科"], "y:目・耳の異常": ["眼科", "耳鼻科"]}, av = null;
 list.addEventListener("click", function(ev){ var b = ev.target.closest("button[data-pk]"); if (!b) return; pick.set([{p: b.getAttribute("data-pk")}]); box.scrollIntoView({behavior: "smooth", block: "start"}); });
 var NEED = {night: ["night"], sunhol: ["sun", "hol"], h24: ["h24"], visit: ["visit"], spec: ["spec"]};
 var NEEDL = {night: "夜間・救急", sunhol: "日曜・祝日", h24: "24時間", visit: "往診", spec: "専門診療"};
@@ -65,12 +65,21 @@ function keys(){ var k = Object.keys(on); (NEED[need] || []).forEach(function(x)
 function has(r, k){
 if (k === "spec") return ["catspec", "exospec", "large"].some(function(x){ return r.y.indexOf(x) >= 0; }) || !!(r.d && r.d.length);
 if (k.slice(0, 2) === "d:") return !!(r.d && r.d.indexOf(k.slice(2)) >= 0);
+if (k.slice(0, 2) === "y:") return (r.d || []).some(function(d){ return (SYM[k] || []).indexOf(d) >= 0; });
 return r.y.indexOf(k) >= 0;
+}
+function openNow(r){
+if (!r.t) return null;
+var d = new Date(), wd = "日月火水木金土"[d.getDay()];
+if (r.x && r.x.indexOf(wd + "曜") >= 0) return false;
+var m = d.getHours() * 60 + d.getMinutes();
+return r.t.some(function(t){ return (m >= t[0] && m < t[1]) || (t[1] > 1440 && m < t[1] - 1440); });
 }
 function judge(r, ks){
 var g = 0, unk = [];
 for (var i = 0; i < ks.length; i++) {
 var k = ks[i];
+if (k === "open") { var o = openNow(r); if (o === true) continue; if (o === false) return [2, []]; g = 1; unk.push(k); continue; }
 if (has(r, k)) continue;
 if (r.no.indexOf(k) >= 0 || STRICT[k]) return [2, []];
 g = 1; unk.push(k);
@@ -205,7 +214,7 @@ load.k = key;
 Promise.all(ps.map(get)).then(function(js){
 if (load.k !== key) return;
 data = [].concat.apply([], js); av = {};  // 選んだ県のデータで1院以上に当てはまる条件
-data.forEach(function(r){ if (!r.far) { r.y.forEach(function(k){ av[k] = 1; }); (r.d || []).forEach(function(d){ av["d:" + d] = 1; }); } });
+data.forEach(function(r){ if (!r.far) { r.y.forEach(function(k){ av[k] = 1; }); (r.d || []).forEach(function(d){ av["d:" + d] = 1; }); if (r.t) av["open"] = 1; Object.keys(SYM).forEach(function(k){ if (has(r, k)) av[k] = 1; }); } });
 shown = 30; draw();
 });
 }
