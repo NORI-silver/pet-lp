@@ -15324,6 +15324,1783 @@
    "url": "https://pal-shizuoka.com/",
    "chain": "indie",
    "facts": []
+  },
+  {
+   "id": "S-ST0664",
+   "name": "コンパニオン・アニマル・サポート しっぽのかぞく",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "久喜市",
+   "url": "https://shippo-kazoku.com/",
+   "chain": "indie",
+   "animals": "犬・猫",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1時間以内 1,000円／追加料金 2,000円",
+     "src": "https://shippo-kazoku.com/daycare/daycare-price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種証明証",
+     "src": "https://shippo-kazoku.com/daycare/daycare-process/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "初めてのご利用の場合、基本前払いでお願いしております。ご利用日までにお振り込み、もしくは現金でのお支払いをお願いいたします。",
+     "src": "https://shippo-kazoku.com/daycare/daycare-process/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0668",
+   "name": "ペットシッター あめのちはれ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "久喜市",
+   "url": "https://pets-amenochihare.jimdofree.com/",
+   "chain": "indie",
+   "animals": "猫",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0672",
+   "name": "ペットの保育園&ホテルOPPO",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "久喜市",
+   "url": "https://oppo-dog.info/",
+   "chain": "indie",
+   "animals": "犬・猫",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ペットシッターご利用料金：初回登録料 1500円(税別)／1頭追加 1000 円(税別)／1頭追加 1500 円(税別)／1頭追加 2000 円(税別)／猫(2頭まで) 2500 円(税別)",
+     "src": "https://oppo-dog.info/pet-sitter/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~19:00",
+     "src": "https://oppo-dog.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場料金・・・ご自宅に駐車場がなく有料駐車場を使用する場合はご負担をお願いいたします。",
+     "src": "https://oppo-dog.info/pet-sitter/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "※ご登録をご希望の際は狂犬病予防接種済証・ワクチン接種が確認できるものをご用意く",
+     "src": "https://oppo-dog.info/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※料金のお支払いは、現金のみとさせていただいております。",
+     "src": "https://oppo-dog.info/pet-sitter/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0687",
+   "name": "ペットシッター Healing",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "宮代町",
+   "url": "https://www.healing-pet.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0711",
+   "name": "Taffy",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "宮代町",
+   "url": "https://www.mkewpie722.com/",
+   "chain": "indie",
+   "animals": "犬・猫・小動物",
+   "area": "[ 営業エリア... ]",
+   "facts": [
+    {
+     "k": "送迎",
+     "v": "​● 送迎代行サービス...",
+     "src": "https://www.mkewpie722.com/blank-2",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "[ 営業エリア... ]",
+     "src": "https://www.mkewpie722.com/blank-2",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0782",
+   "name": "ペットシッターちょこあ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "坂戸市",
+   "url": "http://pet-chocoa.jp/",
+   "chain": "indie",
+   "animals": "犬・猫・小動物",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間】9:00〜19:00",
+     "src": "http://pet-chocoa.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "http://pet-chocoa.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0798",
+   "name": "ペットシッターのんのん",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "越生町",
+   "url": "https://www.petsitter-nonnon.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "シッティング日時より1〜2週間前に事前のお打合せをさせていただき、その際に現金にてお支払いいただき、合鍵をお預かりさせていただきます。",
+     "src": "https://www.petsitter-nonnon.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0800",
+   "name": "ABiA",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "坂戸市",
+   "url": "https://petsitter-abia.jimdofree.com/about/",
+   "chain": "indie",
+   "animals": "犬・猫・小動物",
+   "area": "富士見市 及び その周辺",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00~19:00",
+     "src": "https://petsitter-abia.jimdofree.com/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア:富士見市 及び その周辺",
+     "src": "https://petsitter-abia.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0802",
+   "name": "ペットシッター maman",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "鳩山町",
+   "url": "https://petsittermaman.com/",
+   "chain": "indie",
+   "animals": "犬・猫・小動物",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1628",
+   "name": "ペットシッター HANA",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川越市",
+   "url": "https://shirasunahana87.wixsite.com/petsitterhana",
+   "chain": "indie",
+   "animals": "犬・猫",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 8:00~19:00",
+     "src": "https://shirasunahana87.wixsite.com/petsitterhana",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "​定休日 年中無休",
+     "src": "https://shirasunahana87.wixsite.com/petsitterhana",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1660",
+   "name": "Bomnal",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川越市",
+   "url": "https://bomnal-petsitter.com/",
+   "chain": "indie",
+   "animals": "犬・猫・うさぎ",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "*お支払い方法は銀行振込/楽天ペイ/PayPayのいずれかからお選びください。",
+     "src": "https://bomnal-petsitter.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1677",
+   "name": "ペットシッターだいす",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川越市",
+   "url": "https://pet-sitter-dice.com/about/",
+   "chain": "indie",
+   "animals": "犬・猫・うさぎ・小動物・鳥",
+   "area": "訪問対応エリアのご案内",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "犬のお世話【大型犬(25kg以上)】：30分 2,000円／追加1ケージ +500円／45分 2,500円／追加1ケージ +1,000円／60分 3,500円",
+     "src": "https://pet-sitter-dice.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 :9:00~21:00",
+     "src": "https://pet-sitter-dice.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://pet-sitter-dice.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "※有料駐車場を利用する場合は、別途実費を頂戴いたします。",
+     "src": "https://pet-sitter-dice.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金またはクレジットカード(タッチ決済のみ)、お振込みに対応しております。",
+     "src": "https://pet-sitter-dice.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "訪問対応エリアのご案内",
+     "src": "https://pet-sitter-dice.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1695",
+   "name": "ディーズドッグトレーニングクラブ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川口市",
+   "url": "https://dsdog.jp/",
+   "chain": "indie",
+   "animals": "犬",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "<営業時間:12時~21時まで/定休日 日曜日>",
+     "src": "https://dsdog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "<営業時間:12時~21時まで/定休日 日曜日>",
+     "src": "https://dsdog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "※送迎不可 複数頭ご利用の場合2頭目以降20%Off",
+     "src": "https://dsdog.jp/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1743",
+   "name": "wanだふる",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川口市",
+   "url": "https://kurakurajjj.wixsite.com/wanda",
+   "chain": "indie",
+   "animals": "犬",
+   "area": "​*対応エリアは、埼玉県・東京都ですが、その他エリアもご相談ください",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "*狂犬病予防接種をしていないワンちゃんは原則としてお断りさせていただきます",
+     "src": "https://kurakurajjj.wixsite.com/wanda/blank-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い、領収書の発行(基本は現金で前払いとなります)",
+     "src": "https://kurakurajjj.wixsite.com/wanda/blank-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "​*対応エリアは、埼玉県・東京都ですが、その他エリアもご相談ください",
+     "src": "https://kurakurajjj.wixsite.com/wanda/blank-3",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1754",
+   "name": "ペットシッター モチモチ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川口市",
+   "url": "https://mochimochi.lamyflu.org/",
+   "chain": "indie",
+   "animals": "猫・小動物",
+   "area": "その他の地域はお気軽にお問い合わせください。",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本料金(1回40分) 3,630 円(税込)",
+     "src": "https://mochimochi.lamyflu.org/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00〜18:00",
+     "src": "https://mochimochi.lamyflu.org/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア：その他の地域はお気軽にお問い合わせください。",
+     "src": "https://mochimochi.lamyflu.org/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0150",
+   "name": "おうちペットケア",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "新座市",
+   "url": "https://ouchi-petcare.com/",
+   "chain": "indie",
+   "animals": "犬・猫",
+   "area": "+ 現在の対応エリアは埼玉県の新座・朝霞・志木・所沢を中心としています。それ以外のエリアもご相談ください。",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "わんちゃんのお世話(大型)：※ 多頭のご家庭は2頭目以降、1頭につき +1,000円(同じお時間内で一緒にお世話いたします)／※ シニア・介護が必要な子は専門ケア加算 +1,500円(お世話の内容が多い場合は +2,000円)で承ります",
+     "src": "https://ouchi-petcare.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "・駐車スペースがない場合は、近隣コインパーキング代の実費をご負担いただきます",
+     "src": "https://ouchi-petcare.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "+ 現在の対応エリアは埼玉県の新座・朝霞・志木・所沢を中心としています。それ以外のエリアもご相談ください。",
+     "src": "https://ouchi-petcare.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0171",
+   "name": "アイムペットシッターサービス",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "鴻巣市",
+   "url": "http://www5d.biglobe.ne.jp/~iam-pet/",
+   "chain": "indie",
+   "animals": "犬・猫・うさぎ・小動物",
+   "area": "会員様からご紹介されてご成約された方は1,000円OFF、紹介してくださった会員様",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "■初回登録料 (ペットの種類を問わず一律1,000円となります。)／すべての大きさ(小~大型犬) : 2,000円 1日/1回 1匹あたり／※食事のお世話が必要な場合は、ペットシッターサービス(1時間 2,500円/1回をご利用ください。)／尚、初回のみ登録料として、1,000円が必要となります。",
+     "src": "http://www5d.biglobe.ne.jp/~iam-pet/sub3.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "犬の場合は年1回の狂犬病のワクチンは必要です、また、犬、猫の混合ワクチンの接種もお願いしております。",
+     "src": "http://www5d.biglobe.ne.jp/~iam-pet/sub6.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード決済がご利用いただけます。",
+     "src": "http://www5d.biglobe.ne.jp/~iam-pet/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "■営業エリア：会員様からご紹介されてご成約された方は1,000円OFF、紹介してくださった会員様",
+     "src": "http://www5d.biglobe.ne.jp/~iam-pet/sub3.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0182",
+   "name": "ぺったんぱぱ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "上尾市",
+   "url": "https://pet-and-papa.g.dgdg.jp/",
+   "chain": "indie",
+   "animals": "犬・猫",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0204",
+   "name": "キャットシッター ひなた猫",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "鴻巣市",
+   "url": "https://hinataneko.net/",
+   "chain": "indie",
+   "animals": "猫・うさぎ・小動物",
+   "area": "主な対応エリアは、鴻巣市・行田市・熊谷市・東松山市など、当店(鴻巣市吹上富士見)より最短ルートで10km圏内となっております。",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "✤初回のみカルテ作成料 1,000円／2500円 (2匹まで)／+300円 (1回)／追加料金 15分500円",
+     "src": "https://hinataneko.net/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "※営業時間 9時〜18時",
+     "src": "https://hinataneko.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・定期的にワクチンの接種を受けていること",
+     "src": "https://hinataneko.net/info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "主な対応エリアは、鴻巣市・行田市・熊谷市・東松山市など、当店(鴻巣市吹上富士見)より最短ルートで10km圏内となっております。",
+     "src": "https://hinataneko.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0210",
+   "name": "キャットシッター Sourire",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "桶川市",
+   "url": "https://www.cs-sourire-saitama.com/",
+   "chain": "indie",
+   "animals": "猫",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "●受付営業時間は8時~18時です。メールの場合18時以降に届いたものは、翌日扱いとなります。",
+     "src": "https://www.cs-sourire-saitama.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0222",
+   "name": "ペットシッターさいたま",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "上尾市",
+   "url": "https://pssaitama.com/",
+   "chain": "indie",
+   "animals": "犬・猫・うさぎ・小動物・鳥",
+   "area": "エリア外の場合も、極端な遠方(県外など)でなければ可能な範囲で対応いたします。お困りの時は遠慮なくご相談ください。(地域によって追加の交通費が発生します。)",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本料金：交通費550円 + 駐車場代※／※初回ご利用時のみ初回登録手数料+1,100円／2,980 円/1匹／+ 1,320 円/2匹目以降／3,300 円/1匹",
+     "src": "https://pssaitama.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:8:00〜22:00(時間外対応あり)",
+     "src": "https://pssaitama.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:年中無休",
+     "src": "https://pssaitama.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "※有料駐車場利用時のみ",
+     "src": "https://pssaitama.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防接種を受けていない",
+     "src": "https://pssaitama.com/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "4代金のお支払い(現金)",
+     "src": "https://pssaitama.com/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎不要、普段通りの環境でらくらくお留守番。ペットにも飼い主様にも嬉しいお世話代行サービス。それがペットシッターです。",
+     "src": "https://pssaitama.com/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア：エリア外の場合も、極端な遠方(県外など)でなければ可能な範囲で対応いたします。お困りの時は遠慮なくご相談ください。(地域によって追加の交通費が発生します。)",
+     "src": "https://pssaitama.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0256",
+   "name": "ペットシッター 星の実",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "桶川市",
+   "url": "https://www.petsitter-hoshinomi.com/",
+   "chain": "indie",
+   "area": "営業エリア",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "(受付時間am10:00~pm7:00 )",
+     "src": "https://www.petsitter-hoshinomi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "営業エリア",
+     "src": "https://www.petsitter-hoshinomi.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1529",
+   "name": "にゃんしぇるじゅ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市緑区",
+   "url": "https://www.nyancierge.com/",
+   "chain": "indie",
+   "animals": "犬・猫・うさぎ・鳥",
+   "area": "浦和美園駅から7km圏内が対象です。",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シッター2匹まで:1日1回訪問 3,500円／シッター3匹目からは1匹追加ごとに500円追加／初回登録2匹まで:3,300円(打ち合わせ費用、カルテ作成費、交通費含む)／初回登録3匹目からは1匹追加ごとに500円追加／出張費は地図アプリにて算出し、片道1kmごとに110円(100m単位切り捨て)を加算します",
+     "src": "https://www.nyancierge.com/terms",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "​PayPay",
+     "src": "https://www.nyancierge.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア：浦和美園駅から7km圏内が対象です。",
+     "src": "https://www.nyancierge.com/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1532",
+   "name": "ペットシッターあい 浦和店",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市浦和区",
+   "url": "https://petsitter-ai-official.com/",
+   "chain": "indie",
+   "animals": "犬・猫・うさぎ・小動物・鳥",
+   "area": "対応エリアを教えてください。",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間9:00~19:00",
+     "src": "https://petsitter-ai-official.com/wedding/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "なし(不定休)",
+     "src": "https://petsitter-ai-official.com/shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "どうしても駐車スペースが近隣に無い場合は実費有料にて公共交通機関を利用して訪問させて頂きます。",
+     "src": "https://petsitter-ai-official.com/terms/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法...カウンセリング時に現金にてお支払い、もしくはシッティングの3日前までにお振込みをお願いしております。",
+     "src": "https://petsitter-ai-official.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "動物病院やトリミングサロンへの送迎も行っております。",
+     "src": "https://petsitter-ai-official.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリアを教えてください。",
+     "src": "https://petsitter-ai-official.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1607",
+   "name": "川越ミャウ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川越市",
+   "url": "https://kawagoemeow.com/",
+   "chain": "indie",
+   "animals": "猫",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1619",
+   "name": "キャットシッターねこぼくろ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川越市",
+   "url": "https://nekobokuro.jimdoweb.com/",
+   "chain": "indie",
+   "animals": "猫",
+   "area": "訪問エリア",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "訪問エリア",
+     "src": "https://nekobokuro.jimdoweb.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1622",
+   "name": "もてなし家",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川越市",
+   "url": "https://motenashiya-pet.com/",
+   "chain": "indie",
+   "animals": "犬・猫・うさぎ・小動物",
+   "area": "ペットのお世話を坂戸市やふじみ野市等の幅広いエリアで承っております。地域密着の業者として、これからも周辺にお住まいの方々をサポートしておりますので、対応エリアについてもお気軽にお問い合わせください。",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:10:00~19:00",
+     "src": "https://motenashiya-pet.com/new_page/20221205000937/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://motenashiya-pet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "ペットのお世話を坂戸市やふじみ野市等の幅広いエリアで承っております。地域密着の業者として、これからも周辺にお住まいの方々をサポートしておりますので、対応エリアについてもお気軽にお問い合わせください。",
+     "src": "https://motenashiya-pet.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1190",
+   "name": "キャットシッターさやま",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "狭山市",
+   "url": "https://cs-sayama9.webnode.jp/profile/",
+   "chain": "indie",
+   "animals": "犬・猫・小動物・鳥",
+   "area": "狭山市内限定サービスの為、原則として市街の訪問はお断りしておりますが、出張交通費をお支払い頂ければ訪問可能な場合もございますので、お困りの際はご相談下さい。",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "キャットシッターさやま|料金表：初回 1500円／2回目以降 1000円／1匹 3000円／1匹 500円",
+     "src": "https://cs-sayama9.webnode.jp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン未接種、医療行為を要する猫のお世話はお引き受けできません。",
+     "src": "https://cs-sayama9.webnode.jp/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "狭山市内限定サービスの為、原則として市街の訪問はお断りしておりますが、出張交通費をお支払い頂ければ訪問可能な場合もございますので、お困りの際はご相談下さい。",
+     "src": "https://cs-sayama9.webnode.jp/question/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1191",
+   "name": "おおたはら動物診療所",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "所沢市",
+   "url": "https://otahara-vetclinic.com/",
+   "chain": "indie",
+   "animals": "犬・猫",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "※静脈点滴、採血・検査、手術にかかわる処置、急病の診察・ワクチン接種(往診)は行っていません。",
+     "src": "https://otahara-vetclinic.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1203",
+   "name": "Petta Paws",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "入間市",
+   "url": "https://pettapaws.com/",
+   "chain": "indie",
+   "animals": "犬",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1234",
+   "name": "キャットシッターwith",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "蕨市",
+   "url": "https://cs-with.com/",
+   "chain": "indie",
+   "animals": "犬・猫",
+   "area": "対応エリア  |川口市 / 蕨市 / 南浦和",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "キャットシッターご利用料金：3,600円(2匹まで) / 1日1回(約1時間)／(3匹目から1匹ごとに500円加算)／点眼薬500円/1回／経口投与(錠剤 カプセル)500円/1回／インスリン注射1,000円/1回",
+     "src": "https://cs-with.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア  |川口市 / 蕨市 / 南浦和",
+     "src": "https://cs-with.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1778",
+   "name": "ペットシッター ディアン",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川口市",
+   "url": "https://dian-anidin.studio.site/",
+   "chain": "indie",
+   "animals": "猫",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-SK013",
+   "name": "あんしんペットシッター 越谷本舗",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "越谷市",
+   "url": "https://koshigaya-hompo.littlestar.jp/",
+   "chain": "indie",
+   "animals": "猫",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "支払い方法は現金で、鍵のお預かり時(前払い)となります。",
+     "src": "https://koshigaya-hompo.littlestar.jp/%e6%96%99%e9%87%91%e3%81%ae%e3%83%9a%e3%83%bc%e3%82%b8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-SK032",
+   "name": "いつもぺっと",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "越谷市",
+   "url": "https://itsumopetto3.net/",
+   "chain": "indie",
+   "animals": "犬・猫・うさぎ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "延長料金:15分ごとに500円／基本料金:中型犬(25kg未満) 3,500円",
+     "src": "https://itsumopetto3.net/menu/dogcare/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:5:00〜22:00",
+     "src": "https://itsumopetto3.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "ご自宅に駐車スペースが無く有料駐車場を利用した場合、お客様に別途駐車料金をご負担頂いております。何卒ご了承下さいませ。",
+     "src": "https://itsumopetto3.net/menu/dogcare/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い：前払いで現金、もしくはお振込のみとさせて頂きます。",
+     "src": "https://itsumopetto3.net/menu/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0981",
+   "name": "ペットシッター トコトコ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "所沢市",
+   "url": "https://www.toco2dog.com/",
+   "chain": "indie",
+   "animals": "犬・猫",
+   "area": "訪問エリア",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "時間延長 (30分) 3,000円／1,500円/1頭／2,000円/1頭／1,000円/1頭",
+     "src": "https://www.toco2dog.com/service/11/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "又、ご依頼宅に駐車場が無い場合はお近くの有料駐車場等のご用意をして頂き、その駐車代はご依頼者の方のご負担とさせて頂きます。",
+     "src": "https://www.toco2dog.com/service/11/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払方法はお打合せ時もしくはお振込みをお願い致します。",
+     "src": "https://www.toco2dog.com/service/13/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "訪問エリア",
+     "src": "https://www.toco2dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0983",
+   "name": "猫さんのこもり",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "所沢市",
+   "url": "https://kinacomike.net/",
+   "chain": "indie",
+   "animals": "犬・猫",
+   "area": "営業エリア/所沢、清瀬、東村山",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本料金：2匹まで2,000円、3匹目から1匹につき300円／1日2回訪問 3,000円／3,200円(交通費2回分)",
+     "src": "https://kinacomike.net/info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "きじ白・2歳・♀(ワクチン、避妊済、エイズキャリア)",
+     "src": "https://kinacomike.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "営業エリア/所沢、清瀬、東村山",
+     "src": "https://kinacomike.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0477",
+   "name": "ペットシッター めりーもこ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "熊谷市",
+   "url": "https://www.pet-merrymoco.com/",
+   "chain": "indie",
+   "animals": "犬・猫・小動物",
+   "area": "熊谷市、行田市、深谷市、東松山市 ​",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "​交通費(訪問1回毎)：500円/1訪問／滑川町、吉見町、鴻巣市、羽生市(出張費 500円/1訪問)",
+     "src": "https://www.pet-merrymoco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "●狂犬病、混合ワクチン証明書 (接種より一年以内のもの。未接種の場合には猶予証明書の確認をいたします。 )",
+     "src": "https://www.pet-merrymoco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア:熊谷市、行田市、深谷市、東松山市 ​",
+     "src": "https://www.pet-merrymoco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0488",
+   "name": "羽生ペットシッターサービス",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "羽生市",
+   "url": "https://hanyupetsitter.webnode.jp/",
+   "chain": "indie",
+   "animals": "猫・小動物",
+   "area": "営業エリア 羽生 行田 館林 加須",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "営業エリア 羽生 行田 館林 加須",
+     "src": "https://hanyupetsitter.webnode.jp/%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0507",
+   "name": "リッチタイム",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "行田市",
+   "url": "http://petservise-richtime.com/",
+   "chain": "indie",
+   "animals": "犬・猫・小動物",
+   "area": "サービス対応エリア",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "電話受付時間 9:00~19:00",
+     "src": "http://petservise-richtime.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "A.対応しておりません。今後、クレジットカードのお支払いも導入検討中です。",
+     "src": "http://petservise-richtime.com/question.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "サービス対応エリア",
+     "src": "http://petservise-richtime.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0549",
+   "name": "ネコノルス番",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "羽生市",
+   "url": "https://neconorusuban.jimdofree.com/",
+   "chain": "indie",
+   "animals": "猫",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "お世話内容・料金表：基本料金 2,500円／追加料金(一匹につき) +500円",
+     "src": "https://neconorusuban.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0586",
+   "name": "ペットシッター KAZU",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "松伏町",
+   "url": "https://petsitter-kazu.amebaownd.com/",
+   "chain": "indie",
+   "animals": "犬・猫・小動物",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "30分:3000円+消費税／1時間:4000円+消費税／30分:2500円+消費税／1時間:3500円+消費税",
+     "src": "https://petsitter-kazu.amebaownd.com/pages/1749344/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "料金は基本的に前払いでお願いしております。お支払いは現金または振込みのいずれかをお選びください。",
+     "src": "https://petsitter-kazu.amebaownd.com/pages/1749343/gallery",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0608",
+   "name": "ペットシッターぽてと春日部",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "春日部市",
+   "url": "https://shippo100pon.wixsite.com/poteto",
+   "chain": "indie",
+   "animals": "犬・猫・小動物",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "・狂犬病の注射・ワクチン接種済の確認",
+     "src": "https://shippo100pon.wixsite.com/poteto",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0616",
+   "name": "cocoro",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "春日部市",
+   "url": "https://www.petcare-cocoro.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1040",
+   "name": "ペットシッターMON",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "日高市",
+   "url": "https://petsitter-mon.com/",
+   "chain": "indie",
+   "animals": "犬・猫・うさぎ・小動物・鳥",
+   "area": "[対応エリア] 日高市",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "[営業時間] 8:00~21:00 (以外相談可)",
+     "src": "https://petsitter-mon.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "[定休日] 年中無休",
+     "src": "https://petsitter-mon.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "[対応エリア] 日高市",
+     "src": "https://petsitter-mon.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1045",
+   "name": "petitka",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "所沢市",
+   "url": "https://petitka.jimdofree.com/about/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1047",
+   "name": "ペットライフサポート Rems",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "飯能市",
+   "url": "https://pet-life-support.wixsite.com/rems",
+   "chain": "indie",
+   "animals": "犬",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日:毎週木曜日/第2日曜日",
+     "src": "https://pet-life-support.wixsite.com/rems",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "●1年以内に狂犬病、混合ワクチン接種をしている。",
+     "src": "https://pet-life-support.wixsite.com/rems/blank-4",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみとなります。",
+     "src": "https://pet-life-support.wixsite.com/rems/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1100",
+   "name": "ペットシッター こまさん",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "狭山市",
+   "url": "https://www.petsitter-komasan.com/%E3%83%96%E3%83%AD%E3%82%B0/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0324",
+   "name": "SOAR UP",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "東松山市",
+   "url": "https://soarup.crayonsite.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0410",
+   "name": "ペットシッターるる",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "深谷市",
+   "url": "https://mimijiji7.wixsite.com/petsitter-ruru",
+   "chain": "indie",
+   "animals": "犬・猫・うさぎ・小動物・鳥",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ペットシッター料金：お世話料金(1回) 2,500円~",
+     "src": "https://mimijiji7.wixsite.com/petsitter-ruru/sitting",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "チェックイン(8時〜20時)から24時間までのお預かりを1泊とします。",
+     "src": "https://mimijiji7.wixsite.com/petsitter-ruru/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：日曜日/予約のない日",
+     "src": "https://mimijiji7.wixsite.com/petsitter-ruru",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "有\u0000料駐車場を使用した場合駐車料金がかかります。(打ち合わせも同様)",
+     "src": "https://mimijiji7.wixsite.com/petsitter-ruru/sitting",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチン接種証明書",
+     "src": "https://mimijiji7.wixsite.com/petsitter-ruru/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "​お支払い方法は現金のみとなっています。(キャッシュレス決済などは約2〜3%の手数料が発生するためです)",
+     "src": "https://mimijiji7.wixsite.com/petsitter-ruru/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1371",
+   "name": "ペットシッターひまわり",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市中央区",
+   "url": "https://sitterhimawari.jimdofree.com/",
+   "chain": "indie",
+   "animals": "犬・猫・うさぎ・小動物・鳥",
+   "area": "犬、猫、うさぎ、ハリネズミ、デグー、ハムスター、モルモット、フェレット、インコ、文鳥など",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "【対応エリア 】：犬、猫、うさぎ、ハリネズミ、デグー、ハムスター、モルモット、フェレット、インコ、文鳥など",
+     "src": "https://sitterhimawari.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1372",
+   "name": "アモーレ ペットサービス",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市浦和区",
+   "url": "http://amorepetservice.com/",
+   "chain": "indie",
+   "animals": "犬",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1397",
+   "name": "ペットシッター たかちゃん",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市見沼区",
+   "url": "https://petsittertakachan.jimdofree.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:AM10:00~PM18:00(要相談)",
+     "src": "https://petsittertakachan.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1430",
+   "name": "猫のお世話 ねころび",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市緑区",
+   "url": "https://necolove.com/care/",
+   "chain": "indie",
+   "animals": "猫",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "お世話(訪問1回毎) 3,300円／追加1猫+550円~、飼育状況に応じて加算させていただきます。",
+     "src": "https://necolove.com/care/%e5%9f%ba%e6%9c%ac%e6%96%99%e9%87%91%e3%80%80%e3%81%8a%e9%a0%90%e3%81%8b%e3%82%8a%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9%e3%80%80%e3%81%8a%e4%bc%ba%e3%81%84%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9%e3%80%80/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休。",
+     "src": "https://necolove.com/care/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "■駐車場1台分あります■",
+     "src": "https://necolove.com/care/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "※入院などに当たって猫ちゃんの送迎が必要な場合は、別途承りますのでご相談ください。",
+     "src": "https://necolove.com/care/%e5%9f%ba%e6%9c%ac%e6%96%99%e9%87%91%e3%80%80%e3%81%8a%e9%a0%90%e3%81%8b%e3%82%8a%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9%e3%80%80%e3%81%8a%e4%bc%ba%e3%81%84%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9%e3%80%80/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0009",
+   "name": "ペットスリーわん",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "志木市",
+   "url": "https://3-wan.com/",
+   "chain": "indie",
+   "animals": "犬・猫",
+   "area": "予約状況",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：ペットシッター&トレーニング:9:00~19:00",
+     "src": "https://3-wan.com/gaiyou.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://3-wan.com/gaiyou.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "車で訪問の際、有料駐車場の利用が必要な時は実費をご請求いたします。",
+     "src": "https://3-wan.com/petsitter.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・ワクチン接種前の幼犬の場合",
+     "src": "https://3-wan.com/petsitter.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは現金またはペイペイもご利用いただけます。",
+     "src": "https://3-wan.com/petsitter.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "訪問エリア：予約状況",
+     "src": "https://3-wan.com/petsitter.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0020",
+   "name": "フォーリーフクローバー",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "新座市",
+   "url": "https://www.pet-flc.com/",
+   "chain": "indie",
+   "animals": "犬・猫",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "[受付時間] 9:00~20:00 [定休日] 不定休",
+     "src": "https://www.pet-flc.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "[受付時間] 9:00~20:00 [定休日] 不定休",
+     "src": "https://www.pet-flc.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0082",
+   "name": "ペットシッター しっぽヶ丘",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "新座市",
+   "url": "https://www.shippogaoka.com/%E7%AC%AC%E4%B8%80%E7%A8%AE%E5%8B%95%E7%89%A9%E5%8F%96%E6%89%B1%E6%A5%AD%E8%80%85%E8%AD%98%E5%88%A5%E7%AB%A0/",
+   "chain": "indie",
+   "animals": "犬・猫",
+   "area": "猫コラム",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "対応エリア：猫コラム",
+     "src": "https://www.shippogaoka.com/%E7%AC%AC%E4%B8%80%E7%A8%AE%E5%8B%95%E7%89%A9%E5%8F%96%E6%89%B1%E6%A5%AD%E8%80%85%E8%AD%98%E5%88%A5%E7%AB%A0/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0139",
+   "name": "ペットシッターCHACHA",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "ふじみ野市",
+   "url": "https://petsitterchacha.wordpress.com/",
+   "chain": "indie",
+   "animals": "犬・猫",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間9:00〜17:00",
+     "src": "https://petsitterchacha.wordpress.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "• ワクチンが未接種",
+     "src": "https://petsitterchacha.wordpress.com/%E3%83%89%E3%83%83%E3%82%B0%E3%83%9B%E3%83%86%E3%83%AB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "1回1,000円(15キロ以内)で送迎を承っております。(送迎の両方の場合2000円)",
+     "src": "https://petsitterchacha.wordpress.com/%E3%83%89%E3%83%83%E3%82%B0%E3%83%9B%E3%83%86%E3%83%AB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST0145",
+   "name": "犬晴れ",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "新座市",
+   "url": "https://inubare2025.wixsite.com/my-site-2",
+   "chain": "indie",
+   "animals": "犬",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ペットシッター料金：1日1回 2000円／1日2回 3000円／散歩のみ 1500円／​1日当たり500円の追加料金が加算されます／1時間500円",
+     "src": "https://inubare2025.wixsite.com/my-site-2",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間11:00~20:00 1日1組",
+     "src": "https://inubare2025.wixsite.com/my-site-2",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "(駐車場なし)",
+     "src": "https://inubare2025.wixsite.com/my-site-2",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "☆1年以内に混合ワクチン、狂犬病を接種している。",
+     "src": "https://inubare2025.wixsite.com/my-site-2",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "S-ST1219",
+   "name": "ペットコンシェルジュ OHANA CARE",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "戸田市",
+   "url": "https://ohanacare.jp/",
+   "chain": "indie",
+   "animals": "犬・猫・うさぎ・小動物・鳥",
+   "area": "料金プラン",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "対応エリア内でご自宅敷地内に駐車場があり",
+     "src": "https://ohanacare.jp/plan/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "□ 狂犬病・ワクチン証明証",
+     "src": "https://ohanacare.jp/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いもお打合せ時に現金にてお願いしております。",
+     "src": "https://ohanacare.jp/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア：料金プラン",
+     "src": "https://ohanacare.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }
