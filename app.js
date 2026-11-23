@@ -8,7 +8,8 @@ var ROAD_API = "https://router.project-osrm.org";
    false のあいだは今までどおり、カードや一覧が画面に入ったら星を取り寄せる（月の上限つき）。月1万PV（または口コミの月の上限の8割）を超えたら true にして gen_areas.py を実行する */
 var REVIEW_ON_CLICK = true;
 /* お誘いした会社だけの見本の画面（?demo=…。Nori 2026-11-02）。その会社だけ名前と口コミつきで出し、問い合わせは送らない */
-var DEMO = {tok: (function(){ try { return new URLSearchParams(location.search).get("demo") || ""; } catch (e) { return ""; } })(), ok: false, name: ""};
+/*PUBLIC_PAUSE*/var PUBLIC_PAUSE = ["D5598693", "P066"];/*/PUBLIC_PAUSE*/
+var DEMO = {tok: (function(){ try { var tok = new URLSearchParams(location.search).get("demo") || ""; return PUBLIC_PAUSE.indexOf(tok.split(".")[0]) < 0 ? tok : ""; } catch (e) { return ""; } })(), ok: false, name: ""};
 /* アクセス解析に操作の回数だけを送る（入力内容は送らない）。ga.js が動いていないときは何もしない */
 function track(name, params){ if (window.gtag) gtag("event", name, params || {}); }
 /* 計測に使う項目の名前（ペットごとの欄は pet_… にまとめる）。値は使わない */
@@ -165,7 +166,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     }
     askQuotes(1).then(function(result){
       if (searchSeq !== quoteSeq || sending) return;
-      quoteLegs = result.legs || null; scoresReady = result.scores === 1; // 予約のしくみが新しい版のときだけ星をまとめて取り寄せる
+      // サイト先行反映でも旧予約サーバーからの非掲載カードを出さない。
+      function visible(cards){ return (cards || []).filter(function(c){ return PUBLIC_PAUSE.indexOf(c.id) < 0; }); }
+      result.cards = visible(result.cards);
+      quoteLegs = result.legs ? {go:visible(result.legs.go), back:visible(result.legs.back)} : null; scoresReady = result.scores === 1; // 予約のしくみが新しい版のときだけ星をまとめて取り寄せる
       paintPartners(result.cards);
       // 戦略の数字（2026-11-08）：候補を出した回数・問い合わせできる会社が1社以上出た回数。1ページで1回だけ数える
       if (!partnersTracked) { var nb = result.cards.filter(function(c){ return !c.display_only; }).length; partnersTracked = true; track("view_partners", {count: result.cards.length, bookable: nb, pref: $("pref").value}); if (nb) track("view_bookable", {count: nb, pref: $("pref").value}); }
