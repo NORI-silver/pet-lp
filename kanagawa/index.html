@@ -454,6 +454,18 @@ footer a{color:var(--ink-2)}
 .emg-guess[hidden]{display:none}
 .open-note{margin:8px 0 0;background:#f7f4f1;border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
 #petForm.lite .opt-lite{display:none}
+#petForm.s1 .s1-hide{display:none}
+#petForm.s1 .pref-pick:not(.show){display:none}
+.see-btn{display:block;width:100%;margin:6px 0 4px}
+.see-sub{margin:0 0 12px;text-align:center;font-size:.8rem;color:var(--ink-3)}
+.refine-bar{margin:4px 0 14px}
+.refine-bar p{margin:0 0 8px;font-size:.84rem;color:var(--ink-2)}
+.refine-bar .chips{display:flex;flex-wrap:wrap;gap:8px}
+.refine-bar .chips button{padding:9px 14px;border:1.5px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font-weight:700;font-size:.86rem;cursor:pointer}
+.no-cand{margin:12px 0 0;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:#fff;font-size:.86rem;line-height:1.7}
+.no-cand p{margin:0 0 6px;font-weight:700}
+.no-cand ul{margin:0;padding-left:1.1em}
+.no-cand li{margin:4px 0}
 .partner-wait{font-weight:400;color:var(--ink-2)}
 .wait-note b{color:var(--o-d)}
 .open-note[hidden],#contactBox[hidden]{display:none}
@@ -1167,22 +1179,22 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
       <p class="emg-note" id="emgNote"></p>
     </div>
     <div class="form-card">
-      <form id="petForm" novalidate>
+      <form id="petForm" class="s1" novalidate>
         <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
         <div class="group">
-          <div class="group-h"><span>1</span>いつ、どこへ行きますか？</div>
+          <div class="group-h"><span>1</span>どこから・どこへ・いつ？</div>
           <div class="f"><label for="pickup">お迎えの場所<span class="need">必須</span></label>
             <button type="button" class="geo-btn" id="geoBtn" hidden>📍 いまいる場所を入れる</button>
             <input type="text" id="pickup" name="pickup" placeholder="例：渋谷駅 ハチ公口／世田谷区三軒茶屋2丁目" required autocomplete="off">
             <p class="geo-msg" id="geoMsg" aria-live="polite"></p></div>
-          <details class="f opt-lite more"><summary>途中で寄るところがあるとき</summary><span class="lbl">経由地</span>
+          <details class="f opt-lite more s1-hide"><summary>途中で寄るところがあるとき</summary><span class="lbl">経由地</span>
             <div class="seg"><label><input type="radio" name="via_on" value="なし" checked><span>なし</span></label><label><input type="radio" name="via_on" value="あり"><span>あり（途中で寄る）</span></label></div>
             <div class="via-box" id="viaBox" hidden><input type="text" id="via" autocomplete="off" name="via" placeholder="例：〇〇トリミングサロン（渋谷区）" aria-label="経由地"></div></details>
           <div class="f"><label for="dropoff">行き先<span class="need">必須</span></label>
             <input type="text" id="dropoff" autocomplete="off" name="dropoff" placeholder="例：代々木公園／〇〇動物病院（目黒区）" required>
             <button type="button" class="hist-clear" id="histClear" hidden>この端末に残っている場所の候補を消す</button></div>
-          <div class="f pref-pick"><label for="pref" id="prefLbl">お迎えの都道府県<span class="any">場所から自動で入ります</span></label>
+          <div class="f pref-pick" id="prefPick"><label for="pref" id="prefLbl">お迎えの都道府県<span class="any">場所から自動で入ります</span></label>
             <button type="button" id="prefBtn" class="pref-btn" aria-labelledby="prefLbl prefBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="prefPanel" hidden>選んでください</button>
             <div class="pref-panel" id="prefPanel" hidden><input type="search" id="prefQ" class="pref-q" placeholder="県名で検索（例：かながわ、ふくおか）" autocomplete="off" aria-label="お迎えの都道府県を県名で検索" enterkeyhint="search"><ul class="pref-list" id="prefList" role="listbox" aria-label="お迎えの都道府県"></ul></div>
             <select id="pref" name="pref" required><option value="">選んでください</option><option>東京都</option><option selected>神奈川県</option><option>大阪府</option><option>愛知県</option><option>埼玉県</option><option>千葉県</option><option>兵庫県</option><option>北海道</option><option>福岡県</option><option>静岡県</option><option>茨城県</option><option>広島県</option><option>京都府</option><option>宮城県</option><option>新潟県</option><option>長野県</option><option>岐阜県</option><option>群馬県</option><option>栃木県</option><option>岡山県</option><option>福島県</option><option>三重県</option><option>熊本県</option><option>鹿児島県</option><option>沖縄県</option><option>滋賀県</option><option>山口県</option><option>愛媛県</option><option>奈良県</option><option>長崎県</option><option>青森県</option><option>岩手県</option><option>石川県</option><option>大分県</option><option>宮崎県</option><option>山形県</option><option>富山県</option><option>秋田県</option><option>香川県</option><option>和歌山県</option><option>佐賀県</option><option>山梨県</option><option>福井県</option><option>徳島県</option><option>高知県</option><option>島根県</option><option>鳥取県</option></select>
@@ -1194,6 +1206,18 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
               <select id="hour" name="hour" required aria-label="時"><option value="">時</option><option value="00">0時</option><option value="01">1時</option><option value="02">2時</option><option value="03">3時</option><option value="04">4時</option><option value="05">5時</option><option value="06">6時</option><option value="07">7時</option><option value="08">8時</option><option value="09">9時</option><option value="10">10時</option><option value="11">11時</option><option value="12">12時</option><option value="13">13時</option><option value="14">14時</option><option value="15">15時</option><option value="16">16時</option><option value="17">17時</option><option value="18">18時</option><option value="19">19時</option><option value="20">20時</option><option value="21">21時</option><option value="22">22時</option><option value="23">23時</option></select>
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
+          <button type="button" class="btn see-btn" id="seeBtn">来てくれる会社と料金を見る（無料）</button>
+          <p class="see-sub">ペットのことやご連絡先は、会社を見てから入れます。まだどこにも送信されません。</p>
+          <div class="est" id="est" hidden aria-live="polite"></div>
+        </div>
+
+        <div class="refine-bar" id="refineBar" hidden>
+          <p id="refineNote">うちの子に合わせてしぼる</p>
+          <div class="chips"><button type="button" data-chip="pet">🐾 ペット：入れる</button><button type="button" data-chip="trip" id="chipTrip">片道 ▾</button><button type="button" data-chip="riders" id="chipRiders">一緒に乗る人：1人 ▾</button><button type="button" data-chip="more">くわしい条件 ▾</button></div>
+        </div>
+
+        <div class="group s1-hide" id="refine">
+          <div class="group-h"><span>2</span>どんな子ですか？</div>
           <div class="f"><span class="lbl">片道・往復<span class="need">必須</span></span>
             <div class="seg"><label><input type="radio" name="trip" value="片道" required checked><span>片道</span></label><label><input type="radio" name="trip" value="往復"><span>往復</span></label></div>
             <div class="via-box" id="retBox" hidden><label for="retDate" class="lbl">帰りのお迎え日時（用事が終わる時刻）<span class="need">必須</span></label>
@@ -1211,11 +1235,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
                 <label for="retDropoff" class="lbl">帰りの行き先<span class="need">必須</span></label>
                 <input type="text" id="retDropoff" autocomplete="off" name="ret_dropoff" placeholder="例：〇〇ペットホテル（目黒区）">
               </div></div></div>
-          <div class="est" id="est" hidden aria-live="polite"></div>
-        </div>
-
-        <div class="group">
-          <div class="group-h"><span>2</span>どんな子ですか？</div>
           <div class="f"><label for="petCount">一緒に乗る子の数<span class="need">必須</span></label>
             <select id="petCount" required><option value="">選んでください</option><option value="1" selected>1匹</option><option value="2">2匹</option><option value="3">3匹</option><option value="4">4匹</option><option value="5">5匹</option></select></div>
           <p class="pet-hint" id="petHint" hidden></p>
@@ -1231,7 +1250,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option selected>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
-        <p class="form-foot">条件を入れると、合う会社と料金の目安が出ます（まだ送信されません）。料金は当日の道路事情や待ち時間で変わることがあります。</p>
+        <p class="form-foot s1-hide">場所と日時を入れると、来てくれる会社と料金の目安が出ます（まだ送信されません）。料金は当日の道路事情や待ち時間で変わることがあります。</p>
         <div class="need-box" id="partnerNeed" hidden></div>
         <section class="partner-results" id="partnerResults" aria-labelledby="partnerTitle" hidden>
           <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
@@ -1355,12 +1374,12 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 
 <section id="area-companies">
   <div class="wrap prose">
-    <h2>神奈川・横浜に来てくれるペットタクシー27社の、対応エリアと料金のしくみ</h2><p>神奈川県のお迎えに対応している27社について、対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p><figure class="bars"><figcaption>公式サイトに書いている内容を数えると（27社のうち）</figcaption><ol><li><span class="l">24時間受け付けている会社</span><span class="t"><i style="width:55.6%"></i></span><b>15社</b></li><li><span class="l">当日の予約も受ける会社</span><span class="t"><i style="width:22.2%"></i></span><b>6社</b></li><li><span class="l">カードで払える会社</span><span class="t"><i style="width:33.3%"></i></span><b>9社</b></li><li><span class="l">大型犬に対応している会社</span><span class="t"><i style="width:14.8%"></i></span><b>4社</b></li><li><span class="l">前日までキャンセル無料の会社</span><span class="t"><i style="width:18.5%"></i></span><b>5社</b></li></ol><p class="note">書いていない会社が、できないとは限りません。</p></figure><figure class="bars"><figcaption>対応エリアに地名が書かれている会社の数（27社のうち）</figcaption><ol><li><span class="l">横浜</span><span class="t"><i style="width:25.9%"></i></span><b>7社</b></li><li><span class="l">川崎</span><span class="t"><i style="width:14.8%"></i></span><b>4社</b></li><li><span class="l">海老名</span><span class="t"><i style="width:14.8%"></i></span><b>4社</b></li><li><span class="l">厚木</span><span class="t"><i style="width:11.1%"></i></span><b>3社</b></li><li><span class="l">藤沢</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">鎌倉</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">茅ヶ崎</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">大和</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">平塚</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">小田原</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">相模原</span><span class="t"><i style="width:3.7%"></i></span><b>1社</b></li></ol></figure><p>このほか「全域」「◯◯一円」のように広く書いている会社が5社あります。地名が書かれていなくても来てもらえることがあるので、お迎えの場所はフォームで確かめてください。</p><h3>神奈川・横浜に来てくれる会社だけで計算した運賃（料金表のある22社）</h3><p>神奈川・横浜のお迎えに対応している会社のうち、公式サイトに料金表がある22社だけで、乗った距離の運賃（片道）を全国の目安と同じ式で計算しました。10kmでは、いちばん安い会社が3,300円、高い会社が5,700円で、2,400円の差があります。何社かくらべてから問い合わせると、同じ道のりでも払う金額が変わります。</p><div class="tbl"><table class="has-bars t2"><thead><tr><th>乗る距離</th><th class="n">まんなかの会社</th><th class="n">安い会社〜高い会社</th><th class="n">全国のまんなか</th></tr></thead><tbody><tr><th>5km</th><td class="y n">3,100円<i class="tb" style="width:25.8%" aria-hidden="true"></i></td><td class="y n">1,700〜<wbr>4,600円<i class="tb rg" style="margin-left:14.2%;width:24.2%" aria-hidden="true"></i></td><td class="y n">3,300円<i class="tb" style="width:27.5%" aria-hidden="true"></i></td></tr><tr><th>10km</th><td class="y n">4,100円<i class="tb" style="width:34.2%" aria-hidden="true"></i></td><td class="y n">3,300〜<wbr>5,700円<i class="tb rg" style="margin-left:27.5%;width:20.0%" aria-hidden="true"></i></td><td class="y n">4,100円<i class="tb" style="width:34.2%" aria-hidden="true"></i></td></tr><tr><th>20km</th><td class="y n">5,800円<i class="tb" style="width:48.3%" aria-hidden="true"></i></td><td class="y n">5,500〜<wbr>8,000円<i class="tb rg" style="margin-left:45.8%;width:20.8%" aria-hidden="true"></i></td><td class="y n">5,800円<i class="tb" style="width:48.3%" aria-hidden="true"></i></td></tr><tr><th>30km</th><td class="y n">7,700円<i class="tb" style="width:64.2%" aria-hidden="true"></i></td><td class="y n">7,400〜<wbr>12,000円<i class="tb rg" style="margin-left:61.7%;width:38.3%" aria-hidden="true"></i></td><td class="y n">7,400円<i class="tb" style="width:61.7%" aria-hidden="true"></i></td></tr></tbody></table></div><p>このほかにかかるお迎え料金（お店からお迎えの場所まで）のつけ方は、お迎えの道のり1kmごとにかかる会社が18社・決まった金額の会社が3社・料金表に書いていない会社が1社です。お店が遠い会社ほどお迎え料金が高くなるので、フォームでは会社ごとに、お店からお迎えの場所までの車の道のりを入れた目安を出しています。</p><div class="tbl"><table class="t2 t2s"><thead><tr><th>お店の場所</th><th>対応エリア</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody><tr><td>県内</td><td data-l="対応エリア"><div>横浜・川崎・東京中心。神奈川・千葉・埼玉、長距離も</div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>1,700円</div></td><td data-l="お迎え料金"><div>1kmごとに150円</div></td><td data-l="夜間・早朝"><div>21時〜7時は2割増</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div></div></td><td class="s" data-l="受付"><div>8時〜19時</div></td><td class="s" data-l="5kmの運賃"><div>2,000円</div></td><td data-l="お迎え料金"><div>1,300円</div></td><td data-l="夜間・早朝"><div>料金表にない</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div></div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>2,200円</div></td><td data-l="お迎え料金"><div>1kmごとに300円</div></td><td data-l="夜間・早朝"><div>21時〜9時（金額は書いていない）</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div></div></td><td class="s" data-l="受付"><div>9時〜18時</div></td><td class="s" data-l="5kmの運賃"><div>2,200円</div></td><td data-l="お迎え料金"><div>料金表にない</div></td><td data-l="夜間・早朝"><div>料金表にない</div></td></tr></tbody></table></div><details class="cpt more" data-cpt><summary>のこり23件を見る</summary><div class="cpt-b"><div class="tbl"><table class="t2 t2s"><thead><tr><th>お店の場所</th><th>対応エリア</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody><tr><td>県内</td><td data-l="対応エリア"><div>厚木・伊勢原・海老名・愛甲郡</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>2,300円</div></td><td data-l="お迎え料金"><div>1kmごとに330円</div></td><td data-l="夜間・早朝"><div>料金表にない</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>鎌倉・逗子・葉山中心、藤沢・茅ヶ崎など</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>2,300円</div></td><td data-l="お迎え料金"><div>1kmごとに330円</div></td><td data-l="夜間・早朝"><div>料金表にない</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>相模原市を中心に厚木市・海老名市・愛川町・町田市・八王子市・多摩市</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>2,400円</div></td><td data-l="お迎え料金"><div>1,800円</div></td><td data-l="夜間・早朝"><div>21時〜6時は2割増</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>神奈川発、全国</div></td><td class="s" data-l="受付"><div>8時〜20時</div></td><td class="s" data-l="5kmの運賃"><div>2,500円</div></td><td data-l="お迎え料金"><div>1kmごとに400円</div></td><td data-l="夜間・早朝"><div>20時〜8時は2割増</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>関東近県から全国（沖縄・離島は不可）</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,100円</div></td><td data-l="お迎え料金"><div>—</div></td><td data-l="夜間・早朝"><div>—</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>川崎市・横浜市、東京の大田区・世田谷区・目黒区・杉並区</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>横浜市中区・西区・南区・保土ケ谷区・港南区・磯子区、神奈川全域・23区も相談</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>横浜市（港北区・神奈川区・西区・中区・都筑区・鶴見区）を中心に神奈川県全域</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>無料</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>磯子区を中心に、事前予約で神奈川全域・状況により東京も</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>平塚市と近隣市町村、小田原市</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>藤沢・茅ヶ崎・鎌倉・大和・綾瀬・海老名・寒川・横浜など</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>22時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>神奈川県全域、東京都多摩地区、静岡県東部（海老名・座間・大和・綾瀬が中心）</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>川崎市全区、横浜市（港北・鶴見・都筑・青葉・神奈川・保土ケ谷・緑・旭）、近隣も相談</div></td><td class="s" data-l="受付"><div>8時〜20時</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>秦野・伊勢原・厚木・小田原・平塚を中心に長距離も相談</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div></div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>お見積もり</div></td><td data-l="お迎え料金"><div>—</div></td><td data-l="夜間・早朝"><div>—</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>東京・神奈川（ほかは相談）</div></td><td class="s" data-l="受付"><div>8時〜20時</div></td><td class="s" data-l="5kmの運賃"><div>お見積もり</div></td><td data-l="お迎え料金"><div>—</div></td><td data-l="夜間・早朝"><div>—</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>神奈川・東京中心に全国</div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>お見積もり</div></td><td data-l="お迎え料金"><div>—</div></td><td data-l="夜間・早朝"><div>—</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>横浜市北部、東京の多摩の一部、埼玉の和光・朝霞・志木など（23区・武蔵野・三鷹は不可）</div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>お見積もり</div></td><td data-l="お迎え料金"><div>—</div></td><td data-l="夜間・早朝"><div>—</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>神奈川・関東近県中心、全国（島しょ除く）</div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>お見積もり</div></td><td data-l="お迎え料金"><div>—</div></td><td data-l="夜間・早朝"><div>—</div></td></tr><tr><td>東京都</td><td data-l="対応エリア"><div>東京・埼玉・千葉・神奈川、長距離</div></td><td class="s" data-l="受付"><div>6時〜22時</div></td><td class="s" data-l="5kmの運賃"><div>2,200円</div></td><td data-l="お迎え料金"><div>1kmごとに110円</div></td><td data-l="夜間・早朝"><div>料金表にない</div></td></tr><tr><td>東京都</td><td data-l="対応エリア"><div>大田区中心、23区・川崎の一部（外は予約で相談）</div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>2,500円</div></td><td data-l="お迎え料金"><div><span class="ln"><span>5kmまで</span><span class="p">1,500円</span></span><span class="ln"><span>そのあと1kmごとに</span><span class="p">150円</span></span></div></td><td data-l="夜間・早朝"><div>料金表にない</div></td></tr><tr><td>東京都</td><td data-l="対応エリア"><div>杉並区・中野区・世田谷区・練馬区・新宿区・渋谷区・武蔵野市・三鷹市を中心に東京・神奈川・千葉・埼玉</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>東京都</td><td data-l="対応エリア"><div>千葉県全域ほか首都圏・全国に拡大中。長距離は相談</div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>4,600円</div></td><td data-l="お迎え料金"><div>1kmごとに120円</div></td><td data-l="夜間・早朝"><div>21時〜7時は3,000円</div></td></tr></tbody></table></div></div></details><p class="fare-flag"><b>確定料金ではありません。</b>2026年10月30日時点で各社の公式サイトを読んでまとめたもので、会社名は出していません。5kmの運賃は料金表から計算した片道の金額で、お迎え料金・待ち時間・高速代は入っていません。料金や対応エリアは変わることがあるので、フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p>
+    <h2 id="cos">神奈川・横浜に来てくれるペットタクシー27社の、対応エリアと料金のしくみ</h2><p>神奈川県のお迎えに対応している27社について、対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p><figure class="bars"><figcaption>公式サイトに書いている内容を数えると（27社のうち）</figcaption><ol><li><span class="l">24時間受け付けている会社</span><span class="t"><i style="width:55.6%"></i></span><b>15社</b></li><li><span class="l">当日の予約も受ける会社</span><span class="t"><i style="width:22.2%"></i></span><b>6社</b></li><li><span class="l">カードで払える会社</span><span class="t"><i style="width:33.3%"></i></span><b>9社</b></li><li><span class="l">大型犬に対応している会社</span><span class="t"><i style="width:14.8%"></i></span><b>4社</b></li><li><span class="l">前日までキャンセル無料の会社</span><span class="t"><i style="width:18.5%"></i></span><b>5社</b></li></ol><p class="note">書いていない会社が、できないとは限りません。</p></figure><figure class="bars"><figcaption>対応エリアに地名が書かれている会社の数（27社のうち）</figcaption><ol><li><span class="l">横浜</span><span class="t"><i style="width:25.9%"></i></span><b>7社</b></li><li><span class="l">川崎</span><span class="t"><i style="width:14.8%"></i></span><b>4社</b></li><li><span class="l">海老名</span><span class="t"><i style="width:14.8%"></i></span><b>4社</b></li><li><span class="l">厚木</span><span class="t"><i style="width:11.1%"></i></span><b>3社</b></li><li><span class="l">藤沢</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">鎌倉</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">茅ヶ崎</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">大和</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">平塚</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">小田原</span><span class="t"><i style="width:7.4%"></i></span><b>2社</b></li><li><span class="l">相模原</span><span class="t"><i style="width:3.7%"></i></span><b>1社</b></li></ol></figure><p>このほか「全域」「◯◯一円」のように広く書いている会社が5社あります。地名が書かれていなくても来てもらえることがあるので、お迎えの場所はフォームで確かめてください。</p><h3>神奈川・横浜に来てくれる会社だけで計算した運賃（料金表のある22社）</h3><p>神奈川・横浜のお迎えに対応している会社のうち、公式サイトに料金表がある22社だけで、乗った距離の運賃（片道）を全国の目安と同じ式で計算しました。10kmでは、いちばん安い会社が3,300円、高い会社が5,700円で、2,400円の差があります。何社かくらべてから問い合わせると、同じ道のりでも払う金額が変わります。</p><div class="tbl"><table class="has-bars t2"><thead><tr><th>乗る距離</th><th class="n">まんなかの会社</th><th class="n">安い会社〜高い会社</th><th class="n">全国のまんなか</th></tr></thead><tbody><tr><th>5km</th><td class="y n">3,100円<i class="tb" style="width:25.8%" aria-hidden="true"></i></td><td class="y n">1,700〜<wbr>4,600円<i class="tb rg" style="margin-left:14.2%;width:24.2%" aria-hidden="true"></i></td><td class="y n">3,300円<i class="tb" style="width:27.5%" aria-hidden="true"></i></td></tr><tr><th>10km</th><td class="y n">4,100円<i class="tb" style="width:34.2%" aria-hidden="true"></i></td><td class="y n">3,300〜<wbr>5,700円<i class="tb rg" style="margin-left:27.5%;width:20.0%" aria-hidden="true"></i></td><td class="y n">4,100円<i class="tb" style="width:34.2%" aria-hidden="true"></i></td></tr><tr><th>20km</th><td class="y n">5,800円<i class="tb" style="width:48.3%" aria-hidden="true"></i></td><td class="y n">5,500〜<wbr>8,000円<i class="tb rg" style="margin-left:45.8%;width:20.8%" aria-hidden="true"></i></td><td class="y n">5,800円<i class="tb" style="width:48.3%" aria-hidden="true"></i></td></tr><tr><th>30km</th><td class="y n">7,700円<i class="tb" style="width:64.2%" aria-hidden="true"></i></td><td class="y n">7,400〜<wbr>12,000円<i class="tb rg" style="margin-left:61.7%;width:38.3%" aria-hidden="true"></i></td><td class="y n">7,400円<i class="tb" style="width:61.7%" aria-hidden="true"></i></td></tr></tbody></table></div><p>このほかにかかるお迎え料金（お店からお迎えの場所まで）のつけ方は、お迎えの道のり1kmごとにかかる会社が18社・決まった金額の会社が3社・料金表に書いていない会社が1社です。お店が遠い会社ほどお迎え料金が高くなるので、フォームでは会社ごとに、お店からお迎えの場所までの車の道のりを入れた目安を出しています。</p><div class="tbl"><table class="t2 t2s"><thead><tr><th>お店の場所</th><th>対応エリア</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody><tr><td>県内</td><td data-l="対応エリア"><div>横浜・川崎・東京中心。神奈川・千葉・埼玉、長距離も</div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>1,700円</div></td><td data-l="お迎え料金"><div>1kmごとに150円</div></td><td data-l="夜間・早朝"><div>21時〜7時は2割増</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div></div></td><td class="s" data-l="受付"><div>8時〜19時</div></td><td class="s" data-l="5kmの運賃"><div>2,000円</div></td><td data-l="お迎え料金"><div>1,300円</div></td><td data-l="夜間・早朝"><div>料金表にない</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div></div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>2,200円</div></td><td data-l="お迎え料金"><div>1kmごとに300円</div></td><td data-l="夜間・早朝"><div>21時〜9時（金額は書いていない）</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div></div></td><td class="s" data-l="受付"><div>9時〜18時</div></td><td class="s" data-l="5kmの運賃"><div>2,200円</div></td><td data-l="お迎え料金"><div>料金表にない</div></td><td data-l="夜間・早朝"><div>料金表にない</div></td></tr></tbody></table></div><details class="cpt more" data-cpt><summary>のこり23件を見る</summary><div class="cpt-b"><div class="tbl"><table class="t2 t2s"><thead><tr><th>お店の場所</th><th>対応エリア</th><th>受付</th><th>5kmの運賃</th><th>お迎え料金</th><th>夜間・早朝</th></tr></thead><tbody><tr><td>県内</td><td data-l="対応エリア"><div>厚木・伊勢原・海老名・愛甲郡</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>2,300円</div></td><td data-l="お迎え料金"><div>1kmごとに330円</div></td><td data-l="夜間・早朝"><div>料金表にない</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>鎌倉・逗子・葉山中心、藤沢・茅ヶ崎など</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>2,300円</div></td><td data-l="お迎え料金"><div>1kmごとに330円</div></td><td data-l="夜間・早朝"><div>料金表にない</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>相模原市を中心に厚木市・海老名市・愛川町・町田市・八王子市・多摩市</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>2,400円</div></td><td data-l="お迎え料金"><div>1,800円</div></td><td data-l="夜間・早朝"><div>21時〜6時は2割増</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>神奈川発、全国</div></td><td class="s" data-l="受付"><div>8時〜20時</div></td><td class="s" data-l="5kmの運賃"><div>2,500円</div></td><td data-l="お迎え料金"><div>1kmごとに400円</div></td><td data-l="夜間・早朝"><div>20時〜8時は2割増</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>関東近県から全国（沖縄・離島は不可）</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,100円</div></td><td data-l="お迎え料金"><div>—</div></td><td data-l="夜間・早朝"><div>—</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>川崎市・横浜市、東京の大田区・世田谷区・目黒区・杉並区</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>横浜市中区・西区・南区・保土ケ谷区・港南区・磯子区、神奈川全域・23区も相談</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>横浜市（港北区・神奈川区・西区・中区・都筑区・鶴見区）を中心に神奈川県全域</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>無料</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>磯子区を中心に、事前予約で神奈川全域・状況により東京も</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>平塚市と近隣市町村、小田原市</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>藤沢・茅ヶ崎・鎌倉・大和・綾瀬・海老名・寒川・横浜など</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>22時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>神奈川県全域、東京都多摩地区、静岡県東部（海老名・座間・大和・綾瀬が中心）</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>川崎市全区、横浜市（港北・鶴見・都筑・青葉・神奈川・保土ケ谷・緑・旭）、近隣も相談</div></td><td class="s" data-l="受付"><div>8時〜20時</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>秦野・伊勢原・厚木・小田原・平塚を中心に長距離も相談</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div></div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>お見積もり</div></td><td data-l="お迎え料金"><div>—</div></td><td data-l="夜間・早朝"><div>—</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>東京・神奈川（ほかは相談）</div></td><td class="s" data-l="受付"><div>8時〜20時</div></td><td class="s" data-l="5kmの運賃"><div>お見積もり</div></td><td data-l="お迎え料金"><div>—</div></td><td data-l="夜間・早朝"><div>—</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>神奈川・東京中心に全国</div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>お見積もり</div></td><td data-l="お迎え料金"><div>—</div></td><td data-l="夜間・早朝"><div>—</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>横浜市北部、東京の多摩の一部、埼玉の和光・朝霞・志木など（23区・武蔵野・三鷹は不可）</div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>お見積もり</div></td><td data-l="お迎え料金"><div>—</div></td><td data-l="夜間・早朝"><div>—</div></td></tr><tr><td>県内</td><td data-l="対応エリア"><div>神奈川・関東近県中心、全国（島しょ除く）</div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>お見積もり</div></td><td data-l="お迎え料金"><div>—</div></td><td data-l="夜間・早朝"><div>—</div></td></tr><tr><td>東京都</td><td data-l="対応エリア"><div>東京・埼玉・千葉・神奈川、長距離</div></td><td class="s" data-l="受付"><div>6時〜22時</div></td><td class="s" data-l="5kmの運賃"><div>2,200円</div></td><td data-l="お迎え料金"><div>1kmごとに110円</div></td><td data-l="夜間・早朝"><div>料金表にない</div></td></tr><tr><td>東京都</td><td data-l="対応エリア"><div>大田区中心、23区・川崎の一部（外は予約で相談）</div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>2,500円</div></td><td data-l="お迎え料金"><div><span class="ln"><span>5kmまで</span><span class="p">1,500円</span></span><span class="ln"><span>そのあと1kmごとに</span><span class="p">150円</span></span></div></td><td data-l="夜間・早朝"><div>料金表にない</div></td></tr><tr><td>東京都</td><td data-l="対応エリア"><div>杉並区・中野区・世田谷区・練馬区・新宿区・渋谷区・武蔵野市・三鷹市を中心に東京・神奈川・千葉・埼玉</div></td><td class="s" data-l="受付"><div>24時間</div></td><td class="s" data-l="5kmの運賃"><div>3,300円</div></td><td data-l="お迎え料金"><div>1kmごとに165円</div></td><td data-l="夜間・早朝"><div>21時〜8時は3,300円</div></td></tr><tr><td>東京都</td><td data-l="対応エリア"><div>千葉県全域ほか首都圏・全国に拡大中。長距離は相談</div></td><td class="s" data-l="受付"><div>—</div></td><td class="s" data-l="5kmの運賃"><div>4,600円</div></td><td data-l="お迎え料金"><div>1kmごとに120円</div></td><td data-l="夜間・早朝"><div>21時〜7時は3,000円</div></td></tr></tbody></table></div></div></details><p class="fare-flag"><b>確定料金ではありません。</b>2026年10月30日時点で各社の公式サイトを読んでまとめたもので、会社名は出していません。5kmの運賃は料金表から計算した片道の金額で、お迎え料金・待ち時間・高速代は入っていません。料金や対応エリアは変わることがあるので、フォームで候補を出すと、会社名と、お迎えの場所に合わせた目安を確かめられます。</p>
     <h3>神奈川県の市ごとのペットタクシー</h3><ul><li><a href="/kanagawa/yokohama/">横浜市のペットタクシー（よく行く区間の料金の目安）</a></li><li><a href="/kanagawa/kawasaki/">川崎市のペットタクシー（よく行く区間の料金の目安）</a></li><li><a href="/kanagawa/sagamihara/">相模原市のペットタクシー（よく行く区間の料金の目安）</a></li><li><a href="/kanagawa/fujisawa/">藤沢市のペットタクシー（よく行く区間の料金の目安）</a></li></ul>
     <h3>神奈川県の夜間・救急の動物病院</h3>
     <p>夜や休日に具合が悪くなったときのために、神奈川県の夜間・救急の動物病院を受付時間つきで<a href="/hospital/night/#pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C">夜間・救急の動物病院の一覧</a>にまとめています。往診専門の動物病院（家まで来てくれる獣医さん）は<a href="/hospital/visit/#pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C">往診の一覧</a>、猫だけを診る病院は<a href="/hospital/cat/#pref=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C">猫専門の動物病院</a>にあります。</p>
     <h3>神奈川県のドッグラン</h3><p>神奈川県には、ドッグランが12か所あります（公営9・お店・施設3。相模原公園ドッグラン（県立）、新杉田公園ドッグラン、東扇島東公園 わんわん広場（ドッグラン）など）。料金・利用登録・利用時間・小型犬エリアの有無は<a href="/dogrun/kanagawa/">神奈川県のドッグラン</a>にまとめています。</p>
-    <h3>神奈川県のペットのサービス</h3><p>載せている一覧：<a href="/hospital/night/kanagawa/">神奈川県の夜間・救急の動物病院（8院）</a>、<a href="/sougi/kanagawa/">神奈川県のペット火葬・霊園（10か所）</a>、<a href="/rojin-home/kanagawa/">神奈川県の老犬ホーム・老猫ホーム（7施設）</a>、<a href="/dog-trainer/kanagawa/">神奈川県のドッグトレーナー・しつけ教室（14件）</a>、<a href="/pet-sitter/kanagawa/">神奈川県のペットシッター（57店）</a>、<a href="/trimming/kanagawa/">神奈川県の出張トリミング・訪問トリミング（14件）</a>、<a href="/pet-hotel/kanagawa/">神奈川県の大型犬OK・猫専用のペットホテル（8件）</a>。</p>
+    <h3>神奈川県のペットのサービス</h3><p>載せている一覧：<a href="/hospital/night/kanagawa/">神奈川県の夜間・救急の動物病院（8院）</a>、<a href="/sougi/kanagawa/">神奈川県のペット火葬・霊園（10か所）</a>、<a href="/rojin-home/kanagawa/">神奈川県の老犬ホーム・老猫ホーム（10施設）</a>、<a href="/dog-trainer/kanagawa/">神奈川県のドッグトレーナー・しつけ教室（16件）</a>、<a href="/pet-sitter/kanagawa/">神奈川県のペットシッター（57店）</a>、<a href="/trimming/kanagawa/">神奈川県の出張トリミング・訪問トリミング（17件）</a>、<a href="/pet-hotel/kanagawa/">神奈川県の大型犬OK・猫専用のペットホテル（9件）</a>。</p>
   </div>
 </section>
 
@@ -1537,7 +1556,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   function conditionsChanged(event){
     if (["name","tel","email","notes","agree","website","partnerSort","partnerDist"].indexOf(event.target.id || event.target.name) >= 0) return; // 並び順を変えても、候補は取り直さない
-    clearPartners(); queuePartners();
+    var keep = event.target.closest && event.target.closest("#refine") ? chosenPicks.slice() : null; // くわしい条件を入れても、選んだ会社はそのまま（調べ直したあとも残っていれば選んだまま）
+    clearPartners(); if (keep && keep.length) chosenPicks = keep; queuePartners();
     if (!$("partnerNeed").hidden) showNeed(); // 出ている一覧は、入れたらすぐ減らす
   }
   form.addEventListener("input", conditionsChanged);
@@ -1556,11 +1576,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // カードを出せない理由。"fields"＝入っていない項目がある、"time"＝お迎えが近すぎる・帰りが行きより前、""＝そろっている
   function partnerBlock(){
     if (!GAS_URL) return "off";
-    // 問い合わせできる会社がいない県は、場所・日時・ペットの種類と体重だけで候補を出す（2026-11-08「少なくする」）
-    var lite = !prefOpen();
-    var required = ["pref","pickup","dropoff","date","hour","minute","petCount"].concat(lite ? [] : ["riders","luggage"]);
+    // 候補は「どこから・どこへ・いつ」だけで出す（3項目フォーム 2026-11-23）。ペットや人数などは、入れたものだけ確かめ、空ならいちばん広い条件で調べる
+    var required = ["pref","pickup","dropoff","date","hour","minute"];
     if (required.some(function(id){return !$(id).value || !$(id).checkValidity();})) return "fields";
-    if (!petsBox.children.length || Array.prototype.some.call(petsBox.querySelectorAll("input,select"),function(el){return !(lite && el.closest(".opt-lite")) && !el.checkValidity();})) return "fields";
+    if (Array.prototype.some.call(form.querySelectorAll("#refine input:not([type=radio]):not([type=checkbox]), #refine select"), function(el){ return !el.disabled && el.value && !el.closest("#retBox") && !el.checkValidity(); })) return "fields";
     var fd = new FormData(form), at = new Date(fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute") + ":00+09:00");
     if (!fd.get("trip")) return "fields";
     if (fd.get("trip") === "往復") {
@@ -1593,6 +1612,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   // その欄までスクロールして、選びやすいようにする
   function jumpTo(el){
+    if (form.classList.contains("s1") && el.closest(".s1-hide")) openRefine("send", true);
+    if (el.id === "pref") $("prefPick").classList.add("show");
     if (el.id === "pref" && $("prefBtn") && !$("prefBtn").hidden) { $("prefBtn").scrollIntoView({block: "center", behavior: "smooth"}); openPrefs(true); return; }
     var target = el.type === "radio" ? el.closest(".seg") || el : el;
     target.scrollIntoView({block: "center", behavior: "smooth"});
@@ -1614,7 +1635,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   form.addEventListener("change", function(e){ var t = e.target.type === "radio" ? e.target.closest(".seg") : e.target; if (t) t.classList.remove("missing"); });
   // 事業者のカードを出すのに足りない項目を、カードの場所に出す（入力を始めてから）
   function showNeed(){
-    var box = $("partnerNeed"), list = missingFields($("partnerResults"));
+    var box = $("partnerNeed"), list = missingFields($("partnerResults")).filter(function(x){ return !x.el.closest("#refine") || x.el.closest("#retBox"); }); // くわしい条件は、空でも候補を出せる
+    $("prefPick").classList.toggle("show", !$("pref").value && !!$("pickup").value.trim() && document.activeElement !== $("pickup") || !$("prefFix").hidden); // 場所から県が分からないときだけ、県を選ぶ欄を出す
     var started = ["pickup","dropoff","date"].some(function(id){ return $(id).value; }) || Array.prototype.some.call(petsBox.querySelectorAll("input[name$=_weight]"), function(el){ return el.value; });
     box.hidden = !started || !list.length;
     if (box.hidden) return;
@@ -1632,11 +1654,12 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       return;
     }
     if (!routeDetails) { showLoading(); return; } // 道のりを調べ終わったら、もう一度呼ばれる
-    var searchSeq = ++quoteSeq, search = requestPayload().body;
+    var searchSeq = ++quoteSeq, search = requestPayload(false, true).body; lastPetsWide = !readPets().every(function(p){ return p.species && p.weight; });
     ["name","tel","email","notes","contact","website","pets","breed","age","sex","est_fare","est_fare_text"].forEach(function(k){search.delete(k);});
     search.set("kind", "quotes"); if (DEMO.tok) search.set("demo", DEMO.tok); if (window.PET_STAFF) search.set("staff", "1"); // 運営者の動作確認は需要の記録で分ける（ga.js）
     // 入力を減らした県では、たずねていない項目をいちばん広く探せる値で調べる（1人・手荷物・ケージはどちらでも・介護なし）
-    if (!prefOpen()) [["riders","1人"],["luggage","手荷物くらい"],["cage","どれでも"],["care","不要"]].forEach(function(d){ if (!search.get(d[0])) search.set(d[0], d[1]); });
+    [["trip","片道"],["riders","1人"],["luggage","手荷物くらい"],["cage","どれでも"],["care","不要"]].forEach(function(d){ if (!search.get(d[0])) search.set(d[0], d[1]); });
+    syncRefine();
     showLoading();
     // 予約のしくみの返事が一時的に取れないことがある（2026-11-12 渋谷→中目黒で「候補を確認できませんでした」。同じ条件で入れ直すと出た）。
     // 1回だけ少し待ってもう一度さがし、それでもだめなときだけお知らせする。理由は解析の quotes_error に残す（入力の中身は送らない）
@@ -1767,12 +1790,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   function syncContact(){
     var bookable = quoteCards.some(function(c){ return !c.display_only; }) || !!(quoteLegs && quoteLegs.go && quoteLegs.go.some(function(c){ return !c.display_only; }));
     if (quotesLoaded) lastBookable = bookable;
-    var shown = quotesLoaded ? bookable : prefOpen() || lastBookable; // 調べ直しているあいだは、前の結果のまま（欄が消えたり出たりしないように）
+    var picked = chosenPicks.length > 0 || !!(chosenGo || chosenBack);
+    var shown = quotesLoaded ? bookable && picked : lastShown; // ご連絡先は、問い合わせできる会社を選んでから（3項目フォーム）。調べ直しているあいだは前のまま
+    lastShown = shown;
     $("contactBox").hidden = !shown;
     syncLite(!prefOpen() && !shown);
     if (shown && !prefOpen()) $("openNote").hidden = true; // ほかの県の会社が、お迎えか行き先の近くにいるとき
     var none = $("contactNone");
-    if (!shown && quotesLoaded) {
+    if (!bookable && quotesLoaded) {
       if (!none) { none = document.createElement("p"); none.id = "contactNone"; none.className = "contact-none"; $("contactBox").parentNode.insertBefore(none, $("contactBox")); }
       none.textContent = "この条件では、いまこのサイトから問い合わせできる会社がないため、ご連絡先の入力はいりません。料金の目安をくらべて、気になる会社には公式サイトから直接おたずねください。";
       none.hidden = false;
@@ -1789,7 +1814,61 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (!n.hidden) n.textContent = v + "では、いまこのサイトから問い合わせできる会社はまだありません。お迎えの場所・日時と、ペットの種類・体重を入れると、会社の候補と料金の目安、公式サイトへのリンクをご覧いただけます（ご連絡先の入力はいりません）。";
     syncContact();
   }
-  var lastBookable = false;
+  var lastBookable = false, lastShown = false, lastPetsWide = true;
+  // ── 3項目フォーム（2026-11-23 策のGO）：最初は「どこから・どこへ・いつ」だけ。ほかは候補の上のボタンで開く ──
+  function openRefine(which, quiet){
+    var was = form.classList.contains("s1");
+    form.classList.remove("s1"); $("refineBar").hidden = true;
+    if (was) track("refine_open", {chip: which});
+    if (quiet) return;
+    var t = which === "trip" ? form.querySelector("input[name=trip]") : which === "riders" ? $("riders") : which === "pet" ? petsBox.querySelector("input[name$=_species]") || $("petCount") : $("refine");
+    if (t === $("refine")) t.scrollIntoView({block: "start", behavior: "smooth"}); else if (t) jumpTo(t);
+  }
+  function syncRefine(){
+    var on = form.classList.contains("s1") && !$("partnerResults").hidden;
+    $("refineBar").hidden = !on;
+    if (!on) return;
+    var trip = (form.querySelector("input[name=trip]:checked") || {}).value || "片道";
+    $("chipTrip").textContent = trip + " ▾";
+    $("chipRiders").textContent = "一緒に乗る人：" + ($("riders").value || "1人").replace(/（.*$/, "") + " ▾";
+    $("refineNote").textContent = lastPetsWide ? "ペットの種類と体重を入れると、乗せられる会社にしぼります（いまは5kgの犬として調べています）。" : "うちの子に合わせてしぼる";
+  }
+  new MutationObserver(syncRefine).observe($("partnerResults"), {attributes: true, attributeFilter: ["hidden"]});
+  $("refineBar").addEventListener("click", function(e){ var b = e.target.closest("button[data-chip]"); if (b) openRefine(b.dataset.chip); });
+  // 「来てくれる会社と料金を見る」：足りない項目があればそこへ、そろっていれば候補へ
+  $("seeBtn").addEventListener("click", function(){
+    var block = partnerBlock();
+    track("see_partners_click", {ready: block === "" ? 1 : 0});
+    if (block === "fields") {
+      var miss = missingFields($("partnerResults")).filter(function(x){ return !x.el.closest("#refine") || x.el.closest("#retBox"); });
+      showNeed(); if (miss.length) { markMissing(miss); jumpTo(miss[0].el); }
+      return;
+    }
+    if ($("partnerResults").hidden) loadPartners();
+    $("partnerTitle").scrollIntoView({block: "start", behavior: "smooth"});
+  });
+  // 候補がないとき：近くの県の会社・ふつうのタクシー・緊急の連絡先だけを案内する（ほかの検索・予約サイトへは案内しない）
+  var PREF_SLUGS = ["hokkaido","aomori","iwate","miyagi","akita","yamagata","fukushima","ibaraki","tochigi","gunma","saitama","chiba","tokyo","kanagawa","niigata","toyama","ishikawa","fukui","yamanashi","nagano","gifu","shizuoka","aichi","mie","shiga","kyoto","osaka","hyogo","nara","wakayama","tottori","shimane","okayama","hiroshima","yamaguchi","tokushima","kagawa","ehime","kochi","fukuoka","saga","nagasaki","kumamoto","oita","miyazaki","kagoshima","okinawa"];
+  function prefPage(name){ var sl = PREF_SLUGS[PREF_NAMES.indexOf(name)]; return /^(tokyo|kanagawa|saitama|chiba)$/.test(sl) ? "/" + sl + "/" : "/area/" + sl + "/"; }
+  function noCandBox(){
+    var pref = $("pref").value, i0 = PREF_NAMES.indexOf(pref), box = document.createElement("div"), ul = document.createElement("ul");
+    box.className = "no-cand";
+    var h = document.createElement("p"); h.textContent = "こちらもご覧ください"; box.append(h, ul);
+    function li(href, text, note, ev){
+      var l = document.createElement("li"), a = document.createElement("a"); a.href = href; a.textContent = text;
+      if (/^https?:/.test(href)) { a.target = "_blank"; a.rel = "noopener"; }
+      a.addEventListener("click", function(){ track("no_candidates_link", {to: ev, pref: pref}); });
+      l.appendChild(a); if (note) l.appendChild(document.createTextNode(note)); ul.appendChild(l);
+    }
+    if (i0 >= 0) PREF_NAMES.filter(function(n){ return n !== pref && AREA_PREFS.indexOf(shortPref(n)) >= 0; })
+      .sort(function(a, b){ return llDist(PREF_LL[PREF_NAMES.indexOf(a)], PREF_LL[i0]) - llDist(PREF_LL[PREF_NAMES.indexOf(b)], PREF_LL[i0]); })
+      .slice(0, 2).forEach(function(n){ li(prefPage(n) + "#cos", "となりの" + n + "のペットタクシー会社", "（お迎えに来てくれるかは、各社におたずねください）", "near_pref"); });
+    var addr = $("pickup").value || "";
+    TAXIS.taxis.filter(function(t){ return REGULAR_TAXI_ON && t.pref === pref && t.cities.some(function(c){ return addr.indexOf(c) >= 0; }); })
+      .slice(0, 2).forEach(function(t){ li(t.url, "ふつうのタクシー：" + t.name + " ↗", "（キャリーに入る小さな子なら）", "taxi"); });
+    li("/emergency/" + (pref ? "#pref=" + encodeURIComponent(pref) : ""), "急いで動物病院へ行くとき：夜間・救急の病院と緊急の搬送", "", "emergency");
+    return box;
+  }
   $("pref").addEventListener("change", function(){ lastBookable = false; syncOpenNote(); });
   // 名前を伏せた会社に「会社A・B…」の目印を付けて、くらべやすくする（2026-11-08 レビュー #4）
   // まだ提携していない会社も、社名と公式サイトへのリンクを出す（Nori 2026-11-08「すすめていいよ」）。問い合わせはできないまま。社名が分からない会社だけ「会社A・B…」の目印
@@ -1894,7 +1973,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var copyNote = copyable ? (ready ? "印のない会社は" : "") + "「問い合わせ文をコピー」を押すと、入力した条件をそのまま公式サイトのお問い合わせ欄に貼れます。" : "";
     // 上の説明は1行だけ（Nori 2026-11-12「いる？」。前は社数・コピーの使い方まで書いて長かった。コピーの使い方はボタンを見れば分かる）
     if (cards.length) $("partnerStatus").textContent = ready ? "オレンジのチェックの会社には、ここから問い合わせできます。" : cards.length + "社が見つかりました。料金の目安と公式サイトをご覧ください。";
-    else $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時・場所、一緒に乗る人数、ペットの条件（大きさ・ケージなど）を変えると、見つかることがあります。問い合わせは送信されていません。</span>';
+    else { $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時やペットの条件を変えると、見つかることがあります。問い合わせは送信されていません。</span>'; $("partnerStatus").appendChild(noCandBox()); track("no_candidates", {pref: $("pref").value}); }
     $("partnerSortBox").hidden = cards.length < 2;
     var hasDist = cards.some(function(c){ return !!c.shop; }); // 予約のしくみが古い版のあいだはお店の位置が来ないので、距離のしぼり込みを出さない
     $("partnerDist").parentNode.hidden = !hasDist; if (!hasDist) $("partnerDist").value = "";
@@ -2234,7 +2313,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // 問い合わせる会社の数に上限はない（Nori 2026-11-01「最大5社の上限はなくていい」）
   function showPickButton(){
     var b = $("sendSelected"), n = chosenPicks.length;
-    b.hidden = !n;
+    b.hidden = !n; syncContact();
     if (n) b.textContent = (n === 1 ? chosenPicks[0].label + "に" : "選んだ" + n + "社に") + "空き状況と料金を問い合わせる（無料）";
     showAllButton();
   }
@@ -2252,7 +2331,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     function sync(){
       var on = !send.hidden && !send.disabled && !sendSeen && formSeen && !sending && form.style.display !== "none";
       bar.hidden = !on;
-      if (on) $("pickBarGo").textContent = contactMiss() ? "次へ：ご連絡先 ↓" : "問い合わせへ ↓";
+      if (on) { var mm = contactMiss(); $("pickBarGo").textContent = !mm ? "問い合わせへ ↓" : mm.closest("#refine") ? "次へ：ペットのこと ↓" : "次へ：ご連絡先 ↓"; }
       if (on) $("pickBarTxt").textContent = !chosenPicks.length && chosenGo && chosenBack ? "行きと帰りの会社を選んでいます" : chosenPicks.length > 1 ? chosenPicks.length + "社を選んでいます" : chosenPicks.length ? "選択中：" + chosenPicks[0].label : "会社を選んでいます";
     }
     new MutationObserver(sync).observe(send, {attributes: true, attributeFilter: ["hidden", "disabled"], childList: true, characterData: true, subtree: true});
@@ -2260,7 +2339,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       new IntersectionObserver(function(es){ sendSeen = es[0].isIntersecting; sync(); }).observe(send);
       new IntersectionObserver(function(es){ formSeen = es[0].isIntersecting; sync(); }).observe(form);
     }
-    function contactMiss(){ return ["name", "email", "tel", "agree"].map(function(id){ return $(id); }).filter(function(el){ return !el.checkValidity(); })[0]; }
+    function contactMiss(){ var m = missingFields(null)[0]; return m && m.el; } // ペットのことが空なら、そちらを先に
     form.addEventListener("change", sync);
     $("pickBarGo").addEventListener("click", function(){
       var miss = contactMiss();
@@ -2291,6 +2370,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     chosenGo = null; chosenBack = null; showLegPick();
   }
   function showLegPick(){
+    syncContact();
     $("legPick").textContent = "行き：" + (chosenGo ? chosenGo.label : "まだ選んでいません") + "／帰り：" + (chosenBack ? chosenBack.label : "まだ選んでいません");
   }
   function pickLeg(leg, card, article){
@@ -3791,7 +3871,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     });
   });
 
-  function requestPayload(split){
+  // wide：候補を調べるときだけ、入っていないペットの項目をいちばん広く探せる値にする（5kgの犬・ケージどちらでも・介護なし）
+  function fillPet(p){ return Object.assign({}, p, {species: p.species || "犬", weight: p.weight || "5", cage: p.cage || "どれでも", care: p.care || "不要"}); }
+  function requestPayload(split, wide){
     var fd = new FormData(form);
     var when = fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute");
     var trip = String(fd.get("trip") || "");
@@ -3803,7 +3885,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     body.append("contact", "メール");
     body.append("datetime", when);
 
-    var pets = o.pets, many = pets.length > 1;
+    var pets = wide ? (o.pets.length ? o.pets : [{}]).map(fillPet) : o.pets, many = pets.length > 1;
     var count = {};
     pets.forEach(function(p){ count[p.species] = (count[p.species] || 0) + 1; });
     // 受付の仕組み（Code.gs）が読む項目。2匹以上のときは、まとめた値と pets（1行1匹）を送る
@@ -3850,6 +3932,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     }
     if (!form.checkValidity()) {
       var miss = missingFields(null);
+      if (miss.some(function(x){ return x.el.closest(".s1-hide"); })) openRefine("send", true);
       if (!miss.length) return fail("まだ入力されていない項目があります。");
       markMissing(miss);
       if (miss.length === 1 && miss[0].el.id === "agree") return fail("確認のチェックを入れてください。", miss[0].el);

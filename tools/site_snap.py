@@ -13,6 +13,15 @@ SUB = re.compile(r'price|fee|ryokin|料金|menu|メニュー|access|アクセス
 
 
 def get(url):
+    # 日本語のURL（tvma.or.jp/clinic/◯◯/ など）・日本語ドメインも開けるようにする
+    u = urllib.parse.urlsplit(url)
+    try:
+        host = u.hostname.encode('idna').decode() if u.hostname else ''
+    except Exception:
+        host = u.hostname or ''
+    netloc = host + (f':{u.port}' if u.port else '')
+    url = urllib.parse.urlunsplit((u.scheme, netloc, urllib.parse.quote(u.path, safe='/%:@!$&\'()*+,;=~-._'),
+                                   urllib.parse.quote(u.query, safe='=&%+/:;,~-._'), ''))
     req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept-Language': 'ja'})
     with urllib.request.urlopen(req, timeout=25) as r:
         raw = r.read(1_500_000)
@@ -89,6 +98,20 @@ def snap(item):
     if 'q' in item and 'url' not in item:
         return search(item)
     url = item['url']
+    if item.get('alive'):
+        # 開けるかだけ見る（Nori 2026-11-22「サイト開けなくて問い合わせないところは掲載しない」）。2回ためす
+        r = dict(item)
+        for _ in range(2):
+            try:
+                h, final = get(url)
+                r.pop('error', None)
+                r['final'] = final
+                r['title'] = title_of(h)[:80]
+                r['size'] = len(h)
+                break
+            except Exception as e:
+                r['error'] = str(e)[:200]
+        return r
     if item.get('raw'):
         # 一覧のページ（獣医師会の会員一覧など）は、ページをそのまま置いて、コンテナで読み分ける
         r = dict(item)
@@ -127,7 +150,7 @@ def main():
         if not (fn.startswith('queue') and fn.endswith('.json')):
             continue
         items = json.load(open(os.path.join(qdir, fn)))
-        with cf.ThreadPoolExecutor(3) as ex:
+        with cf.ThreadPoolExecutor(12) as ex:
             res = list(ex.map(snap, items))
         json.dump(res, open(os.path.join(out, fn.replace('queue', 'snap')), 'w'), ensure_ascii=False, indent=1)
         print(fn, len(res), 'errors', sum(1 for x in res if x.get('error')))

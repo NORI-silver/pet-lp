@@ -4,8 +4,12 @@
 
 ## 共通：どのAIにも最初に貼る文
 
-> GitHub の NORI-silver/pet-lp の main にある AGENTS.md と docs/ai/README.md を読み、NORI-silver/pet-db の docs/ai-memory/MEMORY.md も読んでから作業してください。決まりはそこに書いてあるとおり。会社への送信は止めたまま、変更はブランチとPRで出し、マージは私の確認のあと。終わったら docs/ai/handoff.md に1行足してください。
+> GitHub の NORI-silver/pet-lp の main にある AGENTS.md と docs/ai/README.md、仕事の進め方の型 docs/ai/framework/README.md とその記入例 docs/ai/pet-operating.md を読み、NORI-silver/pet-db の docs/ai-memory/MEMORY.md も読んでから作業してください。決まりはそこに書いてあるとおり。会社への送信は止めたまま、変更はブランチとPRで出し、マージは私の確認のあと。終わったら docs/ai/handoff.md に1行足してください。
 > やってほしいこと：（ここに依頼）
+
+## ほかの事業で使うとき
+
+`docs/ai/framework/README.md` はペットに依存しない型です。ほかの事業（農業など）では、これを写して `<事業>-operating.md` に記入し、上の貼る文の「pet-operating.md」をそのファイルに置きかえます。
 
 ## ChatGPT
 
