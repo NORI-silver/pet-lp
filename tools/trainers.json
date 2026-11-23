@@ -9379,35 +9379,6 @@
    "src": "https://cherish-web.com/"
   },
   {
-   "id": "Tt731ee8b",
-   "name": "エーアイエンタープライズ",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "北区",
-   "url": "https://rairai.net/petsalontop/shop/12796",
-   "services": "ペットホテル、ペットシッター、しつけ",
-   "facts": [
-    {
-     "k": "駐車場",
-     "v": "無料駐車場あり",
-     "src": "https://rairai.net/petsalontop/search/all",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "お支払い",
-     "v": "クレジットカードOK",
-     "src": "https://rairai.net/petsalontop/search/all",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23",
-   "addr": "東京都北区赤羽二丁目32番1号",
-   "src": "https://rairai.net/petsalontop/shop/12796"
-  },
-  {
    "id": "Tte735c28",
    "name": "DOG HARBOR TOYOSU",
    "prefs": [
@@ -10674,6 +10645,243 @@
    "checked": "2026-11-23",
    "addr": "東京都世田谷区下馬一丁目26番2号",
    "src": "https://www.maxandchocolat.com/"
+  },
+  {
+   "id": "Tta1a31f2",
+   "name": "SOPRA 目黒武蔵小山店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "目黒区",
+   "url": "https://sopraginza.com/shop/musashikoyama/",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：10:00〜19:00 定休日：年中無休",
+     "src": "https://sopraginza.com/shop/musashikoyama/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "受付時間：10:00〜19:00 定休日：年中無休",
+     "src": "https://sopraginza.com/shop/musashikoyama/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎（片道）",
+     "src": "https://sopraginza.com/shop/musashikoyama/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード",
+     "src": "https://sopraginza.com/shop/musashikoyama/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "東京都目黒区目黒本町三丁目1番5号",
+   "src": "https://sopraginza.com/shop/musashikoyama/"
+  },
+  {
+   "id": "Tt59fe844",
+   "name": "Famille",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江戸川区",
+   "url": "http://maison-famille.com/about.html",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "東京都江戸川区東瑞江一丁目32番4号",
+   "src": "http://maison-famille.com/about.html"
+  },
+  {
+   "id": "Tta788390",
+   "name": "株式会社犬のしつけ教室DOGLY",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "台東区",
+   "url": "https://doglyhotel.com/company.html",
+   "services": "ペットホテル、しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "東京都台東区根岸三丁目1番10号",
+   "src": "https://doglyhotel.com/company.html"
+  },
+  {
+   "id": "Tt621bf04",
+   "name": "SAKURA’S",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "葛飾区",
+   "url": "https://sakuras-dogtraining.wixsite.com/home/sakura-s%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+   "services": "しつけ",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "東京都葛飾区東水元四丁目14番12号",
+   "src": "https://sakuras-dogtraining.wixsite.com/home/sakura-s%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
+  },
+  {
+   "id": "Ttcfd2ffc",
+   "name": "やまくま",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "目黒区",
+   "url": "https://www.yamakuma-dog.com/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "メール 24時間受付。お問い合わせページをご利用下さい。（返信は営業時間内にさせていただきます。）",
+     "src": "https://www.yamakuma-dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "1回 3,000円(税込)",
+     "src": "https://www.yamakuma-dog.com/course/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "東京都目黒区五本木一丁目5番10号",
+   "src": "https://www.yamakuma-dog.com/"
+  },
+  {
+   "id": "Tt24f3767",
+   "name": "Dogalive Hills",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://dogalivehills.com/",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間内は基本24時間で計算いたします。",
+     "src": "https://dogalivehills.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "東京都渋谷区広尾五丁目16番12号",
+   "src": "https://dogalivehills.com/"
+  },
+  {
+   "id": "Ttd67df0d",
+   "name": "犬のひみつきち",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "江東区",
+   "url": "https://www.dogs-base.com/",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "基本営業時間(10時～20時)以外での受付は別途時間外対応料金が加算されます。",
+     "src": "https://www.dogs-base.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "お店の前に、車一台分の駐車スペースがあります。",
+     "src": "https://www.dogs-base.com/shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・狂犬病予防接種、ワクチン接種証明書（1年以内のもの）",
+     "src": "https://www.dogs-base.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "東京都江東区森下三丁目4番6号",
+   "src": "https://www.dogs-base.com/"
+  },
+  {
+   "id": "Tt8de12bd",
+   "name": "PawsTime",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "渋谷区",
+   "url": "https://pawstime.jimdofree.com/about-us/",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 （日祝日）のデイケアは基本承っておりません",
+     "src": "https://pawstime.jimdofree.com/hotel-day-care/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病・混合ワクチンの接種証明書を確認させていただきます",
+     "src": "https://pawstime.jimdofree.com/hotel-day-care/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払は 現金 または 銀行振込 にて、基本前払いとさせていただきます",
+     "src": "https://pawstime.jimdofree.com/hotel-day-care/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "東京都渋谷区西原三丁目23番6号",
+   "src": "https://pawstime.jimdofree.com/about-us/"
+  },
+  {
+   "id": "Ttdf5583b",
+   "name": "dog nanny",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "http://dog-nanny.com/profile/",
+   "services": "ペットホテル、ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "対応エリア | 世田谷区 自由が丘 九品仏 等々力 上野毛でペットシッターをお探しなら dog nanny",
+     "src": "http://dog-nanny.com/area/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "事前打ち合わせ時現金でのお支払い、銀行振り込み、BASEショップからのクレジット払いとなっております。",
+     "src": "http://dog-nanny.com/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "東京都世田谷区奥沢七丁目18番1号",
+   "src": "http://dog-nanny.com/profile/"
   }
  ]
 }
