@@ -345,7 +345,7 @@ def render_top(ctx):
     <div class="sh"><h2>くわしい記事</h2><p>避難のしかたと、日ごろの備えを記事でまとめています。</p></div>
     {_guides(e)}
     <div class="sh"><h2>ほかの窓口の案内</h2><p>はぐれたときの届け出先や、預け先もまとめています。</p></div>
-    <ul class="other"><li><a href="/jichitai/">ペットの迷子・犬の登録・引取りの窓口</a></li><li><a href="/guide/lost-pet/">ペットが迷子になったら</a></li><li><a href="/pet-hotel/">大型犬OK・猫専用のペットホテル</a></li><li><a href="/hospital/night/">夜間・救急の動物病院</a></li><li><a href="/emergency/">緊急のときの連絡先</a></li></ul>
+    <ul class="other"><li><a href="/jichitai/">ペットの迷子・犬の登録・引取りの窓口</a></li><li><a href="/guide/lost-pet/">ペットが迷子になったら</a></li><li><a href="/pet-hotel/">ペットホテル</a></li><li><a href="/hospital/night/">夜間・救急の動物病院</a></li><li><a href="/emergency/">緊急のときの連絡先</a></li></ul>
   </div>
 </section>
 {_taxi(e)}
