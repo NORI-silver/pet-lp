@@ -9,6 +9,9 @@ import prefkeep
 
 PSLUG = gen_dogrun.PSLUG
 
+LD_MAX = 100
+
+
 def href(cat, pf):
     return f"/{cat['slug']}/{PSLUG[pf]}/"
 
@@ -172,7 +175,7 @@ def render_pref(ctx, cat, pf, rows):
         {"@type": "ListItem", "position": 2, "name": cat["h1"], "item": f'{SITE}/{cat["slug"]}/'},
         {"@type": "ListItem", "position": 3, "name": f"{pf}の{name}", "item": url}]},
       {"@context": "https://schema.org", "@type": "ItemList", "name": f"{pf}の{name}", "numberOfItems": n,
-       "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it["name"], "url": it["url"]} for i, it in enumerate(rs)]},
+       "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it["name"], "url": it["url"]} for i, it in enumerate(rs[:LD_MAX])]},  # 件数が多い県は先頭の LD_MAX 件だけ（情報ページの軽い型：インラインは24KBまで）
       {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
       ensure_ascii=False, indent=1) + "\n</script>"
