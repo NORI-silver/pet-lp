@@ -14,6 +14,35 @@ def href(cat, pf):
 
 MIN = 2  # これより少ない県はページを作らない（1件だけのページは中身がうすいため）
 
+# [B] 2026-11-23 網羅で県の件数が増え、県のページが重くなった（tests/info-light.test.cjs の60KB）・長すぎてさがしにくい：
+# 1つの県に SPLIT 件を超えて載せる分野は、CITY_MIN 件以上ある市区町村を市のページ /<分野>/<県>/<市>/ に分け、県のページには
+# 市のページへのリンクと、のこりの市区町村のカードを出す。政令市の区は市にまとめる。slug は tools/municipalities.json。
+SPLIT, CITY_MIN = 150, 12
+_MUNI = None
+def _muni():
+    global _MUNI
+    if _MUNI is None:
+        _MUNI = {(m["pref"], m["name"]): m["slug"] for m in json.load(open(os.path.join(os.path.dirname(__file__), "municipalities.json"), encoding="utf-8"))}
+    return _MUNI
+def city_of(pf, it):
+    c = (it.get("city") or "").strip()
+    m = re.match(r"^(.+?市)", c) or re.match(r"^(.+?[区町村])", c)
+    if not m: return None
+    name = m.group(1)
+    return name if (pf, name) in _muni() else None
+def split_pref(cat, pf, rs):
+    """（市のページ {市: 施設}, 県のページに残す施設）。件数が SPLIT 以下なら分けない。"""
+    if len(rs) <= cat.get("split", SPLIT): return {}, rs
+    g = {}
+    for it in rs:
+        c = city_of(pf, it)
+        if c: g.setdefault(c, []).append(it)
+    cities = {c: v for c, v in g.items() if len(v) >= cat.get("city_min", CITY_MIN)}
+    ids = {id(x) for v in cities.values() for x in v}
+    return dict(sorted(cities.items(), key=lambda kv: -len(kv[1]))), [it for it in rs if id(it) not in ids]
+def chref(cat, pf, c):
+    return f"{href(cat, pf)}{_muni()[(pf, c)]}/"
+
 def by_pref(cat):
     rows = {}
     for it in cat["items"]:
@@ -23,7 +52,11 @@ def by_pref(cat):
     return {pf: rs for pf, rs in rows.items() if len(rs) >= cat.get("min", MIN) and pf not in cat.get("no_page", ())}
 
 def urls(SITE, cat):
-    return [f"{SITE}{href(cat, pf)}" for pf in by_pref(cat)]
+    out = []
+    for pf, rs in by_pref(cat).items():
+        out.append(f"{SITE}{href(cat, pf)}")
+        out += [f"{SITE}{chref(cat, pf, c)}" for c in split_pref(cat, pf, rs)[0]]
+    return out
 
 def pref_nav(cat, e, rows, regions, cur=None):
     """全国のページ・県のページの下に出す、県のページへのリンク（地方ごと）。"""
@@ -151,11 +184,16 @@ def _with_price(cat, rs):
     lead = _price_lead(cat, rs)
     if not lead: return cat["desc_tail"]
     return lead + "順位はつけていません。"
-def render_pref(ctx, cat, pf, rows):
+def render_pref(ctx, cat, pf, rows, city=None):
     e, SITE = ctx["e"], ctx["SITE"]
-    rs = rows[pf]
+    cities, rest = split_pref(cat, pf, rows[pf])
+    if city:
+        rs = cities[city]; show = rs; cities = {}
+    else:
+        rs = rows[pf]; show = rest
     n = len(rs)
-    url = SITE + href(cat, pf)
+    url = SITE + (chref(cat, pf, city) if city else href(cat, pf))
+    place = city or pf
     name, unit = (cat["name_fn"](pf) if cat.get("name_fn") else cat["name"]), cat["unit"]
     facts = [f for f in cat["facts"](rs) if f and not re.search(r"：\d+／\d+$", f)]  # 「猫も受ける施設：3／5」のような運営側の集計は出さない（2026-11-16 スマホ点検）
     lab, rprefs = _region_of(pf, ctx["emg_regions"])
@@ -163,45 +201,53 @@ def render_pref(ctx, cat, pf, rows):
     near_html = ""
     if near:
         near_html = (f'<p>{e(lab)}のほかの県：' + "、".join(f'<a href="{href(cat, p)}">{e(p)}の{e(name)}（{len(rows[p])}{e(unit)}）</a>' for p in near) + '</p>')
-    title = cat["title_fn"](pf, rs, n) if cat.get("title_fn") else f'{pf}の{cat["title_word"]}｜{n}{unit}の一覧（{cat["title_tail"]}）｜ペットタクシー予約窓口'
-    desc = cat["desc_fn"](pf, rs, n) if cat.get("desc_fn") else f'{pf}の{name}を{n}{unit}、公式サイトの情報をもとにまとめた無料の一覧です。' + _with_price(cat, rs)
-    faq = cat["faq"](pf, rs, n)
+    if city:
+        sib = [c for c in split_pref(cat, pf, rows[pf])[0] if c != city]
+        near_html = (f'<p><a href="{href(cat, pf)}">{e(pf)}の{e(name)}（{len(rows[pf])}{e(unit)}）</a>' + ("・同じ県の市：" + "、".join(f'<a href="{chref(cat, pf, c)}">{e(c)}</a>' for c in sib) if sib else "") + '</p>')
+    city_links = ""
+    if cities:
+        city_links = (f'<div class="emg-tips pp-cities"><h2 style="font-size:1.05em;margin:0 0 6px">市区町村からさがす</h2><p class="pp-nav">' +
+                      " ".join(f'<a href="{chref(cat, pf, c)}">{e(c)}（{len(v)}）</a>' for c, v in cities.items()) +
+                      f'</p><p class="emg-tips-note">上の市区町村は、それぞれのページに載せています。下は{e(pf)}のほかの市区町村です。</p></div>')
+    title = cat["title_fn"](place, rs, n) if cat.get("title_fn") else f'{place}の{cat["title_word"]}｜{n}{unit}の一覧（{cat["title_tail"]}）｜ペットタクシー予約窓口'
+    desc = cat["desc_fn"](place, rs, n) if cat.get("desc_fn") else f'{place}の{name}を{n}{unit}、公式サイトの情報をもとにまとめた無料の一覧です。' + _with_price(cat, rs)
+    faq = cat["faq"](place, rs, n)
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     ld = '<script type="application/ld+json">\n' + json.dumps([
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
         {"@type": "ListItem", "position": 2, "name": cat["h1"], "item": f'{SITE}/{cat["slug"]}/'},
-        {"@type": "ListItem", "position": 3, "name": f"{pf}の{name}", "item": url}]},
-      {"@context": "https://schema.org", "@type": "ItemList", "name": f"{pf}の{name}", "numberOfItems": n,
-       "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it["name"], "url": it["url"]} for i, it in enumerate(rs[:100])]},  # 施設が多い県は先頭の100件まで（info-light のインラインの上限）
+        {"@type": "ListItem", "position": 3, "name": f"{pf}の{name}", "item": SITE + href(cat, pf)}] + ([{"@type": "ListItem", "position": 4, "name": f"{place}の{name}", "item": url}] if city else [])},
+      {"@context": "https://schema.org", "@type": "ItemList", "name": f"{place}の{name}", "numberOfItems": len(show),
+       "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it["name"], "url": it["url"]} for i, it in enumerate(show[:100])]},  # 100件まで（構造化データのスクリプトが24KBを超えないように）
       {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
-      ensure_ascii=False, indent=1 if n <= 60 else None) + "\n</script>"
-    cards = "".join(cat["card"](e, it) for it in rs)
+      ensure_ascii=False, separators=(",", ":")) + "\n</script>"
+    cards = "".join(cat["card"](e, it) for it in show)
     import faccard as _FC
     if cat.get("bf_keys") and n >= 3 and cat["slug"] not in _FC.DIRS:  # 施設カードの分野は「うちの子に合うところをさがす」（tools/faccard.py）にまとめた  # うちの子（体重・猫）でしぼる。公式サイトに書いてある受け入れの決まりだけで分け、書いていない店・施設はいつも出す
         import visual as _V
         cards = _V.breeds({"title": f"うちの子で{cat['name']}をしぼる", "lead": cat.get("bf_lead", "受け入れる動物・大きさの決まりが公式サイトに書いてあるところは、それで分けています。書いていないところは、いつも表示します。"),
-                           "rows": [{"k": cat["bf_keys"](it), "raw": cat["card"](e, it)} for it in rs]})
+                           "rows": [{"k": cat["bf_keys"](it), "raw": cat["card"](e, it)} for it in show]})
     facts_html = ("<ul class=\"pp-facts\">" + "".join(f"<li>{e(f)}</li>" for f in facts) + "</ul>") if facts else ""
     page = ctx["head"](title, desc, url, ld) + CSS + cat.get("css", "") + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">
-    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/{cat['slug']}/">{e(cat['h1'])}</a> › {e(pf)}</nav>
-    <h1><small>{n}{e(unit)}・公式サイトの情報をもとに</small>{e(pf)}の{e(name)}</h1>
-    <p class="lede">{e(cat['lede'](pf, n))}</p>
+    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/{cat['slug']}/">{e(cat['h1'])}</a> › {(f'<a href="{href(cat, pf)}">{e(pf)}</a> › {e(city)}' if city else e(pf))}</nav>
+    <h1><small>{n}{e(unit)}・公式サイトの情報をもとに</small>{e(place)}の{e(name)}</h1>
+    <p class="lede">{e(cat['lede'](place, n))}</p>
   </div>
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    {answer_html(e, cat, pf, rs, faq, facts)}
+    {answer_html(e, cat, place, rs, faq, facts)}
     <div class="emg">
       <p class="emg-free">{e(cat.get("free", "この一覧は無料の情報です。事業者からお金をもらっていません。おすすめ順や点数順ではありません。" + ("料金は公式サイトに書いてあるものだけを、情報の時点つきで載せています。" if any(it.get("facts") for it in rs) else "料金は載せていないので、それぞれに直接おたずねください。")))}</p>
-      {cat["extra"](e, pf) if cat.get("extra") else ""}
-      {cat["fac_chips"](e, pf) + chr(10) + "      " if cat.get("fac_chips") else ""}<section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(cat.get("list_h", name))}（{e(pf)}・{n}{e(unit)}）</h2>{cards}</section>
-      {table_html(e, cat, rs)}
-      {fact_table_html(e, cat, pf, rs)}
+      {cat["extra"](e, pf) if cat.get("extra") else ""}{city_links}
+      {cat["fac_chips"](e, pf) + chr(10) + "      " if cat.get("fac_chips") else ""}<section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(cat.get("list_h", name))}（{e(place)}・{len(show)}{e(unit)}{'・ほかの市区町村' if cities else ''}）</h2>{cards}</section>
+      {table_html(e, cat, show)}
+      {fact_table_html(e, cat, place, show)}
       {cat["extra_after"](e, pf) if cat.get("extra_after") else ""}
       {near_html}
       {_before_html(cat, e, pf)}
@@ -233,6 +279,10 @@ def write_all(ROOT, ctx, cat):
         d = os.path.join(ROOT, cat["slug"], PSLUG[pf])
         os.makedirs(d, exist_ok=True)
         open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(render_pref(ctx, cat, pf, rows))
+        for c in split_pref(cat, pf, rows[pf])[0]:
+            cd = os.path.join(d, _muni()[(pf, c)])
+            os.makedirs(cd, exist_ok=True)
+            open(os.path.join(cd, "index.html"), "w", encoding="utf-8").write(render_pref(ctx, cat, pf, rows, city=c))
 
 def link_national(ROOT, ctx, cat):
     """全国のページの県の見出しを県のページへのリンクにし、県のページの一覧を足す。"""

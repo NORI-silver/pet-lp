@@ -3547,6 +3547,1455 @@
    ]
   },
   {
+   "id": "Gtb2503bd",
+   "name": "Aya Housecall Dog Grooming",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "葉山町",
+   "url": "https://ayadoggrooming.jimdofree.com/",
+   "services": "出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "area": "葉山町とその周り"
+  },
+  {
+   "id": "Gtf5fb98a",
+   "name": "LanLan",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "東村山市",
+   "url": "https://www.wan-lanlan.com/",
+   "services": "出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "area": "東村山市とその周り"
+  },
+  {
+   "id": "Gtfc442d2",
+   "name": "dog salon SHIRO",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "三浦市",
+   "url": "https://www.dogsalon-shiro.jp/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：9:00-17:30",
+     "src": "https://www.dogsalon-shiro.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車スペース：軽トラ１台分の広さ、高さ2.6m以上（屋根がある場合は必ずご確認ください）※なるべく傾斜の少ない平坦な場所",
+     "src": "https://www.dogsalon-shiro.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※お支払いは現金のみとなり\u0000\u0000ます。",
+     "src": "https://www.dogsalon-shiro.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "三浦市とその周り",
+   "car": true
+  },
+  {
+   "id": "Gt7554b97",
+   "name": "ペットケアまりん",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "秦野市",
+   "url": "https://petcare-marin.com/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "area": "秦野市とその周り"
+  },
+  {
+   "id": "Gtccd1dea",
+   "name": "フリートリマー WAKA",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市鶴見区",
+   "url": "https://trimmer-waka.wixsite.com/trimming",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "3000円/ 一回（小型・中型犬・猫）出張費込",
+     "src": "https://trimmer-waka.wixsite.com/trimming/treatments",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "4000円/1回（出張費込み、別途コインパーキング代頂戴致します。）",
+     "src": "https://trimmer-waka.wixsite.com/trimming/treatments",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "出張エリア→横浜市神奈川区、鶴見区、 川崎市川崎区のみ",
+     "src": "https://trimmer-waka.wixsite.com/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎トリミングは送迎料無料です。(但し横浜市神奈川区、鶴見区、川崎市川崎区のみ。 その他の地域は送迎は不可。",
+     "src": "https://trimmer-waka.wixsite.com/trimming/treatments",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "出張エリア→横浜市神奈川区、鶴見区、 川崎市川崎区のみ"
+  },
+  {
+   "id": "Gtcd7852a",
+   "name": "Up Tails",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "東村山市",
+   "url": "https://grooming.uptails.net/",
+   "services": "出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "area": "東村山市とその周り"
+  },
+  {
+   "id": "Gtae17adf",
+   "name": "Aloha Dog",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "立川市",
+   "url": "https://www.aloha-dog.jp/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "平日は1～2日程不定休がございます。",
+     "src": "https://www.aloha-dog.jp/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "店舗前に2台分のご用意がございます。近隣にコインパーキングも有りますので、是非ご利用ください。",
+     "src": "https://www.aloha-dog.jp/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "当サロンを初めてご利用の方は、飼い主様の身分証明およびワンちゃんのワクチン・狂犬病の接種証明書をお持ちください。",
+     "src": "https://www.aloha-dog.jp/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカードはご利用になれません。電子マネーはPayPayがご利用いただけます。",
+     "src": "https://www.aloha-dog.jp/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "立川市とその周り"
+  },
+  {
+   "id": "Gt4764f2e",
+   "name": "トリミングサロン pomme",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "町田市",
+   "url": "https://pomme-dog.com/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "出張訪問エリア：町田市・相模原市・多摩市一部",
+     "src": "https://pomme-dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "出張訪問エリア：町田市・相模原市・多摩市一部"
+  },
+  {
+   "id": "Gt77d600d",
+   "name": "dog spa NOOK",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "平塚市",
+   "url": "https://dogspa-nook.com/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：9:00〜18:00（最終受付16:00）",
+     "src": "https://dogspa-nook.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場も近くに多数あり、駐車場代優待サービスもありとてもありがたい。",
+     "src": "https://dogspa-nook.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病・混合ワクチン接種証明書を拝見させていただきます。（毎年１回）",
+     "src": "https://dogspa-nook.com/guide/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "平塚市とその周り",
+   "car": true
+  },
+  {
+   "id": "Gt31de425",
+   "name": "日本ペットシッターサービス 湘南店 halelea",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "藤沢市",
+   "url": "https://www.pet-ss.com/halelea/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 8:00～21:00",
+     "src": "https://www.pet-ss.com/halelea/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "■自動車を利用して移動する場合は、1kmにつき50円とさせていただきます。また、コインパーキングなどの有料駐車場を利用する場合は、実費のご負担をお願いしております。",
+     "src": "https://www.pet-ss.com/halelea/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "藤沢市とその周り"
+  },
+  {
+   "id": "Gta9db5b2",
+   "name": "トリミング&ケアサロン スマイリーココ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "小金井市",
+   "url": "https://smiley-coco.com/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "■ 営業時間 : 9:00～16:00",
+     "src": "https://smiley-coco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "■ お休み : 火・水曜日・不定休",
+     "src": "https://smiley-coco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "■ 年に一度狂犬病・混合ワクチンの接種証明書のご提示をお願いいたします。",
+     "src": "https://smiley-coco.com/trim.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "小金井市とその周り"
+  },
+  {
+   "id": "Gt81e87ee",
+   "name": "SOPRA GINZA 吉祥寺店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "武蔵野市",
+   "url": "https://www.sopraginza.com/shop/kichijoji/",
+   "services": "ペットホテル、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：10:00〜19:00 定休日：年中無休",
+     "src": "https://www.sopraginza.com/shop/kichijoji/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "受付時間：10:00〜19:00 定休日：年中無休",
+     "src": "https://www.sopraginza.com/shop/kichijoji/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード",
+     "src": "https://www.sopraginza.com/shop/kichijoji/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "武蔵野市とその周り"
+  },
+  {
+   "id": "Gt52b528e",
+   "name": "trimmingcar boku",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "瑞穂町",
+   "url": "https://www.astaff.net/voice/voice-19/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間／9:00-18:00（土日祝日を除く）",
+     "src": "https://www.astaff.net/voice/voice-19/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "瑞穂町とその周り",
+   "car": true
+  },
+  {
+   "id": "Gtf1a2910",
+   "name": "トリミングサロン Tea Tree",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市栄区",
+   "url": "https://teatree-trim.jimdofree.com/",
+   "services": "出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "area": "横浜市栄区とその周り",
+   "car": true
+  },
+  {
+   "id": "Gt2816c46",
+   "name": "ドッグ ノーティカ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "藤沢市",
+   "url": "https://dognautica.fun/",
+   "services": "ペットホテル、ペットシッター、しつけ、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00~15:00(受付時間)",
+     "src": "https://dognautica.fun/%e4%ba%88%e7%b4%84%e6%96%b9%e6%b3%95%ef%bd%a5%e3%82%a2%e3%82%af%e3%82%bb%e3%82%b9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "シャンプー/トリミングをご利用、もしくは5400円(税込)以上お買い上げのお客様は、駐車料金をサービスさせて頂きます。(1回の駐車につき100円分)",
+     "src": "https://dognautica.fun/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "周辺コインパーキングをご利用下さいませ。『三井のリパーク 藤沢宮前』 https://goo.gl/PmGBZ7 神奈川県藤沢市宮前471",
+     "src": "https://dognautica.fun/%e4%ba%88%e7%b4%84%e6%96%b9%e6%b3%95%ef%bd%a5%e3%82%a2%e3%82%af%e3%82%bb%e3%82%b9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防注射を接種したことを証明できるもの(証明書や鑑札など)",
+     "src": "https://dognautica.fun/%e5%88%9d%e3%82%81%e3%81%a6%e3%81%ae%e6%96%b9%e3%81%b8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金以外にも、各種クレジットカード、楽天ペイ、auPay、楽天Edy、交通系電子マネー、nanaco、WAON、PayPayがご利用可能となっております。",
+     "src": "https://dognautica.fun/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "藤沢市とその周り"
+  },
+  {
+   "id": "Gt8d5250f",
+   "name": "なかはち",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "町田市",
+   "url": "https://nakahachi.jp/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "9:30～17:30 不定休",
+     "src": "https://nakahachi.jp/shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "\\5000以上のご利用では1.5㎞未満(地図サービスでの平均経路)かつ６分程度の送迎を無料とさせていただいています。それ以上の距離は1㎞につき\\500を頂きますが、お迎え又はお届けのみの場合は半額となります。また、複数頭の場合は1頭増えるごとに無料の送迎距離を1㎞追加いたします。",
+     "src": "https://nakahachi.jp/pricelist/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "d払い、auPAY、PayPayが使えるようになりました",
+     "src": "https://nakahachi.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "町田市とその周り"
+  },
+  {
+   "id": "Gtcef572c",
+   "name": "出張トリミング おむすび",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "町田市",
+   "url": "https://omusubi.hp.peraichi.com/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "・自宅駐車場以外では来客用やお近くのパーキングの場所の確認をお願いします",
+     "src": "https://omusubi.hp.peraichi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "【混合ワクチンと狂犬病の証明書の確認】",
+     "src": "https://omusubi.hp.peraichi.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "・お会計は現金、クレジット、QR決済、電子マネー等でお支払い頂けます",
+     "src": "https://omusubi.hp.peraichi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "町田市とその周り"
+  },
+  {
+   "id": "Gt93e4678",
+   "name": "Dog Day's",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市磯子区",
+   "url": "https://cocoro-dogdays.amebaownd.com/",
+   "services": "ペットホテル、出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "area": "横浜市磯子区とその周り"
+  },
+  {
+   "id": "Gt45dda06",
+   "name": "DogSalon inumoiru",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "秦野市",
+   "url": "https://inumoiru1136.crayonsite.info/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "※9：30開錠•営業時間内でも終わり次第終了",
+     "src": "https://inumoiru1136.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "・定休日 土曜日・日曜日(不定期的で営業有り)",
+     "src": "https://inumoiru1136.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "・駐車場1台あり お店に向かって左から2列目",
+     "src": "https://inumoiru1136.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "☆初回は受付カードのご記入と狂犬病予防接種・混合ワクチン予防接種の証明書をご持参ください",
+     "src": "https://inumoiru1136.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "秦野市とその周り"
+  },
+  {
+   "id": "Gt547232e",
+   "name": "日本ペットシッターサービス八王子南店 ひなた",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "八王子市",
+   "url": "https://www.pet-ss.com/hinata/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00～19:00",
+     "src": "https://www.pet-ss.com/hinata/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "八王子市とその周り"
+  },
+  {
+   "id": "Gt414d60c",
+   "name": "Dog salon MOE",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市金沢区",
+   "url": "https://dogsalonmoe.crayonsite.net/",
+   "services": "出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "area": "横浜市金沢区とその周り"
+  },
+  {
+   "id": "Gtdd4e22f",
+   "name": "ハーブツリー",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市南区",
+   "url": "http://www.herb-tree.com/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10:00～17:30 定休日 月曜日 木曜日",
+     "src": "http://www.herb-tree.com/concept.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "営業時間 10:00～17:30 定休日 月曜日 木曜日",
+     "src": "http://www.herb-tree.com/concept.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市南区とその周り"
+  },
+  {
+   "id": "Gtb4599df",
+   "name": "Eva Dog",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "西東京市",
+   "url": "https://evadog.life/profile/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10:00～18:00",
+     "src": "https://evadog.life/profile/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "西東京市とその周り"
+  },
+  {
+   "id": "Gte04c01d",
+   "name": "ポイントバケーション箱根",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "箱根町",
+   "url": "https://stayle.jp/pvhakone/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "フロント営業時間 8:00 ～ 20:00",
+     "src": "https://stayle.jp/pvhakone/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "1部屋につき、1台の無料駐車場を完備しております。",
+     "src": "https://stayle.jp/pvhakone/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金・クレジットカード・Pay Pay・au PAY",
+     "src": "https://stayle.jp/pvhakone/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "箱根町とその周り"
+  },
+  {
+   "id": "Gta747851",
+   "name": "出張Care trim Hee's",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市戸塚区",
+   "url": "https://hees.amebaownd.com/pages/2494183/page_201704041603",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間ː 9時～16時",
+     "src": "https://hees.amebaownd.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "②混合ワクチンと狂犬病予防接種の証明書の確認をいたします。",
+     "src": "https://hees.amebaownd.com/pages/2494183/page_201704041603",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市戸塚区とその周り"
+  },
+  {
+   "id": "Gteeaa182",
+   "name": "LUNA DOG シャンプーサービス",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "東久留米市",
+   "url": "https://lunadogshampooservice02.com/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "お客様にご用意いただくのは 電源と駐車スペースのみ 。爪切りからカットまで、すべての工程を車内で完結するため、お部屋を汚す心配がありません。",
+     "src": "https://lunadogshampooservice02.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "東久留米市とその周り"
+  },
+  {
+   "id": "Gtb77b10f",
+   "name": "Sphere",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市麻生区",
+   "url": "https://www.dogsalonsphere.info/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張料：​500円",
+     "src": "https://www.dogsalonsphere.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "川崎市麻生区とその周り",
+   "car": true
+  },
+  {
+   "id": "Gt9c2b5a0",
+   "name": "Trimming CCcornet",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "福生市",
+   "url": "https://koppem3s1miho.wixsite.com/trimmingcccornet",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "日・祝日：休業日",
+     "src": "https://koppem3s1miho.wixsite.com/trimmingcccornet",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場や、アーチ状のカーポートは高さをご確認ください。またトリミングルームへの扉が後方にございます。ワンちゃんの乗り降りの際は後方ドアの開閉にご注意ください。",
+     "src": "https://koppem3s1miho.wixsite.com/trimmingcccornet",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリアは東京都福生市を中心に・羽村市・あきる野市・昭島市・青梅市​​",
+     "src": "https://koppem3s1miho.wixsite.com/trimmingcccornet",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "（現金のみお取扱いです）",
+     "src": "https://koppem3s1miho.wixsite.com/trimmingcccornet",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "対応エリアは東京都福生市を中心に・羽村市・あきる野市・昭島市・青梅市​​",
+   "car": true
+  },
+  {
+   "id": "Gt85949cb",
+   "name": "E・Laugh",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "日野市",
+   "url": "https://e-laugh.netlify.app/",
+   "services": "出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "area": "日野市とその周り"
+  },
+  {
+   "id": "Gt6eee3be",
+   "name": "まごころ庵",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "平塚市",
+   "url": "https://magokoro-an.com/",
+   "services": "ペットホテル、出張トリミング",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "予約優先・ 不定休",
+     "src": "https://magokoro-an.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "住所：神奈川県平塚市花水台33-27（駐車場1台有）",
+     "src": "https://magokoro-an.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "平塚市とその周り"
+  },
+  {
+   "id": "Gtc735a7c",
+   "name": "Honey Tail",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市南区",
+   "url": "https://dogsalon-honeytail.jimdofree.com/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "☆定休日 月曜日(臨時休業あり)",
+     "src": "https://dogsalon-honeytail.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市南区とその周り"
+  },
+  {
+   "id": "Gtcfcca81",
+   "name": "ILO",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市多摩区",
+   "url": "https://dogsalon-ilo.crayonsite.info/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00〜17:00（完全予約制）",
+     "src": "https://dogsalon-ilo.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "5km以内でも出張料1.200円になります。",
+     "src": "https://dogsalon-ilo.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "＊お支払い方法は現金払いのみです。",
+     "src": "https://dogsalon-ilo.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "川崎市多摩区とその周り",
+   "car": true
+  },
+  {
+   "id": "Gt266f2b8",
+   "name": "Fairy Paws(フェアリー パウス)",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市西区",
+   "url": "https://fairy-paws.com/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10:00〜18:00（日曜11:00～19:00）",
+     "src": "https://fairy-paws.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休（事前に告知致します）",
+     "src": "https://fairy-paws.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "近隣のコインパーキングをご利用ください。一部駐車料金を負担させて頂きます。",
+     "src": "https://fairy-paws.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市西区とその周り"
+  },
+  {
+   "id": "Gtc2a9e0a",
+   "name": "日本ペットシッターサービス平塚店 TUBASA",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "平塚市",
+   "url": "https://www.pet-ss.com/tubasa-pet/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00～20:00",
+     "src": "https://www.pet-ss.com/tubasa-pet/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "平塚市とその周り"
+  },
+  {
+   "id": "Gt1463f24",
+   "name": "Pet salon grace",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市金沢区",
+   "url": "https://petsalongrace.amebaownd.com/",
+   "services": "出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "area": "横浜市金沢区とその周り"
+  },
+  {
+   "id": "Gtf051dac",
+   "name": "Dog Salon Sunny",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市中原区",
+   "url": "https://donnl.crayonsite.com/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "・2025.08月〜不定休になっております。予約の空き状況などはカレンダーを参考にしてご連絡下さい。",
+     "src": "https://donnl.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "川崎市中原区とその周り"
+  },
+  {
+   "id": "Gt1bbce8d",
+   "name": "HAPPY/日本ペットシッターサービス多摩地区店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "多摩市",
+   "url": "https://www.pet-ss.com/happy/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00～21:00",
+     "src": "https://www.pet-ss.com/happy/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "多摩市とその周り"
+  },
+  {
+   "id": "Gtc4a82a2",
+   "name": "日本ペットシッターサービス 川崎中央店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市宮前区",
+   "url": "https://www.pet-ss.com/kawasaki-c/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00～20:00",
+     "src": "https://www.pet-ss.com/kawasaki-c/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "川崎市宮前区とその周り"
+  },
+  {
+   "id": "Gt67bc9ae",
+   "name": "トリミングサロン ティグレ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "http://tigre.ciao.jp/",
+   "services": "ペットホテル、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：午前9時～午後4時",
+     "src": "http://tigre.ciao.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：日曜・祝日",
+     "src": "http://tigre.ciao.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市中区とその周り"
+  },
+  {
+   "id": "Gtd2e78b7",
+   "name": "Dogsalon Littlesnow",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市保土ケ谷区",
+   "url": "https://dogsalonlittlesnow.com/",
+   "services": "ペットホテル、しつけ、出張トリミング",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "10:00～18:00（水曜定休）",
+     "src": "https://dogsalonlittlesnow.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "●部分カット：チワワ（ロング）3,500円／トイプードル 5,000円／M・ダックス 4,300円",
+     "src": "https://dogsalonlittlesnow.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカードは、JCB・Diners Club・Discover Card・VISA・MasterCard・American Express に対応しております。",
+     "src": "https://dogsalonlittlesnow.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市保土ケ谷区とその周り"
+  },
+  {
+   "id": "Gt3442985",
+   "name": "おかえり",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "鎌倉市",
+   "url": "https://www.pet-ss.com/okaeri/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 8:00～19:00",
+     "src": "https://www.pet-ss.com/okaeri/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "〇お支払い方法は、現金・お振込よりお選びください。",
+     "src": "https://www.pet-ss.com/okaeri/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "鎌倉市とその周り"
+  },
+  {
+   "id": "Gt0ff2c24",
+   "name": "Dog Trimming Ran Ran",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市栄区",
+   "url": "https://y4jxd.crayonsite.com/p/3/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "部分カット500円（税込)~",
+     "src": "https://y4jxd.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市栄区とその周り"
+  },
+  {
+   "id": "Gtd6fc40e",
+   "name": "日本ペットシッターサービス 小平店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "小平市",
+   "url": "https://www.pet-ss.com/kodaira/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00～20:00",
+     "src": "https://www.pet-ss.com/kodaira/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "●駐車スペースがない場合は、別途駐車料金が必要となる場合がございます。",
+     "src": "https://www.pet-ss.com/kodaira/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "●お支払いは前金にてお願いしております。また銀行振り込みの場合は、振込手数料のご負担をお願いしております。",
+     "src": "https://www.pet-ss.com/kodaira/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "小平市とその周り"
+  },
+  {
+   "id": "Gt8213561",
+   "name": "DOGGY DOO (ドギードゥ)",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "鎌倉市",
+   "url": "https://shonangarage.com/archives/894",
+   "services": "出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "area": "鎌倉市とその周り",
+   "car": true
+  },
+  {
+   "id": "Gt632d2e1",
+   "name": "日本ペットシッターサービス本牧店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "https://www.pet-ss.com/honmoku/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場所の無い場合は、周辺コインパーキング実費のご請求となります。",
+     "src": "https://www.pet-ss.com/honmoku/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市中区とその周り"
+  },
+  {
+   "id": "Gte503fca",
+   "name": "日本ペットシッターサービス逗子・鎌倉店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "葉山町",
+   "url": "https://www.pet-ss.com/luna-merumo/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00～20:00",
+     "src": "https://www.pet-ss.com/luna-merumo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "■自動車を利用して移動する場合は、1kmにつき50円とさせていただきます。また、コインパーキングなどの有料駐車場を利用する場合は、実費のご負担をお願いしております。",
+     "src": "https://www.pet-ss.com/luna-merumo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "葉山町とその周り"
+  },
+  {
+   "id": "Gt05a79b8",
+   "name": "うにたけ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "鎌倉市",
+   "url": "https://www.pet-ss.com/unitake/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00～21:00",
+     "src": "https://www.pet-ss.com/unitake/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "鎌倉市とその周り"
+  },
+  {
+   "id": "Gt6a27534",
+   "name": "ウェルフェア ホーム",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市西区",
+   "url": "https://welfare-home.com/160112-2/",
+   "services": "ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金にて前払い、もしくは当日払いにてお支払いいただきます。",
+     "src": "https://welfare-home.com/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市西区とその周り"
+  },
+  {
+   "id": "Gt2ea04f5",
+   "name": "PETTY 日本ペットシッターサービスたまプラーザ店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市緑区",
+   "url": "https://www.pet-ss.com/petty/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00～20:00",
+     "src": "https://www.pet-ss.com/petty/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市緑区とその周り"
+  },
+  {
+   "id": "Gtc01528d",
+   "name": "HEARTY 日本ペットシッターサービス みなとみらい店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市西区",
+   "url": "https://www.pet-ss.com/hearty/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 8:00～21:00",
+     "src": "https://www.pet-ss.com/hearty/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市西区とその周り"
+  },
+  {
+   "id": "Gtcffee8b",
+   "name": "Dog Salon Silver Fang",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "日野市",
+   "url": "https://silverfang-dog.com/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10:00 ～18:30",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日： 水曜日、第2・4火曜日",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "シャンプーコースに、プラス部分カット1,100円～も承ります。",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明書、飼い主様の身分証の確認をさせていただきます。",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "日野市とその周り",
+   "car": true
+  },
+  {
+   "id": "Gt6e5b2c4",
+   "name": "ペットシッターPONO",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "西東京市",
+   "url": "https://petsitterpono.com/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金払いの場合は、初回のみ事前のお打ち合わせの際にお支払いをお願いいたします。",
+     "src": "https://petsitterpono.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "西東京市とその周り"
+  },
+  {
+   "id": "Gt3c2ed0a",
+   "name": "いぬのまどぐち",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "八王子市",
+   "url": "https://inumado.com/",
+   "services": "ペットホテル、ペットシッター、しつけ、出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "area": "八王子市とその周り",
+   "car": true
+  },
+  {
+   "id": "Gtd91218d",
+   "name": "TrimmingCar FANBO",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横須賀市",
+   "url": "https://trimmingcarfanbo.net/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "（平日不定休あり）",
+     "src": "https://trimmingcarfanbo.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "◇ハーブシャンプー 1,000円~",
+     "src": "https://trimmingcarfanbo.net/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車スペースをお借りします。 車高が2,6m ありますので車庫、カーポート、軒下のご確認お願い致します。斜面は不可です。 電気コンセント をお借りします。コード14m程をお持ちします。",
+     "src": "https://trimmingcarfanbo.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病、混合ワクチン接種証明の提示 をお願いいたします。",
+     "src": "https://trimmingcarfanbo.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみとなっております。",
+     "src": "https://trimmingcarfanbo.net/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横須賀市とその周り",
+   "car": true
+  },
+  {
+   "id": "Gtb56440c",
+   "name": "Trimmingcar Wish",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市",
+   "url": "https://trimmingcar-wish.crayonsite.com/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "※日祝は休業日のため、予約不可。",
+     "src": "https://trimmingcar-wish.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "③狂犬病・混合ワクチン接種証明書の提示",
+     "src": "https://trimmingcar-wish.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "相模原市とその周り"
+  },
+  {
    "id": "G-ST1649",
    "name": "ソプラ銀座株式会社",
    "prefs": [
