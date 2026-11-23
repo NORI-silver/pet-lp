@@ -6,7 +6,7 @@ const [root, kind, out] = process.argv.slice(2).map((v,i)=>i===1?v:path.resolve(
 const origin = 'http://pet.test';
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.svg':'image/svg+xml'};
 const specs=kind==='photo'?[['/dog-trainer/kyoto/','.cs-ph[data-gph="T114"]'],['/dogrun/okayama/','.cs-ph:has(.cs-ph-c)'],['/rojin-home/','.cs-ph:has(.cs-ph-n)'],['/','.partner-card.qa-taxi']]:
-  kind==='cta'?[['/','#seeBtn'],['/chiba/','#seeBtn']]:[['/jichitai/maigo/','#jcPro']];
+  kind==='cta'?[['/','#seeBtn'],['/chiba/','#seeBtn']]:kind==='guard'?[['/pet-hotel/hyogo/','main'],['/dog-trainer/kyoto/','main'],['/trimming/tokyo/','main']]:[['/jichitai/maigo/','#jcPro']];
 (async()=>{
  fs.mkdirSync(out,{recursive:true}); const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||undefined});
  let failed=false;
@@ -93,6 +93,9 @@ const specs=kind==='photo'?[['/dog-trainer/kyoto/','.cs-ph[data-gph="T114"]'],['
      assert.ok(m.left>=-1&&m.right<=width+1,JSON.stringify(m));
      assert.match(m.helpText,/料金の確認は無料です/);
      console.log('BOOKING_CTA',p,width,JSON.stringify(m));
+    } else if(kind==='guard') {
+     const stray=await page.evaluate(()=>[...document.querySelectorAll('img, picture source')].flatMap(el=>[el.getAttribute('src'),el.getAttribute('srcset'),el.getAttribute('data-src'),el.currentSrc]).filter(v=>v&&/\/img\/fac\/taxi\//.test(v)));
+     assert.deepEqual(stray,[],'taxi asset leaked into non-taxi facility markup');
     } else if(kind==='maigo') {
      const rows=await candidate.locator('tbody tr').count();
      assert.equal(rows,31);
