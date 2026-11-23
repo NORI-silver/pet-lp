@@ -614,6 +614,25 @@ def _trim(h, keep):
     out.append(h[i:])
     return "".join(out)
 
+_MORE = re.compile(r'<details class="fc-more"><summary class="fc-a fc-a-more">そのほか</summary><div class="fc-more-b">(.*?)</div></details>', re.S)
+
+def _lazy(h, url):
+    """施設の多い県のページ（東京など）で重さの上限を超えるときは、カードの「そのほか」の中身だけを同じフォルダの more.json に分け、
+    開いたときに /facility.js が読む（中身は消さない。カード・さがす欄・行はそのまま）。返り値は (ページ, more.json の中身)"""
+    store, out, i = {}, [], 0
+    for m in _MORE.finditer(h):
+        k = h.rfind('data-fid="', 0, m.start())
+        if k < 0: continue
+        fid = h[k + 10:h.find('"', k + 10)]
+        if fid in store: continue
+        store[fid] = m.group(1)
+        out.append(h[i:m.start()])
+        out.append(f'<details class="fc-more" data-more="{url}more.json" data-mid="{html.escape(fid)}"><summary class="fc-a fc-a-more">そのほか</summary><div class="fc-more-b">読みこんでいます…</div></details>')
+        i = m.end()
+    out.append(h[i:])
+    if "/facility.js" not in h: return h, {}
+    return "".join(out), store
+
 def _one(h, conf, fbn):
     """1ページを作りかえる。重すぎれば None"""
     out, i = [], 0
@@ -716,6 +735,17 @@ def build(ROOT):
                 if h2 is not None: break
                 h2 = _one(_trim(h, keep), conf, fbn)
                 if h2 is not None: print(f"faccard: 重いので県ごとに{keep}件まで", os.path.relpath(p, ROOT))
+            mp = os.path.join(base, "more.json")
+            if h2 is None and base != os.path.join(ROOT, d):  # 県のページは全部の施設を残し、「そのほか」の中身だけ別のファイルに
+                _tb = globals()["_too_big"]
+                globals()["_too_big"] = lambda x: False
+                try: h3 = _one(h, conf, fbn)
+                finally: globals()["_too_big"] = _tb
+                h3, store = _lazy(h3, "/" + os.path.relpath(base, ROOT).replace(os.sep, "/") + "/")
+                if store and not _too_big(h3):
+                    json.dump(store, open(mp, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+                    print(f"faccard: 重いので「そのほか」を more.json に（{len(store)}件）", os.path.relpath(p, ROOT)); h2 = h3
+            elif os.path.exists(mp): os.remove(mp)
             if h2 is None:
                 print("faccard: 重すぎるので作りかえない", os.path.relpath(p, ROOT)); continue
             if h2 != h:

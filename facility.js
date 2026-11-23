@@ -231,3 +231,10 @@
   box.appendChild(chips); box.appendChild(cnt);
   var sel = document.getElementById("hospPref"); if (sel) sel.addEventListener("change", function(){ setTimeout(apply, 0); });
 })();
+// 施設の多い県のページは「そのほか」の中身を別のファイル（more.json）にして、開いたときに読む（ページを軽くする。tools/faccard.py の _lazy）
+document.addEventListener("toggle", function(ev){
+  var d = ev.target; if (!d.open || !d.getAttribute || !d.getAttribute("data-more") || d.getAttribute("data-done")) return;
+  d.setAttribute("data-done", "1"); var b = d.querySelector(".fc-more-b");
+  fetch(d.getAttribute("data-more")).then(function(r){ return r.json(); }).then(function(j){ var k = d.getAttribute("data-mid"); if (b && j[k]) b.innerHTML = j[k]; })
+    .catch(function(){ d.removeAttribute("data-done"); });
+}, true);
