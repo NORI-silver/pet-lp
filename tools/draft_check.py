@@ -17,8 +17,39 @@ RULES = [
 ]
 
 
-def check(text):
+# ほかの会社の名前を出さない（Nori 2026-11-23「ペッタくの名前は出さない。これも前に指摘したよね」）。
+# 宛名（「様・さま」の行まで）に出てくる会社は相手なのでよい。ほかの提携先・事業者の名前があれば止める。
+ALIASES = ["ペッタク", "BOOM", "加茂"]  # 表示名にない呼び名（ペッタク広島＝BOOM 加茂さま）
+
+
+def other_names(text):
+    import json, os
+    names = set(ALIASES)
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_companies.json")
+    try:
+        cs = json.load(open(p, encoding="utf-8"))["companies"]
+        for c in (cs if isinstance(cs, list) else cs.values()):
+            n = re.sub(r"[（(【].*?[）)】]", "", c.get("name") or "").strip()
+            for part in re.split(r"[\s　]+", n):
+                if len(part) >= 3 and part not in ("ペットタクシー", "ペット", "タクシー", "COCOタク", "ココタク", "CoCoタク"):
+                    names.add(part)
+            if len(n) >= 3: names.add(n)
+    except Exception:
+        pass
+    lines = [l for l in text.splitlines() if l.strip()]
+    k = next((i for i, l in enumerate(lines[:4]) if re.search(r"様|さま|御中|ご担当", l)), 0)
+    head = "\n".join(lines[:k + 1])
     out = []
+    for n in sorted(names, key=len, reverse=True):
+        if n in head: continue
+        i = text.find(n)
+        if i >= 0:
+            out.append(f"{text.count(chr(10), 0, i) + 1}行目「{n}」: ほかの会社の名前を相手に出さない（「提携先の会社さま」と書く）")
+    return out
+
+
+def check(text):
+    out = other_names(text)
     for pat, why in RULES:
         for m in re.finditer(pat, text):
             line = text.count("\n", 0, m.start()) + 1
