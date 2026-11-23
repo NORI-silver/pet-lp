@@ -16,14 +16,66 @@ Nori「追って送るなよ、ややこしい」「メールのラリーが少�
 --gmail-sent: 送る前に pettaxi.yoyaku の送信済みを「to:宛先 newer_than:7d」でさがした件数（メールのときは必ず）。
 --nori 発言ID: Noriさんが「この会社にもう一度送って」「時間外でも送って」と言ったときだけ。同じ日の2通目・ほかの係が送信中のものは、これでも通さない。
 
-台帳: /mnt/project-files/mon/ledger.tsv（日付をまたいで1本。非公開。環境変数 MON_LEDGER で変えられる）。
-連絡しない相手: pet-db の data/contacts/do_not_contact.json（なければ /mnt/project-files/mon/do_not_contact.json）。どちらもなければ止める。
+台帳: 非公開の pet-db のブランチ claude/project-thread-yqaim8 の data/mon/ledger.tsv（日付をまたいで1本。Mac もクラウドも同じもの）。
+  mon.py が ~/.mon-ledger にその枝だけを取ってきて、毎回 pull → 追記 → push する。push がぶつかったら取り直す（ロックの代わり）。
+  変えるとき：MON_REPO（置き場）・MON_REMOTE（pet-db のURL）・MON_BRANCH。git を使わず1つのファイルにするときは MON_LEDGER。
+連絡しない相手: 台帳と同じ所の data/mon/do_not_contact.json（Bande など）。読めなければ止める。
 """
-import datetime as dt, json, os, re, secrets, sys, time
+import datetime as dt, json, os, re, secrets, subprocess, sys, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-LEDGER = os.environ.get("MON_LEDGER", "/mnt/project-files/mon/ledger.tsv")
+GIT = "MON_LEDGER" not in os.environ
+REPO = os.path.expanduser(os.environ.get("MON_REPO", "~/.mon-ledger"))
+BRANCH = os.environ.get("MON_BRANCH", "claude/project-thread-yqaim8")
+LEDGER = os.environ.get("MON_LEDGER") or os.path.join(REPO, "data", "mon", "ledger.tsv")
+
+
+def _remote():
+    if os.environ.get("MON_REMOTE"): return os.environ["MON_REMOTE"]
+    sib = os.path.join(HERE, "..", "..", "pet-db")  # となりの pet-db と同じ取り先
+    if os.path.isdir(os.path.join(sib, ".git")):
+        r = subprocess.run(["git", "-C", sib, "remote", "get-url", "origin"], capture_output=True, text=True)
+        if r.returncode == 0 and r.stdout.strip(): return r.stdout.strip()
+    return "https://github.com/NORI-silver/pet-db.git"
+
+
+def g(*a, check=True):
+    r = subprocess.run(["git", "-C", REPO, *a], capture_output=True, text=True)
+    if check and r.returncode: sys.exit(f"git {' '.join(a)} が失敗：{(r.stderr or r.stdout).strip()[:300]}\n台帳が取れないので送らない")
+    return r
+
+
+def pull():
+    """台帳を最新にする（手元の変更は捨てて、GitHub のものに合わせる。台帳は mon.py しか書かない）"""
+    if not GIT: return
+    if not os.path.isdir(os.path.join(REPO, ".git")):
+        r = subprocess.run(["git", "clone", "-q", "--depth", "1", "--single-branch", "-b", BRANCH, _remote(), REPO], capture_output=True, text=True)
+        if r.returncode: sys.exit(f"台帳を取ってこられない：{r.stderr.strip()[:300]}\n送らない")
+    g("fetch", "-q", "--depth", "1", "origin", BRANCH)
+    g("reset", "-q", "--hard", "FETCH_HEAD")
+
+
+def push(msg):
+    """追記を送る。ほかの係が先に送っていたら False（取り直してもう一度）"""
+    if not GIT: return True
+    g("add", "data/mon/ledger.tsv")
+    g("-c", "user.name=mon", "-c", "user.email=mon@pet.shiokonbu.com", "commit", "-q", "-m", msg)
+    return g("push", "-q", "origin", f"HEAD:{BRANCH}", check=False).returncode == 0
+
+
+def locked(work):
+    """git のときは pull → work → push を、ぶつからなくなるまで（5回まで）くり返す。ファイルのときは鍵"""
+    if not GIT:
+        with Lock(): return work()
+    for _ in range(5):
+        pull()
+        res = work()
+        if res is None: return None
+        ok, msg = res
+        if not ok or push(msg): return res
+        time.sleep(1 + secrets.randbelow(3))
+    sys.exit("台帳がほかの係とぶつかり続けた。少し待ってもう一度（送らない）")
 COLS = ["受付番号", "日時", "状態", "会社", "宛先", "方法", "用件", "係", "メモ"]
 JST = dt.timezone(dt.timedelta(hours=9))
 DAY_LIMIT = 80          # Gmail の1日の上限（メール）
@@ -156,8 +208,8 @@ def body_checks(t, company, to):
 
 # ---------- 相手・時間・回数 ----------
 def blocked_contacts():
-    for p in (os.path.join(HERE, "..", "..", "pet-db", "data", "contacts", "do_not_contact.json"),
-              "/home/user/pet-db/data/contacts/do_not_contact.json", "/mnt/project-files/mon/do_not_contact.json"):
+    for p in (os.path.join(os.path.dirname(LEDGER), "do_not_contact.json"),
+              os.path.join(HERE, "..", "..", "pet-db", "data", "contacts", "do_not_contact.json")):
         if os.path.exists(p): return json.load(open(p, encoding="utf-8")).get("items", [])
     return None
 
@@ -239,24 +291,32 @@ def main():
         t = open(pos[0], encoding="utf-8").read()
         if cmd == "take":
             if not a.get("by"): sys.exit("--by に送る係の名前（例：文・結）")
-            with Lock():
-                res = gate(a, t)
-                if not res:
-                    no = f"M{now():%m%d-%H%M}-{secrets.token_hex(2)}"
-                    append({"受付番号": no, "日時": now().isoformat(timespec="minutes"), "状態": "送信中", "会社": a["company"], "宛先": a["to"],
-                            "方法": a["method"], "用件": a["purpose"], "係": a["by"], "メモ": ("Nori " + a["nori"]) if a.get("nori") else ""})
+            box = {}
+            def work():
+                box["res"] = res = gate(a, t)
+                if res: return (False, "")
+                box["no"] = no = f"M{now():%m%d-%H%M}-{secrets.token_hex(2)}"
+                append({"受付番号": no, "日時": now().isoformat(timespec="minutes"), "状態": "送信中", "会社": a["company"], "宛先": a["to"],
+                        "方法": a["method"], "用件": a["purpose"], "係": a["by"], "メモ": ("Nori " + a["nori"]) if a.get("nori") else ""})
+                return (True, f"門 take {no} {a['company']} {a['by']}")
+            locked(work)
+            res, no = box["res"], box.get("no")
         else:
+            pull()
             res = gate(a, t)
         for r in res: print("止める:", r)
         if res: print(f"{len(res)}か所。送らない"); sys.exit(1)
         print(f"通る。受付番号 {no}（送ったら: python3 tools/mon.py done {no} --result 送信済み）" if cmd == "take" else "通る（送る直前に take で受付番号をもらう）")
     elif cmd == "done":
         if not pos or a.get("result") not in DONE: sys.exit("python3 tools/mon.py done 受付番号 --result 送信済み|止めた|取りやめ")
-        with Lock():
+        def work():
             if pos[0] not in {r["受付番号"] for r in read_ledger()}: sys.exit("その受付番号は台帳にない")
             append({"受付番号": pos[0], "日時": now().isoformat(timespec="minutes"), "状態": a["result"], "メモ": a.get("note", "")})
+            return (True, f"門 done {pos[0]} {a['result']}")
+        locked(work)
         print("台帳に書いた:", pos[0], a["result"])
     elif cmd == "log":
+        pull()
         days = int(a.get("days", 1)); since = f"{now() - dt.timedelta(days=days - 1):%Y-%m-%d}"
         for r in sorted(latest(read_ledger()), key=lambda r: r["日時"]):
             if r["日時"][:10] >= since and (not a.get("company") or same(r, a["company"], "")):
