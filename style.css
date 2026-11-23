@@ -424,6 +424,18 @@ footer a{color:var(--ink-2)}
 .emg-guess[hidden]{display:none}
 .open-note{margin:8px 0 0;background:#f7f4f1;border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
 #petForm.lite .opt-lite{display:none}
+#petForm.s1 .s1-hide{display:none}
+#petForm.s1 .pref-pick:not(.show){display:none}
+.see-btn{display:block;width:100%;margin:6px 0 4px}
+.see-sub{margin:0 0 12px;text-align:center;font-size:.8rem;color:var(--ink-3)}
+.refine-bar{margin:4px 0 14px}
+.refine-bar p{margin:0 0 8px;font-size:.84rem;color:var(--ink-2)}
+.refine-bar .chips{display:flex;flex-wrap:wrap;gap:8px}
+.refine-bar .chips button{padding:9px 14px;border:1.5px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font-weight:700;font-size:.86rem;cursor:pointer}
+.no-cand{margin:12px 0 0;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:#fff;font-size:.86rem;line-height:1.7}
+.no-cand p{margin:0 0 6px;font-weight:700}
+.no-cand ul{margin:0;padding-left:1.1em}
+.no-cand li{margin:4px 0}
 .partner-wait{font-weight:400;color:var(--ink-2)}
 .wait-note b{color:var(--o-d)}
 .open-note[hidden],#contactBox[hidden]{display:none}

@@ -73,7 +73,7 @@ PREFGRID_MAX = 19    # たたまずに並べてよい都道府県のボタン・
 FAC_CATS = ["hospital", "pet-hotel", "dogrun", "pet-sitter", "trimming", "dog-trainer", "rojin-home", "sougi", "joto",
             "inu-yado", "pet-yado", "inu-cafe", "jichitai", "hinan", "emergency"]
 OWNER_CATS = ["pet-hotel", "pet-sitter", "trimming", "dog-trainer", "rojin-home", "sougi"]  # tools/ownerfit.py の CAT_WHO と同じ
-SEARCH_MARK = re.compile(r'class="(?:[^"]*\s)?(?:ux-find|hf|hn-find|bf|ff-box|fit-box|pref-pick|ux-c|emg-item|fr)(?:\s[^"]*)?"|<select\b|<input\b(?![^>]*type="hidden")')
+SEARCH_MARK = re.compile(r'class="(?:[^"]*\s)?(?:ux-find|hf|hn-find|bf|ff-box|fit-box|pref-pick|ux-c|emg-item|fr|jc-pick)(?:\s[^"]*)?"|<select\b|<input\b(?![^>]*type="hidden")')
 REASONS = {
     "words": "使わない言葉", "hole": "下書きの穴（◯◯など）", "removed": "消した部品がもどった", "tally": "運営側の集計を見せている", "kv": "キービジュアルがない", "trust": "運営者と掲載の基準への表示がない",
     "prefgrid": f"都道府県のボタンを{PREFGRID_MAX + 1}個以上たたまずに並べている", "intro": f"さがす欄・見出しの前の文が{INTRO_MAX}字を超える",
@@ -230,7 +230,11 @@ CONTACT_DATA = {"hotels.json": "url", "rojin.json": "url", "grooming.json": "url
 # 競合のペット情報サイト・まとめサイト（Nori 11/22）。施設の公式サイトの代わりにリンクしない。見つけたら足す
 RIVALS = ("rouken-care.jp", "rou-ken.com", "roukenhome-navi.com", "roukenhome.or.jp", "petlife.asia", "ipetclub.jp", "1-2-pet.com",
           "goodbreeder.jp", "ekiten.jp", "trimtrim.jp", "localplace.jp", "inudia.com", "wanstown.com", "kyoshippo.jp",
-          "dogparkjp.com", "wannyan-navi.jp", "miokuri-navi.com", "hug-u.pet", "catcafemap.com", "petpedia.jp", "epark.jp")
+          "dogparkjp.com", "wannyan-navi.jp", "miokuri-navi.com", "hug-u.pet", "catcafemap.com", "petpedia.jp", "epark.jp",
+          "hotpepper.jp", "curama.jp", "zehitomo.com", "meetsmore.com", "itsumo.dog", "petpet.ne.jp", "torepet.com", "petsitter-search.com",
+          "petokoto.com", "pet-home.jp", "jmty.jp", "satoya-boshu.net", "omusubi-pet.com", "godog-run.com", "dogrun-uzuz.com", "animaru-navi.com",
+          "animalpark-pv.com", "uchinoshippo.jp", "rouken.rulez.jp", "olddogcat.com", "withdog.iconia.co.jp", "jalan.net", "ikyu.com",
+          "tabelog.com", "retty.me", "e-sogi.com", "breeder-navi.jp", "minnanobreeder.jp")
 RIVAL_RE = re.compile(r'href="https?://(?:[\w-]+\.)*(' + "|".join(re.escape(r) for r in RIVALS) + r')[/"?]')
 
 def check_data(root):
@@ -245,10 +249,10 @@ def check_data(root):
             if not isinstance(x, dict) or x.get(k) or x.get("url") or (x.get("tel") and x.get("tel_src")):
                 continue
             out.setdefault(f"/data/{fn}/{x.get('id') or x.get('name')}", []).append(("contact", x.get("name", "")))
-        for x in L:
-            u = isinstance(x, dict) and (x.get(k) or x.get("url") or "")
-            if u and RIVAL_RE.search(f'href="{u}"'):
-                out.setdefault(f"/data/{fn}/{x.get('id') or x.get('name')}", []).append(("rival", u))
+        for x in L:  # url だけでなく facts の src なども見る
+            if not isinstance(x, dict): continue
+            m = RIVAL_RE.search(" ".join(f'href="{u}"' for u in re.findall(r'https?://[^"\s]+', json.dumps(x, ensure_ascii=False))))
+            if m: out.setdefault(f"/data/{fn}/{x.get('id') or x.get('name')}", []).append(("rival", m.group(1)))
     return out
 
 
