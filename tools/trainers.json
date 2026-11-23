@@ -11366,28 +11366,6 @@
    "src": "https://www.canis-minor-koinuza.com/"
   },
   {
-   "id": "Tta30f10c",
-   "name": "オオイドッグスクール",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "藤沢市",
-   "url": "https://ivry.jp/telsearch/0466501239/",
-   "services": "しつけ",
-   "facts": [
-    {
-     "k": "お支払い",
-     "v": "クレジットカード（カード会社：JCB/マスターカード/VISA/AMEX）決済をお願いしております。",
-     "src": "https://ivry.jp/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23",
-   "addr": "神奈川県藤沢市柄沢2-27-23",
-   "src": "https://ivry.jp/telsearch/0466501239/"
-  },
-  {
    "id": "Tta5107f8",
    "name": "わんこといっしょ",
    "prefs": [
@@ -16414,15 +16392,7 @@
    "city": "板橋区",
    "url": "https://dogtown-azusawa-clinic.com/",
    "services": "しつけ",
-   "facts": [
-    {
-     "k": "駐車場",
-     "v": "駐車場 3台",
-     "src": "https://dogtown-azusawa-clinic.com/",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
+   "facts": [],
    "checked": "2026-11-22",
    "addr": "東京都板橋区小豆沢二丁目35番8号",
    "src": "https://dogtown-azusawa-clinic.com/"
@@ -17202,13 +17172,6 @@
      "checked": "2026-11-23"
     },
     {
-     "k": "送迎",
-     "v": "当社は送迎料金込みですので、大変お得です。（一部エリアは有料となりますので、お問合せください）",
-     "src": "https://azabupet.jp/service/hotel/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
      "k": "お支払い",
      "v": "ご請求書を発行いたしますので、指定日までにクレジットカードにてお支払いをお願いいたします。",
      "src": "https://azabupet.jp/service/hotel/",
@@ -17279,13 +17242,6 @@
      "src": "https://lovewoof.co.jp/",
      "by": "site",
      "checked": "2026-11-23"
-    },
-    {
-     "k": "送迎",
-     "v": "無料送迎エリア",
-     "src": "https://lovewoof.co.jp/price.html",
-     "by": "site",
-     "checked": "2026-11-23"
     }
    ],
    "checked": "2026-11-23",
@@ -17341,13 +17297,6 @@
     {
      "k": "営業・受付時間",
      "v": "営業時間 10:00〜18:30",
-     "src": "https://www.maile.ne.jp/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "定休日 日曜日",
      "src": "https://www.maile.ne.jp/",
      "by": "site",
      "checked": "2026-11-23"
@@ -17504,13 +17453,6 @@
    "url": "https://www.pochi-noya.com/",
    "services": "ペットシッター、しつけ",
    "facts": [
-    {
-     "k": "料金",
-     "v": "◎「犬のしつけ 基本のき」オンラインセミナー 料金：5,500円（税込）",
-     "src": "https://www.pochi-noya.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
     {
      "k": "お支払い",
      "v": "カード及びツケでのお支払いには応じられません。",
@@ -17773,13 +17715,6 @@
      "k": "用意するもの",
      "v": "狂犬病予防接種の証明書",
      "src": "https://bliss-trimming.com/toyosu-shop/reserve/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "送迎",
-     "v": "無料送迎は、",
-     "src": "https://bliss-trimming.com/toyosu-shop/",
      "by": "site",
      "checked": "2026-11-23"
     }
@@ -18378,13 +18313,6 @@
     {
      "k": "営業・受付時間",
      "v": "営業時間：10：00-17：00",
-     "src": "https://inoforest-dog.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "定休：平日火曜",
      "src": "https://inoforest-dog.com/",
      "by": "site",
      "checked": "2026-11-23"
@@ -26004,6 +25932,1624 @@
      "k": "用意するもの",
      "v": "1年以内の伝染病ワクチンの注射済証",
      "src": "https://manakadogschool.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT001",
+   "name": "マキドッグスクール",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "http://maki-dog.com/",
+   "city": "札幌市",
+   "services": "しつけ教室、預かり訓練、問題行動の相談、ペットホテル",
+   "addr": "北海道札幌市南区北ノ沢1753",
+   "src": "http://maki-dog.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "カウンセリング1時間 4,950 円",
+     "src": "http://maki-dog.com/price.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 4950
+    },
+    {
+     "k": "料金",
+     "v": "料金 1回： 4,950 円",
+     "src": "http://maki-dog.com/price.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 4950
+    },
+    {
+     "k": "料金",
+     "v": "料金 1回： 3,500 円〜",
+     "src": "http://maki-dog.com/price.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3500
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：9:00～18:00",
+     "src": "http://maki-dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "※送迎（完全予約制・片道1,100円）対応可能地域：要相談",
+     "src": "http://maki-dog.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT003",
+   "name": "Calm Dog",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://calmdogkainusijyuku.jimdofree.com/home/%E6%97%A7%E3%83%9B%E3%83%BC%E3%83%A0/",
+   "city": "札幌市",
+   "services": "出張しつけ、問題行動の相談",
+   "addr": "北海道札幌市手稲区富丘5条3丁目3-3",
+   "src": "https://calmdogkainusijyuku.jimdofree.com/home/%E6%97%A7%E3%83%9B%E3%83%BC%E3%83%A0/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT004",
+   "name": "はる日和",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.harubiyori-dog.com/",
+   "city": "札幌市",
+   "services": "しつけ教室、出張しつけ",
+   "addr": "北海道札幌市南区簾舞3条5丁目9-2",
+   "src": "https://www.harubiyori-dog.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "送迎",
+     "v": "送迎の受付時間 を新設いたしました。",
+     "src": "https://www.harubiyori-dog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT005",
+   "name": "南札幌動物病院",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://ssvh.amebaownd.com/",
+   "city": "札幌市",
+   "services": "しつけ教室、パピー教室、ペットホテル",
+   "addr": "北海道札幌市南区藤野3条11丁目10-28",
+   "src": "https://ssvh.amebaownd.com/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT006",
+   "name": "Wiz.dog Club",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.wiz-dog.com/school/school.htm",
+   "city": "札幌市",
+   "services": "しつけ・トレーニング",
+   "addr": "北海道札幌市北区北7条西6丁目1-9-703",
+   "src": "https://www.wiz-dog.com/school/school.htm",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT007",
+   "name": "ガーデン動物病院",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.garden-a-h.com/",
+   "city": "札幌市",
+   "services": "しつけ教室、ペットホテル",
+   "addr": "北海道札幌市中央区北2条西25丁目2-1",
+   "src": "https://www.garden-a-h.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "：お車をご利用の方 専用駐車場3台完備",
+     "src": "https://www.garden-a-h.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※お支払いは各種クレジットカードがご利用いただけます。",
+     "src": "https://www.garden-a-h.com/price.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT008",
+   "name": "ドッグトレーニングスクールPooch",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://poochsapporo.com/",
+   "city": "札幌市",
+   "services": "犬の幼稚園",
+   "addr": "北海道札幌市中央区盤渓492-7",
+   "src": "https://poochsapporo.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "10回/45,455円",
+     "src": "https://poochsapporo.com/price/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 45455
+    },
+    {
+     "k": "料金",
+     "v": "10回/54,546円",
+     "src": "https://poochsapporo.com/price/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 54546
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：9：00～18：00",
+     "src": "https://poochsapporo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "＊送迎はPoochから直線距離約7Kmまでは往復¥2,000（税込）でお受けいたします。",
+     "src": "https://poochsapporo.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT009",
+   "name": "Paw-sitive",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://paw-sitive.com/",
+   "city": "札幌市",
+   "services": "問題行動の相談",
+   "addr": "北海道札幌市白石区菊水元町8条1丁目2-33",
+   "src": "https://paw-sitive.com/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT010",
+   "name": "札幌緑が丘動物病院",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://sapporo.lifemate-vh.com/",
+   "city": "札幌市",
+   "services": "しつけ教室",
+   "addr": "北海道札幌市南区澄川5条11丁目2-2",
+   "src": "https://sapporo.lifemate-vh.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場18台(病院前8台、西側10台)",
+     "src": "https://sapporo.lifemate-vh.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金、クレジットカード、QRコード決済（PayPay、d払い、メルペイ）",
+     "src": "https://sapporo.lifemate-vh.com/info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT011",
+   "name": "Nao Dogs Harmony",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.nao-dogs-harmony.com/",
+   "city": "札幌市",
+   "services": "出張しつけ、問題行動の相談",
+   "addr": "北海道札幌市南区常盤2条1丁目12-6コーポブルーリボン202",
+   "src": "https://www.nao-dogs-harmony.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "4回セット34,000円",
+     "src": "https://www.nao-dogs-harmony.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 34000
+    },
+    {
+     "k": "料金",
+     "v": "​単発1回12,000円",
+     "src": "https://www.nao-dogs-harmony.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 12000
+    },
+    {
+     "k": "駐車場",
+     "v": "※車での出張の場合ご自宅等に駐車スペースが無い場合、パーキング代は飼い主様負担となります。",
+     "src": "https://www.nao-dogs-harmony.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT012",
+   "name": "Olive Sitter 札幌支店",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://olivesitter.com/shop/sapporo/",
+   "city": "札幌市",
+   "services": "出張しつけ、ペットホテル",
+   "addr": "北海道札幌市東区北27条東20丁目3-21-202",
+   "src": "https://olivesitter.com/shop/sapporo/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "送迎",
+     "v": "送迎・付き添い",
+     "src": "https://olivesitter.com/shop/sapporo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT013",
+   "name": "北野ドッグスクール",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://e-style.in/dog-School/hokkaido/sapporoshi/kitano/",
+   "city": "札幌市",
+   "services": "しつけ教室、犬の幼稚園、問題行動の相談",
+   "addr": "北海道札幌市清田区北野4条5丁目12-15",
+   "src": "https://e-style.in/dog-School/hokkaido/sapporoshi/kitano/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT014",
+   "name": "1/2 hounds",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://one-to-hounds.com/one/one_to/index.html",
+   "city": "札幌市",
+   "services": "出張しつけ、問題行動の相談",
+   "addr": "北海道札幌市南区川沿1条1丁目3-90",
+   "src": "https://one-to-hounds.com/one/one_to/index.html",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "送迎",
+     "v": "※引き受け渡し時点よりご利用時間が発生し加算されます。（送迎の際も受け渡しの時点よりご利用時間発生）",
+     "src": "https://one-to-hounds.com/one/service/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT015",
+   "name": "eTORU DOGS",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://etorudogs.com/",
+   "city": "札幌市",
+   "services": "問題行動の相談",
+   "addr": "北海道札幌市東区本町2条7丁目2-2ReliveHeights-K203",
+   "src": "https://etorudogs.com/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT016",
+   "name": "ヒューマンドッグトレーニングサービス",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://humandogtraing.jimdofree.com/",
+   "city": "夕張郡長沼町",
+   "services": "しつけ教室、問題行動の相談",
+   "addr": "北海道夕張郡長沼町東8線南21番地",
+   "src": "https://humandogtraing.jimdofree.com/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT017",
+   "name": "Dog School Lab",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://dogschoollab.wixsite.com/dogschoollab",
+   "city": "深川市",
+   "services": "しつけ教室、出張しつけ、問題行動の相談、ペットホテル",
+   "addr": "北海道深川市音江町字広里36番地12",
+   "src": "https://dogschoollab.wixsite.com/dogschoollab",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "初回 2,200円 ＋交通費",
+     "src": "https://dogschoollab.wixsite.com/dogschoollab",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2200
+    },
+    {
+     "k": "料金",
+     "v": "2回目以降 2,200円～ ＋交通費",
+     "src": "https://dogschoollab.wixsite.com/dogschoollab",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2200
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 8：00~ 18 ：00",
+     "src": "https://dogschoollab.wixsite.com/dogschoollab",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://dogschoollab.wixsite.com/dogschoollab",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎時間​ 8：00～17：00",
+     "src": "https://dogschoollab.wixsite.com/dogschoollab",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT018",
+   "name": "DOG CARE SALON ふぉるむ",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://form.crayonsite.com/",
+   "city": "滝川市",
+   "services": "しつけ・トレーニング",
+   "addr": "北海道滝川市東町6丁目1-8",
+   "src": "https://form.crayonsite.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日：不定休",
+     "src": "https://form.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "③送迎は致しません。",
+     "src": "https://form.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT019",
+   "name": "ウィッシュロード",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://wishroad.com/",
+   "city": "江別市",
+   "services": "出張しつけ、ペットホテル",
+   "addr": "北海道江別市野幌代々木町63番地16",
+   "src": "https://wishroad.com/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT020",
+   "name": "ドッグスクールゆう",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://dogschool-yuu.simdif.com/",
+   "city": "江別市",
+   "services": "出張しつけ",
+   "addr": "北海道江別市美原432",
+   "src": "https://dogschool-yuu.simdif.com/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT021",
+   "name": "Dog Esse. アフェクション・トレーニング",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://dogesse.wraptas.site/",
+   "city": "北広島市",
+   "services": "しつけ・トレーニング",
+   "addr": "北海道北広島市希望ヶ丘2丁目1番地54",
+   "src": "https://dogesse.wraptas.site/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT022",
+   "name": "FUNNY-DOG",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://koinunomado.com/trainers_data/12322/trainer-12322.php",
+   "city": "余市",
+   "services": "しつけ教室、出張しつけ、預かり訓練、犬の幼稚園",
+   "addr": "北海道余市郡余市町富沢町12丁目18-1",
+   "src": "https://koinunomado.com/trainers_data/12322/trainer-12322.php",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "初回限り、3時間お預かり3，000円が2，500円！",
+     "src": "https://koinunomado.com/trainer_search.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間: AM 10:00 ・ PM 5:00",
+     "src": "https://koinunomado.com/trainers_data/12322/trainer-12322.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT023",
+   "name": "INUtoWA(いぬとわ)",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://inutowa.com/",
+   "city": "小樽市",
+   "services": "出張しつけ",
+   "addr": "北海道小樽市花園２丁目２－２０２",
+   "src": "https://inutowa.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "・クレジットカード決済",
+     "src": "https://inutowa.com/training",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT024",
+   "name": "トレーニングハウス・DOG TALK",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.traininghouse-dogtalk.com/",
+   "city": "登別市",
+   "services": "預かり訓練、問題行動の相談",
+   "addr": "北海道登別市札内町207",
+   "src": "https://www.traininghouse-dogtalk.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "☆初めてご利用の方はごく最近の混合ワクチン接種証明書のコピーをご用意ください。",
+     "src": "https://www.traininghouse-dogtalk.com/doghotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "なお、ご利用条件やお預かり可能な期間、送迎対応の有無などについては事前にお問い合わせください。愛犬が安心して過ごせる環境づくりに努めております。",
+     "src": "https://www.traininghouse-dogtalk.com/doghotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT025",
+   "name": "キサラギドッグスクール",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.kisaragi-dogschool.com/",
+   "city": "室蘭市",
+   "services": "出張しつけ、預かり訓練",
+   "addr": "北海道室蘭市崎守町203-9",
+   "src": "https://www.kisaragi-dogschool.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回 4,000円～ 1時間程度 (遠方の方は交通費を上乗せさせていただきます）",
+     "src": "https://www.kisaragi-dogschool.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 4000
+    },
+    {
+     "k": "料金",
+     "v": "週3回 1ヶ月 50,000円～",
+     "src": "https://www.kisaragi-dogschool.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 50000
+    },
+    {
+     "k": "料金",
+     "v": "週2回 1回 4,000円～",
+     "src": "https://www.kisaragi-dogschool.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 4000
+    }
+   ]
+  },
+  {
+   "id": "T-HT026",
+   "name": "だて動物病院",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.date-ahp.com/",
+   "city": "伊達市",
+   "services": "しつけ教室、パピー教室、ペットホテル",
+   "addr": "北海道伊達市舟岡町29-3",
+   "src": "https://www.date-ahp.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場12台分完備",
+     "src": "https://www.date-ahp.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防法により、生後91日以上のワンちゃんには市町村への登録と毎年の狂犬病予防注射が必要です。また、接種後に市町村から交付される注射済票を犬に装着してください。",
+     "src": "https://www.date-ahp.com/services/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT027",
+   "name": "株式会社T・K DOG SCHOOL",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://tkdogschool.com/about/",
+   "city": "亀田郡七飯町",
+   "services": "預かり訓練、問題行動の相談、ペットホテル",
+   "addr": "北海道亀田郡七飯町字東大沼158番地2",
+   "src": "https://tkdogschool.com/about/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "《全８回コース》コースでご契約すると10％引きの32,000円（税込）とお得です。",
+     "src": "https://tkdogschool.com/about/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 32000
+    },
+    {
+     "k": "料金",
+     "v": "１回ずつお支払いの場合は１回4,400円（税込）",
+     "src": "https://tkdogschool.com/about/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 4400
+    },
+    {
+     "k": "料金",
+     "v": "《全８回コース》コースでご契約すると10％引きの 32,000円（税込） とお得です。",
+     "src": "https://tkdogschool.com/about/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 32000
+    }
+   ]
+  },
+  {
+   "id": "T-HT028",
+   "name": "三星屋ドッグスクール",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.mitsuboshidog.com/",
+   "city": "函館市",
+   "services": "しつけ教室、犬の幼稚園",
+   "addr": "北海道函館市末広町10-３-１",
+   "src": "https://www.mitsuboshidog.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間／8:00～18:00",
+     "src": "https://www.mitsuboshidog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "休業日／年末年始他、お問合わせください。",
+     "src": "https://www.mitsuboshidog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎、通園要相談。",
+     "src": "https://www.mitsuboshidog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT029",
+   "name": "旭川犬の学校",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.ads2007.com/",
+   "city": "旭川市",
+   "services": "問題行動の相談、ペットホテル",
+   "addr": "北海道旭川市西神楽1線9号166",
+   "src": "https://www.ads2007.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "※ 当スクールでトレーニングを受けたワンちゃん、もしくは3頭以上の場合、1泊1頭につき500円割引",
+     "src": "https://www.ads2007.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 500
+    },
+    {
+     "k": "駐車場",
+     "v": "【駐車場】",
+     "src": "https://www.ads2007.com/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT030",
+   "name": "Pet Answer BUNBUNている",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.petsitter-bunbuntail.com/",
+   "city": "旭川市",
+   "services": "出張しつけ、問題行動の相談、ペットホテル",
+   "addr": "北海道旭川市神居9条2丁目1番8号",
+   "src": "https://www.petsitter-bunbuntail.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "送迎",
+     "v": "動物たちの快適な移動のための、ペット専用の送迎サービスです。",
+     "src": "https://www.petsitter-bunbuntail.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT031",
+   "name": "アニマルケアサービスしっぽの輪",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.sanpei-animal.com/useful/page_89.html",
+   "city": "名寄市",
+   "services": "しつけ教室",
+   "addr": "北海道名寄市徳田105-68",
+   "src": "https://www.sanpei-animal.com/useful/page_89.html",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT032",
+   "name": "ペットサービスHARUZORA",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.petservice-haruzora.com/",
+   "city": "枝幸郡浜頓別町",
+   "services": "ペットホテル",
+   "addr": "北海道枝幸郡浜頓別町南2-2-20",
+   "src": "https://www.petservice-haruzora.com/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT033",
+   "name": "Pokke",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://petpokke.crayonsite.net/",
+   "city": "北見市",
+   "services": "しつけ教室、出張しつけ、ペットホテル",
+   "addr": "北海道北見市緑ヶ丘5丁目18-14",
+   "src": "https://petpokke.crayonsite.net/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT034",
+   "name": "ドッグライフファクトリー",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://doglifefactory.com/",
+   "city": "帯広市",
+   "services": "出張しつけ、問題行動の相談",
+   "addr": "北海道帯広市東１条南３０丁目１－１２",
+   "src": "https://doglifefactory.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回1,500円",
+     "src": "https://doglifefactory.com/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 1500
+    }
+   ]
+  },
+  {
+   "id": "T-HT035",
+   "name": "パピー教室",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://atsukomatsumoto.wixsite.com/puppyclass",
+   "city": "帯広市",
+   "services": "しつけ教室、パピー教室",
+   "addr": "北海道帯広市西１４条南１４丁目１２－８",
+   "src": "https://atsukomatsumoto.wixsite.com/puppyclass",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 朝9：00～夕19：00",
+     "src": "https://atsukomatsumoto.wixsite.com/puppyclass",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT036",
+   "name": "シュピーレン・ドッグトレーニング",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "http://spielendogtraining.s324.xrea.com/",
+   "city": "帯広市",
+   "services": "問題行動の相談",
+   "addr": "北海道帯広市西16条南41丁目2",
+   "src": "http://spielendogtraining.s324.xrea.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "・週1回コース（4週間）:10,000円",
+     "src": "http://spielendogtraining.s324.xrea.com/course.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 10000
+    },
+    {
+     "k": "料金",
+     "v": "・週1回コース（4週間）:14,000円",
+     "src": "http://spielendogtraining.s324.xrea.com/course.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 14000
+    },
+    {
+     "k": "料金",
+     "v": "・週2回コース（4週間）:26,000円",
+     "src": "http://spielendogtraining.s324.xrea.com/course.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 26000
+    }
+   ]
+  },
+  {
+   "id": "T-HT037",
+   "name": "みどりがおか動物病院",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://midorigaoka-ah.net/",
+   "city": "釧路市",
+   "services": "しつけ教室",
+   "addr": "北海道釧路市緑ヶ岡6丁目12番26号",
+   "src": "https://midorigaoka-ah.net/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT038",
+   "name": "標茶キロルどうぶつ病院",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.kiroru-ah.com/",
+   "city": "川上郡標茶町",
+   "services": "しつけ教室、ペットホテル",
+   "addr": "北海道川上郡標茶町旭2丁目3－4",
+   "src": "https://www.kiroru-ah.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "診療前後でおトイレが必要なワンちゃんは必ずラン内で済ませて頂き、 駐車場内での排泄はお控えください！",
+     "src": "https://www.kiroru-ah.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT039",
+   "name": "PECOMI",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.pecomi.org/",
+   "city": "釧路市",
+   "services": "出張しつけ、犬の幼稚園、問題行動の相談、ペットホテル",
+   "addr": "北海道釧路市春日町３番6号丸平総合ビル2F",
+   "src": "https://www.pecomi.org/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ご愛犬の性格やお散歩コースをヒアリングし、代行が可能か実際にお散歩させていただきます（初回お試し利用2,200円）。",
+     "src": "https://www.pecomi.org/dog-training",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2200
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン接種をしている場合は、混合ワクチン接種証明書もご提示ください。ワクチン類はサービスご利用の1週間〜10日前にお済ませください。",
+     "src": "https://www.pecomi.org/dog-training",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT040",
+   "name": "丘の上動物病院",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://www.okanoue-ah.com/",
+   "city": "仙台市",
+   "services": "パピー教室、ペットホテル",
+   "addr": "宮城県仙台市泉区向陽台一丁目22-32",
+   "src": "https://www.okanoue-ah.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "（お申込み時にワクチン証明書をお持ちください。紛失された場合、接種された病院へ問い合わせる場合がございます。）",
+     "src": "https://www.okanoue-ah.com/hotel_trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT041",
+   "name": "ドッグハウスSILKY",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://www.doghouse-silky.com/",
+   "city": "仙台市",
+   "services": "犬の幼稚園、ペットホテル",
+   "addr": "宮城県仙台市宮城野区福室六丁目8-29-102",
+   "src": "https://www.doghouse-silky.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間8:00～19:00以外のご利用につきましては、時間外料金が必要です。",
+     "src": "https://www.doghouse-silky.com/pethotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "[駐車場]",
+     "src": "https://www.doghouse-silky.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード決済は可能ですか？",
+     "src": "https://www.doghouse-silky.com/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎については、片道1㎞につき165円です。",
+     "src": "https://www.doghouse-silky.com/pethotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT042",
+   "name": "よしなり動物病院",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://yoshinari-vet.com/",
+   "city": "仙台市",
+   "services": "しつけ教室、パピー教室、問題行動の相談、ペットホテル",
+   "addr": "宮城県仙台市青葉区吉成一丁目9-20",
+   "src": "https://yoshinari-vet.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：9:00-18:30（日曜・火曜・祝日午後を除く） -->",
+     "src": "https://yoshinari-vet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場：当院前に乗用車8台分の駐車場有り",
+     "src": "https://yoshinari-vet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "キャッシュレス決済利用可：クレジットカード・ICカード・電子マネー",
+     "src": "https://yoshinari-vet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎は基本的には行っておりませんが、来院が難しい場合はご相談ください。",
+     "src": "https://yoshinari-vet.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT043",
+   "name": "DogSchool∞Eight",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://dogschooleightlesson.crayonsite.info/",
+   "city": "仙台市",
+   "services": "出張しつけ、パピー教室",
+   "addr": "宮城県仙台市青葉区八幡五丁目4-39",
+   "src": "https://dogschooleightlesson.crayonsite.info/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回45分間5980円",
+     "src": "https://dogschooleightlesson.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 5980
+    },
+    {
+     "k": "料金",
+     "v": "月に1回2500円",
+     "src": "https://dogschooleightlesson.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2500
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：10:00-17:00まで",
+     "src": "https://dogschooleightlesson.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT044",
+   "name": "Dog Training KOKIA",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://dogtrainingkokia.amebaownd.com/",
+   "city": "仙台市",
+   "services": "しつけ・トレーニング",
+   "addr": "宮城県仙台市青葉区南吉成三丁目6-3",
+   "src": "https://dogtrainingkokia.amebaownd.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "初回カウンセリング料金（30分）3,000円",
+     "src": "https://dogtrainingkokia.amebaownd.com/pages/5906055/static",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3000
+    },
+    {
+     "k": "料金",
+     "v": "トレーニング（60分）5,000円",
+     "src": "https://dogtrainingkokia.amebaownd.com/pages/5906055/static",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 5000
+    },
+    {
+     "k": "料金",
+     "v": "初回カウンセリング＋トレーニング 1回 7,500円 （500円割引）",
+     "src": "https://dogtrainingkokia.amebaownd.com/pages/5906055/static",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 7500
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場所の確保ができない場合は、公共交通機関を利用してお伺い致します。その際の交通費は必ず事前に提示させて頂きます。",
+     "src": "https://dogtrainingkokia.amebaownd.com/pages/5906055/static",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT045",
+   "name": "ドッグトレーニングハヤサカ",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://dogtraininghayasaka.jp/%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB/",
+   "city": "仙台市",
+   "services": "しつけ・トレーニング",
+   "addr": "宮城県仙台市青葉区国見六丁目24-20",
+   "src": "https://dogtraininghayasaka.jp/%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT046",
+   "name": "ドッグサロンAnnMerry",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://annmerry.net/",
+   "city": "仙台市",
+   "services": "問題行動の相談",
+   "addr": "宮城県仙台市青葉区北山三丁目1‐30根本ビル１FテナントA",
+   "src": "https://annmerry.net/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "前面道路・駐車スペースがやや狭くなっておりますので、ゆっくりとご入庫ください。",
+     "src": "https://annmerry.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT047",
+   "name": "フェイスフルドッグ",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://faithfuldog.net/",
+   "city": "須賀川市",
+   "services": "しつけ教室、問題行動の相談",
+   "addr": "福島県須賀川市向陽町９０８",
+   "src": "https://faithfuldog.net/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT048",
+   "name": "Lavo Dog",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://lavodog.net/category/event/puppyparty/",
+   "city": "石川郡平田村",
+   "services": "しつけ教室、出張しつけ",
+   "addr": "福島県石川郡平田村上蓬田字上槍らい１６",
+   "src": "https://lavodog.net/category/event/puppyparty/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "はい。車での訪問になるため、駐車場が無い場合はパーキング代なども実費で請求させていただきます。",
+     "src": "https://lavodog.net/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "3. お支払 (クレジットカード・振込 等)",
+     "src": "https://lavodog.net/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT049",
+   "name": "パラ(PARA)",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://paradoggy.com/start.html",
+   "city": "大沼郡会津美里町",
+   "services": "出張しつけ、預かり訓練、問題行動の相談、ペットホテル",
+   "addr": "福島県大沼郡会津美里町吉田字村ノ内丙39",
+   "src": "https://paradoggy.com/start.html",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "はじめての方に限りカウンセリング料は 3,990円（30分延長毎に＋2,000円）",
+     "src": "https://paradoggy.com/start.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3990
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間は午前9時～午後5時になります。営業時間外はスタッフが不在になる事もございますので営業時間内にお願い致します。",
+     "src": "https://paradoggy.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎：990円/1回",
+     "src": "https://paradoggy.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT050",
+   "name": "ペットライフサポートふぅ",
+   "prefs": [
+    "山形県"
+   ],
+   "url": "https://fuupet.grupo.jp/",
+   "city": "西置賜郡白鷹町",
+   "services": "しつけ・トレーニング",
+   "addr": "山形県西置賜郡白鷹町畔藤1794-2",
+   "src": "https://fuupet.grupo.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9：00～18：00",
+     "src": "https://fuupet.grupo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT051",
+   "name": "コロポックルわんわん相談所",
+   "prefs": [
+    "山形県"
+   ],
+   "url": "https://coropokuruwanwan.com/",
+   "city": "西村山郡大江町",
+   "services": "しつけ教室、問題行動の相談",
+   "addr": "山形県西村山郡大江町大字小見８０－１９",
+   "src": "https://coropokuruwanwan.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "料金、１回２０００円",
+     "src": "https://coropokuruwanwan.com/service-information",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 2000
+    }
+   ]
+  },
+  {
+   "id": "T-HT052",
+   "name": "ドッグトレーニングいけだ",
+   "prefs": [
+    "山形県"
+   ],
+   "url": "http://www.dogs-training.jp/",
+   "city": "",
+   "services": "しつけ・トレーニング",
+   "addr": "山形県遊佐町上蕨岡字唐戸岩１６－１",
+   "src": "http://www.dogs-training.jp/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT053",
+   "name": "MAI Dog School",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://www.maidogschool.com/",
+   "city": "郡山市",
+   "services": "しつけ教室、出張しつけ、犬の幼稚園、問題行動の相談",
+   "addr": "福島県郡山市大槻町字三角田69-6",
+   "src": "https://www.maidogschool.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "​駐車場1台分あり",
+     "src": "https://www.maidogschool.com/lesson",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "​オンラインレッスンでは、​まだワクチンがお済みでない時期でもお迎えすぐからレッスンが可能です。",
+     "src": "https://www.maidogschool.com/lesson",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT054",
+   "name": "明石台動物病院 しつけ方教室",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://www.a-a-pet.com/310/",
+   "city": "富谷市",
+   "services": "パピー教室",
+   "addr": "宮城県富谷市明石台5-2-1",
+   "src": "https://www.a-a-pet.com/310/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場のご案内",
+     "src": "https://www.a-a-pet.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT055",
+   "name": "あべ動物病院",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://www.iabe-ah.com/training-classes/",
+   "city": "石巻市",
+   "services": "パピー教室、ペットホテル",
+   "addr": "宮城県石巻市向陽町3丁目26-11",
+   "src": "https://www.iabe-ah.com/training-classes/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT056",
+   "name": "あおば動物病院",
+   "prefs": [
+    "青森県"
+   ],
+   "url": "https://www.aoba-ah.co.jp/news/125",
+   "city": "八戸市",
+   "services": "しつけ教室、出張しつけ",
+   "addr": "青森県八戸市類家5丁目27-7",
+   "src": "https://www.aoba-ah.co.jp/news/125",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "プライベートレッスン… 6,000円（要予約）",
+     "src": "https://www.aoba-ah.co.jp/news/125",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 6000
+    }
+   ]
+  },
+  {
+   "id": "T-HT057",
+   "name": "iiiko",
+   "prefs": [
+    "秋田県"
+   ],
+   "url": "https://iiiko.my.canva.site/",
+   "city": "横手市",
+   "services": "しつけ・トレーニング",
+   "addr": "秋田県横手市",
+   "src": "https://iiiko.my.canva.site/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT058",
+   "name": "ペテモ新利府 北館店",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://www.aeonpet.com/shop/rifu/index.html",
+   "city": "宮城郡利府町",
+   "services": "しつけ教室、ペットホテル",
+   "addr": "宮城県宮城郡利府町利府字新屋田前22",
+   "src": "https://www.aeonpet.com/shop/rifu/index.html",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT059",
+   "name": "仙台第一警察犬訓練所",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://sendai1dog.net/",
+   "city": "柴田郡大河原町",
+   "services": "しつけ教室、預かり訓練、ペットホテル",
+   "addr": "宮城県柴田郡大河原町新寺字北１４８-１",
+   "src": "https://sendai1dog.net/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回1時間 3,300円",
+     "src": "https://sendai1dog.net/price/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3300
+    },
+    {
+     "k": "料金",
+     "v": "1回5,500円(交通費は別途)",
+     "src": "https://sendai1dog.net/price/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 5500
+    },
+    {
+     "k": "料金",
+     "v": "1回1,650円",
+     "src": "https://sendai1dog.net/price/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 1650
+    }
+   ]
+  },
+  {
+   "id": "T-HT060",
+   "name": "犬の幼稚園・しつけ教室 わんぷろ",
+   "prefs": [
+    "青森県"
+   ],
+   "url": "https://www.weeeeks.jp/shop/wannpuro/",
+   "city": "青森市",
+   "services": "しつけ教室、犬の幼稚園、問題行動の相談",
+   "addr": "青森県青森市本町１丁目７−１",
+   "src": "https://www.weeeeks.jp/shop/wannpuro/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10時～18時",
+     "src": "https://www.weeeeks.jp/shop/wannpuro/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 ：月・火",
+     "src": "https://www.weeeeks.jp/shop/wannpuro/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT061",
+   "name": "dog salon Lelien",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://lelien111.com/priceimg.html",
+   "city": "札幌市",
+   "services": "出張しつけ、犬の幼稚園、問題行動の相談",
+   "addr": "北海道札幌市中央区北10条西15丁目1-6クリーンリバー桑園駅前1F",
+   "src": "https://lelien111.com/priceimg.html",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "・会員様ではない場合、PARK利用 1回 1,500円",
+     "src": "https://lelien111.com/trimming.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 1500
+    }
+   ]
+  },
+  {
+   "id": "T-HT062",
+   "name": "Adorable Angel ドッグラン",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://www.adorable-angel.com/menu_dog_run.html",
+   "city": "北広島市",
+   "services": "ペットホテル",
+   "addr": "北海道北広島市島松434番地11号",
+   "src": "https://www.adorable-angel.com/menu_dog_run.html",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "月4回 17,600 円",
+     "src": "https://www.adorable-angel.com/menu_training.html",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 17600
+    },
+    {
+     "k": "用意するもの",
+     "v": "◆ 狂犬病・混合ワクチンの接種証明書が必要です（1年以内）",
+     "src": "https://www.adorable-angel.com/menu_dog_run.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT063",
+   "name": "ライラのしっぽ",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://usp01.hp.peraichi.com/",
+   "city": "苫小牧市",
+   "services": "しつけ教室",
+   "addr": "北海道苫小牧市しらかば町3丁目21-4",
+   "src": "https://usp01.hp.peraichi.com/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT064",
+   "name": "ドッグトレーニング1st",
+   "prefs": [
+    "宮城県"
+   ],
+   "url": "https://dog-training-1st.com/contact/",
+   "city": "仙台市",
+   "services": "しつけ・トレーニング",
+   "addr": "宮城県仙台市太白区西多賀四丁目3-5-102",
+   "src": "https://dog-training-1st.com/contact/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 8:30-18:00 / 定休日:不定休",
+     "src": "https://dog-training-1st.com/contact/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "T-HT065",
+   "name": "Dog&CommunicationClubPiccola",
+   "prefs": [
+    "山形県"
+   ],
+   "url": "https://dogandcommunicationclub-piccola.com/",
+   "city": "酒田市",
+   "services": "ペットホテル",
+   "addr": "山形県酒田市宮海字砂飛１５８－１２６",
+   "src": "https://dogandcommunicationclub-piccola.com/",
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "T-HT066",
+   "name": "株式会社エスティー動物病院",
+   "prefs": [
+    "福島県"
+   ],
+   "url": "https://st-ah.com/",
+   "city": "郡山市",
+   "services": "しつけ教室、パピー教室、ペットホテル",
+   "addr": "福島県郡山市御前南三丁目146",
+   "src": "https://st-ah.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "≪参加費≫ 全６回 計12000円 (参考書代別途1429円、全て税抜き)",
+     "src": "https://st-ah.com/puppy-class/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 12000
+    },
+    {
+     "k": "料金",
+     "v": "≪参加費≫ 全３回 計３０００円 (税抜き)",
+     "src": "https://st-ah.com/puppy-class/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "yen": 3000
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付 9:00-12:00 / 16:00-19:00",
+     "src": "https://st-ah.com/",
      "by": "site",
      "checked": "2026-11-23"
     }

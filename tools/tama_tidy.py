@@ -28,7 +28,7 @@ def walk(x):
     elif isinstance(x, list):
         for v in x: walk(v)
 # まとめ・紹介のページ（店の公式サイトではない）。ホストだけでは分からないものはURL全体で見る
-DENY_URL = re.compile(r'inumado\.com/.|maruone\.com/blog|feedon\.jp/shop/$|biz-maps|pochica|petstation\.jp/shop|rairai|intopet|kawaii-wanko|localstyle|happytry|pet-systems|npet\.jp|toredog|goguynet|bohseipharmacy|yamatopi|pigcat', re.I)
+DENY_URL = re.compile(r'inumado\.com/.|maruone\.com/blog|feedon\.jp/shop/$|biz-maps|pochica|petstation\.jp/shop|rairai|intopet|kawaii-wanko|localstyle|happytry|pet-systems|npet\.jp|toredog|goguynet|bohseipharmacy|yamatopi|pigcat|trimmingfan|ivry\.jp|chirashi\.ne\.jp|townnews|safely\.co\.jp|min-breeder|trimmer-agent|a-japan\.jp|we-love-animals|dshugd\.com/access|trimeet\.jp', re.I)
 # 分野の検索（相模原・横須賀は登録一覧が公開されていない）で見つけた店は、公式サイトの文を読んで決めた分野だけに入れる
 CAT_FIX = {
  'Dog Salon LULUN': 'hotels', '動物病院ヘルスペット しつけ教室': 'trainers', 'CATSPAW': 'hotels sitters', '動物病院ヘルスペット 老犬ホーム': 'homes',
