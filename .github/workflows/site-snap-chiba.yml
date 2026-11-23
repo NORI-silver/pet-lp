@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: ['claude/project-thread-ghgojz']
-    paths: ['tools/crawl/chiba/**', 'tools/chiba_crawl.py']
+    paths: ['tools/crawl/chiba/**', 'tools/chiba_crawl.py', 'tools/chiba_browser.py']
 permissions:
   contents: write
 concurrency:
@@ -17,6 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: python3 tools/chiba_crawl.py /tmp/out
+      - name: 403・時間切れのサイトを本物のブラウザで読み直す
+        continue-on-error: true
+        run: |
+          pip install -q playwright
+          python3 tools/chiba_browser.py /tmp/out
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

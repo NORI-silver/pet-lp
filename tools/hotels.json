@@ -13620,6 +13620,174 @@
    "cat": true,
    "facts": [],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC266",
+   "name": "ドッグハウス おおさわ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "木更津市",
+   "url": "http://www.doghouseoosawa.sakura.ne.jp/",
+   "services": "ペットホテル",
+   "large": true,
+   "large_basis": "文",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:8:30〜19:00",
+     "src": "http://www.doghouseoosawa.sakura.ne.jp/info.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:年中無休(電話にてご確認ください)",
+     "src": "http://www.doghouseoosawa.sakura.ne.jp/info.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC267",
+   "name": "Promenade",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "八千代市",
+   "url": "https://promenade.merokids.co.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場はありませんので、近隣の商業施設(3時間無料)やコインパーキングをお利用下さい。",
+     "src": "https://promenade.merokids.co.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い:現金、クレジットカード(VISA / MASTER / JCB / AMEX / Diners Club / DISCOVER)",
+     "src": "https://promenade.merokids.co.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC268",
+   "name": "ワンワンショップ パルコ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "鎌ケ谷市",
+   "url": "https://parco-kamagaya.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00–19:00",
+     "src": "https://parco-kamagaya.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 月曜・金曜",
+     "src": "https://parco-kamagaya.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い:現金 PayPay d払い 楽天ペイ",
+     "src": "https://parco-kamagaya.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC269",
+   "name": "ドッグサロン シェイキングテイルズ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "四街道市",
+   "url": "https://psk662.wixsite.com/website",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 AM10:00~PM18:00",
+     "src": "https://psk662.wixsite.com/website",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 火曜日",
+     "src": "https://psk662.wixsite.com/website",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場 5台分あり(無料)",
+     "src": "https://psk662.wixsite.com/website",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC270",
+   "name": "ペットサロン びじゅー",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://www.dog-bijou.co.jp/",
+   "services": "ペットホテル",
+   "cat": true,
+   "large": true,
+   "large_basis": "文",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "[営業時間]9:00~17:00 [定休日]年中無休",
+     "src": "https://www.dog-bijou.co.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC271",
+   "name": "ペットシッター・ホテルいきものがかり",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "いすみ市",
+   "url": "https://pet-ikimonogakari.com/",
+   "services": "ペットホテル",
+   "cat": true,
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "ご利用代金支払い方法:現金",
+     "src": "https://pet-ikimonogakari.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }

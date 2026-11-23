@@ -10615,6 +10615,26 @@
     }
    ],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "SC072",
+   "name": "ペットシッター・ホテルいきものがかり",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "いすみ市",
+   "url": "https://pet-ikimonogakari.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "ご利用代金支払い方法:現金",
+     "src": "https://pet-ikimonogakari.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }

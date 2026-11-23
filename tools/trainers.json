@@ -10064,6 +10064,55 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "TC090",
+   "name": "ドッグトレーニング アッシュ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "四街道市",
+   "url": "https://dog-ash.net/",
+   "services": "出張トレーニング、問題行動の相談",
+   "src": "https://dog-ash.net/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "Q:支払いは現金のみですか?",
+     "src": "https://dog-ash.net/course/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC091",
+   "name": "Dog Trainer Lab・Bernard",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://dogtraining-lab.com/",
+   "services": "出張トレーニング、問題行動の相談",
+   "src": "https://dogtraining-lab.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "そのため、当社Dogtraining Labでは、「1回5,000円」といったチケット制では無く、 問題行動が改善するまでの金額 でご提案させて頂いております。",
+     "src": "https://dogtraining-lab.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:9:00~17:00",
+     "src": "https://dogtraining-lab.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }
