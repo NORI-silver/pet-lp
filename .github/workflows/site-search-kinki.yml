@@ -30,7 +30,7 @@ jobs:
         chunk: ${{ fromJson(needs.list.outputs.chunks) }}
     steps:
       - uses: actions/checkout@v4
-      - run: mkdir -p out && python3 tools/kinki_search.py tools/crawl/kinki_search/${{ matrix.chunk }} out/s_${{ matrix.chunk }} 4
+      - run: mkdir -p out && python3 tools/kinki_search.py tools/crawl/kinki_search/${{ matrix.chunk }} out/s_${{ matrix.chunk }} 6
       - uses: actions/upload-artifact@v4
         with:
           name: s_${{ matrix.chunk }}

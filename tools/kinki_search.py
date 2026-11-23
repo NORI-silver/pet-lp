@@ -57,7 +57,12 @@ def main():
     gap = float(sys.argv[3]) if len(sys.argv) > 3 else 4
     out, empty_run = [], 0
     for it in items:
-        r = one(it['q']); r['cid'] = it['cid']
+        r = one(it['q'])
+        if '429' in (r.get('error') or ''):
+            time.sleep(90); r = one(it['q'])
+        if '429' in (r.get('error') or ''):
+            print('429 が続いたので止める', len(out)); break
+        r['cid'] = it['cid']
         out.append(r)
         empty_run = 0 if r.get('results') else empty_run + 1
         if empty_run >= 20:
