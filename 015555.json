@@ -1,0 +1,23 @@
+{
+ "pref": "北海道",
+ "name": "遠軽町",
+ "code": "015555",
+ "url": "https://engaru.jp/",
+ "mails": {
+  "bousai.engaru-town@raiden.ktaiwork.jp": "https://engaru.jp/life/page.php?id=102"
+ },
+ "pages": [
+  {
+   "url": "https://engaru.jp/life/?cat=5",
+   "kind": "html",
+   "lines": [
+    "くらし・手続き",
+    "動物・ペット",
+    "犬の飼い方マナーを守っていますか",
+    "犬と猫のマイクロチップ登録制度について",
+    "野犬掃とうを実施します",
+    "くらし・手続きの新着情報 一覧"
+   ]
+  }
+ ]
+}

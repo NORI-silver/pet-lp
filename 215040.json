@@ -1,0 +1,58 @@
+{
+ "pref": "岐阜県",
+ "name": "七宗町",
+ "code": "215040",
+ "url": "https://www.hichiso.jp/",
+ "mails": {
+  "t-hichiso@sg-p.jp": "https://www.hichiso.jp/top/sns/hichisomail/",
+  "hichiso@sg-p.jp": "https://www.hichiso.jp/top/sns/hichisomail/"
+ },
+ "pages": [
+  {
+   "url": "https://www.hichiso.jp/fr7so/frdoboku/water210309/",
+   "kind": "html",
+   "lines": [
+    "【title】ペットボトルの出し方が変わります | 七宗町公式ウエブサイト ( official site)",
+    "﻿",
+    "ペットボトルの出し方が変わります | 七宗町公式ウエブサイト ( official site)",
+    "コンテンツへスキップ",
+    "ナビゲーションに移動",
+    "ペットボトルの出し方が変わります",
+    "2021年3月9日",
+    "ごみﾘｻｲｸﾙ",
+    "問合せ先"
+   ]
+  },
+  {
+   "url": "https://www.hichiso.jp/fr7so/frnourin/nourin200903/",
+   "kind": "html",
+   "lines": [
+    "【title】ペットを飼っている皆さまへ | 七宗町公式ウエブサイト ( official site)",
+    "﻿",
+    "ペットを飼っている皆さまへ | 七宗町公式ウエブサイト ( official site)",
+    "コンテンツへスキップ",
+    "ナビゲーションに移動",
+    "ペットを飼っている皆さまへ",
+    "2020年9月3日",
+    "農業林業",
+    "カテゴリー"
+   ]
+  },
+  {
+   "url": "https://www.hichiso.jp/wp-content/uploads/2021/02/ペットを飼っている皆さまへ.pdf",
+   "error": "'ascii' codec can't encode characters in position 32-44: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.hichiso.jp/wp-content/uploads/2021/03/ペットボトルの出し方が変わります.pdf",
+   "error": "'ascii' codec can't encode characters in position 32-47: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.hichiso.jp/wp-content/uploads/Hmap/七宗町防災ハザードマップ(全体).pdf",
+   "error": "'ascii' codec can't encode characters in position 29-40: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.hichiso.jp/wp-content/uploads/Hmap/七宗町地震防災マップ.pdf",
+   "error": "'ascii' codec can't encode characters in position 29-38: ordinal not in range(128)"
+  }
+ ]
+}

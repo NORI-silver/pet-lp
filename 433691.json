@@ -1,0 +1,25 @@
+{
+ "pref": "熊本県",
+ "name": "和水町",
+ "code": "433691",
+ "url": "https://www.town.nagomi.lg.jp/",
+ "mails": {
+  "noushin@town.nagomi.lg.jp": "https://www.town.nagomi.lg.jp/soshiki/nourinshinkou/bousaikoutsu/3_2892/",
+  "soumu@town.nagomi.lg.jp": "https://www.town.nagomi.lg.jp/soshiki/soumu/bousaikoutsu/17827142131450364/",
+  "jukan@town.nagomi.lg.jp": "https://www.town.nagomi.lg.jp/soshiki/jyuminkankyo/bousaikoutsu/3_4692/",
+  "hoken@town.nagomi.lg.jp": "https://www.town.nagomi.lg.jp/kurashi/kenkoufukushi/hokenyobo/3_89/",
+  "msui@town.nagomi.lg.jp": "https://www.town.nagomi.lg.jp/soshiki/machidukuri/bousaikoutsu/3_1700/",
+  "gakkou@town.nagomi.lg.jp": "https://www.town.nagomi.lg.jp/soshiki/gakoukyoiku/bousaikoutsu/3_3051/"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.nagomi.lg.jp/nagomitown/001_soumu/bousai/01_令和８年度和水町地域防災計画.pdf",
+   "error": "'ascii' codec can't encode characters in position 36-49: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.town.nagomi.lg.jp/nagomitown/switch/3_4629_19362_up_1Q72S5RX.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

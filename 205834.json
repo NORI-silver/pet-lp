@@ -1,0 +1,34 @@
+{
+ "pref": "長野県",
+ "name": "信濃町",
+ "code": "205834",
+ "url": "https://www.town.shinano.lg.jp/",
+ "mails": {},
+ "pages": [
+  {
+   "url": "https://www.town.shinano.lg.jp/kurashi/pet/",
+   "kind": "html",
+   "lines": [
+    "【title】愛玩動物（ペット） - 信濃町",
+    "愛玩動物（ペット） - 信濃町",
+    "HOME › くらし・手続き › 愛玩動物（ペット）",
+    "結婚・離婚"
+   ]
+  },
+  {
+   "url": "https://www.town.shinano.lg.jp/fs/7/9/0/9/9/7/_/shinanomachibosaimap.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.shinano.lg.jp/fs/7/9/0/9/9/8/_/map_jishin.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.shinano.lg.jp/fs/7/9/1/0/0/5/_/bosaijutentameike.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

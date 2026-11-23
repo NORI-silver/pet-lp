@@ -1,0 +1,37 @@
+{
+ "pref": "長野県",
+ "name": "山ノ内町",
+ "code": "205613",
+ "url": "https://www.town.yamanouchi.nagano.jp/",
+ "mails": {
+  "t-yamanouchi@sg-p.jp": "https://www.town.yamanouchi.nagano.jp/soshiki/kikikanri/gyomu/anzen_anshin/bosai/735.html",
+  "yamanouchi@sg-m.jp": "https://www.town.yamanouchi.nagano.jp/soshiki/kikikanri/gyomu/anzen_anshin/bosai/735.html",
+  "yamanouchi@sg-p.jp": "https://www.town.yamanouchi.nagano.jp/soshiki/kikikanri/gyomu/anzen_anshin/bosai/735.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.yamanouchi.nagano.jp/material/files/group/8/sisetu3.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.yamanouchi.nagano.jp/kurashi/pet_animal/index.html",
+   "kind": "html",
+   "lines": [
+    "【title】ペット・動物／山ノ内町公式サイト",
+    "ペット・動物／山ノ内町公式サイト",
+    "スマートフォン版を表示",
+    "くらし・手続き",
+    "ペット・動物",
+    "猫繁殖制限手術費補助金",
+    "犬・猫の飼い方",
+    "ドッグラン広場"
+   ]
+  },
+  {
+   "url": "https://www.town.yamanouchi.nagano.jp/material/files/group/8/keikakutiku.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

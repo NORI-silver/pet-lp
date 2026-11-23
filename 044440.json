@@ -1,0 +1,39 @@
+{
+ "pref": "宮城県",
+ "name": "色麻町",
+ "code": "044440",
+ "url": "https://www.town.shikama.miyagi.jp/",
+ "mails": {
+  "t-shikama@sg-p.jp": "https://www.town.shikama.miyagi.jp/kurashi/mail/1711.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.shikama.miyagi.jp/material/files/group/2/20200420-170630.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.shikama.miyagi.jp/material/files/group/2/20200420-171209.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.shikama.miyagi.jp/material/files/group/2/20200430-171543.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.shikama.miyagi.jp/kurashi/pet/index.html",
+   "kind": "html",
+   "lines": [
+    "【title】ペット（犬・猫）／色麻町",
+    "ペット（犬・猫）／色麻町",
+    "スマートフォン版を表示",
+    "くらしのガイド",
+    "ペット（犬・猫）",
+    "犬の飼い主のみなさんへ",
+    "令和8年度狂犬病予防注射について"
+   ]
+  }
+ ]
+}

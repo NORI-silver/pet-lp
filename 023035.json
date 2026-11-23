@@ -1,0 +1,34 @@
+{
+ "pref": "青森県",
+ "name": "今別町",
+ "code": "023035",
+ "url": "https://www.town.imabetsu.lg.jp/",
+ "mails": {},
+ "pages": [
+  {
+   "url": "https://www.town.imabetsu.lg.jp/kurashi/bousai/files/bousaimap.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.imabetsu.lg.jp/kurashi/bousai/files/kouzui_dosha.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.imabetsu.lg.jp/kurashi/bousai/files/tsunami.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.imabetsu.lg.jp/kurashi/bousai/files/omote_map.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.imabetsu.lg.jp/kurashi/bousai/files/ura_map.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "pref": "鳥取県",
+ "name": "日野町",
+ "code": "314021",
+ "url": "https://www.town.hino.tottori.jp/",
+ "mails": {
+  "info@town.tottori-hino.lg.jp": "https://www.town.hino.tottori.jp/",
+  "soumu@town.hino.tottori.jp": "https://www.town.hino.tottori.jp/1074.htm"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.hino.tottori.jp/secure/35436/【shinsai】R3chiikibousaikeikaku.pdf",
+   "error": "'ascii' codec can't encode character '\\u3010' in position 18: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.town.hino.tottori.jp/secure/35436/【fusuigai】R3chiikibousaikeikaku (1).pdf",
+   "error": "URL can't contain control characters. '/secure/35436/【fusuigai】R3chiikibousaikeikaku (1).pdf' (found at least ' ')"
+  },
+  {
+   "url": "https://www.town.hino.tottori.jp/secure/35436/【daikibojiko】R3chiikibousaikeikaku.pdf",
+   "error": "'ascii' codec can't encode character '\\u3010' in position 18: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.town.hino.tottori.jp/secure/35436/【shiryo】R3chiikibousaikeikaku (1).pdf",
+   "error": "URL can't contain control characters. '/secure/35436/【shiryo】R3chiikibousaikeikaku (1).pdf' (found at least ' ')"
+  }
+ ]
+}

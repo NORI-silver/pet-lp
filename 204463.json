@@ -1,0 +1,59 @@
+{
+ "pref": "長野県",
+ "name": "麻績村",
+ "code": "204463",
+ "url": "https://www.vill.omi.nagano.jp/",
+ "mails": {
+  "omi-somu@vill.omi.nagano.jp": "https://www.vill.omi.nagano.jp/kurashi/anzen_bosai/somu400.html",
+  "muradukuri@vill.omi.nagano.jp": "https://www.vill.omi.nagano.jp/kurashi/zei_nenkin_hoken/zei/muradukuri106.html",
+  "omisinko@vill.omi.nagano.jp": "https://www.vill.omi.nagano.jp/kurashi/anzen_bosai/shinko467.html",
+  "omijumin@vill.omi.nagano.jp": "https://www.vill.omi.nagano.jp/kurashi/anzen_bosai/jumin198.html",
+  "omishou@omi-e.ed.jp": "https://www.vill.omi.nagano.jp/kurashi/kyoiku/kyoiku1164.html",
+  "omihoiku@vill.omi.nagano.jp": "https://www.vill.omi.nagano.jp/kurashi/kyoiku/kyoiku1275.html",
+  "omihoken@vill.omi.nagano.jp": "https://www.vill.omi.nagano.jp/kurashi/kenko_iryo/iryo/hoken3183.html",
+  "omi-kyoi@vill.omi.nagano.jp": "https://www.vill.omi.nagano.jp/kurashi/ninshin_shussan_kosodate/kyoiku2871.html",
+  "omigikai@vill.omi.nagano.jp": "https://www.vill.omi.nagano.jp/kurashi/anzen_bosai/gikaijimukyoku1733.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.vill.omi.nagano.jp/files/somu/①　防災マップ＿聖（坊平、北山）.pdf",
+   "error": "'ascii' codec can't encode characters in position 16-31: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.vill.omi.nagano.jp/files/somu/②　防災マップ＿聖（北山）.pdf",
+   "error": "'ascii' codec can't encode characters in position 16-28: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.vill.omi.nagano.jp/files/somu/③　防災マップ＿聖（一本松）.pdf",
+   "error": "'ascii' codec can't encode characters in position 16-29: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.vill.omi.nagano.jp/files/somu/④　防災マップ＿野間・桑関、高.pdf",
+   "error": "'ascii' codec can't encode characters in position 16-30: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.vill.omi.nagano.jp/files/somu/⑤　防災マップ＿野田沢、上井堀、丸山.pdf",
+   "error": "'ascii' codec can't encode characters in position 16-33: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.vill.omi.nagano.jp/files/somu/⑥　防災マップ＿上町、中町、明治町.pdf",
+   "error": "'ascii' codec can't encode characters in position 16-32: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.vill.omi.nagano.jp/files/somu/⑦　防災マップ＿本町、宮本.pdf",
+   "error": "'ascii' codec can't encode characters in position 16-28: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.vill.omi.nagano.jp/files/somu/⑧　防災マップ＿桑山中央、西之久保、中芝・小東.pdf",
+   "error": "'ascii' codec can't encode characters in position 16-38: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.vill.omi.nagano.jp/files/somu/⑨　防災マップ＿和合・下田、女渕・砂原.pdf",
+   "error": "'ascii' codec can't encode characters in position 16-34: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.vill.omi.nagano.jp/files/somu/⑩　防災マップ＿下井堀、野口、矢倉、叶里・高畑、天王.pdf",
+   "error": "'ascii' codec can't encode characters in position 16-41: ordinal not in range(128)"
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+{
+ "pref": "静岡県",
+ "name": "河津町",
+ "code": "223026",
+ "url": "https://www.town.kawazu.shizuoka.jp/",
+ "mails": {
+  "bousai@town.kawazu.lg.jp": "https://www.town.kawazu.shizuoka.jp/bousai/",
+  "info@town.kawazu.lg.jp": "https://www.town.kawazu.shizuoka.jp/bousai/",
+  "bousai.kawazu-town@raiden.ktaiwork.jp": "https://www.town.kawazu.shizuoka.jp/bousai/b226/"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.kawazu.shizuoka.jp/choumin/life09/",
+   "kind": "html",
+   "lines": [
+    "【title】住民票・証明・ペットの一覧｜静岡県河津町役場",
+    "-->",
+    "住民票・証明・ペットの一覧｜静岡県河津町役場",
+    "お使いのブラウザでは一部のコンテンツを正常にご覧いただくことができません。最新のブラウザにアップグレードしてください。",
+    "検診・保険",
+    "住民票・証明・ペット",
+    "税金・年金",
+    "オープンデータ",
+    "ホーム > 町民のみなさま > 住民票・証明・ペットの一覧",
+    "住民票・証明・申請",
+    "戸籍への振り仮名記載",
+    "ペット",
+    "犬の登録と注射",
+    "猫の不妊去勢手術費補助金",
+    "ポッチとニャンチの愛の伝言板"
+   ],
+   "mails": [
+    "info@town.kawazu.lg.jp"
+   ]
+  },
+  {
+   "url": "https://www.town.kawazu.shizuoka.jp/wp/wp-content/uploads/2019/05/bousaiguidebook.pdf",
+   "kind": "pdf",
+   "lines": [
+    "乾電池 各機器予備分",
+    "1セット 補水用具 のペットボトルやポリタンク",
+    "メモ帳",
+    "数日 食料品の一例 レトルト食品、缶詰、インスタントラーメン、パスタ類、",
+    "ペットボトル 1本 常備薬 調味料、根菜類（常温で保存できる野菜）、フリーズドラ",
+    "分"
+   ]
+  },
+  {
+   "url": "https://www.town.kawazu.shizuoka.jp/wp/wp-content/uploads/2023/03/dosyasaigai_hazard.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.kawazu.shizuoka.jp/wp/wp-content/uploads/2023/03/kouzui_hazard.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.kawazu.shizuoka.jp/wp/wp-content/uploads/2026/10/kouzuihaza-domapyatuoonabe.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.kawazu.shizuoka.jp/wp/wp-content/uploads/2023/03/tunamii_hazard.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.kawazu.shizuoka.jp/wp/wp-content/uploads/2023/03/takashio_hazard.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

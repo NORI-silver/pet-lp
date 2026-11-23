@@ -1,0 +1,19 @@
+{
+ "pref": "島根県",
+ "name": "吉賀町",
+ "code": "325058",
+ "url": "https://www.town.yoshika.lg.jp/",
+ "mails": {
+  "info@km.town.yoshika.lg.jp": "https://www.town.yoshika.lg.jp/",
+  "jyumin@town.yoshika.lg.jp": "https://www.town.yoshika.lg.jp/kurashi/jinken/tabunnka.html",
+  "Emailkosodate@town.yoshika.lg.jp": "https://www.town.yoshika.lg.jp/kurashi/lifeevent/kosodate/",
+  "kosodate@town.yoshika.lg.jp": "https://www.town.yoshika.lg.jp/kurashi/lifeevent/kosodate/"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.yoshika.lg.jp/bousai/bousai/hazardmap.data/hazardmap_kiji.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

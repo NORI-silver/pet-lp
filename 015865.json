@@ -1,0 +1,51 @@
+{
+ "pref": "北海道",
+ "name": "むかわ町",
+ "code": "015865",
+ "url": "https://www.town.mukawa.lg.jp/",
+ "mails": {
+  "johobosai@town.mukawa.lg.jp": "https://www.town.mukawa.lg.jp/4959.htm"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.mukawa.lg.jp/3987.htm",
+   "kind": "html",
+   "lines": [
+    "【title】ペット/むかわ町 - 北海道むかわ町公式ウェブサイト",
+    "ペット/むかわ町 - 北海道むかわ町公式ウェブサイト",
+    "ペット",
+    "本文にジャンプします",
+    "ごみ・環境保全",
+    "障がい者支援",
+    "くらし・手続き",
+    "ヒグマ情報",
+    "犬を飼ったら",
+    "ページの先頭に戻る"
+   ]
+  },
+  {
+   "url": "https://www.town.mukawa.lg.jp/secure/3863/02_R8 むかわ町地域防災計画地震・津波防災計画編.pdf",
+   "error": "URL can't contain control characters. '/secure/3863/02_R8 むかわ町地域防災計画地震・津波防災計画編.pdf' (found at least ' ')"
+  },
+  {
+   "url": "https://www.town.mukawa.lg.jp/secure/5111/R1_keikaku_mukawa_doshasaigaibousaimap.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.mukawa.lg.jp/secure/5111/R1_keikaku_hobetsu_doshasaigaibousaimap.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.mukawa.lg.jp/secure/5111/R1_saidai_mukawa_doshasaigaibousaimap.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.mukawa.lg.jp/secure/5111/R1_saidai_hobetsu_doshasaigaibousaimap.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

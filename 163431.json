@@ -1,0 +1,73 @@
+{
+ "pref": "富山県",
+ "name": "朝日町",
+ "code": "163431",
+ "url": "https://www.town.asahi.toyama.jp/",
+ "mails": {
+  "info@town.toyama-asahi.lg.jp": "https://www.town.asahi.toyama.jp/",
+  "asahitown@cousmail-entry.cous.jp": "https://www.town.asahi.toyama.jp/chosei/kurashi_seikatsu/bosai_anzen/bosai/1562024282087.html",
+  "mailhaishin@int.town.asahi.toyama.jp": "https://www.town.asahi.toyama.jp/chosei/kurashi_seikatsu/bosai_anzen/bosai/1562024282087.html"
+ },
+ "pages": [
+  {
+   "url": "https://www.town.asahi.toyama.jp/material/files/group/3/bosai-handbook-R0701.pdf",
+   "kind": "pdf",
+   "lines": [
+    "いつもの暮らしの中で、手軽に備蓄に取り組むこと",
+    "☐ 非常食（乾パン、缶詰等） ☐ 飲料水（ペットボトルなど持ち運べるもの）",
+    "ができます。"
+   ]
+  },
+  {
+   "url": "https://www.town.asahi.toyama.jp/material/files/group/3/bousai_keikaku_model.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.asahi.toyama.jp/material/files/group/3/R04bosai-handbook.pdf",
+   "kind": "pdf",
+   "lines": [
+    "いつもの暮らしの中で、手軽に備蓄に取り組むこと",
+    "☐ 非常食（乾パン、缶詰等） ☐ 飲料水（ペットボトルなど持ち運べるもの）",
+    "ができます。"
+   ]
+  },
+  {
+   "url": "https://www.town.asahi.toyama.jp/material/files/group/3/tameike_hazard.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town.asahi.toyama.jp/chosei/kurashi_seikatsu/gomi_kankyo_pet/index.html",
+   "kind": "html",
+   "lines": [
+    "【title】ごみ・環境・ペット／朝日町ホームページ - 下新川郡",
+    "ごみ・環境・ペット／朝日町ホームページ - 下新川郡",
+    "スマートフォン版を表示",
+    "暮らし・生活",
+    "ごみ・環境・ペット",
+    "ペット",
+    "環境"
+   ],
+   "mails": [
+    "info@town.toyama-asahi.lg.jp"
+   ]
+  },
+  {
+   "url": "https://www.town.asahi.toyama.jp/chosei/kurashi_seikatsu/gomi_kankyo_pet/pet/index.html",
+   "kind": "html",
+   "lines": [
+    "【title】ペット／朝日町ホームページ - 下新川郡",
+    "ペット／朝日町ホームページ - 下新川郡",
+    "スマートフォン版を表示",
+    "暮らし・生活",
+    "ごみ・環境・ペット",
+    "ペット",
+    "犬の登録等"
+   ],
+   "mails": [
+    "info@town.toyama-asahi.lg.jp"
+   ]
+  }
+ ]
+}

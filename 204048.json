@@ -1,0 +1,30 @@
+{
+ "pref": "長野県",
+ "name": "阿南町",
+ "code": "204048",
+ "url": "http://www.town.anan.nagano.jp/",
+ "mails": {
+  "soumu@town.anan.nagano.jp": "http://www.town.anan.nagano.jp/anan_town/e-college/",
+  "kankyo@town.anan.nagano.jp": "http://www.town.anan.nagano.jp/anan_town/saigai-hassei/"
+ },
+ "pages": [
+  {
+   "url": "http://www.town.anan.nagano.jp/category/living-adm/procedure/animal/",
+   "kind": "html",
+   "lines": [
+    "【title】動物・ペット – 阿南町",
+    "動物・ペット – 阿南町",
+    "動物・ペット",
+    "トップ",
+    "くらし・手続き",
+    "犬・猫を飼う",
+    "住宅",
+    "各種相談"
+   ]
+  },
+  {
+   "url": "http://www.town.anan.nagano.jp/storage/2026/07/阿南町地域防災計画修正の概要R8.7.pdf",
+   "error": "'ascii' codec can't encode characters in position 21-34: ordinal not in range(128)"
+  }
+ ]
+}

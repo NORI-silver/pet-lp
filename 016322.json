@@ -1,0 +1,47 @@
+{
+ "pref": "北海道",
+ "name": "士幌町",
+ "code": "016322",
+ "url": "https://www.shihoro.jp/",
+ "mails": {
+  "bousai.shihoro-town@raiden.ktaiwork.jp": "https://www.shihoro.jp/life/detail.php?content=42",
+  "asp-mail@shihoro.jp": "https://www.shihoro.jp/life/detail.php?content=42"
+ },
+ "pages": [
+  {
+   "url": "https://www.shihoro.jp/life/category/?category=49",
+   "kind": "html",
+   "lines": [
+    "【title】ごみ・生活環境・ペット | 士幌町",
+    "ごみ・生活環境・ペット | 士幌町",
+    "トップページ",
+    "くらし・手続き",
+    "ごみ・生活環境・ペット",
+    "「ごみ・生活環境・ペット」の新着情報",
+    "2026年08月07日 くらし・手続き",
+    "一覧はこちら",
+    "フロンを使用した業務用機器（業務用冷凍庫など）の処分について",
+    "北十勝２町環境衛生処理組合（施設管理の記録）",
+    "犬に関すること",
+    "ハチの巣駆除費の助成",
+    "住まい",
+    "保険・年金"
+   ]
+  },
+  {
+   "url": "https://www.shihoro.jp/common/img/content/content_20230616_171202.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.shihoro.jp/common/img/content/content_20230616_171309.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.shihoro.jp/common/img/content/content_20230616_171304.pdf",
+   "kind": "pdf",
+   "lines": []
+  }
+ ]
+}

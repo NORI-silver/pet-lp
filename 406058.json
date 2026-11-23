@@ -1,0 +1,30 @@
+{
+ "pref": "福岡県",
+ "name": "川崎町",
+ "code": "406058",
+ "url": "https://www.town-kawasaki.com/",
+ "mails": {},
+ "pages": [
+  {
+   "url": "https://www.town-kawasaki.com/wp-content/uploads/2017/03/川崎町防災マップ_表紙～.pdf",
+   "error": "'ascii' codec can't encode characters in position 32-39: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.town-kawasaki.com/wp-content/uploads/2017/03/川崎町防災マップ　地図面.pdf",
+   "error": "'ascii' codec can't encode characters in position 32-43: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.town-kawasaki.com/wp-content/uploads/2017/03/川崎町防災マップ-地図.pdf",
+   "error": "'ascii' codec can't encode characters in position 32-39: ordinal not in range(128)"
+  },
+  {
+   "url": "https://www.town-kawasaki.com/wp-content/uploads/2020/04/k209_R3527_kurasi_haza-domappu.pdf",
+   "kind": "pdf",
+   "lines": []
+  },
+  {
+   "url": "https://www.town-kawasaki.com/wp-content/uploads/2022/10/川崎町防災マップ　地図面.pdf",
+   "error": "'ascii' codec can't encode characters in position 32-43: ordinal not in range(128)"
+  }
+ ]
+}

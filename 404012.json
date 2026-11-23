@@ -1,0 +1,42 @@
+{
+ "pref": "福岡県",
+ "name": "小竹町",
+ "code": "404012",
+ "url": "https://town.kotake.lg.jp/",
+ "mails": {
+  "kouhou@town.kotake.lg.jp": "https://town.kotake.lg.jp/",
+  "shomu@town.kotake.lg.jp": "https://town.kotake.lg.jp/hpkiji/pub/detail.aspx?c_id=3&id=1882&class_set_id=1&class_id=800",
+  "sangyou@town.kotake.lg.jp": "https://town.kotake.lg.jp/hpkiji/pub/detail.aspx?c_id=3&id=2659&class_set_id=1&class_id=522"
+ },
+ "pages": [
+  {
+   "url": "https://town.kotake.lg.jp/hpkiji/pub/List.aspx?c_id=3&class_set_id=1&class_id=671",
+   "kind": "html",
+   "lines": [
+    "【title】ペット / 小竹町",
+    "﻿",
+    "ペット / 小竹町",
+    "ヘッダーをスキップ",
+    "道路・河川工事",
+    "ペット",
+    "浄化槽・し尿処理",
+    "その他",
+    "ペットに関する記事",
+    "全2件",
+    "2026年10月21日更新",
+    "犬を飼うときは",
+    "2026年6月11日更新",
+    "飼い主のいないねこ不妊去勢手術費補助事業について",
+    "もっと見る"
+   ],
+   "mails": [
+    "kouhou@town.kotake.lg.jp"
+   ]
+  },
+  {
+   "url": "https://town.kotake.lg.jp/_error/error404.html",
+   "kind": "html",
+   "lines": []
+  }
+ ]
+}
