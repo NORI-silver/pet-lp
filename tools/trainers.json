@@ -8784,6 +8784,77 @@
    "url": "http://inunoshituke-wannesu.com/",
    "services": "家庭犬のしつけ教室（ペットシッターも）",
    "facts": []
+  },
+  {
+   "id": "Tnk024",
+   "name": "Happy Animal Clinic",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "栃木市",
+   "url": "http://www.cc9.ne.jp/~mdog-happy3click/",
+   "services": "犬のしつけの相談（カウンセリング）",
+   "facts": []
+  },
+  {
+   "id": "Tnk025",
+   "name": "Happy Friends",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "日光市",
+   "url": "https://www.doghf.com/",
+   "services": "犬のしつけ（出張レッスン・預かり訓練）",
+   "area": "栃木県内",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張レッスン 1時間5,000円・2時間10,000円",
+     "src": "https://www.doghf.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "出張レッスンは栃木県内",
+     "src": "https://www.doghf.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "20km以上は交通費が別",
+     "src": "https://www.doghf.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk026",
+   "name": "アニマルファンスィアーズクラブ",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "那須塩原市",
+   "url": "https://afc-dog.jp/",
+   "services": "犬のしつけ教室（子犬のクラスも）",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜16:00",
+     "src": "https://afc-dog.jp/lesson/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "子犬のクラスは最初のワクチンのあとから16週齢くらいまで",
+     "src": "https://afc-dog.jp/lessons/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }

@@ -10008,6 +10008,310 @@
    ],
    "area": "宇都宮市の周り",
    "chain": "indie"
+  },
+  {
+   "id": "Snk028",
+   "name": "ペットシッター ぺっとんとん",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "龍ケ崎市",
+   "url": "http://petonton.com/",
+   "services": "訪問ペットシッター（犬・猫・小動物）",
+   "cat": true,
+   "small": true,
+   "area": "龍ケ崎市・牛久市・取手市",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "龍ケ崎市・牛久市・取手市",
+     "src": "http://petonton.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "はじめての登録料は無料。打ち合わせの交通費・カルテ作成・鍵の預かりも無料",
+     "src": "http://petonton.com/free/ryoukin",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "龍ケ崎市城ノ内から1kmごとに30円",
+     "src": "http://petonton.com/free/ryoukin",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "生後3か月以内の子犬・子猫、とても年をとった子は受けられないことがある。7・8月の散歩は受けない",
+     "src": "http://petonton.com/free/ryoukin",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk029",
+   "name": "ペットシッター&ホテル パワーアップ",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "桐生市",
+   "url": "https://petshiterhotelpu.wixsite.com/petpu",
+   "services": "訪問ペットシッター",
+   "cat": true,
+   "small": true,
+   "facts": [
+    {
+     "k": "交通費・出張費",
+     "v": "お店から5km以内は交通費こみ",
+     "src": "https://petshiterhotelpu.wixsite.com/petpu/services",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "桐生市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk030",
+   "name": "シッター ラッキー マロン",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://luckymaron.jimdofree.com/",
+   "services": "訪問ペットシッター",
+   "cat": true,
+   "small": true,
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "1回のお世話は1時間くらいまで",
+     "src": "https://luckymaron.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "宇都宮市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk031",
+   "name": "ペットシッター ノリカネ",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://www.noripet.net/",
+   "services": "訪問ペットシッター",
+   "cat": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日1回2,000円（猫は何匹でも1匹分）",
+     "src": "https://www.noripet.net/%E6%96%99%E9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "無料",
+     "src": "https://www.noripet.net/%E6%96%99%E9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "6:00〜20:00",
+     "src": "https://www.noripet.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "宇都宮市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk032",
+   "name": "ペットシッター ange宇都宮店",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://pet-ange97.crayonsite.com/",
+   "services": "訪問ペットシッター（犬・猫・小動物）",
+   "cat": true,
+   "small": true,
+   "area": "宇都宮市が中心（鹿沼市・日光市・那須・真岡市・芳賀郡は相談）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "猫 60分コース（1回・2匹まで）2,400円、小動物 1ケージ1,900円。繁忙期は1日500円増し",
+     "src": "https://pet-ange97.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "宇都宮市が中心（鹿沼市・日光市・那須・真岡市・芳賀郡は相談）",
+     "src": "https://pet-ange97.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "打ち合わせ・鍵の返却のときの交通費は無料",
+     "src": "https://pet-ange97.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk033",
+   "name": "ペットライフサポート RUFF・RUFF",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "小山市",
+   "url": "http://pet.jeez.jp/",
+   "services": "訪問ペットシッター・お散歩代行",
+   "cat": true,
+   "small": true,
+   "facts": [],
+   "area": "小山市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk034",
+   "name": "CAT SALON occhi blu",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://occhiblu78.wixsite.com/mysite",
+   "services": "猫専門の訪問ペットシッター",
+   "cat": true,
+   "cat_only": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日1回1匹2,500円（15〜20分）",
+     "src": "https://occhiblu78.wixsite.com/mysite/about-6",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "宇都宮市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk035",
+   "name": "老犬シッターウィズ",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "日光市",
+   "url": "https://dogsitterwith.com/",
+   "services": "老犬の介護もできる訪問ペットシッター",
+   "senior": true,
+   "area": "日光市・宇都宮市・鹿沼市・矢板市・塩谷町など",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "日光市・宇都宮市・鹿沼市・矢板市・塩谷町など",
+     "src": "https://dogsitterwith.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "訪問 8:30〜18:30",
+     "src": "https://dogsitterwith.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日",
+     "src": "https://dogsitterwith.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "前払い（現金・銀行振込）",
+     "src": "https://dogsitterwith.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk036",
+   "name": "ドッグケアサービス はるかぜ",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "前橋市",
+   "url": "https://ezakurah.com/",
+   "services": "訪問ペットシッター・散歩代行・老犬の介護",
+   "large": true,
+   "cat": true,
+   "small": true,
+   "senior": true,
+   "area": "前橋市全域・伊勢崎市・桐生市・渋川市の一部",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "前橋市全域・伊勢崎市・桐生市・渋川市の一部",
+     "src": "https://ezakurah.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜19:00（年中無休）",
+     "src": "https://ezakurah.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "1kmごとに50円×往復の距離×訪問の回数",
+     "src": "https://ezakurah.com/%e6%96%99%e9%87%91%e3%83%bb%e3%81%8a%e5%95%8f%e3%81%84%e5%90%88%e3%82%8f%e3%81%9b/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "PayPay可（クレジットカードは不可）",
+     "src": "https://ezakurah.com/%e5%ba%97%e8%88%97%e3%81%ae%e3%81%94%e6%a1%88%e5%86%85/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk037",
+   "name": "MUUペットシッターサービス",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "前橋市",
+   "url": "https://muupet.amebaownd.com/pages/4865085/profile",
+   "services": "訪問ペットシッター",
+   "area": "前橋市の周り",
+   "facts": [],
+   "chain": "indie"
   }
  ]
 }
