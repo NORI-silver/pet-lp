@@ -158,5 +158,14 @@
   "page": "https://magokoro-pet.co.jp/",
   "sha256": "1cf1b28edc128bb8fc138c0086051e9707f05c95b2a7cd2876edbb665fff9fa5",
   "bytes": 103368
+ },
+ {
+  "id": "E07",
+  "file": "img/fac/emergency/E07_1.webp",
+  "src": "https://cocotaxi-saitama.com/_img/ja/cms/43470/image/_/image.webp",
+  "page": "https://cocotaxi-saitama.com/",
+  "sha256": "7474fa7e4b05f3f0be3262f0e595a4dba1b4dd3bcb46cdbbfeb805f755a54b39",
+  "bytes": 52028,
+  "manual": true
  }
 ]
