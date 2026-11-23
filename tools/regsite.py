@@ -57,7 +57,11 @@ def snaps(r):
     cands = [u for _, u in r.get('results', []) if u.startswith('http') and not SKIP.search(u) and u not in skip][:r.get('ncand', 2)]
     r['snaps'] = []
     for u in cands:
-        s = ss.snap({'url': u}); s.pop('cat', None); r['snaps'].append(s)
+        try:
+            s = ss.snap({'url': u}); s.pop('cat', None)
+        except Exception as ex:  # 壊れたURL（全角の＃など）でシャード全体を落とさない
+            s = {'url': u, 'error': str(ex)[:80]}
+        r['snaps'].append(s)
     return r
 
 def main():
