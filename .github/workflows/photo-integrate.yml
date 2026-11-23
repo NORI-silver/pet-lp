@@ -30,6 +30,15 @@ jobs:
       - run: python3 tools/fill_ratio.py
       - run: python3 tools/regen_cards.py
       - run: python3 tools/taxi_render_patch.py
+      - name: 病院カードの列で、隣のカードに合わせて背が伸びないようにする（余白をなくす）
+        run: |
+          python3 - <<'PYEOF'
+          p = "tools/hosp_find.py"
+          t = open(p, encoding="utf-8").read()
+          old = ".hf-list{display:grid;gap:10px}"
+          assert old in t, "hf-list css not found"
+          open(p, "w", encoding="utf-8").write(t.replace(old, ".hf-list{display:grid;gap:10px;align-items:start}", 1))
+          PYEOF
       - name: 生成ファイルを作りなおす（seo-check と同じ）
         run: |
           python3 tools/gen_areas.py .
