@@ -2,63 +2,133 @@
 {
 "cat": "raw",
 "pref": "神奈川県",
-"url": "https://goodbreeder.jp/pref_kanagawa/",
+"url": "https://petlife.asia/hotel/search/kanagawa/yokosuka-shi/",
 "raw": true
 },
 {
 "cat": "raw",
 "pref": "神奈川県",
-"url": "https://goodbreeder.jp/registry/",
+"url": "https://petlife.asia/hotel/search/kanagawa/yokosuka-shi/?page=2",
+"raw": true
+},
+{
+"cat": "raw",
+"pref": "神奈川県",
+"url": "https://petlife.asia/hotel/search/kanagawa/yokosuka-shi/?page=3",
+"raw": true
+},
+{
+"cat": "raw",
+"pref": "神奈川県",
+"url": "https://petlife.asia/sitter/search/kanagawa/yokosuka-shi/",
+"raw": true
+},
+{
+"cat": "raw",
+"pref": "神奈川県",
+"url": "https://petlife.asia/sitter/search/kanagawa/yokosuka-shi/?page=2",
+"raw": true
+},
+{
+"cat": "raw",
+"pref": "神奈川県",
+"url": "https://petlife.asia/sitter/search/kanagawa/yokosuka-shi/?page=3",
+"raw": true
+},
+{
+"cat": "raw",
+"pref": "神奈川県",
+"url": "https://petlife.asia/salon/search/kanagawa/yokosuka-shi/",
+"raw": true
+},
+{
+"cat": "raw",
+"pref": "神奈川県",
+"url": "https://petlife.asia/salon/search/kanagawa/yokosuka-shi/?page=2",
+"raw": true
+},
+{
+"cat": "raw",
+"pref": "神奈川県",
+"url": "https://petlife.asia/salon/search/kanagawa/yokosuka-shi/?page=3",
+"raw": true
+},
+{
+"cat": "raw",
+"pref": "神奈川県",
+"url": "https://petlife.asia/training/search/kanagawa/yokosuka-shi/",
+"raw": true
+},
+{
+"cat": "raw",
+"pref": "神奈川県",
+"url": "https://petlife.asia/training/search/kanagawa/yokosuka-shi/?page=2",
+"raw": true
+},
+{
+"cat": "raw",
+"pref": "神奈川県",
+"url": "https://petlife.asia/training/search/kanagawa/yokosuka-shi/?page=3",
 "raw": true
 },
 {
 "cat": "search",
 "pref": "神奈川県",
-"q": "横須賀市 ペットホテル"
+"q": "横須賀市 ペットホテル 犬"
 },
 {
 "cat": "search",
 "pref": "神奈川県",
-"q": "横須賀市 ペットシッター"
+"q": "横須賀市 キャットホテル 猫"
 },
 {
 "cat": "search",
 "pref": "神奈川県",
-"q": "横須賀市 ドッグトレーナー しつけ教室"
+"q": "横須賀市 ペットシッター 訪問"
 },
 {
 "cat": "search",
 "pref": "神奈川県",
-"q": "横須賀市 出張トリミング"
+"q": "横須賀市 犬のしつけ 出張"
 },
 {
 "cat": "search",
 "pref": "神奈川県",
-"q": "横須賀市 老犬ホーム"
+"q": "横須賀市 ドッグトレーニング"
 },
 {
 "cat": "search",
 "pref": "神奈川県",
-"q": "相模原市 ペットホテル"
+"q": "横須賀市 犬の幼稚園 保育園"
 },
 {
 "cat": "search",
 "pref": "神奈川県",
-"q": "相模原市 ペットシッター"
+"q": "横須賀市 訪問トリミング"
 },
 {
 "cat": "search",
 "pref": "神奈川県",
-"q": "相模原市 ドッグトレーナー しつけ教室"
+"q": "横須賀市 トリミングカー"
 },
 {
 "cat": "search",
 "pref": "神奈川県",
-"q": "相模原市 出張トリミング"
+"q": "横須賀市 老猫ホーム"
 },
 {
 "cat": "search",
 "pref": "神奈川県",
-"q": "相模原市 老犬ホーム"
+"q": "横須賀市 トリミングサロン ホテル"
+},
+{
+"cat": "search",
+"pref": "神奈川県",
+"q": "横須賀市 ペットショップ ホテル"
+},
+{
+"cat": "search",
+"pref": "神奈川県",
+"q": "横須賀市 動物病院 ペットホテル"
 }
 ]
