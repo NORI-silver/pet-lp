@@ -1,0 +1,49 @@
+name: Isolated Pet mobile QA
+on:
+  push:
+    branches: ['chatgpt/qa-pet-mobile-20261123']
+    paths: ['.github/workflows/qa-pet-mobile-20261123.yml','tests/pet-mobile-qa.cjs']
+permissions:
+  contents: read
+jobs:
+  rendered:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {kind: photo, sha: ed01d8416c1224fb3b7b44d1039d3d503bfa285a}
+          - {kind: cta, sha: 0ed45d6786447ea4ec21833215bf01f094c14af8}
+          - {kind: maigo, sha: 8852c77508d5951da221077acd4668c687c0c362}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.sha }}
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install test browser
+        run: |
+          npm install --prefix .mobile --ignore-scripts --no-audit --no-fund playwright@1.58.2
+          .mobile/node_modules/.bin/playwright install --with-deps chromium
+      - name: Verify exact candidate and render locally
+        env:
+          TEST_SHA: ${{ matrix.sha }}
+          TEST_KIND: ${{ matrix.kind }}
+          NODE_PATH: .mobile/node_modules
+        run: |
+          test "$(git -C candidate rev-parse HEAD)" = "$TEST_SHA"
+          node tests/pet-mobile-qa.cjs candidate "$TEST_KIND" mobile-results
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pet-mobile-${{ matrix.kind }}
+          path: mobile-results/
+          if-no-files-found: ignore
+          retention-days: 1
