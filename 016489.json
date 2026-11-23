@@ -1,0 +1,72 @@
+{
+"pref": "北海道",
+"name": "陸別町",
+"code": "016489",
+"url": "https://www.rikubetsu.jp/",
+"found": [
+{
+"url": "https://www.rikubetsu.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.rikubetsu.jp/mailform/",
+"お問い合わせ"
+],
+[
+"https://www.rikubetsu.jp/mailform/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.rikubetsu.jp/kurashi/bousai_saigai/",
+"bousai": true,
+"forms": [
+[
+"https://www.rikubetsu.jp/mailform/",
+"お問い合わせ"
+],
+[
+"https://www.rikubetsu.jp/mailform/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.rikubetsu.jp/kurashi/bousai_saigai/public-comment/",
+"bousai": true,
+"forms": [
+[
+"https://www.rikubetsu.jp/mailform/",
+"お問い合わせ"
+],
+[
+"https://www.rikubetsu.jp/mailform/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.rikubetsu.jp/kurashi/bousai_saigai/",
+"bousai": true,
+"forms": [
+[
+"https://www.rikubetsu.jp/mailform/",
+"お問い合わせ"
+],
+[
+"https://www.rikubetsu.jp/mailform/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

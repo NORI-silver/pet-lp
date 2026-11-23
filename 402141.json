@@ -1,0 +1,120 @@
+{
+"pref": "福岡県",
+"name": "豊前市",
+"code": "402141",
+"url": "https://www.city.buzen.lg.jp/",
+"found": [
+{
+"url": "https://www.city.buzen.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.buzen.lg.jp/iken/toiawase/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.buzen.lg.jp/bouhan/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.buzen.lg.jp/iken/toiawase/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.buzen.lg.jp/bousai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.buzen.lg.jp/iken/toiawase/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.buzen.lg.jp/bousai/bousaigyouseimusen/system.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.buzen.lg.jp/iken/toiawase/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.buzen.lg.jp/bousai/bousaigyouseimusen/housounaiyou.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.buzen.lg.jp/iken/toiawase/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.buzen.lg.jp/bousai/hinanjoho.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.buzen.lg.jp/iken/toiawase/index.html",
+"問い合わせ"
+]
+],
+"mails": [
+"bousai@city.buzen.lg.jp"
+],
+"dept": "総務課防災安全係"
+},
+{
+"url": "https://www.city.buzen.lg.jp/bousai/hinan/basho.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.buzen.lg.jp/iken/toiawase/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.buzen.lg.jp/bousai/bousaimap.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.buzen.lg.jp/iken/toiawase/index.html",
+"問い合わせ"
+]
+],
+"mails": [
+"bousai@city.buzen.lg.jp"
+],
+"dept": "総務課防災安全係"
+},
+{
+"url": "https://www.city.buzen.lg.jp/bousai/taikemap.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.buzen.lg.jp/iken/toiawase/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

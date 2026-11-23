@@ -1,0 +1,40 @@
+{
+"pref": "宮城県",
+"name": "塩竈市",
+"code": "042030",
+"url": "https://www.city.shiogama.miyagi.jp/",
+"found": [
+{
+"url": "https://www.city.shiogama.miyagi.jp/life/1/13/322/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.shiogama.miyagi.jp/soshiki/18/2595.html",
+"各種問い合わせ先"
+],
+[
+"https://www.city.shiogama.miyagi.jp/soshiki/48/41623.html",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shiogama.miyagi.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.shiogama.miyagi.jp/soshiki/48/2995.html",
+"ご意見・お問い合わせ"
+],
+[
+"https://www.city.shiogama.miyagi.jp/soshiki/48/41623.html",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

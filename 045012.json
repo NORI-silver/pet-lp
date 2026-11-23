@@ -1,0 +1,178 @@
+{
+"pref": "宮城県",
+"name": "涌谷町",
+"code": "045012",
+"url": "https://www.town.wakuya.miyagi.jp/",
+"found": [
+{
+"url": "https://www.town.wakuya.miyagi.jp/kurashi/sekatsu/gomi/pet.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wakuya.miyagi.jp/kurashi/sekatsu/pet-dobutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wakuya.miyagi.jp/kurashi/sekatsu/pet-dobutsu/shitai.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wakuya.miyagi.jp/kurashi/sekatsu/pet-dobutsu/aigo.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wakuya.miyagi.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wakuya.miyagi.jp/kinkyu/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災交通室"
+},
+{
+"url": "https://www.town.wakuya.miyagi.jp/kurashi/bosai/bosai/musen.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"wakuya@sg-p.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.wakuya.miyagi.jp/kurashi/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.wakuya.miyagi.jp/kurashi/bosai/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.wakuya.miyagi.jp/kurashi/bosai/bosai/saigai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.wakuya.miyagi.jp/kurashi/bosai/bosai/hinanbasho.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.wakuya.miyagi.jp/kurashi/bosai/bosai/kozui.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.wakuya.miyagi.jp/kurashi/bosai/bosai/dosha.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.wakuya.miyagi.jp/kurashi/bosai/bosai/kunren/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wakuya.miyagi.jp/gyose/koho/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

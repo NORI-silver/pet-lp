@@ -1,0 +1,48 @@
+{
+"pref": "佐賀県",
+"name": "吉野ヶ里町",
+"code": "413275",
+"url": "https://www.town.yoshinogari.lg.jp/",
+"found": [
+{
+"url": "https://www.town.yoshinogari.lg.jp/lifeinfo/kurashi_tetsuzuki/gomi_kankyo_petto/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.yoshinogari.lg.jp/cgi-bin/inquiry.php/1?page_no=22",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yoshinogari.lg.jp/lifeinfo/kurashi_tetsuzuki/gomi_kankyo_petto/1/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.yoshinogari.lg.jp/cgi-bin/inquiry.php/1?page_no=67",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yoshinogari.lg.jp/lifeinfo/kurashi_tetsuzuki/gomi_kankyo_petto/1/673.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.yoshinogari.lg.jp/cgi-bin/inquiry.php/12?page_no=673",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.yoshinogari.lg.jp/cgi-bin/inquiry.php/1?page_no=673",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

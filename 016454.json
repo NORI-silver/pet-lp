@@ -1,0 +1,166 @@
+{
+"pref": "北海道",
+"name": "豊頃町",
+"code": "016454",
+"url": "https://www.toyokoro.jp/",
+"found": [
+{
+"url": "https://www.toyokoro.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.toyokoro.jp/soshiki/",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.toyokoro.jp/life/1/2/",
+"bousai": true,
+"forms": [
+[
+"https://www.toyokoro.jp/soshiki/",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.toyokoro.jp/page/3768.html",
+"bousai": true,
+"forms": [
+[
+"https://www.toyokoro.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=3768",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.toyokoro.jp/soshiki/",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務政策課"
+},
+{
+"url": "https://www.toyokoro.jp/page/1163.html",
+"bousai": true,
+"forms": [
+[
+"https://www.toyokoro.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=1163",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.toyokoro.jp/soshiki/",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務政策課"
+},
+{
+"url": "https://www.toyokoro.jp/page/3400.html",
+"bousai": true,
+"forms": [
+[
+"https://www.toyokoro.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=3400",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.toyokoro.jp/soshiki/",
+"各課へのお問い合わせ"
+]
+],
+"mails": [
+"bosai@toyokoro.jp"
+],
+"dept": "総務政策課"
+},
+{
+"url": "https://www.toyokoro.jp/life/1/2/8/",
+"bousai": true,
+"forms": [
+[
+"https://www.toyokoro.jp/soshiki/",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.toyokoro.jp/page/1377.html",
+"bousai": true,
+"forms": [
+[
+"https://www.toyokoro.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=1377",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.toyokoro.jp/soshiki/",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務政策課"
+},
+{
+"url": "https://www.toyokoro.jp/page/1298.html",
+"bousai": true,
+"forms": [
+[
+"https://www.toyokoro.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=1298",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.toyokoro.jp/soshiki/",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務政策課"
+},
+{
+"url": "https://www.toyokoro.jp/page/1294.html",
+"bousai": true,
+"forms": [
+[
+"https://www.toyokoro.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=1294",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.toyokoro.jp/soshiki/",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務政策課"
+},
+{
+"url": "https://www.toyokoro.jp/life/1/2/11/",
+"bousai": true,
+"forms": [
+[
+"https://www.toyokoro.jp/soshiki/",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.toyokoro.jp/life/1/2/12/",
+"bousai": true,
+"forms": [
+[
+"https://www.toyokoro.jp/soshiki/",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

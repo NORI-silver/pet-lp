@@ -1,0 +1,203 @@
+{
+"pref": "千葉県",
+"name": "神崎町",
+"code": "123421",
+"url": "https://www.town.kozaki.chiba.jp/",
+"found": [
+{
+"url": "https://www.town.kozaki.chiba.jp/kurashi/living_bosai/seikatsu/pets.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kozaki.chiba.jp/contact/",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.kozaki.chiba.jp/contact/index.php",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kozaki.chiba.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kozaki.chiba.jp/contact/",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.kozaki.chiba.jp/contact/index.php",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kozaki.chiba.jp/kurashi/living_bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kozaki.chiba.jp/contact/index.php",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kozaki.chiba.jp/kurashi/living_bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kozaki.chiba.jp/contact/index.php",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kozaki.chiba.jp/musen/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kozaki.chiba.jp/contact/",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.kozaki.chiba.jp/contact/",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "総務課庶務係"
+},
+{
+"url": "https://www.town.kozaki.chiba.jp/kurashi/living_bosai/bosai/doshasaigai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kozaki.chiba.jp/contact/",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.kozaki.chiba.jp/contact/index.php",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kozaki.chiba.jp/kurashi/living_bosai/bosai/bosai_manual.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kozaki.chiba.jp/contact/",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.kozaki.chiba.jp/contact/index.php",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kozaki.chiba.jp/kurashi/living_bosai/gyoseimusen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kozaki.chiba.jp/contact/index.php",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kozaki.chiba.jp/kurashi/living_bosai/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kozaki.chiba.jp/contact/index.php",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kozaki.chiba.jp/kurashi/living_bosai/gyoseimusen/mail_register.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kozaki.chiba.jp/contact/",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.kozaki.chiba.jp/contact/index.php",
+"お問い合わせフォーム"
+]
+],
+"mails": [
+"kozaki-mr@e-bousai.jp",
+"kozaki-musen-admin@e-bousai.jp",
+"kozaki-musen@e-bousai.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kozaki.chiba.jp/kurashi/living_bosai/gyoseimusen/mail_delete.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kozaki.chiba.jp/contact/",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.kozaki.chiba.jp/contact/index.php",
+"お問い合わせフォーム"
+]
+],
+"mails": [
+"kozaki-md@e-bousai.jp",
+"kozaki-musen-admin@e-bousai.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kozaki.chiba.jp/kurashi/living_bosai/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kozaki.chiba.jp/contact/index.php",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kozaki.chiba.jp/kurashi/living_bosai/bosai/map.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kozaki.chiba.jp/contact/",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.kozaki.chiba.jp/contact/index.php",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

@@ -1,0 +1,80 @@
+{
+"pref": "岩手県",
+"name": "大槌町",
+"code": "034614",
+"url": "https://www.town.otsuchi.iwate.jp/",
+"found": [
+{
+"url": "https://www.town.otsuchi.iwate.jp/gyosei/docs/444806.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.otsuchi.iwate.jp/gyosei/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.town.otsuchi.iwate.jp/gyosei/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.otsuchi.iwate.jp/gyosei/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.otsuchi.iwate.jp/gyosei/bosai/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.otsuchi.iwate.jp/gyosei/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.otsuchi.iwate.jp/gyosei/lifeevent/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.otsuchi.iwate.jp/gyosei/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.otsuchi.iwate.jp/gyosei/oshirase/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.otsuchi.iwate.jp/gyosei/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.otsuchi.iwate.jp/gyosei/docs/437682.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.otsuchi.iwate.jp/gyosei/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災対策課"
+}
+]
+}

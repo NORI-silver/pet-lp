@@ -1,0 +1,204 @@
+{
+"pref": "愛媛県",
+"name": "砥部町",
+"code": "384020",
+"url": "https://www.town.tobe.ehime.jp/",
+"found": [
+{
+"url": "https://www.town.tobe.ehime.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/bosai_kyukyu/7/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1468",
+"お問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1468",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災マップ／砥部"
+},
+{
+"url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/bosai_kyukyu/5/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1466",
+"お問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1466",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/bosai_kyukyu/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1367",
+"お問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1367",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・救急／砥部"
+},
+{
+"url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/bosai_kyukyu/7/1902.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1902",
+"お問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/6?page_no=1902",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1902",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/bosai_kyukyu/5/1915.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1915",
+"お問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/6?page_no=1915",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1915",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/bosai_kyukyu/5/1922.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1922",
+"お問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/6?page_no=1922",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1922",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/bosai_kyukyu/6/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1467",
+"お問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1467",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/bosai_kyukyu/6/1908.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1908",
+"お問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/6?page_no=1908",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1908",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/bosai_kyukyu/6/1914.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1914",
+"お問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/6?page_no=1914",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1914",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/bosai_kyukyu/6/1929.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1929",
+"お問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/6?page_no=1929",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.tobe.ehime.jp/cgi-bin/inquiry.php/1?page_no=1929",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+}
+]
+}

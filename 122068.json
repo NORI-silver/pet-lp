@@ -1,0 +1,89 @@
+{
+"pref": "千葉県",
+"name": "木更津市",
+"code": "122068",
+"url": "https://www.city.kisarazu.lg.jp/",
+"found": [
+{
+"url": "https://www.city.kisarazu.lg.jp/kurashi/pet_dobutsu/5996.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kisarazu.lg.jp/cgi-bin/inquiry.php/34?page_no=5996",
+"環境部生活環境課へのお問い合わせは専用フォームをご利用くださ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kisarazu.lg.jp/kurashi/pet_dobutsu/5997.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kisarazu.lg.jp/cgi-bin/inquiry.php/34?page_no=5997",
+"環境部生活環境課へのお問い合わせは専用フォームをご利用くださ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kisarazu.lg.jp/kurashi/pet_dobutsu/6003.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kisarazu.lg.jp/cgi-bin/inquiry.php/34?page_no=6003",
+"環境部生活環境課へのお問い合わせは専用フォームをご利用くださ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kisarazu.lg.jp/kurashi/pet_dobutsu/9073.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kisarazu.lg.jp/cgi-bin/inquiry.php/34?page_no=9073",
+"環境部生活環境課へのお問い合わせは専用フォームをご利用くださ"
+]
+],
+"mails": [
+"eisi5@mz.pref.chiba.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.kisarazu.lg.jp/kurashi/pet_dobutsu/9241.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kisarazu.lg.jp/cgi-bin/inquiry.php/34?page_no=9241",
+"環境部生活環境課へのお問い合わせは専用フォームをご利用くださ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kisarazu.lg.jp/kurashi/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kisarazu.lg.jp/cgi-bin/inquiry.php/8?page_no=230",
+"総務部危機管理課へのお問い合わせは専用フォームをご利用くださ"
+]
+],
+"mails": [],
+"dept": "総務部危機管理課"
+},
+{
+"url": "https://www.city.kisarazu.lg.jp/cgi-bin/inquiry.php/8?page_no=230",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+}
+]
+}

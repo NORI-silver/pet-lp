@@ -1,0 +1,87 @@
+{
+"pref": "千葉県",
+"name": "栄町",
+"code": "123293",
+"url": "https://www.town.sakae.chiba.jp/",
+"found": [
+{
+"url": "https://www.town.sakae.chiba.jp/kurashi/seikatsukankyo/page006425.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sakae.chiba.jp/inq.php?mode=detail&amp;code=11&amp;code2=7",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sakae.chiba.jp/bousai-saigai/saigai/page008640.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sakae.chiba.jp/inq.php?mode=detail&amp;code=5&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sakae.chiba.jp/bousai-saigai/saigai/page008588.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "日本銀行金融機構局総務課"
+},
+{
+"url": "https://www.town.sakae.chiba.jp/bousai-saigai/taihu/page008613.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sakae.chiba.jp/inq.php?mode=detail&amp;code=7&amp;code2=87",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sakae.chiba.jp/bousai-saigai/page007984.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sakae.chiba.jp/inq.php?mode=detail&amp;code=7&amp;code2=87",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sakae.chiba.jp/bousai-saigai/page003188.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sakae.chiba.jp/inq.php?mode=detail&amp;code=7&amp;code2=87",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sakae.chiba.jp/bousai-saigai/page008211.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sakae.chiba.jp/inq.php?mode=detail&amp;code=7&amp;code2=87",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

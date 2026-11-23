@@ -1,0 +1,103 @@
+{
+"pref": "山形県",
+"name": "山辺町",
+"code": "063011",
+"url": "https://www.town.yamanobe.yamagata.jp/",
+"found": [
+{
+"url": "https://www.town.yamanobe.yamagata.jp/soshiki/7/pet.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamanobe.yamagata.jp/form/detail.php?sec_sec1=7&amp;inq=02&lif_id=15085",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yamanobe.yamagata.jp/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.town.yamanobe.yamagata.jp/soshiki/29/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamanobe.yamagata.jp/form/detail.php?sec_sec1=30",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.yamanobe.yamagata.jp/soshiki/7/kyosaimimaikin.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamanobe.yamagata.jp/form/detail.php?sec_sec1=7&amp;inq=02&lif_id=13722",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yamanobe.yamagata.jp/soshiki/29/kikikanrigatasuiikei0625.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamanobe.yamagata.jp/form/detail.php?sec_sec1=30&lif_id=11956",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.town.yamanobe.yamagata.jp/soshiki/29/kyukyu-saigai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamanobe.yamagata.jp/site.html",
+"このページに関するお問い合わせ先役場"
+],
+[
+"https://www.town.yamanobe.yamagata.jp/form/detail.php?sec_sec1=30&amp;inq=02&lif_id=63",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.yamanobe.yamagata.jp/soshiki/29/hinanjohotsuiki.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamanobe.yamagata.jp/form/detail.php?sec_sec1=30&lif_id=11910",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.town.yamanobe.yamagata.jp/soshiki/29/saigai-gojokai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamanobe.yamagata.jp/form/detail.php?sec_sec1=30&amp;inq=02&lif_id=496",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "防災係"
+}
+]
+}

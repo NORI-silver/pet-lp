@@ -1,0 +1,218 @@
+{
+"pref": "山梨県",
+"name": "道志村",
+"code": "194221",
+"url": "http://www.vill.doshi.lg.jp/",
+"found": [
+{
+"url": "http://www.vill.doshi.lg.jp/info/list.php?ca_id=24",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "http://www.vill.doshi.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "http://www.vill.doshi.lg.jp/info/list.php?ca_id=15",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [],
+"dept": "［総務課"
+},
+{
+"url": "http://www.vill.doshi.lg.jp/ka/info.php?if_id=37&ka_id=1",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?if_id=37&ka_id=1",
+"お問い合わせはこちら"
+],
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "http://www.vill.doshi.lg.jp/ka/info.php?if_id=549&ka_id=1",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?if_id=549&ka_id=1",
+"お問い合わせはこちら"
+],
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "http://www.vill.doshi.lg.jp/ka/info.php?if_id=544&ka_id=1",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?if_id=544&ka_id=1",
+"お問い合わせはこちら"
+],
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "http://www.vill.doshi.lg.jp/ka/info.php?if_id=550&ka_id=1",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?if_id=550&ka_id=1",
+"お問い合わせはこちら"
+],
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "http://www.vill.doshi.lg.jp/maillist/",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [
+"mlmaster@info.cous.jp"
+],
+"dept": null
+},
+{
+"url": "http://www.vill.doshi.lg.jp/info/info.php?if_id=549&ca_id=15",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?if_id=549&ka_id=1",
+"お問い合わせはこちら"
+],
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "http://www.vill.doshi.lg.jp/info/info.php?if_id=1294&ca_id=15",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?if_id=1294&ka_id=1",
+"お問い合わせはこちら"
+],
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "http://www.vill.doshi.lg.jp/info/info.php?if_id=608&ca_id=15",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?if_id=608&ka_id=1",
+"お問い合わせはこちら"
+],
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "http://www.vill.doshi.lg.jp/info/info.php?if_id=551&ca_id=15",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?if_id=551&ka_id=1",
+"お問い合わせはこちら"
+],
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "http://www.vill.doshi.lg.jp/ka/info.php?if_id=543&amp;ka_id=1",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?if_id=543&ka_id=1",
+"お問い合わせはこちら"
+],
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "http://www.vill.doshi.lg.jp/ka/info.php?if_id=435&amp;ka_id=1",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.doshi.lg.jp/inquiry/?if_id=435&ka_id=1",
+"お問い合わせはこちら"
+],
+[
+"http://www.vill.doshi.lg.jp/inquiry/?ka_id=1",
+"村へのご意見・ご相談"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

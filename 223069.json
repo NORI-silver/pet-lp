@@ -1,0 +1,54 @@
+{
+"pref": "静岡県",
+"name": "西伊豆町",
+"code": "223069",
+"url": "https://www.town.nishiizu.shizuoka.jp/",
+"found": [
+{
+"url": "https://www.town.nishiizu.shizuoka.jp/kurashi/pet/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.nishiizu.shizuoka.jp/faq/",
+"お問い合わせ"
+],
+[
+"https://www.town.nishiizu.shizuoka.jp/faq/",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nishiizu.shizuoka.jp/kakuka/kankyou/kankyou/subsidy_1.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.nishiizu.shizuoka.jp/faq/",
+"お問い合わせ"
+],
+[
+"https://www.town.nishiizu.shizuoka.jp/faq/",
+"メールでのお問い合わせ"
+]
+],
+"mails": [
+"kankyou@town.nishiizu.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.nishiizu.shizuoka.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.nishiizu.shizuoka.jp/faq/",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

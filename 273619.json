@@ -1,0 +1,120 @@
+{
+"pref": "大阪府",
+"name": "熊取町",
+"code": "273619",
+"url": "https://www.town.kumatori.lg.jp/",
+"found": [
+{
+"url": "https://www.town.kumatori.lg.jp/bousai_shoubou/9179.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kumatori.lg.jp/cgi-bin/inquiry.php/17?page_no=9179",
+"メールフォームでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kumatori.lg.jp/bousai_shoubou/12635.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kumatori.lg.jp/cgi-bin/inquiry.php/13?page_no=12635",
+"メールフォームでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "自治・防災課"
+},
+{
+"url": "https://www.town.kumatori.lg.jp/bousai_shoubou/12725.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kumatori.lg.jp/cgi-bin/inquiry.php/13?page_no=12725",
+"メールフォームでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "自治・防災課"
+},
+{
+"url": "https://www.town.kumatori.lg.jp/bousai_shoubou/14769.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kumatori.lg.jp/cgi-bin/inquiry.php/13?page_no=14769",
+"メールフォームでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "自治・防災課"
+},
+{
+"url": "https://www.town.kumatori.lg.jp/bousai_shoubou/15109.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kumatori.lg.jp/cgi-bin/inquiry.php/13?page_no=15109",
+"メールフォームでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "自治・防災課"
+},
+{
+"url": "https://www.town.kumatori.lg.jp/bousai_shoubou/15590.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kumatori.lg.jp/cgi-bin/inquiry.php/13?page_no=15590",
+"メールフォームでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "自治・防災課"
+},
+{
+"url": "https://www.town.kumatori.lg.jp/bousai_shoubou/12690.html",
+"bousai": true,
+"forms": [
+[
+"https://app.oss.myna.go.jp/Application/inquiryTop/init",
+"お問い合わせ（よくある質問など）（外部リンク）"
+],
+[
+"https://www.town.kumatori.lg.jp/cgi-bin/inquiry.php/20?page_no=15639",
+"メールフォームでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kumatori.lg.jp/kurashi/anzen_anshin/bosai/4598.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kumatori.lg.jp/cgi-bin/inquiry.php/13?page_no=4598",
+"メールフォームでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "自治・防災課"
+},
+{
+"url": "https://www.town.kumatori.lg.jp/kurashi/anzen_anshin/bosai/4600.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kumatori.lg.jp/cgi-bin/inquiry.php/13?page_no=4600",
+"メールフォームでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "自治・防災課"
+}
+]
+}

@@ -1,0 +1,151 @@
+{
+"pref": "鳥取県",
+"name": "日南町",
+"code": "314013",
+"url": "https://www.town.nichinan.lg.jp/",
+"found": [
+{
+"url": "https://www.town.nichinan.lg.jp/kurashi_kankyo/gomi_kankyo_pet/index.html",
+"bousai": false,
+"forms": [],
+"mails": [
+"info@town.nichinan.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.nichinan.lg.jp/soshikikarasagasu/kankyouenergyka/gomi_kankyo_pet/1/21149.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.nichinan.lg.jp/cgi-bin/inquiry.php/2?page_no=21149",
+"お問い合わせフォームはこちら"
+]
+],
+"mails": [
+"info@town.nichinan.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.nichinan.lg.jp/kurashi_kankyo/gomi_kankyo_pet/inu_neko/2446.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.nichinan.lg.jp/cgi-bin/inquiry.php/2?page_no=2446",
+"お問い合わせフォームはこちら"
+]
+],
+"mails": [
+"info@town.nichinan.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.nichinan.lg.jp/",
+"bousai": false,
+"forms": [],
+"mails": [
+"info@town.nichinan.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.nichinan.lg.jp/soshikikarasagasu/somuka/anzen_anshin/2/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nichinan.lg.jp/cgi-bin/inquiry.php/2?page_no=126",
+"お問い合わせフォームはこちら"
+]
+],
+"mails": [
+"info@town.nichinan.lg.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.nichinan.lg.jp/soshikikarasagasu/somuka/anzen_anshin/index.html",
+"bousai": false,
+"forms": [],
+"mails": [
+"info@town.nichinan.lg.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.nichinan.lg.jp/soshikikarasagasu/somuka/anzen_anshin/1/index.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"info@town.nichinan.lg.jp"
+],
+"dept": "役場総務課と鳥取大学医学部"
+},
+{
+"url": "https://www.town.nichinan.lg.jp/soshikikarasagasu/somuka/anzen_anshin/1/21493.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"info@town.nichinan.lg.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.nichinan.lg.jp/soshikikarasagasu/somuka/anzen_anshin/1/3621.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nichinan.lg.jp/cgi-bin/inquiry.php/2?page_no=3621",
+"お問い合わせフォームはこちら"
+]
+],
+"mails": [
+"info@town.nichinan.lg.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.nichinan.lg.jp/soshikikarasagasu/somuka/anzen_anshin/1/580.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nichinan.lg.jp/cgi-bin/inquiry.php/2?page_no=580",
+"お問い合わせフォームはこちら"
+]
+],
+"mails": [
+"info@town.nichinan.lg.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.nichinan.lg.jp/soshikikarasagasu/somuka/anzen_anshin/1/584.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nichinan.lg.jp/cgi-bin/inquiry.php/2?page_no=584",
+"お問い合わせフォームはこちら"
+]
+],
+"mails": [
+"info@town.nichinan.lg.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.nichinan.lg.jp/soshikikarasagasu/somuka/anzen_anshin/1/10673.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nichinan.lg.jp/cgi-bin/inquiry.php/2?page_no=10673",
+"お問い合わせフォームはこちら"
+]
+],
+"mails": [
+"info@town.nichinan.lg.jp"
+],
+"dept": "総務課"
+}
+]
+}

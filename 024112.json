@@ -1,0 +1,92 @@
+{
+"pref": "青森県",
+"name": "六ヶ所村",
+"code": "024112",
+"url": "https://www.rokkasho.jp/",
+"found": [
+{
+"url": "https://www.rokkasho.jp/index.cfm/11,0,23,html",
+"bousai": true,
+"forms": [
+[
+"https://www.rokkasho.jp/index.cfm/11,1489,html",
+"メールでのお問い合わせはこちらまで"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.rokkasho.jp/index.cfm/10,0,67,html",
+"bousai": true,
+"forms": [
+[
+"https://www.rokkasho.jp/index.cfm/11,1485,html",
+"メールでのお問い合わせはこちらまで"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.rokkasho.jp/index.cfm/9,0,65,html",
+"bousai": true,
+"forms": [
+[
+"https://www.rokkasho.jp/index.cfm/11,1484,html",
+"メールでのお問い合わせはこちらまで"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.rokkasho.jp/index.cfm/9,0,60,html",
+"bousai": true,
+"forms": [
+[
+"https://www.rokkasho.jp/index.cfm/11,1484,html",
+"メールでのお問い合わせはこちらまで"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.rokkasho.jp/index.cfm/9,22121,31,125,html",
+"bousai": true,
+"forms": [
+[
+"https://www.rokkasho.jp/index.cfm/11,1484,html",
+"メールでのお問い合わせはこちらまで"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.rokkasho.jp/index.cfm/9,21910,31,125,html",
+"bousai": true,
+"forms": [
+[
+"https://www.rokkasho.jp/index.cfm/11,1484,html",
+"メールでのお問い合わせはこちらまで"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.rokkasho.jp/index.cfm/9,20885,html",
+"bousai": true,
+"forms": [
+[
+"https://www.rokkasho.jp/index.cfm/11,1484,html",
+"メールでのお問い合わせはこちらまで"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

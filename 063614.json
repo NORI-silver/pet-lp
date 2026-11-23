@@ -1,0 +1,32 @@
+{
+"pref": "山形県",
+"name": "金山町",
+"code": "063614",
+"url": "https://www.town.kaneyama.yamagata.jp/",
+"found": [
+{
+"url": "https://www.town.kaneyama.yamagata.jp/kurashi/kurashi_tetsuzuki/seikatsukankyo/pet_dobutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kaneyama.yamagata.jp/cgi-bin/inquiry.php/3?page_no=4422",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kaneyama.yamagata.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kaneyama.yamagata.jp/cgi-bin/inquiry.php/3?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

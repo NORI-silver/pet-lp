@@ -1,0 +1,120 @@
+{
+"pref": "大分県",
+"name": "姫島村",
+"code": "443221",
+"url": "https://www.himeshima.jp/",
+"found": [
+{
+"url": "https://www.himeshima.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+],
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.himeshima.jp/kurashi/bousaimap/",
+"bousai": true,
+"forms": [
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+],
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.himeshima.jp/kurashi/tsunamikeikaikuiki/",
+"bousai": true,
+"forms": [
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+],
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.himeshima.jp/about/himeshimahm/",
+"bousai": true,
+"forms": [
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+],
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.himeshima.jp/about/koutsuusaigai-kyousai/",
+"bousai": true,
+"forms": [
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+],
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.himeshima.jp/about/bousai-keikaku/",
+"bousai": true,
+"forms": [
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+],
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.himeshima.jp/about/jyuenkeikaku/",
+"bousai": true,
+"forms": [
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+],
+[
+"https://www.himeshima.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

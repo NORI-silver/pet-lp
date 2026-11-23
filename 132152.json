@@ -1,0 +1,40 @@
+{
+"pref": "東京都",
+"name": "国立市",
+"code": "132152",
+"url": "https://www.city.kunitachi.tokyo.jp/",
+"found": [
+{
+"url": "https://www.city.kunitachi.tokyo.jp/kurashi/pet_dobutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kunitachi.tokyo.jp/machi/kokoku/6132.html",
+"バナー広告掲載のお申し込みやお問い合わせは、こちらをクリック"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kunitachi.tokyo.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kunitachi.tokyo.jp/attention/14921.html",
+"停止していたサービス(お問い合わせフォーム等)を再開しました"
+],
+[
+"https://www.city.kunitachi.tokyo.jp/inquiry/index.html",
+"市への問い合わせ"
+],
+[
+"https://www.city.kunitachi.tokyo.jp/machi/kokoku/6132.html",
+"バナー広告掲載のお申し込みやお問い合わせは、こちらをクリック"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

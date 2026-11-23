@@ -1,0 +1,142 @@
+{
+"pref": "福井県",
+"name": "越前市",
+"code": "182095",
+"url": "https://www.city.echizen.lg.jp/",
+"found": [
+{
+"url": "https://www.city.echizen.lg.jp/office/010/060/bousai/saigai-petto.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.echizen.lg.jp/inquiry/mailform010010.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.echizen.lg.jp/community-development/kankyo/petto/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.echizen.lg.jp/inquiry/mailform010010.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.echizen.lg.jp/office/kankyounourin/051/pettonomana-nituite.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.echizen.lg.jp/inquiry/mailform010010.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.echizen.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.echizen.lg.jp/inquiry/mailform010010.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.echizen.lg.jp/community-development/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.echizen.lg.jp/inquiry/mailform010010.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.echizen.lg.jp/office/010/060/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.echizen.lg.jp/inquiry/mailform010010.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"seikatu@city.echizen.lg.jp"
+],
+"dept": "福井県危機管理課"
+},
+{
+"url": "https://www.city.echizen.lg.jp/community-development/bosai/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.echizen.lg.jp/inquiry/mailform010010.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.echizen.lg.jp/community-development/bosai/sonae/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.echizen.lg.jp/inquiry/mailform010010.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.echizen.lg.jp/community-development/bosai/kyotei/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.echizen.lg.jp/inquiry/mailform010010.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.echizen.lg.jp/if/saigai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.echizen.lg.jp/inquiry/mailform010010.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.echizen.lg.jp/office/010/060/bousai/bousairi-da.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.echizen.lg.jp/inquiry/mailform010010.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+}
+]
+}

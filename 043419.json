@@ -1,0 +1,158 @@
+{
+"pref": "宮城県",
+"name": "丸森町",
+"code": "043419",
+"url": "https://www.town.marumori.miyagi.jp/",
+"found": [
+{
+"url": "https://www.town.marumori.miyagi.jp/life/category/?category=7",
+"bousai": false,
+"forms": [
+[
+"https://www.town.marumori.miyagi.jp/town/detail.php?content=1871",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.marumori.miyagi.jp/news/detail.php?news=713",
+"bousai": false,
+"forms": [
+[
+"https://www.town.marumori.miyagi.jp/town/detail.php?content=1871",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.marumori.miyagi.jp/life/detail.php?content=1804",
+"bousai": false,
+"forms": [
+[
+"https://www.town.marumori.miyagi.jp/town/detail.php?content=1871",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.marumori.miyagi.jp/life/detail.php?content=599",
+"bousai": false,
+"forms": [
+[
+"https://www.town.marumori.miyagi.jp/town/detail.php?content=1871",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.marumori.miyagi.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.marumori.miyagi.jp/town/detail.php?content=1871",
+"ご意見・お問合せ"
+],
+[
+"https://www.town.marumori.miyagi.jp/town/detail.php?content=1871",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.marumori.miyagi.jp/disaster/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.marumori.miyagi.jp/town/detail.php?content=1871",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.marumori.miyagi.jp/disaster/category/?category=66",
+"bousai": true,
+"forms": [
+[
+"https://www.town.marumori.miyagi.jp/town/detail.php?content=1871",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.marumori.miyagi.jp/disaster/category/?category=75",
+"bousai": true,
+"forms": [
+[
+"https://www.town.marumori.miyagi.jp/town/detail.php?content=1871",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.marumori.miyagi.jp/disaster/detail.php?content=55",
+"bousai": true,
+"forms": [
+[
+"https://www.town.marumori.miyagi.jp/town/detail.php?content=1871",
+"お問い合わせ"
+]
+],
+"mails": [
+"bosai@town.marumori.miyagi.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.marumori.miyagi.jp/news/detail.php?news=743",
+"bousai": false,
+"forms": [
+[
+"https://www.town.marumori.miyagi.jp/town/detail.php?content=1871",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.marumori.miyagi.jp/news/detail.php?news=667",
+"bousai": false,
+"forms": [
+[
+"https://www.town.marumori.miyagi.jp/town/detail.php?content=1871",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.marumori.miyagi.jp/disaster/detail.php?content=1882",
+"bousai": true,
+"forms": [
+[
+"https://www.town.marumori.miyagi.jp/town/detail.php?content=1871",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "宮城県防災指導員研修関係"
+}
+]
+}

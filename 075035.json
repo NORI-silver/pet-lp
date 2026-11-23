@@ -1,0 +1,88 @@
+{
+"pref": "福島県",
+"name": "平田村",
+"code": "075035",
+"url": "https://www.vill.hirata.fukushima.jp/",
+"found": [
+{
+"url": "https://www.vill.hirata.fukushima.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.hirata.fukushima.jp/soshiki/1.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.vill.hirata.fukushima.jp/life/1/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.hirata.fukushima.jp/soshiki/1.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.hirata.fukushima.jp/life/1/1/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.hirata.fukushima.jp/soshiki/1.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.hirata.fukushima.jp/life/1/1/4/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.hirata.fukushima.jp/soshiki/1.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.hirata.fukushima.jp/soshiki/1/1035.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.hirata.fukushima.jp/form/detail.php?sec_sec1=1&amp;inq=03&lif_id=1035",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.vill.hirata.fukushima.jp/soshiki/1.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.vill.hirata.fukushima.jp/soshiki/1/1036.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.hirata.fukushima.jp/form/detail.php?sec_sec1=1&amp;inq=03&lif_id=1036",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.vill.hirata.fukushima.jp/soshiki/1.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+}
+]
+}

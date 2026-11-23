@@ -1,0 +1,92 @@
+{
+"pref": "愛知県",
+"name": "豊川市",
+"code": "232076",
+"url": "https://www.city.toyokawa.lg.jp/",
+"found": [
+{
+"url": "https://www.city.toyokawa.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.toyokawa.lg.jp/shisei/kakuka/18500.html",
+"各課問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.toyokawa.lg.jp/kurashi_tetsuzuki/anzen_anshin/2/11848.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.toyokawa.lg.jp/cgi-bin/inquiry.php/2?page_no=11848",
+"お問い合わせフォーム（メールフォームへリンクします）"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.toyokawa.lg.jp/kurashi_tetsuzuki/anzen_anshin/2/11851.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.toyokawa.lg.jp/cgi-bin/inquiry.php/2?page_no=11851",
+"お問い合わせフォーム（メールフォームへリンクします）"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.toyokawa.lg.jp/kurashi_tetsuzuki/anzen_anshin/2/11854.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.toyokawa.lg.jp/cgi-bin/inquiry.php/2?page_no=11854",
+"お問い合わせフォーム（メールフォームへリンクします）"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.toyokawa.lg.jp/kurashi_tetsuzuki/anzen_anshin/2/11847.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.toyokawa.lg.jp/cgi-bin/inquiry.php/2?page_no=11847",
+"お問い合わせフォーム（メールフォームへリンクします）"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.toyokawa.lg.jp/kurashi_tetsuzuki/anzen_anshin/2/11852.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.toyokawa.lg.jp/cgi-bin/inquiry.php/2?page_no=11852",
+"お問い合わせフォーム（メールフォームへリンクします）"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.toyokawa.lg.jp/kurashi_tetsuzuki/anzen_anshin/2/11843.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.toyokawa.lg.jp/cgi-bin/inquiry.php/2?page_no=11843",
+"お問い合わせフォーム（メールフォームへリンクします）"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+}
+]
+}

@@ -1,0 +1,166 @@
+{
+"pref": "広島県",
+"name": "安芸太田町",
+"code": "343684",
+"url": "https://www.akiota.jp/",
+"found": [
+{
+"url": "https://www.akiota.jp/life/1/9/",
+"bousai": false,
+"forms": [
+[
+"https://www.akiota.jp/soshiki/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.akiota.jp/life/1/9/37/",
+"bousai": false,
+"forms": [
+[
+"https://www.akiota.jp/soshiki/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.akiota.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.akiota.jp/soshiki/",
+"お問い合わせ"
+],
+[
+"https://www.akiota.jp/soshiki/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.akiota.jp/life/1/10/41/",
+"bousai": true,
+"forms": [
+[
+"https://www.akiota.jp/soshiki/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.akiota.jp/life/1/10/",
+"bousai": true,
+"forms": [
+[
+"https://www.akiota.jp/soshiki/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.akiota.jp/soshiki/3/18454.html",
+"bousai": true,
+"forms": [
+[
+"https://www.akiota.jp/form/detail.php?sec_sec1=3&amp;inq=05&lif_id=18454",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.akiota.jp/soshiki/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.akiota.jp/soshiki/3/1513.html",
+"bousai": true,
+"forms": [
+[
+"https://www.akiota.jp/form/detail.php?sec_sec1=3&amp;inq=05&lif_id=18473",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.akiota.jp/soshiki/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.akiota.jp/soshiki/3/1515.html",
+"bousai": true,
+"forms": [
+[
+"https://www.akiota.jp/soshiki/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.akiota.jp/soshiki/3/1520.html",
+"bousai": true,
+"forms": [
+[
+"https://www.akiota.jp/form/detail.php?sec_sec1=3&amp;inq=05&lif_id=18545",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.akiota.jp/soshiki/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.akiota.jp/soshiki/3/6342.html",
+"bousai": true,
+"forms": [
+[
+"https://www.akiota.jp/form/detail.php?sec_sec1=3&amp;inq=05&lif_id=6342",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.akiota.jp/soshiki/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.akiota.jp/soshiki/3/1522.html",
+"bousai": true,
+"forms": [
+[
+"https://www.akiota.jp/form/detail.php?sec_sec1=3&amp;inq=05&lif_id=6236",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.akiota.jp/soshiki/",
+"お問い合わせ"
+]
+],
+"mails": [
+"akiota@sg-p.jp"
+],
+"dept": "危機管理室"
+}
+]
+}

@@ -1,0 +1,80 @@
+{
+"pref": "群馬県",
+"name": "甘楽町",
+"code": "103845",
+"url": "https://www.town.kanra.lg.jp/",
+"found": [
+{
+"url": "https://www.town.kanra.lg.jp/soumu/syomu/news/20130529110249.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kanra.lg.jp/cgi-bin/enquete/enq.cgi?enqtype=2&popupwindow=1&pagename=PAGE000000000000003234&sectionid=SITE000000000000000001&enqpath=/form/002",
+"メールで問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kanra.lg.jp/soumu/syomu/20180222101932.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kanra.lg.jp/cgi-bin/enquete/enq.cgi?enqtype=2&popupwindow=1&pagename=PAGE000000000000006629&sectionid=SITE000000000000000001&enqpath=/form/002",
+"メールで問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kanra.lg.jp/soumu/syomu/news/20260710165636.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kanra.lg.jp/cgi-bin/enquete/enq.cgi?enqtype=2&popupwindow=1&pagename=PAGE000000000000013089&sectionid=SITE000000000000000001&enqpath=/form/002",
+"メールで問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kanra.lg.jp/jyuumin/kankyo/20210324102523.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kanra.lg.jp/cgi-bin/enquete/enq.cgi?enqtype=2&popupwindow=1&pagename=PAGE000000000000009093&sectionid=SITE000000000000000004&enqpath=/form/002",
+"メールで問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kanra.lg.jp/soumu/syomu/news/20200709144556.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kanra.lg.jp/cgi-bin/enquete/enq.cgi?enqtype=2&popupwindow=1&pagename=PAGE000000000000008496&sectionid=SITE000000000000000001&enqpath=/form/002",
+"メールで問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kanra.lg.jp/soumu/syomu/news/20200522175641.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kanra.lg.jp/cgi-bin/enquete/enq.cgi?enqtype=2&popupwindow=1&pagename=PAGE000000000000008396&sectionid=SITE000000000000000001&enqpath=/form/002",
+"メールで問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

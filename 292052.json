@@ -1,0 +1,86 @@
+{
+"pref": "奈良県",
+"name": "橿原市",
+"code": "292052",
+"url": "https://www.city.kashihara.nara.jp/",
+"found": [
+{
+"url": "https://www.city.kashihara.nara.jp/soshiki/1026/gyomu/2/4/2/468.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kashihara.nara.jp/cgi-bin/inquiry.php/29?page_no=468",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kashihara.nara.jp/soshiki/1026/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kashihara.nara.jp/cgi-bin/inquiry.php/29?page_no=18",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kashihara.nara.jp/soshiki/1026/gyomu/2/4/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kashihara.nara.jp/soshiki/1026/gyomu/2/4/2/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kashihara.nara.jp/soshiki/1026/gyomu/2/4/2699.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kashihara.nara.jp/cgi-bin/inquiry.php/29?page_no=2699",
+"お問い合わせフォーム"
+]
+],
+"mails": [
+"info@arcadia.co.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kashihara.nara.jp/soshiki/1026/gyomu/2/4/3/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kashihara.nara.jp/soshiki/1026/gyomu/2/4/4/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kashihara.nara.jp/soshiki/1026/gyomu/2/4/2/18876.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kashihara.nara.jp/cgi-bin/inquiry.php/29?page_no=18876",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+}
+]
+}

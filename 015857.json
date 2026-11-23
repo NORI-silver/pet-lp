@@ -1,0 +1,44 @@
+{
+"pref": "北海道",
+"name": "安平町",
+"code": "015857",
+"url": "https://www.town.abira.lg.jp/",
+"found": [
+{
+"url": "https://www.town.abira.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.abira.lg.jp/gyosei/renraku",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.abira.lg.jp/kurashi/bosai/map",
+"bousai": true,
+"forms": [
+[
+"https://www.town.abira.lg.jp/gyosei/renraku",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.abira.lg.jp/kurashi/bosai",
+"bousai": true,
+"forms": [
+[
+"https://www.town.abira.lg.jp/gyosei/renraku",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

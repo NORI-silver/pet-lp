@@ -1,0 +1,92 @@
+{
+"pref": "北海道",
+"name": "三笠市",
+"code": "012220",
+"url": "https://www.city.mikasa.hokkaido.jp/",
+"found": [
+{
+"url": "https://www.city.mikasa.hokkaido.jp/hotnews/category/136.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.mikasa.hokkaido.jp/hotnews/detail/00000001.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.mikasa.hokkaido.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mikasa.hokkaido.jp/hotnews/detail/00000001.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "【総務課"
+},
+{
+"url": "https://www.city.mikasa.hokkaido.jp/hotnews/detail/00001717.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mikasa.hokkaido.jp/hotnews/detail/00000001.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・交通関係"
+},
+{
+"url": "https://www.city.mikasa.hokkaido.jp/hotnews/detail/00003336.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mikasa.hokkaido.jp/hotnews/detail/00000001.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・交通関係"
+},
+{
+"url": "https://www.city.mikasa.hokkaido.jp/hotnews/detail/00001558.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mikasa.hokkaido.jp/hotnews/detail/00000001.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・交通関係"
+},
+{
+"url": "https://www.city.mikasa.hokkaido.jp/hotnews/category/607.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mikasa.hokkaido.jp/hotnews/detail/00000001.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・交通関係"
+},
+{
+"url": "https://www.city.mikasa.hokkaido.jp/hotnews/detail/00011055.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mikasa.hokkaido.jp/hotnews/detail/00000001.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・交通関係"
+}
+]
+}

@@ -1,0 +1,96 @@
+{
+"pref": "鳥取県",
+"name": "岩美町",
+"code": "313025",
+"url": "https://www.iwami.gr.jp/",
+"found": [
+{
+"url": "https://www.iwami.gr.jp/dd.aspx?menuid=3275",
+"bousai": true,
+"forms": [
+[
+"https://www.iwami.gr.jp/1015.htm",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.iwami.gr.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.iwami.gr.jp/1015.htm",
+"ご意見・お問合せ"
+],
+[
+"https://www.iwami.gr.jp/1015.htm",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.iwami.gr.jp/1176.htm",
+"bousai": true,
+"forms": [
+[
+"https://www.iwami.gr.jp/1015.htm",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.iwami.gr.jp/1068.htm",
+"bousai": true,
+"forms": [
+[
+"https://www.iwami.gr.jp/1015.htm",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.iwami.gr.jp/dd.aspx?menuid=1068",
+"bousai": true,
+"forms": [
+[
+"https://www.iwami.gr.jp/1015.htm",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.iwami.gr.jp/3022.htm",
+"bousai": true,
+"forms": [
+[
+"https://www.iwami.gr.jp/1015.htm",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.iwami.gr.jp/4368.htm",
+"bousai": true,
+"forms": [
+[
+"https://www.iwami.gr.jp/1015.htm",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "地域防災係"
+}
+]
+}

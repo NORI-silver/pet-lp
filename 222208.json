@@ -1,0 +1,44 @@
+{
+"pref": "静岡県",
+"name": "裾野市",
+"code": "222208",
+"url": "https://www.city.susono.shizuoka.jp/",
+"found": [
+{
+"url": "https://www.city.susono.shizuoka.jp/soshiki/2/4/2/20919.html",
+"bousai": true,
+"forms": [
+[
+"https://logoform.jp/form/3FUc/1630167",
+"お問い合わせ"
+],
+[
+"https://www.city.susono.shizuoka.jp/cgi-bin/inquiry.php/21?page_no=20919",
+"生活環境課へのお問い合わせ、意見、質問"
+],
+[
+"https://logoform.jp/form/3FUc/1630167",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.susono.shizuoka.jp/",
+"bousai": false,
+"forms": [
+[
+"https://logoform.jp/form/3FUc/1630167",
+"お問い合わせ"
+],
+[
+"https://logoform.jp/form/3FUc/1630167",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

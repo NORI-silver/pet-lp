@@ -1,0 +1,68 @@
+{
+"pref": "山梨県",
+"name": "小菅村",
+"code": "194425",
+"url": "http://www.vill.kosuge.yamanashi.jp/",
+"found": [
+{
+"url": "http://www.vill.kosuge.yamanashi.jp/",
+"bousai": false,
+"forms": [
+[
+"http://www.vill.kosuge.yamanashi.jp/lib/inquiry/sendform.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "http://www.vill.kosuge.yamanashi.jp/living/soumu/",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.kosuge.yamanashi.jp/lib/inquiry/sendform.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "http://www.vill.kosuge.yamanashi.jp/living/soumu/bosai.html",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.kosuge.yamanashi.jp/lib/inquiry/sendform.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "小菅村役場総務課"
+},
+{
+"url": "http://www.vill.kosuge.yamanashi.jp/living/soumu/20260805100240.html",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.kosuge.yamanashi.jp/lib/inquiry/sendform.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "http://www.vill.kosuge.yamanashi.jp/living/soumu/20260724100609.html",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.kosuge.yamanashi.jp/lib/inquiry/sendform.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

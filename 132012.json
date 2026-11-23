@@ -1,0 +1,56 @@
+{
+"pref": "東京都",
+"name": "八王子市",
+"code": "132012",
+"url": "https://www.city.hachioji.tokyo.jp/",
+"found": [
+{
+"url": "https://www.city.hachioji.tokyo.jp/kurashi/hoken/007/001/001/p026179.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hachioji.tokyo.jp/inquiry/mailform460200.html?PAGE_NO=26179",
+"お問い合わせメールフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.hachioji.tokyo.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hachioji.tokyo.jp/000/p020393.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.hachioji.tokyo.jp/emergency/bousai/m12873/007/p022730.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hachioji.tokyo.jp/inquiry/mailform400300_000221.html?PAGE_NO=22730",
+"お問い合わせメールフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.hachioji.tokyo.jp/emergency/bousai/m12873/001/p024714.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hachioji.tokyo.jp/inquiry/mailform210300.html?PAGE_NO=24714",
+"お問い合わせメールフォーム"
+]
+],
+"mails": [],
+"dept": "生活安全部防災課"
+}
+]
+}

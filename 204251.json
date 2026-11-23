@@ -1,0 +1,44 @@
+{
+"pref": "長野県",
+"name": "木祖村",
+"code": "204251",
+"url": "https://www.vill.kiso.nagano.jp/",
+"found": [
+{
+"url": "https://www.vill.kiso.nagano.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.kiso.nagano.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.kiso.nagano.jp/kurashi_joho/bosai_bohan/hinan.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.kiso.nagano.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.kiso.nagano.jp/kurashi_joho/bosai_bohan/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.kiso.nagano.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

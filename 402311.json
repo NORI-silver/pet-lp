@@ -1,0 +1,102 @@
+{
+"pref": "福岡県",
+"name": "那珂川市",
+"code": "402311",
+"url": "https://www.city.nakagawa.lg.jp/",
+"found": [
+{
+"url": "https://www.city.nakagawa.lg.jp/life/8/40/206/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.nakagawa.lg.jp/soshiki/16/block2018.html",
+"コンクリートブロック塀に関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nakagawa.lg.jp/soshiki/7/kaseijyou.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.nakagawa.lg.jp/form/detail.php?sec_sec1=7&lif_id=59973",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [
+"kankyo@city-nakagawa.fukuoka.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.nakagawa.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nakagawa.lg.jp/form/detail.php?sec_sec1=48",
+"ご意見・お問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nakagawa.lg.jp/site/hazard-map/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nakagawa.lg.jp/form/detail.php?sec_sec1=8&lif_id=43721",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [
+"anzen@city-nakagawa.fukuoka.jp"
+],
+"dept": "安全安心課"
+},
+{
+"url": "https://www.city.nakagawa.lg.jp/site/hazard-map/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nakagawa.lg.jp/form/detail.php?sec_sec1=8&lif_id=43721",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [
+"anzen@city-nakagawa.fukuoka.jp"
+],
+"dept": "安全安心課"
+},
+{
+"url": "https://www.city.nakagawa.lg.jp/site/hazard-map/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nakagawa.lg.jp/form/detail.php?sec_sec1=8&lif_id=43721",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [
+"anzen@city-nakagawa.fukuoka.jp"
+],
+"dept": "安全安心課"
+},
+{
+"url": "https://www.city.nakagawa.lg.jp/site/hazard-map/saigai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nakagawa.lg.jp/form/detail.php?sec_sec1=8&amp;inq=02&lif_id=68010",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [
+"anzen@city-nakagawa.fukuoka.jp"
+],
+"dept": "安全安心課"
+}
+]
+}

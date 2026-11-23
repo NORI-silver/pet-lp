@@ -1,0 +1,146 @@
+{
+"pref": "茨城県",
+"name": "石岡市",
+"code": "082058",
+"url": "https://www.city.ishioka.lg.jp/",
+"found": [
+{
+"url": "https://www.city.ishioka.lg.jp/bosai_portal/saigainisonaete/page011412.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ishioka.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.ishioka.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ishioka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ishioka.lg.jp/section.php?code=7",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ishioka.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.ishioka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.ishioka.lg.jp/bosai_portal/saigainisonaete/page012922.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ishioka.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.ishioka.lg.jp/bosai_portal/saigainisonaete/page013132.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ishioka.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.ishioka.lg.jp/bosai_portal/saigainisonaete/page006144.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ishioka.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.ishioka.lg.jp/bosai_portal/saigainisonaete/page012663.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ishioka.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.ishioka.lg.jp/bosai_portal/saigainisonaete/page012378.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ishioka.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.ishioka.lg.jp/bosai_portal/saigainisonaete/page013265.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ishioka.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [
+"bousai@pref.ibaraki.lg.jp"
+],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.ishioka.lg.jp/bosai_portal/saigainisonaete/page011619.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ishioka.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.ishioka.lg.jp/bosai_portal/saigainisonaete/page011591.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ishioka.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+}
+]
+}

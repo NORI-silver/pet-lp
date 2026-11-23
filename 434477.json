@@ -1,0 +1,62 @@
+{
+"pref": "熊本県",
+"name": "山都町",
+"code": "434477",
+"url": "https://www.town.kumamoto-yamato.lg.jp/",
+"found": [
+{
+"url": "https://www.town.kumamoto-yamato.lg.jp/bousai/kiji0039964/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.kumamoto-yamato.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kumamoto-yamato.lg.jp/dynamic/entry/pub/ansform.aspx?c_id=32&entry_ins=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kumamoto-yamato.lg.jp/bousai/default.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.town.kumamoto-yamato.lg.jp/bousai/list01380.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.kumamoto-yamato.lg.jp/bousai/list00824.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kumamoto-yamato.lg.jp/bousai/list00826.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課防災係"
+},
+{
+"url": "https://www.town.kumamoto-yamato.lg.jp/bousai/list00829.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課防災係"
+}
+]
+}

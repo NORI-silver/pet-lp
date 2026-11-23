@@ -1,0 +1,32 @@
+{
+"pref": "群馬県",
+"name": "上野村",
+"code": "103667",
+"url": "https://www.uenomura.jp/",
+"found": [
+{
+"url": "https://www.uenomura.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.uenomura.jp/etc/contact.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.uenomura.jp/admin/life/map/",
+"bousai": true,
+"forms": [
+[
+"https://www.uenomura.jp/etc/contact.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

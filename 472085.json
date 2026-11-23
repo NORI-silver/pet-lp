@@ -1,0 +1,184 @@
+{
+"pref": "沖縄県",
+"name": "浦添市",
+"code": "472085",
+"url": "https://www.city.urasoe.lg.jp/home",
+"found": [
+{
+"url": "https://www.city.urasoe.lg.jp/category/bunya/kankyo/pet/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.urasoe.lg.jp/doc/609e871a3d59ae2434c0032d/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.urasoe.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"ご意見"
+],
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.urasoe.lg.jp/doc/2026110600020/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [
+"bousai@city.urasoe.lg.jp"
+],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.urasoe.lg.jp/category/bunya/anshin/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.urasoe.lg.jp/soshiki/somubu/bosaikikikanrika/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "教育総務課"
+},
+{
+"url": "https://www.city.urasoe.lg.jp/doc/2026111800047/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.urasoe.lg.jp/doc/633fcf97b1bbee2478ed359c/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.urasoe.lg.jp/doc/609e7d8c3d59ae2434bfedf7/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.urasoe.lg.jp/faq/60d6c271b68c817b09ae35fc/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.urasoe.lg.jp/category/bunya/anshin/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・お天気教室"
+},
+{
+"url": "https://www.city.urasoe.lg.jp/doc/609e79ed3d59ae2434bfe670/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.urasoe.lg.jp/doc/2026101500025/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [
+"bousai@city.urasoe.lg.jp"
+],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.urasoe.lg.jp/doc/2026051500038/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.urasoe.lg.jp/form_kokusaikoryuka/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "事前に浦添市防災危機管理課"
+}
+]
+}

@@ -1,0 +1,44 @@
+{
+"pref": "北海道",
+"name": "江差町",
+"code": "013617",
+"url": "https://www.hokkaido-esashi.jp/",
+"found": [
+{
+"url": "https://www.hokkaido-esashi.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.hokkaido-esashi.jp/modules/lifeinfo/content0654.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.hokkaido-esashi.jp/modules/lifeinfo/category0036.html",
+"bousai": true,
+"forms": [
+[
+"https://www.hokkaido-esashi.jp/modules/lifeinfo/content0654.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.hokkaido-esashi.jp/bousai/bousai_index.htm",
+"bousai": true,
+"forms": [
+[
+"https://www.hokkaido-esashi.jp/modules/lifeinfo/content0654.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

@@ -1,0 +1,148 @@
+{
+"pref": "茨城県",
+"name": "茨城町",
+"code": "083020",
+"url": "https://www.town.ibaraki.lg.jp/",
+"found": [
+{
+"url": "https://www.town.ibaraki.lg.jp/gyousei/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ibaraki.lg.jp/gyousei/kurashitetuduki/bousaianzen/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ibaraki.lg.jp/bousai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ibaraki.lg.jp/viewer/opinion.html?idSubTop=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ibaraki.lg.jp/gyousei/kurashitetuduki/bousaianzen/004184.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ibaraki.lg.jp/index.html",
+"メールでのお問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ibaraki.lg.jp/gyousei/office/000002/000201/020103/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ibaraki.lg.jp/gyousei/kurashitetuduki/bousaianzen/saigai/002307.html",
+"停電時に関する問い合わせ先について"
+],
+[
+"https://www.town.ibaraki.lg.jp/index.html",
+"メールでのお問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ibaraki.lg.jp/gyousei/kurashitetuduki/bousaianzen/bousai/004170.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ibaraki.lg.jp/index.html",
+"メールでのお問合わせはこちら"
+]
+],
+"mails": [
+"bousai@town.ibaraki.lg.jp"
+],
+"dept": "防災関係"
+},
+{
+"url": "https://www.town.ibaraki.lg.jp/gyousei/kurashitetuduki/bousaianzen/004085.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ibaraki.lg.jp/index.html",
+"メールでのお問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ibaraki.lg.jp/gyousei/kurashitetuduki/bousaianzen/003978.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ibaraki.lg.jp/index.html",
+"メールでのお問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ibaraki.lg.jp/gyousei/kurashitetuduki/bousaianzen/003435.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ibaraki.lg.jp/index.html",
+"メールでのお問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ibaraki.lg.jp/gyousei/kurashitetuduki/bousaianzen/000811.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ibaraki.lg.jp/index.html",
+"メールでのお問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ibaraki.lg.jp/gyousei/kurashitetuduki/bousaianzen/001749.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ibaraki.lg.jp/index.html",
+"メールでのお問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ibaraki.lg.jp/gyousei/kurashitetuduki/bousaianzen/001813.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ibaraki.lg.jp/index.html",
+"メールでのお問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

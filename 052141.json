@@ -1,0 +1,44 @@
+{
+"pref": "秋田県",
+"name": "にかほ市",
+"code": "052141",
+"url": "https://www.city.nikaho.akita.jp/",
+"found": [
+{
+"url": "https://www.city.nikaho.akita.jp/gyosei/kurashi_tetsuzuki/pet_dobutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.nikaho.akita.jp/cgi-bin/inquiry.php/106",
+"お問い合わせ"
+],
+[
+"https://www.city.nikaho.akita.jp/gyosei/gyoseijoho/yakusho_madoguchiannai/2002.html",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.nikaho.akita.jp/gyosei/kurashi_tetsuzuki/iju_teiju/2854.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.nikaho.akita.jp/cgi-bin/inquiry.php/116?page_no=2854",
+"お問い合わせはこちら"
+],
+[
+"https://www.city.nikaho.akita.jp/cgi-bin/inquiry.php/106",
+"お問い合わせ"
+],
+[
+"https://www.city.nikaho.akita.jp/gyosei/gyoseijoho/yakusho_madoguchiannai/2002.html",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

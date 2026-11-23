@@ -1,0 +1,68 @@
+{
+"pref": "熊本県",
+"name": "多良木町",
+"code": "435058",
+"url": "https://www.town.taragi.lg.jp/",
+"found": [
+{
+"url": "https://www.town.taragi.lg.jp/cgi-bin/smart_alert.php/1/list",
+"bousai": true,
+"forms": [
+[
+"https://www.town.taragi.lg.jp/4100.html",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.taragi.lg.jp/gyousei/bosai_anzen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.taragi.lg.jp/4100.html",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.taragi.lg.jp/gyousei/bosai_anzen/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.taragi.lg.jp/4100.html",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.taragi.lg.jp/cgi-bin/smart_alert.php/1/detail/887705",
+"bousai": true,
+"forms": [
+[
+"https://www.town.taragi.lg.jp/4100.html",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.taragi.lg.jp/gyousei/bosai_anzen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.taragi.lg.jp/4100.html",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

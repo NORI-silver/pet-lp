@@ -1,0 +1,92 @@
+{
+"pref": "長野県",
+"name": "松川町",
+"code": "204021",
+"url": "https://www.town.matsukawa.lg.jp/",
+"found": [
+{
+"url": "https://www.town.matsukawa.lg.jp/kurashi_tetsuzuki/gomi_kankyo_pet/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.matsukawa.lg.jp/cgi-bin/inquiry.php/1?page_no=44",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.matsukawa.lg.jp/kurashi_tetsuzuki/gomi_kankyo_pet/petto_dobutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.matsukawa.lg.jp/cgi-bin/inquiry.php/1?page_no=134",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.matsukawa.lg.jp/kurashi_tetsuzuki/gomi_kankyo_pet/petto_dobutsu/1855.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.matsukawa.lg.jp/cgi-bin/inquiry.php/3?page_no=1855",
+"お問い合わせはこちらから"
+],
+[
+"https://www.town.matsukawa.lg.jp/cgi-bin/inquiry.php/1?page_no=1855",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.matsukawa.lg.jp/kurashi_tetsuzuki/gomi_kankyo_pet/petto_dobutsu/2806.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.matsukawa.lg.jp/cgi-bin/inquiry.php/3?page_no=2806",
+"お問い合わせはこちらから"
+],
+[
+"https://www.town.matsukawa.lg.jp/cgi-bin/inquiry.php/1?page_no=2806",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.matsukawa.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.matsukawa.lg.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.matsukawa.lg.jp/kurashi_tetsuzuki/anzen_anshin/izatoiutokini/2656.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.matsukawa.lg.jp/cgi-bin/inquiry.php/2?page_no=2656",
+"お問い合わせはこちらから"
+],
+[
+"https://www.town.matsukawa.lg.jp/cgi-bin/inquiry.php/1?page_no=2656",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理防災係"
+}
+]
+}

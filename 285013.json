@@ -1,0 +1,278 @@
+{
+"pref": "兵庫県",
+"name": "佐用町",
+"code": "285013",
+"url": "https://www.town.sayo.lg.jp/cms-sypher/www/normal_top.jsp",
+"found": [
+{
+"url": "https://www.town.sayo.lg.jp/cms-sypher/www/life/result.jsp?life_genre=164",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sayo.lg.jp/cms-sypher/www/service/detail.jsp?id=2064",
+"bousai": false,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp?article_id=2064&section_id=9",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [
+"kankyoeisei@town.sayo.lg.jp"
+],
+"dept": null
+},
+{
+"url": "http://www.town.sayo.lg.jp/cms-sypher/www/life/result.jsp?life_genre=164",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "http://www.town.sayo.lg.jp/cms-sypher/www/service/detail.jsp?id=2064",
+"bousai": false,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp?article_id=2064&section_id=9",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [
+"kankyoeisei@town.sayo.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.sayo.lg.jp/cms-sypher/www/normal_top.jsp",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sayo.lg.jp/cms-sypher/www/ec/index.jsp",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sayo.lg.jp/cms-sypher/www/life/result.jsp?life_genre=013",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務予防課"
+},
+{
+"url": "http://www.town.sayo.lg.jp/cms-sypher/www/life/result.jsp?life_genre=013",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務予防課"
+},
+{
+"url": "https://www.town.sayo.lg.jp/cms-sypher/www/info/detail.jsp?id=691",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp?article_id=691&section_id=4",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [
+"bosai@town.sayo.lg.jp"
+],
+"dept": "防災対策室"
+},
+{
+"url": "https://www.town.sayo.lg.jp/cms-sypher/www/info/detail.jsp?id=543",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp?article_id=543&section_id=4",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [
+"bosai@town.sayo.lg.jp"
+],
+"dept": "防災対策室"
+},
+{
+"url": "https://www.town.sayo.lg.jp/cms-sypher/www/info/detail.jsp?id=569&genre=5&contet_id=2",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp?article_id=569&section_id=4",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [
+"bosai@town.sayo.lg.jp"
+],
+"dept": "防災対策室"
+},
+{
+"url": "https://www.town.sayo.lg.jp/cms-sypher/www/info/detail.jsp?id=541&genre=5&contet_id=2",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp?article_id=541&section_id=4",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [
+"bosai@town.sayo.lg.jp"
+],
+"dept": "防災対策室"
+},
+{
+"url": "https://www.town.sayo.lg.jp/cms-sypher/www/ec/result.jsp?genre=5&content_id=11",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sayo.lg.jp/cms-sypher/www/info/detail.jsp?id=12851",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp?article_id=12851&section_id=4",
+"お問い合わせ"
+],
+[
+"https://www.town.sayo.lg.jp/cms-sypher/www/contact/input.jsp",
+"お問い合わせ"
+]
+],
+"mails": [
+"bosai@town.sayo.lg.jp"
+],
+"dept": "防災対策室"
+}
+]
+}

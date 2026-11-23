@@ -1,0 +1,31 @@
+{
+"pref": "宮城県",
+"name": "七ヶ宿町",
+"code": "043028",
+"url": "https://town.shichikashuku.miyagi.jp/",
+"found": [
+{
+"url": "https://town.shichikashuku.miyagi.jp/",
+"bousai": true,
+"forms": [],
+"mails": [
+"shichi24@town.shichikashuku.miyagi.jp"
+],
+"dept": null
+},
+{
+"url": "https://town.shichikashuku.miyagi.jp/life/bousai.html",
+"bousai": true,
+"forms": [
+[
+"http://maps.google.co.jp/maps/ms?hl=ja&amp;ie=UTF8&amp;brcurrent=3,0x5f8a5ab95ff2a623:0x93d97e36591e6b96,0&amp;msa=0&amp;msid=208857090149156508969.0004a488357fd0271d149&amp;ll=38.018886,140.421581&amp;spn=0.095882,0.15089&amp;z=13&amp;iwloc=0004a4884445185bcf51f",
+"No施設名住所お問い合わせマップ1横川集落センター宮城県刈田"
+]
+],
+"mails": [
+"shichi24@town.shichikashuku.miyagi.jp"
+],
+"dept": "お問い合わせ／総務課"
+}
+]
+}

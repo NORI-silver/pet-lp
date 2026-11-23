@@ -1,0 +1,32 @@
+{
+"pref": "長野県",
+"name": "大桑村",
+"code": "204307",
+"url": "https://www.vill.okuwa.lg.jp/",
+"found": [
+{
+"url": "https://www.vill.okuwa.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.okuwa.lg.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.okuwa.lg.jp/kurashi/bosai-bohan/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.okuwa.lg.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

@@ -1,0 +1,84 @@
+{
+"pref": "熊本県",
+"name": "美里町",
+"code": "433489",
+"url": "https://www.town.kumamoto-misato.lg.jp/",
+"found": [
+{
+"url": "https://www.town.kumamoto-misato.lg.jp/kurashi_tetsuzuki/anzen_anshin/3/16.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kumamoto-misato.lg.jp/material/files/group/2/16_28.pdf",
+"P45-P46_非常持ち出し品・備蓄品・災害時の連絡・問い合"
+],
+[
+"https://www.town.kumamoto-misato.lg.jp/cgi-bin/inquiry.php/1?page_no=16",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.kumamoto-misato.lg.jp/cgi-bin/inquiry.php/1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kumamoto-misato.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kumamoto-misato.lg.jp/cgi-bin/inquiry.php/1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kumamoto-misato.lg.jp/kurashi_tetsuzuki/anzen_anshin/3/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kumamoto-misato.lg.jp/cgi-bin/inquiry.php/1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kumamoto-misato.lg.jp/kurashi_tetsuzuki/anzen_anshin/3/1268.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kumamoto-misato.lg.jp/cgi-bin/inquiry.php/6?page_no=1268",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.kumamoto-misato.lg.jp/cgi-bin/inquiry.php/1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kumamoto-misato.lg.jp/kurashi_tetsuzuki/anzen_anshin/3/1273.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kumamoto-misato.lg.jp/cgi-bin/inquiry.php/6?page_no=1273",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.kumamoto-misato.lg.jp/cgi-bin/inquiry.php/1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

@@ -1,0 +1,46 @@
+{
+"pref": "栃木県",
+"name": "茂木町",
+"code": "093432",
+"url": "https://www.town.motegi.tochigi.jp/",
+"found": [
+{
+"url": "https://www.town.motegi.tochigi.jp/motegi/nextpage.php?cd=46656&syurui=1",
+"bousai": false,
+"forms": [
+[
+"https://www.town.motegi.tochigi.jp/motegi/nextpage.php?cd=6684&amp;syurui=2",
+"お問合せ"
+]
+],
+"mails": [
+"$1"
+],
+"dept": null
+},
+{
+"url": "https://www.town.motegi.tochigi.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.motegi.tochigi.jp/motegi/nextpage.php?cd=6684&amp;syurui=2",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.motegi.tochigi.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.motegi.tochigi.jp/motegi/nextpage.php?cd=6684&amp;syurui=2",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

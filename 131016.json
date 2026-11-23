@@ -1,0 +1,97 @@
+{
+"pref": "東京都",
+"name": "千代田区",
+"code": "131016",
+"url": "https://www.city.chiyoda.lg.jp/",
+"found": [
+{
+"url": "https://www.city.chiyoda.lg.jp/koho/kurashi/dobutsu/pet-disaster-taisaku.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"chiikihoken@city.chiyoda.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.chiyoda.lg.jp/koho/kurashi/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chiyoda.lg.jp/koho/kurashi/sodanmadoguchi/index.html",
+"問合せ・相談窓口"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.chiyoda.lg.jp/koho/kurashi/bosai/johotekyo/musen.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"saigaitaisaku@city.chiyoda.lg.jp"
+],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.chiyoda.lg.jp/koho/kurashi/bosai/bosai-festa.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"saigaitaisaku@city.chiyoda.lg.jp"
+],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.chiyoda.lg.jp/koho/kurashi/bosai/bosai-taisaku/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.chiyoda.lg.jp/koho/kurashi/bosai/saigai-taio/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.chiyoda.lg.jp/koho/kurashi/bosai/link/index.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"saigaitaisaku@city.chiyoda.lg.jp"
+],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.chiyoda.lg.jp/koho/kurashi/bosai/johotekyo/bosai-radio.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"saigaitaisaku@city.chiyoda.lg.jp"
+],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.chiyoda.lg.jp/koho/kurashi/bosai/johotekyo/annaiban.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"saigaitaisaku@city.chiyoda.lg.jp"
+],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.chiyoda.lg.jp/koho/kurashi/bosai/johotekyo/bosaiportalsite-app.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"saigaitaisaku@city.chiyoda.lg.jp"
+],
+"dept": "防災関係"
+}
+]
+}

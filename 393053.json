@@ -1,0 +1,56 @@
+{
+"pref": "高知県",
+"name": "北川村",
+"code": "393053",
+"url": "https://www.kitagawamura.jp/",
+"found": [
+{
+"url": "https://www.kitagawamura.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.kitagawamura.jp/mail/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.kitagawamura.jp/life/list.php?hdnCat=&txtKeyword=&hdnKeyword=%E9%98%B2%E7%81%BD%E6%83%85%E5%A0%B1&hdnJPN=%E6%97%A5%E6%9C%AC%E8%AA%9E",
+"bousai": true,
+"forms": [
+[
+"https://www.kitagawamura.jp/mail/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.kitagawamura.jp/life/list.php?hdnCat=&txtKeyword=&hdnKeyword=%E9%98%B2%E7%81%BD%E3%83%9E%E3%83%83%E3%83%97&hdnJPN=%E6%97%A5%E6%9C%AC%E8%AA%9E",
+"bousai": true,
+"forms": [
+[
+"https://www.kitagawamura.jp/mail/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.kitagawamura.jp/life/list.php?hdnCat=&txtKeyword=&hdnKeyword=%E9%81%BF%E9%9B%A3%E5%A0%B4%E6%89%80&hdnJPN=%E6%97%A5%E6%9C%AC%E8%AA%9E",
+"bousai": true,
+"forms": [
+[
+"https://www.kitagawamura.jp/mail/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

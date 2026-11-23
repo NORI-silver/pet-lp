@@ -1,0 +1,108 @@
+{
+"pref": "新潟県",
+"name": "糸魚川市",
+"code": "152161",
+"url": "https://www.city.itoigawa.lg.jp/",
+"found": [
+{
+"url": "https://www.city.itoigawa.lg.jp/page/23367.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "地域防災係"
+},
+{
+"url": "https://www.city.itoigawa.lg.jp/page/1255.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itoigawa.lg.jp/form/detail.php?sec_sec1=113&lif_id=29081",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "地域防災係"
+},
+{
+"url": "https://www.city.itoigawa.lg.jp/page/1225.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itoigawa.lg.jp/form/detail.php?sec_sec1=102&lif_id=28193",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.itoigawa.lg.jp/page/1243.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itoigawa.lg.jp/form/detail.php?sec_sec1=102&lif_id=28583",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.itoigawa.lg.jp/page/19938.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itoigawa.lg.jp/form/detail.php?sec_sec1=102&lif_id=28582",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.itoigawa.lg.jp/page/18925.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"kita-re@air.con.ne.jp"
+],
+"dept": "地域防災係"
+},
+{
+"url": "https://www.city.itoigawa.lg.jp/page/1253.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itoigawa.lg.jp/form/detail.php?sec_sec1=102&lif_id=29069",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.itoigawa.lg.jp/page/26435.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itoigawa.lg.jp/form/detail.php?sec_sec1=102&lif_id=28833",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.itoigawa.lg.jp/page/26036.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itoigawa.lg.jp/form/detail.php?sec_sec1=102&lif_id=26036",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+}
+]
+}

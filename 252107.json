@@ -1,0 +1,48 @@
+{
+"pref": "滋賀県",
+"name": "野洲市",
+"code": "252107",
+"url": "https://www.city.yasu.lg.jp/",
+"found": [
+{
+"url": "https://www.city.yasu.lg.jp/kurashi-tetsuzuki/pet-dobutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.yasu.lg.jp/gyoseijoho/koho-kocho/koho/konosaitonitsuite/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.yasu.lg.jp/kurashi-tetsuzuki/pet-dobutsu/3944.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.yasu.lg.jp/cgi-bin/inquiry.php/20?page_no=3944",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.city.yasu.lg.jp/gyoseijoho/koho-kocho/koho/konosaitonitsuite/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.yasu.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.yasu.lg.jp/gyoseijoho/koho-kocho/koho/konosaitonitsuite/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

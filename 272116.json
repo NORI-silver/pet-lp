@@ -1,0 +1,132 @@
+{
+"pref": "大阪府",
+"name": "茨木市",
+"code": "272116",
+"url": "https://www.city.ibaraki.osaka.jp/",
+"found": [
+{
+"url": "https://www.city.ibaraki.osaka.jp/kikou/soumu/kikikanri/menu/preparation_disaster/63298.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.ibaraki.osaka.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ibaraki.osaka.jp/koe/1326700365294.html",
+"ご意見・ご質問"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ibaraki.osaka.jp/kurashi_tetsuzuki/anzen_anshin/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.ibaraki.osaka.jp/kikou/soumu/kikikanri/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ibaraki.osaka.jp/cgi-bin/inquiry.php/3?page_no=19",
+"危機管理課のメールフォームはこちらから"
+]
+],
+"mails": [
+"kikikanri@city.ibaraki.lg.jp"
+],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.ibaraki.osaka.jp/kikou/soumu/kikikanri/menu/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.ibaraki.osaka.jp/kikou/soumu/kikikanri/menu/preparation_disaster/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.ibaraki.osaka.jp/kurashi_tetsuzuki/anzen_anshin/kinkyu/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "緊急・防災関係"
+},
+{
+"url": "https://www.city.ibaraki.osaka.jp/kurashi_tetsuzuki/anzen_anshin/69563.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.ibaraki.osaka.jp/kikou/soumu/kikikanri/70194.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ibaraki.osaka.jp/cgi-bin/inquiry.php/3?page_no=70194",
+"危機管理課のメールフォームはこちらから"
+]
+],
+"mails": [
+"kikikanri@city.ibaraki.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.ibaraki.osaka.jp/cgi-bin/inquiry.php/3?page_no=19",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "ご意見・ご質問/危機管理課"
+},
+{
+"url": "https://www.city.ibaraki.osaka.jp/kikou/soumu/kikikanri/menu/42109.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ibaraki.osaka.jp/cgi-bin/inquiry.php/3?page_no=42110",
+"危機管理課のメールフォームはこちらから"
+]
+],
+"mails": [
+"kikikanri@city.ibaraki.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.ibaraki.osaka.jp/kikou/soumu/kikikanri/menu/disaster_support_agreement/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.ibaraki.osaka.jp/kikou/soumu/kikikanri/menu/69964.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ibaraki.osaka.jp/cgi-bin/inquiry.php/3?page_no=69964",
+"危機管理課のメールフォームはこちらから"
+]
+],
+"mails": [
+"kikikanri@city.ibaraki.lg.jp"
+],
+"dept": "危機管理課"
+}
+]
+}

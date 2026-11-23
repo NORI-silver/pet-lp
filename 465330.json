@@ -1,0 +1,176 @@
+{
+"pref": "鹿児島県",
+"name": "和泊町",
+"code": "465330",
+"url": "https://www.town.wadomari.lg.jp/",
+"found": [
+{
+"url": "https://www.town.wadomari.lg.jp/soumu/kurashi/pet/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wadomari.lg.jp/soumu/kurashi/pet/dobutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wadomari.lg.jp/tyoumin/kurashi/pet/dobutsu/petr6.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wadomari.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wadomari.lg.jp/soumu/kurashi/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "和泊町役場総務課"
+},
+{
+"url": "https://www.town.wadomari.lg.jp/soumu/kurashi/bosai/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "和泊町役場総務課"
+},
+{
+"url": "https://www.town.wadomari.lg.jp/soumu/kurashi/bosai/bosai/hazard-map/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "和泊町役場総務課"
+},
+{
+"url": "https://www.town.wadomari.lg.jp/soumu/kurashi/bosai/bosai/soshiki.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "和泊町役場総務課"
+},
+{
+"url": "https://www.town.wadomari.lg.jp/soumu/kurashi/bosai/bosai/musen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "和泊町役場総務課"
+},
+{
+"url": "https://www.town.wadomari.lg.jp/soumu/kurashi/bosai/bosai/kikikanri/hinannjyotou.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wadomari.lg.jp/kouchi/kurashi/bosai/bosai/hazard-map/jutentameke.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wadomari.lg.jp/soumu/kurashi/bosai/bosai/hazard-map/wadomarichouhazadomappu.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "和泊町役場総務課"
+},
+{
+"url": "https://www.town.wadomari.lg.jp/soumu/kurashi/bosai/bosai/musen/hoso.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "和泊町役場総務課"
+},
+{
+"url": "https://www.town.wadomari.lg.jp/soumu/kurashi/bosai/bosai/musen/hosonaiyo.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wadomari.lg.jp/soumu/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "和泊町役場総務課"
+}
+]
+}

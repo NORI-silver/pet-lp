@@ -1,0 +1,196 @@
+{
+"pref": "島根県",
+"name": "益田市",
+"code": "322041",
+"url": "https://www.city.masuda.lg.jp/",
+"found": [
+{
+"url": "https://www.city.masuda.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.masuda.lg.jp/kakuka.html",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.masuda.lg.jp/kurashi_tetsuzuki/bosai/saigainisonaeru/4/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.masuda.lg.jp/kakuka.html",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.masuda.lg.jp/kurashi_tetsuzuki/bosai/saigainisonaeru/1/anzen_mail.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.masuda.lg.jp/cgi-bin/inquiry.php/91?page_no=4328",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.masuda.lg.jp/kakuka.html",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.masuda.lg.jp/kurashi_tetsuzuki/bosai/saigainisonaeru/1/3388.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.masuda.lg.jp/cgi-bin/inquiry.php/91?page_no=3388",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.masuda.lg.jp/kakuka.html",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.masuda.lg.jp/kurashi_tetsuzuki/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.masuda.lg.jp/kakuka.html",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.masuda.lg.jp/kurashi_tetsuzuki/bosai/saigainisonaeru/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.masuda.lg.jp/kakuka.html",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.masuda.lg.jp/kurashi_tetsuzuki/bosai/saigainisonaeru/4/3390.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.masuda.lg.jp/cgi-bin/inquiry.php/91?page_no=3390",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.masuda.lg.jp/kakuka.html",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.masuda.lg.jp/kurashi_tetsuzuki/bosai/saigainisonaeru/4/4308.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.masuda.lg.jp/cgi-bin/inquiry.php/91?page_no=4308",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.masuda.lg.jp/kakuka.html",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.masuda.lg.jp/kurashi_tetsuzuki/bosai/saigainisonaeru/4/4318.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.masuda.lg.jp/cgi-bin/inquiry.php/91?page_no=4318",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.masuda.lg.jp/kakuka.html",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.masuda.lg.jp/kurashi_tetsuzuki/bosai/saigainisonaeru/4/4324.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.masuda.lg.jp/cgi-bin/inquiry.php/91?page_no=4324",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.masuda.lg.jp/kakuka.html",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.masuda.lg.jp/kurashi_tetsuzuki/bosai/saigainisonaeru/4/7002.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.masuda.lg.jp/cgi-bin/inquiry.php/91?page_no=7002",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.masuda.lg.jp/kakuka.html",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.masuda.lg.jp/kurashi_tetsuzuki/bosai/saigainisonaeru/4/11342.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.masuda.lg.jp/cgi-bin/inquiry.php/113?page_no=11342",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.masuda.lg.jp/kakuka.html",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.masuda.lg.jp/kurashi_tetsuzuki/bosai/saigaishien/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.masuda.lg.jp/kakuka.html",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

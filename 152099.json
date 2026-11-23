@@ -1,0 +1,32 @@
+{
+"pref": "新潟県",
+"name": "加茂市",
+"code": "152099",
+"url": "https://www.city.kamo.niigata.jp/",
+"found": [
+{
+"url": "https://www.city.kamo.niigata.jp/kurashi/sumai/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kamo.niigata.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kamo.niigata.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kamo.niigata.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

@@ -1,0 +1,220 @@
+{
+"pref": "千葉県",
+"name": "白子町",
+"code": "124249",
+"url": "https://www.town.shirako.lg.jp/",
+"found": [
+{
+"url": "https://www.town.shirako.lg.jp/faq/faq_detail.php?co=cat&frmId=6&frmCd=1-0-0-0-0",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/mailform/inquiry.cgi?so=9c0fc3779b19c6789bb065ff7016ce1a7f3045ef&amp;ref=faq_detail.php%3FfrmId%3D6",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課行政係"
+},
+{
+"url": "https://www.town.shirako.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shirako.lg.jp/category/3-9-12-0-0-0-0-0-0-0.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "町と防災関係"
+},
+{
+"url": "https://www.town.shirako.lg.jp/soshiki/18-3-0-0-0_8.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/mailform/inquiry.cgi?so=1bf6467278f162e36ecc35a5365db436aba8980a&amp;ref=https%3A%2F%2Fwww.town.shirako.lg.jp%2Fsoshiki%2F18-3-0-0-0_1.html",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shirako.lg.jp/module/shelter.php",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shirako.lg.jp/faq/faq_category.php?frmCd=1-0-0-0-0",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shirako.lg.jp/soshiki/1-4-0-0-0_9.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/mailform/inquiry.cgi?so=9c0fc3779b19c6789bb065ff7016ce1a7f3045ef&amp;ref=https%3A%2F%2Fwww.town.shirako.lg.jp%2Fsoshiki%2F1-4-0-0-0_1.html",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "白子町役場総務課行政係"
+},
+{
+"url": "https://www.town.shirako.lg.jp/0000006512.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/0000006592.html",
+"住宅宿泊事業（民泊）の手続きに関する問い合わせ先について"
+],
+[
+"https://www.town.shirako.lg.jp/mailform/inquiry.cgi?so=3f3f1026f89bcfc63cfba2bf694d4beec20f5720&amp;ref=https%3A%2F%2Fwww.town.shirako.lg.jp%2F0000006512.html",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shirako.lg.jp/0000006541.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/mailform/inquiry.cgi?so=60367e318c19b86fc3a43a4aee39aeabc863d22c&amp;ref=https%3A%2F%2Fwww.town.shirako.lg.jp%2F0000006541.html",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shirako.lg.jp/0000006185.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/mailform/inquiry.cgi?so=9c0fc3779b19c6789bb065ff7016ce1a7f3045ef&amp;ref=https%3A%2F%2Fwww.town.shirako.lg.jp%2F0000006185.html",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "白子町役場総務課行政係"
+},
+{
+"url": "https://www.town.shirako.lg.jp/0000006186.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/mailform/inquiry.cgi?so=9c0fc3779b19c6789bb065ff7016ce1a7f3045ef&amp;ref=https%3A%2F%2Fwww.town.shirako.lg.jp%2F0000006186.html",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "白子町役場総務課行政係"
+},
+{
+"url": "https://www.town.shirako.lg.jp/0000004566.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/mailform/inquiry.cgi?so=9c0fc3779b19c6789bb065ff7016ce1a7f3045ef&amp;ref=https%3A%2F%2Fwww.town.shirako.lg.jp%2F0000004566.html",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "白子町役場総務課行政係"
+},
+{
+"url": "https://www.town.shirako.lg.jp/0000003581.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/mailform/inquiry.cgi?so=9c0fc3779b19c6789bb065ff7016ce1a7f3045ef&amp;ref=https%3A%2F%2Fwww.town.shirako.lg.jp%2F0000003581.html",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "白子町役場総務課行政係"
+},
+{
+"url": "https://www.town.shirako.lg.jp/0000002552.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shirako.lg.jp/mailform/inquiry.cgi?so=9c0fc3779b19c6789bb065ff7016ce1a7f3045ef&amp;ref=https%3A%2F%2Fwww.town.shirako.lg.jp%2F0000002552.html",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.shirako.lg.jp/mailform/opinion.cgi",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "白子町役場総務課行政係"
+}
+]
+}

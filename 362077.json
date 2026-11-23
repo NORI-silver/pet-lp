@@ -1,0 +1,196 @@
+{
+"pref": "徳島県",
+"name": "美馬市",
+"code": "362077",
+"url": "https://www.city.mima.lg.jp/",
+"found": [
+{
+"url": "https://www.city.mima.lg.jp/gyosei/kurashi/pet/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.mima.lg.jp/gyosei/kurashi/pet/manner/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.mima.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.mima.lg.jp/gyosei/kurashi/bousai/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [
+"test@test.co.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.mima.lg.jp/gyosei/disaster/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.mima.lg.jp/gyosei/chatbot/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.mima.lg.jp/gyosei/docs/3192136.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/?group=195&amp;page=3192136",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [
+"kikikanri@mima.i-tokushima.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.mima.lg.jp/gyosei/docs/3191774.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/?group=195&amp;page=3191774",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [
+"kikikanri@mima.i-tokushima.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.mima.lg.jp/gyosei/docs/hinansyomanyuaru.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/?group=195&amp;page=717221",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [
+"kikikanri@mima.i-tokushima.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.mima.lg.jp/gyosei/disaster/about/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.mima.lg.jp/gyosei/disaster/map/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.mima.lg.jp/gyosei/disaster/site/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.mima.lg.jp/gyosei/disaster/activity/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.mima.lg.jp/gyosei/disaster/voluntary/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.mima.lg.jp/gyosei/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "自主防災組織関係"
+}
+]
+}

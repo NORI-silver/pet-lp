@@ -1,0 +1,50 @@
+{
+"pref": "石川県",
+"name": "能美市",
+"code": "172111",
+"url": "https://www.city.nomi.ishikawa.jp/www/index.html",
+"found": [
+{
+"url": "https://www.city.nomi.lg.jp/docs/1915.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nomi.lg.jp/inquiry/?group=8&amp;page=1915",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.nomi.lg.jp/inquiry/",
+"お問合せ"
+]
+],
+"mails": [
+"kikikanri@city.nomi.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.nomi.lg.jp/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nomi.lg.jp/shisetsu/list/",
+"各施設問い合わせ先一覧"
+],
+[
+"https://www.city.nomi.lg.jp/banner/top-slide-overview/5412.html?redirect=%2Fshisetsu%2Flist%2F",
+"各施設お問合せ先一覧"
+],
+[
+"https://www.city.nomi.lg.jp/inquiry/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.nomi.lg.jp/inquiry/",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": "防災センター・消防本部"
+}
+]
+}

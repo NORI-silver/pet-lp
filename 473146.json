@@ -1,0 +1,92 @@
+{
+"pref": "沖縄県",
+"name": "金武町",
+"code": "473146",
+"url": "https://www.town.kin.okinawa.jp/",
+"found": [
+{
+"url": "https://www.town.kin.okinawa.jp/kurashi_tetsuzuki/pet_dobutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kin.okinawa.jp/cgi-bin/inquiry.php/1?page_no=160",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kin.okinawa.jp/soshiki/juminseikatsuka/2/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kin.okinawa.jp/cgi-bin/inquiry.php/1?page_no=35",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kin.okinawa.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kin.okinawa.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kin.okinawa.jp/soshiki/somuka/gyomuannai/1/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kin.okinawa.jp/cgi-bin/inquiry.php/1?page_no=114",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kin.okinawa.jp/soshiki/somuka/gyomuannai/1/1/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kin.okinawa.jp/cgi-bin/inquiry.php/1?page_no=129",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kin.okinawa.jp/soshiki/somuka/gyomuannai/1/2/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kin.okinawa.jp/cgi-bin/inquiry.php/1?page_no=130",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kin.okinawa.jp/soshiki/somuka/gyomuannai/1/1905.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kin.okinawa.jp/cgi-bin/inquiry.php/1?page_no=1905",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

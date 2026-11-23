@@ -1,0 +1,62 @@
+{
+"pref": "東京都",
+"name": "江戸川区",
+"code": "131237",
+"url": "https://www.city.edogawa.tokyo.jp/",
+"found": [
+{
+"url": "https://www.city.edogawa.tokyo.jp/e055/kurashi/animal/life/saigai.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理部"
+},
+{
+"url": "https://www.city.edogawa.tokyo.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.edogawa.tokyo.jp/e004/kuseijoho/kohokocho/goiken/goikentoiawase.html",
+"区へのご意見・お問い合わせ・パブリックコメント"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.edogawa.tokyo.jp/e007/bosaianzen/bosai/kojo/manual.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理部防災危機管理課"
+},
+{
+"url": "https://www.city.edogawa.tokyo.jp/e007/bosaianzen/bosai/kojo/kekaku/n_bousaikeikaku.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理部防災危機管理課"
+},
+{
+"url": "https://www.city.edogawa.tokyo.jp/e008/bosaianzen/bosai/jijo/wagayanobosai.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理部地域防犯防災課"
+},
+{
+"url": "https://www.city.edogawa.tokyo.jp/e007/bosaianzen/bosai/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理部"
+},
+{
+"url": "https://www.city.edogawa.tokyo.jp/e007/bosaianzen/saigaitaio/sinnakagawakiten.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理部防災危機管理課"
+}
+]
+}

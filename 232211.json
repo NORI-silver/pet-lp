@@ -1,0 +1,212 @@
+{
+"pref": "愛知県",
+"name": "新城市",
+"code": "232211",
+"url": "https://www.city.shinshiro.lg.jp/",
+"found": [
+{
+"url": "https://www.city.shinshiro.lg.jp/kurashi/pet/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinshiro.lg.jp/kanko/dobutsu-syokubutsu/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinshiro.lg.jp/kurashi/kyukyu-bosai/sonaeru/pet-bousai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/cgi-bin/formmail/formmail.cgi?d=300200",
+"お問い合わせはこちらから"
+],
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinshiro.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinshiro.lg.jp/kurashi/kyukyu-bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinshiro.lg.jp/kurashi/pet/pet_hinan.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/cgi-bin/formmail/formmail.cgi?d=300200",
+"お問い合わせはこちらから"
+],
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinshiro.lg.jp/kurashi/pet/pettobousai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/cgi-bin/formmail/formmail.cgi?d=300200",
+"お問い合わせはこちらから"
+],
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinshiro.lg.jp/kurashi/kyukyu-bosai/sonaeru/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinshiro.lg.jp/kurashi/kyukyu-bosai/sonaeru/bosaikyoryoku.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/cgi-bin/formmail/formmail.cgi?d=100700",
+"お問い合わせはこちらから"
+],
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.shinshiro.lg.jp/kurashi/kyukyu-bosai/sonaeru/bosaimusen-oto.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/cgi-bin/formmail/formmail.cgi?d=100700",
+"お問い合わせはこちらから"
+],
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.shinshiro.lg.jp/kurashi/kyukyu-bosai/sonaeru/bosaimusen-dengen.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/cgi-bin/formmail/formmail.cgi?d=100700",
+"お問い合わせはこちらから"
+],
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.shinshiro.lg.jp/kurashi/kyukyu-bosai/sonaeru/bosaimusen.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/cgi-bin/formmail/formmail.cgi?d=100700",
+"お問い合わせはこちらから"
+],
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.shinshiro.lg.jp/kurashi/kyukyu-bosai/sonaeru/app.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/cgi-bin/formmail/formmail.cgi?d=100700",
+"お問い合わせはこちらから"
+],
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.shinshiro.lg.jp/kurashi/kyukyu-bosai/sonaeru/hinann.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinshiro.lg.jp/cgi-bin/formmail/formmail.cgi?d=100700",
+"お問い合わせはこちらから"
+],
+[
+"https://www.city.shinshiro.lg.jp/koshiki-about/toiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災対策課"
+}
+]
+}

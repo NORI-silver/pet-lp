@@ -1,0 +1,68 @@
+{
+"pref": "広島県",
+"name": "東広島市",
+"code": "342122",
+"url": "https://www.city.higashihiroshima.lg.jp/",
+"found": [
+{
+"url": "https://www.city.higashihiroshima.lg.jp/soshiki/seikatsukankyo/5/9/19050.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.higashihiroshima.lg.jp/toiawase.html",
+"ご意見・お問い合わせ"
+],
+[
+"https://www.city.higashihiroshima.lg.jp/toiawase.html",
+"ご意見・お問い合わせ"
+],
+[
+"https://www.city.higashihiroshima.lg.jp/cgi-bin/inquiry.php/1184?page_no=19050",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "環境省自然環境局総務課"
+},
+{
+"url": "https://www.city.higashihiroshima.lg.jp/soshiki/seikatsukankyo/5/9/45944.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.higashihiroshima.lg.jp/toiawase.html",
+"ご意見・お問い合わせ"
+],
+[
+"https://www.city.higashihiroshima.lg.jp/toiawase.html",
+"ご意見・お問い合わせ"
+],
+[
+"https://www.city.higashihiroshima.lg.jp/cgi-bin/inquiry.php/1184?page_no=45944",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.higashihiroshima.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.higashihiroshima.lg.jp/toiawase.html",
+"ご意見・お問い合わせ"
+],
+[
+"https://www.city.higashihiroshima.lg.jp/toiawase.html",
+"ご意見・お問い合わせ"
+],
+[
+"https://www.city.higashihiroshima.lg.jp/toiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

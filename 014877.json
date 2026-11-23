@@ -1,0 +1,32 @@
+{
+"pref": "北海道",
+"name": "天塩町",
+"code": "014877",
+"url": "https://www.teshiotown.hokkaido.jp/",
+"found": [
+{
+"url": "https://www.teshiotown.hokkaido.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.teshiotown.hokkaido.jp/?page_id=30",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.teshiotown.hokkaido.jp/?page_id=17345",
+"bousai": true,
+"forms": [
+[
+"https://www.teshiotown.hokkaido.jp/?page_id=30",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

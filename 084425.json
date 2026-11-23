@@ -1,0 +1,100 @@
+{
+"pref": "茨城県",
+"name": "美浦村",
+"code": "084425",
+"url": "https://www.vill.miho.lg.jp/",
+"found": [
+{
+"url": "https://www.vill.miho.lg.jp/bousai-bouhan-web/bousaitaisaku/page006530.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.miho.lg.jp/inq.php?mode=detail&amp;code=15&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.miho.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.miho.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.miho.lg.jp/bousai-bouhan-web/page006510.html",
+"bousai": true,
+"forms": [
+[
+"https://www.tepco.co.jp/pg/user/contact.html",
+"東京電力パワーグリッドHP「お問い合わせ」"
+],
+[
+"https://www.vill.miho.lg.jp/inq.php?mode=detail&amp;code=15&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.miho.lg.jp/kurashi-kankyou/kurashi-kankyou-news/page012607.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.miho.lg.jp/inq.php?mode=detail&amp;code=15&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.vill.miho.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.miho.lg.jp/bousai-bouhan-web/hinanjyouhou/page006511.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.miho.lg.jp/inq.php?mode=detail&amp;code=15&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.miho.lg.jp/bousai-bouhan-web/hinanjyouhou/page006506.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.miho.lg.jp/inq.php?mode=detail&amp;code=15&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.miho.lg.jp/bousai-bouhan-web/bousaitaisaku/page015447.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.miho.lg.jp/inq.php?mode=detail&amp;code=15&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

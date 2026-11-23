@@ -1,0 +1,176 @@
+{
+"pref": "愛知県",
+"name": "みよし市",
+"code": "232360",
+"url": "https://www.city.aichi-miyoshi.lg.jp/",
+"found": [
+{
+"url": "https://www.city.aichi-miyoshi.lg.jp/soshiki/somu/bosai/shouboubosai/bosai/saigaisonae/11128.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/1?page_no=11128",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.aichi-miyoshi.lg.jp/kurashi_tetsuzuki/8416.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/1?page_no=8416",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.aichi-miyoshi.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.aichi-miyoshi.lg.jp/soshiki/somu/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/11?page_no=3267",
+"総務部防災安全課へのお問い合わせ"
+],
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/1?page_no=3267",
+"お問い合わせ"
+]
+],
+"mails": [
+"bosai@city.aichi-miyoshi.lg.jp"
+],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.aichi-miyoshi.lg.jp/soshiki/somu/bosai/shouboubosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/1?page_no=3443",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.aichi-miyoshi.lg.jp/soshiki/somu/bosai/shouboubosai/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/1?page_no=3673",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.aichi-miyoshi.lg.jp/soshiki/somu/bosai/shouboubosai/bosai/saigaisonae/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/1?page_no=8098",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.aichi-miyoshi.lg.jp/kinkyu_saigaijoho/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/1?page_no=4269",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.aichi-miyoshi.lg.jp/soshiki/somu/bosai/shouboubosai/bosai/map/91.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/11?page_no=91",
+"総務部防災安全課へのお問い合わせ"
+],
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/1?page_no=91",
+"お問い合わせ"
+]
+],
+"mails": [
+"bosai@city.aichi-miyoshi.lg.jp"
+],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.aichi-miyoshi.lg.jp/soshiki/somu/bosai/shouboubosai/bosai/hianjobitiku/8024.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/11?page_no=8024",
+"総務部防災安全課へのお問い合わせ"
+],
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/1?page_no=8024",
+"お問い合わせ"
+]
+],
+"mails": [
+"bosai@city.aichi-miyoshi.lg.jp"
+],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.aichi-miyoshi.lg.jp/soshiki/somu/bosai/kokunaisaigai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/11?page_no=11569",
+"総務部防災安全課へのお問い合わせ"
+],
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/1?page_no=11569",
+"お問い合わせ"
+]
+],
+"mails": [
+"bosai@city.aichi-miyoshi.lg.jp"
+],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.aichi-miyoshi.lg.jp/soshiki/somu/bosai/koukyoushisetu/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.aichi-miyoshi.lg.jp/cgi-bin/inquiry.php/1?page_no=8170",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+}
+]
+}

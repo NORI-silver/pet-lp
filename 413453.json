@@ -1,0 +1,107 @@
+{
+"pref": "佐賀県",
+"name": "上峰町",
+"code": "413453",
+"url": "https://www.town.kamimine.lg.jp/",
+"found": [
+{
+"url": "https://www.town.kamimine.lg.jp/list00108.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kamimine.lg.jp/classset002.html",
+"組織問合せ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kamimine.lg.jp/list00144.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kamimine.lg.jp/classset002.html",
+"組織問合せ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kamimine.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kamimine.lg.jp/classset002.html",
+"組織問合せ先"
+],
+[
+"https://www.town.kamimine.lg.jp/list00194.html",
+"組織問合わせ先"
+],
+[
+"https://www.town.kamimine.lg.jp/list00192.html",
+"広告についてのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kamimine.lg.jp/bousai/default.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.town.kamimine.lg.jp/kiji0031678/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kamimine.lg.jp/classset002.html",
+"組織問合せ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kamimine.lg.jp/kiji0031269/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kamimine.lg.jp/classset002.html",
+"組織問合せ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kamimine.lg.jp/kiji0031680/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kamimine.lg.jp/classset002.html",
+"組織問合せ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kamimine.lg.jp/kiji003270/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kamimine.lg.jp/classset002.html",
+"組織問合せ先"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

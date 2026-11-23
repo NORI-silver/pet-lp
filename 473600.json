@@ -1,0 +1,56 @@
+{
+"pref": "沖縄県",
+"name": "伊是名村",
+"code": "473600",
+"url": "https://vill.izena.okinawa.jp/",
+"found": [
+{
+"url": "https://vill.izena.okinawa.jp/",
+"bousai": false,
+"forms": [
+[
+"https://vill.izena.okinawa.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://vill.izena.okinawa.jp/bousai/bousai_info/",
+"bousai": true,
+"forms": [
+[
+"https://vill.izena.okinawa.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "このページは総務課"
+},
+{
+"url": "https://vill.izena.okinawa.jp/bousai/bousai_map/",
+"bousai": true,
+"forms": [
+[
+"https://vill.izena.okinawa.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "このページは総務課"
+},
+{
+"url": "https://vill.izena.okinawa.jp/bousai/",
+"bousai": true,
+"forms": [
+[
+"https://vill.izena.okinawa.jp/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

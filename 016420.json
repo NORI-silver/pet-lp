@@ -1,0 +1,81 @@
+{
+"pref": "北海道",
+"name": "広尾町",
+"code": "016420",
+"url": "https://www.town.hiroo.lg.jp/",
+"found": [
+{
+"url": "https://www.town.hiroo.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hiroo.lg.jp/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.hiroo.lg.jp/kurashi/anshin/bousai/hinanbasyo/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "企画防災係"
+},
+{
+"url": "https://www.town.hiroo.lg.jp/kurashi/anshin/bousai/dosyasaigamap/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "企画防災係"
+},
+{
+"url": "https://www.town.hiroo.lg.jp/bousaimusenhoso//",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hiroo.lg.jp/otoiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.hiroo.lg.jp/kurashi/anshin/bousai/dentatsu/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "企画防災係"
+},
+{
+"url": "https://www.town.hiroo.lg.jp/kurashi/anshin/bousai/bousaikunren/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "企画防災係"
+},
+{
+"url": "https://www.town.hiroo.lg.jp/kurashi/anshin/bousai/bousaikanrenkeikaku/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "企画防災係"
+},
+{
+"url": "https://www.town.hiroo.lg.jp/kurashi/anshin/bousai/bousaikyoutei/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "企画防災係"
+},
+{
+"url": "https://www.town.hiroo.lg.jp/kurashi/anshin/bousai/dosyasaigaijouhou/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "企画防災係"
+}
+]
+}

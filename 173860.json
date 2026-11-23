@@ -1,0 +1,53 @@
+{
+"pref": "石川県",
+"name": "宝達志水町",
+"code": "173860",
+"url": "https://www.hodatsushimizu.jp/",
+"found": [
+{
+"url": "https://www.hodatsushimizu.jp/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課復興推進室"
+},
+{
+"url": "https://www.hodatsushimizu.jp/kinkyu/9273.html",
+"bousai": true,
+"forms": [
+[
+"https://www.hodatsushimizu.jp/cgi-bin/inquiry.php/42?page_no=9273",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.hodatsushimizu.jp/kinkyu/9270.html",
+"bousai": true,
+"forms": [
+[
+"https://www.hodatsushimizu.jp/cgi-bin/inquiry.php/18?page_no=9270",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.hodatsushimizu.jp/soshiki/shokokanko/6_1/578.html",
+"bousai": true,
+"forms": [
+[
+"https://www.hodatsushimizu.jp/cgi-bin/inquiry.php/40?page_no=578",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [
+"hodatsushimizu@yuidesign.jp"
+],
+"dept": null
+}
+]
+}

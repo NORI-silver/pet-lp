@@ -1,0 +1,154 @@
+{
+"pref": "長野県",
+"name": "阿智村",
+"code": "204072",
+"url": "https://www.vill.achi.lg.jp/",
+"found": [
+{
+"url": "https://www.vill.achi.lg.jp/soshiki/32/20160820peltutobotoru.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=34&amp;inq=02&lif_id=4401",
+"お問い合わせはこちらから"
+],
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=1",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.achi.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=1",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.achi.lg.jp/life/1/12/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=1",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.achi.lg.jp/life/1/12/23/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=1",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.achi.lg.jp/site/gender-equality/bosai-hukko.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=6&amp;inq=05&lif_id=17165",
+"お問い合わせはこちらから"
+],
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=1",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.achi.lg.jp/soshiki/2/steam-006.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=8142",
+"お問い合わせはこちらから"
+],
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=1",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "消防防災係"
+},
+{
+"url": "https://www.vill.achi.lg.jp/site/achidoki/bousai-kodomo.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=3&amp;inq=06&lif_id=8382",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.achi.lg.jp/soshiki/2/bosaijoho.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=2&amp;inq=07&lif_id=8340",
+"お問い合わせはこちらから"
+],
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=1",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [
+"bousai.achi-vil@raiden2.ktaiwork.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.vill.achi.lg.jp/soshiki/2/2009-06-post-52.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=149",
+"お問い合わせはこちらから"
+],
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=1",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "消防防災係"
+},
+{
+"url": "https://www.vill.achi.lg.jp/soshiki/2/2009-06-post-54.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=151",
+"お問い合わせはこちらから"
+],
+[
+"https://www.vill.achi.lg.jp/form/detail.php?sec_sec1=1",
+"メールでのお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "消防防災係"
+}
+]
+}

@@ -1,0 +1,56 @@
+{
+"pref": "長野県",
+"name": "上松町",
+"code": "204226",
+"url": "https://www.town.agematsu.nagano.jp/",
+"found": [
+{
+"url": "https://www.town.agematsu.nagano.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.agematsu.nagano.jp/otoiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.agematsu.nagano.jp/kurashi/anzen_anshin/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.agematsu.nagano.jp/otoiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.agematsu.nagano.jp/kurashi/anzen_anshin/bosai/bousai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.agematsu.nagano.jp/otoiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.town.agematsu.nagano.jp/kurashi/anzen_anshin/bosai/hinanjo.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.agematsu.nagano.jp/otoiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+}
+]
+}

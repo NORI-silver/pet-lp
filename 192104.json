@@ -1,0 +1,216 @@
+{
+"pref": "山梨県",
+"name": "甲斐市",
+"code": "192104",
+"url": "https://www.city.kai.yamanashi.jp/",
+"found": [
+{
+"url": "https://www.city.kai.yamanashi.jp/page/13722.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/form/detail.php?sec_sec1=17&amp;inq=03&lif_id=13722",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kai.yamanashi.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kai.yamanashi.jp/life/1/11/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "甲斐市自主防災組織関係"
+},
+{
+"url": "https://www.city.kai.yamanashi.jp/page/19788.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kai.yamanashi.jp/page/19785.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/form/detail.php?sec_sec1=31&amp;inq=02&lif_id=19785",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災減災係"
+},
+{
+"url": "https://www.city.kai.yamanashi.jp/page/17724.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/form/detail.php?sec_sec1=31&amp;inq=02&lif_id=17724",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [
+"bousai@city.kai.yamanashi.jp"
+],
+"dept": "防災減災係"
+},
+{
+"url": "https://www.city.kai.yamanashi.jp/life/1/11/51/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kai.yamanashi.jp/page/16553.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/form/detail.php?sec_sec1=31&amp;inq=02&lif_id=16553",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災減災係"
+},
+{
+"url": "https://www.city.kai.yamanashi.jp/page/3329.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/form/detail.php?sec_sec1=31&amp;inq=02&lif_id=3329",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災減災係"
+},
+{
+"url": "https://www.city.kai.yamanashi.jp/page/16407.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/form/detail.php?sec_sec1=31&amp;inq=02&lif_id=16407",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [
+"bousai@city.kai.yamanashi.jp"
+],
+"dept": "防災減災係"
+},
+{
+"url": "https://www.city.kai.yamanashi.jp/life/1/11/52/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "甲斐市自主防災組織関係"
+},
+{
+"url": "https://www.city.kai.yamanashi.jp/page/3337.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/form/detail.php?sec_sec1=31&amp;inq=02&lif_id=3337",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災減災係"
+},
+{
+"url": "https://www.city.kai.yamanashi.jp/page/4355.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/form/detail.php?sec_sec1=23&amp;inq=02&lif_id=4355",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.kai.yamanashi.jp/soshiki/11.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kai.yamanashi.jp/form/detail.php?sec_sec1=31",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.kai.yamanashi.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+}
+]
+}

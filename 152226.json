@@ -1,0 +1,114 @@
+{
+"pref": "新潟県",
+"name": "上越市",
+"code": "152226",
+"url": "https://www.city.joetsu.niigata.jp/",
+"found": [
+{
+"url": "https://www.city.joetsu.niigata.jp/site/bousai/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.joetsu.niigata.jp/form/detail.php?sec_sec1=145&lif_id=250829",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.joetsu.niigata.jp/life/1/8/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "原子力防災対策室"
+},
+{
+"url": "https://www.city.joetsu.niigata.jp/site/bousai/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.joetsu.niigata.jp/form/detail.php?sec_sec1=145&lif_id=250829",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.joetsu.niigata.jp/soshiki/kikikanri/refuge.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.joetsu.niigata.jp/soshiki/kikikanri/guidebook-hinanjomap.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.joetsu.niigata.jp/soshiki/kikikanri/tsunami-hazard.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.joetsu.niigata.jp/soshiki/kikikanri/dosya-hazard.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.joetsu.niigata.jp/soshiki/kikikanri/kozui-hazard.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.joetsu.niigata.jp/soshiki/kikikanri/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.joetsu.niigata.jp/form/detail.php?sec_sec1=145",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.joetsu.niigata.jp/site/bousai/jishinsaigai.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "原子力防災対策室"
+},
+{
+"url": "https://www.city.joetsu.niigata.jp/site/bousai/tsunamisaigai.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "原子力防災対策室"
+},
+{
+"url": "https://www.city.joetsu.niigata.jp/site/bousai/dosyasaigai.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "原子力防災対策室"
+},
+{
+"url": "https://www.city.joetsu.niigata.jp/site/bousai/genshiryokusaigai.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "原子力防災対策室"
+}
+]
+}

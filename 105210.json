@@ -1,0 +1,44 @@
+{
+"pref": "群馬県",
+"name": "板倉町",
+"code": "105210",
+"url": "https://www.town.itakura.gunma.jp/",
+"found": [
+{
+"url": "https://www.town.itakura.gunma.jp/cont/s010000/d010010/20150827144531.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.itakura.gunma.jp/inquiry/inquiry/SITE000000000000000014.html",
+"メールで問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.itakura.gunma.jp/cont/s010000/d010010/20241008155816.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.itakura.gunma.jp/inquiry/inquiry/SITE000000000000000014.html",
+"メールで問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.itakura.gunma.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.itakura.gunma.jp/inquiry/iken/index.html",
+"町へのご意見"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

@@ -1,0 +1,126 @@
+{
+"pref": "北海道",
+"name": "羽幌町",
+"code": "014842",
+"url": "https://www.town.haboro.lg.jp/",
+"found": [
+{
+"url": "https://www.town.haboro.lg.jp/kurashi/kankyo/pet/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.haboro.lg.jp/form/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.haboro.lg.jp/kurashi/kankyo/pet/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.haboro.lg.jp/form/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.haboro.lg.jp/kurashi/kankyo/pet/petto.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.haboro.lg.jp/form/choumin_kankyoueiseigakari.html",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.haboro.lg.jp/form/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.haboro.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.haboro.lg.jp/form/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.haboro.lg.jp/kurashi/bousai-bouhan/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.haboro.lg.jp/form/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.haboro.lg.jp/news/R8_news/2026-1112-1254-20.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.haboro.lg.jp/form/soumu_soumugakari.html",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.haboro.lg.jp/form/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課総務係"
+},
+{
+"url": "https://www.town.haboro.lg.jp//kurashi/bousai-bouhan/bousai_map/hazardmap/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.haboro.lg.jp/kurashi/bousai-bouhan/bousai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.haboro.lg.jp/form/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.haboro.lg.jp/kurashi/bousai-bouhan/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.haboro.lg.jp/form/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.haboro.lg.jp/kurashi/bousai-bouhan/bousai_map/hazardmap/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

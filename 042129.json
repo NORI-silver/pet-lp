@@ -1,0 +1,104 @@
+{
+"pref": "宮城県",
+"name": "登米市",
+"code": "042129",
+"url": "https://www.city.tome.miyagi.jp/",
+"found": [
+{
+"url": "https://www.city.tome.miyagi.jp/somu-somu/kurashi/anzen/bosai/bosaijoho/index.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"somu-bousai@city.tome.miyagi.jp"
+],
+"dept": "防災危機対策室"
+},
+{
+"url": "https://www.city.tome.miyagi.jp/somu-somu/kurashi/anzen/bosai/bosaijoho/miyagikenbousaisidouin.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"somu-bousai@city.tome.miyagi.jp"
+],
+"dept": "登米市総務部防災危機対策室"
+},
+{
+"url": "https://www.city.tome.miyagi.jp/somu-somu/kurashi/anzen/bosai/bosaijoho/miyagikenbousaisidouinfollowupkousyuu.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"somu-bousai@city.tome.miyagi.jp"
+],
+"dept": "登米市総務部防災危機対策室"
+},
+{
+"url": "https://www.city.tome.miyagi.jp/kurashi/anzen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tome.miyagi.jp/syobosomu/kurashi/anzen/shobo/soshiki/toiawase.html",
+"消防本部・問い合わせ"
+]
+],
+"mails": [],
+"dept": "米市消防団女性分団による防災教室"
+},
+{
+"url": "https://www.city.tome.miyagi.jp/kurashi/anzen/bosaichiran.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tome.miyagi.jp/syobosomu/kurashi/anzen/shobo/soshiki/toiawase.html",
+"消防本部・問い合わせ"
+]
+],
+"mails": [],
+"dept": "米市消防団女性分団による防災教室"
+},
+{
+"url": "https://www.city.tome.miyagi.jp/somu-somu/kurashi/anzen/bosai/bosaijoho/hinanjyouhounohenkou.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"somu-bousai@city.tome.miyagi.jp"
+],
+"dept": "防災危機対策室"
+},
+{
+"url": "https://www.city.tome.miyagi.jp/somu-somu/kurashi/anzen/bosai/saigai/dosyasaigaikikennkasyo.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"somu-bousai@city.tome.miyagi.jp"
+],
+"dept": "防災危機対策室"
+},
+{
+"url": "https://www.city.tome.miyagi.jp/somu-somu/kurashi/anzen/bosai/bosaijoho/bousai-kisochishiki.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"somu-bousai@city.tome.miyagi.jp"
+],
+"dept": "防災危機対策室"
+},
+{
+"url": "https://www.city.tome.miyagi.jp/somu-somu/kurashi/anzen/bosai/yobo/dengondaiyaru.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"somu-bousai@city.tome.miyagi.jp"
+],
+"dept": "防災危機対策室"
+},
+{
+"url": "https://www.city.tome.miyagi.jp/somu-somu/kurashi/anzen/bosai/bosaijoho/safety-tips.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"somu-bousai@city.tome.miyagi.jp"
+],
+"dept": "防災危機対策室"
+}
+]
+}

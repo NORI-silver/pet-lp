@@ -1,0 +1,110 @@
+{
+"pref": "石川県",
+"name": "かほく市",
+"code": "172090",
+"url": "https://www.city.kahoku.lg.jp/",
+"found": [
+{
+"url": "https://www.city.kahoku.lg.jp/001/105/d010387.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kahoku.lg.jp/inquiry/mailform999000.html",
+"お問い合わせ"
+],
+[
+"https://www.city.kahoku.lg.jp/inquiry/mailform200200.html?PAGE_NO=10387",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "防災環境対策課"
+},
+{
+"url": "https://www.city.kahoku.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kahoku.lg.jp/inquiry/mailform999000.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kahoku.lg.jp/001/177/187/d000443.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kahoku.lg.jp/inquiry/mailform999000.html",
+"お問い合わせ"
+],
+[
+"https://www.city.kahoku.lg.jp/inquiry/mailform200200.html?PAGE_NO=443",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "防災環境対策課"
+},
+{
+"url": "https://www.city.kahoku.lg.jp/010/018/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kahoku.lg.jp/inquiry/mailform999000.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kahoku.lg.jp/001/189/190/d011203.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kahoku.lg.jp/inquiry/mailform999000.html",
+"お問い合わせ"
+],
+[
+"https://www.city.kahoku.lg.jp/inquiry/mailform200200.html?PAGE_NO=11203",
+"お問い合わせフォーム"
+]
+],
+"mails": [
+"kankyou@city.kahoku.lg.jp"
+],
+"dept": "防災環境対策課"
+},
+{
+"url": "https://www.city.kahoku.lg.jp/001/177/183/d010064.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kahoku.lg.jp/inquiry/mailform999000.html",
+"お問い合わせ"
+],
+[
+"https://www.city.kahoku.lg.jp/inquiry/mailform200200.html?PAGE_NO=10064",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "防災環境対策課"
+},
+{
+"url": "https://www.city.kahoku.lg.jp/001/177/187/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kahoku.lg.jp/inquiry/mailform999000.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

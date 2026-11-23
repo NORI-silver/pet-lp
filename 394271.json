@@ -1,0 +1,27 @@
+{
+"pref": "高知県",
+"name": "三原村",
+"code": "394271",
+"url": "https://www.vill.mihara.kochi.jp/",
+"found": [
+{
+"url": "https://www.vill.mihara.kochi.jp/life/list.php?hdnKeyword=%E9%98%B2%E7%81%BD&hdnSKBN=E",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.vill.mihara.kochi.jp/life/detail.php?hdnKey=101",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.mihara.kochi.jp/mail/?hdnKey=101",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

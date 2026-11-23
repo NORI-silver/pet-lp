@@ -1,0 +1,161 @@
+{
+"pref": "熊本県",
+"name": "山鹿市",
+"code": "432083",
+"url": "https://www.city.yamaga.kumamoto.jp/www/toppage/0000000000000/APM03000.html",
+"found": [
+{
+"url": "https://www.city.yamaga.kumamoto.jp/list00162.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.yamaga.kumamoto.jp/classset002.html",
+"HPへのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.yamaga.kumamoto.jp/kiji003934/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.yamaga.kumamoto.jp/classset002.html",
+"HPへのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.yamaga.kumamoto.jp/kiji003602/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.yamaga.kumamoto.jp/classset002.html",
+"HPへのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.yamaga.kumamoto.jp/default.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.yamaga.kumamoto.jp/classset002.html",
+"HPへのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.yamaga.kumamoto.jp/list00111.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.yamaga.kumamoto.jp/classset002.html",
+"HPへのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.yamaga.kumamoto.jp/bousai/default.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災監理課"
+},
+{
+"url": "https://www.city.yamaga.kumamoto.jp/kiji0033145/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.yamaga.kumamoto.jp/classset002.html",
+"HPへのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.yamaga.kumamoto.jp/kiji0033173/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.yamaga.kumamoto.jp/classset002.html",
+"HPへのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.yamaga.kumamoto.jp/kiji0032205/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.yamaga.kumamoto.jp/classset002.html",
+"HPへのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.yamaga.kumamoto.jp/kiji0033133/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.yamaga.kumamoto.jp/classset002.html",
+"HPへのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.yamaga.kumamoto.jp/kiji0033020/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.yamaga.kumamoto.jp/classset002.html",
+"HPへのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.yamaga.kumamoto.jp/kiji0032997/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.yamaga.kumamoto.jp/classset002.html",
+"HPへのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.yamaga.kumamoto.jp/bousai/list00302.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災監理課"
+},
+{
+"url": "https://www.city.yamaga.kumamoto.jp/bousai/list00303.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災監理課"
+}
+]
+}

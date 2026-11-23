@@ -1,0 +1,166 @@
+{
+"pref": "北海道",
+"name": "えりも町",
+"code": "016098",
+"url": "https://www.town.erimo.lg.jp/",
+"found": [
+{
+"url": "https://www.town.erimo.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.erimo.lg.jp/section/kikaku/sg6h94000000h5cs.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php?channel=main&secID=u9c3nn00000000ce",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.erimo.lg.jp/section/kikaku/u9c3nn0000000f6d.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php?channel=main&secID=u9c3nn00000000ce",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.erimo.lg.jp/section/kikaku/sg6h940000007ldt.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php?channel=main&secID=u9c3nn00000000ce",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.erimo.lg.jp/section/kikaku/sg6h940000000vk7.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php?channel=main&secID=u9c3nn00000000ce",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.erimo.lg.jp/section/kikaku/sg6h940000007g3p.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php?channel=main&secID=u9c3nn00000000ce",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.erimo.lg.jp/section/kikaku/sg6h94000000bv1h.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php?channel=main&secID=u9c3nn00000000ce",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php",
+"問い合わせ"
+]
+],
+"mails": [
+"erimo-kikaku@town.erimo.lg.jp"
+],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.erimo.lg.jp/section/kikaku/sg6h94000000c7oz.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php?channel=main&secID=u9c3nn00000000ce",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.erimo.lg.jp/section/kikaku/sg6h940000008o1q.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php?channel=main&secID=u9c3nn00000000ce",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.erimo.lg.jp/section/kikaku/sg6h940000007zjx.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php?channel=main&secID=u9c3nn00000000ce",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.erimo.lg.jp/form/inquiry.php",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+}
+]
+}

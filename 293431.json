@@ -1,0 +1,76 @@
+{
+"pref": "奈良県",
+"name": "三郷町",
+"code": "293431",
+"url": "https://www.town.sango.nara.jp/",
+"found": [
+{
+"url": "https://www.town.sango.nara.jp/life/1/7/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.sango.nara.jp/form/detail.php?sec_sec1=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sango.nara.jp/life/1/7/40/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.sango.nara.jp/form/detail.php?sec_sec1=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sango.nara.jp/soshiki/16/2127.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.sango.nara.jp/form/detail.php?sec_sec1=16&lif_id=2127",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.sango.nara.jp/form/detail.php?sec_sec1=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sango.nara.jp/soshiki/16/1823.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.sango.nara.jp/form/detail.php?sec_sec1=16&lif_id=14154",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.sango.nara.jp/form/detail.php?sec_sec1=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sango.nara.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.sango.nara.jp/form/detail.php?sec_sec1=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

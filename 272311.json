@@ -1,0 +1,65 @@
+{
+"pref": "大阪府",
+"name": "大阪狭山市",
+"code": "272311",
+"url": "https://www.city.osakasayama.osaka.jp/",
+"found": [
+{
+"url": "https://www.city.osakasayama.osaka.jp/sosiki/kikikanri/4/7/6405.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.osakasayama.osaka.jp/cgi-bin/inquiry.php/38?page_no=6405",
+"問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.osakasayama.osaka.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.osakasayama.osaka.jp/1/index.html",
+"市への意見・提案・問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.osakasayama.osaka.jp/sosiki/kikikanri/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.osakasayama.osaka.jp/sosiki/kikikanri/4/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.osakasayama.osaka.jp/sosiki/kikikanri/4/7/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.osakasayama.osaka.jp/event_news/9391.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.osakasayama.osaka.jp/cgi-bin/inquiry.php/38?page_no=9391",
+"問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+}
+]
+}

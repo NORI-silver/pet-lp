@@ -1,0 +1,71 @@
+{
+"pref": "群馬県",
+"name": "富岡市",
+"code": "102105",
+"url": "https://www.city.tomioka.lg.jp/www/index.html",
+"found": [
+{
+"url": "https://www.city.tomioka.lg.jp/www/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tomioka.lg.jp/www/contents/1613976720640/index.html",
+"業務に関する問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tomioka.lg.jp/www/contents/1724291850201/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務部危機管理課"
+},
+{
+"url": "https://www.city.tomioka.lg.jp/www/contents/1426464544469/index.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"tomioka-city@city.tomioka.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.tomioka.lg.jp/www/contents/1000000000161/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.tomioka.lg.jp/www/contents/1717466848853/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.tomioka.lg.jp/www/contents/1706505231972/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.tomioka.lg.jp/www/contents/1782274210269/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.tomioka.lg.jp/www/contents/1648624580289/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+}
+]
+}

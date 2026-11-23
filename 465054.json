@@ -1,0 +1,180 @@
+{
+"pref": "鹿児島県",
+"name": "屋久島町",
+"code": "465054",
+"url": "https://www.town.yakushima.kagoshima.jp/",
+"found": [
+{
+"url": "https://www.town.yakushima.kagoshima.jp/kurashi_tetsuzuki/gomi_kankyo_pet/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/26",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yakushima.kagoshima.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/26",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yakushima.kagoshima.jp/kurashi_tetsuzuki/bosai_anzen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/26",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yakushima.kagoshima.jp/kurashi_tetsuzuki/bosai_anzen/bosaijoho/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/26",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yakushima.kagoshima.jp/kurashi_tetsuzuki/bosai_anzen/bosai_keikaku/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/26",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yakushima.kagoshima.jp/kurashi_tetsuzuki/bosai_anzen/bosaijoho/2374.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/1?page_no=2374",
+"総務課へのお問い合わせ"
+],
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/26",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yakushima.kagoshima.jp/kurashi_tetsuzuki/bosai_anzen/bosaijoho/2376.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/1?page_no=2376",
+"総務課へのお問い合わせ"
+],
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/26",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yakushima.kagoshima.jp/kurashi_tetsuzuki/bosai_anzen/bosaijoho/1641.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/1?page_no=1641",
+"総務課へのお問い合わせ"
+],
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/26",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yakushima.kagoshima.jp/kurashi_tetsuzuki/bosai_anzen/bosaijoho/2494.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/1?page_no=2494",
+"総務課へのお問い合わせ"
+],
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/26",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yakushima.kagoshima.jp/kurashi_tetsuzuki/bosai_anzen/bosaijoho/2780.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/1?page_no=2780",
+"総務課へのお問い合わせ"
+],
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/26",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yakushima.kagoshima.jp/kurashi_tetsuzuki/bosai_anzen/bosai_keikaku/2373.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/1?page_no=2373",
+"総務課へのお問い合わせ"
+],
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/26",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yakushima.kagoshima.jp/kurashi_tetsuzuki/bosai_anzen/bosai_keikaku/2922.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/1?page_no=2922",
+"総務課へのお問い合わせ"
+],
+[
+"https://www.town.yakushima.kagoshima.jp/cgi-bin/inquiry.php/26",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

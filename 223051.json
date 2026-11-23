@@ -1,0 +1,48 @@
+{
+"pref": "静岡県",
+"name": "松崎町",
+"code": "223051",
+"url": "https://www.town.matsuzaki.shizuoka.jp/",
+"found": [
+{
+"url": "https://www.town.matsuzaki.shizuoka.jp/categories/guide/kurashi/dobutsu/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.matsuzaki.shizuoka.jp/docs/2016020400919/",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.matsuzaki.shizuoka.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.matsuzaki.shizuoka.jp/docs/2016020400919/",
+"各課のお問い合わせ先"
+],
+[
+"https://www.town.matsuzaki.shizuoka.jp/docs/2016020400919/",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.matsuzaki.shizuoka.jp/bousai_camera/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.matsuzaki.shizuoka.jp/docs/2016020400919/",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

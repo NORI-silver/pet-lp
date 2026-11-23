@@ -1,0 +1,44 @@
+{
+"pref": "沖縄県",
+"name": "西原町",
+"code": "473294",
+"url": "https://www.town.nishihara.okinawa.jp/",
+"found": [
+{
+"url": "https://www.town.nishihara.okinawa.jp/soshiki/4/12762.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nishihara.okinawa.jp/form/detail.php?sec_sec1=2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.town.nishihara.okinawa.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nishihara.okinawa.jp/form/detail.php?sec_sec1=2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nishihara.okinawa.jp/soshiki/4/1536.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nishihara.okinawa.jp/form/detail.php?sec_sec1=2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+}
+]
+}

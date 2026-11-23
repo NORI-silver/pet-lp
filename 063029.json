@@ -1,0 +1,68 @@
+{
+"pref": "山形県",
+"name": "中山町",
+"code": "063029",
+"url": "https://www.town.nakayama.yamagata.jp/",
+"found": [
+{
+"url": "https://www.town.nakayama.yamagata.jp/kurashi_navi/gomi_recycle/1569.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.nakayama.yamagata.jp/cgi-bin/inquiry.php/1?page_no=1569",
+"メールフォームからのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nakayama.yamagata.jp/kurashi/gomi_recycle/977.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.nakayama.yamagata.jp/cgi-bin/inquiry.php/1?page_no=977",
+"メールフォームからのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nakayama.yamagata.jp/soshiki/jumin_zeimu/jumin/228.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.nakayama.yamagata.jp/cgi-bin/inquiry.php/1?page_no=228",
+"メールフォームからのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nakayama.yamagata.jp/",
+"bousai": false,
+"forms": [
+[
+"http://www.town.nakayama.yamagata.jp/kinkyu/3204.html",
+"PHP脆弱性対応に係る問い合わせフォーム等一部機能の停止につ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nakayama.yamagata.jp/kurashi/anshin_anzen/1022.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nakayama.yamagata.jp/cgi-bin/inquiry.php/1?page_no=1022",
+"メールフォームからのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全対策室"
+}
+]
+}

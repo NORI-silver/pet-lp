@@ -1,0 +1,74 @@
+{
+"pref": "神奈川県",
+"name": "開成町",
+"code": "143669",
+"url": "https://www.town.kaisei.kanagawa.jp/forms/top/top.aspx",
+"found": [
+{
+"url": "https://www.town.kaisei.kanagawa.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kaisei.kanagawa.jp/forms/contactaccept/edit/div/16",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kaisei.kanagawa.jp/menu/8",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kaisei.kanagawa.jp/forms/contactaccept/edit/div/16",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "地域防災課"
+},
+{
+"url": "https://www.town.kaisei.kanagawa.jp/info/2029",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "地域防災課"
+},
+{
+"url": "https://www.town.kaisei.kanagawa.jp/info/31",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "地域防災課"
+},
+{
+"url": "https://www.town.kaisei.kanagawa.jp/info/1503",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "地域防災課"
+},
+{
+"url": "https://www.town.kaisei.kanagawa.jp/info/267",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "地域防災課"
+},
+{
+"url": "https://www.town.kaisei.kanagawa.jp/info/1471",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "地域防災課"
+},
+{
+"url": "https://www.town.kaisei.kanagawa.jp/info/1036",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "地域防災課"
+}
+]
+}

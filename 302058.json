@@ -1,0 +1,194 @@
+{
+"pref": "和歌山県",
+"name": "御坊市",
+"code": "302058",
+"url": "https://www.city.gobo.lg.jp/",
+"found": [
+{
+"url": "https://www.city.gobo.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gobo.lg.jp/sosiki/kikakuseisaku/hisyo/tanto/1385102941901.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gobo.lg.jp/1383810580069.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gobo.lg.jp/sosiki/kikakuseisaku/hisyo/tanto/1385102941901.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gobo.lg.jp/kurasi/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gobo.lg.jp/sosiki/kikakuseisaku/hisyo/tanto/1385102941901.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gobo.lg.jp/topics/8817.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gobo.lg.jp/cgi-bin/inquiry.php/8?page_no=8817",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.gobo.lg.jp/sosiki/kikakuseisaku/hisyo/tanto/1385102941901.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.gobo.lg.jp/sosiki/somu/bosai/tanto/bousaisaigai/1382582780042.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gobo.lg.jp/cgi-bin/inquiry.php/8?page_no=2702",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.gobo.lg.jp/sosiki/kikakuseisaku/hisyo/tanto/1385102941901.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.gobo.lg.jp/sosiki/somu/bosai/tanto/bousaisaigai/kyoujo/1382668627382.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gobo.lg.jp/cgi-bin/inquiry.php/8?page_no=1955",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.gobo.lg.jp/sosiki/kikakuseisaku/hisyo/tanto/1385102941901.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.gobo.lg.jp/kurasi/bosai/news/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gobo.lg.jp/sosiki/kikakuseisaku/hisyo/tanto/1385102941901.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gobo.lg.jp/kurasi/bosai/1456714621720.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gobo.lg.jp/cgi-bin/inquiry.php/8?page_no=3179",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.gobo.lg.jp/sosiki/kikakuseisaku/hisyo/tanto/1385102941901.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.gobo.lg.jp/kurasi/bosai/1616461759481.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gobo.lg.jp/cgi-bin/inquiry.php/8?page_no=3180",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.gobo.lg.jp/sosiki/kikakuseisaku/hisyo/tanto/1385102941901.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"gobo-city@raiden3.ktaiwork.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.gobo.lg.jp/kurasi/bosai/1621243503791.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gobo.lg.jp/cgi-bin/inquiry.php/8?page_no=3181",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.gobo.lg.jp/sosiki/kikakuseisaku/hisyo/tanto/1385102941901.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.gobo.lg.jp/sosiki/somu/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gobo.lg.jp/cgi-bin/inquiry.php/8?page_no=372",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.gobo.lg.jp/sosiki/kikakuseisaku/hisyo/tanto/1385102941901.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.gobo.lg.jp/sosiki/somu/bosai/tanto/bousaisaigai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gobo.lg.jp/sosiki/kikakuseisaku/hisyo/tanto/1385102941901.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.gobo.lg.jp/sosiki/somu/bosai/tanto/bousaisaigai/kyoujo/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gobo.lg.jp/sosiki/kikakuseisaku/hisyo/tanto/1385102941901.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+}
+]
+}

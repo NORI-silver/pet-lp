@@ -1,0 +1,47 @@
+{
+"pref": "福岡県",
+"name": "桂川町",
+"code": "404217",
+"url": "https://www.town.keisen.fukuoka.jp/",
+"found": [
+{
+"url": "https://www.town.keisen.fukuoka.jp/kurashi/benri/pet.php",
+"bousai": true,
+"forms": [],
+"mails": [
+"info@town.keisen.fukuoka.jp",
+"kankyo@town.keisen.fukuoka.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.keisen.fukuoka.jp/",
+"bousai": false,
+"forms": [],
+"mails": [
+"info@town.keisen.fukuoka.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.keisen.fukuoka.jp/kurashi/benri/mamorukun.php",
+"bousai": true,
+"forms": [],
+"mails": [
+"info@town.keisen.fukuoka.jp",
+"soumu@town.keisen.fukuoka.jp"
+],
+"dept": "桂川町役場総務課庶務係"
+},
+{
+"url": "https://www.town.keisen.fukuoka.jp/kurashi/benri/teiden.php",
+"bousai": true,
+"forms": [],
+"mails": [
+"info@town.keisen.fukuoka.jp",
+"soumu@town.keisen.fukuoka.jp"
+],
+"dept": "桂川町役場総務課庶務係"
+}
+]
+}

@@ -1,0 +1,104 @@
+{
+"pref": "新潟県",
+"name": "五泉市",
+"code": "152188",
+"url": "https://www.city.gosen.lg.jp/",
+"found": [
+{
+"url": "https://www.city.gosen.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.gosen.lg.jp/contact",
+"お問い合わせ"
+],
+[
+"https://www.city.gosen.lg.jp/contact",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gosen.lg.jp/organization/12/8/13562.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gosen.lg.jp/contact",
+"お問い合わせ"
+],
+[
+"https://www.city.gosen.lg.jp/contact",
+"お問い合わせ"
+],
+[
+"https://www.city.gosen.lg.jp/cgi-bin/inquiry.php/21",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gosen.lg.jp/municipal_administration/3/8/6564.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gosen.lg.jp/contact",
+"お問い合わせ"
+],
+[
+"https://www.city.gosen.lg.jp/contact",
+"お問い合わせ"
+],
+[
+"https://www.city.gosen.lg.jp/cgi-bin/inquiry.php/1",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.gosen.lg.jp/event_recruitment/2708.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gosen.lg.jp/contact",
+"お問い合わせ"
+],
+[
+"https://www.city.gosen.lg.jp/contact",
+"お問い合わせ"
+],
+[
+"https://www.city.gosen.lg.jp/cgi-bin/inquiry.php/8",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gosen.lg.jp/info/13408.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gosen.lg.jp/contact",
+"お問い合わせ"
+],
+[
+"https://www.city.gosen.lg.jp/contact",
+"お問い合わせ"
+],
+[
+"https://www.city.gosen.lg.jp/cgi-bin/inquiry.php/8",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

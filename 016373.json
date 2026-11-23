@@ -1,0 +1,68 @@
+{
+"pref": "北海道",
+"name": "芽室町",
+"code": "016373",
+"url": "https://www.memuro.net/",
+"found": [
+{
+"url": "https://www.memuro.net/",
+"bousai": true,
+"forms": [
+[
+"https://www.memuro.net/contact/contact.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.memuro.net/life/bousai-anzen/",
+"bousai": true,
+"forms": [
+[
+"https://www.memuro.net/contact/contact.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.memuro.net/administration/soshiki/soumu/bousai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.memuro.net/contact/contact.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.memuro.net/administration/soshiki/soumu/bousai/",
+"bousai": true,
+"forms": [
+[
+"https://www.memuro.net/contact/contact.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.memuro.net/administration/soshiki/soumu/bousai/kikenkasyo.html",
+"bousai": true,
+"forms": [
+[
+"https://www.memuro.net/contact/contact.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

@@ -1,0 +1,56 @@
+{
+"pref": "福岡県",
+"name": "古賀市",
+"code": "402231",
+"url": "https://www.city.koga.fukuoka.jp/",
+"found": [
+{
+"url": "https://www.city.koga.fukuoka.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.koga.fukuoka.jp/question/",
+"各課へのお問い合わせ・ご意見"
+],
+[
+"https://www.city.koga.fukuoka.jp/question/",
+"お問い合わせ・ご意見"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.koga.fukuoka.jp/cityhall/work/kikikanri/saigai/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.koga.fukuoka.jp/question/",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.koga.fukuoka.jp/question/",
+"お問い合わせ・ご意見"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.koga.fukuoka.jp/cityhall/work/kikikanri/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.koga.fukuoka.jp/question/",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.koga.fukuoka.jp/question/",
+"お問い合わせ・ご意見"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+}
+]
+}

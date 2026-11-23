@@ -1,0 +1,72 @@
+{
+"pref": "青森県",
+"name": "新郷村",
+"code": "024503",
+"url": "https://www.vill.shingo.aomori.jp/",
+"found": [
+{
+"url": "https://www.vill.shingo.aomori.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.shingo.aomori.jp/top/formmail/",
+"お問い合わせ"
+],
+[
+"https://www.vill.shingo.aomori.jp/top/formmail/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.shingo.aomori.jp/public/anzeneisei/page-29097/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.shingo.aomori.jp/top/formmail/",
+"お問い合わせ"
+],
+[
+"https://www.vill.shingo.aomori.jp/top/formmail/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.shingo.aomori.jp/public/ogani/",
+"bousai": false,
+"forms": [
+[
+"https://www.vill.shingo.aomori.jp/top/formmail/",
+"お問い合わせ"
+],
+[
+"https://www.vill.shingo.aomori.jp/top/formmail/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.shingo.aomori.jp/public/anzeneisei/kouzuimap/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.shingo.aomori.jp/top/formmail/",
+"お問い合わせ"
+],
+[
+"https://www.vill.shingo.aomori.jp/top/formmail/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

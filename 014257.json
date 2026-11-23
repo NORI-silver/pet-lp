@@ -1,0 +1,32 @@
+{
+"pref": "北海道",
+"name": "上砂川町",
+"code": "014257",
+"url": "https://town.kamisunagawa.hokkaido.jp/",
+"found": [
+{
+"url": "https://town.kamisunagawa.hokkaido.jp/kurashi_tetsuzuki/seikatsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://town.kamisunagawa.hokkaido.jp/cgi-bin/inquiry.php/1?page_no=51",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://town.kamisunagawa.hokkaido.jp/",
+"bousai": false,
+"forms": [
+[
+"https://town.kamisunagawa.hokkaido.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

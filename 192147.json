@@ -1,0 +1,76 @@
+{
+"pref": "山梨県",
+"name": "中央市",
+"code": "192147",
+"url": "https://www.city.chuo.yamanashi.jp/",
+"found": [
+{
+"url": "https://www.city.chuo.yamanashi.jp/kurashi/kankyou/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.chuo.yamanashi.jp/toiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.chuo.yamanashi.jp/kurashi/kankyou/pet/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.chuo.yamanashi.jp/toiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.chuo.yamanashi.jp/kurashi/kankyou/pet/7054.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.chuo.yamanashi.jp/cgi-bin/inquiry.php/84?page_no=7054",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.chuo.yamanashi.jp/toiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.chuo.yamanashi.jp/kurashi/kankyou/pet/7057.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.chuo.yamanashi.jp/cgi-bin/inquiry.php/84?page_no=7057",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.chuo.yamanashi.jp/toiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.chuo.yamanashi.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.chuo.yamanashi.jp/toiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

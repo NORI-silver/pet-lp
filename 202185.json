@@ -1,0 +1,113 @@
+{
+"pref": "長野県",
+"name": "千曲市",
+"code": "202185",
+"url": "https://www.city.chikuma.lg.jp/",
+"found": [
+{
+"url": "https://www.city.chikuma.lg.jp/soshiki/kankyo/pet_dobutsu/1/813.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chikuma.lg.jp/cgi-bin/inquiry.php/13?page_no=813",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "環境省自然環境局総務課動物愛護管理室"
+},
+{
+"url": "https://www.city.chikuma.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.chikuma.lg.jp/soshiki/johoseisaku/sodanmadoguchi/1406.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.chikuma.lg.jp/soshiki/kikikanribosai/bosai/4/917.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chikuma.lg.jp/cgi-bin/inquiry.php/6?page_no=917",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "危機管理防災課"
+},
+{
+"url": "https://www.city.chikuma.lg.jp/soshiki/kikikanribosai/bosai/4/908.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chikuma.lg.jp/cgi-bin/inquiry.php/6?page_no=908",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "危機管理防災課"
+},
+{
+"url": "https://www.city.chikuma.lg.jp/soshiki/kikikanribosai/bosai/4/5055.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chikuma.lg.jp/cgi-bin/inquiry.php/6?page_no=5055",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "危機管理防災課"
+},
+{
+"url": "https://www.city.chikuma.lg.jp/soshiki/kikikanribosai/bosai/4/3/7710.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chikuma.lg.jp/cgi-bin/inquiry.php/6?page_no=7710",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "危機管理防災課"
+},
+{
+"url": "https://www.city.chikuma.lg.jp/soshiki/kikikanribosai/bosai/4/1/909.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.chikuma.lg.jp/cgi-bin/inquiry.php/6?page_no=909",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "危機管理防災課"
+},
+{
+"url": "https://www.city.chikuma.lg.jp/soshiki/kikikanribosai/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理防災課"
+},
+{
+"url": "https://www.city.chikuma.lg.jp/soshiki/kikikanribosai/bosai/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理防災課"
+},
+{
+"url": "https://www.city.chikuma.lg.jp/soshiki/kikikanribosai/bosai/4/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理防災課"
+}
+]
+}

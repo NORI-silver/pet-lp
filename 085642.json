@@ -1,0 +1,232 @@
+{
+"pref": "茨城県",
+"name": "利根町",
+"code": "085642",
+"url": "https://www.town.tone.ibaraki.jp/",
+"found": [
+{
+"url": "https://www.town.tone.ibaraki.jp/kurashi/seikastukankyou/pet/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問合せ"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tone.ibaraki.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問合せ"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tone.ibaraki.jp/kurashi/emergency/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問合せ"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tone.ibaraki.jp/kurashi/emergency/page005590.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問合せ"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php?mode=detail&amp;code=46&amp;code2=74",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.tone.ibaraki.jp/kurashi/emergency/saigai/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問合せ"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tone.ibaraki.jp/kurashi/emergency/bousaimusen/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問合せ"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tone.ibaraki.jp/kurashi/emergency/bousai-useful-information/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問合せ"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tone.ibaraki.jp/kurashi/emergency/saigaikyoutei/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問合せ"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tone.ibaraki.jp/kurashi/emergency/bousaikeikaku/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問合せ"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tone.ibaraki.jp/kurashi/emergency/saigaihaikibutsu/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問合せ"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tone.ibaraki.jp/section.php?code=46",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問合せ"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php?mode=detail&amp;code=46&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.town.tone.ibaraki.jp/kurashi/emergency/bousai-useful-information/page006989.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問合せ"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php?mode=detail&amp;code=46&amp;code2=74",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.tone.ibaraki.jp/kurashi/emergency/bousai-useful-information/page001355.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問合せ"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php?mode=detail&amp;code=46&amp;code2=4",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.tone.ibaraki.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+}
+]
+}

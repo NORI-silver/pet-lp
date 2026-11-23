@@ -1,0 +1,116 @@
+{
+"pref": "秋田県",
+"name": "鹿角市",
+"code": "052094",
+"url": "https://www.city.kazuno.lg.jp/",
+"found": [
+{
+"url": "https://www.city.kazuno.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kazuno.lg.jp/cgi-bin/inquiry.php/66?page_no=1",
+"市へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kazuno.lg.jp/kurashi_tetuzuki/bosai_saigai/13574.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kazuno.lg.jp/cgi-bin/inquiry.php/4?page_no=13574",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.kazuno.lg.jp/kurashi_tetuzuki/bosai_saigai/1/13583.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kazuno.lg.jp/cgi-bin/inquiry.php/4?page_no=13583",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.kazuno.lg.jp/kurashi_tetuzuki/bosai_saigai/1/14128.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kazuno.lg.jp/cgi-bin/inquiry.php/18?page_no=14128",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kazuno.lg.jp/kurashi_tetuzuki/bosai_saigai/1/14173.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kazuno.lg.jp/cgi-bin/inquiry.php/4?page_no=14173",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.kazuno.lg.jp/kurashi_tetuzuki/bosai_saigai/2/3650.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kazuno.lg.jp/cgi-bin/inquiry.php/4?page_no=3650",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.kazuno.lg.jp/kurashi_tetuzuki/bosai_saigai/2/3870.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kazuno.lg.jp/cgi-bin/inquiry.php/4?page_no=3870",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.kazuno.lg.jp/kurashi_tetuzuki/bosai_saigai/3/8795.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kazuno.lg.jp/cgi-bin/inquiry.php/4?page_no=8795",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.kazuno.lg.jp/kurashi_tetuzuki/bosai_saigai/3/3867.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kazuno.lg.jp/cgi-bin/inquiry.php/4?page_no=3867",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+}
+]
+}

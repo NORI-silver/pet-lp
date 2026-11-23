@@ -1,0 +1,82 @@
+{
+"pref": "北海道",
+"name": "北竜町",
+"code": "014371",
+"url": "http://www.town.hokuryu.hokkaido.jp/",
+"found": [
+{
+"url": "https://www.town.hokuryu.hokkaido.jp/kurashi-category/pet/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hokuryu.hokkaido.jp/faq/",
+"よくあるお問い合わせ"
+]
+],
+"mails": [
+"info@town.hokuryu.hokkaido.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.hokuryu.hokkaido.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hokuryu.hokkaido.jp/faq/",
+"よくあるお問い合わせ"
+],
+[
+"https://www.town.hokuryu.hokkaido.jp/faq/",
+"よくあるお問い合わせ"
+]
+],
+"mails": [
+"info@town.hokuryu.hokkaido.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.hokuryu.hokkaido.jp/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hokuryu.hokkaido.jp/faq/",
+"よくあるお問い合わせ"
+]
+],
+"mails": [
+"info@town.hokuryu.hokkaido.jp"
+],
+"dept": "防災・管財係"
+},
+{
+"url": "https://www.town.hokuryu.hokkaido.jp/chosei/bosai-keikaku/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hokuryu.hokkaido.jp/faq/",
+"よくあるお問い合わせ"
+]
+],
+"mails": [
+"info@town.hokuryu.hokkaido.jp"
+],
+"dept": "防災・管財係"
+},
+{
+"url": "https://www.town.hokuryu.hokkaido.jp/chosei/hinan-plan/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hokuryu.hokkaido.jp/faq/",
+"よくあるお問い合わせ"
+]
+],
+"mails": [
+"info@town.hokuryu.hokkaido.jp"
+],
+"dept": null
+}
+]
+}

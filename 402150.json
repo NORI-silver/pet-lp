@@ -1,0 +1,76 @@
+{
+"pref": "福岡県",
+"name": "中間市",
+"code": "402150",
+"url": "https://www.city.nakama.lg.jp/",
+"found": [
+{
+"url": "https://www.city.nakama.lg.jp/site/bousai/7626.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nakama.lg.jp/form/detail.php?sec_sec1=7&amp;inq=02&lif_id=7626",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+},
+{
+"url": "https://www.city.nakama.lg.jp/site/bousai/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nakama.lg.jp/form/detail.php?sec_sec1=7&amp;inq=02&lif_id=3558",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+},
+{
+"url": "https://www.city.nakama.lg.jp/soshiki/16/21262.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nakama.lg.jp/form/detail.php?sec_sec1=16&amp;inq=02&lif_id=21262",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [
+"fukushishienka@city.nakama.lg.jp",
+"fukusikaikan@city.nakama.lg.jp",
+"syougaisyafukusi@city.nakama.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.nakama.lg.jp/soshiki/16/21173.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nakama.lg.jp/form/detail.php?sec_sec1=16&amp;inq=02&lif_id=21173",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [
+"fukushishienka@city.nakama.lg.jp",
+"fukusikaikan@city.nakama.lg.jp",
+"syougaisyafukusi@city.nakama.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.nakama.lg.jp/site/bousai/21208.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nakama.lg.jp/form/detail.php?sec_sec1=7&amp;inq=02&lif_id=21208",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+}
+]
+}

@@ -1,0 +1,260 @@
+{
+"pref": "福島県",
+"name": "二本松市",
+"code": "072109",
+"url": "https://www.city.nihonmatsu.lg.jp/",
+"found": [
+{
+"url": "https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/pet/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/pet/page001970.html",
+"よくあるお問合せQ&A"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/pet/page001904.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php?mode=detail&amp;code=6&amp;code2=15",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/pet/page001970.html",
+"よくあるお問合せQ&A"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nihonmatsu.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/bousai_saigai/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/bousai_saigai/bousai/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/bousai_saigai/bousai/page008861.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php?mode=detail&amp;code=6&amp;code2=14",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "生活防災係"
+},
+{
+"url": "https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/bousai_saigai/bousai/page008393.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php?mode=detail&amp;code=6&amp;code2=14",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "生活防災係"
+},
+{
+"url": "https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/bousai_saigai/bousai/page007456.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php?mode=detail&amp;code=6&amp;code2=14",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "生活防災係"
+},
+{
+"url": "https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/bousai_saigai/bousai/page006995.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php?mode=detail&amp;code=6&amp;code2=14",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "生活防災係"
+},
+{
+"url": "https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/bousai_saigai/bousai/page006092.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php?mode=detail&amp;code=6&amp;code2=14",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "生活防災係"
+},
+{
+"url": "https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/bousai_saigai/bousai/page012194.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php?mode=detail&amp;code=6&amp;code2=14",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "生活防災係"
+},
+{
+"url": "https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/bousai_saigai/bousai/page004286.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php?mode=detail&amp;code=6&amp;code2=14",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "生活防災係"
+},
+{
+"url": "https://www.city.nihonmatsu.lg.jp/kurashi_tetsuduki/bousai_saigai/bousai/page003563.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php?mode=detail&amp;code=6&amp;code2=14",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.city.nihonmatsu.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "生活防災係"
+}
+]
+}

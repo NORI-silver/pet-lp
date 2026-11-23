@@ -1,0 +1,160 @@
+{
+"pref": "長野県",
+"name": "佐久市",
+"code": "202177",
+"url": "https://www.city.saku.nagano.jp/",
+"found": [
+{
+"url": "https://www.city.saku.nagano.jp/kankyo_shizen/dobutsu_pet/pet/pettosaigai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=kankyoseisaku",
+"お問い合わせはこちらから"
+],
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=office",
+"市へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.saku.nagano.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=office",
+"市へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.saku.nagano.jp/kurashi/iza/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=office",
+"市へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.saku.nagano.jp/kurashi/iza/bosai_bohan/kyotei/ido/disaster-cooperate.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=kankyoseisaku",
+"お問い合わせはこちらから"
+],
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=office",
+"市へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.saku.nagano.jp/kurashi/iza/bosai_bohan/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=office",
+"市へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.saku.nagano.jp/kurashi/iza/bousai_apri/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=office",
+"市へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.saku.nagano.jp/kurashi/iza/typhoon/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=office",
+"市へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.saku.nagano.jp/kurashi/iza/earthquake/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=office",
+"市へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.saku.nagano.jp/kurashi/iza/oyuki_joho/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=office",
+"市へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.saku.nagano.jp/kurashi/iza/asamayama/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=office",
+"市へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.saku.nagano.jp/kurashi/iza/bosai_bohan/kyotei/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=office",
+"市へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.city.saku.nagano.jp/kurashi/iza/bosai_bohan/kyotei/ido/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saku.nagano.jp/cgi-bin/formmail/formmail.cgi?d=office",
+"市へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+}
+]
+}

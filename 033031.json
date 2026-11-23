@@ -1,0 +1,56 @@
+{
+"pref": "岩手県",
+"name": "岩手町",
+"code": "033031",
+"url": "https://town.iwate.iwate.jp/",
+"found": [
+{
+"url": "https://town.iwate.iwate.jp/town/cat-life/gomi-water/",
+"bousai": true,
+"forms": [
+[
+"https://town.iwate.iwate.jp/town/contact/inquiry_town/",
+"お問い合せはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://town.iwate.iwate.jp/",
+"bousai": false,
+"forms": [
+[
+"https://town.iwate.iwate.jp/town/contact/inquiry_town/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://town.iwate.iwate.jp/town/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://town.iwate.iwate.jp/town/contact/inquiry_town/",
+"お問い合せはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://town.iwate.iwate.jp/town/cat-bosai/bosai-2/",
+"bousai": true,
+"forms": [
+[
+"https://town.iwate.iwate.jp/town/contact/inquiry_town/",
+"お問い合せはこちら"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

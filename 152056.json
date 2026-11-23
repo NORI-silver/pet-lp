@@ -1,0 +1,60 @@
+{
+"pref": "新潟県",
+"name": "柏崎市",
+"code": "152056",
+"url": "https://www.city.kashiwazaki.lg.jp/",
+"found": [
+{
+"url": "https://www.city.kashiwazaki.lg.jp/bosai_bohan_shobo/bosai/saigaihenosonae/48256.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kashiwazaki.lg.jp/cgi-bin/inquiry.php/24?page_no=48256",
+"お問い合わせフォームはこちら"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.city.kashiwazaki.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kashiwazaki.lg.jp/shiseijoho/otoiawase_goiken_goyobo/index.html",
+"お問い合わせご意見・ご要望"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://bosai.city.kashiwazaki.lg.jp",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kashiwazaki.lg.jp/cgi-bin/inquiry.php/24",
+"お問い合わせ"
+],
+[
+"https://www.city.kashiwazaki.lg.jp/cgi-bin/inquiry.php/24",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・原子力課"
+},
+{
+"url": "https://www.city.kashiwazaki.lg.jp/bosai_bohan_shobo/tsuho_kinkyurenrakusaki/37806.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kashiwazaki.lg.jp/cgi-bin/inquiry.php/24?page_no=37806",
+"お問い合わせフォームはこちら"
+]
+],
+"mails": [],
+"dept": "防災係"
+}
+]
+}

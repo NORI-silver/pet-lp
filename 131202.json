@@ -1,0 +1,48 @@
+{
+"pref": "東京都",
+"name": "練馬区",
+"code": "131202",
+"url": "https://www.city.nerima.tokyo.jp/",
+"found": [
+{
+"url": "https://www.city.nerima.tokyo.jp/kurashi/kuseisanka/kifu/gien-kyuen/r8kumamoto_jishin.html",
+"bousai": true,
+"forms": [
+[
+"https://www.jrc.or.jp/contact_us/",
+"日本赤十字社のお問い合わせフォーム（外部サイト）"
+]
+],
+"mails": [],
+"dept": "総務係"
+},
+{
+"url": "https://www.city.nerima.tokyo.jp/kurashi/kuseisanka/kifu/gien-kyuen/taifu18.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務係"
+},
+{
+"url": "https://www.city.nerima.tokyo.jp/kurashi/kuseisanka/kifu/gien-kyuen/taifu25.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務係"
+},
+{
+"url": "https://www.city.nerima.tokyo.jp/kurashi/kuseisanka/kifu/gien-kyuen/080827-Ooame.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務係"
+},
+{
+"url": "https://www.city.nerima.tokyo.jp/kurashi/kuseisanka/kifu/gien-kyuen/r8_chiba_gouu.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務係"
+}
+]
+}

@@ -1,0 +1,172 @@
+{
+"pref": "北海道",
+"name": "別海町",
+"code": "016918",
+"url": "https://betsukai.jp/",
+"found": [
+{
+"url": "https://betsukai.jp/kurashi/life/",
+"bousai": false,
+"forms": [
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://betsukai.jp/gyosei/natural/animal/",
+"bousai": false,
+"forms": [
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://betsukai.jp/gyosei/natural/animal",
+"bousai": false,
+"forms": [
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://betsukai.jp/kurashi/life/dog/pet/",
+"bousai": false,
+"forms": [
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://betsukai.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.harp.lg.jp/SksJuminWeb/EntryForm?id=JQZ8fNkK",
+"お問合せ"
+],
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+],
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://betsukai.jp/anzen/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://betsukai.jp/anzen/bosai/shiteihinannjo_itiran/",
+"bousai": true,
+"forms": [
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://betsukai.jp/anzen/bosai/betsukai_hazardmap/",
+"bousai": true,
+"forms": [
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://betsukai.jp/anzen/bosai/saigaiyoubichikuhin/",
+"bousai": true,
+"forms": [
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://betsukai.jp/anzen/bosai/bousaigyouseimusenokugaispeakersecchijokyo/",
+"bousai": true,
+"forms": [
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://betsukai.jp/anzen/bosai/housounaiyoukakuninndaiyaru/",
+"bousai": true,
+"forms": [
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://betsukai.jp/anzen/bosai/bousai_plan/",
+"bousai": true,
+"forms": [
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://betsukai.jp/anzen/bosai/hinanjouneimanyuaru/",
+"bousai": true,
+"forms": [
+[
+"https://betsukai.jp/contact",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+}
+]
+}

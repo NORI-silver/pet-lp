@@ -1,0 +1,56 @@
+{
+"pref": "福岡県",
+"name": "糸田町",
+"code": "406040",
+"url": "https://www.town.itoda.lg.jp/",
+"found": [
+{
+"url": "https://www.town.itoda.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.itoda.lg.jp/inquiries/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.itoda.lg.jp/emergencies/detail/27/back:1",
+"bousai": true,
+"forms": [
+[
+"https://www.town.itoda.lg.jp/inquiries/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.itoda.lg.jp/topics/detail/103/back:1",
+"bousai": true,
+"forms": [
+[
+"https://www.town.itoda.lg.jp/inquiries/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.itoda.lg.jp/emergencies/index",
+"bousai": true,
+"forms": [
+[
+"https://www.town.itoda.lg.jp/inquiries/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

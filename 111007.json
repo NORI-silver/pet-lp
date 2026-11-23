@@ -1,0 +1,32 @@
+{
+"pref": "埼玉県",
+"name": "さいたま市",
+"code": "111007",
+"url": "https://www.city.saitama.jp/",
+"found": [
+{
+"url": "https://www.city.saitama.lg.jp/001/011/015/006/p055713.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saitama.lg.jp/inquiry/mailform0012610.html?PAGE_NO=55713",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.saitama.lg.jp/001/011/015/006/p054614.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.saitama.lg.jp/inquiry/mailform0012610.html?PAGE_NO=54614",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

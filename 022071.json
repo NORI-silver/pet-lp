@@ -1,0 +1,88 @@
+{
+"pref": "青森県",
+"name": "三沢市",
+"code": "022071",
+"url": "https://www.city.misawa.lg.jp/",
+"found": [
+{
+"url": "https://www.city.misawa.lg.jp/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.misawa.lg.jp/index.cfm/11,0,49,html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理関係"
+},
+{
+"url": "https://www.city.misawa.lg.jp/index.cfm/11,67470,49,774,html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.misawa.lg.jp/index.cfm/12,13312,html",
+"Eメールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.misawa.lg.jp/index.cfm/11,0,49,499,html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.misawa.lg.jp/index.cfm/12,13312,html",
+"Eメールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.misawa.lg.jp/index.cfm/11,0,49,418,html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理関係"
+},
+{
+"url": "https://www.city.misawa.lg.jp/index.cfm/11,0,49,373,html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理関係"
+},
+{
+"url": "https://www.city.misawa.lg.jp/index.cfm/11,0,49,549,html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理関係"
+},
+{
+"url": "https://www.city.misawa.lg.jp/index.cfm/11,0,49,661,html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理関係"
+},
+{
+"url": "https://www.city.misawa.lg.jp/index.cfm/11,0,49,217,html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理関係"
+},
+{
+"url": "https://www.city.misawa.lg.jp/index.cfm/11,0,49,550,html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理関係"
+}
+]
+}

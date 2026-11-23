@@ -1,0 +1,120 @@
+{
+"pref": "山形県",
+"name": "上山市",
+"code": "062073",
+"url": "https://www.city.kaminoyama.yamagata.jp/",
+"found": [
+{
+"url": "https://www.city.kaminoyama.yamagata.jp/soshiki/6/kainusi.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kaminoyama.yamagata.jp/form/detail.php?sec_sec1=6&amp;inq=03&lif_id=700",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kaminoyama.yamagata.jp/life/5/79/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "山形県防災くらし安心部"
+},
+{
+"url": "https://www.city.kaminoyama.yamagata.jp/life/5/79/252/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "団法人日本損害保険協会の防災関係"
+},
+{
+"url": "https://www.city.kaminoyama.yamagata.jp/soshiki/2/yamagatabousaitest.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kaminoyama.yamagata.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=47838",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kaminoyama.yamagata.jp/soshiki/2/kumamoto.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kaminoyama.yamagata.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=50002",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kaminoyama.yamagata.jp/soshiki/2/siteihinanjo.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kaminoyama.yamagata.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=37795",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kaminoyama.yamagata.jp/soshiki/11/bosaijyutentameike.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kaminoyama.yamagata.jp/form/detail.php?sec_sec1=11&amp;inq=03&lif_id=23464",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kaminoyama.yamagata.jp/soshiki/2/nihonnsonngaihokenn.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kaminoyama.yamagata.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=49266",
+"お問い合わせはこちらから"
+]
+],
+"mails": [
+"tohoku@sonpo.or.jp"
+],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kaminoyama.yamagata.jp/soshiki/2/shinkisyoujyouhou.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kaminoyama.yamagata.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=48457",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.kaminoyama.yamagata.jp/soshiki/2/bousaifile2.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kaminoyama.yamagata.jp/form/detail.php?sec_sec1=2&amp;inq=04&lif_id=47686",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+}
+]
+}

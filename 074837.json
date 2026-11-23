@@ -1,0 +1,36 @@
+{
+"pref": "福島県",
+"name": "塙町",
+"code": "074837",
+"url": "https://www.town.hanawa.fukushima.jp/",
+"found": [
+{
+"url": "https://www.town.hanawa.fukushima.jp/page/page000506.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.hanawa.fukushima.jp/inq.php",
+"お問い合わせ"
+],
+[
+"https://www.town.hanawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.hanawa.fukushima.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.hanawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

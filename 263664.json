@@ -1,0 +1,68 @@
+{
+"pref": "京都府",
+"name": "精華町",
+"code": "263664",
+"url": "https://www.town.seika.kyoto.jp/",
+"found": [
+{
+"url": "https://www.town.seika.kyoto.jp/kakuka/kankyo/1/1_1/11982.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.seika.kyoto.jp/cgi-bin/inquiry.php/31?page_no=11982",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.seika.kyoto.jp/cgi-bin/inquiry.php/71?page_no=11982",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.seika.kyoto.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.seika.kyoto.jp/cgi-bin/inquiry.php/71?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.seika.kyoto.jp/oshirase/12060.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.seika.kyoto.jp/cgi-bin/inquiry.php/31?page_no=12060",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.seika.kyoto.jp/cgi-bin/inquiry.php/71?page_no=12060",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.seika.kyoto.jp/event/22170.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.seika.kyoto.jp/cgi-bin/inquiry.php/132?page_no=22170",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.seika.kyoto.jp/cgi-bin/inquiry.php/71?page_no=22170",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

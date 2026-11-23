@@ -1,0 +1,220 @@
+{
+"pref": "茨城県",
+"name": "那珂市",
+"code": "082261",
+"url": "https://www.city.naka.lg.jp/",
+"found": [
+{
+"url": "https://www.city.naka.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.naka.lg.jp/bousai-anzen-saigai/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.naka.lg.jp/bousai-anzen-saigai/bousaigyouseimusen/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.naka.lg.jp/kenkou-iryou-fukushi/fukushi/shakai-fukushi/gienkin/page011930.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php?mode=detail&amp;code=4&amp;code2=5",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.naka.lg.jp/bousai-anzen-saigai/page011471.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php?mode=detail&amp;code=17&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.naka.lg.jp/bousai-anzen-saigai/news/page009776.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php?mode=detail&amp;code=17&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.naka.lg.jp/bousai-anzen-saigai/page011172.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php?mode=detail&amp;code=17&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.naka.lg.jp/bousai-anzen-saigai/bousaigyouseimusen/page009454.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php?mode=detail&amp;code=17&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.naka.lg.jp/bousai-anzen-saigai/bousai/page009778.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php?mode=detail&amp;code=17&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.naka.lg.jp/bousai-anzen-saigai/bousaigyouseimusen/page008557.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php?mode=detail&amp;code=17&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.naka.lg.jp/bousai-anzen-saigai/genshiryoku-bousai/page009301.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php?mode=detail&amp;code=17&amp;code2=18",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.naka.lg.jp/bousai-anzen-saigai/bousai/page007638.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php?mode=detail&amp;code=17&amp;code2=19",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.naka.lg.jp/bousai-anzen-saigai/genshiryoku-bousai/page008504.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php?mode=detail&amp;code=17&amp;code2=18",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.naka.lg.jp/bousai-anzen-saigai/news/page007987.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.naka.lg.jp/inq.php?mode=detail&amp;code=17&amp;code2=19",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.naka.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+}
+]
+}

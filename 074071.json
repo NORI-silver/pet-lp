@@ -1,0 +1,152 @@
+{
+"pref": "福島県",
+"name": "磐梯町",
+"code": "074071",
+"url": "https://www.town.bandai.fukushima.jp/",
+"found": [
+{
+"url": "https://www.town.bandai.fukushima.jp/site/kurashi-kankyo/list71-262.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.bandai.fukushima.jp/ques/questionnaire.php?openid=2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.bandai.fukushima.jp/site/kurashi-kankyo/051_20051104_pet.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.bandai.fukushima.jp/form/detail.php?sec_sec1=4&amp;inq=02&lif_id=2903",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.bandai.fukushima.jp/ques/questionnaire.php?openid=2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.bandai.fukushima.jp/site/bousai-anzen/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.bandai.fukushima.jp/ques/questionnaire.php?openid=2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.bandai.fukushima.jp/site/bousai-anzen/list87.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.bandai.fukushima.jp/ques/questionnaire.php?openid=2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.bandai.fukushima.jp/site/bousai-anzen/bosaimap.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.bandai.fukushima.jp/form/detail.php?sec_sec1=3&amp;inq=02&lif_id=12388",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.bandai.fukushima.jp/ques/questionnaire.php?openid=2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務係"
+},
+{
+"url": "https://www.town.bandai.fukushima.jp/site/bousai-anzen/zisyubousai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.bandai.fukushima.jp/form/detail.php?sec_sec1=3&amp;inq=02&lif_id=11389",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.bandai.fukushima.jp/ques/questionnaire.php?openid=2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務係"
+},
+{
+"url": "https://www.town.bandai.fukushima.jp/site/bousai-anzen/hinanzyouhou.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.bandai.fukushima.jp/form/detail.php?sec_sec1=3&amp;inq=02&lif_id=9112",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.bandai.fukushima.jp/ques/questionnaire.php?openid=2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務係"
+},
+{
+"url": "https://www.town.bandai.fukushima.jp/site/bousai-anzen/list87-303.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.bandai.fukushima.jp/ques/questionnaire.php?openid=2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.bandai.fukushima.jp/site/bousai-anzen/260730doshashomei.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.bandai.fukushima.jp/form/detail.php?sec_sec1=3&amp;inq=02&lif_id=19044",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.bandai.fukushima.jp/ques/questionnaire.php?openid=2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務係"
+},
+{
+"url": "https://www.town.bandai.fukushima.jp/site/bousai-anzen/260701bousaibitiku.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.bandai.fukushima.jp/form/detail.php?sec_sec1=3&amp;inq=02&lif_id=18891",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.bandai.fukushima.jp/ques/questionnaire.php?openid=2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務係"
+}
+]
+}

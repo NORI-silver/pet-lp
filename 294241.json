@@ -1,0 +1,32 @@
+{
+"pref": "奈良県",
+"name": "上牧町",
+"code": "294241",
+"url": "https://www.town.kanmaki.nara.jp/",
+"found": [
+{
+"url": "https://www.town.kanmaki.nara.jp/soshiki/somu/gyomu/anzen_anshin/347.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kanmaki.nara.jp/cgi-bin/inquiry.php/3",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kanmaki.nara.jp/life_scene/bousai_syoubou/4605.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kanmaki.nara.jp/cgi-bin/inquiry.php/3",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

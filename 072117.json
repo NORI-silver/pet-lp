@@ -1,0 +1,94 @@
+{
+"pref": "福島県",
+"name": "田村市",
+"code": "072117",
+"url": "https://www.city.tamura.lg.jp/",
+"found": [
+{
+"url": "https://www.city.tamura.lg.jp/soshiki/8/hinanzyoukyou_1_1.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamura.lg.jp/form/1682.html",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.tamura.lg.jp/soshiki/8/furebo_2025.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamura.lg.jp/form/1682.html",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.tamura.lg.jp/soshiki/8/kishou_new_1.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamura.lg.jp/form/1682.html",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.tamura.lg.jp/soshiki/12/hinan-miyakoji.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamura.lg.jp/form/24.html",
+"お問い合わせはこちらから"
+]
+],
+"mails": [
+"mi-shimin@city.tamura.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.tamura.lg.jp/soshiki/8/seikatu-hinanbasyo-itiran-01.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamura.lg.jp/form/1682.html",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.tamura.lg.jp/soshiki/8/seikatu-saigai-top.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamura.lg.jp/form/1682.html",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.tamura.lg.jp/soshiki/66/kanko-higasinihon-saigaiyuusi.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamura.lg.jp/form/48.html",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

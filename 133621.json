@@ -1,0 +1,50 @@
+{
+"pref": "東京都",
+"name": "利島村",
+"code": "133621",
+"url": "https://www.toshimamura.org/",
+"found": [
+{
+"url": "https://www.toshimamura.org/",
+"bousai": true,
+"forms": [
+[
+"https://www.toshimamura.org/contact/index.html",
+"お問い合わせ"
+],
+[
+"https://www.toshimamura.org/contact/",
+"お問い合わせ"
+],
+[
+"https://www.toshimamura.org/contact/",
+"お問い合わせ"
+]
+],
+"mails": [
+"rgmainte@navc2.co.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.toshimamura.org/disaster/disaster/disaster.html",
+"bousai": true,
+"forms": [
+[
+"https://www.toshimamura.org/contact/index.html",
+"お問い合わせ"
+],
+[
+"https://www.toshimamura.org/contact/",
+"お問い合わせ"
+],
+[
+"https://www.toshimamura.org/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災情報関係"
+}
+]
+}

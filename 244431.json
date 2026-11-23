@@ -1,0 +1,112 @@
+{
+"pref": "三重県",
+"name": "大台町",
+"code": "244431",
+"url": "https://www.odaitown.jp/",
+"found": [
+{
+"url": "https://www.odaitown.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.odaitown.jp/otoiawase/index.html",
+"各課お問合せ先"
+],
+[
+"https://www.odaitown.jp/otoiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.odaitown.jp/soshiki/yakuba/10/6/13/651.html",
+"bousai": true,
+"forms": [
+[
+"https://www.odaitown.jp/cgi-bin/inquiry.php/1?page_no=651",
+"お問い合わせフォーム"
+],
+[
+"https://www.odaitown.jp/otoiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.odaitown.jp/soshiki/yakuba/10/6/13/1613.html",
+"bousai": true,
+"forms": [
+[
+"https://www.odaitown.jp/otoiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.odaitown.jp/soshiki/yakuba/10/2/1949.html",
+"bousai": true,
+"forms": [
+[
+"https://www.odaitown.jp/otoiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.odaitown.jp/soshiki/yakuba/10/6/13/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.odaitown.jp/soshiki/yakuba/10/6/13/1731.html",
+"停電に関するお問合せ"
+],
+[
+"https://www.odaitown.jp/otoiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.odaitown.jp/soshiki/yakuba/10/6/13/412.html",
+"bousai": true,
+"forms": [
+[
+"https://www.odaitown.jp/cgi-bin/inquiry.php/1?page_no=412",
+"お問い合わせフォーム"
+],
+[
+"https://www.odaitown.jp/otoiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.odaitown.jp/soshiki/yakuba/10/6/13/460.html",
+"bousai": true,
+"forms": [
+[
+"https://www.odaitown.jp/cgi-bin/inquiry.php/1?page_no=460",
+"お問い合わせフォーム"
+],
+[
+"https://www.odaitown.jp/otoiawase/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

@@ -1,0 +1,189 @@
+{
+"pref": "秋田県",
+"name": "大仙市",
+"code": "052124",
+"url": "https://www.city.daisen.lg.jp/",
+"found": [
+{
+"url": "https://www.city.daisen.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"ご意見・ご提案"
+],
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.daisen.lg.jp/genre/kurashi/disaster",
+"bousai": true,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総合防災課"
+},
+{
+"url": "https://www.city.daisen.lg.jp/hinan",
+"bousai": true,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.daisen.lg.jp/genre/kurashi/disaster/disaster-latest",
+"bousai": true,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.daisen.lg.jp/archive/p20261020154830",
+"bousai": true,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [
+"bousai@city.daisen.lg.jp"
+],
+"dept": "総合防災課"
+},
+{
+"url": "https://www.city.daisen.lg.jp/archive/p20260820094840",
+"bousai": true,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総合防災課"
+},
+{
+"url": "https://www.city.daisen.lg.jp/archive/p20250626160128",
+"bousai": true,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総合防災課"
+},
+{
+"url": "https://www.city.daisen.lg.jp/archive/contents-10236",
+"bousai": true,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総合防災課"
+},
+{
+"url": "https://www.city.daisen.lg.jp/archive/contents-10125",
+"bousai": true,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [
+"bousai@city.daisen.akita.jp",
+"bousai@city.daisen.lg.jp"
+],
+"dept": "総合防災課"
+},
+{
+"url": "https://www.city.daisen.lg.jp/archive/contents-10235",
+"bousai": true,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総合防災課"
+},
+{
+"url": "https://www.city.daisen.lg.jp/archive/contents-9322",
+"bousai": true,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総合防災課"
+},
+{
+"url": "https://www.city.daisen.lg.jp/archive/contents-12140",
+"bousai": true,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [
+"bousai@city.daisen.lg.jp"
+],
+"dept": "総合防災課"
+},
+{
+"url": "https://www.city.daisen.lg.jp/archive/contents-12104",
+"bousai": true,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [
+"kouryu@city.daisen.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.daisen.lg.jp/archive/p20260302150925",
+"bousai": true,
+"forms": [
+[
+"https://www.city.daisen.lg.jp/mailform",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総合防災課"
+}
+]
+}

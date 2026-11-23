@@ -1,0 +1,89 @@
+{
+"pref": "北海道",
+"name": "壮瞥町",
+"code": "015750",
+"url": "https://www.town.sobetsu.lg.jp/",
+"found": [
+{
+"url": "https://www.town.sobetsu.lg.jp/kurashi/joho/gaichukujo.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"kikaku@town.sobetsu.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.sobetsu.lg.jp/iju/kyo/2022/07/post-255.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.sobetsu.lg.jp/iju/contact/index.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sobetsu.lg.jp/",
+"bousai": true,
+"forms": [],
+"mails": [
+"kikaku@town.sobetsu.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.sobetsu.lg.jp/anzen/",
+"bousai": true,
+"forms": [],
+"mails": [
+"kikaku@town.sobetsu.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.sobetsu.lg.jp/iju/kyo/2018/10/post-37.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sobetsu.lg.jp/iju/contact/index.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sobetsu.lg.jp/iju/kyo/2018/09/post-36.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.sobetsu.lg.jp/iju/contact/index.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.sobetsu.lg.jp/anzen/bosai.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"kikaku@town.sobetsu.lg.jp"
+],
+"dept": "町及び防災関係"
+},
+{
+"url": "https://www.town.sobetsu.lg.jp/anzen/",
+"bousai": true,
+"forms": [],
+"mails": [
+"kikaku@town.sobetsu.lg.jp"
+],
+"dept": null
+}
+]
+}

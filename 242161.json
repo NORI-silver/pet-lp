@@ -1,0 +1,129 @@
+{
+"pref": "三重県",
+"name": "伊賀市",
+"code": "242161",
+"url": "https://www.city.iga.lg.jp/",
+"found": [
+{
+"url": "https://www.city.iga.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"javascript:void(0);",
+"問い合わせ"
+],
+[
+"https://www.city.iga.lg.jp/0000009985.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.iga.lg.jp/category/10-17-1-0-0-0-0-0-0-0.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災危機対策局"
+},
+{
+"url": "https://www.city.iga.lg.jp/0000014533.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.iga.lg.jp/module/shareform.php?so_cd=27-0-0-0-0",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "防災危機対策局"
+},
+{
+"url": "https://www.city.iga.lg.jp/0000014324.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.iga.lg.jp/module/shareform.php?so_cd=27-0-0-0-0",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "防災危機対策局"
+},
+{
+"url": "https://www.city.iga.lg.jp/0000003141.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.iga.lg.jp/module/shareform.php?so_cd=27-0-0-0-0",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "防災危機対策局"
+},
+{
+"url": "https://www.city.iga.lg.jp/0000013879.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.iga.lg.jp/module/shareform.php?so_cd=27-0-0-0-0",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "防災危機対策局"
+},
+{
+"url": "https://www.city.iga.lg.jp/0000003257.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.iga.lg.jp/module/shareform.php?so_cd=27-0-0-0-0",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "伊賀市役所防災危機対策局"
+},
+{
+"url": "https://www.city.iga.lg.jp/0000012901.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.iga.lg.jp/module/shareform.php?so_cd=27-0-0-0-0",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "伊賀市役所防災危機対策局"
+},
+{
+"url": "https://www.city.iga.lg.jp/0000010120.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.iga.lg.jp/module/shareform.php?so_cd=27-0-0-0-0",
+"お問い合わせフォーム"
+]
+],
+"mails": [
+"bousai.iga-city-citizen@raiden2.ktaiwork.jp"
+],
+"dept": "伊賀市役所防災危機対策局"
+},
+{
+"url": "https://www.city.iga.lg.jp/0000010090.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.iga.lg.jp/module/shareform.php?so_cd=27-0-0-0-0",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "伊賀市役所防災危機対策局"
+}
+]
+}

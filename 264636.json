@@ -1,0 +1,60 @@
+{
+"pref": "京都府",
+"name": "伊根町",
+"code": "264636",
+"url": "https://www.town.ine.kyoto.jp/",
+"found": [
+{
+"url": "https://www.town.ine.kyoto.jp/kurashi/gomi/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.ine.kyoto.jp/cgi-bin/inquiry.php/3",
+"伊根町へのお問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.ine.kyoto.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.ine.kyoto.jp/cgi-bin/inquiry.php/3",
+"伊根町へのお問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.ine.kyoto.jp/kurashi/gomi/719.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ine.kyoto.jp/cgi-bin/inquiry.php/3",
+"伊根町へのお問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.ine.kyoto.jp/kurashi/anzen/4/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.ine.kyoto.jp/cgi-bin/inquiry.php/2?page_no=482",
+"総務課総務係へのお問い合わせ"
+],
+[
+"https://www.town.ine.kyoto.jp/cgi-bin/inquiry.php/3",
+"伊根町へのお問合せ"
+]
+],
+"mails": [],
+"dept": "総務課総務係"
+}
+]
+}

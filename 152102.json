@@ -1,0 +1,180 @@
+{
+"pref": "新潟県",
+"name": "十日町市",
+"code": "152102",
+"url": "https://www.city.tokamachi.lg.jp/",
+"found": [
+{
+"url": "https://www.city.tokamachi.lg.jp/dekigoto/pet_doubutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/1?page_no=4725",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tokamachi.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tokamachi.lg.jp/kurashi_tetsuzuki/bousai_anzen/saigai_bosaijoho/3637.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/5?page_no=3637",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/1?page_no=3637",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+},
+{
+"url": "https://www.city.tokamachi.lg.jp/kurashi_tetsuzuki/bousai_anzen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/1?page_no=293",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tokamachi.lg.jp/kurashi_tetsuzuki/bousai_anzen/saigai_bosaijoho/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/1?page_no=427",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tokamachi.lg.jp/soshiki/somubu/bosaianzenka/4/gyomu/1450418016901.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/5?page_no=1873",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/1?page_no=1873",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+},
+{
+"url": "https://www.city.tokamachi.lg.jp/soshiki/somubu/bosaianzenka/4/gyomu/1450418561719.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/5?page_no=1891",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/1?page_no=1891",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+},
+{
+"url": "https://www.city.tokamachi.lg.jp/kurashi_tetsuzuki/bousai_anzen/genshiryoku_housyasen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/1?page_no=5309",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tokamachi.lg.jp/kurashi_tetsuzuki/bousai_anzen/saigai_machidukuri/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/1?page_no=5368",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tokamachi.lg.jp/kurashi_tetsuzuki/bousai_anzen/saigai_kiroku/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/1?page_no=5367",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tokamachi.lg.jp/kurashi_tetsuzuki/bousai_anzen/haishin/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/1?page_no=5365",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tokamachi.lg.jp/kurashi_tetsuzuki/bousai_anzen/sonohokanobosai_anzenjoho/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/1?page_no=337",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tokamachi.lg.jp/kurashi_tetsuzuki/bousai_anzen/saigai_bosaijoho/3624.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/5?page_no=3624",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.tokamachi.lg.jp/cgi-bin/inquiry.php/1?page_no=3624",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+}
+]
+}

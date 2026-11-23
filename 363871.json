@@ -1,0 +1,172 @@
+{
+"pref": "徳島県",
+"name": "美波町",
+"code": "363871",
+"url": "https://www.town.minami.lg.jp/",
+"found": [
+{
+"url": "https://www.town.minami.lg.jp/kurashi/sumai/pet/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.minami.lg.jp/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.minami.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.minami.lg.jp/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.minami.lg.jp/docs/875707.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.minami.lg.jp/inquiry/shobo/",
+"消防防災課へのお問い合わせ"
+],
+[
+"https://www.town.minami.lg.jp/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [
+"shobo@minami.i-tokushima.jp"
+],
+"dept": "消防防災課"
+},
+{
+"url": "https://www.town.minami.lg.jp/kurashi/anzen/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.minami.lg.jp/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.minami.lg.jp/kurashi/anzen/bosai/sonae/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.minami.lg.jp/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.minami.lg.jp/inquiry/shobo/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.minami.lg.jp/inquiry/",
+"お問い合わせ"
+],
+[
+"https://www.town.minami.lg.jp/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "消防防災課"
+},
+{
+"url": "https://www.town.minami.lg.jp/docs/4664418.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.minami.lg.jp/inquiry/shobo/",
+"消防防災課へのお問い合わせ"
+],
+[
+"https://www.town.minami.lg.jp/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [
+"shobo@minami.i-tokushima.jp"
+],
+"dept": "消防防災課"
+},
+{
+"url": "https://www.town.minami.lg.jp/docs/4408870.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.minami.lg.jp/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.minami.lg.jp/docs/6370128.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.minami.lg.jp/inquiry/kensetsu/",
+"建設課へのお問い合わせ"
+],
+[
+"https://www.town.minami.lg.jp/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.minami.lg.jp/docs/5872313.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.minami.lg.jp/inquiry/jumin/",
+"住民生活課へのお問い合わせ"
+],
+[
+"https://www.town.minami.lg.jp/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [
+"jumin@minami.i-tokushima.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.minami.lg.jp/docs/5261031.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.minami.lg.jp/inquiry/shobo/",
+"消防防災課へのお問い合わせ"
+],
+[
+"https://www.town.minami.lg.jp/inquiry/",
+"お問い合わせ"
+]
+],
+"mails": [
+"shobo@minami.i-tokushima.jp"
+],
+"dept": "消防防災課"
+}
+]
+}

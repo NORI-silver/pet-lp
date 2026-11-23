@@ -1,0 +1,44 @@
+{
+"pref": "長崎県",
+"name": "諫早市",
+"code": "422045",
+"url": "https://www.city.isahaya.nagasaki.jp/",
+"found": [
+{
+"url": "https://www.city.isahaya.nagasaki.jp/soshiki/3/1152.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.isahaya.nagasaki.jp/form/detail.php?sec_sec1=3&lif_id=49846",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.isahaya.nagasaki.jp/soshiki/58/1562.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.isahaya.nagasaki.jp/form/detail.php?sec_sec1=58&lif_id=50089",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.isahaya.nagasaki.jp/soshiki/3/1153.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.isahaya.nagasaki.jp/form/detail.php?sec_sec1=3&lif_id=50448",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+}
+]
+}

@@ -1,0 +1,92 @@
+{
+"pref": "長崎県",
+"name": "島原市",
+"code": "422037",
+"url": "https://www.city.shimabara.lg.jp/",
+"found": [
+{
+"url": "https://www.city.shimabara.lg.jp/page19884.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shimabara.lg.jp/hpkiji/pub/List.aspx?c_id=3&class_set_id=1&class_id=1272",
+"広告についてのお問い合わせ"
+],
+[
+"https://www.city.shimabara.lg.jp/hpkiji/pub/List.aspx?c_id=3&class_set_id=1&class_id=411",
+"お問い合わせ"
+]
+],
+"mails": [
+"anzen@city.shimabara.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.shimabara.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shimabara.lg.jp/hpkiji/pub/List.aspx?c_id=3&class_set_id=1&class_id=414",
+"広告についてのお問い合わせ"
+],
+[
+"https://www.city.shimabara.lg.jp/hpkiji/pub/List.aspx?c_id=3&class_set_id=1&class_id=411",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shimabara.lg.jp/hpkiji/pub/List.aspx?c_id=3&class_set_id=1&class_id=112",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shimabara.lg.jp/hpkiji/pub/List.aspx?c_id=3&class_set_id=1&class_id=1272",
+"広告についてのお問い合わせ"
+],
+[
+"https://www.city.shimabara.lg.jp/hpkiji/pub/List.aspx?c_id=3&class_set_id=1&class_id=411",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://shimabalove.jp/kiji00321261/index.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"iju@city.shimabara.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.shimabara.lg.jp/page21205.html?type=top",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shimabara.lg.jp/hpkiji/pub/List.aspx?c_id=3&class_set_id=1&class_id=1272",
+"広告についてのお問い合わせ"
+],
+[
+"https://www.city.shimabara.lg.jp/hpkiji/pub/List.aspx?c_id=3&class_set_id=1&class_id=411",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://shimabalove.jp/kiji00321261/index.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"iju@city.shimabara.lg.jp"
+],
+"dept": null
+}
+]
+}

@@ -1,0 +1,60 @@
+{
+"pref": "山口県",
+"name": "和木町",
+"code": "353213",
+"url": "https://www.town.waki.lg.jp/",
+"found": [
+{
+"url": "https://www.town.waki.lg.jp/soshiki/4/222.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.waki.lg.jp/form/detail.php?sec_sec1=4&lif_id=1122",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.waki.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.waki.lg.jp/soshiki/",
+"ご意見・お問い合わせ"
+],
+[
+"https://www.town.waki.lg.jp/soshiki/2/",
+"納税に関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.waki.lg.jp/site/bousai/4841.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.waki.lg.jp/form/detail.php?sec_sec1=1&amp;inq=02&lif_id=4841",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "企画総務課"
+},
+{
+"url": "https://www.town.waki.lg.jp/site/bousai/4845.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.waki.lg.jp/form/detail.php?sec_sec1=1&amp;inq=02&lif_id=4845",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "企画総務課"
+}
+]
+}

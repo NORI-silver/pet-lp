@@ -1,0 +1,92 @@
+{
+"pref": "兵庫県",
+"name": "たつの市",
+"code": "282294",
+"url": "https://www.city.tatsuno.lg.jp/",
+"found": [
+{
+"url": "https://www.city.tatsuno.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.tatsuno.lg.jp/cgi-bin/inquiry.php/60?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tatsuno.lg.jp/soshiki/1001/gyomu/1/4/1/3008.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tatsuno.lg.jp/cgi-bin/inquiry.php/2?page_no=3008",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.city.tatsuno.lg.jp/cgi-bin/inquiry.php/60?page_no=3008",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.tatsuno.lg.jp/soshiki/1001/gyomu/1/4/4/1/1511.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tatsuno.lg.jp/cgi-bin/inquiry.php/2?page_no=1511",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.city.tatsuno.lg.jp/cgi-bin/inquiry.php/60?page_no=1511",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.tatsuno.lg.jp/soshiki/1001/gyomu/1/4/4/1482.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tatsuno.lg.jp/cgi-bin/inquiry.php/2?page_no=1482",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.city.tatsuno.lg.jp/cgi-bin/inquiry.php/60?page_no=1482",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.tatsuno.lg.jp/soshiki/1001/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tatsuno.lg.jp/cgi-bin/inquiry.php/60?page_no=19",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.tatsuno.lg.jp/soshiki/1001/gyomu/1/4/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tatsuno.lg.jp/cgi-bin/inquiry.php/60?page_no=436",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+}
+]
+}

@@ -1,0 +1,188 @@
+{
+"pref": "京都府",
+"name": "京都市",
+"code": "261009",
+"url": "https://www.city.kyoto.lg.jp/",
+"found": [
+{
+"url": "https://www.city.kyoto.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kyoto.lg.jp/site_policy/0000000011.html",
+"お問い合わせ"
+],
+[
+"https://www.city.kyoto.lg.jp/main/site_policy/0000000011.html",
+"お問い合わせ"
+],
+[
+"https://www.city.kyoto.lg.jp/sogo/page/0000281210.html",
+"問合せ・通報・ご意見のページ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.bousai.city.kyoto.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"京都市防災ポータルサイトに関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.bousai.city.kyoto.lg.jp/category/2-0-0-0-0-0-0-0-0-0.html",
+"bousai": true,
+"forms": [
+[
+"https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"京都市防災ポータルサイトに関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.bousai.city.kyoto.lg.jp/category/3-0-0-0-0-0-0-0-0-0.html",
+"bousai": true,
+"forms": [
+[
+"https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"京都市防災ポータルサイトに関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.bousai.city.kyoto.lg.jp/category/4-0-0-0-0-0-0-0-0-0.html",
+"bousai": true,
+"forms": [
+[
+"https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"京都市防災ポータルサイトに関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.bousai.city.kyoto.lg.jp/category/5-0-0-0-0-0-0-0-0-0.html",
+"bousai": true,
+"forms": [
+[
+"https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"京都市防災ポータルサイトに関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.bousai.city.kyoto.lg.jp/category/2-4-0-0-0-0-0-0-0-0.html",
+"bousai": true,
+"forms": [
+[
+"https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"京都市防災ポータルサイトに関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理室"
+},
+{
+"url": "https://www.bousai.city.kyoto.lg.jp/0000000084.html",
+"bousai": true,
+"forms": [
+[
+"https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"京都市防災ポータルサイトに関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理室"
+},
+{
+"url": "https://www.bousai.city.kyoto.lg.jp/bousai_park/",
+"bousai": true,
+"forms": [
+[
+"https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"京都市防災ポータルサイトに関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": "消防局消防団・自主防災推進室"
+},
+{
+"url": "https://www.bousai.city.kyoto.lg.jp/0000000810.html",
+"bousai": true,
+"forms": [
+[
+"https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"京都市防災ポータルサイトに関するお問い合わせ"
+]
+],
+"mails": [
+"bosai@city.kyoto.lg.jp"
+],
+"dept": "防災危機管理室"
+},
+{
+"url": "https://www.bousai.city.kyoto.lg.jp/0000000465.html",
+"bousai": true,
+"forms": [
+[
+"https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"京都市防災ポータルサイトに関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": "京都市行財政局防災危機管理室"
+},
+{
+"url": "https://www.bousai.city.kyoto.lg.jp/0000000451.html",
+"bousai": true,
+"forms": [
+[
+"https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"京都市防災ポータルサイトに関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理室"
+},
+{
+"url": "https://www.bousai.city.kyoto.lg.jp/0000000515.html",
+"bousai": true,
+"forms": [
+[
+"https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"京都市防災ポータルサイトに関するお問い合わせ"
+]
+],
+"mails": [
+"jigyo@wings-yoto.jp"
+],
+"dept": "防災危機管理室"
+},
+{
+"url": "https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"bousai": true,
+"forms": [
+[
+"https://www.bousai.city.kyoto.lg.jp/0000000511.html",
+"京都市防災ポータルサイトに関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理室"
+}
+]
+}

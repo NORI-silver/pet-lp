@@ -1,0 +1,76 @@
+{
+"pref": "宮崎県",
+"name": "新富町",
+"code": "454028",
+"url": "https://www.town.shintomi.lg.jp/",
+"found": [
+{
+"url": "https://www.town.shintomi.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shintomi.lg.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shintomi.lg.jp/kurashi/bosai_bohan_anzen/3/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shintomi.lg.jp/cgi-bin/inquiry.php/1?page_no=1514",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shintomi.lg.jp/kurashi/bosai_bohan_anzen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shintomi.lg.jp/cgi-bin/inquiry.php/1?page_no=1492",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shintomi.lg.jp/kurashi/bosai_bohan_anzen/3/1884.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shintomi.lg.jp/cgi-bin/inquiry.php/1?page_no=1884",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.shintomi.lg.jp/cgi-bin/inquiry.php/1?page_no=1884",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.shintomi.lg.jp/kurashi/bosai_bohan_anzen/3/3025.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shintomi.lg.jp/cgi-bin/inquiry.php/1?page_no=3025",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.shintomi.lg.jp/cgi-bin/inquiry.php/1?page_no=3025",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

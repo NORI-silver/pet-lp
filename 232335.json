@@ -1,0 +1,200 @@
+{
+"pref": "愛知県",
+"name": "清須市",
+"code": "232335",
+"url": "https://www.city.kiyosu.aichi.jp/",
+"found": [
+{
+"url": "https://www.city.kiyosu.aichi.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/cgi-bin/form_enq/formmail.cgi?d=goikenbako",
+"ご意見箱"
+],
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kiyosu.aichi.jp/bosai_anshin/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kiyosu.aichi.jp/bosai_anshin/saigai_joho/saigai_joho.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"kikikanri@city.kiyosu.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kiyosu.aichi.jp/life_event/bosai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kiyosu.aichi.jp/bosai_anshin/saigai_joho/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kiyosu.aichi.jp/bosai_anshin/saigai_joho/hisaisyashien.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"kikikanri@city.kiyosu.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kiyosu.aichi.jp/bosai_anshin/saigai_joho/itijihinanbasho2.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"kikikanri@city.kiyosu.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kiyosu.aichi.jp/kurashi_joho/shinseisho_download/kotsu_bosai/kobetsuhinan.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"shakaifukushi@city.kiyosu.lg.jp"
+],
+"dept": "交通・防災関係"
+},
+{
+"url": "https://www.city.kiyosu.aichi.jp/bosai_anshin/saigai_joho/hinankakuhokeikakusa.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"kikikanri@city.kiyosu.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kiyosu.aichi.jp/bosai_anshin/saigai_joho/hinanjyo_kaisetsu.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"kikikanri@city.kiyosu.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kiyosu.aichi.jp/bosai_anshin/saigai_joho/bosaigyosei_sugu.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"kikikanri@city.kiyosu.lg.jp",
+"kiyosu@sg-p.jp",
+"t-kiyosu@sg-p.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kiyosu.aichi.jp/bosai_anshin/saigai_joho/bosaimusen.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"kikikanri@city.kiyosu.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kiyosu.aichi.jp/bosai_anshin/saigai_joho/hinanjo_unei_manual.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"kikikanri@city.kiyosu.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kiyosu.aichi.jp/bosai_anshin/saigai_joho/saigai_sonae/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kiyosu.aichi.jp/site/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

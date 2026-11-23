@@ -1,0 +1,117 @@
+{
+"pref": "鹿児島県",
+"name": "さつま町",
+"code": "463922",
+"url": "https://www.satsuma-net.jp/",
+"found": [
+{
+"url": "https://www.satsuma-net.jp/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "【重要なお知らせ】安全安心メールに係"
+},
+{
+"url": "https://www.satsuma-net.jp/bosai/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.satsuma-net.jp/event_boshu/10360.html",
+"bousai": true,
+"forms": [
+[
+"https://www.satsuma-net.jp/cgi-bin/inquiry.php/4?page_no=10360",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.satsuma-net.jp/bosai/hinanjo/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.satsuma-net.jp/bosai/bosaitaisaku/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.satsuma-net.jp/bosai/bosaitaisaku/10346.html",
+"bousai": true,
+"forms": [
+[
+"https://www.satsuma-net.jp/cgi-bin/inquiry.php/4?page_no=10346",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.satsuma-net.jp/bosai/hinanjo/shisetsu_map/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.satsuma-net.jp/bosai/hinanjo/422.html",
+"bousai": true,
+"forms": [
+[
+"https://www.satsuma-net.jp/cgi-bin/inquiry.php/4?page_no=422",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.satsuma-net.jp/bosai/hinanjo/356.html",
+"bousai": true,
+"forms": [
+[
+"https://www.satsuma-net.jp/cgi-bin/inquiry.php/4?page_no=356",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.satsuma-net.jp/bosai/hinanjo/4589.html",
+"bousai": true,
+"forms": [
+[
+"https://www.satsuma-net.jp/cgi-bin/inquiry.php/19?page_no=4589",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.satsuma-net.jp/bosai/hinanjo/7029.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.satsuma-net.jp/bosai/hinanjo/9202.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理係"
+}
+]
+}

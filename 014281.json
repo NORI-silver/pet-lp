@@ -1,0 +1,214 @@
+{
+"pref": "北海道",
+"name": "長沼町",
+"code": "014281",
+"url": "https://www.maoi-net.jp/",
+"found": [
+{
+"url": "https://www.maoi-net.jp/kurashi/gomi_kankyo_animal/",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.maoi-net.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.maoi-net.jp/kyukyu_bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.maoi-net.jp/kyukyu_bosai/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry/1.html",
+"メールでのお問い合わせはこちらから"
+],
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務財政課総務係"
+},
+{
+"url": "https://www.maoi-net.jp/kyukyu_bosai/bosai/bousaimaster.html",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry/1.html",
+"メールでのお問い合わせはこちらから"
+],
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"sorachi.chisei1@pref.hokkaido.lg.jp"
+],
+"dept": "総務財政課総務係"
+},
+{
+"url": "https://www.maoi-net.jp/kyukyu_bosai/bosai/kyotei_keikaku/bichikukeikaku.html",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry/1.html",
+"メールでのお問い合わせはこちらから"
+],
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務財政課総務係"
+},
+{
+"url": "https://www.maoi-net.jp/gyosei/koho_kocho/kohomusen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.maoi-net.jp/kyukyu_bosai/bosai/guidebook/",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry/1.html",
+"メールでのお問い合わせはこちらから"
+],
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務財政課総務係"
+},
+{
+"url": "https://www.maoi-net.jp/kyukyu_bosai/bosai/kyotei_keikaku/",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.maoi-net.jp/kyukyu_bosai/bosai/jikigoto/",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry/1.html",
+"メールでのお問い合わせはこちらから"
+],
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務財政課総務係"
+},
+{
+"url": "https://www.maoi-net.jp/kyukyu_bosai/bosai/manual/",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry/1.html",
+"メールでのお問い合わせはこちらから"
+],
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務財政課総務係"
+},
+{
+"url": "https://www.maoi-net.jp/kyukyu_bosai/bosai/hinanjoto/",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry/1.html",
+"メールでのお問い合わせはこちらから"
+],
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務財政課総務係"
+},
+{
+"url": "https://www.maoi-net.jp/kyukyu_bosai/bosai/map/",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry/1.html",
+"メールでのお問い合わせはこちらから"
+],
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務財政課総務係"
+},
+{
+"url": "https://www.maoi-net.jp/kyukyu_bosai/bosai/link/",
+"bousai": true,
+"forms": [
+[
+"https://www.maoi-net.jp/inquiry/1.html",
+"メールでのお問い合わせはこちらから"
+],
+[
+"https://www.maoi-net.jp/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務財政課総務係"
+}
+]
+}

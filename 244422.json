@@ -1,0 +1,100 @@
+{
+"pref": "三重県",
+"name": "明和町",
+"code": "244422",
+"url": "https://www.town.meiwa.mie.jp/",
+"found": [
+{
+"url": "https://www.town.meiwa.mie.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.meiwa.mie.jp/contact.html",
+"町政に関するご意見・お問い合わせ"
+],
+[
+"https://www.town.meiwa.mie.jp/contact.html",
+"お問い合わせ一覧"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.meiwa.mie.jp/life_scene/bosai_shobo/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.meiwa.mie.jp/contact.html",
+"お問い合わせ一覧"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.meiwa.mie.jp/kurashi/anzen_anshin/bosai/map/1489.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.meiwa.mie.jp/cgi-bin/inquiry.php/37?page_no=1489",
+"お問い合わせはこちらから"
+],
+[
+"https://www.town.meiwa.mie.jp/contact.html",
+"お問い合わせ一覧"
+]
+],
+"mails": [],
+"dept": "消防防災係"
+},
+{
+"url": "https://www.town.meiwa.mie.jp/cgi-bin/smart_alert.php/1/list",
+"bousai": true,
+"forms": [
+[
+"https://www.town.meiwa.mie.jp/contact.html",
+"お問い合わせ一覧"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.meiwa.mie.jp/life_scene/bosai_shobo/2435.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.meiwa.mie.jp/contact.html",
+"お問い合わせ一覧"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.meiwa.mie.jp/kurashi/anzen_anshin/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.meiwa.mie.jp/contact.html",
+"お問い合わせ一覧"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.meiwa.mie.jp/kurashi/anzen_anshin/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.meiwa.mie.jp/contact.html",
+"お問い合わせ一覧"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

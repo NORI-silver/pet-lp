@@ -1,0 +1,103 @@
+{
+"pref": "長野県",
+"name": "立科町",
+"code": "203246",
+"url": "https://www.town.tateshina.nagano.jp/",
+"found": [
+{
+"url": "https://www.town.tateshina.nagano.jp/section/bousaikeikaku/data/hen2/020123.htm",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策の課"
+},
+{
+"url": "https://www.town.tateshina.nagano.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.tateshina.nagano.jp/cgi-bin/inquiry.php/5",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tateshina.nagano.jp/kurashi/anzen_anshin/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tateshina.nagano.jp/cgi-bin/inquiry.php/5",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tateshina.nagano.jp/kurashi/anzen_anshin/bosai/2014.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tateshina.nagano.jp/cgi-bin/inquiry.php/2?page_no=2014",
+"お問い合せフォーム"
+],
+[
+"https://www.town.tateshina.nagano.jp/cgi-bin/inquiry.php/5",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.tateshina.nagano.jp/kurashi/anzen_anshin/bosai/1156.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tateshina.nagano.jp/cgi-bin/inquiry.php/2?page_no=1156",
+"お問い合せフォーム"
+],
+[
+"https://www.town.tateshina.nagano.jp/cgi-bin/inquiry.php/5",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.tateshina.nagano.jp/kurashi/anzen_anshin/bosai/1158.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tateshina.nagano.jp/cgi-bin/inquiry.php/2?page_no=1158",
+"お問い合せフォーム"
+],
+[
+"https://www.town.tateshina.nagano.jp/cgi-bin/inquiry.php/5",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.tateshina.nagano.jp/kurashi/anzen_anshin/bosai/1713.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tateshina.nagano.jp/cgi-bin/inquiry.php/2?page_no=1713",
+"お問い合せフォーム"
+],
+[
+"https://www.town.tateshina.nagano.jp/cgi-bin/inquiry.php/5",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

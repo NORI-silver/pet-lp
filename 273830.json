@@ -1,0 +1,46 @@
+{
+"pref": "大阪府",
+"name": "千早赤阪村",
+"code": "273830",
+"url": "https://www.vill.chihayaakasaka.osaka.jp/",
+"found": [
+{
+"url": "https://www.vill.chihayaakasaka.osaka.jp/kakuka/soumu/jitibousai/3/12569.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.chihayaakasaka.osaka.jp/cgi-bin/inquiry.php/26?page_no=12569",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": "自治防災課"
+},
+{
+"url": "https://www.vill.chihayaakasaka.osaka.jp/houdou/12550.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.chihayaakasaka.osaka.jp/cgi-bin/inquiry.php/33",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務政策課"
+},
+{
+"url": "https://www.vill.chihayaakasaka.osaka.jp/kakuka/soumu/jitibousai/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.vill.chihayaakasaka.osaka.jp/kakuka/soumu/jitibousai/3/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "自治防災課"
+}
+]
+}

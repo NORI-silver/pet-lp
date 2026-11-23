@@ -1,0 +1,100 @@
+{
+"pref": "青森県",
+"name": "平川市",
+"code": "022101",
+"url": "https://www.city.hirakawa.lg.jp/",
+"found": [
+{
+"url": "https://www.city.hirakawa.lg.jp/kurashi/sumai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hirakawa.lg.jp/toiawase.html",
+"お問い合わせ等"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.hirakawa.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hirakawa.lg.jp/toiawase.html",
+"お問い合わせ等"
+],
+[
+"https://www.city.hirakawa.lg.jp/toiawase.html",
+"お問い合わせ等"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.hirakawa.lg.jp/kurashi/anzen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hirakawa.lg.jp/toiawase.html",
+"お問い合わせ等"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.hirakawa.lg.jp/kurashi/anzen/bousai/2023-0414-1323-15.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hirakawa.lg.jp/toiawase.html?group=総務課",
+"メールでのお問い合わせ"
+],
+[
+"https://www.city.hirakawa.lg.jp/toiawase.html",
+"お問い合わせ等"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.hirakawa.lg.jp/kurashi/anzen/bousai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hirakawa.lg.jp/toiawase.html",
+"お問い合わせ等"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.hirakawa.lg.jp/kurashi/anzen/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hirakawa.lg.jp/toiawase.html",
+"お問い合わせ等"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.hirakawa.lg.jp/kurashi/anzen/bousai/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hirakawa.lg.jp/toiawase.html",
+"お問い合わせ等"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

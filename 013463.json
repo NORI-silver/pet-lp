@@ -1,0 +1,96 @@
+{
+"pref": "北海道",
+"name": "八雲町",
+"code": "013463",
+"url": "https://www.town.yakumo.lg.jp/",
+"found": [
+{
+"url": "https://www.town.yakumo.lg.jp/soshiki/suidou/kasaikanren-chokusetsuukeire-rinjisochi.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakumo.lg.jp/form/detail.php?sec_sec1=11&lif_id=46622",
+"メールでのお問い合わせ"
+],
+[
+"https://www.town.yakumo.lg.jp/soshiki/seisaku/content0062.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yakumo.lg.jp/life/1/5/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakumo.lg.jp/soshiki/seisaku/content0062.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yakumo.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakumo.lg.jp/soshiki/seisaku/content0062.html",
+"町へのお問い合わせ"
+],
+[
+"https://www.town.yakumo.lg.jp/soshiki/seisaku/content0062.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yakumo.lg.jp/soshiki/kikitaisaku/bousai2020.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakumo.lg.jp/form/detail.php?sec_sec1=53&amp;inq=02&lif_id=37782",
+"メールでのお問い合わせ"
+],
+[
+"https://www.town.yakumo.lg.jp/soshiki/seisaku/content0062.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yakumo.lg.jp/soshiki/kikitaisaku/hazadomap2022.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yakumo.lg.jp/form/detail.php?sec_sec1=53&amp;inq=02&lif_id=37162",
+"メールでのお問い合わせ"
+],
+[
+"https://www.town.yakumo.lg.jp/soshiki/seisaku/content0062.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yakumo.lg.jp/html-contents/webmap_yakumo/",
+"bousai": true,
+"forms": [
+[
+"javascript:moveMap_Key(1);",
+"津波洪水土砂災害地図切替避難所検索凡例表示資料使用方法使用方"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

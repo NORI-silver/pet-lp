@@ -1,0 +1,133 @@
+{
+"pref": "福岡県",
+"name": "うきは市",
+"code": "402257",
+"url": "https://www.city.ukiha.fukuoka.jp/",
+"found": [
+{
+"url": "https://www.city.ukiha.fukuoka.jp/kiji0037591/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/ansform.aspx?c_id=21&entry_ins=5",
+"自動車学校へのお問い合わせ"
+],
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/default.aspx?c_id=21&entry_ins=1&pg=1&mst=1",
+"お問い合わせ"
+]
+],
+"mails": [
+"mamoru@bousaimobile.pref.fukuoka.lg.jp"
+],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.ukiha.fukuoka.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/ansform.aspx?c_id=21&entry_ins=5",
+"自動車学校へのお問い合わせ"
+],
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/default.aspx?c_id=21&entry_ins=1&pg=1&mst=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ukiha.fukuoka.jp/list00109.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/ansform.aspx?c_id=21&entry_ins=5",
+"自動車学校へのお問い合わせ"
+],
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/ansform.aspx?c_id=21&entry_ins=5",
+"自動車学校へのお問い合わせ"
+],
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/default.aspx?c_id=21&entry_ins=1&pg=1&mst=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ukiha.fukuoka.jp/bousai/default.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.ukiha.fukuoka.jp/kiji0037838/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/ansform.aspx?c_id=21&entry_ins=5",
+"自動車学校へのお問い合わせ"
+],
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/default.aspx?c_id=21&entry_ins=1&pg=1&mst=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ukiha.fukuoka.jp/kiji0037375/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/ansform.aspx?c_id=21&entry_ins=5",
+"自動車学校へのお問い合わせ"
+],
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/default.aspx?c_id=21&entry_ins=1&pg=1&mst=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ukiha.fukuoka.jp/kiji003117/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/ansform.aspx?c_id=21&entry_ins=5",
+"自動車学校へのお問い合わせ"
+],
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/default.aspx?c_id=21&entry_ins=1&pg=1&mst=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "を市民協働推進課消防防災係"
+},
+{
+"url": "https://www.city.ukiha.fukuoka.jp/dynamic/info/pub/default.aspx?c_id=26&scfm17=45",
+"bousai": false,
+"forms": [
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/ansform.aspx?c_id=21&entry_ins=5",
+"自動車学校へのお問い合わせ"
+],
+[
+"https://www.city.ukiha.fukuoka.jp/dynamic/entry/pub/default.aspx?c_id=21&entry_ins=1&pg=1&mst=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

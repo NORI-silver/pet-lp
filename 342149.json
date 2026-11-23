@@ -1,0 +1,69 @@
+{
+"pref": "広島県",
+"name": "安芸高田市",
+"code": "342149",
+"url": "https://www.akitakata.jp/ja/",
+"found": [
+{
+"url": "https://www.akitakata.jp/ja/",
+"bousai": true,
+"forms": [
+[
+"https://www.akitakata.jp/ja/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.akitakata.jp/ja/w683/bousai/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理監危機管理課"
+},
+{
+"url": "https://www.akitakata.jp/ja/shisei/section/anzen/u133/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.akitakata.jp/ja/shisei/section/anzen/H25bousai/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.akitakata.jp/ja/shisei/section/anzen/kasai/",
+"bousai": false,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.akitakata.jp/ja/shisei/section/anzen/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.akitakata.jp/ja/shisei/section/anzen/jishu_bousai/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.akitakata.jp/ja/shisei/section/anzen/bousai-no-hi/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+}
+]
+}

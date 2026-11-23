@@ -1,0 +1,92 @@
+{
+"pref": "静岡県",
+"name": "浜松市",
+"code": "221309",
+"url": "https://www.city.hamamatsu.shizuoka.jp/",
+"found": [
+{
+"url": "https://www.city.hamamatsu.shizuoka.jp/kiki/petdokohinan.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "浜松市役所危機管理監危機管理課"
+},
+{
+"url": "https://www.city.hamamatsu.shizuoka.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hamamatsu.shizuoka.jp/voice/",
+"ご意見・お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.hamamatsu.shizuoka.jp/bosai/bosai/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "浜松市役所危機管理監危機管理課"
+},
+{
+"url": "https://www.city.hamamatsu.shizuoka.jp/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hamamatsu.shizuoka.jp/voice/index.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.hamamatsu.shizuoka.jp/kiki/disaster/bousai/hinannjo.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "浜松市役所危機管理監危機管理課"
+},
+{
+"url": "https://www.city.hamamatsu.shizuoka.jp/kiki/disaster/bousai/jishubo.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"boujou@pref.shizuoka.lg.jp"
+],
+"dept": "浜松市役所危機管理監危機管理課"
+},
+{
+"url": "https://www.city.hamamatsu.shizuoka.jp/kiki/hazard_map/hinanjo.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "浜松市役所危機管理監危機管理課"
+},
+{
+"url": "https://www.city.hamamatsu.shizuoka.jp/bosai/bosai/map/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "浜松市役所危機管理監危機管理課"
+},
+{
+"url": "https://www.city.hamamatsu.shizuoka.jp/kiki/disaster/hotmail.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"t-hamamatsu@sg-p.jp"
+],
+"dept": "浜松市役所危機管理監危機管理課"
+},
+{
+"url": "https://www.city.hamamatsu.shizuoka.jp/kiki/disaster/bousai/line/bosailine.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "浜松市役所危機管理監危機管理課"
+}
+]
+}

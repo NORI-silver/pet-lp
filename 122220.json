@@ -1,0 +1,55 @@
+{
+"pref": "千葉県",
+"name": "我孫子市",
+"code": "122220",
+"url": "https://www.city.abiko.chiba.jp/",
+"found": [
+{
+"url": "https://www.city.abiko.chiba.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.abiko.chiba.jp/site_joho/kakuka_toiawase.html",
+"各課へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.abiko.chiba.jp/kurashi/furusato/other_info/chibagouu_kifu.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "企画総務部"
+},
+{
+"url": "https://www.city.abiko.chiba.jp/anshin/bousai/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災行政無線子局"
+},
+{
+"url": "https://www.city.abiko.chiba.jp/anshin/bousai/hinan/jishuhinannjo.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.abiko.chiba.jp/anshin/bousai/hinan/timeline.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.abiko.chiba.jp/anshin/bousai/saigaisonae/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災行政無線子局"
+}
+]
+}

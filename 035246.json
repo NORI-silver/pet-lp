@@ -1,0 +1,80 @@
+{
+"pref": "岩手県",
+"name": "一戸町",
+"code": "035246",
+"url": "https://www.town.ichinohe.iwate.jp/",
+"found": [
+{
+"url": "https://www.town.ichinohe.iwate.jp/kurashi_tetsuzuki/gomi_kankyo_pet/3/5602.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.ichinohe.iwate.jp/cgi-bin/inquiry.php/54?page_no=5603",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "企画総務部"
+},
+{
+"url": "https://www.town.ichinohe.iwate.jp/moshimonotokini/hinanjo/1544.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ichinohe.iwate.jp/cgi-bin/inquiry.php/1?page_no=1544",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ichinohe.iwate.jp/moshimonotokini/bosai/1574.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ichinohe.iwate.jp/cgi-bin/inquiry.php/1?page_no=1574",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ichinohe.iwate.jp/moshimonotokini/bosai/5437.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ichinohe.iwate.jp/cgi-bin/inquiry.php/1?page_no=5437",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ichinohe.iwate.jp/moshimonotokini/bosai/6386.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ichinohe.iwate.jp/cgi-bin/inquiry.php/1?page_no=6386",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.ichinohe.iwate.jp/soshikikarasagasu/somuka/shoboanzenkakari/6385.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.ichinohe.iwate.jp/cgi-bin/inquiry.php/1?page_no=6385",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

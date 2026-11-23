@@ -1,0 +1,56 @@
+{
+"pref": "東京都",
+"name": "杉並区",
+"code": "131156",
+"url": "https://www.city.suginami.tokyo.jp/",
+"found": [
+{
+"url": "https://www.city.suginami.tokyo.jp/s046/855.html",
+"bousai": true,
+"forms": [
+[
+"https://logoform.jp/form/Y4gR/1311566",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.suginami.tokyo.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.suginami.tokyo.jp/ikensankaku/index.html",
+"お問い合わせ、区政への意見・参画"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.suginami.tokyo.jp/s015/1497.html",
+"bousai": true,
+"forms": [
+[
+"https://logoform.jp/form/Y4gR/1287996",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "危機管理室防災課"
+},
+{
+"url": "https://www.city.suginami.tokyo.jp/s015/461.html",
+"bousai": true,
+"forms": [
+[
+"https://logoform.jp/form/Y4gR/1310817",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "危機管理室危機管理対策課"
+}
+]
+}

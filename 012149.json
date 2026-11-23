@@ -1,0 +1,207 @@
+{
+"pref": "北海道",
+"name": "稚内市",
+"code": "012149",
+"url": "https://www.city.wakkanai.hokkaido.jp/",
+"found": [
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/kurashi/pettodobutsu/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/kurashi/pettodobutsu/petto/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/inquiry/46.html",
+"メールでの問い合わせはこちら"
+],
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/kurashi/pettodobutsu/petto/shiiku.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/inquiry/46.html",
+"メールでの問い合わせはこちら"
+],
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/kurashi/pettodobutsu/petto/doubutsu.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/inquiry/46.html",
+"メールでの問い合わせはこちら"
+],
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/kurashi/bosaibohankotsuanzen/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/kurashi/bosaibohankotsuanzen/bosai/sonaeru/hinan/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/inquiry/89.html",
+"メールでの問い合わせはこちら"
+],
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "企画総務部総務防災課"
+},
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/kurashi/bosaibohankotsuanzen/bosai/saigaijoho/mailservis.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/inquiry/89.html",
+"メールでの問い合わせはこちら"
+],
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [
+"bousai.wakkanai-city@raiden3.ktaiwork.jp",
+"wakkanai-city@raiden3.ktaiwork.jp"
+],
+"dept": "企画総務部総務防災課"
+},
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/kurashi/bosaibohankotsuanzen/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/kurashi/bosaibohankotsuanzen/bosai/sonaeru/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/kurashi/bosaibohankotsuanzen/bosai/sonaeru/dosha/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/kurashi/bosaibohankotsuanzen/bosai/sonaeru/zisintunamisonae.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/inquiry/89.html",
+"メールでの問い合わせはこちら"
+],
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "企画総務部総務防災課"
+},
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/kurashi/bosaibohankotsuanzen/bosai/saigaijoho/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.wakkanai.hokkaido.jp/kurashi/bosaibohankotsuanzen/bosai/saigaijoho/radio.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.wakkanai.hokkaido.jp/inquiry/89.html",
+"メールでの問い合わせはこちら"
+],
+[
+"https://www.city.wakkanai.hokkaido.jp/iken/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "企画総務部総務防災課"
+}
+]
+}

@@ -1,0 +1,75 @@
+{
+"pref": "高知県",
+"name": "檮原町",
+"code": "394050",
+"url": "https://www.town.yusuhara.lg.jp/",
+"found": [
+{
+"url": "https://www.town.yusuhara.lg.jp/life/list.php?hdnKeyword=%E9%98%B2%E7%81%BD&hdnSKBN=E",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yusuhara.lg.jp/life/detail.php?hdnKey=549&kbn=1",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yusuhara.lg.jp/mail/?hdnKey=549",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yusuhara.lg.jp/life/detail.php?hdnKey=413&kbn=1",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yusuhara.lg.jp/mail/?hdnKey=413",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yusuhara.lg.jp/life/detail.php?hdnKey=603",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yusuhara.lg.jp/mail/?hdnKey=603",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yusuhara.lg.jp/life/detail.php?hdnKey=549",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yusuhara.lg.jp/mail/?hdnKey=549",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yusuhara.lg.jp/life/detail.php?hdnKey=158",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yusuhara.lg.jp/mail/?hdnKey=158",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

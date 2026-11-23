@@ -1,0 +1,36 @@
+{
+"pref": "茨城県",
+"name": "常総市",
+"code": "082112",
+"url": "https://www.city.joso.lg.jp/",
+"found": [
+{
+"url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/page004647.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.joso.lg.jp/inq.php?mode=detail&amp;code=4&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.joso.lg.jp/inq.php?mode=detail&amp;code=4&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.joso.lg.jp/section.php?code=4",
+"bousai": true,
+"forms": [
+[
+"https://www.city.joso.lg.jp/inq.php?mode=detail&amp;code=4&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+}
+]
+}

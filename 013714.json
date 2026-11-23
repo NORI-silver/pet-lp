@@ -1,0 +1,66 @@
+{
+"pref": "北海道",
+"name": "せたな町",
+"code": "013714",
+"url": "https://www.town.setana.lg.jp/",
+"found": [
+{
+"url": "https://www.town.setana.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.setana.lg.jp/contact.html",
+"お問い合わせフォーム"
+],
+[
+"https://www.town.setana.lg.jp/post_1143.html",
+"問い合わせ先一覧"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.setana.lg.jp/kurashi/bousai/post_556.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.town.setana.lg.jp/kurashi/bousai/post_133.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.setana.lg.jp/kurashi/bousai/post_136.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.setana.lg.jp/kurashi/bousai/post_421.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.setana.lg.jp/kurashi/bousai/post_622.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.setana.lg.jp/kurashi/bousai/post_1160.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災係"
+}
+]
+}

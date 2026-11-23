@@ -1,0 +1,35 @@
+{
+"pref": "北海道",
+"name": "積丹町",
+"code": "014052",
+"url": "https://www.town.shakotan.lg.jp/",
+"found": [
+{
+"url": "https://www.town.shakotan.lg.jp/contents/post-231.html",
+"bousai": false,
+"forms": [],
+"mails": [
+"kikaku@town.shakotan.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.shakotan.lg.jp/",
+"bousai": true,
+"forms": [],
+"mails": [
+"kikaku@town.shakotan.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.shakotan.lg.jp/contents/content0056.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"kikaku@town.shakotan.lg.jp"
+],
+"dept": "総務課"
+}
+]
+}

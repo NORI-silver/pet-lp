@@ -1,0 +1,32 @@
+{
+"pref": "東京都",
+"name": "調布市",
+"code": "132080",
+"url": "https://www.city.chofu.tokyo.jp/www/toppage/0000000000000/APM03000.html",
+"found": [
+{
+"url": "https://www.city.chofu.lg.jp/020090/p013111.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chofu.lg.jp/010040/p003480.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "調布市総務部総合防災安全課"
+},
+{
+"url": "https://www.city.chofu.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chofu.lg.jp/010040/p003480.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

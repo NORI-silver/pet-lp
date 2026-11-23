@@ -1,0 +1,28 @@
+{
+"pref": "神奈川県",
+"name": "松田町",
+"code": "143634",
+"url": "https://town.matsuda.kanagawa.jp/",
+"found": [
+{
+"url": "https://town.matsuda.kanagawa.jp/",
+"bousai": false,
+"forms": [
+[
+"https://town.matsuda.kanagawa.jp/ques/questionnaire.php?openid=3",
+"町への問合せ"
+],
+[
+"https://town.matsuda.kanagawa.jp/ques/questionnaire.php?openid=3",
+"お問い合わせ"
+],
+[
+"https://town.matsuda.kanagawa.jp/ques/questionnaire.php?openid=3",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

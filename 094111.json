@@ -1,0 +1,78 @@
+{
+"pref": "栃木県",
+"name": "那珂川町",
+"code": "094111",
+"url": "https://www.town.tochigi-nakagawa.lg.jp/",
+"found": [
+{
+"url": "https://www.town.tochigi-nakagawa.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.tochigi-nakagawa.lg.jp/0027/genre1-0-001.html",
+"お問い合わせ"
+],
+[
+"https://www.town.tochigi-nakagawa.lg.jp/viewer/opinion.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tochigi-nakagawa.lg.jp/index1.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tochigi-nakagawa.lg.jp/viewer/opinion.html?idSubTop=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tochigi-nakagawa.lg.jp/0012/info-0000000544-1.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tochigi-nakagawa.lg.jp/viewer/opinion.html?idSubTop=1",
+"お問い合わせ"
+]
+],
+"mails": [
+"anzen@town.tochigi-nakagawa.lg.jp"
+],
+"dept": "地域安全対策係"
+},
+{
+"url": "https://www.town.tochigi-nakagawa.lg.jp/0008/info-0000000430-1.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tochigi-nakagawa.lg.jp/viewer/opinion.html?idSubTop=1",
+"お問い合わせ"
+]
+],
+"mails": [
+"sangyou@town.tochigi-nakagawa.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.tochigi-nakagawa.lg.jp/0012/info-0000000534-1.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tochigi-nakagawa.lg.jp/viewer/opinion.html?idSubTop=1",
+"お問い合わせ"
+]
+],
+"mails": [
+"anzen@town.tochigi-nakagawa.lg.jp"
+],
+"dept": "地域安全対策係"
+}
+]
+}

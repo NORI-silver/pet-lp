@@ -1,0 +1,78 @@
+{
+"pref": "徳島県",
+"name": "板野町",
+"code": "364045",
+"url": "http://www.town.itano.tokushima.jp/",
+"found": [
+{
+"url": "http://www.town.itano.tokushima.jp/docs/2017033000028/",
+"bousai": false,
+"forms": [
+[
+"http://www.town.itano.tokushima.jp/add/add.html",
+"お問い合わせ"
+],
+[
+"http://www.town.itano.tokushima.jp/add/add.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"k%26%2397%3Bnkyou%26%2364%3Btown-it%26%2397%3Bno.i-tokushim%26%2397%3B.jp",
+"kankyou@town-itano.i-tokushima.jp"
+],
+"dept": null
+},
+{
+"url": "http://www.town.itano.tokushima.jp/bunya/dobutsu/",
+"bousai": false,
+"forms": [
+[
+"http://www.town.itano.tokushima.jp/add/add.html",
+"お問い合わせ"
+],
+[
+"http://www.town.itano.tokushima.jp/add/add.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "http://www.town.itano.tokushima.jp/docs/2025121600012/",
+"bousai": false,
+"forms": [
+[
+"http://www.town.itano.tokushima.jp/add/add.html",
+"お問い合わせ"
+],
+[
+"http://www.town.itano.tokushima.jp/add/add.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"k%26%2397%3Bnkyou%26%2364%3Btown-it%26%2397%3Bno.i-tokushim%26%2397%3B.jp",
+"kankyou@town-itano.i-tokushima.jp"
+],
+"dept": null
+},
+{
+"url": "http://www.town.itano.tokushima.jp/",
+"bousai": true,
+"forms": [
+[
+"http://www.town.itano.tokushima.jp/add/add.html",
+"お問い合わせ"
+],
+[
+"http://www.town.itano.tokushima.jp/add/add.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

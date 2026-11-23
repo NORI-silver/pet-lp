@@ -1,0 +1,118 @@
+{
+"pref": "高知県",
+"name": "四万十町",
+"code": "394122",
+"url": "https://www.town.shimanto.lg.jp/",
+"found": [
+{
+"url": "https://www.town.shimanto.lg.jp/life/list.php?hdnSKBN=B&hdnKeyword=%E9%98%B2%E7%81%BD&hdnJPN=%E6%97%A5%E6%9C%AC%E8%AA%9E",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.town.shimanto.lg.jp/life/detail.php?hdnKey=12628&hdnSKBN=A",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shimanto.lg.jp/mail/?hdnKey=12628",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.town.shimanto.lg.jp/life/detail.php?hdnKey=12628",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shimanto.lg.jp/mail/?hdnKey=12628",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.town.shimanto.lg.jp/life/detail.php?hdnKey=12581",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.town.shimanto.lg.jp/life/detail.php?hdnKey=12469",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shimanto.lg.jp/mail/?hdnKey=12469",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.town.shimanto.lg.jp/life/detail.php?hdnKey=12045",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shimanto.lg.jp/mail/?hdnKey=12045",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.town.shimanto.lg.jp/life/detail.php?hdnKey=11844",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shimanto.lg.jp/mail/?hdnKey=11844",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.town.shimanto.lg.jp/life/detail.php?hdnKey=11346",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shimanto.lg.jp/mail/?hdnKey=11346",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.town.shimanto.lg.jp/life/detail.php?hdnKey=11669",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shimanto.lg.jp/mail/?hdnKey=11669",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.town.shimanto.lg.jp/life/detail.php?hdnKey=83",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shimanto.lg.jp/mail/?hdnKey=83",
+"お問合わせはこちら"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+}
+]
+}

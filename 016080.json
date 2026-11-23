@@ -1,0 +1,140 @@
+{
+"pref": "北海道",
+"name": "様似町",
+"code": "016080",
+"url": "http://www.samani.jp/",
+"found": [
+{
+"url": "http://www.samani.jp/kurashi/index6.html",
+"bousai": true,
+"forms": [
+[
+"http://www.samani.jp/contact/",
+"お問合せ"
+],
+[
+"http://www.samani.jp/contact/",
+"ご意見・お問合わせ"
+],
+[
+"http://www.samani.jp/profile/index6.html",
+"各課お問合わせ先"
+]
+],
+"mails": [
+"samani.chou@samani.jp"
+],
+"dept": null
+},
+{
+"url": "http://www.samani.jp/",
+"bousai": true,
+"forms": [
+[
+"http://www.samani.jp/contact/",
+"お問合せ"
+],
+[
+"http://www.samani.jp/contact/",
+"ご意見・お問合わせ"
+],
+[
+"http://www.samani.jp/profile/index6.html",
+"各課お問合わせ先"
+]
+],
+"mails": [
+"samani.chou@samani.jp"
+],
+"dept": "[総務課"
+},
+{
+"url": "http://www.samani.jp/bousai/",
+"bousai": true,
+"forms": [
+[
+"http://www.samani.jp/contact/",
+"お問合せ"
+],
+[
+"http://www.samani.jp/contact/",
+"ご意見・お問合わせ"
+],
+[
+"http://www.samani.jp/profile/index6.html",
+"各課お問合わせ先"
+]
+],
+"mails": [
+"samani.chou@samani.jp"
+],
+"dept": null
+},
+{
+"url": "http://www.samani.jp/bousai/index1.html",
+"bousai": true,
+"forms": [
+[
+"http://www.samani.jp/contact/",
+"お問合せ"
+],
+[
+"http://www.samani.jp/contact/",
+"ご意見・お問合わせ"
+],
+[
+"http://www.samani.jp/profile/index6.html",
+"各課お問合わせ先"
+]
+],
+"mails": [
+"samani.chou@samani.jp"
+],
+"dept": null
+},
+{
+"url": "http://www.samani.jp/news/2026/11/post-1236.html",
+"bousai": true,
+"forms": [
+[
+"http://www.samani.jp/contact/",
+"お問合せ"
+],
+[
+"http://www.samani.jp/contact/",
+"ご意見・お問合わせ"
+],
+[
+"http://www.samani.jp/profile/index6.html",
+"各課お問合わせ先"
+]
+],
+"mails": [
+"samani.chou@samani.jp"
+],
+"dept": "総務課防災・車両係"
+},
+{
+"url": "http://www.samani.jp/bousai/index8.html",
+"bousai": true,
+"forms": [
+[
+"http://www.samani.jp/contact/",
+"お問合せ"
+],
+[
+"http://www.samani.jp/contact/",
+"ご意見・お問合わせ"
+],
+[
+"http://www.samani.jp/profile/index6.html",
+"各課お問合わせ先"
+]
+],
+"mails": [
+"samani.chou@samani.jp"
+],
+"dept": null
+}
+]
+}

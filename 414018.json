@@ -1,0 +1,114 @@
+{
+"pref": "佐賀県",
+"name": "有田町",
+"code": "414018",
+"url": "https://www.town.arita.lg.jp/",
+"found": [
+{
+"url": "https://www.town.arita.lg.jp/list00135.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.arita.lg.jp/dynamic/entry/pub/default.aspx?c_id=21",
+"各課お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.arita.lg.jp/list00110.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.arita.lg.jp/dynamic/entry/pub/default.aspx?c_id=21",
+"各課お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.arita.lg.jp/bousai/default.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.arita.lg.jp/list01108.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.arita.lg.jp/dynamic/entry/pub/default.aspx?c_id=21",
+"各課お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.arita.lg.jp/bousai/list00302.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.arita.lg.jp/bousai/list00303.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.arita.lg.jp/bousai/list00305.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.arita.lg.jp/bousai/list00308.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.arita.lg.jp/bousai/list00313.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.arita.lg.jp/bousai/list00320.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.arita.lg.jp/bousai/list00314.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.arita.lg.jp/bousai/list00321.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.arita.lg.jp/bousai/list00316.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

@@ -1,0 +1,200 @@
+{
+"pref": "宮城県",
+"name": "大郷町",
+"code": "044229",
+"url": "https://www.town.miyagi-osato.lg.jp/",
+"found": [
+{
+"url": "https://www.town.miyagi-osato.lg.jp/life/1/14/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.miyagi-osato.lg.jp/ques/questionnaire.php?openid=3",
+"ホームページに関するお問い合わせ（総務課）"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.miyagi-osato.lg.jp/soshiki/chomin/doubutunosigai.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.miyagi-osato.lg.jp/form/detail.php?sec_sec1=6&amp;inq=03&lif_id=16249",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.miyagi-osato.lg.jp/ques/questionnaire.php?openid=3",
+"ホームページに関するお問い合わせ（総務課）"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.miyagi-osato.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.miyagi-osato.lg.jp/soshiki/",
+"お問い合わせ"
+],
+[
+"https://www.town.miyagi-osato.lg.jp/ques/questionnaire.php?openid=3",
+"ホームページに関するお問い合わせ（総務課）"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.miyagi-osato.lg.jp/soshiki/soumu/bousai-top.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.miyagi-osato.lg.jp/form/detail.php?sec_sec1=3&amp;inq=03&lif_id=15871",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.miyagi-osato.lg.jp/ques/questionnaire.php?openid=3",
+"ホームページに関するお問い合わせ（総務課）"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.miyagi-osato.lg.jp/soshiki/hoken/hinanshisetsu.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.miyagi-osato.lg.jp/form/detail.php?sec_sec1=7&amp;inq=03&lif_id=13357",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.miyagi-osato.lg.jp/ques/questionnaire.php?openid=3",
+"ホームページに関するお問い合わせ（総務課）"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.miyagi-osato.lg.jp/soshiki/soumu/keikailevel-hinan.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.miyagi-osato.lg.jp/form/detail.php?sec_sec1=3&amp;inq=03&lif_id=8756",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.miyagi-osato.lg.jp/ques/questionnaire.php?openid=3",
+"ホームページに関するお問い合わせ（総務課）"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.miyagi-osato.lg.jp/soshiki/soumu/hinanjyo.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.miyagi-osato.lg.jp/form/detail.php?sec_sec1=3&amp;inq=03&lif_id=9763",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.miyagi-osato.lg.jp/ques/questionnaire.php?openid=3",
+"ホームページに関するお問い合わせ（総務課）"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.miyagi-osato.lg.jp/soshiki/soumu/bousai-map.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.miyagi-osato.lg.jp/soshiki/soumu/map01.html",
+"このページに関するお問い合わせ先町長部局"
+],
+[
+"https://www.town.miyagi-osato.lg.jp/form/detail.php?sec_sec1=3&amp;inq=03&lif_id=4",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.miyagi-osato.lg.jp/ques/questionnaire.php?openid=3",
+"ホームページに関するお問い合わせ（総務課）"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.miyagi-osato.lg.jp/soshiki/soumu/tiikibousaikeikaku-index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.miyagi-osato.lg.jp/form/detail.php?sec_sec1=3&amp;inq=03&lif_id=19",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.miyagi-osato.lg.jp/ques/questionnaire.php?openid=3",
+"ホームページに関するお問い合わせ（総務課）"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.miyagi-osato.lg.jp/soshiki/soumu/bousai-musen.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.miyagi-osato.lg.jp/form/detail.php?sec_sec1=3&amp;inq=03&lif_id=11",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.miyagi-osato.lg.jp/ques/questionnaire.php?openid=3",
+"ホームページに関するお問い合わせ（総務課）"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.miyagi-osato.lg.jp/soshiki/soumu/bousai-shisetsu.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.miyagi-osato.lg.jp/form/detail.php?sec_sec1=3&amp;inq=03&lif_id=12",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.miyagi-osato.lg.jp/ques/questionnaire.php?openid=3",
+"ホームページに関するお問い合わせ（総務課）"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.miyagi-osato.lg.jp/soshiki/soumu/dosya-taisaku.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.miyagi-osato.lg.jp/form/detail.php?sec_sec1=3&amp;inq=03&lif_id=14",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.miyagi-osato.lg.jp/ques/questionnaire.php?openid=3",
+"ホームページに関するお問い合わせ（総務課）"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

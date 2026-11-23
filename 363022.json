@@ -1,0 +1,160 @@
+{
+"pref": "徳島県",
+"name": "上勝町",
+"code": "363022",
+"url": "https://www.kamikatsu.jp/",
+"found": [
+{
+"url": "https://www.kamikatsu.jp/category/bunya/kurashi/dobutsu/",
+"bousai": false,
+"forms": [
+[
+"https://www.kamikatsu.jp/inquiry/2/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.kamikatsu.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.kamikatsu.jp/inquiry/2/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.kamikatsu.jp/docs/2026100800010/",
+"bousai": true,
+"forms": [
+[
+"https://www.kamikatsu.jp/inquiry/2/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.kamikatsu.jp/docs/2022071400013/",
+"bousai": true,
+"forms": [
+[
+"https://www.kamikatsu.jp/inquiry/2/",
+"お問い合わせ"
+]
+],
+"mails": [
+"soumu@kamikatsu.i-tokushima.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.kamikatsu.jp/docs/2021052400011/",
+"bousai": true,
+"forms": [
+[
+"https://www.kamikatsu.jp/inquiry/2/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.kamikatsu.jp/docs/2020060500010/",
+"bousai": true,
+"forms": [
+[
+"https://www.kamikatsu.jp/inquiry/2/",
+"お問い合わせ"
+]
+],
+"mails": [
+"soumu@kamikatsu.i-tokushima.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.kamikatsu.jp/docs/2016092600026/",
+"bousai": true,
+"forms": [
+[
+"https://www.kamikatsu.jp/inquiry/2/",
+"お問い合わせ"
+]
+],
+"mails": [
+"soumu@kamikatsu.i-tokushima.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.kamikatsu.jp/docs/2011012400434/",
+"bousai": true,
+"forms": [
+[
+"https://www.kamikatsu.jp/inquiry/2/",
+"お問い合わせ"
+]
+],
+"mails": [
+"soumu@kamikatsu.i-tokushima.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.kamikatsu.jp/docs/2026090700017/",
+"bousai": false,
+"forms": [
+[
+"https://www.kamikatsu.jp/inquiry/2/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.kamikatsu.jp/category/bunya/anshin/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.kamikatsu.jp/inquiry/2/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.kamikatsu.jp/tag/%E5%9C%B0%E5%9F%9F%E9%98%B2%E7%81%BD%E8%A8%88%E7%94%BB/",
+"bousai": true,
+"forms": [
+[
+"https://www.kamikatsu.jp/inquiry/2/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.kamikatsu.jp/category/bunya/anshin/saigai/",
+"bousai": true,
+"forms": [
+[
+"https://www.kamikatsu.jp/inquiry/2/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

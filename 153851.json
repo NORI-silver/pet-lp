@@ -1,0 +1,40 @@
+{
+"pref": "新潟県",
+"name": "阿賀町",
+"code": "153851",
+"url": "https://www.town.aga.niigata.jp/",
+"found": [
+{
+"url": "https://www.town.aga.niigata.jp/kurashi_tetsuzuki/gomi_seikatsukankyo/637.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.aga.niigata.jp/cgi-bin/inquiry.php/3?page_no=637",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.aga.niigata.jp/cgi-bin/inquiry.php/17?page_no=637",
+"問い合わせる"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.aga.niigata.jp/kurashi_tetsuzuki/gomi_seikatsukankyo/3259.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.aga.niigata.jp/cgi-bin/inquiry.php/3?page_no=3259",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.aga.niigata.jp/cgi-bin/inquiry.php/17?page_no=3259",
+"問い合わせる"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

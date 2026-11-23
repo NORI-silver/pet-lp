@@ -1,0 +1,218 @@
+{
+"pref": "栃木県",
+"name": "塩谷町",
+"code": "093840",
+"url": "https://www.town.shioya.tochigi.jp/",
+"found": [
+{
+"url": "https://www.town.shioya.tochigi.jp/menu/17",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shioya.tochigi.jp/forms/contactaccept/edit/div/7",
+"お問い合わせ"
+],
+[
+"https://www.town.shioya.tochigi.jp/divlist",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shioya.tochigi.jp/info/61",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shioya.tochigi.jp/forms/contactaccept/edit/div/7",
+"お問い合わせ"
+],
+[
+"https://www.town.shioya.tochigi.jp/divlist",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shioya.tochigi.jp/info/62",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shioya.tochigi.jp/forms/contactaccept/edit/div/7",
+"お問い合わせ"
+],
+[
+"https://www.town.shioya.tochigi.jp/divlist",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shioya.tochigi.jp/info/290",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shioya.tochigi.jp/forms/contactaccept/edit/div/7",
+"お問い合わせ"
+],
+[
+"https://www.town.shioya.tochigi.jp/divlist",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shioya.tochigi.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shioya.tochigi.jp/forms/contactaccept/edit/div/7",
+"お問い合わせ"
+],
+[
+"https://www.town.shioya.tochigi.jp/divlist",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.shioya.tochigi.jp/menu/25",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shioya.tochigi.jp/forms/contactaccept/edit/div/7",
+"お問い合わせ"
+],
+[
+"https://www.town.shioya.tochigi.jp/divlist",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shioya.tochigi.jp/info/2866",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shioya.tochigi.jp/forms/contactaccept/edit/div/7",
+"お問い合わせ"
+],
+[
+"https://www.town.shioya.tochigi.jp/divlist",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shioya.tochigi.jp/info/911",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shioya.tochigi.jp/forms/contactaccept/edit/div/7",
+"お問い合わせ"
+],
+[
+"https://www.town.shioya.tochigi.jp/divlist",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shioya.tochigi.jp/info/291",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shioya.tochigi.jp/forms/contactaccept/edit/div/7",
+"お問い合わせ"
+],
+[
+"https://www.town.shioya.tochigi.jp/divlist",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shioya.tochigi.jp/info/810",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shioya.tochigi.jp/forms/contactaccept/edit/div/7",
+"お問い合わせ"
+],
+[
+"https://www.town.shioya.tochigi.jp/divlist",
+"各課のお問い合わせ先"
+]
+],
+"mails": [
+"bousai.shioya-town@raiden.ktaiwork.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.shioya.tochigi.jp/info/2371",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shioya.tochigi.jp/forms/contactaccept/edit/div/7",
+"お問い合わせ"
+],
+[
+"https://www.town.shioya.tochigi.jp/divlist",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shioya.tochigi.jp/info/1379",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shioya.tochigi.jp/forms/contactaccept/edit/div/7",
+"お問い合わせ"
+],
+[
+"https://www.town.shioya.tochigi.jp/divlist",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shioya.tochigi.jp/info/220",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shioya.tochigi.jp/forms/contactaccept/edit/div/7",
+"お問い合わせ"
+],
+[
+"https://www.town.shioya.tochigi.jp/divlist",
+"各課のお問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

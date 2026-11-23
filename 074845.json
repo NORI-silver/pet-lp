@@ -1,0 +1,196 @@
+{
+"pref": "福島県",
+"name": "鮫川村",
+"code": "074845",
+"url": "https://www.vill.samegawa.fukushima.jp/",
+"found": [
+{
+"url": "https://www.vill.samegawa.fukushima.jp/kankyo-eisei/pet/",
+"bousai": false,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.samegawa.fukushima.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.samegawa.fukushima.jp/bosai-anzen/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.samegawa.fukushima.jp/bosai-anzen/news/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.samegawa.fukushima.jp/bosai-anzen/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.samegawa.fukushima.jp/bosai-anzen/bosai/hinanbasyo/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.samegawa.fukushima.jp/bosai-anzen/bosai/bousaimap/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.samegawa.fukushima.jp/bosai-anzen/bosai/tiikibousaikeikaku/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.samegawa.fukushima.jp/bosai-anzen/bosai/bousai-oshirase/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.samegawa.fukushima.jp/bosai-anzen/bosai/hinanbasyo/page001632.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php?mode=detail&amp;code=1&amp;code2=1",
+"メールでお問い合わせをする"
+],
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務係"
+},
+{
+"url": "https://www.vill.samegawa.fukushima.jp/bosai-anzen/bosai/bousaimap/page002671.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php?mode=detail&amp;code=1&amp;code2=1",
+"メールでお問い合わせをする"
+],
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務係"
+},
+{
+"url": "https://www.vill.samegawa.fukushima.jp/bosai-anzen/bosai/tiikibousaikeikaku/page000382.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php?mode=detail&amp;code=1&amp;code2=1",
+"メールでお問い合わせをする"
+],
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務係"
+},
+{
+"url": "https://www.vill.samegawa.fukushima.jp/bosai-anzen/bosai/bousai-oshirase/page003084.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php?mode=detail&amp;code=1&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.vill.samegawa.fukushima.jp/bosai-anzen/bosai/bousai-oshirase/page001630.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php?mode=detail&amp;code=1&amp;code2=1",
+"メールでお問い合わせをする"
+],
+[
+"https://www.vill.samegawa.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務係"
+}
+]
+}

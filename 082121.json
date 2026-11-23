@@ -1,0 +1,97 @@
+{
+"pref": "茨城県",
+"name": "常陸太田市",
+"code": "082121",
+"url": "https://www.city.hitachiota.ibaraki.jp/",
+"found": [
+{
+"url": "https://www.city.hitachiota.ibaraki.jp/you-ai-net/event/page011306.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.hitachiota.ibaraki.jp/inq.php?mode=detail&amp;code=69&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.hitachiota.ibaraki.jp/mailform.php?code=137",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.hitachiota.ibaraki.jp/search.php?keyword=%E9%98%B2%E7%81%BD%E7%84%A1%E7%B7%9A",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.hitachiota.ibaraki.jp/shobo-bosai/bosai/bosai-musen/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.hitachiota.ibaraki.jp/shobo-bosai/shobo/page008918.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hitachiota.ibaraki.jp/inq.php?mode=detail&amp;code=43&amp;code2=103",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.hitachiota.ibaraki.jp/shobo-bosai/bosai/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "教育総務課"
+},
+{
+"url": "https://www.city.hitachiota.ibaraki.jp/shobo-bosai/bosai/news/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.hitachiota.ibaraki.jp/shobo-bosai/bosai/nuclear-bosai/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.hitachiota.ibaraki.jp/shobo-bosai/news/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.hitachiota.ibaraki.jp/shobo-bosai/bosai/bosai-musen/page001940.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "常陸太田市防災対策課"
+},
+{
+"url": "https://www.city.hitachiota.ibaraki.jp/kurashi/gomi-kankyo/global-warming/page009859.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hitachiota.ibaraki.jp/inq.php?mode=detail&amp;code=14&amp;code2=0",
+"メールでお問い合わせをする"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

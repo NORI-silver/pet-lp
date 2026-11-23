@@ -1,0 +1,188 @@
+{
+"pref": "青森県",
+"name": "平内町",
+"code": "023019",
+"url": "https://www.town.hiranai.aomori.jp/",
+"found": [
+{
+"url": "https://www.town.hiranai.aomori.jp/kurashi/pet/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.hiranai.aomori.jp/kurashi/pet/1/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.hiranai.aomori.jp/kurashi/pet/2/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.hiranai.aomori.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.hiranai.aomori.jp/kurashi/bosai/2/1358.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/2?page_no=1358",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.hiranai.aomori.jp/bosai_joho.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.hiranai.aomori.jp/kurashi/bosai/2/1516.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/2?page_no=1516",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.hiranai.aomori.jp/kurashi/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.hiranai.aomori.jp/kurashi/bosai/1/1361.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/2?page_no=1361",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.hiranai.aomori.jp/kurashi/bosai/2/1363.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/2?page_no=1363",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.hiranai.aomori.jp/kurashi/bosai/2/1365.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/2?page_no=1365",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.hiranai.aomori.jp/kurashi/bosai/2/1382.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/2?page_no=1382",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.hiranai.aomori.jp/kurashi/bosai/3/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.hiranai.aomori.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

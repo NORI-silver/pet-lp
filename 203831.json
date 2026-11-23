@@ -1,0 +1,60 @@
+{
+"pref": "長野県",
+"name": "箕輪町",
+"code": "203831",
+"url": "https://www.town.minowa.lg.jp/",
+"found": [
+{
+"url": "https://www.town.minowa.lg.jp/kurashi-tetsuzuki/anzen-anshin/bosai-gensai/9597.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.minowa.lg.jp/soshiki/somu/gyomu/14/105.html",
+"各課へのお問い合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.minowa.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.minowa.lg.jp/soshiki/somu/gyomu/14/105.html",
+"各課へのお問い合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.minowa.lg.jp/kurashi-tetsuzuki/anzen-anshin/bosai-gensai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.minowa.lg.jp/soshiki/somu/gyomu/14/105.html",
+"各課へのお問い合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.minowa.lg.jp/kurashi-tetsuzuki/anzen-anshin/bosai-gensai/5505.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.minowa.lg.jp/cgi-bin/inquiry.php/2?page_no=5505",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.minowa.lg.jp/soshiki/somu/gyomu/14/105.html",
+"各課へのお問い合せ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

@@ -1,0 +1,100 @@
+{
+"pref": "福井県",
+"name": "高浜町",
+"code": "184811",
+"url": "https://www.town.takahama.fukui.jp/",
+"found": [
+{
+"url": "https://www.town.takahama.fukui.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.takahama.fukui.jp/page/admin/goiken.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.takahama.fukui.jp/page/bousai/p001274.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.takahama.fukui.jp/page/admin/goiken.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [
+"bousai@town.takahama.lg.jp"
+],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.town.takahama.fukui.jp/page/kodomomirai/p009021.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.takahama.fukui.jp/page/admin/goiken.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [
+"kurumu@town.takahama.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.takahama.fukui.jp/page/bousai/p003127.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.takahama.fukui.jp/page/admin/goiken.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [
+"bousai@town.takahama.lg.jp"
+],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.town.takahama.fukui.jp/page/bousai/hinankankokumanyual.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.takahama.fukui.jp/page/admin/goiken.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [
+"bousai@town.takahama.lg.jp"
+],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.town.takahama.fukui.jp/life/bousai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.takahama.fukui.jp/page/admin/goiken.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.takahama.fukui.jp/life/bousai/ippan/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.takahama.fukui.jp/page/admin/goiken.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

@@ -1,0 +1,178 @@
+{
+"pref": "静岡県",
+"name": "御殿場市",
+"code": "222151",
+"url": "https://www.city.gotemba.lg.jp/",
+"found": [
+{
+"url": "https://www.city.gotemba.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gotemba.lg.jp/anzen/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gotemba.lg.jp/anzen/category/a-1",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gotemba.lg.jp/anzen/category/a-1/a-1-2",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gotemba.lg.jp/anzen/a-1/a-1-2/2290.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.gotemba.lg.jp/anzen/a-1/a-1-2/25.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.gotemba.lg.jp/anzen/a-1/a-1-2/17.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [
+"bosai@city.gotemba.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.gotemba.lg.jp/anzen/a-1/a-1-2/7.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.gotemba.lg.jp/anzen/a-1/a-1-2/1281.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gotemba.lg.jp/anzen/a-1/a-1-2/3097.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.gotemba.lg.jp/anzen/category/a-1/a-1-1",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gotemba.lg.jp/anzen/category/a-1/a-1-3",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gotemba.lg.jp/anzen/category/a-1/a-1-4",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.gotemba.lg.jp/anzen/a-1/a-1-4/550.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.gotemba.lg.jp/gyousei/inquiry",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+}
+]
+}

@@ -1,0 +1,107 @@
+{
+"pref": "大阪府",
+"name": "守口市",
+"code": "272094",
+"url": "https://www.city.moriguchi.osaka.jp/",
+"found": [
+{
+"url": "https://www.city.moriguchi.osaka.jp/kakukanoannai/kikikanrishitsu/pet-hinan/13769.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.moriguchi.osaka.jp/cgi-bin/inquiry.php/15?page_no=13769",
+"このページへのメールによるお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "守口市役所危機管理室"
+},
+{
+"url": "https://www.city.moriguchi.osaka.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.moriguchi.osaka.jp/kakukanoannai/kikakuzaiseibu/miryokusouzouhasshin/moriguchishinogaiyo/3469.html",
+"各課のお問い合せ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.moriguchi.osaka.jp/kakukanoannai/kikikanrishitsu/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.moriguchi.osaka.jp/kakukanoannai/kikikanrishitsu/kinkyusaigai/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.moriguchi.osaka.jp/kakukanoannai/kikikanrishitsu/bosai/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.moriguchi.osaka.jp/kakukanoannai/kikikanrishitsu/kinkyusaigai/15044.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.moriguchi.osaka.jp/cgi-bin/inquiry.php/15?page_no=15044",
+"このページへのメールによるお問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "守口市役所危機管理室"
+},
+{
+"url": "https://www.city.moriguchi.osaka.jp/kakukanoannai/kikikanrishitsu/bosai/hinanjoichiran/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.moriguchi.osaka.jp/kakukanoannai/kikikanrishitsu/bosai/bousaihazaadomappu/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.moriguchi.osaka.jp/kakukanoannai/kikikanrishitsu/bosai/jisyubou/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.moriguchi.osaka.jp/kakukanoannai/kikikanrishitsu/bosai/bosaikyoryoku/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.moriguchi.osaka.jp/kakukanoannai/kikikanrishitsu/bosai/bousaikyoutei/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.moriguchi.osaka.jp/kakukanoannai/kikikanrishitsu/bosai/bosaimusen/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理室"
+}
+]
+}

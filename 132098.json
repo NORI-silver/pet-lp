@@ -1,0 +1,128 @@
+{
+"pref": "東京都",
+"name": "町田市",
+"code": "132098",
+"url": "https://www.city.machida.tokyo.jp/",
+"found": [
+{
+"url": "https://www.city.machida.tokyo.jp/iryo/hokenjo/pet/kaikata_manner/saigai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.machida.tokyo.jp/cgi-bin/formmail/ssl/ssl_goiken/formmail.cgi?d=ssl_goiken&amp;bu=021&amp;ka=003",
+"WEBでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.machida.tokyo.jp/iryo/tiikihukusihoka/reiwa8nen8gatu_chiba.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.machida.tokyo.jp/cgi-bin/formmail/ssl/ssl_goiken/formmail.cgi?d=ssl_goiken&amp;bu=005&amp;ka=000",
+"WEBでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "福祉総務課"
+},
+{
+"url": "https://www.city.machida.tokyo.jp/iryo/tiikihukusihoka/r8kumamoto.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.machida.tokyo.jp/cgi-bin/formmail/ssl/ssl_goiken/formmail.cgi?d=ssl_goiken&amp;bu=005&amp;ka=000",
+"WEBでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "福祉総務課"
+},
+{
+"url": "https://www.city.machida.tokyo.jp/kanko/aruku/saigaishienkifukin.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.machida.tokyo.jp/cgi-bin/formmail/ssl/ssl_goiken/formmail.cgi?d=ssl_goiken&amp;bu=008&amp;ka=002",
+"WEBでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.machida.tokyo.jp/kurashi/bouhan/bousai/earthquake/taisaku/bousaifesta.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.machida.tokyo.jp/cgi-bin/formmail/ssl/ssl_goiken/formmail.cgi?d=ssl_goiken&amp;bu=022&amp;ka=000",
+"WEBでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.machida.tokyo.jp/kurashi/bouhan/bousai/earthquake/taisaku/sonae01.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.machida.tokyo.jp/cgi-bin/formmail/ssl/ssl_goiken/formmail.cgi?d=ssl_goiken&amp;bu=022&amp;ka=000",
+"WEBでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全部防災課"
+},
+{
+"url": "https://www.city.machida.tokyo.jp/kurashi/bouhan/bousai/earthquake/taisaku/kateiniokerusaigaitaisaku.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.machida.tokyo.jp/cgi-bin/formmail/ssl/ssl_goiken/formmail.cgi?d=ssl_goiken&amp;bu=022&amp;ka=000",
+"WEBでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全部防災課"
+},
+{
+"url": "https://www.city.machida.tokyo.jp/kurashi/bouhan/bousai/earthquake/taisaku/sonae.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.machida.tokyo.jp/cgi-bin/formmail/ssl/ssl_goiken/formmail.cgi?d=ssl_goiken&amp;bu=022&amp;ka=000",
+"WEBでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全部防災課"
+},
+{
+"url": "https://www.city.machida.tokyo.jp/kurashi/bouhan/bousai/earthquake/taisaku/saigaijikyouryokuido.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.machida.tokyo.jp/cgi-bin/formmail/ssl/ssl_goiken/formmail.cgi?d=ssl_goiken&amp;bu=022&amp;ka=000",
+"WEBでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全部防災課"
+},
+{
+"url": "https://www.city.machida.tokyo.jp/kurashi/bouhan/bousai/earthquake/taisaku/bousaimap.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.machida.tokyo.jp/cgi-bin/formmail/ssl/ssl_goiken/formmail.cgi?d=ssl_goiken&amp;bu=022&amp;ka=000",
+"WEBでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全部防災課"
+}
+]
+}

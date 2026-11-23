@@ -1,0 +1,208 @@
+{
+"pref": "富山県",
+"name": "滑川市",
+"code": "162060",
+"url": "https://www.city.namerikawa.toyama.jp/",
+"found": [
+{
+"url": "https://www.city.namerikawa.toyama.jp/kurashi/5/1/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.namerikawa.toyama.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.namerikawa.toyama.jp/soshiki/bousaikikikanri/musen/7466.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/cgi-bin/inquiry.php/48?page_no=7466",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.namerikawa.toyama.jp/soshiki/bousaikikikanri/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "市役所防災担当課"
+},
+{
+"url": "https://www.city.namerikawa.toyama.jp/soshiki/bousaikikikanri/musen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/cgi-bin/inquiry.php/48?page_no=8964",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.namerikawa.toyama.jp/soshiki/bousaikikikanri/musen/6018.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/cgi-bin/inquiry.php/48?page_no=6018",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.namerikawa.toyama.jp/soshiki/bousaikikikanri/2_1/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.namerikawa.toyama.jp/soshiki/bousaikikikanri/2/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/cgi-bin/inquiry.php/48?page_no=395",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.namerikawa.toyama.jp/soshiki/bousaikikikanri/hinan/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/cgi-bin/inquiry.php/48?page_no=9138",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.namerikawa.toyama.jp/soshiki/bousaikikikanri/saigaijitorikumi/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.namerikawa.toyama.jp/soshiki/bousaikikikanri/sonae/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/cgi-bin/inquiry.php/48?page_no=9137",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.namerikawa.toyama.jp/soshiki/bousaikikikanri/jisyubousai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/cgi-bin/inquiry.php/48?page_no=9136",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.namerikawa.toyama.jp/soshiki/bousaikikikanri/download/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/cgi-bin/inquiry.php/48?page_no=451",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.namerikawa.toyama.jp/soshiki/bousaikikikanri/caution_past/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.namerikawa.toyama.jp/contact/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+}
+]
+}

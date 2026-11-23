@@ -1,0 +1,196 @@
+{
+"pref": "茨城県",
+"name": "牛久市",
+"code": "082198",
+"url": "https://www.city.ushiku.lg.jp/",
+"found": [
+{
+"url": "https://www.city.ushiku.lg.jp/faq.php?mode=category&amp;lc=0&amp;c=25",
+"bousai": false,
+"forms": [
+[
+"https://www.city.ushiku.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ushiku.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ushiku.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ushiku.lg.jp/kurashi-tetsuduki/anshin-anzen/saigaikanren/page007264.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ushiku.lg.jp/inq.php?mode=detail&amp;code=71&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.ushiku.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.ushiku.lg.jp/kurashi-tetsuduki/anshin-anzen/saigaikanren/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ushiku.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ushiku.lg.jp/section.php?code=71",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ushiku.lg.jp/inq.php?mode=detail&amp;code=71&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.ushiku.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.ushiku.lg.jp/kurashi-tetsuduki/anshin-anzen/saigaikanren/saigaijoho/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ushiku.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ushiku.lg.jp/kurashi-tetsuduki/anshin-anzen/bosai-anshinanzen/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ushiku.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ushiku.lg.jp/kurashi-tetsuduki/anshin-anzen/saigaikanren/saigaijoho/page010689.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ushiku.lg.jp/inq.php?mode=detail&amp;code=71&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.ushiku.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.ushiku.lg.jp/kurashi-tetsuduki/anshin-anzen/saigaikanren/saigaijoho/page006421.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ushiku.lg.jp/inq.php?mode=detail&amp;code=71&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.ushiku.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.ushiku.lg.jp/kurashi-tetsuduki/anshin-anzen/saigaikanren/saigaijoho/page006398.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ushiku.lg.jp/inq.php?mode=detail&amp;code=71&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.ushiku.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.ushiku.lg.jp/kurashi-tetsuduki/anshin-anzen/saigaikanren/saigaijoho/page008063.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ushiku.lg.jp/inq.php?mode=detail&amp;code=71&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.ushiku.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.ushiku.lg.jp/kurashi-tetsuduki/anshin-anzen/saigaikanren/saigaijoho/page006599.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ushiku.lg.jp/inq.php?mode=detail&amp;code=70&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.ushiku.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ushiku.lg.jp/kurashi-tetsuduki/anshin-anzen/bosai-anshinanzen/page014948.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ushiku.lg.jp/inq.php?mode=detail&amp;code=71&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.ushiku.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+}
+]
+}

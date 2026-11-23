@@ -1,0 +1,99 @@
+{
+"pref": "三重県",
+"name": "御浜町",
+"code": "245615",
+"url": "https://www.town.mihama.mie.jp/",
+"found": [
+{
+"url": "https://www.town.mihama.mie.jp/soshikikarasagasu/somuka/kurashinojoho/3/177.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.mihama.mie.jp/cgi-bin/inquiry.php/1?page_no=177",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.mihama.mie.jp/640.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.town.mihama.mie.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.mihama.mie.jp/640.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.mihama.mie.jp/soshikikarasagasu/somuka/kurashinojoho/3/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.mihama.mie.jp/640.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.mihama.mie.jp/soshikikarasagasu/kensetsuka/kurashinojoho/2/176.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.mihama.mie.jp/cgi-bin/inquiry.php/8?page_no=176",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.mihama.mie.jp/640.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.mihama.mie.jp/soshikikarasagasu/seikatsukankyoka/kurashinojoho/6/277.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.mihama.mie.jp/cgi-bin/inquiry.php/34?page_no=277",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.mihama.mie.jp/640.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.mihama.mie.jp/soshikikarasagasu/somuka/kurashinojoho/3/288.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.mihama.mie.jp/cgi-bin/inquiry.php/1?page_no=288",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.mihama.mie.jp/640.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"bousai.mie-mihama-town@raiden2.ktaiwork.jp",
+"mie-mihama-town@raiden2.ktaiwork.jp"
+],
+"dept": "防災係"
+}
+]
+}

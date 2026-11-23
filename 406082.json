@@ -1,0 +1,118 @@
+{
+"pref": "福岡県",
+"name": "大任町",
+"code": "406082",
+"url": "https://www.town.oto.fukuoka.jp/",
+"found": [
+{
+"url": "https://www.town.oto.fukuoka.jp/list00138.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.oto.fukuoka.jp/classset002.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.oto.fukuoka.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.oto.fukuoka.jp/classset002.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.oto.fukuoka.jp/list00109.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.oto.fukuoka.jp/classset002.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.oto.fukuoka.jp/bousai/default.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.town.oto.fukuoka.jp/kiji003240/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.oto.fukuoka.jp/classset002.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "事前に大任町役場総務課"
+},
+{
+"url": "https://www.town.oto.fukuoka.jp/kiji003239/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.oto.fukuoka.jp/classset002.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.oto.fukuoka.jp/kiji003461/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.oto.fukuoka.jp/classset002.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.oto.fukuoka.jp/kiji00389/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.oto.fukuoka.jp/classset002.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.oto.fukuoka.jp/kiji00386/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.oto.fukuoka.jp/classset002.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.oto.fukuoka.jp/bosai/hazardmap/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務企画財政課"
+}
+]
+}

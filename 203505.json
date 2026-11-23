@@ -1,0 +1,108 @@
+{
+"pref": "長野県",
+"name": "長和町",
+"code": "203505",
+"url": "https://town.nagawa.nagano.jp/",
+"found": [
+{
+"url": "https://www.town.nagawa.nagano.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nagawa.nagano.jp/soshiki/somu/johokoho/johokoho_koho/1/1/konosaitonituite/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nagawa.nagano.jp/soshiki/somu/johokoho/johokoho_joho/1/1/1/1/252.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nagawa.nagano.jp/cgi-bin/inquiry.php/14?page_no=252",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.nagawa.nagano.jp/soshiki/somu/johokoho/johokoho_koho/1/1/konosaitonituite/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.nagawa.nagano.jp/kinkyu_info/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nagawa.nagano.jp/soshiki/somu/johokoho/johokoho_koho/1/1/konosaitonituite/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nagawa.nagano.jp/soshiki/somu/johokoho/johokoho_joho/1/1/1/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nagawa.nagano.jp/soshiki/somu/johokoho/johokoho_koho/1/1/konosaitonituite/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.nagawa.nagano.jp/kinkyu_info/1370.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nagawa.nagano.jp/cgi-bin/inquiry.php/14?page_no=1370",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.nagawa.nagano.jp/soshiki/somu/johokoho/johokoho_koho/1/1/konosaitonituite/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.nagawa.nagano.jp/kinkyu_info/1968.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nagawa.nagano.jp/cgi-bin/inquiry.php/1?page_no=1968",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.nagawa.nagano.jp/soshiki/somu/johokoho/johokoho_koho/1/1/konosaitonituite/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務係"
+},
+{
+"url": "https://www.town.nagawa.nagano.jp/kinkyu_info/2943.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nagawa.nagano.jp/cgi-bin/inquiry.php/6?page_no=2943",
+"お問い合わせはこちら"
+],
+[
+"https://www.town.nagawa.nagano.jp/soshiki/somu/johokoho/johokoho_koho/1/1/konosaitonituite/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+}
+]
+}

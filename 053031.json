@@ -1,0 +1,56 @@
+{
+"pref": "秋田県",
+"name": "小坂町",
+"code": "053031",
+"url": "https://www.town.kosaka.akita.jp/",
+"found": [
+{
+"url": "https://www.town.kosaka.akita.jp/kurashi_gyosei/lifescene/1100.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kosaka.akita.jp/cgi-bin/inquiry.php/1?page_no=1100",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kosaka.akita.jp/kurashi_gyosei/kurashi_tetsuzuki/gomi_kankyo/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kosaka.akita.jp/cgi-bin/inquiry.php/1?page_no=497",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kosaka.akita.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kosaka.akita.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kosaka.akita.jp/kurashi_gyosei/kurashi_tetsuzuki/gomi_kankyo/1425.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kosaka.akita.jp/cgi-bin/inquiry.php/1?page_no=1425",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

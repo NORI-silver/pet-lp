@@ -1,0 +1,242 @@
+{
+"pref": "茨城県",
+"name": "潮来市",
+"code": "082236",
+"url": "https://www.city.itako.lg.jp/",
+"found": [
+{
+"url": "https://www.city.itako.lg.jp/ku-te/se-kankyo/page009150.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.itako.lg.jp/inq.php?mode=detail&amp;code=20&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.itako.lg.jp/co-qe/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.itako.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.itako.lg.jp/ku-te/se-kankyo/pet/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.itako.lg.jp/co-qe/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.itako.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.itako.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itako.lg.jp/co-qe/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.itako.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.itako.lg.jp/di-em-information/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itako.lg.jp/co-qe/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.itako.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "茨城県防災・危機管理課"
+},
+{
+"url": "https://www.city.itako.lg.jp/di-em-information/itako-hazardmap/page008730.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itako.lg.jp/inq.php?mode=detail&amp;code=2&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.itako.lg.jp/co-qe/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.itako.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.itako.lg.jp/di-em-information/bou-kin-info/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itako.lg.jp/co-qe/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.itako.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.itako.lg.jp/di-em-information/bou-kin-info/page008486.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itako.lg.jp/inq.php?mode=detail&amp;code=2&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.itako.lg.jp/co-qe/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.itako.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.itako.lg.jp/di-em-information/itako-hazardmap/page000827.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itako.lg.jp/inq.php?mode=detail&amp;code=2&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.itako.lg.jp/co-qe/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.itako.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.itako.lg.jp/di-em-information/itako-hazardmap/page006661.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itako.lg.jp/inq.php?mode=detail&amp;code=2&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.itako.lg.jp/co-qe/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.itako.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.itako.lg.jp/di-em-information/bo-musen/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itako.lg.jp/co-qe/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.itako.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.itako.lg.jp/di-em-information/bo-musen/page000833.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itako.lg.jp/inq.php?mode=detail&amp;code=2&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.itako.lg.jp/co-qe/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.itako.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.itako.lg.jp/di-em-information/bo-musen/page001761.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itako.lg.jp/co-qe/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.itako.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [
+"mm_itako_regist@ictech.jp"
+],
+"dept": "潮来市総務課"
+},
+{
+"url": "https://www.city.itako.lg.jp/di-em-information/bou-sai-taisaku/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.itako.lg.jp/co-qe/",
+"ご意見・ご質問"
+],
+[
+"https://www.city.itako.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

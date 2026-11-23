@@ -1,0 +1,168 @@
+{
+"pref": "宮城県",
+"name": "大衡村",
+"code": "044245",
+"url": "https://www.village.ohira.miyagi.jp/",
+"found": [
+{
+"url": "https://www.village.ohira.miyagi.jp/1/2/2/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.village.ohira.miyagi.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.village.ohira.miyagi.jp/1/1/3/1186.html",
+"bousai": true,
+"forms": [
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/1?page_no=1186",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.village.ohira.miyagi.jp/1/1/3/2129.html",
+"bousai": true,
+"forms": [
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/1?page_no=2129",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.village.ohira.miyagi.jp/1/1/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.village.ohira.miyagi.jp/1/1/3/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.village.ohira.miyagi.jp/1/1/3/892.html",
+"bousai": true,
+"forms": [
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/8?page_no=892",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.village.ohira.miyagi.jp/1/1/3/948.html",
+"bousai": true,
+"forms": [
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/1?page_no=948",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務法令係"
+},
+{
+"url": "https://www.village.ohira.miyagi.jp/1/1/4/1827.html",
+"bousai": true,
+"forms": [
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/6?page_no=1827",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.village.ohira.miyagi.jp/1/1/3/1422.html",
+"bousai": true,
+"forms": [
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/1?page_no=1422",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.village.ohira.miyagi.jp/1/1/3/1508.html",
+"bousai": true,
+"forms": [
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/6?page_no=1508",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.village.ohira.miyagi.jp/cgi-bin/inquiry.php/3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

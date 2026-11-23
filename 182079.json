@@ -1,0 +1,36 @@
+{
+"pref": "福井県",
+"name": "鯖江市",
+"code": "182079",
+"url": "https://www.city.sabae.fukui.jp/",
+"found": [
+{
+"url": "https://www.city.sabae.fukui.jp/kurashi_tetsuduki/petto_dobutu/petdoko.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sabae.fukui.jp/cgi-bin/formmail/formmail.cgi?d=Kankyo_inq",
+"このページの担当にお問い合わせをする。"
+],
+[
+"https://www.city.sabae.fukui.jp/thissite/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.sabae.fukui.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sabae.fukui.jp/thissite/inquiry.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

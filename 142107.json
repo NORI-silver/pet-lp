@@ -1,0 +1,175 @@
+{
+"pref": "神奈川県",
+"name": "三浦市",
+"code": "142107",
+"url": "https://www.city.miura.kanagawa.jp/",
+"found": [
+{
+"url": "https://www.city.miura.kanagawa.jp/soshiki/bosaikikitaisakushitsu/pet/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.miura.kanagawa.jp/soshiki/digitalka/digitalka_joho/712.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機対策室"
+},
+{
+"url": "https://www.city.miura.kanagawa.jp/soshiki/bosaikikitaisakushitsu/pet/804.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.miura.kanagawa.jp/cgi-bin/inquiry.php/20?page_no=804",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.miura.kanagawa.jp/soshiki/digitalka/digitalka_joho/712.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機対策室"
+},
+{
+"url": "https://www.city.miura.kanagawa.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.miura.kanagawa.jp/soshiki/digitalka/digitalka_joho/712.html",
+"市へのお問い合わせ"
+],
+[
+"https://www.city.miura.kanagawa.jp/soshiki/digitalka/digitalka_joho/712.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.miura.kanagawa.jp/soshiki/bosaikikitaisakushitsu/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.miura.kanagawa.jp/soshiki/digitalka/digitalka_joho/712.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機対策室"
+},
+{
+"url": "https://www.city.miura.kanagawa.jp/kurashi/anzen_anshin/6/1/1/hazardmap/3948.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.miura.kanagawa.jp/cgi-bin/inquiry.php/20?page_no=3948",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.miura.kanagawa.jp/soshiki/digitalka/digitalka_joho/712.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機対策室"
+},
+{
+"url": "https://www.city.miura.kanagawa.jp/soshiki/motenashika/furusatonozei/13145.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.miura.kanagawa.jp/cgi-bin/inquiry.php/76?page_no=13145",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.miura.kanagawa.jp/soshiki/digitalka/digitalka_joho/712.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"keizai0801@city.miura.kanagawa.jp",
+"seisaku0301@city.miura.kanagawa.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.miura.kanagawa.jp/kurashi/anzen_anshin/6/1/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.miura.kanagawa.jp/soshiki/digitalka/digitalka_joho/712.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機対策室"
+},
+{
+"url": "https://www.city.miura.kanagawa.jp/soshiki/bosaikikitaisakushitsu/torikumi/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.miura.kanagawa.jp/soshiki/digitalka/digitalka_joho/712.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機対策室"
+},
+{
+"url": "https://www.city.miura.kanagawa.jp/soshiki/bosaikikitaisakushitsu/zyunbi/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.miura.kanagawa.jp/soshiki/digitalka/digitalka_joho/712.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機対策室"
+},
+{
+"url": "https://www.city.miura.kanagawa.jp/soshiki/bosaikikitaisakushitsu/12357.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.miura.kanagawa.jp/cgi-bin/inquiry.php/20?page_no=12357",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.miura.kanagawa.jp/soshiki/digitalka/digitalka_joho/712.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機対策室"
+},
+{
+"url": "https://www.city.miura.kanagawa.jp/kurashi/anzen_anshin/6/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.miura.kanagawa.jp/soshiki/digitalka/digitalka_joho/712.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.miura.kanagawa.jp/kurashi/anzen_anshin/6/1/1/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.miura.kanagawa.jp/soshiki/digitalka/digitalka_joho/712.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

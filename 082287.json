@@ -1,0 +1,228 @@
+{
+"pref": "茨城県",
+"name": "坂東市",
+"code": "082287",
+"url": "https://www.city.bando.lg.jp/",
+"found": [
+{
+"url": "https://www.city.bando.lg.jp/page/page000264.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php?mode=detail&amp;code=14&amp;code2=0&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [
+"info@mc.env.go.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.bando.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.bando.lg.jp/page/dir000091.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.bando.lg.jp/page/page011426.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php?mode=detail&amp;code=5&amp;code2=0&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [
+"bousai@pref.ibaraki.lg.jp"
+],
+"dept": "交通防災課"
+},
+{
+"url": "https://www.city.bando.lg.jp/page/page011392.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php?mode=detail&amp;code=5&amp;code2=0&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "交通防災課"
+},
+{
+"url": "https://www.city.bando.lg.jp/page/page005224.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php?mode=detail&amp;code=5&amp;code2=105&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理室"
+},
+{
+"url": "https://www.city.bando.lg.jp/page/page004154.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php?mode=detail&amp;code=5&amp;code2=105&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理室"
+},
+{
+"url": "https://www.city.bando.lg.jp/page/page000015.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php?mode=detail&amp;code=5&amp;code2=0&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "交通防災課"
+},
+{
+"url": "https://www.city.bando.lg.jp/page/page006139.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php?mode=detail&amp;code=5&amp;code2=0&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "交通防災課"
+},
+{
+"url": "https://www.city.bando.lg.jp/page/page011058.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php?mode=detail&amp;code=5&amp;code2=105&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理室"
+},
+{
+"url": "https://www.city.bando.lg.jp/page/page006541.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php?mode=detail&amp;code=5&amp;code2=0&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "交通防災課"
+},
+{
+"url": "https://www.city.bando.lg.jp/page/page006954.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php?mode=detail&amp;code=5&amp;code2=0&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "交通防災課"
+},
+{
+"url": "https://www.city.bando.lg.jp/page/page008347.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php?mode=detail&amp;code=5&amp;code2=0&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "交通防災課"
+},
+{
+"url": "https://www.city.bando.lg.jp/page/page002542.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.bando.lg.jp/inq.php?mode=detail&amp;code=5&amp;code2=105&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city.bando.lg.jp/inq.php",
+"市政へのご意見・ご要望・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理室"
+}
+]
+}

@@ -1,0 +1,252 @@
+{
+"pref": "千葉県",
+"name": "柏市",
+"code": "122173",
+"url": "https://www.city.kashiwa.lg.jp/",
+"found": [
+{
+"url": "https://www.city.kashiwa.lg.jp/bosaianzen/anshinanzen/disaster/disaster_ready/petto.html",
+"bousai": true,
+"forms": [
+[
+"https://secure.okbiz.jp/question-kashiwa/helpdesk?category_id=340&site_domain=default",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.kashiwa.lg.jp/kohokocho/jigyosha/ad/kokokukesai.html",
+"広告掲載のお問い合わせ"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.city.kashiwa.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"javascript:void(0)",
+"お問い合わせ（相談・ご意見など）"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"各課へのお問い合わせメール"
+],
+[
+"https://www.city.kashiwa.lg.jp/kohokocho/jigyosha/ad/kokokukesai.html",
+"広告掲載のお問い合わせ"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kashiwa.lg.jp/anshinanzen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kashiwa.lg.jp/kohokocho/jigyosha/ad/kokokukesai.html",
+"広告掲載のお問い合わせ"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.kashiwa.lg.jp/anshinanzen/disaster/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kashiwa.lg.jp/kohokocho/jigyosha/ad/kokokukesai.html",
+"広告掲載のお問い合わせ"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.kashiwa.lg.jp/anshinanzen/disaster/disaster_ready/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kashiwa.lg.jp/kohokocho/jigyosha/ad/kokokukesai.html",
+"広告掲載のお問い合わせ"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kashiwa.lg.jp/anshinanzen/disaster/disaster_ready/hinanbasho/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kashiwa.lg.jp/kohokocho/jigyosha/ad/kokokukesai.html",
+"広告掲載のお問い合わせ"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kashiwa.lg.jp/fukushiseisaku/saigaimimaikin.html",
+"bousai": true,
+"forms": [
+[
+"https://secure.okbiz.jp/question-kashiwa/helpdesk?category_id=379&site_domain=default",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.kashiwa.lg.jp/kohokocho/jigyosha/ad/kokokukesai.html",
+"広告掲載のお問い合わせ"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kashiwa.lg.jp/anshinanzen/bosaimusen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kashiwa.lg.jp/kohokocho/jigyosha/ad/kokokukesai.html",
+"広告掲載のお問い合わせ"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kashiwa.lg.jp/shogaigakushu/anshinanzen/bosaimusen/tejihoso.html",
+"bousai": true,
+"forms": [
+[
+"https://secure.okbiz.jp/question-kashiwa/helpdesk?category_id=444&site_domain=default",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.kashiwa.lg.jp/kohokocho/jigyosha/ad/kokokukesai.html",
+"広告掲載のお問い合わせ"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kashiwa.lg.jp/senkan/shichou1102bousaimusen.html",
+"bousai": true,
+"forms": [
+[
+"https://secure.okbiz.jp/question-kashiwa/helpdesk?category_id=440&site_domain=default",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.kashiwa.lg.jp/kohokocho/jigyosha/ad/kokokukesai.html",
+"広告掲載のお問い合わせ"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kashiwa.lg.jp/bosaianzen/anshinanzen/shuchi/kakuninhoho.html",
+"bousai": true,
+"forms": [
+[
+"https://secure.okbiz.jp/question-kashiwa/helpdesk?category_id=340&site_domain=default",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.kashiwa.lg.jp/kohokocho/jigyosha/ad/kokokukesai.html",
+"広告掲載のお問い合わせ"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.city.kashiwa.lg.jp/senkan/sanngi0720bbousaimusen.html",
+"bousai": true,
+"forms": [
+[
+"https://secure.okbiz.jp/question-kashiwa/helpdesk?category_id=440&site_domain=default",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.kashiwa.lg.jp/kohokocho/jigyosha/ad/kokokukesai.html",
+"広告掲載のお問い合わせ"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kashiwa.lg.jp/senkan/shiseijoho/senkyo/musensyuugi.html",
+"bousai": true,
+"forms": [
+[
+"https://secure.okbiz.jp/question-kashiwa/helpdesk?category_id=440&site_domain=default",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.kashiwa.lg.jp/kohokocho/jigyosha/ad/kokokukesai.html",
+"広告掲載のお問い合わせ"
+],
+[
+"https://www.city.kashiwa.lg.jp/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

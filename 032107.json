@@ -1,0 +1,180 @@
+{
+"pref": "岩手県",
+"name": "陸前高田市",
+"code": "032107",
+"url": "https://www.city.rikuzentakata.iwate.jp/",
+"found": [
+{
+"url": "https://www.city.rikuzentakata.iwate.jp/kurashi_tetsuzuki/gomi_kankyo_pet/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.rikuzentakata.iwate.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+],
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.rikuzentakata.iwate.jp/bosai_anzen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.rikuzentakata.iwate.jp/cgi-bin/smart_alert.php/2/list",
+"bousai": true,
+"forms": [
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.rikuzentakata.iwate.jp/soshiki/bosaika/bosai_shobo/1_1/2962.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+],
+[
+"https://www.city.rikuzentakata.iwate.jp/cgi-bin/inquiry.php/60?page_no=2962",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.rikuzentakata.iwate.jp/bosai_anzen/bosai_shobo/bosai/4/3905.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+],
+[
+"https://www.city.rikuzentakata.iwate.jp/cgi-bin/inquiry.php/60?page_no=3905",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.rikuzentakata.iwate.jp/bosai_anzen/bosai_shobo/bosai/3/3932.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+],
+[
+"https://www.city.rikuzentakata.iwate.jp/cgi-bin/inquiry.php/60?page_no=3932",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.rikuzentakata.iwate.jp/bosai_anzen/bosai_shobo/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.rikuzentakata.iwate.jp/bosai_anzen/bosai_shobo/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.rikuzentakata.iwate.jp:443/cgi-bin/smart_alert.php/2/detail/1347926",
+"bousai": true,
+"forms": [
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.rikuzentakata.iwate.jp:443/cgi-bin/smart_alert.php/2/detail/1347890",
+"bousai": true,
+"forms": [
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.rikuzentakata.iwate.jp/soshiki/bosaika/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.rikuzentakata.iwate.jp/soshiki/bosaika/bosai_shobo/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.rikuzentakata.iwate.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災課"
+}
+]
+}

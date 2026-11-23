@@ -1,0 +1,96 @@
+{
+"pref": "宮城県",
+"name": "利府町",
+"code": "044067",
+"url": "https://www.town.rifu.miyagi.jp/",
+"found": [
+{
+"url": "https://www.town.rifu.miyagi.jp/gyosei/soshikikarasagasu/seikatu/kankyou/7/1210.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.rifu.miyagi.jp/cgi-bin/inquiry.php/74?page_no=1210",
+"お問い合わせフォームはこちら"
+],
+[
+"https://www.town.rifu.miyagi.jp/gyosei/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.rifu.miyagi.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.rifu.miyagi.jp/gyosei/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.rifu.miyagi.jp/gyosei/bosai_anzen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.rifu.miyagi.jp/gyosei/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.rifu.miyagi.jp/gyosei/bosai_anzen/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.rifu.miyagi.jp/gyosei/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.rifu.miyagi.jp/gyosei/bosai_anzen/bosai/3/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.rifu.miyagi.jp/gyosei/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.rifu.miyagi.jp/gyosei/bosai_anzen/bosai/4/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.rifu.miyagi.jp/gyosei/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.rifu.miyagi.jp/gyosei/bosai_anzen/bosai/5911.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.rifu.miyagi.jp/gyosei/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

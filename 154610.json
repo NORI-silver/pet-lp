@@ -1,0 +1,64 @@
+{
+"pref": "新潟県",
+"name": "湯沢町",
+"code": "154610",
+"url": "https://www.town.yuzawa.lg.jp/",
+"found": [
+{
+"url": "https://www.town.yuzawa.lg.jp/kurashinojoho/kurashi_tetsuzuki/3/4/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.yuzawa.lg.jp/cgi-bin/inquiry.php/1",
+"町へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yuzawa.lg.jp/kurashinojoho/kurashi_tetsuzuki/3/4/2753.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.yuzawa.lg.jp/cgi-bin/inquiry.php/1",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.yuzawa.lg.jp/cgi-bin/inquiry.php/1",
+"町へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yuzawa.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.yuzawa.lg.jp/cgi-bin/inquiry.php/1",
+"町へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yuzawa.lg.jp/kurashinojoho/moshimonotokini/3159.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yuzawa.lg.jp/cgi-bin/inquiry.php/1",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.yuzawa.lg.jp/cgi-bin/inquiry.php/1",
+"町へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災管財課"
+}
+]
+}

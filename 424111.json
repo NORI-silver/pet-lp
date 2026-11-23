@@ -1,0 +1,148 @@
+{
+"pref": "長崎県",
+"name": "新上五島町",
+"code": "424111",
+"url": "https://official.shinkamigoto.net/",
+"found": [
+{
+"url": "https://official.shinkamigoto.net/goto_kurashi_full.php?eid=04826&r=1&wcid=i00001x3",
+"bousai": true,
+"forms": [
+[
+"https://official.shinkamigoto.net/goto_chosei_full.php?eid=00640&wcid=l00001x3",
+"本庁・支所等へのお問合せ先"
+]
+],
+"mails": [],
+"dept": "消防防災室"
+},
+{
+"url": "https://official.shinkamigoto.net/",
+"bousai": true,
+"forms": [
+[
+"https://official.shinkamigoto.net/goto_chosei_full.php?eid=00640&wcid=l00001x3",
+"本庁・支所等へのお問い合わせ先"
+],
+[
+"https://87ab853c.form.kintoneapp.com/public/e436c21e26cdd66fe8a0866389cd585cc0a41602127bcba0000454d2c6287127",
+"お問い合わせフォーム"
+],
+[
+"https://official.shinkamigoto.net/goto_chosei_full.php?eid=00640&wcid=l00001x3",
+"本庁・支所等へのお問合せ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://official.shinkamigoto.net/broadcast.php",
+"bousai": true,
+"forms": [
+[
+"https://official.shinkamigoto.net/goto_chosei_full.php?eid=00640&wcid=l00001x3",
+"本庁・支所等へのお問合せ先"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://official.shinkamigoto.net/goto_kurashi.php?wcid=i00001x2",
+"bousai": true,
+"forms": [
+[
+"https://official.shinkamigoto.net/goto_chosei_full.php?eid=00640&wcid=l00001x3",
+"本庁・支所等へのお問合せ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://official.shinkamigoto.net/goto_kurashi.php?wcid=i00001x3",
+"bousai": true,
+"forms": [
+[
+"https://official.shinkamigoto.net/goto_chosei_full.php?eid=00640&wcid=l00001x3",
+"本庁・支所等へのお問合せ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://official.shinkamigoto.net/contact_full.php?eid=00007",
+"bousai": true,
+"forms": [
+[
+"https://official.shinkamigoto.net/goto_chosei_full.php?eid=00640&wcid=l00001x3",
+"本庁・支所等へのお問合せ先"
+]
+],
+"mails": [],
+"dept": "消防防災室"
+},
+{
+"url": "https://official.shinkamigoto.net/goto_kurashi_full.php?eid=07807&amp;wcid=i00001x3",
+"bousai": true,
+"forms": [
+[
+"https://official.shinkamigoto.net/goto_chosei_full.php?eid=00640&wcid=l00001x3",
+"本庁・支所等へのお問合せ先"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://official.shinkamigoto.net/goto_kurashi_full.php?eid=01558&amp;wcid=i00001x3",
+"bousai": true,
+"forms": [
+[
+"https://official.shinkamigoto.net/goto_chosei_full.php?eid=00640&wcid=l00001x3",
+"本庁・支所等へのお問合せ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://official.shinkamigoto.net/goto_kurashi_full.php?eid=07649&amp;wcid=i00001x3",
+"bousai": true,
+"forms": [
+[
+"https://official.shinkamigoto.net/goto_chosei_full.php?eid=00640&wcid=l00001x3",
+"本庁・支所等へのお問合せ先"
+]
+],
+"mails": [],
+"dept": "消防防災室"
+},
+{
+"url": "https://official.shinkamigoto.net/goto_kurashi_full.php?eid=07646&amp;wcid=i00001x3",
+"bousai": true,
+"forms": [
+[
+"https://official.shinkamigoto.net/goto_chosei_full.php?eid=00640&wcid=l00001x3",
+"本庁・支所等へのお問合せ先"
+]
+],
+"mails": [],
+"dept": "消防防災室"
+},
+{
+"url": "https://official.shinkamigoto.net/goto_kurashi_full.php?eid=01961&amp;wcid=i00001x3",
+"bousai": true,
+"forms": [
+[
+"https://official.shinkamigoto.net/goto_chosei_full.php?eid=00640&wcid=l00001x3",
+"本庁・支所等へのお問合せ先"
+]
+],
+"mails": [],
+"dept": "消防防災室"
+}
+]
+}

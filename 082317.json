@@ -1,0 +1,72 @@
+{
+"pref": "茨城県",
+"name": "桜川市",
+"code": "082317",
+"url": "https://www.city.sakuragawa.lg.jp/index.html",
+"found": [
+{
+"url": "https://www.city.sakuragawa.lg.jp/lifeevent.php?code=6",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sakuragawa.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.sakuragawa.lg.jp/kurashi/seikatsu_kankyou/pet/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sakuragawa.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.sakuragawa.lg.jp/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sakuragawa.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.sakuragawa.lg.jp/kurashi/emergency/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sakuragawa.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.sakuragawa.lg.jp/kurashi/seikatsu_kankyou/page000671.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sakuragawa.lg.jp/inq.php?mode=detail&amp;code=14&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.sakuragawa.lg.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

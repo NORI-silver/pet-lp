@@ -1,0 +1,88 @@
+{
+"pref": "北海道",
+"name": "由仁町",
+"code": "014273",
+"url": "https://www.town.yuni.lg.jp/",
+"found": [
+{
+"url": "https://www.town.yuni.lg.jp/kurashi/gomi_kankyou_pet",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yuni.lg.jp/contact_finish",
+"お問い合わせフォーム（受付完了）"
+],
+[
+"https://www.town.yuni.lg.jp/contact_confirm",
+"お問い合わせフォーム（確認）"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yuni.lg.jp/kurashi/gomi_kankyou_pet/pet",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yuni.lg.jp/contact_finish",
+"お問い合わせフォーム（受付完了）"
+],
+[
+"https://www.town.yuni.lg.jp/contact_confirm",
+"お問い合わせフォーム（確認）"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yuni.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yuni.lg.jp/contact_finish",
+"お問い合わせフォーム（受付完了）"
+],
+[
+"https://www.town.yuni.lg.jp/contact_confirm",
+"お問い合わせフォーム（確認）"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yuni.lg.jp/chosei/bosai",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yuni.lg.jp/contact_finish",
+"お問い合わせフォーム（受付完了）"
+],
+[
+"https://www.town.yuni.lg.jp/contact_confirm",
+"お問い合わせフォーム（確認）"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yuni.lg.jp/newstopics/18184",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yuni.lg.jp/contact_finish",
+"お問い合わせフォーム（受付完了）"
+],
+[
+"https://www.town.yuni.lg.jp/contact_confirm",
+"お問い合わせフォーム（確認）"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

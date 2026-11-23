@@ -1,0 +1,163 @@
+{
+"pref": "神奈川県",
+"name": "厚木市",
+"code": "142123",
+"url": "https://www.city.atsugi.kanagawa.jp/",
+"found": [
+{
+"url": "https://www.city.atsugi.kanagawa.jp/soshiki/seikatsukankyoka/5/2/37676.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.atsugi.kanagawa.jp/shiseijoho/shiminsanka/2/toiawase_teian/index.html",
+"お問い合わせ"
+],
+[
+"https://www.city.atsugi.kanagawa.jp/shiseijoho/shiminsanka/2/toiawase_teian/index.html",
+"お問い合わせ"
+],
+[
+"https://www.city.atsugi.kanagawa.jp/cgi-bin/inquiry.php/35?page_no=37676",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.atsugi.kanagawa.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.atsugi.kanagawa.jp/shiseijoho/shiminsanka/2/toiawase_teian/index.html",
+"お問い合わせ"
+],
+[
+"https://www.city.atsugi.kanagawa.jp/kurashi_tetsuzuki/shiminkyodo_sodan/3/index.html",
+"相談・問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.atsugi.kanagawa.jp/soshiki/seikatsukankyoka/5/2/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.atsugi.kanagawa.jp/shiseijoho/shiminsanka/2/toiawase_teian/index.html",
+"お問い合わせ"
+],
+[
+"https://www.city.atsugi.kanagawa.jp/shiseijoho/shiminsanka/2/toiawase_teian/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.atsugi.kanagawa.jp/bousai/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.atsugi.kanagawa.jp/cgi-bin/smart_alert.php/1/list",
+"bousai": true,
+"forms": [
+[
+"https://www.city.atsugi.kanagawa.jp/shiseijoho/shiminsanka/2/toiawase_teian/index.html",
+"お問い合わせ"
+],
+[
+"https://www.city.atsugi.kanagawa.jp/shiseijoho/shiminsanka/2/toiawase_teian/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.atsugi.kanagawa.jp/soshiki/seikatsukankyoka/5/2/3612.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.atsugi.kanagawa.jp/shiseijoho/shiminsanka/2/toiawase_teian/index.html",
+"お問い合わせ"
+],
+[
+"https://www.city.atsugi.kanagawa.jp/shiseijoho/shiminsanka/2/toiawase_teian/index.html",
+"お問い合わせ"
+],
+[
+"https://www.city.atsugi.kanagawa.jp/cgi-bin/inquiry.php/35?page_no=3612",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.atsugi.kanagawa.jp/soshiki/seikatsukankyoka/5/2/4079.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.atsugi.kanagawa.jp/shiseijoho/shiminsanka/2/toiawase_teian/index.html",
+"お問い合わせ"
+],
+[
+"https://www.city.atsugi.kanagawa.jp/shiseijoho/shiminsanka/2/toiawase_teian/index.html",
+"お問い合わせ"
+],
+[
+"https://www.city.atsugi.kanagawa.jp/cgi-bin/inquiry.php/35?page_no=4079",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.atsugi.kanagawa.jp/bousai/5/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.atsugi.kanagawa.jp/bousai/5/1/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.atsugi.kanagawa.jp/bousai/5/tiikibou/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.atsugi.kanagawa.jp/bousai/5/4/11571.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.atsugi.kanagawa.jp/cgi-bin/inquiry.php/5?page_no=11571",
+"メールフォームによるお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.atsugi.kanagawa.jp/bousai/4/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+}
+]
+}

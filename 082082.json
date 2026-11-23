@@ -1,0 +1,248 @@
+{
+"pref": "茨城県",
+"name": "龍ケ崎市",
+"code": "082082",
+"url": "https://www.city.ryugasaki.ibaraki.jp/",
+"found": [
+{
+"url": "https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/petbousai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ryugasaki.ibaraki.jp/cgi-bin/formmail/formmail.cgi?d=100",
+"お問い合わせフォームを利用する"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/saigaiji-tel.html",
+"災害時の問い合わせ先"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/saigaiji-tel.html",
+"災害時の問い合わせ先"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/shisei/soshiki-R6/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.ryugasaki.ibaraki.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ryugasaki.ibaraki.jp/shisei/soshiki-R6/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/saigaiji-tel.html",
+"災害時の問い合わせ先"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/cgi-bin/formmail/formmail.cgi?d=100",
+"お問い合わせフォームを利用する"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/shisei/soshiki-R6/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/saigaiji-tel.html",
+"災害時の問い合わせ先"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/shisei/soshiki-R6/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/oshirase/kyouryokuido.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ryugasaki.ibaraki.jp/cgi-bin/formmail/formmail.cgi?d=100",
+"お問い合わせフォームを利用する"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/shisei/soshiki-R6/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/stockpiles.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ryugasaki.ibaraki.jp/cgi-bin/formmail/formmail.cgi?d=100",
+"お問い合わせフォームを利用する"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/saigaiji-tel.html",
+"災害時の問い合わせ先"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/shisei/soshiki-R6/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/ONNSEIISSEI202205.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ryugasaki.ibaraki.jp/cgi-bin/formmail/formmail.cgi?d=100",
+"お問い合わせフォームを利用する"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/saigaiji-tel.html",
+"災害時の問い合わせ先"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/shisei/soshiki-R6/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/korona_hinanjyo.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ryugasaki.ibaraki.jp/cgi-bin/formmail/formmail.cgi?d=100",
+"お問い合わせフォームを利用する"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/saigaiji-tel.html",
+"災害時の問い合わせ先"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/shisei/soshiki-R6/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/saigai/hinanjyo.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ryugasaki.ibaraki.jp/cgi-bin/formmail/formmail.cgi?d=100",
+"お問い合わせフォームを利用する"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/shisei/soshiki-R6/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/bousainotebikiH30.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ryugasaki.ibaraki.jp/cgi-bin/formmail/formmail.cgi?d=100",
+"お問い合わせフォームを利用する"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/saigaiji-tel.html",
+"災害時の問い合わせ先"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/shisei/soshiki-R6/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/bousaijyouhouban.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ryugasaki.ibaraki.jp/cgi-bin/formmail/formmail.cgi?d=100",
+"お問い合わせフォームを利用する"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/saigaiji-tel.html",
+"災害時の問い合わせ先"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/shisei/soshiki-R6/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/saigaiji-tel.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ryugasaki.ibaraki.jp/cgi-bin/formmail/formmail.cgi?d=100",
+"お問い合わせフォームを利用する"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/shisei/soshiki-R6/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/sonae.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ryugasaki.ibaraki.jp/cgi-bin/formmail/formmail.cgi?d=100",
+"お問い合わせフォームを利用する"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/anzen/bousai/sonaete/saigaiji-tel.html",
+"災害時の問い合わせ先"
+],
+[
+"https://www.city.ryugasaki.ibaraki.jp/shisei/soshiki-R6/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+}
+]
+}

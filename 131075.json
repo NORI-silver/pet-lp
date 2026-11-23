@@ -1,0 +1,38 @@
+{
+"pref": "東京都",
+"name": "墨田区",
+"code": "131075",
+"url": "https://www.city.sumida.lg.jp/",
+"found": [
+{
+"url": "https://www.city.sumida.lg.jp/kenko_fukushi/eisei/animal/pet_bousai.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災係"
+},
+{
+"url": "https://www.city.sumida.lg.jp/eventcalendar/sonota/r8_hunenn_shinnpo.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"funentaishin@city.sumida.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.sumida.lg.jp/anzen_anshin/bousai/jouhou-hassin/zyouhou_renraku.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災課"
+},
+{
+"url": "https://www.city.sumida.lg.jp/anzen_anshin/bousai/pamphlet-map/sumidakubousaitizu.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災課"
+}
+]
+}

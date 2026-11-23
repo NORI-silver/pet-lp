@@ -1,0 +1,215 @@
+{
+"pref": "兵庫県",
+"name": "姫路市",
+"code": "282014",
+"url": "https://www.city.himeji.lg.jp/",
+"found": [
+{
+"url": "https://www.city.himeji.lg.jp/kurashi/0000028138.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.himeji.lg.jp/module/shareform.php?so_cd=6-5-3-0-0",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.himeji.lg.jp/soshiki_list.html",
+"お問い合わせ窓口一覧"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.himeji.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.himeji.lg.jp/cmsform/enquete.php?id=6",
+"市政へのご意見"
+],
+[
+"https://www.city.himeji.lg.jp/soshiki_list.html",
+"お問い合わせ窓口一覧"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.himeji.lg.jp/anzen/0000008691.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.himeji.lg.jp/module/shareform.php?so_cd=1-4-0-0-0",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.himeji.lg.jp/soshiki_list.html",
+"お問い合わせ窓口一覧"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.himeji.lg.jp/anzen/0000004086.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.himeji.lg.jp/module/shareform.php?so_cd=1-4-0-0-0",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.himeji.lg.jp/soshiki_list.html",
+"お問い合わせ窓口一覧"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.himeji.lg.jp/anzen/category/61-1-0-0-0-0-0-0-0-0.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.himeji.lg.jp/anzen/0000027960.html",
+"災害にあわれた方へ災害にあわれた方へ、支援等に関する各種制度"
+],
+[
+"https://www.city.himeji.lg.jp/soshiki_list.html",
+"お問い合わせ窓口一覧"
+]
+],
+"mails": [],
+"dept": "のそれぞれの視点での防災対策に関係"
+},
+{
+"url": "http://bousai.city.himeji.lg.jp/bousai/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "姫路市危機管理室"
+},
+{
+"url": "https://www.city.himeji.lg.jp/anzen/category/61-1-4-0-0-0-0-0-0-0.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.himeji.lg.jp/soshiki_list.html",
+"お問い合わせ窓口一覧"
+]
+],
+"mails": [],
+"dept": "のそれぞれの視点での防災対策に関係"
+},
+{
+"url": "https://www.city.himeji.lg.jp/anzen/category/61-1-4-6-0-0-0-0-0-0.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.himeji.lg.jp/soshiki_list.html",
+"お問い合わせ窓口一覧"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.himeji.lg.jp/anzen/0000008608.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.himeji.lg.jp/module/shareform.php?so_cd=1-4-0-0-0",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.himeji.lg.jp/soshiki_list.html",
+"お問い合わせ窓口一覧"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.himeji.lg.jp/anzen/0000004251.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.himeji.lg.jp/module/shareform.php?so_cd=1-4-0-0-0",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.himeji.lg.jp/soshiki_list.html",
+"お問い合わせ窓口一覧"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.himeji.lg.jp/anzen/0000004224.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.himeji.lg.jp/module/shareform.php?so_cd=1-4-0-0-0",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.himeji.lg.jp/soshiki_list.html",
+"お問い合わせ窓口一覧"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.himeji.lg.jp/anzen/0000004153.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.himeji.lg.jp/module/shareform.php?so_cd=1-4-0-0-0",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.himeji.lg.jp/soshiki_list.html",
+"お問い合わせ窓口一覧"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.city.himeji.lg.jp/anzen/0000001612.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.himeji.lg.jp/module/shareform.php?so_cd=23-1-1-0-0",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.himeji.lg.jp/soshiki_list.html",
+"お問い合わせ窓口一覧"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.himeji.lg.jp/anzen/0000006830.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.himeji.lg.jp/module/shareform.php?so_cd=9-1-2-3-0",
+"お問い合わせフォーム"
+],
+[
+"https://www.city.himeji.lg.jp/soshiki_list.html",
+"お問い合わせ窓口一覧"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

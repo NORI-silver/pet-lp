@@ -1,0 +1,63 @@
+{
+"pref": "熊本県",
+"name": "苓北町",
+"code": "435317",
+"url": "https://reihoku-kumamoto.jp/",
+"found": [
+{
+"url": "https://reihoku-kumamoto.jp/list00149.html",
+"bousai": false,
+"forms": [
+[
+"https://reihoku-kumamoto.jp/dynamic/entry/pub/default.aspx?c_id=20",
+"お問い合わせ・ご意見"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://reihoku-kumamoto.jp/",
+"bousai": true,
+"forms": [
+[
+"https://reihoku-kumamoto.jp/dynamic/entry/pub/default.aspx?c_id=20",
+"お問い合わせ・ご意見"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://reihoku-kumamoto.jp/list00112.html",
+"bousai": true,
+"forms": [
+[
+"https://reihoku-kumamoto.jp/dynamic/entry/pub/default.aspx?c_id=20",
+"お問い合わせ・ご意見"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://reihoku-kumamoto.jp/bousai/default.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://reihoku-kumamoto.jp/kiji0032924/index.html",
+"bousai": true,
+"forms": [
+[
+"https://reihoku-kumamoto.jp/dynamic/entry/pub/default.aspx?c_id=20",
+"お問い合わせ・ご意見"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

@@ -1,0 +1,145 @@
+{
+"pref": "静岡県",
+"name": "袋井市",
+"code": "222160",
+"url": "https://www.city.fukuroi.shizuoka.jp/",
+"found": [
+{
+"url": "https://www.city.fukuroi.shizuoka.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.fukuroi.shizuoka.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.fukuroi.shizuoka.jp/kurashi_tetsuzuki/bosai_anzen/bosai/sonae/1452147402617.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.fukuroi.shizuoka.jp/cgi-bin/inquiry.php/1?page_no=7308",
+"お問い合わせ"
+]
+],
+"mails": [
+"bousai@city.fukuroi.shizuoka.jp"
+],
+"dept": "危機管理課災害対策係"
+},
+{
+"url": "https://www.city.fukuroi.shizuoka.jp/kurashi_tetsuzuki/bosai_anzen/bosai/kisho_saigai/1425447059813.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.fukuroi.shizuoka.jp/cgi-bin/inquiry.php/1?page_no=6614",
+"お問い合わせ"
+]
+],
+"mails": [
+"bousai@city.fukuroi.shizuoka.jp"
+],
+"dept": "危機管理課災害対策係"
+},
+{
+"url": "https://www.city.fukuroi.shizuoka.jp/kurashi_tetsuzuki/bosai_anzen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.fukuroi.shizuoka.jp/cgi-bin/inquiry.php/1?page_no=2021",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.fukuroi.shizuoka.jp/kurashi_tetsuzuki/bosai_anzen/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.fukuroi.shizuoka.jp/cgi-bin/inquiry.php/1?page_no=2022",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.fukuroi.shizuoka.jp/kurashi_tetsuzuki/bosai_anzen/bosai/sonae/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.fukuroi.shizuoka.jp/cgi-bin/inquiry.php/1?page_no=4741",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課災害対策係"
+},
+{
+"url": "https://www.city.fukuroi.shizuoka.jp/kokusaika/Forforeigners/saigaibousai/12815.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"tabunka@city.fukuroi.shizuoka.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.fukuroi.shizuoka.jp/kurashi_tetsuzuki/bosai_anzen/bosai/kisho_saigai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.fukuroi.shizuoka.jp/cgi-bin/inquiry.php/1?page_no=4736",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.fukuroi.shizuoka.jp/kurashi_tetsuzuki/bosai_anzen/bosai/map/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.fukuroi.shizuoka.jp/cgi-bin/inquiry.php/1?page_no=4734",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.fukuroi.shizuoka.jp/kurashi_tetsuzuki/bosai_anzen/bosai/kisho_saigai/1425447057244.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.fukuroi.shizuoka.jp/cgi-bin/inquiry.php/1?page_no=7889",
+"お問い合わせ"
+]
+],
+"mails": [
+"bousai@city.fukuroi.shizuoka.jp"
+],
+"dept": "危機管理課防災減災推進係"
+},
+{
+"url": "https://www.city.fukuroi.shizuoka.jp/kurashi_tetsuzuki/bosai_anzen/bosai/sonae/1425447060362.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.fukuroi.shizuoka.jp/cgi-bin/inquiry.php/1?page_no=7391",
+"お問い合わせ"
+]
+],
+"mails": [
+"bousai@city.fukuroi.shizuoka.jp"
+],
+"dept": "危機管理課災害対策係"
+}
+]
+}

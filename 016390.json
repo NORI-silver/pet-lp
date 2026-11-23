@@ -1,0 +1,124 @@
+{
+"pref": "北海道",
+"name": "更別村",
+"code": "016390",
+"url": "https://www.sarabetsu.jp/",
+"found": [
+{
+"url": "https://www.sarabetsu.jp/kurashi/sumai_seikatsu/pets/",
+"bousai": false,
+"forms": [
+[
+"https://www.sarabetsu.jp/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.sarabetsu.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.sarabetsu.jp/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.sarabetsu.jp/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.sarabetsu.jp/toiawase/",
+"お問い合わせ"
+],
+[
+"https://www.sarabetsu.jp/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.sarabetsu.jp/bosai/musen/",
+"bousai": true,
+"forms": [
+[
+"https://www.sarabetsu.jp/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.sarabetsu.jp/bosai/bosaimail/",
+"bousai": true,
+"forms": [
+[
+"https://www.sarabetsu.jp/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.sarabetsu.jp/bosai/bousaimappu/",
+"bousai": true,
+"forms": [
+[
+"https://www.sarabetsu.jp/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.sarabetsu.jp/gyosei/seisaku/bosai/chiiki_bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.sarabetsu.jp/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.sarabetsu.jp/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.sarabetsu.jp/toiawase/",
+"お問い合わせ"
+],
+[
+"https://www.sarabetsu.jp/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.sarabetsu.jp/gyosei/seisaku/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.sarabetsu.jp/toiawase/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

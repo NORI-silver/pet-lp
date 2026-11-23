@@ -1,0 +1,100 @@
+{
+"pref": "青森県",
+"name": "田子町",
+"code": "024431",
+"url": "https://www.town.takko.lg.jp/",
+"found": [
+{
+"url": "https://www.town.takko.lg.jp/index.cfm/9,0,20,html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.takko.lg.jp/index.cfm/13,1454,html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.takko.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.takko.lg.jp/index.cfm/13,1454,html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.takko.lg.jp/index.cfm/9,0,22,html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.takko.lg.jp/index.cfm/13,1454,html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.takko.lg.jp/index.cfm/9,7538,22,124,html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.takko.lg.jp/index.cfm/13,1404,html",
+"Eメールでのお問い合わせはこちら"
+],
+[
+"https://www.town.takko.lg.jp/index.cfm/13,1454,html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.takko.lg.jp/index.cfm/9,0,22,125,html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.takko.lg.jp/index.cfm/13,1454,html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.takko.lg.jp/index.cfm/9,0,22,275,html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.takko.lg.jp/index.cfm/13,1454,html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.takko.lg.jp/index.cfm/9,0,22,124,html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.takko.lg.jp/index.cfm/13,1404,html",
+"Eメールでのお問い合わせはこちら"
+],
+[
+"https://www.town.takko.lg.jp/index.cfm/13,1454,html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

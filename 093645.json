@@ -1,0 +1,190 @@
+{
+"pref": "栃木県",
+"name": "野木町",
+"code": "093645",
+"url": "https://www.town.nogi.lg.jp/",
+"found": [
+{
+"url": "https://www.town.nogi.lg.jp/kurashi/kankyou/pet/page006221.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nogi.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=46",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.nogi.lg.jp/kurashi/kankyou/pet/page005903.html",
+"動物に関する問い合わせについて"
+],
+[
+"https://www.town.nogi.lg.jp/page/page000527.html",
+"ご意見・ご質問"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nogi.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.nogi.lg.jp/page/page000527.html",
+"ご意見・ご質問"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nogi.lg.jp/cyousei/cyousei_news/page007443.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nogi.lg.jp/page/page000527.html",
+"ご意見・ご質問"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nogi.lg.jp/kurashi/kankyou/kikouhendou/page005834.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nogi.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=70",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.nogi.lg.jp/page/page000527.html",
+"ご意見・ご質問"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nogi.lg.jp/kurashi/kankyou/ondanka/hojo/page005762.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nogi.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=70",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.nogi.lg.jp/page/page000527.html",
+"ご意見・ご質問"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nogi.lg.jp/anzen_anshin/bousai/page001813.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nogi.lg.jp/inq.php?mode=detail&amp;code=1&amp;code2=3",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.nogi.lg.jp/page/page000527.html",
+"ご意見・ご質問"
+]
+],
+"mails": [],
+"dept": "消防防災交通係"
+},
+{
+"url": "https://www.town.nogi.lg.jp/lifeevent.php?code=1",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nogi.lg.jp/page/page000527.html",
+"ご意見・ご質問"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nogi.lg.jp/anzen_anshin/bousai/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nogi.lg.jp/page/page000527.html",
+"ご意見・ご質問"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nogi.lg.jp/anzen_anshin/bousai/page001308.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nogi.lg.jp/inq.php?mode=detail&amp;code=1&amp;code2=3",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.nogi.lg.jp/page/page000527.html",
+"ご意見・ご質問"
+]
+],
+"mails": [
+"77700003@bousai-nogi.jp"
+],
+"dept": "消防防災交通係"
+},
+{
+"url": "https://www.town.nogi.lg.jp/section.php?code=1",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nogi.lg.jp/inq.php?mode=detail&amp;code=1&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.nogi.lg.jp/page/page000527.html",
+"ご意見・ご質問"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.nogi.lg.jp/anzen_anshin/bousai/page006253.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nogi.lg.jp/inq.php?mode=detail&amp;code=7&amp;code2=46",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.nogi.lg.jp/page/page000527.html",
+"ご意見・ご質問"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nogi.lg.jp/anzen_anshin/bousai/page006009.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nogi.lg.jp/inq.php?mode=detail&amp;code=1&amp;code2=3",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.nogi.lg.jp/page/page000527.html",
+"ご意見・ご質問"
+]
+],
+"mails": [],
+"dept": "消防防災交通係"
+}
+]
+}

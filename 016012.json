@@ -1,0 +1,26 @@
+{
+"pref": "北海道",
+"name": "日高町",
+"code": "016012",
+"url": "https://www.town.hidaka.hokkaido.jp/",
+"found": [
+{
+"url": "https://www.town.hidaka.hokkaido.jp/prevention/?content=4435",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.hidaka.hokkaido.jp/prevention/?content=4407",
+"bousai": true,
+"forms": [],
+"mails": [
+"bousai-mail@town.hidaka.hokkaido.jp",
+"bousai.hidaka-town@raiden3.ktaiwork.jp",
+"bousai2@town.hidaka.hokkaido.jp"
+],
+"dept": "総務課"
+}
+]
+}

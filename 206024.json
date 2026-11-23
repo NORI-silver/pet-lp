@@ -1,0 +1,113 @@
+{
+"pref": "長野県",
+"name": "栄村",
+"code": "206024",
+"url": "http://www.vill.sakae.nagano.jp/",
+"found": [
+{
+"url": "http://www.vill.sakae.nagano.jp/kurashi/pet/",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.sakae.nagano.jp/docs/633.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"info@vill.sakae.nagano.jp"
+],
+"dept": null
+},
+{
+"url": "http://www.vill.sakae.nagano.jp/docs/243.html",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.sakae.nagano.jp/docs/633.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"info@vill.sakae.nagano.jp"
+],
+"dept": null
+},
+{
+"url": "http://www.vill.sakae.nagano.jp/",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.sakae.nagano.jp/docs/633.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"info@vill.sakae.nagano.jp"
+],
+"dept": null
+},
+{
+"url": "http://www.vill.sakae.nagano.jp/kurashi/bosai/",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.sakae.nagano.jp/docs/633.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"info@vill.sakae.nagano.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "http://www.vill.sakae.nagano.jp/docs/524.html",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.sakae.nagano.jp/docs/633.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"info@vill.sakae.nagano.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "http://www.vill.sakae.nagano.jp/docs/1850.html",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.sakae.nagano.jp/docs/633.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"info@vill.sakae.nagano.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "http://www.vill.sakae.nagano.jp/docs/216.html",
+"bousai": true,
+"forms": [
+[
+"http://www.vill.sakae.nagano.jp/docs/633.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"info@vill.sakae.nagano.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "http://www.vill.sakae.nagano.jp/hazardmap/flow_01.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "情報防災係"
+}
+]
+}

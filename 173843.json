@@ -1,0 +1,56 @@
+{
+"pref": "石川県",
+"name": "志賀町",
+"code": "173843",
+"url": "https://www.town.shika.lg.jp/",
+"found": [
+{
+"url": "https://www.town.shika.lg.jp/page/2077.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shika.lg.jp/form/detail.php?sec_sec1=10&lif_id=8477",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shika.lg.jp/page/2083.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shika.lg.jp/form/detail.php?sec_sec1=10&lif_id=9476",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shika.lg.jp/page/2091.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shika.lg.jp/form/detail.php?sec_sec1=10&lif_id=8491",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shika.lg.jp/page/2082.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shika.lg.jp/form/detail.php?sec_sec1=10&lif_id=8482",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

@@ -1,0 +1,108 @@
+{
+"pref": "北海道",
+"name": "斜里町",
+"code": "015458",
+"url": "https://www.town.shari.hokkaido.jp/",
+"found": [
+{
+"url": "https://www.town.shari.hokkaido.jp/kurashinojoho/pet/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shari.hokkaido.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shari.hokkaido.jp/kurashinojoho/pet/523.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shari.hokkaido.jp/cgi-bin/inquiry.php/12?page_no=523",
+"お問い合わせフォームはこちら"
+],
+[
+"https://www.town.shari.hokkaido.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.town.shari.hokkaido.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shari.hokkaido.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shari.hokkaido.jp/kurashinojoho/bosai_kishojoho/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shari.hokkaido.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shari.hokkaido.jp/kurashinojoho/bosai_kishojoho/1109.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shari.hokkaido.jp/cgi-bin/inquiry.php/2?page_no=1109",
+"お問い合わせフォームはこちら"
+],
+[
+"https://www.town.shari.hokkaido.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.town.shari.hokkaido.jp/kurashinojoho/bosai_kishojoho/1110.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shari.hokkaido.jp/cgi-bin/inquiry.php/2?page_no=1110",
+"お問い合わせフォームはこちら"
+],
+[
+"https://www.town.shari.hokkaido.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+},
+{
+"url": "https://www.town.shari.hokkaido.jp/kurashinojoho/bosai_kishojoho/3071.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shari.hokkaido.jp/cgi-bin/inquiry.php/2?page_no=3071",
+"お問い合わせフォームはこちら"
+],
+[
+"https://www.town.shari.hokkaido.jp/inquiry/index.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部"
+}
+]
+}

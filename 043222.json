@@ -1,0 +1,46 @@
+{
+"pref": "宮城県",
+"name": "村田町",
+"code": "043222",
+"url": "https://www.town.murata.miyagi.jp/",
+"found": [
+{
+"url": "https://www.town.murata.miyagi.jp/kurashi/gomi_kankyo/kaiinu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.murata.miyagi.jp/news/176-2",
+"お問い合わせ"
+]
+],
+"mails": [
+"snkebjy@pref.miyagi.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.murata.miyagi.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.murata.miyagi.jp/news/176-2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.murata.miyagi.jp/kenko/hukushi/2026kumamoto/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.murata.miyagi.jp/news/176-2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

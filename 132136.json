@@ -1,0 +1,114 @@
+{
+"pref": "東京都",
+"name": "東村山市",
+"code": "132136",
+"url": "https://www.city.higashimurayama.tokyo.jp/",
+"found": [
+{
+"url": "https://www.city.higashimurayama.tokyo.jp/kurashi/bosai/bosai/hinanjokankei/boan2020.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災安全部防災防犯課"
+},
+{
+"url": "https://www.city.higashimurayama.tokyo.jp/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災安全部"
+},
+{
+"url": "https://www.city.higashimurayama.tokyo.jp/saigai-top/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.higashimurayama.tokyo.jp/kurashi/bosai/bosai/kinnkyuurennraku.html",
+"災害時の問い合わせ先一覧"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.higashimurayama.tokyo.jp/kurashi/bosai/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.higashimurayama.tokyo.jp/kurashi/bosai/bosai/kinnkyuurennraku.html",
+"災害時の問い合わせ先一覧"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.higashimurayama.tokyo.jp/kurashi/bosai/bosai/hinanjokankei/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.higashimurayama.tokyo.jp/kurashi/bosai/bosai/kinnkyuurennraku.html",
+"災害時の問い合わせ先一覧"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.higashimurayama.tokyo.jp/shisei/soshiki/bosaianzen/boan/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災防犯課"
+},
+{
+"url": "https://www.city.higashimurayama.tokyo.jp/kurashi/bosai/bosai/hinanjokankei/boan20200.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災安全部防災防犯課"
+},
+{
+"url": "https://www.city.higashimurayama.tokyo.jp/kurashi/bosai/bosai/hinanjokankei/boan20210805.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災安全部防災防犯課"
+},
+{
+"url": "https://www.city.higashimurayama.tokyo.jp/kurashi/bosai/bosai/hinanjokankei/bousai-map_top.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災安全部防災防犯課"
+},
+{
+"url": "https://www.city.higashimurayama.tokyo.jp/kurashi/shiminkatsudo/hinan/hinanzyo-unei.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災安全部防災防犯課"
+},
+{
+"url": "https://www.city.higashimurayama.tokyo.jp/kurashi/bosai/bosai/hinanjokankei/bitikujoukyou.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災安全部防災防犯課"
+},
+{
+"url": "https://www.city.higashimurayama.tokyo.jp/faq/kurashi/bosai/faq-bousai_hinanbash.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災安全部防災防犯課"
+},
+{
+"url": "https://www.city.higashimurayama.tokyo.jp/shisei/soshiki/bosaianzen/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務部"
+}
+]
+}

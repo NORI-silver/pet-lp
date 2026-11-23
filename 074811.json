@@ -1,0 +1,52 @@
+{
+"pref": "福島県",
+"name": "棚倉町",
+"code": "074811",
+"url": "https://www.town.tanagura.fukushima.jp/",
+"found": [
+{
+"url": "https://www.town.tanagura.fukushima.jp/jumin/sumai-kankyo-eisei/page002009.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.tanagura.fukushima.jp/inq.php?mode=detail&amp;code=9&amp;code2=34",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.tanagura.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tanagura.fukushima.jp/jumin/sumai-kankyo-eisei/page001087.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.tanagura.fukushima.jp/inq.php?mode=detail&amp;code=9&amp;code2=34",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.tanagura.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tanagura.fukushima.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tanagura.fukushima.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

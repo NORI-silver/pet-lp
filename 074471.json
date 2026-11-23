@@ -1,0 +1,32 @@
+{
+"pref": "福島県",
+"name": "会津美里町",
+"code": "074471",
+"url": "https://www.town.aizumisato.fukushima.jp/",
+"found": [
+{
+"url": "https://www.town.aizumisato.fukushima.jp/gyosei/kurashi_tetsuzuki/7/2508.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.aizumisato.fukushima.jp/cgi-bin/inquiry.php/7?page_no=2508",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.aizumisato.fukushima.jp/gyosei/kurashi_tetsuzuki/7/2511.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.aizumisato.fukushima.jp/cgi-bin/inquiry.php/7?page_no=2511",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

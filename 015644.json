@@ -1,0 +1,48 @@
+{
+"pref": "北海道",
+"name": "大空町",
+"code": "015644",
+"url": "https://www.town.ozora.hokkaido.jp/",
+"found": [
+{
+"url": "https://www.town.ozora.hokkaido.jp/kurashi_tetsuzuki/pet_dobutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.ozora.hokkaido.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.ozora.hokkaido.jp/kurashi_tetsuzuki/pet_dobutsu/2722.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.ozora.hokkaido.jp/cgi-bin/inquiry.php/2?page_no=2722",
+"メールでのお問い合わせ"
+],
+[
+"https://www.town.ozora.hokkaido.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.ozora.hokkaido.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.ozora.hokkaido.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

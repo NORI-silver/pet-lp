@@ -1,0 +1,94 @@
+{
+"pref": "静岡県",
+"name": "静岡市",
+"code": "221007",
+"url": "https://www.city.shizuoka.lg.jp/",
+"found": [
+{
+"url": "https://www.city.shizuoka.lg.jp/s3276/s001885.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shizuoka.lg.jp/s006625.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shizuoka.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shizuoka.lg.jp/s006625.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shizuoka.lg.jp/p000113.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shizuoka.lg.jp/s006625.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shizuoka.lg.jp/s4268/s000286.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shizuoka.lg.jp/s006625.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"〇〇@raiden.ktaiwork.jp"
+],
+"dept": "危機管理局危機管理課情報・施設係"
+},
+{
+"url": "https://www.city.shizuoka.lg.jp/p018699.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shizuoka.lg.jp/s006625.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shizuoka.lg.jp/p000121.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shizuoka.lg.jp/s006625.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shizuoka.lg.jp/s4268/s013061.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shizuoka.lg.jp/s006625.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理局危機管理課総務係"
+}
+]
+}

@@ -1,0 +1,60 @@
+{
+"pref": "福島県",
+"name": "玉川村",
+"code": "075027",
+"url": "https://www.vill.tamakawa.fukushima.jp/",
+"found": [
+{
+"url": "https://www.vill.tamakawa.fukushima.jp/living/living_move/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.tamakawa.fukushima.jp/form/1.html",
+"ご意見・ご相談"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.vill.tamakawa.fukushima.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.tamakawa.fukushima.jp/form/1.html",
+"ご意見・ご相談"
+],
+[
+"https://www.vill.tamakawa.fukushima.jp/form/1.html",
+"ご意見・ご相談"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.tamakawa.fukushima.jp/living/living_hospital/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.tamakawa.fukushima.jp/form/1.html",
+"ご意見・ご相談"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.vill.tamakawa.fukushima.jp/bousai/",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.tamakawa.fukushima.jp/form/1.html",
+"ご意見・ご相談"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

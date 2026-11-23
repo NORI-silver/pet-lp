@@ -1,0 +1,68 @@
+{
+"pref": "静岡県",
+"name": "長泉町",
+"code": "223425",
+"url": "https://www.town.nagaizumi.lg.jp/",
+"found": [
+{
+"url": "https://www.town.nagaizumi.lg.jp/life_procedure/pet_animal/12179.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nagaizumi.lg.jp/cgi-bin/inquiry.php/13?page_no=12179",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.nagaizumi.lg.jp/emergency/occurrence/9625.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nagaizumi.lg.jp/cgi-bin/inquiry.php/4?page_no=9625",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "地域防災課"
+},
+{
+"url": "https://www.town.nagaizumi.lg.jp/emergency/disaster_preparedness/9619.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nagaizumi.lg.jp/cgi-bin/inquiry.php/4?page_no=9619",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "地域防災課"
+},
+{
+"url": "https://www.town.nagaizumi.lg.jp/emergency/disaster_preparedness/9632.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nagaizumi.lg.jp/cgi-bin/inquiry.php/4?page_no=9632",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "地域防災課"
+},
+{
+"url": "https://www.town.nagaizumi.lg.jp/emergency/disaster_preparedness/9622.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.nagaizumi.lg.jp/cgi-bin/inquiry.php/4?page_no=9622",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": "地域防災課"
+}
+]
+}

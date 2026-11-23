@@ -1,0 +1,85 @@
+{
+"pref": "佐賀県",
+"name": "小城市",
+"code": "412082",
+"url": "https://www.city.ogi.lg.jp/",
+"found": [
+{
+"url": "https://www.city.ogi.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ogi.lg.jp/main/33.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ogi.lg.jp/main/10385.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bousaitaisaku@city.ogi.lg.jp"
+],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.ogi.lg.jp/main/2610.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bousaitaisaku@city.ogi.lg.jp",
+"kensetsu@city.ogi.lg.jp"
+],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.ogi.lg.jp/main/10385..html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bousaitaisaku@city.ogi.lg.jp"
+],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.ogi.lg.jp/main/10383.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bousaitaisaku@city.ogi.lg.jp"
+],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.ogi.lg.jp/main/21484.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bousaitaisaku@city.ogi.lg.jp",
+"ogi-city@raiden2.ktaiwork.jp"
+],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.ogi.lg.jp/main/33008.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bousaitaisaku@city.ogi.lg.jp"
+],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.ogi.lg.jp/main/10596.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bousaitaisaku@city.ogi.lg.jp"
+],
+"dept": "防災対策課"
+}
+]
+}

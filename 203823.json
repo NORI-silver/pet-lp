@@ -1,0 +1,179 @@
+{
+"pref": "長野県",
+"name": "辰野町",
+"code": "203823",
+"url": "https://www.town.tatsuno.lg.jp/index.html",
+"found": [
+{
+"url": "https://www.town.tatsuno.lg.jp/gyosei/kurashi_tetsuzuki/pet/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tatsuno.lg.jp/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tatsuno.lg.jp/gyosei/kurashi_tetsuzuki/johoteikyoservice/1487.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tatsuno.lg.jp/gyosei/kurashi_tetsuzuki/johoteikyoservice/1486.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [
+"soumu@town.tatsuno.nagano.jp",
+"tt@emp-sa.smart-lgov.jp"
+],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.town.tatsuno.lg.jp/gyosei/mokutekibetsu/bosai_shobo/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tatsuno.lg.jp/gyosei/mokutekibetsu/bosai_shobo/2269.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.town.tatsuno.lg.jp/gyosei/soshiki/somuka/anzen_anshin/3/751.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.town.tatsuno.lg.jp/gyosei/soshiki/somuka/anzen_anshin/3/756.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.town.tatsuno.lg.jp/gyosei/soshiki/somuka/anzen_anshin/3/757.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.town.tatsuno.lg.jp/gyosei/soshiki/somuka/anzen_anshin/3/761.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.town.tatsuno.lg.jp/gyosei/soshiki/somuka/anzen_anshin/3/762.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.town.tatsuno.lg.jp/gyosei/soshiki/somuka/anzen_anshin/3/2534.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.town.tatsuno.lg.jp/gyosei/soshiki/somuka/anzen_anshin/3/2708.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.town.tatsuno.lg.jp/gyosei/soshiki/somuka/anzen_anshin/3/2953.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tatsuno.lg.jp/cgi-bin/inquiry.php/2",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+}
+]
+}

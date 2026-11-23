@@ -1,0 +1,200 @@
+{
+"pref": "東京都",
+"name": "大田区",
+"code": "131113",
+"url": "https://www.city.ota.tokyo.jp/",
+"found": [
+{
+"url": "https://www.city.ota.tokyo.jp/seikatsu/chiiki/bousai/hinanjyo/pet.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ota.tokyo.jp/cgi-bin/form_enq/formmail.cgi?d=eisei",
+"メールによるお問合せ"
+],
+[
+"https://www.city.ota.tokyo.jp/cgi-bin/form_enq/formmail.cgi?d=bosai",
+"メールによるお問合せ"
+],
+[
+"https://www.city.ota.tokyo.jp/aboutweb/ask.html",
+"区へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.ota.tokyo.jp/seikatsu/hoken/pet_dog_cat/saigaitaisaku.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ota.tokyo.jp/cgi-bin/form_enq/formmail.cgi?d=eisei",
+"メールによるお問い合わせ"
+],
+[
+"https://www.city.ota.tokyo.jp/aboutweb/ask.html",
+"区へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ota.tokyo.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ota.tokyo.jp/aboutweb/ask.html",
+"区へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ota.tokyo.jp/seikatsu/chiiki/bousai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ota.tokyo.jp/aboutweb/ask.html",
+"区へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務部防災危機管理課"
+},
+{
+"url": "https://www.city.ota.tokyo.jp/seikatsu/chiiki/bousai/hinanjyo/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ota.tokyo.jp/aboutweb/ask.html",
+"区へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・防犯関係"
+},
+{
+"url": "https://www.city.ota.tokyo.jp/kuseijoho/soshiki/gyoumu/seikatsueisei.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ota.tokyo.jp/cgi-bin/form_enq/formmail.cgi?d=eisei",
+"メールによるお問い合わせ"
+],
+[
+"https://www.city.ota.tokyo.jp/aboutweb/ask.html",
+"区へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "教育総務課"
+},
+{
+"url": "https://www.city.ota.tokyo.jp/kuseijoho/soshiki/gyoumu/bousai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ota.tokyo.jp/cgi-bin/form_enq/formmail.cgi?d=bosai",
+"メールによるお問い合わせ"
+],
+[
+"https://www.city.ota.tokyo.jp/aboutweb/ask.html",
+"区へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "教育総務課"
+},
+{
+"url": "https://www.city.ota.tokyo.jp/seikatsu/chiiki/bousai/hinanjyo/20260707anzenkakuninchecksi-to.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ota.tokyo.jp/cgi-bin/form_enq/formmail.cgi?d=shisetsu",
+"メールによるお問い合わせ"
+],
+[
+"https://www.city.ota.tokyo.jp/aboutweb/ask.html",
+"区へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ota.tokyo.jp/seikatsu/chiiki/bousai/hinanjyo/hinan.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ota.tokyo.jp/cgi-bin/form_enq/formmail.cgi?d=bosai",
+"メールによるお問い合わせ"
+],
+[
+"https://www.city.ota.tokyo.jp/aboutweb/ask.html",
+"区へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.ota.tokyo.jp/seikatsu/chiiki/bousai/hinanjyo/hinanjo.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ota.tokyo.jp/cgi-bin/form_enq/formmail.cgi?d=bosai",
+"メールによるお問い合わせ"
+],
+[
+"https://www.city.ota.tokyo.jp/aboutweb/ask.html",
+"区へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.ota.tokyo.jp/seikatsu/chiiki/bousai/hinanjyo/suigaijikinnkyuuhinannbasyo.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ota.tokyo.jp/cgi-bin/form_enq/formmail.cgi?d=bosai",
+"メールによるお問い合わせ"
+],
+[
+"https://www.city.ota.tokyo.jp/aboutweb/ask.html",
+"区へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.ota.tokyo.jp/seikatsu/chiiki/bousai/hinanjyo/kyoten.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ota.tokyo.jp/aboutweb/ask.html",
+"区へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ota.tokyo.jp/seikatsu/chiiki/bousai/hinanjyo/bichikusouko.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ota.tokyo.jp/aboutweb/ask.html",
+"区へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災危機管理課"
+}
+]
+}

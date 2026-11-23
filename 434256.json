@@ -1,0 +1,108 @@
+{
+"pref": "熊本県",
+"name": "産山村",
+"code": "434256",
+"url": "https://www.ubuyama-v.jp/",
+"found": [
+{
+"url": "https://www.ubuyama-v.jp/kurashi_tetsuzuki/seikatsukankyo/pets/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.ubuyama-v.jp/cgi-bin/inquiry.php/1?page_no=885",
+"お問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.ubuyama-v.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.ubuyama-v.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.ubuyama-v.jp/kurashinojoho/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.ubuyama-v.jp/cgi-bin/inquiry.php/1?page_no=55",
+"お問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.ubuyama-v.jp/kurashinojoho/bosai/bousaitaisaku/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.ubuyama-v.jp/cgi-bin/inquiry.php/1?page_no=860",
+"お問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.ubuyama-v.jp/kurashinojoho/bosai/bousaitaisaku/1160.html",
+"bousai": true,
+"forms": [
+[
+"https://www.ubuyama-v.jp/cgi-bin/inquiry.php/1?page_no=1160",
+"お問い合わせフォーム"
+],
+[
+"https://www.ubuyama-v.jp/cgi-bin/inquiry.php/1?page_no=1160",
+"お問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.ubuyama-v.jp/kurashinojoho/bosai/bousaitaisaku/1151.html",
+"bousai": true,
+"forms": [
+[
+"https://www.ubuyama-v.jp/cgi-bin/inquiry.php/1?page_no=1151",
+"お問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.ubuyama-v.jp/kurashinojoho/bosai/saigaihenosonae/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.ubuyama-v.jp/cgi-bin/inquiry.php/1?page_no=861",
+"お問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.ubuyama-v.jp/kurashinojoho/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.ubuyama-v.jp/cgi-bin/inquiry.php/1?page_no=55",
+"お問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

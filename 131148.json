@@ -1,0 +1,79 @@
+{
+"pref": "東京都",
+"name": "中野区",
+"code": "131148",
+"url": "https://www.city.tokyo-nakano.lg.jp/",
+"found": [
+{
+"url": "https://www.city.tokyo-nakano.lg.jp/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tokyo-nakano.lg.jp/bosai/kinkyu/index.html",
+"緊急時の行動・問合せ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tokyo-nakano.lg.jp/kusei/kousou/bunyabetsu/bousai/chikibosai-42ji.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.tokyo-nakano.lg.jp/bosai/suigai-sonae/jijyo-kyojyo/bosaihandbook.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.tokyo-nakano.lg.jp/bosai/jishin-sonae/jijyo-kyojyo/bosaiyoutube.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.tokyo-nakano.lg.jp/bosai/jishin-sonae/jijyo-kyojyo/bosaijyoho-mail.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"t-tokyo-nakano@sg-p.jp",
+"tokyo-nakano@sg-p.jp"
+],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.tokyo-nakano.lg.jp/bosai/jishin-sonae/jijyo-kyojyo/zaitakuhinan.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.tokyo-nakano.lg.jp/bosai/jishin-sonae/jijyo-kyojyo/bosaikai.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.tokyo-nakano.lg.jp/bosai/jishin-sonae/jijyo-kyojyo/bosaikunren.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災危機管理課"
+},
+{
+"url": "https://www.city.tokyo-nakano.lg.jp/bosai/jishin-sonae/jijyo-kyojyo/bosaifukyukeihatsu/bosaifukyukeihatsu.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災危機管理課"
+}
+]
+}

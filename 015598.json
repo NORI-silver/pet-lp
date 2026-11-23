@@ -1,0 +1,206 @@
+{
+"pref": "北海道",
+"name": "湧別町",
+"code": "015598",
+"url": "https://www.town.yubetsu.lg.jp/",
+"found": [
+{
+"url": "https://town.yubetsu.lg.jp/administration/faq/detail.html?faq=150",
+"bousai": true,
+"forms": [
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"このページに関するお問い合わせ"
+],
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.yubetsu.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.yubetsu.lg.jp/administration/detail.html?content=434",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://town.yubetsu.lg.jp/administration/life/category/?category=44",
+"bousai": true,
+"forms": [
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://town.yubetsu.lg.jp/administration/purpose/?purpose=10",
+"bousai": true,
+"forms": [
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://town.yubetsu.lg.jp/administration/news/detail.html?news=2030",
+"bousai": true,
+"forms": [
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"このページに関するお問い合わせ"
+],
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://town.yubetsu.lg.jp/administration/news/detail.html?news=2026",
+"bousai": true,
+"forms": [
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"このページに関するお問い合わせ"
+],
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://town.yubetsu.lg.jp/administration/news/detail.html?news=1869",
+"bousai": true,
+"forms": [
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"このページに関するお問い合わせ"
+],
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://town.yubetsu.lg.jp/administration/life/detail.html?content=1651",
+"bousai": true,
+"forms": [
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"このページに関するお問い合わせ"
+],
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://town.yubetsu.lg.jp/administration/life/detail.html?content=189",
+"bousai": true,
+"forms": [
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"このページに関するお問い合わせ"
+],
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://town.yubetsu.lg.jp/administration/life/detail.html?content=504",
+"bousai": true,
+"forms": [
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"このページに関するお問い合わせ"
+],
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://town.yubetsu.lg.jp/administration/life/detail.html?content=958",
+"bousai": true,
+"forms": [
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"このページに関するお問い合わせ"
+],
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://town.yubetsu.lg.jp/administration/life/detail.html?content=509",
+"bousai": true,
+"forms": [
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"このページに関するお問い合わせ"
+],
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"お問い合わせ"
+]
+],
+"mails": [
+"bousai.yubetsu-town@raiden3.ktaiwork.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://town.yubetsu.lg.jp/administration/life/detail.html?content=510",
+"bousai": true,
+"forms": [
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"このページに関するお問い合わせ"
+],
+[
+"https://town.yubetsu.lg.jp/administration/detail.html?content=434",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

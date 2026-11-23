@@ -1,0 +1,202 @@
+{
+"pref": "和歌山県",
+"name": "紀美野町",
+"code": "303046",
+"url": "https://www.town.kimino.wakayama.jp/",
+"found": [
+{
+"url": "https://www.town.kimino.wakayama.jp/kurashi/sumaipet/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/18?page_no=2552",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kimino.wakayama.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/18?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kimino.wakayama.jp/sagasu/somuka/anshinanzen/bosaijoho/saigaisiennseido/98.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/2?page_no=98",
+"メールフォームによるお問い合せ"
+],
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/18?page_no=98",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kimino.wakayama.jp/sagasu/somuka/anshinanzen/bosaijoho/2018.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/2?page_no=2018",
+"メールフォームによるお問い合せ"
+],
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/18?page_no=2018",
+"お問い合わせ"
+]
+],
+"mails": [
+"kimino-town@raiden3.ktaiwork.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kimino.wakayama.jp/sagasu/somuka/anshinanzen/bosaijoho/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/18?page_no=78",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kimino.wakayama.jp/sagasu/somuka/anshinanzen/bosaijoho/saigaisiennseido/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/18?page_no=3382",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kimino.wakayama.jp/sagasu/juminka/gomi_recycling/3381.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/13?page_no=3381",
+"メールフォームによるお問い合せ"
+],
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/18?page_no=3381",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kimino.wakayama.jp/sagasu/somuka/anshinanzen/bosaijoho/202306saigai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/2?page_no=242",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/18?page_no=3841",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kimino.wakayama.jp/sagasu/somuka/anshinanzen/bosaijoho/3435.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/2?page_no=3435",
+"メールフォームによるお問い合せ"
+],
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/18?page_no=3435",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kimino.wakayama.jp/sagasu/somuka/anshinanzen/bosaijoho/1764.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/2?page_no=1764",
+"メールフォームによるお問い合せ"
+],
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/18?page_no=1764",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kimino.wakayama.jp/sagasu/somuka/anshinanzen/bosaijoho/100.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/2?page_no=100",
+"メールフォームによるお問い合せ"
+],
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/18?page_no=100",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kimino.wakayama.jp/sagasu/somuka/anshinanzen/bosaijoho/926.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/2?page_no=926",
+"メールフォームによるお問い合せ"
+],
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/18?page_no=926",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kimino.wakayama.jp/sagasu/somuka/anshinanzen/bosaijoho/357.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/2?page_no=357",
+"メールフォームによるお問い合せ"
+],
+[
+"https://www.town.kimino.wakayama.jp/cgi-bin/inquiry.php/18?page_no=357",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

@@ -1,0 +1,88 @@
+{
+"pref": "栃木県",
+"name": "足利市",
+"code": "092029",
+"url": "https://www.city.ashikaga.tochigi.jp/",
+"found": [
+{
+"url": "https://www.city.ashikaga.tochigi.jp/environment/000071/000392/000791/p006254.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ashikaga.tochigi.jp/index.html",
+"お問い合わせはこちらから"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.ashikaga.tochigi.jp/",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "くらし安全安心課"
+},
+{
+"url": "https://www.city.ashikaga.tochigi.jp/disaster-prevension/000003/p006620.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.ashikaga.tochigi.jp/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ashikaga.tochigi.jp/viewer/opinion.html?formId=36&amp;idSubTop=0&amp;T_Id_s=17",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "くらし安全安心課"
+},
+{
+"url": "https://www.city.ashikaga.tochigi.jp/disaster-prevension/000004/p008053.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.ashikaga.tochigi.jp/index.html",
+"お問い合わせはこちらから"
+]
+],
+"mails": [
+"bosai@ashikaga-city.mailio.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.ashikaga.tochigi.jp/living/000026/000157/000597/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.ashikaga.tochigi.jp/living/000026/000157/000599/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.ashikaga.tochigi.jp/environment/000073/000405/000799/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.ashikaga.tochigi.jp/environment/000073/000405/000801/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+}
+]
+}

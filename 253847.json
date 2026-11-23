@@ -1,0 +1,34 @@
+{
+"pref": "滋賀県",
+"name": "竜王町",
+"code": "253847",
+"url": "https://www.town.ryuoh.shiga.jp/",
+"found": [
+{
+"url": "https://www.town.ryuoh.shiga.jp/",
+"bousai": true,
+"forms": [
+[
+"http://www.town.ryuoh.shiga.jp/site_information/site_inquiry/site_inquiry.html",
+"ホームページに関するお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.ryuoh.shiga.jp/life/bousai/kobetsu_jyushinki.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災センターにある親局"
+},
+{
+"url": "https://www.town.ryuoh.shiga.jp/life/bousai/tameike_hazardmap.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "294号農村振興局整備部防災課"
+}
+]
+}

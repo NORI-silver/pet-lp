@@ -1,0 +1,44 @@
+{
+"pref": "高知県",
+"name": "津野町",
+"code": "394114",
+"url": "https://town.kochi-tsuno.lg.jp/",
+"found": [
+{
+"url": "https://town.kochi-tsuno.lg.jp/section/post_205",
+"bousai": true,
+"forms": [
+[
+"https://town.kochi-tsuno.lg.jp/kurashi/contact",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://town.kochi-tsuno.lg.jp/kurashi/bousai",
+"bousai": true,
+"forms": [
+[
+"https://town.kochi-tsuno.lg.jp/kurashi/contact",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://town.kochi-tsuno.lg.jp/kurashi/bousai/musen",
+"bousai": true,
+"forms": [
+[
+"https://town.kochi-tsuno.lg.jp/kurashi/contact",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

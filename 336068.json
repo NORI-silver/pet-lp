@@ -1,0 +1,32 @@
+{
+"pref": "岡山県",
+"name": "鏡野町",
+"code": "336068",
+"url": "https://www.town.kagamino.lg.jp/",
+"found": [
+{
+"url": "https://www.town.kagamino.lg.jp/soshiki/1/1045.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kagamino.lg.jp/ques/questionnaire.php?openid=3",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kagamino.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kagamino.lg.jp/ques/questionnaire.php?openid=3",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

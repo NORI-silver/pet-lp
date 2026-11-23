@@ -1,0 +1,74 @@
+{
+"pref": "大阪府",
+"name": "阪南市",
+"code": "272329",
+"url": "https://www.city.hannan.lg.jp/",
+"found": [
+{
+"url": "https://www.city.hannan.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.hannan.lg.jp/cgi-bin/inquiry.php/1?page_no=1",
+"市政へのご意見"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.hannan.lg.jp/kurashi/bousai/1306467051890.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"kiki-kanri@city.hannan.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.hannan.lg.jp/kurashi/bousai/1286954667683.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"kiki-kanri@city.hannan.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.hannan.lg.jp/kurashi/bousai/1286954626823.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"kiki-kanri@city.hannan.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.hannan.lg.jp/kurashi/bousai/1286954652258.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"kiki-kanri@city.hannan.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.hannan.lg.jp/kurashi/bousai/1286954689950.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"kiki-kanri@city.hannan.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.hannan.lg.jp/kurashi/bousai/1329179669882.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"s-fukushi@city.hannan.lg.jp"
+],
+"dept": null
+}
+]
+}

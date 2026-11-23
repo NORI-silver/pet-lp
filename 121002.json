@@ -1,0 +1,182 @@
+{
+"pref": "千葉県",
+"name": "千葉市",
+"code": "121002",
+"url": "https://www.city.chiba.jp/",
+"found": [
+{
+"url": "https://www.city.chiba.jp/hokenfukushi/iryoeisei/seikatsueisei/petsaigai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chiba.jp/front/otoiawase.html",
+"お問い合わせ"
+],
+[
+"https://www.city.chiba.jp/sogoseisaku/shichokoshitsu/kohokocho/callcenter.html",
+"各種制度、手続、施設等に関する問い合わせ"
+]
+],
+"mails": [
+"seikatsueisei.HWM@city.chiba.lg.jp"
+],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.chiba.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chiba.jp/front/otoiawase.html",
+"お問い合わせ"
+],
+[
+"https://www.city.chiba.jp/sogoseisaku/shichokoshitsu/kohokocho/callcenter.html",
+"各種制度、手続、施設等に関する問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.chiba.jp/anzen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chiba.jp/front/otoiawase.html",
+"お問い合わせ"
+],
+[
+"https://www.city.chiba.jp/sogoseisaku/shichokoshitsu/kohokocho/callcenter.html",
+"各種制度、手続、施設等に関する問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.chiba.jp/anzen/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chiba.jp/front/otoiawase.html",
+"お問い合わせ"
+],
+[
+"https://www.city.chiba.jp/sogoseisaku/shichokoshitsu/kohokocho/callcenter.html",
+"各種制度、手続、施設等に関する問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.chiba.jp/anzen/bosai/sonae/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chiba.jp/front/otoiawase.html",
+"お問い合わせ"
+],
+[
+"https://www.city.chiba.jp/sogoseisaku/shichokoshitsu/kohokocho/callcenter.html",
+"各種制度、手続、施設等に関する問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.chiba.jp/anzen/bosai/sonae/kate/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chiba.jp/front/otoiawase.html",
+"お問い合わせ"
+],
+[
+"https://www.city.chiba.jp/sogoseisaku/shichokoshitsu/kohokocho/callcenter.html",
+"各種制度、手続、施設等に関する問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.chiba.jp/faq/sogoseisaku/kikikanri/bosai/378.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chiba.jp/library_documents/faxform.pdf",
+"お問い合わせFAXフォーム（PDFファイル）"
+],
+[
+"https://www.city.chiba.jp/front/otoiawase.html",
+"お問い合わせ"
+],
+[
+"https://www.city.chiba.jp/shimin/shimin/kohokocho/callcenter.html",
+"各種制度、手続、施設等に関する問い合わせ"
+]
+],
+"mails": [
+"bosaitaisaku.POCR@city.chiba.lg.jp"
+],
+"dept": "総合政策局危機管理部防災対策課"
+},
+{
+"url": "https://www.city.chiba.jp/sogoseisaku/kikikanri/kikikanri/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chiba.jp/front/otoiawase.html",
+"お問い合わせ"
+],
+[
+"https://www.city.chiba.jp/sogoseisaku/shichokoshitsu/kohokocho/callcenter.html",
+"各種制度、手続、施設等に関する問い合わせ"
+]
+],
+"mails": [
+"kikikanri.POCR@city.chiba.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.chiba.jp/sogoseisaku/kikikanri/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chiba.jp/front/otoiawase.html",
+"お問い合わせ"
+],
+[
+"https://www.city.chiba.jp/sogoseisaku/shichokoshitsu/kohokocho/callcenter.html",
+"各種制度、手続、施設等に関する問い合わせ"
+]
+],
+"mails": [
+"bosaitaisaku.POCR@city.chiba.lg.jp"
+],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.chiba.jp/shimin/shimin/kokusai/bousaiguide_portal.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.chiba.jp/front/otoiawase.html",
+"お問い合わせ"
+],
+[
+"https://www.city.chiba.jp/sogoseisaku/shichokoshitsu/kohokocho/callcenter.html",
+"各種制度、手続、施設等に関する問い合わせ"
+]
+],
+"mails": [
+"kokusai.CIC@city.chiba.lg.jp"
+],
+"dept": null
+}
+]
+}

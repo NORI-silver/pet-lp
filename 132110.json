@@ -1,0 +1,34 @@
+{
+"pref": "東京都",
+"name": "小平市",
+"code": "132110",
+"url": "https://www.city.kodaira.tokyo.jp/",
+"found": [
+{
+"url": "https://www.city.kodaira.tokyo.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kodaira.tokyo.jp/kurashi/003/003445.html",
+"ご意見・お問合せ"
+],
+[
+"https://www.city.kodaira.tokyo.jp/kurashi/003/003445.html",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kodaira.tokyo.jp/kurashi/026/026927.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bosaikikikanri@city.kodaira.lg.jp",
+"chiikianzen@city.kodaira.lg.jp"
+],
+"dept": "防災危機管理課"
+}
+]
+}

@@ -1,0 +1,96 @@
+{
+"pref": "鳥取県",
+"name": "若桜町",
+"code": "313254",
+"url": "https://www.town.wakasa.tottori.jp/",
+"found": [
+{
+"url": "https://www.town.wakasa.tottori.jp/kurashi_tetsuzuki/seikatu-kankyou-anzen/pet_dobutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.wakasa.tottori.jp/cgi-bin/inquiry.php/1?page_no=16",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wakasa.tottori.jp/kurashi_tetsuzuki/seikatu-kankyou-anzen/pet_dobutsu/1247.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.wakasa.tottori.jp/cgi-bin/inquiry.php/1?page_no=1247",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.wakasa.tottori.jp/cgi-bin/inquiry.php/1?page_no=1247",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wakasa.tottori.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.wakasa.tottori.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.wakasa.tottori.jp/soshikikarasagasu/somuka/1/shouboubousai/586.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wakasa.tottori.jp/cgi-bin/inquiry.php/1?page_no=586",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.wakasa.tottori.jp/cgi-bin/inquiry.php/1?page_no=586",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "消防防災係"
+},
+{
+"url": "https://www.town.wakasa.tottori.jp/kurashi_tetsuzuki/seikatu-kankyou-anzen/5/1/783.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wakasa.tottori.jp/cgi-bin/inquiry.php/1?page_no=783",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.wakasa.tottori.jp/cgi-bin/inquiry.php/1?page_no=783",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.wakasa.tottori.jp/soshikikarasagasu/somuka/1/shouboubousai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.wakasa.tottori.jp/cgi-bin/inquiry.php/1?page_no=1280",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.wakasa.tottori.jp/cgi-bin/inquiry.php/1?page_no=1280",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

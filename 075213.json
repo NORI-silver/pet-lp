@@ -1,0 +1,44 @@
+{
+"pref": "福島県",
+"name": "三春町",
+"code": "075213",
+"url": "https://www.town.miharu.fukushima.jp/",
+"found": [
+{
+"url": "https://www.town.miharu.fukushima.jp/life/1/8/41/",
+"bousai": true,
+"forms": [
+[
+"https://logoform.jp/form/PHV9/266830",
+"メールでのお問い合わせ"
+],
+[
+"https://www.town.miharu.fukushima.jp/form/2.html",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.miharu.fukushima.jp/soshiki/4/doubutuaigo.html",
+"bousai": true,
+"forms": [
+[
+"https://logoform.jp/form/PHV9/266830",
+"お問い合わせフォーム"
+],
+[
+"https://logoform.jp/form/PHV9/266830",
+"メールでのお問い合わせ"
+],
+[
+"https://www.town.miharu.fukushima.jp/form/2.html",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

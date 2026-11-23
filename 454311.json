@@ -1,0 +1,70 @@
+{
+"pref": "宮崎県",
+"name": "美郷町",
+"code": "454311",
+"url": "https://www.town.miyazaki-misato.lg.jp/",
+"found": [
+{
+"url": "https://www.town.miyazaki-misato.lg.jp/list00163.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.miyazaki-misato.lg.jp/dynamic/entry/pub/default.aspx?c_id=19",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.miyazaki-misato.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.miyazaki-misato.lg.jp/dynamic/entry/pub/default.aspx?c_id=19",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.miyazaki-misato.lg.jp/list00111.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.miyazaki-misato.lg.jp/dynamic/entry/pub/default.aspx?c_id=19",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.miyazaki-misato.lg.jp/list00166.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.miyazaki-misato.lg.jp/dynamic/entry/pub/default.aspx?c_id=19",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.miyazaki-misato.lg.jp/bousai/default.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.town.miyazaki-misato.lg.jp/hazardmap/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

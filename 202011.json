@@ -1,0 +1,48 @@
+{
+"pref": "長野県",
+"name": "長野市",
+"code": "202011",
+"url": "https://www.city.nagano.nagano.jp/",
+"found": [
+{
+"url": "https://www.city.nagano.nagano.jp/n107000/contents/p001097.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理防災課"
+},
+{
+"url": "https://www.city.nagano.nagano.jp/cgi-bin/tag/search.php?tag_id=30080",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nagano.nagano.jp/n802000/contents/p002012.html",
+"休日・夜間緊急医療のお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nagano.nagano.jp/n024000/contents/p000041.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理防災課"
+},
+{
+"url": "https://www.city.nagano.nagano.jp/n024000/kinkyu/p000005.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理防災課"
+},
+{
+"url": "https://www.city.nagano.nagano.jp/n024000/news/p000002.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理防災課"
+}
+]
+}

@@ -1,0 +1,196 @@
+{
+"pref": "大阪府",
+"name": "豊能町",
+"code": "273210",
+"url": "https://www.town.toyono.osaka.jp/",
+"found": [
+{
+"url": "https://www.town.toyono.osaka.jp/kurashi/pet/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.toyono.osaka.jp/kurashi/pet/page007683.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php?mode=detail&amp;code=15&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.toyono.osaka.jp/kurashi/pet/page001328.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php?mode=detail&amp;code=15&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.toyono.osaka.jp/kurashi/recycle-gomi-kankyou/gomi/page002448.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php?mode=detail&amp;code=15&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.toyono.osaka.jp/kurashi/recycle-gomi-kankyou/gomi/page002449.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php?mode=detail&amp;code=15&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.toyono.osaka.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.toyono.osaka.jp/bousai-anzen/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.toyono.osaka.jp/kurashi/recycle-gomi-kankyou/gomi/page007262.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php?mode=detail&amp;code=15&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.toyono.osaka.jp/bousai-anzen/bousai/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.toyono.osaka.jp/bousai-anzen/bousai/hinan/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.toyono.osaka.jp/bousai-anzen/bousai/bousai-keikaku/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.toyono.osaka.jp/bousai-anzen/bousai/kyouiku/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "自主防災組織に係"
+},
+{
+"url": "https://www.town.toyono.osaka.jp/bousai-anzen/bousai/dosya/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.toyono.osaka.jp/bousai-anzen/bousai/dosya-jouhou/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.toyono.osaka.jp/inq.php",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

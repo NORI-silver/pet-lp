@@ -1,0 +1,36 @@
+{
+"pref": "静岡県",
+"name": "東伊豆町",
+"code": "223018",
+"url": "https://www.town.higashiizu.lg.jp/",
+"found": [
+{
+"url": "https://www.town.higashiizu.lg.jp/kurashi/pet/1283.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.higashiizu.lg.jp/cgi-bin/inquiry.php/1?page_no=1283",
+"​​​​​​​メールフォームでのお問い合わせ"
+],
+[
+"https://www.town.higashiizu.lg.jp/cgi-bin/inquiry.php/1?page_no=1283",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.higashiizu.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.higashiizu.lg.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

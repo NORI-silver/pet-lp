@@ -1,0 +1,51 @@
+{
+"pref": "福島県",
+"name": "只見町",
+"code": "073679",
+"url": "https://www.town.tadami.lg.jp/",
+"found": [
+{
+"url": "https://www.town.tadami.lg.jp/lifeguide/cat01/cat5/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tadami.lg.jp/contact/index.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務企画課"
+},
+{
+"url": "https://www.town.tadami.lg.jp/lifeguide/cat01/cat5/000079.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tadami.lg.jp/contact/index.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [
+"cyoumin@town.tadami.lg.jp",
+"seikatsu@town.tadami.lg.jp"
+],
+"dept": "総務企画課"
+},
+{
+"url": "https://www.town.tadami.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tadami.lg.jp/contact/index.html",
+"ご意見・お問い合わせ"
+],
+[
+"https://www.town.tadami.lg.jp/contact/index.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務企画課"
+}
+]
+}

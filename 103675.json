@@ -1,0 +1,100 @@
+{
+"pref": "群馬県",
+"name": "神流町",
+"code": "103675",
+"url": "https://www.town.kanna.gunma.jp/",
+"found": [
+{
+"url": "https://www.town.kanna.gunma.jp/soshiki/somuka_gikaijimukyoku/3/4/1104.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kanna.gunma.jp/cgi-bin/inquiry.php/1?page_no=1104",
+"お問い合わせ（メールフォーム）"
+],
+[
+"https://www.town.kanna.gunma.jp/cgi-bin/inquiry.php/1?page_no=1104",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kanna.gunma.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.kanna.gunma.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.kanna.gunma.jp/soshiki/somuka_gikaijimukyoku/3/4/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kanna.gunma.jp/cgi-bin/inquiry.php/1?page_no=279",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": "総務課・議会事務局"
+},
+{
+"url": "https://www.town.kanna.gunma.jp/soshiki/somuka_gikaijimukyoku/3/4/865.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kanna.gunma.jp/material/files/group/2/HM-18.pdf",
+"18_非常持ち出し品・備蓄品_災害時の連絡・問い合わせ先(P"
+],
+[
+"https://www.town.kanna.gunma.jp/cgi-bin/inquiry.php/1?page_no=865",
+"お問い合わせ（メールフォーム）"
+],
+[
+"https://www.town.kanna.gunma.jp/cgi-bin/inquiry.php/1?page_no=865",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kanna.gunma.jp/soshiki/somuka_gikaijimukyoku/3/4/1102.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kanna.gunma.jp/cgi-bin/inquiry.php/1?page_no=1102",
+"お問い合わせ（メールフォーム）"
+],
+[
+"https://www.town.kanna.gunma.jp/cgi-bin/inquiry.php/1?page_no=1102",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.kanna.gunma.jp/soshiki/somuka_gikaijimukyoku/3/4/1121.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.kanna.gunma.jp/cgi-bin/inquiry.php/1?page_no=1121",
+"お問い合わせ（メールフォーム）"
+],
+[
+"https://www.town.kanna.gunma.jp/cgi-bin/inquiry.php/1?page_no=1121",
+"お問合せ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

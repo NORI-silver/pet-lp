@@ -1,0 +1,87 @@
+{
+"pref": "鹿児島県",
+"name": "知名町",
+"code": "465348",
+"url": "https://www.town.china.lg.jp/",
+"found": [
+{
+"url": "https://www.town.china.lg.jp/section/hazardmap/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.china.lg.jp/chonaihoso/3320.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.china.lg.jp/cgi-bin/inquiry.php/2?page_no=3320",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.china.lg.jp/bosai-anzen/bosai/2395.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.china.lg.jp/cgi-bin/inquiry.php/2?page_no=2395",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.china.lg.jp/bosai-anzen/hazard-map/2373.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.china.lg.jp/cgi-bin/inquiry.php/13?page_no=2373",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.china.lg.jp/bosai-anzen/hazard-map/2375.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.china.lg.jp/cgi-bin/inquiry.php/2?page_no=2375",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.china.lg.jp/bosai-anzen/saigai-joho/2384.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.china.lg.jp/cgi-bin/inquiry.php/2?page_no=2384",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.china.lg.jp/bosai-anzen/hinan/2390.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.china.lg.jp/cgi-bin/inquiry.php/2?page_no=2390",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

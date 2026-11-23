@@ -1,0 +1,135 @@
+{
+"pref": "長崎県",
+"name": "対馬市",
+"code": "422096",
+"url": "https://www.city.tsushima.nagasaki.jp/",
+"found": [
+{
+"url": "https://www.city.tsushima.nagasaki.jp/",
+"bousai": false,
+"forms": [],
+"mails": [],
+"dept": "教育総務課"
+},
+{
+"url": "https://www.city.tsushima.nagasaki.jp/daiji/6732.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/3?page_no=6732",
+"メールフォームからお問い合わせをする"
+],
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/61?page_no=6732",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "教育総務課"
+},
+{
+"url": "https://www.city.tsushima.nagasaki.jp/gyousei/mokuteki/12/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/61?page_no=2349",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "教育総務課"
+},
+{
+"url": "https://www.city.tsushima.nagasaki.jp/gyousei/mokuteki/12/2525.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/3?page_no=2525",
+"メールフォームからお問い合わせをする"
+],
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/61?page_no=2525",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "教育総務課"
+},
+{
+"url": "https://www.city.tsushima.nagasaki.jp/gyousei/mokuteki/12/3633.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/3?page_no=3633",
+"メールフォームからお問い合わせをする"
+],
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/61?page_no=3633",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "教育総務課"
+},
+{
+"url": "https://www.city.tsushima.nagasaki.jp/gyousei/mokuteki/12/3719.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/3?page_no=3719",
+"メールフォームからお問い合わせをする"
+],
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/61?page_no=3719",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "教育総務課"
+},
+{
+"url": "https://www.city.tsushima.nagasaki.jp/gyousei/mokuteki/12/6341.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/3?page_no=6341",
+"メールフォームからお問い合わせをする"
+],
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/61?page_no=6341",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "教育総務課"
+},
+{
+"url": "https://www.city.tsushima.nagasaki.jp/gyousei/soshiki/soumu/bousai/keikaku/754.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/3?page_no=754",
+"メールフォームからお問い合わせをする"
+],
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/61?page_no=754",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "教育総務課"
+},
+{
+"url": "https://www.city.tsushima.nagasaki.jp/gyousei/soshiki/soumu/bousai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tsushima.nagasaki.jp/cgi-bin/inquiry.php/61?page_no=2379",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "教育総務課"
+}
+]
+}

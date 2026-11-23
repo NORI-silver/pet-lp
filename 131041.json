@@ -1,0 +1,188 @@
+{
+"pref": "東京都",
+"name": "新宿区",
+"code": "131041",
+"url": "https://www.city.shinjuku.lg.jp/",
+"found": [
+{
+"url": "https://www.city.shinjuku.lg.jp/kenkou/eisei03_000001_00010.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+],
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.shinjuku.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+],
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+],
+[
+"https://www.city.shinjuku.lg.jp/soshiki/211001kocho_00002.html",
+"ご意見・お問合せ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinjuku.lg.jp/anzen/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+],
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinjuku.lg.jp/anzen/index03.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+],
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinjuku.lg.jp/anzen/index03_07.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+],
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinjuku.lg.jp/anzen/index99.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+],
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinjuku.lg.jp/anzen/file03_00022.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+],
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.shinjuku.lg.jp/anzen/kikikanri01_002221.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+],
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": "地域防災係"
+},
+{
+"url": "https://www.city.shinjuku.lg.jp/living_12.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+],
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.shinjuku.lg.jp/anzen/kikikanri01_000001_00198.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+],
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": "新宿区危機管理課地域防災係"
+},
+{
+"url": "https://www.city.shinjuku.lg.jp/anzen/index20_hinan.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+],
+[
+"https://www.city.shinjuku.lg.jp/soshiki/index.html",
+"問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

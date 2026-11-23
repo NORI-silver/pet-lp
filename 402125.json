@@ -1,0 +1,99 @@
+{
+"pref": "福岡県",
+"name": "大川市",
+"code": "402125",
+"url": "https://www.city.okawa.lg.jp/index.html",
+"found": [
+{
+"url": "https://www.city.okawa.lg.jp/s010/010/020/20200904184811.html",
+"bousai": true,
+"forms": [
+[
+"javascript:document.infoform.submit();",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.okawa.lg.jp/s026/010/010/011/20210301141858.html",
+"bousai": true,
+"forms": [
+[
+"javascript:document.infoform.submit();",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.okawa.lg.jp/060/120/030/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city.okawa.lg.jp/s013/020/030/070/20150205235257.html",
+"bousai": true,
+"forms": [
+[
+"javascript:document.infoform.submit();",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+},
+{
+"url": "https://www.city.okawa.lg.jp/s013/020/030/140/20190610172218.html",
+"bousai": true,
+"forms": [
+[
+"javascript:document.infoform.submit();",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+},
+{
+"url": "https://www.city.okawa.lg.jp/s013/020/030/010/20150205233628.html",
+"bousai": true,
+"forms": [
+[
+"javascript:document.infoform.submit();",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+},
+{
+"url": "https://www.city.okawa.lg.jp/s013/020/030/030/20150205230336.html",
+"bousai": true,
+"forms": [
+[
+"javascript:document.infoform.submit();",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+},
+{
+"url": "https://www.city.okawa.lg.jp/s013/020/010/020/030/20150206131501.html",
+"bousai": true,
+"forms": [
+[
+"javascript:document.infoform.submit();",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+}
+]
+}

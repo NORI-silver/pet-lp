@@ -1,0 +1,164 @@
+{
+"pref": "北海道",
+"name": "鹿部町",
+"code": "013439",
+"url": "https://www.town.shikabe.lg.jp/",
+"found": [
+{
+"url": "https://www.town.shikabe.lg.jp/kurashi_tetsuzuki/pet_dobutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=218",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shikabe.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・デジタル推進室"
+},
+{
+"url": "https://www.town.shikabe.lg.jp/soshiki/somu_bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=3",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務・防災課"
+},
+{
+"url": "https://www.town.shikabe.lg.jp/soshiki/bosai_digital/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=4",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・デジタル推進室"
+},
+{
+"url": "https://www.town.shikabe.lg.jp/soshiki/somu_bosai/gyomu/1/2492.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=2492",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=2492",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・デジタル推進室"
+},
+{
+"url": "https://www.town.shikabe.lg.jp/life_scene/bousai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=1282",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災／鹿部"
+},
+{
+"url": "https://www.town.shikabe.lg.jp/life_scene/bousai/1530.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=1530",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shikabe.lg.jp/life_scene/bousai/1531.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=1531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.shikabe.lg.jp/soshiki/bosai_digital/gyomu/2/1/5/591.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=591",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=591",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・デジタル推進室"
+},
+{
+"url": "https://www.town.shikabe.lg.jp/soshiki/bosai_digital/gyomu/2/1/5/752.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=752",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=752",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・デジタル推進室"
+},
+{
+"url": "https://www.town.shikabe.lg.jp/soshiki/bosai_digital/gyomu/2/1/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=199",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・デジタル推進室"
+},
+{
+"url": "https://www.town.shikabe.lg.jp/soshiki/bosai_digital/gyomu/2/1/5/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.shikabe.lg.jp/cgi-bin/inquiry.php/1?page_no=206",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災・デジタル推進室"
+}
+]
+}

@@ -1,0 +1,176 @@
+{
+"pref": "兵庫県",
+"name": "丹波市",
+"code": "282235",
+"url": "https://www.city.tamba.lg.jp/",
+"found": [
+{
+"url": "https://www.city.tamba.lg.jp/kurashi/anzen/bosai/4/10971.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/20?page_no=10971",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/3",
+"お問合わせフォーム"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+},
+{
+"url": "https://www.city.tamba.lg.jp/kurashi/pet_dobutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/3",
+"お問合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tamba.lg.jp/kurashi/pet_dobutsu/pet/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/3",
+"お問合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tamba.lg.jp/kurashi/pet_dobutsu/pet/5197.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/22?page_no=5197",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/3",
+"お問合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tamba.lg.jp/soshiki/shimin_anzen/bousai/bousai-gensai/9436.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/20?page_no=9436",
+"メールフォームによるお問い合わせ"
+],
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/3",
+"お問合わせフォーム"
+]
+],
+"mails": [],
+"dept": "防災安全係"
+},
+{
+"url": "https://www.city.tamba.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/3",
+"お問合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tamba.lg.jp/kurashi/anzen/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/3",
+"お問合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tamba.lg.jp/kurashi/anzen/bosai/4/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/3",
+"お問合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tamba.lg.jp/soshiki/shimin_anzen/bousai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/3",
+"お問合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tamba.lg.jp/soshiki/shimin_anzen/bousai/bousai-gensai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/3",
+"お問合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tamba.lg.jp/gyosei/bosai_bohan/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/3",
+"お問合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tamba.lg.jp/kurashi/anzen/bosai/10969.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/3",
+"お問合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.tamba.lg.jp/kurashi/anzen/bosai/2/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.tamba.lg.jp/cgi-bin/inquiry.php/3",
+"お問合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

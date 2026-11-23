@@ -1,0 +1,128 @@
+{
+"pref": "石川県",
+"name": "津幡町",
+"code": "173614",
+"url": "https://www.town.tsubata.lg.jp/",
+"found": [
+{
+"url": "https://www.town.tsubata.lg.jp/life/1/4/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tsubata.lg.jp/ques/questionnaire.php?openid=2",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tsubata.lg.jp/life/1/4/32/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.tsubata.lg.jp/ques/questionnaire.php?openid=2",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tsubata.lg.jp/page/1193.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tsubata.lg.jp/ques/questionnaire.php?openid=2",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理対策室"
+},
+{
+"url": "https://www.town.tsubata.lg.jp/page/1365.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tsubata.lg.jp/form/detail.php?sec_sec1=27&lif_id=1365",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.tsubata.lg.jp/ques/questionnaire.php?openid=2",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tsubata.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tsubata.lg.jp/ques/questionnaire.php?openid=2",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tsubata.lg.jp/page/1428.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tsubata.lg.jp/form/detail.php?sec_sec1=27&lif_id=1428",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.tsubata.lg.jp/ques/questionnaire.php?openid=2",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.tsubata.lg.jp/page/12512.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tsubata.lg.jp/form/detail.php?sec_sec1=2&lif_id=12512",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.tsubata.lg.jp/ques/questionnaire.php?openid=2",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.tsubata.lg.jp/site/bousai/10954.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tsubata.lg.jp/form/detail.php?sec_sec1=2&lif_id=10954",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.town.tsubata.lg.jp/site/bousai/11105.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.tsubata.lg.jp/form/detail.php?sec_sec1=2&lif_id=11105",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

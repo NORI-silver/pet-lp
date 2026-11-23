@@ -1,0 +1,54 @@
+{
+"pref": "神奈川県",
+"name": "横浜市",
+"code": "141003",
+"url": "https://www.city.yokohama.lg.jp/",
+"found": [
+{
+"url": "https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/pet-dobutsu/aigo/saigai-taisaku/disaster.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"ir-douai@city.yokohama.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.yokohama.lg.jp/kurashi/sumai-kurashi/pet-dobutsu/aigo/saigai-taisaku/husuigai.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"ir-douai@city.yokohama.lg.jp"
+],
+"dept": "横浜市総務局"
+},
+{
+"url": "https://www.city.yokohama.lg.jp/bousai-kyukyu-bohan/bousai-saigai/data/bosaikeikaku/senryaku/ikenboshuu.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bs-kikaku@city.yokohama.lg.jp",
+"so-senryakuiken@city.yokohama.lg.jp"
+],
+"dept": "防災企画課"
+},
+{
+"url": "https://www.city.yokohama.lg.jp/bousai-kyukyu-bohan/bousai-saigai/data/bosaikeikaku/keikaku/keikakutou/keikaku.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bs-kikaku@city.yokohama.lg.jp"
+],
+"dept": "防災企画課"
+},
+{
+"url": "https://www.city.yokohama.lg.jp/bousai-kyukyu-bohan/bousai-saigai/moshimo/chikitaisaku/manual/uneimanyuaru.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"bs-chiiki@city.yokohama.lg.jp"
+],
+"dept": "防災・危機管理統括本部地域防災課"
+}
+]
+}

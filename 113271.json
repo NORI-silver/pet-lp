@@ -1,0 +1,32 @@
+{
+"pref": "埼玉県",
+"name": "越生町",
+"code": "113271",
+"url": "https://www.town.ogose.saitama.jp/",
+"found": [
+{
+"url": "https://www.town.ogose.saitama.jp/kurashi/kankyou/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.ogose.saitama.jp/cgi-bin/inquiry.php/15",
+"町へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.ogose.saitama.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.ogose.saitama.jp/cgi-bin/inquiry.php/15",
+"町へのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

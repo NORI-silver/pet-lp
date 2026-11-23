@@ -1,0 +1,146 @@
+{
+"pref": "宮城県",
+"name": "仙台市",
+"code": "041009",
+"url": "https://www.city.sendai.jp/",
+"found": [
+{
+"url": "https://www.city.sendai.jp/dobutsu/kurashi/shizen/petto/hogodobutsu/aigo/dobutsu/saigai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sendai.jp/sesakukoho/shise/koho/koho/shise.html",
+"市政・ホームページに関するご意見・ご提案、お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.sendai.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sendai.jp/sesakukoho/shise/koho/koho/shise.html",
+"市政・ホームページに関するご意見・ご提案、お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.sendai.jp/kikikanri/kurashi/anzen/saigaitaisaku/sonaete/joho/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sendai.jp/sesakukoho/shise/koho/koho/shise.html",
+"市政・ホームページに関するご意見・ご提案、お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理局減災推進課"
+},
+{
+"url": "https://www.city.sendai.jp/kekaku/kurashi/anzen/saigaitaisaku/hinanjo/une.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sendai.jp/sesakukoho/shise/koho/koho/shise.html",
+"市政・ホームページに関するご意見・ご提案、お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理局防災計画課"
+},
+{
+"url": "https://www.city.sendai.jp/kurashi/anzen/saigaitaisaku/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sendai.jp/sesakukoho/shise/koho/koho/shise.html",
+"市政・ホームページに関するご意見・ご提案、お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.sendai.jp/kurashi/anzen/saigaitaisaku/sonaete/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sendai.jp/sesakukoho/shise/koho/koho/shise.html",
+"市政・ホームページに関するご意見・ご提案、お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.sendai.jp/kikikanri/bousai_kishou.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sendai.jp/sesakukoho/shise/koho/koho/shise.html",
+"市政・ホームページに関するご意見・ご提案、お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理局危機対策課"
+},
+{
+"url": "https://www.city.sendai.jp/anzensuishin/kurashi/anzen/saigaitaisaku/sonaete/zaitakuhinan.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sendai.jp/sesakukoho/shise/koho/koho/shise.html",
+"市政・ホームページに関するご意見・ご提案、お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理局減災推進課"
+},
+{
+"url": "https://www.city.sendai.jp/soshikikanri/shise/gaiyo/soshiki/001/002.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sendai.jp/sesakukoho/shise/koho/koho/shise.html",
+"市政・ホームページに関するご意見・ご提案、お問い合わせ"
+]
+],
+"mails": [
+"sei001040@city.sendai.jp"
+],
+"dept": "危機管理係"
+},
+{
+"url": "https://www.city.sendai.jp/soshikikanri/shise/gaiyo/soshiki/001/003.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sendai.jp/sesakukoho/shise/koho/koho/shise.html",
+"市政・ホームページに関するご意見・ご提案、お問い合わせ"
+]
+],
+"mails": [
+"kks000120@city.sendai.jp"
+],
+"dept": "防災計画係"
+},
+{
+"url": "https://www.city.sendai.jp/soshikikanri/shise/gaiyo/soshiki/001/004.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sendai.jp/sesakukoho/shise/koho/koho/shise.html",
+"市政・ホームページに関するご意見・ご提案、お問い合わせ"
+]
+],
+"mails": [
+"kks000130@city.sendai.jp"
+],
+"dept": "自主防災活動に係"
+}
+]
+}

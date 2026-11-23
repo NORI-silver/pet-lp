@@ -1,0 +1,68 @@
+{
+"pref": "愛知県",
+"name": "稲沢市",
+"code": "232203",
+"url": "https://www.city.inazawa.aichi.jp/",
+"found": [
+{
+"url": "https://www.city.inazawa.aichi.jp/0000001035.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.inazawa.aichi.jp/module/shareform.php?so_cd=5-3-1-0-0",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.inazawa.aichi.jp/0000005337.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.inazawa.aichi.jp/module/shareform.php?so_cd=7-4-1-0-0",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.inazawa.aichi.jp/0000001078.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.inazawa.aichi.jp/module/shareform.php?so_cd=7-4-1-0-0",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.inazawa.aichi.jp/0000001104.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.inazawa.aichi.jp/module/shareform.php?so_cd=7-4-2-0-0",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.inazawa.aichi.jp/0000001079.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.inazawa.aichi.jp/module/shareform.php?so_cd=7-4-1-0-0",
+"お問い合わせフォーム"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+}
+]
+}

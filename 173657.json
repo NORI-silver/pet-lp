@@ -1,0 +1,222 @@
+{
+"pref": "石川県",
+"name": "内灘町",
+"code": "173657",
+"url": "https://www.town.uchinada.lg.jp/webapps/www/index.jsp",
+"found": [
+{
+"url": "https://www.town.uchinada.lg.jp/life/1/4/23/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.uchinada.lg.jp/soshiki/jumin/2871.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/form/detail.php?sec_sec1=5&amp;inq=02&lif_id=14823",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.uchinada.lg.jp/soshiki/jumin/2872.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/form/detail.php?sec_sec1=5&amp;inq=02&lif_id=2872",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.uchinada.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.uchinada.lg.jp/life/1/2/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.uchinada.lg.jp/site/bosai/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/form/detail.php?sec_sec1=2&amp;inq=02&lif_id=5385",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.town.uchinada.lg.jp/site/earthquake/20741.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/form/detail.php?sec_sec1=80&lif_id=24084",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.uchinada.lg.jp/site/earthquake/20758.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/form/detail.php?sec_sec1=80&lif_id=23248",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [
+"kikaku@town.uchinada.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.uchinada.lg.jp/life/1/2/9/",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.uchinada.lg.jp/site/bosai/1728.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/form/detail.php?sec_sec1=11&lif_id=25000",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [
+"toshi@town.uchinada.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.uchinada.lg.jp/site/bosai/1733.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/form/detail.php?sec_sec1=11&lif_id=1733",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [
+"toshi@town.uchinada.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.uchinada.lg.jp/site/bosai/25940.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/form/detail.php?sec_sec1=2&amp;inq=02&lif_id=25940",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.town.uchinada.lg.jp/site/bosai/25929.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/form/detail.php?sec_sec1=2&amp;inq=02&lif_id=25929",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+},
+{
+"url": "https://www.town.uchinada.lg.jp/site/bosai/25914.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.uchinada.lg.jp/form/detail.php?sec_sec1=2&amp;inq=02&lif_id=25917",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.town.uchinada.lg.jp/ques/questionnaire.php?openid=4",
+"メールでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理室"
+}
+]
+}

@@ -1,0 +1,48 @@
+{
+"pref": "香川県",
+"name": "三豊市",
+"code": "372081",
+"url": "https://www.city.mitoyo.lg.jp",
+"found": [
+{
+"url": "https://www.city.mitoyo.lg.jp/kurashi/12160.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.mitoyo.lg.jp/cgi-bin/inquiry.php/2?page_no=12160",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.mitoyo.lg.jp/kakuka/shiminkankyou/eisei/2/doubutuaigo/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.mitoyo.lg.jp/cgi-bin/inquiry.php/15?page_no=8802",
+"お問い合わせはこちらから"
+],
+[
+"https://www.city.mitoyo.lg.jp/cgi-bin/inquiry.php/2?page_no=8802",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.mitoyo.lg.jp",
+"bousai": false,
+"forms": [
+[
+"https://www.city.mitoyo.lg.jp/cgi-bin/inquiry.php/2?page_no=1",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

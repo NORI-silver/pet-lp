@@ -1,0 +1,128 @@
+{
+"pref": "青森県",
+"name": "西目屋村",
+"code": "023434",
+"url": "https://www.nishimeya.jp/",
+"found": [
+{
+"url": "https://www.nishimeya.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.nishimeya.jp/19.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.nishimeya.jp/kurashi_tetsuzuki/anshin_anzen/1/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.nishimeya.jp/19.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.nishimeya.jp/kurashi_tetsuzuki/anshin_anzen/1/176.html",
+"bousai": true,
+"forms": [
+[
+"https://www.nishimeya.jp/cgi-bin/inquiry.php/1?page_no=176",
+"西目屋村役場（代表）へのお問い合わせ"
+],
+[
+"https://www.nishimeya.jp/19.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課防災係"
+},
+{
+"url": "https://www.nishimeya.jp/bosyu_kokuchi/1018.html",
+"bousai": true,
+"forms": [
+[
+"https://www.nishimeya.jp/cgi-bin/inquiry.php/1?page_no=1018",
+"西目屋村役場（代表）へのお問い合わせ"
+],
+[
+"https://www.nishimeya.jp/19.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課防災係"
+},
+{
+"url": "https://www.nishimeya.jp/kurashi_tetsuzuki/anshin_anzen/1/192.html",
+"bousai": true,
+"forms": [
+[
+"https://www.nishimeya.jp/cgi-bin/inquiry.php/1?page_no=192",
+"西目屋村役場（代表）へのお問い合わせ"
+],
+[
+"https://www.nishimeya.jp/19.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課防災係"
+},
+{
+"url": "https://www.nishimeya.jp/kurashi_tetsuzuki/anshin_anzen/1/174.html",
+"bousai": true,
+"forms": [
+[
+"https://www.nishimeya.jp/cgi-bin/inquiry.php/1?page_no=174",
+"西目屋村役場（代表）へのお問い合わせ"
+],
+[
+"https://www.nishimeya.jp/19.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課防災係"
+},
+{
+"url": "https://www.nishimeya.jp/kurashi_tetsuzuki/anshin_anzen/1/171.html",
+"bousai": true,
+"forms": [
+[
+"https://www.nishimeya.jp/cgi-bin/inquiry.php/1?page_no=171",
+"西目屋村役場（代表）へのお問い合わせ"
+],
+[
+"https://www.nishimeya.jp/19.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課防災係"
+},
+{
+"url": "https://www.nishimeya.jp/kurashi_tetsuzuki/anshin_anzen/1/1105.html",
+"bousai": true,
+"forms": [
+[
+"https://www.nishimeya.jp/cgi-bin/inquiry.php/1?page_no=1105",
+"西目屋村役場（代表）へのお問い合わせ"
+],
+[
+"https://www.nishimeya.jp/19.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課防災係"
+}
+]
+}

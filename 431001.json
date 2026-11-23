@@ -1,0 +1,132 @@
+{
+"pref": "熊本県",
+"name": "熊本市",
+"code": "431001",
+"url": "https://www.city.kumamoto.jp/",
+"found": [
+{
+"url": "https://www.city.kumamoto.jp/doubutuaigo/kiji00333220/index.html",
+"bousai": true,
+"forms": [],
+"mails": [
+"doubutsuaigo@city.kumamoto.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.city.kumamoto.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kumamoto.jp/kiji0032548/index.html",
+"広告についてのお問い合わせ"
+],
+[
+"https://www.city.kumamoto.jp/kiji0032009/index.html",
+"組織一覧・各課お問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kumamoto.jp/bousai/default.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.kumamoto.jp/dynamic/info/pub/default.aspx?c_id=60",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kumamoto.jp/dynamic/hpkiji/pub/Detail.aspx?c_id=3&id=2009",
+"組織一覧・各課お問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kumamoto.jp/list04011.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kumamoto.jp/kiji0032009/index.html",
+"組織一覧・各課お問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kumamoto.jp/kiji00372342/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kumamoto.jp/kiji0032009/index.html",
+"組織一覧・各課お問い合わせ先"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kumamoto.jp/bousai/list00901.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.kumamoto.jp/bousai/list00906.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.kumamoto.jp/bousai/kiji0033473/index.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.kumamoto.jp/bousai/list00910.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.kumamoto.jp/bousai/list00911.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.kumamoto.jp/bousai/list00927.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.kumamoto.jp/bousai/list00928.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+},
+{
+"url": "https://www.city.kumamoto.jp/bousai/list00929.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "防災対策課"
+}
+]
+}

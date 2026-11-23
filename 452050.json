@@ -1,0 +1,104 @@
+{
+"pref": "宮崎県",
+"name": "小林市",
+"code": "452050",
+"url": "https://www.city.kobayashi.lg.jp/",
+"found": [
+{
+"url": "https://www.city.kobayashi.lg.jp/kurashi_tetsuzuki/pet_dobutsu/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kobayashi.lg.jp/cgi-bin/inquiry.php/50?page_no=27",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kobayashi.lg.jp/mokutekibetsudesagasu/petto/index.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kobayashi.lg.jp/cgi-bin/inquiry.php/50?page_no=4181",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kobayashi.lg.jp/mokutekibetsudesagasu/petto/4221.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kobayashi.lg.jp/cgi-bin/inquiry.php/50?page_no=4221",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kobayashi.lg.jp/yokuarushitsumon/kurashi_tetsuzukinikansuruyokuarugoshitsumon/2984.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.kobayashi.lg.jp/cgi-bin/inquiry.php/8?page_no=2984",
+"お問い合わせはこちら"
+],
+[
+"https://www.city.kobayashi.lg.jp/cgi-bin/inquiry.php/50?page_no=2984",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.kobayashi.lg.jp/kurashi_tetsuzuki/pet_dobutsu/inu/4279.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kobayashi.lg.jp/cgi-bin/inquiry.php/21?page_no=4279",
+"お問い合わせはこちら"
+],
+[
+"https://www.city.kobayashi.lg.jp/cgi-bin/inquiry.php/50?page_no=4279",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kobayashi.lg.jp/kurashi_tetsuzuki/pet_dobutsu/neco/2682.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kobayashi.lg.jp/cgi-bin/inquiry.php/21?page_no=2682",
+"お問い合わせはこちら"
+],
+[
+"https://www.city.kobayashi.lg.jp/cgi-bin/inquiry.php/50?page_no=2682",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.kobayashi.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.kobayashi.lg.jp/cgi-bin/inquiry.php/50?page_no=1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

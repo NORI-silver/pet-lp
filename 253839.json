@@ -1,0 +1,44 @@
+{
+"pref": "滋賀県",
+"name": "日野町",
+"code": "253839",
+"url": "https://www.town.shiga-hino.lg.jp/",
+"found": [
+{
+"url": "https://www.town.shiga-hino.lg.jp/category/27-8-0-0-0-0-0-0-0-0.html",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shiga-hino.lg.jp/soshiki_list.html",
+"お問合せ"
+],
+[
+"https://www.town.shiga-hino.lg.jp/soshiki_list.html",
+"お問合せ"
+]
+],
+"mails": [
+"mail@town.shiga-hino.lg.jp"
+],
+"dept": null
+},
+{
+"url": "https://www.town.shiga-hino.lg.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.town.shiga-hino.lg.jp/soshiki_list.html",
+"お問合せ"
+],
+[
+"https://www.town.shiga-hino.lg.jp/soshiki_list.html",
+"お問合せ"
+]
+],
+"mails": [
+"mail@town.shiga-hino.lg.jp"
+],
+"dept": null
+}
+]
+}

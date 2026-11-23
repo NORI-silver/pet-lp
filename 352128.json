@@ -1,0 +1,218 @@
+{
+"pref": "山口県",
+"name": "柳井市",
+"code": "352128",
+"url": "https://www.city-yanai.jp/",
+"found": [
+{
+"url": "https://www.city-yanai.jp/life/1/5/",
+"bousai": false,
+"forms": [
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city-yanai.jp/life/1/5/27/",
+"bousai": true,
+"forms": [
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city-yanai.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city-yanai.jp/soshiki/17/hitodukuri-22.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city-yanai.jp/form/detail.php?sec_sec1=17&amp;inq=04&lif_id=52904",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city-yanai.jp/site/bousai/bousai.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city-yanai.jp/form/detail.php?sec_sec1=6&amp;inq=02&lif_id=71274",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city-yanai.jp/site/bousai/",
+"bousai": true,
+"forms": [
+[
+"https://www.city-yanai.jp/form/detail.php?sec_sec1=6&amp;inq=02&lif_id=29756",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city-yanai.jp/site/bousai/list316.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city-yanai.jp/site/bousai/musen.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city-yanai.jp/form/detail.php?sec_sec1=6&amp;inq=02&lif_id=46438",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city-yanai.jp/site/bousai/mailtoline.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city-yanai.jp/form/detail.php?sec_sec1=6&amp;inq=02&lif_id=73720",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city-yanai.jp/site/bousai/denwatuti.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city-yanai.jp/form/detail.php?sec_sec1=6&amp;inq=03&lif_id=71284",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [
+"kikikanri@city-yanai.jp"
+],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city-yanai.jp/site/bousai/taunamian.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city-yanai.jp/form/detail.php?sec_sec1=6&amp;inq=02&lif_id=29110",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city-yanai.jp/site/bousai/tsunamihinankeikaku.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city-yanai.jp/form/detail.php?sec_sec1=6&amp;inq=02&lif_id=3679",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city-yanai.jp/site/bousai/hinansho.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city-yanai.jp/form/detail.php?sec_sec1=6&amp;inq=02&lif_id=69695",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+},
+{
+"url": "https://www.city-yanai.jp/site/bousai/tiikitebiki.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city-yanai.jp/form/detail.php?sec_sec1=6&lif_id=60393",
+"メールでのお問い合わせはこちら"
+],
+[
+"https://www.city-yanai.jp/soshiki/3/menu-ikentoiawase.html",
+"ご意見・お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災関係"
+}
+]
+}

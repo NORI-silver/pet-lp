@@ -1,0 +1,96 @@
+{
+"pref": "沖縄県",
+"name": "大宜味村",
+"code": "473022",
+"url": "https://www.vill.ogimi.okinawa.jp/",
+"found": [
+{
+"url": "https://www.vill.ogimi.okinawa.jp/soshiki/somu/gyomu/anzen_anshin/bosai/322.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.ogimi.okinawa.jp/cgi-bin/inquiry.php/2?page_no=322",
+"メールフォームでのお問い合わせ"
+],
+[
+"https://www.vill.ogimi.okinawa.jp/cgi-bin/inquiry.php/1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.vill.ogimi.okinawa.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.vill.ogimi.okinawa.jp/cgi-bin/inquiry.php/1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.vill.ogimi.okinawa.jp/soshiki/somu/gyomu/anzen_anshin/bosai/index.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.ogimi.okinawa.jp/cgi-bin/inquiry.php/1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.vill.ogimi.okinawa.jp/soshiki/somu/gyomu/anzen_anshin/bosai/220.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.ogimi.okinawa.jp/cgi-bin/inquiry.php/2?page_no=220",
+"メールフォームでのお問い合わせ"
+],
+[
+"https://www.vill.ogimi.okinawa.jp/cgi-bin/inquiry.php/1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.vill.ogimi.okinawa.jp/soshiki/somu/gyomu/anzen_anshin/bosai/228.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.ogimi.okinawa.jp/cgi-bin/inquiry.php/2?page_no=228",
+"メールフォームでのお問い合わせ"
+],
+[
+"https://www.vill.ogimi.okinawa.jp/cgi-bin/inquiry.php/1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.vill.ogimi.okinawa.jp/soshiki/somu/gyomu/anzen_anshin/bosai/1174.html",
+"bousai": true,
+"forms": [
+[
+"https://www.vill.ogimi.okinawa.jp/cgi-bin/inquiry.php/2?page_no=1174",
+"メールフォームでのお問い合わせ"
+],
+[
+"https://www.vill.ogimi.okinawa.jp/cgi-bin/inquiry.php/1",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}

@@ -1,0 +1,182 @@
+{
+"pref": "北海道",
+"name": "遠軽町",
+"code": "015555",
+"url": "https://engaru.jp/",
+"found": [
+{
+"url": "https://engaru.jp/life/?cat=5",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://engaru.jp/",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/maintenance/maintenance_form.html",
+"お電話でのお問い合わせ先はこちら"
+],
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://engaru.jp/life/?cat=3",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://engaru.jp/news/page.php?id=1301",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "遠軽町総務部危機対策室"
+},
+{
+"url": "https://engaru.jp/news/page.php?id=1303",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "遠軽町総務部危機対策室"
+},
+{
+"url": "https://engaru.jp/life/page.php?id=1492",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "遠軽町総務部危機対策室"
+},
+{
+"url": "https://engaru.jp/life/page.php?id=1466",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "遠軽町総務部危機対策室"
+},
+{
+"url": "https://engaru.jp/life/page.php?id=1471",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "遠軽町総務部危機対策室"
+},
+{
+"url": "https://engaru.jp/life/page.php?id=377",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "遠軽町総務部危機対策室"
+},
+{
+"url": "https://engaru.jp/life/page.php?id=933",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "遠軽町総務部危機対策室"
+},
+{
+"url": "https://engaru.jp/life/page.php?id=94",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "遠軽町総務部危機対策室"
+},
+{
+"url": "https://engaru.jp/life/page.php?id=647",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "遠軽町総務部危機対策室"
+},
+{
+"url": "https://engaru.jp/life/page.php?id=101",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "遠軽町総務部危機対策室"
+},
+{
+"url": "https://engaru.jp/life/page.php?id=102",
+"bousai": true,
+"forms": [
+[
+"https://engaru.jp/content/page.php?id=531",
+"お問い合わせ"
+]
+],
+"mails": [
+"bousai.engaru-town@raiden.ktaiwork.jp"
+],
+"dept": "遠軽町総務部危機対策室"
+}
+]
+}

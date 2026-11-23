@@ -1,0 +1,106 @@
+{
+"pref": "福島県",
+"name": "矢祭町",
+"code": "074829",
+"url": "https://www.town.yamatsuri.fukushima.jp/",
+"found": [
+{
+"url": "https://www.town.yamatsuri.fukushima.jp/page/page001270.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamatsuri.fukushima.jp/inq.php?mode=detail&amp;code=6&amp;code2=0&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yamatsuri.fukushima.jp/page/page001159.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamatsuri.fukushima.jp/inq.php?mode=detail&amp;code=3&amp;code2=9&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yamatsuri.fukushima.jp/page/page000689.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamatsuri.fukushima.jp/inq.php?mode=detail&amp;code=2&amp;code2=2&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [
+"kikakuzaisei@town.yamatsuri.fukushima.jp"
+],
+"dept": "自立総務課"
+},
+{
+"url": "https://www.town.yamatsuri.fukushima.jp/page/page001087.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamatsuri.fukushima.jp/inq.php?mode=detail&amp;code=3&amp;code2=0&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yamatsuri.fukushima.jp/page/page000618.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamatsuri.fukushima.jp/inq.php?mode=detail&amp;code=3&amp;code2=9&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yamatsuri.fukushima.jp/page/page000503.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamatsuri.fukushima.jp/inq.php?mode=detail&amp;code=4&amp;code2=0&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yamatsuri.fukushima.jp/page/page000502.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamatsuri.fukushima.jp/inq.php?mode=detail&amp;code=3&amp;code2=9&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.town.yamatsuri.fukushima.jp/page/page000431.html",
+"bousai": true,
+"forms": [
+[
+"https://www.town.yamatsuri.fukushima.jp/inq.php?mode=detail&amp;code=3&amp;code2=0&amp;ssl=1",
+"メールでのお問い合わせはこちら"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

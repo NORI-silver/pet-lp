@@ -1,0 +1,60 @@
+{
+"pref": "千葉県",
+"name": "袖ケ浦市",
+"code": "122297",
+"url": "https://www.city.sodegaura.lg.jp/",
+"found": [
+{
+"url": "https://www.city.sodegaura.lg.jp/soshiki/bousai/saigaijipetto.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sodegaura.lg.jp/form/detail.php?sec_sec1=10&lif_id=84364",
+"フォームでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.sodegaura.lg.jp/soshiki/bousai/telephone-service.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sodegaura.lg.jp/form/detail.php?sec_sec1=10&lif_id=47708",
+"フォームでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災安全課"
+},
+{
+"url": "https://www.city.sodegaura.lg.jp/soshiki/bousai/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sodegaura.lg.jp/form/detail.php?sec_sec1=10",
+"フォームでのお問い合わせ"
+],
+[
+"https://www.city.sodegaura.lg.jp/form/detail.php?sec_sec1=10&amp;inq=02",
+"フォームでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": "袖ケ浦市地域防災計画改訂案に係"
+},
+{
+"url": "https://www.city.sodegaura.lg.jp/soshiki/promotion/sodegaurashi-koushikiline.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.sodegaura.lg.jp/form/detail.php?sec_sec1=71&amp;inq=03&lif_id=93200",
+"フォームでのお問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+}
+]
+}

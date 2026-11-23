@@ -1,0 +1,58 @@
+{
+"pref": "北海道",
+"name": "赤井川村",
+"code": "014095",
+"url": "https://www.akaigawa.com/",
+"found": [
+{
+"url": "https://www.akaigawa.com/",
+"bousai": true,
+"forms": [
+[
+"https://www.akaigawa.com/contact/",
+"お問い合せ"
+],
+[
+"https://www.akaigawa.com/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.akaigawa.com/info/%e4%bb%a4%e5%92%8c%ef%bc%98%e5%b9%b4%e5%ba%a6%e5%8c%97%e6%b5%b7%e9%81%93%e5%8e%9f%e5%ad%90%e5%8a%9b%e9%98%b2%e7%81%bd%e8%a8%93%e7%b7%b4%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/",
+"bousai": true,
+"forms": [
+[
+"https://www.akaigawa.com/contact/",
+"お問い合せ"
+],
+[
+"https://www.akaigawa.com/contact/",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": "防災業務関係"
+},
+{
+"url": "https://www.akaigawa.com/events/%e5%8c%97%e6%b5%b7%e9%81%93%e5%8e%9f%e5%ad%90%e5%8a%9b%e9%98%b2%e7%81%bd%e8%a8%93%e7%b7%b4-978-315.html/",
+"bousai": true,
+"forms": [
+[
+"https://www.akaigawa.com/contact/",
+"お問い合せ"
+],
+[
+"https://www.akaigawa.com/contact/",
+"お問い合わせ"
+]
+],
+"mails": [
+""
+],
+"dept": null
+}
+]
+}

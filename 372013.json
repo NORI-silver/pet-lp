@@ -1,0 +1,48 @@
+{
+"pref": "香川県",
+"name": "高松市",
+"code": "372013",
+"url": "https://www.city.takamatsu.kagawa.jp/",
+"found": [
+{
+"url": "https://www.city.takamatsu.kagawa.jp/smph/kurashi/kurashi/shobo/sonae/saigai_pet.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.takamatsu.kagawa.jp/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.takamatsu.kagawa.jp/homepage/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.takamatsu.kagawa.jp/smph/kurashi/kurashi/shobo/bosai_map/takamatsu_map/hinanjo.html",
+"bousai": true,
+"forms": [],
+"mails": [],
+"dept": "危機管理課"
+},
+{
+"url": "https://www.city.takamatsu.kagawa.jp/kurashi/shinotorikumi/soshikihyo/kikikanri.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.takamatsu.kagawa.jp/homepage/otoiawase.html",
+"お問い合わせ"
+]
+],
+"mails": [
+"bousai@city.takamatsu.lg.jp"
+],
+"dept": "総務調査課"
+}
+]
+}

@@ -1,0 +1,215 @@
+{
+"pref": "栃木県",
+"name": "那須烏山市",
+"code": "092151",
+"url": "https://www.city.nasukarasuyama.lg.jp/",
+"found": [
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/kurashi/kankyo-gomi/pet-dog-cat/",
+"bousai": false,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/kurashi/kankyo-gomi/pet-dog-cat/page000299.html",
+"bousai": false,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/inq.php?mode=detail&amp;code=2&amp;code2=7",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/kurashi/jichikai/page007014.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/inq.php?mode=detail&amp;code=3&amp;code2=9",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/page/page001358.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/safety-security/disaster-fire/disaster-prevention/page001061.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/inq.php?mode=detail&amp;code=3&amp;code2=11",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [
+"bousai.nasukarasuyama-city@raiden3.ktaiwork.jp",
+"nasukarasuyama-city@raiden3.ktaiwork.jp"
+],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/safety-security/disaster-fire/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/safety-security/disaster-fire/disaster-prevention/",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": null
+},
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/section.php?code=3",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/inq.php?mode=detail&amp;code=3&amp;code2=0",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/safety-security/disaster-fire/disaster-prevention/page001062.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/inq.php?mode=detail&amp;code=3&amp;code2=11",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/safety-security/disaster-fire/disaster-prevention/page001052.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/inq.php?mode=detail&amp;code=3&amp;code2=11",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/safety-security/disaster-fire/disaster-prevention/page001053.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/inq.php?mode=detail&amp;code=3&amp;code2=11",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/safety-security/disaster-fire/disaster-prevention/page001054.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/inq.php?mode=detail&amp;code=3&amp;code2=11",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+},
+{
+"url": "https://www.city.nasukarasuyama.lg.jp/safety-security/disaster-fire/disaster-prevention/page001144.html",
+"bousai": true,
+"forms": [
+[
+"https://www.city.nasukarasuyama.lg.jp/inq.php?mode=detail&amp;code=3&amp;code2=11",
+"メールでお問い合わせをする"
+],
+[
+"https://www.city.nasukarasuyama.lg.jp/city-administration/public-relations/page002060.html",
+"各種お問い合わせ"
+]
+],
+"mails": [],
+"dept": "総務課"
+}
+]
+}
