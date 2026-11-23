@@ -14,7 +14,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {kind: photo, sha: ec01a65e585c346a0dfe3e61fcb801ba2793c095}
+          - {kind: photo, sha: 22006b719f4bbd3b51b64f0fa8031cc7d0fc8b9b}
+          - {kind: cta, sha: 22006b719f4bbd3b51b64f0fa8031cc7d0fc8b9b}
+          - {kind: maigo, sha: 22006b719f4bbd3b51b64f0fa8031cc7d0fc8b9b}
+          - {kind: guard, sha: 22006b719f4bbd3b51b64f0fa8031cc7d0fc8b9b}
     steps:
       - uses: actions/checkout@v4
         with:
