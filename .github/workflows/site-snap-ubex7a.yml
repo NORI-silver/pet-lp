@@ -1,16 +1,16 @@
-# 関東の網羅スレッド専用（結果は crawl-out-kanto）。
+# 東京多摩・神奈川の網羅スレッド専用（結果は crawl-out-ubex7a）。
 # 掲載の候補の公式サイトを読んで、確かめに要る文だけをブランチ crawl-out に置く（Nori 2026-11-22「漏れなく掲載して」）。
 # tools/crawl/queue*.json のURLを tools/site_snap.py が読む。何も送らない・サイトは書き換えない。載せるかは人（AI）が文を読んで決める。
-name: site-snap-kanto
+name: site-snap-ubex7a
 on:
   workflow_dispatch:
   push:
-    branches: ['claude/project-thread-ccgock']
+    branches: ['claude/project-thread-ubex7a']
     paths: ['tools/crawl/queue*.json', 'tools/crawl/reg_*.json', 'tools/site_snap.py', 'tools/reg_fetch.py']
 permissions:
   contents: write
 concurrency:
-  group: site-snap-kanto
+  group: site-snap-ubex7a
   cancel-in-progress: false
 jobs:
   snap:
@@ -26,9 +26,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -q --orphan crawl-out-kanto
+          git checkout -q --orphan crawl-out-ubex7a
           git rm -rq --cached . && git clean -fdq
           cp -r /tmp/out/. .
           git add -A
           git commit -qm "公式サイトの抜き出し ${GITHUB_SHA::7}"
-          git push -q -f origin crawl-out-kanto
+          git push -q -f origin crawl-out-ubex7a

@@ -193,7 +193,7 @@ def render_pref(ctx, cat, pf, rows, city=None):
     n = len(rs)
     url = SITE + (chref(cat, pf, city) if city else href(cat, pf))
     place = city or pf
-    name, unit = cat["name"], cat["unit"]
+    name, unit = (cat["name_fn"](pf) if cat.get("name_fn") else cat["name"]), cat["unit"]
     facts = [f for f in cat["facts"](rs) if f and not re.search(r"：\d+／\d+$", f)]  # 「猫も受ける施設：3／5」のような運営側の集計は出さない（2026-11-16 スマホ点検）
     lab, rprefs = _region_of(pf, ctx["emg_regions"])
     near = [p for p in rprefs if p != pf and p in rows]
@@ -218,7 +218,7 @@ def render_pref(ctx, cat, pf, rows, city=None):
         {"@type": "ListItem", "position": 2, "name": cat["h1"], "item": f'{SITE}/{cat["slug"]}/'},
         {"@type": "ListItem", "position": 3, "name": f"{pf}の{name}", "item": SITE + href(cat, pf)}] + ([{"@type": "ListItem", "position": 4, "name": f"{place}の{name}", "item": url}] if city else [])},
       {"@context": "https://schema.org", "@type": "ItemList", "name": f"{place}の{name}", "numberOfItems": len(show),
-       "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it["name"], "url": it["url"]} for i, it in enumerate(show[:100])]},  # 埋め込みの文が 24KB を超えないように（tests/info-light）
+       "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it["name"], "url": it["url"]} for i, it in enumerate(show[:100])]},  # 100件まで（構造化データのスクリプトが24KBを超えないように）
       {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
       ensure_ascii=False, separators=(",", ":")) + "\n</script>"
