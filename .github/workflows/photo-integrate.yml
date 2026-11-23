@@ -38,6 +38,11 @@ jobs:
           old = ".hf-list{display:grid;gap:10px}"
           assert old in t, "hf-list css not found"
           open(p, "w", encoding="utf-8").write(t.replace(old, ".hf-list{display:grid;gap:10px;align-items:start}", 1))
+          q = "tools/faccard.py"
+          u = open(q, encoding="utf-8").read()
+          o2 = ".fr-s{display:flex;align-items:stretch;"
+          assert o2 in u, "fr-s css not found"
+          open(q, "w", encoding="utf-8").write(u.replace(o2, ".fr-s{display:flex;align-items:flex-start;", 1))
           PYEOF
       - name: 生成ファイルを作りなおす（seo-check と同じ）
         run: |
