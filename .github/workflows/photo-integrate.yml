@@ -35,4 +35,4 @@ jobs:
         run: |
           git add -A
           git commit -qm "写真と、写真の枠のページを最新の main で作りなおし" || true
-          git push origin HEAD:refs/heads/instinct/photos-integrated
+          git push --force origin HEAD:refs/heads/instinct/photos-integrated
