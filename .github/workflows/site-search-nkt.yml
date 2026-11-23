@@ -1,0 +1,56 @@
+# 茨城・栃木・群馬の網羅：tools/crawl/nkt_search/c*.json（cid と q）を、チャンクごとに別の実行機で検索し、結果をブランチ crawl-out-nkt-search に置く。何も送らない。
+name: site-search-nkt
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/project-thread-0verl3']
+    paths: ['tools/crawl/nkt_search/**', 'tools/region_search.py']
+permissions:
+  contents: write
+concurrency:
+  group: site-search-nkt
+  cancel-in-progress: false
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    outputs:
+      chunks: ${{ steps.l.outputs.chunks }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: l
+        run: echo "chunks=$(ls tools/crawl/nkt_search/ | grep '^c.*\.json$' | python3 -c 'import sys,json;print(json.dumps([l.strip() for l in sys.stdin]))')" >> $GITHUB_OUTPUT
+  search:
+    needs: list
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        chunk: ${{ fromJson(needs.list.outputs.chunks) }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p out && python3 tools/region_search.py tools/crawl/nkt_search/${{ matrix.chunk }} out/s_${{ matrix.chunk }} 5
+      - uses: actions/upload-artifact@v4
+        with:
+          name: s_${{ matrix.chunk }}
+          path: out/
+  collect:
+    needs: search
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: /tmp/art
+          merge-multiple: true
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q --orphan crawl-out-nkt-search
+          git rm -rq --cached . && git clean -fdq
+          cp -r /tmp/art/. .
+          git add -A
+          git commit -qm "北関東の検索 ${GITHUB_SHA::7}"
+          git push -q -f origin crawl-out-nkt-search
