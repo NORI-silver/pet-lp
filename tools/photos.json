@@ -17,6 +17,125 @@
    "lic_url": "https://www.pref.okayama.lg.jp/page/detail-4318.html"
   },
   {
+   "cat": "dogrun",
+   "id": "D141",
+   "name": "三井アウトレットパーク 木更津のドッグラン",
+   "url": "https://mitsui-shopping-park.com/mop/kisarazu/special/2404_dog-facility/dogrun/",
+   "by": "permit",
+   "src": "https://mitsui-shopping-park.com/mop/kisarazu/special/2404_dog-facility/dogrun/",
+   "checked": "2026-11-23",
+   "photos": [
+    "/img/fac/dogrun/D141_1.webp",
+    "/img/fac/dogrun/D141_2.webp"
+   ],
+   "source_photos": [
+    {
+     "page": "https://mitsui-shopping-park.com/mop/kisarazu/special/2404_dog-facility/dogrun/",
+     "url": "https://mitsui-shopping-park.com/mop/kisarazu/special/2404_dog-facility/images/dogrun/img_dogrun_facility2.jpg"
+    },
+    {
+     "page": "https://mitsui-shopping-park.com/mop/kisarazu/special/2404_dog-facility/dogrun/",
+     "url": "https://mitsui-shopping-park.com/mop/kisarazu/special/2404_dog-facility/images/dogrun/img_dogrun_facility3.jpg"
+    }
+   ],
+   "credit": "写真：三井アウトレットパーク 木更津のドッグラン"
+  },
+  {
+   "cat": "dogrun",
+   "id": "D160",
+   "name": "わんダフルネイチャーヴィレッジのドッグラン",
+   "url": "https://www.wnv.tokyo/intro/dogrun",
+   "by": "permit",
+   "src": "https://www.wnv.tokyo/intro/dogrun",
+   "checked": "2026-11-23",
+   "photos": [
+    "/img/fac/dogrun/D160_1.webp"
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.wnv.tokyo/intro/dogrun",
+     "url": "https://www.wnv.tokyo/cms/wp-content/themes/WNV2017/common/img/dogrunImg1.jpg"
+    }
+   ],
+   "credit": "写真：わんダフルネイチャーヴィレッジのドッグラン"
+  },
+  {
+   "cat": "dogrun",
+   "id": "D168",
+   "name": "新横浜公園ドッグラン",
+   "url": "https://www.nissan-stadium.jp/shinyoko-park/dogrun.php",
+   "by": "permit",
+   "src": "https://www.nissan-stadium.jp/shinyoko-park/dogrun.php",
+   "checked": "2026-11-23",
+   "photos": [
+    "/img/fac/dogrun/D168_1.webp"
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.nissan-stadium.jp/shinyoko-park/dogrun.php",
+     "url": "https://www.nissan-stadium.jp/shinyoko-park/images/ph_dogrun_01.jpg"
+    }
+   ],
+   "credit": "写真：新横浜公園ドッグラン"
+  },
+  {
+   "cat": "dogrun",
+   "id": "D178",
+   "name": "ふなばしアンデルセン公園ドッグラン",
+   "url": "https://www.park-funabashi.or.jp/and/dog_guide.html",
+   "by": "permit",
+   "src": "https://www.park-funabashi.or.jp/and/dog_guide.html",
+   "checked": "2026-11-23",
+   "photos": [
+    "/img/fac/dogrun/D178_1.webp"
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.park-funabashi.or.jp/and/dog_guide.html",
+     "url": "https://www.park-funabashi.or.jp/and/img/dog3.jpg"
+    }
+   ],
+   "credit": "写真：ふなばしアンデルセン公園ドッグラン"
+  },
+  {
+   "cat": "hospital",
+   "id": "G12043",
+   "name": "しらい動物病院 中志津本院",
+   "url": "https://sakura-shirai-ah.com/",
+   "by": "permit",
+   "src": "https://sakura-shirai-ah.com/",
+   "checked": "2026-11-23",
+   "photos": [
+    "/img/fac/hospital/G12043_1.webp"
+   ],
+   "source_photos": [
+    {
+     "page": "https://sakura-shirai-ah.com/",
+     "url": "https://sakura-shirai-ah.com/shirai/wp-content/themes/simplicity2-child/assets/img/top_2025/shizu_hospital_mini.png"
+    }
+   ],
+   "credit": "写真：しらい動物病院 中志津本院"
+  },
+  {
+   "cat": "hospital",
+   "id": "G12044",
+   "name": "しらい動物病院 大崎台分院",
+   "url": "https://sakura-shirai-ah.com/",
+   "by": "permit",
+   "src": "https://sakura-shirai-ah.com/",
+   "checked": "2026-11-23",
+   "photos": [
+    "/img/fac/hospital/G12044_1.webp"
+   ],
+   "source_photos": [
+    {
+     "page": "https://sakura-shirai-ah.com/",
+     "url": "https://sakura-shirai-ah.com/shirai/wp-content/themes/simplicity2-child/assets/img/top_2025/sakura_hospital_mini.png"
+    }
+   ],
+   "credit": "写真：しらい動物病院 大崎台分院"
+  },
+  {
    "cat": "rojin",
    "id": "R004",
    "name": "老犬＆老猫ホームひまわり",
@@ -81,6 +200,96 @@
     "/img/fac/sougi/S0801bc_3.webp"
    ],
    "credit": "泰聖寺（てんのうじペット霊園）ホームページからの引用"
+  },
+  {
+   "cat": "taxi",
+   "id": "D0ec95b6",
+   "name": "COCOタク 福岡東店",
+   "url": "https://cocotakufukuokahigashi.com/",
+   "by": "permit",
+   "src": "https://cocotakufukuokahigashi.com/",
+   "checked": "2026-11-23",
+   "photos": [
+    "/img/fac/taxi/D0ec95b6_1.webp",
+    "/img/fac/taxi/D0ec95b6_2.webp"
+   ],
+   "source_photos": [
+    {
+     "page": "https://cocotakufukuokahigashi.com/",
+     "url": "https://cocotakufukuokahigashi.com/car_front.jpg",
+     "plate_masked": true
+    },
+    {
+     "page": "https://cocotakufukuokahigashi.com/",
+     "url": "https://cocotakufukuokahigashi.com/dog_slope.jpg"
+    }
+   ],
+   "credit": "写真：COCOタク 福岡東店"
+  },
+  {
+   "cat": "taxi",
+   "id": "D225080e",
+   "name": "ペッタク（PETTAXI）",
+   "url": "https://pettaku.com/",
+   "by": "permit",
+   "src": "https://pettaku.com/",
+   "checked": "2026-11-23",
+   "photos": [
+    "/img/fac/taxi/D225080e_1.webp"
+   ],
+   "source_photos": [
+    {
+     "page": "https://pettaku.com/",
+     "url": "https://pettaku.com/wp-content/uploads/2026/09/pettaku-home-hero-clear-sky-v2.jpg",
+     "plate_masked": true
+    }
+   ],
+   "credit": "写真：ペッタク（PETTAXI）"
+  },
+  {
+   "cat": "taxi",
+   "id": "D3661eb1",
+   "name": "PETTA東京（ペッタ）",
+   "url": "https://www.petta-tokyo.com/",
+   "by": "permit",
+   "src": "https://www.petta-tokyo.com/cont5/main.html",
+   "checked": "2026-11-23",
+   "photos": [
+    "/img/fac/taxi/D3661eb1_1.webp"
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.petta-tokyo.com/cont5/main.html",
+     "url": "https://static.toriaez.jp/uploads/images/s2235/14691-14691-20220625115343-2.jpg"
+    }
+   ],
+   "credit": "写真：PETTA東京（ペッタ）"
+  },
+  {
+   "cat": "taxi",
+   "id": "De308905",
+   "name": "COCOタク 練馬杉並店",
+   "url": "https://cocotaku-nerima-suginami.com/",
+   "by": "permit",
+   "src": "https://cocotaku-nerima-suginami.com/",
+   "checked": "2026-11-23",
+   "photos": [
+    "/img/fac/taxi/De308905_1.webp",
+    "/img/fac/taxi/De308905_2.webp"
+   ],
+   "source_photos": [
+    {
+     "page": "https://cocotaku-nerima-suginami.com/",
+     "url": "https://cocotaku-nerima-suginami.com/images/car/ew-exterior.webp",
+     "plate_masked": true
+    },
+    {
+     "page": "https://cocotaku-nerima-suginami.com/",
+     "url": "https://cocotaku-nerima-suginami.com/images/car/ew-ramp.webp",
+     "plate_masked": true
+    }
+   ],
+   "credit": "写真：COCOタク 練馬杉並店"
   },
   {
    "cat": "trainer",
