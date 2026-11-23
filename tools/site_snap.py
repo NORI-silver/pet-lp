@@ -9,7 +9,7 @@ import base64, unicodedata, concurrent.futures as cf, html, json, os, re, sys, u
 
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36'
 KEY = re.compile(r'〒|住所|所在地|[都道府県].{1,8}[市区町村郡]|円|料金|営業|定休|受付|時間|対象|受け入れ|お預かり|預かり|ホテル|訓練|トレーニング|しつけ|トリミング|出張|訪問|対応エリア|地域|老犬|介護|大型|猫|うさぎ|登録|動物取扱|第\d+号|資格|送迎|閉店|休業|終了|移転|駐車|ワクチン|狂犬病|混合|支払|カード|現金|PayPay|kg|ｋｇ|キロ|頭まで|見学|面会|夜間|当日|予約|持ち物|用意|キャンセル|送り迎え|お迎え')
-SUB = re.compile(r'price|fee|ryokin|料金|menu|メニュー|access|アクセス|about|company|会社|店舗|shop|info|概要|hotel|ホテル|training|しつけ|trim|service|サービス|area|エリア|faq|qa|よくある|質問|flow|流れ|guide|利用|plan|プラン|system|システム', re.I)
+SUB = re.compile(r'price|fee|ryokin|料金|menu|メニュー|course|コース|grooming|美容|access|アクセス|about|company|会社|店舗|shop|info|概要|hotel|ホテル|training|しつけ|trim|service|サービス|area|エリア|faq|qa|よくある|質問|flow|流れ|guide|利用|plan|プラン|system|システム', re.I)
 
 
 def get(url):
@@ -54,18 +54,21 @@ def title_of(h):
     return html.unescape(re.sub(r'\s+', ' ', m.group(1))).strip() if m else ''
 
 
-def links_of(h, base):
+def links_of(h, base, n=4):
     host = urllib.parse.urlparse(base).netloc
     out = []
     for href, label in re.findall(r'(?is)<a[^>]+href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', h):
-        u = urllib.parse.urljoin(base, href)
-        p = urllib.parse.urlparse(u)
+        try:
+            u = urllib.parse.urljoin(base, href)
+            p = urllib.parse.urlparse(u)
+        except ValueError:
+            continue
         if p.netloc != host or re.search(r'\.(jpg|png|pdf|gif|zip)$', p.path, re.I):
             continue
         lab = re.sub(r'<[^>]+>', '', label)
         if (SUB.search(p.path) or SUB.search(lab)) and u not in out and u.rstrip('/') != base.rstrip('/'):
             out.append(u)
-    return out[:4]
+    return out[:n]
 
 
 def _bing_url(u):
@@ -219,11 +222,13 @@ def snap(item):
         return r
     r['final'] = final
     r['title'] = title_of(h)
-    pages = [{'url': final, 'lines': [l for l in text_of(h) if KEY.search(l) and len(l) < 220][:80]}]
-    for u in links_of(h, final):
+    nl = item.get('nlines', 60)  # 料金表の多いページ（トリミングサロンなど）は多めに取る
+    keep = (lambda l: len(l) < 220) if item.get('all') else (lambda l: KEY.search(l) and len(l) < 220)
+    pages = [{'url': final, 'lines': [l for l in text_of(h) if keep(l)][:max(80, nl)]}]
+    for u in links_of(h, final, item.get('subs', 4)):
         try:
             hh, f2 = get(u)
-            pages.append({'url': f2, 'title': title_of(hh), 'lines': [l for l in text_of(hh) if KEY.search(l) and len(l) < 220][:60]})
+            pages.append({'url': f2, 'title': title_of(hh), 'lines': [l for l in text_of(hh) if keep(l)][:nl]})
         except Exception as e:
             pages.append({'url': u, 'error': str(e)[:120]})
     r['pages'] = pages
