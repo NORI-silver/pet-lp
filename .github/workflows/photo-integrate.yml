@@ -24,11 +24,12 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin main
           git merge origin/main -X theirs --no-edit -m "最新の main を取りこむ（写真の積み重ね用）"
+      - run: python3 tools/fill_ratio.py
       - run: python3 tools/regen_cards.py
       - run: python3 tools/taxi_render_patch.py
       - name: 補助ワークフローと印を消す
         run: |
-          git rm -q -f --ignore-unmatch .github/workflows/photo-curated*.yml .github/workflows/photo-integrate.yml tools/integrate_trigger.txt
+          git rm -q -f --ignore-unmatch .github/workflows/photo-curated*.yml .github/workflows/photo-integrate.yml tools/integrate_trigger.txt tools/fill_ratio.py
       - run: python3 tools/rules_check.py
       - name: 新しいブランチに入れる
         run: |
