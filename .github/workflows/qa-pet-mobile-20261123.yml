@@ -1,12 +1,13 @@
 name: Isolated Pet mobile QA
 on:
-  push:
-    branches: ['chatgpt/qa-pet-mobile-20261123']
-    paths: ['.github/workflows/qa-pet-mobile-20261123.yml','tests/pet-mobile-qa.cjs']
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
 permissions:
   contents: read
 jobs:
   rendered:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'chatgpt/qa-pet-mobile-20261123'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
@@ -30,13 +31,14 @@ jobs:
           node-version: 22
       - name: Install test browser
         run: |
-          npm install --prefix .mobile --ignore-scripts --no-audit --no-fund playwright@1.58.2
-          .mobile/node_modules/.bin/playwright install --with-deps chromium
+          npm install --prefix .mobile --ignore-scripts --no-audit --no-fund playwright@1.62.1
+          test -x /usr/bin/google-chrome
       - name: Verify exact candidate and render locally
         env:
           TEST_SHA: ${{ matrix.sha }}
           TEST_KIND: ${{ matrix.kind }}
-          NODE_PATH: .mobile/node_modules
+          CHROME_PATH: /usr/bin/google-chrome
+          NODE_PATH: ${{ github.workspace }}/.mobile/node_modules
         run: |
           test "$(git -C candidate rev-parse HEAD)" = "$TEST_SHA"
           node tests/pet-mobile-qa.cjs candidate "$TEST_KIND" mobile-results
