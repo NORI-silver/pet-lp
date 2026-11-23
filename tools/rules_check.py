@@ -44,6 +44,7 @@ WORDS = [
     (r"最大5社", "社数の上限はない（Nori 11/01）"),
     (r"\d+分以内に(?:返|ご連絡|お返事)", "返事の時間を約束しない（Nori 10/31）"),
     (r"先に答え", "「先に答え」の札は使わない（答えの文を見出しに。Nori 11/14）"),
+    (r"公式(?:サイト|ページ)?の?情報(?:だけ|のみ)を?(?:載せ|掲載|のせ)", "「公式の情報だけ載せています」と言わず、くらべる表・おすすめの理由など独自の価値を出す（Nori 11/22）"),
     (r"この子OK|この子オッケー", "札は何が合うかをそのまま書く（Nori 11/15）"),
     (r"(?:くわしく|詳しく|詳細)は(?:リンク先|公式(?:サイト|ページ)|各(?:自治体|施設)のページ)(?:で|を|へ)", "読む人には価値がない。書いてあることを読んで書く（Nori 11/16「詳しくはリンク先では価値ゼロです」）"),
 ]
@@ -77,6 +78,7 @@ REASONS = {
     "words": "使わない言葉", "hole": "下書きの穴（◯◯など）", "removed": "消した部品がもどった", "tally": "運営側の集計を見せている", "kv": "キービジュアルがない", "trust": "運営者と掲載の基準への表示がない",
     "prefgrid": f"都道府県のボタンを{PREFGRID_MAX + 1}個以上たたまずに並べている", "intro": f"さがす欄・見出しの前の文が{INTRO_MAX}字を超える",
     "search": "施設の分野で、さがす欄より前に記事・目次がある",
+    "rival": "ほかのペット情報サイト・まとめサイト（競合）へリンクしている（Nori 11/22「老犬ケアのサイトにとばすとか強豪にリンクしてどうすんの？やめて」。施設の公式サイトに替えるか、公式サイトがなければ載せない。競合の一覧は rules_check.py の RIVALS）",
     "contact": "公式サイトも問い合わせ先もない施設を載せている（Nori 11/22「サイト開けなくて問い合わせないところは掲載しない」。データから外すか、公式サイト・獣医師会の一覧の電話（tel・tel_src）を入れる）",
     "owner": "施設の一覧のさがす欄に「うちの子にあてはまるもの」がない（Nori 11/17「自分の子にあてはまるものを探してる」。tools/ownerfit.py）",
     "card": "タクシー以外の施設のカードが共通のカード（tools/cardskin.py の形）になっていない", "wall": f"図・表・箇条書きのない文が{WALL_MAX}字を超えて続く",
@@ -187,6 +189,8 @@ def check_page(root, path):
     if m: found.append(("hole", f"「{body[max(0, m.start() - 12):m.end() + 12].strip()}」"))
     for pat, why in REMOVED:
         if pat.search(raw): found.append(("removed", why))
+    m = RIVAL_RE.search(raw)
+    if m: found.append(("rival", m.group(1)))
     m = TALLY.search(body)
     if m: found.append(("tally", f"「{body[max(0, m.start() - 10):m.end() + 10].strip()}」"))
     if len(p.prefs) > PREFGRID_MAX: found.append(("prefgrid", f"{len(p.prefs)}個（<details> でたたむか、選択欄にする）"))
@@ -223,6 +227,16 @@ CONTACT_DATA = {"hotels.json": "url", "rojin.json": "url", "grooming.json": "url
                 "dogrun.json": "url", "joto_groups.json": "url", "sougi_facilities.json": "u", "vet_clinics.json": "url"}
 
 
+# 競合のペット情報サイト・まとめサイト（Nori 11/22）。施設の公式サイトの代わりにリンクしない。見つけたら足す
+RIVALS = ("rouken-care.jp", "rou-ken.com", "roukenhome-navi.com", "roukenhome.or.jp", "petlife.asia", "ipetclub.jp", "1-2-pet.com",
+          "goodbreeder.jp", "ekiten.jp", "trimtrim.jp", "localplace.jp", "inudia.com", "wanstown.com", "kyoshippo.jp",
+          "dogparkjp.com", "wannyan-navi.jp", "miokuri-navi.com", "hug-u.pet", "catcafemap.com", "petpedia.jp", "epark.jp",
+          "hotpepper.jp", "curama.jp", "zehitomo.com", "meetsmore.com", "itsumo.dog", "petpet.ne.jp", "torepet.com", "petsitter-search.com",
+          "petokoto.com", "pet-home.jp", "jmty.jp", "satoya-boshu.net", "omusubi-pet.com", "godog-run.com", "dogrun-uzuz.com", "animaru-navi.com",
+          "animalpark-pv.com", "uchinoshippo.jp", "rouken.rulez.jp", "olddogcat.com", "withdog.iconia.co.jp", "jalan.net", "ikyu.com",
+          "tabelog.com", "retty.me", "e-sogi.com", "breeder-navi.jp", "minnanobreeder.jp")
+RIVAL_RE = re.compile(r'href="https?://(?:[\w-]+\.)*(' + "|".join(re.escape(r) for r in RIVALS) + r')[/"?]')
+
 def check_data(root):
     out = {}
     for fn, k in CONTACT_DATA.items():
@@ -235,6 +249,10 @@ def check_data(root):
             if not isinstance(x, dict) or x.get(k) or x.get("url") or (x.get("tel") and x.get("tel_src")):
                 continue
             out.setdefault(f"/data/{fn}/{x.get('id') or x.get('name')}", []).append(("contact", x.get("name", "")))
+        for x in L:  # url だけでなく facts の src なども見る
+            if not isinstance(x, dict): continue
+            m = RIVAL_RE.search(" ".join(f'href="{u}"' for u in re.findall(r'https?://[^"\s]+', json.dumps(x, ensure_ascii=False))))
+            if m: out.setdefault(f"/data/{fn}/{x.get('id') or x.get('name')}", []).append(("rival", m.group(1)))
     return out
 
 
