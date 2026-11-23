@@ -107,6 +107,7 @@ def fact_table_html(e, cat, pf, rs):
     if not cols: return ""
     hs = [it for it in rs if any(_fv(it, k) for _, ks in cols for k in ks)]  # 表の列にない事実（うちの子に合うかの文など）だけの施設は並べない
     if not hs: return ""
+    if len(hs) > 60: return ""  # 施設が多い県は、カードと同じ中身の表でページが重くなるだけ（info-light の上限。中身は各カードにある）
     import visual as _V
     def cell(it, ks):
         vs = [f["v"] for f in (_fv(it, k) for k in ks) if f]
