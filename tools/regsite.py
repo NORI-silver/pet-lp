@@ -34,7 +34,7 @@ BUDGET = int(os.environ.get('REG_BUDGET_SEC', 1500))
 def search(it):
     """1つのIPで約40回を超えると 429 になるので、1つのシャードは少ない件数にし、429 が2回続いたらそのシャードは止める（残りは not_searched で次に回す）。"""
     r = dict(it)
-    q = f"{it['name']} {it['city']}"
+    q = it.get('q2') or f"{it['name']} {it['city']}"
     r['q'] = q
     if STOP[0] or time.time() - T0 > BUDGET:
         r['results'] = []; r['search_error'] = 'not_searched'; return r
