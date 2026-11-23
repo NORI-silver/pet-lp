@@ -7291,6 +7291,3000 @@
     }
    ],
    "checked": "2026-11-22"
+  },
+  {
+   "id": "PHnk001",
+   "name": "Mare Dog Grooming",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "筑西市",
+   "url": "http://maredog.com/about",
+   "services": "トリミングサロン。ドッグホテルも",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病・混合ワクチン",
+     "src": "http://maredog.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk002",
+   "name": "ペットサロン パル",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "http://www.petsalon-pal.jp/about.html",
+   "services": "ペットサロン。ペットホテル・トリミング",
+   "facts": []
+  },
+  {
+   "id": "PHnk003",
+   "name": "石塚ケンネル",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "土浦市",
+   "url": "https://www.i-kennel.com/",
+   "services": "ブリーダー・ペットショップ・トリミング・ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2,750円・3,300円・3,850円・4,400円の4段階。一時預かりは1時間275円から",
+     "src": "https://www.i-kennel.com/services",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "https://www.i-kennel.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週水曜日、第1・第3木曜日",
+     "src": "https://www.i-kennel.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチンの接種が必要（場合によっては預かれないこともある）",
+     "src": "https://www.i-kennel.com/services",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk004",
+   "name": "ペットハウスフォーレ 阿見店",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "稲敷郡阿見町",
+   "url": "http://www.morimotohp.yukihotaru.com/f_ami.html",
+   "services": "子犬の販売・ペットホテル。しつけの相談も",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "火曜日（不定休あり）",
+     "src": "http://www.morimotohp.yukihotaru.com/f_ami.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk005",
+   "name": "ペットランドAS(アズ)",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "石岡市",
+   "url": "https://www.petland-as.com/",
+   "services": "犬の美容室（トリミング）・ペットホテル・一時預かり",
+   "pickup": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "https://www.petland-as.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "木曜日、第1・第3水曜日",
+     "src": "https://www.petland-as.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり",
+     "src": "https://www.petland-as.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎できる（30分以内か旧石岡市内）",
+     "src": "https://www.petland-as.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk006",
+   "name": "ルシェルシェ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://www.rechercher-tsukuba.com/",
+   "services": "トリミング・ペットホテル（ダックスフンドにくわしいサロン）",
+   "senior": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00から",
+     "src": "https://www.rechercher-tsukuba.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日・不定休",
+     "src": "https://www.rechercher-tsukuba.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "約10台",
+     "src": "https://www.rechercher-tsukuba.com/custom11.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病・混合ワクチンの接種が必要（接種前の子犬は預からない）",
+     "src": "https://www.rechercher-tsukuba.com/custom6.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "10歳以上の老犬も預かる",
+     "src": "https://www.rechercher-tsukuba.com/custom6.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk007",
+   "name": "ドッグサロン のあーる",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "筑西市",
+   "url": "http://dogsalonnoir.yukigesho.com/",
+   "services": "ドッグサロン（トリミング）・ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "http://dogsalonnoir.yukigesho.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "決まった曜日の定休日なし",
+     "src": "http://dogsalonnoir.yukigesho.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk008",
+   "name": "ユニバーサルペットスカイ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "取手市",
+   "url": "https://universalpetsky.com/",
+   "services": "ペットサロン（トリミング）・ペットホテル・一時預かり",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "一時預かり（中型犬まで）4時間以内700円・4時間以上1,300円",
+     "src": "https://universalpetsky.com/pricelist1/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://universalpetsky.com/universalpetsky/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり",
+     "src": "https://universalpetsky.com/universalpetsky/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "大型犬はホテルで預からない",
+     "src": "https://universalpetsky.com/pricelist2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk009",
+   "name": "愛犬しつけ教室&雑貨 GoodDog",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "日立市",
+   "url": "https://www.ne.jp/asahi/good-dog/wan/",
+   "services": "しつけ教室のペットホテル・日帰りの預かり",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ホテル1日（24時間）10kg未満4,000円・10kg以上4,500円。日帰り10kg未満3,000円・10kg以上3,500円",
+     "src": "https://www.ne.jp/asahi/good-dog/wan/lesson.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "預ける・迎えるのは9:00〜19:00（ほかの時間は1頭500円）",
+     "src": "https://www.ne.jp/asahi/good-dog/wan/lesson.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチンの接種証明書",
+     "src": "https://www.ne.jp/asahi/good-dog/wan/lesson.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk010",
+   "name": "グローリードッグス",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://www.glory-dog.com/",
+   "services": "犬の美容室・ペットホテル・しつけの相談",
+   "facts": []
+  },
+  {
+   "id": "PHnk011",
+   "name": "アムレ 神栖店",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "神栖市",
+   "url": "https://www.amulet-japan.com/shop/?id=1427423075-518634",
+   "services": "ペットショップ。トリミング・ペットホテル（予約制）",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "ホテルの最終受付・お迎えは18:00まで",
+     "src": "https://www.amulet-japan.com/shop/?id=1427423075-518634",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "はじめては1年以内のワクチン証明書",
+     "src": "https://www.amulet-japan.com/shop/?id=1427423075-518634",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk012",
+   "name": "Cat&Dog Angel Tail",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "牛久市",
+   "url": "https://www.angeltail.net/",
+   "services": "トリミング・ペットホテル（会員制）",
+   "large": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "会員制で入会金5,500円（年会費なし）",
+     "src": "https://www.angeltail.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "預ける・迎えるのは10:00〜18:00",
+     "src": "https://www.angeltail.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日（日曜・祝日も営業）",
+     "src": "https://www.angeltail.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病・混合ワクチン",
+     "src": "https://www.angeltail.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "小型犬から大型犬・猫まで",
+     "src": "https://www.angeltail.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk013",
+   "name": "ニコペットセレクト ニューサンドッグ 水戸県庁前店",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://www.newsundog.com/",
+   "services": "ペットショップ。トリミング・ペットホテル・一時預かり",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "基本はなし（入っている商業施設が休みの日は休み）",
+     "src": "https://www.newsundog.com/qa/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "入っている商業施設の駐車場",
+     "src": "https://www.newsundog.com/qa/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk014",
+   "name": "PRIME LAND",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "東茨城郡茨城町",
+   "url": "http://www.silver-justice.com/page009.html",
+   "services": "ドッグラン・ドッグプール・ペットホテル・トリミング・ドッグカフェ",
+   "facts": []
+  },
+  {
+   "id": "PHnk015",
+   "name": "ラブリードッグ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "那珂郡東海村",
+   "url": "http://www.loverydog.sakura.ne.jp/",
+   "services": "ブリーダー。ペットホテルも",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "ペットホテルは1日（8時間）10時〜18時",
+     "src": "http://www.loverydog.sakura.ne.jp/menu.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk016",
+   "name": "Dog Salon TIARA",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "猿島郡境町",
+   "url": "https://dog-salon-tiara.sakura.ne.jp/",
+   "services": "ドッグサロン（トリミング）・ペットホテル（予約制）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ペットホテル3,000円（日曜・祝日・年末年始・GW・お盆は3,500円）",
+     "src": "https://dog-salon-tiara.sakura.ne.jp/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk017",
+   "name": "Ocean bee.",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "http://www.oceanbee.net/salon/",
+   "services": "ドッグサロン（トリミング）・ホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬1泊3,500円から（年末年始・GW・お盆は2割増し）",
+     "src": "http://www.oceanbee.net/salon/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "預けるのは10:00から、お迎えは18:00まで（延長1時間1,000円）",
+     "src": "http://www.oceanbee.net/salon/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk018",
+   "name": "ディスワン高崎店",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://pet-azami.com/stores/takasaki/",
+   "services": "ペットショップ。トリミング・ペットホテル（24時間体制、犬・猫）",
+   "cat": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "犬・猫。シニア犬もやさしく",
+     "src": "https://pet-azami.com/services/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk019",
+   "name": "Forest Scene",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://www5d.biglobe.ne.jp/~chamkids/index.htm",
+   "services": "犬との暮らしのコンサルティング。ドッグホテル・トリミング・訓練",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊3,500円（11泊目から3,000円、21泊目から2,500円）。繁忙期は1日500円増し",
+     "src": "https://www5d.biglobe.ne.jp/~chamkids/doghotel.htm",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "チェックイン10時〜19時、チェックアウト10時〜13時",
+     "src": "https://www5d.biglobe.ne.jp/~chamkids/doghotel.htm",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk020",
+   "name": "Sweet me",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://sweetmetakasaki.wixsite.com/dogsalon-sweetme/blank-1",
+   "services": "トリミングサロン・ペットホテル（1時間から預かり）",
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シングルルーム 小型犬3,000円・中型犬4,000円、ダブルルーム 小型犬4,000円・中型犬5,000円・大型犬6,000円（税抜、5泊からは割引）。一時預かり 小型犬1時間500円から",
+     "src": "https://sweetmetakasaki.wixsite.com/dogsalon-sweetme/blank-4",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00",
+     "src": "https://sweetmetakasaki.wixsite.com/dogsalon-sweetme/blank-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://sweetmetakasaki.wixsite.com/dogsalon-sweetme/blank-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk021",
+   "name": "ワンルーク高崎駅店",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://be-haro.com/pets/takasakieki/",
+   "services": "トリミングサロン・ペットホテル（犬・猫。高崎駅から歩いて約7分）",
+   "large": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 スタンダード（4kg以下）3,850円から、スイート（4〜30kg）4,950円〜7,700円、デラックス一律8,800円。一時預かりは最初の1時間1,100円から",
+     "src": "https://be-haro.com/pets/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜20:00",
+     "src": "https://be-haro.com/pets/takasakieki/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "なし",
+     "src": "https://be-haro.com/pets/takasakieki/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "無料駐車場あり",
+     "src": "https://be-haro.com/pets/takasakieki/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "はじめてはワクチン接種証明書",
+     "src": "https://be-haro.com/pets/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk022",
+   "name": "ジョイフル本田 ペッツクローバー荒川沖店",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "土浦市",
+   "url": "https://joyfulhonda.pros-ta.jp/contents/petsclover/open_arakawaoki/index.php",
+   "services": "ホームセンターのペット専門店。ペットホテルも",
+   "facts": []
+  },
+  {
+   "id": "PHnk023",
+   "name": "ペットハウス NANA",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくばみらい市",
+   "url": "https://trimming-nana.jp/",
+   "services": "トリミングサロン・ペットホテル。フレンチブルドッグのブリーダー",
+   "pickup": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://trimming-nana.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週水曜日、第1・第3日曜日",
+     "src": "https://trimming-nana.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン・狂犬病ワクチンの証明書（年に1回見せる）。ノミ・ダニの時期は先に駆除",
+     "src": "https://trimming-nana.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎は500円から",
+     "src": "https://trimming-nana.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk024",
+   "name": "WANDRY",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "土浦市",
+   "url": "http://wandry.jp/",
+   "services": "ドッグラン・ドッグホテル・カフェ（スタッフが住みこみ）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日 小型（7kgまで）5,000円・中型（7〜15kg）6,000円。お盆・年末年始と月〜水曜をまたぐ泊まりは1泊1,000円増し",
+     "src": "http://wandry.jp/services.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜17:00",
+     "src": "http://wandry.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカードは使えない",
+     "src": "http://wandry.jp/services.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン・狂犬病注射の証明書と、飼い主の身分証明書",
+     "src": "http://wandry.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk025",
+   "name": "トリミングサロン NaturalDog",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "東茨城郡茨城町",
+   "url": "http://naturaldog.info/",
+   "services": "トリミング・ペットホテル（相談すれば365日）",
+   "large": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "日帰り 小型犬・猫2,420円から・中型犬3,025円から・大型犬3,630円から。1泊 小型犬・猫4,840円から・中型犬6,050円から・大型犬7,260円から。年末年始・大型連休・定休日の預け／迎えは1,000円増し",
+     "src": "http://naturaldog.info/hotel.htm",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "http://naturaldog.info/access.htm",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "木曜日",
+     "src": "http://naturaldog.info/access.htm",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり",
+     "src": "http://naturaldog.info/access.htm",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk026",
+   "name": "ドックサロン 公梨栄",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "土浦市",
+   "url": "https://dogsalonkurie.crayonsite.com/",
+   "services": "ドッグサロン（トリミング）・ペットホテル。送迎あり（予約制）",
+   "pickup": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00から",
+     "src": "https://dogsalonkurie.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週火曜日、第3水曜日",
+     "src": "https://dogsalonkurie.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり",
+     "src": "https://dogsalonkurie.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "年に1回のワクチンの予防接種",
+     "src": "https://dogsalonkurie.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk027",
+   "name": "ペットサロン ナカタニ 取手店",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "取手市",
+   "url": "http://petsalon-nakatani.com/",
+   "services": "ペットショップ。トリミング・ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00",
+     "src": "http://petsalon-nakatani.com/store/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "木曜日",
+     "src": "http://petsalon-nakatani.com/store/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk028",
+   "name": "ふくろうの家",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://houseofowl.stars.ne.jp/",
+   "services": "フクロウカフェ・フクロウの販売。フクロウの預かりも",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "フクロウの預かり：店で餌を定期購入している人1,650円、臨時の人3,300円",
+     "src": "https://houseofowl.stars.ne.jp/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "土日祝の12:00〜16:00",
+     "src": "https://houseofowl.stars.ne.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "月〜金曜日（祝日を除く）",
+     "src": "https://houseofowl.stars.ne.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "無料7台",
+     "src": "https://houseofowl.stars.ne.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金が基本",
+     "src": "https://houseofowl.stars.ne.jp/feed/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk029",
+   "name": "PLATINUM DOG",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://platinum-grooming.com/",
+   "services": "トリミングサロン（犬種別料金・WEB予約）。ホテルも（美容とは別予約）",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00（美容の最終受付16:00）",
+     "src": "https://platinum-grooming.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk030",
+   "name": "キャリーヌ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "鹿嶋市",
+   "url": "https://www.caline.jp/",
+   "services": "トリミング・カフェ・ドッグラン・ドッグホテル（鹿嶋店・香取店）",
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 小型犬3,500円・中型犬4,600円・大型犬5,800円（大型犬は香取店）",
+     "src": "https://www.caline.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "お迎えは18時まで",
+     "src": "https://www.caline.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日（店休日は預かりなし）",
+     "src": "https://www.caline.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり（3〜6台）",
+     "src": "https://www.caline.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病ワクチン接種証明書、混合ワクチンの証明書か抗体検査の結果（写真・コピー可）、飼い主の身分証明書。マナーパンツ・マナーベルト",
+     "src": "https://www.caline.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "基本的なしつけができていること（むだぼえ・攻撃的な行動がない）",
+     "src": "https://www.caline.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk031",
+   "name": "Dog School LUCE",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "龍ケ崎市",
+   "url": "https://dog-s-luce.com/",
+   "services": "ドッグスクールのペットホテル（長期も相談）",
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 小型犬4,500円・中型犬5,000円・大型犬5,500円。GW・お盆・年末年始は1泊500円増し。はじめては事前カウンセリング3,300円",
+     "src": "https://dog-s-luce.com/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://dog-s-luce.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "月曜日",
+     "src": "https://dog-s-luce.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お迎えのときに現金",
+     "src": "https://dog-s-luce.com/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk032",
+   "name": "Dog Salon Olive",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "鹿嶋市",
+   "url": "https://www.dogsalon-olive1.com/top/",
+   "services": "トリミングサロン・ペットホテル（猫のブリーディングも）",
+   "large": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "宿泊1日 小型犬・猫3,300円・中型犬4,400円・大型犬5,500円。一時預かり1時間330円から（1日最大1,650円から）",
+     "src": "https://www.dogsalon-olive1.com/pet_hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:30〜18:00（チェックイン9:30〜17:00）",
+     "src": "https://www.dogsalon-olive1.com/top/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "月曜日・祝日",
+     "src": "https://www.dogsalon-olive1.com/top/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明書のコピー",
+     "src": "https://www.dogsalon-olive1.com/pet_hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk033",
+   "name": "USSHIY's Doggy Care 犬のしつけ&ホテル",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "牛久市",
+   "url": "https://www.usshiy.com/",
+   "services": "しつけ教室のホテル・デイケア（店は自宅もかねる）",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "7:00〜21:00（時間外も相談）",
+     "src": "https://www.usshiy.com/hotel-daycare",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "店の前に3台",
+     "src": "https://www.usshiy.com/map-add-page",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "ほかの犬が苦手な子も相談",
+     "src": "https://www.usshiy.com/hotel-daycare",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk034",
+   "name": "うさぎのお店プティラパン",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://petitlapin.jp/baby.html",
+   "services": "うさぎのお店。うさぎ・小動物のペットホテル（完全予約制）",
+   "small": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2,200円（時間外は1,100円増し）",
+     "src": "https://petitlapin.jp/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "4台",
+     "src": "https://petitlapin.jp/store_guide.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "うさぎ・小動物",
+     "src": "https://petitlapin.jp/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk035",
+   "name": "ねこのお宿 モモの家",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "古河市",
+   "url": "https://nekoyadomomo.net/",
+   "services": "ねこのお宿（キャットシッターの家）",
+   "cat": true,
+   "cat_only": true,
+   "facts": []
+  },
+  {
+   "id": "PHnk036",
+   "name": "おいでわん",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "守谷市",
+   "url": "https://www.inu-daytime-azukari.com/",
+   "services": "犬専門のペットホテル（夜も24時間スタッフといっしょ、ケージフリー）・日中の預かり",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://www.inu-daytime-azukari.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "3台まで",
+     "src": "https://www.inu-daytime-azukari.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk037",
+   "name": "ペットサロン chou chou",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "常陸大宮市",
+   "url": "https://maa20080406maa.wixsite.com/chouchou",
+   "services": "ペットサロン（トリミング）・ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日料金 小型犬2,500円・中型犬3,500円（時間で変わる）",
+     "src": "https://maa20080406maa.wixsite.com/chouchou/blank-2",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk038",
+   "name": "アジュの部屋",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://www.aju.info/",
+   "services": "家庭的なペットホテル（高齢犬・持病のある子も）",
+   "senior": true,
+   "cat": true,
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日 おおよそ20kgまでの犬と猫2,000円、それより大きい犬2,500円（税込）",
+     "src": "https://www.aju.info/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "2台（無料）",
+     "src": "https://www.aju.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "高齢犬・持病のある子も相談",
+     "src": "https://www.aju.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk039",
+   "name": "ペッツワン高萩店(カインズ)",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "高萩市",
+   "url": "https://map.cainz.com/detail/254/",
+   "services": "ホームセンターのペット専門店。ペットホテルも",
+   "facts": []
+  },
+  {
+   "id": "PHnk040",
+   "name": "dog salon fresh",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://dogsalonfresh.crayonsite.info/",
+   "services": "ドッグサロン（トリミング）。ケージフリーのペットホテル（夜もいっしょ）",
+   "facts": []
+  },
+  {
+   "id": "PHnk041",
+   "name": "ねこまどや",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "神栖市",
+   "url": "https://nekomadoya.shopinfo.jp/",
+   "services": "猫カフェ。猫のペットホテル（猫のお預かり処）",
+   "cat": true,
+   "cat_only": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 1匹目3,000円、2匹目から1,000円引き。繁忙期は500円増し",
+     "src": "https://nekomadoya.shopinfo.jp/pages/4864368/page_202104231320",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "預ける1週間前から1年以内の3種ワクチン",
+     "src": "https://nekomadoya.shopinfo.jp/pages/4864368/page_202104231320",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk042",
+   "name": "One Buddy 古河店",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "古河市",
+   "url": "https://akayamajoy.com/shop/015.html",
+   "services": "ペットショップ（ショッピングセンター内）。トリミング・ペットホテル",
+   "facts": []
+  },
+  {
+   "id": "PHnk043",
+   "name": "パモフ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "北茨城市",
+   "url": "https://www.pamof-dogs.com/",
+   "services": "犬のホームステイ型ホテル・シャンプー。ペットシッターも",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日（9:00〜翌12:00）小型犬（5kg未満）5,200円。大きい子は5,700円・6,900円・7,900円・8,900円",
+     "src": "https://www.pamof-dogs.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜17:00（早朝・夜は追加料金で相談）",
+     "src": "https://www.pamof-dogs.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみ",
+     "src": "https://www.pamof-dogs.com/terms",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病ワクチンと混合ワクチン（5種以上）の証明書",
+     "src": "https://www.pamof-dogs.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "はじめては無料で1〜3時間のお試し預かり",
+     "src": "https://www.pamof-dogs.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk044",
+   "name": "pet salon pun",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "ひたちなか市",
+   "url": "https://petsalonpun.jp/",
+   "services": "トリミングサロン・ペットホテル（プレイルーム・しつけ教室も）",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "7:00〜21:00",
+     "src": "https://petsalonpun.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://petsalonpun.jp/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "8台（無料）",
+     "src": "https://petsalonpun.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチン（か抗体検査）と狂犬病予防接種の証明書",
+     "src": "https://petsalonpun.jp/terms/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk045",
+   "name": "Y&S MOMORABI",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "常総市",
+   "url": "https://momorabi8235.amebaownd.com/",
+   "services": "うさぎ・モモンガのホテル・ケア（販売も）",
+   "small": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日1,000円、1泊2日2,000円（税込）",
+     "src": "https://momorabi8235.amebaownd.com/pages/6486091/STATIC",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり",
+     "src": "https://momorabi8235.amebaownd.com/pages/6486091/STATIC",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "うさぎ・モモンガ",
+     "src": "https://momorabi8235.amebaownd.com/pages/6486091/STATIC",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk046",
+   "name": "dog salon pooch",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "牛久市",
+   "url": "https://dogsalon-pooch.com/",
+   "services": "トリミングサロン・ホテル・一時預かり。送迎も",
+   "large": true,
+   "pickup": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ホテル 15kgまで5,000円・15kgから8,000円",
+     "src": "https://dogsalon-pooch.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://dogsalon-pooch.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "月曜日・不定休",
+     "src": "https://dogsalon-pooch.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "片道10kmまで1,100円・10kmから2,200円・20kmから3,300円",
+     "src": "https://dogsalon-pooch.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk047",
+   "name": "Bon Voyage",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "那珂市",
+   "url": "http://bonvoyagepethotelnakashimitohitachinaka.shop/",
+   "services": "犬専門のペットホテル",
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬3,850円・柴犬など中型犬4,950円・大型犬6,050円。一時預かりは1時間550円から",
+     "src": "http://bonvoyagepethotelnakashimitohitachinaka.shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk048",
+   "name": "THE DOG TOWN",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "神栖市",
+   "url": "https://thedog.town/",
+   "services": "トリミング・個室のホテル（全6部屋、様子をメッセージで知らせる）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日6,000円",
+     "src": "https://thedog.town/menu-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "https://thedog.town/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明書（はじめてと1年ごと）、首輪・リード・フード・おもちゃ・毛布・おやつ",
+     "src": "https://thedog.town/menu-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk049",
+   "name": "鹿嶋ドッグクラブ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "鹿嶋市",
+   "url": "https://kashima-dogclub.com/dogrun/",
+   "services": "ドッグラン・ペットホテル（完全予約制）・一時預かり",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日4,400円から、一時預かり3時間まで990円から",
+     "src": "https://kashima-dogclub.com/pet-hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病と5種以上の混合ワクチンの証明書",
+     "src": "https://kashima-dogclub.com/dogrun/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk050",
+   "name": "ペットプラストリミングサロン ひたち野うしく店",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "牛久市",
+   "url": "https://www.pet-freesia.com/ushiku.html",
+   "services": "ペットショップ・トリミングサロン・ペットホテル。一時預かり・うさぎなど小動物も相談",
+   "small": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00",
+     "src": "https://www.pet-freesia.com/ushiku.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "うさぎなどの小動物も相談",
+     "src": "https://www.pet-freesia.com/ushiku.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk051",
+   "name": "con affetto 水戸店",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://conaffetto-mito.com/",
+   "services": "ペットホテル・トリミングサロン",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "https://conaffetto-mito.com/salon/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "金曜日",
+     "src": "https://conaffetto-mito.com/salon/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk052",
+   "name": "Dogsalon Miru-la",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "ひたちなか市",
+   "url": "https://miru-la0820.crayonsite.info/",
+   "services": "トリミング・ペットホテル・一時預かり（子犬から老犬まで）",
+   "large": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "慣らし宿泊 全犬種3,300円。一時預かり1時間 小型犬880円・中型犬1,100円・大型犬1,650円",
+     "src": "https://miru-la0820.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00（ホテルは1か月前から予約）",
+     "src": "https://miru-la0820.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週月曜日と不定休",
+     "src": "https://miru-la0820.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "7台",
+     "src": "https://miru-la0820.crayonsite.info/p/3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "ホテルと一時預かりは現金の前払い",
+     "src": "https://miru-la0820.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "はじめては狂犬病・混合ワクチンの接種証明書（ノミ・ダニ予防もすませる）",
+     "src": "https://miru-la0820.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk053",
+   "name": "ペットショップ あんあん",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "日立市",
+   "url": "https://www.net1.jway.ne.jp/anan1/",
+   "services": "ペットショップ・トリミング・ペットホテル（日帰りから15泊以上まで、年中無休）",
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日 猫4,800円・小型犬5,300円・中型犬6,000円（2泊以上は1泊 猫4,400円・小型犬4,700円・中型犬5,400円）",
+     "src": "https://www.net1.jway.ne.jp/anan1/pet_hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "預ける・迎えるのは8:30〜21:00",
+     "src": "https://www.net1.jway.ne.jp/anan1/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "ホテルは年中無休",
+     "src": "https://www.net1.jway.ne.jp/anan1/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "はじめては飼い主の身分証明書と犬のワクチン・狂犬病の証明書。猫はワクチン証明書とノミ駆除",
+     "src": "https://www.net1.jway.ne.jp/anan1/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "かみぐせ・ほえぐせ・老犬・持病のある子は断ることがある（まず相談）",
+     "src": "https://www.net1.jway.ne.jp/anan1/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk054",
+   "name": "わんわんBarber",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "坂東市",
+   "url": "https://www.wanwanbarber.com/",
+   "services": "トリミングサロン・ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬ケージ4,400円・中型犬ケージ5,500円（税込）",
+     "src": "https://www.wanwanbarber.com/%e3%83%9a%e3%83%83%e3%83%88%e3%83%9b%e3%83%86%e3%83%ab/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00（お迎えは18時まで）",
+     "src": "https://www.wanwanbarber.com/%e5%ba%97%e8%88%97%e6%83%85%e5%a0%b1/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり",
+     "src": "https://www.wanwanbarber.com/%e5%ba%97%e8%88%97%e6%83%85%e5%a0%b1/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "年1回の狂犬病ワクチンと5種以上の混合ワクチン",
+     "src": "https://www.wanwanbarber.com/%e3%83%9a%e3%83%83%e3%83%88%e3%83%9b%e3%83%86%e3%83%ab-%e5%88%a9%e7%94%a8%e8%a6%8f%e7%b4%84/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "大型犬は預からない。はじめては1週間前までにお試し宿泊かトリミング",
+     "src": "https://www.wanwanbarber.com/%e3%83%9a%e3%83%83%e3%83%88%e3%83%9b%e3%83%86%e3%83%ab/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk055",
+   "name": "ビック ワン",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "那珂市",
+   "url": "http://petsalonbigone.com/petshop.html",
+   "services": "ドッグサロン（トリミング）・ペットホテル・子犬の販売",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "預ける・迎えるのは10:00〜18:30",
+     "src": "http://petsalonbigone.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり",
+     "src": "http://petsalonbigone.com/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "はじめては1年以内のワクチン証明書",
+     "src": "http://petsalonbigone.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk056",
+   "name": "もりやペットランド",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "守谷市",
+   "url": "https://moripe.u-cir.net/",
+   "services": "ペットショップ・ペットホテル（1985年から）",
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型ルーム3,850円・中型ルーム4,400円・大型ルーム5,500円（税込）。大型連休は1泊500円増し",
+     "src": "https://moripe.u-cir.net/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00（18時より後は翌日のお迎え）",
+     "src": "https://moripe.u-cir.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日、第2・第4月曜日",
+     "src": "https://moripe.u-cir.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種から2週間たっていること",
+     "src": "https://moripe.u-cir.net/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk057",
+   "name": "犬爛美泊 ゔぇる",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://kenran-bihaku-vell.jp/",
+   "services": "和モダンのトリミングサロン＆ホテル（少人数、夜も24時間）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 10kgまで11,000円・10〜15kg12,100円（税込）",
+     "src": "https://kenran-bihaku-vell.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00（ホテルの受け渡しは8:30か18:00）",
+     "src": "https://kenran-bihaku-vell.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "共有の駐車場",
+     "src": "https://kenran-bihaku-vell.jp/shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病予防注射と混合ワクチンの接種証明書",
+     "src": "https://kenran-bihaku-vell.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk058",
+   "name": "ドッグサロン R.E.T",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "稲敷郡阿見町",
+   "url": "https://www.dogsalonret.jp/access",
+   "services": "ドッグサロン（トリミング）・ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://www.dogsalonret.jp/access",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.dogsalonret.jp/access",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk059",
+   "name": "あんじんシニアペットサポート",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "土浦市",
+   "url": "https://anjin-petcare.jp/",
+   "services": "シニアの犬・猫のケア（日中の預かり）・トレーニング",
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "時間預かり 1時間1,000円から（7時間まで）",
+     "src": "https://anjin-petcare.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "月〜金曜日 8:30〜17:30",
+     "src": "https://anjin-petcare.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk060",
+   "name": "Lemon tea",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "古河市",
+   "url": "http://lemontea-pet.com/",
+   "services": "ペットサロン・ペットホテル（朝夕2回のお散歩つき）・一時預かり",
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊（1〜3泊）小型犬・猫2,500円・中型犬3,000円、4泊からは1泊2,000円・2,500円。一時預かり1時間200円から（税別）",
+     "src": "http://lemontea-pet.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明書（犬は5種以上の混合ワクチンと狂犬病、猫は3種以上の混合ワクチン）",
+     "src": "http://lemontea-pet.com/rule.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk061",
+   "name": "SHERIE'S GOLDEN",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "常陸大宮市",
+   "url": "https://www.sheries-golden.jp/access",
+   "services": "ゴールデンレトリーバーの犬舎。犬のペットホテルも",
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日 小型犬3,000円・中型犬3,500円・大型犬4,000円",
+     "src": "https://www.sheries-golden.jp/service2",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://www.sheries-golden.jp/access",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "なし",
+     "src": "https://www.sheries-golden.jp/access",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり",
+     "src": "https://www.sheries-golden.jp/access",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種証明書",
+     "src": "https://www.sheries-golden.jp/service2",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk062",
+   "name": "ペットシッター あしあと",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "那珂郡東海村",
+   "url": "https://ohta-petins.jp/ps/space.html",
+   "services": "訓練所・美容室のペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "木曜日",
+     "src": "https://ohta-petins.jp/ps/petservice2.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk063",
+   "name": "トリミングサロン&ペットホテル わんるーむ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://wanroom-mito.crayonsite.com/",
+   "services": "トリミングサロン＆ペットホテル",
+   "large": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊（9時〜翌19時）小型犬5,000円・中型犬6,000円・大型犬7,000円・猫4,000円（税別）",
+     "src": "https://wanroom-mito.crayonsite.com/p/3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "預ける・迎えるのは9:00〜19:00（時間外は相談）",
+     "src": "https://wanroom-mito.crayonsite.com/p/3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://wanroom-mito.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金",
+     "src": "https://wanroom-mito.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病予防・混合ワクチン接種の証明書",
+     "src": "https://wanroom-mito.crayonsite.com/p/3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk064",
+   "name": "INU.",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "取手市",
+   "url": "https://inudot.net/index.html",
+   "services": "トリミングサロン・ペットホテル・ショートステイ（1時間から）",
+   "large": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬サイズ5,500円・中型犬・大型犬サイズ6,600円（2頭目からは半額）",
+     "src": "https://inudot.net/content3.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://inudot.net/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "月曜日",
+     "src": "https://inudot.net/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "店の前に5台",
+     "src": "https://inudot.net/content5.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金・クレジットカード・QR決済・WEB決済",
+     "src": "https://inudot.net/content5.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチン・狂犬病予防接種の証明書",
+     "src": "https://inudot.net/content2.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "シニア犬・持病のある子・ほかで断られた子も相談",
+     "src": "https://inudot.net/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk065",
+   "name": "PetSalon Cute 渋川店",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "渋川市",
+   "url": "http://petsaloncute.web.fc2.com/",
+   "services": "ペットサロン・ペットホテル（小型犬から大型犬・猫も）",
+   "large": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金か銀行振込",
+     "src": "http://petsaloncute.web.fc2.com/koihana.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "小型犬から大型犬まで、猫も",
+     "src": "http://petsaloncute.web.fc2.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk066",
+   "name": "このみさんちの犬",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "藤岡市",
+   "url": "https://konomisantinoinu.com/kennel/",
+   "services": "ブリーダー。トリミング・ペットホテルも",
+   "facts": []
+  },
+  {
+   "id": "PHnk067",
+   "name": "One Piece",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "富岡市",
+   "url": "https://www.m-aslan.com/",
+   "services": "子犬の販売・トリミング・ペットホテル（庭で自由運動）",
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1〜10泊 小型犬1泊4,400円・中型犬5,500円・大型犬6,600円。11〜20泊は10%オフ、21泊からは15%オフ",
+     "src": "https://www.m-aslan.com/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk068",
+   "name": "ペットホテル星ナ",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "富岡市",
+   "url": "https://petsitter-hoshina.localinfo.jp/",
+   "services": "猫が中心の、1組だけの貸し切りペットホテル（24時間見守りカメラ）",
+   "cat": true,
+   "small": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1組 月〜木曜8,000円・金〜日曜と祝日10,000円・繁忙期13,000円（24時間をこえると1時間1,000円）",
+     "src": "https://petsitter-hoshina.localinfo.jp/pages/9123843/blog",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "先払い（チェックインのとき現金か、前もって振込）",
+     "src": "https://petsitter-hoshina.localinfo.jp/pages/9123843/blog",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "いつもいっしょの子だけで猫3匹・小型犬2匹まで。小動物はケージごと。はじめては2時間のお試し体験",
+     "src": "https://petsitter-hoshina.localinfo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk069",
+   "name": "イリオ",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "富岡市",
+   "url": "https://ilio1.com/",
+   "services": "ペットホテル＆ドッグラン（ホテルは年中無休）・しつけ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ホテルの入会金3,000円（会員でなければ毎回2,000円）。年末年始・GW・お盆は1日550円増し、個室は1日1,100円増し",
+     "src": "https://ilio1.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "ホテルは年中無休",
+     "src": "https://ilio1.com/info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "犬の登録と、1年以内のワクチン・狂犬病予防接種",
+     "src": "https://ilio1.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk070",
+   "name": "PONO",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "富岡市",
+   "url": "https://www.trimming-salon-pono.com/salon",
+   "services": "トリミングサロン・ペットホテル（小型犬から超大型犬・猫まで）",
+   "large": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 小型犬5,000円から・中型犬6,000円から・大型犬7,000円から・超大型犬8,000円から",
+     "src": "https://www.trimming-salon-pono.com/pethotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜17:00",
+     "src": "https://www.trimming-salon-pono.com/salon",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.trimming-salon-pono.com/salon",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "8台",
+     "src": "https://www.trimming-salon-pono.com/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病ワクチンと混合ワクチンの接種証明書（猫は3年以内の混合ワクチンだけ）",
+     "src": "https://www.trimming-salon-pono.com/pethotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "かみぐせ・ほえぐせでほかのサロンに断られた子も",
+     "src": "https://www.trimming-salon-pono.com/salon",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk071",
+   "name": "CDハウス",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "吾妻郡草津町",
+   "url": "https://pet.alalsya.com/",
+   "services": "草津温泉のペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "チェックイン14:00〜17:00、チェックアウト9:00〜12:00（20:00〜8:00は時間外の手数料）",
+     "src": "https://pet.alalsya.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk072",
+   "name": "dog salon COCORON",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "伊勢崎市",
+   "url": "http://dog-cocoron.com/",
+   "services": "ドッグサロン（トリミング）・ペットホテル。送迎も",
+   "pickup": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ペットホテル1日3,200円から",
+     "src": "http://dog-cocoron.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "http://dog-cocoron.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "月曜日、第3日曜日",
+     "src": "http://dog-cocoron.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "旧赤堀町内500円から、伊勢崎市内1,000円から",
+     "src": "http://dog-cocoron.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチンと狂犬病の予防注射",
+     "src": "http://dog-cocoron.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk073",
+   "name": "ペットBRAND",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "伊勢崎市",
+   "url": "https://brand-shop.ocnk.net/",
+   "services": "爬虫類などのペットホテル・生体と用品の買取と販売",
+   "small": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 Sサイズ1,500円・Mサイズ2,000円・Lサイズ2,500円（それより大きい子は相談）。繁忙期は1泊550円増し",
+     "src": "https://brand-shop.ocnk.net/page/4",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "11:00〜18:00",
+     "src": "https://brand-shop.ocnk.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日・木曜日（預ける・迎えるのも休み）",
+     "src": "https://brand-shop.ocnk.net/page/4",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり",
+     "src": "https://brand-shop.ocnk.net/info",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "爬虫類など",
+     "src": "https://brand-shop.ocnk.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk074",
+   "name": "trimming salon LURAN",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "伊勢崎市",
+   "url": "https://www.dog-luran.com/",
+   "services": "トリミングサロン・ペットホテル・一時預かり（予約制）",
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 小型犬3,800円・中型犬4,300円・大型犬5,300円（3泊から5%オフ）。一時預かり 2時間500円・6時間1,000円・8時間1,500円",
+     "src": "https://www.dog-luran.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "https://www.dog-luran.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk075",
+   "name": "ペットホテルいやしの森",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "邑楽郡板倉町",
+   "url": "https://redocelot5.sakura.ne.jp/",
+   "services": "トリミング・ペットホテル（猫専用の部屋も）",
+   "large": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 3,800円・4,200円・4,700円・5,300円・5,900円（体重で5段階、40kgをこえる超大型犬も）。2泊からは割引",
+     "src": "https://redocelot5.sakura.ne.jp/entry6.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜19:00（最終受付18:30）",
+     "src": "https://redocelot5.sakura.ne.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://redocelot5.sakura.ne.jp/entry9.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "年1回の狂犬病予防の証明（鑑札・ステッカー・領収書のどれか）、年1回の3種以上の混合ワクチンの証明書、ノミ・ダニ予防の証明",
+     "src": "https://redocelot5.sakura.ne.jp/entry10.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk076",
+   "name": "DOG HOME",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "安中市",
+   "url": "https://doghomedog.web.fc2.com/doghome/tizu.html",
+   "services": "小さめの犬のペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊5,500円、日帰り3,300円・4,400円",
+     "src": "https://doghomedog.web.fc2.com/doghome/charge.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00（朝8時より前は受けない。朝・夜は時間外料金）",
+     "src": "https://doghomedog.web.fc2.com/doghome/charge.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "1台（予約制）",
+     "src": "https://doghomedog.web.fc2.com/doghome/tizu.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみ",
+     "src": "https://doghomedog.web.fc2.com/doghome/charge.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病と混合ワクチンの証明書",
+     "src": "https://doghomedog.web.fc2.com/doghome/nagare.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "2〜12kgの犬（2kg以下の小さい子・大型犬・子犬・ハイシニアは受けない）",
+     "src": "https://doghomedog.web.fc2.com/doghome/dame.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk077",
+   "name": "わんちゃんのおみせ みんと",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "安中市",
+   "url": "https://www.mint-pet.jp/",
+   "services": "ペットサロン・ペットホテル・一時預かり（パピーからシニアまで相談）",
+   "large": true,
+   "cat": true,
+   "pickup": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 小型犬・猫（8kgまで）3,080円・中型犬（15kgまで）3,630円・大型犬（25kgまで）5,170円。一時預かり1時間528円から",
+     "src": "https://www.mint-pet.jp/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00",
+     "src": "https://www.mint-pet.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "前もって連絡すれば660円",
+     "src": "https://www.mint-pet.jp/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金・クレジットカード・電子マネー・バーコード決済",
+     "src": "https://www.mint-pet.jp/company.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk078",
+   "name": "Indigo",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "安中市",
+   "url": "https://indigo-dogs.com/",
+   "services": "トリミングサロン。動物看護師の預かり（ホテル・デイケア）",
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊（24時間まで）4,400円、投薬550円（税込）",
+     "src": "https://indigo-dogs.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00",
+     "src": "https://indigo-dogs.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://indigo-dogs.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "中型犬（15kgほど）まで（相談）",
+     "src": "https://indigo-dogs.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk079",
+   "name": "Trim Dogette",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://www.t-dogette.com/",
+   "services": "ドッグサロン（トリミング）・ペットホテル・一時預かり",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬1泊3,300円",
+     "src": "https://www.t-dogette.com/pethotel/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00（日帰りの預かりは10:00〜18:00）",
+     "src": "https://www.t-dogette.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "木曜日、第1・第3日曜日",
+     "src": "https://www.t-dogette.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種証明書とかかりつけの診察券（ないと預からない）",
+     "src": "https://www.t-dogette.com/pethotel/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk080",
+   "name": "Dog Grooming &Hotel MANDI",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://mandi-dogs.com/",
+   "services": "グルーミング＆ホテル（パピーからシニアまで）",
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ホテルルーム1泊7,700円（散歩2回つき）、ケージ4,400円。一時預かり3時間未満2,200円・3時間から3,300円",
+     "src": "https://mandi-dogs.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00",
+     "src": "https://mandi-dogs.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日",
+     "src": "https://mandi-dogs.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "あり",
+     "src": "https://mandi-dogs.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金・キャッシュレス決済",
+     "src": "https://mandi-dogs.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "はじめては狂犬病・混合ワクチンの証明",
+     "src": "https://mandi-dogs.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "体重20kgほどまで",
+     "src": "https://mandi-dogs.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk081",
+   "name": "GEN's DOG",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://gensdog.com/",
+   "services": "犬の美容院・ペットホテル（一時預かりも）",
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 小型犬2,500円・中型犬3,500円・大型犬5,500円・特大型犬6,000円。一時預かり1時間 小型犬300円・中型犬400円から",
+     "src": "https://gensdog.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週木曜日",
+     "src": "https://gensdog.com/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "毎年の混合ワクチンの接種（していないと断ることがある）",
+     "src": "https://gensdog.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk082",
+   "name": "Happy Dogs",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://happydog-salon.net/",
+   "services": "トリミング・ペットホテル（会員の方のみ）・時間預かり",
+   "large": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日 小型犬（10kgまで）5,500円・中型犬（20kgまで）6,600円・大型犬（35kgまで）7,700円・超大型犬（35kg以上）8,800円・猫（10kgまで）5,500円",
+     "src": "https://happydog-salon.net/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "預けるのは10:00から、迎えは18:30まで（過ぎると30分1,100円）",
+     "src": "https://happydog-salon.net/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病・混合ワクチンの接種証明書",
+     "src": "https://happydog-salon.net/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "シャンプー・トリミングを定期的に使う会員の方のみ。かみ癖のある子、生後3か月未満、高齢・持病・心臓病・妊娠中の子は預からない。年末年始は預からない",
+     "src": "https://happydog-salon.net/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk083",
+   "name": "Villa du Wan by 山楽",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "那須郡那須町",
+   "url": "http://www.villaduwans.com/",
+   "services": "ペット専用の温泉ホテル（全室個室のペットホテル）",
+   "large": true,
+   "private_room": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "宿泊 スタンダード（1頭）小型犬7,000円・中型犬8,000円・大型犬9,000円、スイート（2頭）12,000円から。日帰り3,500円から（隣の宿に泊まる方の犬は無料）",
+     "src": "http://www.villaduwans.com/pethotel/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "7:30〜21:00",
+     "src": "http://www.villaduwans.com/faq/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病・混合ワクチンの接種証明書（子犬は2回目の接種から3週間後から）",
+     "src": "http://www.villaduwans.com/pethotel/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk084",
+   "name": "わんわん美容室Betty",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "小山市",
+   "url": "https://r.goope.jp/wanwan-betty/about",
+   "services": "犬の美容室・ペットホテル",
+   "pickup": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 小型犬2,500円・中型犬3,000円（大型犬は相談）。延長1時間200円",
+     "src": "https://r.goope.jp/wanwan-betty/free/qanda",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎500円〜700円",
+     "src": "https://r.goope.jp/wanwan-betty/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://r.goope.jp/wanwan-betty/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk085",
+   "name": "Dog House 陽だまり",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://www.hidamari.email/",
+   "services": "ドッグホテル・犬の保育園・一時預かり",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://www.hidamari.email/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週木曜日",
+     "src": "https://www.hidamari.email/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病・混合ワクチンの証明書、ノミ・ダニ駆除薬の証明書（領収書）",
+     "src": "https://www.hidamari.email/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "小型犬のみ、12歳まで",
+     "src": "https://www.hidamari.email/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk086",
+   "name": "犬の家 リレア",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "佐野市",
+   "url": "http://www.sctv.jp/~rirea20/",
+   "services": "ドッグラン・カフェのあるドッグホテル（日帰り・一時預かりも）",
+   "large": true,
+   "senior": true,
+   "run": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日（24時間まで）小型犬（6kgまで）3,500円・中型犬（17kgまで）4,300円・大型犬（25kgまで）5,500円",
+     "src": "http://www.sctv.jp/~rirea20/ryoukin.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "7台",
+     "src": "http://www.sctv.jp/~rirea20/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk087",
+   "name": "わんちゃんの美容室 COLOR Y'S",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "足利市",
+   "url": "https://colorys.fun/menu-2023/",
+   "services": "犬の美容室・ペットホテル",
+   "pickup": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬3,300円から・中型犬4,400円から",
+     "src": "https://colorys.fun/pet-hotel-2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "ホテルの受付9:00〜20:00（営業は9:00〜18:00）",
+     "src": "https://colorys.fun/pet-hotel-2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "有料：5kmまで片道500円、1kmごとに100円増し",
+     "src": "https://colorys.fun/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチンの接種、ノミ・ダニの駆除",
+     "src": "https://colorys.fun/pet-hotel-2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "大型犬は預からない",
+     "src": "https://colorys.fun/pet-hotel-2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk088",
+   "name": "Dog salon ロワの家",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://rowanoie.com/",
+   "services": "ドッグサロン・ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊 小型犬4,500円・中型犬6,000円（大型犬は泊まりなし）。1時間 小型犬700円・中型犬1,000円",
+     "src": "https://rowanoie.com/page-35/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk089",
+   "name": "Trimming salon Glacia",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "足利市",
+   "url": "https://salon-glacia.com/",
+   "services": "トリミング・一時預かり・お泊まり（ケージフリー・24時間人がいる）",
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "お泊まり 小型犬6,000円・中型犬7,000円・大型犬8,000円（2頭目から1,000円引き）。定休日に預ける・迎えるときは1日2,000円",
+     "src": "https://salon-glacia.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "預ける・迎えるのは9:30〜19:00（ほかの時間は30分500円）",
+     "src": "https://salon-glacia.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHnk090",
+   "name": "Paw's Home",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "河内郡上三川町",
+   "url": "https://hotel.paws-and-you.com/",
+   "services": "ペットホテル",
+   "facts": []
+  },
+  {
+   "id": "PHnk091",
+   "name": "Lolly",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "小山市",
+   "url": "https://lolly.crayonsite.net/",
+   "services": "フクロモモンガの販売・小動物のペットホテル",
+   "small": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2,000円から（同じケージの2匹目から500円）。繁忙期は1泊500円増し。はじめてのカルテ作成1,000円",
+     "src": "https://lolly.crayonsite.net/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "前払い・現金のみ",
+     "src": "https://lolly.crayonsite.net/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }

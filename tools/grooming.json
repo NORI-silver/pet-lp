@@ -3545,6 +3545,183 @@
      "checked": "2026-11-22"
     }
    ]
+  },
+  {
+   "id": "Gnk001",
+   "name": "トリミングサロン 美癒切",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "守谷市",
+   "url": "https://www.trimmingsalon-miyuki.com/",
+   "services": "トリミングサロン。出張トリミング・送迎も",
+   "senior": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://www.trimmingsalon-miyuki.com/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.trimmingsalon-miyuki.com/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "片道30分ほどまで無料",
+     "src": "https://www.trimmingsalon-miyuki.com/shop",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "年齢の制限なし（シニアも体調に合わせて）",
+     "src": "https://www.trimmingsalon-miyuki.com/shop",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "守谷市の周り",
+   "car": false
+  },
+  {
+   "id": "Gnk002",
+   "name": "出張トリミング SMILE",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "稲敷市",
+   "url": "https://5uxth.crayonsite.com/",
+   "services": "出張トリミング（稲敷市の周り）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "犬種で2,500円から",
+     "src": "https://5uxth.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜18:00",
+     "src": "https://5uxth.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日",
+     "src": "https://5uxth.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "稲敷市の周り",
+     "src": "https://5uxth.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "リストにない犬種・大型犬もできる範囲で相談",
+     "src": "https://5uxth.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "稲敷市の周り",
+   "car": false
+  },
+  {
+   "id": "Gnk003",
+   "name": "Dog car salon Lino",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "那珂市",
+   "url": "https://sz1nd.crayonsite.info/",
+   "services": "トリミングカー（家まで来て車の中でトリミング）",
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "犬種で3,500円から（パグ スムース3,500円から・トイプードル6,000円から）",
+     "src": "https://sz1nd.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "出張費",
+     "v": "拠点から3kmまで無料",
+     "src": "https://sz1nd.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://sz1nd.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "高さ2.5mの車が止められる場所が要る",
+     "src": "https://sz1nd.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "はじめては1年以内の混合ワクチン・狂犬病予防接種の証明書",
+     "src": "https://sz1nd.crayonsite.info/p/3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "シニアや持病のある子は飼い主さんにいてもらうことがある",
+     "src": "https://sz1nd.crayonsite.info/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "那珂市の周り",
+   "car": true
+  },
+  {
+   "id": "Gnk004",
+   "name": "ホームトリミング チクタクドッグ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "ひたちなか市",
+   "url": "https://f6cq7hometicktockdog.crayonsite.net/",
+   "services": "トリミングサロンと訪問トリミング（家に行ってトリミング。トリミングカーではない）",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "訪問トリミングは現金のみ",
+     "src": "https://f6cq7hometicktockdog.crayonsite.net/p/3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "家まで車で行く（予約のときに駐車場を確かめる）",
+     "src": "https://f6cq7hometicktockdog.crayonsite.net/p/4/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "ひたちなか市の周り",
+   "car": true
   }
  ]
 }
