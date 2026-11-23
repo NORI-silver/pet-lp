@@ -13,7 +13,7 @@ FILES = {"hotels": "hotels.json", "trainers": "trainers.json", "sitters": "sitte
          "groomers": "grooming.json", "homes": "rojin.json"}
 # 同じホストに複数の店があるチェーン・ホームページの貸し出し先（店ごとのURLでくらべる）
 SHARED = {"kowapets.co.jp", "aeonpet.com", "petmaruesu.com", "ahb.jpn.com", "petplus-trimming.com", "canup.dog",
-          "aikensalon.com", "eonet.ne.jp", "big-advance.site", "r.goope.jp", "site.everyone-web.com", "my.canva.site", "olympic-corp.co.jp", "maruone.com", "oneluke.net", "feedon.jp", "pet-ss.com", "tokyo-dogs.com", "intopet.jp", "wan-nyan-house.com", "kdc2000.co.jp", "ts-alamode.com", "pet-coo.com", "petstation.jp"}
+          "aikensalon.com", "eonet.ne.jp", "big-advance.site", "r.goope.jp", "site.everyone-web.com", "my.canva.site", "olympic-corp.co.jp", "maruone.com", "oneluke.net", "feedon.jp", "pet-ss.com", "tokyo-dogs.com", "intopet.jp", "wan-nyan-house.com", "kdc2000.co.jp", "ts-alamode.com", "pet-coo.com", "petstation.jp", "pet-spa.co.jp", "happybell.co.jp", "salon-de-one.com", "petshop-kanedai.jp", "nicopet.jp", "belldog.co.jp", "pfirst.jp", "wan-time.jp", "cainz.com", "r.goope.jp", "biglobe.ne.jp"}
 
 
 def host(u):

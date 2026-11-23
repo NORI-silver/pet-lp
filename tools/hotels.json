@@ -8564,26 +8564,6 @@
    "checked": "2026-11-23"
   },
   {
-   "id": "PHt3f20391",
-   "name": "フレブル専門犬舎 BUHI-LIFE",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "青梅市",
-   "url": "https://www.min-breeder.com/breeder_z144873.html",
-   "services": "ペットホテル",
-   "facts": [
-    {
-     "k": "駐車場",
-     "v": "犬舎の所在地は地図サービスにてお越し頂けるとピンポイントでお越しいただけます。駐車場も完備しておりますので見学予約時に車でお越しいただける旨ご連絡おねがい致します。",
-     "src": "https://www.min-breeder.com/breeder_z144873.html",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23"
-  },
-  {
    "id": "PHt16454a1",
    "name": "ペテモ日の出店",
    "prefs": [
@@ -12691,18 +12671,6 @@
    "pickup": true
   },
   {
-   "id": "PHtb9ce754",
-   "name": "トリミング・ドッグホテル NADESIKO",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "横浜市港北区",
-   "url": "https://trimmingfan.com/kanagawa/kanagawa01/kanagawa01_07.html",
-   "services": "ペットホテル",
-   "facts": [],
-   "checked": "2026-11-23"
-  },
-  {
    "id": "PHtcc80571",
    "name": "ペットサロン La・Mer",
    "prefs": [
@@ -12761,18 +12729,6 @@
      "checked": "2026-11-23"
     }
    ],
-   "checked": "2026-11-23"
-  },
-  {
-   "id": "PHtb2cba0e",
-   "name": "グルーミングサロン みらくる 高尾店",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "八王子市",
-   "url": "https://chirashi.ne.jp/main/shops/index/284",
-   "services": "ペットホテル",
-   "facts": [],
    "checked": "2026-11-23"
   },
   {
@@ -16845,18 +16801,6 @@
      "checked": "2026-11-23"
     }
    ],
-   "checked": "2026-11-23"
-  },
-  {
-   "id": "PHt14bdcb5",
-   "name": "dog design Fate",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "府中市",
-   "url": "https://a-japan.jp/news/dogdesign-fate-open",
-   "services": "ペットホテル",
-   "facts": [],
    "checked": "2026-11-23"
   },
   {
@@ -26389,6 +26333,585 @@
    "checked": "2026-11-23",
    "cat_only": true,
    "cat": true
+  },
+  {
+   "id": "PHtac22225",
+   "name": "ペットトライアル 青梅店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "青梅市",
+   "url": "https://www.petshop-kanedai.jp/pt_ome/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "各種クレジットカードにも対応",
+     "src": "https://www.petshop-kanedai.jp/pt_ome/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt9289c0c",
+   "name": "アクア&ペット かねだい立川店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "立川市",
+   "url": "https://www.petshop-kanedai.jp/tachikawa_tokyo/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "各種クレジットカードにも対応",
+     "src": "https://www.petshop-kanedai.jp/tachikawa_tokyo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt20f6820",
+   "name": "ペットアイランド港北高田店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市港北区",
+   "url": "https://belldog.co.jp/petisland-kohokutakada/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間： 10:00～20:00",
+     "src": "https://belldog.co.jp/petisland-kohokutakada/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "🚗 約300台の大型無料駐車場",
+     "src": "https://belldog.co.jp/petisland-kohokutakada/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "はい、現金のほか、各種クレジットカード（VISA、Mastercard、JCB、American Express等）、およびPayPayをはじめとする各種QRコード決済・電子マネーがご利用いただけます。手ぶらでのお買い物やお買い物ついでのお支払いもスムーズです。",
+     "src": "https://belldog.co.jp/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt921541b",
+   "name": "PET-SPA CARE+CURE ひばりヶ丘",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "西東京市",
+   "url": "https://www.pet-spa.co.jp/shop/tokyo/hibari/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "なし（クリニック：不定休）",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/hibari/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "西武池袋線「ひばりヶ丘」駅南口すぐ。近隣のパルコ・西友等の駐車場又は近隣コインパーキングをご利用ください。",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/hibari/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "2. ワクチン接種証明書",
+     "src": "https://www.pet-spa.co.jp/firsttime/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/hibari/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt717af8a",
+   "name": "ハッピーベル町田つくし野店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "町田市",
+   "url": "https://happybell.co.jp/shop/shop_noda-tsukusi/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHtbe12b77",
+   "name": "ペットプラザ港北インター店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市都筑区",
+   "url": "https://happybell.co.jp/shop/shop_kouhoku/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt2d20b72",
+   "name": "PET-SPA 緑園都市店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市泉区",
+   "url": "https://www.pet-spa.co.jp/shop/kanagawa/ryokuen/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "2. ワクチン接種証明書",
+     "src": "https://www.pet-spa.co.jp/firsttime/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード",
+     "src": "https://www.pet-spa.co.jp/shop/kanagawa/ryokuen/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt2336891",
+   "name": "ペットショップ ちゃちゃ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "小平市",
+   "url": "http://www7b.biglobe.ne.jp/~petshop-chacha/index.html",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 AM10:00～PM7:00 水曜日定休",
+     "src": "http://www7b.biglobe.ne.jp/~petshop-chacha/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "営業時間 AM10:00～PM7:00 水曜日定休",
+     "src": "http://www7b.biglobe.ne.jp/~petshop-chacha/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "各種クレジットカード取扱い",
+     "src": "http://www7b.biglobe.ne.jp/~petshop-chacha/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "pickup": true
+  },
+  {
+   "id": "PHtaedfc57",
+   "name": "PET-SPA あざみ野ガーデンズ店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://www.pet-spa.co.jp/shop/kanagawa/azamino/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "2. ワクチン接種証明書",
+     "src": "https://www.pet-spa.co.jp/firsttime/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード",
+     "src": "https://www.pet-spa.co.jp/shop/kanagawa/azamino/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt2d96274",
+   "name": "ニコペット湘南平塚店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "平塚市",
+   "url": "https://nicopet.jp/shonan-hiratsuka/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：9:00～20:00",
+     "src": "https://nicopet.jp/shonan-hiratsuka/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：年中無休",
+     "src": "https://nicopet.jp/shonan-hiratsuka/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "※ワクチン、狂犬病予防接種を毎年接種しているワンちゃんに限ります。予めご了承ください（年１回確認させていただきます）。",
+     "src": "https://nicopet.jp/shonan-hiratsuka/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt057bd02",
+   "name": "Dog トリミングスタジオ LITTLE SNOW",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市港北区",
+   "url": "https://www.pfirst.jp/partnerdetails?partnerId=AL-11773",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明書・狂犬病予防接種の接種済み票（※お預かり時に確認し、その場でご返却いたします）",
+     "src": "https://www.pfirst.jp/hotel_information.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHta2ca4a2",
+   "name": "PET-SPA町田店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "町田市",
+   "url": "https://www.pet-spa.co.jp/shop/tokyo/machida/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "2. ワクチン接種証明書",
+     "src": "https://www.pet-spa.co.jp/firsttime/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/machida/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHta0f02f9",
+   "name": "CORE",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "三鷹市",
+   "url": "http://www7b.biglobe.ne.jp/~core_dog_cat/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHtec53ae8",
+   "name": "ペットプラザ港北ニュータウン店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市都筑区",
+   "url": "https://happybell.co.jp/shop/shop_kouhokunewtown/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt39572ab",
+   "name": "ディスワン 湘南平塚店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "平塚市",
+   "url": "https://happybell.co.jp/shop/shop_hiratsuka/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt01f8cce",
+   "name": "ドッグサロンクラップ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "海老名市",
+   "url": "http://www7b.biglobe.ne.jp/~dogsalonclap/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "送迎",
+     "v": "■海老名市内、寒川町内の送迎無料（伊勢原、厚木、平塚はご相談下さい）",
+     "src": "http://www7b.biglobe.ne.jp/~dogsalonclap/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "pickup": true
+  },
+  {
+   "id": "PHt97983aa",
+   "name": "ハッピーベル 246溝口店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市高津区",
+   "url": "https://happybell.co.jp/shop/shop_mizunokuchi/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt38842fd",
+   "name": "アクア&ペット かねだい青梅店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "青梅市",
+   "url": "https://www.petshop-kanedai.jp/ome_tokyo/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "各種クレジットカードにも対応",
+     "src": "https://www.petshop-kanedai.jp/ome_tokyo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt475672a",
+   "name": "PET-SPA 調布仙川店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "調布市",
+   "url": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "大型駐車場完備！ペットへの“やさしさ”を最優先に考えたトリミングサロンです。",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "2. ワクチン接種証明書",
+     "src": "https://www.pet-spa.co.jp/firsttime/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt309482c",
+   "name": "PET-SPA関内店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "https://www.pet-spa.co.jp/shop/kanagawa/kannai/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "2. ワクチン接種証明書",
+     "src": "https://www.pet-spa.co.jp/firsttime/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHte0217a3",
+   "name": "PET-SPA横浜ベイクォーター店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市神奈川区",
+   "url": "https://www.pet-spa.co.jp/shop/kanagawa/yokohama/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "横浜ベイクォーター駐車場あり",
+     "src": "https://www.pet-spa.co.jp/shop/kanagawa/yokohama/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "2. ワクチン接種証明書",
+     "src": "https://www.pet-spa.co.jp/firsttime/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt98ca311",
+   "name": "ディスワン戸塚店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市戸塚区",
+   "url": "https://belldog.co.jp/disone-totsuka/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間： 10:00～20:00",
+     "src": "https://belldog.co.jp/disone-totsuka/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "🚗 約500台の立体駐車場（高さ2.0m迄）",
+     "src": "https://belldog.co.jp/disone-totsuka/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "はい、現金のほか、各種クレジットカード（VISA、Mastercard、JCB、American Express等）、およびPayPayをはじめとする各種QRコード決済・電子マネーがご利用いただけます。手ぶらでのお買い物やお買い物ついでのお支払いもスムーズです。",
+     "src": "https://belldog.co.jp/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt26fe9ff",
+   "name": "アクア&ペット かねだい東戸塚店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市戸塚区",
+   "url": "https://www.petshop-kanedai.jp/higashitotsuka_kanagawa/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "各種クレジットカードにも対応",
+     "src": "https://www.petshop-kanedai.jp/higashitotsuka_kanagawa/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHtfdc093a",
+   "name": "ペットシッター&ホテル ゆう",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市緑区",
+   "url": "http://www7b.biglobe.ne.jp/petsitteryou/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt795d130",
+   "name": "Animal World NICO PET 横浜瀬谷店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市瀬谷区",
+   "url": "https://nicopet.jp/seya/",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10:00～20:00（動物病院は19:00まで）",
+     "src": "https://nicopet.jp/seya/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：年中無休",
+     "src": "https://nicopet.jp/seya/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "※初回利用時に、年１回のワクチン証明書、狂犬病の鑑札をご提示ください。",
+     "src": "https://nicopet.jp/seya/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }
