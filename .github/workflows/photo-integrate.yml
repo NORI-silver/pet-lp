@@ -43,7 +43,11 @@ jobs:
           old = r"""  assert.match(page, /\.cs-ph\[data-gph="T114"\]\{aspect-ratio:520\/347\}\.cs-ph\[data-gph="T114"\] img\{object-fit:contain\}/);"""
           new = r"""  assert.match(page, /\.cs-ph\[data-gph="T114"\]\{--r:520\/347\}\.cs-ph\[data-gph="T114"\] img\{object-fit:contain\}/);""" + "\n  " + r"""assert.match(page, /\.cs-ph-s\{display:flex;aspect-ratio:var\(--r,2\/1\)/);"""
           assert old in t, "old assertion not found"
-          open(p, "w", encoding="utf-8").write(t.replace(old, new))
+          t = t.replace(old, new)
+          old2 = r"""  assert.match(page, /\.cs-ph\{position:relative;aspect-ratio:2\/1/);"""
+          new2 = r"""  assert.match(page, /\.cs-ph\{position:relative;background:#f6efe8;overflow:hidden\}/);""" + "\n  " + r"""assert.doesNotMatch(page, /\.cs-ph\{position:relative;aspect-ratio:2\/1/);"""
+          assert old2 in t, "old frame assertion not found"
+          open(p, "w", encoding="utf-8").write(t.replace(old2, new2))
           PYEOF
       - name: 補助ワークフローと印を消す
         run: |
