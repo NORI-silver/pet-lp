@@ -25174,6 +25174,840 @@
    ],
    "src": "https://www.fauna.jp/",
    "checked": "2026-11-23"
+  },
+  {
+   "id": "Tnk001",
+   "name": "よこたドッグスクール",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "取手市",
+   "url": "http://yokotadogschool.web.fc2.com/",
+   "services": "犬のしつけ・トレーニング、警察犬の育成。シャンプー・カットも",
+   "facts": []
+  },
+  {
+   "id": "Tnk002",
+   "name": "愛犬しつけ教室&雑貨 GoodDog",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "日立市",
+   "url": "https://www.ne.jp/asahi/good-dog/wan/",
+   "services": "しつけ教室（出張レッスン）。日帰りの預かり・ペットホテルも",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "レッスン 初回6,000円・2回目から5,000円（1歳まで）、初回7,000円・2回目から6,000円",
+     "src": "https://www.ne.jp/asahi/good-dog/wan/lesson.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "日立市の近く",
+     "src": "https://www.ne.jp/asahi/good-dog/wan/lesson.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチンの接種証明書",
+     "src": "https://www.ne.jp/asahi/good-dog/wan/lesson.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk003",
+   "name": "ハーブ わんわんトレーニング",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "筑西市",
+   "url": "https://herb11-training.crayonsite.com/",
+   "services": "出張のしつけ（子犬・困りごと）、アジリティ・マナーのクラス",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "全12回45,000円＋交通費、約1時間5,000円＋交通費",
+     "src": "https://herb11-training.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "筑西市・結城市・下妻市・桜川市（旧真壁町・大和村）・小山市（東北本線より東）",
+     "src": "https://herb11-training.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk004",
+   "name": "Forest Scene",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://www5d.biglobe.ne.jp/~chamkids/index.htm",
+   "services": "トレーニング・しつけ・訓練（預かり訓練も）",
+   "large": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回5,500円（1時間ほど）、11回コース55,000円。預かり訓練 小型犬 初月110,000円・2か月目から66,000円。はじめてのコンサルティング1,000円",
+     "src": "https://www5d.biglobe.ne.jp/~chamkids/training.htm",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk005",
+   "name": "Dog training こむもあ",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://reitorua.wixsite.com/dogtraining-commemoi/%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%81%A8%E6%96%99%E9%87%91",
+   "services": "出張のドッグトレーニング（パピー・個別レッスン）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "カウンセリング3,000円。パピーレッスン60分4,000円（3回10,000円）、個別レッスン60分6,000円（3回15,000円）",
+     "src": "https://reitorua.wixsite.com/dogtraining-commemoi/%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%81%A8%E6%96%99%E9%87%91",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "出張費",
+     "v": "11〜20km 700円、21〜30km 900円（有料道路・駐車場代は別）",
+     "src": "https://reitorua.wixsite.com/dogtraining-commemoi/%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%81%A8%E6%96%99%E9%87%91",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk006",
+   "name": "PUPPY",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://puppy-tsukuba.jp/youchien",
+   "services": "犬のようちえん（通園でしつけ）・トリミング",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "入会金16,500円。ほっぷ組（生後6か月まで）月4回19,800円から",
+     "src": "https://puppy-tsukuba.jp/youchien",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "登園9:00〜10:00、お迎え16:00〜17:00",
+     "src": "https://puppy-tsukuba.jp/youchien",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "火〜金曜日に営業（祝日・連休は休み）",
+     "src": "https://puppy-tsukuba.jp/youchien-qa",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "大型犬は生後6か月までのこいぬクラスだけ",
+     "src": "https://puppy-tsukuba.jp/youchien-qa",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk007",
+   "name": "Dog School LUCE",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "龍ケ崎市",
+   "url": "https://dog-s-luce.com/",
+   "services": "犬のしつけ（出張トレーニング・デイケアトレーニング）。ペットホテルも",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張トレーニング 週1回（4回セット）18,000円から。初回カウンセリング3,300円",
+     "src": "https://dog-s-luce.com/menu.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://dog-s-luce.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "月曜日",
+     "src": "https://dog-s-luce.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "龍ケ崎市を中心",
+     "src": "https://dog-s-luce.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン・狂犬病ワクチンの証明書",
+     "src": "https://dog-s-luce.com/training.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk008",
+   "name": "USSHIY's Doggy Care 犬のしつけ&ホテル",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "牛久市",
+   "url": "https://www.usshiy.com/",
+   "services": "犬のしつけ（いっしょに学ぶ方法を伝える）。ホテル・デイケアも",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "7:00〜21:00",
+     "src": "https://www.usshiy.com/hotel-daycare",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "店の前に3台",
+     "src": "https://www.usshiy.com/map-add-page",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk009",
+   "name": "犬のしつけ Lira",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "那珂郡東海村",
+   "url": "https://dogtraining-lira.com/price/",
+   "services": "犬のしつけ方教室（パピー・出張・犬のようちえん）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "パピー全2回25,000円、4回コース45,000円、犬のようちえん32,000円（週2回×4週）",
+     "src": "https://dogtraining-lira.com/price/school.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "出張費",
+     "v": "15kmまで無料、25kmまで1,300円、35kmまで1,800円",
+     "src": "https://dogtraining-lira.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金で一括前払い",
+     "src": "https://dogtraining-lira.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "犬のようちえんは大型犬の子犬の受け入れを止めている",
+     "src": "https://dogtraining-lira.com/price/kindergarten.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk010",
+   "name": "Dog training D-あうる",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "守谷市",
+   "url": "http://d-owl.jp/",
+   "services": "出張トレーニング・一日お預かりトレーニング",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "週1回・月4回22,000円、週2回・月8回38,500円。カウンセリング3,000円",
+     "src": "http://d-owl.jp/itemlist.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "守谷市・取手市・常総市・つくばみらい市・坂東市、我孫子市・柏市・野田市など",
+     "src": "http://d-owl.jp/itemlist.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk011",
+   "name": "わんLDK",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "かすみがうら市",
+   "url": "https://wan-ldk.site/",
+   "services": "犬の幼稚園・日中の預かり・パピー教室・暮らしの相談（しつけ）",
+   "pickup": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "登園9:00〜16:00、お迎え10:00〜17:00",
+     "src": "https://wan-ldk.site/q-and-a/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "4km圏内を目安に送迎",
+     "src": "https://wan-ldk.site/q-and-a/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "小型犬・中型犬で約8kg前後まで。介護が必要な高齢犬は難しいことがある",
+     "src": "https://wan-ldk.site/q-and-a/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk012",
+   "name": "犬の学校 叶夢",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://dog-school-tom.com/%E7%8A%AC%E3%81%AE%E5%AD%A6%E6%A0%A1%E3%81%A8%E3%81%AF/",
+   "services": "犬の学校（朝から夕方まで預かってしつけ）・しつけ教室",
+   "pickup": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "相談料2,000円",
+     "src": "https://dog-school-tom.com/%E7%8A%AC%E3%81%AE%E5%AD%A6%E6%A0%A1%E3%81%A8%E3%81%AF/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00",
+     "src": "https://dog-school-tom.com/%E7%8A%AC%E3%81%AE%E5%AD%A6%E6%A0%A1%E3%81%A8%E3%81%AF/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://dog-school-tom.com/%E7%8A%AC%E3%81%AE%E5%AD%A6%E6%A0%A1%E3%81%A8%E3%81%AF/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎あり",
+     "src": "https://dog-school-tom.com/%E7%8A%AC%E3%81%AE%E5%AD%A6%E6%A0%A1%E3%81%A8%E3%81%AF/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種証明書",
+     "src": "https://dog-school-tom.com/%E7%8A%AC%E3%81%AE%E5%AD%A6%E6%A0%A1%E3%81%A8%E3%81%AF/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk013",
+   "name": "DEAR",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "土浦市",
+   "url": "https://dog-school-dear.amebaownd.com/pages/4108957/page_202008031742",
+   "services": "犬のしつけスクール（ほめて教える、科学的な方法）",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://dog-school-dear.amebaownd.com/pages/4108957/page_202008031742",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk014",
+   "name": "ペット・サービス もふもふ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "鹿嶋市",
+   "url": "https://www.pet-service-mofmof.com/",
+   "services": "出張のドッグトレーニング（モチベーション・トレーニング）。ペットシッターも",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "全4回15,000円（45分×4）、単発4,000円（第1回だけ）",
+     "src": "https://www.pet-service-mofmof.com/about-5-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk015",
+   "name": "鹿嶋ドッグクラブ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "鹿嶋市",
+   "url": "https://kashima-dogclub.com/dogrun/",
+   "services": "ドッグランでのトレーニング・しつけの相談",
+   "facts": []
+  },
+  {
+   "id": "Tnk016",
+   "name": "イリオ",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "富岡市",
+   "url": "https://ilio1.com/",
+   "services": "しつけ方教室・訓練（日帰り・宿泊の訓練も）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "しつけ方教室1時間5,500円、合同訓練3,300円。訓練会員の月謝（4回）20,000円から",
+     "src": "https://ilio1.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日",
+     "src": "https://ilio1.com/info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk017",
+   "name": "PONO",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "富岡市",
+   "url": "https://www.trimming-salon-pono.com/salon",
+   "services": "トレーニング教室（かみぐせ・ほえぐせの改善、トリミングの苦手を直す練習、芸）",
+   "facts": []
+  },
+  {
+   "id": "Tnk018",
+   "name": "ドグタウン工房株式会社",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "利根郡昭和村",
+   "url": "https://dogtownfactory.com/",
+   "services": "ドッグスポーツのジム。パピートレーニング・しつけ教室",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "パピートレーニング約20分5,000円、しつけ教室約20分5,000円（毎週火曜日は無料のしつけ体験、予約制）",
+     "src": "https://dogtownfactory.com/product/puppy_training/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "全犬種、パピーからシニアまで",
+     "src": "https://dogtownfactory.com/product/flyball_lesson/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk019",
+   "name": "pomicobi",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "佐波郡玉村町",
+   "url": "https://pomicobi.wixsite.com/pomicobi",
+   "services": "出張ドッグトレーナー（オンラインも、関東全域）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "初回カウンセリング（1時間）5,500円、トレーニング1回（2時間）13,200円",
+     "src": "https://pomicobi.wixsite.com/pomicobi/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "出張費",
+     "v": "往復1時間以内は無料。交通費は10km以内150円・30km以内450円・60km以内1,000円",
+     "src": "https://pomicobi.wixsite.com/pomicobi/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "関東全域とオンライン",
+     "src": "https://pomicobi.wixsite.com/pomicobi",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk020",
+   "name": "ドッグトレーナー doggy smile",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "安中市",
+   "url": "https://doggysmile-dt.jimdofree.com/",
+   "services": "出張ドッグトレーニング（安中市から）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "初回カウンセリング60分7,500円。90分 生後6か月ごろまで8,800円・6か月〜1歳9,900円・1歳から11,000円",
+     "src": "https://doggysmile-dt.jimdofree.com/service-price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "群馬県全域・軽井沢町の周りなど",
+     "src": "https://doggysmile-dt.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "出張費",
+     "v": "事務所からの往復のガソリン代",
+     "src": "https://doggysmile-dt.jimdofree.com/service-price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "終わったあと現金",
+     "src": "https://doggysmile-dt.jimdofree.com/service-price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk021",
+   "name": "Indigo",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "安中市",
+   "url": "https://indigo-dogs.com/",
+   "services": "JDA認定ドッグトレーナー1級のトレーニング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00",
+     "src": "https://indigo-dogs.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://indigo-dogs.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk022",
+   "name": "バウフレンズ",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://pet-dog-training.jp/294/",
+   "services": "K9ゲームを使ったトレーニングクラス・出張トレーニング",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "高崎市内",
+     "src": "https://pet-dog-training.jp/294/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk023",
+   "name": "ワンネス",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "http://inunoshituke-wannesu.com/",
+   "services": "家庭犬のしつけ教室（ペットシッターも）",
+   "facts": []
+  },
+  {
+   "id": "Tnk024",
+   "name": "Happy Animal Clinic",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "栃木市",
+   "url": "http://www.cc9.ne.jp/~mdog-happy3click/",
+   "services": "犬のしつけの相談（カウンセリング）",
+   "facts": []
+  },
+  {
+   "id": "Tnk025",
+   "name": "Happy Friends",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "日光市",
+   "url": "https://www.doghf.com/",
+   "services": "犬のしつけ（出張レッスン・預かり訓練）",
+   "area": "栃木県内",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張レッスン 1時間5,000円・2時間10,000円",
+     "src": "https://www.doghf.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "出張レッスンは栃木県内",
+     "src": "https://www.doghf.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "20km以上は交通費が別",
+     "src": "https://www.doghf.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk026",
+   "name": "アニマルファンスィアーズクラブ",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "那須塩原市",
+   "url": "https://afc-dog.jp/",
+   "services": "犬のしつけ教室（子犬のクラスも）",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜16:00",
+     "src": "https://afc-dog.jp/lesson/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "子犬のクラスは最初のワクチンのあとから16週齢くらいまで",
+     "src": "https://afc-dog.jp/lessons/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk027",
+   "name": "ドッグスクール L&J",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "http://www.dogschool-landj.com/",
+   "services": "家庭犬のしつけ・高等訓練（茨城県南を中心に）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "家庭犬のしつけ 10回セット50,000円（1回1時間まで）、週2回・月8回40,000円、高等訓練 1回6,000円",
+     "src": "http://www.dogschool-landj.com/training.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "つくば市外でのレッスンは交通費1,000円",
+     "src": "http://www.dogschool-landj.com/training.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk028",
+   "name": "ドッグ・スクール You & Dog",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "那珂郡東海村",
+   "url": "http://dogschoolyouanddog.blog.fc2.com/",
+   "services": "出張・ドッグランでの犬のしつけレッスン、日帰りの預かりトレーニング",
+   "pickup": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "初回（カウンセリングつき）1.5時間5,500円、2回目から1時間4,000円。ほかに出張の交通費かドッグランの使用料",
+     "src": "http://dogschoolyouanddog.blog.fc2.com/blog-category-3.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "預かりトレーニングは8:00〜19:00（土日・祝日をのぞく）",
+     "src": "http://dogschoolyouanddog.blog.fc2.com/blog-category-3.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk029",
+   "name": "DOGGY FRIENDS",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくばみらい市",
+   "url": "https://doggy-friends.com/profile",
+   "services": "家庭犬のしつけ方教室",
+   "facts": []
+  },
+  {
+   "id": "Tnk030",
+   "name": "株式会社ドッグトレーニングロード",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくばみらい市",
+   "url": "https://wanwanstudio.com/company/",
+   "services": "犬のしつけ教室",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付 9:00〜17:00",
+     "src": "https://wanwanstudio.com/company/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk031",
+   "name": "栃木ドッグトレーニングセンター",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "塩谷郡塩谷町",
+   "url": "https://four-clover-n.jimdofree.com/%E6%A0%83%E6%9C%A8%E3%83%89%E3%83%83%E3%82%B0%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC/",
+   "services": "家庭犬の基本訓練・高等訓練（預かり・出張）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "預かり訓練 1か月60,000円から、出張 1回5,000円",
+     "src": "https://four-clover-n.jimdofree.com/%E6%A0%83%E6%9C%A8%E3%83%89%E3%83%83%E3%82%B0%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "Tnk032",
+   "name": "まなかドッグスクール",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "筑西市",
+   "url": "https://manakadogschool.com/about",
+   "services": "出張訓練・しつけ教室・預かり訓練（入所は全国から）",
+   "large": true,
+   "pickup": true,
+   "area": "筑西市・下妻市・つくば市など茨城県西部",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張トレーニング 週1回コース5回27,500円・週2回コース9回49,500円",
+     "src": "https://manakadogschool.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "茨城県（筑西市・下妻市・結城市・つくば市・桜川市・常総市・坂東市・古河市・五霞町・石岡市・笠間市の西部など）と栃木県の一部",
+     "src": "https://manakadogschool.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "訓練所から30〜40kmは1回800円、それより遠いと10kmごとに300円増し",
+     "src": "https://manakadogschool.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の伝染病ワクチンの注射済証",
+     "src": "https://manakadogschool.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }
