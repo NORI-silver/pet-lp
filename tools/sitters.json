@@ -24703,6 +24703,1456 @@
    ]
   },
   {
+   "id": "Snk001",
+   "name": "株式会社あるかんしえる",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://arc-en-ciel1210.com/service/",
+   "services": "訪問ペットシッター（高崎市・新潟市）",
+   "large": true,
+   "cat": true,
+   "small": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回 小型犬（10kgまで）2,750円・中型犬（15kgまで）3,300円から（税込）",
+     "src": "https://arc-en-ciel1210.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "はじめてのカルテ作成料1匹1,100円（はじめての交通費は無料）",
+     "src": "https://arc-en-ciel1210.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜17:00（時間外は1回550円増し）",
+     "src": "https://arc-en-ciel1210.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://arc-en-ciel1210.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金",
+     "src": "https://arc-en-ciel1210.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病ワクチンの証明書（混合ワクチンは任意）",
+     "src": "https://arc-en-ciel1210.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "猫は2匹まで、小動物は2ケージまで",
+     "src": "https://arc-en-ciel1210.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "高崎市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk002",
+   "name": "ぶる処 長商店",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "安中市",
+   "url": "https://www.nagasyouten.com/",
+   "services": "フレンチブルドッグ専門の犬舎。ペットシッターも",
+   "facts": [],
+   "area": "安中市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk003",
+   "name": "ペットシッター アウル",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "結城郡八千代町",
+   "url": "https://www.owlpet318.com/info/company/",
+   "services": "訪問ペットシッター・散歩の代わり（ブリーダー・トリミングも）",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "結城郡を中心に下妻市・常総市・筑西市・古河市",
+     "src": "https://www.owlpet318.com/sitter/guide/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "出張費",
+     "v": "10km以内は交通費こみ",
+     "src": "https://www.owlpet318.com/sitter/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "依頼が決まっていれば面談は交通費こみで無料（決まる前の相談は1回5,000円）",
+     "src": "https://www.owlpet318.com/sitter/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜17:00",
+     "src": "https://www.owlpet318.com/info/company/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "水曜日・不定休",
+     "src": "https://www.owlpet318.com/info/company/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "登録・狂犬病予防注射がすんでいない犬、かむなどスタッフと合わない犬は断る",
+     "src": "https://www.owlpet318.com/sitter/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "結城郡を中心に下妻市・常総市・筑西市・古河市",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk004",
+   "name": "ペットシッターはな",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "取手市",
+   "url": "https://petsitter-hana.boo.jp/",
+   "services": "訪問ペットシッター",
+   "facts": [],
+   "area": "取手市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk005",
+   "name": "わんにゃんCare ふわりぃ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://www.fuwarii-pet.com/",
+   "services": "訪問ペットシッター（つくば市梅園から）",
+   "cat": true,
+   "small": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "猫・小動物（2匹まで）1回2,500円から、犬（10kg以下）1回3,000円から（移動距離で変わる）",
+     "src": "https://www.fuwarii-pet.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "つくば市を中心に土浦市・牛久市・阿見町など",
+     "src": "https://www.fuwarii-pet.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "つくば市を中心に土浦市・牛久市・阿見町など",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk006",
+   "name": "ペットシッター てと",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "ひたちなか市",
+   "url": "https://petsitterteto.webnode.jp/",
+   "services": "訪問ペットシッター（ペットシッター保険に加入）",
+   "cat": true,
+   "small": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シッティング1日1回 小動物1,500円・猫（2匹まで）2,000円・小型犬2,000円から",
+     "src": "https://petsitterteto.webnode.jp/%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "出張費",
+     "v": "片道5km未満は無料、5km以上は1kmごとに20円（往復）",
+     "src": "https://petsitterteto.webnode.jp/%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "はじめての打ち合わせと登録は無料",
+     "src": "https://petsitterteto.webnode.jp/%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防・ワクチン接種の証明書",
+     "src": "https://petsitterteto.webnode.jp/%e3%81%94%e5%88%a9%e7%94%a8%e3%81%ae%e6%b5%81%e3%82%8c/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "ひたちなか市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk007",
+   "name": "ねこのお宿 モモの家",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "古河市",
+   "url": "https://nekoyadomomo.net/",
+   "services": "キャットシッター（日本ペットシッター協会の認定）。ねこのお宿も",
+   "cat": true,
+   "facts": [],
+   "area": "古河市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk008",
+   "name": "ケアペッツ つくば",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "取手市",
+   "url": "https://care-pets.jp/map/",
+   "services": "動物看護師の訪問ペットシッター・介護・看護",
+   "senior": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "通常シッター30分2,970円・60分3,850円、訪問看護・介護30分3,850円（税込）",
+     "src": "https://care-pets.jp/plan_price",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "高齢の犬・猫の介護・看護も",
+     "src": "https://care-pets.jp/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "停める場所がなければ近くのコインパーキング代がかかる",
+     "src": "https://care-pets.jp/terms",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "取手市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk009",
+   "name": "キャットシッターるすにゃん",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "東茨城郡茨城町",
+   "url": "https://rusunyan.com/",
+   "services": "猫専門のペットシッター（水戸市・茨城町）",
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回3,300円（2匹まで）、3匹目から1匹550円増し",
+     "src": "https://rusunyan.com/charge/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "はじめてはキャットカルテ作成料1,000円",
+     "src": "https://rusunyan.com/charge/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "水戸市・茨城町",
+     "src": "https://rusunyan.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "24時間受付",
+     "src": "https://rusunyan.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "年に1回のワクチン接種",
+     "src": "https://rusunyan.com/procedure/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "水戸市・茨城町",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk010",
+   "name": "パモフ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "北茨城市",
+   "url": "https://www.pamof-dogs.com/",
+   "services": "ペットシッター（犬・猫）。ホームステイ型ホテルも",
+   "cat": true,
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金のみ",
+     "src": "https://www.pamof-dogs.com/terms",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "北茨城市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk011",
+   "name": "ペットシッター ワン にゃん くらぶ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "古河市",
+   "url": "https://petsitter-wan-nyan-club.jimdofree.com/",
+   "services": "ペットシッター（猫専門のシッターも）",
+   "cat": true,
+   "facts": [],
+   "area": "古河市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk012",
+   "name": "ペット・サービス もふもふ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "鹿嶋市",
+   "url": "https://www.pet-service-mofmof.com/",
+   "services": "ペットシッター（ドッグトレーナーの訪問）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "30分2,500円から（3頭目から1頭1,000円増し）",
+     "src": "https://www.pet-service-mofmof.com/about-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "鹿嶋市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk013",
+   "name": "ペットシッター Happy Smile",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくばみらい市",
+   "url": "http://happysmile1717.sakura.ne.jp/",
+   "services": "訪問ペットシッター（1時間が基本）",
+   "cat": true,
+   "small": true,
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "猫は2匹まで、小動物は1ケージ2匹まで",
+     "src": "http://happysmile1717.sakura.ne.jp/access1.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "有料駐車場を使ったら実費",
+     "src": "http://happysmile1717.sakura.ne.jp/access1.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "つくばみらい市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk014",
+   "name": "ペットシッター ルナ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "龍ケ崎市",
+   "url": "https://petsitterruna.com/",
+   "services": "ペットシッター（茨城県南）。通院・ワクチンの付きそいも相談",
+   "cat": true,
+   "small": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "犬の基本プラン 小型犬（8kgまで2匹）60分3,000円。追加1頭1,000円",
+     "src": "https://petsitterruna.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "龍ケ崎市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk015",
+   "name": "ペットシッター ponpontail",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "笠間市",
+   "url": "https://ponpontail.xsrv.jp/",
+   "services": "訪問ペットシッター（笠間市から）",
+   "large": true,
+   "cat": true,
+   "small": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "60分 小型犬3,300円・中型・大型犬4,400円・猫（2匹まで）3,300円・小動物（2匹まで）3,300円",
+     "src": "https://ponpontail.xsrv.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "はじめは面談とカルテ作成1,100円",
+     "src": "https://ponpontail.xsrv.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "出張費",
+     "v": "事務所から5km圏内は無料、それより遠いと1km30円",
+     "src": "https://ponpontail.xsrv.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "笠間市・小美玉市・石岡市・茨城町・城里町・水戸市（土浦市・つくば市は相談）",
+     "src": "https://ponpontail.xsrv.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜19:00",
+     "src": "https://ponpontail.xsrv.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種ずみの子だけ",
+     "src": "https://ponpontail.xsrv.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "笠間市・小美玉市・石岡市・茨城町・城里町・水戸市（土浦市・つくば市は相談）",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk016",
+   "name": "NEKOGOTO",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "ひたちなか市",
+   "url": "https://nekogoto.info/",
+   "services": "猫専門のペットシッター",
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回1,870円（20〜30分・2頭まで）、3頭目から935円",
+     "src": "https://nekogoto.info/%e3%82%ad%e3%83%a3%e3%83%83%e3%83%88%e3%82%b7%e3%83%83%e3%82%bf%e3%83%bc/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "はじめての登録料1頭1,320円と往復の交通費",
+     "src": "https://nekogoto.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "出張費",
+     "v": "往復10km以内660円・15km以内770円・20km以内880円",
+     "src": "https://nekogoto.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00（時間外は1,050円増し）",
+     "src": "https://nekogoto.info/%e3%82%ad%e3%83%a3%e3%83%83%e3%83%88%e3%82%b7%e3%83%83%e3%82%bf%e3%83%bc/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金・銀行振込",
+     "src": "https://nekogoto.info/%e3%82%ad%e3%83%a3%e3%83%83%e3%83%88%e3%82%b7%e3%83%83%e3%82%bf%e3%83%bc/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "ひたちなか市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk017",
+   "name": "GRACE beauté for cat",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://www.grace-beaute.com/%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC",
+   "services": "キャットシッター（つくば市）",
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10時〜16時",
+     "src": "https://www.grace-beaute.com/%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.grace-beaute.com/%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "つくば市",
+     "src": "https://www.grace-beaute.com/%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "近くの駐車場を使うときは実費",
+     "src": "https://www.grace-beaute.com/%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "つくば市",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk018",
+   "name": "DOG RUN KAMISU",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "神栖市",
+   "url": "https://dogrun-kamisu2021.crayonsite.com/",
+   "services": "ドッグラン。ペットシッター・お散歩の代わり",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "火曜日・水曜日・金曜日",
+     "src": "https://dogrun-kamisu2021.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "QR決済など（現金は平日だけ）",
+     "src": "https://dogrun-kamisu2021.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防接種と5種以上の混合ワクチンの証明書",
+     "src": "https://dogrun-kamisu2021.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "神栖市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk019",
+   "name": "おせわん",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://happy-with-pets.com/",
+   "services": "老犬・介助が要る犬専門の訪問介護（ペットシッター）",
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回60分5,500円、30分×2回6,600円、3時間13,200円（税込）",
+     "src": "https://happy-with-pets.com/%e6%96%99%e9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "訪問は7時〜19時（ほかの時間は10%増し）",
+     "src": "https://happy-with-pets.com/%e6%96%99%e9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "つくば市・つくばみらい市・土浦市・牛久市・阿見町・守谷市・常総市・下妻市・筑西市・桜川市・石岡市・かすみがうら市・美浦村",
+     "src": "https://happy-with-pets.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金・クレジット",
+     "src": "https://happy-with-pets.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "はじめに打ち合わせが要る",
+     "src": "https://happy-with-pets.com/%e5%88%9d%e5%9b%9e%e3%81%94%e4%ba%88%e7%b4%84%e3%81%ae%e6%96%b9%e3%81%b8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "つくば市・つくばみらい市・土浦市・牛久市・阿見町・守谷市・常総市・下妻市・筑西市・桜川市・石岡市・かすみがうら市・美浦村",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk020",
+   "name": "ペットシッターたつのこ",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "龍ケ崎市",
+   "url": "https://petsitter-tatunoko.crayonsite.net/",
+   "services": "ペットシッター・犬のお散歩の代わり（龍ケ崎市から）",
+   "large": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回（1時間）小型犬（8kg未満・2匹まで）3,000円、中型犬（8〜20kg）3,000円、大型犬（20kg以上）4,500円",
+     "src": "https://petsitter-tatunoko.crayonsite.net/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "出張費",
+     "v": "30円×往復のkm（龍ケ崎市内は無料）",
+     "src": "https://petsitter-tatunoko.crayonsite.net/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "はじめての打ち合わせは無料（1週間前までに予約）",
+     "src": "https://petsitter-tatunoko.crayonsite.net/p/3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみ・前払い",
+     "src": "https://petsitter-tatunoko.crayonsite.net/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "年1回の狂犬病予防ワクチンの証明書",
+     "src": "https://petsitter-tatunoko.crayonsite.net/p/3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "大型犬で引っぱりがとても強い子、生後3か月までの子、とても高齢の子は断ることがある",
+     "src": "https://petsitter-tatunoko.crayonsite.net/p/3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "龍ケ崎市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk021",
+   "name": "ペットシッター あしあと",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "那珂郡東海村",
+   "url": "https://ohta-petins.jp/ps/space.html",
+   "services": "ペットシッター・お散歩の代わり（ペットホテル・訓練所も）",
+   "cat": true,
+   "small": true,
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "旧勝田市内は無料、ほかは1回500円から",
+     "src": "https://ohta-petins.jp/ps/pet-sitter-chareg.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "あと払い（1週間以内に現金）",
+     "src": "https://ohta-petins.jp/ps/pet-sitter-chareg.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "猫・小動物は3匹まで",
+     "src": "https://ohta-petins.jp/ps/pet-sitter-chareg.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "那珂郡東海村の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk022",
+   "name": "Happy Animals",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://happy-animals-petsitter.jimdofree.com/",
+   "services": "時間制のペットシッター",
+   "cat": true,
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "牛久市・つくば市（牛久駅・茎崎・森の里の周り）",
+     "src": "https://happy-animals-petsitter.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "牛久市・つくば市（牛久駅・茎崎・森の里の周り）",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk023",
+   "name": "ペットシッター はぴー",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "沼田市",
+   "url": "https://siawase-orusuban.com/",
+   "services": "猫・犬の訪問ペットシッター",
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "犬1匹（15kg未満）3,800円、猫1匹2,800円（2匹目から400円）。出張料1軒1,000円",
+     "src": "https://siawase-orusuban.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "はじめての打ち合わせ1,600円（現金）",
+     "src": "https://siawase-orusuban.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付は8時〜19時",
+     "src": "https://siawase-orusuban.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金",
+     "src": "https://siawase-orusuban.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種ずみ（犬は狂犬病予防注射済票）",
+     "src": "https://siawase-orusuban.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "沼田市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk024",
+   "name": "ペットシッター felice",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "北相馬郡利根町",
+   "url": "https://felice-ange.wepage.com/CatSitter",
+   "services": "訪問ペットシッター（猫・犬）",
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "猫（2頭まで）1回3,000円・追加1頭500円、小型犬（10kgまで）3,000円・追加1頭1,000円、中型犬（20kgまで）3,500円・追加1頭1,500円",
+     "src": "https://felice-ange.wepage.com/CatSitter",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "はじめての打ち合わせ1,000円",
+     "src": "https://felice-ange.wepage.com/CatSitter",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "2km圏内は無料、5kmまで600円・10kmまで1,100円・15kmまで1,600円（駐車場は別）",
+     "src": "https://felice-ange.wepage.com/CatSitter",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金",
+     "src": "https://felice-ange.wepage.com/CatSitter",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "キャンセル料",
+     "v": "当日100%、前日50%",
+     "src": "https://felice-ange.wepage.com/CatSitter",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "かみ癖・脱走癖・攻撃性のある子は受けない",
+     "src": "https://felice-ange.wepage.com/CatSitter",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "北相馬郡利根町の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk025",
+   "name": "キャットシッター つきのはし",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "河内郡上三川町",
+   "url": "https://www.tsukinohashi.biz/",
+   "services": "猫専門の訪問ペットシッター",
+   "cat": true,
+   "cat_only": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日1回2,500円・1日2回5,000円（2匹まで。3匹目から1匹500円増し）、延長30分500円",
+     "src": "https://www.tsukinohashi.biz/main/rates.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "上三川町役場から1kmごとに100円（駐車料金は実費）",
+     "src": "https://www.tsukinohashi.biz/main/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "上三川町・真岡市・益子町・市貝町・芳賀町・高根沢町",
+     "src": "https://www.tsukinohashi.biz/main/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "前払い（シッティングの3日前まで）",
+     "src": "https://www.tsukinohashi.biz/main/rates.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "上三川町・真岡市・益子町・市貝町・芳賀町・高根沢町",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk026",
+   "name": "ペットシッター ミルキィココア",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://milky-cocoa.jimdofree.com/",
+   "services": "猫と鳥専門の訪問ペットシッター",
+   "cat": true,
+   "small": true,
+   "facts": [],
+   "area": "宇都宮市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk027",
+   "name": "ワンネス",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "http://inunoshituke-wannesu.com/",
+   "services": "家庭犬のしつけとペットシッター",
+   "large": true,
+   "cat": true,
+   "small": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日1回 小型犬2,000円・中型犬2,500円・大型犬3,000円・猫（2匹まで）2,000円・小動物（1ケージ）2,000円。散歩だけ1,000円から",
+     "src": "http://inunoshituke-wannesu.com/entrance.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "はじめての登録手数料2,000円",
+     "src": "http://inunoshituke-wannesu.com/entrance.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "交通費は実費",
+     "src": "http://inunoshituke-wannesu.com/entrance.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "8:00〜17:00（ほかの時間は500円増し）",
+     "src": "http://inunoshituke-wannesu.com/entrance.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "宇都宮市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk028",
+   "name": "ペットシッター ぺっとんとん",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "龍ケ崎市",
+   "url": "http://petonton.com/",
+   "services": "訪問ペットシッター（犬・猫・小動物）",
+   "cat": true,
+   "small": true,
+   "area": "龍ケ崎市・牛久市・取手市",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "龍ケ崎市・牛久市・取手市",
+     "src": "http://petonton.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "はじめての登録料は無料。打ち合わせの交通費・カルテ作成・鍵の預かりも無料",
+     "src": "http://petonton.com/free/ryoukin",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "龍ケ崎市城ノ内から1kmごとに30円",
+     "src": "http://petonton.com/free/ryoukin",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "生後3か月以内の子犬・子猫、とても年をとった子は受けられないことがある。7・8月の散歩は受けない",
+     "src": "http://petonton.com/free/ryoukin",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk029",
+   "name": "ペットシッター&ホテル パワーアップ",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "桐生市",
+   "url": "https://petshiterhotelpu.wixsite.com/petpu",
+   "services": "訪問ペットシッター",
+   "cat": true,
+   "small": true,
+   "facts": [
+    {
+     "k": "交通費・出張費",
+     "v": "お店から5km以内は交通費こみ",
+     "src": "https://petshiterhotelpu.wixsite.com/petpu/services",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "桐生市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk030",
+   "name": "シッター ラッキー マロン",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://luckymaron.jimdofree.com/",
+   "services": "訪問ペットシッター",
+   "cat": true,
+   "small": true,
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "1回のお世話は1時間くらいまで",
+     "src": "https://luckymaron.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "宇都宮市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk031",
+   "name": "ペットシッター ノリカネ",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://www.noripet.net/",
+   "services": "訪問ペットシッター",
+   "cat": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日1回2,000円（猫は何匹でも1匹分）",
+     "src": "https://www.noripet.net/%E6%96%99%E9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "無料",
+     "src": "https://www.noripet.net/%E6%96%99%E9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "6:00〜20:00",
+     "src": "https://www.noripet.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "宇都宮市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk032",
+   "name": "ペットシッター ange宇都宮店",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://pet-ange97.crayonsite.com/",
+   "services": "訪問ペットシッター（犬・猫・小動物）",
+   "cat": true,
+   "small": true,
+   "area": "宇都宮市が中心（鹿沼市・日光市・那須・真岡市・芳賀郡は相談）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "猫 60分コース（1回・2匹まで）2,400円、小動物 1ケージ1,900円。繁忙期は1日500円増し",
+     "src": "https://pet-ange97.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "宇都宮市が中心（鹿沼市・日光市・那須・真岡市・芳賀郡は相談）",
+     "src": "https://pet-ange97.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "打ち合わせ・鍵の返却のときの交通費は無料",
+     "src": "https://pet-ange97.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk033",
+   "name": "ペットライフサポート RUFF・RUFF",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "小山市",
+   "url": "http://pet.jeez.jp/",
+   "services": "訪問ペットシッター・お散歩代行",
+   "cat": true,
+   "small": true,
+   "facts": [],
+   "area": "小山市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk034",
+   "name": "CAT SALON occhi blu",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://occhiblu78.wixsite.com/mysite",
+   "services": "猫専門の訪問ペットシッター",
+   "cat": true,
+   "cat_only": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日1回1匹2,500円（15〜20分）",
+     "src": "https://occhiblu78.wixsite.com/mysite/about-6",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "area": "宇都宮市の周り",
+   "chain": "indie"
+  },
+  {
+   "id": "Snk035",
+   "name": "老犬シッターウィズ",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "日光市",
+   "url": "https://dogsitterwith.com/",
+   "services": "老犬の介護もできる訪問ペットシッター",
+   "senior": true,
+   "area": "日光市・宇都宮市・鹿沼市・矢板市・塩谷町など",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "日光市・宇都宮市・鹿沼市・矢板市・塩谷町など",
+     "src": "https://dogsitterwith.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "訪問 8:30〜18:30",
+     "src": "https://dogsitterwith.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "火曜日",
+     "src": "https://dogsitterwith.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "前払い（現金・銀行振込）",
+     "src": "https://dogsitterwith.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk036",
+   "name": "ドッグケアサービス はるかぜ",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "前橋市",
+   "url": "https://ezakurah.com/",
+   "services": "訪問ペットシッター・散歩代行・老犬の介護",
+   "large": true,
+   "cat": true,
+   "small": true,
+   "senior": true,
+   "area": "前橋市全域・伊勢崎市・桐生市・渋川市の一部",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "前橋市全域・伊勢崎市・桐生市・渋川市の一部",
+     "src": "https://ezakurah.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜19:00（年中無休）",
+     "src": "https://ezakurah.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "1kmごとに50円×往復の距離×訪問の回数",
+     "src": "https://ezakurah.com/%e6%96%99%e9%87%91%e3%83%bb%e3%81%8a%e5%95%8f%e3%81%84%e5%90%88%e3%82%8f%e3%81%9b/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "PayPay可（クレジットカードは不可）",
+     "src": "https://ezakurah.com/%e5%ba%97%e8%88%97%e3%81%ae%e3%81%94%e6%a1%88%e5%86%85/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk037",
+   "name": "MUUペットシッターサービス",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "前橋市",
+   "url": "https://muupet.amebaownd.com/pages/4865085/profile",
+   "services": "訪問ペットシッター",
+   "area": "前橋市の周り",
+   "facts": [],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk038",
+   "name": "AnimaRooM",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "常総市",
+   "url": "https://www.animaroom.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC/",
+   "services": "訪問ペットシッター（犬・猫・小動物、シニア・介護も）",
+   "cat": true,
+   "small": true,
+   "senior": true,
+   "area": "常総市の近く（守谷市・つくば市も）",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "常総市の近く（守谷市・つくば市も）",
+     "src": "https://www.animaroom.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "ショート40分3,800円（猫・小動物・散歩のいらない犬）、通常60分4,300円、散歩代行40分3,800円（税込）。種類・頭数・大きさで料金は変わらない",
+     "src": "https://www.animaroom.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "15km圏内は無料、その先は1km往復ごとに100円",
+     "src": "https://www.animaroom.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "初回・契約",
+     "v": "はじめての訪問・打ち合わせは無料。登録料1,000円",
+     "src": "https://www.animaroom.com/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk039",
+   "name": "愛玩動物飼養サービスSupport",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://animal-support-mito.amebaownd.com/pages/4553055/STATIC",
+   "services": "ペットシッター・お預かり・しつけ",
+   "area": "水戸市を中心とした茨城県内",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "水戸市を中心とした茨城県内",
+     "src": "https://animal-support-mito.amebaownd.com/pages/4553055/STATIC",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病予防注射・混合ワクチンの証明書",
+     "src": "https://animal-support-mito.amebaownd.com/pages/4558582/STATIC",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk040",
+   "name": "ペットシッターholoholo",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "水戸市",
+   "url": "https://petsitter-holoholo.com/",
+   "services": "訪問ペットシッター（犬・猫・小動物）・散歩代行・動物病院への付きそい",
+   "cat": true,
+   "small": true,
+   "large": true,
+   "area": "水戸市の周り",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "60分まで 小型犬（10kg未満）3,300円・中型犬・大型犬4,400円・猫（2匹まで）3,300円・小動物（2匹まで）1,650円（税込）",
+     "src": "https://petsitter-holoholo.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "水戸市・ひたちなか市・鉾田市などは550円。ほかに水戸市川又町からの往復1kmごとに50円",
+     "src": "https://petsitter-holoholo.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "散歩代行は中型犬2頭まで、大型犬は1頭ずつ",
+     "src": "https://petsitter-holoholo.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
+   "id": "Snk041",
+   "name": "ペットシッターさんらすく",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "宇都宮市",
+   "url": "https://3rask.web.fc2.com/toriatukai.html",
+   "services": "訪問ペットシッター（犬・猫・小動物）",
+   "cat": true,
+   "small": true,
+   "area": "宇都宮市の周り",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日1回2,000円・1日2回3,000円（1回1時間ほど）",
+     "src": "https://3rask.web.fc2.com/QA.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "交通費・出張費",
+     "v": "往復14kmで700円",
+     "src": "https://3rask.web.fc2.com/QA.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "時間外は30分ごとに500円",
+     "src": "https://3rask.web.fc2.com/QA.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "chain": "indie"
+  },
+  {
    "id": "S-HT001",
    "name": "ペットシッター・はなはな",
    "prefs": [

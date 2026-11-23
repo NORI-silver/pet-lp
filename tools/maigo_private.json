@@ -866,10 +866,10 @@
    "kind": "operator",
    "url": "https://pethelp-nippontansa.com/",
    "price_url": "https://pethelp-nippontansa.com/",
-   "base": "記載なし",
+   "base": "東京都渋谷区",
    "area": "全国",
    "area_quote": "沖縄から北海道、４７都道府県、全国どこでも。",
-   "animals": "犬・猫・鳥",
+   "animals": "犬・猫・鳥・小動物・爬虫類",
    "plans": [
     {
      "name": "6時間",
@@ -899,7 +899,14 @@
     }
    ],
    "src": "https://pethelp-nippontansa.com/",
-   "checked": "2026-11-17"
+   "checked": "2026-11-23",
+   "near": ["宮城県", "愛媛県"],
+   "near_note": "宮城拠点は東北6県、愛媛拠点は四国4県の現地捜索に対応",
+   "coverage_sources": [
+    "https://pethelp-nippontansa.com/company/",
+    "https://pethelp-nippontansa.com/miyagi-branch/",
+    "https://pethelp-nippontansa.com/ehime-branch/"
+   ]
   },
   {
    "name": "ペット探偵センター",
@@ -995,6 +1002,228 @@
    "near_note": "県ごとのページあり",
    "src": "https://www.privateeye.co.jp/okinawa-pet-sousaku",
    "checked": "2026-11-17"
+  },
+  {
+   "name": "ペット探偵ポーズワン",
+   "kind": "operator",
+   "url": "https://pawsone119.com/",
+   "price_url": "https://pawsone119.com/%E6%96%99%E9%87%91%E6%A1%88%E5%86%85/",
+   "base": "福岡県",
+   "area": "福岡県・九州を中心に全国（遠方・離島は個別見積もり）",
+   "animals": "犬・猫",
+   "plans": [
+    {
+     "name": "2日・計10時間",
+     "yen": 50000,
+     "tax": "",
+     "from": true
+    },
+    {
+     "name": "3日・計15時間",
+     "yen": 80000,
+     "tax": "",
+     "from": true
+    },
+    {
+     "name": "4日・計20時間",
+     "yen": 110000,
+     "tax": "",
+     "from": true
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "料金の条件",
+     "text": "捜索・機材・移動費込み。地域や捜索の条件で金額が変わる"
+    },
+    {
+     "what": "料金の条件",
+     "text": "延長・遠方出張などは個別見積もり"
+    }
+   ],
+   "near": [
+    "福岡県"
+   ],
+   "near_note": "福岡・九州が中心",
+   "src": "https://pawsone119.com/%E6%96%99%E9%87%91%E6%A1%88%E5%86%85/",
+   "checked": "2026-11-23"
+  },
+  {
+   "name": "迷子猫探偵バリニーズ",
+   "kind": "operator",
+   "url": "https://maigonekotantei110.com/",
+   "price_url": "https://maigonekotantei110.com/service/",
+   "base": "愛知県名古屋市",
+   "area": "愛知県・岐阜県・三重県・静岡県・長野県・福井県・大阪府・京都府・兵庫県・奈良県・滋賀県・和歌山県",
+   "animals": "犬・猫",
+   "plans": [
+    {
+     "name": "2日間",
+     "yen": 98000,
+     "tax": "税込",
+     "from": true
+    },
+    {
+     "name": "3日間",
+     "yen": 128000,
+     "tax": "税込",
+     "from": true
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "料金の条件",
+     "text": "チラシのデザイン・印刷20,000円、出張交通費は別"
+    }
+   ],
+   "near": [
+    "愛知県"
+   ],
+   "near_note": "名古屋・愛知が拠点",
+   "src": "https://maigonekotantei110.com/service/",
+   "checked": "2026-11-23",
+   "facts_src": [
+    "https://maigonekotantei110.com/"
+   ]
+  },
+  {
+   "name": "総合探偵社フリースタイル三重（ペット捜索）",
+   "kind": "operator",
+   "url": "https://tantei-soudan.co.jp/mie-pet/",
+   "price_url": "https://tantei-soudan.co.jp/mie-pet/",
+   "base": "三重県川越町",
+   "area": "三重県全域",
+   "animals": "犬・猫",
+   "plans": [
+    {
+     "name": "4時間・1人",
+     "yen": 33000,
+     "tax": "税込",
+     "from": true
+    },
+    {
+     "name": "チラシ作成100枚",
+     "yen": 5500,
+     "tax": "税込",
+     "from": true
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "料金の条件",
+     "text": "捕獲できた場合の成功報酬が別になることがある"
+    },
+    {
+     "what": "料金の条件",
+     "text": "キャンセルは前日50％・当日100％"
+    }
+   ],
+   "near": [
+    "三重県"
+   ],
+   "near_note": "三重県の地域ページ",
+   "src": "https://tantei-soudan.co.jp/mie-pet/",
+   "checked": "2026-11-23"
+  },
+  {
+   "name": "ベストティアーズ24（迷子ペット捜索）",
+   "kind": "operator",
+   "url": "https://sapporo-benriya24.p-kit.com/page524449.html",
+   "price_url": "https://sapporo-benriya24.p-kit.com/page524449.html",
+   "base": "北海道札幌市",
+   "area": "北海道札幌市と近郊",
+   "animals": "犬・猫",
+   "plans": [
+    {
+     "name": "スタッフ1人・1時間",
+     "yen": 5000,
+     "tax": "",
+     "from": true
+    },
+    {
+     "name": "札幌市内の出張費",
+     "yen": 3300,
+     "tax": "",
+     "from": true
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "料金の条件",
+     "text": "猫の3日捜索は10万円が目安。人数・範囲・機材などで変動"
+    },
+    {
+     "what": "料金の条件",
+     "text": "営業時間9時〜18時、土日祝休み。緊急時は相談"
+    }
+   ],
+   "near": [
+    "北海道"
+   ],
+   "near_note": "札幌市と近郊",
+   "src": "https://sapporo-benriya24.p-kit.com/page524449.html",
+   "checked": "2026-11-23"
+  },
+  {
+   "name": "あおぞら探偵社（ペット捜索）",
+   "kind": "operator",
+   "url": "https://aozora-tanteisya.com/whereabouts/pet",
+   "price_url": "https://aozora-tanteisya.com/whereabouts/pet",
+   "base": "岡山県岡山市",
+   "area": "岡山県岡山市が拠点（出張範囲は見積もり時に確認）",
+   "animals": "犬・猫",
+   "plans": [
+    {
+     "name": "着手金",
+     "yen": 110000,
+     "tax": "税込"
+    },
+    {
+     "name": "成功報酬",
+     "yen": 55000,
+     "tax": "税込"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "料金の条件",
+     "text": "血統書付きの場合は55,000円加算（税込）"
+    }
+   ],
+   "near": [
+    "岡山県"
+   ],
+   "near_note": "岡山市が拠点",
+   "src": "https://aozora-tanteisya.com/whereabouts/pet",
+   "checked": "2026-11-23"
+  },
+  {
+   "name": "猫探偵やま〜ず！",
+   "kind": "operator",
+   "url": "https://neko-tantei-yamaz.com/area/nara",
+   "price_url": "https://neko-tantei-yamaz.com/area/nara",
+   "base": "兵庫県神戸市",
+   "area": "大阪府・京都府・兵庫県・奈良県・滋賀県・和歌山県・三重県",
+   "animals": "猫だけ",
+   "plans": [
+    {
+     "name": "現地捜索1日・2人",
+     "yen": 68000,
+     "tax": "税込"
+    }
+   ],
+   "extra_fees": [
+    {
+     "what": "料金の条件",
+     "text": "交通費・宿泊費・機材費・チラシ代込み。成功報酬なし"
+    }
+   ],
+   "near": [
+    "兵庫県"
+   ],
+   "near_note": "神戸が拠点",
+   "src": "https://neko-tantei-yamaz.com/area/nara",
+   "checked": "2026-11-23"
   }
  ],
  "matching": [
@@ -1223,7 +1452,7 @@
   },
   {
    "name": "猫の探偵（nekonotantei.jp）",
-   "reason": "料金ページが読めなかった（検索結果の題は「2日間 ¥52,800・チラシ制作費込み」）",
+   "reason": "公式トップ・料金ページを再取得すると404。検索索引のタイトルと本文で料金も異なるため保留",
    "src": "https://nekonotantei.jp/pet-detective-price/"
   },
   {
