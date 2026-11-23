@@ -207,7 +207,7 @@ def _faq(pf, rs, n):
 CAT = dict(slug=SLUG, name="大型犬OK・猫専用のペットホテル", unit="件", h1=H1, items=J["hotels"], card=_card, checked=J["checked"], reviews=False,
   title_word="大型犬OK・猫専用のペットホテル", title_tail="動物病院併設・送迎・シニア",
   desc_tail="大型犬を泊められるホテルと猫だけのホテルを、動物病院の併設・送迎・シニアの子・夜のスタッフとあわせて載せています。料金は公式サイトに書いてあるホテルだけ載せ、順位は付けていません。",
-  lede=lambda pf, n: f"{pf}のペットホテルを{n}件まとめました。大型犬・猫・シニアを受けるかなど、公式サイトに書いてある受け入れの条件を載せています。",
+  lede=lambda pf, n: f"{pf}で、大型犬を泊められるペットホテルと猫専用のホテルを{n}件まとめました。公式サイトに書いてある受け入れの条件だけを載せています。",
   facts=_facts, faq=_faq, before_title="ペットホテルに預ける前に確かめること", before=[], extra_after=lambda e, pf: checklist(e),
   taxi_h="ホテルへの送り迎えは、ペットタクシーで", taxi_p="大型犬やキャリーの猫も、飼い主さまと一緒に家の前からホテルの前まで移動できます。",
   links=[("大型犬を預けられるペットホテルの探し方", "/guide/large-dog-hotel/"), ("猫をペットホテルに預けるとき", "/guide/cat-hotel/"), ("ペットシッターとペットホテル、どちらがいい？", "/guide/sitter-or-hotel/"), ("トリミング・ペットホテルへの送迎ガイド", "/guide/grooming-hotel/"), ("全国のペットシッター", "/pet-sitter/")])
