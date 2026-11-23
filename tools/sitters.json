@@ -15237,6 +15237,136 @@
    "url": "https://pal-shizuoka.com/",
    "chain": "indie",
    "facts": []
+  },
+  {
+   "id": "St211dc62",
+   "name": "くにたち猫専門ペットシッターアズユズ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "国立市",
+   "url": "https://azuyuzu.wixsite.com/home/%E8%A4%87%E8%A3%BD-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9-1",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "3500円 /訪問１回",
+     "src": "https://azuyuzu.wixsite.com/home/%E8%A4%87%E8%A3%BD-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "国立市の方へ｜対応エリアとお世話の内容",
+     "src": "https://azuyuzu.wixsite.com/home/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※クレジットカード決済について現在、クレジットカード決済の導入準備を進めております。",
+     "src": "https://azuyuzu.wixsite.com/home/pricingpayment",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "国立市の方へ｜対応エリアとお世話の内容"
+  },
+  {
+   "id": "Stf68996b",
+   "name": "anima poetry",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "逗子市",
+   "url": "https://www.anima-poetry.jp/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "逗子市とその周り"
+  },
+  {
+   "id": "Stf805da5",
+   "name": "ミア・ファミリア",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "茅ヶ崎市",
+   "url": "https://mia-familia.jimdofree.com/%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "近隣にコインパーキング等の駐車場がなかったり、 雪など天候により車の使用が",
+     "src": "https://mia-familia.jimdofree.com/%E8%80%81%E7%8A%AC%E8%A8%AA%E5%95%8F%E4%BB%8B%E8%AD%B7-%E8%80%81%E7%8A%AC%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC-%E6%96%99%E9%87%91-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E5%86%85%E5%AE%B9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "茅ヶ崎市とその周り"
+  },
+  {
+   "id": "St2b31671",
+   "name": "ペットシッター ねこのひげ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市中原区",
+   "url": "https://necohige22.hp.peraichi.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "川崎市中原区とその周り"
+  },
+  {
+   "id": "Std9a3913",
+   "name": "Nico",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "小平市",
+   "url": "https://catsitter.localinfo.jp/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "・年に1度ワクチンを接種していること（特別なご事情がある場合等はご相談ください）",
+     "src": "https://catsitter.localinfo.jp/pages/1680322/page_201802202319",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "小平市とその周り"
+  },
+  {
+   "id": "St1f0fa6a",
+   "name": "PET SITTER An",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "鎌倉市",
+   "url": "https://www.petsitteran.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "* 狂犬病、混合ワクチン証明書",
+     "src": "https://www.petsitteran.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "鎌倉市とその周り"
   }
  ]
 }

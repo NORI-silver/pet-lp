@@ -28570,6 +28570,81 @@
     }
    ],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "Gt0899583",
+   "name": "ペテモ新百合ヶ丘店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市麻生区",
+   "url": "https://www.aeonpet.com/shop/shinyurigaoka/access/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "Gtaa8b1f3",
+   "name": "ペットの専門店コジマ 花小金井店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "小平市",
+   "url": "https://kojima.salon-de-one.com/booking/trimming/hanakoganei",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "●原則的に本年度のワクチン接種を終えていることを条件とし､１年以内の混合ワクチン及び狂犬病注射接種証明書のご提示をお願いしております｡",
+     "src": "https://kojima.salon-de-one.com/booking/trimming/hanakoganei",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "Gtb17345b",
+   "name": "ドゥ・ラ・プレール",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市栄区",
+   "url": "https://kawano-method.jp/trimming-salon/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "Gt5a41beb",
+   "name": "ドックサロン ことぶき",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市中原区",
+   "url": "https://kotobuki-dog.amebaownd.com/pages/1220947/page_201708261645",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9：30～19：00 （短縮営業有り）",
+     "src": "https://kotobuki-dog.amebaownd.com/pages/1220947/page_201708261645",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "（駐車場のご用意はございません）",
+     "src": "https://kotobuki-dog.amebaownd.com/pages/1220362/blog",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }
