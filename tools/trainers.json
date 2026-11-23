@@ -10175,6 +10175,167 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "TC095",
+   "name": "NBPドッグスクール",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "香取市",
+   "url": "https://nbp-co.jp/",
+   "services": "しつけ・訓練、ペットホテル",
+   "src": "https://nbp-co.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "電話対応時間 10:00 〜 18:00",
+     "src": "https://nbp-co.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "キャッシュレス決済がご利用頂けます。",
+     "src": "https://nbp-co.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC096",
+   "name": "DOGsHOLIDAY",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "館山市",
+   "url": "https://dogsholiday-3.jimdosite.com/",
+   "services": "出張トレーニング",
+   "src": "https://dogsholiday-3.jimdosite.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "◆出張レッスン 1枠60分¥6,000 /1頭",
+     "src": "https://dogsholiday-3.jimdosite.com/training-and-hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "▪︎館山・南房総を中心に 活動しているドッグトレーナーです",
+     "src": "https://dogsholiday-3.jimdosite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "・受付は9時から18時となります",
+     "src": "https://dogsholiday-3.jimdosite.com/training-and-hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC097",
+   "name": "ミヤザキ DOG SCHOOL",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "旭市",
+   "url": "https://miyazaki-dog.jp/",
+   "services": "出張トレーニング、預かり訓練",
+   "src": "https://miyazaki-dog.jp/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "初回カウンセリング 2,000円 出張訓練 1回3,500円 代行散歩 1回2,500円 お預かり訓練 1ヶ月77,000円(税込)",
+     "src": "https://miyazaki-dog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 7:00～18:00 ※目安の時間となります。",
+     "src": "https://miyazaki-dog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 無し",
+     "src": "https://miyazaki-dog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場 4台",
+     "src": "https://miyazaki-dog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "支払い方法 現金 銀行振込",
+     "src": "https://miyazaki-dog.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "TC098",
+   "name": "ドッグスクールTSUTSUMI",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "https://dogschool-tsutsumi.com/",
+   "services": "しつけ教室、出張トレーニング、犬の幼稚園",
+   "src": "https://dogschool-tsutsumi.com/",
+   "checked": "2026-11-23",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "しつけ教室 レッスン 1回 ￥4,000 (税込)",
+     "src": "https://dogschool-tsutsumi.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 7:00～19:00",
+     "src": "https://dogschool-tsutsumi.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://dogschool-tsutsumi.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "誉田駅10㎞以内のエリアで+5㎞毎に+￥500(税込)頂戴いたします。",
+     "src": "https://dogschool-tsutsumi.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "支払い方法 現金のみ",
+     "src": "https://dogschool-tsutsumi.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   }
  ]
 }
