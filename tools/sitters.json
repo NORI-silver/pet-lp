@@ -9266,20 +9266,6 @@
    "area": "立川市とその周り"
   },
   {
-   "id": "Stde5d9c3",
-   "name": "イヌノコト",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "調布市",
-   "url": "https://inumado.com/inunocoto/",
-   "services": "ペットホテル、ペットシッター、出張トリミング",
-   "facts": [],
-   "checked": "2026-11-23",
-   "chain": "indie",
-   "area": "調布市とその周り"
-  },
-  {
    "id": "St543eb82",
    "name": "キャットシッター SUN",
    "prefs": [
@@ -13129,6 +13115,296 @@
    "checked": "2026-11-23",
    "chain": "indie",
    "area": "リスクマネジメント ： 事業継続計画（BCP）の策定と実施。大規模自然災害への対応として、一日複数件の対応を行う場合にも迅速に飼い主様のペットを安全な場所へ避難させるために、対応エリアを限定しています。災害時には飼い主様の許可を得て、中区指定の避難場所へ同伴します。"
+  },
+  {
+   "id": "St2ea04f5",
+   "name": "PETTY 日本ペットシッターサービスたまプラーザ店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市緑区",
+   "url": "https://www.pet-ss.com/petty/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00～20:00",
+     "src": "https://www.pet-ss.com/petty/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "nihon",
+   "area": "横浜市緑区とその周り"
+  },
+  {
+   "id": "Stc01528d",
+   "name": "HEARTY 日本ペットシッターサービス みなとみらい店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市西区",
+   "url": "https://www.pet-ss.com/hearty/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 8:00～21:00",
+     "src": "https://www.pet-ss.com/hearty/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "nihon",
+   "area": "横浜市西区とその周り"
+  },
+  {
+   "id": "St7d90df2",
+   "name": "キャットシッター ねこのようちえん",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://nekohoiku.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市青葉区とその周り"
+  },
+  {
+   "id": "St9c79e6a",
+   "name": "ミセス ワイルダー",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市青葉区",
+   "url": "https://mayuwilder.wixsite.com/mrswilder",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日1回          4,000円",
+     "src": "https://mayuwilder.wixsite.com/mrswilder/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※代金は現金でのお支払いになります。",
+     "src": "https://mayuwilder.wixsite.com/mrswilder/process",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市青葉区とその周り"
+  },
+  {
+   "id": "Stfb29a2d",
+   "name": "ペットシッター Oasis",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市南区",
+   "url": "https://petsitter-oasis.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金・クレジットカード・銀行振込に対応しています",
+     "src": "https://petsitter-oasis.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市南区とその周り"
+  },
+  {
+   "id": "St8341213",
+   "name": "アニマルシッターTaO",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市港南区",
+   "url": "https://www.animal-tao.jp/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "お客様のお住まいによってはバス代又は別途駐車場代が必要な場合があります。",
+     "src": "https://www.animal-tao.jp/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市港南区とその周り"
+  },
+  {
+   "id": "St140abb7",
+   "name": "陽だまり ペットシッター",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市高津区",
+   "url": "https://hidamari.vision-crafts.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "クレジットカード不可",
+     "src": "https://hidamari.vision-crafts.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "川崎市高津区とその周り"
+  },
+  {
+   "id": "Stcffee8b",
+   "name": "Dog Salon Silver Fang",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "日野市",
+   "url": "https://silverfang-dog.com/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10:00 ～18:30",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日： 水曜日、第2・4火曜日",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明書、飼い主様の身分証の確認をさせていただきます。",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "日野市とその周り"
+  },
+  {
+   "id": "St582a724",
+   "name": "グリーンジャック",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "http://www.greenjack.jp/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市中区とその周り"
+  },
+  {
+   "id": "Sta4fae61",
+   "name": "ベン太",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "秦野市",
+   "url": "https://benta.mystrikingly.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "利用後はセキュリティ面に十分配慮した上で、お客様のご希望の方法で合鍵をご返却いたします。 お支払いは現金または銀行振込になります。 その他のお支払い方法をご希望の場合はご相談ください。",
+     "src": "https://benta.mystrikingly.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "秦野市とその周り"
+  },
+  {
+   "id": "Sta9f9067",
+   "name": "Rally ペットシッター",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市港北区",
+   "url": "https://www.rally-pet.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本セット 3,500円",
+     "src": "https://www.rally-pet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "クレジットカード",
+     "src": "https://www.rally-pet.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "横浜市港北区とその周り"
+  },
+  {
+   "id": "St6e5b2c4",
+   "name": "ペットシッターPONO",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "西東京市",
+   "url": "https://petsitterpono.com/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金払いの場合は、初回のみ事前のお打ち合わせの際にお支払いをお願いいたします。",
+     "src": "https://petsitterpono.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "西東京市とその周り"
+  },
+  {
+   "id": "St3c2ed0a",
+   "name": "いぬのまどぐち",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "八王子市",
+   "url": "https://inumado.com/",
+   "services": "ペットホテル、ペットシッター、しつけ、出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "八王子市とその周り"
   }
  ]
 }

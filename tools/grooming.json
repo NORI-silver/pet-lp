@@ -3609,20 +3609,6 @@
    "car": true
   },
   {
-   "id": "Gtde5d9c3",
-   "name": "イヌノコト",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "調布市",
-   "url": "https://inumado.com/inunocoto/",
-   "services": "ペットホテル、ペットシッター、出張トリミング",
-   "facts": [],
-   "checked": "2026-11-23",
-   "area": "調布市とその周り",
-   "car": true
-  },
-  {
    "id": "Gt7554b97",
    "name": "ペットケアまりん",
    "prefs": [
@@ -4810,6 +4796,126 @@
    ],
    "checked": "2026-11-23",
    "area": "横浜市西区とその周り"
+  },
+  {
+   "id": "Gt2ea04f5",
+   "name": "PETTY 日本ペットシッターサービスたまプラーザ店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市緑区",
+   "url": "https://www.pet-ss.com/petty/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00～20:00",
+     "src": "https://www.pet-ss.com/petty/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市緑区とその周り"
+  },
+  {
+   "id": "Gtc01528d",
+   "name": "HEARTY 日本ペットシッターサービス みなとみらい店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市西区",
+   "url": "https://www.pet-ss.com/hearty/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 8:00～21:00",
+     "src": "https://www.pet-ss.com/hearty/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市西区とその周り"
+  },
+  {
+   "id": "Gtcffee8b",
+   "name": "Dog Salon Silver Fang",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "日野市",
+   "url": "https://silverfang-dog.com/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10:00 ～18:30",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日： 水曜日、第2・4火曜日",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "シャンプーコースに、プラス部分カット1,100円～も承ります。",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明書、飼い主様の身分証の確認をさせていただきます。",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "日野市とその周り",
+   "car": true
+  },
+  {
+   "id": "Gt6e5b2c4",
+   "name": "ペットシッターPONO",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "西東京市",
+   "url": "https://petsitterpono.com/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金払いの場合は、初回のみ事前のお打ち合わせの際にお支払いをお願いいたします。",
+     "src": "https://petsitterpono.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "西東京市とその周り"
+  },
+  {
+   "id": "Gt3c2ed0a",
+   "name": "いぬのまどぐち",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "八王子市",
+   "url": "https://inumado.com/",
+   "services": "ペットホテル、ペットシッター、しつけ、出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "area": "八王子市とその周り",
+   "car": true
   }
  ]
 }

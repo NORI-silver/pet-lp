@@ -10207,28 +10207,6 @@
    "src": "http://www.dogschool-ito.com/"
   },
   {
-   "id": "Tt00cc663",
-   "name": "hope&clover with M",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "八王子市",
-   "url": "https://inumado.com/hopeclover-with-m/",
-   "services": "ペットホテル、ペットシッター、しつけ、出張トリミング",
-   "facts": [
-    {
-     "k": "駐車場",
-     "v": "P：駐車場あり（お問い合わせください）",
-     "src": "https://inumado.com/hopeclover-with-m/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23",
-   "addr": "東京都八王子市中野山王三丁目5番9号",
-   "src": "https://inumado.com/hopeclover-with-m/"
-  },
-  {
    "id": "Ttbd7bc9f",
    "name": "リリエンドッグスクール",
    "prefs": [
@@ -12111,6 +12089,93 @@
    "checked": "2026-11-23",
    "addr": "神奈川県平塚市長持510-10",
    "src": "https://pet-dog-training.jp/277/"
+  },
+  {
+   "id": "Ttb42bf16",
+   "name": "笑う犬",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "藤沢市",
+   "url": "https://www.warauinu.com/",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：7:00~19:30",
+     "src": "https://www.warauinu.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県藤沢市辻堂新町1-14-2",
+   "src": "https://www.warauinu.com/"
+  },
+  {
+   "id": "Ttfab0bea",
+   "name": "ジョーカー コピス吉祥寺店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "武蔵野市",
+   "url": "https://www.joker.co.jp/kichijoji/",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "※美容室のみ19時まで、火曜日定休となります",
+     "src": "https://www.joker.co.jp/service/shop.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ご来店の際はワクチン（予防注射）証明書をお持ちください。",
+     "src": "https://www.joker.co.jp/service/trimming.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "東京都武蔵野市吉祥寺本町一丁目11番5号",
+   "src": "https://www.joker.co.jp/kichijoji/"
+  },
+  {
+   "id": "Tteb7efd7",
+   "name": "嗅ぐ屋",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市中原区",
+   "url": "https://kaguyanose.com/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "横浜市・川崎市にかぎり、出張トレーニングを承ります。１時間5,000円に出張料金（1000円）と駐車料金をいただきます。",
+     "src": "https://kaguyanose.com/lesson/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県川崎市中原区下小田中5丁目4番21‐2号",
+   "src": "https://kaguyanose.com/"
+  },
+  {
+   "id": "Tt3c2ed0a",
+   "name": "いぬのまどぐち",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "八王子市",
+   "url": "https://inumado.com/",
+   "services": "ペットホテル、ペットシッター、しつけ、出張トリミング",
+   "facts": [],
+   "checked": "2026-11-23",
+   "addr": "東京都八王子市台町一丁目24番27号",
+   "src": "https://inumado.com/"
   }
  ]
 }

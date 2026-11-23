@@ -7777,33 +7777,6 @@
    "checked": "2026-11-23"
   },
   {
-   "id": "PHt64a1120",
-   "name": "横浜 PIGPARK HOTEL",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "横浜市戸塚区",
-   "url": "https://www.pigcat.co.jp/contact-hotel/",
-   "services": "ペットホテル",
-   "facts": [
-    {
-     "k": "料金",
-     "v": "1泊2日 5,500円（税込）",
-     "src": "https://www.pigcat.co.jp/contact-hotel/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "駐車場",
-     "v": "※駐車場はございません。お近くのコインパーキングなどをご利用下さい。",
-     "src": "https://www.pigcat.co.jp/contact-hotel/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23"
-  },
-  {
    "id": "PHtc898733",
    "name": "dog salon なのはな 川口町店",
    "prefs": [
@@ -8765,18 +8738,6 @@
    "checked": "2026-11-23"
   },
   {
-   "id": "PHtde5d9c3",
-   "name": "イヌノコト",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "調布市",
-   "url": "https://inumado.com/inunocoto/",
-   "services": "ペットホテル、ペットシッター、出張トリミング",
-   "facts": [],
-   "checked": "2026-11-23"
-  },
-  {
    "id": "PHte12560b",
    "name": "ペットプラス川崎ルフロン店",
    "prefs": [
@@ -9638,26 +9599,6 @@
      "k": "お支払い",
      "v": "※お支払いは以下の登録フォームからご登録後、下記振込口座へのご入金、もしくはレッスンの際にお支払いください。",
      "src": "https://k9sarada.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23"
-  },
-  {
-   "id": "PHt648f951",
-   "name": "犬の床屋 Pooh&Hana",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "横浜市港南区",
-   "url": "https://toredog.com/school/889",
-   "services": "ペットホテル",
-   "facts": [
-    {
-     "k": "お支払い",
-     "v": "お支払い：銀行振込またはクレジットカード",
-     "src": "https://toredog.com/koukoku/",
      "by": "site",
      "checked": "2026-11-23"
     }
@@ -13790,26 +13731,6 @@
    "cat": true
   },
   {
-   "id": "PHt5af48af",
-   "name": "PawPark 元住吉店",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "川崎市中原区",
-   "url": "https://kawasakinakahara.goguynet.jp/2026/08/02/pawpark/",
-   "services": "ペットホテル",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "【川崎市中原区】元住吉：あれあれ！いつの間にこんなところに古着屋さんが！24時間OPENの無人の古着屋さんを発見！",
-     "src": "https://kawasakinakahara.goguynet.jp/category/cat_shop/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23"
-  },
-  {
    "id": "PHt0bfc13e",
    "name": "Smile dogs",
    "prefs": [
@@ -13829,18 +13750,6 @@
    ],
    "city": "西東京市",
    "url": "https://www.miffyno.com/",
-   "services": "ペットホテル",
-   "facts": [],
-   "checked": "2026-11-23"
-  },
-  {
-   "id": "PHt3b6bb63",
-   "name": "Dog&Cat caresalon tomoni",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "藤沢市",
-   "url": "https://www.bohseipharmacy.com/detail.php?id=521",
    "services": "ペットホテル",
    "facts": [],
    "checked": "2026-11-23"
@@ -18419,6 +18328,269 @@
      "checked": "2026-11-23"
     }
    ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHtb42bf16",
+   "name": "笑う犬",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "藤沢市",
+   "url": "https://www.warauinu.com/",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：7:00~19:30",
+     "src": "https://www.warauinu.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt746cd8f",
+   "name": "PetSalon Birthday 芹が谷店",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市港南区",
+   "url": "https://birthday.jp.net/shop_list/serigaya/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "・ 狂犬病ワクチン証明書",
+     "src": "https://birthday.jp.net/guide/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHtfab0bea",
+   "name": "ジョーカー コピス吉祥寺店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "武蔵野市",
+   "url": "https://www.joker.co.jp/kichijoji/",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "※美容室のみ19時まで、火曜日定休となります",
+     "src": "https://www.joker.co.jp/service/shop.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ご来店の際はワクチン（予防注射）証明書をお持ちください。",
+     "src": "https://www.joker.co.jp/service/trimming.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHtf029f30",
+   "name": "ペットサロン パルコ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "小平市",
+   "url": "http://www.p-paruco.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHte73a249",
+   "name": "DogSalon LaughTail",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "あきる野市",
+   "url": "https://laugh-tail.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "09：00～18：00 （定休日 火曜日）",
+     "src": "https://laugh-tail.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病ワクチン、混合ワクチンには1年以内の証明書をご持参ください。アレルギーや持病により接種できない場合はご相談下さい。",
+     "src": "https://laugh-tail.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHtcffee8b",
+   "name": "Dog Salon Silver Fang",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "日野市",
+   "url": "https://silverfang-dog.com/",
+   "services": "ペットホテル、ペットシッター、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10:00 ～18:30",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日： 水曜日、第2・4火曜日",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明書、飼い主様の身分証の確認をさせていただきます。",
+     "src": "https://silverfang-dog.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt6d61ddf",
+   "name": "有限会社テルミー",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市金沢区",
+   "url": "https://tellme557.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：9:00〜19:00",
+     "src": "https://tellme557.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：毎週水曜日・第3木曜日",
+     "src": "https://tellme557.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎料金は無料です。 お迎えは朝8時から11時頃までに伺います （混雑により前後する場合があります）。",
+     "src": "https://tellme557.com/trimming.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※お支払方法は現金・PayPayに対応しております。",
+     "src": "https://tellme557.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "pickup": true
+  },
+  {
+   "id": "PHta4fae61",
+   "name": "ベン太",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "秦野市",
+   "url": "https://benta.mystrikingly.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "利用後はセキュリティ面に十分配慮した上で、お客様のご希望の方法で合鍵をご返却いたします。 お支払いは現金または銀行振込になります。 その他のお支払い方法をご希望の場合はご相談ください。",
+     "src": "https://benta.mystrikingly.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt04f3ecb",
+   "name": "Tiara Dogs",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市保土ケ谷区",
+   "url": "https://tiara-dogsalon.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10:00ー20:00",
+     "src": "https://tiara-dogsalon.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "休日:不定休 / 詳しくはTOPページNEWSエリア参照",
+     "src": "https://tiara-dogsalon.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "無料の駐車場もございます。",
+     "src": "https://tiara-dogsalon.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・ 2年以内の混合ワクチン証明書をご持参下さい。",
+     "src": "https://tiara-dogsalon.jp/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "※無料の駐車場：店舗３建隣に有り / 送迎サービス有り",
+     "src": "https://tiara-dogsalon.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "pickup": true
+  },
+  {
+   "id": "PHt3c2ed0a",
+   "name": "いぬのまどぐち",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "八王子市",
+   "url": "https://inumado.com/",
+   "services": "ペットホテル、ペットシッター、しつけ、出張トリミング",
+   "facts": [],
    "checked": "2026-11-23"
   }
  ]
