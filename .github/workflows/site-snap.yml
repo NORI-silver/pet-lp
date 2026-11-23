@@ -19,6 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: 公式サイトを読む
+        env:
+          SNAP_ONLY: ${{ github.ref_name == 'claude/project-thread-ete0ol' && 'queue_west' || '' }}
         run: python3 tools/site_snap.py /tmp/out
       - name: 動物取扱業の登録一覧を取る
         run: python3 tools/reg_fetch.py /tmp/out
