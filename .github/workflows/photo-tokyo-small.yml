@@ -47,6 +47,10 @@ jobs:
           rm -f ./img/fac/trimming/GC022_1.webp
           rm -f ./img/fac/trimming/GC061_1.webp
           rm -f ./img/fac/trimming/GC076_1.webp
+      - name: ブログ由来で運営者を確認できない写真を消す（photo_audit.json）
+        run: |
+          rm -f ./img/fac/sitter/SC069_1.webp
+          rm -f ./img/fac/hotel/PHC241_1.webp
       - run: python3 tools/gen_areas.py .
       - run: python3 tools/rules_check.py
       - name: このブランチに入れる
