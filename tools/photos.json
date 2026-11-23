@@ -14,7 +14,10 @@
    ],
    "credit": "出典：岡山県ホームページ",
    "license": "公共データ利用規約",
-   "lic_url": "https://www.pref.okayama.lg.jp/page/detail-4318.html"
+   "lic_url": "https://www.pref.okayama.lg.jp/page/detail-4318.html",
+   "ratio": [
+    1.499
+   ]
   },
   {
    "cat": "dogrun",
@@ -38,7 +41,11 @@
      "url": "https://mitsui-shopping-park.com/mop/kisarazu/special/2404_dog-facility/images/dogrun/img_dogrun_facility3.jpg"
     }
    ],
-   "credit": "写真：三井アウトレットパーク 木更津のドッグラン"
+   "credit": "写真：三井アウトレットパーク 木更津のドッグラン",
+   "ratio": [
+    1.503,
+    1.503
+   ]
   },
   {
    "cat": "dogrun",
@@ -57,7 +64,10 @@
      "url": "https://www.wnv.tokyo/cms/wp-content/themes/WNV2017/common/img/dogrunImg1.jpg"
     }
    ],
-   "credit": "写真：わんダフルネイチャーヴィレッジのドッグラン"
+   "credit": "写真：わんダフルネイチャーヴィレッジのドッグラン",
+   "ratio": [
+    2.229
+   ]
   },
   {
    "cat": "dogrun",
@@ -76,7 +86,10 @@
      "url": "https://www.nissan-stadium.jp/shinyoko-park/images/ph_dogrun_01.jpg"
     }
    ],
-   "credit": "写真：新横浜公園ドッグラン"
+   "credit": "写真：新横浜公園ドッグラン",
+   "ratio": [
+    1.333
+   ]
   },
   {
    "cat": "dogrun",
@@ -95,7 +108,10 @@
      "url": "https://www.park-funabashi.or.jp/and/img/dog3.jpg"
     }
    ],
-   "credit": "写真：ふなばしアンデルセン公園ドッグラン"
+   "credit": "写真：ふなばしアンデルセン公園ドッグラン",
+   "ratio": [
+    1.5
+   ]
   },
   {
    "cat": "hospital",
@@ -114,7 +130,10 @@
      "url": "https://sakura-shirai-ah.com/shirai/wp-content/themes/simplicity2-child/assets/img/top_2025/shizu_hospital_mini.png"
     }
    ],
-   "credit": "写真：しらい動物病院 中志津本院"
+   "credit": "写真：しらい動物病院 中志津本院",
+   "ratio": [
+    1.061
+   ]
   },
   {
    "cat": "hospital",
@@ -133,7 +152,10 @@
      "url": "https://sakura-shirai-ah.com/shirai/wp-content/themes/simplicity2-child/assets/img/top_2025/sakura_hospital_mini.png"
     }
    ],
-   "credit": "写真：しらい動物病院 大崎台分院"
+   "credit": "写真：しらい動物病院 大崎台分院",
+   "ratio": [
+    1.482
+   ]
   },
   {
    "cat": "rojin",
@@ -145,6 +167,9 @@
    "checked": "2026-11-21",
    "photos": [
     "/img/fac/rojin/R004_1.webp"
+   ],
+   "ratio": [
+    1.499
    ]
   },
   {
@@ -159,6 +184,11 @@
     "/img/fac/rojin/R069_2.webp",
     "/img/fac/rojin/R069_3.webp",
     "/img/fac/rojin/R069_4.webp"
+   ],
+   "ratio": [
+    1.499,
+    1.499,
+    1.499
    ]
   },
   {
@@ -173,6 +203,11 @@
     "/img/fac/rojin/R094_1.webp",
     "/img/fac/rojin/R094_2.webp",
     "/img/fac/rojin/R094_3.webp"
+   ],
+   "ratio": [
+    1.499,
+    1.499,
+    1.499
    ]
   },
   {
@@ -186,6 +221,10 @@
    "photos": [
     "/img/fac/rojin/R096_1.webp",
     "/img/fac/rojin/R096_4.webp"
+   ],
+   "ratio": [
+    1.499,
+    1.499
    ]
   },
   {
@@ -199,7 +238,10 @@
    "photos": [
     "/img/fac/sougi/S0801bc_3.webp"
    ],
-   "credit": "泰聖寺（てんのうじペット霊園）ホームページからの引用"
+   "credit": "泰聖寺（てんのうじペット霊園）ホームページからの引用",
+   "ratio": [
+    1.499
+   ]
   },
   {
    "cat": "taxi",
@@ -224,7 +266,11 @@
      "url": "https://cocotakufukuokahigashi.com/dog_slope.jpg"
     }
    ],
-   "credit": "写真：COCOタク 福岡東店"
+   "credit": "写真：COCOタク 福岡東店",
+   "ratio": [
+    1.5,
+    1.333
+   ]
   },
   {
    "cat": "taxi",
@@ -244,7 +290,10 @@
      "plate_masked": true
     }
    ],
-   "credit": "写真：ペッタク（PETTAXI）"
+   "credit": "写真：ペッタク（PETTAXI）",
+   "ratio": [
+    1.778
+   ]
   },
   {
    "cat": "taxi",
@@ -263,7 +312,10 @@
      "url": "https://static.toriaez.jp/uploads/images/s2235/14691-14691-20220625115343-2.jpg"
     }
    ],
-   "credit": "写真：PETTA東京（ペッタ）"
+   "credit": "写真：PETTA東京（ペッタ）",
+   "ratio": [
+    1.333
+   ]
   },
   {
    "cat": "taxi",
@@ -289,7 +341,11 @@
      "plate_masked": true
     }
    ],
-   "credit": "写真：COCOタク 練馬杉並店"
+   "credit": "写真：COCOタク 練馬杉並店",
+   "ratio": [
+    1.333,
+    0.75
+   ]
   },
   {
    "cat": "trainer",
@@ -301,6 +357,9 @@
    "checked": "2026-11-21",
    "photos": [
     "/img/fac/trainer/T004_1.webp"
+   ],
+   "ratio": [
+    1.499
    ]
   },
   {
@@ -313,6 +372,9 @@
    "checked": "2026-11-18",
    "photos": [
     "/img/fac/trainer/T024_3.webp"
+   ],
+   "ratio": [
+    1.499
    ]
   },
   {
@@ -326,6 +388,10 @@
    "photos": [
     "/img/fac/trainer/T025_1.webp",
     "/img/fac/trainer/T025_5.webp"
+   ],
+   "ratio": [
+    1.499,
+    1.499
    ]
   },
   {
@@ -338,6 +404,9 @@
    "checked": "2026-11-21",
    "photos": [
     "/img/fac/trainer/T054_1.webp"
+   ],
+   "ratio": [
+    1.499
    ]
   },
   {
@@ -352,7 +421,11 @@
     "/img/fac/trainer/T068_2.webp",
     "/img/fac/trainer/T068_3.webp"
    ],
-   "credit": "写真：ZONOWA dog training&lounge"
+   "credit": "写真：ZONOWA dog training&lounge",
+   "ratio": [
+    1.499,
+    1.499
+   ]
   },
   {
    "cat": "trainer",
@@ -364,6 +437,9 @@
    "checked": "2026-11-21",
    "photos": [
     "/img/fac/trainer/T077_1.webp"
+   ],
+   "ratio": [
+    1.499
    ]
   },
   {
@@ -376,6 +452,9 @@
    "checked": "2026-11-21",
    "photos": [
     "/img/fac/trainer/T114_1.webp"
+   ],
+   "ratio": [
+    1.499
    ]
   },
   {
