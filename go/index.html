@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>読み込んでいます｜ペットタクシー予約窓口</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#ff6a1a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://script.google.com">
+<link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+/* 受付の仕組みから届く画面（引き受け・取り消し・手配ページ）をLPのデザインで表示する */
+.go{padding:28px 0 56px}
+.go .wrap{max-width:560px}
+.go h1{font-family:var(--round);font-size:1.4rem;line-height:1.5;margin:0 0 14px}
+.go .card{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);padding:22px 20px;overflow-wrap:anywhere}
+.go .card h2{font-size:1.05rem;margin:22px 0 4px}
+.go .card p{margin:0 0 10px}
+.go .box{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+.go .pt{border-top:1px solid var(--line);padding:12px 0}
+.go .note{font-size:.85rem;color:var(--ink-3)}
+.go label{display:block;font-weight:700;margin:14px 0 4px}
+.go input,.go textarea,.go select{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:12px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.go input:focus,.go textarea:focus,.go select:focus{outline:none;border-color:var(--o)}
+.go input[type=checkbox],.go input[type=radio]{display:inline-block;width:auto;margin-right:6px}
+.go button{display:block;width:100%;margin-top:20px;background:var(--o);color:#fff;border:0;border-radius:999px;padding:16px;font:inherit;font-weight:800;cursor:pointer}
+.go button:disabled{opacity:.6}
+.go button.gray{background:var(--ink-2)}
+.go a.line{display:block;text-align:center;background:#06c755;color:#fff;border-radius:999px;padding:12px;font-weight:800;margin:8px 0;text-decoration:none}
+.go .msg{text-align:center;color:var(--ink-3);padding:24px 0}
+/* ご利用後のアンケート（a=ride&ans=done&sk=…）：サイトの中ですぐ出す星の画面（booking/Code.gs の surveyForm_ と同じ見た目） */
+.go .sv{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:14px 12px 10px;margin:12px 0}.go .sv .sq{font-weight:700;margin:0 0 4px;text-align:center}
+.go .stars{display:flex;flex-direction:row-reverse;justify-content:center;gap:4px}.go .stars input{position:absolute;opacity:0;width:1px;height:1px}
+.go .stars label{display:flex;align-items:center;justify-content:center;width:52px;height:52px;font-size:2.4rem;line-height:1;color:#ddd6ce;cursor:pointer;margin:0;padding:0;font-weight:400;-webkit-tap-highlight-color:transparent}
+.go .stars label:active{transform:scale(1.25)}.go .stars input:checked~label{color:#ffa41c}.go .sv .ends{display:flex;justify-content:space-between;font-size:.75rem;color:var(--ink-3);max-width:290px;margin:2px auto 0}
+.go .svh{font-weight:800;margin:22px 0 2px}.go .svc{font-weight:700;margin:12px 0 4px;font-size:.92rem}.go .sv textarea{min-height:64px}
+</style>
+<script src="/ga.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="6" cy="9" r="2.2"/><circle cx="10" cy="5.5" r="2.2"/><circle cx="14" cy="5.5" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M12 11c-3 0-6 3.6-6 6.2 0 1.8 1.5 2.8 3 2.8 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.5 0 3-1 3-2.8C18 14.6 15 11 12 11z"/></svg></i>ペットタクシー予約窓口</a>
+  </div>
+</header>
+<main class="go">
+  <div class="wrap">
+    <h1 id="title" hidden></h1>
+    <div class="card" id="body" aria-live="polite"><p class="msg">読み込んでいます…</p></div>
+  </div>
+</main>
+<footer>
+  <div class="wrap"><p>&copy; 2026 ペットタクシー予約窓口</p></div>
+</footer>
+<script>
+(function(){
+  // 受付の仕組み（Code.gs の CONFIG.WEB_APP_URL）。トップの GAS_URL と同じ
+  var API = "https://script.google.com/macros/s/AKfycbyy-cTvD-t8DFGhEyA2IbFiXWoB50kl_2_97WiVdMlXec8sIbI2NVUkkyn-45VkIMc_5g/exec";
+  var body = document.getElementById("body"), title = document.getElementById("title");
+  var q = new URLSearchParams(location.search);
+  q.set("fmt", "json");
+  function fail(){
+    body.innerHTML = '<p class="msg">うまく表示できませんでした。時間をおいてもう一度お試しください。</p>';
+  }
+  // 掲載情報の写真（a=pinfo）：端末の中で、カードと同じ横3：縦2に切り抜いて1500×1000pxのJPEGにしてから送る（位置の情報などは消える）。
+  // 送る前にカードと同じ形の見本を出し、切り抜く位置はつまみで動かせる。切り抜いたあとが1200×800pxに足りない写真は送らない
+  // 「運転手」は正方形（800×800、600px以上）で、カードでは丸く出す。了解のチェックが要る
+  var PW = 1500, PH = 1000, MINW = 900, DRIVER = "運転手", LOGO = "ロゴ";
+  function upload(){
+    var box = body.querySelector("[data-pinfo-up]");
+    if (!box) return;
+    var file = box.querySelector("input[type=file]"), btn = box.querySelector("button"), msg = box.querySelector(".up-msg");
+    var prev = document.createElement("canvas"); prev.width = PW; prev.height = PH;
+    prev.style.cssText = "display:none;width:100%;aspect-ratio:3/2;border-radius:12px;background:#f3eee8;margin:8px 0 4px";
+    var cap = document.createElement("p"); cap.className = "note"; cap.style.display = "none";
+    cap.textContent = "お客さまのカードでは、このように見えます。";
+    var pos = document.createElement("input"); pos.type = "range"; pos.min = "0"; pos.max = "100"; pos.value = "50";
+    pos.style.cssText = "display:none;width:100%"; pos.setAttribute("aria-label", "切り抜く位置");
+    file.parentNode.insertAdjacentElement("afterend", prev); prev.insertAdjacentElement("afterend", cap); cap.insertAdjacentElement("afterend", pos);
+    var kindSel = box.querySelector("[data-kind]");
+    var ok = document.createElement("label"); ok.style.cssText = "display:none;font-weight:400;gap:6px;align-items:center";
+    ok.innerHTML = '<input type="checkbox" data-consent style="width:auto;display:inline;margin:0">写っている方ご本人の了解があります';
+    box.querySelector("[data-rights]").parentNode.insertAdjacentElement("afterend", ok);
+    var img = null, crop = null;
+    // ロゴは切らずに白い正方形の中に収める（COCOタク本部 2026-11-16 の打合せで「ロゴを載せたい」）
+    function shape(){ if (kindSel.value === LOGO) return { r: 1, w: 600, h: 600, min: 150, fit: true }; var d = kindSel.value === DRIVER; return d ? { r: 1, w: 800, h: 800, min: MINW / 2 } : { r: 1.5, w: PW, h: PH, min: MINW }; }
+    function tooSmall(m){ var sh = shape(); return sh.fit ? Math.max(m.naturalWidth, m.naturalHeight) < sh.min : Math.min(m.naturalWidth, m.naturalHeight * sh.r) < sh.min; }
+    function draw(){
+      if (!img) return;
+      var sh = shape(), w = img.naturalWidth, h = img.naturalHeight, cw = Math.min(w, h * sh.r), ch = cw / sh.r, k = pos.value / 100;
+      if (sh.fit) { prev.width = sh.w; prev.height = sh.h; prev.style.aspectRatio = "1/1"; prev.style.width = "40%"; prev.style.borderRadius = "12px";
+        var g = prev.getContext("2d"), s = Math.min(sh.w * 0.9 / w, sh.h * 0.9 / h); g.fillStyle = "#fff"; g.fillRect(0, 0, sh.w, sh.h);
+        g.drawImage(img, (sh.w - w * s) / 2, (sh.h - h * s) / 2, w * s, h * s); crop = { x: 0, y: 0, w: sh.w, h: sh.h };
+        cap.textContent = "お客さまのカードでは、社名の横にこのように小さく出ます。"; pos.style.display = "none"; return; }
+      crop = { x: (w - cw) * k, y: (h - ch) * k, w: Math.round(cw), h: Math.round(ch) };
+      prev.width = sh.w; prev.height = sh.h;
+      prev.style.aspectRatio = sh.r === 1 ? "1/1" : "3/2"; prev.style.width = sh.r === 1 ? "60%" : "100%"; prev.style.borderRadius = sh.r === 1 ? "50%" : "12px";
+      prev.getContext("2d").drawImage(img, crop.x, crop.y, cw, ch, 0, 0, sh.w, sh.h);
+      cap.textContent = "お客さまのカードでは、このように見えます。" + (Math.abs(w / h - sh.r) > 0.02 ? "つまみで切り抜く位置を動かせます。" : "");
+      pos.style.display = Math.abs(w / h - sh.r) > 0.02 ? "block" : "none";
+    }
+    function kindChanged(){ ok.style.display = kindSel.value === DRIVER ? "flex" : "none"; if (img) { if (tooSmall(img)) { msg.textContent = "この写真は小さいので使えません。スマホのカメラで撮った元の写真を選んでください（LINEなどで受け取った写真やスクリーンショットは小さくなっていることがあります）。"; } else msg.textContent = ""; draw(); } }
+    kindSel.addEventListener("change", kindChanged); kindChanged();
+    pos.addEventListener("input", draw);
+    file.addEventListener("change", function(){
+      var f = file.files && file.files[0]; img = null; crop = null;
+      prev.style.display = cap.style.display = pos.style.display = "none"; msg.textContent = "";
+      if (!f) return;
+      var im = new Image(), url = URL.createObjectURL(f);
+      im.onerror = function(){ msg.textContent = "この写真は読み込めませんでした。JPEGかPNGでお試しください。"; };
+      im.onload = function(){
+        URL.revokeObjectURL(url);
+        var w = im.naturalWidth, h = im.naturalHeight;
+        var sh = shape();
+        if (tooSmall(im)) { msg.textContent = "この写真は小さいので使えません。スマホのカメラで撮った元の写真を選んでください（LINEなどで受け取った写真やスクリーンショットは小さくなっていることがあります）。"; file.value = ""; return; }
+        img = im; pos.value = "50"; draw();
+        prev.style.display = "block"; cap.style.display = "";
+      };
+      im.src = url;
+    });
+    btn.addEventListener("click", function(){
+      if (!img || !crop) { msg.textContent = "写真を選んでください。"; return; }
+      if (!box.querySelector("[data-rights]").checked) { msg.textContent = "「載せる権利があります」にチェックしてください。"; return; }
+      if (kindSel.value === DRIVER && !ok.querySelector("input").checked) { msg.textContent = "「写っている方ご本人の了解があります」にチェックしてください。"; return; }
+      if (tooSmall(img)) { msg.textContent = "この写真は小さいので使えません。スマホのカメラで撮った元の写真を選んでください（LINEなどで受け取った写真やスクリーンショットは小さくなっていることがあります）。"; return; }
+      if (box.getAttribute("data-view")) { msg.textContent = "見本なので、送っていません（事業者の画面では、ここで受け付けます）。"; return; }
+      btn.disabled = true; msg.textContent = "送っています…";
+      var b = new URLSearchParams({ kind: "pinfo_photo", t: box.getAttribute("data-t"), rights: "1", w: String(crop.w), h: String(crop.h),
+        data: prev.toDataURL("image/jpeg", 0.9) });
+      b.set("photo_kind", kindSel.value); if (kindSel.value === DRIVER) b.set("consent", "1");
+      fetch(API, { method: "POST", body: b }).then(function(r){ return r.json(); }).then(function(r){
+        btn.disabled = false;
+        if (r && r.ok) { msg.textContent = "受け付けました（" + r.n + "枚め）。運営者が確かめてから公開します（すぐにはカードに出ません）。"; file.value = ""; img = null; prev.style.display = cap.style.display = pos.style.display = "none"; }
+        else msg.textContent = (r && r.error) || "うまく送れませんでした。";
+      }).catch(function(){ btn.disabled = false; msg.textContent = "うまく送れませんでした。時間をおいてもう一度お試しください。"; });
+    });
+  }
+  // ご利用後のアンケート（Nori 2026-11-15「読み込みが少し長いので早くできるように」）：
+  // メールの「はい、送迎してもらいました」（a=ride&ans=done、アンケートの鍵 sk つき）は、受付の仕組みの返事を待たずにこのページで星の画面を出し、
+  // 「送る」で答えを裏で送ってすぐお礼を出す（記録は受付の仕組みの a=survey&ride=done。鍵が合わなければ記録されない）
+  function esc(t){ return String(t == null ? "" : t).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  function sendSurvey(form){
+    var p = new URLSearchParams(new FormData(form)); p.set("fmt", "json");
+    try { fetch(API + "?" + p.toString(), { mode: "no-cors", keepalive: true }); } catch (e) { new Image().src = API + "?" + p.toString(); }
+    title.textContent = "ありがとうございました"; title.hidden = false; document.title = "ありがとうございました｜ペットタクシー予約窓口";
+    body.innerHTML = '<p>お答えを受け付けました。いただいた声は、サイトとサービスをよくするために使わせていただきます。</p><p>またいつでもご利用ください。</p>';
+    window.scrollTo(0, 0);
+  }
+  function hookSurvey(){
+    var f = body.querySelector('form input[name="a"][value="survey"]');
+    f = f && f.form;
+    if (f) f.addEventListener("submit", function(e){ e.preventDefault(); sendSurvey(f); });
+  }
+  if (q.get("a") === "ride" && q.get("ans") === "done" && q.get("sk") && q.get("id") && !q.get("go")) {
+    // 星とえらぶ欄（booking/Code.gs の surveyForm_ と同じ形。Nori 2026-11-15 サイトの使いやすさ、11-16 載せることは利用規約の第9条で）
+    var stars = function(key, label){
+      var t = '<p class="sq">' + label + '</p><div class="stars" role="radiogroup" aria-label="' + label + '">';
+      for (var n = 5; n >= 1; n--) t += '<input type="radio" name="' + key + '" value="' + n + '" id="sv_' + key + n + '"><label for="sv_' + key + n + '" aria-label="星' + n + 'つ">★</label>';
+      return t + '</div><div class="ends"><span>いまひとつ</span><span>とてもよい</span></div>';
+    };
+    var h = "";
+    if (q.get("pn") || q.get("at")) h += '<div class="box">' + (q.get("pn") ? "ペットタクシー：" + esc(q.get("pn")) + "<br>" : "") + (q.get("at") ? "お迎え予定：" + esc(q.get("at")) : "") + "</div>";
+    h += '<h2>よろしければ、ご感想も教えてください</h2><p class="note">星をタップするだけです（どれも任意）。何も選ばずに「送る」を押してもかまいません。</p><form>' +
+      '<input type="hidden" name="a" value="survey"><input type="hidden" name="id" value="' + esc(q.get("id")) + '"><input type="hidden" name="k" value="' + esc(q.get("sk")) + '"><input type="hidden" name="go" value="1"><input type="hidden" name="ride" value="done">' +
+      '<div class="sv">' + stars("sat", "全体の満足度") + '</div>' +
+      '<p class="svh">ペットタクシーの会社について</p>' +
+      '<div class="sv">' + stars("staff", "ペットタクシーの会社の対応") + '</div><div class="sv">' + stars("fare", "料金の納得感") +
+      '<p class="svc">会社へのひとこと（任意）</p><textarea name="comment" maxlength="500" placeholder="よかったこと、こまったことなど"></textarea></div>' +
+      '<p class="svh">このサイトについて</p>' +
+      '<div class="sv">' + stars("site", "このサイトの使いやすさ") +
+      '<p class="svc">サイトへのひとこと（任意）</p><textarea name="scomment" maxlength="500" placeholder="使いやすかったこと、わかりにくかったことなど"></textarea></div>' +
+      '<p class="note">いただいたご感想は、<a href="/terms/" target="_blank" rel="noopener">利用規約</a>の第9条にしたがって、お名前・連絡先を出さずにサイトに載せることがあります。ひとことには電話番号・住所は書かないでください。</p><button type="submit">送る</button></form>';
+    title.textContent = "送迎してもらいました"; title.hidden = false; document.title = "送迎してもらいました｜ペットタクシー予約窓口";
+    body.innerHTML = h;
+    hookSurvey();
+    return;
+  }
+  // 掲載情報のページ（a=pinfo のログインのあと・a=pinfo_view）は、前に開いたときの画面をこの端末に24時間だけ控えておき、
+  // 開いたらすぐそれを見せて、受付の仕組みの返事が来たら最新に置きかえる（それまでは押せない。Nori 2026-11-15「サイトの読み込みが遅いので早くして」）
+  var CK = "", stale = false;
+  if (!q.get("go") && ((q.get("a") === "pinfo" && q.get("s")) || (q.get("a") === "pinfo_view" && q.get("k")))) CK = "go:" + q.get("a") + ":" + (q.get("s") || q.get("k"));
+  function show(r){
+    if (r.title) {
+      title.textContent = r.title; title.hidden = false;
+      document.title = r.title + "｜ペットタクシー予約窓口";
+    }
+    body.innerHTML = r.html;
+  }
+  if (CK) try {
+    var c = JSON.parse(localStorage.getItem(CK) || "null");
+    if (c && Date.now() - c.t < 864e5 && typeof c.html === "string") {
+      show(c); stale = true;
+      body.style.opacity = ".55"; body.style.pointerEvents = "none";
+      body.insertAdjacentHTML("afterbegin", '<p class="msg" data-stale style="opacity:1">最新の内容を読み込んでいます…</p>');
+    }
+  } catch (e) {}
+  fetch(API + "?" + q.toString())
+    .then(function(r){ return r.json(); })
+    .then(function(r){
+      if (!r || !r.ok || typeof r.html !== "string") return fail();
+      body.style.opacity = ""; body.style.pointerEvents = "";
+      show(r);
+      if (CK) try { localStorage.setItem(CK, JSON.stringify({ t: Date.now(), title: r.title || "", html: r.html })); } catch (e) {}
+      upload();
+      hookSurvey();
+    })
+    .catch(function(){ body.style.opacity = ""; body.style.pointerEvents = ""; fail(); });
+})();
+</script>
+</body>
+</html>

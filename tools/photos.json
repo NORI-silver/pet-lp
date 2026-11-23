@@ -1,0 +1,173 @@
+{
+ "_説明": "事業者カードに出す写真（使ってよいと確かめたものだけ。Nori 2026-11-16）。tools/photo_import.py が入れる（手で写さない）。by は owner（事業者が登録）・permit（事業者が公式サイトの写真の利用を許可。記録は photo_permits.json）・license（公式サイトの決まりで転載を許している。credit・license・lic_url の表示が要る）。photos は /img/fac/ の 520×347 の webp。並びは owner → permit → license。",
+ "items": [
+  {
+   "cat": "dogrun",
+   "id": "D043",
+   "name": "岡山県動物愛護センター 北広場（ドッグラン）",
+   "url": "https://www.pref.okayama.jp/page/detail-28533.html",
+   "by": "license",
+   "src": "https://www.pref.okayama.lg.jp/page/detail-4318.html",
+   "checked": "2026-11-17",
+   "photos": [
+    "/img/fac/dogrun/D043_1.webp"
+   ],
+   "credit": "出典：岡山県ホームページ",
+   "license": "公共データ利用規約",
+   "lic_url": "https://www.pref.okayama.lg.jp/page/detail-4318.html"
+  },
+  {
+   "cat": "rojin",
+   "id": "R004",
+   "name": "老犬＆老猫ホームひまわり",
+   "url": "https://rouken-kaigo.co.jp/",
+   "by": "permit",
+   "src": "https://rouken-kaigo.co.jp/facility/",
+   "checked": "2026-11-21",
+   "photos": [
+    "/img/fac/rojin/R004_1.webp"
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R069",
+   "name": "ペットホテル里親（終身・長期預かり）",
+   "url": "https://sato-oya.com/",
+   "by": "permit",
+   "src": "2026-11-17",
+   "checked": "2026-11-19",
+   "photos": [
+    "/img/fac/rojin/R069_2.webp",
+    "/img/fac/rojin/R069_3.webp",
+    "/img/fac/rojin/R069_4.webp"
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R094",
+   "name": "家庭的老犬介護施設 Smile Home",
+   "url": "https://www.smilehomefordog.com/",
+   "by": "permit",
+   "src": "2026-11-17",
+   "checked": "2026-11-19",
+   "photos": [
+    "/img/fac/rojin/R094_1.webp",
+    "/img/fac/rojin/R094_2.webp",
+    "/img/fac/rojin/R094_3.webp"
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R096",
+   "name": "ペットケア＆アダプションセンター日光",
+   "url": "https://nikko.pfirst.jp/care_center",
+   "by": "permit",
+   "src": "2026-11-17",
+   "checked": "2026-11-19",
+   "photos": [
+    "/img/fac/rojin/R096_1.webp",
+    "/img/fac/rojin/R096_4.webp"
+   ]
+  },
+  {
+   "cat": "sougi",
+   "id": "S0801bc",
+   "name": "てんのうじペット霊園（泰聖寺）",
+   "url": "https://www.mspet.net/",
+   "by": "permit",
+   "src": "2026-11-18",
+   "checked": "2026-11-19",
+   "photos": [
+    "/img/fac/sougi/S0801bc_3.webp"
+   ],
+   "credit": "泰聖寺（てんのうじペット霊園）ホームページからの引用"
+  },
+  {
+   "cat": "trainer",
+   "id": "T004",
+   "name": "犬の幼稚園HappyDog（旧北野ドッグスクール）",
+   "url": "https://kitanodog.com/",
+   "by": "permit",
+   "src": "2026-11-19",
+   "checked": "2026-11-21",
+   "photos": [
+    "/img/fac/trainer/T004_1.webp"
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T024",
+   "name": "wamiハッピードッグ（ワンちゃんまなび園）",
+   "url": "http://www.wamihappydog.com",
+   "by": "permit",
+   "src": "2026-11-17",
+   "checked": "2026-11-18",
+   "photos": [
+    "/img/fac/trainer/T024_3.webp"
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T025",
+   "name": "空ドッグスクール",
+   "url": "https://www.dear-tails.com/",
+   "by": "permit",
+   "src": "2026-11-17",
+   "checked": "2026-11-19",
+   "photos": [
+    "/img/fac/trainer/T025_1.webp",
+    "/img/fac/trainer/T025_5.webp"
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T054",
+   "name": "Secil wan Company",
+   "url": "https://secil-wan.com/",
+   "by": "permit",
+   "src": "2026-11-19",
+   "checked": "2026-11-21",
+   "photos": [
+    "/img/fac/trainer/T054_1.webp"
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T068",
+   "name": "ZONOWA dog training&lounge",
+   "url": "https://zonowa-dog.com/",
+   "by": "permit",
+   "src": "2026-11-16",
+   "checked": "2026-11-17",
+   "photos": [
+    "/img/fac/trainer/T068_2.webp",
+    "/img/fac/trainer/T068_3.webp"
+   ],
+   "credit": "写真：ZONOWA dog training&lounge"
+  },
+  {
+   "cat": "trainer",
+   "id": "T077",
+   "name": "ドッグスクール VaBene（ヴァベーネ）",
+   "url": "http://vabene.jp",
+   "by": "permit",
+   "src": "2026-11-19",
+   "checked": "2026-11-21",
+   "photos": [
+    "/img/fac/trainer/T077_1.webp"
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T114",
+   "name": "ドッグトレーナー廣瀬",
+   "url": "https://www.preventive-dogtrainerhirose.com/",
+   "by": "permit",
+   "src": "2026-11-19",
+   "checked": "2026-11-21",
+   "photos": [
+    "/img/fac/trainer/T114_1.webp"
+   ]
+  }
+ ]
+}

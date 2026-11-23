@@ -1,0 +1,171 @@
+{
+ "_説明": "事業者が「公式サイトの写真をこのサイトのカードに使ってよい」と言ってくれた記録（Nori 2026-11-16）。ここにある事業者だけ、tools/photo_harvest.py が公式サイトから写真を取ってくる。cat は photo_harvest.py の SRC の分野（taxi・sougi・rojin・trainer・sitter・trimming・hotel・hospital・night・dogrun・emergency）、id は各データの id。scope は許可の範囲（例：公式サイトの写真すべて／車の写真だけ）、pages は写真を取るページ（なければ公式サイトのトップ）、by は許可のもらい方（メール・申し込み・掲載情報のページ）、date は許可の日、ref はメールの件名など（個人名・メールアドレスは書かない）。許可を取り消されたら行を消し、tools/photos.json からも消す。 no_people: true は「人が写っている写真は使わない」という条件つきの許可（photo_harvest.py が人の体・上半身の印も付け、入れる前に人が一覧で確かめる）。 credit があれば、カードの写真に出どころとして出す（許可の条件で出どころを書くとき）。",
+ "permits": [
+  {
+   "cat": "trainer",
+   "id": "T068",
+   "name": "ZONOWA dog training&lounge",
+   "scope": "公式サイトとGoogleビジネスプロフィールの写真（出どころを書いて載せる）",
+   "pages": [
+    "https://zonowa-dog.com/",
+    "https://zonowa-dog.com/menu"
+   ],
+   "by": "メール",
+   "date": "2026-11-16",
+   "ref": "写真の掲載についての返信（ZONOWA さま）",
+   "credit": "写真：ZONOWA dog training&lounge"
+  },
+  {
+   "cat": "trainer",
+   "id": "T114",
+   "name": "ドッグトレーナー廣瀬",
+   "scope": "公式サイトの写真。ただし人が写っている写真・個人が分かる写真は使わない。事業者から追加で提供された写真も掲載可",
+   "pages": [
+    "https://www.preventive-dogtrainerhirose.com/"
+   ],
+   "by": "メール",
+   "date": "2026-11-17",
+   "ref": "写真の掲載についての返信（ドッグトレーナー廣瀬さま）。載せたら一報がほしい。2026-11-19追加写真受領",
+   "no_people": true
+  },
+  {
+   "cat": "rojin",
+   "id": "R094",
+   "name": "家庭的老犬介護施設 Smile Home",
+   "scope": "公式サイトの写真すべて",
+   "pages": [
+    "https://www.smilehomefordog.com/"
+   ],
+   "by": "メール",
+   "date": "2026-11-17",
+   "ref": "写真の掲載についての返信（Smile Home さま）"
+  },
+  {
+   "cat": "rojin",
+   "id": "R096",
+   "name": "ペットケア＆アダプションセンター日光",
+   "scope": "公式サイトの写真",
+   "pages": [
+    "https://nikko.pfirst.jp/care_center"
+   ],
+   "by": "メール",
+   "date": "2026-11-17",
+   "ref": "写真の掲載についての返信（ペットケア＆アダプションセンター日光さま）"
+  },
+  {
+   "cat": "rojin",
+   "id": "R069",
+   "name": "ペットホテル里親（終身・長期預かり）",
+   "scope": "公式サイトの写真（どれでもよい）。メールに添えていただいた写真もある",
+   "pages": [
+    "https://sato-oya.com/"
+   ],
+   "by": "メール",
+   "date": "2026-11-17",
+   "ref": "写真の掲載についての返信（ペットホテル里親さま）"
+  },
+  {
+   "cat": "trainer",
+   "id": "T054",
+   "name": "Secil wan Company",
+   "scope": "公式サイトの写真。新しいホームレッスンの写真も送っていただける。事業者から追加で提供された写真も掲載可",
+   "pages": [
+    "https://secil-wan.com/"
+   ],
+   "by": "メール",
+   "date": "2026-11-17",
+   "ref": "写真の掲載についての返信（Secil wan さま）。2026-11-19追加写真受領"
+  },
+  {
+   "cat": "trainer",
+   "id": "T025",
+   "name": "空ドッグスクール",
+   "scope": "公式サイトの写真（文章の抜き出しもよい）",
+   "pages": [
+    "https://www.dear-tails.com/"
+   ],
+   "by": "メール",
+   "date": "2026-11-17",
+   "ref": "写真の掲載についての返信（空ドッグスクールさま）。問い合わせは公式サイトのフォームへ"
+  },
+  {
+   "cat": "sougi",
+   "id": "S0801bc",
+   "name": "てんのうじペット霊園（泰聖寺）",
+   "scope": "公式サイトの写真。写真の下に出どころを書く",
+   "pages": [
+    "https://www.mspet.net/"
+   ],
+   "by": "メール",
+   "date": "2026-11-18",
+   "ref": "写真の掲載についての返信（泰聖寺さま）",
+   "credit": "泰聖寺（てんのうじペット霊園）ホームページからの引用"
+  },
+  {
+   "cat": "trainer",
+   "id": "T077",
+   "name": "ドッグスクール VaBene（ヴァベーネ）",
+   "scope": "公式サイトの写真（掲載が無料であれば、とのこと。掲載は無料）",
+   "pages": [
+    "http://vabene.jp/"
+   ],
+   "by": "メール",
+   "date": "2026-11-18",
+   "ref": "写真の掲載についての返信（VaBene さま）"
+  },
+  {
+   "cat": "trainer",
+   "id": "T024",
+   "name": "wamiハッピードッグ（ワンちゃんまなび園）",
+   "scope": "公式サイトの写真",
+   "pages": [
+    "http://www.wamihappydog.com"
+   ],
+   "by": "お問い合わせフォーム",
+   "date": "2026-11-17",
+   "ref": "写真の掲載のお願いへの返事（メールの返信が戻ったため、サイトのお問い合わせフォームから）"
+  },
+  {
+   "cat": "rojin",
+   "id": "R004",
+   "name": "老犬＆老猫ホームひまわり",
+   "scope": "公式施設ページの写真",
+   "pages": [
+    "https://rouken-kaigo.co.jp/facility/"
+   ],
+   "by": "メール",
+   "date": "2026-11-20",
+   "ref": "事業者の掲載承諾"
+  },
+  {
+   "cat": "trainer",
+   "id": "T004",
+   "name": "犬の幼稚園HappyDog（旧北野ドッグスクール）",
+   "scope": "公式施設ページの写真",
+   "pages": [
+    "https://kitanodog.com/kindergarten"
+   ],
+   "by": "メール",
+   "date": "2026-11-19",
+   "ref": "事業者の掲載承諾"
+  }
+ ],
+ "declined": [
+  {
+   "cat": "trainer",
+   "id": "T081",
+   "name": "愛犬学校 福島警察犬訓練所",
+   "date": "2026-11-17",
+   "why": "写真のお願いに「お断りします」。写真は使わない"
+  }
+ ],
+ "waiting": [
+  {
+   "cat": "trainer",
+   "id": "T033",
+   "name": "K9 Harmony",
+   "date": "2026-11-18",
+   "why": "写真は自分で送りたい（JPGかPNG・横長・1200px以上・3枚まで・ロゴなしと返信済み）。届いたら owner の写真として入れる"
+  }
+ ]
+}

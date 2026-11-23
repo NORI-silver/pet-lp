@@ -1,0 +1,4783 @@
+{
+ "_説明": "老犬ホーム・老猫ホームの全国一覧（/rojin-home/）のデータ。公式サイトで確かめたことだけ書く（料金・順位・電話番号は書かない）。登録番号（reg）は公式サイトに書いてあるものだけ。review_query/review_name は口コミの星の場所さがし（booking/Code.gs の EMG_REVIEWS。name の語がすべて地図の名前に含まれるときだけ採用）。載せない：ペットホテル・デイケアだけの施設、受け入れをやめた施設、公式サイトのない施設、連絡先が電話だけでも載せるが電話番号は書かない。 2026-11-14 から、公式サイトで確かめた料金・別料金・面会・受け入れ条件・病院との連携を facts（k・v・src・checked、月額がわかる施設は yen＝いちばん小さい区分の月額）に入れる。",
+ "checked": "2026年11月2日",
+ "homes": [
+  {
+   "id": "R001",
+   "name": "老犬ホーム 愛犬本舗",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市白石区",
+   "url": "https://aikenhonpo.com/",
+   "addr": "北海道札幌市白石区川下2727-17",
+   "animals": "犬",
+   "review_query": "愛犬本舗 札幌市白石区",
+   "review_name": "愛犬本舗",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：９：００～１７：００",
+     "src": "https://aikenhonpo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：不定休",
+     "src": "https://aikenhonpo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "1カ月 80,000円～120,000円。1カ月 100,000 円～140,000円",
+     "src": "https://aikenhonpo.com/%e8%80%81%e7%8a%ac%e3%83%9b%e3%83%bc%e3%83%a0/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R002",
+   "name": "ニャンワンクラブ 老犬ホーム",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市青葉区",
+   "url": "https://www.nyanwan.jp/care/dog_home.html",
+   "addr": "宮城県仙台市青葉区八幡2-1-21",
+   "animals": "犬",
+   "visit": "面会は営業時間内",
+   "reg": "保管 仙台市(H18健保動)指令第5070号・譲受飼養 (H25健保動)指令第1120040号",
+   "review_query": "ニャンワンクラブ 仙台市青葉区八幡",
+   "review_name": "ニャンワンクラブ",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "寝たきりになってしまった、歩けなくなってしまって／夜鳴き、無駄吠えが増えた／持病をお持ちのシニア犬には、継続してお薬を与えます",
+     "src": "https://www.nyanwan.jp/care/dog_home.html",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R003",
+   "name": "いぬ&ねこの家 クラスメイト",
+   "prefs": [
+    "秋田県"
+   ],
+   "city": "秋田市",
+   "url": "https://classmate-akita.com/",
+   "addr": "秋田県秋田市",
+   "animals": "犬・猫",
+   "spec": "公式サイト：「長期＆永久宿泊（老犬ホーム）」",
+   "review_query": "いぬ&ねこの家 クラスメイト 秋田市",
+   "review_name": "クラスメイト",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬・中型犬は13歳のお誕生日から、大型犬は8歳のお誕生日からシニア料金1,000円を頂戴いたします。",
+     "src": "https://classmate-akita.com/service/grooming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明書（初めてご利用の場合）",
+     "src": "https://classmate-akita.com/service/pethotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R004",
+   "name": "老犬＆老猫ホームひまわり",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "つくば市",
+   "url": "https://rouken-kaigo.co.jp/",
+   "addr": "茨城県つくば市沼田579",
+   "animals": "犬・猫",
+   "visit": "見学は事前に相談",
+   "review_query": "老犬ホーム ひまわり つくば市沼田",
+   "review_name": "ひまわり",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "歩けなくなってしまった／夜鳴き・無駄吠えが増えた",
+     "src": "https://rouken-kaigo.co.jp/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R005",
+   "name": "桑原動物病院の老犬ホーム",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "前橋市",
+   "url": "https://kuwabara-awc.com/",
+   "addr": "群馬県前橋市六供町1丁目8-3",
+   "animals": "犬（猫は受けていません）",
+   "spec": "動物病院に併設",
+   "reg": "保管 第010000-22-1号・譲受飼養 第010000-20-31号",
+   "review_query": "桑原動物病院 前橋市六供町",
+   "review_name": "桑原動物病院",
+   "facts": [
+    {
+     "k": "見学・面会",
+     "v": "電話・面会の受付は18時30分まで（完全予約制）",
+     "src": "https://kuwabara-awc.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "犬だけ（猫は預からない）。短期から生涯まで、半年ごとに更新",
+     "src": "https://kuwabara-awc.com/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "R006",
+   "name": "ささき動物病院の介護ペットホーム",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市北区",
+   "url": "https://www.ssk-nhp.com/",
+   "addr": "埼玉県さいたま市北区植竹町1-51",
+   "animals": "犬・猫",
+   "visit": "面会は診療時間内いつでも",
+   "spec": "動物病院に併設",
+   "review_query": "ささき動物病院 さいたま市北区植竹町",
+   "review_name": "ささき動物病院",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "10kg未満：1か月7万円〜（税抜）。ほかに入所金と保証金（預かり料金の2か月分、解約のとき精算して返金）。1年あずけると割引あり",
+     "src": "https://www.ssk-nhp.com/",
+     "checked": "2026-11-15",
+     "yen": 70000,
+     "tax": "別"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "フード・ペットシーツ、毎日のケアと介護、散歩、近況の報告",
+     "src": "https://www.ssk-nhp.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "別料金",
+     "v": "飼い主さんが指定する用品、動物病院での予防・治療、葬祭の費用",
+     "src": "https://www.ssk-nhp.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "老犬・老猫。寝たきり・夜鳴き・持病のある子も",
+     "src": "https://www.ssk-nhp.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "見学・面会",
+     "v": "面会は病院の診療時間内ならいつでも",
+     "src": "https://www.ssk-nhp.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "病院",
+     "v": "併設の動物病院の獣医師が診察・治療と定期検診",
+     "src": "https://www.ssk-nhp.com/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "R007",
+   "name": "あにまるケアハウス",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "加須市",
+   "url": "https://www.animalcare.jp/",
+   "addr": "埼玉県加須市久下5-316-1",
+   "animals": "犬・猫（老犬・老猫ホーム）",
+   "reg": "保管 第68-0323号・譲受飼養 第68-0324号",
+   "review_query": "あにまるケアハウス 加須市久下",
+   "review_name": "あにまるケアハウス",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "30日：5kg未満93,500円〜30kg未満132,000円、猫82,500円。365日：5kg未満682,000円、猫577,500円（税込）。30日以上は治療予備費100,000円をあずける",
+     "src": "https://www.animalcare.jp/service.html",
+     "checked": "2026-11-15",
+     "yen": 93500,
+     "tax": "込"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "年齢の上限なし。犬は5種以上の混合ワクチンと狂犬病予防注射の証明、猫は3種以上のワクチンの証明。血液検査と診断書、事前のカウンセリング",
+     "src": "https://www.animalcare.jp/service.html",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "別料金",
+     "v": "お世話の程度に応じた料金、送迎（実費）",
+     "src": "https://www.animalcare.jp/service.html",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "見学・面会",
+     "v": "見学は随時",
+     "src": "https://www.animalcare.jp/service.html",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "病院",
+     "v": "近くの動物病院と協力",
+     "src": "https://www.animalcare.jp/service.html",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "R008",
+   "name": "老犬ホーム Smile Flower",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "https://roukenhome.com/",
+   "addr": "千葉県千葉市緑区平川町1349-11",
+   "animals": "犬（大型犬の区分あり）",
+   "visit": "見学は前日までに予約（10〜15時）",
+   "review_query": "老犬ホーム Smile Flower 千葉市緑区平川町",
+   "review_name": "Smile Flower",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1か月：小型犬・中型犬55,916円〜110,000円、大型犬61,416円〜140,000円（税込）。長い契約ほど月の費用が下がる",
+     "src": "https://roukenhome.com/",
+     "checked": "2026-11-15",
+     "yen": 55916,
+     "tax": "込"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "1か月以上なら、1日2回の食事と散歩、月1回のシャンプー、排泄・歩行の補助、投薬、床ずれのケア、年1回のワクチンと健康診断、月1回の獣医師の往診、ノミ・ダニ・フィラリアの予防、2か月に1回のトリミング",
+     "src": "https://roukenhome.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "別料金",
+     "v": "重い介護でも追加の料金なし",
+     "src": "https://roukenhome.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "犬（小型〜大型）。持病・寝たきりの子も。職員がさわれないほど強くかむ子は、お迎えをお願いすることがある",
+     "src": "https://roukenhome.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "見学・面会",
+     "v": "見学は前日までに予約、10時〜15時。面会も前もって連絡して10時〜15時",
+     "src": "https://roukenhome.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "病院",
+     "v": "動物病院グループと連携、提携病院の医療費は20%引き",
+     "src": "https://roukenhome.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "持病のある子や寝たきりの子でもお預かりさせていただきます。／病気があり、緩和ケアが必要な場合でも、獣医師の指示のもと、丁寧にお預かりさせていただきます。／大型犬 1ヶ月 61,416円（税込）～140,000円（税込）",
+     "src": "https://roukenhome.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "spec": "動物病院グループと連携した老犬ホーム"
+  },
+  {
+   "id": "R009",
+   "name": "老犬ホーム＆ペットホテル 九十九里パーク",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "山武郡九十九里町",
+   "url": "https://roukenhome.jp/",
+   "addr": "千葉県山武郡九十九里町小関2188-3",
+   "animals": "犬",
+   "visit": "見学は予約制（年中無休）",
+   "review_query": "老犬ホーム 九十九里パーク 九十九里町小関",
+   "review_name": "九十九里パーク",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日4,000円、1か月66,000円、半年296,000円、1年440,000円。生涯は相談。大きさで料金は変わらない（税込か税別かはページの中で書き方がそろっていない）",
+     "src": "https://roukenhome.jp/infomation/price/",
+     "checked": "2026-11-15",
+     "yen": 66000
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "朝夕の散歩、朝夜2回の食事（介助・水分の補助も）、昼は芝生のドッグラン、定期的なグルーミングとトリミング",
+     "src": "https://roukenhome.jp/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "犬（10歳以上も10歳未満も）。狂犬病と混合ワクチンの証明（または免除の証明）、身分証明",
+     "src": "https://roukenhome.jp/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "見学・面会",
+     "v": "見学は予約制で年中無休",
+     "src": "https://roukenhome.jp/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "病院",
+     "v": "近くの動物病院で定期の健康診断と予防接種",
+     "src": "https://roukenhome.jp/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "R010",
+   "name": "シニアDOGハイム",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://senior-dog1.com/",
+   "addr": "東京都足立区小台2-10-18",
+   "animals": "犬（長期ステイ）",
+   "reg": "譲受飼養 22東京都譲第007122号・保管 21東京都議第007122号",
+   "review_query": "シニアDOGハイム 足立区小台",
+   "review_name": "シニアDOGハイム",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金またはクレジットカードでお支払いください。",
+     "src": "https://senior-dog1.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 09：00～18：00",
+     "src": "https://senior-dog1.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R011",
+   "name": "THE ケネルズ東京",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "目黒区",
+   "url": "https://the-kennels.tokyo/",
+   "addr": "東京都目黒区洗足2丁目19番地2号",
+   "animals": "犬",
+   "visit": "見学カウンセリングは会員登録をした方のみ（公式サイト 2026年3月17日の案内）",
+   "review_query": "THE ケネルズ東京 目黒区洗足",
+   "review_name": "ケネルズ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間は8:00-20:00となります。",
+     "src": "https://the-kennels.tokyo/faq.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R012",
+   "name": "東京ペットホーム（キャットホーム・ドッグホーム）",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "https://tokyo-cathome.com/",
+   "addr": "東京都大田区大森南1-23-5（本館・キャットホーム）／東糀谷1-13-22（2号館・ドッグホーム）",
+   "animals": "犬・猫",
+   "visit": "見学は予約制",
+   "review_query": "東京ペットホーム 大田区大森南",
+   "review_name": "東京ペットホーム",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【受付時間】9:00～19:00",
+     "src": "https://tokyo-cathome.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R013",
+   "name": "わんダ～らん 老犬ホーム",
+   "prefs": [
+    "新潟県"
+   ],
+   "city": "新潟市西区",
+   "url": "https://wonderrun.com/dog-home/",
+   "addr": "新潟県新潟市西区槇尾275-1",
+   "animals": "犬のみ（大型犬30kgまで。超大型犬の区分あり）",
+   "visit": "面会は営業時間内（事前に連絡）",
+   "review_query": "わんダ～らん 新潟市西区槇尾",
+   "review_name": "わんダ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1か月：小型犬（10kgまで）88,000円、中型犬（20kgまで）99,000円、大型犬（30kgまで）110,000円、超大型犬 143,000円（税込）。入所金は小型犬165,000円〜（病院の治療代・葬儀代をふくむ）",
+     "src": "https://wonderrun.com/dog-home/",
+     "checked": "2026-11-22",
+     "yen": 88000,
+     "tax": "込"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "食事・トリミング・毎日のケア・介護・シーツ・おむつなど",
+     "src": "https://wonderrun.com/dog-home/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "基本10歳以上。夜鳴き・徘徊・寝たきりの子も",
+     "src": "https://wonderrun.com/dog-home/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "用意するもの",
+     "v": "愛犬手帳または鑑札、お気に入りのもの、リードと首輪やハーネス、いま食べているフード1週間分ほど（施設の手作り食と自然食のフードに切りかえるときに使う）",
+     "src": "https://wonderrun.com/dog-home/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "食事",
+     "v": "基本は朝と夕方の2回。体調や状態を見て、朝・昼・晩の3回に分けることもある",
+     "src": "https://wonderrun.com/dog-home/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "1泊・日帰り",
+     "v": "1泊は小型犬6,600円〜、日帰り（9時〜17時）は小型犬3,000円〜（税込、入所金はいらない）",
+     "src": "https://wonderrun.com/dog-home/",
+     "checked": "2026-11-22"
+    }
+   ],
+   "spec": "10歳以上の犬の老犬ホーム"
+  },
+  {
+   "id": "R014",
+   "name": "ドッグハウス・ダディー 西軽井沢 老犬ホーム",
+   "prefs": [
+    "長野県"
+   ],
+   "city": "北佐久郡御代田町",
+   "url": "https://rouken-karuizawa.jp/rouken",
+   "addr": "長野県北佐久郡御代田町塩野3267-4",
+   "animals": "犬（大型犬可。30kg超は相談）",
+   "reg": "保管 長野県佐久保健所指令19-第103-01003812号・譲受飼養 29第5-01015316号",
+   "review_query": "ドッグハウス・ダディー 御代田町",
+   "review_name": "ダディー",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "徘徊や寝たきりのゲストは、スタッフルーム隣に20㎡の介護犬スペース／３０kgを超える犬種のお預かりは、別途ご相談させていただきます。",
+     "src": "https://rouken-karuizawa.jp/rouken",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R015",
+   "name": "セカンドハウス 羽島店 老犬ホーム",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "羽島市",
+   "url": "https://s-house526.com/service/hashima/silver/",
+   "addr": "岐阜県羽島市竹鼻町狐穴392番地2",
+   "animals": "犬（終生のお預かり）",
+   "review_query": "セカンドハウス 羽島店 羽島市竹鼻町",
+   "review_name": "セカンドハウス",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間(木～月)：9:00～18:00",
+     "src": "https://s-house526.com/service/hashima/silver/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "首輪やリード、ワクチン証明など、事前に準備しておくべきものがあれば知りたいです。",
+     "src": "https://s-house526.com/service/hashima/silver/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R016",
+   "name": "老犬ホーム暖家",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "揖斐郡揖斐川町",
+   "url": "https://roukendanka.jp/",
+   "addr": "岐阜県揖斐郡揖斐川町清水1488",
+   "animals": "犬（小型・中型・大型）",
+   "reg": "保管 040089号・譲受飼養 040091号",
+   "review_query": "老犬ホーム暖家 揖斐川町",
+   "review_name": "暖家"
+  },
+  {
+   "id": "R017",
+   "name": "I・STYLE シニアハウス",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "焼津市",
+   "url": "https://i-style.co.jp/",
+   "addr": "静岡県焼津市東小川1-3-17",
+   "animals": "犬・猫",
+   "visit": "内見できます",
+   "spec": "公式サイト：「老犬・老猫ホーム開設」",
+   "review_query": "I・STYLE 焼津市東小川",
+   "review_name": "STYLE",
+   "facts": [
+    {
+     "k": "見学・面会",
+     "v": "内見できる。相談は無料",
+     "src": "https://i-style.co.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "病院",
+     "v": "施設の中に動物病院がある",
+     "src": "https://i-style.co.jp/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "R018",
+   "name": "老犬ホーム KAMALEI",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "沼津市",
+   "url": "https://kamalei2018.com/dog-oldhome.html",
+   "addr": "静岡県沼津市足高305-19",
+   "animals": "犬",
+   "visit": "見学はいつでも（送迎あり）",
+   "reg": "第227124018号・第227124019号",
+   "review_query": "KAMALEI 沼津市足高",
+   "review_name": "KAMALEI",
+   "facts": [
+    {
+     "k": "ふくまれるお世話",
+     "v": "24時間スタッフがいる。食事・排せつの介助、抱っこや歩行補助の散歩、体調を見てトリミング",
+     "src": "https://kamalei2018.com/dog-oldhome.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "見学・面会",
+     "v": "見学は随時（送迎も）。家などへの送迎で面会、ビデオ通話、写真・動画で様子を知らせる",
+     "src": "https://kamalei2018.com/dog-oldhome.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "病院",
+     "v": "専門医の定期の往診と健康診断、希望でかかりつけへの同行、緊急時は夜間の病院へ搬送",
+     "src": "https://kamalei2018.com/dog-oldhome.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "起き上がることができないご愛犬も抱っこや歩行補助をしてお散歩します",
+     "src": "https://kamalei2018.com/dog-oldhome.html",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R019",
+   "name": "ちびママの家",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "浜松市中区",
+   "url": "https://chibi-mama.com/",
+   "addr": "静岡県浜松市中区城北1-12-20",
+   "animals": "猫（高齢猫の専門）",
+   "review_query": "ちびママの家 浜松市中区城北",
+   "review_name": "ちびママ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "入所の年齢で決まる一括の料金（税別）：8〜10歳 110万円、10〜14歳 80万円、14歳以上 60万円。8歳未満は1歳若いごとに24万円を足す",
+     "src": "https://chibi-mama.com/%e9%a3%bc%e9%a4%8a%e6%96%99%e9%87%91%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "別料金",
+     "v": "医療費は基本ふくむ（入所時に特別な治療・投薬・手術が必要なときは別）。迎えを頼むと交通費",
+     "src": "https://chibi-mama.com/%e9%a3%bc%e9%a4%8a%e6%96%99%e9%87%91%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "原則8歳から（8歳未満は相談）。入金は入所前",
+     "src": "https://chibi-mama.com/%e9%a3%bc%e9%a4%8a%e6%96%99%e9%87%91%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "R020",
+   "name": "老犬ホーム ワンワンパラダイス",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "新城市",
+   "url": "http://www.wanwan-paradise.com/",
+   "addr": "愛知県新城市富岡字下川原82",
+   "animals": "犬（小型犬5kg未満・10才以上のみ）",
+   "visit": "施設の公開は控えています（公式サイト）",
+   "reg": "動東第341号",
+   "review_query": "ワンワンパラダイス 新城市富岡",
+   "review_name": "ワンワンパラダイス",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "歩行出来ない・自力で立ち上がる事が出来ない犬は入所不可／認知症の犬は入所出来ます。",
+     "src": "http://www.wanwan-paradise.com/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R021",
+   "name": "Furkidsun（老猫ホーム）",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "蒲郡市",
+   "url": "https://furkidsun.com/",
+   "addr": "愛知県蒲郡市旭町1-8",
+   "animals": "猫専用（長期・終身のお預かり）",
+   "visit": "見学は土日祝のみ",
+   "reg": "保管 動東第623号・譲受飼養 動東第624号",
+   "review_query": "Furkidsun 蒲郡市旭町",
+   "review_name": "Furkidsun",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "２回目以降のご利用はお預かり料金１,０００円OFF🐈",
+     "src": "https://furkidsun.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "お車でお越しの際は、駐車場は建物の北側にあります。駐車場への道は一方通行となっておりますので、ご注意ください。",
+     "src": "https://furkidsun.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "料金は前払いとなっております。お預かり当日に現金でお支払いください。",
+     "src": "https://furkidsun.com/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R022",
+   "name": "ペットホームOHANA",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "四日市市",
+   "url": "https://pethomeohana.wphp.jp/",
+   "addr": "三重県四日市市生桑町1642-7",
+   "animals": "犬・猫（大型犬・超大型犬の区分あり）",
+   "reg": "四管第R4-1号",
+   "review_query": "ペットホームOHANA 四日市市生桑町",
+   "review_name": "OHANA",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "歩行介助（通常歩行困難）／食事介助・水分介助／疾患・服薬（塗り薬含む）／大型犬（料金表の区分）",
+     "src": "https://pethomeohana.wphp.jp/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R023",
+   "name": "ワンワンハートSAKURA withワンニャンプロジェクト",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "四日市市",
+   "url": "https://www.wanwanhart-sakura.com/",
+   "addr": "三重県四日市市桜町212番地",
+   "animals": "犬・猫",
+   "visit": "見学できます",
+   "spec": "公式サイト：犬猫の介護施設",
+   "review_query": "ワンワンハートSAKURA 四日市市桜町",
+   "review_name": "SAKURA",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "歩行困難な子や寝たきりの子などもお気軽に問い合わせ下さい。",
+     "src": "https://www.wanwanhart-sakura.com/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R024",
+   "name": "Catホッと（老猫ホーム）",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "長浜市",
+   "url": "https://cathot.jp/",
+   "addr": "滋賀県長浜市",
+   "animals": "猫",
+   "visit": "見学の申し込みあり",
+   "review_query": "Catホッと 長浜市",
+   "review_name": "Catホッと",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日当たり986円。1日当たり932円",
+     "src": "https://cathot.jp/service1.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは、現金またはクレジットカード、PayPayがご利用いただけます。",
+     "src": "https://cathot.jp/service2.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R025",
+   "name": "老犬介護ホーム ろうたす",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市伏見区",
+   "url": "https://dog-lotus.jp/",
+   "addr": "京都府京都市伏見区醍醐高畑町68-5 中野第2ビル2階",
+   "animals": "犬",
+   "reg": "保管 京都市登録第140059号・譲受飼養 第140060号",
+   "review_query": "老犬介護ホーム ろうたす 京都市伏見区",
+   "review_name": "ろうたす",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "介護の必要な子／夜鳴きする子／持病のある子／投薬の必要な子",
+     "src": "https://dog-lotus.jp/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R026",
+   "name": "犬のケアハウスうらら",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "船井郡京丹波町",
+   "url": "https://carehouse-urara.com/",
+   "addr": "京都府船井郡京丹波町曽根清長60番地32",
+   "animals": "犬",
+   "visit": "面会用のゲストルームあり",
+   "reg": "京都府第040120-2（保管）・第040120-7（譲受飼養）",
+   "review_query": "犬のケアハウスうらら 京丹波町",
+   "review_name": "うらら",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "自力で歩けない愛犬にも日々の日光浴やお手入れをおこないます。／事故や病気で・・もしくは先天的に障害がある愛犬でもご利用いただけます。（持病の子も）",
+     "src": "https://carehouse-urara.com/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R027",
+   "name": "老犬ホームあん",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "船井郡京丹波町",
+   "url": "https://www.roukenhome-ann.jp/",
+   "addr": "京都府船井郡京丹波町井尻スハ1-44",
+   "animals": "犬（全年齢・全犬種。大型犬舎あり）",
+   "visit": "見学・面会のご案内あり",
+   "reg": "京都府第040118-2（保管）・第040118-7（譲受飼養）",
+   "review_query": "老犬ホームあん 京丹波町井尻",
+   "review_name": "あん",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "愛犬の状態に関わらずお預かりは可能です（寝たきり・夜鳴き・持病の子も）／ワンちゃんの状態によってお預かりをお断りする事はありません",
+     "src": "https://www.roukenhome-ann.jp/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R028",
+   "name": "老犬介護ホーム メロー",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市城東区",
+   "url": "https://www.rouken-mellow.jp/",
+   "addr": "大阪府大阪市城東区放出西2-4-13",
+   "animals": "犬",
+   "reg": "保管 160073B・譲受飼養 160073F",
+   "review_query": "老犬介護ホーム メロー 大阪市城東区放出西",
+   "review_name": "メロー",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1か月：小型・中型犬 99,000円、大型犬 132,000円（税込）。終身も相談。一時預かり 3,850円〜",
+     "src": "https://www.rouken-mellow.jp/price",
+     "checked": "2026-11-14",
+     "yen": 99000,
+     "tax": "込"
+    },
+    {
+     "k": "別料金",
+     "v": "通院・送迎は有料、介護度に応じて追加。長期は治療予備費5万円を預ける",
+     "src": "https://www.rouken-mellow.jp/price",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "R029",
+   "name": "老犬ホーム Smile Flower Osaka",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "八尾市",
+   "url": "https://osaka.roukenhome.com/",
+   "addr": "大阪府八尾市西山本町1丁目1-50（JPB動物医療センター八尾内）",
+   "animals": "犬（大型犬の区分あり）",
+   "spec": "動物病院に併設",
+   "review_query": "老犬ホーム Smile Flower Osaka 八尾市西山本町",
+   "review_name": "Smile Flower",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1か月：小型・中型犬 55,916円〜110,000円、大型犬 61,416円〜140,000円（税込）",
+     "src": "https://osaka.roukenhome.com/",
+     "checked": "2026-11-14",
+     "yen": 55916,
+     "tax": "込"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "1日2回の食事と散歩、排せつ・歩行の補助、投薬、床ずれのケア、シャンプーと2か月に1回のトリミング、年1回のワクチン・健康診断、月1回の獣医師の往診、ノミ・ダニ・フィラリア予防（1か月以上のとき）",
+     "src": "https://osaka.roukenhome.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "病院",
+     "v": "動物病院（JPB動物医療センター八尾）の中にあり、医療費は20%引き",
+     "src": "https://osaka.roukenhome.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "介護が必要な子、持病のある子も（短期から終身まで）",
+     "src": "https://osaka.roukenhome.com/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "R030",
+   "name": "老犬ホーム norn",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神崎郡市川町",
+   "url": "https://norn-rouken.jp/",
+   "addr": "兵庫県神崎郡市川町屋形869",
+   "animals": "犬（「大型犬も歓迎」）",
+   "visit": "見学の予約できます",
+   "reg": "保管 兵動第2632004号・譲受飼養 兵動第2636005号",
+   "review_query": "老犬ホーム norn 市川町屋形",
+   "review_name": "norn",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "長期ホーム（月ごと）：ルームS（小型犬・10kgくらいまで）75,000円、ルームL（10kg以上）90,000円。1泊5,000円〜、日帰り3,000円〜（税の表示なし）。1か月ごとに更新",
+     "src": "https://norn-rouken.jp/services.html",
+     "checked": "2026-11-15",
+     "yen": 75000
+    },
+    {
+     "k": "別料金",
+     "v": "フード代",
+     "src": "https://norn-rouken.jp/services.html",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "大型犬・介護が必要な子・障害のある子も相談できる。超大型犬は相談。医療行為にあたるお世話は限りがある",
+     "src": "https://norn-rouken.jp/services.html",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "見学・面会",
+     "v": "見学はLINEか電話で予約",
+     "src": "https://norn-rouken.jp/services.html",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "大型犬も歓迎／夜鳴きが激しいわんちゃんも安心／夜鳴きや徘徊、寝たきりなど、ご家庭でのケアが難しくなってきた時に。",
+     "src": "https://norn-rouken.jp/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R031",
+   "name": "Caramelpapa",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "明石市",
+   "url": "https://caramelpapa.net/",
+   "addr": "兵庫県明石市林崎町2-2-13",
+   "animals": "犬・猫",
+   "review_query": "Caramelpapa 明石市林崎町",
+   "review_name": "Caramelpapa",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シニア犬・猫の長期あずかり：小型犬（5kgまで）1か月66,000円〜、12か月633,600円〜（税込か税別かはページの中で書き方がそろっていない）。終生は入所金100,000円",
+     "src": "https://caramelpapa.net/detail/multi_1667_1592.html",
+     "checked": "2026-11-15",
+     "yen": 66000
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "食事・お世話・光熱費・トリミング、フィラリアとノミ・ダニの予防薬、駆虫薬",
+     "src": "https://caramelpapa.net/detail/multi_1667_1592.html",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "別料金",
+     "v": "年1回の混合ワクチンと狂犬病の注射、病院の受診、送迎、介護の段階に応じた料金。長期は治療予備費5万円をあずける",
+     "src": "https://caramelpapa.net/detail/multi_1667_1592.html",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "狂犬病とワクチンの済んだ犬。10歳以下か病気の子は指定病院で健康診断。20kgをこえる子は相談。保証人か身分証明（終身一括払いならいらない）",
+     "src": "https://caramelpapa.net/detail/multi_1667_1592.html",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "見学・面会",
+     "v": "見学とお試しあり。面会は前もって連絡して11時〜16時",
+     "src": "https://caramelpapa.net/detail/multi_1667_1592.html",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "病院",
+     "v": "提携の動物病院あり",
+     "src": "https://caramelpapa.net/detail/multi_1667_1592.html",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "R032",
+   "name": "関西ドッグスクール 老犬ホーム",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "磯城郡三宅町",
+   "url": "https://www.kansaidogschool.com/olddog",
+   "addr": "奈良県磯城郡三宅町但馬102-1",
+   "animals": "犬（ワクチン接種済み）",
+   "review_query": "関西ドッグスクール 三宅町但馬",
+   "review_name": "関西ドッグスクール",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "38,500円～/月",
+     "src": "https://www.kansaidogschool.com/olddog",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間8:00-18:00［年中無休］",
+     "src": "https://www.kansaidogschool.com/olddog",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみ",
+     "src": "https://www.kansaidogschool.com/company",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "当施設では1年以内のワクチン接種証明書、またはワクチン抗体価検査結果・狂犬病予防接種証明書の提示をお願いしております。",
+     "src": "https://www.kansaidogschool.com/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R033",
+   "name": "アニマルレストハウス",
+   "prefs": [
+    "和歌山県"
+   ],
+   "city": "橋本市",
+   "url": "https://animalresthouse.com/",
+   "addr": "和歌山県橋本市隅田町中島1057-7",
+   "animals": "犬",
+   "reg": "保管 和歌山県04第1061号・譲受飼養 04第1062号",
+   "review_query": "アニマルレストハウス 橋本市隅田町",
+   "review_name": "アニマルレストハウス",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:平日：午前9：00～午後5：00",
+     "src": "https://animalresthouse.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "A. 本人確認書類一式、ワクチン・狂犬病接種証明書（一年以内）、かかりつけ医の診断書",
+     "src": "https://animalresthouse.com/qa",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R034",
+   "name": "MommySociety（愛と温もりの家）",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "岡山市東区",
+   "url": "https://pet-senior.com/",
+   "addr": "岡山県岡山市東区城東台西2-6-1",
+   "animals": "犬・猫",
+   "review_query": "MommySociety 岡山市東区城東台西",
+   "review_name": "MommySociety",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金・クレジットカード・電子マネー・バーコード決済可能",
+     "src": "https://pet-senior.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病、その他ワクチン接種と証明書の提出が必要です。（獣医師より接種の回避を勧められている愛犬については、その旨お申し出ください)",
+     "src": "https://pet-senior.com/charge/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R035",
+   "name": "老犬ホーム・KOMUGI",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "宇部市",
+   "url": "https://rouken-komugi.sakura.ne.jp/wordpress/",
+   "addr": "山口県宇部市則貞3丁目11-23-5",
+   "animals": "犬",
+   "review_query": "老犬ホーム KOMUGI 宇部市則貞",
+   "review_name": "KOMUGI",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種の証明書・狂犬病予防接種の証明書",
+     "src": "https://rouken-komugi.sakura.ne.jp/wordpress/guide_of_tenants/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "お預かりが9時間超えの場合500円追加料金となります。。初期費用 入居金10,000円（返金なし） 医療予備費30,000円（精算後返金します）",
+     "src": "https://rouken-komugi.sakura.ne.jp/wordpress/usage_fee/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R036",
+   "name": "ドッグケアハウス伝",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "山口市",
+   "url": "https://dog-care-house-den.com/",
+   "addr": "山口県山口市下小鯖4078-20",
+   "animals": "犬",
+   "visit": "予約制で来訪できます。Webカメラでの面会あり",
+   "reg": "保管 平28山健第147号の1の24",
+   "review_query": "ドッグケアハウス伝 山口市下小鯖",
+   "review_name": "伝",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "夜泣きなどの痴呆によりお世話が難しくなったわんちゃん／介護が必要なわんちゃんもお預かりできます",
+     "src": "https://dog-care-house-den.com/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R037",
+   "name": "いぬのケアハウス シェリー Fukuoka",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "糟屋郡新宮町",
+   "url": "https://shelly-fukuoka.com/",
+   "addr": "福岡県糟屋郡新宮町原上1733-1",
+   "animals": "犬",
+   "visit": "事前の連絡で見学できます",
+   "review_query": "いぬのケアハウス シェリー 新宮町原上",
+   "review_name": "シェリー",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：09:00～19:00",
+     "src": "https://shelly-fukuoka.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "１年以内の混合ワクチン・狂犬病予防接種証明書（コピー可・初回と更新時のみ）",
+     "src": "https://shelly-fukuoka.com/guide/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R038",
+   "name": "ドッグハウスなぎさ 老犬ホーム",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "中間市",
+   "url": "https://www.doghousenagisa.com/rouken/",
+   "addr": "福岡県中間市長津3丁目7-12",
+   "animals": "犬（大型犬20〜40kgの区分あり）",
+   "review_query": "ドッグハウスなぎさ 中間市長津",
+   "review_name": "なぎさ",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "夜泣き・介護でお困りの方／投薬が必要な場合／大型　20kg～40kg",
+     "src": "https://www.doghousenagisa.com/rouken/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R039",
+   "name": "老犬介護ホームてるハウス",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "北九州市八幡東区",
+   "url": "http://teruhouse.jp/",
+   "addr": "福岡県北九州市八幡東区日ノ出町1-11-3",
+   "animals": "犬（室内飼いの子のみ）・猫は相談",
+   "review_query": "老犬介護ホーム てるハウス 北九州市八幡東区",
+   "review_name": "てるハウス",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "認知症対応(別途300円)／服薬の介助／立ち上がり困難へのサポート",
+     "src": "http://teruhouse.jp/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R040",
+   "name": "老犬ホーム REGALO",
+   "prefs": [
+    "沖縄県"
+   ],
+   "city": "中頭郡読谷村",
+   "url": "https://rokenhomeregalo.com/",
+   "addr": "沖縄県中頭郡読谷村座喜味2304",
+   "animals": "犬",
+   "reg": "沖動保第1392号",
+   "review_query": "老犬ホーム REGALO 読谷村座喜味",
+   "review_name": "REGALO",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金/クレジットカード/ID/QUICPay/交通系電子マネー/QR決済",
+     "src": "https://rokenhomeregalo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の狂犬病ワクチンと混合ワクチンの接種証明書",
+     "src": "https://rokenhomeregalo.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R041",
+   "name": "しっぽフリフリ シニア犬ホーム",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市緑区",
+   "url": "https://heartrelation.com/senior/",
+   "addr": "神奈川県相模原市緑区鳥屋1654-8",
+   "animals": "犬（10歳以上）",
+   "reg": "相模原市指令（生衛）第206-0003号（譲受飼養）",
+   "spec": "ウィークリー・マンスリーのプラン。3か月以上は連帯保証人が必要と公式サイトに記載",
+   "review_query": "しっぽフリフリ 相模原市緑区鳥屋",
+   "review_name": "しっぽフリフリ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "マンスリー（1か月）：小型犬（7kgまで）98,000円、中型犬（7.1〜20kg）103,000円、大型犬（20.1kg以上）107,000円、ほかにお預かり金80,000円（退去時に未使用分を返金）。ウィークリー：小型42,000円・中型51,000円・大型65,000円＋お預かり金30,000円。お泊まり（24時間）6,500円〜（税込）。2頭目から1,000円引き",
+     "src": "https://heartrelation.com/senior/",
+     "checked": "2026-11-15",
+     "yen": 98000,
+     "tax": "込"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "基本の介護料金と衛生用品代。マンスリーはフード代もふくむ",
+     "src": "https://heartrelation.com/senior/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "別料金",
+     "v": "排泄の補助・食事の介助・医療的な処置はそれぞれ月1,000円。トリミング代などはお預かり金から",
+     "src": "https://heartrelation.com/senior/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "10歳以上の犬（全犬種）。猫は受けていない。3か月以上は連帯保証人が必要。利用の前にカウンセリング（電話かメールフォームで予約）",
+     "src": "https://heartrelation.com/senior/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "車椅子利用や、寝たきりのワンちゃんも安心してお任せください／夜鳴きや排泄といったコントロールの困難な症状にも対応します／滞在中の医療費や、お薬代",
+     "src": "https://heartrelation.com/senior/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R042",
+   "name": "老猫ホーム＆猫ホテル うめねこ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市鶴見区",
+   "url": "https://www.umeneko.jp/",
+   "addr": "神奈川県横浜市鶴見区下末吉1-8-17",
+   "animals": "猫",
+   "visit": "見学・相談あり（要予約）",
+   "spec": "猫専用。12歳以上の終生のお世話、要介護の猫も",
+   "review_query": "うめねこ 横浜市鶴見区下末吉",
+   "review_name": "うめねこ",
+   "facts": [
+    {
+     "k": "ふくまれるお世話",
+     "v": "飼い主さんの代わりに長い期間、または生涯あずかる。送迎も相談できる",
+     "src": "https://www.umeneko.jp/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "病院",
+     "v": "獣医師と連携して医療も受けられる",
+     "src": "https://www.umeneko.jp/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "R043",
+   "name": "老犬ホーム オレンジライフ湘南",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "平塚市",
+   "url": "https://orangelifeshonan.com/",
+   "addr": "神奈川県平塚市平塚1-5-18",
+   "animals": "犬",
+   "visit": "見学予約あり",
+   "reg": "動愛第240241号（保管）",
+   "spec": "デイケアから1か月単位の長期プランまで",
+   "review_query": "オレンジライフ湘南 平塚市平塚",
+   "review_name": "オレンジライフ湘南",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "長期ケア（1か月単位）：小型98,000円〜、中型110,000円、大型115,000円（税込）＋お預り金60,000円。短期ケア（1週間単位）44,000円〜、ホテル（1泊）6,800円〜、デイケア（3時間まで）1,600円〜",
+     "src": "https://orangelifeshonan.com/plan-price/",
+     "checked": "2026-11-15",
+     "yen": 98000,
+     "tax": "込"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "長期は、毎日の介護・フード・おやつ・ペットシーツとおむつ・毎月のシャンプーとトリミング・毎週のLINEの報告と月ごとの報告書・毎週の獣医師の健康診断・ワクチンとノミ・ダニ・フィラリアの予防",
+     "src": "https://orangelifeshonan.com/plan-price/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "別料金",
+     "v": "散歩（20分）880円、爪切り660円、インスリン投与550円、点滴1,100円、薬は4種類目から1種類1日110円。朝7時30分〜10時・夕方18時以降の時間外は550円から",
+     "src": "https://orangelifeshonan.com/plan-price/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "犬（小型・中型・大型の区分。ミックスは入居時の体重で8kgまで小型・20kgまで中型・30kgまで大型）。入居前に駆虫をすませる",
+     "src": "https://orangelifeshonan.com/plan-price/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "見学・面会",
+     "v": "見学はLINEかお問い合わせのページから予約",
+     "src": "https://orangelifeshonan.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "病院",
+     "v": "施設に診療室と専任の獣医師",
+     "src": "https://orangelifeshonan.com/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "R044",
+   "name": "WANCOTT（ワンコット）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "https://www.wancott.com/dognursing/",
+   "addr": "神奈川県横浜市中区山下町168-1 レイトンハウス横浜3F・4F",
+   "animals": "犬",
+   "visit": "施設見学あり（契約前）",
+   "spec": "長期ステイ・一時預かり・デイケア・介護看護ケア。公式サイトに「老犬ホーム」の表記はなし",
+   "review_query": "WANCOTT 横浜市中区山下町",
+   "review_name": "WANCOTT",
+   "facts": [
+    {
+     "k": "ふくまれるお世話",
+     "v": "医療スタッフが24時間常駐し、動物看護師が毎日体調を確かめる。フリースペースでの運動。デイケアはリハビリ・マッサージ・トレーニングも",
+     "src": "https://www.wancott.com/dognursing/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "別料金",
+     "v": "健康診断・シャンプー・トリミングのオプションと送迎は別料金",
+     "src": "https://www.wancott.com/dognursing/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "見学・面会",
+     "v": "会員登録の前に施設を見学できる。申し込みは電話か店頭",
+     "src": "https://www.wancott.com/dognursing/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "病院",
+     "v": "検査機器のある診療室を併設、夜間の緊急時の医療連携あり",
+     "src": "https://www.wancott.com/dognursing/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "R045",
+   "name": "山の上の老犬介護ホーム シルヴィ",
+   "prefs": [
+    "山梨県"
+   ],
+   "city": "甲斐市",
+   "url": "https://rouken-home.sakura.ne.jp/",
+   "addr": "山梨県甲斐市大垈1926-3",
+   "animals": "犬",
+   "visit": "訪問は事前連絡のうえ日時を打ち合わせ",
+   "reg": "第1081093号",
+   "spec": "生涯お預かり",
+   "review_query": "老犬ホーム シルヴィ 甲斐市大垈",
+   "review_name": "シルヴィ"
+  },
+  {
+   "id": "R046",
+   "name": "ドッグヴィレッヂクローバー 老犬ホーム",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "北群馬郡榛東村",
+   "url": "https://www.dogvillage-clover.com/olddog/",
+   "addr": "群馬県北群馬郡榛東村（番地は公式サイトに記載なし）",
+   "animals": "犬（犬種・年齢は問わない）",
+   "visit": "見学は電話で事前予約",
+   "reg": "群動愛第0316-191（譲受飼養業）",
+   "spec": "ショート・ミドル（1か月単位）・ロングステイ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "ミドルステイ（1か月単位）：小型犬（5kgまで）55,000円、中型犬（15kgまで）60,500円、大型犬（35kgまで）66,000円、超大型犬71,500円（税込）。ロングステイはカウンセリングで決める",
+     "src": "https://www.dogvillage-clover.com/olddog/",
+     "checked": "2026-11-14",
+     "yen": 55000,
+     "tax": "込"
+    },
+    {
+     "k": "別料金",
+     "v": "亡くなったときの火葬などは別。2頭目から10%引き。支払いは現金か振込",
+     "src": "https://www.dogvillage-clover.com/olddog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "見学・面会",
+     "v": "見学は前もって電話で予約",
+     "src": "https://www.dogvillage-clover.com/olddog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "犬種・年齢の制限なし。予防接種・ノミダニ・フィラリア予防をしていない子、うつる病気が疑われる子、かみ癖の強い子は断ることがある",
+     "src": "https://www.dogvillage-clover.com/olddog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "病院",
+     "v": "提携の獣医師がいる",
+     "src": "https://www.dogvillage-clover.com/olddog/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "犬種（小型犬・中型犬・大型犬）・年齢などは一切問いません。",
+     "src": "https://www.dogvillage-clover.com/olddog/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R047",
+   "name": "わんにゃんハウス・オレンジ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://wannyanhouse-orange.com/",
+   "addr": "千葉県千葉市中央区亥鼻1-2-5",
+   "animals": "犬・猫（大型犬・超大型犬も）",
+   "spec": "都市型の動物介護施設。老犬や介護が必要な子を受け入れ",
+   "review_query": "わんにゃんハウス オレンジ 千葉市中央区亥鼻",
+   "review_name": "わんにゃんハウス",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "長期・生涯：猫は1か月目42,900円、2か月目から月33,000円。小型犬は1か月目82,500円、中型犬は99,000円（税の表示なし）。入居のときにお預かり金50,000円",
+     "src": "https://wannyanhouse-orange.com/price.html",
+     "checked": "2026-11-15",
+     "yen": 42900
+    },
+    {
+     "k": "別料金",
+     "v": "フード（持ち込まないとき）1食100円〜、食事・水・歩行の補助1日200円〜、営業時間（8時30分〜17時30分）外の受け渡し、送迎1km220円",
+     "src": "https://wannyanhouse-orange.com/price.html",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "食事・給水・歩行の補助・マッサージ・体位の変換・傷口のケアなど、その子に合わせて",
+     "src": "https://wannyanhouse-orange.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "犬と猫。介護が必要な子から大型犬・超大型犬まで",
+     "src": "https://wannyanhouse-orange.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "老犬や介護が必要な子から大型犬、超大型犬までお預かり可能です。",
+     "src": "https://wannyanhouse-orange.com/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R048",
+   "name": "老猫ホーム・猫ホテル まるねこ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "https://maruneco.jp/cathome_cathotel/",
+   "addr": "東京都大田区羽田3-16-10 白山荘104",
+   "animals": "猫",
+   "visit": "見学は予約のうえ可",
+   "reg": "24東京都譲第008359号（譲受飼養）",
+   "spec": "終生飼養を前提に受け入れ",
+   "review_query": "まるねこ 大田区羽田",
+   "review_name": "まるねこ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "猫さん1匹あたり月８万円（税込88,000円）",
+     "src": "https://maruneco.jp/cathotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R049",
+   "name": "老犬介護施設 Familio（ファミリオ）",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "茨木市",
+   "url": "https://familio.dog/",
+   "addr": "大阪府茨木市南耳原1-7-24",
+   "animals": "犬",
+   "visit": "内覧はいつでも可（要予約）。初回は無料のお試し体験",
+   "reg": "大阪府登録第3111-2号・第3111-6号（保管・譲受飼養）",
+   "spec": "ケージに入れず24時間お世話。入居型の介護付き老犬ホーム",
+   "review_query": "Familio 茨木市南耳原",
+   "review_name": "Familio",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00 - 18:30 18:31以降は翌営業時間に受付いたします。",
+     "src": "https://familio.dog/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休 お問い合わせください。 お預かり中の愛犬はお世話しています。",
+     "src": "https://familio.dog/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "自動車での来所方法 普通乗用車1台分の駐車スペースがあります。",
+     "src": "https://familio.dog/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "10,000円 ／日（税込）。13,000円 ／日（税込）",
+     "src": "https://familio.dog/index.php?%E3%83%89%E3%83%83%E3%82%B0%E3%83%9B%E3%83%86%E3%83%AB",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いにはクレジットカード決済をご利用いただけます。",
+     "src": "https://familio.dog/index.php?%E3%83%89%E3%83%83%E3%82%B0%E3%83%9B%E3%83%86%E3%83%AB",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R050",
+   "name": "老犬・老猫ホーム あおいそら",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市北区",
+   "url": "https://peraichi.com/landing_pages/view/roukenhoomaoisora/",
+   "addr": "兵庫県神戸市北区有野町唐櫃192-2",
+   "animals": "犬・猫",
+   "reg": "神健保第0522015号（保管業）",
+   "spec": "1か月以上の長期預かり。所有者は最後まで飼い主のまま",
+   "review_query": "老犬ホーム あおいそら 神戸市北区有野町",
+   "review_name": "あおいそら",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "長期（1か月・20泊以上）：老犬187,000円、老猫153,000円（税込）＋お預かり金30,000円。1泊（17〜24時間）老犬9,350円・老猫7,650円。送迎は1km200円",
+     "src": "https://peraichi.com/landing_pages/view/roukenhoomaoisora/",
+     "checked": "2026-11-15",
+     "yen": 187000,
+     "tax": "込"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "老犬・老猫。事前のカウンセリングが必要で、獣医師の紹介状がいることもある",
+     "src": "https://peraichi.com/landing_pages/view/roukenhoomaoisora/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "R051",
+   "name": "ならまち・犬野苑",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "奈良市",
+   "url": "https://www.inunosono.com/",
+   "addr": "奈良県奈良市公納堂町24-2",
+   "animals": "犬・小動物",
+   "reg": "保管 第117002号",
+   "spec": "ノーケージ・スタッフ24時間在住・少頭数。3か月以上の契約あり",
+   "review_query": "犬野苑 奈良市公納堂町",
+   "review_name": "犬野苑",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10:00～18:00",
+     "src": "https://www.inunosono.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "木曜定休(受付・お迎え 不可)",
+     "src": "https://www.inunosono.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R052",
+   "name": "シニアドッグケアホーム こころ",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "あま市",
+   "url": "https://www.senior-cocoro.jp/",
+   "addr": "愛知県あま市甚目寺須原100",
+   "animals": "犬（ピットブル・土佐犬は不可。継続的な医療行為が必要な子は不可）",
+   "visit": "老犬ホームは見学対応あり",
+   "spec": "24時間体制。デイサービス・ショートステイは新規休止中（公式サイト）",
+   "review_query": "シニアドッグケアホームこころ あま市甚目寺",
+   "review_name": "こころ",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "継続的な医療行為（インスリン等）が必要な子は当事業所ではお預かりできません。",
+     "src": "https://www.senior-cocoro.jp/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R053",
+   "name": "わんわん保育園あおぞら 老犬ホーム",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市名東区",
+   "url": "https://wanwan-aozora.com/elderly-care/",
+   "addr": "愛知県名古屋市名東区香南2-1311",
+   "animals": "犬（大型犬は相談）",
+   "visit": "面会は事前連絡でいつでも可。来園は電話予約",
+   "spec": "長期のお預かり、旅立つまでのお預かり",
+   "review_query": "わんわん保育園あおぞら 名古屋市名東区香南",
+   "review_name": "あおぞら",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "歩けなくなった場合でも、外の空気に触れたり／夜泣き、無駄吠えがある（預けたい理由の例）／大型犬：応相談（利用料の表）",
+     "src": "https://wanwan-aozora.com/elderly-care/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R054",
+   "name": "ペットケアホーム リュッカ",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "日進市",
+   "url": "https://www.petcarehomelyuca.com/",
+   "addr": "愛知県日進市岩崎町兼場1012-2",
+   "animals": "公式サイトに記載なし（老犬介護が中心）",
+   "visit": "見学は予約制",
+   "reg": "動本第1276号（保管）",
+   "spec": "総合動物介護施設。最期までお預かり。愛玩動物看護師が常駐",
+   "review_query": "ペットケアホーム リュッカ 日進市岩崎町",
+   "review_name": "リュッカ",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "投薬が必要な子にも安心して対応します。",
+     "src": "https://www.petcarehomelyuca.com/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R055",
+   "name": "老犬ホーム ワンハピネス",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "高山市",
+   "url": "http://wan-happiness.com/",
+   "addr": "岐阜県高山市大洞町780-30",
+   "animals": "犬",
+   "reg": "飛保第900号-100081（譲受飼養業）",
+   "spec": "老犬・寝たきり・障害のある犬を生涯預かり",
+   "review_query": "老犬ホーム ワンハピネス 高山市大洞町",
+   "review_name": "ワンハピネス",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "寝たきり、障害のあるワンちゃんを生涯預かり／たとえ歩けない子でも、目が見えない子でも",
+     "src": "http://wan-happiness.com/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R057",
+   "name": "老犬ホーム 御殿場",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "御殿場市",
+   "url": "https://www.roukenhome-gotemba.jp/",
+   "addr": "静岡県御殿場市大坂234-2",
+   "animals": "犬・猫（長期預かりは小動物・爬虫類も）",
+   "visit": "来所は事前にメールか問い合わせフォームで連絡",
+   "reg": "第225716001号（譲受飼養）・第225716002号（保管）",
+   "spec": "終生預かりと1か月以上の長期預かり",
+   "review_query": "老犬ホーム 御殿場 大坂234",
+   "review_name": "老犬ホーム 御殿場",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬：終生預かり 800円〜／日、長期預かり 900円〜／日（日額で、使った分だけ）",
+     "src": "https://www.roukenhome-gotemba.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "別料金",
+     "v": "フード・ペットシーツ・介護用品などは飼い主が用意",
+     "src": "https://www.roukenhome-gotemba.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "終生は犬・猫、長期は犬・猫・小動物・爬虫類（小動物・爬虫類は飼い主の飼育設備を借りる）",
+     "src": "https://www.roukenhome-gotemba.jp/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "見学・面会",
+     "v": "来るときは前もってメールかフォームで",
+     "src": "https://www.roukenhome-gotemba.jp/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "R058",
+   "name": "ワンBOX 老犬・老猫ホーム",
+   "prefs": [
+    "石川県"
+   ],
+   "city": "小松市",
+   "url": "https://www.wanbox.co.jp/geriatric/",
+   "addr": "石川県小松市平面町カ153-1（本店。野々市店ほか）",
+   "animals": "犬・猫（混合ワクチン未接種・攻撃的・偏食の子は不可）",
+   "visit": "入舎前に本店か野々市店で面談",
+   "spec": "生涯お預かり",
+   "review_query": "ワンBOX 小松市平面町",
+   "review_name": "ワンBOX",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "愛犬が認知症、夜鳴き、寝たきりなど介護や、お引越し等でお困りの方／大型犬 ｜ 7才〜 ｜ ¥110,000",
+     "src": "https://www.wanbox.co.jp/geriatric/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R059",
+   "name": "菅原動物病院 老犬＆老猫介護ホーム",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市宮城野区",
+   "url": "https://www.sdb.ne.jp/rouken-care.html",
+   "addr": "宮城県仙台市宮城野区福住町2-14",
+   "animals": "犬・猫（10歳以上のシニア、寝たきり・歩行困難など）",
+   "spec": "動物病院が運営する永代預り（一時払い、分割も）",
+   "review_query": "菅原動物病院 仙台市宮城野区福住町",
+   "review_name": "菅原動物病院",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "10歳以上のシニア犬や寝たきりや歩行困難などのワンちゃんネコちゃんのほか",
+     "src": "https://www.sdb.ne.jp/rouken-care.html",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R060",
+   "name": "逢犬はうす",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市北区",
+   "url": "http://iken-house.com/",
+   "addr": "北海道札幌市北区篠路町篠路371-17",
+   "animals": "犬",
+   "visit": "見学あり（施設と お世話の様子を確認できる）",
+   "spec": "老犬介護ケア。パピーからシニアまでのペットホテルも",
+   "review_query": "逢犬はうす 札幌市北区篠路町",
+   "review_name": "逢犬はうす",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業日：年中無休 営業時間：9:00〜18:30",
+     "src": "http://iken-house.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R061",
+   "name": "介護老犬ホーム TierHeim noah（ティアハイム・ノア）",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市東区",
+   "url": "https://tierheim-noah.life/",
+   "addr": "北海道札幌市東区北22条東8丁目2-3 1F",
+   "animals": "犬（年齢・障害・病気による制限なし）",
+   "reg": "札保動セ登録第1657号（譲受飼養）",
+   "spec": "老犬の介護・飼養を目的とした老犬ホーム",
+   "review_query": "ティアハイム ノア 札幌市東区北22条東",
+   "review_name": "noah",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "寝たきりのわんちゃんも体調の様子をみながら／年齢、障害、病気による制限はございません。",
+     "src": "https://tierheim-noah.life/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R062",
+   "name": "老犬ホーム セタ",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市北区",
+   "url": "https://roukenhome-seta.jimdofree.com/",
+   "addr": "北海道札幌市北区新川6条14丁目3-11",
+   "animals": "犬",
+   "spec": "介護付きケージフリー・少数預かり。2022年10月開業",
+   "review_query": "老犬ホーム セタ 札幌市北区新川6条",
+   "review_name": "セタ"
+  },
+  {
+   "id": "R063",
+   "name": "老犬・老猫ホーム ほのぼのホーム",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市佐伯区",
+   "url": "https://honobono-home.jimdofree.com/",
+   "addr": "広島県広島市佐伯区八幡1-6-32",
+   "animals": "犬・猫",
+   "spec": "終生ご利用コース（月払い・一括）。面会室あり",
+   "review_query": "ほのぼのホーム 広島市佐伯区八幡",
+   "review_name": "ほのぼのホーム",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "終生コース（月払い）の月額：超小型犬（3kg未満）33,000円、小型犬（3〜6kg）44,000円、中型犬（6〜10kg）55,000円、猫（7kg未満）44,000円。入居金110万円（返金なし）",
+     "src": "https://honobono-home.jimdofree.com/ご利用料金/終生コース-月払い/",
+     "checked": "2026-11-14",
+     "yen": 33000
+    },
+    {
+     "k": "別料金",
+     "v": "診察・薬・ワクチン・フィラリア予防・おむつ・療養食・火葬などは別（治療費の預かり金10万円から）。半介護は＋20%、全介護は＋40%",
+     "src": "https://honobono-home.jimdofree.com/ご利用料金/終生コース-月払い/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "R064",
+   "name": "konomi動物病院 老犬・老猫ホーム",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市東区",
+   "url": "https://konomiah.com/rouken.html",
+   "addr": "広島県広島市東区（番地は老犬介護のページに記載なし）",
+   "animals": "犬・猫",
+   "spec": "動物病院が運営。終身一括が基本（所有権を病院に移す）",
+   "facts": [
+    {
+     "k": "ふくまれるお世話",
+     "v": "介護をふくむ管理、1日1〜2回の散歩、1日2〜3食、月1回のシャンプー、投薬も",
+     "src": "https://konomiah.com/rouken.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "年齢の制限なし、管理のむずかしい持病や性格も受ける。終身一括が基本で、所有権を病院にゆずる形（もどすのは基本むずかしい）",
+     "src": "https://konomiah.com/rouken.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "別料金",
+     "v": "遠くへの送迎は交通費",
+     "src": "https://konomiah.com/rouken.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "病院",
+     "v": "動物病院が自分で管理",
+     "src": "https://konomiah.com/rouken.html",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "管理が困難な持病、難しい性格などでも特に問題ありません。／投薬が必要な場合は投薬をするようにいたしますが",
+     "src": "https://konomiah.com/rouken.html",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R065",
+   "name": "老犬・老猫ホーム らんずケア",
+   "prefs": [
+    "香川県"
+   ],
+   "city": "さぬき市",
+   "url": "https://www.runz-care.com/",
+   "addr": "香川県さぬき市志度3007-1",
+   "animals": "犬・猫",
+   "spec": "老犬＆老猫ホームと長期預かりのペットホテル",
+   "review_query": "らんずケア さぬき市志度",
+   "review_name": "らんずケア"
+  },
+  {
+   "id": "R066",
+   "name": "ペットホームえひめ",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "松山市",
+   "url": "https://pethome-ehime.jimdofree.com/",
+   "addr": "愛媛県松山市堀江町甲1545-5",
+   "animals": "犬・猫・小動物（うさぎ・鳥など）",
+   "reg": "動愛第1141号",
+   "spec": "長期ペットホテル専門店。老犬ホームとして終生お預かり（年齢・持病・介護度で相談）",
+   "review_query": "ペットホームえひめ 松山市堀江町",
+   "review_name": "ペットホームえひめ",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "中型犬・大型犬もご利用できます（お預り可能かは電話でお問合せ下さい）",
+     "src": "https://pethome-ehime.jimdofree.com/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R067",
+   "name": "老犬ホーム 晴（haru）",
+   "prefs": [
+    "長崎県"
+   ],
+   "city": "大村市",
+   "url": "https://chuoukeibi.co.jp/rouken/",
+   "addr": "長崎県大村市中岳町1395",
+   "animals": "犬（ペットホテルは猫も）",
+   "visit": "初回は見学後に予約。見学は要予約",
+   "spec": "長期・介護・終生プラン（30日以上）",
+   "review_query": "老犬ホーム晴 大村市中岳町",
+   "review_name": "老犬ホーム晴",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "介護代（オムツ利用時に１日￥330～程かかります）",
+     "src": "https://chuoukeibi.co.jp/rouken/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "ペットホテル 年中無休（受付時間 9:00～18:00）",
+     "src": "https://chuoukeibi.co.jp/rouken/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "ドッグラン 不定休",
+     "src": "https://chuoukeibi.co.jp/rouken/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは現金のみ前払いでお願いします。",
+     "src": "https://chuoukeibi.co.jp/rouken/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病ワクチン１年以内に接種必須です。 年齢・アレルギーで接種出来ない場合は証明書をご提示ください。",
+     "src": "https://chuoukeibi.co.jp/rouken/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R068",
+   "name": "ドッグケア soraと（老犬デイケア）",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市中央区",
+   "url": "https://sora-to.jp/",
+   "addr": "福岡県福岡市中央区平尾5-4-36-101",
+   "animals": "犬（老犬）",
+   "reg": "第E0501073（保管）",
+   "spec": "老犬のデイケアと老犬シッター。泊まりの長期預かりは公式サイトに記載なし",
+   "review_query": "ドッグケア soraと 福岡市中央区平尾",
+   "review_name": "soraと",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "介助が必要な寝たきり、認知症、持病のある老犬までお預かりしています。",
+     "src": "https://sora-to.jp/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R069",
+   "name": "ペットホテル里親（終身・長期預かり）",
+   "prefs": [
+    "鹿児島県"
+   ],
+   "city": "大島郡龍郷町",
+   "url": "https://sato-oya.com/",
+   "addr": "鹿児島県大島郡龍郷町（番地は公式サイトのトップに記載なし）",
+   "animals": "小型犬・中型犬・大型犬・猫",
+   "reg": "鹿児島県R5名保第1034号",
+   "spec": "生涯お預かり・長期お預かり・里親探し（奄美大島）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "『月々お支払プラン』は１ヶ月「２３，０００円」と無理なく長期で大切なペットをお預けできます。",
+     "src": "https://sato-oya.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間：8時～22時",
+     "src": "https://sato-oya.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病ワクチン：接種済み",
+     "src": "https://sato-oya.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R070",
+   "name": "Rainbow Life Towa",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "久留米市",
+   "url": "https://www.rouken-care.jp/facility/hm0116/",
+   "addr": "福岡県久留米市山川追分2-3-36",
+   "animals": "小型犬・猫（中型・大型犬は相談）",
+   "reg": "第076001号（譲受飼養）",
+   "src": "紹介ページ",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "受け入れの表：寝たきり ○、夜鳴きあり ○／中型犬、大型犬に関しましても柔軟に対応させていただきたい",
+     "src": "https://www.rouken-care.jp/facility/hm0116/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R071",
+   "name": "リリモナハウス",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "大網白里市",
+   "url": "https://www.rouken-care.jp/facility/hm0041/",
+   "addr": "千葉県大網白里市桂山1271",
+   "animals": "犬",
+   "reg": "17-山健福87-1（譲受飼養）",
+   "src": "紹介ページ",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "犬（小型・中型・大型）。寝たきり・夜鳴きの子も。猫と個室は受けていない",
+     "src": "https://www.rouken-care.jp/facility/hm0041/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "24時間スタッフが常駐し夜も見守る。全頭が屋内で、芝と真砂土の屋外ドッグラン（約370平方メートル）",
+     "src": "https://www.rouken-care.jp/facility/hm0041/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "見学・面会",
+     "v": "面会は前もって連絡すれば随時",
+     "src": "https://www.rouken-care.jp/facility/hm0041/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "病院",
+     "v": "近くの病院と提携",
+     "src": "https://www.rouken-care.jp/facility/hm0041/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "受け入れの表：寝たきり ○（受け入れる）／夜鳴きあり ○（受け入れる）／大型犬 ○（受け入れる）",
+     "src": "https://www.rouken-care.jp/facility/hm0041/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R072",
+   "name": "老犬介護ホーム Pumehana",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "函館市",
+   "url": "https://www.rouken-care.jp/facility/hm0115/",
+   "addr": "北海道函館市亀田港町32-11",
+   "animals": "小型犬・中型犬（大型犬・夜鳴きは相談）",
+   "reg": "北海道第022370404号（譲受飼養）",
+   "src": "紹介ページ",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "受け入れの表：寝たきり ○（受け入れる）／夜鳴きあり △（相談（条件つき））／大型犬 △（相談（条件つき））",
+     "src": "https://www.rouken-care.jp/facility/hm0115/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R073",
+   "name": "ベリーのおうち OYADO",
+   "prefs": [
+    "鹿児島県"
+   ],
+   "city": "鹿屋市",
+   "url": "https://www.rouken-care.jp/facility/hm0107/",
+   "addr": "鹿児島県鹿屋市札元2-3758-21",
+   "animals": "犬・猫",
+   "reg": "鹿児島県R4 鹿屋保第35-10号（保管）",
+   "src": "紹介ページ",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "受け入れの表：寝たきり ○（受け入れる）／夜鳴きあり ○（受け入れる）／大型犬 ○（受け入れる）",
+     "src": "https://www.rouken-care.jp/facility/hm0107/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R074",
+   "name": "わんわんわん（志波屋店）",
+   "prefs": [
+    "佐賀県"
+   ],
+   "city": "神埼市",
+   "url": "https://www.rouken-care.jp/facility/hm0018/",
+   "addr": "佐賀県神埼市神埼町志波屋2031-2",
+   "animals": "犬・猫",
+   "reg": "第41590355号（保管）",
+   "src": "紹介ページ",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "受け入れの表：寝たきり ○（受け入れる）／夜鳴きあり ○（受け入れる）／大型犬 ○（受け入れる）",
+     "src": "https://www.rouken-care.jp/facility/hm0018/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R075",
+   "name": "フレンチブルドッグのお家 ポエム",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "生駒市",
+   "url": "https://www.rouken-care.jp/facility/hm0039/",
+   "addr": "奈良県生駒市ひかりが丘2-10-12",
+   "animals": "犬",
+   "reg": "1183005（譲受飼養）",
+   "src": "紹介ページ",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "受け入れの表：寝たきり ○（受け入れる）／夜鳴きあり △（相談（条件つき））／大型犬 ○（受け入れる）",
+     "src": "https://www.rouken-care.jp/facility/hm0039/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R076",
+   "name": "老犬ホームJiJi",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "たつの市",
+   "url": "https://www.rouken-care.jp/facility/hm0027/",
+   "addr": "兵庫県たつの市新宮町曽我井850",
+   "animals": "小型犬・中型犬（大型犬は相談）",
+   "reg": "兵動1636466号（譲受飼養）",
+   "src": "紹介ページ",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "小型犬・中型犬は受け入れ、大型犬は相談、猫は受けていない（紹介ページの印）",
+     "src": "https://www.rouken-care.jp/facility/hm0027/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "見学・面会",
+     "v": "面会は11時〜16時、前もって連絡（時間外も対応）",
+     "src": "https://www.rouken-care.jp/facility/hm0027/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "別料金",
+     "v": "送迎（近畿・中国・四国、実費）",
+     "src": "https://www.rouken-care.jp/facility/hm0027/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "病院",
+     "v": "近くの動物病院と提携",
+     "src": "https://www.rouken-care.jp/facility/hm0027/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "受け入れの表：寝たきり △（相談（条件つき））／夜鳴きあり ×（受け入れ対象外）／大型犬 △（相談（条件つき））",
+     "src": "https://www.rouken-care.jp/facility/hm0027/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R077",
+   "name": "介護付老犬老猫ホーム おりづる園",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市安佐北区",
+   "url": "https://www.rouken-care.jp/facility/hm0021/",
+   "addr": "広島県広島市安佐北区落合南1-11-18",
+   "animals": "犬・猫",
+   "reg": "第254号（保管）",
+   "src": "紹介ページ",
+   "facts": [
+    {
+     "k": "見学・面会",
+     "v": "面会は営業時間（8時30分〜20時）内いつでも、前もっての連絡はいらない",
+     "src": "https://www.rouken-care.jp/facility/hm0021/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "大型・中型・小型犬・猫、寝たきり・夜鳴きの犬も可。個室は不可、全頭屋内、ドッグランなし",
+     "src": "https://www.rouken-care.jp/facility/hm0021/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "病院",
+     "v": "かかりつけ医と連携、提携の病院もある",
+     "src": "https://www.rouken-care.jp/facility/hm0021/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "受け入れの表：寝たきり ○（受け入れる）／夜鳴きあり ○（受け入れる）／大型犬 ○（受け入れる）",
+     "src": "https://www.rouken-care.jp/facility/hm0021/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R078",
+   "name": "Lien ～りあん～",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "北九州市門司区",
+   "url": "https://www.rouken-care.jp/facility/hm0095/",
+   "addr": "福岡県北九州市門司区高田1-4-25",
+   "animals": "犬・猫",
+   "reg": "北九州市第19013号（譲受飼養）",
+   "src": "紹介ページ",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "受け入れの表：寝たきり ○（受け入れる）／夜鳴きあり ○（受け入れる）／大型犬 ○（受け入れる）",
+     "src": "https://www.rouken-care.jp/facility/hm0095/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R079",
+   "name": "老犬ホームぱーとなー",
+   "prefs": [
+    "佐賀県"
+   ],
+   "city": "唐津市",
+   "url": "https://www.rouken-care.jp/facility/hm0002/",
+   "addr": "佐賀県唐津市七山馬川565",
+   "animals": "犬",
+   "reg": "第41550079号（保管）",
+   "src": "紹介ページ",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "受け入れの表：寝たきり ○（受け入れる）／夜鳴きあり ○（受け入れる）／大型犬 ○（受け入れる）",
+     "src": "https://www.rouken-care.jp/facility/hm0002/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R080",
+   "name": "老犬ホーム トップ",
+   "prefs": [
+    "熊本県"
+   ],
+   "city": "菊池市",
+   "url": "https://roukentop.co.jp/",
+   "addr": "熊本県菊池市亘530",
+   "animals": "犬・猫",
+   "visit": "預かり中はブログ報告・面会あり",
+   "reg": "熊本県 菊保R1保第2号",
+   "spec": "短期〜長期の預かりと終身プラン（犬は10歳以上、猫は14歳以上）",
+   "review_query": "老犬ホーム トップ 菊池市",
+   "review_name": "老犬ホーム トップ",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "ペイペイ支払い対応しました",
+     "src": "https://roukentop.co.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "800,000円 (1日換算2000円)。530,000円 （一日換算2500円）",
+     "src": "https://roukentop.co.jp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "お預かりする際、ワクチン証明書・狂犬病予防接種証明書が必要です。",
+     "src": "https://roukentop.co.jp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R081",
+   "name": "ペットラウンジ le chien（ルシアン） 老犬ホーム",
+   "prefs": [
+    "熊本県"
+   ],
+   "city": "熊本市西区",
+   "url": "https://www.petlounge-lechien.com/old_dog_home.php",
+   "addr": "熊本県熊本市西区松尾2-3-15",
+   "animals": "犬・猫",
+   "reg": "保管 熊市保第R6-23号・譲受飼養 熊市譲第R6-1号",
+   "spec": "ショートステイから生涯預かりまで（トリミングサロン・ペットホテル併設）",
+   "review_query": "ペットラウンジ ルシアン 熊本市西区",
+   "review_name": "ルシアン",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "夜間の徘徊や、夜鳴きなど（の悩みに対応）",
+     "src": "https://www.petlounge-lechien.com/old_dog_home.php",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R082",
+   "name": "みんとの杜",
+   "prefs": [
+    "福島県"
+   ],
+   "city": "福島市",
+   "url": "https://minto-no-mori.com/",
+   "addr": "福島県福島市下野寺字山神43-1",
+   "animals": "犬",
+   "visit": "施設見学できる（電話かLINEで問い合わせ）",
+   "reg": "保管 福島県4福保保管受 第151号・譲受飼養 福島県7福保譲受 第1号",
+   "spec": "老犬ホーム・ペットホテル。終生お預かり（亡くなるときまでお世話）",
+   "review_query": "みんとの杜 福島市",
+   "review_name": "みんとの杜",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "はい、大型犬もご利用いただけます。",
+     "src": "https://minto-no-mori.com/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R083",
+   "name": "甲斐っトランド 老犬ホーム（いわき甲斐楽園）",
+   "prefs": [
+    "福島県"
+   ],
+   "city": "いわき市",
+   "url": "https://kaittland.jimdofree.com/%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B/%E8%80%81%E7%8A%AC%E3%83%9B%E3%83%BC%E3%83%A0/",
+   "addr": "福島県いわき市好間町大利小川崎103-1",
+   "animals": "犬",
+   "reg": "第1種動物取扱業 福島県3い保護受第1号",
+   "spec": "年間・半年・終身プランの老犬ホーム（終身は10歳以上）。ドッグラン・カフェ・トリミング・ペットホテル併設",
+   "review_query": "甲斐っトランド いわき市",
+   "review_name": "甲斐っトランド",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "持病がある子・ガン等手術が必要な場合は別途、治療費がかかります。／２０キロ以上の大型犬は別途料金となります。",
+     "src": "https://kaittland.jimdofree.com/%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B/%E8%80%81%E7%8A%AC%E3%83%9B%E3%83%BC%E3%83%A0/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R084",
+   "name": "老犬ホーム すいーとほーむ",
+   "prefs": [
+    "山形県"
+   ],
+   "city": "山形市",
+   "url": "https://sweeethome.jp/",
+   "addr": "山形県山形市南原町3-15-51",
+   "animals": "犬",
+   "spec": "終生までお世話をする老犬介護施設。長期ドッグホテル・里親探しも",
+   "review_query": "すいーとほーむ 山形市南原町",
+   "review_name": "すいーとほーむ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "プラス500円/日",
+     "src": "https://sweeethome.jp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン証明書のコピー1通",
+     "src": "https://sweeethome.jp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R085",
+   "name": "ペットステーション ジュエル 老犬ホーム",
+   "prefs": [
+    "徳島県"
+   ],
+   "city": "徳島市",
+   "url": "https://petcare-jewel.com/care/",
+   "addr": "徳島県徳島市八万町弍丈49番地15",
+   "animals": "犬",
+   "spec": "終生まで過ごせる老犬ホーム。24時間スタッフが同室で見守り。介護ルーム・ホテル・訪問介護も",
+   "review_query": "ペットステーション ジュエル 徳島市",
+   "review_name": "ジュエル",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "寝たきりで全面的な介助が必要（24時間付き添います）／夜鳴が続く子は動物病院で睡眠導入剤を処方してもらってください。／45kgからは24時間二人で介護をするため（大型犬も）",
+     "src": "https://petcare-jewel.com/care/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R086",
+   "name": "ペットケアハウスなな",
+   "prefs": [
+    "高知県"
+   ],
+   "city": "南国市",
+   "url": "https://petcarehouse-nana.jimdofree.com/",
+   "addr": "高知県南国市八京1112-8",
+   "animals": "犬・猫",
+   "spec": "生涯ホーム（生涯を終えるまで年齢制限なく預かり）・月単位の預かり・介護相談",
+   "review_query": "ペットケアハウスなな 南国市",
+   "review_name": "ペットケアハウスなな",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "25kg以上の場合はお問い合わせください（大型犬は相談）",
+     "src": "https://petcarehouse-nana.jimdofree.com/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R087",
+   "name": "もふもふの気持ち（老猫・老犬ホーム）",
+   "prefs": [
+    "宮崎県"
+   ],
+   "city": "宮崎市",
+   "url": "https://miyazaki-mitori.com/",
+   "addr": "宮崎県宮崎市青島3丁目8-7",
+   "animals": "犬・猫",
+   "reg": "宮保衛指令第122号384・宮保衛指令第122号385",
+   "spec": "老猫・老犬ホーム。看取りまで対応（一般社団法人）",
+   "review_query": "もふもふの気持ち 宮崎市青島",
+   "review_name": "もふもふの気持ち",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "病気や飼育困難な愛犬や愛猫を手厚くお世話します",
+     "src": "https://miyazaki-mitori.com/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R088",
+   "name": "DOG CAT VILLAGE la vie.（ラヴィ）老犬・老猫ホーム",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "取手市",
+   "url": "https://kk-lavie.com/senior-dog/",
+   "addr": "茨城県取手市戸頭9丁目1-21",
+   "animals": "犬・猫",
+   "visit": "初回相談・施設見学は無料。面会は水曜日以外の10時〜15時の予約制で、何度でも",
+   "reg": "第一種動物取扱業 保管 茨城県第3379号／譲受け飼養 茨城県第3380号",
+   "review_query": "lavie. 老犬ホーム 取手市",
+   "review_name": "lavie",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "寝たきり、持病、投薬が必要な子もご相談ください／投薬、通院、寝たきり、夜鳴きにも対応。／対象は 小型犬12歳〜／中型犬11歳〜／大型犬10歳〜",
+     "src": "https://kk-lavie.com/senior-dog/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R089",
+   "name": "龍ケ崎 老犬ホーム・ペットホテル ゆるやか",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "龍ケ崎市",
+   "url": "https://yuruyaka.co.jp/rouken/",
+   "addr": "茨城県龍ケ崎市佐貫2-20-2",
+   "animals": "犬",
+   "visit": "いつでもわんちゃんに会うことができますので、ご連絡の上お越し下さい",
+   "review_query": "老犬ホーム ゆるやか 龍ケ崎市",
+   "review_name": "ゆるやか",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "寝たきりによる床ずれケアー等、介護が必要なわんちゃんもお任せください。／認知症などでお散歩に行けないわんちゃんは／大型犬２８㎏未満（料金の区分）",
+     "src": "https://yuruyaka.co.jp/rouken/",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R090",
+   "name": "プレミアム老犬ホーム＆ペットホテル DOG PARTNERS",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "https://dog-partners.jp/service/life/",
+   "addr": "神奈川県横浜市中区若葉町2-21",
+   "animals": "犬",
+   "visit": "営業時間内（10:00〜20:00）はいつでも面会が可能",
+   "reg": "保管 30-0198／訓練 30-0199／譲受飼養 30-0200",
+   "review_query": "DOG PARTNERS 横浜市中区",
+   "review_name": "DOG PARTNERS",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1か月：小型犬（5kgまで）92,400円、中型犬（5〜15kg）122,760円、大型犬（15〜35kg）158,400円、超大型犬198,000円。終身一括：小型2,541,000円〜（税込）",
+     "src": "https://dog-partners.jp/price/",
+     "checked": "2026-11-15",
+     "yen": 92400,
+     "tax": "込"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "1日2回の散歩、手作りフード（持ち込みも可）、定期的なトリミング、夜間の見回り、月1回の定期健診",
+     "src": "https://dog-partners.jp/service/life/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "別料金",
+     "v": "病気の治療費は実費",
+     "src": "https://dog-partners.jp/service/life/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "見学・面会",
+     "v": "営業時間内（10時〜20時）はいつでも面会できる",
+     "src": "https://dog-partners.jp/service/life/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "病院",
+     "v": "治療は提携の獣医師が行う",
+     "src": "https://dog-partners.jp/service/life/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "R091",
+   "name": "らものいえ 老犬ホーム",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "所沢市",
+   "url": "https://candh0221.com/olddog-home",
+   "addr": "埼玉県所沢市御幸町11-5",
+   "animals": "犬",
+   "reg": "保管 76-0484",
+   "review_query": "らものいえ 所沢市",
+   "review_name": "らものいえ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "入所金100,000円、月100,000円〜300,000円（税別・介護の度合いで変わる、諸経費こみ）。契約のときに先払い",
+     "src": "https://candh0221.com/olddog-home",
+     "checked": "2026-11-15",
+     "yen": 100000,
+     "tax": "別"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "8歳以上の犬。ほかの施設で断られた子も相談できる。入所の前に1泊のテストあずかり（10,000円）",
+     "src": "https://candh0221.com/olddog-home",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "別料金",
+     "v": "病院の費用。必要なら提携病院での診察・シャンプー代",
+     "src": "https://candh0221.com/olddog-home",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "病院",
+     "v": "提携の動物病院あり、獣医師の指導で健康面を見る",
+     "src": "https://candh0221.com/olddog-home",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "脚が弱り歩けない／寝たきりになり床ずれ防止のために夜中の体位替えが大変／認知症により夜鳴きが止まらず／病気が発症し、対応に困っている",
+     "src": "https://candh0221.com/olddog-home",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R092",
+   "name": "はっぴーわんだふる（NPO法人ワンダブル二度目の命 老犬老猫ホーム）",
+   "prefs": [
+    "和歌山県"
+   ],
+   "city": "和歌山市",
+   "url": "https://wandouble.com/rouken.html",
+   "addr": "和歌山県和歌山市米屋町2",
+   "animals": "犬・猫",
+   "visit": "見学は電話で日程を予約（11:00〜16:00）",
+   "reg": "第220764号　第220766号",
+   "review_query": "ワンダブル 和歌山市",
+   "review_name": "ワンダブル",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "体が不自由な犬猫のお世話／持病のある犬については、獣医師の診断書が必要になる場合があります。／大型犬（体重40㎏迄）",
+     "src": "https://wandouble.com/rouken.html",
+     "checked": "2026-11-17"
+    }
+   ]
+  },
+  {
+   "id": "R093",
+   "name": "アサワペット牧場（老犬ホーム）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "小田原市",
+   "url": "https://asawa.jimdofree.com/",
+   "addr": "神奈川県小田原市沼代684",
+   "animals": "犬",
+   "review_query": "アサワペット 小田原市",
+   "review_name": "アサワペット",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "室外の中型犬：月43,000円〜（税の表示なし）",
+     "src": "https://asawa.jimdofree.com/",
+     "checked": "2026-11-15",
+     "yen": 43000
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "介護が必要な高齢犬まで。2025年2月15日で一つの施設を閉め、老犬ホームは小田原の施設で続けると案内",
+     "src": "https://asawa.jimdofree.com/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "R094",
+   "name": "家庭的老犬介護施設 Smile Home",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "近江八幡市",
+   "url": "https://www.smilehomefordog.com/",
+   "addr": "滋賀県近江八幡市上田町1058-19",
+   "animals": "犬・猫",
+   "review_query": "Smile Home 老犬介護 近江八幡市",
+   "review_name": "SmileHome",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "お申込み時に医療費￥100,000-をお預かりさせていただきます。",
+     "src": "https://www.smilehomefordog.com/blank-7",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R095",
+   "name": "老犬ホームトップ 栃木犬舎",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "矢板市",
+   "url": "https://www.roukenhome.or.jp/homelist/toptochigi/",
+   "addr": "栃木県矢板市石関862-1",
+   "animals": "犬",
+   "visit": "見学できる",
+   "reg": "栃木県動愛セ 20保第003号",
+   "spec": "24時間スタッフが常駐。テニスコート1面より広いドッグラン",
+   "review_query": "老犬ホームトップ 栃木 矢板市石関",
+   "review_name": [
+    "トップ",
+    "栃木"
+   ],
+   "facts": [
+    {
+     "k": "お世話",
+     "v": "24時間スタッフが常駐。ブログ・手紙・メールでふだんの様子を知らせる。介護室と中長期の預かりの場所があり、大きめのケージ、昼に自由に過ごせる場所、運動場から出られるドッグラン",
+     "src": "https://www.roukenhome.or.jp/homelist/toptochigi/",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "行き方",
+     "v": "東北道の矢板インターから車で5分ほど",
+     "src": "https://www.roukenhome.or.jp/homelist/toptochigi/",
+     "checked": "2026-11-16"
+    }
+   ]
+  },
+  {
+   "id": "R096",
+   "name": "ペットケア＆アダプションセンター日光",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "日光市",
+   "url": "https://nikko.pfirst.jp/care_center",
+   "addr": "栃木県日光市",
+   "animals": "犬・猫",
+   "visit": "見学は予約制",
+   "spec": "大型犬・猫も。年中無休で面会・外泊できる",
+   "review_query": "ペットケア＆アダプションセンター日光",
+   "review_name": "日光",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "月額：小型犬（10kg未満）65,000円、中型犬（20kg未満）70,000円、大型犬（20kg以上）75,000円、猫65,000円（税込）。入居のときに医療預かり金10万円",
+     "src": "https://nikko.pfirst.jp/care_center",
+     "checked": "2026-11-16",
+     "yen": 65000,
+     "tax": "込"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "年齢や持病に合わせた健康管理、混合ワクチン・狂犬病・フィラリア・ノミ・ダニの予防、毎月の写真入りの報告書。寝たきりの子の床ずれのケアや体位変換も",
+     "src": "https://nikko.pfirst.jp/care_center",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "病院",
+     "v": "提携の獣医師の定期の健康診断と検査、専属の獣医師の巡回。具合が悪いときは提携の病院で診てもらい、結果を知らせる",
+     "src": "https://nikko.pfirst.jp/care_center",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "部屋",
+     "v": "個室・サークル・ケージから、体の大きさや性格に合わせて",
+     "src": "https://nikko.pfirst.jp/care_center",
+     "checked": "2026-11-16"
+    }
+   ]
+  },
+  {
+   "id": "R097",
+   "name": "ペットショップひまわり 老犬施設",
+   "prefs": [
+    "青森県"
+   ],
+   "city": "八戸市",
+   "url": "https://www.pet-himawari.com/pettaxi-olddogfacility",
+   "addr": "青森県八戸市大字市川町字尻引53-3",
+   "animals": "犬",
+   "spec": "世話ができなくなった犬を預かる老犬施設。24時間体制で寝たきりの犬もお世話",
+   "visit": "預かり中の食事・遊びのようすを映像で届ける",
+   "facts": [
+    {
+     "k": "ふくまれるお世話",
+     "v": "24時間体制で寝たきりの犬もお世話。空気の良い広場での外遊び。食事・遊び・おなかの調子を映像で届ける",
+     "src": "https://www.pet-himawari.com/pettaxi-olddogfacility",
+     "checked": "2026-11-17"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "高齢になり世話ができなくなった、都合で飼えなくなった犬を預かる（事情で飼えなくなった子や寝たきりの犬は譲受業として）",
+     "src": "https://www.pet-himawari.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "ペットショップひまわり 八戸市市川町",
+   "review_name": "ひまわり"
+  },
+  {
+   "id": "R098",
+   "name": "ふぁんしぃふりぃ 老犬ホーム",
+   "prefs": [
+    "富山県"
+   ],
+   "city": "高岡市",
+   "url": "https://www.fancy-free.jp/senior/",
+   "addr": "富山県高岡市伏木国分1-9-11",
+   "animals": "小型犬だけ",
+   "spec": "小型犬専門の老犬ホーム・老犬ホテル。昼はスタッフとプレールームやウッドデッキで過ごす",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "小型犬専門。狂犬病・混合ワクチンを接種している子が基本。お試しの一時預かりあり",
+     "src": "https://www.fancy-free.jp/senior/",
+     "checked": "2026-11-17"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "昼はスタッフと一緒にプレールームやウッドデッキで過ごす。老犬のお世話・介護の相談",
+     "src": "https://www.fancy-free.jp/senior/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "ふぁんしぃふりぃ 高岡市伏木",
+   "review_name": "ふぁんしぃ"
+  },
+  {
+   "id": "R099",
+   "name": "犬の美容室ハッピー 長期お預かり（老犬ホーム）",
+   "prefs": [
+    "福井県"
+   ],
+   "city": "鯖江市",
+   "url": "https://happy0211.jimdofree.com/%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%B9%E3%83%86%E3%82%A4-%E9%95%B7%E6%9C%9F%E3%81%8A%E9%A0%90%E3%81%8B%E3%82%8A-%E3%83%9A%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB/",
+   "addr": "福井県鯖江市東鯖江2丁目7-16",
+   "animals": "犬だけ",
+   "spec": "1か月からの長期お預かり。老犬ケアマネージャーがお世話し、夜も無人にならない",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "長期お預かり（28日）：8kgまで100,000円、8kg以上120,000円、17kg程度150,000円（税別）。入会金200,000円・医療費100,000円（未使用分は返金）",
+     "yen": 100000,
+     "src": "https://happy0211.jimdofree.com/",
+     "checked": "2026-11-17"
+    },
+    {
+     "k": "別料金",
+     "v": "食費・治療費・オムツ・ペットシーツは別",
+     "src": "https://happy0211.jimdofree.com/",
+     "checked": "2026-11-17"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "起床後の体重測定、散歩やドッグランでの運動、ブラッシング。1か月以上の利用は月1回のシャンプー",
+     "src": "https://happy0211.jimdofree.com/",
+     "checked": "2026-11-17"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "犬だけ。ノミ・マダニの駆除剤を使っていない犬は不可。体調がすぐれない犬・薬を飲んでいる犬は断ることがある",
+     "src": "https://happy0211.jimdofree.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "犬の美容室ハッピー 鯖江市東鯖江",
+   "review_name": "ハッピー"
+  },
+  {
+   "id": "R100",
+   "name": "いぬの介護＆ホテル はる",
+   "prefs": [
+    "大分県"
+   ],
+   "city": "国東市",
+   "url": "https://r.goope.jp/haru0315/free/service",
+   "addr": "大分県国東市武蔵町内田377",
+   "animals": "犬（30kgまで。超大型犬は相談）",
+   "spec": "介護が必要な犬のお泊まり。寝たきり・余命宣告を受けた子、看取りまで（1泊ごとの料金）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1泊2日：小型（7kg未満）一般4,500円・重度介護9,800円、看取りをふくむと13,650〜14,700円（税抜）",
+     "src": "https://r.goope.jp/haru0315/free/service",
+     "checked": "2026-11-17"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "小型・中型・大型（30kgまで）。介護の度合い（軽度・中度・重度）で料金が変わる。アレルギー・皮膚の病気・けいれんの経験は前もって相談",
+     "src": "https://r.goope.jp/haru0315/free/service",
+     "checked": "2026-11-17"
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "国東市内は訪問介護と送迎もある",
+     "src": "https://r.goope.jp/haru0315/free/service",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "いぬの介護＆ホテル はる 国東市",
+   "review_name": "はる"
+  },
+  {
+   "id": "R101",
+   "name": "老犬ホテル SUNSHINE はちおうじ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "八王子市",
+   "url": "https://pethotel-sunshine.com/",
+   "addr": "東京都八王子市諏訪町70-4",
+   "animals": "犬（大型犬は介護用カートの貸し出しあり）",
+   "spec": "高齢の犬・障がいのある犬を優先して預かる介護つきのホテル。月ごとのプランもある",
+   "reg": "保管 23東京都保第103426号・譲受飼養 23東京都譲第103426号",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "高齢の犬・障がいのある犬を優先。夜鳴き・徘徊など、家での介護がむずかしい子の相談を受けている",
+     "src": "https://pethotel-sunshine.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "老犬ホテル SUNSHINE 八王子市諏訪町",
+   "review_name": "SUNSHINE"
+  },
+  {
+   "id": "R102",
+   "name": "NPO法人ねこほーむ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "町田市",
+   "url": "https://neko-home.or.jp/",
+   "addr": "東京都町田市",
+   "animals": "猫だけ（室内飼いの猫が基本）",
+   "spec": "飼えなくなった猫を、その命を全うするまで預かる終生のお世話",
+   "visit": "前もって連絡すれば面会・見学ができる",
+   "reg": "譲受飼養 東京都譲第101833号・第102142号",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "猫だけ。室内で暮らしてきた猫が基本",
+     "src": "https://neko-home.or.jp/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "NPO法人ねこほーむ 町田市",
+   "review_name": "ねこほーむ"
+  },
+  {
+   "id": "R103",
+   "name": "MKPわんこホーム",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横須賀市",
+   "url": "https://www.mkpwankohome.com/",
+   "addr": "神奈川県横須賀市大津町1-5-32",
+   "animals": "犬",
+   "spec": "老犬介護ホームとペットホテル。最期のときまでお世話する",
+   "facts": [
+    {
+     "k": "ふくまれるお世話",
+     "v": "最期のときまでの介護",
+     "src": "https://www.mkpwankohome.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "MKPわんこホーム 横須賀市大津町",
+   "review_name": "MKP"
+  },
+  {
+   "id": "R104",
+   "name": "Cuddle Cat（老猫ホーム）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://select-type.com/s/Cuddle-Cat/",
+   "addr": "千葉県柏市しいの木台5-29-2",
+   "animals": "猫だけ",
+   "spec": "老猫ホーム。短期型・1年ごとの更新型・終生型から選べる",
+   "reg": "保管 千葉県柏市第18号-2-2号",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "短期型：月額50,000円",
+     "src": "https://select-type.com/s/Cuddle-Cat/",
+     "checked": "2026-11-17",
+     "yen": 50000
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "終生型は15歳以上か寝たきりの猫。寝たきり・夜鳴きの子のお世話もする",
+     "src": "https://select-type.com/s/Cuddle-Cat/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "Cuddle Cat 柏市しいの木台",
+   "review_name": "Cuddle"
+  },
+  {
+   "id": "R105",
+   "name": "ペットケアサロンえがお（老犬猫ホーム）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "http://pet-care-egao.com/",
+   "addr": "千葉県佐倉市井野1327-2",
+   "animals": "犬・猫",
+   "spec": "老犬猫ホーム。長期・終生のお預かりも相談できる",
+   "reg": "保管 22-印健福170-12",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "犬・猫。長期・終生のお預かりは相談",
+     "src": "http://pet-care-egao.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "ペットケアサロンえがお 佐倉市井野",
+   "review_name": "えがお"
+  },
+  {
+   "id": "R106",
+   "name": "フォレスト・ドッグケアセンター",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "袖ケ浦市",
+   "url": "https://forest-dog.com/",
+   "addr": "千葉県袖ケ浦市上宮田246",
+   "animals": "犬",
+   "spec": "老犬のためのホーム。ホスピス・看取りまでお世話する",
+   "visit": "見学会・面会がある",
+   "reg": "19-君健福177-1",
+   "facts": [
+    {
+     "k": "ふくまれるお世話",
+     "v": "ホスピスケア・看取り",
+     "src": "https://forest-dog.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "フォレスト・ドッグケアセンター 袖ケ浦市",
+   "review_name": "フォレスト"
+  },
+  {
+   "id": "R107",
+   "name": "ペットハウス ながらエル（老犬ホーム）",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "長生郡長柄町",
+   "url": "https://www.pethouse-nagaraelle.com/",
+   "addr": "千葉県長生郡長柄町船木1-10",
+   "animals": "犬",
+   "spec": "老犬ホーム。看取りまでお世話する",
+   "facts": [
+    {
+     "k": "ふくまれるお世話",
+     "v": "寝たきりの子もカートで外に連れ出す。看取りまで",
+     "src": "https://www.pethouse-nagaraelle.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "ペットハウス ながらエル 長柄町",
+   "review_name": "ながらエル"
+  },
+  {
+   "id": "R108",
+   "name": "老犬ホーム ルル",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "長生郡長柄町",
+   "url": "https://lulurh.com/",
+   "addr": "千葉県長生郡長柄町",
+   "animals": "犬（病気のある子も相談）",
+   "spec": "獣医師が常駐する老犬ホーム。飼えなくなった犬を有料で預かる",
+   "reg": "22-長健福2397-1",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "病気のある犬も受け入れる。獣医師が常駐",
+     "src": "https://lulurh.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "老犬ホーム ルル 長柄町",
+   "review_name": "ルル"
+  },
+  {
+   "id": "R109",
+   "name": "Dog care house ふみちゃん家",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "野田市",
+   "url": "https://dog-fumichanti.com/",
+   "addr": "千葉県野田市平井188-19",
+   "animals": "犬（大型犬も相談可）",
+   "spec": "老犬ホーム。30kg以上の大型犬の区分もある",
+   "visit": "前もって連絡すれば見学・面会ができる",
+   "reg": "保管 23-野健福381-2・譲受飼養 23-野健福501-1",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "大型犬（30kg以上）も相談できる",
+     "src": "https://dog-fumichanti.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "ふみちゃん家 野田市平井",
+   "review_name": "ふみちゃん"
+  },
+  {
+   "id": "R110",
+   "name": "老犬介護ホーム レックスランド",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "越谷市",
+   "url": "https://rexland.jp/",
+   "addr": "埼玉県越谷市赤山町",
+   "animals": "犬",
+   "spec": "老犬介護ホーム。短期・長期の泊まりで預かる",
+   "reg": "保管 第202号・譲受飼養 第203号",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "夜鳴き・認知症・徘徊のある子も受け入れる",
+     "src": "https://rexland.jp/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "老犬介護ホーム レックスランド 越谷市",
+   "review_name": "レックスランド"
+  },
+  {
+   "id": "R111",
+   "name": "BOUQUET BATON（ブーケバトン）",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "龍ケ崎市",
+   "url": "https://le-bouquet-care.com/",
+   "addr": "茨城県龍ケ崎市",
+   "animals": "犬（超大型犬28kg以上も）",
+   "spec": "短期・長期から終生まで預かる介護ホーム。終末期のケアまで",
+   "visit": "見学ができる",
+   "reg": "保管 茨城県第3486号",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬：月額110,000円（税・食事こみ）",
+     "src": "https://le-bouquet-care.com/",
+     "checked": "2026-11-17",
+     "yen": 110000
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "寝たきり・夜鳴きの子、大型犬（28kg以上の超大型も）を受け入れる",
+     "src": "https://le-bouquet-care.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "BOUQUET BATON 龍ケ崎市",
+   "review_name": "BOUQUET"
+  },
+  {
+   "id": "R112",
+   "name": "犬猫プラネット",
+   "prefs": [
+    "茨城県"
+   ],
+   "city": "鉾田市",
+   "url": "https://inunekoplanet.jimdofree.com/",
+   "addr": "茨城県鉾田市安塚1721-12・13",
+   "animals": "犬・猫",
+   "spec": "犬・猫を終生預かる。全国から迎えに行く",
+   "reg": "譲受飼養 茨城県3538号",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "終生：猫80万〜90万円、犬260万〜300万円",
+     "src": "https://inunekoplanet.jimdofree.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "犬猫プラネット 鉾田市",
+   "review_name": "犬猫プラネット"
+  },
+  {
+   "id": "R113",
+   "name": "Anne's Lodge（アンズロッジ）",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "那須郡那須町",
+   "url": "https://annes-lodge.com/",
+   "addr": "栃木県那須郡那須町大字高久丙1185-47",
+   "animals": "犬",
+   "spec": "年をとった犬を終生預かり、看取りまでお世話する。年齢の上限なし",
+   "reg": "栃木県動愛セ21保第039号",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "高齢の犬。年齢の上限なし",
+     "src": "https://annes-lodge.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "Anne's Lodge 那須町",
+   "review_name": "Anne"
+  },
+  {
+   "id": "R114",
+   "name": "最期まで一緒に！くっきぃホーム",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "前橋市",
+   "url": "https://www.rouken-care.jp/facility/hm0113/",
+   "src": "rouken-care",
+   "addr": "群馬県前橋市岩神町2-1-11",
+   "animals": "小型犬・中型犬（大型犬・猫は不可）",
+   "spec": "小型・中型の老犬ホーム",
+   "visit": "面会は11時〜15時",
+   "reg": "第010000-24-29号",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "小型・中型の犬。寝たきり・夜鳴きの子も受け入れる。大型犬・猫は受けない",
+     "src": "https://www.rouken-care.jp/facility/hm0113/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "くっきぃホーム 前橋市岩神町",
+   "review_name": "くっきぃ"
+  },
+  {
+   "id": "R115",
+   "name": "都島ナースペットケアセンター（老猫ホーム）",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市都島区",
+   "url": "https://www.pet-miyakojima.com/oineko-home/",
+   "addr": "大阪府大阪市都島区都島南通1-20-9",
+   "animals": "猫だけ",
+   "spec": "介護の必要な猫も預かる老猫ホーム。終生の契約も相談できる",
+   "reg": "譲受飼養 260031F（2号館）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "月額4.5万円〜、預かり金10万円",
+     "src": "https://www.pet-miyakojima.com/oineko-home/",
+     "checked": "2026-11-17",
+     "yen": 45000
+    }
+   ],
+   "review_query": "都島ナースペットケアセンター",
+   "review_name": "都島"
+  },
+  {
+   "id": "R116",
+   "name": "ALOHA MIMITAN（老犬老猫ホーム）",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "大阪市東住吉区",
+   "url": "https://www.alohamimitan.co.jp/care",
+   "addr": "大阪府大阪市東住吉区",
+   "animals": "犬（8kgまで）・猫",
+   "spec": "老犬老猫ホーム。終生（一括）のプランもある",
+   "visit": "入所の前に見学が必要",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1か月プラン：127,050円",
+     "src": "https://www.alohamimitan.co.jp/care",
+     "checked": "2026-11-17",
+     "yen": 127050
+    }
+   ],
+   "review_query": "ALOHA MIMITAN 東住吉区",
+   "review_name": "MIMITAN"
+  },
+  {
+   "id": "R117",
+   "name": "老猫ホーム かぎしっぽ",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "茨木市",
+   "url": "https://kagi-shippo-cat-hotel-home.simdif.com/",
+   "addr": "大阪府茨木市竹橋町8-12",
+   "animals": "猫だけ",
+   "spec": "猫の終生飼養をする老猫ホーム",
+   "review_query": "老猫ホーム かぎしっぽ 茨木市",
+   "review_name": "かぎしっぽ"
+  },
+  {
+   "id": "R118",
+   "name": "生駒警察犬訓練所 シニア犬の終生お預かり",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "生駒市",
+   "url": "https://www.ikoma-keisatsuken.com/senior/",
+   "addr": "奈良県生駒市高山町8164",
+   "animals": "犬",
+   "spec": "飼えなくなった犬を終生お預かりする",
+   "visit": "入所の相談は予約制。見学・相談の会がある",
+   "review_query": "生駒警察犬訓練所",
+   "review_name": "生駒",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "77,000円(税込)/月。55,000円(税込)/月",
+     "src": "https://www.ikoma-keisatsuken.com/training/training01/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R119",
+   "name": "シニアペットケアステーション京都府",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市西京区",
+   "url": "https://www.roukenhome.or.jp/homelist/petcare-kyoto/",
+   "src": "roukenhome",
+   "addr": "京都府京都市西京区桂畑ケ田町59",
+   "animals": "犬・猫",
+   "spec": "高齢の犬・猫を中心に、末永く預かる「終生サポート」",
+   "reg": "京都市登録第170015",
+   "review_query": "シニアペットケアステーション 西京区",
+   "review_name": "シニアペットケア"
+  },
+  {
+   "id": "R120",
+   "name": "ペットサービス 名古屋北区（老犬ホーム）",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市北区",
+   "url": "https://www.petservice1991.com/home/",
+   "addr": "愛知県名古屋市北区御成通3-16-6",
+   "animals": "犬（大型犬も）・猫",
+   "spec": "一時から長期まで預かる老犬ホーム。月ごとか1年の料金",
+   "visit": "面会ができる",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬・猫：入会金10万円＋月額4.5万円〜（1年54万円〜）、中型犬：月額6万円〜、大型犬：月額8万円〜（税別。おむつ・シーツ・フードは別）",
+     "src": "https://www.petservice1991.com/home/",
+     "checked": "2026-11-17",
+     "yen": 45000
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "小型犬・猫から大型犬まで。飼い主さんの入院や施設への入居のときの一時・長期のお預かり。途中でやめたときや亡くなったときの返金はない",
+     "src": "https://www.petservice1991.com/home/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "ペットサービス 名古屋市北区御成通",
+   "review_name": "ペットサービス"
+  },
+  {
+   "id": "R121",
+   "name": "ペットサービス 名古屋昭和区（老犬ホーム）",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市昭和区",
+   "url": "https://www.petservice1991.com/home/",
+   "addr": "愛知県名古屋市昭和区安田通2-11-1",
+   "animals": "犬（大型犬も）・猫",
+   "spec": "一時から長期まで預かる老犬ホーム。月ごとか1年の料金",
+   "visit": "面会ができる",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬・猫：入会金10万円＋月額4.5万円〜（1年54万円〜）、中型犬：月額6万円〜、大型犬：月額8万円〜（税別。おむつ・シーツ・フードは別）",
+     "src": "https://www.petservice1991.com/home/",
+     "checked": "2026-11-17",
+     "yen": 45000
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "小型犬・猫から大型犬まで。飼い主さんの入院や施設への入居のときの一時・長期のお預かり。途中でやめたときや亡くなったときの返金はない",
+     "src": "https://www.petservice1991.com/home/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "ペットサービス 名古屋市昭和区安田通",
+   "review_name": "ペットサービス"
+  },
+  {
+   "id": "R122",
+   "name": "J ケアハウス ベッツ（獣徳会動物医療センター）",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "愛知郡東郷町",
+   "url": "https://www.jyutokukai.com/content-2/",
+   "addr": "愛知県愛知郡東郷町春木音貝107",
+   "animals": "犬・猫",
+   "spec": "動物病院のとなりの老犬・老猫ホーム。1日1回、獣医師が回診する",
+   "facts": [
+    {
+     "k": "ふくまれるお世話",
+     "v": "1日1回の獣医師の回診。寝たきりの子のお手入れ、車いす・ハーネスの貸し出し",
+     "src": "https://www.jyutokukai.com/content-2/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "獣徳会動物医療センター 東郷町",
+   "review_name": "獣徳会"
+  },
+  {
+   "id": "R123",
+   "name": "加藤獣医科医院 老犬ホーム",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "岡崎市",
+   "url": "https://katojuui.com/wp/rouken.html",
+   "addr": "愛知県岡崎市針崎町字朱印地17-8",
+   "animals": "犬（老犬が基本）",
+   "spec": "動物病院が運営する老犬ホーム。2〜3日のお試しのお預かりもできる",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "保証金50,000円、1泊2,000円〜（ようすで変わる）",
+     "src": "https://katojuui.com/wp/rouken.html",
+     "checked": "2026-11-17",
+     "yen": 2000
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "夜鳴き・遠吠え、認知症の犬の相談を受けている。病院の受付時間に来てもらい、ようすを見てから受け入れる",
+     "src": "https://katojuui.com/wp/rouken.html",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "加藤獣医科医院 岡崎市針崎町",
+   "review_name": "加藤獣医科"
+  },
+  {
+   "id": "R124",
+   "name": "老犬ホーム らいず",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "愛西市",
+   "url": "https://raizu-dog.com/",
+   "addr": "愛知県愛西市立石町下山43",
+   "animals": "犬",
+   "spec": "一時預かりから長期・生涯預かりまでの老犬ホーム",
+   "visit": "いつでも面会でき、一時的な外出もできる",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "一時預かりから長期、生涯預かりまで",
+     "src": "https://raizu-dog.com/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "老犬ホーム らいず 愛西市",
+   "review_name": "らいず"
+  },
+  {
+   "id": "R125",
+   "name": "Ｄ＆Ｃ",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "亀岡市",
+   "url": "https://www.rouken-care.jp/facility/hm0047/",
+   "src": "rouken-care",
+   "addr": "京都府亀岡市西別院町犬甘野泓38",
+   "animals": "小型犬・猫（中型犬・大型犬は不可）",
+   "spec": "小型犬と猫の老犬老猫ホーム",
+   "reg": "譲受飼養 京都府登録第040121-7号・保管 第040121-2号",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "小型犬と猫。中型・大型犬、寝たきり・夜鳴きの子は受けない",
+     "src": "https://www.rouken-care.jp/facility/hm0047/",
+     "checked": "2026-11-17"
+    }
+   ],
+   "review_query": "D&C 亀岡市西別院町",
+   "review_name": "D&C"
+  },
+  {
+   "id": "R128",
+   "name": "動物病院ヘルスペット 老犬ホーム",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横須賀市",
+   "url": "https://www.animalhospital-healthpet.com/old-dog-home",
+   "addr": "神奈川県横須賀市日の出町1丁目8-7",
+   "animals": "犬・猫",
+   "spec": "動物病院の老犬・老猫ホーム（生涯あずかり）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "月額105,600円。ほかに保証金30万円（亡くなったとき・退去のとき全額返金）",
+     "src": "https://www.animalhospital-healthpet.com/old-dog-home",
+     "checked": "2026-11-22",
+     "yen": 105600
+    },
+    {
+     "k": "ふくまれるお世話",
+     "v": "自分で食べられないときの補液、排せつの処置、爪切り・目やに・耳そうじ、薬、トリミング",
+     "src": "https://www.animalhospital-healthpet.com/old-dog-home",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "病気や家の事情で家で飼うのがむずかしい、15kg以下の小型犬と猫。生涯あずかる",
+     "src": "https://www.animalhospital-healthpet.com/old-dog-home",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "病院",
+     "v": "獣医師が365日24時間いる",
+     "src": "https://www.animalhospital-healthpet.com/old-dog-home",
+     "checked": "2026-11-22"
+    }
+   ],
+   "review_query": "動物病院ヘルスペット 横須賀市日の出町",
+   "review_name": "ヘルスペット"
+  },
+  {
+   "id": "R130",
+   "name": "陽だまりドッグヴィレッジ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "山武郡芝山町",
+   "url": "https://www.hidamari-dog-village.com/senior-dog-care.html",
+   "addr": "千葉県山武郡芝山町新井田253番13",
+   "animals": "犬",
+   "spec": "老犬介護のあずかり（ペットホテル・ドッグランも）",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "細やかなケアが必要な子、長いお留守番がむずかしくなった子。飼い主さんが年をとってお世話がむずかしくなったときも",
+     "src": "https://www.hidamari-dog-village.com/senior-dog-care.html",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "見学・面会",
+     "v": "カウンセリングのときに施設の見学ができる",
+     "src": "https://www.hidamari-dog-village.com/senior-dog-care.html",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "報告",
+     "v": "希望すれば写真やメッセージで毎日の様子を知らせる",
+     "src": "https://www.hidamari-dog-village.com/senior-dog-care.html",
+     "checked": "2026-11-22"
+    }
+   ],
+   "review_query": "陽だまりドッグヴィレッジ 芝山町",
+   "review_name": "陽だまりドッグヴィレッジ"
+  },
+  {
+   "id": "R131",
+   "name": "老犬ホーム Buddies（ばでぃーず）",
+   "prefs": [
+    "青森県"
+   ],
+   "city": "青森市",
+   "url": "https://gzd78456.wixsite.com/buddies",
+   "addr": "青森県青森市西田沢沖津235-8",
+   "animals": "犬",
+   "reg": "譲受飼養 第136001号・保管 第132013号",
+   "spec": "一軒家で24時間体制。ショートステイ（短期）も",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "飼い主さんの急な入院・介護疲れなどで飼えなくなった犬。緊急のあずかりも相談できる",
+     "src": "https://gzd78456.wixsite.com/buddies",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "老犬ホーム Buddies 青森市",
+   "review_name": "老犬ホーム"
+  },
+  {
+   "id": "R132",
+   "name": "仙台第二警察犬訓練所 老犬ホーム",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市泉区",
+   "url": "https://sen-pd2-kunren.com/hotel.html",
+   "addr": "宮城県仙台市泉区松森字阿比古28-3",
+   "animals": "犬（大型犬の区分あり）",
+   "spec": "訓練所のペットホテル・老犬ホーム",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "6:30〜19:00・年中無休",
+     "src": "https://sen-pd2-kunren.com/hotel.html",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "料金",
+     "v": "体重30kg未満と30kg以上で料金が分かれる",
+     "src": "https://sen-pd2-kunren.com/hotel.html",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "仙台第二警察犬訓練所 老犬ホーム 仙台市泉区",
+   "review_name": "仙台第二警察犬訓練所"
+  },
+  {
+   "id": "R133",
+   "name": "ニジノハシ わんこのみとり",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "石巻市",
+   "url": "https://www.ayukawahouse-nijinohashi.com/",
+   "addr": "宮城県石巻市鮎川浜黒崎63番地",
+   "animals": "犬",
+   "spec": "老犬介護士が24時間付き添う介護・看取り",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "体重で料金が分かれる（小型7kg未満・中型8〜15kg・大型16kg以上）。1泊は小型6,500円・中型7,500円・大型8,500円",
+     "src": "https://www.ayukawahouse-nijinohashi.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "病院",
+     "v": "緊急時の病院（石巻市内）まで1時間以上かかる",
+     "src": "https://www.ayukawahouse-nijinohashi.com/",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "ニジノハシ わんこのみとり 石巻市",
+   "review_name": "ニジノハシ"
+  },
+  {
+   "id": "R134",
+   "name": "kiseki（キセキ）高齢動物専門介護",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "高崎市",
+   "url": "https://kisekicare.com/",
+   "addr": "群馬県高崎市矢島町",
+   "animals": "犬・猫",
+   "reg": "譲受飼養業 群動愛 第0523-068",
+   "spec": "老犬・老猫の介護ホーム、ホスピス・緩和ケア、リハビリ",
+   "facts": [
+    {
+     "k": "病院",
+     "v": "入居の子が緊急のときは、診察時間内ならその場で対応（時間外の獣医療はできない）",
+     "src": "https://kisekicare.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "寝たきり・食事の介助・リハビリなども相談できる",
+     "src": "https://kisekicare.com/",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "kiseki 高崎市",
+   "review_name": "kiseki"
+  },
+  {
+   "id": "R135",
+   "name": "老犬本舗",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "板橋区",
+   "url": "http://www.roken-honpo.com/",
+   "addr": "東京都板橋区徳丸1-60-20",
+   "animals": "犬",
+   "spec": "1時間のデイサービスから終身ケアまで",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00・水曜定休",
+     "src": "http://www.roken-honpo.com/",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "老犬本舗 板橋区",
+   "review_name": "老犬本舗"
+  },
+  {
+   "id": "R136",
+   "name": "老犬ホーム ちびたんの家",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横須賀市",
+   "url": "https://chibitannoie.amebaownd.com/",
+   "addr": "神奈川県横須賀市岩戸1-11-4",
+   "animals": "犬",
+   "spec": "24時間体制のお世話。3時間・6時間の日中のあずかりも",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "日中のあずかりは3時間1,850円（5kg以下）〜3,250円（25kg以下）、6時間2,850円〜4,250円",
+     "src": "https://chibitannoie.amebaownd.com/pages/4151790/menu",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "老犬ホーム ちびたんの家 横須賀市",
+   "review_name": "老犬ホーム"
+  },
+  {
+   "id": "R137",
+   "name": "happytail 老犬ホーム",
+   "prefs": [
+    "新潟県"
+   ],
+   "city": "新潟市中央区",
+   "url": "https://www.h-tail-niigata.com/senior-dog-home",
+   "addr": "新潟県新潟市中央区竜が島1-1-36",
+   "animals": "犬",
+   "spec": "シニア犬の長期あずかりを月額制で",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "夜泣き・食事や薬の介助で家族の負担が大きいときも",
+     "src": "https://www.h-tail-niigata.com/senior-dog-home",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "お世話",
+     "v": "夜間もスタッフが施設にいる",
+     "src": "https://www.h-tail-niigata.com/senior-dog-home",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "happytail 老犬ホーム 新潟市中央区",
+   "review_name": "happytail"
+  },
+  {
+   "id": "R138",
+   "name": "わんちゃんずファミリー 老犬ホーム",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "尾道市",
+   "url": "https://xn--98jn6hxbuc3hqt5c4ewi.com/service/careolddogs",
+   "addr": "広島県尾道市浦崎町3963-2",
+   "animals": "犬",
+   "spec": "老犬・要介護犬の長期滞在の施設。24時間体制の見守り",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "年齢や介助が必要なことを理由に、ほかの施設で断られた子も",
+     "src": "https://xn--98jn6hxbuc3hqt5c4ewi.com/service/careolddogs",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "わんちゃんずファミリー 老犬ホーム 尾道市",
+   "review_name": "わんちゃんずファミリー"
+  },
+  {
+   "id": "R139",
+   "name": "ドッグテール ワン 老犬ホーム",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "富士宮市",
+   "url": "https://www.dogtail-wan.jp/nursing_care",
+   "addr": "静岡県富士宮市外神442-4",
+   "animals": "犬",
+   "spec": "短期・長期・終生のあずかり。愛玩動物飼養管理士が24時間体制",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1か月65,000円（税込）から。介護が必要なときは介護料金がかかる",
+     "src": "https://www.dogtail-wan.jp/nursing_care",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "見学・面会",
+     "v": "連絡してから面会できる。LINEで様子を見られる",
+     "src": "https://www.dogtail-wan.jp/nursing_care",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "ドッグテール ワン 老犬ホーム 富士宮市",
+   "review_name": "ドッグテール"
+  },
+  {
+   "id": "R140",
+   "name": "Dog Stay House 老犬の長期預かり",
+   "prefs": [
+    "長野県"
+   ],
+   "city": "安曇野市",
+   "url": "https://www.dogstayhouse-dogs.com/howtouse",
+   "addr": "長野県安曇野市三郷温2058-14",
+   "animals": "犬（大型犬も）",
+   "spec": "老犬・けが・病気で介護が必要な犬の長期あずかり。生涯あずかりも",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "介護の度合いを先に打ち合わせる。料金は18kg未満と18kg以上で分かれる",
+     "src": "https://www.dogstayhouse-dogs.com/howtouse",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "別料金",
+     "v": "長期あずかりのキャンセルは7日前から一律20,000円",
+     "src": "https://www.dogstayhouse-dogs.com/howtouse",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "Dog Stay House 老犬の長期預かり 安曇野市",
+   "review_name": "Dog"
+  },
+  {
+   "id": "R141",
+   "name": "ジャパンアニマルホスピス 老犬ホーム",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "岐阜市",
+   "url": "http://japan-animal-hospice.com/",
+   "addr": "岐阜県岐阜市日野南4丁目17番地7",
+   "animals": "犬",
+   "reg": "保管 岐阜市保生第120208",
+   "spec": "高齢・要介護の犬の食事・排泄・運動から介護まで",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "寝たきりや認知症による夜鳴きなどで介護が大変なときも",
+     "src": "http://japan-animal-hospice.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付 10:00〜17:00",
+     "src": "http://japan-animal-hospice.com/",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "ジャパンアニマルホスピス 老犬ホーム 岐阜市",
+   "review_name": "ジャパンアニマルホスピス"
+  },
+  {
+   "id": "R142",
+   "name": "だいあーど 老犬・老猫介護ホーム",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "富士市",
+   "url": "https://pet-dyad.com/",
+   "addr": "静岡県富士市比奈3098-8",
+   "animals": "犬・猫",
+   "spec": "老犬・老猫・介護の子の長期〜終身のあずかり、ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00（完全予約制・定休日あり）",
+     "src": "https://pet-dyad.com/",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "だいあーど 老犬・老猫介護ホーム 富士市",
+   "review_name": "だいあーど"
+  },
+  {
+   "id": "R143",
+   "name": "D.C.キャッスル",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "浜松市天竜区",
+   "url": "https://castle-pet.com/",
+   "addr": "静岡県浜松市天竜区春野町砂川55",
+   "animals": "犬・猫",
+   "spec": "犬・猫の長期あずかり・老犬ホーム。24時間の監視カメラ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "年中無休・24時間受付",
+     "src": "https://castle-pet.com/",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "D.C.キャッスル 浜松市天竜区",
+   "review_name": "D.C.キャッスル"
+  },
+  {
+   "id": "R144",
+   "name": "ワンワンケアホーム たんぽぽ",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "志摩市",
+   "url": "https://www.wanwancarehome-tanpopo.com/shop",
+   "addr": "三重県志摩市磯部町坂崎120-199",
+   "animals": "犬",
+   "spec": "老犬ホーム。来られない方には出張サービスも",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:30〜17:30・木曜定休",
+     "src": "https://www.wanwancarehome-tanpopo.com/shop",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみ",
+     "src": "https://www.wanwancarehome-tanpopo.com/shop",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "ワンワンケアホーム たんぽぽ 志摩市",
+   "review_name": "ワンワンケアホーム"
+  },
+  {
+   "id": "R145",
+   "name": "犬の美容室ファースト 老犬ホーム",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "大津市",
+   "url": "https://www.inunobiyoushitsu-first.jp/home.php",
+   "addr": "滋賀県大津市北大路1丁目18-28",
+   "animals": "犬（小型犬）",
+   "spec": "13歳以上・15kg未満の小型犬を生涯あずかる",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "13歳以上・15kg未満の小型犬。夜（18時〜翌8時ごろ）は無人",
+     "src": "https://www.inunobiyoushitsu-first.jp/home.php",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "見学・面会",
+     "v": "見学してから入所の相談。面会は営業時間内ならいつでも",
+     "src": "https://www.inunobiyoushitsu-first.jp/home.php",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "用意するもの",
+     "v": "健康診断書（血液検査）と予防接種・ワクチンの証明書",
+     "src": "https://www.inunobiyoushitsu-first.jp/home.php",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "別料金",
+     "v": "毎年のワクチン・狂犬病・フィラリアの検査と薬、医療費は飼い主さん負担",
+     "src": "https://www.inunobiyoushitsu-first.jp/home.php",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜17:30・月曜と元日休み・駐車場3台",
+     "src": "https://www.inunobiyoushitsu-first.jp/home.php",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "犬の美容室ファースト 老犬ホーム 大津市",
+   "review_name": "犬の美容室ファースト"
+  },
+  {
+   "id": "R146",
+   "name": "京丹波老犬ホーム（Nexus）",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "船井郡京丹波町",
+   "url": "https://nexus-pet.com/old-dog-home/",
+   "addr": "京都府船井郡京丹波町豊田シミ105-2",
+   "animals": "犬",
+   "spec": "飼い主さんの高齢化・けが・病気などで世話がむずかしくなった犬をあずかる",
+   "checked": "2026-11-22",
+   "review_query": "京丹波老犬ホーム 船井郡京丹波町",
+   "review_name": "京丹波老犬ホーム",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1カ月1頭～5㎏ ＞ 78000円～。1カ月1頭～20㎏ ＞ 99000円～",
+     "src": "https://nexus-pet.com/old-dog-services/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R147",
+   "name": "老犬ホーム さくら",
+   "prefs": [
+    "和歌山県"
+   ],
+   "city": "東牟婁郡串本町",
+   "url": "http://roukenhome.sakura.ne.jp/",
+   "addr": "和歌山県東牟婁郡串本町潮岬564-3",
+   "animals": "犬",
+   "spec": "高齢犬・介護の犬を自宅で24時間体制でお世話。一時あずかりも",
+   "checked": "2026-11-22",
+   "review_query": "老犬ホーム さくら 東牟婁郡串本町",
+   "review_name": "老犬ホーム",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：７時〜１９時",
+     "src": "https://roukenhome.sakura.ne.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "小型犬 日帰り １５００円 １泊目３０００円 ２泊目～ 半額。中型犬 日帰り ２０００円 １泊目４０００円 ２泊目～ 半額",
+     "src": "https://roukenhome.sakura.ne.jp/goriyou.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R148",
+   "name": "リハビリ型老犬ホーム「福」",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "八女郡広川町",
+   "url": "https://roukenhome-fuku.com/",
+   "addr": "福岡県八女郡広川町一条1400-3",
+   "animals": "犬（大型犬も）",
+   "spec": "訓練士の経験を生かしたリハビリ型の老犬介護",
+   "facts": [
+    {
+     "k": "部屋",
+     "v": "大型犬と小型犬で個室を分ける。WEBカメラで夜も見守る",
+     "src": "https://roukenhome-fuku.com/info.html",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "見学・面会",
+     "v": "面会ルームとドッグランで会える",
+     "src": "https://roukenhome-fuku.com/info.html",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "リハビリ型老犬ホーム「福」 八女郡広川町",
+   "review_name": "リハビリ型老犬ホーム「福」"
+  },
+  {
+   "id": "R149",
+   "name": "はじめペットケアはうす",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "倉敷市",
+   "url": "https://yo-hana.com/",
+   "addr": "岡山県倉敷市北畝1丁目13-30",
+   "animals": "犬（大型犬も）",
+   "spec": "老犬介護専門のホーム。終生あずかりも。専門資格のスタッフが24時間体制",
+   "facts": [
+    {
+     "k": "見学・面会",
+     "v": "見学は無料",
+     "src": "https://yo-hana.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜17:00・365日（急ぎは時間外も相談）",
+     "src": "https://yo-hana.com/",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "はじめペットケアはうす 倉敷市",
+   "review_name": "はじめペットケアはうす"
+  },
+  {
+   "id": "R150",
+   "name": "ふれ愛どうぶつ村 老犬ホーム",
+   "prefs": [
+    "山口県"
+   ],
+   "city": "大島郡周防大島町",
+   "url": "https://www.furemura.jp/%E8%80%81%E7%8A%AC%E3%83%9B%E3%83%BC%E3%83%A0/",
+   "addr": "山口県大島郡周防大島町東三蒲92-1",
+   "animals": "犬（大型犬も）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1日 小型犬3,300円・中型犬4,400円・大型犬6,600円（税別）",
+     "src": "https://www.furemura.jp/%E8%80%81%E7%8A%AC%E3%83%9B%E3%83%BC%E3%83%A0/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜17:30・火曜定休",
+     "src": "https://www.furemura.jp/%E8%80%81%E7%8A%AC%E3%83%9B%E3%83%BC%E3%83%A0/",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "ふれ愛どうぶつ村 老犬ホーム 大島郡周防大島町",
+   "review_name": "ふれ愛どうぶつ村"
+  },
+  {
+   "id": "R151",
+   "name": "犬猫ホームたいさんじ",
+   "prefs": [
+    "愛媛県"
+   ],
+   "city": "松山市",
+   "url": "http://inunekohome.jp/816086748",
+   "addr": "愛媛県松山市太山寺町1086-2",
+   "animals": "犬・猫",
+   "spec": "老犬・老猫ホームとペットホテル。軽度〜重度の介護",
+   "facts": [
+    {
+     "k": "見学・面会",
+     "v": "面会はいつでも",
+     "src": "http://inunekohome.jp/816086748",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "犬猫ホームたいさんじ 松山市",
+   "review_name": "犬猫ホームたいさんじ"
+  },
+  {
+   "id": "R152",
+   "name": "老犬介護ホームさわやか",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "直方市",
+   "url": "https://olddog-sawayaka.net/",
+   "addr": "福岡県直方市下新入948-1",
+   "animals": "犬（大型犬も）",
+   "spec": "寿命を全うするまでお世話する老犬介護ホーム",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "月額5万円（税別）、大型犬は6万円（税別）",
+     "src": "https://olddog-sawayaka.net/price/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "別料金",
+     "v": "病院代として3万円を別に預ける",
+     "src": "https://olddog-sawayaka.net/price/",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "review_query": "老犬介護ホームさわやか 直方市",
+   "review_name": "老犬介護ホームさわやか"
+  },
+  {
+   "id": "R153",
+   "name": "すもも便利屋 老犬ホーム",
+   "prefs": [
+    "山梨県"
+   ],
+   "city": "甲府市",
+   "url": "https://benriya.sumomo.ne.jp/rouken.html",
+   "addr": "山梨県甲府市貢川本町19番7号",
+   "animals": "犬・猫",
+   "spec": "老犬ホーム・老猫ホーム、ペットホテル・シッター",
+   "checked": "2026-11-22",
+   "review_query": "すもも便利屋 老犬ホーム 甲府市",
+   "review_name": "すもも便利屋"
+  },
+  {
+   "id": "R154",
+   "name": "マイ・ドッグ・クラブ",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市",
+   "url": "https://mydogclub.net/",
+   "animals": "犬",
+   "spec": "老犬ホーム・ペットホテル",
+   "checked": "2026-11-23",
+   "review_query": "マイ・ドッグ・クラブ 札幌市",
+   "review_name": "マイ・ドッグ・クラブ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小形犬 48,000円／1ヶ月。中形犬 63,000円／1ヶ月",
+     "src": "https://mydogclub.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間／AM7:00 ～ PM22:00",
+     "src": "https://mydogclub.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内にワクチンを接種しているワンちゃんに限ります。",
+     "src": "https://mydogclub.net/hotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R155",
+   "name": "ららねこ",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "旭川市",
+   "url": "https://lalaneko.com/",
+   "addr": "北海道旭川市五条通12丁目1217-2",
+   "animals": "犬・猫",
+   "spec": "老犬老猫ホーム、ペットホテル・ペットシッター",
+   "checked": "2026-11-23",
+   "review_query": "ららねこ 旭川市",
+   "review_name": "ららねこ",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "犬猫さんのワクチン接種の証明書を拝見します。",
+     "src": "https://lalaneko.com/service.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは、現金でお願いしております。",
+     "src": "https://lalaneko.com/fees.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R156",
+   "name": "ぺっとはうす あるポカ",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市豊平区",
+   "url": "https://arupoka.com/service/kaigo.html",
+   "animals": "犬・猫",
+   "spec": "シニア犬・猫の介護（長期・終生預かりも相談）、ペットホテル",
+   "checked": "2026-11-23",
+   "review_query": "ぺっとはうす あるポカ 札幌市豊平区",
+   "review_name": "ぺっとはうす あるポカ",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "また、安心安全のため初回時にはワクチン証明書をご掲示ください。",
+     "src": "https://arupoka.com/service/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R157",
+   "name": "ドギーズガーデン",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印西市",
+   "url": "https://doggies-garden.com/",
+   "addr": "千葉県印西市笠神1149-3",
+   "animals": "犬",
+   "spec": "長期預かり（介護・通院も）、ホテル・ようちえん",
+   "checked": "2026-11-23",
+   "review_query": "ドギーズガーデン 印西市",
+   "review_name": "ドギーズガーデン",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "月額38,500円〜。転勤・入院・リフォームなどのときの預かり先に。。ようちえんが入ったお得なメンバー制度です。ドッグランも1ヶ月使い放題。Standard 17,600円/月〜（税込）",
+     "src": "https://doggies-garden.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初めてご利用のお客様及び以前にご利用頂いたが１年以上経過しているお客様はワクチン証明書のコピーの提出をお願いします。",
+     "src": "https://doggies-garden.com/doghote.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場（有り）無料でご利用いただけます。",
+     "src": "https://doggies-garden.com/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R158",
+   "name": "Companion Animal Merci",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "足柄下郡真鶴町",
+   "url": "https://ca-merci.com/",
+   "addr": "神奈川県足柄下郡真鶴町真鶴1930-45",
+   "animals": "犬・猫",
+   "spec": "老犬・老猫ホーム（要介護も）",
+   "checked": "2026-11-23",
+   "review_query": "Companion Animal Merci 足柄下郡真鶴町",
+   "review_name": "Companion Animal Merci",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://ca-merci.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 7:00〜18:00（時間外対応不可）",
+     "src": "https://ca-merci.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ごはん（1回分ずつ小分け）、必要に応じておやつ・介護用品、首輪、胴輪、リード、狂犬病予防注射・ワクチン接種証明書",
+     "src": "https://ca-merci.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R159",
+   "name": "ペットサポートnico",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "賀茂郡東伊豆町",
+   "url": "https://pet-nico.com/",
+   "addr": "静岡県賀茂郡東伊豆町白田328",
+   "animals": "犬・猫",
+   "spec": "介護・長期預かり、ペットホテル（24時間スタッフ常駐）",
+   "checked": "2026-11-23",
+   "review_query": "ペットサポートnico 賀茂郡東伊豆町",
+   "review_name": "ペットサポートnico",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：8:00〜17:00",
+     "src": "https://pet-nico.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金・クレジットカード・各種QRコード決済に対応しています。",
+     "src": "https://pet-nico.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン接種が必要です。",
+     "src": "https://pet-nico.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R160",
+   "name": "Dog Answer（ドッグアンサー）",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "四日市市",
+   "url": "https://www.dogschool-tanaka.jp/",
+   "addr": "三重県四日市市尾平町3232-4",
+   "animals": "犬",
+   "spec": "長期預かり・生涯預かり、老犬介護、しつけ",
+   "checked": "2026-11-23",
+   "review_query": "Dog Answer（ドッグアンサー） 四日市市",
+   "review_name": "Dog Answer（ドッグアンサー）"
+  },
+  {
+   "id": "R161",
+   "name": "ペットのおうちタケガワ",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "松阪市",
+   "url": "https://pet-takegawa.jp/",
+   "addr": "三重県松阪市久米町1149-2",
+   "animals": "犬・猫",
+   "spec": "長期預かり・生涯預かり、一時預かり",
+   "checked": "2026-11-23",
+   "review_query": "ペットのおうちタケガワ 松阪市",
+   "review_name": "ペットのおうちタケガワ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "24時間、スタッフが常駐して、受付時間外でもお預かりやお迎えのご対応が可能です（事前予約要）。",
+     "src": "https://pet-takegawa.jp/information",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "料金は、月々お支払いプランと年払いプラン、一括お支払いプランがございます。いずれも指定口座に前払いでお振込みください。",
+     "src": "https://pet-takegawa.jp/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "全ての預かりに関して、「狂犬病ワクチン」「混合ワクチン」の証明書が必要です。※紛失した場合は事前にご連絡ください。",
+     "src": "https://pet-takegawa.jp/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R162",
+   "name": "愛犬総合施設 AK STYLE",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "亀岡市",
+   "url": "https://aiken-akstyle.net/",
+   "addr": "京都府亀岡市畑野町千ケ畑高橋5-168",
+   "animals": "犬",
+   "spec": "老犬ホーム・長期預かり（持病・介護の子も）、ペットホテル",
+   "checked": "2026-11-23",
+   "review_query": "愛犬総合施設 AK STYLE 亀岡市",
+   "review_name": "愛犬総合施設 AK STYLE",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "送迎あり（有料） ＊駐車場あり２台",
+     "src": "https://aiken-akstyle.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "短期ご利用の際は、現金でのお支払い、長期のご利用の際は、請求書でのお支払いで対応しております。",
+     "src": "https://aiken-akstyle.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R163",
+   "name": "cocoon",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "糸島市",
+   "url": "https://cocoon-itoshima.jimdofree.com/",
+   "addr": "福岡県糸島市志摩吉田1203-1",
+   "animals": "犬・猫",
+   "spec": "老犬猫の終生お預かり、長期・短期お預かり",
+   "checked": "2026-11-23",
+   "review_query": "cocoon 糸島市",
+   "review_name": "cocoon"
+  },
+  {
+   "id": "R164",
+   "name": "ねこぷらすホーム",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市上京区",
+   "url": "https://nekoplus.co.jp/wp/nekoplus_home/",
+   "addr": "京都府京都市上京区有馬町184-2-671",
+   "animals": "猫",
+   "spec": "猫の長期お預かり（入院・転勤などのとき）",
+   "checked": "2026-11-23",
+   "review_query": "ねこぷらすホーム 京都市上京区",
+   "review_name": "ねこぷらすホーム",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払い方法は「銀行振込」または「現金」のみ、前払い制となります。ご利用日の3日前までにお願いします。",
+     "src": "https://nekoplus.co.jp/wp/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R165",
+   "name": "Pet Care Home RIKU",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "総社市",
+   "url": "https://petcarehome-riku.jimdosite.com/",
+   "addr": "岡山県総社市溝口10-3",
+   "animals": "犬",
+   "spec": "老犬ホーム・ロングステイ、ペットホテル",
+   "checked": "2026-11-23",
+   "review_query": "Pet Care Home RIKU 総社市",
+   "review_name": "Pet Care Home RIKU"
+  },
+  {
+   "id": "R166",
+   "name": "愛犬ホーム わんわんパーク",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "小樽市",
+   "url": "http://www.xn--u9j870rtoo6nh.com/",
+   "addr": "北海道小樽市天神2丁目20-21",
+   "animals": "犬",
+   "spec": "愛犬ホーム（1997年開園）、犬の里親",
+   "checked": "2026-11-23",
+   "review_query": "愛犬ホーム わんわんパーク 小樽市",
+   "review_name": "愛犬ホーム わんわんパーク"
+  }
+ ],
+ "near": {
+  "_説明": "県の中に施設が0〜1か所の県で、県のページの欄に一緒に出す近くの県の施設（id）。県庁所在地からの近さで選ぶ（2026-11-17）。",
+  "青森県": [
+   "R003",
+   "R072"
+  ],
+  "岩手県": [
+   "R097",
+   "R059",
+   "R003"
+  ],
+  "富山県": [
+   "R058",
+   "R055"
+  ],
+  "福井県": [
+   "R058",
+   "R094"
+  ],
+  "鳥取県": [
+   "R034",
+   "R076",
+   "R030"
+  ],
+  "島根県": [
+   "R077",
+   "R063",
+   "R036"
+  ],
+  "大分県": [
+   "R080",
+   "R081",
+   "R087"
+  ]
+ }
+}

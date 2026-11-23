@@ -1,0 +1,96 @@
+<!doctype html>
+<!-- [B] 被リンク：印刷して配れる「ペットの防災シート」（2026-11-17）。PDF は node tools/print_sheet.cjs で /print/pet-bousai-sheet.pdf に作る。
+     誰が・なぜ貼りたいか：動物病院・自治体の防災講座・保護団体・マンションの管理組合が、待合室や講習会で配る紙が無料ですぐ手に入るから。
+     中身は環境省「人とペットの災害対策ガイドライン＜一般飼い主編＞」の優先順位と、/guide/pet-disaster-prep/ の持ち出し品リストに合わせる。 -->
+<html lang="ja"><head><meta charset="utf-8"><title>ペットの防災シート</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap">
+<style>
+@page{size:A4;margin:10mm}
+*{box-sizing:border-box}
+body{font-family:"Noto Sans JP","Noto Sans CJK JP","Hiragino Sans",sans-serif;color:#222;margin:0;font-size:10.5pt;line-height:1.45}
+h1{font-size:17pt;margin:0 0 1mm;color:#222;letter-spacing:.02em}
+.sub{margin:0 0 3mm;font-size:9.5pt;color:#444}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.box{border:1.4px solid #444;border-radius:3mm;padding:2.5mm 3mm}
+h2{font-size:11.5pt;margin:0 0 1.5mm;background:#ececec;color:#111;padding:1mm 2mm;border-radius:1.5mm}
+.f{display:flex;border-bottom:1px dotted #999;min-height:9.2mm;align-items:flex-end;padding-bottom:.6mm}
+.f b{font-weight:600;font-size:9.3pt;white-space:nowrap;margin-right:2mm;color:#333}
+.f.tall{min-height:14mm}
+.photo{border:1.2px dashed #555;border-radius:2mm;height:44mm;display:flex;align-items:center;justify-content:center;color:#444;font-size:9pt;margin-top:2mm;text-align:center}
+ul{list-style:none;margin:0;padding:0}
+li{padding:1mm 0 1mm 6.5mm;position:relative;font-size:9.8pt}
+li:before{content:"";position:absolute;left:0;top:1.6mm;width:3.8mm;height:3.8mm;border:1.3px solid #333;border-radius:.6mm}
+.pri{font-size:8.3pt;color:#111;font-weight:700;margin:1.2mm 0 .3mm}
+.cols{columns:2;column-gap:5mm}
+.note{font-size:8.6pt;color:#444;margin:1mm 0 0}
+.foot{margin-top:3mm;border-top:1px solid #ccc;padding-top:1.5mm;font-size:8.3pt;color:#444;display:flex;justify-content:space-between;gap:4mm}
+.foot b{color:#222}
+</style></head><body>
+<h1>ペットの防災シート</h1>
+<p class="sub">書きこんで、人の非常持ち出し袋と一緒に。スマホで写真に撮っておくと、迷子のときや預けるときにすぐ伝えられます。</p>
+<div class="grid">
+ <div class="box">
+  <h2>うちの子のこと</h2>
+  <div class="f"><b>なまえ</b></div>
+  <div class="f"><b>種類・犬種／猫種</b></div>
+  <div class="f"><b>性別・生まれた年</b></div>
+  <div class="f"><b>体重・毛の色・特徴</b></div>
+  <div class="f"><b>マイクロチップ番号</b></div>
+  <div class="f"><b>鑑札・注射済票の番号（犬）</b></div>
+  <div class="f"><b>ワクチン・狂犬病の注射日</b></div>
+  <div class="f tall"><b>持病・飲んでいる薬・療法食</b></div>
+  <div class="f"><b>苦手なこと・性格</b></div>
+  <div class="photo">うちの子の写真をはる<br>（顔と全身。模様が分かるもの）</div>
+ </div>
+ <div class="box">
+  <h2>もしものときの連絡先</h2>
+  <div class="f"><b>飼い主の名前・電話</b></div>
+  <div class="f"><b>家族以外の緊急の連絡先</b></div>
+  <div class="f"><b>かかりつけの動物病院・電話</b></div>
+  <div class="f"><b>預け先①（親せき・知人）</b></div>
+  <div class="f"><b>預け先②（ペットホテルなど）</b></div>
+  <div class="f tall"><b>ペットを受け入れる近くの避難所</b></div>
+  <div class="f"><b>避難所でのペットの場所</b></div>
+  <div class="f"><b>迷子のときの届け先（保健所・センター）</b></div>
+  <div class="f"><b>警察署（落とし物・迷い犬）</b></div>
+  <div class="f"><b>市区町村の防災の窓口・ハザードマップ</b></div>
+ </div>
+</div>
+<div class="box" style="margin-top:4mm">
+ <h2>持ち出し品チェック（環境省の優先順位）</h2>
+ <div class="cols">
+  <p class="pri">優先順位1：命と健康に関わるもの</p>
+  <ul>
+   <li>療法食・薬（多めに。支援物資では手に入りにくい）</li>
+   <li>フードと水（少なくとも5日分、できれば7日分以上）</li>
+   <li>キャリーバッグ・ケージ</li>
+   <li>予備の首輪と、伸びないリード</li>
+   <li>ペットシーツ・ふんの処理用具・トイレ用品</li>
+   <li>食器</li>
+  </ul>
+  <p class="pri">優先順位2：情報</p>
+  <ul>
+   <li>このシート（連絡先・預け先）</li>
+   <li>ペットの写真（印刷したものとスマホ）</li>
+   <li>ワクチンの記録・持病・薬のメモ</li>
+  </ul>
+  <p class="pri">ふだんからの備え</p>
+  <ul>
+   <li>ケージ・キャリーに慣らしておく</li>
+   <li>迷子札をつける（犬は鑑札と注射済票も）</li>
+   <li>マイクロチップの登録情報を新しくしておく</li>
+   <li>フードは古いものから使い、買い足す</li>
+   <li>家族で避難所までの道を歩いておく</li>
+  </ul>
+  <p class="pri">あると助かるもの</p>
+  <ul>
+   <li>洗濯ネット（猫）・タオル・ガムテープ</li>
+   <li>ゴミ袋・ぞうきん・おもちゃ</li>
+  </ul>
+ </div>
+</div>
+<div class="foot">
+ <span>環境省「人とペットの災害対策ガイドライン＜一般飼い主編＞」（2018年9月）をもとに作成（2026年11月）。<br>自由に印刷・コピー・配布・掲示できます。白黒で印刷できます。自治体名の書き足しなどの手直しや、右の行を消すのも自由です。</span>
+ <span><b>ペットのくらし窓口</b><br>pet.shiokonbu.com</span>
+</div>
+</body></html>

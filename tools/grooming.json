@@ -1,0 +1,3550 @@
+{
+ "_説明": "出張トリミング・訪問トリミングの全国一覧（/trimming/）のデータ。公式サイトで確かめたことだけ書く（料金・順位・電話番号は書かない）。area＝公式サイトに書いてある出張エリア、services＝公式サイトに書いてある内容。条件の large（大型犬）・cat（猫）・senior（シニア犬・介護中の子）・car（トリミングカー）・in_home（家の中で施術）・max_kg（最大の体重）は公式サイトにはっきり書いてあるときだけ入れる（ない＝不明。対応しないという意味ではない）。載せない：店舗だけのサロン、シャンプーだけでカットのない出張、新規受付の停止・閉業、公式サイトのない・開けない事業者、登録期限切れのまま更新のないサイト。 2026-11-14 から、公式サイトで確かめた料金・出張費・支払い・用意するものを facts（k・v・src・checked、料金は yen＝いちばん安いコースの金額・tax）に入れる。",
+ "checked": "2026-11-02",
+ "groomers": [
+  {
+   "id": "G001",
+   "name": "箱・ドック",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市北区",
+   "url": "https://hakodog.com/",
+   "area": "札幌市内とその近郊（相談）",
+   "services": "専用ワゴン車でご自宅へ出張。シャンプーはご自宅のお風呂、ドライヤー・カットは車内",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:30〜18:00 / 不定休",
+     "src": "https://hakodog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "営業時間 9:30〜18:00 / 不定休",
+     "src": "https://hakodog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金でのお支払いとさせていただいております。",
+     "src": "https://hakodog.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G002",
+   "name": "ドックシャンプーわん",
+   "prefs": [
+    "北海道"
+   ],
+   "city": "札幌市東区",
+   "url": "https://www.dogshampoo.jp/",
+   "area": "札幌市内全区・近郊",
+   "services": "移動シャンプー車でご自宅前へ。車内でシャンプー・カット",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "カットをご希望のわんちゃんには、カット（小型犬1500円、中型・大型犬2500円）も行います。",
+     "src": "https://www.dogshampoo.jp/nagare.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G003",
+   "name": "出張 犬の美容室 もふのこ",
+   "prefs": [
+    "青森県"
+   ],
+   "city": "弘前市",
+   "url": "https://dog-mofunoko.com/",
+   "area": "弘前市を拠点に出張",
+   "services": "トリミングカーで訪問し、ご自宅の敷地内に車を停めて施術。部分お手入れ・クイックシャンプーも",
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9：00～18：00",
+     "src": "https://dog-mofunoko.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 水、日、祝",
+     "src": "https://dog-mofunoko.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "訪問トリミング時、出張費と別に通常トリミング＋1000円。例）トリミング代（4000円）＋出張費（500円）訪問代（1000円）",
+     "src": "https://dog-mofunoko.com/menu%ef%bc%86price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金、クレジット、電子マネー、QRコード決済に対応しています。",
+     "src": "https://dog-mofunoko.com/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G004",
+   "name": "出張トリミング Hiwa Hiwa",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市青葉区",
+   "url": "https://hiwahiwaoreo.wixsite.com/hiwahiwa",
+   "area": "仙台市泉区・青葉区・宮城野区・太白区・若林区、黒川郡、富谷市",
+   "services": "お家訪問型でシャンプー・カット",
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "チワワ シャンプーコース6,050円〜・シャンプーカットコース8,250円〜（体重・体格で変わる）。記載のない犬種・ミックスも相談",
+     "src": "https://hiwahiwaoreo.wixsite.com/hiwahiwa",
+     "checked": "2026-11-14",
+     "yen": 6050
+    },
+    {
+     "k": "出張費",
+     "v": "トリマーの家から1kmあたり100円（5kmで500円）、有料道路・駐車場は実費",
+     "src": "https://hiwahiwaoreo.wixsite.com/hiwahiwa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "仙台市の5区、黒川郡・富谷市",
+     "src": "https://hiwahiwaoreo.wixsite.com/hiwahiwa",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "子犬からシニアまで。ワクチンが打てない子も相談できる。体重・体格で料金が変わることがある",
+     "src": "https://hiwahiwaoreo.wixsite.com/hiwahiwa",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "予約",
+     "v": "サイトの予約から。営業8時30分〜17時ごろ、不定休",
+     "src": "https://hiwahiwaoreo.wixsite.com/hiwahiwa",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "G005",
+   "name": "Dog Salon ANGEL EYES（エンジェルアイズ）出張トリミング",
+   "prefs": [
+    "宮城県"
+   ],
+   "city": "仙台市泉区",
+   "url": "https://dogsalon-angeleyes.jimdofree.com/%E5%87%BA%E5%BC%B5%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0/",
+   "area": "仙台市内（遠方は相談）",
+   "services": "玄関・室内・ウッドデッキなどで部分カット・全身カット・シャンプー・爪切りなど",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張料金3,000円＋お手入れ3,000〜10,000円。目安（出張料金こみ）：トイプードル・マルチーズ・シーズーの全身カット10,000〜12,000円、ダックス・チワワなど短毛のシャンプー7,000〜9,000円",
+     "src": "https://dogsalon-angeleyes.jimdofree.com/%E5%87%BA%E5%BC%B5%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0/",
+     "checked": "2026-11-14",
+     "yen": 7000
+    },
+    {
+     "k": "出張費",
+     "v": "3,000円（遠いときは距離に応じた料金を提示）",
+     "src": "https://dogsalon-angeleyes.jimdofree.com/%E5%87%BA%E5%BC%B5%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意するもの",
+     "v": "作業は玄関・室内・ウッドデッキなど、どこでもできる",
+     "src": "https://dogsalon-angeleyes.jimdofree.com/%E5%87%BA%E5%BC%B5%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "仙台市の市街が多い（遠い方も相談）",
+     "src": "https://dogsalon-angeleyes.jimdofree.com/%E5%87%BA%E5%BC%B5%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "G006",
+   "name": "ペットサロン ポジティブ",
+   "prefs": [
+    "茨城県"
+   ],
+   "url": "https://www.positive-0511.net/",
+   "area": "水戸市・笠間市など茨城県央",
+   "services": "専用のトリミングカーでご自宅まで出張してトリミング。猫の爪切りも相談可",
+   "large": true,
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "犬・猫・大きさ",
+     "v": "犬。猫は爪切りだけ相談できる",
+     "src": "https://www.positive-0511.net/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "水戸を中心に専用のトリミングカーで出張",
+     "src": "https://www.positive-0511.net/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "予約",
+     "v": "電話・予約フォーム・LINE",
+     "src": "https://www.positive-0511.net/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "G007",
+   "name": "出張＆訪問トリミング おーるわん",
+   "prefs": [
+    "茨城県",
+    "千葉県"
+   ],
+   "url": "https://www.cartrimming-allone.com/",
+   "area": "茨城県南部（つくば市・牛久市・龍ケ崎市など）・千葉県北部（柏市など）",
+   "services": "トリミングカーでご自宅前へ。犬のシャンプー・カット、猫のグルーミング",
+   "cat": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "犬 シャンプーコース5,500円〜・カットコース6,500円〜、猫 グルーミングコース7,500円〜・カットコース12,000円〜",
+     "src": "https://www.cartrimming-allone.com/",
+     "checked": "2026-11-14",
+     "yen": 5500
+    },
+    {
+     "k": "出張費",
+     "v": "別にかかる（金額は書いていない）",
+     "src": "https://www.cartrimming-allone.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "犬・猫",
+     "src": "https://www.cartrimming-allone.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "千葉県北部（柏・我孫子・流山・野田・白井・松戸・鎌ケ谷・印西・八千代・成田など）と茨城県南部",
+     "src": "https://www.cartrimming-allone.com/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "G008",
+   "name": "Trimming car salon Fluffy（フラッフィー）",
+   "prefs": [
+    "茨城県"
+   ],
+   "url": "https://trimmingcarsalonfluffy.amebaownd.com/",
+   "area": "石岡市周辺",
+   "services": "水道・電気設備の整ったトリミングカーでご自宅の駐車場で施術",
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー（税込）：スムースチワワ4,200円、ロングチワワ5,200円、トイプードル7,100円、柴犬7,100円。カット：ロングチワワ6,200円、トイプードル8,600円。MIXは体重で5,900円〜。初回10%引き、多頭5%引き",
+     "src": "https://trimmingcarsalonfluffy.amebaownd.com/pages/1594470/static",
+     "checked": "2026-11-15",
+     "yen": 4200,
+     "tax": "込"
+    },
+    {
+     "k": "出張費",
+     "v": "拠点から1kmにつき50円",
+     "src": "https://trimmingcarsalonfluffy.amebaownd.com/pages/1594470/static",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "犬（大型犬は相談）",
+     "src": "https://trimmingcarsalonfluffy.amebaownd.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "支払い",
+     "v": "クレジットカード・QR決済も使える。完全予約制",
+     "src": "https://trimmingcarsalonfluffy.amebaownd.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "用意するもの",
+     "v": "はじめては混合ワクチンと狂犬病の証明",
+     "src": "https://trimmingcarsalonfluffy.amebaownd.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "石岡市のまわり",
+     "src": "https://trimmingcarsalonfluffy.amebaownd.com/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "G009",
+   "name": "出張トリミングの Shippo",
+   "prefs": [
+    "栃木県",
+    "茨城県"
+   ],
+   "city": "小山市",
+   "url": "https://shippo.crayonsite.com/",
+   "area": "小山市・栃木市・野木町・古河市（ほかは相談）",
+   "services": "トリミングカーでご自宅の駐車場でシャンプー・カット",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "支払い",
+     "v": "クレジットカード・電子マネーが使える",
+     "src": "https://shippo.crayonsite.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "予約",
+     "v": "オンライン予約（1か月先まで）・LINE・電話（9時〜18時）。1頭ずつ予約",
+     "src": "https://shippo.crayonsite.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "小山市・栃木市・野木町・古河市（ほかは相談）",
+     "src": "https://shippo.crayonsite.com/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "G010",
+   "name": "ワンワンハウス 犬の移動美容室",
+   "prefs": [
+    "群馬県"
+   ],
+   "city": "前橋市",
+   "url": "https://wan-wan-house.com/shampoo-car/",
+   "area": "前橋市と近く（伊勢崎市・渋川市・榛東村・高崎市・玉村町・吉岡町など）",
+   "services": "ご自宅まで伺い車内でシャンプー・トリミング",
+   "large": true,
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00 ~ 19:00",
+     "src": "https://wan-wan-house.com/shampoo-car/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 毎週木曜日",
+     "src": "https://wan-wan-house.com/shampoo-car/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G011",
+   "name": "トリミングサロン ひまわり組",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "川口市",
+   "url": "https://himawarigumi.crayonsite.info/",
+   "area": "川口市から出張（さいたま市南区など）",
+   "services": "専用のトリミングカーでご自宅へ伺い車内でシャンプー・カット。ご自宅での訪問トリミングも",
+   "senior": true,
+   "car": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "5．お会計（現金、クレジットカード、PayPay対応）",
+     "src": "https://himawarigumi.crayonsite.info/p/10/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G012",
+   "name": "出張トリマー mogu",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "上尾市",
+   "url": "https://mogushampoo.com/",
+   "area": "さいたま市北区・大宮区・中央区・西区・岩槻区・見沼区、上尾市・蓮田市",
+   "services": "お客さま宅に訪問し、お部屋の中でトリミング",
+   "senior": true,
+   "in_home": true,
+   "max_kg": 15,
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "現金支払い/PayPay/銀行振込（銀行アプリでその場で振込確認出来る方のみ）",
+     "src": "https://mogushampoo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G013",
+   "name": "トリミングカー＆サロン Fortuna（フォルトゥーナ）",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "三郷市",
+   "url": "https://fortuna.crayonsite.info/",
+   "area": "三郷市を拠点に八潮市・吉川市・草加市・越谷市周辺",
+   "services": "トリミングカーで訪問してシャンプー・トリミング、シニア犬ケア",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "距離・道路状況・駐車場所などによっては、お伺いできない場合があります。対応可能か分からない地域も、まずはLINEよりお問い合わせください。",
+     "src": "https://fortuna.crayonsite.info/p/12",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G014",
+   "name": "出張ドッグサロン Relief（リリーフ）",
+   "prefs": [
+    "埼玉県"
+   ],
+   "city": "さいたま市桜区",
+   "url": "https://www.dogsalon-relief.com/",
+   "area": "さいたま市桜区中心",
+   "services": "トリミングカーでご自宅の駐車場で施術。ペットシッター・お散歩代行も",
+   "car": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "Reliefはご自宅の駐車場で施術、もしくはサロンまで安全な送迎がありますので負担が少ない為老犬でも施術可能です。",
+     "src": "https://www.dogsalon-relief.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "何らかの理由でワクチンを打っていないワンちゃんでも、獣医からの証明書があれば施術可能です。",
+     "src": "https://www.dogsalon-relief.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G015",
+   "name": "アイネクルネ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://ainekurune.com/",
+   "area": "佐倉市周辺",
+   "services": "トリミングカー内またはご自宅内で施術。シャンプー・カット、部分ケア",
+   "cat": true,
+   "car": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "お手入れのみでご利用の場合は31分〜特別出張料金（3,300円）を追加でいただいております。",
+     "src": "https://ainekurune.com/service-area/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G016",
+   "name": "出張トリミング専門 Resh（リッシュ）",
+   "prefs": [
+    "千葉県",
+    "東京都"
+   ],
+   "url": "https://resh-trim.com/",
+   "area": "習志野市・船橋市・千葉市・四街道市・鎌ケ谷市・市川市・浦安市、都内の港区・目黒区・中央区など",
+   "services": "トリミングカー内で犬・猫のシャンプー・カット",
+   "large": true,
+   "cat": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "チワワ シャンプーコース8,250円〜・シャンプー＆カット9,900円〜、短毛猫シャンプー12,100円〜・長毛猫14,300円〜（税込。犬種・大きさ・毛量で変わる）",
+     "src": "https://resh-trim.com/",
+     "checked": "2026-11-14",
+     "yen": 8250,
+     "tax": "込"
+    },
+    {
+     "k": "支払い",
+     "v": "現金・クレジットカード・PayPay",
+     "src": "https://resh-trim.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "犬（チワワからラブラドールまで犬種ごとの料金表）・猫",
+     "src": "https://resh-trim.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "習志野・船橋・千葉・四街道・鎌ケ谷・市川・浦安市、東京の港・目黒・中央区など",
+     "src": "https://resh-trim.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "出張費",
+     "v": "ふだんはかからない（遠方のときは前もって説明がある）",
+     "src": "https://resh-trim.com/system",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチンの証明（犬は狂犬病の予防注射も）。犬はリードかハーネス、猫はキャリー。高さ2.4m・幅約2m・長さ5.4mの車が止められる場所（むずかしいときは近くのコインパーキング、料金はお客さま負担）と、家の電源（コードは約30m届き、予備のバッテリーもある）",
+     "src": "https://resh-trim.com/system",
+     "checked": "2026-11-16"
+    },
+    {
+     "k": "キャンセル料",
+     "v": "原則なし（何度もキャンセルが続く場合は請求することがある）",
+     "src": "https://resh-trim.com/system",
+     "checked": "2026-11-16"
+    }
+   ]
+  },
+  {
+   "id": "G017",
+   "name": "トリミングカーサロン もふ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "白井市",
+   "url": "https://mofu-shiroi.com/",
+   "area": "白井市・鎌ケ谷市全域、船橋市・印西市・市川市・柏市・松戸市の一部",
+   "services": "専用のトリミングカーでご自宅の駐車スペースへ。シャンプー・カット",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "チワワ（ロング・4kgまで）シャンプー4,400円・カット6,600円、トイプードル（4kgまで）6,600円・8,800円、柴犬（8kgまで）シャンプー7,700円。初回は10%引き",
+     "src": "https://mofu-shiroi.com/",
+     "checked": "2026-11-14",
+     "yen": 4400
+    },
+    {
+     "k": "出張費",
+     "v": "3kmまで無料、3〜5km 550円、5〜7km 1,100円、7kmより先は相談",
+     "src": "https://mofu-shiroi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "小型〜大型犬（大型犬は条件により相談）、パピーからハイシニアまで。超大型犬は対応しない",
+     "src": "https://mofu-shiroi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い",
+     "v": "現金・クレジットカード・QUICPay・PayPay・au PAY",
+     "src": "https://mofu-shiroi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン・狂犬病予防注射の証明書、電源、トリミングカーをとめる場所",
+     "src": "https://mofu-shiroi.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "白井市・鎌ケ谷市は全域、船橋・印西・市川・柏・松戸市は一部",
+     "src": "https://mofu-shiroi.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "large": true
+  },
+  {
+   "id": "G018",
+   "name": "dog1st famille（ドッグファースト ファミーユ）訪問トリミング",
+   "prefs": [
+    "千葉県",
+    "東京都"
+   ],
+   "url": "https://dog1st-famille.com/triming/",
+   "area": "浦安・原木中山・行徳・妙典駅周辺（浦安市・市川市・船橋市・松戸市・習志野市、江東区・江戸川区・葛飾区など）",
+   "services": "トリマーがご自宅を訪問してトリミング。シニア犬向けの時短シャンプーなど",
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "3,000円（出張費込み）",
+     "src": "https://dog1st-famille.com/triming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "[営業時間]9:30～18:30",
+     "src": "https://dog1st-famille.com/triming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "[定休日]不定休",
+     "src": "https://dog1st-famille.com/triming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは現金のみとなります",
+     "src": "https://dog1st-famille.com/reserve/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回ご利用の際、狂犬病と混合ワクチンの接種証明書を確認させて頂いております。",
+     "src": "https://dog1st-famille.com/reserve/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G019",
+   "name": "犬の出張トリミング MOMO",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "http://www7b.biglobe.ne.jp/~momodog/",
+   "area": "流山市から出張（出張範囲はサイト内のページ）",
+   "services": "犬の出張トリミング専門店",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "アクアゼオオーガニックシャンプー＆リンス・・500円",
+     "src": "http://www7b.biglobe.ne.jp/~momodog/info.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G020",
+   "name": "cocotrim.（ココトリム）",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "杉並区",
+   "url": "https://cocotrim.jp/",
+   "area": "杉並区・中野区・練馬区・武蔵野市・三鷹市・調布市・世田谷区・渋谷区・新宿区",
+   "services": "シャンプーカーでご自宅の駐車場や近くの駐車場へ。シャンプー・トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10:00~18:00 ［ 火曜定休 ］",
+     "src": "https://cocotrim.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "営業時間 10:00~18:00 ［ 火曜定休 ］",
+     "src": "https://cocotrim.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "シャンプーコース ¥6,160～ トリミングコース ¥7,850～。シャンプーコース ¥7,260～ トリミングコース ¥8,950～",
+     "src": "https://cocotrim.jp/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初めての方は、狂犬病、ワクチン接種証明（発行から1年以内）のご用意をお願いいたします。",
+     "src": "https://cocotrim.jp/qanda/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G021",
+   "name": "出張トリミングサービス D&T",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://dandt.jp/",
+   "area": "足立区・葛飾区中心（荒川区も）",
+   "services": "バスタブ・シャワー付きのトリミングカーでご自宅前で施術",
+   "car": true
+  },
+  {
+   "id": "G022",
+   "name": "犬喜庵（けんきあん）",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "立川市",
+   "url": "https://kenkian.com/",
+   "area": "立川市・東大和市・武蔵村山市・小平市の一部",
+   "services": "トリミングカーでご自宅前でトリミング（出張・送迎・来店）",
+   "car": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "無料駐車場あり。",
+     "src": "https://kenkian.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 ： 9:00〜18:00",
+     "src": "https://kenkian.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G023",
+   "name": "LUANA（ルアナ）",
+   "prefs": [
+    "東京都"
+   ],
+   "url": "https://www.luana-pets.com/",
+   "area": "目黒区・世田谷区・渋谷区・港区（ほかは相談）",
+   "services": "ご自宅にうかがってトリミング。犬・猫メニュー",
+   "large": true,
+   "cat": true,
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:30-17:00 (不定休)",
+     "src": "https://www.luana-pets.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "営業時間 9:30-17:00 (不定休)",
+     "src": "https://www.luana-pets.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは、現金のみとなっております。ご不便をおかけいたしますが、ご了承くださいませ。",
+     "src": "https://www.luana-pets.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "出張料金をひと家族様2,000円頂戴いたします。。一度に２頭以上のご利用で、シャンプーコースとトリミングコースの料金を2頭目以降から1000円OFFの割引が受けられます。",
+     "src": "https://www.luana-pets.com/dog/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G024",
+   "name": "Trimming Charo 出張トリミングカー",
+   "prefs": [
+    "東京都"
+   ],
+   "url": "https://trimming-charo.com/",
+   "area": "昭島市・立川市・福生市中心",
+   "services": "出張トリミングカーでご自宅へ。シャンプー・カット（電源・排水を借りない）",
+   "car": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "ｶｰﾎﾟｰﾄのある駐車場は止められない場合があります。",
+     "src": "https://trimming-charo.com/free/profile",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン、狂犬病のワクチン証明書のご提示をお願いいたします。",
+     "src": "https://trimming-charo.com/free/profile",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G025",
+   "name": "トリミングルーム ラフ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://www.trimmingroom-laugh.net/",
+   "area": "足立区中心",
+   "services": "トリミングカーで出張・送迎。カット・シャンプー",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G026",
+   "name": "トリミングカー コロコロ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "八王子市",
+   "url": "https://coro56tc.wixsite.com/trimmingcar-corocoro",
+   "area": "八王子市（七国）から出張",
+   "services": "移動式サロンでご自宅や近くの駐車場で施術。シャンプー・カット、部分美容",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9：30～18：00",
+     "src": "https://coro56tc.wixsite.com/trimmingcar-corocoro",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 不定休（※直接お問い合わせください）",
+     "src": "https://coro56tc.wixsite.com/trimmingcar-corocoro",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回のご利用の際は、混合ワクチンと、狂犬病予防の証明書をお見せいただきますので、ご準備をお願いいたします。",
+     "src": "https://coro56tc.wixsite.com/trimmingcar-corocoro/general-6",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G027",
+   "name": "自宅訪問型出張トリミングサービス Animal Life Care ひょっとこ",
+   "prefs": [
+    "東京都"
+   ],
+   "url": "https://alc-hyottoko.com/",
+   "area": "多摩地域（日野市・立川市・国立市・国分寺市・府中市・調布市・三鷹市・武蔵野市・小金井市・八王子市・町田市など）",
+   "services": "ご自宅を訪問してトリミング・グルーミング。爪切りだけも相談",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 日 月 祝",
+     "src": "https://alc-hyottoko.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "有料パーキングを利用する場合の駐車料金は無料です！（当店負担）",
+     "src": "https://alc-hyottoko.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "⑥ 狂犬病予防ワクチン証明書（猶予されている場合を除く）",
+     "src": "https://alc-hyottoko.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "出張費はひと家族4,000円＋距離加算料金（¥100/1km）を頂戴いたします。",
+     "src": "https://alc-hyottoko.com/office",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみ",
+     "src": "https://alc-hyottoko.com/office",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G028",
+   "name": "出張 トリミングカー for dogs",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市",
+   "url": "https://dogs.crayonsite.net/",
+   "area": "横浜市南区・港南区・戸塚区・保土ケ谷区中心",
+   "services": "ご自宅まで伺い車内でシャンプー・ブロー・カット",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 900〜15:30",
+     "src": "https://dogs.crayonsite.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 日曜 祝日",
+     "src": "https://dogs.crayonsite.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "⑥仕上がり確認して頂いたき、現金にてお支払いお願いします。",
+     "src": "https://dogs.crayonsite.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "シャンプーコース3500円。シャンプーコース4000円",
+     "src": "https://dogs.crayonsite.net/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G029",
+   "name": "Dog Salon ACO",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横須賀市",
+   "url": "https://dogsalon-aco.com/",
+   "area": "横須賀市・三浦市・横浜市金沢区",
+   "services": "店舗サロンと出張トリミングカー",
+   "large": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：9：00〜17：00",
+     "src": "https://dogsalon-aco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：不定休",
+     "src": "https://dogsalon-aco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金・VISA・Master対応",
+     "src": "https://dogsalon-aco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G030",
+   "name": "Dog Salon HAPPY mo.mo（ハッピーモモ）訪問トリミング",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市瀬谷区",
+   "url": "https://dog-happymomo.jimdofree.com/%E8%A8%AA%E5%95%8F%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0/",
+   "area": "横浜市瀬谷区・三ツ境・希望ヶ丘・大和市",
+   "services": "ご自宅のお風呂場・洗面所をお借りしてカット。シャンプーのみも可",
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "通常トリミング料金＋出張料金（￥1500）＋車を置くスペースない場合は駐車場利用した場合の料金。単品メニュー3点以上＋出張料金（￥1000）＋駐車料金有の場合の料金",
+     "src": "https://dog-happymomo.jimdofree.com/%E8%A8%AA%E5%95%8F%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "毎週火曜定休",
+     "src": "https://dog-happymomo.jimdofree.com/%E8%A8%AA%E5%95%8F%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G031",
+   "name": "出張トリミング Rian-dog（リアン）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "url": "https://www.rian-dogtrimming.com/",
+   "area": "横浜市栄区・戸塚区・港南区、鎌倉市・逗子市・葉山町・藤沢市・茅ヶ崎市",
+   "services": "ご自宅訪問でシャンプーコース・トリミングコース",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "[営業時間]9:30～17:00[定休日］不定休",
+     "src": "https://www.rian-dogtrimming.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "[営業時間]9:30～17:00[定休日］不定休",
+     "src": "https://www.rian-dogtrimming.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "単品だけのご利用の場合は、『単品料金＋1,000円』の出張料金をいただいております。。クイックシャンプー（シャンプーのみ）のご利用は、シャンプーコース料金の1,000円引きの料金です。",
+     "src": "https://www.rian-dogtrimming.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは現金のみとなります。",
+     "src": "https://www.rian-dogtrimming.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G032",
+   "name": "横浜出張トリミング Dog's Paw（ドッグズパウ）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市保土ケ谷区",
+   "url": "http://dogspaw.jp/",
+   "area": "横浜市中心",
+   "services": "ご自宅内でトリミング",
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00～17:00",
+     "src": "http://dogspaw.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 日曜・祝祭日",
+     "src": "http://dogspaw.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G033",
+   "name": "トリミングカー バリー",
+   "prefs": [
+    "神奈川県",
+    "東京都"
+   ],
+   "city": "相模原市中央区",
+   "url": "https://trimmingcar-bally.crayonsite.com/p/2/",
+   "area": "相模原市中央区・南区・緑区、愛川町・厚木市・座間市、町田市（出張費は相談）",
+   "services": "ご自宅のお庭・駐車スペースで車内トリミング。シャンプー・カット、爪切り・歯みがきなど",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "一年以内の混合ワクチン接種証明書の提示",
+     "src": "https://trimmingcar-bally.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G034",
+   "name": "移動トリミングカー ブルー・ワン",
+   "prefs": [
+    "神奈川県",
+    "東京都"
+   ],
+   "city": "相模原市",
+   "url": "https://bluewan.net/",
+   "area": "相模原市・町田市中心（ほかは相談）",
+   "services": "ご自宅に訪問し、車の中でトリミング。全コースで光マイクロバブル",
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間8:30〜20:00(最終受付16:00)",
+     "src": "https://bluewan.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病・混合ワクチンの証明書提示。",
+     "src": "https://bluewan.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G035",
+   "name": "Dog Salon Tickle Tickle（ティックルティックル）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市緑区",
+   "url": "https://dogsalontickletickle.amebaownd.com/",
+   "area": "相模原市緑区橋本中心",
+   "services": "出張トリミングカーでお家の駐車場で施術",
+   "car": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "不定休・10時～18時",
+     "src": "https://dogsalontickletickle.amebaownd.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回は混合ワクチン、狂犬病予防証明書のご提示をお願いします。",
+     "src": "https://dogsalontickletickle.amebaownd.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G036",
+   "name": "Dogsalon Erulolo（エルロロ）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市",
+   "url": "https://erulolo0723.com/",
+   "area": "相模原市・大和市・座間市・綾瀬市・海老名市・厚木市",
+   "services": "ワゴン型のトリミングカーでご自宅前へ。店舗と同じトリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10:00〜17:00",
+     "src": "https://erulolo0723.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 ： 水・日・祝",
+     "src": "https://erulolo0723.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "自動車1台分と高さ2.7m以上の駐車スペース",
+     "src": "https://erulolo0723.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは現金またはクレジットカードとなります。",
+     "src": "https://erulolo0723.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G037",
+   "name": "dogvery（出張トリミング＆ペットシッター）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "足柄上郡",
+   "url": "https://www.dogvery.com/",
+   "area": "足柄上郡から小田原市・秦野市・平塚市・茅ヶ崎市周辺",
+   "services": "トリマーがご自宅を訪問してシャンプー・カット。ペットシッターも",
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "Ａ． 初回ご利用時に、狂犬病予防注射済票および混合ワクチンの接種証明書のご提示をお願いしております。",
+     "src": "https://www.dogvery.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "次回トリミング が1か月以内の場合、¥500 引き",
+     "src": "https://www.dogvery.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G038",
+   "name": "移動ペットサロン piro（ピロ）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "茅ヶ崎市",
+   "url": "https://r.goope.jp/petsalon-piro/",
+   "area": "茅ヶ崎市・藤沢市・寒川町中心",
+   "services": "車内でシャンプー・カットを行う出張型サロン",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "木曜休業日",
+     "src": "https://r.goope.jp/petsalon-piro/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G039",
+   "name": "いぬ国屋 移動ドッグトリミングサロンカー（提携店）",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "藤沢市",
+   "url": "https://inukuniya.com/dogcar/",
+   "area": "藤沢市・茅ヶ崎市・鎌倉市（ほかは相談）",
+   "services": "ご自宅前で車内シャンプー＆カット",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "現在は不定休での営業となっております。",
+     "src": "https://inukuniya.com/company/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G040",
+   "name": "wan one",
+   "prefs": [
+    "神奈川県"
+   ],
+   "url": "https://wan-one.shopinfo.jp/",
+   "area": "湘南地域中心",
+   "services": "お宅へ伺い車内でトリミングする完全プライベートサロン",
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：9:00〜20:00",
+     "src": "https://wan-one.shopinfo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G041",
+   "name": "イヌと暮らす 出張トリミング",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "藤沢市",
+   "url": "https://inutokurasu.net/pages/trimming",
+   "area": "藤沢市内限定",
+   "services": "ご自宅のお部屋で出張トリミング。おうちネコも",
+   "cat": true,
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "犬種ごとのプラン料金 + かかった時間の 出張料金(10分1,000円)。+ お客様宅からの病院送迎 → かかった時間の出張料金 (10分1,000円)",
+     "src": "https://inutokurasu.net/pages/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "(営業時間は9:00～18:00です)",
+     "src": "https://inutokurasu.net/pages/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "料金は作業終了時精算となります。お支払いは現金またはPayPayで承ります。",
+     "src": "https://inutokurasu.net/pages/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G042",
+   "name": "ペットお助けマン ドゥ",
+   "prefs": [
+    "新潟県"
+   ],
+   "city": "新潟市西区",
+   "url": "https://www.husbandry.blog/about/",
+   "area": "新潟市（詳しいエリアの記載なし）",
+   "services": "サロンカーで伺うトリミングとハズバンダリートレーニング",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間: 9:00 – 18:00",
+     "src": "https://www.husbandry.blog/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "猫は犬より緊張しやすいので、心筋梗塞のリスクを考慮してハズバンダリートレーニングコース(1回 ￥5,000)から始めさせていただきます。",
+     "src": "https://www.husbandry.blog/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G043",
+   "name": "わんpad",
+   "prefs": [
+    "富山県"
+   ],
+   "city": "富山市",
+   "url": "https://www.wanpad.jp/",
+   "area": "富山市中心（エリア外も相談）",
+   "services": "オリジナルトリミングカーでご自宅まで伺う出張トリミング",
+   "large": true,
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "【定休日】不定休",
+     "src": "https://www.wanpad.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "【クレジットカード】利用不可",
+     "src": "https://www.wanpad.jp/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "当サロンを初めてご利用の方は、飼い主さまの身分証明およびワンちゃんのワクチン・狂犬病の接種証明書をお持ちください。",
+     "src": "https://www.wanpad.jp/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G044",
+   "name": "ドッグサロン CORNER",
+   "prefs": [
+    "富山県"
+   ],
+   "city": "黒部市",
+   "url": "https://a2jfl.crayonsite.com/",
+   "area": "黒部市中心の新川地区",
+   "services": "トリミングカーで出張トリミング。フード・用品の配達も",
+   "car": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "その他不定休",
+     "src": "https://a2jfl.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G045",
+   "name": "出張トリミング SNIFF-SNIFF（スニフスニフ）",
+   "prefs": [
+    "石川県"
+   ],
+   "city": "白山市",
+   "url": "https://sniff-sniff.shopinfo.jp/",
+   "area": "白山市中心、野々市市・金沢市・能美市",
+   "services": "トリミングカーでご自宅へ。シャンプーからカットまで車内で",
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張料を別途いただきます。（5ｋｍ圏内 550円 1㎞ごとに+110円）。部分カットはシャンプーコース+1か所につき550円～となります。",
+     "src": "https://sniff-sniff.shopinfo.jp/pages/4792500/MENU",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G046",
+   "name": "トリミングカー Nico*Nico（ニコニコ）",
+   "prefs": [
+    "長野県"
+   ],
+   "city": "佐久市",
+   "url": "https://nico-wan.com/",
+   "area": "佐久市・南佐久郡・北佐久郡・小諸市",
+   "services": "トリミングカーでご自宅前へ。車内でシャンプー・カット",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "チワワ シャンプー2,500円〜・シャンプー＆カット4,000円〜、トイプードル4,000円〜・5,000円〜、柴犬シャンプー4,000円〜、ラブラドール5,000円〜、猫シャンプー4,000円（税込）",
+     "src": "https://nico-wan.com/price.html",
+     "checked": "2026-11-14",
+     "yen": 2500,
+     "tax": "込"
+    },
+    {
+     "k": "出張費",
+     "v": "佐久市上小田切から25kmまで無料、それより先は1kmごとに100円",
+     "src": "https://nico-wan.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意するもの",
+     "v": "なし（お湯と発電機を積んだ車）",
+     "src": "https://nico-wan.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "佐久市・南佐久郡・北佐久郡・小諸市",
+     "src": "https://nico-wan.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約",
+     "v": "電話だけで受け付け。受付は朝7時から夕方まで、不定休",
+     "src": "https://nico-wan.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "チワワからラブラドールまでの犬と猫。車酔いする子・高齢の子・ほかの犬が苦手な子・怖がりな子に向く、と案内",
+     "src": "https://nico-wan.com/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "G047",
+   "name": "Dog Salon V（ビバ）",
+   "prefs": [
+    "長野県"
+   ],
+   "city": "大町市",
+   "url": "https://dog-salon-v.com/",
+   "area": "長野県全域",
+   "services": "トリミングカーでご自宅の駐車場で施術。オールシザーも",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー：チワワ（S）4,400円・トイプードル6,600円・柴犬6,050円。シャンプー＆カット：チワワ（L）6,270円・トイプードル8,910円。地域によって出張費",
+     "src": "https://dog-salon-v.com/menu/",
+     "checked": "2026-11-14",
+     "yen": 4400
+    },
+    {
+     "k": "用意するもの",
+     "v": "駐車場と電源を借りる。予約は前日まで",
+     "src": "https://dog-salon-v.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "長野県全域",
+     "src": "https://dog-salon-v.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約",
+     "v": "電話・SNSのメッセージ・公式のメッセージで受け付け。前日までに予約（当日は不可）。受付9時〜19時（時間外は相談）、月曜休み（土日に休むことも）",
+     "src": "https://dog-salon-v.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "老犬や、車での移動が苦手な子に向く、と案内",
+     "src": "https://dog-salon-v.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "出張費",
+     "v": "地域によって出張費がかかる（金額は料金表のページ）",
+     "src": "https://dog-salon-v.com/menu/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "G048",
+   "name": "出張トリミング ペットサロン あふろ",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "大垣市",
+   "url": "https://petsalonafuro.amebaownd.com/",
+   "area": "大垣市中心、岐阜市・本巣・北方・羽島・池田・垂井・海津など",
+   "services": "トリミングカーでお宅に伺い車内でシャンプー・カット。猫も",
+   "cat": true,
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "犬・猫・大きさ",
+     "v": "犬と猫（猫のシャンプー・カットも）。シニアの子も",
+     "src": "https://petsalonafuro.amebaownd.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "大垣市を中心に、岐阜市・本巣・北方・羽島・池田・垂井・海津。ほかも相談",
+     "src": "https://petsalonafuro.amebaownd.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "予約",
+     "v": "電話かLINE",
+     "src": "https://petsalonafuro.amebaownd.com/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "G049",
+   "name": "Trimming Car PETRO（出張トリミング ペトロ）",
+   "prefs": [
+    "岐阜県"
+   ],
+   "url": "https://petro.jp/",
+   "area": "岐阜市・山県市・本巣市・各務原市・瑞穂市・羽島市・岐南町・北方町",
+   "services": "トリミングカーでご自宅前で全工程。シャンプー・カット",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー（税込）：チワワ5,500円、ダックス・パグ6,100円、トイプードル・シーズー6,600円、柴犬8,800円。シャンプー＋カット：チワワ7,200円、トイプードル8,800円、シュナウザー9,200円。毛玉600円〜",
+     "src": "https://petro.jp/menu/",
+     "checked": "2026-11-15",
+     "yen": 5500,
+     "tax": "込"
+    },
+    {
+     "k": "出張費",
+     "v": "岐阜市若福町から道のり3km以内0円、5kmまで500円、10kmまで1,000円、15kmまで1,500円、20kmまで2,100円",
+     "src": "https://petro.jp/menu/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "犬（子犬からシニアまで。小型犬・シニア犬が得意）",
+     "src": "https://petro.jp/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "支払い",
+     "v": "現金だけ、終わってから",
+     "src": "https://petro.jp/menu/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "用意するもの",
+     "v": "電源を借りる（なければ発電機を持ってくる。音が出る）",
+     "src": "https://petro.jp/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "岐阜市・山県市・本巣市・岐南町・各務原市・瑞穂市・羽島市・北方町。ネット・電話・LINEで予約",
+     "src": "https://petro.jp/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "G050",
+   "name": "トリミング・ケア・サロン Lovely Dog（ラブリードッグ）",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "浜松市中央区",
+   "url": "https://www.trimming-lovelydog.com/",
+   "area": "浜松市周辺",
+   "services": "トリミングカーでご自宅や事務所など指定の場所へ。サロンと同じトリミング、送迎も",
+   "large": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間】 9:00～19:00",
+     "src": "https://www.trimming-lovelydog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "【定休日】月・日曜日（日曜は不定休）",
+     "src": "https://www.trimming-lovelydog.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "出張・送迎料金は1件につき別途770円発生いたします。",
+     "src": "https://www.trimming-lovelydog.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G051",
+   "name": "フリートリマー Asami",
+   "prefs": [
+    "静岡県"
+   ],
+   "url": "https://asamiracle0706.wixsite.com/trimmer-asami",
+   "area": "静岡県東部（沼津市・三島市・長泉町・清水町・裾野市・富士市・伊豆の国市・静岡市など）",
+   "services": "ご自宅のお風呂場・脱衣所やリビングの一角をお借りしてトリミング",
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "ワクチンを接種していないから、サロンに預けられない（預けるのが心配）",
+     "src": "https://asamiracle0706.wixsite.com/trimmer-asami",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "全く手をつけられなかった場合には出張料＋準備料(￥500税別～)をいただきます。",
+     "src": "https://asamiracle0706.wixsite.com/trimmer-asami/page4",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G052",
+   "name": "出張トリミング Wan-Tail（ワンテイル）",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "静岡市",
+   "url": "https://wan-tail.com/",
+   "area": "静岡市内（焼津市は相談）",
+   "services": "お家での出張・訪問トリミング。皮膚ケア・シニア犬のケアの相談も",
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払いは現在 現金のみ となっております。",
+     "src": "https://wan-tail.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "✅ 各種ワクチン証明書 （1年以内の狂犬病・混合ワクチン）",
+     "src": "https://wan-tail.com/guide/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G053",
+   "name": "ドッグルーム カレン",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "御殿場市",
+   "url": "https://www.omisejiman.net/dogroom-caren/",
+   "area": "御殿場市（裾野市・小山町、近隣は相談）",
+   "services": "移動型ペットサロン（出張トリミング）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張費：裾野市・小山町地域５００円",
+     "src": "https://www.omisejiman.net/dogroom-caren/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "オススメのクレジットカードお支払いサイト",
+     "src": "https://www.omisejiman.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G054",
+   "name": "名古屋 出張トリミング ハナサキ",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市守山区",
+   "url": "https://www.hanasakigrooming.com/",
+   "area": "守山区から10km以内（守山区・千種区・東区・北区・名東区、尾張旭市・春日井市・瀬戸市・長久手市など）",
+   "services": "トリミング専用車両でご自宅へ。シャンプー・カット",
+   "senior": true,
+   "car": true
+  },
+  {
+   "id": "G055",
+   "name": "ワンにゃんシャンプー",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "豊田市",
+   "url": "https://wannyansham.crayonsite.net/",
+   "area": "豊田市中心",
+   "services": "トリミングカーでご自宅へ。犬・猫のシャンプー・カット",
+   "large": true,
+   "cat": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "受付 9:00～18:00 / 水曜定休",
+     "src": "https://wannyansham.crayonsite.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "シャンプーコース 5,300円。カットコース 6,350円",
+     "src": "https://wannyansham.crayonsite.net/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "代金のお支払いは全て現金のみになります。",
+     "src": "https://wannyansham.crayonsite.net/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G056",
+   "name": "オーシーペットモービル名古屋",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市",
+   "url": "http://apm-nagoya.com/",
+   "area": "名古屋市と近郊",
+   "services": "出張グルーミングワゴンでお家の前で犬・猫のシャンプー・カット",
+   "cat": true,
+   "car": true
+  },
+  {
+   "id": "G057",
+   "name": "Grooming service R.M",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "栗東市",
+   "url": "https://www.grooming-service-rm.com/",
+   "area": "栗東市安養寺から車で20分ほど",
+   "services": "出張トリミングと店舗サロン（小型犬・中型犬・大型犬）",
+   "large": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間】00:00～24:00",
+     "src": "https://www.grooming-service-rm.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "【定休日】不定休",
+     "src": "https://www.grooming-service-rm.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G058",
+   "name": "THE DOG Salon Trimming Wagon 京都本店",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市",
+   "url": "https://thedog-wagon.jp/area/s0008/",
+   "area": "京都市伏見区・右京区・下京区・南区・西京区、宇治市・向日市・長岡京市",
+   "services": "移動型トリミングワゴンで指定の場所へ（小型犬・中型犬）",
+   "car": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "当日対応OK / 女性トリマー / 狂犬病ワクチン、混合ワクチン接種の証明書提示が必要 / 感染症対策",
+     "src": "https://thedog-wagon.jp/area/s0008/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G059",
+   "name": "出張トリミング Petit pas（プティ・パ）",
+   "prefs": [
+    "京都府"
+   ],
+   "city": "京都市西京区",
+   "url": "https://petitpas11.com/",
+   "area": "京都市内（ほかの地域は相談）",
+   "services": "自宅のお風呂場と2畳ほどのスペースを借りてシャンプー・トリミング",
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "料金はすべて税抜価格で、出張費込み（駐車料金別途）です。遠方の場合は別途請求することがあります。",
+     "src": "https://petitpas11.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G060",
+   "name": "Trimming move（トリミング ムーブ）",
+   "prefs": [
+    "大阪府",
+    "兵庫県"
+   ],
+   "url": "https://trimming-move.com/",
+   "area": "川西市・伊丹市・宝塚市・池田市・箕面市・豊中市・吹田市が中心",
+   "services": "トリミングカーで自宅まで訪問して施術（小型犬・中型犬）",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：9：00〜18：00",
+     "src": "https://trimming-move.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G061",
+   "name": "トリマー大江（出張トリミング 大阪）",
+   "prefs": [
+    "大阪府"
+   ],
+   "url": "https://shutcho-trimmer.crayonsite.net/",
+   "area": "大阪（詳しいエリアは記載なし）",
+   "services": "トリマーが自宅に伺ってトリミング",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G062",
+   "name": "ペットケアステーション大阪（出張トリミング）",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "堺市堺区",
+   "url": "https://petcare-station.com/trim/visit-triming/",
+   "area": "堺市堺区・北区・東区・西区、大阪市住吉区・阿倍野区・天王寺区",
+   "services": "自宅のお風呂場などを借りて施術。大型犬は出張のみで対応",
+   "large": true,
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本料金＋出張料（8,800円)＋実費(交通費・駐車代 等)",
+     "src": "https://petcare-station.com/trim/visit-triming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "注）原則、 指定のワクチン接種の証明書を確認 していますが 高齢、病気などの理由から接種されていない 場合は 別途ご相談 ください。",
+     "src": "https://petcare-station.com/trim/triming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G063",
+   "name": "THE DOG Salon Trimming Wagon 枚方店",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "枚方市",
+   "url": "https://thedog-wagon.jp/area/s0013/",
+   "area": "枚方市・交野市・寝屋川市・高槻市・四條畷市",
+   "services": "移動型トリミングワゴンで指定の場所へ（小型犬・中型犬）",
+   "car": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "当日対応OK / 女性トリマー / 狂犬病ワクチン、混合ワクチン接種の証明書提示が必要 / 感染症対策",
+     "src": "https://thedog-wagon.jp/area/s0013/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G064",
+   "name": "大阪の犬の移動美容室 レインボードッグ",
+   "prefs": [
+    "大阪府",
+    "奈良県"
+   ],
+   "url": "http://rainbowdog2015.com/",
+   "area": "堺市・高石市・泉大津市・和泉市・岸和田市・富田林市・松原市など、奈良県生駒市・奈良市",
+   "services": "犬のための移動美容室",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー：チワワ・ダックス・パグなど3,500円〜、シーズー・トイプードルなど4,500円〜、柴犬5,000円〜、ゴールデン8,000円〜、バーニーズ12,000円〜。カットはシャンプー＋1,500円〜2,000円、大型犬のカットは相談（税の表示なし）",
+     "src": "https://rainbowdog2015.com/price",
+     "checked": "2026-11-15",
+     "yen": 3500
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "犬だけ（小型〜超大型）",
+     "src": "https://rainbowdog2015.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "奈良県は生駒市・奈良市（一部は有料の地域）",
+     "src": "https://rainbowdog2015.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "予約",
+     "v": "電話かお問い合わせのページ",
+     "src": "https://rainbowdog2015.com/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "G065",
+   "name": "animal care ふうすけのしっぽ",
+   "prefs": [
+    "大阪府"
+   ],
+   "url": "https://www.fuusukenosippo.com/",
+   "area": "大阪市・堺市・松原市・羽曳野市・富田林市・和泉市・岸和田市・泉佐野市など南大阪",
+   "services": "女性トリマーが自宅に訪問してトリミング",
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日：日曜・祝日",
+     "src": "https://www.fuusukenosippo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G066",
+   "name": "自宅出張トリミング ホームトリマー（大阪のトリマー）",
+   "prefs": [
+    "大阪府"
+   ],
+   "url": "https://hometrimmer.net/",
+   "area": "郵便番号で対応を確認（大阪市・門真市・高石市などのトリマーが在籍）",
+   "services": "トリマーが飼い主の自宅に訪問してトリミング。猫専門の訪問トリミングもあり",
+   "cat": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "お手軽コース550円。フルコース1650円",
+     "src": "https://hometrimmer.net/trimmer-profile/6/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G067",
+   "name": "Dog trim MARU",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "守口市",
+   "url": "https://dogtrimmaru.crayonsite.info/",
+   "area": "守口市から片道30分圏内（門真市・寝屋川市・東大阪市・大東市・吹田市・摂津市など）",
+   "services": "自宅のお風呂場とスペースを借りて出張トリミング（小型犬専門）。店舗サロンもあり",
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "水曜日、他不定休",
+     "src": "https://dogtrimmaru.crayonsite.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G068",
+   "name": "出張トリミング mellow pace",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市",
+   "url": "https://mellowpace.amebaownd.com/",
+   "area": "神戸市（東灘区〜兵庫区）〜西宮付近",
+   "services": "自宅に伺い家族のそばでトリミング（小型犬専門）",
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G069",
+   "name": "pet salon おかげ犬",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "神戸市北区",
+   "url": "https://www.care-for-dog-okageken.com/",
+   "area": "店の指定エリア内",
+   "services": "店舗サロンと出張トリミング（爪切りのみ・一部カットのみも）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "トリミング料金 + ¥4,000",
+     "src": "https://www.care-for-dog-okageken.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G070",
+   "name": "Trimming Car Harry",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "明石市",
+   "url": "https://trimmingcarharry.crayonsite.net/",
+   "area": "明石市が中心",
+   "services": "トリミングカーで自宅に伺い駐車場で施術。来店も可",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "✴︎一年以内の混合ワクチン、狂犬病ワクチン証明書をご確認させていただきます。",
+     "src": "https://trimmingcarharry.crayonsite.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "⭐️出張料金（往復）10ｋｍまで￥1000。出張往復10ｋｍ以内￥1000+シャンプーカット￥7800＝￥8800",
+     "src": "https://trimmingcarharry.crayonsite.net/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみとなっております。",
+     "src": "https://trimmingcarharry.crayonsite.net/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G071",
+   "name": "DogSalon CARAT",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "加古川市",
+   "url": "https://www.dogsalon-carat.com/information/",
+   "area": "姫路市・加古川市・高砂市・播磨町・稲美町",
+   "services": "トリミングカーで出張し、車内でシャンプーからカットまで。来店も可",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "出張トリミング営業時間｜10:00～18:00（不定休）",
+     "src": "https://www.dogsalon-carat.com/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "出張トリミング営業時間｜10:00～18:00（不定休）",
+     "src": "https://www.dogsalon-carat.com/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払いは当日の現金払いのみに対応しております。事前のご準備をお願いいたします。",
+     "src": "https://www.dogsalon-carat.com/mobile-tri/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G072",
+   "name": "出張トリミングyoko",
+   "prefs": [
+    "奈良県"
+   ],
+   "city": "橿原市",
+   "url": "https://www.shutcho-trimming405.com/",
+   "area": "奈良県内（一部エリア外あり）",
+   "services": "自宅に伺い、お風呂場と洗面所を借りて施術（小型犬専門）",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー（税込）：スムースチワワ・ダックス・パグなど4,800円〜、トイプードル・シーズーなど6,800円。カット：ロングチワワ・パピヨンなど7,200円〜、トイプードルなど8,800円〜。シャンプー・爪切り・耳掃除・肛門腺・足まわりのカットこみ",
+     "src": "https://www.shutcho-trimming405.com/p/2/",
+     "checked": "2026-11-15",
+     "yen": 4800,
+     "tax": "込"
+    },
+    {
+     "k": "出張費",
+     "v": "場所によって別にかかる。17時以降の夜間は1,500〜2,000円増し。駐車場がなければパーキング代",
+     "src": "https://www.shutcho-trimming405.com/p/2/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "小型犬だけ",
+     "src": "https://www.shutcho-trimming405.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "用意するもの",
+     "v": "はじめては狂犬病と混合ワクチンの証明。ノミ・ダニの駆除。洗面所とお風呂場を借りる（夏はエアコンのある部屋）",
+     "src": "https://www.shutcho-trimming405.com/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "キャンセル料",
+     "v": "前日50%（18時以降は100%）、当日100%",
+     "src": "https://www.shutcho-trimming405.com/p/2/",
+     "checked": "2026-11-15"
+    },
+    {
+     "k": "対応エリア",
+     "v": "橿原市を拠点に奈良県内（生駒市はのぞく）。予約はLINEが基本",
+     "src": "https://www.shutcho-trimming405.com/",
+     "checked": "2026-11-15"
+    }
+   ]
+  },
+  {
+   "id": "G073",
+   "name": "トリミングカー愛犬",
+   "prefs": [
+    "鳥取県"
+   ],
+   "city": "倉吉市",
+   "url": "https://trimmingcar-aiken.com/",
+   "area": "倉吉市東巌城町から半径10km（それより遠くは相談）",
+   "services": "専用車で自宅前まで行き車内でトリミング（小型犬・中型犬）",
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9時〜17時 定休日：不定休",
+     "src": "https://trimmingcar-aiken.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "営業時間:9時〜17時 定休日：不定休",
+     "src": "https://trimmingcar-aiken.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "はじめてご利用される際、ワクチンまた狂犬病接種の証明書をご確認させていただきます。",
+     "src": "https://trimmingcar-aiken.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G074",
+   "name": "出張トリミングSu-zu",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "岡山市北区",
+   "url": "https://trimmingsu-zu.com/",
+   "area": "岡山市・倉敷市・総社市・瀬戸内市が中心",
+   "services": "自宅の室内の一角を借りて犬・猫のシャンプー・カット",
+   "cat": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース ＋500円。カットコース ＋1,000円",
+     "src": "https://trimmingsu-zu.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "ご利用料金は、施術当日に現金手渡しでお支払いください。",
+     "src": "https://trimmingsu-zu.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G075",
+   "name": "ペットのお世話専門 Ciel（シエル）",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "岡山市東区",
+   "url": "http://pet-ciel.jp/",
+   "area": "記載なし（岡山市東区が拠点）",
+   "services": "自宅へ訪問してのトリミング（老犬・老猫ホームも運営）",
+   "large": true,
+   "cat": true,
+   "senior": true
+  },
+  {
+   "id": "G076",
+   "name": "ドッグサロンあかり",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "呉市",
+   "url": "https://dogsalon-akari.com/",
+   "area": "呉市・東広島市・安芸郡熊野町・広島市安芸区",
+   "services": "トリミングカーで出張。駐車場がない場合は家の中でも施術",
+   "senior": true,
+   "car": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー：スムースチワワ3,300円〜・柴犬5,500円〜、シャンプーカット：ロングチワワ5,000円〜・トイプードル7,300円〜（大きさ・もつれで追加あり）",
+     "src": "https://dogsalon-akari.com/",
+     "checked": "2026-11-14",
+     "yen": 3300
+    },
+    {
+     "k": "出張費",
+     "v": "10kmまで1,500円（交通費こみ。呉市焼山からの片道の距離）、本庄・夢ヶ丘・宮ヶ迫は1,000円",
+     "src": "https://dogsalon-akari.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い",
+     "v": "現金・PayPay",
+     "src": "https://dogsalon-akari.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意するもの",
+     "v": "電源を借りる。平らで高さ2.7m以上の駐車スペース（ないときは家の中で）",
+     "src": "https://dogsalon-akari.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "呉市・東広島市・熊野町・広島市安芸区（ほかも相談）",
+     "src": "https://dogsalon-akari.com/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "G077",
+   "name": "Dog Salon Treat",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "尾道市",
+   "url": "https://www.dogsalontreat.com/",
+   "area": "尾道・向島・三原・福山（松永）",
+   "services": "店舗サロンとトリミングカーでの訪問（小型犬・中型犬以下）",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場あり",
+     "src": "https://www.dogsalontreat.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "一年以内の狂犬病、予防接種証明書が必要です。",
+     "src": "https://www.dogsalontreat.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "部分オプションのみの出張も可能（出張料金＋￥1,650）",
+     "src": "https://www.dogsalontreat.com/trimming-car",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G078",
+   "name": "DOG GROOMING wish",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "広島市安佐南区",
+   "url": "https://www.dog-grooming-wish.com/",
+   "area": "広島市全域（8区）",
+   "services": "出張専用の自宅訪問トリミング",
+   "facts": [
+    {
+     "k": "犬・猫・大きさ",
+     "v": "大型犬・猫も対応",
+     "src": "https://www.dog-grooming-wish.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意するもの",
+     "v": "基本的になし",
+     "src": "https://www.dog-grooming-wish.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "広島市全域（8区）",
+     "src": "https://www.dog-grooming-wish.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "large": true,
+   "cat": true
+  },
+  {
+   "id": "G079",
+   "name": "trimmingcar pono",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市西区",
+   "url": "https://trimmingcar-pono.com/",
+   "area": "福岡市西区・糸島市・城南区・早良区",
+   "services": "トリミングカーで自宅近くまで訪問",
+   "senior": true,
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース／カットコース：スムースチワワ 5,200円／6,410円、トイプードル（28cm以下）7,200円／9,510円、ボーダーコリー 11,200円／13,950円など",
+     "src": "https://trimmingcar-pono.com/menu/",
+     "checked": "2026-11-14",
+     "yen": 5200
+    },
+    {
+     "k": "出張費",
+     "v": "福岡市西区は無料。糸島市・城南区・早良区は7kmまで無料、それより先は1kmあたり300円",
+     "src": "https://trimmingcar-pono.com/menu/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "犬の年齢制限なし（老犬・障がいのある子も）",
+     "src": "https://trimmingcar-pono.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い",
+     "v": "クレジットカード（Master・VISA・JCB・AMEX）",
+     "src": "https://trimmingcar-pono.com/menu/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "福岡市西区・糸島市を中心に城南区・早良区",
+     "src": "https://trimmingcar-pono.com/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "G080",
+   "name": "訪問トリミング COCO",
+   "prefs": [
+    "福岡県"
+   ],
+   "url": "https://u2z0l.crayonsite.net/",
+   "area": "福岡（詳しいエリアは記載なし）",
+   "services": "いつものお家でトリミング（平日のみ受付）",
+   "senior": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー／カット：チワワ・ダックス・パピヨン・ヨーキー 5,000円〜／5,500円〜、トイプードル・シーズー・シュナウザー 5,500円〜／6,500円、柴犬・ビーグル シャンプー6,000円〜（税込）。部分美容 1か所1,000円",
+     "src": "https://u2z0l.crayonsite.net/p/2/",
+     "checked": "2026-11-14",
+     "yen": 5000,
+     "tax": "込"
+    },
+    {
+     "k": "出張費",
+     "v": "1kmあたり50円",
+     "src": "https://u2z0l.crayonsite.net/p/3/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "大型犬は部分美容だけ（1人で作業のため）",
+     "src": "https://u2z0l.crayonsite.net/p/2/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "用意するもの",
+     "v": "軽自動車がとめられる場所、バスタオル、延長コードが届く場所（シャンプーは家のお風呂で）",
+     "src": "https://u2z0l.crayonsite.net/p/3/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "新宮町・福岡市東区・古賀市が中心",
+     "src": "https://u2z0l.crayonsite.net/p/3/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "G081",
+   "name": "わんこのプライベートサロン 出張トリミングcha-cha",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市博多区",
+   "url": "https://www.triming-cha-cha.com/",
+   "area": "福岡市南区・博多区・春日市",
+   "services": "出張専門のトリミング（来店不可）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース 2,600円〜5,900円、カットコース 3,600円〜6,900円（税込。犬種・大きさ・もつれで変わる）",
+     "src": "https://www.triming-cha-cha.com/",
+     "checked": "2026-11-14",
+     "yen": 2600,
+     "tax": "込"
+    },
+    {
+     "k": "出張費",
+     "v": "1kmまで無料、2kmまで500円、2kmをこえると1kmごとに100円。コインパーキングは実費",
+     "src": "https://www.triming-cha-cha.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "支払い",
+     "v": "現金のみ（完全予約制）",
+     "src": "https://www.triming-cha-cha.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "キャンセル料",
+     "v": "キャンセル料あり。当日の無断キャンセルはトリミング料金の全額",
+     "src": "https://www.triming-cha-cha.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "対応エリア",
+     "v": "福岡市南区・博多区・春日市",
+     "src": "https://www.triming-cha-cha.com/",
+     "checked": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "G082",
+   "name": "ペットライフサポートサロン lovely Tico",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "北九州市八幡西区",
+   "url": "https://www.lovelytico.com/",
+   "area": "記載なし（北九州市八幡西区が拠点）",
+   "services": "店舗サロンと出張でのトリミング",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "店舗の料金：小型犬（スムースチワワなど）シャンプー3,700円〜・カット4,800円〜、短毛猫シャンプー7,500円〜（税込）。出張の料金は書いていない",
+     "src": "https://www.lovelytico.com/menu",
+     "checked": "2026-11-14",
+     "yen": 3700,
+     "tax": "込"
+    },
+    {
+     "k": "犬・猫・大きさ",
+     "v": "大型犬・高齢の犬・猫も対応、どんな犬種・猫種も",
+     "src": "https://www.lovelytico.com/",
+     "checked": "2026-11-14"
+    },
+    {
+     "k": "予約",
+     "v": "完全予約制（前日までの予約をすすめている）",
+     "src": "https://www.lovelytico.com/",
+     "checked": "2026-11-14"
+    }
+   ],
+   "large": true,
+   "cat": true,
+   "senior": true
+  },
+  {
+   "id": "G083",
+   "name": "VIGOR DOG（ヴィガードッグ）",
+   "prefs": [
+    "長崎県"
+   ],
+   "city": "長崎市",
+   "url": "https://vigordog.com/service/gotrimming",
+   "area": "出張地域は相談（長崎市が拠点）",
+   "services": "店舗サロン・ペットホテルと出張トリミング",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "03 駐車場完備でアクセスしやすい",
+     "src": "https://vigordog.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "１年以内にワクチンの済んでいない場合はお断りする場合があります（証明書必要）",
+     "src": "https://vigordog.com/service/pethotel",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G084",
+   "name": "てぃーだ Dog grooming",
+   "prefs": [
+    "熊本県"
+   ],
+   "url": "https://tidadoggrooming.wixsite.com/my-site",
+   "area": "記載なし（車がない・車が苦手・外出できないお宅向け）",
+   "services": "店舗サロンと、犬のお家での出張トリミング",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "〇おパンツカット+1,100円",
+     "src": "https://tidadoggrooming.wixsite.com/my-site",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G085",
+   "name": "ドッグサロン puppy（パピー）",
+   "prefs": [
+    "宮崎県"
+   ],
+   "city": "宮崎市",
+   "url": "https://dogsalon-puppy.net/",
+   "area": "個別に問い合わせ（宮崎市が拠点）",
+   "services": "店舗サロンと自宅での出張トリミング",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーカットコースは+1,000円になります。部分カットは+500円",
+     "src": "https://dogsalon-puppy.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G086",
+   "name": "petsitter Luna",
+   "prefs": [
+    "沖縄県"
+   ],
+   "url": "https://www.loveluna-pet.com/",
+   "area": "沖縄県",
+   "services": "ペットシッターと出張グルーミング・トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 AM8:00～PM8:00 ( 最終受付 PM7:00) 外は、時間外料金が加算されます。",
+     "src": "https://www.loveluna-pet.com/pet-sitting",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "１台分の駐車スペースのご用意をお願いします。",
+     "src": "https://www.loveluna-pet.com/pet-sitting",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "ご利用料金は、前払い制で、現金のみの取り扱いとなっております。",
+     "src": "https://www.loveluna-pet.com/pet-sitting",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G087",
+   "name": "kusutto.",
+   "prefs": [
+    "北海道"
+   ],
+   "url": "https://kusutto.info/",
+   "area": "札幌市内（市外は出張料金500円から）",
+   "services": "ご自宅に出張・訪問してトリミング",
+   "city": "札幌市",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "札幌市内は無料、札幌市外は500円から",
+     "src": "https://kusutto.info/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G088",
+   "name": "Dog Salon CRESCENT 出張トリミング",
+   "prefs": [
+    "秋田県"
+   ],
+   "url": "https://dogsaloncrescent.wixsite.com/home/%E5%87%BA%E5%BC%B5%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0",
+   "area": "湯沢市から出張（5kmごとに出張費）",
+   "services": "サロンからの出張トリミング",
+   "city": "湯沢市",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "5kmごとに660円から",
+     "src": "https://dogsaloncrescent.wixsite.com/home/%E5%87%BA%E5%BC%B5%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜18:00（予約制）",
+     "src": "https://dogsaloncrescent.wixsite.com/home/%E5%87%BA%E5%BC%B5%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://dogsaloncrescent.wixsite.com/home/%E5%87%BA%E5%BC%B5%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G089",
+   "name": "出張トリミングサロン ポジティブ（笠間）",
+   "prefs": [
+    "茨城県"
+   ],
+   "url": "https://0511-positive.com/site3.aspx",
+   "area": "笠間市・つくば市など茨城県内",
+   "services": "出張トリミング。犬・猫、大型犬・シニア犬も",
+   "city": "笠間市",
+   "large": true,
+   "senior": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00 - 19:00",
+     "src": "https://0511-positive.com/site3.aspx",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://0511-positive.com/site3.aspx",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G090",
+   "name": "Dog Grooming Car Lucir",
+   "prefs": [
+    "茨城県"
+   ],
+   "url": "https://dog-grooming-car-lucir.com/",
+   "area": "水戸市・ひたちなか市・常陸太田市・東海村・日立市・那珂市・大洗町",
+   "services": "移動式のドッグサロン。来店と出張グルーミングの両方",
+   "city": "ひたちなか市",
+   "car": true,
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "場所によって異なる",
+     "src": "https://dog-grooming-car-lucir.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "出張は10:00から",
+     "src": "https://dog-grooming-car-lucir.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G091",
+   "name": "Ricoco trimming",
+   "prefs": [
+    "群馬県"
+   ],
+   "url": "https://ricoco-trimming.com/",
+   "area": "前橋市",
+   "services": "トリミングサロン。送迎・出張トリミングあり",
+   "city": "前橋市"
+  },
+  {
+   "id": "G093",
+   "name": "出張トリミング bouquet",
+   "prefs": [
+    "千葉県"
+   ],
+   "url": "https://bouquet.pet/",
+   "area": "千葉・東京",
+   "services": "犬・猫のシャンプー・カットの出張トリミング（当日の予約は受けない）",
+   "city": "千葉市美浜区",
+   "cat": true,
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "<p>・シャンプーコース：10,000円</p。<p>・シャンプーカットコース：13,000円</p",
+     "src": "https://bouquet.pet/feed.rss",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "大西あゆみ(不定休)",
+     "src": "https://bouquet.pet/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "﻿お支払いは現金のみとなっております。",
+     "src": "https://bouquet.pet/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "【混合ワクチンと狂犬病の証明書の確認】",
+     "src": "https://bouquet.pet/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G094",
+   "name": "PetCareService ATELIER",
+   "prefs": [
+    "千葉県"
+   ],
+   "url": "https://petcareserviceatelier.com/",
+   "area": "船橋市を中心に東京都・神奈川県・埼玉県など関東全域",
+   "services": "出張トリミング",
+   "city": "船橋市",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "相談・問い合わせ 9:00〜20:00（不定休）",
+     "src": "https://petcareserviceatelier.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G095",
+   "name": "出張トリマーMIYU",
+   "prefs": [
+    "東京都"
+   ],
+   "url": "https://www.groomer-miyu.com/",
+   "area": "東京23区",
+   "services": "お部屋訪問型の出張トリミング",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "最終受付時間は１５時〜１６時です。",
+     "src": "https://www.groomer-miyu.com/?mode=f5",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "遠方出張費として、トリミング料金プラス￥３，５００〜（税込￥3,780）とさせいただいています。",
+     "src": "https://www.groomer-miyu.com/?mode=f6",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回ご利用時には混合ワクチンの証明書を確認させて頂いております。なお、毎年の追加接種ごとに証明書をご持参下さい",
+     "src": "https://www.groomer-miyu.com/?mode=f6",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G096",
+   "name": "東京出張トリミング ruff-ruff（ラフラフ）",
+   "prefs": [
+    "東京都",
+    "神奈川県"
+   ],
+   "url": "https://ruff-ruff-dog.com/",
+   "area": "横浜市内・東京23区を中心に",
+   "services": "ご自宅での出張トリミング",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "トリミングテーブルを用意すると1,000円引き",
+     "src": "https://ruff-ruff-dog.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G098",
+   "name": "出張トリミング Dog Party",
+   "prefs": [
+    "東京都"
+   ],
+   "url": "https://www.dogparty11.com/",
+   "area": "東京近郊（東京・千葉・埼玉・神奈川）",
+   "services": "パピー犬からシニア犬まで。大型犬・多頭も大歓迎",
+   "large": true,
+   "senior": true,
+   "in_home": true
+  },
+  {
+   "id": "G099",
+   "name": "出張トリミングサロン ファーリーフ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "url": "https://www.farleaf1212.com/",
+   "area": "厚木市から出張",
+   "services": "完全プライベート制の出張トリミング（長時間の預かりなし）",
+   "city": "厚木市",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜17:00",
+     "src": "https://www.farleaf1212.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "土・日・祝",
+     "src": "https://www.farleaf1212.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G100",
+   "name": "WILL STYLE",
+   "prefs": [
+    "神奈川県",
+    "東京都"
+   ],
+   "url": "http://willstyle.jp/",
+   "area": "東京・神奈川",
+   "services": "出張トリミング。猫のシャンプー・トリミングは出張だけ",
+   "cat": true,
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "移動1時間を超えると15分500円、有料道路・駐車場は実費",
+     "src": "http://willstyle.jp/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G101",
+   "name": "金沢出張トリミング Calme.",
+   "prefs": [
+    "石川県"
+   ],
+   "url": "https://calmedog.amebaownd.com/",
+   "area": "金沢市を中心に",
+   "services": "出張トリミング。猫も",
+   "city": "金沢市",
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "短毛猫8,500円、長毛猫9,000円（出張費は別）",
+     "src": "https://calmedog.amebaownd.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://calmedog.amebaownd.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G102",
+   "name": "出張トリミング Hug.Lien",
+   "prefs": [
+    "石川県"
+   ],
+   "url": "https://hug-lien70.shopinfo.jp/",
+   "area": "金沢市から（出張費は別）",
+   "services": "出張トリミング。子犬・子猫のはじめてのトリミングも",
+   "city": "金沢市",
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜17:00（不定休）",
+     "src": "https://hug-lien70.shopinfo.jp/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G103",
+   "name": "RUSH",
+   "prefs": [
+    "石川県"
+   ],
+   "url": "https://rush.dog/",
+   "area": "金沢市（出張費は別）",
+   "services": "トリミングカーのサロン。出張は電源（100V）を借りる。猫も",
+   "city": "金沢市",
+   "car": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://rush.dog/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G104",
+   "name": "トリミングハウスおひるね",
+   "prefs": [
+    "山梨県"
+   ],
+   "url": "https://trim-ohirune.com/",
+   "area": "甲府市から送迎・ご自宅への出張",
+   "services": "トリミングハウス。送迎・ご自宅への出張も。大型犬や猫も",
+   "city": "甲府市",
+   "large": true,
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "https://trim-ohirune.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://trim-ohirune.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G105",
+   "name": "訪問ドックサロン Famille",
+   "prefs": [
+    "長野県"
+   ],
+   "url": "https://mxj-huj.wixsite.com/famille/blank-1",
+   "area": "上田市から訪問",
+   "services": "訪問ドッグサロン",
+   "city": "上田市",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜17:00",
+     "src": "https://mxj-huj.wixsite.com/famille/blank-1",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://mxj-huj.wixsite.com/famille/blank-1",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G106",
+   "name": "プチ・レノン",
+   "prefs": [
+    "愛知県"
+   ],
+   "url": "https://www.puchi-renon.com/",
+   "area": "東郷町・豊明市・日進市・みよし市",
+   "services": "出張トリミング。ワクチンを打っていない子も対応",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーセット6,600円から、シャンプーカット7,800円から",
+     "src": "https://www.puchi-renon.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G107",
+   "name": "出張&トリミングサロン Snow Dream",
+   "prefs": [
+    "三重県"
+   ],
+   "url": "https://snowdream.crayonsite.net/",
+   "area": "伊勢市・鳥羽市・志摩市・松阪市などお店から30km圏内",
+   "services": "出張トリミング。大型犬大歓迎",
+   "large": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "火曜日と不定休",
+     "src": "https://snowdream.crayonsite.net/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G108",
+   "name": "ドッグサロン smile",
+   "prefs": [
+    "三重県"
+   ],
+   "url": "https://smile.japan-k.com/",
+   "area": "津市（距離に応じた出張費）",
+   "services": "出張トリミング",
+   "city": "津市",
+   "facts": [
+    {
+     "k": "予約のしかた",
+     "v": "LINEは24時間受付",
+     "src": "https://smile.japan-k.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G109",
+   "name": "出張トリミング プティ・パ",
+   "prefs": [
+    "京都府"
+   ],
+   "url": "https://petitpas72353.wixsite.com/petitpas",
+   "area": "京都市内を中心に（出張費込み、遠方は別途）",
+   "services": "出張トリミング",
+   "city": "京都市西京区",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 ９：００～１８：００",
+     "src": "https://petitpas72353.wixsite.com/petitpas",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 水曜日",
+     "src": "https://petitpas72353.wixsite.com/petitpas",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G110",
+   "name": "wancare（ワンケア）",
+   "prefs": [
+    "京都府"
+   ],
+   "url": "https://www.wancare-trimming.com/",
+   "area": "京都府",
+   "services": "出張訪問トリミング",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜18:00",
+     "src": "https://www.wancare-trimming.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "不定休",
+     "src": "https://www.wancare-trimming.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "予約のしかた",
+     "v": "LINE・メール・問い合わせフォーム",
+     "src": "https://www.wancare-trimming.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G111",
+   "name": "出張トリミング Marina",
+   "prefs": [
+    "兵庫県"
+   ],
+   "url": "https://marina-trimming.net/",
+   "area": "宝塚・西宮・芦屋・神戸・伊丹・尼崎",
+   "services": "年齢や性格に合わせた出張トリミング。エンゼルケアも",
+   "senior": true
+  },
+  {
+   "id": "G112",
+   "name": "mellow pace",
+   "prefs": [
+    "兵庫県"
+   ],
+   "url": "https://www.mellow-pace.com/",
+   "area": "神戸市（東灘区〜兵庫区）から西宮付近",
+   "services": "小型犬専門の出張トリミング（ご自宅で）",
+   "city": "神戸市",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "神戸市東灘区〜灘区・芦屋市2,500円、中央区〜兵庫区・西宮市3,000円",
+     "src": "https://www.mellow-pace.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G113",
+   "name": "ペットライフサポーター パルファン",
+   "prefs": [
+    "兵庫県"
+   ],
+   "url": "https://www.plsparfum.com/",
+   "area": "神戸市西区・尼崎市の店舗から",
+   "services": "出張トリミングカー。近くの駐車場での対応も。猫も相談",
+   "city": "神戸市西区",
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "出張費＋￥1000になります。",
+     "src": "https://www.plsparfum.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G114",
+   "name": "DREAMER",
+   "prefs": [
+    "奈良県",
+    "大阪府"
+   ],
+   "url": "https://www.trimming-dreamer.jp/",
+   "area": "奈良・大阪",
+   "services": "香芝市を拠点にした出張トリミング",
+   "city": "香芝市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "CLOSE 不定休（時間外のご相談も可）",
+     "src": "https://www.trimming-dreamer.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "新規割（中型犬）：初めてご利用の方、中型犬のシャンプーが500円OFF",
+     "src": "https://www.trimming-dreamer.jp/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車スペースのご用意が難しい場合は、近隣のコインパーキングの駐車料金の実費をご負担いただく場合があります。",
+     "src": "https://www.trimming-dreamer.jp/flow",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G115",
+   "name": "トリミングカー【彩】",
+   "prefs": [
+    "奈良県"
+   ],
+   "url": "https://trimmingcar-irodori.crayonsite.net/",
+   "area": "奈良県",
+   "services": "出張訪問の移動トリミングサロン",
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "お貸し頂いたお客様は出張料から５００円お値引きさせていただきます",
+     "src": "https://trimmingcar-irodori.crayonsite.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "一年以内の混合ワクチン接種証明書、狂犬病ワクチン接種証明書をご確認させていただきます。",
+     "src": "https://trimmingcar-irodori.crayonsite.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G116",
+   "name": "出張トリミングサロン Wan's Plus",
+   "prefs": [
+    "島根県"
+   ],
+   "url": "https://wans.amebaownd.com/",
+   "area": "出雲市・斐川町（エリア外は+500円）",
+   "services": "出張トリミング。猫も",
+   "city": "出雲市",
+   "cat": true,
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "地図の黄色エリアは0円、エリア外は+500円",
+     "src": "https://wans.amebaownd.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G117",
+   "name": "出張トリミング もぶの木",
+   "prefs": [
+    "岡山県"
+   ],
+   "url": "https://www.mobunoki.com/",
+   "area": "岡山市",
+   "services": "出張トリミング",
+   "city": "岡山市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "5,800円から（税込み・交通費込み）",
+     "src": "https://www.mobunoki.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G118",
+   "name": "choco-cookie 出張トリミング",
+   "prefs": [
+    "広島県"
+   ],
+   "url": "https://www.choco-cookie.com/grooming/",
+   "area": "広島市",
+   "services": "サロンと同じ内容の出張トリミング（シャンプー・カット）",
+   "city": "広島市安芸区",
+   "facts": [
+    {
+     "k": "出張費",
+     "v": "5kmまで500円、5.1km以上1,000円",
+     "src": "https://www.choco-cookie.com/grooming/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G119",
+   "name": "ワン・ルベル",
+   "prefs": [
+    "山口県"
+   ],
+   "url": "https://wanlebel.jp/",
+   "area": "山口市",
+   "services": "トリミングサロン・ペットホテル。出張グルーミングも",
+   "city": "山口市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬3,500円から",
+     "src": "https://wanlebel.jp/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "お支払い",
+     "v": "施術後に店頭で。現金・クレジットカード・電子マネー",
+     "src": "https://wanlebel.jp/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G120",
+   "name": "トリミングカー Laf",
+   "prefs": [
+    "香川県"
+   ],
+   "url": "https://trimmingcarlaf.wixsite.com/dog-salon",
+   "area": "三豊市から",
+   "services": "専用のトリミングカーでご自宅へ",
+   "city": "三豊市",
+   "car": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "9:00〜16:00",
+     "src": "https://trimmingcarlaf.wixsite.com/dog-salon",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "土・日・祝",
+     "src": "https://trimmingcarlaf.wixsite.com/dog-salon",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G121",
+   "name": "ラブドックス",
+   "prefs": [
+    "熊本県"
+   ],
+   "url": "http://www.lovedogs2008.com/",
+   "area": "熊本市東区から",
+   "services": "出張トリミング・ペットサロン",
+   "city": "熊本市東区",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "4,500円から",
+     "src": "http://www.lovedogs2008.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  },
+  {
+   "id": "G122",
+   "name": "わんness",
+   "prefs": [
+    "沖縄県"
+   ],
+   "url": "https://www.wan1ness.com/",
+   "area": "那覇市を中心に沖縄本島全域",
+   "services": "出張トリミング・犬のボディケア",
+   "city": "那覇市",
+   "in_home": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "牧志2丁目から北谷町のお客さま宅まで15kmの場合、無料範囲（5km）を超えた10km分として出張費1,000円 となります。",
+     "src": "https://www.wan1ness.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 火・水・日曜日 9:00～22:00 （ その他の曜日・時間帯も、お気軽にお問い合わせください。 ）",
+     "src": "https://www.wan1ness.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "G123",
+   "name": "ドッグサロンてぃーつりー",
+   "prefs": [
+    "沖縄県"
+   ],
+   "url": "https://teatree-life.com/",
+   "area": "宮古島（観光のお客さま向けの出張トリミングも）",
+   "services": "トリミングサロン。出張トリミングも",
+   "city": "宮古島市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1匹6,000円から（犬種・コースで変わる）",
+     "src": "https://teatree-life.com/",
+     "checked": "2026-11-22"
+    },
+    {
+     "k": "定休日",
+     "v": "日曜日・月曜日・祝日",
+     "src": "https://teatree-life.com/",
+     "checked": "2026-11-22"
+    }
+   ]
+  }
+ ]
+}

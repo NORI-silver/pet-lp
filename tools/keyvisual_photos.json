@@ -1,0 +1,159 @@
+{
+ "_note": "各分野の入口のキービジュアルの写真（tools/keyvisual.py）。どれも Unsplash の無料の写真（Unsplash+ ではない）。1枚を1か所だけで使う。特定の施設・会社の写真ではない",
+ "photos": {
+  "hospital": {
+   "file": "img/kv/hospital.jpg",
+   "alt": "聴診器で白い子猫をやさしく診るところ",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/a-white-kitten-being-examined-by-a-veterinator-5Bi6MWlWMbw",
+   "image": "https://images.unsplash.com/photo-1725409796872-8b41e8eca929",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横5：縦2に切って幅1000に縮小"
+  },
+  "trimming": {
+   "file": "img/kv/trimming.jpg",
+   "alt": "はさみで毛を整えてもらう白い小型犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/a-small-white-dog-being-cut-with-a-pair-of-scissors-LpK2xddrElI",
+   "image": "https://images.unsplash.com/photo-1719464454959-9cf304ef4774",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って幅1000に縮小"
+  },
+  "dog-trainer": {
+   "file": "img/kv/dog-trainer.jpg",
+   "alt": "ゆるいリードで、飼い主のとなりを楽しそうに歩く犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/person-walking-beside-golden-retriever-on-the-street-VehdYPKnX8Y",
+   "image": "https://images.unsplash.com/photo-1530700131180-d43d9b8cc41f",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って幅1000に縮小"
+  },
+  "rojin-home": {
+   "file": "img/kv/rojin-home.jpg",
+   "alt": "口のまわりが白くなった年をとった犬を、両手でやさしくなでる",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/hands-gently-petting-a-dogs-head-outdoors-RmuJbMY0u-4",
+   "image": "https://images.unsplash.com/photo-1776880952098-1cc6dbbda513",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って幅1000に縮小"
+  },
+  "dogrun": {
+   "file": "img/kv/dogrun.jpg",
+   "alt": "広い芝生でボールを追いかけて走る犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/black-short-coated-dog-playing-with-white-ball-on-green-grass-field-during-daytime-gM6QroS17aw",
+   "image": "https://images.unsplash.com/photo-1602684379319-1de467ca74e5",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って幅1000に縮小"
+  },
+  "hinan": {
+   "file": "img/kv/hinan.jpg",
+   "alt": "キャリーバッグから顔を出すヨークシャー・テリア",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/a-small-dog-peeks-out-from-a-carrier-w-eUGI_5bJU",
+   "image": "https://images.unsplash.com/photo-1765045952615-9e28d239f053",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って幅1000に縮小"
+  },
+  "sougi": {
+   "file": "img/kv/sougi.jpg",
+   "alt": "木の机に置いた肉球の記念品と、小さな花",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/clay-paw-print-on-wooden-surface-CMEBnjupzcQ",
+   "image": "https://images.unsplash.com/photo-1787264445691-9f2ced89488f",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って幅1000に縮小"
+  },
+  "pet-sitter": {
+   "file": "img/kv/pet-sitter.jpg",
+   "alt": "いつもの家の窓辺で、安心して眠る柴犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/dog-sleeping-on-floor-LTQMgx8tYqM",
+   "image": "https://images.unsplash.com/photo-1567225591450-06036b3392a6",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って幅1000に縮小"
+  },
+  "area": {
+   "file": "img/kv/area.jpg",
+   "alt": "車の後ろの席のベッドで、落ち着いて座る2匹の小型犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/two-dogs-on-pet-bed-in-car-bsAfOX0WDsU",
+   "image": "https://images.unsplash.com/photo-1559092209-3fef6ee67887",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って幅1000に縮小"
+  },
+  "guide": {
+   "file": "img/kv/guide.jpg",
+   "alt": "日本の路地で自転車のかごに乗る柴犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/a-dog-sitting-in-a-basket-on-the-back-of-a-bike-jACqGMHKEAI",
+   "image": "https://images.unsplash.com/photo-1678501491073-1102ee9e97d3",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って幅1000に縮小"
+  },
+  "joto": {
+   "file": "img/kv/joto.jpg",
+   "alt": "迎えた猫をやさしく抱く女性",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/a-woman-holding-a-cat-in-her-arms-ncyYnXWX-xE",
+   "image": "https://images.unsplash.com/photo-1721907043535-3624243c6d74",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って幅1000に縮小"
+  },
+  "jichitai": {
+   "file": "img/kv/jichitai.jpg",
+   "alt": "日本の家の玄関先で眠る犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/a-dog-laying-on-a-mat-in-front-of-a-house-nvK5CNavtzg",
+   "image": "https://images.unsplash.com/photo-1673008061954-5889d8f8d6a3",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って幅1000に縮小"
+  },
+  "pet-hotel": {
+   "file": "img/kv/pet-hotel.jpg",
+   "alt": "芝生の木かげで、預かった犬たちと過ごす人",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/person-sitting-on-grass-surrounded-by-dogs-_3IKJA5i9rU",
+   "image": "https://images.unsplash.com/photo-1558385952-504347abdceb",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横2：縦1に切って幅1000に縮小"
+  },
+  "emergency": {
+   "file": "img/kv/emergency.jpg",
+   "alt": "毛布にくるまって休む犬",
+   "source": "Unsplash",
+   "page": "https://unsplash.com/photos/a-dog-lying-on-a-bed-pyGFBVhHBBY",
+   "image": "https://images.unsplash.com/photo-1668795490332-557c01835892",
+   "license": "Unsplash License（商用利用可・クレジット表記は不要・改変可。https://unsplash.com/license）",
+   "plus": false,
+   "checked": "2026-11-16",
+   "crop": "横4：縦1に切って幅1000に縮小"
+  }
+ }
+}

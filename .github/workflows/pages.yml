@@ -1,0 +1,68 @@
+# サイトの公開（GitHub Pages）。main に入ると、このワークフローがサイトを公開する。
+# 2026-11-01 Nori「GITHUBがなんか詰まってるみたい。適切に対処して」：
+#   GitHub 標準の公開（pages build and deployment）は、前の公開が「途中」のまま残ると、あとの公開が全部
+#   「in progress deployment」で断られて止まっていた。ここでは同時に1つだけ動かし、あとから来た公開は
+#   前の公開が終わるまで順番に待つ（concurrency）。待っている古い公開は新しいものに置きかわるので、最後は必ず最新の main が出る。
+# 使うには、GitHub の Settings → Pages → Build and deployment の Source を「GitHub Actions」にする（1回だけ）。
+name: pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment2.outputs.page_url || steps.deployment3.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      # [B] 2026-11-13 トップページを軽くする：公開する写しだけ、トップの大きなプログラムを /app.js の読み込みに置きかえる（tools/slim_top.py）
+      - run: python3 tools/slim_top.py .
+      # 公開用ファイルだけ別の場所にまとめる。運用資料・生成元・テストは公開しない。
+      - run: python3 tools/stage_public_pages.py . "$RUNNER_TEMP/pet-public"
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/pet-public
+      # 2026-11-10：GitHub 側の公開が「syncing_files」「finished_file_sync」のまま10分をこえて止まり、取り消されることがある。
+      # deploy-pages の待ち時間は10分（600000）が上限なので、のばせない。かわりに、同じ中身でもう2回まで公開しなおす。
+      - id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - id: deployment2
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - id: deployment3
+        if: steps.deployment.outcome == 'failure' && steps.deployment2.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+      - name: 公開できたか
+        if: always()
+        run: |
+          [ "${{ steps.deployment.outcome }}" = success ] || [ "${{ steps.deployment2.outcome }}" = success ] || [ "${{ steps.deployment3.outcome }}" = success ] || { echo "3回とも公開できませんでした"; exit 1; }
+  # [B] 公開のあと、本文が変わったページ（sitemap の lastmod が変わった・増えたURL）を IndexNow で検索エンジンに知らせる（2026-11-08）。
+  # IndexNow は Bing などに「このページが新しくなった」と知らせるしくみ。ChatGPT の検索や Copilot は Bing の索引を使うので、AI検索に早く載る。
+  # 鍵（4d1bdcc4cfcf49810b95650642a055e1）は公開してよいもの（サイトの /4d1bdcc4cfcf49810b95650642a055e1.txt に置いて、持ち主の確認に使う）。送るのはページのURLだけ。失敗しても公開は止めない。
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: 変わったページを IndexNow に送る
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          python3 tools/indexnow.py "$BEFORE"

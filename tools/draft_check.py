@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+"""[G] メールの下書きを保存する前の点検（AGENTS.md「品質の決まり」C。Nori 2026-11-16）。
+使い方: python3 tools/draft_check.py 下書き.txt [--to 会社|施設|団体|自治体]   → 直すところがあれば終了コード1
+見ること: ◯◯ などの穴、旅行業法の言葉、お金・手数料の話、「公式サイトで確かめた」、こちらの都合が先に立つ言い方、ツール名。
+保存は pettaxi.yoyaku の Gmail の下書きに（「下書きして」＝Gmail の下書き）。送るのは Nori さんの「送って」のあと。
+"""
+import re, sys
+
+RULES = [
+    (r"[◯○〇]{2,}|ＸＸ|XXX|TODO|\[[^\]]*(?:名前|日付|会社|施設)[^\]]*\]|【(?:名前|日付|会社名|施設名)】", "穴が残っている（宛名・日付・名前を具体的に入れる）"),
+    (r"手配|取り次|取次|代理|お客さまに代わって|に代わって", "旅行業法の言葉（AGENTS.md）"),
+    (r"手数料|紹介料|掲載料|成約|課金|費用をいただ|料金をいただ|お支払いいただ", "当サイトのお金の話は書かない"),
+    (r"公式(?:サイト|ページ)[^。]{0,8}(?:で|を)(?:確かめ|確認し)|公式(?:サイト|ページ)に書いて(?:ある|あった)こと", "「公式サイトで確かめた」と書かない"),
+    (r"くらべられ|比較でき|比較サイト", "こちらの都合（くらべる）を前に出さない（相手の立場で）"),
+    (r"Google|Gmail|スプレッドシート|Apps Script|GAS\b|Claude|ChatGPT|AI(?:が|で|に)", "ツール名・AIの話を出さない"),
+    (r"使える会社", "「条件に合う会社」と書く"),
+    # 2026-11-18 GA：「（https://pet.shiokonbu.com/hinan/）を個人で…」の「）を…」までリンクになり、存在しないページに飛んでいた
+    (r"https?://[\x21-\x7e]+(?=[^\s\x21-\x7e])", "URLの直後に空白か改行を入れる（日本語や「）」がつながるとリンクが壊れる。URLは1行に1つだけ書く）"),
+]
+
+
+def check(text):
+    out = []
+    for pat, why in RULES:
+        for m in re.finditer(pat, text):
+            line = text.count("\n", 0, m.start()) + 1
+            out.append(f"{line}行目「{m.group()}」: {why}")
+    if len(text) > 1200: out.append(f"{len(text)}字。長い（相手が読むのは最初の数行。短くする）")
+    return out
+
+
+if __name__ == "__main__":
+    t = open(sys.argv[1], encoding="utf-8").read() if len(sys.argv) > 1 and sys.argv[1] != "-" else sys.stdin.read()
+    res = check(t)
+    for r in res: print("直す:", r)
+    print("OK" if not res else f"{len(res)}か所")
+    sys.exit(1 if res else 0)
