@@ -3,9 +3,6 @@
 name: regsite-ubex7a
 on:
   workflow_dispatch:
-  push:
-    branches: ['claude/project-thread-ubex7a']
-    paths: ['tools/crawl/regq_*.json', 'tools/regsite.py', '.github/workflows/regsite-ubex7a.yml']
 permissions:
   contents: write
 concurrency:
