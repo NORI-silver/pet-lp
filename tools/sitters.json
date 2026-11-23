@@ -21546,6 +21546,1433 @@
    "area": "【全域対応エリア】 文京区 台東区 千代田区"
   },
   {
+   "id": "SC001",
+   "name": "市川ペットシッター元気",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "市川市",
+   "url": "http://petto-gennki.p-kit.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC002",
+   "name": "ペットシッター汐",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "野田市",
+   "url": "https://shio.sadist.jp/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "★お支払方法 打合せ時に現金にてお支払",
+     "src": "https://shio.sadist.jp/%e3%81%94%e5%88%a9%e7%94%a8%e6%96%b9%e6%b3%95%e3%81%ae%e6%b5%81%e3%82%8c/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC003",
+   "name": "ペットシッター しっぽな",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "柏市",
+   "url": "http://sippona.jp/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型犬 1頭 1回 ... 2500円 ※",
+     "src": "http://sippona.jp/price-list/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC004",
+   "name": "PURE/日本ペットシッターサービス千葉北店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉市花見川区",
+   "url": "https://www.pet-ss.com/pure/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1時間500円となります。",
+     "src": "https://www.pet-ss.com/pure/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00~20:00",
+     "src": "https://www.pet-ss.com/pure/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC005",
+   "name": "てぃーだwan",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉市稲毛区",
+   "url": "https://tidawan.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "カウンセリング(60分)・・・・3,500円",
+     "src": "https://tidawan.com/%e3%83%ac%e3%83%83%e3%82%b9%e3%83%b3%e3%83%bb%e6%96%99%e9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:出張レッスン 10:00~19:00",
+     "src": "https://tidawan.com/sample-page/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://tidawan.com/sample-page/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "支払方法は、現金または口座振込にてお願いいたしております。",
+     "src": "https://tidawan.com/%e3%83%ac%e3%83%83%e3%82%b9%e3%83%b3%e3%83%bb%e6%96%99%e9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC006",
+   "name": "ペットシッター ハピネス",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "八千代市",
+   "url": "https://www.petsitterhappiness.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "2 駐車スペースがない場合は、近隣コインパーキング代をご負担いただいております。",
+     "src": "https://www.petsitterhappiness.com/price",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC007",
+   "name": "ペットシッティング in URAYASU",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "浦安市",
+   "url": "https://penguinsitter.com/area/urayasu/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "・お散歩代行:30分 3,000円~(税別)",
+     "src": "https://penguinsitter.com/area/urayasu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC008",
+   "name": "MIMI pet-sitter",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "成田市",
+   "url": "https://www.mimipetsitter.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC009",
+   "name": "犬の杜 Noman",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "市原市",
+   "url": "https://inunomorinoman-pethotel.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "・定休日:不定休",
+     "src": "https://inunomorinoman-pethotel.com/%e3%82%a2%e3%82%af%e3%82%bb%e3%82%b9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防接種および混合ワクチンを1年以内に接種済みであること。(証明書の提出が必要)",
+     "src": "https://inunomorinoman-pethotel.com/%e3%81%94%e5%88%a9%e7%94%a8%e6%96%99%e9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC010",
+   "name": "ペットシッター にゃん2",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "柏市",
+   "url": "https://www.lowevivi.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "​電話受付時間8:00~19:00",
+     "src": "https://www.lowevivi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC011",
+   "name": "Mon To Blan",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉市美浜区",
+   "url": "http://montoblan.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "以降1時間 5,000円",
+     "src": "https://montoblan.com/terms/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間外(19時以降〜朝9時まで)",
+     "src": "https://montoblan.com/terms/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC012",
+   "name": "ペットシッター ひいろ日和。",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉市稲毛区",
+   "url": "https://pet-hiirobiyori.p-kit.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC013",
+   "name": "Prime 日本ペットシッターサービス千葉東店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "大網白里市",
+   "url": "https://www.pet-ss.com/prime/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00~20:00",
+     "src": "https://www.pet-ss.com/prime/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "営業エリアは、大網白里市、東金市、茂原市、白子町、九十九里町、千葉市緑区、その他周辺エリアです。",
+     "src": "https://www.pet-ss.com/prime/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC015",
+   "name": "ペットシッター 検見川",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉市花見川区",
+   "url": "https://www.petsitterkemigawa.com/%E7%A7%81%E3%81%9F%E3%81%A1%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "☆対応エリアは、千葉市花見川区・美浜区・稲毛区(一部)です。",
+     "src": "https://www.petsitterkemigawa.com/%E7%A7%81%E3%81%9F%E3%81%A1%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC016",
+   "name": "ハウオリ・ハナ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "我孫子市",
+   "url": "https://www.hauoli-hana.com/index.html",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "・病院にかかった時間(1時間2,000円)",
+     "src": "https://www.hauoli-hana.com/services.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "お電話 (受付時間:9:00 ~ 18:00)",
+     "src": "https://www.hauoli-hana.com/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC017",
+   "name": "わんにゃんライフサポート彩",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "野田市",
+   "url": "https://www.wannyanlifesupportirodori.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "・30分 3,000円〜",
+     "src": "https://www.wannyanlifesupportirodori.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC018",
+   "name": "ペットシッター boni",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "印西市",
+   "url": "https://www.petsitter-haruharu.com/index.html",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日:不定休(トップページにて都度お知らせいたします。)",
+     "src": "https://www.petsitter-haruharu.com/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法:現金 銀行振込",
+     "src": "https://www.petsitter-haruharu.com/price.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC022",
+   "name": "ペットシッター さくら舎",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "松戸市",
+   "url": "https://www.pet-ss.com/cosypet/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "(例:片道5kmで5×120=1回 600円)",
+     "src": "https://www.pet-ss.com/cosypet/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC023",
+   "name": "ねこ松",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "松戸市",
+   "url": "https://pet-rplus.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC024",
+   "name": "ペットシッターシュシュ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "四街道市",
+   "url": "https://petsitter-chouchou.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://petsitter-chouchou.com/store.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "営業エリア:四街道市 佐倉市 千葉市若葉区 稲毛区 花見川区 八千代市 八街市 富里市 印旛郡酒々井町 その他エリアもご相談に応じます。",
+     "src": "https://petsitter-chouchou.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC025",
+   "name": "ペットシッター クッカバラ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉市若葉区",
+   "url": "https://kookaburra.grupo.jp/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "※駐車スペースがない場合はコインパーキングを使用します。",
+     "src": "https://kookaburra.grupo.jp/free1530398",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC026",
+   "name": "LAI ALOHA",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "柏市",
+   "url": "https://animalcampus.jp/areas/chiba/kashiwashi/21261",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 08:00~20:00",
+     "src": "https://animalcampus.jp/areas/chiba/kashiwashi/21261",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC027",
+   "name": "ドッグシッター バディ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "佐倉市",
+   "url": "https://www.dogsitterbuddy.jp/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:8:00~19:00",
+     "src": "https://www.dogsitterbuddy.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://www.dogsitterbuddy.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC028",
+   "name": "ペットシッター・ひだまり",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "四街道市",
+   "url": "https://hidamarisitter.sbs/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "初回30分 4,000円(税別)",
+     "src": "https://hidamarisitter.sbs/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC031",
+   "name": "COSYペットケアサービス",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "松戸市",
+   "url": "https://www.pet-ss.com/cosypet/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "(例:片道5kmで5×120=1回 600円)",
+     "src": "https://www.pet-ss.com/cosypet/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC032",
+   "name": "Pet99",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "大網白里市",
+   "url": "https://www.pet-99.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC033",
+   "name": "キャットまーる 新浦安",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "浦安市",
+   "url": "https://catmarl222.jimdofree.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "猫(2匹まで) 1日2回訪問 6,500円",
+     "src": "https://catmarl222.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "お電話受付時間: 10:00~20:00",
+     "src": "https://catmarl222.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC034",
+   "name": "ペットシッター Tail Mate",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "白井市",
+   "url": "https://tailmate-petsitter.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "ご利用料金のお支払いは、現金、もしくはPayPayでのお支払いのみ対応しております。",
+     "src": "https://tailmate-petsitter.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC035",
+   "name": "ペットシッター Fam",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "市川市",
+   "url": "https://fam-pet.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00~20:00",
+     "src": "https://fam-pet.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "ご自宅に駐車スペースがない場合は、有料駐車場を利用する必要があるため、訪問回数分の駐車料金をご請求させていただきます。",
+     "src": "https://fam-pet.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア:第一種動物取扱業 25-市川健福475-9",
+     "src": "https://fam-pet.com/category/news/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法:現金",
+     "src": "https://fam-pet.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC036",
+   "name": "キャットシッター かぎしっぽ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "松戸市",
+   "url": "https://catcatcat.ninpou.jp/info.html",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "60分 1400円",
+     "src": "https://catcatcat.ninpou.jp/info.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC037",
+   "name": "ペットシッター はやし",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "柏市",
+   "url": "https://www.lowevivi.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "​電話受付時間8:00~19:00",
+     "src": "https://www.lowevivi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC038",
+   "name": "ペットシッターおゆみ野",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉市緑区",
+   "url": "https://petsitter-oyumino5601.jimdofree.com/%E5%96%B6%E6%A5%AD%E3%82%A8%E3%83%AA%E3%82%A2/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC039",
+   "name": "soltive",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "市川市",
+   "url": "https://www.soltive.jp/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC040",
+   "name": "ペットシッター おるすばんサポート",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "浦安市",
+   "url": "http://mikureo.jp/about.html",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本料金は匹数・大きさに関わらず60分3,240円(シッターサービス)でございます。",
+     "src": "http://mikureo.jp/voice.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "サービス対応エリア:千葉県浦安市",
+     "src": "http://mikureo.jp/about.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC042",
+   "name": "ペットシッター たからもの",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "印西市",
+   "url": "https://www.plumeriawalk.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払い方法:・現金",
+     "src": "https://www.plumeriawalk.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC043",
+   "name": "白井 キャットシッターサービス",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "白井市",
+   "url": "https://catss.jp/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "白井(当店)をから 1.5km未満 は、 1回 1,500円(税別) です。",
+     "src": "https://catss.jp/entry5.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:通常営業:10時〜20時(応相談)",
+     "src": "https://catss.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:年中無休(不定休)",
+     "src": "https://catss.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC044",
+   "name": "ペットケアサポート小野",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "柏市",
+   "url": "https://www.onopet.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC045",
+   "name": "日本ペットシッターサービス 我孫子.取手 OHANA",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "我孫子市",
+   "url": "https://www.pet-ss.com/ohana/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 9:00~20:00",
+     "src": "https://www.pet-ss.com/ohana/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "〇お支払い方法は、現金・お振込よりお選びください。",
+     "src": "https://www.pet-ss.com/ohana/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC046",
+   "name": "M&B ペットシッター",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "茂原市",
+   "url": "http://merci-betty.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "http://merci-betty.com/infomation.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "※駐車スペースがない場合、コインパーキング代をご負担いただきます。",
+     "src": "http://merci-betty.com/cost.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア:市原市(一部地域)",
+     "src": "http://merci-betty.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC047",
+   "name": "ペットシッター 君津",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "君津市",
+   "url": "https://www.petsitterkimitsu.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC048",
+   "name": "Chainon シェノン",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "柏市",
+   "url": "https://chainon-pet.com/about_shop/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "※ お店よりご自宅までの距離で1回の移動料金を決めます。 往復の距離2kmで120円になります。",
+     "src": "https://chainon-pet.com/service/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00~20:00",
+     "src": "https://chainon-pet.com/about_shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "営業エリア:千葉県柏市・鎌ヶ谷市・流山市・我孫子市 (周辺エリアもご相談ください)",
+     "src": "https://chainon-pet.com/about_shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "代金の支払い方法:現金、銀行振込",
+     "src": "https://chainon-pet.com/about_shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC049",
+   "name": "ペットシッター オスカー",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "松戸市",
+   "url": "https://www.pet-ss.com/cosypet/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "(例:片道5kmで5×120=1回 600円)",
+     "src": "https://www.pet-ss.com/cosypet/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC050",
+   "name": "ペットシッター 花のしっぽ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "佐倉市",
+   "url": "https://www.pet-ss.com/kagishippo/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 8:00~20:00",
+     "src": "https://www.pet-ss.com/kagishippo/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC051",
+   "name": "キャットシッターたまはな",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "南房総市",
+   "url": "https://www.cstamahana.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回 2700円",
+     "src": "https://www.cstamahana.com/price.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車スペースの有無 ※",
+     "src": "https://www.cstamahana.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC052",
+   "name": "Luana LuLu for PAWs",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "柏市",
+   "url": "https://pethotel.work/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "(移動、付き添い料金が1時間ごとに1,100円がかかります)",
+     "src": "https://pethotel.work/pet-hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間】AM8:00~PM7:00",
+     "src": "https://pethotel.work/about-us/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "・お支払いは現金前払いでお願いしています。",
+     "src": "https://pethotel.work/pet-hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC053",
+   "name": "ペットシッター ボンキーズ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉市中央区",
+   "url": "https://pet-bonkies.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:9:00~19:00",
+     "src": "https://pet-bonkies.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車スペースの有無",
+     "src": "https://pet-bonkies.com/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "対応エリア:3km圏内 300円",
+     "src": "https://pet-bonkies.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC054",
+   "name": "IRIE CatSitters匝瑳",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "匝瑳市",
+   "url": "https://www.roku-6-house.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC055",
+   "name": "ペットシッター Capty",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "富津市",
+   "url": "https://petsitter-capty.com/index.html",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC056",
+   "name": "ペットシッターよつば",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "四街道市",
+   "url": "https://pet-yotuba.p-kit.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "※近くに駐車スペースが無く一般のコインパーキングを使用する場合、別途実費を頂きます。",
+     "src": "https://pet-yotuba.p-kit.com/page0009.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "出張エリア:所在地 千葉県四街道市鷹の台3-3-12",
+     "src": "https://pet-yotuba.p-kit.com/page0005.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC057",
+   "name": "ペットシッターれと",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "四街道市",
+   "url": "https://www.petsitter-reto.jp/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間は8:00~20:00になっております。又その他の時間外のご相談もお受けしております。",
+     "src": "https://www.petsitter-reto.jp/flow.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC058",
+   "name": "ペットシッター いいやま",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "市川市",
+   "url": "https://penguinsitter.com/area/ichikawa/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "・お散歩代行:30分 3,000円~(税別)",
+     "src": "https://penguinsitter.com/area/ichikawa/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC059",
+   "name": "アリス・ペット・シッター&ホテル",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "四街道市",
+   "url": "https://www.alicepet.info/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC060",
+   "name": "CoCona",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "八街市",
+   "url": "https://cocona-b8.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1時間 6,000円",
+     "src": "https://cocona-b8.com/training-services/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC061",
+   "name": "伴侶動物お世話人",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "柏市",
+   "url": "https://www.lowevivi.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "​電話受付時間8:00~19:00",
+     "src": "https://www.lowevivi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC062",
+   "name": "猫専門ペットシッター にゃんずけあ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "船橋市",
+   "url": "https://nyans-care.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC063",
+   "name": "キャットシッターねことも",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "船橋市",
+   "url": "http://csnekotomo.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC064",
+   "name": "船橋ペットシッターズ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "船橋市",
+   "url": "https://www.funapetsit.com/faq.html",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC065",
+   "name": "ペットシッター Runa",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "船橋市",
+   "url": "https://maymomo430.wixsite.com/runa",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC066",
+   "name": "loco-pet",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "船橋市",
+   "url": "https://www.locopet-sitter-salon.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC067",
+   "name": "ペットシッター まりん",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "いすみ市",
+   "url": "https://petsittermarine.wixsite.com/petsittermarine",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 8:00-20:00 (留守電有り)",
+     "src": "https://petsittermarine.wixsite.com/petsittermarine",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC068",
+   "name": "PETSITTERイトコ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "柏市",
+   "url": "https://petsitteritoco.localinfo.jp/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本料金 +1,000円",
+     "src": "https://petsitteritoco.localinfo.jp/pages/3787790/page_201807122030",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00〜21:00",
+     "src": "https://petsitteritoco.localinfo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法:現金払い カウンセリング当日にお支払いください。",
+     "src": "https://petsitteritoco.localinfo.jp/pages/3787790/page_201807122030",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC069",
+   "name": "chat concierge",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "流山市",
+   "url": "https://ameblo.jp/chat-conci10/entry-12303962939.html",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC070",
+   "name": "Petsitter-Hus",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "野田市",
+   "url": "https://www.petsitter-hus.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "●1回お世話に伺うごとに、出張料 660円(基本エリア内)を頂戴いたします。基本エリア外のお客様もご相談ください。",
+     "src": "https://www.petsitter-hus.com/%e3%81%94%e5%88%a9%e7%94%a8%e6%96%99%e9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※お支払いは、銀行振込も可能です。",
+     "src": "https://www.petsitter-hus.com/%e3%81%94%e5%88%a9%e7%94%a8%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC071",
+   "name": "ペットホテル・トリミングサロン麻布十番ダンボ市川店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "市川市",
+   "url": "https://dumbo-azabu10ban.jp/ichikawa/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "お電話の受付時間は10:00~19:00 、 メールでのお問合せ、メールフォームでのご予約 なら24時間 受け付けています。",
+     "src": "https://dumbo-azabu10ban.jp/petsitter/contact.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC072",
+   "name": "ペットシッター・ホテルいきものがかり",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "いすみ市",
+   "url": "https://pet-ikimonogakari.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "ご利用代金支払い方法:現金",
+     "src": "https://pet-ikimonogakari.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC073",
+   "name": "ペットシッターPet Heart",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "茂原市",
+   "url": "https://petsitter-oneheart.com/course/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払いは、現金での対応をお願いします。",
+     "src": "https://petsitter-oneheart.com/flow/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC074",
+   "name": "sakuyakupet.C",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "千葉市中央区",
+   "url": "https://9ud0w.crayonsite.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://9ud0w.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
    "id": "Sk6a1169",
    "name": "Puppy Boo",
    "prefs": [
