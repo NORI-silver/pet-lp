@@ -58,7 +58,7 @@ IC = {
  "out": "%3Cpath d='M14 5h5v5M19 5l-8 8M17 14v5H5V7h5'/%3E",
  "city": "%3Cpath d='M4 20V9l5-3v14M9 20V4l7 3v13M16 20v-9l4 2v7M3 20h18'/%3E",
 }
-CSS = ("<style>.jc-ic{display:inline-block;width:22px;height:22px;flex:0 0 22px;background:center/22px no-repeat}"
+CSS = ("<style>.jc-hub:not(.on) .emg-pref,.jc-hub:not(.on) .emg-region{display:none}.jc-hub.on .jc-hint{display:none}.jc-hint{font-size:.88rem;color:#4a3d34;margin:6px 0 0}.jc-hint button{margin:6px 0 0;padding:8px 12px;border:1px solid #c2410c;border-radius:999px;background:#fff;color:#c2410c;font-weight:700;font-size:.88rem}.jc-ic{display:inline-block;width:22px;height:22px;flex:0 0 22px;background:center/22px no-repeat}"
  + "".join(f".jc-ic.i-{k}{{background-image:{_ic(v)}}}" for k, v in IC.items()) +
  ".jc-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 0}"
  "@media(min-width:640px){.jc-tiles{grid-template-columns:1fr 1fr 1fr}}"
@@ -75,7 +75,7 @@ CSS = ("<style>.jc-ic{display:inline-block;width:22px;height:22px;flex:0 0 22px;
  ".jc-br .t.c2{background:#2b211b}"
  ".jc-find{display:flex;gap:6px;margin:10px 0 0}.jc-find input{flex:1;min-width:0;padding:10px 12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
  ".jc-ans{margin:8px 0 0;font-size:.92rem;color:#2b211b}.jc-ans:empty{display:none}.jc-ans button{margin:4px 4px 0 0;padding:8px 12px;border:1px solid #c2410c;border-radius:999px;background:#fff;color:#c2410c;font-weight:700;font-size:.9rem}"
- ".jc-pick{display:grid;gap:8px;margin:0 0 6px}.jc-pk{display:block;background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px;text-decoration:none;color:#2b2622}.jc-pk b{display:block;font-size:1.05rem}.jc-pk span{display:block;font-size:.85rem;color:#4a3d34;line-height:1.55;margin-top:2px}.jc-pk.u{background:#c2410c;border-color:#c2410c;color:#fff}.jc-pk.u span{color:#fff}.jc-pk::after{content:'›';float:right;margin-top:-1.6em;font-size:1.4rem}"
+ ".jc-pick{display:grid;gap:8px;margin:0 0 6px}.jc-pk{display:block;background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px;text-decoration:none;color:#2b2622}.jc-pk b{display:block;font-size:1.05rem}.jc-pk span{display:block;font-size:.85rem;color:#4a3d34;line-height:1.55;margin-top:2px}.jc-pk.u{background:#c2410c;border-color:#c2410c;color:#fff}.jc-pk.u span{color:#fff}.jc-pk{position:relative;padding-right:34px}.jc-pk::after{content:'›';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.4rem}.jc-pq{font-size:1rem;font-weight:800;margin:4px 0 8px;color:#2b2622}"
  ".jc-q1{background:#fff;border:2px solid #c2410c;border-radius:16px;padding:12px 14px;margin:6px 0 10px}.jc-q1 label{display:flex;gap:6px;align-items:center;font-weight:700;margin:0 0 6px}.jc-sub{margin:0 0 8px;font-size:.84rem;color:#4a3d34;line-height:1.6}.jc-q1 input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
  ".jc-card{background:#fff;border:1px solid #f1e3d6;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}"
  ".jc-card.hit,.cs.jc-card.hit{border:2px solid #c2410c}"
@@ -103,7 +103,9 @@ var ex=h.filter(function(x){return x[1]===v||x[0]+x[1]===v});if(ex.length===1)h=
 if(h.length===1)return show(h[0][0],h[0][1]);reset();
 if(h.length>1&&h.length<=8){o.innerHTML='どちらですか？ '+h.map(function(x,k){return '<button type="button" data-k="'+k+'">'+esc(x[0]+x[1])+'</button>'}).join(' ');o.querySelectorAll('button').forEach(function(b){b.onclick=function(){var x=h[+b.getAttribute('data-k')];i.value=x[1];show(x[0],x[1])}})}
 else if(h.length>8)o.textContent='続けて入れてください';else o.textContent='見つかりません。市区町村の名前で入れてください（例：佐倉市）';}
-i.addEventListener('input',go);})();</script>"""
+i.addEventListener('input',go);
+var hub=document.querySelector('.jc-hub'),all=document.getElementById('jcAll');function on(){hub&&hub.classList.toggle('on',!!sel.value||hub.dataset.all==='1')}
+sel.addEventListener('change',on);if(all)all.onclick=function(){hub.dataset.all='1';on()};on();setTimeout(on,1500);setTimeout(on,4000);})();</script>"""
 
 def write_munis():
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -224,21 +226,21 @@ def render(ctx):
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    <div class="sh"><h2>いま、どれで困っていますか？</h2></div>
+    <h2 class="jc-pq">いま、どれで困っていますか？</h2>
     <div class="jc-pick">
-      <a class="jc-pk u" href="/jichitai/maigo/"><b>迷子になった</b><span>市区町村を入れると、その町で今日やることが順番に。届け出先・チラシ作り・ペット探偵の料金も</span></a>
-      <a class="jc-pk" href="/jichitai/maigo/#found"><b>迷子の子を見つけた・保護した</b><span>警察とセンターのどちらに届けるか</span></a>
-      <a class="jc-pk" href="/jichitai/touroku/"><b>犬を迎えた（登録・予防注射）</b><span>迎えた日から期限の日と窓口がわかる</span></a>
-      <a class="jc-pk" href="/jichitai/tebanasu/"><b>飼い続けるのが難しくなった</b><span>預ける・老犬ホーム・新しい家族。手放す前にできること</span></a>
+      <a class="jc-pk u" href="/jichitai/maigo/"><b>うちの子が迷子になった</b><span>今日やることを順番に。届け出先・チラシ作りも</span></a>
+      <a class="jc-pk" href="/jichitai/maigo/#found"><b>迷子の子を見つけた・保護した</b><span>どこに届けるか</span></a>
+      <a class="jc-pk" href="/jichitai/touroku/"><b>犬を迎えた（登録・予防注射）</b><span>いつまでに・どこで・いくら</span></a>
+      <a class="jc-pk" href="/jichitai/tebanasu/"><b>飼い続けるのが難しくなった</b><span>手放す前にできること</span></a>
     </div>
   </div>
 </section>
 <section style="padding-top:0">
-  <div class="wrap">
+  <div class="wrap jc-hub">
     <div class="sh"><h2>動物愛護センター・保健所をさがす</h2></div>
     <div class="emg">
       <div class="jc-q1"><label for="jcQ"><i class="jc-ic i-pin"></i>市区町村から、受け持ちのセンター・保健所をさがす</label><input id="jcQ" type="text" placeholder="市区町村（例：佐倉市）" autocomplete="address-level2"><p id="jcA" class="jc-ans" aria-live="polite"></p></div>
-      <div class="f"><label for="hospPref">都道府県</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
+      <div class="f"><label for="hospPref">都道府県</label><select id="hospPref">{ctx["emg_opts"]}</select><p class="jc-hint">市区町村を入れるか、都道府県を選ぶと、その地域の窓口が出ます。<button type="button" id="jcAll">全国の一覧を見る</button></p></div>
       {body}
       <div class="emg-tips"><h4>窓口ごとに受け付けていること</h4>
       <div class="tbl"><table><thead><tr><th>窓口</th><th>おもに受け付けていること</th></tr></thead><tbody>{roles}</tbody></table></div>
