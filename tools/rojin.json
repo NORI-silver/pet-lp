@@ -4740,6 +4740,41 @@
    "animals": "犬"
   },
   {
+   "id": "Rc8b985c",
+   "name": "メゾンドファミーユ",
+   "prefs": [
+    "愛知県"
+   ],
+   "city": "名古屋市千種区",
+   "url": "https://www.maison-de-famille.org/",
+   "addr": "愛知県名古屋市千種区",
+   "animals": "犬",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 / 10:00~12:00 14:00~17:00",
+     "src": "https://www.maison-de-famille.org/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "ちなみに、右側には有料駐車場がございます。",
+     "src": "https://www.maison-de-famille.org/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内に摂取した混合ワクチン証明書(猫3種)",
+     "src": "https://www.maison-de-famille.org/pet-hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
    "id": "R-ST0513",
    "name": "ドッグケア スマイル",
    "prefs": [
