@@ -1,0 +1,252 @@
+{
+ "_説明": "写真の被写体チェック（2026-11-24）。見た目と、元ページでの使われ方で確認。公式ドメイン由来だけでは足りないため、疑いのある写真は表示から外した。外した理由は疑い（断定ではない）。ストック写真と判断したものではない。",
+ "removed": [
+  {
+   "id": "R096",
+   "cat": "rojin",
+   "name": "ペットケア＆アダプションセンター日光",
+   "file": "/img/fac/rojin/R096_1.webp",
+   "status": "removed_from_display",
+   "reason": "R096_1 のみ。ストック写真のように見える（疑い。断定ではない）"
+  },
+  {
+   "id": "TC023",
+   "cat": "trainer",
+   "name": "遠藤愛犬学校",
+   "file": "/img/fac/trainer/TC023_1.webp",
+   "status": "removed_from_display",
+   "reason": "画像が写真ではない（ロゴ・文字入りバナー・切り抜き・見本の電話番号入り）"
+  },
+  {
+   "id": "TC029",
+   "cat": "trainer",
+   "name": "NEWS DOG",
+   "file": "/img/fac/trainer/TC029_1.webp",
+   "status": "removed_from_display",
+   "reason": "画像が写真ではない（ロゴ・文字入りバナー・切り抜き・見本の電話番号入り）"
+  },
+  {
+   "id": "TC033",
+   "cat": "trainer",
+   "name": "Manahau Dog",
+   "file": "/img/fac/trainer/TC033_1.webp",
+   "status": "removed_from_display",
+   "reason": "画像が写真ではない（ロゴ・文字入りバナー・切り抜き・見本の電話番号入り）"
+  },
+  {
+   "id": "TC045",
+   "cat": "trainer",
+   "name": "犬の家庭教師 Wando",
+   "file": "/img/fac/trainer/TC045_1.webp",
+   "status": "removed_from_display",
+   "reason": "画像が写真ではない（ロゴ・文字入りバナー・切り抜き・見本の電話番号入り）"
+  },
+  {
+   "id": "TC069",
+   "cat": "trainer",
+   "name": "船橋さきがおか動物病院 しつけ教室",
+   "file": "/img/fac/trainer/TC069_1.webp",
+   "status": "removed_from_display",
+   "reason": "ストック写真のように見える・出どころが確かめられない（疑い。断定ではない）／丸抜きで黒い余白あり（TC088）"
+  },
+  {
+   "id": "TC070",
+   "cat": "trainer",
+   "name": "goodone 船橋習志野店",
+   "file": "/img/fac/trainer/TC070_1.webp",
+   "status": "removed_from_display",
+   "reason": "ストック写真のように見える・出どころが確かめられない（疑い。断定ではない）／丸抜きで黒い余白あり（TC088）"
+  },
+  {
+   "id": "TC073",
+   "cat": "trainer",
+   "name": "アプリコット動物病院 しつけ教室",
+   "file": "/img/fac/trainer/TC073_1.webp",
+   "status": "removed_from_display",
+   "reason": "ストック写真のように見える・出どころが確かめられない（疑い。断定ではない）／丸抜きで黒い余白あり（TC088）"
+  },
+  {
+   "id": "TC077",
+   "cat": "trainer",
+   "name": "Happy×2 トレーニング",
+   "file": "/img/fac/trainer/TC077_1.webp",
+   "status": "removed_from_display",
+   "reason": "ストック写真のように見える・出どころが確かめられない（疑い。断定ではない）／丸抜きで黒い余白あり（TC088）"
+  },
+  {
+   "id": "TC088",
+   "cat": "trainer",
+   "name": "Wan’s Ohana",
+   "file": "/img/fac/trainer/TC088_1.webp",
+   "status": "removed_from_display",
+   "reason": "ストック写真のように見える・出どころが確かめられない（疑い。断定ではない）／丸抜きで黒い余白あり（TC088）"
+  },
+  {
+   "id": "T020",
+   "cat": "trainer",
+   "name": "Everyday Dogs Club",
+   "file": "/img/fac/trainer/T020_1.webp",
+   "status": "removed_from_display",
+   "reason": "画像が写真ではない（ロゴ・文字入りバナー・切り抜き・見本の電話番号入り）"
+  },
+  {
+   "id": "T022",
+   "cat": "trainer",
+   "name": "LEAD（犬のしつけレッスン）",
+   "file": "/img/fac/trainer/T022_1.webp",
+   "status": "removed_from_display",
+   "reason": "ストック写真のように見える・出どころが確かめられない（疑い。断定ではない）／丸抜きで黒い余白あり（TC088）"
+  },
+  {
+   "id": "T129",
+   "cat": "trainer",
+   "name": "ABOUT DOGS（アバウトドッグス）",
+   "file": "/img/fac/trainer/T129_1.webp",
+   "status": "removed_from_display",
+   "reason": "ストック写真のように見える・出どころが確かめられない（疑い。断定ではない）／丸抜きで黒い余白あり（TC088）"
+  },
+  {
+   "id": "T132",
+   "cat": "trainer",
+   "name": "いぬとれ",
+   "file": "/img/fac/trainer/T132_1.webp",
+   "status": "removed_from_display",
+   "reason": "ストック写真のように見える・出どころが確かめられない（疑い。断定ではない）／丸抜きで黒い余白あり（TC088）"
+  },
+  {
+   "id": "T136",
+   "cat": "trainer",
+   "name": "遠藤ドッグトレーニング",
+   "file": "/img/fac/trainer/T136_1.webp",
+   "status": "removed_from_display",
+   "reason": "ストック写真のように見える・出どころが確かめられない（疑い。断定ではない）／丸抜きで黒い余白あり（TC088）"
+  },
+  {
+   "id": "T137",
+   "cat": "trainer",
+   "name": "ナカムラ・ドッグ・スクール",
+   "file": "/img/fac/trainer/T137_1.webp",
+   "status": "removed_from_display",
+   "reason": "画像が写真ではない（ロゴ・文字入りバナー・切り抜き・見本の電話番号入り）"
+  },
+  {
+   "id": "T138",
+   "cat": "trainer",
+   "name": "Bande（バンデ）",
+   "file": "/img/fac/trainer/T138_1.webp",
+   "status": "removed_from_display",
+   "reason": "画像が写真ではない（ロゴ・文字入りバナー・切り抜き・見本の電話番号入り）"
+  },
+  {
+   "id": "T142",
+   "cat": "trainer",
+   "name": "成田ドッグガーデン",
+   "file": "/img/fac/trainer/T142_1.webp",
+   "status": "removed_from_display",
+   "reason": "画像が写真ではない（ロゴ・文字入りバナー・切り抜き・見本の電話番号入り）"
+  },
+  {
+   "id": "T143",
+   "cat": "trainer",
+   "name": "犬のしつけ幼稚園 WONEMAKE（ワンメイク）",
+   "file": "/img/fac/trainer/T143_1.webp",
+   "status": "removed_from_display",
+   "reason": "画像が写真ではない（ロゴ・文字入りバナー・切り抜き・見本の電話番号入り）"
+  },
+  {
+   "id": "TC004",
+   "cat": "trainer",
+   "name": "Cane Felice",
+   "file": "/img/fac/trainer/TC004_1.webp",
+   "status": "removed_from_display",
+   "reason": "画像が写真ではない（ロゴ・文字入りバナー・切り抜き・見本の電話番号入り）"
+  },
+  {
+   "id": "TC010",
+   "cat": "trainer",
+   "name": "わんぷぷ",
+   "file": "/img/fac/trainer/TC010_1.webp",
+   "status": "removed_from_display",
+   "reason": "画像が写真ではない（ロゴ・文字入りバナー・切り抜き・見本の電話番号入り）"
+  },
+  {
+   "id": "GC003",
+   "cat": "trimming",
+   "name": "Dog in boots",
+   "file": "/img/fac/trimming/GC003_1.webp",
+   "status": "removed_from_display",
+   "reason": "ストック写真のように見える・出どころが確かめられない（疑い。断定ではない）／丸抜きで黒い余白あり（TC088）"
+  },
+  {
+   "id": "GC022",
+   "cat": "trimming",
+   "name": "nico",
+   "file": "/img/fac/trimming/GC022_1.webp",
+   "status": "removed_from_display",
+   "reason": "ストック写真のように見える・出どころが確かめられない（疑い。断定ではない）／丸抜きで黒い余白あり（TC088）"
+  },
+  {
+   "id": "GC061",
+   "cat": "trimming",
+   "name": "犬・猫 カトリ",
+   "file": "/img/fac/trimming/GC061_1.webp",
+   "status": "removed_from_display",
+   "reason": "画像に他社の著作権表示（©Disney）が入っている"
+  },
+  {
+   "id": "GC076",
+   "cat": "trimming",
+   "name": "RAO",
+   "file": "/img/fac/trimming/GC076_1.webp",
+   "status": "removed_from_display",
+   "reason": "画像が写真ではない（ロゴ・文字入りバナー・切り抜き・見本の電話番号入り）"
+  }
+ ],
+ "kept_checked_with_page_context": [
+  {
+   "id": "D142",
+   "note": "元ページの「各ドッグランのご紹介 中〜大型犬専用ドッグラン」の枠にある画像。残す"
+  },
+  {
+   "id": "D155",
+   "note": "辰巳の森ドッグランの紹介ページ上の画像（犬が写る）。残す"
+  },
+  {
+   "id": "D57763aa",
+   "note": "COCOタク武蔵野の自社ページの画像（alt はミニチュアダックス）。実際の犬の写真。残す"
+  },
+  {
+   "id": "R130",
+   "note": "陽だまりドッグヴィレッジの老犬介護ページ上部の画像。残す"
+  },
+  {
+   "id": "R157",
+   "note": "ドギーズガーデンの自社トップ画像。残す"
+  },
+  {
+   "id": "R105",
+   "note": "ペットケアサロンえがおの自社スライドショー内の画像。同施設の部屋。残す"
+  }
+ ],
+ "special": [
+  {
+   "id": "E07",
+   "status": "画像は取得済み（CI 実行 45283022356）。再取得は 45284758542 で2回タイムアウト。置いた画像の sha256 は一覧と一致（7474fa7e…）。manual 扱いで一覧に戻し、CI は sha256 を照合する。",
+   "note": "出どころは cocotaxi-saitama.com（さいたま南店）。東京ではなく埼玉の事業者。被写体は車両。facility 側の確認は車両の写真という点のみ。"
+  },
+  {
+   "id": "G12038/G12040",
+   "status": "別々の病院と判断",
+   "note": "G12038 は andVet 動物病院グループの『ユーカリが丘動物医療センター』（and-vet-ah.com）、G12040 は平成3年開院の『ユーカリが丘動物病院』（yu-karigaoka-ah.com）。どちらも佐倉市。ドメイン・名前・沿革が別。重複ではない。"
+  },
+  {
+   "id": "E05/De3f35f2",
+   "status": "同じ事業者（pettaxi.jp シエロ）が救急とタクシーの両方の記録に載っている。同じ画像を2つの ID で参照。重複ではなく、1事業者の2分類。"
+  },
+  {
+   "id": "SC069/PHC241",
+   "status": "同じ事業者（ameblo.jp の同じブログ記事）がシッターとホテルの2分類に載る。ブログ記事の写真で、公式サイトではない。"
+  }
+ ],
+ "duplicates_checked": "全 403 件の写真を 8x8 の平均ハッシュで照合。同じ画像を別の事業者が使っている例はなし。同じ画像の組はすべて同じドメインの別分類（トレーナーとホテルなど）。"
+}
