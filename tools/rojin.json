@@ -4799,6 +4799,29 @@
    "checked": "2026-11-23"
   },
   {
+   "id": "Rt3b3fbed",
+   "name": "CROWN DOG",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://www.crown-dog.com/",
+   "services": "ペットホテル、しつけ、老犬ホーム",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場10台完備。",
+     "src": "https://www.crown-dog.com/",
+     "by": "site",
+     "checked": "2026-11-22"
+    }
+   ],
+   "checked": "2026-11-22",
+   "spec": "ペットホテル、しつけ、老犬ホーム",
+   "addr": "東京都足立区小台二丁目10番18号",
+   "animals": "犬"
+  },
+  {
    "id": "RC001",
    "name": "NEWS DOG",
    "prefs": [
