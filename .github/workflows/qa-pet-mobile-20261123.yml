@@ -14,7 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {kind: cta, sha: 0fb79f0bb3598dc00d11da571c52565a73737687}
+          - {kind: photo, sha: ec01a65e585c346a0dfe3e61fcb801ba2793c095}
     steps:
       - uses: actions/checkout@v4
         with:
