@@ -4916,6 +4916,84 @@
    "checked": "2026-11-23",
    "area": "八王子市とその周り",
    "car": true
+  },
+  {
+   "id": "Gtd91218d",
+   "name": "TrimmingCar FANBO",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横須賀市",
+   "url": "https://trimmingcarfanbo.net/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "（平日不定休あり）",
+     "src": "https://trimmingcarfanbo.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "◇ハーブシャンプー 1,000円~",
+     "src": "https://trimmingcarfanbo.net/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車スペースをお借りします。 車高が2,6m ありますので車庫、カーポート、軒下のご確認お願い致します。斜面は不可です。 電気コンセント をお借りします。コード14m程をお持ちします。",
+     "src": "https://trimmingcarfanbo.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病、混合ワクチン接種証明の提示 をお願いいたします。",
+     "src": "https://trimmingcarfanbo.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみとなっております。",
+     "src": "https://trimmingcarfanbo.net/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横須賀市とその周り",
+   "car": true
+  },
+  {
+   "id": "Gtb56440c",
+   "name": "Trimmingcar Wish",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市",
+   "url": "https://trimmingcar-wish.crayonsite.com/",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "※日祝は休業日のため、予約不可。",
+     "src": "https://trimmingcar-wish.crayonsite.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "③狂犬病・混合ワクチン接種証明書の提示",
+     "src": "https://trimmingcar-wish.crayonsite.com/p/2/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "相模原市とその周り"
   }
  ]
 }

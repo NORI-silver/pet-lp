@@ -11265,28 +11265,6 @@
    "src": "https://fluffydays.com/archives/20467"
   },
   {
-   "id": "Tt433bba3",
-   "name": "DOGWILL",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "茅ヶ崎市",
-   "url": "https://pochica.jp/spots/11222",
-   "services": "ペットホテル、しつけ",
-   "facts": [
-    {
-     "k": "用意するもの",
-     "v": "ワクチン証明が必要な店を除く",
-     "src": "https://pochica.jp/spots/11222",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23",
-   "addr": "神奈川県茅ヶ崎市柳島1589-21",
-   "src": "https://pochica.jp/spots/11222"
-  },
-  {
    "id": "Tt4013e88",
    "name": "ワンコのおうち アプルール",
    "prefs": [
@@ -12176,6 +12154,194 @@
    "checked": "2026-11-23",
    "addr": "東京都八王子市台町一丁目24番27号",
    "src": "https://inumado.com/"
+  },
+  {
+   "id": "Tta0e0571",
+   "name": "こうめ動物病院 しつけ方教室",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横須賀市",
+   "url": "https://www.koume-ah.com/dogschool/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "神奈川県道27号沿いに駐車場4台分ございます。",
+     "src": "https://www.koume-ah.com/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1年以内の混合ワクチンの接種または十分な抗体価を有していること、１年以内の狂犬病ワクチン接種、１か月以内のノミ・マダニ予防薬が必要です。",
+     "src": "https://www.koume-ah.com/dogschool/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "対応クレジットカード",
+     "src": "https://www.koume-ah.com/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横須賀市",
+   "src": "https://www.koume-ah.com/dogschool/"
+  },
+  {
+   "id": "Ttae8746e",
+   "name": "O Captain",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横須賀市",
+   "url": "https://www.ocaptain.info/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00〜18:00",
+     "src": "https://www.ocaptain.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "出張をご希望の場合、往復2時間までは税込2,200円の出張費がかかります。また、交通費、燃料費、コインパーキング利用費などが発生する場合もあります。​横須賀市内の出張は無料です。",
+     "src": "https://www.ocaptain.info/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県横須賀市",
+   "src": "https://www.ocaptain.info/"
+  },
+  {
+   "id": "Ttc59de5c",
+   "name": "犬の保育園 Allenatore",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市",
+   "url": "https://www.allenatore.biz/",
+   "services": "ペットホテル、ペットシッター、しつけ",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：10時～18時",
+     "src": "https://www.allenatore.biz/access",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 日曜・祝日",
+     "src": "https://www.allenatore.biz/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "近隣コインパーキング：6台「三井のリパーク（境川住宅）」東京都町田市木曽西１丁目６ー４０",
+     "src": "https://www.allenatore.biz/access",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン、狂犬病接種証明",
+     "src": "https://www.allenatore.biz/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県相模原市",
+   "src": "https://www.allenatore.biz/"
+  },
+  {
+   "id": "Ttad98007",
+   "name": "スマイルドッグスクール",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市",
+   "url": "http://www.smiledogschool.com/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "対応エリア",
+     "v": "主な対応エリア：相模原市、町田、多摩、橋本",
+     "src": "http://www.smiledogschool.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県相模原市",
+   "src": "http://www.smiledogschool.com/"
+  },
+  {
+   "id": "Tt2a1659f",
+   "name": "SMILE SMILE",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市",
+   "url": "https://www.smilesmile.org/http/goo-gl/ijokrh/",
+   "services": "しつけ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "６０分 1回 6,300円 (税込）",
+     "src": "https://www.smilesmile.org/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン接種証明書・狂犬病予防接種票（手元に無い場合は要相談）",
+     "src": "https://www.smilesmile.org/http/goo-gl/ijokrh/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お申し込みフォーム （スマホ・ＰＣのみ） ⇒ クレジットカード払い （メール決済）",
+     "src": "https://www.smilesmile.org/http/goo-gl/ijokrh/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県相模原市",
+   "src": "https://www.smilesmile.org/http/goo-gl/ijokrh/"
+  },
+  {
+   "id": "Tt549a761",
+   "name": "ペテモどうぶつ医療センター相模原 しつけ教室",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "相模原市",
+   "url": "https://www.aeonpet.com/service/training/sagamihara_medicalcenter/index.html",
+   "services": "ペットホテル、しつけ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "1回 6,300円（税込 6,930円）",
+     "src": "https://www.aeonpet.com/service/training/sagamihara_medicalcenter/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "addr": "神奈川県相模原市",
+   "src": "https://www.aeonpet.com/service/training/sagamihara_medicalcenter/index.html"
   }
  ]
 }

@@ -27,6 +27,23 @@ def walk(x):
         for v in x.values(): walk(v)
     elif isinstance(x, list):
         for v in x: walk(v)
+# まとめ・紹介のページ（店の公式サイトではない）。ホストだけでは分からないものはURL全体で見る
+DENY_URL = re.compile(r'inumado\.com/.|maruone\.com/blog|feedon\.jp/shop/$|biz-maps|pochica|petstation\.jp/shop|rairai|intopet|kawaii-wanko|localstyle|happytry|pet-systems|npet\.jp|toredog|goguynet|bohseipharmacy|yamatopi|pigcat', re.I)
+# 分野の検索（相模原・横須賀は登録一覧が公開されていない）で見つけた店は、公式サイトの文を読んで決めた分野だけに入れる
+CAT_FIX = {
+ 'Dog Salon LULUN': 'hotels', '動物病院ヘルスペット しつけ教室': 'trainers', 'CATSPAW': 'hotels sitters', '動物病院ヘルスペット 老犬ホーム': 'homes',
+ 'MKPわんこホーム': 'homes hotels', '老犬ホーム ちびたんの家': 'homes', 'しっぽフリフリ': 'homes', 'Sweeties': 'sitters', '木下動物病院': 'hotels',
+ '犬の保育園 Allenatore': 'trainers', 'ドッグスクール ユナイテッド': 'trainers', 'ドギーベリー': 'hotels', 'ペテモどうぶつ医療センター相模原 しつけ教室': 'trainers',
+ 'PAW HOUSE POPPY ROAD／日本ペットシッターサービス横須賀中央店': 'sitters', 'TrimmingCar FANBO': 'groomers', 'Dog Salon ACO': 'groomers',
+ 'トリミングカー バリー': 'groomers', 'Trimmingcar Wish': 'groomers',
+}
+def fix_cats(d, cat_of_file):
+    if not isinstance(d, dict): return
+    for k, v in d.items():
+        if not isinstance(v, list): continue
+        cat = cat_of_file or k
+        d[k] = [x for x in v if not (isinstance(x, dict) and IDRE.match(str(x.get('id', ''))) and
+                (DENY_URL.search(x.get('url', '')) or (x.get('name') in CAT_FIX and cat not in CAT_FIX[x['name']].split())))]
 SITTER_NAME = re.compile(r'シッター|sitter', re.I)
 def drop_sitters_as_hotels(d):
     """名前がシッターでホテルと名乗っていない事業者は、ホテルの一覧に入れない（シッターのページの「ホテルとちがって」の文で分野をまちがえるため）。"""
@@ -35,7 +52,7 @@ def drop_sitters_as_hotels(d):
         for k, v in d.items():
             if isinstance(v, list): d[k] = [x for x in v if not bad(x)]
 for fn in FILES:
-    s = open(fn).read(); d = json.loads(s); walk(d); drop_sitters_as_hotels(d)
+    s = open(fn).read(); d = json.loads(s); walk(d); drop_sitters_as_hotels(d); fix_cats(d, {'tools/hotels.json': 'hotels', 'tools/trainers.json': 'trainers', 'tools/sitters.json': 'sitters', 'tools/grooming.json': 'groomers', 'tools/rojin.json': 'homes'}.get(fn))
     t = json.dumps(d, ensure_ascii=False, indent=1)
     # 元の書き方（インデント）を保つため、変わったときだけ書く
     if json.loads(t) != json.loads(s):
