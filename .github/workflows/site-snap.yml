@@ -4,7 +4,7 @@ name: site-snap
 on:
   workflow_dispatch:
   push:
-    branches: ['claude/**']
+    branches: ['claude/**', '!claude/project-thread-ghgojz']
     paths: ['tools/crawl/queue*.json', 'tools/crawl/reg*.json', 'tools/site_snap.py', 'tools/reg_fetch.py']
 permissions:
   contents: write
