@@ -878,7 +878,7 @@ def pref_company_table(pf, short, cs, cities=()):
         home = "都内" if c["pref"] == pf and pf.endswith("都") else "府内" if c["pref"] == pf and pf.endswith("府") else ("道内" if c["pref"] == pf and pf == "北海道" else ("県内" if c["pref"] == pf else c["pref"]))
         rows.append((0 if c["pref"] == pf else 1, _nat_ride(F, 5) if F else 10**9, f'<tr><td>{e(home)}</td><td>{e(c.get("area_text") or "")}</td><td>{e(ht)}</td><td>{e(r5)}</td><td>{e("—" if c.get("hide_formula") else _pick_txt(F))}</td><td>{e("—" if c.get("hide_formula") else _night_txt(F))}</td></tr>'))
     rows.sort(key=lambda r: (r[0], r[1]))
-    out = f'<h2>{e(short)}に来てくれるペットタクシー{len(cs)}社の、対応エリアと料金のしくみ</h2>'
+    out = f'<h2 id="cos">{e(short)}に来てくれるペットタクシー{len(cs)}社の、対応エリアと料金のしくみ</h2>'
     out += f'<p>{e(pf)}のお迎えに対応している{len(cs)}社について、公式サイトに書かれている対応エリア・受付時間・料金のしくみを1社ずつ並べました。お住まいの市や区が書かれている会社があるか、夜の割増がどう決まっているかを、問い合わせる前の参考にしてください。</p>'
     if summ:  # 数は棒で見せる（文字はラベルとして残す。図で読む、2026-11-14）
         out += _V.bars({"title": f"公式サイトに書いている内容を数えると（{len(cs)}社のうち）", "max": len(cs),
