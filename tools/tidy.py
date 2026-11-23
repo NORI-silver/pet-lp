@@ -36,11 +36,16 @@ def _fold_cmp(h):
         j = _end(h, m.start())
         if j < 0: continue
         inner = h[m.end():j - 6]
+        if inner.count("<tr") > 60:  # 施設が多い県は表がページを重くするだけ（条件はカードの札としぼりこみで分かる。info-light の上限）
+            out += [h[pos:m.start()]]; pos = j; continue
         inner = re.sub(r'<p class="emg-tips-note">○は公式サイト[^<]*</p>', '<p class="emg-tips-note">○＝書いてある。空欄は「しない」ではなく「分からない」です。</p>', inner)
         out += [h[pos:m.start()], '<details class="cpt" data-cpt><summary>条件の表を開く</summary><div class="cpt-b">', inner, "</div></details>"]
         pos = j
     out.append(h[pos:])
-    return "".join(out)
+    h = "".join(out)
+    def big(m):
+        return "" if m.group(0).count("<tr") > 60 else m.group(0)
+    return re.sub(r'<details class="cpt" data-cpt>.*?</details>', big, h, flags=re.S)
 
 
 def _yd_ans(h):
