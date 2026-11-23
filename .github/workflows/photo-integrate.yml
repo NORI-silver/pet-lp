@@ -17,6 +17,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - run: pip install -q pillow
       - name: main を取りこむ（ページは main 側を取り、あとで作りなおす）
         run: |
@@ -27,6 +30,11 @@ jobs:
       - run: python3 tools/fill_ratio.py
       - run: python3 tools/regen_cards.py
       - run: python3 tools/taxi_render_patch.py
+      - name: 生成ファイルを作りなおす（seo-check と同じ）
+        run: |
+          python3 tools/gen_areas.py .
+          rm -rf tools/__pycache__
+          git status --short | head -20
       - name: 補助ワークフローと印を消す
         run: |
           git rm -q -f --ignore-unmatch .github/workflows/photo-curated*.yml .github/workflows/photo-integrate.yml tools/integrate_trigger.txt tools/fill_ratio.py
