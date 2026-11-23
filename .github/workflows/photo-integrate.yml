@@ -35,6 +35,16 @@ jobs:
           python3 tools/gen_areas.py .
           rm -rf tools/__pycache__
           git status --short | head -20
+      - name: 写真の枠の形が変わったので、テストの書き方を合わせる（比率と contain の確認は残す）
+        run: |
+          python3 - <<'PYEOF'
+          p = "tests/hirose-card.test.cjs"
+          t = open(p, encoding="utf-8").read()
+          old = r"""  assert.match(page, /\.cs-ph\[data-gph="T114"\]\{aspect-ratio:520\/347\}\.cs-ph\[data-gph="T114"\] img\{object-fit:contain\}/);"""
+          new = r"""  assert.match(page, /\.cs-ph\[data-gph="T114"\]\{--r:520\/347\}\.cs-ph\[data-gph="T114"\] img\{object-fit:contain\}/);""" + "\n  " + r"""assert.match(page, /\.cs-ph-s\{display:flex;aspect-ratio:var\(--r,2\/1\)/);"""
+          assert old in t, "old assertion not found"
+          open(p, "w", encoding="utf-8").write(t.replace(old, new))
+          PYEOF
       - name: 補助ワークフローと印を消す
         run: |
           git rm -q -f --ignore-unmatch .github/workflows/photo-curated*.yml .github/workflows/photo-integrate.yml tools/integrate_trigger.txt tools/fill_ratio.py
@@ -44,21 +54,3 @@ jobs:
           git add -A
           git commit -qm "写真と、写真の枠のページを最新の main で作りなおし" || true
           git push --force origin HEAD:refs/heads/instinct/photos-integrated
-      - name: 診断（PR の merge ref を浅く取り、検査と同じ手順の差分を別ブランチに書く）
-        run: |
-          D="$RUNNER_TEMP/mr"
-          git clone -q --no-checkout --depth 1 "https://github.com/${{ github.repository }}" "$D"
-          cd "$D"
-          git fetch -q --depth=1 origin refs/pull/717/merge
-          git checkout -q FETCH_HEAD
-          git log -1 --format='merge-ref %H parents: %P' > /tmp/info.txt
-          python3 tools/gen_areas.py . > /tmp/gen.log 2>&1; echo "exit $?" >> /tmp/info.txt
-          rm -rf tools/__pycache__
-          { cat /tmp/info.txt; git diff --stat | tail -40; echo ---; git diff -U0 | head -120 | cut -c1-240; echo ---; tail -15 /tmp/gen.log; } > /tmp/gen_diff.txt
-          cd "$GITHUB_WORKSPACE"
-          git checkout -q --orphan dbg
-          git rm -rq --cached . >/dev/null 2>&1 || true
-          cp /tmp/gen_diff.txt gen_diff.txt
-          git add gen_diff.txt
-          git commit -qm "diag merge-ref"
-          git push --force origin HEAD:refs/heads/instinct/photos-diag
