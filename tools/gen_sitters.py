@@ -25,7 +25,7 @@ BEFORE = [
 
 def _card(e, s):
     ch = J["chains"][s["chain"]]
-    extra = f'<small>対応エリア：{e(s["area"])}</small>'
+    extra = f'<small>対応エリア：{e(s["area"])}</small>' if s.get("area") else ''
     if s.get("animals"): extra += f'<small>対象：{e(s["animals"])}</small>'
     for f in s.get("facts", []):
         if f["k"] in ("料金", "交通費・出張費", "初回・契約", "営業・受付時間", "定休日", "お支払い", "用意するもの", "キャンセル料"): extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
