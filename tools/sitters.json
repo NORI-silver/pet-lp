@@ -10310,6 +10310,104 @@
    "chain": "indie",
    "facts": [],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "SW056",
+   "name": "ペットシッター ここち",
+   "prefs": [
+    "香川県"
+   ],
+   "area": "丸亀市",
+   "url": "https://www.cocochi271.com/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW057",
+   "name": "Dachs Cat(ダックス キャット)",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "福岡市東区",
+   "url": "https://www.dachscat.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "犬猫ともマイクロチップ確認を行い、犬は狂犬病予防接種の確認が必要です。",
+     "src": "https://www.dachscat.com/%E7%8C%AB%E7%8A%AC%E3%83%9A%E3%83%83%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E3%81%94%E6%A1%88%E5%86%85%E3%81%A8%E4%BA%88%E7%B4%84/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW058",
+   "name": "キャットシッター猫彩葉",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "春日市",
+   "url": "https://nekoirohime.jugem.jp/",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW059",
+   "name": "Neco22",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "福岡市西区",
+   "url": "https://www.catsitterneco22.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "(例)  猫ちゃん1匹で 出張費400円エリアのFさん。1日1回で1日",
+     "src": "https://www.catsitterneco22.com/sitting-fee",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "こちらでは、契約までの流れ、お世話内容、訪問時間帯、出張エリアを詳しくお伝えしております。",
+     "src": "https://www.catsitterneco22.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SW060",
+   "name": "キャットシッターはるねこ",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "筑紫野市",
+   "url": "https://www.cs-haruneco.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本料金 2匹まで3,000円",
+     "src": "https://www.cs-haruneco.com/about/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "主な対応エリア 】",
+     "src": "https://www.cs-haruneco.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }
