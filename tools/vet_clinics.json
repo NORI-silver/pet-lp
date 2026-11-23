@@ -1036,21 +1036,6 @@
    "checked": "2026-11-15"
   },
   {
-   "id": "G13063",
-   "name": "大岡山動物病院",
-   "pref": "東京都",
-   "city": "大田区",
-   "addr": "東京都大田区北千束3-29-8",
-   "hours": "9:00〜12:00・16:00〜19:00（日曜・祝日の午後は16:00〜18:00）",
-   "closed": "火曜日",
-   "animals": "イヌ・ネコ・ウサギ",
-   "services": "駐車場1台・ペットホテル・トリミング",
-   "pay": "",
-   "url": "https://ookayama-ah.com/",
-   "src": "https://tvma.or.jp/clinic/大岡山動物病院/",
-   "checked": "2026-11-15"
-  },
-  {
    "id": "G13065",
    "name": "いまい動物病院",
    "pref": "東京都",
@@ -7742,11 +7727,11 @@
    "animals": "イヌ・ネコ・ウサギ・フェレット",
    "services": "ペットホテル・トリミング",
    "pay": "",
-   "url": "http://www.petbridge.jp/ahp/hana/",
    "src": "https://tvma.or.jp/clinic/hanaペットクリニック/",
    "checked": "2026-11-15",
    "tel": "03-6380-8787",
-   "tel_src": "https://tvma.or.jp/clinic/hanaペットクリニック/"
+   "tel_src": "https://tvma.or.jp/clinic/hanaペットクリニック/",
+   "url": ""
   },
   {
    "id": "G13228",
@@ -8711,11 +8696,11 @@
    "animals": "",
    "services": "",
    "pay": "",
-   "url": "http://www.11-79.jp/",
    "src": "https://tvma.or.jp/clinic/中沢ペット動物病院/",
    "checked": "2026-11-15",
    "tel": "042-576-1179",
-   "tel_src": "https://tvma.or.jp/clinic/中沢ペット動物病院/"
+   "tel_src": "https://tvma.or.jp/clinic/中沢ペット動物病院/",
+   "url": ""
   },
   {
    "id": "G13285",
@@ -9442,11 +9427,11 @@
    "animals": "イヌ・ネコ・トリ・ウサギ・ハムスター・モルモット",
    "services": "駐車場1台・ペットホテル・トリミング",
    "pay": "",
-   "url": "http://www.fuu-ah.com/index.html",
    "src": "https://tvma.or.jp/clinic/ふぅ動物病院/",
    "checked": "2026-11-15",
    "tel": "0428-78-3735",
-   "tel_src": "https://tvma.or.jp/clinic/ふぅ動物病院/"
+   "tel_src": "https://tvma.or.jp/clinic/ふぅ動物病院/",
+   "url": ""
   },
   {
    "id": "G13328",
