@@ -4,9 +4,6 @@
 name: site-snap-ubex7a
 on:
   workflow_dispatch:
-  push:
-    branches: ['claude/project-thread-ubex7a']
-    paths: ['tools/crawl/queue*.json', 'tools/crawl/reg_*.json', 'tools/site_snap.py', 'tools/reg_fetch.py']
 permissions:
   contents: write
 concurrency:

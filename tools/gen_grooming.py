@@ -171,7 +171,7 @@ def _faq(pf, rs, n):
      ("料金はいくらですか？", _fee(pf, rs)),
     ]
 def _has_shop(pf):
-    return any(g.get("shop") and pf in g.get("prefs", []) for g in J["groomers"])
+    return any(g.get("shop") and (pf in g.get("prefs", []) or (g.get("city") or "").startswith(pf)) for g in J["groomers"])  # 市のページ（gen_prefpages.split_pref）では市の名前が来る
 
 CAT = dict(slug=SLUG, name="出張トリミング・訪問トリミング", unit="件", h1=H1, items=J["groomers"], card=_card, checked=J["checked"], reviews=False,
   title_word="出張トリミング・訪問トリミング", title_tail="トリミングカー・大型犬・シニア犬・猫",

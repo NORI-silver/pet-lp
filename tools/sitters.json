@@ -9222,28 +9222,6 @@
    "area": "川崎市宮前区とその周り"
   },
   {
-   "id": "Ste1256d4",
-   "name": "ペットシッター 愛",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "寒川町",
-   "url": "https://ivry.jp/telsearch/0467740112/",
-   "services": "ペットシッター",
-   "facts": [
-    {
-     "k": "お支払い",
-     "v": "クレジットカード（カード会社：JCB/マスターカード/VISA/AMEX）決済をお願いしております。",
-     "src": "https://ivry.jp/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23",
-   "chain": "indie",
-   "area": "寒川町とその周り"
-  },
-  {
    "id": "Stef49c17",
    "name": "ペットホテル立川",
    "prefs": [
@@ -9964,28 +9942,6 @@
    "checked": "2026-11-23",
    "chain": "indie",
    "area": "多摩市とその周り"
-  },
-  {
-   "id": "Stb6df369",
-   "name": "キャットシッター あい",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "藤沢市",
-   "url": "https://safely.co.jp/pt/vendor/cs-ai/",
-   "services": "ペットシッター",
-   "facts": [
-    {
-     "k": "定休日",
-     "v": "9：00～19：00月曜～土曜 定休日：日曜日・祝日",
-     "src": "https://safely.co.jp/ky/store-office/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23",
-   "chain": "indie",
-   "area": "藤沢市とその周り"
   },
   {
    "id": "St2920dc3",
@@ -10778,35 +10734,6 @@
    "area": "横浜市泉区とその周り"
   },
   {
-   "id": "Ste0dc65d",
-   "name": "We Love Animals",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "武蔵村",
-   "url": "https://we-love-animals.net/",
-   "services": "ペットシッター",
-   "facts": [
-    {
-     "k": "用意するもの",
-     "v": "直近の狂犬病ワクチン証明書",
-     "src": "https://we-love-animals.net/about/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "お支払い",
-     "v": "お支払いは現金・銀行振込・各種電子決済・クレジットカードがご利用可能です。",
-     "src": "https://we-love-animals.net/about/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23",
-   "chain": "indie",
-   "area": "武蔵村とその周り"
-  },
-  {
    "id": "St0d0eb92",
    "name": "FAMILIAR稲城",
    "prefs": [
@@ -11425,20 +11352,6 @@
    "checked": "2026-11-23",
    "chain": "indie",
    "area": "横浜市青葉区とその周り"
-  },
-  {
-   "id": "St057006c",
-   "name": "ペットシッターひなた",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "横浜市港北区",
-   "url": "https://www.townnews.co.jp/0104/2026/06/11/840284.html",
-   "services": "ペットシッター",
-   "facts": [],
-   "checked": "2026-11-23",
-   "chain": "indie",
-   "area": "横浜市港北区とその周り"
   },
   {
    "id": "St522e1d5",
@@ -17132,42 +17045,6 @@
    "area": "荒川区とその周り（くわしくは公式サイト）"
   },
   {
-   "id": "St0920cdb",
-   "name": "ペットホテル まんまる",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "板橋区",
-   "url": "https://intopet.jp/manmaru/",
-   "services": "ペットホテル、ペットシッター",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "【営業時間】9:00-19:00",
-     "src": "https://intopet.jp/manmaru/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "料金",
-     "v": "1回 550円（税込）",
-     "src": "https://intopet.jp/manmaru/price/",
-     "by": "site",
-     "checked": "2026-11-22"
-    },
-    {
-     "k": "用意するもの",
-     "v": "A. 「ワクチン接種証明書」と「狂犬病予防注射済書（またはプレート）」の2点を必ずお持ちください。",
-     "src": "https://intopet.jp/manmaru/p77342/",
-     "by": "site",
-     "checked": "2026-11-22"
-    }
-   ],
-   "checked": "2026-11-22",
-   "chain": "intopet",
-   "area": "板橋区とその周り（くわしくは公式サイト）"
-  },
-  {
    "id": "St6b49d24",
    "name": "ペットシッターサービス ふくふく",
    "prefs": [
@@ -17611,28 +17488,6 @@
    "area": "江戸川区とその周り（くわしくは公式サイト）"
   },
   {
-   "id": "St361d34b",
-   "name": "B.B.ペットサービス",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "足立区",
-   "url": "https://intopet.jp/bbpetservice/info/",
-   "services": "ペットホテル、ペットシッター",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "受付時間 9:00 - 20:00",
-     "src": "https://intopet.jp/bbpetservice/info/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23",
-   "chain": "intopet",
-   "area": "足立区とその周り（くわしくは公式サイト）"
-  },
-  {
    "id": "St6dae65f",
    "name": "パウ東京",
    "prefs": [
@@ -17918,13 +17773,6 @@
      "checked": "2026-11-23"
     },
     {
-     "k": "定休日",
-     "v": "毎週火曜日定休",
-     "src": "https://dog-grooming-woof-kiba.jimdofree.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
      "k": "用意するもの",
      "v": "・ 初回ご来店時に、ワンちゃんの混合ワクチン、狂犬病ワクチンの接種証明書の確認をさせていただきますのでご持参ください。",
      "src": "https://dog-grooming-woof-kiba.jimdofree.com/hotel-%E4%B8%80%E6%99%82%E9%A0%90%E3%81%8B%E3%82%8A/",
@@ -18051,13 +17899,6 @@
      "k": "駐車場",
      "v": "店舗周辺にはコインパーキングが多数ございますので、お車での送り迎えも非常にスムーズです。",
      "src": "https://www.lc-dog.com/shop/komazawa",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "送迎",
-     "v": "当サロンは第二京浜（国道1号線）や中原街道、環七通りといった主要道路からアクセスしやすく、五反田・大崎エリア、また馬込・上池台周辺といった各地域からお車一本で大変通いやすいロケーションです。近隣にはコインパーキングも多数充実しておりますので、天候の悪い日やお車でのスムーズな送り迎えにも非常に便利な環境です。",
-     "src": "https://www.lc-dog.com/shop/ebaranakanobu",
      "by": "site",
      "checked": "2026-11-23"
     }
@@ -18287,13 +18128,6 @@
      "checked": "2026-11-23"
     },
     {
-     "k": "送迎",
-     "v": "▪️当店では、実費（往復のタクシー代）にて送迎サービスを致しております。",
-     "src": "https://www.bowcappuccino.com/?page_id=496",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
      "k": "お支払い",
      "v": "▪️各種クレジットカード等のご利用も承っております。",
      "src": "https://www.bowcappuccino.com/?page_id=496",
@@ -18460,15 +18294,7 @@
    "city": "世田谷区",
    "url": "https://www.pet-ss.com/pal-joy/",
    "services": "ペットホテル、ペットシッター",
-   "facts": [
-    {
-     "k": "お支払い",
-     "v": "●PayPay",
-     "src": "https://www.pet-ss.com/pal-joy/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
+   "facts": [],
    "checked": "2026-11-23",
    "chain": "nihon",
    "area": "世田谷区とその周り（くわしくは公式サイト）"
@@ -18551,13 +18377,6 @@
     {
      "k": "用意するもの",
      "v": "1年以内に接種している狂犬病の証明書",
-     "src": "https://azabupet.jp/service/hotel/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "送迎",
-     "v": "当社は送迎料金込みですので、大変お得です。（一部エリアは有料となりますので、お問合せください）",
      "src": "https://azabupet.jp/service/hotel/",
      "by": "site",
      "checked": "2026-11-23"
@@ -18723,13 +18542,6 @@
     {
      "k": "営業・受付時間",
      "v": "受付時間：9:00～19:00",
-     "src": "https://www.542dog.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "定休日：不定休",
      "src": "https://www.542dog.com/",
      "by": "site",
      "checked": "2026-11-23"
@@ -19217,13 +19029,6 @@
      "checked": "2026-11-23"
     },
     {
-     "k": "定休日",
-     "v": "定休日：木曜日",
-     "src": "https://www.nunoclub.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
      "k": "用意するもの",
      "v": "混合ワクチン接種証明書、（犬は加えて狂犬病ワクチン接種証明書）※2",
      "src": "https://www.nunoclub.com/faq.html",
@@ -19272,15 +19077,7 @@
    "city": "世田谷区",
    "url": "https://pet-funfam.com/",
    "services": "ペットシッター",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "営業時間外（19時以降～朝9時まで） 2,200円",
-     "src": "https://pet-funfam.com/terms-of-use/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
+   "facts": [],
    "checked": "2026-11-23",
    "chain": "indie",
    "area": "世田谷区とその周り（くわしくは公式サイト）"
@@ -20126,13 +19923,6 @@
      "checked": "2026-11-23"
     },
     {
-     "k": "定休日",
-     "v": "定休日：不定休",
-     "src": "https://www.jiny-pet.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
      "k": "お支払い",
      "v": "また、お支払い方法は、現金・振込み・paypay・楽天payが可能です。",
      "src": "https://www.jiny-pet.com/service/faq/",
@@ -20525,13 +20315,6 @@
    "services": "ペットホテル、ペットシッター",
    "facts": [
     {
-     "k": "定休日",
-     "v": "毎週木曜日 定休日10月5日（月）定休日10月19日（月）定休日…",
-     "src": "http://pet-jannies.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
      "k": "用意するもの",
      "v": "初回、1年以内に接種した混合ワクチンと狂犬病注射の証明書のご用意をお願いいたします。",
      "src": "http://pet-jannies.com/trimming-menu",
@@ -20650,13 +20433,6 @@
     {
      "k": "営業・受付時間",
      "v": "営業時間：朝8:00～夜19:00",
-     "src": "https://necotomo.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "定休日：不定休",
      "src": "https://necotomo.com/",
      "by": "site",
      "checked": "2026-11-23"
@@ -20865,13 +20641,6 @@
     {
      "k": "対応エリア",
      "v": "お受けするのは小型犬です。 ご希望の日に空きがあればお受けします（お預かりだけは下の条件があります）。対応エリアは世田谷区・渋谷区・目黒区が中心です。",
-     "src": "https://mytreasuryarf.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "送迎",
-     "v": "送迎（三軒茶屋から車で片道 20 分ほど）: 月 1 回 片道 ¥1,500／往復 ¥2,500・月 2 回以上 片道 ¥1,200／往復 ¥2,000・月 4 回以上 片道 ¥1,000／往復 ¥1,700",
      "src": "https://mytreasuryarf.com/",
      "by": "site",
      "checked": "2026-11-23"
@@ -21171,13 +20940,6 @@
      "src": "https://bewell-pets.jimdofree.com/",
      "by": "site",
      "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "定休日：不定休",
-     "src": "https://bewell-pets.jimdofree.com/",
-     "by": "site",
-     "checked": "2026-11-23"
     }
    ],
    "checked": "2026-11-23",
@@ -21301,13 +21063,6 @@
      "src": "https://petsitter-nico.net/price/",
      "by": "site",
      "checked": "2026-11-23"
-    },
-    {
-     "k": "送迎",
-     "v": "※ご自宅やペットホテル送迎の場合、営業エリア外であれば出張料が追加となります",
-     "src": "https://petsitter-nico.net/price/",
-     "by": "site",
-     "checked": "2026-11-23"
     }
    ],
    "checked": "2026-11-23",
@@ -21421,13 +21176,6 @@
     {
      "k": "営業・受付時間",
      "v": "受付時間：9：00～18：00",
-     "src": "https://sunny-clouds.jp/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "定休日：不定休",
      "src": "https://sunny-clouds.jp/",
      "by": "site",
      "checked": "2026-11-23"
@@ -27864,6 +27612,136 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "St211dc62",
+   "name": "くにたち猫専門ペットシッターアズユズ",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "国立市",
+   "url": "https://azuyuzu.wixsite.com/home/%E8%A4%87%E8%A3%BD-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9-1",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "3500円 /訪問１回",
+     "src": "https://azuyuzu.wixsite.com/home/%E8%A4%87%E8%A3%BD-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9-1",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "国立市の方へ｜対応エリアとお世話の内容",
+     "src": "https://azuyuzu.wixsite.com/home/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※クレジットカード決済について現在、クレジットカード決済の導入準備を進めております。",
+     "src": "https://azuyuzu.wixsite.com/home/pricingpayment",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "国立市の方へ｜対応エリアとお世話の内容"
+  },
+  {
+   "id": "Stf68996b",
+   "name": "anima poetry",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "逗子市",
+   "url": "https://www.anima-poetry.jp/",
+   "services": "ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "逗子市とその周り"
+  },
+  {
+   "id": "Stf805da5",
+   "name": "ミア・ファミリア",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "茅ヶ崎市",
+   "url": "https://mia-familia.jimdofree.com/%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "近隣にコインパーキング等の駐車場がなかったり、 雪など天候により車の使用が",
+     "src": "https://mia-familia.jimdofree.com/%E8%80%81%E7%8A%AC%E8%A8%AA%E5%95%8F%E4%BB%8B%E8%AD%B7-%E8%80%81%E7%8A%AC%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC-%E6%96%99%E9%87%91-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E5%86%85%E5%AE%B9/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "茅ヶ崎市とその周り"
+  },
+  {
+   "id": "St2b31671",
+   "name": "ペットシッター ねこのひげ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "川崎市中原区",
+   "url": "https://necohige22.hp.peraichi.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "川崎市中原区とその周り"
+  },
+  {
+   "id": "Std9a3913",
+   "name": "Nico",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "小平市",
+   "url": "https://catsitter.localinfo.jp/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "・年に1度ワクチンを接種していること（特別なご事情がある場合等はご相談ください）",
+     "src": "https://catsitter.localinfo.jp/pages/1680322/page_201802202319",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "小平市とその周り"
+  },
+  {
+   "id": "St1f0fa6a",
+   "name": "PET SITTER An",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "鎌倉市",
+   "url": "https://www.petsitteran.com/",
+   "services": "ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "* 狂犬病、混合ワクチン証明書",
+     "src": "https://www.petsitteran.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "chain": "indie",
+   "area": "鎌倉市とその周り"
   }
  ]
 }
