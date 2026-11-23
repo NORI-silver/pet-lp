@@ -87,7 +87,7 @@ HUB = [
     ("預ける・お世話をたのむ", [
         ("ペットホテル", "/pet-hotel/", "大型犬OK・猫専用のホテル", "pet_hotel"),
         ("ペットシッター", "/pet-sitter/", "留守のあいだ家に来てお世話・散歩", "pet_sitter"),
-        ("出張トリミング", "/trimming/", "トリミングカー・家に来てくれるお店", "mobile_grooming"),
+        ("トリミング", "/trimming/", "サロン・トリミングカー・家に来てくれるお店", "mobile_grooming"),
         ("ドッグトレーナー・しつけ教室", "/dog-trainer/", "出張しつけ・犬の幼稚園", "dog_trainer"),
         ("老犬ホーム・老猫ホーム", "/rojin-home/", "見学・受け入れる動物・登録番号つき", "senior_dog_home"),
     ]),
