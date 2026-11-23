@@ -12,6 +12,10 @@ for x in json.load(open(os.path.join(os.path.dirname(__file__), "photos.json"), 
     for p, r in zip(x.get("photos", []), x.get("ratio", [])): ratio[p.lstrip("/")] = r
 ok = bad = 0
 for m in man:
+    if m.get("manual") and os.path.exists(m["file"]):
+        if hashlib.sha256(open(m["file"], "rb").read()).hexdigest() != m["sha256"]: print("FAIL", m["id"], "置いた画像が一覧の sha256 とちがう"); bad += 1
+        else: ok += 1
+        continue
     try:
         raw, _ = H.get(m["src"], binary=True)
         im = Image.open(io.BytesIO(raw)); im.load(); im = im.convert("RGB")

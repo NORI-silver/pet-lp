@@ -549,7 +549,8 @@
   "src": "http://www.apricot-ah.jp/asset/upbringing_img10.jpg?20261121184455",
   "page": "http://www.apricot-ah.jp/upbringing/",
   "sha256": "5ddadb653a59190f8b998051f63397f4f79a5e6268e5c70af7ce400cfc5b84bb",
-  "bytes": 31556
+  "bytes": 31556,
+  "manual": "GitHubの実行環境からは403で取れないため、同じURLから取った画像そのものをブランチに置く"
  },
  {
   "id": "TC075",
