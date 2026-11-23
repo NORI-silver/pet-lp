@@ -14031,6 +14031,62 @@
    "services": "ペットホテル",
    "facts": [],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC281",
+   "name": "ペットショップ WAVEビバ 新習志野店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "習志野市",
+   "url": "https://petwave.exblog.jp/",
+   "services": "ペットホテル",
+   "cat": true,
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC282",
+   "name": "ペットサロン あしあと",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://www.petsalon-ashiato.com/",
+   "services": "ペットホテル",
+   "cat": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "一年に一度、ワクチンの証明書をご提示ください。",
+     "src": "https://www.petsalon-ashiato.com/%E3%83%88%E3%83%AA%E3%83%9F%E3%83%B3%E3%82%B0/%E6%96%99%E9%87%91%E8%A1%A8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC283",
+   "name": "ペットサロン ぷらすWan",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "八街市",
+   "url": "https://www.plus-wan.info/news/9",
+   "services": "ペットホテル",
+   "large": true,
+   "large_basis": "文",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "※ワクチン証明書(混合ワクチン・狂犬病ワクチン)は必ずお持ちください。",
+     "src": "https://www.plus-wan.info/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }
