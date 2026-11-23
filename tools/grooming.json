@@ -3573,6 +3573,61 @@
     }
    ],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "GW002",
+   "name": "Wan'splus",
+   "prefs": [
+    "島根県"
+   ],
+   "url": "https://www.wansplus.com/",
+   "area": "出雲市",
+   "services": "出張・訪問のシャンプー・トリミング",
+   "city": "出雲市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプーコース 2,600円〜",
+     "src": "https://www.wansplus.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW003",
+   "name": "テリアデザイン",
+   "prefs": [
+    "大分県"
+   ],
+   "url": "https://dogbloom.jp/",
+   "area": "国東市",
+   "services": "出張・訪問のシャンプー・トリミング",
+   "city": "国東市",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休 : 火曜日・第二土曜日・第二日曜日",
+     "src": "https://dogbloom.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GW004",
+   "name": "ペットシッター チャッピー",
+   "prefs": [
+    "岡山県"
+   ],
+   "url": "https://www.chappyhouse.com/",
+   "area": "岡山市中区",
+   "services": "出張・訪問のシャンプー・トリミング",
+   "city": "岡山市中区",
+   "facts": [],
+   "checked": "2026-11-23"
   }
  ]
 }
