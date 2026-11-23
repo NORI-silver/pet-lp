@@ -22678,6 +22678,48 @@
    "city": "糟屋郡新宮町",
    "facts": [],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "GW281",
+   "name": "よりそいペットサロン",
+   "prefs": [
+    "沖縄県"
+   ],
+   "url": "https://yorisoi-pet.jp/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "city": "糸満市",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "シャンプー】4,500円",
+     "src": "https://yorisoi-pet.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "車での来店が便利な 駐車場完備の店舗",
+     "src": "https://yorisoi-pet.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン接種履歴の提示お願い致します。",
+     "src": "https://yorisoi-pet.jp/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法は、現金・クレジットカード・電子マネー・コード決済(スマートフォン)をご利用いただけます。",
+     "src": "https://yorisoi-pet.jp/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }
