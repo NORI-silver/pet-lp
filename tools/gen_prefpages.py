@@ -37,7 +37,7 @@ def split_pref(cat, pf, rs):
     for it in rs:
         c = city_of(pf, it)
         if c: g.setdefault(c, []).append(it)
-    cities = {c: v for c, v in g.items() if len(v) >= cat.get("city_min", CITY_MIN)}
+    cities = {c: v for c, v in g.items() if len(v) >= cat.get("city_min", CITY_MIN) and (pf, c) not in cat.get("no_city", ())}  # no_city：中身が薄くなる市（新しい薄いページは作らない。県のページに載る）
     ids = {id(x) for v in cities.values() for x in v}
     return dict(sorted(cities.items(), key=lambda kv: -len(kv[1]))), [it for it in rs if id(it) not in ids]
 def chref(cat, pf, c):

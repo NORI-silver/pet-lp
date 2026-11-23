@@ -5,7 +5,7 @@ tools/crawl/queue.json（[{"cat","pref","url"}...]）の各URLと、同じサイ
 載せるかどうかは人（AI）が行を読んで決め、各分野のデータ（hotels.json など）に出どころつきで入れる。
 .github/workflows/site-snap.yml から動かす（コンテナからは各社のサイトに届かないため）。
 """
-import concurrent.futures as cf, html, json, os, re, sys, urllib.parse, urllib.request
+import base64, unicodedata, concurrent.futures as cf, html, json, os, re, sys, urllib.parse, urllib.request
 
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36'
 KEY = re.compile(r'〒|住所|所在地|[都道府県].{1,8}[市区町村郡]|円|料金|営業|定休|受付|時間|対象|受け入れ|お預かり|預かり|ホテル|訓練|トレーニング|しつけ|トリミング|出張|訪問|対応エリア|地域|老犬|介護|大型|猫|うさぎ|登録|動物取扱|第\d+号|資格|送迎|閉店|休業|終了|移転|駐車|ワクチン|狂犬病|混合|支払|カード|現金|PayPay|kg|ｋｇ|キロ|頭まで|見学|面会|夜間|当日|予約|持ち物|用意|キャンセル|送り迎え|お迎え')
@@ -68,29 +68,118 @@ def links_of(h, base, n=4):
     return out[:n]
 
 
-def search(item):
-    """q だけの行は検索の結果のURLと見出しを返す（候補さがし。結果は人が見て公式サイトかを決める）。Yahoo! JAPAN を先に。"""
-    r = dict(item)
+def _bing_url(u):
+    """Bing の転送リンク（/ck/a?...&u=a1<base64>）をもとのURLにもどす。"""
+    m = re.search(r'[?&]u=a1([^&]+)', html.unescape(u))
+    if not m:
+        return u
+    b = m.group(1).replace('-', '+').replace('_', '/')
     try:
-        h, _ = get('https://search.yahoo.co.jp/search?ei=UTF-8&p=' + urllib.parse.quote(item['q']))
-        res = []
-        for m in re.finditer(r'(?is)<a[^>]+href="(https?://[^"]+)"[^>]*>\s*(?:<[^>]+>\s*)*<h3[^>]*>(.*?)</h3>', h):
-            u = html.unescape(m.group(1))
-            if 'yahoo.co.jp' not in u: res.append([html.unescape(re.sub(r'<[^>]+>', '', m.group(2))).strip(), u])
-        if res:
-            r['results'] = res[:10]; return r
+        return base64.b64decode(b + '=' * (-len(b) % 4)).decode('utf-8', 'replace')
     except Exception:
-        pass
+        return u
+
+
+def _p_ddg(h):
+    out = []
+    for href, lab in re.findall(r'(?is)<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>(.*?)</a>', h):
+        m = re.search(r'uddg=([^&]+)', href)
+        out.append([html.unescape(re.sub(r'<[^>]+>', '', lab)).strip(), urllib.parse.unquote(m.group(1)) if m else href])
+    return out
+
+
+def _p_lite(h):
+    out = []
+    for href, lab in re.findall(r"(?is)<a[^>]+href=\"([^\"]+)\"[^>]*class=['\"]result-link['\"][^>]*>(.*?)</a>", h):
+        m = re.search(r'uddg=([^&]+)', href)
+        out.append([html.unescape(re.sub(r'<[^>]+>', '', lab)).strip(), urllib.parse.unquote(m.group(1)) if m else href])
+    return out
+
+
+def _p_yahoo(h):
+    out = []
+    for pat in (r'(?is)<a[^>]+href="(https?://[^"]+)"[^>]*>\s*(?:<[^>]+>\s*)*<h3[^>]*>(.*?)</h3>',
+                r'(?is)<h3[^>]*>\s*<a[^>]+href="(https?://[^"]+)"[^>]*>(.*?)</a>'):
+        for u, lab in re.findall(pat, h):
+            u = html.unescape(u)
+            if 'yahoo.co.jp' not in u:
+                out.append([html.unescape(re.sub(r'<[^>]+>', '', lab)).strip(), u])
+        if out:
+            break
+    return out
+
+
+def _p_bing(h):
+    return [[html.unescape(re.sub(r'<[^>]+>', '', lab)).strip(), _bing_url(u)] for u, lab in
+            re.findall(r'(?is)<li class="b_algo".*?<h2[^>]*>\s*<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>', h)]
+
+
+# Actions から：DuckDuckGo html は空（2026-11-23 近畿 3,632件）、Bing は語を無視した的外れを返す（同日 近畿、名前が合ったのは13件）。
+# Yahoo! JAPAN と DDG lite は中部・埼玉で使えた。上から順に、名前の合う結果が出た検索を使う。
+ENGINES = [('yahoo', 'https://search.yahoo.co.jp/search?ei=UTF-8&p=', _p_yahoo),
+           ('lite', 'https://lite.duckduckgo.com/lite/?kl=jp-jp&q=', _p_lite),
+           ('ddg', 'https://html.duckduckgo.com/html/?kl=jp-jp&q=', _p_ddg),
+           ('bing', 'https://www.bing.com/search?setlang=ja&cc=JP&q=', _p_bing)]
+
+
+def _grams(s):
+    s = unicodedata.normalize('NFKC', s).lower()
+    g = set(re.findall(r'[a-z0-9]{3,}', s))
+    for w in re.split(r'[\sa-z0-9・\-ー_（）()「」【】|｜/,、。.!！?？&＆]+', s):
+        g |= {w[i:i + 2] for i in range(len(w) - 1)}
+    return g
+
+
+def _rival(u):
+    """競合のサイト（rules_check.RIVALS）は結果に入れない（AGENTS.md B16）。"""
     try:
-        h, _ = get('https://html.duckduckgo.com/html/?kl=jp-jp&q=' + urllib.parse.quote(item['q']))
-        res = []
-        for href, label in re.findall(r'(?is)<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>(.*?)</a>', h):
-            m = re.search(r'uddg=([^&]+)', href)
-            u = urllib.parse.unquote(m.group(1)) if m else href
-            res.append([html.unescape(re.sub(r'<[^>]+>', '', label)).strip(), u])
-        r['results'] = res[:10]
-    except Exception as e:
-        r['error'] = str(e)[:200]
+        from rules_check import RIVALS
+    except Exception:
+        return False
+    host = urllib.parse.urlparse(u).netloc.lower()
+    return any(host == r or host.endswith('.' + r) for r in RIVALS)
+
+
+def relevant(q, res):
+    """検索の結果のうち、さがした名前（q の最初の語）の言葉が見出しかアドレスに出るものの数。0 なら的外れとみなす。"""
+    name = (q.split() or [''])[0]
+    g = _grams(name)
+    if not g:
+        return len(res)
+    n = 0
+    for lab, u in res:
+        hay = re.sub(r'\s+', '', unicodedata.normalize('NFKC', lab).lower()) + ' ' + urllib.parse.urlparse(u).netloc.lower()
+        if any(w in hay for w in g):
+            n += 1
+    return n
+
+
+def search(item):
+    """q だけの行は検索の結果のURLと見出しを返す（候補さがし。結果は人が見て公式サイトかを決める）。
+    ENGINES を上から順にためし、名前の合う結果（relevant）が出たところで止める。どれも合わなければ
+    empty=True（空や的外れを「見つからない」と数えない）。engine・relevant・tried を残す。"""
+    r = dict(item)
+    q = item['q']
+    best, tried = None, []
+    for name, base, parse in ENGINES:
+        try:
+            h, _ = get(base + urllib.parse.quote(q))
+            res = [x for x in parse(h) if x[1].startswith('http') and not _rival(x[1])][:10]
+        except Exception as e:
+            tried.append(name + ':' + str(e)[:60])
+            continue
+        rel = relevant(q, res)
+        tried.append(f'{name}:{len(res)}/{rel}')
+        if rel and (best is None or rel > best[2]):
+            best = (name, res, rel)
+        if rel:
+            break
+    r['tried'] = tried
+    if best:
+        r['engine'], r['results'], r['relevant'] = best
+    else:
+        r['results'] = []
+        r['empty'] = True
     return r
 
 
@@ -155,7 +244,7 @@ def main():
         with cf.ThreadPoolExecutor(12) as ex:
             res = list(ex.map(snap, items))
         json.dump(res, open(os.path.join(out, fn.replace('queue', 'snap')), 'w'), ensure_ascii=False, indent=1)
-        print(fn, len(res), 'errors', sum(1 for x in res if x.get('error')))
+        print(fn, len(res), 'errors', sum(1 for x in res if x.get('error')), 'empty', sum(1 for x in res if x.get('empty')))
 
 
 if __name__ == '__main__':
