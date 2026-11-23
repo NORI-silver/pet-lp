@@ -14,7 +14,10 @@
    ],
    "credit": "出典：岡山県ホームページ",
    "license": "公共データ利用規約",
-   "lic_url": "https://www.pref.okayama.lg.jp/page/detail-4318.html"
+   "lic_url": "https://www.pref.okayama.lg.jp/page/detail-4318.html",
+   "ratio": [
+    1.499
+   ]
   },
   {
    "cat": "dogrun",
@@ -38,7 +41,11 @@
      "url": "https://mitsui-shopping-park.com/mop/kisarazu/special/2404_dog-facility/images/dogrun/img_dogrun_facility3.jpg"
     }
    ],
-   "credit": "写真：三井アウトレットパーク 木更津のドッグラン"
+   "credit": "写真：三井アウトレットパーク 木更津のドッグラン",
+   "ratio": [
+    1.503,
+    1.503
+   ]
   },
   {
    "cat": "dogrun",
@@ -57,7 +64,10 @@
      "url": "https://www.wnv.tokyo/cms/wp-content/themes/WNV2017/common/img/dogrunImg1.jpg"
     }
    ],
-   "credit": "写真：わんダフルネイチャーヴィレッジのドッグラン"
+   "credit": "写真：わんダフルネイチャーヴィレッジのドッグラン",
+   "ratio": [
+    2.229
+   ]
   },
   {
    "cat": "dogrun",
@@ -76,7 +86,10 @@
      "url": "https://www.nissan-stadium.jp/shinyoko-park/images/ph_dogrun_01.jpg"
     }
    ],
-   "credit": "写真：新横浜公園ドッグラン"
+   "credit": "写真：新横浜公園ドッグラン",
+   "ratio": [
+    1.333
+   ]
   },
   {
    "cat": "dogrun",
@@ -95,7 +108,10 @@
      "url": "https://www.park-funabashi.or.jp/and/img/dog3.jpg"
     }
    ],
-   "credit": "写真：ふなばしアンデルセン公園ドッグラン"
+   "credit": "写真：ふなばしアンデルセン公園ドッグラン",
+   "ratio": [
+    1.5
+   ]
   },
   {
    "cat": "hospital",
@@ -114,7 +130,10 @@
      "url": "https://sakura-shirai-ah.com/shirai/wp-content/themes/simplicity2-child/assets/img/top_2025/shizu_hospital_mini.png"
     }
    ],
-   "credit": "写真：しらい動物病院 中志津本院"
+   "credit": "写真：しらい動物病院 中志津本院",
+   "ratio": [
+    1.061
+   ]
   },
   {
    "cat": "hospital",
@@ -133,7 +152,10 @@
      "url": "https://sakura-shirai-ah.com/shirai/wp-content/themes/simplicity2-child/assets/img/top_2025/sakura_hospital_mini.png"
     }
    ],
-   "credit": "写真：しらい動物病院 大崎台分院"
+   "credit": "写真：しらい動物病院 大崎台分院",
+   "ratio": [
+    1.482
+   ]
   },
   {
    "cat": "rojin",
@@ -145,6 +167,9 @@
    "checked": "2026-11-21",
    "photos": [
     "/img/fac/rojin/R004_1.webp"
+   ],
+   "ratio": [
+    1.499
    ]
   },
   {
@@ -159,6 +184,11 @@
     "/img/fac/rojin/R069_2.webp",
     "/img/fac/rojin/R069_3.webp",
     "/img/fac/rojin/R069_4.webp"
+   ],
+   "ratio": [
+    1.499,
+    1.499,
+    1.499
    ]
   },
   {
@@ -173,6 +203,11 @@
     "/img/fac/rojin/R094_1.webp",
     "/img/fac/rojin/R094_2.webp",
     "/img/fac/rojin/R094_3.webp"
+   ],
+   "ratio": [
+    1.499,
+    1.499,
+    1.499
    ]
   },
   {
@@ -186,6 +221,10 @@
    "photos": [
     "/img/fac/rojin/R096_1.webp",
     "/img/fac/rojin/R096_4.webp"
+   ],
+   "ratio": [
+    1.499,
+    1.499
    ]
   },
   {
@@ -199,7 +238,10 @@
    "photos": [
     "/img/fac/sougi/S0801bc_3.webp"
    ],
-   "credit": "泰聖寺（てんのうじペット霊園）ホームページからの引用"
+   "credit": "泰聖寺（てんのうじペット霊園）ホームページからの引用",
+   "ratio": [
+    1.499
+   ]
   },
   {
    "cat": "taxi",
@@ -224,7 +266,11 @@
      "url": "https://cocotakufukuokahigashi.com/dog_slope.jpg"
     }
    ],
-   "credit": "写真：COCOタク 福岡東店"
+   "credit": "写真：COCOタク 福岡東店",
+   "ratio": [
+    1.5,
+    1.333
+   ]
   },
   {
    "cat": "taxi",
@@ -244,7 +290,10 @@
      "plate_masked": true
     }
    ],
-   "credit": "写真：ペッタク（PETTAXI）"
+   "credit": "写真：ペッタク（PETTAXI）",
+   "ratio": [
+    1.778
+   ]
   },
   {
    "cat": "taxi",
@@ -263,7 +312,10 @@
      "url": "https://static.toriaez.jp/uploads/images/s2235/14691-14691-20220625115343-2.jpg"
     }
    ],
-   "credit": "写真：PETTA東京（ペッタ）"
+   "credit": "写真：PETTA東京（ペッタ）",
+   "ratio": [
+    1.333
+   ]
   },
   {
    "cat": "taxi",
@@ -289,7 +341,11 @@
      "plate_masked": true
     }
    ],
-   "credit": "写真：COCOタク 練馬杉並店"
+   "credit": "写真：COCOタク 練馬杉並店",
+   "ratio": [
+    1.333,
+    0.75
+   ]
   },
   {
    "cat": "trainer",
@@ -301,6 +357,9 @@
    "checked": "2026-11-21",
    "photos": [
     "/img/fac/trainer/T004_1.webp"
+   ],
+   "ratio": [
+    1.499
    ]
   },
   {
@@ -313,6 +372,9 @@
    "checked": "2026-11-18",
    "photos": [
     "/img/fac/trainer/T024_3.webp"
+   ],
+   "ratio": [
+    1.499
    ]
   },
   {
@@ -326,6 +388,10 @@
    "photos": [
     "/img/fac/trainer/T025_1.webp",
     "/img/fac/trainer/T025_5.webp"
+   ],
+   "ratio": [
+    1.499,
+    1.499
    ]
   },
   {
@@ -338,6 +404,9 @@
    "checked": "2026-11-21",
    "photos": [
     "/img/fac/trainer/T054_1.webp"
+   ],
+   "ratio": [
+    1.499
    ]
   },
   {
@@ -352,7 +421,11 @@
     "/img/fac/trainer/T068_2.webp",
     "/img/fac/trainer/T068_3.webp"
    ],
-   "credit": "写真：ZONOWA dog training&lounge"
+   "credit": "写真：ZONOWA dog training&lounge",
+   "ratio": [
+    1.499,
+    1.499
+   ]
   },
   {
    "cat": "trainer",
@@ -364,6 +437,9 @@
    "checked": "2026-11-21",
    "photos": [
     "/img/fac/trainer/T077_1.webp"
+   ],
+   "ratio": [
+    1.499
    ]
   },
   {
@@ -376,6 +452,5755 @@
    "checked": "2026-11-21",
    "photos": [
     "/img/fac/trainer/T114_1.webp"
+   ],
+   "ratio": [
+    1.499
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC021",
+   "name": "ペット行動コンサルタント SENDA",
+   "url": "https://www.withpawsenda.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC021_1.webp"
+   ],
+   "credit": "写真：ペット行動コンサルタント SENDA",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC023",
+   "name": "遠藤愛犬学校",
+   "url": "http://www.dogschool.jp/breeder/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC023_1.webp"
+   ],
+   "credit": "写真：遠藤愛犬学校",
+   "ratio": [
+    1.907
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC024",
+   "name": "Comfy Dogs",
+   "url": "https://comfydogs11.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC024_1.webp"
+   ],
+   "credit": "写真：Comfy Dogs",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC026",
+   "name": "石田愛犬訓練所",
+   "url": "https://wan-derful.com/kindergarten/detail/kg-ChIJsYCSfv6DGGARHol5",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC026_1.webp"
+   ],
+   "credit": "写真：石田愛犬訓練所",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC027",
+   "name": "ツリー・キュービック(Tree Cubic)",
+   "url": "https://www.tree-cubic.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC027_1.webp"
+   ],
+   "credit": "写真：ツリー・キュービック(Tree Cubic)",
+   "ratio": [
+    1.907
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC028",
+   "name": "ケネル ラミュエル",
+   "url": "https://lamiuelle.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC028_1.webp"
+   ],
+   "credit": "写真：ケネル ラミュエル",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC029",
+   "name": "NEWS DOG",
+   "url": "https://news-dog.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC029_1.webp"
+   ],
+   "credit": "写真：NEWS DOG",
+   "ratio": [
+    1.205
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC032",
+   "name": "出張トレーニング HEARTof DOG",
+   "url": "https://heartofdog715.wixsite.com/training",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC032_1.webp"
+   ],
+   "credit": "写真：出張トレーニング HEARTof DOG",
+   "ratio": [
+    1.863
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC033",
+   "name": "Manahau Dog",
+   "url": "https://manahaudog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC033_1.webp"
+   ],
+   "credit": "写真：Manahau Dog",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC034",
+   "name": "MJ WANS",
+   "url": "https://www.mjwans.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC034_1.webp"
+   ],
+   "credit": "写真：MJ WANS",
+   "ratio": [
+    1.413
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC035",
+   "name": "水口ドッグスクール",
+   "url": "https://mizuguchi-dogschool.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC035_1.webp"
+   ],
+   "credit": "写真：水口ドッグスクール",
+   "ratio": [
+    2.133
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC036",
+   "name": "ペットホテル セカンドファミリー",
+   "url": "https://second-family.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC036_1.webp"
+   ],
+   "credit": "写真：ペットホテル セカンドファミリー",
+   "ratio": [
+    1.907
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC037",
+   "name": "Dog school&hotel Gaw",
+   "url": "https://www.dogschool-gaw.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC037_1.webp"
+   ],
+   "credit": "写真：Dog school&hotel Gaw",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC038",
+   "name": "ドッグスクールOne'sWish",
+   "url": "https://ones-wish.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC038_1.webp"
+   ],
+   "credit": "写真：ドッグスクールOne'sWish",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC039",
+   "name": "ドック トレーニングスクール 牛山",
+   "url": "https://www.minamibosocity-iju.jp/work/1727/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC039_1.webp"
+   ],
+   "credit": "写真：ドック トレーニングスクール 牛山",
+   "ratio": [
+    1.505
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC041",
+   "name": "Marilyn Mom",
+   "url": "https://www.marilynmom.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC041_1.webp"
+   ],
+   "credit": "写真：Marilyn Mom",
+   "ratio": [
+    1.51
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC042",
+   "name": "わんこのお家 SEASONS",
+   "url": "https://seasons2020.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC042_1.webp"
+   ],
+   "credit": "写真：わんこのお家 SEASONS",
+   "ratio": [
+    2.246
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC043",
+   "name": "ドッグスクール日向",
+   "url": "https://www.hinata-dog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC043_1.webp"
+   ],
+   "credit": "写真：ドッグスクール日向",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC045",
+   "name": "犬の家庭教師 Wando",
+   "url": "http://wan-do.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC045_1.webp"
+   ],
+   "credit": "写真：犬の家庭教師 Wando",
+   "ratio": [
+    1.529
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC049",
+   "name": "HundeschuleInagaki",
+   "url": "https://www.hundeschule-inagaki.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC049_1.webp"
+   ],
+   "credit": "写真：HundeschuleInagaki",
+   "ratio": [
+    0.8
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC050",
+   "name": "All for Wan",
+   "url": "http://allforwan.p-kit.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC050_1.webp"
+   ],
+   "credit": "写真：All for Wan",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC051",
+   "name": "ドッグスクールK",
+   "url": "http://www.dogschool-k.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC051_1.webp"
+   ],
+   "credit": "写真：ドッグスクールK",
+   "ratio": [
+    1.336
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC052",
+   "name": "DogTrainingOLINA",
+   "url": "https://www.dog-olina.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC052_1.webp"
+   ],
+   "credit": "写真：DogTrainingOLINA",
+   "ratio": [
+    1.758
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC053",
+   "name": "ポポちゃん ドッグスクール",
+   "url": "https://www.popochandogschool.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC053_1.webp"
+   ],
+   "credit": "写真：ポポちゃん ドッグスクール",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC054",
+   "name": "Dog Training Luuna",
+   "url": "https://dt03luuna.crayonsite.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC054_1.webp"
+   ],
+   "credit": "写真：Dog Training Luuna",
+   "ratio": [
+    1.268
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC055",
+   "name": "ドッグスクール KEZ",
+   "url": "http://shinoharadogschool.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC055_1.webp"
+   ],
+   "credit": "写真：ドッグスクール KEZ",
+   "ratio": [
+    1.691
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC056",
+   "name": "Echoes",
+   "url": "https://echoes.main.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC056_1.webp"
+   ],
+   "credit": "写真：Echoes",
+   "ratio": [
+    1.891
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC058",
+   "name": "Dog’s home SUNKS",
+   "url": "https://sunks.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC058_1.webp"
+   ],
+   "credit": "写真：Dog’s home SUNKS",
+   "ratio": [
+    1.4
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC059",
+   "name": "ドッグサロンMahalo",
+   "url": "https://mahalo-dog.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC059_1.webp"
+   ],
+   "credit": "写真：ドッグサロンMahalo",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC061",
+   "name": "Letsgodogs",
+   "url": "https://ub3zr7eru.wixsite.com/letsgodogs-1",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC061_1.webp"
+   ],
+   "credit": "写真：Letsgodogs",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC063",
+   "name": "WAN PARK とわSKY ~dogtraining&doghotel~",
+   "url": "https://wanpark-towasky.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC063_1.webp"
+   ],
+   "credit": "写真：WAN PARK とわSKY ~dogtraining&doghotel~",
+   "ratio": [
+    1.661
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC064",
+   "name": "ドッグトレーニングLEAP",
+   "url": "https://www.dg-leap.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC064_1.webp"
+   ],
+   "credit": "写真：ドッグトレーニングLEAP",
+   "ratio": [
+    1.498
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC065",
+   "name": "PLAYGROUNDdog fun",
+   "url": "https://www.playgrounddogfun.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC065_1.webp"
+   ],
+   "credit": "写真：PLAYGROUNDdog fun",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC066",
+   "name": "外房ドッグスクール",
+   "url": "https://sotobou-dog-school.wixsite.com/sotobou-dog-school",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC066_1.webp"
+   ],
+   "credit": "写真：外房ドッグスクール",
+   "ratio": [
+    1.682
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC068",
+   "name": "くみドッグスクール",
+   "url": "https://kumidogschool.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC068_1.webp"
+   ],
+   "credit": "写真：くみドッグスクール",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC069",
+   "name": "船橋さきがおか動物病院 しつけ教室",
+   "url": "http://saki-ah.com/shitsuke.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC069_1.webp"
+   ],
+   "credit": "写真：船橋さきがおか動物病院 しつけ教室",
+   "ratio": [
+    1.51
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC070",
+   "name": "goodone 船橋習志野店",
+   "url": "https://asuka860112.wixsite.com/goodonecainz",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC070_1.webp"
+   ],
+   "credit": "写真：goodone 船橋習志野店",
+   "ratio": [
+    1.44
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC073",
+   "name": "アプリコット動物病院 しつけ教室",
+   "url": "http://www.apricot-ah.jp/upbringing/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC073_1.webp"
+   ],
+   "credit": "写真：アプリコット動物病院 しつけ教室",
+   "ratio": [
+    2.778
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC075",
+   "name": "ドッグサロン Ruu",
+   "url": "https://ruu0.webnode.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC075_1.webp"
+   ],
+   "credit": "写真：ドッグサロン Ruu",
+   "ratio": [
+    1.502
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC076",
+   "name": "Zephyros",
+   "url": "https://www.zephyros-dog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC076_1.webp"
+   ],
+   "credit": "写真：Zephyros",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC077",
+   "name": "Happy×2 トレーニング",
+   "url": "https://www.happy-happy-training.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC077_1.webp"
+   ],
+   "credit": "写真：Happy×2 トレーニング",
+   "ratio": [
+    1.059
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC078",
+   "name": "Arunar in Dog School",
+   "url": "https://fujino2311.wixsite.com/arunarindogschool",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC078_1.webp"
+   ],
+   "credit": "写真：Arunar in Dog School",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC079",
+   "name": "FUN LIFE-with DOGS",
+   "url": "https://www.life-withdog.com/training",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC079_1.webp"
+   ],
+   "credit": "写真：FUN LIFE-with DOGS",
+   "ratio": [
+    2.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC081",
+   "name": "Sugar’s House",
+   "url": "https://sugarshouse.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC081_1.webp"
+   ],
+   "credit": "写真：Sugar’s House",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC084",
+   "name": "わんもあハウス",
+   "url": "https://www.onemorehouse.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC084_1.webp"
+   ],
+   "credit": "写真：わんもあハウス",
+   "ratio": [
+    0.666
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC085",
+   "name": "鎌ケ谷ドッグス",
+   "url": "https://kamagayadogs.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC085_1.webp"
+   ],
+   "credit": "写真：鎌ケ谷ドッグス",
+   "ratio": [
+    1.429
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC086",
+   "name": "DOG+",
+   "url": "https://www.dog-plus.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC086_1.webp"
+   ],
+   "credit": "写真：DOG+",
+   "ratio": [
+    1.449
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC088",
+   "name": "Wan’s Ohana",
+   "url": "https://wan-ohana.com/blog/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC088_1.webp"
+   ],
+   "credit": "写真：Wan’s Ohana",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC089",
+   "name": "ドッグサロン ベティーズハウス",
+   "url": "https://bestie-s.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC089_1.webp"
+   ],
+   "credit": "写真：ドッグサロン ベティーズハウス",
+   "ratio": [
+    1.645
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC090",
+   "name": "ドッグトレーニング アッシュ",
+   "url": "https://dog-ash.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC090_1.webp"
+   ],
+   "credit": "写真：ドッグトレーニング アッシュ",
+   "ratio": [
+    1.498
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC094",
+   "name": "鴨川シーサイドドッグトレーニング-ガーデンホテル",
+   "url": "https://obuchidogschool.wixsite.com/obuchidogschool/about",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC094_1.webp"
+   ],
+   "credit": "写真：鴨川シーサイドドッグトレーニング-ガーデンホテル",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC098",
+   "name": "ドッグスクールTSUTSUMI",
+   "url": "https://dogschool-tsutsumi.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC098_1.webp"
+   ],
+   "credit": "写真：ドッグスクールTSUTSUMI",
+   "ratio": [
+    1.501
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T019",
+   "name": "トラステッド・ペット・シェルター",
+   "url": "https://trusted-ps.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T019_1.webp"
+   ],
+   "credit": "写真：トラステッド・ペット・シェルター",
+   "ratio": [
+    1.964
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T020",
+   "name": "Everyday Dogs Club",
+   "url": "http://everydaydogsclub.jp",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T020_1.webp"
+   ],
+   "credit": "写真：Everyday Dogs Club",
+   "ratio": [
+    2.022
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T021",
+   "name": "Dog Training School WARABY",
+   "url": "http://www.waraby.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T021_1.webp"
+   ],
+   "credit": "写真：Dog Training School WARABY",
+   "ratio": [
+    1.498
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T022",
+   "name": "LEAD（犬のしつけレッスン）",
+   "url": "https://www.lead-dogtraining.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T022_1.webp"
+   ],
+   "credit": "写真：LEAD（犬のしつけレッスン）",
+   "ratio": [
+    1.682
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T129",
+   "name": "ABOUT DOGS（アバウトドッグス）",
+   "url": "https://www.ab-dogs.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T129_1.webp"
+   ],
+   "credit": "写真：ABOUT DOGS（アバウトドッグス）",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T131",
+   "name": "Dog School Spica（ドッグスクールスピカ）",
+   "url": "https://dog-school-spica.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T131_1.webp"
+   ],
+   "credit": "写真：Dog School Spica（ドッグスクールスピカ）",
+   "ratio": [
+    1.505
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T132",
+   "name": "いぬとれ",
+   "url": "https://www.inutore.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T132_1.webp"
+   ],
+   "credit": "写真：いぬとれ",
+   "ratio": [
+    1.503
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T133",
+   "name": "DOG TRAINING バロン",
+   "url": "https://baron-dog-t.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T133_1.webp"
+   ],
+   "credit": "写真：DOG TRAINING バロン",
+   "ratio": [
+    1.61
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T134",
+   "name": "ドッグスクール シュパース（Dog School Spaß）",
+   "url": "https://www.dogschoolsyupas.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T134_1.webp"
+   ],
+   "credit": "写真：ドッグスクール シュパース（Dog School Spaß）",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T135",
+   "name": "犬のしつけとトリミング専門店 MoveOn（ムーヴオン）",
+   "url": "https://www.dms-moveon.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T135_1.webp"
+   ],
+   "credit": "写真：犬のしつけとトリミング専門店 MoveOn（ムーヴオン）",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T136",
+   "name": "遠藤ドッグトレーニング",
+   "url": "https://endogtraining.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T136_1.webp"
+   ],
+   "credit": "写真：遠藤ドッグトレーニング",
+   "ratio": [
+    1.499
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T137",
+   "name": "ナカムラ・ドッグ・スクール",
+   "url": "https://nakamura-ds.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T137_1.webp"
+   ],
+   "credit": "写真：ナカムラ・ドッグ・スクール",
+   "ratio": [
+    2.305
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T138",
+   "name": "Bande（バンデ）",
+   "url": "http://bande.jellybean.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T138_1.webp"
+   ],
+   "credit": "写真：Bande（バンデ）",
+   "ratio": [
+    2.564
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T139",
+   "name": "よいわんわん",
+   "url": "https://4111-yoiwanwan.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T139_1.webp"
+   ],
+   "credit": "写真：よいわんわん",
+   "ratio": [
+    1.895
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T140",
+   "name": "市原市犬のしつけ教室 ONLY WAN（オンリー・ワン）",
+   "url": "https://i-onlywan.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T140_1.webp"
+   ],
+   "credit": "写真：市原市犬のしつけ教室 ONLY WAN（オンリー・ワン）",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T141",
+   "name": "With dog（ウィズドッグ）",
+   "url": "https://www.withdog11.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC013_1.webp"
+   ],
+   "credit": "写真：With dog（ウィズドッグ）",
+   "ratio": [
+    1.919
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T142",
+   "name": "成田ドッグガーデン",
+   "url": "https://naritadog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T142_1.webp"
+   ],
+   "credit": "写真：成田ドッグガーデン",
+   "ratio": [
+    2.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T143",
+   "name": "犬のしつけ幼稚園 WONEMAKE（ワンメイク）",
+   "url": "https://www.wonemake.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T143_1.webp"
+   ],
+   "credit": "写真：犬のしつけ幼稚園 WONEMAKE（ワンメイク）",
+   "ratio": [
+    1.721
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T260",
+   "name": "ぽちのせんせい（わんちゃんの家庭教師）",
+   "url": "https://pochinosensei.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T260_1.webp"
+   ],
+   "credit": "写真：ぽちのせんせい（わんちゃんの家庭教師）",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC003",
+   "name": "ドッグトレーニング古海",
+   "url": "https://dogtraining-f.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC003_1.webp"
+   ],
+   "credit": "写真：ドッグトレーニング古海",
+   "ratio": [
+    1.544
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC004",
+   "name": "Cane Felice",
+   "url": "https://cane-dog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC004_1.webp"
+   ],
+   "credit": "写真：Cane Felice",
+   "ratio": [
+    1.948
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC005",
+   "name": "Dog School JACK",
+   "url": "https://www.dogschooljack.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC005_1.webp"
+   ],
+   "credit": "写真：Dog School JACK",
+   "ratio": [
+    2.093
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC007",
+   "name": "てぃーだwan",
+   "url": "https://tidawan.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC007_1.webp"
+   ],
+   "credit": "写真：てぃーだwan",
+   "ratio": [
+    2.083
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC008",
+   "name": "犬の保育園Baby",
+   "url": "https://www.inuhoiku-baby.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC008_1.webp",
+    "/img/fac/trainer/TC008_2.webp"
+   ],
+   "credit": "写真：犬の保育園Baby",
+   "ratio": [
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC009",
+   "name": "Hope73",
+   "url": "https://www.hope73.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC009_1.webp"
+   ],
+   "credit": "写真：Hope73",
+   "ratio": [
+    0.668
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC010",
+   "name": "わんぷぷ",
+   "url": "https://www.wanpupu.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC010_1.webp"
+   ],
+   "credit": "写真：わんぷぷ",
+   "ratio": [
+    1.645
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC012",
+   "name": "有限会社ハウスショウ(SKフィールド)",
+   "url": "https://www.skfield.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC012_1.webp"
+   ],
+   "credit": "写真：有限会社ハウスショウ(SKフィールド)",
+   "ratio": [
+    1.779
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC017",
+   "name": "わんだふるライフ",
+   "url": "https://wonderful-life-dog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC017_1.webp"
+   ],
+   "credit": "写真：わんだふるライフ",
+   "ratio": [
+    2.736
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC018",
+   "name": "BUBU’S PAW",
+   "url": "https://dogschool.co.jp/bubu/dogcafe.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC018_1.webp"
+   ],
+   "credit": "写真：BUBU’S PAW",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC020",
+   "name": "Dog ゆいまーる ユーリア",
+   "url": "https://dogyuimal.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC020_1.webp"
+   ],
+   "credit": "写真：Dog ゆいまーる ユーリア",
+   "ratio": [
+    2.332
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC001",
+   "name": "市川ペットシッター元気",
+   "url": "http://petto-gennki.p-kit.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC001_1.webp"
+   ],
+   "credit": "写真：市川ペットシッター元気",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC002",
+   "name": "ペットシッター汐",
+   "url": "https://shio.sadist.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC002_1.webp"
+   ],
+   "credit": "写真：ペットシッター汐",
+   "ratio": [
+    0.796
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC005",
+   "name": "てぃーだwan",
+   "url": "https://tidawan.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC005_1.webp"
+   ],
+   "credit": "写真：てぃーだwan",
+   "ratio": [
+    1.778
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC015",
+   "name": "ペットシッター 検見川",
+   "url": "https://www.petsitterkemigawa.com/%E7%A7%81%E3%81%9F%E3%81%A1%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC015_1.webp"
+   ],
+   "credit": "写真：ペットシッター 検見川",
+   "ratio": [
+    0.85
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC018",
+   "name": "ペットシッター boni",
+   "url": "https://www.petsitter-haruharu.com/index.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC018_1.webp"
+   ],
+   "credit": "写真：ペットシッター boni",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC035",
+   "name": "ペットシッター Fam",
+   "url": "https://fam-pet.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC035_1.webp"
+   ],
+   "credit": "写真：ペットシッター Fam",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC039",
+   "name": "soltive",
+   "url": "https://www.soltive.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC039_1.webp"
+   ],
+   "credit": "写真：soltive",
+   "ratio": [
+    1.359
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC044",
+   "name": "ペットケアサポート小野",
+   "url": "https://www.onopet.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC044_1.webp"
+   ],
+   "credit": "写真：ペットケアサポート小野",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC046",
+   "name": "M&B ペットシッター",
+   "url": "http://merci-betty.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC046_1.webp"
+   ],
+   "credit": "写真：M&B ペットシッター",
+   "ratio": [
+    1.505
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC051",
+   "name": "キャットシッターたまはな",
+   "url": "https://www.cstamahana.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC051_1.webp"
+   ],
+   "credit": "写真：キャットシッターたまはな",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC052",
+   "name": "Luana LuLu for PAWs",
+   "url": "https://pethotel.work/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC052_1.webp"
+   ],
+   "credit": "写真：Luana LuLu for PAWs",
+   "ratio": [
+    2.736
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC053",
+   "name": "ペットシッター ボンキーズ",
+   "url": "https://pet-bonkies.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC053_1.webp"
+   ],
+   "credit": "写真：ペットシッター ボンキーズ",
+   "ratio": [
+    1.223
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC056",
+   "name": "ペットシッターよつば",
+   "url": "https://pet-yotuba.p-kit.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC056_1.webp"
+   ],
+   "credit": "写真：ペットシッターよつば",
+   "ratio": [
+    0.866
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC057",
+   "name": "ペットシッターれと",
+   "url": "https://www.petsitter-reto.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC057_1.webp"
+   ],
+   "credit": "写真：ペットシッターれと",
+   "ratio": [
+    1.779
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC062",
+   "name": "猫専門ペットシッター にゃんずけあ",
+   "url": "https://nyans-care.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC062_1.webp"
+   ],
+   "credit": "写真：猫専門ペットシッター にゃんずけあ",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC065",
+   "name": "ペットシッター Runa",
+   "url": "https://maymomo430.wixsite.com/runa",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC065_1.webp"
+   ],
+   "credit": "写真：ペットシッター Runa",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC066",
+   "name": "loco-pet",
+   "url": "https://www.locopet-sitter-salon.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC066_1.webp"
+   ],
+   "credit": "写真：loco-pet",
+   "ratio": [
+    1.144
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC068",
+   "name": "PETSITTERイトコ",
+   "url": "https://petsitteritoco.localinfo.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC068_1.webp"
+   ],
+   "credit": "写真：PETSITTERイトコ",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC069",
+   "name": "chat concierge",
+   "url": "https://ameblo.jp/chat-conci10/entry-12303962939.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC069_1.webp"
+   ],
+   "credit": "写真：chat concierge",
+   "ratio": [
+    1.336
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC073",
+   "name": "ペットシッターPet Heart",
+   "url": "https://petsitter-oneheart.com/course/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC073_1.webp"
+   ],
+   "credit": "写真：ペットシッターPet Heart",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "sitter",
+   "id": "SC074",
+   "name": "sakuyakupet.C",
+   "url": "https://9ud0w.crayonsite.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sitter/SC074_1.webp"
+   ],
+   "credit": "写真：sakuyakupet.C",
+   "ratio": [
+    0.974
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC113",
+   "name": "Dogsalon Chocotan",
+   "url": "https://chocotan.stars.ne.jp/dogsalon/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC113_1.webp"
+   ],
+   "credit": "写真：Dogsalon Chocotan",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC115",
+   "name": "ドッグサロン わんSmile",
+   "url": "https://dswan-smile.crayonsite.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC115_1.webp"
+   ],
+   "credit": "写真：ドッグサロン わんSmile",
+   "ratio": [
+    0.751
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC117",
+   "name": "マム",
+   "url": "https://www.style-adp.com/top/%E7%94%9F%E6%B4%BB%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9/%E3%83%96%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BCdog-cat-%E3%83%9E%E3%83%A0/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC117_1.webp"
+   ],
+   "credit": "写真：マム",
+   "ratio": [
+    1.529
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC119",
+   "name": "CHAKRA",
+   "url": "https://www.trimmingsalon-chakra.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC119_1.webp"
+   ],
+   "credit": "写真：CHAKRA",
+   "ratio": [
+    1.744
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC121",
+   "name": "愛犬美容室 わんわんクラブONE'S",
+   "url": "https://futtsu-ones.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC121_1.webp"
+   ],
+   "credit": "写真：愛犬美容室 わんわんクラブONE'S",
+   "ratio": [
+    1.335
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC122",
+   "name": "PET salon Peter pan",
+   "url": "https://petsaron-peterpan.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC122_1.webp"
+   ],
+   "credit": "写真：PET salon Peter pan",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC123",
+   "name": "グルーミングサロンラブアンドクー(LOVE&COO)",
+   "url": "https://www.love-coo.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC123_1.webp"
+   ],
+   "credit": "写真：グルーミングサロンラブアンドクー(LOVE&COO)",
+   "ratio": [
+    2.041
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC124",
+   "name": "トリミングサロン フワモコ",
+   "url": "https://fuwamoko.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC124_1.webp"
+   ],
+   "credit": "写真：トリミングサロン フワモコ",
+   "ratio": [
+    1.779
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC125",
+   "name": "DogSalon Fluffy",
+   "url": "https://www.dogsalonfluffy.shop/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC125_1.webp"
+   ],
+   "credit": "写真：DogSalon Fluffy",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC126",
+   "name": "Le Sourire",
+   "url": "https://www.petsaron-le-sourire.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC126_1.webp"
+   ],
+   "credit": "写真：Le Sourire",
+   "ratio": [
+    1.476
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC128",
+   "name": "Dog SalonPetit Mignon",
+   "url": "https://dogsalonpetit2023.wixsite.com/petit/petit",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC128_1.webp"
+   ],
+   "credit": "写真：Dog SalonPetit Mignon",
+   "ratio": [
+    0.8
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC130",
+   "name": "PET SALONIRIE 木更津店",
+   "url": "https://iriekisarazu.crayonsite.info/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC130_1.webp"
+   ],
+   "credit": "写真：PET SALONIRIE 木更津店",
+   "ratio": [
+    1.503
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC131",
+   "name": "ドッグサロン スタイル",
+   "url": "https://happystyle2016.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC131_1.webp"
+   ],
+   "credit": "写真：ドッグサロン スタイル",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC132",
+   "name": "Dog Salon an LILY's.",
+   "url": "https://anlilys.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC132_1.webp"
+   ],
+   "credit": "写真：Dog Salon an LILY's.",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC133",
+   "name": "ペットの専門店コジマ アリオ市原店",
+   "url": "https://kojima.salon-de-one.com/booking/trimming/ichihara",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC133_1.webp"
+   ],
+   "credit": "写真：ペットの専門店コジマ アリオ市原店",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC134",
+   "name": "PET SALON IRIE",
+   "url": "https://www.petsalon-irie.info/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC134_1.webp"
+   ],
+   "credit": "写真：PET SALON IRIE",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC136",
+   "name": "トリミングサロンアラモード柏",
+   "url": "https://ts-alamode.salon-de-one.com/booking/trimming/kashiwa",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC136_1.webp"
+   ],
+   "credit": "写真：トリミングサロンアラモード柏",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC138",
+   "name": "犬の美容室 さとう",
+   "url": "https://inunobiyoushitsusatou.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC138_1.webp"
+   ],
+   "credit": "写真：犬の美容室 さとう",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC079",
+   "name": "n-dog",
+   "url": "https://www.n-dog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC079_1.webp"
+   ],
+   "credit": "写真：n-dog",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC082",
+   "name": "B-DOG",
+   "url": "https://b-dog.amebaownd.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC082_1.webp"
+   ],
+   "credit": "写真：B-DOG",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC083",
+   "name": "Dog salon FLAN",
+   "url": "https://dogsalon-flan.shopinfo.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC083_1.webp"
+   ],
+   "credit": "写真：Dog salon FLAN",
+   "ratio": [
+    1.23
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC087",
+   "name": "犬の美容室 ポチのいえ",
+   "url": "https://pochino-ie.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC087_1.webp"
+   ],
+   "credit": "写真：犬の美容室 ポチのいえ",
+   "ratio": [
+    1.782
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC088",
+   "name": "ROCA.STYLE",
+   "url": "https://www.rocastyle222.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC088_1.webp"
+   ],
+   "credit": "写真：ROCA.STYLE",
+   "ratio": [
+    1.297
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC089",
+   "name": "Trimming salon Bonheur",
+   "url": "https://www.trimmingsalonbonheur.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC089_1.webp"
+   ],
+   "credit": "写真：Trimming salon Bonheur",
+   "ratio": [
+    0.634
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC094",
+   "name": "Dog Salon Famille",
+   "url": "https://dogsalonfamille.crayonsite.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC094_1.webp"
+   ],
+   "credit": "写真：Dog Salon Famille",
+   "ratio": [
+    1.264
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC096",
+   "name": "PURE DOG",
+   "url": "http://puredog.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC096_1.webp"
+   ],
+   "credit": "写真：PURE DOG",
+   "ratio": [
+    0.738
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC097",
+   "name": "DAISY",
+   "url": "https://p502r.crayonsite.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC097_1.webp"
+   ],
+   "credit": "写真：DAISY",
+   "ratio": [
+    0.887
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC098",
+   "name": "ドッグサロン・ザ・ガーデン",
+   "url": "https://dogsalonthegarden.hp.peraichi.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC098_1.webp"
+   ],
+   "credit": "写真：ドッグサロン・ザ・ガーデン",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC099",
+   "name": "pet salon pyonpyon",
+   "url": "https://www.country-base.com/works/works-13623/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC099_1.webp"
+   ],
+   "credit": "写真：pet salon pyonpyon",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC102",
+   "name": "Trimmingsalon Rico*",
+   "url": "https://www.trimmingsalonrico.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC102_1.webp"
+   ],
+   "credit": "写真：Trimmingsalon Rico*",
+   "ratio": [
+    2.4
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC103",
+   "name": "Dog salonRotti",
+   "url": "https://dogrotti.wixsite.com/rotti",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC103_1.webp"
+   ],
+   "credit": "写真：Dog salonRotti",
+   "ratio": [
+    1.349
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC106",
+   "name": "DOGGY BASE",
+   "url": "https://doggy-base.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC106_1.webp"
+   ],
+   "credit": "写真：DOGGY BASE",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC107",
+   "name": "Dee O Gee",
+   "url": "http://dee-o-gee.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC107_1.webp"
+   ],
+   "credit": "写真：Dee O Gee",
+   "ratio": [
+    0.8
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC108",
+   "name": "ペットサロン ピンクビーチ",
+   "url": "https://petsalonpinkbeach.jp/tag/%E3%83%9A%E3%83%83%E3%83%88%E3%82%B5%E3%83%AD%E3%83%B3/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC108_1.webp"
+   ],
+   "credit": "写真：ペットサロン ピンクビーチ",
+   "ratio": [
+    0.666
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC110",
+   "name": "トリミングサロンいぬきち",
+   "url": "https://www.inukichi.info/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC110_1.webp"
+   ],
+   "credit": "写真：トリミングサロンいぬきち",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC111",
+   "name": "犬の美容室シェトゥトゥ",
+   "url": "https://cold-naha-5032.daa.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC111_1.webp"
+   ],
+   "credit": "写真：犬の美容室シェトゥトゥ",
+   "ratio": [
+    1.907
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G007",
+   "name": "出張＆訪問トリミング おーるわん",
+   "url": "https://www.cartrimming-allone.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G007_1.webp"
+   ],
+   "credit": "写真：出張＆訪問トリミング おーるわん",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G015",
+   "name": "アイネクルネ",
+   "url": "https://ainekurune.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G015_1.webp"
+   ],
+   "credit": "写真：アイネクルネ",
+   "ratio": [
+    1.083
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G016",
+   "name": "出張トリミング専門 Resh（リッシュ）",
+   "url": "https://resh-trim.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G016_1.webp"
+   ],
+   "credit": "写真：出張トリミング専門 Resh（リッシュ）",
+   "ratio": [
+    1.278
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G017",
+   "name": "トリミングカーサロン もふ",
+   "url": "https://mofu-shiroi.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G017_1.webp"
+   ],
+   "credit": "写真：トリミングカーサロン もふ",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G018",
+   "name": "dog1st famille（ドッグファースト ファミーユ）訪問トリミング",
+   "url": "https://dog1st-famille.com/triming/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G018_1.webp"
+   ],
+   "credit": "写真：dog1st famille（ドッグファースト ファミーユ）訪問トリミング",
+   "ratio": [
+    0.749
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G093",
+   "name": "出張トリミング bouquet",
+   "url": "https://bouquet.pet/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G093_1.webp"
+   ],
+   "credit": "写真：出張トリミング bouquet",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G094",
+   "name": "PetCareService ATELIER",
+   "url": "https://petcareserviceatelier.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G094_1.webp"
+   ],
+   "credit": "写真：PetCareService ATELIER",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC001",
+   "name": "trim-N",
+   "url": "https://www.trim-n.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC001_1.webp"
+   ],
+   "credit": "写真：trim-N",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC002",
+   "name": "出張トリミング もーりー",
+   "url": "https://morry-grooming.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC002_1.webp"
+   ],
+   "credit": "写真：出張トリミング もーりー",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC003",
+   "name": "Dog in boots",
+   "url": "https://doginboots39.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC003_1.webp"
+   ],
+   "credit": "写真：Dog in boots",
+   "ratio": [
+    1.779
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC005",
+   "name": "myboo（出張トリミング）",
+   "url": "https://www.myboo-hometrimming.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC005_1.webp"
+   ],
+   "credit": "写真：myboo（出張トリミング）",
+   "ratio": [
+    1.354
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC006",
+   "name": "kijimagic 訪問トリミング鬼島",
+   "url": "http://kijimagic.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC006_1.webp"
+   ],
+   "credit": "写真：kijimagic 訪問トリミング鬼島",
+   "ratio": [
+    2.222
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC008",
+   "name": "犬のとこやさん るか",
+   "url": "http://inunotokoyasan.com/profile",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC008_1.webp"
+   ],
+   "credit": "写真：犬のとこやさん るか",
+   "ratio": [
+    1.503
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC009",
+   "name": "アイネクルネ 富里ベース店",
+   "url": "https://tomisato.ainekurune.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC009_1.webp"
+   ],
+   "credit": "写真：アイネクルネ 富里ベース店",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC010",
+   "name": "トリミングハウス うる",
+   "url": "https://urutrim.amebaownd.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC010_1.webp"
+   ],
+   "credit": "写真：トリミングハウス うる",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC014",
+   "name": "トリミングサロン・ラム",
+   "url": "http://salon-ramu.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC014_1.webp"
+   ],
+   "credit": "写真：トリミングサロン・ラム",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC017",
+   "name": "DOG STUDIOSAKURA",
+   "url": "https://skr39.hp.peraichi.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC017_1.webp"
+   ],
+   "credit": "写真：DOG STUDIOSAKURA",
+   "ratio": [
+    1.094
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC018",
+   "name": "Dog SalonFigaro",
+   "url": "https://www.dogsalon-figaro.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC018_1.webp"
+   ],
+   "credit": "写真：Dog SalonFigaro",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC019",
+   "name": "ドッグフレンドメロディー",
+   "url": "https://oya-ub.com/shop/3384/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC019_1.webp"
+   ],
+   "credit": "写真：ドッグフレンドメロディー",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC021",
+   "name": "Foster Salon Rip",
+   "url": "https://dogsalon-rip.official.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC021_1.webp"
+   ],
+   "credit": "写真：Foster Salon Rip",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC022",
+   "name": "nico",
+   "url": "https://www.nico-ichi.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC022_1.webp"
+   ],
+   "credit": "写真：nico",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC024",
+   "name": "TeRRIeRge",
+   "url": "https://terrierge.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC024_1.webp"
+   ],
+   "credit": "写真：TeRRIeRge",
+   "ratio": [
+    1.779
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC025",
+   "name": "Dog salon Sta",
+   "url": "https://dogsalonsta.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC025_1.webp"
+   ],
+   "credit": "写真：Dog salon Sta",
+   "ratio": [
+    1.508
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC026",
+   "name": "プードルと小型犬 ドッグサロンきらりん",
+   "url": "https://kirarin.dog/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC026_1.webp"
+   ],
+   "credit": "写真：プードルと小型犬 ドッグサロンきらりん",
+   "ratio": [
+    0.824
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC027",
+   "name": "Dog Salon D-Lian",
+   "url": "https://dog-salon-d-lian.amebaownd.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC027_1.webp"
+   ],
+   "credit": "写真：Dog Salon D-Lian",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC032",
+   "name": "dog salon JEWEL",
+   "url": "https://dogsalon-jewel2014.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC032_1.webp"
+   ],
+   "credit": "写真：dog salon JEWEL",
+   "ratio": [
+    1.852
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC033",
+   "name": "DogSalon LOOP",
+   "url": "https://www.dogsalonloop.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC033_1.webp"
+   ],
+   "credit": "写真：DogSalon LOOP",
+   "ratio": [
+    1.907
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC034",
+   "name": "PETSAM",
+   "url": "https://petsam.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC034_1.webp"
+   ],
+   "credit": "写真：PETSAM",
+   "ratio": [
+    0.963
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC037",
+   "name": "トリミングサロン ichifuji",
+   "url": "https://torimingsalon-ichifuji.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC037_1.webp"
+   ],
+   "credit": "写真：トリミングサロン ichifuji",
+   "ratio": [
+    0.732
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC040",
+   "name": "BonBon.trimming",
+   "url": "https://www.bonbon-trimming.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC040_1.webp"
+   ],
+   "credit": "写真：BonBon.trimming",
+   "ratio": [
+    0.963
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC042",
+   "name": "トリミングサロン peua peu",
+   "url": "https://www.inu-notoya.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC042_1.webp"
+   ],
+   "credit": "写真：トリミングサロン peua peu",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC045",
+   "name": "ドッグサロン JUJU",
+   "url": "https://dogsalon-juju.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC045_1.webp"
+   ],
+   "credit": "写真：ドッグサロン JUJU",
+   "ratio": [
+    0.778
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC048",
+   "name": "La queue",
+   "url": "https://la-queue.shopinfo.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC048_1.webp"
+   ],
+   "credit": "写真：La queue",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC140",
+   "name": "KAPUA",
+   "url": "https://kapua.shopinfo.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC140_1.webp"
+   ],
+   "credit": "写真：KAPUA",
+   "ratio": [
+    0.862
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC145",
+   "name": "Dog salon Carina",
+   "url": "https://dog-carina.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC145_1.webp"
+   ],
+   "credit": "写真：Dog salon Carina",
+   "ratio": [
+    1.51
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC147",
+   "name": "Dog salon Blanc",
+   "url": "https://dogsalon-blanc.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC147_1.webp"
+   ],
+   "credit": "写真：Dog salon Blanc",
+   "ratio": [
+    1.768
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC156",
+   "name": "サモエドカフェ PIO",
+   "url": "https://samoyed-pio.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC156_1.webp"
+   ],
+   "credit": "写真：サモエドカフェ PIO",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC157",
+   "name": "ペットの美容室 Bow Wow",
+   "url": "https://bowwow0807oyumi29.wixsite.com/bowwow",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC157_1.webp"
+   ],
+   "credit": "写真：ペットの美容室 Bow Wow",
+   "ratio": [
+    1.327
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC160",
+   "name": "ペットサロン Espoir",
+   "url": "https://espoir2012.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC160_1.webp"
+   ],
+   "credit": "写真：ペットサロン Espoir",
+   "ratio": [
+    1.562
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC163",
+   "name": "ドッグサロン ZEN",
+   "url": "https://dogsalonezenzen.amebaownd.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC163_1.webp"
+   ],
+   "credit": "写真：ドッグサロン ZEN",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC164",
+   "name": "Sparkle",
+   "url": "https://la-felicite.co.jp/sparkle/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC164_1.webp"
+   ],
+   "credit": "写真：Sparkle",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC167",
+   "name": "トリミング HOUSE Tiara",
+   "url": "https://mymerody0918.amebaownd.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC167_1.webp"
+   ],
+   "credit": "写真：トリミング HOUSE Tiara",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC168",
+   "name": "La・petite S",
+   "url": "https://lapetites.crayonsite.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC168_1.webp"
+   ],
+   "credit": "写真：La・petite S",
+   "ratio": [
+    0.749
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC170",
+   "name": "woofin'dog",
+   "url": "https://woofin-dog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC170_1.webp"
+   ],
+   "credit": "写真：woofin'dog",
+   "ratio": [
+    2.0
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC175",
+   "name": "トリミングサロン・pink",
+   "url": "https://www.trimmingsalon-pink.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC175_1.webp"
+   ],
+   "credit": "写真：トリミングサロン・pink",
+   "ratio": [
+    1.28
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC176",
+   "name": "ペットプラストリミングサロン かわまち矢作モール店",
+   "url": "https://www.native-trust.co.jp/spot_nt/shisetsu_nt12101/cate_nt0901/spotdetail_nt10841197/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC176_1.webp"
+   ],
+   "credit": "写真：ペットプラストリミングサロン かわまち矢作モール店",
+   "ratio": [
+    1.503
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC178",
+   "name": "Cat Salon ねこふわり",
+   "url": "https://nekofuwari.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC178_1.webp"
+   ],
+   "credit": "写真：Cat Salon ねこふわり",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC179",
+   "name": "Grooming Salon Kulta",
+   "url": "https://groomingsalonkulta.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC179_1.webp"
+   ],
+   "credit": "写真：Grooming Salon Kulta",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC180",
+   "name": "犬の美容室 Fuwari",
+   "url": "https://dsfuwari.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC180_1.webp"
+   ],
+   "credit": "写真：犬の美容室 Fuwari",
+   "ratio": [
+    0.883
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC184",
+   "name": "小型犬専門 トリミングハウス RiRi",
+   "url": "https://trim-riri.seesaa.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC184_1.webp"
+   ],
+   "credit": "写真：小型犬専門 トリミングハウス RiRi",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC050",
+   "name": "犬の美容室 COWAN",
+   "url": "https://www.cowan.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC050_1.webp"
+   ],
+   "credit": "写真：犬の美容室 COWAN",
+   "ratio": [
+    1.919
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC051",
+   "name": "トリミングサロン VISAGEDOGS SUPPORTED BY わんのはな",
+   "url": "https://visage.co.jp/shop/visage-dogs/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC051_1.webp"
+   ],
+   "credit": "写真：トリミングサロン VISAGEDOGS SUPPORTED BY わんのはな",
+   "ratio": [
+    1.568
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC052",
+   "name": "ペットサロン らぷす",
+   "url": "https://raps-petsalon.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC052_1.webp"
+   ],
+   "credit": "写真：ペットサロン らぷす",
+   "ratio": [
+    1.495
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC057",
+   "name": "ドッグサロン チャーリー",
+   "url": "https://dogsalon-charlie8611.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC057_1.webp"
+   ],
+   "credit": "写真：ドッグサロン チャーリー",
+   "ratio": [
+    1.363
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC058",
+   "name": "Dog Salon Riku",
+   "url": "https://riku-dogsalon.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC058_1.webp"
+   ],
+   "credit": "写真：Dog Salon Riku",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC059",
+   "name": "トリミングサロン セントラルパークカフェ",
+   "url": "https://trimmingsalon-centralparkcafe.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC059_1.webp"
+   ],
+   "credit": "写真：トリミングサロン セントラルパークカフェ",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC061",
+   "name": "犬・猫 カトリ",
+   "url": "https://petkatori.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC061_1.webp"
+   ],
+   "credit": "写真：犬・猫 カトリ",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC062",
+   "name": "トリミングサロン STAR DOG",
+   "url": "https://www.familydog.store/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC062_1.webp"
+   ],
+   "credit": "写真：トリミングサロン STAR DOG",
+   "ratio": [
+    1.404
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC065",
+   "name": "らいふたいむ L",
+   "url": "https://br-road.jp/lifetime-l/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC065_1.webp"
+   ],
+   "credit": "写真：らいふたいむ L",
+   "ratio": [
+    1.778
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC066",
+   "name": "ワンニャン美容室 ペロ",
+   "url": "https://pero.work/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC066_1.webp"
+   ],
+   "credit": "写真：ワンニャン美容室 ペロ",
+   "ratio": [
+    1.549
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC067",
+   "name": "アンジュ ブランド ナナ",
+   "url": "https://teacup-tiny-poodle.com/?page_id=73",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC067_1.webp"
+   ],
+   "credit": "写真：アンジュ ブランド ナナ",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC069",
+   "name": "THE DOG SalonTrimming Wagon 佐倉店",
+   "url": "https://thedog-wagon.jp/news/n0015/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC069_1.webp"
+   ],
+   "credit": "写真：THE DOG SalonTrimming Wagon 佐倉店",
+   "ratio": [
+    1.907
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC072",
+   "name": "ペットの専門店コジマ 四街道店",
+   "url": "https://kojima.salon-de-one.com/booking/trimming/yotsukaido",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC072_1.webp"
+   ],
+   "credit": "写真：ペットの専門店コジマ 四街道店",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC073",
+   "name": "おうち",
+   "url": "https://0uchi.crayonsite.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC073_1.webp"
+   ],
+   "credit": "写真：おうち",
+   "ratio": [
+    1.332
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC074",
+   "name": "Santa-Fe",
+   "url": "https://santafe-dog.wixsite.com/trimming",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC074_1.webp"
+   ],
+   "credit": "写真：Santa-Fe",
+   "ratio": [
+    1.4
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GC076",
+   "name": "RAO",
+   "url": "https://raoraorao.amebaownd.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GC076_1.webp"
+   ],
+   "credit": "写真：RAO",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PH024",
+   "name": "とわ動物病院",
+   "url": "https://twvc.jp/hotel/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PH024_1.webp"
+   ],
+   "credit": "写真：とわ動物病院",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PH026",
+   "name": "ねこべや千葉中央店",
+   "url": "https://nekobeya.pechika.jp/houses/chiba_chuo.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PH026_1.webp"
+   ],
+   "credit": "写真：ねこべや千葉中央店",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PH027",
+   "name": "ねこべや松戸店",
+   "url": "https://nekobeya.pechika.jp/houses/matsudo.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PH027_1.webp"
+   ],
+   "credit": "写真：ねこべや松戸店",
+   "ratio": [
+    1.499
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC003",
+   "name": "ルルテ",
+   "url": "https://lulute.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC003_1.webp"
+   ],
+   "credit": "写真：ルルテ",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC005",
+   "name": "Leon’s Doggy ホテル",
+   "url": "https://leonsdoggy.net/pet-hotel/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC005_1.webp"
+   ],
+   "credit": "写真：Leon’s Doggy ホテル",
+   "ratio": [
+    1.6
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC006",
+   "name": "Cane Felice",
+   "url": "https://cane-dog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC006_1.webp"
+   ],
+   "credit": "写真：Cane Felice",
+   "ratio": [
+    1.948
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC009",
+   "name": "ペットプラザ スカイ",
+   "url": "https://universalpetsky.com/universalpetsky/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC009_1.webp"
+   ],
+   "credit": "写真：ペットプラザ スカイ",
+   "ratio": [
+    1.429
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC010",
+   "name": "ペットサロン サークル",
+   "url": "https://petcircle.stars.ne.jp/about.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC010_1.webp"
+   ],
+   "credit": "写真：ペットサロン サークル",
+   "ratio": [
+    1.68
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC012",
+   "name": "犬の保育園Baby",
+   "url": "https://www.inuhoiku-baby.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC012_1.webp"
+   ],
+   "credit": "写真：犬の保育園Baby",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC013",
+   "name": "with dog",
+   "url": "https://www.withdog11.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC013_1.webp"
+   ],
+   "credit": "写真：with dog",
+   "ratio": [
+    1.919
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC017",
+   "name": "ペッツワン館山店",
+   "url": "https://happybell.co.jp/shop/shop_tateyama/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC017_1.webp"
+   ],
+   "credit": "写真：ペッツワン館山店",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC018",
+   "name": "ふくろうの城",
+   "url": "https://fukurounoshiro.info/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC018_1.webp"
+   ],
+   "credit": "写真：ふくろうの城",
+   "ratio": [
+    1.815
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC019",
+   "name": "1C-WAN CARAT-千葉中央店",
+   "url": "https://wancarat.jp/chibachuo/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC019_1.webp"
+   ],
+   "credit": "写真：1C-WAN CARAT-千葉中央店",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC020",
+   "name": "ハッピーベルあすみが丘店",
+   "url": "https://happybell.co.jp/shop/shop_asumigaoka/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC020_1.webp"
+   ],
+   "credit": "写真：ハッピーベルあすみが丘店",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC021",
+   "name": "エステカーサ幕張店",
+   "url": "https://happybell.co.jp/shop/shop_makuhari/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC021_1.webp"
+   ],
+   "credit": "写真：エステカーサ幕張店",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC024",
+   "name": "ハッピーベル 柏店",
+   "url": "https://happybell.co.jp/shop/shop_kashiwa/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC024_1.webp"
+   ],
+   "credit": "写真：ハッピーベル 柏店",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC025",
+   "name": "ハッピーベルおゆみ野店",
+   "url": "https://happybell.co.jp/shop/shop_oyumino/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC025_1.webp"
+   ],
+   "credit": "写真：ハッピーベルおゆみ野店",
+   "ratio": [
+    0.887
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC030",
+   "name": "(有)ハッピーベル テラスモール松戸店",
+   "url": "https://happybell.co.jp/shop/shop_terrace-matsudo/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC030_1.webp"
+   ],
+   "credit": "写真：(有)ハッピーベル テラスモール松戸店",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC032",
+   "name": "hana87",
+   "url": "https://hana87.pet/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC032_1.webp"
+   ],
+   "credit": "写真：hana87",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC034",
+   "name": "NICO PET Select ハッピーベル ちはら台店",
+   "url": "https://happybell.co.jp/shop/shop_chiharadai/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC034_1.webp"
+   ],
+   "credit": "写真：NICO PET Select ハッピーベル ちはら台店",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC035",
+   "name": "ペットのデパート東葛 柏店",
+   "url": "http://www.toukatu-pet.jp/kasiwa.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC035_1.webp"
+   ],
+   "credit": "写真：ペットのデパート東葛 柏店",
+   "ratio": [
+    1.504
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC036",
+   "name": "a la mode with KASHIWANOHA T-SITE",
+   "url": "https://store.tsite.jp/kashiwanoha/floor/shop/a-la-mode/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC036_1.webp"
+   ],
+   "credit": "写真：a la mode with KASHIWANOHA T-SITE",
+   "ratio": [
+    2.088
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC037",
+   "name": "ペットサロン nono",
+   "url": "https://www.petsalon-nono.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC037_1.webp"
+   ],
+   "credit": "写真：ペットサロン nono",
+   "ratio": [
+    1.401
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC038",
+   "name": "Petsalon Wag",
+   "url": "https://petsalon-wag.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC038_1.webp"
+   ],
+   "credit": "写真：Petsalon Wag",
+   "ratio": [
+    1.667
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC039",
+   "name": "スパ&ホテル 舞浜ユーラシアペットスクウェアー ムーワン",
+   "url": "https://my-spa.jp/pet/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC039_1.webp"
+   ],
+   "credit": "写真：スパ&ホテル 舞浜ユーラシアペットスクウェアー ムーワン",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC041",
+   "name": "BUBU’S PAW",
+   "url": "https://dogschool.co.jp/bubu/dogcafe.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC041_1.webp"
+   ],
+   "credit": "写真：BUBU’S PAW",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC043",
+   "name": "わんこ茶屋 わんちか",
+   "url": "https://wanchika.crayonsite.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC043_1.webp"
+   ],
+   "credit": "写真：わんこ茶屋 わんちか",
+   "ratio": [
+    1.483
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC053",
+   "name": "Pet it maison",
+   "url": "https://pet-it-maison.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC053_1.webp"
+   ],
+   "credit": "写真：Pet it maison",
+   "ratio": [
+    2.143
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC056",
+   "name": "ペットのデパート東葛本店",
+   "url": "http://www.toukatu-pet.jp/honten.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC056_1.webp"
+   ],
+   "credit": "写真：ペットのデパート東葛本店",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC057",
+   "name": "PET HOTEL SAKURA",
+   "url": "https://pethotel-sakura.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC057_1.webp"
+   ],
+   "credit": "写真：PET HOTEL SAKURA",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC061",
+   "name": "わん's LAND TATEYAMA",
+   "url": "https://relohotels.com/list_of_hotels/wansland_tateyama/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC061_1.webp"
+   ],
+   "credit": "写真：わん's LAND TATEYAMA",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC062",
+   "name": "Pono",
+   "url": "https://www.pono.store/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC062_1.webp"
+   ],
+   "credit": "写真：Pono",
+   "ratio": [
+    1.341
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC064",
+   "name": "ケネル ラミュエル",
+   "url": "https://lamiuelle.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC064_1.webp"
+   ],
+   "credit": "写真：ケネル ラミュエル",
+   "ratio": [
+    1.818
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC067",
+   "name": "small animal clinic",
+   "url": "https://www.small-animal.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC067_1.webp"
+   ],
+   "credit": "写真：small animal clinic",
+   "ratio": [
+    1.804
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC070",
+   "name": "dog & cat trimmingROOM",
+   "url": "https://www.d-c-room.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC070_1.webp"
+   ],
+   "credit": "写真：dog & cat trimmingROOM",
+   "ratio": [
+    1.503
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC072",
+   "name": "マルエスペット 千鳥町店",
+   "url": "https://www.petmaruesu.com/shop/1064555/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC072_1.webp"
+   ],
+   "credit": "写真：マルエスペット 千鳥町店",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC076",
+   "name": "Fairytale",
+   "url": "https://www.fairytale1.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC076_1.webp"
+   ],
+   "credit": "写真：Fairytale",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC077",
+   "name": "龍宮城スパホテル三日月",
+   "url": "https://www.mikazuki.co.jp/ryugujo/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC077_1.webp"
+   ],
+   "credit": "写真：龍宮城スパホテル三日月",
+   "ratio": [
+    1.648
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC081",
+   "name": "三日月シーパークホテル勝浦 ペットワンダーホテル",
+   "url": "https://hmihotelgroup.com/mikazukikatsuura/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC081_1.webp"
+   ],
+   "credit": "写真：三日月シーパークホテル勝浦 ペットワンダーホテル",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC082",
+   "name": "Dog SalonHappy",
+   "url": "https://happy6434.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC082_1.webp"
+   ],
+   "credit": "写真：Dog SalonHappy",
+   "ratio": [
+    1.374
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC083",
+   "name": "小動物専門店Andy",
+   "url": "https://www.andy-petitpet.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC083_1.webp"
+   ],
+   "credit": "写真：小動物専門店Andy",
+   "ratio": [
+    1.503
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC085",
+   "name": "トリミングスタジオ レモン",
+   "url": "https://www.dog-cat-beautylemon.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC085_1.webp"
+   ],
+   "credit": "写真：トリミングスタジオ レモン",
+   "ratio": [
+    2.528
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC086",
+   "name": "ワンルーク 浦安駅店",
+   "url": "https://oneluke.net/urayasueki/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC086_1.webp"
+   ],
+   "credit": "写真：ワンルーク 浦安駅店",
+   "ratio": [
+    2.088
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC088",
+   "name": "ペットのデパート東葛 勝田台店",
+   "url": "http://www.toukatu-pet.jp/katutadai.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC088_1.webp"
+   ],
+   "credit": "写真：ペットのデパート東葛 勝田台店",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC089",
+   "name": "MJ WANS",
+   "url": "https://www.mjwans.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC089_1.webp"
+   ],
+   "credit": "写真：MJ WANS",
+   "ratio": [
+    1.413
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC090",
+   "name": "ペットホテル セカンドファミリー",
+   "url": "https://second-family.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC090_1.webp"
+   ],
+   "credit": "写真：ペットホテル セカンドファミリー",
+   "ratio": [
+    1.907
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC093",
+   "name": "Aloha nui loa",
+   "url": "https://www.alohanuiloa.info/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC093_1.webp"
+   ],
+   "credit": "写真：Aloha nui loa",
+   "ratio": [
+    1.8
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC097",
+   "name": "1CーWANCARATユーカリが丘店",
+   "url": "https://wancarat.salon-de-one.com/booking/trimming/yukarigaoka",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC097_1.webp"
+   ],
+   "credit": "写真：1CーWANCARATユーカリが丘店",
+   "ratio": [
+    1.502
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC098",
+   "name": "ハッピーベル八千代店",
+   "url": "https://happybell.co.jp/shop/shop_yachiyo/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC098_1.webp"
+   ],
+   "credit": "写真：ハッピーベル八千代店",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC100",
+   "name": "ドッグサロン ルビー",
+   "url": "https://rubby-red.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC100_1.webp"
+   ],
+   "credit": "写真：ドッグサロン ルビー",
+   "ratio": [
+    2.153
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC102",
+   "name": "ペットショップCoo&RIKU 木更津店",
+   "url": "https://uchitoko.jp/shelter/post-17606/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC102_1.webp"
+   ],
+   "credit": "写真：ペットショップCoo&RIKU 木更津店",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC103",
+   "name": "Kilara Dream",
+   "url": "https://dreamdomeglampingstudio.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC103_1.webp"
+   ],
+   "credit": "写真：Kilara Dream",
+   "ratio": [
+    1.775
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC104",
+   "name": "Marilyn Mom",
+   "url": "https://www.marilynmom.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC104_1.webp"
+   ],
+   "credit": "写真：Marilyn Mom",
+   "ratio": [
+    1.51
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC107",
+   "name": "ペッツワン茂原店",
+   "url": "https://belldog.co.jp/petsone-mobara/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC107_1.webp"
+   ],
+   "credit": "写真：ペッツワン茂原店",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC110",
+   "name": "ドギーズガーデン",
+   "url": "http://doggies-garden.com/index.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC110_1.webp"
+   ],
+   "credit": "写真：ドギーズガーデン",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC111",
+   "name": "ペットホテル スマイリー",
+   "url": "http://smiley-doghotel.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC111_1.webp"
+   ],
+   "credit": "写真：ペットホテル スマイリー",
+   "ratio": [
+    1.856
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC115",
+   "name": "Peace Dog",
+   "url": "http://www.peacedog-merumo.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC115_1.webp"
+   ],
+   "credit": "写真：Peace Dog",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC117",
+   "name": "わんこのお家 SEASONS",
+   "url": "https://seasons2020.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC117_1.webp"
+   ],
+   "credit": "写真：わんこのお家 SEASONS",
+   "ratio": [
+    2.246
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC120",
+   "name": "オレンジ わん",
+   "url": "https://wannyanhouse-orange.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC120_1.webp"
+   ],
+   "credit": "写真：オレンジ わん",
+   "ratio": [
+    2.103
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC127",
+   "name": "MOMOペットホテル&サロン",
+   "url": "https://momo-pet.crayonsite.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC127_1.webp"
+   ],
+   "credit": "写真：MOMOペットホテル&サロン",
+   "ratio": [
+    1.249
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC128",
+   "name": "リリモナハウス株式会社",
+   "url": "https://www.lilimonahouse.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC128_1.webp"
+   ],
+   "credit": "写真：リリモナハウス株式会社",
+   "ratio": [
+    2.133
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC129",
+   "name": "dog salon Ulu.",
+   "url": "https://ulu-petcare.com/service/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC129_1.webp"
+   ],
+   "credit": "写真：dog salon Ulu.",
+   "ratio": [
+    1.403
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC139",
+   "name": "KUMU",
+   "url": "https://www.thesharehotels.com/kumu/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC139_1.webp"
+   ],
+   "credit": "写真：KUMU",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC140",
+   "name": "株式会社ONLY WAN",
+   "url": "https://i-onlywan.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC140_1.webp"
+   ],
+   "credit": "写真：株式会社ONLY WAN",
+   "ratio": [
+    1.523
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC142",
+   "name": "Terry-Bero(テリーベロ)",
+   "url": "https://terry-bero.com/959/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC142_1.webp"
+   ],
+   "credit": "写真：Terry-Bero(テリーベロ)",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC144",
+   "name": "The garden hotel(ホテル ザ・ガーデン)",
+   "url": "http://hotelthegarden6-ichinomiya.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC144_1.webp"
+   ],
+   "credit": "写真：The garden hotel(ホテル ザ・ガーデン)",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC145",
+   "name": "dog salon Losey",
+   "url": "https://dogsalon-losey.shopinfo.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC145_1.webp"
+   ],
+   "credit": "写真：dog salon Losey",
+   "ratio": [
+    1.485
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC147",
+   "name": "ドッグスクールK",
+   "url": "http://www.dogschool-k.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC147_1.webp"
+   ],
+   "credit": "写真：ドッグスクールK",
+   "ratio": [
+    1.336
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC149",
+   "name": "ドッグコミュニティベース キャリーヌ",
+   "url": "https://www.caline.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC149_1.webp"
+   ],
+   "credit": "写真：ドッグコミュニティベース キャリーヌ",
+   "ratio": [
+    1.429
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC151",
+   "name": "老犬ホーム&ペットホテル 九十九里パーク",
+   "url": "https://roukenhome.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC151_1.webp"
+   ],
+   "credit": "写真：老犬ホーム&ペットホテル 九十九里パーク",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC152",
+   "name": "ペット美容室 はっぴーている",
+   "url": "https://petsalon-happytail.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC152_1.webp"
+   ],
+   "credit": "写真：ペット美容室 はっぴーている",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC153",
+   "name": "Luana LuLu for PAWs",
+   "url": "https://pethotel.work/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC153_1.webp"
+   ],
+   "credit": "写真：Luana LuLu for PAWs",
+   "ratio": [
+    2.736
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC154",
+   "name": "ドッグサロン シェーン",
+   "url": "https://apoca.link/store/store_detail?id=2644",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC154_1.webp"
+   ],
+   "credit": "写真：ドッグサロン シェーン",
+   "ratio": [
+    1.779
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC157",
+   "name": "ペットショップ Coo&RIKU アクロスモール新鎌ケ谷店",
+   "url": "https://shinkama.acrossmall.jp/shop/5791/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC157_1.webp"
+   ],
+   "credit": "写真：ペットショップ Coo&RIKU アクロスモール新鎌ケ谷店",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC162",
+   "name": "ドッグスクール KEZ",
+   "url": "http://shinoharadogschool.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC162_1.webp"
+   ],
+   "credit": "写真：ドッグスクール KEZ",
+   "ratio": [
+    1.691
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC163",
+   "name": "ペットプラザ松戸五香店",
+   "url": "https://happybell.co.jp/shop/shop_matsudogokou/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC163_1.webp"
+   ],
+   "credit": "写真：ペットプラザ松戸五香店",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC164",
+   "name": "ハッピーベル野田店",
+   "url": "https://happybell.co.jp/shop/shop_noda/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC164_1.webp"
+   ],
+   "credit": "写真：ハッピーベル野田店",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC171",
+   "name": "ハッピーベル 千葉そごう店",
+   "url": "https://happybell.co.jp/shop/shop_chiba/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC171_1.webp"
+   ],
+   "credit": "写真：ハッピーベル 千葉そごう店",
+   "ratio": [
+    1.503
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC172",
+   "name": "ドッグサロンMahalo",
+   "url": "https://mahalo-dog.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC172_1.webp"
+   ],
+   "credit": "写真：ドッグサロンMahalo",
+   "ratio": [
+    1.718
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC174",
+   "name": "トリミングサロン パルフェ",
+   "url": "https://www.parfait-salon.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC174_1.webp"
+   ],
+   "credit": "写真：トリミングサロン パルフェ",
+   "ratio": [
+    1.627
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC176",
+   "name": "ペットのデパート 東葛流山店",
+   "url": "http://www.toukatu-pet.jp/nagareyama.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC176_1.webp"
+   ],
+   "credit": "写真：ペットのデパート 東葛流山店",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC178",
+   "name": "ペッツファースト 千葉ニュータウン店",
+   "url": "https://www.pfirst.jp/storedetails?storeId=474",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC178_1.webp"
+   ],
+   "credit": "写真：ペッツファースト 千葉ニュータウン店",
+   "ratio": [
+    1.326
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC179",
+   "name": "成田ゆめ牧場",
+   "url": "https://www.nrtk.jp/enjoy/attraction/yumebokujo.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC179_1.webp"
+   ],
+   "credit": "写真：成田ゆめ牧場",
+   "ratio": [
+    1.497
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC180",
+   "name": "わんぱくチワワ 夢工房九十九里",
+   "url": "https://wanpaku-chihuahua.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC180_1.webp"
+   ],
+   "credit": "写真：わんぱくチワワ 夢工房九十九里",
+   "ratio": [
+    1.779
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC181",
+   "name": "Chiba K-9 House",
+   "url": "https://chibak9.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC181_1.webp"
+   ],
+   "credit": "写真：Chiba K-9 House",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC189",
+   "name": "小谷流の里 ドギーズアイランド",
+   "url": "https://www.doggys-island.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC189_1.webp"
+   ],
+   "credit": "写真：小谷流の里 ドギーズアイランド",
+   "ratio": [
+    1.63
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC190",
+   "name": "ドックホテル Sea & Dog",
+   "url": "https://www.minamibosocity-iju.jp/work/1367/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC190_1.webp"
+   ],
+   "credit": "写真：ドックホテル Sea & Dog",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC195",
+   "name": "ペットサロンリリー 南花島店",
+   "url": "https://www.petsalonlily.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC195_1.webp"
+   ],
+   "credit": "写真：ペットサロンリリー 南花島店",
+   "ratio": [
+    1.586
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC196",
+   "name": "PET-SPA流山おおたかの森店",
+   "url": "https://www.pet-spa.co.jp/shop/chiba/nagareyama/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC196_1.webp"
+   ],
+   "credit": "写真：PET-SPA流山おおたかの森店",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC198",
+   "name": "WAN PARK とわSKY ~dogtraining&doghotel~",
+   "url": "https://wanpark-towasky.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC198_1.webp"
+   ],
+   "credit": "写真：WAN PARK とわSKY ~dogtraining&doghotel~",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC199",
+   "name": "Pet Salon Ever Love",
+   "url": "https://www.ever-pet.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC199_1.webp"
+   ],
+   "credit": "写真：Pet Salon Ever Love",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC201",
+   "name": "トリミングサロン レトリーブ",
+   "url": "https://trimmingsalon-retrieve.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC201_1.webp"
+   ],
+   "credit": "写真：トリミングサロン レトリーブ",
+   "ratio": [
+    1.195
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC206",
+   "name": "ペットショップCoo&RIKU 流山店",
+   "url": "https://nagareyama-noda.goguynet.jp/2020/12/22/coo-riku_open/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC206_1.webp"
+   ],
+   "credit": "写真：ペットショップCoo&RIKU 流山店",
+   "ratio": [
+    1.779
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC207",
+   "name": "陽だまりドッグヴィレッジ",
+   "url": "https://www.hidamari-dog-village.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC207_1.webp"
+   ],
+   "credit": "写真：陽だまりドッグヴィレッジ",
+   "ratio": [
+    1.829
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC208",
+   "name": "ペットハウス ながら ELLE",
+   "url": "https://www.pethouse-nagaraelle.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC208_1.webp"
+   ],
+   "credit": "写真：ペットハウス ながら ELLE",
+   "ratio": [
+    1.667
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC209",
+   "name": "外房ドッグスクール",
+   "url": "https://sotobou-dog-school.wixsite.com/sotobou-dog-school",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC209_1.webp"
+   ],
+   "credit": "写真：外房ドッグスクール",
+   "ratio": [
+    1.682
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC211",
+   "name": "フェレットワールド幕張店",
+   "url": "https://www.ferret-world.jp/fw-shop/shop-makuhari/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC211_1.webp"
+   ],
+   "credit": "写真：フェレットワールド幕張店",
+   "ratio": [
+    1.789
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC214",
+   "name": "つじ動物病院",
+   "url": "https://tsuji-ah.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC214_1.webp"
+   ],
+   "credit": "写真：つじ動物病院",
+   "ratio": [
+    1.778
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC215",
+   "name": "トリミングサロン Mont Blanc",
+   "url": "https://trimmingmontblanc.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC215_1.webp"
+   ],
+   "credit": "写真：トリミングサロン Mont Blanc",
+   "ratio": [
+    1.474
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC223",
+   "name": "ドッグサロン Ruu",
+   "url": "https://ruu0.webnode.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC223_1.webp"
+   ],
+   "credit": "写真：ドッグサロン Ruu",
+   "ratio": [
+    1.502
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC224",
+   "name": "DogStylingSalon Mele",
+   "url": "https://trimming-mele.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC224_1.webp"
+   ],
+   "credit": "写真：DogStylingSalon Mele",
+   "ratio": [
+    1.782
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC225",
+   "name": "Zephyros",
+   "url": "https://www.zephyros-dog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC225_1.webp"
+   ],
+   "credit": "写真：Zephyros",
+   "ratio": [
+    1.454
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC227",
+   "name": "kijimagic 訪問トリミング鬼島",
+   "url": "http://kijimagic.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC227_1.webp"
+   ],
+   "credit": "写真：kijimagic 訪問トリミング鬼島",
+   "ratio": [
+    2.222
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC229",
+   "name": "NPO法人ハーネス夢サポート わんにゃんハウス・オレンジ",
+   "url": "http://www.c-ashiato.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC229_1.webp"
+   ],
+   "credit": "写真：NPO法人ハーネス夢サポート わんにゃんハウス・オレンジ",
+   "ratio": [
+    2.158
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC232",
+   "name": "FUN LIFE-with DOGS",
+   "url": "https://www.life-withdog.com/training",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC232_1.webp"
+   ],
+   "credit": "写真：FUN LIFE-with DOGS",
+   "ratio": [
+    2.0
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC233",
+   "name": "ドッグガーデンユーカリ",
+   "url": "https://www.doggardenyukari.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC233_1.webp"
+   ],
+   "credit": "写真：ドッグガーデンユーカリ",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC238",
+   "name": "テイルドッグ",
+   "url": "https://www.taildog.com/index.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC238_1.webp"
+   ],
+   "credit": "写真：テイルドッグ",
+   "ratio": [
+    1.121
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC239",
+   "name": "Trimming Salon BUDDy",
+   "url": "https://buddy-with.pet/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC239_1.webp"
+   ],
+   "credit": "写真：Trimming Salon BUDDy",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC241",
+   "name": "chat concierge",
+   "url": "https://ameblo.jp/chat-conci10/entry-12303962939.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC241_1.webp"
+   ],
+   "credit": "写真：chat concierge",
+   "ratio": [
+    1.336
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC244",
+   "name": "犬のお預かり 椿",
+   "url": "https://inunooazukari-tubaki.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC244_1.webp"
+   ],
+   "credit": "写真：犬のお預かり 椿",
+   "ratio": [
+    1.07
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC248",
+   "name": "いぬ曜日",
+   "url": "https://inuyobi.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC248_1.webp"
+   ],
+   "credit": "写真：いぬ曜日",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC252",
+   "name": "DOG YEAR",
+   "url": "https://petsalon-dogyear.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC252_1.webp"
+   ],
+   "credit": "写真：DOG YEAR",
+   "ratio": [
+    1.372
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC254",
+   "name": "DOG SPA &HOTEL MAGICWANDS",
+   "url": "https://www.pension-third-place.com/magic-wands",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC254_1.webp"
+   ],
+   "credit": "写真：DOG SPA &HOTEL MAGICWANDS",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC258",
+   "name": "DOG HOUSE LOVE",
+   "url": "https://doghouse-love.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC258_1.webp"
+   ],
+   "credit": "写真：DOG HOUSE LOVE",
+   "ratio": [
+    1.501
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC260",
+   "name": "ドッグサロン ラ・アンベリール",
+   "url": "https://narita.la-embellir.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC260_1.webp"
+   ],
+   "credit": "写真：ドッグサロン ラ・アンベリール",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC261",
+   "name": "ドッグサロン アスティ",
+   "url": "https://astei-dog.com/trimming/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC261_1.webp"
+   ],
+   "credit": "写真：ドッグサロン アスティ",
+   "ratio": [
+    1.504
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC269",
+   "name": "ドッグサロン シェイキングテイルズ",
+   "url": "https://psk662.wixsite.com/website",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC269_1.webp"
+   ],
+   "credit": "写真：ドッグサロン シェイキングテイルズ",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC270",
+   "name": "ペットサロン びじゅー",
+   "url": "https://www.dog-bijou.co.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC270_1.webp"
+   ],
+   "credit": "写真：ペットサロン びじゅー",
+   "ratio": [
+    1.495
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC276",
+   "name": "ドッグサロンOHANA(オハナ)",
+   "url": "http://ohana.capoo.jp/access/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC276_1.webp"
+   ],
+   "credit": "写真：ドッグサロンOHANA(オハナ)",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC277",
+   "name": "ペットケアサロンえがお",
+   "url": "https://pet-care-egao.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC277_1.webp"
+   ],
+   "credit": "写真：ペットケアサロンえがお",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHC278",
+   "name": "鴨川シーサイドドッグトレーニング-ガーデンホテル",
+   "url": "https://obuchidogschool.wixsite.com/obuchidogschool/about",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHC278_1.webp"
+   ],
+   "credit": "写真：鴨川シーサイドドッグトレーニング-ガーデンホテル",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D142",
+   "name": "ドギーズアイランドのドッグラン（日帰り）",
+   "url": "https://www.doggys-island.jp/facility/dogrun/index.php",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/dogrun/D142_1.webp"
+   ],
+   "credit": "写真：ドギーズアイランドのドッグラン（日帰り）",
+   "ratio": [
+    1.498
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D146",
+   "name": "成田ゆめ牧場のドッグガーデン",
+   "url": "https://www.yumebokujo.com/doggarden.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/dogrun/D146_1.webp"
+   ],
+   "credit": "写真：成田ゆめ牧場のドッグガーデン",
+   "ratio": [
+    1.779
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D151",
+   "name": "DOG DEPT GARDEN 木更津店のドッグラン",
+   "url": "https://www.dogdept.com/shoplist/area03_16.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/dogrun/D151_1.webp"
+   ],
+   "credit": "写真：DOG DEPT GARDEN 木更津店のドッグラン",
+   "ratio": [
+    1.495
+   ]
+  },
+  {
+   "cat": "hospital",
+   "id": "G12010",
+   "name": "ポプラどうぶつ病院",
+   "url": "http://popla-ah.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hospital/G12010_1.webp"
+   ],
+   "credit": "写真：ポプラどうぶつ病院",
+   "ratio": [
+    1.667
+   ]
+  },
+  {
+   "cat": "hospital",
+   "id": "G12020",
+   "name": "行徳どうぶつ病院",
+   "url": "https://animal-chiba.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hospital/G12020_1.webp"
+   ],
+   "credit": "写真：行徳どうぶつ病院",
+   "ratio": [
+    1.659
+   ]
+  },
+  {
+   "cat": "hospital",
+   "id": "G12024",
+   "name": "アップル動物病院",
+   "url": "http://www.apple-ah.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hospital/G12024_1.webp"
+   ],
+   "credit": "写真：アップル動物病院",
+   "ratio": [
+    1.193
+   ]
+  },
+  {
+   "cat": "hospital",
+   "id": "G12031",
+   "name": "リリーフ動物病院行徳",
+   "url": "http://relief-ahp.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hospital/G12031_1.webp"
+   ],
+   "credit": "写真：リリーフ動物病院行徳",
+   "ratio": [
+    1.907
+   ]
+  },
+  {
+   "cat": "hospital",
+   "id": "G12034",
+   "name": "佐倉動物病院",
+   "url": "https://www.sakura-doubutsubyouin.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hospital/G12034_1.webp"
+   ],
+   "credit": "写真：佐倉動物病院",
+   "ratio": [
+    1.332
+   ]
+  },
+  {
+   "cat": "hospital",
+   "id": "G12037",
+   "name": "リアンアニマルクリニック",
+   "url": "https://www.lien-ac.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hospital/G12037_1.webp"
+   ],
+   "credit": "写真：リアンアニマルクリニック",
+   "ratio": [
+    1.459
+   ]
+  },
+  {
+   "cat": "hospital",
+   "id": "G12038",
+   "name": "ユーカリが丘動物医療センター",
+   "url": "https://and-vet-ah.com/hospital/yukarigaoka-amc/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hospital/G12038_1.webp"
+   ],
+   "credit": "写真：ユーカリが丘動物医療センター",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R009",
+   "name": "老犬ホーム＆ペットホテル 九十九里パーク",
+   "url": "https://roukenhome.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/rojin/R009_1.webp"
+   ],
+   "credit": "写真：老犬ホーム＆ペットホテル 九十九里パーク",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R047",
+   "name": "わんにゃんハウス・オレンジ",
+   "url": "https://wannyanhouse-orange.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/rojin/R047_1.webp"
+   ],
+   "credit": "写真：わんにゃんハウス・オレンジ",
+   "ratio": [
+    2.103
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R071",
+   "name": "リリモナハウス",
+   "url": "https://www.lilimonahouse.com/old-dog-care",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/rojin/R071_1.webp"
+   ],
+   "credit": "写真：リリモナハウス",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R105",
+   "name": "ペットケアサロンえがお（老犬猫ホーム）",
+   "url": "http://pet-care-egao.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/rojin/R105_1.webp"
+   ],
+   "credit": "写真：ペットケアサロンえがお（老犬猫ホーム）",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R106",
+   "name": "フォレスト・ドッグケアセンター",
+   "url": "https://forest-dog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/rojin/R106_1.webp"
+   ],
+   "credit": "写真：フォレスト・ドッグケアセンター",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R107",
+   "name": "ペットハウス ながらエル（老犬ホーム）",
+   "url": "https://www.pethouse-nagaraelle.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/rojin/R107_1.webp"
+   ],
+   "credit": "写真：ペットハウス ながらエル（老犬ホーム）",
+   "ratio": [
+    1.667
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R108",
+   "name": "老犬ホーム ルル",
+   "url": "https://lulurh.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/rojin/R108_1.webp"
+   ],
+   "credit": "写真：老犬ホーム ルル",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R130",
+   "name": "陽だまりドッグヴィレッジ",
+   "url": "https://www.hidamari-dog-village.com/senior-dog-care.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/rojin/R130_1.webp"
+   ],
+   "credit": "写真：陽だまりドッグヴィレッジ",
+   "ratio": [
+    1.509
+   ]
+  },
+  {
+   "cat": "rojin",
+   "id": "R157",
+   "name": "ドギーズガーデン",
+   "url": "https://doggies-garden.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/rojin/R157_1.webp"
+   ],
+   "credit": "写真：ドギーズガーデン",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "taxi",
+   "id": "Dcfbfbf2",
+   "name": "COCOタク 船橋店",
+   "url": "https://cocotaku-funabashi.moe/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/taxi/Dcfbfbf2_1.webp"
+   ],
+   "credit": "写真：COCOタク 船橋店",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "taxi",
+   "id": "De3f35f2",
+   "name": "コインペットタクシー シエロ",
+   "url": "https://pettaxi.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/taxi/De3f35f2_1.webp"
+   ],
+   "credit": "写真：コインペットタクシー シエロ",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "emergency",
+   "id": "E05",
+   "name": "コインペットタクシー シエロ",
+   "url": "https://pettaxi.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/emergency/E05_1.webp"
+   ],
+   "credit": "写真：コインペットタクシー シエロ",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "hospital",
+   "id": "G12033",
+   "name": "八幡みなみ動物病院",
+   "url": "https://yawataminami.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hospital/G12033_1.webp"
+   ],
+   "credit": "写真：八幡みなみ動物病院",
+   "ratio": [
+    0.96
+   ]
+  },
+  {
+   "cat": "hospital",
+   "id": "G12040",
+   "name": "ユーカリが丘動物病院",
+   "url": "https://www.yu-karigaoka-ah.com/medical/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hospital/G12040_1.webp"
+   ],
+   "credit": "写真：ユーカリが丘動物病院",
+   "ratio": [
+    2.439
+   ]
+  },
+  {
+   "cat": "hospital",
+   "id": "G12042",
+   "name": "ユーミーどうぶつ病院",
+   "url": "https://youme-ah.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hospital/G12042_1.webp"
+   ],
+   "credit": "写真：ユーミーどうぶつ病院",
+   "ratio": [
+    1.498
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H027",
+   "name": "JPB動物医療センター千葉",
+   "url": "https://jpbvet.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/night/H027_1.webp"
+   ],
+   "credit": "写真：JPB動物医療センター千葉",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H029",
+   "name": "柏流山夜間どうぶつ病院",
+   "url": "https://kn-yakan.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/night/H029_1.webp"
+   ],
+   "credit": "写真：柏流山夜間どうぶつ病院",
+   "ratio": [
+    1.768
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H031",
+   "name": "千葉どうぶつ総合病院",
+   "url": "https://www.chiba-ah.com/clinical-services/emergency-services/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/night/H031_1.webp"
+   ],
+   "credit": "写真：千葉どうぶつ総合病院",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "sougi",
+   "id": "S06fda3",
+   "name": "八千代ペット霊園",
+   "url": "https://ypet.info/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sougi/S06fda3_1.webp"
+   ],
+   "credit": "写真：八千代ペット霊園",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "sougi",
+   "id": "S5299d7",
+   "name": "竺園寺別院 慈生院（ケンユーペットセレモニー）",
+   "url": "https://kenyuusha.co.jp/jisyoin/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sougi/S5299d7_1.webp"
+   ],
+   "credit": "写真：竺園寺別院 慈生院（ケンユーペットセレモニー）",
+   "ratio": [
+    1.775
+   ]
+  },
+  {
+   "cat": "sougi",
+   "id": "Sa2fae7",
+   "name": "市川ペット霊園",
+   "url": "https://ichikawa-pet.co.jp/about",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sougi/Sa2fae7_1.webp"
+   ],
+   "credit": "写真：市川ペット霊園",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "sougi",
+   "id": "Sb22bec",
+   "name": "不動の杜ペット霊園",
+   "url": "https://www.yaku-yoke.com/doubutukuyo.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sougi/Sb22bec_1.webp"
+   ],
+   "credit": "写真：不動の杜ペット霊園",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "sougi",
+   "id": "Se0a0fe",
+   "name": "ペットセレモニープレア千葉式場",
+   "url": "https://www.petceremony.jp/chiba/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/sougi/Se0a0fe_1.webp"
+   ],
+   "credit": "写真：ペットセレモニープレア千葉式場",
+   "ratio": [
+    1.505
    ]
   }
  ]

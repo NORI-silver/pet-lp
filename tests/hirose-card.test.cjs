@@ -12,7 +12,9 @@ for (const file of ['dog-trainer/kyoto/index.html', 'dog-trainer/index.html']) {
   assert.equal(route[2], '事業所への経路', file);
   assert.match(card, /data-to="京都府京都市右京区嵯峨広沢南下馬野町1-1" data-to-label="教室"/);
   assert.match(card, /data-gph="T114"[^>]*><div class="cs-ph-s"><img src="\/img\/fac\/trainer\/T114_1.webp"/);
-  assert.match(page, /\.cs-ph\[data-gph="T114"\]\{aspect-ratio:520\/347\}\.cs-ph\[data-gph="T114"\] img\{object-fit:contain\}/);
-  assert.match(page, /\.cs-ph\{position:relative;aspect-ratio:2\/1/);
+  assert.match(page, /\.cs-ph\[data-gph="T114"\]\{--r:520\/347\}\.cs-ph\[data-gph="T114"\] img\{object-fit:contain\}/);
+  assert.match(page, /\.cs-ph-s\{display:flex;aspect-ratio:var\(--r,2\/1\)/);
+  assert.match(page, /\.cs-ph\{position:relative;background:#f6efe8;overflow:hidden\}/);
+  assert.doesNotMatch(page, /\.cs-ph\{position:relative;aspect-ratio:2\/1/);
 }
 console.log('Hirose: both pages use the Kyoto office address and preserve the full photo frame.');
