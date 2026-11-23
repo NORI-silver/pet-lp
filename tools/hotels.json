@@ -12656,6 +12656,970 @@
    "services": "ペットホテル",
    "facts": [],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC225",
+   "name": "Zephyros",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "長生郡白子町",
+   "url": "https://www.zephyros-dog.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC226",
+   "name": "PET SALON・rich",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "君津市",
+   "url": "http://petsalonrich.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "http://petsalonrich.com/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC227",
+   "name": "kijimagic 訪問トリミング鬼島",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "http://kijimagic.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場2台完備",
+     "src": "http://kijimagic.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC228",
+   "name": "Kevin’s Garden",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市稲毛区",
+   "url": "http://kevinsgarden.net/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9時~19時 年中無休",
+     "src": "http://kevinsgarden.net/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "※駐車場3台",
+     "src": "http://kevinsgarden.net/?page_id=17",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "1一年以内に受けた狂犬病、混合ワクチン予防接種証明書(ない場合はお預かりできません)",
+     "src": "http://kevinsgarden.net/?page_id=15168",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC229",
+   "name": "NPO法人ハーネス夢サポート わんにゃんハウス・オレンジ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "http://www.c-ashiato.jp/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC230",
+   "name": "ドッグサロン Only one",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "https://one-to-wan.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~17:30 完全予約制",
+     "src": "https://one-to-wan.com/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://one-to-wan.com/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "支払:現金 PayPay",
+     "src": "https://one-to-wan.com/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC231",
+   "name": "犬の美容室 ファンティックケネル",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "成田市",
+   "url": "https://www.fantickenel.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間: 10:00~17:00",
+     "src": "https://www.fantickenel.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "休業日:水・木・金",
+     "src": "https://www.fantickenel.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場:有り",
+     "src": "https://www.fantickenel.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC232",
+   "name": "FUN LIFE-with DOGS",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "習志野市",
+   "url": "https://www.life-withdog.com/training",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "電話受付時間 10:00~19:00",
+     "src": "https://www.life-withdog.com/training",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://www.life-withdog.com/training",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC233",
+   "name": "ドッグガーデンユーカリ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://www.doggardenyukari.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC234",
+   "name": "Pawly Fields",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印西市",
+   "url": "https://www.pawly-fields.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00-18:30 (不定休)",
+     "src": "https://www.pawly-fields.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC235",
+   "name": "犬濯屋川村",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市若葉区",
+   "url": "https://www.kentakuya.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間は午前9時から午後17時までになります。",
+     "src": "https://www.kentakuya.com/%E7%8A%AC%E6%BF%AF%E5%B1%8B%E3%81%94%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://www.kentakuya.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "※専用駐車場を完備しております。",
+     "src": "https://www.kentakuya.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン証明書のご提示をお願い致します。",
+     "src": "https://www.kentakuya.com/%E7%8A%AC%E6%BF%AF%E5%B1%8B%E3%81%94%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC236",
+   "name": "愛犬の美容室 DanK",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "旭市",
+   "url": "https://www.dank-dog.com/",
+   "services": "ペットホテル",
+   "large": true,
+   "large_basis": "文",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間9:00~18:00",
+     "src": "https://www.dank-dog.com/information/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC237",
+   "name": "ui DOGSALON",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://www.uidogsalon.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC238",
+   "name": "テイルドッグ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://www.taildog.com/index.html",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC239",
+   "name": "Trimming Salon BUDDy",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "成田市",
+   "url": "https://buddy-with.pet/",
+   "services": "ペットホテル",
+   "cat": true,
+   "large": true,
+   "large_basis": "文",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10:00 — 18:00",
+     "src": "https://buddy-with.pet/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 火曜日・日曜日",
+     "src": "https://buddy-with.pet/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場 5台完備(店舗前)",
+     "src": "https://buddy-with.pet/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初めて利用する際に必要な持ち物は何ですか?(ワクチン証明書など)",
+     "src": "https://buddy-with.pet/faq",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC240",
+   "name": "犬の美容室 キャロン",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "http://poodle-caron.com/",
+   "services": "ペットホテル",
+   "cat": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "猫 4,300円/1泊",
+     "src": "http://poodle-caron.com/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:09:00~18:00(水曜定休)",
+     "src": "http://poodle-caron.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車スペースあり",
+     "src": "http://poodle-caron.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC241",
+   "name": "chat concierge",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "https://ameblo.jp/chat-conci10/entry-12303962939.html",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC242",
+   "name": "Dogsalon FURIFURI",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市原市",
+   "url": "https://furifuri1664.salon/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC243",
+   "name": "Dogsalon HONEY&MILK",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://honey-milk.info/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間/10:00〜19:00 定休日:毎週水曜",
+     "src": "https://honey-milk.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:毎週水曜日(不定休有り)",
+     "src": "https://honey-milk.info/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC244",
+   "name": "犬のお預かり 椿",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "いすみ市",
+   "url": "https://inunooazukari-tubaki.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 午前9時~午後5時(※24時間体制ではございません)",
+     "src": "https://inunooazukari-tubaki.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 不定休(事前に必ずお問合せ下さい)・年末年始",
+     "src": "https://inunooazukari-tubaki.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "● 1年以内に混合ワクチン、狂犬病ワクチンの接種が済んでいること。(証明書をご持参下さい)",
+     "src": "https://inunooazukari-tubaki.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "● お支払いは現金のみとなります。",
+     "src": "https://inunooazukari-tubaki.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC245",
+   "name": "ペットショップ&cafe いこ~よ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市花見川区",
+   "url": "https://cafe-ikouyo.com/about/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC246",
+   "name": "ペットグルーミング トイハウス",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市花見川区",
+   "url": "http://toyhouse.main.jp/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日:毎週 水曜日・木曜日",
+     "src": "http://toyhouse.main.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC247",
+   "name": "犬の美容室 Smile",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "山武市",
+   "url": "https://www.inunobiyoushitsu-smile.com/news/11",
+   "services": "ペットホテル",
+   "large": true,
+   "large_basis": "文",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "※金・土・日曜日、祝日は一泊あたり500円増しになります。",
+     "src": "https://www.inunobiyoushitsu-smile.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間】9:00~18:00",
+     "src": "https://www.inunobiyoushitsu-smile.com/service",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC248",
+   "name": "いぬ曜日",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "茂原市",
+   "url": "https://inuyobi.jimdofree.com/",
+   "services": "ペットホテル",
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~19:00",
+     "src": "https://inuyobi.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休",
+     "src": "https://inuyobi.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC249",
+   "name": "Dog salon Peace",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市若葉区",
+   "url": "https://dogsalon-wan-peace.net/trimming/",
+   "services": "ペットホテル",
+   "large": true,
+   "large_basis": "文",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "駐車場はありますか?",
+     "src": "https://dogsalon-wan-peace.net/qa/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初回ご利用時、狂犬病ワクチン証明書、混合ワクチン証明書の確認をさせていただきます。",
+     "src": "https://dogsalon-wan-peace.net/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC250",
+   "name": "ペットショップ キャロット",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "野田市",
+   "url": "https://www.carrot-net.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "お支払いは現金・クレジットカード・PayPay・auペイ・D払いでのお支払いが可能です。",
+     "src": "https://www.carrot-net.com/access/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC251",
+   "name": "トリミングハウス うる",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "成田市",
+   "url": "https://urutrim.amebaownd.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC252",
+   "name": "DOG YEAR",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://petsalon-dogyear.com/",
+   "services": "ペットホテル",
+   "cat": true,
+   "large": true,
+   "large_basis": "文",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:9:30~18:00 定休日:木曜日",
+     "src": "https://petsalon-dogyear.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:木曜日",
+     "src": "https://petsalon-dogyear.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場はありますか?",
+     "src": "https://petsalon-dogyear.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "接種日から1年以内の狂犬病予防接種と混合ワクチンの証明書のご提示をお願い致します。",
+     "src": "https://petsalon-dogyear.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC253",
+   "name": "合同会社クラフト",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "佐倉市",
+   "url": "https://kruft.co.jp/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC254",
+   "name": "DOG SPA &HOTEL MAGICWANDS",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "長生郡一宮町",
+   "url": "https://www.pension-third-place.com/magic-wands",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "定休日 木曜(夏季や祝日営業変動あり)",
+     "src": "https://www.pension-third-place.com/magic-wands",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC255",
+   "name": "ワンちゃんの美容室 Wink",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市花見川区",
+   "url": "https://www.wink-dog.com/",
+   "services": "ペットホテル",
+   "large": true,
+   "large_basis": "文",
+   "pickup": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間は10:00~18:00です。9:40~10:00にご来店いただく場合、お散歩や送迎で留守にすることがありますのでご来店時刻のご指定をお願いします。",
+     "src": "https://www.wink-dog.com/partners",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:毎週日曜日・木曜日",
+     "src": "https://www.wink-dog.com/what-we-do",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎サービスあり(300円)",
+     "src": "https://www.wink-dog.com/what-we-do",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC256",
+   "name": "SOPRA GINZA 津田沼店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "習志野市",
+   "url": "https://www.sopraginza.com/shop/tsudanuma/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:10:00〜19:00 定休日:年中無休",
+     "src": "https://www.sopraginza.com/shop/tsudanuma/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC257",
+   "name": "Pet Salon Sunny Side",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "印旛郡酒々井町",
+   "url": "https://sisui-poteto.com/",
+   "services": "ペットホテル",
+   "cat": true,
+   "pickup": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "※1年以内の混合ワクチンと狂犬病ワクチンの証明書提示をお願いいたします。",
+     "src": "https://sisui-poteto.com/%e3%83%a1%e3%83%8b%e3%83%a5%e3%83%bc/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "【ペットサロンポテト】※チーパスお持ちの方トリミング5%OFF!!近隣の方送迎無料です★",
+     "src": "https://sisui-poteto.com/feed/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC258",
+   "name": "DOG HOUSE LOVE",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "柏市",
+   "url": "https://doghouse-love.jimdofree.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC259",
+   "name": "トリミングサロン WANBO",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "白井市",
+   "url": "http://wanbo.jp/",
+   "services": "ペットホテル",
+   "cat": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "※お泊まりの際は「ワクチン証明書・泊数分のご飯・リード」をご用意ください",
+     "src": "http://wanbo.jp/price/price_np.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC260",
+   "name": "ドッグサロン ラ・アンベリール",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "成田市",
+   "url": "https://narita.la-embellir.com/",
+   "services": "ペットホテル",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC261",
+   "name": "ドッグサロン アスティ",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://astei-dog.com/trimming/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 10:00~19:00(火曜定休日)",
+     "src": "https://astei-dog.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC262",
+   "name": "ペットサロン ボンボン",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市中央区",
+   "url": "https://pet-bonbon.com/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "一時お預かり(1時間)・・・・・550 円(税込605円)",
+     "src": "https://pet-bonbon.com/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00 ~ 18:00 ※営業時間の変更は、随時ホームページに掲載いたします。",
+     "src": "https://pet-bonbon.com/about.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "当店に駐車場はございませんので、近隣のコインパーキングをご利用ください。",
+     "src": "https://pet-bonbon.com/about.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "● ワンちゃんたちを感染症から守るため、ワクチンの接種をお願いしております。混合ワクチンの証明書、狂犬病の証明書をご持参ください。",
+     "src": "https://pet-bonbon.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC263",
+   "name": "ドッグサロン ベティーズハウス",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://bestie-s.com/",
+   "services": "ペットホテル",
+   "cat": true,
+   "pickup": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "お預かりしてからのお時間 1h+1,500円",
+     "src": "https://bestie-s.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎費1000円~",
+     "src": "https://bestie-s.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC264",
+   "name": "ペットホテル・トリミングサロン麻布十番ダンボ市川店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市川市",
+   "url": "https://dumbo-azabu10ban.jp/ichikawa/",
+   "services": "ペットホテル",
+   "cat": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "お電話の受付時間は10:00~19:00 、 メールでのお問合せ、メールフォームでのご予約 なら24時間 受け付けています。",
+     "src": "https://dumbo-azabu10ban.jp/petsitter/contact.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHC265",
+   "name": "ペットショップ Aペット市原店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "市原市",
+   "url": "https://apet-apet.com/",
+   "services": "ペットホテル",
+   "cat": true,
+   "facts": [],
+   "checked": "2026-11-23"
   }
  ]
 }

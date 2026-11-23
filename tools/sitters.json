@@ -10502,6 +10502,119 @@
    "chain": "indie",
    "facts": [],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "SC067",
+   "name": "ペットシッター まりん",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "いすみ市",
+   "url": "https://petsittermarine.wixsite.com/petsittermarine",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 8:00-20:00 (留守電有り)",
+     "src": "https://petsittermarine.wixsite.com/petsittermarine",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC068",
+   "name": "PETSITTERイトコ",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "柏市",
+   "url": "https://petsitteritoco.localinfo.jp/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "基本料金 +1,000円",
+     "src": "https://petsitteritoco.localinfo.jp/pages/3787790/page_201807122030",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00〜21:00",
+     "src": "https://petsitteritoco.localinfo.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法:現金払い カウンセリング当日にお支払いください。",
+     "src": "https://petsitteritoco.localinfo.jp/pages/3787790/page_201807122030",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC069",
+   "name": "chat concierge",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "流山市",
+   "url": "https://ameblo.jp/chat-conci10/entry-12303962939.html",
+   "chain": "indie",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC070",
+   "name": "Petsitter-Hus",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "野田市",
+   "url": "https://www.petsitter-hus.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "●1回お世話に伺うごとに、出張料 660円(基本エリア内)を頂戴いたします。基本エリア外のお客様もご相談ください。",
+     "src": "https://www.petsitter-hus.com/%e3%81%94%e5%88%a9%e7%94%a8%e6%96%99%e9%87%91/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※お支払いは、銀行振込も可能です。",
+     "src": "https://www.petsitter-hus.com/%e3%81%94%e5%88%a9%e7%94%a8%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "SC071",
+   "name": "ペットホテル・トリミングサロン麻布十番ダンボ市川店",
+   "prefs": [
+    "千葉県"
+   ],
+   "area": "市川市",
+   "url": "https://dumbo-azabu10ban.jp/ichikawa/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "お電話の受付時間は10:00~19:00 、 メールでのお問合せ、メールフォームでのご予約 なら24時間 受け付けています。",
+     "src": "https://dumbo-azabu10ban.jp/petsitter/contact.php",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }

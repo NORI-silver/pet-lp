@@ -3657,6 +3657,169 @@
    "services": "出張トリミング",
    "facts": [],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "GC006",
+   "name": "kijimagic 訪問トリミング鬼島",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "千葉市緑区",
+   "url": "http://kijimagic.com/",
+   "area": "千葉市緑区と周辺",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "小型3,000円",
+     "src": "http://kijimagic.com/dog_hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場2台完備",
+     "src": "http://kijimagic.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC007",
+   "name": "SOPRA GINZA 流山セントラルパーク店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "流山市",
+   "url": "https://www.sopraginza.com/shop/nagareyama/",
+   "area": "流山市と周辺",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間:10:00〜19:00 定休日:年中無休",
+     "src": "https://www.sopraginza.com/shop/nagareyama/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "広い駐車場があり、車での来店に便利。",
+     "src": "https://www.sopraginza.com/shop/nagareyama/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎:880円~",
+     "src": "https://www.sopraginza.com/shop/nagareyama/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC008",
+   "name": "犬のとこやさん るか",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "成田市",
+   "url": "http://inunotokoyasan.com/profile",
+   "area": "成田市と周辺",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "狂犬病ワクチン・混合ワクチンの証明書をご持参ください",
+     "src": "http://inunotokoyasan.com/trimming",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC009",
+   "name": "アイネクルネ 富里ベース店",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "富里市",
+   "url": "https://tomisato.ainekurune.com/",
+   "area": "富里市と周辺",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00〜18:00(完全予約制)",
+     "src": "https://tomisato.ainekurune.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:不定休(当日受付も可能な場合がございます)",
+     "src": "https://tomisato.ainekurune.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC010",
+   "name": "トリミングハウス うる",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "成田市",
+   "url": "https://urutrim.amebaownd.com/",
+   "area": "成田市と周辺",
+   "services": "出張トリミング",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "部分カット...500円〜",
+     "src": "https://urutrim.amebaownd.com/pages/7189867/page_202308091001",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "GC011",
+   "name": "ドッグサロン ベティーズハウス",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "松戸市",
+   "url": "https://bestie-s.com/",
+   "area": "松戸市と周辺",
+   "services": "出張トリミング",
+   "car": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "トリミングセット 6,000円〜",
+     "src": "https://bestie-s.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎費1000円~",
+     "src": "https://bestie-s.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }
