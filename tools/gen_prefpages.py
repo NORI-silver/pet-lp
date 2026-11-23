@@ -37,7 +37,7 @@ def split_pref(cat, pf, rs):
     for it in rs:
         c = city_of(pf, it)
         if c: g.setdefault(c, []).append(it)
-    cities = {c: v for c, v in g.items() if len(v) >= cat.get("city_min", CITY_MIN)}
+    cities = {c: v for c, v in g.items() if len(v) >= cat.get("city_min", CITY_MIN) and (pf, c) not in cat.get("no_city", ())}  # no_city：中身が薄くなる市（新しい薄いページは作らない。県のページに載る）
     ids = {id(x) for v in cities.values() for x in v}
     return dict(sorted(cities.items(), key=lambda kv: -len(kv[1]))), [it for it in rs if id(it) not in ids]
 def chref(cat, pf, c):
@@ -107,6 +107,7 @@ def fact_table_html(e, cat, pf, rs):
     if not cols: return ""
     hs = [it for it in rs if any(_fv(it, k) for _, ks in cols for k in ks)]  # 表の列にない事実（うちの子に合うかの文など）だけの施設は並べない
     if not hs: return ""
+    if len(hs) > 60: return ""  # 施設が多い県は、カードと同じ中身の表でページが重くなるだけ（info-light の上限。中身は各カードにある）
     import visual as _V
     def cell(it, ks):
         vs = [f["v"] for f in (_fv(it, k) for k in ks) if f]
@@ -240,11 +241,11 @@ def render_pref(ctx, cat, pf, rows, city=None):
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    {answer_html(e, cat, place, rs, faq, facts)}
     <div class="emg">
       <p class="emg-free">{e(cat.get("free", "この一覧は無料の情報です。事業者からお金をもらっていません。おすすめ順や点数順ではありません。" + ("料金は公式サイトに書いてあるものだけを、情報の時点つきで載せています。" if any(it.get("facts") for it in rs) else "料金は載せていないので、それぞれに直接おたずねください。")))}</p>
       {cat["extra"](e, pf) if cat.get("extra") else ""}{city_links}
       {cat["fac_chips"](e, pf) + chr(10) + "      " if cat.get("fac_chips") else ""}<section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(cat.get("list_h", name))}（{e(place)}・{len(show)}{e(unit)}{'・ほかの市区町村' if cities else ''}）</h2>{cards}</section>
+      {answer_html(e, cat, place, rs, faq, facts)}
       {table_html(e, cat, show)}
       {fact_table_html(e, cat, place, show)}
       {cat["extra_after"](e, pf) if cat.get("extra_after") else ""}
