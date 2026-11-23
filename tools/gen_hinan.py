@@ -137,9 +137,9 @@ def no_text(t):
     return "" if (not t or GENERIC_NO.match(t.strip())) else first(t)
 
 def arows(e, it):
-    cage = "持っていく（ケージの中で飼う）" if it.get("cage_req") else first(it.get("cage"))
+    cage = it.get("decision_cage") or ("持っていく（ケージの中で飼う）" if it.get("cage_req") else first(it.get("cage")))
     lk, la = large_answer(it)
-    rows = [("🦮", "大型犬は？", large_short(it)), ("🧺", "ケージ", cage), ("🏠", "飼う場所", first(it.get("place"))),
+    rows = [("🦮", "大型犬は？", large_short(it)), ("🧺", "ケージ", cage), ("🏠", "飼う場所", it.get("decision_place_short") or first(it.get("place"))),
             ("⚠️", "受け入れない動物", no_text(it.get("no")))]
     rows = [r for r in rows if r[2]]
     if not rows: return ""
@@ -221,11 +221,15 @@ def large_answer(it):
 
 def large_short(it):
     """大型犬の答えを1文で（一覧の行・さがす欄用）。「書いていません」とは言わない"""
+    if it.get("decision_large_short"):
+        return it["decision_large_short"]
     k, a = large_answer(it)
     if k == "none": return "犬の大きさによる区別はありません。"
     return a.split("。")[0].replace(it["name"] + "は、", "") + "。"
 
 LARGE_TIP = {
+    "allowed": "持ち物と過ごす場所は、開設する避難所の案内に従いましょう。",
+    "check": "受け入れと過ごす場所を確認し、必要なら別の預け先も考えておきましょう。",
     "ok": "じょうぶなリード（つなぐ用の長いもの）・マット・ふんの袋を持って行きましょう。屋外につなぐことが多いので、雨や暑さ・寒さの対策もしておくと安心です。",
     "cage": "大型犬は、車の中で過ごす・親戚や知人の家・ペットホテルや動物病院など、避難所のほかの行き先を前もって決めておきましょう。",
     "nobig": "大型犬は、車の中で過ごす・親戚や知人の家・ペットホテルや動物病院など、避難所のほかの行き先を前もって決めておきましょう。",
@@ -243,12 +247,14 @@ def faq_for(pf, its):
         if it.get("policy"):
             out.append((f"{nm}では、ペットと一緒に避難できますか？", f"{nm}では、{it['policy']}"))
         k, ans = large_answer(it)
-        out.append((f"{nm}の避難所に、大型犬は連れて行けますか？", ans + LARGE_TIP[k]))
-        if it.get("place"):
+        out.append((f"{nm}の避難所に、大型犬は連れて行けますか？", ans + (it.get("decision_large_tip") or LARGE_TIP[k])))
+        if it.get("decision_place_short"):
+            out.append((f"{nm}の避難所で、ペットはどこで過ごしますか？", it["decision_place_short"]))
+        elif it.get("place"):
             out.append((f"{nm}の避難所で、ペットはどこで過ごしますか？",
                         f"{nm}では、{it['place']}" + ("" if "避難所ごと" in it["place"] else "くわしい場所は避難所ごとに決まります。")))
         if it.get("cage") or it.get("cage_req"):
-            out.append((f"{nm}の避難所に、ケージは持って行きますか？", f"{nm}では、" + (it.get("cage") or "ケージを持って行きます。")))
+            out.append((f"{nm}の避難所に、ケージは持って行きますか？", f"{nm}では、" + (it.get("decision_cage") or it.get("cage") or "ケージを持って行きます。")))
         a = it.get("animals")
         if a:
             out.append((f"{nm}の避難所には、どんな動物を連れて行けますか？", f"{nm}では、{a}" + (f"なお、{it['no']}" if it.get("no") else "")))
@@ -621,7 +627,9 @@ def write_finder(ROOT):
     for m in MUNI:
         pf, nm, top = m["pref"], m["name"], m.get("url") or ""
         it = have.get((pf, nm))
-        fc = ("".join(CODE[it["flags"].get(k)] for k, _ in KINDS) + ("1" if it.get("cage_req") else "0")) if it else ""
+        # A municipality-specific cage answer travels in t[1] instead of the generic finder label.
+        generic_cage = it and it.get("cage_req") and not it.get("decision_cage")
+        fc = ("".join(CODE[it["flags"].get(k)] for k, _ in KINDS) + ("1" if generic_cage else "0")) if it else ""
         if it and has_page(it) and pf in pref_page: row = [nm, "page", href_city(it), top, "", fc]
         elif it and pf in pref_page: row = [nm, "card", href(pf) + "#" + nm, top, "", fc]
         elif it and it.get("links"): row = [nm, "link", it["links"][0][1], top, it["links"][0][0], fc]
@@ -630,7 +638,8 @@ def write_finder(ROOT):
         else: row = [nm, "todo", "", top, "", ""]
         row.append(m["code"] if os.path.exists(os.path.join(ROOT, SLUG, "s", m["code"] + ".json")) else "")
         if it:  # 書いてあること（考え方・ケージ・飼う場所・受け入れない動物）を短く。分からない項目は空
-            row.append(["", "" if it.get("cage_req") else first(it.get("cage")), first(it.get("place")), no_text(it.get("no")),
+            row.append(["", it.get("decision_cage") or ("" if it.get("cage_req") else first(it.get("cage"))),
+                        it.get("decision_place_short") or first(it.get("place")), no_text(it.get("no")),
                         large_short(it)])
         v = site_src(pf, nm)
         if v:
