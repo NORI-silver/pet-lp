@@ -39,7 +39,7 @@ def _yen(p):
     y = p.get("yen")
     if not y: return "無料"
     tax = p.get("tax") or ""
-    return f"{y:,}円" + ("" if tax == "税込" else "（税別）" if tax == "税別" else "（税の記載なし）")
+    return f"{y:,}円" + ("〜" if p.get("from") else "") + ("" if tax == "税込" else "（税別）" if tax == "税別" else "（税の記載なし）")
 def detectives():
     out = []
     for d in PRIV.get("detectives", []):
@@ -200,7 +200,7 @@ def maigo(ctx):
         f'<td>{e(d["plan"])}' + (f'<br><small>{e(d["animals"])}</small>' if d["animals"] else "") + '</td>'
         f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + '</td></tr>' for d in dets)
     det_tbl = (f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域</th></tr></thead><tbody>{det_rows}</tbody></table></div>'
-               f'<p class="jc-src">金額は税込（税別・税の記載がない会社は印つき）。各社の公式サイトの情報をもとに（{CHECKED}時点）。順番に意味はありません。発見率など会社の発表の数字は、くらべ方がそろっていないので載せていません。</p>') if dets else ""
+               f'<p class="jc-src">金額は税込（税別・税の記載がない会社は印つき）。各社の公式サイトの掲載情報をもとに、最低料金は「〜」で表示しています。順番に意味はありません。発見率など会社の発表の数字は、くらべ方がそろっていないので載せていません。</p>') if dets else ""
     ins = [i for i in PRIV.get("insurance", []) if not i.get("doubt")]
     ins_html = "".join(f'<li><a href="{e(i["src"])}" target="_blank" rel="noopener">{e(i["name"])}</a>：{e(i.get("who", ""))}は、{e(i.get("free", ""))}が無料（{e(i.get("paid", ""))}）</li>' for i in ins)
     boards = PRIV.get("boards", [])
