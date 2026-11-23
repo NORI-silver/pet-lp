@@ -5,7 +5,7 @@
 #   2. permit  … 事業者が「サイトの写真を使ってよい」と言ってくれた（tools/photo_permits.json に記録）→ 公式サイトから取ってきた写真
 #   3. license … 公式サイトの決まりで転載を許している（CC BY・政府標準利用規約など）。出どころの表示（写真：◯◯）を付ける
 # 写真のないカードは、共通の枠（足あとのアイコンだけ。汎用の「イメージ」写真は使わない）を出す（Nori 同日「掲載可能な写真がない場合は共通のプレースホルダー」）。
-# 写真は 520×347 の webp（1枚 20〜40KB）、loading="lazy"。横にスワイプで切りかえ（CSS だけ、JSなし）。何度動かしても同じ（cp の印）。
+# 写真は 全体を縮めた webp（1枚 20〜40KB）、loading="lazy"。横にスワイプで切りかえ（CSS だけ、JSなし）。何度動かしても同じ（cp の印）。
 import json, os, re, html
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -58,7 +58,7 @@ def strip(x, name, gph=""):
         return f'<div class="cs-ph cs-ph0"{g} aria-hidden="true"></div>' if PLACEHOLDER_ON else ""
     ps = x["photos"][:5]
     alt = html.escape(re.sub(r"<[^>]+>", "", name))
-    imgs = "".join(f'<img src="{html.escape(p)}" alt="{alt}の写真{i + 1}" width="520" height="347" loading="lazy" decoding="async">' for i, p in enumerate(ps))
+    imgs = "".join(f'<img src="{html.escape(p)}" alt="{alt}の写真{i + 1}" loading="lazy" decoding="async">' for i, p in enumerate(ps))
     n = f'<span class="cs-ph-n" aria-hidden="true">📷 {len(ps)}</span>' if len(ps) > 1 else ""
     cr = ""
     if x.get("by") != "owner" and x.get("credit"):  # サイトの決まり（CC BY など）や事業者の許可の条件で出どころの表示が要る
@@ -77,7 +77,10 @@ def _end(h, i):
     return -1
 
 
-def page(h, by_id, by_url):
+_TRANSPORT_PAGES = frozenset(("area", "tokyo", "chiba", "kanagawa", "saitama", "emergency"))
+
+
+def page(h, by_id, by_url, top=""):
     if 'id="cp-css"' in h: return h, 0
     out, pos, n = [], 0, 0
     for m in _OPEN.finditer(h):
@@ -93,6 +96,10 @@ def page(h, by_id, by_url):
             for u in re.findall(r'href="(https?://[^"]+)"', blk):
                 if "google.com/maps" in u: continue
                 x = by_url.get(norm(u))
+                # A taxi can share its website with a hotel or grooming service.
+                # Its service-specific photo must not follow that shared URL.
+                if x and x.get("cat") in ("taxi", "emergency") and top not in _TRANSPORT_PAGES:
+                    x = None
                 if x: break
         nm = re.search(r'class="ux-c-n"[^>]*>(.*?)</(?:a|h3)>', blk, re.S)
         gph = next((i for i in re.findall(r'class="emg-score" data-id="([^"]+)"', blk)), "")
@@ -105,9 +112,9 @@ def page(h, by_id, by_url):
     h2 = front("".join(out))
     if n or "/hosp.js" in h2:
         # T114 の写真は被写体が上端に近いため、既存画像の全範囲を見せる。
-        photo_css = CSS
+        photo_css = CSS.replace('object-fit:cover', 'object-fit:contain') if 'class="cs-ph-s"' in h2 else CSS
         if 'class="cs-ph" data-gph="T114"' in h2:
-            photo_css = CSS.replace('</style>', '.cs-ph[data-gph="T114"]{aspect-ratio:520/347}'
+            photo_css = photo_css.replace('</style>', '.cs-ph[data-gph="T114"]{aspect-ratio:520/347}'
                                     '.cs-ph[data-gph="T114"] img{object-fit:contain}</style>')
         h2 = h2.replace("</head>", photo_css + "</head>", 1)
     return h2, n
@@ -163,7 +170,7 @@ def build(root):
         f = os.path.join(dp, "index.html")
         t = open(f, encoding="utf-8").read()
         if 'http-equiv="refresh"' in t: continue
-        u, k = page(t, by_id, by_url)
+        u, k = page(t, by_id, by_url, top)
         if u != t: open(f, "w", encoding="utf-8").write(u); pages += 1; cards += k
     return pages, cards, sum(1 for _ in by_id)
 

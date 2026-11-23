@@ -409,7 +409,13 @@ def _creds():
     return out
 src = re.sub(r"/\*CREDS\*/.*?/\*/CREDS\*/", lambda m: "/*CREDS*/var CREDS = " + json.dumps(_creds(), ensure_ascii=False) + ";/*/CREDS*/", src, count=1, flags=re.S)
 import cardphoto as _cp  # タクシーの候補カードの写真（事業者が登録した掲載情報の写真がないときに使う。Nori 2026-11-16）
-src = re.sub(r"/\*CO_PH\*/.*?/\*/CO_PH\*/", lambda m: "/*CO_PH*/var CO_PH = " + json.dumps({k: v for k, v in _cp.taxi_map().items() if k not in _HIDDEN_PUBLIC_IDS}, ensure_ascii=False) + ";/*/CO_PH*/", src, count=1, flags=re.S)
+photo_open = re.search(r"OPEN_PARTNERS:\s*\{([^}]*)\}", booking_src)
+photo_alias = dict(re.findall(r"'([^']+)'\s*:\s*'([^']+)'", photo_open.group(1))) if photo_open else {}
+photo_map = _cp.taxi_map()
+for open_id, listing_id in photo_alias.items():
+    if listing_id in photo_map and listing_id not in _HIDDEN_PUBLIC_IDS:
+        photo_map.setdefault(open_id, photo_map[listing_id])
+src = re.sub(r"/\*CO_PH\*/.*?/\*/CO_PH\*/", lambda m: "/*CO_PH*/var CO_PH = " + json.dumps({k: v for k, v in photo_map.items() if k not in _HIDDEN_PUBLIC_IDS}, ensure_ascii=False) + ";/*/CO_PH*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*PUBLIC_PAUSE\*/.*?/\*/PUBLIC_PAUSE\*/", lambda m: "/*PUBLIC_PAUSE*/var PUBLIC_PAUSE = " + json.dumps(_HIDDEN_PUBLIC_IDS) + ";/*/PUBLIC_PAUSE*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*CO_SITE\*/.*?/\*/CO_SITE\*/", lambda m: "/*CO_SITE*/var CO_SITE = " + json.dumps(_co_site(), ensure_ascii=False) + ";/*/CO_SITE*/", src, count=1, flags=re.S)
 # 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、県の中に会社がない県は「（県外の会社のみ）」を付けるか、選択欄から消す）
