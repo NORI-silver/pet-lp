@@ -196,7 +196,13 @@ def hosp_photo(h):
     by_id, by_url = _H
     x = by_id.get(h.get("id", "")) or by_url.get(norm(h.get("url", "")))
     if not x: return None
-    return [x["photos"][:5], x.get("credit", "") if x.get("by") != "owner" else ""]
+    r0 = 0
+    try:
+        from PIL import Image
+        im = Image.open(os.path.join(os.path.dirname(HERE), x["photos"][0].lstrip("/")))
+        r0 = round(im.width / im.height, 3)
+    except Exception: pass
+    return [x["photos"][:5], x.get("credit", "") if x.get("by") != "owner" else "", r0]
 
 
 if __name__ == "__main__":
