@@ -5,7 +5,7 @@ tools/crawl/queue.json（[{"cat","pref","url"}...]）の各URLと、同じサイ
 載せるかどうかは人（AI）が行を読んで決め、各分野のデータ（hotels.json など）に出どころつきで入れる。
 .github/workflows/site-snap.yml から動かす（コンテナからは各社のサイトに届かないため）。
 """
-import concurrent.futures as cf, html, json, os, re, sys, urllib.parse, urllib.request
+import base64, concurrent.futures as cf, html, json, os, re, sys, urllib.parse, urllib.request
 
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36'
 KEY = re.compile(r'〒|住所|所在地|[都道府県].{1,8}[市区町村郡]|円|料金|営業|定休|受付|時間|対象|受け入れ|お預かり|預かり|ホテル|訓練|トレーニング|しつけ|トリミング|出張|訪問|対応エリア|地域|老犬|介護|大型|猫|うさぎ|登録|動物取扱|第\d+号|資格|送迎|閉店|休業|終了|移転|駐車|ワクチン|狂犬病|混合|支払|カード|現金|PayPay|kg|ｋｇ|キロ|頭まで|見学|面会|夜間|当日|予約|持ち物|用意|キャンセル|送り迎え|お迎え')
@@ -68,19 +68,44 @@ def links_of(h, base):
     return out[:4]
 
 
-def search(item):
-    """q だけの行は検索の結果のURLと見出しを返す（候補さがし。結果は人が見て公式サイトかを決める）。"""
-    r = dict(item)
+def _bing_url(u):
+    """Bing の転送リンク（/ck/a?...&u=a1<base64>）をもとのURLにもどす。"""
+    m = re.search(r'[?&]u=a1([^&]+)', html.unescape(u))
+    if not m:
+        return u
+    b = m.group(1).replace('-', '+').replace('_', '/')
     try:
-        h, _ = get('https://html.duckduckgo.com/html/?kl=jp-jp&q=' + urllib.parse.quote(item['q']))
-        res = []
-        for href, label in re.findall(r'(?is)<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>(.*?)</a>', h):
-            m = re.search(r'uddg=([^&]+)', href)
-            u = urllib.parse.unquote(m.group(1)) if m else href
-            res.append([html.unescape(re.sub(r'<[^>]+>', '', label)).strip(), u])
-        r['results'] = res[:10]
+        return base64.b64decode(b + '=' * (-len(b) % 4)).decode('utf-8', 'replace')
+    except Exception:
+        return u
+
+
+def search(item):
+    """q だけの行は検索の結果のURLと見出しを返す（候補さがし。結果は人が見て公式サイトかを決める）。
+    Actions からは DuckDuckGo が空を返す（2026-11-23 近畿 3,632件すべて空）ので Bing を先に、空なら DuckDuckGo。
+    どちらも空なら empty=True を付ける（空のまま「見つからない」と決めない）。"""
+    r = dict(item)
+    res, errs = [], []
+    try:
+        h, _ = get('https://www.bing.com/search?setlang=ja&cc=JP&q=' + urllib.parse.quote(item['q']))
+        for u, lab in re.findall(r'(?is)<li class="b_algo".*?<h2[^>]*>\s*<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>', h):
+            res.append([html.unescape(re.sub(r'<[^>]+>', '', lab)).strip(), _bing_url(u)])
     except Exception as e:
-        r['error'] = str(e)[:200]
+        errs.append('bing: ' + str(e)[:150])
+    if not res:
+        try:
+            h, _ = get('https://html.duckduckgo.com/html/?kl=jp-jp&q=' + urllib.parse.quote(item['q']))
+            for href, label in re.findall(r'(?is)<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>(.*?)</a>', h):
+                m = re.search(r'uddg=([^&]+)', href)
+                u = urllib.parse.unquote(m.group(1)) if m else href
+                res.append([html.unescape(re.sub(r'<[^>]+>', '', label)).strip(), u])
+        except Exception as e:
+            errs.append('ddg: ' + str(e)[:150])
+    r['results'] = res[:10]
+    if not res:
+        r['empty'] = True
+        if errs:
+            r['error'] = ' / '.join(errs)
     return r
 
 
@@ -143,7 +168,7 @@ def main():
         with cf.ThreadPoolExecutor(12) as ex:
             res = list(ex.map(snap, items))
         json.dump(res, open(os.path.join(out, fn.replace('queue', 'snap')), 'w'), ensure_ascii=False, indent=1)
-        print(fn, len(res), 'errors', sum(1 for x in res if x.get('error')))
+        print(fn, len(res), 'errors', sum(1 for x in res if x.get('error')), 'empty', sum(1 for x in res if x.get('empty')))
 
 
 if __name__ == '__main__':
