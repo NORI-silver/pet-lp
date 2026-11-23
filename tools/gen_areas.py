@@ -2789,6 +2789,23 @@ print("cardphoto", cardphoto.build(ROOT))
 import keyvisual
 print("keyvisual", keyvisual.build(ROOT), "pages")
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
+# [B] 後処理（カードの形・tidy など）で本文が短くなり、薄くなったページも検索に出さない（上で数えたのは後処理の前。
+# 2026-11-23 近畿：三重のシッターのページが後処理のあと 796 字になり、seo_check で止まった）。サイトマップからも外す。
+import glob
+_THIN2, _ = thin_gate.thin(ROOT, [u[len(SITE):] for u in urls])
+_late = {p: c for p, c in _THIN2.items() if p not in NOINDEX}
+if _late:
+  for _p, _c in _late.items(): NOINDEX[_p] = f"そのページだけの字数が {_c} 字（後処理のあと。{thin_gate.MIN_CHARS} 字に足りない。tools/thin_gate.py）"
+  _THIN.update(_late)
+  open(os.path.join(ROOT, "tools", "thin_auto.json"), "w", encoding="utf-8").write(json.dumps(
+    {"_note": "gen_areas.py が毎回作る。薄くて検索に出していないページと字数（tools/thin_gate.py）。手で直さない", "min_chars": thin_gate.MIN_CHARS,
+     "pages": dict(sorted(_THIN.items()))}, ensure_ascii=False, indent=1) + "\n")
+  _late_u = {SITE + p for p in _late}
+  for _sf in [os.path.join(ROOT, "sitemap.xml")] + glob.glob(os.path.join(ROOT, "sitemaps", "*.xml")):
+    _s = open(_sf, encoding="utf-8").read()
+    _s2 = re.sub(r"  <url><loc>([^<]+)</loc>.*?</url>\n", lambda m: "" if m.group(1) in _late_u else m.group(0), _s)
+    if _s2 != _s: open(_sf, "w", encoding="utf-8").write(_s2)
+  print("thin (後処理のあと)", len(_late), "pages noindex")
 # [B] noindex.json のページに noindex,follow を入れる（ほかの後処理のあと）
 for _p in NOINDEX:
   _f = os.path.join(ROOT, _p.strip("/"), "index.html")
