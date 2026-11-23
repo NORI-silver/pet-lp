@@ -20805,6 +20805,186 @@
     }
    ],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "PHta7049f6",
+   "name": "ペット ホテル ONE",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "世田谷区",
+   "url": "https://oneluke.net/kyodoueki/hotel/",
+   "services": "ペットホテル",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間 9:00～18:00",
+     "src": "https://oneluke.net/kyodoueki/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：水曜日",
+     "src": "https://oneluke.net/shop/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "混合ワクチン・狂犬病証明書について",
+     "src": "https://oneluke.net/kyodoueki/hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt45548bd",
+   "name": "ユリドッグスクール",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "大田区",
+   "url": "http://doggy-angel.com/",
+   "services": "ペットホテル、しつけ",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHtb370180",
+   "name": "ペットシッター nico",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "練馬区",
+   "url": "https://petsitter-nico.net/price/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間 8:00〜18:00",
+     "src": "https://petsitter-nico.net/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "※ご自宅やペットホテル送迎の場合、営業エリア外であれば出張料が追加となります",
+     "src": "https://petsitter-nico.net/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "pickup": true
+  },
+  {
+   "id": "PHt70b14ce",
+   "name": "ペットシッター ハートフェルト",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "品川区",
+   "url": "http://www.petsitter-heartfelt.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt3c1d2b0",
+   "name": "東京のペットシッター 福田警備保障",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "豊島区",
+   "url": "https://simasimacat.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【受付時間】9:00～20:00",
+     "src": "https://simasimacat.com/shop.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHtd470f9f",
+   "name": "ぺんぎんシッター",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "足立区",
+   "url": "https://penguinsitter.com/service/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "駐車場",
+     "v": "※最寄り駅より徒歩15分以上かかる場合、駐車場が無い場合は追加の交通費がかかる場合がございます",
+     "src": "https://penguinsitter.com/%e6%96%99%e9%87%91%e3%83%97%e3%83%a9%e3%83%b3/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHtce74e02",
+   "name": "ペットシッター まっとっと",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "目黒区",
+   "url": "https://www.petsitter-mattotto.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "お支払い",
+     "v": "合鍵をお預かりする際に料金のお支払いをお願いします。 お支払い方法は現金、銀行振込、paypay（対面決済のみ）、クレジットカードがご利用頂けます。",
+     "src": "https://www.petsitter-mattotto.com/%E3%81%94%E5%88%A9%E7%94%A8%E3%81%BE%E3%81%A7%E3%81%AE%E6%B5%81%E3%82%8C/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
+   "id": "PHt130a027",
+   "name": "東京よもぎペットシッター",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "板橋区",
+   "url": "https://tokyo-yomogi-petsitte.jimdofree.com/",
+   "services": "ペットホテル、ペットシッター",
+   "facts": [
+    {
+     "k": "用意するもの",
+     "v": "☑狂犬病・混合ワクチン接種証明書",
+     "src": "https://tokyo-yomogi-petsitte.jimdofree.com/%E3%81%94%E5%88%A9%E7%94%A8%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "対応エリア",
+     "v": "【全域対応エリア】 文京区 台東区 千代田区",
+     "src": "https://tokyo-yomogi-petsitte.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "初回のお客様は、事前お支払いをお願いしております。内容をご確認の上、シッティング日までに指定口座へお振込みください。",
+     "src": "https://tokyo-yomogi-petsitte.jimdofree.com/%E3%81%94%E5%88%A9%E7%94%A8%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
   }
  ]
 }
