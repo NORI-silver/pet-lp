@@ -15,10 +15,28 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: pip install -q pillow
+      - name: main の今の内容を取り込む（作ったページの衝突だけ、作りなおしで解く。元ファイルの衝突があれば止める）
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch -q origin main
+          if ! git merge --no-commit --no-ff origin/main; then
+            bad=0
+            for f in $(git diff --name-only --diff-filter=U); do
+              case "$f" in
+                *.html|hospital/data/*.json|tools/lastmod.json) git checkout --theirs -- "$f" 2>/dev/null || git rm -q -- "$f"; git add -- "$f" ;;
+                *) echo "元ファイルの衝突: $f"; bad=1 ;;
+              esac
+            done
+            [ "$bad" = 0 ] || exit 1
+          fi
+          git commit -qm "main を取り込む（作ったページは次の工程で作りなおす）" || true
       - run: python3 tools/fetch_curated.py tools/curated_tokyo_small.json
       - name: 被写体チェックで外した写真のファイルを消す（tools/photo_audit.json に理由）
         run: |
@@ -52,6 +70,12 @@ jobs:
           rm -f ./img/fac/sitter/SC069_1.webp
           rm -f ./img/fac/hotel/PHC241_1.webp
       - run: python3 tools/gen_areas.py .
+      - name: 作りなおしを2回やって同じか（べき等の確認）
+        run: |
+          git add -A
+          python3 tools/gen_areas.py .
+          rm -rf tools/__pycache__
+          git diff --stat --exit-code
       - run: python3 tools/rules_check.py
       - name: このブランチに入れる
         run: |
