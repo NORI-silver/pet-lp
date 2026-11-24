@@ -230,7 +230,7 @@ CSS = """<style id="hfcss">
 .hf-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:8px;border-top:1px solid #f5ebe2}
 .hf-sum{flex:1;margin:0;font-weight:800;font-size:1rem;color:#2b2622}.hf-sum small{font-weight:400;color:#7a6a5e;font-size:.78rem;display:block}
 .hf-clear{white-space:nowrap;border:0;background:none;color:#7a6a5e;text-decoration:underline;font-size:.82rem;cursor:pointer}
-.hf-list{display:grid;gap:10px}
+.hf-list{display:grid;gap:10px;align-items:start}
 .hf-h{margin:14px 0 2px;font-size:.88rem;color:#7a6a5e;font-weight:700}
 .hc{background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px;overflow:hidden}
 .hc>.ux-img{position:relative;margin:-12px -14px 10px;aspect-ratio:2/1;overflow:hidden;background:#f4f1ee}.hc>.ux-img img{display:block;width:100%;height:100%;object-fit:cover}.hc>.ux-img span{position:absolute;right:6px;bottom:6px;font-size:.66rem;line-height:1;padding:3px 6px;border-radius:6px;background:rgba(0,0,0,.45);color:#fff}
@@ -337,14 +337,15 @@ REGIONS = [("北海道・東北", ["北海道", "青森県", "岩手県", "宮�
 def write_js(ROOT, avail, pslug, counts=None):
     import prefkeep
     body = open(os.path.join(HERE, "hosp_find.js"), encoding="utf-8").read()
-    body = (body.replace("__SLUG__", json.dumps(pslug, ensure_ascii=False))
-                .replace("__LABEL__", json.dumps(LABEL, ensure_ascii=False))
-                .replace("__SYM__", json.dumps({"y:" + n: ds for n, ds in SYMPTOMS}, ensure_ascii=False))
+    body = (body.replace("__SLUG__", json.dumps(pslug, ensure_ascii=False, separators=(",", ":")))
+                .replace("__LABEL__", json.dumps(LABEL, ensure_ascii=False, separators=(",", ":")))
+                .replace("__SYM__", json.dumps({"y:" + n: ds for n, ds in SYMPTOMS}, ensure_ascii=False, separators=(",", ":")))
                 .replace("__NEAR__", json.dumps(near_prefs(), ensure_ascii=False, separators=(",", ":")))
                 .replace("__PICS__", json.dumps(_pics(ROOT), separators=(",", ":")))
                 .replace("__REG__", json.dumps([[g, [[pf, (counts or {}).get(pf, 0)] for pf in ps if (counts or {}).get(pf)]] for g, ps in REGIONS], ensure_ascii=False, separators=(",", ":"))))
     # 行だけのコメントと行頭の空白を落として軽くする（/hosp.js は 24KB まで）
     body = "\n".join(l.strip() for l in body.split("\n") if l.strip() and not l.strip().startswith("//"))
-    js = "// 生成ファイル（tools/hosp_find.py）。手で直さない\n(function(){" + prefkeep.FN + prefkeep.GUESS + body + "\n})();\n"
+    lite = lambda t: "\n".join(l.strip() for l in t.split("\n") if l.strip())  # 共通部分（prefkeep）も行頭の空白と空行を落とす（hosp.js は 24KB まで。構文は同じ）
+    js = "// 生成ファイル（tools/hosp_find.py）。手で直さない\n(function(){" + lite(prefkeep.FN + prefkeep.GUESS) + "\n" + body + "\n})();\n"
     open(os.path.join(ROOT, "hosp.js"), "w", encoding="utf-8").write(js)
     return len(js.encode())
