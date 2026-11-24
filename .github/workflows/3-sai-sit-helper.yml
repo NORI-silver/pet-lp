@@ -1,0 +1,37 @@
+# 一時の補助。/hosp.js と /find.js を上限に収めるため、共通の部品（tools/prefkeep.py）の空白を落とし、生成ファイルを作り直す。終わったら消す。
+name: sai-sit-helper
+on:
+  push:
+    branches: ['photo-sai-sit-1125']
+    paths: ['.github/workflows/sai-sit-helper.yml']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 埼玉のペットシッターの写真を入れる
+        run: |
+          pip install pillow
+          cp tools/2-sai_sit_data.json tools/sai_sit_data.json
+          python3 tools/1-sai_sit_apply.py
+          ls img/fac/sitter | wc -l
+      - name: 生成ファイルを作り直す
+        run: |
+          python3 tools/gen_areas.py .
+          rm -rf tools/__pycache__
+          wc -c hosp.js find.js
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f tools/1-sai_sit_apply.py tools/2-sai_sit_data.json tools/sai_sit_data.json
+          git add -A
+          git reset -q .github/workflows/sai-sit-helper.yml
+          git commit -qm "埼玉のペットシッターに公式サイトの写真を追加"
+          git push
