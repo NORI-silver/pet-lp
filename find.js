@@ -59,6 +59,7 @@ function prefGuess(sel, apply){
   var sum = document.getElementById("ffSum"), alt = document.getElementById("ffAlt"), clr = document.getElementById("ffClear");
   var res = document.getElementById("ffRes"), det = box.querySelector(".ux-det");
   var needPref = box.hasAttribute("data-needpref");
+  var SLUG = {"北海道": "hokkaido", "青森県": "aomori", "岩手県": "iwate", "宮城県": "miyagi", "秋田県": "akita", "山形県": "yamagata", "福島県": "fukushima", "茨城県": "ibaraki", "栃木県": "tochigi", "群馬県": "gunma", "新潟県": "niigata", "富山県": "toyama", "石川県": "ishikawa", "福井県": "fukui", "山梨県": "yamanashi", "長野県": "nagano", "岐阜県": "gifu", "静岡県": "shizuoka", "愛知県": "aichi", "三重県": "mie", "滋賀県": "shiga", "京都府": "kyoto", "大阪府": "osaka", "兵庫県": "hyogo", "奈良県": "nara", "和歌山県": "wakayama", "鳥取県": "tottori", "島根県": "shimane", "岡山県": "okayama", "広島県": "hiroshima", "山口県": "yamaguchi", "徳島県": "tokushima", "香川県": "kagawa", "愛媛県": "ehime", "高知県": "kochi", "福岡県": "fukuoka", "佐賀県": "saga", "長崎県": "nagasaki", "熊本県": "kumamoto", "大分県": "oita", "宮崎県": "miyazaki", "鹿児島県": "kagoshima", "沖縄県": "okinawa", "東京都": "tokyo", "神奈川県": "kanagawa", "埼玉県": "saitama", "千葉県": "chiba"}; // 都道府県→URLの名前（tools/uikit.py が tools/prefs.py から差し込む。県のページどうしの移動に使う）
   var items = [].slice.call(document.querySelectorAll("[data-ffi]"));
   var btns = [].slice.call(box.querySelectorAll("button[data-k]"));
   var LBL = {};
@@ -247,15 +248,29 @@ function prefGuess(sel, apply){
   var spot = document.getElementById("ffPlace"), byPref = {}, fixed = "";
   items.forEach(function(it){ if (it._p) byPref[it._p] = (byPref[it._p] || 0) + 1; });
   if (!sel) { var ks0 = Object.keys(byPref); if (ks0.length === 1) fixed = ks0[0]; }
-  var prefs = sel ? [].filter.call(sel.options, function(o){ return o.value; }).map(function(o){ return [o.value, byPref[o.value] || 0]; }) : Object.keys(byPref).map(function(k){ return [k, byPref[k]]; });
+  // 県のページ（/分野/県/）では、ほかの県・ほかの県の市区町村も候補に出し、選んだらその県のページへ移る（2026-11-24 Nori「東京とかほかの県でさがせない」）
+  var curSlug = location.pathname.replace(/\/+$/, "").split("/").pop();
+  var navPref = !!fixed && SLUG[fixed] === curSlug;
+  var prefs = sel ? [].filter.call(sel.options, function(o){ return o.value; }).map(function(o){ return [o.value, byPref[o.value] || 0]; }) : navPref ? Object.keys(SLUG).map(function(k){ return [k, byPref[k] || 0]; }) : Object.keys(byPref).map(function(k){ return [k, byPref[k]]; });
   var tm;
-  pick = PlacePick({root: spot, prefs: prefs, fixed: fixed, unit: unit,
+  pick = PlacePick({root: spot, prefs: prefs, fixed: navPref ? "" : fixed, unit: unit,
     ph: spot.getAttribute("data-ph") || "都道府県・市区町村",
     cnt: function(p){ var n = 0; items.forEach(function(it){ if (placeJ(it, [p]) === 0) n++; }); return n; },
     extra: fixed ? function(t){ return []; } : null,
     typed: function(){ clearTimeout(tm); tm = setTimeout(function(){ apply(false); }, 150); },
     onChange: function(ps){
       places = ps;
+      if (navPref) {
+        var other = null;
+        for (var i = 0; i < ps.length; i++) if (ps[i].p !== fixed) { other = ps[i]; break; }
+        if (other) {
+          // 選んだ場所は PlacePick が端末に覚えている（petPlaces）ので、移った先の県のページで市区町村まで引き継がれる
+          var base = location.pathname.replace(/[^/]+\/?$/, ""), url = base + SLUG[other.p] + "/";
+          var has = [].some.call(document.querySelectorAll("a[href]"), function(a){ return (a.getAttribute("href") || "").split("#")[0] === url; });
+          location.href = has ? url : base + "#pref=" + encodeURIComponent(other.p);
+          return;
+        }
+      }
       [].forEach.call(box.querySelectorAll(".pref-guess"), function(g){ g.remove(); });
       var first = ps.length ? ps[0].p : "";
       if (sel) { sel.value = first; if (first) prefPut(first); prefLinks(first); try { history.replaceState(null, "", location.pathname + location.search + (first ? "#pref=" + encodeURIComponent(first) : "")); } catch (x) {} }

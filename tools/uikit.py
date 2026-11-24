@@ -142,7 +142,11 @@ def write_place(ROOT):
 
 def write_js(ROOT):
     write_place(ROOT)
-    js = open(os.path.join(HERE, "find.js"), encoding="utf-8").read()
+    import json as _j
+    from prefs import PREFS
+    slug = {x[1]: x[0] for x in PREFS}
+    slug.update({"東京都": "tokyo", "神奈川県": "kanagawa", "埼玉県": "saitama", "千葉県": "chiba"})  # 4都県は prefs.PREFS の外（gen_dogrun.py の PSLUG と同じ足し方）
+    js = open(os.path.join(HERE, "find.js"), encoding="utf-8").read().replace("__SLUG__", _j.dumps(slug, ensure_ascii=False))
     out = "// 生成：tools/uikit.py（元は tools/find.js と tools/prefkeep.py）\n" + prefkeep.FN + prefkeep.GUESS + "\n" + js
     open(os.path.join(ROOT, "find.js"), "w", encoding="utf-8").write(out)
     return len(out.encode())
