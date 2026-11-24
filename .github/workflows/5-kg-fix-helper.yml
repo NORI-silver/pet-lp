@@ -1,0 +1,34 @@
+# 一時の補助。神奈川シッターの写真を入れて、生成ファイルを作り直す。終わったら消す。
+name: kg-fix-helper
+on:
+  push:
+    branches: ['photo-kg-sitter-1125']
+    paths: ['.github/workflows/kg-fix-helper.yml']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: echo ok
+      - name: 写真を入れる
+        run: python3 tools/kg_fix_apply.py
+      - name: 生成ファイルを作り直す
+        run: |
+          python3 tools/gen_areas.py .
+          rm -rf tools/__pycache__
+      - name: 補助を外してコミット
+        run: |
+          git rm -q --cached tools/kg_fix_apply.py || true
+          rm -f tools/kg_fix_apply.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git reset -q .github/workflows/kg-fix-helper.yml
+          git commit -qm "神奈川のシッター写真を追加（公式サイトの写真・生成ファイル更新）"
+          git push
