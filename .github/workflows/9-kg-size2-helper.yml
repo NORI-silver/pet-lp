@@ -1,0 +1,35 @@
+# 一時の補助。/hosp.js と /find.js を上限に収めるため、共通の部品（tools/prefkeep.py）の空白を落とし、生成ファイルを作り直す。終わったら消す。
+name: kg-size2-helper
+on:
+  push:
+    branches: ['photo-kg-sitter-1125']
+    paths: ['.github/workflows/kg-size2-helper.yml']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: hosp.js の JSON を詰める
+        run: |
+          python3 tools/8-kg_size2_apply.py
+          git diff --stat
+      - name: 生成ファイルを作り直す
+        run: |
+          python3 tools/gen_areas.py .
+          rm -rf tools/__pycache__
+          wc -c hosp.js find.js
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f tools/8-kg_size2_apply.py
+          git add -A
+          git reset -q .github/workflows/kg-size2-helper.yml
+          git commit -qm "/hosp.js と /find.js を上限（24KB）に収める（共通部品の空白を落とす・動きは同じ）"
+          git push
