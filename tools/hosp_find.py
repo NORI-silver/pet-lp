@@ -21,16 +21,20 @@ ANIMALS = [("dog", "犬"), ("cat", "猫"), ("rabbit", "うさぎ"), ("hamster", 
 _AN_RX = {"rabbit": r"うさぎ|ウサギ|兎", "hamster": r"ハムスター|モルモット|チンチラ|デグー|ラット|マウス|リス",
           "ferret": r"フェレット", "bird": r"鳥|インコ|オウム|文鳥|トリ", "reptile": r"爬虫|は虫|カメ|亀|トカゲ|ヘビ|蛇|リクガメ",
           "fish": r"魚"}
-# いつ
-WHEN = [("night", "夜間・救急"), ("h24", "24時間"), ("late", "19時以降も"), ("early", "朝9時前から"),
+# いつ（open＝いま受付中。曜日で変わらない受付時間 t と休診の文から hosp_find.js がその場で判定する）
+WHEN = [("open", "いま受付中"), ("night", "夜間・救急"), ("h24", "24時間"), ("late", "19時以降も"), ("early", "朝9時前から"),
         ("sat", "土曜も"), ("sun", "日曜も"), ("hol", "祝日も"), ("nohol", "年中無休"), ("nolunch", "昼休みなし")]
 # 病院の種類・こんなとき
 KIND = [("visit", "家に来てくれる（往診）"), ("catspec", "猫専門"), ("exospec", "うさぎ・鳥などの専門"),
         ("large", "大型犬の設備"), ("catroom", "猫用の待合室"), ("noresv", "予約なしでも"), ("resv", "予約できる")]
 # 設備・サービス
-SVC = [("park", "駐車場"), ("card", "カード払い"), ("hotel", "ペットホテル"), ("trim", "トリミング"),
+SVC = [("park", "駐車場"), ("card", "カード払い"), ("ins", "ペット保険が使える"), ("hotel", "ペットホテル"), ("trim", "トリミング"),
        ("school", "しつけ教室・パピークラス"), ("ct", "CT・MRI")]
+# 症状・お悩みから探す（飼い主さんの言葉 → 診療科目。科目は公式サイトの文から depts_of が決めたものだけを見る）
+SYMPTOMS = [("吐く・下痢", ["消化器科"]), ("皮膚のかゆみ", ["皮膚科"]), ("咳", ["呼吸器科", "循環器科"]),
+            ("歩き方がおかしい", ["整形外科", "神経科"]), ("目・耳の異常", ["眼科", "耳鼻科"])]
 LABEL = dict(ANIMALS + WHEN + KIND + SVC)
+LABEL.update({"y:" + n: n for n, _ in SYMPTOMS})
 
 
 def _t(*xs):
@@ -121,6 +125,7 @@ def record(h, pref, tags, depts_of):
     if re.search(r"駐車場なし|駐車場はありません", svc + every): n.add("park"); y.discard("park")
     if re.search(r"カード|クレジット|キャッシュレス|電子マネー|QR", pay):
         (n if re.search(r"不可|使えない|できない|ご利用いただけません", pay) else y).add("card")
+    if re.search(r"ペット保険", pay) and not re.search(r"使えない|対応していません|不可|対象外", pay): y.add("ins")
     if re.search(r"ペットホテル|ホテル|預かり", h.get("services", "") + svc): y.add("hotel")
     if re.search(r"トリミング", h.get("services", "") + svc): y.add("trim")
     if re.search(r"しつけ|パピークラス|パピー教室", h.get("services", "") + svc): y.add("school")
@@ -288,6 +293,7 @@ def html(e, emg_opts, depts, preset="", pref="", city="", night_href="/hospital/
             f'<div class="hf-r"><span class="hf-l">どの動物ですか？</span><div class="hf-c hf-w">{_btns("a", ANIMALS[:3] + [ANIMALS[5]], None)}<button type="button" class="hf-mo">その他</button>{_btns("a", ANIMALS[3:5] + ANIMALS[6:], None, True)}</div></div>'
             f'<div class="hf-r"><span class="hf-l">どんな病院をお探しですか？</span><div class="hf-need">{need}</div></div>'
             '<details class="hf-det" id="hfDet"><summary>詳しい条件で絞り込む<span id="hfDetN"></span></summary>'
+            f'<div class="hf-r"><span class="hf-l">症状・お悩みから探す</span><div class="hf-c">{_btns("y", [("y:" + n, n) for n, _ in SYMPTOMS])}</div></div>'
             f'<div class="hf-r"><span class="hf-l">診療科目</span><div class="hf-c">{_btns("d", d_items)}</div></div>'
             f'<div class="hf-r"><span class="hf-l">病院の種類</span><div class="hf-c">{_btns("k", KIND)}</div></div>'
             f'<div class="hf-r"><span class="hf-l">診療の日・時間</span><div class="hf-c">{_btns("w", WHEN)}</div></div>'
@@ -333,6 +339,7 @@ def write_js(ROOT, avail, pslug, counts=None):
     body = open(os.path.join(HERE, "hosp_find.js"), encoding="utf-8").read()
     body = (body.replace("__SLUG__", json.dumps(pslug, ensure_ascii=False))
                 .replace("__LABEL__", json.dumps(LABEL, ensure_ascii=False))
+                .replace("__SYM__", json.dumps({"y:" + n: ds for n, ds in SYMPTOMS}, ensure_ascii=False))
                 .replace("__NEAR__", json.dumps(near_prefs(), ensure_ascii=False, separators=(",", ":")))
                 .replace("__PICS__", json.dumps(_pics(ROOT), separators=(",", ":")))
                 .replace("__REG__", json.dumps([[g, [[pf, (counts or {}).get(pf, 0)] for pf in ps if (counts or {}).get(pf)]] for g, ps in REGIONS], ensure_ascii=False, separators=(",", ":"))))
