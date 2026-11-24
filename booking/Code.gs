@@ -232,6 +232,18 @@ function ensureSheet_(ss, name, headers) {
 /* ───────── 受付（LPフォーム / LINE） ───────── */
 
 function doPost(e) {
+  if ((e.parameter || {}).kind === 'pconf') {
+    JSON_PAGE = false;
+    try {
+      var q = e.parameter;
+      var repeated = Object.keys(e.parameters || {}).some(function(k) { return (e.parameters[k] || []).length !== 1; });
+      if (e.queryString || repeated) return page_('未送信', '<p>届いたリンクから内容と規約を確認し、もう一度送ってください。</p>');
+      return pconfPage_(q, true);
+    } catch (err) {
+      log_('提携の確認：受付エラー');
+      return page_('受付結果を確認できませんでした', '<p>再送する前に、お手数ですが運営者にご確認ください。</p>');
+    }
+  }
   var body = e && e.postData && e.postData.contents;
   if (body && body.charAt(0) === '{') {
     try { handleLine_(JSON.parse(body)); } catch (err) { log_('LINEエラー: ' + err); }
@@ -498,7 +510,10 @@ function sendWave_(id, stage) {
   var selected = pickedIds_(r);
   if (selected.length && stage !== 1) return '';
   var pool = selected.length ? selectionCandidates_(r).filter(function(pt) { return selected.indexOf(pt.id) >= 0; }) : pickPartners_(r, stage);
-  var targets = pool.filter(function (pt) { return already.indexOf(pt.id) < 0; });
+  var targets = pool.filter(function (pt) {
+    return already.indexOf(pt.id) < 0 && (pt.id !== KASUKABE_INTAKE_ID ||
+      selected.indexOf(pt.id) >= 0 && isAsk_(r) && kasukabeIntakeFits_(pt, r));
+  });
   // 第1段で誰もいなければ、すぐ第2段の相手にも送る
   if (!selected.length && stage === 1 && targets.length === 0) {
     stage = 2;
@@ -646,7 +661,7 @@ function pickPartners_(r, stage) {
   var areas = stage === 1 ? [pref] : (NEIGHBORS[pref] || []).concat(['全国']);
   var care = r['介助'] === '必要';
   return partners_().filter(function (pt) {
-    if (!pt.active || publicPaused_(pt.id)) return false;
+    if (!pt.active || publicPaused_(pt.id) || pt.id === KASUKABE_INTAKE_ID) return false; // 春日部は利用者が明示的に選んだ依頼だけ
     if ((CONFIG.SHOW_ALL_CANDIDATES && !isOpen_(pt.id)) || isDisplayOnly_(pt.id)) return false; // 全社準備中のあいだ（受け付けを始めた会社を除く）・表示だけの会社には送らない
     if (!fitsCar_(pt, r)) return false;
     if (!fitsCage_(pt, r)) return false;
@@ -2602,8 +2617,8 @@ function pconfAuto_(c) {
   return { name: c.name, site: c.url || '', read: '', auto: true, shop: c.shop || null, sections: [
     { h: '1. どこへ行けるか', items: [
       item('origin', 'お迎えの起点（お店・車庫のある市区町村か最寄り駅。番地は不要です）', 'need', 'text', { ph: '例：横浜市泉区（相鉄線 緑園都市駅）', note: c.pref ? '公式サイトの所在地：' + c.pref + (c.area_text ? '。対応エリア：' + c.area_text : '') : '' }),
-      item('radius', 'お迎えに行ける範囲', c.anywhere ? 'site' : 'need', 'radio', { o: ['起点から〇kmまで（下に書いてください）', '上限なし'], v: c.anywhere ? '上限なし' : undefined, more: '何kmまでか（例：30km）' }),
-      item('dest', '行き先の範囲', c.long ? 'chk' : 'need', 'radio', { o: ['お迎えの都道府県の中だけ', '距離に上限がある（下に書いてください）', '全国どこへでも'], v: c.long ? '全国どこへでも' : undefined, more: '上限があるときは何kmまでか' }),
+      item('radius', 'お迎えに行ける範囲', c.anywhere ? 'site' : 'need', 'radio', { o: ['起点から〇kmまで（下に書いてください）', '都道府県・市区町村を指定', '依頼ごとに判断', '上限なし'], v: c.anywhere ? '上限なし' : undefined, more: '距離・具体的な地域・判断条件（例：30km）' }),
+      item('dest', '行き先の範囲', c.long ? 'chk' : 'need', 'radio', { o: ['お迎えの都道府県の中だけ', '距離に上限がある（下に書いてください）', '都道府県・市区町村を指定', '依頼ごとに判断', '全国どこへでも'], v: c.long ? '全国どこへでも' : undefined, more: '距離・具体的な地域・判断条件（例：大阪府内と関西空港）' }),
       item('ng_area', '行けない地域', 'need', 'check', { o: ['沖縄県', '離島'], v: c.ng_prefs && c.ng_prefs.indexOf('沖縄') >= 0 ? ['沖縄県'] : [], more: 'ほかに行けない都道府県があれば' }),
       item('ng_short', '受けない依頼', 'need', 'check', { o: ['乗る距離が、お迎えに向かう距離より短い依頼', 'お迎えも行き先も、お店の地域の外の依頼'], v: (c.ride_ge_pick ? ['乗る距離が、お迎えに向かう距離より短い依頼'] : []).concat(c.need_prefs ? ['お迎えも行き先も、お店の地域の外の依頼'] : []) })
     ]},
@@ -2635,13 +2650,13 @@ function pconfAuto_(c) {
       item('ride', '乗る距離の料金', S(pconfRide_(F)), 'text', { v: pconfRide_(F), ph: '例：5kmまで3,000円、その先1kmごとに200円' }),
       item('pick', 'お迎えに向かう距離の料金', S(pickT), 'radio', { o: ['かからない', '距離で（〇kmまで無料・定額、その先1kmごと）', '〇km以上なら、距離のぜんぶ×単価', 'そのほか（下に書いてください）'], v: pickT || undefined,
         more: '金額（例：5kmまで無料、その先1kmごとに100円）', mv: F ? pconfPickText_(F.pick) : '' }),
-      item('pick2', '往復のときのお迎えの料金', 'need', 'radio', { o: ['行きの1回だけ', '行きと帰りで2回'], v: F && F.pickOnce ? '行きの1回だけ' : F && F.pickEachLeg ? '行きと帰りで2回' : undefined }),
+      item('pick2', '往復のときのお迎えの料金', 'need', 'radio', { o: ['行きの1回だけ', '行きと帰りで2回', '往復は受けない'], v: F && F.pickOnce ? '行きの1回だけ' : F && F.pickEachLeg ? '行きと帰りで2回' : undefined }),
       item('back', '送ったあと戻る分の料金', F && F.back ? 'site' : 'need', 'radio', { o: ['かからない', '距離で（〇kmまで無料・定額、その先1kmごと）', '往復のときだけかかる', 'そのほか（下に書いてください）'], v: backT === 'かからない' || (F && F.back && !backT) ? 'かからない' : backT || undefined,
         more: '金額', mv: F ? pconfPickText_(F.back) : '' }),
       item('wait', '待ち時間の料金', F && F.wait ? 'site' : 'need', 'text', { v: F && F.wait ? (F.wait.free ? F.wait.free + '分まで無料、' : '') + 'その先' + (F.wait.unit || 10) + '分ごとに' + yen_(F.wait.yen) : '', ph: '例：10分まで無料、その先10分ごとに200円' }),
       item('night', '夜間・早朝の割増', F && F.night ? 'site' : 'need', 'text', { v: nightT, ph: '例：22時〜5時は2割増し／なし' }),
       item('night_how', '夜間・早朝の割増のかかり方', F && F.night && F.night.by ? 'chk' : 'need', 'radio', { o: ['乗る時刻がその時間帯のとき', 'その時間帯に走った分だけ', '少しでもかかれば、ぜんぶ'], v: F && F.night ? (F.night.by === 'start' ? '乗る時刻がその時間帯のとき' : F.night.by === 'driven' ? 'その時間帯に走った分だけ' : undefined) : undefined }),
-      item('toll', '高速料金（実費）をいただく区間', 'need', 'check', { o: ['乗せている区間', 'お迎えに向かう分', '戻る分', '料金に含んでいる'] }),
+      item('toll', '高速料金（実費）をいただく区間', 'need', 'check', { o: ['乗せている区間', 'お迎えに向かう分', '戻る分', '料金に含んでいる', '有料道路は使わない', '個別見積もり'] }),
       item('long', '長い距離', c.long ? 'chk' : 'need', 'radio', { o: ['同じ料金表で計算', '〇kmを超えるとお見積もり（下に書いてください）'], v: c.long ? '同じ料金表で計算' : undefined, more: '何kmを超えるとお見積もりか' }),
       item('other', 'そのほかの料金（頭数・体重・同乗の追加、立て替え手数料、地域の加算、フェリー代など）', 'need', 'text', { ph: '例：2頭目から1,000円、立替手数料 5%、なし' }),
       item('cancel', 'キャンセル料・お支払い', S(c.pay), 'text', { v: c.pay ? 'お支払い：' + c.pay : '', ph: '例：前日まで無料、当日50%。現金・カード' })
@@ -2682,12 +2697,44 @@ function pconfFind_(site) {
 }
 function pconfUrl_(id) { return linkBase_() + '?a=pconf&t=' + encodeURIComponent(demoToken_(id)); }
 var PCONF_TAG = { site: ['サイトより', '#2e8b57'], chk: ['ご確認ください', '#b7791f'], need: ['入力してください', '#c0392b'] };
-function pconfItem_(it, q) {
+function pconfValidate_(c, q) {
+  var issues = {}, need = ['origin','radius','dest','hours','animals','maxkg','riders','petonly','tax','ride','pick','pick2','back','wait','night','toll','long','plate','car'];
+  var noNight = /^(なし|無し|かからない|割増なし|夜間・早朝は受けない)$/;
+  function read(k) { return String(q['f_' + k] || '').trim(); }
+  function nonempty(v) { return !!v && !/^(?:未定|不明|あとで|未回答|[-ー?？]+)$/.test(v); }
+  function range(v) { return /^(?:[0-9]+(?:\.[0-9]+)?)\s*(?:km|キロ)?(?:まで)?$/i.test(v.normalize('NFKC')) && parseFloat(v.normalize('NFKC')) > 0; }
+  c.sections.forEach(function(s) { s.items.forEach(function(it) {
+    var k = it.k, v = read(k), detail = read(k + '_more'), mandatory = need.indexOf(k) >= 0;
+    if (it.type === 'check') {
+      var bits = it.o.map(function(o, i) { var raw = q['f_' + k + '_' + i]; return raw == null ? '' : String(raw); });
+      if (bits.some(function(x) { return x !== '' && x !== '1'; })) issues[k] = '選択肢から選んでください。';
+      var selected = it.o.filter(function(o, i) { return bits[i] === '1'; });
+      if (mandatory && !selected.length) issues[k] = '該当する項目を選んでください。';
+      if (k === 'toll' && selected.length > 1 && selected.some(function(x) { return /含んでいる|使わない|個別見積もり/.test(x); })) issues[k] = '実費の区間を選ぶか、下の選択肢のどれか1つを選んでください。';
+      return;
+    }
+    if (it.type === 'radio' && v && it.o.indexOf(v) < 0) issues[k] = '選択肢から選んでください。';
+    else if (mandatory && !nonempty(v)) issues[k] = 'この項目を入力するか、該当する選択肢を選んでください。';
+    if (k === 'wait' && v && !/^(なし|無し|かからない|無料|待機は受けない|待機なし|個別見積もり)$/.test(v) && !( /[0-9]\s*分/.test(v.normalize('NFKC')) && /[0-9]\s*円/.test(v.normalize('NFKC')) )) issues[k] = '無料・待機は受けない・個別見積もり、または時間と金額を入力してください。';
+    if (k === 'night' && v && !noNight.test(v) && v !== '個別見積もり' && !( /[0-9](?:\s*時|:)/.test(v.normalize('NFKC')) && /[0-9]\s*(?:円|%|割)/.test(v.normalize('NFKC')) )) issues[k] = '割増なし・夜間は受けない・個別見積もり、または時間帯と金額を入力してください。';
+    if (k === 'night_how' && nonempty(read('night')) && !noNight.test(read('night')) && read('night') !== '個別見積もり' && !v) issues[k] = '割増がかかる条件を選んでください。';
+    if (/^(radius|dest)$/.test(k) && /地域|市区町村|依頼ごと/.test(v) && (!nonempty(detail) || /^(相談|応相談|要相談|その都度|個別判断|依頼ごとに判断|案件による)$/.test(detail))) issues[k] = '対象の地域名か、受付の判断に使う条件を具体的に入力してください。';
+    if (/^(radius|dest|long)$/.test(k) && /下に書いて/.test(v) && !range(detail)) issues[k] = '距離を0より大きい数字で入力してください（例：30km）。';
+    if (/^(pick|back)$/.test(k) && v && v !== 'かからない' && !nonempty(detail)) issues[k] = '料金の金額と適用条件を入力してください。';
+    if (k === 'maxkg' && v && !/^(?:上限なし|体重の上限なし|個別に判断(?:[：:]\s*.+)?|(?:[0-9]+(?:\.[0-9]+)?)\s*kg(?:まで)?|(?:[0-9]+(?:\.[0-9]+)?)\s*キロ(?:まで)?)$/i.test(v.normalize('NFKC'))) issues[k] = '例：50kgまで、上限なし、個別に判断：車の寸法で確認。';
+    if (k === 'maxkg' && /^0(?:\.0+)?\s*(?:kg|キロ)/i.test(v.normalize('NFKC'))) issues[k] = '上限は0より大きい数を入力してください。';
+    if (k === 'plate' && v === '白ナンバー') issues[k] = '白ナンバーの車ではお申し込みを受けられません。';
+    if (k === 'license' && /^緑ナンバー/.test(read('plate')) && !nonempty(v)) issues[k] = '旅客の許可番号を入力してください。';
+  }); });
+  return issues;
+}
+function pconfItem_(it, q, error) {
   var t = PCONF_TAG[it.tag] || PCONF_TAG.need, nm = 'f_' + it.k, html = '<div class="pt"><b>' + esc_(it.l) + '</b> <span style="font-size:.75rem;font-weight:700;color:' + t[1] + ';border:1px solid ' + t[1] + ';border-radius:999px;padding:0 8px;white-space:nowrap">' + t[0] + '</span>';
   if (it.note) html += '<div class="note">' + esc_(it.note) + '</div>';
+  if (error) html += '<p role="alert" style="color:#c0392b;font-weight:700">' + esc_(error) + '</p>';
   if (it.type === 'text') html += '<input name="' + nm + '" maxlength="400" value="' + esc_(q[nm] != null ? q[nm] : it.v || '') + '" placeholder="' + esc_(it.ph || '') + '">';
   if (it.type === 'radio') it.o.forEach(function(o) {
-    var on = q[nm] != null ? q[nm] === o : it.v === o;
+    var on = q.go === '1' ? q[nm] === o : it.v === o;
     html += '<label style="font-weight:400;margin:6px 0"><input type="radio" name="' + nm + '" value="' + esc_(o) + '"' + (on ? ' checked' : '') + '>' + esc_(o) + '</label>';
   });
   if (it.type === 'check') it.o.forEach(function(o, i) {
@@ -2712,27 +2759,62 @@ function pconfAnswers_(c, q) {
   }); });
   return { obj: out, text: lines.join('\n') };
 }
-function pconfPage_(q) {
+function pconfTermsUrl_() { return CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/terms/'; }
+function pconfTermsReady_() {
+  return !!(PTERMS_VER && PTERMS_VER.revised && /^[a-f0-9]{12}$/.test(PTERMS_VER.hash || ''));
+}
+function pconfSiteValue_(value) {
+  var raw = String(value || '').trim(), site = raw;
+  if (!raw) return '';
+  if (raw.length > 200) return null;
+  if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(site)) site = 'https://' + site;
+  var label = '[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?';
+  if (site.length > 200 || !new RegExp('^https?://(?:' + label + '\\.)+' + label + '(?::[0-9]{1,5})?(?:[/?#][^\\s<>"\x27]*)?$', 'i').test(site)) return null;
+  return site;
+}
+function pconfTermsProof_(q, id) {
+  var subject = q['new'] === '1' ?
+    ['new', id, String(q.co || '').trim().slice(0, 80), String(q.email || '').trim().slice(0, 120), String(q.site || '').trim().slice(0, 200)] :
+    ['invite', id, String(q.t || '')];
+  return sign_('pconf-terms:' + JSON.stringify([PTERMS_VER.revised, PTERMS_VER.hash, pconfTermsUrl_(), subject]));
+}
+function pconfPage_(q, fromPost) {
   var isNew = q['new'] === '1', id = isNew ? '' : demoId_(q.t), c = null;
   if (isNew && q.step !== '2' && q.go !== '1') return pconfStart_(q);
-  if (isNew) { id = pconfFind_(q.site); c = id ? pconfOf_(id) : pconfAuto_({ name: String(q.co || '').trim().slice(0, 80) }); }
+  var siteValue = isNew ? pconfSiteValue_(q.site) : '';
+  if (isNew && q.go !== '1' && siteValue === null) return pconfStart_(q, 'ホームページは有効なURLかドメインを入力してください。');
+  if (isNew && siteValue !== null) q.site = siteValue;
+  if (isNew) { id = siteValue && pconfFind_(siteValue); c = id ? pconfOf_(id) : pconfAuto_({ name: String(q.co || '').trim().slice(0, 80) }); }
   else c = id && pconfOf_(id);
   if (!c) return page_('リンクが正しくありません', '<p>お手数ですが、届いたメールのリンクからもう一度開いてください。</p>');
   var coName = isNew ? String(q.co || '').trim().slice(0, 80) : c.name, email = String(q.email || '').trim().slice(0, 120);
+  if (!pconfTermsReady_()) return page_('現在、送信できません', '<p>提携規約を表示できません。時間をおいてリンクを開き直してください。</p>');
+  var termsError = '', fieldErrors = {};
   if (q.go === '1') {
     var name = String(q.name || '').trim().slice(0, 60);
+    if (!fromPost) termsError = 'このままでは送信できません。提携規約を読み、同意してから送ってください。';
+    else if (q.terms_version !== PTERMS_VER.hash || q.terms_proof !== pconfTermsProof_(q, id)) termsError = '提携規約の版または入力内容を確認できませんでした。下の規約を開き直し、同意する場合はチェックしてください。';
+    else if (q.terms_accept !== '1') termsError = '送信するには、提携規約を読み、同意する場合はチェックしてください。';
+    if (fromPost) fieldErrors = pconfValidate_(c, q);
     if (!name || (isNew && (!coName || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)))) q.err = 1;
-    else {
+    if (fromPost && c.auto && q.details_reviewed !== '1') fieldErrors.details_reviewed = '事前に入っている項目も含め、入力内容を確認してからチェックしてください。';
+    if (isNew && siteValue === null) fieldErrors.site = 'ホームページは有効なURLかドメインを入力してください。';
+    if (!q.err && !termsError && !Object.keys(fieldErrors).length) {
       var a = pconfAnswers_(c, q);
       var ex = (c.examples || []).map(function(e, i) { var v = String(q['ex' + i] || ''), fix = String(q['ex' + i + '_fix'] || '').trim().slice(0, 200);
         return '・' + e.l + '：' + e.yen + ' → ' + (v || '（未回答）') + (fix ? '（' + fix + '）' : ''); }).join('\n');
       var memo = String(q.memo || '').trim().slice(0, 2000);
       var head = isNew ? '・メール：' + email + '\n・ホームページ：' + String(q.site || '').trim().slice(0, 200) + (id ? '\n・当サイトの公式サイトの情報：あり（' + id + '）' : '') + '\n' : '';
+      var submittedAt = new Date();
+      var terms = { accepted:true, at:submittedAt.toISOString(), version:PTERMS_VER.hash,
+        revised:PTERMS_VER.revised, url:pconfTermsUrl_(), surface:'pconf-application' };
+      var answerJson = JSON.stringify({ terms:terms, a:a.obj, memo:memo, email:isNew ? email : undefined, site:isNew ? String(q.site || '').trim().slice(0, 200) : undefined });
+      if (answerJson.length > 45000) return page_('入力が長すぎます', '<p>前の画面に戻って、入力を短くしてからもう一度送ってください。</p>');
       var lock = LockService.getScriptLock();
       lock.waitLock(20000);
       try {
         var sh = ensureSheet_(SpreadsheetApp.getActive(), SHEET_PCONF, PCONF_HEADERS);
-        sh.appendRow([new Date(), id || '（新規）', coName, name, head + a.text + (memo ? '\n・ほかに伝えたいこと：' + memo : ''), ex, JSON.stringify({ a: a.obj, memo: memo, email: isNew ? email : undefined, site: isNew ? String(q.site || '') : undefined }).slice(0, 45000)]);
+        sh.appendRow([submittedAt, id || '（新規）', coName, name, head + a.text + (memo ? '\n・ほかに伝えたいこと：' + memo : ''), ex, answerJson]);
         sh.getRange(sh.getLastRow(), 1).setNumberFormat('yyyy/MM/dd HH:mm:ss');
       } finally { lock.releaseLock(); }
       log_('提携の確認：' + (id || '新規') + ' ' + coName + ' ' + name);
@@ -2745,8 +2827,12 @@ function pconfPage_(q) {
     ? '<p>公式サイト（<a href="' + esc_(c.site) + '" target="_blank">' + esc_(c.site.replace(/^https?:\/\//, '').replace(/\/$/, '')) + '</a>' + (c.read ? '、' + esc_(c.read) + '時点' : '') + '）の内容を、先に入れておきました。まちがいがあれば直して、「入力してください」のところだけ埋めてください。' + ((c.examples || []).length ? '最後に、この内容で計算した料金の例を確かめてください。' : '') + '</p>'
     : '<p>ご依頼をお送りする条件と、料金の計算に使う内容をうかがいます。選ぶところがほとんどです。</p>') +
     (q.err ? '<p style="color:#c0392b;font-weight:700">' + (isNew ? '会社名・メールアドレス・' : '') + 'ご担当のお名前を入れてください。</p>' : '') +
-    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) + hidden_('site', q.site || '') : hidden_('t', q.t)) + hidden_('go', '1');
-  c.sections.forEach(function(s) { html += '<h2>' + esc_(s.h) + '</h2>' + s.items.map(function(it) { return pconfItem_(it, q); }).join(''); });
+    (termsError ? '<p role="alert" style="color:#c0392b;font-weight:700">' + esc_(termsError) + '</p>' : '') +
+        (Object.keys(fieldErrors).some(function(k) { return k !== 'site' && k !== 'details_reviewed'; }) ? '<p role="alert">入力を確認してください。各項目に修正箇所を表示しています。</p>' : '') +
+    '<form method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('kind', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) : hidden_('t', q.t)) + hidden_('go', '1') +
+    (isNew ? '<label>ホームページのURL（あれば）<input name="site" maxlength="200" value="' + esc_(q.site || '') + '" placeholder="example.jp"></label>' +
+      (fieldErrors.site ? '<p role="alert">' + esc_(fieldErrors.site) + '</p>' : '') : '');
+  c.sections.forEach(function(s) { html += '<h2>' + esc_(s.h) + '</h2>' + s.items.map(function(it) { return pconfItem_(it, q, fieldErrors[it.k]); }).join(''); });
   if ((c.examples || []).length) html += '<h2>6. 料金の例</h2><p class="note">上の内容で計算しました。高速料金は含みません。</p>' + c.examples.map(function(e, i) {
     return '<div class="pt"><b>' + esc_(e.l) + '</b><div style="font-size:1.1rem;font-weight:800;margin:4px 0">' + esc_(e.yen) + '</div><div class="note">' + esc_(e.d) + '</div>' +
       ['合っている', 'ちがう'].map(function(o) { return '<label style="font-weight:400;margin:6px 0;display:inline-block;margin-right:16px"><input type="radio" name="ex' + i + '" value="' + o + '"' + (q['ex' + i] === o ? ' checked' : '') + '>' + o + '</label>'; }).join('') +
@@ -2754,13 +2840,21 @@ function pconfPage_(q) {
   }).join('');
   html += '<label>ほかに伝えたいこと（あれば）<textarea name="memo" maxlength="2000">' + esc_(q.memo || '') + '</textarea></label>' +
     '<label>ご担当のお名前（必須）<input name="name" required maxlength="60" value="' + esc_(q.name || '') + '"></label>' +
+    (c.auto ? (fieldErrors.details_reviewed ? '<p role="alert">' + esc_(fieldErrors.details_reviewed) + '</p>' : '') +
+      '<label><input type="checkbox" name="details_reviewed" value="1" required> 入力内容（事前に入っている項目を含む）に間違いがないか確認しました。</label>' : '') +
+    '<fieldset><legend>提携規約への同意（必須）</legend>' +
+    '<p><a href="' + esc_(pconfTermsUrl_()) + '" target="_blank" rel="noopener noreferrer">提携規約を読む（' + esc_(PTERMS_VER.revised) + '改定・版 ' + esc_(PTERMS_VER.hash) + '）</a></p>' +
+    hidden_('terms_version', PTERMS_VER.hash) + hidden_('terms_proof', pconfTermsProof_(q, id)) +
+    '<label><input type="checkbox" name="terms_accept" value="1" required> 提携規約を読み、その内容に同意してこの内容を送ります。</label>' +
+    '<p class="note">同意した日時・ご担当のお名前・規約の版を記録します。これは本フォームの送信に必要な同意で、提携成立の手続きは別途ご案内します。</p></fieldset>' +
     '<button type="submit">この内容で送る</button></form><p class="note">送っただけでは、まだご依頼は届きません。内容を確かめてから、あらためてメールでご連絡します。</p>';
   return page_(isNew && !id ? '提携のお申し込み' : '公式サイトの内容のご確認', html);
 }
 // 新しい申し込みの最初の画面：会社名・メール・ホームページだけ
-function pconfStart_(q) {
+function pconfStart_(q, websiteError) {
   var html = '<p>まず、会社名・ご連絡先・ホームページを教えてください。当サイトで公式サイトの料金や条件を集めている会社さまは、次の画面にその内容を先に入れてお出しします。</p>' +
-    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pconf') + hidden_('new', '1') + hidden_('step', '2') +
+    (websiteError ? '<p role="alert">' + esc_(websiteError) + '</p>' : '') +
+    '<form method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('kind', 'pconf') + hidden_('new', '1') + hidden_('step', '2') +
     '<label>会社名・屋号（必須）<input name="co" required maxlength="80" value="' + esc_(q.co || '') + '"></label>' +
     '<label>お問い合わせを受け取るメールアドレス（必須）<input name="email" type="email" required maxlength="120" value="' + esc_(q.email || '') + '"></label>' +
     '<label>ホームページのURL（あれば）<input name="site" maxlength="200" placeholder="https://" value="' + esc_(q.site || '') + '"></label>' +
@@ -3408,6 +3502,8 @@ var QUOTE_FIELDS = ['leg', 'pref', 'pickup', 'via', 'dropoff', 'datetime', 'trip
 function selectionRide_(p) {
   return {
     '都府県': shortPref_(p.pref), '希望日時': parseJst_(p.datetime), '片道・往復': String(p.trip || ''),
+    'お迎えの場所': String(p.pickup || ''), '種類': String(p.species || ''), '日付のみ': p.date ? '○' : '',
+    '待ち時間（分）': String(p.wait_time || ''), '区間': p.leg || '',
     '体重kg': Number(p.weight), '同乗人数': String(p.riders || ''), 'ペット数': Number(p.pet_count),
     'キャリー': String(p.cage || ''), '介助': String(p.care || ''), '荷物': String(p.luggage || ''),
     'ペットJSON': String(p.pets_json || ''), '帰りの日時': p.trip === '往復' ? parseJst_(p.return_datetime) : '',
@@ -3439,10 +3535,41 @@ function selectionValid_(p) {
   return '';
 }
 
+// 春日部の試行：未設定の本番では閉じたまま。固定の会社ID・照合済みメール、明示的に選ばれた市内片道だけ。
+var KASUKABE_INTAKE_ID = 'P014', KASUKABE_DISPLAY_ID = 'D853ae97';
+function kasukabeIntakeMailbox_() {
+  try {
+    var ps = PropertiesService.getScriptProperties();
+    if (ps.getProperty('KASUKABE_INTAKE_ENABLED') !== '1') return '';
+    var email = String(ps.getProperty('KASUKABE_INTAKE_VERIFIED_EMAIL') || '').trim().toLowerCase();
+    return /^[^@\s]+@pet-taxi-kasukabe\.com$/.test(email) ? email : '';
+  } catch (e) { return ''; }
+}
+function kasukabeCityAddress_(s) {
+  var a = String(s || '').normalize('NFKC').replace(/\s/g, '').replace(/^(?:日本[、,]?)?(?:〒?\d{3}-\d{4}[、,]?)?/, '');
+  return /^(?:埼玉県)?春日部市[一-龠ぁ-んァ-ヶ0-9]/.test(a);
+}
+function kasukabeIntakeFits_(pt, r) {
+  var email = kasukabeIntakeMailbox_();
+  if (!email || pt.id !== KASUKABE_INTAKE_ID || !pt.active || pt.lineId || pt.oaId || pt.lineUrl ||
+      String(pt.email || '').trim().toLowerCase() !== email) return false;
+  if (r['都府県'] !== '埼玉' || r['片道・往復'] !== '片道' || r['区間'] || r['日付のみ'] ||
+      r['経由地'] || !/^(?:|0)$/.test(String(r['待ち時間（分）'] || '').trim()) ||
+      !kasukabeCityAddress_(r['お迎えの場所']) || !kasukabeCityAddress_(r['行き先'])) return false;
+  var dt = r['希望日時'], jstHour = dt instanceof Date && isFinite(dt.getTime()) ? (dt.getUTCHours() + 9) % 24 : -1;
+  if (jstHour < 9 || jstHour >= 18 || r['種類'] !== '犬' || r['介助'] !== '不要' || +r['ペット数'] !== 1 ||
+      !/^[12]人$/.test(String(r['同乗人数'] || '')) || !/^(?:|手荷物くらい)$/.test(String(r['荷物'] || '')) ||
+      !/^(?:持ち込む|なし|どれでも)$/.test(String(r['キャリー'] || ''))) return false;
+  var pets;
+  try { pets = petsOf_(r); } catch (e) { return false; }
+  return pets.length === 1 && pets[0].sp === '犬' && pets[0].vac && pets[0].rabies && pets[0].kg > 0 &&
+    pets[0].kg <= 10 && pets[0].kg === Number(r['体重kg']) && !pets[0].need.length && pets[0].care === '不要';
+}
 function selectionCandidates_(r) {
   // 同じ都県、または全国対応の会社。近隣都県だけの会社には依頼しない。
   return partners_().filter(function(pt) {
-    return !publicPaused_(pt.id) && pt.active && reachable_(pt) && (pt.areas.indexOf(r['都府県']) >= 0 || pt.areas.indexOf('全国') >= 0) &&
+    return !publicPaused_(pt.id) && pt.active && reachable_(pt) &&
+      (pt.id !== KASUKABE_INTAKE_ID || kasukabeIntakeFits_(pt, r)) && (pt.areas.indexOf(r['都府県']) >= 0 || pt.areas.indexOf('全国') >= 0) &&
       fitsCar_(pt, r) && fitsCage_(pt, r) && inTime_(pt, r) && (r['介助'] !== '必要' || pt.careOk) && !checks_(pt, r).ng.length && openNear_(pt, r);
   });
 }
@@ -3452,6 +3579,8 @@ function quoteSignature_(p, id, expires, price) {
 }
 
 function selectionPrice_(pt, p) {
+  if (pt.id === KASUKABE_INTAKE_ID) return kasukabeIntakeFits_(pt, selectionRide_(p)) ?
+    {amount:null,text:'料金は未確定です。会社が空き状況と確定料金をお返事します',night:''} : null;
   var od = openDisplay_(pt.id);
   if (od) { // 受け付けを始めた会社は、表示だけの会社と同じ公式サイトの料金表で計算する（お店からの道のりも同じく調べる）
     var rd = {}; try { rd = JSON.parse(p.route_details || '{}') || {}; } catch (e) {}
@@ -3654,9 +3783,17 @@ function displayInTime_(c, at, now) {
 /* ───────── 提携していない会社は名前を出さない・お誘いした会社だけの見本画面（Nori 2026-11-02「AとC」） ───────── */
 
 // 名前・口コミ・お店の正確な場所を出さない会社か。問い合わせできない会社（表示だけ・全社準備中のあいだの提携先）はすべて。見本の会社だけ例外
-function isOpen_(id) { return !!(CONFIG.OPEN_PARTNERS || {})[id]; }
-function openDisplay_(id) { var d = (CONFIG.OPEN_PARTNERS || {})[id]; return d ? DISPLAY_COMPANIES.filter(function(c) { return c.id === d; })[0] || null : null; }
-function openDisplayIds_() { var o = CONFIG.OPEN_PARTNERS || {}; return Object.keys(o).map(function(k) { return o[k]; }); }
+function isOpen_(id) {
+  return id === KASUKABE_INTAKE_ID ? !!kasukabeIntakeMailbox_() : !!(CONFIG.OPEN_PARTNERS || {})[id];
+}
+function openDisplay_(id) {
+  var d = id === KASUKABE_INTAKE_ID ? (isOpen_(id) ? KASUKABE_DISPLAY_ID : '') : (CONFIG.OPEN_PARTNERS || {})[id];
+  return d ? DISPLAY_COMPANIES.filter(function(c) { return c.id === d; })[0] || null : null;
+}
+function openDisplayIds_() {
+  var o = CONFIG.OPEN_PARTNERS || {}, ids = Object.keys(o).map(function(k) { return o[k]; });
+  return isOpen_(KASUKABE_INTAKE_ID) ? ids.concat([KASUKABE_DISPLAY_ID]) : ids;
+}
 function isListed_(id) { return (CONFIG.LISTED_IDS || []).indexOf(id) >= 0; }
 function isAnon_(id, demoId) {
   if (demoId && id === demoId) return false;
