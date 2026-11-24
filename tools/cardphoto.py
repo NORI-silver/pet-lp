@@ -19,7 +19,7 @@ PAW = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 
 
 CSS = ('<style id="cp-css">'
        '.cs-ph{position:relative;background:#f6efe8;overflow:hidden}'
-       '.cs-ph0{aspect-ratio:4/1;background:#f8f3ee url("' + PAW + '") center/38px no-repeat}'
+       '.cs-ph0{aspect-ratio:4/3;background:#f8f3ee url("' + PAW + '") center/38px no-repeat}'
        '.cs-ph-s{display:flex;aspect-ratio:4/3;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}'
        '.cs-ph-s::-webkit-scrollbar{display:none}'
        '.cs-ph-i{flex:0 0 100%;position:relative;overflow:hidden;scroll-snap-align:start;background:#efe6dc}'
