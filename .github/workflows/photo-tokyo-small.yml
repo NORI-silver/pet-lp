@@ -3,7 +3,7 @@ name: photo-tokyo-small
 on:
   push:
     branches: ['instinct/photos-tokyo-small']
-    paths: ['tools/curated_tokyo_small.json', 'tools/fetch_curated.py', '.github/workflows/photo-tokyo-small.yml']
+    paths: ['tools/curated_tokyo_small.json', 'tools/fetch_curated.py', '.github/workflows/photo-tokyo-small.yml', 'tools/cardphoto.py', 'tools/hosp_find.js', 'tools/hosp_find.py']
 permissions:
   contents: write
 concurrency:
