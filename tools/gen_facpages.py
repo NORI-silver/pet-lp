@@ -169,6 +169,16 @@ def render_hosp(ctx, x):
     # [B] 11/14 Nori「ユーザが何を求めていて、それにたいするアンサーがあるのか」：「病院名 料金」の検索が多いので、
     # 公式サイトの夜間の料金が短く書けるときは題名と説明文に入れる（数字は公式サイトのまま）。
     fee = fact(x, "夜間の料金").rstrip("。") if fact(x, "夜間の料金") else ""
+    if fee and len(fee) > 22:
+        # [B] SEO 11/24：「病院名」で4〜5位なのに押されにくい（大阪夜間ペットクリニック 表示163・1クリック）。
+        # 料金の文が長い病院も、最初の金額（診察料など）だけを題名に出す。説明文と本文は今までどおり全文。
+        # 「＋時間外加算・割増」のように診察料そのものが変わる病院は短くしない。
+        s1 = re.sub(r"（[^）]*(記載なし|目安|最低)[^）]*）", "", fee).split("。")[0]
+        head, _, rest = s1.partition("＋")
+        head = head.strip()
+        ok = (len(head) <= 22 and re.match(r"(夜間|診察|初診|診療|救急|直接)", head) and re.search(r"\d円", head)
+              and "、" not in head and not re.search(r"加算|割増", rest))
+        fee = head if ok else fee
     if fee and len(fee) <= 22 and re.search(r"\d", fee):
         t2 = f"{nm}（{x.get('city', '')}）｜{fee if fee.startswith('夜間') else '夜間の' + fee}・{'・'.join(w for w in tparts if w != '料金')}｜ペットタクシー予約窓口"
         if len(t2) <= 68: title = t2
