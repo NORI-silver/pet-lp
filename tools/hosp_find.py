@@ -336,15 +336,16 @@ REGIONS = [("北海道・東北", ["北海道", "青森県", "岩手県", "宮�
 
 def write_js(ROOT, avail, pslug, counts=None):
     import prefkeep
+    tight = dict(ensure_ascii=False, separators=(",", ":"))
     body = open(os.path.join(HERE, "hosp_find.js"), encoding="utf-8").read()
-    body = (body.replace("__SLUG__", json.dumps(pslug, ensure_ascii=False))
-                .replace("__LABEL__", json.dumps(LABEL, ensure_ascii=False))
-                .replace("__SYM__", json.dumps({"y:" + n: ds for n, ds in SYMPTOMS}, ensure_ascii=False))
+    body = (body.replace("__SLUG__", json.dumps(pslug, **tight))
+                .replace("__LABEL__", json.dumps(LABEL, **tight))
+                .replace("__SYM__", json.dumps({"y:" + n: ds for n, ds in SYMPTOMS}, **tight))
                 .replace("__NEAR__", json.dumps(near_prefs(), ensure_ascii=False, separators=(",", ":")))
                 .replace("__PICS__", json.dumps(_pics(ROOT), separators=(",", ":")))
                 .replace("__REG__", json.dumps([[g, [[pf, (counts or {}).get(pf, 0)] for pf in ps if (counts or {}).get(pf)]] for g, ps in REGIONS], ensure_ascii=False, separators=(",", ":"))))
     # 行だけのコメントと行頭の空白を落として軽くする（/hosp.js は 24KB まで）
-    body = "\n".join(l.strip() for l in body.split("\n") if l.strip() and not l.strip().startswith("//"))
-    js = "// 生成ファイル（tools/hosp_find.py）。手で直さない\n(function(){" + prefkeep.FN + prefkeep.GUESS + body + "\n})();\n"
+    code = "\n".join(l.strip() for l in (prefkeep.FN + prefkeep.GUESS + body).split("\n") if l.strip() and not l.strip().startswith("//"))
+    js = "// 生成ファイル（tools/hosp_find.py）。手で直さない\n(function(){\n" + code + "\n})();\n"
     open(os.path.join(ROOT, "hosp.js"), "w", encoding="utf-8").write(js)
     return len(js.encode())
