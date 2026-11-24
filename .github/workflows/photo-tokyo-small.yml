@@ -3,7 +3,7 @@ name: photo-tokyo-small
 on:
   push:
     branches: ['instinct/photos-tokyo-small']
-    paths: ['tools/curated_tokyo_small.json']
+    paths: ['tools/curated_tokyo_small.json', 'tools/fetch_curated.py', '.github/workflows/photo-tokyo-small.yml']
 permissions:
   contents: write
 concurrency:
@@ -37,6 +37,13 @@ jobs:
             [ "$bad" = 0 ] || exit 1
           fi
           git commit -qm "main を取り込む（作ったページは次の工程で作りなおす）" || true
+      - name: アップロードで付いた連番を外す（img/fac/hospital の「N-」。ブラウザからの一括アップロードで付いた）
+        run: |
+          for f in img/fac/hospital/[0-9]*-G*.webp; do
+            [ -e "$f" ] || continue
+            b=$(basename "$f")
+            git mv -f "$f" "img/fac/hospital/${b#*-}"
+          done
       - run: python3 tools/fetch_curated.py tools/curated_tokyo_small.json
       - name: 被写体チェックで外した写真のファイルを消す（tools/photo_audit.json に理由）
         run: |
