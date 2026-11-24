@@ -79,3 +79,12 @@ LIST_JS = "<script>\n(function(){" + FN + GUESS + '  var sel = document.getEleme
 
 # /hospital/ のように選択欄のないページ：覚えている県をリンクに付けるだけ
 LINKS_JS = "<script>\n(function(){" + FN + "  prefLinks(prefGet());\n})();\n</script>"
+
+
+def _lite(s):
+    """行頭の空白と空行を落として軽くする（/hosp.js・/find.js は 24KB まで）。動きは変わらない。"""
+    return "\n".join(l.strip() for l in s.split("\n") if l.strip()) + "\n"
+
+
+FN = _lite(FN)
+GUESS = _lite(GUESS)
