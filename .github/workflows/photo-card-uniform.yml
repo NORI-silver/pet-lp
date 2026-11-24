@@ -1,0 +1,55 @@
+# カードの写真の枠をそろえる作業用（2回目）。この作業ブランチだけで動く。本番に入れる前に消す。
+name: photo-card-uniform
+on:
+  push:
+    branches: ['NORI-silver-patch-1']
+    paths: ['.github/workflows/photo-card-uniform.yml']
+permissions:
+  contents: write
+concurrency:
+  group: photo-card-uniform
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q pillow
+      - name: main の今の内容を取り込む（作ったページの衝突は作りなおしで解く。元ファイルの衝突は止める）
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch -q origin main
+          if ! git merge --no-commit --no-ff origin/main; then
+            bad=0
+            for f in $(git diff --name-only --diff-filter=U); do
+              case "$f" in
+                *.html|hospital/data/*.json|tools/lastmod.json|hosp.js) git checkout --theirs -- "$f" 2>/dev/null || git rm -q -- "$f"; git add -- "$f" ;;
+                *) echo "元ファイルの衝突: $f"; bad=1 ;;
+              esac
+            done
+            [ "$bad" = 0 ] || exit 1
+          fi
+          git commit -qm "main を取り込む" || true
+      - name: cp-css を持つページの写真の枠を今の部品で入れなおす（先に）
+        run: python3 tools/regen_cards.py
+      - run: python3 tools/gen_areas.py .
+      - name: もう1回 gen_areas だけやって同じか（SEO チェックと同じ確認）
+        run: |
+          git add -A
+          python3 tools/gen_areas.py .
+          rm -rf tools/__pycache__
+          git diff --stat --exit-code
+      - run: python3 tools/rules_check.py .
+      - run: wc -c hosp.js
+      - name: このブランチに入れる
+        run: |
+          git add -A
+          git commit -qm "カードの写真の枠をそろえて、余白を写真になじませる（作りなおし2）" || { echo "変更なし"; exit 0; }
+          git push origin HEAD:${GITHUB_REF_NAME}
