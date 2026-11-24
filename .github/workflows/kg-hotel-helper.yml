@@ -17,6 +17,7 @@ jobs:
           python-version: '3.12'
       - name: 神奈川のペットホテルの写真を入れる
         run: |
+          pip install pillow
           cp tools/16-kg_hotel_data.json tools/kg_hotel_data.json
           python3 tools/15-7-kg_hotel_apply.py
           ls img/fac/hotel | wc -l
