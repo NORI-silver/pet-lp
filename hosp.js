@@ -1,56 +1,54 @@
 // 生成ファイル（tools/hosp_find.py）。手で直さない
-(function(){
-var PREF_KEY = "petInfoPref";
+(function(){var PREF_KEY = "petInfoPref";
 function prefGet(){ try { return localStorage.getItem(PREF_KEY); } catch (x) { return null; } }
 function prefPut(v){ try { localStorage.setItem(PREF_KEY, v); } catch (x) {} }
 // 都道府県でしぼりこめるページへのリンクに、いまの県を付ける
 function prefLinks(v){
-  document.querySelectorAll("a[href]").forEach(function(a){
-    var h = a.getAttribute("href");
-    if (!/^\/(hospital|dogrun|jichitai|sougi|rojin-home|dog-trainer|pet-sitter|trimming|pet-hotel|emergency)\//.test(h)) return;
-    h = h.replace(/#pref=.*$/, "");
-    if (h.indexOf("#") >= 0) return;
-    a.setAttribute("href", v ? h + "#pref=" + encodeURIComponent(v) : h);
-  });
+document.querySelectorAll("a[href]").forEach(function(a){
+var h = a.getAttribute("href");
+if (!/^\/(hospital|dogrun|jichitai|sougi|rojin-home|dog-trainer|pet-sitter|trimming|pet-hotel|emergency)\//.test(h)) return;
+h = h.replace(/#pref=.*$/, "");
+if (h.indexOf("#") >= 0) return;
+a.setAttribute("href", v ? h + "#pref=" + encodeURIComponent(v) : h);
+});
 }
 function prefKeep(sel, apply){
-  var m = location.hash.match(/^#pref=(.+)$/), v = null;
-  if (m) { try { v = decodeURIComponent(m[1]); } catch (x) {} }
-  if (v === null) v = prefGet();
-  if (v !== null && [].some.call(sel.options, function(o){ return o.value === v; })) {
-    sel.value = v; apply(); prefPut(v);
-  }
-  prefLinks(sel.value);
-  sel.addEventListener("change", function(){
-    apply(); prefPut(sel.value); prefLinks(sel.value);
-    try { history.replaceState(null, "", location.pathname + location.search + (sel.value ? "#pref=" + encodeURIComponent(sel.value) : "")); } catch (x) {}
-  });
+var m = location.hash.match(/^#pref=(.+)$/), v = null;
+if (m) { try { v = decodeURIComponent(m[1]); } catch (x) {} }
+if (v === null) v = prefGet();
+if (v !== null && [].some.call(sel.options, function(o){ return o.value === v; })) {
+sel.value = v; apply(); prefPut(v);
 }
-
+prefLinks(sel.value);
+sel.addEventListener("change", function(){
+apply(); prefPut(sel.value); prefLinks(sel.value);
+try { history.replaceState(null, "", location.pathname + location.search + (sel.value ? "#pref=" + encodeURIComponent(sel.value) : "")); } catch (x) {}
+});
+}
 function prefGuess(sel, apply){
-  if (sel.value) return;
-  var NAMES = ["北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"], LL = [[43.06,141.35],[40.82,140.74],[39.70,141.15],[38.27,140.87],[39.72,140.10],[38.24,140.36],[37.75,140.47],[36.34,140.45],[36.57,139.88],[36.39,139.06],[35.86,139.65],[35.61,140.12],[35.69,139.69],[35.45,139.64],[37.90,139.02],[36.70,137.21],[36.59,136.63],[36.07,136.22],[35.66,138.57],[36.65,138.18],[35.39,136.72],[34.98,138.38],[35.18,136.91],[34.73,136.51],[35.00,135.87],[35.02,135.76],[34.69,135.52],[34.69,135.18],[34.69,135.83],[34.23,135.17],[35.50,134.24],[35.47,133.05],[34.66,133.93],[34.40,132.46],[34.19,131.47],[34.07,134.56],[34.34,134.04],[33.84,132.77],[33.56,133.53],[33.61,130.42],[33.25,130.30],[32.74,129.87],[32.79,130.74],[33.24,131.61],[31.91,131.42],[31.56,130.56],[26.21,127.68]];
-  function at(lat, lng){ var best = -1, bd = Infinity; LL.forEach(function(p, i){ var dy = lat - p[0], dx = (lng - p[1]) * Math.cos((lat + p[0]) * Math.PI / 360), d = dx * dx + dy * dy; if (d < bd) { bd = d; best = i; } }); return best >= 0 && bd < 4 ? NAMES[best] : ""; }
-  function use(v, how){
-    if (!v || sel.value || ![].some.call(sel.options, function(o){ return o.value === v; })) return;
-    sel.value = v; apply(); prefLinks(v);
-    var g = document.createElement("p"); g.className = "pref-guess"; g.style.cssText = "margin:6px 0 0;font-size:.82rem;color:#6b5a4e";
-    g.textContent = how + "から、" + v + "を選んでいます。ちがうときは、上で選び直してください（「すべての都道府県」で全国）。";
-    sel.parentNode.appendChild(g);
-    sel.addEventListener("change", function(){ g.remove(); }, {once: true});
-    try { window.gtag && gtag("event", "pref_guess", {pref: v, how: how.indexOf("いまいる") === 0 ? "geo" : "ip"}); } catch (x) {}
-  }
-  function byNet(){ fetch("https://get.geojs.io/v1/ip/geo.json").then(function(r){ return r.json(); }).then(function(d){ if (d && d.country_code === "JP") use(at(+d.latitude, +d.longitude), "通信の情報（おおよその地域）"); }).catch(function(){}); }
-  if (navigator.permissions && navigator.geolocation) navigator.permissions.query({name: "geolocation"}).then(function(st){
-    if (st.state !== "granted") return byNet();
-    navigator.geolocation.getCurrentPosition(function(p){ use(at(p.coords.latitude, p.coords.longitude), "いまいる場所"); }, byNet, {maximumAge: 600000, timeout: 5000});
-  }).catch(byNet); else byNet();
+if (sel.value) return;
+var NAMES = ["北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"], LL = [[43.06,141.35],[40.82,140.74],[39.70,141.15],[38.27,140.87],[39.72,140.10],[38.24,140.36],[37.75,140.47],[36.34,140.45],[36.57,139.88],[36.39,139.06],[35.86,139.65],[35.61,140.12],[35.69,139.69],[35.45,139.64],[37.90,139.02],[36.70,137.21],[36.59,136.63],[36.07,136.22],[35.66,138.57],[36.65,138.18],[35.39,136.72],[34.98,138.38],[35.18,136.91],[34.73,136.51],[35.00,135.87],[35.02,135.76],[34.69,135.52],[34.69,135.18],[34.69,135.83],[34.23,135.17],[35.50,134.24],[35.47,133.05],[34.66,133.93],[34.40,132.46],[34.19,131.47],[34.07,134.56],[34.34,134.04],[33.84,132.77],[33.56,133.53],[33.61,130.42],[33.25,130.30],[32.74,129.87],[32.79,130.74],[33.24,131.61],[31.91,131.42],[31.56,130.56],[26.21,127.68]];
+function at(lat, lng){ var best = -1, bd = Infinity; LL.forEach(function(p, i){ var dy = lat - p[0], dx = (lng - p[1]) * Math.cos((lat + p[0]) * Math.PI / 360), d = dx * dx + dy * dy; if (d < bd) { bd = d; best = i; } }); return best >= 0 && bd < 4 ? NAMES[best] : ""; }
+function use(v, how){
+if (!v || sel.value || ![].some.call(sel.options, function(o){ return o.value === v; })) return;
+sel.value = v; apply(); prefLinks(v);
+var g = document.createElement("p"); g.className = "pref-guess"; g.style.cssText = "margin:6px 0 0;font-size:.82rem;color:#6b5a4e";
+g.textContent = how + "から、" + v + "を選んでいます。ちがうときは、上で選び直してください（「すべての都道府県」で全国）。";
+sel.parentNode.appendChild(g);
+sel.addEventListener("change", function(){ g.remove(); }, {once: true});
+try { window.gtag && gtag("event", "pref_guess", {pref: v, how: how.indexOf("いまいる") === 0 ? "geo" : "ip"}); } catch (x) {}
+}
+function byNet(){ fetch("https://get.geojs.io/v1/ip/geo.json").then(function(r){ return r.json(); }).then(function(d){ if (d && d.country_code === "JP") use(at(+d.latitude, +d.longitude), "通信の情報（おおよその地域）"); }).catch(function(){}); }
+if (navigator.permissions && navigator.geolocation) navigator.permissions.query({name: "geolocation"}).then(function(st){
+if (st.state !== "granted") return byNet();
+navigator.geolocation.getCurrentPosition(function(p){ use(at(p.coords.latitude, p.coords.longitude), "いまいる場所"); }, byNet, {maximumAge: 600000, timeout: 5000});
+}).catch(byNet); else byNet();
 }
 var box = document.getElementById("hf");
 if (!box) return;
 var sel = document.getElementById("hospPref"), det = document.getElementById("hfDet"), detN = document.getElementById("hfDetN"),
 list = document.getElementById("hfList"), sum = document.getElementById("hfSum");
-var SLUG = {"北海道": "hokkaido", "青森県": "aomori", "岩手県": "iwate", "宮城県": "miyagi", "秋田県": "akita", "山形県": "yamagata", "福島県": "fukushima", "茨城県": "ibaraki", "栃木県": "tochigi", "群馬県": "gunma", "新潟県": "niigata", "富山県": "toyama", "石川県": "ishikawa", "福井県": "fukui", "山梨県": "yamanashi", "長野県": "nagano", "岐阜県": "gifu", "静岡県": "shizuoka", "愛知県": "aichi", "三重県": "mie", "滋賀県": "shiga", "京都府": "kyoto", "大阪府": "osaka", "兵庫県": "hyogo", "奈良県": "nara", "和歌山県": "wakayama", "鳥取県": "tottori", "島根県": "shimane", "岡山県": "okayama", "広島県": "hiroshima", "山口県": "yamaguchi", "徳島県": "tokushima", "香川県": "kagawa", "愛媛県": "ehime", "高知県": "kochi", "福岡県": "fukuoka", "佐賀県": "saga", "長崎県": "nagasaki", "熊本県": "kumamoto", "大分県": "oita", "宮崎県": "miyazaki", "鹿児島県": "kagoshima", "沖縄県": "okinawa", "東京都": "tokyo", "神奈川県": "kanagawa", "埼玉県": "saitama", "千葉県": "chiba"}, LABEL = {"dog": "犬", "cat": "猫", "rabbit": "うさぎ", "hamster": "ハムスター・モルモット", "ferret": "フェレット", "bird": "鳥", "reptile": "爬虫類", "fish": "魚", "open": "いま受付中", "night": "夜間・救急", "h24": "24時間", "late": "19時以降も", "early": "朝9時前から", "sat": "土曜も", "sun": "日曜も", "hol": "祝日も", "nohol": "年中無休", "nolunch": "昼休みなし", "visit": "家に来てくれる（往診）", "catspec": "猫専門", "exospec": "うさぎ・鳥などの専門", "large": "大型犬の設備", "catroom": "猫用の待合室", "noresv": "予約なしでも", "resv": "予約できる", "park": "駐車場", "card": "カード払い", "ins": "ペット保険が使える", "hotel": "ペットホテル", "trim": "トリミング", "school": "しつけ教室・パピークラス", "ct": "CT・MRI", "y:吐く・下痢": "吐く・下痢", "y:皮膚のかゆみ": "皮膚のかゆみ", "y:咳": "咳", "y:歩き方がおかしい": "歩き方がおかしい", "y:目・耳の異常": "目・耳の異常"}, REG = [["北海道・東北",[["北海道",391],["宮城県",48],["山形県",40],["福島県",1]]],["関東",[["茨城県",158],["栃木県",5],["群馬県",112],["埼玉県",20],["千葉県",54],["東京都",380],["神奈川県",196]]],["中部",[["新潟県",122],["富山県",40],["石川県",70],["福井県",33],["山梨県",64],["長野県",5],["岐阜県",118],["静岡県",165],["愛知県",11]]],["近畿",[["三重県",70],["滋賀県",60],["京都府",165],["大阪府",266],["兵庫県",9],["奈良県",84],["和歌山県",56]]],["中国・四国",[["島根県",18],["岡山県",111],["広島県",173],["山口県",88],["徳島県",45],["香川県",1],["愛媛県",62],["高知県",42]]],["九州・沖縄",[["福岡県",36],["佐賀県",32],["長崎県",54],["熊本県",42],["大分県",2],["宮崎県",6],["鹿児島県",3],["沖縄県",63]]]], SYM = {"y:吐く・下痢": ["消化器科"], "y:皮膚のかゆみ": ["皮膚科"], "y:咳": ["呼吸器科", "循環器科"], "y:歩き方がおかしい": ["整形外科", "神経科"], "y:目・耳の異常": ["眼科", "耳鼻科"]}, av = null;
+var SLUG = {"北海道":"hokkaido","青森県":"aomori","岩手県":"iwate","宮城県":"miyagi","秋田県":"akita","山形県":"yamagata","福島県":"fukushima","茨城県":"ibaraki","栃木県":"tochigi","群馬県":"gunma","新潟県":"niigata","富山県":"toyama","石川県":"ishikawa","福井県":"fukui","山梨県":"yamanashi","長野県":"nagano","岐阜県":"gifu","静岡県":"shizuoka","愛知県":"aichi","三重県":"mie","滋賀県":"shiga","京都府":"kyoto","大阪府":"osaka","兵庫県":"hyogo","奈良県":"nara","和歌山県":"wakayama","鳥取県":"tottori","島根県":"shimane","岡山県":"okayama","広島県":"hiroshima","山口県":"yamaguchi","徳島県":"tokushima","香川県":"kagawa","愛媛県":"ehime","高知県":"kochi","福岡県":"fukuoka","佐賀県":"saga","長崎県":"nagasaki","熊本県":"kumamoto","大分県":"oita","宮崎県":"miyazaki","鹿児島県":"kagoshima","沖縄県":"okinawa","東京都":"tokyo","神奈川県":"kanagawa","埼玉県":"saitama","千葉県":"chiba"}, LABEL = {"dog":"犬","cat":"猫","rabbit":"うさぎ","hamster":"ハムスター・モルモット","ferret":"フェレット","bird":"鳥","reptile":"爬虫類","fish":"魚","open":"いま受付中","night":"夜間・救急","h24":"24時間","late":"19時以降も","early":"朝9時前から","sat":"土曜も","sun":"日曜も","hol":"祝日も","nohol":"年中無休","nolunch":"昼休みなし","visit":"家に来てくれる（往診）","catspec":"猫専門","exospec":"うさぎ・鳥などの専門","large":"大型犬の設備","catroom":"猫用の待合室","noresv":"予約なしでも","resv":"予約できる","park":"駐車場","card":"カード払い","ins":"ペット保険が使える","hotel":"ペットホテル","trim":"トリミング","school":"しつけ教室・パピークラス","ct":"CT・MRI","y:吐く・下痢":"吐く・下痢","y:皮膚のかゆみ":"皮膚のかゆみ","y:咳":"咳","y:歩き方がおかしい":"歩き方がおかしい","y:目・耳の異常":"目・耳の異常"}, REG = [["北海道・東北",[["北海道",391],["宮城県",48],["山形県",40],["福島県",1]]],["関東",[["茨城県",158],["栃木県",5],["群馬県",112],["埼玉県",20],["千葉県",54],["東京都",380],["神奈川県",196]]],["中部",[["新潟県",122],["富山県",40],["石川県",70],["福井県",33],["山梨県",64],["長野県",5],["岐阜県",118],["静岡県",165],["愛知県",11]]],["近畿",[["三重県",70],["滋賀県",60],["京都府",165],["大阪府",266],["兵庫県",9],["奈良県",84],["和歌山県",56]]],["中国・四国",[["島根県",18],["岡山県",111],["広島県",173],["山口県",88],["徳島県",45],["香川県",1],["愛媛県",62],["高知県",42]]],["九州・沖縄",[["福岡県",36],["佐賀県",32],["長崎県",54],["熊本県",42],["大分県",2],["宮崎県",6],["鹿児島県",3],["沖縄県",63]]]], SYM = {"y:吐く・下痢":["消化器科"],"y:皮膚のかゆみ":["皮膚科"],"y:咳":["呼吸器科","循環器科"],"y:歩き方がおかしい":["整形外科","神経科"],"y:目・耳の異常":["眼科","耳鼻科"]}, av = null;
 list.addEventListener("click", function(ev){ var b = ev.target.closest("button[data-pk]"); if (!b) return; pick.set([{p: b.getAttribute("data-pk")}]); box.scrollIntoView({behavior: "smooth", block: "start"}); });
 var NEED = {night: ["night"], sunhol: ["sun", "hol"], h24: ["h24"], visit: ["visit"], spec: ["spec"]};
 var NEEDL = {night: "夜間・救急", sunhol: "日曜・祝日", h24: "24時間", visit: "往診", spec: "専門診療"};
@@ -116,8 +114,8 @@ detN.textContent = n ? n : "";
 }
 function picHtml(r){
 if (!r.ph) return '<div class="cs-ph cs-ph0"' + (r.rv ? ' data-gph="' + esc(r.rv) + '"' : '') + ' aria-hidden="true"></div>';
-var ps = r.ph[0], im = ps.map(function(p, i){ return '<img src="' + esc(p) + '" alt="' + esc(r.n) + 'の写真' + (i + 1) + '" width="520" height="347" loading="lazy" decoding="async">'; }).join("");
-return '<div class="cs-ph"><div class="cs-ph-s">' + im + '</div>' + (ps.length > 1 ? '<span class="cs-ph-n" aria-hidden="true">📷 ' + ps.length + '</span>' : '') + (r.ph[1] ? '<small class="cs-ph-c">' + esc(r.ph[1]) + '</small>' : '') + '</div>';
+var ps = r.ph[0], im = ps.map(function(p, i){ return '<img src="' + esc(p) + '" alt="' + esc(r.n) + 'の写真' + (i + 1) + '" style="object-fit:contain"' + (r.ph[3] ? ' data-r="' + r.ph[3][i] + '"' : '') + ' loading="lazy" decoding="async">'; }).join("");
+return '<div class="cs-ph"' + (r.ph[2] ? ' style="--r:' + r.ph[2] + '"' : '') + '><div class="cs-ph-s">' + im + '</div>' + (ps.length > 1 ? '<span class="cs-ph-n" aria-hidden="true">📷 ' + ps.length + '</span>' : '') + (r.ph[1] ? '<small class="cs-ph-c">' + esc(r.ph[1]) + '</small>' : '') + '</div>';
 }
 function card(r, unk){
 var b = [];
@@ -163,7 +161,7 @@ return;
 if (!data) { sum.textContent = "読み込んでいます…"; return; }
 var ks = keys(), m = match(data.filter(function(r){ return !r.far; }), ks, true), ok = m[0], unk = m[1];
 var nightFirst = night() && need !== "night";
-ok.sort(function(a, b){ return (b[0].ph ? 1 : 0) - (a[0].ph ? 1 : 0); });  // 写真のある病院を先に（Nori 2026-11-22）
+ok.sort(function(a, b){ return (b[0].ph ? 1 : 0) - (a[0].ph ? 1 : 0); });
 if (nightFirst) ok.sort(function(a, b){ return (b[0].y.indexOf("night") >= 0) - (a[0].y.indexOf("night") >= 0); });
 var t = typed(), pl = plabel() + (t ? "「" + t + "」" : "");
 sum.innerHTML = esc(pl) + "で合う病院 " + ok.length + "院" + (unk.length ? "<small>ほかに、公式の情報に書いていないので要確認 " + unk.length + "院</small>" : "")
@@ -213,7 +211,7 @@ if (!ps.length) return;
 load.k = key;
 Promise.all(ps.map(get)).then(function(js){
 if (load.k !== key) return;
-data = [].concat.apply([], js); av = {};  // 選んだ県のデータで1院以上に当てはまる条件
+data = [].concat.apply([], js); av = {};
 data.forEach(function(r){ if (!r.far) { r.y.forEach(function(k){ av[k] = 1; }); (r.d || []).forEach(function(d){ av["d:" + d] = 1; }); if (r.t) av["open"] = 1; Object.keys(SYM).forEach(function(k){ if (has(r, k)) av[k] = 1; }); } });
 shown = 30; draw();
 });
@@ -240,7 +238,7 @@ if (b.id === "hfGo") { list.scrollIntoView({behavior: "smooth"}); return; }
 if (b.id === "hfClear") { on = {}; need = ""; pick.clearText(); shown = 30; draw(); return; }
 if (b.dataset.need !== undefined) {
 need = b.dataset.need;
-if (need === "spec") det.open = true;  // 専門診療は、診療科目などを選べるように開く
+if (need === "spec") det.open = true;
 shown = 30; draw();
 try { window.gtag && gtag("event", "hosp_filter", {key: "need:" + (need || "none"), on: 1, pref: sel.value || "all"}); } catch (x) {}
 return;

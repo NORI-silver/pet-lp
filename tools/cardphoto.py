@@ -18,17 +18,20 @@ PAW = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 
        "%3Cellipse cx='25' cy='17' rx='5.5' ry='7.5'/%3E%3Cellipse cx='39' cy='17' rx='5.5' ry='7.5'/%3E%3C/svg%3E")
 
 CSS = ('<style id="cp-css">'
-       '.cs-ph{position:relative;aspect-ratio:2/1;background:#f6efe8;overflow:hidden}'
+       '.cs-ph{position:relative;background:#f6efe8;overflow:hidden}'
        '.cs-ph0{aspect-ratio:4/1;background:#f8f3ee url("' + PAW + '") center/38px no-repeat}'
-       '.cs-ph-s{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}'
+       '.cs-ph-s{display:flex;aspect-ratio:var(--r,2/1);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}'
        '.cs-ph-s::-webkit-scrollbar{display:none}'
        '.cs-ph-s img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start;display:block}'
        '.cs-ph-n{position:absolute;right:8px;top:8px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;pointer-events:none}'
-       '.cs-ph .cs-ph-c{position:absolute;left:0;bottom:0;max-width:100%;background:rgba(0,0,0,.55);color:#fff;opacity:1;font-size:11px;font-weight:400;padding:1px 6px;border-top-right-radius:6px;white-space:normal;line-height:1.35}'  # 出どころの文は省かずに出す（許可の条件の表記）
-       '.cs-ph .cs-ph-c a{color:#fff}'
+       '.cs-ph .cs-ph-c{display:block;background:#f6efe8;color:#6b5a4c;opacity:1;font-size:11px;font-weight:400;padding:2px 8px;white-space:normal;line-height:1.35}'  # 出どころの文は省かずに出す（許可の条件の表記）
+       '.cs-ph .cs-ph-c a{color:#6b5a4c}'
+       '.fr-s{align-items:flex-start}'
        '.cs:not(.fc)>.cs-ph,.ux-c>.cs-ph{margin:-12px -14px 10px;border-radius:14px 14px 0 0}'
        '.hc>.cs-ph{margin:-14px -14px 10px;border-radius:14px 14px 0 0}'
-       '</style>')
+       '</style>'
+       '<script id="cp-js">document.addEventListener("scroll",function(e){var s=e.target;if(!s||!s.classList||!s.classList.contains("cs-ph-s"))return;'
+       'var k=Math.round(s.scrollLeft/Math.max(1,s.clientWidth)),m=s.children[k],r=m&&m.getAttribute("data-r");if(r&&s.parentNode)s.parentNode.style.setProperty("--r",r)},true)</script>')
 
 
 def norm(u):
@@ -58,12 +61,15 @@ def strip(x, name, gph=""):
         return f'<div class="cs-ph cs-ph0"{g} aria-hidden="true"></div>' if PLACEHOLDER_ON else ""
     ps = x["photos"][:5]
     alt = html.escape(re.sub(r"<[^>]+>", "", name))
-    imgs = "".join(f'<img src="{html.escape(p)}" alt="{alt}の写真{i + 1}" loading="lazy" decoding="async">' for i, p in enumerate(ps))
+    rs = x.get("ratio") or []
+    imgs = "".join(f'<img src="{html.escape(p)}" alt="{alt}の写真{i + 1}"' + (f' data-r="{rs[i]:.3f}"' if i < len(rs) else "") + ' style="object-fit:contain" loading="lazy" decoding="async">' for i, p in enumerate(ps))
     n = f'<span class="cs-ph-n" aria-hidden="true">📷 {len(ps)}</span>' if len(ps) > 1 else ""
     cr = ""
     if x.get("by") != "owner" and x.get("credit"):  # サイトの決まり（CC BY など）や事業者の許可の条件で出どころの表示が要る
         cr = f'<small class="cs-ph-c">{html.escape(x["credit"])}' + (f'（<a href="{html.escape(x["lic_url"])}" target="_blank" rel="noopener">{html.escape(x.get("license", ""))}</a>）' if x.get("lic_url") else "") + "</small>"
-    return f'<div class="cs-ph"{g}><div class="cs-ph-s">{imgs}</div>{n}{cr}</div>'
+    # 写真の縦横比に枠を合わせる（余白なし・切らない。極端な縦横比だけ 3:5〜3:1 に丸める）。共通CSSは変えず、カードごとの style で上書きする
+    r = (x.get("ratio") or [1.5])[0]
+    return f'<div class="cs-ph"{g} style="--r:{r:.3f}"><div class="cs-ph-s">{imgs}</div>{n}{cr}</div>'
 
 
 _OPEN = re.compile(r'<div class="(emg-item emg-co fc[^"]*\bcs\b[^"]*|emg-item emg-co cs[^"]*|emg-item yd-card[^"]*\bcs\b[^"]*|ux-c dr-card[^"]*)"([^>]*)>')
@@ -114,7 +120,7 @@ def page(h, by_id, by_url, top=""):
         # T114 の写真は被写体が上端に近いため、既存画像の全範囲を見せる。
         photo_css = CSS.replace('object-fit:cover', 'object-fit:contain') if 'class="cs-ph-s"' in h2 else CSS
         if 'class="cs-ph" data-gph="T114"' in h2:
-            photo_css = photo_css.replace('</style>', '.cs-ph[data-gph="T114"]{aspect-ratio:520/347}'
+            photo_css = photo_css.replace('</style>', '.cs-ph[data-gph="T114"]{--r:520/347}'
                                     '.cs-ph[data-gph="T114"] img{object-fit:contain}</style>')
         h2 = h2.replace("</head>", photo_css + "</head>", 1)
     return h2, n
@@ -193,7 +199,17 @@ def hosp_photo(h):
     by_id, by_url = _H
     x = by_id.get(h.get("id", "")) or by_url.get(norm(h.get("url", "")))
     if not x: return None
-    return [x["photos"][:5], x.get("credit", "") if x.get("by") != "owner" else ""]
+    r0 = (x.get("ratio") or [0])[0] or 0  # photos.json に入れた縦横比を先に使う（Pillow が無い環境でも同じ結果になる）
+    if not r0:
+      try:
+        from PIL import Image
+        im = Image.open(os.path.join(os.path.dirname(HERE), x["photos"][0].lstrip("/")))
+        r0 = round(im.width / im.height, 3)
+      except Exception: pass
+    out = [x["photos"][:5], x.get("credit", "") if x.get("by") != "owner" else "", r0]
+    rs = (x.get("ratio") or [])[:5]
+    if r0 and len(rs) == len(out[0]) and any(abs(r - r0) > 0.02 * r0 for r in rs): out.append(rs)  # 縦横比がちがう写真が混じる病院だけ、1枚ずつの比を渡す（hosp.js が data-r に入れ、cp-js が枠を合わせる）
+    return out
 
 
 if __name__ == "__main__":
