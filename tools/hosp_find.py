@@ -123,9 +123,15 @@ def record(h, pref, tags, depts_of):
     # 設備・サービス
     if re.search(r"駐車場(\d+台|あり)|駐車場がある|提携(の)?(コイン)?(駐車場|パーキング)|専用駐車", svc + every): y.add("park")
     if re.search(r"駐車場なし|駐車場はありません", svc + every): n.add("park"); y.discard("park")
-    if re.search(r"カード|クレジット|キャッシュレス|電子マネー|QR", pay):
-        (n if re.search(r"不可|使えない|できない|ご利用いただけません", pay) else y).add("card")
-    if re.search(r"ペット保険", pay) and not re.search(r"使えない|対応していません|不可|対象外", pay): y.add("ins")
+    # カード可否は文ごとに見る（支払いの文に「保険の窓口精算はできない」など別項目の否定が混ざると誤判定するため。2026-11-24）
+    for s in re.split(r"。", pay):
+        if re.search(r"カード|クレジット|キャッシュレス|電子マネー|QR", s):
+            (n if re.search(r"不可|使えない|できない|ご利用いただけません", s) else y).add("card")
+    # ペット保険：支払いの文と「動物保険」の項目だけを見る。窓口精算・保険会社名（アニコム等）も根拠にする。
+    # 「窓口精算はできない／なし」など、はっきり使えないと書いてある病院は付けない（保険証の持参だけでは付けない）
+    inst = _t(pay, _facts(h, "動物保険"))
+    if re.search(r"ペット保険|動物保険|窓口精算|窓口で精算|窓口払い|アニコム|アイペット", inst) and not re.search(
+            r"窓口精算は(なし|できません|できない|使えない|不可)|窓口精算でき(ません|ない)|精算は(できません|できない|なし|なく)|精算でき(ません|ない)|ペット保険は(使えない|使えません|不可|対象外)|保険は使え(ない|ません)|対応していません", inst): y.add("ins")
     if re.search(r"ペットホテル|ホテル|預かり", h.get("services", "") + svc): y.add("hotel")
     if re.search(r"トリミング", h.get("services", "") + svc): y.add("trim")
     if re.search(r"しつけ|パピークラス|パピー教室", h.get("services", "") + svc): y.add("school")
@@ -230,7 +236,7 @@ CSS = """<style id="hfcss">
 .hf-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:8px;border-top:1px solid #f5ebe2}
 .hf-sum{flex:1;margin:0;font-weight:800;font-size:1rem;color:#2b2622}.hf-sum small{font-weight:400;color:#7a6a5e;font-size:.78rem;display:block}
 .hf-clear{white-space:nowrap;border:0;background:none;color:#7a6a5e;text-decoration:underline;font-size:.82rem;cursor:pointer}
-.hf-list{display:grid;gap:10px;align-items:start}
+.hf-list{display:grid;gap:10px}
 .hf-h{margin:14px 0 2px;font-size:.88rem;color:#7a6a5e;font-weight:700}
 .hc{background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px;overflow:hidden}
 .hc>.ux-img{position:relative;margin:-12px -14px 10px;aspect-ratio:2/1;overflow:hidden;background:#f4f1ee}.hc>.ux-img img{display:block;width:100%;height:100%;object-fit:cover}.hc>.ux-img span{position:absolute;right:6px;bottom:6px;font-size:.66rem;line-height:1;padding:3px 6px;border-radius:6px;background:rgba(0,0,0,.45);color:#fff}
@@ -337,15 +343,14 @@ REGIONS = [("北海道・東北", ["北海道", "青森県", "岩手県", "宮�
 def write_js(ROOT, avail, pslug, counts=None):
     import prefkeep
     body = open(os.path.join(HERE, "hosp_find.js"), encoding="utf-8").read()
-    body = (body.replace("__SLUG__", json.dumps(pslug, ensure_ascii=False, separators=(",", ":")))
-                .replace("__LABEL__", json.dumps(LABEL, ensure_ascii=False, separators=(",", ":")))
-                .replace("__SYM__", json.dumps({"y:" + n: ds for n, ds in SYMPTOMS}, ensure_ascii=False, separators=(",", ":")))
+    body = (body.replace("__SLUG__", json.dumps(pslug, ensure_ascii=False))
+                .replace("__LABEL__", json.dumps(LABEL, ensure_ascii=False))
+                .replace("__SYM__", json.dumps({"y:" + n: ds for n, ds in SYMPTOMS}, ensure_ascii=False))
                 .replace("__NEAR__", json.dumps(near_prefs(), ensure_ascii=False, separators=(",", ":")))
                 .replace("__PICS__", json.dumps(_pics(ROOT), separators=(",", ":")))
                 .replace("__REG__", json.dumps([[g, [[pf, (counts or {}).get(pf, 0)] for pf in ps if (counts or {}).get(pf)]] for g, ps in REGIONS], ensure_ascii=False, separators=(",", ":"))))
     # 行だけのコメントと行頭の空白を落として軽くする（/hosp.js は 24KB まで）
     body = "\n".join(l.strip() for l in body.split("\n") if l.strip() and not l.strip().startswith("//"))
-    lite = lambda t: "\n".join(l.strip() for l in t.split("\n") if l.strip())  # 共通部分（prefkeep）も行頭の空白と空行を落とす（hosp.js は 24KB まで。構文は同じ）
-    js = "// 生成ファイル（tools/hosp_find.py）。手で直さない\n(function(){" + lite(prefkeep.FN + prefkeep.GUESS) + "\n" + body + "\n})();\n"
+    js = "// 生成ファイル（tools/hosp_find.py）。手で直さない\n(function(){" + prefkeep.FN + prefkeep.GUESS + body + "\n})();\n"
     open(os.path.join(ROOT, "hosp.js"), "w", encoding="utf-8").write(js)
     return len(js.encode())
