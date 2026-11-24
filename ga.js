@@ -1,3 +1,23 @@
+// 写真が2枚以上のカードに、ドット（いま何枚目か）と左右の矢印（横にスワイプできる合図）を付ける。写真は全体のまま、切らない。
+(function(){
+  function dec(s){
+    if (s.dataset.cd || s.children.length < 2) return;
+    s.dataset.cd = 1;
+    var w = document.createElement("div"), d = document.createElement("div"), n = s.children.length, i;
+    w.className = "cs-ph-w"; s.parentNode.insertBefore(w, s); w.appendChild(s);
+    d.className = "cs-ph-d"; d.setAttribute("aria-hidden", "true");
+    for (i = 0; i < n; i++) d.appendChild(document.createElement("i"));
+    function b(c, l, t){ var e = document.createElement("button"); e.type = "button"; e.className = "cs-ph-a " + c; e.setAttribute("aria-label", l); e.textContent = t;
+      e.addEventListener("click", function(){ s.scrollBy({left: (c === "r" ? 1 : -1) * s.clientWidth, behavior: "smooth"}); }); return e; }
+    w.appendChild(b("l", "前の写真", "‹")); w.appendChild(b("r", "次の写真", "›")); w.appendChild(d);
+    function u(){ var k = Math.round(s.scrollLeft / s.clientWidth), j; for (j = 0; j < n; j++) d.children[j].className = j === k ? "on" : "";
+      w.className = "cs-ph-w" + (k <= 0 ? " f" : "") + (k >= n - 1 ? " e" : ""); }
+    s.addEventListener("scroll", u, {passive: true}); u();
+  }
+  function all(){ [].forEach.call(document.querySelectorAll(".cs-ph-s"), dec); }
+  all();
+  try { new MutationObserver(all).observe(document.documentElement, {childList: true, subtree: true}); } catch (x) {}
+})();
 // アクセス解析：見られたページと、よく使われる操作の数を集計する（お名前・連絡先・場所などの入力内容は送らない）。
 // ID が空のときと、本番の pet.shiokonbu.com 以外（手元での確認など）では何もしない。
 (function(){
