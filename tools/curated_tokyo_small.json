@@ -5,7 +5,8 @@
   "src": "https://www.city.chiyoda.lg.jp/images/32267/freearea.jpeg",
   "page": "https://www.city.chiyoda.lg.jp/koho/machizukuri/koen/dogrun.html",
   "sha256": "d9e09bc0f7d41291bb9df34a3548fd8992ea52515f5be77ff300482f7eeec4d1",
-  "bytes": 18192
+  "bytes": 18192,
+  "_audit": "2026-11-24 card carousel follows visible photo ratio (cardphoto.py data-r)"
  },
  {
   "id": "D0d1c8b4",
