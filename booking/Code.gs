@@ -2578,7 +2578,7 @@ function pconfAuto_(c) {
   return { name: c.name, site: c.url || '', read: '', auto: true, shop: c.shop || null, sections: [
     { h: '1. どこへ行けるか', items: [
       item('origin', 'お迎えの起点（お店・車庫のある市区町村か最寄り駅。番地は不要です）', 'need', 'text', { ph: '例：横浜市泉区（相鉄線 緑園都市駅）', note: c.pref ? '公式サイトの所在地：' + c.pref + (c.area_text ? '。対応エリア：' + c.area_text : '') : '' }),
-      item('radius', 'お迎えに行ける範囲', c.anywhere ? 'site' : 'need', 'radio', { o: ['起点から〇kmまで（下に書いてください）', '上限なし'], v: c.anywhere ? '上限なし' : undefined, more: '何kmまでか（例：30km）' }),
+      item('radius', 'お迎えに行ける範囲', c.anywhere ? 'site' : 'need', 'radio', { o: ['起点から〇kmまで（下に書いてください）', '都道府県・市区町村を指定', '依頼ごとに判断', '上限なし'], v: c.anywhere ? '上限なし' : undefined, more: '距離・具体的な地域・判断条件（例：30km）' }),
       item('dest', '行き先の範囲', c.long ? 'chk' : 'need', 'radio', { o: ['お迎えの都道府県の中だけ', '距離に上限がある（下に書いてください）', '全国どこへでも'], v: c.long ? '全国どこへでも' : undefined, more: '上限があるときは何kmまでか' }),
       item('ng_area', '行けない地域', 'need', 'check', { o: ['沖縄県', '離島'], v: c.ng_prefs && c.ng_prefs.indexOf('沖縄') >= 0 ? ['沖縄県'] : [], more: 'ほかに行けない都道府県があれば' }),
       item('ng_short', '受けない依頼', 'need', 'check', { o: ['乗る距離が、お迎えに向かう距離より短い依頼', 'お迎えも行き先も、お店の地域の外の依頼'], v: (c.ride_ge_pick ? ['乗る距離が、お迎えに向かう距離より短い依頼'] : []).concat(c.need_prefs ? ['お迎えも行き先も、お店の地域の外の依頼'] : []) })
@@ -2679,6 +2679,7 @@ function pconfValidate_(c, q) {
     if (k === 'wait' && v && !/^(なし|無し|かからない|無料|待機は受けない|待機なし|個別見積もり)$/.test(v) && !( /[0-9]\s*分/.test(v.normalize('NFKC')) && /[0-9]\s*円/.test(v.normalize('NFKC')) )) issues[k] = '無料・待機は受けない・個別見積もり、または時間と金額を入力してください。';
     if (k === 'night' && v && !noNight.test(v) && v !== '個別見積もり' && !( /[0-9](?:\s*時|:)/.test(v.normalize('NFKC')) && /[0-9]\s*(?:円|%|割)/.test(v.normalize('NFKC')) )) issues[k] = '割増なし・夜間は受けない・個別見積もり、または時間帯と金額を入力してください。';
     if (k === 'night_how' && nonempty(read('night')) && !noNight.test(read('night')) && read('night') !== '個別見積もり' && !v) issues[k] = '割増がかかる条件を選んでください。';
+    if (k === 'radius' && /地域|市区町村|依頼ごと/.test(v) && (!nonempty(detail) || /^(相談|応相談|要相談|その都度|個別判断|依頼ごとに判断|案件による)$/.test(detail))) issues[k] = '対象の地域名か、受付の判断に使う条件を具体的に入力してください。';
     if (/^(radius|dest|long)$/.test(k) && /下に書いて/.test(v) && !range(detail)) issues[k] = '距離を0より大きい数字で入力してください（例：30km）。';
     if (/^(pick|back)$/.test(k) && v && v !== 'かからない' && !nonempty(detail)) issues[k] = '料金の金額と適用条件を入力してください。';
     if (k === 'maxkg' && v && !/^(?:上限なし|体重の上限なし|個別に判断(?:[：:]\s*.+)?|(?:[0-9]+(?:\.[0-9]+)?)\s*kg(?:まで)?|(?:[0-9]+(?:\.[0-9]+)?)\s*キロ(?:まで)?)$/i.test(v.normalize('NFKC'))) issues[k] = '例：50kgまで、上限なし、個別に判断：車の寸法で確認。';
@@ -2723,6 +2724,15 @@ function pconfTermsUrl_() { return CONFIG.SITE_URL.replace(/\/$/, '') + '/partne
 function pconfTermsReady_() {
   return !!(PTERMS_VER && PTERMS_VER.revised && /^[a-f0-9]{12}$/.test(PTERMS_VER.hash || ''));
 }
+function pconfSiteValue_(value) {
+  var raw = String(value || '').trim(), site = raw;
+  if (!raw) return '';
+  if (raw.length > 200) return null;
+  if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(site)) site = 'https://' + site;
+  var label = '[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?';
+  if (site.length > 200 || !new RegExp('^https?://(?:' + label + '\\.)+' + label + '(?::[0-9]{1,5})?(?:[/?#][^\\s<>"\x27]*)?$', 'i').test(site)) return null;
+  return site;
+}
 function pconfTermsProof_(q, id) {
   var subject = q['new'] === '1' ?
     ['new', id, String(q.co || '').trim().slice(0, 80), String(q.email || '').trim().slice(0, 120), String(q.site || '').trim().slice(0, 200)] :
@@ -2732,7 +2742,10 @@ function pconfTermsProof_(q, id) {
 function pconfPage_(q, fromPost) {
   var isNew = q['new'] === '1', id = isNew ? '' : demoId_(q.t), c = null;
   if (isNew && q.step !== '2' && q.go !== '1') return pconfStart_(q);
-  if (isNew) { id = pconfFind_(q.site); c = id ? pconfOf_(id) : pconfAuto_({ name: String(q.co || '').trim().slice(0, 80) }); }
+  var siteValue = isNew ? pconfSiteValue_(q.site) : '';
+  if (isNew && q.go !== '1' && siteValue === null) return pconfStart_(q, 'ホームページは有効なURLかドメインを入力してください。');
+  if (isNew && siteValue !== null) q.site = siteValue;
+  if (isNew) { id = siteValue && pconfFind_(siteValue); c = id ? pconfOf_(id) : pconfAuto_({ name: String(q.co || '').trim().slice(0, 80) }); }
   else c = id && pconfOf_(id);
   if (!c) return page_('リンクが正しくありません', '<p>お手数ですが、届いたメールのリンクからもう一度開いてください。</p>');
   var coName = isNew ? String(q.co || '').trim().slice(0, 80) : c.name, email = String(q.email || '').trim().slice(0, 120);
@@ -2744,10 +2757,9 @@ function pconfPage_(q, fromPost) {
     else if (q.terms_version !== PTERMS_VER.hash || q.terms_proof !== pconfTermsProof_(q, id)) termsError = '提携規約の版または入力内容を確認できませんでした。下の規約を開き直し、同意する場合はチェックしてください。';
     else if (q.terms_accept !== '1') termsError = '送信するには、提携規約を読み、同意する場合はチェックしてください。';
     if (fromPost) fieldErrors = pconfValidate_(c, q);
-    var site = String(q.site || '').trim();
     if (!name || (isNew && (!coName || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)))) q.err = 1;
     if (fromPost && c.auto && q.details_reviewed !== '1') fieldErrors.details_reviewed = '事前に入っている項目も含め、入力内容を確認してからチェックしてください。';
-    if (isNew && site && !/^https?:\/\/[a-z0-9-]+(?:\.[a-z0-9-]+)+(?:[/:?#][^\s]*)?$/i.test(site)) fieldErrors.site = 'ホームページは https:// または http:// から始まるURLを入力してください。';
+    if (isNew && siteValue === null) fieldErrors.site = 'ホームページは有効なURLかドメインを入力してください。';
     if (!q.err && !termsError && !Object.keys(fieldErrors).length) {
       var a = pconfAnswers_(c, q);
       var ex = (c.examples || []).map(function(e, i) { var v = String(q['ex' + i] || ''), fix = String(q['ex' + i + '_fix'] || '').trim().slice(0, 200);
@@ -2777,9 +2789,10 @@ function pconfPage_(q, fromPost) {
     : '<p>ご依頼をお送りする条件と、料金の計算に使う内容をうかがいます。選ぶところがほとんどです。</p>') +
     (q.err ? '<p style="color:#c0392b;font-weight:700">' + (isNew ? '会社名・メールアドレス・' : '') + 'ご担当のお名前を入れてください。</p>' : '') +
     (termsError ? '<p role="alert" style="color:#c0392b;font-weight:700">' + esc_(termsError) + '</p>' : '') +
-    (fieldErrors.site ? '<p role="alert">' + esc_(fieldErrors.site) + ' 前の画面に戻って修正してください。</p>' : '') +
-    (Object.keys(fieldErrors).some(function(k) { return k !== 'site' && k !== 'details_reviewed'; }) ? '<p role="alert">入力を確認してください。各項目に修正箇所を表示しています。</p>' : '') +
-    '<form method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('kind', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) + hidden_('site', q.site || '') : hidden_('t', q.t)) + hidden_('go', '1');
+        (Object.keys(fieldErrors).some(function(k) { return k !== 'site' && k !== 'details_reviewed'; }) ? '<p role="alert">入力を確認してください。各項目に修正箇所を表示しています。</p>' : '') +
+    '<form method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('kind', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) : hidden_('t', q.t)) + hidden_('go', '1') +
+    (isNew ? '<label>ホームページのURL（あれば）<input name="site" maxlength="200" value="' + esc_(q.site || '') + '" placeholder="example.jp"></label>' +
+      (fieldErrors.site ? '<p role="alert">' + esc_(fieldErrors.site) + '</p>' : '') : '');
   c.sections.forEach(function(s) { html += '<h2>' + esc_(s.h) + '</h2>' + s.items.map(function(it) { return pconfItem_(it, q, fieldErrors[it.k]); }).join(''); });
   if ((c.examples || []).length) html += '<h2>6. 料金の例</h2><p class="note">上の内容で計算しました。高速料金は含みません。</p>' + c.examples.map(function(e, i) {
     return '<div class="pt"><b>' + esc_(e.l) + '</b><div style="font-size:1.1rem;font-weight:800;margin:4px 0">' + esc_(e.yen) + '</div><div class="note">' + esc_(e.d) + '</div>' +
@@ -2799,9 +2812,10 @@ function pconfPage_(q, fromPost) {
   return page_(isNew && !id ? '提携のお申し込み' : '公式サイトの内容のご確認', html);
 }
 // 新しい申し込みの最初の画面：会社名・メール・ホームページだけ
-function pconfStart_(q) {
+function pconfStart_(q, websiteError) {
   var html = '<p>まず、会社名・ご連絡先・ホームページを教えてください。当サイトで公式サイトの料金や条件を集めている会社さまは、次の画面にその内容を先に入れてお出しします。</p>' +
-    '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'pconf') + hidden_('new', '1') + hidden_('step', '2') +
+    (websiteError ? '<p role="alert">' + esc_(websiteError) + '</p>' : '') +
+    '<form method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('kind', 'pconf') + hidden_('new', '1') + hidden_('step', '2') +
     '<label>会社名・屋号（必須）<input name="co" required maxlength="80" value="' + esc_(q.co || '') + '"></label>' +
     '<label>お問い合わせを受け取るメールアドレス（必須）<input name="email" type="email" required maxlength="120" value="' + esc_(q.email || '') + '"></label>' +
     '<label>ホームページのURL（あれば）<input name="site" maxlength="200" placeholder="https://" value="' + esc_(q.site || '') + '"></label>' +
