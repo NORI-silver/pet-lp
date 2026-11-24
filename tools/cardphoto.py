@@ -29,7 +29,9 @@ CSS = ('<style id="cp-css">'
        '.fr-s{align-items:flex-start}'
        '.cs:not(.fc)>.cs-ph,.ux-c>.cs-ph{margin:-12px -14px 10px;border-radius:14px 14px 0 0}'
        '.hc>.cs-ph{margin:-14px -14px 10px;border-radius:14px 14px 0 0}'
-       '</style>')
+       '</style>'
+       '<script id="cp-js">document.addEventListener("scroll",function(e){var s=e.target;if(!s||!s.classList||!s.classList.contains("cs-ph-s"))return;'
+       'var k=Math.round(s.scrollLeft/Math.max(1,s.clientWidth)),m=s.children[k],r=m&&m.getAttribute("data-r");if(r&&s.parentNode)s.parentNode.style.setProperty("--r",r)},true)</script>')
 
 
 def norm(u):
@@ -59,7 +61,8 @@ def strip(x, name, gph=""):
         return f'<div class="cs-ph cs-ph0"{g} aria-hidden="true"></div>' if PLACEHOLDER_ON else ""
     ps = x["photos"][:5]
     alt = html.escape(re.sub(r"<[^>]+>", "", name))
-    imgs = "".join(f'<img src="{html.escape(p)}" alt="{alt}の写真{i + 1}" style="object-fit:contain" loading="lazy" decoding="async">' for i, p in enumerate(ps))
+    rs = x.get("ratio") or []
+    imgs = "".join(f'<img src="{html.escape(p)}" alt="{alt}の写真{i + 1}"' + (f' data-r="{rs[i]:.3f}"' if i < len(rs) else "") + ' style="object-fit:contain" loading="lazy" decoding="async">' for i, p in enumerate(ps))
     n = f'<span class="cs-ph-n" aria-hidden="true">📷 {len(ps)}</span>' if len(ps) > 1 else ""
     cr = ""
     if x.get("by") != "owner" and x.get("credit"):  # サイトの決まり（CC BY など）や事業者の許可の条件で出どころの表示が要る
