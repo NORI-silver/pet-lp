@@ -168,5 +168,85 @@
   "bytes": 52028,
   "manual": true,
   "_audit": "2026-11-24 manual: sha256 照合のみ。再取得はタイムアウト"
+ },
+ {
+  "id": "H033",
+  "file": "img/fac/night/H033_1.webp",
+  "src": "https://shiba-animalclinic.com/wp-content/themes/shiba/assets/img/top/slides/slide_01.jpg.webp",
+  "page": "https://shiba-animalclinic.com/",
+  "sha256": "4f47898386c4bc7b39fc5b83489d911a877e068cc5668f499378a49745bfb0b1",
+  "bytes": 10460
+ },
+ {
+  "id": "H033_2",
+  "file": "img/fac/night/H033_2.webp",
+  "src": "https://shiba-animalclinic.com/wp-content/themes/shiba/assets/img/top/slides/slide_02.jpg.webp",
+  "page": "https://shiba-animalclinic.com/",
+  "sha256": "d6ba713a923cf2026460b4eba3dc7b8e03b6823372e33194de7e543d6cdacd27",
+  "bytes": 16818
+ },
+ {
+  "id": "H034",
+  "file": "img/fac/night/H034_1.webp",
+  "src": "https://er-animal.jp/wp-content/themes/eranimal/img/bunkyo-1-2-n.jpg",
+  "page": "https://er-animal.jp/er_bunkyo/",
+  "sha256": "062bb207bb7e5118ba359512002f0b13040f1671c48522ed8373569735b8aa03",
+  "bytes": 120228
+ },
+ {
+  "id": "H037",
+  "file": "img/fac/night/H037_1.webp",
+  "src": "https://ah.aeonpet.com/assets/images/tokyo-yakan-emergency/img_02@2x.jpg",
+  "page": "https://ah.aeonpet.com/tokyo-yakan-emergency/",
+  "sha256": "37366f651ac0697c357b68b19711699201173f8c328db5f5dc1bd4070d21dd9e",
+  "bytes": 35878
+ },
+ {
+  "id": "H037_2",
+  "file": "img/fac/night/H037_2.webp",
+  "src": "https://ah.aeonpet.com/assets/images/tokyo-yakan-emergency/img_06@2x.jpg?v=2604",
+  "page": "https://ah.aeonpet.com/tokyo-yakan-emergency/",
+  "sha256": "6eb93eb0473316f70125c5de8bb44f5e01f49963ccf32a539df8f1efb442753a",
+  "bytes": 62322
+ },
+ {
+  "id": "H038",
+  "file": "img/fac/night/H038_1.webp",
+  "src": "https://er-animal.jp/wp-content/themes/eranimal/img/nerima-1-1.jpg",
+  "page": "https://er-animal.jp/er_nerima/",
+  "sha256": "3a1e28d0ee7c43c206f413cd267a0d67a50151504d6a765531da709e5f4f3796",
+  "bytes": 47602
+ },
+ {
+  "id": "H041",
+  "file": "img/fac/night/H041_1.webp",
+  "src": "https://er-animal.jp/wp-content/themes/eranimal/img/fuchu-1-2-n.jpg",
+  "page": "https://er-animal.jp/er_fuchu/",
+  "sha256": "b1d2199406f81bd35416f7d2c39c2a216b9bda47b314ef637a90fdb4320b4c5a",
+  "bytes": 80904
+ },
+ {
+  "id": "H042",
+  "file": "img/fac/night/H042_1.webp",
+  "src": "https://samsupvets.jp/wp-content/uploads/2025/08/slider01_1600x900.jpg",
+  "page": "https://samsupvets.jp/",
+  "sha256": "e098fcd1b4767fa3b0b8dc924f21f0043b34f72084ed38f02c7fad3223c05028",
+  "bytes": 56010
+ },
+ {
+  "id": "H042_2",
+  "file": "img/fac/night/H042_2.webp",
+  "src": "https://samsupvets.jp/wp-content/uploads/2025/08/slider03_1600x900.jpg",
+  "page": "https://samsupvets.jp/",
+  "sha256": "40672da6adfa320beb0763747d1471e56c76e5a13cddfde653305b04bf68fa39",
+  "bytes": 16758
+ },
+ {
+  "id": "H043",
+  "file": "img/fac/night/H043_1.webp",
+  "src": "https://er-animal.jp/wp-content/themes/eranimal/img/hachioji-1-2-n.jpg",
+  "page": "https://er-animal.jp/er_hachioji/",
+  "sha256": "db27496f2ccbba942801aa68f488516d4d71a8d7cb71527afeaa2e8ce36529a1",
+  "bytes": 79106
  }
 ]
