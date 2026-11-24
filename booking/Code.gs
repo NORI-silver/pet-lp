@@ -2519,9 +2519,45 @@ function pconfOf_(id) {
   if (publicPaused_(id)) return null;
   if (PCONF[id]) return PCONF[id];
   var c = DISPLAY_COMPANIES.filter(function(x) { return x.id === id; })[0];
-  if (c) return pconfAuto_(c);
+  if (c) return id === 'D01478c8' ? pconfIrPublic_(c) : pconfAuto_(c);
   var pt = id && partnerById_(id);
   return pt ? pconfAuto_({ id: id, name: pt.name }) : null;
+}
+// アイアールサービスの公開資料のみ。候補表示・料金計算・受付可否とは別の確認欄。
+function pconfIrPublic_(company) {
+  var schema = pconfAuto_({ name: company.name, url: 'https://www.i-and-r.com/pettaxi.html', pref: '大阪府' });
+  // 車両 https://www.i-and-r.com/car.html ／ 利用規約 https://www.i-and-r.com/gaiyou.html
+  const item=k=>schema.sections.flatMap(s=>s.items).find(x=>x.k===k);
+  const p=(k,v,note)=>Object.assign(item(k),{tag:'site',v,...(note?{note}:{})});
+  const u=(k,note)=>Object.assign(item(k),{tag:'need',v:undefined,note});
+  const c=(k,note)=>Object.assign(item(k),{tag:'chk',v:undefined,note});
+  const rows=[[10,3000,5400],[15,3950,7100],[20,4900,8800],[25,5850,10500],[30,6800,12200]];
+  const fmt=n=>n.toLocaleString('ja-JP');
+  p('origin','大阪市北区','公式サイトの事業所所在地。実際の迎車距離の計算起点が異なる場合は訂正してください。');
+  u('radius','公式サイトの大阪府内対応先には大阪市・堺・東大阪・高槻・豊中などと関西空港・伊丹空港を記載。地域欄の列挙は距離上限として扱っていません。');
+  c('dest','近畿・関東・中部・中国・四国・九州などの掲載あり。遠方地域をお迎えと行き先のどちらに使えるか確認。');
+  u('hours','電話受付は年中無休8:00〜22:00。利用規約の会社概要には営業時間8:00〜20:00・24時間活動とあり、送迎できる時間は未確認。');
+  p('animals','犬（大型犬も可）・猫・うさぎ・ハムスター・鳥・爬虫類・熱帯魚');
+  u('riders','飼い主の付き添い同乗可。上限は公式サイトに記載なし。');
+  u('big1','大型犬と座席で同乗可。30kg以上1頭に大人が何人まで乗れるかは未確認。');
+  p('cage','なくても乗せられる','ケージが必要なときはお客さまが用意。動物ごとの容器・安全条件があれば追記してください。');
+  c('via','走行途中に散歩できるとの記載。別の立ち寄り・経由の可否は未確認。');
+  p('luggage','載せられる','積載可能な範囲。ペット用品・スーツケース・ゴルフバッグの掲載あり。大型犬と大きな荷物を同時に載せられる条件は未確認。');
+  p('tax','税込（消費税なしも含む）');
+  p('ride',rows.map(r=>r[0]+'kmまで：片道'+fmt(r[1])+'円／往復'+fmt(r[2])+'円').join('、'),'公式表の掲載額のみ。1km単位と記載がありますが、表にない距離・端数処理・往復距離の数え方は決めつけません。');
+  p('pick','距離で（〇kmまで無料・定額、その先1kmごと）','迎車の起点・端数の処理が表の説明と異なる場合は訂正してください。');
+  item('pick').mv='10kmまで無料、その先は1kmごとに100円';
+  p('wait','30分まで無料。31〜45分300円、46〜60分600円、61〜75分900円、76〜90分1,200円、91〜105分1,500円、106〜120分1,800円。以後15分ごとに300円加算。');
+  c('night','22:00〜翌7:00は深夜・早朝割増。割増額は公式サイトに記載なし。');
+  c('night_how','乗る時刻・割増時間内の走行分・時間帯にかかる全体のどれかと、加算する対象を確認。');
+  c('long','100km以上の長距離割引は相談。通常計算と見積もりの境目、30km超の式は未確認。');
+  c('other','頭数追加料金なし。駐車料金などの実費、利用者都合の経路変更・待機延長は別途。その他は該当時だけ補足してください。');
+  p('cancel','現金払い（カード・後日請求不可）。前日までのキャンセルは無料、当日は料金の半額。','搬送途中の取消扱いは公開規約に明記なし。');
+  p('plate','黒ナンバー（貨物軽自動車の届出）','公式サイトに事業の届出を記載。今回のご依頼で使う車に当てはまらなければ訂正してください。');
+  p('insurance',['貨物保険'],'貨物賠償責任保険の掲載あり。運ぶ動物が対象となる条件・範囲は未確認。');
+  c('car','後部はフラットまたは座席に変更可能。車種・台数の明記は確認できません。');
+  schema.read = '2026年11月24日';
+  return schema;
 }
 function pconfHours_(h) {
   if (!h) return '';
@@ -2736,6 +2772,15 @@ function pconfSiteValue_(value) {
   if (site.length > 200 || !new RegExp('^https?://(?:' + label + '\\.)+' + label + '(?::[0-9]{1,5})?(?:[/?#][^\\s<>"\x27]*)?$', 'i').test(site)) return null;
   return site;
 }
+function pconfIntakeEmail_(value) {
+  var raw = String(value || '').trim();
+  if (raw.length > 120) return '';
+  var parts = raw.split('@'), label = '[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?';
+  if (parts.length !== 2 || !/^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+$/i.test(parts[0]) ||
+      parts[0].length > 64 || /^\.|\.$|\.\./.test(parts[0]) ||
+      !new RegExp('^(?:' + label + '\\.)+' + label + '$', 'i').test(parts[1])) return '';
+  return parts[0] + '@' + parts[1].toLowerCase();
+}
 function pconfTermsProof_(q, id) {
   var subject = q['new'] === '1' ?
     ['new', id, String(q.co || '').trim().slice(0, 80), String(q.email || '').trim().slice(0, 120), String(q.site || '').trim().slice(0, 200)] :
@@ -2753,13 +2798,14 @@ function pconfPage_(q, fromPost) {
   if (!c) return page_('リンクが正しくありません', '<p>お手数ですが、届いたメールのリンクからもう一度開いてください。</p>');
   var coName = isNew ? String(q.co || '').trim().slice(0, 80) : c.name, email = String(q.email || '').trim().slice(0, 120);
   if (!pconfTermsReady_()) return page_('現在、送信できません', '<p>提携規約を表示できません。時間をおいてリンクを開き直してください。</p>');
-  var termsError = '', fieldErrors = {};
+  var termsError = '', fieldErrors = {}, intakeEmail = pconfIntakeEmail_(isNew ? q.email : q.intake_email);
   if (q.go === '1') {
     var name = String(q.name || '').trim().slice(0, 60);
     if (!fromPost) termsError = 'このままでは送信できません。提携規約を読み、同意してから送ってください。';
     else if (q.terms_version !== PTERMS_VER.hash || q.terms_proof !== pconfTermsProof_(q, id)) termsError = '提携規約の版または入力内容を確認できませんでした。下の規約を開き直し、同意する場合はチェックしてください。';
     else if (q.terms_accept !== '1') termsError = '送信するには、提携規約を読み、同意する場合はチェックしてください。';
     if (fromPost) fieldErrors = pconfValidate_(c, q);
+    if (!intakeEmail) fieldErrors.intake_email = '予約依頼を受け取る有効なメールアドレスを1件入力してください。';
     if (!name || (isNew && (!coName || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)))) q.err = 1;
     if (fromPost && c.auto && q.details_reviewed !== '1') fieldErrors.details_reviewed = '事前に入っている項目も含め、入力内容を確認してからチェックしてください。';
     if (isNew && siteValue === null) fieldErrors.site = 'ホームページは有効なURLかドメインを入力してください。';
@@ -2772,13 +2818,13 @@ function pconfPage_(q, fromPost) {
       var submittedAt = new Date();
       var terms = { accepted:true, at:submittedAt.toISOString(), version:PTERMS_VER.hash,
         revised:PTERMS_VER.revised, url:pconfTermsUrl_(), surface:'pconf-application' };
-      var answerJson = JSON.stringify({ terms:terms, a:a.obj, memo:memo, email:isNew ? email : undefined, site:isNew ? String(q.site || '').trim().slice(0, 200) : undefined });
+      var answerJson = JSON.stringify({ terms:terms, intake_email:intakeEmail, a:a.obj, memo:memo, email:isNew ? email : undefined, site:isNew ? String(q.site || '').trim().slice(0, 200) : undefined });
       if (answerJson.length > 45000) return page_('入力が長すぎます', '<p>前の画面に戻って、入力を短くしてからもう一度送ってください。</p>');
       var lock = LockService.getScriptLock();
       lock.waitLock(20000);
       try {
         var sh = ensureSheet_(SpreadsheetApp.getActive(), SHEET_PCONF, PCONF_HEADERS);
-        sh.appendRow([submittedAt, id || '（新規）', coName, name, head + a.text + (memo ? '\n・ほかに伝えたいこと：' + memo : ''), ex, answerJson]);
+        sh.appendRow([submittedAt, id || '（新規）', coName, name, (isNew ? head : '・予約依頼の通知先メール：' + intakeEmail + '\n') + a.text + (memo ? '\n・ほかに伝えたいこと：' + memo : ''), ex, answerJson]);
         sh.getRange(sh.getLastRow(), 1).setNumberFormat('yyyy/MM/dd HH:mm:ss');
       } finally { lock.releaseLock(); }
       log_('提携の確認：' + (id || '新規') + ' ' + coName + ' ' + name);
@@ -2792,7 +2838,7 @@ function pconfPage_(q, fromPost) {
     : '<p>ご依頼をお送りする条件と、料金の計算に使う内容をうかがいます。選ぶところがほとんどです。</p>') +
     (q.err ? '<p style="color:#c0392b;font-weight:700">' + (isNew ? '会社名・メールアドレス・' : '') + 'ご担当のお名前を入れてください。</p>' : '') +
     (termsError ? '<p role="alert" style="color:#c0392b;font-weight:700">' + esc_(termsError) + '</p>' : '') +
-        (Object.keys(fieldErrors).some(function(k) { return k !== 'site' && k !== 'details_reviewed'; }) ? '<p role="alert">入力を確認してください。各項目に修正箇所を表示しています。</p>' : '') +
+        (Object.keys(fieldErrors).some(function(k) { return k !== 'site' && k !== 'details_reviewed' && k !== 'intake_email'; }) ? '<p role="alert">入力を確認してください。各項目に修正箇所を表示しています。</p>' : '') +
     '<form method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('kind', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) : hidden_('t', q.t)) + hidden_('go', '1') +
     (isNew ? '<label>ホームページのURL（あれば）<input name="site" maxlength="200" value="' + esc_(q.site || '') + '" placeholder="example.jp"></label>' +
       (fieldErrors.site ? '<p role="alert">' + esc_(fieldErrors.site) + '</p>' : '') : '');
@@ -2804,6 +2850,10 @@ function pconfPage_(q, fromPost) {
   }).join('');
   html += '<label>ほかに伝えたいこと（あれば）<textarea name="memo" maxlength="2000">' + esc_(q.memo || '') + '</textarea></label>' +
     '<label>ご担当のお名前（必須）<input name="name" required maxlength="60" value="' + esc_(q.name || '') + '"></label>' +
+    (!isNew ? '<label>予約依頼の通知を受け取るメールアドレス（必須）<input name="intake_email" type="email" autocomplete="email" required maxlength="120" value="' + esc_(String(q.intake_email || '').slice(0, 120)) + '"></label>' +
+      '<p class="note">予約受付を始める場合の通知先を確認するために使います。このフォームを送っても、通知先の設定は変わらず、このアドレスにメールは送られません。</p>' +
+      (fieldErrors.intake_email ? '<p role="alert">' + esc_(fieldErrors.intake_email) + '</p>' : '') :
+      (fieldErrors.intake_email ? '<p role="alert">' + esc_(fieldErrors.intake_email) + ' 最初の画面で連絡先をご確認ください。</p>' : '')) +
     (c.auto ? (fieldErrors.details_reviewed ? '<p role="alert">' + esc_(fieldErrors.details_reviewed) + '</p>' : '') +
       '<label><input type="checkbox" name="details_reviewed" value="1" required> 入力内容（事前に入っている項目を含む）に間違いがないか確認しました。</label>' : '') +
     '<fieldset><legend>提携規約への同意（必須）</legend>' +
@@ -2820,7 +2870,7 @@ function pconfStart_(q, websiteError) {
     (websiteError ? '<p role="alert">' + esc_(websiteError) + '</p>' : '') +
     '<form method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('kind', 'pconf') + hidden_('new', '1') + hidden_('step', '2') +
     '<label>会社名・屋号（必須）<input name="co" required maxlength="80" value="' + esc_(q.co || '') + '"></label>' +
-    '<label>お問い合わせを受け取るメールアドレス（必須）<input name="email" type="email" required maxlength="120" value="' + esc_(q.email || '') + '"></label>' +
+    '<label>予約依頼の通知を受け取るメールアドレス（必須）<input name="email" type="email" required maxlength="120" value="' + esc_(q.email || '') + '"></label>' +
     '<label>ホームページのURL（あれば）<input name="site" maxlength="200" placeholder="https://" value="' + esc_(q.site || '') + '"></label>' +
     '<button type="submit">次へ</button></form><p class="note">個人情報の取り扱いは <a href="' + esc_(CONFIG.SITE_URL) + '#privacy">こちら</a>。提携の内容は <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/terms/') + '">提携規約</a> をご覧ください。</p>';
   return page_('提携のお申し込み', html);
