@@ -1,7 +1,7 @@
 """手で選んだ写真だけを、決めた URL から取りなおして img/fac/ に置く（候補の自動集めではない）。
 使い方: python3 tools/fetch_curated.py tools/curated_trainer_chiba.json
 縮め方は tools/photo_harvest.py の候補作りと同じ（長辺900px・webp・切らない）。縦横比が photos.json の ratio とずれたら置かずに失敗にする。"""
-import io, json, os, sys, hashlib
+import io, json, os, sys, hashlib, time
 sys.path.insert(0, os.path.dirname(__file__))
 import photo_harvest as H
 from PIL import Image
@@ -17,7 +17,11 @@ for m in man:
         else: ok += 1
         continue
     try:
-        raw, _ = H.get(m["src"], binary=True)
+        for n in range(6):  # 一時的な通信の失敗だけ、間をあけて取りなおす（画像の検査はそのまま）
+            try: raw, _ = H.get(m["src"], timeout=40, binary=True); break
+            except OSError:
+                if n == 5: raise
+                time.sleep(3 * (n + 1))
         im = Image.open(io.BytesIO(raw)); im.load(); im = im.convert("RGB")
         s = min(1.0, 900 / max(im.size)); im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
         r = im.width / im.height
