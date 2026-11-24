@@ -30,7 +30,7 @@ assert.ok(/name="f_ng_area_0" value="1" checked/.test(page));                   
 assert.ok(ctx.pconfPage_({a:'pconf',t:id+'.xxxxxxxxxxxxxxxx'}).html.includes('リンクが正しくありません'));
 assert.ok(send({a:'pconf',t:tok}).includes('お名前を入れてください'));   // 名前がなければ送らない
 assert.equal(rows.length,0);
-const done=send({a:'pconf',t:tok,go:'1',name:'テスト',f_origin:'テスト駅',f_ng_area_0:'1',f_back:'別途確認',f_back_more:'確認用',ex0:'ちがう',ex0_fix:'4,600円'});
+const done=send({a:'pconf',t:tok,go:'1',name:'テスト',intake_email:'booking+pet@Example.test',f_origin:'テスト駅',f_ng_area_0:'1',f_back:'別途確認',f_back_more:'確認用',ex0:'ちがう',ex0_fix:'4,600円'});
 assert.match(page, /<form method="post" action="https:\/\/script\.google\.com[^"]+"/);
 assert.match(page, /name="terms_accept" value="1" required>/);
 assert.doesNotMatch(page, /name="terms_accept"[^>]+checked/);
@@ -40,13 +40,25 @@ assert.ok(mails[0][1].includes('受付を始めるのは、運営者が確かめ
 assert.equal(JSON.parse(rows[0][6]).terms.version, ctx.PTERMS_VER.hash);
 assert.equal(JSON.parse(rows[0][6]).terms.at, rows[0][0].toISOString());
 assert.equal(JSON.parse(rows[0][6]).terms.surface, 'pconf-application');
-const basic = {a:'pconf',t:tok,name:'テスト',f_back:'手入力を保持'};
+assert.match(page, /name="intake_email" type="email"[^>]*required[^>]*value=""/);
+assert.equal(JSON.parse(rows[0][6]).intake_email, 'booking+pet@example.test');
+assert.match(rows[0][4], /予約依頼の通知先メール/);
+assert.ok(!mails[0][1].includes('booking+pet@example.test'));
+const basic = {a:'pconf',t:tok,name:'テスト',intake_email:'booking+pet@example.test',f_back:'手入力を保持'};
 for (const patch of [{terms_accept:undefined}, {terms_accept:'0'}, {terms_version:'old'}, {terms_proof:'wrong'}]) {
   const invalid = send(basic, patch);
   assert.match(invalid, /role="alert"/);
   assert.match(invalid, /手入力を保持/);
   assert.doesNotMatch(invalid, /name="terms_accept"[^>]+checked/);
+  assert.match(invalid,/name="intake_email"[^>]+value="booking\+pet@example.test"/);
 }
+for(const dest of [undefined,'not-an-email','user@example.test,other@example.test','user..name@example.test','user@example-.test','user@localhost','a'.repeat(65)+'@example.test']) {
+  const invalid=send(basic,{intake_email:dest});
+  assert.match(invalid,/有効なメールアドレスを1件/);
+  assert.match(invalid,/手入力を保持/);
+}
+assert.equal(rows.length,1);
+assert.equal(mails.length,1);
 assert.match(ctx.doGet({parameter:{...basic,go:'1',terms_accept:'1',terms_version:ctx.PTERMS_VER.hash,terms_proof:ctx.pconfTermsProof_(basic,id)}}).html, /role="alert"/);
 assert.match(ctx.doPost({parameter:{kind:'pconf'},parameters:{terms_accept:['1','0']}}).html, /未送信/);
 const other = ctx.demoToken_('D7f0d2a2');
@@ -124,6 +136,7 @@ delete ctx.PCONF[id];
   const ok=send({...baseApplication,site:'corrected.com',f_radius:'都道府県・市区町村を指定',f_radius_more:'大阪市・堺市'});
   assert.ok(ok.includes('ありがとうございました') && rows.length===n+1 && rows[n][1]==='（新規）' && rows[n][2]==='新しい会社' && rows[n][4].includes('a@b.jp') && rows[n][4].includes('大阪市・堺市') && !rows[n][4].includes('←サイトの内容から変更'));
   assert.equal(JSON.parse(rows[n][6]).site,'https://corrected.com');
+  assert.equal(JSON.parse(rows[n][6]).intake_email,'a@b.jp');
   assert.match(JSON.parse(rows[n][6]).a.radius,/大阪市・堺市/);
   // 公式サイトの情報がある会社は全部開ける（例が出せるかどうかに関わらず、エラーにならない）
   ctx.DISPLAY_COMPANIES.forEach(x=>{ const h=ctx.pconfPage_({a:'pconf',t:ctx.demoToken_(x.id)}).html; assert.ok(h.includes('この内容で送る'), x.id); });
@@ -152,7 +165,7 @@ console.log('PASS: every company with site data gets a prefilled confirm page; n
   assert.equal(ir.examples.length,0);
   assert.equal(calls,0);
   // Transport and field checks only; these extra inputs are synthetic answers, not IR terms.
-  const q={a:'pconf',t:ctx.demoToken_(id),name:'テスト担当',
+  const q={a:'pconf',t:ctx.demoToken_(id),name:'テスト担当',intake_email:'ir-bookings@example.test',
     f_origin:fields.origin.v,f_radius:'都道府県・市区町村を指定',f_radius_more:'大阪市・堺市',
     f_dest:'依頼ごとに判断',f_dest_more:'テスト：大阪市発で片道100km超は空き状況により判断',f_hours:'テスト：9時〜17時',f_animals:fields.animals.v,
     f_maxkg:'個別に判断：車の寸法と体重で判断',f_riders:'テスト：1人',f_petonly:'できない',
@@ -165,11 +178,14 @@ console.log('PASS: every company with site data gets a prefilled confirm page; n
   assert.match(send({...q,f_radius_more:'要相談'}),/対象の地域名か/);
   assert.match(send({...q,f_pick2:''}),/各項目に修正箇所/);
   assert.match(send({...q,f_dest_more:''}),/対象の地域名か/);
+  assert.match(send(q,{intake_email:undefined}),/有効なメールアドレスを1件/);
   assert.match(send(q,{terms_accept:undefined}),/チェックしてください/);
   assert.deepEqual([rows.length,mails.length],before);
   assert.match(send(q),/ありがとうございました/);
   const stored=JSON.parse(rows.at(-1)[6]);
   assert.equal(stored.terms.version,ctx.PTERMS_VER.hash);
+  assert.equal(stored.intake_email,'ir-bookings@example.test');
+  assert.ok(!mails.at(-1)[1].includes('ir-bookings@example.test'));
   assert.match(stored.a.radius,/大阪市・堺市/);
   assert.match(stored.a.dest,/大阪市発で片道100km超は空き状況により判断/);
   assert.equal(rows.at(-1)[5],'');

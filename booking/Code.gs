@@ -2772,6 +2772,15 @@ function pconfSiteValue_(value) {
   if (site.length > 200 || !new RegExp('^https?://(?:' + label + '\\.)+' + label + '(?::[0-9]{1,5})?(?:[/?#][^\\s<>"\x27]*)?$', 'i').test(site)) return null;
   return site;
 }
+function pconfIntakeEmail_(value) {
+  var raw = String(value || '').trim();
+  if (raw.length > 120) return '';
+  var parts = raw.split('@'), label = '[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?';
+  if (parts.length !== 2 || !/^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+$/i.test(parts[0]) ||
+      parts[0].length > 64 || /^\.|\.$|\.\./.test(parts[0]) ||
+      !new RegExp('^(?:' + label + '\\.)+' + label + '$', 'i').test(parts[1])) return '';
+  return parts[0] + '@' + parts[1].toLowerCase();
+}
 function pconfTermsProof_(q, id) {
   var subject = q['new'] === '1' ?
     ['new', id, String(q.co || '').trim().slice(0, 80), String(q.email || '').trim().slice(0, 120), String(q.site || '').trim().slice(0, 200)] :
@@ -2789,13 +2798,14 @@ function pconfPage_(q, fromPost) {
   if (!c) return page_('リンクが正しくありません', '<p>お手数ですが、届いたメールのリンクからもう一度開いてください。</p>');
   var coName = isNew ? String(q.co || '').trim().slice(0, 80) : c.name, email = String(q.email || '').trim().slice(0, 120);
   if (!pconfTermsReady_()) return page_('現在、送信できません', '<p>提携規約を表示できません。時間をおいてリンクを開き直してください。</p>');
-  var termsError = '', fieldErrors = {};
+  var termsError = '', fieldErrors = {}, intakeEmail = pconfIntakeEmail_(isNew ? q.email : q.intake_email);
   if (q.go === '1') {
     var name = String(q.name || '').trim().slice(0, 60);
     if (!fromPost) termsError = 'このままでは送信できません。提携規約を読み、同意してから送ってください。';
     else if (q.terms_version !== PTERMS_VER.hash || q.terms_proof !== pconfTermsProof_(q, id)) termsError = '提携規約の版または入力内容を確認できませんでした。下の規約を開き直し、同意する場合はチェックしてください。';
     else if (q.terms_accept !== '1') termsError = '送信するには、提携規約を読み、同意する場合はチェックしてください。';
     if (fromPost) fieldErrors = pconfValidate_(c, q);
+    if (!intakeEmail) fieldErrors.intake_email = '予約依頼を受け取る有効なメールアドレスを1件入力してください。';
     if (!name || (isNew && (!coName || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)))) q.err = 1;
     if (fromPost && c.auto && q.details_reviewed !== '1') fieldErrors.details_reviewed = '事前に入っている項目も含め、入力内容を確認してからチェックしてください。';
     if (isNew && siteValue === null) fieldErrors.site = 'ホームページは有効なURLかドメインを入力してください。';
@@ -2808,13 +2818,13 @@ function pconfPage_(q, fromPost) {
       var submittedAt = new Date();
       var terms = { accepted:true, at:submittedAt.toISOString(), version:PTERMS_VER.hash,
         revised:PTERMS_VER.revised, url:pconfTermsUrl_(), surface:'pconf-application' };
-      var answerJson = JSON.stringify({ terms:terms, a:a.obj, memo:memo, email:isNew ? email : undefined, site:isNew ? String(q.site || '').trim().slice(0, 200) : undefined });
+      var answerJson = JSON.stringify({ terms:terms, intake_email:intakeEmail, a:a.obj, memo:memo, email:isNew ? email : undefined, site:isNew ? String(q.site || '').trim().slice(0, 200) : undefined });
       if (answerJson.length > 45000) return page_('入力が長すぎます', '<p>前の画面に戻って、入力を短くしてからもう一度送ってください。</p>');
       var lock = LockService.getScriptLock();
       lock.waitLock(20000);
       try {
         var sh = ensureSheet_(SpreadsheetApp.getActive(), SHEET_PCONF, PCONF_HEADERS);
-        sh.appendRow([submittedAt, id || '（新規）', coName, name, head + a.text + (memo ? '\n・ほかに伝えたいこと：' + memo : ''), ex, answerJson]);
+        sh.appendRow([submittedAt, id || '（新規）', coName, name, (isNew ? head : '・予約依頼の通知先メール：' + intakeEmail + '\n') + a.text + (memo ? '\n・ほかに伝えたいこと：' + memo : ''), ex, answerJson]);
         sh.getRange(sh.getLastRow(), 1).setNumberFormat('yyyy/MM/dd HH:mm:ss');
       } finally { lock.releaseLock(); }
       log_('提携の確認：' + (id || '新規') + ' ' + coName + ' ' + name);
@@ -2828,7 +2838,7 @@ function pconfPage_(q, fromPost) {
     : '<p>ご依頼をお送りする条件と、料金の計算に使う内容をうかがいます。選ぶところがほとんどです。</p>') +
     (q.err ? '<p style="color:#c0392b;font-weight:700">' + (isNew ? '会社名・メールアドレス・' : '') + 'ご担当のお名前を入れてください。</p>' : '') +
     (termsError ? '<p role="alert" style="color:#c0392b;font-weight:700">' + esc_(termsError) + '</p>' : '') +
-        (Object.keys(fieldErrors).some(function(k) { return k !== 'site' && k !== 'details_reviewed'; }) ? '<p role="alert">入力を確認してください。各項目に修正箇所を表示しています。</p>' : '') +
+        (Object.keys(fieldErrors).some(function(k) { return k !== 'site' && k !== 'details_reviewed' && k !== 'intake_email'; }) ? '<p role="alert">入力を確認してください。各項目に修正箇所を表示しています。</p>' : '') +
     '<form method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('kind', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) : hidden_('t', q.t)) + hidden_('go', '1') +
     (isNew ? '<label>ホームページのURL（あれば）<input name="site" maxlength="200" value="' + esc_(q.site || '') + '" placeholder="example.jp"></label>' +
       (fieldErrors.site ? '<p role="alert">' + esc_(fieldErrors.site) + '</p>' : '') : '');
@@ -2840,6 +2850,10 @@ function pconfPage_(q, fromPost) {
   }).join('');
   html += '<label>ほかに伝えたいこと（あれば）<textarea name="memo" maxlength="2000">' + esc_(q.memo || '') + '</textarea></label>' +
     '<label>ご担当のお名前（必須）<input name="name" required maxlength="60" value="' + esc_(q.name || '') + '"></label>' +
+    (!isNew ? '<label>予約依頼の通知を受け取るメールアドレス（必須）<input name="intake_email" type="email" autocomplete="email" required maxlength="120" value="' + esc_(String(q.intake_email || '').slice(0, 120)) + '"></label>' +
+      '<p class="note">予約受付を始める場合の通知先を確認するために使います。このフォームを送っても、通知先の設定は変わらず、このアドレスにメールは送られません。</p>' +
+      (fieldErrors.intake_email ? '<p role="alert">' + esc_(fieldErrors.intake_email) + '</p>' : '') :
+      (fieldErrors.intake_email ? '<p role="alert">' + esc_(fieldErrors.intake_email) + ' 最初の画面で連絡先をご確認ください。</p>' : '')) +
     (c.auto ? (fieldErrors.details_reviewed ? '<p role="alert">' + esc_(fieldErrors.details_reviewed) + '</p>' : '') +
       '<label><input type="checkbox" name="details_reviewed" value="1" required> 入力内容（事前に入っている項目を含む）に間違いがないか確認しました。</label>' : '') +
     '<fieldset><legend>提携規約への同意（必須）</legend>' +
@@ -2856,7 +2870,7 @@ function pconfStart_(q, websiteError) {
     (websiteError ? '<p role="alert">' + esc_(websiteError) + '</p>' : '') +
     '<form method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('kind', 'pconf') + hidden_('new', '1') + hidden_('step', '2') +
     '<label>会社名・屋号（必須）<input name="co" required maxlength="80" value="' + esc_(q.co || '') + '"></label>' +
-    '<label>お問い合わせを受け取るメールアドレス（必須）<input name="email" type="email" required maxlength="120" value="' + esc_(q.email || '') + '"></label>' +
+    '<label>予約依頼の通知を受け取るメールアドレス（必須）<input name="email" type="email" required maxlength="120" value="' + esc_(q.email || '') + '"></label>' +
     '<label>ホームページのURL（あれば）<input name="site" maxlength="200" placeholder="https://" value="' + esc_(q.site || '') + '"></label>' +
     '<button type="submit">次へ</button></form><p class="note">個人情報の取り扱いは <a href="' + esc_(CONFIG.SITE_URL) + '#privacy">こちら</a>。提携の内容は <a href="' + esc_(CONFIG.SITE_URL.replace(/\/$/, '') + '/partner/terms/') + '">提携規約</a> をご覧ください。</p>';
   return page_('提携のお申し込み', html);
