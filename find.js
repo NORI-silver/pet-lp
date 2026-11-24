@@ -64,7 +64,7 @@ function prefGuess(sel, apply){
   var btns = [].slice.call(box.querySelectorAll("button[data-k]"));
   var LBL = {};
   btns.forEach(function(b){ LBL[b.getAttribute("data-k")] = b.getAttribute("data-l") || b.textContent; });
-  items.forEach(function(it){
+  function initItem(it){
     // 条件：data-k と、カードの印（data-ft・data-tags。区切りは「|」、空白は「_」に）
     var ex = [it.getAttribute("data-ft"), it.getAttribute("data-tags")].join("|").split("|").filter(Boolean).map(function(x){ return x.trim().replace(/ /g, "_"); });
     it._k = " " + (it.getAttribute("data-k") || "") + " " + ex.join(" ") + " ";
@@ -76,7 +76,8 @@ function prefGuess(sel, apply){
     // 来てくれる地域（🚗 の行）。出張・訪問の施設は、所在地ではなくこの地域でしぼる（Nori 2026-11-16）
     it._area = "";
     [].forEach.call(it.querySelectorAll(".ux-c-l"), function(r){ var i = r.querySelector("i"); if (i && i.textContent.indexOf("🚗") >= 0) it._area = r.textContent.replace("🚗", "").trim(); });
-  });
+  }
+  items.forEach(initItem);
   // カードのイメージ写真（無料の写真素材。本物の施設の写真ではないので「イメージ」と出し、alt は空）。となりが同じにならないよう順番に回す
   var pics = (box.getAttribute("data-pics") || "").split("|");
   if (pics[1]) {
@@ -88,6 +89,41 @@ function prefGuess(sel, apply){
     });
   }
   var showUnk = false;
+  // 県を選んだら、その県の施設を全部その場に出す（県のページへのリンクで逃がさない。Nori 2026-11-24）。
+  // 全国のページは県ごとに数件だけなので、県ページ・市区町村ページから作った /find-data/ を読み、
+  // その県のまとまりを全部のカード（市区町村ごとの見出しつき）に置きかえる。
+  var fullState = {};
+  function loadFull(p){
+    if (!sel || fullState[p]) return;
+    var sec = document.querySelector('.emg-pref[data-pref="' + p + '"]');
+    if (!sec || !sec.querySelector(".fr-more") || !SLUG[p]) return;
+    fullState[p] = 1;
+    var note = el("p", "ff-load", "読み込んでいます…");
+    sec.appendChild(note);
+    fetch("/find-data/" + cat + "/" + SLUG[p] + ".json").then(function(r){ return r.json(); }).then(function(j){
+      var html = (j.groups || []).map(function(g){
+        return '<div class="fr ff-full">' + (g[0] ? '<h3 class="fr-h">' + g[0].replace(/[<>&"]/g, "") + "<small>" + g[1].length + unit + "</small></h3>" : "") + '<div class="fr-s">' + g[1].join("") + "</div></div>";
+      }).join("");
+      if (!html) { fullState[p] = 2; note.remove(); return; }
+      var tpl = document.createElement("template");
+      tpl.innerHTML = html;
+      var kids = [].slice.call(sec.children), first = null, drop = [];
+      kids.forEach(function(ch){
+        var isNear = ch.querySelector && ch.querySelector("[data-near]");
+        if ((ch.classList.contains("fr") && !isNear) || ch.classList.contains("fr-more")) { if (!first) first = ch; drop.push(ch); }
+      });
+      var old = [];
+      drop.forEach(function(ch){ [].forEach.call(ch.querySelectorAll("[data-ffi]"), function(it){ old.push(it); }); });
+      if (first) sec.insertBefore(tpl.content, first);
+      drop.forEach(function(ch){ ch.remove(); });
+      items = items.filter(function(it){ return old.indexOf(it) < 0; });
+      [].forEach.call(sec.querySelectorAll(".ff-full [data-ffi]"), function(it){ initItem(it); items.push(it); });
+      fullState[p] = 2;
+      note.remove();
+      apply(false);
+    }).catch(function(){ fullState[p] = 2; note.remove(); });
+  }
+  function maybeLoad(){ places.forEach(function(p){ loadFull(p.p); }); }
   function on(){ return btns.filter(function(b){ return b.getAttribute("aria-pressed") === "true"; }).map(function(b){ return b.getAttribute("data-k"); }); }
   function norm(s){ return (s || "").trim().toLowerCase().replace(/[\s　]+/g, " "); }
   // 1件の判定：0＝合う、1＝書いていない、2＝合わない（県・入力に合わないか、しないと書いてある）
@@ -231,6 +267,9 @@ function prefGuess(sel, apply){
     }
     clr.hidden = !(ks.length || qs);
     box.classList.toggle("ux-busy", !!(ks.length || qs || pf.length));
+    // 選んでいる県のまとまりでは、県のページへのリンク（見出し）を出さない（全部その場に出すため）
+    if (sel) [].forEach.call(document.querySelectorAll(".emg-pref[data-pref]"), function(s){ s.classList.toggle("ff-sel", pf.some(function(p){ return p.p === s.getAttribute("data-pref"); })); });
+    maybeLoad();
     if (track && window.gtag) gtag("event", "ff_filter", {cat: cat, k: ks.join(","), pref: pf.map(function(p){ return p.p; }).join(","), places: pf.length, n: c[0]});
   }
   box.addEventListener("click", function(ev){
