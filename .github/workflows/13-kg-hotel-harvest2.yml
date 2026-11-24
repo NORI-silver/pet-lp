@@ -1,0 +1,48 @@
+# 一時の補助。神奈川のペットホテルの写真の候補を、各事業者の公式サイトから集める。写真は人が見て選ぶ（何も送らない）。終わったら消す。
+name: kg-hotel-harvest2
+on:
+  push:
+    branches: ['kg-hotel-harvest2-1125']
+    paths: ['.github/workflows/kg-hotel-harvest2.yml']
+permissions:
+  contents: write
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q pillow "numpy<2" "opencv-python-headless==4.9.0.80"
+      - name: 対象を決める
+        run: |
+          python3 - <<'PY'
+          import json
+          h = json.load(open('tools/hotels.json', encoding='utf-8'))['hotels']
+          pp = json.load(open('tools/photo_permits.json', encoding='utf-8'))
+          skip = {x['id'] for k in ('declined', 'waiting') for x in pp.get(k, [])}
+          have = {(x['cat'], x['id']) for x in json.load(open('tools/photos.json', encoding='utf-8'))['items']}
+          ids = [x for x in h if '神奈川県' in x['prefs'] and x['id'] not in skip and ('hotel', x['id']) not in have]
+          for x in ids:
+              pp['permits'].append({'cat': 'hotel', 'id': x['id'], 'name': x['name'], 'scope': '公式サイトの写真（オーナー申告）', 'by': 'オーナー（塩田）の申告', 'date': '2026-11-25', 'ref': '2026-11-24 オーナー（塩田）の申告（事業者ごとの許可ではない）', 'credit': '写真：' + x['name']})
+          json.dump(pp, open('tools/photo_permits.json', 'w', encoding='utf-8'), ensure_ascii=False)
+          open('/tmp/ids.txt', 'w').write(' '.join('hotel:' + x['id'] for x in ids))
+          print(len(ids))
+          PY
+      - name: 公式サイトを読む
+        run: |
+          python3 -X faulthandler tools/photo_harvest.py out $(cat /tmp/ids.txt)
+          cat out/summary.md | head -20
+      - name: 候補をブランチ kg-hotel-cand に置く
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mv out /tmp/out
+          git checkout -q --orphan kg-hotel-cand
+          git rm -rq --cached . && git clean -fdq
+          cp -r /tmp/out/. .
+          git add -A
+          git commit -qm "神奈川ホテルの写真の候補"
+          git push -q -f origin kg-hotel-cand
