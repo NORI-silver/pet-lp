@@ -392,6 +392,8 @@ function receive_(p) {
   for (var i = 0; i < need.length; i++) {
     if (!String(p[need[i]] || '').trim()) return { ok: false, error: 'missing ' + need[i] };
   }
+  // 公開フォームで明示的な英語テスト名とダミー電話がそろう場合は、受付を作らず、どこにも送らない。
+  if (isDummyPublicIntake_(p.name, p.tel)) return { ok: false, error: 'invalid_phone' };
   var pref = shortPref_(p.pref);
   if (PREFS.indexOf(pref) < 0) return { ok: false, error: 'area' };
   // 日付だけ（YYYY-MM-DD）のときは、その日の終わりを期限にする
@@ -1804,7 +1806,7 @@ function sendTestRideCheck(to) {
 
 /* ───────── 集計（「集計」タブ。1日1回 checkPending から作り直す。手で直さない） ─────────
    月ごと（受付日時の月）に、問い合わせ → 予約確定 → 取り消し・見つからず → 送迎の確認 → アンケート を数える。
-   テストの依頼（お名前が「テスト」で始まる・運営のアドレスから）は数えない。個人情報を消したあとの行は見分けられないのでそのまま数える。 */
+   テストの依頼（お名前が「テスト」で始まる・運営のアドレスから・公開フォームの明示的なダミー入力）は数えない。個人情報を消したあとの行は見分けられないのでそのまま数える。 */
 var SHEET_SUMMARY = '集計';
 function updateSummary_(force) {
   var day = Utilities.formatDate(new Date(), TZ, 'yyyyMMddH'), props = PropertiesService.getScriptProperties();
@@ -1816,7 +1818,7 @@ function updateSummary_(force) {
   for (var i = 1; i < vals.length; i++) {
     var r = toObj_(h, vals[i]);
     if (!r['受付番号']) continue;
-    if (/^\s*テスト/.test(String(r['お名前'] || '')) || (admin && String(r['メール'] || '').trim().toLowerCase() === admin)) { testIds[String(r['受付番号'])] = 1; continue; }
+    if (isDummyPublicIntake_(r['お名前'], r['電話番号']) || /^\s*テスト/.test(String(r['お名前'] || '')) || (admin && String(r['メール'] || '').trim().toLowerCase() === admin)) { testIds[String(r['受付番号'])] = 1; continue; }
     var t = r['受付日時'] instanceof Date ? r['受付日時'] : new Date(r['受付日時']);
     if (isNaN(t.getTime())) continue;
     var c = row0(Utilities.formatDate(t, TZ, 'yyyy-MM'));
@@ -1871,6 +1873,7 @@ function sendReceipt_(r) {
 }
 
 function toCustomer_(r, subject, text, html) {
+  if (isDummyPublicIntake_(r['お名前'], r['電話番号'])) return; // 旧受付に残るダミー入力も外部のメール・LINEに送らない
   if (r['メール']) mail_(r['メール'], subject, text + footer_(), html || '');
   if (r['お客さまLINE']) linePush_(r['お客さまLINE'], text);
 }
@@ -1934,6 +1937,7 @@ function lineApi_(kind, payload) {
 // 提携先へ：こちらのLINEに登録済みならLINE → メール → 先方LINE公式（運営者がボタンで送信）
 // 戻り値：'auto'（自動で送った）/ 'manual'（手配ページから運営者が送る）/ false（届けられない）
 function deliver_(pt, subject, text, r, html) {
+  if (r && isDummyPublicIntake_(r['お名前'], r['電話番号'])) return false; // 過去の受付からの締切・再通知も止める
   if (r && isTest_(r)) {
     if (!pt.email && !pt.lineId && !pt.oaId && !pt.lineUrl) return false;
     var to = pt.email || (pt.lineId ? 'こちらのLINE' : 'LINE公式 ' + (pt.oaId || pt.lineUrl));
@@ -2186,9 +2190,16 @@ function footer_() {
   return '\n\n――――――――――\n' + CONFIG.SERVICE_NAME + '\n' + CONFIG.SITE_URL + '\nこのメールに返信すると運営に届きます。';
 }
 
+// TEST の表記ゆれを吸収する。名前だけでは本名を誤判定するので、全桁ゼロのダミー電話も必須。
+function isDummyPublicIntake_(name, tel) {
+  var n = String(name || '').normalize('NFKC').trim();
+  var t = String(tel || '').normalize('NFKC').trim().replace(/^'/, '').replace(/[\s()+\-‐‑–−ー]/g, '');
+  return /^test$/i.test(n) && /^0{10,11}$/.test(t);
+}
+
 // テストの依頼か（会社には送らず、運営者のメールに送る）
 function isTest_(r) {
-  if (CONFIG.TEST_MODE) return true;
+  if (CONFIG.TEST_MODE || isDummyPublicIntake_(r['お名前'], r['電話番号'])) return true;
   var ids = pickedIds_(r); // 受け付けを始めた会社だけに宛てた依頼は、B1 が「止める」でも会社に送る（Nori 2026-11-08「aiaiはOPENにしていい」）
   if (!liveSending_() && !(ids.length && ids.every(isOpen_))) return true;
   if (/^\s*テスト/.test(String(r['お名前'] || ''))) return true;
