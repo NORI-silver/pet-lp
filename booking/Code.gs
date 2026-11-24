@@ -2579,7 +2579,7 @@ function pconfAuto_(c) {
     { h: '1. どこへ行けるか', items: [
       item('origin', 'お迎えの起点（お店・車庫のある市区町村か最寄り駅。番地は不要です）', 'need', 'text', { ph: '例：横浜市泉区（相鉄線 緑園都市駅）', note: c.pref ? '公式サイトの所在地：' + c.pref + (c.area_text ? '。対応エリア：' + c.area_text : '') : '' }),
       item('radius', 'お迎えに行ける範囲', c.anywhere ? 'site' : 'need', 'radio', { o: ['起点から〇kmまで（下に書いてください）', '都道府県・市区町村を指定', '依頼ごとに判断', '上限なし'], v: c.anywhere ? '上限なし' : undefined, more: '距離・具体的な地域・判断条件（例：30km）' }),
-      item('dest', '行き先の範囲', c.long ? 'chk' : 'need', 'radio', { o: ['お迎えの都道府県の中だけ', '距離に上限がある（下に書いてください）', '全国どこへでも'], v: c.long ? '全国どこへでも' : undefined, more: '上限があるときは何kmまでか' }),
+      item('dest', '行き先の範囲', c.long ? 'chk' : 'need', 'radio', { o: ['お迎えの都道府県の中だけ', '距離に上限がある（下に書いてください）', '都道府県・市区町村を指定', '依頼ごとに判断', '全国どこへでも'], v: c.long ? '全国どこへでも' : undefined, more: '距離・具体的な地域・判断条件（例：大阪府内と関西空港）' }),
       item('ng_area', '行けない地域', 'need', 'check', { o: ['沖縄県', '離島'], v: c.ng_prefs && c.ng_prefs.indexOf('沖縄') >= 0 ? ['沖縄県'] : [], more: 'ほかに行けない都道府県があれば' }),
       item('ng_short', '受けない依頼', 'need', 'check', { o: ['乗る距離が、お迎えに向かう距離より短い依頼', 'お迎えも行き先も、お店の地域の外の依頼'], v: (c.ride_ge_pick ? ['乗る距離が、お迎えに向かう距離より短い依頼'] : []).concat(c.need_prefs ? ['お迎えも行き先も、お店の地域の外の依頼'] : []) })
     ]},
@@ -2679,7 +2679,7 @@ function pconfValidate_(c, q) {
     if (k === 'wait' && v && !/^(なし|無し|かからない|無料|待機は受けない|待機なし|個別見積もり)$/.test(v) && !( /[0-9]\s*分/.test(v.normalize('NFKC')) && /[0-9]\s*円/.test(v.normalize('NFKC')) )) issues[k] = '無料・待機は受けない・個別見積もり、または時間と金額を入力してください。';
     if (k === 'night' && v && !noNight.test(v) && v !== '個別見積もり' && !( /[0-9](?:\s*時|:)/.test(v.normalize('NFKC')) && /[0-9]\s*(?:円|%|割)/.test(v.normalize('NFKC')) )) issues[k] = '割増なし・夜間は受けない・個別見積もり、または時間帯と金額を入力してください。';
     if (k === 'night_how' && nonempty(read('night')) && !noNight.test(read('night')) && read('night') !== '個別見積もり' && !v) issues[k] = '割増がかかる条件を選んでください。';
-    if (k === 'radius' && /地域|市区町村|依頼ごと/.test(v) && (!nonempty(detail) || /^(相談|応相談|要相談|その都度|個別判断|依頼ごとに判断|案件による)$/.test(detail))) issues[k] = '対象の地域名か、受付の判断に使う条件を具体的に入力してください。';
+    if (/^(radius|dest)$/.test(k) && /地域|市区町村|依頼ごと/.test(v) && (!nonempty(detail) || /^(相談|応相談|要相談|その都度|個別判断|依頼ごとに判断|案件による)$/.test(detail))) issues[k] = '対象の地域名か、受付の判断に使う条件を具体的に入力してください。';
     if (/^(radius|dest|long)$/.test(k) && /下に書いて/.test(v) && !range(detail)) issues[k] = '距離を0より大きい数字で入力してください（例：30km）。';
     if (/^(pick|back)$/.test(k) && v && v !== 'かからない' && !nonempty(detail)) issues[k] = '料金の金額と適用条件を入力してください。';
     if (k === 'maxkg' && v && !/^(?:上限なし|体重の上限なし|個別に判断(?:[：:]\s*.+)?|(?:[0-9]+(?:\.[0-9]+)?)\s*kg(?:まで)?|(?:[0-9]+(?:\.[0-9]+)?)\s*キロ(?:まで)?)$/i.test(v.normalize('NFKC'))) issues[k] = '例：50kgまで、上限なし、個別に判断：車の寸法で確認。';
