@@ -482,11 +482,20 @@ function receive_(p) {
   }
   rows.forEach(function (r) {
     r['電話番号'] = String(r['電話番号']).replace(/^'/, '');
-    sendReceipt_(r);
-    var sent = sendWave_(r['受付番号'], 1);
+    var kasukabe = !!r['春日部通知経路'], sent, saved;
+    if (kasukabe) {
+      try { sent = sendWave_(r['受付番号'], 1); }
+      catch (e) { log_('春日部受付通知を保留: ' + r['受付番号']); }
+      saved = findReq_(r['受付番号']);
+      sendReceipt_(r, !!saved && kasukabeInitialSent_(saved.data));
+    } else {
+      sendReceipt_(r);
+      sent = sendWave_(r['受付番号'], 1);
+    }
     notifyAdmin_((isTest_(r) ? '【テスト】' : '') + '新しいご依頼 ' + r['受付番号'] + (r['区間'] ? '・' + r['区間'] : '') + '（' + pref + '・' + whenText_(r) + '）',
       rideText_(r) + '\n\nお名前：' + r['お名前'] + '\n電話：' + r['電話番号'] + '\nメール：' + r['メール'] + '\n連絡方法：' + r['連絡方法'] +
-      '\n\nお知らせした提携先：' + (sent || 'なし（このエリアの提携先がいません）') + '\n\n▼ 手配ページ（LINEで送る・決定の入力）\n' + adminUrl_(r['受付番号']));
+      '\n\nお知らせした提携先：' + (sent || (kasukabe ? '送信済みの記録なし' : 'なし（このエリアの提携先がいません）')) +
+      (kasukabe && (!saved || !kasukabeInitialSent_(saved.data)) ? '\n春日部への通知は保留です。送信記録と指定経路を確認し、別経路・重複送信はしないでください。' : '') + '\n\n▼ 手配ページ（LINEで送る・決定の入力）\n' + adminUrl_(r['受付番号']));
   });
   return split ? { ok: true, id: rows[0]['受付番号'], back_id: rows[1]['受付番号'] } : { ok: true, id: rows[0]['受付番号'] };
 }
@@ -523,11 +532,18 @@ function sendWave_(id, stage) {
   }
   var manual = [];
   targets = targets.filter(function (pt) {
+    if (pt.id === KASUKABE_INTAKE_ID) return kasukabeNotifyNew_(id, pt);
     var how = deliver_(pt, (isAsk_(r) ? '【空き状況と料金のお問い合わせ】' : isQuoteReq_(r) ? '【お見積もりのご依頼】' : '【新しいご依頼】') + r['都府県'] + '・' + whenText_(r), requestText_(r, pt), r, requestHtml_(r, pt));
     if (how === 'manual') manual.push(pt.name);
     return !!how;
   });
-  already = already.concat(targets.map(function (pt) { return pt.id; }));
+  var targetIds = targets.map(function (pt) { return pt.id; });
+  if (r['春日部通知経路']) {
+    var latest = findReq_(id);
+    already = latest ? String(latest.data['通知した提携先'] || '').split(',').filter(String) : already;
+    targetIds = targetIds.filter(function (pid) { return !already.includes(pid); });
+  }
+  already = already.concat(targetIds);
   setReq_(row.rowIndex, { '通知段階': stage, '通知した提携先': already.join(',') });
   log_(id + ' 第' + stage + '段 お知らせ: ' + (targets.map(function (pt) { return pt.id; }).join(',') || 'なし'));
   if (manual.length) {
@@ -1146,7 +1162,8 @@ function acceptPage_(q) {
   if (quoted) return page_(isQuoteReq_(r) ? 'お見積もりをお送り済みです' : 'お返事をお送り済みです', '<p>確定料金 ' + esc_(fareText_(quoted.fare, quoted.fareHw)) + '・お迎え予定 ' + esc_(fmt_(new Date(quoted.at))) + ' でお客さまにお届けしています。お客さまが' + (isAsk_(r) ? '予約を決めたら' : '選んだら') + 'お知らせします。</p>' + withdrawNote_(q.id, pt.id));
   var def = defaultAt_(r);
   var html = '<p>' + esc_(pt.name) + ' 様</p>' +
-    (isAsk_(r) ? '<div class="box"><b>空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。</b>お受けできる場合は、' + inputWord_(r) + 'を入れてください。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。</div>'
+    (pt.id === KASUKABE_INTAKE_ID ? '<div class="box"><b>空き状況と料金のお問い合わせです。</b>表示の条件だけでお受けできる場合は、確定料金を入れてください。飼い主さんが選び、確定の通知が送られたら、お名前・ご連絡先をお知らせします。</div>' :
+      isAsk_(r) ? '<div class="box"><b>空き状況と料金のお問い合わせです' + (pickedIds_(r).length > 1 ? '（お客さまが' + pickedIds_(r).length + '社にお声がけしています）' : '') + '。</b>お受けできる場合は、' + inputWord_(r) + 'を入れてください。お客さまが内容を見て「予約する」を押した時点で決まり、お名前・ご連絡先をお知らせします。</div>'
       : isQuoteReq_(r) ? '<div class="box"><b>お見積もりのご依頼です。</b>入れた確定料金をお客さまにお届けし、お客さまがほかの会社とくらべて1社を選びます。選ばれたら、お名前・ご連絡先をお知らせします。</div>'
       : needsChoice_(r) ? '<div class="box"><b>お客さまが' + pickedIds_(r).length + '社にお声がけしています。</b>引き受ける場合は確定料金を入れてください。お客さまが引き受けた会社の中から1社を選んだ時点で決まり、お名前・ご連絡先をお知らせします。</div>'
       : '<div class="box"><b>お客さまのお名前・電話番号・メールは、下の「引き受ける」を押すとすぐにこの画面に表示されます。</b>同じ内容をメールでもお送りします。先着1社です。</div>') +
@@ -1282,7 +1299,8 @@ function quote_(id, pt, at, fare, msg, fareHw, retWay, contact) {
     '　※' + changeNote_(pt) + 'くわしくは会社にご確認ください。\n' + waitRuleForCustomer_(r, pt) +
     (retWay ? '■ 帰りのやり方：' + retWay + '\n' : '') + '■ お支払い：' + payForCustomer_(pt) + '\n' + '■ 予約したあとのキャンセル：' + cancelRuleText_(pt) + '\n' + (msg ? '■ ペットタクシーから：' + msg + '\n' : '') +
     '■ この内容で予約できる期限：' + fmt_(new Date(quoteUntil_(mine))) + 'まで（過ぎると会社の空き状況が変わるため、この内容では予約できません）\n' +
-    (isAsk_(r) ? '\n▼ この内容で予約する（押すと予約が確定し、この会社からご連絡があります）\n' : '\n▼ この会社に決める（押すと予約が決まり、この会社からご連絡があります）\n') + chooseUrl_(id, pt.id) +
+    (pt.id === KASUKABE_INTAKE_ID ? '\n▼ この内容で予約する（事業者への通知が完了したら、確定をお知らせします）\n' :
+      isAsk_(r) ? '\n▼ この内容で予約する（押すと予約が確定し、この会社からご連絡があります）\n' : '\n▼ この会社に決める（押すと予約が決まり、この会社からご連絡があります）\n') + chooseUrl_(id, pt.id) +
     '\n\n' + (!isAsk_(r) || many ? 'ほかの会社の' + word + 'も、届きしだいお送りします。くらべてから決めてかまいません。' : '') +
     (isAsk_(r) ? '予約しない場合は、何もしなくて大丈夫です（下のリンクで取り消すこともできます）。\n' : 'どの会社にも決めない場合は、何もしなくて大丈夫です（下のリンクで取り消すこともできます）。\n') + cancelUrl_(id), quoteHtml_(r, pt, at, fare, fareHw, retWay, msg, mine, word, many));
   notifyAdmin_(word + ' ' + id + '：' + pt.name, '■ ' + pt.name + '\n■ お迎え予定：' + fmt_(at) + '\n■ 確定料金：' + fareText_(fare, fareHw) + '\n\n' + rideText_(r));
@@ -1379,11 +1397,13 @@ function choosePage_(q) {
     var res = accept_(q.id, pt, new Date(qt.at), qt.fare, qt.msg, qt.fareHw, qt.way, { tel: qt.tel, mail: qt.mail });
     if (!res.ok) return page_('決められませんでした', '<p>' + esc_(res.msg) + '</p>');
     if (res.kasukabeNoticePending) return kasukabePendingPage_(res.r);
+    if (pt.id === KASUKABE_INTAKE_ID) return page_('ご予約が確定しました', '<p>「' + esc_(pt.name) + '」への予約通知を送信しました。</p>');
     return page_(isAsk_(r) ? 'ご予約が確定しました' : '決まりました', '<p>「' + esc_(pt.name) + '」' + (isAsk_(r) ? 'のご予約が確定しました。確定のメールをお送りしました。' : 'に決まりました。決定のメールをお送りしました。') + 'このあと、' + esc_(pt.name) + 'からご連絡があります。</p>');
   }
   return page_(isAsk_(r) ? 'この内容で予約しますか？' : 'この会社に決めますか？', '<div class="box">■ ペットタクシー：' + esc_(pt.name) + '<br>■ お迎え予定：' + esc_(fmt_(new Date(qt.at))) + '<br>■ 料金（確定・税込）：' + esc_(fareText_(qt.fare, qt.fareHw)) + '<br>　※' + esc_(changeNote_(pt)) +
     (qt.way ? '<br>■ 帰りのやり方：' + esc_(qt.way) : '') + '<br>■ お支払い：' + esc_(payForCustomer_(pt)) + '<br>■ 予約したあとのキャンセル：' + esc_(cancelRuleText_(pt)) + '<br>■ 予約できる期限：' + esc_(fmt_(new Date(quoteUntil_(qt)))) + 'まで</div>' +
-    '<p>' + (isAsk_(r) ? '押すと予約が確定し、' + esc_(pt.name) + 'にお名前・ご連絡先をお知らせします。' + (pickedIds_(r).length > 1 ? 'ほかの会社へのお問い合わせは締め切ります。' : '') : '決めると、ほかの会社へのご依頼は締め切ります。') + '</p>' +
+    '<p>' + (pt.id === KASUKABE_INTAKE_ID ? '押すと、選んだ会社に予約内容・お名前・ご連絡先を送ります。通知が完了したら予約の確定をお知らせします。' :
+      isAsk_(r) ? '押すと予約が確定し、' + esc_(pt.name) + 'にお名前・ご連絡先をお知らせします。' + (pickedIds_(r).length > 1 ? 'ほかの会社へのお問い合わせは締め切ります。' : '') : '決めると、ほかの会社へのご依頼は締め切ります。') + '</p>' +
     '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'choose') + hidden_('id', q.id) + hidden_('p', q.p) + hidden_('k', q.k) + hidden_('go', '1') +
     '<button type="submit">' + (isAsk_(r) ? 'この内容で予約する' : 'この会社に決める') + '</button></form>');
 }
@@ -1435,6 +1455,7 @@ function adminPage_(q) {
         lineAction_(pt, 'LINEで依頼を送る' + (auto(pt) ? '（任意）' : ''), requestText_(r, pt)) + '</div>';
     });
     if (!asked.length) html += '<p class="note">まだどこにも送れていません。</p>';
+    if (r['春日部通知経路'] && !kasukabeInitialSent_(r)) html += '<p class="note">春日部への通知は保留です。送信記録と指定経路を確認してください。別経路での送信・重複送信はしません。</p>';
     if (!pickedIds_(r).length && Number(r['通知段階']) < 2) {
       html += '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' + hidden_('a', 'admin') + hidden_('id', q.id) + hidden_('k', q.k) + hidden_('wave', '2') +
         '<button type="submit" class="gray">近くのエリア・全国対応の会社にも今すぐ送る</button></form>';
@@ -1934,13 +1955,18 @@ function updateSummary() { updateSummary_(true); }
 
 /* ───────── お客さまへのメール ───────── */
 
-function sendReceipt_(r) {
+function sendReceipt_(r, kasukabeSent) {
   var lineNote = '';
   if (CONFIG.LINE_CHANNEL_ACCESS_TOKEN && CONFIG.LINE_ADD_URL) {
     lineNote = '\n\n▼ LINEでもお知らせを受け取れます\n友だち追加して、受付番号「' + r['受付番号'] + '」を送ってください。\n' + CONFIG.LINE_ADD_URL;
   }
   toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】' + (isAsk_(r) ? 'お問い合わせを受け付けました' : '受け付けました') + '（受付番号 ' + r['受付番号'] + '）' + legTag_(r),
-    r['お名前'] + ' 様\n\nお問い合わせありがとうございます。受け付けました。\n' + (isAsk_(r) ? '※まだ予約は確定していません。\n\n選んだ会社「' + r['指定した提携先'] + '」に、この日時の空き状況と料金を問い合わせています。ほかの会社には問い合わせません。\n会社から空き状況と確定料金のお返事が届いたら、メールでお送りします' + (pickedIds_(r).length > 1 ? '（届くたびにお送りします）' : '') + '。内容に納得できたら、メールの「この内容で予約する」を押してください。押した時点で予約が確定します' + (pickedIds_(r).length > 1 ? '（ほかの会社へのお問い合わせは締め切ります）' : '') + '。\n\n'
+    r['お名前'] + ' 様\n\nお問い合わせありがとうございます。受け付けました。\n' +
+    (r['春日部通知経路'] ? '※まだ予約は確定していません。\n\n' +
+      (kasukabeSent ? '春日部店に空き状況と料金の通知を送信しました。お返事が届いたらご案内します。' :
+        '春日部店への通知は確認中です。重複を避けるため、同じ問い合わせを取り直さないでください。お急ぎの場合は、このメールに返信してください。') +
+      (pickedIds_(r).length > 1 ? '\n一緒に選んだ会社からも、お返事が届いたらご案内します。' : '') + '\n\n'
+      : isAsk_(r) ? '※まだ予約は確定していません。\n\n選んだ会社「' + r['指定した提携先'] + '」に、この日時の空き状況と料金を問い合わせています。ほかの会社には問い合わせません。\n会社から空き状況と確定料金のお返事が届いたら、メールでお送りします' + (pickedIds_(r).length > 1 ? '（届くたびにお送りします）' : '') + '。内容に納得できたら、メールの「この内容で予約する」を押してください。押した時点で予約が確定します' + (pickedIds_(r).length > 1 ? '（ほかの会社へのお問い合わせは締め切ります）' : '') + '。\n\n'
       : isQuoteReq_(r) ? '選んだ会社「' + r['指定した提携先'] + '」にお見積もりを依頼しています。ほかの会社には依頼しません。お見積もりが届くたびにメールでお送りするので、料金をくらべて、決める会社のリンクを押してください。押すまで予約は決まりません。\n\n'
       : needsChoice_(r) ? '選んだ会社「' + r['指定した提携先'] + '」に空き状況を確認しています。ほかの会社には依頼しません。引き受けた会社から、お迎えの時間と確定料金が届くたびにメールでお送りするので、決める会社のリンクを押してください。押した時点で予約が決まり、ほかの会社への依頼は取り消します。\n\n'
       : (r['指定した提携先'] ? '選んだ会社「' + r['指定した提携先'] + '」に空き状況を確認しています。ほかの会社には依頼しません。' : 'いま、空いているペットタクシーを探しています。') + '引き受けが決まりしだい、お迎えの時間と確定料金をお送りします。\n\n') +
@@ -2206,7 +2232,8 @@ function quoteHtml_(r, pt, at, fare, fareHw, retWay, msg, mine, word, many) {
     mailNotes_([
       ['⏱', changeNote_(pt) + 'くわしくは会社にご確認ください。'],
       isRound_(r) && !f.noWait ? ['🔁', '待っていてもらうときの待ち時間の料金は、当日の実際の待ち時間で精算します。'] : null,
-      ['✕', '予約したあとのキャンセル：' + cancelRuleText_(pt)]
+      ['✕', '予約したあとのキャンセル：' + cancelRuleText_(pt)],
+      pt.id === KASUKABE_INTAKE_ID ? ['ℹ', '事業者への通知が完了したら、確定をお知らせします'] : null
     ]) +
     mailFine_([
       '期限を過ぎると会社の空き状況が変わるため、この内容では予約できません。',
@@ -3649,6 +3676,30 @@ function kasukabeRouteMailbox_(pt, r) {
 function kasukabeWasNotified_(pt, r) {
   return !!kasukabeRouteMailbox_(pt, r) && (!CONFIG.TEST_MODE || /:test$/.test(r['春日部通知経路'])) &&
     String(r['通知した提携先'] || '').split(',').includes(pt.id);
+}
+function kasukabeInitialSent_(r) {
+  return String(r['通知した提携先'] || '').split(',').includes(KASUKABE_INTAKE_ID);
+}
+function kasukabeNotifyNew_(id, pt) {
+  var lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    var row = findReq_(id), r = row && row.data;
+    if (!r || r['状態'] !== ST.OPEN || !isAsk_(r) || r['春日部通知状態'] || kasukabeInitialSent_(r) ||
+        !kasukabeRouteMailbox_(pt, r) || !kasukabeIntakeFits_(pt, r)) return false;
+    // 送信の成否が曖昧なとき、同じ依頼をもう一度送らない。
+    setReq_(row.rowIndex, {'春日部通知状態': '受付通知の確認待ち'});
+    SpreadsheetApp.flush();
+    var how;
+    try {
+      how = deliver_(pt, '【空き状況と料金のお問い合わせ】' + r['都府県'] + '・' + whenText_(r), requestText_(r, pt), r, '');
+    } catch (e) { log_('春日部受付通知を保留: ' + id); }
+    if (!how) return false;
+    var prior = String(r['通知した提携先'] || '').split(',').filter(String);
+    setReq_(row.rowIndex, {'春日部通知状態': '受付通知を送信済み', '通知した提携先': prior.concat([pt.id]).join(',')});
+    SpreadsheetApp.flush();
+    return true;
+  } finally { lock.releaseLock(); }
 }
 function kasukabePending_(r) {
   return r['決定した提携先ID'] === KASUKABE_INTAKE_ID && r['春日部通知状態'] === '確定通知の確認待ち';
