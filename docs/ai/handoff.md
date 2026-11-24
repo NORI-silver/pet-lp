@@ -3,6 +3,7 @@
 どのAI（Claude・ChatGPT・Codex・Gemini・Muse）も、作業の終わりにいちばん上へ1行足します。新しいものが上。
 形：`日付 / AI / [分類] やったこと / PR / 残り・次の人へ`
 
+- 2026-11-24 / Muse / [E] さがす欄の「どこで」を県と市区町村の2ボックスに分割（tools/place.js の PlacePick を2欄化：県は複数選択のまま、市区町村は選択中の県だけ候補に出し、県未選択なら全国から出して選ぶとその県も自動で選択状態に。県ページは自県を初期値にして、他県を選ぶと県ページへ移る動きはそのまま。病院も同じ PlacePick なので同形）。生成の差分は /place.js・/find.js。seo_check 1,053ページ NG 0、rules_check 1,276ページ新しい違反 0、DOMスタブ検証19件OK / このPR / 残り：phone_check は未実行（Mac側で `node tools/phone_check.cjs --changed` を）
 - 2026-11-24 / ChatGPT / [E] 春日部の市内片道の依頼だけ試行できるようにした（初期状態では停止） / このPR / Apps Script への貼り直しが必要。実際の受付は未開始。
 - 2026-11-24 / ChatGPT / [E] COCOタク京都店を京都府ページに事業者情報として掲載 / このPR / 料金計算・予約受付は変更なし。
 - 2026-11-24 / Muse / [E] 県ページ（/pet-sitter/chiba/ など）の「どこで探しますか？」でほかの県が選べない不具合を修正：候補は全国分を出し、ほかの県・ほかの県の市区町村を選んだらその分野のその県のページへ移動（市区町村は petPlaces で移った先に引き継ぎ）。その県のページがない分野では分野の入口へ #pref= つきで移動。同じ県の市区町村は今までどおりページ内で絞り込み。実体は tools/find.js と tools/uikit.py（県→URLの対応を prefs.PREFS から /find.js に差し込み）、生成の差分は /find.js のみ。seo_check 1,053ページ NG 0、rules_check 1,276ページ違反 0 / このPR / 残り：phone_check は未実行（Mac側で `node tools/phone_check.cjs --changed` を）
