@@ -2802,6 +2802,9 @@ print("cardphoto", cardphoto.build(ROOT))
 # 各分野の入口にキービジュアル（気持ちに合う写真＋解決の1行。tools/keyvisual.py、Nori 2026-11-16「各カテゴリでキービジュアルいれて」）
 import keyvisual
 print("keyvisual", keyvisual.build(ROOT), "pages")
+# 県を選んだら全部その場に出すためのデータ（県ページ・市区町村ページのカードを /find-data/ に。tools/find_data.py、Nori 2026-11-24）
+import find_data
+print("find_data", find_data.build(ROOT))
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] 後処理（カードの形・tidy など）で本文が短くなり、薄くなったページも検索に出さない（上で数えたのは後処理の前。
 # 2026-11-23 近畿：三重のシッターのページが後処理のあと 796 字になり、seo_check で止まった）。サイトマップからも外す。
