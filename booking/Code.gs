@@ -127,7 +127,7 @@ var REQ_HEADERS = [
   // 2026-11-01 Nori「キャンセルを直接事業者に伝えられたら、こっちは判断できない」→ 送迎のあとに飼い主さんにも確かめる（手数料の照らし合わせ用）
   '送迎確認', '送迎確認日時',
   // 2026-11-09 Nori「会社の返事の入力欄に、電話とメールアドレスを入れる欄を作ろう」→ お客さまにお伝えする会社の連絡先（会社あての送信先は提携先シートのまま）
-  '会社の連絡先（電話）', '会社の連絡先（メール）'
+  '会社の連絡先（電話）', '会社の連絡先（メール）', '春日部通知経路', '春日部通知状態'
 ];
 var PARTNER_HEADERS = [
   'ID', '事業者名', '担当者名', '対応エリア', 'メール', '電話番号', 'LINE公式ID（先方）', '受付中', '大型犬OK', '介助OK',
@@ -438,6 +438,7 @@ function receive_(p) {
       if (got.length === 1) return got[0];
       var low = Math.min.apply(null, got.map(function (g) { return g.price.amount || Infinity; }));
       return { ok: true, partner: { id: got.map(function (g) { return g.partner.id; }).join(','), name: got.map(function (g) { return g.partner.name; }).join('、') },
+        kasukabeRoute: (got.filter(function (g) { return !!g.kasukabeRoute; })[0] || {}).kasukabeRoute,
         price: { amount: isFinite(low) ? low : '', text: got.map(function (g) { return g.partner.name + ' ' + g.price.text; }).join('／') } };
     })()];
     for (var k = 0; k < sels.length; k++) {
@@ -462,8 +463,9 @@ function receive_(p) {
         '帰りの日時': parseJst_(q.return_datetime) || '', '帰りのお迎え': clip_(q.return_pickup), '帰りの行き先': clip_(q.return_dropoff),
         '待ち時間（分）': clip_(p.wait_time, 20),
         '概算料金の表示': selection.price.text, '指定した提携先ID': selection.partner.id, '指定した提携先': selection.partner.name,
-        '区間': l.label, '依頼の種類': mode
+        '区間': l.label, '依頼の種類': mode, '春日部通知経路': selection.kasukabeRoute || ''
       };
+      if (r['春日部通知経路'] && isTest_(r)) r['春日部通知経路'] += ':test';
       sh.appendRow(head.map(function (h) { return r[h] === undefined ? '' : r[h]; }));
       // 数字の列が「日付」の書式になっていると、読み出したときに日付になってしまうので、書式を数字に固定する
       var last = sh.getLastRow();
@@ -512,7 +514,7 @@ function sendWave_(id, stage) {
   var pool = selected.length ? selectionCandidates_(r).filter(function(pt) { return selected.indexOf(pt.id) >= 0; }) : pickPartners_(r, stage);
   var targets = pool.filter(function (pt) {
     return already.indexOf(pt.id) < 0 && (pt.id !== KASUKABE_INTAKE_ID ||
-      selected.indexOf(pt.id) >= 0 && isAsk_(r) && kasukabeIntakeFits_(pt, r));
+      selected.indexOf(pt.id) >= 0 && isAsk_(r) && kasukabeIntakeFits_(pt, r) && kasukabeRouteMailbox_(pt, r));
   });
   // 第1段で誰もいなければ、すぐ第2段の相手にも送る
   if (!selected.length && stage === 1 && targets.length === 0) {
@@ -538,6 +540,7 @@ function sendWave_(id, stage) {
 /* ───────── 提携先への文面 ───────── */
 
 function requestText_(r, pt) {
+  if (pt.id === KASUKABE_INTAKE_ID) return requestKasukabeText_(r, pt);
   return pt.name + ' ' + (pt.person ? pt.person + '様' : 'ご担当者さま') + '\n\n' +
     'ペットタクシーの検索サイト「' + CONFIG.SERVICE_NAME + '」です。飼い主さんから、送迎のお問い合わせが届きました。\n' +
     (isAsk_(r) ? '★飼い主さんのお名前・ご連絡先は、飼い主さんが予約を確定した時点でお知らせします。\n★お返事の内容（お迎え時刻・確定料金）は、お返事から' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。そのあいだに飼い主さんが予約を確定したときは、お引き受けください。お返事のあとにほかのご予約が入ったときは、お返事のリンクを開いて「このお返事を取り下げる」を押してください。\n\n' : '★お客さまのお名前・ご連絡先は、引き受けが決まった時点でお知らせします（リンクから引き受けた場合はその場で表示されます）。\n\n') +
@@ -621,7 +624,7 @@ function custPt_(pt, tel, mail) {
   if (!pt) return pt;
   var o = {};
   Object.keys(pt).forEach(function (k) { o[k] = pt[k]; });
-  if (tel || mail) { o.tel = String(tel || '').trim(); o.email = String(mail || '').trim(); }
+  if (tel || mail || pt.id === KASUKABE_INTAKE_ID) { o.tel = String(tel || '').trim(); o.email = String(mail || '').trim(); }
   return o;
 }
 // 決まった会社の、お客さま向けの連絡先（返事で会社が入れたもの。なければ提携先シート）
@@ -630,7 +633,7 @@ function decidedPt_(r) {
 }
 // 返事の画面で会社が入れた連絡先を確かめる。電話かメールの少なくとも一つ
 function replyContact_(q, pt) {
-  if (q.ctel === undefined && q.cmail === undefined) return { tel: '', mail: '' }; // 欄のない古い画面からの返事は提携先シートの連絡先のまま
+  if (q.ctel === undefined && q.cmail === undefined && pt.id !== KASUKABE_INTAKE_ID) return { tel: '', mail: '' }; // 欄のない古い画面からの返事は提携先シートの連絡先のまま
   var tel = String(q.ctel || '').replace(/[０-９]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); }).replace(/[ー－―]/g, '-').trim();
   var mail = String(q.cmail || '').trim();
   var digits = tel.replace(/[^\d]/g, '');
@@ -1107,6 +1110,8 @@ function acceptPage_(q) {
   if (!pt || !row) return page_('見つかりません', '<p>このご依頼は見つかりませんでした。</p>');
   var r = row.data;
 
+  if (pt.id === KASUKABE_INTAKE_ID && !kasukabeWasNotified_(pt, r)) return page_('現在お返事できません', '<p>このご依頼の通知経路を確かめています。</p>');
+
   if (q.go === '1') {
     var fare = Number(String(q.fare || '').replace(/[^\d]/g, ''));
     var at = replyAt_(r, q);
@@ -1130,6 +1135,7 @@ function acceptPage_(q) {
       '<div class="box">' + nl2br_(esc_(customerForPartner_(c))) + '</div>');
   }
 
+  if (pt.id === KASUKABE_INTAKE_ID && kasukabePending_(r)) return page_('予約通知を確認中です', '<p>運営が確定通知を確認しています。ご依頼者のお名前や連絡先はまだ表示できません。</p>');
   if (r['状態'] === ST.DONE && r['決定した提携先ID'] === pt.id) {
     return page_('あなたに決まっています', '<p>お客さまへ直接ご連絡をお願いします。</p><div class="box">' + nl2br_(esc_(customerForPartner_(r))) + '</div>' +
       '<p class="note">やむを得ずお受けできなくなったときは、<a href="' + esc_(partnerCancelUrl_(q.id, pt.id)) + '" target="_top">こちら</a>から取り消してください。お客さまにお知らせします。</p>');
@@ -1146,7 +1152,7 @@ function acceptPage_(q) {
       : '<div class="box"><b>お客さまのお名前・電話番号・メールは、下の「引き受ける」を押すとすぐにこの画面に表示されます。</b>同じ内容をメールでもお送りします。先着1社です。</div>') +
     '<h2 class="sec">📋 ご依頼の内容<span class="tag">お客さまの希望・変えられません</span></h2>' +
     '<div class="fixed"><div class="when">🕙 ' + esc_(whenText_(r)) + '</div>' +
-    nl2br_(esc_(rideText_(r).replace(/^■ 希望日時：[^\n]*\n?/, '') + retAsk_(r) + waitRuleForPartner_(r) + '\n■ お支払い：' + payForPartner_(pt))) + '</div>' +
+    nl2br_(esc_(pt.id === KASUKABE_INTAKE_ID ? kasukabePreConfirmDetails_(r) : rideText_(r).replace(/^■ 希望日時：[^\n]*\n?/, '') + retAsk_(r) + waitRuleForPartner_(r) + '\n■ お支払い：' + payForPartner_(pt))) + '</div>' +
     (r['日付のみ'] ? '' : '<p class="note">この日時でお受けできないときは、お返事しないでください（日時は変えられません）。</p>') +
     '<form method="get" action="' + esc_(linkBase_()) + '" target="_top">' +
     hidden_('a', 'accept') + hidden_('id', q.id) + hidden_('p', q.p) + hidden_('k', q.k) + hidden_('go', '1') +
@@ -1158,7 +1164,7 @@ function acceptPage_(q) {
     '<label>確定料金・高速道路を使う場合（円・税込、高速代込み）<input type="number" name="fare_hw" inputmode="numeric" min="0" step="10" placeholder="高速を使わないなら空欄"></label>' +
     '<p class="note">入れた金額を、お客さまに確定の料金としてお伝えします。</p>' +
     '<label>お客さまからの連絡を受ける電話番号<input type="tel" name="ctel" inputmode="tel" autocomplete="tel" value="' + esc_(pt.tel || '') + '" placeholder="例：090-1234-5678"></label>' +
-    '<label>お客さまからの連絡を受けるメールアドレス<input type="email" name="cmail" autocomplete="email" value="' + esc_(pt.email || '') + '" placeholder="例：info@example.jp"></label>' +
+    '<label>お客さまからの連絡を受けるメールアドレス<input type="email" name="cmail" autocomplete="email" value="' + esc_(pt.id === KASUKABE_INTAKE_ID ? '' : (pt.email || '')) + '" placeholder="例：info@example.jp"></label>' +
     '<p class="note">予約が決まったら、この電話番号とメールアドレスをお客さまにお伝えします（どちらか一つでも大丈夫です）。登録の内容が入っています。違うときは書きかえてください。</p>' +
     '<label>お客さまへ一言（なくてもOK。往復で待つときは、待機料の単価を書いていただくとお客さまに伝わります）<textarea name="msg" maxlength="300" placeholder="例：前日にお電話します／待機料は10分ごとに300円です"></textarea></label>' +
     '<button type="submit">' + (isAsk_(r) ? 'この内容でお返事する' : isQuoteReq_(r) ? 'この内容でお見積もりを送る' : 'この内容で引き受ける') + '</button></form>' +
@@ -1180,7 +1186,7 @@ function accept_(id, pt, at, fare, msg, fareHw, retWay, contact) {
   var cpt = custPt_(pt, contact.tel, contact.mail);
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
-  var row;
+  var row, r, how;
   try {
     row = findReq_(id);
     if (!row || row.data['状態'] !== ST.OPEN) {
@@ -1188,17 +1194,37 @@ function accept_(id, pt, at, fare, msg, fareHw, retWay, contact) {
       return { ok: false, msg: mine ? 'このご依頼はすでにこの会社に決まっています。' : '申し訳ありません、ほかの方が先に引き受けたか、受付が終わりました。' };
     }
     if (pickedIds_(row.data).length && pickedIds_(row.data).indexOf(pt.id) < 0) return {ok:false,msg:'お客さまが選んだ会社と異なるため引き受けできません。'};
+    if (pt.id === KASUKABE_INTAKE_ID && (!kasukabeWasNotified_(pt, row.data) || !isAsk_(row.data) ||
+        !quotesOf_(row.data).some(function (x) {
+          return x.pid === pt.id && !x.withdrawn && Date.now() <= quoteUntil_(x) &&
+            x.at === at.getTime() && x.fare === fare && x.fareHw === fareHw;
+        }))) return {ok:false,msg:'このお返事では現在予約できません。'};
     ensureReqHeaders_(sheet_(SHEET_REQ));
     setReq_(row.rowIndex, {
       '会社の連絡先（電話）': contact.tel || '', '会社の連絡先（メール）': contact.mail || '',
       '状態': ST.DONE, '決定した提携先ID': pt.id, '決定した提携先': pt.name, 'お迎え予定': at,
-      '料金の目安': fare, '高速利用時の料金': fareHw, '帰りのやり方': retWay || '', '提携先から一言': msg, '決定日時': new Date()
+      '春日部通知状態': pt.id === KASUKABE_INTAKE_ID ? '確定通知の確認待ち' : '',
+      '料金の目安': fare, '高速利用時の料金': fareHw, '帰りのやり方': retWay || '', '提携先から一言': msg, '決定日時': pt.id === KASUKABE_INTAKE_ID ? '' : new Date()
     });
     SpreadsheetApp.flush();
+    r = findReq_(id).data;
+    if (pt.id === KASUKABE_INTAKE_ID) {
+      // 取り消しが先に届いたり、同じ確定が二度届いたりしないよう、この通知だけは行の確定と同じロック内。
+      try {
+        how = deliver_(pt, '【決定】' + id + ' お客さまのご連絡先', decidedText_(r, pt), r, decidedHtml_(r, pt));
+      } catch (e) { log_('春日部確定通知を保留: ' + id); }
+      if (how) setReq_(row.rowIndex, {'春日部通知状態':'確定通知を送信済み', '決定日時':new Date()});
+    }
   } finally {
     lock.releaseLock();
   }
-  var r = findReq_(id).data;
+  if (pt.id === KASUKABE_INTAKE_ID && !how) {
+    var pending = '予約の操作を受け付けましたが、事業者への通知が完了していません。同じ予約を取り直さず、送迎の可否はこのメールへの返信でご確認ください。';
+    toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】予約の通知を確認中です（受付番号 ' + id + '）',
+      r['お名前'] + ' 様\n\n' + pending + '\n\n取り消す場合：' + cancelUrl_(id));
+    notifyAdmin_('【春日部の確定通知を保留】' + id, '指定経路への通知が完了していません。LINEや別の宛先に送らず、二重に送らないよう送信記録と指定経路を確認してください。\n\n' + adminUrl_(id));
+    return {ok:true,r:r,kasukabeNoticePending:true};
+  }
   bumpCount_(pt);
   log_(id + ' 決定: ' + pt.id);
 
@@ -1217,7 +1243,7 @@ function accept_(id, pt, at, fare, msg, fareHw, retWay, contact) {
     'お迎えの時刻が近づいても連絡がない・遅れているときは、まず「' + pt.name + '」へご連絡ください。つながらないときは、このメールに返信してください。\n' +
     '送迎のご契約は、お客さまと「' + pt.name + '」との間で結ばれます（当サイトは送迎を行わず、契約の当事者ではありません）。\n\n' +
     '▼ 取り消す場合はこちら\n' + cancelUrl + '\n' + cancelAfterText_(pt) + 'お迎えの3時間前を過ぎてから取り消すときは、このリンクを押す前に「' + pt.name + '」へ直接ご連絡ください。', confirmHtml_(r, cpt, at, fare, fareHw, retWay, msg, cancelUrl));
-  var how = deliver_(pt, '【決定】' + id + ' お客さまのご連絡先', decidedText_(r, pt), r, decidedHtml_(r, pt));
+  if (pt.id !== KASUKABE_INTAKE_ID) how = deliver_(pt, '【決定】' + id + ' お客さまのご連絡先', decidedText_(r, pt), r, decidedHtml_(r, pt));
   closeOthers_(r, pt.id);
   notifyAdmin_((how === 'manual' ? '【LINEで決定を伝えてください】' : '') + '決定 ' + id + '：' + pt.name,
     (how === 'manual' ? pt.name + 'はLINE公式アカウントだけの会社です。手配ページの「決定をLINEで伝える」を押してください（お客さまの連絡先が入った文面です）。\n\n' : '') +
@@ -1236,6 +1262,8 @@ function quote_(id, pt, at, fare, msg, fareHw, retWay, contact) {
     var row = findReq_(id);
     if (!row || row.data['状態'] !== ST.OPEN) return { ok: false, msg: 'このご依頼は締め切りました。ご確認ありがとうございました。' };
     if (pickedIds_(row.data).indexOf(pt.id) < 0) return { ok: false, msg: 'お客さまが選んだ会社と異なるため、お見積もりを出せません。' };
+    if (pt.id === KASUKABE_INTAKE_ID && (!kasukabeWasNotified_(pt, row.data) || !isAsk_(row.data) ||
+        at.getTime() !== new Date(row.data['希望日時']).getTime())) return {ok:false,msg:'通知済みのご希望時刻と一致するご依頼だけお返事できます。'};
     var list = quotesOf_(row.data).filter(function (x) { return x.pid !== pt.id; });
     var mine = { pid: pt.id, at: at.getTime(), fare: fare, fareHw: fareHw || '', way: retWay || '', msg: msg || '', time: Date.now(), tel: (contact && contact.tel) || '', mail: (contact && contact.mail) || '' };
     list.push(mine);
@@ -1284,6 +1312,7 @@ function withdrawPage_(q) {
     var row = findReq_(q.id);
     if (!row) return page_('見つかりません', '<p>このご依頼は見つかりませんでした。</p>');
     r = row.data;
+    if (pt.id === KASUKABE_INTAKE_ID && kasukabePending_(r)) return page_('予約通知を確認中です', '<p>お急ぎの場合は、受付メールに返信してください。</p>');
     if (r['状態'] === ST.DONE && r['決定した提携先ID'] === pt.id) return page_('すでに予約が確定しています', '<p>お客さまが先に予約を確定しました。受けられない場合は、<a href="' + esc_(partnerCancelUrl_(q.id, pt.id)) + '" target="_top">こちら</a>から取り消してください。お客さまにお知らせします。</p>');
     if (r['状態'] !== ST.OPEN) return page_('締め切りました', '<p>このご依頼はもう締め切られています。取り下げは必要ありません。</p>');
     var list = quotesOf_(r), mine = list.filter(function (x) { return x.pid === pt.id; })[0];
@@ -1308,6 +1337,7 @@ function partnerCancelPage_(q) {
   if (!q.id || !q.p || q.k !== sign_(q.id + ':' + q.p + ':pcancel')) return page_('リンクが正しくありません', '<p>お手数ですが、届いたメールのリンクからもう一度開いてください。</p>');
   var pt = partnerById_(q.p), row0 = findReq_(q.id);
   if (!pt || !row0) return page_('見つかりません', '<p>このご依頼は見つかりませんでした。</p>');
+  if (kasukabePending_(row0.data)) return page_('予約通知を確認中です', '<p>お急ぎの場合は、受付メールに返信してください。</p>');
   if (row0.data['状態'] !== ST.DONE || row0.data['決定した提携先ID'] !== pt.id) return page_('取り消しは必要ありません', '<p>このご予約は、いま貴社に決まっていません（お客さまが取り消したか、受付が終わっています）。</p>');
   if (q.go !== '1') {
     return page_('このご予約を取り消しますか？', '<div class="box">' + nl2br_(esc_('受付番号：' + q.id + '\nお迎え予定：' + fmt_(row0.data['お迎え予定']) + '\nお客さま：' + row0.data['お名前'] + ' 様')) + '</div>' +
@@ -1340,6 +1370,7 @@ function choosePage_(q) {
   var row = findReq_(q.id), pt = partnerById_(q.p);
   if (!row || !pt) return page_('見つかりません', '<p>このご依頼は見つかりませんでした。</p>');
   var r = row.data, qt = quotesOf_(r).filter(function (x) { return x.pid === pt.id; })[0];
+  if (r['状態'] === ST.DONE && kasukabePending_(r)) return kasukabePendingPage_(r);
   if (r['状態'] === ST.DONE) return page_(r['決定した提携先ID'] === pt.id ? (isAsk_(r) ? 'ご予約は確定しています' : 'この会社に決まっています') : 'ほかの会社に決まっています', '<p>' + esc_(r['決定した提携先'] || '') + 'に決まっています。決定のメールをご確認ください。</p>');
   if (r['状態'] !== ST.OPEN || !qt) return page_('締め切りました', '<p>このご依頼は締め切りました。</p>');
   if (qt.withdrawn) return page_('このお返事は取り下げられました', '<p>「' + esc_(pt.name) + '」は、ほかのご予約が入ったため、このお返事を取り下げました。この内容では予約できません。</p><p>お手数ですが、<a href="' + esc_(retryUrl_(q.id)) + '" target="_top">同じ内容でもう一度問い合わせる</a>からお問い合わせください。</p>');
@@ -1347,6 +1378,7 @@ function choosePage_(q) {
   if (q.go === '1') {
     var res = accept_(q.id, pt, new Date(qt.at), qt.fare, qt.msg, qt.fareHw, qt.way, { tel: qt.tel, mail: qt.mail });
     if (!res.ok) return page_('決められませんでした', '<p>' + esc_(res.msg) + '</p>');
+    if (res.kasukabeNoticePending) return kasukabePendingPage_(res.r);
     return page_(isAsk_(r) ? 'ご予約が確定しました' : '決まりました', '<p>「' + esc_(pt.name) + '」' + (isAsk_(r) ? 'のご予約が確定しました。確定のメールをお送りしました。' : 'に決まりました。決定のメールをお送りしました。') + 'このあと、' + esc_(pt.name) + 'からご連絡があります。</p>');
   }
   return page_(isAsk_(r) ? 'この内容で予約しますか？' : 'この会社に決めますか？', '<div class="box">■ ペットタクシー：' + esc_(pt.name) + '<br>■ お迎え予定：' + esc_(fmt_(new Date(qt.at))) + '<br>■ 料金（確定・税込）：' + esc_(fareText_(qt.fare, qt.fareHw)) + '<br>　※' + esc_(changeNote_(pt)) +
@@ -1387,13 +1419,18 @@ function adminPage_(q) {
   var st = r['状態'];
   var asked = String(r['通知した提携先'] || '').split(',').filter(String).map(partnerById_).filter(Boolean);
   var winner = st === ST.DONE || (st === ST.CANCEL && r['決定した提携先ID']) ? partnerById_(r['決定した提携先ID']) : null;
-  var auto = function (pt) { return pt.email || (pt.lineId && CONFIG.LINE_CHANNEL_ACCESS_TOKEN); };
+  var auto = function (pt) { return pt.id !== KASUKABE_INTAKE_ID && (pt.email || (pt.lineId && CONFIG.LINE_CHANNEL_ACCESS_TOKEN)); };
   var html = notice + '<p>状態：<b>' + esc_(st) + '</b>' + (winner ? '（' + esc_(winner.name) + '）' : '') + '</p>' +
     '<div class="box">' + nl2br_(esc_('受付番号：' + r['受付番号'] + '\n' + rideText_(r) + '\n\nお名前：' + r['お名前'] + '\n電話：' + String(r['電話番号']).replace(/^'/, '') + '\nメール：' + r['メール'])) + '</div>';
 
   if (st === ST.OPEN) {
     html += '<h2>声をかけた会社</h2>';
     asked.forEach(function (pt) {
+      if (pt.id === KASUKABE_INTAKE_ID) {
+        html += '<div class="pt"><b>' + esc_(pt.name) + '</b><br><span class="note">' +
+          (kasukabeWasNotified_(pt, r) ? '指定経路への通知済み' : '指定経路の保留中。代替経路には送りません') + '</span></div>';
+        return;
+      }
       html += '<div class="pt"><b>' + esc_(pt.name) + '</b><br><span class="note">' + (auto(pt) ? '自動で送信済み' : 'LINE公式だけの会社です。下のボタンで送ってください') + '</span>' +
         lineAction_(pt, 'LINEで依頼を送る' + (auto(pt) ? '（任意）' : ''), requestText_(r, pt)) + '</div>';
     });
@@ -1418,13 +1455,17 @@ function adminPage_(q) {
     }
   } else {
     var btns = '';
-    if (winner && (winner.oaId || winner.lineUrl) && !auto(winner)) {
+    if (winner && winner.id !== KASUKABE_INTAKE_ID && (winner.oaId || winner.lineUrl) && !auto(winner)) {
       btns += st === ST.CANCEL ? lineBtn_(winner, '取り消しをLINEで伝える', cancelText_(r, winner)) : lineBtn_(winner, '決定をLINEで伝える', decidedText_(r, winner));
     }
     asked.forEach(function (pt) {
-      if ((pt.oaId || pt.lineUrl) && !auto(pt) && (!winner || pt.id !== winner.id)) btns += lineBtn_(pt, '締め切りをLINEで伝える', closedText_(r, pt));
+      if (pt.id !== KASUKABE_INTAKE_ID && (pt.oaId || pt.lineUrl) && !auto(pt) && (!winner || pt.id !== winner.id)) btns += lineBtn_(pt, '締め切りをLINEで伝える', closedText_(r, pt));
     });
-    html += btns ? '<h2>LINEで伝えること</h2>' + btns : '<p class="note">LINEで伝えることはありません。連絡はすべて自動で送りました。</p>';
+    if ((winner && winner.id === KASUKABE_INTAKE_ID) || asked.some(function (pt) { return pt.id === KASUKABE_INTAKE_ID; })) {
+      html += '<p class="note">春日部への連絡は指定経路だけです。LINEでは送りません。' +
+        esc_(r['春日部通知状態'] || '記録された通知経路と送信状況を確認してください。') + '</p>';
+    }
+    html += btns ? '<h2>LINEで伝えること</h2>' + btns : '<p class="note">LINEで伝えることはありません。</p>';
   }
   return page_('手配ページ ' + r['受付番号'], html);
 }
@@ -1435,6 +1476,7 @@ function lineBtn_(pt, label, text) {
 
 // @IDなら文面入りでトークを開く。URLだけの相手は、文面をコピーしてからトークを開く
 function lineAction_(pt, label, text) {
+  if (pt.id === KASUKABE_INTAKE_ID) return '';
   if (pt.oaId) return '<a class="line" href="' + esc_(oaLink_(pt, text)) + '">' + esc_(label) + '</a>';
   if (!pt.lineUrl) return '';
   return '<textarea readonly onclick="this.select()" style="min-height:120px">' + esc_(text) + '</textarea>' +
@@ -1447,7 +1489,8 @@ function cancelPage_(q) {
   var row = findReq_(q.id);
   if (!row) return page_('見つかりません', '<p>このご依頼は見つかりませんでした。</p>');
   var r = row.data;
-  if (r['状態'] === ST.CANCEL) return page_('取り消し済みです', '<p>このご依頼はすでに取り消されています。</p>');
+  if (r['状態'] === ST.CANCEL) return page_('取り消し済みです', '<p>このご依頼はすでに取り消されています。</p>' +
+    (r['春日部通知状態'] === '取り消し通知の確認待ち' ? '<p>事業者への取り消し通知は確認中です。お急ぎの場合は、受付メールに返信してください。</p>' : ''));
   if (r['状態'] === ST.NONE) return page_('受付は終了しています', '<p>このご依頼は受付が終わっています。取り消しの手続きは不要です。</p>');
 
   if (q.go === '1') {
@@ -1458,7 +1501,10 @@ function cancelPage_(q) {
   if (r['状態'] === ST.DONE) {
     var left = (r['お迎え予定'].getTime() - Date.now()) / 3600000;
     var cpt = decidedPt_(r);
-    warn = '<p class="note">ペットタクシー「' + esc_(r['決定した提携先']) + '」に決まっています。取り消すと、こちらからペットタクシーへお伝えします。' +
+    var msg = r['決定した提携先ID'] === KASUKABE_INTAKE_ID ?
+      '事業者への連絡が完了したか、取り消し後の画面でお知らせします。' : '取り消すと、こちらからペットタクシーへお伝えします。';
+    var status = kasukabePending_(r) ? 'への予約通知を確認中です。' : 'に決まっています。';
+    warn = '<p class="note">ペットタクシー「' + esc_(r['決定した提携先']) + '」' + status + msg +
       (cpt ? '<br>' + esc_(cancelAfterText_(cpt)) : '') +
       (left < 3 ? '<br><b>お迎えの3時間前を過ぎています。押す前に、ペットタクシーへ直接ご連絡ください。</b>' + (cpt ? '<br>' + esc_(partnerContactText_(cpt).replace(/^■ /, '').trim()) : '') : '') + '</p>';
   }
@@ -1471,33 +1517,52 @@ function cancelPage_(q) {
 function cancel_(id) {
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
-  var before;
+  var before, kasukabe;
   try {
     var row = findReq_(id);
     before = row.data['状態'];
+    kasukabe = before === ST.DONE && row.data['決定した提携先ID'] === KASUKABE_INTAKE_ID;
     if (before !== ST.OPEN && before !== ST.DONE) return { msg: 'このご依頼はすでに受付が終わっています。' };
-    setReq_(row.rowIndex, { '状態': ST.CANCEL, '終了日時': new Date() });
+    var changes = {'状態': ST.CANCEL, '終了日時': new Date()};
+    if (kasukabe) {
+      ensureReqHeaders_(sheet_(SHEET_REQ));
+      changes['春日部通知状態'] = '取り消し通知の確認待ち';
+    }
+    setReq_(row.rowIndex, changes);
     SpreadsheetApp.flush();
   } finally {
     lock.releaseLock();
   }
   var r = findReq_(id).data;
   log_(id + ' 取り消し（' + before + 'から）');
-  var pt = before === ST.DONE ? partnerById_(r['決定した提携先ID']) : null;
+  var pt = before === ST.DONE ? partnerById_(r['決定した提携先ID']) : null, how;
+  if (kasukabe) {
+    try {
+      how = pt && deliver_(pt, '【取り消し】' + id + ' のご依頼',
+        '受付番号 ' + id + ' の取り消し連絡です。お迎えは不要です。', r);
+    } catch (e) { log_('春日部取り消し通知を保留: ' + id); }
+    if (how) setReq_(row.rowIndex, {'春日部通知状態':'取り消し通知を送信済み'});
+    else notifyAdmin_('【春日部の取り消し通知を保留】' + id,
+      '事業者への通知が完了していません。LINEや別の宛先に送らず、送信記録と指定経路を確認してください。\n\n' + adminUrl_(id));
+  }
+  var pendingNotice = kasukabe && !how ? 'サイト上では取り消しましたが、事業者への取り消し通知は確認中です。お急ぎの場合は、このメールに返信してください。' : '';
   toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】ご依頼を取り消しました（受付番号 ' + id + '）',
-    r['お名前'] + ' 様\n\nご依頼を取り消しました。\n希望日時：' + whenText_(r) + '\n' +
+    r['お名前'] + ' 様\n\n' + (pendingNotice || 'ご依頼を取り消しました。') + '\n希望日時：' + whenText_(r) + '\n' +
     (pt ? '\n' + cancelAfterText_(pt) + '\n' + partnerContactText_(decidedPt_(r)) : '') +
     '\nまたいつでもご利用ください。\n' + CONFIG.SITE_URL);
-  if (before === ST.DONE) {
-    var how = pt && deliver_(pt, '【取り消し】' + id + ' ' + fmt_(r['お迎え予定']) + ' のご依頼', cancelText_(r, pt), r);
+  if (before === ST.DONE && !kasukabe) {
+    how = pt && deliver_(pt, '【取り消し】' + id + ' ' + fmt_(r['お迎え予定']) + ' のご依頼', cancelText_(r, pt), r);
     if (how === 'manual') {
       notifyAdmin_('【LINEで取り消しを伝えてください】' + id, pt.name + 'へ、手配ページの「取り消しをLINEで伝える」を押してください。\n\n▼ 手配ページ\n' + adminUrl_(id));
     }
-  } else {
+  } else if (before !== ST.DONE) {
     closeOthers_(r, '');
   }
-  notifyAdmin_('取り消し ' + id, '状態「' + before + '」から取り消されました。\n\n' + rideText_(r));
-  return { msg: before === ST.DONE ? 'ご依頼を取り消し、ペットタクシーにもお伝えしました。' : 'ご依頼を取り消しました。' };
+  if (!pendingNotice) notifyAdmin_('取り消し ' + id, '状態「' + before + '」から取り消されました。\n\n' + rideText_(r));
+  return { msg: pendingNotice || (before === ST.DONE && how === 'auto' ?
+    'ご依頼を取り消し、ペットタクシーへの通知を送信しました。' :
+    before === ST.DONE && how === 'manual' ? 'ご依頼を取り消しました。事業者への連絡はこれから行います。' :
+    before === ST.DONE ? 'サイト上では取り消しましたが、事業者への取り消し通知は確認中です。' : 'ご依頼を取り消しました。') };
 }
 
 /* ───────── 日時だけ変えて再依頼（LPがフォームに入れ直すためのデータ） ───────── */
@@ -1614,7 +1679,7 @@ function giveUp_(id) {
 // Nori 2026-11-15「送り届けたあと12時間後くらいに。往復の場合は復路のあとね」
 // stateOf：受付番号 → 状態（行きと帰りで別の会社の往復で、行きの分は帰りが決まっていれば帰りのほうで聞く）
 function rideCheckDue_(r, now, stateOf) {
-  if (!('送迎確認' in r) || r['状態'] !== ST.DONE || r['送迎確認'] || !r['メール']) return false; // 列がない古いシートでは送らない（同じメールをくり返さないため）
+  if (!('送迎確認' in r) || r['状態'] !== ST.DONE || kasukabePending_(r) || r['送迎確認'] || !r['メール']) return false; // 列がない古いシートでは送らない（同じメールをくり返さないため）
   if (/^行き/.test(String(r['区間'] || '')) && r['ペアの受付番号'] && stateOf && stateOf[r['ペアの受付番号']] === ST.DONE) return false;
   var at = rideEndAt_(r);
   if (!isFinite(at) || now - at < CONFIG.RIDE_CHECK_AFTER_HOURS * 3600000) return false;
@@ -1837,7 +1902,7 @@ function updateSummary_(force) {
     var c = row0(Utilities.formatDate(t, TZ, 'yyyy-MM'));
     c.ask++;
     var st = r['状態'], rc = String(r['送迎確認'] || '');
-    if (st === ST.DONE) c.done++; else if (st === ST.CANCEL) c.cancel++; else if (st === ST.NONE) c.none++; else c.open++;
+    if (st === ST.DONE && !kasukabePending_(r)) c.done++; else if (st === ST.CANCEL) c.cancel++; else if (st === ST.NONE) c.none++; else c.open++;
     if (r['決定日時']) { if (st === ST.CANCEL) c.done++; } // 決まってから取り消したものも「予約確定」に数える
     if (rc === '送迎あり') c.rode++; else if (/キャンセル/.test(rc)) c.rcancel++; else if (/予定と違/.test(rc)) c.other++; else if (st === ST.DONE && rc === '確認中') c.noans++;
   }
@@ -1915,7 +1980,8 @@ function handleLine_(body) {
     if (row) {
       setReq_(row.rowIndex, { 'お客さまLINE': uid });
       var s = row.data['状態'];
-      var msg = s === ST.DONE ? 'ペットタクシー「' + row.data['決定した提携先'] + '」に決まっています。\nお迎え予定：' + fmt_(row.data['お迎え予定']) + '\n料金（確定・税込）：' + fareText_(row.data['料金の目安'], row.data['高速利用時の料金'])
+      var msg = s === ST.DONE && kasukabePending_(row.data) ? '事業者への予約通知を確認中です。お急ぎの場合は、受付メールに返信してください。'
+        : s === ST.DONE ? 'ペットタクシー「' + row.data['決定した提携先'] + '」に決まっています。\nお迎え予定：' + fmt_(row.data['お迎え予定']) + '\n料金（確定・税込）：' + fareText_(row.data['料金の目安'], row.data['高速利用時の料金'])
         : s === ST.OPEN ? 'いま、空いているペットタクシーを探しています。決まったらLINEでもお知らせしますね。'
         : 'このご依頼の受付は終わっています（' + s + '）。';
       return lineReply_(ev.replyToken, '受付番号 ' + row.data['受付番号'] + ' を確認しました。\n' + msg);
@@ -1949,6 +2015,14 @@ function lineApi_(kind, payload) {
 // 提携先へ：こちらのLINEに登録済みならLINE → メール → 先方LINE公式（運営者がボタンで送信）
 // 戻り値：'auto'（自動で送った）/ 'manual'（手配ページから運営者が送る）/ false（届けられない）
 function deliver_(pt, subject, text, r, html) {
+  if (pt.id === KASUKABE_INTAKE_ID) {
+    var pin = kasukabeRouteMailbox_(pt, r);
+    if (!pin) { log_('春日部通知を保留: ' + (r && r['受付番号'] || '')); return false; }
+    var test = /:test$/.test(r['春日部通知経路']);
+    if (CONFIG.TEST_MODE && !test) { log_('春日部通知を保留（試行環境）: ' + r['受付番号']); return false; }
+    return mail_(test ? adminEmail_() : pin, (test ? '【テスト】' : '') +
+      '【' + CONFIG.SERVICE_NAME + '】' + subject, text + footer_(), html || '', true) ? 'auto' : false;
+  }
   if (r && isTest_(r)) {
     if (!pt.email && !pt.lineId && !pt.oaId && !pt.lineUrl) return false;
     var to = pt.email || (pt.lineId ? 'こちらのLINE' : 'LINE公式 ' + (pt.oaId || pt.lineUrl));
@@ -1966,7 +2040,7 @@ function closeOthers_(r, winnerId) {
   String(r['通知した提携先'] || '').split(',').filter(String).forEach(function (pid) {
     if (pid === winnerId) return;
     var pt = partnerById_(pid);
-    if (pt && (pt.email || (pt.lineId && CONFIG.LINE_CHANNEL_ACCESS_TOKEN))) deliver_(pt, '【締め切り】' + r['受付番号'] + ' のご依頼', closedText_(r, pt), r);
+    if (pt && (pt.id === KASUKABE_INTAKE_ID || pt.email || (pt.lineId && CONFIG.LINE_CHANNEL_ACCESS_TOKEN))) deliver_(pt, '【締め切り】' + r['受付番号'] + ' のご依頼', closedText_(r, pt), r);
   });
 }
 
@@ -1977,7 +2051,7 @@ function notifyAdmin_(subject, text) {
   mail_(adminEmail_(), '[運営] ' + subject, text + '\n\n予約シート：' + SpreadsheetApp.getActive().getUrl());
 }
 
-function mail_(to, subject, body, html) {
+function mail_(to, subject, body, html, privateTo) {
   try {
     var replyTo = CONFIG.REPLY_TO || CONFIG.FROM_EMAIL || adminEmail_();
     if (fromOk_()) {
@@ -1991,7 +2065,7 @@ function mail_(to, subject, body, html) {
     }
     return true;
   } catch (err) {
-    log_('メール送信エラー（' + to + '）: ' + err);
+    log_(privateTo ? '通知メールの送信エラー' : 'メール送信エラー（' + to + '）: ' + err);
     return false;
   }
 }
@@ -2090,6 +2164,7 @@ function backText_(r) {
 
 // 会社へ：空き状況と料金のお問い合わせ（問い合わせの形のときだけ。ほかの形は文字だけ）
 function requestHtml_(r, pt) {
+  if (pt.id === KASUKABE_INTAKE_ID) return ''; // 下書き・HTMLも共通の詳細文面に戻さない
   if (!isAsk_(r)) return '';
   var round = isRound_(r), checks = checks_(pt, r).ask;
   return mailPage_(
@@ -3551,13 +3626,48 @@ function selectionValid_(p) {
 
 // 春日部の試行：未設定の本番では閉じたまま。固定の会社ID・照合済みメール、明示的に選ばれた市内片道だけ。
 var KASUKABE_INTAKE_ID = 'P014', KASUKABE_DISPLAY_ID = 'D853ae97';
-function kasukabeIntakeMailbox_() {
+function kasukabeIntakeMailbox_(forExistingRoute) {
   try {
     var ps = PropertiesService.getScriptProperties();
-    if (ps.getProperty('KASUKABE_INTAKE_ENABLED') !== '1') return '';
+    // 既存の個社受付と同じく、全体の送信設定は変えない。この個社の送信許可がなければ既存依頼も保留。
+    if (ps.getProperty('KASUKABE_INTAKE_ROUTE_ENABLED') !== '1') return '';
+    if (!forExistingRoute && ps.getProperty('KASUKABE_INTAKE_ENABLED') !== '1') return '';
     var email = String(ps.getProperty('KASUKABE_INTAKE_VERIFIED_EMAIL') || '').trim().toLowerCase();
-    return /^[^@\s]+@pet-taxi-kasukabe\.com$/.test(email) ? email : '';
+    return email.length <= 100 && /^[a-z0-9_-]+(?:\.[a-z0-9_-]+)*@pet-taxi-kasukabe\.com$/.test(email) ? email : '';
   } catch (e) { return ''; }
+}
+// 送信先そのものは予約行・公開ソースに残さない。別アドレスへの差し替えは既存依頼を保留する。
+function kasukabeRouteStamp_(email) { return email ? 'kasukabe-v1:' + sign_('kasukabe-v1:' + email) : ''; }
+function kasukabeRouteMailbox_(pt, r) {
+  if (!r || !pt || pt.id !== KASUKABE_INTAKE_ID || !pickedIds_(r).includes(pt.id)) return '';
+  var email = kasukabeIntakeMailbox_(true);
+  try {
+    var stamp = kasukabeRouteStamp_(email);
+    return stamp && (r['春日部通知経路'] === stamp || r['春日部通知経路'] === stamp + ':test') ? email : '';
+  } catch (e) { return ''; }
+}
+function kasukabeWasNotified_(pt, r) {
+  return !!kasukabeRouteMailbox_(pt, r) && (!CONFIG.TEST_MODE || /:test$/.test(r['春日部通知経路'])) &&
+    String(r['通知した提携先'] || '').split(',').includes(pt.id);
+}
+function kasukabePending_(r) {
+  return r['決定した提携先ID'] === KASUKABE_INTAKE_ID && r['春日部通知状態'] === '確定通知の確認待ち';
+}
+function kasukabePendingPage_(r) {
+  return page_('事業者への予約通知を確認中です', '<p>同じ予約を取り直さないでください。送迎の可否は確認中です。お急ぎの場合は、受付メールへの返信でご確認ください。</p><p><a href="' +
+    esc_(cancelUrl_(r['受付番号'])) + '" target="_top">取り消す場合はこちら</a></p>');
+}
+function kasukabePreConfirmDetails_(r) {
+  // 固定文字列・時刻・数だけ。番地、施設名、名前、連絡先、ペット詳細と任意記入欄は渡さない。
+  var cage = { '持ち込む': '持ち込み', 'なし': 'なし', 'どれでも': 'どちらでも可' };
+  return '■ お迎え・行き先：春日部市内（片道）\n■ ペット：犬1頭・' + Number(r['体重kg']) + 'kg\n■ 同乗：' +
+    parseInt(r['同乗人数'], 10) + '人\n■ ケージ：' + (cage[r['キャリー']] || '未記入');
+}
+function requestKasukabeText_(r, pt) {
+  return pt.name + ' ご担当者さま\n\n空き状況と料金のお問い合わせです。\n■ 希望日時：' + whenText_(r) + '\n' + kasukabePreConfirmDetails_(r) +
+    '\n\nこの情報で空き状況と確定料金をご回答できる場合のみ、お返事をお願いします。詳細な場所・お名前・ご連絡先は予約確定後にお知らせします。\n' +
+    'お返事は' + CONFIG.QUOTE_VALID_HOURS + '時間（お迎えの' + cutoffText_() + '前まで）有効です。受けられなくなった場合は、同じリンクからお返事を取り下げてください。\n' +
+    acceptUrl_(r['受付番号'], pt.id);
 }
 function kasukabeCityAddress_(s) {
   var a = String(s || '').normalize('NFKC').replace(/\s/g, '').replace(/^(?:日本[、,]?)?(?:〒?\d{3}-\d{4}[、,]?)?/, '');
@@ -3565,8 +3675,7 @@ function kasukabeCityAddress_(s) {
 }
 function kasukabeIntakeFits_(pt, r) {
   var email = kasukabeIntakeMailbox_();
-  if (!email || pt.id !== KASUKABE_INTAKE_ID || !pt.active || pt.lineId || pt.oaId || pt.lineUrl ||
-      String(pt.email || '').trim().toLowerCase() !== email) return false;
+  if (!email || pt.id !== KASUKABE_INTAKE_ID || !pt.active) return false;
   if (r['都府県'] !== '埼玉' || r['片道・往復'] !== '片道' || r['区間'] || r['日付のみ'] ||
       r['経由地'] || !/^(?:|0)$/.test(String(r['待ち時間（分）'] || '').trim()) ||
       !kasukabeCityAddress_(r['お迎えの場所']) || !kasukabeCityAddress_(r['行き先'])) return false;
@@ -3582,14 +3691,14 @@ function kasukabeIntakeFits_(pt, r) {
 function selectionCandidates_(r) {
   // 同じ都県、または全国対応の会社。近隣都県だけの会社には依頼しない。
   return partners_().filter(function(pt) {
-    return !publicPaused_(pt.id) && pt.active && reachable_(pt) &&
-      (pt.id !== KASUKABE_INTAKE_ID || kasukabeIntakeFits_(pt, r)) && (pt.areas.indexOf(r['都府県']) >= 0 || pt.areas.indexOf('全国') >= 0) &&
+    return !publicPaused_(pt.id) && pt.active && (pt.id === KASUKABE_INTAKE_ID ? kasukabeIntakeFits_(pt, r) : reachable_(pt)) && (pt.areas.indexOf(r['都府県']) >= 0 || pt.areas.indexOf('全国') >= 0) &&
       fitsCar_(pt, r) && fitsCage_(pt, r) && inTime_(pt, r) && (r['介助'] !== '必要' || pt.careOk) && !checks_(pt, r).ng.length && openNear_(pt, r);
   });
 }
 
-function quoteSignature_(p, id, expires, price) {
-  return sign_('selection:' + JSON.stringify(QUOTE_FIELDS.map(function(k) { return String(p[k] || ''); })) + ':' + id + ':' + expires + ':' + JSON.stringify(price));
+function quoteSignature_(p, id, expires, price, kasukabeRoute) {
+  var route = id === KASUKABE_INTAKE_ID ? ':' + (kasukabeRoute || kasukabeRouteStamp_(kasukabeIntakeMailbox_())) : '';
+  return sign_('selection:' + JSON.stringify(QUOTE_FIELDS.map(function(k) { return String(p[k] || ''); })) + ':' + id + ':' + expires + ':' + JSON.stringify(price) + route);
 }
 
 function selectionPrice_(pt, p) {
@@ -4485,6 +4594,8 @@ function validateSelection_(p) {
   var pt = selectionCandidates_(selectionRide_(p)).filter(function(x) { return x.id === p.partner_id && !isDisplayOnly_(x.id); })[0];
   if (!pt) return {ok:false,error:'selection_unavailable'};
   var price = selectionPrice_(pt,p);
-  if (!price || p.quote_token !== quoteSignature_(p,pt.id,expires,price)) return {ok:false,error:'selection_changed'};
-  return {ok:true,partner:pt,price:price};
+  var kasukabeRoute = pt.id === KASUKABE_INTAKE_ID ? kasukabeRouteStamp_(kasukabeIntakeMailbox_()) : '';
+  if (pt.id === KASUKABE_INTAKE_ID && !kasukabeRoute) return {ok:false,error:'selection_unavailable'};
+  if (!price || p.quote_token !== quoteSignature_(p,pt.id,expires,price,kasukabeRoute)) return {ok:false,error:'selection_changed'};
+  return kasukabeRoute ? {ok:true,partner:pt,price:price,kasukabeRoute:kasukabeRoute} : {ok:true,partner:pt,price:price};
 }
