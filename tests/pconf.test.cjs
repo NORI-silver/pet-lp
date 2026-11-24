@@ -50,3 +50,32 @@ delete ctx.PCONF[id];
   ctx.DISPLAY_COMPANIES.forEach(x=>{ const h=ctx.pconfPage_({a:'pconf',t:ctx.demoToken_(x.id)}).html; assert.ok(h.includes('この内容で送る'), x.id); });
 }
 console.log('PASS: every company with site data gets a prefilled confirm page; new companies start from name, email and homepage');
+
+// One-company prefill from public pages. No other company, rate engine, or intake state changes.
+{
+  const id='D01478c8', c=ctx.DISPLAY_COMPANIES.find(x=>x.id===id);
+  const sameFields=ctx.pconfAuto_({name:c.name});
+  const before=[rows.length,mails.length], originalExamples=ctx.pconfExamples_;
+  let calls=0;
+  ctx.pconfExamples_=v=>{ if(v.shop||v.fare) calls++; return originalExamples(v); };
+  const ir=ctx.pconfOf_(id);
+  assert.deepEqual(ir.sections.map(s=>s.items.map(i=>i.k)),sameFields.sections.map(s=>s.items.map(i=>i.k)));
+  const fields=Object.fromEntries(ir.sections.flatMap(s=>s.items).map(i=>[i.k,i]));
+  assert.equal(fields.origin.v,'大阪市北区');
+  for(const k of ['radius','dest','hours','same','maxkg','riders','night_how','long','pick2','back','toll']) assert.ok(!fields[k].v&&!fields[k].mv,k);
+  assert.match(fields.ride.v,/10kmまで：片道3,000円／往復5,400円/);
+  assert.match(fields.ride.v,/30kmまで：片道6,800円／往復12,200円/);
+  assert.match(fields.wait.v,/31〜45分300円、46〜60分600円/);
+  assert.match(fields.night.note,/22:00〜翌7:00/);
+  const h=ctx.pconfPage_({a:'pconf',t:ctx.demoToken_(id)}).html;
+  assert.match(h,/アイアールサービス/);
+  assert.match(h,/name="f_hours" maxlength="400" value=""/);
+  assert.doesNotMatch(h,/6\. 料金の例|name="ex\d/);
+  assert.equal(ir.examples.length,0);
+  assert.equal(calls,0);
+  assert.deepEqual([rows.length,mails.length],before);
+  assert.ok(!Object.values(ctx.CONFIG.OPEN_PARTNERS).includes(id));
+  assert.ok(ctx.pconfOf_('De5faaf3').examples.length);
+  ctx.pconfExamples_=originalExamples;
+}
+console.log('PASS: IR only, same schema, public values, no speculative examples, no writes or acceptance changes.');

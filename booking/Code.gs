@@ -2504,9 +2504,45 @@ function pconfOf_(id) {
   if (publicPaused_(id)) return null;
   if (PCONF[id]) return PCONF[id];
   var c = DISPLAY_COMPANIES.filter(function(x) { return x.id === id; })[0];
-  if (c) return pconfAuto_(c);
+  if (c) return id === 'D01478c8' ? pconfIrPublic_(c) : pconfAuto_(c);
   var pt = id && partnerById_(id);
   return pt ? pconfAuto_({ id: id, name: pt.name }) : null;
+}
+// アイアールサービスの公開資料のみ。候補表示・料金計算・受付可否とは別の確認欄。
+function pconfIrPublic_(company) {
+  var schema = pconfAuto_({ name: company.name, url: 'https://www.i-and-r.com/pettaxi.html', pref: '大阪府' });
+  // 車両 https://www.i-and-r.com/car.html ／ 利用規約 https://www.i-and-r.com/gaiyou.html
+  const item=k=>schema.sections.flatMap(s=>s.items).find(x=>x.k===k);
+  const p=(k,v,note)=>Object.assign(item(k),{tag:'site',v,...(note?{note}:{})});
+  const u=(k,note)=>Object.assign(item(k),{tag:'need',v:undefined,note});
+  const c=(k,note)=>Object.assign(item(k),{tag:'chk',v:undefined,note});
+  const rows=[[10,3000,5400],[15,3950,7100],[20,4900,8800],[25,5850,10500],[30,6800,12200]];
+  const fmt=n=>n.toLocaleString('ja-JP');
+  p('origin','大阪市北区','公式サイトの事業所所在地。実際の迎車距離の計算起点が異なる場合は訂正してください。');
+  u('radius','公式サイトの大阪府内対応先には大阪市・堺・東大阪・高槻・豊中などと関西空港・伊丹空港を記載。地域欄の列挙は距離上限として扱っていません。');
+  c('dest','近畿・関東・中部・中国・四国・九州などの掲載あり。遠方地域をお迎えと行き先のどちらに使えるか確認。');
+  u('hours','電話受付は年中無休8:00〜22:00。利用規約の会社概要には営業時間8:00〜20:00・24時間活動とあり、送迎できる時間は未確認。');
+  p('animals','犬（大型犬も可）・猫・うさぎ・ハムスター・鳥・爬虫類・熱帯魚');
+  u('riders','飼い主の付き添い同乗可。上限は公式サイトに記載なし。');
+  u('big1','大型犬と座席で同乗可。30kg以上1頭に大人が何人まで乗れるかは未確認。');
+  p('cage','なくても乗せられる','ケージが必要なときはお客さまが用意。動物ごとの容器・安全条件があれば追記してください。');
+  c('via','走行途中に散歩できるとの記載。別の立ち寄り・経由の可否は未確認。');
+  p('luggage','載せられる','積載可能な範囲。ペット用品・スーツケース・ゴルフバッグの掲載あり。大型犬と大きな荷物を同時に載せられる条件は未確認。');
+  p('tax','税込（消費税なしも含む）');
+  p('ride',rows.map(r=>r[0]+'kmまで：片道'+fmt(r[1])+'円／往復'+fmt(r[2])+'円').join('、'),'公式表の掲載額のみ。1km単位と記載がありますが、表にない距離・端数処理・往復距離の数え方は決めつけません。');
+  p('pick','距離で（〇kmまで無料・定額、その先1kmごと）','迎車の起点・端数の処理が表の説明と異なる場合は訂正してください。');
+  item('pick').mv='10kmまで無料、その先は1kmごとに100円';
+  p('wait','30分まで無料。31〜45分300円、46〜60分600円、61〜75分900円、76〜90分1,200円、91〜105分1,500円、106〜120分1,800円。以後15分ごとに300円加算。');
+  c('night','22:00〜翌7:00は深夜・早朝割増。割増額は公式サイトに記載なし。');
+  c('night_how','乗る時刻・割増時間内の走行分・時間帯にかかる全体のどれかと、加算する対象を確認。');
+  c('long','100km以上の長距離割引は相談。通常計算と見積もりの境目、30km超の式は未確認。');
+  c('other','頭数追加料金なし。駐車料金などの実費、利用者都合の経路変更・待機延長は別途。その他は該当時だけ補足してください。');
+  p('cancel','現金払い（カード・後日請求不可）。前日までのキャンセルは無料、当日は料金の半額。','搬送途中の取消扱いは公開規約に明記なし。');
+  p('plate','黒ナンバー（貨物軽自動車の届出）','公式サイトに事業の届出を記載。今回のご依頼で使う車に当てはまらなければ訂正してください。');
+  p('insurance',['貨物保険'],'貨物賠償責任保険の掲載あり。運ぶ動物が対象となる条件・範囲は未確認。');
+  c('car','後部はフラットまたは座席に変更可能。車種・台数の明記は確認できません。');
+  schema.read = '2026年11月24日';
+  return schema;
 }
 function pconfHours_(h) {
   if (!h) return '';
