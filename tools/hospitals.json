@@ -1077,7 +1077,7 @@
    ],
    "city": "藤沢市",
    "url": "https://animallifepartner.com/housecall.html",
-   "area": "藤沢市湘南台を中心に半径15kmまで（大和・綾瀬・茅ヶ崎など）",
+   "area": "藤沢市湘南台を中心に半径10kmまで",
    "animals": "犬・猫・うさぎ・ハムスター",
    "hours": "9時〜19時（水曜休み）",
    "spec": "往診専門（自宅に来て診てくれる）",
@@ -2628,47 +2628,6 @@
      "k": "家でできること",
      "v": "ワクチン・フィラリアの検査と予防・吐く・下痢・皮膚・耳・猫風邪・けんかの傷などの内科・緩和ケア",
      "src": "https://oushinvet-ashioto.com",
-     "checked": "2026-11-14"
-    }
-   ]
-  },
-  {
-   "id": "V056",
-   "name": "かやま往診専門動物病院",
-   "prefs": [
-    "鹿児島県"
-   ],
-   "city": "いちき串木野市",
-   "url": "https://kayama-oushin.com/",
-   "area": "いちき串木野市・薩摩川内市・日置市・鹿児島市を中心に",
-   "animals": "犬・猫",
-   "hours": "8時〜20時",
-   "spec": "往診専門（自宅に来て診てくれる）",
-   "review_query": "かやま往診専門動物病院 いちき串木野市",
-   "review_name": "かやま往診専門動物病院",
-   "facts": [
-    {
-     "k": "往診の地域",
-     "v": "いちき串木野市・薩摩川内市・日置市・鹿児島市を中心に",
-     "src": "https://kayama-oushin.com/",
-     "checked": "2026-11-14"
-    },
-    {
-     "k": "受付時間",
-     "v": "8時〜20時",
-     "src": "https://kayama-oushin.com/",
-     "checked": "2026-11-14"
-    },
-    {
-     "k": "予約のしかた",
-     "v": "電話で相談して予約",
-     "src": "https://kayama-oushin.com/",
-     "checked": "2026-11-14"
-    },
-    {
-     "k": "対象の動物",
-     "v": "犬・猫",
-     "src": "https://kayama-oushin.com/",
      "checked": "2026-11-14"
     }
    ]
