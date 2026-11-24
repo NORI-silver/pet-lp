@@ -6,7 +6,7 @@
   "page": "https://www.city.chiyoda.lg.jp/koho/machizukuri/koen/dogrun.html",
   "sha256": "d9e09bc0f7d41291bb9df34a3548fd8992ea52515f5be77ff300482f7eeec4d1",
   "bytes": 18192,
-  "_audit": "2026-11-24 sitters batch 1+2, vet clinics Tokyo (visual review + page-context check)"
+  "_audit": "2026-11-24 sitters batch 1+2, Kanagawa trainers (visual review + page-context check)"
  },
  {
   "id": "D0d1c8b4",
@@ -22129,5 +22129,1349 @@
   "page": "https://www.ina-vet.com/",
   "sha256": "50f09aaf7da6c7f1159bac49287f42822ad00ab51c6db60a87e98e12cf624726",
   "bytes": 33010
+ },
+ {
+  "id": "T122",
+  "file": "img/fac/trainer/T122_1.webp",
+  "src": "https://www.odts.jp/wp-content/uploads/2021/03/5-rotated-2.jpg",
+  "page": "https://www.odts.jp/",
+  "sha256": "ebf02b090fffa6a68261adda974d22997dcb4db50c256231ec78f3a273cf7c6d",
+  "bytes": 105852
+ },
+ {
+  "id": "T122",
+  "file": "img/fac/trainer/T122_2.webp",
+  "src": "https://www.odts.jp/wp-content/uploads/2020/04/ラブ4-e1587246641472.jpg",
+  "page": "https://www.odts.jp/",
+  "sha256": "3fd4280263c317345f62b0ab274fe11edba0594d2be0077ca4d051bd7d87172e",
+  "bytes": 52074
+ },
+ {
+  "id": "T122",
+  "file": "img/fac/trainer/T122_3.webp",
+  "src": "https://www.odts.jp/wp-content/uploads/2020/05/DSC_0693b.jpg",
+  "page": "https://www.odts.jp/",
+  "sha256": "3b464895d31b4007160de009764a5ec29b28c5534d938c7695b1aefb077ff1c5",
+  "bytes": 39854
+ },
+ {
+  "id": "T126",
+  "file": "img/fac/trainer/T126_1.webp",
+  "src": "https://yuma-dogschool.jp/assets/images/img-top.png",
+  "page": "https://yuma-dogschool.jp/pages/top.php",
+  "sha256": "101b60ec6736d619b80dc12bcf9495ff339368180d4c34f8cb577f941474f681",
+  "bytes": 45740
+ },
+ {
+  "id": "T206",
+  "file": "img/fac/trainer/T206_1.webp",
+  "src": "https://dogschoolunited.com/unitedwp/wp-content/uploads/2015/01/CIMG4241-001-980x490.jpg",
+  "page": "https://www.dogschoolunited.com/",
+  "sha256": "879823d97ecde7915d74ce8f654d106a5a36b9c95dd95b2b3be24de24861d40c",
+  "bytes": 63496
+ },
+ {
+  "id": "T206",
+  "file": "img/fac/trainer/T206_2.webp",
+  "src": "https://dogschoolunited.com/unitedwp/wp-content/uploads/2015/01/DSC_2746-001-e1422623190805-980x490.jpg",
+  "page": "https://www.dogschoolunited.com/",
+  "sha256": "3f9232db618d0ed4be327684e10d1b73de15df9c69c1e20897c6c2561b42b612",
+  "bytes": 22130
+ },
+ {
+  "id": "T206",
+  "file": "img/fac/trainer/T206_3.webp",
+  "src": "https://dogschoolunited.com/unitedwp/wp-content/uploads/2015/01/390336c1123fb82b1abc73948cb9b763-e1422626766817-980x490.jpg",
+  "page": "https://www.dogschoolunited.com/",
+  "sha256": "6f892d48644037bffeda678604c4cb8197c1f9215e53b8d086cbb0748288ddb1",
+  "bytes": 33350
+ },
+ {
+  "id": "T206",
+  "file": "img/fac/trainer/T206_4.webp",
+  "src": "https://dogschoolunited.com/unitedwp/wp-content/uploads/2015/01/DSC_2051-001-e1422621217489-980x490.jpg",
+  "page": "https://www.dogschoolunited.com/",
+  "sha256": "5442db3ae2a0e6ecddfc9601db9f18cf38efbd11357c3189a9b10913a7d2d711",
+  "bytes": 59684
+ },
+ {
+  "id": "T264",
+  "file": "img/fac/trainer/T264_1.webp",
+  "src": "https://www.dogservice-coco.jp/wp/wp-content/uploads/2023/10/DSCF0064_19001000.jpg",
+  "page": "https://www.dogservice-coco.jp/",
+  "sha256": "a980cd1295c2c0202b0c2f834b2e7539848548cc20e6ea5289ba90a61ac2a072",
+  "bytes": 148184
+ },
+ {
+  "id": "Ttce72b13",
+  "file": "img/fac/trainer/Ttce72b13_1.webp",
+  "src": "https://lapromesse-dog.com/web/wp-content/uploads/2025/08/top-hoikuen2.jpg",
+  "page": "https://lapromesse-dog.com/",
+  "sha256": "76c2333fbc0d0e16f38f9bec37886b3b65a0d162336cbd5a5b419b11d8b67bd0",
+  "bytes": 48890
+ },
+ {
+  "id": "Ttce72b13",
+  "file": "img/fac/trainer/Ttce72b13_2.webp",
+  "src": "https://lapromesse-dog.com/web/wp-content/uploads/2025/08/top-dogtrainning.jpg",
+  "page": "https://lapromesse-dog.com/",
+  "sha256": "a46edebdfec49daad1a559bfb566986c910af6e7eab1f7ab2f7a4df13a281afd",
+  "bytes": 28908
+ },
+ {
+  "id": "Tt8a00e7b",
+  "file": "img/fac/trainer/Tt8a00e7b_1.webp",
+  "src": "https://s3-ap-northeast-1.amazonaws.com/img.p-kit.com/nodognolife/1722838110034682200.jpg",
+  "page": "https://nodognolife11.org/",
+  "sha256": "2ada04a8ba809b4f6dff53b830b7e5d3691d31d01506532c2435a811d2e3e5f6",
+  "bytes": 38058
+ },
+ {
+  "id": "Tt8a00e7b",
+  "file": "img/fac/trainer/Tt8a00e7b_2.webp",
+  "src": "https://s3-ap-northeast-1.amazonaws.com/img.p-kit.com/nodognolife/1722838838079541800.jpg",
+  "page": "https://nodognolife11.org/",
+  "sha256": "abe1c32c98c15d997eec1e45991a2f7f9c60cbf206b8b35d55b5eb840f363f25",
+  "bytes": 17292
+ },
+ {
+  "id": "Tt8a00e7b",
+  "file": "img/fac/trainer/Tt8a00e7b_3.webp",
+  "src": "https://s3-ap-northeast-1.amazonaws.com/img.p-kit.com/nodognolife/1722839974078699300.jpg",
+  "page": "https://nodognolife11.org/",
+  "sha256": "e5392a8081bd6e78650978de7d64a47e7c438bcc7ed41e27d931c891524fba14",
+  "bytes": 65856
+ },
+ {
+  "id": "Tt8a00e7b",
+  "file": "img/fac/trainer/Tt8a00e7b_4.webp",
+  "src": "https://s3-ap-northeast-1.amazonaws.com/img.p-kit.com/nodognolife/1722840863040352900.jpg",
+  "page": "https://nodognolife11.org/",
+  "sha256": "2c3c57f58b5fbedd7cf110a1880381cfc9abe55d222b7acba644113b37c58903",
+  "bytes": 15542
+ },
+ {
+  "id": "Tt8a00e7b",
+  "file": "img/fac/trainer/Tt8a00e7b_5.webp",
+  "src": "https://s3-ap-northeast-1.amazonaws.com/img.p-kit.com/nodognolife/1722840935005339600.jpg",
+  "page": "https://nodognolife11.org/",
+  "sha256": "72f368403b30f87c4455aad3488ad94abba0fdf8601b60af8b2b872527e63dc8",
+  "bytes": 21530
+ },
+ {
+  "id": "Tt2a0453b",
+  "file": "img/fac/trainer/Tt2a0453b_1.webp",
+  "src": "https://mizobedogschool.com/wp-content/uploads/2020/06/202006221839-min.jpg",
+  "page": "https://mizobedogschool.com/",
+  "sha256": "4172eec2162a9e0a8a744193073e54988965797a8aa013ae8234fd3d0690ccab",
+  "bytes": 75222
+ },
+ {
+  "id": "Tt2a0453b",
+  "file": "img/fac/trainer/Tt2a0453b_2.webp",
+  "src": "https://mizobedogschool.com/wp-content/uploads/2020/06/202006230546-2-min.jpg",
+  "page": "https://mizobedogschool.com/",
+  "sha256": "96bb32ca3b84babd2828a427f464763a2eb5a6b1a2cdf1173ca424a6cbb5c115",
+  "bytes": 28950
+ },
+ {
+  "id": "Tt2a0453b",
+  "file": "img/fac/trainer/Tt2a0453b_3.webp",
+  "src": "https://mizobedogschool.com/wp-content/uploads/2020/02/prof-min.jpg",
+  "page": "https://mizobedogschool.com/",
+  "sha256": "97f0e3e82b545d89ae1df9981af782c05974bf935667d1d2268deef6220cc5a2",
+  "bytes": 31256
+ },
+ {
+  "id": "Tt25b97c3",
+  "file": "img/fac/trainer/Tt25b97c3_1.webp",
+  "src": "https://static.wixstatic.com/media/8699fe_dfc1bc55c3b54715812ccaaecc4787b7.jpg",
+  "page": "https://www.happinessdog.info/",
+  "sha256": "537883135c893430bdb1f74dabce38595c34812f01bea93f2fe3f0d622333c94",
+  "bytes": 34354
+ },
+ {
+  "id": "Tt25b97c3",
+  "file": "img/fac/trainer/Tt25b97c3_2.webp",
+  "src": "https://static.wixstatic.com/media/8699fe_fb33ebc4dca04f938971b23ed635aef8.jpg",
+  "page": "https://www.happinessdog.info/",
+  "sha256": "f3b5d8d3123ae6d1e8f02f6e75b919a00db3a43e9ae0772e6dfe45f82d496c11",
+  "bytes": 32992
+ },
+ {
+  "id": "Tt25b97c3",
+  "file": "img/fac/trainer/Tt25b97c3_3.webp",
+  "src": "https://static.wixstatic.com/media/8699fe_7c1d167bea3746d2bd111e0296d41fb1.jpg",
+  "page": "https://www.happinessdog.info/",
+  "sha256": "411000692667af8f0480555ba0a5094ae7667f7bbc25e9021a61f1bd5a5c38fc",
+  "bytes": 26174
+ },
+ {
+  "id": "Tt25b97c3",
+  "file": "img/fac/trainer/Tt25b97c3_4.webp",
+  "src": "https://static.wixstatic.com/media/fa0bcc99a6db89f23698e356db6d1c66.png",
+  "page": "https://www.happinessdog.info/",
+  "sha256": "27d4884baf4fcdc0d364e1627e6ba99d2b6230772f93e1cc26cc44dcb1f6f0d5",
+  "bytes": 25890
+ },
+ {
+  "id": "Tt3a6252b",
+  "file": "img/fac/trainer/Tt3a6252b_1.webp",
+  "src": "https://static.wixstatic.com/media/c174ab_9a8166c988724617a12d2bfc4e3aaed5~mv2.jpeg",
+  "page": "https://tinapino1017.wixsite.com/dogconsent",
+  "sha256": "76996d1b583bff3b86740c4ec3c98ced06d3fa2825fb8172b9f51c6b87dc354d",
+  "bytes": 23238
+ },
+ {
+  "id": "Tt3a6252b",
+  "file": "img/fac/trainer/Tt3a6252b_2.webp",
+  "src": "https://static.wixstatic.com/media/c174ab_797d3916b0d249728965f4d0b6186251~mv2.jpeg",
+  "page": "https://tinapino1017.wixsite.com/dogconsent",
+  "sha256": "3567b892439c98fe6057be942dd5664f5cb4bc09d814589d4d2694ff0aa37261",
+  "bytes": 26526
+ },
+ {
+  "id": "Tt3a6252b",
+  "file": "img/fac/trainer/Tt3a6252b_3.webp",
+  "src": "https://static.wixstatic.com/media/c174ab_0ba9ce4bd29246c3beff60715523a3ac~mv2.jpeg",
+  "page": "https://tinapino1017.wixsite.com/dogconsent",
+  "sha256": "9029e71b8095967f7ac6da8b43aca39e11e90e5619e60cae5119ae4ca1c5130f",
+  "bytes": 141096
+ },
+ {
+  "id": "Tt3a6252b",
+  "file": "img/fac/trainer/Tt3a6252b_4.webp",
+  "src": "https://static.wixstatic.com/media/c174ab_9af55bdcc4f9498095757d46ccd05580~mv2.jpeg",
+  "page": "https://tinapino1017.wixsite.com/dogconsent",
+  "sha256": "429c73ff002a7c45b2b8a065a1dac3515fb282cd14254f0a8f6ed7d86b8893f0",
+  "bytes": 28572
+ },
+ {
+  "id": "Tt3a6252b",
+  "file": "img/fac/trainer/Tt3a6252b_5.webp",
+  "src": "https://static.wixstatic.com/media/c174ab_52ab3d5d18ea4734980a1d3d43fd99e4~mv2.jpeg",
+  "page": "https://tinapino1017.wixsite.com/dogconsent",
+  "sha256": "5b9a03ce9a830a6a5776700f62c2942bba05c446b50d41b16ccbaa57f42662c0",
+  "bytes": 135642
+ },
+ {
+  "id": "Tt9506391",
+  "file": "img/fac/trainer/Tt9506391_1.webp",
+  "src": "https://dogschoolsucceed.com/succeed/wp-content/uploads/2025/02/IMG_2433.jpeg",
+  "page": "https://dogschoolsucceed.com/",
+  "sha256": "76f51196c70099c9584e19018ce21368f8f21ff3c2527413404d00dec5bef5cd",
+  "bytes": 21530
+ },
+ {
+  "id": "Tt9506391",
+  "file": "img/fac/trainer/Tt9506391_2.webp",
+  "src": "https://dogschoolsucceed.com/succeed/wp-content/uploads/2025/02/IMG_2434.jpeg",
+  "page": "https://dogschoolsucceed.com/",
+  "sha256": "5a0050634241b0dbe91f9d8c429e4178c208e8930efe2f772c2bd6e00b4a976a",
+  "bytes": 31820
+ },
+ {
+  "id": "Tt9506391",
+  "file": "img/fac/trainer/Tt9506391_3.webp",
+  "src": "https://dogschoolsucceed.com/succeed/wp-content/uploads/2025/01/IMG_1962-1000x600.jpeg",
+  "page": "https://dogschoolsucceed.com/",
+  "sha256": "615cd12095ff25657df29dfcf93dd872a4f319d3b1de9369595bfc65d02dea31",
+  "bytes": 94210
+ },
+ {
+  "id": "Tt9506391",
+  "file": "img/fac/trainer/Tt9506391_4.webp",
+  "src": "https://dogschoolsucceed.com/succeed/wp-content/uploads/2025/01/IMG_1963.jpeg",
+  "page": "https://dogschoolsucceed.com/",
+  "sha256": "648d22fce6b36e1fe0bf5fe3854f94ed180b5c2b188d30f9ca45b6cc055e8c52",
+  "bytes": 41952
+ },
+ {
+  "id": "Tt7e08408",
+  "file": "img/fac/trainer/Tt7e08408_1.webp",
+  "src": "https://kokoro-therapy.club/wp-content/uploads/top01.jpeg",
+  "page": "https://kokoro-therapy.club/",
+  "sha256": "a6c67018f7747738056e8c5ff49912fa0ed7606892fda14c3ba5735508494a7d",
+  "bytes": 74432
+ },
+ {
+  "id": "Tt7e08408",
+  "file": "img/fac/trainer/Tt7e08408_2.webp",
+  "src": "https://kokoro-therapy.club/wp-content/uploads/top02-1.jpg",
+  "page": "https://kokoro-therapy.club/",
+  "sha256": "ce32743b12761b6fdb61838e1f1602eb7df03a341bb15c89ec736157fdd1512e",
+  "bytes": 46116
+ },
+ {
+  "id": "Tt7e08408",
+  "file": "img/fac/trainer/Tt7e08408_3.webp",
+  "src": "https://kokoro-therapy.club/wp-content/uploads/IMG_1480.jpeg",
+  "page": "https://kokoro-therapy.club/",
+  "sha256": "d2c72fdb08b2217cb74a78d39e2472d244f7f05dc207c805987d0f1afb563915",
+  "bytes": 32070
+ },
+ {
+  "id": "Tt7e08408",
+  "file": "img/fac/trainer/Tt7e08408_4.webp",
+  "src": "https://kokoro-therapy.club/wp-content/uploads/7db0190d6e39c46e39e3631aa3df9ad5.jpg",
+  "page": "https://kokoro-therapy.club/",
+  "sha256": "35969af8f5d648650a4d78562179c325fee148202d0192a31dae09cc1d448a0c",
+  "bytes": 32650
+ },
+ {
+  "id": "Tt7e08408",
+  "file": "img/fac/trainer/Tt7e08408_5.webp",
+  "src": "https://kokoro-therapy.club/wp-content/uploads/2018-05-03-12.20.33-e1538962970665-1024x1007.jpg",
+  "page": "https://kokoro-therapy.club/",
+  "sha256": "67de06d1813999303368a3e0cc14ed83c945a8a7b0b35eae5bb09d8d5313c9ea",
+  "bytes": 115426
+ },
+ {
+  "id": "Tt9f2734a",
+  "file": "img/fac/trainer/Tt9f2734a_1.webp",
+  "src": "https://www.dog-noah.jp/wp/wp-content/uploads/2023/10/img-touch02.jpg",
+  "page": "https://www.dog-noah.jp/",
+  "sha256": "0d783a6b895bf0c2822b4a18a45da8813f3c63a264546785e3e6d031304350a7",
+  "bytes": 30066
+ },
+ {
+  "id": "Tt9f2734a",
+  "file": "img/fac/trainer/Tt9f2734a_2.webp",
+  "src": "https://www.dog-noah.jp/wp/wp-content/uploads/2024/01/IMG_9198.jpeg",
+  "page": "https://www.dog-noah.jp/",
+  "sha256": "0264c65a43e384acbdef4626306936c7fef0de554436f945cfa33acc585f51ab",
+  "bytes": 16404
+ },
+ {
+  "id": "Tt9f2734a",
+  "file": "img/fac/trainer/Tt9f2734a_3.webp",
+  "src": "https://www.dog-noah.jp/wp/wp-content/uploads/2023/10/top_img02.jpg",
+  "page": "https://www.dog-noah.jp/",
+  "sha256": "41e183be757e70be5b76fa64310f2528456d5cc32ee087b83345e8ee3de2ce3b",
+  "bytes": 156130
+ },
+ {
+  "id": "Tt9f2734a",
+  "file": "img/fac/trainer/Tt9f2734a_4.webp",
+  "src": "https://www.dog-noah.jp/wp/wp-content/uploads/2024/01/IMG_8966-1.png",
+  "page": "https://www.dog-noah.jp/",
+  "sha256": "11f5e4fc9cf944081d4eb0d925c2707077737ae73f42283d641df4dcc4555456",
+  "bytes": 35620
+ },
+ {
+  "id": "Tt9f2734a",
+  "file": "img/fac/trainer/Tt9f2734a_5.webp",
+  "src": "https://www.dog-noah.jp/wp/wp-content/uploads/2023/10/pexels-helena-lopes-3114143_s.jpg",
+  "page": "https://www.dog-noah.jp/",
+  "sha256": "f55f991e636f1b75a129e6ade9b3f0dec19c12babfec657eaadfd940c3299eff",
+  "bytes": 62856
+ },
+ {
+  "id": "Tt18ff5bc",
+  "file": "img/fac/trainer/Tt18ff5bc_1.webp",
+  "src": "https://k9sarada.com/wp-content/uploads/2026/04/wp2-scaled.jpg",
+  "page": "https://k9sarada.com/",
+  "sha256": "f401cb0595e1d74a0628ea5da44c739ec3c45337f5917d8acd5b8bdb4fdfb1eb",
+  "bytes": 152718
+ },
+ {
+  "id": "Tt18ff5bc",
+  "file": "img/fac/trainer/Tt18ff5bc_2.webp",
+  "src": "https://k9sarada.com/wp-content/uploads/2025/05/t1-1-scaled.jpg",
+  "page": "https://k9sarada.com/",
+  "sha256": "d3adc82e2af4b57b2ab87623657fa98b093869a714df69e0ee5c83a4f60fd755",
+  "bytes": 133814
+ },
+ {
+  "id": "Tt18ff5bc",
+  "file": "img/fac/trainer/Tt18ff5bc_3.webp",
+  "src": "https://k9sarada.com/wp-content/uploads/2025/04/S__25698319.jpg",
+  "page": "https://k9sarada.com/",
+  "sha256": "7bd0c8144e620df9e6ab0f417d33a97ddb2f157ba3932df37a1d2cdd867a6e82",
+  "bytes": 61936
+ },
+ {
+  "id": "Tt086e052",
+  "file": "img/fac/trainer/Tt086e052_1.webp",
+  "src": "https://static.wixstatic.com/media/6645bf_93aa0f91870f49fc889120d11248b988~mv2.jpg/v1/fit/w_3024,h_4032,al_c,q_90/6645bf_93aa0f91870f49fc889120d11248b988~mv2.jpg",
+  "page": "https://www.naturaldogskos.com/service-page/%E6%9C%884%E5%9B%9E%E6%88%90%E7%8A%AC%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0-%E4%B8%80%E5%9B%9E6300%E5%86%86",
+  "sha256": "9c20edc5707bed3d2525d5743d89136cdd1d6b4d0bbce691e57df47600858ec1",
+  "bytes": 88644
+ },
+ {
+  "id": "Tt086e052",
+  "file": "img/fac/trainer/Tt086e052_2.webp",
+  "src": "https://static.wixstatic.com/media/6645bf_d9e6cd055f9049adacf97ac9edd42957~mv2.jpg",
+  "page": "https://www.naturaldogskos.com/service-page/%E6%9C%884%E5%9B%9E%E6%88%90%E7%8A%AC%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0-%E4%B8%80%E5%9B%9E6300%E5%86%86",
+  "sha256": "fcdeeb2f3080a595f00d4fecd6f7c287b3a2998012737f70fa12721d8f37ce77",
+  "bytes": 129808
+ },
+ {
+  "id": "Tt086e052",
+  "file": "img/fac/trainer/Tt086e052_3.webp",
+  "src": "https://static.wixstatic.com/media/6645bf_27ba69fc445f446e96a82da7bd162da2~mv2.jpg",
+  "page": "https://www.naturaldogskos.com/service-page/%E6%9C%884%E5%9B%9E%E6%88%90%E7%8A%AC%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0-%E4%B8%80%E5%9B%9E6300%E5%86%86",
+  "sha256": "362452abbb1fbe77cf6c606953fb8cb8ac37f74e3db68e061e72cf85771dbe17",
+  "bytes": 71874
+ },
+ {
+  "id": "Ttffd3276",
+  "file": "img/fac/trainer/Ttffd3276_1.webp",
+  "src": "https://static.wixstatic.com/media/04cefd_b53fb39df3114502a0d282b674c74bed~mv2.jpg",
+  "page": "https://www.true-dogs.com/",
+  "sha256": "e20a590998336034cd7fa48ee000a9a9589f24078aa92d24b8990930ec18463a",
+  "bytes": 52192
+ },
+ {
+  "id": "Ttffd3276",
+  "file": "img/fac/trainer/Ttffd3276_2.webp",
+  "src": "https://static.wixstatic.com/media/8f06d423f1074c479bf65ababdd2d897.jpg",
+  "page": "https://www.true-dogs.com/",
+  "sha256": "522fd60ac0d086ef484a317314a74e8040c002e832a2053986677370fc7a86c3",
+  "bytes": 26658
+ },
+ {
+  "id": "Ttcec75c6",
+  "file": "img/fac/trainer/Ttcec75c6_1.webp",
+  "src": "https://www.peachdog.pet/wp-content/uploads/2020/10/DSC03926-scaled-e1603630962697.jpg",
+  "page": "https://www.peachdog.pet/",
+  "sha256": "d2889904c1ddaf14f914b3ccd45861f95f578d169f528f227208c2d0092236ba",
+  "bytes": 44660
+ },
+ {
+  "id": "Ttcec75c6",
+  "file": "img/fac/trainer/Ttcec75c6_2.webp",
+  "src": "https://www.peachdog.pet/wp-content/uploads/2020/09/DSC04359@05x-min-e1603631035179.jpg",
+  "page": "https://www.peachdog.pet/",
+  "sha256": "5a40db08801f30b3b2d96c27cef7267c5e193206553c7ca3c3d5b71ba19d613c",
+  "bytes": 74894
+ },
+ {
+  "id": "Ttcec75c6",
+  "file": "img/fac/trainer/Ttcec75c6_3.webp",
+  "src": "https://www.peachdog.pet/wp-content/uploads/2020/09/2DSC03935@05x-min-e1603631004668.jpg",
+  "page": "https://www.peachdog.pet/",
+  "sha256": "79de0e8e10c98cd085b2390947ab58f76bb6c426b46da6c21a7f1fd87e67a36c",
+  "bytes": 111732
+ },
+ {
+  "id": "Ttcec75c6",
+  "file": "img/fac/trainer/Ttcec75c6_4.webp",
+  "src": "https://www.peachdog.pet/wp-content/uploads/2020/12/DSC04493-scaled-e1607294100692.jpg",
+  "page": "https://www.peachdog.pet/",
+  "sha256": "28eb3d3dadf382a90936d441665f6f5605e841acc42748bfd52c358cb634073d",
+  "bytes": 120270
+ },
+ {
+  "id": "Ttcec75c6",
+  "file": "img/fac/trainer/Ttcec75c6_5.webp",
+  "src": "https://www.peachdog.pet/wp-content/uploads/2020/09/DSC03873@05x-min-scaled.jpg",
+  "page": "https://www.peachdog.pet/",
+  "sha256": "2e86f25b6e18f7544ec57cb3335b12c15a998e935b7a627ecb2fce967604443b",
+  "bytes": 112788
+ },
+ {
+  "id": "Tt56f71b6",
+  "file": "img/fac/trainer/Tt56f71b6_1.webp",
+  "src": "https://cdn.goope.jp/158818/200308145923pzy9_l.jpg",
+  "page": "https://pomo-nursery.com/",
+  "sha256": "17d749c7ab83591f0e842717fe3ceafd16dfb9611f80d890ac5284d7cfc5063f",
+  "bytes": 32764
+ },
+ {
+  "id": "Tt56f71b6",
+  "file": "img/fac/trainer/Tt56f71b6_2.webp",
+  "src": "https://cdn.goope.jp/158818/201109142819sxyj_l.jpg",
+  "page": "https://pomo-nursery.com/",
+  "sha256": "740536b18a91bdc430d5e5737ed2abecd45d75e646eb85c9ce9b76eadd31b88e",
+  "bytes": 52392
+ },
+ {
+  "id": "Tt822a665",
+  "file": "img/fac/trainer/Tt822a665_1.webp",
+  "src": "http://planetskip.co.jp/planet-skip2024/wp-content/uploads/2024/05/mv-3.png",
+  "page": "https://planetskip.co.jp/",
+  "sha256": "0744842a68ba5f8e6b9755bed57ade07cde1f3252adafc88ee0895bfc440cec9",
+  "bytes": 21476
+ },
+ {
+  "id": "Tt822a665",
+  "file": "img/fac/trainer/Tt822a665_2.webp",
+  "src": "https://planetskip.co.jp/planet-skip2024/wp-content/uploads/2024/05/index_sec-1_02.png",
+  "page": "https://planetskip.co.jp/",
+  "sha256": "8bdb75eda1617025b7ecd3e94ef4c0f7797503503eba272859ae5e0ba3aec4a1",
+  "bytes": 51844
+ },
+ {
+  "id": "Tt822a665",
+  "file": "img/fac/trainer/Tt822a665_3.webp",
+  "src": "https://planetskip.co.jp/planet-skip2024/wp-content/uploads/2024/05/index_sec-1_01.png",
+  "page": "https://planetskip.co.jp/",
+  "sha256": "cdb61e4bcab1eb59a9b320837e290c83061f3ab97ca36bced85f8b3e08512e98",
+  "bytes": 31026
+ },
+ {
+  "id": "Tt822a665",
+  "file": "img/fac/trainer/Tt822a665_4.webp",
+  "src": "https://planetskip.co.jp/planet-skip2024/wp-content/uploads/2024/05/01-2.webp",
+  "page": "https://planetskip.co.jp/",
+  "sha256": "1713b2bce76b3954efcd7fd7e23b57e3fff28803c59f1692b5b378c1e0c36feb",
+  "bytes": 27396
+ },
+ {
+  "id": "Tt822a665",
+  "file": "img/fac/trainer/Tt822a665_5.webp",
+  "src": "https://planetskip.co.jp/planet-skip2024/wp-content/uploads/2024/05/01-2-1.webp",
+  "page": "https://planetskip.co.jp/",
+  "sha256": "3fbe3adc3ec50149d4d7f936d855fd0547daf9896ddeec370fdeda6d098528fc",
+  "bytes": 22628
+ },
+ {
+  "id": "Tt8f3804f",
+  "file": "img/fac/trainer/Tt8f3804f_1.webp",
+  "src": "https://ramo-dog.com/wp-content/uploads/IMG_7084-2048x1362.jpeg",
+  "page": "https://ramo-dog.com/",
+  "sha256": "30575d5c92c9f6da3521e118e3ec1d5dadba4062f862be6491cde36bd625237d",
+  "bytes": 28204
+ },
+ {
+  "id": "Tt8f3804f",
+  "file": "img/fac/trainer/Tt8f3804f_2.webp",
+  "src": "https://ramo-dog.com/wp-content/uploads/IMG_7079.jpeg",
+  "page": "https://ramo-dog.com/",
+  "sha256": "417c2244c9c80522ce89daab7dbd37b99ff17a6c9d403456d95f95ce7377b0b1",
+  "bytes": 22560
+ },
+ {
+  "id": "Tt8f3804f",
+  "file": "img/fac/trainer/Tt8f3804f_3.webp",
+  "src": "https://ramo-dog.com/wp-content/uploads/IMG_7134-2048x1362.jpeg",
+  "page": "https://ramo-dog.com/",
+  "sha256": "dcb7374161d9ffe86d05a093d585d74d0fb478c00f1769bdcac9a2cf614a6dd8",
+  "bytes": 11594
+ },
+ {
+  "id": "Tt8f3804f",
+  "file": "img/fac/trainer/Tt8f3804f_4.webp",
+  "src": "https://ramo-dog.com/wp-content/uploads/IMG_7097.jpeg",
+  "page": "https://ramo-dog.com/",
+  "sha256": "f879dee8a33e865110c402d3eca2046e9a15f3745c2f99829ae9dce2211f472a",
+  "bytes": 27840
+ },
+ {
+  "id": "Tt8f3804f",
+  "file": "img/fac/trainer/Tt8f3804f_5.webp",
+  "src": "https://ramo-dog.com/wp-content/uploads/IMG_7135.jpeg",
+  "page": "https://ramo-dog.com/",
+  "sha256": "c9fee60f6fbec9a42c1ba0bf86259dc57b073994cf9b76c9babe8566c2898534",
+  "bytes": 27398
+ },
+ {
+  "id": "Tt5bc537d",
+  "file": "img/fac/trainer/Tt5bc537d_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/none/path/s1d28951089fe013d/backgroundarea/idafe4c9870371528/version/1595871449/image.jpg",
+  "page": "https://www.zakur-bo.com/",
+  "sha256": "df30a66d7dd1b8ceb2cfa82e1dd263ca364b5da0a063f2ceb80748f50153c138",
+  "bytes": 103218
+ },
+ {
+  "id": "Tt2816c46",
+  "file": "img/fac/trainer/Tt2816c46_1.webp",
+  "src": "https://dognautica.fun/wp-content/uploads/2020/05/DD18D2F9-A67B-4B66-965A-95D3C99D4139.jpeg",
+  "page": "https://dognautica.fun/",
+  "sha256": "29a065291ec7f303ee76bd1ceaeabe4c4faa85513c93a574f4f40992cbeef2d0",
+  "bytes": 15420
+ },
+ {
+  "id": "Tt2816c46",
+  "file": "img/fac/trainer/Tt2816c46_2.webp",
+  "src": "https://dognautica.fun/wp-content/uploads/2020/09/5734D73F-C76E-4579-AA3C-6918C606BEFA-scaled.jpeg",
+  "page": "https://dognautica.fun/",
+  "sha256": "6509ab53bc5b05ddc7dc18bfdacc8aa1631bbdcec58d656873b4a1402eb94d21",
+  "bytes": 20518
+ },
+ {
+  "id": "Tt2816c46",
+  "file": "img/fac/trainer/Tt2816c46_3.webp",
+  "src": "https://dognautica.fun/wp-content/uploads/2020/09/86EE9FB0-6C8D-4BFF-AE08-E9DC5B67802A-scaled.jpeg",
+  "page": "https://dognautica.fun/",
+  "sha256": "546da0efcfc477897f00da76b5d2321427a4bad1e01eac3db8cb3b2581733b68",
+  "bytes": 18872
+ },
+ {
+  "id": "Tt2816c46",
+  "file": "img/fac/trainer/Tt2816c46_4.webp",
+  "src": "https://dognautica.fun/wp-content/uploads/2019/02/IMG_9118-e1594510166535.jpg",
+  "page": "https://dognautica.fun/",
+  "sha256": "7a6acec194a64ca65376254d9b05a14a0902309a6ecf66ed35105925e61d2f3d",
+  "bytes": 18830
+ },
+ {
+  "id": "Tt38f2107",
+  "file": "img/fac/trainer/Tt38f2107_1.webp",
+  "src": "https://dog-training-shirabyoshi.com/wp-content/uploads/2025/11/top-slider-5.jpg",
+  "page": "https://dog-training-shirabyoshi.com/",
+  "sha256": "87989e975b3c8193d31ac7389c9228d0622e8a54c9a90e3ad284313409001086",
+  "bytes": 71580
+ },
+ {
+  "id": "Tt38f2107",
+  "file": "img/fac/trainer/Tt38f2107_2.webp",
+  "src": "https://dog-training-shirabyoshi.com/wp-content/uploads/2025/11/top-slider-1.jpg",
+  "page": "https://dog-training-shirabyoshi.com/",
+  "sha256": "ffb3aa727c4fa57a7ced465dc56065c91ce950ff567d5f3f31e244988995ce8a",
+  "bytes": 47022
+ },
+ {
+  "id": "Tt38f2107",
+  "file": "img/fac/trainer/Tt38f2107_3.webp",
+  "src": "https://dog-training-shirabyoshi.com/wp-content/uploads/2025/11/top-slider-2.jpg",
+  "page": "https://dog-training-shirabyoshi.com/",
+  "sha256": "3bac55db2d4c286e4c3ea5f7d1f12d0afc7810f8e9bb65b0e3cbecaaef1e20e5",
+  "bytes": 34656
+ },
+ {
+  "id": "Tt38f2107",
+  "file": "img/fac/trainer/Tt38f2107_4.webp",
+  "src": "https://dog-training-shirabyoshi.com/wp-content/uploads/2025/11/top-slider-3.jpg",
+  "page": "https://dog-training-shirabyoshi.com/",
+  "sha256": "62ec36753b22b6d42fd2ca667c0df9b1ae39ae45fd1b4355f588ac6281cfc870",
+  "bytes": 72384
+ },
+ {
+  "id": "Tt38f2107",
+  "file": "img/fac/trainer/Tt38f2107_5.webp",
+  "src": "https://dog-training-shirabyoshi.com/wp-content/uploads/2025/11/top-slider-4.jpg",
+  "page": "https://dog-training-shirabyoshi.com/",
+  "sha256": "0d4c19f6a493f18d5113b19e41a722b37c906c974ac625eae5484a88dde8a528",
+  "bytes": 44658
+ },
+ {
+  "id": "Tt1e573ac",
+  "file": "img/fac/trainer/Tt1e573ac_1.webp",
+  "src": "https://static.wixstatic.com/media/49b970_a4611297fdbc4df783f85e7824f16677~mv2.jpg",
+  "page": "https://www.fifymimy.com/",
+  "sha256": "32f75f7eae23f0537d926b7b81575d95f26cf596c8407fab9647ae475f4307e5",
+  "bytes": 224160
+ },
+ {
+  "id": "Tt6cbaf1c",
+  "file": "img/fac/trainer/Tt6cbaf1c_1.webp",
+  "src": "https://cdn.goope.jp/72329/200804163851gd3d_l.jpg",
+  "page": "https://dogsuppsuzukaze.com/",
+  "sha256": "534d4f33230b0019ae6138e556572908eb425c559f255683b26a7de0836b2b0d",
+  "bytes": 71998
+ },
+ {
+  "id": "Tt991f13c",
+  "file": "img/fac/trainer/Tt991f13c_1.webp",
+  "src": "https://static.wixstatic.com/media/d768cf_ca0205c5ec264c919509a9ea417e3743~mv2.png/v1/fill/w_914,h_545,q_90,enc_avif,quality_auto/d768cf_ca0205c5ec264c919509a9ea417e3743~mv2.png",
+  "page": "https://www.ohana-dog-academy.com/",
+  "sha256": "4087a0392e8d628492e832ab375007bf46118c83e7251f5b1e19ba5b26736f7d",
+  "bytes": 33274
+ },
+ {
+  "id": "Tt991f13c",
+  "file": "img/fac/trainer/Tt991f13c_2.webp",
+  "src": "https://static.wixstatic.com/media/d768cf_dc3a900ce3604fa9a013c1d6418f2ea7f003.jpg/v1/fill/w_980,h_545,q_90,enc_avif,quality_auto/d768cf_dc3a900ce3604fa9a013c1d6418f2ea7f003.jpg",
+  "page": "https://www.ohana-dog-academy.com/",
+  "sha256": "24307cc59db1392de49d1d85b2d558263f55c4a09fbf16c944b1af8b40b8fe7e",
+  "bytes": 20326
+ },
+ {
+  "id": "Tt991f13c",
+  "file": "img/fac/trainer/Tt991f13c_3.webp",
+  "src": "https://static.wixstatic.com/media/d768cf_ca0205c5ec264c919509a9ea417e3743~mv2.png",
+  "page": "https://www.ohana-dog-academy.com/",
+  "sha256": "0718bb1b6d387e884b435f6b8b3aae77476b61585d4b6878fa5a55c09a999835",
+  "bytes": 40888
+ },
+ {
+  "id": "Tt991f13c",
+  "file": "img/fac/trainer/Tt991f13c_4.webp",
+  "src": "https://static.wixstatic.com/media/d768cf_dc3a900ce3604fa9a013c1d6418f2ea7f003.jpg",
+  "page": "https://www.ohana-dog-academy.com/",
+  "sha256": "b480129b7b828f100d4e1d5f7a3103615e925753d4d2a84a77d4fcf37a8858ce",
+  "bytes": 27754
+ },
+ {
+  "id": "Ttd2239e4",
+  "file": "img/fac/trainer/Ttd2239e4_1.webp",
+  "src": "https://static.wixstatic.com/media/61667e_ac1a17c37e1048f693a9b4e2d8a9b2d9~mv2.jpg",
+  "page": "https://www.philiadogtraining.com/",
+  "sha256": "2c8374a827ae00af1ee4a1ffa44bbe81591d8760291717da1ffc45017153de51",
+  "bytes": 69348
+ },
+ {
+  "id": "Ttd2239e4",
+  "file": "img/fac/trainer/Ttd2239e4_2.webp",
+  "src": "https://static.wixstatic.com/media/61667e_a853b0c889e446408607b43626451b1a~mv2.jpg",
+  "page": "https://www.philiadogtraining.com/",
+  "sha256": "458d641b48e25ee235e16b93e92f1af69fe1ba4686c14fe8119edbee20ef2eec",
+  "bytes": 77032
+ },
+ {
+  "id": "Ttd2239e4",
+  "file": "img/fac/trainer/Ttd2239e4_3.webp",
+  "src": "https://static.wixstatic.com/media/61667e_a7214ad98f4f4716842ace25f979b025~mv2.jpg",
+  "page": "https://www.philiadogtraining.com/",
+  "sha256": "6b2f1561906c87ed842c606a957663cb22431c6ed42808f36517c5ba0b6f9b54",
+  "bytes": 122116
+ },
+ {
+  "id": "Tt5ff4a0d",
+  "file": "img/fac/trainer/Tt5ff4a0d_1.webp",
+  "src": "https://dog-behavioronecl.com/wlp/wp-content/uploads/IMG_8506.jpeg",
+  "page": "https://dog-behavioronecl.com/",
+  "sha256": "04cb0a7cdd7ef9edc144284dd7f0c3a24c5d590eb932f47368996bffe68ac175",
+  "bytes": 56110
+ },
+ {
+  "id": "Tt5ff4a0d",
+  "file": "img/fac/trainer/Tt5ff4a0d_2.webp",
+  "src": "https://dog-behavioronecl.com/wlp/wp-content/uploads/IMG_8536.jpeg",
+  "page": "https://dog-behavioronecl.com/",
+  "sha256": "7a9425c7e1dd32b6fed219ad4ceaddb95448be7ead2643ee2c325398a1b50e37",
+  "bytes": 101294
+ },
+ {
+  "id": "Tt5ff4a0d",
+  "file": "img/fac/trainer/Tt5ff4a0d_3.webp",
+  "src": "https://dog-behavioronecl.com/wlp/wp-content/uploads/kibi.jpg",
+  "page": "https://dog-behavioronecl.com/",
+  "sha256": "737d0d5bbc469c4442c024963a391bb20d3b11652f8637a9bc89e00908d02e8e",
+  "bytes": 25272
+ },
+ {
+  "id": "Tt5ff4a0d",
+  "file": "img/fac/trainer/Tt5ff4a0d_4.webp",
+  "src": "https://dog-behavioronecl.com/wlp/wp-content/uploads/IMG_6620.jpg",
+  "page": "https://dog-behavioronecl.com/",
+  "sha256": "8eea2439c71a488c13cce96988c4d7413bf0af9e53f935b36d7a83d99bc6eb86",
+  "bytes": 46558
+ },
+ {
+  "id": "Ttec75a76",
+  "file": "img/fac/trainer/Ttec75a76_1.webp",
+  "src": "https://enble-land.com/wp-content/uploads/2024/12/1731654420707.jpg",
+  "page": "https://enble-land.com/",
+  "sha256": "6929d211348f3574e1c0b51de0fd9ab392c1f3b46ca2c3bcce1479044a71456e",
+  "bytes": 65050
+ },
+ {
+  "id": "Ttec75a76",
+  "file": "img/fac/trainer/Ttec75a76_2.webp",
+  "src": "https://enble-land.com/wp-content/uploads/2023/07/070A0689-scaled.jpg",
+  "page": "https://enble-land.com/",
+  "sha256": "d12fbe9dcebb79537152d9d098ef25655f8d6b9d5e78fcf95a0b95c9a95bfa47",
+  "bytes": 39944
+ },
+ {
+  "id": "Ttec75a76",
+  "file": "img/fac/trainer/Ttec75a76_3.webp",
+  "src": "https://enble-land.com/wp-content/uploads/2023/07/070A0730-scaled.jpg",
+  "page": "https://enble-land.com/",
+  "sha256": "165b0d8c290012bc5ef1ba5447d6b7a9247923bcf4e65eb25d0c8d7c69fda679",
+  "bytes": 21958
+ },
+ {
+  "id": "Tt13fe137",
+  "file": "img/fac/trainer/Tt13fe137_1.webp",
+  "src": "https://ca-merci.com/wp-content/themes/companion-animal-merci/assets/images/hero.jpg",
+  "page": "https://ca-merci.com/",
+  "sha256": "05fa9ddaaea276008ad982508ff0948f7a381e9ed7ea50076b9d661095fad9b4",
+  "bytes": 16358
+ },
+ {
+  "id": "Tt13fe137",
+  "file": "img/fac/trainer/Tt13fe137_2.webp",
+  "src": "https://ca-merci.com/wp-content/themes/companion-animal-merci/assets/images/owner.jpg",
+  "page": "https://ca-merci.com/",
+  "sha256": "ceb88f53b0b6711186447cc085af81ca65b76abd57abf62d86d274aa41d2f91f",
+  "bytes": 14044
+ },
+ {
+  "id": "Tt13fe137",
+  "file": "img/fac/trainer/Tt13fe137_3.webp",
+  "src": "https://ca-merci.com/wp-content/themes/companion-animal-merci/assets/images/store-exterior.jpg",
+  "page": "https://ca-merci.com/",
+  "sha256": "b2a8769d88f9826ac65df51bbe4e88285278885e52e627536ced01eb5d1f6452",
+  "bytes": 64000
+ },
+ {
+  "id": "Tt13fe137",
+  "file": "img/fac/trainer/Tt13fe137_4.webp",
+  "src": "https://ca-merci.com/wp-content/themes/companion-animal-merci/assets/images/service-agency.png",
+  "page": "https://ca-merci.com/",
+  "sha256": "d1aee415f5c3762e95b638090de27b075a393baa796f1e70451c15050736c098",
+  "bytes": 40310
+ },
+ {
+  "id": "Tt13fe137",
+  "file": "img/fac/trainer/Tt13fe137_5.webp",
+  "src": "https://ca-merci.com/wp-content/themes/companion-animal-merci/assets/images/service-training.png",
+  "page": "https://ca-merci.com/",
+  "sha256": "0fcc653f43ce9cd0a631778d453bfb9b4ac280c013a859976f47fa2a640c97a0",
+  "bytes": 24746
+ },
+ {
+  "id": "Tt85e54f5",
+  "file": "img/fac/trainer/Tt85e54f5_1.webp",
+  "src": "https://harmony-wonderful.life/wp-content/uploads/2019/10/fdb66cab99004bf7eba293c3d7ab27fa.jpg",
+  "page": "https://harmony-wonderful.life/",
+  "sha256": "0136820839231987dcce88ac5ff4b666410f159cc083ac06a8835442a76d1c7f",
+  "bytes": 43388
+ },
+ {
+  "id": "Ttbd7bc9f",
+  "file": "img/fac/trainer/Ttbd7bc9f_1.webp",
+  "src": "https://static.wixstatic.com/media/194a75_c168d12114b54fc296bff4dc445a0e0d~mv2.jpeg",
+  "page": "https://www.liliendog.jp/",
+  "sha256": "69114b8a2862bb414d9a1bf622f7a616513ef83e29ac2aa3aa8b18c01fb6a51e",
+  "bytes": 98998
+ },
+ {
+  "id": "Ttbd7bc9f",
+  "file": "img/fac/trainer/Ttbd7bc9f_2.webp",
+  "src": "https://static.wixstatic.com/media/194a75_4ef76535e13a49c1bd12e9b016ea6d72~mv2.jpg",
+  "page": "https://www.liliendog.jp/",
+  "sha256": "4fada8565627bcdd0e28594d27c97a11b85ad446786ddea9cc6dc74d601fede0",
+  "bytes": 51388
+ },
+ {
+  "id": "Ttbd7bc9f",
+  "file": "img/fac/trainer/Ttbd7bc9f_3.webp",
+  "src": "https://static.wixstatic.com/media/194a75_36a06d2e3cf44501af38e84f5898c816~mv2.jpg",
+  "page": "https://www.liliendog.jp/",
+  "sha256": "9584f235b5331b0d3acd822787b7f27c0b8f112bdbcf07e12209f7f309cc9fcf",
+  "bytes": 42430
+ },
+ {
+  "id": "Ttdf6bae0",
+  "file": "img/fac/trainer/Ttdf6bae0_1.webp",
+  "src": "https://static.wixstatic.com/media/710ac1_911904785df44ddaa5001f487241cf2f~mv2.jpg",
+  "page": "https://shinedogschool27.wixsite.com/website/blank",
+  "sha256": "1b720b18e4e7497381f993adf755a2fc7e58c24ec0c85b8727b2392800e7aee4",
+  "bytes": 69426
+ },
+ {
+  "id": "Ttdf6bae0",
+  "file": "img/fac/trainer/Ttdf6bae0_2.webp",
+  "src": "https://static.wixstatic.com/media/710ac1_1f5e6520eb1f4221a5f6a19608905ba9~mv2.jpg",
+  "page": "https://shinedogschool27.wixsite.com/website/blank",
+  "sha256": "b5300dbbb1db900f21a3796539f05d5bfb834ac9bb6c75f946623593df5f5617",
+  "bytes": 59570
+ },
+ {
+  "id": "Ttdf6bae0",
+  "file": "img/fac/trainer/Ttdf6bae0_3.webp",
+  "src": "https://static.wixstatic.com/media/710ac1_ed1f5e2d0fc74e51b00f4c31171a7408~mv2.jpg",
+  "page": "https://shinedogschool27.wixsite.com/website/blank",
+  "sha256": "c4e3b44bda83ed38e58ec5b2227538df4dbe7aeee2dd09597b6d8db8894d3f31",
+  "bytes": 34036
+ },
+ {
+  "id": "Ttdf6bae0",
+  "file": "img/fac/trainer/Ttdf6bae0_4.webp",
+  "src": "https://static.wixstatic.com/media/710ac1_ae78b5d5fae2441d97d87850d1d53a87~mv2.jpg",
+  "page": "https://shinedogschool27.wixsite.com/website/blank",
+  "sha256": "06feb216d07c6c688ef3f7959f6f0a093a0f1efb3d0ca065acca02fc07d1cd2d",
+  "bytes": 57252
+ },
+ {
+  "id": "Tt6d33f7a",
+  "file": "img/fac/trainer/Tt6d33f7a_1.webp",
+  "src": "https://dog-training-wanpport.com/wp-content/themes/swell_child-wanpport/assets/img/image_feature_01.webp",
+  "page": "https://dog-training-wanpport.com/",
+  "sha256": "d0a6099e5bf564eeba8d902349cca08882476971aef7d2d79cd1856850aafc46",
+  "bytes": 36142
+ },
+ {
+  "id": "Tt6d33f7a",
+  "file": "img/fac/trainer/Tt6d33f7a_2.webp",
+  "src": "https://dog-training-wanpport.com/wp-content/themes/swell_child-wanpport/assets/img/image_feature_02.webp",
+  "page": "https://dog-training-wanpport.com/",
+  "sha256": "41dd57c8b2e29dde4c3b6bf268f82c3a3f48f32bf51e9ae3f7a213bda0dfdc69",
+  "bytes": 37548
+ },
+ {
+  "id": "Tt6d33f7a",
+  "file": "img/fac/trainer/Tt6d33f7a_3.webp",
+  "src": "https://dog-training-wanpport.com/wp-content/themes/swell_child-wanpport/assets/img/image_feature_03.webp",
+  "page": "https://dog-training-wanpport.com/",
+  "sha256": "0f6245237024ec48ae7779eca496ac291bd3a070973b1fa874b19cd5e01b197e",
+  "bytes": 24958
+ },
+ {
+  "id": "Tt6d33f7a",
+  "file": "img/fac/trainer/Tt6d33f7a_4.webp",
+  "src": "https://dog-training-wanpport.com/wp-content/themes/swell_child-wanpport/assets/img/image_feature_04.webp",
+  "page": "https://dog-training-wanpport.com/",
+  "sha256": "e9aa64092d5cadbe8075294331293307a5a46717967dcb6b0c5eceeeea482b16",
+  "bytes": 35526
+ },
+ {
+  "id": "Tt6c28b66",
+  "file": "img/fac/trainer/Tt6c28b66_1.webp",
+  "src": "https://static.wixstatic.com/media/4cbc0a_112be8584c4340f89813808234e7b199~mv2.jpg/v1/crop/x_0,y_677,w_1936,h_1237/fill/w_629,h_402,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_3461_JPG.jpg",
+  "page": "https://www.takahashi-aiken-school.com/",
+  "sha256": "d3c27270e88985d2b629ab08be4e2f8f004d6e2ab02c5b58248f95f1a7e3710a",
+  "bytes": 32810
+ },
+ {
+  "id": "Tt6c28b66",
+  "file": "img/fac/trainer/Tt6c28b66_2.webp",
+  "src": "https://static.wixstatic.com/media/4cbc0a_112be8584c4340f89813808234e7b199~mv2.jpg",
+  "page": "https://www.takahashi-aiken-school.com/",
+  "sha256": "f0eef2717fa9f2cd574e546d36c20d3c2581c16cf117225d55d708d695e94dcf",
+  "bytes": 61804
+ },
+ {
+  "id": "Tt6c28b66",
+  "file": "img/fac/trainer/Tt6c28b66_3.webp",
+  "src": "https://static.wixstatic.com/media/4cbc0a_83504f9235984178b622adb5ae72dcf3~mv2.jpg",
+  "page": "https://www.takahashi-aiken-school.com/",
+  "sha256": "daa480ec8dc47fb1a2a87953afc554bb0cdc1a7d68c3705abcaf08b1e40ac77b",
+  "bytes": 56010
+ },
+ {
+  "id": "Tt6c28b66",
+  "file": "img/fac/trainer/Tt6c28b66_4.webp",
+  "src": "https://static.wixstatic.com/media/4cbc0a_e801d61128b3423e859280f7d61f43fa~mv2.jpg",
+  "page": "https://www.takahashi-aiken-school.com/",
+  "sha256": "de60a294a7c552b23160d95ac83b0cc8af75cffbe5677b89f2ba6603f25a8b11",
+  "bytes": 12712
+ },
+ {
+  "id": "Tt9d7e887",
+  "file": "img/fac/trainer/Tt9d7e887_1.webp",
+  "src": "https://wan-peace.jp/wp-content/uploads/2025/03/staff_ohnuma.jpg",
+  "page": "https://wan-peace.jp/company/",
+  "sha256": "a40270753eb973f68d8252ab0459866907eccee4bbadcc0eba757c129be257b3",
+  "bytes": 32488
+ },
+ {
+  "id": "Tt1d11c35",
+  "file": "img/fac/trainer/Tt1d11c35_1.webp",
+  "src": "https://petdoge.com/wp/wp-content/uploads/2017/08/dog0109-023.jpg",
+  "page": "https://petdoge.com/",
+  "sha256": "e0717b109f3b37e6683a278b7a786df1ded72979877cbf87145ba5c47eff7193",
+  "bytes": 59782
+ },
+ {
+  "id": "Tt34984e3",
+  "file": "img/fac/trainer/Tt34984e3_1.webp",
+  "src": "http://dt-bloom.com/wp-content/uploads/2025/04/OGP-min.png",
+  "page": "https://dt-bloom.com/",
+  "sha256": "10ae57c4835cde727326404fee7b30ee85f1e15dac845ac247abd6ea456e6aa9",
+  "bytes": 73382
+ },
+ {
+  "id": "Tt34984e3",
+  "file": "img/fac/trainer/Tt34984e3_2.webp",
+  "src": "https://dt-bloom.com/wp-content/themes/bloom/assets/img/dst/common/visual-top-pc.jpg",
+  "page": "https://dt-bloom.com/",
+  "sha256": "4d0111493fa5274bb96789090396369dbdc0cc38797c3d3cf3973a4858175720",
+  "bytes": 77446
+ },
+ {
+  "id": "Tt34984e3",
+  "file": "img/fac/trainer/Tt34984e3_3.webp",
+  "src": "https://dt-bloom.com/wp-content/themes/bloom/assets/img/dst/common/visual-top-sp.jpg",
+  "page": "https://dt-bloom.com/",
+  "sha256": "538a30a6a627ce2a29f2eea3cfdd754ce0eeb1291c70a9c9fa155c14f2abb13a",
+  "bytes": 74194
+ },
+ {
+  "id": "Tt72357fe",
+  "file": "img/fac/trainer/Tt72357fe_1.webp",
+  "src": "https://82chocolate.com/wp-content/themes/fsv002wp-gallery-b01/images/toppage/introduction.jpg",
+  "page": "https://82chocolate.com/",
+  "sha256": "31a9729500e37cf107604dfe063c8785addba07980060bce8c68349ff3b2b2bb",
+  "bytes": 38260
+ },
+ {
+  "id": "Tt72357fe",
+  "file": "img/fac/trainer/Tt72357fe_2.webp",
+  "src": "https://82chocolate.com/wp-content/uploads/2023/09/P1014481-2048x1536.jpg",
+  "page": "https://82chocolate.com/",
+  "sha256": "c8f68ace44cd59f385f027492724ae90aed489c79880aa968f77a42ac10dc970",
+  "bytes": 76718
+ },
+ {
+  "id": "Tt72357fe",
+  "file": "img/fac/trainer/Tt72357fe_3.webp",
+  "src": "https://82chocolate.com/wp-content/uploads/2023/09/P1013839-2048x1536.jpg",
+  "page": "https://82chocolate.com/",
+  "sha256": "c73f61663375378ffcd1d6f24d298853d8141db3949d2bc8e9815a0f80edabc1",
+  "bytes": 22218
+ },
+ {
+  "id": "Tt72357fe",
+  "file": "img/fac/trainer/Tt72357fe_4.webp",
+  "src": "https://82chocolate.com/wp-content/uploads/2023/09/P1013643-2048x1536.jpg",
+  "page": "https://82chocolate.com/",
+  "sha256": "f092cbaeef8a95a8a6e2db5852e3daed0d19ebb8409325affe4875cfb5d13ce3",
+  "bytes": 91424
+ },
+ {
+  "id": "Tt88c3222",
+  "file": "img/fac/trainer/Tt88c3222_1.webp",
+  "src": "https://cdn.goope.jp/56675/180915145315enff_l.jpg",
+  "page": "https://dogspirit.jp/",
+  "sha256": "773ef6e5f56ddd989b1c949fc710d59d21a2bd4f9709934005d8fbdefeb9d0f6",
+  "bytes": 137136
+ },
+ {
+  "id": "Tt88c3222",
+  "file": "img/fac/trainer/Tt88c3222_2.webp",
+  "src": "https://cdn.goope.jp/56675/171219144500qvmb_l..jpg",
+  "page": "https://dogspirit.jp/",
+  "sha256": "270c7966293113925f280737f7f82839e9006b703185b7f2085bcebf0e6f3ff2",
+  "bytes": 133432
+ },
+ {
+  "id": "Tt88c3222",
+  "file": "img/fac/trainer/Tt88c3222_3.webp",
+  "src": "https://cdn.goope.jp/56675/170718125347r4c9_l.jpg",
+  "page": "https://dogspirit.jp/",
+  "sha256": "4234ad5e2d3daf8ebc1bb98eac72e1382b530c1870fbae416605d97629a3b3c9",
+  "bytes": 278312
+ },
+ {
+  "id": "Tt88c3222",
+  "file": "img/fac/trainer/Tt88c3222_4.webp",
+  "src": "https://cdn.goope.jp/56675/170623005746exjs_l.jpg",
+  "page": "https://dogspirit.jp/",
+  "sha256": "a72d0d7abbd69ecabb3315c91bf6aafd952c6a256d6e0edf85ff560e01f43018",
+  "bytes": 97674
+ },
+ {
+  "id": "Ttcf24d5a",
+  "file": "img/fac/trainer/Ttcf24d5a_1.webp",
+  "src": "http://www.aries-ah.com/asset/gokazokutoaikennga_R.JPG?20261106164811",
+  "page": "https://www.aries-ah.com/discipline/",
+  "sha256": "b3de5a1baf7eaeb3af8712e9356cf83e99c2b8b3e963846fe07f8d3cd0c139e4",
+  "bytes": 25064
+ },
+ {
+  "id": "Ttcf24d5a",
+  "file": "img/fac/trainer/Ttcf24d5a_2.webp",
+  "src": "http://www.aries-ah.com/asset/feature_n01.JPG?20261106164811",
+  "page": "https://www.aries-ah.com/discipline/",
+  "sha256": "74a26658d4331d34c51756aab6ac5d08775ad8be38dc1a34c86da710522fc8e2",
+  "bytes": 107006
+ },
+ {
+  "id": "Ttcf24d5a",
+  "file": "img/fac/trainer/Ttcf24d5a_3.webp",
+  "src": "http://www.aries-ah.com/asset/feature_n02.JPG?20261106164811",
+  "page": "https://www.aries-ah.com/discipline/",
+  "sha256": "c4beb9c571f491420eead5d68a3efb6d2a45a4514fcf59c60028dc3972d90589",
+  "bytes": 41282
+ },
+ {
+  "id": "Ttcf24d5a",
+  "file": "img/fac/trainer/Ttcf24d5a_4.webp",
+  "src": "http://www.aries-ah.com/asset/feature_n03.JPG?20261106164811",
+  "page": "https://www.aries-ah.com/discipline/",
+  "sha256": "78a306581fb4f6317e556af7d53f74888e02b7a01a260e1e706515e1e85ccb4a",
+  "bytes": 55884
+ },
+ {
+  "id": "Ttcf24d5a",
+  "file": "img/fac/trainer/Ttcf24d5a_5.webp",
+  "src": "https://www.aries-ah.com/asset/byouinn%20nare.JPG?20261106164811",
+  "page": "https://www.aries-ah.com/discipline/",
+  "sha256": "78e46c324d8a19f79154b464088d3b6f7ddc4f4bdd1b65aec0ee2abf95c73d46",
+  "bytes": 11274
+ },
+ {
+  "id": "Ttdad3ca7",
+  "file": "img/fac/trainer/Ttdad3ca7_1.webp",
+  "src": "https://orikou-wanchan.com/cpm93778/wp-content/uploads/2024/01/10684e545ea9b6e746e7d523062fee6f.png",
+  "page": "https://orikou-wanchan.com/profile/",
+  "sha256": "8e015d6b9c7a14afa43ebe36b713af229d611f22504fc0c6a8a30232c33afa96",
+  "bytes": 74660
+ },
+ {
+  "id": "Tta5107f8",
+  "file": "img/fac/trainer/Tta5107f8_1.webp",
+  "src": "https://media.webcms-cdn.com/server1/upload_data/dogtogether66com/image/20240226133854.jpg",
+  "page": "https://dogtogether66.com/",
+  "sha256": "076f6bbb366fc8e187dd0c6f421d391b443b2a28caf06acc014c480c18e10f99",
+  "bytes": 122608
+ },
+ {
+  "id": "Tta5107f8",
+  "file": "img/fac/trainer/Tta5107f8_2.webp",
+  "src": "https://media.webcms-cdn.com/server1/upload_data/dogtogether66com/image/20240221154800.jpg.webp",
+  "page": "https://dogtogether66.com/",
+  "sha256": "05bf54c57134c7842297947d53b35b4aa1fe2d58c764d7b9512bd5ed50e5772f",
+  "bytes": 22908
+ },
+ {
+  "id": "Tta5107f8",
+  "file": "img/fac/trainer/Tta5107f8_3.webp",
+  "src": "https://media.webcms-cdn.com/server1/upload_data/dogtogether66com/image/20240221154830.jpg.webp",
+  "page": "https://dogtogether66.com/",
+  "sha256": "ee5e242c03177801dbd9b2e83f43a9ffab8fc64876cab61b6a294a24ca4d9846",
+  "bytes": 44068
+ },
+ {
+  "id": "Tt31d3576",
+  "file": "img/fac/trainer/Tt31d3576_1.webp",
+  "src": "https://www.dogschoolwanstep.com/wp-content/uploads/image1.png",
+  "page": "https://www.dogschoolwanstep.com/",
+  "sha256": "4d7e59fa5244c5d7ff0f66677a0fabd6ddcfc9091caf1593dbc3343dc29b3b89",
+  "bytes": 40178
+ },
+ {
+  "id": "Tt31d3576",
+  "file": "img/fac/trainer/Tt31d3576_2.webp",
+  "src": "https://www.dogschoolwanstep.com/wp-content/uploads/image1_sp.png",
+  "page": "https://www.dogschoolwanstep.com/",
+  "sha256": "a273819754e74e21fdec896ad3137a2b1eaac0d71a9d1ccbbd9cedc7262a374a",
+  "bytes": 73918
+ },
+ {
+  "id": "Tt31d3576",
+  "file": "img/fac/trainer/Tt31d3576_3.webp",
+  "src": "https://www.dogschoolwanstep.com/wp-content/uploads/image2_sp.png",
+  "page": "https://www.dogschoolwanstep.com/",
+  "sha256": "91b8fe2feb6f0e6eb34bae6bbf753956cedaa00f8b942244aac8fd5134d0e215",
+  "bytes": 57068
+ },
+ {
+  "id": "Tta88699b",
+  "file": "img/fac/trainer/Tta88699b_1.webp",
+  "src": "https://sasakidogtraining.com/wp-content/uploads/2025/07/VideoCapture_20250711-1249121.jpg",
+  "page": "https://sasakidogtraining.com/",
+  "sha256": "804a89bc8cf667986132a2e14633f94294889d579aea5f7124461af8ae55eda3",
+  "bytes": 130804
+ },
+ {
+  "id": "Tta88699b",
+  "file": "img/fac/trainer/Tta88699b_2.webp",
+  "src": "https://sasakidogtraining.com/wp-content/uploads/2020/01/menu.jpg",
+  "page": "https://sasakidogtraining.com/",
+  "sha256": "2cf267c50f543f6c444995bd6ce34d233ec3d95d78e9f9456902e4c317c7afa5",
+  "bytes": 32228
+ },
+ {
+  "id": "Tt123e940",
+  "file": "img/fac/trainer/Tt123e940_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/none/path/s1e715fc898499bae/image/iadbb2810900b7111/version/1725279174/image.jpg",
+  "page": "https://www.doglifesupportclea.com/",
+  "sha256": "1e7e5c0cf06abd98827356468f595492be46922803ebb36f936b50ef072e07cb",
+  "bytes": 14236
+ },
+ {
+  "id": "Tt123e940",
+  "file": "img/fac/trainer/Tt123e940_2.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/none/path/s1e715fc898499bae/image/ie497869e89e342d0/version/1725279179/image.jpg",
+  "page": "https://www.doglifesupportclea.com/",
+  "sha256": "8eba574490e05825c78cafc56abfcab6d7932eca90e5828ee3a343d83a3313de",
+  "bytes": 14002
+ },
+ {
+  "id": "Tt123e940",
+  "file": "img/fac/trainer/Tt123e940_3.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/none/path/s1e715fc898499bae/image/i56af8bcae4a0e296/version/1725279217/image.jpg",
+  "page": "https://www.doglifesupportclea.com/",
+  "sha256": "abed9f9f2c85795675872572af9879f4c636730ef58cf1c17f2621061d962a86",
+  "bytes": 19096
+ },
+ {
+  "id": "Ttc9fa334",
+  "file": "img/fac/trainer/Ttc9fa334_1.webp",
+  "src": "https://static.wixstatic.com/media/960226_05fe1ea8e34c49b68e10ee0860e7ca88.png",
+  "page": "https://riansaki.wixsite.com/riansaki88",
+  "sha256": "bd3361fab751c85f77f1c0ecb65f5bc61c542ec3f6448b5f1e8fd9de5113e72b",
+  "bytes": 27358
+ },
+ {
+  "id": "Ttc9fa334",
+  "file": "img/fac/trainer/Ttc9fa334_2.webp",
+  "src": "https://static.wixstatic.com/media/960226_ca6657d3721845b68a43c3d224d6ffaa.png",
+  "page": "https://riansaki.wixsite.com/riansaki88",
+  "sha256": "7fc03170a1c7f926069fcea9208d74f847854aa4752d6c0d164956a011f52d8e",
+  "bytes": 64288
+ },
+ {
+  "id": "Ttc9fa334",
+  "file": "img/fac/trainer/Ttc9fa334_3.webp",
+  "src": "https://static.wixstatic.com/media/960226_7aa28c0d107146849dc61205da789e2e.png",
+  "page": "https://riansaki.wixsite.com/riansaki88",
+  "sha256": "bc7eff8cf6f928182a2a721fb2a59c7571b7f9be5771133aa8b83b2f764a8418",
+  "bytes": 20034
+ },
+ {
+  "id": "Tt89975dc",
+  "file": "img/fac/trainer/Tt89975dc_1.webp",
+  "src": "https://static.wixstatic.com/media/069084_4691b5afc6f448409416591bd86c39c8~mv2.jpg",
+  "page": "https://www.dogslaugh.com/",
+  "sha256": "55c0c09360ef539ce077b19f73a29accd88238ecb7682914134e8b672de19cbc",
+  "bytes": 143402
+ },
+ {
+  "id": "Tt89975dc",
+  "file": "img/fac/trainer/Tt89975dc_2.webp",
+  "src": "https://static.wixstatic.com/media/11062b_d730bba20c6c44aca8e59e7abc126403~mv2.jpg",
+  "page": "https://www.dogslaugh.com/",
+  "sha256": "a40e21e512f4a49ae6eed018999db0ce38fe2c235f8d49f47e7910ac3aa727f4",
+  "bytes": 47488
+ },
+ {
+  "id": "Tt82ce758",
+  "file": "img/fac/trainer/Tt82ce758_1.webp",
+  "src": "https://rarea.events/rarea/wp-content/uploads/2023/11/1775967_m-920x706.jpg",
+  "page": "https://rarea.events/event/213500",
+  "sha256": "341e9d0ea831a7432a4925d5e6b494244d922292878672e0b574b13e0fb15412",
+  "bytes": 49050
+ },
+ {
+  "id": "Tt2217bfc",
+  "file": "img/fac/trainer/Tt2217bfc_1.webp",
+  "src": "https://deepbond.net/dog/wp-content/uploads/2021/03/image52.jpg",
+  "page": "https://deepbond.net/",
+  "sha256": "21b2471abd27e60343c85c697ea0d923204f15bfcf264516a7716cfa465cbe68",
+  "bytes": 33930
+ },
+ {
+  "id": "Ttd2e78b7",
+  "file": "img/fac/trainer/Ttd2e78b7_1.webp",
+  "src": "https://dogsalonlittlesnow.com/wp-content/uploads/2023/04/kv_pc-1-scaled.jpg",
+  "page": "https://dogsalonlittlesnow.com/",
+  "sha256": "8d511d182311d42491735748735e11f51e49ae27906b9470781b5da4e36125dd",
+  "bytes": 36560
+ },
+ {
+  "id": "Ttd2e78b7",
+  "file": "img/fac/trainer/Ttd2e78b7_2.webp",
+  "src": "https://dogsalonlittlesnow.com/wp-content/uploads/2023/04/kv_sp-1.jpg",
+  "page": "https://dogsalonlittlesnow.com/",
+  "sha256": "ba844de85f9130bd7452d94e9c3017591db824eb503dcf9d4cb6c575318e41c2",
+  "bytes": 45032
+ },
+ {
+  "id": "Ttd2e78b7",
+  "file": "img/fac/trainer/Ttd2e78b7_3.webp",
+  "src": "https://dogsalonlittlesnow.com/wp-content/uploads/2023/04/about_01-1.jpg",
+  "page": "https://dogsalonlittlesnow.com/",
+  "sha256": "267952cf5c58400b1ebb3b62ad2178cc67c085927e22b884ec6b277873a6eb0c",
+  "bytes": 23218
+ },
+ {
+  "id": "Ttd2e78b7",
+  "file": "img/fac/trainer/Ttd2e78b7_4.webp",
+  "src": "https://dogsalonlittlesnow.com/wp-content/uploads/2023/04/about_02-2.jpg",
+  "page": "https://dogsalonlittlesnow.com/",
+  "sha256": "17f4eb3a9ba27e3caf1064965958b59d7eb7ddca20323073efe1b3605bba697b",
+  "bytes": 30600
+ },
+ {
+  "id": "Tt4bcc250",
+  "file": "img/fac/trainer/Tt4bcc250_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=588x10000:format=jpg/path/s30bbc0f8160df464/image/if75bad132ea3f0b2/version/1474470349/image.jpg",
+  "page": "https://refcy-ako.jimdofree.com/",
+  "sha256": "645a766b8d05d29e6ab3cb9e99ce5eb3f763e926f25301133004ce449660eca5",
+  "bytes": 75802
+ },
+ {
+  "id": "Tt4bcc250",
+  "file": "img/fac/trainer/Tt4bcc250_2.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=588x10000:format=jpg/path/s30bbc0f8160df464/image/ic7cdfac6263267ed/version/1654615659/image.jpg",
+  "page": "https://refcy-ako.jimdofree.com/",
+  "sha256": "72b28781815d39029219ae5ba82944886379ec8ee98ef818182eaab963155b22",
+  "bytes": 40206
+ },
+ {
+  "id": "Tt4bcc250",
+  "file": "img/fac/trainer/Tt4bcc250_3.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=588x10000:format=jpg/path/s30bbc0f8160df464/image/i99aa8bb968e93b3a/version/1474469990/image.jpg",
+  "page": "https://refcy-ako.jimdofree.com/",
+  "sha256": "6c946bc549366e16c8e277a4cd126f4ee0c491992c7eeae3b0902ae946d65da7",
+  "bytes": 15872
+ },
+ {
+  "id": "Ttb42bf16",
+  "file": "img/fac/trainer/Ttb42bf16_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/none/path/s959c85e958d7f87f/image/i8d791f524effd087/version/1464437540/%E7%94%BB%E5%83%8F-%E7%8A%AC%E3%81%AE%E4%BF%9D%E8%82%B2%E5%9C%92-%E7%8A%AC%E3%81%AE%E3%83%9B%E3%83%86%E3%83%AB-%E7%8A%AC%E3%81%AE%E6%95%B4%E4%BD%93-%E7%AC%91%E3%81%86%E7%8A%AC.png",
+  "page": "https://www.warauinu.com/",
+  "sha256": "aec8074674606c2fdf5253b983d34849d3a0d6017b93a1b0fa57891de1a0e037",
+  "bytes": 23388
+ },
+ {
+  "id": "Tta0e0571",
+  "file": "img/fac/trainer/Tta0e0571_1.webp",
+  "src": "https://www.koume-ah.com/wp-content/themes/koume-ah-com/images/under/dogschool_img01.jpg",
+  "page": "https://www.koume-ah.com/dogschool/",
+  "sha256": "cd73ccf319cc8a7348efe1bc0f9ac9fc6839824e3c59bf0e463ffba9f824ecb3",
+  "bytes": 28458
+ },
+ {
+  "id": "Tta0e0571",
+  "file": "img/fac/trainer/Tta0e0571_2.webp",
+  "src": "https://www.koume-ah.com/wp-content/themes/koume-ah-com/images/under/dogschool_img02.jpg",
+  "page": "https://www.koume-ah.com/dogschool/",
+  "sha256": "5d0c5a23eb7f74239f96b5e5097367b997146770784c7b547f441f0c0bf012a8",
+  "bytes": 48296
+ },
+ {
+  "id": "Tta0e0571",
+  "file": "img/fac/trainer/Tta0e0571_3.webp",
+  "src": "https://www.koume-ah.com/wp-content/themes/koume-ah-com/images/under/dogschool_img03.jpg",
+  "page": "https://www.koume-ah.com/dogschool/",
+  "sha256": "d72ab5ce2db763152f40dc3e976b83117e5cb768876e1bc080a658fe297fdf4a",
+  "bytes": 58454
+ },
+ {
+  "id": "Tta0e0571",
+  "file": "img/fac/trainer/Tta0e0571_4.webp",
+  "src": "https://www.koume-ah.com/wp-content/themes/koume-ah-com/images/under/dogschool_img04.jpg",
+  "page": "https://www.koume-ah.com/dogschool/",
+  "sha256": "15334c0d5a0943ef467ba48b0f37aaca59165d2d145feae0793c59b4bcdfdc3f",
+  "bytes": 10976
+ },
+ {
+  "id": "Ttae8746e",
+  "file": "img/fac/trainer/Ttae8746e_1.webp",
+  "src": "https://www.ocaptain.info/wp-content/uploads/00_image1.png",
+  "page": "https://www.ocaptain.info/",
+  "sha256": "c99701274cf5c179556ac1ccb44c188e66af43d2cbf2b3e95ac6a02c8cf95777",
+  "bytes": 19564
+ },
+ {
+  "id": "Ttae8746e",
+  "file": "img/fac/trainer/Ttae8746e_2.webp",
+  "src": "https://www.ocaptain.info/wp-content/uploads/00_sp_image1.png",
+  "page": "https://www.ocaptain.info/",
+  "sha256": "d63b6416dc3789e1ed656515d7f75bb94dd0017999dedbe847a1364d9e2827b4",
+  "bytes": 21784
+ },
+ {
+  "id": "Ttae8746e",
+  "file": "img/fac/trainer/Ttae8746e_3.webp",
+  "src": "https://www.ocaptain.info/wp-content/uploads/00_image2.png",
+  "page": "https://www.ocaptain.info/",
+  "sha256": "9cf63f6dbbc1aa167a6318f7cab9367344ca92dd27da33cb1bba8e9153e2a9f5",
+  "bytes": 35764
+ },
+ {
+  "id": "Ttae8746e",
+  "file": "img/fac/trainer/Ttae8746e_4.webp",
+  "src": "https://www.ocaptain.info/wp-content/uploads/00_sp_image2.png",
+  "page": "https://www.ocaptain.info/",
+  "sha256": "fb097a89f2e83199988b477cf032344231d1ee74fea010ac24f8a5d52d8dd254",
+  "bytes": 45892
+ },
+ {
+  "id": "Ttae8746e",
+  "file": "img/fac/trainer/Ttae8746e_5.webp",
+  "src": "https://www.ocaptain.info/wp-content/uploads/00_image3.png",
+  "page": "https://www.ocaptain.info/",
+  "sha256": "614914600c405372682880359d70d04d7ceceff8053023f84840d9638fc4ee00",
+  "bytes": 13726
  }
 ]
