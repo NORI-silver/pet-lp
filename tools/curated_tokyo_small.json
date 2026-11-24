@@ -6,7 +6,7 @@
   "page": "https://www.city.chiyoda.lg.jp/koho/machizukuri/koen/dogrun.html",
   "sha256": "d9e09bc0f7d41291bb9df34a3548fd8992ea52515f5be77ff300482f7eeec4d1",
   "bytes": 18192,
-  "_audit": "2026-11-24 rebuild: merge current main, regenerate with gen_areas, idempotence check"
+  "_audit": "2026-11-24 sitters batch 1 (Tokyo 0-175 reviewed)"
  },
  {
   "id": "D0d1c8b4",
@@ -1673,5 +1673,693 @@
   "page": "https://services.cheriee.jp/interviews/lemon-heart/",
   "sha256": "2bc5e8bdd3530b341f006cd724518e1a73b633f953ff4456c7786606384ee26f",
   "bytes": 38732
+ },
+ {
+  "id": "St74c406c",
+  "file": "img/fac/sitter/St74c406c_1.webp",
+  "src": "https://cdn.shopify.com/s/files/1/0991/0665/2446/files/251201_15.jpg",
+  "page": "https://www.bonbondog.shop/policies/legal-notice",
+  "sha256": "bb464b4ac69bf3c46aa6ec39f8023dbca1e0130817d3cf3583e5d54c70c0fca6",
+  "bytes": 66208
+ },
+ {
+  "id": "St74c406c",
+  "file": "img/fac/sitter/St74c406c_2.webp",
+  "src": "https://cdn.shopify.com/s/files/1/0991/0665/2446/files/S__145866759.webp",
+  "page": "https://www.bonbondog.shop/policies/legal-notice",
+  "sha256": "9c1419c79856dcb62c464b3111c18adaddb0991254ed562785d91a68cc93c838",
+  "bytes": 105470
+ },
+ {
+  "id": "St74c406c",
+  "file": "img/fac/sitter/St74c406c_3.webp",
+  "src": "https://cdn.shopify.com/s/files/1/0991/0665/2446/files/DSC_0105_c381adf2-3cfe-4861-88be-9ede609f8d59.webp",
+  "page": "https://www.bonbondog.shop/policies/legal-notice",
+  "sha256": "63c59bcc761ac4461de783eb1ecefb6b287d55e2d2f40363792d031630c0cbd3",
+  "bytes": 41706
+ },
+ {
+  "id": "St867fce2",
+  "file": "img/fac/sitter/St867fce2_1.webp",
+  "src": "https://nekosabii.com/wp-content/uploads/2026/03/af27d0850d6c007eebe00b4340bab921-scaled.jpeg",
+  "page": "https://nekosabii.com/",
+  "sha256": "65bb58fe4cc948199ee21cbb633b35378a9c9985f95211f427e6cfc7fa3447fc",
+  "bytes": 25674
+ },
+ {
+  "id": "Ste0d4b5b",
+  "file": "img/fac/sitter/Ste0d4b5b_1.webp",
+  "src": "https://wamihappydog.com/wp-content/uploads/2023/10/PA010084.jpg",
+  "page": "https://wamihappydog.com/",
+  "sha256": "9ddd1a95692b4332c9b93112dfc4f8a7e36c965237693f82fdc67d1bd2417129",
+  "bytes": 36612
+ },
+ {
+  "id": "Ste0d4b5b",
+  "file": "img/fac/sitter/Ste0d4b5b_2.webp",
+  "src": "https://wamihappydog.com/wp-content/uploads/2022/08/DSCN7416s.jpg",
+  "page": "https://wamihappydog.com/",
+  "sha256": "ea5d3b262a76aa1fb16b550aef8c721942516adfe4557e7e45039424b12c45c5",
+  "bytes": 12112
+ },
+ {
+  "id": "St2920dc3",
+  "file": "img/fac/sitter/St2920dc3_1.webp",
+  "src": "https://public.nekobeya.pechika.jp/images/houses/minato_VIP1.jpg",
+  "page": "https://nekobeya.pechika.jp/houses/musashino.html",
+  "sha256": "a20a4428d661065b7821c33062b598dac6d41ff8e12550dd2f36ea797600466e",
+  "bytes": 43574
+ },
+ {
+  "id": "St2920dc3",
+  "file": "img/fac/sitter/St2920dc3_2.webp",
+  "src": "https://public.nekobeya.pechika.jp/images/houses/musashino_room03.jpg",
+  "page": "https://nekobeya.pechika.jp/houses/musashino.html",
+  "sha256": "e461e1281c23a00707567c4c4d19e1a3fd3bf510c15bf57fbb2379cfb657a8dc",
+  "bytes": 25308
+ },
+ {
+  "id": "St2920dc3",
+  "file": "img/fac/sitter/St2920dc3_3.webp",
+  "src": "https://public.nekobeya.pechika.jp/images/top_image1.jpg",
+  "page": "https://nekobeya.pechika.jp/houses/musashino.html",
+  "sha256": "22639f62b00f2a7232b4f111e6ac4bf0c30381e147d43eb217a6ac3fc9b2715a",
+  "bytes": 34026
+ },
+ {
+  "id": "St8499aa4",
+  "file": "img/fac/sitter/St8499aa4_1.webp",
+  "src": "https://cdn.peraichi.com/userData/5e9fc65e-5e30-430a-92bd-7bca0a0000d4/img/f8cf8f90-f0d2-013d-787b-0a58a9feac02/IMG_8853.jpeg",
+  "page": "https://pp37z.hp.peraichi.com/",
+  "sha256": "24ef77b32f9f88995f4b8259c4e0e307f54b578389eefbb06ef121ab7c1f5a39",
+  "bytes": 93738
+ },
+ {
+  "id": "St8499aa4",
+  "file": "img/fac/sitter/St8499aa4_2.webp",
+  "src": "https://cdn.peraichi.com/userData/5e9fc65e-5e30-430a-92bd-7bca0a0000d4/img/35cca0f0-f0cb-013d-8db0-0a58a9feac02/IMG_6306.jpeg",
+  "page": "https://pp37z.hp.peraichi.com/",
+  "sha256": "5f3dad09f111366faa92cb9e569b2b12bfe96b6927f06aa76b1eb411bf1dfe0a",
+  "bytes": 32122
+ },
+ {
+  "id": "St8499aa4",
+  "file": "img/fac/sitter/St8499aa4_3.webp",
+  "src": "https://cdn.peraichi.com/userData/5e9fc65e-5e30-430a-92bd-7bca0a0000d4/img/2e3e07a0-f0cb-013d-8dae-0a58a9feac02/IMG_5487.jpeg",
+  "page": "https://pp37z.hp.peraichi.com/",
+  "sha256": "3b25b69963a324a257f1551c23b7ce1e05ecf5d554dc7d2268e192e59f35485f",
+  "bytes": 87246
+ },
+ {
+  "id": "Stc458bf7",
+  "file": "img/fac/sitter/Stc458bf7_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=1920x10000:format=jpg/path/s4d2ffacaaddd1c7b/image/ie1a72b1e3aeb2619/version/1794142045/image.jpg",
+  "page": "https://pet-wannyaful.jimdofree.com/",
+  "sha256": "6799b14ec2895036e124863cd7bee546fe696ddb0ee3f1bfeeaaebd5d5f2b86b",
+  "bytes": 68730
+ },
+ {
+  "id": "St36d82a9",
+  "file": "img/fac/sitter/St36d82a9_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/none/path/sc739aaa06d2a9ea2/image/i9d5377e43b34b91c/version/1748522253/image.png",
+  "page": "https://happyfriends-sitter.jimdofree.com/",
+  "sha256": "2701b6dd7abf6202e33033ffded8e6dd0b4d90d1f33b8bf2e6da82c84a62db30",
+  "bytes": 76376
+ },
+ {
+  "id": "St36d82a9",
+  "file": "img/fac/sitter/St36d82a9_2.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=2048x2048:format=jpg/path/sc739aaa06d2a9ea2/image/ic03efe665e919528/version/1748522253/image.jpg",
+  "page": "https://happyfriends-sitter.jimdofree.com/",
+  "sha256": "a03f60d86c7fee2c9ca21904540cef8c4c1e2f01fb196deb8372d26843b950a4",
+  "bytes": 198428
+ },
+ {
+  "id": "St1c7007c",
+  "file": "img/fac/sitter/St1c7007c_1.webp",
+  "src": "https://dogcatstation.jp/storage/2026/09/pixta_90362857_XL-2048x1365.jpg",
+  "page": "https://dogcatstation.jp/",
+  "sha256": "fe034eaf1af724a111311d91e9bed2042d5e1f3fdc0d3d1048fc119811821439",
+  "bytes": 29220
+ },
+ {
+  "id": "St1c7007c",
+  "file": "img/fac/sitter/St1c7007c_2.webp",
+  "src": "https://dogcatstation.jp/storage/2026/09/P1000608-rotated.jpg",
+  "page": "https://dogcatstation.jp/",
+  "sha256": "c39b8ea9d44627442e56c24b6f1156842cb693626cb226852316d9dad9a3a2d5",
+  "bytes": 25966
+ },
+ {
+  "id": "St1c7007c",
+  "file": "img/fac/sitter/St1c7007c_3.webp",
+  "src": "https://dogcatstation.jp/storage/2026/09/dog-sitting-01.jpg",
+  "page": "https://dogcatstation.jp/",
+  "sha256": "3e66906f6162ba73cd13ab7128ddceb39583b21a92c2cab1f4204f341481bbea",
+  "bytes": 80874
+ },
+ {
+  "id": "St1c7007c",
+  "file": "img/fac/sitter/St1c7007c_4.webp",
+  "src": "https://dogcatstation.jp/storage/2026/09/kodaira-shop.jpg",
+  "page": "https://dogcatstation.jp/",
+  "sha256": "50a4d0673431e613106f7e70c2b29d54548c53b0b31878c6d5c252fbe3bb6e9e",
+  "bytes": 47298
+ },
+ {
+  "id": "Stf783030",
+  "file": "img/fac/sitter/Stf783030_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/none/path/s8a8892680baf1b9c/image/id94deb6b2d3ef432/version/1458719023/image.jpg",
+  "page": "https://www.nanaironekoro.com/",
+  "sha256": "99af44efc3230656da29fd46186a8479f1000e8fc8c505f765568a21ec80b140",
+  "bytes": 20548
+ },
+ {
+  "id": "Stf783030",
+  "file": "img/fac/sitter/Stf783030_2.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/none/path/s8a8892680baf1b9c/backgroundarea/i4f66829084765834/version/1452568675/image.jpg",
+  "page": "https://www.nanaironekoro.com/",
+  "sha256": "1007d6d897eefee2ba6446a2e20b2daa5ecc1263de3e4e9045810ab16e26840d",
+  "bytes": 10952
+ },
+ {
+  "id": "Stb1d4ce4",
+  "file": "img/fac/sitter/Stb1d4ce4_1.webp",
+  "src": "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/2278589/f45c6a33bcfd32d7d2189872bf870bc4_6dbb1e47b61e285d69870fa80398b697.jpg",
+  "page": "https://petsitteryamato.amebaownd.com/",
+  "sha256": "e26ba10689637c34fe4432d956f354ab9a7df27c49a60f7c1988b3b1a8ecbe3d",
+  "bytes": 51906
+ },
+ {
+  "id": "Stb1d4ce4",
+  "file": "img/fac/sitter/Stb1d4ce4_2.webp",
+  "src": "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/2278589/9173d398dae06d88bd2cf9146da5733c_fef01ebf992efb5e9b3617e1a21df415.jpg",
+  "page": "https://petsitteryamato.amebaownd.com/",
+  "sha256": "adb4d7bd06ebe38c13093aea2210e08f77cfad2b7c79f3e2b622fd1c5b4fa7bb",
+  "bytes": 57726
+ },
+ {
+  "id": "Stb1d4ce4",
+  "file": "img/fac/sitter/Stb1d4ce4_3.webp",
+  "src": "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/2278589/56ba2cf8bed4d38eb0a89e43bc0cc609_83ddf686d4a42beb5351f6c0f6e3964a.jpg",
+  "page": "https://petsitteryamato.amebaownd.com/",
+  "sha256": "0a5e988a426f0cc201c038fcce87e904de1b13a0975d229f7da43f818e375335",
+  "bytes": 54542
+ },
+ {
+  "id": "St57353d3",
+  "file": "img/fac/sitter/St57353d3_1.webp",
+  "src": "https://mebbyluck.com/wp-content/uploads/2023/11/355105531_821973639619724_4372052003332548822_n-819x1024.jpg",
+  "page": "https://mebbyluck.com/",
+  "sha256": "ffd7f8060383263d3782675f120985bb4653f591f339aeb84d91194358053a34",
+  "bytes": 18528
+ },
+ {
+  "id": "Stb8a1be6",
+  "file": "img/fac/sitter/Stb8a1be6_1.webp",
+  "src": "https://wantopia.net/dog/wp-content/uploads/2026/11/IMG20261121091531_20261121124252-640x396.jpg",
+  "page": "https://wantopia.net/",
+  "sha256": "f8c063974d61ea6ab91365c1dca6cd9a1d5ea0b46749766a6055e7361345ef7b",
+  "bytes": 20474
+ },
+ {
+  "id": "Stb8a1be6",
+  "file": "img/fac/sitter/Stb8a1be6_2.webp",
+  "src": "https://wantopia.net/dog/wp-content/uploads/2026/11/IMG20261120100621_20261120120929-640x396.jpg",
+  "page": "https://wantopia.net/",
+  "sha256": "4634892608240d3156775f0cefe393df091031841482f5b0cd95a872a8858564",
+  "bytes": 43782
+ },
+ {
+  "id": "St3ee7a56",
+  "file": "img/fac/sitter/St3ee7a56_1.webp",
+  "src": "https://static.wixstatic.com/media/e0cf14_edd8710ded1e45889af200d0ab317480~mv2_d_3024_3024_s_4_2.jpg/v1/crop/x_0,y_383,w_3021,h_1830/fill/w_983,h_595,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/%E3%81%8E%E3%82%85%E3%81%86%E5%A4%AA_%E5%90%8D%E5%88%BA_JPG.jpg",
+  "page": "https://www.nekonorusuban.com/",
+  "sha256": "6dae0d05bcf0c1e81dfc1ce9643f99d9483ec56aa7fb0ce604605a5e1c192c38",
+  "bytes": 94094
+ },
+ {
+  "id": "St3ee7a56",
+  "file": "img/fac/sitter/St3ee7a56_2.webp",
+  "src": "https://static.wixstatic.com/media/e0cf14_edd8710ded1e45889af200d0ab317480~mv2_d_3024_3024_s_4_2.jpg",
+  "page": "https://www.nekonorusuban.com/",
+  "sha256": "87391850b10f35dbb9e614990b0bad201fa535941768a6fd3ca0909d2ea25d8b",
+  "bytes": 98438
+ },
+ {
+  "id": "Stc366f56",
+  "file": "img/fac/sitter/Stc366f56_1.webp",
+  "src": "https://smiley-dog.sunnyday.jp/images/top.jpeg",
+  "page": "https://smiley-dog.sunnyday.jp/",
+  "sha256": "2124236fd11ed087a462bd88fca78740caaafb6a7bb69fcd0814b8a001992a61",
+  "bytes": 50866
+ },
+ {
+  "id": "Std557214",
+  "file": "img/fac/sitter/Std557214_1.webp",
+  "src": "https://static.wixstatic.com/media/92d200_cdf40f300c12431c8689abb635e27bf0~mv2.jpg",
+  "page": "https://petsittermomo27.wixsite.com/8oji",
+  "sha256": "f2e74f00a551f9bcba87a08881a6d1fb59bf1e70115a36cd1fc457bc96310469",
+  "bytes": 38372
+ },
+ {
+  "id": "Std557214",
+  "file": "img/fac/sitter/Std557214_2.webp",
+  "src": "https://static.wixstatic.com/media/c78067f077e047bdb49b916d6a9a470e.jpg",
+  "page": "https://petsittermomo27.wixsite.com/8oji",
+  "sha256": "eec1e18929729ef1a464ce4bd58346de351c470c876bcf6b2026ea4607728420",
+  "bytes": 55116
+ },
+ {
+  "id": "St1d816c8",
+  "file": "img/fac/sitter/St1d816c8_1.webp",
+  "src": "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/732707/79b80b5231dec46f53f9574d1fcd20f3_6dcf8e7a2cf295d01a3c26600f2519de.jpg",
+  "page": "https://wangry.amebaownd.com/",
+  "sha256": "365510bab2a9b2236e97e5082624a169582ce3664c111a825d361717af2e222d",
+  "bytes": 55968
+ },
+ {
+  "id": "St1d816c8",
+  "file": "img/fac/sitter/St1d816c8_2.webp",
+  "src": "https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/732707/c976740230ae0b7a7fe0dcd2c2209938_9fa51026c1cf0f00a2675b45d55b0f4e.jpg",
+  "page": "https://wangry.amebaownd.com/",
+  "sha256": "5099b3f0f28c3d28e567f24b4c733eb5ae2faea128a964bfe11e2bbbf1d1ace0",
+  "bytes": 59708
+ },
+ {
+  "id": "St8522f98",
+  "file": "img/fac/sitter/St8522f98_1.webp",
+  "src": "http://inunekolua.com/_src/30723/20180404_212822_20180404215112754.webp?v=1795059824180",
+  "page": "http://inunekolua.com/",
+  "sha256": "a0350b2d2578dfa0da870b2b2d2c56e783016f448c51f9fa8584277c70da4252",
+  "bytes": 44216
+ },
+ {
+  "id": "St8522f98",
+  "file": "img/fac/sitter/St8522f98_2.webp",
+  "src": "http://inunekolua.com/_src/32287/144802_0.webp?v=1795059824180",
+  "page": "http://inunekolua.com/",
+  "sha256": "4a8b8ee1049ad54ba3bde50a147c39d99070439e05ab447cedce119ab3cbf6bd",
+  "bytes": 33962
+ },
+ {
+  "id": "St911f7ac",
+  "file": "img/fac/sitter/St911f7ac_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/none/path/s6e529349be04ccaa/image/i2cbd2d48b1f3a046/version/1771767598/%E7%8A%AC%E3%81%AE%E6%82%A9%E3%81%BF%E7%9B%B8%E8%AB%87.jpg",
+  "page": "https://www.helfen3i.com/%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB/",
+  "sha256": "50c547c20ceafbaf66b4b5088c6c3ad3906c79e86a665812dce211a6774abde7",
+  "bytes": 59016
+ },
+ {
+  "id": "St42eb559",
+  "file": "img/fac/sitter/St42eb559_1.webp",
+  "src": "https://static.wixstatic.com/media/c8a300_00bb3d32f953482ab4c592414e25942d%7Emv2_d_2592_1936_s_2.jpg/v1/fit/w_2500,h_1330,al_c/c8a300_00bb3d32f953482ab4c592414e25942d%7Emv2_d_2592_1936_s_2.jpg",
+  "page": "https://www.youneko.com/",
+  "sha256": "6ba80e8107787f53f58346276cb30ce148c8c21ca768e7c966bbfddaa4471f9a",
+  "bytes": 61234
+ },
+ {
+  "id": "St79282c2",
+  "file": "img/fac/sitter/St79282c2_1.webp",
+  "src": "https://reserva.be/bundles/reserva/business/koubakozuwari/picBusiness/210847_business_pic_1_base1200.jpg?ts=20261027013732&v=v2026-11-23-01",
+  "page": "https://reserva.be/koubakozuwari/about",
+  "sha256": "afcccb67e539449af6a5374d8c74295a9e232626da64f5434024e140708b1592",
+  "bytes": 46314
+ },
+ {
+  "id": "Stcffee8b",
+  "file": "img/fac/sitter/Stcffee8b_1.webp",
+  "src": "https://silverfang-dog.com/wp-content/themes/silverfang-solution/img/index1.jpg",
+  "page": "https://silverfang-dog.com/",
+  "sha256": "22b125ec54b1e6f78aecbe2de7979f4587337032bb4bcbbb2b9e51fa39549645",
+  "bytes": 60840
+ },
+ {
+  "id": "Stcffee8b",
+  "file": "img/fac/sitter/Stcffee8b_2.webp",
+  "src": "https://silverfang-dog.com/wp-content/themes/silverfang-solution/img/index2.jpg",
+  "page": "https://silverfang-dog.com/",
+  "sha256": "ac46fa2300b34dd635fab15aca7a057589650811bc11b9fea7fac2c31a032d96",
+  "bytes": 72590
+ },
+ {
+  "id": "Stcffee8b",
+  "file": "img/fac/sitter/Stcffee8b_3.webp",
+  "src": "https://silverfang-dog.com/wp-content/themes/silverfang-solution/img/index3.jpg",
+  "page": "https://silverfang-dog.com/",
+  "sha256": "a7aeec74a5c2732b89cc95cd9d30f444d814bea6b63820d94dd98c0fba129b67",
+  "bytes": 22334
+ },
+ {
+  "id": "Stcffee8b",
+  "file": "img/fac/sitter/Stcffee8b_4.webp",
+  "src": "https://silverfang-dog.com/wp-content/themes/silverfang-solution/img/index4.jpg",
+  "page": "https://silverfang-dog.com/",
+  "sha256": "8460b9dd34acc444dd7128dee1a2543ce5be086d7f16908604bafda4851dba42",
+  "bytes": 55532
+ },
+ {
+  "id": "St62bcd7d",
+  "file": "img/fac/sitter/St62bcd7d_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=534x1024:format=jpg/path/s82aee95f27bf3dfb/image/i727d5e59221c4306/version/1735032222/%E5%BA%9C%E4%B8%AD%E5%B8%82%E3%81%AE%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC-%E3%82%8F%E3%82%93%E3%81%AB%E3%82%83%E3%81%B5%E3%82%8B.jpg",
+  "page": "https://www.wannyaful-pet-fuchu.com/",
+  "sha256": "ea2964b2ecdcfbaa3106df6dd2669f7567f6a62d77d6e17e9fdf769327e2f003",
+  "bytes": 17144
+ },
+ {
+  "id": "St69c78c1",
+  "file": "img/fac/sitter/St69c78c1_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/none/path/sab7c5f42405e55b3/backgroundarea/i8e1991930d550ea3/version/1569657783/image.jpg",
+  "page": "https://ps-muffin.jimdofree.com/",
+  "sha256": "f1fc23d333710d795dff4063db197f7bdf1b415df31299a3adee980459f89c84",
+  "bytes": 81396
+ },
+ {
+  "id": "St3c2ed0a",
+  "file": "img/fac/sitter/St3c2ed0a_1.webp",
+  "src": "https://inumado.com/wp-content/uploads/2025/05/DSCF2290-1-2048x1365.jpg",
+  "page": "https://inumado.com/",
+  "sha256": "5347666604010aff7419396908a613fa37ae158154d65825c78e1fc10a8cf44b",
+  "bytes": 48468
+ },
+ {
+  "id": "St3c2ed0a",
+  "file": "img/fac/sitter/St3c2ed0a_2.webp",
+  "src": "https://inumado.com/wp-content/uploads/2026/05/20260509-DSC04838-2-2048x1365.jpg",
+  "page": "https://inumado.com/",
+  "sha256": "eec467b8996f0e2951334395b6f8211d56d197727022142a0413e095b92cb181",
+  "bytes": 60384
+ },
+ {
+  "id": "St3c2ed0a",
+  "file": "img/fac/sitter/St3c2ed0a_3.webp",
+  "src": "https://inumado.com/wp-content/uploads/2025/08/吠え.jpg",
+  "page": "https://inumado.com/",
+  "sha256": "43640f3de355543f8e76e589212a0ed2ccaafb83fd789ca34ba5810a446b7784",
+  "bytes": 40558
+ },
+ {
+  "id": "St3c2ed0a",
+  "file": "img/fac/sitter/St3c2ed0a_4.webp",
+  "src": "https://inumado.com/wp-content/uploads/2025/08/本能.jpg",
+  "page": "https://inumado.com/",
+  "sha256": "14f5acb75a0f27274980891ec941d2973dad660eccdddc0a7252401cff966ef1",
+  "bytes": 30032
+ },
+ {
+  "id": "St3c2ed0a",
+  "file": "img/fac/sitter/St3c2ed0a_5.webp",
+  "src": "https://inumado.com/wp-content/uploads/2025/08/DSC07779.jpg",
+  "page": "https://inumado.com/",
+  "sha256": "47e280e318b12ba79c52c58b34860bd1a66bae56c5fdbd098f2390d47b921c08",
+  "bytes": 62294
+ },
+ {
+  "id": "St5197c1c",
+  "file": "img/fac/sitter/St5197c1c_1.webp",
+  "src": "https://cdn.peraichi.com/userData/5ff950ea-eed8-4cd3-a117-0d150a0000ae/img/603096c881db5/original.jpg",
+  "page": "https://catloaf.tokyo/",
+  "sha256": "7c6b6a7c58a0d61c338b85e4b8b0733ef640e01324b16f3b8d7919cc89d3642a",
+  "bytes": 26916
+ },
+ {
+  "id": "St5197c1c",
+  "file": "img/fac/sitter/St5197c1c_2.webp",
+  "src": "https://cdn.peraichi.com/userData/5ff950ea-eed8-4cd3-a117-0d150a0000ae/img/60307581566af/original.jpg",
+  "page": "https://catloaf.tokyo/",
+  "sha256": "649a81a0e12ff55c645be89ed07dce660b53b352a7b8a895b2872e628a046b4c",
+  "bytes": 28574
+ },
+ {
+  "id": "St5197c1c",
+  "file": "img/fac/sitter/St5197c1c_3.webp",
+  "src": "https://cdn.peraichi.com/userData/5ff950ea-eed8-4cd3-a117-0d150a0000ae/img/6030691f2a47f/original.jpg",
+  "page": "https://catloaf.tokyo/",
+  "sha256": "c1600ad3741948632c61add99d219912e87ba211785b6309dc7aa8620fdee24d",
+  "bytes": 20590
+ },
+ {
+  "id": "St5197c1c",
+  "file": "img/fac/sitter/St5197c1c_4.webp",
+  "src": "https://cdn.peraichi.com/userData/5ff950ea-eed8-4cd3-a117-0d150a0000ae/img/60271fc92d2de/original.jpg",
+  "page": "https://catloaf.tokyo/",
+  "sha256": "fd5d96d921f14b97c5a90970b593f469f7a31572dcf8453f564cfa5301e446d0",
+  "bytes": 81202
+ },
+ {
+  "id": "Stff063e2",
+  "file": "img/fac/sitter/Stff063e2_1.webp",
+  "src": "https://pet-kouken.jp/wp-content/uploads/2026/05/Cat-photo.jpg",
+  "page": "https://pet-kouken.jp/alignment/assistance/tokyo-assistance/2042/",
+  "sha256": "584b36757da117702882fb8a75531e894110c9a2311fe66f7578623c1524b27c",
+  "bytes": 31746
+ },
+ {
+  "id": "St6062f7f",
+  "file": "img/fac/sitter/St6062f7f_1.webp",
+  "src": "https://tails-tale.com/assets/about.jpg",
+  "page": "https://tails-tale.com/",
+  "sha256": "e01591054db121e3e0ce8984b97ef55f64ebf63d4afd38621a15fc50a436cff8",
+  "bytes": 18516
+ },
+ {
+  "id": "St6062f7f",
+  "file": "img/fac/sitter/St6062f7f_2.webp",
+  "src": "https://tails-tale.com/assets/story-01.jpg",
+  "page": "https://tails-tale.com/",
+  "sha256": "215b1217b082f191f459e6eddada3432b98aee2a1511d8ec411861acf44bae24",
+  "bytes": 25378
+ },
+ {
+  "id": "St6062f7f",
+  "file": "img/fac/sitter/St6062f7f_3.webp",
+  "src": "https://tails-tale.com/assets/story-02.jpg",
+  "page": "https://tails-tale.com/",
+  "sha256": "1a59b94506e07f234a8525d95c29f5d76294012af4cc1eba6fab776c30039d09",
+  "bytes": 66678
+ },
+ {
+  "id": "St6062f7f",
+  "file": "img/fac/sitter/St6062f7f_4.webp",
+  "src": "https://tails-tale.com/assets/story-03.jpg",
+  "page": "https://tails-tale.com/",
+  "sha256": "9dc3fe99448713b1adc035f163b1bc6210cc11e4c7f80f8fcfa0b7aa1fa44bba",
+  "bytes": 40346
+ },
+ {
+  "id": "St6062f7f",
+  "file": "img/fac/sitter/St6062f7f_5.webp",
+  "src": "https://tails-tale.com/assets/story-04.jpg",
+  "page": "https://tails-tale.com/",
+  "sha256": "ec03ab19ad6081c1d09d7c2d2b1ac450b4ed54a037a5123833db1f84afa5f660",
+  "bytes": 45314
+ },
+ {
+  "id": "St644a130",
+  "file": "img/fac/sitter/St644a130_1.webp",
+  "src": "https://www.o3care.jp/images/IMG_2849.png",
+  "page": "https://www.o3care.jp/",
+  "sha256": "87b453bfec2a7b38b094fb6120b3bd78830ebfb4bb8cb13ec0e47021b09b0e3d",
+  "bytes": 76240
+ },
+ {
+  "id": "St644a130",
+  "file": "img/fac/sitter/St644a130_2.webp",
+  "src": "https://www.o3care.jp/images/Clara.png",
+  "page": "https://www.o3care.jp/",
+  "sha256": "b779b9f82999a62f2ba558933aa0c3d986c43b34729dace21e5f9731ea19db1f",
+  "bytes": 61032
+ },
+ {
+  "id": "St3b3d759",
+  "file": "img/fac/sitter/St3b3d759_1.webp",
+  "src": "https://janken-paw.com/wp-content/uploads/2026/09/692cff352d75c7d40196d1211f7efd9b.jpg",
+  "page": "https://janken-paw.com/",
+  "sha256": "8d47debb547c182470d0f6ece88735bf113c039b3b4735650a430fbb1739e5f0",
+  "bytes": 33984
+ },
+ {
+  "id": "Std44ec06",
+  "file": "img/fac/sitter/Std44ec06_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=1920x10000:format=jpg/path/sfd6204949cb42cdd/image/i4da30dd9ac985e3e/version/1604734063/%E3%81%BA%E3%81%93%E3%81%A1%E3%82%83%E3%82%93-%EF%BC%97%E6%AD%B3-%E3%83%8D%E3%82%B3-%E7%8C%AB-%E3%81%AD%E3%81%93-%E3%81%AB%E3%82%83%E3%82%93%E3%81%93-%E3%83%8B%E3%83%A3%E3%83%B3%E3%82%B3-%E3%81%8A%E7%95%99%E5%AE%88%E7%95%AA-%E5%A4%A7%E7%94%B0%E5%8C%BA-%E5%B7%9D%E5%B4%8E-%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC-%E3%82%AA%E3%83%A2%E3%83%81%E3%83%A3%E5%A4%A7%E5%A5%BD%E3%81%8D.jpg",
+  "page": "https://psiiijima.jimdofree.com/?srsltid=AYCX9vJpwJNLS40iY3fScpVsh9gjyttZbOQhYd7eLtvMoEyB2S-cUU76",
+  "sha256": "e5eb2f5b0df6325772288abf6cc2b12a3349cec4a84c9fe34f25cb651ffba940",
+  "bytes": 34498
+ },
+ {
+  "id": "Std44ec06",
+  "file": "img/fac/sitter/Std44ec06_2.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=10000x960:format=png:rotate=90/path/sfd6204949cb42cdd/image/i0626191ff1f3af9e/version/1671873112/%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC-%E7%8C%AB-%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC-%E5%A4%A7%E7%94%B0%E5%8C%BA-%E5%A4%9A%E6%91%A9%E5%B7%9D-%E7%9F%A2%E5%8F%A3%E6%B8%A1-%E3%83%8D%E3%82%B3-%E3%81%AD%E3%81%93-%E7%8C%AB%E3%81%A1%E3%82%83%E3%82%93-%E3%83%8D%E3%82%B3%E3%81%A1%E3%82%83%E3%82%93-%E3%81%AD%E3%81%93%E3%81%A1%E3%82%83%E3%82%93-%E3%81%AB%E3%82%83%E3%82%93%E3%81%93-%E3%83%8B%E3%83%A3%E3%83%B3%E3%82%B3-%E3%81%8A%E7%95%99%E5%AE%88%E7%95%AA-%E3%81%8A%E4%B8%96%E8%A9%B1.png",
+  "page": "https://psiiijima.jimdofree.com/?srsltid=AYCX9vJpwJNLS40iY3fScpVsh9gjyttZbOQhYd7eLtvMoEyB2S-cUU76",
+  "sha256": "bec90d8c92e01406c9fde9d1b50a60994904ec2464846381a75dcfef6ffafdba",
+  "bytes": 66818
+ },
+ {
+  "id": "Std44ec06",
+  "file": "img/fac/sitter/Std44ec06_3.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=750x10000:format=jpg/path/sfd6204949cb42cdd/image/i2ff97686f8782340/version/1604734245/%E3%81%8A%E3%81%AF%E3%81%8E%E3%81%8F%E3%82%93-%E3%83%97%E3%83%BC%E3%82%A2%E3%83%AB%E3%81%8F%E3%82%93-%E5%85%B110%E6%AD%B3-%E3%83%8D%E3%82%B3-%E7%8C%AB-%E3%81%AD%E3%81%93-%E3%81%AB%E3%82%83%E3%82%93%E3%81%93-%E3%83%8B%E3%83%A3%E3%83%B3%E3%82%B3-%E3%81%8A%E7%95%99%E5%AE%88%E7%95%AA-%E5%A4%A7%E7%94%B0%E5%8C%BA-%E5%B7%9D%E5%B4%8E-%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC.jpg",
+  "page": "https://psiiijima.jimdofree.com/?srsltid=AYCX9vJpwJNLS40iY3fScpVsh9gjyttZbOQhYd7eLtvMoEyB2S-cUU76",
+  "sha256": "75252630319ec411559cfe502e510013b4f703ba6e6457659c6c76442662e160",
+  "bytes": 26780
+ },
+ {
+  "id": "Std44ec06",
+  "file": "img/fac/sitter/Std44ec06_4.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=750x10000:format=jpg/path/sfd6204949cb42cdd/image/i38eaedd7e4273fe2/version/1604734092/%E8%8C%B6%E3%80%85%E4%B8%B8%E3%81%8F%E3%82%93-%E9%BB%92%E4%B8%B8%E3%81%A1%E3%82%83%E3%82%93-%E5%85%B1%EF%BC%91%E6%AD%B3-%E3%83%8D%E3%82%B3-%E7%8C%AB-%E3%81%AD%E3%81%93-%E3%81%AB%E3%82%83%E3%82%93%E3%81%93-%E3%83%8B%E3%83%A3%E3%83%B3%E3%82%B3-%E3%81%8A%E7%95%99%E5%AE%88%E7%95%AA-%E5%A4%A7%E7%94%B0%E5%8C%BA-%E5%B7%9D%E5%B4%8E-%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC-%E3%82%84%E3%82%93%E3%81%A1%E3%82%83.jpg",
+  "page": "https://psiiijima.jimdofree.com/?srsltid=AYCX9vJpwJNLS40iY3fScpVsh9gjyttZbOQhYd7eLtvMoEyB2S-cUU76",
+  "sha256": "f08d6af38b602a6764b23c7d40a7561d241e0881eaf6657cce0c076f70f64f2f",
+  "bytes": 47796
+ },
+ {
+  "id": "Std44ec06",
+  "file": "img/fac/sitter/Std44ec06_5.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=750x10000:format=jpg/path/sfd6204949cb42cdd/image/iaeae63d4c5d365b6/version/1604733550/%E3%82%AF%E3%83%AC%E3%82%A2%E3%81%A1%E3%82%83%E3%82%93-%EF%BC%94%E3%83%B6%E6%9C%88-%E3%83%8D%E3%82%B3-%E7%8C%AB-%E3%81%AD%E3%81%93-%E3%81%AB%E3%82%83%E3%82%93%E3%81%93-%E3%83%8B%E3%83%A3%E3%83%B3%E3%82%B3-%E3%81%8A%E7%95%99%E5%AE%88%E7%95%AA-%E5%A4%A7%E7%94%B0%E5%8C%BA-%E5%B7%9D%E5%B4%8E-%E3%83%9A%E3%83%83%E3%83%88%E3%82%B7%E3%83%83%E3%82%BF%E3%83%BC-%E3%82%AA%E3%83%A2%E3%83%81%E3%83%A3%E5%A4%A7%E5%A5%BD%E3%81%8D.jpg",
+  "page": "https://psiiijima.jimdofree.com/?srsltid=AYCX9vJpwJNLS40iY3fScpVsh9gjyttZbOQhYd7eLtvMoEyB2S-cUU76",
+  "sha256": "164668d347f4f1a645642f860043bf848bdd52013d155ee9586d5e082aaa8e87",
+  "bytes": 25954
+ },
+ {
+  "id": "Stb4dfb84",
+  "file": "img/fac/sitter/Stb4dfb84_1.webp",
+  "src": "https://static.wixstatic.com/media/56e5c7_58ed1ccbf3f6480eb44b9eba24662e4a~mv2.jpg/v1/fill/w_2500,h_3332,al_c/56e5c7_58ed1ccbf3f6480eb44b9eba24662e4a~mv2.jpg",
+  "page": "https://www.petsitter-halcyon.com/",
+  "sha256": "893b0b25a85c2591cdb385a278013cc1e2ae99530b230c46ffcf071e382f0a8b",
+  "bytes": 37500
+ },
+ {
+  "id": "Stb4dfb84",
+  "file": "img/fac/sitter/Stb4dfb84_2.webp",
+  "src": "https://static.wixstatic.com/media/11062b_08407654060d4e73980e01bfc078f903~mv2.jpeg",
+  "page": "https://www.petsitter-halcyon.com/",
+  "sha256": "1e65dd2eeba7f95b2b2330fcff6b3205f5a6013812cadaf9c5e64057efbdfc4a",
+  "bytes": 25564
+ },
+ {
+  "id": "Stb4dfb84",
+  "file": "img/fac/sitter/Stb4dfb84_3.webp",
+  "src": "https://static.wixstatic.com/media/nsplsh_6c53776c65576367506734~mv2_d_6000_4000_s_4_2.jpg",
+  "page": "https://www.petsitter-halcyon.com/",
+  "sha256": "1d1bf77e39fc1764a1f4a26014cf4221c901a35c00929b3d6ec8f17b3613b29a",
+  "bytes": 29136
+ },
+ {
+  "id": "St0b7ac41",
+  "file": "img/fac/sitter/St0b7ac41_1.webp",
+  "src": "https://dogresearch.jp/001drc/wp-content/uploads/2025/08/ogikubo-image01-1.jpg",
+  "page": "https://dogresearch.jp/ogikubo/",
+  "sha256": "5a63c6608b8f1d174cba4af1e514a69c4f58bd9e3385cf42091549efc342028e",
+  "bytes": 60510
+ },
+ {
+  "id": "St0b7ac41",
+  "file": "img/fac/sitter/St0b7ac41_2.webp",
+  "src": "https://dogresearch.jp/images/shop-ogikubo/ogikubo-nursery01.jpg",
+  "page": "https://dogresearch.jp/ogikubo/",
+  "sha256": "60348396269089a067085ff2289df47e0de475bdbf637ca5896c0a648f41cdda",
+  "bytes": 41202
+ },
+ {
+  "id": "St0b7ac41",
+  "file": "img/fac/sitter/St0b7ac41_3.webp",
+  "src": "https://dogresearch.jp/images/shop-ogikubo/ogikubo-nursery02.jpg",
+  "page": "https://dogresearch.jp/ogikubo/",
+  "sha256": "27740c98a612cb5fa1b9e362d61191178a8067610065e5ba839ec0a83ae19542",
+  "bytes": 62800
+ },
+ {
+  "id": "St254b309",
+  "file": "img/fac/sitter/St254b309_1.webp",
+  "src": "https://nyankotei.com/wp-content/uploads/2026/01/G3d0t7CWoAAt8Ms.jpg",
+  "page": "https://nyankotei.com/shop/kanameten/",
+  "sha256": "eb8330767bb8557ea3f5da9bd43a66e00aec93de285a969245bdff98b61e13b4",
+  "bytes": 48454
+ },
+ {
+  "id": "St254b309",
+  "file": "img/fac/sitter/St254b309_2.webp",
+  "src": "https://nyankotei.com/wp-content/uploads/2025/11/content_278cadb5c5a600fd354bbb4a32acf34407bf98f0.png",
+  "page": "https://nyankotei.com/shop/kanameten/",
+  "sha256": "1a95b56a16e4a2144ea3abdc5692a8a2cde8ad623ebd805a145e8b2bda7d750a",
+  "bytes": 49168
+ },
+ {
+  "id": "St254b309",
+  "file": "img/fac/sitter/St254b309_3.webp",
+  "src": "https://nyankotei.com/wp-content/uploads/2025/09/291D4BEB-19F0-4473-A5CC-33323DEB40C5-2048x1367-1.jpg",
+  "page": "https://nyankotei.com/shop/kanameten/",
+  "sha256": "6dd4b5fa8a7689290dc3d6e227a0a4143ccb8bd2974c09e8109fc324ecf709bf",
+  "bytes": 15264
+ },
+ {
+  "id": "St1a3056d",
+  "file": "img/fac/sitter/St1a3056d_1.webp",
+  "src": "https://d-c-malachite.com/wp-content/uploads/2023/09/t01.jpg",
+  "page": "https://d-c-malachite.com/",
+  "sha256": "0889ac4f40704378532709bb9be96729b9b4f4908fbe1f2e405e91eede9a8f24",
+  "bytes": 11538
+ },
+ {
+  "id": "St1a3056d",
+  "file": "img/fac/sitter/St1a3056d_2.webp",
+  "src": "https://d-c-malachite.com/wp-content/uploads/2023/09/t02.jpg",
+  "page": "https://d-c-malachite.com/",
+  "sha256": "d155954301cc497b938afd539c01e53274389eb009f72cf4e1afaa5ab73fbfd0",
+  "bytes": 24682
+ },
+ {
+  "id": "St1a3056d",
+  "file": "img/fac/sitter/St1a3056d_3.webp",
+  "src": "https://d-c-malachite.com/wp-content/uploads/2025/08/IMG_2713-768x1024.jpg",
+  "page": "https://d-c-malachite.com/",
+  "sha256": "941c307f7a86d4772fdcb28bb3a3a16b504864f129fe5ead5f5fbd2296a6c0f3",
+  "bytes": 108114
+ },
+ {
+  "id": "St1a3056d",
+  "file": "img/fac/sitter/St1a3056d_4.webp",
+  "src": "https://d-c-malachite.com/wp-content/uploads/2025/08/IMG_8178-768x1024.jpg",
+  "page": "https://d-c-malachite.com/",
+  "sha256": "24c96e46f2426e1f9b9b330337e5c517e06ccb8bcc794985ad5fef04b92f9b24",
+  "bytes": 67212
+ },
+ {
+  "id": "St38e92eb",
+  "file": "img/fac/sitter/St38e92eb_1.webp",
+  "src": "https://static.wixstatic.com/media/b19da0_d24d3b6c5b5943739e92c4ebdf8fa3d0~mv2.jpeg",
+  "page": "https://www.doggyheart.net/",
+  "sha256": "7df99a57dfb33c839143bc54d8b35277bdd441f0a7d43b20206840cfe798e155",
+  "bytes": 94778
+ },
+ {
+  "id": "St6cfd7ea",
+  "file": "img/fac/sitter/St6cfd7ea_1.webp",
+  "src": "https://cdn.goope.jp/86880/190902135158w37j_l.jpg",
+  "page": "https://r.goope.jp/cs-tama/",
+  "sha256": "95fc738a15ddc507e8065b2605df575dfaea7568eea32f4a090a1a63e9c364a6",
+  "bytes": 19088
+ },
+ {
+  "id": "St6cfd7ea",
+  "file": "img/fac/sitter/St6cfd7ea_2.webp",
+  "src": "https://cdn.goope.jp/86880/190818164558mdd6_l.jpg",
+  "page": "https://r.goope.jp/cs-tama/",
+  "sha256": "bd2906a1b493af8beeebe620d7baea6c89766ec361847c06f715d02d98604a5d",
+  "bytes": 20618
+ },
+ {
+  "id": "St6cfd7ea",
+  "file": "img/fac/sitter/St6cfd7ea_3.webp",
+  "src": "https://cdn.goope.jp/86880/190818164519zggd_l.jpg",
+  "page": "https://r.goope.jp/cs-tama/",
+  "sha256": "ca87e99ad9a223ed44a4c433e20fb0fee1f7eb25c6efa040076cc8110d4d75a9",
+  "bytes": 24300
+ },
+ {
+  "id": "St6cfd7ea",
+  "file": "img/fac/sitter/St6cfd7ea_4.webp",
+  "src": "https://cdn.goope.jp/86880/190818164842ak6b_l.jpg",
+  "page": "https://r.goope.jp/cs-tama/",
+  "sha256": "7835b693edc35ca534e5728ec3b4264d23704ff582851e674818bf97c509ee38",
+  "bytes": 60468
  }
 ]
