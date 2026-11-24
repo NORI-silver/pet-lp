@@ -20,18 +20,18 @@ PAW = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 
 CSS = ('<style id="cp-css">'
        '.cs-ph{position:relative;background:#f6efe8;overflow:hidden}'
        '.cs-ph0{aspect-ratio:4/1;background:#f8f3ee url("' + PAW + '") center/38px no-repeat}'
-       '.cs-ph-s{display:flex;aspect-ratio:var(--r,2/1);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}'
+       '.cs-ph-s{display:flex;aspect-ratio:4/3;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}'
        '.cs-ph-s::-webkit-scrollbar{display:none}'
-       '.cs-ph-s img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start;display:block}'
+       '.cs-ph-i{flex:0 0 100%;position:relative;overflow:hidden;scroll-snap-align:start;background:#efe6dc}'
+       '.cs-ph-i img{position:relative;display:block;width:100%;height:100%;object-fit:contain}'
+       '.cs-ph-i .b{position:absolute;left:-24px;top:-24px;width:calc(100% + 48px);height:calc(100% + 48px);object-fit:cover;filter:blur(22px) saturate(1.15);opacity:.9}'
        '.cs-ph-n{position:absolute;right:8px;top:8px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;pointer-events:none}'
        '.cs-ph .cs-ph-c{display:block;background:#f6efe8;color:#6b5a4c;opacity:1;font-size:11px;font-weight:400;padding:2px 8px;white-space:normal;line-height:1.35}'  # 出どころの文は省かずに出す（許可の条件の表記）
        '.cs-ph .cs-ph-c a{color:#6b5a4c}'
-       '.fr-s{align-items:flex-start}'
+       '.fr-s{align-items:stretch}'
        '.cs:not(.fc)>.cs-ph,.ux-c>.cs-ph{margin:-12px -14px 10px;border-radius:14px 14px 0 0}'
        '.hc>.cs-ph{margin:-14px -14px 10px;border-radius:14px 14px 0 0}'
-       '</style>'
-       '<script id="cp-js">document.addEventListener("scroll",function(e){var s=e.target;if(!s||!s.classList||!s.classList.contains("cs-ph-s"))return;'
-       'var k=Math.round(s.scrollLeft/Math.max(1,s.clientWidth)),m=s.children[k],r=m&&m.getAttribute("data-r");if(r&&s.parentNode)s.parentNode.style.setProperty("--r",r)},true)</script>')
+       '</style>')
 
 
 def norm(u):
@@ -62,14 +62,13 @@ def strip(x, name, gph=""):
     ps = x["photos"][:5]
     alt = html.escape(re.sub(r"<[^>]+>", "", name))
     rs = x.get("ratio") or []
-    imgs = "".join(f'<img src="{html.escape(p)}" alt="{alt}の写真{i + 1}"' + (f' data-r="{rs[i]:.3f}"' if i < len(rs) else "") + ' style="object-fit:contain" loading="lazy" decoding="async">' for i, p in enumerate(ps))
+    imgs = "".join(f'<i class="cs-ph-i"><img class="b" src="{html.escape(p)}" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="{html.escape(p)}" alt="{alt}の写真{i + 1}" loading="lazy" decoding="async"></i>' for i, p in enumerate(ps))
     n = f'<span class="cs-ph-n" aria-hidden="true">📷 {len(ps)}</span>' if len(ps) > 1 else ""
     cr = ""
     if x.get("by") != "owner" and x.get("credit"):  # サイトの決まり（CC BY など）や事業者の許可の条件で出どころの表示が要る
         cr = f'<small class="cs-ph-c">{html.escape(x["credit"])}' + (f'（<a href="{html.escape(x["lic_url"])}" target="_blank" rel="noopener">{html.escape(x.get("license", ""))}</a>）' if x.get("lic_url") else "") + "</small>"
     # 写真の縦横比に枠を合わせる（余白なし・切らない。極端な縦横比だけ 3:5〜3:1 に丸める）。共通CSSは変えず、カードごとの style で上書きする
-    r = (x.get("ratio") or [1.5])[0]
-    return f'<div class="cs-ph"{g} style="--r:{r:.3f}"><div class="cs-ph-s">{imgs}</div>{n}{cr}</div>'
+    return f'<div class="cs-ph"{g}><div class="cs-ph-s">{imgs}</div>{n}{cr}</div>'
 
 
 _OPEN = re.compile(r'<div class="(emg-item emg-co fc[^"]*\bcs\b[^"]*|emg-item emg-co cs[^"]*|emg-item yd-card[^"]*\bcs\b[^"]*|ux-c dr-card[^"]*)"([^>]*)>')
@@ -117,11 +116,7 @@ def page(h, by_id, by_url, top=""):
     out.append(h[pos:])
     h2 = front("".join(out))
     if n or "/hosp.js" in h2:
-        # T114 の写真は被写体が上端に近いため、既存画像の全範囲を見せる。
-        photo_css = CSS.replace('object-fit:cover', 'object-fit:contain') if 'class="cs-ph-s"' in h2 else CSS
-        if 'class="cs-ph" data-gph="T114"' in h2:
-            photo_css = photo_css.replace('</style>', '.cs-ph[data-gph="T114"]{--r:520/347}'
-                                    '.cs-ph[data-gph="T114"] img{object-fit:contain}</style>')
+        photo_css = CSS
         h2 = h2.replace("</head>", photo_css + "</head>", 1)
     return h2, n
 
