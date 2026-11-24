@@ -206,7 +206,10 @@ def hosp_photo(h):
         im = Image.open(os.path.join(os.path.dirname(HERE), x["photos"][0].lstrip("/")))
         r0 = round(im.width / im.height, 3)
       except Exception: pass
-    return [x["photos"][:5], x.get("credit", "") if x.get("by") != "owner" else "", r0]
+    out = [x["photos"][:5], x.get("credit", "") if x.get("by") != "owner" else "", r0]
+    rs = (x.get("ratio") or [])[:5]
+    if r0 and len(rs) == len(out[0]) and any(abs(r - r0) > 0.02 * r0 for r in rs): out.append(rs)  # 縦横比がちがう写真が混じる病院だけ、1枚ずつの比を渡す（hosp.js が data-r に入れ、cp-js が枠を合わせる）
+    return out
 
 
 if __name__ == "__main__":
