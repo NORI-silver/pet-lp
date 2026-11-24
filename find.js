@@ -244,7 +244,7 @@ function prefGuess(sel, apply){
     if (ev.target.closest("#ffGo")) { apply(false); var t = res || document.querySelector("[data-ffi]:not([hidden])"); if (t) t.scrollIntoView({behavior: "smooth", block: "start"}); }
   });
   clr.addEventListener("click", function(){ btns.forEach(function(b){ b.setAttribute("aria-pressed", "false"); }); pick.clearText(); showUnk = false; apply(true); });
-  // どこで：都道府県（いくつでも）・市区町村の候補つきの入力（/place.js）
+  // どこで：県のボックス（いくつでも）と市区町村のボックスの2つ（/place.js。2026-11-24 Nori「県と市町村は分けた方がいい」）
   var spot = document.getElementById("ffPlace"), byPref = {}, fixed = "";
   items.forEach(function(it){ if (it._p) byPref[it._p] = (byPref[it._p] || 0) + 1; });
   if (!sel) { var ks0 = Object.keys(byPref); if (ks0.length === 1) fixed = ks0[0]; }
@@ -253,7 +253,7 @@ function prefGuess(sel, apply){
   var navPref = !!fixed && SLUG[fixed] === curSlug;
   var prefs = sel ? [].filter.call(sel.options, function(o){ return o.value; }).map(function(o){ return [o.value, byPref[o.value] || 0]; }) : navPref ? Object.keys(SLUG).map(function(k){ return [k, byPref[k] || 0]; }) : Object.keys(byPref).map(function(k){ return [k, byPref[k]]; });
   var tm;
-  pick = PlacePick({root: spot, prefs: prefs, fixed: navPref ? "" : fixed, unit: unit,
+  pick = PlacePick({root: spot, prefs: prefs, fixed: navPref ? "" : fixed, home: navPref ? fixed : "", unit: unit,
     ph: spot.getAttribute("data-ph") || "都道府県・市区町村",
     cnt: function(p){ var n = 0; items.forEach(function(it){ if (placeJ(it, [p]) === 0) n++; }); return n; },
     extra: fixed ? function(t){ return []; } : null,

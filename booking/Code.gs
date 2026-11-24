@@ -127,7 +127,7 @@ var REQ_HEADERS = [
   // 2026-11-01 Nori「キャンセルを直接事業者に伝えられたら、こっちは判断できない」→ 送迎のあとに飼い主さんにも確かめる（手数料の照らし合わせ用）
   '送迎確認', '送迎確認日時',
   // 2026-11-09 Nori「会社の返事の入力欄に、電話とメールアドレスを入れる欄を作ろう」→ お客さまにお伝えする会社の連絡先（会社あての送信先は提携先シートのまま）
-  '会社の連絡先（電話）', '会社の連絡先（メール）', '春日部通知経路', '春日部通知状態'
+  '会社の連絡先（電話）', '会社の連絡先（メール）'
 ];
 var PARTNER_HEADERS = [
   'ID', '事業者名', '担当者名', '対応エリア', 'メール', '電話番号', 'LINE公式ID（先方）', '受付中', '大型犬OK', '介助OK',
@@ -445,6 +445,9 @@ function receive_(p) {
       if (!sels[k].ok) return split ? { ok: false, error: sels[k].error, leg: k ? 'back' : 'go' } : sels[k];
     }
     var sh = sheet_(SHEET_REQ);
+    // 列がなければ署名つきの試行も登録しない。通常の受付でこの列を追加しない。
+    if (sels.some(function(s) { return !!s.kasukabeRoute; }) && !kasukabeSchemaReady_(sh))
+      return {ok:false,error:'selection_unavailable'};
     var head = ensureReqHeaders_(sh);
     var ids = legs.map(function () { return newId_(sh); });
     for (var t = 0; ids[1] && ids[1] === ids[0] && t < 20; t++) ids[1] = newId_(sh); // 2件が同じ番号にならないように
@@ -1511,7 +1514,7 @@ function cancelPage_(q) {
   if (!row) return page_('見つかりません', '<p>このご依頼は見つかりませんでした。</p>');
   var r = row.data;
   if (r['状態'] === ST.CANCEL) return page_('取り消し済みです', '<p>このご依頼はすでに取り消されています。</p>' +
-    (r['春日部通知状態'] === '取り消し通知の確認待ち' ? '<p>事業者への取り消し通知は確認中です。お急ぎの場合は、受付メールに返信してください。</p>' : ''));
+    (r['決定した提携先ID'] === KASUKABE_INTAKE_ID && r['春日部通知状態'] !== '取り消し通知を送信済み' ? '<p>事業者への取り消し通知は確認中です。お急ぎの場合は、受付メールに返信してください。</p>' : ''));
   if (r['状態'] === ST.NONE) return page_('受付は終了しています', '<p>このご依頼は受付が終わっています。取り消しの手続きは不要です。</p>');
 
   if (q.go === '1') {
@@ -1545,10 +1548,7 @@ function cancel_(id) {
     kasukabe = before === ST.DONE && row.data['決定した提携先ID'] === KASUKABE_INTAKE_ID;
     if (before !== ST.OPEN && before !== ST.DONE) return { msg: 'このご依頼はすでに受付が終わっています。' };
     var changes = {'状態': ST.CANCEL, '終了日時': new Date()};
-    if (kasukabe) {
-      ensureReqHeaders_(sheet_(SHEET_REQ));
-      changes['春日部通知状態'] = '取り消し通知の確認待ち';
-    }
+    if (kasukabe && kasukabeSchemaReady_()) changes['春日部通知状態'] = '取り消し通知の確認待ち';
     setReq_(row.rowIndex, changes);
     SpreadsheetApp.flush();
   } finally {
@@ -3653,12 +3653,49 @@ function selectionValid_(p) {
 
 // 春日部の試行：未設定の本番では閉じたまま。固定の会社ID・照合済みメール、明示的に選ばれた市内片道だけ。
 var KASUKABE_INTAKE_ID = 'P014', KASUKABE_DISPLAY_ID = 'D853ae97';
+var KASUKABE_REQ_HEADERS = ['春日部通知経路', '春日部通知状態'];
+function kasukabeSchemaReady_(sh) {
+  try {
+    sh = sh || sheet_(SHEET_REQ);
+    var width = sh.getLastColumn();
+    if (!width) return false;
+    var head = sh.getRange(1, 1, 1, width).getValues()[0];
+    return head.every(function (h) { return String(h).trim() !== ''; }) &&
+      KASUKABE_REQ_HEADERS.every(function (h) { return head.indexOf(h) >= 0 && head.indexOf(h) === head.lastIndexOf(h); });
+  } catch (e) { return false; }
+}
+
+// 運営が隔離テスト後、有効化の直前にエディタから一度だけ実行。通常処理からは呼ばない。
+function prepareKasukabeIntakeHeaders() {
+  var lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    var ps = PropertiesService.getScriptProperties();
+    if (ps.getProperty('KASUKABE_INTAKE_ENABLED') === '1' || ps.getProperty('KASUKABE_INTAKE_ROUTE_ENABLED') === '1')
+      throw new Error('春日部の受付と通知を停止してから列を準備してください。');
+    var sh = sheet_(SHEET_REQ), width = sh && sh.getLastColumn();
+    if (!width) throw new Error('既存の予約表を確認してください。');
+    var head = sh.getRange(1, 1, 1, width).getValues()[0];
+    if (kasukabeSchemaReady_(sh)) return '春日部の列は準備済みです。';
+    if (!head.every(function (h) { return String(h).trim() !== ''; }) ||
+        REQ_HEADERS.some(function(h) { return head.indexOf(h) < 0 || head.indexOf(h) !== head.lastIndexOf(h); }) ||
+        KASUKABE_REQ_HEADERS.some(function(h) { return head.indexOf(h) >= 0; }))
+      throw new Error('予約表の見出しが想定と異なります。変更せず、既存の見出しと予約記録を確認してください。');
+    var capacity = sh.getMaxColumns();
+    if (capacity < width + KASUKABE_REQ_HEADERS.length) throw new Error('右端に未使用の列を2つ用意してください。');
+    sh.getRange(1, width + 1, 1, KASUKABE_REQ_HEADERS.length).setValues([KASUKABE_REQ_HEADERS]);
+    SpreadsheetApp.flush();
+    if (!kasukabeSchemaReady_(sh)) throw new Error('春日部の列が保存されたか確認できません。再実行せず予約表を確認してください。');
+    return '春日部の列を準備しました。受付と通知は停止中です。';
+  } finally { lock.releaseLock(); }
+}
 function kasukabeIntakeMailbox_(forExistingRoute) {
   try {
     var ps = PropertiesService.getScriptProperties();
     // 既存の個社受付と同じく、全体の送信設定は変えない。この個社の送信許可がなければ既存依頼も保留。
     if (ps.getProperty('KASUKABE_INTAKE_ROUTE_ENABLED') !== '1') return '';
     if (!forExistingRoute && ps.getProperty('KASUKABE_INTAKE_ENABLED') !== '1') return '';
+    if (!kasukabeSchemaReady_()) return '';
     var email = String(ps.getProperty('KASUKABE_INTAKE_VERIFIED_EMAIL') || '').trim().toLowerCase();
     return email.length <= 100 && /^[a-z0-9_-]+(?:\.[a-z0-9_-]+)*@pet-taxi-kasukabe\.com$/.test(email) ? email : '';
   } catch (e) { return ''; }
@@ -3702,7 +3739,8 @@ function kasukabeNotifyNew_(id, pt) {
   } finally { lock.releaseLock(); }
 }
 function kasukabePending_(r) {
-  return r['決定した提携先ID'] === KASUKABE_INTAKE_ID && r['春日部通知状態'] === '確定通知の確認待ち';
+  return r['決定した提携先ID'] === KASUKABE_INTAKE_ID && (r['春日部通知状態'] === '確定通知の確認待ち' ||
+    (!!r['春日部通知経路'] && !Object.prototype.hasOwnProperty.call(r, '春日部通知状態')));
 }
 function kasukabePendingPage_(r) {
   return page_('事業者への予約通知を確認中です', '<p>同じ予約を取り直さないでください。送迎の可否は確認中です。お急ぎの場合は、受付メールへの返信でご確認ください。</p><p><a href="' +

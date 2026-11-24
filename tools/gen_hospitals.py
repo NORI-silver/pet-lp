@@ -430,7 +430,25 @@ def write_all(ROOT, ctx):
         v = [c for c in cs if c["city"] == h["city"]]
         sl = gen_vetclinics.cslug(pf, h["city"])
         return f"/hospital/{gen_dogrun.PSLUG[pf]}/{sl}/" if gen_vetclinics._page_ok(v, gen_vetclinics.CITY_MIN) and sl else f"/hospital/{gen_dogrun.PSLUG[pf]}/"
-    avail, counts = hosp_find.build(ROOT, ctx, CONDS, lambda c: _rows(c, ctx["EMG"]), lambda h: fac.get(h.get("id"), ""),
+    # 夜間・救急の病院は、公式サイトで集めた項目（tools/night_hospital_facts.json）のうち支払い・保険だけを
+    # さがす欄にも渡す。今までは電話番号しか渡っておらず、支払いの文が届かないため
+    # 「ペット保険が使える」のボタンがほぼ全県で出なかった（2026-11-24 修正）
+    _HF = {x["id"]: x for x in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "night_hospital_facts.json"), encoding="utf-8"))["items"]
+           if x.get("ok", True) and not x.get("closed")}
+    def _rows_find(c, emg):
+        rows = _rows(c, emg)
+        if c["src"] != "emg": return rows
+        out = {}
+        for pf, lst in rows.items():
+            nl = []
+            for h in lst:
+                x = _HF.get(h.get("id"))
+                fs = [f for f in x.get("facts", []) if f["k"] in ("支払い方法", "動物保険")] if x else []
+                if fs and not h.get("facts"): h = dict(h, facts=fs)
+                nl.append(h)
+            out[pf] = nl
+        return out
+    avail, counts = hosp_find.build(ROOT, ctx, CONDS, lambda c: _rows_find(c, ctx["EMG"]), lambda h: fac.get(h.get("id"), ""),
                                gen_vetclinics.by_pref, vet_page, gen_dogrun.PSLUG, faccard.depts_of)
     hosp_find.write_js(ROOT, avail, gen_dogrun.PSLUG, counts)
     open(os.path.join(ROOT, "hospital", "index.html"), "w", encoding="utf-8").write(render_hub(ctx))

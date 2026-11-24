@@ -14,6 +14,48 @@ ctx.linkBase_=()=> 'https://example.invalid/webapp';
 const pt={id:'P014',name:'春日部テスト用',active:true,areas:['埼玉'],email:'',hours:'0-24',lead:1};
 const other={...pt,id:'P030',name:'既存の会社',email:'existing@example.invalid'};
 ctx.partners_ = ()=>[pt,other];
+// 予約シートの旧版相当。受付・定期処理・集計処理が試行列を暗黙追加しないことも確認する。
+const baseHeaders=Array.from(ctx.REQ_HEADERS);
+const pilotHeaders=Array.from(ctx.KASUKABE_REQ_HEADERS);
+let headings=baseHeaders.slice(), headerWrites=[], lockDepth=0, capacity=300;
+const headerSheet={
+ getLastColumn:()=>headings.length, getMaxColumns:()=>capacity,
+ getDataRange:()=>({getValues:()=>[headings.slice()]}),
+ getRange:(r,c,n,w)=> r===1 ? {
+   getValues:()=>[headings.slice(c-1,c-1+w)],
+   setValues:(rows)=> {headerWrites.push({r,c,n,w,rows,lockDepth});headings.splice(c-1,w,...rows[0]);}
+ } : {setNumberFormat(){}}
+};
+const summaryRange={setValues(){},setValue(){},setFontWeight(){return this;},setBackground(){return this;}};
+const summarySheet={clearContents(){},setFrozenRows(){},getRange:()=>summaryRange};
+ctx.SpreadsheetApp={flush(){},getActive:()=>({getSheetByName:n=>n===ctx.SHEET_SUMMARY ? summarySheet : null})};
+ctx.sheet_=n=>n===ctx.SHEET_REQ ? headerSheet : null;
+ctx.LockService={getScriptLock:()=>({waitLock(){assert.equal(lockDepth++,0);},releaseLock(){assert.equal(--lockDepth,0);}})};
+ctx.PropertiesService={getScriptProperties:()=>({getProperty:k=>props[k],setProperty:(k,v)=>{props[k]=v;}})};
+ctx.adminEmail_=()=> '';
+ctx.log_=()=>{};
+assert.equal(ctx.kasukabeSchemaReady_(),false);
+ctx.checkPending(); // both the scheduled scan and summary refresh use the actual entry points
+ctx.updateSummary();
+assert.deepEqual(headerWrites,[]);
+assert.deepEqual(headings,baseHeaders);
+assert.ok(pilotHeaders.every(h=>!baseHeaders.includes(h)));
+capacity=baseHeaders.length+1;
+assert.throws(()=>ctx.prepareKasukabeIntakeHeaders(),/未使用の列/);
+assert.deepEqual(headerWrites,[]);
+capacity=300;
+headings=baseHeaders.concat(pilotHeaders[0]);
+assert.throws(()=>ctx.prepareKasukabeIntakeHeaders(),/見出し/); // partially missing potentially historical state
+assert.deepEqual(headerWrites,[]);
+headings=baseHeaders.slice();
+assert.match(ctx.prepareKasukabeIntakeHeaders(),/停止中/);
+assert.deepEqual(headings,baseHeaders.concat(pilotHeaders));
+assert.equal(headerWrites.length,1);
+assert.equal(headerWrites[0].lockDepth,1);
+assert.equal(headerWrites[0].c,baseHeaders.length+1);
+assert.deepEqual(Array.from(headerWrites[0].rows[0]),pilotHeaders);
+assert.match(ctx.prepareKasukabeIntakeHeaders(),/準備済み/);
+assert.equal(headerWrites.length,1); // safe repeat on a fully inspected schema
 ctx.displayCards_=()=>[]; // 公開比較の既存データに依存しない
 ctx.demandLog_=()=>{}; // ネットワークや表に一切書かない
 ctx.loadRoadKm_=()=>{};
@@ -30,6 +72,14 @@ assert.equal(find(p),undefined);
 props.KASUKABE_INTAKE_VERIFIED_EMAIL=mailbox;
 assert.equal(find(p),undefined); // Old rollout inputs are not enough.
 props.KASUKABE_INTAKE_ROUTE_ENABLED='1';
+assert.throws(()=>ctx.prepareKasukabeIntakeHeaders(),/停止/);
+headings=baseHeaders.concat(pilotHeaders[0]);
+assert.equal(find(p),undefined);
+headings=baseHeaders.concat(pilotHeaders,pilotHeaders[0]);
+assert.equal(find(p),undefined);
+headings=baseHeaders.concat('',pilotHeaders);
+assert.equal(find(p),undefined);
+headings=baseHeaders.concat(pilotHeaders);
 const card=find(p);
 assert.ok(card?.token && card.listed);
 assert.equal(card.price.amount,null);
@@ -61,8 +111,7 @@ const realReceipt=ctx.sendReceipt_;
 const receiptStatuses=[];
 ctx.LockService={getScriptLock:()=>({waitLock(){},releaseLock(){}})};
 ctx.SpreadsheetApp={flush(){}};
-ctx.sheet_=()=>({appendRow:values=>{saved.push(values);row={rowIndex:2,data:Object.fromEntries(ctx.REQ_HEADERS.map((h,i)=>[h,values[i]]))};},getLastRow:()=>saved.length+1,getRange:()=>({setNumberFormat(){}})});
-ctx.ensureReqHeaders_=()=>ctx.REQ_HEADERS;
+ctx.sheet_=()=>({...headerSheet,appendRow:values=>{saved.push(values);row={rowIndex:2,data:Object.fromEntries(headings.map((h,i)=>[h,values[i]]))};},getLastRow:()=>saved.length+1});
 ctx.newId_=()=> 'OFFLINE-FIXTURE';
 ctx.sendReceipt_=(_,status)=>{receiptCount++;receiptStatuses.push(status);};ctx.notifyAdmin_=()=>{};
 ctx.adminUrl_=()=>'';ctx.log_=()=>{};ctx.adminEmail_=()=> 'admin@example.invalid';
@@ -74,6 +123,21 @@ ctx.linePush_=()=>{throw Error('legacy LINE');};
 const privateValues=['PRIVATE-NAME','PRIVATE-MEMO','PRIVATE-PET','test@example.invalid','00000000000','PRIVATE-PICKUP','PRIVATE-DROPOFF'];
 const intake={...choose,pickup:'埼玉県春日部市テスト町PRIVATE-PICKUP',dropoff:'春日部市テスト町PRIVATE-DROPOFF'};
 const newCard=find(intake);
+const ordinary=find(p);
+const partnerCard=search(p).find(c=>c.id==='P030');
+const required={name:privateValues[0],tel:privateValues[4],email:privateValues[3],contact:'メール'};
+headings=baseHeaders.slice();
+delete props.KASUKABE_INTAKE_ENABLED;delete props.KASUKABE_INTAKE_ROUTE_ENABLED;
+assert.equal(ctx.doPost({parameter:{...p,...required,partner_id:'P030',quote_token:partnerCard.token,quote_expires:String(partnerCard.expires)}}).ok,true);
+assert.equal(saved.length,1);
+assert.deepEqual(headings,baseHeaders);
+assert.equal(headerWrites.length,1); // no new writes; the prior explicit preparation is the only write
+assert.equal(row.data['春日部通知経路'],undefined);
+props.KASUKABE_INTAKE_ENABLED='1';props.KASUKABE_INTAKE_ROUTE_ENABLED='1';
+assert.equal(ctx.doPost({parameter:{...p,...required,partner_id:'P014',quote_token:ordinary.token,quote_expires:String(ordinary.expires)}}).error,'selection_unavailable');
+assert.equal(saved.length,1); // stale signed quote cannot create a row when the schema vanished
+headings=baseHeaders.concat(pilotHeaders);
+saved=[];targets=[];receiptCount=0;receiptStatuses.length=0;
 const result=ctx.doPost({parameter:{...intake,quote_token:newCard.token,quote_expires:String(newCard.expires),name:privateValues[0],tel:privateValues[4],email:privateValues[3],contact:'メール',notes:privateValues[1],breed:privateValues[2]}});
 assert.equal(result.id,'OFFLINE-FIXTURE');
 assert.equal(saved.length,1);assert.equal(receiptCount,1);
@@ -109,6 +173,10 @@ restore(); let count=targets.length;
 delete props.KASUKABE_INTAKE_ENABLED;
 assert.equal(find(p),undefined);
 assert.equal(ctx.validateSelection_(choose).error,'selection_unavailable');
+headings=baseHeaders.concat(pilotHeaders[0]);
+assert.equal(ctx.deliver_(pt,'missing-state','synthetic',row.data),false);
+assert.equal(targets.length,count);
+headings=baseHeaders.concat(pilotHeaders);
 ctx.closeOthers_(row.data,''); assert.equal(targets[count++].to,mailbox);
 assert.equal(ctx.deliver_(pt,'after-confirm','synthetic',row.data),'auto'); assert.equal(targets[count++].to,mailbox);
 failMail=true; assert.equal(ctx.deliver_(pt,'failure','synthetic',row.data),false); assert.equal(targets[count++].to,mailbox); failMail=false;
