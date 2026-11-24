@@ -6,7 +6,7 @@
   "page": "https://www.city.chiyoda.lg.jp/koho/machizukuri/koen/dogrun.html",
   "sha256": "d9e09bc0f7d41291bb9df34a3548fd8992ea52515f5be77ff300482f7eeec4d1",
   "bytes": 18192,
-  "_audit": "2026-11-24 sitters batch 1+2, grooming Tokyo (visual review + page-context check)"
+  "_audit": "2026-11-24 sitters batch 1+2, vet clinics Tokyo (visual review + page-context check)"
  },
  {
   "id": "D0d1c8b4",
@@ -20505,5 +20505,1629 @@
   "page": "https://kojima.salon-de-one.com/booking/trimming/hanakoganei",
   "sha256": "8e399185b4146747092bd68bf126a64aa05a298416e25671b1081953ceb2360c",
   "bytes": 42802
+ },
+ {
+  "id": "G13001",
+  "file": "img/fac/hospital/G13001_1.webp",
+  "src": "https://setagaya-ah.jp/wp-content/uploads/2024/06/gaikanai.jpg",
+  "page": "https://setagaya-ah.jp/",
+  "sha256": "86c306d48a6978a33cc0454075a234073e3f03db7c1a94410ff674c7e1b37916",
+  "bytes": 40210
+ },
+ {
+  "id": "G13003",
+  "file": "img/fac/hospital/G13003_1.webp",
+  "src": "https://www.kaminoge-ahp.com/_p/acre/13620/images/pc/1VAGyix4sufHzWup1ELCUNy2.png",
+  "page": "https://www.kaminoge-ahp.com/",
+  "sha256": "df7c1e404c40621ffb853b8103be6ec9cf073d6034d4d1f9f14cf269b1fc7d6e",
+  "bytes": 25058
+ },
+ {
+  "id": "G13003",
+  "file": "img/fac/hospital/G13003_2.webp",
+  "src": "https://www.kaminoge-ahp.com/_p/acre/13620/images/pc/6ZcBLTZuWNL9L9Za9arsYWmA.png",
+  "page": "https://www.kaminoge-ahp.com/",
+  "sha256": "9d87f48a11b34f3df332bb1f65a9c9465e716868bf4022af36a559ff5761c187",
+  "bytes": 18778
+ },
+ {
+  "id": "G13003",
+  "file": "img/fac/hospital/G13003_3.webp",
+  "src": "https://www.kaminoge-ahp.com/_p/acre/13620/images/pc/iCmUqLEMUscD5hfQBv4oPHs7.png",
+  "page": "https://www.kaminoge-ahp.com/",
+  "sha256": "bc1a298dd7a3f0d93d0874a8f451067ceafb29facd97f79b5f5bf878eb490717",
+  "bytes": 33530
+ },
+ {
+  "id": "G13013",
+  "file": "img/fac/hospital/G13013_1.webp",
+  "src": "https://ros-cdn.s3.ap-northeast-1.amazonaws.com/hp/img/ros_keiyaku/18926/hero2_261104.webp",
+  "page": "https://www.yuvet.com/",
+  "sha256": "463accb3768f15b5b67356df3d13d386f2cbc48fdd3c5c21b16627734790a8ff",
+  "bytes": 52074
+ },
+ {
+  "id": "G13013",
+  "file": "img/fac/hospital/G13013_2.webp",
+  "src": "https://ros-cdn.s3.ap-northeast-1.amazonaws.com/hp/img/ros_keiyaku/18926/gaikan_261104.webp",
+  "page": "https://www.yuvet.com/",
+  "sha256": "622c903cd2204ea3b0918d5268a09d96988ce1e00d7941e37de63223a2f71b51",
+  "bytes": 58388
+ },
+ {
+  "id": "G13019",
+  "file": "img/fac/hospital/G13019_1.webp",
+  "src": "https://cdn.goope.jp/7147/220718082113musg_l.jpg",
+  "page": "https://hah.jp/",
+  "sha256": "e69d6d5b595e92f29055ce882cbc4a8cac6ed4e6bc979b6517671576ff281a79",
+  "bytes": 23148
+ },
+ {
+  "id": "G13019",
+  "file": "img/fac/hospital/G13019_2.webp",
+  "src": "https://cdn.goope.jp/7147/220718082139qsan_l.jpg",
+  "page": "https://hah.jp/",
+  "sha256": "ef8409856d6496c12a6360cdcd574904c2773c8e24d59723bd324d1185bcfbb1",
+  "bytes": 19330
+ },
+ {
+  "id": "G13019",
+  "file": "img/fac/hospital/G13019_3.webp",
+  "src": "https://cdn.goope.jp/7147/220718082126wbmj_l.jpg",
+  "page": "https://hah.jp/",
+  "sha256": "be6fbcc80decc8a2a215080588430c560fe43939ca351a2083083dbe52ba25b4",
+  "bytes": 20554
+ },
+ {
+  "id": "G13019",
+  "file": "img/fac/hospital/G13019_4.webp",
+  "src": "https://cdn.goope.jp/7147/220718082404eggy_l.jpg",
+  "page": "https://hah.jp/",
+  "sha256": "76babd22ede5c43329863298bac2c0ea042043883926d87fe382fef48c09a707",
+  "bytes": 17114
+ },
+ {
+  "id": "G13019",
+  "file": "img/fac/hospital/G13019_5.webp",
+  "src": "https://cdn.goope.jp/7147/220718082031racm_l.jpg",
+  "page": "https://hah.jp/",
+  "sha256": "d23d6538e4d4ca881d517976c7facbdde1857680b769a53266f17c334cc4d0fc",
+  "bytes": 34668
+ },
+ {
+  "id": "G13021",
+  "file": "img/fac/hospital/G13021_1.webp",
+  "src": "https://joy9.jp/wp-content/uploads/2021/07/565580-01.jpg",
+  "page": "https://joy9.jp/",
+  "sha256": "486a625e7d11dcd1cc837adf076b7269d7094acaec99dcae548183b412fa666a",
+  "bytes": 14424
+ },
+ {
+  "id": "G13021",
+  "file": "img/fac/hospital/G13021_2.webp",
+  "src": "https://joy9.jp/wp-content/uploads/2021/02/565580-02-1.jpg",
+  "page": "https://joy9.jp/",
+  "sha256": "947363a171c2633c3f9938cdffa38ba8e278fcbf1db6dd812f6db452a687a72e",
+  "bytes": 20462
+ },
+ {
+  "id": "G13021",
+  "file": "img/fac/hospital/G13021_3.webp",
+  "src": "https://joy9.jp/wp-content/uploads/2021/02/565580-03-1.jpg",
+  "page": "https://joy9.jp/",
+  "sha256": "c054c243c26b553a87f9b0f2a325d0e9f79ff11563d20cf00fabe7a46495bec4",
+  "bytes": 28990
+ },
+ {
+  "id": "G13021",
+  "file": "img/fac/hospital/G13021_4.webp",
+  "src": "https://joy9.jp/wp-content/uploads/2021/02/680440-01-1.jpg",
+  "page": "https://joy9.jp/",
+  "sha256": "514741a5f4d8b8606db3c0052a28c1a6a0fc9e40890b7d42e800a75c0ffae2f1",
+  "bytes": 11832
+ },
+ {
+  "id": "G13021",
+  "file": "img/fac/hospital/G13021_5.webp",
+  "src": "https://joy9.jp/wp-content/uploads/2021/03/680440-02.jpg",
+  "page": "https://joy9.jp/",
+  "sha256": "ca2b2f44d9e07bf5e54261fbb00d7055fa5db4262ae37e31502cd1443a64b6ce",
+  "bytes": 13076
+ },
+ {
+  "id": "G13022",
+  "file": "img/fac/hospital/G13022_1.webp",
+  "src": "https://www.keikoku-ah.com/wp-content/uploads/sp_240222_002.jpg",
+  "page": "https://www.keikoku-ah.com/",
+  "sha256": "c0ba50fbb04e912741fde8db1cf6fb9bfec26fe03725395ead760c54085cb6d9",
+  "bytes": 34480
+ },
+ {
+  "id": "G13022",
+  "file": "img/fac/hospital/G13022_2.webp",
+  "src": "https://www.keikoku-ah.com/wp-content/uploads/sp_image1.jpg",
+  "page": "https://www.keikoku-ah.com/",
+  "sha256": "4837ccaf49723cb09479f864babda585e6e485a4b93f83bc31563162cdcf2e0d",
+  "bytes": 36574
+ },
+ {
+  "id": "G13022",
+  "file": "img/fac/hospital/G13022_3.webp",
+  "src": "https://www.keikoku-ah.com/wp-content/uploads/main003.jpg",
+  "page": "https://www.keikoku-ah.com/",
+  "sha256": "498bff01c8a0457275c8bbfa049a3ce7577e1d0efb8129316812901d97061876",
+  "bytes": 44680
+ },
+ {
+  "id": "G13023",
+  "file": "img/fac/hospital/G13023_1.webp",
+  "src": "https://kusunoki-ah.com/wp-content/themes/kusunoki-test/assets/img/home/12-image-12.webp",
+  "page": "https://kusunoki-ah.com/",
+  "sha256": "f7300ea81a3e537ecd8041ede1d54957cbf0aff5c6184ce1d0df3a27f647c614",
+  "bytes": 43002
+ },
+ {
+  "id": "G13023",
+  "file": "img/fac/hospital/G13023_2.webp",
+  "src": "https://kusunoki-ah.com/wp-content/themes/kusunoki-test/assets/img/home/13-image-13.webp",
+  "page": "https://kusunoki-ah.com/",
+  "sha256": "8c5979a6bb33bb0baea69bb803a8aa2ce6ef17c5c4e46407e6cd5ba82e904229",
+  "bytes": 49972
+ },
+ {
+  "id": "G13023",
+  "file": "img/fac/hospital/G13023_3.webp",
+  "src": "https://kusunoki-ah.com/wp-content/themes/kusunoki-test/assets/img/home/14-image-14.webp",
+  "page": "https://kusunoki-ah.com/",
+  "sha256": "4a60b19d45e5d553a7de2679ef9e0396732bb167a9b4865c548480ee4742e55a",
+  "bytes": 67774
+ },
+ {
+  "id": "G13023",
+  "file": "img/fac/hospital/G13023_4.webp",
+  "src": "https://kusunoki-ah.com/wp-content/themes/kusunoki-test/assets/img/home/05-image-5.webp",
+  "page": "https://kusunoki-ah.com/",
+  "sha256": "8006bc380b7627ef43f8184076ef3c95fc4e18e05e59d89a72f9a1f70ab3e1bb",
+  "bytes": 37358
+ },
+ {
+  "id": "G13025",
+  "file": "img/fac/hospital/G13025_1.webp",
+  "src": "https://banquet-tokyo.jp/cms/wp-content/uploads/2022/01/slider1_s.jpg",
+  "page": "https://banquet-tokyo.jp/",
+  "sha256": "bd18849ec885889e1706937e1078360b07052cad7ee3113b30641e3112687b00",
+  "bytes": 28860
+ },
+ {
+  "id": "G13025",
+  "file": "img/fac/hospital/G13025_2.webp",
+  "src": "https://banquet-tokyo.jp/cms/wp-content/uploads/2022/01/slider4s.jpg",
+  "page": "https://banquet-tokyo.jp/",
+  "sha256": "9cc1071309436e35eca1b932c3f8b273fa003c7629766b765ae0f236b665fd02",
+  "bytes": 29514
+ },
+ {
+  "id": "G13037",
+  "file": "img/fac/hospital/G13037_1.webp",
+  "src": "https://static.wixstatic.com/media/6c924c_4569f400f1e44e1cade94c8fd2b616e4~mv2.jpg/v1/crop/x_429,y_0,w_1996,h_1820/fill/w_600,h_547,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/1.jpg",
+  "page": "https://www.yamada-ah.jp/",
+  "sha256": "eee68e9d566c28e1742456d8218f63b89adbce41b21e4ae06d5cb4c267a0c71d",
+  "bytes": 22848
+ },
+ {
+  "id": "G13037",
+  "file": "img/fac/hospital/G13037_2.webp",
+  "src": "https://static.wixstatic.com/media/7b5d95_a92b741429924049ba4981f82f9a27d1~mv2.jpg/v1/fill/w_981,h_404,q_75,enc_avif,quality_auto/7b5d95_a92b741429924049ba4981f82f9a27d1~mv2.jpg",
+  "page": "https://www.yamada-ah.jp/",
+  "sha256": "e3d4be8489a6cb66997be2ace4cc30d58c46f1ae6636fa57df2ee5a09e45023c",
+  "bytes": 78620
+ },
+ {
+  "id": "G13041",
+  "file": "img/fac/hospital/G13041_1.webp",
+  "src": "https://www.tamu-ah.com/wp-content/themes/temp02_11/images/hero01.png",
+  "page": "https://www.tamu-ah.com/",
+  "sha256": "e51215cc31fa70a8c97f2c5d52dbf0256f41e1ad5b17f5d3aa60fca11b8eab2f",
+  "bytes": 14548
+ },
+ {
+  "id": "G13041",
+  "file": "img/fac/hospital/G13041_2.webp",
+  "src": "https://www.tamu-ah.com/wp-content/themes/temp02_11/images/hero02.png",
+  "page": "https://www.tamu-ah.com/",
+  "sha256": "3697ba1765bc51ba18c0ca037c5108cf17833f7c557be35e4c7548d2bc694e16",
+  "bytes": 21544
+ },
+ {
+  "id": "G13045",
+  "file": "img/fac/hospital/G13045_1.webp",
+  "src": "https://www.cocoonpetclinic.com/wp-content/themes/cocoonpetclinic-com/images/sec02_img01.png",
+  "page": "https://www.cocoonpetclinic.com/",
+  "sha256": "966e5086d03bc33832321505deeb3d1c30bcf293799b2d942b688080e3d76d76",
+  "bytes": 24912
+ },
+ {
+  "id": "G13045",
+  "file": "img/fac/hospital/G13045_2.webp",
+  "src": "https://www.cocoonpetclinic.com/wp-content/themes/cocoonpetclinic-com/images/sec03_img01.png",
+  "page": "https://www.cocoonpetclinic.com/",
+  "sha256": "4a5eea04eb69bfd037384c92d784d4839b4b013ccce7060afa0acef774a4c494",
+  "bytes": 13682
+ },
+ {
+  "id": "G13045",
+  "file": "img/fac/hospital/G13045_3.webp",
+  "src": "https://www.cocoonpetclinic.com/wp-content/themes/cocoonpetclinic-com/images/sec03_img02.png",
+  "page": "https://www.cocoonpetclinic.com/",
+  "sha256": "577b072ae46229d9cd08dbbc973b75fc9cd09f26237e531066cb2175143fc5be",
+  "bytes": 10552
+ },
+ {
+  "id": "G13045",
+  "file": "img/fac/hospital/G13045_4.webp",
+  "src": "https://www.cocoonpetclinic.com/wp-content/themes/cocoonpetclinic-com/images/sec03_img03.png",
+  "page": "https://www.cocoonpetclinic.com/",
+  "sha256": "d0ce4516ee9a38274dc19e810d66f173a9838369301c9ba3da84c28f679e4772",
+  "bytes": 10758
+ },
+ {
+  "id": "G13051",
+  "file": "img/fac/hospital/G13051_1.webp",
+  "src": "https://www.polan-ah.com/wp-content/themes/polan-ah-2026/images/home_hospital_img_01.jpg",
+  "page": "https://www.polan-ah.com/",
+  "sha256": "94611ec304d28e196a9268a9b2fa04a68bae700d24d8dcd8e3babaef47d7855f",
+  "bytes": 20962
+ },
+ {
+  "id": "G13051",
+  "file": "img/fac/hospital/G13051_2.webp",
+  "src": "https://www.polan-ah.com/wp-content/themes/polan-ah-2026/images/home_hospital_img_04.jpg",
+  "page": "https://www.polan-ah.com/",
+  "sha256": "4ebe2228397968dc5f46555756ad7b9bddf70e5a19bb1186a7a98253c0e91a94",
+  "bytes": 14848
+ },
+ {
+  "id": "G13051",
+  "file": "img/fac/hospital/G13051_3.webp",
+  "src": "https://www.polan-ah.com/wp-content/themes/polan-ah-2026/images/home_hospital_img_05.jpg",
+  "page": "https://www.polan-ah.com/",
+  "sha256": "e5cdfd6128798cae0238479f01def1858e71ce6b5bf074f718942cce6c27cc6d",
+  "bytes": 15294
+ },
+ {
+  "id": "G13061",
+  "file": "img/fac/hospital/G13061_1.webp",
+  "src": "https://island-ah.com/wp/wp-content/uploads/2025/04/IMG_4017.jpg",
+  "page": "https://island-ah.com",
+  "sha256": "7a1257e7b0bf5e38be071fc31548b75a3e04d35cd63753e0a6927b9ac21bc0ea",
+  "bytes": 46454
+ },
+ {
+  "id": "G13061",
+  "file": "img/fac/hospital/G13061_2.webp",
+  "src": "https://island-ah.com/wp/wp-content/uploads/2021/02/IMG_4017.jpg",
+  "page": "https://island-ah.com",
+  "sha256": "854722a84e6bf8323ee127f13e3a71b964f8bd70e815ae5ed8b9b69847f7218a",
+  "bytes": 59914
+ },
+ {
+  "id": "G13061",
+  "file": "img/fac/hospital/G13061_3.webp",
+  "src": "https://island-ah.com/wp/wp-content/uploads/2025/04/IMG_3881.jpg",
+  "page": "https://island-ah.com",
+  "sha256": "cfd6a4366d37ab65e0dd4f173fd4ad025914df500f29d0f2607e7d92b2567e33",
+  "bytes": 33738
+ },
+ {
+  "id": "G13061",
+  "file": "img/fac/hospital/G13061_4.webp",
+  "src": "https://island-ah.com/wp/wp-content/uploads/2025/04/IMG_3879.jpg",
+  "page": "https://island-ah.com",
+  "sha256": "ec9e2640081f19cae7e835269cb0b866c5699084adbfbb761ead5f41233b555b",
+  "bytes": 38938
+ },
+ {
+  "id": "G13061",
+  "file": "img/fac/hospital/G13061_5.webp",
+  "src": "https://island-ah.com/wp/wp-content/uploads/2021/02/IMG_3879.jpg",
+  "page": "https://island-ah.com",
+  "sha256": "c66677ba261bcf64f2ddb85730c590cd3d0d51482aad99dc25369cb25d5b52c4",
+  "bytes": 44968
+ },
+ {
+  "id": "G13065",
+  "file": "img/fac/hospital/G13065_1.webp",
+  "src": "https://imaivetclinic2023.com/wp-content/uploads/2026/09/トニイ２.jpg",
+  "page": "https://imaivetclinic2023.com/",
+  "sha256": "a3f9ec4ae9e416a459d13246f1eb0dcbb2e004ac3f94151755aee5bfe8728586",
+  "bytes": 26420
+ },
+ {
+  "id": "G13065",
+  "file": "img/fac/hospital/G13065_2.webp",
+  "src": "https://imaivetclinic2023.com/wp-content/uploads/2026/08/リズ2.jpg",
+  "page": "https://imaivetclinic2023.com/",
+  "sha256": "4aec87a8e2d62fba192b9879a155d7bb045fef31a86b1dd333d4c44425c014e6",
+  "bytes": 27698
+ },
+ {
+  "id": "G13065",
+  "file": "img/fac/hospital/G13065_3.webp",
+  "src": "https://imaivetclinic2023.com/wp-content/uploads/2026/07/hanatop.jpg",
+  "page": "https://imaivetclinic2023.com/",
+  "sha256": "a6563ed43aceca0a898a0873afa6056f7be93faffb9a3e533c444a982e3d56cb",
+  "bytes": 24872
+ },
+ {
+  "id": "G13065",
+  "file": "img/fac/hospital/G13065_4.webp",
+  "src": "https://imaivetclinic2023.com/wp-content/uploads/2026/07/1000045052-e1783290241352.jpg",
+  "page": "https://imaivetclinic2023.com/",
+  "sha256": "34d7a3349186c3e3c306e11a6e7d3a2acd04edff1c7d6374150a238405a85e45",
+  "bytes": 27678
+ },
+ {
+  "id": "G13072",
+  "file": "img/fac/hospital/G13072_1.webp",
+  "src": "https://ichikawa-animalhospital.com/images/common/main.png",
+  "page": "https://ichikawa-animalhospital.com/",
+  "sha256": "b3fe8c2ef4ed796df898b716e770f1e81fec7896cb57fea734ae2cbf82c28f9e",
+  "bytes": 39862
+ },
+ {
+  "id": "G13075",
+  "file": "img/fac/hospital/G13075_1.webp",
+  "src": "https://s3-ap-northeast-1.amazonaws.com/img.p-kit.com/sugiyama-ah/1309481942072009200.jpg",
+  "page": "http://sugiyama-ah.p-kit.com/",
+  "sha256": "5b33fcb9bd756575ec4c4a81b9c5fe73f09e1088826ad8831781599fdde719b4",
+  "bytes": 20512
+ },
+ {
+  "id": "G13080",
+  "file": "img/fac/hospital/G13080_1.webp",
+  "src": "https://ikegami-pc.com/wp-content/uploads/2018/08/8aa5d47735d8f8587f15880bc38f7c17.jpg",
+  "page": "https://ikegami-pc.com/",
+  "sha256": "52881d4ccb5930b2653459a4cf42393b21efdcb161fdec288e1c3ccd30a88769",
+  "bytes": 29608
+ },
+ {
+  "id": "G13080",
+  "file": "img/fac/hospital/G13080_2.webp",
+  "src": "https://ikegami-pc.com/wp-content/uploads/2018/07/8c7f887c9b6a0ff87dee648f7515983c-1.jpg",
+  "page": "https://ikegami-pc.com/",
+  "sha256": "c936a417f6d32984f4cc629e06a84715b9d15a66958ae68a2d4f82263183f815",
+  "bytes": 36698
+ },
+ {
+  "id": "G13080",
+  "file": "img/fac/hospital/G13080_3.webp",
+  "src": "https://ikegami-pc.com/wp-content/uploads/2018/07/8c192c41cd8918e5465df0855ef33965-1.jpg",
+  "page": "https://ikegami-pc.com/",
+  "sha256": "3851de9d8a87825c735591bebc5b7977ae74309660444514521430188e1c655e",
+  "bytes": 46798
+ },
+ {
+  "id": "G13081",
+  "file": "img/fac/hospital/G13081_1.webp",
+  "src": "https://www.az-ah.info/wp-content/uploads/2025/05/mv_01_pc_azdh.jpg",
+  "page": "https://www.az-ah.info",
+  "sha256": "63e1b81be2498bbf8974ae140904e9933eb65c6f4f7830d95e67c7263b90b7d3",
+  "bytes": 34172
+ },
+ {
+  "id": "G13081",
+  "file": "img/fac/hospital/G13081_2.webp",
+  "src": "https://www.az-ah.info/wp-content/uploads/2025/04/mv_02re_sp_azdh.jpg",
+  "page": "https://www.az-ah.info",
+  "sha256": "b6a07ee6003080346da7c5aeb5d20c9e305c13c31742bcc3e302b14f53a75201",
+  "bytes": 49918
+ },
+ {
+  "id": "G13081",
+  "file": "img/fac/hospital/G13081_3.webp",
+  "src": "https://www.az-ah.info/wp-content/uploads/2025/04/mv_03re_sp_azdh.jpg",
+  "page": "https://www.az-ah.info",
+  "sha256": "3cef4e3e40398a51c2add150e9feb6c179ebee0b29bd0a0f006279b6576249c6",
+  "bytes": 53460
+ },
+ {
+  "id": "G13083",
+  "file": "img/fac/hospital/G13083_1.webp",
+  "src": "https://shinkavet.com/wp-content/uploads/2022/06/top-2_03.jpg",
+  "page": "https://shinkavet.com/",
+  "sha256": "76befc5135bbabeaa96720b30994a943d473f25cf638ea3eb1e3aa87c07a37a2",
+  "bytes": 29308
+ },
+ {
+  "id": "G13083",
+  "file": "img/fac/hospital/G13083_2.webp",
+  "src": "https://shinkavet.com/wp-content/uploads/2022/06/top-3_03.jpg",
+  "page": "https://shinkavet.com/",
+  "sha256": "253c839a4a1d4f00546fb5570ff821a01f5a14be0d458bad2e4a5094f4630ad2",
+  "bytes": 16372
+ },
+ {
+  "id": "G13083",
+  "file": "img/fac/hospital/G13083_3.webp",
+  "src": "https://shinkavet.com/wp-content/uploads/2022/06/top-4_03.jpg",
+  "page": "https://shinkavet.com/",
+  "sha256": "bcd5c9d2206150010b075d74e0b74e4e23c49651fb9b65624cb998364b9f37a5",
+  "bytes": 9752
+ },
+ {
+  "id": "G13091",
+  "file": "img/fac/hospital/G13091_1.webp",
+  "src": "https://www.eug.jp/elms/wp/wp-content/uploads/2024/08/A134788-scaled.jpg",
+  "page": "https://www.eug.jp/elms/",
+  "sha256": "67eaae8713b43c0e7cf57f5c41f1169a9268d945ef0a4b7efbdcf750f08f9f86",
+  "bytes": 68294
+ },
+ {
+  "id": "G13091",
+  "file": "img/fac/hospital/G13091_2.webp",
+  "src": "https://www.eug.jp/elms/wp/wp-content/uploads/2024/10/IMG_1388-1.jpeg",
+  "page": "https://www.eug.jp/elms/",
+  "sha256": "a94004dbd5169ae53d5e913d86547386a615c478cc870055c4b050359afc0fb0",
+  "bytes": 63538
+ },
+ {
+  "id": "G13091",
+  "file": "img/fac/hospital/G13091_3.webp",
+  "src": "https://www.eug.jp/elms/wp/wp-content/uploads/2022/12/HP診察室-2-2-scaled.jpg",
+  "page": "https://www.eug.jp/elms/",
+  "sha256": "a7d80bdecf4a3e9815fa67ae5505411fe81e9fd44fd5777b1fcadf686fc789aa",
+  "bytes": 24984
+ },
+ {
+  "id": "G13091",
+  "file": "img/fac/hospital/G13091_4.webp",
+  "src": "https://www.eug.jp/elms/wp/wp-content/uploads/2022/05/DSCN0042-2-scaled.jpg",
+  "page": "https://www.eug.jp/elms/",
+  "sha256": "275e0185208d01a40905f399ca76bf5951815288f53d4fadcc21d49d9dc61422",
+  "bytes": 52890
+ },
+ {
+  "id": "G13101",
+  "file": "img/fac/hospital/G13101_1.webp",
+  "src": "https://narita-anihos.com/wp-content/uploads/2025/07/8E5587E7D1BE7BDE10A6929147F595D4F798B223-1.png",
+  "page": "https://narita-anihos.com/",
+  "sha256": "b70ce7a7e23141442bdefaad52e2033bd163e7a44914a828e46c30898dfe4158",
+  "bytes": 97180
+ },
+ {
+  "id": "G13101",
+  "file": "img/fac/hospital/G13101_2.webp",
+  "src": "https://narita-anihos.com/wp-content/uploads/2025/07/299AEDDAFEFA9E8687910B9E58EA9A9DC165DB89.png",
+  "page": "https://narita-anihos.com/",
+  "sha256": "a6d15cc86571a5e314bd377321ea2fc30644a1d72e17d5929c3a6a1b8b67e2fc",
+  "bytes": 71126
+ },
+ {
+  "id": "G13101",
+  "file": "img/fac/hospital/G13101_3.webp",
+  "src": "https://narita-anihos.com/wp-content/uploads/2025/07/IMG_6608.jpg",
+  "page": "https://narita-anihos.com/",
+  "sha256": "4dd0701b491ff957f79f756385cc2cac51ce37cab01c7066b80e60e815c40818",
+  "bytes": 41746
+ },
+ {
+  "id": "G13102",
+  "file": "img/fac/hospital/G13102_1.webp",
+  "src": "https://mc.aeonpet.com/tamc/assets/attachmentfile/attachmentfile-file-14540.jpg",
+  "page": "https://mc.aeonpet.com/tamc/",
+  "sha256": "e36407165c7f584c74cc45ddf1b2db0572c81a2e28773e1e268173dc0860b9c4",
+  "bytes": 14782
+ },
+ {
+  "id": "G13102",
+  "file": "img/fac/hospital/G13102_2.webp",
+  "src": "https://mc.aeonpet.com/tamc/assets/attachmentfile/attachmentfile-file-14542.jpg",
+  "page": "https://mc.aeonpet.com/tamc/",
+  "sha256": "6adf555cfc7f67aec994fe78fabc9db81d606f62387dc9843d1c02157942f527",
+  "bytes": 24454
+ },
+ {
+  "id": "G13102",
+  "file": "img/fac/hospital/G13102_3.webp",
+  "src": "https://mc.aeonpet.com/tamc/assets/attachmentfile/attachmentfile-file-14544.jpg",
+  "page": "https://mc.aeonpet.com/tamc/",
+  "sha256": "6e837a9ce725fc5079e37f612117493d9b85a4e94c77d68f72eb84a4ce761377",
+  "bytes": 24128
+ },
+ {
+  "id": "G13102",
+  "file": "img/fac/hospital/G13102_4.webp",
+  "src": "https://mc.aeonpet.com/tamc/assets/attachmentfile/attachmentfile-file-10182.jpg",
+  "page": "https://mc.aeonpet.com/tamc/",
+  "sha256": "50c3c17e682802f33d19c58497672ded7dfc76b48c4796625d9b176f7f75e3af",
+  "bytes": 25968
+ },
+ {
+  "id": "G13105",
+  "file": "img/fac/hospital/G13105_1.webp",
+  "src": "https://yayoi-vh.com/images/home/mv_01.jpg",
+  "page": "https://yayoi-vh.com/",
+  "sha256": "47aeac2178fa8e84c30be86a9688358ca6d8afcbca6e2f4a9806bb956955c195",
+  "bytes": 51542
+ },
+ {
+  "id": "G13106",
+  "file": "img/fac/hospital/G13106_1.webp",
+  "src": "https://www.21rocky.com/application/files/6415/8511/1883/top_back_03.jpg",
+  "page": "https://www.21rocky.com/",
+  "sha256": "93a6ef1373c3b99a74e39658029bc7c34b7c9d1771982f6f56decabc500df523",
+  "bytes": 17996
+ },
+ {
+  "id": "G13106",
+  "file": "img/fac/hospital/G13106_2.webp",
+  "src": "https://www.21rocky.com/application/files/2515/7980/9643/top_01.jpg",
+  "page": "https://www.21rocky.com/",
+  "sha256": "85591077a90d1ff9447a6fe9c91a95900e0ab67306e2ad42636bebbd99108581",
+  "bytes": 29848
+ },
+ {
+  "id": "G13106",
+  "file": "img/fac/hospital/G13106_3.webp",
+  "src": "https://www.21rocky.com/application/files/2215/7981/1706/top_02.jpg",
+  "page": "https://www.21rocky.com/",
+  "sha256": "06441eb0d8a477d53df775629e3e3838ce1e0a9204f0c16650861aed6c670489",
+  "bytes": 32762
+ },
+ {
+  "id": "G13106",
+  "file": "img/fac/hospital/G13106_4.webp",
+  "src": "https://www.21rocky.com/application/files/9915/8149/4803/top_03.jpg",
+  "page": "https://www.21rocky.com/",
+  "sha256": "0f419819661884487dfde0631319addd364a2f826d39978471c3239a6e847ccc",
+  "bytes": 41556
+ },
+ {
+  "id": "G13109",
+  "file": "img/fac/hospital/G13109_1.webp",
+  "src": "https://www.minamidai-ah.com/application/files/4916/5608/3539/top_s04.jpg",
+  "page": "https://www.minamidai-ah.com/",
+  "sha256": "aade9d4b97bbcd320cd1f4fe6a667db76280a6e60b4b410a214f103a1c1ccd3a",
+  "bytes": 30880
+ },
+ {
+  "id": "G13109",
+  "file": "img/fac/hospital/G13109_2.webp",
+  "src": "https://www.minamidai-ah.com/application/files/6416/5608/3470/top_back_04.jpg",
+  "page": "https://www.minamidai-ah.com/",
+  "sha256": "0369335f81a44d15aca77011dba9f9dda51aaff7e56b93aa1fb79f24798792e8",
+  "bytes": 103378
+ },
+ {
+  "id": "G13117",
+  "file": "img/fac/hospital/G13117_1.webp",
+  "src": "https://www.krinkai-vet.com/wp-content/uploads/2026/06/0010-3.jpg",
+  "page": "https://www.krinkai-vet.com/",
+  "sha256": "e0411528af07a6372bc4603013072d1694bbac5c3a96629dee920dd097030536",
+  "bytes": 67980
+ },
+ {
+  "id": "G13117",
+  "file": "img/fac/hospital/G13117_2.webp",
+  "src": "https://www.krinkai-vet.com/wp-content/uploads/2026/06/27b5be947e87de19d5e5396f7142fc0f.png",
+  "page": "https://www.krinkai-vet.com/",
+  "sha256": "e067038938ada407410dcb764ec0f02a356b387668f912f268f57f7a8abf1a6e",
+  "bytes": 16580
+ },
+ {
+  "id": "G13117",
+  "file": "img/fac/hospital/G13117_3.webp",
+  "src": "https://www.krinkai-vet.com/wp-content/themes/02-krinkai-vet-com/images/sec03_03.jpg",
+  "page": "https://www.krinkai-vet.com/",
+  "sha256": "f70c465477138e856b3f6e7303daf669c280509c98fae912b8965f135f0bcc94",
+  "bytes": 13134
+ },
+ {
+  "id": "G13124",
+  "file": "img/fac/hospital/G13124_1.webp",
+  "src": "https://shishido-ah.com/images/common/exterior2.jpg",
+  "page": "https://shishido-ah.com/",
+  "sha256": "f947edd212a250a86396a1a525600d5b6f9de7a71bccbd94e9c5c2364581f357",
+  "bytes": 52316
+ },
+ {
+  "id": "G13124",
+  "file": "img/fac/hospital/G13124_2.webp",
+  "src": "https://shishido-ah.com/images/common/checkup.jpg",
+  "page": "https://shishido-ah.com/",
+  "sha256": "12f71031a8752ebd7262f57dc039aaa9da09375efa8e15b705861719881ff057",
+  "bytes": 26998
+ },
+ {
+  "id": "G13124",
+  "file": "img/fac/hospital/G13124_3.webp",
+  "src": "https://shishido-ah.com/images/common/waiting-room.jpg",
+  "page": "https://shishido-ah.com/",
+  "sha256": "112a07155a559e9b0379e4f2058e967e0b32f0ef5b62ae29df8f204f23aa43b7",
+  "bytes": 56242
+ },
+ {
+  "id": "G13142",
+  "file": "img/fac/hospital/G13142_1.webp",
+  "src": "https://www.luna-pet.com/images/top/img01.jpg",
+  "page": "https://www.luna-pet.com/",
+  "sha256": "6335b9486dcf66dfe2cf7612db82fa90e6d378f3725a7518e50fe79611ead4a5",
+  "bytes": 43100
+ },
+ {
+  "id": "G13145",
+  "file": "img/fac/hospital/G13145_1.webp",
+  "src": "https://cocoro-vet.com/wp-content/uploads/2024/02/08K0425.jpg",
+  "page": "https://cocoro-vet.com/",
+  "sha256": "f708705a4af582f23ea53718661bbf4a83f271dadc2fbe2110b73ab1e15ee8ac",
+  "bytes": 21664
+ },
+ {
+  "id": "G13145",
+  "file": "img/fac/hospital/G13145_2.webp",
+  "src": "https://cocoro-vet.com/wp-content/uploads/2024/02/08K0393.jpg",
+  "page": "https://cocoro-vet.com/",
+  "sha256": "7dc1ba2cc82f0c2dbf8426ef4753caf17c1b0f21e6a870d5bfd354dc23fe286a",
+  "bytes": 24280
+ },
+ {
+  "id": "G13145",
+  "file": "img/fac/hospital/G13145_3.webp",
+  "src": "https://cocoro-vet.com/wp-content/uploads/2024/02/08K0277.jpg",
+  "page": "https://cocoro-vet.com/",
+  "sha256": "79b4012ed6d014757bfcb765888964febb7b047d4cb19ac09f2e5113c614040d",
+  "bytes": 14176
+ },
+ {
+  "id": "G13145",
+  "file": "img/fac/hospital/G13145_4.webp",
+  "src": "https://cocoro-vet.com/wp-content/uploads/2024/02/08K0315.jpg",
+  "page": "https://cocoro-vet.com/",
+  "sha256": "7a0ca896de028629ae07c835cd134a6404122c7ddd949f7b313bb1c574748bb5",
+  "bytes": 24358
+ },
+ {
+  "id": "G13162",
+  "file": "img/fac/hospital/G13162_1.webp",
+  "src": "https://www.fujiwara-ah.com/wp-content/uploads/image1.jpg",
+  "page": "https://www.fujiwara-ah.com/",
+  "sha256": "480feeb06dc0401a5a55f5a30e8c26aac57cac9a7b4582120edf8dd114b62ae1",
+  "bytes": 28496
+ },
+ {
+  "id": "G13162",
+  "file": "img/fac/hospital/G13162_2.webp",
+  "src": "https://www.fujiwara-ah.com/wp-content/uploads/sp_image1.jpg",
+  "page": "https://www.fujiwara-ah.com/",
+  "sha256": "5aaf3241e6eecaf74915580ed75081cd36319fdf5f6f982129734f5bb25ccb87",
+  "bytes": 33684
+ },
+ {
+  "id": "G13162",
+  "file": "img/fac/hospital/G13162_3.webp",
+  "src": "https://www.fujiwara-ah.com/wp-content/uploads/image2.jpg",
+  "page": "https://www.fujiwara-ah.com/",
+  "sha256": "d73e148c75d0502e9e3732335a56b1f16399e210966c8686b9bc9f7dc575efb1",
+  "bytes": 54350
+ },
+ {
+  "id": "G13162",
+  "file": "img/fac/hospital/G13162_4.webp",
+  "src": "https://www.fujiwara-ah.com/wp-content/uploads/sp_image2.jpg",
+  "page": "https://www.fujiwara-ah.com/",
+  "sha256": "18583773b2fd0740054f19438d541b03b4949df1daa47f8f40d1d23101f68d53",
+  "bytes": 51228
+ },
+ {
+  "id": "G13164",
+  "file": "img/fac/hospital/G13164_1.webp",
+  "src": "https://www.aozoravet.com/images/slide/java01.jpg",
+  "page": "https://www.aozoravet.com/",
+  "sha256": "5b1317285e147c0b9686cbfa9219ff87a96892b7678ea022d2020e8a1dfc2690",
+  "bytes": 65866
+ },
+ {
+  "id": "G13164",
+  "file": "img/fac/hospital/G13164_2.webp",
+  "src": "https://www.aozoravet.com/images/slide/java02.jpg",
+  "page": "https://www.aozoravet.com/",
+  "sha256": "7ca9155a6b7fe8b2f772fef1e909a539102a131da2cacb8ea145e336446be201",
+  "bytes": 20152
+ },
+ {
+  "id": "G13164",
+  "file": "img/fac/hospital/G13164_3.webp",
+  "src": "https://www.aozoravet.com/images/slide/java03.jpg",
+  "page": "https://www.aozoravet.com/",
+  "sha256": "e28a2446d42e4236a27d0738ac8e5643a8863b4f8945288c23eefdac36bb6a88",
+  "bytes": 29620
+ },
+ {
+  "id": "G13164",
+  "file": "img/fac/hospital/G13164_4.webp",
+  "src": "https://www.aozoravet.com/images/slide/java04.jpg",
+  "page": "https://www.aozoravet.com/",
+  "sha256": "a32af6368067e5909a4f31b0776089df282f098b5b51e82f1e4c537a443b0c42",
+  "bytes": 30384
+ },
+ {
+  "id": "G13178",
+  "file": "img/fac/hospital/G13178_1.webp",
+  "src": "https://www.saitopetclinic.com/wp-content/uploads/2024/02/mv_img_4-1.png",
+  "page": "https://www.saitopetclinic.com/",
+  "sha256": "79a89a96374a1625a6cac501efb51efacfe510aecb9e28a31abe5942e02fd99e",
+  "bytes": 80452
+ },
+ {
+  "id": "G13178",
+  "file": "img/fac/hospital/G13178_2.webp",
+  "src": "https://www.saitopetclinic.com/wp-content/themes/lightning-pro-child/assets/img/clinic.jpg",
+  "page": "https://www.saitopetclinic.com/",
+  "sha256": "fa020c7aec95dad005a77528a9cafca23551e278f47a2a2aeef40982accdce32",
+  "bytes": 89114
+ },
+ {
+  "id": "G13181",
+  "file": "img/fac/hospital/G13181_1.webp",
+  "src": "https://www.nagatomo-ah.com/wp-content/uploads/2024/10/mv_img01.jpg",
+  "page": "https://www.nagatomo-ah.com/",
+  "sha256": "4cc8d0a07e4429adba236b2f3fa2a41ae2d237f6f665ecbb40fc11bc56ce9032",
+  "bytes": 96700
+ },
+ {
+  "id": "G13181",
+  "file": "img/fac/hospital/G13181_2.webp",
+  "src": "https://www.nagatomo-ah.com/wp-content/uploads/2024/10/mv_img02.jpg",
+  "page": "https://www.nagatomo-ah.com/",
+  "sha256": "a28f2e8a8a439c8c68fe2b4869443180a877db9f6e0419f1f214f6d09d66b4fd",
+  "bytes": 32434
+ },
+ {
+  "id": "G13181",
+  "file": "img/fac/hospital/G13181_3.webp",
+  "src": "https://www.nagatomo-ah.com/wp-content/uploads/2024/11/mv_img03.jpg",
+  "page": "https://www.nagatomo-ah.com/",
+  "sha256": "f2fbc130e187ae9d19855a35b47df2b80fbbfb28b46377943a463417b8a708f3",
+  "bytes": 28610
+ },
+ {
+  "id": "G13186",
+  "file": "img/fac/hospital/G13186_1.webp",
+  "src": "https://simba.bz/wp/wp-content/uploads/2026/06/slider__ph01-2.jpg",
+  "page": "https://simba.bz/",
+  "sha256": "20a611d080da32c993a981b18acf21ffd781fa74d6e9cdebbd77c1f5eafa36c6",
+  "bytes": 38582
+ },
+ {
+  "id": "G13186",
+  "file": "img/fac/hospital/G13186_2.webp",
+  "src": "https://simba.bz/wp/wp-content/uploads/2026/06/slider__ph01__smp.jpg",
+  "page": "https://simba.bz/",
+  "sha256": "cd853bbeca627325ab650da49537f14492920f9e3cc1a69f442c5459a76753e2",
+  "bytes": 33388
+ },
+ {
+  "id": "G13186",
+  "file": "img/fac/hospital/G13186_3.webp",
+  "src": "https://simba.bz/wp/wp-content/uploads/2026/06/slider__ph02-2.jpg",
+  "page": "https://simba.bz/",
+  "sha256": "1828f187305350ceb18b104e71083b717003a7618110f3b73b1b616a338f0120",
+  "bytes": 14138
+ },
+ {
+  "id": "G13186",
+  "file": "img/fac/hospital/G13186_4.webp",
+  "src": "https://simba.bz/wp/wp-content/uploads/2026/06/slider__ph02__smp.jpg",
+  "page": "https://simba.bz/",
+  "sha256": "c6ed708ec8ab6cfd52a6876a541834e046a0116cb6b7f53be9977e1ab155a24c",
+  "bytes": 28688
+ },
+ {
+  "id": "G13186",
+  "file": "img/fac/hospital/G13186_5.webp",
+  "src": "https://simba.bz/wp/wp-content/uploads/2026/06/slider__ph03-2.jpg",
+  "page": "https://simba.bz/",
+  "sha256": "8e9218d7e00a0e5cc5419768c21766513815005b8e7dad59449310947a8e15df",
+  "bytes": 28490
+ },
+ {
+  "id": "G13196",
+  "file": "img/fac/hospital/G13196_1.webp",
+  "src": "https://nishiyama-ah.jp/img/sp/index_img2.jpg",
+  "page": "https://nishiyama-ah.jp/",
+  "sha256": "0132a13b921e39d5a3bb6ccb8fa520f8727707fff8ebba7eff4fddfe58d95c72",
+  "bytes": 18946
+ },
+ {
+  "id": "G13196",
+  "file": "img/fac/hospital/G13196_2.webp",
+  "src": "https://nishiyama-ah.jp/img/sp/index_img3.jpg",
+  "page": "https://nishiyama-ah.jp/",
+  "sha256": "233cbc944e325375ddc2891af33b667fbf9bd70853c2545b92fa6a387453aa45",
+  "bytes": 22416
+ },
+ {
+  "id": "G13204",
+  "file": "img/fac/hospital/G13204_1.webp",
+  "src": "https://urban-ahpt.com/wp-content/uploads/No.2361.jpg.webp",
+  "page": "https://urban-ahpt.com/",
+  "sha256": "6909464cb2b70b40d705403998c8a6c197148a6187e445d44d8628abd6f13da4",
+  "bytes": 22552
+ },
+ {
+  "id": "G13213",
+  "file": "img/fac/hospital/G13213_1.webp",
+  "src": "https://www.takama-ah.com/img/topimg02.jpg",
+  "page": "https://www.takama-ah.com/",
+  "sha256": "148903d73320bc4d5d455b3f5d9ef783b93158b4ce9e50f5bd22e864153ac967",
+  "bytes": 45148
+ },
+ {
+  "id": "G13213",
+  "file": "img/fac/hospital/G13213_2.webp",
+  "src": "https://www.takama-ah.com/img/topimg03.jpg",
+  "page": "https://www.takama-ah.com/",
+  "sha256": "d56d8c2ddbb665bf18f11782c08d751389357399288831d8f49202fca3710dad",
+  "bytes": 34886
+ },
+ {
+  "id": "G13217",
+  "file": "img/fac/hospital/G13217_1.webp",
+  "src": "https://petlife.co.jp/wp-content/uploads/2019/09/slider01.jpg",
+  "page": "https://petlife.co.jp/",
+  "sha256": "1dc50bc78dd934ae172102f4f3cc3101849542d8ba9bab11e0df86d61117a126",
+  "bytes": 11570
+ },
+ {
+  "id": "G13217",
+  "file": "img/fac/hospital/G13217_2.webp",
+  "src": "https://petlife.co.jp/wp-content/uploads/2019/09/slider02.jpg",
+  "page": "https://petlife.co.jp/",
+  "sha256": "3685faf3d0a9bafdcf8c21315e5405550f36aa95132849b69e8d19e479846341",
+  "bytes": 68730
+ },
+ {
+  "id": "G13217",
+  "file": "img/fac/hospital/G13217_3.webp",
+  "src": "https://petlife.co.jp/wp-content/uploads/2019/09/slider03.jpg",
+  "page": "https://petlife.co.jp/",
+  "sha256": "dc67cec5a15059e308a841ddb5d5dd8a26000fb8bb9d13425ccd1c4e41ab674d",
+  "bytes": 22206
+ },
+ {
+  "id": "G13217",
+  "file": "img/fac/hospital/G13217_4.webp",
+  "src": "https://petlife.co.jp/wp-content/uploads/2019/09/slider04.jpg",
+  "page": "https://petlife.co.jp/",
+  "sha256": "f898fdfc2efb77e8bd1f90ca33ce2f3148399cd92f636a1b0c8dfcd910729acf",
+  "bytes": 29556
+ },
+ {
+  "id": "G13217",
+  "file": "img/fac/hospital/G13217_5.webp",
+  "src": "https://petlife.co.jp/wp-content/uploads/2019/09/slider05.jpg",
+  "page": "https://petlife.co.jp/",
+  "sha256": "4f792b205ac75b7b7ac856a11f78f7dbc50cc3a260b327990a3ce86cc907ff9b",
+  "bytes": 20200
+ },
+ {
+  "id": "G13220",
+  "file": "img/fac/hospital/G13220_1.webp",
+  "src": "https://www.azabu-ah.com/images/slide/03.jpg",
+  "page": "https://www.azabu-ah.com/",
+  "sha256": "0dea65a2bcd56fe77b8c9d69b15a122606d2acc5843134c662fcf231ded16211",
+  "bytes": 42426
+ },
+ {
+  "id": "G13220",
+  "file": "img/fac/hospital/G13220_2.webp",
+  "src": "https://www.azabu-ah.com/images/slide/02.jpg",
+  "page": "https://www.azabu-ah.com/",
+  "sha256": "223492a0a0dd0a5cfe95d33be2e078abf244d94e2c4fe01a653c8c932b33af17",
+  "bytes": 49226
+ },
+ {
+  "id": "G13235",
+  "file": "img/fac/hospital/G13235_1.webp",
+  "src": "https://www.asakusabashi-ah.com/wp/wp-content/uploads/2026/02/IMG_3747.jpg",
+  "page": "https://www.asakusabashi-ah.com/",
+  "sha256": "b1a6367d3a3e3f573d0d12fcdb9dae06c479a1e5856e471e8c9ca20f3dc546ca",
+  "bytes": 23292
+ },
+ {
+  "id": "G13235",
+  "file": "img/fac/hospital/G13235_2.webp",
+  "src": "https://www.asakusabashi-ah.com/wp/wp-content/uploads/2025/11/IMG_3756.jpg",
+  "page": "https://www.asakusabashi-ah.com/",
+  "sha256": "f78f39e3f83144efb44bfbe542c958a478416ea4add4742f5698a8f4ad1133c9",
+  "bytes": 35848
+ },
+ {
+  "id": "G13235",
+  "file": "img/fac/hospital/G13235_3.webp",
+  "src": "https://www.asakusabashi-ah.com/wp/wp-content/uploads/2025/11/IMG_3474.jpg",
+  "page": "https://www.asakusabashi-ah.com/",
+  "sha256": "32d0f6ff5d7490a6fc2445ff243b350596f67bcdfc893b3e28af90f5457c93e6",
+  "bytes": 32352
+ },
+ {
+  "id": "G13235",
+  "file": "img/fac/hospital/G13235_4.webp",
+  "src": "https://www.asakusabashi-ah.com/wp/wp-content/uploads/2025/11/IMG_3814.jpg",
+  "page": "https://www.asakusabashi-ah.com/",
+  "sha256": "fa76f9199a07012e99def41aaf47b4aeb7599c8567c209531deaf1bd6a1a3f7f",
+  "bytes": 41070
+ },
+ {
+  "id": "G13235",
+  "file": "img/fac/hospital/G13235_5.webp",
+  "src": "https://www.asakusabashi-ah.com/wp/wp-content/uploads/2025/11/IMG_4098.jpg",
+  "page": "https://www.asakusabashi-ah.com/",
+  "sha256": "ae7849154bd6c4497769411e48d02978728c8a464002880f17e88ef7735a1149",
+  "bytes": 17280
+ },
+ {
+  "id": "G13236",
+  "file": "img/fac/hospital/G13236_1.webp",
+  "src": "https://scontent-itm1-1.cdninstagram.com/v/t51.82787-15/902825829_18361753459221881_6509565369224825416_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=5iV-kjIGLRkQ7kNvwG8Mctb&_nc_oc=AdrtNa0lZRNoDB55ygxLOC0wB55lVf_76C5eDDM7JXTKR2me6nkUT-B1BZX1eoB8288&_nc_zt=23&_nc_ht=scontent-itm1-1.cdninstagram.com&edm=AJ-jyNUEAAAA&_nc_gid=p6pvg6Tr_h956kyXpIKryw&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQR52cZgVQnUPzHXKuK5vW9YbCLr10_O2X2QStsdeNv65Q&oe=6B0AD264",
+  "page": "https://www.bird-clinic.com",
+  "sha256": "8a3f50cc7bd54c689e3662c4574eea67b16fb544c25ccbf7ff971ba81cf8874c",
+  "bytes": 22858
+ },
+ {
+  "id": "G13236",
+  "file": "img/fac/hospital/G13236_2.webp",
+  "src": "https://scontent-itm1-1.cdninstagram.com/v/t51.82787-15/902825830_18361636873221881_8193231834378940870_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=SckEhoCsiLIQ7kNvwEawMdP&_nc_oc=AdrQNC4zCY5D0SS-f8_1OS_m5XdsNHWi2GcuwagmidJi0Tx5uFhTLhN4GOnhhdRrzh4&_nc_zt=23&_nc_ht=scontent-itm1-1.cdninstagram.com&edm=AJ-jyNUEAAAA&_nc_gid=p6pvg6Tr_h956kyXpIKryw&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQQTJV2w-qAwsISb5TtJEd61QCxNGRKzy1M2YWLDA2kPeQ&oe=6B0AD913",
+  "page": "https://www.bird-clinic.com",
+  "sha256": "cc1420668a801189eace27f3e6a75351454efc326b203baf89b4d23eb7e6dc93",
+  "bytes": 37312
+ },
+ {
+  "id": "G13236",
+  "file": "img/fac/hospital/G13236_3.webp",
+  "src": "https://scontent-itm1-1.cdninstagram.com/v/t51.82787-15/902825507_18361516891221881_5649573525317406224_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=fInLmoWwQdYQ7kNvwErWf3N&_nc_oc=Adqkh_HoYdTVMKTXtXLb4VVBNtwo1irGph6Dn1IrZqFerhLRN-HB6I6tZDPv7Rm4cIU&_nc_zt=23&_nc_ht=scontent-itm1-1.cdninstagram.com&edm=AJ-jyNUEAAAA&_nc_gid=p6pvg6Tr_h956kyXpIKryw&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQTs_MZtCbEakAVe3-2y8oYXRxUbtAUVqznvPaPBDAvh3g&oe=6B0AD13D",
+  "page": "https://www.bird-clinic.com",
+  "sha256": "311ab99801876c50329ee04ab22ef609a8a34c2acc6e6fb3a9fd06864d34ae58",
+  "bytes": 30392
+ },
+ {
+  "id": "G13236",
+  "file": "img/fac/hospital/G13236_4.webp",
+  "src": "https://scontent-itm1-1.cdninstagram.com/v/t51.82787-15/902825626_18361414774221881_7523042252196263984_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=m7n1umTxnwAQ7kNvwHB1TTw&_nc_oc=AdqmtdxA_9GxZ_NXD-Viys2n5QSdjRgb3-HVo40q871HRpPcJpuC5GrrG4Utpt7ey-k&_nc_zt=23&_nc_ht=scontent-itm1-1.cdninstagram.com&edm=AJ-jyNUEAAAA&_nc_gid=p6pvg6Tr_h956kyXpIKryw&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQTVixoskcfB55zduU8sPu3_hFdwoMG2WIKm2iEGnbEdkQ&oe=6B0AF907",
+  "page": "https://www.bird-clinic.com",
+  "sha256": "dbe83210a2e1cb817a404299a10165883e12149ac7881ccf75921ede4ad74103",
+  "bytes": 19786
+ },
+ {
+  "id": "G13247",
+  "file": "img/fac/hospital/G13247_1.webp",
+  "src": "http://nippori-pet.com/wp/wp-content/themes/nippori-pet/files/img/top/mv01.png",
+  "page": "http://nippori-pet.com/",
+  "sha256": "0e0935516b80265688638ef330946d3e00051cfda69d6fc9f274f452837cf44a",
+  "bytes": 20898
+ },
+ {
+  "id": "G13247",
+  "file": "img/fac/hospital/G13247_2.webp",
+  "src": "http://nippori-pet.com/wp/wp-content/themes/nippori-pet/files/img/top/mv01_sp.png",
+  "page": "http://nippori-pet.com/",
+  "sha256": "540ad9524b275b7e1bad7ae295877bfcc436815c1642a0d915bee4fb538bca5e",
+  "bytes": 20374
+ },
+ {
+  "id": "G13248",
+  "file": "img/fac/hospital/G13248_1.webp",
+  "src": "https://www.hiro-ah.com/img/mainv/1-1.jpg",
+  "page": "https://www.hiro-ah.com/",
+  "sha256": "34d81ff2d0c6b172216b71b5327322ea7bc1351d35eede5d59e41731ead37b2e",
+  "bytes": 16582
+ },
+ {
+  "id": "G13248",
+  "file": "img/fac/hospital/G13248_2.webp",
+  "src": "https://www.hiro-ah.com/img/mainv/1-2.jpg",
+  "page": "https://www.hiro-ah.com/",
+  "sha256": "85bd1ea90f138c8cb2c3c8d8a7489e83c729735db43479833e6978fa1d798387",
+  "bytes": 19776
+ },
+ {
+  "id": "G13251",
+  "file": "img/fac/hospital/G13251_1.webp",
+  "src": "https://machiya-ah.com/wp-content/uploads/2026/08/pc1-1.jpg",
+  "page": "https://machiya-ah.com/",
+  "sha256": "253e1738e653d5756444bfcde90491c8e14f3f1af1bb0160a9a4a97dbf50f2ae",
+  "bytes": 56952
+ },
+ {
+  "id": "G13251",
+  "file": "img/fac/hospital/G13251_2.webp",
+  "src": "https://machiya-ah.com/wp-content/uploads/2026/08/pc2-1.jpg",
+  "page": "https://machiya-ah.com/",
+  "sha256": "e84e4f29dda52f0e7817f5edccd50422e02ce9fc262b76f92b18c1ee72fa5a1b",
+  "bytes": 16980
+ },
+ {
+  "id": "G13251",
+  "file": "img/fac/hospital/G13251_3.webp",
+  "src": "https://machiya-ah.com/wp-content/uploads/2026/07/pc3.jpg",
+  "page": "https://machiya-ah.com/",
+  "sha256": "2681a0e96b4fc837ae667adf2ee955863fcc3eca25730e3dd1ad399f5f109cb0",
+  "bytes": 8882
+ },
+ {
+  "id": "G13251",
+  "file": "img/fac/hospital/G13251_4.webp",
+  "src": "https://machiya-ah.com/wp-content/uploads/2026/08/pc4.jpg",
+  "page": "https://machiya-ah.com/",
+  "sha256": "d1ce7ec8411532577b238e6f9be29043c0f65a029a19d1cf6d7afc86b986e650",
+  "bytes": 44066
+ },
+ {
+  "id": "G13251",
+  "file": "img/fac/hospital/G13251_5.webp",
+  "src": "https://machiya-ah.com/wp-content/uploads/2026/08/pc5.jpg",
+  "page": "https://machiya-ah.com/",
+  "sha256": "a06ea1d92b369f42f593c72c63326b395e548e12bbeaca6fcdc270aa7ff8e26d",
+  "bytes": 45876
+ },
+ {
+  "id": "G13255",
+  "file": "img/fac/hospital/G13255_1.webp",
+  "src": "https://nogami-ah.jp/assets/img/tophero1.jpeg",
+  "page": "https://nogami-ah.jp/",
+  "sha256": "e9f8150ce9f3a7efb15fc9fd47cef135af286aab326b835eeb040b909daba624",
+  "bytes": 28328
+ },
+ {
+  "id": "G13255",
+  "file": "img/fac/hospital/G13255_2.webp",
+  "src": "https://nogami-ah.jp/assets/img/tophero2.jpeg",
+  "page": "https://nogami-ah.jp/",
+  "sha256": "0c9393f2b6ba12602a4bc48895415e86f2bbac1805f2d9a664fee9e5c145cdfc",
+  "bytes": 37476
+ },
+ {
+  "id": "G13255",
+  "file": "img/fac/hospital/G13255_3.webp",
+  "src": "https://nogami-ah.jp/assets/img/tophero3.jpeg",
+  "page": "https://nogami-ah.jp/",
+  "sha256": "e0918c5c7d2ceba68d267bafd87f6f359583a12ae966d44ed5af9fc30ee72296",
+  "bytes": 19604
+ },
+ {
+  "id": "G13255",
+  "file": "img/fac/hospital/G13255_4.webp",
+  "src": "https://nogami-ah.jp/assets/img/Top_message.png",
+  "page": "https://nogami-ah.jp/",
+  "sha256": "fcce3fdb9eac2e35cdb6b54cb305e38cf116040ab9bfdb58911d68d35ef20914",
+  "bytes": 24558
+ },
+ {
+  "id": "G13256",
+  "file": "img/fac/hospital/G13256_1.webp",
+  "src": "https://www.adr-matsuki-ah.com/wp-content/themes/02-adr-matsuki-ah.com/images/hero01_sp.jpg",
+  "page": "https://www.adr-matsuki-ah.com/",
+  "sha256": "2fd3a18ad34cf2ec3ba7652b832ee288ba208974e7fbe7ab0ae21ebe69795762",
+  "bytes": 25400
+ },
+ {
+  "id": "G13256",
+  "file": "img/fac/hospital/G13256_2.webp",
+  "src": "https://www.adr-matsuki-ah.com/wp-content/themes/02-adr-matsuki-ah.com/images/hero01_pc.jpg",
+  "page": "https://www.adr-matsuki-ah.com/",
+  "sha256": "d72c9dc2ca2cc435e37c58b36b0e0e93848ef3a2424105bf2622f04f0fecb062",
+  "bytes": 28416
+ },
+ {
+  "id": "G13256",
+  "file": "img/fac/hospital/G13256_3.webp",
+  "src": "https://www.adr-matsuki-ah.com/wp-content/themes/02-adr-matsuki-ah.com/images/sec02_img01@2x.jpg",
+  "page": "https://www.adr-matsuki-ah.com/",
+  "sha256": "5c77bbdb704809c99c72efd0c07c04b4c563929456d661d8bda67efbd55b86e2",
+  "bytes": 15078
+ },
+ {
+  "id": "G13256",
+  "file": "img/fac/hospital/G13256_4.webp",
+  "src": "https://www.adr-matsuki-ah.com/wp-content/themes/02-adr-matsuki-ah.com/images/sec03_img01@2x.jpg",
+  "page": "https://www.adr-matsuki-ah.com/",
+  "sha256": "191da23ca32b5d35908a8f30c8d0df36c3764e1218fae244bb59f951ad12e0d9",
+  "bytes": 16062
+ },
+ {
+  "id": "G13256",
+  "file": "img/fac/hospital/G13256_5.webp",
+  "src": "https://www.adr-matsuki-ah.com/wp-content/themes/02-adr-matsuki-ah.com/images/sec03_img02@2x.jpg",
+  "page": "https://www.adr-matsuki-ah.com/",
+  "sha256": "e13a6d26331d320f4748045fe6af278aef0629f6853c8c56869f09c57b8a66f7",
+  "bytes": 28438
+ },
+ {
+  "id": "G13261",
+  "file": "img/fac/hospital/G13261_1.webp",
+  "src": "https://www.nihonbashiah.jp/wp-content/themes/nb/images/home/photo-001.jpg",
+  "page": "https://www.nihonbashiah.jp/",
+  "sha256": "76b19d86c1ea74220f15a905bcb9e4ed5189f58acf0e2c76b6a2ba1290074872",
+  "bytes": 25194
+ },
+ {
+  "id": "G13261",
+  "file": "img/fac/hospital/G13261_2.webp",
+  "src": "https://www.nihonbashiah.jp/wp-content/themes/nb/images/home/photo-002.jpg",
+  "page": "https://www.nihonbashiah.jp/",
+  "sha256": "07907c801b6c6add2474659ad5c3818c121add0eb113f6856ce521a2a6b3dc29",
+  "bytes": 32678
+ },
+ {
+  "id": "G13261",
+  "file": "img/fac/hospital/G13261_3.webp",
+  "src": "https://www.nihonbashiah.jp/wp-content/themes/nb/images/home/photo-003.jpg",
+  "page": "https://www.nihonbashiah.jp/",
+  "sha256": "20d385c10be35293fd13cb6ff458e8bef0f2e6fe73424b512fc47fff751bea70",
+  "bytes": 23386
+ },
+ {
+  "id": "G13262",
+  "file": "img/fac/hospital/G13262_1.webp",
+  "src": "https://fujimori-ah.com/wp-content/themes/genova_tpl/img/index/key1-sp@2x.jpg.webp",
+  "page": "https://fujimori-ah.com/",
+  "sha256": "e0838952f974644a6f0c76e484217acd5d6c8b81c05575d336599203751cca3b",
+  "bytes": 24566
+ },
+ {
+  "id": "G13262",
+  "file": "img/fac/hospital/G13262_2.webp",
+  "src": "https://fujimori-ah.com/wp-content/themes/genova_tpl/img/index/key2-sp@2x.jpg.webp",
+  "page": "https://fujimori-ah.com/",
+  "sha256": "a53405e284d41a459d5c4b54ac2b535ec65e04703c80fdba3f8dea6492401a48",
+  "bytes": 17144
+ },
+ {
+  "id": "G13262",
+  "file": "img/fac/hospital/G13262_3.webp",
+  "src": "https://fujimori-ah.com/wp-content/themes/genova_tpl/img/index/key3-sp@2x.jpg.webp",
+  "page": "https://fujimori-ah.com/",
+  "sha256": "3e86c13b0282f9bea5705fb96bf8854572353e1cfabe23e591edc809efb429af",
+  "bytes": 15968
+ },
+ {
+  "id": "G13262",
+  "file": "img/fac/hospital/G13262_4.webp",
+  "src": "https://fujimori-ah.com/wp-content/themes/genova_tpl/img/index/key4-sp.jpg.webp",
+  "page": "https://fujimori-ah.com/",
+  "sha256": "b504f6f4a8e5aace0570329c99ab1af13ee2c1735d1065fca7873fc8c2ccf733",
+  "bytes": 29838
+ },
+ {
+  "id": "G13266",
+  "file": "img/fac/hospital/G13266_1.webp",
+  "src": "https://toah.jp/wp-content/themes/tama-otsuka-ah/img/home/menu_medical.jpg",
+  "page": "https://toah.jp/",
+  "sha256": "afd1937754189083470ea15f0f3377802ddb62d785204727cd413ad75f2c1132",
+  "bytes": 23184
+ },
+ {
+  "id": "G13266",
+  "file": "img/fac/hospital/G13266_2.webp",
+  "src": "https://toah.jp/wp-content/themes/tama-otsuka-ah/img/home/menu_staff.jpg",
+  "page": "https://toah.jp/",
+  "sha256": "b21a7aa30ac899c024e8b99017c3e71f834cdfb344bc61ac48f0662841cfe873",
+  "bytes": 18210
+ },
+ {
+  "id": "G13266",
+  "file": "img/fac/hospital/G13266_3.webp",
+  "src": "https://toah.jp/wp-content/themes/tama-otsuka-ah/img/home/menu_guide.jpg",
+  "page": "https://toah.jp/",
+  "sha256": "eca6947b08b9431512b9e7a7b4c96aa65d33202d63128974d5cc2f315ce7c943",
+  "bytes": 42598
+ },
+ {
+  "id": "G13266",
+  "file": "img/fac/hospital/G13266_4.webp",
+  "src": "https://toah.jp/wp-content/themes/tama-otsuka-ah/img/home/menu_access.jpg",
+  "page": "https://toah.jp/",
+  "sha256": "07bb80d92ea0ce3748f4faadf1208acd2721e3e6fc6940a4b5636bbd2790bc6f",
+  "bytes": 74436
+ },
+ {
+  "id": "G13266",
+  "file": "img/fac/hospital/G13266_5.webp",
+  "src": "https://toah.jp/wp-content/themes/tama-otsuka-ah/img/home/menu_trimming.jpg",
+  "page": "https://toah.jp/",
+  "sha256": "68e0813e7da0224fb4774aeb4369745ad42e82cb1d89a357bb04e444c2dd3cb2",
+  "bytes": 35280
+ },
+ {
+  "id": "G13269",
+  "file": "img/fac/hospital/G13269_1.webp",
+  "src": "https://brave-goto-6534.cranky.jp/kiroro/wp-content/uploads/2026/05/ogp.jpg",
+  "page": "https://kiroro-vet.jp/",
+  "sha256": "2fd0422edb4fb95fbec79053f19b63dc46c16e5f48b33cded883f964cfe1c579",
+  "bytes": 74880
+ },
+ {
+  "id": "G13270",
+  "file": "img/fac/hospital/G13270_1.webp",
+  "src": "http://kuroda-vet.jp/wordpress/wp-content/themes/kurodavet2019/common/images/top_img_01_sp.jpg",
+  "page": "http://kuroda-vet.jp/",
+  "sha256": "97ead2e3573b17516d0128c28fc7252f0674c2eae5f8c08bc03fbb6b3b2178a7",
+  "bytes": 28810
+ },
+ {
+  "id": "G13273",
+  "file": "img/fac/hospital/G13273_1.webp",
+  "src": "http://komorebi-ah.com/wp/wp-content/themes/twentyseventeen/images/slide001.jpg",
+  "page": "http://komorebi-ah.com/",
+  "sha256": "5fa0efa44aab0d551069e14ba239c2d053cacd0d927569ff16382c39d398cda1",
+  "bytes": 45650
+ },
+ {
+  "id": "G13273",
+  "file": "img/fac/hospital/G13273_2.webp",
+  "src": "http://komorebi-ah.com/wp/wp-content/themes/twentyseventeen/images/slide002.jpg",
+  "page": "http://komorebi-ah.com/",
+  "sha256": "30243fbd4f9872cde78dc0ebee8798fb0e53387a60eb74cf9372998756d7c614",
+  "bytes": 24176
+ },
+ {
+  "id": "G13273",
+  "file": "img/fac/hospital/G13273_3.webp",
+  "src": "http://komorebi-ah.com/wp/wp-content/themes/twentyseventeen/images/slide003.jpg",
+  "page": "http://komorebi-ah.com/",
+  "sha256": "f82741f10401bac83c06886e0e65a029daa32b9f3abee9224ff2e87bfcda5f43",
+  "bytes": 20812
+ },
+ {
+  "id": "G13273",
+  "file": "img/fac/hospital/G13273_4.webp",
+  "src": "http://komorebi-ah.com/wp/wp-content/themes/twentyseventeen/images/co001_img.jpg",
+  "page": "http://komorebi-ah.com/",
+  "sha256": "9c9dca6a75cef8ea943e7e1268ffb192b93696a0a2bcbbf76e2997d053363ad8",
+  "bytes": 22024
+ },
+ {
+  "id": "G13279",
+  "file": "img/fac/hospital/G13279_1.webp",
+  "src": "http://www.kogasaka-ah.com/themes/kogasaka-theme/images/top/mv_img1.jpg",
+  "page": "http://www.kogasaka-ah.com",
+  "sha256": "56edd48d8fbc209cb794f7681db4d781ea13d9a946109fde25444b7f7bc60688",
+  "bytes": 78932
+ },
+ {
+  "id": "G13279",
+  "file": "img/fac/hospital/G13279_2.webp",
+  "src": "http://www.kogasaka-ah.com/themes/kogasaka-theme/images/top/mv_img2.jpg",
+  "page": "http://www.kogasaka-ah.com",
+  "sha256": "a81a31635a022843d58ae81e244c2527519264c3edd5ae102fdc60dbf58be3a9",
+  "bytes": 44876
+ },
+ {
+  "id": "G13279",
+  "file": "img/fac/hospital/G13279_3.webp",
+  "src": "http://www.kogasaka-ah.com/themes/kogasaka-theme/images/top/mv_img3.jpg",
+  "page": "http://www.kogasaka-ah.com",
+  "sha256": "98629744dc8e604c9f164297dea499dcf93c1dd8687134c19cf4e30b1cacfe68",
+  "bytes": 55346
+ },
+ {
+  "id": "G13279",
+  "file": "img/fac/hospital/G13279_4.webp",
+  "src": "http://www.kogasaka-ah.com/themes/kogasaka-theme/images/top/strength_img.jpg",
+  "page": "http://www.kogasaka-ah.com",
+  "sha256": "5718e1262021853d6a6c8f67142ec5aa13a00d783a52a46a59b328a7848b270a",
+  "bytes": 29548
+ },
+ {
+  "id": "G13279",
+  "file": "img/fac/hospital/G13279_5.webp",
+  "src": "http://www.kogasaka-ah.com/themes/kogasaka-theme/images/staff/medical_director.jpg",
+  "page": "http://www.kogasaka-ah.com",
+  "sha256": "55af7b83e5847521a655ac7571d24a2ad8b1b57972505e324c52a8a1c66c6001",
+  "bytes": 12284
+ },
+ {
+  "id": "G13282",
+  "file": "img/fac/hospital/G13282_1.webp",
+  "src": "https://momo-ah.jp/wp-content/uploads/2023/05/mv_img_1-2.jpg",
+  "page": "https://momo-ah.jp/",
+  "sha256": "8a1ec83c2db9f0253308004ab71c3310a2e7be41209d63be300547a5fad71ad6",
+  "bytes": 21080
+ },
+ {
+  "id": "G13282",
+  "file": "img/fac/hospital/G13282_2.webp",
+  "src": "https://momo-ah.jp/wp-content/uploads/2023/05/mv_img_2-2.jpg",
+  "page": "https://momo-ah.jp/",
+  "sha256": "f96a2f3f010dc804c07fd738c5734283abace6fb687ced23f954a647bfa91ddd",
+  "bytes": 28066
+ },
+ {
+  "id": "G13282",
+  "file": "img/fac/hospital/G13282_3.webp",
+  "src": "https://momo-ah.jp/wp-content/uploads/2023/05/mv_img_3-2.jpg",
+  "page": "https://momo-ah.jp/",
+  "sha256": "cc8694a3702da8ab741d215cff477f68e43ea98476cdb6688a07b1accd6f0778",
+  "bytes": 39082
+ },
+ {
+  "id": "G13282",
+  "file": "img/fac/hospital/G13282_4.webp",
+  "src": "https://momo-ah.jp/wp-content/themes/lightning-pro-child/assets/img/clinic.jpg",
+  "page": "https://momo-ah.jp/",
+  "sha256": "f1363fbf54d9c24bd8bc2da0a2bad451432704cead2d0e631e114d490e66888c",
+  "bytes": 55418
+ },
+ {
+  "id": "G13282",
+  "file": "img/fac/hospital/G13282_5.webp",
+  "src": "https://momo-ah.jp/wp-content/uploads/2023/05/doc_top.jpg",
+  "page": "https://momo-ah.jp/",
+  "sha256": "efe80d5a89bdb8e82541e645428c6c04c3395d37aeaddac47598b59875fdec9e",
+  "bytes": 25920
+ },
+ {
+  "id": "G13285",
+  "file": "img/fac/hospital/G13285_1.webp",
+  "src": "https://crayonimg.e-shops.jp/cms-dimg/1070073/343837/850_734.jpg",
+  "page": "https://kokuryo-ah.crayonsite.net/",
+  "sha256": "b097117408be373c72b1d65b86c838d415bf9cd27d552e63962efb91c1bf685c",
+  "bytes": 88044
+ },
+ {
+  "id": "G13286",
+  "file": "img/fac/hospital/G13286_1.webp",
+  "src": "https://ttj-anihos.com/wp2/wp-content/themes/tsutsuji/images/top/top_img_01-2.jpg",
+  "page": "https://ttj-anihos.com/",
+  "sha256": "bb6d9805664dec7400412d8d10139b6fb0c27252da11252ec6ef74e3ad047bdd",
+  "bytes": 18500
+ },
+ {
+  "id": "G13286",
+  "file": "img/fac/hospital/G13286_2.webp",
+  "src": "https://ttj-anihos.com/wp2/wp-content/themes/tsutsuji/images/top/top_img_02-1.jpg",
+  "page": "https://ttj-anihos.com/",
+  "sha256": "efabf87de292a26f59bf4e89acf372662a70f18a66aa9403d1a09e11e9420386",
+  "bytes": 17184
+ },
+ {
+  "id": "G13286",
+  "file": "img/fac/hospital/G13286_3.webp",
+  "src": "https://ttj-anihos.com/wp2/wp-content/themes/tsutsuji/images/top/top_img_03-1.jpg",
+  "page": "https://ttj-anihos.com/",
+  "sha256": "5e16d3101000f54e5399f248fea64485a27957d8aef039562ea5474d088fdc06",
+  "bytes": 28228
+ },
+ {
+  "id": "G13286",
+  "file": "img/fac/hospital/G13286_4.webp",
+  "src": "https://ttj-anihos.com/wp2/wp-content/themes/tsutsuji/images/top/top_img_04-1.jpg",
+  "page": "https://ttj-anihos.com/",
+  "sha256": "4f64f0ea8a03ff93e71ccaf2e4220168768cad57152923c449a61acbf6331282",
+  "bytes": 18448
+ },
+ {
+  "id": "G13290",
+  "file": "img/fac/hospital/G13290_1.webp",
+  "src": "https://static.wixstatic.com/media/06d23c_91910219e24f44f5bc8246a2912947a2~mv2.png",
+  "page": "https://www.mitaka-st-vet.jp/",
+  "sha256": "93b975f207b1106d952fa663d5e10e4fed8fc0aeb083a33d9b45bf664bd03bda",
+  "bytes": 30240
+ },
+ {
+  "id": "G13290",
+  "file": "img/fac/hospital/G13290_2.webp",
+  "src": "https://static.wixstatic.com/media/06d23c_add2fccf8122471c962fc385cde541ee~mv2.jpg",
+  "page": "https://www.mitaka-st-vet.jp/",
+  "sha256": "800ae7bc1b2be5648061e2c8279046684b908d80180292280fd4a074ee10c9eb",
+  "bytes": 20888
+ },
+ {
+  "id": "G13291",
+  "file": "img/fac/hospital/G13291_1.webp",
+  "src": "https://www.kaede-ah.com/wp-content/themes/kaede_hospital/asset/images/ogp-image.png",
+  "page": "https://www.kaede-ah.com/",
+  "sha256": "4c6b5fde6e9b56f51253fd6efd793fb665ee0cf4d163274d149ea92c8eab4981",
+  "bytes": 28776
+ },
+ {
+  "id": "G13291",
+  "file": "img/fac/hospital/G13291_2.webp",
+  "src": "https://www.kaede-ah.com/wp-content/themes/kaede_hospital/asset/images/mv01-sp.webp",
+  "page": "https://www.kaede-ah.com/",
+  "sha256": "a4fa67178c60fdef126c4ed2faa7ba9bdc59c771df377bf35f124a229ffc8613",
+  "bytes": 15126
+ },
+ {
+  "id": "G13291",
+  "file": "img/fac/hospital/G13291_3.webp",
+  "src": "https://www.kaede-ah.com/wp-content/themes/kaede_hospital/asset/images/mv02.webp",
+  "page": "https://www.kaede-ah.com/",
+  "sha256": "4f701c2336de75babed5e490b4015aaa4f8502842dde70cc975c68f003a36b72",
+  "bytes": 7818
+ },
+ {
+  "id": "G13291",
+  "file": "img/fac/hospital/G13291_4.webp",
+  "src": "https://www.kaede-ah.com/wp-content/themes/kaede_hospital/asset/images/mv02-sp.webp",
+  "page": "https://www.kaede-ah.com/",
+  "sha256": "3d399204626789d729ec9dd0573b740ea27812ec806c01fbe6d3eae59ce56237",
+  "bytes": 15840
+ },
+ {
+  "id": "G13291",
+  "file": "img/fac/hospital/G13291_5.webp",
+  "src": "https://www.kaede-ah.com/wp-content/themes/kaede_hospital/asset/images/mv03-sp.webp",
+  "page": "https://www.kaede-ah.com/",
+  "sha256": "0ee3fb9126b8ff06a86b177b42a313afd9c3ce6a17db5259daa4fc4f8b7ed1b3",
+  "bytes": 33768
+ },
+ {
+  "id": "G13293",
+  "file": "img/fac/hospital/G13293_1.webp",
+  "src": "https://www.pet-hospital.org/wp-content/uploads/2025/07/head_img01.jpg",
+  "page": "https://www.pet-hospital.org/",
+  "sha256": "6b63299c028b15ccc89ba1e8d9650825d980e9b786e5b12c986bec0d8b80593e",
+  "bytes": 50108
+ },
+ {
+  "id": "G13293",
+  "file": "img/fac/hospital/G13293_2.webp",
+  "src": "https://www.pet-hospital.org/wp-content/themes/pet-hospital-theme/assets/images/top/about_slide01.jpg",
+  "page": "https://www.pet-hospital.org/",
+  "sha256": "93b798cc545522012314687bab637c7a3eb53c9ebf7369c4e9a9c9a59b1923ba",
+  "bytes": 29686
+ },
+ {
+  "id": "G13293",
+  "file": "img/fac/hospital/G13293_3.webp",
+  "src": "https://www.pet-hospital.org/wp-content/themes/pet-hospital-theme/assets/images/top/about_slide02.jpg",
+  "page": "https://www.pet-hospital.org/",
+  "sha256": "65f0b9c3b5352ed50cdcd24c3d8c9deeefb8511b95448b1699603ca4b1525d9e",
+  "bytes": 24318
+ },
+ {
+  "id": "G13293",
+  "file": "img/fac/hospital/G13293_4.webp",
+  "src": "https://www.pet-hospital.org/wp-content/themes/pet-hospital-theme/assets/images/top/about_slide03.jpg",
+  "page": "https://www.pet-hospital.org/",
+  "sha256": "b367ceb8e3b52869df1a9237630b980f270ead36d48ebc94b4f104073d72ec8d",
+  "bytes": 18550
+ },
+ {
+  "id": "G13293",
+  "file": "img/fac/hospital/G13293_5.webp",
+  "src": "https://www.pet-hospital.org/wp-content/themes/pet-hospital-theme/assets/images/top/about_slide04.jpg",
+  "page": "https://www.pet-hospital.org/",
+  "sha256": "38969a59d6ff26870b7fd94521a5f7e82166553871f7b88a5325f2f3bb19a444",
+  "bytes": 27280
+ },
+ {
+  "id": "G13297",
+  "file": "img/fac/hospital/G13297_1.webp",
+  "src": "https://nijiiro-animal.com/wp-content/themes/nijiiro/images/home/pickup1.jpg",
+  "page": "https://nijiiro-animal.com/",
+  "sha256": "460535e84827f637251444f8b10ea00684d5ba2a72b6579541a6d6c3ff975f50",
+  "bytes": 13496
+ },
+ {
+  "id": "G13297",
+  "file": "img/fac/hospital/G13297_2.webp",
+  "src": "https://nijiiro-animal.com/wp-content/themes/nijiiro/images/home/pickup2.jpg",
+  "page": "https://nijiiro-animal.com/",
+  "sha256": "e3c3559e119d87b6782a37de54240089c3f2e8e0e3fc35b16639a07b801edeb7",
+  "bytes": 12638
+ },
+ {
+  "id": "G13297",
+  "file": "img/fac/hospital/G13297_3.webp",
+  "src": "https://nijiiro-animal.com/wp-content/themes/nijiiro/images/home/pickup3.jpg",
+  "page": "https://nijiiro-animal.com/",
+  "sha256": "8bf0fbb5ffd3aaebd33f036d1d363ffe3c33505842753a57812c05a7cae85f63",
+  "bytes": 13838
+ },
+ {
+  "id": "G13298",
+  "file": "img/fac/hospital/G13298_1.webp",
+  "src": "https://www.tachikawaminami-ah.com/wp-content/uploads/image2_sp.jpg",
+  "page": "https://www.tachikawaminami-ah.com/",
+  "sha256": "e7747c234d654cbcbb75b290af170159563b28bb6257784d3443332976e67fcd",
+  "bytes": 82372
+ },
+ {
+  "id": "G13298",
+  "file": "img/fac/hospital/G13298_2.webp",
+  "src": "https://www.tachikawaminami-ah.com/wp-content/uploads/image3_sp.jpg",
+  "page": "https://www.tachikawaminami-ah.com/",
+  "sha256": "d951e4013b0eee9947d23d0aa90f9d3c1bd204c3b2875d3a23241f404b846490",
+  "bytes": 31130
+ },
+ {
+  "id": "G13301",
+  "file": "img/fac/hospital/G13301_1.webp",
+  "src": "https://www.ken-ah.jp/wp-content/uploads/2019/08/slide14_03.png",
+  "page": "https://www.ken-ah.jp/",
+  "sha256": "c0aadd53ca1816c217fb6d19a9ea2d949399718345ea9c75097ef6da1b11bad2",
+  "bytes": 33154
+ },
+ {
+  "id": "G13301",
+  "file": "img/fac/hospital/G13301_2.webp",
+  "src": "https://www.ken-ah.jp/wp-content/uploads/2019/08/slide15_03.png",
+  "page": "https://www.ken-ah.jp/",
+  "sha256": "2f2cf983b81ea241ec3c583c80b812f50cbc03fecd5417ea09c21aff05c53fdc",
+  "bytes": 18750
+ },
+ {
+  "id": "G13319",
+  "file": "img/fac/hospital/G13319_1.webp",
+  "src": "https://static.wixstatic.com/media/c1dcc1_175a2d4a62794b39b7dfc19b31d44efa~mv2.jpg",
+  "page": "https://www.nishimura-vet.com/",
+  "sha256": "6d04d01d6803f9bdadc56ab59ab087eeaa4a5ef75dad8e411ddd95e0c8a778b4",
+  "bytes": 29608
+ },
+ {
+  "id": "G13332",
+  "file": "img/fac/hospital/G13332_1.webp",
+  "src": "https://cdn.peraichi.com/userData/5a778ae0-0914-49e1-a971-26cc0a0000c5/img/6040cff8da3f7/original.JPG",
+  "page": "https://peraichi.com/landing_pages/view/furuya-petclinic",
+  "sha256": "85232346ad56522264f4aafde36de1a40392aae97578c71b23043a0f1e597f39",
+  "bytes": 54734
+ },
+ {
+  "id": "G13332",
+  "file": "img/fac/hospital/G13332_2.webp",
+  "src": "https://cdn.peraichi.com/userData/5a778ae0-0914-49e1-a971-26cc0a0000c5/img/1518010714/original.jpg",
+  "page": "https://peraichi.com/landing_pages/view/furuya-petclinic",
+  "sha256": "6cc4bb5b31aae72e0c110a10c6c4154f79c2157bcc79fd543c19df46e0d5e30f",
+  "bytes": 24096
+ },
+ {
+  "id": "G13332",
+  "file": "img/fac/hospital/G13332_3.webp",
+  "src": "https://cdn.peraichi.com/userData/5a778ae0-0914-49e1-a971-26cc0a0000c5/img/5a7b01d6b73bc/original.jpg",
+  "page": "https://peraichi.com/landing_pages/view/furuya-petclinic",
+  "sha256": "a8e7fa62009f43fa0dd9c73f2c6e3ea8a4f178d3b4fbf679af3d5560dc3cb5d9",
+  "bytes": 27304
+ },
+ {
+  "id": "G13333",
+  "file": "img/fac/hospital/G13333_1.webp",
+  "src": "https://shindo-ah1992.com/wp-content/themes/shindohTheme/img/outside.jpg",
+  "page": "https://shindo-ah1992.com/",
+  "sha256": "593077f2580464cacfecbc9dd4c0ec8b1578b84a4cdc894022470e6c15eadb61",
+  "bytes": 20558
+ },
+ {
+  "id": "G13333",
+  "file": "img/fac/hospital/G13333_2.webp",
+  "src": "https://shindo-ah1992.com/wp-content/themes/shindohTheme/img/member.jpg",
+  "page": "https://shindo-ah1992.com/",
+  "sha256": "7cda1bd2f028a27d5646f53e692b49a1b2249962bdbb09fa3f52de32f5fcdb74",
+  "bytes": 15494
+ },
+ {
+  "id": "G13333",
+  "file": "img/fac/hospital/G13333_3.webp",
+  "src": "https://shindo-ah1992.com/wp-content/themes/shindohTheme/img/room.jpg",
+  "page": "https://shindo-ah1992.com/",
+  "sha256": "0477ad7f1390304cd63e066a5c1a08826b360cb9544b16b4f616398c1b34975a",
+  "bytes": 13498
+ },
+ {
+  "id": "G13333",
+  "file": "img/fac/hospital/G13333_4.webp",
+  "src": "https://shindo-ah1992.com/wp-content/themes/shindohTheme/img/mikan.png",
+  "page": "https://shindo-ah1992.com/",
+  "sha256": "2ba6dce9c87af74afe7f166afc87c88cfd41a2ab57daf2dca6d56d350cd87806",
+  "bytes": 20410
+ },
+ {
+  "id": "G13346",
+  "file": "img/fac/hospital/G13346_1.webp",
+  "src": "https://static.wixstatic.com/media/0c3816_158f48109e6f4b4a9f5a5b0c2d18821c~mv2_d_1600_1200_s_2.jpg/v1/fill/w_600,h_450,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/0c3816_158f48109e6f4b4a9f5a5b0c2d18821c~mv2_d_1600_1200_s_2.jpg",
+  "page": "https://www.ina-vet.com/",
+  "sha256": "50f09aaf7da6c7f1159bac49287f42822ad00ab51c6db60a87e98e12cf624726",
+  "bytes": 33010
  }
 ]
