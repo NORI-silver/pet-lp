@@ -510,7 +510,10 @@ function sendWave_(id, stage) {
   var selected = pickedIds_(r);
   if (selected.length && stage !== 1) return '';
   var pool = selected.length ? selectionCandidates_(r).filter(function(pt) { return selected.indexOf(pt.id) >= 0; }) : pickPartners_(r, stage);
-  var targets = pool.filter(function (pt) { return already.indexOf(pt.id) < 0; });
+  var targets = pool.filter(function (pt) {
+    return already.indexOf(pt.id) < 0 && (pt.id !== KASUKABE_INTAKE_ID ||
+      selected.indexOf(pt.id) >= 0 && isAsk_(r) && kasukabeIntakeFits_(pt, r));
+  });
   // 第1段で誰もいなければ、すぐ第2段の相手にも送る
   if (!selected.length && stage === 1 && targets.length === 0) {
     stage = 2;
@@ -658,7 +661,7 @@ function pickPartners_(r, stage) {
   var areas = stage === 1 ? [pref] : (NEIGHBORS[pref] || []).concat(['全国']);
   var care = r['介助'] === '必要';
   return partners_().filter(function (pt) {
-    if (!pt.active || publicPaused_(pt.id)) return false;
+    if (!pt.active || publicPaused_(pt.id) || pt.id === KASUKABE_INTAKE_ID) return false; // 春日部は利用者が明示的に選んだ依頼だけ
     if ((CONFIG.SHOW_ALL_CANDIDATES && !isOpen_(pt.id)) || isDisplayOnly_(pt.id)) return false; // 全社準備中のあいだ（受け付けを始めた会社を除く）・表示だけの会社には送らない
     if (!fitsCar_(pt, r)) return false;
     if (!fitsCage_(pt, r)) return false;
@@ -3463,6 +3466,8 @@ var QUOTE_FIELDS = ['leg', 'pref', 'pickup', 'via', 'dropoff', 'datetime', 'trip
 function selectionRide_(p) {
   return {
     '都府県': shortPref_(p.pref), '希望日時': parseJst_(p.datetime), '片道・往復': String(p.trip || ''),
+    'お迎えの場所': String(p.pickup || ''), '種類': String(p.species || ''), '日付のみ': p.date ? '○' : '',
+    '待ち時間（分）': String(p.wait_time || ''), '区間': p.leg || '',
     '体重kg': Number(p.weight), '同乗人数': String(p.riders || ''), 'ペット数': Number(p.pet_count),
     'キャリー': String(p.cage || ''), '介助': String(p.care || ''), '荷物': String(p.luggage || ''),
     'ペットJSON': String(p.pets_json || ''), '帰りの日時': p.trip === '往復' ? parseJst_(p.return_datetime) : '',
@@ -3494,10 +3499,41 @@ function selectionValid_(p) {
   return '';
 }
 
+// 春日部の試行：未設定の本番では閉じたまま。固定の会社ID・照合済みメール、明示的に選ばれた市内片道だけ。
+var KASUKABE_INTAKE_ID = 'P014', KASUKABE_DISPLAY_ID = 'D853ae97';
+function kasukabeIntakeMailbox_() {
+  try {
+    var ps = PropertiesService.getScriptProperties();
+    if (ps.getProperty('KASUKABE_INTAKE_ENABLED') !== '1') return '';
+    var email = String(ps.getProperty('KASUKABE_INTAKE_VERIFIED_EMAIL') || '').trim().toLowerCase();
+    return /^[^@\s]+@pet-taxi-kasukabe\.com$/.test(email) ? email : '';
+  } catch (e) { return ''; }
+}
+function kasukabeCityAddress_(s) {
+  var a = String(s || '').normalize('NFKC').replace(/\s/g, '').replace(/^(?:日本[、,]?)?(?:〒?\d{3}-\d{4}[、,]?)?/, '');
+  return /^(?:埼玉県)?春日部市[一-龠ぁ-んァ-ヶ0-9]/.test(a);
+}
+function kasukabeIntakeFits_(pt, r) {
+  var email = kasukabeIntakeMailbox_();
+  if (!email || pt.id !== KASUKABE_INTAKE_ID || !pt.active || pt.lineId || pt.oaId || pt.lineUrl ||
+      String(pt.email || '').trim().toLowerCase() !== email) return false;
+  if (r['都府県'] !== '埼玉' || r['片道・往復'] !== '片道' || r['区間'] || r['日付のみ'] ||
+      r['経由地'] || !/^(?:|0)$/.test(String(r['待ち時間（分）'] || '').trim()) ||
+      !kasukabeCityAddress_(r['お迎えの場所']) || !kasukabeCityAddress_(r['行き先'])) return false;
+  var dt = r['希望日時'], jstHour = dt instanceof Date && isFinite(dt.getTime()) ? (dt.getUTCHours() + 9) % 24 : -1;
+  if (jstHour < 9 || jstHour >= 18 || r['種類'] !== '犬' || r['介助'] !== '不要' || +r['ペット数'] !== 1 ||
+      !/^[12]人$/.test(String(r['同乗人数'] || '')) || !/^(?:|手荷物くらい)$/.test(String(r['荷物'] || '')) ||
+      !/^(?:持ち込む|なし|どれでも)$/.test(String(r['キャリー'] || ''))) return false;
+  var pets;
+  try { pets = petsOf_(r); } catch (e) { return false; }
+  return pets.length === 1 && pets[0].sp === '犬' && pets[0].vac && pets[0].rabies && pets[0].kg > 0 &&
+    pets[0].kg <= 10 && pets[0].kg === Number(r['体重kg']) && !pets[0].need.length && pets[0].care === '不要';
+}
 function selectionCandidates_(r) {
   // 同じ都県、または全国対応の会社。近隣都県だけの会社には依頼しない。
   return partners_().filter(function(pt) {
-    return !publicPaused_(pt.id) && pt.active && reachable_(pt) && (pt.areas.indexOf(r['都府県']) >= 0 || pt.areas.indexOf('全国') >= 0) &&
+    return !publicPaused_(pt.id) && pt.active && reachable_(pt) &&
+      (pt.id !== KASUKABE_INTAKE_ID || kasukabeIntakeFits_(pt, r)) && (pt.areas.indexOf(r['都府県']) >= 0 || pt.areas.indexOf('全国') >= 0) &&
       fitsCar_(pt, r) && fitsCage_(pt, r) && inTime_(pt, r) && (r['介助'] !== '必要' || pt.careOk) && !checks_(pt, r).ng.length && openNear_(pt, r);
   });
 }
@@ -3507,6 +3543,8 @@ function quoteSignature_(p, id, expires, price) {
 }
 
 function selectionPrice_(pt, p) {
+  if (pt.id === KASUKABE_INTAKE_ID) return kasukabeIntakeFits_(pt, selectionRide_(p)) ?
+    {amount:null,text:'料金は未確定です。会社が空き状況と確定料金をお返事します',night:''} : null;
   var od = openDisplay_(pt.id);
   if (od) { // 受け付けを始めた会社は、表示だけの会社と同じ公式サイトの料金表で計算する（お店からの道のりも同じく調べる）
     var rd = {}; try { rd = JSON.parse(p.route_details || '{}') || {}; } catch (e) {}
@@ -3709,9 +3747,17 @@ function displayInTime_(c, at, now) {
 /* ───────── 提携していない会社は名前を出さない・お誘いした会社だけの見本画面（Nori 2026-11-02「AとC」） ───────── */
 
 // 名前・口コミ・お店の正確な場所を出さない会社か。問い合わせできない会社（表示だけ・全社準備中のあいだの提携先）はすべて。見本の会社だけ例外
-function isOpen_(id) { return !!(CONFIG.OPEN_PARTNERS || {})[id]; }
-function openDisplay_(id) { var d = (CONFIG.OPEN_PARTNERS || {})[id]; return d ? DISPLAY_COMPANIES.filter(function(c) { return c.id === d; })[0] || null : null; }
-function openDisplayIds_() { var o = CONFIG.OPEN_PARTNERS || {}; return Object.keys(o).map(function(k) { return o[k]; }); }
+function isOpen_(id) {
+  return id === KASUKABE_INTAKE_ID ? !!kasukabeIntakeMailbox_() : !!(CONFIG.OPEN_PARTNERS || {})[id];
+}
+function openDisplay_(id) {
+  var d = id === KASUKABE_INTAKE_ID ? (isOpen_(id) ? KASUKABE_DISPLAY_ID : '') : (CONFIG.OPEN_PARTNERS || {})[id];
+  return d ? DISPLAY_COMPANIES.filter(function(c) { return c.id === d; })[0] || null : null;
+}
+function openDisplayIds_() {
+  var o = CONFIG.OPEN_PARTNERS || {}, ids = Object.keys(o).map(function(k) { return o[k]; });
+  return isOpen_(KASUKABE_INTAKE_ID) ? ids.concat([KASUKABE_DISPLAY_ID]) : ids;
+}
 function isListed_(id) { return (CONFIG.LISTED_IDS || []).indexOf(id) >= 0; }
 function isAnon_(id, demoId) {
   if (demoId && id === demoId) return false;
