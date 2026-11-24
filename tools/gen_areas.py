@@ -2214,13 +2214,21 @@ for slug, pf, short, cities in PREFS:
     _np = no_pick(pf if pf == "北海道" else pf[:-1])
     _flag = (f'<p class="fare-flag"><b>{e(pf)}にお迎えに行けるペットタクシーの会社は、まだ見つかっていません。</b>見つかったら、上のフォームでさがせるようにします。</p>' if _np else
              f'<p class="fare-flag"><b>{e(pf)}からのお迎えも、上のフォームでさがせます。</b>{NOT_YET}会社ごとに対応する地域が違うので、近くに会社が見つからないこともあります。</p>')
+    # 京都店は事業者情報として案内する。料金計算と当サイトの受付設定には使わない。
+    direct_listing = (
+        '<h2 id="cocotaku-kyoto">COCOタク 京都店</h2>'
+        '<p>京都市東山区が拠点で、京都府・滋賀県を中心にペットを送迎します。飼い主さんなどの付き添いが必要です。'
+        '予約の相談は24時間受け付けています。当サイトからはこの会社に予約できません。</p>'
+        '<p>ペットの大きさ・頭数・希望日時を伝え、空き状況と料金を直接ご確認ください。'
+        '<a href="https://pet-taxi-kyoto.com/">COCOタク 京都店の公式サイト</a></p>'
+    ) if pf == "京都府" else ""
     area_html = f'''<!-- 地域の説明（gen_areas.py の PREFS） -->
 <section id="area-info" style="padding-top:8px">
   <div class="wrap"><article class="art">
     {_flag}
     <p class="small">ペットタクシー予約窓口　更新 {TODAY.replace("-", ".")}</p>
     <h2>{e(short)}のペットタクシーの料金{"の例" if has_fare else ""}</h2>
-    {pref_fare_html(pf)}
+    {pref_fare_html(pf)}{direct_listing}
     {local_html}
     <p><a href="/guide/what-is-pet-taxi/">ペットタクシーとは？電車・タクシー・マイカーとの違い</a>では、料金のしくみをくわしく説明しています。キャリーに入る小さな子なら、<a href="/guide/taxi-with-pet/">ふつうのタクシーに乗れることもあります</a>。</p>
 

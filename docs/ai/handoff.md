@@ -3,6 +3,7 @@
 どのAI（Claude・ChatGPT・Codex・Gemini・Muse）も、作業の終わりにいちばん上へ1行足します。新しいものが上。
 形：`日付 / AI / [分類] やったこと / PR / 残り・次の人へ`
 
+- 2026-11-24 / ChatGPT / [E] COCOタク京都店を京都府ページに事業者情報として掲載 / このPR / 料金計算・予約受付は変更なし。
 - 2026-11-24 / Muse / [E] 県ページ（/pet-sitter/chiba/ など）の「どこで探しますか？」でほかの県が選べない不具合を修正：候補は全国分を出し、ほかの県・ほかの県の市区町村を選んだらその分野のその県のページへ移動（市区町村は petPlaces で移った先に引き継ぎ）。その県のページがない分野では分野の入口へ #pref= つきで移動。同じ県の市区町村は今までどおりページ内で絞り込み。実体は tools/find.js と tools/uikit.py（県→URLの対応を prefs.PREFS から /find.js に差し込み）、生成の差分は /find.js のみ。seo_check 1,053ページ NG 0、rules_check 1,276ページ違反 0 / このPR / 残り：phone_check は未実行（Mac側で `node tools/phone_check.cjs --changed` を）
 - 2026-11-24 / Muse / [E] 絞り込みフィルター第2弾を最新mainから作り直して反映：しつけの悩み別（困りごとから探す）・病院の症状から探す／ペット保険／いま受付中・ホテルの猫専用・シッターの資格・トリミングの部分ケアと送迎・老犬ホームの送迎と24時間スタッフ・譲渡の譲渡会とトライアル。実体は道具5ファイル（uikit・ownerfit・hosp_find.py/js・rules_check）のみで全ページ再生成。seo_check 1,053ページ NG 0、rules_check 1,276ページ違反 0 / このPR / 残り：phone_check は未実行（Mac側で要実行）。旧PR #707 は競合が解けず本PRに置き換え
 - 2026-11-24 / Claude / [G] site-snap の出力先をブランチごと（crawl-out-<ブランチの最後の名前>）にした。main を取りこんだ push でほかのスレッドの結果を上書きしないため / このPR / どのスレッドも結果は crawl-out-<自分のブランチの最後の名前> から読む（例：claude/project-thread-abc → crawl-out-project-thread-abc）
