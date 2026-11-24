@@ -6120,6 +6120,124 @@
    "ratio": [
     2.098
    ]
+  },
+  {
+   "cat": "night",
+   "id": "H033",
+   "name": "港区動物救急医療センター 芝アニマルクリニック",
+   "url": "https://shiba-animalclinic.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/night/H033_1.webp",
+    "/img/fac/night/H033_2.webp"
+   ],
+   "credit": "写真：港区動物救急医療センター 芝アニマルクリニック",
+   "ratio": [
+    1.775,
+    1.775
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H034",
+   "name": "ライフメイト動物医療センター 文京",
+   "url": "https://er-animal.jp/er_bunkyo/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/night/H034_1.webp"
+   ],
+   "credit": "写真：ライフメイト動物医療センター 文京",
+   "ratio": [
+    1.498
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H037",
+   "name": "杉並動物夜間救急医療センター",
+   "url": "https://ah.aeonpet.com/tokyo-yakan-emergency/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/night/H037_1.webp",
+    "/img/fac/night/H037_2.webp"
+   ],
+   "credit": "写真：杉並動物夜間救急医療センター",
+   "ratio": [
+    1.5,
+    1.5
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H038",
+   "name": "ライフメイト動物救急センター練馬",
+   "url": "https://er-animal.jp/er_nerima/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/night/H038_1.webp"
+   ],
+   "credit": "写真：ライフメイト動物救急センター練馬",
+   "ratio": [
+    1.498
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H041",
+   "name": "ライフメイト動物医療センター府中",
+   "url": "https://er-animal.jp/er_fuchu/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/night/H041_1.webp"
+   ],
+   "credit": "写真：ライフメイト動物医療センター府中",
+   "ratio": [
+    1.498
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H042",
+   "name": "サムズアップアニマルケアセンター",
+   "url": "https://samsupvets.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/night/H042_1.webp",
+    "/img/fac/night/H042_2.webp"
+   ],
+   "credit": "写真：サムズアップアニマルケアセンター",
+   "ratio": [
+    1.779,
+    1.779
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H043",
+   "name": "ライフメイト動物救命救急センター八王子",
+   "url": "https://er-animal.jp/er_hachioji/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/night/H043_1.webp"
+   ],
+   "credit": "写真：ライフメイト動物救命救急センター八王子",
+   "ratio": [
+    1.498
+   ]
   }
  ]
 }
