@@ -78,6 +78,8 @@ _EMG_RV = _EMG_J["taxis"] + [h for l in _EMG_J["hospitals"].values() for h in l]
 # 条件でさがす動物病院（/hospital/、tools/hospitals.json）の往診・猫専門の病院も同じしくみで口コミを出す
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import visual as _V  # 図で読む部品（2026-11-14 Nori「文字ばかりで読むのに疲れます」）
+# [E] 並び順：情報が多い施設を先に出す（tools/richsort.py。Nori 2026-11-25）。生成器が読む前に施設データを並び替える
+import richsort as _richsort; _richsort.sort_all()
 import gen_hospitals
 from page_images import GUIDE_ALT, AREA_ALT, AREA_POS, area_key
 import prefkeep
@@ -1702,16 +1704,12 @@ top_src = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
 emg_sel = re.search(r'<select id="emgPref">(.*?)</select>', top_src, re.S).group(1)
 emg_regions = [(lab, re.findall(r'<option[^>]*>([^<]+)</option>', body)) for lab, body in re.findall(r'<optgroup label="([^"]+)">(.*?)</optgroup>', emg_sel, re.S)]
 emg_tips = re.search(r'<div class="emg-tips">.*?<p class="emg-tips-note">.*?</p>\s*</div>', top_src, re.S).group(0)
-import facility_review_links as _emg_reviews
 def emg_company(x):
     tel = ''.join(f'<a class="emg-tel" href="tel:{t[1].replace("-", "")}">📞 {e(t[1])}{"（" + e(t[0]) + "）" if t[0] else ""}</a>' for t in x.get("tel", []))
     if not tel: tel = '<small>電話番号はリンク先の公式サイトでご確認ください。</small>'
-    review = _emg_reviews.link("emergency", x, cls="emg-review-link")
-    if not review and x.get("review_query"):
-        review = f'<div class="emg-score" data-id="{e(x["id"])}"></div>'
     return (f'<div class="emg-item emg-co" data-prefs="{e(" ".join(x["prefs"]))}"><a href="{e(x["url"])}" target="_blank" rel="noopener"><b>{e(x["name"])}</b></a>'
             f'<small>対応エリア：{e(x["area"])}。{e(x["note"])}</small>{tel}'
-            + review + '</div>')
+            + (f'<div class="emg-score" data-id="{e(x["id"])}"></div>' if x.get("review_query") else '') + '</div>')
 def emg_hosp(x):
     # 名前は公式サイトへのリンク。どんな病院か・所在地と、口コミの星（予約の候補カードと同じしくみ）
     meta = (f'<small class="emg-spec">{e(x["spec"])}</small>' if x.get("spec") else '') + (f'<small>所在地：{e(x["addr"])}</small>' if x.get("addr") else '')
@@ -2458,12 +2456,12 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
       if (window.gtag) gtag("event", "open_reviews", {});
       var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
       fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
-        if (j && j.ok && (!(j.rating > 0) || !(j.count > 0))) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
+        if (j && j.ok && !(j.rating > 0)) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
         if (!j || !j.ok) throw 0;
         memo[id] = {rating: j.rating, count: j.count}; paint(box, memo[id]);
         var panel = box.querySelector(".review-panel"), open = box.querySelector(".partner-review-open");
         fill(panel, j); panel.hidden = false; open.setAttribute("aria-expanded", "true");
-      }).catch(function(e){ if (e === "none") { box.remove(); return; } b.disabled = false; b.textContent = "口コミをもう一度"; });
+      }).catch(function(e){ box.replaceChildren(el("p", "partner-review-src", e === "none" ? "Googleマップの口コミはまだありません" : "口コミを読み込めませんでした。時間をおいてもう一度お試しください")); });
     });
   }
   function paint(box, rv){

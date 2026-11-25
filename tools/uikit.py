@@ -125,6 +125,7 @@ def box(cat, *, q_ph, opts=None, animals=None, who=None, when=None, need=None, m
     if more:
         inner = "".join(f'<span class="ux-l">{e(t)}</span><div class="ux-w">{_b(it)}</div>' for t, it in more if it)
         rows.append(f'<details class="ux-det"><summary>詳しい条件で絞り込む<span></span></summary>{inner}</details>')
+    rows.append('<div class="ux-r"><span class="ux-l">表示順</span><div class="ux-w"><select id="ffSort" aria-label="表示順"><option value="">情報が多い順（おすすめ）</option><option value="photo">写真がある順</option><option value="name">名前順</option></select></div></div>')
     attrs = f' data-ff="{e(cat)}" data-unit="{e(unit)}" data-noun="{e(noun)}"' + (" data-guess" if guess else "") + (" data-needpref" if needpref else "")
     return (f'<div class="ux-find"{attrs}>' + "".join(rows) + f'<button type="button" class="ux-go" id="ffGo">{e(go)}</button>'
             '<div class="ux-foot"><p class="ux-sum" id="ffSum" aria-live="polite"></p><button type="button" class="ux-clear" id="ffClear" hidden>条件をクリア</button></div>'
@@ -224,7 +225,7 @@ HOTEL = dict(
     animals=("どの子を預けますか？", [("a:dog", "犬"), ("cat", "猫"), ("cat_only", "猫専用")]),
     who=("うちの子にあてはまるもの", [("big", "大型犬（25kg以上）"), ("sen", "シニア・介護が必要"), ("pup", "子犬・子猫"), ("med", "薬・持病がある"), ("multi", "2頭以上いる"), ("shy", "かむ・ほえる・こわがり")]),
     need=("どんなホテルをお探しですか？", [("vet", "病院が併設"), ("pickup", "送迎あり"), ("night_staff", "夜もスタッフ"), ("staff24", "24時間見守り・スタッフ常駐"), ("private_room", "個室")]),
-    more=[("設備", [("camera", "カメラで見守り"), ("run", "ドッグラン"), ("cagefree", "ケージフリー"), ("walk", "散歩つき"), ("longstay", "長期OK")]),
+    more=[("設備", [("camera", "カメラで見守り"), ("run", "ドッグラン"), ("cagefree", "ケージフリー"), ("walk", "散歩つき"), ("longstay", "長期OK"), ("smallonly", "小型犬のみ")]),
           ("体重（上限が書いてあるホテルだけ）", [("wb5", "5kg未満"), ("wb10", "5〜10kg"), ("wb25", "10〜25kg")])],
     go="この条件でホテルを探す")
 
@@ -387,6 +388,7 @@ def _keys(t, cat, url=""):
         elif f.get("s"): (k if "l" in f["s"] else no).append("big")
         if f.get("sen") or raw & COND_SYN["sen"]: k.append("sen")
         if f.get("pup") or raw & COND_SYN["pup"]: k.append("pup")
+    if f.get("fee"): k.append("fee")
     _, _, sv, mv = SVC[cat]
     for key, _l, syn in sv + mv:
         if key in raw or raw & set(syn): k.append(key)
@@ -442,10 +444,15 @@ def generic_list(h, cat, hub):
     need = [(k, l) for k, l, _ in sv if use(k)]
     more = [(k, l) for k, l, _ in mv if use(k)]
     # 公式サイトの文から決める条件（ownerfit の FAC）を、サービスの内容・そのほかの条件にも出す（2026-11-24 全面改修）
-    if cat == "dog-trainer" and use("private"): need.append(("private", "個別レッスン"))
+    if cat == "dog-trainer":
+        if use("private"): need.append(("private", "個別レッスン"))
+        for k, l in [("agility", "アジリティ"), ("dance", "ドッグダンス"), ("nosework", "ノーズワーク"),
+                     ("disc", "ディスクドッグ"), ("competition", "競技会・大会対策"), ("seminar", "セミナー・講座がある")]:
+            if use(k): need.append((k, l))
     if cat == "rojin-home" and use("medical"): need.append(("medical", "医療・投薬対応"))
     if cat == "pet-sitter":
         more += [(k, l) for k, l in [("stay", "泊まりの留守番"), ("sameday", "当日も相談できる"), ("regular", "定期利用")] if use(k)]
+    if use("fee"): more.append(("fee", "料金の目安が分かる"))
     bx = box(cat, q_ph="都道府県・市区町村", opts=opts if (hub and opts) else None, animals=animals,
              who=who, when=when, need=(qsv, need), more=[("そのほかの条件", more)] if more else (), unit="件", noun=noun, go=go, guess=bool(hub and opts))
     em = h.find('<div class="emg">')
