@@ -307,6 +307,13 @@ def _sougi_desc(pf, rs, n):
         ex = "、".join(f"{c['city']}は" + ("無料の受け付けあり" if v == 0 else f"{v:,}円から") for v, c in cs[:3])
         head += f"市の火葬・引き取りは{ex}（お骨が返るかも記載）。"
     return head + "個別火葬・立ち会い・お迎え・納骨堂の有無と公式サイトの料金の例。順位やおすすめはつけていません。"
+def _sougi_title(pf, rs, n):
+    # 大分市と別府市の自治体の受付を実際に掲載している場合にだけ、検索結果で案内する。
+    cities = {c["city"] for c in _CITIES.get(pf, []) if c.get("fee")}
+    if pf == "大分県" and {"大分市", "別府市"} <= cities:
+        return "大分県のペット火葬・霊園｜大分市・別府市の受付と料金｜ペットタクシー予約窓口"
+    return f"{pf}のペット火葬・ペット霊園｜{n}か所の一覧（個別火葬・立ち会い・お迎え・自治体の受け付け）｜ペットタクシー予約窓口"
+SOUGI["title_fn"] = _sougi_title
 SOUGI["desc_fn"] = _sougi_desc
 NIGHT["title_fn"] = _night_title
 NIGHT["desc_fn"] = _night_desc

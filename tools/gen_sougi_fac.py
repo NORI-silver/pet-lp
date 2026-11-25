@@ -114,6 +114,11 @@ def render(ctx, f):
     tparts = [w for w, ok in (("料金", f.get("price")), ("立ち会い", _has(f, "立ち会い火葬")), ("お迎え", _has(f, "お迎え") or _has(f, "訪問火葬")), ("納骨", _has(f, "納骨") or _has(f, "納骨堂"))) if ok]
     title = f"{nm}（{f['city']}）｜{'・'.join(tparts)}｜ペットタクシー予約窓口"
     lead1 = f"{nm}は、{pf}{f['city']}の{kind}で、公式サイトに{'・'.join(can)}を書いています（{ck}に確認）。"
+    desc = lead1
+    # 指名検索の表示があり、火葬と納骨の両方を明記する施設。料金は本文と同じ掲載例を使う。
+    if f["id"] in {"S220475", "S70883b", "S50a5de"} and f.get("price") and _has(f, "個別火葬") and (_has(f, "納骨") or _has(f, "納骨堂")):
+        title = f"{nm}（{f['city']}）｜ペット火葬の料金・納骨｜ペットタクシー予約窓口"
+        desc = f"{pf}{f['city']}の{nm}。火葬料金の例：{f['price'].rstrip('。')}。立ち会い・お迎えの可否、納骨、所在地をまとめています。"
     pts = [lead1]
     g = GS._prices(f.get("price"))
     for k, lab, nat in TYP:
@@ -141,7 +146,7 @@ def render(ctx, f):
             + (f'<div class="emg-score" data-id="{e(f["id"])}"></div>' if f.get("review_query") else "") + '</div>')
     faq_html = "".join(f"<dt>{e(a)}</dt><dd>{e(b)}</dd>" for a, b in _faq(f))
     css = "<style>.emg .tbl{overflow-x:auto;max-width:100%}.pp-tbl th,.pp-tbl td{font-size:13px;padding:5px 6px;text-align:left;vertical-align:top}.pp-tbl.cmp td,.pp-tbl.cmp th{white-space:nowrap}.pp-tbl.cmp td:first-child{white-space:normal;min-width:9em}.fac-pts{margin:6px 0 4px;padding-left:1.2em}.fac-pts li{margin:3px 0}</style>"
-    return ctx["head"](title, lead1, url, ld) + css + f"""
+    return ctx["head"](title, desc, url, ld) + css + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">

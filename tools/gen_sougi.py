@@ -14,7 +14,7 @@ J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sou
 F = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sougi_facilities.json"), encoding="utf-8"))
 
 SLUG = "sougi"
-TITLE = "ペットが亡くなったら｜まずすること・火葬の種類と料金・死亡届・自治体の受付（全国）｜ペットタクシー予約窓口"
+TITLE = "ペット火葬・霊園を探す｜火葬の料金・自治体の受付・亡くなったときの手順｜ペットタクシー予約窓口"
 DESC = "ペットが亡くなったときに、まずすること（安置・保冷）、合同・個別・立ち会い・訪問火葬のちがい、自治体の引き取りの料金とお骨が返るか、犬の死亡届とマイクロチップの手続き、納骨・手元供養、ペットロスの相談先と、全国52の市区の受け付け・民間のペット火葬場や霊園" + str(len(F["facilities"])) + "か所をまとめました。"
 PUBLISHED = "2026-11-02"
 MODIFIED = "2026-11-02"
@@ -251,7 +251,7 @@ def render(ctx):
 <section class="area-hero">
   <div class="wrap">
     <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › ペットが亡くなったら</nav>
-    <h1><small>まずすること・火葬の種類と料金・死亡届・自治体の受付（全国）</small>ペットが亡くなったら</h1>
+    <h1><small>ペットが亡くなったときの手順・料金と自治体の受付</small>ペット火葬・霊園を探す</h1>
     <p class="lede">あわてなくて大丈夫です。お住まいの都道府県をえらぶと、近くのペット火葬場・霊園と市区の受け付けが出ます。まずすることは<a href="#after">下の記事</a>に。</p>
   </div>
 </section>
