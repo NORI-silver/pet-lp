@@ -44728,6 +44728,48 @@
    "ratio": [
     2.022
    ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T225",
+   "name": "シバタドッグスクール",
+   "url": "http://shibata-dogschool.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T225_1.webp",
+    "/img/fac/trainer/T225_2.webp",
+    "/img/fac/trainer/T225_3.webp"
+   ],
+   "credit": "写真：シバタドッグスクール",
+   "ratio": [
+    1.255,
+    1.333,
+    1.455
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tc10b34e",
+   "name": "村上愛犬警察犬訓練所",
+   "url": "https://www.murakamidog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tc10b34e_1.webp",
+    "/img/fac/trainer/Tc10b34e_2.webp",
+    "/img/fac/trainer/Tc10b34e_3.webp",
+    "/img/fac/trainer/Tc10b34e_4.webp"
+   ],
+   "credit": "写真：村上愛犬警察犬訓練所",
+   "ratio": [
+    1.505,
+    2.228,
+    1.779,
+    2.419
+   ]
   }
  ]
 }
