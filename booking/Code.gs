@@ -3852,7 +3852,7 @@ function quoteCards_(p) {
   }).filter(Boolean);
   // Intentionally separate the listing from verified intake: a displayed estimate cannot be selected or sent.
   var kasukabePreview = !p.leg && !selectable.some(function(card) { return card.id === KASUKABE_INTAKE_ID && card.token; }) &&
-    kasukabePreviewFits_(r, p);
+    kasukabePreviewPending_(r, p);
   return selectable.concat(p.leg ? [] : displayCards_(r, p, kasukabePreview)).filter(function(card, _, cards) {
     if (card.id !== KYOTO_DISPLAY_ID) return true;
     var kyoto = kyotoIntakeBinding_();
@@ -3969,7 +3969,7 @@ function isDisplayOnly_(id) {
 }
 // 表示だけの会社のカード（依頼できない）。口コミの星は、ページがカードを出したあとに selectionScores_ でまとめて取り寄せる
 // お迎えの都道府県に対応している会社だけを出し、公式サイトの料金表から料金の目安を計算する（Nori 2026-10-31「大阪の住所で全国の会社が出た。料金も出ない」）
-function kasukabePreviewFits_(r, p) {
+function kasukabePreviewPending_(r, p) {
   if (!CONFIG.SHOW_ALL_CANDIDATES || !isOpen_(KASUKABE_INTAKE_ID) || publicPaused_(KASUKABE_INTAKE_ID) || publicPaused_(KASUKABE_DISPLAY_ID)) return false;
   var pt = partners_().filter(function(row) { return row.id === KASUKABE_INTAKE_ID; })[0];
   if (!pt || !pt.active) return false;
@@ -3983,8 +3983,37 @@ function kasukabePreviewFits_(r, p) {
   if (needs_(rr).riders > (bigs >= 3 ? 1 : 2)) return false;
   if (rr['介助'] === '必要' && !pt.careOk) return false;
   // Do not treat missing proof or intake-only lead/price validation as a listing ban. Keep known service refusals.
-  return (pt.areas.indexOf(rr['都府県']) >= 0 || pt.areas.indexOf('全国') >= 0) &&
-    fitsCar_(pt, rr) && fitsCage_(pt, rr) && !checks_(pt, rr).ng.length && openNear_(pt, rr);
+  if (!(pt.areas.indexOf(rr['都府県']) >= 0 || pt.areas.indexOf('全国') >= 0) ||
+      !fitsCar_(pt, rr) || !fitsCage_(pt, rr) || checks_(pt, rr).ng.length || !openNear_(pt, rr)) return false;
+  return kasukabePendingReason_(pt, r, p, openDisplay_(KASUKABE_INTAKE_ID));
+}
+
+// Public reasons never include partner contact settings, timestamps of lookups, or private row values.
+// Report only why a quote could not be selected; no fallback signature or request permission is created.
+function kasukabePendingReason_(pt, r, p, display) {
+  function pending(code, message) { return {code:code, message:message, can_request:false}; }
+  var mailbox = kasukabeIntakeMailbox_();
+  if (!mailbox || pt.lineId || String(pt.email || '').trim().toLowerCase() !== mailbox || !reachable_(pt))
+    return pending('intake_unverified', 'このサイトでの受付先を確認中です。');
+  if (!inTime_(pt, r))
+    return pending('lead_time', 'このお迎え日時には受付が間に合いません。時間を遅らせるか、別の日を選んでください。');
+  // Use exactly the real intake representation, not the normalized display-only copy.
+  var pets;
+  try { pets = petsOf_(r); } catch (e) { pets = []; }
+  if (pets.length !== Number(r['ペット数']) || !pets.length || pets.some(function(pet) { return !pet.sp; }))
+    return pending('pet_details', '種類・頭数など、入力したペット情報を確認してください。');
+  if (pets.some(function(pet) { return pet.sp === '犬' && (!pet.vac || !pet.rabies); }))
+    return pending('vaccine_required', '犬の受付には混合ワクチンと狂犬病予防注射の接種確認が必要です。');
+  var d = r._route || {}, pts = p.trip === '往復' ? [d.from, d.to, d.backFrom, d.backTo] : [d.from, d.to];
+  if (d.routeEstimated || d.localEstimated || !pts.every(function(v) {
+    return v && typeof v.lat === 'number' && typeof v.lng === 'number' && v.lat >= 20 && v.lat <= 46 && v.lng >= 122 && v.lng <= 154;
+  })) return pending('route_unconfirmed', '受付に必要な経路を確認できていません。');
+  if (display && display.shop) {
+    var shop = {lat:display.shop[0], lng:display.shop[1]};
+    if (roadKm_(shop,d.from) == null || (p.trip === '往復' && !(display.fare || {}).pickOnce && roadKm_(shop,d.backFrom) == null))
+      return pending('pickup_road_unconfirmed', '店舗からお迎え先までの道のりを確認できていません。');
+  }
+  return pending('quote_unconfirmed', '空き状況・受付条件・料金を確認できていません。');
 }
 
 function displayCards_(r, p, kasukabePreview) {
@@ -4020,8 +4049,8 @@ function displayCards_(r, p, kasukabePreview) {
       if (card.price.amount != null) card.price.planNote =
         (card.price.planNote ? card.price.planNote + ' ' : '') + '参考料金です。空き状況・受付可否・確定料金は未確認です。';
       card.car += ' この条件ではサイトから予約を依頼できません。';
-      card.site = c.url; // 確認済み店舗の公式サイト。サイト内の予約トークンではない。
       card.listed = true;
+      card.intake_pending = kasukabePreview;
       return card;
     }
     if (isAnon_(c.id, p && p.demo_id)) card.car = (c.car_type ? '車：' + c.car_type + '（公式サイトの記載・会社の回答より）。' : '車の詳細はまだ確認中です。') + unsure;

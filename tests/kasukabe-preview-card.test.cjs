@@ -25,7 +25,7 @@ const next=run(path.resolve(__dirname,'../booking/Code.gs'));
 for(const datetime of ['2026-11-26T06:25','2026-11-26T12:00']){
  const [card]=next.search({change:{datetime}}).cards;
  assert.ok(card,datetime);assert.equal(card.id,'D853ae97');assert.equal(card.display_only,true);assert.equal(card.listed,true);
- assert.ok(card.price.amount>0);assert.ok(card.price.planNote.includes('受付可否'));assert.equal(card.token,undefined);assert.equal(card.site,'https://pet-taxi-kasukabe.com/');assert.equal(card.expires,undefined);
+ assert.ok(card.price.amount>0);assert.ok(card.price.planNote.includes('受付可否'));assert.equal(card.token,undefined);assert.equal(card.site,undefined);assert.equal(card.intake_pending.can_request,false);assert.equal(card.expires,undefined);
  assert.equal(next.sig(),0);
 }
 assert.equal(next.search({vac:true}).cards[0].display_only,true);
