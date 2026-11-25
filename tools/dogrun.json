@@ -630,6 +630,34 @@
    ]
   },
   {
+   "id": "D216",
+   "kind": "民間",
+   "pref": "千葉県",
+   "city": "柏市",
+   "name": "Wagわん Dog Space（柏の葉T-SITE）",
+   "url": "https://www.wag-wan.co.jp/home/dogspace",
+   "addr": "柏市若柴227-1 柏の葉T-SITE",
+   "place": "室内ランは2階、受付は1階のWagわん",
+   "hours": "10:00〜19:00（施設案内）",
+   "closed": "年末年始",
+   "fee": "通常は人1人＋犬1頭 会員500円・ビジター700円。平日は時間制限なし、土日祝は1時間",
+   "size": "通常10kg以下／大型犬は貸切のみ（体重上限なし）",
+   "reg": "通常利用は施設案内に年間利用登録が必要と記載。ビジター料金での登録の扱いは受付で確認",
+   "need": "室内は犬用おむつ・マナーパンツなどを着用",
+   "limit": "貸切は犬種や体重によって頭数制限あり",
+   "note": "貸切は1か月前〜前日までに電話または公式InstagramのDM。オンライン予約は受付停止中",
+   "src": [
+    "https://store.tsite.jp/kashiwanoha/floor/shop/dogspace/index.html",
+    "https://www.wag-wan.co.jp/home/dogspace/private",
+    "https://www.wag-wan.co.jp/home/dogspace/private/reserve"
+   ],
+   "web": {
+    "src": "https://www.wag-wan.co.jp/home/dogspace",
+    "checked": "2026-11-26",
+    "text": "室内ランは2階、受付は1階のWagわん"
+   }
+  },
+  {
    "id": "D003",
    "pref": "東京都",
    "name": "蘆花恒春園ドッグラン",
@@ -2011,6 +2039,27 @@
    ]
   },
   {
+   "id": "D217",
+   "kind": "民間",
+   "pref": "千葉県",
+   "city": "印西市",
+   "name": "ペテモ千葉ニュータウン店 ドッグラン",
+   "url": "https://chibanewtown.aeonmall.jp/shop/faf30bb2-b874-4209-80bd-172ca31d1bd3",
+   "addr": "印西市中央北3-2 イオンモール千葉ニュータウン",
+   "place": "店舗内の室内ドッグラン",
+   "hours": "ドッグラン10:00〜20:00",
+   "reg": "イオンペットWAON会員カードを提示。新規発行350円（税込、共通案内）",
+   "need": "マナーパンツ・マナーバンド。初回は1年以内の狂犬病・混合ワクチン（5種以上）の証明",
+   "src": [
+    "https://www.aeonpet.com/service/dogrun/"
+   ],
+   "web": {
+    "src": "https://chibanewtown.aeonmall.jp/shop/faf30bb2-b874-4209-80bd-172ca31d1bd3",
+    "checked": "2026-11-26",
+    "text": "店舗内の室内ドッグラン"
+   }
+  },
+  {
    "id": "D014",
    "pref": "神奈川県",
    "name": "新杉田公園ドッグラン",
@@ -2950,6 +2999,27 @@
    "src": [
     "https://www.petstation-wan.com/dog-run-status/"
    ]
+  },
+  {
+   "id": "D218",
+   "kind": "民間",
+   "pref": "千葉県",
+   "city": "千葉市美浜区",
+   "name": "ペテモピアシティ稲毛海岸店 ドッグラン",
+   "url": "https://www.aeonpet.com/shop/pia-city-inagekaigan/",
+   "addr": "千葉市美浜区真砂1丁目2 ピアシティ稲毛海岸",
+   "place": "店舗内の室内ドッグラン",
+   "reg": "イオンペットWAON会員カードを提示。新規発行350円（税込、共通案内）",
+   "need": "マナーパンツ・マナーバンド。初回は1年以内の狂犬病・混合ワクチン（5種以上）の証明",
+   "src": [
+    "https://www.aeonpet.com/service/dogrun/",
+    "https://www.aeonpet.com/shop/pia-city-inagekaigan/access/"
+   ],
+   "web": {
+    "src": "https://www.aeonpet.com/shop/pia-city-inagekaigan/",
+    "checked": "2026-11-26",
+    "text": "店舗内の室内ドッグラン"
+   }
   },
   {
    "id": "D023",
