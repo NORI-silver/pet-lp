@@ -66,9 +66,8 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 .fr{margin:4px 0 18px}
 .fr-h{font-size:1.05rem!important;font-weight:800;margin:10px 0 8px!important;display:flex;align-items:baseline;gap:8px}
 .fr-h small{font-size:.78rem;font-weight:600;color:var(--ink-3,#6b625b)}
-.fr-s{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.fr-s{display:grid;gap:12px;padding:2px 2px 12px}
 .fr-more{margin:4px 0 18px;font-size:14px}.fr-more a{color:#c2410c;font-weight:600}
-.fr-s>.emg-item.fc{flex:0 0 80%;max-width:330px;scroll-snap-align:start}
 .fr-s>.emg-item.fc[hidden],.fr-s>.emg-item.fac-off,.emg-item.fc.fc-off{display:none}
 .fr:not(:has(.emg-item.fc:not([hidden]):not(.fac-off):not(.fc-hid):not(.fc-off))),.fr-empty{display:none!important}
 .fc-ph{position:relative;aspect-ratio:4/3;background:#f4f1ee;overflow:hidden}
@@ -133,7 +132,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 .fp-now b{font-weight:800}
 .fp-hide{display:flex;gap:6px;align-items:center;font-size:.82rem;color:var(--ink-2,#5a524b)}
 .fp-hide input{width:18px;height:18px}
-@media (min-width:760px){.fr-s>.emg-item.fc{flex-basis:300px}}
+@media (min-width:760px){.fr-s{grid-template-columns:1fr 1fr}}
 </style>
 <style id="uicss">
 .pk{display:grid;gap:8px;margin:4px 0 6px}.pk[hidden]{display:none}
@@ -145,6 +144,8 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
 .pk-b button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:7px 11px;font-size:.88rem;color:#3c2f26;cursor:pointer;line-height:1.2}
 .pk-b button small{margin-left:4px;font-size:.76rem;color:#6b5f56}
 [data-ffi][hidden],[data-ffg][hidden]{display:none!important}
+.emg-pref.ff-sel>h4{display:none}
+.ff-load{margin:6px 0;font-size:.85rem;color:#7a6a5e}
 .ux-img{position:relative;aspect-ratio:3/2;overflow:hidden;background:#f4f1ee}
 .ux-img img{display:block;width:100%;height:100%;object-fit:cover}
 .ux-img::after{content:"イメージ";position:absolute;right:6px;bottom:6px;font-size:.66rem;line-height:1;padding:3px 6px;border-radius:6px;background:rgba(0,0,0,.45);color:#fff}
@@ -241,7 +242,7 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
     <div class="emg">
       
       
-      <section class="emg-pref" data-pref="佐賀県"><h2 style="font-size:1.15em">夜間・救急の動物病院（佐賀県・1院）</h2><div class="fr"><div class="fr-s"><div class="emg-item emg-co fc cs" data-fit="{&quot;a&quot;:[&quot;dog&quot;,&quot;cat&quot;],&quot;o&quot;:1,&quot;at&quot;:&quot;犬・猫&quot;}" data-city="福岡市博多区（福岡県）" data-ft="夜も"><div class="cs-ph cs-ph0" data-gph="H098" aria-hidden="true"></div><div class="fc-body"><a class="ux-c-n" href="https://pet99.net/" target="_blank" rel="noopener"><b>福岡夜間救急動物病院</b></a><p class="ux-c-l cs-l"><i aria-hidden="true">🕒</i><span>20時〜翌5時</span></p><p class="ux-c-l cs-l"><i aria-hidden="true">📍</i><span>福岡県福岡市博多区月隈5丁目2-40</span></p><p class="fc-fit" hidden></p><div class="ux-c-a"><a href="https://pet99.net/" target="_blank" rel="noopener">公式サイト ↗</a></div><div class="fc-acts"><div class="emg-score" data-id="H098"></div><a class="emg-taxi fc-a fc-a-car" href="/?to=%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E6%9C%88%E9%9A%885%E4%B8%81%E7%9B%AE2-40#form" aria-label="この病院までのペットタクシーの料金をくらべる">タクシー料金</a><a class="emg-taxi fc-a fc-a-info" href="/hospital/night/fukuoka/h098/" aria-label="福岡夜間救急動物病院のくわしい情報（受付時間・料金・行き方）">くわしく</a></div></div></div></div></div></section>
+      <section class="emg-pref" data-pref="佐賀県"><h2 style="font-size:1.15em">夜間・救急の動物病院（佐賀県・1院）</h2><div class="fr"><div class="fr-s"><div class="emg-item emg-co fc cs" data-fit='{"a":["dog","cat"],"o":1,"at":"犬・猫"}' data-city="福岡市博多区（福岡県）" data-ft="夜も"><div class="cs-ph cs-ph0" data-gph="H098" aria-hidden="true"></div><div class="fc-body"><a class="ux-c-n" href="https://pet99.net/" target="_blank" rel="noopener"><b>福岡夜間救急動物病院</b></a><p class="ux-c-l cs-l"><i aria-hidden="true">🕒</i><span>20時〜翌5時</span></p><p class="ux-c-l cs-l"><i aria-hidden="true">📍</i><span>福岡県福岡市博多区月隈5丁目2-40</span></p><p class="fc-fit" hidden></p><div class="ux-c-a"><a href="https://pet99.net/" target="_blank" rel="noopener">公式サイト ↗</a></div><div class="fc-acts"><div class="emg-score" data-id="H098"></div><a class="emg-taxi fc-a fc-a-car" href="/?to=%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E6%9C%88%E9%9A%885%E4%B8%81%E7%9B%AE2-40#form" aria-label="この病院までのペットタクシーの料金をくらべる">タクシー料金</a><a class="emg-taxi fc-a fc-a-info" href="/hospital/night/fukuoka/h098/" aria-label="福岡夜間救急動物病院のくわしい情報（受付時間・料金・行き方）">くわしく</a></div></div></div></div></div></section>
       <div class="art pp-ans"><div class="answer"><h2 id="answer">佐賀県の夜間・救急の動物病院のポイント</h2><ul class="kv"><li><b class="k">佐賀県で夜間に診てもらえる動物病院は？</b>この一覧では、佐賀県で夜間・救急に診てもらえる動物病院を1院載せています（福岡夜間救急動物病院）。</li><li><b class="k">佐賀県に24時間や朝まで診てくれる動物病院はありますか？</b>公式サイトの受付時間の書き方で数えると、佐賀県で載せている1院のうち、24時間と書いているのは0院、朝5時以降まで受け付けるのは1院、夜中の0時をこえて受け付けるのは1院です。</li><li><b class="k">佐賀県で、夜中に病院まで運んでくれる会社は？</b>公式サイトに緊急・夜間の搬送を書いている会社が1社あります（福岡わんわんエクスプレス）。</li></ul></div><ul class="vstats"><li><b>1院</b><span>佐賀県で、この一覧に載せている夜間・救急の動物病院</span></li></ul><ul><li>県の中にある夜間・救急の病院：0院</li><li>県の中に見つからないため、近くの県の病院も載せています：1院（所在地の県をカードに書いています）</li></ul></div>
       <style>@media (max-width:640px){.pp-tbl thead{display:none}.pp-tbl,.pp-tbl tbody{display:block}.pp-tbl tr{display:block;padding:9px 0;border-bottom:1px solid #efe0d3}.pp-tbl td{display:none;border:0!important;padding:0!important}.pp-tbl td.pp-n{display:block;font-weight:700;margin:0 0 5px}.pp-tbl td.pp-ok{display:inline-block;font-size:0!important;color:transparent;margin:0 5px 5px 0}.pp-tbl td.pp-ok::before{content:"✓ " attr(data-l);font-size:.78rem;background:#e6f4ea;color:#1e7d4f;border-radius:999px;padding:2px 9px;font-weight:700}.pp-tbl td.pp-v{display:inline-block;font-size:.78rem;color:#5f5148;margin:0 8px 5px 0}.pp-tbl td.pp-v::before{content:attr(data-l) "：";color:#8a7b70}}</style><details class="cpt" data-cpt><summary>条件の表を開く</summary><div class="cpt-b"><div class="tbl"><table class="pp-tbl t2"><thead><tr><th>名前</th><th>受付時間</th><th>所在地</th></tr></thead><tbody><tr><td class="pp-n">福岡夜間救急動物病院</td><td class="pp-v s" data-l="受付時間">20時〜翌5時</td><td class="pp-v" data-l="所在地">福岡市博多区（福岡県）</td></tr></tbody></table></div><p class="emg-tips-note">○＝書いてある。空欄は「しない」ではなく「分からない」です。</p></div></details>
       

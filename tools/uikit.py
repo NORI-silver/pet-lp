@@ -27,6 +27,8 @@ CSS = """<style id="uicss">
 .pk-b button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:7px 11px;font-size:.88rem;color:#3c2f26;cursor:pointer;line-height:1.2}
 .pk-b button small{margin-left:4px;font-size:.76rem;color:#6b5f56}
 [data-ffi][hidden],[data-ffg][hidden]{display:none!important}
+.emg-pref.ff-sel>h4{display:none}
+.ff-load{margin:6px 0;font-size:.85rem;color:#7a6a5e}
 .ux-img{position:relative;aspect-ratio:3/2;overflow:hidden;background:#f4f1ee}
 .ux-img img{display:block;width:100%;height:100%;object-fit:cover}
 .ux-img::after{content:"イメージ";position:absolute;right:6px;bottom:6px;font-size:.66rem;line-height:1;padding:3px 6px;border-radius:6px;background:rgba(0,0,0,.45);color:#fff}
@@ -147,7 +149,10 @@ def write_js(ROOT):
     slug = {x[1]: x[0] for x in PREFS}
     slug.update({"東京都": "tokyo", "神奈川県": "kanagawa", "埼玉県": "saitama", "千葉県": "chiba"})  # 4都県は prefs.PREFS の外（gen_dogrun.py の PSLUG と同じ足し方）
     js = open(os.path.join(HERE, "find.js"), encoding="utf-8").read().replace("__SLUG__", _j.dumps(slug, ensure_ascii=False))
-    out = "// 生成：tools/uikit.py（元は tools/find.js と tools/prefkeep.py）\n" + prefkeep.FN + prefkeep.GUESS + "\n" + js
+    # 配信用はコメント行と行頭の空白だけを除き、改行と検索の処理は保つ（24KB 上限）。
+    src = prefkeep.FN + prefkeep.GUESS + "\n" + js
+    out = "// 生成：tools/uikit.py（元は tools/find.js と tools/prefkeep.py）\n"
+    out += "\n".join(line.strip() for line in src.split("\n") if line.strip() and not line.strip().startswith("//")) + "\n"
     open(os.path.join(ROOT, "find.js"), "w", encoding="utf-8").write(out)
     return len(out.encode())
 
@@ -218,8 +223,9 @@ HOTEL = dict(
     # 猫専用は「どの動物」の軸に置く（Nori 2026-11-23 第2弾で採用。サービスの内容の軸に混ぜない）
     animals=("どの子を預けますか？", [("a:dog", "犬"), ("cat", "猫"), ("cat_only", "猫専用")]),
     who=("うちの子にあてはまるもの", [("big", "大型犬（25kg以上）"), ("sen", "シニア・介護が必要"), ("pup", "子犬・子猫"), ("med", "薬・持病がある"), ("multi", "2頭以上いる"), ("shy", "かむ・ほえる・こわがり")]),
-    need=("どんなホテルをお探しですか？", [("vet", "病院が併設"), ("pickup", "送迎あり"), ("night_staff", "夜もスタッフ"), ("private_room", "個室")]),
-    more=[("設備", [("camera", "カメラで見守り"), ("run", "ドッグラン"), ("cagefree", "ケージフリー"), ("walk", "散歩つき")])],
+    need=("どんなホテルをお探しですか？", [("vet", "病院が併設"), ("pickup", "送迎あり"), ("night_staff", "夜もスタッフ"), ("staff24", "24時間見守り・スタッフ常駐"), ("private_room", "個室")]),
+    more=[("設備", [("camera", "カメラで見守り"), ("run", "ドッグラン"), ("cagefree", "ケージフリー"), ("walk", "散歩つき"), ("longstay", "長期OK")]),
+          ("体重（上限が書いてあるホテルだけ）", [("wb5", "5kg未満"), ("wb10", "5〜10kg"), ("wb25", "10〜25kg")])],
     go="この条件でホテルを探す")
 
 def _end(h, i, tag="div"):
@@ -364,7 +370,7 @@ def _keys(t, cat, url=""):
     import json as _j, ownerfit
     k, no = [], []
     raw = {x.strip() for x in (_ATTR(t, "data-tags") + "|" + _ATTR(t, "data-ft")).split("|") if x.strip()}
-    try: f = _j.loads(_ATTR(t, "data-fit") or "{}")
+    try: f = _j.loads((_h.unescape(_m.group(1)) if (_m := re.search(r"\bdata-fit='([^']*)'", t)) else _ATTR(t, "data-fit")) or "{}")
     except Exception: f = {}
     a = f.get("a") or []
     for key, syn in ANIMAL_SYN.items():
@@ -429,12 +435,17 @@ def generic_list(h, cat, hub):
     elif cat == "dog-trainer":  # 困りごとは「詳しい条件」に隠さず、見える行に出す（Nori 2026-11-23 第2弾）
         when = ("困りごとから探す", [(k, l) for k, l in ownerfit.CONCERNS.items() if use(k)])
     elif cat == "trimming":
-        when = ("受けられること", [(k, l) for k, l in [("bubun", "部分ケア（爪切り・耳掃除だけ）")] if use(k)])
+        when = ("受けられること", [(k, l) for k, l in [("bubun", "部分ケア（爪切り・耳掃除だけ）"), ("nail", "爪切りだけ"), ("ear", "耳掃除だけ")] if use(k)])
     else:
         when = None
     if when is not None and not when[1]: when = None
     need = [(k, l) for k, l, _ in sv if use(k)]
     more = [(k, l) for k, l, _ in mv if use(k)]
+    # 公式サイトの文から決める条件（ownerfit の FAC）を、サービスの内容・そのほかの条件にも出す（2026-11-24 全面改修）
+    if cat == "dog-trainer" and use("private"): need.append(("private", "個別レッスン"))
+    if cat == "rojin-home" and use("medical"): need.append(("medical", "医療・投薬対応"))
+    if cat == "pet-sitter":
+        more += [(k, l) for k, l in [("stay", "泊まりの留守番"), ("sameday", "当日も相談できる"), ("regular", "定期利用")] if use(k)]
     bx = box(cat, q_ph="都道府県・市区町村", opts=opts if (hub and opts) else None, animals=animals,
              who=who, when=when, need=(qsv, need), more=[("そのほかの条件", more)] if more else (), unit="件", noun=noun, go=go, guess=bool(hub and opts))
     em = h.find('<div class="emg">')

@@ -671,7 +671,7 @@ function fill(){{M.innerHTML='<option value="">市区町村をえらぶ</option>
 function load(cb){{if(D)return cb();fetch('/{SLUG}/munis.json').then(function(r){{return r.json()}}).then(function(j){{D=j;cb()}}).catch(function(){{O.textContent='読み込めませんでした。時間をおいてお試しください。'}})}}
 P.addEventListener('change',function(){{load(fill)}});if(P.value)load(fill);
 M.addEventListener('change',function(){{var r=(D[P.value]||[])[M.value];if(!r){{O.innerHTML='';return}}var n=esc(r[0]),top=r[3]?'<a href="'+esc(r[3])+'" target="_blank" rel="noopener">'+n+'の公式サイト ↗</a>':'',h='';
-if(r[1]=='page'||r[1]=='card')h='<a href="'+esc(r[2])+'">'+n+'の決まりをくわしく →</a>';
+if(r[1]=='page'||r[1]=='card')h='<div class="hn-full" data-u="'+esc(r[2])+'" data-n="'+n+'"><p class="hn-shn">決まりを読み込んでいます…</p></div>';
 else if(r[1]=='link')h=n+'の決まり：<a href="'+esc(r[2])+'" target="_blank" rel="noopener">'+esc(r[4]||'ペットと避難')+' ↗</a>';
 else if(r[1]=='none')h=n+'では、ペットと避難の決まりが見つかりませんでした。'+top+'の防災のページか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
 else h=n+'の決まりは、まだまとめていません。'+top+'で「ペット 避難」とさがすか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
@@ -684,6 +684,9 @@ h=g+(w?'<ul class="hn-rows">'+w+'</ul>':'')+h}}
 O.innerHTML=h;if(r[6]){{var sw=document.createElement('div');sw.className='hn-shw';sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこんでいます…</p>';O.appendChild(sw);
 fetch('/{SLUG}/s/'+r[6]+'.json').then(function(x){{return x.json()}}).then(function(L){{function li(s){{var q=s[2]+','+s[3];return '<li data-ll="'+q+'"><b>'+esc(s[0])+'</b><span>'+esc(s[1])+'</span>'+(s[5]?'<em>🐾 '+esc(s[5])+'</em>':'')+'<a href="https://www.google.com/maps/search/?api=1&amp;query='+q+'" target="_blank" rel="noopener">地図 ↗</a></li>'}}
 var t='<h2>🏫 '+n+'の指定避難所 <small class="hn-n">'+L.length+'か所</small></h2><button type="button" class="hn-near">📍 近い避難所をさがす</button><div class="hn-nearout" aria-live="polite"></div><ol class="hn-sh">'+L.slice(0,5).map(li).join('')+'</ol>';
-if(L.length>5)t+=(r[1]=='page'?'<p class="hn-shn"><a href="'+esc(r[2])+'#shelters">'+n+'の避難所をすべて見る（'+L.length+'か所）→</a></p><ol class="hn-sh" hidden>'+L.slice(5).map(li).join('')+'</ol>':'<details class="hn-ward"><summary>ほかの'+(L.length-5)+'か所</summary><ol class="hn-sh">'+L.slice(5).map(li).join('')+'</ol></details>');
+if(L.length>5)t+='<details class="hn-ward"><summary>ほかの'+(L.length-5)+'か所</summary><ol class="hn-sh">'+L.slice(5).map(li).join('')+'</ol></details>';
 sw.innerHTML=t+(r[8]?'<p class="hn-src">🐾ペットの場所：<a href="'+esc(r[8][1])+'" target="_blank" rel="noopener">'+esc(r[8][0])+'</a>をもとに作成。</p>':'')+'{SH_SRC_JS}'}}).catch(function(){{sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこめませんでした。</p>'}})}}
+var fu=O.querySelector('.hn-full');
+if(fu){{var fuU=fu.getAttribute('data-u'),fuN=fu.getAttribute('data-n'),fuBack='<a href="'+fuU+'">'+fuN+'の決まりをくわしく →</a>';
+fetch(fuU).then(function(x){{return x.text()}}).then(function(t){{var d=new DOMParser().parseFromString(t,'text/html');var c=d.querySelector('.hn-card[id="'+fuN+'"]')||d.querySelector('.hn-card');if(!c){{fu.innerHTML=fuBack;return}}var cl=c.cloneNode(true);var h3=cl.querySelector('h3');if(h3)h3.remove();fu.innerHTML='';fu.appendChild(cl)}}).catch(function(){{fu.innerHTML=fuBack}})}}
 try{{gtag('event','hinan_find',{{pref:P.value,status:r[1]}})}}catch(e){{}}}})}})();</script>""" + SH_CSS + NEAR_JS

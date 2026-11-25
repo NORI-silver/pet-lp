@@ -95,6 +95,24 @@ FOR_TEXT = {
 }
 
 # ---- 公式サイトの情報から「合う・合わない」のデータを作る ----
+def fit_attr_str(d):
+    """data-fit をシングルクォートで書く（値はDOM上まったく同じ。JSONの " を &quot; にしない分だけ小さくなる）。& ' < > は必ずエスケープする。"""
+    v = json.dumps(d, ensure_ascii=False, separators=(",", ":"))
+    v = v.replace("&", "&amp;").replace("'", "&#39;").replace("<", "&lt;").replace(">", "&gt;")
+    return " data-fit='" + v + "'"
+
+def fit_attr_values(h):
+    """HTMLの中の data-fit の値（ダブル・シングルどちらの書き方でも）を取り出す。"""
+    return [html.unescape(a or b) for a, b in re.findall(r'data-fit="([^"]*)"|data-fit=\'([^\']*)\'', h)]
+
+def fit_single_quote(h):
+    """ダブルクォートで書かれた data-fit を、同じ値のままシングルクォートの書き方にそろえる（DOM上の値は変わらない。& ' < > はエスケープ）。"""
+    def sub(m):
+        v = html.unescape(m.group(1))
+        v = v.replace("&", "&amp;").replace("'", "&#39;").replace("<", "&lt;").replace(">", "&gt;")
+        return " data-fit='" + v + "'"
+    return re.sub(r' data-fit="([^"]*)"', sub, h)
+
 def fit_attr(animals=None, only=False, sizes=None, max_kg=None, senior=None, puppy=None, animals_text=""):
     """生成側からカードに足す属性（' data-fit="…"'）。書いていないことは渡さない（＝要確認）。"""
     d = {}
@@ -106,7 +124,7 @@ def fit_attr(animals=None, only=False, sizes=None, max_kg=None, senior=None, pup
     if senior: d["sen"] = 1
     if puppy: d["pup"] = 1
     if not d: return ""
-    return ' data-fit="' + html.escape(json.dumps(d, ensure_ascii=False, separators=(",", ":"))) + '"'
+    return fit_attr_str(d)
 
 def _kinds_in(t):
     a = []
@@ -307,9 +325,13 @@ def build_card(card, conf, fit_by_name):
     name = _txt(head)
     loc, rows, chips, more, tail, keep = "", [], [], [], [], []
     svc_items = []
+    intro = ""
     for tag, x in kids[1:]:
         cls = (re.match(r"<\w+[^>]*\bclass=\"([^\"]*)\"", x) or [None, ""])[1]
         t = _txt(x)
+        if tag == "small" and cls == "emg-intro":
+            intro = t
+            continue
         if tag == "small" and "sg-src" in cls:
             more.append(x); continue
         if tag == "small" and "emg-spec" in cls:
@@ -337,7 +359,7 @@ def build_card(card, conf, fit_by_name):
             chips.insert(0, t); continue
         if tag == "div" and "emg-score" in cls:
             tail.append(x); continue
-        if tag == "a" and "emg-taxi" in cls:
+        if tag == "a" and ("emg-taxi" in cls or "fc-a-star" in cls):
             tail.append(x); continue
         if conf["key"] == "joto" and tag == "ul" and "jt-c" in cls:
             keep.append(x); continue
@@ -401,6 +423,7 @@ def build_card(card, conf, fit_by_name):
     if dp: ot = ot[:-1] + f' data-dp="{html.escape("|".join(dp))}">'
     # 見出しの「◯◯市の動物病院」は地域の見出しと重なるので出さない（Nori 2026-11-15「柏市の下に柏市の動物病院って全てのカードに入れてるけど不要」）
     body = [f'<div class="fc-name">{head}</div>']
+    if intro: body.append(f'<p class="fc-catch">{html.escape(intro)}</p>')
     if fors: body.append(f'<p class="fc-catch">{html.escape("・".join(fors[:2]))}に</p>')
     if trust:
         cr = "".join(f'<span class="cr">{html.escape(x.strip())}</span>' for x in dict.fromkeys(re.split(r"[、,]", trust[0])) if x.strip())
@@ -469,9 +492,8 @@ CSS = """<style id="fccss">
 .fr{margin:4px 0 18px}
 .fr-h{font-size:1.05rem!important;font-weight:800;margin:10px 0 8px!important;display:flex;align-items:baseline;gap:8px}
 .fr-h small{font-size:.78rem;font-weight:600;color:var(--ink-3,#6b625b)}
-.fr-s{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.fr-s{display:grid;gap:12px;padding:2px 2px 12px}
 .fr-more{margin:4px 0 18px;font-size:14px}.fr-more a{color:#c2410c;font-weight:600}
-.fr-s>.emg-item.fc{flex:0 0 80%;max-width:330px;scroll-snap-align:start}
 .fr-s>.emg-item.fc[hidden],.fr-s>.emg-item.fac-off,.emg-item.fc.fc-off{display:none}
 .fr:not(:has(.emg-item.fc:not([hidden]):not(.fac-off):not(.fc-hid):not(.fc-off))),.fr-empty{display:none!important}
 .fc-ph{position:relative;aspect-ratio:4/3;background:#f4f1ee;overflow:hidden}
@@ -536,7 +558,7 @@ CSS = """<style id="fccss">
 .fp-now b{font-weight:800}
 .fp-hide{display:flex;gap:6px;align-items:center;font-size:.82rem;color:var(--ink-2,#5a524b)}
 .fp-hide input{width:18px;height:18px}
-@media (min-width:760px){.fr-s>.emg-item.fc{flex-basis:300px}}
+@media (min-width:760px){.fr-s{grid-template-columns:1fr 1fr}}
 </style>"""
 
 FIT_JS = '<script src="/fit.js" defer></script>'
@@ -633,7 +655,7 @@ def _one(h, conf, fbn):
         h2 = h2.replace("</head>", CSS + "\n</head>", 1)
         h2 = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + sprite_for(h2), h2, count=1)
     if "data-fp" not in h2 and "data-hf" not in h2:  # 動物病院は /hosp.js のさがす欄（tools/hosp_find.py）
-        fits = [json.loads(html.unescape(x)) for x in re.findall(r'data-fit="([^"]+)"', h2)]
+        fits = [json.loads(x) for x in fit_attr_values(h2)]
         ku = {k for f in fits for k in f.get("a", [])}
         fl = [html.unescape(x).split("|") for x in re.findall(r'data-ft="([^"]*)"', h2)]
         nc = len(re.findall(r'class="emg-item emg-co fc', h2))
@@ -722,7 +744,22 @@ def build(ROOT):
                 open(p, "w", encoding="utf-8").write(h2); n += 1
     return n
 
+def quote_all(ROOT):
+    """全ページの data-fit の書き方だけをシングルクォートにそろえる（ほかは何も変えない）。"""
+    n = 0
+    for d in sorted(DIRS):
+        for base, _, files in os.walk(os.path.join(ROOT, d)):
+            if "index.html" not in files: continue
+            p = os.path.join(base, "index.html")
+            h = open(p, encoding="utf-8").read()
+            h2 = fit_single_quote(h)
+            if h2 != h:
+                open(p, "w", encoding="utf-8").write(h2); n += 1
+    return n
+
 if __name__ == "__main__":
     import sys
     sys.path.insert(0, HERE)
+    if "--quote-only" in sys.argv:
+        print("faccard quote-only", quote_all(os.path.dirname(HERE)), "pages"); sys.exit(0)
     print("faccard", build(sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(HERE)), "pages")

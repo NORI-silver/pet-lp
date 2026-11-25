@@ -32,7 +32,9 @@ SVC = [("park", "駐車場"), ("card", "カード払い"), ("ins", "ペット保
        ("school", "しつけ教室・パピークラス"), ("ct", "CT・MRI")]
 # 症状・お悩みから探す（飼い主さんの言葉 → 診療科目。科目は公式サイトの文から depts_of が決めたものだけを見る）
 SYMPTOMS = [("吐く・下痢", ["消化器科"]), ("皮膚のかゆみ", ["皮膚科"]), ("咳", ["呼吸器科", "循環器科"]),
-            ("歩き方がおかしい", ["整形外科", "神経科"]), ("目・耳の異常", ["眼科", "耳鼻科"])]
+            ("歩き方がおかしい", ["整形外科", "神経科"]), ("目・耳の異常", ["眼科", "耳鼻科"]),
+            # データに「内科」という科目は無い（2026-11-24 実測）。元気・食欲の相談先として実在する科目だけを当てる
+            ("元気・食欲がない", ["消化器科", "内分泌科", "腎臓・泌尿器"])]
 LABEL = dict(ANIMALS + WHEN + KIND + SVC)
 LABEL.update({"y:" + n: n for n, _ in SYMPTOMS})
 
@@ -236,7 +238,7 @@ CSS = """<style id="hfcss">
 .hf-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:8px;border-top:1px solid #f5ebe2}
 .hf-sum{flex:1;margin:0;font-weight:800;font-size:1rem;color:#2b2622}.hf-sum small{font-weight:400;color:#7a6a5e;font-size:.78rem;display:block}
 .hf-clear{white-space:nowrap;border:0;background:none;color:#7a6a5e;text-decoration:underline;font-size:.82rem;cursor:pointer}
-.hf-list{display:grid;gap:10px}
+.hf-list{display:grid;gap:10px;align-items:start}
 .hf-h{margin:14px 0 2px;font-size:.88rem;color:#7a6a5e;font-weight:700}
 .hc{background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px;overflow:hidden}
 .hc>.ux-img{position:relative;margin:-12px -14px 10px;aspect-ratio:2/1;overflow:hidden;background:#f4f1ee}.hc>.ux-img img{display:block;width:100%;height:100%;object-fit:cover}.hc>.ux-img span{position:absolute;right:6px;bottom:6px;font-size:.66rem;line-height:1;padding:3px 6px;border-radius:6px;background:rgba(0,0,0,.45);color:#fff}
@@ -349,8 +351,9 @@ def write_js(ROOT, avail, pslug, counts=None):
                 .replace("__NEAR__", json.dumps(near_prefs(), ensure_ascii=False, separators=(",", ":")))
                 .replace("__PICS__", json.dumps(_pics(ROOT), separators=(",", ":")))
                 .replace("__REG__", json.dumps([[g, [[pf, (counts or {}).get(pf, 0)] for pf in ps if (counts or {}).get(pf)]] for g, ps in REGIONS], ensure_ascii=False, separators=(",", ":"))))
-    # 行だけのコメントと行頭の空白を落として軽くする（/hosp.js は 24KB まで）
-    body = "\n".join(l.strip() for l in body.split("\n") if l.strip() and not l.strip().startswith("//"))
-    js = "// 生成ファイル（tools/hosp_find.py）。手で直さない\n(function(){" + prefkeep.FN + prefkeep.GUESS + body + "\n})();\n"
+    # 本体・共通部分ともに行だけのコメント・空白を落とす（/hosp.js は 24KB まで）。
+    def lite(src):
+        return "\n".join(line.strip() for line in src.split("\n") if line.strip() and not line.strip().startswith("//"))
+    js = "// generated: tools/hosp_find.py\n(function(){" + lite(prefkeep.FN + prefkeep.GUESS) + "\n" + lite(body) + "\n})();\n"
     open(os.path.join(ROOT, "hosp.js"), "w", encoding="utf-8").write(js)
     return len(js.encode())

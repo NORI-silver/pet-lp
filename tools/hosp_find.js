@@ -6,12 +6,11 @@
       list = document.getElementById("hfList"), sum = document.getElementById("hfSum");
   var SLUG = __SLUG__, LABEL = __LABEL__, REG = __REG__, SYM = __SYM__, av = null;
   list.addEventListener("click", function(ev){ var b = ev.target.closest("button[data-pk]"); if (!b) return; pick.set([{p: b.getAttribute("data-pk")}]); box.scrollIntoView({behavior: "smooth", block: "start"}); });
-  var NEED = {night: ["night"], sunhol: ["sun", "hol"], h24: ["h24"], visit: ["visit"], spec: ["spec"]};
-  var NEEDL = {night: "夜間・救急", sunhol: "日曜・祝日", h24: "24時間", visit: "往診", spec: "専門診療"};
+  var NEED = {night:["night"],sunhol:["sun","hol"],h24:["h24"],visit:["visit"],spec:["spec"]}
+  var NEEDL = {night:"夜間・救急",sunhol:"日曜・祝日",h24:"24時間",visit:"往診",spec:"専門診療"}
   // 病院の種類は「そういう病院か」なので、書いていなければ合わない（要確認には入れない）
-  var STRICT = {night: 1, visit: 1, catspec: 1, exospec: 1, large: 1, h24: 1, catroom: 1, ct: 1, spec: 1};
-  var FEAT = [["night", "夜間・救急"], ["h24", "24時間"], ["visit", "往診"], ["catspec", "猫専門"], ["exospec", "うさぎ・鳥などの専門"], ["large", "大型犬の設備"],
-              ["sun", "日曜診療"], ["hol", "祝日診療"], ["late", "19時以降も"], ["park", "駐車場あり"], ["card", "カード可"]];
+  var STRICT = {night:1,visit:1,catspec:1,exospec:1,large:1,h24:1,catroom:1,ct:1,spec:1}
+  var FEAT = [["night","夜間・救急"],["h24","24時間"],["visit","往診"],["catspec","猫専門"],["exospec","うさぎ・鳥などの専門"],["large","大型犬の設備"],["sun","日曜診療"],["hol","祝日診療"],["late","19時以降も"],["park","駐車場あり"],["card","カード可"]]
   var on = {}, need = NEED[box.dataset.preset] ? box.dataset.preset : "", data = null, near = {}, shown = 30, places = [], cache = {}, pick = null, spots = [];
   if (box.dataset.preset && !NEED[box.dataset.preset]) on[box.dataset.preset] = 1;
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]; }); }
@@ -77,8 +76,8 @@
   // カードの写真（使ってよいと確かめた写真だけ。tools/cardphoto.py と同じ形）。ない病院は共通の枠（Nori 2026-11-16）
   function picHtml(r){
     if (!r.ph) return '<div class="cs-ph cs-ph0"' + (r.rv ? ' data-gph="' + esc(r.rv) + '"' : '') + ' aria-hidden="true"></div>';
-    var ps = r.ph[0], im = ps.map(function(p, i){ var u = esc(p); return '<i class="cs-ph-i"><img class="b" src="' + u + '" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="' + u + '" alt="' + esc(r.n) + 'の写真' + (i + 1) + '" loading="lazy" decoding="async"></i>'; }).join("");
-    return '<div class="cs-ph"' + '><div class="cs-ph-s">' + im + '</div>' + (ps.length > 1 ? '<span class="cs-ph-n" aria-hidden="true">📷 ' + ps.length + '</span>' : '') + (r.ph[1] ? '<small class="cs-ph-c">' + esc(r.ph[1]) + '</small>' : '') + '</div>';
+    var ps = r.ph[0], im = ps.map(function(p, i){ return '<img src="' + esc(p) + '" alt="' + esc(r.n) + 'の写真' + (i + 1) + '" width="520" height="347" loading="lazy" decoding="async">'; }).join("");
+    return '<div class="cs-ph"><div class="cs-ph-s">' + im + '</div>' + (ps.length > 1 ? '<span class="cs-ph-n" aria-hidden="true">📷 ' + ps.length + '</span>' : '') + (r.ph[1] ? '<small class="cs-ph-c">' + esc(r.ph[1]) + '</small>' : '') + '</div>';
   }
   function card(r, unk){
     var b = [];
@@ -126,8 +125,7 @@
     var ks = keys(), m = match(data.filter(function(r){ return !r.far; }), ks, true), ok = m[0], unk = m[1];
     // 夜の時間に開いたときは、夜間・救急の病院を先に（受付中とは言い切らない）
     var nightFirst = night() && need !== "night";
-    // 写真のある病院を先に（Nori 2026-11-22）
-    ok.sort(function(a, b){ return (b[0].ph ? 1 : 0) - (a[0].ph ? 1 : 0); });
+    ok.sort(function(a, b){ return (b[0].ph ? 1 : 0) - (a[0].ph ? 1 : 0); });  // 写真のある病院を先に（Nori 2026-11-22）
     if (nightFirst) ok.sort(function(a, b){ return (b[0].y.indexOf("night") >= 0) - (a[0].y.indexOf("night") >= 0); });
     var t = typed(), pl = plabel() + (t ? "「" + t + "」" : "");
     sum.innerHTML = esc(pl) + "で合う病院 " + ok.length + "院" + (unk.length ? "<small>ほかに、公式の情報に書いていないので要確認 " + unk.length + "院</small>" : "")
@@ -179,8 +177,7 @@
     load.k = key;
     Promise.all(ps.map(get)).then(function(js){
       if (load.k !== key) return;
-      // av: 選んだ県のデータで1院以上に当てはまる条件
-      data = [].concat.apply([], js); av = {};
+      data = [].concat.apply([], js); av = {};  // 選んだ県のデータで1院以上に当てはまる条件
       data.forEach(function(r){ if (!r.far) { r.y.forEach(function(k){ av[k] = 1; }); (r.d || []).forEach(function(d){ av["d:" + d] = 1; }); if (r.t) av["open"] = 1; Object.keys(SYM).forEach(function(k){ if (has(r, k)) av[k] = 1; }); } });
       shown = 30; draw();
     });
@@ -208,8 +205,7 @@
     if (b.id === "hfClear") { on = {}; need = ""; pick.clearText(); shown = 30; draw(); return; }
     if (b.dataset.need !== undefined) {
       need = b.dataset.need;
-      // 専門診療は、診療科目などを選べるように開く
-      if (need === "spec") det.open = true;
+      if (need === "spec") det.open = true;  // 専門診療は、診療科目などを選べるように開く
       shown = 30; draw();
       try { window.gtag && gtag("event", "hosp_filter", {key: "need:" + (need || "none"), on: 1, pref: sel.value || "all"}); } catch (x) {}
       return;

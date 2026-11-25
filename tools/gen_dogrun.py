@@ -6,6 +6,7 @@
 # 守ること：順位・おすすめなし。電話番号なし。
 # 公式ページの情報だけ書く（書いていない項目は出さない）。データ：tools/dogrun.json（src は参考にした公式ページ）。
 import json, os, re
+from facility_review_links import link as review_link
 from urllib.parse import quote
 import prefkeep
 from prefs import PREFS
@@ -74,8 +75,8 @@ _NOPARK = re.compile(r"^(専用)?駐車場(は)?(なし|ない|ありません)|
 def ff_keys(d):
     k, no = [KIND_K[kind(d)]], []
     f = fee_tag(d)
-    if f in ("無料", "利用は無料"): k.append("free")
-    elif f == "有料": no.append("free")
+    if f in ("無料", "利用は無料"): k.append("free"); no.append("paid")
+    elif f == "有料": no.append("free"); k.append("paid")
     r = reg_tag(d)
     if r == "登録なしで使える": k.append("noreg")
     elif r == "登録がいる": no.append("noreg")
@@ -84,6 +85,12 @@ def ff_keys(d):
     pk = d.get("parking", "")
     if pk: (no if _NOPARK.search(pk) else k).append("park")
     if "24時間" in d.get("hours", ""): k.append("h24")
+    # 2026-11-24 採用条件：屋内・プール・会員制・カフェ併設。公式ページの文（項目の値すべて）に書いてあるときだけ
+    txt = " ".join(str(d.get(x, "")) for x in ("name", "place", "size", "need", "ng", "note", "access", "reg", "fee"))
+    if "屋内" in txt: k.append("indoor")
+    if re.search(r"プール|水遊び|じゃぶじゃぶ", txt): k.append("pool")
+    if "会員" in txt: k.append("member")
+    if "カフェ" in txt: k.append("cafe")
     return k, no
 
 def _short(v, n=34):
@@ -101,6 +108,7 @@ def ff_card(e, d, full=False):
     dest = (d.get("addr") or "") and _q(f'{d["name"]} {pf}{d["addr"]}')
     acts = f'<a class="ux-btn" href="{e(d["url"])}" target="_blank" rel="noopener">公式ページ ↗</a>'
     if dest: acts += f'<a class="ux-btn l" href="https://www.google.com/maps/dir/?api=1&amp;destination={dest}" target="_blank" rel="noopener" data-route>経路を見る</a>'
+    acts += review_link("dogrun", d, "ux-btn l")
     sub = "" if full else f'<a href="{href(pf)}#{d["id"]}">くわしく見る</a>'
     det = ""
     if full:
@@ -118,8 +126,9 @@ def ff_box(e, opts=None):
     import uikit
     return uikit.box("dogrun", q_ph="都道府県・市区町村・公園の名前", opts=opts, unit="か所", noun="ドッグラン", go="この条件でドッグランを探す",
                      who=("うちの子は", [("small", "小型犬（小型犬エリアあり）"), ("large", "大型犬（大型犬も入れる）")]),
-                     need=("どんなドッグランをお探しですか？", [("free", "無料"), ("noreg", "登録なしで使える"), ("park", "駐車場がある"), ("h24", "24時間")]),
-                     more=[("種類", [("public", "公園などの公営"), ("shop", "お店・施設"), ("sapa", "高速道路のSA・PA")])],
+                     need=("どんなドッグランをお探しですか？", [("free", "無料"), ("paid", "有料"), ("noreg", "登録なしで使える"), ("park", "駐車場がある"), ("h24", "24時間")]),
+                     more=[("種類", [("public", "公園などの公営"), ("shop", "お店・施設"), ("sapa", "高速道路のSA・PA")]),
+                           ("施設", [("indoor", "屋内"), ("pool", "プール・水遊び"), ("cafe", "カフェ併設"), ("member", "会員制")])],
                      guess=bool(opts), needpref=bool(opts))
 
 def nfree(rs): return sum(1 for d in rs if fee_tag(d) in ("無料", "利用は無料"))
@@ -587,7 +596,7 @@ def card(e, d):
     srcs = [u for u in d.get("src", []) if u != d["url"]]
     more = ("<small>ほかの出どころ：" + "、".join(f'<a href="{e(u)}" target="_blank" rel="noopener">{i + 1}</a>' for i, u in enumerate(srcs)) + "</small>") if srcs else ""
     return (f'<section class="dr-card" id="{d["id"]}"><h3>{e(d["name"])}</h3><p class="dr-city">{e(d["pref"])}{e(d.get("city", ""))}</p>{tags_html(e, d)}'
-            f'<dl>{rows}</dl><p class="dr-links"><a href="{e(d["url"])}" target="_blank" rel="noopener">公式ページで最新の情報を見る ↗</a>{more}</p>' + _fac_link(e, d) + '</section>')
+            f'<dl>{rows}</dl><p class="dr-links"><a href="{e(d["url"])}" target="_blank" rel="noopener">公式ページで最新の情報を見る ↗</a>{review_link("dogrun", d, "ux-btn l")}{more}</p>' + _fac_link(e, d) + '</section>')
 
 # [B] 2026-11-14 Nori「答えみたいなことからはじめて、もっと視覚的に」：県のページの最初に「先に答え」（よくある質問の答え）と数字のタイル
 def _answer(e, pf, rs, faq):

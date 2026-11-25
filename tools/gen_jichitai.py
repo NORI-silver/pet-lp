@@ -89,14 +89,17 @@ CSS = ("<style>.jc-hub:not(.on) .emg-pref,.jc-hub:not(.on) .emg-region{display:n
  ".jc-pol{display:flex;gap:10px;align-items:center;background:#f5f7ff;border-radius:14px;padding:12px;margin:10px 0}.jc-pol p{margin:0;font-size:.88rem}"
  ".jc-pol b{display:block}</style>")
 
-# 住まいの市区町村を入れる → その人の窓口のカード1枚だけを出す（Nori 2026-11-16「どこの窓口って書いてあるところが何を言ってるかわからない」）。
+# 住まいの市区町村を入れる → その地域の窓口を一覧の中で目立たせて見せる（2026-11-24 全面改修：1枚だけ出して他を隠す独自の形をやめ、
+# ほかの分野と同じ「県・市区町村でしぼった縦の一覧」の形に。Nori 2026-11-16「どこの窓口って書いてあるところが何を言ってるかわからない」）。
 # 対応の図（住まい → 窓口）はやめた。市区町村の一覧は /jichitai/munis.json（入れはじめたときだけ読む。都道府県は名前から自動で選ぶ）
 FIND_JS = """<script>(function(){var i=document.getElementById('jcQ'),o=document.getElementById('jcA'),sel=document.getElementById('hospPref'),D=null;if(!i)return;
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function show(pf,nm){if(sel.value!==pf){sel.value=pf;sel.dispatchEvent(new Event('change'))}var s=document.querySelector('.emg-pref[data-pref="'+pf+'"]');if(!s)return;var hit=null;
 s.querySelectorAll('.jc-card[data-city]').forEach(function(c){if(c.getAttribute('data-city')===nm)hit=c});if(!hit)hit=s.querySelector('.jc-card[data-main]');
-s.querySelectorAll('.jc-card').forEach(function(c){c.hidden=c!==hit;c.classList.toggle('hit',c===hit)});o.innerHTML='<b>'+esc(pf+nm)+'</b>の迷子・保護の窓口です。';if(hit){var c=hit.cloneNode(true);c.hidden=false;c.removeAttribute('data-city');c.removeAttribute('data-main');o.appendChild(c)}try{gtag('event','jichitai_find',{pref:pf})}catch(e){}}
-function reset(){document.querySelectorAll('.emg-pref .jc-card').forEach(function(c){c.hidden=false;c.classList.remove('hit')});o.textContent=''}
+document.querySelectorAll('.jc-card.hit').forEach(function(c){c.classList.remove('hit')});
+if(hit){hit.classList.add('hit');setTimeout(function(){hit.scrollIntoView({behavior:'smooth',block:'center'})},60)}
+o.innerHTML='<b>'+esc(pf+nm)+'</b>の迷子・保護の窓口は、一覧の中で目立つようにしたところです。';try{gtag('event','jichitai_find',{pref:pf})}catch(e){}}
+function reset(){document.querySelectorAll('.jc-card.hit').forEach(function(c){c.classList.remove('hit')});o.textContent=''}
 function go(){var v=i.value.replace(/[\\s　]/g,'');if(!v){reset();return}if(!D){fetch('/jichitai/munis.json').then(function(r){return r.json()}).then(function(j){D=j;go()});return}
 var h=[];Object.keys(D).forEach(function(pf){var w=v.indexOf(pf)===0?v.slice(pf.length):v;if(!w)return;D[pf].split(',').forEach(function(n){if(w===n||w.indexOf(n)===0||(w.length>=2&&n.indexOf(w)===0))h.push([pf,n])})});
 var ex=h.filter(function(x){return x[1]===v||x[0]+x[1]===v});if(ex.length===1)h=ex;
@@ -224,23 +227,24 @@ def render(ctx):
     <h1>迷子・犬の登録・飼えなくなったとき</h1>
   </div>
 </section>
-<section style="padding-top:8px">
+<section style="padding-top:0">
   <div class="wrap">
-    <h2 class="jc-pq">いま、どれで困っていますか？</h2>
+    <h2 class="jc-pq">あてはまる状況を選んでください</h2>
     <div class="jc-pick">
-      <a class="jc-pk u" href="/jichitai/maigo/"><b>うちの子が迷子になった</b><span>今日やることを順番に。届け出先・チラシ作りも</span></a>
+      <a class="jc-pk u" href="/jichitai/maigo/"><b>うちの子が迷子になった</b><span>まず何をするか・届け先・チラシ</span></a>
+      <a class="jc-pk" href="/jichitai/maigo/#pro"><b>ペット探偵を探す</b><span>民間の捜索サービスと料金を比較</span></a>
       <a class="jc-pk" href="/jichitai/maigo/#found"><b>迷子の子を見つけた・保護した</b><span>どこに届けるか</span></a>
       <a class="jc-pk" href="/jichitai/touroku/"><b>犬を迎えた（登録・予防注射）</b><span>いつまでに・どこで・いくら</span></a>
       <a class="jc-pk" href="/jichitai/tebanasu/"><b>飼い続けるのが難しくなった</b><span>手放す前にできること</span></a>
     </div>
   </div>
 </section>
-<section style="padding-top:0">
+<section style="padding-top:8px">
   <div class="wrap jc-hub">
-    <div class="sh"><h2>動物愛護センター・保健所をさがす</h2></div>
+    <div class="sh"><h2>自治体の窓口一覧</h2></div>
     <div class="emg">
+      <div class="f"><label for="hospPref">都道府県</label><select id="hospPref">{ctx["emg_opts"]}</select><p class="jc-hint">都道府県を選ぶか、市区町村を入れると、その地域の窓口が出ます。<button type="button" id="jcAll">全国の一覧を見る</button></p></div>
       <div class="jc-q1"><label for="jcQ"><i class="jc-ic i-pin"></i>市区町村から、受け持ちのセンター・保健所をさがす</label><input id="jcQ" type="text" placeholder="市区町村（例：佐倉市）" autocomplete="address-level2"><p id="jcA" class="jc-ans" aria-live="polite"></p></div>
-      <div class="f"><label for="hospPref">都道府県</label><select id="hospPref">{ctx["emg_opts"]}</select><p class="jc-hint">市区町村を入れるか、都道府県を選ぶと、その地域の窓口が出ます。<button type="button" id="jcAll">全国の一覧を見る</button></p></div>
       {body}
       <div class="emg-tips"><h4>窓口ごとに受け付けていること</h4>
       <div class="tbl"><table><thead><tr><th>窓口</th><th>おもに受け付けていること</th></tr></thead><tbody>{roles}</tbody></table></div>
@@ -251,6 +255,7 @@ def render(ctx):
     </div>
   </div>
 </section>
+
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sh"><h2>保護された子のお迎えや、通院の移動に</h2><p>動物愛護センターや動物病院への移動は、ペットタクシーを予約できます。当日の依頼もできます。</p></div>

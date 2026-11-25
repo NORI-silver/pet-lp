@@ -418,6 +418,10 @@ for open_id, listing_id in photo_alias.items():
 src = re.sub(r"/\*CO_PH\*/.*?/\*/CO_PH\*/", lambda m: "/*CO_PH*/var CO_PH = " + json.dumps({k: v for k, v in photo_map.items() if k not in _HIDDEN_PUBLIC_IDS}, ensure_ascii=False) + ";/*/CO_PH*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*PUBLIC_PAUSE\*/.*?/\*/PUBLIC_PAUSE\*/", lambda m: "/*PUBLIC_PAUSE*/var PUBLIC_PAUSE = " + json.dumps(_HIDDEN_PUBLIC_IDS) + ";/*/PUBLIC_PAUSE*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*CO_SITE\*/.*?/\*/CO_SITE\*/", lambda m: "/*CO_SITE*/var CO_SITE = " + json.dumps(_co_site(), ensure_ascii=False) + ";/*/CO_SITE*/", src, count=1, flags=re.S)
+# お気に入りでは、受付開始の前後で公開の会社IDが同じになるようにする。
+_fav_public = _co_site()
+_fav_alias = {p: d for p, d in photo_alias.items() if p not in _HIDDEN_PUBLIC_IDS and d not in _HIDDEN_PUBLIC_IDS and d in _fav_public}
+src = re.sub(r"/\*TAXI_FAVORITE_ALIASES\*/.*?/\*/TAXI_FAVORITE_ALIASES\*/", lambda m: "/*TAXI_FAVORITE_ALIASES*/var TAXI_FAVORITE_ALIASES = " + json.dumps(_fav_alias, sort_keys=True) + ";/*/TAXI_FAVORITE_ALIASES*/", src, count=1, flags=re.S)
 # 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、県の中に会社がない県は「（県外の会社のみ）」を付けるか、選択欄から消す）
 src = re.sub(r"/\*AREA_PREFS\*/.*?/\*/AREA_PREFS\*/", lambda m: "/*AREA_PREFS*/var AREA_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}), ensure_ascii=False) + ";/*/AREA_PREFS*/", src, count=1, flags=re.S)
 # 県の中にお店はないが、県の外の会社が「お迎えに行く」と書いている都道府県（「（県外の会社のみ）」を付ける）。どちらでもない県は選択欄から消す（Nori 2026-11-14）
@@ -2450,12 +2454,12 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
       if (window.gtag) gtag("event", "open_reviews", {});
       var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
       fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
-        if (j && j.ok && !(j.rating > 0)) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
+        if (j && j.ok && (!(j.rating > 0) || !(j.count > 0))) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
         if (!j || !j.ok) throw 0;
         memo[id] = {rating: j.rating, count: j.count}; paint(box, memo[id]);
         var panel = box.querySelector(".review-panel"), open = box.querySelector(".partner-review-open");
         fill(panel, j); panel.hidden = false; open.setAttribute("aria-expanded", "true");
-      }).catch(function(e){ box.replaceChildren(el("p", "partner-review-src", e === "none" ? "Googleマップの口コミはまだありません" : "口コミを読み込めませんでした。時間をおいてもう一度お試しください")); });
+      }).catch(function(e){ if (e === "none") { box.remove(); return; } b.disabled = false; b.textContent = "口コミをもう一度"; });
     });
   }
   function paint(box, rv){
@@ -2802,6 +2806,9 @@ print("cardphoto", cardphoto.build(ROOT))
 # 各分野の入口にキービジュアル（気持ちに合う写真＋解決の1行。tools/keyvisual.py、Nori 2026-11-16「各カテゴリでキービジュアルいれて」）
 import keyvisual
 print("keyvisual", keyvisual.build(ROOT), "pages")
+# 県を選んだら全部その場に出すためのデータ（県ページ・市区町村ページのカードを /find-data/ に。tools/find_data.py、Nori 2026-11-24）
+import find_data
+print("find_data", find_data.build(ROOT))
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] 後処理（カードの形・tidy など）で本文が短くなり、薄くなったページも検索に出さない（上で数えたのは後処理の前。
 # 2026-11-23 近畿：三重のシッターのページが後処理のあと 796 字になり、seo_check で止まった）。サイトマップからも外す。

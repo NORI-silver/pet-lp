@@ -2,6 +2,7 @@
 # Nori 2026-11-02「老犬ホーム、トレーナー、シッター」「今どんどん拡大していってよ」（拡充の3つめ。散歩代行・ペットホテルの話も入れる）。
 # 守ること：シッターからお金をもらわない。順位・おすすめをつけない。料金を書かない。電話番号を載せない。
 # 各グループの公式サイトの店舗一覧に載っていることだけ書く（店舗名・対応エリア・店舗ページ）。データ：tools/sitters.json。口コミの星は出さない（訪問型で店舗がない）。
+from facility_review_links import link as review_link
 import json, os
 import prefkeep
 import facility_cards as FC
@@ -32,7 +33,7 @@ def _card(e, s):
     extra += (f'<small>{e(ch["name"])}の店舗一覧より</small>' if s["chain"] != "indie" else '<small>公式サイトより</small>')
     if not s.get("url"):
         return f'<div class="emg-item emg-co"><b>{e(s["name"])}</b>{extra}</div>'
-    return (f'<div class="emg-item emg-co"{FC.attrs(e, "sitter", s, FC.sitter_tags(s, J["chains"]), s["name"])}><a href="{e(s["url"])}" target="_blank" rel="noopener"><b>{e(s["name"])}</b></a>{extra}</div>')
+    return (f'<div class="emg-item emg-co"{FC.attrs(e, "sitter", s, FC.sitter_tags(s, J["chains"]), s["name"])}><a href="{e(s["url"])}" target="_blank" rel="noopener"><b>{e(s["name"])}</b></a>{extra}{review_link("sitter", s)}</div>')
 
 def render(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
