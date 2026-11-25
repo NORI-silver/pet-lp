@@ -1,0 +1,79 @@
+# 一時の補助。動物病院188院+訂正2件を、修理PR(#807)の先端の上に載せる（確認用の branch だけ）。終わったら消す。
+name: photo-clin13-helper
+on:
+  push:
+    branches: ['NORI-silver-patch-13']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 足す（#807 の先端に、病院の追加を id で載せる）
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main NORI-silver-patch-3 NORI-silver-patch-2
+          git show origin/NORI-silver-patch-3:tools/vet_clinics.json > /tmp/B.json
+          git show origin/NORI-silver-patch-2:tools/vet_clinics.json > /tmp/O.json
+          git reset -q --hard origin/main
+          git log -1 --format='base %H'
+          python3 - <<'PY'
+          import json
+          L=lambda p:json.load(open(p,encoding='utf-8'))
+          b,o,t=L('/tmp/B.json'),L('/tmp/O.json'),L('tools/vet_clinics.json')
+          B={c['id']:c for c in b['clinics']};O={c['id']:c for c in o['clinics']};T={c['id']:c for c in t['clinics']}
+          mod=[i for i in O if i in B and O[i]!=B[i]]
+          conf=[i for i in mod if i in T and T[i]!=B[i] and T[i]!=O[i]]
+          res=[O[c['id']] if c['id'] in mod else c for c in t['clinics']]
+          new=[c for c in o['clinics'] if c['id'] not in T]
+          print('T',len(T),'new',len(new),'modified',len(mod),'conflicts',conf,'main-only-changed',sum(1 for i in T if i in B and T[i]!=B[i]),'ours-deleted',len([i for i in B if i not in O]))
+          assert not conf and len(new)>=180
+          out=dict(t);out['clinics']=res+new
+          ids=[c['id'] for c in out['clinics']];assert len(ids)==len(set(ids))
+          json.dump(out,open('tools/vet_clinics.json','w',encoding='utf-8'),ensure_ascii=False,indent=1)
+          print('total',len(ids),'new ids',len(new),'mod ids',mod)
+          json.dump({'new':[c['id'] for c in new],'mod':mod},open('/tmp/ids.json','w'))
+          PY
+          git diff origin/NORI-silver-patch-3 origin/NORI-silver-patch-2 -- tools/hosp_find.py | git apply --3way && echo 'hosp_find fix applied'
+          grep -c '県名の並びの空白だけ' tools/hosp_find.py || true
+      - name: 作り直し3回
+        run: |
+          for i in 1 2 3; do python3 tools/gen_areas.py . > /tmp/g$i.log 2>&1 || { tail -20 /tmp/g$i.log; exit 1; }; cp tools/lastmod.json /tmp/lm$i.json; git status --porcelain | awk '{print $2}' | sort > /tmp/ch$i.txt; echo "pass $i changed: $(wc -l < /tmp/ch$i.txt)"; done
+          echo "lastmod diff 2vs1: $(diff /tmp/lm1.json /tmp/lm2.json | wc -l)  3vs2: $(diff /tmp/lm2.json /tmp/lm3.json | wc -l)  changed-set 3v2: $(diff /tmp/ch2.txt /tmp/ch3.txt | wc -l)"
+          git status --porcelain | awk '{print $2}' | awk -F/ '{print $1"/"$2}' | sort | uniq -c | sort -rn | head -8
+          for p in dog-trainer/index.html pet-hotel/index.html hospital/index.html; do echo "GZ $p $(gzip -9c $p | wc -c)"; done
+          echo "hosp.js bytes $(wc -c < hosp.js)"
+          echo "koto: $(ls hospital/tokyo | grep -c koto) files-in-koto: $(ls hospital/tokyo/koto-ku 2>/dev/null | wc -l)"
+          git status --porcelain | grep -v "^ M hospital\|^?? hospital\|^ M tools\|^ D hospital" | head -12
+      - name: 検査とテスト（各ゲートの終了状態を記録。何も省かない）
+        run: |
+          fail=0
+          run(){ n="$1"; shift; rc=0; "$@" > /tmp/gate_$n.log 2>&1 || rc=$?; echo "GATE $n exit=$rc :: $(tail -2 /tmp/gate_$n.log | tr '\n' ' ' | cut -c1-200)"; if [ $rc -ne 0 ]; then fail=1; fi; }
+          run seo python3 tools/seo_check.py .
+          run rules python3 tools/rules_check.py .
+          run feedback python3 tools/feedback_check.py .
+          run consistency python3 tools/consistency_check.py .
+          tf=0; tn=0
+          for f in tests/*.test.cjs; do tn=$((tn+1)); rc=0; node "$f" > /tmp/one.log 2>&1 || rc=$?; if [ $rc -ne 0 ]; then tf=$((tf+1)); echo "TEST FAIL exit=$rc $f :: $(grep -E 'bytes gzipped|Error|FAIL' /tmp/one.log | head -3 | tr '\n' ' ')"; fi; done
+          echo "TESTS files=$tn failed=$tf"
+          if [ $tf -ne 0 ]; then fail=1; fi
+          echo "ALL_GATES_EXIT=$fail"
+          exit $fail
+      - name: コミット
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q --cached .github/workflows/*clin13-helper.yml 2>/dev/null || true
+          git add -A
+          git rm -q --cached -f .github/workflows/*clin13-helper.yml 2>/dev/null || true
+          git commit -qm "動物病院を188院足し、2院を訂正する（#807 の先端の上。生成物を含む）"
+          git push -f origin HEAD:refs/heads/NORI-silver-patch-14
+          git log -1 --format='HEAD %H'
