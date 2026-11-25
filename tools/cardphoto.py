@@ -126,6 +126,8 @@ def page(h, by_id, by_url, top="", compact=False):
         pos = j; n += 1
     out.append(h[pos:])
     h2 = front("".join(out))
+    if compact:  # 全国ページ（容量の上限あり）。data-city は県・市区町村ページと /find-data/ が使う印で、全国ページでは find.js が読まない（所在は見出しと本文で判定）ので外す
+        h2 = re.sub(r'(<div class="emg-item[^>]*?) data-city="[^"]*"', r"\1", h2)
     if n or "/hosp.js" in h2:
         photo_css = CSS
         h2 = h2.replace("</head>", photo_css + "</head>", 1)
@@ -182,7 +184,7 @@ def build(root):
         f = os.path.join(dp, "index.html")
         t = open(f, encoding="utf-8").read()
         if 'http-equiv="refresh"' in t: continue
-        u, k = page(t, by_id, by_url, top, rel == "dog-trainer")
+        u, k = page(t, by_id, by_url, top, rel in ("dog-trainer", "pet-hotel"))
         if u != t: open(f, "w", encoding="utf-8").write(u); pages += 1; cards += k
     return pages, cards, sum(1 for _ in by_id)
 
