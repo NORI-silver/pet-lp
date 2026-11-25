@@ -455,9 +455,6 @@ footer a{color:var(--ink-2)}
 .emg-guess{margin:6px 0 0;font-size:.8rem;color:var(--ink-2)}
 .emg-guess[hidden]{display:none}
 .open-note{margin:8px 0 0;background:#f7f4f1;border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
-#petForm.lite .opt-lite{display:none}
-#petForm.s1 .s1-hide{display:none}
-#petForm.s1 .pref-pick:not(.show){display:none}
 .see-btn{display:block;width:100%;margin:6px 0 4px;padding-inline:12px;box-shadow:0 6px 18px rgba(255,106,26,.24);text-wrap:balance}
 .see-sub{margin:0 0 12px;text-align:center;font-size:.8rem;color:var(--ink-3)}
 .refine-bar{margin:4px 0 14px}
@@ -1156,7 +1153,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
       <p class="emg-note" id="emgNote"></p>
     </div>
     <div class="form-card">
-      <form id="petForm" class="s1" novalidate>
+      <form id="petForm" novalidate>
         <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>空欄のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <p class="restore" id="restore" role="status"><span id="restoreMsg"></span><button type="button" id="restoreClear">入力を消す</button></p>
         <div class="group">
@@ -1184,7 +1181,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
           <button type="button" class="btn see-btn" id="seeBtn" aria-describedby="seeBtnHelp">会社と料金を見る</button>
-          <p class="see-sub" id="seeBtnHelp">料金の確認は無料です。ペットのことやご連絡先は、会社を見てから入れます。まだどこにも送信されません。</p>
+          <p class="see-sub" id="seeBtnHelp">ペットの条件を下の欄に入れると、条件に合う会社にしぼれます。料金の確認は無料です。まだ問い合わせは送信されません。</p>
           <div class="est" id="est" hidden aria-live="polite"></div>
         </div>
 
@@ -1355,7 +1352,7 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
     <h3>埼玉県の市ごとのペットタクシー</h3><ul><li><a href="/saitama/saitama-shi/">さいたま市のペットタクシー（よく行く区間の料金の目安）</a></li><li><a href="/saitama/kawaguchi/">川口市のペットタクシー（よく行く区間の料金の目安）</a></li><li><a href="/saitama/tokorozawa/">所沢市のペットタクシー（よく行く区間の料金の目安）</a></li></ul>
     <h3>埼玉県の夜間・救急の動物病院</h3>
     <p>夜や休日に具合が悪くなったときのために、埼玉県の夜間・救急の動物病院を受付時間つきで<a href="/hospital/night/#pref=%E5%9F%BC%E7%8E%89%E7%9C%8C">夜間・救急の動物病院の一覧</a>にまとめています。往診専門の動物病院（家まで来てくれる獣医さん）は<a href="/hospital/visit/#pref=%E5%9F%BC%E7%8E%89%E7%9C%8C">往診の一覧</a>、猫だけを診る病院は<a href="/hospital/cat/#pref=%E5%9F%BC%E7%8E%89%E7%9C%8C">猫専門の動物病院</a>にあります。</p>
-    <h3>埼玉県のドッグラン</h3><p>埼玉県には、ドッグランが10か所あります（公営8・お店・施設1・高速道路SA・PA1。川越公園ドッグラン「わんこの遊び場」（県営）、所沢航空記念公園ドッグラン（県営）、大間木ドッグランなど）。料金・利用登録・利用時間・小型犬エリアの有無は<a href="/dogrun/saitama/">埼玉県のドッグラン</a>にまとめています。</p>
+    <h3>埼玉県のドッグラン</h3><p>埼玉県には、ドッグランが10か所あります（公営8・お店・施設1・高速道路SA・PA1。朝霞市浜崎ドッグラン、川越公園ドッグラン「わんこの遊び場」（県営）、大間木ドッグランなど）。料金・利用登録・利用時間・小型犬エリアの有無は<a href="/dogrun/saitama/">埼玉県のドッグラン</a>にまとめています。</p>
     <h3>埼玉県のペットのサービス</h3><p>載せている一覧：<a href="/hospital/night/saitama/">埼玉県の夜間・救急の動物病院（6院）</a>、<a href="/sougi/saitama/">埼玉県のペット火葬・霊園（10か所）</a>、<a href="/rojin-home/saitama/">埼玉県の老犬ホーム・老猫ホーム（5施設）</a>、<a href="/dog-trainer/saitama/">埼玉県のドッグトレーナー・しつけ教室（78件）</a>、<a href="/pet-sitter/saitama/">埼玉県のペットシッター（86店）</a>、<a href="/trimming/saitama/">埼玉県の出張トリミング・訪問トリミング（147件）</a>、<a href="/pet-hotel/saitama/">埼玉県のペットホテル（233件）</a>。</p>
   </div>
 </section>
@@ -1792,7 +1789,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     return out.filter(function(x){ return !!x.el; });
   }
   function goIntakeFields(card){
-    intakeEditing = true; syncLite(false); openRefine("pet", true);
+    intakeEditing = true; openRefine("pet", true);
     var code = (card.intake_pending || {}).code;
     var first = pendingFields(card)[0];
     var target = code === "lead_time" ? $("date") : /route|road/.test(code || "") ? $("pickup") : first && first.el || $("pickup");
@@ -1807,7 +1804,6 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var shown = quotesLoaded ? bookable && picked : lastShown; // ご連絡先は、問い合わせできる会社を選んでから（3項目フォーム）。調べ直しているあいだは前のまま
     lastShown = shown;
     $("contactBox").hidden = !shown;
-    syncLite(!prefOpen() && !shown && !intakeEditing);
     if (shown && !prefOpen()) $("openNote").hidden = true; // ほかの県の会社が、お迎えか行き先の近くにいるとき
     var none = $("contactNone");
     if (!bookable && quotesLoaded) {
@@ -1818,11 +1814,6 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       none.hidden = false;
     } else if (none) none.hidden = true;
   }
-  // 入力を減らすとき：たずねない欄を隠して、入っていなくても先へ進めるようにする（送れる会社が出たら元に戻す）
-  function syncLite(lite){
-    form.classList.toggle("lite", lite);
-    form.querySelectorAll(".opt-lite input, .opt-lite select, .opt-lite textarea").forEach(function(el){ el.disabled = lite; });
-  }
   function syncOpenNote(){
     var v = $("pref").value, n = $("openNote");
     n.hidden = prefOpen();
@@ -1830,7 +1821,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     syncContact();
   }
   var lastBookable = false, lastShown = false, lastPetsWide = true;
-  // ── 3項目フォーム（2026-11-23 策のGO）：最初は「どこから・どこへ・いつ」だけ。ほかは候補の上のボタンで開く ──
+  // 判定に使う条件は初期表示する（Nori 2026-11-26）。任意の犬種・年齢だけ折りたたむ。
   function openRefine(which, quiet){
     var was = form.classList.contains("s1");
     form.classList.remove("s1"); $("refineBar").hidden = true;
@@ -2515,15 +2506,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         '<p style="margin:6px 0 0;font-size:.8rem;color:var(--ink-3)">乗せられる動物は会社ごとに違います。乗せられる会社を先に出します。</p></div></div>' +
       '<div class="f"><label for="' + k + '_weight">体重（kg）<span class="need">必須</span></label><input type="number" id="' + k + '_weight" name="' + k + '_weight" min="0.01" max="120" step="any" inputmode="decimal" placeholder="例：8（小さな子は 0.3 など）" required></div>' +
       '<div class="f opt-lite"><span class="lbl">ケージ・キャリー<span class="need">必須</span></span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true, "どれでも") + '</div>' +
-      '<details class="more opt-lite"><summary>犬種・年齢・予防接種など（任意）</summary><div class="two">' +
+      '<details class="more opt-lite"><summary>犬種・年齢など（任意）</summary><div class="two">' +
         '<div class="f opt-lite"><label for="' + k + '_breed"><span class="breed-lbl">犬種・猫種</span><span class="any">わかれば</span></label><div class="cb"><input type="text" id="' + k + '_breed" name="' + k + '_breed" class="breed" placeholder="選ぶか、入力してしぼりこみ" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><ul class="cb-list" role="listbox" hidden></ul></div></div>' +
         '<div class="f opt-lite"><label for="' + k + '_age">年齢<span class="any">わかれば</span></label><input type="number" id="' + k + '_age" name="' + k + '_age" min="0" max="40" inputmode="numeric" placeholder="例：12"></div>' +
         '<div class="f opt-lite"><span class="lbl">性別<span class="any">わかれば</span></span>' + seg(k + "_sex", [["オス","男の子"],["メス","女の子"]], false) + '</div>' +
-      '</div>' +
+      '</div></details>' +
       '<div class="f opt-lite"><span class="lbl">予防接種<span class="any">済んでいるものにチェック</span></span><div class="chks">' +
         '<label class="chk"><input type="checkbox" name="' + k + '_vac" value="1"> 混合ワクチン</label>' +
         '<label class="chk rabies"><input type="checkbox" name="' + k + '_rabies" value="1"> 狂犬病の予防注射</label></div></div>' +
-      '</details>' +
       '<div class="f opt-lite"><span class="lbl">介護は必要ですか？<span class="need">必須</span></span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true, "不要") +
         '<div class="care-box" hidden><span class="lbl">どんな手助けが必要ですか？<span class="any">あてはまるものすべて</span></span><div class="chks">' +
         CARE_OPTS.map(function(c){ return '<label class="chk"><input type="checkbox" name="' + k + '_care_need" value="' + c + '"> ' + c + '</label>'; }).join('') + '</div>' +
@@ -2540,7 +2530,6 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       c.querySelector(".pet-h b").textContent = n > 1 ? (i + 1) + "匹目" : "ペットの情報";
     });
     $("petHint").hidden = n > 0;
-    if (form.classList.contains("lite")) petsBox.querySelectorAll(".opt-lite input, .opt-lite select").forEach(function(el){ el.disabled = true; });
   }
   countSel.addEventListener("change", function(){ setPetCount(countSel.value); });
   setPetCount(countSel.value); // 最初から1匹分の欄を出す（いちばん多い1匹なら、頭数を選ぶ手間がいらない）

@@ -87,10 +87,19 @@ def ff_keys(d):
     if "24時間" in d.get("hours", ""): k.append("h24")
     # 2026-11-24 採用条件：屋内・プール・会員制・カフェ併設。公式ページの文（項目の値すべて）に書いてあるときだけ
     txt = " ".join(str(d.get(x, "")) for x in ("name", "place", "size", "need", "ng", "note", "access", "reg", "fee"))
+    web = d.get("web") or {}
+    if isinstance(web, dict) and web.get("text"): txt += " " + web["text"]
     if "屋内" in txt: k.append("indoor")
     if re.search(r"プール|水遊び|じゃぶじゃぶ", txt): k.append("pool")
     if "会員" in txt: k.append("member")
     if "カフェ" in txt: k.append("cafe")
+    # 2026-11-25 追加：大きさ専用エリア・全犬種（Nori「大型犬専用、中型犬専用、全犬種とかもある」）。書いてあるときだけ
+    if re.search(r"大型犬専用|大型犬のみ|大型犬限定|大型犬エリア", txt): k.append("bigonly")
+    if re.search(r"中型犬専用|中型犬のみ|中型犬エリア", txt): k.append("midonly")
+    if re.search(r"小型犬専用|小型犬のみ|小型犬限定|小型犬エリア", txt): k.append("smallonly")
+    if re.search(r"全犬種|犬種制限なし|フリーエリア|どの犬種も", txt): k.append("allsize")
+    if any(x in k for x in ("bigonly", "midonly", "smallonly")) or re.search(r"エリア(が|は)?(分かれ|別れ|区切ら)|大きさ別|サイズ別|犬種別|体重で分け", txt):
+        k.append("areadiv")
     return k, no
 
 def _short(v, n=34):
@@ -128,7 +137,8 @@ def ff_box(e, opts=None):
                      who=("うちの子は", [("small", "小型犬（小型犬エリアあり）"), ("large", "大型犬（大型犬も入れる）")]),
                      need=("どんなドッグランをお探しですか？", [("free", "無料"), ("paid", "有料"), ("noreg", "登録なしで使える"), ("park", "駐車場がある"), ("h24", "24時間")]),
                      more=[("種類", [("public", "公園などの公営"), ("shop", "お店・施設"), ("sapa", "高速道路のSA・PA")]),
-                           ("施設", [("indoor", "屋内"), ("pool", "プール・水遊び"), ("cafe", "カフェ併設"), ("member", "会員制")])],
+                           ("施設", [("indoor", "屋内"), ("pool", "プール・水遊び"), ("cafe", "カフェ併設"), ("member", "会員制")]),
+                           ("エリアの分け方", [("areadiv", "大きさでエリアが分かれている"), ("bigonly", "大型犬専用エリアがある"), ("midonly", "中型犬専用エリアがある"), ("smallonly", "小型犬専用エリアがある"), ("allsize", "全犬種いっしょのエリアがある")])],
                      guess=bool(opts), needpref=bool(opts))
 
 def nfree(rs): return sum(1 for d in rs if fee_tag(d) in ("無料", "利用は無料"))

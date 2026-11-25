@@ -15,7 +15,9 @@
   var btns = [].slice.call(box.querySelectorAll("button[data-k]"));
   var LBL = {};
   btns.forEach(function(b){ LBL[b.getAttribute("data-k")] = b.getAttribute("data-l") || b.textContent; });
+  var idxCtr = 0;
   function initItem(it){
+    if (it._idx === undefined) it._idx = idxCtr++;
     // 条件：data-k と、カードの印（data-ft・data-tags。区切りは「|」、空白は「_」に）
     var ex = [it.getAttribute("data-ft"), it.getAttribute("data-tags")].join("|").split("|").filter(Boolean).map(function(x){ return x.trim().replace(/ /g, "_"); });
     it._k = " " + (it.getAttribute("data-k") || "") + " " + ex.join(" ") + " ";
@@ -29,6 +31,22 @@
     [].forEach.call(it.querySelectorAll(".ux-c-l"), function(r){ var i = r.querySelector("i"); if (i && i.textContent.indexOf("🚗") >= 0) it._area = r.textContent.replace("🚗", "").trim(); });
   }
   items.forEach(initItem);
+  // 表示順（Nori 2026-11-25）：標準は生成時の並び（情報が多い順）。グループ（市区町村）の中だけで並べかえる
+  var sortSel = document.getElementById("ffSort");
+  function doSort(){
+    var mode = sortSel ? sortSel.value : "", seen = [], groups = [];
+    items.forEach(function(it){ var p = it.parentNode; if (!p) return; var gi = seen.indexOf(p); if (gi < 0) { seen.push(p); groups.push([p, []]); gi = groups.length - 1; } groups[gi][1].push(it); });
+    groups.forEach(function(g){
+      var arr = g[1].slice();
+      arr.sort(function(a, b){
+        if (mode === "photo") { var pa = a.querySelector('img[src*="/img/fac/"]') ? 0 : 1, pb = b.querySelector('img[src*="/img/fac/"]') ? 0 : 1; if (pa !== pb) return pa - pb; }
+        else if (mode === "name") { var na = a.getAttribute("data-name") || "", nb = b.getAttribute("data-name") || ""; if (na !== nb) return na < nb ? -1 : 1; }
+        return a._idx - b._idx;
+      });
+      arr.forEach(function(it){ g[0].appendChild(it); });
+    });
+  }
+  if (sortSel) sortSel.addEventListener("change", doSort);
   // カードのイメージ写真（無料の写真素材。本物の施設の写真ではないので「イメージ」と出し、alt は空）。となりが同じにならないよう順番に回す
   var pics = (box.getAttribute("data-pics") || "").split("|");
   if (pics[1]) {
@@ -120,6 +138,7 @@
   }
   function el(t, c, x){ var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
   function apply(track){
+    doSort();
     var ks = on(), pf = places, qs = norm(pick && !(pick.open && pick.open()) ? pick.text() : ""), idle = needPref && !pf.length && !qs;
     var c = [0, 0];
     items.forEach(function(it){
