@@ -1,0 +1,68 @@
+# 一時の補助。新しい main を取り込み、2回作り直して落ち着くか見る。終わったら消す。
+name: photo-rj-helper8
+on:
+  push:
+    branches: ['photo-rj']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: main を取り込む
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git diff --name-only HEAD...origin/main > /tmp/mainchg.txt
+          echo "main files changed since base: $(wc -l < /tmp/mainchg.txt)"
+          git merge origin/main -X theirs --no-edit -m "main を取り込む"
+          echo "merged main $(git rev-parse origin/main)"
+          echo "gen_rojin.py vs main:"; git diff origin/main --stat -- tools/gen_rojin.py tools/rojin.json | tail -3
+          python3 - <<'PY'
+          import json,subprocess
+          new=json.load(open('tools/rojin.json',encoding='utf-8'))
+          old=json.loads(subprocess.check_output(['git','show','origin/main:tools/rojin.json']))
+          oh={h['id']:h for h in old['homes']}; nh={h['id']:h for h in new['homes']}
+          print('rojin.json main',len(oh),'branch',len(nh),'existing identical',all(nh[i]==oh[i] for i in oh),'added',sorted(set(nh)-set(oh)))
+          PY
+      - name: 作り直し2回
+        run: |
+          pip install pillow
+          python3 tools/gen_areas.py . > /tmp/gen1.log 2>&1 || { tail -20 /tmp/gen1.log; exit 1; }
+          rm -rf tools/__pycache__
+          cp tools/lastmod.json /tmp/lm1.json
+          python3 tools/gen_areas.py . > /tmp/gen2.log 2>&1 || { tail -20 /tmp/gen2.log; exit 1; }
+          rm -rf tools/__pycache__
+          echo "2nd regen vs 1st lastmod diff lines: $(diff /tmp/lm1.json tools/lastmod.json | wc -l)"
+          echo "changed files vs merge commit: $(git status --porcelain | wc -l)"
+          echo "Code.gs lines differing from main: $(diff <(git show origin/main:booking/Code.gs) booking/Code.gs | grep -c '^>')"
+          echo "gz rojin-home: $(gzip -9c rojin-home/index.html | wc -c)  pet-hotel: $(gzip -9c pet-hotel/index.html | wc -c)"
+          echo "diff vs main (files): $(git diff --name-only origin/main | wc -l)"
+          git diff --name-only origin/main | grep -vE '^rojin-home/' | head -40
+          echo "--- 009 card predicate (tochigi)"
+          python3 - <<'PY'
+          import re
+          h=open('rojin-home/tochigi/index.html',encoding='utf8').read()
+          for m in re.finditer(r'<[a-z]+ [^>]*data-fid="R-B14-009"[^>]*>',h): print(m.group(0)[:400])
+          h=open('rojin-home/index.html',encoding='utf8').read()
+          for m in re.finditer(r'<[a-z]+ [^>]*data-fid="R-B14-009"[^>]*>',h): print('NATIONAL',m.group(0)[:400])
+          PY
+      - name: テスト
+        run: for f in tests/*.test.cjs; do echo "== $f"; node "$f" || exit 1; done
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git reset -q -- .github/workflows
+          git diff --cached --quiet && echo "no changes after merge" || git commit -qm "新しい main に合わせて作り直す"
+          git push
