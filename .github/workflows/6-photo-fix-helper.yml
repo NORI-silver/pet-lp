@@ -1,0 +1,38 @@
+# 一時の補助。文字や広告が入った写真を外し、生成ファイルを作り直す。終わったら消す。
+name: photo-fix-helper
+on:
+  push:
+    branches: ['photo-b2-1125']
+    paths: ['.github/workflows/photo-fix-helper.yml']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 写真を入れる
+        run: |
+          
+          cp tools/5-2-b2_data.json tools/b2_data.json
+          pip install pillow
+          python3 tools/4-1-b2_apply.py
+      - name: 生成ファイルを作り直す
+        run: |
+          python3 tools/gen_areas.py .
+          rm -rf tools/__pycache__
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f tools/4-1-b2_apply.py tools/5-2-b2_data.json tools/b2_data.json
+          git add -A
+          git reset -q .github/workflows/photo-fix-helper.yml
+          git commit -qm "文字や広告が入った写真を入れる"
+          git push
