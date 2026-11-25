@@ -33491,10 +33491,12 @@
     "/img/fac/hotel/PHkaf2c17_1.webp",
     "/img/fac/hotel/PHkaf2c17_2.webp",
     "/img/fac/hotel/PHkaf2c17_3.webp",
-    "/img/fac/hotel/PHkaf2c17_4.webp"
+    "/img/fac/hotel/PHkaf2c17_4.webp",
+    "/img/fac/hotel/PHkaf2c17_5.webp"
    ],
    "credit": "写真：Dog salon kurupino",
    "ratio": [
+    0.97,
     1.5,
     1.5,
     1.5,
@@ -41298,10 +41300,14 @@
    "src": "2026-11-24",
    "checked": "2026-11-24",
    "photos": [
-    "/img/fac/hotel/PHce74b04_1.webp"
+    "/img/fac/hotel/PHce74b04_1.webp",
+    "/img/fac/hotel/PHce74b04_2.webp",
+    "/img/fac/hotel/PHce74b04_3.webp"
    ],
    "credit": "写真：DogSalon kova",
    "ratio": [
+    1.0,
+    1.0,
     1.0
    ]
   },
@@ -42279,6 +42285,22 @@
    "credit": "写真：petsalonMINT",
    "ratio": [
     1.498
+   ]
+  },
+  {
+   "cat": "hotel",
+   "id": "PHcf246ea",
+   "name": "ドッグサロン ＣｈｏｕＣｈｏｕ",
+   "url": "http://chou2-kounan.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/hotel/PHcf246ea_1.webp"
+   ],
+   "credit": "写真：ドッグサロン ＣｈｏｕＣｈｏｕ",
+   "ratio": [
+    1.5
    ]
   },
   {
