@@ -135,6 +135,9 @@ def _fit_table():
         txt = (s.get("animals") or "") + (" " + ch.get("note", "") if s.get("chain") != "indie" else "")
         a = _kinds_in(txt)
         only = bool(re.search(r"専門|のみ|専用|だけ", s.get("animals") or ""))
+        if s.get("no_new_dog"):
+            a = [k for k in _kinds_in(s.get("animals", "")) if k != "dog"]
+            only = True
         if a: T["sitter"][s["name"]] = fit_attr(a, only, animals_text="・".join(KIND_LABEL[k] for k in a))
     ro = _load("rojin.json") or {}
     for h in ro.get("homes", []):

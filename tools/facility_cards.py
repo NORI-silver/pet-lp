@@ -58,7 +58,7 @@ def trainer_tags(t):
 
 def sitter_tags(s, chains):
     ch = chains.get(s.get("chain"), {})
-    txt = s.get("animals", "") + " " + (ch.get("note", "") if s.get("chain") != "indie" else "")
+    txt = s.get("animals", "") + " " + (ch.get("note", "") if s.get("chain") != "indie" and not s.get("no_new_dog") else "")
     out = []
     if "猫" in txt: out.append("猫")
     if re.search(r"小動物|うさぎ|ハムスター|フェレット", txt): out.append("小動物")
