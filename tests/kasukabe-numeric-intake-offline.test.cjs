@@ -34,8 +34,12 @@ pt.lineUrl='https://example.invalid/official-line';
 const card=find(p);
 const withKm=km=>({...p,route_details:JSON.stringify({km,backKm:km,from:a,to:b})});
 assert.equal(find(withKm(49)).price.amount,11385);
-assert.equal(find(withKm(50)),undefined,'confirmed separate quote from 50 km, inclusive');
-assert.equal(find(withKm(51)),undefined);
+for (const [km, amount] of [[50,11550],[51,11715]]) {
+  const long=find(withKm(km));
+  assert.ok(long?.token);
+  assert.equal(long.price.amount,amount);
+  assert.match(long.price.planNote,/片道50km以上は店舗が個別に確定料金/);
+}
 
 assert.equal(find({...p,route_details:JSON.stringify({km:10,backKm:10,from:a,to:b,routeEstimated:true})}),undefined);
 ctx.roadKm_=()=>null;

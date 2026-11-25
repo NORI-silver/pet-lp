@@ -3565,7 +3565,7 @@ function selectionValid_(p) {
 }
 
 // 春日部の試行：未設定の本番では閉じたまま。固定の会社ID・照合済みメール、明示的に選ばれた市内片道だけ。
-// 結合テスト用の未公開実装。料金と通知先の確認なしで、本番の設定から開けないようにする。
+// 結合テスト用の未公開実装。通知先の確認なしで、本番の設定から開けないようにする。
 var COCOTAKU_INTAKE_INTEGRATION_READY = false;
 var KASUKABE_INTAKE_ID = 'P014', KASUKABE_DISPLAY_ID = 'D853ae97';
 function kasukabeIntakeMailbox_() {
@@ -3638,14 +3638,11 @@ function quoteSignature_(p, id, expires, price) {
   return sign_('selection:' + JSON.stringify(QUOTE_FIELDS.map(function(k) { return String(p[k] || ''); })) + ':' + id + ':' + expires + ':' + JSON.stringify(price));
 }
 
-// 表示用の概算を申込にも引き継ぐ。未確認の加算・直線距離による概算には申込用の署名を発行しない。
+// 表示用の概算を申込にも引き継ぐ。確定額は店舗が返信し、飼い主さんが承認する。
 function pinnedIntakePrice_(displayId, p) {
   var c = DISPLAY_COMPANIES.filter(function(x) { return x.id === displayId; })[0], d;
   try { d = JSON.parse(p.route_details || '{}'); } catch (e) { return null; }
   if (!c || !c.shop || !c.fare || !d || d.routeEstimated || d.localEstimated || !d.from || !d.to) return null;
-  // 春日部店は片道50km以上で個別見積もり。比較用の概算を申込額にしない。
-  if (displayId === KASUKABE_DISPLAY_ID && (typeof d.km !== 'number' || !isFinite(d.km) ||
-      d.km >= 50 || (p.trip === '往復' && (typeof d.backKm !== 'number' || !isFinite(d.backKm) || d.backKm >= 50)))) return null;
   var points = p.trip === '往復' ? [d.from, d.to, d.backFrom, d.backTo] : [d.from, d.to];
   if (!points.every(function(x) {
     return x && typeof x.lat === 'number' && typeof x.lng === 'number' && x.lat >= 20 && x.lat <= 46 && x.lng >= 122 && x.lng <= 154;
@@ -3655,7 +3652,12 @@ function pinnedIntakePrice_(displayId, p) {
   if (roadKm_(shop, d.from) == null ||
       (p.trip === '往復' && !c.fare.pickOnce && roadKm_(shop, d.backFrom) == null)) return null;
   var price = displayPrice_(c, p);
-  return price && !price.incompleteFees && !price.taxUnknown && isFinite(price.amount) && price.amount > 0 ? price : null;
+  if (!price || !isFinite(price.amount) || price.amount <= 0) return null;
+  if (displayId === KASUKABE_DISPLAY_ID &&
+      (d.km >= 50 || d.highKm >= 50 || (p.trip === '往復' && (d.backKm >= 50 || d.highBackKm >= 50)))) {
+    price.planNote = (price.planNote || '') + '片道50km以上は店舗が個別に確定料金をお知らせします。';
+  }
+  return price;
 }
 
 function selectionPrice_(pt, p) {
