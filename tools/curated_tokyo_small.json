@@ -40753,5 +40753,565 @@
   "page": "http://chou2-kounan.jp/",
   "sha256": "304bde23ded9b1521906ac5e6c8542e754e54d18cf98a4fcfa69cedee077a8e7",
   "bytes": 19756
+ },
+ {
+  "id": "T002",
+  "file": "img/fac/trainer/T002_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=1920x10000:format=jpg/path/s8c4ea972ff983683/image/ic5a161383c33e40b/version/1785815003/image.jpg",
+  "page": "https://www.naturaldog.jp/",
+  "sha256": "1befc9cd8b6d15654c9ded4767ad135c3e403fb15042aec045b32781bf6de9f3",
+  "bytes": 71122
+ },
+ {
+  "id": "T002",
+  "file": "img/fac/trainer/T002_2.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=579x10000:format=jpg/path/s8c4ea972ff983683/image/i1a66a5f999930698/version/1357458006/image.jpg",
+  "page": "https://www.naturaldog.jp/aboutme/",
+  "sha256": "f9e58120afd03b6a95d66c37e5cce85ff2da644e31b79d586e04db76fa90088c",
+  "bytes": 16264
+ },
+ {
+  "id": "T003",
+  "file": "img/fac/trainer/T003_1.webp",
+  "src": "https://inu-dohken.com/images/slide/main-visual01.jpg",
+  "page": "https://inu-dohken.com/",
+  "sha256": "34d917276e9c426b14bf869680e698c203500d29dc0410dabfef02041107dee6",
+  "bytes": 13528
+ },
+ {
+  "id": "T003",
+  "file": "img/fac/trainer/T003_2.webp",
+  "src": "https://inu-dohken.com/images/slide/main-visual03.jpg",
+  "page": "https://inu-dohken.com/",
+  "sha256": "df70470e087395142a8d4a41a6d057a1b6a69d801b92a7e9b4c5ccdaec01b1d8",
+  "bytes": 66572
+ },
+ {
+  "id": "T003",
+  "file": "img/fac/trainer/T003_3.webp",
+  "src": "https://inu-dohken.com/images/slide/main-visual04.jpg",
+  "page": "https://inu-dohken.com/",
+  "sha256": "8f5e0603d0836f151ed9486e937b0567114cd662c7ad638952257602c98c3fee",
+  "bytes": 35660
+ },
+ {
+  "id": "T003",
+  "file": "img/fac/trainer/T003_4.webp",
+  "src": "https://inu-dohken.com/images/slide/main-visual05.jpg",
+  "page": "https://inu-dohken.com/",
+  "sha256": "77b5c1d4ac78adbf168be2454c92798f57296ba92f222e3ede31a48bf4c1cd65",
+  "bytes": 25502
+ },
+ {
+  "id": "T003",
+  "file": "img/fac/trainer/T003_5.webp",
+  "src": "https://inu-dohken.com/images/top/what-image01.jpg",
+  "page": "https://inu-dohken.com/",
+  "sha256": "9447a5522fac707f55e38d1e6d40f61cf584a12d2591472b4b3cf57c39f389ad",
+  "bytes": 55182
+ },
+ {
+  "id": "T003",
+  "file": "img/fac/trainer/T003_6.webp",
+  "src": "https://inu-dohken.com/images/top/what-image02.jpg",
+  "page": "https://inu-dohken.com/",
+  "sha256": "c884b405e2ca53ec2ad54f7839552bdc17a8b99f093f9140c71d2006d4da06a2",
+  "bytes": 23886
+ },
+ {
+  "id": "T194",
+  "file": "img/fac/trainer/T194_1.webp",
+  "src": "https://dogschoolujin.com/wp/wp-content/uploads/2019/01/right640.jpg",
+  "page": "https://dogschoolujin.com/",
+  "sha256": "14be6011cddc3bf035ad4c754248f66f895727dec47ec6b8eb3fd5e744ab09fb",
+  "bytes": 19240
+ },
+ {
+  "id": "T195",
+  "file": "img/fac/trainer/T195_1.webp",
+  "src": "https://s3-ap-northeast-1.amazonaws.com/img.p-kit.com/risedogschool/blog/1664863117021752300.jpg",
+  "page": "https://www.rise-dog.com/",
+  "sha256": "d0172c915aab6627b39d84210bfdede13319390793313b8d4ab6d35d7651cb65",
+  "bytes": 24666
+ },
+ {
+  "id": "T195",
+  "file": "img/fac/trainer/T195_2.webp",
+  "src": "https://s3-ap-northeast-1.amazonaws.com/img.p-kit.com/risedogschool/blog/1695508099043392500.jpg",
+  "page": "https://www.rise-dog.com/",
+  "sha256": "1634df2e38b785c5ffdf328ddcc07bbb1e63be2dcad7bb6ff02a7ddfdbffd31c",
+  "bytes": 89970
+ },
+ {
+  "id": "T195",
+  "file": "img/fac/trainer/T195_3.webp",
+  "src": "https://s3-ap-northeast-1.amazonaws.com/img.p-kit.com/risedogschool/1412834974061484000.jpg",
+  "page": "https://www.rise-dog.com/",
+  "sha256": "cd494617592ec6007a1c80959775d8abff27062c4646fa30b022982170ab3fee",
+  "bytes": 76932
+ },
+ {
+  "id": "T195",
+  "file": "img/fac/trainer/T195_4.webp",
+  "src": "https://s3-ap-northeast-1.amazonaws.com/img.p-kit.com/risedogschool/1500046497031101400.jpg",
+  "page": "https://www.rise-dog.com/",
+  "sha256": "be2cb22e8aee44cc95795efd11b9fa120060070c6cdb3b41deccf84361260ebe",
+  "bytes": 69026
+ },
+ {
+  "id": "T195",
+  "file": "img/fac/trainer/T195_5.webp",
+  "src": "https://s3-ap-northeast-1.amazonaws.com/img.p-kit.com/risedogschool/1499439254074251200.jpg",
+  "page": "https://www.rise-dog.com/",
+  "sha256": "2669aa038ae936a6f6075724d85ae09017420189c433ab262d9b4a36bf062be5",
+  "bytes": 56330
+ },
+ {
+  "id": "T-HT001",
+  "file": "img/fac/trainer/T-HT001_1.webp",
+  "src": "http://maki-dog.com/images/top-img01.jpg",
+  "page": "http://maki-dog.com/",
+  "sha256": "bdd61e948b3e2f302892594a8e5bd8f210a2411a34b733a9336472e8c60a5b08",
+  "bytes": 75742
+ },
+ {
+  "id": "T-HT001",
+  "file": "img/fac/trainer/T-HT001_2.webp",
+  "src": "http://maki-dog.com/images/top-img03.jpg",
+  "page": "http://maki-dog.com/",
+  "sha256": "b17a05eeac0c8af1fc4171526937fa62f90a1a6130c9cb7cd8383c7a0475431f",
+  "bytes": 59068
+ },
+ {
+  "id": "T-HT003",
+  "file": "img/fac/trainer/T-HT003_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=origxorig:format=jpg/path/sf62a7864d01f6837/image/i5cd62fccf22325cd/version/1444281862/image.jpg",
+  "page": "https://calmdogkainusijyuku.jimdofree.com/home/%E6%97%A7%E3%83%9B%E3%83%BC%E3%83%A0/",
+  "sha256": "63147c363e45deae8c5ccc2c65584c1c0905b36c8e59483364d13d382169880b",
+  "bytes": 145032
+ },
+ {
+  "id": "T-HT003",
+  "file": "img/fac/trainer/T-HT003_2.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=636x10000:format=jpg/path/sf62a7864d01f6837/image/i0c0fb5d06a6bc35c/version/1444281339/image.jpg",
+  "page": "https://calmdogkainusijyuku.jimdofree.com/home/%E6%97%A7%E3%83%9B%E3%83%BC%E3%83%A0/",
+  "sha256": "25132ed168562847b31c0e28c09423996d40dc8ef1e60dc41463b0f328399eed",
+  "bytes": 48662
+ },
+ {
+  "id": "T-HT006",
+  "file": "img/fac/trainer/T-HT006_1.webp",
+  "src": "https://www.wiz-dog.com/school/earth.jpg",
+  "page": "https://www.wiz-dog.com/school/school.htm",
+  "sha256": "99f7507f930a08288d9fcbc85d5839e855e45dbe9722906d05f4163dd9993475",
+  "bytes": 80166
+ },
+ {
+  "id": "T-HT006",
+  "file": "img/fac/trainer/T-HT006_2.webp",
+  "src": "https://www.wiz-dog.com/school/schoolomagari.jpg",
+  "page": "https://www.wiz-dog.com/school/school.htm",
+  "sha256": "c162a67ad3e1a70effa8ea25ca3109853deb06a5c954db6ce3de2fd08d41bc0a",
+  "bytes": 46690
+ },
+ {
+  "id": "T-HT006",
+  "file": "img/fac/trainer/T-HT006_3.webp",
+  "src": "https://www.wiz-dog.com/school/schoolnarashino.jpg",
+  "page": "https://www.wiz-dog.com/school/school.htm",
+  "sha256": "4780517e5fab1679f37ab1201e489333b2d964de0627f86eb332fb0568a4464d",
+  "bytes": 42754
+ },
+ {
+  "id": "T-HT006",
+  "file": "img/fac/trainer/T-HT006_4.webp",
+  "src": "https://www.wiz-dog.com/school/schoolmobara.jpg",
+  "page": "https://www.wiz-dog.com/school/school.htm",
+  "sha256": "5e0ac64b2abcd6dd895ffd3148788b1a29e1f10ad825c79a73763dc31598265a",
+  "bytes": 43258
+ },
+ {
+  "id": "T-HT006",
+  "file": "img/fac/trainer/T-HT006_5.webp",
+  "src": "https://www.wiz-dog.com/school/schoolinada.jpg",
+  "page": "https://www.wiz-dog.com/school/school.htm",
+  "sha256": "1907f3d243200025d820cfa9af32bd39633c432fea0f3025a356e24c53b423df",
+  "bytes": 115590
+ },
+ {
+  "id": "T-HT007",
+  "file": "img/fac/trainer/T-HT007_1.webp",
+  "src": "https://www.garden-a-h.com/slide/loop2.jpg",
+  "page": "https://www.garden-a-h.com/",
+  "sha256": "dff508f2c1375c9a5b636db4547067562f51d114557020af1ba9397dfbb2da2f",
+  "bytes": 22556
+ },
+ {
+  "id": "T-HT007",
+  "file": "img/fac/trainer/T-HT007_2.webp",
+  "src": "https://www.garden-a-h.com/slide/loop3.jpg",
+  "page": "https://www.garden-a-h.com/",
+  "sha256": "bd8700d00d54c1c86155a48c39de0f9855cd7d0c730898a4336aa9fbabf4976d",
+  "bytes": 10414
+ },
+ {
+  "id": "T-HT008",
+  "file": "img/fac/trainer/T-HT008_1.webp",
+  "src": "https://poochsapporo.com/wp-content/uploads/elementor/thumbs/pooch2021-11-09-27-pjmkj1k0byrma6loejt31368settkz3xfpg8z5adgm.jpeg",
+  "page": "https://poochsapporo.com/",
+  "sha256": "4d17f81d409a84baf775c4458c24cf4d022acdfb780cd96ec09723ed1e87eead",
+  "bytes": 48170
+ },
+ {
+  "id": "T-HT008",
+  "file": "img/fac/trainer/T-HT008_2.webp",
+  "src": "https://poochsapporo.com/wp-content/uploads/elementor/thumbs/20240319-scaled-qlffsl800gu4zfx3eyw1r9fvbztvzvl8psdkzrxcik.jpg",
+  "page": "https://poochsapporo.com/",
+  "sha256": "819b905ba64bc5c4774a2d997fee4488dcb34e9d7015ddc93555ac79f14373ce",
+  "bytes": 43952
+ },
+ {
+  "id": "T-HT010",
+  "file": "img/fac/trainer/T-HT010_1.webp",
+  "src": "https://sapporo.lifemate-vh.com/wp-content/uploads/2026/03/content-img03_930x328.webp",
+  "page": "https://sapporo.lifemate-vh.com/",
+  "sha256": "9694bf85383eae06b4f2ac3157c24ff5d0949768ef5c0fea9821c97d74b464c8",
+  "bytes": 17194
+ },
+ {
+  "id": "T-HT010",
+  "file": "img/fac/trainer/T-HT010_2.webp",
+  "src": "https://sapporo.lifemate-vh.com/wp-content/uploads/2026/03/unnamed.jpg",
+  "page": "https://sapporo.lifemate-vh.com/",
+  "sha256": "259ada8e6f443b3c378fe22b9a083a5b5884f5d209560a4ffd5e8a560522ae04",
+  "bytes": 35668
+ },
+ {
+  "id": "T-HT014",
+  "file": "img/fac/trainer/T-HT014_1.webp",
+  "src": "https://one-to-hounds.com/one/one_to/img/KC3X0003.jpg",
+  "page": "https://one-to-hounds.com/one/one_to/index.html",
+  "sha256": "6cf4496b6ef49b7b747ef241ddd2abb6e775172359ce7c803944fec4474bf7c3",
+  "bytes": 61368
+ },
+ {
+  "id": "T-HT016",
+  "file": "img/fac/trainer/T-HT016_1.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=546x10000:format=jpg/path/s4405e08ea4b1b7cf/image/i7a8de1f116174cae/version/1537789829/image.jpg",
+  "page": "https://humandogtraing.jimdofree.com/",
+  "sha256": "ec42262806fcec6b7e34784966b4c71bc97415e80afe1f837014197e6afd6086",
+  "bytes": 16070
+ },
+ {
+  "id": "T-HT016",
+  "file": "img/fac/trainer/T-HT016_2.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=546x10000:format=jpg/path/s4405e08ea4b1b7cf/image/ica37548886740f5e/version/1537790144/image.jpg",
+  "page": "https://humandogtraing.jimdofree.com/",
+  "sha256": "b27d30c76f5a5c9d8e67e17d042b5a42e5342f50dd922cfdd28cfa208763e795",
+  "bytes": 8312
+ },
+ {
+  "id": "T-HT016",
+  "file": "img/fac/trainer/T-HT016_3.webp",
+  "src": "https://image.jimcdn.com/app/cms/image/transf/dimension=546x10000:format=jpg/path/s4405e08ea4b1b7cf/image/i0b0d8aa80ad93b15/version/1537790475/image.jpg",
+  "page": "https://humandogtraing.jimdofree.com/",
+  "sha256": "65a7eee35b240d254a6f8e94bf609ce48ec2431d56a88c35d83b3400508e4753",
+  "bytes": 19458
+ },
+ {
+  "id": "T-HT018",
+  "file": "img/fac/trainer/T-HT018_1.webp",
+  "src": "https://crayonimg.e-shops.jp/cms-dimg/1152092/1265394/612_465.jpg",
+  "page": "https://form.crayonsite.com/",
+  "sha256": "5e9728fae4216eb34a76c1b41f0d87846e419e6356af40a453c1c6a4611b7eae",
+  "bytes": 22294
+ },
+ {
+  "id": "T-HT018",
+  "file": "img/fac/trainer/T-HT018_2.webp",
+  "src": "https://crayonimg.e-shops.jp/cms-dimg/1152092/1263156/850_478.jpg",
+  "page": "https://form.crayonsite.com/",
+  "sha256": "27831e7fec272f7d94a14f591b35633bec7e6ff1c575ef9f9e981529b8a4f055",
+  "bytes": 10596
+ },
+ {
+  "id": "T-HT019",
+  "file": "img/fac/trainer/T-HT019_1.webp",
+  "src": "https://wishroad.com/wp/wp-content/themes/wishroad/img/gallery-01.jpg",
+  "page": "https://wishroad.com/",
+  "sha256": "8a1e045196e5215703e57379c366cbd4970798625665efbf240f5016153cbd96",
+  "bytes": 28764
+ },
+ {
+  "id": "T-HT019",
+  "file": "img/fac/trainer/T-HT019_2.webp",
+  "src": "https://wishroad.com/wp/wp-content/themes/wishroad/img/gallery-02.jpg",
+  "page": "https://wishroad.com/",
+  "sha256": "72632c539d252c78c9ba33eadfc4b66792b39e532528dcb769a398a78c634d1c",
+  "bytes": 30472
+ },
+ {
+  "id": "T-HT019",
+  "file": "img/fac/trainer/T-HT019_3.webp",
+  "src": "https://wishroad.com/wp/wp-content/themes/wishroad/img/gallery-03.jpg",
+  "page": "https://wishroad.com/",
+  "sha256": "2502addb7acf1f9f2ac43059fb97cf4d9eacf68ab21a7ee7fe8097aca2f3e6bb",
+  "bytes": 20662
+ },
+ {
+  "id": "T-HT019",
+  "file": "img/fac/trainer/T-HT019_4.webp",
+  "src": "https://wishroad.com/wp/wp-content/themes/wishroad/img/gallery-04.jpg",
+  "page": "https://wishroad.com/",
+  "sha256": "35f768a7c601683be9ea78cedcd12128bb745e721a7671e741765f931cbd81cc",
+  "bytes": 33592
+ },
+ {
+  "id": "T-HT019",
+  "file": "img/fac/trainer/T-HT019_5.webp",
+  "src": "https://wishroad.com/wp/wp-content/themes/wishroad/img/training-ph.jpg",
+  "page": "https://wishroad.com/",
+  "sha256": "f87767c89b09bbea9381f3cf8c88e4533d0987cb2057b097736f33aaf3ceb6b8",
+  "bytes": 40488
+ },
+ {
+  "id": "T-HT020",
+  "file": "img/fac/trainer/T-HT020_1.webp",
+  "src": "https://dogschool-yuu.simdif.com/images/public/sd_66b9e9193546d.png?no_cache=1723467088",
+  "page": "https://dogschool-yuu.simdif.com/",
+  "sha256": "b536da61d79bfceec7305b73d2edc2225aa8db910ec1d6c3b81b9149f67d2c08",
+  "bytes": 76084
+ },
+ {
+  "id": "T-HT020",
+  "file": "img/fac/trainer/T-HT020_2.webp",
+  "src": "https://dogschool-yuu.simdif.com/images/public/sd_66b503709e85d.jpg?no_cache=1723146155",
+  "page": "https://dogschool-yuu.simdif.com/",
+  "sha256": "fdae7951c50cfa8b468541376c2b6569cb036095f759253ca4e2154bbd2527ba",
+  "bytes": 131514
+ },
+ {
+  "id": "T-HT020",
+  "file": "img/fac/trainer/T-HT020_3.webp",
+  "src": "https://dogschool-yuu.simdif.com/images/public/sd_66d27fc597ff5.jpg?no_cache=1725078505",
+  "page": "https://dogschool-yuu.simdif.com/",
+  "sha256": "b26f4a7dcdc1f193f9bc6ab2a376b57855a3ebe3bd5aaa49679791ae3250f7be",
+  "bytes": 29530
+ },
+ {
+  "id": "T-HT020",
+  "file": "img/fac/trainer/T-HT020_4.webp",
+  "src": "https://dogschool-yuu.simdif.com/images/public/sd_66b9ea4a42946.jpg?no_cache=1723467410",
+  "page": "https://dogschool-yuu.simdif.com/",
+  "sha256": "428350126d7fb1465b518c029bb60a60630c01a95082883bff3cfc313f4f5e58",
+  "bytes": 197164
+ },
+ {
+  "id": "T-HT020",
+  "file": "img/fac/trainer/T-HT020_5.webp",
+  "src": "https://dogschool-yuu.simdif.com/images/public/sd_66d3b19ce2896.jpg?no_cache=1725156803",
+  "page": "https://dogschool-yuu.simdif.com/",
+  "sha256": "380c206409ae5f6932eaf316778a577498e60c9bcab66621ef5554fc30f02529",
+  "bytes": 42942
+ },
+ {
+  "id": "T-HT024",
+  "file": "img/fac/trainer/T-HT024_1.webp",
+  "src": "https://static.wixstatic.com/media/dbf200_07c6991a0e184fbc80192c66418a4ed5~mv2.jpg/v1/fill/w_640,h_347,al_c/dbf200_07c6991a0e184fbc80192c66418a4ed5~mv2.jpg",
+  "page": "https://www.traininghouse-dogtalk.com/",
+  "sha256": "3e2bb69d41417f07c725df20a4e5b874330e8c1c9034628d8720104158f28b3f",
+  "bytes": 24712
+ },
+ {
+  "id": "T-HT026",
+  "file": "img/fac/trainer/T-HT026_1.webp",
+  "src": "https://www.date-ahp.com/assets/images/top/mv/mv_01_sp.jpg?1743998544",
+  "page": "https://www.date-ahp.com/",
+  "sha256": "ec8e459ddf6d8975f9665323500ea4c593a427830aae0849f52e80f394d692cd",
+  "bytes": 56360
+ },
+ {
+  "id": "T-HT026",
+  "file": "img/fac/trainer/T-HT026_2.webp",
+  "src": "https://www.date-ahp.com/assets/images/top/mv/mv_02_sp-02.jpg?1764033886",
+  "page": "https://www.date-ahp.com/",
+  "sha256": "654d967649364fd98de5f2d216d428d2009a19e213e8f49ddbd67425f6bcd1ed",
+  "bytes": 19374
+ },
+ {
+  "id": "T-HT026",
+  "file": "img/fac/trainer/T-HT026_3.webp",
+  "src": "https://www.date-ahp.com/assets/images/top/mv/mv_03_sp.jpg?1743998546",
+  "page": "https://www.date-ahp.com/",
+  "sha256": "00ab697a1950705c96d94d92e21095b1fbd1a758ceb2285dae87f806f21427f5",
+  "bytes": 20510
+ },
+ {
+  "id": "T-HT026",
+  "file": "img/fac/trainer/T-HT026_4.webp",
+  "src": "https://www.date-ahp.com/assets/images/top/mv/mv_04_sp.jpg?1743998547",
+  "page": "https://www.date-ahp.com/",
+  "sha256": "d83e4d2552a1cd13f675ac8a70919a62c9c442f633816ea1bd6f9213ede5e8d0",
+  "bytes": 33340
+ },
+ {
+  "id": "T-HT026",
+  "file": "img/fac/trainer/T-HT026_5.webp",
+  "src": "https://www.date-ahp.com/assets/images/top/mv/mv_05_sp-02.jpg?1764052013",
+  "page": "https://www.date-ahp.com/",
+  "sha256": "b41a68f714666008d2f3243d9b85834373832cfd423254851ba08d4bc80d44a9",
+  "bytes": 25532
+ },
+ {
+  "id": "T-HT027",
+  "file": "img/fac/trainer/T-HT027_1.webp",
+  "src": "https://tkdogschool.com/about/imgs/strength_img01.jpg",
+  "page": "https://tkdogschool.com/about/",
+  "sha256": "e188e1068f37ff841feaaaf8e276db37cd735407d891c3013853dc37a743d0ad",
+  "bytes": 66824
+ },
+ {
+  "id": "T-HT027",
+  "file": "img/fac/trainer/T-HT027_2.webp",
+  "src": "https://tkdogschool.com/about/imgs/strength_img02.jpg",
+  "page": "https://tkdogschool.com/about/",
+  "sha256": "9c5d50203d91d6dc07121875fc39a9504aeb97b1aacfd4cd8fb7207ad6145ea6",
+  "bytes": 57890
+ },
+ {
+  "id": "T-HT027",
+  "file": "img/fac/trainer/T-HT027_3.webp",
+  "src": "https://tkdogschool.com/about/imgs/training_img01.jpg",
+  "page": "https://tkdogschool.com/about/",
+  "sha256": "026faf11cfa834878284d2f8d83de15d3f22393e7441e83d922aaee53ad0c442",
+  "bytes": 42598
+ },
+ {
+  "id": "T-HT027",
+  "file": "img/fac/trainer/T-HT027_4.webp",
+  "src": "https://tkdogschool.com/about/imgs/training_img02.jpg",
+  "page": "https://tkdogschool.com/about/",
+  "sha256": "49a6fdb8de315d08214ba84f903eebb27d13734e238dcb8e991d1cfb0d3fc0e5",
+  "bytes": 89210
+ },
+ {
+  "id": "T-HT027",
+  "file": "img/fac/trainer/T-HT027_5.webp",
+  "src": "https://tkdogschool.com/about/imgs/training_img03.jpg",
+  "page": "https://tkdogschool.com/about/",
+  "sha256": "592f3b30146ec30128daf37cb7678955935210af9a572d2dbd48444f95603c16",
+  "bytes": 51138
+ },
+ {
+  "id": "T-HT028",
+  "file": "img/fac/trainer/T-HT028_1.webp",
+  "src": "https://static.wixstatic.com/media/722857_0a3776f1e3f9448f9e3e25ad9901ad37~mv2.jpg/v1/fill/w_640,h_480,al_c/722857_0a3776f1e3f9448f9e3e25ad9901ad37~mv2.jpg",
+  "page": "https://www.mitsuboshidog.com/",
+  "sha256": "31a5d54e0d058f4016ddc130cba204a4b42e0483408b1dfd9dc30fc4192ebe02",
+  "bytes": 59486
+ },
+ {
+  "id": "T-HT036",
+  "file": "img/fac/trainer/T-HT036_1.webp",
+  "src": "http://spielendogtraining.s324.xrea.com/images/dog1.jpg",
+  "page": "http://spielendogtraining.s324.xrea.com/",
+  "sha256": "edfbe1b2a4f4ded90092056522bea982d4b5ab214bec9abf434e8610cd7e69fd",
+  "bytes": 33694
+ },
+ {
+  "id": "T-HT036",
+  "file": "img/fac/trainer/T-HT036_2.webp",
+  "src": "http://spielendogtraining.s324.xrea.com/images/dog2.jpeg",
+  "page": "http://spielendogtraining.s324.xrea.com/",
+  "sha256": "83793bb00b1b695176469799df7fd03109a986d9380b4ac26b0c85cb68e6419d",
+  "bytes": 38240
+ },
+ {
+  "id": "T-HT036",
+  "file": "img/fac/trainer/T-HT036_3.webp",
+  "src": "http://spielendogtraining.s324.xrea.com/images/dog6.jpg",
+  "page": "http://spielendogtraining.s324.xrea.com/",
+  "sha256": "2e84a5c0094324c5e4af9f5f0ab785b1acd395b582f2110b9badcf4c4144bed1",
+  "bytes": 24506
+ },
+ {
+  "id": "T-HT036",
+  "file": "img/fac/trainer/T-HT036_4.webp",
+  "src": "http://spielendogtraining.s324.xrea.com/images/dog7.jpg",
+  "page": "http://spielendogtraining.s324.xrea.com/",
+  "sha256": "302bbc1eea6ccbd42172d85468d797c3b2917241d1ed01948b553a80d77c3ed5",
+  "bytes": 15780
+ },
+ {
+  "id": "T-HT036",
+  "file": "img/fac/trainer/T-HT036_5.webp",
+  "src": "http://spielendogtraining.s324.xrea.com/images/dog11.jpg",
+  "page": "http://spielendogtraining.s324.xrea.com/",
+  "sha256": "b4f838060c2dbe935649d18f395f59137398728ca9ac177931575dbc8721c9aa",
+  "bytes": 53594
+ },
+ {
+  "id": "T-HT037",
+  "file": "img/fac/trainer/T-HT037_1.webp",
+  "src": "https://midorigaoka-ah.net/facility/img/treat2025.jpg",
+  "page": "https://midorigaoka-ah.net/facility.html",
+  "sha256": "7c2d09772f15efaf2e5bcc4cdef4d884197c4e9af014c04d1f8d39607d33d36c",
+  "bytes": 45362
+ },
+ {
+  "id": "T-HT037",
+  "file": "img/fac/trainer/T-HT037_2.webp",
+  "src": "https://midorigaoka-ah.net/facility/img/ope2025.jpg",
+  "page": "https://midorigaoka-ah.net/facility.html",
+  "sha256": "0ee76f852cce9ac4ed32ee14adcd68e206b45bf4a63d68c9e790a4a3638e3bf4",
+  "bytes": 33846
+ },
+ {
+  "id": "T-HT037",
+  "file": "img/fac/trainer/T-HT037_3.webp",
+  "src": "https://midorigaoka-ah.net/facility/img/waiting2025.jpg",
+  "page": "https://midorigaoka-ah.net/facility.html",
+  "sha256": "d1eeebdacae49b243d23da6c34cf9f287ed9d72c032d6e09eaa0f938d58f9bb2",
+  "bytes": 34108
+ },
+ {
+  "id": "T-HT037",
+  "file": "img/fac/trainer/T-HT037_4.webp",
+  "src": "https://midorigaoka-ah.net/facility/img/er12025.jpg",
+  "page": "https://midorigaoka-ah.net/facility.html",
+  "sha256": "7788e8990ea6027e3307b36d0b1aa0797b2d925455449cfe0cccc731fca53f12",
+  "bytes": 36764
+ },
+ {
+  "id": "T-HT037",
+  "file": "img/fac/trainer/T-HT037_5.webp",
+  "src": "https://midorigaoka-ah.net/facility/img/er2.png",
+  "page": "https://midorigaoka-ah.net/facility.html",
+  "sha256": "1add0fb7e716acce4dc2dd1bfac892859cbb33c12d61da960b093f7fd7b52380",
+  "bytes": 19028
+ },
+ {
+  "id": "T-HT038",
+  "file": "img/fac/trainer/T-HT038_1.webp",
+  "src": "https://www.kiroru-ah.com/imgs/facility/img1-2.jpg",
+  "page": "https://www.kiroru-ah.com/facility/",
+  "sha256": "7d2cd5f3733463d1befd46f89caaff9b0a7ddc435e00ce5383a9868e280ef0f0",
+  "bytes": 27492
+ },
+ {
+  "id": "T-HT038",
+  "file": "img/fac/trainer/T-HT038_2.webp",
+  "src": "https://www.kiroru-ah.com/imgs/facility/img2-2.jpg",
+  "page": "https://www.kiroru-ah.com/facility/",
+  "sha256": "ae87c02a7fc8c8be69ee84b9b6c1bac79039895a82f61f12bd5e168da6449008",
+  "bytes": 32136
+ },
+ {
+  "id": "T-HT038",
+  "file": "img/fac/trainer/T-HT038_3.webp",
+  "src": "https://www.kiroru-ah.com/imgs/facility/img6.jpg",
+  "page": "https://www.kiroru-ah.com/facility/",
+  "sha256": "87081a691152bea1631ca34cc531d54f4ef223477ba536916f62b2b19bb2f2d0",
+  "bytes": 22222
  }
 ]
