@@ -178,7 +178,7 @@ def _pref_title(pf, rs, n):
 CAT = dict(slug=SLUG, name="老犬ホーム・老猫ホーム", unit="施設", h1=H1, items=J["homes"], card=_card, checked=J["checked"], reviews=True,
   title_word="老犬ホーム・老猫ホーム", title_tail="受け入れる動物・見学・登録番号つき", title_fn=_pref_title,
   desc_tail="所在地・受け入れる動物（犬・猫・大型犬）・見学のきまり・動物取扱業の登録番号と、口コミの星を載せています。料金は公式サイトに書いてある施設だけ載せています。順位はつけていません。",
-  lede=lambda pf, n: f"{pf}で、シニアの犬や猫を長期・終生で預かってくれる老犬ホーム・老猫ホームを{n}施設まとめました。",
+  lede=lambda pf, n: f"{pf}で、シニアの犬や猫を預かったり介護したりしてくれる老犬ホーム・老猫ホームを{n}施設まとめました。長期・終生か月ごとのお預かりかは施設ごとに違います。",
   fact_cols=[("料金", ("料金", "料金詳細")), ("別料金", ("別料金",)), ("ふくまれるお世話", ("ふくまれるお世話",)), ("受け入れ条件", ("受け入れ条件",)), ("見学・面会", ("見学・面会",)), ("病院", ("病院",))],
   price_title="月ごとの料金（いちばん小さい区分・公式サイトの表示どおり）",
   facts=_facts, faq=_faq, extra_after=criteria_html, before_title="老犬ホームをえらぶときに確かめること", before=BEFORE,
