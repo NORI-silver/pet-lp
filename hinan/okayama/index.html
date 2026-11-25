@@ -211,6 +211,8 @@
 .pk-b button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:7px 11px;font-size:.88rem;color:#3c2f26;cursor:pointer;line-height:1.2}
 .pk-b button small{margin-left:4px;font-size:.76rem;color:#6b5f56}
 [data-ffi][hidden],[data-ffg][hidden]{display:none!important}
+.emg-pref.ff-sel>h4{display:none}
+.ff-load{margin:6px 0;font-size:.85rem;color:#7a6a5e}
 .ux-img{position:relative;aspect-ratio:3/2;overflow:hidden;background:#f4f1ee}
 .ux-img img{display:block;width:100%;height:100%;object-fit:cover}
 .ux-img::after{content:"イメージ";position:absolute;right:6px;bottom:6px;font-size:.66rem;line-height:1;padding:3px 6px;border-radius:6px;background:rgba(0,0,0,.45);color:#fff}
@@ -368,7 +370,7 @@ function fill(){M.innerHTML='<option value="">市区町村をえらぶ</option>'
 function load(cb){if(D)return cb();fetch('/hinan/munis.json').then(function(r){return r.json()}).then(function(j){D=j;cb()}).catch(function(){O.textContent='読み込めませんでした。時間をおいてお試しください。'})}
 P.addEventListener('change',function(){load(fill)});if(P.value)load(fill);
 M.addEventListener('change',function(){var r=(D[P.value]||[])[M.value];if(!r){O.innerHTML='';return}var n=esc(r[0]),top=r[3]?'<a href="'+esc(r[3])+'" target="_blank" rel="noopener">'+n+'の公式サイト ↗</a>':'',h='';
-if(r[1]=='page'||r[1]=='card')h='<a href="'+esc(r[2])+'">'+n+'の決まりをくわしく →</a>';
+if(r[1]=='page'||r[1]=='card')h='<div class="hn-full" data-u="'+esc(r[2])+'" data-n="'+n+'"><p class="hn-shn">決まりを読み込んでいます…</p></div>';
 else if(r[1]=='link')h=n+'の決まり：<a href="'+esc(r[2])+'" target="_blank" rel="noopener">'+esc(r[4]||'ペットと避難')+' ↗</a>';
 else if(r[1]=='none')h=n+'では、ペットと避難の決まりが見つかりませんでした。'+top+'の防災のページか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
 else h=n+'の決まりは、まだまとめていません。'+top+'で「ペット 避難」とさがすか、お問い合わせ（防災・危機管理の担当）でご確認ください。';
@@ -381,8 +383,11 @@ h=g+(w?'<ul class="hn-rows">'+w+'</ul>':'')+h}
 O.innerHTML=h;if(r[6]){var sw=document.createElement('div');sw.className='hn-shw';sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこんでいます…</p>';O.appendChild(sw);
 fetch('/hinan/s/'+r[6]+'.json').then(function(x){return x.json()}).then(function(L){function li(s){var q=s[2]+','+s[3];return '<li data-ll="'+q+'"><b>'+esc(s[0])+'</b><span>'+esc(s[1])+'</span>'+(s[5]?'<em>🐾 '+esc(s[5])+'</em>':'')+'<a href="https://www.google.com/maps/search/?api=1&amp;query='+q+'" target="_blank" rel="noopener">地図 ↗</a></li>'}
 var t='<h2>🏫 '+n+'の指定避難所 <small class="hn-n">'+L.length+'か所</small></h2><button type="button" class="hn-near">📍 近い避難所をさがす</button><div class="hn-nearout" aria-live="polite"></div><ol class="hn-sh">'+L.slice(0,5).map(li).join('')+'</ol>';
-if(L.length>5)t+=(r[1]=='page'?'<p class="hn-shn"><a href="'+esc(r[2])+'#shelters">'+n+'の避難所をすべて見る（'+L.length+'か所）→</a></p><ol class="hn-sh" hidden>'+L.slice(5).map(li).join('')+'</ol>':'<details class="hn-ward"><summary>ほかの'+(L.length-5)+'か所</summary><ol class="hn-sh">'+L.slice(5).map(li).join('')+'</ol></details>');
+if(L.length>5)t+='<details class="hn-ward"><summary>ほかの'+(L.length-5)+'か所</summary><ol class="hn-sh">'+L.slice(5).map(li).join('')+'</ol></details>';
 sw.innerHTML=t+(r[8]?'<p class="hn-src">🐾ペットの場所：<a href="'+esc(r[8][1])+'" target="_blank" rel="noopener">'+esc(r[8][0])+'</a>をもとに作成。</p>':'')+'<p class="hn-src">避難所の一覧：<a href="https://www.gsi.go.jp/bousaichiri/hinanbasho.html" target="_blank" rel="noopener">国土地理院「指定緊急避難場所・指定避難所データ」</a>（2026年11月時点）を加工して作成。開く避難所は災害の種類や状況で変わります。</p>'}).catch(function(){sw.innerHTML='<p class="hn-shn">避難所の一覧を読みこめませんでした。</p>'})}
+var fu=O.querySelector('.hn-full');
+if(fu){var fuU=fu.getAttribute('data-u'),fuN=fu.getAttribute('data-n'),fuBack='<a href="'+fuU+'">'+fuN+'の決まりをくわしく →</a>';
+fetch(fuU).then(function(x){return x.text()}).then(function(t){var d=new DOMParser().parseFromString(t,'text/html');var c=d.querySelector('.hn-card[id="'+fuN+'"]')||d.querySelector('.hn-card');if(!c){fu.innerHTML=fuBack;return}var cl=c.cloneNode(true);var h3=cl.querySelector('h3');if(h3)h3.remove();fu.innerHTML='';fu.appendChild(cl)}).catch(function(){fu.innerHTML=fuBack})}
 try{gtag('event','hinan_find',{pref:P.value,status:r[1]})}catch(e){}})})();</script><style>
 .hn-sh{list-style:none;padding:0!important;margin:6px 0 0!important}
 .hn-sh li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);margin:0}
