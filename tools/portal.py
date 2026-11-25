@@ -2,8 +2,8 @@
 
 gen_areas.py の最後（brand.py・gen_webmcp.py のあと）に、公開する全部のページにかける。
 - 上の名前（ロゴ）・og:site_name・構造化データのサイト名（Organization・WebSite・パンくずの1つめ）・見えるパンくずの1つめ・下の名前を
-  「ペットのくらし窓口」にそろえる。ペットタクシーは、その中のサービス「ペットタクシー予約窓口」として残す
-  （タクシーのページのタイトルの「｜ペットタクシー予約窓口」、サービス（Service）の名前、規約は変えない＝検索順位を守る）。
+  「ペットのくらし窓口」にそろえる。検索向けのタイトルは、内容やサービス名を変えず、末尾の旧サイト名だけ置きかえる。
+  ペットタクシーは、その中のサービス「ペットタクシー予約窓口」として残す（Service の名前、規約は変えない）。
 - 上の名前のすぐ下に、全部の分野へ行ける横に流れるメニュー（catbar）を出す。いま見ている分野に印。
 - 下（footer）に、全部の分野の一覧を足す。
 - トップ（/index.html）だけ、フォームの後ろに「ペットとのくらしの窓口」（全分野の入口）を入れる。トップを写した地域ページからは外す。
@@ -132,21 +132,27 @@ TRUST = ('<!--TRUST--><p class="foot-trust" style="font-size:.78rem;line-height:
 
 _LD = re.compile(r'(<script type="application/ld\+json">)(.*?)(</script>)', re.S)
 _LD_NAME = re.compile(r'("@type":\s*"(?:Organization|WebSite|ListItem)"[^{}]*?"name":\s*)"' + TAXI + '"')
-_LD_ALT = re.compile(r'("@id":\s*"https://pet\.shiokonbu\.com/#website",\s*"name":\s*"' + INFO + r'",\s*"alternateName":\s*)\[[^\]]*\]')
-_ORG = re.compile(r'("@type":\s*"Organization",\s*"@id":\s*"https://pet\.shiokonbu\.com/#org",\s*"name":\s*"' + INFO + r'",)(?!\s*"alternateName")')
+# サブドメイン全体の名前と、タクシーサービスの名称を混ぜない。
+_LD_ALT = re.compile(r'("@id"\s*:\s*"https://pet\.shiokonbu\.com/#(?:website|org)"\s*,\s*"name"\s*:\s*"' + INFO + r'")\s*,\s*"alternateName"\s*:\s*(?:\[[^\]]*\]|"[^"]*")')
+_OLD_TITLE_SUFFIX = re.compile(r'(?:\s*[｜|–—-]\s*(?:ペットタクシー(?:の?予約窓口)?|SHIOKONBU)\s*)+$', re.I)
+_HEAD_TITLES = re.compile(r'(<title>)([^<]*)(</title>)|(<meta (?:name|property)="(?:og:title|twitter:title)" content=")([^"]*)(")', re.I)
 
 
 def _ld(m):
     t = _LD_NAME.sub(lambda x: x.group(1) + '"' + INFO + '"', m.group(2))
-    t = _LD_ALT.sub(lambda x: x.group(1) + '["' + TAXI + '","ペットタクシーの予約窓口","pet.shiokonbu.com"]', t)
-    t = _ORG.sub(lambda x: x.group(1) + '"alternateName":"' + TAXI + '",', t)
-    return m.group(1) + t + m.group(3)
+    return m.group(1) + _LD_ALT.sub(r'\1', t) + m.group(3)
+
+
+def _title(m):
+    begin, value, end = m.groups()[:3] if m.group(1) else m.groups()[3:]
+    return begin + _OLD_TITLE_SUFFIX.sub("｜" + INFO, value) + end
 
 
 def apply(s, path, hub=None):
     # 上の名前（ロゴ）
     s = re.sub(r'(<a class="logo" href="[^"]*"><i>.*?</i>)' + TAXI + '</a>', r'\1' + INFO + '</a>', s, count=1, flags=re.S)
     s = s.replace(f'<meta property="og:site_name" content="{TAXI}">', f'<meta property="og:site_name" content="{INFO}">')
+    s = _HEAD_TITLES.sub(_title, s)
     s = _LD.sub(_ld, s)
     # 見えるパンくずの1つめ
     s = re.sub(r'(<nav class="crumb"[^>]*><a href="/">)' + TAXI + '</a>', r'\1' + INFO + '</a>', s)
