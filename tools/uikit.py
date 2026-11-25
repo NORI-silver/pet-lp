@@ -345,6 +345,15 @@ LCONF = {
 _ATTR = lambda t, a: html_unescape((re.search(r'\b%s="([^"]*)"' % a, t) or [None, ""])[1])
 def html_unescape(x): return _h.unescape(x)
 
+def _dedupe_ft(t):
+    """data-ft の印のうち data-tags にもあるものを外す（find.js は両方を足して条件にするので、結果は同じで容量だけ減る）。"""
+    raw = [x for x in _ATTR(t, "data-ft").split("|") if x]
+    tg = {x.strip() for x in _ATTR(t, "data-tags").split("|") if x.strip()}
+    ft = [x for x in raw if x.strip() not in tg]
+    if len(ft) == len(raw): return t
+    t = re.sub(r' data-ft="[^"]*"', "", t, count=1)
+    return t[:-1] + (f' data-ft="{e("|".join(ft))}"' if ft else "") + ">"
+
 def _dedupe_k(t, ks):
     """find.js はカードの data-k に data-ft・data-tags を足して条件にする。足されるものは data-k に書かない（結果は同じ・容量だけ減る）。"""
     ex = {x.strip().replace(" ", "_") for x in (_ATTR(t, "data-ft") + "|" + _ATTR(t, "data-tags")).split("|") if x.strip()}
@@ -398,6 +407,7 @@ def generic_list(h, cat, hub):
         tot[0] += 1
         for x in ks: cnt[x] = cnt.get(x, 0) + 1
         ks = _dedupe_k(t, ks)
+        if cat == "dog-trainer": t = _dedupe_ft(t)
         return t[:-1] + " data-ffi" + (f' data-k="{e(" ".join(ks))}"' if ks else "") + (f' data-no="{e(" ".join(no))}"' if no else "") + ">"
     h = _sub_cards(h, card)
     n, lo = tot[0], (3 if hub else 1)
