@@ -75,9 +75,10 @@ def strip(x, name, gph="", compact=False):
     if x.get("by") != "owner" and x.get("credit"):  # サイトの決まり（CC BY など）や事業者の許可の条件で出どころの表示が要る
         cr = f'<small class="cs-ph-c">{html.escape(x["credit"])}' + (f'（<a href="{html.escape(x["lic_url"])}" target="_blank" rel="noopener">{html.escape(x.get("license", ""))}</a>）' if x.get("lic_url") else "") + "</small>"
     # 写真の縦横比に枠を合わせる（余白なし・切らない。極端な縦横比だけ 3:5〜3:1 に丸める）。共通CSSは変えず、カードごとの style で上書きする
-    # 全国ページ（SEO 検査の上限 60KB gzip）だけ、写真の並びを ga.js が作る（_1 〜 _N の並びの写真に限る。枚数・ドット・矢印・全体表示・出どころの表示は同じ）。県のページは今まで通り全部書く。
-    if compact and re.fullmatch(r"[1-5]", str(len(ps))) and all(p == re.sub(r"_1\.webp$", "_%d.webp" % (i + 1), ps[0]) and ps[0].endswith("_1.webp") for i, p in enumerate(ps)):
-        return f'<div class="cs-ph"{g} data-p="{html.escape(ps[0][:-6])}{len(ps)}"><div class="cs-ph-s"></div>{cr}</div>'
+    # 全国ページ（SEO 検査の上限 60KB gzip）だけ、1枚目の写真は書いておき（JS がなくても・読み込み中も空にならない）、2枚目以降・ぼかしの背景・枚数の札は ga.js が足す
+    # （_1 〜 _N の並びの写真に限る。枚数・ドット・矢印・全体表示・出どころの表示は同じ）。県のページは今まで通り全部書く。
+    if compact and ps[0].endswith("_1.webp") and all(p == ps[0][:-6] + "%d.webp" % (i + 1) for i, p in enumerate(ps)):
+        return (f'<div class="cs-ph"{g} data-n="{len(ps)}"><div class="cs-ph-s"><i class="cs-ph-i"><img src="{html.escape(ps[0])}" alt="{alt}の写真1" loading="lazy" decoding="async"></i></div>{cr}</div>')
     return f'<div class="cs-ph"{g}><div class="cs-ph-s">{imgs}</div>{n}{cr}</div>'
 
 

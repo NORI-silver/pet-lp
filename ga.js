@@ -14,18 +14,18 @@
       w.className = "cs-ph-w" + (k <= 0 ? " f" : "") + (k >= n - 1 ? " e" : ""); }
     s.addEventListener("scroll", u, {passive: true}); u();
   }
-  // 全国ページの写真（data-p="…/T003_5" ＝ _1〜_5 の5枚）。ここで同じ作りの並びを入れる（ドット・矢印は下の dec が付ける）。
+  // 全国ページの写真（data-n="5" ＝ _1〜_5 の5枚。1枚目は HTML に書いてある）。ぼかしの背景・2枚目以降・枚数の札をここで足す（ドット・矢印は下の dec が付ける）。
+  function im(u, a, b){ var e = document.createElement("img"); e.src = u; e.loading = "lazy"; e.decoding = "async"; e.alt = b ? "" : a;
+    if (b) { e.className = "b"; e.setAttribute("aria-hidden", "true"); } return e; }
   function fill(p){
-    var m = /^(.*_)([1-5])$/.exec(p.getAttribute("data-p")), s = p.querySelector(".cs-ph-s"), c = p.parentNode.querySelector(".ux-c-n"), nm = c ? c.textContent.trim() : "", n, k, i, a, e;
-    p.removeAttribute("data-p"); if (!m || !s) return; n = +m[2];
-    for (k = 1; k <= n; k++) { i = document.createElement("i"); i.className = "cs-ph-i";
-      for (a = 0; a < 2; a++) { e = document.createElement("img"); e.src = m[1] + k + ".webp"; e.loading = "lazy"; e.decoding = "async";
-        if (a === 0) { e.className = "b"; e.alt = ""; e.setAttribute("aria-hidden", "true"); } else e.alt = nm + "の写真" + k;
-        i.appendChild(e); }
-      s.appendChild(i); }
+    var n = +p.getAttribute("data-n"), s = p.querySelector(".cs-ph-s"), f = s && s.querySelector("img"), m = f && /^(.*_)1\.webp$/.exec(f.getAttribute("src")), k, i, e;
+    p.removeAttribute("data-n"); if (!m || !(n >= 1 && n <= 5)) return;
+    f.parentNode.insertBefore(im(f.getAttribute("src"), "", 1), f);
+    for (k = 2; k <= n; k++) { i = document.createElement("i"); i.className = "cs-ph-i";
+      i.appendChild(im(m[1] + k + ".webp", "", 1)); i.appendChild(im(m[1] + k + ".webp", (f.alt || "").replace(/1$/, k))); s.appendChild(i); }
     if (n > 1) { e = document.createElement("span"); e.className = "cs-ph-n"; e.setAttribute("aria-hidden", "true"); e.textContent = "📷 " + n; s.parentNode.insertBefore(e, s.nextSibling); }
   }
-  function all(){ [].forEach.call(document.querySelectorAll(".cs-ph[data-p]"), fill); [].forEach.call(document.querySelectorAll(".cs-ph-s"), dec); }
+  function all(){ [].forEach.call(document.querySelectorAll(".cs-ph[data-n]"), fill); [].forEach.call(document.querySelectorAll(".cs-ph-s"), dec); }
   all();
   try { new MutationObserver(all).observe(document.documentElement, {childList: true, subtree: true}); } catch (x) {}
 })();
