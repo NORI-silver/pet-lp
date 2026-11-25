@@ -1,0 +1,45 @@
+# 一時の補助。動物の書き方を直して作り直し、生成が1回で落ち着くかも見る。終わったら消す。
+name: photo-rj-helper7
+on:
+  push:
+    branches: ['photo-rj']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 直して作り直す
+        run: |
+          pip install pillow
+          git log -1 --format='head %H'
+          f=$(ls tools/*82-rjanimals.py | head -1); mv "$f" /tmp/rjanimals.py
+          python3 /tmp/rjanimals.py
+          python3 tools/gen_areas.py . > /tmp/gen1.log 2>&1 || { tail -20 /tmp/gen1.log; exit 1; }
+          rm -rf tools/__pycache__
+          cp tools/lastmod.json /tmp/lm1.json
+          echo "--- lastmod.json lines changed by the 1st regen vs committed:"
+          git diff -U0 tools/lastmod.json | grep -E '^[-+][^-+]' | cut -c1-200 | head -20
+          python3 tools/gen_areas.py . > /tmp/gen2.log 2>&1 || { tail -20 /tmp/gen2.log; exit 1; }
+          rm -rf tools/__pycache__
+          echo "--- lastmod.json lines changed by the 2nd regen vs the 1st:"
+          diff /tmp/lm1.json tools/lastmod.json | head -10 | cut -c1-200
+          echo "changed files: $(git status --porcelain | wc -l)"
+      - name: テスト
+        run: for f in tests/*.test.cjs; do echo "== $f"; node "$f" || exit 1; done
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git reset -q -- .github/workflows
+          git commit -qm "動物の書き方を直す（犬だけと言い切らない）。生成ファイルを合わせる"
+          git push
