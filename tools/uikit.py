@@ -301,7 +301,8 @@ def facility_list(h, conf, hub):
         # 猫専用かどうかはデータの項目（cat_only）ではっきり決まる。専用でないホテルは「猫専用ではない」として外す
         n = [x for x in n if x not in ks] + (["a:dog"] if "cat_only" in ks else ["cat_only"])
         no = f' data-no="{e(" ".join(n))}"' if n else ""
-        return t[:-1] + f' data-ffi data-k="{e(" ".join(ks))}"{no}>'
+        ks = _dedupe_k(t, ks)
+        return t[:-1] + " data-ffi" + (f' data-k="{e(" ".join(ks))}"' if ks else "") + f"{no}>"
     h = _sub_cards(h, card)
     h = re.sub(r'(<div class="fc-name"><a href="([^"]*)"[^>]*>.*?</div>)((?:(?!class="fc-name").)*?)<div class="fc-acts">',
                lambda m: m.group(1) + m.group(3) + f'<div class="fc-acts"><a class="ux-btn" href="{m.group(2)}" target="_blank" rel="noopener">公式サイトを見る ↗</a>', h, flags=re.S)
@@ -346,6 +347,11 @@ LCONF = {
 }
 _ATTR = lambda t, a: html_unescape((re.search(r'\b%s="([^"]*)"' % a, t) or [None, ""])[1])
 def html_unescape(x): return _h.unescape(x)
+
+def _dedupe_k(t, ks):
+    """find.js はカードの data-k に data-ft・data-tags を足して条件にする。足されるものは data-k に書かない（結果は同じ・容量だけ減る）。"""
+    ex = {x.strip().replace(" ", "_") for x in (_ATTR(t, "data-ft") + "|" + _ATTR(t, "data-tags")).split("|") if x.strip()}
+    return [k for k in ks if k not in ex]
 
 def _keys(t, cat, url=""):
     """カード1枚の条件（決まった key だけ）と、はっきり合わない条件。公式サイトの文からの「うちの子」の条件（ownerfit）も足す。"""
@@ -394,6 +400,7 @@ def generic_list(h, cat, hub):
         ks, no = _keys(t, cat, url)
         tot[0] += 1
         for x in ks: cnt[x] = cnt.get(x, 0) + 1
+        ks = _dedupe_k(t, ks)
         return t[:-1] + " data-ffi" + (f' data-k="{e(" ".join(ks))}"' if ks else "") + (f' data-no="{e(" ".join(no))}"' if no else "") + ">"
     h = _sub_cards(h, card)
     n, lo = tot[0], (3 if hub else 1)
