@@ -1,0 +1,18 @@
+name: retarget-p14
+on:
+  push:
+    branches: ['NORI-silver-patch-19']
+permissions:
+  contents: write
+jobs:
+  go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: PR812 の先端を patch-18 に合わせる（中身は変えない）
+        run: |
+          git fetch origin NORI-silver-patch-18
+          git push -f origin refs/remotes/origin/NORI-silver-patch-18:refs/heads/NORI-silver-patch-14
+          git rev-parse origin/NORI-silver-patch-18
