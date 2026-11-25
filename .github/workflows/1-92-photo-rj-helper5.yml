@@ -1,0 +1,59 @@
+# 一時の補助。老人ホーム追加分のカードを全部同じ形にする（口コミ検索用の名前を足す）。終わったら消す。
+name: photo-rj-helper5
+on:
+  push:
+    branches: ['photo-rj']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 直す
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git merge origin/main -X theirs --no-edit -m "main を取り込む"
+          echo "merged main $(git rev-parse origin/main)"
+          pip install pillow
+          git log -1 --format='base %H'
+          f=$(ls tools/*80-rjlede.py | head -1); mv "$f" /tmp/rjlede.py
+          f=$(ls tools/*81-rjadd8.py | head -1); mv "$f" /tmp/rjadd8.py
+          python3 /tmp/rjadd8.py
+          python3 /tmp/rjlede.py
+          git diff --stat
+      - name: 作り直し
+        run: |
+          python3 tools/gen_areas.py . > /tmp/gen.log 2>&1 || { tail -20 /tmp/gen.log; exit 1; }
+          rm -rf tools/__pycache__
+          echo "changed: $(git status --porcelain | wc -l)"
+          python3 - <<'PY'
+          import re,json
+          ids=['R-B14-002','R-B14-003','R-B14-005','R-B14-006','R-B14-007','R-B14-008','R-B14-009']
+          import glob
+          for pf in glob.glob('rojin-home/*/index.html'):
+              h=open(pf,encoding='utf8').read()
+              for i in ids:
+                  for m in re.finditer(r'<div class="emg-item emg-co fc([^"]*)"[^>]*data-fid="'+i+'"',h):
+                      s=h[m.start():m.start()+6000]
+                      print(pf,i,'cs' in m.group(1).split(),'ux-btn' in s or '公式サイト' in s[:3000],'fc-acts' in s[:3000])
+          PY
+      - name: テスト
+        run: for f in tests/*.test.cjs; do echo "== $f"; node "$f" || exit 1; done
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git reset -q -- .github/workflows
+          git commit -qm "フルエストを足し、老犬ホームの説明文を月ごとのお預かりも含む言い方に直す"
+          git push
