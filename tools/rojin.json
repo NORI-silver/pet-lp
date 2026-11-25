@@ -2784,16 +2784,15 @@
    "url": "https://www.smilehomefordog.com/",
    "addr": "滋賀県近江八幡市上田町1058-19",
    "animals": "犬・猫",
-   "spec": "年中無休・完全予約制・24時間介護対応",
    "review_query": "Smile Home 老犬介護 近江八幡市",
    "review_name": "SmileHome",
    "facts": [
     {
-     "k": "料金詳細",
-     "v": "長期のお預かりのみ、お申し込み時に医療費の預かり金100,000円が必要です。",
+     "k": "料金",
+     "v": "お申込み時に医療費￥100,000-をお預かりさせていただきます。",
      "src": "https://www.smilehomefordog.com/blank-7",
-     "by": "provider",
-     "checked": "2026-11-25"
+     "by": "site",
+     "checked": "2026-11-23"
     }
    ]
   },
