@@ -4992,7 +4992,9 @@
    ],
    "city": "横浜市南区",
    "url": "https://www.cathotel-yokohama.jp/",
-   "animals": "猫"
+   "animals": "猫",
+   "review_name": "老猫ハウス横浜",
+   "review_query": "老猫ハウス横浜 横浜市南区"
   },
   {
    "id": "R-B14-002",
@@ -5002,29 +5004,9 @@
    ],
    "city": "君津市",
    "url": "https://sakagamike-terrapa.com/",
-   "animals": "犬・猫"
-  },
-  {
-   "id": "R-B14-003",
-   "name": "わんデイサービス ラブ",
-   "prefs": [
-    "大阪府"
-   ],
-   "city": "寝屋川市",
-   "url": "https://1day-love.amebaownd.com/",
-   "animals": "犬",
-   "addr": "大阪府寝屋川市高柳4-16-34"
-  },
-  {
-   "id": "R-B14-004",
-   "name": "Con tutti",
-   "prefs": [
-    "兵庫県"
-   ],
-   "city": "姫路市",
-   "url": "https://www.contutti-petlife.com/",
-   "animals": "犬",
-   "addr": "兵庫県姫路市東今宿3丁目9-19"
+   "animals": "犬・猫",
+   "review_name": "terra-pa",
+   "review_query": "さかがみ家 老犬老猫ホーム terra-pa 君津市"
   },
   {
    "id": "R-B14-005",
@@ -5035,7 +5017,9 @@
    "city": "宗像市",
    "url": "http://roukenkaigo-azul.com/",
    "animals": "犬",
-   "addr": "福岡県宗像市田島952-17"
+   "addr": "福岡県宗像市田島952-17",
+   "review_name": "Azul",
+   "review_query": "老犬介護ホーム Azul 宗像市"
   },
   {
    "id": "R-B14-006",
@@ -5045,7 +5029,9 @@
    ],
    "city": "福岡市早良区",
    "url": "https://www.kaipooh.jp/",
-   "animals": "犬・猫"
+   "animals": "犬・猫",
+   "review_name": "Kaipooh",
+   "review_query": "保護猫カフェ＆老犬老猫ホーム Kaipooh 福岡市早良区"
   },
   {
    "id": "R-B14-007",
@@ -5056,7 +5042,9 @@
    "city": "多気郡多気町",
    "url": "https://www.ani-terrace.com/",
    "animals": "犬",
-   "addr": "三重県多気郡多気町ヴィソン672-1農園3"
+   "addr": "三重県多気郡多気町ヴィソン672-1農園3",
+   "review_name": "ani TERRACE",
+   "review_query": "老犬ホーム ani TERRACE 多気町"
   },
   {
    "id": "R-B14-008",
@@ -5067,7 +5055,9 @@
    "city": "呉市",
    "url": "https://fullest412.com/",
    "animals": "犬",
-   "addr": "広島県呉市中央6丁目1-17"
+   "addr": "広島県呉市中央6丁目1-17",
+   "review_name": "フルエスト",
+   "review_query": "老犬介護ハイム フルエスト 呉市"
   },
   {
    "id": "R-B14-009",
@@ -5078,7 +5068,9 @@
    "city": "矢板市",
    "url": "https://roukentop.co.jp/nyuukyo/",
    "addr": "栃木県矢板市石関862-1",
-   "animals": "犬"
+   "animals": "犬",
+   "review_name": "栃木犬舎",
+   "review_query": "老犬ホーム トップ 栃木犬舎 矢板市"
   }
  ],
  "near": {
