@@ -1,0 +1,30 @@
+# 一時の補助。全国ページの写真のテストを新しい形（1枚目だけ HTML）に合わせて置く。終わったら消す。
+name: photo-fix-helper
+on:
+  push:
+    branches: ['photo-b2-1125']
+    paths: ['.github/workflows/photo-fix-helper.yml']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: 差し替え
+        run: |
+          ls tests | grep -E 'hc-new|nph-new'
+          cp tests/*hc-new.cjs tests/hirose-card.test.cjs
+          cp tests/*nph-new.cjs tests/natl-photo-hydrate.test.cjs
+          rm -f tests/*hc-new.cjs tests/*nph-new.cjs
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git reset -q .github/workflows/photo-fix-helper.yml
+          git commit -qm "全国ページの写真のテストを、1枚目だけ HTML の形に合わせる（ga.js の動きも検証）"
+          git push
