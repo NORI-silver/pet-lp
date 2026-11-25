@@ -262,6 +262,15 @@ def render(ctx):
       <p class="emg-free">並びは順位ではなく、市区町村の順です。料金は変わることがあるので、公式サイトでご確認ください。市区の受け付けは県庁所在地と政令指定都市の分で、ほかの市町村はお住まいの市町村のサイトでご確認ください。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       {FC.chips(e, FC.SOUGI_CHIPS)}
+      <details class="emg-tips" id="fit-farewell">
+        <summary>うちの子に合う火葬・霊園の選び方</summary>
+        <dl>
+          <dt>お骨を連れて帰りたい、家族で見送りたい</dt><dd>返骨のある個別火葬が候補です。火葬に立ち会えるか、家族でお骨を拾えるかは別々に確かめます。<a href="/guide/pet-cremation-types/">火葬の種類と料金</a></dd>
+          <dt>車がない、体が大きくて運びにくい</dt><dd>自宅近くで見送れる訪問火葬と、お迎え後に施設で火葬する方法があります。体重と体の長さを伝え、炉に入る大きさか、ご自宅からの搬送を手伝ってもらえるかを確認します。うさぎ・鳥などは動物の種類と、お骨を拾えるかも聞きます。<a href="/guide/pet-cremation-visit/">訪問火葬</a>・<a href="/guide/pet-cremation-large-dog/">大型犬の火葬</a></dd>
+          <dt>費用を抑えたい、お骨は持ち帰らなくてよい</dt><dd>自治体の受け付けと民間の合同火葬を比べます。自治体によって持ち込みと引き取り、返骨の有無、対象となる住民が異なります。<a href="/guide/pet-cremation-city/">市区町村に頼むとき</a></dd>
+          <dt>火葬は済んでいて、納骨先だけ探したい</dt><dd>ほかの施設で火葬したお骨も受け入れるかを先に確認します。個別で納めたい場合は、契約期間・更新料と、将来お骨を取り出せるか。合同を選ぶ場合は、ほかの子のお骨と一緒に納めるかを聞いておきます。<a href="/guide/pet-memorial/">霊園・納骨堂と手元供養の違い</a></dd>
+        </dl>
+      </details>
       {body}
       <div class="emg-tips" id="faq"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
       {FC.biz(e, "ペット火葬・霊園")}
