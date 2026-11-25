@@ -4961,6 +4961,195 @@
      "checked": "2026-11-23"
     }
    ]
+  },
+  {
+   "id": "R-B14-002",
+   "name": "さかがみ家 老犬老猫ホーム terra-pa",
+   "prefs": [
+    "千葉県"
+   ],
+   "city": "君津市",
+   "url": "https://sakagamike-terrapa.com/",
+   "animals": "犬・猫",
+   "review_name": "terra-pa",
+   "review_query": "さかがみ家 老犬老猫ホーム terra-pa 君津市",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "終身預かりのプランがある（原則13歳以上）",
+     "src": "https://sakagamike-terrapa.com/price/",
+     "by": "site",
+     "checked": "2026-11-25"
+    },
+    {
+     "k": "1泊・日帰り",
+     "v": "3か月・6か月のプランがある。日中のお預かり（デイサービス）とペットホテルは別のメニュー",
+     "src": "https://sakagamike-terrapa.com/price/",
+     "by": "site",
+     "checked": "2026-11-25"
+    }
+   ]
+  },
+  {
+   "id": "R-B14-003",
+   "name": "わんデイサービス ラブ",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "寝屋川市",
+   "url": "https://1day-love.amebaownd.com/",
+   "animals": "犬（ほかの動物は要確認）",
+   "review_name": "わんデイサービス ラブ",
+   "review_query": "わんデイサービス ラブ 寝屋川市",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "老犬ホームは月極のお預かり（1か月単位）",
+     "src": "https://1day-love.amebaownd.com/pages/940817/page_201704091516",
+     "by": "site",
+     "checked": "2026-11-25"
+    },
+    {
+     "k": "1泊・日帰り",
+     "v": "ペットホテル・半日預かり・ナイトモードもある",
+     "src": "https://1day-love.amebaownd.com/pages/940817/page_201704091516",
+     "by": "site",
+     "checked": "2026-11-25"
+    },
+    {
+     "k": "部屋",
+     "v": "小規模の介護ホーム。一軒家で、ドッグランが併設されている",
+     "src": "https://1day-love.amebaownd.com/pages/938112/page_201603171850",
+     "by": "site",
+     "checked": "2026-11-25"
+    }
+   ]
+  },
+  {
+   "id": "R-B14-005",
+   "name": "老犬介護ホーム Azul（アスル）",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "宗像市",
+   "url": "http://roukenkaigo-azul.com/",
+   "animals": "犬（ほかの動物は要確認）",
+   "review_name": "Azul",
+   "review_query": "老犬介護ホーム Azul 宗像市",
+   "facts": [
+    {
+     "k": "1泊・日帰り",
+     "v": "日中一時お預り・一時お預り（1泊から）・1か月お預り・半年お預りがある。終生のお預りは要相談",
+     "src": "http://roukenkaigo-azul.com/info.html",
+     "by": "site",
+     "checked": "2026-11-25"
+    },
+    {
+     "k": "お世話",
+     "v": "介護なしと要介護で料金の区分がある。重症の老犬も受け入れる介護ホームとQ&Aに書いてある",
+     "src": "http://roukenkaigo-azul.com/QA.html",
+     "by": "site",
+     "checked": "2026-11-25"
+    }
+   ]
+  },
+  {
+   "id": "R-B14-006",
+   "name": "保護猫カフェ＆老犬老猫ホーム Kaipooh",
+   "prefs": [
+    "福岡県"
+   ],
+   "city": "福岡市早良区",
+   "url": "https://www.kaipooh.jp/",
+   "animals": "犬・猫",
+   "review_name": "Kaipooh",
+   "review_query": "保護猫カフェ＆老犬老猫ホーム Kaipooh 福岡市早良区",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "料金表がある（ショートタイム・デイ・一泊二日・1か月・3か月・6か月・1年）",
+     "src": "https://www.kaipooh.jp/price",
+     "by": "site",
+     "checked": "2026-11-25"
+    },
+    {
+     "k": "別料金",
+     "v": "料金はお預かりのみで、お世話の内容により別料金",
+     "src": "https://www.kaipooh.jp/price",
+     "by": "site",
+     "checked": "2026-11-25"
+    },
+    {
+     "k": "受け入れ条件",
+     "v": "猫と小型犬から大型犬が対象（超大型犬は要相談）",
+     "src": "https://www.kaipooh.jp/senior",
+     "by": "site",
+     "checked": "2026-11-25"
+    }
+   ]
+  },
+  {
+   "id": "R-B14-007",
+   "name": "老犬ホーム ani TERRACE",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "多気郡多気町",
+   "url": "https://www.ani-terrace.com/",
+   "animals": "犬（ほかの動物は要確認）",
+   "review_name": "ani TERRACE",
+   "review_query": "老犬ホーム ani TERRACE 多気町",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "高齢で自宅での飼育が難しくなった犬を、長期的に預かると書いてある",
+     "src": "https://www.ani-terrace.com/",
+     "by": "site",
+     "checked": "2026-11-25"
+    }
+   ]
+  },
+  {
+   "id": "R-B14-009",
+   "name": "老犬ホーム トップ 栃木犬舎",
+   "prefs": [
+    "栃木県"
+   ],
+   "city": "矢板市",
+   "url": "https://roukentop.co.jp/nyuukyo/",
+   "animals": "犬（ほかの動物は要確認）",
+   "review_name": "栃木犬舎",
+   "review_query": "老犬ホーム トップ 栃木犬舎 矢板市",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "短期から長期まで預かる",
+     "src": "https://roukentop.co.jp/nyuukyo/",
+     "by": "site",
+     "checked": "2026-11-25"
+    }
+   ]
+  },
+  {
+   "id": "R-B14-008",
+   "name": "老犬介護ハイム フルエスト",
+   "prefs": [
+    "広島県"
+   ],
+   "city": "呉市",
+   "url": "https://fullest412.com/",
+   "animals": "犬（ほかの動物は要確認）",
+   "review_name": "フルエスト",
+   "review_query": "老犬介護ハイム フルエスト 呉市",
+   "facts": [
+    {
+     "k": "受け入れ条件",
+     "v": "一時入居のプラン（1か月・1年）と、終生飼養のプランがある。体重と年齢の目安で区分",
+     "src": "https://fullest412.com/old_dog/lp5/",
+     "by": "site",
+     "checked": "2026-11-25"
+    }
+   ]
   }
  ],
  "near": {
