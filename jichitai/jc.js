@@ -14,14 +14,17 @@ function kata(s){return s.replace(/[ァ-ヶ]/g,function(c){return String.fromCha
 function find(v){v=v.replace(/[\s　]/g,'');if(!v)return[];var h=[],kv=kata(v);
  D.m.forEach(function(m){var full=m[0]+m[1];if(m[1]===v||full===v||m[1].indexOf(v)===0||full.indexOf(v)===0||(v.length>=2&&m[2]&&m[2].indexOf(kv)===0))h.push(m)});
  var ex=h.filter(function(m){return m[1]===v||m[0]+m[1]===v});return ex.length===1?ex:h}
-function sug(){var v=Q.value;if(!v.trim()){S.innerHTML='';return}load(function(){var h=find(v);
+function sug(){var v=Q.value;if(!v.trim()){S.innerHTML='';return}load(function(){if(Q.value!==v)return;var h=find(v);
  if(h.length===1&&(h[0][1]===v.replace(/[\s　]/g,'')||h[0][0]+h[0][1]===v.replace(/[\s　]/g,'')))return pick(h[0]);
  S.innerHTML=h.length?h.slice(0,8).map(function(m,i){return'<button type="button" data-i="'+i+'">'+esc(m[0]+m[1])+'</button>'}).join('')+(h.length>8?'<span class="jc-src">続けて入れるとしぼれます</span>':''):'<span class="jc-src">見つかりません。市区町村の名前で入れてください（例：佐倉市）</span>';
  S.querySelectorAll('button').forEach(function(b){b.onclick=function(){pick(h[+b.getAttribute('data-i')])}})})}
 function card(c,sub){if(!c)return'';return'<div class="jc-card cs" style="margin:8px 0 0;width:100%"><b class="ux-c-n">'+esc(c[0])+'</b><p class="ux-c-m">'+esc(sub)+'</p><div class="ux-c-a">'+a(c[1],'公式ページ')+(c[2]?a(c[2],'保護情報',1):a('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(c[0]),'地図を見る',1))+'</div></div>'}
 function pick(m){S.innerHTML='';Q.value=m[1];ls('jcMuni',m[0]+'|'+m[1]);var P=D.p[m[0]]||{},c=D.c[m[4]],city=m[1],pf=m[0];
  H.hidden=false;
- if(K==='maigo'){H.innerHTML='<b>'+esc(pf+city)+'</b>で今日やることです。終わったらチェックを入れてください。';
+ if(K==='maigo'){H.innerHTML='<b>'+esc(pf+city)+'</b>を選択中';
+  var loc=document.getElementById('jcLocal');
+  if(loc){var links=[a(c&&c[1],'動物愛護センター・保健所'),a(P.pol,pf==='東京都'?'警視庁の遺失届':'警察の遺失届'),a(m[3],city+'の公式ページ'),a(m[5]||P.h,'近くの動物病院')].filter(Boolean);
+   loc.hidden=false;loc.innerHTML='<h3>選んだ地域の連絡先</h3><ul>'+links.map(function(l){return'<li>'+l+'</li>'}).join('')+'</ul><small><a href="#pro">この地域のペット探偵を見る</a></small>'; }
   slot('center',card(c,c&&c[3]===city?city+'の窓口':pf+'の窓口（'+city+'はこの窓口の受け持ち）'));
   slot('police',a(P.pol,pf==='東京都'?'警視庁に遺失届を出す':'警察に遺失届をオンラインで出す'));
   slot('city',a(m[3],city+'のページを開く'));txt('city',city+'のページで「迷子」「犬の登録」と、道路で亡くなった動物の引き取り（清掃の担当）の窓口を見ます。つらい確認ですが、首輪の色などを伝えておくと、もしものときに連絡をもらえることがあります。');
@@ -53,8 +56,9 @@ an.forEach(function(b){b.onclick=function(){setAn(b.getAttribute('data-an'));ev(
 var ck={};try{ck=JSON.parse(ls('jcCk:'+K)||'{}')}catch(e){}
 document.querySelectorAll('.jc-ck>li[data-ck]').forEach(function(li){var k=li.getAttribute('data-ck')+(li.getAttribute('data-a')||''),i=li.querySelector('input');if(!i)return;i.checked=!!ck[k];li.classList.toggle('done',i.checked);
  i.onchange=function(){ck[k]=i.checked?1:0;li.classList.toggle('done',i.checked);ls('jcCk:'+K,JSON.stringify(ck))}});
-Q.addEventListener('input',sug);Q.addEventListener('focus',function(){load(function(){})},{once:true});
-var last=ls('jcMuni');if(last){var p=last.split('|');load(function(){var h=D.m.filter(function(m){return m[0]===p[0]&&m[1]===p[1]});if(h.length)pick(h[0])})}
+Q.addEventListener('input',function(){var loc=document.getElementById('jcLocal');if(loc){loc.hidden=true} sug()});
+if(K==='maigo'){var flyer=document.getElementById('jcFly');function openFlyer(){if(location.hash==='#jcFly'&&flyer)flyer.open=true}window.addEventListener('hashchange',openFlyer);openFlyer()}Q.addEventListener('focus',function(){load(function(){})},{once:true});
+var last=ls('jcMuni');if(last){var p=last.split('|');load(function(){var h=D.m.filter(function(m){return m[0]===p[0]&&m[1]===p[1]});if(h.length&&!Q.value.trim())pick(h[0])})}
 /* 登録の期限 */
 var dd=document.getElementById('jcD'),bd=document.getElementById('jcB'),due=document.getElementById('jcDue');
 function fmt(d){return(d.getMonth()+1)+'月'+d.getDate()+'日'}
