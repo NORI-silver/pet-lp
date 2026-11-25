@@ -619,7 +619,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       if (ex && ex.photos && ex.photos.length) {
         var ph = document.createElement("div"); ph.className = "partner-photos";
         ex.photos.forEach(function(p, i){ var im = document.createElement("img"); im.src = p.url; im.alt = card.label + "の" + (p.kind || "写真"); im.loading = "lazy"; im.decoding = "async";
-          im.referrerPolicy = "no-referrer"; im.addEventListener("error", function(){ im.remove(); if (!ph.querySelector("img")) thumb.remove(); }); ph.appendChild(im); }); (function(){ var fit = function(){ var ims = ph.querySelectorAll("img"), k = Math.round(ph.scrollLeft / (ph.clientWidth || 1)), m = ims[k]; if (m && m.clientHeight) ph.style.height = m.clientHeight + "px"; }; ph.addEventListener("scroll", fit, {passive: true}); ph.querySelectorAll("img").forEach(function(m){ m.addEventListener("load", fit); }); window.addEventListener("resize", fit); })();
+          im.referrerPolicy = "no-referrer"; im.addEventListener("error", function(){ im.remove(); if (!ph.querySelector("img")) thumb.remove(); }); ph.appendChild(im); });
         // 検索広告のように、写真は料金・特典の右に小さく（Nori 2026-11-15「このくらいの写真は？いちもふくめて」）。横にスワイプで次の写真
         var thumb = document.createElement("div"); thumb.className = "partner-thumb";
         var frame = document.createElement("div"); frame.className = "partner-photo-frame"; frame.appendChild(ph); thumb.appendChild(frame);
