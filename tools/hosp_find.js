@@ -6,12 +6,11 @@
       list = document.getElementById("hfList"), sum = document.getElementById("hfSum");
   var SLUG = __SLUG__, LABEL = __LABEL__, REG = __REG__, SYM = __SYM__, av = null;
   list.addEventListener("click", function(ev){ var b = ev.target.closest("button[data-pk]"); if (!b) return; pick.set([{p: b.getAttribute("data-pk")}]); box.scrollIntoView({behavior: "smooth", block: "start"}); });
-  var NEED = {night: ["night"], sunhol: ["sun", "hol"], h24: ["h24"], visit: ["visit"], spec: ["spec"]};
-  var NEEDL = {night: "夜間・救急", sunhol: "日曜・祝日", h24: "24時間", visit: "往診", spec: "専門診療"};
+  var NEED = {night:["night"],sunhol:["sun","hol"],h24:["h24"],visit:["visit"],spec:["spec"]}
+  var NEEDL = {night:"夜間・救急",sunhol:"日曜・祝日",h24:"24時間",visit:"往診",spec:"専門診療"}
   // 病院の種類は「そういう病院か」なので、書いていなければ合わない（要確認には入れない）
-  var STRICT = {night: 1, visit: 1, catspec: 1, exospec: 1, large: 1, h24: 1, catroom: 1, ct: 1, spec: 1};
-  var FEAT = [["night", "夜間・救急"], ["h24", "24時間"], ["visit", "往診"], ["catspec", "猫専門"], ["exospec", "うさぎ・鳥などの専門"], ["large", "大型犬の設備"],
-              ["sun", "日曜診療"], ["hol", "祝日診療"], ["late", "19時以降も"], ["park", "駐車場あり"], ["card", "カード可"]];
+  var STRICT = {night:1,visit:1,catspec:1,exospec:1,large:1,h24:1,catroom:1,ct:1,spec:1}
+  var FEAT = [["night","夜間・救急"],["h24","24時間"],["visit","往診"],["catspec","猫専門"],["exospec","うさぎ・鳥などの専門"],["large","大型犬の設備"],["sun","日曜診療"],["hol","祝日診療"],["late","19時以降も"],["park","駐車場あり"],["card","カード可"]]
   var on = {}, need = NEED[box.dataset.preset] ? box.dataset.preset : "", data = null, near = {}, shown = 30, places = [], cache = {}, pick = null, spots = [];
   if (box.dataset.preset && !NEED[box.dataset.preset]) on[box.dataset.preset] = 1;
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]; }); }
