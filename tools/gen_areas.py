@@ -78,6 +78,8 @@ _EMG_RV = _EMG_J["taxis"] + [h for l in _EMG_J["hospitals"].values() for h in l]
 # 条件でさがす動物病院（/hospital/、tools/hospitals.json）の往診・猫専門の病院も同じしくみで口コミを出す
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import visual as _V  # 図で読む部品（2026-11-14 Nori「文字ばかりで読むのに疲れます」）
+# [E] 並び順：情報が多い施設を先に出す（tools/richsort.py。Nori 2026-11-25）。生成器が読む前に施設データを並び替える
+import richsort as _richsort; _richsort.sort_all()
 import gen_hospitals
 from page_images import GUIDE_ALT, AREA_ALT, AREA_POS, area_key
 import prefkeep
