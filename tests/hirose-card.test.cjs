@@ -11,7 +11,12 @@ for (const file of ['dog-trainer/kyoto/index.html', 'dog-trainer/index.html']) {
   assert.equal(new URL(route[1].replaceAll('&amp;', '&')).searchParams.get('destination'), address, file);
   assert.equal(route[2], '事業所への経路', file);
   assert.match(card, /data-to="京都府京都市右京区嵯峨広沢南下馬野町1-1" data-to-label="教室"/);
-  assert.match(card, /data-gph="T114"[^>]*><div class="cs-ph-s"><i class="cs-ph-i"><img class="b" src="\/img\/fac\/trainer\/T114_1.webp"[^>]*><img src="\/img\/fac\/trainer\/T114_1.webp"/);
+  if (file === 'dog-trainer/index.html') {
+    // 全国ページはサイズ上限のため 1 枚目だけ HTML（ぼかしの背景・2枚目以降・矢印・ドットは ga.js。tests/natl-photo-hydrate.test.cjs で検証）
+    assert.match(card, /data-gph="T114" data-n="\d"><div class="cs-ph-s"><i class="cs-ph-i"><img src="\/img\/fac\/trainer\/T114_1.webp" alt="[^"]*1" loading="lazy" decoding="async"><\/i><\/div>(<small class="cs-ph-c">[^<]*<\/small>)?<\/div>/);
+  } else {
+    assert.match(card, /data-gph="T114"[^>]*><div class="cs-ph-s"><i class="cs-ph-i"><img class="b" src="\/img\/fac\/trainer\/T114_1.webp"[^>]*><img src="\/img\/fac\/trainer\/T114_1.webp"/);
+  }
   assert.match(page, /\.cs-ph-i img\{position:relative;display:block;width:100%;height:100%;object-fit:contain\}/);
   assert.match(page, /\.cs-ph-s\{display:flex;aspect-ratio:4\/3/);
   assert.match(page, /\.cs-ph\{position:relative;background:#f6efe8;overflow:hidden\}/);

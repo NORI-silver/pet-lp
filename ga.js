@@ -14,7 +14,18 @@
       w.className = "cs-ph-w" + (k <= 0 ? " f" : "") + (k >= n - 1 ? " e" : ""); }
     s.addEventListener("scroll", u, {passive: true}); u();
   }
-  function all(){ [].forEach.call(document.querySelectorAll(".cs-ph-s"), dec); }
+  // 全国ページの写真（data-n="5" ＝ _1〜_5 の5枚。1枚目は HTML に書いてある）。ぼかしの背景・2枚目以降・枚数の札をここで足す（ドット・矢印は下の dec が付ける）。
+  function im(u, a, b){ var e = document.createElement("img"); e.src = u; e.loading = "lazy"; e.decoding = "async"; e.alt = b ? "" : a;
+    if (b) { e.className = "b"; e.setAttribute("aria-hidden", "true"); } return e; }
+  function fill(p){
+    var n = +p.getAttribute("data-n"), s = p.querySelector(".cs-ph-s"), f = s && s.querySelector("img"), m = f && /^(.*_)1\.webp$/.exec(f.getAttribute("src")), k, i, e;
+    p.removeAttribute("data-n"); if (!m || !(n >= 1 && n <= 5)) return;
+    f.parentNode.insertBefore(im(f.getAttribute("src"), "", 1), f);
+    for (k = 2; k <= n; k++) { i = document.createElement("i"); i.className = "cs-ph-i";
+      i.appendChild(im(m[1] + k + ".webp", "", 1)); i.appendChild(im(m[1] + k + ".webp", (f.alt || "").replace(/1$/, k))); s.appendChild(i); }
+    if (n > 1) { e = document.createElement("span"); e.className = "cs-ph-n"; e.setAttribute("aria-hidden", "true"); e.textContent = "📷 " + n; s.parentNode.insertBefore(e, s.nextSibling); }
+  }
+  function all(){ [].forEach.call(document.querySelectorAll(".cs-ph[data-n]"), fill); [].forEach.call(document.querySelectorAll(".cs-ph-s"), dec); }
   all();
   try { new MutationObserver(all).observe(document.documentElement, {childList: true, subtree: true}); } catch (x) {}
 })();
