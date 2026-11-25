@@ -92,7 +92,7 @@ CSS = ("<style>.emg .tbl{overflow-x:auto;max-width:100%}.pp-tbl th,.pp-tbl td{fo
        ".pp-tbl.cmp td,.pp-tbl.cmp th{white-space:nowrap}.pp-tbl.cmp td:first-child{white-space:normal;min-width:9em}.fac-pts{margin:6px 0 4px;padding-left:1.2em}.fac-pts li{margin:3px 0}</style>")
 
 
-def _page(ctx, *, title, desc, url, crumbs, nm, pts, rows, card, cmp, faq, related, note, cta, ld_main, src_url, ck_iso):
+def _page(ctx, *, title, desc, url, crumbs, nm, pts, rows, card, cmp, faq, related, note, cta, ld_main, src_url, ck_iso, quick_src=""):
     e, SITE = ctx["e"], ctx["SITE"]
     ld = '<script type="application/ld+json">\n' + json.dumps([
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -114,7 +114,7 @@ def _page(ctx, *, title, desc, url, crumbs, nm, pts, rows, card, cmp, faq, relat
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="emg">
-      <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts">{"".join(f"<li>{e(p)}</li>" for p in pts)}</ul></div>
+      <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts">{"".join(f"<li>{e(p)}</li>" for p in pts)}</ul></div>{f'<p class="emg-note"><a href="{e(quick_src)}">来院前の電話・受付を病院の公式案内で確認</a></p>' if quick_src else ""}
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">基本の情報</h2><div class="tbl"><table class="pp-tbl"><thead><tr><th>項目</th><th>内容</th><th>出どころ</th></tr></thead><tbody>{rows}</tbody></table></div><p class="emg-tips-note">書いていない項目は、公式サイトに見つからなかったものです（「しない」という意味ではありません）。</p></div>
       {card}
       {cmp}
@@ -156,6 +156,31 @@ def _emg_row(x):
         for h in v:
             if h.get("id") == x["id"]: return h
     return {}
+
+
+# 検索で名前から来る人向け。受付と費用を受付保証・確定料金として読めない短い要点にする。
+_NIGHT_QUICK = {
+    "H077": {
+        "title": "大阪夜間ペットクリニック｜最終受付3時・夜間診察料1万円（目安）",
+        "desc": "大阪市東成区の大阪夜間ペットクリニックは犬・猫を対象に20:00〜翌3:00、最終受付は3:00と案内。夜間診察料1万円は目安。検査・処置で費用は変わるため、向かう前に電話で受け入れを確認してください。",
+        "points": [
+            "受付：20:00〜翌3:00（最終受付3:00）。犬・猫が対象。向かう前に電話で確認してください。",
+            "基本の夜間診察料：10,000円（目安、税の扱いは公式に明記なし）。必要な検査・処置等で支払額は変わります。",
+            "保険の窓口精算は行っていないと案内。昼間の診察とは窓口が異なります。",
+        ],
+        "src": "https://osaka-pet911.com/",
+    },
+    "H059": {
+        "title": "長野夜間どうぶつ病院（千曲市）｜平日19時半〜翌0時半・診察料9,000円（税別）",
+        "desc": "長野夜間どうぶつ病院（千曲市）の受付は平日19:30〜翌0:30、土日は休診と案内。基本診察料9,000円（税別）と、診察料込みの公表例は別。来院前に病院へ電話してください。",
+        "points": [
+            "受付：平日19:30〜翌0:30。土曜・日曜は休診。臨時休診や受け入れは来院前に公式の連絡先で確認してください。",
+            "基本の夜間診察料は9,000円（税別）。対症療法のみ20,000円などの公式例には診察料が含まれます。",
+            "現金・クレジットカード・QR決済を案内。保険の窓口精算は対象の保険会社を公式案内で確認してください。",
+        ],
+        "src": "https://naganoyakan-ah.com/about.html",
+    },
+}
 
 
 def render_hosp(ctx, x):
@@ -211,14 +236,20 @@ def render_hosp(ctx, x):
     rid = emg.get("id") if emg.get("review_query") else ""
     hdesc = lead + (f"夜間の料金は「{fee}」。" if fee else "") + (f"{fact(x, '来院前の連絡').rstrip('。')}。" if fact(x, "来院前の連絡") else "")
     if len(hdesc) > 160: hdesc = lead
+    quick = _NIGHT_QUICK.get(x["id"], {})
+    if quick:
+        title = quick["title"] + "｜ペットのくらし窓口"
+        hdesc = quick["desc"]
+        pts = quick["points"]
     return _page(ctx, title=title, desc=hdesc, url=url,
                  crumbs=[("ペットタクシー予約窓口", "/"), ("条件でさがす動物病院", "/hospital/"), ("夜間・救急", "/hospital/night/"), (pf, f"/hospital/night/{slug}/")],
                  nm=nm, pts=pts, rows=_rows(e, x, H_KEYS), card=_card(e, "hosp", x, "病院", rid), cmp=cmp, faq=faq,
                  related=[(f"{pf}の夜間・救急の動物病院", f"/hospital/night/{slug}/"), ("夜間・救急の動物病院（全国）", "/hospital/night/"),
-                          ("緊急の連絡先・搬送の会社", "/emergency/"), ("ペットを病院へ連れて行くときの移動", "/guide/hospital/")],
+                          ("緊急の連絡先・搬送の会社", "/emergency/"), ("ペットを病院へ連れて行くときの移動", "/guide/hospital/")]
+                          + ([("夜間の動物病院の診察料と支払い総額の違い", "/guide/night-vet-fee/")] if quick else []),
                  note=f"当サイトは{e(nm)}とは別の運営で、病院からお金をもらっていません。おすすめや順位ではありません。受付時間や受け入れは変わることがあるので、行く前に必ず病院に電話で確かめてください。",
                  cta="<h2>急ぎでない通院は、ペットタクシーで</h2><p>再診や検査など急ぎでない通院は、ペットタクシーを前もって頼めます。夜間の急病で移動の手段がないときは、下の「緊急の連絡先・搬送の会社」から搬送の会社に直接ご連絡ください。</p>",
-                 ld_main=ld_main, src_url=x["url"], ck_iso=ck_iso)
+                 ld_main=ld_main, src_url=x["url"], ck_iso=ck_iso, quick_src=quick.get("src", ""))
 
 
 # ---- 犬と泊まれる宿 ----
