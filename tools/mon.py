@@ -14,7 +14,7 @@ Nori「追って送るなよ、ややこしい」「メールのラリーが少�
 
 --purpose（用件）: お誘い・再お誘い・写真のお願い・紹介の依頼・返事・その他。返事（相手から来たメールへの答え）は --reply も付ける。
 --gmail-sent: 送る前に pettaxi.yoyaku の送信済みを「to:宛先 newer_than:7d」でさがした件数（メールのときは必ず）。
---nori 発言ID: Noriさんが「この会社にもう一度送って」「時間外でも送って」と言ったときだけ。同じ日の2通目・ほかの係が送信中のものは、これでも通さない。
+--nori 発言ID: Noriさんが「この会社にもう一度送って」「時間外でも送って」または該当するお礼だけの返信を明示承認したときだけ。同じ日の2通目・ほかの係が送信中のものは、これでも通さない。
 
 台帳: 非公開の pet-db のブランチ claude/project-thread-yqaim8 の data/mon/ledger.tsv（日付をまたいで1本。Mac もクラウドも同じもの）。
   mon.py が ~/.mon-ledger にその枝だけを取ってきて、毎回 pull → 追記 → push する。push がぶつかったら取り直す（ロックの代わり）。
@@ -78,8 +78,8 @@ def locked(work):
     sys.exit("台帳がほかの係とぶつかり続けた。少し待ってもう一度（送らない）")
 COLS = ["受付番号", "日時", "状態", "会社", "宛先", "方法", "用件", "係", "メモ"]
 JST = dt.timezone(dt.timedelta(hours=9))
-DAY_LIMIT = 80          # Gmail の1日の上限（メール）
-HOURS = (9, 18)         # 送ってよい時間（JST）。9時から18時まで
+DAY_LIMIT = 500         # プロジェクト側の1日のメール上限（Gmail側の上限は別）
+HOURS = (6, 21)         # 送ってよい時間（JST）。6:00から21:00未満
 QUIET_DAYS = 7          # 同じ会社に、返事以外で続けて送らない日数（相手の返事を待つ）
 DONE = ("送信済み", "止めた", "取りやめ")
 
@@ -163,7 +163,21 @@ def names():
     return ns
 
 
-def body_checks(t, company, to):
+_ASK = r"ください|いただけ(?!て)|お願い|でしょうか|？|\?"
+
+
+def request_text(t):
+    # 結びの挨拶だけで「お願いがある」と判定しない。
+    return re.sub(r"(?m)^[ \t]*(?:どうぞ[ \t]*)?よろしくお願い(?:いたし|し|申し上げ)ます[。！!]?[ \t]*$", "", t)
+
+
+def short_thanks(t):
+    body = request_text(t)
+    return (len(t) <= 350 and bool(re.search(r"ありがとうござい(?:ます|ました)", body))
+            and not re.search(_ASK + r"|https?://", body))
+
+
+def body_checks(t, company, to, approved_thanks=False):
     out = []
     lines = [l for l in t.splitlines() if l.strip()]
     # 全文（宛名から署名まで）
@@ -200,7 +214,8 @@ def body_checks(t, company, to):
         out.append(f"「{m.group()}」: 追いメールの言い方。1通で完結させる（前のメールにたよらず、要るものを全部この1通に）")
     if re.search(LINK_WORDS, t) and not re.search(r"https?://", t):
         out.append("リンク・ページの話があるのにURLがない（1通で完結：URLも入れる）")
-    if not re.search(r"ください|いただけ|お願い|でしょうか|？|\?", t):
+    thanks_only = approved_thanks and short_thanks(t)
+    if not thanks_only and not re.search(_ASK, request_text(t)):
         out.append("相手に頼むこと・聞くことがない（何をしてほしいかを1通に）")
     if len(t) > 1200: out.append(f"{len(t)}字。長い（短く、でも要るものは全部）")
     return out
@@ -222,7 +237,11 @@ def host(u):
 def gate(a, t):
     out = []
     company, to, method, purpose = a.get("company", ""), a.get("to", ""), a.get("method", ""), a.get("purpose", "")
-    reply, nori = "reply" in a, a.get("nori", "")
+    reply, approval = "reply" in a, a.get("nori")
+    nori = approval.strip() if isinstance(approval, str) else ""
+    if "nori" in a and not nori:
+        out.append("--nori に Nori さんの承認発言IDを入れる")
+    approved_thanks = bool(nori and reply and purpose == "返事" and method == "メール")
     if not company or not to: out.append("--company（会社名）と --to（宛先のメール・フォームのURL）を入れる")
     if method not in ("メール", "フォーム"): out.append("--method は メール か フォーム")
     if not purpose: out.append("--purpose（用件：お誘い・再お誘い・写真のお願い・紹介の依頼・返事・その他）を入れる")
@@ -237,8 +256,9 @@ def gate(a, t):
                 or any(h and h.split(".")[0] in to.lower() for h in hs):
             out.append(f"連絡しない相手（{d.get('name')}・{d.get('where', '')}、{d.get('by', '')} {d.get('date', '')}「{d.get('why', '')}」）。送らない")
     # 時間
+    # 返事の承認IDを時間外の承認として流用しない。
     n = now()
-    if not (HOURS[0] <= n.hour < HOURS[1]) and not nori:
+    if not (HOURS[0] <= n.hour < HOURS[1]) and (not nori or approved_thanks):
         out.append(f"いま{n:%H:%M}。送るのは{HOURS[0]}時から{HOURS[1]}時まで（Noriさんが時間外でもと言ったら --nori 発言ID）")
     # 台帳：送信中・同じ日・同じ用件・7日
     rows = latest(read_ledger())
@@ -265,7 +285,7 @@ def gate(a, t):
         sent_today = sum(1 for r in rows if r["方法"] == "メール" and r["状態"] in ("送信済み", "送信中") and r["日時"][:10] == f"{n:%Y-%m-%d}")
         if sent_today >= DAY_LIMIT:
             out.append(f"今日のメールが{sent_today}通。1日{DAY_LIMIT}通まで（明日にする）")
-    return out + body_checks(t, company, to)
+    return out + body_checks(t, company, to, approved_thanks=approved_thanks)
 
 
 # ---------- コマンド ----------

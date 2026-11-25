@@ -5,11 +5,11 @@
 <meta name="google-site-verification" content="MmM3OGz9LIPxBOmE4jR8GdP4vACP_FrchZwBLT3W0sM" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="max-image-preview:large">
-<title>長崎のペットタクシー｜通院・トリミング・お出かけの料金をくらべる（無料）｜ペットタクシー予約窓口</title>
+<title>長崎のペットタクシー｜通院・トリミング・お出かけの料金をくらべる（無料）｜ペットのくらし窓口</title>
 <meta name="description" content="長崎県（長崎市・佐世保市・諫早市など）で、動物病院、トリミング、ペットホテル、空港への送迎、お引っ越し、家族でのお出かけに。犬・猫を乗せてくれるペットタクシーの料金の目安を、お迎えの場所を入れて会社ごとに無料でくらべられます。">
 <link rel="canonical" href="https://pet.shiokonbu.com/area/nagasaki/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="長崎のペットタクシー｜通院・トリミング・お出かけの料金をくらべる（無料）｜ペットタクシー予約窓口">
+<meta property="og:title" content="長崎のペットタクシー｜通院・トリミング・お出かけの料金をくらべる（無料）｜ペットのくらし窓口">
 <meta property="og:site_name" content="ペットのくらし窓口">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,6 +24,8 @@
 <link rel="preload" as="image" href="/img/hero.webp" type="image/webp" fetchpriority="high">
 <meta name="theme-color" content="#ff6a1a">
 <script src="/ga.js" defer></script>
+<link rel="stylesheet" href="/taxi-favorites.css?v=1">
+<script src="/taxi-favorites.js?v=1" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap" rel="stylesheet"></noscript>
@@ -633,7 +635,6 @@ footer a{color:var(--ink-2)}
 .partner-card.partner-open{border:2px solid var(--o)}
 .partner-site{margin:10px 0 0!important;text-align:center}
 .partner-site{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.copy-ask{padding:9px 18px;border:1.5px solid var(--line);border-radius:999px;background:#fff;color:var(--o-d);font-weight:700;font-size:.86rem;cursor:pointer} /* 送れる会社のオレンジのボタンと区別する（2026-11-11 レビュー N1） */
 .partner-site a{display:inline-block;padding:9px 18px;border:1.5px solid var(--line);border-radius:999px;font-weight:700;font-size:.86rem;color:var(--ink);text-decoration:none;background:#fff}
 .partner-later-note{margin:10px 0 0!important;font-size:.78rem!important;color:var(--ink-3)!important;text-align:center}
 .partner-caution{margin-top:2px!important;font-size:.78rem!important;line-height:1.5!important;font-weight:700;color:var(--o-d)!important}
@@ -651,7 +652,6 @@ footer a{color:var(--ink-2)}
 .partner-card .partner-more>summary{font-size:.78rem;color:var(--ink-2);font-weight:600}
 .partner-site{flex-wrap:nowrap;margin:4px 0 0!important}
 .partner-site a{flex:1 1 auto;text-align:center;border-color:var(--o);color:var(--o-d)}
-.copy-ask{flex:0 0 auto;border:0;background:none;padding:9px 6px;color:var(--ink-2);font-weight:600;font-size:.8rem;text-decoration:underline}
 .partner-caution b{color:var(--o-d);font-size:.8rem;margin-right:4px}
 .partner-review-open{background:none;border:0;padding:0;font:inherit;font-size:.82rem;color:var(--o-d);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .partner-review-src{font-family:Roboto,Arial,sans-serif;font-size:.7rem;color:#5f6368;margin-left:auto;white-space:nowrap}
@@ -882,8 +882,8 @@ footer .foot-cats a{font-weight:700;color:var(--ink)}
 {
  "@context":"https://schema.org",
  "@graph":[
-  {"@type":"Organization","@id":"https://pet.shiokonbu.com/#org","name":"ペットのくらし窓口","alternateName":"ペットタクシー予約窓口","url":"https://pet.shiokonbu.com/","logo":"https://pet.shiokonbu.com/apple-touch-icon.png"},
-  {"@type":"WebSite","@id":"https://pet.shiokonbu.com/#website","name":"ペットのくらし窓口","alternateName":["ペットタクシー予約窓口","ペットタクシーの予約窓口","pet.shiokonbu.com"],"url":"https://pet.shiokonbu.com/","inLanguage":"ja","publisher":{"@id":"https://pet.shiokonbu.com/#org"}}
+  {"@type":"Organization","@id":"https://pet.shiokonbu.com/#org","name":"ペットのくらし窓口","url":"https://pet.shiokonbu.com/","logo":"https://pet.shiokonbu.com/apple-touch-icon.png"},
+  {"@type":"WebSite","@id":"https://pet.shiokonbu.com/#website","name":"ペットのくらし窓口","url":"https://pet.shiokonbu.com/","inLanguage":"ja","publisher":{"@id":"https://pet.shiokonbu.com/#org"}}
  ]
 }
 </script>
@@ -1484,13 +1484,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
 
   var routeDetails = null, quoteCards = [], chosenQuote = null, chosenPicks = [], quoteSeq = 0, sending = false; // chosenPicks：複数社に依頼するとき選んだ会社
   var quoteLegs = null, chosenGo = null, chosenBack = null; // 往復を行き・帰りで別の会社に頼むとき
-  var quoteTimer = 0, quoteRefreshTimer = 0;
+  var quoteTimer = 0, quoteRefreshTimer = 0, intakeEditing = false;
   function clearPartners(){
     quoteSeq++; quoteCards = []; chosenQuote = null; chosenPicks = []; quoteLegs = null; chosenGo = null; chosenBack = null;
     $("partnerResults").hidden = true; $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren(); $("partnerRestBtn").hidden = true; restOpen = false;
     $("legSplit").hidden = true; $("legGo").replaceChildren(); $("legBack").replaceChildren();
     $("sendSelected").hidden = true; $("taxiBox").hidden = true;
-    clearTimeout(quoteTimer); clearTimeout(quoteRefreshTimer);
+    clearTimeout(quoteTimer); quoteTimer = 0; clearTimeout(quoteRefreshTimer);
     quotesLoaded = false; syncContact();
   }
   function conditionsChanged(event){
@@ -1501,12 +1501,13 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   form.addEventListener("input", conditionsChanged);
   form.addEventListener("change", conditionsChanged);
-  function queuePartners(){
-    clearTimeout(quoteTimer);
+  function queuePartners(now){
+    clearTimeout(quoteTimer); quoteTimer = 0;
     if (sending) return;
     drawTaxis();
     if (partnerBlock() === "") showLoading(); // 条件がそろっていれば、待つあいだもすぐ「探しています」を出す
-    quoteTimer = setTimeout(loadPartners, 650);
+    if (now === true) loadPartners();
+    else quoteTimer = setTimeout(loadPartners, 160);
   }
   function showLoading(){
     $("partnerResults").hidden = false; $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren(); $("partnerRestBtn").hidden = true;
@@ -1582,6 +1583,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     box.replaceChildren(document.createTextNode("事業者と料金を出すには、あと次の項目を入れてください（押すとその場所へ移ります）。"), needButtons(list));
   }
   function loadPartners(){
+    quoteTimer = 0;
     quotesLoaded = false; syncOpenNote();
     showNeed();
     if (sending) return;
@@ -1728,6 +1730,36 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var quotesLoaded = false; // いま出ている候補がサーバーから届いたものか
   function shortPref(v){ return String(v || "").replace(/[都府県]$/, ""); }
   function prefOpen(){ var v = $("pref").value; return !v || DEMO.ok || OPEN_PREFS.indexOf(shortPref(v)) >= 0; }
+  // 受付の確認が済んでいない提携店でも、見積もりからサイト外の問い合わせには飛ばさない。
+  function pendingPartner(card){
+    if (!card || !card.display_only || card.demo) return false;
+    if (card.intake_pending || card.id === "D853ae97" || card.id === "D7f0d2a2") return true;
+    return Object.prototype.hasOwnProperty.call(TAXI_FAVORITE_ALIASES, card.id) ||
+      Object.keys(TAXI_FAVORITE_ALIASES).some(function(id){ return TAXI_FAVORITE_ALIASES[id] === card.id; });
+  }
+  function pendingFields(card){
+    var out = [];
+    var petCards = petsBox.querySelectorAll(".pet"), needsVaccines = card.id === "D853ae97" || card.intake_pending && card.intake_pending.code === "vaccine_required";
+    petCards.forEach(function(p){
+      var species = p.querySelector("input[name$=_species]:checked"), weight = p.querySelector("input[name$=_weight]");
+      if (!species) out.push({el:p.querySelector("input[name$=_species]"),name:"ペットの種類"});
+      if (weight && !weight.value) out.push({el:weight,name:"体重"});
+      if (needsVaccines && species && species.value === "犬") {
+        [["input[name$=_vac]","混合ワクチン"],["input[name$=_rabies]","狂犬病の予防注射"]].forEach(function(x){
+          var el = p.querySelector(x[0]); if (el && !el.checked) out.push({el:el,name:x[1]});
+        });
+      }
+    });
+    return out.filter(function(x){ return !!x.el; });
+  }
+  function goIntakeFields(card){
+    intakeEditing = true; syncLite(false); openRefine("pet", true);
+    var code = (card.intake_pending || {}).code;
+    var first = pendingFields(card)[0];
+    var target = code === "lead_time" ? $("date") : /route|road/.test(code || "") ? $("pickup") : first && first.el || $("pickup");
+    var details = target.closest("details"); if (details) details.open = true;
+    jumpTo(target);
+  }
   // ご連絡先は、送れる会社がいるときだけ出す（いないのに電話番号まで入れさせない）
   function syncContact(){
     var bookable = quoteCards.some(function(c){ return !c.display_only; }) || !!(quoteLegs && quoteLegs.go && quoteLegs.go.some(function(c){ return !c.display_only; }));
@@ -1736,12 +1768,14 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var shown = quotesLoaded ? bookable && picked : lastShown; // ご連絡先は、問い合わせできる会社を選んでから（3項目フォーム）。調べ直しているあいだは前のまま
     lastShown = shown;
     $("contactBox").hidden = !shown;
-    syncLite(!prefOpen() && !shown);
+    syncLite(!prefOpen() && !shown && !intakeEditing);
     if (shown && !prefOpen()) $("openNote").hidden = true; // ほかの県の会社が、お迎えか行き先の近くにいるとき
     var none = $("contactNone");
     if (!bookable && quotesLoaded) {
       if (!none) { none = document.createElement("p"); none.id = "contactNone"; none.className = "contact-none"; $("contactBox").parentNode.insertBefore(none, $("contactBox")); }
-      none.textContent = "この条件では、いまこのサイトから問い合わせできる会社がないため、ご連絡先の入力はいりません。料金の目安をくらべて、気になる会社には公式サイトから直接おたずねください。";
+      none.textContent = quoteCards.some(pendingPartner)
+        ? "提携店はカードの「このサイトで条件を確認」から進めます。お送り先が決まるまで、ご連絡先の入力はいりません。"
+        : "この条件では、いまこのサイトから問い合わせできる会社がないため、ご連絡先の入力はいりません。料金の目安をくらべて、気になる会社には公式サイトから直接おたずねください。";
       none.hidden = false;
     } else if (none) none.hidden = true;
   }
@@ -1786,7 +1820,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       showNeed(); if (miss.length) { markMissing(miss); jumpTo(miss[0].el); }
       return;
     }
-    if ($("partnerResults").hidden) loadPartners();
+    if (estTimer) estNow();
+    else if (quoteTimer) { clearTimeout(quoteTimer); quoteTimer = 0; loadPartners(); }
+    else if ($("partnerResults").hidden) loadPartners();
     $("partnerTitle").scrollIntoView({block: "start", behavior: "smooth"});
   });
   // 候補がないとき：近くの県の会社・ふつうのタクシー・緊急の連絡先だけを案内する（ほかの検索・予約サイトへは案内しない）
@@ -1820,37 +1856,12 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   /*CO_SITE*/var CO_SITE = {"De5faaf3": ["COCOタク 杉並店", "https://pet-taxi-tokyo-suginami.com/"], "De33f4b4": ["COCOタク 東京世田谷店", "https://petcocotaxi-setagaya.com/"], "D2644ea0": ["COCOタク 東京中央店", "https://tc-cocotaxi.com/"], "Ddc3e31e": ["COCOタク 東京墨田店", "https://cocotaxi-pet-tokyo-sumida.com/"], "Df5f495f": ["COCOタク 東京多摩店", "https://coco-pet-taxi-tokyo-tama.com/"], "D400f012": ["COCOタク 東京小平店", "https://www.cocotaxi-sawan.com/"], "D3f74ac5": ["COCOタク 東京荒川店", "https://pet-taxi-adachi.com/"], "D0e1ab9c": ["COCOタク 東京足立店", "https://cocotaxiadachi.com/"], "D57763aa": ["COCOタク 武蔵野店", "https://coco-taxi-musashino.com/"], "D98b1024": ["COCOタク 渋谷店", "https://cocotaku-shibuya.com/"], "De308905": ["COCOタク 練馬杉並店", "https://cocotaku-nerima-suginami.com/"], "D45d6d56": ["COCOタク 西東京店", "https://cocotaxi.tokyo/"], "Db508c4d": ["COCOタク 足立中央本町店", "https://pet-cocotaxi-katusika.com/"], "Dbcd4199": ["COCOタク 青山店", "https://cocotaku.com/"], "D3661eb1": ["PETTA東京（ペッタ）", "https://www.petta-tokyo.com/"], "D1e44e13": ["cocoタク 大田・田園調布店", "https://coco-taxi.com/"], "D355c31f": ["サポっ人 中目黒店", "https://seikatsunosupport.com/pettaxi/"], "D7c32399": ["ペットタクシー こうのとり（AirLine Haneda）", "https://airline-haneda.com/taxi/"], "D0d1c8b4": ["ペットタクシー ワンネス", "https://oneness-taxi.com/"], "D692c9a6": ["ペットタクシー ワンハウス", "https://onehouse.jp/"], "D7922e74": ["ペトタクファインド", "https://pettaxi-find.com/chiba/"], "D72ab934": ["COCOタク 川崎店", "https://www.growing-group.co.jp/"], "D789b979": ["COCOタク 横浜店", "https://cocotaxi-yokohama.com/"], "Dfc12ca3": ["COCOタク 横浜港北店", "https://cocotaxi-yokohama-kouhoku.com/"], "Da1ed552": ["COCOタク 横浜磯子店", "https://pet-taxi-yokohama-isogo.com/"], "Dbf4a40c": ["COCOタク 湘南平塚店", "https://coco-taxi-shonan-hiratuka.com/"], "D0d611b0": ["COCOタク 湘南店", "https://www.cocotaku-shonan.com/"], "Dd6859ef": ["COCOタク 神奈川中央店", "https://coco-pettaxi-kanagawa-chuo.com/"], "D3cc975b": ["COCOタク 神奈川北店", "https://cocotaxi-wans.com/"], "D227d031": ["COCOタク 西湘秦野店", "https://pet-taxi-cocotaku-hadano.com/"], "De65cb2d": ["Legolas House（レゴラスハウス）", "https://www.legolashouse.com/"], "D945f580": ["ikimono care（イキモノケア）", "https://www.ikimonocare.com/"], "D5604536": ["やこうDogはうす", "https://yakodoghouse.com/"], "Dc7b4703": ["わんにゃんハイヤー Angel Buggy", "https://www.angel-buggy.com/"], "D68f9d95": ["ペットタクシー Animals", "https://h12150825.wixsite.com/taxi-animals"], "D8da1ced": ["ペットタクシー わんだにゃー", "https://wan.da-nya.com/"], "Daed391e": ["ペットタクシー シアンシャ 厚木店", "https://chienchat.jp/atsugi/"], "D0437ae3": ["ペットタクシー シアンシャ 鎌倉店", "https://chienchat.jp/kamakura/"], "D5f32b1e": ["三和交通 ペットタクシー", "https://www.sanwakoutsu.co.jp/special/pet/"], "Daf1e25b": ["湘南Dog Life College（ペットタクシー）", "https://www.shonan-dog-college.jp/taxi"], "D0b50c1a": ["湘南ペットハイヤー", "https://www.shonan-web.com/sub6.html"], "D06b72ea": ["鎌倉ペットタクシー", "https://pets-taxi.net/ja/kamakurapettaxi"], "D40a4aa0": ["COCOタク さいたま南店", "https://cocotaxi-saitama.com/"], "Dfcb8480": ["COCOタク 埼玉川越店", "https://pet-taxi-saitama-kawagoe.jp/"], "D853ae97": ["COCOタク 埼玉春日部店", "https://pet-taxi-kasukabe.com/"], "D83f23cc": ["COCOタク 川口店", "https://cocokawaguchi.com/"], "D2a4caa6": ["COCOタク 練馬店", "https://pet-taxi-nerima.com/"], "D3cc1cce": ["ペットケア151A", "https://petcare-151a.com/pettaxi.html"], "Dcfbfbf2": ["COCOタク 船橋店", "https://cocotaku-funabashi.moe/"], "De3f35f2": ["コインペットタクシー シエロ", "https://pettaxi.jp/"], "D3c85024": ["ペットタクシー パールのしっぽ", "https://pearlno-shippo.com/"], "Dedcfcd2": ["動物苑（ペット送迎）", "https://www.pet594.com/pet-transport/"], "Dc28c19e": ["ワンワンハウス（ペットタクシー）", "https://wan-wan-house.com/pet-taxi/"], "Dc05105b": ["COCOタク 新札幌店", "https://pet-taxi-sc.com/"], "Db405639": ["D-RIDE（ペットタクシー）", "https://d-ride.jp/pettaxi.html"], "D44948b6": ["ぺトタク（札幌・小樽）", "https://pet-tax.com/"], "D13b7c6f": ["ペット専用タクシー aiai", "https://pet-taxi-aiai.com/"], "D1f53c72": ["COCOタク岩手盛岡店", "https://cocomorioka.iwate.jp/"], "D18363bd": ["COCOタク 仙台店", "https://pet-taxi-sendai.com/"], "D4adf70b": ["PETRIP", "https://petrip.co.jp/"], "D30e1838": ["ニャンワンクラブ（ペットタクシー）", "https://nyanwan.jp/"], "D1132ff9": ["冨士タクシー（ペットタクシー）", "https://www.fuji-taxinet.jp/service/pet-taxi.php"], "Da40f372": ["ペットタクシー With☆（ウィズ）", "https://pet-taxi.sakura.ne.jp/"], "Dd472236": ["ペットタクシー COCOタク静岡", "https://cocotaxi-shizuoka.com/"], "Dc2d8672": ["COCOタク 三河豊田店", "https://pet-taxi-aichi-mikawa.com/"], "D7d26cb4": ["COCOタク 名古屋尾張店", "https://pet-taxi-nagoya-owari.com/"], "D6c3b09b": ["COCOタク 愛知稲沢店", "https://cocotaku-inazawa-aichi.com/"], "D611ee5f": ["COCOタク 知多武豊店", "https://pet-taxi-aichi-chita-taketoyo.com/"], "Df997a81": ["COCOタク 穂の国店", "https://pet-taxi-aicih-toyohashi-honokuni.com/"], "D44cfd16": ["HAPPY WITH（ペットタクシー）", "https://happywith.pet/pettaxi/"], "D1834601": ["ZEROペットタクシー", "https://zero808.co.jp/pettaxi/"], "D7f0d2a2": ["COCOタク 京都店", "https://pet-taxi-kyoto.com/"], "Dc9d8a2b": ["PetTAXI24", "https://j-pettaxi.com/"], "D25bac67": ["ペットサポート てんりん", "https://ten-rin.jp/"], "Dfc6c94f": ["木谷わんわんタクシー", "https://kitani11taxi.com/"], "D7d574bf": ["ARC（アルク）Pet Taxi & Pet Sitter", "https://pet-arc.com/"], "D436a86d": ["COCOタク 南大阪店", "https://coco-taxi-minami-osaka.com/"], "D7d5e5d1": ["COCOタク 大阪・東住吉店", "https://pet-cocotaku-higashi-sumiyoshi.com/"], "D9895b9b": ["COCOタク 大阪柏原店", "https://cocotaxi-kashiwara.com/"], "D3413153": ["COCOタク 守口店", "https://coco-taxi-osaka-moriguchi.com/"], "D713b363": ["COCOタク 新大阪店", "https://pet-taxi-coco-taku-shin-osaka.com/"], "D91cc62f": ["COCOタク 東大阪店", "https://cocotaku-higashiosaka.com/"], "Db8bafea": ["Comasuke（コマスケ）", "https://comasuke.com/"], "D6125f28": ["DOG HAIR STUDIO KEN（ペットタクシー）", "https://doghairstudioken.jp/"], "D01478c8": ["アイアールサービス（ペットタクシー）", "https://www.i-and-r.com/pettaxi.html"], "Da9518d0": ["キャリーワン", "https://carry-one.net/"], "D66c4625": ["ペットタクシー アイボウ（相棒）", "https://www.aibou.com/"], "D874b316": ["ペットタクシー マイファミリー", "https://my-family-takatsuki.com/"], "D1c2a5e3": ["ミントペットタクシー", "https://www.vet-system.jp/"], "D09687f4": ["COCOタク 神戸西店", "https://cocotaxi-kobewest.com/"], "D9f338ec": ["ペットタクシー アニマルプラス", "https://animal-plus.p-kit.com/"], "D72024d3": ["ラッキーペットサービス", "https://lucky-pettaxi.jimdosite.com/"], "D154d458": ["COCOタク ならまち店", "https://pet-taxi-nara.com/"], "D0a999a3": ["ペットタクシー COCOタク奈良", "https://pet-coco-taxi-nara.com/"], "D225080e": ["ペッタク（PETTAXI）", "https://pettaku.com/"], "D678e01f": ["ペットタクシー 響", "https://pettaxihibiki.hp.peraichi.com/"], "D7c41c5f": ["トップスター（ペットタクシー）", "https://www.topstar-tokushima.com/pettaxi"], "Db726555": ["COCOタク 北九州小倉店", "https://pet-taxi-kitakyusyu-kokuraten.com/"], "D0ec95b6": ["COCOタク 福岡東店", "https://cocotakufukuokahigashi.com/"], "Df71b3ed": ["COCOタク 福岡空港店", "https://pet-taxi-fukuoka-airport.com/"], "Dfad4b87": ["COCOタク 福岡筑紫野店", "https://coco-taxi-fukuoka-chikushino.com/"], "Df31960d": ["ペットタクシー Happy", "https://www.pet-taxi-happy.jp/"], "Db28bc5b": ["福岡わんわんエクスプレス", "https://wanwan.pet/"], "D7847612": ["福岡ペットタクシー HAKAタク", "https://pettaxi-hakataku.wepage.com/"], "Db9067d3": ["COCOタク 長崎店", "https://pet-taxi-nagasaki.com/"], "Dcb3b5a2": ["ペットタクシーおさんぽ", "https://pettaxi-osanpo.com/"], "P002": ["ペットエクスプレス", "https://pettaxi.tokyo/"], "P003": ["くりき", "https://pet-kuriki.com/"]};/*/CO_SITE*/
   /*CO_PH*/var CO_PH = {"D0ec95b6": [["/img/fac/taxi/D0ec95b6_1.webp", "/img/fac/taxi/D0ec95b6_2.webp"], "写真：COCOタク 福岡東店"], "D225080e": [["/img/fac/taxi/D225080e_1.webp"], "写真：ペッタク（PETTAXI）"], "D3661eb1": [["/img/fac/taxi/D3661eb1_1.webp"], "写真：PETTA東京（ペッタ）"], "De308905": [["/img/fac/taxi/De308905_1.webp", "/img/fac/taxi/De308905_2.webp"], "写真：COCOタク 練馬杉並店"], "Dcfbfbf2": [["/img/fac/taxi/Dcfbfbf2_1.webp"], "写真：COCOタク 船橋店"], "De3f35f2": [["/img/fac/taxi/De3f35f2_1.webp"], "写真：コインペットタクシー シエロ"], "E05": [["/img/fac/emergency/E05_1.webp"], "写真：コインペットタクシー シエロ"], "D0d1c8b4": [["/img/fac/taxi/D0d1c8b4_1.webp"], "写真：ペットタクシー ワンネス"], "D1e44e13": [["/img/fac/taxi/D1e44e13_1.webp"], "写真：cocoタク 大田・田園調布店"], "D57763aa": [["/img/fac/taxi/D57763aa_1.webp"], "写真：COCOタク 武蔵野店"], "E03": [["/img/fac/emergency/E03_1.webp"], "写真：三和交通 ペットタクシー"], "E07": [["/img/fac/emergency/E07_1.webp"], "写真：COCOタク さいたま南店"], "P061": [["/img/fac/taxi/D225080e_1.webp"], "写真：ペッタク（PETTAXI）"], "P030": [["/img/fac/taxi/De308905_1.webp", "/img/fac/taxi/De308905_2.webp"], "写真：COCOタク 練馬杉並店"], "P062": [["/img/fac/taxi/D0ec95b6_1.webp", "/img/fac/taxi/D0ec95b6_2.webp"], "写真：COCOタク 福岡東店"], "P063": [["/img/fac/taxi/D3661eb1_1.webp"], "写真：PETTA東京（ペッタ）"]};/*/CO_PH*/
   window.CO_SITE_ = CO_SITE; // 計測（coInfo）からも社名を引けるように
+  /*TAXI_FAVORITE_ALIASES*/var TAXI_FAVORITE_ALIASES = {"P030": "De308905", "P060": "D13b7c6f", "P061": "D225080e", "P062": "D0ec95b6", "P063": "D3661eb1", "P064": "Dcb3b5a2", "P065": "Dd472236"};/*/TAXI_FAVORITE_ALIASES*/
+  window.PetTaxiFavoritesConfig = {form:form, catalog:CO_SITE, aliases:TAXI_FAVORITE_ALIASES, paused:PUBLIC_PAUSE, demo:!!DEMO.tok};
+  if (window.PetTaxiFavorites) window.PetTaxiFavorites.init(window.PetTaxiFavoritesConfig);
   // 公式サイトへのリンクに、当サイトから来たことの印を付ける（アクセス解析を入れている会社に見える）
   function siteUrl(u){
     try { var x = new URL(u); x.searchParams.set("utm_source", "pet.shiokonbu.com"); x.searchParams.set("utm_medium", "referral"); x.searchParams.set("utm_campaign", "pet_taxi_cards"); return x.toString(); } catch (e) { return u; }
-  }
-  // 入力した条件から、公式サイトに貼れる問い合わせ文を作る（お名前・連絡先は入れない）
-  function askText(){
-    var fd = new FormData(form), g = function(k){ return String(fd.get(k) || "").trim(); };
-    var when = function(d, h, m){ if (!d) return ""; var a = d.split("-"); return Number(a[0]) + "年" + Number(a[1]) + "月" + Number(a[2]) + "日 " + Number(h) + ":" + m; };
-    var lines = ["ペットタクシーの空き状況と料金を教えてください。", ""];
-    lines.push("・お迎えの日時：" + when(g("date"), g("hour"), g("minute")));
-    lines.push("・お迎えの場所：" + g("pickup"));
-    if (form.querySelector("input[name=via_on]:checked") && form.querySelector("input[name=via_on]:checked").value === "あり" && g("via")) lines.push("・経由地：" + g("via"));
-    lines.push("・行き先：" + g("dropoff"));
-    if (g("trip") === "往復") lines.push("・往復（帰りのお迎え：" + when(g("ret_date"), g("ret_hour"), g("ret_minute")) + (($("retOther") || {}).checked && $("retPickup").value.trim() ? "、" + $("retPickup").value.trim() + " → " + $("retDropoff").value.trim() : "") + "）");
-    else lines.push("・片道");
-    readPets().forEach(function(pt, i){ lines.push("・" + petLine(pt, i)); });
-    if (g("riders")) lines.push("・一緒に乗る人数：" + g("riders"));
-    if (/^0/.test(g("riders"))) { if (g("hand_from")) lines.push("・お迎えで渡す人：" + g("hand_from")); if (g("hand_to")) lines.push("・行き先で受け取る人：" + g("hand_to")); }
-    if (g("luggage")) lines.push("・荷物：" + g("luggage"));
-    lines.push("", "（ペットタクシー予約窓口 pet.shiokonbu.com で見て、問い合わせました）");
-    return lines.join("\n");
-  }
-  function copyAsk(btn, card){
-    var t = askText(), done = function(ok){
-      btn.textContent = ok ? "コピーしました。公式サイトのお問い合わせ欄に貼ってください" : "コピーできませんでした";
-      setTimeout(function(){ btn.textContent = "問い合わせ文をコピー"; }, 4000);
-    };
-    var ci = coInfo(card); ci.cat = "taxi"; track("copy_inquiry", ci);
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function(){ done(true); }, function(){ done(fallback()); });
-    else done(fallback());
-    function fallback(){ try { var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); var ok = document.execCommand("copy"); ta.remove(); return ok; } catch (e) { return false; } }
   }
   function letterAnon(lists){
     var tags = {}, n = 0; // 同じ会社は、往復の行き・帰りの一覧でも同じ目印
@@ -1910,22 +1921,19 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     quotesLoaded = true; quoteCards = cards; $("partnerCards").replaceChildren();
     $("partnerResults").hidden = false;
     var ready = cards.filter(function(c){ return !c.display_only; }).length, later = cards.length - ready;
-    // できることを先に書く（2026-11-11 飼い主目線のレビュー N2）。コピーの説明はカードごとではなくここで1回（N3）
-    var copyable = cards.some(function(c){ return c.display_only && c.site; });
-    var copyNote = copyable ? (ready ? "印のない会社は" : "") + "「問い合わせ文をコピー」を押すと、入力した条件をそのまま公式サイトのお問い合わせ欄に貼れます。" : "";
-    // 上の説明は1行だけ（Nori 2026-11-12「いる？」。前は社数・コピーの使い方まで書いて長かった。コピーの使い方はボタンを見れば分かる）
-    if (cards.length) $("partnerStatus").textContent = ready ? "オレンジのチェックの会社には、ここから問い合わせできます。" : cards.length + "社が見つかりました。料金の目安と公式サイトをご覧ください。";
+    // ここで問い合わせできる会社があれば、先に案内する。
+    if (cards.length) $("partnerStatus").textContent = ready ? "オレンジのチェックの会社には、ここから問い合わせできます。" : cards.some(pendingPartner) ? "料金の目安を表示しています。提携店の受付条件はこのサイトで確認できます。" : cards.length + "社が見つかりました。料金の目安と公式サイトをご覧ください。";
     else { $("partnerStatus").innerHTML = '<span class="partner-empty"><b>条件に合う事業者が見つかりませんでした</b>お迎えの日時やペットの条件を変えると、見つかることがあります。問い合わせは送信されていません。</span>'; $("partnerStatus").appendChild(noCandBox()); track("no_candidates", {pref: $("pref").value}); }
     $("partnerSortBox").hidden = cards.length < 2;
     var hasDist = cards.some(function(c){ return !!c.shop; }); // 予約のしくみが古い版のあいだはお店の位置が来ないので、距離のしぼり込みを出さない
     $("partnerDist").parentNode.hidden = !hasDist; if (!hasDist) $("partnerDist").value = "";
     chosenPicks = chosenPicks.filter(function(c){ return cards.some(function(x){ return x.id === c.id && !x.display_only; }); }).map(function(c){ return cards.filter(function(x){ return x.id === c.id; })[0]; });
     chosenQuote = chosenPicks[0] || null; showPickButton();
+    loadRoads(); // 距離の取り寄せ中と印をつけてから初回のカードを描く
     drawCards();
     paintLegs();
     syncContact();
     loadScores();
-    loadRoads();
     // 自動更新では入力中のフォーカスやスクロール位置を動かさない。
   }
   // 並べ替え（Nori 2026-10-31「価格の安い・高い順、口コミが高い・低い順」、2026-11-01「お店からお迎えまでの距離が短い順で表示」＝デフォルト）
@@ -1956,16 +1964,24 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   // 最初は上の3社だけ。残りはボタンを押すと開く（Nori 2026-10-31「表示はトップ3社。あとは折りたたみ」）
   var TOP_CARDS = 3, restOpen = false;
+  // 最初の3社の順序は保つ。受付条件を入力すれば進める提携店を、残りの一覧だけに隠さない。
+  function splitVisibleCards(list){
+    var shown = list.slice(0, TOP_CARDS), remaining = list.slice(TOP_CARDS);
+    var idx = shown.some(pendingPartner) ? -1 : remaining.findIndex(pendingPartner);
+    if (idx >= 0) shown.push(remaining.splice(idx, 1)[0]);
+    return {shown:shown, remaining:remaining};
+  }
   function drawCards(){
     // 口コミの点数が出ている会社がないときは、口コミの並び順を出さない（見えない点数で並べ替えないため。2026-11-09 矛盾の点検）
     var hasScore = quoteCards.some(function(c){ var v = withScore(c).review; return v && v.rating > 0; });
     $("partnerSort").querySelectorAll('option[value^="review"]').forEach(function(o){ o.hidden = o.disabled = !hasScore; });
     if (!hasScore && /^review/.test($("partnerSort").value)) $("partnerSort").value = "dist_asc";
     $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren();
-    var list = sortCards(quoteCards, ""), rest = list.length - TOP_CARDS, cut = quoteCards.length - list.length;
+    var list = sortCards(quoteCards, ""), groups = splitVisibleCards(list), rest = groups.remaining.length, cut = quoteCards.length - list.length;
     $("partnerDistNote").hidden = !cut;
     $("partnerDistNote").textContent = !cut ? "" : "候補" + quoteCards.length + "社のうち、お店からの車の道のりが" + $("partnerDist").value + "km以内は" + list.length + "社です" + (list.length ? "（お店の場所が分からない会社も外しています）。" : "。距離を広げてください。");
-    list.forEach(function(card, i){ $(i < TOP_CARDS ? "partnerCards" : "partnerRest").appendChild(buildCard(card, "")); });
+    groups.shown.forEach(function(card){ $("partnerCards").appendChild(buildCard(card, "")); });
+    if (restOpen) groups.remaining.forEach(function(card){ $("partnerRest").appendChild(buildCard(card, "")); });
     $("partnerRestBtn").hidden = rest <= 0;
     $("partnerRest").hidden = rest <= 0 || !restOpen;
     $("partnerRestBtn").setAttribute("aria-expanded", restOpen ? "true" : "false");
@@ -2023,7 +2039,6 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           .then(function(){ part.forEach(function(k){ delete roadBusy[k]; }); redrawSoft(); });
       })(keys.slice(i, i + 90));
     });
-    if (Object.keys(points).length) redrawSoft();
   }
   // 口コミや詳しい情報を開いている途中なら、並べ直さない（次に並び順を変えたときに反映）
   function redrawSoft(){
@@ -2080,6 +2095,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         if (ex.photos.length > 1) { var pn = document.createElement("span"); pn.className = "partner-photo-n"; pn.setAttribute("aria-hidden", "true"); pn.textContent = ex.photos.map(function(){ return "●"; }).join(""); frame.appendChild(pn); }
       }
       var h4 = text("h4", card.label);
+      var favorite = window.PetTaxiFavorites && window.PetTaxiFavorites.button(card);
+      if (favorite) {
+        var heading = document.createElement("div"); heading.className = "taxi-favorite-head";
+        h4.replaceWith(heading); heading.append(h4,favorite);
+      }
       // 運転手の写真（掲載情報）は名前の横に丸く（Nori 2026-11-15「運転手の写真も」）
       if (ex && ex.driver) { var dv = document.createElement("img"); dv.className = "partner-driver"; dv.src = ex.driver; dv.alt = card.label + "の運転手"; dv.loading = "lazy"; dv.referrerPolicy = "no-referrer";
         dv.addEventListener("error", function(){ dv.remove(); }); h4.insertBefore(dv, h4.firstChild); }
@@ -2200,16 +2220,22 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       // 表示だけの会社（準備中）。予約の依頼はできない（サーバーでも断る）
       if (card.display_only) {
         article.classList.add("partner-later");
+        if (pendingPartner(card)) {
+          var missing = pendingFields(card), fields = missing.map(function(x){ return x.name; }).filter(function(v,i,a){ return a.indexOf(v) === i; });
+          var message = (card.intake_pending || {}).message;
+          text("p", message || (fields.length ? fields.join("・") + "を入力すると、サイトで問い合わせできるか確認します。" : "この条件での受付可否はまだ確認できていません。希望日時や乗車条件を見直してください。"), "partner-later-note");
+          var cb = document.createElement("button"); cb.type = "button"; cb.className = "btn"; cb.dataset.intakeConditions = "1";
+          cb.textContent = "このサイトで条件を確認";
+          cb.addEventListener("click", function(){ goIntakeFields(card); });
+          article.appendChild(cb); return article;
+        }
         if (card.site) { // 公式サイトへ（別のタブ）。空き状況と料金は会社に直接おたずねいただく
           var sp = document.createElement("p"); sp.className = "partner-site";
-          // 入力した内容をむだにしないよう、そのまま貼れる問い合わせ文をコピーできる。文の最後に当サイトから来たことを書く（送客が会社に伝わる。Nori 2026-11-08）
-          var cp = document.createElement("button"); cp.type = "button"; cp.className = "copy-ask"; cp.textContent = "文をコピー"; cp.setAttribute("aria-label", "問い合わせ文をコピー");
-          cp.addEventListener("click", function(){ copyAsk(cp, card); });
           var sa = document.createElement("a"); sa.href = siteUrl(card.site); sa.target = "_blank"; sa.rel = "noopener"; sa.textContent = "公式サイトで問い合わせ ↗";
           sa.addEventListener("click", function(){ var o = coInfo(card); o.cat = "taxi"; o.from = "card"; try { o.host = new URL(sa.href).hostname; } catch (e) {} track("official_site", o); }); // 会社ごとの遷移数（Nori 2026-11-10）
-          sp.append(sa, cp); article.appendChild(sp);
+          sp.appendChild(sa); article.appendChild(sp);
         }
-        if (!card.site) text("p", "このサイトからは、まだ問い合わせできません", "partner-later-note"); // コピーの説明は一覧の上で1回（2026-11-11 レビュー N3） // 大きな灰色のボタンはやめて1行に（2026-11-08 レビュー #2）
+        if (!card.site) text("p", "このサイトからは、まだ問い合わせできません", "partner-later-note"); // 大きな灰色のボタンはやめて1行に（2026-11-08 レビュー #2）
         return article;
       }
       var btn = document.createElement("button"); btn.type = "button"; btn.className = "btn";
@@ -2623,7 +2649,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var AREA_FARES = {"東京都": ["petexpress", "kuriki"], "神奈川県": ["petexpress", "kuriki"], "千葉県": ["kuriki"], "埼玉県": ["petexpress", "kuriki"]};/*/FARES*/
   // 実際の料金が目安を超えないよう、上限側で計算する（道のりは直線の1.5倍、1km単位で切り上げ、最後に100円単位で切り上げ）
   var ROAD = 1.5;
-  var est = $("est"), geoCache = {}, pickedPlace = {}, estSeq = 0, lastKm = 0, lastKmHigh = 0, lastFare = "", lastFareNum = 0;
+  var est = $("est"), geoCache = {}, geoPending = Object.create(null), pickedPlace = {}, estSeq = 0, lastKm = 0, lastKmHigh = 0, lastFare = "", lastFareNum = 0;
   // 料金の目安は100円単位にまるめて出す（Nori 2026-11-01「1円単位まで出さない方がいい」）。並び替えは計算どおりの金額で行う
   function yen(n){ return (n >= 100 ? Math.round(n / 100) * 100 : n).toLocaleString("ja-JP") + "円"; }
   // 特典（掲載情報）を金額にあてはめる。この依頼に当てはまるものだけ、いちばん安くなる1つ。計算できない特典（ケージ・キャンセルなど）は枠で見せるだけ
@@ -2816,6 +2842,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var key = (!pref || PREF_HEAD.test(q) || /^(東京|神奈川|千葉|埼玉|大阪|京都)/.test(q) ? "" : pref) + q;
     if (key in geoCache && (geoCache[key] || !near)) return Promise.resolve(geoCache[key]);
     if (near && ("~" + key) in geoCache) return Promise.resolve(geoCache["~" + key]);
+    var pendingKey = (near ? "~" : "") + key;
+    if (geoPending[pendingKey]) return geoPending[pendingKey]; // 日付・時刻を続けて選んでも、検索中の住所は共用する
     // 順に試して、最初に見つかったものを使う
     var tries = looksAddress(q) ? [[gsi, key], [gsi, q], [osm, key], [osm, q]] : [[osm, q], [osm, key], [gsi, q], [gsi, key]];
     var seen = {};
@@ -2825,7 +2853,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     // 行き先などは、4都県で見つからなければ、まわりの県まで広げて探す（施設の名前は大手の地図の検索も使う）
     if (near) p = p.then(function(c){ return c || googleText(q, "near").then(function(l){ return (l[0] || {}).c || null; }); })
       .then(function(c){ return c || osm(q, BOXNEAR); });
-    return p.then(function(c){ return geoCache[(near ? "~" : "") + key] = c; });
+    return geoPending[pendingKey] = p.then(function(c){ return geoCache[pendingKey] = c; })
+      .finally(function(){ delete geoPending[pendingKey]; });
   }
   // 位置から都県を調べる（市区町村コードの頭2桁）。4都県の外なら "out"、調べられなければ null
   var PREF_CD = ALL_JAPAN ? {} : {"13": "東京都", "14": "神奈川県", "12": "千葉県", "11": "埼玉県"}, prefCache = {};
@@ -2875,10 +2904,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   var HW_NAME = /高速|自動車道|有料道路|首都高|アクアライン/;
   function routeOf(cs){
     var url = ROUTER + cs.map(function(c){ return c.lng.toFixed(5) + "," + c.lat.toFixed(5); }).join(";") + "?overview=full&geometries=geojson&steps=true";
-    if (url in routeCache) return Promise.resolve(routeCache[url]);
-    return fetch(url).then(function(r){ return r.json(); }).then(function(j){
+    if (url in routeCache) return routeCache[url];
+    return routeCache[url] = fetch(url).then(function(r){ return r.json(); }).then(function(j){
       var rt = j && j.code === "Ok" && j.routes && j.routes[0];
-      if (!rt) return routeCache[url] = null;
+      if (!rt) return null;
       var hw = 0;
       (rt.legs || []).forEach(function(leg){
         var prevHw = false;
@@ -2889,8 +2918,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           prevHw = on;
         });
       });
-      return routeCache[url] = {km: rt.distance / 1000, min: rt.duration / 60, hw: hw / 1000, line: rt.geometry.coordinates};
-    }).catch(function(){ return routeCache[url] = null; }); // 失敗も覚えて、同じ道のりを何度も聞かない
+      return {km: rt.distance / 1000, min: rt.duration / 60, hw: hw / 1000, line: rt.geometry.coordinates};
+    }).catch(function(){ return null; }); // 失敗も覚えて、同じ道のりを何度も聞かない
   }
   function localOf(rt){ return rt && {km: rt.km + rt.hw * 0.15, min: rt.min + rt.hw * 1.0, line: rt.line}; }
   function straightKm(list){
@@ -3051,7 +3080,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var go = cs.slice(0, pts.length), back = retOther ? cs.slice(pts.length) : go.slice().reverse();
       est.innerHTML = '<div class="t">ルートの地図</div><p>道のりを調べています…</p>';
       // お迎えの都県は、選んだ欄よりお迎えの場所を優先する（依頼する会社は都県で決まるため）。食い違ったら欄を直して知らせる
-      prefOf(cs[0]).then(function(pp){
+      // 都道府県の確認と道のりの計算は互いを待たない。料金の依頼は両方がそろってから。
+      var prefJob = prefOf(cs[0]);
+      var goJob = routeOf(go), backJob = later ? routeOf(back) : goJob;
+      prefJob.then(function(pp){
         if (seq !== estSeq) return;
         if (pp === "out") {
           lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
@@ -3072,7 +3104,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
           estNow();
           return;
         }
-        Promise.all([routeOf(go), routeOf(back)]).then(function(r2){
+        // 片道の場合、料金サーバーとの互換用の帰り距離に行きの値を入れる（片道の運賃計算には使わない）。
+        Promise.all([goJob, backJob]).then(function(r2){
           var rs = [localOf(r2[0]), r2[0], localOf(r2[1]), r2[1]];
           if (seq !== estSeq) return;
           render(cs, go, back, rs);
@@ -3083,7 +3116,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       var a = go[0], b = go[go.length-1], ra = back[0], rb = back[back.length-1];
       var kmL = kmOf(rs[0],go), kmL2 = kmOf(rs[2],back);
       var kmH = kmOf(rs[1],go), kmH2 = kmOf(rs[3],back);
-      if (Math.max(kmL,kmL2)>3000) { // 場所の取り違えだけを止める（前は250kmで、東京→広島のような長距離の依頼が候補ごと出なかった。2026-11-08 ペッタク）
+      if (Math.max(kmL,later ? kmL2 : 0)>3000) { // 場所の取り違えだけを止める（前は250kmで、東京→広島のような長距離の依頼が候補ごと出なかった。2026-11-08 ペッタク）
         $("partnerResults").hidden = true; est.innerHTML = '<p>場所を確かめてください。距離がうまく計算できませんでした。</p>'; return;
       }
       var hasHigh = !!(rs[1] && rs[1].hw >= 1 || later && rs[3] && rs[3].hw >= 1);
@@ -3101,8 +3134,8 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       est.innerHTML = '<div class="est-wrap"><div class="est-map" id="estMap" role="img" aria-label="お迎え場所から行き先までの地図"></div>' +
         '<div class="est-info"><small>' + (later ? "行き" : "片道") + 'の目安</small>' + info + '</div></div>' +
         '<div class="est-legend"><span><i></i>お迎え</span>' + (go.length > 2 ? '<span><i class="via"></i>経由地</span>' : '') + '<span><i class="to"></i>行き先</span><span>時間は道の混み具合で変わります</span></div>';
+      queuePartners(true); // 道のりが取れたら、地図の表示や追加のタイマーを待たずに料金を聞く
       drawMap($("estMap"), rs[1], rs[0], go); // 線は実際の道のり、ふきだしの時間は右上の「一般道」とそろえる
-      queuePartners();
     }
   }
 
@@ -3114,9 +3147,9 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     clearTimeout(estTimer); estSeq++;
     lastKm = 0; lastKmHigh = 0; lastFare = ""; lastFareNum = 0;
     if (!est.hidden) est.innerHTML = '<p>入力に合わせて地図を更新しています…</p>';
-    estTimer = setTimeout(showEstimate, 1000);
+    estTimer = setTimeout(estNow, 450);
   }
-  function estNow(){ clearTimeout(estTimer); showEstimate(); }
+  function estNow(){ clearTimeout(estTimer); estTimer = 0; showEstimate(); }
   $("pickup").addEventListener("input", function(){ $("prefFix").hidden = true; });
   $("pref").addEventListener("change", function(e){ if (e.isTrusted) $("prefFix").hidden = true; });
   ["pickup","via","dropoff","retPickup","retDropoff"].forEach(function(id){

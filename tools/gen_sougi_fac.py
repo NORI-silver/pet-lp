@@ -119,6 +119,21 @@ def render(ctx, f):
     if f["id"] in {"S220475", "S70883b", "S50a5de"} and f.get("price") and _has(f, "個別火葬") and (_has(f, "納骨") or _has(f, "納骨堂")):
         title = f"{nm}（{f['city']}）｜ペット火葬の料金・納骨｜ペットタクシー予約窓口"
         desc = f"{pf}{f['city']}の{nm}。火葬料金の例：{f['price'].rstrip('。')}。立ち会い・お迎えの可否、納骨、所在地をまとめています。"
+    choice = ""
+    if f["id"] == "S0b9ae7":
+        title = f"{nm}（香川・多度津）｜火葬料金・納骨｜ペットタクシー予約窓口"
+        desc = f"{nm}の火葬料金。猫と1.5〜4kgの犬は合同15,400円・個別23,100円（税込）。25kg以上は合同料金の掲載なし。大型犬・超大型犬の個別葬と、予約前に確認したいことを紹介します。"
+        choice = (
+            '<section class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">体重と見送り方で火葬を選ぶ</h2>'
+            '<ul class="fac-pts"><li>猫・1.5〜4kgの小型犬では、合同葬が15,400円、個別葬が23,100円（税込）。'
+            '費用だけでなく、自分たちで見送りたいか、お骨を持ち帰りたいかも分けて考えます。</li>'
+            '<li>25〜34kgは個別葬52,800円、50kgでは個別葬74,800円（税込）。料金表に25kg以上の合同葬はありません。'
+            '50kgを超えると加算があるため、予約時に体重を伝えて確認しましょう。</li>'
+            '<li>お骨を家に持ち帰るか、霊園に納めるかが決まっていない場合は、火葬方法と返骨の可否を先に確認し、'
+            '立ち会い、お迎え、骨つぼ、納骨を頼む場合は、別々の金額も聞いておくと選びやすくなります。</li></ul>'
+            '<p class="emg-note"><a href="https://kagawa-pet.com/pages/26/" target="_blank" rel="noopener">海岸寺ペット霊園の料金表</a>'
+            '（2026年11月25日確認）</p></section>'
+        )
     pts = [lead1]
     g = GS._prices(f.get("price"))
     for k, lab, nat in TYP:
@@ -159,7 +174,7 @@ def render(ctx, f):
     <div class="emg">
       <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts">{"".join(f"<li>{e(x)}</li>" for x in pts)}</ul></div>
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">基本の情報</h2><div class="tbl"><table class="pp-tbl"><thead><tr><th>項目</th><th>内容</th><th>出どころ</th></tr></thead><tbody>{rows}</tbody></table></div></div>
-      {card}
+      {choice + chr(10) + "      " if choice else ""}{card}
       {_cmp(e, f)}
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{faq_html}</dl></div>
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">関連するページ</h2><ul class="other"><li><a href="/sougi/{slug}/">{e(pf)}のペット火葬・霊園と市区の受け付け</a></li><li><a href="/guide/pet-cremation-types/">ペットの火葬の種類と料金</a></li><li><a href="/guide/pet-died-first/">ペットが亡くなったら、すぐにすること</a></li><li><a href="/guide/pet-memorial/">お骨の供養と、ペット霊園・納骨堂の選び方</a></li><li><a href="/guide/farewell/">お別れの日の移動</a></li></ul></div>

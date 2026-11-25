@@ -3833,7 +3833,7 @@ function legParams_(p, leg) {
 
 function quoteCards_(p) {
   var expires = Date.now()+15*60000, r = selectionRide_(p);
-  return selectionCandidates_(r).filter(function(pt) { return !isDisplayOnly_(pt.id); }).map(function(pt) {
+  var selectable = selectionCandidates_(r).filter(function(pt) { return !isDisplayOnly_(pt.id); }).map(function(pt) {
     var price = selectionPrice_(pt,p);
     if (!price) return null;
     // 全社準備中のあいだは、提携先の会社も表示だけ（トークンを出さない＝依頼できない）
@@ -3849,7 +3849,11 @@ function quoteCards_(p) {
     return { id:pt.id, label:pt.name, car:pt.car || '車の詳細は引き受け時に確認', points:PARTNER_POINTS[pt.id] || [], limits:PARTNER_LIMITS[pt.id] || [], shop:partnerShop_(pt.id),
       payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は引き受け時にご案内',
       price:price, review:null, check:checks_(pt, r).ask, expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
-  }).filter(Boolean).concat(p.leg ? [] : displayCards_(r, p)).filter(function(card, _, cards) {
+  }).filter(Boolean);
+  // Intentionally separate the listing from verified intake: a displayed estimate cannot be selected or sent.
+  var kasukabePreview = !p.leg && !selectable.some(function(card) { return card.id === KASUKABE_INTAKE_ID && card.token; }) &&
+    kasukabePreviewPending_(r, p);
+  return selectable.concat(p.leg ? [] : displayCards_(r, p, kasukabePreview)).filter(function(card, _, cards) {
     if (card.id !== KYOTO_DISPLAY_ID) return true;
     var kyoto = kyotoIntakeBinding_();
     return !kyoto || !cards.some(function(x) { return x.id === kyoto.id && x.token; });
@@ -3965,7 +3969,54 @@ function isDisplayOnly_(id) {
 }
 // 表示だけの会社のカード（依頼できない）。口コミの星は、ページがカードを出したあとに selectionScores_ でまとめて取り寄せる
 // お迎えの都道府県に対応している会社だけを出し、公式サイトの料金表から料金の目安を計算する（Nori 2026-10-31「大阪の住所で全国の会社が出た。料金も出ない」）
-function displayCards_(r, p) {
+function kasukabePreviewPending_(r, p) {
+  if (!CONFIG.SHOW_ALL_CANDIDATES || !isOpen_(KASUKABE_INTAKE_ID) || publicPaused_(KASUKABE_INTAKE_ID) || publicPaused_(KASUKABE_DISPLAY_ID)) return false;
+  var pt = partners_().filter(function(row) { return row.id === KASUKABE_INTAKE_ID; })[0];
+  if (!pt || !pt.active) return false;
+  // Legacy one-animal requests carry the species outside pets_json. This is display-only.
+  var rr = Object.assign({}, r, {'種類': String(p.species || '')}), pets;
+  try { pets = petsOf_(rr); } catch (e) { return false; }
+  if (pets.length !== Number(rr['ペット数']) || !pets.length || pets.some(function(animal) {
+    return !animal.sp || !(animal.kg > 0 && animal.kg <= 50);
+  })) return false;
+  var bigs = pets.filter(function(animal) { return animal.sp === '犬' && animal.kg >= 30; }).length;
+  if (needs_(rr).riders > (bigs >= 3 ? 1 : 2)) return false;
+  if (rr['介助'] === '必要' && !pt.careOk) return false;
+  // Do not treat missing proof or intake-only lead/price validation as a listing ban. Keep known service refusals.
+  if (!(pt.areas.indexOf(rr['都府県']) >= 0 || pt.areas.indexOf('全国') >= 0) ||
+      !fitsCar_(pt, rr) || !fitsCage_(pt, rr) || checks_(pt, rr).ng.length || !openNear_(pt, rr)) return false;
+  return kasukabePendingReason_(pt, r, p, openDisplay_(KASUKABE_INTAKE_ID));
+}
+
+// Public reasons never include partner contact settings, timestamps of lookups, or private row values.
+// Report only why a quote could not be selected; no fallback signature or request permission is created.
+function kasukabePendingReason_(pt, r, p, display) {
+  function pending(code, message) { return {code:code, message:message, can_request:false}; }
+  var mailbox = kasukabeIntakeMailbox_();
+  if (!mailbox || pt.lineId || String(pt.email || '').trim().toLowerCase() !== mailbox || !reachable_(pt))
+    return pending('intake_unverified', 'このサイトでの受付先を確認中です。');
+  if (!inTime_(pt, r))
+    return pending('lead_time', 'このお迎え日時には受付が間に合いません。時間を遅らせるか、別の日を選んでください。');
+  // Use exactly the real intake representation, not the normalized display-only copy.
+  var pets;
+  try { pets = petsOf_(r); } catch (e) { pets = []; }
+  if (pets.length !== Number(r['ペット数']) || !pets.length || pets.some(function(pet) { return !pet.sp; }))
+    return pending('pet_details', '種類・頭数など、入力したペット情報を確認してください。');
+  if (pets.some(function(pet) { return pet.sp === '犬' && (!pet.vac || !pet.rabies); }))
+    return pending('vaccine_required', '犬の受付には混合ワクチンと狂犬病予防注射の接種確認が必要です。');
+  var d = r._route || {}, pts = p.trip === '往復' ? [d.from, d.to, d.backFrom, d.backTo] : [d.from, d.to];
+  if (d.routeEstimated || d.localEstimated || !pts.every(function(v) {
+    return v && typeof v.lat === 'number' && typeof v.lng === 'number' && v.lat >= 20 && v.lat <= 46 && v.lng >= 122 && v.lng <= 154;
+  })) return pending('route_unconfirmed', '受付に必要な経路を確認できていません。');
+  if (display && display.shop) {
+    var shop = {lat:display.shop[0], lng:display.shop[1]};
+    if (roadKm_(shop,d.from) == null || (p.trip === '往復' && !(display.fare || {}).pickOnce && roadKm_(shop,d.backFrom) == null))
+      return pending('pickup_road_unconfirmed', '店舗からお迎え先までの道のりを確認できていません。');
+  }
+  return pending('quote_unconfirmed', '空き状況・受付条件・料金を確認できていません。');
+}
+
+function displayCards_(r, p, kasukabePreview) {
   if (!CONFIG.SHOW_ALL_CANDIDATES) return [];
   var now = new Date(), from = null;
   // 犬・猫のほかの子：断る・犬猫のみと書いてある会社は出さない。乗せられると書いてある会社を先に並べ、分からない会社は「確認中」と書く
@@ -3975,7 +4026,12 @@ function displayCards_(r, p) {
   var rd = {};
   try { rd = JSON.parse((p || {}).route_details || '{}') || {}; from = rd.from; } catch (e) {}
   var opened = openDisplayIds_();
-  var list = DISPLAY_COMPANIES.filter(function(c) { return !publicPaused_(c.id) && opened.indexOf(c.id) < 0 && displayServes_(c, r['都府県'], from, r) && displayInTime_(c, r['希望日時'], now) && animalOk(c).indexOf(false) < 0; });
+  var list = DISPLAY_COMPANIES.filter(function(c) {
+    var preview = kasukabePreview && c.id === KASUKABE_DISPLAY_ID;
+    return !publicPaused_(c.id) && (preview || opened.indexOf(c.id) < 0) &&
+      displayServes_(c, r['都府県'], from, r) && displayInTime_(c, r['希望日時'], now) &&
+      (!preview || !r['帰りの日時'] || displayInTime_(c, r['帰りの日時'], now)) && animalOk(c).indexOf(false) < 0;
+  });
   if (p) loadRoadKm_(list.filter(function(c) { return c.shop && c.fare; }).map(function(c) { return {lat:c.shop[0], lng:c.shop[1]}; }), [rd.from, rd.to, rd.backFrom, rd.backTo]);
   return list.map(function(c) {
     var unsure = '', unknown = animalOk(c).indexOf(null) >= 0;
@@ -3985,6 +4041,18 @@ function displayCards_(r, p) {
       car:'所在地：' + c.pref + (c.area_text ? '。対応エリア：' + c.area_text + '（公式サイトの記載）' : '（対応エリアは確認中です）') + (c.car_type ? '。車：' + c.car_type + '（公式サイトの記載・会社の回答より）。' : '。車の詳細はまだ確認中です。') + unsure,
       payment:c.pay ? 'お支払い：' + c.pay + '（公式サイトの記載）' : 'お支払い方法はまだ確認中です',
       price:price, review:null, check:[] };
+    if (kasukabePreview && c.id === KASUKABE_DISPLAY_ID) {
+      // Avoid anonCard_ (its demo branch would set display_only=false). This branch never carries a signature.
+      var maxKm = Math.max(Number(rd.km) || 0, Number(rd.highKm) || 0,
+        p.trip === '往復' ? Math.max(Number(rd.backKm) || 0, Number(rd.highBackKm) || 0) : 0);
+      if (maxKm >= 50) card.price = {amount:null, text:'料金は店舗でご確認ください', night:''};
+      if (card.price.amount != null) card.price.planNote =
+        (card.price.planNote ? card.price.planNote + ' ' : '') + '参考料金です。空き状況・受付可否・確定料金は未確認です。';
+      card.car += ' この条件ではサイトから予約を依頼できません。';
+      card.listed = true;
+      card.intake_pending = kasukabePreview;
+      return card;
+    }
     if (isAnon_(c.id, p && p.demo_id)) card.car = (c.car_type ? '車：' + c.car_type + '（公式サイトの記載・会社の回答より）。' : '車の詳細はまだ確認中です。') + unsure;
     return anonCard_(card, c.pref, c.area_text, p && p.demo_id);
   }).sort(function(a, b) { // 犬・猫のほかの子を乗せられると書いてある会社を先に。その中で料金が出せる会社を安い順に、そのあとお見積もりの会社

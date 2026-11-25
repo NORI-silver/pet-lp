@@ -370,7 +370,7 @@ def _keys(t, cat, url=""):
     import json as _j, ownerfit
     k, no = [], []
     raw = {x.strip() for x in (_ATTR(t, "data-tags") + "|" + _ATTR(t, "data-ft")).split("|") if x.strip()}
-    try: f = _j.loads(_ATTR(t, "data-fit") or "{}")
+    try: f = _j.loads((_h.unescape(_m.group(1)) if (_m := re.search(r"\bdata-fit='([^']*)'", t)) else _ATTR(t, "data-fit")) or "{}")
     except Exception: f = {}
     a = f.get("a") or []
     for key, syn in ANIMAL_SYN.items():

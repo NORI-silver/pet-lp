@@ -227,9 +227,21 @@ def render(ctx):
     <h1>迷子・犬の登録・飼えなくなったとき</h1>
   </div>
 </section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2 class="jc-pq">あてはまる状況を選んでください</h2>
+    <div class="jc-pick">
+      <a class="jc-pk u" href="/jichitai/maigo/"><b>うちの子が迷子になった</b><span>まず何をするか・届け先・チラシ</span></a>
+      <a class="jc-pk" href="/jichitai/maigo/#pro"><b>ペット探偵を探す</b><span>民間の捜索サービスと料金を比較</span></a>
+      <a class="jc-pk" href="/jichitai/maigo/#found"><b>迷子の子を見つけた・保護した</b><span>どこに届けるか</span></a>
+      <a class="jc-pk" href="/jichitai/touroku/"><b>犬を迎えた（登録・予防注射）</b><span>いつまでに・どこで・いくら</span></a>
+      <a class="jc-pk" href="/jichitai/tebanasu/"><b>飼い続けるのが難しくなった</b><span>手放す前にできること</span></a>
+    </div>
+  </div>
+</section>
 <section style="padding-top:8px">
   <div class="wrap jc-hub">
-    <div class="sh"><h2>動物愛護センター・保健所をさがす</h2></div>
+    <div class="sh"><h2>自治体の窓口一覧</h2></div>
     <div class="emg">
       <div class="f"><label for="hospPref">都道府県</label><select id="hospPref">{ctx["emg_opts"]}</select><p class="jc-hint">都道府県を選ぶか、市区町村を入れると、その地域の窓口が出ます。<button type="button" id="jcAll">全国の一覧を見る</button></p></div>
       <div class="jc-q1"><label for="jcQ"><i class="jc-ic i-pin"></i>市区町村から、受け持ちのセンター・保健所をさがす</label><input id="jcQ" type="text" placeholder="市区町村（例：佐倉市）" autocomplete="address-level2"><p id="jcA" class="jc-ans" aria-live="polite"></p></div>
@@ -243,17 +255,7 @@ def render(ctx):
     </div>
   </div>
 </section>
-<section style="padding-top:0">
-  <div class="wrap">
-    <h2 class="jc-pq">困りごと別の案内（やることの順番）</h2>
-    <div class="jc-pick">
-      <a class="jc-pk u" href="/jichitai/maigo/"><b>うちの子が迷子になった</b><span>今日やることを順番に。届け出先・チラシ作りも</span></a>
-      <a class="jc-pk" href="/jichitai/maigo/#found"><b>迷子の子を見つけた・保護した</b><span>どこに届けるか</span></a>
-      <a class="jc-pk" href="/jichitai/touroku/"><b>犬を迎えた（登録・予防注射）</b><span>いつまでに・どこで・いくら</span></a>
-      <a class="jc-pk" href="/jichitai/tebanasu/"><b>飼い続けるのが難しくなった</b><span>手放す前にできること</span></a>
-    </div>
-  </div>
-</section>
+
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sh"><h2>保護された子のお迎えや、通院の移動に</h2><p>動物愛護センターや動物病院への移動は、ペットタクシーを予約できます。当日の依頼もできます。</p></div>
