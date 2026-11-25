@@ -480,6 +480,7 @@ PARTNER_SAME = {'P002': 'Dbcb8b8d', 'P003': 'Da968571'}  # 提携先シートの
 # gen_areas.py が毎回 display_companies.json に重ねる（apply_provider）。radius_km はお迎えの範囲で、tools/consistency_check.py が県と合うかを見る。
 # hours・pay・limits_add・fare_add（料金表に足す鍵）を入れられる。areas_ok は範囲の外でも残す県（Noriさんの判断待ちなど）。
 PROVIDER = {
+    'D7f0d2a2': {'fare_add': {'pickOnce': True}},  # COCOタク京都：往復でも迎車料金は行きの1回だけ（店舗回答）
     # COCOタク 埼玉春日部店：提携の確認ページ（a=pconf）の答え 2026-11-23（予約シート「提携の確認」）。起点は春日部。
     # お迎えに行ける範囲は上限なし、行き先は全国。お迎え料金は距離の全部×165円（料金の例4件が今の計算と一致で確認）。
     # 戻る分の料金は往復のときだけ。高速料金は料金に含む。夜間・早朝（21時〜8時）は3,300円を足す（少しでもかかれば全部）。
