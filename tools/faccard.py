@@ -95,6 +95,24 @@ FOR_TEXT = {
 }
 
 # ---- 公式サイトの情報から「合う・合わない」のデータを作る ----
+def fit_attr_str(d):
+    """data-fit をシングルクォートで書く（値はDOM上まったく同じ。JSONの " を &quot; にしない分だけ小さくなる）。& ' < > は必ずエスケープする。"""
+    v = json.dumps(d, ensure_ascii=False, separators=(",", ":"))
+    v = v.replace("&", "&amp;").replace("'", "&#39;").replace("<", "&lt;").replace(">", "&gt;")
+    return " data-fit='" + v + "'"
+
+def fit_attr_values(h):
+    """HTMLの中の data-fit の値（ダブル・シングルどちらの書き方でも）を取り出す。"""
+    return [html.unescape(a or b) for a, b in re.findall(r'data-fit="([^"]*)"|data-fit=\'([^\']*)\'', h)]
+
+def fit_single_quote(h):
+    """ダブルクォートで書かれた data-fit を、同じ値のままシングルクォートの書き方にそろえる（DOM上の値は変わらない。& ' < > はエスケープ）。"""
+    def sub(m):
+        v = html.unescape(m.group(1))
+        v = v.replace("&", "&amp;").replace("'", "&#39;").replace("<", "&lt;").replace(">", "&gt;")
+        return " data-fit='" + v + "'"
+    return re.sub(r' data-fit="([^"]*)"', sub, h)
+
 def fit_attr(animals=None, only=False, sizes=None, max_kg=None, senior=None, puppy=None, animals_text=""):
     """生成側からカードに足す属性（' data-fit="…"'）。書いていないことは渡さない（＝要確認）。"""
     d = {}
@@ -106,7 +124,7 @@ def fit_attr(animals=None, only=False, sizes=None, max_kg=None, senior=None, pup
     if senior: d["sen"] = 1
     if puppy: d["pup"] = 1
     if not d: return ""
-    return ' data-fit="' + html.escape(json.dumps(d, ensure_ascii=False, separators=(",", ":"))) + '"'
+    return fit_attr_str(d)
 
 def _kinds_in(t):
     a = []
@@ -632,7 +650,7 @@ def _one(h, conf, fbn):
         h2 = h2.replace("</head>", CSS + "\n</head>", 1)
         h2 = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + sprite_for(h2), h2, count=1)
     if "data-fp" not in h2 and "data-hf" not in h2:  # 動物病院は /hosp.js のさがす欄（tools/hosp_find.py）
-        fits = [json.loads(html.unescape(x)) for x in re.findall(r'data-fit="([^"]+)"', h2)]
+        fits = [json.loads(x) for x in fit_attr_values(h2)]
         ku = {k for f in fits for k in f.get("a", [])}
         fl = [html.unescape(x).split("|") for x in re.findall(r'data-ft="([^"]*)"', h2)]
         nc = len(re.findall(r'class="emg-item emg-co fc', h2))
@@ -721,7 +739,22 @@ def build(ROOT):
                 open(p, "w", encoding="utf-8").write(h2); n += 1
     return n
 
+def quote_all(ROOT):
+    """全ページの data-fit の書き方だけをシングルクォートにそろえる（ほかは何も変えない）。"""
+    n = 0
+    for d in sorted(DIRS):
+        for base, _, files in os.walk(os.path.join(ROOT, d)):
+            if "index.html" not in files: continue
+            p = os.path.join(base, "index.html")
+            h = open(p, encoding="utf-8").read()
+            h2 = fit_single_quote(h)
+            if h2 != h:
+                open(p, "w", encoding="utf-8").write(h2); n += 1
+    return n
+
 if __name__ == "__main__":
     import sys
     sys.path.insert(0, HERE)
+    if "--quote-only" in sys.argv:
+        print("faccard quote-only", quote_all(os.path.dirname(HERE)), "pages"); sys.exit(0)
     print("faccard", build(sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(HERE)), "pages")
