@@ -41635,14 +41635,6 @@
   "bytes": 18414
  },
  {
-  "id": "PH-HT035",
-  "file": "img/fac/hotel/PH-HT035_1.webp",
-  "src": "https://www.amitie-maeda.com/wp-content/uploads/sp_image2.png",
-  "page": "https://www.amitie-maeda.com/",
-  "sha256": "6705a52c3f544f201c666a258c43b198ba888c32bac86f22d17dbd2a4fcc4bf9",
-  "bytes": 61244
- },
- {
   "id": "PH-HT038",
   "file": "img/fac/hotel/PH-HT038_1.webp",
   "src": "http://deardog.ciao.jp/wp/wp-content/uploads/2020/03/ac03.jpg",
@@ -41821,14 +41813,6 @@
  {
   "id": "PH005",
   "file": "img/fac/hotel/PH005_1.webp",
-  "src": "https://myuan-cat.com/wp25/wp-content/uploads/2026/01/og_image.jpg",
-  "page": "https://myuan-cat.com/",
-  "sha256": "6183454de651f7d85c7645db8b3ce3935b27399b3061317f4f7c3cb504554a1f",
-  "bytes": 46156
- },
- {
-  "id": "PH005",
-  "file": "img/fac/hotel/PH005_2.webp",
   "src": "https://myuan-cat.com/wp25/wp-content/themes/myuan/images/top_hero.jpg",
   "page": "https://myuan-cat.com/",
   "sha256": "8505ea7ea25cebc5eb281eaf4404de41a197ab71b977d0d03ac6fdb7563d9e8d",
@@ -41836,7 +41820,7 @@
  },
  {
   "id": "PH005",
-  "file": "img/fac/hotel/PH005_3.webp",
+  "file": "img/fac/hotel/PH005_2.webp",
   "src": "https://myuan-cat.com/wp25/wp-content/themes/myuan/images/a_tophero_tb.jpg",
   "page": "https://myuan-cat.com/",
   "sha256": "29f032485af8e49546ea716287073acd6295f2c00bff939e296c3b015e8a0437",
@@ -41881,22 +41865,6 @@
   "page": "https://pokkur-ah.com/",
   "sha256": "d984d6cd138c0fbf3e723a15e61df8520aee9b8eaa2800402ce6c4334ea2cdcd",
   "bytes": 33836
- },
- {
-  "id": "PH-HT048",
-  "file": "img/fac/hotel/PH-HT048_2.webp",
-  "src": "https://pokkur-ah.com/wp-content/uploads/main_img02-scaled.jpg",
-  "page": "https://pokkur-ah.com/",
-  "sha256": "5b01c5812cd39dfe414fb552fde89e0983bded5a1a7895b5c7b8eed1726da344",
-  "bytes": 40872
- },
- {
-  "id": "PH-HT048",
-  "file": "img/fac/hotel/PH-HT048_3.webp",
-  "src": "https://pokkur-ah.com/wp-content/uploads/main_img03-scaled.jpg",
-  "page": "https://pokkur-ah.com/",
-  "sha256": "fe9e01809063e80659aff4ac851acebb0b75642a1dcf8a8fa8ab699c0aa0342b",
-  "bytes": 35902
  },
  {
   "id": "PH-HT050",
@@ -42197,14 +42165,6 @@
  {
   "id": "PH-HT112",
   "file": "img/fac/hotel/PH-HT112_1.webp",
-  "src": "https://tkdogschool.com/og_image.png",
-  "page": "https://tkdogschool.com/about/",
-  "sha256": "ad8276bc1e6160db690eee633252ae541b357aed1391784d9c15dcc310c49f5e",
-  "bytes": 71702
- },
- {
-  "id": "PH-HT112",
-  "file": "img/fac/hotel/PH-HT112_2.webp",
   "src": "https://tkdogschool.com/about/imgs/strength_img01.jpg",
   "page": "https://tkdogschool.com/about/",
   "sha256": "e188e1068f37ff841feaaaf8e276db37cd735407d891c3013853dc37a743d0ad",
@@ -42212,7 +42172,7 @@
  },
  {
   "id": "PH-HT112",
-  "file": "img/fac/hotel/PH-HT112_3.webp",
+  "file": "img/fac/hotel/PH-HT112_2.webp",
   "src": "https://tkdogschool.com/about/imgs/strength_img02.jpg",
   "page": "https://tkdogschool.com/about/",
   "sha256": "9c5d50203d91d6dc07121875fc39a9504aeb97b1aacfd4cd8fb7207ad6145ea6",
@@ -42220,7 +42180,7 @@
  },
  {
   "id": "PH-HT112",
-  "file": "img/fac/hotel/PH-HT112_4.webp",
+  "file": "img/fac/hotel/PH-HT112_3.webp",
   "src": "https://tkdogschool.com/about/imgs/training_img01.jpg",
   "page": "https://tkdogschool.com/about/",
   "sha256": "026faf11cfa834878284d2f8d83de15d3f22393e7441e83d922aaee53ad0c442",
@@ -42249,14 +42209,6 @@
   "page": "https://www.berydog.com/",
   "sha256": "a9b929eae7bf97fa9e5ccd6097b99f80214e920805f034d268758769ec3d4df3",
   "bytes": 128750
- },
- {
-  "id": "PH-HT116",
-  "file": "img/fac/hotel/PH-HT116_2.webp",
-  "src": "https://www.berydog.com/library/66e1344e76a4422591d9d254/6a2137af2fd4b9028afecba2.png",
-  "page": "https://www.berydog.com/",
-  "sha256": "010f5d890eb9d79c0b2cff17fe378bce51ec5150590c406fc5a9764a5360a495",
-  "bytes": 99780
  },
  {
   "id": "PH-HT117",
@@ -42339,22 +42291,6 @@
   "bytes": 27872
  },
  {
-  "id": "G-HT035",
-  "file": "img/fac/trimming/G-HT035_1.webp",
-  "src": "https://scontent-sea5-1.cdninstagram.com/v/t51.82787-15/919156530_18653651413002347_499704578568039409_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=RxRDS9EL9_wQ7kNvwFUVk5w&_nc_oc=Adp2JjdF_zWMoYTIYRDh1YQ6_JxT9SezGtVt1pnmRuj180aYNoccPNXB93FgpY7t7aU&_nc_zt=23&_nc_ht=scontent-sea5-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=Ezp7mi8_-_5jy80FWXnE3w&_nc_tpa=Q5bMBQJrUPZ-J8EKV_klzkV80LosAwkTaCoONUFwkrRyygpDhw3Rrk-NIz8pCiXrKPMBxcsiOEhtmgSH&_nc_ct=RQosPBUKFQIAAAA&oh=00_AQSuGQIIh0r7ogOWnbkZ6-V0MC1yZgVkwwTUPWDNMtDOEA&oe=6B0C01A1",
-  "page": "https://mrsetakamuy.wixsite.com/mrsetakamuy",
-  "sha256": "85a01027e1b054b32b24ae9151e86c80702d7266e466a44598cd0ae8cea276bf",
-  "bytes": 74648
- },
- {
-  "id": "G-HT035",
-  "file": "img/fac/trimming/G-HT035_2.webp",
-  "src": "https://scontent-sea5-1.cdninstagram.com/v/t51.82787-15/913623594_18653329096002347_5301053633012313378_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=7l-ja1NHdYoQ7kNvwEHNyol&_nc_oc=AdqnbwCRFJCWmWH2Q8SDGdNJg5IjP-xm0F_hOE4_T5fkrGvm91LmjEXIIPrBDABREMU&_nc_zt=23&_nc_ht=scontent-sea5-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=Ezp7mi8_-_5jy80FWXnE3w&_nc_tpa=Q5bMBQIwgxE4v22lGQtQXpoppM5Z0GF-2TaYt-jA3OuZIlYuNY1NH2ZVEGZ90K1VelRMiLs4qCiyTRvG&_nc_ct=RQosPBUKFQIAAAA&oh=00_AQRFmIAIZqSadbTeGeTL4XB_sjbDZ58DX7m8tB4i_kWFRA&oe=6B0BF15C",
-  "page": "https://mrsetakamuy.wixsite.com/mrsetakamuy",
-  "sha256": "5851841880886ff9dfc0b0c436b8903e2ac8afe39a0276ec28e62129dea160c6",
-  "bytes": 105584
- },
- {
   "id": "G-HT171",
   "file": "img/fac/trimming/G-HT171_1.webp",
   "src": "https://otaru-dogsalon-rusk.com/wp-content/uploads/2025/09/IMG_6782.jpeg",
@@ -42413,14 +42349,6 @@
  {
   "id": "G-HT175",
   "file": "img/fac/trimming/G-HT175_4.webp",
-  "src": "https://huruhuru11.com/wp-content/themes/huruhuru/img/slide4pc.jpg",
-  "page": "https://huruhuru11.com/",
-  "sha256": "da27f2d7ef169434f651a26ee2291c6d960cac9f12f5feac4559e27241847306",
-  "bytes": 47972
- },
- {
-  "id": "G-HT175",
-  "file": "img/fac/trimming/G-HT175_5.webp",
   "src": "https://huruhuru11.com/wp-content/themes/huruhuru/img/slide5pc.jpg",
   "page": "https://huruhuru11.com/",
   "sha256": "375a08af2b9cc7ea41d1961caae6b90fbc1d219e4c9205e78e0345a4ed86355b",
