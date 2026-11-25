@@ -241,6 +241,12 @@ def keys(cat, url):
             put(k, _find(t, k))
     for k in FAC.get(cat, []):
         put(k, _find(t, k))
+    if cat == "rojin-home":
+        # 映像のライブ視聴は飼い主向けであることを、出典付きの専用項目で確認する。
+        # 防犯カメラ、施設側の見守り、写真・動画の報告からは推定しない。
+        live = r.get("care_evidence", {}).get("owner_live_camera", {})
+        if live.get("src") and live.get("checked") and "dog" in live.get("animals", []):
+            put("owner_live_dog", 1)
     if cat == "pet-hotel":
         # 体重帯（データに体重の上限 max_kg が書いてあるホテルだけ。上限が帯の上まであれば合う、上限が帯の下より小さければ合わない）
         kg = r.get("max_kg") or 0
