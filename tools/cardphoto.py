@@ -31,6 +31,13 @@ CSS = ('<style id="cp-css">'
        '.fr-s{align-items:stretch}'
        '.cs:not(.fc)>.cs-ph,.ux-c>.cs-ph{margin:-12px -14px 10px;border-radius:14px 14px 0 0}'
        '.hc>.cs-ph{margin:-14px -14px 10px;border-radius:14px 14px 0 0}'
+       '.cs-ph-w{position:relative}'
+       '.cs-ph-d{position:absolute;left:50%;bottom:7px;transform:translateX(-50%);display:flex;gap:5px;padding:3px 7px;border-radius:999px;background:rgba(0,0,0,.35);pointer-events:none}'
+       '.cs-ph-d i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55)}'
+       '.cs-ph-d i.on{background:#fff}'
+       '.cs-ph-a{position:absolute;top:50%;width:28px;height:28px;margin-top:-14px;padding:0 0 3px;border:0;border-radius:50%;background:rgba(255,255,255,.78);color:#3d2f25;font-size:20px;line-height:28px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.25);cursor:pointer;opacity:.9}'
+       '.cs-ph-a.l{left:6px}.cs-ph-a.r{right:6px}'
+       '.cs-ph-w.f .cs-ph-a.l,.cs-ph-w.e .cs-ph-a.r{display:none}'
        '</style>')
 
 
