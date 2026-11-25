@@ -1,0 +1,87 @@
+# 一時の補助。richsort の T114 先頭固定を確認するだけ（確認用の branch）。終わったら消す。
+name: photo-t114-helper
+on:
+  push:
+    branches: ['NORI-silver-patch-3']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 比較用（いまの main をそのまま作り直す）
+        run: |
+          git log -1 --format='base %H'
+          pip install pillow >/dev/null
+          python3 tools/gen_areas.py . > /tmp/c1.log 2>&1 || { tail -20 /tmp/c1.log; exit 1; }
+          python3 tools/gen_areas.py . > /tmp/c2.log 2>&1 || { tail -20 /tmp/c2.log; exit 1; }
+          echo "CONTROL changed files: $(git status --porcelain | wc -l)"
+          git status --porcelain | awk '{print $2}' | sort > /tmp/ctl.txt
+          echo "CONTROL T114 in dog-trainer/index.html: $(grep -c 'data-fid="T114"' dog-trainer/index.html)  kyoto: $(grep -c 'data-fid="T114"' dog-trainer/kyoto/index.html)"
+          echo "CONTROL dog-trainer index full trainer cards: $(grep -o '<div class="emg-item[^"]*"[^>]*data-fid="T[^"]*"' dog-trainer/index.html | wc -l)"
+          git checkout -q -- . ; git clean -fdq -e .github
+          git status --porcelain | wc -l
+      - name: 直す（T114 を同じ県の先頭に置く）
+        run: |
+          python3 - <<'PY'
+
+          p='tools/richsort.py'
+          s=open(p,encoding='utf-8').read()
+          old="def _sorted(rows, ph):\n    return [r for _, r in sorted(enumerate(rows), key=lambda x: (-_score(x[1], ph), x[0]))]\n"
+          new=("# 並び順を決めても同じ県の先頭に置く施設（tests/hirose-card.test.cjs が全国ページの先頭に出ることを見ている）。\n"
+          "# ドッグトレーナー廣瀬（T114）は、事業所の場所を廣瀬さんの指定で直した施設（#658）。並べ替えの前は京都府の3番目だった。\n"
+          "# 情報量の点数で下がっても、同じ県の中で先頭に置く。ほかの施設の並びは変えない（安定ソート）。\n"
+          "_PINNED = {\"T114\"}\n\n\n"
+          "def _sorted(rows, ph):\n"
+          "    return [r for _, r in sorted(enumerate(rows), key=lambda x: (0 if x[1].get(\"id\") in _PINNED else 1, -_score(x[1], ph), x[0]))]\n")
+          assert old in s
+          open(p,'w',encoding='utf-8').write(s.replace(old,new))
+          PY
+          python3 tools/richsort.py
+          git diff --stat | tail -5
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/richsort.py tools/trainers.json
+          git rm -q .github/workflows/*t114-helper.yml
+          git commit -qm "[E] 並び替えで下がっても、廣瀬さん(T114)を京都府の先頭に置く（生成元のみ）"
+          git push origin HEAD:refs/heads/NORI-silver-patch-3
+          git log -1 --format='SOURCE COMMIT %H'
+          git show --stat --format= HEAD | cat
+      - name: 作り直しと確認
+        run: |
+          python3 tools/gen_areas.py . > /tmp/g1.log 2>&1 || { tail -20 /tmp/g1.log; exit 1; }
+          cp tools/lastmod.json /tmp/lm1.json
+          python3 tools/gen_areas.py . > /tmp/g2.log 2>&1 || { tail -20 /tmp/g2.log; exit 1; }
+          echo "FIXED 2nd vs 1st lastmod diff lines: $(diff /tmp/lm1.json tools/lastmod.json | wc -l)"
+          echo "FIXED changed files: $(git status --porcelain | wc -l)"
+          git status --porcelain | awk '{print $2}' | sort > /tmp/fix.txt
+          echo "FIXED T114 in dog-trainer/index.html: $(grep -c 'data-fid="T114"' dog-trainer/index.html)  kyoto: $(grep -c 'data-fid="T114"' dog-trainer/kyoto/index.html)"
+          echo "FIXED dog-trainer index full trainer cards: $(grep -o '<div class="emg-item[^"]*"[^>]*data-fid="T[^"]*"' dog-trainer/index.html | wc -l)"
+          echo "ONLY-IN-FIXED (vs control): $(comm -13 /tmp/ctl.txt /tmp/fix.txt | wc -l)"; comm -13 /tmp/ctl.txt /tmp/fix.txt | head -10
+          echo "ONLY-IN-CONTROL: $(comm -23 /tmp/ctl.txt /tmp/fix.txt | wc -l)"; comm -23 /tmp/ctl.txt /tmp/fix.txt | head -5
+          echo "gz dog-trainer $(gzip -9c dog-trainer/index.html | wc -c)"
+          python3 - <<'PY'
+          import re
+          s=open('dog-trainer/index.html',encoding='utf-8').read()
+          i=s.find('data-fid="T114"'); print('T114 CARD', re.sub(r'\s+',' ',re.sub(r'<[^>]+>','|',s[i:i+1800]))[:500])
+          PY
+      - name: 検査
+        run: |
+          (python3 tools/seo_check.py . || echo SEO_FAILED; python3 tools/rules_check.py . | tail -2; python3 tools/feedback_check.py . | tail -1; python3 tools/consistency_check.py . | tail -1) 2>&1 | tee /tmp/gates.log
+      - name: テスト
+        run: |
+          rm -f /tmp/tf
+          for f in tests/*.test.cjs; do node "$f" > /tmp/one.log 2>&1 || { echo "FAILED $f"; tail -15 /tmp/one.log; touch /tmp/tf; }; done 2>&1 | tee /tmp/tests.log
+          echo "TESTS: $(ls tests/*.test.cjs | wc -l) files, failed: $(grep -c '^FAILED' /tmp/tests.log)"
+      - name: 結果を確認用 branch に置く
+        run: |
+          git add -A; git reset -q -- .github/workflows
+          git commit -qm "DIAG: regenerated output for T114 check (not for merge)"
+          git push -f origin HEAD:refs/heads/diag-t114
