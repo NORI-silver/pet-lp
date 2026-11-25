@@ -3643,6 +3643,9 @@ function pinnedIntakePrice_(displayId, p) {
   var c = DISPLAY_COMPANIES.filter(function(x) { return x.id === displayId; })[0], d;
   try { d = JSON.parse(p.route_details || '{}'); } catch (e) { return null; }
   if (!c || !c.shop || !c.fare || !d || d.routeEstimated || d.localEstimated || !d.from || !d.to) return null;
+  // 春日部店は片道50km以上で個別見積もり。比較用の概算を申込額にしない。
+  if (displayId === KASUKABE_DISPLAY_ID && (typeof d.km !== 'number' || !isFinite(d.km) ||
+      d.km >= 50 || (p.trip === '往復' && (typeof d.backKm !== 'number' || !isFinite(d.backKm) || d.backKm >= 50)))) return null;
   var points = p.trip === '往復' ? [d.from, d.to, d.backFrom, d.backTo] : [d.from, d.to];
   if (!points.every(function(x) {
     return x && typeof x.lat === 'number' && typeof x.lng === 'number' && x.lat >= 20 && x.lat <= 46 && x.lng >= 122 && x.lng <= 154;

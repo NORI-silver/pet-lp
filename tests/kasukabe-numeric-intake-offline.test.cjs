@@ -32,6 +32,11 @@ ctx.COCOTAKU_INTAKE_INTEGRATION_READY=true; // 結合テストだけ
 pt.oaId='@offline-directory-only';
 pt.lineUrl='https://example.invalid/official-line';
 const card=find(p);
+const withKm=km=>({...p,route_details:JSON.stringify({km,backKm:km,from:a,to:b})});
+assert.equal(find(withKm(49)).price.amount,11385);
+assert.equal(find(withKm(50)),undefined,'confirmed separate quote from 50 km, inclusive');
+assert.equal(find(withKm(51)),undefined);
+
 assert.equal(find({...p,route_details:JSON.stringify({km:10,backKm:10,from:a,to:b,routeEstimated:true})}),undefined);
 ctx.roadKm_=()=>null;
 assert.equal(find(p),undefined);
