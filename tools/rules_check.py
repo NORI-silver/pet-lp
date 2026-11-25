@@ -75,6 +75,7 @@ FAC_CATS = ["hospital", "pet-hotel", "dogrun", "pet-sitter", "trimming", "dog-tr
 OWNER_CATS = ["pet-hotel", "pet-sitter", "trimming", "dog-trainer", "rojin-home", "sougi"]  # tools/ownerfit.py の CAT_WHO と同じ
 SEARCH_MARK = re.compile(r'class="(?:[^"]*\s)?(?:ux-find|hf|hn-find|bf|ff-box|fit-box|pref-pick|ux-c|emg-item|fr|jc-pick)(?:\s[^"]*)?"|<select\b|<input\b(?![^>]*type="hidden")')
 REASONS = {
+    "matchform": "タクシー候補の判定に使う入力欄が初期表示されていない（Nori 11/26）",
     "words": "使わない言葉", "hole": "下書きの穴（◯◯など）", "removed": "消した部品がもどった", "tally": "運営側の集計を見せている", "kv": "キービジュアルがない", "trust": "運営者と掲載の基準への表示がない",
     "prefgrid": f"都道府県のボタンを{PREFGRID_MAX + 1}個以上たたまずに並べている", "intro": f"さがす欄・見出しの前の文が{INTRO_MAX}字を超える",
     "search": "施設の分野で、さがす欄より前に記事・目次がある",
@@ -273,6 +274,16 @@ def run(root):
     res = {path: v for path in pages(root) if (v := check_page(root, path))}
     res.update(check_place_js(root))
     res.update(check_data(root))
+    # タクシーの判定項目は初期表示。任意詳細へワクチンを戻さない（Nori 2026-11-26）。
+    source = open(os.path.join(root, "index.html"), encoding="utf-8").read()
+    found = []
+    if re.search(r'<form\b[^>]*id="petForm"[^>]*class="[^"]*\b(?:s1|lite)\b', source) or re.search(r'classList\.(?:add|toggle)\("(?:s1|lite)"', source):
+        found.append(("matchform", "ペット情報を初期状態や県の変更で隠している"))
+    vaccine = source.find('予防接種<span')
+    if vaccine < 0 or source.rfind('<details', 0, vaccine) > source.rfind('</details>', 0, vaccine):
+        found.append(("matchform", "ワクチン欄が任意の折りたたみ内にあるか、なくなっている"))
+    if found:
+        res.setdefault("/", []).extend(found)
     return res
 
 
