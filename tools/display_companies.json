@@ -3156,7 +3156,8 @@
     "tax": "税込",
     "src": "https://pet-taxi-kasukabe.com/",
     "pick": {
-     "per": 165
+     "per": 165,
+     "kmMode": "nearest"
     },
     "back": {},
     "wait": {
