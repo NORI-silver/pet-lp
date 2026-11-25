@@ -1,0 +1,538 @@
+{
+"trimming:GC087": [
+1
+],
+"hotel:PHC006": [
+1
+],
+"hotel:PHC057": [
+1
+],
+"hotel:PHC127": [
+1
+],
+"hotel:PHC233": [
+1
+],
+"hospital:G12010": [
+1
+],
+"sougi:Se0a0fe": [
+1
+],
+"emergency:E01": [
+1
+],
+"emergency:E02": [
+1
+],
+"trainer:Tt0b96c29": [
+1
+],
+"trainer:Tt61e109d": [
+1
+],
+"sitter:Std245c94": [
+2
+],
+"sitter:St617330b": [
+1
+],
+"sitter:St04ac361": [
+1
+],
+"sitter:Stba87377": [
+1
+],
+"hotel:PHt7d4f13e": [
+1
+],
+"hotel:PHt33e7f37": [
+2
+],
+"hotel:PHtcc52606": [
+2
+],
+"hotel:PHt08d77e6": [
+3,
+4
+],
+"hotel:PHtdb3578b": [
+1,
+2
+],
+"hotel:PHt5802e98": [
+2
+],
+"hotel:PHtdb89a95": [
+2
+],
+"hotel:PHt9928d49": [
+1
+],
+"hotel:PHt110fab1": [
+2,
+3
+],
+"hotel:PHt4aa360b": [
+1
+],
+"hotel:PHt31786ed": [
+1,
+2
+],
+"hotel:PHtb04fda1": [
+4
+],
+"hotel:PHta5e60b3": [
+1,
+2
+],
+"hotel:PHt0bf2aec": [
+2,
+3
+],
+"hotel:PHt4ce2dc4": [
+1,
+2
+],
+"hotel:PHtd0256fb": [
+2
+],
+"hotel:PHt29cdfdc": [
+1
+],
+"hotel:PHt210f159": [
+1,
+2
+],
+"hotel:PHte73a249": [
+4,
+5
+],
+"hotel:PHtcc80571": [
+1
+],
+"hotel:PHt1559576": [
+3
+],
+"hotel:PHt13a7dda": [
+3,
+4
+],
+"hotel:PHt3c61f73": [
+3
+],
+"hotel:PHtf67fe4b": [
+1
+],
+"hotel:PHt6685f15": [
+1
+],
+"hotel:PHtc61283e": [
+1,
+2,
+3
+],
+"hotel:PHt04ac361": [
+1,
+2
+],
+"hotel:PHtfe4a0ca": [
+3
+],
+"hotel:PHt61e109d": [
+1,
+2,
+3
+],
+"trimming:Gtae17adf": [
+1,
+2
+],
+"trimming:Gta9db5b2": [
+1,
+2,
+3,
+4,
+5
+],
+"trimming:Gst3407741": [
+2
+],
+"trimming:Gstf04cf93": [
+1,
+2
+],
+"trimming:Gst6685f15": [
+1
+],
+"trimming:Gst65a7cc4": [
+3
+],
+"trimming:Gst7c1c4a2": [
+1
+],
+"trimming:Gsteae7a6e": [
+1,
+2,
+3
+],
+"trimming:Gst2623cce": [
+1
+],
+"trimming:Gstdb3578b": [
+1,
+2
+],
+"trimming:Gst0a0dfe7": [
+1,
+2
+],
+"trimming:Gst4aa360b": [
+1,
+2,
+3
+],
+"trimming:Gst77b79af": [
+1
+],
+"trimming:Gst0c2f8da": [
+1
+],
+"trimming:Gstce27322": [
+2
+],
+"trimming:Gst0bf2aec": [
+1,
+2,
+3
+],
+"trimming:Gst33e7f37": [
+2
+],
+"trimming:Gstcc52606": [
+2
+],
+"trimming:Gstc61283e": [
+1,
+2,
+3,
+5
+],
+"trimming:Gst613fa07": [
+1,
+2
+],
+"trimming:Gst04ac361": [
+1,
+2
+],
+"trimming:Gst62a0001": [
+4,
+5
+],
+"trimming:Gst0f78d08": [
+1,
+2,
+5
+],
+"trimming:Gsta5e60b3": [
+1,
+2
+],
+"trimming:Gst3116f04": [
+1,
+2
+],
+"trimming:Gst1559576": [
+4
+],
+"trimming:Gste5c1d37": [
+1,
+2
+],
+"trimming:Gstbe7b6e6": [
+2,
+3
+],
+"trimming:Gst48a1dd2": [
+1
+],
+"trimming:Gst626054a": [
+2,
+3
+],
+"trimming:Gstb483995": [
+1
+],
+"trimming:Gst162b640": [
+1
+],
+"trimming:Gst4ce2dc4": [
+1,
+2
+],
+"trimming:Gstfb6431c": [
+1
+],
+"trimming:Gst7cb412d": [
+1,
+2
+],
+"trimming:Gstf67fe4b": [
+1
+],
+"trimming:Gst0fee001": [
+1
+],
+"trimming:Gstdb89a95": [
+1,
+2
+],
+"trimming:Gst901f2c3": [
+2,
+4
+],
+"trimming:Gstc9abe3e": [
+1
+],
+"trimming:Gst32c0bb0": [
+1
+],
+"trimming:Gstba87377": [
+1
+],
+"trimming:Gt0ffbe6d": [
+1
+],
+"trimming:Gt4202b0c": [
+1,
+2
+],
+"trimming:Gtc495092": [
+1,
+2,
+3
+],
+"trimming:Gt46264d5": [
+1
+],
+"trimming:Gt4093896": [
+1
+],
+"trimming:Gt83d8ebc": [
+1
+],
+"hospital:G13003": [
+3
+],
+"hospital:G13037": [
+2
+],
+"hospital:G13072": [
+1
+],
+"hospital:G13081": [
+1,
+2
+],
+"hospital:G13247": [
+1,
+2
+],
+"hospital:G13291": [
+1
+],
+"trainer:Tt34984e3": [
+1
+],
+"trainer:Ttc9fa334": [
+1
+],
+"trimming:Gt45dda06": [
+1
+],
+"trimming:Gt6eee3be": [
+4
+],
+"trimming:Gtac44211": [
+1
+],
+"trimming:Gt2883194": [
+1
+],
+"trimming:Gt267ece7": [
+1,
+2
+],
+"trimming:Gt4a55cba": [
+1
+],
+"trimming:Gt115b794": [
+3,
+4
+],
+"trimming:Gt1e1e22a": [
+3,
+4
+],
+"trimming:Gt78fcec9": [
+1
+],
+"trimming:Gt06026e0": [
+2
+],
+"trimming:Gt9240252": [
+2
+],
+"trimming:Gt719f594": [
+1
+],
+"trimming:Gt98fa9c7": [
+2
+],
+"trimming:Gt4427005": [
+1
+],
+"trimming:Gt20bb75b": [
+2
+],
+"trimming:Gtb0ff627": [
+3
+],
+"trimming:Gt36a7759": [
+1,
+2,
+3
+],
+"trimming:Gt32de356": [
+4
+],
+"trimming:Gt2168421": [
+2
+],
+"trimming:Gtda9ee3c": [
+1,
+2
+],
+"trimming:Gt57cdc5a": [
+1,
+2,
+3
+],
+"trimming:Gt698ffb2": [
+2,
+3,
+5
+],
+"sitter:St71bd97e": [
+1,
+2,
+3
+],
+"sitter:St32de356": [
+3
+],
+"hotel:PHtec53ae8": [
+1
+],
+"hotel:PHt1e3956c": [
+1,
+2
+],
+"hotel:PHk568441": [
+1,
+2
+],
+"hotel:PHk63dbd3": [
+1,
+2,
+3
+],
+"hotel:PHka7e395": [
+1,
+2
+],
+"hotel:PHkb3a380": [
+1,
+2
+],
+"hotel:PHkaf2c17": [
+1
+],
+"hotel:PHkbc4c4d": [
+1
+],
+"hotel:PHkc78a56": [
+3
+],
+"hotel:PHkc9109f": [
+1
+],
+"hotel:PHkcebca0": [
+1,
+2
+],
+"trimming:GSka3e772": [
+1,
+2,
+3
+],
+"hotel:PH-ST0219": [
+3,
+4
+],
+"sitter:S-ST0802": [
+2
+],
+"sitter:S-ST0782": [
+1,
+2
+],
+"trainer:T-ST0763": [
+1
+],
+"trainer:T-ST0927": [
+1,
+2
+],
+"trainer:T-ST1239": [
+1
+],
+"trainer:T-ST1613": [
+1
+],
+"trainer:T-ST0570": [
+1
+],
+"trainer:Tkeb8ecb": [
+1
+],
+"trainer:Tk66a4db": [
+2
+],
+"trainer:Tk48e178": [
+1
+],
+"trainer:Tkfe3ced": [
+1
+],
+"hotel:PHc075c58": [
+1,
+2
+],
+"hotel:PHc9ea09f": [
+1
+],
+"hotel:PHca3d47c": [
+1
+],
+"hotel:PHce74b04": [
+2,
+3
+],
+"hotel:PHcf246ea": [
+1
+]
+}
