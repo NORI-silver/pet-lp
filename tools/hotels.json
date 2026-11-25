@@ -21509,6 +21509,49 @@
    ]
   },
   {
+   "id": "PH053",
+   "name": "HAMA＆WAN",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "浜松市中央区",
+   "url": "https://www.hama-wan.com/pethotel.html",
+   "large": true,
+   "services": "ペットホテル、ドッグラン",
+   "run": true,
+   "large_basis": "文",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "ペットホテルの受付時間は10：00～17：00でお願いします。（時間外での受付は対応いたしかねます）",
+     "src": "https://www.hama-wan.com/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "ワクチン・狂犬病の予防接種済み証明書をご持参ください。",
+     "src": "https://www.hama-wan.com/pethotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場完備",
+     "src": "https://www.hama-wan.com/access.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：不定休",
+     "src": "http://www.hama-wan.com/pet_hotel_diary/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
    "id": "PH027",
    "name": "ねこべや松戸店",
    "prefs": [
@@ -31700,49 +31743,6 @@
      "k": "料金",
      "v": "1頭：11,000円 × 1日 ＝ 11,000円。2頭：15,000円 × 1日 ＝ 15,000円",
      "src": "https://cats-carlton.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
-  },
-  {
-   "id": "PH053",
-   "name": "HAMA＆WAN",
-   "prefs": [
-    "静岡県"
-   ],
-   "city": "浜松市中央区",
-   "url": "https://www.hama-wan.com/pethotel.html",
-   "large": true,
-   "services": "ペットホテル、ドッグラン",
-   "run": true,
-   "large_basis": "文",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "ペットホテルの受付時間は10：00～17：00でお願いします。（時間外での受付は対応いたしかねます）",
-     "src": "https://www.hama-wan.com/pethotel.html",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "用意するもの",
-     "v": "ワクチン・狂犬病の予防接種済み証明書をご持参ください。",
-     "src": "https://www.hama-wan.com/pethotel.html",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "駐車場",
-     "v": "駐車場完備",
-     "src": "https://www.hama-wan.com/access.html",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "定休日：不定休",
-     "src": "http://www.hama-wan.com/pet_hotel_diary/",
      "by": "site",
      "checked": "2026-11-23"
     }
