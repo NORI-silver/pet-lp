@@ -307,9 +307,13 @@ def build_card(card, conf, fit_by_name):
     name = _txt(head)
     loc, rows, chips, more, tail, keep = "", [], [], [], [], []
     svc_items = []
+    intro = ""
     for tag, x in kids[1:]:
         cls = (re.match(r"<\w+[^>]*\bclass=\"([^\"]*)\"", x) or [None, ""])[1]
         t = _txt(x)
+        if tag == "small" and cls == "emg-intro":
+            intro = t
+            continue
         if tag == "small" and "sg-src" in cls:
             more.append(x); continue
         if tag == "small" and "emg-spec" in cls:
@@ -401,6 +405,7 @@ def build_card(card, conf, fit_by_name):
     if dp: ot = ot[:-1] + f' data-dp="{html.escape("|".join(dp))}">'
     # 見出しの「◯◯市の動物病院」は地域の見出しと重なるので出さない（Nori 2026-11-15「柏市の下に柏市の動物病院って全てのカードに入れてるけど不要」）
     body = [f'<div class="fc-name">{head}</div>']
+    if intro: body.append(f'<p class="fc-catch">{html.escape(intro)}</p>')
     if fors: body.append(f'<p class="fc-catch">{html.escape("・".join(fors[:2]))}に</p>')
     if trust:
         cr = "".join(f'<span class="cr">{html.escape(x.strip())}</span>' for x in dict.fromkeys(re.split(r"[、,]", trust[0])) if x.strip())
