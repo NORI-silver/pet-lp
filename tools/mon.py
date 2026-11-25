@@ -237,7 +237,10 @@ def host(u):
 def gate(a, t):
     out = []
     company, to, method, purpose = a.get("company", ""), a.get("to", ""), a.get("method", ""), a.get("purpose", "")
-    reply, nori = "reply" in a, a.get("nori", "").strip()
+    reply, approval = "reply" in a, a.get("nori")
+    nori = approval.strip() if isinstance(approval, str) else ""
+    if "nori" in a and not nori:
+        out.append("--nori に Nori さんの承認発言IDを入れる")
     approved_thanks = bool(nori and reply and purpose == "返事" and method == "メール")
     if not company or not to: out.append("--company（会社名）と --to（宛先のメール・フォームのURL）を入れる")
     if method not in ("メール", "フォーム"): out.append("--method は メール か フォーム")
