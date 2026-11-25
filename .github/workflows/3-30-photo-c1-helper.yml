@@ -1,0 +1,43 @@
+# 一時の補助。トリミング・ペットホテルの写真を入れて、生成ファイルを作り直す。終わったら消す。
+name: photo-c1-helper
+on:
+  push:
+    branches: ['photo-c1']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 番号を外す
+        run: |
+          mv tools/[0-9]*-c1data.json tools/c1data.json
+          cp tools/[0-9]*-c1apply.py /tmp/c1apply.py
+      - name: 写真を入れる
+        run: |
+          pip install pillow
+          python3 /tmp/c1apply.py | tee /tmp/apply.log
+      - name: 生成ファイルを作り直す
+        run: |
+          python3 tools/gen_areas.py .
+          rm -rf tools/__pycache__
+          node -e "const z=require('zlib'),f=require('fs');const n=z.gzipSync(f.readFileSync('dog-trainer/index.html'),{level:9}).length;console.log('national gz9',n);if(n>61440){console.error('over limit');process.exit(1)}"
+      - name: テスト（リポジトリのSEO確認と同じ回し方。失敗したら止める）
+        run: for f in tests/*.test.cjs; do echo "== $f"; node "$f" || exit 1; done
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f tools/[0-9]*-c1apply.py tools/c1data.json tools/[0-9]*-c1data.json
+          git add -A
+          git reset -q -- .github/workflows
+          git commit -qm "トリミング・ペットホテルの写真を追加（公式サイトの写真、116事業者）"
+          git push
