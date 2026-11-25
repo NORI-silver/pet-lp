@@ -119,6 +119,7 @@ def data(ROOT, pref_slug):
 
 # ---------- 見た目（共通のカード .cs は cardskin.py。ここは手順の線・チェック・チラシ） ----------
 CSS = ("<style>"
+ ".jc-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:4px 0 8px}.jc-actions a{display:flex;flex-direction:column;justify-content:center;min-height:64px;padding:8px 5px;text-align:center;border:1px solid #d9c9bb;border-radius:12px;color:#2b2622;background:#fff;text-decoration:none;line-height:1.3;overflow-wrap:anywhere}.jc-actions a.jc-primary{background:#a9390b;color:#fff;border-color:#a9390b}.jc-actions b{font-size:clamp(.8rem,3.4vw,1rem)}.jc-actions small{font-size:.72rem;margin-top:4px}.jc-short{display:flex;flex-wrap:wrap;gap:0 14px;align-items:center;margin-bottom:10px}.jc-short a{display:inline-flex;align-items:center;min-height:44px;font-size:.9rem}.jc-panel,#pro,#found,#jcFly{scroll-margin-top:90px}.jc-panel{margin-bottom:16px}.jc-panel h2{font-size:1.15rem;margin:0 0 7px}.jc-intro{font-size:.88rem;margin:0 0 7px;color:#4a3d34}.jc-local h3{font-size:.97rem;margin:10px 0 4px}.jc-local ul{margin:4px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.jc-local a{display:flex;align-items:center;min-height:44px;line-height:1.35;padding:6px 8px;border:1px solid #e5d5c8;border-radius:8px;font-size:.85rem;overflow-wrap:anywhere}.jc-local small{display:block;margin-top:6px}.jc-an-label{font-size:.85rem;margin:10px 0 0}.jc-an-label+.jc-an{margin-top:4px}@media(max-width:639px){.jc-maigo-hero{padding-top:10px;padding-bottom:10px}.jc-maigo-hero .crumb{margin-top:0;margin-bottom:4px}.jc-maigo-hero h1{margin:3px 0 6px}.jc-panel{margin-bottom:12px}.jc-short{margin-bottom:4px}}@media(min-width:640px){.jc-actions a{min-height:72px;padding:10px}.jc-actions small{font-size:.85rem}.jc-local ul{grid-template-columns:repeat(3,minmax(0,1fr))}}"
  ".jc-3{list-style:none;margin:4px 0 10px;padding:12px 14px;background:#fff;border:1px solid #efe0d3;border-radius:16px;display:grid;gap:8px}"
  ".jc-3 li{display:flex;gap:10px;align-items:center;font-size:1rem;line-height:1.45;font-weight:700;color:#2b2622}"
  ".jc-3 i{flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#c2410c;color:#fff;font-style:normal;font-weight:800;display:flex;align-items:center;justify-content:center}"
@@ -171,11 +172,12 @@ def _faq(e, faq):
     return "<dl>" + "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq) + "</dl>"
 
 def _ask(kind, label, ph, animal=False):
-    an = ('<div class="jc-an" role="group" aria-label="どの子？"><button type="button" data-an="dog" aria-pressed="true">犬</button>'
+    an = ('<p class="jc-an-label" aria-hidden="true">さがしているのは？</p><div class="jc-an" role="group" aria-label="どの子？"><button type="button" data-an="dog" aria-pressed="true">犬</button>'
           '<button type="button" data-an="cat" aria-pressed="false">猫</button></div>') if animal else ""
+    local = '<div id="jcLocal" class="jc-local" aria-live="polite" hidden></div>' if kind == "maigo" else ""
     return (f'<div class="jc-q1" data-jc="{kind}"><label for="jcQ">{label}</label>'
             f'<input id="jcQ" type="text" placeholder="{ph}" autocomplete="address-level2" enterkeyhint="search">'
-            f'<div class="jc-sg" id="jcS" aria-live="polite"></div>{an}<p class="jc-hd" id="jcH" hidden></p></div>')
+            f'<div class="jc-sg" id="jcS" aria-live="polite"></div>{an}<p class="jc-hd" id="jcH" hidden></p>{local}</div>')
 
 def _three(head, steps):
     """最初の画面で「何をすればいいか」が3行で分かる箱（Nori 2026-11-23「迷子登録のページがわかりにくい」）。"""
@@ -217,16 +219,30 @@ def maigo(ctx):
     boards_go = "".join(f'<a class="l" href="{e(b["url"])}" target="_blank" rel="noopener">{e(re.sub(r"（.*?）", "", b["name"]))} ↗</a>' for b in boards)
     body = f"""
 <main>
-<section class="area-hero">
+<section class="area-hero jc-maigo-hero">
   <div class="wrap">
     {_crumb(e, "迷子になったら")}
-    <h1>ペットが迷子になったら：今日やること</h1>
+    <h1>ペットが迷子になったら</h1>
   </div>
 </section>
 <section style="padding-top:4px">
   <div class="wrap">
-    {_three("まず、この3つ", [("家のまわりを、近い所からさがす", "猫は家のすぐ近くに隠れていることが多い"), ("今日のうちに、センター・警察・市役所へ届け出る", "下に市区町村を入れると、その町の窓口が出ます"), ("チラシを作って、近所と動物病院に", "このページで作って印刷できます")])}
+    <nav class="jc-actions" aria-label="迷子のときにできること">
+      <a class="jc-primary" href="#first"><b>まず何をするか</b><small>今日やることを確認</small></a>
+      <a href="#report"><b>地域の届け先</b><small>市区町村から調べる</small></a>
+      <a href="#pro"><b>ペット探偵</b><small>民間の捜索・料金を比較</small></a>
+    </nav>
+    <div class="jc-short"><a href="#jcFly">チラシを作る</a><a href="#found">迷子の子を保護した方へ</a></div>
+    <div class="jc-panel" id="first" tabindex="-1">
+      <h2>まず、この3つ</h2>
+    {_three("まず、この3つ", [("家のまわりを、近い所からさがす", "猫は家のすぐ近くに隠れていることが多い"), ("センター・警察・市役所に届ける", "市区町村を入れると窓口が出ます"), ("近所や動物病院にチラシを配る", "このページで作って印刷できます")])}
+    </div>
+    <div class="jc-panel" id="report" tabindex="-1">
+      <h2>地域の届け先を調べる</h2>
+      <p class="jc-intro">いなくなった市区町村を選んでください。</p>
     {_ask("maigo", "いなくなった場所の市区町村", "例：佐倉市・世田谷区", True)}
+    </div>
+    <h2>捜索と届け出のチェックリスト</h2>
     <div id="jcR" class="jc-dog">
     <ol class="jc-tl">
       <li><span class="jc-when">いなくなってすぐ</span><h3>家のまわりから、順番にさがす</h3>
@@ -281,14 +297,14 @@ def maigo(ctx):
     <div class="sh"><h2>保護された子は、何日待ってもらえる？町によってちがいます</h2></div>
     <p>待ってもらえる日数、迎えるときの費用、猫を収容するかどうかは、自治体ごとにかなり違います。届け出をその日のうちに出し、毎日問い合わせる理由はここにあります。</p>
     <div class="tbl"><table class="jc-cmp"><tbody>{wait}</tbody></table></div>
-    <div class="sh" id="pro"><h2>ペット探偵の料金は、1日8時間で1万円台後半から。成功報酬と交通費をふくめた総額で見くらべる</h2></div>
-    <p>迷子の捜索をしている会社は、料金のしくみ（1日ごと・数日のまとめ）も、交通費やチラシ代が入っているかも違います。いなくなった市区町村を上で入れると、その地域に来てくれる会社だけが先に出ます。</p>
+    <div class="sh" id="pro" tabindex="-1"><h2>ペット探偵を比較する</h2></div>
+    <p>迷子の捜索をしている会社は、料金のしくみ（1日ごと・数日のまとめ）も、交通費やチラシ代が入っているかも違います。<a href="#report">いなくなった市区町村を入力する</a>と、対応地域の会社だけを表示します。</p>
     <div id="jcPro">{det_tbl}</div>
     {f'<h3>ペット保険の契約者が使える捜索</h3><ul>{ins_html}</ul>' if ins_html else ""}
     <div class="sh"><h2>犬と猫で、さがし方がちがう</h2></div>
     <div class="jc-vs"><div><h4>犬</h4><ul><li>いなくなった場所から円をえがくように広げる</li><li>散歩道・公園・駅まで</li><li>大型犬は1日に何十kmも動くことがある</li><li>首輪や鑑札があれば、警察に届けられることもある</li></ul></div>
     <div><h4>猫</h4><ul><li>まず家の中を、もう一度</li><li>家の近くの狭くて暗い場所</li><li>夜や早朝に、小さな声で</li><li>猫を収容しない自治体もある</li></ul></div></div>
-    <div class="sh" id="found"><h2>迷子の犬・猫を見つけた・保護した方へ</h2></div>
+    <div class="sh" id="found" tabindex="-1"><h2>迷子の犬・猫を見つけた・保護した方へ</h2></div>
     <p>首輪や鑑札がある子は、飼い主がさがしているはずです。見つけた場所の警察に届けるか、動物愛護センター・保健所に連絡します。上で見つけた場所の市区町村を入れると、その町の窓口が出ます。けがをしているときは、近くの動物病院へ。くわしい流れは<a href="/guide/found-pet/">迷子の犬・猫を保護したら</a>に。</p>
     <div class="emg-tips"><h4>よくある質問</h4>{_faq(e, MAIGO_FAQ)}</div>
   </div>
