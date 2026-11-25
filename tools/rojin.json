@@ -3,6 +3,58 @@
  "checked": "2026年11月2日",
  "homes": [
   {
+   "id": "R082",
+   "name": "みんとの杜",
+   "prefs": [
+    "福島県"
+   ],
+   "city": "福島市",
+   "url": "https://minto-no-mori.com/",
+   "addr": "福島県福島市下野寺字山神43-1",
+   "animals": "犬",
+   "visit": "施設見学できる（電話かLINEで問い合わせ）",
+   "reg": "保管 福島県4福保保管受 第151号・譲受飼養 福島県7福保譲受 第1号",
+   "spec": "老犬ホーム・ペットホテル。終生お預かり（亡くなるときまでお世話）",
+   "review_query": "みんとの杜 福島市",
+   "review_name": "みんとの杜",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "はい、大型犬もご利用いただけます。",
+     "src": "https://minto-no-mori.com/",
+     "checked": "2026-11-17"
+    },
+    {
+     "k": "見学",
+     "v": "無料見学・相談のみの来訪も可(要電話・LINE連絡)",
+     "src": "https://minto-no-mori.com/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "受け入れ",
+     "v": "大型犬も利用可(広々ドッグラン・ゆったりした部屋)",
+     "src": "https://minto-no-mori.com/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "体制",
+     "v": "24時間スタッフが対応できる体制・少頭数制",
+     "src": "https://minto-no-mori.com/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "営業",
+     "v": "定休日は不定休(要問い合わせ)",
+     "src": "https://minto-no-mori.com/",
+     "by": "site",
+     "checked": "2026-11-26"
+    }
+   ]
+  },
+  {
    "id": "R069",
    "name": "ペットホテル里親（終身・長期預かり）",
    "prefs": [
@@ -142,30 +194,6 @@
    "animals": "犬・猫"
   },
   {
-   "id": "R082",
-   "name": "みんとの杜",
-   "prefs": [
-    "福島県"
-   ],
-   "city": "福島市",
-   "url": "https://minto-no-mori.com/",
-   "addr": "福島県福島市下野寺字山神43-1",
-   "animals": "犬",
-   "visit": "施設見学できる（電話かLINEで問い合わせ）",
-   "reg": "保管 福島県4福保保管受 第151号・譲受飼養 福島県7福保譲受 第1号",
-   "spec": "老犬ホーム・ペットホテル。終生お預かり（亡くなるときまでお世話）",
-   "review_query": "みんとの杜 福島市",
-   "review_name": "みんとの杜",
-   "facts": [
-    {
-     "k": "受け入れ（公式サイトの文）",
-     "v": "はい、大型犬もご利用いただけます。",
-     "src": "https://minto-no-mori.com/",
-     "checked": "2026-11-17"
-    }
-   ]
-  },
-  {
    "id": "R009",
    "name": "老犬ホーム＆ペットホテル 九十九里パーク",
    "prefs": [
@@ -278,6 +306,30 @@
      "src": "https://www.smilehomefordog.com/blank-7",
      "by": "site",
      "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R160",
+   "name": "Dog Answer（ドッグアンサー）",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "四日市市",
+   "url": "https://www.dogschool-tanaka.jp/",
+   "addr": "三重県四日市市尾平町3232-4",
+   "animals": "犬",
+   "spec": "長期預かり・生涯預かり、老犬介護、しつけ",
+   "checked": "2026-11-23",
+   "review_query": "Dog Answer（ドッグアンサー） 四日市市",
+   "review_name": "Dog Answer（ドッグアンサー）",
+   "facts": [
+    {
+     "k": "預かり",
+     "v": "長期預かり・生涯預かりあり(しつけ・訓練が主体の施設。ハイドロセラピーも)",
+     "src": "https://www.dogschool-tanaka.jp/",
+     "by": "site",
+     "checked": "2026-11-26"
     }
    ]
   },
@@ -494,21 +546,6 @@
      "checked": "2026-11-16"
     }
    ]
-  },
-  {
-   "id": "R160",
-   "name": "Dog Answer（ドッグアンサー）",
-   "prefs": [
-    "三重県"
-   ],
-   "city": "四日市市",
-   "url": "https://www.dogschool-tanaka.jp/",
-   "addr": "三重県四日市市尾平町3232-4",
-   "animals": "犬",
-   "spec": "長期預かり・生涯預かり、老犬介護、しつけ",
-   "checked": "2026-11-23",
-   "review_query": "Dog Answer（ドッグアンサー） 四日市市",
-   "review_name": "Dog Answer（ドッグアンサー）"
   },
   {
    "id": "R006",
@@ -963,6 +1000,64 @@
    ]
   },
   {
+   "id": "R092",
+   "name": "はっぴーわんだふる（NPO法人ワンダブル二度目の命 老犬老猫ホーム）",
+   "prefs": [
+    "和歌山県"
+   ],
+   "city": "和歌山市",
+   "url": "https://wandouble.com/rouken.html",
+   "addr": "和歌山県和歌山市米屋町2",
+   "animals": "犬・猫",
+   "visit": "見学は電話で日程を予約（11:00〜16:00）",
+   "reg": "第220764号　第220766号",
+   "review_query": "ワンダブル 和歌山市",
+   "review_name": "ワンダブル",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "体が不自由な犬猫のお世話／持病のある犬については、獣医師の診断書が必要になる場合があります。／大型犬（体重40㎏迄）",
+     "src": "https://wandouble.com/rouken.html",
+     "checked": "2026-11-17"
+    },
+    {
+     "k": "受付",
+     "v": "老犬老猫ホームは一時受付停止中(公式ページ明記)",
+     "src": "https://wandouble.com/rouken.html",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "料金(税込・WEBカメラ代7,000円/月込)",
+     "v": "月額 小型犬(7kg迄)・猫118,500円・中型犬(20kg迄)151,500円・大型犬(40kg迄)184,500円・超大型犬(40kg以上)250,500円。年払いあり",
+     "src": "https://wandouble.com/rouken.html",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "見学",
+     "v": "要電話予約・見学時間11:00〜16:00",
+     "src": "https://wandouble.com/rouken.html",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "送迎",
+     "v": "自宅へのお迎え可(交通費実費+送迎手数料1,000円/時間)",
+     "src": "https://wandouble.com/rouken.html",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "必要なもの",
+     "v": "ワクチン接種証明(犬6種以上・猫3種以上・1年以内)・狂犬病予防接種済証",
+     "src": "https://wandouble.com/rouken.html",
+     "by": "site",
+     "checked": "2026-11-26"
+    }
+   ]
+  },
+  {
    "id": "R010",
    "name": "シニアDOGハイム",
    "prefs": [
@@ -1316,6 +1411,57 @@
    "checked": "2026-11-23",
    "review_query": "愛犬ホーム わんわんパーク 小樽市",
    "review_name": "愛犬ホーム わんわんパーク"
+  },
+  {
+   "id": "R016",
+   "name": "老犬ホーム暖家",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "揖斐郡揖斐川町",
+   "url": "https://roukendanka.jp/",
+   "addr": "岐阜県揖斐郡揖斐川町清水1488",
+   "animals": "犬（小型・中型・大型）",
+   "reg": "保管 040089号・譲受飼養 040091号",
+   "review_query": "老犬ホーム暖家 揖斐川町",
+   "review_name": "暖家",
+   "facts": [
+    {
+     "k": "介護",
+     "v": "壮年期・老犬期・看取り期の介護を要する犬のお世話",
+     "src": "https://roukendanka.jp/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "登録",
+     "v": "第一種動物取扱業(保管)040089号・(譲受飼養)040091号",
+     "src": "https://roukendanka.jp/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "里親",
+     "v": "犬の里親探しのサポートあり",
+     "src": "https://roukendanka.jp/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "送迎",
+     "v": "ペットタクシー(犬猫の送迎)あり",
+     "src": "https://roukendanka.jp/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "空き状況",
+     "v": "大型犬・中型犬は満室(2026-10-19のお知らせ)",
+     "src": "https://roukendanka.jp/",
+     "by": "site",
+     "checked": "2026-11-26"
+    }
+   ]
   },
   {
    "id": "R018",
@@ -1792,6 +1938,100 @@
      "src": "https://www.t-bell.jp/hotel",
      "by": "site",
      "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "R022",
+   "name": "ペットホームOHANA",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "四日市市",
+   "url": "https://pethomeohana.wphp.jp/",
+   "addr": "三重県四日市市生桑町1642-7",
+   "animals": "犬・猫（大型犬・超大型犬の区分あり）",
+   "reg": "四管第R4-1号",
+   "review_query": "ペットホームOHANA 四日市市生桑町",
+   "review_name": "OHANA",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "歩行介助（通常歩行困難）／食事介助・水分介助／疾患・服薬（塗り薬含む）／大型犬（料金表の区分）",
+     "src": "https://pethomeohana.wphp.jp/",
+     "checked": "2026-11-17"
+    },
+    {
+     "k": "営業",
+     "v": "9:00〜19:00・完全予約制",
+     "src": "https://pethomeohana.wphp.jp/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "登録",
+     "v": "第一種動物取扱責任者 種別保管 四管第R4-1号(登録R4/6/14・期限R9/6/13)",
+     "src": "https://pethomeohana.wphp.jp/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "支払い",
+     "v": "現金・クレジット・振込(長期のみ)",
+     "src": "https://pethomeohana.wphp.jp/",
+     "by": "site",
+     "checked": "2026-11-26"
+    }
+   ]
+  },
+  {
+   "id": "R023",
+   "name": "ワンワンハートSAKURA withワンニャンプロジェクト",
+   "prefs": [
+    "三重県"
+   ],
+   "city": "四日市市",
+   "url": "https://www.wanwanhart-sakura.com/",
+   "addr": "三重県四日市市桜町212番地",
+   "animals": "犬・猫",
+   "visit": "見学できます",
+   "spec": "公式サイト：犬猫の介護施設",
+   "review_query": "ワンワンハートSAKURA 四日市市桜町",
+   "review_name": "SAKURA",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "歩行困難な子や寝たきりの子などもお気軽に問い合わせ下さい。",
+     "src": "https://www.wanwanhart-sakura.com/",
+     "checked": "2026-11-17"
+    },
+    {
+     "k": "見学",
+     "v": "見学・相談 随時受付",
+     "src": "https://www.wanwanhart-sakura.com/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "料金(ペットホテル)",
+     "v": "一泊二日2,800円〜(税別)",
+     "src": "https://www.wanwanhart-sakura.com/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "体制",
+     "v": "夜間・早朝もスタッフ在中(排泄介助など)",
+     "src": "https://www.wanwanhart-sakura.com/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎あり。電話受付9:00〜18:00(年中無休)",
+     "src": "https://www.wanwanhart-sakura.com/",
+     "by": "site",
+     "checked": "2026-11-26"
     }
    ]
   },
@@ -2282,6 +2522,80 @@
    "spec": "ペットホテル、しつけ、老犬ホーム",
    "addr": "東京都足立区小台二丁目10番18号",
    "animals": "犬"
+  },
+  {
+   "id": "R055",
+   "name": "老犬ホーム ワンハピネス",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "高山市",
+   "url": "http://wan-happiness.com/",
+   "addr": "岐阜県高山市大洞町780-30",
+   "animals": "犬",
+   "reg": "飛保第900号-100081（譲受飼養業）",
+   "spec": "老犬・寝たきり・障害のある犬を生涯預かり",
+   "review_query": "老犬ホーム ワンハピネス 高山市大洞町",
+   "review_name": "ワンハピネス",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "寝たきり、障害のあるワンちゃんを生涯預かり／たとえ歩けない子でも、目が見えない子でも",
+     "src": "http://wan-happiness.com/",
+     "checked": "2026-11-17"
+    },
+    {
+     "k": "介護",
+     "v": "寝たきり・障害のある犬を生涯預かり。24時間いつでも介護(責任者は人の介護経験15年)",
+     "src": "http://wan-happiness.com/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "面会",
+     "v": "遠方・多忙な飼い主には面会送迎あり",
+     "src": "http://wan-happiness.com/",
+     "by": "site",
+     "checked": "2026-11-26"
+    }
+   ]
+  },
+  {
+   "id": "R083",
+   "name": "甲斐っトランド 老犬ホーム（いわき甲斐楽園）",
+   "prefs": [
+    "福島県"
+   ],
+   "city": "いわき市",
+   "url": "https://kaittland.jimdofree.com/%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B/%E8%80%81%E7%8A%AC%E3%83%9B%E3%83%BC%E3%83%A0/",
+   "addr": "福島県いわき市好間町大利小川崎103-1",
+   "animals": "犬",
+   "reg": "第1種動物取扱業 福島県3い保護受第1号",
+   "spec": "年間・半年・終身プランの老犬ホーム（終身は10歳以上）。ドッグラン・カフェ・トリミング・ペットホテル併設",
+   "review_query": "甲斐っトランド いわき市",
+   "review_name": "甲斐っトランド",
+   "facts": [
+    {
+     "k": "受け入れ（公式サイトの文）",
+     "v": "持病がある子・ガン等手術が必要な場合は別途、治療費がかかります。／２０キロ以上の大型犬は別途料金となります。",
+     "src": "https://kaittland.jimdofree.com/%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B/%E8%80%81%E7%8A%AC%E3%83%9B%E3%83%BC%E3%83%A0/",
+     "checked": "2026-11-17"
+    },
+    {
+     "k": "料金",
+     "v": "1年プラン税込498,500円(1日換算1,366円)・半年プラン税込348,500円(同1,910円)・終身プラン(10歳以上)税込1,650,000円。ワクチン・フィラリア・ノミダニ駆除・月1トリミング込み。20kg以上の大型犬は別途料金",
+     "src": "https://kaittland.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "登録",
+     "v": "第1種動物取扱業登録 福島県3い保護受第1号",
+     "src": "https://kaittland.jimdofree.com/",
+     "by": "site",
+     "checked": "2026-11-26"
+    }
+   ]
   },
   {
    "id": "R001",
@@ -2946,28 +3260,6 @@
    ]
   },
   {
-   "id": "R022",
-   "name": "ペットホームOHANA",
-   "prefs": [
-    "三重県"
-   ],
-   "city": "四日市市",
-   "url": "https://pethomeohana.wphp.jp/",
-   "addr": "三重県四日市市生桑町1642-7",
-   "animals": "犬・猫（大型犬・超大型犬の区分あり）",
-   "reg": "四管第R4-1号",
-   "review_query": "ペットホームOHANA 四日市市生桑町",
-   "review_name": "OHANA",
-   "facts": [
-    {
-     "k": "受け入れ（公式サイトの文）",
-     "v": "歩行介助（通常歩行困難）／食事介助・水分介助／疾患・服薬（塗り薬含む）／大型犬（料金表の区分）",
-     "src": "https://pethomeohana.wphp.jp/",
-     "checked": "2026-11-17"
-    }
-   ]
-  },
-  {
    "id": "R024",
    "name": "Catホッと（老猫ホーム）",
    "prefs": [
@@ -3255,29 +3547,6 @@
    ]
   },
   {
-   "id": "R055",
-   "name": "老犬ホーム ワンハピネス",
-   "prefs": [
-    "岐阜県"
-   ],
-   "city": "高山市",
-   "url": "http://wan-happiness.com/",
-   "addr": "岐阜県高山市大洞町780-30",
-   "animals": "犬",
-   "reg": "飛保第900号-100081（譲受飼養業）",
-   "spec": "老犬・寝たきり・障害のある犬を生涯預かり",
-   "review_query": "老犬ホーム ワンハピネス 高山市大洞町",
-   "review_name": "ワンハピネス",
-   "facts": [
-    {
-     "k": "受け入れ（公式サイトの文）",
-     "v": "寝たきり、障害のあるワンちゃんを生涯預かり／たとえ歩けない子でも、目が見えない子でも",
-     "src": "http://wan-happiness.com/",
-     "checked": "2026-11-17"
-    }
-   ]
-  },
-  {
    "id": "R061",
    "name": "介護老犬ホーム TierHeim noah（ティアハイム・ノア）",
    "prefs": [
@@ -3451,29 +3720,6 @@
    ]
   },
   {
-   "id": "R083",
-   "name": "甲斐っトランド 老犬ホーム（いわき甲斐楽園）",
-   "prefs": [
-    "福島県"
-   ],
-   "city": "いわき市",
-   "url": "https://kaittland.jimdofree.com/%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B/%E8%80%81%E7%8A%AC%E3%83%9B%E3%83%BC%E3%83%A0/",
-   "addr": "福島県いわき市好間町大利小川崎103-1",
-   "animals": "犬",
-   "reg": "第1種動物取扱業 福島県3い保護受第1号",
-   "spec": "年間・半年・終身プランの老犬ホーム（終身は10歳以上）。ドッグラン・カフェ・トリミング・ペットホテル併設",
-   "review_query": "甲斐っトランド いわき市",
-   "review_name": "甲斐っトランド",
-   "facts": [
-    {
-     "k": "受け入れ（公式サイトの文）",
-     "v": "持病がある子・ガン等手術が必要な場合は別途、治療費がかかります。／２０キロ以上の大型犬は別途料金となります。",
-     "src": "https://kaittland.jimdofree.com/%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B/%E8%80%81%E7%8A%AC%E3%83%9B%E3%83%BC%E3%83%A0/",
-     "checked": "2026-11-17"
-    }
-   ]
-  },
-  {
    "id": "R084",
    "name": "老犬ホーム すいーとほーむ",
    "prefs": [
@@ -3522,29 +3768,6 @@
      "k": "受け入れ（公式サイトの文）",
      "v": "病気や飼育困難な愛犬や愛猫を手厚くお世話します",
      "src": "https://miyazaki-mitori.com/",
-     "checked": "2026-11-17"
-    }
-   ]
-  },
-  {
-   "id": "R092",
-   "name": "はっぴーわんだふる（NPO法人ワンダブル二度目の命 老犬老猫ホーム）",
-   "prefs": [
-    "和歌山県"
-   ],
-   "city": "和歌山市",
-   "url": "https://wandouble.com/rouken.html",
-   "addr": "和歌山県和歌山市米屋町2",
-   "animals": "犬・猫",
-   "visit": "見学は電話で日程を予約（11:00〜16:00）",
-   "reg": "第220764号　第220766号",
-   "review_query": "ワンダブル 和歌山市",
-   "review_name": "ワンダブル",
-   "facts": [
-    {
-     "k": "受け入れ（公式サイトの文）",
-     "v": "体が不自由な犬猫のお世話／持病のある犬については、獣医師の診断書が必要になる場合があります。／大型犬（体重40㎏迄）",
-     "src": "https://wandouble.com/rouken.html",
      "checked": "2026-11-17"
     }
    ]
@@ -4195,39 +4418,31 @@
    "checked": "2026-11-23"
   },
   {
-   "id": "R016",
-   "name": "老犬ホーム暖家",
+   "id": "R-HT002",
+   "name": "わんこのしっぽ",
    "prefs": [
-    "岐阜県"
+    "福島県"
    ],
-   "city": "揖斐郡揖斐川町",
-   "url": "https://roukendanka.jp/",
-   "addr": "岐阜県揖斐郡揖斐川町清水1488",
-   "animals": "犬（小型・中型・大型）",
-   "reg": "保管 040089号・譲受飼養 040091号",
-   "review_query": "老犬ホーム暖家 揖斐川町",
-   "review_name": "暖家"
-  },
-  {
-   "id": "R023",
-   "name": "ワンワンハートSAKURA withワンニャンプロジェクト",
-   "prefs": [
-    "三重県"
-   ],
-   "city": "四日市市",
-   "url": "https://www.wanwanhart-sakura.com/",
-   "addr": "三重県四日市市桜町212番地",
+   "url": "https://www.wanshippo.com/",
+   "city": "福島市",
+   "addr": "福島県福島市飯野町青木字長畑１０－１",
    "animals": "犬・猫",
-   "visit": "見学できます",
-   "spec": "公式サイト：犬猫の介護施設",
-   "review_query": "ワンワンハートSAKURA 四日市市桜町",
-   "review_name": "SAKURA",
+   "spec": "老犬ホーム・老猫ホーム",
+   "checked": "2026-11-23",
    "facts": [
     {
-     "k": "受け入れ（公式サイトの文）",
-     "v": "歩行困難な子や寝たきりの子などもお気軽に問い合わせ下さい。",
-     "src": "https://www.wanwanhart-sakura.com/",
-     "checked": "2026-11-17"
+     "k": "送迎",
+     "v": "送迎なし(必要な場合、要相談)",
+     "src": "https://www.wanshippo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金(ペットホテル・24時間対応)",
+     "v": "小型犬4,400円/泊・中型犬5,500円/泊・大型犬6,600円/泊・猫3,300円/泊。一時預かりは4時間ごとに半額。大型犬の宿泊は1日1頭まで。前払い制",
+     "src": "https://www.wanshippo.com/",
+     "by": "site",
+     "checked": "2026-11-26"
     }
    ]
   },
@@ -4834,28 +5049,6 @@
      "k": "営業・受付時間",
      "v": "営業時間：10:00～19:00",
      "src": "https://petshop-alice.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
-  },
-  {
-   "id": "R-HT002",
-   "name": "わんこのしっぽ",
-   "prefs": [
-    "福島県"
-   ],
-   "url": "https://www.wanshippo.com/",
-   "city": "福島市",
-   "addr": "福島県福島市飯野町青木字長畑１０－１",
-   "animals": "犬・猫",
-   "spec": "老犬ホーム・老猫ホーム",
-   "checked": "2026-11-23",
-   "facts": [
-    {
-     "k": "送迎",
-     "v": "送迎なし(必要な場合、要相談)",
-     "src": "https://www.wanshippo.com/",
      "by": "site",
      "checked": "2026-11-23"
     }

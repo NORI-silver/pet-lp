@@ -79,6 +79,7 @@ def render(ctx):
     for h in J["homes"]:
         for pf in h["prefs"]:
             rows.setdefault(pf, []).append(h)
+    shown = [h for _lab, _prefs in ctx["emg_regions"] for _pf in _prefs for h in rows.get(_pf, [])]
     total = len(J["homes"])
     body = ""
     for lab, prefs in ctx["emg_regions"]:
@@ -100,9 +101,11 @@ def render(ctx):
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
         {"@type": "ListItem", "position": 2, "name": H1, "item": url}]},
+      {"@context": "https://schema.org", "@type": "ItemList", "name": H1, "numberOfItems": len(shown),
+       "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": h["name"], "url": h["url"]} for i, h in enumerate(shown[:100])]},
       {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
-      ensure_ascii=False, indent=1) + "\n</script>"
+      ensure_ascii=False, separators=(",", ":")) + "\n</script>"
     return ctx["head"](TITLE, DESC, url, ld) + f"""
 <main>
 <section class="area-hero">
