@@ -163,12 +163,12 @@ def names():
     return ns
 
 
-_ASK = r"ください|いただけ|お願い|でしょうか|？|\?"
+_ASK = r"ください|いただけ(?!て)|お願い|でしょうか|？|\?"
 
 
 def request_text(t):
     # 結びの挨拶だけで「お願いがある」と判定しない。
-    return re.sub(r"(?m)^[ \t]*(?:どうぞ[ \t]*)?よろしくお願い(?:いたし|し)ます[。！!]?[ \t]*$", "", t)
+    return re.sub(r"(?m)^[ \t]*(?:どうぞ[ \t]*)?よろしくお願い(?:いたし|し|申し上げ)ます[。！!]?[ \t]*$", "", t)
 
 
 def short_thanks(t):
@@ -253,8 +253,9 @@ def gate(a, t):
                 or any(h and h.split(".")[0] in to.lower() for h in hs):
             out.append(f"連絡しない相手（{d.get('name')}・{d.get('where', '')}、{d.get('by', '')} {d.get('date', '')}「{d.get('why', '')}」）。送らない")
     # 時間
+    # 返事の承認IDを時間外の承認として流用しない。
     n = now()
-    if not (HOURS[0] <= n.hour < HOURS[1]) and (not nori or (approved_thanks and short_thanks(t))):
+    if not (HOURS[0] <= n.hour < HOURS[1]) and (not nori or approved_thanks):
         out.append(f"いま{n:%H:%M}。送るのは{HOURS[0]}時から{HOURS[1]}時まで（Noriさんが時間外でもと言ったら --nori 発言ID）")
     # 台帳：送信中・同じ日・同じ用件・7日
     rows = latest(read_ledger())
