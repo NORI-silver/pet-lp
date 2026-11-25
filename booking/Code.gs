@@ -528,7 +528,14 @@ function sendWave_(id, stage) {
   }
   var manual = [];
   targets = targets.filter(function (pt) {
-    var how = deliver_(pt, (isAsk_(r) ? '【空き状況と料金のお問い合わせ】' : isQuoteReq_(r) ? '【お見積もりのご依頼】' : '【新しいご依頼】') + r['都府県'] + '・' + whenText_(r), requestText_(r, pt), r, requestHtml_(r, pt));
+    var target = pt;
+    // 公式LINEの掲載情報は残すが、検証済みメール以外に申込内容を流さない。
+    if (COCOTAKU_INTAKE_INTEGRATION_READY && pt.id === KASUKABE_INTAKE_ID) {
+      var mailbox = kasukabeIntakeMailbox_();
+      if (!mailbox || !kasukabeIntakeFits_(pt, r) || String(pt.email || '').trim().toLowerCase() !== mailbox) return false;
+      target = Object.assign({}, pt, {email:mailbox, lineId:'', oaId:'', lineUrl:''});
+    }
+    var how = deliver_(target, (isAsk_(r) ? '【空き状況と料金のお問い合わせ】' : isQuoteReq_(r) ? '【お見積もりのご依頼】' : '【新しいご依頼】') + r['都府県'] + '・' + whenText_(r), requestText_(r, pt), r, requestHtml_(r, pt));
     if (how === 'manual') manual.push(pt.name);
     return !!how;
   });
@@ -3575,7 +3582,8 @@ function kasukabeCityAddress_(s) {
 }
 function kasukabeIntakeFits_(pt, r) {
   var email = kasukabeIntakeMailbox_();
-  if (!email || pt.id !== KASUKABE_INTAKE_ID || !pt.active || pt.lineId || pt.oaId || pt.lineUrl ||
+  if (!email || pt.id !== KASUKABE_INTAKE_ID || !pt.active || pt.lineId ||
+      (!COCOTAKU_INTAKE_INTEGRATION_READY && (pt.oaId || pt.lineUrl)) ||
       String(pt.email || '').trim().toLowerCase() !== email) return false;
   if (r['都府県'] !== '埼玉' || r['片道・往復'] !== '片道' || r['区間'] || r['日付のみ'] ||
       r['経由地'] || !/^(?:|0)$/.test(String(r['待ち時間（分）'] || '').trim()) ||
