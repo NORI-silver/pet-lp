@@ -418,6 +418,10 @@ for open_id, listing_id in photo_alias.items():
 src = re.sub(r"/\*CO_PH\*/.*?/\*/CO_PH\*/", lambda m: "/*CO_PH*/var CO_PH = " + json.dumps({k: v for k, v in photo_map.items() if k not in _HIDDEN_PUBLIC_IDS}, ensure_ascii=False) + ";/*/CO_PH*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*PUBLIC_PAUSE\*/.*?/\*/PUBLIC_PAUSE\*/", lambda m: "/*PUBLIC_PAUSE*/var PUBLIC_PAUSE = " + json.dumps(_HIDDEN_PUBLIC_IDS) + ";/*/PUBLIC_PAUSE*/", src, count=1, flags=re.S)
 src = re.sub(r"/\*CO_SITE\*/.*?/\*/CO_SITE\*/", lambda m: "/*CO_SITE*/var CO_SITE = " + json.dumps(_co_site(), ensure_ascii=False) + ";/*/CO_SITE*/", src, count=1, flags=re.S)
+# お気に入りでは、受付開始の前後で公開の会社IDが同じになるようにする。
+_fav_public = _co_site()
+_fav_alias = {p: d for p, d in photo_alias.items() if p not in _HIDDEN_PUBLIC_IDS and d not in _HIDDEN_PUBLIC_IDS and d in _fav_public}
+src = re.sub(r"/\*TAXI_FAVORITE_ALIASES\*/.*?/\*/TAXI_FAVORITE_ALIASES\*/", lambda m: "/*TAXI_FAVORITE_ALIASES*/var TAXI_FAVORITE_ALIASES = " + json.dumps(_fav_alias, sort_keys=True) + ";/*/TAXI_FAVORITE_ALIASES*/", src, count=1, flags=re.S)
 # 会社が見つかっている都道府県（お迎えの都道府県の選択欄で、県の中に会社がない県は「（県外の会社のみ）」を付けるか、選択欄から消す）
 src = re.sub(r"/\*AREA_PREFS\*/.*?/\*/AREA_PREFS\*/", lambda m: "/*AREA_PREFS*/var AREA_PREFS = " + json.dumps(sorted({a for x in _DISP for a in x.get("areas", [])} | {"東京", "神奈川", "埼玉", "千葉"}), ensure_ascii=False) + ";/*/AREA_PREFS*/", src, count=1, flags=re.S)
 # 県の中にお店はないが、県の外の会社が「お迎えに行く」と書いている都道府県（「（県外の会社のみ）」を付ける）。どちらでもない県は選択欄から消す（Nori 2026-11-14）
