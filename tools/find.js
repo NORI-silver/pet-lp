@@ -122,7 +122,9 @@
     var pj = placeJ(it, pf || []);
     if (pj === 2) return 2;
     if (qs && qs.split(" ").some(function(w){ return it._q.indexOf(w) < 0; })) return 2;
+    if (ks.indexOf("a:cat") >= 0 && ks.indexOf("owner_live_dog") >= 0 && ks.indexOf("a:dog") < 0) return 2;
     var r = pj;
+    if (cat === "sougi" && ks.indexOf("合同火葬") >= 0 && ks.indexOf("お骨を返してもらえる") >= 0 && it._no.indexOf(" 合同火葬+お骨を返してもらえる ") >= 0) return 2;
     for (var i = 0; i < ks.length; i++) {
       if (it._k.indexOf(" " + ks[i] + " ") >= 0) continue;
       if (ks[i] === "a:dog" && it._no.indexOf(" a:dog ") < 0) continue;  // 犬は「犬は受けない」と書いていなければ合う

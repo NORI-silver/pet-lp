@@ -72,7 +72,8 @@ def build(root):
         x = next((d for d in gen_dogrun_fac.PAGES if d["url"] == r.get("url") and d["name"] == r.get("name")), None)
         if x: r["page"] = SITE + gen_dogrun_fac.href(x)
     data["senior_dog_home"] = _multi(_j(root, "rojin.json")["homes"], ("animals",))
-    data["pet_sitter"] = _multi(_j(root, "sitters.json")["sitters"])
+    sitters = _j(root, "sitters.json")["sitters"]
+    data["pet_sitter"] = [r for x in sitters for r in _multi([x], ("animals",) if x.get("no_new_dog") else ())]
     data["dog_trainer"] = _multi(_j(root, "trainers.json")["trainers"], ("services",))
     data["pet_hotel"] = _multi(_j(root, "hotels.json")["hotels"], ("services",))
     data["mobile_grooming"] = _multi(_j(root, "grooming.json")["groomers"], ("services",))

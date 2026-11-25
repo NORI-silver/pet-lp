@@ -211,6 +211,9 @@ def render_pref(ctx, cat, pf, rows, city=None):
                       f'</p><p class="emg-tips-note">上の市区町村は、それぞれのページに載せています。下は{e(pf)}のほかの市区町村です。</p></div>')
     title = cat["title_fn"](place, rs, n) if cat.get("title_fn") else f'{place}の{cat["title_word"]}｜{n}{unit}の一覧（{cat["title_tail"]}）｜ペットタクシー予約窓口'
     desc = cat["desc_fn"](place, rs, n) if cat.get("desc_fn") else f'{place}の{name}を{n}{unit}、公式サイトの情報をもとにまとめた無料の一覧です。' + _with_price(cat, rs)
+    seo = cat.get("pref_overrides", {}).get(pf, {}) if not city else {}
+    if seo.get("title"): title = seo["title"]
+    if seo.get("desc"): desc = seo["desc"]
     faq = cat["faq"](place, rs, n)
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     ld = '<script type="application/ld+json">\n' + json.dumps([
@@ -243,7 +246,7 @@ def render_pref(ctx, cat, pf, rows, city=None):
   <div class="wrap">
     <div class="emg">
       <p class="emg-free">{e(cat.get("free", "この一覧は無料の情報です。事業者からお金をもらっていません。おすすめ順や点数順ではありません。" + ("料金は公式サイトに書いてあるものだけを、情報の時点つきで載せています。" if any(it.get("facts") for it in rs) else "料金は載せていないので、それぞれに直接おたずねください。")))}</p>
-      {cat["extra"](e, pf) if cat.get("extra") else ""}{city_links}
+      {seo["section"] + chr(10) + "      " if seo.get("section") else ""}{cat["extra"](e, pf) if cat.get("extra") else ""}{city_links}
       {cat["fac_chips"](e, pf) + chr(10) + "      " if cat.get("fac_chips") else ""}<section class="emg-pref" data-pref="{e(pf)}"><h2 style="font-size:1.15em">{e(cat.get("list_h", name))}（{e(place)}・{len(show)}{e(unit)}{'・ほかの市区町村' if cities else ''}）</h2>{cards}</section>
       {answer_html(e, cat, place, rs, faq, facts)}
       {table_html(e, cat, show)}

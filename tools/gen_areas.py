@@ -687,6 +687,8 @@ AREAS = [
   desc=scene_desc("千葉県（千葉・船橋・松戸など）", "千葉県"),
   lede="船橋・松戸・柏の住宅街から、佐倉・四街道・成田まで。動物病院への通院や成田空港への送迎に。お迎えの場所を入れると、来てもらえる会社と料金の目安が出ます。",
   body=[
+   ("千葉で動物病院へ通院するとき：往復と待機時間", "片道だけか、診察後に家へ戻る往復かを先に決めます。帰りの時刻が読めない場合は、目安の時間と変わる可能性を伝え、病院で待ってもらう場合と帰りに迎え直してもらう場合を比べます。片道の目安に、帰りの運賃や待機料が含まれているとは限りません。"),
+   ("大型犬の通院でフォームに入れること", "お迎えの場所、病院の名前か住所、日時に加え、体重、ケージ、付き添う人数、介助の要否を入れます。例えば「佐倉市の自宅からかかりつけへ。40kg、1人同乗、自力で車の段差を上がれない。往復希望」のように、持ち上げずに乗れる方法が必要なら明記してください。車・スロープ・担架の有無と、乗り降りを手伝えるかは会社に確認します。"),
    ("千葉でペットタクシーを使う理由", "千葉県は車での移動が中心の地域が多く、車を持っていないご家庭や、運転できない日には通院の手段が限られます。佐倉・四街道・富里などでは、近くに夜間の動物病院が少なく、離れた病院まで移動することもあります。ペットタクシーなら、自宅から病院まで直接送ってもらえます。"),
    ("成田空港・都内への長距離移動にも", "成田空港からの帰省やお引っ越し、都内の専門病院への通院など、長い距離の移動も多い地域です。長い距離は、会社のお見積りになることがあります。"),
   ],
@@ -982,7 +984,7 @@ for a in AREAS:
 
 <section id="area-companies">
   <div class="wrap prose">
-    {pref_company_table(a["pref"], a["short"], [x for x in _DISP if a["pref"][:-1] in x.get("areas", [])], a["cities"])}
+    {'<p><a href="#form">千葉の通院・大型犬送迎の料金をくらべる</a> ・ <a href="/guide/large-dog/">大型犬の乗り降り・車両の確認項目</a></p>' + chr(10) + "    " if a["slug"] == "chiba" else ""}{pref_company_table(a["pref"], a["short"], [x for x in _DISP if a["pref"][:-1] in x.get("areas", [])], a["cities"])}
     {city_links(a["pref"])}
     <h3>{e(a["pref"])}の夜間・救急の動物病院</h3>
     <p>夜や休日に具合が悪くなったときのために、{e(a["pref"])}の夜間・救急の動物病院を受付時間つきで<a href="/hospital/night/#pref={quote(a["pref"])}">夜間・救急の動物病院の一覧</a>にまとめています。往診専門の動物病院（家まで来てくれる獣医さん）は<a href="/hospital/visit/#pref={quote(a["pref"])}">往診の一覧</a>、猫だけを診る病院は<a href="/hospital/cat/#pref={quote(a["pref"])}">猫専門の動物病院</a>にあります。</p>
@@ -2456,12 +2458,12 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
       if (window.gtag) gtag("event", "open_reviews", {});
       var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
       fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
-        if (j && j.ok && !(j.rating > 0)) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
+        if (j && j.ok && (!(j.rating > 0) || !(j.count > 0))) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
         if (!j || !j.ok) throw 0;
         memo[id] = {rating: j.rating, count: j.count}; paint(box, memo[id]);
         var panel = box.querySelector(".review-panel"), open = box.querySelector(".partner-review-open");
         fill(panel, j); panel.hidden = false; open.setAttribute("aria-expanded", "true");
-      }).catch(function(e){ box.replaceChildren(el("p", "partner-review-src", e === "none" ? "Googleマップの口コミはまだありません" : "口コミを読み込めませんでした。時間をおいてもう一度お試しください")); });
+      }).catch(function(e){ if (e === "none") { box.remove(); return; } b.disabled = false; b.textContent = "口コミをもう一度"; });
     });
   }
   function paint(box, rv){
