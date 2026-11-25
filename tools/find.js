@@ -104,6 +104,8 @@
     var pj = placeJ(it, pf || []);
     if (pj === 2) return 2;
     if (qs && qs.split(" ").some(function(w){ return it._q.indexOf(w) < 0; })) return 2;
+    // 老犬ホームのライブ映像サービスを、老猫ホームの設備とはみなさない。
+    if (ks.indexOf("a:cat") >= 0 && ks.indexOf("owner_live_dog") >= 0 && ks.indexOf("a:dog") < 0) return 2;
     var r = pj;
     for (var i = 0; i < ks.length; i++) {
       if (it._k.indexOf(" " + ks[i] + " ") >= 0) continue;

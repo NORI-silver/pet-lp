@@ -440,7 +440,10 @@ def generic_list(h, cat, hub):
     more = [(k, l) for k, l, _ in mv if use(k)]
     # 公式サイトの文から決める条件（ownerfit の FAC）を、サービスの内容・そのほかの条件にも出す（2026-11-24 全面改修）
     if cat == "dog-trainer" and use("private"): need.append(("private", "個別レッスン"))
-    if cat == "rojin-home" and use("medical"): need.append(("medical", "医療・投薬対応"))
+    if cat == "rojin-home":
+        if use("medical"): need.append(("medical", "医療・投薬対応"))
+        # 希少でも判断を左右する条件なので、掲載例が1件あれば出す。
+        if cnt.get("owner_live_dog"): need.append(("owner_live_dog", "家族がライブ映像を見られる（犬）"))
     if cat == "pet-sitter":
         more += [(k, l) for k, l in [("stay", "泊まりの留守番"), ("sameday", "当日も相談できる"), ("regular", "定期利用")] if use(k)]
     bx = box(cat, q_ph="都道府県・市区町村", opts=opts if (hub and opts) else None, animals=animals,
