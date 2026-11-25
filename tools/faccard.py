@@ -334,7 +334,10 @@ def _edge_line(ic, lab, val, conf):
     if ic != "paw": return (ic, lab, val)
     ks = _kinds_in(val)
     other = [x for x in _split_items(val) if not re.fullmatch(r"(犬|猫|イヌ|ネコ|ドッグ|キャット|犬猫|わんちゃん|ねこちゃん)(OK|可)?", x)]  # 条件つき（「犬（5kg未満）」など）は残す
-    if other: return (ic, lab, "・".join(other))
+    if other:
+        # 病院の対象動物の行では、犬猫も明記されている場合に対象外と読ませない。
+        prefix = "犬・猫のほか " if conf["key"] == "hospital" and {"犬", "猫"} <= set(_split_items(val)) else ""
+        return (ic, lab, prefix + "・".join(other))
     if ks == ["cat"] and "dog" in conf["kinds"]: return (ic, lab, "猫だけ")
     if ks == ["dog"] and "cat" in conf["kinds"] and len(conf["kinds"]) > 1: return (ic, lab, "犬だけ")
     return None
