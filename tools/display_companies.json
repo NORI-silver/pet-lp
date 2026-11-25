@@ -3156,8 +3156,7 @@
     "tax": "税込",
     "src": "https://pet-taxi-kasukabe.com/",
     "pick": {
-     "per": 165,
-     "kmMode": "nearest"
+     "per": 165
     },
     "back": {},
     "wait": {
@@ -5085,8 +5084,7 @@
      "flat": 3300
     },
     "tax": "税込",
-    "src": "https://pet-taxi-kyoto.com/",
-    "pickOnce": true
+    "src": "https://pet-taxi-kyoto.com/"
    },
    "pay": "",
    "url": "https://pet-taxi-kyoto.com/",

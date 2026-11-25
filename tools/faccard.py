@@ -469,9 +469,8 @@ CSS = """<style id="fccss">
 .fr{margin:4px 0 18px}
 .fr-h{font-size:1.05rem!important;font-weight:800;margin:10px 0 8px!important;display:flex;align-items:baseline;gap:8px}
 .fr-h small{font-size:.78rem;font-weight:600;color:var(--ink-3,#6b625b)}
-.fr-s{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;margin:0 -2px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.fr-s{display:grid;gap:12px;padding:2px 2px 12px}
 .fr-more{margin:4px 0 18px;font-size:14px}.fr-more a{color:#c2410c;font-weight:600}
-.fr-s>.emg-item.fc{flex:0 0 80%;max-width:330px;scroll-snap-align:start}
 .fr-s>.emg-item.fc[hidden],.fr-s>.emg-item.fac-off,.emg-item.fc.fc-off{display:none}
 .fr:not(:has(.emg-item.fc:not([hidden]):not(.fac-off):not(.fc-hid):not(.fc-off))),.fr-empty{display:none!important}
 .fc-ph{position:relative;aspect-ratio:4/3;background:#f4f1ee;overflow:hidden}
@@ -536,7 +535,7 @@ CSS = """<style id="fccss">
 .fp-now b{font-weight:800}
 .fp-hide{display:flex;gap:6px;align-items:center;font-size:.82rem;color:var(--ink-2,#5a524b)}
 .fp-hide input{width:18px;height:18px}
-@media (min-width:760px){.fr-s>.emg-item.fc{flex-basis:300px}}
+@media (min-width:760px){.fr-s{grid-template-columns:1fr 1fr}}
 </style>"""
 
 FIT_JS = '<script src="/fit.js" defer></script>'
