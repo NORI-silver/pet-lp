@@ -399,6 +399,46 @@
    "area": "中野区とその周り（くわしくは公式サイト）"
   },
   {
+   "id": "Scfe6b21",
+   "name": "ペットホテル 犬寝",
+   "prefs": [
+    "山梨県"
+   ],
+   "area": "笛吹市",
+   "url": "https://www.pethotelkennel.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "ペットホテル犬寝|山梨県笛吹市八代町北|営業時間 6:00~21:00",
+     "src": "https://www.pethotelkennel.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 不定休",
+     "src": "https://www.pethotelkennel.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病ワクチン(鑑札可)と混合ワクチン(5種以上)の接種証明証。",
+     "src": "https://www.pethotelkennel.com/use/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "お支払い方法",
+     "src": "https://www.pethotelkennel.com/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
    "id": "St74c406c",
    "name": "キングスクロス",
    "prefs": [
@@ -1118,6 +1158,39 @@
      "k": "送迎",
      "v": "免許を返納されていたり、一人で連れて行くことが難しい場合などにご利用ください。また、通院だけでなくトリミングやペットホテルなどへの送迎もいたします。",
      "src": "https://hdogsupport.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "S112",
+   "name": "ペットシッターCOCO",
+   "prefs": [
+    "福岡県"
+   ],
+   "area": "福岡市早良区、西区、城南区、南区、中央区、博多区、その他周辺",
+   "url": "https://intopet.jp/coco/",
+   "chain": "intopet",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間】9:00〜19:00",
+     "src": "https://intopet.jp/coco/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "料金",
+     "v": "15分800円。例）3kmの場合1回500円、5kmの場合1回700円",
+     "src": "https://intopet.jp/coco/price/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金かお振込みでのお支払となります。",
+     "src": "https://intopet.jp/coco/price/",
      "by": "site",
      "checked": "2026-11-23"
     }
@@ -6310,6 +6383,39 @@
    ]
   },
   {
+   "id": "Ske6c071",
+   "name": "ペットケア陽",
+   "prefs": [
+    "奈良県"
+   ],
+   "area": "橿原市",
+   "url": "https://hinaryu.com/",
+   "chain": "indie",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00~18:00 (不定休)",
+     "src": "https://hinaryu.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "※予約状況、健康状態、ペットの性格、ワクチン・狂犬病未接種等によりお受けできない場合がございます。",
+     "src": "https://hinaryu.com/flow/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "※受診代行・送迎サービスでは、 10kg迄の犬・猫のみ の対応になります。",
+     "src": "https://hinaryu.com/price/index.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
    "id": "S127",
    "name": "ペットシッターMOFUKO",
    "prefs": [
@@ -8349,46 +8455,6 @@
    ]
   },
   {
-   "id": "Scfe6b21",
-   "name": "ペットホテル 犬寝",
-   "prefs": [
-    "山梨県"
-   ],
-   "area": "笛吹市",
-   "url": "https://www.pethotelkennel.com/",
-   "chain": "indie",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "ペットホテル犬寝|山梨県笛吹市八代町北|営業時間 6:00~21:00",
-     "src": "https://www.pethotelkennel.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "定休日 不定休",
-     "src": "https://www.pethotelkennel.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "用意するもの",
-     "v": "狂犬病ワクチン(鑑札可)と混合ワクチン(5種以上)の接種証明証。",
-     "src": "https://www.pethotelkennel.com/use/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "お支払い",
-     "v": "お支払い方法",
-     "src": "https://www.pethotelkennel.com/price/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
-  },
-  {
    "id": "Sc645b26",
    "name": "Happy Pet Station わん ポイント",
    "prefs": [
@@ -9901,39 +9967,6 @@
      "k": "お支払い",
      "v": "現金かお振込みでのお支払となります。（原則、お世話の5営業日前までにお支払い）",
      "src": "https://intopet.jp/catsitter1010/price/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
-  },
-  {
-   "id": "S112",
-   "name": "ペットシッターCOCO",
-   "prefs": [
-    "福岡県"
-   ],
-   "area": "福岡市早良区、西区、城南区、南区、中央区、博多区、その他周辺",
-   "url": "https://intopet.jp/coco/",
-   "chain": "intopet",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "【営業時間】9:00〜19:00",
-     "src": "https://intopet.jp/coco/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "料金",
-     "v": "15分800円。例）3kmの場合1回500円、5kmの場合1回700円",
-     "src": "https://intopet.jp/coco/price/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "お支払い",
-     "v": "現金かお振込みでのお支払となります。",
-     "src": "https://intopet.jp/coco/price/",
      "by": "site",
      "checked": "2026-11-23"
     }
@@ -14287,39 +14320,6 @@
      "k": "お支払い",
      "v": "お支払いは現金払い、もしくは銀行振込にご対応しております。",
      "src": "https://puppyboo-pet.com/step/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
-  },
-  {
-   "id": "Ske6c071",
-   "name": "ペットケア陽",
-   "prefs": [
-    "奈良県"
-   ],
-   "area": "橿原市",
-   "url": "https://hinaryu.com/",
-   "chain": "indie",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "営業時間:9:00~18:00 (不定休)",
-     "src": "https://hinaryu.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "用意するもの",
-     "v": "※予約状況、健康状態、ペットの性格、ワクチン・狂犬病未接種等によりお受けできない場合がございます。",
-     "src": "https://hinaryu.com/flow/index.html",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "送迎",
-     "v": "※受診代行・送迎サービスでは、 10kg迄の犬・猫のみ の対応になります。",
-     "src": "https://hinaryu.com/price/index.html",
      "by": "site",
      "checked": "2026-11-23"
     }
@@ -21934,7 +21934,7 @@
    "area": "横浜市青葉区",
    "url": "https://npet.jp/bebete/",
    "chain": "nihon",
-   "animals": "猫・うさぎ・小鳥・モモンガなどの小動物。犬の新規受付は停止中（2026年11月23日時点）",
+   "animals": "猫・うさぎ・小鳥・モモンガなどの小動物（犬は新規の受付なし）",
    "no_new_dog": true,
    "facts": [
     {
@@ -21944,8 +21944,7 @@
      "by": "site",
      "checked": "2026-11-23"
     }
-   ],
-   "animals": "猫・うさぎ・小鳥・モモンガなどの小動物（犬は新規の受付なし）"
+   ]
   },
   {
    "id": "S215",

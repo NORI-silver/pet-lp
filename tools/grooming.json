@@ -8083,6 +8083,130 @@
    "cat": true
   },
   {
+   "id": "GScd2d0e0",
+   "name": "ドッグサロンHANA",
+   "prefs": [
+    "岐阜県"
+   ],
+   "city": "郡上市",
+   "url": "https://dogsalon-hana.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間:9:00-17:30",
+     "src": "https://dogsalon-hana.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日:日曜日",
+     "src": "https://dogsalon-hana.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場はありますか?",
+     "src": "https://dogsalon-hana.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送迎 応相談",
+     "src": "https://dogsalon-hana.com/menu/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "狂犬病予防注射済票",
+     "src": "https://dogsalon-hana.com/pet-hotel/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "現金のみとなります。",
+     "src": "https://dogsalon-hana.com/faq/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "GSc98048a",
+   "name": "Dog trimming cherie CoCo",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "伊豆の国市",
+   "url": "https://cherrycoco.jpn.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "受付時間: 平日09:30~18:30",
+     "src": "https://cherrycoco.jpn.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "送り迎え",
+     "src": "https://cherrycoco.jpn.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "年1回の狂犬病接種と混合ワクチン、ノミダニの予防をお願いいたします",
+     "src": "https://cherrycoco.jpn.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "GSca93842",
+   "name": "犬の美容室 スマイル",
+   "prefs": [
+    "静岡県"
+   ],
+   "city": "磐田市",
+   "url": "https://www.inunobiyoushitsu-smile.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "料金",
+     "v": "※避妊去勢手術をしていない成犬(7ヶ月以上)半年以内にトリミングでの来店のない場合には通常料金が500円増しになります。",
+     "src": "https://www.inunobiyoushitsu-smile.com/menu",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "【営業時間】9:00~18:00",
+     "src": "https://www.inunobiyoushitsu-smile.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "【定休日】不定休",
+     "src": "https://www.inunobiyoushitsu-smile.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "large": true
+  },
+  {
    "id": "G011",
    "name": "トリミングサロン ひまわり組",
    "prefs": [
@@ -15449,6 +15573,47 @@
    ]
   },
   {
+   "id": "GScbae23b",
+   "name": "ドッグサロンギフト",
+   "prefs": [
+    "長野県"
+   ],
+   "city": "松本市",
+   "url": "https://www.dogsalongift.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "(営業時間:9~17時 土曜定休)",
+     "src": "https://www.dogsalongift.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "営業時間 9:00~17:00(定休日:土曜日)",
+     "src": "https://www.dogsalongift.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "※駐車場は2台分ご用意があります。",
+     "src": "https://www.dogsalongift.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "※お支払いは現金のみ受け付けております。",
+     "src": "https://www.dogsalongift.com/trimming/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
    "id": "G018",
    "name": "dog1st famille（ドッグファースト ファミーユ）訪問トリミング",
    "prefs": [
@@ -18626,6 +18791,40 @@
    "shop": true,
    "facts": [],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "GScfa9126",
+   "name": "ペットサロン フルエ",
+   "prefs": [
+    "石川県"
+   ],
+   "city": "羽咋市",
+   "url": "http://www.pet-furue.sakura.ne.jp/hotel.html",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "ホテル営業時間(AM8:00~PM6:00)時間外はAM7:00~PM7:00までです。",
+     "src": "http://www.pet-furue.sakura.ne.jp/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日 火曜日",
+     "src": "http://www.pet-furue.sakura.ne.jp/shop.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "年1回のワクチン(狂犬病及び混合ワクチン)未接種・又は(接種後2週間以上",
+     "src": "http://www.pet-furue.sakura.ne.jp/hotel.html",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
   },
   {
    "id": "G008",
@@ -24094,61 +24293,6 @@
    ],
    "large": true,
    "cat": true
-  },
-  {
-   "id": "GScd2d0e0",
-   "name": "ドッグサロンHANA",
-   "prefs": [
-    "岐阜県"
-   ],
-   "city": "郡上市",
-   "url": "https://dogsalon-hana.com/",
-   "services": "トリミングサロン",
-   "shop": true,
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "営業時間:9:00-17:30",
-     "src": "https://dogsalon-hana.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "定休日:日曜日",
-     "src": "https://dogsalon-hana.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "駐車場",
-     "v": "駐車場はありますか?",
-     "src": "https://dogsalon-hana.com/faq/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "送迎",
-     "v": "送迎 応相談",
-     "src": "https://dogsalon-hana.com/menu/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "用意するもの",
-     "v": "狂犬病予防注射済票",
-     "src": "https://dogsalon-hana.com/pet-hotel/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "お支払い",
-     "v": "現金のみとなります。",
-     "src": "https://dogsalon-hana.com/faq/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
   },
   {
    "id": "G-ST0110",
@@ -31330,6 +31474,61 @@
    "checked": "2026-11-23"
   },
   {
+   "id": "Gt67bc9ae",
+   "name": "トリミングサロン ティグレ",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "横浜市中区",
+   "url": "http://tigre.ciao.jp/",
+   "services": "ペットホテル、出張トリミング",
+   "facts": [
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間：午前9時～午後4時",
+     "src": "http://tigre.ciao.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "定休日：日曜・祝日",
+     "src": "http://tigre.ciao.jp/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "area": "横浜市中区とその周り"
+  },
+  {
+   "id": "GSc27dd72",
+   "name": "WhiteBrick",
+   "prefs": [
+    "福井県"
+   ],
+   "city": "鯖江市",
+   "url": "https://white-brick.net/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "定休日",
+     "v": "2.定休日・休業日を含むご利用について",
+     "src": "https://white-brick.net/%e5%88%9d%e3%82%81%e3%81%a6%e3%81%ae%e6%96%b9%e3%81%b8/%e3%83%9b%e3%83%86%e3%83%ab%e5%88%a9%e7%94%a8%e8%a6%8f%e7%b4%84/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "初めてのご来店の際はご利用規約をお読みの上、狂犬病、ワクチン証明書をお持ちくださいますようお願いいたします。※写真可",
+     "src": "https://white-brick.net/news/%e5%88%9d%e3%82%81%e3%81%a6%e3%81%94%e5%88%a9%e7%94%a8%e3%81%ae%e6%96%b9%e3%81%b8/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
    "id": "G003",
    "name": "出張 犬の美容室 もふのこ",
    "prefs": [
@@ -32950,47 +33149,6 @@
     }
    ],
    "large": true
-  },
-  {
-   "id": "GScbae23b",
-   "name": "ドッグサロンギフト",
-   "prefs": [
-    "長野県"
-   ],
-   "city": "松本市",
-   "url": "https://www.dogsalongift.com/",
-   "services": "トリミングサロン",
-   "shop": true,
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "(営業時間:9~17時 土曜定休)",
-     "src": "https://www.dogsalongift.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "営業時間 9:00~17:00(定休日:土曜日)",
-     "src": "https://www.dogsalongift.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "駐車場",
-     "v": "※駐車場は2台分ご用意があります。",
-     "src": "https://www.dogsalongift.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "お支払い",
-     "v": "※お支払いは現金のみ受け付けております。",
-     "src": "https://www.dogsalongift.com/trimming/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
   },
   {
    "id": "G-ST0084",
@@ -39761,75 +39919,6 @@
    "cat": true
   },
   {
-   "id": "GSc98048a",
-   "name": "Dog trimming cherie CoCo",
-   "prefs": [
-    "静岡県"
-   ],
-   "city": "伊豆の国市",
-   "url": "https://cherrycoco.jpn.com/",
-   "services": "トリミングサロン",
-   "shop": true,
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "受付時間: 平日09:30~18:30",
-     "src": "https://cherrycoco.jpn.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "送迎",
-     "v": "送り迎え",
-     "src": "https://cherrycoco.jpn.com/menu",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "用意するもの",
-     "v": "年1回の狂犬病接種と混合ワクチン、ノミダニの予防をお願いいたします",
-     "src": "https://cherrycoco.jpn.com/menu",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
-  },
-  {
-   "id": "GSca93842",
-   "name": "犬の美容室 スマイル",
-   "prefs": [
-    "静岡県"
-   ],
-   "city": "磐田市",
-   "url": "https://www.inunobiyoushitsu-smile.com/",
-   "services": "トリミングサロン",
-   "shop": true,
-   "facts": [
-    {
-     "k": "料金",
-     "v": "※避妊去勢手術をしていない成犬(7ヶ月以上)半年以内にトリミングでの来店のない場合には通常料金が500円増しになります。",
-     "src": "https://www.inunobiyoushitsu-smile.com/menu",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "営業・受付時間",
-     "v": "【営業時間】9:00~18:00",
-     "src": "https://www.inunobiyoushitsu-smile.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "【定休日】不定休",
-     "src": "https://www.inunobiyoushitsu-smile.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "large": true
-  },
-  {
    "id": "GSc41018d",
    "name": "犬の美容室もふまる",
    "prefs": [
@@ -40348,40 +40437,6 @@
     }
    ],
    "large": true
-  },
-  {
-   "id": "GScfa9126",
-   "name": "ペットサロン フルエ",
-   "prefs": [
-    "石川県"
-   ],
-   "city": "羽咋市",
-   "url": "http://www.pet-furue.sakura.ne.jp/hotel.html",
-   "services": "トリミングサロン",
-   "shop": true,
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "ホテル営業時間(AM8:00~PM6:00)時間外はAM7:00~PM7:00までです。",
-     "src": "http://www.pet-furue.sakura.ne.jp/hotel.html",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "定休日 火曜日",
-     "src": "http://www.pet-furue.sakura.ne.jp/shop.html",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "用意するもの",
-     "v": "年1回のワクチン(狂犬病及び混合ワクチン)未接種・又は(接種後2週間以上",
-     "src": "http://www.pet-furue.sakura.ne.jp/hotel.html",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
   },
   {
    "id": "GScd3c20a",
@@ -49309,34 +49364,6 @@
    "area": "横浜市戸塚区とその周り"
   },
   {
-   "id": "Gt67bc9ae",
-   "name": "トリミングサロン ティグレ",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "横浜市中区",
-   "url": "http://tigre.ciao.jp/",
-   "services": "ペットホテル、出張トリミング",
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "営業時間：午前9時～午後4時",
-     "src": "http://tigre.ciao.jp/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "定休日：日曜・祝日",
-     "src": "http://tigre.ciao.jp/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23",
-   "area": "横浜市中区とその周り"
-  },
-  {
    "id": "Gt3442985",
    "name": "おかえり",
    "prefs": [
@@ -50129,33 +50156,6 @@
     }
    ],
    "large": true
-  },
-  {
-   "id": "GSc27dd72",
-   "name": "WhiteBrick",
-   "prefs": [
-    "福井県"
-   ],
-   "city": "鯖江市",
-   "url": "https://white-brick.net/",
-   "services": "トリミングサロン",
-   "shop": true,
-   "facts": [
-    {
-     "k": "定休日",
-     "v": "2.定休日・休業日を含むご利用について",
-     "src": "https://white-brick.net/%e5%88%9d%e3%82%81%e3%81%a6%e3%81%ae%e6%96%b9%e3%81%b8/%e3%83%9b%e3%83%86%e3%83%ab%e5%88%a9%e7%94%a8%e8%a6%8f%e7%b4%84/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "用意するもの",
-     "v": "初めてのご来店の際はご利用規約をお読みの上、狂犬病、ワクチン証明書をお持ちくださいますようお願いいたします。※写真可",
-     "src": "https://white-brick.net/news/%e5%88%9d%e3%82%81%e3%81%a6%e3%81%94%e5%88%a9%e7%94%a8%e3%81%ae%e6%96%b9%e3%81%b8/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ]
   },
   {
    "id": "GSc925242",
