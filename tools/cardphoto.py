@@ -61,7 +61,7 @@ def load():
     return by_id, by_url
 
 
-def strip(x, name, gph=""):
+def strip(x, name, gph="", compact=False):
     """写真の並び（横スワイプ）。x が None なら共通の枠。"""
     g = f' data-gph="{html.escape(gph)}"' if gph else ""
     if not x:
@@ -75,6 +75,9 @@ def strip(x, name, gph=""):
     if x.get("by") != "owner" and x.get("credit"):  # サイトの決まり（CC BY など）や事業者の許可の条件で出どころの表示が要る
         cr = f'<small class="cs-ph-c">{html.escape(x["credit"])}' + (f'（<a href="{html.escape(x["lic_url"])}" target="_blank" rel="noopener">{html.escape(x.get("license", ""))}</a>）' if x.get("lic_url") else "") + "</small>"
     # 写真の縦横比に枠を合わせる（余白なし・切らない。極端な縦横比だけ 3:5〜3:1 に丸める）。共通CSSは変えず、カードごとの style で上書きする
+    # 全国ページ（SEO 検査の上限 60KB gzip）だけ、写真の並びを ga.js が作る（_1 〜 _N の並びの写真に限る。枚数・ドット・矢印・全体表示・出どころの表示は同じ）。県のページは今まで通り全部書く。
+    if compact and re.fullmatch(r"[1-5]", str(len(ps))) and all(p == re.sub(r"_1\.webp$", "_%d.webp" % (i + 1), ps[0]) and ps[0].endswith("_1.webp") for i, p in enumerate(ps)):
+        return f'<div class="cs-ph"{g} data-p="{html.escape(ps[0][:-6])}{len(ps)}"><div class="cs-ph-s"></div>{cr}</div>'
     return f'<div class="cs-ph"{g}><div class="cs-ph-s">{imgs}</div>{n}{cr}</div>'
 
 
@@ -92,7 +95,7 @@ def _end(h, i):
 _TRANSPORT_PAGES = frozenset(("area", "tokyo", "chiba", "kanagawa", "saitama", "emergency"))
 
 
-def page(h, by_id, by_url, top=""):
+def page(h, by_id, by_url, top="", compact=False):
     if 'id="cp-css"' in h: return h, 0
     out, pos, n = [], 0, 0
     for m in _OPEN.finditer(h):
@@ -115,7 +118,7 @@ def page(h, by_id, by_url, top=""):
                 if x: break
         nm = re.search(r'class="ux-c-n"[^>]*>(.*?)</(?:a|h3)>', blk, re.S)
         gph = next((i for i in re.findall(r'class="emg-score" data-id="([^"]+)"', blk)), "")
-        s = strip(x, nm.group(1) if nm else "", gph)
+        s = strip(x, nm.group(1) if nm else "", gph, compact)
         if not s: continue
         ot = m.group(0)
         out += [h[pos:m.start()], ot, s, blk[len(ot):]]
@@ -178,7 +181,7 @@ def build(root):
         f = os.path.join(dp, "index.html")
         t = open(f, encoding="utf-8").read()
         if 'http-equiv="refresh"' in t: continue
-        u, k = page(t, by_id, by_url, top)
+        u, k = page(t, by_id, by_url, top, rel == "dog-trainer")
         if u != t: open(f, "w", encoding="utf-8").write(u); pages += 1; cards += k
     return pages, cards, sum(1 for _ in by_id)
 
