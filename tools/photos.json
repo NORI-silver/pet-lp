@@ -2,6 +2,43 @@
  "_説明": "事業者カードに出す写真（使ってよいと確かめたものだけ。Nori 2026-11-16）。tools/photo_import.py が入れる（手で写さない）。by は owner（事業者が登録）・permit（事業者が公式サイトの写真の利用を許可。記録は photo_permits.json）・license（公式サイトの決まりで転載を許している。credit・license・lic_url の表示が要る）。photos は /img/fac/ の 520×347 の webp。並びは owner → permit → license。",
  "items": [
   {
+   "cat": "hotel",
+   "id": "PH053",
+   "name": "HAMA＆WAN",
+   "url": "https://www.hama-wan.com/pethotel.html",
+   "by": "owner",
+   "src": "2026-11-23",
+   "checked": "2026-11-25",
+   "photos": [
+    "/img/fac/hotel/PH053_1.webp"
+   ],
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H021",
+   "name": "どうぶつの総合病院 専門医療＆救急センター",
+   "url": "https://vsec.jp/mp/yakan_1",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-25",
+   "photos": [
+    "/img/fac/night/H021_1.webp"
+   ],
+   "ratio": [
+    2.844
+   ],
+   "source_photos": [
+    {
+     "page": "https://vsec.jp/about-us/overview/",
+     "url": "https://vsec.jp/wp-content/themes/vsec/assets/img/about-us/overview/img.webp"
+    }
+   ],
+   "credit": "写真：どうぶつの総合病院 専門医療＆救急センター"
+  },
+  {
    "cat": "dogrun",
    "id": "D043",
    "name": "岡山県動物愛護センター 北広場（ドッグラン）",
@@ -48765,6 +48802,2412 @@
    "credit": "写真：スマイルドッグスクール",
    "ratio": [
     1.479
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T-ST0433",
+   "name": "ドッグトレーニングスクール セブン",
+   "url": "https://www.dogtrainingschool-seven.jp/profile.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T-ST0433_1.webp",
+    "/img/fac/trainer/T-ST0433_2.webp",
+    "/img/fac/trainer/T-ST0433_3.webp",
+    "/img/fac/trainer/T-ST0433_4.webp",
+    "/img/fac/trainer/T-ST0433_5.webp"
+   ],
+   "credit": "写真：ドッグトレーニングスクール セブン",
+   "ratio": [
+    1.333,
+    1.5,
+    0.75,
+    1.476,
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T-ST1412",
+   "name": "ドッグ トレーニング ノア",
+   "url": "https://dogtrainingnoah.com/about",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T-ST1412_1.webp",
+    "/img/fac/trainer/T-ST1412_2.webp",
+    "/img/fac/trainer/T-ST1412_3.webp",
+    "/img/fac/trainer/T-ST1412_4.webp",
+    "/img/fac/trainer/T-ST1412_5.webp"
+   ],
+   "credit": "写真：ドッグ トレーニング ノア",
+   "ratio": [
+    1.5,
+    1.333,
+    1.5,
+    1.351,
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T055",
+   "name": "きたなごやドッグスクール",
+   "url": "https://kitanagoya-ds.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T055_1.webp",
+    "/img/fac/trainer/T055_2.webp",
+    "/img/fac/trainer/T055_3.webp",
+    "/img/fac/trainer/T055_4.webp"
+   ],
+   "credit": "写真：きたなごやドッグスクール",
+   "ratio": [
+    1.489,
+    1.333,
+    1.333,
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T191",
+   "name": "ANドッグスクール",
+   "url": "https://an-dogschool.jp/about/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T191_1.webp",
+    "/img/fac/trainer/T191_2.webp",
+    "/img/fac/trainer/T191_3.webp"
+   ],
+   "credit": "写真：ANドッグスクール",
+   "ratio": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T279",
+   "name": "ドッグトレーニングHOME",
+   "url": "https://dogtraining-home.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T279_1.webp",
+    "/img/fac/trainer/T279_2.webp"
+   ],
+   "credit": "写真：ドッグトレーニングHOME",
+   "ratio": [
+    0.75,
+    2.133
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tc7d90de",
+   "name": "ドッグトレーニング オカダ",
+   "url": "http://www.dog-training-okada.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tc7d90de_1.webp",
+    "/img/fac/trainer/Tc7d90de_2.webp",
+    "/img/fac/trainer/Tc7d90de_3.webp",
+    "/img/fac/trainer/Tc7d90de_4.webp",
+    "/img/fac/trainer/Tc7d90de_5.webp"
+   ],
+   "credit": "写真：ドッグトレーニング オカダ",
+   "ratio": [
+    0.714,
+    1.613,
+    1.613,
+    1.613,
+    1.613
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk5efcba",
+   "name": "ドッグスクール Roots",
+   "url": "https://www.dogschool-roots.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk5efcba_1.webp",
+    "/img/fac/trainer/Tk5efcba_2.webp",
+    "/img/fac/trainer/Tk5efcba_3.webp",
+    "/img/fac/trainer/Tk5efcba_4.webp",
+    "/img/fac/trainer/Tk5efcba_5.webp"
+   ],
+   "credit": "写真：ドッグスクール Roots",
+   "ratio": [
+    0.75,
+    1.333,
+    1.333,
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk8ac39b",
+   "name": "ドッグサロン いるりこ",
+   "url": "https://irulyco.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk8ac39b_1.webp",
+    "/img/fac/trainer/Tk8ac39b_2.webp"
+   ],
+   "credit": "写真：ドッグサロン いるりこ",
+   "ratio": [
+    0.854,
+    1.468
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tke2a76b",
+   "name": "Ohana relationship",
+   "url": "https://www.ohana-relationship.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tke2a76b_1.webp",
+    "/img/fac/trainer/Tke2a76b_2.webp"
+   ],
+   "credit": "写真：Ohana relationship",
+   "ratio": [
+    1.0,
+    1.758
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tkff5a93",
+   "name": "DOG SALON ちび",
+   "url": "https://dog-salonchibi.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tkff5a93_1.webp",
+    "/img/fac/trainer/Tkff5a93_2.webp"
+   ],
+   "credit": "写真：DOG SALON ちび",
+   "ratio": [
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt161d579",
+   "name": "ELLE DOG",
+   "url": "https://elledog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt161d579_1.webp",
+    "/img/fac/trainer/Tt161d579_2.webp",
+    "/img/fac/trainer/Tt161d579_3.webp",
+    "/img/fac/trainer/Tt161d579_4.webp",
+    "/img/fac/trainer/Tt161d579_5.webp"
+   ],
+   "credit": "写真：ELLE DOG",
+   "ratio": [
+    1.333,
+    1.333,
+    1.333,
+    1.779,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt8b2b922",
+   "name": "BLISS豊洲店",
+   "url": "https://bliss-trimming.com/toyosu-shop/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt8b2b922_1.webp"
+   ],
+   "credit": "写真：BLISS豊洲店",
+   "ratio": [
+    1.288
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T-ST1484",
+   "name": "ハッピーレッスン",
+   "url": "https://happylesson.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T-ST1484_1.webp"
+   ],
+   "credit": "写真：ハッピーレッスン",
+   "ratio": [
+    1.499
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T061",
+   "name": "エコル犬の出張訓練しつけ教室",
+   "url": "https://ecole-syuchoukunren.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T061_1.webp"
+   ],
+   "credit": "写真：エコル犬の出張訓練しつけ教室",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T168",
+   "name": "School of DOG（スクールオブドッグ）",
+   "url": "https://schoolofdog.tokyo/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T168_1.webp"
+   ],
+   "credit": "写真：School of DOG（スクールオブドッグ）",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T192",
+   "name": "Dog Lover Aichi（ドッグラバーアイチ）",
+   "url": "https://doglover-aichi.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T192_1.webp",
+    "/img/fac/trainer/T192_2.webp"
+   ],
+   "credit": "写真：Dog Lover Aichi（ドッグラバーアイチ）",
+   "ratio": [
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tcdba1ea",
+   "name": "東海警察犬訓練所",
+   "url": "https://www.inu-inu.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tcdba1ea_1.webp",
+    "/img/fac/trainer/Tcdba1ea_2.webp",
+    "/img/fac/trainer/Tcdba1ea_3.webp"
+   ],
+   "credit": "写真：東海警察犬訓練所",
+   "ratio": [
+    2.394,
+    2.394,
+    2.394
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk0607cf",
+   "name": "ONE’S DOG",
+   "url": "https://onesdog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk0607cf_1.webp",
+    "/img/fac/trainer/Tk0607cf_2.webp",
+    "/img/fac/trainer/Tk0607cf_3.webp",
+    "/img/fac/trainer/Tk0607cf_4.webp"
+   ],
+   "credit": "写真：ONE’S DOG",
+   "ratio": [
+    1.519,
+    1.519,
+    1.519,
+    1.519
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk65fd4e",
+   "name": "いちご幼稚園",
+   "url": "https://roro-jam.com/kindergarten/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk65fd4e_1.webp",
+    "/img/fac/trainer/Tk65fd4e_2.webp",
+    "/img/fac/trainer/Tk65fd4e_3.webp",
+    "/img/fac/trainer/Tk65fd4e_4.webp",
+    "/img/fac/trainer/Tk65fd4e_5.webp"
+   ],
+   "credit": "写真：いちご幼稚園",
+   "ratio": [
+    1.601,
+    1.5,
+    1.5,
+    1.5,
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk8c1f80",
+   "name": "Dog Support B.B",
+   "url": "https://dogsupportbb.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk8c1f80_1.webp",
+    "/img/fac/trainer/Tk8c1f80_2.webp",
+    "/img/fac/trainer/Tk8c1f80_3.webp",
+    "/img/fac/trainer/Tk8c1f80_4.webp",
+    "/img/fac/trainer/Tk8c1f80_5.webp"
+   ],
+   "credit": "写真：Dog Support B.B",
+   "ratio": [
+    1.333,
+    0.888,
+    1.473,
+    1.761,
+    1.142
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tke2f5ac",
+   "name": "一心警察犬訓練所 ISSIN DOG SCHOOL",
+   "url": "https://issin-dog-school.wixsite.com/police-dog-school",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tke2f5ac_1.webp"
+   ],
+   "credit": "写真：一心警察犬訓練所 ISSIN DOG SCHOOL",
+   "ratio": [
+    0.8
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tta7103f8",
+   "name": "楽歩",
+   "url": "https://nicewalk48.com/aboutus/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tta7103f8_1.webp"
+   ],
+   "credit": "写真：楽歩",
+   "ratio": [
+    1.4
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T-ST0927",
+   "name": "株式会社Dog Nit’s",
+   "url": "https://www.dognits.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T-ST0927_1.webp"
+   ],
+   "credit": "写真：株式会社Dog Nit’s",
+   "ratio": [
+    2.314
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T169",
+   "name": "Dog&Owner support Liofriends（リオフレンズ）",
+   "url": "https://www.liofriends.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T169_1.webp",
+    "/img/fac/trainer/T169_2.webp"
+   ],
+   "credit": "写真：Dog&Owner support Liofriends（リオフレンズ）",
+   "ratio": [
+    1.332,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T193",
+   "name": "平井ドッグスクール",
+   "url": "https://hiraidog.school/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T193_1.webp"
+   ],
+   "credit": "写真：平井ドッグスクール",
+   "ratio": [
+    1.238
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tc08b532",
+   "name": "サンドッグスクール",
+   "url": "https://a31si.crayonsite.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tc08b532_1.webp",
+    "/img/fac/trainer/Tc08b532_2.webp",
+    "/img/fac/trainer/Tc08b532_3.webp",
+    "/img/fac/trainer/Tc08b532_4.webp",
+    "/img/fac/trainer/Tc08b532_5.webp"
+   ],
+   "credit": "写真：サンドッグスクール",
+   "ratio": [
+    0.749,
+    0.749,
+    1.013,
+    0.974,
+    1.334
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tcddbc97",
+   "name": "ドッグスクールB&G",
+   "url": "https://dogschool-bg.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tcddbc97_1.webp",
+    "/img/fac/trainer/Tcddbc97_2.webp",
+    "/img/fac/trainer/Tcddbc97_3.webp",
+    "/img/fac/trainer/Tcddbc97_4.webp",
+    "/img/fac/trainer/Tcddbc97_5.webp"
+   ],
+   "credit": "写真：ドッグスクールB&G",
+   "ratio": [
+    0.75,
+    1.5,
+    1.124,
+    1.363,
+    0.648
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk0f6aac",
+   "name": "MOMMY DOG NAKANO",
+   "url": "https://www.mommy-dogschool.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk0f6aac_1.webp",
+    "/img/fac/trainer/Tk0f6aac_2.webp",
+    "/img/fac/trainer/Tk0f6aac_3.webp",
+    "/img/fac/trainer/Tk0f6aac_4.webp",
+    "/img/fac/trainer/Tk0f6aac_5.webp"
+   ],
+   "credit": "写真：MOMMY DOG NAKANO",
+   "ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk25128e",
+   "name": "北摂ドッグスクール",
+   "url": "https://hokusetsu-dogschool.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk25128e_1.webp",
+    "/img/fac/trainer/Tk25128e_2.webp",
+    "/img/fac/trainer/Tk25128e_3.webp",
+    "/img/fac/trainer/Tk25128e_4.webp"
+   ],
+   "credit": "写真：北摂ドッグスクール",
+   "ratio": [
+    1.5,
+    1.5,
+    0.75,
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tkada76b",
+   "name": "GIFT-from dogs",
+   "url": "https://www.gift-fromdogs.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tkada76b_1.webp",
+    "/img/fac/trainer/Tkada76b_2.webp"
+   ],
+   "credit": "写真：GIFT-from dogs",
+   "ratio": [
+    1.779,
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tkcea2d4",
+   "name": "百舌鳥ドッグスクール",
+   "url": "https://kinki-dogschool.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tkcea2d4_1.webp",
+    "/img/fac/trainer/Tkcea2d4_2.webp",
+    "/img/fac/trainer/Tkcea2d4_3.webp",
+    "/img/fac/trainer/Tkcea2d4_4.webp"
+   ],
+   "credit": "写真：百舌鳥ドッグスクール",
+   "ratio": [
+    1.333,
+    1.775,
+    1.887,
+    1.899
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt02a54b8",
+   "name": "エメドッグトレーニングスクール 犬のようちえん",
+   "url": "https://aimer-dog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt02a54b8_1.webp",
+    "/img/fac/trainer/Tt02a54b8_2.webp",
+    "/img/fac/trainer/Tt02a54b8_3.webp"
+   ],
+   "credit": "写真：エメドッグトレーニングスクール 犬のようちえん",
+   "ratio": [
+    1.333,
+    0.75,
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tte5c1d37",
+   "name": "dog fun",
+   "url": "https://www.dogfun-mococo.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tte5c1d37_1.webp"
+   ],
+   "credit": "写真：dog fun",
+   "ratio": [
+    1.499
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T-ST0999",
+   "name": "NIKUKYU CLUB",
+   "url": "https://www.nikukyuclub.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T-ST0999_1.webp",
+    "/img/fac/trainer/T-ST0999_2.webp"
+   ],
+   "credit": "写真：NIKUKYU CLUB",
+   "ratio": [
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tc1426d1",
+   "name": "ＧＯＯ ＴＲＡＩＮＩＮＧ",
+   "url": "https://gootraining.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tc1426d1_1.webp",
+    "/img/fac/trainer/Tc1426d1_2.webp",
+    "/img/fac/trainer/Tc1426d1_3.webp",
+    "/img/fac/trainer/Tc1426d1_4.webp",
+    "/img/fac/trainer/Tc1426d1_5.webp"
+   ],
+   "credit": "写真：ＧＯＯ ＴＲＡＩＮＩＮＧ",
+   "ratio": [
+    1.779,
+    1.5,
+    1.5,
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tce1e80e",
+   "name": "イン ザ ドッグ",
+   "url": "https://www.inthedog.co.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tce1e80e_1.webp"
+   ],
+   "credit": "写真：イン ザ ドッグ",
+   "ratio": [
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk117a7d",
+   "name": "ワン・ユニティ",
+   "url": "https://wanunity.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk117a7d_1.webp",
+    "/img/fac/trainer/Tk117a7d_2.webp",
+    "/img/fac/trainer/Tk117a7d_3.webp"
+   ],
+   "credit": "写真：ワン・ユニティ",
+   "ratio": [
+    1.316,
+    1.316,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk5572e9",
+   "name": "DOG CLUB K-ONE",
+   "url": "https://k-one-osaka.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk5572e9_1.webp",
+    "/img/fac/trainer/Tk5572e9_2.webp",
+    "/img/fac/trainer/Tk5572e9_3.webp",
+    "/img/fac/trainer/Tk5572e9_4.webp",
+    "/img/fac/trainer/Tk5572e9_5.webp"
+   ],
+   "credit": "写真：DOG CLUB K-ONE",
+   "ratio": [
+    1.5,
+    1.5,
+    1.333,
+    1.333,
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tkb06a63",
+   "name": "ZINNIA DOG SCHOOL",
+   "url": "https://zinnia-dogschool.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tkb06a63_1.webp",
+    "/img/fac/trainer/Tkb06a63_2.webp",
+    "/img/fac/trainer/Tkb06a63_3.webp",
+    "/img/fac/trainer/Tkb06a63_4.webp",
+    "/img/fac/trainer/Tkb06a63_5.webp"
+   ],
+   "credit": "写真：ZINNIA DOG SCHOOL",
+   "ratio": [
+    1.333,
+    0.75,
+    1.333,
+    1.333,
+    0.904
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt9264fa4",
+   "name": "BEST FRIENDS",
+   "url": "http://best-f.net/profile.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt9264fa4_1.webp",
+    "/img/fac/trainer/Tt9264fa4_2.webp",
+    "/img/fac/trainer/Tt9264fa4_3.webp",
+    "/img/fac/trainer/Tt9264fa4_4.webp",
+    "/img/fac/trainer/Tt9264fa4_5.webp"
+   ],
+   "credit": "写真：BEST FRIENDS",
+   "ratio": [
+    0.75,
+    0.696,
+    0.75,
+    0.75,
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Ttab18070",
+   "name": "Cherish",
+   "url": "https://cherish-web.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Ttab18070_1.webp",
+    "/img/fac/trainer/Ttab18070_2.webp",
+    "/img/fac/trainer/Ttab18070_3.webp",
+    "/img/fac/trainer/Ttab18070_4.webp"
+   ],
+   "credit": "写真：Cherish",
+   "ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Ttde10fbf",
+   "name": "Sunny Tails",
+   "url": "https://newscast.jp/news/2888832",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Ttde10fbf_1.webp"
+   ],
+   "credit": "写真：Sunny Tails",
+   "ratio": [
+    1.335
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T224",
+   "name": "アンジュドッグ",
+   "url": "https://www.angedog.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T224_1.webp",
+    "/img/fac/trainer/T224_2.webp",
+    "/img/fac/trainer/T224_3.webp",
+    "/img/fac/trainer/T224_4.webp",
+    "/img/fac/trainer/T224_5.webp"
+   ],
+   "credit": "写真：アンジュドッグ",
+   "ratio": [
+    1.083,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tc185f73",
+   "name": "ドッグスクール Eri",
+   "url": "https://dogschool-eri.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tc185f73_1.webp",
+    "/img/fac/trainer/Tc185f73_2.webp",
+    "/img/fac/trainer/Tc185f73_3.webp",
+    "/img/fac/trainer/Tc185f73_4.webp",
+    "/img/fac/trainer/Tc185f73_5.webp"
+   ],
+   "credit": "写真：ドッグスクール Eri",
+   "ratio": [
+    0.701,
+    0.75,
+    0.687,
+    0.736,
+    1.167
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk579b2b",
+   "name": "バムドッグスクール",
+   "url": "https://bam-dogschool.com/faq/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk579b2b_1.webp"
+   ],
+   "credit": "写真：バムドッグスクール",
+   "ratio": [
+    1.667
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk7ae4e9",
+   "name": "ドッグスクールカノン",
+   "url": "http://dog-sc-canon.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk7ae4e9_1.webp",
+    "/img/fac/trainer/Tk7ae4e9_2.webp",
+    "/img/fac/trainer/Tk7ae4e9_3.webp",
+    "/img/fac/trainer/Tk7ae4e9_4.webp",
+    "/img/fac/trainer/Tk7ae4e9_5.webp"
+   ],
+   "credit": "写真：ドッグスクールカノン",
+   "ratio": [
+    1.452,
+    1.502,
+    1.333,
+    1.504,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tkeeec04",
+   "name": "ちびちびハウス",
+   "url": "https://chibichibi-house.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tkeeec04_1.webp",
+    "/img/fac/trainer/Tkeeec04_2.webp",
+    "/img/fac/trainer/Tkeeec04_3.webp",
+    "/img/fac/trainer/Tkeeec04_4.webp",
+    "/img/fac/trainer/Tkeeec04_5.webp"
+   ],
+   "credit": "写真：ちびちびハウス",
+   "ratio": [
+    1.25,
+    1.0,
+    1.0,
+    2.049,
+    2.05
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt081e4df",
+   "name": "久保木ドッグスクール",
+   "url": "https://www.kuboki-ds.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt081e4df_1.webp",
+    "/img/fac/trainer/Tt081e4df_2.webp"
+   ],
+   "credit": "写真：久保木ドッグスクール",
+   "ratio": [
+    1.008,
+    1.008
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt679a025",
+   "name": "HOT",
+   "url": "https://hot-dognursery.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt679a025_1.webp",
+    "/img/fac/trainer/Tt679a025_2.webp",
+    "/img/fac/trainer/Tt679a025_3.webp",
+    "/img/fac/trainer/Tt679a025_4.webp",
+    "/img/fac/trainer/Tt679a025_5.webp"
+   ],
+   "credit": "写真：HOT",
+   "ratio": [
+    1.0,
+    1.333,
+    1.002,
+    1.004,
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tkd8d1a2",
+   "name": "As11",
+   "url": "https://as11.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tkd8d1a2_1.webp",
+    "/img/fac/trainer/Tkd8d1a2_2.webp",
+    "/img/fac/trainer/Tkd8d1a2_3.webp"
+   ],
+   "credit": "写真：As11",
+   "ratio": [
+    1.333,
+    1.5,
+    1.503
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T-ST0103",
+   "name": "Wan Life",
+   "url": "https://wan-life.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T-ST0103_1.webp",
+    "/img/fac/trainer/T-ST0103_2.webp"
+   ],
+   "credit": "写真：Wan Life",
+   "ratio": [
+    1.342,
+    0.892
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T-ST0664",
+   "name": "コンパニオン・アニマル・サポート しっぽのかぞく",
+   "url": "https://shippo-kazoku.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T-ST0664_1.webp"
+   ],
+   "credit": "写真：コンパニオン・アニマル・サポート しっぽのかぞく",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T-ST1305",
+   "name": "ドッグトレーニングパルコ",
+   "url": "https://www.dog-parko.com/staff.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T-ST1305_1.webp",
+    "/img/fac/trainer/T-ST1305_2.webp",
+    "/img/fac/trainer/T-ST1305_3.webp",
+    "/img/fac/trainer/T-ST1305_4.webp",
+    "/img/fac/trainer/T-ST1305_5.webp"
+   ],
+   "credit": "写真：ドッグトレーニングパルコ",
+   "ratio": [
+    1.5,
+    1.5,
+    1.333,
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T188",
+   "name": "ドッグトレーニングスクール ワンラブ（WAN LOVE）",
+   "url": "https://wanlovego.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T188_1.webp",
+    "/img/fac/trainer/T188_2.webp"
+   ],
+   "credit": "写真：ドッグトレーニングスクール ワンラブ（WAN LOVE）",
+   "ratio": [
+    1.503,
+    1.327
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tc23161a",
+   "name": "スマイリードッグ",
+   "url": "https://smileydog.nagoya/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tc23161a_1.webp"
+   ],
+   "credit": "写真：スマイリードッグ",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk15fee3",
+   "name": "帝塚山ショードッグ&しつけスクール",
+   "url": "https://kinjiitoidog.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk15fee3_1.webp",
+    "/img/fac/trainer/Tk15fee3_2.webp",
+    "/img/fac/trainer/Tk15fee3_3.webp"
+   ],
+   "credit": "写真：帝塚山ショードッグ&しつけスクール",
+   "ratio": [
+    1.24,
+    0.966,
+    1.074
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tkdeee67",
+   "name": "Wan Animo",
+   "url": "https://wananimo.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tkdeee67_1.webp",
+    "/img/fac/trainer/Tkdeee67_2.webp",
+    "/img/fac/trainer/Tkdeee67_3.webp",
+    "/img/fac/trainer/Tkdeee67_4.webp",
+    "/img/fac/trainer/Tkdeee67_5.webp"
+   ],
+   "credit": "写真：Wan Animo",
+   "ratio": [
+    0.75,
+    0.75,
+    0.979,
+    1.333,
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt0e03a48",
+   "name": "ペットシッター マックス&ショコラ",
+   "url": "https://www.maxandchocolat.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt0e03a48_1.webp"
+   ],
+   "credit": "写真：ペットシッター マックス&ショコラ",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt686d3df",
+   "name": "リトル・チカ",
+   "url": "https://little-chica.love-animal.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt686d3df_1.webp",
+    "/img/fac/trainer/Tt686d3df_2.webp",
+    "/img/fac/trainer/Tt686d3df_3.webp"
+   ],
+   "credit": "写真：リトル・チカ",
+   "ratio": [
+    0.918,
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Ttf063adf",
+   "name": "杉浦愛犬警察犬訓練所",
+   "url": "http://web.thn.jp/sugiura/sugiura/map.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Ttf063adf_1.webp"
+   ],
+   "credit": "写真：杉浦愛犬警察犬訓練所",
+   "ratio": [
+    1.779
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tcb31b0d",
+   "name": "ドッグスクール てって",
+   "url": "https://dogschooltette.com/%E6%96%99%E9%87%91%E8%A1%A8/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tcb31b0d_1.webp",
+    "/img/fac/trainer/Tcb31b0d_2.webp",
+    "/img/fac/trainer/Tcb31b0d_3.webp"
+   ],
+   "credit": "写真：ドッグスクール てって",
+   "ratio": [
+    2.419,
+    1.0,
+    1.003
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T-ST0160",
+   "name": "プレシアン",
+   "url": "https://precichien.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T-ST0160_1.webp",
+    "/img/fac/trainer/T-ST0160_2.webp",
+    "/img/fac/trainer/T-ST0160_3.webp",
+    "/img/fac/trainer/T-ST0160_4.webp"
+   ],
+   "credit": "写真：プレシアン",
+   "ratio": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T-ST0666",
+   "name": "ドッグパートナースクール HERO",
+   "url": "https://www.dog-hero.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T-ST0666_1.webp",
+    "/img/fac/trainer/T-ST0666_2.webp",
+    "/img/fac/trainer/T-ST0666_3.webp"
+   ],
+   "credit": "写真：ドッグパートナースクール HERO",
+   "ratio": [
+    2.961,
+    2.961,
+    2.961
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T263",
+   "name": "inucco（いぬっこ）",
+   "url": "https://inucco.tokyo/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T263_1.webp",
+    "/img/fac/trainer/T263_2.webp",
+    "/img/fac/trainer/T263_3.webp",
+    "/img/fac/trainer/T263_4.webp"
+   ],
+   "credit": "写真：inucco（いぬっこ）",
+   "ratio": [
+    1.333,
+    1.502,
+    1.502,
+    1.502
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tcb7f493",
+   "name": "わんこのナニー．",
+   "url": "https://wanwan-nanny.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tcb7f493_1.webp"
+   ],
+   "credit": "写真：わんこのナニー．",
+   "ratio": [
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk80fb6b",
+   "name": "Leialoha",
+   "url": "https://www.leialoha.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk80fb6b_1.webp",
+    "/img/fac/trainer/Tk80fb6b_2.webp"
+   ],
+   "credit": "写真：Leialoha",
+   "ratio": [
+    1.374,
+    1.374
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk963840",
+   "name": "犬のようちえん吹田教室",
+   "url": "https://canup.dog/suita/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk963840_1.webp"
+   ],
+   "credit": "写真：犬のようちえん吹田教室",
+   "ratio": [
+    0.749
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tkb914f0",
+   "name": "ぷらすわん",
+   "url": "https://www.wgpw.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tkb914f0_1.webp",
+    "/img/fac/trainer/Tkb914f0_2.webp",
+    "/img/fac/trainer/Tkb914f0_3.webp",
+    "/img/fac/trainer/Tkb914f0_4.webp"
+   ],
+   "credit": "写真：ぷらすわん",
+   "ratio": [
+    1.431,
+    1.526,
+    1.526,
+    1.526
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tke1c150",
+   "name": "よしもとドッグトレーニングスクール",
+   "url": "https://ydogts.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tke1c150_1.webp",
+    "/img/fac/trainer/Tke1c150_2.webp",
+    "/img/fac/trainer/Tke1c150_3.webp",
+    "/img/fac/trainer/Tke1c150_4.webp",
+    "/img/fac/trainer/Tke1c150_5.webp"
+   ],
+   "credit": "写真：よしもとドッグトレーニングスクール",
+   "ratio": [
+    1.333,
+    1.673,
+    1.333,
+    1.205,
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt68dfea3",
+   "name": "Dog Culture WISH",
+   "url": "https://wish.ciao.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt68dfea3_1.webp"
+   ],
+   "credit": "写真：Dog Culture WISH",
+   "ratio": [
+    0.965
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Ttcfd2ffc",
+   "name": "やまくま",
+   "url": "https://www.yamakuma-dog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Ttcfd2ffc_1.webp",
+    "/img/fac/trainer/Ttcfd2ffc_2.webp",
+    "/img/fac/trainer/Ttcfd2ffc_3.webp"
+   ],
+   "credit": "写真：やまくま",
+   "ratio": [
+    1.505,
+    1.779,
+    1.506
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Ttdf5583b",
+   "name": "dog nanny",
+   "url": "http://dog-nanny.com/profile/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Ttdf5583b_1.webp",
+    "/img/fac/trainer/Ttdf5583b_2.webp",
+    "/img/fac/trainer/Ttdf5583b_3.webp",
+    "/img/fac/trainer/Ttdf5583b_4.webp"
+   ],
+   "credit": "写真：dog nanny",
+   "ratio": [
+    1.333,
+    1.498,
+    0.668,
+    1.286
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T-ST1358",
+   "name": "わっふる",
+   "url": "https://waffle-iwatsuki.vercel.app/access",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T-ST1358_1.webp",
+    "/img/fac/trainer/T-ST1358_2.webp"
+   ],
+   "credit": "写真：わっふる",
+   "ratio": [
+    1.0,
+    0.749
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T053",
+   "name": "ドッグスクール くう",
+   "url": "https://www.dogschool-ku.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T053_1.webp"
+   ],
+   "credit": "写真：ドッグスクール くう",
+   "ratio": [
+    1.625
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T276",
+   "name": "グッドドッグ",
+   "url": "http://good-dog.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T276_1.webp",
+    "/img/fac/trainer/T276_2.webp",
+    "/img/fac/trainer/T276_3.webp"
+   ],
+   "credit": "写真：グッドドッグ",
+   "ratio": [
+    1.333,
+    1.342,
+    1.342
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tcb87380",
+   "name": "ドッグスクール ｍｅｌｕｍｏ",
+   "url": "https://dogschoolmelumo.crayonsite.info/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tcb87380_1.webp",
+    "/img/fac/trainer/Tcb87380_2.webp",
+    "/img/fac/trainer/Tcb87380_3.webp",
+    "/img/fac/trainer/Tcb87380_4.webp",
+    "/img/fac/trainer/Tcb87380_5.webp"
+   ],
+   "credit": "写真：ドッグスクール ｍｅｌｕｍｏ",
+   "ratio": [
+    1.504,
+    1.505,
+    1.336,
+    0.994,
+    0.879
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk59506f",
+   "name": "南大阪どうぶつ行動診療",
+   "url": "https://www.so-abc.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk59506f_1.webp"
+   ],
+   "credit": "写真：南大阪どうぶつ行動診療",
+   "ratio": [
+    1.501
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tk981e5d",
+   "name": "プルミエール迎賓館",
+   "url": "https://premiere-geihinkan.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tk981e5d_1.webp",
+    "/img/fac/trainer/Tk981e5d_2.webp",
+    "/img/fac/trainer/Tk981e5d_3.webp",
+    "/img/fac/trainer/Tk981e5d_4.webp",
+    "/img/fac/trainer/Tk981e5d_5.webp"
+   ],
+   "credit": "写真：プルミエール迎賓館",
+   "ratio": [
+    0.748,
+    0.75,
+    0.748,
+    0.75,
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tkff087c",
+   "name": "わン! STEP",
+   "url": "https://wanstep.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tkff087c_1.webp",
+    "/img/fac/trainer/Tkff087c_2.webp",
+    "/img/fac/trainer/Tkff087c_3.webp",
+    "/img/fac/trainer/Tkff087c_4.webp"
+   ],
+   "credit": "写真：わン! STEP",
+   "ratio": [
+    1.333,
+    1.332,
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSkfb4cb2",
+   "name": "いくら犬猫クリニック",
+   "url": "https://www.ikura-vet.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSkfb4cb2_1.webp",
+    "/img/fac/trimming/GSkfb4cb2_2.webp"
+   ],
+   "credit": "写真：いくら犬猫クリニック",
+   "ratio": [
+    2.064,
+    2.064
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSkf768ae",
+   "name": "ペットサロン わんぴーす",
+   "url": "https://salon-wanpiece.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSkf768ae_1.webp",
+    "/img/fac/trimming/GSkf768ae_2.webp",
+    "/img/fac/trimming/GSkf768ae_3.webp",
+    "/img/fac/trimming/GSkf768ae_4.webp"
+   ],
+   "credit": "写真：ペットサロン わんぴーす",
+   "ratio": [
+    1.52,
+    1.499,
+    1.456,
+    1.111
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G076",
+   "name": "ドッグサロンあかり",
+   "url": "https://dogsalon-akari.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G076_1.webp",
+    "/img/fac/trimming/G076_2.webp",
+    "/img/fac/trimming/G076_3.webp"
+   ],
+   "credit": "写真：ドッグサロンあかり",
+   "ratio": [
+    1.5,
+    1.5,
+    1.5
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G074",
+   "name": "出張トリミングSu-zu",
+   "url": "https://trimmingsu-zu.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G074_1.webp",
+    "/img/fac/trimming/G074_2.webp"
+   ],
+   "credit": "写真：出張トリミングSu-zu",
+   "ratio": [
+    1.345,
+    1.345
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G121",
+   "name": "ラブドックス",
+   "url": "http://www.lovedogs2008.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G121_1.webp",
+    "/img/fac/trimming/G121_2.webp"
+   ],
+   "credit": "写真：ラブドックス",
+   "ratio": [
+    1.503,
+    1.503
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G073",
+   "name": "トリミングカー愛犬",
+   "url": "https://trimmingcar-aiken.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G073_1.webp",
+    "/img/fac/trimming/G073_2.webp",
+    "/img/fac/trimming/G073_3.webp"
+   ],
+   "credit": "写真：トリミングカー愛犬",
+   "ratio": [
+    1.601,
+    0.779,
+    1.495
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G085",
+   "name": "ドッグサロン puppy（パピー）",
+   "url": "https://dogsalon-puppy.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G085_1.webp",
+    "/img/fac/trimming/G085_2.webp",
+    "/img/fac/trimming/G085_3.webp"
+   ],
+   "credit": "写真：ドッグサロン puppy（パピー）",
+   "ratio": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G119",
+   "name": "ワン・ルベル",
+   "url": "https://wanlebel.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G119_1.webp",
+    "/img/fac/trimming/G119_2.webp",
+    "/img/fac/trimming/G119_3.webp",
+    "/img/fac/trimming/G119_4.webp"
+   ],
+   "credit": "写真：ワン・ルベル",
+   "ratio": [
+    1.5,
+    0.666,
+    0.601,
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G-ST1635",
+   "name": "ドッグサロン Lien",
+   "url": "https://www.dogsalon-lien.jp/trimming.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G-ST1635_1.webp"
+   ],
+   "credit": "写真：ドッグサロン Lien",
+   "ratio": [
+    1.408
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G-HT067",
+   "name": "犬の床屋さん Lira",
+   "url": "https://trimminghouse-lira.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G-HT067_1.webp",
+    "/img/fac/trimming/G-HT067_2.webp"
+   ],
+   "credit": "写真：犬の床屋さん Lira",
+   "ratio": [
+    0.75,
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSkc0ca8a",
+   "name": "ドッグサロン cutie",
+   "url": "https://cutie-web.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSkc0ca8a_1.webp",
+    "/img/fac/trimming/GSkc0ca8a_2.webp",
+    "/img/fac/trimming/GSkc0ca8a_3.webp"
+   ],
+   "credit": "写真：ドッグサロン cutie",
+   "ratio": [
+    2.0,
+    2.0,
+    2.0
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "Gnk052",
+   "name": "トリミング&ペットサロン cura",
+   "url": "https://www.trimmingsalon-cura.co.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/Gnk052_1.webp"
+   ],
+   "credit": "写真：トリミング&ペットサロン cura",
+   "ratio": [
+    1.919
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSk71e1e1",
+   "name": "ONE WAN",
+   "url": "https://www.dogsalon-onewan.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSk71e1e1_1.webp",
+    "/img/fac/trimming/GSk71e1e1_2.webp"
+   ],
+   "credit": "写真：ONE WAN",
+   "ratio": [
+    2.113,
+    3.0
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSk964358",
+   "name": "洗ワンか",
+   "url": "https://www.agara.co.jp/article/151150",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSk964358_1.webp"
+   ],
+   "credit": "写真：洗ワンか",
+   "ratio": [
+    1.338
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSc3c0046",
+   "name": "BUBBLES",
+   "url": "https://petsalon-bubbles.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSc3c0046_1.webp"
+   ],
+   "credit": "写真：BUBBLES",
+   "ratio": [
+    0.928
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G102",
+   "name": "出張トリミング Hug.Lien",
+   "url": "https://hug-lien70.shopinfo.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G102_1.webp"
+   ],
+   "credit": "写真：出張トリミング Hug.Lien",
+   "ratio": [
+    1.391
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G075",
+   "name": "ペットのお世話専門 Ciel（シエル）",
+   "url": "http://pet-ciel.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G075_1.webp"
+   ],
+   "credit": "写真：ペットのお世話専門 Ciel（シエル）",
+   "ratio": [
+    1.768
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSk6b7911",
+   "name": "halo",
+   "url": "https://halo-trim.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSk6b7911_1.webp"
+   ],
+   "credit": "写真：halo",
+   "ratio": [
+    1.779
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "Gt266f2b8",
+   "name": "Fairy Paws(フェアリー パウス)",
+   "url": "https://fairy-paws.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/Gt266f2b8_1.webp",
+    "/img/fac/trimming/Gt266f2b8_2.webp"
+   ],
+   "credit": "写真：Fairy Paws(フェアリー パウス)",
+   "ratio": [
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G-HT195",
+   "name": "ドッグサロン JACK DOR",
+   "url": "https://www.dogsalon-jackdor.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G-HT195_1.webp",
+    "/img/fac/trimming/G-HT195_2.webp",
+    "/img/fac/trimming/G-HT195_3.webp",
+    "/img/fac/trimming/G-HT195_4.webp"
+   ],
+   "credit": "写真：ドッグサロン JACK DOR",
+   "ratio": [
+    1.779,
+    1.779,
+    1.775,
+    1.779
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSk8d5f6c",
+   "name": "ペットサロンまーれん",
+   "url": "https://www.petsalon-marlen.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSk8d5f6c_1.webp",
+    "/img/fac/trimming/GSk8d5f6c_2.webp"
+   ],
+   "credit": "写真：ペットサロンまーれん",
+   "ratio": [
+    1.5,
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G077",
+   "name": "Dog Salon Treat",
+   "url": "https://www.dogsalontreat.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G077_1.webp",
+    "/img/fac/trimming/G077_2.webp",
+    "/img/fac/trimming/G077_3.webp"
+   ],
+   "credit": "写真：Dog Salon Treat",
+   "ratio": [
+    1.331,
+    1.055,
+    1.0
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "Gt0eee485",
+   "name": "Happy Bath Pep",
+   "url": "https://www.happy-bath.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/Gt0eee485_1.webp"
+   ],
+   "credit": "写真：Happy Bath Pep",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSkddddc2",
+   "name": "petit H(プチアッシュ)",
+   "url": "https://www.petit-h.info/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSkddddc2_1.webp"
+   ],
+   "credit": "写真：petit H(プチアッシュ)",
+   "ratio": [
+    1.172
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSkd14853",
+   "name": "Lil.dog",
+   "url": "https://lildog.my.canva.site/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSkd14853_1.webp",
+    "/img/fac/trimming/GSkd14853_2.webp",
+    "/img/fac/trimming/GSkd14853_3.webp"
+   ],
+   "credit": "写真：Lil.dog",
+   "ratio": [
+    1.5,
+    1.779,
+    0.75
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSka21cb6",
+   "name": "DOG SILVA",
+   "url": "https://www.dog-silva.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSka21cb6_1.webp",
+    "/img/fac/trimming/GSka21cb6_2.webp",
+    "/img/fac/trimming/GSka21cb6_3.webp",
+    "/img/fac/trimming/GSka21cb6_4.webp",
+    "/img/fac/trimming/GSka21cb6_5.webp"
+   ],
+   "credit": "写真：DOG SILVA",
+   "ratio": [
+    1.333,
+    0.75,
+    0.75,
+    0.75,
+    1.409
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G086",
+   "name": "petsitter Luna",
+   "url": "https://www.loveluna-pet.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G086_1.webp"
+   ],
+   "credit": "写真：petsitter Luna",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GScb88d54",
+   "name": "Dog care salon inucocoro＋",
+   "url": "https://heart-dog-group.com/inucocoro/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GScb88d54_1.webp"
+   ],
+   "credit": "写真：Dog care salon inucocoro＋",
+   "ratio": [
+    1.907
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GScd14e7f",
+   "name": "キャットサロン・ユキ",
+   "url": "https://catsalonyuki.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GScd14e7f_1.webp"
+   ],
+   "credit": "写真：キャットサロン・ユキ",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSc7b508c",
+   "name": "Dog care salon ROCO ROCO",
+   "url": "https://rocoroco.crayonsite.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSc7b508c_1.webp"
+   ],
+   "credit": "写真：Dog care salon ROCO ROCO",
+   "ratio": [
+    0.936
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSkad6e0a",
+   "name": "DOG SALON オリーヴ",
+   "url": "http://olive-ds.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSkad6e0a_1.webp"
+   ],
+   "credit": "写真：DOG SALON オリーヴ",
+   "ratio": [
+    1.012
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSkca79c6",
+   "name": "NACHIRU",
+   "url": "https://www.nachiru.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSkca79c6_1.webp"
+   ],
+   "credit": "写真：NACHIRU",
+   "ratio": [
+    1.501
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSk6275f5",
+   "name": "WanRoom",
+   "url": "https://wanroom1125.wixsite.com/wanroom",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSk6275f5_1.webp"
+   ],
+   "credit": "写真：WanRoom",
+   "ratio": [
+    1.475
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSk8cc4da",
+   "name": "Pet salon Ichumichu",
+   "url": "https://ichumichu.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSk8cc4da_1.webp",
+    "/img/fac/trimming/GSk8cc4da_2.webp"
+   ],
+   "credit": "写真：Pet salon Ichumichu",
+   "ratio": [
+    1.779,
+    1.243
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "Gc9b0670",
+   "name": "自宅訪問型トリミングnanea",
+   "url": "https://7l4s0.crayonsite.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/Gc9b0670_1.webp"
+   ],
+   "credit": "写真：自宅訪問型トリミングnanea",
+   "ratio": [
+    0.84
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G113",
+   "name": "ペットライフサポーター パルファン",
+   "url": "https://www.plsparfum.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G113_1.webp",
+    "/img/fac/trimming/G113_2.webp"
+   ],
+   "credit": "写真：ペットライフサポーター パルファン",
+   "ratio": [
+    1.795,
+    1.795
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSc4d2b69",
+   "name": "トリミングサロン REO",
+   "url": "https://sea-reo.crayonsite.info/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSc4d2b69_1.webp"
+   ],
+   "credit": "写真：トリミングサロン REO",
+   "ratio": [
+    0.749
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G043",
+   "name": "わんpad",
+   "url": "https://www.wanpad.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G043_1.webp",
+    "/img/fac/trimming/G043_2.webp"
+   ],
+   "credit": "写真：わんpad",
+   "ratio": [
+    2.4,
+    2.4
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G078",
+   "name": "DOG GROOMING wish",
+   "url": "https://www.dog-grooming-wish.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G078_1.webp",
+    "/img/fac/trimming/G078_2.webp",
+    "/img/fac/trimming/G078_3.webp"
+   ],
+   "credit": "写真：DOG GROOMING wish",
+   "ratio": [
+    1.919,
+    1.0,
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSc88e346",
+   "name": "Dog space R",
+   "url": "https://dog-space-r.storeinfo.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSc88e346_1.webp"
+   ],
+   "credit": "写真：Dog space R",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSk11f552",
+   "name": "わんちゃんの美容室シャンプー",
+   "url": "https://www.shampoo-111.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSk11f552_1.webp",
+    "/img/fac/trimming/GSk11f552_2.webp"
+   ],
+   "credit": "写真：わんちゃんの美容室シャンプー",
+   "ratio": [
+    1.865,
+    1.862
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSkcb7b0d",
+   "name": "DogSalon369",
+   "url": "https://dogsalon369.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSkcb7b0d_1.webp",
+    "/img/fac/trimming/GSkcb7b0d_2.webp"
+   ],
+   "credit": "写真：DogSalon369",
+   "ratio": [
+    1.779,
+    1.0
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSc6a6be5",
+   "name": "トリミングサロン bubble",
+   "url": "https://trimmingsalon-bubble.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSc6a6be5_1.webp",
+    "/img/fac/trimming/GSc6a6be5_2.webp",
+    "/img/fac/trimming/GSc6a6be5_3.webp"
+   ],
+   "credit": "写真：トリミングサロン bubble",
+   "ratio": [
+    1.2,
+    1.0,
+    1.601
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GScde74a9",
+   "name": "ペットサロン Merry blossom",
+   "url": "https://merry-blossom.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GScde74a9_1.webp"
+   ],
+   "credit": "写真：ペットサロン Merry blossom",
+   "ratio": [
+    1.657
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "GSk8f7055",
+   "name": "ドッグサロンそら",
+   "url": "https://sora.nara.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/GSk8f7055_1.webp"
+   ],
+   "credit": "写真：ドッグサロンそら",
+   "ratio": [
+    1.503
+   ]
+  },
+  {
+   "cat": "trimming",
+   "id": "G049",
+   "name": "Trimming Car PETRO（出張トリミング ペトロ）",
+   "url": "https://petro.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trimming/G049_1.webp",
+    "/img/fac/trimming/G049_2.webp"
+   ],
+   "credit": "写真：Trimming Car PETRO（出張トリミング ペトロ）",
+   "ratio": [
+    0.769,
+    1.483
    ]
   }
  ]

@@ -351,9 +351,9 @@ def write_js(ROOT, avail, pslug, counts=None):
                 .replace("__NEAR__", json.dumps(near_prefs(), ensure_ascii=False, separators=(",", ":")))
                 .replace("__PICS__", json.dumps(_pics(ROOT), separators=(",", ":")))
                 .replace("__REG__", json.dumps([[g, [[pf, (counts or {}).get(pf, 0)] for pf in ps if (counts or {}).get(pf)]] for g, ps in REGIONS], ensure_ascii=False, separators=(",", ":"))))
-    # 行だけのコメントと行頭の空白を落として軽くする（/hosp.js は 24KB まで）
-    body = "\n".join(l.strip() for l in body.split("\n") if l.strip() and not l.strip().startswith("//"))
-    lite = lambda t: "\n".join(l.strip() for l in t.split("\n") if l.strip())  # 共通部分（prefkeep）も行頭の空白と空行を落とす（hosp.js は 24KB まで。構文は同じ）
-    js = "// 生成ファイル（tools/hosp_find.py）。手で直さない\n(function(){" + lite(prefkeep.FN + prefkeep.GUESS) + "\n" + body + "\n})();\n"
+    # 本体・共通部分ともに行だけのコメント・空白を落とす（/hosp.js は 24KB まで）。
+    def lite(src):
+        return "\n".join(line.strip() for line in src.split("\n") if line.strip() and not line.strip().startswith("//"))
+    js = "// generated: tools/hosp_find.py\n(function(){" + lite(prefkeep.FN + prefkeep.GUESS) + "\n" + lite(body) + "\n})();\n"
     open(os.path.join(ROOT, "hosp.js"), "w", encoding="utf-8").write(js)
     return len(js.encode())

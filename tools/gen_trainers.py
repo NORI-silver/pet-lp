@@ -3,6 +3,7 @@
 # 守ること：教室からお金をもらわない。順位・おすすめをつけない。料金を書かない。電話番号を載せない。
 # 公式サイトの情報だけ書く（提供内容・対応エリア・資格・登録番号・所在地）。協会の会員一覧に載っていること（assoc）は一覧の名前つきで書く。
 # データ：tools/trainers.json。口コミの星は動物病院のページと同じしくみ（/reviews.js → booking/Code.gs の EMG_REVIEWS）。
+from facility_review_links import link as review_link
 import json, os
 import prefkeep
 import facility_cards as FC
@@ -12,7 +13,7 @@ J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "tra
 SLUG = "dog-trainer"
 H1 = "全国のドッグトレーナー・犬のしつけ教室"
 TITLE = "全国のドッグトレーナー・犬のしつけ教室｜出張しつけ・犬の幼稚園・預かりトレーニングを都道府県でさがせる一覧｜ペットタクシー予約窓口"
-DESC = "吠える・かむ・トイレ・散歩の引っぱりなど、犬のしつけを相談できるドッグトレーナーと犬のしつけ教室を、都道府県ごとにまとめた無料の一覧です。公式サイトに書いてある提供内容（出張しつけ・教室・犬の幼稚園・預かりトレーニング・オンライン）・対応エリア・資格と、口コミの星を載せています。料金や順位は載せていません。"
+DESC = "吠える・かむ・トイレ・散歩の困りごとから、全国のドッグトレーナーやしつけ教室を探せます。出張・幼稚園・預かり・オンラインなどの提供内容、対応地域、資格、口コミを掲載。料金や順位は載せていません。"
 ASSOC = {"JAPDT": "日本ペットドッグトレーナーズ協会の会員ドッグトレーナー一覧", "JAHA": "日本動物病院協会のしつけ教室・インストラクター一覧"}
 
 BEFORE = [
@@ -63,9 +64,10 @@ def _card(e, t):
     if t.get("addr") and set(tags) & {"教室・グループ", "幼稚園・保育園", "預かり訓練"}:
         pf = t["prefs"][0]
         to = t.get("venue_addr") or (t["addr"] if t["addr"].startswith(pf) else pf + t["addr"])
+    rv = review_link("trainer", t)
     return (f'<div class="emg-item emg-co"{FC.attrs(e, "trainer", t, tags, t["name"], to, "教室")}><a href="{e(t["url"])}" target="_blank" rel="noopener"><b>{e(t["name"])}</b></a>'
             f'<small>{e(t["city"])}</small>{extra}'
-            + (f'<div class="emg-score" data-id="{e(t["id"])}"></div>' if t.get("review_query") else "") + "</div>")
+            + (rv or (f'<div class="emg-score" data-id="{e(t["id"])}"></div>' if t.get("review_query") else "")) + "</div>")
 
 def render(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
@@ -110,14 +112,14 @@ def render(ctx):
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="emg">
-      <p class="emg-free">この一覧は無料の情報です。教室からお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金は載せていないので、それぞれの教室に直接おたずねください。</p>
+      <p class="emg-free">掲載料はいただいていません。都道府県別の一覧で、順位はつけていません。料金は教室にご確認ください。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       {FC.chips(e, FC.TRAINER_CHIPS)}
       {body}
       {points_html()}
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
       {FC.biz(e, "ドッグトレーナー・しつけ教室")}
-      <p class="emg-note">当サイトとは別の事業者です（{e(J["checked"])}時点の情報）。提供内容や対応エリアは変わることがあるので、頼む前に必ずリンク先でご確認ください。口コミの星と本文は地図サービスから取り寄せたもので、当サイトの評価ではありません。掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+      <p class="emg-note">当サイトとは別の事業者です。提供内容や対応地域は依頼前にご確認ください。口コミは地図サービスの情報で、当サイトの評価ではありません。掲載の訂正・取り下げは<a href="/contact/">お問い合わせ</a>へ。</p>
     </div>
   </div>
 </section>
@@ -160,11 +162,28 @@ def _facts(rs):
 _JI = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "jichitai.json"), encoding="utf-8"))
 def _public(pf):
     return [x for x in _JI["prefs"] if x["pref"] == pf] + [x for x in _JI["cities"] if x["pref"] == pf]
+# 愛知は実際の自治体教室の参加条件と、預かり訓練の料金単位を比較する。
+_AICHI_CLASS_CHOICES = (
+    '<div class="emg-tips">'
+    '<h3>愛知で犬のしつけを学ぶ：自治体の無料教室と有料の預かり訓練</h3>'
+    '<p>飼い主が教え方を学びたいなら自治体の教室、愛犬を預けて個別に練習してもらいたいなら日中預かりや合宿型の訓練が候補です。無料相談は無料レッスンとは異なります。</p>'
+    '<dl>'
+    '<dt>吠え・引っ張りの対処を学ぶ：名古屋市の無料教室</dt>'
+    '<dd>名古屋市動物愛護センターの講座では、トレーナーによる実演が見られます。事前申込制で、犬を同伴できる組数は限られます。<a href="https://www.city.nagoya.jp/kurashi/pet/1015473/1015495/1035065/1017801.html">名古屋市の開催・申込案内</a></dd>'
+    '<dt>愛犬と実技を練習する：豊田市の無料教室</dt>'
+    '<dd>初日は飼い主だけの講義、2日目は愛犬と実技。両日参加と、豊田市での犬の登録・予防接種などが条件です。<a href="https://www.city.toyota.aichi.jp/sumaikankyo/pet/pet/1073805/1078837/1075881.html">豊田市の参加条件・日程</a></dd>'
+    '<dt>預けて練習する：日中の定期コースと1か月の訓練の料金例</dt>'
+    '<dd><a href="https://kitanagoya-ds.com/">きたなごやドッグスクール</a>の日中預かりは週1回（月4回）25,000円。<a href="https://www.inunogakuen.com/">愛知県の犬のしつけ学園</a>の預かり訓練は1か月69,500円（税込）で、相談・カウンセリングは無料です。料金例は2026年11月25日時点。</dd>'
+    '</dl>'
+    '<p>預かりを選ぶ前に、日帰りか宿泊か、家に帰ってから飼い主が練習を続ける方法も教えてもらえるかを確認しておくと比べやすくなります。</p></div>'
+)
+
 def _free_class(e, pf):
     ws = _public(pf)
     if not ws: return ""
     li = "".join(f'<li><a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["name"])} ↗</a>' + (f'（{e(x["city"])}）' if x.get("city") else "") + "</li>" for x in ws)
-    return (f'<div class="emg-tips"><h4>{e(pf)}の無料の「犬のしつけ方教室」は、県や市の窓口へ</h4>'
+    local = _AICHI_CLASS_CHOICES if pf == "愛知県" else ""
+    return local + (f'<div class="emg-tips"><h4>{e(pf)}の無料の「犬のしつけ方教室」は、県や市の窓口へ</h4>'
             f'<p>県や市の動物愛護センター・保健所が、無料の「犬のしつけ方教室」や吠え・かみつきの相談を開いていることがあります。'
             f'日程や参加の条件（狂犬病の予防注射・混合ワクチンなど）は年ごとに変わるので、下の公式ページでたしかめてください。</p><ul>{li}</ul></div>')
 def _fee(pf, rs):

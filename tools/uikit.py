@@ -149,7 +149,10 @@ def write_js(ROOT):
     slug = {x[1]: x[0] for x in PREFS}
     slug.update({"東京都": "tokyo", "神奈川県": "kanagawa", "埼玉県": "saitama", "千葉県": "chiba"})  # 4都県は prefs.PREFS の外（gen_dogrun.py の PSLUG と同じ足し方）
     js = open(os.path.join(HERE, "find.js"), encoding="utf-8").read().replace("__SLUG__", _j.dumps(slug, ensure_ascii=False))
-    out = "// 生成：tools/uikit.py（元は tools/find.js と tools/prefkeep.py）\n" + prefkeep.FN + prefkeep.GUESS + "\n" + js
+    # 配信用はコメント行と行頭の空白だけを除き、改行と検索の処理は保つ（24KB 上限）。
+    src = prefkeep.FN + prefkeep.GUESS + "\n" + js
+    out = "// 生成：tools/uikit.py（元は tools/find.js と tools/prefkeep.py）\n"
+    out += "\n".join(line.strip() for line in src.split("\n") if line.strip() and not line.strip().startswith("//")) + "\n"
     open(os.path.join(ROOT, "find.js"), "w", encoding="utf-8").write(out)
     return len(out.encode())
 
@@ -367,7 +370,7 @@ def _keys(t, cat, url=""):
     import json as _j, ownerfit
     k, no = [], []
     raw = {x.strip() for x in (_ATTR(t, "data-tags") + "|" + _ATTR(t, "data-ft")).split("|") if x.strip()}
-    try: f = _j.loads(_ATTR(t, "data-fit") or "{}")
+    try: f = _j.loads((_h.unescape(_m.group(1)) if (_m := re.search(r"\bdata-fit='([^']*)'", t)) else _ATTR(t, "data-fit")) or "{}")
     except Exception: f = {}
     a = f.get("a") or []
     for key, syn in ANIMAL_SYN.items():
