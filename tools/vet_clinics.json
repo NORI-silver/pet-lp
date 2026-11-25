@@ -1962,6 +1962,40 @@
    "tel_src": "https://www.shizujyu.com/pages/21/"
   },
   {
+   "id": "G17041",
+   "name": "みどりが丘動物病院",
+   "pref": "石川県",
+   "city": "金沢市",
+   "addr": "石川県金沢市長坂3-9-1",
+   "hours": "",
+   "closed": "",
+   "animals": "",
+   "services": "",
+   "pay": "",
+   "url": "",
+   "src": "https://www.ishikawa-vma.org/hospital/",
+   "checked": "2026-11-22",
+   "tel": "076-280-6366",
+   "tel_src": "https://www.ishikawa-vma.org/hospital/"
+  },
+  {
+   "id": "G40009",
+   "name": "みどりが丘動物病院",
+   "pref": "福岡県",
+   "city": "福岡市",
+   "addr": "福岡県福岡市東区 名子3丁目7-20",
+   "hours": "",
+   "closed": "",
+   "animals": "",
+   "services": "",
+   "pay": "",
+   "url": "",
+   "src": "https://e-fukujyu.com/animalhospitals/",
+   "checked": "2026-11-22",
+   "tel": "092-663-2225",
+   "tel_src": "https://e-fukujyu.com/animalhospitals/"
+  },
+  {
    "id": "G13214",
    "name": "アリーズ動物病院",
    "pref": "東京都",
@@ -24201,23 +24235,6 @@
    "tel_src": "https://www.ishikawa-vma.org/hospital/"
   },
   {
-   "id": "G17041",
-   "name": "みどりが丘動物病院",
-   "pref": "石川県",
-   "city": "金沢市",
-   "addr": "石川県金沢市長坂3-9-1",
-   "hours": "",
-   "closed": "",
-   "animals": "",
-   "services": "",
-   "pay": "",
-   "url": "",
-   "src": "https://www.ishikawa-vma.org/hospital/",
-   "checked": "2026-11-22",
-   "tel": "076-280-6366",
-   "tel_src": "https://www.ishikawa-vma.org/hospital/"
-  },
-  {
    "id": "G17042",
    "name": "みやの動物病院",
    "pref": "石川県",
@@ -35501,23 +35518,6 @@
    "src": "https://e-fukujyu.com/animalhospitals/",
    "checked": "2026-11-22",
    "tel": "092-662-1624",
-   "tel_src": "https://e-fukujyu.com/animalhospitals/"
-  },
-  {
-   "id": "G40009",
-   "name": "みどりが丘動物病院",
-   "pref": "福岡県",
-   "city": "福岡市",
-   "addr": "福岡県福岡市東区 名子3丁目7-20",
-   "hours": "",
-   "closed": "",
-   "animals": "",
-   "services": "",
-   "pay": "",
-   "url": "",
-   "src": "https://e-fukujyu.com/animalhospitals/",
-   "checked": "2026-11-22",
-   "tel": "092-663-2225",
    "tel_src": "https://e-fukujyu.com/animalhospitals/"
   },
   {
