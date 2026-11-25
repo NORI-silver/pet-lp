@@ -10,6 +10,9 @@ _PLACES = {
     ("emergency", "E15"): ("ペットタクシーZERO", "ChIJ3fhbnrBxAWARfATSlLlORiE"),  # https://zero808.co.jp/pettaxi/ 公式と所在地・電話が一致
     ("rojin", "R048"): ("まるねこ", "ChIJHXNDl1lhGGAROzTX8FtPFKk"),  # https://maruneco.jp/cathotel/ 羽田3-16-10 白山荘104（施設全体）
     ("rojin", "R105"): ("ペットケアサロンえがお", "ChIJ81wI9zmHImARhtAOqSSG7xo"),  # https://pet-care-egao.com/about 佐倉市井野1327-2と電話が一致（施設全体）
+    ("dogrun", "D143"): ("WANCOTT", "ChIJVVUVd-RcGGAR376zrJ0zJSs"),  # https://www.wancott.com/access/ 山下町168-1・電話一致（施設全体）
+    ("dogrun", "D187"): ("ワクワクドッグランド神戸六甲（ドッグラン＆ドッグホテル）", "ChIJTVTQiK-JAGARI2DufzCQoYI"),  # https://wakuwaku-dogland.com/indoor_dogrun.html 屋号・ドッグランの電話一致（施設全体）
+    ("dogrun", "D212"): ("DOG RUN TOKYO", "ChIJoSot0FaNGGARoXZIbEUghKw"),  # https://dogrun-tokyo.jp/access/ 千駄ケ谷3丁目50-3・アーバンノット原宿1階
     ("dogrun", "D001"): ("代々木公園ドッグラン", "ChIJN9-qU7SMGGARhCpTp43adx8"),  # https://www.yoyogidogrun.jp/home/アクセス
     ("sitter", "St4e0359d"): ("キャットシッターねこやま", "ChIJp4doO8NZGGARsPlc6CkFydk"),  # https://www.necoyama.net/ 同じ屋号、横浜市旭区本村町、電話番号
     ("trainer", "T111"): ("犬のようちえん 代官山教室", "ChIJTyI_woyLGGARR0-YqFtqYUg"),  # https://animalplaza.co.jp/class/daikanyama.html 恵比寿南3-7-7
