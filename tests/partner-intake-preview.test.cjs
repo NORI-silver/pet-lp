@@ -1,0 +1,40 @@
+'use strict';
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const vm=require('node:vm');
+const script=fs.readFileSync(path.resolve(__dirname,'../app.js'),'utf8');
+const a=script.indexOf('  function pendingPartner(card){'),b=script.indexOf('\n  function pendingFields(card){',a);
+assert.ok(a>=0&&b>a);
+const c=vm.createContext({TAXI_FAVORITE_ALIASES:{P030:'De308905'}});
+vm.runInContext(script.slice(a,b),c);
+test('提携店の参考カードだけをサイト内の条件確認にする',()=>{
+ for(const id of ['D853ae97','D7f0d2a2','P030','De308905']) assert.equal(c.pendingPartner({id,display_only:true}),true,id);
+ assert.equal(c.pendingPartner({id:'other',display_only:true,intake_pending:true}),true);
+ assert.equal(c.pendingPartner({id:'other',display_only:true}),false);
+ assert.equal(c.pendingPartner({id:'D853ae97',display_only:false}),false);
+ assert.equal(c.pendingPartner({id:'D853ae97',display_only:true,demo:true}),false);
+});
+test('参考カードのボタンは送信ではなく、フォーム上の入力欄に移動する',()=>{
+ const panel=script.slice(script.indexOf('article.classList.add("partner-later")'));
+ assert.match(panel,/if \(pendingPartner\(card\)\)[\s\S]{0,1100}goIntakeFields\(card\)[\s\S]{0,200}return article;[\s\S]{0,100}if \(card.site\)/);
+ assert.match(script,/cb\.type = "button";/);
+ assert.match(script,/function goIntakeFields\(card\)[\s\S]{0,390}jumpTo\(target\);/);
+ assert.match(script,/この会社に問い合わせる/);
+});
+test('最初の3社を維持しつつ、条件確認で進む提携先1社を折りたたまない',()=>{
+  const split=script.slice(script.indexOf('  function splitVisibleCards('),script.indexOf('  function drawCards('));
+  c.TOP_CARDS=3;
+  vm.runInContext(split,c);
+  const always=['one','two','three'].map(id=>({id}));
+  const kasukabe={id:'D853ae97',display_only:true}, kyoto={id:'D7f0d2a2',display_only:true}, other={id:'other',display_only:true};
+  let r=c.splitVisibleCards([...always,other,kasukabe,kyoto]);
+  assert.deepEqual(Array.from(r.shown,x=>x.id),['one','two','three','D853ae97']);
+  assert.deepEqual(Array.from(r.remaining,x=>x.id),['other','D7f0d2a2']);
+  r=c.splitVisibleCards([kyoto,...always,kasukabe]);
+  assert.deepEqual(Array.from(r.shown,x=>x.id),['D7f0d2a2','one','two']);
+  assert.deepEqual(Array.from(r.remaining,x=>x.id),['three','D853ae97']);
+  r=c.splitVisibleCards([...always,other]);
+  assert.equal(r.shown.length,3);assert.equal(r.remaining.length,1);
+});

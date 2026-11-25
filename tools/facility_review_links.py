@@ -23,5 +23,5 @@ def link(category, row, cls="fc-a fc-a-star", *, scope=None):
     name, place_id = hit
     url = "https://www.google.com/maps/search/?" + urlencode(
         {"api": 1, "query": name, "query_place_id": place_id})
-    label = {"company": "会社全体の口コミ（Google マップ）↗", "facility": "施設全体の口コミ（Google マップ）↗"}.get(scope, "Google マップの口コミ ↗")
+    label = {"company": "会社全体の口コミ（Google Maps）↗", "facility": "施設全体の口コミ（Google Maps）↗"}.get(scope, "Google Maps の口コミ ↗")
     return f'<a class="{escape(cls, quote=True)}" href="{escape(url, quote=True)}" target="_blank" rel="noopener noreferrer">{label}</a>'
