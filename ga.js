@@ -1,3 +1,34 @@
+// 写真が2枚以上のカードに、ドット（いま何枚目か）と左右の矢印（横にスワイプできる合図）を付ける。写真は全体のまま、切らない。
+(function(){
+  function dec(s){
+    if (s.dataset.cd || s.children.length < 2) return;
+    s.dataset.cd = 1;
+    var w = document.createElement("div"), d = document.createElement("div"), n = s.children.length, i;
+    w.className = "cs-ph-w"; s.parentNode.insertBefore(w, s); w.appendChild(s);
+    d.className = "cs-ph-d"; d.setAttribute("aria-hidden", "true");
+    for (i = 0; i < n; i++) d.appendChild(document.createElement("i"));
+    function b(c, l, t){ var e = document.createElement("button"); e.type = "button"; e.className = "cs-ph-a " + c; e.setAttribute("aria-label", l); e.textContent = t;
+      e.addEventListener("click", function(){ s.scrollBy({left: (c === "r" ? 1 : -1) * s.clientWidth, behavior: "smooth"}); }); return e; }
+    w.appendChild(b("l", "前の写真", "‹")); w.appendChild(b("r", "次の写真", "›")); w.appendChild(d);
+    function u(){ var k = Math.round(s.scrollLeft / s.clientWidth), j; for (j = 0; j < n; j++) d.children[j].className = j === k ? "on" : "";
+      w.className = "cs-ph-w" + (k <= 0 ? " f" : "") + (k >= n - 1 ? " e" : ""); }
+    s.addEventListener("scroll", u, {passive: true}); u();
+  }
+  // 全国ページの写真（data-n="5" ＝ _1〜_5 の5枚。1枚目は HTML に書いてある）。ぼかしの背景・2枚目以降・枚数の札をここで足す（ドット・矢印は下の dec が付ける）。
+  function im(u, a, b){ var e = document.createElement("img"); e.src = u; e.loading = "lazy"; e.decoding = "async"; e.alt = b ? "" : a;
+    if (b) { e.className = "b"; e.setAttribute("aria-hidden", "true"); } return e; }
+  function fill(p){
+    var n = +p.getAttribute("data-n"), s = p.querySelector(".cs-ph-s"), f = s && s.querySelector("img"), m = f && /^(.*_)1\.webp$/.exec(f.getAttribute("src")), k, i, e;
+    p.removeAttribute("data-n"); if (!m || !(n >= 1 && n <= 5)) return;
+    f.parentNode.insertBefore(im(f.getAttribute("src"), "", 1), f);
+    for (k = 2; k <= n; k++) { i = document.createElement("i"); i.className = "cs-ph-i";
+      i.appendChild(im(m[1] + k + ".webp", "", 1)); i.appendChild(im(m[1] + k + ".webp", (f.alt || "").replace(/1$/, k))); s.appendChild(i); }
+    if (n > 1) { e = document.createElement("span"); e.className = "cs-ph-n"; e.setAttribute("aria-hidden", "true"); e.textContent = "📷 " + n; s.parentNode.insertBefore(e, s.nextSibling); }
+  }
+  function all(){ [].forEach.call(document.querySelectorAll(".cs-ph[data-n]"), fill); [].forEach.call(document.querySelectorAll(".cs-ph-s"), dec); }
+  all();
+  try { new MutationObserver(all).observe(document.documentElement, {childList: true, subtree: true}); } catch (x) {}
+})();
 // アクセス解析：見られたページと、よく使われる操作の数を集計する（お名前・連絡先・場所などの入力内容は送らない）。
 // ID が空のときと、本番の pet.shiokonbu.com 以外（手元での確認など）では何もしない。
 (function(){
