@@ -1928,16 +1928,24 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   }
   // 最初は上の3社だけ。残りはボタンを押すと開く（Nori 2026-10-31「表示はトップ3社。あとは折りたたみ」）
   var TOP_CARDS = 3, restOpen = false;
+  // 最初の3社の順序は保つ。受付条件を入力すれば進める提携店を、残りの一覧だけに隠さない。
+  function splitVisibleCards(list){
+    var shown = list.slice(0, TOP_CARDS), remaining = list.slice(TOP_CARDS);
+    var idx = shown.some(pendingPartner) ? -1 : remaining.findIndex(pendingPartner);
+    if (idx >= 0) shown.push(remaining.splice(idx, 1)[0]);
+    return {shown:shown, remaining:remaining};
+  }
   function drawCards(){
     // 口コミの点数が出ている会社がないときは、口コミの並び順を出さない（見えない点数で並べ替えないため。2026-11-09 矛盾の点検）
     var hasScore = quoteCards.some(function(c){ var v = withScore(c).review; return v && v.rating > 0; });
     $("partnerSort").querySelectorAll('option[value^="review"]').forEach(function(o){ o.hidden = o.disabled = !hasScore; });
     if (!hasScore && /^review/.test($("partnerSort").value)) $("partnerSort").value = "dist_asc";
     $("partnerCards").replaceChildren(); $("partnerRest").replaceChildren();
-    var list = sortCards(quoteCards, ""), rest = list.length - TOP_CARDS, cut = quoteCards.length - list.length;
+    var list = sortCards(quoteCards, ""), groups = splitVisibleCards(list), rest = groups.remaining.length, cut = quoteCards.length - list.length;
     $("partnerDistNote").hidden = !cut;
     $("partnerDistNote").textContent = !cut ? "" : "候補" + quoteCards.length + "社のうち、お店からの車の道のりが" + $("partnerDist").value + "km以内は" + list.length + "社です" + (list.length ? "（お店の場所が分からない会社も外しています）。" : "。距離を広げてください。");
-    list.slice(0, restOpen ? list.length : TOP_CARDS).forEach(function(card, i){ $(i < TOP_CARDS ? "partnerCards" : "partnerRest").appendChild(buildCard(card, "")); });
+    groups.shown.forEach(function(card){ $("partnerCards").appendChild(buildCard(card, "")); });
+    if (restOpen) groups.remaining.forEach(function(card){ $("partnerRest").appendChild(buildCard(card, "")); });
     $("partnerRestBtn").hidden = rest <= 0;
     $("partnerRest").hidden = rest <= 0 || !restOpen;
     $("partnerRestBtn").setAttribute("aria-expanded", restOpen ? "true" : "false");

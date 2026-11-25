@@ -160,11 +160,28 @@ def _facts(rs):
 _JI = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "jichitai.json"), encoding="utf-8"))
 def _public(pf):
     return [x for x in _JI["prefs"] if x["pref"] == pf] + [x for x in _JI["cities"] if x["pref"] == pf]
+# 愛知は実際の自治体教室の参加条件と、預かり訓練の料金単位を比較する。
+_AICHI_CLASS_CHOICES = (
+    '<div class="emg-tips">'
+    '<h3>愛知で犬のしつけを学ぶ：自治体の無料教室と有料の預かり訓練</h3>'
+    '<p>飼い主が教え方を学びたいなら自治体の教室、愛犬を預けて個別に練習してもらいたいなら日中預かりや合宿型の訓練が候補です。無料相談は無料レッスンとは異なります。</p>'
+    '<dl>'
+    '<dt>吠え・引っ張りの対処を学ぶ：名古屋市の無料教室</dt>'
+    '<dd>名古屋市動物愛護センターの講座では、トレーナーによる実演が見られます。事前申込制で、犬を同伴できる組数は限られます。<a href="https://www.city.nagoya.jp/kurashi/pet/1015473/1015495/1035065/1017801.html">名古屋市の開催・申込案内</a></dd>'
+    '<dt>愛犬と実技を練習する：豊田市の無料教室</dt>'
+    '<dd>初日は飼い主だけの講義、2日目は愛犬と実技。両日参加と、豊田市での犬の登録・予防接種などが条件です。<a href="https://www.city.toyota.aichi.jp/sumaikankyo/pet/pet/1073805/1078837/1075881.html">豊田市の参加条件・日程</a></dd>'
+    '<dt>預けて練習する：日中の定期コースと1か月の訓練の料金例</dt>'
+    '<dd><a href="https://kitanagoya-ds.com/">きたなごやドッグスクール</a>の日中預かりは週1回（月4回）25,000円。<a href="https://www.inunogakuen.com/">愛知県の犬のしつけ学園</a>の預かり訓練は1か月69,500円（税込）で、相談・カウンセリングは無料です。料金例は2026年11月25日時点。</dd>'
+    '</dl>'
+    '<p>預かりを選ぶ前に、日帰りか宿泊か、家に帰ってから飼い主が練習を続ける方法も教えてもらえるかを確認しておくと比べやすくなります。</p></div>'
+)
+
 def _free_class(e, pf):
     ws = _public(pf)
     if not ws: return ""
     li = "".join(f'<li><a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["name"])} ↗</a>' + (f'（{e(x["city"])}）' if x.get("city") else "") + "</li>" for x in ws)
-    return (f'<div class="emg-tips"><h4>{e(pf)}の無料の「犬のしつけ方教室」は、県や市の窓口へ</h4>'
+    local = _AICHI_CLASS_CHOICES if pf == "愛知県" else ""
+    return local + (f'<div class="emg-tips"><h4>{e(pf)}の無料の「犬のしつけ方教室」は、県や市の窓口へ</h4>'
             f'<p>県や市の動物愛護センター・保健所が、無料の「犬のしつけ方教室」や吠え・かみつきの相談を開いていることがあります。'
             f'日程や参加の条件（狂犬病の予防注射・混合ワクチンなど）は年ごとに変わるので、下の公式ページでたしかめてください。</p><ul>{li}</ul></div>')
 def _fee(pf, rs):
