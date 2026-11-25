@@ -47950,6 +47950,822 @@
     0.75,
     1.333
    ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T020",
+   "name": "Everyday Dogs Club",
+   "url": "http://everydaydogsclub.jp",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T020_1.webp"
+   ],
+   "credit": "写真：Everyday Dogs Club",
+   "ratio": [
+    2.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T128",
+   "name": "ドッグスクール Visse",
+   "url": "https://visse.co.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T128_1.webp"
+   ],
+   "credit": "写真：ドッグスクール Visse",
+   "ratio": [
+    0.66
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt2e481bc",
+   "name": "ライブドッグホテル",
+   "url": "https://livedoghotel.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt2e481bc_1.webp"
+   ],
+   "credit": "写真：ライブドッグホテル",
+   "ratio": [
+    0.889
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt1beb724",
+   "name": "ETABON",
+   "url": "https://etabon.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt1beb724_1.webp",
+    "/img/fac/trainer/Tt1beb724_2.webp",
+    "/img/fac/trainer/Tt1beb724_3.webp",
+    "/img/fac/trainer/Tt1beb724_4.webp"
+   ],
+   "credit": "写真：ETABON",
+   "ratio": [
+    1.779,
+    1.779,
+    1.779,
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt0fe6acd",
+   "name": "soup*spoon&dog*family 幼稚園",
+   "url": "https://www.soup-spoon.com/dogfamily/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt0fe6acd_1.webp",
+    "/img/fac/trainer/Tt0fe6acd_2.webp",
+    "/img/fac/trainer/Tt0fe6acd_3.webp"
+   ],
+   "credit": "写真：soup*spoon&dog*family 幼稚園",
+   "ratio": [
+    1.333,
+    1.333,
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt69b7ad1",
+   "name": "BigBlue for Doggy",
+   "url": "https://www.bigblue.jp/dogwalker/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt69b7ad1_1.webp"
+   ],
+   "credit": "写真：BigBlue for Doggy",
+   "ratio": [
+    1.778
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt4ae4873",
+   "name": "kay dog school",
+   "url": "https://kaydogschool.mystrikingly.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt4ae4873_1.webp",
+    "/img/fac/trainer/Tt4ae4873_2.webp"
+   ],
+   "credit": "写真：kay dog school",
+   "ratio": [
+    1.331,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt0b253eb",
+   "name": "有限会社横浜安達ドッグスクール",
+   "url": "https://adachidogschool.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt0b253eb_1.webp",
+    "/img/fac/trainer/Tt0b253eb_2.webp",
+    "/img/fac/trainer/Tt0b253eb_3.webp"
+   ],
+   "credit": "写真：有限会社横浜安達ドッグスクール",
+   "ratio": [
+    1.499,
+    1.503,
+    2.424
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Ttb7ebe04",
+   "name": "Canis Minor",
+   "url": "https://www.canis-minor-koinuza.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Ttb7ebe04_1.webp"
+   ],
+   "credit": "写真：Canis Minor",
+   "ratio": [
+    1.779
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt8704e7a",
+   "name": "KOKUA DOG",
+   "url": "https://kokua-empathy.jimdofree.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt8704e7a_1.webp"
+   ],
+   "credit": "写真：KOKUA DOG",
+   "ratio": [
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt2a1659f",
+   "name": "SMILE SMILE",
+   "url": "https://www.smilesmile.org/http/goo-gl/ijokrh/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt2a1659f_1.webp"
+   ],
+   "credit": "写真：SMILE SMILE",
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC004",
+   "name": "Cane Felice",
+   "url": "https://cane-dog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC004_1.webp",
+    "/img/fac/trainer/TC004_2.webp",
+    "/img/fac/trainer/TC004_3.webp",
+    "/img/fac/trainer/TC004_4.webp",
+    "/img/fac/trainer/TC004_5.webp"
+   ],
+   "credit": "写真：Cane Felice",
+   "ratio": [
+    2.118,
+    1.333,
+    1.333,
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC019",
+   "name": "特定非営利活動法人PAL",
+   "url": "https://pal-doglesson.jimdofree.com/pal%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/%E6%89%80%E5%9C%A8%E5%9C%B0-%E9%80%A3%E7%B5%A1%E5%85%88/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC019_1.webp",
+    "/img/fac/trainer/TC019_2.webp",
+    "/img/fac/trainer/TC019_3.webp",
+    "/img/fac/trainer/TC019_4.webp",
+    "/img/fac/trainer/TC019_5.webp"
+   ],
+   "credit": "写真：特定非営利活動法人PAL",
+   "ratio": [
+    1.5,
+    1.333,
+    1.503,
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC040",
+   "name": "ドッグトレーニングmoto",
+   "url": "https://dogmoto.simdif.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC040_1.webp",
+    "/img/fac/trainer/TC040_2.webp"
+   ],
+   "credit": "写真：ドッグトレーニングmoto",
+   "ratio": [
+    0.749,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC047",
+   "name": "Angel Dog",
+   "url": "https://www.angel-dogs.jp/shop",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC047_1.webp",
+    "/img/fac/trainer/TC047_2.webp",
+    "/img/fac/trainer/TC047_3.webp",
+    "/img/fac/trainer/TC047_4.webp",
+    "/img/fac/trainer/TC047_5.webp"
+   ],
+   "credit": "写真：Angel Dog",
+   "ratio": [
+    1.5,
+    1.5,
+    1.503,
+    1.503,
+    1.503
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T041",
+   "name": "HACHI Dog Training（犬の家庭教師）",
+   "url": "https://hachi2010.com",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T041_1.webp",
+    "/img/fac/trainer/T041_2.webp"
+   ],
+   "credit": "写真：HACHI Dog Training（犬の家庭教師）",
+   "ratio": [
+    1.779,
+    1.779
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt6cc9160",
+   "name": "ペットのお世話屋さん 福笑い",
+   "url": "https://fukuwarai.sakuraweb.com/index.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt6cc9160_1.webp",
+    "/img/fac/trainer/Tt6cc9160_2.webp"
+   ],
+   "credit": "写真：ペットのお世話屋さん 福笑い",
+   "ratio": [
+    1.286,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt2257f30",
+   "name": "Inutelligence Laboratory (いぬらぼ)",
+   "url": "https://inulabo.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt2257f30_1.webp",
+    "/img/fac/trainer/Tt2257f30_2.webp",
+    "/img/fac/trainer/Tt2257f30_3.webp",
+    "/img/fac/trainer/Tt2257f30_4.webp",
+    "/img/fac/trainer/Tt2257f30_5.webp"
+   ],
+   "credit": "写真：Inutelligence Laboratory (いぬらぼ)",
+   "ratio": [
+    1.907,
+    1.0,
+    1.0,
+    1.0,
+    1.779
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC030",
+   "name": "AniHaB ドッグトレーニングジム",
+   "url": "https://anihabgym.animalhands.co.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC030_1.webp",
+    "/img/fac/trainer/TC030_2.webp",
+    "/img/fac/trainer/TC030_3.webp",
+    "/img/fac/trainer/TC030_4.webp"
+   ],
+   "credit": "写真：AniHaB ドッグトレーニングジム",
+   "ratio": [
+    1.739,
+    1.739,
+    1.739,
+    1.739
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC048",
+   "name": "屋内型ドッグラン CoCo",
+   "url": "https://coco-dogpark.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC048_1.webp",
+    "/img/fac/trainer/TC048_2.webp",
+    "/img/fac/trainer/TC048_3.webp",
+    "/img/fac/trainer/TC048_4.webp",
+    "/img/fac/trainer/TC048_5.webp"
+   ],
+   "credit": "写真：屋内型ドッグラン CoCo",
+   "ratio": [
+    1.498,
+    1.498,
+    1.498,
+    1.5,
+    0.667
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC067",
+   "name": "犬のペットホテルPooch",
+   "url": "https://www.pooch1.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC067_1.webp",
+    "/img/fac/trainer/TC067_2.webp",
+    "/img/fac/trainer/TC067_3.webp",
+    "/img/fac/trainer/TC067_4.webp",
+    "/img/fac/trainer/TC067_5.webp"
+   ],
+   "credit": "写真：犬のペットホテルPooch",
+   "ratio": [
+    1.333,
+    1.333,
+    1.333,
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T042",
+   "name": "HAPPY DOG LIFE・EMA",
+   "url": "https://happydoglife-ema.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T042_1.webp",
+    "/img/fac/trainer/T042_2.webp",
+    "/img/fac/trainer/T042_3.webp"
+   ],
+   "credit": "写真：HAPPY DOG LIFE・EMA",
+   "ratio": [
+    1.0,
+    1.67,
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt32654ad",
+   "name": "いずみ愛犬訓練学校",
+   "url": "https://petdog.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt32654ad_1.webp",
+    "/img/fac/trainer/Tt32654ad_2.webp"
+   ],
+   "credit": "写真：いずみ愛犬訓練学校",
+   "ratio": [
+    1.832,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Ttbcdf248",
+   "name": "DOG SCHOOL リーディング",
+   "url": "https://leading-dog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Ttbcdf248_1.webp",
+    "/img/fac/trainer/Ttbcdf248_2.webp",
+    "/img/fac/trainer/Ttbcdf248_3.webp"
+   ],
+   "credit": "写真：DOG SCHOOL リーディング",
+   "ratio": [
+    0.803,
+    1.607,
+    1.554
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt535969a",
+   "name": "CocoA Dogkindergarten",
+   "url": "https://www.cocoa-dogkindergarten.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt535969a_1.webp",
+    "/img/fac/trainer/Tt535969a_2.webp",
+    "/img/fac/trainer/Tt535969a_3.webp",
+    "/img/fac/trainer/Tt535969a_4.webp",
+    "/img/fac/trainer/Tt535969a_5.webp"
+   ],
+   "credit": "写真：CocoA Dogkindergarten",
+   "ratio": [
+    1.496,
+    0.8,
+    0.75,
+    0.75,
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tte187652",
+   "name": "FLUFFY DAYS(フラッフィーデイズ)",
+   "url": "https://fluffydays.com/archives/20467",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tte187652_1.webp",
+    "/img/fac/trainer/Tte187652_2.webp",
+    "/img/fac/trainer/Tte187652_3.webp"
+   ],
+   "credit": "写真：FLUFFY DAYS(フラッフィーデイズ)",
+   "ratio": [
+    1.333,
+    1.25,
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt15c006a",
+   "name": "そらぐみさん~出張ドッグトレーニング&ケア~",
+   "url": "https://soragumisan.amebaownd.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt15c006a_1.webp"
+   ],
+   "credit": "写真：そらぐみさん~出張ドッグトレーニング&ケア~",
+   "ratio": [
+    1.508
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt18a38b6",
+   "name": "Bellsch",
+   "url": "https://wdc-bellsch.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt18a38b6_1.webp",
+    "/img/fac/trainer/Tt18a38b6_2.webp",
+    "/img/fac/trainer/Tt18a38b6_3.webp"
+   ],
+   "credit": "写真：Bellsch",
+   "ratio": [
+    1.333,
+    1.322,
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt08f02a5",
+   "name": "pompocorin",
+   "url": "https://www.pompocorin.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt08f02a5_1.webp",
+    "/img/fac/trainer/Tt08f02a5_2.webp",
+    "/img/fac/trainer/Tt08f02a5_3.webp"
+   ],
+   "credit": "写真：pompocorin",
+   "ratio": [
+    1.439,
+    1.333,
+    1.505
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt4c9efa8",
+   "name": "ポジティブ・ドッグ・トレーニング",
+   "url": "http://positive-dogtraining.net/about-us",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt4c9efa8_1.webp"
+   ],
+   "credit": "写真：ポジティブ・ドッグ・トレーニング",
+   "ratio": [
+    1.565
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC001",
+   "name": "小田ドッグスクール",
+   "url": "http://odadogschool.com/profile.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC001_1.webp",
+    "/img/fac/trainer/TC001_2.webp"
+   ],
+   "credit": "写真：小田ドッグスクール",
+   "ratio": [
+    0.81,
+    0.81
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "TC069",
+   "name": "船橋さきがおか動物病院 しつけ教室",
+   "url": "http://saki-ah.com/shitsuke.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/TC069_1.webp",
+    "/img/fac/trainer/TC069_2.webp"
+   ],
+   "credit": "写真：船橋さきがおか動物病院 しつけ教室",
+   "ratio": [
+    0.782,
+    0.75
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T039",
+   "name": "amigos del perro",
+   "url": "https://amigos-del-perro.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T039_1.webp"
+   ],
+   "credit": "写真：amigos del perro",
+   "ratio": [
+    1.503
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T123",
+   "name": "わんこの学校 ドッグベースキャンプ",
+   "url": "https://dogbc.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T123_1.webp",
+    "/img/fac/trainer/T123_2.webp",
+    "/img/fac/trainer/T123_3.webp",
+    "/img/fac/trainer/T123_4.webp",
+    "/img/fac/trainer/T123_5.webp"
+   ],
+   "credit": "写真：わんこの学校 ドッグベースキャンプ",
+   "ratio": [
+    1.055,
+    1.602,
+    1.622,
+    1.622,
+    1.561
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T132",
+   "name": "いぬとれ",
+   "url": "https://www.inutore.net/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/T132_1.webp",
+    "/img/fac/trainer/T132_2.webp",
+    "/img/fac/trainer/T132_3.webp",
+    "/img/fac/trainer/T132_4.webp",
+    "/img/fac/trainer/T132_5.webp"
+   ],
+   "credit": "写真：いぬとれ",
+   "ratio": [
+    1.503,
+    1.503,
+    1.503,
+    1.502,
+    1.503
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tted71bc8",
+   "name": "横浜動物専門学校",
+   "url": "https://yokohama-doubutsu.ac.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tted71bc8_1.webp"
+   ],
+   "credit": "写真：横浜動物専門学校",
+   "ratio": [
+    1.575
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Ttbf9712b",
+   "name": "わんこの教室 FUN&SMILE",
+   "url": "https://fun-smile.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Ttbf9712b_1.webp",
+    "/img/fac/trainer/Ttbf9712b_2.webp",
+    "/img/fac/trainer/Ttbf9712b_3.webp",
+    "/img/fac/trainer/Ttbf9712b_4.webp"
+   ],
+   "credit": "写真：わんこの教室 FUN&SMILE",
+   "ratio": [
+    1.5,
+    1.5,
+    1.5,
+    1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Ttcf70e47",
+   "name": "ミリオンペット",
+   "url": "https://www.millionpet-nestor.co.jp/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Ttcf70e47_1.webp"
+   ],
+   "credit": "写真：ミリオンペット",
+   "ratio": [
+    2.143
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt690b989",
+   "name": "Familiar P.D.C",
+   "url": "https://tonari-sitter.com/shop/familiar-pdc/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt690b989_1.webp",
+    "/img/fac/trainer/Tt690b989_2.webp",
+    "/img/fac/trainer/Tt690b989_3.webp",
+    "/img/fac/trainer/Tt690b989_4.webp"
+   ],
+   "credit": "写真：Familiar P.D.C",
+   "ratio": [
+    1.332,
+    1.35,
+    1.333,
+    1.0
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tt2a7dd70",
+   "name": "一般社団法人 優良家庭犬普及協会",
+   "url": "https://www.cgcjp.net/school/%E5%8B%95%E7%89%A9%E5%8F%96%E6%89%B1%E6%A5%AD%E8%A1%A8%E7%A4%BA/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tt2a7dd70_1.webp",
+    "/img/fac/trainer/Tt2a7dd70_2.webp"
+   ],
+   "credit": "写真：一般社団法人 優良家庭犬普及協会",
+   "ratio": [
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Tte8dabd3",
+   "name": "Laf DOG",
+   "url": "https://lafdog.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Tte8dabd3_1.webp",
+    "/img/fac/trainer/Tte8dabd3_2.webp",
+    "/img/fac/trainer/Tte8dabd3_3.webp"
+   ],
+   "credit": "写真：Laf DOG",
+   "ratio": [
+    1.333,
+    1.333,
+    1.329
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "Ttad98007",
+   "name": "スマイルドッグスクール",
+   "url": "http://www.smiledogschool.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-24",
+   "photos": [
+    "/img/fac/trainer/Ttad98007_1.webp"
+   ],
+   "credit": "写真：スマイルドッグスクール",
+   "ratio": [
+    1.479
+   ]
   }
  ]
 }
