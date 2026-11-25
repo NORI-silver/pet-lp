@@ -15,6 +15,9 @@ _PLACES = {
     ("dogrun", "D143"): ("WANCOTT", "ChIJVVUVd-RcGGAR376zrJ0zJSs"),  # https://www.wancott.com/access/ 山下町168-1・電話一致（施設全体）
     ("dogrun", "D187"): ("ワクワクドッグランド神戸六甲（ドッグラン＆ドッグホテル）", "ChIJTVTQiK-JAGARI2DufzCQoYI"),  # https://wakuwaku-dogland.com/indoor_dogrun.html 屋号・ドッグランの電話一致（施設全体）
     ("dogrun", "D212"): ("DOG RUN TOKYO", "ChIJoSot0FaNGGARoXZIbEUghKw"),  # https://dogrun-tokyo.jp/access/ 千駄ケ谷3丁目50-3・アーバンノット原宿1階
+    ("dogrun", "D213"): ("ペテモ幕張新都心店", "ChIJNREpmeWBImAR81oonEvodm0"),  # https://www.aeonpet.com/shop/p_makuhari/access/ 豊砂1-8の同店舗、屋外と室内の口コミは分けない
+    ("dogrun", "D217"): ("ペテモ千葉ニュータウン店", "ChIJmU9lvjx8ImARiXYOSowmu90"),  # https://www.aeonpet.com/shop/chibanewtown/index.html 中央北2-2と電話一致
+    ("dogrun", "D218"): ("ペテモピアシティ稲毛海岸店", "ChIJf_QXGbuDImARyZuLJqiQNo4"),  # https://aeonpet.com/shop/pia-city-inagekaigan/access/index.html B棟1階と用品店の電話一致、併設病院・サロンは別
     ("dogrun", "D001"): ("代々木公園ドッグラン", "ChIJN9-qU7SMGGARhCpTp43adx8"),  # https://www.yoyogidogrun.jp/home/アクセス
     ("sitter", "St4e0359d"): ("キャットシッターねこやま", "ChIJp4doO8NZGGARsPlc6CkFydk"),  # https://www.necoyama.net/ 同じ屋号、横浜市旭区本村町、電話番号
     ("trainer", "T111"): ("犬のようちえん 代官山教室", "ChIJTyI_woyLGGARR0-YqFtqYUg"),  # https://animalplaza.co.jp/class/daikanyama.html 恵比寿南3-7-7
@@ -33,5 +36,5 @@ def link(category, row, cls="fc-a fc-a-star", *, scope=None):
     name, place_id = hit
     url = "https://www.google.com/maps/search/?" + urlencode(
         {"api": 1, "query": name, "query_place_id": place_id})
-    label = {"company": "会社全体の口コミ（Google Maps）↗", "facility": "施設全体の口コミ（Google Maps）↗"}.get(scope, "Google Maps の口コミ ↗")
+    label = {"company": "会社全体の口コミ（Google Maps）↗", "facility": "施設全体の口コミ（Google Maps）↗", "store": "店舗全体の口コミ（Google Maps）↗"}.get(scope, "Google Maps の口コミ ↗")
     return f'<a class="{escape(cls, quote=True)}" href="{escape(url, quote=True)}" target="_blank" rel="noopener noreferrer">{label}</a>'

@@ -10,7 +10,8 @@ from facility_review_links import link as review_link
 
 # 複合施設はドッグラン単独の口コミと誤解しないよう、リンクの対象を明示する。
 def _review(d):
-    scope = "facility" if d.get("id") in ("D143", "D187") else None
+    scopes = {"D143": "facility", "D187": "facility", "D213": "store", "D217": "store", "D218": "store"}
+    scope = scopes.get(d.get("id"))
     return review_link("dogrun", d, "ux-btn l", scope=scope)
 from urllib.parse import quote
 import prefkeep
