@@ -355,5 +355,6 @@ def write_js(ROOT, avail, pslug, counts=None):
     def lite(src):
         return "\n".join(line.strip() for line in src.split("\n") if line.strip() and not line.strip().startswith("//"))
     js = "// generated: tools/hosp_find.py\n(function(){" + lite(prefkeep.FN + prefkeep.GUESS) + "\n" + lite(body) + "\n})();\n"
+    js = __import__("re").sub(r"var NAMES = \[[^\]]*\]", lambda m: m.group(0).replace('", "', '","'), js)  # 県名の並びの空白だけ詰める（/hosp.js は 24KB まで）
     open(os.path.join(ROOT, "hosp.js"), "w", encoding="utf-8").write(js)
     return len(js.encode())
