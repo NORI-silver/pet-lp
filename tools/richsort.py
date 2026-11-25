@@ -70,14 +70,23 @@ def _score(r, ph):
     return s
 
 
-# 並び順を決めても同じ県の先頭に置く施設（tests/hirose-card.test.cjs が全国ページの先頭に出ることを見ている）。
-# ドッグトレーナー廣瀬（T114）は、事業所の場所を廣瀬さんの指定で直した施設（#658）。並べ替えの前は京都府の3番目だった。
-# 情報量の点数で下がっても、同じ県の中で先頭に置く。ほかの施設の並びは変えない（安定ソート）。
-_PINNED = {"T114"}
+# 並び順を決めても、同じ県の中で決まった順番に置く施設（tests/hirose-card.test.cjs が全国ページに出ることを見ている）。
+# ドッグトレーナー廣瀬（T114）は、事業所の場所を廣瀬さんの指定で直した施設（#658）。並べ替えの前は京都府の3番目だった（0から数えて2）。
+# 情報量の点数で下がっても、その県の3番目に戻す。ほかの施設の並びは変えない（安定ソート）。
+_PINNED = {"T114": 2}
 
 
 def _sorted(rows, ph):
-    return [r for _, r in sorted(enumerate(rows), key=lambda x: (0 if x[1].get("id") in _PINNED else 1, -_score(x[1], ph), x[0]))]
+    out = [r for _, r in sorted(enumerate(rows), key=lambda x: (-_score(x[1], ph), x[0]))]
+    for pid, rank in _PINNED.items():
+        r = next((x for x in out if x.get("id") == pid), None)
+        if r is None:
+            continue
+        out.remove(r)
+        key = (r.get("prefs") or [None])[0]
+        idx = [i for i, x in enumerate(out) if (x.get("prefs") or [None])[0] == key]
+        out.insert(idx[rank] if rank < len(idx) else (idx[-1] + 1 if idx else len(out)), r)
+    return out
 
 
 def _lists(d):
