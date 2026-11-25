@@ -3,6 +3,7 @@
 # 守ること：教室からお金をもらわない。順位・おすすめをつけない。料金を書かない。電話番号を載せない。
 # 公式サイトの情報だけ書く（提供内容・対応エリア・資格・登録番号・所在地）。協会の会員一覧に載っていること（assoc）は一覧の名前つきで書く。
 # データ：tools/trainers.json。口コミの星は動物病院のページと同じしくみ（/reviews.js → booking/Code.gs の EMG_REVIEWS）。
+from facility_review_links import link as review_link
 import json, os
 import prefkeep
 import facility_cards as FC
@@ -63,9 +64,10 @@ def _card(e, t):
     if t.get("addr") and set(tags) & {"教室・グループ", "幼稚園・保育園", "預かり訓練"}:
         pf = t["prefs"][0]
         to = t.get("venue_addr") or (t["addr"] if t["addr"].startswith(pf) else pf + t["addr"])
+    rv = review_link("trainer", t)
     return (f'<div class="emg-item emg-co"{FC.attrs(e, "trainer", t, tags, t["name"], to, "教室")}><a href="{e(t["url"])}" target="_blank" rel="noopener"><b>{e(t["name"])}</b></a>'
             f'<small>{e(t["city"])}</small>{extra}'
-            + (f'<div class="emg-score" data-id="{e(t["id"])}"></div>' if t.get("review_query") else "") + "</div>")
+            + (rv or (f'<div class="emg-score" data-id="{e(t["id"])}"></div>' if t.get("review_query") else "")) + "</div>")
 
 def render(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
