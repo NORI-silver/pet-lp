@@ -337,7 +337,7 @@ def build_card(card, conf, fit_by_name):
             chips.insert(0, t); continue
         if tag == "div" and "emg-score" in cls:
             tail.append(x); continue
-        if tag == "a" and "emg-taxi" in cls:
+        if tag == "a" and ("emg-taxi" in cls or "fc-a-star" in cls):
             tail.append(x); continue
         if conf["key"] == "joto" and tag == "ul" and "jt-c" in cls:
             keep.append(x); continue

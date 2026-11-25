@@ -3,6 +3,7 @@
 # [C][E] 条件（large・cat・senior・car・in_home・max_kg）は公式サイトに書いてあるときだけ持つ Boolean/数値で、ページの「条件でしぼりこむ」に使う（書いていない＝不明で、対応しないという意味ではない）。
 # 守ること：事業者からお金をもらわない。順位・おすすめをつけない。料金を書かない。電話番号を載せない。公式サイトの情報だけ書く。
 # データ：tools/grooming.json。口コミの星はまだ付けない（あとで EMG_REVIEWS に足せる形にしておく）。
+from facility_review_links import link as review_link
 import json, os
 import prefkeep
 
@@ -42,7 +43,7 @@ def _card(e, g):
     city = f'<small>{e(g["city"])}</small>' if g.get("city") else ""
     fa = f' data-cat="trim" data-fid="{e(g["id"])}" data-name="{e(g["name"])}"' + (' data-partner="1"' if g.get("partner") else '')  # facility.js
     return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"{fa}><a href="{e(g["url"])}" target="_blank" rel="noopener"><b>{e(g["name"])}</b></a>'
-            f'{city}{extra}</div>')
+            f'{city}{extra}{review_link("trim", g)}</div>')
 
 # 都道府県の選択（prefkeep）と、条件のしぼりこみを合わせて動かす
 JS = "<script>\n(function(){" + prefkeep.FN + r"""
