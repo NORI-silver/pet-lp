@@ -1,0 +1,39 @@
+# 一時の補助。もう一度作り直して、生成ファイルが元と合うか確かめる。終わったら消す。
+name: photo-rj-helper6
+on:
+  push:
+    branches: ['photo-rj']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: もう一度作り直す
+        run: |
+          pip install pillow
+          git log -1 --format='head %H'
+          python3 tools/gen_areas.py . > /tmp/gen.log 2>&1 || { tail -20 /tmp/gen.log; exit 1; }
+          rm -rf tools/__pycache__
+          git status --porcelain | head -20
+          git diff --stat | tail -5
+          git diff -U0 tools/lastmod.json | grep -E '^[-+][^-+]' | cut -c1-200
+      - name: テスト
+        run: for f in tests/*.test.cjs; do echo "== $f"; node "$f" || exit 1; done
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git reset -q -- .github/workflows
+          git diff --cached --quiet && { echo "no change"; exit 0; }
+          git commit -qm "生成ファイルを作り直して合わせる（lastmod.json）"
+          git push
