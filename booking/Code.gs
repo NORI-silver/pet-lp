@@ -405,7 +405,9 @@ function receive_(p) {
     if (!String(p[need[i]] || '').trim()) return { ok: false, error: 'missing ' + need[i] };
   }
   var pref = shortPref_(p.pref);
-  if (PREFS.indexOf(pref) < 0) return { ok: false, error: 'area' };
+  var outsideCore = PREFS.indexOf(pref) < 0;
+  var kyoto = outsideCore && kyotoIntakeBinding_();
+  if (outsideCore && (!kyoto || !kyoto.enabled || PREF47.indexOf(pref) < 0)) return { ok: false, error: 'area' };
   // 日付だけ（YYYY-MM-DD）のときは、その日の終わりを期限にする
   var when = /^\d{4}-\d{1,2}-\d{1,2}$/.test(String(p.date || '')) ? parseJst_(p.date + 'T23:59') : parseJst_(p.datetime);
   if (!when) return { ok: false, error: 'datetime' };
@@ -443,6 +445,8 @@ function receive_(p) {
     for (var k = 0; k < sels.length; k++) {
       if (!sels[k].ok) return split ? { ok: false, error: sels[k].error, leg: k ? 'back' : 'go' } : sels[k];
     }
+    // 新しい地域を全社に解放しない。署名を検証できた京都の単独依頼だけが例外。
+    if (outsideCore && sels.some(function(sel) { return sel.partner.id !== kyoto.id; })) return { ok:false,error:'area' };
     var sh = sheet_(SHEET_REQ);
     var head = ensureReqHeaders_(sh);
     var ids = legs.map(function () { return newId_(sh); });
@@ -510,8 +514,11 @@ function sendWave_(id, stage) {
   var selected = pickedIds_(r);
   if (selected.length && stage !== 1) return '';
   var pool = selected.length ? selectionCandidates_(r).filter(function(pt) { return selected.indexOf(pt.id) >= 0; }) : pickPartners_(r, stage);
+  var kyoto = kyotoIntakeBinding_();
   var targets = pool.filter(function (pt) {
-    return already.indexOf(pt.id) < 0 && (pt.id !== KASUKABE_INTAKE_ID ||
+    return already.indexOf(pt.id) < 0 &&
+      (!kyotoIntakeRow_(kyoto, pt) || selected.indexOf(pt.id) >= 0 && isAsk_(r) && kyotoIntakeFits_(kyoto, pt, r)) &&
+      (pt.id !== KASUKABE_INTAKE_ID ||
       selected.indexOf(pt.id) >= 0 && isAsk_(r) && kasukabeIntakeFits_(pt, r));
   });
   // 第1段で誰もいなければ、すぐ第2段の相手にも送る
@@ -657,11 +664,12 @@ function cancelAfterText_(pt) {
 function publicPaused_(id) { return PUBLIC_PAUSE.indexOf(id) >= 0; }
 
 function pickPartners_(r, stage) {
+  var kyoto = kyotoIntakeBinding_();
   var pref = r['都府県'];
   var areas = stage === 1 ? [pref] : (NEIGHBORS[pref] || []).concat(['全国']);
   var care = r['介助'] === '必要';
   return partners_().filter(function (pt) {
-    if (!pt.active || publicPaused_(pt.id) || pt.id === KASUKABE_INTAKE_ID) return false; // 春日部は利用者が明示的に選んだ依頼だけ
+    if (!pt.active || publicPaused_(pt.id) || pt.id === KASUKABE_INTAKE_ID || kyotoIntakeRow_(kyoto, pt)) return false; // 春日部は利用者が明示的に選んだ依頼だけ
     if ((CONFIG.SHOW_ALL_CANDIDATES && !isOpen_(pt.id)) || isDisplayOnly_(pt.id)) return false; // 全社準備中のあいだ（受け付けを始めた会社を除く）・表示だけの会社には送らない
     if (!fitsCar_(pt, r)) return false;
     if (!fitsCage_(pt, r)) return false;
@@ -3550,6 +3558,8 @@ function selectionValid_(p) {
 }
 
 // 春日部の試行：未設定の本番では閉じたまま。固定の会社ID・照合済みメール、明示的に選ばれた市内片道だけ。
+// 結合テスト用の未公開実装。料金と通知先の確認なしで、本番の設定から開けないようにする。
+var COCOTAKU_INTAKE_INTEGRATION_READY = false;
 var KASUKABE_INTAKE_ID = 'P014', KASUKABE_DISPLAY_ID = 'D853ae97';
 function kasukabeIntakeMailbox_() {
   try {
@@ -3579,10 +3589,38 @@ function kasukabeIntakeFits_(pt, r) {
   return pets.length === 1 && pets[0].sp === '犬' && pets[0].vac && pets[0].rabies && pets[0].kg > 0 &&
     pets[0].kg <= 10 && pets[0].kg === Number(r['体重kg']) && !pets[0].need.length && pets[0].care === '不要';
 }
+// 公開の店舗カードと、通知先として審査済みの提携行を明示的に結ぶ。設定なし・行の差し替えでは閉じる。
+var KYOTO_DISPLAY_ID = 'D7f0d2a2';
+function kyotoIntakeBinding_() {
+  try {
+    var ps = PropertiesService.getScriptProperties();
+    var id = String(ps.getProperty('KYOTO_INTAKE_PARTNER_ID') || '').trim();
+    var email = String(ps.getProperty('KYOTO_INTAKE_VERIFIED_EMAIL') || '').trim().toLowerCase();
+    return /^P[0-9]{3}$/.test(id) && id !== KASUKABE_INTAKE_ID && !(CONFIG.OPEN_PARTNERS || {})[id] &&
+      /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) ?
+      {id:id,email:email,enabled:COCOTAKU_INTAKE_INTEGRATION_READY && ps.getProperty('KYOTO_INTAKE_ENABLED') === '1'} : null;
+  } catch (e) { return null; }
+}
+function kyotoIntakeName_(pt) {
+  return /^COCOタク京都(?:店)?$/.test(String(pt.name || '').normalize('NFKC').replace(/\s/g, '').toUpperCase());
+}
+function kyotoIntakeRow_(binding, pt) {
+  return kyotoIntakeName_(pt) || !!(binding && pt.id === binding.id);
+}
+function kyotoIntakeFits_(binding, pt, r) {
+  if (!binding || !binding.enabled || pt.id !== binding.id || !pt.active ||
+      pt.lineId || pt.oaId || pt.lineUrl || pt.petOnly !== false ||
+      String(pt.email || '').trim().toLowerCase() !== binding.email ||
+      !kyotoIntakeName_(pt)) return false;
+  return /^[123]人$/.test(String(r['同乗人数'] || ''));
+}
+
 function selectionCandidates_(r) {
   // 同じ都県、または全国対応の会社。近隣都県だけの会社には依頼しない。
+  var kyoto = kyotoIntakeBinding_();
   return partners_().filter(function(pt) {
     return !publicPaused_(pt.id) && pt.active && reachable_(pt) &&
+      (!kyotoIntakeRow_(kyoto, pt) || kyotoIntakeFits_(kyoto, pt, r)) &&
       (pt.id !== KASUKABE_INTAKE_ID || kasukabeIntakeFits_(pt, r)) && (pt.areas.indexOf(r['都府県']) >= 0 || pt.areas.indexOf('全国') >= 0) &&
       fitsCar_(pt, r) && fitsCage_(pt, r) && inTime_(pt, r) && (r['介助'] !== '必要' || pt.careOk) && !checks_(pt, r).ng.length && openNear_(pt, r);
   });
@@ -3592,9 +3630,33 @@ function quoteSignature_(p, id, expires, price) {
   return sign_('selection:' + JSON.stringify(QUOTE_FIELDS.map(function(k) { return String(p[k] || ''); })) + ':' + id + ':' + expires + ':' + JSON.stringify(price));
 }
 
+// 表示用の概算を申込にも引き継ぐ。未確認の加算・直線距離による概算には申込用の署名を発行しない。
+function pinnedIntakePrice_(displayId, p) {
+  var c = DISPLAY_COMPANIES.filter(function(x) { return x.id === displayId; })[0], d;
+  try { d = JSON.parse(p.route_details || '{}'); } catch (e) { return null; }
+  if (!c || !c.shop || !c.fare || !d || d.routeEstimated || d.localEstimated || !d.from || !d.to) return null;
+  var points = p.trip === '往復' ? [d.from, d.to, d.backFrom, d.backTo] : [d.from, d.to];
+  if (!points.every(function(x) {
+    return x && typeof x.lat === 'number' && typeof x.lng === 'number' && x.lat >= 20 && x.lat <= 46 && x.lng >= 122 && x.lng <= 154;
+  })) return null;
+  var shop = {lat:c.shop[0], lng:c.shop[1]};
+  loadRoadKm_([shop], points);
+  if (roadKm_(shop, d.from) == null ||
+      (p.trip === '往復' && !c.fare.pickOnce && roadKm_(shop, d.backFrom) == null)) return null;
+  var price = displayPrice_(c, p);
+  return price && !price.incompleteFees && !price.taxUnknown && isFinite(price.amount) && price.amount > 0 ? price : null;
+}
+
 function selectionPrice_(pt, p) {
-  if (pt.id === KASUKABE_INTAKE_ID) return kasukabeIntakeFits_(pt, selectionRide_(p)) ?
-    {amount:null,text:'料金は未確定です。会社が空き状況と確定料金をお返事します',night:''} : null;
+  if (pt.id === KASUKABE_INTAKE_ID) {
+    if (!kasukabeIntakeFits_(pt, selectionRide_(p))) return null;
+    var automatic = false;
+    try { automatic = COCOTAKU_INTAKE_INTEGRATION_READY && PropertiesService.getScriptProperties().getProperty('KASUKABE_AUTOMATIC_QUOTE_ENABLED') === '1'; } catch (e) {}
+    if (automatic) return pinnedIntakePrice_(KASUKABE_DISPLAY_ID, p);
+    return {amount:null,text:'料金は未確定です。会社が空き状況と確定料金をお返事します',night:''};
+  }
+  var kyoto = kyotoIntakeBinding_();
+  if (kyotoIntakeRow_(kyoto, pt)) return kyotoIntakeFits_(kyoto, pt, selectionRide_(p)) ? pinnedIntakePrice_(KYOTO_DISPLAY_ID, p) : null;
   var od = openDisplay_(pt.id);
   if (od) { // 受け付けを始めた会社は、表示だけの会社と同じ公式サイトの料金表で計算する（お店からの道のりも同じく調べる）
     var rd = {}; try { rd = JSON.parse(p.route_details || '{}') || {}; } catch (e) {}
@@ -3760,7 +3822,11 @@ function quoteCards_(p) {
     return { id:pt.id, label:pt.name, car:pt.car || '車の詳細は引き受け時に確認', points:PARTNER_POINTS[pt.id] || [], limits:PARTNER_LIMITS[pt.id] || [], shop:partnerShop_(pt.id),
       payment:[pt.payMethod,pt.payWhen].filter(String).join('・') || 'お支払い方法は引き受け時にご案内',
       price:price, review:null, check:checks_(pt, r).ask, expires:expires, token:quoteSignature_(p,pt.id,expires,price) };
-  }).filter(Boolean).concat(p.leg ? [] : displayCards_(r, p));
+  }).filter(Boolean).concat(p.leg ? [] : displayCards_(r, p)).filter(function(card, _, cards) {
+    if (card.id !== KYOTO_DISPLAY_ID) return true;
+    var kyoto = kyotoIntakeBinding_();
+    return !kyoto || !cards.some(function(x) { return x.id === kyoto.id && x.token; });
+  });
 }
 
 // 日本時間で同じ日か
@@ -3798,10 +3864,14 @@ function displayInTime_(c, at, now) {
 
 // 名前・口コミ・お店の正確な場所を出さない会社か。問い合わせできない会社（表示だけ・全社準備中のあいだの提携先）はすべて。見本の会社だけ例外
 function isOpen_(id) {
+  var kyoto = kyotoIntakeBinding_();
+  if (kyoto && id === kyoto.id) return kyoto.enabled;
   return id === KASUKABE_INTAKE_ID ? !!kasukabeIntakeMailbox_() : !!(CONFIG.OPEN_PARTNERS || {})[id];
 }
 function openDisplay_(id) {
-  var d = id === KASUKABE_INTAKE_ID ? (isOpen_(id) ? KASUKABE_DISPLAY_ID : '') : (CONFIG.OPEN_PARTNERS || {})[id];
+  var kyoto = kyotoIntakeBinding_();
+  var d = kyoto && id === kyoto.id ? (kyoto.enabled ? KYOTO_DISPLAY_ID : '') :
+    id === KASUKABE_INTAKE_ID ? (isOpen_(id) ? KASUKABE_DISPLAY_ID : '') : (CONFIG.OPEN_PARTNERS || {})[id];
   return d ? DISPLAY_COMPANIES.filter(function(c) { return c.id === d; })[0] || null : null;
 }
 function openDisplayIds_() {
