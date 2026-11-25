@@ -2,6 +2,43 @@
  "_説明": "事業者カードに出す写真（使ってよいと確かめたものだけ。Nori 2026-11-16）。tools/photo_import.py が入れる（手で写さない）。by は owner（事業者が登録）・permit（事業者が公式サイトの写真の利用を許可。記録は photo_permits.json）・license（公式サイトの決まりで転載を許している。credit・license・lic_url の表示が要る）。photos は /img/fac/ の 520×347 の webp。並びは owner → permit → license。",
  "items": [
   {
+   "cat": "hotel",
+   "id": "PH053",
+   "name": "HAMA＆WAN",
+   "url": "https://www.hama-wan.com/pethotel.html",
+   "by": "owner",
+   "src": "2026-11-23",
+   "checked": "2026-11-25",
+   "photos": [
+    "/img/fac/hotel/PH053_1.webp"
+   ],
+   "ratio": [
+    1.333
+   ]
+  },
+  {
+   "cat": "night",
+   "id": "H021",
+   "name": "どうぶつの総合病院 専門医療＆救急センター",
+   "url": "https://vsec.jp/mp/yakan_1",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-25",
+   "photos": [
+    "/img/fac/night/H021_1.webp"
+   ],
+   "ratio": [
+    2.844
+   ],
+   "source_photos": [
+    {
+     "page": "https://vsec.jp/about-us/overview/",
+     "url": "https://vsec.jp/wp-content/themes/vsec/assets/img/about-us/overview/img.webp"
+    }
+   ],
+   "credit": "写真：どうぶつの総合病院 専門医療＆救急センター"
+  },
+  {
    "cat": "dogrun",
    "id": "D043",
    "name": "岡山県動物愛護センター 北広場（ドッグラン）",
