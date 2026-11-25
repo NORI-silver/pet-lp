@@ -7,6 +7,11 @@
 # 公式ページの情報だけ書く（書いていない項目は出さない）。データ：tools/dogrun.json（src は参考にした公式ページ）。
 import json, os, re
 from facility_review_links import link as review_link
+
+# 複合施設はドッグラン単独の口コミと誤解しないよう、リンクの対象を明示する。
+def _review(d):
+    scope = "facility" if d.get("id") in ("D143", "D187") else None
+    return review_link("dogrun", d, "ux-btn l", scope=scope)
 from urllib.parse import quote
 import prefkeep
 from prefs import PREFS
@@ -118,7 +123,7 @@ def ff_card(e, d, full=False):
     dest = (d.get("addr") or "") and _q(f'{d["name"]} {pf}{d["addr"]}')
     acts = f'<a class="ux-btn" href="{e(d["url"])}" target="_blank" rel="noopener">公式ページ ↗</a>'
     if dest: acts += f'<a class="ux-btn l" href="https://www.google.com/maps/dir/?api=1&amp;destination={dest}" target="_blank" rel="noopener" data-route>経路を見る</a>'
-    acts += review_link("dogrun", d, "ux-btn l")
+    acts += _review(d)
     sub = "" if full else f'<a href="{href(pf)}#{d["id"]}">くわしく見る</a>'
     det = ""
     if full:
@@ -680,7 +685,7 @@ def card(e, d):
     srcs = [u for u in d.get("src", []) if u != d["url"]]
     more = ("<small>ほかの出どころ：" + "、".join(f'<a href="{e(u)}" target="_blank" rel="noopener">{i + 1}</a>' for i, u in enumerate(srcs)) + "</small>") if srcs else ""
     return (f'<section class="dr-card" id="{d["id"]}"><h3>{e(d["name"])}</h3><p class="dr-city">{e(d["pref"])}{e(d.get("city", ""))}</p>{tags_html(e, d)}'
-            f'<dl>{rows}</dl><p class="dr-links"><a href="{e(d["url"])}" target="_blank" rel="noopener">公式ページで最新の情報を見る ↗</a>{review_link("dogrun", d, "ux-btn l")}{more}</p>' + _fac_link(e, d) + '</section>')
+            f'<dl>{rows}</dl><p class="dr-links"><a href="{e(d["url"])}" target="_blank" rel="noopener">公式ページで最新の情報を見る ↗</a>{_review(d)}{more}</p>' + _fac_link(e, d) + '</section>')
 
 # [B] 2026-11-14 Nori「答えみたいなことからはじめて、もっと視覚的に」：県のページの最初に「先に答え」（よくある質問の答え）と数字のタイル
 def _answer(e, pf, rs, faq):
