@@ -1,0 +1,48 @@
+# 一時の補助。老人ホームの追加分（9件）を当てて作り直す。終わったら消す。
+name: photo-rj-helper
+on:
+  push:
+    branches: ['photo-rj']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 取り込み
+        run: |
+          f=$(ls tools/*40-rj.patch | head -1); mv "$f" /tmp/rj.patch
+          pip install pillow
+          git log -1 --format='base %H'
+          git apply --check /tmp/rj.patch
+          git apply /tmp/rj.patch
+          git diff --stat
+      - name: 作り直し
+        run: |
+          python3 tools/gen_areas.py . > /tmp/gen.log 2>&1 || { tail -20 /tmp/gen.log; exit 1; }
+          rm -rf tools/__pycache__
+          git status --porcelain | awk '{print $2}' | sed -E 's#/[^/]*$##' | sort | uniq -c | sort -rn | head -40
+          echo "changed paths: $(git status --porcelain | wc -l)"
+          echo "outside rojin: $(git status --porcelain | grep -v -i rojin | wc -l)"
+          git status --porcelain | grep -v -i rojin | head
+      - name: テスト
+        run: for f in tests/*.test.cjs; do echo "== $f"; node "$f" || exit 1; done
+      - name: 容量
+        run: |
+          node -e "const z=require('zlib'),f=require('fs');for(const p of ['rojin-home','pet-hotel','trimming','dog-trainer']){try{console.log(p,z.gzipSync(f.readFileSync(p+'/index.html'),{level:9}).length)}catch(e){console.log(p,'none')}}"
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git reset -q -- .github/workflows
+          git commit -qm "老人ホームを9件追加（栃木・神奈川ほか）"
+          git push
