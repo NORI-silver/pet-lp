@@ -27,6 +27,8 @@ CSS = """<style id="uicss">
 .pk-b button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:7px 11px;font-size:.88rem;color:#3c2f26;cursor:pointer;line-height:1.2}
 .pk-b button small{margin-left:4px;font-size:.76rem;color:#6b5f56}
 [data-ffi][hidden],[data-ffg][hidden]{display:none!important}
+.emg-pref.ff-sel>h4{display:none}
+.ff-load{margin:6px 0;font-size:.85rem;color:#7a6a5e}
 .ux-img{position:relative;aspect-ratio:3/2;overflow:hidden;background:#f4f1ee}
 .ux-img img{display:block;width:100%;height:100%;object-fit:cover}
 .ux-img::after{content:"イメージ";position:absolute;right:6px;bottom:6px;font-size:.66rem;line-height:1;padding:3px 6px;border-radius:6px;background:rgba(0,0,0,.45);color:#fff}
@@ -218,8 +220,9 @@ HOTEL = dict(
     # 猫専用は「どの動物」の軸に置く（Nori 2026-11-23 第2弾で採用。サービスの内容の軸に混ぜない）
     animals=("どの子を預けますか？", [("a:dog", "犬"), ("cat", "猫"), ("cat_only", "猫専用")]),
     who=("うちの子にあてはまるもの", [("big", "大型犬（25kg以上）"), ("sen", "シニア・介護が必要"), ("pup", "子犬・子猫"), ("med", "薬・持病がある"), ("multi", "2頭以上いる"), ("shy", "かむ・ほえる・こわがり")]),
-    need=("どんなホテルをお探しですか？", [("vet", "病院が併設"), ("pickup", "送迎あり"), ("night_staff", "夜もスタッフ"), ("private_room", "個室")]),
-    more=[("設備", [("camera", "カメラで見守り"), ("run", "ドッグラン"), ("cagefree", "ケージフリー"), ("walk", "散歩つき")])],
+    need=("どんなホテルをお探しですか？", [("vet", "病院が併設"), ("pickup", "送迎あり"), ("night_staff", "夜もスタッフ"), ("staff24", "24時間見守り・スタッフ常駐"), ("private_room", "個室")]),
+    more=[("設備", [("camera", "カメラで見守り"), ("run", "ドッグラン"), ("cagefree", "ケージフリー"), ("walk", "散歩つき"), ("longstay", "長期OK")]),
+          ("体重（上限が書いてあるホテルだけ）", [("wb5", "5kg未満"), ("wb10", "5〜10kg"), ("wb25", "10〜25kg")])],
     go="この条件でホテルを探す")
 
 def _end(h, i, tag="div"):
@@ -412,12 +415,17 @@ def generic_list(h, cat, hub):
     elif cat == "dog-trainer":  # 困りごとは「詳しい条件」に隠さず、見える行に出す（Nori 2026-11-23 第2弾）
         when = ("困りごとから探す", [(k, l) for k, l in ownerfit.CONCERNS.items() if use(k)])
     elif cat == "trimming":
-        when = ("受けられること", [(k, l) for k, l in [("bubun", "部分ケア（爪切り・耳掃除だけ）")] if use(k)])
+        when = ("受けられること", [(k, l) for k, l in [("bubun", "部分ケア（爪切り・耳掃除だけ）"), ("nail", "爪切りだけ"), ("ear", "耳掃除だけ")] if use(k)])
     else:
         when = None
     if when is not None and not when[1]: when = None
     need = [(k, l) for k, l, _ in sv if use(k)]
     more = [(k, l) for k, l, _ in mv if use(k)]
+    # 公式サイトの文から決める条件（ownerfit の FAC）を、サービスの内容・そのほかの条件にも出す（2026-11-24 全面改修）
+    if cat == "dog-trainer" and use("private"): need.append(("private", "個別レッスン"))
+    if cat == "rojin-home" and use("medical"): need.append(("medical", "医療・投薬対応"))
+    if cat == "pet-sitter":
+        more += [(k, l) for k, l in [("stay", "泊まりの留守番"), ("sameday", "当日も相談できる"), ("regular", "定期利用")] if use(k)]
     bx = box(cat, q_ph="都道府県・市区町村", opts=opts if (hub and opts) else None, animals=animals,
              who=who, when=when, need=(qsv, need), more=[("そのほかの条件", more)] if more else (), unit="件", noun=noun, go=go, guess=bool(hub and opts))
     em = h.find('<div class="emg">')
