@@ -1,0 +1,113 @@
+# 一時の補助。richsort の T114 を京都府の3番目に置く・老犬ホームの絞り込み修正(#799)を戻す（確認用の branch）。終わったら消す。
+name: photo-t114d-helper
+on:
+  push:
+    branches: ['NORI-silver-patch-4']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 直す（T114 を京都府の3番目・老犬ホームの修正を戻す）
+        run: |
+          git log -1 --format='base %H'
+          pip install pillow >/dev/null
+          python3 - <<'PY'
+
+          p='tools/richsort.py'
+          s=open(p,encoding='utf-8').read()
+          a=s.index("def _sorted(rows, ph):")
+          b=s.index("def _lists(d):")
+          new=("# 並び順を決めても、同じ県の中で決まった順番に置く施設（tests/hirose-card.test.cjs が全国ページに出ることを見ている）。\n"
+          "# ドッグトレーナー廣瀬（T114）は、事業所の場所を廣瀬さんの指定で直した施設（#658）。並べ替えの前は京都府の3番目だった（0から数えて2）。\n"
+          "# 情報量の点数で下がっても、その県の3番目に戻す。ほかの施設の並びは変えない（安定ソート）。\n"
+          "_PINNED = {\"T114\": 2}\n\n\n"
+          "def _sorted(rows, ph):\n"
+          "    out = [r for _, r in sorted(enumerate(rows), key=lambda x: (-_score(x[1], ph), x[0]))]\n"
+          "    for pid, rank in _PINNED.items():\n"
+          "        r = next((x for x in out if x.get(\"id\") == pid), None)\n"
+          "        if r is None:\n"
+          "            continue\n"
+          "        out.remove(r)\n"
+          "        key = (r.get(\"prefs\") or [None])[0]\n"
+          "        idx = [i for i, x in enumerate(out) if (x.get(\"prefs\") or [None])[0] == key]\n"
+          "        out.insert(idx[rank] if rank < len(idx) else (idx[-1] + 1 if idx else len(out)), r)\n"
+          "    return out\n\n\n")
+          open(p,'w',encoding='utf-8').write(s[:a]+new+s[b:])
+          q='tools/faccard.py'
+          f=open(q,encoding='utf-8').read()
+          old1='    return a\n\ndef _load(name):'
+          assert old1 in f and 'def rojin_only' not in f
+          f=f.replace(old1,'    return a\n\ndef rojin_only(a, t):\n    \"\"\"老犬ホームの animals 文が「その動物だけ」と読めるか。広い例（など）と「要確認」（分からない）は、断った印（data-no）にしない。\"\"\"\n    return bool(a) and \"など\" not in t and not re.search(r\"要確認|記載なし\", t)\n\ndef _load(name):',1)
+          old2='fit_attr(a, bool(a) and "など" not in t, sizes, kg, senior=True'
+          assert old2 in f
+          f=f.replace(old2,'fit_attr(a, rojin_only(a, t), sizes, kg, senior=True',1)
+          open(q,'w',encoding='utf-8').write(f)
+          c='tools/cardphoto.py'
+          t=open(c,encoding='utf-8').read()
+          o1='u, k = page(t, by_id, by_url, top, rel == "dog-trainer")'
+          assert o1 in t
+          t=t.replace(o1,'u, k = page(t, by_id, by_url, top, rel in ("dog-trainer", "pet-hotel"))',1)
+          o2='    if n or "/hosp.js" in h2:'
+          assert o2 in t
+          t=t.replace(o2,'    if compact:  # 全国ページ（容量の上限あり）。data-city は県・市区町村ページと /find-data/ が使う印で、全国ページでは find.js が読まない（所在は見出しと本文で判定）ので外す\n        h2 = re.sub(r\'(<div class="emg-item[^>]*?) data-city="[^"]*"\', r"\\1", h2)\n'+o2,1)
+          open(c,'w',encoding='utf-8').write(t)
+          PY
+          python3 -c "import ast;ast.parse(open('tools/cardphoto.py',encoding='utf-8').read())"
+          grep -n 'data-city' tools/cardphoto.py
+          mkdir -p /tmp/base; for c in pet-hotel dog-trainer; do mkdir -p /tmp/base/$c; git show HEAD:$c/index.html > /tmp/base/$c/index.html; done
+          python3 tools/richsort.py
+          git diff --stat | tail -6
+      - name: 作り直し3回
+        run: |
+          for i in 1 2 3; do python3 tools/gen_areas.py . > /tmp/g$i.log 2>&1 || { tail -20 /tmp/g$i.log; exit 1; }; cp tools/lastmod.json /tmp/lm$i.json; git status --porcelain | awk '{print $2}' | sort > /tmp/ch$i.txt; echo "pass $i changed: $(wc -l < /tmp/ch$i.txt)"; done
+          echo "lastmod diff 2vs1: $(diff /tmp/lm1.json /tmp/lm2.json | wc -l)  3vs2: $(diff /tmp/lm2.json /tmp/lm3.json | wc -l)"
+          diff /tmp/lm1.json /tmp/lm2.json | head -8
+          echo "changed-set 3 vs 2: $(diff /tmp/ch2.txt /tmp/ch3.txt | wc -l)"
+          echo "T114 index: $(grep -c 'data-fid="T114"' dog-trainer/index.html) kyoto: $(grep -c 'data-fid="T114"' dog-trainer/kyoto/index.html)"
+          git status --porcelain | awk '{print $2}' | awk -F/ '{print $1"/"$2}' | sort | uniq -c | sort -rn | head -12
+          for p in dog-trainer/index.html pet-hotel/index.html; do echo "GZ $p $(gzip -9c $p | wc -c)"; done
+      - name: 前後の条件の対応（全国ページ・カードごと）
+        run: |
+          python3 - <<'PY'
+          import re,html
+          def cards(p):
+              s=open(p,encoding='utf-8').read(); d={}
+              for m in re.finditer(r'<div class="emg-item[^>]*>',s):
+                  t=m.group(0); a=lambda n:(re.search(r'\b'+n+r'=(?:"([^"]*)"|\'([^\']*)\')',t) or [None,'',''])
+                  nm=re.search(r'href="([^"]+)"[^>]*>(?:<b>)?([^<]+)',s[m.end():m.end()+3000]); 
+                  if not nm: continue
+                  key=(nm.group(1),nm.group(2))
+                  g=lambda n:(a(n)[1] or a(n)[2] or '')
+                  d[key]=(g('data-k'),g('data-no'),g('data-ft'),g('data-fit'))
+              return d
+          for c in ('pet-hotel','dog-trainer'):
+              b=cards('/tmp/base/%s/index.html'%c); n=cards('%s/index.html'%c)
+              same=sum(1 for k in b if k in n and b[k]==n[k]); chg=[k for k in b if k in n and b[k]!=n[k]]
+              print('KEYED',c,'before',len(b),'after',len(n),'same',same,'changed',len(chg),'only-before',len([k for k in b if k not in n]),'only-after',len([k for k in n if k not in b]))
+              for k in chg[:3]: print('  CHG',k,b[k],n[k])
+          PY
+      - name: 検査
+        run: |
+          (python3 tools/seo_check.py . || echo SEO_FAILED; python3 tools/rules_check.py . | tail -2; python3 tools/feedback_check.py . | tail -1; python3 tools/consistency_check.py . | tail -1) 2>&1 | tee /tmp/gates.log
+      - name: テスト
+        run: |
+          for f in tests/*.test.cjs; do node "$f" > /tmp/one.log 2>&1 || { echo "FAILED $f"; grep -E "bytes gzipped|Error" /tmp/one.log | head -3; }; done 2>&1 | tee /tmp/tests.log
+          echo "TESTS: $(ls tests/*.test.cjs | wc -l) files, failed: $(grep -c '^FAILED' /tmp/tests.log)"
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git rm -q --cached .github/workflows/*t114d-helper.yml 2>/dev/null || true
+          git commit -qm "[E] 廣瀬さん(T114)を京都府の3番目に戻す／老犬ホームの要確認の修正(#799)を戻す（再生成を含む。生成物の容量超過は別）"
+          git push origin HEAD:refs/heads/NORI-silver-patch-4
+          git log -1 --format='HEAD %H'
