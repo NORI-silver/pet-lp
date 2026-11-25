@@ -255,6 +255,8 @@ def keys(cat, url):
         for k in ("a:small", "a:bird", "a:exotic"): put(k, _find(t, k))
     if cat == "sougi":
         for k in WHEN: put(k, _find(t, k))
+        # 合同・返骨の組み合わせに限って非対応。個別火葬の返骨可否には影響させない。
+        if r.get("group_returns_ashes") is False: put("合同火葬+お骨を返してもらえる", 2)
     if cat == "pet-sitter" and r.get("chain") in CHAIN:
         for k in CHAIN[r["chain"]]["keys"]:
             if k not in no: put(k, 1)
