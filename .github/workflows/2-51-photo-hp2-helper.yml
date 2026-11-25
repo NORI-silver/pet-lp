@@ -1,0 +1,80 @@
+# 一時の補助。ペットホテルの写真を入れるための容量の証明（data-flags を外しても中身が変わらないこと）。終わったら消す。
+name: photo-hp2-helper
+on:
+  push:
+    branches: ['photo-hp2']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 番号を外す
+        run: |
+          mv tools/[0-9]*-hp-uikit.patch /tmp/hp.patch
+          pip install pillow
+      - name: 基準（今のmainのまま作り直して、変わらないこと）
+        run: |
+          python3 tools/gen_areas.py . > /tmp/gen0.log 2>&1 || { tail -20 /tmp/gen0.log; exit 1; }
+          rm -rf tools/__pycache__
+          echo "changed files after baseline regen (excluding inputs): $(git status --porcelain | grep -v 'tools/c1data.json' | wc -l)"
+          git status --porcelain | grep -v 'tools/c1data.json' | head -5
+          mkdir -p /tmp/base && find . -name index.html -not -path './.git/*' -not -path './node_modules/*' | while read f; do mkdir -p "/tmp/base/$(dirname "$f")"; cp "$f" "/tmp/base/$f"; done
+          echo "base pages: $(find /tmp/base -name index.html | wc -l)"
+          python3 tools/gen_areas.py . > /tmp/gen0b.log 2>&1 || exit 1
+          rm -rf tools/__pycache__
+          nb=0; for f in $(cd /tmp/base && find . -name index.html); do cmp -s "/tmp/base/$f" "$f" || nb=$((nb+1)); done
+          echo "BASELINE NOISE: pages differing between two regenerations of main: $nb"
+      - name: data-flags を外すパッチを当てて、外した以外は1文字も変わらないことを確かめる
+        run: |
+          git apply --check /tmp/hp.patch
+          git apply /tmp/hp.patch
+          python3 tools/gen_areas.py . > /tmp/gen1.log 2>&1 || { tail -20 /tmp/gen1.log; exit 1; }
+          rm -rf tools/__pycache__
+          cat > /tmp/cmp.py <<'PY'
+          import os,re,sys
+          a_root,b_root,strip=sys.argv[1],sys.argv[2],sys.argv[3]=="strip"
+          pat=re.compile(r' data-flags="[^"]*"')
+          n=diff=flags=0;ex=[]
+          for r,_,fs in os.walk(b_root):
+              if '.git' in r.split(os.sep) or 'node_modules' in r.split(os.sep): continue
+              if 'index.html' not in fs: continue
+              p=os.path.join(r,'index.html');rel=os.path.relpath(p,b_root)
+              q=os.path.join(a_root,rel)
+              if not os.path.exists(q): diff+=1;ex.append(('missing',rel));continue
+              A=open(q,encoding='utf8').read();B=open(p,encoding='utf8').read()
+              if strip:
+                  A2=pat.sub('',A) if rel.startswith('pet-hotel') else A
+                  A=A2
+              n+=1
+              if A!=B:
+                  diff+=1
+                  if len(ex)<5: ex.append(rel)
+              if rel.startswith('pet-hotel'): flags+=B.count('data-flags=')
+          print('pages compared',n,'different',diff,'data-flags left in pet-hotel pages',flags,ex)
+          sys.exit(1 if diff else 0)
+          PY
+          python3 /tmp/cmp.py /tmp/base . strip || true
+          python3 - <<'PY2'
+          import os,re,difflib
+          pat=re.compile(r' data-flags="[^"]*"')
+          shown=0
+          for rel in ['pet-hotel/yamagata/index.html','pet-hotel/hokkaido/sapporo-shi/index.html','pet-hotel/kanagawa/fujisawa-shi/index.html']:
+              A=pat.sub('',open('/tmp/base/'+rel,encoding='utf8').read());B=open(rel,encoding='utf8').read()
+              print('=====',rel,len(A),len(B))
+              for l in list(difflib.unified_diff(A.replace('><','>\n<').split('\n'),B.replace('><','>\n<').split('\n'),lineterm='',n=0))[:16]: print(l[:300])
+          B=open('pet-hotel/yamagata/index.html',encoding='utf8').read()
+          for m in list(re.finditer('data-flags=',B))[:3]: print('FLAGLEFT',B[max(0,m.start()-250):m.start()+120])
+          PY2
+          true
+          mkdir -p /tmp/p1 && find . -name index.html -not -path './.git/*' -not -path './node_modules/*' | while read f; do mkdir -p "/tmp/p1/$(dirname "$f")"; cp "$f" "/tmp/p1/$f"; done
+      - name: コミットなし
+        run: echo done
