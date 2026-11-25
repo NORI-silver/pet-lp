@@ -14,6 +14,8 @@
 4. GitHub の開いているPRと、最近のコミット（同じところを二重に直さないため）。
 5. SEO の作業なら、SHIOKONBU SEO の `get_playbook(site="pet.shiokonbu.com")` と `change_log`。
 
+料金・提携フォーム・タクシー受付を扱うときは、[概算・提携フォーム・料金差の対応](fare-feedback.md) も作業前に読みます。
+
 ほかのAIの会話は自動では伝わりません。決めたこと・分かったことは、GitHub（PR・この引き継ぎメモ・pet-db）に残したものだけが共有されます。
 
 ## 2. 作業のしかた（どのAIも同じ）
