@@ -7,6 +7,7 @@
 # 自治体の情報は根拠として使い、ページの中心は「次に何をするか」と、くらべて決めるための材料にする。
 # 動き：/jichitai/jc.js（元は tools/jichitai.js）、データ：/jichitai/data.json（このファイルが作る）。電話番号は載せない。
 import json, os, re
+from facility_review_links import link as review_link
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT0 = os.path.dirname(HERE)
@@ -50,7 +51,7 @@ def detectives():
         if ex: txt += "。" + "。".join(dict.fromkeys(ex))
         ar = _areas(d)
         out.append({"name": d["name"], "url": d.get("price_url") or d.get("url"), "areas": ar, "plan": txt,
-                    "animals": "" if "明記なし" in d.get("animals", "") else d.get("animals", ""), "near": d.get("near") or [], "pref_url": d.get("pref_url") or "", "near_note": d.get("near_note") or "", "area_text": "全国" if ar == ["全国"] else (d.get("area") if d.get("area") not in (None, "", "記載なし") else d.get("base", ""))})
+                    "review_html": review_link("detective", d, "jc-src", scope="company"), "animals": "" if "明記なし" in d.get("animals", "") else d.get("animals", ""), "near": d.get("near") or [], "pref_url": d.get("pref_url") or "", "near_note": d.get("near_note") or "", "area_text": "全国" if ar == ["全国"] else (d.get("area") if d.get("area") not in (None, "", "記載なし") else d.get("base", ""))})
     return out
 
 # 警察の遺失届（警察庁「落とし物の届出・検索」2026-11-17 時点：46道府県は警察庁の共通のオンラインの受付、東京都は警視庁の受付）
@@ -205,7 +206,7 @@ def maigo(ctx):
     dets = detectives()
     wait = "".join(f'<tr><th>{e(a)}</th><td>{e(b)} <a class="jc-src" href="{e(u)}" target="_blank" rel="noopener">公式ページ ↗</a></td></tr>' for a, b, u in WAIT)
     det_rows = "".join(
-        f'<tr><th><a href="{e(d.get("price_url") or d["url"])}" target="_blank" rel="noopener">{e(d["name"])}</a></th>'
+        f'<tr><th><a href="{e(d.get("price_url") or d["url"])}" target="_blank" rel="noopener">{e(d["name"])}</a>{("<br>" + d["review_html"]) if d["review_html"] else ""}</th>'
         f'<td>{e(d["plan"])}' + (f'<br><small>{e(d["animals"])}</small>' if d["animals"] else "") + '</td>'
         f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + '</td></tr>' for d in dets)
     det_tbl = (f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域</th></tr></thead><tbody>{det_rows}</tbody></table></div>'

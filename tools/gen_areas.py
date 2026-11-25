@@ -2454,12 +2454,12 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
       if (window.gtag) gtag("event", "open_reviews", {});
       var body = new URLSearchParams(); body.set("kind", "reviews"); body.set("partner_id", id);
       fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
-        if (j && j.ok && !(j.rating > 0)) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
+        if (j && j.ok && (!(j.rating > 0) || !(j.count > 0))) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
         if (!j || !j.ok) throw 0;
         memo[id] = {rating: j.rating, count: j.count}; paint(box, memo[id]);
         var panel = box.querySelector(".review-panel"), open = box.querySelector(".partner-review-open");
         fill(panel, j); panel.hidden = false; open.setAttribute("aria-expanded", "true");
-      }).catch(function(e){ box.replaceChildren(el("p", "partner-review-src", e === "none" ? "Googleマップの口コミはまだありません" : "口コミを読み込めませんでした。時間をおいてもう一度お試しください")); });
+      }).catch(function(e){ if (e === "none") { box.remove(); return; } b.disabled = false; b.textContent = "口コミをもう一度"; });
     });
   }
   function paint(box, rv){

@@ -3,6 +3,7 @@
 # 「大型犬 ペットホテル」「猫 ペットホテル」で来る人のために、タイトル・説明・しぼりこみ・FAQに大型犬OK・猫専用の言葉は残す。
 # [C] 条件（large・cat_only・cat・vet・pickup・senior・night_staff・camera・run・max_kg）は公式サイトにはっきり書いてあるときだけ持つ（ない＝不明）。
 # 守ること：ホテルからお金をもらわない。順位・おすすめなし。料金は公式サイトに書いてある分だけ。電話番号なし。公式サイトの情報。データ：tools/hotels.json。
+from facility_review_links import link as review_link
 import visual as _V  # 「見ておく◯つ」は共通の部品（トレーナーと同じ見た目）
 import json, os
 import gen_grooming
@@ -112,7 +113,7 @@ def _card(e, h):
     for f in h.get("facts", []):
         if f["k"] in FACT_KEYS: extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
     city = f'<small>{e(h["city"])}</small>' if h.get("city") else ""
-    return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>{city}{extra}</div>')
+    return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>{city}{extra}{review_link("hotel", h, scope="facility")}</div>')
 
 def render(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
