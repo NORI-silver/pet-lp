@@ -301,7 +301,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     return out.filter(function(x){ return !!x.el; });
   }
   function goIntakeFields(card){
-    intakeEditing = true; openRefine("pet", true);
+    intakeEditing = true; syncLite(false); openRefine("pet", true);
     var code = (card.intake_pending || {}).code;
     var first = pendingFields(card)[0];
     var target = code === "lead_time" ? $("date") : /route|road/.test(code || "") ? $("pickup") : first && first.el || $("pickup");
@@ -316,6 +316,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var shown = quotesLoaded ? bookable && picked : lastShown; // ご連絡先は、問い合わせできる会社を選んでから（3項目フォーム）。調べ直しているあいだは前のまま
     lastShown = shown;
     $("contactBox").hidden = !shown;
+    syncLite(!prefOpen() && !shown && !intakeEditing);
     if (shown && !prefOpen()) $("openNote").hidden = true; // ほかの県の会社が、お迎えか行き先の近くにいるとき
     var none = $("contactNone");
     if (!bookable && quotesLoaded) {
@@ -326,6 +327,11 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       none.hidden = false;
     } else if (none) none.hidden = true;
   }
+  // 入力を減らすとき：たずねない欄を隠して、入っていなくても先へ進めるようにする（送れる会社が出たら元に戻す）
+  function syncLite(lite){
+    form.classList.toggle("lite", lite);
+    form.querySelectorAll(".opt-lite input, .opt-lite select, .opt-lite textarea").forEach(function(el){ el.disabled = lite; });
+  }
   function syncOpenNote(){
     var v = $("pref").value, n = $("openNote");
     n.hidden = prefOpen();
@@ -333,7 +339,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     syncContact();
   }
   var lastBookable = false, lastShown = false, lastPetsWide = true;
-  // 判定に使う条件は初期表示する（Nori 2026-11-26）。任意の犬種・年齢だけ折りたたむ。
+  // ── 3項目フォーム（2026-11-23 策のGO）：最初は「どこから・どこへ・いつ」だけ。ほかは候補の上のボタンで開く ──
   function openRefine(which, quiet){
     var was = form.classList.contains("s1");
     form.classList.remove("s1"); $("refineBar").hidden = true;
@@ -1018,14 +1024,15 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
         '<p style="margin:6px 0 0;font-size:.8rem;color:var(--ink-3)">乗せられる動物は会社ごとに違います。乗せられる会社を先に出します。</p></div></div>' +
       '<div class="f"><label for="' + k + '_weight">体重（kg）<span class="need">必須</span></label><input type="number" id="' + k + '_weight" name="' + k + '_weight" min="0.01" max="120" step="any" inputmode="decimal" placeholder="例：8（小さな子は 0.3 など）" required></div>' +
       '<div class="f opt-lite"><span class="lbl">ケージ・キャリー<span class="need">必須</span></span>' + seg(k + "_cage", [["持ち込む","持っていく"],["なし","なしで乗りたい"],["借りたい","借りたい"],["どれでも","あり・なし どちらでもいい"]], true, "どれでも") + '</div>' +
-      '<details class="more opt-lite"><summary>犬種・年齢など（任意）</summary><div class="two">' +
+      '<details class="more opt-lite"><summary>犬種・年齢・予防接種など（任意）</summary><div class="two">' +
         '<div class="f opt-lite"><label for="' + k + '_breed"><span class="breed-lbl">犬種・猫種</span><span class="any">わかれば</span></label><div class="cb"><input type="text" id="' + k + '_breed" name="' + k + '_breed" class="breed" placeholder="選ぶか、入力してしぼりこみ" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><ul class="cb-list" role="listbox" hidden></ul></div></div>' +
         '<div class="f opt-lite"><label for="' + k + '_age">年齢<span class="any">わかれば</span></label><input type="number" id="' + k + '_age" name="' + k + '_age" min="0" max="40" inputmode="numeric" placeholder="例：12"></div>' +
         '<div class="f opt-lite"><span class="lbl">性別<span class="any">わかれば</span></span>' + seg(k + "_sex", [["オス","男の子"],["メス","女の子"]], false) + '</div>' +
-      '</div></details>' +
+      '</div>' +
       '<div class="f opt-lite"><span class="lbl">予防接種<span class="any">済んでいるものにチェック</span></span><div class="chks">' +
         '<label class="chk"><input type="checkbox" name="' + k + '_vac" value="1"> 混合ワクチン</label>' +
         '<label class="chk rabies"><input type="checkbox" name="' + k + '_rabies" value="1"> 狂犬病の予防注射</label></div></div>' +
+      '</details>' +
       '<div class="f opt-lite"><span class="lbl">介護は必要ですか？<span class="need">必須</span></span>' + seg(k + "_care", [["不要","いらない"],["必要","必要（歩くのがつらい等）"]], true, "不要") +
         '<div class="care-box" hidden><span class="lbl">どんな手助けが必要ですか？<span class="any">あてはまるものすべて</span></span><div class="chks">' +
         CARE_OPTS.map(function(c){ return '<label class="chk"><input type="checkbox" name="' + k + '_care_need" value="' + c + '"> ' + c + '</label>'; }).join('') + '</div>' +
@@ -1042,6 +1049,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
       c.querySelector(".pet-h b").textContent = n > 1 ? (i + 1) + "匹目" : "ペットの情報";
     });
     $("petHint").hidden = n > 0;
+    if (form.classList.contains("lite")) petsBox.querySelectorAll(".opt-lite input, .opt-lite select").forEach(function(el){ el.disabled = true; });
   }
   countSel.addEventListener("change", function(){ setPetCount(countSel.value); });
   setPetCount(countSel.value); // 最初から1匹分の欄を出す（いちばん多い1匹なら、頭数を選ぶ手間がいらない）

@@ -423,6 +423,9 @@ footer a{color:var(--ink-2)}
 .emg-guess{margin:6px 0 0;font-size:.8rem;color:var(--ink-2)}
 .emg-guess[hidden]{display:none}
 .open-note{margin:8px 0 0;background:#f7f4f1;border-radius:12px;padding:8px 12px;font-size:.84rem;line-height:1.6;color:var(--ink)}
+#petForm.lite .opt-lite{display:none}
+#petForm.s1 .s1-hide{display:none}
+#petForm.s1 .pref-pick:not(.show){display:none}
 .see-btn{display:block;width:100%;margin:6px 0 4px;padding-inline:12px;box-shadow:0 6px 18px rgba(255,106,26,.24);text-wrap:balance}
 .see-sub{margin:0 0 12px;text-align:center;font-size:.8rem;color:var(--ink-3)}
 .refine-bar{margin:4px 0 14px}
