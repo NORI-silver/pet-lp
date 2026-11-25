@@ -6,6 +6,8 @@ from urllib.parse import urlencode
 # 同じ店名でも住所が違うSOS渋谷店・口コミ0件の箱・ドックは含めない。
 _PLACES = {
     ("sougi", "S06fda3"): ("八千代ペット霊園 方丈苑妙見寺", "ChIJK03V3Rt-ImARq3hMbg4sH18"),  # https://ypet.info/price 八千代市吉橋1457
+    ("sougi", "S3f9df6"): ("平和会ペットメモリアルパーク", "ChIJgU4Pyv_5GGARomAhA1JZyyg"),  # https://www.heiwakai.co.jp/about/access/ 隣接する青葉区・麻生区の両住所と電話が同じ
+    ("sougi", "S0b9ae7"): ("海岸寺ペット霊園やすらぎの里", "ChIJBzMpw4Z8UTURnqmUyzc3uTA"),  # https://kagawa-pet.com/pages/19/ https://www.aeonlife-petsou.jp/reien/kagawa-pet 多度津の霊園。高松事務所は別
     ("emergency", "E04"): ("ペットタクシーAnimals", "ChIJnW8VOENbGGARfeJAug75NII"),  # https://h12150825.wixsite.com/taxi-animals 公式と屋号・電話が一致
     ("emergency", "E15"): ("ペットタクシーZERO", "ChIJ3fhbnrBxAWARfATSlLlORiE"),  # https://zero808.co.jp/pettaxi/ 公式と所在地・電話が一致
     ("rojin", "R048"): ("まるねこ", "ChIJHXNDl1lhGGAROzTX8FtPFKk"),  # https://maruneco.jp/cathotel/ 羽田3-16-10 白山荘104（施設全体）
