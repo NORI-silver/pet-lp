@@ -18,12 +18,16 @@ def sougi_tags(f):
     if "個別火葬" in s: t.append("個別火葬")
     if "合同火葬" in s: t.append("合同火葬")
     if "立ち会い火葬" in s: t.append("立ち会い")
+    if "お骨を返してもらえる" in s: t.append("お骨を返してもらえる")
+
     if "お迎え" in s or "訪問火葬" in s: t.append("お迎え・訪問火葬")
     if s & {"霊園", "納骨", "納骨堂"}: t.append("霊園・納骨")
     if f.get("price"):
         t.append("料金を公開")
         # 費用の帯：公式の料金の文に出てくる一番小さい金額（◯円から始められるか）。帯は累積で付ける（uikit の SVC と対）
         amounts = [int(x.replace(",", "")) for x in re.findall(r"([\d,]{4,})\s*(?:円|〜|～)", f["price"])]  # 「24,750〜30,030円」の下限も取る
+        if f.get("budget_example_only"): amounts = []
+
         if amounts:
             m = min(amounts)
             for band, key in ((15000, "p15"), (25000, "p25"), (40000, "p40")):

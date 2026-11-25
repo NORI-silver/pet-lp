@@ -99,9 +99,14 @@ def _cmp(e, f):
         body += (f"<tr><td>{nm}</td><td>{e(x['city'])}</td><td>{yen(x, 'kobetsu')}</td><td>{yen(x, 'tachiai')}</td><td>{yen(x, 'goudou')}</td>"
                  f"<td>{mark(x, '立ち会い火葬')}</td><td>{'○' if _has(x, 'お迎え') or _has(x, '訪問火葬') else ''}</td><td>{'○' if _has(x, '霊園') or _has(x, '納骨堂') else ''}</td></tr>")
     nat = "、".join(f"{lab}{n['med']}（{n['n']}か所）" for k, lab, n in TYP)
+    cmp_price_note = (
+        "料金は各施設が公開している掲載例です。どうぶつの森霊園の個別火葬欄は8kg以下の例で、最安値ではありません。"
+        if any(x["id"] == "S50a5de" for x in same)
+        else f"料金は公式サイトに書いてある、猫や小型犬など「いちばん小さい区分」の金額です（全国の真ん中は {e(nat)}）。"
+    )
     return (f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">{e(f["pref"])}のほかのペット火葬・霊園とくらべる</h2><div class="tbl"><table class="pp-tbl cmp"><thead><tr>'
             '<th>名前</th><th>市区町村</th><th>個別（おまかせ）</th><th>立ち会い火葬</th><th>合同火葬</th><th>立ち会い</th><th>お迎え</th><th>霊園・納骨堂</th></tr></thead>'
-            f'<tbody>{body}</tbody></table></div><p class="emg-tips-note">料金は公式サイトに書いてある、猫や小型犬など「いちばん小さい区分」の金額です（全国の真ん中は {e(nat)}）。'
+            f'<tbody>{body}</tbody></table></div><p class="emg-tips-note">{cmp_price_note}'
             '体重の区分・税込かどうか・お迎えの料金の含み方は施設ごとに違います。○は公式サイトの情報、空欄は書いていない・見つからないという意味です。並びは順位ではありません。</p></div>')
 
 
@@ -134,10 +139,22 @@ def render(ctx, f):
             '<p class="emg-note"><a href="https://kagawa-pet.com/pages/26/" target="_blank" rel="noopener">海岸寺ペット霊園の料金表</a>'
             '（2026年11月25日確認）</p></section>'
         )
+    if f["id"] == "S50a5de":
+        title = f"{nm}（静岡市）｜ペット火葬料金・返骨・納骨｜ペットタクシー予約窓口"
+        desc = "静岡市葵区のどうぶつの森霊園。8kg以下の個別火葬36,300円（税込）の掲載例と体重別料金、合同との返骨・立ち会いの違い、納骨とお迎えを確認できます。"
+        choice = (
+            '<section class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">返骨や立ち会いを希望する場合</h2>'
+            '<p>お骨を持ち帰りたい場合は個別火葬。合同火葬ではお骨は返りません。'
+            '体重別料金で区分を確認し、家族で収骨するか、霊園に納めるか、お迎えを頼むかを分けて相談すると費用を比べやすくなります。</p>'
+            '<p><a href="/sougi/shizuoka/">静岡県のほかの火葬場・霊園を比較</a> · '
+            '<a href="/guide/pet-memorial/">納骨・手元供養の選び方</a></p></section>'
+        )
     pts = [lead1]
     g = GS._prices(f.get("price"))
     for k, lab, nat in TYP:
-        if k in g:
+        if k in g and f["id"] == "S50a5de":
+            pts.append(f"料金の掲載例：{f['price']}。最安値ではありません。体重別料金は下の表で確認できます。")
+        elif k in g:
             pts.append(f"{nm}の{lab}は、公式サイトの料金の例で{g[k]:,}円からです（いちばん小さい区分。ほかの施設の真ん中は{nat['med']}）。")
     if _has(f, "お迎え") or _has(f, "訪問火葬"):
         pts.append(f"{nm}は、{'家までのお迎え' if _has(f, 'お迎え') else ''}{'・' if _has(f, 'お迎え') and _has(f, '訪問火葬') else ''}{'家の近くでの訪問火葬' if _has(f, '訪問火葬') else ''}を公式サイトに書いています。")

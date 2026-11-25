@@ -258,6 +258,12 @@ def keys(cat, url):
             put(k, _find(t, k))
     for k in FAC.get(cat, []):
         put(k, _find(t, k))
+    if cat == "rojin-home":
+        # 映像のライブ視聴は飼い主向けであることを、出典付きの専用項目で確認する。
+        # 防犯カメラ、施設側の見守り、写真・動画の報告からは推定しない。
+        live = r.get("care_evidence", {}).get("owner_live_camera", {})
+        if live.get("src") and live.get("checked") and "dog" in live.get("animals", []):
+            put("owner_live_dog", 1)
     if cat == "pet-hotel":
         # 体重帯（データに体重の上限 max_kg が書いてあるホテルだけ。上限が帯の上まであれば合う、上限が帯の下より小さければ合わない）
         kg = r.get("max_kg") or 0
@@ -272,6 +278,8 @@ def keys(cat, url):
         for k in ("a:small", "a:bird", "a:exotic"): put(k, _find(t, k))
     if cat == "sougi":
         for k in WHEN: put(k, _find(t, k))
+        # 合同・返骨の組み合わせに限って非対応。個別火葬の返骨可否には影響させない。
+        if r.get("group_returns_ashes") is False: put("合同火葬+お骨を返してもらえる", 2)
     if cat == "pet-sitter" and r.get("chain") in CHAIN:
         for k in CHAIN[r["chain"]]["keys"]:
             if k not in no: put(k, 1)

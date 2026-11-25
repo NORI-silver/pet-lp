@@ -449,7 +449,9 @@ def generic_list(h, cat, hub):
         for k, l in [("agility", "アジリティ"), ("dance", "ドッグダンス"), ("nosework", "ノーズワーク"),
                      ("disc", "ディスクドッグ"), ("competition", "競技会・大会対策"), ("seminar", "セミナー・講座がある")]:
             if use(k): need.append((k, l))
-    if cat == "rojin-home" and use("medical"): need.append(("medical", "医療・投薬対応"))
+    if cat == "rojin-home":
+        if use("medical"): need.append(("medical", "医療・投薬対応"))
+        if cnt.get("owner_live_dog"): need.append(("owner_live_dog", "家族がライブ映像を見られる（犬）"))
     if cat == "pet-sitter":
         more += [(k, l) for k, l in [("stay", "泊まりの留守番"), ("sameday", "当日も相談できる"), ("regular", "定期利用")] if use(k)]
     if use("fee"): more.append(("fee", "料金の目安が分かる"))
