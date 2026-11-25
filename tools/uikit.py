@@ -225,7 +225,7 @@ HOTEL = dict(
     animals=("どの子を預けますか？", [("a:dog", "犬"), ("cat", "猫"), ("cat_only", "猫専用")]),
     who=("うちの子にあてはまるもの", [("big", "大型犬（25kg以上）"), ("sen", "シニア・介護が必要"), ("pup", "子犬・子猫"), ("med", "薬・持病がある"), ("multi", "2頭以上いる"), ("shy", "かむ・ほえる・こわがり")]),
     need=("どんなホテルをお探しですか？", [("vet", "病院が併設"), ("pickup", "送迎あり"), ("night_staff", "夜もスタッフ"), ("staff24", "24時間見守り・スタッフ常駐"), ("private_room", "個室")]),
-    more=[("設備", [("camera", "カメラで見守り"), ("run", "ドッグラン"), ("cagefree", "ケージフリー"), ("walk", "散歩つき"), ("longstay", "長期OK")]),
+    more=[("設備", [("camera", "カメラで見守り"), ("run", "ドッグラン"), ("cagefree", "ケージフリー"), ("walk", "散歩つき"), ("longstay", "長期OK"), ("smallonly", "小型犬のみ")]),
           ("体重（上限が書いてあるホテルだけ）", [("wb5", "5kg未満"), ("wb10", "5〜10kg"), ("wb25", "10〜25kg")])],
     go="この条件でホテルを探す")
 
@@ -444,7 +444,11 @@ def generic_list(h, cat, hub):
     need = [(k, l) for k, l, _ in sv if use(k)]
     more = [(k, l) for k, l, _ in mv if use(k)]
     # 公式サイトの文から決める条件（ownerfit の FAC）を、サービスの内容・そのほかの条件にも出す（2026-11-24 全面改修）
-    if cat == "dog-trainer" and use("private"): need.append(("private", "個別レッスン"))
+    if cat == "dog-trainer":
+        if use("private"): need.append(("private", "個別レッスン"))
+        for k, l in [("agility", "アジリティ"), ("dance", "ドッグダンス"), ("nosework", "ノーズワーク"),
+                     ("disc", "ディスクドッグ"), ("competition", "競技会・大会対策"), ("seminar", "セミナー・講座がある")]:
+            if use(k): need.append((k, l))
     if cat == "rojin-home" and use("medical"): need.append(("medical", "医療・投薬対応"))
     if cat == "pet-sitter":
         more += [(k, l) for k, l in [("stay", "泊まりの留守番"), ("sameday", "当日も相談できる"), ("regular", "定期利用")] if use(k)]
