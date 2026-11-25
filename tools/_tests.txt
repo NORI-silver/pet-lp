@@ -1,0 +1,138 @@
+== tests/anon-demo.test.cjs
+== tests/cage.test.cjs
+== tests/checks.test.cjs
+== tests/cocotaku-fare-release-gate.test.cjs
+== tests/dash.test.cjs
+== tests/display-only.test.cjs
+== tests/distance.test.cjs
+== tests/far-pickup.test.cjs
+== tests/filter-key-dedupe.test.cjs
+== tests/fit-attr.test.cjs
+== tests/fixed-fare.test.cjs
+== tests/ft-tags-dedupe.test.cjs
+== tests/fuwafuwa.test.cjs
+== tests/hinan-decision.test.cjs
+== tests/hinan-municipal-decisions.test.cjs
+== tests/hirose-card.test.cjs
+FAILED tests/hirose-card.test.cjs
+node:internal/assert/utils:77
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: dog-trainer/index.html
+    at Object.<anonymous> (/home/runner/work/pet-lp/pet-lp/tests/hirose-card.test.cjs:7:10)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.3
+== tests/hours.test.cjs
+== tests/info-light.test.cjs
+FAILED tests/info-light.test.cjs
+node:internal/assert/utils:77
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: pet-hotel/index.html is 66663 bytes gzipped (limit 61440): link to prefecture pages instead of listing everything
+    at check (/home/runner/work/pet-lp/pet-lp/tests/info-light.test.cjs:16:10)
+    at walk (/home/runner/work/pet-lp/pet-lp/tests/info-light.test.cjs:10:164)
+    at /home/runner/work/pet-lp/pet-lp/tests/info-light.test.cjs:22:40
+    at Array.forEach (<anonymous>)
+    at Object.<anonymous> (/home/runner/work/pet-lp/pet-lp/tests/info-light.test.cjs:22:6)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.3
+== tests/kasukabe-intake.test.cjs
+== tests/kasukabe-numeric-intake-offline.test.cjs
+== tests/kasukabe-pickup-rounding.test.cjs
+== tests/kasukabe-preview-card.test.cjs
+== tests/kyoto-numeric-intake-offline.test.cjs
+== tests/kyoto-pickup.test.cjs
+== tests/match-audit.test.cjs
+== tests/multi-pick.test.cjs
+== tests/natl-photo-hydrate.test.cjs
+== tests/open-partner.test.cjs
+== tests/partner-animals.test.cjs
+== tests/partner-intake-preview.test.cjs
+== tests/partner-match.test.cjs
+== tests/pconf.test.cjs
+== tests/pet-serp-brand.test.cjs
+== tests/pinfo.test.cjs
+== tests/place-match.test.cjs
+== tests/purge.test.cjs
+== tests/quote-expiry.test.cjs
+== tests/regular-taxi.test.cjs
+== tests/reviews.test.cjs
+== tests/ride-check.test.cjs
+== tests/road.test.cjs
+== tests/rojin-only-unknown.test.cjs
+FAILED tests/rojin-only-unknown.test.cjs
+
+✖ failing tests:
+
+test at tests/rojin-only-unknown.test.cjs:4:1
+✖ rojin only-flag: explicit-only stays, broad example and unknown do not (23.386386ms)
+  Error: Command failed: python3 -c 
+  import sys
+  sys.path.insert(0,'tools')
+  import faccard
+  def f(t): return faccard.rojin_only(faccard._kinds_in(t), t)
+  assert f('犬のみ（大型犬30kgまで）') is True
+  assert f('猫だけ') is True
+  assert f('犬') is True
+  assert f('犬・猫') is True
+  assert f('犬・猫・小動物（うさぎ・鳥など）') is False
+  assert f('犬（ほかの動物は要確認）') is False
+  assert f('猫（ほかの動物は要確認）') is False
+  assert f('公式サイトに記載なし（老犬介護が中心）') is False
+  print('ok')
+  Traceback (most recent call last):
+    File "<string>", line 6, in <module>
+    File "<string>", line 5, in f
+  AttributeError: module 'faccard' has no attribute 'rojin_only'
+  
+      at genericNodeError (node:internal/errors:986:15)
+      at wrappedFn (node:internal/errors:540:14)
+      at checkExecSyncError (node:child_process:943:11)
+      at execFileSync (node:child_process:979:15)
+      at TestContext.<anonymous> (/home/runner/work/pet-lp/pet-lp/tests/rojin-only-unknown.test.cjs:19:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    status: 1,
+    signal: null,
+    output: [ null, '', `Traceback (most recent call last):\n  File "<string>", line 6, in <module>\n  File "<string>", line 5, in f\nAttributeError: module 'faccard' has no attribute 'rojin_only'\n` ],
+    pid: 3037,
+    stdout: '',
+    stderr: `Traceback (most recent call last):\n  File "<string>", line 6, in <module>\n  File "<string>", line 5, in f\nAttributeError: module 'faccard' has no attribute 'rojin_only'\n`
+  }
+== tests/round-split.test.cjs
+== tests/scores.test.cjs
+== tests/selection.test.cjs
+== tests/seo-selection-intents.test.cjs
+== tests/taxi-card-latency.test.cjs
+== tests/taxi-favorites.test.cjs
+== tests/withdraw.test.cjs
