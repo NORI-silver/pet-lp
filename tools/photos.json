@@ -43215,22 +43215,6 @@
   },
   {
    "cat": "hotel",
-   "id": "PH-HT035",
-   "name": "ペットサロン amitie",
-   "url": "https://www.amitie-maeda.com/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/hotel/PH-HT035_1.webp"
-   ],
-   "credit": "写真：ペットサロン amitie",
-   "ratio": [
-    0.893
-   ]
-  },
-  {
-   "cat": "hotel",
    "id": "PH-HT038",
    "name": "Dear Dog",
    "url": "http://deardog.ciao.jp/access",
@@ -43451,12 +43435,10 @@
    "checked": "2026-11-24",
    "photos": [
     "/img/fac/hotel/PH005_1.webp",
-    "/img/fac/hotel/PH005_2.webp",
-    "/img/fac/hotel/PH005_3.webp"
+    "/img/fac/hotel/PH005_2.webp"
    ],
    "credit": "写真：ミュアン",
    "ratio": [
-    1.907,
     1.815,
     1.243
    ]
@@ -43506,14 +43488,10 @@
    "src": "2026-11-24",
    "checked": "2026-11-24",
    "photos": [
-    "/img/fac/hotel/PH-HT048_1.webp",
-    "/img/fac/hotel/PH-HT048_2.webp",
-    "/img/fac/hotel/PH-HT048_3.webp"
+    "/img/fac/hotel/PH-HT048_1.webp"
    ],
    "credit": "写真：ポックル動物病院",
    "ratio": [
-    1.601,
-    1.601,
     1.601
    ]
   },
@@ -43798,12 +43776,10 @@
    "photos": [
     "/img/fac/hotel/PH-HT112_1.webp",
     "/img/fac/hotel/PH-HT112_2.webp",
-    "/img/fac/hotel/PH-HT112_3.webp",
-    "/img/fac/hotel/PH-HT112_4.webp"
+    "/img/fac/hotel/PH-HT112_3.webp"
    ],
    "credit": "写真：株式会社T・K DOG SCHOOL",
    "ratio": [
-    1.907,
     1.567,
     1.79,
     1.253
@@ -43836,13 +43812,11 @@
    "src": "2026-11-24",
    "checked": "2026-11-24",
    "photos": [
-    "/img/fac/hotel/PH-HT116_1.webp",
-    "/img/fac/hotel/PH-HT116_2.webp"
+    "/img/fac/hotel/PH-HT116_1.webp"
    ],
    "credit": "写真：ベリードッグ",
    "ratio": [
-    1.333,
-    2.0
+    1.333
    ]
   },
   {
@@ -43965,24 +43939,6 @@
   },
   {
    "cat": "trimming",
-   "id": "G-HT035",
-   "name": "Mr.Seta-Kamuy",
-   "url": "https://mrsetakamuy.wixsite.com/mrsetakamuy",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trimming/G-HT035_1.webp",
-    "/img/fac/trimming/G-HT035_2.webp"
-   ],
-   "credit": "写真：Mr.Seta-Kamuy",
-   "ratio": [
-    0.75,
-    0.75
-   ]
-  },
-  {
-   "cat": "trimming",
    "id": "G-HT171",
    "name": "ドッグサロンRUSK(ラスク)",
    "url": "https://otaru-dogsalon-rusk.com/",
@@ -44029,12 +43985,10 @@
     "/img/fac/trimming/G-HT175_1.webp",
     "/img/fac/trimming/G-HT175_2.webp",
     "/img/fac/trimming/G-HT175_3.webp",
-    "/img/fac/trimming/G-HT175_4.webp",
-    "/img/fac/trimming/G-HT175_5.webp"
+    "/img/fac/trimming/G-HT175_4.webp"
    ],
    "credit": "写真：HuruHuruDogSalon&Spa",
    "ratio": [
-    1.779,
     1.779,
     1.779,
     1.779,
