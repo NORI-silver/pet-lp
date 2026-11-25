@@ -530,7 +530,7 @@ function sendWave_(id, stage) {
   targets = targets.filter(function (pt) {
     var target = pt;
     // 公式LINEの掲載情報は残すが、検証済みメール以外に申込内容を流さない。
-    if (COCOTAKU_INTAKE_INTEGRATION_READY && pt.id === KASUKABE_INTAKE_ID) {
+    if (pt.id === KASUKABE_INTAKE_ID) {
       var mailbox = kasukabeIntakeMailbox_();
       if (!mailbox || !kasukabeIntakeFits_(pt, r) || String(pt.email || '').trim().toLowerCase() !== mailbox) return false;
       target = Object.assign({}, pt, {email:mailbox, lineId:'', oaId:'', lineUrl:''});
@@ -3566,15 +3566,34 @@ function selectionValid_(p) {
 
 // 春日部の受付：照合済みの店舗メールへ、利用者が選んだ依頼だけを送る。
 // 結合テスト用の未公開実装。通知先の確認なしで、本番の設定から開けないようにする。
-var COCOTAKU_INTAKE_INTEGRATION_READY = false;
+var COCOTAKU_INTAKE_INTEGRATION_READY = false; // オフラインテストだけが切り替える
+var COCO_INTAKE_SHEET_VALUES_;
+function cocoIntakeSetting_(branch) {
+  if (COCO_INTAKE_SHEET_VALUES_ === undefined) {
+    COCO_INTAKE_SHEET_VALUES_ = {};
+    try {
+      var tab = sheet_('設定'), rows = tab ? tab.getRange(2, 1, 9, 2).getValues() : [];
+      rows.forEach(function(r) {
+        var k = String(r[0]).trim();
+        if (k !== 'COCOタク春日部受付メール' && k !== 'COCOタク京都受付メール') return;
+        // 同じキーが複数行にあれば、どれが正しいか分からないため受付を閉じる。
+        COCO_INTAKE_SHEET_VALUES_[k] = Object.prototype.hasOwnProperty.call(COCO_INTAKE_SHEET_VALUES_, k) ?
+          '' : String(r[1] || '').trim().toLowerCase();
+      });
+    } catch (e) {}
+  }
+  return COCO_INTAKE_SHEET_VALUES_['COCOタク'+branch+'受付メール'] || '';
+}
 var KASUKABE_INTAKE_ID = 'P014', KASUKABE_DISPLAY_ID = 'D853ae97';
 function kasukabeIntakeMailbox_() {
-  try {
-    var ps = PropertiesService.getScriptProperties();
-    if (!COCOTAKU_INTAKE_INTEGRATION_READY || ps.getProperty('KASUKABE_INTAKE_ENABLED') !== '1') return '';
-    var email = String(ps.getProperty('KASUKABE_INTAKE_VERIFIED_EMAIL') || '').trim().toLowerCase();
-    return /^[^@\s]+@pet-taxi-kasukabe\.com$/.test(email) ? email : '';
-  } catch (e) { return ''; }
+  var email = cocoIntakeSetting_('春日部');
+  if (COCOTAKU_INTAKE_INTEGRATION_READY && !email) {
+    try {
+      var ps = PropertiesService.getScriptProperties();
+      if (ps.getProperty('KASUKABE_INTAKE_ENABLED') === '1') email = String(ps.getProperty('KASUKABE_INTAKE_VERIFIED_EMAIL') || '').trim().toLowerCase();
+    } catch (e) {}
+  }
+  return /^[^@\s]+@pet-taxi-kasukabe\.com$/.test(email) ? email : '';
 }
 function kasukabeIntakeFits_(pt, r) {
   var email = kasukabeIntakeMailbox_();
@@ -3592,6 +3611,9 @@ function kasukabeIntakeFits_(pt, r) {
 // 公開の店舗カードと、通知先として審査済みの提携行を明示的に結ぶ。設定なし・行の差し替えでは閉じる。
 var KYOTO_DISPLAY_ID = 'D7f0d2a2';
 function kyotoIntakeBinding_() {
+  var pilotMail = cocoIntakeSetting_('京都');
+  if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(pilotMail)) return {id:'P067',email:pilotMail,enabled:true};
+  if (!COCOTAKU_INTAKE_INTEGRATION_READY) return null;
   try {
     var ps = PropertiesService.getScriptProperties();
     var id = String(ps.getProperty('KYOTO_INTAKE_PARTNER_ID') || '').trim();
@@ -3655,8 +3677,8 @@ function pinnedIntakePrice_(displayId, p) {
 function selectionPrice_(pt, p) {
   if (pt.id === KASUKABE_INTAKE_ID) {
     if (!kasukabeIntakeFits_(pt, selectionRide_(p))) return null;
-    var automatic = false;
-    try { automatic = COCOTAKU_INTAKE_INTEGRATION_READY && PropertiesService.getScriptProperties().getProperty('KASUKABE_AUTOMATIC_QUOTE_ENABLED') === '1'; } catch (e) {}
+    var automatic = !!cocoIntakeSetting_('春日部');
+    try { automatic = automatic || COCOTAKU_INTAKE_INTEGRATION_READY && PropertiesService.getScriptProperties().getProperty('KASUKABE_AUTOMATIC_QUOTE_ENABLED') === '1'; } catch (e) {}
     if (automatic) return pinnedIntakePrice_(KASUKABE_DISPLAY_ID, p);
     return {amount:null,text:'料金は未確定です。会社が空き状況と確定料金をお返事します',night:''};
   }

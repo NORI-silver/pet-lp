@@ -28,7 +28,12 @@ const a={lat:35.97,lng:139.75}, b={lat:35.91,lng:139.72};
 ctx.roadKm_=()=>5;
 p.route_details=JSON.stringify({km:10,backKm:10,from:a,to:b});
 assert.equal(ctx.COCOTAKU_INTAKE_INTEGRATION_READY,false);
-ctx.COCOTAKU_INTAKE_INTEGRATION_READY=true; // 結合テストだけ
+assert.equal(find(p),undefined, 'stored script properties alone cannot launch production');
+ctx.sheet_ = tab => {
+  assert.equal(tab,'設定');
+  return {getRange:(...r)=>{assert.deepEqual(r,[2,1,9,2]); return {getValues:()=>[['COCOタク春日部受付メール',mailbox]]};}};
+};
+ctx.COCO_INTAKE_SHEET_VALUES_=undefined;
 pt.oaId='@offline-directory-only';
 pt.lineUrl='https://example.invalid/official-line';
 const card=find(p);
@@ -96,6 +101,7 @@ ctx.sendWave_('OFFLINE-FIXTURE',1);ctx.sendWave_('OFFLINE-FIXTURE',2);
 assert.equal(targets.filter(x=>x==='P014').length,1);
 row.data['通知した提携先']='';row.data['指定した提携先ID']='P014';row.data['同乗人数']='3人';
 ctx.sendWave_('OFFLINE-FIXTURE',1);assert.equal(targets.filter(x=>x==='P014').length,1);
+ctx.COCO_INTAKE_SHEET_VALUES_={};
 delete props.KASUKABE_INTAKE_ENABLED;
 assert.equal(find(p),undefined);
 assert.equal(ctx.validateSelection_(choose).error,'selection_unavailable');
