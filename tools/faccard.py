@@ -95,7 +95,7 @@ FOR_TEXT = {
 }
 
 # ---- 公式サイトの情報から「合う・合わない」のデータを作る ----
-def fit_attr(animals=None, only=False, sizes=None, max_kg=None, senior=None, puppy=None, animals_text=""):
+def fit_attr(animals=None, only=False, sizes=None, max_kg=None, senior=None, puppy=None, animals_text="", fee=False):
     """生成側からカードに足す属性（' data-fit="…"'）。書いていないことは渡さない（＝要確認）。"""
     d = {}
     if animals: d["a"] = list(dict.fromkeys(animals))
@@ -105,8 +105,23 @@ def fit_attr(animals=None, only=False, sizes=None, max_kg=None, senior=None, pup
     if max_kg: d["kg"] = max_kg
     if senior: d["sen"] = 1
     if puppy: d["pup"] = 1
+    if fee: d["fee"] = 1
     if not d: return ""
     return ' data-fit="' + html.escape(json.dumps(d, ensure_ascii=False, separators=(",", ":"))) + '"'
+
+
+def _fee_of(r):
+    """料金が数字で分かるか（facts の「料金」に金額がある）。"""
+    return any(isinstance(f, dict) and f.get("k") == "料金" and f.get("yen") for f in (r.get("facts") or []))
+
+
+def _sizes_in(t):
+    """公式サイトの文から受けられる大きさを読む（大型犬の受け入れが書いてあるか中心。お断りの文は除く）。"""
+    if re.search(r"大型犬[^、。]{0,4}(不可|お断り|NG|対象外)", t): return None
+    if re.search(r"大型犬|大型の犬|25kg", t): return ["s", "m", "l"]
+    if re.search(r"中型犬(まで|以下|〜|まで可)", t): return ["s", "m"]
+    if re.search(r"小型犬(のみ|だけ|専門|限定)", t): return ["s"]
+    return None
 
 def _kinds_in(t):
     a = []
@@ -128,14 +143,16 @@ def _fit_table():
     tr = _load("trainers.json") or {}
     for t in tr.get("trainers", []):
         tags = FC.trainer_tags(t)
-        T["trainer"][t["name"]] = fit_attr(["dog"], True, puppy=bool({"パピー", "幼稚園・保育園"} & set(tags)), animals_text="犬")
+        ttxt = (t.get("services") or "") + " " + " ".join(f.get("v", "") for f in (t.get("facts") or []) if isinstance(f, dict))
+        T["trainer"][t["name"]] = fit_attr(["dog"], True, _sizes_in(ttxt), puppy=bool({"パピー", "幼稚園・保育園"} & set(tags)), animals_text="犬", fee=_fee_of(t))
     si = _load("sitters.json") or {}
     for s in si.get("sitters", []):
         ch = si.get("chains", {}).get(s.get("chain"), {})
         txt = (s.get("animals") or "") + (" " + ch.get("note", "") if s.get("chain") != "indie" else "")
         a = _kinds_in(txt)
         only = bool(re.search(r"専門|のみ|専用|だけ", s.get("animals") or ""))
-        if a: T["sitter"][s["name"]] = fit_attr(a, only, animals_text="・".join(KIND_LABEL[k] for k in a))
+        stxt = txt + " " + " ".join(f.get("v", "") for f in (s.get("facts") or []) if isinstance(f, dict))
+        if a: T["sitter"][s["name"]] = fit_attr(a, only, _sizes_in(stxt), animals_text="・".join(KIND_LABEL[k] for k in a), fee=_fee_of(s))
     ro = _load("rojin.json") or {}
     for h in ro.get("homes", []):
         t = h.get("animals", "")
@@ -146,24 +163,24 @@ def _fit_table():
         elif re.search(r"大型|小型・中型・大型", t): sizes = ["s", "m", "l"]
         m = re.search(r"(\d+)kgまで", t)
         if m: kg = int(m.group(1))
-        T["rojin"][h["name"]] = fit_attr(a, bool(a) and "など" not in t, sizes, kg, senior=True, animals_text="・".join(KIND_LABEL[k] for k in a))
+        T["rojin"][h["name"]] = fit_attr(a, bool(a) and "など" not in t, sizes, kg, senior=True, animals_text="・".join(KIND_LABEL[k] for k in a), fee=_fee_of(h))
     gr = _load("grooming.json") or {}
     for g in gr.get("groomers", []):
         a = ["dog"] + (["cat"] if g.get("cat") else [])
-        T["trimming"][g["name"]] = fit_attr(a, False, ["s", "m", "l"] if g.get("large") else None, g.get("max_kg"), g.get("senior"))
+        T["trimming"][g["name"]] = fit_attr(a, False, ["s", "m", "l"] if g.get("large") else None, g.get("max_kg"), g.get("senior"), fee=_fee_of(g))
     ho = _load("hotels.json") or {}
     for h in ho.get("hotels", []):
         if h.get("cat_only"): a, only = ["cat"], True
         else: a, only = ["dog"] + (["cat"] if h.get("cat") else []), False
         T["hotel"][h["name"]] = fit_attr(a, only, ["s", "m", "l"] if h.get("large") and not h.get("cat_only") else None, h.get("max_kg"), h.get("senior"),
-                                         animals_text="猫だけ" if h.get("cat_only") else "")
+                                         animals_text="猫だけ" if h.get("cat_only") else "", fee=_fee_of(h))
     hp = _load("hospitals.json") or {}
     for kind in ("visit", "cat", "exotic", "large"):
         for h in hp.get(kind, []):
             t = h.get("animals", "")
             a = _kinds_in(t)
             T["hospital"][h["name"]] = fit_attr(a, bool(a) and not re.search(r"など|ほか|その他|相談", t), ["s", "m", "l"] if kind == "large" else None,
-                                                animals_text=t[:40])
+                                                animals_text=t[:40], fee=_fee_of(h))
     return T
 
 # ---- カードを1枚ずつ作りかえる ----

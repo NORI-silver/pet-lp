@@ -125,6 +125,7 @@ def box(cat, *, q_ph, opts=None, animals=None, who=None, when=None, need=None, m
     if more:
         inner = "".join(f'<span class="ux-l">{e(t)}</span><div class="ux-w">{_b(it)}</div>' for t, it in more if it)
         rows.append(f'<details class="ux-det"><summary>詳しい条件で絞り込む<span></span></summary>{inner}</details>')
+    rows.append('<div class="ux-r"><span class="ux-l">表示順</span><div class="ux-w"><select id="ffSort" aria-label="表示順"><option value="">情報が多い順（おすすめ）</option><option value="photo">写真がある順</option><option value="name">名前順</option></select></div></div>')
     attrs = f' data-ff="{e(cat)}" data-unit="{e(unit)}" data-noun="{e(noun)}"' + (" data-guess" if guess else "") + (" data-needpref" if needpref else "")
     return (f'<div class="ux-find"{attrs}>' + "".join(rows) + f'<button type="button" class="ux-go" id="ffGo">{e(go)}</button>'
             '<div class="ux-foot"><p class="ux-sum" id="ffSum" aria-live="polite"></p><button type="button" class="ux-clear" id="ffClear" hidden>条件をクリア</button></div>'
@@ -387,6 +388,7 @@ def _keys(t, cat, url=""):
         elif f.get("s"): (k if "l" in f["s"] else no).append("big")
         if f.get("sen") or raw & COND_SYN["sen"]: k.append("sen")
         if f.get("pup") or raw & COND_SYN["pup"]: k.append("pup")
+    if f.get("fee"): k.append("fee")
     _, _, sv, mv = SVC[cat]
     for key, _l, syn in sv + mv:
         if key in raw or raw & set(syn): k.append(key)
@@ -446,6 +448,7 @@ def generic_list(h, cat, hub):
     if cat == "rojin-home" and use("medical"): need.append(("medical", "医療・投薬対応"))
     if cat == "pet-sitter":
         more += [(k, l) for k, l in [("stay", "泊まりの留守番"), ("sameday", "当日も相談できる"), ("regular", "定期利用")] if use(k)]
+    if use("fee"): more.append(("fee", "料金の目安が分かる"))
     bx = box(cat, q_ph="都道府県・市区町村", opts=opts if (hub and opts) else None, animals=animals,
              who=who, when=when, need=(qsv, need), more=[("そのほかの条件", more)] if more else (), unit="件", noun=noun, go=go, guess=bool(hub and opts))
     em = h.find('<div class="emg">')
