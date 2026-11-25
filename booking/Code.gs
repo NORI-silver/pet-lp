@@ -3564,38 +3564,30 @@ function selectionValid_(p) {
   return '';
 }
 
-// 春日部の試行：未設定の本番では閉じたまま。固定の会社ID・照合済みメール、明示的に選ばれた市内片道だけ。
+// 春日部の受付：照合済みの店舗メールへ、利用者が選んだ依頼だけを送る。
 // 結合テスト用の未公開実装。通知先の確認なしで、本番の設定から開けないようにする。
 var COCOTAKU_INTAKE_INTEGRATION_READY = false;
 var KASUKABE_INTAKE_ID = 'P014', KASUKABE_DISPLAY_ID = 'D853ae97';
 function kasukabeIntakeMailbox_() {
   try {
     var ps = PropertiesService.getScriptProperties();
-    if (ps.getProperty('KASUKABE_INTAKE_ENABLED') !== '1') return '';
+    if (!COCOTAKU_INTAKE_INTEGRATION_READY || ps.getProperty('KASUKABE_INTAKE_ENABLED') !== '1') return '';
     var email = String(ps.getProperty('KASUKABE_INTAKE_VERIFIED_EMAIL') || '').trim().toLowerCase();
     return /^[^@\s]+@pet-taxi-kasukabe\.com$/.test(email) ? email : '';
   } catch (e) { return ''; }
 }
-function kasukabeCityAddress_(s) {
-  var a = String(s || '').normalize('NFKC').replace(/\s/g, '').replace(/^(?:日本[、,]?)?(?:〒?\d{3}-\d{4}[、,]?)?/, '');
-  return /^(?:埼玉県)?春日部市[一-龠ぁ-んァ-ヶ0-9]/.test(a);
-}
 function kasukabeIntakeFits_(pt, r) {
   var email = kasukabeIntakeMailbox_();
   if (!email || pt.id !== KASUKABE_INTAKE_ID || !pt.active || pt.lineId ||
-      (!COCOTAKU_INTAKE_INTEGRATION_READY && (pt.oaId || pt.lineUrl)) ||
       String(pt.email || '').trim().toLowerCase() !== email) return false;
-  if (r['都府県'] !== '埼玉' || r['片道・往復'] !== '片道' || r['区間'] || r['日付のみ'] ||
-      r['経由地'] || !/^(?:|0)$/.test(String(r['待ち時間（分）'] || '').trim()) ||
-      !kasukabeCityAddress_(r['お迎えの場所']) || !kasukabeCityAddress_(r['行き先'])) return false;
-  var dt = r['希望日時'], jstHour = dt instanceof Date && isFinite(dt.getTime()) ? (dt.getUTCHours() + 9) % 24 : -1;
-  if (jstHour < 9 || jstHour >= 18 || r['種類'] !== '犬' || r['介助'] !== '不要' || +r['ペット数'] !== 1 ||
-      !/^[12]人$/.test(String(r['同乗人数'] || '')) || !/^(?:|手荷物くらい)$/.test(String(r['荷物'] || '')) ||
-      !/^(?:持ち込む|なし|どれでも)$/.test(String(r['キャリー'] || ''))) return false;
   var pets;
   try { pets = petsOf_(r); } catch (e) { return false; }
-  return pets.length === 1 && pets[0].sp === '犬' && pets[0].vac && pets[0].rabies && pets[0].kg > 0 &&
-    pets[0].kg <= 10 && pets[0].kg === Number(r['体重kg']) && !pets[0].need.length && pets[0].care === '不要';
+  if (pets.length !== Number(r['ペット数']) || !pets.length || pets.some(function(p) {
+    return !p.sp || !(p.kg > 0 && p.kg <= 50) || (p.sp === '犬' && (!p.vac || !p.rabies));
+  })) return false;
+  var riders = needs_(r).riders;
+  var bigs = pets.filter(function(p) { return p.sp === '犬' && p.kg >= 30; }).length;
+  return riders <= (bigs >= 3 ? 1 : 2);
 }
 // 公開の店舗カードと、通知先として審査済みの提携行を明示的に結ぶ。設定なし・行の差し替えでは閉じる。
 var KYOTO_DISPLAY_ID = 'D7f0d2a2';

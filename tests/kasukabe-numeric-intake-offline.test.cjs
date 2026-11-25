@@ -54,16 +54,21 @@ assert.ok(search(p).find(c=>c.id==='P030')?.token);
 const choose={...p,partner_id:'P014',quote_token:card.token,quote_expires:String(card.expires)};
 assert.equal(ctx.validateSelection_(choose).ok,true);
 assert.equal(ctx.validateSelection_({...choose,pickup:'埼玉県春日部市テスト町3'}).error,'selection_changed');
+
 for (const extra of [
- {pickup:'越谷市テスト町'}, {dropoff:'京都府京都市春日部市'}, {pickup:'春日部市'}, {pref:'千葉県'},
- {trip:'往復',return_datetime:day+'T13:00'}, {leg:'go'}, {date:day},
- {wait_time:'10'}, {via:'春日部市テスト町3'}, {datetime:day+'T08:59'}, {datetime:day+'T18:00'},
- {pet_count:'2'}, {riders:'0人（ペットだけ）'}, {riders:'3人'}, {species:'猫'}, {care:'必要'}, {luggage:'多め'},
- {cage:'借りたい'}, {weight:'11',pets_json:JSON.stringify([{...pet,weight:'11'}])},
- {pets_json:JSON.stringify([{...pet,rabies:''}])},{pets_json:JSON.stringify([{...pet,weight:'8'}])},{pets_json:'[]'}]) {
- assert.equal(find({...p,...extra}),undefined,JSON.stringify(extra));
- assert.notEqual(ctx.validateSelection_({...choose,...extra}).ok,true,JSON.stringify(extra));
+ {dropoff:'越谷市テスト町2'}, {datetime:day+'T23:00'}, {riders:'0人（ペットだけ）'},
+ {weight:'30',pets_json:JSON.stringify([{...pet,weight:'30'}])},
+ {trip:'往復',return_datetime:day+'T13:00',return_pickup:p.dropoff,return_dropoff:p.pickup,
+  route_details:JSON.stringify({km:10,backKm:10,from:a,to:b,backFrom:b,backTo:a})}
+]) {
+ assert.ok(find({...p,...extra})?.token,JSON.stringify(extra));
+ assert.notEqual(ctx.validateSelection_({...choose,...extra}).ok,true,'previous selection cannot be reused after changing trip');
 }
+for(const extra of [
+ {riders:'3人'},{weight:'51',pets_json:JSON.stringify([{...pet,weight:'51'}])},
+ {pets_json:JSON.stringify([{...pet,rabies:''}])},{pets_json:'[]'},
+ {riders:'2人',pet_count:'3',weight:'30',pets_json:JSON.stringify(Array(3).fill({...pet,weight:'30'}))}
+]) assert.equal(find({...p,...extra}),undefined,JSON.stringify(extra));
 pt.email='different@example.invalid'; assert.equal(find(p),undefined); pt.email=mailbox;
 pt.lineId='other-channel'; assert.equal(find(p),undefined); delete pt.lineId;
 pt.active=false; assert.equal(find(p),undefined); pt.active=true;
@@ -89,7 +94,7 @@ assert.deepEqual(targets,['P014']);
 row.data['通知した提携先']='';row.data['指定した提携先ID']='';
 ctx.sendWave_('OFFLINE-FIXTURE',1);ctx.sendWave_('OFFLINE-FIXTURE',2);
 assert.equal(targets.filter(x=>x==='P014').length,1);
-row.data['通知した提携先']='';row.data['指定した提携先ID']='P014';row.data['行き先']='越谷市';
+row.data['通知した提携先']='';row.data['指定した提携先ID']='P014';row.data['同乗人数']='3人';
 ctx.sendWave_('OFFLINE-FIXTURE',1);assert.equal(targets.filter(x=>x==='P014').length,1);
 delete props.KASUKABE_INTAKE_ENABLED;
 assert.equal(find(p),undefined);

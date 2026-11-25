@@ -25,7 +25,7 @@ for (const pickup of [29.5,30,30.5]) {
   ctx.roadKm_=()=>pickup;
   const q={...p,route_details:JSON.stringify({km:10,backKm:10,from:a,to:b})};
   assert.ok(ctx.displayPrice_(find('D853ae97'),q).amount > 0,'document a current display-price output, not a confirmed rate');
-  assert.equal(ctx.selectionPrice_(kas,q).amount,null,'never pass the unresolved display price into checkout');
+  assert.equal(ctx.selectionPrice_(kas,q),null,'never pass the unresolved display price into checkout');
 }
 ctx.roadKm_=()=>35;
 const q={...p,pref:'京都府',pickup:'京都府京都市テスト町1',dropoff:'京都府京都市テスト町2',
@@ -33,4 +33,4 @@ const q={...p,pref:'京都府',pickup:'京都府京都市テスト町1',dropoff:
 assert.ok(ctx.displayPrice_(find('D7f0d2a2'),q).highway.amount>0,'current display omits the unknown highway deadhead cost');
 assert.equal(ctx.selectionPrice_(kyo,q),null);
 assert.equal(ctx.isOpen_('P999'),false);
-console.log('PASS: unconfirmed Kasukabe threshold and Kyoto highway fare cannot become automatic booking rates through configuration alone');
+console.log('PASS: unconfirmed Kasukabe threshold and Kyoto highway fare do not open intake through configuration alone');
