@@ -88,19 +88,23 @@ def _night_facts(rs):
 # ④その県のほかの条件の病院（hospitals.json）の数。
 _DC = json.load(open(os.path.join(_D, "display_companies.json"), encoding="utf-8"))["companies"]
 _HJ = gen_hospitals.HOSP
-_HOURS_RE = re.compile(r"(\d+)時(?:\d+分)?〜(翌)?(\d+)時")
+_HOURS_RE = re.compile(r"(\d+)時(?:(\d+)分)?〜(翌)?(\d+)時(?:(\d+)分)?")
+_ALL_DAY = 48 * 60
 def _late(h):
-    """受付時間の書き方（最初の時間帯）から、終わりの時刻を「翌◯時」なら24＋◯で返す。24時間は48。読めないときは None。"""
+    """最初の受付枠の終了を分で返す。翌日の0時30分は24時30分。24時間は専用値。"""
     t = h.get("hours", "")
-    if "24時間" in t: return 48
+    if "24時間" in t: return _ALL_DAY
     m = _HOURS_RE.search(t)
     if not m: return None
-    a, nxt, b = int(m.group(1)), m.group(2), int(m.group(3))
-    return b + 24 if (nxt or b < a) else b
+    h1, m1, nxt, h2, m2 = m.groups()
+    start = int(h1) * 60 + int(m1 or 0)
+    end = int(h2) * 60 + int(m2 or 0)
+    return end + 24 * 60 if (nxt or end < start) and int(h2) < 24 else end
+
 def _hours_counts(rs):
     ls = [_late(h) for h in rs]
-    return dict(all=sum(1 for x in ls if x == 48), past0=sum(1 for x in ls if x is not None and x > 24),
-                till5=sum(1 for x in ls if x is not None and x >= 29), unknown=sum(1 for x in ls if x is None))
+    return dict(all=sum(x == _ALL_DAY for x in ls), past0=sum(x is not None and x > 24 * 60 for x in ls),
+                till5=sum(x is not None and x >= 29 * 60 for x in ls), unknown=sum(x is None for x in ls))
 def _key(pf): return pf if pf == "北海道" else pf[:-1]
 def _taxi_cos(pf): return [c for c in _DC if _key(pf) in c.get("areas", [])]
 def _emg_cos(pf): return [t for t in EMG["taxis"] if pf in t.get("prefs", [])]
