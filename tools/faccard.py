@@ -135,6 +135,10 @@ def _kinds_in(t):
     if re.search(r"エキゾ|爬虫|は虫|カメ|トカゲ|ヘビ", t): a.append("exotic")
     return a
 
+def rojin_only(a, t):
+    """老犬ホームの animals 文が「その動物だけ」と読めるか。広い例（など）と「要確認」（分からない）は、断った印（data-no）にしない。"""
+    return bool(a) and "など" not in t and not re.search(r"要確認|記載なし", t)
+
 def _load(name):
     try: return json.load(open(os.path.join(HERE, name), encoding="utf-8"))
     except Exception: return None
@@ -164,7 +168,7 @@ def _fit_table():
         elif re.search(r"大型|小型・中型・大型", t): sizes = ["s", "m", "l"]
         m = re.search(r"(\d+)kgまで", t)
         if m: kg = int(m.group(1))
-        T["rojin"][h["name"]] = fit_attr(a, bool(a) and "など" not in t, sizes, kg, senior=True, animals_text="・".join(KIND_LABEL[k] for k in a))
+        T["rojin"][h["name"]] = fit_attr(a, rojin_only(a, t), sizes, kg, senior=True, animals_text="・".join(KIND_LABEL[k] for k in a))
     gr = _load("grooming.json") or {}
     for g in gr.get("groomers", []):
         a = ["dog"] + (["cat"] if g.get("cat") else [])
@@ -325,9 +329,13 @@ def build_card(card, conf, fit_by_name):
     name = _txt(head)
     loc, rows, chips, more, tail, keep = "", [], [], [], [], []
     svc_items = []
+    intro = ""
     for tag, x in kids[1:]:
         cls = (re.match(r"<\w+[^>]*\bclass=\"([^\"]*)\"", x) or [None, ""])[1]
         t = _txt(x)
+        if tag == "small" and cls == "emg-intro":
+            intro = t
+            continue
         if tag == "small" and "sg-src" in cls:
             more.append(x); continue
         if tag == "small" and "emg-spec" in cls:
@@ -419,6 +427,7 @@ def build_card(card, conf, fit_by_name):
     if dp: ot = ot[:-1] + f' data-dp="{html.escape("|".join(dp))}">'
     # 見出しの「◯◯市の動物病院」は地域の見出しと重なるので出さない（Nori 2026-11-15「柏市の下に柏市の動物病院って全てのカードに入れてるけど不要」）
     body = [f'<div class="fc-name">{head}</div>']
+    if intro: body.append(f'<p class="fc-catch">{html.escape(intro)}</p>')
     if fors: body.append(f'<p class="fc-catch">{html.escape("・".join(fors[:2]))}に</p>')
     if trust:
         cr = "".join(f'<span class="cr">{html.escape(x.strip())}</span>' for x in dict.fromkeys(re.split(r"[、,]", trust[0])) if x.strip())

@@ -8,6 +8,7 @@
 import json, os
 import prefkeep
 import facility_cards as FC
+import facility_review_links as RL
 from guides_sougi import SOUGI_GUIDES
 
 J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "sougi.json"), encoding="utf-8"))
@@ -45,9 +46,12 @@ def _fcard(e, f):
     if f.get("more") and f["id"] not in gen_sougi_fac.IDS:
         more = ('<dl class="sg-more">' + "".join(f'<dt>{e(x["k"])}</dt><dd>{e(x["v"])}</dd>' for x in f["more"])
                 + f'</dl><small class="sg-src">{e(f.get("checked", ""))}時点の公式サイト</small>')
+    review = RL.link("sougi", f)
+    if not review and f.get("review_query"):
+        review = f'<div class="emg-score" data-id="{e(f["id"])}"></div>'
     return (f'<div class="emg-item emg-co sg-pv"{FC.attrs(e, "sougi", f, FC.sougi_tags(f), f["name"], to, "この施設")}><a href="{e(f["u"])}" target="_blank" rel="noopener"><b>{e(f["name"])}</b></a>'
             f'<small>{e(f["city"])}</small><div class="sg-tags">{tags}</div>{price}'
-            + (f'<div class="emg-score" data-id="{e(f["id"])}"></div>' if f.get("review_query") else "") + more + '</div>')
+            + review + more + '</div>')
 
 
 def _tbl(e, head, rows):
