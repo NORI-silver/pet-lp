@@ -14,7 +14,7 @@ Nori「追って送るなよ、ややこしい」「メールのラリーが少�
 
 --purpose（用件）: お誘い・再お誘い・写真のお願い・紹介の依頼・返事・その他。返事（相手から来たメールへの答え）は --reply も付ける。
 --gmail-sent: 送る前に pettaxi.yoyaku の送信済みを「to:宛先 newer_than:7d」でさがした件数（メールのときは必ず）。
---nori 発言ID: Noriさんが「この会社にもう一度送って」「時間外でも送って」と言ったときだけ。同じ日の2通目・ほかの係が送信中のものは、これでも通さない。
+--nori 発言ID: Noriさんが「この会社にもう一度送って」「時間外でも送って」または該当するお礼だけの返信を明示承認したときだけ。同じ日の2通目・ほかの係が送信中のものは、これでも通さない。
 
 台帳: 非公開の pet-db のブランチ claude/project-thread-yqaim8 の data/mon/ledger.tsv（日付をまたいで1本。Mac もクラウドも同じもの）。
   mon.py が ~/.mon-ledger にその枝だけを取ってきて、毎回 pull → 追記 → push する。push がぶつかったら取り直す（ロックの代わり）。
@@ -163,7 +163,7 @@ def names():
     return ns
 
 
-def body_checks(t, company, to):
+def body_checks(t, company, to, approved_thanks=False):
     out = []
     lines = [l for l in t.splitlines() if l.strip()]
     # 全文（宛名から署名まで）
@@ -200,7 +200,8 @@ def body_checks(t, company, to):
         out.append(f"「{m.group()}」: 追いメールの言い方。1通で完結させる（前のメールにたよらず、要るものを全部この1通に）")
     if re.search(LINK_WORDS, t) and not re.search(r"https?://", t):
         out.append("リンク・ページの話があるのにURLがない（1通で完結：URLも入れる）")
-    if not re.search(r"ください|いただけ|お願い|でしょうか|？|\?", t):
+    thanks_only = approved_thanks and len(t) <= 350 and bool(re.search(r"ありがとうござい(?:ます|ました)", t))
+    if not thanks_only and not re.search(r"ください|いただけ|お願い|でしょうか|？|\?", t):
         out.append("相手に頼むこと・聞くことがない（何をしてほしいかを1通に）")
     if len(t) > 1200: out.append(f"{len(t)}字。長い（短く、でも要るものは全部）")
     return out
@@ -265,7 +266,7 @@ def gate(a, t):
         sent_today = sum(1 for r in rows if r["方法"] == "メール" and r["状態"] in ("送信済み", "送信中") and r["日時"][:10] == f"{n:%Y-%m-%d}")
         if sent_today >= DAY_LIMIT:
             out.append(f"今日のメールが{sent_today}通。1日{DAY_LIMIT}通まで（明日にする）")
-    return out + body_checks(t, company, to)
+    return out + body_checks(t, company, to, approved_thanks=bool(nori and reply and purpose == '返事' and method == 'メール'))
 
 
 # ---------- コマンド ----------
