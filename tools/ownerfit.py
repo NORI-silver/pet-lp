@@ -209,7 +209,15 @@ def _load(cat):
     m = {}
     if cat in FILES:
         f, k = FILES[cat]
-        for r in json.load(open(os.path.join(HERE, f), encoding="utf-8"))[k]:
+        recs = json.load(open(os.path.join(HERE, f), encoding="utf-8"))[k]
+        if cat == "pet-hotel":
+            # 公式サイトの収集文は別ファイル（hotels.json 本体が送信サイズの上限を超えるため。2026-11-26）
+            wp = os.path.join(HERE, "hotels_web.json")
+            if os.path.exists(wp):
+                web = json.load(open(wp, encoding="utf-8"))
+                for r in recs:
+                    if r.get("id") in web: r["web"] = web[r["id"]]
+        for r in recs:
             u = r.get("url") or r.get("u")
             if u: m.setdefault(_norm(u), r)
     _MAP[cat] = m
