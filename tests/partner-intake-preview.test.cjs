@@ -23,3 +23,18 @@ test('参考カードのボタンは送信ではなく、フォーム上の入�
  assert.match(script,/function goIntakeFields\(card\)[\s\S]{0,390}jumpTo\(target\);/);
  assert.match(script,/この会社に問い合わせる/);
 });
+test('最初の3社を維持しつつ、条件確認で進む提携先1社を折りたたまない',()=>{
+  const split=script.slice(script.indexOf('  function splitVisibleCards('),script.indexOf('  function drawCards('));
+  c.TOP_CARDS=3;
+  vm.runInContext(split,c);
+  const always=['one','two','three'].map(id=>({id}));
+  const kasukabe={id:'D853ae97',display_only:true}, kyoto={id:'D7f0d2a2',display_only:true}, other={id:'other',display_only:true};
+  let r=c.splitVisibleCards([...always,other,kasukabe,kyoto]);
+  assert.deepEqual(Array.from(r.shown,x=>x.id),['one','two','three','D853ae97']);
+  assert.deepEqual(Array.from(r.remaining,x=>x.id),['other','D7f0d2a2']);
+  r=c.splitVisibleCards([kyoto,...always,kasukabe]);
+  assert.deepEqual(Array.from(r.shown,x=>x.id),['D7f0d2a2','one','two']);
+  assert.deepEqual(Array.from(r.remaining,x=>x.id),['three','D853ae97']);
+  r=c.splitVisibleCards([...always,other]);
+  assert.equal(r.shown.length,3);assert.equal(r.remaining.length,1);
+});
