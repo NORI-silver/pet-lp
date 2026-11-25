@@ -37,10 +37,10 @@ CAT_WHO = {
 # 判定は CAT_WHO と同じ _find（公式サイトの文・同じ文に「不可・お断り」があれば合わない）。
 FAC = {
     "rojin-home": ["mitori", "long", "menkai", "pickup", "staff24", "medical"],
-    "pet-hotel": ["cagefree", "walk", "longstay", "staff24"],
+    "pet-hotel": ["cagefree", "walk", "longstay", "staff24", "smallonly"],
     "pet-sitter": ["cert", "stay", "sameday", "regular"],
     "trimming": ["bubun", "pickup", "nail", "ear"],
-    "dog-trainer": ["private"],
+    "dog-trainer": ["private", "agility", "dance", "nosework", "disc", "competition", "seminar"],
 }
 
 # しつけ：困りごとから探す（施設の公式サイトの文に、その困りごとへの対応が明記してあるときだけ。Nori 2026-11-23 第2弾）
@@ -118,6 +118,15 @@ PAT = {
     "hikkaki": r"引っか|ひっか",
     # しつけの形（個別）。サービスの内容の軸に出す（uikit）
     "private": r"個別レッスン|個別対応|個別指導|個別トレーニング|マンツーマン|プライベートレッスン",
+    # しつけ：種目・レッスンの種類（2026-11-25 追加。Nori「アジリティとかの要件もある」）
+    "agility": r"アジリティ",
+    "dance": r"ドッグダンス",
+    "nosework": r"ノーズワーク",
+    "disc": r"ディスクドッグ|フリスビー|ディスク競技",
+    "competition": r"競技会|オビディエンス|服従訓練|大会出場",
+    "seminar": r"セミナー|講座|勉強会",
+    # ホテル：小型犬のみ（2026-11-25 追加。公式サイトの収集文から）
+    "smallonly": r"小型犬(のみ|だけ|専用|限定)",
     # ホテル：長期・24時間（staff24 は下の既存パターンを共用）
     "longstay": r"長期",
     # シッター：泊まり・当日・定期
