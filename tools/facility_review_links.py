@@ -6,6 +6,8 @@ from urllib.parse import urlencode
 # 同じ店名でも住所が違うSOS渋谷店・口コミ0件の箱・ドックは含めない。
 _PLACES = {
     ("sougi", "S06fda3"): ("八千代ペット霊園 方丈苑妙見寺", "ChIJK03V3Rt-ImARq3hMbg4sH18"),  # https://ypet.info/price 八千代市吉橋1457
+    ("emergency", "E04"): ("ペットタクシーAnimals", "ChIJnW8VOENbGGARfeJAug75NII"),  # https://h12150825.wixsite.com/taxi-animals 公式と屋号・電話が一致
+    ("emergency", "E15"): ("ペットタクシーZERO", "ChIJ3fhbnrBxAWARfATSlLlORiE"),  # https://zero808.co.jp/pettaxi/ 公式と所在地・電話が一致
     ("dogrun", "D001"): ("代々木公園ドッグラン", "ChIJN9-qU7SMGGARhCpTp43adx8"),  # https://www.yoyogidogrun.jp/home/アクセス
     ("sitter", "St4e0359d"): ("キャットシッターねこやま", "ChIJp4doO8NZGGARsPlc6CkFydk"),  # https://www.necoyama.net/ 同じ屋号、横浜市旭区本村町、電話番号
     ("trainer", "T111"): ("犬のようちえん 代官山教室", "ChIJTyI_woyLGGARR0-YqFtqYUg"),  # https://animalplaza.co.jp/class/daikanyama.html 恵比寿南3-7-7

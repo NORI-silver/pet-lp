@@ -145,9 +145,11 @@ def emg(blk):
     tel = re.search(r'<a class="emg-tel"[^>]*>.*?</a>', inner, re.S)
     score = re.search(r'<div class="emg-score"[^>]*></div>', inner)
     taxi = re.search(r'<a class="emg-taxi"[^>]*>.*?</a>', inner, re.S)
+    review = re.search(r'<a class="emg-review-link"[^>]*>.*?</a>', inner, re.S)
     left = inner[pos:]
     for x in [r'<small( class="[^"]*")?>.*?</small>', r'<a class="emg-tel"[^>]*>.*?</a>', r'<div class="emg-score"[^>]*></div>', r'<a class="emg-taxi"[^>]*>.*?</a>']:
         left = re.sub(x, "", left, flags=re.S)
+    if review: left = left.replace(review.group(0), "", 1)
     if left.strip(): return None  # 知らない部品があれば作りかえない
     out = [f'<a class="ux-c-n" href="{href}" target="_blank" rel="noopener"><b>{name}</b></a>']
     addr = ""
@@ -172,6 +174,7 @@ def emg(blk):
         if note: out.append(_line("📞", note))
         btn = [tm.group(1) + num + "</a>", f'<a class="l" href="{href}" target="_blank" rel="noopener">公式サイト ↗</a>']
     elif addr: btn.append(_route(re.sub(r"<[^>]+>", "", name), addr))
+    if review: btn.append(review.group(0).replace('class="emg-review-link"', 'class="emg-review-link l"', 1))
     out.append('<div class="ux-c-a">' + "".join(btn) + "</div>")
     if taxi: out.append(f'<p class="ux-c-s">{taxi.group(0)}</p>')
     return _add_cls(ot) + "".join(out) + "</div>"
