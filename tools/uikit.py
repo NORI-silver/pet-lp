@@ -305,6 +305,8 @@ def facility_list(h, conf, hub):
         n = [x for x in n if x not in ks] + (["a:dog"] if "cat_only" in ks else ["cat_only"])
         no = f' data-no="{e(" ".join(n))}"' if n else ""
         ks = _dedupe_k(t, ks)
+        # data-flags は上で data-k / data-no にした後は誰も読まない（find.js 等は読まない）。ページの容量のために外す
+        t = re.sub(r' data-flags="[^"]*"', "", t)
         return t[:-1] + " data-ffi" + (f' data-k="{e(" ".join(ks))}"' if ks else "") + f"{no}>"
     h = _sub_cards(h, card)
     h = re.sub(r'(<div class="fc-name"><a href="([^"]*)"[^>]*>.*?</div>)((?:(?!class="fc-name").)*?)<div class="fc-acts">',
