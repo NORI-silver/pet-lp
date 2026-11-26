@@ -378,8 +378,12 @@ def card(blk, h, cat, more=None, compact=False):
     dl = "".join((f"<p>{E(k)}：{E(v)}</p>" if k != "ほかの記載" else f"<p>{E(v)}</p>") for k, v, s, c in rows)
     _cf = [f_ for _, _, _, f_ in fl if isinstance(f_, dict)] + [f_ for f_ in h.get("facts", []) if f_.get("v") and f_["v"] in shown]  # 行の文に組み込んだ項目（出張費・保険・登録など）の出典も集める
     _tr = h.get("trust") if isinstance(h.get("trust"), dict) else {}
-    _cf += [x for x in (_tr.get("vet"),) if isinstance(x, dict) and x.get("v") and x["v"] in shown]
+    _cf += [x for k_, x in _tr.items() if k_ != "reg" and isinstance(x, dict) and x.get("v") and (x["v"] in shown or x["v"] in dl)]  # 判断項目の引用ごとの出典と確認日（引用ごとに日付がちがうときは、そのまま見せる）
     srcs = list(dict.fromkeys([(f_.get("src"), f_.get("checked")) for f_ in _cf if f_.get("src")] + [(s, c) for k, v, s, c in rows if s]))  # 出典と確認日は同じものを1回だけ
+    if not srcs and rows and url and cat == "rojin" and (h.get("verified") or {}).get("checked"):  # ろうけんホームの紹介文：公式サイトで内容を確かめたものだけ、公式サイトを出典に（日付は記録の確認日があるときだけ）
+        srcs = [(url, h["verified"]["checked"])]
+    elif not srcs and rows:  # ホテル・シッター：項目ごとの出典がない分類データ。公式サイトの出典だと見せない
+        dl += _UNV
     if srcs:
         from urllib.parse import urlparse
         host = urlparse(url).netloc
@@ -387,7 +391,7 @@ def card(blk, h, cat, more=None, compact=False):
             same = compact and urlparse(s).netloc == host  # 重いページだけ：公式サイトと同じサイトの出典は、リンクを重ねず「公式サイト」と確認日だけ（カードの公式サイトのボタンと同じ）
             lab = f'<a href="{E(s)}" target="_blank" rel="noopener">公式サイト{"" if i == 0 else i + 1}</a>' if not same else f'公式サイト{"" if i == 0 else i + 1}'
             return lab + (f"（確認日 {E(c)}）" if c else "")
-        dl += "<small>出典：" + "／".join(one(i, s_, c) for i, (s_, c) in enumerate(srcs[:3])) + "</small>"
+        dl += "<small>出典：" + "／".join(one(i, s_, c) for i, (s_, c) in enumerate(srcs[:4])) + "</small>"
     if more:  # 全国のページが重いときは、くわしい中身を県のページのカードに置き、ここからリンクする（カードは減らさない）
         det = f'<p class="pc-m"><a href="{E(more)}">県のページで詳しく見る（料金・条件の全文と出典）→</a></p>'
     else:
@@ -451,8 +455,32 @@ def _fin(h2):
     return h2.replace("</head>", CSS_LINK + "</head>", 1)  # 見た目は /pc.css（ページごとに重ねない。build が書く）
 
 
+_UNV = "<small>出典：未確認（登録時の分類）。公式サイトでご確認ください</small>"
+
+
+def _fixbare(h, cat, D):
+    """すでに変換したページで、出典のない「詳しく見る」に公式サイトを出典として足す（日付は記録の確認日があるときだけ）。"""
+    if 'class="pc-d"' not in h: return h
+    parts = re.split(r'(?=<div class="emg-item)', h)
+    for k, b in enumerate(parts):
+        m = re.search(r'<details class="pc-d">(?:(?!</details>).)*?</div></details>', b, re.S)
+        if not m or "出典：" in m.group(0): continue
+        a = re.search(r'<div class="pc-a"><a href="([^"]+)"', b)
+        if not a: continue
+        url = html.unescape(a.group(1))
+        src = _UNV
+        if cat == "rojin" and ((D.get((re.search(r' data-fid="([^"]+)"', b) or [None, None])[1]) or {}).get("verified") or {}).get("checked"):
+            fid = re.search(r' data-fid="([^"]+)"', b)
+            rec = D.get(fid.group(1)) if fid else None
+            c = rec["verified"]["checked"]
+            src = f'<small>出典：<a href="{E(url)}" target="_blank" rel="noopener">公式サイト</a>' + (f"（確認日 {E(c)}）" if c else "") + "</small>"
+        g = m.group(0)
+        parts[k] = b.replace(g, g[:-len("</div></details>")] + src + "</div></details>", 1)
+    return "".join(parts)
+
+
 def page(h, cat, D):
-    if 'id="pc-css"' in h or "/pc.css" in h: return h
+    if 'id="pc-css"' in h or "/pc.css" in h: return _fixbare(h, cat, D)
     h2, n = _convert(h, cat, D, False)
     if not n: return h
     if len(h2) > 150000 and _gz(_fin(h2)) > LIMIT:
