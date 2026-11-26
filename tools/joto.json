@@ -74,6 +74,10 @@
      "t": "見学会・譲渡会のお知らせ",
      "u": "https://www.city.mito.lg.jp/site/doubutsuaigo/list359-1258.html"
     }
+   ],
+   "flags": [
+    "event",
+    "trial"
    ]
   },
   {
@@ -111,7 +115,10 @@
      "u": "https://www.douai.pref.tochigi.lg.jp/wp/wp-content/uploads/2025/01/9f1e1ec541b1cf9cb515da162a7248bb.pdf"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "群馬県",
@@ -143,6 +150,10 @@
      "t": "猫の飼い主を募集",
      "u": "https://www.city.maebashi.gunma.jp/kurashi_tetsuzuki/1/1/3/18316.html"
     }
+   ],
+   "flags": [
+    "event",
+    "trial"
    ]
   },
   {
@@ -209,7 +220,10 @@
      "u": "https://www.pref.chiba.lg.jp/aigo/kainushi-bosyu-shisyo.html"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "trial"
+   ]
   },
   {
    "pref": "神奈川県",
@@ -239,7 +253,12 @@
      "u": "https://www.pref.kanagawa.jp/osirase/1594/awc/receive/cat.html"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "trial",
+    "online",
+    "visit"
+   ]
   },
   {
    "pref": "三重県",
@@ -451,7 +470,11 @@
      "u": "https://www.pref.kumamoto.jp/soshiki/30/4958.html"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event",
+    "trial"
+   ]
   },
   {
    "pref": "長崎県",
@@ -481,6 +504,10 @@
      "t": "猫の里親募集",
      "u": "https://www.city.nagasaki.lg.jp/site/doubutsuaigo/list7-18.html"
     }
+   ],
+   "flags": [
+    "event",
+    "visit"
    ]
   },
   {
@@ -536,6 +563,10 @@
      "t": "犬及び猫の譲渡会",
      "u": "https://www.city.koriyama.lg.jp/soshiki/74/7177.html"
     }
+   ],
+   "flags": [
+    "event",
+    "online"
    ]
   },
   {
@@ -564,6 +595,10 @@
      "t": "譲渡動物情報（猫）",
      "u": "https://www.city.iwaki.lg.jp/www/contents/1777271747780/index.html"
     }
+   ],
+   "flags": [
+    "trial",
+    "online"
    ]
   },
   {
@@ -587,7 +622,10 @@
      "u": "https://www.pref.saitama.lg.jp/b0716/doubutu-link-jyoutoninnteidanntai.html"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "埼玉県",
@@ -614,6 +652,9 @@
      "t": "川越市の登録団体一覧",
      "u": "https://www.city.kawagoe.saitama.jp/kurashi/s-kankyo/1002982/1002989/1002995.html"
     }
+   ],
+   "flags": [
+    "event"
    ]
   },
   {
@@ -640,6 +681,9 @@
      "t": "新しい飼い主探し掲示板",
      "u": "https://www.city.koshigaya.saitama.jp/kurashi_shisei/fukushi/hokenjo/pet/jouto/keijiban.html"
     }
+   ],
+   "flags": [
+    "online"
    ]
   },
   {
@@ -665,6 +709,9 @@
      "t": "飼う前に考えていただきたいこと",
      "u": "https://www.city.funabashi.lg.jp/kurashi/doubutsu/001/p009778.html"
     }
+   ],
+   "flags": [
+    "event"
    ]
   },
   {
@@ -690,7 +737,11 @@
      "u": "https://www.city.niigata.lg.jp/kurashi/animal/animal_aigo/jyouto/dobutsuaigo2021i.html"
     }
    ],
-   "kind": "政令指定都市"
+   "kind": "政令指定都市",
+   "flags": [
+    "event",
+    "trial"
+   ]
   },
   {
    "pref": "富山県",
@@ -722,7 +773,10 @@
      "u": "https://www.pref.toyama.jp/1207/kurashi/seikatsu/seikatsu/doubutsuaigo/tyuukai-zyouto.html"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "trial"
+   ]
   },
   {
    "pref": "福井県",
@@ -747,6 +801,10 @@
      "t": "譲渡できる動物たち",
      "u": "https://www.fapscsite.com/adoptable_animal/"
     }
+   ],
+   "flags": [
+    "event",
+    "online"
    ]
   },
   {
@@ -779,6 +837,9 @@
      "t": "犬猫譲渡情報（保健所収容）",
      "u": "https://www.city.nagano.nagano.jp/n107000/contents/p001118.html"
     }
+   ],
+   "flags": [
+    "event"
    ]
   },
   {
@@ -808,7 +869,11 @@
      "u": "https://www.city.nagoya.jp/kurashi/pet/1015473/1015483/1015484.html"
     }
    ],
-   "kind": "政令指定都市"
+   "kind": "政令指定都市",
+   "flags": [
+    "event",
+    "trial"
+   ]
   },
   {
    "pref": "愛知県",
@@ -836,6 +901,9 @@
      "t": "市民の方からの飼い主募集掲示板",
      "u": "https://www.city.toyota.aichi.jp/kurashi/sumai/pet/1072625.html"
     }
+   ],
+   "flags": [
+    "event"
    ]
   },
   {
@@ -863,6 +931,9 @@
      "t": "センターから飼い主募集（猫）",
      "u": "https://toyohashi-aikuru.jp/animal_category/adoptions-available?animal_type=cat"
     }
+   ],
+   "flags": [
+    "event"
    ]
   },
   {
@@ -918,6 +989,9 @@
      "t": "新しい飼い主を探している猫",
      "u": "https://www.city.higashiosaka.lg.jp/0000011324.html"
     }
+   ],
+   "flags": [
+    "trial"
    ]
   },
   {
@@ -975,6 +1049,10 @@
      "t": "猫の譲渡（個人審査）",
      "u": "https://www.city.shimonoseki.lg.jp/soshiki/52/1803.html"
     }
+   ],
+   "flags": [
+    "event",
+    "online"
    ]
   },
   {
@@ -1002,6 +1080,9 @@
      "t": "譲渡推進助成金",
      "u": "https://www.city.kochi.kochi.jp/soshiki/36/jyouto-jyosei.html"
     }
+   ],
+   "flags": [
+    "online"
    ]
   },
   {
@@ -1037,7 +1118,10 @@
      "u": "https://ttzk.graffer.jp/pref-oita/smart-apply/apply-procedure/6739733758061202906"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "徳島県",
@@ -1155,7 +1239,10 @@
      "u": "https://www.city.kumamoto.jp/doubutuaigo/kiji00361673/index.html"
     }
    ],
-   "kind": "政令指定都市"
+   "kind": "政令指定都市",
+   "flags": [
+    "trial"
+   ]
   },
   {
    "pref": "島根県",
@@ -1269,6 +1356,10 @@
      "t": "団体譲渡制度",
      "u": "https://www.city.himeji.lg.jp/kurashi/0000026391.html"
     }
+   ],
+   "flags": [
+    "event",
+    "online"
    ]
   },
   {
@@ -1296,6 +1387,9 @@
      "t": "猫の飼い主募集",
      "u": "https://www.city.kagoshima.lg.jp/kenkofukushi/hokenjo/seiei-jueki/kurashi/dobutsu/kainushi/boshu/neko.html"
     }
+   ],
+   "flags": [
+    "event"
    ]
   },
   {
@@ -1322,7 +1416,10 @@
      "u": "https://www.pref.okinawa.jp/kurashikankyo/petgaiju/1018720/1005101.html"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "福岡県",
@@ -1372,6 +1469,9 @@
      "t": "センターの譲渡会",
      "u": "https://www.city.kurume.fukuoka.jp/1070kenkou/2040hokeneisei/3115doubutsuaigo/2025-0821-0935-205.html"
     }
+   ],
+   "flags": [
+    "trial"
    ]
   },
   {
@@ -1421,6 +1521,9 @@
      "t": "道南の譲渡の犬・猫（北海道動物愛護センター道南センターと共同）",
      "u": "https://nyantomo.jp/donanhakodate/"
     }
+   ],
+   "flags": [
+    "online"
    ]
   },
   {
@@ -1444,6 +1547,9 @@
      "t": "飼い主さん募集中",
      "u": "https://www.douaicenter.jp/animal/list/transfer"
     }
+   ],
+   "flags": [
+    "online"
    ]
   },
   {
@@ -1521,7 +1627,11 @@
      "u": "https://www.pref.iwate.jp/kurashikankyou/anzenanshin/pet/1057667.html"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event",
+    "online"
+   ]
   },
   {
    "pref": "岩手県",
@@ -1544,6 +1654,9 @@
      "t": "新しい飼い主を募集しています",
      "u": "https://www.city.morioka.iwate.jp/kurashi/pet/pet_kurashi/1001657.html"
     }
+   ],
+   "flags": [
+    "online"
    ]
   },
   {
@@ -1569,7 +1682,10 @@
      "u": "https://www.city.sendai.jp/dobutsu/kurashi/shizen/petto/hogodobutsu/joho/nekobiyorijotokai.html"
     }
    ],
-   "kind": "政令指定都市"
+   "kind": "政令指定都市",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "秋田県",
@@ -1640,6 +1756,9 @@
      "t": "市民の方が新しい飼い主を探しています",
      "u": "https://www.city.yamagata-yamagata.lg.jp/kurashi/pet/1006550/1005144.html"
     }
+   ],
+   "flags": [
+    "online"
    ]
   },
   {
@@ -1668,7 +1787,11 @@
      "u": "https://www.pref.ibaraki.jp/hokenfukushi/doshise/hogo/documents/toubora20260911.pdf"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event",
+    "trial"
+   ]
   },
   {
    "pref": "栃木県",
@@ -1726,7 +1849,10 @@
      "u": "https://www.pref.gunma.jp/page/7986.html"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "online"
+   ]
   },
   {
    "pref": "埼玉県",
@@ -1749,6 +1875,10 @@
      "t": "協力団体の譲渡動物情報",
      "u": "https://www.city.kawaguchi.lg.jp/soshiki/01090/seikatueiseika/doubutsu/give/46106.html"
     }
+   ],
+   "flags": [
+    "trial",
+    "online"
    ]
   },
   {
@@ -1793,7 +1923,12 @@
      "u": "https://www.city.kawasaki.jp/350/page/0000158129.html"
     }
    ],
-   "kind": "政令指定都市"
+   "kind": "政令指定都市",
+   "flags": [
+    "event",
+    "trial",
+    "online"
+   ]
   },
   {
    "pref": "神奈川県",
@@ -1816,7 +1951,10 @@
      "u": "https://www.city.sagamihara.kanagawa.jp/kosodate/kenko/1026628/pet/1007473.html"
     }
    ],
-   "kind": "政令指定都市"
+   "kind": "政令指定都市",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "石川県",
@@ -1841,7 +1979,10 @@
      "u": "https://aigo-ishikawa.jp/steps-to-transfer/"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "online"
+   ]
   },
   {
    "pref": "石川県",
@@ -1890,6 +2031,10 @@
      "t": "保護猫の譲渡会",
      "u": "https://www.city.kofu.lg.jp/k053/p007058.html"
     }
+   ],
+   "flags": [
+    "event",
+    "trial"
    ]
   },
   {
@@ -1939,6 +2084,9 @@
      "t": "新しい飼い主を探している猫",
      "u": "https://www.city.matsumoto.nagano.jp/soshiki/231/1534.html"
     }
+   ],
+   "flags": [
+    "trial"
    ]
   },
   {
@@ -1966,7 +2114,10 @@
      "u": "https://www.pref.gifu.lg.jp/page/488240.html"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "online"
+   ]
   },
   {
    "pref": "岐阜県",
@@ -2136,7 +2287,10 @@
      "u": "https://www.city.sakai.lg.jp/shisei/sonota/jyorei/youkou/hokeneisei/71309420211209165757235.html"
     }
    ],
-   "kind": "政令指定都市"
+   "kind": "政令指定都市",
+   "flags": [
+    "trial"
+   ]
   },
   {
    "pref": "大阪府",
@@ -2158,6 +2312,9 @@
      "t": "市民ボランティアの犬・ねこ譲渡会",
      "u": "https://www.city.takatsuki.osaka.jp/soshiki/39/2759.html"
     }
+   ],
+   "flags": [
+    "online"
    ]
   },
   {
@@ -2201,6 +2358,9 @@
      "t": "譲渡動物情報",
      "u": "https://www.city.hirakata.osaka.jp/0000021704.html"
     }
+   ],
+   "flags": [
+    "online"
    ]
   },
   {
@@ -2223,6 +2383,9 @@
      "t": "猫の譲渡会",
      "u": "https://www.city.yao.osaka.jp/kurashi_tetsuzuki/sumai_kurashi_seikatsu/1012763/1003039/1018487.html"
     }
+   ],
+   "flags": [
+    "online"
    ]
   },
   {
@@ -2268,6 +2431,10 @@
      "t": "アニマルハーモニー大阪（大阪府）",
      "u": "https://animal-osaka.com/"
     }
+   ],
+   "flags": [
+    "trial",
+    "online"
    ]
   },
   {
@@ -2318,6 +2485,9 @@
      "t": "譲渡可能動物情報",
      "u": "https://www.city.wakayama.wakayama.jp/kurashi/kenko_iryo/1009125/1035775/1002096.html"
     }
+   ],
+   "flags": [
+    "event"
    ]
   },
   {
@@ -2342,7 +2512,10 @@
      "u": "https://www.pref.kagawa.lg.jp/s-doubutuaigo/sanukidouaicenter/jyouto/s04u6e190311095146.html"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "愛媛県",
@@ -2367,7 +2540,10 @@
      "u": "https://www.pref.ehime.jp/page/17002.html"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "online"
+   ]
   },
   {
    "pref": "愛媛県",
@@ -2435,6 +2611,9 @@
      "t": "おおいた動物愛護センター",
      "u": "http://oita-aigo.com/"
     }
+   ],
+   "flags": [
+    "event"
    ]
   },
   {
@@ -2458,7 +2637,10 @@
      "u": "https://animal-net.pref.nagasaki.jp/jyoutoflow"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "長崎県",
@@ -2485,6 +2667,10 @@
      "t": "里親募集",
      "u": "https://www.city.sasebo.lg.jp/kurashi/doubutsuaigo/newowner/index.html"
     }
+   ],
+   "flags": [
+    "trial",
+    "online"
    ]
   },
   {
@@ -2526,6 +2712,9 @@
      "t": "猫の団体譲渡制度",
      "u": "https://www.city.hachioji.tokyo.jp/kurashi/hoken/007/001/001/p020741.html"
     }
+   ],
+   "flags": [
+    "event"
    ]
   },
   {
@@ -2570,6 +2759,11 @@
      "t": "新しい飼い主を探している保健所収容動物",
      "u": "https://www.city.amagasaki.hyogo.jp/kurashi/iryou/pet/1017176.html"
     }
+   ],
+   "flags": [
+    "event",
+    "trial",
+    "online"
    ]
   },
   {
@@ -2593,6 +2787,9 @@
      "t": "飼い主さん募集中の猫",
      "u": "https://www.city.akashi.lg.jp/kankyou/dobutsu/info/boshu/cat.html"
     }
+   ],
+   "flags": [
+    "event"
    ]
   },
   {
@@ -2616,7 +2813,10 @@
      "u": "https://www.pref.kagoshima.jp/ae09/kenko-fukushi/yakuji-eisei/dobotu/jouto/inunekojouto.html"
     }
    ],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "沖縄県",
@@ -2646,6 +2846,11 @@
      "t": "譲渡ボランティアに関すること",
      "u": "https://www.city.naha.okinawa.jp/kurasitetuduki/animal/1002271/1002292.html"
     }
+   ],
+   "flags": [
+    "trial",
+    "online",
+    "visit"
    ]
   },
   {
@@ -2675,6 +2880,10 @@
      "t": "みやざき動物愛護センター",
      "u": "https://www.city.miyazaki.miyazaki.jp/life/pet/service/109756.html"
     }
+   ],
+   "flags": [
+    "event",
+    "trial"
    ]
   },
   {
@@ -2724,7 +2933,11 @@
     "トライアルで返せるのは、先住の子と相性が合わないときか、猫エイズ・猫白血病が分かったとき"
    ],
    "links": [],
-   "kind": "政令指定都市"
+   "kind": "政令指定都市",
+   "flags": [
+    "trial",
+    "visit"
+   ]
   },
   {
    "pref": "秋田県",
@@ -2746,7 +2959,10 @@
     "高齢の家族は、親族などが飼い続けるのを支える約束が要る"
    ],
    "links": [],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "福島県",
@@ -2768,7 +2984,10 @@
     "新しく載った子は数日の集中受付があり、申し込んだ人の中から選ぶ（本所）"
    ],
    "links": [],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "online"
+   ]
   },
   {
    "pref": "福島県",
@@ -2805,7 +3024,11 @@
     "猫は室内飼育"
    ],
    "links": [],
-   "kind": "政令指定都市"
+   "kind": "政令指定都市",
+   "flags": [
+    "trial",
+    "online"
+   ]
   },
   {
    "pref": "千葉県",
@@ -2839,7 +3062,10 @@
     "市内で犬を飼う人は登録手数料3,000円"
    ],
    "links": [],
-   "kind": "政令指定都市"
+   "kind": "政令指定都市",
+   "flags": [
+    "trial"
+   ]
   },
   {
    "pref": "新潟県",
@@ -2858,7 +3084,10 @@
     "身分証と3段ケージ・キャリーケースなどを用意"
    ],
    "links": [],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "online"
+   ]
   },
   {
    "pref": "富山県",
@@ -2897,7 +3126,10 @@
     "迎えるときはキャリー・首輪・リードを持っていく"
    ],
    "links": [],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "山梨県",
@@ -2919,7 +3151,10 @@
     "センターの調査や指導に協力する"
    ],
    "links": [],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "静岡県",
@@ -2938,7 +3173,11 @@
     "お迎えの日は平日、住所の分かる身分証とクレートなどを持っていく"
    ],
    "links": [],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "online",
+    "visit"
+   ]
   },
   {
    "pref": "愛知県",
@@ -2977,7 +3216,10 @@
     "譲渡後もセンターの調査に協力"
    ],
    "links": [],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "大阪府",
@@ -2994,7 +3236,12 @@
     "譲渡後6か月以内に健康診断・不妊去勢の報告、6か月〜1年に近況の報告"
    ],
    "links": [],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event",
+    "trial",
+    "online"
+   ]
   },
   {
    "pref": "大阪府",
@@ -3010,7 +3257,11 @@
     "不妊去勢（犬はすみやかに、猫は1年以内）・6か月〜1年以内に報告"
    ],
    "links": [],
-   "kind": "政令指定都市"
+   "kind": "政令指定都市",
+   "flags": [
+    "event",
+    "online"
+   ]
   },
   {
    "pref": "奈良県",
@@ -3033,7 +3284,10 @@
     "譲渡後一定期間で電話か郵送で飼い方のようすを確かめる"
    ],
    "links": [],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "和歌山県",
@@ -3052,7 +3306,10 @@
     "飼っている犬・猫が多いと譲渡できないことがある"
    ],
    "links": [],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "trial"
+   ]
   },
   {
    "pref": "広島県",
@@ -3069,7 +3326,11 @@
     "譲渡会は毎週土曜（10〜12時・13〜15時30分）、見学は自由"
    ],
    "links": [],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event",
+    "trial"
+   ]
   },
   {
    "pref": "広島県",
@@ -3086,7 +3347,10 @@
     "不妊去勢を確実に・譲渡後の調査に協力"
    ],
    "links": [],
-   "kind": "政令指定都市"
+   "kind": "政令指定都市",
+   "flags": [
+    "online"
+   ]
   },
   {
    "pref": "香川県",
@@ -3138,7 +3402,11 @@
     "譲渡会で受講済証を出して申し込む（多いときは受付順）",
     "条件に合わない人には譲渡しない"
    ],
-   "links": []
+   "links": [],
+   "flags": [
+    "event",
+    "visit"
+   ]
   },
   {
    "pref": "兵庫県",
@@ -3156,7 +3424,10 @@
     "見学は各所の「ふれあいの時間」（原則電話予約）"
    ],
    "links": [],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "event"
+   ]
   },
   {
    "pref": "宮崎県",
@@ -3187,7 +3458,10 @@
     "先に譲り受けの登録をする（申し込みは平日）",
     "センターに来てもその日には譲渡しない"
    ],
-   "links": []
+   "links": [],
+   "flags": [
+    "online"
+   ]
   },
   {
    "pref": "鳥取県",
@@ -3212,7 +3486,10 @@
     "譲渡の窓口と条件は県のペットのページから確認（福岡市・北九州市・久留米市はそれぞれの市が担当）"
    ],
    "links": [],
-   "kind": "都道府県"
+   "kind": "都道府県",
+   "flags": [
+    "online"
+   ]
   }
  ]
 }

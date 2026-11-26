@@ -92,7 +92,9 @@ def icon_rows(e, conds, fees=()):
 
 def card(e, c):
     links = "".join(f'<li><a href="{e(l["u"])}" target="_blank" rel="noopener">{e(l["t"])} ↗</a></li>' for l in c.get("links", []))
-    return (f'<div class="emg-item emg-co jt-card"><a href="{e(c["url"])}" target="_blank" rel="noopener"><b>{e(c["name"])}</b></a>'
+    _fl = " ".join(c.get("flags") or [])
+    _ka = f' data-k="{e(_fl)}"' if _fl else ""
+    return (f'<div class="emg-item emg-co jt-card"{_ka}><a href="{e(c["url"])}" target="_blank" rel="noopener"><b>{e(c["name"])}</b></a>'
             f'<small>{e(_kind(c))}・{e(c["animals"])}</small>'
             + icon_rows(e, c["conds"])
             + (f'<p class="jt-h">あわせて見る</p><ul class="jt-l">{links}</ul>' if links else "")

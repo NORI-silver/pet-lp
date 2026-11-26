@@ -36,9 +36,9 @@ CAT_WHO = {
 # 施設の内容のキー（うちの子の条件ではなく、施設がしていること。uikit の SVC の「サービスの内容」に出す）。
 # 判定は CAT_WHO と同じ _find（公式サイトの文・同じ文に「不可・お断り」があれば合わない）。
 FAC = {
-    "rojin-home": ["mitori", "long", "menkai", "pickup", "staff24", "medical"],
+    "rojin-home": ["mitori", "long", "menkai", "pickup", "staff24", "medical", "trialstay", "nurse", "privroom", "dogrun", "tempstay"],
     "pet-hotel": ["cagefree", "walk", "longstay", "staff24", "smallonly"],
-    "pet-sitter": ["cert", "stay", "sameday", "regular"],
+    "pet-sitter": ["cert", "stay", "sameday", "regular", "nightcare", "earlycare", "pickup", "trial", "discount", "longstay"],
     "trimming": ["bubun", "pickup", "nail", "ear"],
     "dog-trainer": ["private", "agility", "dance", "nosework", "disc", "competition", "seminar"],
 }
@@ -127,6 +127,15 @@ PAT = {
     "seminar": r"セミナー|講座|勉強会",
     # ホテル：小型犬のみ（2026-11-25 追加。公式サイトの収集文から）
     "smallonly": r"小型犬(のみ|だけ|専用|限定)",
+    "nightcare": r"夜間|深夜",
+    "earlycare": r"早朝",
+    "trial": r"トライアル|お試し",
+    "discount": r"回数券|定期割引|割引",
+    "nurse": r"看護師",
+    "privroom": r"個室",
+    "dogrun": r"ドッグラン",
+    "tempstay": r"一時預かり|ショートステイ",
+    "trialstay": r"お試し|体験入所|体験利用|短期(の)?(入所|滞在)",
     # ホテル：長期・24時間（staff24 は下の既存パターンを共用）
     "longstay": r"長期",
     # シッター：泊まり・当日・定期
@@ -258,12 +267,6 @@ def keys(cat, url):
             put(k, _find(t, k))
     for k in FAC.get(cat, []):
         put(k, _find(t, k))
-    if cat == "rojin-home":
-        # 映像のライブ視聴は飼い主向けであることを、出典付きの専用項目で確認する。
-        # 防犯カメラ、施設側の見守り、写真・動画の報告からは推定しない。
-        live = r.get("care_evidence", {}).get("owner_live_camera", {})
-        if live.get("src") and live.get("checked") and "dog" in live.get("animals", []):
-            put("owner_live_dog", 1)
     if cat == "pet-hotel":
         # 体重帯（データに体重の上限 max_kg が書いてあるホテルだけ。上限が帯の上まであれば合う、上限が帯の下より小さければ合わない）
         kg = r.get("max_kg") or 0
@@ -278,8 +281,6 @@ def keys(cat, url):
         for k in ("a:small", "a:bird", "a:exotic"): put(k, _find(t, k))
     if cat == "sougi":
         for k in WHEN: put(k, _find(t, k))
-        # 合同・返骨の組み合わせに限って非対応。個別火葬の返骨可否には影響させない。
-        if r.get("group_returns_ashes") is False: put("合同火葬+お骨を返してもらえる", 2)
     if cat == "pet-sitter" and r.get("chain") in CHAIN:
         for k in CHAIN[r["chain"]]["keys"]:
             if k not in no: put(k, 1)
@@ -316,6 +317,8 @@ def joto_keys(url):
         v = _joto_flag(conds, rx)
         if v == 1: yes.append(k)
         elif v == 2: no.append(k)
+    for k in c.get("flags") or []:  # 公式ページの収集文から（譲渡会・トライアル・オンライン・見学。2026-11-26 収集）
+        if k in ("event", "trial", "online", "visit") and k not in yes: yes.append(k)
     cs = [x for x in conds if re.search(r"[5-7]\d歳|高齢|ひとり暮らし|一人暮らし|単身|独居", x)]
     if any(_BACKUP.search(x) for x in cs): yes.append("older")
     elif any(_STOP.search(x) and re.search(r"[5-7]\d歳|ひとり暮らし|一人暮らし|高齢", x) for x in cs): no.append("older")
