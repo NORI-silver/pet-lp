@@ -116,7 +116,9 @@ def _card(e, h):
             if f["k"] in ("料金", "受け入れの注意") and h.get("fit_status") and f.get("src"):
                 extra += f'<a class="fc-source" href="{e(f["src"])}" target="_blank" rel="noopener">{e(f["k"])}の案内</a>'
     city = f'<small>{e(h["city"])}</small>' if h.get("city") else ""
-    return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>{city}{extra}{review_link("hotel", h, scope="facility")}</div>')
+    # 条件が限定される送迎情報は、全国ページで県を切り替えても同じカードに残す。
+    scope_id = f' data-fid="{e(h["id"])}"' if h.get("pickup_comparison") else ""
+    return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"{scope_id}><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>{city}{extra}{review_link("hotel", h, scope="facility")}</div>')
 
 def render(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
@@ -220,4 +222,4 @@ CAT = dict(slug=SLUG, name="ペットホテル", unit="件", h1=H1, items=J["hot
 CAT["no_page"] = ('青森県', '岐阜県', '山梨県', '愛媛県', '富山県', '山形県')
 CAT["fact_cols"] = [("料金", ("料金",)), ("営業・受付時間", ("営業・受付時間",)), ("定休日", ("定休日",)), ("駐車場", ("駐車場",)), ("送迎", ("送迎",))]
 CAT["price_title"] = "料金（公式サイトの表示どおり）"
-CAT["table"] = [("大型犬", lambda h: (f'○（{h["max_kg"]}kgまで）' if h.get("max_kg") else "○") if h.get("large") else ""), ("猫", lambda h: "猫専用" if h.get("cat_only") else ("別室" if h.get("separate") else ("○" if h.get("cat") else ""))), ("病院併設", lambda h: "○" if h.get("vet") else ""), ("送迎", lambda h: "○" if h.get("pickup") else ""), ("シニア", lambda h: "○" if h.get("senior") else ""), ("夜のスタッフ", lambda h: "○" if h.get("night_staff") else "")]
+CAT["table"] = [("大型犬", lambda h: (f'○（{h["max_kg"]}kgまで）' if h.get("max_kg") else "○") if h.get("large") else ""), ("猫", lambda h: "猫専用" if h.get("cat_only") else ("別室" if h.get("separate") else ("○" if h.get("cat") else ""))), ("病院併設", lambda h: "○" if h.get("vet") else ""), ("送迎", lambda h: h.get("pickup_comparison") or ("○" if h.get("pickup") else "")), ("シニア", lambda h: "○" if h.get("senior") else ""), ("夜のスタッフ", lambda h: "○" if h.get("night_staff") else "")]

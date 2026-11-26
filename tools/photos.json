@@ -47926,32 +47926,6 @@
   },
   {
    "cat": "trainer",
-   "id": "T-HT060",
-   "name": "犬の幼稚園・しつけ教室 わんぷろ",
-   "url": "https://www.weeeeks.jp/shop/wannpuro/",
-   "by": "permit",
-   "src": "2026-11-24",
-   "checked": "2026-11-24",
-   "photos": [
-    "/img/fac/trainer/T-HT060_1.webp",
-    "/img/fac/trainer/T-HT060_2.webp",
-    "/img/fac/trainer/T-HT060_3.webp",
-    "/img/fac/trainer/T-HT060_4.webp",
-    "/img/fac/trainer/T-HT060_5.webp",
-    "/img/fac/trainer/T-HT060_6.webp"
-   ],
-   "credit": "写真：犬の幼稚園・しつけ教室 わんぷろ",
-   "ratio": [
-    1.5,
-    1.779,
-    1.5,
-    1.333,
-    1.333,
-    1.5
-   ]
-  },
-  {
-   "cat": "trainer",
    "id": "T-HT066",
    "name": "株式会社エスティー動物病院",
    "url": "https://st-ah.com/",
@@ -52378,6 +52352,40 @@
     1.5,
     1.5,
     1.5
+   ]
+  },
+  {
+   "cat": "trainer",
+   "id": "T006",
+   "name": "わんぷろ",
+   "url": "https://wanpro-dog.jp/",
+   "by": "permit",
+   "src": "https://wanpro-dog.jp/",
+   "checked": "2026-11-26",
+   "photos": [
+    "/img/fac/trainer/T006_1.webp",
+    "/img/fac/trainer/T006_2.webp"
+   ],
+   "credit": "写真：わんぷろ",
+   "ratio": [
+    1.333,
+    1.333
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D017",
+   "name": "川越公園ドッグラン「わんこの遊び場」",
+   "url": "https://www.parks.or.jp/kawagoesuijo/guide/000/000122.html",
+   "by": "permit",
+   "src": "https://www.parks.or.jp/kawagoesuijo/guide/000/000122.html",
+   "checked": "2026-11-26",
+   "photos": [
+    "/img/fac/dogrun/D017_1.webp"
+   ],
+   "credit": "写真：川越公園管理事務所",
+   "ratio": [
+    3.447
    ]
   }
  ]
