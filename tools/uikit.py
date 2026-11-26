@@ -151,7 +151,7 @@ def write_js(ROOT):
     from prefs import PREFS
     slug = {x[1]: x[0] for x in PREFS}
     slug.update({"東京都": "tokyo", "神奈川県": "kanagawa", "埼玉県": "saitama", "千葉県": "chiba"})  # 4都県は prefs.PREFS の外（gen_dogrun.py の PSLUG と同じ足し方）
-    js = open(os.path.join(HERE, "find.js"), encoding="utf-8").read().replace("__SLUG__", _j.dumps(slug, ensure_ascii=False))
+    js = open(os.path.join(HERE, "find.js"), encoding="utf-8").read().replace("__SLUG__", _j.dumps(slug, ensure_ascii=False, separators=(",", ":")))
     # 配信用はコメント行と行頭の空白だけを除き、改行と検索の処理は保つ（24KB 上限）。
     src = prefkeep.FN + prefkeep.GUESS + "\n" + js
     out = "// 生成：tools/uikit.py（元は tools/find.js と tools/prefkeep.py）\n"
@@ -303,7 +303,8 @@ def facility_list(h, conf, hub):
         ks = fl.group(1).split() if fl else []
         ks += [{"large": "big", "senior": "sen"}[k] for k in ks if k in ("large", "senior")]
         y, n = ownerfit.keys(conf["cat"], url)
-        ks = list(dict.fromkeys(ks + y))
+        blocked = {k for k, v in ownerfit.checked_condition_status(conf["cat"], url).items() if v != 1}
+        ks = [k for k in dict.fromkeys(ks + y) if k not in blocked]
         # 猫専用かどうかはデータの項目（cat_only）ではっきり決まる。専用でないホテルは「猫専用ではない」として外す
         n = [x for x in n if x not in ks] + (["a:dog"] if "cat_only" in ks else ["cat_only"])
         no = f' data-no="{e(" ".join(n))}"' if n else ""
@@ -398,7 +399,8 @@ def _keys(t, cat, url=""):
     if cat == "dog-trainer" and raw & {"問題行動", "しつけ相談"}: k.append("shy")
     y, n = ownerfit.joto_keys(url) if cat == "joto" else ownerfit.keys(cat, url)
     k += y
-    k = list(dict.fromkeys(k))
+    blocked = {key for key, val in ownerfit.checked_condition_status(cat, url).items() if val != 1}
+    k = [x for x in dict.fromkeys(k) if x not in blocked]
     no = [x for x in no + n if x not in k]
     return k, list(dict.fromkeys(no))
 
@@ -555,7 +557,19 @@ def stock(h, ROOT, cat):
         return m.group(0) + f'<div class="ux-img"><img src="/img/stock/{STOCK_KEY[cat]}/{f}" alt="" loading="lazy"></div>'  # 「イメージ」の字は CSS で（ページを軽く）
     return _CARD_OPEN.sub(put, h)
 
+def pref_nav(h, cat, parts, slugs):
+    """施設の検索欄がない県・市区町村ページにも、別の県への入口を出す。"""
+    if len(parts) < 2 or parts[1] not in slugs or cat not in LIST_CATS + ["pet-hotel", "dogrun"]: return h
+    nav = f'<div class="ux-find" data-pref-nav="{e(cat)}"><span class="ux-l">ほかの都道府県で探す</span></div>'
+    if 'id="ffPlace"' in h or 'id="hfPlace"' in h: return h.replace(nav, "")
+    mark = '<div class="emg">'
+    if mark not in h: return h
+    if nav not in h: h = h.replace(mark, mark + nav, 1)
+    return h if PLACE_JS in h else h.replace("</body>", PLACE_JS + "\n</body>", 1)
+
 def build(ROOT):
+    from prefs import PREFS
+    slugs = {p[0] for p in PREFS} | {"tokyo", "chiba", "kanagawa", "saitama"}
     n = 0
     sz = write_js(ROOT)
     for d in ALL:
@@ -566,6 +580,7 @@ def build(ROOT):
             h = open(p, encoding="utf-8").read()
             old = h
             # /place.js を /find.js・/hosp.js の前に1回だけ
+            if "data-pref-nav=" in h: h = h.replace(PLACE_JS + "\n", "")
             h = h.replace(PLACE_JS, "").replace('<script src="/find.js" defer></script>', FIND_JS).replace('<script src="/hosp.js" defer></script>', PLACE_JS + '<script src="/hosp.js" defer></script>')
             cat = "hospital-night" if parts[:2] == ["hospital", "night"] else d
             h = taxi(h, cat)
@@ -574,6 +589,7 @@ def build(ROOT):
             if d == "inu-cafe" and len(parts) == 1: h = cafe_hub(h)
             if d == "jichitai" and len(parts) == 1: h = jichitai_hub(h)
             if 'data-ff="' in h and FIND_JS not in h: h = h.replace("</body>", FIND_JS + "\n</body>", 1)
+            h = pref_nav(h, d, parts, slugs)
             h = stock(h, ROOT, cat)
             h = head(h)
             if h != old:
