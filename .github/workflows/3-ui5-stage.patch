@@ -1,0 +1,251 @@
+diff --git a/tests/label-uchinoko.test.cjs b/tests/label-uchinoko.test.cjs
+new file mode 100644
+index 000000000..a92c348bb
+--- /dev/null
++++ b/tests/label-uchinoko.test.cjs
+@@ -0,0 +1,32 @@
++// 「うちの子は／うちの子にあてはまるもの」の見出しが、どのページのさがす欄にも残っていないこと（よく使用される項目にそろえた。Nori 2026-11-26）。
++// 生成元のない古いページ（tools/orphan_labels.py）は、かけ直しても同じ結果になること。
++const test = require('node:test'), assert = require('node:assert'), fs = require('fs'), path = require('path'), cp = require('child_process');
++const root = path.join(__dirname, '..');
++test('no visible old filter heading on any page', () => {
++  const bad = [];
++  (function walk(d) {
++    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
++      if (e.name.startsWith('.') || e.name === 'node_modules' || e.name === 'tools' || e.name === 'tests') continue;
++      const f = path.join(d, e.name);
++      if (e.isDirectory()) walk(f);
++      else if (e.name === 'index.html' && /class="(ux-l|fp-l)">うちの子/.test(fs.readFileSync(f, 'utf8'))) bad.push(path.relative(root, f));
++    }
++  })(root);
++  assert.deepStrictEqual(bad, []);
++});
++test('orphan normalization is idempotent and touches only the heading', () => {
++  const out = cp.execFileSync('python3', ['-c', `
++import sys,os,shutil,tempfile
++sys.path.insert(0,'tools')
++import orphan_labels as O
++t=tempfile.mkdtemp()
++src='<html><head><meta name="robots" content="max-image-preview:large"></head><body><span class="ux-l">うちの子にあてはまるもの</span><span class="fp-l">うちの子は</span><a href="/x/">x</a></body></html>'
++for d in O.ORPHANS:
++    os.makedirs(os.path.join(t,d)); open(os.path.join(t,d,'index.html'),'w',encoding='utf-8').write(src)
++n1=O.normalize(t); n2=O.normalize(t)
++h=open(os.path.join(t,O.ORPHANS[0],'index.html'),encoding='utf-8').read()
++assert n1==len(O.ORPHANS) and n2==0, (n1,n2)
++assert 'うちの子' not in h and h.count('よく使用される項目')==2 and 'max-image-preview:large' in h and 'href="/x/"' in h
++print('ok')`], { cwd: root }).toString();
++  assert.match(out, /ok/);
++});
+diff --git a/tests/richsort.test.cjs b/tests/richsort.test.cjs
+new file mode 100644
+index 000000000..1f76122f2
+--- /dev/null
++++ b/tests/richsort.test.cjs
+@@ -0,0 +1,25 @@
++// 裏側の並び（情報の充実度）の検査：安定ソート・同点は元の順・お金/提携は使わない・UIに「情報が多い」並び替えを出さない
++const cp = require('child_process'), fs = require('fs'), path = require('path');
++const root = path.join(__dirname, '..');
++const py = `
++import sys, json
++sys.path.insert(0, 'tools')
++import richsort as r
++rich = {"id":"a","name":"A","url":"https://x","facts":[{"k":"料金","yen":1000},{"k":"営業時間"}],"hours":"9-18","addr":"x"}
++thin = {"id":"b","name":"B"}
++tie1 = {"id":"c","name":"C"}; tie2 = {"id":"d","name":"D"}
++paid = {"id":"e","name":"E","partner":True,"paid":True,"sponsor":True}
++out = [x["id"] for x in r._sorted([thin, tie1, rich, tie2, paid], {})]
++print(json.dumps(out))
++`;
++const res = cp.spawnSync('python3', ['-c', py], { cwd: root, encoding: 'utf8' });
++if (res.status !== 0) { console.error(res.stderr); process.exit(1); }
++const out = JSON.parse(res.stdout);
++let fail = 0;
++const ok = (c, m) => { if (!c) { console.error('FAIL ' + m); fail++; } };
++ok(out[0] === 'a', '情報が多い施設が先頭');
++ok(JSON.stringify(out.slice(1)) === JSON.stringify(['b', 'c', 'd', 'e']), '同点（情報なし・お金/提携の記載だけ）は元の順を保つ: ' + out);
++const sel = fs.readFileSync(path.join(root, 'tools/uikit.py'), 'utf8');
++ok(!/情報が多い/.test(sel), 'uikit に「情報が多い」並び替えが無い');
++if (fail) process.exit(1);
++console.log('richsort ok');
+diff --git a/tools/faccard.py b/tools/faccard.py
+index 38a88d2cb..40002dd70 100644
+--- a/tools/faccard.py
++++ b/tools/faccard.py
+@@ -563,7 +563,7 @@ def panel(conf, kinds_used, has_size, has_sen, has_pup, n, fts=(), box=False, dp
+     if has_size and "dog" in conf["kinds"]: ex.append('<button type="button" data-v="big" aria-pressed="false">大型犬</button>')
+     if has_sen and conf.get("senior"): ex.append('<button type="button" data-v="sen" aria-pressed="false">シニア・介護</button>')
+     if has_pup and conf.get("puppy"): ex.append('<button type="button" data-v="pup" aria-pressed="false">子犬</button>')
+-    if ex: rows.append('<div class="fp-row"><span class="fp-l">うちの子は</span><div class="fp-btns" data-g="x">' + "".join(ex) + "</div></div>")
++    if ex: rows.append('<div class="fp-row"><span class="fp-l">よく使用される項目</span><div class="fp-btns" data-g="x">' + "".join(ex) + "</div></div>")
+     if dps: rows.append('<div class="fp-row"><span class="fp-l">診療科目</span><div class="fp-btns fp-ft" data-g="d">' +
+                         "".join(f'<button type="button" data-v="{html.escape(v)}" aria-pressed="false">{html.escape(v)}</button>' for v in dps) + "</div></div>")
+     if fts: rows.append('<div class="fp-row"><span class="fp-l">しぼる</span><div class="fp-btns fp-ft" data-g="f">' +
+diff --git a/tools/gen_areas.py b/tools/gen_areas.py
+index 1d76f39ad..9966ac6e6 100644
+--- a/tools/gen_areas.py
++++ b/tools/gen_areas.py
+@@ -2862,6 +2862,9 @@ for _u, _to in sorted(_MOVED["pages"].items()):
+   _nm += 1
+ json.dump(_MOVED, open(_mv_f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+ print("moved", _nm, "pages")
++# 生成元のない古いページのさがす欄の見出しをそろえる（tools/orphan_labels.py。べき等）
++import orphan_labels
++print("orphan_labels", orphan_labels.normalize(ROOT), "pages")
+ # [G] 品質の決まりの点検（tools/rules_check.py、Nori 2026-11-16「指示しなくてもできるようにしたい」）。直った前からの違反を
+ # tools/rules_baseline.json から消す（いちばん最後。新しい違反で止めるのは seo-check.yml の rules_check.py）
+ import rules_check
+diff --git a/tools/gen_dogrun.py b/tools/gen_dogrun.py
+index 959a3c87d..c64786c24 100644
+--- a/tools/gen_dogrun.py
++++ b/tools/gen_dogrun.py
+@@ -157,7 +157,7 @@ def ff_card(e, d, full=False):
+ def ff_box(e, opts=None):
+     import uikit
+     return uikit.box("dogrun", q_ph="都道府県・市区町村・公園の名前", opts=opts, unit="か所", noun="ドッグラン", go="この条件でドッグランを探す",
+-                     who=("うちの子は", [("small", "小型犬（小型犬エリアあり）"), ("large", "大型犬（大型犬も入れる）")]),
++                     who=("よく使用される項目", [("small", "小型犬（小型犬エリアあり）"), ("large", "大型犬（大型犬も入れる）")]),
+                      need=("どんなドッグランをお探しですか？", [("free", "無料"), ("paid", "有料"), ("noreg", "登録なしで使える"), ("park", "駐車場がある"), ("h24", "24時間")]),
+                      more=[("種類", [("public", "公園などの公営"), ("shop", "お店・施設"), ("sapa", "高速道路のSA・PA")]),
+                            ("施設", [("indoor", "屋内"), ("pool", "プール・水遊び"), ("cafe", "カフェ併設"), ("member", "会員制")]),
+diff --git a/tools/gen_maigo.py b/tools/gen_maigo.py
+index bc38d161a..7fa48ca54 100644
+--- a/tools/gen_maigo.py
++++ b/tools/gen_maigo.py
+@@ -52,8 +52,16 @@ def detectives():
+         ar = _areas(d)
+         _fl = []
+         if ar == ["全国"]: _fl.append("z")
+-        if "猫" in d.get("animals", "") or "明記なし" in d.get("animals", ""): _fl.append("c")
+         if "円" in txt: _fl.append("p")
++        _an = d.get("animals", "")  # 公式に動物の種類が書いてあるものだけ。書いていない会社は「犬」「猫」「鳥など」のどれにも入れない
++        if "受けていない" in _an: _an = _an.split("（")[0]  # 「猫だけ（犬・亀・鳥は受けていない）」の括弧内は対象外の記載
++        if not _an or "明記なし" in _an: _fl.append("un")  # 動物の種類の記載がない
++        else:
++            if "犬" in _an: _fl.append("dg")
++            if "猫" in _an: _fl.append("ct")
++            if any(x in _an for x in ("鳥", "爬虫", "小動物", "うさぎ", "ハムスター")): _fl.append("ex")
++        if d.get("cancel") or d.get("cancel_quote"): _fl.append("cx")      # キャンセル料が公式に書いてある
++        if d.get("extra_fees"): _fl.append("ef")                          # 追加費用（出張費・経費など）が書いてある（「追加費用なし」ではない）
+         out.append({"name": d["name"], "url": d.get("price_url") or d.get("url"), "areas": ar, "plan": txt, "flags": " ".join(_fl),
+                     "review_html": review_link("detective", d, "jc-src", scope="company"), "animals": "" if "明記なし" in d.get("animals", "") else d.get("animals", ""), "near": d.get("near") or [], "pref_url": d.get("pref_url") or "", "near_note": d.get("near_note") or "", "area_text": "全国" if ar == ["全国"] else (d.get("area") if d.get("area") not in (None, "", "記載なし") else d.get("base", ""))})
+     return out
+@@ -130,6 +138,7 @@ CSS = ("<style>"
+  ".jc-3 small{display:block;font-weight:400;font-size:.82rem;color:#5a4a3f}"
+  ".jc-q1{background:#fff;border:2px solid #c2410c;border-radius:16px;padding:12px 14px;margin:6px 0 12px}"
+  ".jc-q1 label{display:block;font-weight:800;margin:0 0 6px}.jc-q1 input[type=text]{width:100%;box-sizing:border-box;padding:12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
++ ".jc-sgl{flex:0 0 100%;font-size:.8rem;font-weight:800;color:#5a4a3f;margin-top:4px}"
+  ".jc-sg{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}.jc-sg:empty{display:none}.jc-sg button{padding:8px 12px;border:1px solid #c2410c;border-radius:999px;background:#fff;color:#c2410c;font-weight:700;font-size:.9rem}"
+  ".jc-an{display:flex;gap:8px;margin:10px 0 0}.jc-an button{flex:1;padding:10px;border:1px solid #d9c9bb;border-radius:12px;background:#fff;font-weight:800;font-size:.95rem;color:#2b2622}.jc-an button[aria-pressed=true]{background:#2b2622;color:#fff;border-color:#2b2622}"
+  ".jc-hd{font-size:.95rem;margin:10px 0 0;color:#2b2622}.jc-hd b{color:#c2410c}"
+@@ -215,7 +224,11 @@ def maigo(ctx):
+         f'<tr data-det="{e(d["flags"])}"><th><a href="{e(d.get("price_url") or d["url"])}" target="_blank" rel="noopener">{e(d["name"])}</a>{("<br>" + d["review_html"]) if d["review_html"] else ""}</th>'
+         f'<td>{e(d["plan"])}' + (f'<br><small>{e(d["animals"])}</small>' if d["animals"] else "") + '</td>'
+         f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + '</td></tr>' for d in dets)
+-    det_tbl = ('<div class="jc-sg" role="group" aria-label="ペット探偵の絞り込み"><button type="button" data-detf="z" aria-pressed="false">全国対応</button><button type="button" data-detf="c" aria-pressed="false">猫を探せる</button><button type="button" data-detf="p" aria-pressed="false">料金が分かる</button></div>'
++    det_tbl = ('<div class="jc-sg" role="group" aria-label="ペット探偵の絞り込み"><span class="jc-sgl">どの子</span><button type="button" data-detf="dg" aria-pressed="false">犬と書いてある</button><button type="button" data-detf="ct" aria-pressed="false">猫と書いてある</button><button type="button" data-detf="ex" aria-pressed="false">鳥・小動物・爬虫類と書いてある</button>'
++               '<span class="jc-sgl">範囲</span><button type="button" data-detf="z" aria-pressed="false">全国対応</button><button type="button" data-detf="n" aria-pressed="false" title="上で県を選ぶと使えます。会社の記載による。出張費は各社の欄で確認">選んだ県が主な対応地域の会社</button>'
++               '<span class="jc-sgl">料金</span><button type="button" data-detf="p" aria-pressed="false">料金が分かる</button><button type="button" data-detf="cx" aria-pressed="false">キャンセル料が書いてある</button><button type="button" data-detf="ef" aria-pressed="false">追加費用の記載がある</button>'
++               '<span class="jc-sgl">そのほか</span><button type="button" data-detf="un" aria-pressed="false" title="犬・猫・鳥などを選んだときだけ使えます">動物の記載がない事業者も含める</button></div>'
++
+                f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域</th></tr></thead><tbody>{det_rows}</tbody></table></div>'
+                f'<p class="jc-src">金額は税込（税別・税の記載がない会社は印つき）。各社の公式サイトの掲載情報をもとに、最低料金は「〜」で表示しています。順番に意味はありません。発見率など会社の発表の数字は、くらべ方がそろっていないので載せていません。</p>') if dets else ""
+     ins = [i for i in PRIV.get("insurance", []) if not i.get("doubt")]
+diff --git a/tools/jichitai.js b/tools/jichitai.js
+index 386fcce19..7d7479c00 100644
+--- a/tools/jichitai.js
++++ b/tools/jichitai.js
+@@ -41,10 +41,10 @@ function pick(m){S.innerHTML='';Q.value=m[1];ls('jcMuni',m[0]+'|'+m[1]);var P=D.
+ function covers(d,pf){var ar=d.areas||[];return ar.indexOf('全国')>=0||ar.indexOf(pf)>=0||(d.near||[]).indexOf(pf)>=0}
+ function local(d,pf){return(d.near||[]).indexOf(pf)>=0||!!(d.u&&d.u[pf])||((d.areas||[]).indexOf(pf)>=0&&(d.areas||[])[0]!=='全国')}
+ /* ペット探偵：その県に来てくれる会社だけを、地元・出張費なしの会社を先にして1つの表に並べる（表は最初の4件と「のこり」に分かれているので、全部の行を集める） */
+-var detF={};function detApply(){var el=document.getElementById('jcPro');if(!el)return;var act=Object.keys(detF).filter(function(k){return detF[k]});if(!act.length)return;[].forEach.call(el.querySelectorAll('tbody tr'),function(r){if(r.style.display==='none'&&!r._detH)return;var f=' '+(r.getAttribute('data-det')||'')+' ';var ok=act.every(function(k){return f.indexOf(' '+k+' ')>=0});if(!ok){r._detH=1;r.style.display='none'}else if(r._detH){r._detH=0;r.style.display=''}})}
++var detF={};function detApply(){var el=document.getElementById('jcPro');if(!el)return;var act=Object.keys(detF).filter(function(k){return detF[k]});if(!act.length)return;[].forEach.call(el.querySelectorAll('tbody tr'),function(r){if(r.style.display==='none'&&!r._detH)return;var f=' '+(r.getAttribute('data-det')||'')+' ';var ok=act.every(function(k){if(k==='un')return true;if(k==='dg'||k==='ct'||k==='ex')return f.indexOf(' '+k+' ')>=0||(detF.un&&f.indexOf(' un ')>=0);if(k==='n')return !pro.pf||(r.getAttribute('data-near')||'').split('|').indexOf(pro.pf)>=0;return f.indexOf(' '+k+' ')>=0});if(!ok){r._detH=1;r.style.display='none'}else if(r._detH){r._detH=0;r.style.display=''}})}
+ function pro(pf){pro.pf=pf;var el=document.getElementById('jcPro');if(!el||!D.d||!D.d.length)return;var tb=el.querySelector('tbody');if(!tb)return;
+  var rows=pro.rows||(pro.rows=[].slice.call(el.querySelectorAll('tbody tr'))),more=el.querySelector('details.more'),near=[],far=[],off=[];
+- D.d.forEach(function(d,i){var r=rows[i];if(!r)return;if(d.u&&d.u[pf]){var l=r.querySelector('th a');if(l)l.href=d.u[pf]}(covers(d,pf)?(local(d,pf)?near:far):off).push(r)});
++ D.d.forEach(function(d,i){var r=rows[i];if(!r)return;if(d.u&&d.u[pf]){var l=r.querySelector('th a');if(l)l.href=d.u[pf]}r.setAttribute('data-near',(d.near||[]).join('|'));(covers(d,pf)?(local(d,pf)?near:far):off).push(r)});
+  near.concat(far,off).forEach(function(r){tb.appendChild(r)});near.concat(far).forEach(function(r){r.style.display=''});off.forEach(function(r){r.style.display='none'});
+  if(more)more.hidden=true;
+  var n=el.querySelector('.jc-pn');if(!n){n=document.createElement('p');n.className='jc-pn jc-src';el.insertBefore(n,el.firstChild)}
+diff --git a/tools/orphan_labels.py b/tools/orphan_labels.py
+new file mode 100644
+index 000000000..cd9052d91
+--- /dev/null
++++ b/tools/orphan_labels.py
+@@ -0,0 +1,22 @@
++"""[E] 生成元がもう作らない昔のページ（no_page の県、なくなった市のページ）に残っている、さがす欄の見出しだけをそろえる。
++URL・リンク・robots・ほかの中身には触らない。何度かけても同じ結果（べき等）。gen_areas.py の最後に呼ぶ。
++2026-11-26 Nori「うちの子にあてはまるもの」→「よく使用される項目」。"""
++import os
++
++# （ページ, ）生成元が作らない古いページ。ここに足すのは「生成元がなくて、公開のままのページ」だけ。
++ORPHANS = ["pet-hotel/aomori", "pet-hotel/yamagata", "trimming/chiba/matsudo-shi"]
++SWAPS = [('class="ux-l">うちの子にあてはまるもの</span>', 'class="ux-l">よく使用される項目</span>'),
++         ('class="fp-l">うちの子は</span>', 'class="fp-l">よく使用される項目</span>')]
++
++
++def normalize(root):
++    n = 0
++    for d in ORPHANS:
++        p = os.path.join(root, d, "index.html")
++        if not os.path.exists(p): continue
++        h = open(p, encoding="utf-8").read()
++        g = h
++        for a, b in SWAPS: g = g.replace(a, b)
++        if g != h:
++            open(p, "w", encoding="utf-8").write(g); n += 1
++    return n
+diff --git a/tools/uikit.py b/tools/uikit.py
+index 859f04183..dce69c8c3 100644
+--- a/tools/uikit.py
++++ b/tools/uikit.py
+@@ -332,14 +332,14 @@ COND_SYN = {"big": {"大型犬", "大型犬OK"}, "sen": {"シニア", "シニア
+ WHO_L = dict(ANIMAL + COND)
+ # 分野ごと：(どの動物の質問 or None, サービスの質問, [(key, 表示, 似た言葉)], 詳しい条件 [(key, 表示, 似た言葉)])
+ SVC = {
+-    "pet-sitter": ("どの子のお世話ですか？", "お願いしたいこと", [("散歩", "犬の散歩も", ["お散歩"]), ("cert", "資格を持っている", [])], []),
++    "pet-sitter": ("どの子のお世話ですか？", "お願いしたいこと", [("散歩", "犬の散歩も", ["お散歩"]), ("cert", "資格を持っている", [])],[("日曜も", "日曜も対応", []), ("カード払い", "カード払いができる", [])]),
+     "trimming": ("どの子ですか？", "どこでトリミングしますか？", [("お店で（サロン）", "お店で（サロン）", []), ("トリミングカー", "車の中で（トリミングカー）", []), ("家の中で", "家の中で", []), ("pickup", "送迎あり", ["送迎"])], []),
+     "dog-trainer": (None, "どんな形がいいですか？",
+                     [("出張・訪問", "家に来てくれる", ["出張トレーニング", "出張訓練", "出張しつけ"]), ("教室・グループ", "教室・グループ", ["しつけ教室", "グループレッスン", "パピー教室", "パピークラス"]),
+                      ("幼稚園・保育園", "犬の幼稚園", ["犬の幼稚園", "幼稚園", "デイケア"]), ("預かり訓練", "預かり訓練", ["お預かり", "一時預かり"])],
+                     [("オンライン", "オンライン", ["オンラインレッスン"]), ("cert", "資格・認定を持っている", [])]),
+     "rojin-home": ("どの子ですか？", "どんなホームをお探しですか？",
+-                   [("long", "長期・終身のお預かり", []), ("menkai", "面会できる", []), ("mitori", "看取りまで対応", []), ("pickup", "送迎あり", ["送迎"]), ("staff24", "24時間スタッフがいる", [])], []),
++                   [("long", "長期・終身のお預かり", []), ("menkai", "面会できる", []), ("mitori", "看取りまで対応", []), ("pickup", "送迎あり", ["送迎"]), ("staff24", "24時間スタッフがいる", [])],[("カード払い", "カード払いができる", [])]),
+     "sougi": (None, "どんな見送り方をお考えですか？",
+               [("個別火葬", "個別に火葬", ["立ち会い火葬"]), ("合同火葬", "合同で火葬", []), ("お迎え・訪問火葬", "家に来てくれる", ["お迎え"]), ("立ち会い", "立ち会える", ["立ち会い火葬"]), ("霊園・納骨", "霊園・納骨堂", ["霊園", "納骨堂", "納骨"])],
+               [("お骨を返してもらえる", "お骨を返してもらえる", []), ("料金を公開", "料金が書いてある", []),
+@@ -355,6 +355,15 @@ LCONF = {
+     "sougi": ("ところ", "この条件で探す"),
+     "joto": ("窓口", "この条件で窓口を探す"),
+ }
++# 詳しい条件の見出し（key は SVC・ownerfit の条件）。1つも出ない見出しは出さない
++GROUPS = {
++    "rojin-home": (["long", "mitori", "medical", "menkai", "pickup", "staff24"],
++                   [("預け方", ["trialstay", "tempstay"]), ("設備", ["nurse", "privroom", "dogrun"]), ("お金", ["fee", "カード払い"])]),
++    "pet-sitter": (["散歩", "stay", "nightcare", "earlycare", "sameday", "pickup"],
++                   [("頼み方", ["regular", "trial", "longstay"]), ("日にち", ["日曜も"]), ("お金", ["discount", "fee", "カード払い"]), ("そのほか", ["cert"])]),
++    "sougi": (["個別火葬", "合同火葬", "お迎え・訪問火葬", "立ち会い", "霊園・納骨"],
++              [("お骨", ["お骨を返してもらえる"]), ("料金", ["料金を公開", "p15", "p25", "p40"]), ("そのほか", ["深夜・早朝も受付", "粉骨", "樹木葬", "散骨"])]),
++}
+ _ATTR = lambda t, a: html_unescape((re.search(r'\b%s="([^"]*)"' % a, t) or [None, ""])[1])
+ def html_unescape(x): return _h.unescape(x)
+ 
+@@ -465,8 +474,15 @@ def generic_list(h, cat, hub):
+                                      ("nightcare", "夜間・深夜も対応"), ("earlycare", "早朝も対応"), ("pickup", "送迎あり"),
+                                      ("trial", "お試し・トライアル"), ("discount", "割引・回数券がある"), ("longstay", "長期利用")] if use(k)]
+     if use("fee"): more.append(("fee", "料金の目安が分かる"))
++    mgroups = [("そのほかの条件", more)] if more else ()
++    if cat in GROUPS:  # 動物病院と同じ形：見える2列ボタン（最大6）＋詳しい条件を小見出しでまとめる（Nori 2026-11-26）。見出しは分野に中立
++        LAB = dict(need + more)
++        gneed, gdet = GROUPS[cat]
++        need = [(k, LAB[k]) for k in gneed if k in LAB and use(k)]
++        mgroups = [(h, [(k, LAB[k]) for k in ks if k in LAB and use(k)]) for h, ks in gdet]
++        mgroups = [g for g in mgroups if g[1]]
+     bx = box(cat, q_ph="都道府県・市区町村", opts=opts if (hub and opts) else None, animals=animals,
+-             who=who, when=when, need=(qsv, need), more=[("そのほかの条件", more)] if more else (), unit="件", noun=noun, go=go, guess=bool(hub and opts))
++             who=who, when=when, need=(qsv, need), more=mgroups, unit="件", noun=noun, go=go, guess=bool(hub and opts))
+     em = h.find('<div class="emg">')
+     h = h[:em + len('<div class="emg">')] + bx + h[em + len('<div class="emg">'):]
+     if "/facility.js" not in h:
