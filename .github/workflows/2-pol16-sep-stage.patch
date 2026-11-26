@@ -1,0 +1,215 @@
+diff --git a/tests/card-policy.test.cjs b/tests/card-policy.test.cjs
+index a1e2692a..c822143d 100644
+--- a/tests/card-policy.test.cjs
++++ b/tests/card-policy.test.cjs
+@@ -64,3 +64,36 @@ for (const top of ['rojin-home', 'pet-hotel', 'pet-sitter']) {
+ }
+ assert(rojin > 100 && hotels > 1000 && sitters > 500, `変換されたカードが少ない rojin=${rojin} hotel=${hotels} sitter=${sitters}`);
+ console.log(`card-policy OK cards=${cards} rojin=${rojin} hotel=${hotels} sitter=${sitters}`);
++
++// 「詳しく見る」を持つカードは、すべて出典（公式サイト）を見られる。出典のない詳細を出さない。
++{
++  const fs2 = require("fs"), path2 = require("path");
++  const bare = [];
++  for (const d of ["pet-sitter", "pet-hotel", "rojin-home"]) {
++    const walk = (p) => { for (const e of fs2.readdirSync(p, { withFileTypes: true })) { const q = path2.join(p, e.name); if (e.isDirectory()) walk(q); else if (e.name === "index.html") {
++      const t = fs2.readFileSync(q, "utf8"); const re = /<details class="pc-d">(.*?)<\/details>/gs; let m;
++      while ((m = re.exec(t))) if (!/出典：/.test(m[1])) bare.push(q);
++    } } };
++    walk(path.join(__dirname, "..", d));
++  }
++  assert.strictEqual(bare.length, 0, "出典のない「詳しく見る」: " + bare.slice(0, 3).join(","));
++}
++
++// R-HT003 にゃーご花巻：公式サイトは猫だけ・老猫ホームは現在休止中。犬の対応にしない。
++{
++  const t2 = require("fs").readFileSync(require("path").join(__dirname, "..", "rojin-home", "index.html"), "utf8");
++  const i2 = t2.indexOf('data-fid="R-HT003"');
++  assert(i2 > 0, "R-HT003 のカードがない");
++  const blk = t2.slice(i2, i2 + 4000).split('data-fid="')[1 + 0] !== undefined ? t2.slice(i2, i2 + 3000) : "";
++  assert(!/"a":\["dog"/.test(blk.slice(0, 400)), "R-HT003 が犬の対応になっている");
++  assert(!blk.includes("老犬ホーム・老猫ホーム"), "R-HT003 の古い記載が残っている");
++}
++
++// R-HT003：「現在休止中」は公式サイトのトップで 2026-11-27 に確かめた記載。カードに出典URLと確認日つきで出す。
++{
++  const f2 = require("fs"), p2 = require("path");
++  const t3 = f2.readFileSync(p2.join(__dirname, "..", "rojin-home", "index.html"), "utf8");
++  const i3 = t3.indexOf('data-fid="R-HT003"');
++  const b3 = t3.slice(i3, t3.indexOf('data-fid="', i3 + 20));
++  assert(/現在休止中/.test(b3) && /出典：(<a[^>]*>)?公式サイト/.test(b3) && /確認日 2026-11-27/.test(b3), "R-HT003 の休止中の記載に出典と確認日がない");
++}
+diff --git a/tools/cardpolicy.py b/tools/cardpolicy.py
+index dd2b7a47..8524cd08 100644
+--- a/tools/cardpolicy.py
++++ b/tools/cardpolicy.py
+@@ -378,8 +378,12 @@ def card(blk, h, cat, more=None, compact=False):
+     dl = "".join((f"<p>{E(k)}：{E(v)}</p>" if k != "ほかの記載" else f"<p>{E(v)}</p>") for k, v, s, c in rows)
+     _cf = [f_ for _, _, _, f_ in fl if isinstance(f_, dict)] + [f_ for f_ in h.get("facts", []) if f_.get("v") and f_["v"] in shown]  # 行の文に組み込んだ項目（出張費・保険・登録など）の出典も集める
+     _tr = h.get("trust") if isinstance(h.get("trust"), dict) else {}
+-    _cf += [x for x in (_tr.get("vet"),) if isinstance(x, dict) and x.get("v") and x["v"] in shown]
++    _cf += [x for k_, x in _tr.items() if k_ != "reg" and isinstance(x, dict) and x.get("v") and x["v"] in shown]  # 判断項目の引用ごとの出典と確認日（引用ごとに日付がちがうときは、そのまま見せる）
+     srcs = list(dict.fromkeys([(f_.get("src"), f_.get("checked")) for f_ in _cf if f_.get("src")] + [(s, c) for k, v, s, c in rows if s]))  # 出典と確認日は同じものを1回だけ
++    if not srcs and rows and url and cat == "rojin" and (h.get("verified") or {}).get("checked"):  # ろうけんホームの紹介文：公式サイトで内容を確かめたものだけ、公式サイトを出典に（日付は記録の確認日があるときだけ）
++        srcs = [(url, h["verified"]["checked"])]
++    elif not srcs and rows:  # ホテル・シッター：項目ごとの出典がない分類データ。公式サイトの出典だと見せない
++        dl += _UNV
+     if srcs:
+         from urllib.parse import urlparse
+         host = urlparse(url).netloc
+@@ -387,7 +391,7 @@ def card(blk, h, cat, more=None, compact=False):
+             same = compact and urlparse(s).netloc == host  # 重いページだけ：公式サイトと同じサイトの出典は、リンクを重ねず「公式サイト」と確認日だけ（カードの公式サイトのボタンと同じ）
+             lab = f'<a href="{E(s)}" target="_blank" rel="noopener">公式サイト{"" if i == 0 else i + 1}</a>' if not same else f'公式サイト{"" if i == 0 else i + 1}'
+             return lab + (f"（確認日 {E(c)}）" if c else "")
+-        dl += "<small>出典：" + "／".join(one(i, s_, c) for i, (s_, c) in enumerate(srcs[:3])) + "</small>"
++        dl += "<small>出典：" + "／".join(one(i, s_, c) for i, (s_, c) in enumerate(srcs[:4])) + "</small>"
+     if more:  # 全国のページが重いときは、くわしい中身を県のページのカードに置き、ここからリンクする（カードは減らさない）
+         det = f'<p class="pc-m"><a href="{E(more)}">県のページで詳しく見る（料金・条件の全文と出典）→</a></p>'
+     else:
+@@ -451,8 +455,32 @@ def _fin(h2):
+     return h2.replace("</head>", CSS_LINK + "</head>", 1)  # 見た目は /pc.css（ページごとに重ねない。build が書く）
+ 
+ 
++_UNV = "<small>出典：未確認（登録時の分類）。公式サイトでご確認ください</small>"
++
++
++def _fixbare(h, cat, D):
++    """すでに変換したページで、出典のない「詳しく見る」に公式サイトを出典として足す（日付は記録の確認日があるときだけ）。"""
++    if 'class="pc-d"' not in h: return h
++    parts = re.split(r'(?=<div class="emg-item)', h)
++    for k, b in enumerate(parts):
++        m = re.search(r'<details class="pc-d">(?:(?!</details>).)*?</div></details>', b, re.S)
++        if not m or "出典：" in m.group(0): continue
++        a = re.search(r'<div class="pc-a"><a href="([^"]+)"', b)
++        if not a: continue
++        url = html.unescape(a.group(1))
++        src = _UNV
++        if cat == "rojin" and ((D.get((re.search(r' data-fid="([^"]+)"', b) or [None, None])[1]) or {}).get("verified") or {}).get("checked"):
++            fid = re.search(r' data-fid="([^"]+)"', b)
++            rec = D.get(fid.group(1)) if fid else None
++            c = rec["verified"]["checked"]
++            src = f'<small>出典：<a href="{E(url)}" target="_blank" rel="noopener">公式サイト</a>' + (f"（確認日 {E(c)}）" if c else "") + "</small>"
++        g = m.group(0)
++        parts[k] = b.replace(g, g[:-len("</div></details>")] + src + "</div></details>", 1)
++    return "".join(parts)
++
++
+ def page(h, cat, D):
+-    if 'id="pc-css"' in h or "/pc.css" in h: return h
++    if 'id="pc-css"' in h or "/pc.css" in h: return _fixbare(h, cat, D)
+     h2, n = _convert(h, cat, D, False)
+     if not n: return h
+     if len(h2) > 150000 and _gz(_fin(h2)) > LIMIT:
+diff --git a/tools/hotels.json b/tools/hotels.json
+index bca6cda8..fc64e8ba 100644
+--- a/tools/hotels.json
++++ b/tools/hotels.json
+@@ -7682,10 +7682,10 @@
+     },
+     "report": {
+      "v": "様子をLINEで報告",
+-     "quote": "お預けの間毎日猫ちゃんの様子をお写真を添えてLIN",
++     "quote": "お預けの間毎日猫ちゃんの様子をお写真を添えてLINEまたはメールにてご報告いたします。",
+      "src": "https://nekobeya.pechika.jp/houses/nagoya.html",
+      "by": "site",
+-     "checked": "2026-11-16"
++     "checked": "2026-11-27"
+     },
+     "camera": {
+      "v": "カメラで様子を見られる",
+diff --git a/tools/rojin.json b/tools/rojin.json
+index bc3a0b43..7af1d52f 100644
+--- a/tools/rojin.json
++++ b/tools/rojin.json
+@@ -5918,6 +5918,10 @@
+     "src": "https://kagi-shippo-cat-hotel-home.simdif.com/",
+     "checked": "2026-11-25",
+     "text": "老猫ホーム かぎしっぽ & 猫専門ペットホテル かぎしっぽ You are using an outdated browser. Please upgrade your browser to improve your experience.。猫専門ペットホテル＆老猫ホーム かぎしっぽ。老猫ホーム料金。猫専門ホテル料金。老猫ホーム かぎしっぽ & 猫専門ペットホテル かぎしっぽ。老猫ホーム かぎしっぽ 。老猫ホームかぎしっぽは、飼えなくなってしまった愛猫さんを、飼主様に代わって終生飼養させて頂きます。様々な理由で、大切な家族の一員である愛猫さんを、飼い続ける事が出来なくなってしまう事は誰にでも起こり得る事です。急な転勤、不慮の事故や病気による入院、施設等への入所等でどうしても愛猫を飼い続けられない時には、老猫ホームの活用をご検討下さい。お預かりする愛猫さんは、最後まで責任と愛情を持ってお預かりさせて頂きます。また、飼主様のご希望が有れば、併設している「保護猫カフェかぎしっぽ」での里親募集も承ります。日々のお世話に必要な消耗品や人件費、室温管理、食費、施設の賃料等様々な費用が必要なため、お預かりには高額な料金が必要となりますが、愛猫さんの為にも最後まで責任を持って、愛猫さんと関わり続けて頂きたいと思います。数日の短期から、数ヶ月の中期のお預かりは猫専門ペットホテル かぎしっぽをご利用ください。猫専門ペットホテル かぎしっぽ 。ペットホテルかぎしっぽは、猫専門のお預かり施設です。ご家族でのご旅行や、遠方での冠婚葬祭、お仕事等で愛猫さんのお世話が出来ない時には、当ホテルのご利用をご検討下さい。猫さんは、見ず知らずのワンちゃんと同じ空間ではリラックス出来ません。当ホテルは猫専門ですので、愛猫さんがリラックス出来るよう、静かで清潔なスペースをご提供致します。お客さまからお預かりする猫さんが、快適に過ごせるよう、使用する器具や設備の清掃・除菌を徹底して行い、清潔な環境を保っています。また、保護猫カフェかぎしっぽの卒業スタッフさん、指定保護団体様から譲渡された桜猫さんは、ご利用料金の割引もございます。"
++   },
++   "verified": {
++    "checked": "2026-11-25",
++    "note": "公式サイトで 内容（spec）と受け入れる動物を確認"
+    }
+   },
+   {
+@@ -5930,10 +5934,14 @@
+    "url": "https://benriya.sumomo.ne.jp/rouken.html",
+    "addr": "山梨県甲府市貢川本町19番7号",
+    "animals": "犬・猫",
+-   "spec": "老犬ホーム・老猫ホーム、ペットホテル・シッター",
++   "spec": "老犬ホーム、ペットホテル・ペットシッター（犬猫のお預かり）",
+    "checked": "2026-11-22",
+    "review_query": "すもも便利屋 老犬ホーム 甲府市",
+-   "review_name": "すもも便利屋"
++   "review_name": "すもも便利屋",
++   "verified": {
++    "checked": "2026-11-27",
++    "note": "公式サイトで 内容（spec）と受け入れる動物を確認"
++   }
+   },
+   {
+    "id": "R156",
+@@ -5981,6 +5989,10 @@
+     "src": "https://cocoon-itoshima.jimdofree.com/",
+     "checked": "2026-11-25",
+     "text": "自然豊かな糸島にある最高の犬猫の楽園。大切な家族を安心して預ける事のできる犬猫達にとっては楽園の様な施設です。🔸犬猫のホーム&シェルター 。🔸老犬猫終生お預かり 。🔸長期、短期お預かり 。②長期・短期・終生お預かり全てに対応しております。③ ご利用料金 は犬猫の種類・年齢等により変わります。④Cocoon itoshimaは、犬猫保護シェルターとして活動しております。お預かり犬猫達と共に過ごします。"
++   },
++   "verified": {
++    "checked": "2026-11-25",
++    "note": "公式サイトで 内容（spec）と受け入れる動物を確認"
+    }
+   },
+   {
+@@ -5996,7 +6008,11 @@
+    "spec": "老犬ホーム・ロングステイ、ペットホテル",
+    "checked": "2026-11-23",
+    "review_query": "Pet Care Home RIKU 総社市",
+-   "review_name": "Pet Care Home RIKU"
++   "review_name": "Pet Care Home RIKU",
++   "verified": {
++    "checked": "2026-11-27",
++    "note": "公式サイトで 内容（spec）と受け入れる動物を確認"
++   }
+   },
+   {
+    "id": "Rtf47ad3f",
+@@ -6011,7 +6027,11 @@
+    "checked": "2026-11-23",
+    "spec": "ペットホテル、老犬ホーム",
+    "addr": "神奈川県小田原市沼代756-6",
+-   "animals": "犬"
++   "animals": "犬",
++   "verified": {
++    "checked": "2026-11-27",
++    "note": "公式サイトで 内容（spec）と受け入れる動物を確認"
++   }
+   },
+   {
+    "id": "R-HT003",
+@@ -6022,14 +6042,23 @@
+    "url": "https://nya-go.p-kit.com/userblog/index.php?action=view&blog_id=2158369",
+    "city": "花巻市",
+    "addr": "岩手県花巻市",
+-   "animals": "犬・猫",
+-   "spec": "老犬ホーム・老猫ホーム",
++   "animals": "猫",
++   "spec": "老猫ホーム・猫のペットホテル（猫だけ）",
+    "checked": "2026-11-23",
+    "web": {
+     "src": "https://nya-go.p-kit.com/userblog/index.php?action=view&blog_id=2158369",
+     "checked": "2026-11-25",
+     "text": "老猫ホーム・猫のペットホテル にゃーご花巻-深夜のお客さま・・・ 。猫のペットホテル 。猫専用のペットホテルです。（ブログ）猫おかみありすと仲間たち 。ありすのお宿のご案内 愛猫を預ける際の注意点とは？ 。保護猫を家族に！里親募集中 ネコと一緒に暮らそう（脱走対策・マーキング・猫砂・等） 。幸せになった猫たち（飼い主さん決定） 。犬猫の殺処分ゼロ・・では解決しない問題 。迷子ネコ・保護猫 。保護猫さ<(｀^´)>。おれたち猫族よりおおきいにゃあ。キジ白お兄ちゃん猫とおれ 。猫の手貸します♡ 保護猫♡ ご寄付貰ったにゃ 。花巻に雪が積もったよ！保護されて１か月目！それぞれに「ベビーシッター（教育係猫）！付きっきりだよ 。27日目：3匹の茶トラ赤ちゃん猫！28日目シャム坊や♪４段猫ケージ制覇したにゃー(｀・∀・´)ｴｯﾍﾝ!! 。25-26日目：3匹の茶トラ赤ちゃん猫！26-27日目シャム坊や♪宇宙船ドーム♡次々成功！ 。100均の洗濯ネット！大切な愛猫を逃がさないように 。24日目：3匹の茶トラ赤ちゃん猫！25日目シャム坊や♪体重測定！宇宙船ドーム♡ 。23日目：3匹の茶トラ赤ちゃん猫！24日目シャム坊や♪子猫のなる木にゃあー(＠_＠;) 。20-22日目：3匹の茶トラ赤ちゃん猫！＆22-23日目シャム坊や♪カーテン登り始めたよ<(｀^´)> 。迷子ネコ・保護猫(353) 。保護猫を家族に！里親募集中！(342) 。里親さん募集中の猫 。保護猫・愛猫（飼い主さん死亡。入所等）でお家がなくなった猫を迎えてくださいね。猫のホテル ペットホテルにゃーご 。ここは猫だけの猫ホーム・ペットホテルなの。猫の保護預かり活動歴１7年目。預かり譲渡した猫は５００匹余皆幸せをつかんで新しい家族のもとへ出発しました。２０１７年に預かった長期預かり猫は全部で70匹。威嚇する猫を人慣れさせる活動中。猫も人間も快適な住みよい暮らし方を日々研究模索中。・動物介護ホーム責任者資格。・ペット看護士。仔猫の時に車のボンネットに潜り込んで寒さに耐えていたところをつかまったにゃ。猫のホテル にゃー ご 。老猫ホーム・猫のホテル にゃーご 。猫達の安全のため具体の住所はお問い合わせくださいね。猫専門のキャットホテル（ありすのお宿）のご案内 大ねこ女将のありすちゃんがおもてなし。岩手県花巻市の、猫の生態に配慮した「猫専用」の、ペットホテルです。旅行・出張・引越し・入院・介護・潤沢の建て替えリフォーム・冠婚葬祭等で、猫のお世話に困ったら、愛猫を預かります。猫のお部屋（ケージ）備え付けの食器・猫トイレ等は HP 「 毎日のようす 」 を参照してね。元気な猫ちゃんのご利用料金 ご利用料金 。※ 複数飼いの猫達は２匹目から10％割引！。※ 長期出張・結婚式・葬儀の際は！「 6泊7日コース・10,000円 」お勧め！。猫は、最長「２泊３日位・・」までは、自宅でお留守番頑張ります。葬儀は葬祭場に詰めるので・・猫には手が回らない・・。猫だけでのお留守番は、いたずらや火の気も心配！。・食器・ネコトイレ・猫砂（システムトイレ又は固まる猫砂トイレ）はお宿で準備します。・送迎時、 「洗濯ネット」に猫をいれてから「キャリー」に入れて お連れ下さい。※長期滞在の際は週１回の様子報告です 。仔猫の時・・・梅雨の時期。"
+-   }
++   },
++   "facts": [
++    {
++     "k": "老猫ホームの現況",
++     "v": "公式サイトに「老猫ホーム ご利用の注意点（現在休止中）」とある",
++     "src": "https://nya-go.p-kit.com/",
++     "by": "site",
++     "checked": "2026-11-27"
++    }
++   ]
+   }
+  ],
+  "near": {
