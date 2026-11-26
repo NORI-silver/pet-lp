@@ -3,7 +3,7 @@
 # 守ること：施設からお金をもらわない。順位・おすすめをつけない。電話番号を載せない。料金は県のページで、公式サイトに書いてある金額だけ（2026-11-14、出どころと確認日つき）。
 # 公式サイトの情報だけ書く（受け入れる動物・見学・登録番号・所在地）。データ：tools/rojin.json。
 # 口コミの星は動物病院のページと同じしくみ（/reviews.js → booking/Code.gs の EMG_REVIEWS）。
-import json, os
+import json, os, re
 import prefkeep
 import facility_review_links as RL
 
@@ -11,8 +11,9 @@ J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "roj
 
 SLUG = "rojin-home"
 H1 = "全国の老犬ホーム・老猫ホーム"
-TITLE = "全国の老犬ホーム・老猫ホーム｜都道府県でさがせる一覧（受け入れる動物・見学・登録番号つき）｜ペットタクシー予約窓口"
-DESC = "シニアの犬や猫を預かったり介護したりしてくれる老犬ホーム・老猫ホームを、都道府県ごとにまとめた無料の一覧です。預かり方（長期・終生・月ごと）は施設ごとに違います。公式サイトに書いてある所在地・受け入れる動物・見学のきまり・動物取扱業の登録番号と、口コミの星を載せています。料金は公式サイトで公開されている施設のみ掲載し、順位はつけていません。"
+TITLE = "老犬ホーム・老猫ホームを探す｜短期・長期預かりと費用｜ペットのくらし窓口"
+DESC = "老犬ホームは、シニア犬を預かり、食事や排せつの介助、見守りなどを行う施設です。短期・長期・生涯預かりの違いや費用、受け入れ条件を地域別に比較できます。老猫ホームも探せます。"
+CHIBA_DESC = "千葉県でシニア犬や猫を預けられる老犬ホーム・老猫ホームを比較。短期・長期・生涯預かり、大型犬や寝たきりの子の受け入れ、入所金・月額、見学の条件を確認できます。料金は公開されている施設のみ掲載しています。"
 
 BEFORE = [
  ("「登録」を受けた施設か", "老犬ホームは、動物の愛護及び管理に関する法律の第一種動物取扱業（保管・譲受飼養）の登録を受けて営む施設です。登録番号は施設に掲げられ、多くの施設が公式サイトにも書いています。この一覧では公式サイトに書いてある番号だけを載せました。"),
@@ -84,7 +85,6 @@ def render(ctx):
         for pf in h["prefs"]:
             rows.setdefault(pf, []).append(h)
     shown = [h for _lab, _prefs in ctx["emg_regions"] for _pf in _prefs for h in rows.get(_pf, [])]
-    total = len(J["homes"])
     body = ""
     for lab, prefs in ctx["emg_regions"]:
         body += f'<h3 class="emg-region">{e(lab)}</h3>\n'
@@ -103,7 +103,7 @@ def render(ctx):
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
     ld = '<script type="application/ld+json">\n' + json.dumps([
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
+        {"@type": "ListItem", "position": 1, "name": "ペットのくらし窓口", "item": SITE + "/"},
         {"@type": "ListItem", "position": 2, "name": H1, "item": url}]},
       {"@context": "https://schema.org", "@type": "ItemList", "name": H1, "numberOfItems": len(shown),
        "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": h["name"], "url": h["url"]} for i, h in enumerate(shown[:100])]},
@@ -114,8 +114,8 @@ def render(ctx):
 <main>
 <section class="area-hero">
   <div class="wrap">
-    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › {e(H1)}</nav>
-    <h1><small>全国{total}施設・都道府県でしぼりこめます</small>{e(H1)}</h1>
+    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットのくらし窓口</a> › {e(H1)}</nav>
+    <h1>{e(H1)}</h1>
     <p class="lede">自分で世話ができなくなったとき、介護が夜も続くとき、最後まで安心して暮らせる場所をさがしている方へ。シニアの犬や猫を預かったり介護したりする老犬ホーム・老猫ホームを、公式サイトの情報をもとに都道府県ごとにまとめました。長期・終生か月ごとのお預かりかは施設ごとに違います。</p>
   </div>
 </section>
@@ -135,6 +135,7 @@ def render(ctx):
         <p class="emg-tips-note">一覧で見つからない条件は、受け入れ不可とは限りません。絞り込みの結果は候補として、空きと実際のお世話の内容を施設に確認してください。</p>
       </details>
       {body}
+      <div class="emg-tips" id="rojin-overview"><h2>老犬ホームとは</h2><p>{e(DESC)}</p></div>
       {criteria_html(e)}
       <div class="emg-tips"><h4>老犬ホームをえらぶときに確かめること</h4><dl>{before}</dl>
       <p class="emg-tips-note">くわしくは<a href="/guide/rojin-home/">老犬ホーム・老猫ホームを見学するときに確かめること</a>にまとめています。</p></div>
@@ -155,6 +156,18 @@ def render(ctx):
 <script src="/reviews.js" defer></script>
 <script src="/facility.js" defer></script>
 """ + ctx["foot_noband"]()
+
+def apply_public_snippets(root):
+    # Keep exact list markup intact until the card and finder builders finish.
+    # Google can still discover the prefecture links; only nationwide snippet text is restricted.
+    p = os.path.join(root, SLUG, "index.html")
+    with open(p, encoding="utf-8") as f:
+        source = f.read()
+    result = re.sub(r'(<section class="emg-pref"[^>]*?)(?<!data-nosnippet)>', r'\1 data-nosnippet>', source)
+    result = re.sub(r'(<h3 class="emg-region"[^>]*>)([^<]+)(</h3>)', r'\1<span data-nosnippet>\2</span>\3', result)
+    if result != source:
+        with open(p, "w", encoding="utf-8") as f:
+            f.write(result)
 
 def review_rows():
     """口コミの場所を探すことば（booking/Code.gs の EMG_REVIEWS に足す）。"""
@@ -193,11 +206,17 @@ def _has_fee_examples(rs):
     return any(f.get("k") == "料金" and f.get("v") for h in rs for f in h.get("facts", []))
 
 def _pref_title(pf, rs, n):
+    if pf == "千葉県": return "千葉県の老犬ホーム・老猫ホーム｜費用・介護・見学｜ペットのくらし窓口"
     tail = "費用の例・介護・見学" if pf in _TITLE_TEST_PREFS and _has_fee_examples(rs) else "受け入れる動物・見学・登録番号つき"
-    return f"{pf}の老犬ホーム・老猫ホーム｜{n}施設の一覧（{tail}）｜ペットタクシー予約窓口"
+    return f"{pf}の老犬ホーム・老猫ホーム｜{n}施設の一覧（{tail}）｜ペットのくらし窓口"
+
+def _pref_desc(pf, rs, n):
+    if pf == "千葉県":
+        return CHIBA_DESC
+    return f"{pf}でシニア犬や猫を預けられる老犬ホーム・老猫ホームを探せます。短期・長期預かり、介護や大型犬の受け入れ、見学の条件を比較できます。費用は公開されている施設のみ掲載しています。"
 
 CAT = dict(slug=SLUG, name="老犬ホーム・老猫ホーム", unit="施設", h1=H1, items=J["homes"], card=_card, checked=J["checked"], reviews=True,
-  title_word="老犬ホーム・老猫ホーム", title_tail="受け入れる動物・見学・登録番号つき", title_fn=_pref_title,
+  title_word="老犬ホーム・老猫ホーム", title_tail="受け入れる動物・見学・登録番号つき", title_fn=_pref_title, desc_fn=_pref_desc,
   desc_tail="所在地・受け入れる動物（犬・猫・大型犬）・見学のきまり・動物取扱業の登録番号と、口コミの星を載せています。料金は公式サイトに書いてある施設だけ載せています。順位はつけていません。",
   lede=lambda pf, n: f"{pf}で、シニアの犬や猫を預かったり介護したりしてくれる老犬ホーム・老猫ホームを{n}施設まとめました。長期・終生か月ごとのお預かりかは施設ごとに違います。",
   fact_cols=[("料金", ("料金", "料金詳細")), ("別料金", ("別料金",)), ("ふくまれるお世話", ("ふくまれるお世話",)), ("受け入れ条件", ("受け入れ条件",)), ("見学・面会", ("見学・面会",)), ("病院", ("病院",))],

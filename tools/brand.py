@@ -30,7 +30,9 @@ def build(root, guide_slugs=()):
     paths += [os.path.join(root, "guide", g, "index.html") for g in guide_slugs]
     for p in paths:
         s = open(p, encoding="utf-8").read()
-        t = to_info(s)
+        import search_meta
+        route = os.path.relpath(os.path.dirname(p), root).replace(os.sep, "/")
+        t = search_meta.rewrite_hub(to_info(s), route) if os.path.basename(p) == "index.html" else to_info(s)
         if t != s:
             open(p, "w", encoding="utf-8").write(t); n += 1
     return n
