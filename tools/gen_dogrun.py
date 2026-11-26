@@ -650,9 +650,10 @@ def render_hub(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
     url = f"{SITE}/{SLUG}/"
     npref = len(BY)
+    _indoor = sum(1 for r in RUNS if "室内" in json.dumps(r, ensure_ascii=False) or "屋内" in json.dumps(r, ensure_ascii=False))
     title = f"全国のドッグラン{TOTAL}か所｜公園・お店・高速道路SA・PAを都道府県別に｜ペットタクシー予約窓口"
     desc = (f"公園などの公営のドッグラン、カフェや商業施設・牧場などのドッグラン、高速道路のSA・PAのドッグラン{TOTAL}か所を、{npref}都道府県ごとにまとめた無料の一覧です。"
-            "料金・利用登録・利用時間・小型犬エリアを公式ページの情報をもとに載せています。")
+            f"雨の日も使える室内・屋内のドッグラン{_indoor}か所も含みます。料金・利用登録・利用時間・小型犬エリアを公式ページの情報をもとに載せています。")
     if len(desc) > 160: desc = desc[:158] + "。"
     grid = ""
     for lab, prefs in ctx["emg_regions"]:
