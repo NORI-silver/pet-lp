@@ -1,0 +1,52 @@
+# 一時の補助。確認ずみの ui-6 に最新の main を合流して、再生成しても差が出ないことを確かめ、検査とテストを通したら ui-5 に載せる。
+name: merge-helper
+on:
+  push:
+    branches: ['NORI-silver-repair-trig14']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 合流
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main NORI-silver-ui-6
+          git checkout -q --detach origin/NORI-silver-ui-6
+          git log -1 --format='ui6 %H'
+          git merge --no-edit origin/main -m "main(#838)を合流"
+          git log -1 --format='merge %H tree %T'
+          git log -1 --format='parents %P'
+      - name: 再生成して差が出ないこと
+        run: |
+          python3 tools/gen_areas.py . > /tmp/g.log 2>&1 || { tail -20 /tmp/g.log; exit 1; }
+          echo "STATUS_AFTER_REGEN lines: $(git status --porcelain | wc -l)"
+          git status --porcelain | head -10
+          test -z "$(git status --porcelain)"
+      - name: 検査とテスト
+        run: |
+          fail=0
+          run(){ n="$1"; shift; rc=0; "$@" > /tmp/gate_$n.log 2>&1 || rc=$?; echo "GATE $n exit=$rc"; if [ $rc -ne 0 ]; then fail=1; fi; }
+          run seo python3 tools/seo_check.py .
+          run rules python3 tools/rules_check.py .
+          run feedback python3 tools/feedback_check.py .
+          run consistency python3 tools/consistency_check.py .
+          tf=0; tn=0
+          for f in tests/*.test.cjs; do tn=$((tn+1)); rc=0; node "$f" > /tmp/one.log 2>&1 || rc=$?; if [ $rc -ne 0 ]; then tf=$((tf+1)); echo "TEST FAIL $f"; fi; done
+          echo "TESTS files=$tn failed=$tf"
+          [ $tf -eq 0 ] || fail=1
+          echo "ALL_GATES_EXIT=$fail"; exit $fail
+      - name: 載せる
+        if: success()
+        run: |
+          git push -f origin HEAD:refs/heads/NORI-silver-ui-5
+          git log -1 --format='PUSHED %H'
