@@ -1,0 +1,74 @@
+# 一時の補助。写真ファイル130枚（photos.json に載っているが main に無いもの）を、既にある取り込み枝 photo-hp3 から戻す。
+name: photo-restore-helper
+on:
+  push:
+    branches: ['NORI-silver-repair-trig33']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 戻す（photo-hp3 から、足りない130枚だけ）
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp .github/workflows/photo-restore-list.txt /tmp/list.txt
+          git fetch origin main
+          git reset -q --hard origin/main
+          git log -1 --format='base %H'
+          echo "list $(wc -l < /tmp/list.txt) existing-before $(while read f; do [ -f "$f" ] && echo x; done < /tmp/list.txt | wc -l)"
+          git checkout origin/photo-hp3 -- $(cat /tmp/list.txt)
+          git status --short | awk '{print $1}' | sort | uniq -c
+          git diff --cached --stat | tail -1
+          git diff --cached --name-only | grep -vxFf /tmp/list.txt | wc -l | sed 's/^/outside-list files: /'
+      - name: 確かめる（画像として開ける・photos.json の縦横比と合う・ページの参照が全部ある）
+        run: |
+          pip install -q pillow
+          python3 - <<'PY'
+          import json,os,re,glob,sys
+          from PIL import Image
+          items=json.load(open('tools/photos.json'))['items']
+          bad=0;n=0
+          for x in items:
+              for q,r in zip(x.get('photos',[]),x.get('ratio',[])):
+                  f=q.lstrip('/'); n+=1
+                  if not os.path.isfile(f): bad+=1; print('MISSING',f); continue
+                  try:
+                      im=Image.open(f); im.load()
+                      if abs(im.width/im.height-r)>0.02: bad+=1; print('RATIO',f,round(im.width/im.height,3),r)
+                  except Exception as e: bad+=1; print('DECODE',f,e)
+          print('photos.json files checked',n,'bad',bad)
+          miss=set()
+          for p in glob.glob('**/*.html',recursive=True):
+              if p.startswith(('node_modules','.git')): continue
+              for m in re.findall(r'src="(/img/fac/[^"]+)"',open(p,encoding='utf-8',errors='ignore').read()):
+                  if not os.path.isfile(m.lstrip('/')): miss.add(m)
+          print('html refs to missing files',len(miss)); [print(' ',m) for m in sorted(miss)[:10]]
+          sys.exit(1 if bad or miss else 0)
+          PY
+      - name: 検査（各ゲートの終了状態）
+        run: |
+          fail=0
+          run(){ n="$1"; shift; rc=0; "$@" > /tmp/gate_$n.log 2>&1 || rc=$?; echo "GATE $n exit=$rc :: $(tail -2 /tmp/gate_$n.log | tr '\n' ' ' | cut -c1-200)"; if [ $rc -ne 0 ]; then fail=1; fi; }
+          run seo python3 tools/seo_check.py .
+          run rules python3 tools/rules_check.py .
+          run feedback python3 tools/feedback_check.py .
+          run consistency python3 tools/consistency_check.py .
+          echo "ALL_GATES_EXIT=$fail"
+          exit $fail
+      - name: コミット
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git reset -q .github 2>/dev/null || true
+          git commit -qm "写真ファイル130枚を戻す（photos.json に載っていて、リポジトリに無かったもの。取り込み枝 photo-hp3 から）"
+          git push -f origin HEAD:refs/heads/NORI-silver-photos-restore-1
+          git log -1 --format='HEAD %H'
