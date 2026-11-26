@@ -158,7 +158,15 @@ def _load(name):
 # 並び替え（料金）・半径の絞り込み・口コミリンク・タクシー料金リンクに使う（Nori 2026-11-26）。
 _META = {}
 
+def _uq_compact(s):
+    # 日本語はブラウザ側で符号化。アドレスの区切りなどASCIIの記号はここで符号化する。
+    from urllib.parse import quote
+    return "".join(c if (ord(c) > 127 or c.isalnum() or c in "-_.~") else quote(c, safe="") for c in s)
+
 def _yen_of(r):
+    facts = [f for f in (r.get("facts") or []) if isinstance(f, dict)]
+    base = [f["yen"] for f in facts if f.get("k") == "料金" and isinstance(f.get("yen"), int) and 300 <= f["yen"] <= 1000000]
+    if base: return min(base)
     vals = []
     def walk(v):
         if isinstance(v, str): vals.extend(int(x.replace(",", "")) for x in re.findall(r"(\d[\d,]*)\s*円", v))
@@ -430,7 +438,9 @@ def build_card(card, conf, fit_by_name):
             used.add(i); pick.append((ic, lab, val)); return True
         return False
     if not take(_AREA, "car"): take(_ADDR, "pin")
-    take(_PRICE, "yen"); take(_TIME, "clock"); take(_ANIM, "paw")
+    take(_PRICE, "yen"); take(_TIME, "clock")
+    if conf["key"] == "hotel": take(re.compile(r"^受け入れの注意$"), "list")
+    take(_ANIM, "paw")
     if len(pick) < 4: take(_CERT, "badge")
     if conf["key"] == "trainer": take(_CAREER, "clock")
     dp = []
@@ -517,13 +527,11 @@ def build_card(card, conf, fit_by_name):
                 acts.append(f'<a class="emg-taxi fc-a fc-a-info" href="{hf}" aria-label="{html.escape(full)}">くわしく</a>')
         else: acts.append(x)
     if meta and "google.com/maps" not in card:  # 全カードに Google マップの口コミへのリンク（点数・件数は持たない。Nori 2026-11-26）
-        from urllib.parse import quote as _uq
         _q = (name + " " + (meta.get("pref") or "") + (meta.get("city") or city or "")).strip()
-        acts.append(f'<a class="fc-a fc-a-star" href="https://www.google.com/maps/search/?api=1&query={_uq(_q)}" target="_blank" rel="noopener">Google Mapsの口コミ</a>')
+        acts.append(f'<a class="fc-a fc-a-star" href="https://www.google.com/maps/search/?api=1&query={_uq_compact(_q)}" target="_blank" rel="noopener">Google Mapsの口コミ</a>')
     if meta and conf["key"] in ("hotel", "rojin", "sougi", "hospital") and not any("emg-taxi" in x for x in tail):  # 行き先までのタクシー料金（Nori 2026-11-26）
-        from urllib.parse import quote as _uq
         _to = meta.get("addr") or ((meta.get("pref") or "") + (meta.get("city") or "") + name)
-        acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="/?to={_uq(_to[:80])}#form" aria-label="{html.escape(name)}までのペットタクシーの料金をくらべる">タクシー料金</a>')
+        acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="/?to={_uq_compact(_to[:80])}#form" aria-label="{html.escape(name)}のタクシー料金">タクシー料金</a>')
     if more: acts.append('<details class="fc-more"><summary class="fc-a fc-a-more">そのほか</summary><div class="fc-more-b">' + "".join(more) + "</div></details>")
     if acts: body.append('<div class="fc-acts">' + "".join(acts) + "</div>")
     return ot + ph + '<div class="fc-body">' + "".join(body) + "</div></div>"
@@ -676,7 +684,7 @@ def _too_big(h):
     import gzip
     return len(gzip.compress(h.encode("utf-8"), 9)) > 52 * 1024  # あとで cardskin.py がカードの形をそろえて少し重くなるので、余裕を残す
 
-def _trim(h, keep):
+def _trim(h, keep, retained=()):
     """全国のページで重すぎるとき、都道府県ごとの箱（emg-pref、見出しに県のページへのリンク）に最初の keep 件だけ残し、のこりは県のページへのリンクにする（施設は県のページにすべて載っている。tests/info-light の「上限を超えたら県のページへのリンクに」）"""
     out, i = [], 0
     for sm in re.finditer(r'<section class="emg-pref"[^>]*>', h):
@@ -687,12 +695,15 @@ def _trim(h, keep):
         cards = [m for m in _OPEN.finditer(sec)]
         if not lk or len(cards) <= keep:
             out.append(h[i:se]); i = se; continue
-        parts, j, k, cut = [], 0, 0, 0
-        for m in cards:
+        pinned = {n for n, m in enumerate(cards) if any(
+            f'data-fid="{fid}"' in sec[m.start():_end(sec, m.start(), "div")] for fid in retained)}
+        normal = (n for n in range(len(cards)) if n not in pinned)
+        included = pinned | {next(normal) for _ in range(max(0, keep - len(pinned)))}
+        parts, j, cut = [], 0, 0
+        for n, m in enumerate(cards):
             if m.start() < j: continue
             e = _end(sec, m.start(), "div")
-            k += 1
-            if k > keep:
+            if n not in included:
                 parts.append(sec[j:m.start()]); j = e; cut += 1
         parts.append(sec[j:])
         sec2 = "".join(parts)
@@ -798,11 +809,14 @@ def build(ROOT):
             p = os.path.join(base, "index.html")
             h = open(p, encoding="utf-8").read()
             if 'class="emg-item emg-co' not in h: continue
-            h2 = _one(h, conf, fbn)
-            # 全部の施設を並べる全国のページが重すぎるときは、県ごとに数件だけ残して県のページへのリンクにする（写真のない古い形のまま残さない）
-            for keep in (8, 6, 4, 3, 2):
+            national = os.path.normpath(base) == os.path.normpath(os.path.join(ROOT, d))
+            summary_max = {"dog-trainer": 2, "pet-hotel": 2}.get(d) if national else None
+            retained = ("T114",) if national and d == "dog-trainer" else ()
+            h2 = None if summary_max else _one(h, conf, fbn)
+            # 全国の初回表示は軽く。県を選ぶと探す欄がすべてのカードを読み込む。
+            for keep in (n for n in (8, 6, 4, 3, 2) if summary_max is None or n <= summary_max):
                 if h2 is not None: break
-                h2 = _one(_trim(h, keep), conf, fbn)
+                h2 = _one(_trim(h, keep, retained), conf, fbn)
                 if h2 is not None: print(f"faccard: 重いので県ごとに{keep}件まで", os.path.relpath(p, ROOT))
             if h2 is None:
                 print("faccard: 重すぎるので作りかえない", os.path.relpath(p, ROOT)); continue

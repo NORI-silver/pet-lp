@@ -147,7 +147,7 @@ PAT = {
     "ear": r"耳掃除|耳そうじ",
     # 老犬ホーム：医療・投薬への対応（うちの子の「薬・持病がある」とは別。施設ができること）
     "medical": r"投薬|点滴|医療ケア|獣医師|訪問診療|服薬のお手伝い",
-    "big": r"大型犬|超大型|ラブラドール|ゴールデン|大型",
+    "big": r"大型犬|超大型犬|ラブラドール|ゴールデン・?レトリ[ーバァ]",
     "a:small": r"うさぎ|ウサギ|小動物|ハムスター|フェレット|モルモット",
     "a:bird": r"小鳥|鳥類|インコ|文鳥|オウム|鳥さん|鳥など|鳥・",
     "a:exotic": r"爬虫類|カメ|トカゲ|ヘビ",
@@ -242,6 +242,13 @@ def _chain_note(cat, r):
     ch = _CHAINS["sitters"].get(r.get("chain"), {})
     return ch.get("note", "") if r.get("chain") != "indie" else ""
 
+def checked_condition_status(cat, url):
+    r = _load(cat).get(_norm(url)) or {}
+    st = dict(r.get("fit_status") or {})
+    if cat == "dog-trainer" and re.search(r"大型犬の新規受け入れは[^。]{0,28}終了", r.get("services", "")):
+        st.setdefault("big", 0)
+    return st
+
 def keys(cat, url):
     """カードの公式サイトのURLから、(合うkey, 合わないkey) を返す。データにない施設は ([], [])。"""
     r = _load(cat).get(_norm(url))
@@ -253,7 +260,9 @@ def keys(cat, url):
     def put(k, v):
         if v == 1 and k not in yes: yes.append(k)
         elif v == 2 and k not in no: no.append(k)
+    fit_status = checked_condition_status(cat, url)
     for k in CAT_WHO.get(cat, []):
+        if k in fit_status: put(k, fit_status[k]); continue
         if k == "big":
             kg = r.get("max_kg") or 0
             if r.get("large"): put("big", 1)
@@ -266,7 +275,15 @@ def keys(cat, url):
         else:
             put(k, _find(t, k))
     for k in FAC.get(cat, []):
-        put(k, _find(t, k))
+        put(k, fit_status[k] if k in fit_status else _find(t, k))
+    # Explicit evidence from the particular facility wins over a broad page or FAQ keyword.
+    for k, v in fit_status.items(): put(k, v)
+    if cat == "rojin-home":
+        # 映像のライブ視聴は飼い主向けであることを、出典付きの専用項目で確認する。
+        # 防犯カメラ、施設側の見守り、写真・動画の報告からは推定しない。
+        live = r.get("care_evidence", {}).get("owner_live_camera", {})
+        if live.get("src") and live.get("checked") and "dog" in live.get("animals", []):
+            put("owner_live_dog", 1)
     if cat == "pet-hotel":
         # 体重帯（データに体重の上限 max_kg が書いてあるホテルだけ。上限が帯の上まであれば合う、上限が帯の下より小さければ合わない）
         kg = r.get("max_kg") or 0
@@ -280,7 +297,9 @@ def keys(cat, url):
     if cat in ("sougi", "pet-sitter"):
         for k in ("a:small", "a:bird", "a:exotic"): put(k, _find(t, k))
     if cat == "sougi":
-        for k in WHEN: put(k, _find(t, k))
+        for k in WHEN: put(k, fit_status[k] if k in fit_status else _find(t, k))
+        # 合同・返骨の組み合わせに限って非対応。個別火葬の返骨可否には影響させない。
+        if r.get("group_returns_ashes") is False: put("合同火葬+お骨を返してもらえる", 2)
     if cat == "pet-sitter" and r.get("chain") in CHAIN:
         for k in CHAIN[r["chain"]]["keys"]:
             if k not in no: put(k, 1)
