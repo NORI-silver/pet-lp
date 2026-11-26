@@ -282,6 +282,9 @@ def run(root):
     vaccine = source.find('予防接種<span')
     if vaccine < 0 or source.rfind('<details', 0, vaccine) > source.rfind('</details>', 0, vaccine):
         found.append(("matchform", "ワクチン欄が任意の折りたたみ内にあるか、なくなっている"))
+    button = source.find('id="seeBtn"')
+    if not source.find('id="luggage"') < button < source.find('id="partnerResults"'):
+        found.append(("matchform", "会社と料金を見るボタンが、ペット・人数・荷物の必須入力より前にある"))
     if found:
         res.setdefault("/", []).extend(found)
     return res
