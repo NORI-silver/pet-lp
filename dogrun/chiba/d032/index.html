@@ -68,6 +68,11 @@
    "addressRegion": "千葉県",
    "streetAddress": "市川市塩浜3丁目25",
    "addressCountry": "JP"
+  },
+  "geo": {
+   "@type": "GeoCoordinates",
+   "latitude": 35.65742,
+   "longitude": 139.91685
   }
  },
  {
@@ -140,7 +145,7 @@ body.ux .emg{border:0;padding:0;background:none;box-shadow:none;border-radius:0}
 .ux-w select{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb;background:#fff;color:#2b2622}
 .ux-w input{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb}
 .ux-w button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:8px 13px;font-size:.88rem;line-height:1.2;color:#3c2f26;cursor:pointer}
-.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
 .ux-need button{border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:12px 8px;font-size:.93rem;font-weight:700;color:#3c2f26;cursor:pointer}
 .ux-find button[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff;font-weight:700}
 .ux-find button[hidden]{display:none}
@@ -217,7 +222,7 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    <div class="emg">
+    <div class="emg"><div class="ux-find" data-pref-nav="dogrun"><span class="ux-l">ほかの都道府県で探す</span></div>
       <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts"><li>塩浜ドッグラン（塩浜第二公園内）は、千葉県市川市にある公営のドッグランです（2026-11-16時点）。</li><li>塩浜ドッグラン（塩浜第二公園内）の料金は「無料」です。</li><li>塩浜ドッグラン（塩浜第二公園内）の利用時間は「9時〜17時（6〜9月は19時まで）」です。</li><li>塩浜ドッグラン（塩浜第二公園内）の利用登録は「市川市への会員登録がいる」です。</li><li>塩浜ドッグラン（塩浜第二公園内）のエリアは「フリーゾーン（約330㎡）・小型犬ゾーン（約140㎡）。フェンスの高さはどちらも1.5m。6〜9月の平日は一部の区域だけ（土日祝は全区域）」です。</li></ul></div>
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">基本の情報</h2><ul class="fx"><li><span class="fx-i i-pin" aria-hidden="true"></span><div><b class="fx-k">所在地</b><span class="fx-v">市川市塩浜3丁目25</span></div></li><li><span class="fx-i i-clock" aria-hidden="true"></span><div><b class="fx-k">利用時間</b><span class="fx-v">9時〜17時（6〜9月は19時まで）</span></div></li><li><span class="fx-i i-cal" aria-hidden="true"></span><div><b class="fx-k">休み</b><span class="fx-v">年末年始（市役所の閉庁日）、毎月第3日曜は犬の譲渡会のため終日使えない（8・9月は除く。雨なら第4日曜に）、清掃・点検・イベントの日</span></div></li><li><span class="fx-i i-yen" aria-hidden="true"></span><div><b class="fx-k">料金</b><span class="fx-v">無料</span></div></li><li><span class="fx-i i-dog" aria-hidden="true"></span><div><b class="fx-k">エリア<small class="sub">（犬の大きさ）</small></b><span class="fx-v">フリーゾーン（約330㎡）・小型犬ゾーン（約140㎡）。フェンスの高さはどちらも1.5m。6〜9月の平日は一部の区域だけ（土日祝は全区域）</span></div></li><li><span class="fx-i i-doc" aria-hidden="true"></span><div><b class="fx-k">利用登録</b><span class="fx-v">市川市への会員登録がいる</span></div></li><li><span class="fx-i i-car" aria-hidden="true"></span><div><b class="fx-k">駐車場</b><span class="fx-v">塩浜第2公園と塩浜市民体育館の臨時駐車場をあわせて使う</span></div></li><li><span class="fx-i i-ng" aria-hidden="true"></span><div><b class="fx-k">ご注意</b><span class="fx-v">市内の二俣ドッグランは休止中</span></div></li><li><span class="fx-i i-rule" aria-hidden="true"></span><div><b class="fx-k">利用のきまり</b><span class="fx-v">ふんは持ち帰り、おしっこはたくさんの水で流す。ゴミは持ち帰る。草刈りなどの管理にも協力する</span></div></li></ul>
       <p class="emg-tips-note">出どころ：<a href="https://www.city.ichikawa.lg.jp/page/2876.html" target="_blank" rel="noopener">公式ページ</a>（2026-11-16時点）。書いていない項目は載せていません。変わることがあるので、出かける前に必ず公式ページでご確認ください。</p></div>
@@ -247,5 +252,6 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
     <p>&copy; 2026 ペットのくらし窓口</p>
   </div>
 </footer>
+<script src="/place.js" defer></script>
 </body>
 </html>

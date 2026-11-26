@@ -5,7 +5,6 @@
 // 候補は自前のデータだけ（都道府県47・市区町村の一覧 /place-data.json・ページが渡す駅や区）。有料のサービスは使わない。入れた文字は解析に送らない。
 (function(){
 var PN = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"];
-var PK = "ほっかいどう,あおもり,いわて,みやぎ,あきた,やまがた,ふくしま,いばらき,とちぎ,ぐんま,さいたま,ちば,とうきょう,かながわ,にいがた,とやま,いしかわ,ふくい,やまなし,ながの,ぎふ,しずおか,あいち,みえ,しが,きょうと,おおさか,ひょうご,なら,わかやま,とっとり,しまね,おかやま,ひろしま,やまぐち,とくしま,かがわ,えひめ,こうち,ふくおか,さが,ながさき,くまもと,おおいた,みやざき,かごしま,おきなわ".split(",");
 var KEY = "petPlaces", MUNI = null, MUNI_P = null;
 function kana(s){ return String(s || "").replace(/[ァ-ヶ]/g, function(c){ return String.fromCharCode(c.charCodeAt(0) - 96); }); }
 function norm(s){ return kana(String(s || "").trim().toLowerCase().replace(/[\s　]+/g, "")); }
@@ -18,6 +17,7 @@ function css(){
   + ".pp-box{display:flex;flex-wrap:wrap;align-items:center;gap:5px;border:1px solid #d9c9bb;border-radius:12px;background:#fff;padding:6px 8px;min-height:46px;cursor:text}"
   + ".pp-box:focus-within{border-color:#e8590c;box-shadow:0 0 0 3px rgba(232,89,12,.12)}"
   + ".pp-chip{display:inline-flex;align-items:center;gap:2px;background:#fff1e6;color:#a8410a;border:1px solid #f6c9a8!important;border-radius:999px!important;padding:5px 4px 5px 11px!important;font-size:.88rem!important;font-weight:700;line-height:1.2;cursor:pointer}"
+  + ".pp-pick{width:100%;min-height:46px;border:1px solid #d9c9bb;border-radius:12px;padding:8px 12px;background:#fff;color:#2b2622;font:inherit;cursor:pointer}.pp-pref:has(.pp-pick) .pp-box{min-height:0;padding:0;border:0;background:none;box-shadow:none}.pp-pref .pp-box:has(.pp-chip){margin-bottom:5px}"
   + ".pp-chip b{font-weight:400;font-size:1rem;line-height:1;padding:0 5px;color:#c06a35}"
   + ".pp-lock{cursor:default;padding-right:11px!important}"
   + ".pp-in{flex:1 1 7em;min-width:6em;border:0!important;outline:0;padding:6px 2px!important;font-size:.98rem!important;background:transparent;box-shadow:none!important}"
@@ -74,13 +74,30 @@ window.PlacePick = function(opts){
     if (kind === "pref" && opts.fixed) {
       var lk = el("span", "pp-chip pp-lock", opts.fixed); bx.appendChild(lk); fw.append(bx);
       f.inp = null;
+    } else if (kind === "pref") {
+      var menu = el("select", "pp-pick");
+      menu.setAttribute("aria-label", "都道府県を選ぶ");
+      menu.appendChild(el("option"));
+      menu.options[0].value = "";
+      menu.options[0].disabled = true;
+      var rows = opts.prefs || [];
+      PN.forEach(function(p){
+        var row = rows.find(function(x){ return x[0] === p; });
+        if (row) { var o = el("option", "", p); o.value = p; menu.appendChild(o); }
+      });
+      menu.addEventListener("change", function(){
+        var p = menu.value;
+        if (p) { if (opts.home && p !== opts.home) places = []; add({p: p}); }
+      });
+      f.menu = menu;
+      fw.append(bx, menu);
     } else {
       var inp = el("input", "pp-in");
       inp.type = "search"; inp.autocomplete = "off"; inp.setAttribute("enterkeyhint", "search");
       inp.setAttribute("role", "combobox"); inp.setAttribute("aria-autocomplete", "list"); inp.setAttribute("aria-expanded", "false");
       inp.setAttribute("aria-controls", ul.id);
-      inp.placeholder = kind === "pref" ? "都道府県" : phCity;
-      inp.setAttribute("aria-label", kind === "pref" ? "都道府県" : phCity);
+      inp.placeholder = phCity;
+      inp.setAttribute("aria-label", phCity);
       f.inp = inp; bx.appendChild(inp);
       fw.append(bx, ul);
       bx.addEventListener("click", function(ev){ if (!ev.target.closest(".pp-chip")) inp.focus(); });
@@ -101,7 +118,7 @@ window.PlacePick = function(opts){
       var c = ev.target.closest(".pp-chip"); if (!c || c.classList.contains("pp-lock")) return;
       if (kind === "pref") removePref(c.getAttribute("data-p"), c.getAttribute("data-own") === "1");
       else removePlace(+c.getAttribute("data-i"));
-      if (f.inp) f.inp.focus();
+      if (f.inp) f.inp.focus(); else if (f.menu) f.menu.focus();
     });
     wrap.appendChild(fw);
     return f;
@@ -114,9 +131,10 @@ window.PlacePick = function(opts){
       prefEntries().forEach(function(e){
         var c = el("button", "pp-chip"); c.type = "button"; c.setAttribute("data-p", e.p); c.setAttribute("data-own", e.own ? "1" : "");
         c.setAttribute("aria-label", e.p + "を外す"); c.append(document.createTextNode(e.p), el("b", "", "×"));
-        fPref.bx.insertBefore(c, fPref.inp);
+        fPref.bx.appendChild(c);
       });
-      fPref.inp.placeholder = places.length ? "＋ほかの県も" : "都道府県";
+      fPref.menu.options[0].textContent = places.length ? "＋ほかの都道府県を選ぶ" : "都道府県を選ぶ";
+      fPref.menu.selectedIndex = 0;
     }
     // 市区町村のボックス
     [].slice.call(fCity.bx.querySelectorAll(".pp-chip")).forEach(function(c){ c.remove(); });
@@ -137,7 +155,6 @@ window.PlacePick = function(opts){
   }
   function backChip(f){
     if (f.kind === "city") { for (var i = places.length - 1; i >= 0; i--) if (places[i].c || places[i].s) { removePlace(i); return; } }
-    else if (!opts.fixed) { var es = prefEntries(); if (es.length) removePref(es[es.length - 1].p, es[es.length - 1].own); }
   }
   function hide(f){ f.ul.hidden = true; if (f.inp) f.inp.setAttribute("aria-expanded", "false"); f.act = -1; }
   function close(f){ var o = !f.ul.hidden; hide(f); if (o && f.inp && f.inp.value && opts.typed) opts.typed(f.inp.value); }
@@ -148,11 +165,6 @@ window.PlacePick = function(opts){
     var t = norm(inp.value), out = [], seen = {};
     function push(p, sub){ var k = p.p + "|" + (p.c || "") + "|" + (p.s || ""); if (seen[k] || places.some(function(x){ return same(x, p); })) return; seen[k] = 1; out.push([p, sub]); }
     var head = function(s){ return s.indexOf(t) === 0; };
-    if (f.kind === "pref") {
-      var prefs = opts.prefs || [];
-      if (!t) prefs.slice().sort(function(a, b){ return b[1] - a[1]; }).slice(0, 6).forEach(function(x){ if (x[1]) push({p: x[0]}, x[1] + (opts.unit || "件")); });
-      else prefs.forEach(function(x){ var i = PN.indexOf(x[0]), nm = norm(x[0]); if (head(nm) || head(PK[i]) || (t.length >= 2 && nm.indexOf(t) >= 0)) push({p: x[0]}, (x[1] ? x[1] + (opts.unit || "件") : "")); });
-    } else {
       var act = activePrefs();
       var okPf = function(pf){
         if (opts.fixed) return pf === opts.fixed;
@@ -174,14 +186,13 @@ window.PlacePick = function(opts){
         });
         if (!MUNI) loadMuni(function(){ if (document.activeElement === inp) show(f); });
       }
-    }
     f.cur = out.slice(0, 10); f.ul.textContent = "";
     if (!f.cur.length) {
-      if (t) { var li = el("li", "pp-h", f.kind === "pref" ? "候補が見つかりません。都道府県の名前で入れてください" : "候補が見つかりません。市区町村の名前で入れてください"); f.ul.append(li); f.ul.hidden = false; }
+      if (t) { var li = el("li", "pp-h", "候補が見つかりません。市区町村の名前で入れてください"); f.ul.append(li); f.ul.hidden = false; }
       else hide(f);
       return;
     }
-    if (!t) f.ul.append(el("li", "pp-h", f.kind === "pref" ? "よく選ばれる都道府県" : "この中の場所でしぼる"));
+    if (!t) f.ul.append(el("li", "pp-h", "この中の場所でしぼる"));
     f.cur.forEach(function(x, i){
       var li = el("li"); li.setAttribute("role", "option"); li.setAttribute("data-i", i); li.id = f.ul.id + "-" + i;
       li.append(el("span", "", label(x[0])), el("small", "", x[1] || ""));
@@ -201,6 +212,23 @@ window.PlacePick = function(opts){
   };
 };
 window.PlacePick.label = label;
+// ページに施設用の絞り込みがない場合も、同じ分野の全国検索へ移れる。
+document.querySelectorAll("[data-pref-nav]").forEach(function(root){
+  css();
+  var menu = el("select", "pp-pick");
+  menu.setAttribute("aria-label", "都道府県を選ぶ");
+  var placeholder = el("option", "", "都道府県を選ぶ");
+  placeholder.value = ""; placeholder.disabled = true; menu.appendChild(placeholder);
+  PN.forEach(function(p){ var o = el("option", "", p); o.value = p; menu.appendChild(o); });
+  menu.selectedIndex = 0;
+  menu.addEventListener("change", function(){
+    if (!menu.value) return;
+    try { localStorage.setItem(KEY, JSON.stringify([{p: menu.value}])); } catch (x) {}
+    location.href = "/" + root.dataset.prefNav + "/#pref=" + encodeURIComponent(menu.value);
+  });
+  root.appendChild(menu);
+});
+
 // 県庁所在地の近い県（結果が少ないときに近くの県も出すため）
 var LL = [[43.06,141.35],[40.82,140.74],[39.70,141.15],[38.27,140.87],[39.72,140.10],[38.24,140.36],[37.75,140.47],[36.34,140.45],[36.57,139.88],[36.39,139.06],[35.86,139.65],[35.61,140.12],[35.69,139.69],[35.45,139.64],[37.90,139.02],[36.70,137.21],[36.59,136.63],[36.07,136.22],[35.66,138.57],[36.65,138.18],[35.39,136.72],[34.98,138.38],[35.18,136.91],[34.73,136.51],[35.00,135.87],[35.02,135.76],[34.69,135.52],[34.69,135.18],[34.69,135.83],[34.23,135.17],[35.50,134.24],[35.47,133.05],[34.66,133.93],[34.40,132.46],[34.19,131.47],[34.07,134.56],[34.34,134.04],[33.84,132.77],[33.56,133.53],[33.61,130.42],[33.25,130.30],[32.74,129.87],[32.79,130.74],[33.24,131.61],[31.91,131.42],[31.56,130.56],[26.21,127.68]];
 window.PlacePick.near = function(pf, n){

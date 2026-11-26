@@ -13,7 +13,7 @@ J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "hot
 SLUG = "pet-hotel"
 H1 = "全国のペットホテル"
 TITLE = "ペットホテルを都道府県でさがす｜大型犬OK・猫専用（キャットホテル）・送迎・動物病院併設でしぼれる一覧｜ペットタクシー予約窓口"
-DESC = "全国のペットホテルを都道府県ごとにまとめた無料の一覧です。公式サイトの情報をもとに、大型犬を泊められるホテル・猫専用のホテル（キャットホテル）・動物病院の併設・送迎・シニアの子・夜のスタッフでしぼりこめます。料金は公式サイトに書いてあるホテルだけ載せ、順位は付けていません。"
+DESC = "全国のペットホテルを都道府県ごとにまとめた無料の一覧です。大型犬を泊められるホテル・猫専用のホテル（キャットホテル）・動物病院の併設・送迎・シニアの子・夜のスタッフでしぼりこめます。料金は公開しているホテルだけ載せ、順位は付けていません。"
 
 CONDS = [("large", "大型犬を泊められる"), ("cat_only", "猫専用のホテル"), ("cat", "猫も泊められる"), ("vet", "動物病院が併設・運営"),
          ("pickup", "送迎がある"), ("senior", "シニア・介護・投薬の子を受ける"), ("night_staff", "夜もスタッフがいる")]
@@ -96,7 +96,7 @@ def trust_detail(h):
 
 TODAY = __import__("datetime").date.today().isoformat()
 
-FACT_KEYS = ("料金", "営業・受付時間", "定休日", "駐車場", "送迎", "予約のしかた", "お支払い", "対象の動物", "用意するもの")
+FACT_KEYS = ("料金", "営業・受付時間", "定休日", "駐車場", "送迎", "予約のしかた", "お支払い", "対象の動物", "用意するもの", "受け入れの注意", "預かり期間")
 
 def _card(e, h):
     flags = " ".join(_flags(h))
@@ -111,7 +111,10 @@ def _card(e, h):
     if tl: extra = f'<small>安心の材料：{e("、".join(tl[:5]))}</small>' + extra
     for d in trust_detail(h): extra += f'<small class="emg-spec">{e(d)}</small>'
     for f in h.get("facts", []):
-        if f["k"] in FACT_KEYS: extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
+        if f["k"] in FACT_KEYS:
+            extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
+            if f["k"] in ("料金", "受け入れの注意") and h.get("fit_status") and f.get("src"):
+                extra += f'<a class="fc-source" href="{e(f["src"])}" target="_blank" rel="noopener">{e(f["k"])}の案内</a>'
     city = f'<small>{e(h["city"])}</small>' if h.get("city") else ""
     return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>{city}{extra}{review_link("hotel", h, scope="facility")}</div>')
 
@@ -207,7 +210,7 @@ def _faq(pf, rs, n):
     ]
 CAT = dict(slug=SLUG, name="ペットホテル", unit="件", h1=H1, items=J["hotels"], card=_card, checked=J["checked"], reviews=False,
   title_word="ペットホテル", title_tail="大型犬OK・猫専用・送迎・動物病院併設",
-  desc_tail="ペットホテルを、大型犬を泊められるか・猫専用か・動物病院の併設・送迎・シニアの子・夜のスタッフとあわせて載せています。料金は公式サイトに書いてあるホテルだけ載せ、順位は付けていません。",
+  desc_tail="ペットホテルを、大型犬を泊められるか・猫専用か・動物病院の併設・送迎・シニアの子・夜のスタッフとあわせて載せています。料金は公開しているホテルだけ載せ、順位は付けていません。",
   lede=lambda pf, n: f"{pf}のペットホテルを{n}件まとめました。大型犬OK・猫専用でもしぼれます。公式サイトに書いてある受け入れの条件だけを載せています。",
   facts=_facts, faq=_faq, before_title="ペットホテルに預ける前に確かめること", before=[], extra_after=lambda e, pf: checklist(e),
   taxi_h="ホテルへの送り迎えは、ペットタクシーで", taxi_p="大型犬やキャリーの猫も、飼い主さまと一緒に家の前からホテルの前まで移動できます。",

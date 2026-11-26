@@ -68,6 +68,11 @@
    "addressRegion": "愛知県",
    "streetAddress": "岡崎市舞木町字金森200（OKAZAKI MARKET 1F、農園直営カフェのとなり）",
    "addressCountry": "JP"
+  },
+  "geo": {
+   "@type": "GeoCoordinates",
+   "latitude": 34.90028,
+   "longitude": 137.25092
   }
  },
  {
@@ -140,7 +145,7 @@ body.ux .emg{border:0;padding:0;background:none;box-shadow:none;border-radius:0}
 .ux-w select{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb;background:#fff;color:#2b2622}
 .ux-w input{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb}
 .ux-w button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:8px 13px;font-size:.88rem;line-height:1.2;color:#3c2f26;cursor:pointer}
-.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
 .ux-need button{border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:12px 8px;font-size:.93rem;font-weight:700;color:#3c2f26;cursor:pointer}
 .ux-find button[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff;font-weight:700}
 .ux-find button[hidden]{display:none}
@@ -217,7 +222,7 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    <div class="emg">
+    <div class="emg"><div class="ux-find" data-pref-nav="dogrun"><span class="ux-l">ほかの都道府県で探す</span></div>
       <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts"><li>三井アウトレットパーク 岡崎のドッグラン（山田農園 FARM＆DOGS）は、愛知県岡崎市にあるお店・施設のドッグランです（2026年11月2日〜11月14日時点）。</li><li>三井アウトレットパーク 岡崎のドッグラン（山田農園 FARM＆DOGS）の料金は「同行者1人につき2頭まで1日660円（税込）」です。</li><li>三井アウトレットパーク 岡崎のドッグラン（山田農園 FARM＆DOGS）の利用時間は「10:00〜20:00（受付19:00まで）」です。</li><li>三井アウトレットパーク 岡崎のドッグラン（山田農園 FARM＆DOGS）の利用登録は「利用規約に同意してリストバンドをつける」です。</li><li>三井アウトレットパーク 岡崎のドッグラン（山田農園 FARM＆DOGS）のエリアは「小型犬（10kg未満）と大型犬（10kg以上）のエリア。時間で分ける（小型犬は毎時00〜29分、大型犬は30〜59分）」です。</li></ul></div>
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">基本の情報</h2><ul class="fx"><li><span class="fx-i i-pin" aria-hidden="true"></span><div><b class="fx-k">所在地</b><span class="fx-v">岡崎市舞木町字金森200（OKAZAKI MARKET 1F、農園直営カフェのとなり）</span></div></li><li><span class="fx-i i-clock" aria-hidden="true"></span><div><b class="fx-k">利用時間</b><span class="fx-v">10:00〜20:00（受付19:00まで）</span></div></li><li><span class="fx-i i-yen" aria-hidden="true"></span><div><b class="fx-k">料金</b><span class="fx-v">同行者1人につき2頭まで1日660円（税込）</span></div></li><li><span class="fx-i i-dog" aria-hidden="true"></span><div><b class="fx-k">エリア<small class="sub">（犬の大きさ）</small></b><span class="fx-v">小型犬（10kg未満）と大型犬（10kg以上）のエリア。時間で分ける（小型犬は毎時00〜29分、大型犬は30〜59分）</span></div></li><li><span class="fx-i i-doc" aria-hidden="true"></span><div><b class="fx-k">利用登録</b><span class="fx-v">利用規約に同意してリストバンドをつける</span></div></li><li><span class="fx-i i-doc" aria-hidden="true"></span><div><b class="fx-k">必要なもの・条件</b><span class="fx-v">混合ワクチンと狂犬病予防注射の接種証明書</span></div></li><li><span class="fx-i i-ng" aria-hidden="true"></span><div><b class="fx-k">入れない犬など</b><span class="fx-v">猛犬や危険をともなう犬種、接種証明のない犬。ドッグラン・店内ではオムツをつける</span></div></li></ul>
       <p class="emg-tips-note">出どころ：<a href="https://mitsui-shopping-park.com/mop/okazaki/special/pets/" target="_blank" rel="noopener">公式ページ</a>、<a href="https://mitsui-shopping-park.com/mop/okazaki/" target="_blank" rel="noopener">公式ページ2</a>（2026年11月2日〜11月14日時点）。書いていない項目は載せていません。変わることがあるので、出かける前に必ず公式ページでご確認ください。</p></div>
@@ -247,5 +252,6 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
     <p>&copy; 2026 ペットのくらし窓口</p>
   </div>
 </footer>
+<script src="/place.js" defer></script>
 </body>
 </html>

@@ -68,6 +68,11 @@
    "addressRegion": "山梨県",
    "streetAddress": "甲州市 こぴっとひろばの中（2026年7月1日に開いた）",
    "addressCountry": "JP"
+  },
+  "geo": {
+   "@type": "GeoCoordinates",
+   "latitude": 35.70417,
+   "longitude": 138.72945
   }
  },
  {
@@ -140,7 +145,7 @@ body.ux .emg{border:0;padding:0;background:none;box-shadow:none;border-radius:0}
 .ux-w select{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb;background:#fff;color:#2b2622}
 .ux-w input{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb}
 .ux-w button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:8px 13px;font-size:.88rem;line-height:1.2;color:#3c2f26;cursor:pointer}
-.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
 .ux-need button{border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:12px 8px;font-size:.93rem;font-weight:700;color:#3c2f26;cursor:pointer}
 .ux-find button[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff;font-weight:700}
 .ux-find button[hidden]{display:none}
@@ -217,7 +222,7 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    <div class="emg">
+    <div class="emg"><div class="ux-find" data-pref-nav="dogrun"><span class="ux-l">ほかの都道府県で探す</span></div>
       <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts"><li>こぴっとひろば ドッグランは、山梨県甲州市にある公営のドッグランです（2026年11月14日時点）。</li><li>こぴっとひろば ドッグランの利用時間は「4〜9月は6時30分〜18時30分、10〜3月は7時〜17時」です。</li><li>こぴっとひろば ドッグランの利用登録は「スマートフォンにアプリ「Wan!Pass（ワンパス）」を入れ、犬の情報と狂犬病予防注射の証明を登録して認証を申請。入るときは入口のコードを読み取ってチェックインし、表示される解除番号を入れる」です。</li><li>こぴっとひろば ドッグランのエリアは「小型犬用・中・大型犬用」です。</li></ul></div>
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">基本の情報</h2><ul class="fx"><li><span class="fx-i i-pin" aria-hidden="true"></span><div><b class="fx-k">所在地</b><span class="fx-v">甲州市 こぴっとひろばの中（2026年7月1日に開いた）</span></div></li><li><span class="fx-i i-clock" aria-hidden="true"></span><div><b class="fx-k">利用時間</b><span class="fx-v">4〜9月は6時30分〜18時30分、10〜3月は7時〜17時</span></div></li><li><span class="fx-i i-dog" aria-hidden="true"></span><div><b class="fx-k">エリア<small class="sub">（犬の大きさ）</small></b><span class="fx-v">小型犬用・中・大型犬用</span></div></li><li><span class="fx-i i-doc" aria-hidden="true"></span><div><b class="fx-k">利用登録</b><span class="fx-v">スマートフォンにアプリ「Wan!Pass（ワンパス）」を入れ、犬の情報と狂犬病予防注射の証明を登録して認証を申請。入るときは入口のコードを読み取ってチェックインし、表示される解除番号を入れる</span></div></li><li><span class="fx-i i-doc" aria-hidden="true"></span><div><b class="fx-k">必要なもの・条件</b><span class="fx-v">スマートフォン（アプリ）、狂犬病予防注射済証の写真</span></div></li><li><span class="fx-i i-ng" aria-hidden="true"></span><div><b class="fx-k">入れない犬など</b><span class="fx-v">発情期の犬・凶暴な犬・うつる病気の犬・生後4か月以内の犬、犬以外の動物、犬を連れていない人</span></div></li><li><span class="fx-i i-dog" aria-hidden="true"></span><div><b class="fx-k">連れて入れる頭数</b><span class="fx-v">管理できる頭数まで</span></div></li><li><span class="fx-i i-ng" aria-hidden="true"></span><div><b class="fx-k">ご注意</b><span class="fx-v">2026年7月1日に開いた</span></div></li><li><span class="fx-i i-rule" aria-hidden="true"></span><div><b class="fx-k">利用のきまり</b><span class="fx-v">犬はいつも見ている。フンやゴミは持ち帰る。小学生以下は保護者と一緒に</span></div></li><li><span class="fx-i i-info" aria-hidden="true"></span><div><b class="fx-k">設備</b><span class="fx-v">小型犬用と中・大型犬用の2つのエリア。となりに芝生広場</span></div></li></ul>
       <p class="emg-tips-note">出どころ：<a href="https://www.city.koshu.yamanashi.jp/docs/2026063000045" target="_blank" rel="noopener">公式ページ</a>（2026年11月14日時点）。書いていない項目は載せていません。変わることがあるので、出かける前に必ず公式ページでご確認ください。</p></div>
@@ -247,5 +252,6 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
     <p>&copy; 2026 ペットのくらし窓口</p>
   </div>
 </footer>
+<script src="/place.js" defer></script>
 </body>
 </html>

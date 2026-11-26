@@ -68,6 +68,11 @@
    "addressRegion": "栃木県",
    "streetAddress": "佐野市越名町2062-9",
    "addressCountry": "JP"
+  },
+  "geo": {
+   "@type": "GeoCoordinates",
+   "latitude": 36.29142,
+   "longitude": 139.60217
   }
  },
  {
@@ -140,7 +145,7 @@ body.ux .emg{border:0;padding:0;background:none;box-shadow:none;border-radius:0}
 .ux-w select{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb;background:#fff;color:#2b2622}
 .ux-w input{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb}
 .ux-w button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:8px 13px;font-size:.88rem;line-height:1.2;color:#3c2f26;cursor:pointer}
-.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
 .ux-need button{border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:12px 8px;font-size:.93rem;font-weight:700;color:#3c2f26;cursor:pointer}
 .ux-find button[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff;font-weight:700}
 .ux-find button[hidden]{display:none}
@@ -217,7 +222,7 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    <div class="emg">
+    <div class="emg"><div class="ux-find" data-pref-nav="dogrun"><span class="ux-l">ほかの都道府県で探す</span></div>
       <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts"><li>DOG DEPT GARDEN 佐野店のドッグランは、栃木県佐野市にあるお店・施設のドッグランです（2026年11月14日時点）。</li><li>DOG DEPT GARDEN 佐野店のドッグランの料金は「1頭1,000円（税別）。税込み5,500円以上の利用でドッグラン1日無料」です。</li><li>DOG DEPT GARDEN 佐野店のドッグランの利用時間は「11:00〜18:00（ラストオーダー17:00）」です。</li></ul></div>
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">基本の情報</h2><ul class="fx"><li><span class="fx-i i-pin" aria-hidden="true"></span><div><b class="fx-k">所在地</b><span class="fx-v">佐野市越名町2062-9</span></div></li><li><span class="fx-i i-clock" aria-hidden="true"></span><div><b class="fx-k">利用時間</b><span class="fx-v">11:00〜18:00（ラストオーダー17:00）</span></div></li><li><span class="fx-i i-cal" aria-hidden="true"></span><div><b class="fx-k">休み</b><span class="fx-v">水曜</span></div></li><li><span class="fx-i i-yen" aria-hidden="true"></span><div><b class="fx-k">料金</b><span class="fx-v"><span class="tx">1頭1,000円<small class="nt">（税別）</small></span><span class="tx">税込み5,500円以上の利用でドッグラン1日無料</span></span></div></li><li><span class="fx-i i-doc" aria-hidden="true"></span><div><b class="fx-k">必要なもの・条件</b><span class="fx-v">狂犬病予防注射の証明と、混合ワクチンの証明（写しや写真でもよい）</span></div></li><li><span class="fx-i i-pin" aria-hidden="true"></span><div><b class="fx-k">アクセス</b><span class="fx-v">佐野藤岡ICから車で約3分。佐野プレミアム・アウトレットから歩いてすぐ</span></div></li><li><span class="fx-i i-ng" aria-hidden="true"></span><div><b class="fx-k">ご注意</b><span class="fx-v">カフェ・ショップのドッグランです。</span></div></li><li><span class="fx-i i-info" aria-hidden="true"></span><div><b class="fx-k">設備</b><span class="fx-v"><span class="tx">カフェ＆レストラン<small class="nt">（DOG OK の表示）</small></span><span class="tx">ショップ</span><span class="tx">犬のお預かり<small class="nt">（1時間 小・中型犬1,000円・大型犬1,500円、税別）</small></span><span class="tx">カートの貸し出し</span></span></div></li></ul>
       <p class="emg-tips-note">出どころ：<a href="https://www.dogdept.com/shoplist/area03_15.html" target="_blank" rel="noopener">公式ページ</a>、<a href="https://www.dogdept.com/cafe/" target="_blank" rel="noopener">公式ページ2</a>（2026年11月14日時点）。書いていない項目は載せていません。変わることがあるので、出かける前に必ず公式ページでご確認ください。</p></div>
@@ -247,5 +252,6 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
     <p>&copy; 2026 ペットのくらし窓口</p>
   </div>
 </footer>
+<script src="/place.js" defer></script>
 </body>
 </html>

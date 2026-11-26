@@ -4,6 +4,7 @@
 # 電話番号・順位・おすすめは書かない。各ページに「このドッグランまでのペットタクシー」（facility_taxi。高速道路のSA・PAは外からは入れないので付けない）。
 import json, os
 import gen_dogrun as G
+import geodata  # 構造化データに座標（tools/geo.json、国土地理院で取得）を足す
 
 PSLUG = G.PSLUG
 CHECKED = G.CHECKED
@@ -107,6 +108,8 @@ def render(ctx, d):
     srcs = [d["url"]] + [u for u in d.get("src", []) if u != d["url"]]
     src_html = "、".join(f'<a href="{e(u)}" target="_blank" rel="noopener">公式ページ{"" if i == 0 else i + 1}</a>' for i, u in enumerate(srcs)) + f"（{e(ck(d))}に確認）"
     rows = "".join(f'<tr><th scope="row">{e(lab)}</th><td>{e(v)}</td></tr>' for lab, v in facts(d))
+    _ll, _prec = geodata.facility_ll("dogrun.json", d)
+    _geo = {"@type": "GeoCoordinates", "latitude": _ll[0], "longitude": _ll[1]} if _ll and _prec == "f" else None
     pt = "Park" if k == "公営" else "Place"
     ld = '<script type="application/ld+json">\n' + json.dumps([
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -115,7 +118,8 @@ def render(ctx, d):
         {"@type": "ListItem", "position": 3, "name": f"{pf}のドッグラン", "item": f"{SITE}/{G.SLUG}/{slug}/"},
         {"@type": "ListItem", "position": 4, "name": nm, "item": url}]},
       {"@context": "https://schema.org", "@type": pt, "additionalType": "ドッグラン", "name": nm, "url": d["url"],
-       "address": {"@type": "PostalAddress", "addressRegion": pf, "streetAddress": d.get("addr", ""), "addressCountry": "JP"}},
+       "address": {"@type": "PostalAddress", "addressRegion": pf, "streetAddress": d.get("addr", ""), "addressCountry": "JP"},
+       **({"geo": _geo} if _geo else {})},
       {"@context": "https://schema.org", "@type": "WebPage", "name": nm, "url": url, "dateModified": _iso(ck(d)), "isBasedOn": d["url"]}],
       ensure_ascii=False, indent=1) + "\n</script>"
     taxi = ""

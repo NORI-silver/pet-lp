@@ -68,6 +68,11 @@
    "addressRegion": "千葉県",
    "streetAddress": "船橋市神保町18番地（アンデルセン公園とは入口が別で、行き来はできない）",
    "addressCountry": "JP"
+  },
+  "geo": {
+   "@type": "GeoCoordinates",
+   "latitude": 35.76114,
+   "longitude": 140.05652
   }
  },
  {
@@ -140,7 +145,7 @@ body.ux .emg{border:0;padding:0;background:none;box-shadow:none;border-radius:0}
 .ux-w select{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb;background:#fff;color:#2b2622}
 .ux-w input{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb}
 .ux-w button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:8px 13px;font-size:.88rem;line-height:1.2;color:#3c2f26;cursor:pointer}
-.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
 .ux-need button{border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:12px 8px;font-size:.93rem;font-weight:700;color:#3c2f26;cursor:pointer}
 .ux-find button[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff;font-weight:700}
 .ux-find button[hidden]{display:none}
@@ -217,7 +222,7 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    <div class="emg">
+    <div class="emg"><div class="ux-find" data-pref-nav="dogrun"><span class="ux-l">ほかの都道府県で探す</span></div>
       <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts"><li>ふなばしアンデルセン公園ドッグランは、千葉県船橋市にある公営のドッグランです（2026年11月2日〜11月14日時点）。</li><li>ふなばしアンデルセン公園ドッグランの料金は「1頭1回300円」です。</li><li>ふなばしアンデルセン公園ドッグランの利用時間は「10:00〜16:00」です。</li><li>ふなばしアンデルセン公園ドッグランの利用登録は「「利用規定兼同意書」を読んで受付をしてから入る」です。</li><li>ふなばしアンデルセン公園ドッグランのエリアは「芝生 約4,830㎡。12kg未満と12kg以上のエリア（1週間ごとに入れかえ）」です。</li></ul></div>
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">基本の情報</h2><ul class="fx"><li><span class="fx-i i-pin" aria-hidden="true"></span><div><b class="fx-k">所在地</b><span class="fx-v">船橋市神保町18番地（アンデルセン公園とは入口が別で、行き来はできない）</span></div></li><li><span class="fx-i i-clock" aria-hidden="true"></span><div><b class="fx-k">利用時間</b><span class="fx-v">10:00〜16:00</span></div></li><li><span class="fx-i i-cal" aria-hidden="true"></span><div><b class="fx-k">休み</b><span class="fx-v">営業時間・休業日カレンダーで確かめる</span></div></li><li><span class="fx-i i-yen" aria-hidden="true"></span><div><b class="fx-k">料金</b><span class="fx-v">1頭1回300円</span></div></li><li><span class="fx-i i-dog" aria-hidden="true"></span><div><b class="fx-k">エリア<small class="sub">（犬の大きさ）</small></b><span class="fx-v">芝生 約4,830㎡。12kg未満と12kg以上のエリア（1週間ごとに入れかえ）</span></div></li><li><span class="fx-i i-doc" aria-hidden="true"></span><div><b class="fx-k">利用登録</b><span class="fx-v">「利用規定兼同意書」を読んで受付をしてから入る</span></div></li><li><span class="fx-i i-doc" aria-hidden="true"></span><div><b class="fx-k">必要なもの・条件</b><span class="fx-v">その年度か前年度に自治体が出した狂犬病予防注射済票を犬につける（動物病院の紙の注射済証明書では使えない）</span></div></li><li><span class="fx-i i-car" aria-hidden="true"></span><div><b class="fx-k">駐車場</b><span class="fx-v">普通車1回500円（12月1日〜3月15日は300円）</span></div></li></ul>
       <p class="emg-tips-note">出どころ：<a href="https://www.park-funabashi.or.jp/and/dog_guide.html" target="_blank" rel="noopener">公式ページ</a>、<a href="https://www.city.funabashi.lg.jp/faq/machi/kouen/003/p059764.html" target="_blank" rel="noopener">公式ページ2</a>（2026年11月2日〜11月14日時点）。書いていない項目は載せていません。変わることがあるので、出かける前に必ず公式ページでご確認ください。</p></div>
@@ -247,5 +252,6 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
     <p>&copy; 2026 ペットのくらし窓口</p>
   </div>
 </footer>
+<script src="/place.js" defer></script>
 </body>
 </html>

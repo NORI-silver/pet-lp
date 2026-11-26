@@ -3,38 +3,44 @@
 // 施設 [data-ffi]：data-k＝公式サイトに書いてある条件、data-q＝名前・市区町村など、data-no＝はっきり「しない」と書いてある条件。
 // 書いていない条件は「条件が公式サイトに書いていない」として数え（「分からない」とは出さない）、押せば見られる。合わないと決めつけない。入れた文字は解析に送らない。
 (function(){
+  function at(n,k){ return n.getAttribute(k); }
+  function id(s){ return document.getElementById(s); }
+  function qa(s){ return document.querySelectorAll(s); }
+  function each(a, f){ [].forEach.call(a, f); }
   var box = document.querySelector("[data-ff]");
   if (!box) return;
-  var cat = box.getAttribute("data-ff"), unit = box.getAttribute("data-unit") || "件";
-  var sel = document.getElementById("ffPref"), q = null, pick = null, places = [];
-  var sum = document.getElementById("ffSum"), alt = document.getElementById("ffAlt"), clr = document.getElementById("ffClear");
-  var res = document.getElementById("ffRes"), det = box.querySelector(".ux-det");
+  var cat = at(box,"data-ff"), unit = at(box,"data-unit") || "件";
+  var sel = id("ffPref"), q = null, pick = null, places = [];
+  var sum = id("ffSum"), alt = id("ffAlt"), clr = id("ffClear");
+  var res = id("ffRes"), det = box.querySelector(".ux-det");
   var needPref = box.hasAttribute("data-needpref");
   var SLUG = __SLUG__; // 都道府県→URLの名前（tools/uikit.py が tools/prefs.py から差し込む。県のページどうしの移動に使う）
-  var items = [].slice.call(document.querySelectorAll("[data-ffi]"));
-  var btns = [].slice.call(box.querySelectorAll("button[data-k]"));
+  var parts = location.pathname.split("/"), pfs = Object.keys(SLUG);
+  var routePf = pfs.find(function(p){ return parts[1] === cat && SLUG[p] === parts[2]; }) || "";
+  var items = Array.from(qa("[data-ffi]"));
+  var btns = Array.from(box.querySelectorAll("button[data-k]"));
   var LBL = {};
-  btns.forEach(function(b){ LBL[b.getAttribute("data-k")] = b.getAttribute("data-l") || b.textContent; });
+  btns.forEach(function(b){ LBL[at(b,"data-k")] = at(b,"data-l") || b.textContent; });
   var idxCtr = 0;
   function initItem(it){
     if (it._idx === undefined) it._idx = idxCtr++;
     // 条件：data-k と、カードの印（data-ft・data-tags。区切りは「|」、空白は「_」に）
-    var ex = [it.getAttribute("data-ft"), it.getAttribute("data-tags")].join("|").split("|").filter(Boolean).map(function(x){ return x.trim().replace(/ /g, "_"); });
-    it._k = " " + (it.getAttribute("data-k") || "") + " " + ex.join(" ") + " ";
-    it._no = " " + (it.getAttribute("data-no") || "") + " ";
+    var ex = [at(it,"data-ft"), at(it,"data-tags")].join("|").split("|").filter(Boolean).map(function(x){ return x.trim().replace(/ /g, "_"); });
+    it._k = " " + (at(it,"data-k") || "") + " " + ex.join(" ") + " ";
+    it._no = " " + (at(it,"data-no") || "") + " ";
     var p = it.closest("[data-pref]");
-    it._p = it.getAttribute("data-pref") || (p ? p.getAttribute("data-pref") : "");
-    it._q = (it.getAttribute("data-q") || it.textContent).toLowerCase();
+    it._p = at(it,"data-pref") || (p ? at(p,"data-pref") : "") || routePf;
+    it._q = (at(it,"data-q") || it.textContent).toLowerCase();
     it._near = it.hasAttribute("data-near") || !!it.closest("[data-near]");
-    it._yen = +(it.getAttribute("data-yen") || 0) || null;
-    it._ll = it.hasAttribute("data-lat") ? [+it.getAttribute("data-lat"), +it.getAttribute("data-lng")] : null;
+    it._yen = +(at(it,"data-yen") || 0) || null;
+    it._ll = it.hasAttribute("data-lat") ? [+at(it,"data-lat"), +at(it,"data-lng")] : null;
     // 来てくれる地域（🚗 の行）。出張・訪問の施設は、所在地ではなくこの地域でしぼる（Nori 2026-11-16）
     it._area = "";
-    [].forEach.call(it.querySelectorAll(".ux-c-l"), function(r){ var i = r.querySelector("i"); if (i && i.textContent.indexOf("🚗") >= 0) it._area = r.textContent.replace("🚗", "").trim(); });
+    each(it.querySelectorAll(".ux-c-l"), function(r){ var i = r.querySelector("i"); if (i && i.textContent.indexOf("🚗") >= 0) it._area = r.textContent.replace("🚗", "").trim(); });
   }
   items.forEach(initItem);
   // 表示順（Nori 2026-11-25）：標準は生成時の並び（情報が多い順）。グループ（市区町村）の中だけで並べかえる
-  var sortSel = document.getElementById("ffSort");
+  var sortSel = id("ffSort");
   function doSort(){
     var mode = sortSel ? sortSel.value : "", seen = [], groups = [];
     items.forEach(function(it){ var p = it.parentNode; if (!p) return; var gi = seen.indexOf(p); if (gi < 0) { seen.push(p); groups.push([p, []]); gi = groups.length - 1; } groups[gi][1].push(it); });
@@ -42,7 +48,7 @@
       var arr = g[1].slice();
       arr.sort(function(a, b){
         if (mode === "photo") { var pa = a.querySelector('img[src*="/img/fac/"]') ? 0 : 1, pb = b.querySelector('img[src*="/img/fac/"]') ? 0 : 1; if (pa !== pb) return pa - pb; }
-        else if (mode === "name") { var na = a.getAttribute("data-name") || "", nb = b.getAttribute("data-name") || ""; if (na !== nb) return na < nb ? -1 : 1; }
+        else if (mode === "name") { var na = at(a,"data-name") || "", nb = at(b,"data-name") || ""; if (na !== nb) return na < nb ? -1 : 1; }
         else if (mode === "priceAsc") { var ya = a._yen || 1e12, yb = b._yen || 1e12; if (ya !== yb) return ya - yb; }
         else if (mode === "priceDesc") { var za = a._yen || -1, zb = b._yen || -1; if (za !== zb) return zb - za; }
         return a._idx - b._idx;
@@ -51,7 +57,7 @@
     });
   }
   if (sortSel) sortSel.addEventListener("change", doSort);
-  var nearSel = document.getElementById("ffNear");
+  var nearSel = id("ffNear");
   if (nearSel) nearSel.addEventListener("change", function(){
     geoKm = +nearSel.value || 0;
     if (geoKm && !geoPos && navigator.geolocation) {
@@ -60,10 +66,10 @@
     apply(false);
   });
   // カードのイメージ写真（無料の写真素材。本物の施設の写真ではないので「イメージ」と出し、alt は空）。となりが同じにならないよう順番に回す
-  var pics = (box.getAttribute("data-pics") || "").split("|");
+  var pics = (at(box,"data-pics") || "").split("|");
   if (pics[1]) {
     var pf = pics[1].split(",");
-    [].forEach.call(document.querySelectorAll(".emg-item.fc[data-ffi], .ux-c.dr-card[data-ffi], .yd-card[data-ffi]"), function(c, i){
+    each(qa(".emg-item.fc[data-ffi], .ux-c.dr-card[data-ffi], .yd-card[data-ffi]"), function(c, i){
       if (c.querySelector(".ux-img")) return;
       var d = el("div", "ux-img"), im = document.createElement("img");
       im.src = pics[0] + pf[i % pf.length]; im.alt = ""; im.loading = "lazy"; d.appendChild(im); c.insertBefore(d, c.firstChild);
@@ -88,24 +94,24 @@
       if (!html) { fullState[p] = 2; note.remove(); return; }
       var tpl = document.createElement("template");
       tpl.innerHTML = html;
-      var kids = [].slice.call(sec.children), first = null, drop = [];
+      var kids = Array.from(sec.children), first = null, drop = [];
       kids.forEach(function(ch){
         var isNear = ch.querySelector && ch.querySelector("[data-near]");
         if ((ch.classList.contains("fr") && !isNear) || ch.classList.contains("fr-more")) { if (!first) first = ch; drop.push(ch); }
       });
       var old = [];
-      drop.forEach(function(ch){ [].forEach.call(ch.querySelectorAll("[data-ffi]"), function(it){ old.push(it); }); });
+      drop.forEach(function(ch){ each(ch.querySelectorAll("[data-ffi]"), function(it){ old.push(it); }); });
       if (first) sec.insertBefore(tpl.content, first);
       drop.forEach(function(ch){ ch.remove(); });
       items = items.filter(function(it){ return old.indexOf(it) < 0; });
-      [].forEach.call(sec.querySelectorAll(".ff-full [data-ffi]"), function(it){ initItem(it); items.push(it); });
+      each(sec.querySelectorAll(".ff-full [data-ffi]"), function(it){ initItem(it); items.push(it); });
       fullState[p] = 2;
       note.remove();
       apply(false);
     }).catch(function(){ fullState[p] = 2; note.remove(); });
   }
   function maybeLoad(){ places.forEach(function(p){ loadFull(p.p); }); }
-  function on(){ return btns.filter(function(b){ return b.getAttribute("aria-pressed") === "true"; }).map(function(b){ return b.getAttribute("data-k"); }); }
+  function on(){ return btns.filter(function(b){ return at(b,"aria-pressed") === "true"; }).map(function(b){ return at(b,"data-k"); }); }
   function norm(s){ return (s || "").trim().toLowerCase().replace(/[\s　]+/g, " "); }
   // 1件の判定：0＝合う、1＝書いていない、2＝合わない（県・入力に合わないか、しないと書いてある）
   // 場所の判定：0＝合う、1＝来てくれる地域にはっきり書いていない（近郊・相談など）、2＝合わない
@@ -145,9 +151,10 @@
     var r = pj;
     if (cat === "sougi" && ks.indexOf("合同火葬") >= 0 && ks.indexOf("お骨を返してもらえる") >= 0 && it._no.indexOf(" 合同火葬+お骨を返してもらえる ") >= 0) return 2;
     for (var i = 0; i < ks.length; i++) {
-      if (it._k.indexOf(" " + ks[i] + " ") >= 0) continue;
-      if (ks[i] === "a:dog" && it._no.indexOf(" a:dog ") < 0) continue;  // 犬は「犬は受けない」と書いていなければ合う
       if (it._no.indexOf(" " + ks[i] + " ") >= 0) return 2;
+      if (it._k.indexOf(" " + ks[i] + " ") >= 0) continue;
+      // 犬は「犬は受けない」と書いていなければ合う
+      if (ks[i] === "a:dog") continue;
       r = 1;
     }
     return r;
@@ -158,6 +165,23 @@
     return c;
   }
   function el(t, c, x){ var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
+  // Match labels are a compact explanation of the current search, not new facility claims.
+  function matchLabels(it, ks, visible){
+    var note = it._matchNote;
+    var matched = visible ? ks.filter(function(k){
+      return LBL[k] && it._k.indexOf(" " + k + " ") >= 0 && it._no.indexOf(" " + k + " ") < 0;
+    }).map(function(k){ return k === "older" ? "年齢・同居条件は詳細を確認" : LBL[k]; }) : [];
+    var value = matched.join("・");
+    if (!value) { if (note) note.hidden = true; return; }
+    if (!note) {
+      var b = it.querySelector(".fc-body") || it;
+      var h = b.querySelector(".fc-name,.ux-c-n,.yd-n");
+      note = it._matchNote = el("p", "fc-catch");
+      if (h) h.after(note); else b.appendChild(note);
+    }
+    note.hidden = false;
+    if (note._value !== value) { note._value = value; note.textContent = "絞り込みに使った条件：" + value; }
+  }
   function apply(track){
     doSort();
     var ks = on(), pf = places, qs = norm(pick && !(pick.open && pick.open()) ? pick.text() : ""), idle = needPref && !pf.length && !qs;
@@ -167,6 +191,7 @@
       if (j < 2) c[j]++;
       it.hidden = !(j === 0 || (j === 1 && showUnk));
       it.classList.toggle("ux-unk", j === 1);
+      matchLabels(it, ks, !it.hidden);
       var note = it.querySelector(".ux-unk-n");
       if (j === 1) {
         if (!note) { note = el("p", "ux-unk-n"); var b = it.querySelector(".fc-body") || it; b.insertBefore(note, b.children[1] || null); }
@@ -175,7 +200,7 @@
       } else if (note) note.remove();
     });
     // 中身のなくなったまとまり・見出しを隠す
-    [].forEach.call(document.querySelectorAll(".fr, .emg-pref, [data-ffg]"), function(g){
+    each(qa(".fr, .emg-pref, [data-ffg]"), function(g){
       var vis = [].some.call(g.querySelectorAll("[data-ffi]"), function(it){ return !it.hidden; });
       g.hidden = !vis;
       var h = g.previousElementSibling;
@@ -184,17 +209,17 @@
       var sm = g.querySelector(".fr-h small, [data-ffn]");
       if (sm) sm.textContent = [].filter.call(g.querySelectorAll("[data-ffi]"), function(it){ return !it.hidden; }).length + unit;
     });
-    [].forEach.call(document.querySelectorAll("[data-near-h]"), function(h){ h.hidden = !pf.length; });
-    [].forEach.call(document.querySelectorAll(".emg-region, .ux-region"), function(h){ h.hidden = !!(pf.length || ks.length || qs) || idle; });
+    each(qa("[data-near-h]"), function(h){ h.hidden = !pf.length; });
+    each(qa(".emg-region, .ux-region"), function(h){ h.hidden = !!(pf.length || ks.length || qs) || idle; });
     // 県が決まらないとき（位置が分からないときなど）は、空のままにせず、地方ごとの県のボタン（件数つき）を出す
     if (idle && sel && !box._pk) {
-      var heads = [].slice.call(document.querySelectorAll(".emg-region"));
+      var heads = Array.from(qa(".emg-region"));
       if (heads.length) {
         var pk = el("div", "pk"); box._pk = pk;
         heads.forEach(function(h){
           var bs = [], n = h.nextElementSibling;
           while (n && !n.classList.contains("emg-region")) {
-            if (n.matches && n.matches(".emg-pref[data-pref]")) { var c = [].filter.call(n.querySelectorAll("[data-ffi]"), function(it){ return !it._near; }).length, nn = n.querySelectorAll("[data-ffi]").length - c; if (c || nn) bs.push([n.getAttribute("data-pref"), c, nn]); }
+            if (n.matches && n.matches(".emg-pref[data-pref]")) { var c = [].filter.call(n.querySelectorAll("[data-ffi]"), function(it){ return !it._near; }).length, nn = n.querySelectorAll("[data-ffi]").length - c; if (c || nn) bs.push([at(n,"data-pref"), c, nn]); }
             n = n.nextElementSibling;
           }
           if (!bs.length) return;
@@ -202,14 +227,14 @@
           bs.forEach(function(x){ var b = el("button", "", x[0]); b.type = "button"; b.setAttribute("data-pk", x[0]); b.append(el("small", "", x[1] ? x[1] + unit : "近くの県")); w.append(b); });
           d.append(su, w); pk.append(d);
         });
-        pk.addEventListener("click", function(ev){ var b = ev.target.closest("button[data-pk]"); if (!b) return; pick.set([{p: b.getAttribute("data-pk")}]); box.scrollIntoView({behavior: "smooth", block: "start"}); });
+        pk.addEventListener("click", function(ev){ var b = ev.target.closest("button[data-pk]"); if (!b) return; pick.set([{p: at(b,"data-pk")}]); box.scrollIntoView({behavior: "smooth", block: "start"}); });
         heads[0].parentNode.insertBefore(pk, heads[0]);
       }
     }
     if (box._pk) box._pk.hidden = !idle;
     // 長い一覧は、はじめの N 件だけ見せて「のこり◯件を見る」（data-ffmore="N"。中身はHTMLにあるので検索にも読める。2026-11-16 見直し）
-    [].forEach.call(document.querySelectorAll("[data-ffmore]"), function(g){
-      var N = +g.getAttribute("data-ffmore") || 12, vis = [].filter.call(g.querySelectorAll("[data-ffi]"), function(it){ return !it.hidden; });
+    each(qa("[data-ffmore]"), function(g){
+      var N = +at(g,"data-ffmore") || 12, vis = [].filter.call(g.querySelectorAll("[data-ffi]"), function(it){ return !it.hidden; });
       var mb = g.nextElementSibling && g.nextElementSibling.classList.contains("ff-more") ? g.nextElementSibling : null;
       vis.forEach(function(it, i){ it.classList.toggle("ff-cut", !g._open && i >= N); });
       if (!g._open && vis.length > N) {
@@ -220,10 +245,10 @@
     // 条件のボタン：いまの場所で1件もないもの・全部に当てはまって意味のないものは隠す（押しているもの・どの動物は残す）
     var all0 = count([], pf, qs)[0];
     btns.forEach(function(b){
-      var k = b.getAttribute("data-k"), n = count([k], pf, qs)[0], an = b.getAttribute("data-g") === "a";
-      b.hidden = b.getAttribute("aria-pressed") !== "true" && !idle && (an ? !n : (!n || (n >= all0 && all0 > 3)));
+      var k = at(b,"data-k"), n = count([k], pf, qs)[0], an = at(b,"data-g") === "a";
+      b.hidden = at(b,"aria-pressed") !== "true" && !idle && (an ? !n : (!n || (n >= all0 && all0 > 3)));
     });
-    [].forEach.call(box.querySelectorAll(".ux-r, .ux-det"), function(r){ var bs = r.querySelectorAll("button[data-k]"); if (bs.length) r.hidden = ![].some.call(bs, function(b){ return !b.hidden; }); });
+    each(box.querySelectorAll(".ux-r, .ux-det"), function(r){ var bs = r.querySelectorAll("button[data-k]"); if (bs.length) r.hidden = ![].some.call(bs, function(b){ return !b.hidden; }); });
     if (det) { var dn = det.querySelectorAll('button[aria-pressed="true"]').length; var sp = det.querySelector("summary span"); if (sp) sp.textContent = dn ? String(dn) : ""; }
     // まとめの行
     sum.textContent = ""; alt.textContent = "";
@@ -242,12 +267,12 @@
         alt.append(u);
       }
       if (!c[0]) {
-        alt.append(el("p", "ux-none", "この条件に合う" + (box.getAttribute("data-noun") || "ところ") + "は、まだ載せていません。条件を外すと見られます。"));
+        alt.append(el("p", "ux-none", "この条件に合う" + (at(box,"data-noun") || "ところ") + "は、まだ載せていません。条件を外すと見られます。"));
         ks.forEach(function(k){
           var rest = ks.filter(function(x){ return x !== k; }), n = count(rest, pf, qs)[0];
           if (!n) return;
           var b = el("button", "ux-alt-b", "「" + LBL[k] + "」を外す（" + n + unit + "）"); b.type = "button";
-          b.onclick = function(){ btns.forEach(function(x){ if (x.getAttribute("data-k") === k) x.setAttribute("aria-pressed", "false"); }); apply(true); };
+          b.onclick = function(){ btns.forEach(function(x){ if (at(x,"data-k") === k) x.setAttribute("aria-pressed", "false"); }); apply(true); };
           alt.append(b);
         });
         if (qs) { var n2 = count(ks, pf, "")[0]; if (n2) { var b2 = el("button", "ux-alt-b", "「" + qs + "」を外す（" + n2 + unit + "）"); b2.type = "button"; b2.onclick = function(){ pick.clearText(); apply(true); }; alt.append(b2); } }
@@ -259,49 +284,48 @@
     clr.hidden = !(ks.length || qs);
     box.classList.toggle("ux-busy", !!(ks.length || qs || pf.length));
     // 選んでいる県のまとまりでは、県のページへのリンク（見出し）を出さない（全部その場に出すため）
-    if (sel) [].forEach.call(document.querySelectorAll(".emg-pref[data-pref]"), function(s){ s.classList.toggle("ff-sel", pf.some(function(p){ return p.p === s.getAttribute("data-pref"); })); });
+    if (sel) each(qa(".emg-pref[data-pref]"), function(s){ s.classList.toggle("ff-sel", pf.some(function(p){ return p.p === at(s,"data-pref"); })); });
     maybeLoad();
     if (track && window.gtag) gtag("event", "ff_filter", {cat: cat, k: ks.join(","), pref: pf.map(function(p){ return p.p; }).join(","), places: pf.length, n: c[0]});
   }
   box.addEventListener("click", function(ev){
     var b = ev.target.closest("button[data-k]");
     if (b) {
-      var was = b.getAttribute("aria-pressed") === "true";
+      var was = at(b,"aria-pressed") === "true";
       // どの動物は1つだけ（犬を押したら猫は外す）
-      if (b.getAttribute("data-g") === "a") btns.forEach(function(x){ if (x.getAttribute("data-g") === "a") x.setAttribute("aria-pressed", "false"); });
+      if (at(b,"data-g") === "a") btns.forEach(function(x){ if (at(x,"data-g") === "a") x.setAttribute("aria-pressed", "false"); });
       b.setAttribute("aria-pressed", String(!was)); apply(true); return;
     }
     if (ev.target.closest("#ffGo")) { apply(false); var t = res || document.querySelector("[data-ffi]:not([hidden])"); if (t) t.scrollIntoView({behavior: "smooth", block: "start"}); }
   });
   clr.addEventListener("click", function(){ btns.forEach(function(b){ b.setAttribute("aria-pressed", "false"); }); pick.clearText(); showUnk = false; apply(true); });
   // どこで：県のボックス（いくつでも）と市区町村のボックスの2つ（/place.js。2026-11-24 Nori「県と市町村は分けた方がいい」）
-  var spot = document.getElementById("ffPlace"), byPref = {}, fixed = "";
+  var spot = id("ffPlace"), byPref = {}, fixed = "";
   items.forEach(function(it){ if (it._p) byPref[it._p] = (byPref[it._p] || 0) + 1; });
   if (!sel) { var ks0 = Object.keys(byPref); if (ks0.length === 1) fixed = ks0[0]; }
-  // 県のページ（/分野/県/）では、ほかの県・ほかの県の市区町村も候補に出し、選んだらその県のページへ移る（2026-11-24 Nori「東京とかほかの県でさがせない」）
-  var curSlug = location.pathname.replace(/\/+$/, "").split("/").pop();
-  var navPref = !!fixed && SLUG[fixed] === curSlug;
-  var prefs = sel ? [].filter.call(sel.options, function(o){ return o.value; }).map(function(o){ return [o.value, byPref[o.value] || 0]; }) : navPref ? Object.keys(SLUG).map(function(k){ return [k, byPref[k] || 0]; }) : Object.keys(byPref).map(function(k){ return [k, byPref[k]]; });
+  // 県・市区町村ページでは、カードが空でもURLから県を知り、ほかの県を選べる。
+  var navPref = !sel && !!routePf;
+  if (navPref) fixed = routePf;
+  var prefs = navPref ? pfs.map(function(k){ return [k, byPref[k] || 0]; }) : sel ? Array.from(sel.options).filter(function(o){ return o.value; }).map(function(o){ return [o.value, byPref[o.value] || 0]; }) : Object.keys(byPref).map(function(k){ return [k, byPref[k]]; });
   var tm;
   pick = PlacePick({root: spot, prefs: prefs, fixed: navPref ? "" : fixed, home: navPref ? fixed : "", unit: unit,
-    ph: spot.getAttribute("data-ph") || "都道府県・市区町村",
+    ph: at(spot,"data-ph") || "都道府県・市区町村",
     cnt: function(p){ var n = 0; items.forEach(function(it){ if (placeJ(it, [p]) === 0) n++; }); return n; },
     extra: fixed ? function(t){ return []; } : null,
     typed: function(){ clearTimeout(tm); tm = setTimeout(function(){ apply(false); }, 150); },
     onChange: function(ps){
       places = ps;
       if (navPref) {
-        var other = null;
-        for (var i = 0; i < ps.length; i++) if (ps[i].p !== fixed) { other = ps[i]; break; }
+        var other = ps.find(function(p){ return p.p !== fixed; });
         if (other) {
           // 選んだ場所は PlacePick が端末に覚えている（petPlaces）ので、移った先の県のページで市区町村まで引き継がれる
-          var base = location.pathname.replace(/[^/]+\/?$/, ""), url = base + SLUG[other.p] + "/";
-          var has = [].some.call(document.querySelectorAll("a[href]"), function(a){ return (a.getAttribute("href") || "").split("#")[0] === url; });
+          var base = "/" + parts[1] + "/", url = base + SLUG[other.p] + "/";
+          var has = [].some.call(qa("a[href]"), function(a){ return (at(a,"href") || "").split("#")[0] === url; });
           location.href = has ? url : base + "#pref=" + encodeURIComponent(other.p);
           return;
         }
       }
-      [].forEach.call(box.querySelectorAll(".pref-guess"), function(g){ g.remove(); });
+      each(box.querySelectorAll(".pref-guess"), function(g){ g.remove(); });
       var first = ps.length ? ps[0].p : "";
       if (sel) { sel.value = first; if (first) prefPut(first); prefLinks(first); try { history.replaceState(null, "", location.pathname + location.search + (first ? "#pref=" + encodeURIComponent(first) : "")); } catch (x) {} }
       apply(true);

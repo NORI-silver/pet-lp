@@ -68,6 +68,11 @@
    "addressRegion": "富山県",
    "streetAddress": "射水市足洗新町1丁目5",
    "addressCountry": "JP"
+  },
+  "geo": {
+   "@type": "GeoCoordinates",
+   "latitude": 36.75914,
+   "longitude": 137.16876
   }
  },
  {
@@ -140,7 +145,7 @@ body.ux .emg{border:0;padding:0;background:none;box-shadow:none;border-radius:0}
 .ux-w select{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb;background:#fff;color:#2b2622}
 .ux-w input{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb}
 .ux-w button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:8px 13px;font-size:.88rem;line-height:1.2;color:#3c2f26;cursor:pointer}
-.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
 .ux-need button{border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:12px 8px;font-size:.93rem;font-weight:700;color:#3c2f26;cursor:pointer}
 .ux-find button[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff;font-weight:700}
 .ux-find button[hidden]{display:none}
@@ -217,7 +222,7 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
 </section>
 <section style="padding-top:8px">
   <div class="wrap">
-    <div class="emg">
+    <div class="emg"><div class="ux-find" data-pref-nav="dogrun"><span class="ux-l">ほかの都道府県で探す</span></div>
       <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts"><li>足洗潟公園ドッグランは、富山県射水市にある公営のドッグランです（2026年11月14日時点）。</li><li>足洗潟公園ドッグランの料金は「無料」です。</li><li>足洗潟公園ドッグランの利用時間は「9時〜17時」です。</li><li>足洗潟公園ドッグランの利用登録は「いらない（2024年3月11日から）」です。</li></ul></div>
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">基本の情報</h2><ul class="fx"><li><span class="fx-i i-pin" aria-hidden="true"></span><div><b class="fx-k">所在地</b><span class="fx-v">射水市足洗新町1丁目5</span></div></li><li><span class="fx-i i-clock" aria-hidden="true"></span><div><b class="fx-k">利用時間</b><span class="fx-v">9時〜17時</span></div></li><li><span class="fx-i i-cal" aria-hidden="true"></span><div><b class="fx-k">休み</b><span class="fx-v">天気などで臨時に休むことがある</span></div></li><li><span class="fx-i i-yen" aria-hidden="true"></span><div><b class="fx-k">料金</b><span class="fx-v">無料</span></div></li><li><span class="fx-i i-doc" aria-hidden="true"></span><div><b class="fx-k">利用登録</b><span class="fx-v">いらない（2024年3月11日から）</span></div></li><li><span class="fx-i i-car" aria-hidden="true"></span><div><b class="fx-k">駐車場</b><span class="fx-v">足洗潟公園の駐車場（位置図は公式ページ）</span></div></li><li><span class="fx-i i-doc" aria-hidden="true"></span><div><b class="fx-k">申し込みのしかた</b><span class="fx-v">申し込みはいらない（出入口は開いている）</span></div></li><li><span class="fx-i i-rule" aria-hidden="true"></span><div><b class="fx-k">利用のきまり</b><span class="fx-v">ドッグラン利用規約を守る。利用時間の外は近所の迷惑になるので使わない</span></div></li><li><span class="fx-i i-info" aria-hidden="true"></span><div><b class="fx-k">設備</b><span class="fx-v">足洗い場、リードをつなげるドッグベンチ。トイレは公園のトイレ</span></div></li><li><span class="fx-i i-ng" aria-hidden="true"></span><div><b class="fx-k">まわりの施設・注意</b><span class="fx-v">管理は射水市 都市整備部 都市計画課</span></div></li></ul>
       <p class="emg-tips-note">出どころ：<a href="https://www.city.imizu.toyama.jp/event-topics/svTopiDtl.aspx?servno=23688" target="_blank" rel="noopener">公式ページ</a>（2026年11月14日時点）。書いていない項目は載せていません。変わることがあるので、出かける前に必ず公式ページでご確認ください。</p></div>
@@ -246,5 +251,6 @@ body.ux ul.other a,body.ux ul.other li>span{display:inline;background:none!impor
     <p>&copy; 2026 ペットのくらし窓口</p>
   </div>
 </footer>
+<script src="/place.js" defer></script>
 </body>
 </html>

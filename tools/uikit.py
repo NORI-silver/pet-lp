@@ -44,7 +44,7 @@ body.ux .emg{border:0;padding:0;background:none;box-shadow:none;border-radius:0}
 .ux-w select{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb;background:#fff;color:#2b2622}
 .ux-w input{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb}
 .ux-w button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:8px 13px;font-size:.88rem;line-height:1.2;color:#3c2f26;cursor:pointer}
-.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
 .ux-need button{border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:12px 8px;font-size:.93rem;font-weight:700;color:#3c2f26;cursor:pointer}
 .ux-find button[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff;font-weight:700}
 .ux-find button[hidden]{display:none}
@@ -122,11 +122,13 @@ def box(cat, *, q_ph, opts=None, animals=None, who=None, when=None, need=None, m
     if who and who[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(who[0])}</span><div class="ux-w">{_b(who[1])}</div></div>')
     det = []
     if when and when[1]: det.append(f'<span class="ux-l">{e(when[0])}</span><div class="ux-w">{_b(when[1])}</div>')
-    if need and need[1]: det.append(f'<span class="ux-l">{e(need[0])}</span><div class="ux-w">{_b(need[1])}</div>')
+    if need and need[1] and 2 <= len(need[1]) <= 6:  # 動物病院と同じ形：「どんな〇〇をお探しですか？」を2列の大きなボタンにして、詳しい条件の手前に出す（Nori 2026-11-26）
+        rows.append(f'<div class="ux-r"><span class="ux-l">{e(need[0])}</span><div class="ux-w"><div class="ux-need">{_b(need[1])}</div></div></div>')
+    elif need and need[1]: det.append(f'<span class="ux-l">{e(need[0])}</span><div class="ux-w">{_b(need[1])}</div>')
     det += [f'<span class="ux-l">{e(t)}</span><div class="ux-w">{_b(it)}</div>' for t, it in more if it]
     if det:
         rows.append(f'<details class="ux-det"><summary>詳しい条件で絞り込む<span></span></summary>{"".join(det)}</details>')
-    rows.append('<div class="ux-r"><span class="ux-l">表示順</span><div class="ux-w"><select id="ffSort" aria-label="表示順"><option value="">情報が多い順（おすすめ）</option><option value="priceAsc">料金が安い順</option><option value="priceDesc">料金が高い順</option><option value="photo">写真がある順</option><option value="name">名前順</option></select></div></div>')
+    rows.append('<div class="ux-r"><span class="ux-l">表示順</span><div class="ux-w"><select id="ffSort" aria-label="表示順"><option value="">標準の並び</option><option value="priceAsc">料金が安い順</option><option value="priceDesc">料金が高い順</option></select></div></div>')
     rows.append('<div class="ux-r"><span class="ux-l">現在地から</span><div class="ux-w"><select id="ffNear" aria-label="現在地からの距離"><option value="">指定なし</option><option value="3">3km以内</option><option value="5">5km以内</option><option value="10">10km以内</option><option value="20">20km以内</option><option value="30">30km以内</option></select></div></div>')
     attrs = f' data-ff="{e(cat)}" data-unit="{e(unit)}" data-noun="{e(noun)}"' + (" data-guess" if guess else "") + (" data-needpref" if needpref else "")
     return (f'<div class="ux-find"{attrs}>' + "".join(rows) + f'<button type="button" class="ux-go" id="ffGo">{e(go)}</button>'
@@ -151,7 +153,7 @@ def write_js(ROOT):
     from prefs import PREFS
     slug = {x[1]: x[0] for x in PREFS}
     slug.update({"東京都": "tokyo", "神奈川県": "kanagawa", "埼玉県": "saitama", "千葉県": "chiba"})  # 4都県は prefs.PREFS の外（gen_dogrun.py の PSLUG と同じ足し方）
-    js = open(os.path.join(HERE, "find.js"), encoding="utf-8").read().replace("__SLUG__", _j.dumps(slug, ensure_ascii=False))
+    js = open(os.path.join(HERE, "find.js"), encoding="utf-8").read().replace("__SLUG__", _j.dumps(slug, ensure_ascii=False, separators=(",", ":")))
     # 配信用はコメント行と行頭の空白だけを除き、改行と検索の処理は保つ（24KB 上限）。
     src = prefkeep.FN + prefkeep.GUESS + "\n" + js
     out = "// 生成：tools/uikit.py（元は tools/find.js と tools/prefkeep.py）\n"
@@ -303,7 +305,8 @@ def facility_list(h, conf, hub):
         ks = fl.group(1).split() if fl else []
         ks += [{"large": "big", "senior": "sen"}[k] for k in ks if k in ("large", "senior")]
         y, n = ownerfit.keys(conf["cat"], url)
-        ks = list(dict.fromkeys(ks + y))
+        blocked = {k for k, v in ownerfit.checked_condition_status(conf["cat"], url).items() if v != 1}
+        ks = [k for k in dict.fromkeys(ks + y) if k not in blocked]
         # 猫専用かどうかはデータの項目（cat_only）ではっきり決まる。専用でないホテルは「猫専用ではない」として外す
         n = [x for x in n if x not in ks] + (["a:dog"] if "cat_only" in ks else ["cat_only"])
         no = f' data-no="{e(" ".join(n))}"' if n else ""
@@ -398,7 +401,8 @@ def _keys(t, cat, url=""):
     if cat == "dog-trainer" and raw & {"問題行動", "しつけ相談"}: k.append("shy")
     y, n = ownerfit.joto_keys(url) if cat == "joto" else ownerfit.keys(cat, url)
     k += y
-    k = list(dict.fromkeys(k))
+    blocked = {key for key, val in ownerfit.checked_condition_status(cat, url).items() if val != 1}
+    k = [x for x in dict.fromkeys(k) if x not in blocked]
     no = [x for x in no + n if x not in k]
     return k, list(dict.fromkeys(no))
 
@@ -555,7 +559,19 @@ def stock(h, ROOT, cat):
         return m.group(0) + f'<div class="ux-img"><img src="/img/stock/{STOCK_KEY[cat]}/{f}" alt="" loading="lazy"></div>'  # 「イメージ」の字は CSS で（ページを軽く）
     return _CARD_OPEN.sub(put, h)
 
+def pref_nav(h, cat, parts, slugs):
+    """施設の検索欄がない県・市区町村ページにも、別の県への入口を出す。"""
+    if len(parts) < 2 or parts[1] not in slugs or cat not in LIST_CATS + ["pet-hotel", "dogrun"]: return h
+    nav = f'<div class="ux-find" data-pref-nav="{e(cat)}"><span class="ux-l">ほかの都道府県で探す</span></div>'
+    if 'id="ffPlace"' in h or 'id="hfPlace"' in h: return h.replace(nav, "")
+    mark = '<div class="emg">'
+    if mark not in h: return h
+    if nav not in h: h = h.replace(mark, mark + nav, 1)
+    return h if PLACE_JS in h else h.replace("</body>", PLACE_JS + "\n</body>", 1)
+
 def build(ROOT):
+    from prefs import PREFS
+    slugs = {p[0] for p in PREFS} | {"tokyo", "chiba", "kanagawa", "saitama"}
     n = 0
     sz = write_js(ROOT)
     for d in ALL:
@@ -566,6 +582,7 @@ def build(ROOT):
             h = open(p, encoding="utf-8").read()
             old = h
             # /place.js を /find.js・/hosp.js の前に1回だけ
+            if "data-pref-nav=" in h: h = h.replace(PLACE_JS + "\n", "")
             h = h.replace(PLACE_JS, "").replace('<script src="/find.js" defer></script>', FIND_JS).replace('<script src="/hosp.js" defer></script>', PLACE_JS + '<script src="/hosp.js" defer></script>')
             cat = "hospital-night" if parts[:2] == ["hospital", "night"] else d
             h = taxi(h, cat)
@@ -574,6 +591,7 @@ def build(ROOT):
             if d == "inu-cafe" and len(parts) == 1: h = cafe_hub(h)
             if d == "jichitai" and len(parts) == 1: h = jichitai_hub(h)
             if 'data-ff="' in h and FIND_JS not in h: h = h.replace("</body>", FIND_JS + "\n</body>", 1)
+            h = pref_nav(h, d, parts, slugs)
             h = stock(h, ROOT, cat)
             h = head(h)
             if h != old:

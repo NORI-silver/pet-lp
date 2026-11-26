@@ -168,6 +168,9 @@ def _uq_compact(s):
     return "".join(c if (ord(c) > 127 or c.isalnum() or c in "-_.~") else quote(c) for c in s)
 
 def _yen_of(r):
+    facts = [f for f in (r.get("facts") or []) if isinstance(f, dict)]
+    base = [f["yen"] for f in facts if f.get("k") == "料金" and isinstance(f.get("yen"), int) and 300 <= f["yen"] <= 1000000]
+    if base: return min(base)
     vals = []
     def walk(v):
         if isinstance(v, str): vals.extend(int(x.replace(",", "")) for x in re.findall(r"(\d[\d,]*)\s*円", v))
@@ -445,7 +448,9 @@ def build_card(card, conf, fit_by_name):
             used.add(i); pick.append((ic, lab, val)); return True
         return False
     if not take(_AREA, "car"): take(_ADDR, "pin")
-    take(_PRICE, "yen"); take(_TIME, "clock"); take(_ANIM, "paw")
+    take(_PRICE, "yen"); take(_TIME, "clock")
+    if conf["key"] == "hotel": take(re.compile(r"^受け入れの注意$"), "list")
+    take(_ANIM, "paw")
     if len(pick) < 4: take(_CERT, "badge")
     if conf["key"] == "trainer": take(_CAREER, "clock")
     dp = []
@@ -527,7 +532,7 @@ def build_card(card, conf, fit_by_name):
             hm = re.search(r'href="([^"]*)"', x); hf = hm.group(1) if hm else ""
             full = _txt(x).rstrip(" →")
             if hf.startswith("/?") or "#form" in hf:
-                acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="{hf}" aria-label="{html.escape(full)}">タクシー料金</a>')
+                acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="{hf}" aria-label="{html.escape(full)}">ペットタクシーの料金</a>')
             else:
                 acts.append(f'<a class="emg-taxi fc-a fc-a-info" href="{hf}" aria-label="{html.escape(full)}">くわしく</a>')
         else: acts.append(x)
@@ -538,7 +543,7 @@ def build_card(card, conf, fit_by_name):
     if meta and conf["key"] in ("hotel", "rojin", "sougi", "hospital") and not any("emg-taxi" in x for x in tail):  # 行き先までのタクシー料金（Nori 2026-11-26）
         from urllib.parse import quote as _uq
         _to = meta.get("addr") or ((meta.get("pref") or "") + (meta.get("city") or "") + name)
-        acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="/?to={_uq_compact(_to[:80])}#form" aria-label="{html.escape(name)}のタクシー料金">タクシー料金</a>')
+        acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="/?to={_uq_compact(_to[:80])}#form" aria-label="{html.escape(name)}のタクシー料金">ペットタクシーの料金</a>')
     if more: acts.append('<details class="fc-more"><summary class="fc-a fc-a-more">そのほか</summary><div class="fc-more-b">' + "".join(more) + "</div></details>")
     if acts: body.append('<div class="fc-acts">' + "".join(acts) + "</div>")
     return ot + ph + '<div class="fc-body">' + "".join(body) + "</div></div>"
@@ -781,7 +786,51 @@ def _one(h, conf, fbn):
         h2 = h2[:ff] + h2[fe:]
         h2 = h2[:fn] + box + h2[fn:]
     h2 = list_first(h2)
-    return None if h2 != h and _too_big(h2) else h2
+    if h2 != h and _too_big(h2):
+        # 県のページ（県ごとの箱が1つ）だけ、全部のカードを残したまま地図の口コミリンクと座標を外して軽くする。外したものは RICH に覚え、
+        # /find-data/ のカード（さがす欄）には find_data.py が戻す。全国のページは今まで通り件数を減らす（_trim）。
+        if len(re.findall(r'<section class="emg-pref"', h2)) > 1: return None
+        h3 = _lean(h2)
+        return None if _too_big(h3) else h3
+    return h2
+
+_LEAN_A = re.compile(r'<a class="fc-a fc-a-star" href="https://www\.google\.com/maps/search/[^"]*"[^>]*>[^<]*</a>')
+_LEAN_G = re.compile(r' data-(?:lat|lng|geo)="[^"]*"')
+RICH = {}  # data-fid -> 県のページのカードから外したもの（座標の属性・地図の口コミリンクと、戻す位置の手がかり）
+
+def _lean(h):
+    out, i = [], 0
+    for m in _OPEN.finditer(h):
+        if m.start() < i: continue
+        s = m.start(); e = _end(h, s, "div")
+        c = h[s:e]; hd = c[:c.find(">") + 1]
+        fid = (re.search(r'data-fid="([^"]*)"', hd) or [None, ""])[1]
+        ent = {}
+        gs = list(_LEAN_G.finditer(hd))
+        if gs: ent["geo"] = "".join(x.group(0) for x in gs); ent["geo_ctx"] = hd[:gs[0].start()][-40:]
+        am = _LEAN_A.search(c)
+        if am:
+            ent["a"] = am.group(0); ent["a_ctx"] = c[:am.start()][-60:]
+            if c[:am.start()].endswith('<div class="fc-acts">'): ent["a_ctx"] = '<div class="fc-acts">'  # 後の処理で前後が変わっても残る手がかり
+        if fid and ent: RICH[fid] = ent
+        out.append(h[i:s]); out.append(_LEAN_A.sub("", _LEAN_G.sub("", hd)) + _LEAN_A.sub("", c[len(hd):])); i = e
+    out.append(h[i:])
+    return "".join(out)
+
+def restore(card):
+    """find-data のカードに、_lean が外したものを戻す（カードの形は後の処理で変わるので、手がかりの文字列の直後に入れる）"""
+    hd = card[:card.find(">") + 1]
+    fid = (re.search(r'data-fid="([^"]*)"', hd) or [None, ""])[1]
+    ent = RICH.get(fid)
+    if not ent: return card
+    if "geo" in ent and "data-lat=" not in hd:
+        k = hd.find(ent["geo_ctx"]) if ent["geo_ctx"] else -1
+        k = k + len(ent["geo_ctx"]) if k >= 0 else len(hd) - 1
+        card = card[:k] + ent["geo"] + card[k:]
+    if "a" in ent and ent["a"] not in card:
+        k = card.find(ent["a_ctx"])
+        if k >= 0: card = card[:k + len(ent["a_ctx"])] + ent["a"] + card[k + len(ent["a_ctx"]):]
+    return card
 
 def list_first(h):
     """一覧（さがす欄とカード）を、ポイントの箱・数字・グラフより前に出す（タクシーのページのフォームと同じく、さがすものを先に。
