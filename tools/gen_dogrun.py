@@ -749,6 +749,8 @@ def _answer(e, pf, rs, faq):
         if v: tiles.append((f"{v}か所", lab))
     return f'<div class="answer"><h2 id="answer">{e(pf)}のドッグランのポイント</h2><ul class="kv">{kv}</ul></div>' + _V.stats(tiles[:4])
 
+from pet_sprint_choices import AICHI_OUTDOOR
+
 def render_pref(ctx, pf, rs):
     e, SITE = ctx["e"], ctx["SITE"]
     url = SITE + href(pf)
@@ -798,7 +800,7 @@ def render_pref(ctx, pf, rs):
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
 {indoor_link}    {ff_box(e)}
-    {cards}
+{"    " + AICHI_OUTDOOR + chr(10) if pf == "愛知県" else ""}    {cards}
   </article></div>
 </section>
 {taxi_band(e, pf, pref_href)}

@@ -255,7 +255,7 @@ def render_pref(ctx, cat, pf, rows, city=None):
       {answer_html(e, cat, place, rs, faq, facts)}
       {table_html(e, cat, show)}
       {fact_table_html(e, cat, place, show)}
-      {cat["extra_after"](e, pf) if cat.get("extra_after") else ""}
+      {seo["extra_after"](e) + chr(10) + "      " if seo.get("extra_after") else ""}{cat["extra_after"](e, pf) if cat.get("extra_after") else ""}
       {near_html}
       {_before_html(cat, e, pf)}
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>

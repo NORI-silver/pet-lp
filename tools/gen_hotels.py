@@ -227,3 +227,45 @@ CAT["no_page"] = ('青森県', '岐阜県', '山梨県', '愛媛県', '富山県
 CAT["fact_cols"] = [("料金", ("料金",)), ("営業・受付時間", ("営業・受付時間",)), ("定休日", ("定休日",)), ("駐車場", ("駐車場",)), ("送迎", ("送迎",))]
 CAT["price_title"] = "料金（公式サイトの表示どおり）"
 CAT["table"] = [("大型犬", lambda h: (f'○（{h["max_kg"]}kgまで）' if h.get("max_kg") else "○") if h.get("large") else ""), ("猫", lambda h: "猫専用" if h.get("cat_only") else ("別室" if h.get("separate") else ("○" if h.get("cat") else ""))), ("病院併設", lambda h: "○" if h.get("vet") else ""), ("送迎", lambda h: h.get("pickup_comparison") or ("○" if h.get("pickup") else "")), ("シニア", lambda h: "○" if h.get("senior") else ""), ("夜のスタッフ", lambda h: "○" if h.get("night_staff") else "")]
+
+# [B] 大阪府だけの比較。体重の目安・宿泊価格・夜間体制を同じ行で見せ、価格区分を受入上限にはしない。
+_OSAKA_LARGE_STAYS = (
+    ("Cube dog", "大阪市東成区", "大型犬1泊5,500円（税込）。年末年始などは1泊1頭につき1,100円加算。",
+     "大型犬の体重上限と夜間スタッフの有無は要確認。初回はシャンプーコースか3時間以上の一時預かりが必要。",
+     "https://www.cube-dog.com/hotel/"),
+    ("ドッグホテル レトノワ", "大阪市西区", "大型犬7,700円から・超大型犬8,800円から（24時間）。初回登録料1,100円。繁忙期は基本料金の案内に10%加算。",
+     "夜間も預かり先の人と過ごす方式。大型・超大型の体重上限と税の扱いは要確認。",
+     "https://intopet.jp/retonowa/price/"),
+    ("DOG FIRST", "大阪市北区", "20kg以上の大型犬は24時間11,000円（税込）。24時間超過や時間外の預け・引き取りは追加料金の対象。",
+     "夜もオーナーと同室。20kgは料金区分の下限で、受け入れられる最大体重は要確認。",
+     "https://dogfirst-osaka.com/hotel/"),
+    ("犬の総合施設 BLISS", "大阪市北区", "大型犬24時間：スタンダード6,000円、プレミアム11,000円（税抜）。非会員は10%加算。体験入園と特別繁忙期の割増は別。",
+     "スタンダードは20時～翌9時に人が不在で施設側のカメラ見守り。プレミアムは夜間にスタッフがいるプラン。大型犬の体重上限は要確認。",
+     "https://blissdog.jp/?page_id=81"),
+)
+
+
+def _osaka_large_stays(e):
+    items = "".join(
+        f'<dt>{e(name)}（{e(place)}）</dt><dd><b>{e(price)}</b><br>{e(conditions)} '
+        f'<a href="{e(source)}" target="_blank" rel="noopener">料金・利用条件の出典</a></dd>'
+        for name, place, price, conditions, source in _OSAKA_LARGE_STAYS
+    )
+    return (
+        '<div class="emg-tips" id="osaka-large-stay">'
+        '<h2>大阪の大型犬ペットホテル：1泊料金と夜間の見守りを比べる</h2>'
+        '<p>大型犬と書かれていても、料金の区分と受け入れられる体重の上限は同じではありません。'
+        '夜間に人がいるプラン、施設側がカメラで見守るプラン、夜間体制を確認してから選ぶホテルを分けて載せています。</p>'
+        f'<dl>{items}</dl>'
+        '<p class="emg-tips-note">基本料金と主な追加条件の例（2026年11月27日確認）。'
+        '空きや受け入れを保証するものではありません。施設側のカメラ見守りは、飼い主が映像を見られるという意味ではありません。</p></div>'
+    )
+
+
+CAT["pref_overrides"] = {
+    "大阪府": {
+        "extra_after": _osaka_large_stays,
+        "title": "大阪府のペットホテル｜大型犬の料金・夜間スタッフ｜ペットのくらし窓口",
+        "desc": "大阪のペットホテルを、大型犬の宿泊料金、初回条件、時間外・繁忙期の加算で比較。夜間にスタッフがいるプランと、夜は施設側がカメラで見守るプランを区別して確認できます。",
+    },
+}

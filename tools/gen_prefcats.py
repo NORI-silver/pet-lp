@@ -39,6 +39,53 @@ def _sougi_extra(e, pf):
             '<p class="emg-free" style="margin-top:0">市や区でも、ペットの火葬や引き取りを受け付けていることがあります。料金が安いかわりに、ほかの動物と一緒に火葬してお骨が返らないことが多いので、お骨の扱いを確かめてください。</p>'
             + "".join(gen_sougi._card(e, c) for c in cs) + "</section>")
 
+def _sougi_chiba_cost(e, pf):
+    """Compare the same example weights, not providers' smallest advertised tiers."""
+    if pf != "千葉県":
+        return ""
+    # Each price is the tier containing the exact example weight, not a range estimate.
+    # 「税込」は明記された市川・動物苑だけ。八千代は料金表の表記のまま。
+    rows = (
+        ("市川ペット霊園（市川市）", "一任個別／立ち会い個別", (23650, 29150), (31350, 36850),
+         "一任はスタッフが収骨。立ち会いは家族が収骨。返骨を選べ、骨つぼ・カバー込み。お迎えは別料金、共同墓地への埋葬は11,000円追加。",
+         "https://ichikawa-pet.co.jp/price", "https://ichikawa-pet.co.jp/qa"),
+        ("動物苑（柏市）", "一任個別／家族が収骨", (21500, 26000), (25000, 30500),
+         "骨つぼ・カバー込み。骨つぼの大きさにより1,000円追加の場合あり。家族葬は家族が収骨します（火葬中の同席とは別）。",
+         "https://www.pet594.com/plan/pet-kobetsuso/", "https://www.pet594.com/plan/pet-kazokusou/"),
+        ("八千代ペット霊園（八千代市）", "合同・返骨なし／一任個別・後日返骨", (22000, 27500), (25300, 30800),
+         "一任個別は出棺まで立ち会え、収骨はスタッフに任せます。お迎え・お骨のお届けは30分以内5,500円の案内。16:30以降の時間外料金は5,500円から。税区分は要確認。",
+         "https://ypet.info/price", ""),
+    )
+
+    def item(row, weight_i):
+        name, plans, a, b, terms, price_url, detail_url = row
+        p0, p1 = (a, b)[weight_i]
+        plan0, plan1 = plans.split("／", 1)
+        return (
+            f'<h4>{e(name)}</h4><p>{e(plan0)} <b>{p0:,}円</b> ／ {e(plan1)} <b>{p1:,}円</b></p>'
+            f'<p>{e(terms)} '
+            f'<a href="{e(price_url)}" aria-label="{e(name)}の料金表を見る">料金表</a>'
+            + (f'・<a href="{e(detail_url)}" aria-label="{e(name)}のプラン詳細を見る">プラン詳細</a>' if detail_url else "")
+            + "</p>"
+        )
+
+    def group(weight_i, weight):
+        return (
+            f'<details class="pp-fold"{" open" if weight_i == 0 else ""}>'
+            f'<summary><b>{weight}kgの犬・猫の料金例を見る</b></summary>'
+            + "".join(item(row, weight_i) for row in rows) + "</details>"
+        )
+
+    return (
+        '<section class="emg-tips" id="chiba-cremation-cost">'
+        '<h2 style="font-size:1.15em">千葉県のペット火葬料金：4kg・8kgでくらべる</h2>'
+        '<p>同じ体重で、返骨と立ち会い・収骨の違いをくらべます。料金は持ち込み・追加サービスなしでの例です。'
+        '市川と動物苑の表示は税込（2026年11月27日確認）。</p>'
+        + group(0, 4) + group(1, 8)
+        + '<p>頼む前に、火葬料に骨つぼ・カバーが入るか、お迎えや時間外料金を足した総額、いつお骨を受け取れるかを確認してください。</p></section>'
+    )
+
+
 def _sougi_faq(pf, rs, n):
     cs = _CITIES.get(pf, [])
     back = sum(c.get("k") == "back" for c in cs)
@@ -61,7 +108,7 @@ SOUGI = dict(slug="sougi", name="ペット葬儀・火葬・霊園", unit="か�
   title_word="ペット火葬・ペット霊園", title_tail="個別火葬・立ち会い・お迎え・自治体の受け付け",
   desc_tail="個別火葬・立ち会い火葬・お迎え・霊園・納骨堂のどれをしているか、公式サイトに書いてある料金の例、市区の受け付け（料金・お骨が返るか）を載せています。順位やおすすめはつけていません。",
   lede=lambda pf, n: f"大切な家族が亡くなったとき、{pf}でどこに頼めばいいか。民間のペット火葬場・霊園・納骨堂{n}か所と、市や区の受け付けを、公式サイトの情報をもとにまとめました。お骨を返してもらえるか、家まで来てくれるかも書いています。",
-  facts=_sougi_facts, faq=_sougi_faq, extra=_sougi_extra, before_title="火葬の種類と、えらぶときに確かめること",
+  facts=_sougi_facts, faq=_sougi_faq, extra=_sougi_extra, extra_after=_sougi_chiba_cost, before_title="火葬の種類と、えらぶときに確かめること",
   before=[("合同火葬", "ほかの子と一緒に火葬します。費用はおさえられますが、お骨は返らないことが多いです。"),
           ("個別火葬", "1頭ずつ火葬します。お骨を返してもらえます。スタッフにまかせる形と、家族が立ち会ってお骨を拾う「立ち会い火葬」があります。"),
           ("訪問火葬・お迎え", "火葬炉のある車で家の近くまで来る形や、家まで迎えに来て火葬場へ運ぶ形があります。近所への配慮や駐車の場所を確かめてください。"),
