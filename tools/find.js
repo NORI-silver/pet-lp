@@ -26,6 +26,8 @@
     it._p = it.getAttribute("data-pref") || (p ? p.getAttribute("data-pref") : "");
     it._q = (it.getAttribute("data-q") || it.textContent).toLowerCase();
     it._near = it.hasAttribute("data-near") || !!it.closest("[data-near]");
+    it._yen = +(it.getAttribute("data-yen") || 0) || null;
+    it._ll = it.hasAttribute("data-lat") ? [+it.getAttribute("data-lat"), +it.getAttribute("data-lng")] : null;
     // 来てくれる地域（🚗 の行）。出張・訪問の施設は、所在地ではなくこの地域でしぼる（Nori 2026-11-16）
     it._area = "";
     [].forEach.call(it.querySelectorAll(".ux-c-l"), function(r){ var i = r.querySelector("i"); if (i && i.textContent.indexOf("🚗") >= 0) it._area = r.textContent.replace("🚗", "").trim(); });
@@ -41,12 +43,22 @@
       arr.sort(function(a, b){
         if (mode === "photo") { var pa = a.querySelector('img[src*="/img/fac/"]') ? 0 : 1, pb = b.querySelector('img[src*="/img/fac/"]') ? 0 : 1; if (pa !== pb) return pa - pb; }
         else if (mode === "name") { var na = a.getAttribute("data-name") || "", nb = b.getAttribute("data-name") || ""; if (na !== nb) return na < nb ? -1 : 1; }
+        else if (mode === "priceAsc") { var ya = a._yen || 1e12, yb = b._yen || 1e12; if (ya !== yb) return ya - yb; }
+        else if (mode === "priceDesc") { var za = a._yen || -1, zb = b._yen || -1; if (za !== zb) return zb - za; }
         return a._idx - b._idx;
       });
       arr.forEach(function(it){ g[0].appendChild(it); });
     });
   }
   if (sortSel) sortSel.addEventListener("change", doSort);
+  var nearSel = document.getElementById("ffNear");
+  if (nearSel) nearSel.addEventListener("change", function(){
+    geoKm = +nearSel.value || 0;
+    if (geoKm && !geoPos && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(p){ geoPos = [p.coords.latitude, p.coords.longitude]; apply(false); }, function(){ geoKm = 0; nearSel.value = ""; apply(false); });
+    }
+    apply(false);
+  });
   // カードのイメージ写真（無料の写真素材。本物の施設の写真ではないので「イメージ」と出し、alt は空）。となりが同じにならないよう順番に回す
   var pics = (box.getAttribute("data-pics") || "").split("|");
   if (pics[1]) {
@@ -117,14 +129,19 @@
     }
     return best;
   }
+  var geoPos = null, geoKm = 0;
+  function distKm(a, b){
+    var R = 6371, dLa = (b[0] - a[0]) * Math.PI / 180, dLo = (b[1] - a[1]) * Math.PI / 180;
+    var h = Math.sin(dLa / 2) * Math.sin(dLa / 2) + Math.cos(a[0] * Math.PI / 180) * Math.cos(b[0] * Math.PI / 180) * Math.sin(dLo / 2) * Math.sin(dLo / 2);
+    return 2 * R * Math.asin(Math.sqrt(h));
+  }
   function judge(it, ks, pf, qs){
+    if (geoKm && geoPos) { if (!it._ll || distKm(geoPos, it._ll) > geoKm) return 2; }
     if (!(pf && pf.length) && it._near) return 2; // 近くの県の施設（老犬ホームなど）は、その県を選んだときだけ（県を選ばないと同じ施設が2回出るため）
     var pj = placeJ(it, pf || []);
     if (pj === 2) return 2;
     if (qs && qs.split(" ").some(function(w){ return it._q.indexOf(w) < 0; })) return 2;
-    if (ks.indexOf("a:cat") >= 0 && ks.indexOf("owner_live_dog") >= 0 && ks.indexOf("a:dog") < 0) return 2;
     var r = pj;
-    if (cat === "sougi" && ks.indexOf("合同火葬") >= 0 && ks.indexOf("お骨を返してもらえる") >= 0 && it._no.indexOf(" 合同火葬+お骨を返してもらえる ") >= 0) return 2;
     for (var i = 0; i < ks.length; i++) {
       if (it._k.indexOf(" " + ks[i] + " ") >= 0) continue;
       if (ks[i] === "a:dog" && it._no.indexOf(" a:dog ") < 0) continue;  // 犬は「犬は受けない」と書いていなければ合う

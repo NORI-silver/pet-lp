@@ -50,7 +50,11 @@ def detectives():
         ex = [x for x in ex if len(x) <= 50 and "記載なし" not in x and "預かる" not in x]
         if ex: txt += "。" + "。".join(dict.fromkeys(ex))
         ar = _areas(d)
-        out.append({"name": d["name"], "url": d.get("price_url") or d.get("url"), "areas": ar, "plan": txt,
+        _fl = []
+        if ar == ["全国"]: _fl.append("z")
+        if "猫" in d.get("animals", "") or "明記なし" in d.get("animals", ""): _fl.append("c")
+        if "円" in txt: _fl.append("p")
+        out.append({"name": d["name"], "url": d.get("price_url") or d.get("url"), "areas": ar, "plan": txt, "flags": " ".join(_fl),
                     "review_html": review_link("detective", d, "jc-src", scope="company"), "animals": "" if "明記なし" in d.get("animals", "") else d.get("animals", ""), "near": d.get("near") or [], "pref_url": d.get("pref_url") or "", "near_note": d.get("near_note") or "", "area_text": "全国" if ar == ["全国"] else (d.get("area") if d.get("area") not in (None, "", "記載なし") else d.get("base", ""))})
     return out
 
@@ -208,10 +212,11 @@ def maigo(ctx):
     dets = detectives()
     wait = "".join(f'<tr><th>{e(a)}</th><td>{e(b)} <a class="jc-src" href="{e(u)}" target="_blank" rel="noopener">公式ページ ↗</a></td></tr>' for a, b, u in WAIT)
     det_rows = "".join(
-        f'<tr><th><a href="{e(d.get("price_url") or d["url"])}" target="_blank" rel="noopener">{e(d["name"])}</a>{("<br>" + d["review_html"]) if d["review_html"] else ""}</th>'
+        f'<tr data-det="{e(d["flags"])}"><th><a href="{e(d.get("price_url") or d["url"])}" target="_blank" rel="noopener">{e(d["name"])}</a>{("<br>" + d["review_html"]) if d["review_html"] else ""}</th>'
         f'<td>{e(d["plan"])}' + (f'<br><small>{e(d["animals"])}</small>' if d["animals"] else "") + '</td>'
         f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + '</td></tr>' for d in dets)
-    det_tbl = (f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域</th></tr></thead><tbody>{det_rows}</tbody></table></div>'
+    det_tbl = ('<div class="jc-sg" role="group" aria-label="ペット探偵の絞り込み"><button type="button" data-detf="z" aria-pressed="false">全国対応</button><button type="button" data-detf="c" aria-pressed="false">猫を探せる</button><button type="button" data-detf="p" aria-pressed="false">料金が分かる</button></div>'
+               f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域</th></tr></thead><tbody>{det_rows}</tbody></table></div>'
                f'<p class="jc-src">金額は税込（税別・税の記載がない会社は印つき）。各社の公式サイトの掲載情報をもとに、最低料金は「〜」で表示しています。順番に意味はありません。発見率など会社の発表の数字は、くらべ方がそろっていないので載せていません。</p>') if dets else ""
     ins = [i for i in PRIV.get("insurance", []) if not i.get("doubt")]
     ins_html = "".join(f'<li><a href="{e(i["src"])}" target="_blank" rel="noopener">{e(i["name"])}</a>：{e(i.get("who", ""))}は、{e(i.get("free", ""))}が無料（{e(i.get("paid", ""))}）</li>' for i in ins)

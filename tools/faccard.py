@@ -150,13 +150,41 @@ def _kinds_in(t):
     if re.search(r"エキゾ|爬虫|は虫|カメ|トカゲ|ヘビ", t): a.append("exotic")
     return a
 
-def rojin_only(a, t):
-    """「要確認」「記載なし」「など」は他の動物を断った印にしない。"""
-    return bool(a) and "など" not in t and not re.search(r"要確認|記載なし", t)
-
 def _load(name):
     try: return json.load(open(os.path.join(HERE, name), encoding="utf-8"))
     except Exception: return None
+
+# カードに付ける補助情報（料金の目安＝facts の最安値、座標＝geodata、住所・市区町村）。
+# 並び替え（料金）・半径の絞り込み・口コミリンク・タクシー料金リンクに使う（Nori 2026-11-26）。
+_META = {}
+
+def _yen_of(r):
+    vals = []
+    def walk(v):
+        if isinstance(v, str): vals.extend(int(x.replace(",", "")) for x in re.findall(r"(\d[\d,]*)\s*円", v))
+        elif isinstance(v, list):
+            for x in v: walk(x)
+        elif isinstance(v, dict):
+            for x in v.values(): walk(x)
+    for f in (r.get("facts") or []):
+        if isinstance(f, dict): walk(f.get("v", ""))
+    if not vals:
+        for k in ("fee", "services", "more"):
+            if r.get(k): walk(r[k])
+    vals = [v for v in vals if 300 <= v <= 1000000]
+    return min(vals) if vals else None
+
+def _meta_put(key, fname, r):
+    if not r.get("name"): return
+    ll, prec = None, None
+    try:
+        import geodata
+        ll, prec = geodata.facility_ll(fname, r)
+    except Exception:
+        pass
+    _META.setdefault(key, {})[r["name"]] = dict(
+        yen=_yen_of(r), ll=ll, prec=prec, addr=r.get("addr") or "",
+        city=r.get("city") or "", pref=r.get("pref") or (r.get("prefs") or [""])[0])
 
 def _fit_table():
     """分野ごとに、名前 → data-fit の文字列。"""
@@ -164,22 +192,22 @@ def _fit_table():
     T = {k: {} for k in ("trainer", "sitter", "rojin", "trimming", "hotel", "hospital")}
     tr = _load("trainers.json") or {}
     for t in tr.get("trainers", []):
+        _meta_put("trainer", "trainers.json", t)
         tags = FC.trainer_tags(t)
         ttxt = (t.get("services") or "") + " " + " ".join(f.get("v", "") for f in (t.get("facts") or []) if isinstance(f, dict))
         T["trainer"][t["name"]] = fit_attr(["dog"], True, _sizes_in(ttxt), puppy=bool({"パピー", "幼稚園・保育園"} & set(tags)), animals_text="犬", fee=_fee_of(t))
     si = _load("sitters.json") or {}
     for s in si.get("sitters", []):
+        _meta_put("sitter", "sitters.json", s)
         ch = si.get("chains", {}).get(s.get("chain"), {})
         txt = (s.get("animals") or "") + (" " + ch.get("note", "") if s.get("chain") != "indie" else "")
         a = _kinds_in(txt)
         only = bool(re.search(r"専門|のみ|専用|だけ", s.get("animals") or ""))
-        if s.get("no_new_dog"):
-            a = [k for k in _kinds_in(s.get("animals", "")) if k != "dog"]
-            only = True
         stxt = txt + " " + " ".join(f.get("v", "") for f in (s.get("facts") or []) if isinstance(f, dict))
         if a: T["sitter"][s["name"]] = fit_attr(a, only, _sizes_in(stxt), animals_text="・".join(KIND_LABEL[k] for k in a), fee=_fee_of(s))
     ro = _load("rojin.json") or {}
     for h in ro.get("homes", []):
+        _meta_put("rojin", "rojin.json", h)
         t = h.get("animals", "")
         a = _kinds_in(t)
         if "猫は受けていません" in t: a = [k for k in a if k != "cat"]
@@ -188,13 +216,15 @@ def _fit_table():
         elif re.search(r"大型|小型・中型・大型", t): sizes = ["s", "m", "l"]
         m = re.search(r"(\d+)kgまで", t)
         if m: kg = int(m.group(1))
-        T["rojin"][h["name"]] = fit_attr(a, rojin_only(a, t), sizes, kg, senior=True, animals_text="・".join(KIND_LABEL[k] for k in a), fee=_fee_of(h))
+        T["rojin"][h["name"]] = fit_attr(a, bool(a) and "など" not in t, sizes, kg, senior=True, animals_text="・".join(KIND_LABEL[k] for k in a), fee=_fee_of(h))
     gr = _load("grooming.json") or {}
     for g in gr.get("groomers", []):
+        _meta_put("trimming", "grooming.json", g)
         a = ["dog"] + (["cat"] if g.get("cat") else [])
         T["trimming"][g["name"]] = fit_attr(a, False, ["s", "m", "l"] if g.get("large") else None, g.get("max_kg"), g.get("senior"), fee=_fee_of(g))
     ho = _load("hotels.json") or {}
     for h in ho.get("hotels", []):
+        _meta_put("hotel", "hotels.json", h)
         if h.get("cat_only"): a, only = ["cat"], True
         else: a, only = ["dog"] + (["cat"] if h.get("cat") else []), False
         T["hotel"][h["name"]] = fit_attr(a, only, ["s", "m", "l"] if h.get("large") and not h.get("cat_only") else None, h.get("max_kg"), h.get("senior"),
@@ -202,10 +232,15 @@ def _fit_table():
     hp = _load("hospitals.json") or {}
     for kind in ("visit", "cat", "exotic", "large"):
         for h in hp.get(kind, []):
+            _meta_put("hospital", "hospitals.json", h)
             t = h.get("animals", "")
             a = _kinds_in(t)
             T["hospital"][h["name"]] = fit_attr(a, bool(a) and not re.search(r"など|ほか|その他|相談", t), ["s", "m", "l"] if kind == "large" else None,
                                                 animals_text=t[:40], fee=_fee_of(h))
+    sg = _load("sougi_facilities.json") or {}
+    for f in sg.get("facilities", []): _meta_put("sougi", "sougi_facilities.json", f)
+    jt = _load("joto.json") or {}
+    for c in jt.get("centers", []): _meta_put("joto", "joto.json", c)
     return T
 
 # ---- カードを1枚ずつ作りかえる ----
@@ -334,10 +369,7 @@ def _edge_line(ic, lab, val, conf):
     if ic != "paw": return (ic, lab, val)
     ks = _kinds_in(val)
     other = [x for x in _split_items(val) if not re.fullmatch(r"(犬|猫|イヌ|ネコ|ドッグ|キャット|犬猫|わんちゃん|ねこちゃん)(OK|可)?", x)]  # 条件つき（「犬（5kg未満）」など）は残す
-    if other:
-        # 病院の対象動物の行では、犬猫も明記されている場合に対象外と読ませない。
-        prefix = "犬・猫のほか " if conf["key"] == "hospital" and {"犬", "猫"} <= set(_split_items(val)) else ""
-        return (ic, lab, prefix + "・".join(other))
+    if other: return (ic, lab, "・".join(other))
     if ks == ["cat"] and "dog" in conf["kinds"]: return (ic, lab, "猫だけ")
     if ks == ["dog"] and "cat" in conf["kinds"] and len(conf["kinds"]) > 1: return (ic, lab, "犬だけ")
     return None
@@ -444,6 +476,10 @@ def build_card(card, conf, fit_by_name):
     ft = list(dict.fromkeys(features(rows, rest, ch) + [c for c in ch if len(c) <= 10 and "|" not in c and c not in dp]))
     if ft: ot = ot[:-1] + f' data-ft="{html.escape("|".join(ft))}">'
     if dp: ot = ot[:-1] + f' data-dp="{html.escape("|".join(dp))}">'
+    meta = _META.get(conf["key"], {}).get(name)
+    if meta:
+        if meta.get("yen"): ot = ot[:-1] + f' data-yen="{meta["yen"]}">'
+        if meta.get("ll"): ot = ot[:-1] + f' data-lat="{meta["ll"][0]}" data-lng="{meta["ll"][1]}" data-geo="{meta["prec"]}">' 
     # 見出しの「◯◯市の動物病院」は地域の見出しと重なるので出さない（Nori 2026-11-15「柏市の下に柏市の動物病院って全てのカードに入れてるけど不要」）
     body = [f'<div class="fc-name">{head}</div>']
     if fors: body.append(f'<p class="fc-catch">{html.escape("・".join(fors[:2]))}に</p>')
@@ -480,6 +516,14 @@ def build_card(card, conf, fit_by_name):
             else:
                 acts.append(f'<a class="emg-taxi fc-a fc-a-info" href="{hf}" aria-label="{html.escape(full)}">くわしく</a>')
         else: acts.append(x)
+    if meta and "google.com/maps" not in card:  # 全カードに Google マップの口コミへのリンク（点数・件数は持たない。Nori 2026-11-26）
+        from urllib.parse import quote as _uq
+        _q = (name + " " + (meta.get("pref") or "") + (meta.get("city") or city or "")).strip()
+        acts.append(f'<a class="fc-a fc-a-star" href="https://www.google.com/maps/search/?api=1&query={_uq(_q)}" target="_blank" rel="noopener">Google Mapsの口コミ</a>')
+    if meta and conf["key"] in ("hotel", "rojin", "sougi", "hospital") and not any("emg-taxi" in x for x in tail):  # 行き先までのタクシー料金（Nori 2026-11-26）
+        from urllib.parse import quote as _uq
+        _to = meta.get("addr") or ((meta.get("pref") or "") + (meta.get("city") or "") + name)
+        acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="/?to={_uq(_to[:80])}#form" aria-label="{html.escape(name)}までのペットタクシーの料金をくらべる">タクシー料金</a>')
     if more: acts.append('<details class="fc-more"><summary class="fc-a fc-a-more">そのほか</summary><div class="fc-more-b">' + "".join(more) + "</div></details>")
     if acts: body.append('<div class="fc-acts">' + "".join(acts) + "</div>")
     return ot + ph + '<div class="fc-body">' + "".join(body) + "</div></div>"
@@ -632,7 +676,7 @@ def _too_big(h):
     import gzip
     return len(gzip.compress(h.encode("utf-8"), 9)) > 52 * 1024  # あとで cardskin.py がカードの形をそろえて少し重くなるので、余裕を残す
 
-def _trim(h, keep, retained=()):
+def _trim(h, keep):
     """全国のページで重すぎるとき、都道府県ごとの箱（emg-pref、見出しに県のページへのリンク）に最初の keep 件だけ残し、のこりは県のページへのリンクにする（施設は県のページにすべて載っている。tests/info-light の「上限を超えたら県のページへのリンクに」）"""
     out, i = [], 0
     for sm in re.finditer(r'<section class="emg-pref"[^>]*>', h):
@@ -643,15 +687,12 @@ def _trim(h, keep, retained=()):
         cards = [m for m in _OPEN.finditer(sec)]
         if not lk or len(cards) <= keep:
             out.append(h[i:se]); i = se; continue
-        pinned = {n for n, m in enumerate(cards) if any(
-            f'data-fid="{fid}"' in sec[m.start():_end(sec, m.start(), "div")] for fid in retained)}
-        normal = (n for n in range(len(cards)) if n not in pinned)
-        included = pinned | {next(normal) for _ in range(max(0, keep - len(pinned)))}
-        parts, j, cut = [], 0, 0
-        for n, m in enumerate(cards):
+        parts, j, k, cut = [], 0, 0, 0
+        for m in cards:
             if m.start() < j: continue
             e = _end(sec, m.start(), "div")
-            if n not in included:
+            k += 1
+            if k > keep:
                 parts.append(sec[j:m.start()]); j = e; cut += 1
         parts.append(sec[j:])
         sec2 = "".join(parts)
@@ -757,14 +798,11 @@ def build(ROOT):
             p = os.path.join(base, "index.html")
             h = open(p, encoding="utf-8").read()
             if 'class="emg-item emg-co' not in h: continue
-            national = os.path.normpath(base) == os.path.normpath(os.path.join(ROOT, d))
-            summary_max = {"dog-trainer": 3, "pet-hotel": 4}.get(d) if national else None
-            retained = ("T114",) if national and d == "dog-trainer" else ()
-            h2 = None if summary_max else _one(h, conf, fbn)
+            h2 = _one(h, conf, fbn)
             # 全部の施設を並べる全国のページが重すぎるときは、県ごとに数件だけ残して県のページへのリンクにする（写真のない古い形のまま残さない）
-            for keep in (n for n in (8, 6, 4, 3, 2) if summary_max is None or n <= summary_max):
+            for keep in (8, 6, 4, 3, 2):
                 if h2 is not None: break
-                h2 = _one(_trim(h, keep, retained), conf, fbn)
+                h2 = _one(_trim(h, keep), conf, fbn)
                 if h2 is not None: print(f"faccard: 重いので県ごとに{keep}件まで", os.path.relpath(p, ROOT))
             if h2 is None:
                 print("faccard: 重すぎるので作りかえない", os.path.relpath(p, ROOT)); continue

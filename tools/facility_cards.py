@@ -18,16 +18,18 @@ def sougi_tags(f):
     if "個別火葬" in s: t.append("個別火葬")
     if "合同火葬" in s: t.append("合同火葬")
     if "立ち会い火葬" in s: t.append("立ち会い")
-    if "お骨を返してもらえる" in s: t.append("お骨を返してもらえる")
-
     if "お迎え" in s or "訪問火葬" in s: t.append("お迎え・訪問火葬")
     if s & {"霊園", "納骨", "納骨堂"}: t.append("霊園・納骨")
+    _wt = (f.get("web") or {}).get("text", "") if isinstance(f.get("web"), dict) else ""
+    if _wt:
+        if re.search(r"深夜|早朝", _wt): t.append("深夜・早朝も受付")
+        if "粉骨" in _wt: t.append("粉骨")
+        if "樹木葬" in _wt: t.append("樹木葬")
+        if re.search(r"海洋散骨|散骨", _wt): t.append("散骨")
     if f.get("price"):
         t.append("料金を公開")
         # 費用の帯：公式の料金の文に出てくる一番小さい金額（◯円から始められるか）。帯は累積で付ける（uikit の SVC と対）
         amounts = [int(x.replace(",", "")) for x in re.findall(r"([\d,]{4,})\s*(?:円|〜|～)", f["price"])]  # 「24,750〜30,030円」の下限も取る
-        if f.get("budget_example_only"): amounts = []
-
         if amounts:
             m = min(amounts)
             for band, key in ((15000, "p15"), (25000, "p25"), (40000, "p40")):
@@ -62,7 +64,7 @@ def trainer_tags(t):
 
 def sitter_tags(s, chains):
     ch = chains.get(s.get("chain"), {})
-    txt = s.get("animals", "") + " " + (ch.get("note", "") if s.get("chain") != "indie" and not s.get("no_new_dog") else "")
+    txt = s.get("animals", "") + " " + (ch.get("note", "") if s.get("chain") != "indie" else "")
     out = []
     if "猫" in txt: out.append("猫")
     if re.search(r"小動物|うさぎ|ハムスター|フェレット", txt): out.append("小動物")

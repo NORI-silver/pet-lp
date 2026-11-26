@@ -120,12 +120,14 @@ def box(cat, *, q_ph, opts=None, animals=None, who=None, when=None, need=None, m
     rows.append(f'<div class="ux-r"><span class="ux-l">どこで探しますか？</span><div class="ux-w">{place}</div></div>')
     if animals and animals[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(animals[0])}</span><div class="ux-w">{_b(animals[1], g="a")}</div></div>')
     if who and who[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(who[0])}</span><div class="ux-w">{_b(who[1])}</div></div>')
-    if when and when[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(when[0])}</span><div class="ux-w">{_b(when[1])}</div></div>')
-    if need and need[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(need[0])}</span><div class="ux-need">{_b(need[1])}</div></div>')
-    if more:
-        inner = "".join(f'<span class="ux-l">{e(t)}</span><div class="ux-w">{_b(it)}</div>' for t, it in more if it)
-        rows.append(f'<details class="ux-det"><summary>詳しい条件で絞り込む<span></span></summary>{inner}</details>')
-    rows.append('<div class="ux-r"><span class="ux-l">表示順</span><div class="ux-w"><select id="ffSort" aria-label="表示順"><option value="">情報が多い順（おすすめ）</option><option value="photo">写真がある順</option><option value="name">名前順</option></select></div></div>')
+    det = []
+    if when and when[1]: det.append(f'<span class="ux-l">{e(when[0])}</span><div class="ux-w">{_b(when[1])}</div>')
+    if need and need[1]: det.append(f'<span class="ux-l">{e(need[0])}</span><div class="ux-w">{_b(need[1])}</div>')
+    det += [f'<span class="ux-l">{e(t)}</span><div class="ux-w">{_b(it)}</div>' for t, it in more if it]
+    if det:
+        rows.append(f'<details class="ux-det"><summary>詳しい条件で絞り込む<span></span></summary>{"".join(det)}</details>')
+    rows.append('<div class="ux-r"><span class="ux-l">表示順</span><div class="ux-w"><select id="ffSort" aria-label="表示順"><option value="">情報が多い順（おすすめ）</option><option value="priceAsc">料金が安い順</option><option value="priceDesc">料金が高い順</option><option value="photo">写真がある順</option><option value="name">名前順</option></select></div></div>')
+    rows.append('<div class="ux-r"><span class="ux-l">現在地から</span><div class="ux-w"><select id="ffNear" aria-label="現在地からの距離"><option value="">指定なし</option><option value="3">3km以内</option><option value="5">5km以内</option><option value="10">10km以内</option><option value="20">20km以内</option><option value="30">30km以内</option></select></div></div>')
     attrs = f' data-ff="{e(cat)}" data-unit="{e(unit)}" data-noun="{e(noun)}"' + (" data-guess" if guess else "") + (" data-needpref" if needpref else "")
     return (f'<div class="ux-find"{attrs}>' + "".join(rows) + f'<button type="button" class="ux-go" id="ffGo">{e(go)}</button>'
             '<div class="ux-foot"><p class="ux-sum" id="ffSum" aria-live="polite"></p><button type="button" class="ux-clear" id="ffClear" hidden>条件をクリア</button></div>'
@@ -223,7 +225,7 @@ HOTEL = dict(
     # 軸を分ける（Nori 2026-11-16「意味不明」）：どの動物（1つ）／うちの子の条件／ホテルの内容。
     # 猫専用は「どの動物」の軸に置く（Nori 2026-11-23 第2弾で採用。サービスの内容の軸に混ぜない）
     animals=("どの子を預けますか？", [("a:dog", "犬"), ("cat", "猫"), ("cat_only", "猫専用")]),
-    who=("うちの子にあてはまるもの", [("big", "大型犬（25kg以上）"), ("sen", "シニア・介護が必要"), ("pup", "子犬・子猫"), ("med", "薬・持病がある"), ("multi", "2頭以上いる"), ("shy", "かむ・ほえる・こわがり")]),
+    who=("よく使用される項目", [("big", "大型犬（25kg以上）"), ("sen", "シニア・介護が必要"), ("pup", "子犬・子猫"), ("med", "薬・持病がある"), ("multi", "2頭以上いる"), ("shy", "かむ・ほえる・こわがり")]),
     need=("どんなホテルをお探しですか？", [("vet", "病院が併設"), ("pickup", "送迎あり"), ("night_staff", "夜もスタッフ"), ("staff24", "24時間見守り・スタッフ常駐"), ("private_room", "個室")]),
     more=[("設備", [("camera", "カメラで見守り"), ("run", "ドッグラン"), ("cagefree", "ケージフリー"), ("walk", "散歩つき"), ("longstay", "長期OK"), ("smallonly", "小型犬のみ")]),
           ("体重（上限が書いてあるホテルだけ）", [("wb5", "5kg未満"), ("wb10", "5〜10kg"), ("wb25", "10〜25kg")])],
@@ -338,8 +340,9 @@ SVC = {
     "sougi": (None, "どんな見送り方をお考えですか？",
               [("個別火葬", "個別に火葬", ["立ち会い火葬"]), ("合同火葬", "合同で火葬", []), ("お迎え・訪問火葬", "家に来てくれる", ["お迎え"]), ("立ち会い", "立ち会える", ["立ち会い火葬"]), ("霊園・納骨", "霊園・納骨堂", ["霊園", "納骨堂", "納骨"])],
               [("お骨を返してもらえる", "お骨を返してもらえる", []), ("料金を公開", "料金が書いてある", []),
-               ("p15", "〜15,000円ではじめられる", []), ("p25", "〜25,000円ではじめられる", []), ("p40", "〜40,000円ではじめられる", [])]),
-    "joto": ("迎えたい子は？", "迎え方", [("event", "譲渡会がある", []), ("trial", "トライアル（お試し期間）がある", [])], []),
+               ("p15", "〜15,000円ではじめられる", []), ("p25", "〜25,000円ではじめられる", []), ("p40", "〜40,000円ではじめられる", []),
+               ("深夜・早朝も受付", "深夜・早朝も受け付け", []), ("粉骨", "粉骨してもらえる", []), ("樹木葬", "樹木葬", []), ("散骨", "散骨してもらえる", [])]),
+    "joto": ("迎えたい子は？", "迎え方", [("event", "譲渡会がある", []), ("trial", "トライアル（お試し期間）がある", []), ("online", "オンラインで相談できる", []), ("visit", "見学ができる", [])], []),
 }
 LCONF = {
     "pet-sitter": ("シッター", "この条件でシッターを探す"),
@@ -431,7 +434,7 @@ def generic_list(h, cat, hub):
         wl = [(k, ownerfit.WHO[k]) for k in ownerfit.CAT_WHO.get(cat, [])]
         if cat == "sougi":  # 犬・猫はどこも受けるので、うさぎ・小鳥などだけを「うちの子」に
             wl += [("a:small", "うさぎ・ハムスターなど"), ("a:bird", "小鳥・インコ"), ("a:exotic", "爬虫類など")]
-        who = ("うちの子にあてはまるもの", [(k, l) for k, l in wl if use(k)])
+        who = ("よく使用される項目", [(k, l) for k, l in wl if use(k)])
     if cat == "sougi":
         when = ("いつ", [(k, l) for k, l in ownerfit.WHEN.items() if use(k)])
     elif cat == "dog-trainer":  # 困りごとは「詳しい条件」に隠さず、見える行に出す（Nori 2026-11-23 第2弾）
@@ -451,9 +454,12 @@ def generic_list(h, cat, hub):
             if use(k): need.append((k, l))
     if cat == "rojin-home":
         if use("medical"): need.append(("medical", "医療・投薬対応"))
-        if cnt.get("owner_live_dog"): need.append(("owner_live_dog", "家族がライブ映像を見られる（犬）"))
+        for k, l in [("trialstay", "お試し・短期入所ができる"), ("tempstay", "一時預かり・ショートステイ"), ("nurse", "看護師がいる"), ("privroom", "個室がある"), ("dogrun", "ドッグランがある")]:
+            if use(k): need.append((k, l))
     if cat == "pet-sitter":
-        more += [(k, l) for k, l in [("stay", "泊まりの留守番"), ("sameday", "当日も相談できる"), ("regular", "定期利用")] if use(k)]
+        more += [(k, l) for k, l in [("stay", "泊まりの留守番"), ("sameday", "当日も相談できる"), ("regular", "定期利用"),
+                                     ("nightcare", "夜間・深夜も対応"), ("earlycare", "早朝も対応"), ("pickup", "送迎あり"),
+                                     ("trial", "お試し・トライアル"), ("discount", "割引・回数券がある"), ("longstay", "長期利用")] if use(k)]
     if use("fee"): more.append(("fee", "料金の目安が分かる"))
     bx = box(cat, q_ph="都道府県・市区町村", opts=opts if (hub and opts) else None, animals=animals,
              who=who, when=when, need=(qsv, need), more=[("そのほかの条件", more)] if more else (), unit="件", noun=noun, go=go, guess=bool(hub and opts))

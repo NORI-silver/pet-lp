@@ -7,12 +7,6 @@
 # 公式ページの情報だけ書く（書いていない項目は出さない）。データ：tools/dogrun.json（src は参考にした公式ページ）。
 import json, os, re
 from facility_review_links import link as review_link
-
-# 複合施設はドッグラン単独の口コミと誤解しないよう、リンクの対象を明示する。
-def _review(d):
-    scopes = {"D143": "facility", "D187": "facility", "D213": "store", "D217": "store", "D218": "store"}
-    scope = scopes.get(d.get("id"))
-    return review_link("dogrun", d, "ux-btn l", scope=scope)
 from urllib.parse import quote
 import prefkeep
 from prefs import PREFS
@@ -95,8 +89,7 @@ def ff_keys(d):
     txt = " ".join(str(d.get(x, "")) for x in ("name", "place", "size", "need", "ng", "note", "access", "reg", "fee"))
     web = d.get("web") or {}
     if isinstance(web, dict) and web.get("text"): txt += " " + web["text"]
-    # 「屋内プール」「屋内休憩所」などは室内ドッグランの根拠にならない。
-    if d.get("id") in _INDOOR_IDS: k.append("indoor")
+    if "屋内" in txt: k.append("indoor")
     if re.search(r"プール|水遊び|じゃぶじゃぶ", txt): k.append("pool")
     if "会員" in txt: k.append("member")
     if "カフェ" in txt: k.append("cafe")
@@ -124,7 +117,10 @@ def ff_card(e, d, full=False):
     dest = (d.get("addr") or "") and _q(f'{d["name"]} {pf}{d["addr"]}')
     acts = f'<a class="ux-btn" href="{e(d["url"])}" target="_blank" rel="noopener">公式ページ ↗</a>'
     if dest: acts += f'<a class="ux-btn l" href="https://www.google.com/maps/dir/?api=1&amp;destination={dest}" target="_blank" rel="noopener" data-route>経路を見る</a>'
-    acts += _review(d)
+    _rl = review_link("dogrun", d, "ux-btn l")
+    acts += _rl or f'<a class="ux-btn l" href="https://www.google.com/maps/search/?api=1&query={_q(d["name"] + " " + pf + d.get("city", ""))}" target="_blank" rel="noopener">Google Mapsの口コミ</a>'
+    _to = d.get("addr") or (pf + d.get("city", "") + d["name"])
+    acts += f'<a class="ux-btn l" href="/?to={_q(_to[:80])}#form">ペットタクシーの料金</a>' 
     sub = "" if full else f'<a href="{href(pf)}#{d["id"]}">くわしく見る</a>'
     det = ""
     if full:
@@ -134,7 +130,19 @@ def ff_card(e, d, full=False):
         det = f'<details class="ux-c-d"><summary>くわしく見る（料金・時間・登録・持ちもの）</summary><dl>{rows}</dl>{more}{_fac_link(e, d)}</details>'
     hd = f'<h3 class="ux-c-n">{e(d["name"])}</h3>' if full else f'<a class="ux-c-n" href="{href(pf)}#{d["id"]}">{e(d["name"])}</a>'
     idattr = f' id="{d["id"]}"' if full else ""
-    return (f'<div class="ux-c dr-card"{idattr} data-ffi data-k="{" ".join(k)}" data-no="{" ".join(no)}" data-q="{e(q)}">{hd}'
+    _yen = None
+    _yv = [int(x.replace(",", "")) for x in re.findall(r"(\d[\d,]*)\s*円", d.get("fee") or "")]
+    _yv = [v for v in _yv if 300 <= v <= 1000000]
+    if _yv: _yen = min(_yv)
+    _ll, _prec = None, "c"
+    try:
+        import geodata as _gd
+        _ll, _prec = _gd.facility_ll("dogrun.json", d)
+    except Exception:
+        pass
+    _geo = f' data-yen="{_yen}"' if _yen else ""
+    if _ll: _geo += f' data-lat="{_ll[0]}" data-lng="{_ll[1]}" data-geo="{_prec}"' 
+    return (f'<div class="ux-c dr-card"{idattr} data-ffi{_geo} data-k="{" ".join(k)}" data-no="{" ".join(no)}" data-q="{e(q)}">{hd}'
             f'<p class="ux-c-m">{e(d.get("city", "") or pf)}</p>{tags_html(e, d)}{lines}<div class="ux-c-a">{acts}</div>'
             + (f'<p class="ux-c-s">{sub}</p>' if sub else "") + det + "</div>")
 
@@ -309,95 +317,7 @@ def _kind_table(e):
     body = "".join(f"<tr><th>{lab}</th>" + "".join(f"<td>{f(by_kind(RUNS, k))}</td>" for k, _ in _KCOLS) + "</tr>" for lab, f in rows)
     return f'<div class="tbl"><table class="dr-tbl"><thead>{head}</thead><tbody>{body}</tbody></table></div>'
 
-# 室内で犬が走れると公式ページに明記した例だけ。屋外の大きさ・料金を室内に転用しない。
-_INDOOR = [
-    ("D213", "千葉県", "千葉市美浜区", "ペテモ幕張新都心店", "イオンペットWAONカードが必要。店の利用料は要確認",
-     "1階の屋内と屋外。iPad受付、マナーウェア、ワクチンが必要。店の個別条件を確認",
-     "https://makuharishintoshin.aeonmall.jp/shop/b14ac6c2-75fd-4c09-85ea-099563d90b34", "https://www.aeonpet.com/service/dogrun/"),
-    ("D216", "千葉県", "柏市", "Wagわん Dog Space（柏の葉T-SITE）", "人1人＋犬1頭 会員500円・ビジター700円。平日は時間制限なし、土日祝1時間",
-     "通常10kg以下。大型犬は貸切のみ（体重上限なし・犬種などにより頭数制限あり）。おむつ必須",
-     "https://www.wag-wan.co.jp/home/dogspace", "https://store.tsite.jp/kashiwanoha/floor/shop/dogspace/index.html"),
-    ("D217", "千葉県", "印西市", "ペテモ千葉ニュータウン店", "共通案内では会員カード発行350円（税込）。この店の利用料は店舗に確認",
-     "室内ラン10:00〜20:00。会員カード、マナーウェア、初回のワクチン証明が必要",
-     "https://chibanewtown.aeonmall.jp/shop/faf30bb2-b874-4209-80bd-172ca31d1bd3", "https://www.aeonpet.com/service/dogrun/"),
-    ("D218", "千葉県", "千葉市美浜区", "ペテモピアシティ稲毛海岸店", "共通案内では会員カード発行350円（税込）。この店の利用料は店舗に確認",
-     "室内ランあり。会員カード、マナーウェア、初回のワクチン証明が必要",
-     "https://www.aeonpet.com/shop/pia-city-inagekaigan/", "https://www.aeonpet.com/service/dogrun/"),
-    ("D214", "埼玉県", "三郷市", "ペットステーションWAN", "通常1頭30分550円、貸切1時間3,300円（各税込）",
-     "通常は小・中型犬のみ。大型犬は貸切。貸切は利用日の1週間前まで",
-     "https://petstation-wan.com/dog-run/", "https://www.petstation-wan.com/dog-run-status/"),
-    ("D211", "東京都", "港区", "JARVIS Tokyo", "通常1頭 平日1,200円・土日祝1,500円。デイ1時間／ナイト2時間",
-     "ホテルに泊まらなくても利用可。犬種で料金差なし。ドッグランの利用規約を確認",
-     "https://www.anicom-sompo.co.jp/news-release/2026/20260612/", "https://jarvis.anicom-med.co.jp/pethotel/"),
-    ("D212", "東京都", "渋谷区", "DOG RUN TOKYO", "50分、人1人＋犬1頭で平日2,980円・土日祝3,480円",
-     "完全予約制。小型犬から大型犬まで体重別の時間枠。貸切プランあり",
-     "https://dogrun-tokyo.jp/", "https://dogrun-tokyo.jp/price/"),
-    ("D143", "神奈川県", "横浜市", "WANCOTT ドッグパーク", "1頭1時間1,650円（税込）。会員登録が必要",
-     "犬種、体格、遊び方などを見て受付がエリアを判断。開催時間も確認",
-     "https://www.wancott.com/dogpark/", "https://www.wancott.com/price/"),
-    ("D194", "愛知県", "長久手市", "Dog with（ドッグウィズ）", "ビジター1頭目2,000円（税込、施設の利用料金）",
-     "小型犬用と大型犬用の室内ランを案内。1年以内の狂犬病・混合ワクチンの証明が必要",
-     "https://www.dogwith.jp/dogrun/", "https://www.dogwith.jp/"),
-    ("D215", "大阪府", "大阪市中央区", "One Garage", "デイ1頭1時間 平日1,500円・土日祝1,800円",
-     "完全室内。LINE予約、証明書の確認あり。貸切可。犬のサイズは予約時に確認",
-     "https://one-garage.jp/", "https://one-garage.jp/terms"),
-    ("D187", "兵庫県", "神戸市", "WAKUWAKUドッグランド神戸六甲", "室内1時間800円、貸切1時間5,500円",
-     "マナーパンツ必須。初回はワクチン証明。屋外と室内の条件は別で、大型犬は室内の条件を確認",
-     "https://wakuwaku-dogland.com/indoor_dogrun.html", None),
-    ("D209", "大分県", "由布市", "湯布院ガーデンホテル", "施設の料金表は犬720〜1,520円（大きさ別）、大人320円",
-     "空調のある屋内ランを案内。屋外3面のサイズ区分とは別に、室内で使える範囲を確認",
-     "https://www.yufuin-gardenhotel.jp/dogrun/", None),
-    ("D200", "沖縄県", "八重瀬町", "ワン・ブレラ", "最初の1時間は小型550円・中型660円（税込）",
-     "Web会員登録が必要。小・中型で時間枠が別。15kg以上は公式に受付停止と記載",
-     "https://wanbrella.okinawa/dog-run/", None),
-]
-_INDOOR_IDS = {row[0] for row in _INDOOR}
-_INDOOR_BOOKING = {
-    "D211": "宿泊予約は不要。通常の利用予約・貸切は施設に確認",
-    "D212": "通常も完全予約制。貸切は平日50分29,800円、土日祝34,800円",
-    "D213": "店頭受付。利用できない日時や貸切は店舗に確認",
-    "D216": "貸切は1か月前〜前日までに電話か公式InstagramのDM。通常利用の年間登録とビジター料金の扱いは受付に確認",
-    "D217": "犬のサイズ・利用予約は店舗に確認",
-    "D218": "室内ランの利用時間・犬のサイズ・利用予約は店舗に確認",
-    "D214": "貸切は利用日の1週間前まで。通常利用は当日の貸切状況を確認",
-    "D143": "通常は予約不要。会員登録は必要。貸切は事前予約",
-    "D194": "公式の貸切案内は屋外。室内の貸切は施設に確認",
-    "D215": "公式LINEで予約。貸切あり",
-    "D187": "貸切は前日までに予約。通常利用は貸切カレンダーを確認",
-    "D209": "屋内の貸切や利用予約は施設に確認",
-    "D200": "Web会員登録。貸切可。犬のサイズ別の利用枠あり",
-}
-
-def _indoor_body(e):
-    rows = []
-    for fid, pf, city, name, fee, rules, url, other in _INDOOR:
-        extra = f' ・ <a href="{e(other)}">関連の公式案内</a>' if other else ""
-        rows.append(f'<tr><th scope="row">{e(name)}<br><small>{e(city)} ・ <a href="{href(pf)}#{e(fid)}">{e(pf)}の施設詳細</a></small></th>'
-                    f'<td>{e(fee)}</td><td>{e(rules)}</td><td>{e(_INDOOR_BOOKING[fid])}</td><td><a href="{e(url)}">公式ページ</a>{extra}</td></tr>')
-    return (
-        _h("雨の日に使える室内ドッグランを比べる")
-        + _p("屋内に犬が走れる区画があると運営者が案内している施設を掲載しています。屋根はあるけれど側面が開いている区画や、犬と入れるカフェ・休憩室だけの施設は含めていません。地域ごとの掲載で、全国すべてを網羅した一覧ではありません。")
-        + '<div class="tbl"><table class="dr-tbl"><thead><tr><th scope="col">施設・地域</th><th scope="col">料金例</th><th scope="col">犬のサイズ・利用条件</th><th scope="col">予約・貸切</th><th scope="col">出典</th></tr></thead><tbody>'
-        + "".join(rows) + '</tbody></table></div>'
-        + _h("千葉で探すなら、柏の貸切とペテモの会員利用を比べる")
-        + _p('柏の葉T-SITEの通常利用は10kg以下です。大型犬は貸切だけで、頭数は犬種や体重により制限されることがあります。貸切は<a href="https://www.wag-wan.co.jp/home/dogspace/private/reserve">施設の現在の予約案内</a>から連絡先を確認してください。',
-             '印西・稲毛海岸・幕張のペテモは会員カードが必要です。カード発行料と利用料は別です。利用料や犬のサイズの条件は店舗ごとに確認してください。ほかの公園や施設は<a href="/dogrun/chiba/">千葉県のドッグラン一覧</a>で探せます。')
-        + _h("大型犬なら、室内エリアの条件だけを確認")
-        + _p("施設全体では大型犬を受け入れていても、雨の日に使う室内の区画は小型犬だけの場合があります。入口の幅、室内区画に体重上限があるか、同じ時間に別の犬が入るかを確認してください。普段ほかの犬に吠えやすい子や、狭い場所で落ち着かない子は、空いている時間か貸切を相談する方法もあります。")
-        + _h("初回にかかるお金と、当日に持っていくもの")
-        + _p("1頭分の表示料金だけでなく、初回登録料、同伴者、2頭目、時間延長、駐車場を分けて確認すると比較しやすくなります。会員登録が必要でも、毎回の利用予約は不要という施設もあります。貸切と通常利用で予約の扱いが違うこともあるので、希望の枠で確認してください。",
-             '利用前に、狂犬病・混合ワクチンの証明書が必要か、写真でよいか、マナーパンツや上履きがいるかを確認。一般的な書類の見方は<a href="/dogrun/vaccine/">ドッグランに持っていく書類</a>にまとめています。')
-        + _h("雨が強い日・暑い日に確認すること")
-        + _p("室内でもイベントや貸切で使えない時間があります。また、屋内でも空調があるとは限りません。空調や床の滑りにくさ、入口から屋外を歩く距離、駐車場から濡れずに移動できるかで、当日の負担が変わります。着いたら混み方と犬の様子を見て、無理に走らせず、疲れる前に休ませてください。",
-             '近くの施設を探し直したい場合は、<a href="/dogrun/">全国のドッグラン一覧</a>で都道府県を選んでください。雨がやんだら、<a href="/dogrun/free/">無料で使えるドッグラン</a>も選択肢になります。')
-    )
-
 ARTICLES = [
- {"slug": "indoor", "short": "室内ドッグラン",
-  "title": lambda: f"室内ドッグラン{len(_INDOOR)}か所｜雨の日の料金・犬のサイズと利用条件",
-  "desc": lambda: "雨や暑い日にも使いやすい室内ドッグランを、公式情報から選んで比較。千葉（柏・印西・稲毛海岸・幕張）や東京、大阪などの施設の料金、体重制限、貸切と登録条件を確認できます。",
-  "lede": "雨の日に犬を走らせられる室内ドッグラン。屋根付きの屋外と区別し、実際に屋内で走れると公式に案内された施設の料金・サイズ条件・持ち物を比べます。",
-  "list": None, "body": _indoor_body, "checked": "2026年11月26日", "modified": "2026-11-26"},
  {"slug": "free", "short": "無料で使えるドッグラン",
   "title": lambda: f"無料で使えるドッグラン{nfree(RUNS)}か所｜都道府県別の一覧と、別にかかるお金",
   "desc": lambda: f"公式ページに利用料が無料と書いてあるドッグラン{nfree(RUNS)}か所を都道府県別にまとめました。公園の公営ドッグラン・高速道路のSA・PA・アウトレットなど。登録料や駐車料など、別にかかるお金も説明します。",
@@ -578,7 +498,7 @@ def render_article(ctx, a):
                + art_list_html(e, a["list"], [p for _, ps in ctx["emg_regions"] for p in ps]))
         items = [{"@type": "ListItem", "position": i + 1, "url": SITE + href(d["pref"]) + "#" + d["id"], "name": d["name"]} for i, d in enumerate(sel)]
     objs = [crumbs(SITE, [("ペットタクシー予約窓口", SITE + "/"), ("全国のドッグラン", f"{SITE}/{SLUG}/"), (a["short"], url)]),
-            {"@context": "https://schema.org", "@type": "Article", "headline": a["title"](), "description": desc, "dateModified": a.get("modified", "2026-11-02"),
+            {"@context": "https://schema.org", "@type": "Article", "headline": a["title"](), "description": desc, "dateModified": "2026-11-02",
              "author": {"@type": "Organization", "name": "ペットタクシー予約窓口"}, "mainEntityOfPage": url}]
     if a["slug"] == "survey":  # [B] AIO 11/9：独自データ記事は Dataset としても伝える
         objs.append({"@context": "https://schema.org", "@type": "Dataset", "name": "全国のドッグランしらべ", "description": desc, "url": url, "inLanguage": "ja",
@@ -599,7 +519,7 @@ def render_article(ctx, a):
   <div class="wrap"><article class="art">
     {a["body"](e)}
     {lst}
-    <p class="emg-note">{e(a.get("checked", CHECKED))}時点の情報です。料金や決まりは変わることがあるので、行く前に必ずそれぞれの公式ページでご確認ください。掲載の内容の誤りや、載せてほしいドッグランは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+    <p class="emg-note">{e(CHECKED)}時点の情報です。料金や決まりは変わることがあるので、行く前に必ずそれぞれの公式ページでご確認ください。掲載の内容の誤りや、載せてほしいドッグランは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     <h2>ドッグランの記事</h2>
     {art_links(e, a["slug"])}
     <p><a href="/{SLUG}/">全国のドッグラン（都道府県の一覧）</a></p>
@@ -701,7 +621,7 @@ def card(e, d):
     srcs = [u for u in d.get("src", []) if u != d["url"]]
     more = ("<small>ほかの出どころ：" + "、".join(f'<a href="{e(u)}" target="_blank" rel="noopener">{i + 1}</a>' for i, u in enumerate(srcs)) + "</small>") if srcs else ""
     return (f'<section class="dr-card" id="{d["id"]}"><h3>{e(d["name"])}</h3><p class="dr-city">{e(d["pref"])}{e(d.get("city", ""))}</p>{tags_html(e, d)}'
-            f'<dl>{rows}</dl><p class="dr-links"><a href="{e(d["url"])}" target="_blank" rel="noopener">公式ページで最新の情報を見る ↗</a>{_review(d)}{more}</p>' + _fac_link(e, d) + '</section>')
+            f'<dl>{rows}</dl><p class="dr-links"><a href="{e(d["url"])}" target="_blank" rel="noopener">公式ページで最新の情報を見る ↗</a>{review_link("dogrun", d, "ux-btn l")}{more}</p>' + _fac_link(e, d) + '</section>')
 
 # [B] 2026-11-14 Nori「答えみたいなことからはじめて、もっと視覚的に」：県のページの最初に「先に答え」（よくある質問の答え）と数字のタイル
 def _answer(e, pf, rs, faq):

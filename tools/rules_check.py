@@ -81,7 +81,7 @@ REASONS = {
     "search": "施設の分野で、さがす欄より前に記事・目次がある",
     "rival": "ほかのペット情報サイト・まとめサイト（競合）へリンクしている（Nori 11/22「老犬ケアのサイトにとばすとか強豪にリンクしてどうすんの？やめて」。施設の公式サイトに替えるか、公式サイトがなければ載せない。競合の一覧は rules_check.py の RIVALS）",
     "contact": "公式サイトも問い合わせ先もない施設を載せている（Nori 11/22「サイト開けなくて問い合わせないところは掲載しない」。データから外すか、公式サイト・獣医師会の一覧の電話（tel・tel_src）を入れる）",
-    "owner": "施設の一覧のさがす欄に「うちの子にあてはまるもの」がない（Nori 11/17「自分の子にあてはまるものを探してる」。tools/ownerfit.py）",
+    "owner": "施設の一覧のさがす欄に「よく使用される項目」がない（Nori 11/17「自分の子にあてはまるものを探してる」→ 2026-11-26 本人の指示で「よく使用される項目」に改名。tools/ownerfit.py）",
     "card": "タクシー以外の施設のカードが共通のカード（tools/cardskin.py の形）になっていない", "wall": f"図・表・箇条書きのない文が{WALL_MAX}字を超えて続く",
     "placebox": "「どこで」が県と市区町村の2ボックスになっていない（生成された /place.js に pp-pref / pp-city がない。tools/place.js）",
 }
@@ -204,7 +204,7 @@ def check_page(root, path):
     if parts and parts[0] in FAC_CATS and (len(parts) == 1 or len(parts) == 2 and (parts[1] in PREF_SLUGS or parts[0] == "hospital" and parts[1] in HOSP_SUB)) and p.first_toc is not None and (p.first_search is None or p.first_toc < p.first_search):
         found.append(("search", "さがす欄がない" if p.first_search is None else "目次・記事のリンクがさがす欄より前"))
     # 施設の一覧は、うちの子のこと（大きさ・シニア・薬・2頭以上など）でしぼれる（Nori 2026-11-17。tools/ownerfit.py の CAT_WHO）
-    if len(parts) == 1 and parts[0] in OWNER_CATS and 'class="ux-find"' in raw and "うちの子にあてはまるもの" not in raw:
+    if len(parts) == 1 and parts[0] in OWNER_CATS and 'class="ux-find"' in raw and "よく使用される項目" not in raw:
         found.append(("owner", "全国の一覧のさがす欄"))
     # タクシー以外のカードは共通のカード1つ（Nori 2026-11-16「タクシー以外のカードは共通のやつにして」）。
     # 施設1つのページの入口の枠（data-cat つきの emg-co）だけは除く
