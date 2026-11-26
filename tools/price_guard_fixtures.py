@@ -1,0 +1,30 @@
+import sys,json;import os;sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
+import cardpolicy as c
+def S(v): return c._addon_only(v)
+def Hb(v): return c._base_price(v) and not c._addon_only(v)
+def Rn(v): return c._nobase_rojin(v)
+T=[]
+def chk(name,got,exp): 
+    T.append((name,got==exp)); 
+    if got!=exp: print("FAIL",name,got,exp)
+chk("F1 kofu hotel base",Hb("年末年始は1泊3,100円"),True)
+chk("F2 orange hotel base",Hb("(時間外7時~8時30分1,650円+1泊7時~翌7時4,400円+5時間超過分2,000円)"),True)
+chk("F3 rojin",Rn("入所金100,000円、月100,000円〜300,000円（税別・介護の度合いで変わる、諸経費こみ）。契約のときに先払い"),False)
+f4="小型犬・猫：入会金10万円＋月額4.5万円〜（1年54万円〜）、中型犬：月額6万円〜、大型犬：月額8万円〜（税別。おむつ・シーツ・フードは別）"
+chk("F4 rojin",Rn(f4),False)
+chk("F6 rojin",Rn("月額4.5万円〜、預かり金10万円"),False)
+chk("F7 rojin",Rn("保証金50,000円、1泊2,000円〜（ようすで変わる）"),False)
+chk("F8 rojin",Rn("以後1日ごとに3800円"),False)
+chk("F8b rojin 2回目OFF",Rn("2回目以降500円引き"),True)
+chk("M3 rojin guard no fallthrough",c._guard("月額4.5万円〜、預かり金10万円",True),"月額4.5万円〜、預かり金10万円")
+chk("T Sk9e4c92",S("~13kg:基本料金+500円 / ~28kg:基本料金+1,000円"),True)
+chk("T S240",S("鍵のお預かりが…別日になる場合には別途手数料(1,000円)…"),True)
+chk("T wankonoyu",Hb("年末年始・ゴールデンウィーク等、繁忙期として一泊につき550円がかかります。"),False)
+chk("T R084",Rn("プラス500円/日"),True)
+chk("P Sk4bece0",S("1回:300円 / 基本料金+500円"),False)
+chk("P S334",S("1回2,750円／延長550円"),False)
+chk("P PET-SPA",Hb("24時間：小型犬・猫5,500円、中型犬6,600円"),True)
+chk("P R083",Rn("1年プラン498,500円・半年プラン・終身プラン"),False)
+chk("T hotel1 plus",Hb("ホテル宿泊 +200円"),False)
+chk("P HT280",Hb("1泊3,300円プラス散歩500/回"),True)
+n=sum(1 for _,o in T if o);print("price-guard fixtures",n,"/",len(T));sys.exit(0 if n==len(T) else 1)
