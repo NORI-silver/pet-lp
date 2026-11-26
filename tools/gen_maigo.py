@@ -63,7 +63,9 @@ def detectives():
             if any(x in _an for x in ("鳥", "爬虫", "小動物", "うさぎ", "ハムスター")): _fl.append("ex")
         if _mf.has_cancel(d): _fl.append("cx")      # キャンセル料が公式に書いてある
         if _mf.has_separate_fee(d): _fl.append("ef")                          # 追加費用（出張費・経費など）が書いてある（「追加費用なし」ではない）
-        out.append({"name": d["name"], "url": d.get("price_url") or d.get("url"), "areas": ar, "plan": txt, "flags": " ".join(_fl),
+        _fl += _mf.method_keys(d)
+        methods = "・".join(d.get("methods") or []) if d.get("src") else ""
+        out.append({"name": d["name"], "url": d.get("price_url") or d.get("url"), "areas": ar, "plan": txt, "methods": methods, "flags": " ".join(_fl),
                     "review_html": review_link("detective", d, "jc-src", scope="company"), "animals": "" if "明記なし" in d.get("animals", "") else d.get("animals", ""), "near": d.get("near") or [], "pref_url": d.get("pref_url") or "", "near_note": d.get("near_note") or "", "area_text": "全国" if ar == ["全国"] else (d.get("area") if d.get("area") not in (None, "", "記載なし") else d.get("base", ""))})
     return out
 
@@ -224,13 +226,15 @@ def maigo(ctx):
     det_rows = "".join(
         f'<tr data-det="{e(d["flags"])}"><th><a href="{e(d.get("price_url") or d["url"])}" target="_blank" rel="noopener">{e(d["name"])}</a>{("<br>" + d["review_html"]) if d["review_html"] else ""}</th>'
         f'<td>{e(d["plan"])}' + (f'<br><small>{e(d["animals"])}</small>' if d["animals"] else "") + '</td>'
-        f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + '</td></tr>' for d in dets)
+        f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + (f'<br><small><b>捜索方法：</b>{e(d["methods"])}</small>' if d["methods"] else '') + '</td></tr>' for d in dets)
     det_tbl = ('<div class="jc-sg" role="group" aria-label="ペット探偵の絞り込み"><span class="jc-sgl">どの子</span><button type="button" data-detf="dg" aria-pressed="false">犬と書いてある</button><button type="button" data-detf="ct" aria-pressed="false">猫と書いてある</button><button type="button" data-detf="ex" aria-pressed="false">鳥・小動物・爬虫類と書いてある</button>'
                '<span class="jc-sgl">範囲</span><button type="button" data-detf="z" aria-pressed="false">全国対応</button><button type="button" data-detf="n" aria-pressed="false" title="上で県を選ぶと使えます。会社の記載による。出張費は各社の欄で確認">選んだ県が主な対応地域の会社</button>'
                '<span class="jc-sgl">料金</span><button type="button" data-detf="p" aria-pressed="false">料金が分かる</button><button type="button" data-detf="cx" aria-pressed="false">キャンセルの条件が書いてある</button><button type="button" data-detf="ef" aria-pressed="false">別途費用の記載がある</button>'
+               + '<span class="jc-sgl">捜索方法</span>' + "".join(f'<button type="button" data-detf="{k}" aria-pressed="false">{e(v[0])}</button>' for k, v in _mf.METHODS.items() if any(k in d["flags"].split() for d in dets))
+               +
                '<span class="jc-sgl">そのほか</span><button type="button" data-detf="un" aria-pressed="false" title="犬・猫・鳥などを選んだときだけ使えます">動物の記載がない事業者も含める</button></div>'
 
-               f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域</th></tr></thead><tbody>{det_rows}</tbody></table></div>'
+               f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域・捜索方法</th></tr></thead><tbody>{det_rows}</tbody></table></div>'
                f'<p class="jc-src">金額は税込（税別・税の記載がない会社は印つき）。各社の公式サイトの掲載情報をもとに、最低料金は「〜」で表示しています。順番に意味はありません。発見率など会社の発表の数字は、くらべ方がそろっていないので載せていません。</p>') if dets else ""
     ins = [i for i in PRIV.get("insurance", []) if not i.get("doubt")]
     ins_html = "".join(f'<li><a href="{e(i["src"])}" target="_blank" rel="noopener">{e(i["name"])}</a>：{e(i.get("who", ""))}は、{e(i.get("free", ""))}が無料（{e(i.get("paid", ""))}）</li>' for i in ins)
