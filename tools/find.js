@@ -145,9 +145,9 @@
     var r = pj;
     if (cat === "sougi" && ks.indexOf("合同火葬") >= 0 && ks.indexOf("お骨を返してもらえる") >= 0 && it._no.indexOf(" 合同火葬+お骨を返してもらえる ") >= 0) return 2;
     for (var i = 0; i < ks.length; i++) {
-      if (it._k.indexOf(" " + ks[i] + " ") >= 0) continue;
-      if (ks[i] === "a:dog" && it._no.indexOf(" a:dog ") < 0) continue;  // 犬は「犬は受けない」と書いていなければ合う
       if (it._no.indexOf(" " + ks[i] + " ") >= 0) return 2;
+      if (it._k.indexOf(" " + ks[i] + " ") >= 0) continue;
+      if (ks[i] === "a:dog") continue;  // 犬は「犬は受けない」と書いていなければ合う
       r = 1;
     }
     return r;
@@ -158,6 +158,23 @@
     return c;
   }
   function el(t, c, x){ var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
+  // Match labels are a compact explanation of the current search, not new facility claims.
+  function matchLabels(it, ks, visible){
+    var note = it._matchNote;
+    var matched = visible ? ks.filter(function(k){
+      return LBL[k] && it._k.indexOf(" " + k + " ") >= 0 && it._no.indexOf(" " + k + " ") < 0;
+    }).map(function(k){ return k === "older" ? "年齢・同居条件は詳細を確認" : LBL[k]; }) : [];
+    var value = matched.join("・");
+    if (!value) { if (note) note.hidden = true; return; }
+    if (!note) {
+      var b = it.querySelector(".fc-body") || it;
+      var h = b.querySelector(".fc-name,.ux-c-n,.yd-n");
+      note = it._matchNote = el("p", "fc-catch");
+      if (h) h.after(note); else b.appendChild(note);
+    }
+    note.hidden = false;
+    if (note._value !== value) { note._value = value; note.textContent = "絞り込みに使った条件：" + value; }
+  }
   function apply(track){
     doSort();
     var ks = on(), pf = places, qs = norm(pick && !(pick.open && pick.open()) ? pick.text() : ""), idle = needPref && !pf.length && !qs;
@@ -167,6 +184,7 @@
       if (j < 2) c[j]++;
       it.hidden = !(j === 0 || (j === 1 && showUnk));
       it.classList.toggle("ux-unk", j === 1);
+      matchLabels(it, ks, !it.hidden);
       var note = it.querySelector(".ux-unk-n");
       if (j === 1) {
         if (!note) { note = el("p", "ux-unk-n"); var b = it.querySelector(".fc-body") || it; b.insertBefore(note, b.children[1] || null); }

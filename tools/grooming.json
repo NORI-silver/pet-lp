@@ -17501,6 +17501,13 @@
    "shop": true,
    "facts": [
     {
+     "k": "対象の動物",
+     "v": "小型犬のみ",
+     "src": "https://www.dogsalon-purumo.com/about",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
      "k": "営業・受付時間",
      "v": "営業時間|10:00~18:00 定休日 | 水曜日",
      "src": "https://www.dogsalon-purumo.com/",
@@ -17543,7 +17550,11 @@
      "checked": "2026-11-23"
     }
    ],
-   "checked": "2026-11-23"
+   "checked": "2026-11-23",
+   "fit_status": {
+    "big": 2,
+    "pickup": 1
+   }
   },
   {
    "id": "GSkc6e62a",

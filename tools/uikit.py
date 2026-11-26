@@ -303,7 +303,8 @@ def facility_list(h, conf, hub):
         ks = fl.group(1).split() if fl else []
         ks += [{"large": "big", "senior": "sen"}[k] for k in ks if k in ("large", "senior")]
         y, n = ownerfit.keys(conf["cat"], url)
-        ks = list(dict.fromkeys(ks + y))
+        blocked = {k for k, v in ownerfit.checked_condition_status(conf["cat"], url).items() if v != 1}
+        ks = [k for k in dict.fromkeys(ks + y) if k not in blocked]
         # 猫専用かどうかはデータの項目（cat_only）ではっきり決まる。専用でないホテルは「猫専用ではない」として外す
         n = [x for x in n if x not in ks] + (["a:dog"] if "cat_only" in ks else ["cat_only"])
         no = f' data-no="{e(" ".join(n))}"' if n else ""
@@ -398,7 +399,8 @@ def _keys(t, cat, url=""):
     if cat == "dog-trainer" and raw & {"問題行動", "しつけ相談"}: k.append("shy")
     y, n = ownerfit.joto_keys(url) if cat == "joto" else ownerfit.keys(cat, url)
     k += y
-    k = list(dict.fromkeys(k))
+    blocked = {key for key, val in ownerfit.checked_condition_status(cat, url).items() if val != 1}
+    k = [x for x in dict.fromkeys(k) if x not in blocked]
     no = [x for x in no + n if x not in k]
     return k, list(dict.fromkeys(no))
 

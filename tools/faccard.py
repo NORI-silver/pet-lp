@@ -168,6 +168,9 @@ def _uq_compact(s):
     return "".join(c if (ord(c) > 127 or c.isalnum() or c in "-_.~") else quote(c) for c in s)
 
 def _yen_of(r):
+    facts = [f for f in (r.get("facts") or []) if isinstance(f, dict)]
+    base = [f["yen"] for f in facts if f.get("k") == "料金" and isinstance(f.get("yen"), int) and 300 <= f["yen"] <= 1000000]
+    if base: return min(base)
     vals = []
     def walk(v):
         if isinstance(v, str): vals.extend(int(x.replace(",", "")) for x in re.findall(r"(\d[\d,]*)\s*円", v))
@@ -445,7 +448,9 @@ def build_card(card, conf, fit_by_name):
             used.add(i); pick.append((ic, lab, val)); return True
         return False
     if not take(_AREA, "car"): take(_ADDR, "pin")
-    take(_PRICE, "yen"); take(_TIME, "clock"); take(_ANIM, "paw")
+    take(_PRICE, "yen"); take(_TIME, "clock")
+    if conf["key"] == "hotel": take(re.compile(r"^受け入れの注意$"), "list")
+    take(_ANIM, "paw")
     if len(pick) < 4: take(_CERT, "badge")
     if conf["key"] == "trainer": take(_CAREER, "clock")
     dp = []

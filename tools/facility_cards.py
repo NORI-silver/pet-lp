@@ -24,7 +24,7 @@ def sougi_tags(f):
     if s & {"霊園", "納骨", "納骨堂"}: t.append("霊園・納骨")
     _wt = (f.get("web") or {}).get("text", "") if isinstance(f.get("web"), dict) else ""
     if _wt:
-        if re.search(r"深夜|早朝", _wt): t.append("深夜・早朝も受付")
+        if (f.get("fit_status") or {}).get("深夜・早朝も受付") != 2 and re.search(r"深夜|早朝", _wt): t.append("深夜・早朝も受付")
         if "粉骨" in _wt: t.append("粉骨")
         if "樹木葬" in _wt: t.append("樹木葬")
         if re.search(r"海洋散骨|散骨", _wt): t.append("散骨")
