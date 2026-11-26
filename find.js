@@ -179,7 +179,9 @@ if (!(pf && pf.length) && it._near) return 2; // 近くの県の施設（老犬�
 var pj = placeJ(it, pf || []);
 if (pj === 2) return 2;
 if (qs && qs.split(" ").some(function(w){ return it._q.indexOf(w) < 0; })) return 2;
+if (ks.indexOf("a:cat") >= 0 && ks.indexOf("owner_live_dog") >= 0 && ks.indexOf("a:dog") < 0) return 2;
 var r = pj;
+if (cat === "sougi" && ks.indexOf("合同火葬") >= 0 && ks.indexOf("お骨を返してもらえる") >= 0 && it._no.indexOf(" 合同火葬+お骨を返してもらえる ") >= 0) return 2;
 for (var i = 0; i < ks.length; i++) {
 if (it._no.indexOf(" " + ks[i] + " ") >= 0) return 2;
 if (it._k.indexOf(" " + ks[i] + " ") >= 0) continue;
@@ -333,8 +335,7 @@ typed: function(){ clearTimeout(tm); tm = setTimeout(function(){ apply(false); }
 onChange: function(ps){
 places = ps;
 if (navPref) {
-var other = null;
-for (var i = 0; i < ps.length; i++) if (ps[i].p !== fixed) { other = ps[i]; break; }
+var other = ps.find(function(p){ return p.p !== fixed; });
 if (other) {
 var base = "/" + parts[1] + "/", url = base + SLUG[other.p] + "/";
 var has = [].some.call(qa("a[href]"), function(a){ return (at(a,"href") || "").split("#")[0] === url; });
