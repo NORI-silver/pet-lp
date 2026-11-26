@@ -1,0 +1,104 @@
+diff --git a/tools/gen_jichitai.py b/tools/gen_jichitai.py
+index 4220382..517968b 100644
+--- a/tools/gen_jichitai.py
++++ b/tools/gen_jichitai.py
+@@ -58,7 +58,7 @@ IC = {
+  "out": "%3Cpath d='M14 5h5v5M19 5l-8 8M17 14v5H5V7h5'/%3E",
+  "city": "%3Cpath d='M4 20V9l5-3v14M9 20V4l7 3v13M16 20v-9l4 2v7M3 20h18'/%3E",
+ }
+-CSS = ("<style>.jc-hub:not(.on) .emg-pref,.jc-hub:not(.on) .emg-region{display:none}.jc-hub.on .jc-hint{display:none}.jc-hint{font-size:.88rem;color:#4a3d34;margin:6px 0 0}.jc-hint button{margin:6px 0 0;padding:8px 12px;border:1px solid #c2410c;border-radius:999px;background:#fff;color:#c2410c;font-weight:700;font-size:.88rem}.jc-ic{display:inline-block;width:22px;height:22px;flex:0 0 22px;background:center/22px no-repeat}"
++CSS = ("<style>.jcf{background:#fff;border:1px solid #efe0d3;border-radius:18px;padding:14px 14px 12px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin:4px 0 14px}.jcf-r{padding:8px 0;border-top:1px solid #f5ebe2}.jcf-r:first-child{border-top:0;padding-top:0}.jcf-l{display:block;font-weight:800;font-size:.95rem;margin:0 0 6px;color:#2b2622}.jcf select,.jcf input{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #d9c9bb;border-radius:12px;font-size:1rem;background:#fff;margin:0 0 6px}.jcf-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}.jc-nb{display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:10px 8px;font-size:.92rem;font-weight:700;line-height:1.35;color:#3c2f26;text-decoration:none;cursor:pointer;min-height:48px}.jc-nb[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff}.jcf-det{border-top:1px solid #f5ebe2;padding-top:8px;margin-top:2px}.jcf-det>summary{cursor:pointer;font-weight:800;padding:6px 0;list-style:none}.jcf-det>summary::after{content:' \\25be'}.jcf-go{display:block;width:100%;margin:10px 0 2px;border:0;border-radius:999px;background:#2b2622;color:#fff;font-weight:800;font-size:1rem;padding:13px;cursor:pointer}.jc-card.cfh{display:none}.jc-hub:not(.on) .emg-pref,.jc-hub:not(.on) .emg-region{display:none}.jc-hub.on .jc-hint{display:none}.jc-hint{font-size:.88rem;color:#4a3d34;margin:6px 0 0}.jc-hint button{margin:6px 0 0;padding:8px 12px;border:1px solid #c2410c;border-radius:999px;background:#fff;color:#c2410c;font-weight:700;font-size:.88rem}.jc-ic{display:inline-block;width:22px;height:22px;flex:0 0 22px;background:center/22px no-repeat}"
+  + "".join(f".jc-ic.i-{k}{{background-image:{_ic(v)}}}" for k, v in IC.items()) +
+  ".jc-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 0}"
+  "@media(min-width:640px){.jc-tiles{grid-template-columns:1fr 1fr 1fr}}"
+@@ -92,14 +92,14 @@ CSS = ("<style>.jc-hub:not(.on) .emg-pref,.jc-hub:not(.on) .emg-region{display:n
+ # 住まいの市区町村を入れる → その地域の窓口を一覧の中で目立たせて見せる（2026-11-24 全面改修：1枚だけ出して他を隠す独自の形をやめ、
+ # ほかの分野と同じ「県・市区町村でしぼった縦の一覧」の形に。Nori 2026-11-16「どこの窓口って書いてあるところが何を言ってるかわからない」）。
+ # 対応の図（住まい → 窓口）はやめた。市区町村の一覧は /jichitai/munis.json（入れはじめたときだけ読む。都道府県は名前から自動で選ぶ）
+-FIND_JS = """<script>(function(){var i=document.getElementById('jcQ'),o=document.getElementById('jcA'),sel=document.getElementById('hospPref'),D=null;if(!i)return;
++FIND_JS = """<script>(function(){var M=null,i=document.getElementById('jcQ'),o=document.getElementById('jcA'),sel=document.getElementById('hospPref'),D=null;if(!i)return;
+ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+-function show(pf,nm){if(sel.value!==pf){sel.value=pf;sel.dispatchEvent(new Event('change'))}var s=document.querySelector('.emg-pref[data-pref="'+pf+'"]');if(!s)return;var hit=null;
++function show(pf,nm){M=[pf,nm];if(sel.value!==pf){sel.value=pf;sel.dispatchEvent(new Event('change'))}var s=document.querySelector('.emg-pref[data-pref="'+pf+'"]');if(!s)return;var hit=null;
+ s.querySelectorAll('.jc-card[data-city]').forEach(function(c){if(c.getAttribute('data-city')===nm)hit=c});if(!hit)hit=s.querySelector('.jc-card[data-main]');
+ document.querySelectorAll('.jc-card.hit').forEach(function(c){c.classList.remove('hit')});
+ if(hit){hit.classList.add('hit');setTimeout(function(){hit.scrollIntoView({behavior:'smooth',block:'center'})},60)}
+ o.innerHTML='<b>'+esc(pf+nm)+'</b>の迷子・保護の窓口は、一覧の中で目立つようにしたところです。';try{gtag('event','jichitai_find',{pref:pf})}catch(e){}}
+-function reset(){document.querySelectorAll('.jc-card.hit').forEach(function(c){c.classList.remove('hit')});o.textContent=''}
++function reset(){M=null;document.querySelectorAll('.jc-card.hit').forEach(function(c){c.classList.remove('hit')});o.textContent=''}
+ function go(){var v=i.value.replace(/[\\s　]/g,'');if(!v){reset();return}if(!D){fetch('/jichitai/munis.json').then(function(r){return r.json()}).then(function(j){D=j;go()});return}
+ var h=[];Object.keys(D).forEach(function(pf){var w=v.indexOf(pf)===0?v.slice(pf.length):v;if(!w)return;D[pf].split(',').forEach(function(n){if(w===n||w.indexOf(n)===0||(w.length>=2&&n.indexOf(w)===0))h.push([pf,n])})});
+ var ex=h.filter(function(x){return x[1]===v||x[0]+x[1]===v});if(ex.length===1)h=ex;
+@@ -108,7 +108,17 @@ if(h.length>1&&h.length<=8){o.innerHTML='どちらですか？ '+h.map(function(
+ else if(h.length>8)o.textContent='続けて入れてください';else o.textContent='見つかりません。市区町村の名前で入れてください（例：佐倉市）';}
+ i.addEventListener('input',go);
+ var hub=document.querySelector('.jc-hub'),all=document.getElementById('jcAll');function on(){hub&&hub.classList.toggle('on',!!sel.value||hub.dataset.all==='1')}
+-sel.addEventListener('change',on);if(all)all.onclick=function(){hub.dataset.all='1';on()};on();setTimeout(on,1500);setTimeout(on,4000);})();</script>"""
++sel.addEventListener('change',on);if(all)all.onclick=function(){hub.dataset.all='1';on()};on();var nbs=[].slice.call(document.querySelectorAll('[data-nb]')),none=document.getElementById('jcNone'),goB=document.getElementById('jcGo'),goN=document.getElementById('jcGoN'),cfs=[].slice.call(document.querySelectorAll('[data-cf]'));
++function setSit(b){nbs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});none.setAttribute('aria-pressed',b?'false':'true')}
++nbs.forEach(function(b){b.addEventListener('click',function(ev){ev.preventDefault();setSit(b.getAttribute('aria-pressed')==='true'?null:b)})});none.onclick=function(){setSit(null)};
++function cfApply(){var on1=cfs.filter(function(b){return b.getAttribute('aria-pressed')==='true'}).map(function(b){return b.getAttribute('data-cf')});
++document.querySelectorAll('.jc-card').forEach(function(c){var ok=true;if(on1.indexOf('joto')>=0&&!c.querySelector('.dr-tags .ok'))ok=false;if(on1.indexOf('info')>=0){var t=c.querySelector('.ux-c-s');if(!t||t.textContent.indexOf('保護情報')<0)ok=false}c.classList.toggle('cfh',!ok)});
++if(on1.length&&hub){hub.dataset.all='1';on()}}
++cfs.forEach(function(b){b.onclick=function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');cfApply()}});
++if(goB)goB.onclick=function(){var s=nbs.filter(function(b){return b.getAttribute('aria-pressed')==='true'})[0];
++if(s){try{if(M)localStorage.setItem('jcMuni',M[0]+'|'+M[1])}catch(e){}try{gtag('event','jichitai_go',{to:s.getAttribute('href')})}catch(e){}location.href=s.getAttribute('href');return}
++if(!sel.value&&!i.value.trim()){goN.textContent='都道府県か市区町村を選ぶと、その地域の窓口が出ます。状況を選ぶと、その状況のページに進みます。';return}goN.textContent='';if(hub){hub.dataset.all='1';on()}var l=document.querySelector('.emg-pref:not([hidden])');var h=document.querySelector('.jc-hub .sh');if(h)h.scrollIntoView({behavior:'smooth',block:'start'})};
++setTimeout(on,1500);setTimeout(on,4000);})();</script>"""
+ 
+ def write_munis():
+     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+@@ -228,23 +238,39 @@ def render(ctx):
+   </div>
+ </section>
+ <section style="padding-top:0">
+-  <div class="wrap">
+-    <h2 class="jc-pq">あてはまる状況を選んでください</h2>
+-    <div class="jc-pick">
+-      <a class="jc-pk u" href="/jichitai/maigo/"><b>うちの子が迷子になった</b><span>まず何をするか・届け先・チラシ</span></a>
+-      <a class="jc-pk" href="/jichitai/maigo/#pro"><b>ペット探偵を探す</b><span>民間の捜索サービスと料金を比較</span></a>
+-      <a class="jc-pk" href="/jichitai/maigo/#found"><b>迷子の子を見つけた・保護した</b><span>どこに届けるか</span></a>
+-      <a class="jc-pk" href="/jichitai/touroku/"><b>犬を迎えた（登録・予防注射）</b><span>いつまでに・どこで・いくら</span></a>
+-      <a class="jc-pk" href="/jichitai/tebanasu/"><b>飼い続けるのが難しくなった</b><span>手放す前にできること</span></a>
+-    </div>
+-  </div>
+-</section>
+-<section style="padding-top:8px">
+   <div class="wrap jc-hub">
++    <div class="jcf" id="jcBox">
++      <div class="jcf-r"><span class="jcf-l">どこで探しますか？</span>
++        <select id="hospPref" aria-label="都道府県">{ctx["emg_opts"]}</select>
++        <input id="jcQ" type="text" placeholder="市区町村（例：佐倉市）" autocomplete="address-level2" aria-label="市区町村">
++        <p id="jcA" class="jc-ans" aria-live="polite"></p>
++        <p class="jc-hint">都道府県を選ぶか、市区町村を入れると、その地域の窓口が出ます。<button type="button" id="jcAll">全国の一覧を見る</button></p></div>
++      <div class="jcf-r"><span class="jcf-l">迷子のとき</span>
++        <div class="jcf-need" role="group" aria-label="迷子のとき">
++          <a class="jc-nb" data-nb href="/jichitai/maigo/" aria-pressed="false">うちの子が迷子になった</a>
++          <a class="jc-nb" data-nb href="/jichitai/maigo/#pro" aria-pressed="false">ペット探偵を探す</a>
++          <a class="jc-nb" data-nb href="/jichitai/maigo/#found" aria-pressed="false">迷子の子を見つけた・保護した</a>
++          <button type="button" class="jc-nb" id="jcNone" aria-pressed="true">指定なし</button>
++        </div></div>
++      <div class="jcf-r"><span class="jcf-l">犬の登録・予防注射</span>
++        <div class="jcf-need" role="group" aria-label="犬の登録・予防注射">
++          <a class="jc-nb" data-nb href="/jichitai/touroku/" aria-pressed="false">犬を迎えた（登録・予防注射）</a>
++        </div></div>
++      <div class="jcf-r"><span class="jcf-l">飼い続けるのが難しいとき</span>
++        <div class="jcf-need" role="group" aria-label="飼い続けるのが難しいとき">
++          <a class="jc-nb" data-nb href="/jichitai/tebanasu/" aria-pressed="false">飼い続けるのが難しくなった</a>
++        </div></div>
++      <details class="jcf-det"><summary>詳しい条件で絞り込む</summary>
++        <span class="jcf-l">窓口のこと（地域の一覧を絞ります）</span>
++        <div class="jcf-need" role="group" aria-label="窓口の条件">
++          <button type="button" class="jc-nb" data-cf="joto" aria-pressed="false">譲渡もしている</button>
++          <button type="button" class="jc-nb" data-cf="info" aria-pressed="false">保護情報のページがある</button>
++        </div></details>
++      <button type="button" class="jcf-go" id="jcGo">この条件で窓口を探す</button>
++      <p class="jc-ans" id="jcGoN" aria-live="polite"></p>
++    </div>
+     <div class="sh"><h2>自治体の窓口一覧</h2></div>
+     <div class="emg">
+-      <div class="f"><label for="hospPref">都道府県</label><select id="hospPref">{ctx["emg_opts"]}</select><p class="jc-hint">都道府県を選ぶか、市区町村を入れると、その地域の窓口が出ます。<button type="button" id="jcAll">全国の一覧を見る</button></p></div>
+-      <div class="jc-q1"><label for="jcQ"><i class="jc-ic i-pin"></i>市区町村から、受け持ちのセンター・保健所をさがす</label><input id="jcQ" type="text" placeholder="市区町村（例：佐倉市）" autocomplete="address-level2"><p id="jcA" class="jc-ans" aria-live="polite"></p></div>
+       {body}
+       <div class="emg-tips"><h4>窓口ごとに受け付けていること</h4>
+       <div class="tbl"><table><thead><tr><th>窓口</th><th>おもに受け付けていること</th></tr></thead><tbody>{roles}</tbody></table></div>
