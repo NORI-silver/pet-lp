@@ -156,7 +156,7 @@ def ff_card(e, d, full=False):
 def ff_box(e, opts=None):
     import uikit
     return uikit.box("dogrun", q_ph="都道府県・市区町村・公園の名前", opts=opts, unit="か所", noun="ドッグラン", go="この条件でドッグランを探す",
-                     who=("うちの子は", [("small", "小型犬（小型犬エリアあり）"), ("large", "大型犬（大型犬も入れる）")]),
+                     who=("よく使用される項目", [("small", "小型犬（小型犬エリアあり）"), ("large", "大型犬（大型犬も入れる）")]),
                      need=("どんなドッグランをお探しですか？", [("free", "無料"), ("paid", "有料"), ("noreg", "登録なしで使える"), ("park", "駐車場がある"), ("h24", "24時間")]),
                      more=[("種類", [("public", "公園などの公営"), ("shop", "お店・施設"), ("sapa", "高速道路のSA・PA")]),
                            ("施設", [("indoor", "屋内"), ("pool", "プール・水遊び"), ("cafe", "カフェ併設"), ("member", "会員制")]),
