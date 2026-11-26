@@ -151,7 +151,7 @@ def write_js(ROOT):
     from prefs import PREFS
     slug = {x[1]: x[0] for x in PREFS}
     slug.update({"東京都": "tokyo", "神奈川県": "kanagawa", "埼玉県": "saitama", "千葉県": "chiba"})  # 4都県は prefs.PREFS の外（gen_dogrun.py の PSLUG と同じ足し方）
-    js = open(os.path.join(HERE, "find.js"), encoding="utf-8").read().replace("__SLUG__", _j.dumps(slug, ensure_ascii=False))
+    js = open(os.path.join(HERE, "find.js"), encoding="utf-8").read().replace("__SLUG__", _j.dumps(slug, ensure_ascii=False, separators=(",", ":")))
     # 配信用はコメント行と行頭の空白だけを除き、改行と検索の処理は保つ（24KB 上限）。
     src = prefkeep.FN + prefkeep.GUESS + "\n" + js
     out = "// 生成：tools/uikit.py（元は tools/find.js と tools/prefkeep.py）\n"
@@ -303,7 +303,8 @@ def facility_list(h, conf, hub):
         ks = fl.group(1).split() if fl else []
         ks += [{"large": "big", "senior": "sen"}[k] for k in ks if k in ("large", "senior")]
         y, n = ownerfit.keys(conf["cat"], url)
-        ks = list(dict.fromkeys(ks + y))
+        blocked = {k for k, v in ownerfit.checked_condition_status(conf["cat"], url).items() if v != 1}
+        ks = [k for k in dict.fromkeys(ks + y) if k not in blocked]
         # 猫専用かどうかはデータの項目（cat_only）ではっきり決まる。専用でないホテルは「猫専用ではない」として外す
         n = [x for x in n if x not in ks] + (["a:dog"] if "cat_only" in ks else ["cat_only"])
         no = f' data-no="{e(" ".join(n))}"' if n else ""
@@ -398,7 +399,8 @@ def _keys(t, cat, url=""):
     if cat == "dog-trainer" and raw & {"問題行動", "しつけ相談"}: k.append("shy")
     y, n = ownerfit.joto_keys(url) if cat == "joto" else ownerfit.keys(cat, url)
     k += y
-    k = list(dict.fromkeys(k))
+    blocked = {key for key, val in ownerfit.checked_condition_status(cat, url).items() if val != 1}
+    k = [x for x in dict.fromkeys(k) if x not in blocked]
     no = [x for x in no + n if x not in k]
     return k, list(dict.fromkeys(no))
 

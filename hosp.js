@@ -119,8 +119,9 @@ return '<div class="cs-ph"><div class="cs-ph-s">' + im + '</div>' + (ps.length >
 function card(r, unk){
 var b = [];
 if (r.a) b.push('<span>' + esc(r.a.length > 22 ? r.a.slice(0, 22) + "…" : r.a) + '</span>');
-FEAT.forEach(function(f){ if (f[0] === "late" && r.y.indexOf("night") >= 0) return; if (b.length < 6 && r.y.indexOf(f[0]) >= 0) b.push('<span>' + esc(f[1]) + '</span>'); });
-keys().forEach(function(k){ if (k.slice(0, 2) === "d:" && has(r, k)) b.push('<span>' + esc(k.slice(2)) + '</span>'); });
+function badge(l){ var x = '<span>' + esc(l) + '</span>'; if (l && b.indexOf(x) < 0) b.push(x); }
+keys().forEach(function(k){ if (k === "open" ? openNow(r) : has(r, k)) badge(LABEL[k] || NEEDL[k] || k.slice(2)); });
+FEAT.forEach(function(f){ if (b.length < 6 && has(r, f[0])) badge(f[1]); });
 unk.forEach(function(k){ b.push('<span class="u">' + esc(LABEL[k] || NEEDL[k] || k.slice(2)) + 'は不明</span>'); });
 var top = r.tel ? '<a href="tel:' + esc(r.tel) + '" data-k="tel" data-ga>📞 電話する</a>' : '<a href="' + esc(r.u) + '"' + TB + ' data-k="site" data-ga>公式サイト ↗</a>';
 var route = r.ad ? '<a class="l" href="https://www.google.com/maps/dir/?api=1&destination=' + enc(r.ad) + '"' + TB + ' data-k="route">📍 経路を見る</a>' : '';
@@ -161,7 +162,7 @@ return;
 if (!data) { sum.textContent = "読み込んでいます…"; return; }
 var ks = keys(), m = match(data.filter(function(r){ return !r.far; }), ks, true), ok = m[0], unk = m[1];
 var nightFirst = night() && need !== "night";
-ok.sort(function(a, b){ return (b[0].ph ? 1 : 0) - (a[0].ph ? 1 : 0); });  // 写真のある病院を先に（Nori 2026-11-22）
+ok.sort(function(a, b){ return (b[0].ph ? 1 : 0) - (a[0].ph ? 1 : 0); });
 if (nightFirst) ok.sort(function(a, b){ return (b[0].y.indexOf("night") >= 0) - (a[0].y.indexOf("night") >= 0); });
 var t = typed(), pl = plabel() + (t ? "「" + t + "」" : "");
 sum.innerHTML = esc(pl) + "で合う病院 " + ok.length + "院" + (unk.length ? "<small>ほかに、公式の情報に書いていないので要確認 " + unk.length + "院</small>" : "")
@@ -211,7 +212,7 @@ if (!ps.length) return;
 load.k = key;
 Promise.all(ps.map(get)).then(function(js){
 if (load.k !== key) return;
-data = [].concat.apply([], js); av = {};  // 選んだ県のデータで1院以上に当てはまる条件
+data = [].concat.apply([], js); av = {};
 data.forEach(function(r){ if (!r.far) { r.y.forEach(function(k){ av[k] = 1; }); (r.d || []).forEach(function(d){ av["d:" + d] = 1; }); if (r.t) av["open"] = 1; Object.keys(SYM).forEach(function(k){ if (has(r, k)) av[k] = 1; }); } });
 shown = 30; draw();
 });
@@ -238,7 +239,7 @@ if (b.id === "hfGo") { list.scrollIntoView({behavior: "smooth"}); return; }
 if (b.id === "hfClear") { on = {}; need = ""; pick.clearText(); shown = 30; draw(); return; }
 if (b.dataset.need !== undefined) {
 need = b.dataset.need;
-if (need === "spec") det.open = true;  // 専門診療は、診療科目などを選べるように開く
+if (need === "spec") det.open = true;
 shown = 30; draw();
 try { window.gtag && gtag("event", "hosp_filter", {key: "need:" + (need || "none"), on: 1, pref: sel.value || "all"}); } catch (x) {}
 return;

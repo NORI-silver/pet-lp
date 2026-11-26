@@ -15614,6 +15614,73 @@
    ]
   },
   {
+   "id": "GSk8dddcd",
+   "name": "ドッグサロン Purumo",
+   "prefs": [
+    "大阪府"
+   ],
+   "city": "八尾市",
+   "url": "https://www.dogsalon-purumo.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "対象の動物",
+     "v": "小型犬のみ",
+     "src": "https://www.dogsalon-purumo.com/about",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "営業時間|10:00~18:00 定休日 | 水曜日",
+     "src": "https://www.dogsalon-purumo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "定休日",
+     "v": "営業時間|10:00~18:00 定休日 | 水曜日",
+     "src": "https://www.dogsalon-purumo.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "駐車場",
+     "v": "駐車場 有り(1台)",
+     "src": "https://www.dogsalon-purumo.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "用意するもの",
+     "v": "当日対応OK / 送迎あり / 女性トリマーの在籍 / グッズ販売 / ワクチン接種の証明書提示が必要 / 感染症対策 / ※1年以内に狂犬病予防注射・混合ワクチンの接種をしているか証明できるものをご提出ください。",
+     "src": "https://www.dogsalon-purumo.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "送迎",
+     "v": "当日対応OK / 送迎あり / 女性トリマーの在籍 / グッズ販売 / ワクチン接種の証明書提示が必要 / 感染症対策",
+     "src": "https://www.dogsalon-purumo.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    },
+    {
+     "k": "お支払い",
+     "v": "QRコード決済(PayPay)",
+     "src": "https://www.dogsalon-purumo.com/about",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "fit_status": {
+    "big": 2,
+    "pickup": 1
+   }
+  },
+  {
    "id": "G018",
    "name": "dog1st famille（ドッグファースト ファミーユ）訪問トリミング",
    "prefs": [
@@ -17483,62 +17550,6 @@
      "k": "定休日",
      "v": "【定休日】木曜日",
      "src": "https://www.dogsaloniro.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23"
-  },
-  {
-   "id": "GSk8dddcd",
-   "name": "ドッグサロン Purumo",
-   "prefs": [
-    "大阪府"
-   ],
-   "city": "八尾市",
-   "url": "https://www.dogsalon-purumo.com/",
-   "services": "トリミングサロン",
-   "shop": true,
-   "facts": [
-    {
-     "k": "営業・受付時間",
-     "v": "営業時間|10:00~18:00 定休日 | 水曜日",
-     "src": "https://www.dogsalon-purumo.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "定休日",
-     "v": "営業時間|10:00~18:00 定休日 | 水曜日",
-     "src": "https://www.dogsalon-purumo.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "駐車場",
-     "v": "駐車場 有り(1台)",
-     "src": "https://www.dogsalon-purumo.com/about",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "用意するもの",
-     "v": "当日対応OK / 送迎あり / 女性トリマーの在籍 / グッズ販売 / ワクチン接種の証明書提示が必要 / 感染症対策 / ※1年以内に狂犬病予防注射・混合ワクチンの接種をしているか証明できるものをご提出ください。",
-     "src": "https://www.dogsalon-purumo.com/about",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "送迎",
-     "v": "当日対応OK / 送迎あり / 女性トリマーの在籍 / グッズ販売 / ワクチン接種の証明書提示が必要 / 感染症対策",
-     "src": "https://www.dogsalon-purumo.com/about",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "お支払い",
-     "v": "QRコード決済(PayPay)",
-     "src": "https://www.dogsalon-purumo.com/about",
      "by": "site",
      "checked": "2026-11-23"
     }

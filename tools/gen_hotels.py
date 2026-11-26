@@ -96,7 +96,7 @@ def trust_detail(h):
 
 TODAY = __import__("datetime").date.today().isoformat()
 
-FACT_KEYS = ("料金", "営業・受付時間", "定休日", "駐車場", "送迎", "予約のしかた", "お支払い", "対象の動物", "用意するもの")
+FACT_KEYS = ("料金", "営業・受付時間", "定休日", "駐車場", "送迎", "予約のしかた", "お支払い", "対象の動物", "用意するもの", "受け入れの注意", "預かり期間")
 
 def _card(e, h):
     flags = " ".join(_flags(h))
@@ -111,7 +111,10 @@ def _card(e, h):
     if tl: extra = f'<small>安心の材料：{e("、".join(tl[:5]))}</small>' + extra
     for d in trust_detail(h): extra += f'<small class="emg-spec">{e(d)}</small>'
     for f in h.get("facts", []):
-        if f["k"] in FACT_KEYS: extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
+        if f["k"] in FACT_KEYS:
+            extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
+            if f["k"] in ("料金", "受け入れの注意") and h.get("fit_status") and f.get("src"):
+                extra += f'<a class="fc-source" href="{e(f["src"])}" target="_blank" rel="noopener">{e(f["k"])}の案内</a>'
     city = f'<small>{e(h["city"])}</small>' if h.get("city") else ""
     return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>{city}{extra}{review_link("hotel", h, scope="facility")}</div>')
 
