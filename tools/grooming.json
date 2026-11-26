@@ -12308,6 +12308,34 @@
    "checked": "2026-11-23"
   },
   {
+   "id": "Gt7a2b758",
+   "name": "Dog care salon Harunohi",
+   "prefs": [
+    "神奈川県"
+   ],
+   "city": "平塚市",
+   "url": "https://dog-harunohi.com/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "facts": [
+    {
+     "k": "施術の配慮",
+     "v": "シャンプーとブローの後、カット前に休憩を入れ、ハイシニアは体力に合わせてトリマー2人で手早く施術",
+     "src": "https://dog-harunohi.com/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "用意するもの",
+     "v": "・ご予約時に混合ワクチン＋狂犬病予防接種の証明書を確認させていただきます。事情により接種できない場合は猶予証又は抗体検査結果をお持ちください。",
+     "src": "https://dog-harunohi.com/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23"
+  },
+  {
    "id": "G007",
    "name": "出張＆訪問トリミング おーるわん",
    "prefs": [
@@ -15315,27 +15343,6 @@
      "k": "定休日",
      "v": "✂️定休日：日曜日",
      "src": "https://joyfuldogs-home.jimdofree.com/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23"
-  },
-  {
-   "id": "Gt7a2b758",
-   "name": "Dog care salon Harunohi",
-   "prefs": [
-    "神奈川県"
-   ],
-   "city": "平塚市",
-   "url": "https://dog-harunohi.com/",
-   "services": "トリミングサロン",
-   "shop": true,
-   "facts": [
-    {
-     "k": "用意するもの",
-     "v": "・ご予約時に混合ワクチン＋狂犬病予防接種の証明書を確認させていただきます。事情により接種できない場合は猶予証又は抗体検査結果をお持ちください。",
-     "src": "https://dog-harunohi.com/",
      "by": "site",
      "checked": "2026-11-23"
     }
@@ -48670,6 +48677,42 @@
    "checked": "2026-11-23"
   },
   {
+   "id": "G-felice-fukuhama",
+   "name": "ペットサロン フェリーチェ 福浜店",
+   "prefs": [
+    "岡山県"
+   ],
+   "city": "岡山市南区",
+   "url": "https://felice-pet.jp/shop/fukuhama/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "施術の配慮",
+     "v": "シニア犬はトリマー2人で短時間で施術（目安60分）、寝たきりの子は体調に応じて相談可。予約は動物病院の診察時間内",
+     "src": "https://felice-pet.jp/trimming-menu/seniortrimming/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "料金",
+     "v": "シニア犬の施術は犬種別の基本料金に2,750円を加算（税込）",
+     "src": "https://felice-pet.jp/trimming-menu/seniortrimming/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "所在地",
+     "v": "岡山市南区福浜町2-2",
+     "src": "https://felice-pet.jp/shop/fukuhama/",
+     "by": "site",
+     "checked": "2026-11-26"
+    }
+   ],
+   "checked": "2026-11-26"
+  },
+  {
    "id": "G010",
    "name": "ワンワンハウス 犬の移動美容室",
    "prefs": [
@@ -57926,6 +57969,35 @@
     }
    ],
    "checked": "2026-11-23"
+  },
+  {
+   "id": "G-cherisia-tatsuno",
+   "name": "trimmingsalon cherisia",
+   "prefs": [
+    "兵庫県"
+   ],
+   "city": "たつの市",
+   "url": "https://www.cherisia.site/",
+   "services": "トリミングサロン",
+   "shop": true,
+   "senior": true,
+   "facts": [
+    {
+     "k": "施術の配慮",
+     "v": "体調に合わせて短時間で施術し、必要に応じて休憩を入れる（横になった姿勢での施術は要相談）",
+     "src": "https://www.cherisia.site/senior-pet/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "所在地",
+     "v": "たつの市龍野町富永160-1 さくらんぼ荘1-5",
+     "src": "https://www.cherisia.site/",
+     "by": "site",
+     "checked": "2026-11-26"
+    }
+   ],
+   "checked": "2026-11-26"
   },
   {
    "id": "G002",

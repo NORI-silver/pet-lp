@@ -114,6 +114,12 @@
   },
   {
    "name": "キャットプロ",
+   "comparison": {
+     "src": "https://catpro.jp/",
+     "checked": "2026-11-26",
+     "reception": "受付：24時間。",
+     "arrival": "現地捜索：当日や翌日に始められる場合あり。現場状況・地域によってはそれより後"
+    },
    "operator": "キャットプロ株式会社",
    "kind": "operator",
    "url": "https://catpro.jp/",
@@ -179,9 +185,16 @@
   {
    "name": "ネコちゃん探偵のプロ（迷子のネコちゃん110番）",
    "operator": "株式会社キャットバンク",
+    "comparison": {
+      "src": "https://catbank.co.jp/cblp01/",
+      "checked": "2026-11-26",
+      "reception": "受付：電話8:00〜22:00。LINEは24時間受付・順次返信",
+      "arrival": "現地入り：当日対応も可。予約や地域によっては翌日以降",
+      "total": "初動プランで保護できた場合は税込89,800円＋交通費。第三者が保護した場合や捜索終了後30日以内の保護も成功報酬の対象"
+    },
    "kind": "operator",
    "url": "https://catbank.co.jp/lp01/",
-   "price_url": "https://catbank.co.jp/lp01/",
+   "price_url": "https://catbank.co.jp/cblp01/",
    "base": "東京都中央区（東京・千葉・横浜・名古屋・和歌山・富山・大阪・福岡などに拠点と案内）",
    "area": "全国（と案内）",
    "animals": "猫だけ",
@@ -277,6 +290,12 @@
   },
   {
    "name": "猫探偵センター",
+   "comparison": {
+     "src": "https://neko-tantei-center.com/",
+     "checked": "2026-11-26",
+     "reception": "受付：電話・メールで24時間相談。",
+     "arrival": "現地入り：当日に来られる場合あり。到着見込みは電話で個別確認"
+    },
    "operator": "株式会社シジョウ",
    "kind": "operator",
    "url": "https://neko-tantei-center.com/",
@@ -1286,11 +1305,15 @@
    "who": "アニコムのペット保険の契約者（契約しているどうぶつ）",
    "free": "3日間の捜索料金と出張料",
    "free_quote": "3日間の捜索料金と出張料は無料です。",
-   "paid": "4日目からの延長は自己負担",
+   "paid": "無料期間を超える延長は自己負担",
    "by": "ジャパンロストペットレスキュー（JLPR）",
    "how": "電話で申し込み、契約者であることと証券番号を伝える",
    "limits": "離島など一部地域や集中豪雨などのときは着手が遅れる・使えないことがある",
-   "src": "https://www.anicom-sompo.co.jp/special/maigo/"
+   "src": "https://www.anicom-sompo.co.jp/special/maigo/kiyaku.html",
+   "announced_change": {
+    "text": "2027年3月31日までは3日間。4月1日以降に受け付けた捜索依頼から5日間に延長",
+    "src": "https://www.anicom-sompo.co.jp/news-release/2026/20261109/"
+   }
   },
   {
    "name": "ソニー損保のペット保険 迷子関連サービス",

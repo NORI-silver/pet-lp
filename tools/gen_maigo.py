@@ -64,8 +64,11 @@ def detectives():
         if _mf.has_cancel(d): _fl.append("cx")      # キャンセル料が公式に書いてある
         if _mf.has_separate_fee(d): _fl.append("ef")                          # 追加費用（出張費・経費など）が書いてある（「追加費用なし」ではない）
         _fl += _mf.method_keys(d)
+        comparison = d.get("comparison") or {}
+        if all(comparison.get(key) for key in ("arrival", "src", "checked")):
+            _fl.append("eta")
         methods = "・".join(d.get("methods") or []) if d.get("src") else ""
-        out.append({"name": d["name"], "url": d.get("price_url") or d.get("url"), "areas": ar, "plan": txt, "methods": methods, "flags": " ".join(_fl),
+        out.append({"name": d["name"], "url": d.get("price_url") or d.get("url"), "areas": ar, "plan": txt, "methods": methods, "comparison": comparison, "flags": " ".join(_fl),
                     "review_html": review_link("detective", d, "jc-src", scope="company"), "animals": "" if "明記なし" in d.get("animals", "") else d.get("animals", ""), "near": d.get("near") or [], "pref_url": d.get("pref_url") or "", "near_note": d.get("near_note") or "", "area_text": "全国" if ar == ["全国"] else (d.get("area") if d.get("area") not in (None, "", "記載なし") else d.get("base", ""))})
     return out
 
@@ -216,7 +219,7 @@ def _li(slot, title, body, go="", a=""):
 MAIGO_FAQ = [
  ("迷子になった犬・猫は、どこに連絡すればいいですか？", "いなくなった場所の動物愛護センター・保健所（住んでいる所と違えば両方）、警察（遺失届。46道府県は警察庁の共通の受付からオンラインで、東京都は警視庁の受付から出せます）、市区町村、近くの動物病院です。このページで市区町村を入れると、その町の窓口が順番に出ます。"),
  ("保護された子は、何日待ってもらえますか？", "自治体ごとに違います。東京都は収容期限を7日間としています。日数がすぎると譲渡などに回ることがあるので、届け出はその日のうちに出し、問い合わせは7日以上あけないでください。"),
- ("ペット探偵に頼むと、いくらかかりますか？", "公式サイトに料金を出している会社では、1日8時間で1万円台後半から6万円台、3日間のまとめで9万円台から17万円台と、会社とやり方で大きく違います。見つかったときだけの成功報酬がある会社もあります。交通費・チラシ代・延長の料金が別のこともあるので、見積もりで総額を確かめてください。アニコム損保・ソニー損保のペット保険の契約者は、3日間の捜索と出張料が無料です。"),
+ ("ペット探偵に頼むと、いくらかかりますか？", "公式サイトに料金を出している会社では、1日8時間で1万円台後半から6万円台、3日間のまとめで9万円台から17万円台と、会社とやり方で大きく違います。見つかったときだけの成功報酬がある会社もあります。交通費・チラシ代・延長の料金が別のこともあるので、見積もりで総額を確かめてください。対象のペット保険に付帯する捜索を使う場合は、有料で依頼する前に契約内容と専用の申し込み方法を確かめてください。"),
  ("猫が外に出てしまいました。遠くまで行っていますか？", "室内飼いの猫は、家のまわりの狭くて暗い場所にじっと隠れていることが多いと、環境省は案内しています。まず家の中、次に物置・室外機の下・縁の下など、家の近くから順にさがしてください。"),
  ("迷子のチラシには何を書けばいいですか？", "全身と顔の写真、いなくなった日時と場所（丁目まで）、種類・毛色・大きさ・性別・年齢、首輪や目立つ特徴、見かけたときのお願い、連絡先です。このページのチラシ作りに入れると、そのまま印刷できます。入れた内容と写真はどこにも送られません。"),
  ("マイクロチップが入っていれば、連絡は来ますか？", "センター・保健所・警察が番号を読み取り、登録の連絡先に連絡します。引っ越しや電話番号の変更で登録が古いと届かないので、迷子に気づいたら登録の連絡先がいまの番号かを確かめてください。住所・連絡先の変更は無料です。"),
@@ -229,19 +232,39 @@ def maigo(ctx):
     desc = "犬や猫が迷子になったら、いなくなった市区町村を入れるだけで、その町の動物愛護センター・保健所、警察のオンラインの遺失届、市役所、近くの動物病院と、今日・2日目・3日目・7日目にやることが順番に出ます。犬と猫のさがし方のちがい、印刷できる迷子チラシ、ペット探偵の料金のくらべも。"
     dets = detectives()
     wait = "".join(f'<tr><th>{e(a)}</th><td>{e(b)} <a class="jc-src" href="{e(u)}" target="_blank" rel="noopener">公式ページ ↗</a></td></tr>' for a, b, u in WAIT)
+    def note(d, key):
+        info = d["comparison"]
+        return f'<br><small>{e(info[key])}</small>' if info.get(key) and info.get("src") and info.get("checked") else ""
+    def location_note(d):
+        info = d["comparison"]
+        return (note(d, "arrival") + f' <a class="jc-src" href="{e(info["src"])}">出典</a>') if "eta" in d["flags"].split() else ""
     det_rows = "".join(
         f'<tr data-det="{e(d["flags"])}"><th><a href="{e(d.get("price_url") or d["url"])}" target="_blank" rel="noopener">{e(d["name"])}</a>{("<br>" + d["review_html"]) if d["review_html"] else ""}</th>'
-        f'<td>{e(d["plan"])}' + (f'<br><small>{e(d["animals"])}</small>' if d["animals"] else "") + '</td>'
-        f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + (f'<br><small><b>捜索方法：</b>{e(d["methods"])}</small>' if d["methods"] else '') + '</td></tr>' for d in dets)
+        f'<td>{e(d["plan"])}' + (f'<br><small>{e(d["animals"])}</small>' if d["animals"] else "") + note(d, "total") + '</td>'
+        f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + (f'<br><small><b>捜索方法：</b>{e(d["methods"])}</small>' if d["methods"] else '') + note(d, "reception") + location_note(d) + '</td></tr>' for d in dets)
     det_tbl = ('<div class="jc-sg" role="group" aria-label="ペット探偵の絞り込み"><span class="jc-sgl">どの子</span><button type="button" data-detf="dg" aria-pressed="false">犬と書いてある</button><button type="button" data-detf="ct" aria-pressed="false">猫と書いてある</button><span class="jc-sgl">よく使用される項目</span><button type="button" data-detf="z" aria-pressed="false">全国対応</button><button type="button" data-detf="p" aria-pressed="false">料金が分かる</button></div>'
                '<details class="jc-det"><summary>詳しい条件で絞り込む</summary><div class="jc-sg" role="group" aria-label="ペット探偵の詳しい条件"><span class="jc-sgl">受ける動物</span><button type="button" data-detf="ex" aria-pressed="false">鳥・小動物・爬虫類と書いてある</button><button type="button" data-detf="un" aria-pressed="false" title="犬・猫・鳥などを選んだときだけ使えます">動物の記載がない事業者も含める</button><span class="jc-sgl">地域</span><button type="button" data-detf="n" aria-pressed="false" title="上で県を選ぶと使えます。会社の記載による。出張費は各社の欄で確認">選んだ県が主な対応地域の会社</button><span class="jc-sgl">料金の書き方</span><button type="button" data-detf="cx" aria-pressed="false">キャンセルの条件が書いてある</button><button type="button" data-detf="ef" aria-pressed="false">別途費用の記載がある</button>'
-               + ('<span class="jc-sgl">捜索方法</span>' + "".join(f'<button type="button" data-detf="{k}" aria-pressed="false">{e(v[0])}</button>' for k, v in _mf.METHODS.items() if any(k in d["flags"].split() for d in dets))) +
-               '</div></details>'
+               + ('<span class="jc-sgl">捜索方法</span>' + "".join(f'<button type="button" data-detf="{k}" aria-pressed="false">{e(v[0])}</button>' for k, v in _mf.METHODS.items() if any(k in d["flags"].split() for d in dets)))
+               + ('<span class="jc-sgl">現地入り</span><button type="button" data-detf="eta" aria-pressed="false">現地入りの目安あり</button>' if any('eta' in d['flags'].split() for d in dets) else '')
+               + '</div></details>'
 
                f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域・捜索方法</th></tr></thead><tbody>{det_rows}</tbody></table></div>'
                f'<p class="jc-src">金額は税込（税別・税の記載がない会社は印つき）。各社の公式サイトの掲載情報をもとに、最低料金は「〜」で表示しています。順番に意味はありません。発見率など会社の発表の数字は、くらべ方がそろっていないので載せていません。</p>') if dets else ""
     ins = [i for i in PRIV.get("insurance", []) if not i.get("doubt")]
-    ins_html = "".join(f'<li><a href="{e(i["src"])}" target="_blank" rel="noopener">{e(i["name"])}</a>：{e(i.get("who", ""))}は、{e(i.get("free", ""))}が無料（{e(i.get("paid", ""))}）</li>' for i in ins)
+    def ins_row(i):
+        paid = f'（{e(i["paid"])}）' if i.get("paid") else ""
+        change = i.get("announced_change") or {}
+        if change.get("text") and change.get("src"):
+            benefit = f'捜索料と出張料が無料。{e(change["text"])}{paid} <a href="{e(change["src"])}">改定のお知らせ</a>'
+        else:
+            benefit = f'{e(i["free"])}が無料{paid}'
+        name = i["name"].split("の", 1)[0]
+        return f'<li><a href="{e(i["src"])}">{e(name)}</a>：{benefit}</li>'
+    ins_html = "".join(ins_row(i) for i in ins)
+    ins_box = ('<aside id="pro-insurance" class="emg-tips" aria-labelledby="pro-insurance-title">'
+               '<h3 id="pro-insurance-title">ペット保険に入っている方は、依頼前に確認</h3>'
+               '<p>アニコム損保・ソニー損保の対象契約なら、有料で頼む前に提携先のJLPRへ契約者であることと証券番号を伝えます。アニコム損保は、先に依頼してからの適用はできません。</p>'
+               f'<ul>{ins_html}</ul></aside>') if ins_html else ""
     boards = PRIV.get("boards", [])
     boards_go = "".join(f'<a class="l" href="{e(b["url"])}" target="_blank" rel="noopener">{e(re.sub(r"（.*?）", "", b["name"]))} ↗</a>' for b in boards)
     body = f"""
@@ -316,7 +339,7 @@ def maigo(ctx):
         </ul></li>
       <li><span class="jc-when">3日目</span><h3>見つからなければ、プロの捜索も考える</h3>
         <ul class="jc-ck">{_li("pro", "ペット探偵（迷子捜索の会社）に相談する", "捕獲器やカメラでの見張り、チラシの配り方など、家族だけでは難しいことを頼めます。料金は1日8時間で1万円台後半から6万円台、3日間のまとめで9万円台から17万円台と大きく違い、見つかったときだけの成功報酬（5万円・10万円）がある会社もあるので、交通費・チラシ代・延長をふくめた総額で見くらべます。", '<a class="l" href="#pro">料金をくらべる</a>')}
-          <li data-ck="ins"><label><input type="checkbox">ペット保険の契約を見直す</label><p>アニコム損保・ソニー損保のペット保険の契約者は、3日間の捜索と出張料が無料です（4日目からは自己負担）。ほかの保険も、証券やマイページで確かめてください。</p></li></ul></li>
+          <li data-ck="ins"><label><input type="checkbox">依頼する前に、ペット保険を確かめる</label><p>先に有料で頼むと保険の付帯サービスを使えないことがあります。<a href="#pro-insurance">保険ごとの使い方</a>を確認してください。</p></li></ul></li>
       <li><span class="jc-when">7日目</span><h3>問い合わせを続け、さがす範囲を広げる</h3>
         <ul class="jc-ck"><li data-ck="wide"><label><input type="checkbox">となりの市・県の窓口と警察にも届け出る</label><p>東京都は収容期限を7日間としています。問い合わせは7日以上あけず、届け出の内容が古くなっていないかも確かめます。チラシは雨でにじんだら貼りなおします。</p></li></ul></li>
       <li><span class="jc-when">見つかったら</span><h3>迎えに行き、出した届け出を取り下げる</h3>
@@ -332,8 +355,8 @@ def maigo(ctx):
     <div class="tbl"><table class="jc-cmp"><tbody>{wait}</tbody></table></div>
     <div class="sh" id="pro" tabindex="-1"><h2>ペット探偵を比較する</h2></div>
     <p>迷子の捜索をしている会社は、料金のしくみ（1日ごと・数日のまとめ）も、交通費やチラシ代が入っているかも違います。<a href="#report">いなくなった市区町村を入力する</a>と、対応地域の会社だけを表示します。</p>
+    {ins_box}
     <div id="jcPro">{det_tbl}</div>
-    {f'<h3>ペット保険の契約者が使える捜索</h3><ul>{ins_html}</ul>' if ins_html else ""}
     <div class="sh"><h2>犬と猫で、さがし方がちがう</h2></div>
     <div class="jc-vs"><div><h4>犬</h4><ul><li>いなくなった場所から円をえがくように広げる</li><li>散歩道・公園・駅まで</li><li>大型犬は1日に何十kmも動くことがある</li><li>首輪や鑑札があれば、警察に届けられることもある</li></ul></div>
     <div><h4>猫</h4><ul><li>まず家の中を、もう一度</li><li>家の近くの狭くて暗い場所</li><li>夜や早朝に、小さな声で</li><li>猫を収容しない自治体もある</li></ul></div></div>
