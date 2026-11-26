@@ -25,6 +25,7 @@ function pick(m){S.innerHTML='';Q.value=m[1];var PS1=document.getElementById('jc
   var loc=document.getElementById('jcLocal');
   if(loc){var links=[a(c&&c[1],'動物愛護センター・保健所'),a(P.pol,pf==='東京都'?'警視庁の遺失届':'警察の遺失届'),a(m[3],city+'の公式ページ'),a(m[5]||P.h,'近くの動物病院')].filter(Boolean);
    loc.hidden=false;loc.innerHTML='<h3>選んだ地域の連絡先</h3><ul>'+links.map(function(l){return'<li>'+l+'</li>'}).join('')+'</ul><small><a href="#pro">この地域のペット探偵を見る</a></small>'; }
+  txt('intro',esc(pf+city)+'の届け先を、下に出しました。');
   slot('center',card(c,c&&c[3]===city?city+'の窓口':pf+'の窓口（'+city+'はこの窓口の受け持ち）'));
   slot('police',a(P.pol,pf==='東京都'?'警視庁に遺失届を出す':'警察に遺失届をオンラインで出す'));
   slot('city',a(m[3],city+'のページを開く'));txt('city',city+'のページで「迷子」「犬の登録」と、道路で亡くなった動物の引き取り（清掃の担当）の窓口を見ます。つらい確認ですが、首輪の色などを伝えておくと、もしものときに連絡をもらえることがあります。');
@@ -60,8 +61,11 @@ an.forEach(function(b){b.onclick=function(){setAn(b.getAttribute('data-an'));ev(
 var ck={};try{ck=JSON.parse(ls('jcCk:'+K)||'{}')}catch(e){}
 document.querySelectorAll('.jc-ck>li[data-ck]').forEach(function(li){var k=li.getAttribute('data-ck')+(li.getAttribute('data-a')||''),i=li.querySelector('input');if(!i)return;i.checked=!!ck[k];li.classList.toggle('done',i.checked);
  i.onchange=function(){ck[k]=i.checked?1:0;li.classList.toggle('done',i.checked);ls('jcCk:'+K,JSON.stringify(ck))}});
-var PS0=document.getElementById('jcP');if(PS0)PS0.addEventListener('change',function(){Q.value='';H.hidden=true;var loc=document.getElementById('jcLocal');if(loc)loc.hidden=true;sug()});
-Q.addEventListener('input',function(){var loc=document.getElementById('jcLocal');if(loc){loc.hidden=true} sug()});
+var DEF=null;function snap(){DEF={};[].forEach.call(document.querySelectorAll('[data-slot]'),function(e){DEF[e.getAttribute('data-slot')]=e.innerHTML})}
+function rs(){if(!DEF)return;[].forEach.call(document.querySelectorAll('[data-slot]'),function(e){var k=e.getAttribute('data-slot');if(k in DEF)e.innerHTML=DEF[k]})}
+if(K==='maigo')snap();
+var PS0=document.getElementById('jcP');if(PS0)PS0.addEventListener('change',function(){Q.value='';H.hidden=true;rs();var loc=document.getElementById('jcLocal');if(loc)loc.hidden=true;sug()});
+Q.addEventListener('input',function(){var loc=document.getElementById('jcLocal');if(loc){loc.hidden=true}rs(); sug()});
 if(K==='maigo'){var flyer=document.getElementById('jcFly');function openFlyer(){if(location.hash==='#jcFly'&&flyer)flyer.open=true}window.addEventListener('hashchange',openFlyer);openFlyer()}Q.addEventListener('focus',function(){load(function(){})},{once:true});
 var last=ls('jcMuni');if(last){var p=last.split('|');load(function(){var h=D.m.filter(function(m){return m[0]===p[0]&&m[1]===p[1]});if(h.length&&!Q.value.trim())pick(h[0])})}
 /* 登録の期限 */

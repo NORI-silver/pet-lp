@@ -273,7 +273,7 @@ def maigo(ctx):
     </div>
     <div class="jc-panel" id="report" tabindex="-1">
       <h2>地域の届け先を調べる</h2>
-      <p class="jc-intro">上の「どこで探しますか？」で選んだ市区町村の届け先が、ここに出ます。</p>
+      <p class="jc-intro" data-slot="intro-t">上の「どこで探しますか？」で選んだ市区町村の届け先が、ここに出ます。</p>
     </div>
     <h2>捜索と届け出のチェックリスト</h2>
     <div id="jcR" class="jc-dog">
