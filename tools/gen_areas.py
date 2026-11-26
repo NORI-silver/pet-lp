@@ -2814,6 +2814,9 @@ print("tidy", tidy.build(ROOT), "pages")
 # 事業者カードの写真（使ってよいと確かめた写真だけ・ない施設は共通の枠。tools/cardphoto.py、Nori 2026-11-16「事業者カードへの写真表示」）
 import cardphoto
 print("cardphoto", cardphoto.build(ROOT))
+# [B] タクシー以外のカードの共通の形（骨組み＋分野の項目3〜5・たたんだ「詳しく見る」・公式／タクシー料金のボタン・写真の上の強み。tools/cardpolicy.py、Nori 2026-11-27 00:05）。find_data の前に動かして、県を選んだあとのカードも同じ形にする
+import cardpolicy
+print("cardpolicy", cardpolicy.build(ROOT))
 # 各分野の入口にキービジュアル（気持ちに合う写真＋解決の1行。tools/keyvisual.py、Nori 2026-11-16「各カテゴリでキービジュアルいれて」）
 import keyvisual
 print("keyvisual", keyvisual.build(ROOT), "pages")
