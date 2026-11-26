@@ -173,7 +173,11 @@
       var ic = el("span", "fac-ic"); ic.setAttribute("role", "img"); ic.setAttribute("aria-label", "このサイトから問い合わせできる事業者"); ic.title = "このサイトから問い合わせできる事業者"; ic.innerHTML = ICON;
       var b = a.querySelector("b") || a; b.insertBefore(ic, b.firstChild);
     }
-    var acts = card.querySelector(".fc-acts"), row = el("div", "fac-act");
+    var acts = card.querySelector(".fc-acts"), row = el("div", "fac-act"), pca = card.querySelector(".pc-a");
+    if (pca) { // 新しいカード（tools/cardpolicy.py）には公式サイトとタクシー料金のボタンがすでにある。重ねず、問い合わせ文のボタンだけ同じ列に足す
+      if (CONF[cat]) { var pq = el("button", "pc-ask", "問い合わせ文"); pq.setAttribute("aria-label", "問い合わせ文をつくる"); pq.type = "button"; pq.addEventListener("click", function(){ openAsk(card); }); pca.appendChild(pq); }
+      return;
+    }
     if (href) { var s = el("a", "fac-site", acts ? "公式サイト ↗" : "公式サイトを見る ↗"); s.setAttribute("data-ga", ""); s.href = siteUrl(href, cat); s.target = "_blank"; s.rel = "noopener"; s.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: fid, pref: prefOf(card), from: "button"}); }); row.appendChild(s); }
     if (CONF[cat]) { var q = el("button", acts ? "fc-a fc-a-note" : "", acts ? "問い合わせ文" : "問い合わせ文をつくる"); if (acts) q.setAttribute("aria-label", "問い合わせ文をつくる"); q.type = "button"; q.addEventListener("click", function(){ openAsk(card); }); row.appendChild(q); }
     var to = card.getAttribute("data-to");
