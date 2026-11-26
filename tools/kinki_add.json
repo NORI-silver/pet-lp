@@ -16011,17 +16011,20 @@
      "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
      "by": "site",
      "checked": "2026-11-23"
-    },
+    }
+   ],
+   "checked": "2026-11-23",
+   "retired_facts": [
     {
      "k": "送迎",
      "v": "送迎は現在、月曜日限定で承っています。店舗から10km圏内の地域を対象に、無料で送迎いたします。",
      "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
      "by": "site",
-     "checked": "2026-11-23"
+     "checked": "2026-11-23",
+     "retired": "2026-11-26",
+     "reason": "出典の仮ページ（chatgpt.site）にも、事業者の公式サイト dogsalon-oppoto.com にも、今は送迎の記載を確認できない。送迎の対象サービスの範囲も出典に書かれていない。掲載は「不明」に戻した（送迎なしという意味ではない）。"
     }
-   ],
-   "checked": "2026-11-23",
-   "pickup": true
+   ]
   },
   {
    "id": "PHk178ba0",

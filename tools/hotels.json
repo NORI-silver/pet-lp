@@ -68951,34 +68951,6 @@
    "checked": "2026-11-23"
   },
   {
-   "id": "PHk421d80",
-   "name": "dogsalon oppoto",
-   "prefs": [
-    "滋賀県"
-   ],
-   "city": "栗東市",
-   "url": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
-   "services": "ペットホテル、トリミング、しつけ",
-   "facts": [
-    {
-     "k": "料金",
-     "v": "日中預かり(9:30〜17:30) ¥2,500 / わんちゃんのカフェへの同伴入店はご遠慮いただいております。カフェご利用中は、広場でのお預かりをご利用いただけます(1時間660円)。 / お預かりには保育園のチケットを使い、しつけ教室の料金として別途¥15,000をお支払いいただきます。",
-     "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
-     "by": "site",
-     "checked": "2026-11-23"
-    },
-    {
-     "k": "送迎",
-     "v": "送迎は現在、月曜日限定で承っています。店舗から10km圏内の地域を対象に、無料で送迎いたします。",
-     "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
-     "by": "site",
-     "checked": "2026-11-23"
-    }
-   ],
-   "checked": "2026-11-23",
-   "pickup": true
-  },
-  {
    "id": "PHnk007",
    "name": "ドッグサロン のあーる",
    "prefs": [
@@ -71598,6 +71570,38 @@
      "src": "https://www.petstationlavie.com/",
      "by": "site",
      "checked": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "id": "PHk421d80",
+   "name": "dogsalon oppoto",
+   "prefs": [
+    "滋賀県"
+   ],
+   "city": "栗東市",
+   "url": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
+   "services": "ペットホテル、トリミング、しつけ",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "日中預かり(9:30〜17:30) ¥2,500 / わんちゃんのカフェへの同伴入店はご遠慮いただいております。カフェご利用中は、広場でのお預かりをご利用いただけます(1時間660円)。 / お預かりには保育園のチケットを使い、しつけ教室の料金として別途¥15,000をお支払いいただきます。",
+     "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
+     "by": "site",
+     "checked": "2026-11-23"
+    }
+   ],
+   "checked": "2026-11-23",
+   "retired_facts": [
+    {
+     "k": "送迎",
+     "v": "送迎は現在、月曜日限定で承っています。店舗から10km圏内の地域を対象に、無料で送迎いたします。",
+     "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
+     "by": "site",
+     "checked": "2026-11-23",
+     "web_excerpt_2026_11_25": "日々のお散歩からカフェや旅行まで、その子の個性に合わせて、お出かけに役立つマナーを少しずつ練習。店舗から10km圏内限定・無料送迎 。送迎は現在、月曜日限定で承っています。店舗から10km圏内の地域を対象に、無料で送迎いたします。",
+     "retired": "2026-11-26",
+     "reason": "出典の仮ページ（chatgpt.site）にも、事業者の公式サイト dogsalon-oppoto.com にも、今は送迎の記載を確認できない。送迎の対象サービスの範囲も出典に書かれていない。掲載は「不明」に戻した（送迎なしという意味ではない）。"
     }
    ]
   },
