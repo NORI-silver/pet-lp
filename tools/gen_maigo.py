@@ -150,7 +150,7 @@ FORM_JS = '''<script>(function(){var b=document.getElementById('jcGo');if(!b)ret
 function set(x){g.forEach(function(y){y.setAttribute('aria-pressed',y===x?'true':'false')});var n=document.getElementById('jcNone');if(n)n.setAttribute('aria-pressed',x?'false':'true');var v=document.querySelector('.jc-vs');if(v&&x&&x.getAttribute('data-vs')){[].forEach.call(v.children,function(c,k){c.style.display=(String(k)===x.getAttribute('data-vs'))?'':'none'})}else if(v){[].forEach.call(v.children,function(c){c.style.display=''})}}
 g.forEach(function(x){x.addEventListener('click',function(e){var on=x.getAttribute('aria-pressed')==='true';if(x.tagName==='A')e.preventDefault();set(on?null:x)})});var n=document.getElementById('jcNone');if(n)n.onclick=function(){set(null)};
 b.onclick=function(){var x=g.filter(function(y){return y.getAttribute('aria-pressed')==='true'})[0];var t=document.getElementById(x?(x.getAttribute('data-to')||'jcR'):(b.getAttribute('data-def')||'jcR'));if(t){if(t.tagName==='DETAILS')t.open=true;t.scrollIntoView({behavior:'smooth',block:'start'});try{t.focus({preventScroll:true})}catch(e){}}}})();</script>'''
-CSS = ("<style>.jcf{background:#fff;border:1px solid #efe0d3;border-radius:18px;padding:14px 14px 12px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin:4px 0 14px}.jcf-r{padding:8px 0;border-top:1px solid #f5ebe2}.jcf-r:first-child{border-top:0;padding-top:0}.jcf-l{display:block;font-weight:800;font-size:.95rem;margin:0 0 6px;color:#2b2622}.jcf .jc-q1{border:0;padding:0;margin:0;background:none}.jcf-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}.jc-nb{display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:10px 8px;font-size:.92rem;font-weight:700;line-height:1.35;color:#3c2f26;text-decoration:none;cursor:pointer;min-height:48px;font-family:inherit}.jc-nb[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff}.jcf-det{border-top:1px solid #f5ebe2;padding-top:8px;margin-top:2px}.jcf-det>summary{cursor:pointer;font-weight:800;padding:6px 0}.jcf-go{display:block;width:100%;margin:10px 0 2px;border:0;border-radius:999px;background:#2b2622;color:#fff;font-weight:800;font-size:1rem;padding:13px;cursor:pointer;font-family:inherit}.jcf .jc-ff{margin:0}.jcf select{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #d9c9bb;border-radius:12px;font-size:1rem;background:#fff;margin:0 0 8px;font-family:inherit}"
+CSS = ("<style>.jc-res{margin:0 0 14px}.jc-rh{font-size:1.05rem;font-weight:800;margin:6px 0 8px}.jc-rh2{font-size:.95rem;font-weight:800;margin:14px 0 6px;color:#5b4d42}.jc-res .jc-card{background:#fff;border:1px solid #efe0d3;border-radius:16px;padding:14px;margin:0 0 10px;box-shadow:0 1px 6px rgba(0,0,0,.05);display:block}.jc-k{display:inline-block;font-size:.72rem;font-weight:800;color:#7a5b45;background:#f6ece3;border-radius:999px;padding:2px 10px;margin:0 0 6px}.jc-res .ux-c-n{display:block;font-weight:800;font-size:1.05rem;color:#2b2622;text-decoration:none;line-height:1.4;margin:0}.jc-res .ux-c-m{margin:4px 0 0;font-size:.88rem;line-height:1.6;color:#4a3f37}.jc-res .jc-cl{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.jc-res .jc-cl.open{display:block}.jc-res .jc-x{border:0;background:none;color:#c2410c;font-weight:700;font-size:.85rem;padding:4px 0;cursor:pointer;font-family:inherit}.jc-res .ux-c-a{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.jc-res .ux-c-a a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;border-radius:12px;padding:8px 6px;font-weight:800;font-size:.9rem;text-decoration:none;background:#2b2622;color:#fff!important;border:1px solid #2b2622;line-height:1.3}.jc-res .ux-c-a a+a{background:#fff;color:#2b2622!important;border-color:#e3d3c6}.jc-res .ux-c-a a:only-child{grid-column:1/-1}.jc-res .jc-more{display:block;width:100%;box-sizing:border-box;margin:4px 0 10px;border:1px solid #e3d3c6;border-radius:12px;background:#fff;color:#2b2622;font-weight:800;font-size:.92rem;padding:12px;cursor:pointer;font-family:inherit}.jc-res .jc-cnt{font-size:.85rem;color:#5b4d42;margin:0 0 8px}.jcf .jc-sg{margin:4px 0}.jcf-go+.jc-res{margin-top:14px}.jcf{background:#fff;border:1px solid #efe0d3;border-radius:18px;padding:14px 14px 12px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin:4px 0 14px}.jcf-r{padding:8px 0;border-top:1px solid #f5ebe2}.jcf-r:first-child{border-top:0;padding-top:0}.jcf-l{display:block;font-weight:800;font-size:.95rem;margin:0 0 6px;color:#2b2622}.jcf .jc-q1{border:0;padding:0;margin:0;background:none}.jcf-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}.jc-nb{display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:10px 8px;font-size:.92rem;font-weight:700;line-height:1.35;color:#3c2f26;text-decoration:none;cursor:pointer;min-height:48px;font-family:inherit}.jc-nb[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff}.jcf-det{border-top:1px solid #f5ebe2;padding-top:8px;margin-top:2px}.jcf-det>summary{cursor:pointer;font-weight:800;padding:6px 0}.jcf-go{display:block;width:100%;margin:10px 0 2px;border:0;border-radius:999px;background:#2b2622;color:#fff;font-weight:800;font-size:1rem;padding:13px;cursor:pointer;font-family:inherit}.jcf .jc-ff{margin:0}.jcf select{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #d9c9bb;border-radius:12px;font-size:1rem;background:#fff;margin:0 0 8px;font-family:inherit}"
  ".jc-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:4px 0 8px}.jc-actions a{display:flex;flex-direction:column;justify-content:center;min-height:64px;padding:8px 5px;text-align:center;border:1px solid #d9c9bb;border-radius:12px;color:#2b2622;background:#fff;text-decoration:none;line-height:1.3;overflow-wrap:anywhere}.jc-actions a.jc-primary{background:#a9390b;color:#fff;border-color:#a9390b}.jc-actions b{font-size:clamp(.8rem,3.4vw,1rem)}.jc-actions small{font-size:.72rem;margin-top:4px}.jc-short{display:flex;flex-wrap:wrap;gap:0 14px;align-items:center;margin-bottom:10px}.jc-short a{display:inline-flex;align-items:center;min-height:44px;font-size:.9rem}.jc-panel,#pro,#found,#jcFly{scroll-margin-top:90px}.jc-panel{margin-bottom:16px}.jc-panel h2{font-size:1.15rem;margin:0 0 7px}.jc-intro{font-size:.88rem;margin:0 0 7px;color:#4a3d34}.jc-local h3{font-size:.97rem;margin:10px 0 4px}.jc-local ul{margin:4px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.jc-local a{display:flex;align-items:center;min-height:44px;line-height:1.35;padding:6px 8px;border:1px solid #e5d5c8;border-radius:8px;font-size:.85rem;overflow-wrap:anywhere}.jc-local small{display:block;margin-top:6px}.jc-an-label{font-size:.85rem;margin:10px 0 0}.jc-an-label+.jc-an{margin-top:4px}@media(max-width:639px){.jc-maigo-hero{padding-top:10px;padding-bottom:10px}.jc-maigo-hero .crumb{margin-top:0;margin-bottom:4px}.jc-maigo-hero h1{margin:3px 0 6px}.jc-panel{margin-bottom:12px}.jc-short{margin-bottom:4px}}@media(min-width:640px){.jc-actions a{min-height:72px;padding:10px}.jc-actions small{font-size:.85rem}.jc-local ul{grid-template-columns:repeat(3,minmax(0,1fr))}}"
  ".jc-3{list-style:none;margin:4px 0 10px;padding:12px 14px;background:#fff;border:1px solid #efe0d3;border-radius:16px;display:grid;gap:8px}"
  ".jc-3 li{display:flex;gap:10px;align-items:center;font-size:1rem;line-height:1.45;font-weight:700;color:#2b2622}"
@@ -256,7 +256,7 @@ def maigo(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
     url = f"{SITE}/jichitai/maigo/"
     title = "ペットが迷子になったら：今日やること｜市区町村ごとの届け出先・さがし方・チラシ・ペット探偵の料金｜ペットのくらし窓口"
-    desc = "犬や猫が迷子になったら、いなくなった市区町村を入れるだけで、その町の動物愛護センター・保健所、警察のオンラインの遺失届、市役所、近くの動物病院と、今日・2日目・3日目・7日目にやることが順番に出ます。犬と猫のさがし方のちがい、印刷できる迷子チラシ、ペット探偵の料金のくらべも。"
+    desc = "犬や猫が迷子になったら、いなくなった市区町村を入れるだけで、その町の動物愛護センター・保健所、警察のオンラインの遺失届、市役所、近くの動物病院と、今日・2日目・3日目・7日目にやることが順番に出ます。犬と猫のさがし方のちがい、印刷できる迷子チラシ、ペット探偵の料金のくらべ、猫の迷子捜索に対応するペット探偵も探せます。"
     dets = detectives()
     wait = "".join(f'<tr><th>{e(a)}</th><td>{e(b)} <a class="jc-src" href="{e(u)}" target="_blank" rel="noopener">公式ページ ↗</a></td></tr>' for a, b, u in WAIT)
     def note(d, key):
@@ -279,6 +279,10 @@ def maigo(ctx):
 
                f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域・捜索方法</th></tr></thead><tbody>{det_rows}</tbody></table></div>'
                f'<p class="jc-src">金額は税込（税別・税の記載がない会社は印つき）。各社の公式サイトの掲載情報をもとに、最低料金は「〜」で表示しています。順番に意味はありません。発見率など会社の発表の数字は、くらべ方がそろっていないので載せていません。</p>') if dets else ""
+    det_flt = ""
+    if det_tbl:
+        det_flt, _t = det_tbl.split('<div class="tbl">', 1)
+        det_tbl = '<div class="tbl">' + _t
     ins = [i for i in PRIV.get("insurance", []) if not i.get("doubt")]
     def ins_row(i):
         paid = f'（{e(i["paid"])}）' if i.get("paid") else ""
@@ -312,12 +316,15 @@ def maigo(ctx):
       <div class="jcf-r"><span class="jcf-l">どんな状況ですか？</span>
         <div class="jcf-need" role="group" aria-label="状況">
           <a class="jc-nb" data-nb data-to="first" href="#first" aria-pressed="false">うちの子が迷子になった（今日やること）</a>
-          <a class="jc-nb" data-nb data-to="report" href="#report" aria-pressed="false">地域の届け先を調べる</a>
+          <a class="jc-nb" data-nb data-to="jcRes" href="#jcRes" aria-pressed="false">地域の届け先を調べる</a>
           <a class="jc-nb" data-nb data-to="pro" href="#pro" aria-pressed="false">ペット探偵を探す</a>
           <a class="jc-nb" data-nb data-to="found" href="#found" aria-pressed="false">迷子の子を見つけた・保護した</a>
         </div></div>
-      <button type="button" class="jcf-go" id="jcGo" data-def="report">この条件で探す</button>
+      <div class="jcf-r"><span class="jcf-l">ペット探偵の条件（探偵に頼むとき）</span>{det_flt}</div>
+      <button type="button" class="jcf-go" id="jcGo" data-def="jcRes">この条件で探す</button>
     </div>
+    <section class="jc-res" id="jcRes" tabindex="-1" aria-live="polite"><h2 class="jc-rh" id="jcRH">地域を入れると、届け先と探偵の数がここに出ます</h2><div id="jcRC"></div>
+      <h3 class="jc-rh2">来てくれるペット探偵 <span id="jcRN"></span></h3><p class="jc-cnt" id="jcRK"></p><div id="jcRD"></div></section>
     <div class="jc-short"><a href="#jcFly">チラシを作る</a><a href="#found">迷子の子を保護した方へ</a></div>
     <div class="jc-panel" id="first" tabindex="-1">
       <h2>まず、この3つ</h2>
@@ -398,7 +405,7 @@ def maigo(ctx):
     <div class="sh"><h2>保護された子は、何日待ってもらえる？町によってちがいます</h2></div>
     <p>待ってもらえる日数、迎えるときの費用、猫を収容するかどうかは、自治体ごとにかなり違います。届け出をその日のうちに出し、毎日問い合わせる理由はここにあります。</p>
     <div class="tbl"><table class="jc-cmp"><tbody>{wait}</tbody></table></div>
-    <div class="sh" id="pro" tabindex="-1"><h2>ペット探偵を比較する</h2></div>
+    <div class="sh" id="pro" tabindex="-1"><h2>ペット探偵を比較する（迷子ペットの捜索会社）</h2></div>
     <p>迷子の捜索をしている会社は、料金のしくみ（1日ごと・数日のまとめ）も、交通費やチラシ代が入っているかも違います。<a href="#report">いなくなった市区町村を入力する</a>と、対応地域の会社だけを表示します。</p>
     {ins_box}
     <div id="jcPro">{det_tbl}</div>
@@ -462,8 +469,9 @@ def touroku(ctx):
       <div class="jc-q1" style="border-width:1px"><div class="jc-ff" style="margin:0"><label>迎えた日<input id="jcD" type="date"></label><label>生まれた日（生後90日より前に迎えたときだけ）<input id="jcB" type="date"></label></div>
       <p class="jc-due" id="jcDue" aria-live="polite"></p></div>
       </details>
-      <button type="button" class="jcf-go" id="jcGo" data-def="jcR">この条件で探す</button>
+      <button type="button" class="jcf-go" id="jcGo" data-def="jcRes">この条件で探す</button>
     </div>
+    <section class="jc-res" id="jcRes" tabindex="-1" aria-live="polite"><h2 class="jc-rh" id="jcRH">市区町村を入れると、登録の窓口がここに出ます</h2><div id="jcRC"></div></section>
     <div id="jcR">
     <ol class="jc-tl">
       <li><span class="jc-when">まず確かめる</span><h3>どこから迎えた？で、やることが変わる</h3>
