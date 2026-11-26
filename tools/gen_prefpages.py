@@ -195,7 +195,8 @@ def render_pref(ctx, cat, pf, rows, city=None):
     url = SITE + (chref(cat, pf, city) if city else href(cat, pf))
     place = city or pf
     name, unit = (cat["name_fn"](pf) if cat.get("name_fn") else cat["name"]), cat["unit"]
-    facts = [f for f in cat["facts"](rs) if f and not re.search(r"：\d+／\d+$", f)]  # 「猫も受ける施設：3／5」のような運営側の集計は出さない（2026-11-16 スマホ点検）
+    seo = cat.get("pref_overrides", {}).get(pf, {}) if not city else {}
+    facts = [f for f in seo.get("facts_fn", cat["facts"])(rs) if f and not re.search(r"：\d+／\d+$", f)]  # 「猫も受ける施設：3／5」のような運営側の集計は出さない（2026-11-16 スマホ点検）
     lab, rprefs = _region_of(pf, ctx["emg_regions"])
     near = [p for p in rprefs if p != pf and p in rows]
     near_html = ""
@@ -215,7 +216,6 @@ def render_pref(ctx, cat, pf, rows, city=None):
     stable_meta = search_meta.listing(cat["slug"], place)
     if stable_meta:
         title, desc = stable_meta
-    seo = cat.get("pref_overrides", {}).get(pf, {}) if not city else {}
     if seo.get("title"): title = seo["title"]
     if seo.get("desc"): desc = seo["desc"]
     faq = cat["faq"](place, rs, n)
@@ -223,7 +223,7 @@ def render_pref(ctx, cat, pf, rows, city=None):
     ld = '<script type="application/ld+json">\n' + json.dumps([
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
-        {"@type": "ListItem", "position": 2, "name": cat["h1"], "item": f'{SITE}/{cat["slug"]}/'},
+        {"@type": "ListItem", "position": 2, "name": seo.get("crumb_h1", cat["h1"]), "item": f'{SITE}/{cat["slug"]}/'},
         {"@type": "ListItem", "position": 3, "name": f"{pf}の{name}", "item": SITE + href(cat, pf)}] + ([{"@type": "ListItem", "position": 4, "name": f"{place}の{name}", "item": url}] if city else [])},
       {"@context": "https://schema.org", "@type": "ItemList", "name": f"{place}の{name}", "numberOfItems": len(show),
        "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": it["name"], "url": it["url"]} for i, it in enumerate(show[:100])]},  # 100件まで（構造化データのスクリプトが24KBを超えないように）
@@ -241,7 +241,7 @@ def render_pref(ctx, cat, pf, rows, city=None):
 <main>
 <section class="area-hero">
   <div class="wrap">
-    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/{cat['slug']}/">{e(cat['h1'])}</a> › {(f'<a href="{href(cat, pf)}">{e(pf)}</a> › {e(city)}' if city else e(pf))}</nav>
+    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットタクシー予約窓口</a> › <a href="/{cat['slug']}/">{e(seo.get('crumb_h1', cat['h1']))}</a> › {(f'<a href="{href(cat, pf)}">{e(pf)}</a> › {e(city)}' if city else e(pf))}</nav>
     <h1><small>{n}{e(unit)}・公式サイトの情報をもとに</small>{e(place)}の{e(name)}</h1>
     <p class="lede">{e(cat['lede'](place, n))}</p>
   </div>

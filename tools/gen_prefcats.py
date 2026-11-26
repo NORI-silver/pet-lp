@@ -125,7 +125,7 @@ import re
 def _far(h): return bool(re.search(r"（[^）]+[都道府県]）$", h.get("city", "")))
 def _night_facts(rs):
     far = sum(_far(h) for h in rs)
-    out = [f"県の中にある夜間・救急の病院：{len(rs) - far}院"]
+    out = [f"県の中にある夜間動物病院・救急の病院：{len(rs) - far}院"]
     if far: out.append(f"県の中に見つからないため、近くの県の病院も載せています：{far}院（所在地の県をカードに書いています）")
     return out
 
@@ -330,8 +330,8 @@ def _night_title(pf, rs, n):
     if far == n:
         return f"{pf}から行ける夜間・救急動物病院｜近くの県の{n}院{cl}・{mid}"
     if far:
-        return f"{pf}の夜間・救急動物病院{n - far}院と近くの県の{far}院｜{mid}{cl}"
-    return f"{pf}の夜間・救急動物病院{n}院｜{mid}{cl}"
+        return f"{pf}の夜間動物病院・救急動物病院{n - far}院と近くの県の{far}院｜{mid}{cl}"
+    return f"{pf}の夜間動物病院・救急動物病院{n}院｜{mid}{cl}"
 def _night_desc(pf, rs, n):
     hc = _hours_counts(rs); cs = _night_cities(rs); far = sum(_far(h) for h in rs)
     if far == n:
@@ -368,6 +368,16 @@ SOUGI["title_fn"] = _sougi_title
 SOUGI["desc_fn"] = _sougi_desc
 NIGHT["title_fn"] = _night_title
 NIGHT["desc_fn"] = _night_desc
+# Nori 2026-11-26: the current Shizuoka night listing stays as published while paused.
+NIGHT["pref_overrides"] = {
+    "静岡県": {
+        "title": _night_title("静岡県", [h for h in _HOS if "静岡県" in h.get("prefs", [])],
+                              len([h for h in _HOS if "静岡県" in h.get("prefs", [])])).replace(
+                                  "夜間動物病院・救急動物病院", "夜間・救急動物病院"),
+        "facts_fn": lambda rs: [v.replace("夜間動物病院・救急の病院", "夜間・救急の病院") for v in _night_facts(rs)],
+        "crumb_h1": "夜間・救急の動物病院",
+    },
+}
 SOUGI["table"] = [("個別火葬", lambda f: "○" if _has(f, "個別火葬") else ""), ("立ち会い", lambda f: "○" if _has(f, "立ち会い火葬") else ""), ("お迎え", lambda f: "○" if _has(f, "お迎え") or _has(f, "訪問火葬") else ""), ("霊園", lambda f: "○" if _has(f, "霊園") else ""), ("納骨堂", lambda f: "○" if _has(f, "納骨堂") else ""), ("料金の例", lambda f: "○" if f.get("price") else "")]
 NIGHT["table"] = [("受付時間", lambda h: h.get("hours", "")), ("所在地", lambda h: h.get("city", ""))]
 import facility_cards as _FC
