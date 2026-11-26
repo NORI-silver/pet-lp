@@ -1,0 +1,122 @@
+diff --git a/tools/gen_maigo.py b/tools/gen_maigo.py
+index d8d3b9f..19aaf3b 100644
+--- a/tools/gen_maigo.py
++++ b/tools/gen_maigo.py
+@@ -140,7 +140,7 @@ FORM_JS = '''<script>(function(){var b=document.getElementById('jcGo');if(!b)ret
+ function set(x){g.forEach(function(y){y.setAttribute('aria-pressed',y===x?'true':'false')});var n=document.getElementById('jcNone');if(n)n.setAttribute('aria-pressed',x?'false':'true');var v=document.querySelector('.jc-vs');if(v&&x&&x.getAttribute('data-vs')){[].forEach.call(v.children,function(c,k){c.style.display=(String(k)===x.getAttribute('data-vs'))?'':'none'})}else if(v){[].forEach.call(v.children,function(c){c.style.display=''})}}
+ g.forEach(function(x){x.addEventListener('click',function(e){var on=x.getAttribute('aria-pressed')==='true';if(x.tagName==='A')e.preventDefault();set(on?null:x)})});var n=document.getElementById('jcNone');if(n)n.onclick=function(){set(null)};
+ b.onclick=function(){var x=g.filter(function(y){return y.getAttribute('aria-pressed')==='true'})[0];var t=document.getElementById(x?(x.getAttribute('data-to')||'jcR'):(b.getAttribute('data-def')||'jcR'));if(t){if(t.tagName==='DETAILS')t.open=true;t.scrollIntoView({behavior:'smooth',block:'start'});try{t.focus({preventScroll:true})}catch(e){}}}})();</script>'''
+-CSS = ("<style>.jcf{background:#fff;border:1px solid #efe0d3;border-radius:18px;padding:14px 14px 12px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin:4px 0 14px}.jcf-r{padding:8px 0;border-top:1px solid #f5ebe2}.jcf-r:first-child{border-top:0;padding-top:0}.jcf-l{display:block;font-weight:800;font-size:.95rem;margin:0 0 6px;color:#2b2622}.jcf .jc-q1{border:0;padding:0;margin:0;background:none}.jcf-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}.jc-nb{display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:10px 8px;font-size:.92rem;font-weight:700;line-height:1.35;color:#3c2f26;text-decoration:none;cursor:pointer;min-height:48px;font-family:inherit}.jc-nb[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff}.jcf-det{border-top:1px solid #f5ebe2;padding-top:8px;margin-top:2px}.jcf-det>summary{cursor:pointer;font-weight:800;padding:6px 0}.jcf-go{display:block;width:100%;margin:10px 0 2px;border:0;border-radius:999px;background:#2b2622;color:#fff;font-weight:800;font-size:1rem;padding:13px;cursor:pointer;font-family:inherit}.jcf .jc-ff{margin:0}.jcf select{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #d9c9bb;border-radius:12px;font-size:1rem;background:#fff;margin:0 0 8px;font-family:inherit}"
++CSS = ("<style>.jc-res{margin:0 0 14px}.jc-rh{font-size:1.05rem;font-weight:800;margin:6px 0 8px}.jc-rh2{font-size:.95rem;font-weight:800;margin:14px 0 6px;color:#5b4d42}.jc-res .jc-card{background:#fff;border:1px solid #efe0d3;border-radius:16px;padding:14px;margin:0 0 10px;box-shadow:0 1px 6px rgba(0,0,0,.05);display:block}.jc-k{display:inline-block;font-size:.72rem;font-weight:800;color:#7a5b45;background:#f6ece3;border-radius:999px;padding:2px 10px;margin:0 0 6px}.jc-res .ux-c-n{display:block;font-weight:800;font-size:1.05rem;color:#2b2622;text-decoration:none;line-height:1.4;margin:0}.jc-res .ux-c-m{margin:4px 0 0;font-size:.88rem;line-height:1.6;color:#4a3f37}.jc-res .jc-cl{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.jc-res .jc-cl.open{display:block}.jc-res .jc-x{border:0;background:none;color:#c2410c;font-weight:700;font-size:.85rem;padding:4px 0;cursor:pointer;font-family:inherit}.jc-res .ux-c-a{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.jc-res .ux-c-a a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;border-radius:12px;padding:8px 6px;font-weight:800;font-size:.9rem;text-decoration:none;background:#2b2622;color:#fff!important;border:1px solid #2b2622;line-height:1.3}.jc-res .ux-c-a a+a{background:#fff;color:#2b2622!important;border-color:#e3d3c6}.jc-res .ux-c-a a:only-child{grid-column:1/-1}.jc-res .jc-more{display:block;width:100%;box-sizing:border-box;margin:4px 0 10px;border:1px solid #e3d3c6;border-radius:12px;background:#fff;color:#2b2622;font-weight:800;font-size:.92rem;padding:12px;cursor:pointer;font-family:inherit}.jc-res .jc-cnt{font-size:.85rem;color:#5b4d42;margin:0 0 8px}.jcf .jc-sg{margin:4px 0}.jcf-go+.jc-res{margin-top:14px}.jcf{background:#fff;border:1px solid #efe0d3;border-radius:18px;padding:14px 14px 12px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin:4px 0 14px}.jcf-r{padding:8px 0;border-top:1px solid #f5ebe2}.jcf-r:first-child{border-top:0;padding-top:0}.jcf-l{display:block;font-weight:800;font-size:.95rem;margin:0 0 6px;color:#2b2622}.jcf .jc-q1{border:0;padding:0;margin:0;background:none}.jcf-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}.jc-nb{display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:10px 8px;font-size:.92rem;font-weight:700;line-height:1.35;color:#3c2f26;text-decoration:none;cursor:pointer;min-height:48px;font-family:inherit}.jc-nb[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff}.jcf-det{border-top:1px solid #f5ebe2;padding-top:8px;margin-top:2px}.jcf-det>summary{cursor:pointer;font-weight:800;padding:6px 0}.jcf-go{display:block;width:100%;margin:10px 0 2px;border:0;border-radius:999px;background:#2b2622;color:#fff;font-weight:800;font-size:1rem;padding:13px;cursor:pointer;font-family:inherit}.jcf .jc-ff{margin:0}.jcf select{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #d9c9bb;border-radius:12px;font-size:1rem;background:#fff;margin:0 0 8px;font-family:inherit}"
+  ".jc-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:4px 0 8px}.jc-actions a{display:flex;flex-direction:column;justify-content:center;min-height:64px;padding:8px 5px;text-align:center;border:1px solid #d9c9bb;border-radius:12px;color:#2b2622;background:#fff;text-decoration:none;line-height:1.3;overflow-wrap:anywhere}.jc-actions a.jc-primary{background:#a9390b;color:#fff;border-color:#a9390b}.jc-actions b{font-size:clamp(.8rem,3.4vw,1rem)}.jc-actions small{font-size:.72rem;margin-top:4px}.jc-short{display:flex;flex-wrap:wrap;gap:0 14px;align-items:center;margin-bottom:10px}.jc-short a{display:inline-flex;align-items:center;min-height:44px;font-size:.9rem}.jc-panel,#pro,#found,#jcFly{scroll-margin-top:90px}.jc-panel{margin-bottom:16px}.jc-panel h2{font-size:1.15rem;margin:0 0 7px}.jc-intro{font-size:.88rem;margin:0 0 7px;color:#4a3d34}.jc-local h3{font-size:.97rem;margin:10px 0 4px}.jc-local ul{margin:4px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.jc-local a{display:flex;align-items:center;min-height:44px;line-height:1.35;padding:6px 8px;border:1px solid #e5d5c8;border-radius:8px;font-size:.85rem;overflow-wrap:anywhere}.jc-local small{display:block;margin-top:6px}.jc-an-label{font-size:.85rem;margin:10px 0 0}.jc-an-label+.jc-an{margin-top:4px}@media(max-width:639px){.jc-maigo-hero{padding-top:10px;padding-bottom:10px}.jc-maigo-hero .crumb{margin-top:0;margin-bottom:4px}.jc-maigo-hero h1{margin:3px 0 6px}.jc-panel{margin-bottom:12px}.jc-short{margin-bottom:4px}}@media(min-width:640px){.jc-actions a{min-height:72px;padding:10px}.jc-actions small{font-size:.85rem}.jc-local ul{grid-template-columns:repeat(3,minmax(0,1fr))}}"
+  ".jc-3{list-style:none;margin:4px 0 10px;padding:12px 14px;background:#fff;border:1px solid #efe0d3;border-radius:16px;display:grid;gap:8px}"
+  ".jc-3 li{display:flex;gap:10px;align-items:center;font-size:1rem;line-height:1.45;font-weight:700;color:#2b2622}"
+@@ -250,6 +250,10 @@ def maigo(ctx):
+ 
+                f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域・捜索方法</th></tr></thead><tbody>{det_rows}</tbody></table></div>'
+                f'<p class="jc-src">金額は税込（税別・税の記載がない会社は印つき）。各社の公式サイトの掲載情報をもとに、最低料金は「〜」で表示しています。順番に意味はありません。発見率など会社の発表の数字は、くらべ方がそろっていないので載せていません。</p>') if dets else ""
++    det_flt = ""
++    if det_tbl:
++        det_flt, _t = det_tbl.split('<div class="tbl">', 1)
++        det_tbl = '<div class="tbl">' + _t
+     ins = [i for i in PRIV.get("insurance", []) if not i.get("doubt")]
+     def ins_row(i):
+         paid = f'（{e(i["paid"])}）' if i.get("paid") else ""
+@@ -283,12 +287,15 @@ def maigo(ctx):
+       <div class="jcf-r"><span class="jcf-l">どんな状況ですか？</span>
+         <div class="jcf-need" role="group" aria-label="状況">
+           <a class="jc-nb" data-nb data-to="first" href="#first" aria-pressed="false">うちの子が迷子になった（今日やること）</a>
+-          <a class="jc-nb" data-nb data-to="report" href="#report" aria-pressed="false">地域の届け先を調べる</a>
++          <a class="jc-nb" data-nb data-to="jcRes" href="#jcRes" aria-pressed="false">地域の届け先を調べる</a>
+           <a class="jc-nb" data-nb data-to="pro" href="#pro" aria-pressed="false">ペット探偵を探す</a>
+           <a class="jc-nb" data-nb data-to="found" href="#found" aria-pressed="false">迷子の子を見つけた・保護した</a>
+         </div></div>
+-      <button type="button" class="jcf-go" id="jcGo" data-def="report">この条件で探す</button>
++      <div class="jcf-r"><span class="jcf-l">ペット探偵の条件（探偵に頼むとき）</span>{det_flt}</div>
++      <button type="button" class="jcf-go" id="jcGo" data-def="jcRes">この条件で探す</button>
+     </div>
++    <section class="jc-res" id="jcRes" tabindex="-1" aria-live="polite"><h2 class="jc-rh" id="jcRH">地域を入れると、届け先と探偵の数がここに出ます</h2><div id="jcRC"></div>
++      <h3 class="jc-rh2">来てくれるペット探偵 <span id="jcRN"></span></h3><p class="jc-cnt" id="jcRK"></p><div id="jcRD"></div></section>
+     <div class="jc-short"><a href="#jcFly">チラシを作る</a><a href="#found">迷子の子を保護した方へ</a></div>
+     <div class="jc-panel" id="first" tabindex="-1">
+       <h2>まず、この3つ</h2>
+@@ -417,8 +424,9 @@ def touroku(ctx):
+       <div class="jc-q1" style="border-width:1px"><div class="jc-ff" style="margin:0"><label>迎えた日<input id="jcD" type="date"></label><label>生まれた日（生後90日より前に迎えたときだけ）<input id="jcB" type="date"></label></div>
+       <p class="jc-due" id="jcDue" aria-live="polite"></p></div>
+       </details>
+-      <button type="button" class="jcf-go" id="jcGo" data-def="jcR">この条件で探す</button>
++      <button type="button" class="jcf-go" id="jcGo" data-def="jcRes">この条件で探す</button>
+     </div>
++    <section class="jc-res" id="jcRes" tabindex="-1" aria-live="polite"><h2 class="jc-rh" id="jcRH">市区町村を入れると、登録の窓口がここに出ます</h2><div id="jcRC"></div></section>
+     <div id="jcR">
+     <ol class="jc-tl">
+       <li><span class="jc-when">まず確かめる</span><h3>どこから迎えた？で、やることが変わる</h3>
+diff --git a/tools/jichitai.js b/tools/jichitai.js
+index ab5db24..32f94f8 100644
+--- a/tools/jichitai.js
++++ b/tools/jichitai.js
+@@ -19,12 +19,26 @@ function sug(){var v=Q.value;var PS=document.getElementById('jcP');if(!v.trim()&
+  S.innerHTML=(h.length?h.slice(0,8).map(function(m,i){return'<button type="button" data-i="'+i+'">'+esc(m[0]+m[1])+'</button>'}).join('')+(h.length>8?'<span class="jc-src">続けて入れるとしぼれます</span>':''):'<span class="jc-src">見つかりません。市区町村の名前で入れてください（例：佐倉市）</span>')+(WD?'<span class="jc-src">同じ名前の区が、ほかの市にもあります。政令指定都市（大阪市・横浜市など）の区は、市の名前（例：大阪市）で選んでください。</span>':'');
+  S.querySelectorAll('button').forEach(function(b){b.onclick=function(){pick(h[+b.getAttribute('data-i')])}})})}
+ function card(c,sub){if(!c)return'';return'<div class="jc-card cs" style="margin:8px 0 0;width:100%"><b class="ux-c-n">'+esc(c[0])+'</b><p class="ux-c-m">'+esc(sub)+'</p><div class="ux-c-a">'+a(c[1],'公式ページ')+(c[2]?a(c[2],'保護情報',1):a('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(c[0]),'地図を見る',1))+'</div></div>'}
++/* 結果（フォームのすぐ下）：届け先のカードと、来てくれるペット探偵のカード。件数は実際に出ているカードの数 */
++var RH=document.getElementById('jcRH'),RH0=RH?RH.textContent:'',RC=document.getElementById('jcRC'),RS={t:'',n:0},DA=false;
++function rcard(k,n,sub,links,cl){var x=cl&&sub.length>70;return'<div class="jc-card cs"><span class="jc-k">'+esc(k)+'</span><b class="ux-c-n">'+esc(n)+'</b>'+(sub?'<p class="ux-c-m'+(x?' jc-cl':'')+'">'+esc(sub)+'</p>'+(x?'<button type="button" class="jc-x" aria-expanded="false">料金・条件をすべて見る</button>':''):'')+'<div class="ux-c-a">'+links+'</div></div>'}
++function resHead(vis){if(!RH)return;if(!RS.t){RH.textContent=RH0;return}RH.textContent=RS.t+RS.n+'件'+(vis==null?'':'・来てくれるペット探偵 '+vis+'社')}
++function resSet(t,html,n){RS.t=t;RS.n=n;if(RC)RC.innerHTML=html;detCards()}
++function resReset(){RS.t='';RS.n=0;if(RC)RC.innerHTML='';detCards()}
++function detCards(){var out=document.getElementById('jcRD'),el=document.getElementById('jcPro');if(!out||!el){resHead(null);return}var rows=[].filter.call(el.querySelectorAll('tbody tr'),function(r){return r.style.display!=='none'}),h='',lim=DA?rows.length:5;
++ rows.slice(0,lim).forEach(function(r){var l=r.querySelector('th a'),td=r.querySelectorAll('td'),f=function(c){if(!c)return'';var k=c.cloneNode(true);[].forEach.call(k.querySelectorAll('a'),function(x){x.remove()});[].forEach.call(k.querySelectorAll('br'),function(x){x.replaceWith('／')});return k.textContent.replace(/(／\s*)+/g,'／').replace(/／$/,'').trim()};if(l)h+=rcard('ペット探偵',l.textContent,'料金：'+f(td[0])+'　対応地域：'+f(td[1]),a(l.getAttribute('href'),'公式サイトで料金を見る'),1)});
++ if(!rows.length)h='<p class="jc-src">この条件に合う会社は見つかりませんでした。条件を減らしてみてください。</p>';
++ else if(rows.length>5)h+='<button type="button" class="jc-more" data-all="1">'+(DA?'最初の5社だけにする':'のこり'+(rows.length-5)+'社も、ここに出す')+'</button>';
++ out.innerHTML=h;var nn=document.getElementById('jcRN'),kk=document.getElementById('jcRK');if(nn)nn.textContent='（'+rows.length+'社）';if(kk)kk.textContent=rows.length?rows.length+'社のうち'+Math.min(lim,rows.length)+'社を表示中。比べやすい一覧表は、このページの下にもあります。':'';resHead(rows.length)}
++document.addEventListener('click',function(e){var t=e.target;if(t.classList&&t.classList.contains('jc-more')){DA=!DA;detCards()}else if(t.classList&&t.classList.contains('jc-x')){var p=t.previousElementSibling,o=p.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');t.textContent=o?'たたむ':'料金・条件をすべて見る'}});
+ function pick(m){S.innerHTML='';Q.value=m[1];var PS1=document.getElementById('jcP');if(PS1)PS1.value=m[0];ls('jcMuni',m[0]+'|'+m[1]);var P=D.p[m[0]]||{},c=D.c[m[4]],city=m[1],pf=m[0];
+  H.hidden=false;
+  if(K==='maigo'){H.innerHTML='<b>'+esc(pf+city)+'</b>を選択中';
+-  var loc=document.getElementById('jcLocal');
+-  if(loc){var links=[a(c&&c[1],'動物愛護センター・保健所'),a(P.pol,pf==='東京都'?'警視庁の遺失届':'警察の遺失届'),a(m[3],city+'の公式ページ'),a(m[5]||P.h,'近くの動物病院')].filter(Boolean);
+-   loc.hidden=false;loc.innerHTML='<h3>選んだ地域の連絡先</h3><ul>'+links.map(function(l){return'<li>'+l+'</li>'}).join('')+'</ul><small><a href="#pro">この地域のペット探偵を見る</a></small>'; }
++  var cs=[];if(c)cs.push(rcard('動物愛護センター・保健所',c[0],c[3]===city?city+'の窓口':pf+'の窓口（'+city+'はこの窓口の受け持ち）',a(c[1],'公式ページを開く')+(c[2]?a(c[2],'保護情報を見る',1):'')));
++  if(P.pol)cs.push(rcard('警察の遺失届',pf==='東京都'?'警視庁':pf+'の警察','遺失届をオンラインで出せます',a(P.pol,pf==='東京都'?'警視庁に遺失届を出す':'遺失届を出す')));
++  if(m[3])cs.push(rcard('市区町村',city+'の公式ページ','「迷子」「犬の登録」と、道路で亡くなった動物の引き取りの窓口を、ページの中で探します',a(m[3],city+'のページを開く')));
++  var rel=(m[5]||P.h)?'<h3 class="jc-rh2">あわせて</h3>'+rcard('近くの動物病院を探す（届け先ではありません）',city+'の近くの動物病院','保護された子が運ばれることもあります',a(m[5]||P.h,'動物病院を見る')+(P.n?a(P.n,'夜間・救急の病院',1):'')):'';
++  resSet(pf+city+'の届け先 ',cs.join('')+rel,cs.length);
+   txt('intro',esc(pf+city)+'の届け先を、下に出しました。');
+   slot('center',card(c,c&&c[3]===city?city+'の窓口':pf+'の窓口（'+city+'はこの窓口の受け持ち）'));
+   slot('police',a(P.pol,pf==='東京都'?'警視庁に遺失届を出す':'警察に遺失届をオンラインで出す'));
+@@ -33,7 +47,10 @@ function pick(m){S.innerHTML='';Q.value=m[1];var PS1=document.getElementById('jc
+   slot('hogo',(c&&c[2]?a(c[2],c[0].replace(/（.*）/,'')+'の保護情報'):'')+a('https://www.env.go.jp/nature/dobutsu/aigo/shuyo/link.html','となりの市・県の保護情報',1));
+   pro(pf);ev('jichitai_find',{pref:pf,page:K})}
+  else if(K==='touroku'){H.innerHTML='<b>'+esc(pf+city)+'</b>の犬の登録は、'+esc(city)+'の窓口です。';
+-  slot('city',a(m[3],city+'のページで「犬の登録」を見る'));ev('jichitai_find',{pref:pf,page:K})}
++  slot('city',a(m[3],city+'のページで「犬の登録」を見る'));
++  var ts=[];if(m[3])ts.push(rcard('犬の登録の窓口',city+'の公式ページ','犬の登録は、住んでいる市区町村で行います（迎えてから30日以内）。担当の窓口は、公式ページの中で確認してください',a(m[3],city+'のページで「犬の登録」を見る')));
++  var tr=(m[5]||P.h)?'<h3 class="jc-rh2">あわせて</h3>'+rcard('近くの動物病院を探す（登録の窓口ではありません）',city+'の近くの動物病院','予防注射は、動物病院か市区町村の集合注射で受けられます。受け付けの有無・日程は各施設で確認してください',a(m[5]||P.h,'動物病院を見る')):'';
++  resSet(pf+city+'の犬の登録窓口 ',ts.join('')+tr,ts.length);ev('jichitai_find',{pref:pf,page:K})}
+  else{H.innerHTML='<b>'+esc(pf+city)+'</b>の近くの相談先です。';
+   slot('tmp',(P.o?a(P.o,pf+'のペットホテル'):a('/pet-hotel/','ペットホテル'))+(P.t?a(P.t,pf+'のペットシッター',1):a('/pet-sitter/','ペットシッター',1)));
+   slot('rojin',(P.r?a(P.r,pf+'の老犬ホーム'):a('/rojin-home/','老犬ホーム・老猫ホーム'))+a('/guide/rojin-home-cost/','費用のしくみ',1));
+@@ -42,7 +59,7 @@ function pick(m){S.innerHTML='';Q.value=m[1];var PS1=document.getElementById('jc
+ function covers(d,pf){var ar=d.areas||[];return ar.indexOf('全国')>=0||ar.indexOf(pf)>=0||(d.near||[]).indexOf(pf)>=0}
+ function local(d,pf){return(d.near||[]).indexOf(pf)>=0||!!(d.u&&d.u[pf])||((d.areas||[]).indexOf(pf)>=0&&(d.areas||[])[0]!=='全国')}
+ /* ペット探偵：その県に来てくれる会社だけを、地元・出張費なしの会社を先にして1つの表に並べる（表は最初の4件と「のこり」に分かれているので、全部の行を集める） */
+-var detF={};function detApply(){var el=document.getElementById('jcPro');if(!el)return;var act=Object.keys(detF).filter(function(k){return detF[k]});[].forEach.call(el.querySelectorAll('tbody tr'),function(r){if(r.style.display==='none'&&!r._detH)return;var f=' '+(r.getAttribute('data-det')||'')+' ';var ok=act.every(function(k){if(k==='un')return true;if(k==='dg'||k==='ct'||k==='ex')return f.indexOf(' '+k+' ')>=0||(detF.un&&f.indexOf(' un ')>=0);if(k==='n')return !pro.pf||(r.getAttribute('data-near')||'').split('|').indexOf(pro.pf)>=0;return f.indexOf(' '+k+' ')>=0});if(!ok){r._detH=1;r.style.display='none'}else if(r._detH){r._detH=0;r.style.display=''}})}
++var detF={};function detApply(){var el=document.getElementById('jcPro');if(!el)return;var act=Object.keys(detF).filter(function(k){return detF[k]});[].forEach.call(el.querySelectorAll('tbody tr'),function(r){if(r.style.display==='none'&&!r._detH)return;var f=' '+(r.getAttribute('data-det')||'')+' ';var ok=act.every(function(k){if(k==='un')return true;if(k==='dg'||k==='ct'||k==='ex')return f.indexOf(' '+k+' ')>=0||(detF.un&&f.indexOf(' un ')>=0);if(k==='n')return !pro.pf||(r.getAttribute('data-near')||'').split('|').indexOf(pro.pf)>=0;return f.indexOf(' '+k+' ')>=0});if(!ok){r._detH=1;r.style.display='none'}else if(r._detH){r._detH=0;r.style.display=''}});detCards()}
+ function pro(pf){pro.pf=pf;var el=document.getElementById('jcPro');if(!el||!D.d||!D.d.length)return;var tb=el.querySelector('tbody');if(!tb)return;
+  var rows=pro.rows||(pro.rows=[].slice.call(el.querySelectorAll('tbody tr'))),more=el.querySelector('details.more'),near=[],far=[],off=[];
+  D.d.forEach(function(d,i){var r=rows[i];if(!r)return;if(d.u&&d.u[pf]){var l=r.querySelector('th a');if(l)l.href=d.u[pf]}r.setAttribute('data-near',(d.near||[]).join('|'));(covers(d,pf)?(local(d,pf)?near:far):off).push(r)});
+@@ -64,10 +81,10 @@ document.querySelectorAll('.jc-ck>li[data-ck]').forEach(function(li){var k=li.ge
+ var DEF=null;function snap(){DEF={};[].forEach.call(document.querySelectorAll('[data-slot]'),function(e){DEF[e.getAttribute('data-slot')]=e.innerHTML})}
+ function rs(){if(!DEF)return;[].forEach.call(document.querySelectorAll('[data-slot]'),function(e){var k=e.getAttribute('data-slot');if(k in DEF)e.innerHTML=DEF[k]})}
+ if(K==='maigo')snap();
+-var PS0=document.getElementById('jcP');if(PS0)PS0.addEventListener('change',function(){Q.value='';H.hidden=true;rs();var loc=document.getElementById('jcLocal');if(loc)loc.hidden=true;sug()});
+-Q.addEventListener('input',function(){var loc=document.getElementById('jcLocal');if(loc){loc.hidden=true}rs(); sug()});
++var PS0=document.getElementById('jcP');if(PS0)PS0.addEventListener('change',function(){Q.value='';H.hidden=true;rs();resReset();var loc=document.getElementById('jcLocal');if(loc)loc.hidden=true;sug()});
++Q.addEventListener('input',function(){var loc=document.getElementById('jcLocal');if(loc){loc.hidden=true}rs();resReset(); sug()});
+ if(K==='maigo'){var flyer=document.getElementById('jcFly');function openFlyer(){if(location.hash==='#jcFly'&&flyer)flyer.open=true}window.addEventListener('hashchange',openFlyer);openFlyer()}Q.addEventListener('focus',function(){load(function(){})},{once:true});
+-var last=ls('jcMuni');if(last){var p=last.split('|');load(function(){var h=D.m.filter(function(m){return m[0]===p[0]&&m[1]===p[1]});if(h.length&&!Q.value.trim())pick(h[0])})}
++detCards();var last=ls('jcMuni');if(last){var p=last.split('|');load(function(){var h=D.m.filter(function(m){return m[0]===p[0]&&m[1]===p[1]});if(h.length&&!Q.value.trim())pick(h[0])})}
+ /* 登録の期限 */
+ var dd=document.getElementById('jcD'),bd=document.getElementById('jcB'),due=document.getElementById('jcDue');
+ function fmt(d){return(d.getMonth()+1)+'月'+d.getDate()+'日'}
