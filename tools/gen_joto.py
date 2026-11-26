@@ -317,7 +317,7 @@ def render_city(ctx, c):
     before = "".join(f"<dt>{e(t)}</dt><dd>{e(d)}</dd>" for t, d in BEFORE)
     ppage = f"/{SLUG}/{PSLUG[pf]}/"
     title = f"{city}の保護犬・保護猫の譲渡（里親）｜{c['name']}の条件・講習・譲渡会｜ペットのくらし窓口"
-    desc = (f"{city}で保護犬・保護猫の里親になりたい人へ。{c['name']}の譲渡の条件（" + "、".join(c["conds"][:2]) + "など）と流れ・譲渡会のリンクをまとめました。")[:150]
+    desc = (f"{city}で保護犬・保護猫の里親になりたい人へ。{c['name']}の譲渡の条件（" + "、".join(x.rstrip("。") for x in c["conds"][:2]) + "など）と流れ・譲渡会のリンクをまとめました。")[:150]
     ld = _ld(SITE, url, f"{city}の保護犬・保護猫の譲渡", fq,
              [("ペットタクシー予約窓口", SITE + "/"), (H1, f"{SITE}/{SLUG}/"), (f"{pf}の保護犬・保護猫の譲渡", SITE + ppage), (city, url)])
     lead3 = "".join(f"<li>{e(x)}</li>" for x in c["conds"][:3])
