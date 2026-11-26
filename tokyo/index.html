@@ -1188,8 +1188,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
               <select id="hour" name="hour" required aria-label="時"><option value="">時</option><option value="00">0時</option><option value="01">1時</option><option value="02">2時</option><option value="03">3時</option><option value="04">4時</option><option value="05">5時</option><option value="06">6時</option><option value="07">7時</option><option value="08">8時</option><option value="09">9時</option><option value="10">10時</option><option value="11">11時</option><option value="12">12時</option><option value="13">13時</option><option value="14">14時</option><option value="15">15時</option><option value="16">16時</option><option value="17">17時</option><option value="18">18時</option><option value="19">19時</option><option value="20">20時</option><option value="21">21時</option><option value="22">22時</option><option value="23">23時</option></select>
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
-          <button type="button" class="btn see-btn" id="seeBtn" aria-describedby="seeBtnHelp">会社と料金を見る</button>
-          <p class="see-sub" id="seeBtnHelp">ペットの条件を下の欄に入れると、条件に合う会社にしぼれます。料金の確認は無料です。まだ問い合わせは送信されません。</p>
           <div class="est" id="est" hidden aria-live="polite"></div>
         </div>
 
@@ -1232,7 +1230,9 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option selected>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
         </div>
 
-        <p class="form-foot s1-hide">場所と日時を入れると、来てくれる会社と料金の目安が出ます（まだ送信されません）。料金は当日の道路事情や待ち時間で変わることがあります。</p>
+          <button type="button" class="btn see-btn" id="seeBtn" aria-describedby="seeBtnHelp">会社と料金を見る</button>
+          <p class="see-sub" id="seeBtnHelp">料金の確認は無料です。まだ問い合わせは送信されません。</p>
+        <p class="form-foot s1-hide">移動とペットの必須項目を入れると、条件に合う会社と料金の目安が出ます（まだ問い合わせは送信されません）。料金は当日の道路事情や待ち時間で変わることがあります。</p>
         <div class="need-box" id="partnerNeed" hidden></div>
         <section class="partner-results" id="partnerResults" aria-labelledby="partnerTitle" hidden>
           <h3 id="partnerTitle" tabindex="-1">条件に合う事業者</h3>
@@ -1560,10 +1560,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // カードを出せない理由。"fields"＝入っていない項目がある、"time"＝お迎えが近すぎる・帰りが行きより前、""＝そろっている
   function partnerBlock(){
     if (!GAS_URL) return "off";
-    // 候補は「どこから・どこへ・いつ」だけで出す（3項目フォーム 2026-11-23）。ペットや人数などは、入れたものだけ確かめ、空ならいちばん広い条件で調べる
+    // 移動・ペット・人数など、候補より前の必須入力がそろってから調べる。連絡先は候補選択後。
     var required = ["pref","pickup","dropoff","date","hour","minute"];
     if (required.some(function(id){return !$(id).value || !$(id).checkValidity();})) return "fields";
-    if (Array.prototype.some.call(form.querySelectorAll("#refine input:not([type=radio]):not([type=checkbox]), #refine select"), function(el){ return !el.disabled && el.value && !el.closest("#retBox") && !el.checkValidity(); })) return "fields";
+    if (missingFields($("partnerResults")).length) return "fields";
     var fd = new FormData(form), at = new Date(fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute") + ":00+09:00");
     if (!fd.get("trip")) return "fields";
     if (fd.get("trip") === "往復") {
@@ -1599,6 +1599,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (form.classList.contains("s1") && el.closest(".s1-hide")) openRefine("send", true);
     if (el.id === "pref") $("prefPick").classList.add("show");
     if (el.id === "pref" && $("prefBtn") && !$("prefBtn").hidden) { $("prefBtn").scrollIntoView({block: "center", behavior: "smooth"}); openPrefs(true); return; }
+    for (var parent = el.parentElement; parent && parent !== form; parent = parent.parentElement) { if (parent.tagName === "DETAILS") parent.open = true; }
     var target = el.type === "radio" ? el.closest(".seg") || el : el;
     target.scrollIntoView({block: "center", behavior: "smooth"});
     try { el.focus({preventScroll: true}); } catch (e) { el.focus(); }
@@ -1619,7 +1620,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   form.addEventListener("change", function(e){ var t = e.target.type === "radio" ? e.target.closest(".seg") : e.target; if (t) t.classList.remove("missing"); });
   // 事業者のカードを出すのに足りない項目を、カードの場所に出す（入力を始めてから）
   function showNeed(){
-    var box = $("partnerNeed"), list = missingFields($("partnerResults")).filter(function(x){ return !x.el.closest("#refine") || x.el.closest("#retBox"); }); // くわしい条件は、空でも候補を出せる
+    var box = $("partnerNeed"), list = missingFields($("partnerResults")); // 移動・ペット・人数で、まだ入っていない項目をそろえる
     $("prefPick").classList.toggle("show", !$("pref").value && !!$("pickup").value.trim() && document.activeElement !== $("pickup") || !$("prefFix").hidden); // 場所から県が分からないときだけ、県を選ぶ欄を出す
     var started = ["pickup","dropoff","date"].some(function(id){ return $(id).value; }) || Array.prototype.some.call(petsBox.querySelectorAll("input[name$=_weight]"), function(el){ return el.value; });
     box.hidden = !started || !list.length;
@@ -1854,7 +1855,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var block = partnerBlock();
     track("see_partners_click", {ready: block === "" ? 1 : 0});
     if (block === "fields") {
-      var miss = missingFields($("partnerResults")).filter(function(x){ return !x.el.closest("#refine") || x.el.closest("#retBox"); });
+      var miss = missingFields($("partnerResults"));
       showNeed(); if (miss.length) { markMissing(miss); jumpTo(miss[0].el); }
       return;
     }

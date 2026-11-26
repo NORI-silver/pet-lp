@@ -64,10 +64,10 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   // カードを出せない理由。"fields"＝入っていない項目がある、"time"＝お迎えが近すぎる・帰りが行きより前、""＝そろっている
   function partnerBlock(){
     if (!GAS_URL) return "off";
-    // 候補は「どこから・どこへ・いつ」だけで出す（3項目フォーム 2026-11-23）。ペットや人数などは、入れたものだけ確かめ、空ならいちばん広い条件で調べる
+    // 移動・ペット・人数など、候補より前の必須入力がそろってから調べる。連絡先は候補選択後。
     var required = ["pref","pickup","dropoff","date","hour","minute"];
     if (required.some(function(id){return !$(id).value || !$(id).checkValidity();})) return "fields";
-    if (Array.prototype.some.call(form.querySelectorAll("#refine input:not([type=radio]):not([type=checkbox]), #refine select"), function(el){ return !el.disabled && el.value && !el.closest("#retBox") && !el.checkValidity(); })) return "fields";
+    if (missingFields($("partnerResults")).length) return "fields";
     var fd = new FormData(form), at = new Date(fd.get("date") + "T" + fd.get("hour") + ":" + fd.get("minute") + ":00+09:00");
     if (!fd.get("trip")) return "fields";
     if (fd.get("trip") === "往復") {
@@ -103,6 +103,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     if (form.classList.contains("s1") && el.closest(".s1-hide")) openRefine("send", true);
     if (el.id === "pref") $("prefPick").classList.add("show");
     if (el.id === "pref" && $("prefBtn") && !$("prefBtn").hidden) { $("prefBtn").scrollIntoView({block: "center", behavior: "smooth"}); openPrefs(true); return; }
+    for (var parent = el.parentElement; parent && parent !== form; parent = parent.parentElement) { if (parent.tagName === "DETAILS") parent.open = true; }
     var target = el.type === "radio" ? el.closest(".seg") || el : el;
     target.scrollIntoView({block: "center", behavior: "smooth"});
     try { el.focus({preventScroll: true}); } catch (e) { el.focus(); }
@@ -123,7 +124,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
   form.addEventListener("change", function(e){ var t = e.target.type === "radio" ? e.target.closest(".seg") : e.target; if (t) t.classList.remove("missing"); });
   // 事業者のカードを出すのに足りない項目を、カードの場所に出す（入力を始めてから）
   function showNeed(){
-    var box = $("partnerNeed"), list = missingFields($("partnerResults")).filter(function(x){ return !x.el.closest("#refine") || x.el.closest("#retBox"); }); // くわしい条件は、空でも候補を出せる
+    var box = $("partnerNeed"), list = missingFields($("partnerResults")); // 移動・ペット・人数で、まだ入っていない項目をそろえる
     $("prefPick").classList.toggle("show", !$("pref").value && !!$("pickup").value.trim() && document.activeElement !== $("pickup") || !$("prefFix").hidden); // 場所から県が分からないときだけ、県を選ぶ欄を出す
     var started = ["pickup","dropoff","date"].some(function(id){ return $(id).value; }) || Array.prototype.some.call(petsBox.querySelectorAll("input[name$=_weight]"), function(el){ return el.value; });
     box.hidden = !started || !list.length;
@@ -358,7 +359,7 @@ var SAVE_KEY = "petReq"; // 以前の版の保存先（読み込み時に消す�
     var block = partnerBlock();
     track("see_partners_click", {ready: block === "" ? 1 : 0});
     if (block === "fields") {
-      var miss = missingFields($("partnerResults")).filter(function(x){ return !x.el.closest("#refine") || x.el.closest("#retBox"); });
+      var miss = missingFields($("partnerResults"));
       showNeed(); if (miss.length) { markMissing(miss); jumpTo(miss[0].el); }
       return;
     }
