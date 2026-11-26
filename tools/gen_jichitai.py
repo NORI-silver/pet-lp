@@ -4,12 +4,13 @@
 # データ：tools/jichitai.json（都道府県47・政令指定都市20・中核市62。担当の分け方は環境省の一覧に合わせた）。
 import json, os
 import prefkeep
+import paused
 
 J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "jichitai.json"), encoding="utf-8"))
 
 SLUG = "jichitai"
-TITLE = "迷子・犬の登録・飼えなくなったとき｜困りごとから、次にやることと全国の動物愛護センター・保健所がわかる｜ペットのくらし窓口"
-DESC = "迷子になった、犬を迎えた、飼い続けるのが難しくなった。困りごとを選ぶと、その町で次にやることが順番にわかります。全国の動物愛護センター・保健所（47都道府県と政令市・中核市）も市区町村からさがせます。"
+TITLE = "迷子・飼えなくなったとき｜困りごとから、次にやることと全国の動物愛護センター・保健所がわかる｜ペットのくらし窓口"
+DESC = "迷子になった、飼い続けるのが難しくなった。困りごとを選ぶと、その町で次にやることが順番にわかります。全国の動物愛護センター・保健所（47都道府県と政令市・中核市）も市区町村からさがせます。"
 
 # どこに連絡するか（どれも法律と各自治体の案内に書いてあること）
 WHERE = [
@@ -172,7 +173,7 @@ def render(ctx):
     slug = ctx.get("pref_slug", {})
     JOTO = {}
     try:
-        for x in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "joto.json"), encoding="utf-8"))["centers"]:
+        for x in ([] if paused.is_paused("/joto/") else json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "joto.json"), encoding="utf-8"))["centers"]):
             JOTO[(x["pref"], x.get("city") or "")] = x
     except Exception:
         pass
@@ -215,16 +216,20 @@ def render(ctx):
     ld = '<script type="application/ld+json">\n' + json.dumps([
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ペットのくらし窓口", "item": SITE + "/"},
-        {"@type": "ListItem", "position": 2, "name": "迷子・登録・飼えなくなったとき", "item": url}]},
+        {"@type": "ListItem", "position": 2, "name": "迷子・飼えなくなったとき", "item": url}]},
       {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
       ensure_ascii=False, indent=1) + "\n</script>"
+    register_entry = """<div class="jc-enb"><h3>犬の登録・予防注射</h3><p>市区町村と迎えた日で、期限と窓口が出ます。</p>
+        <div class="jc-pick">
+          <a class="jc-pk u" href="/jichitai/touroku/"><b>登録・予防注射の期限と窓口</b><span>市区町村・迎え方を選ぶ。いつまでに・どこで・いくら</span></a>
+        </div></div>""" if not paused.is_paused("/jichitai/touroku/") else ""
     return ctx["head"](TITLE, DESC, url, ld).replace("</head>", CSS + "</head>", 1) + f"""
 <main>
 <section class="area-hero">
   <div class="wrap">
-    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットのくらし窓口</a> › 迷子・登録・飼えなくなったとき</nav>
-    <h1>迷子・犬の登録・飼えなくなったとき</h1>
+    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットのくらし窓口</a> › 迷子・飼えなくなったとき</nav>
+    <h1>迷子・飼えなくなったとき</h1>
   </div>
 </section>
 <section style="padding-top:0">
@@ -237,10 +242,7 @@ def render(ctx):
           <a class="jc-pk" href="/jichitai/maigo/#pro"><b>ペット探偵を探す</b><span>民間の捜索サービスと料金を比較</span></a>
           <a class="jc-pk" href="/jichitai/maigo/#found"><b>迷子の子を見つけた・保護した</b><span>どこに届けるか</span></a>
         </div></div>
-      <div class="jc-enb"><h3>犬の登録・予防注射</h3><p>市区町村と迎えた日で、期限と窓口が出ます。</p>
-        <div class="jc-pick">
-          <a class="jc-pk u" href="/jichitai/touroku/"><b>登録・予防注射の期限と窓口</b><span>市区町村・迎え方を選ぶ。いつまでに・どこで・いくら</span></a>
-        </div></div>
+{register_entry}
       <div class="jc-enb"><h3>飼い続けるのが難しいとき</h3>
         <div class="jc-pick">
           <a class="jc-pk" href="/jichitai/tebanasu/"><b>手放す前にできること</b><span>相談先と、引き取りの前に考えること</span></a>

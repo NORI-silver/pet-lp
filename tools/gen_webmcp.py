@@ -4,6 +4,7 @@
 #   電話番号・口コミ・順位は入れない。webmcp.js（ブラウザのAIエージェント用の道具）が読む。
 # - 道具はすべて「見るだけ」。会社への問い合わせ・送信はしない（送信の再開は Nori さんの「再開して」まで）。
 import json, os, re
+import paused
 
 SITE = "https://pet.shiokonbu.com"
 
@@ -22,7 +23,7 @@ CATS = [
     ("pet_hotel", "ペットホテル（大型犬OK・猫専用でもしぼれる）", "/pet-hotel/"),
     ("mobile_grooming", "出張トリミング", "/trimming/"),
     ("pet_funeral", "ペット火葬・霊園・納骨堂（民間）", "/sougi/"),
-    ("city_animal_office", "自治体の動物愛護センター・保健所（迷子・登録・引取り）", "/jichitai/"),
+    ("city_animal_office", "自治体の動物愛護センター・保健所（迷子・引取り）", "/jichitai/"),
     ("adoption_center", "保護犬・保護猫の譲渡の窓口（自治体の動物愛護センター・保健所）", "/joto/"),
 ]
 
@@ -85,13 +86,15 @@ def build(root):
     jc = _j(root, "jichitai.json")
     data["city_animal_office"] = [_row(x["pref"], x) for x in jc["prefs"]] + [_row(x["pref"], x) for x in jc["cities"]]
     data["adoption_center"] = [_row(x["pref"], x, x.get("animals", "")) for x in _j(root, "joto.json")["centers"]]
+    for k, _, page in CATS:
+        if paused.is_paused(page): data.pop(k, None)
     for k, v in data.items():
         for r in v:
             assert r["url"], (k, r)
     out = {
         "site": "ペットのくらし窓口",
         "note": "公式サイトの情報をもとにした一覧です。順位はつけていません。最新の内容は各公式サイトでご確認ください。",
-        "categories": [{"id": c, "label": l, "page": p, "count": len(data[c])} for c, l, p in CATS],
+        "categories": [{"id": c, "label": l, "page": p, "count": len(data[c])} for c, l, p in CATS if c in data],
         "pref_pages": pref_pages(),
         "items": data,
     }
@@ -106,7 +109,7 @@ def llms(out):
     # 2026-11-14 Nori「サイト全体をペットのくらしの総合サイトに」：サイト名は「ペットのくらし窓口」、ペットタクシーはその中のサービス（ペットタクシー予約窓口）
     L = ["# ペットのくらし窓口", "",
          "> 犬・猫とのくらしに役立つ全国の情報を、公式サイトの情報をもとにまとめたサイトです。夜間・救急の動物病院、ペットホテル・シッター・トリミング・しつけ・老犬ホーム、"
-         "ドッグラン・犬と泊まれる宿、迷子・登録・譲渡・避難の自治体の窓口、ペットが亡くなったときの火葬・霊園を都道府県でさがせます。"
+         "ドッグラン、迷子・避難の自治体の窓口、ペットが亡くなったときの火葬・霊園を都道府県でさがせます。"
          "ペットタクシーは「ペットタクシー予約窓口」として、全国の会社の料金の目安をくらべ、空き状況と料金を無料で問い合わせられます。", "",
          "- 料金は各社の公式サイトの料金表をもとに計算した概算で、確定料金ではありません。当日の道順・渋滞・待ち時間などで変わります。",
          "- 一覧は公式サイトの情報をもとに載せています。順位はつけていません。",

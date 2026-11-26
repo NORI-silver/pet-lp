@@ -3,7 +3,10 @@
 """
 import json, os, re, sys, html
 
+import paused
+
 ROOT = sys.argv[1]
+paused.remove_outputs(ROOT)
 # [B] 前の公開でサイトマップにあったURLを覚えておく（ページをまとめて消えたURLは、最後に近いページへ移す案内を書く。tools/moved.json）
 try:
     _OLD_URLS = re.findall(r"<loc>https://pet\.shiokonbu\.com(/[^<]*)</loc>", open(os.path.join(ROOT, "sitemap.xml"), encoding="utf-8").read())
@@ -792,7 +795,7 @@ PARTNER_BAND = '''<aside class="partner-band"><div class="wrap"><p><b>ペット�
 def foot(cta_href, band=True):
     return (PARTNER_BAND if band else '') + f'''<footer>
   <div class="wrap">
-    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/maigo/">迷子</a><a href="/jichitai/touroku/">犬の登録</a><a href="/dogrun/">全国のドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/trimming/">出張トリミング</a><a href="/pet-hotel/">ペットホテル</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/about/">運営者と掲載の基準</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
+    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/maigo/">迷子</a><a href="/dogrun/">全国のドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/trimming/">出張トリミング</a><a href="/pet-hotel/">ペットホテル</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/about/">運営者と掲載の基準</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
     <nav><a href="/area/">全国</a>{''.join(f'<a href="/{a["slug"]}/">{e(a["short"])}</a>' for a in AREAS)}</nav>
     <p>ペットタクシー予約窓口</p>
     <p>&copy; 2026 ペットタクシー予約窓口</p>
@@ -1036,7 +1039,7 @@ def _related_info(g):
 def taxi_intent(g): return g.get("category") not in NON_TAXI_CATS
 def guide_hub(slug):
     if slug.startswith(("lost-", "found-")) or slug in ("microchip", "dog-registration", "moving-with-pet", "cant-keep-pet"):
-        return ("/jichitai/maigo/", "迷子になったら：今日やること", "いなくなった市区町村で、今日やることを見る") if slug.startswith(("lost-", "found-")) else ("/jichitai/", "迷子・犬の登録・飼えなくなったとき", "困りごとから、次にやることを見る")
+        return ("/jichitai/maigo/", "迷子になったら：今日やること", "いなくなった市区町村で、今日やることを見る") if slug.startswith(("lost-", "found-")) else ("/jichitai/", "迷子・飼えなくなったとき", "困りごとから、次にやることを見る")
     if slug.startswith(("pet-cremation", "pet-died", "pet-death", "pet-memorial", "pet-loss", "pet-funeral", "pet-ashes")):
         return "/sougi/", "ペットが亡くなったら", "近くのペット火葬・霊園と、自治体の受付をさがす"
     if slug in ("rojin-home-cost", "rojin-home-prepare", "roneko-home"):
@@ -1241,7 +1244,7 @@ def _gh_topics():
          _basic_first([g["slug"] for g in G if cat(g) not in ("facility", "procedure", "care", "money")])),
         ("bye", "flower", "亡くなったとき", "火葬・お葬式・供養・手続き・ペットロス", death),
         ("care", "home", "預ける・しつけ・迎える", "老犬ホーム・しつけ・シッター・ホテル・保護犬", [g["slug"] for g in G if cat(g) == "care"]),
-        ("proc", "map", "迷子・登録・避難", "迷子・犬の登録・マイクロチップ・引っ越し・防災",
+        ("proc", "map", "迷子・手続き・避難", "迷子・マイクロチップ・引っ越し・防災",
          [g["slug"] for g in G if cat(g) == "procedure" and g["slug"] not in death]),
         ("money", "yen", "病院代とペット保険", "手術・夜間の料金と保険の考え方", [g["slug"] for g in G if cat(g) == "money"]),
         ("fac", "pin", "病院・施設への行き方", "大きな病院・夜間の病院・施設ごとの乗り降り", [g["slug"] for g in G if cat(g) == "facility"]),
@@ -2553,14 +2556,15 @@ for _cat in (gen_prefcats.SOUGI, gen_prefcats.NIGHT):
     gen_prefpages.write_all(ROOT, _pp_ctx0, _cat); gen_prefpages.link_national(ROOT, _pp_ctx0, _cat)
     hosp_urls = hosp_urls + gen_prefpages.urls(SITE, _cat)
 # [B] 保護犬・保護猫を迎える（譲渡・里親）（/joto/ と /joto/<県>/。tools/gen_joto.py、データ tools/joto.json。2026-11-14）
-import gen_joto
-gen_joto.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
-  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
-hosp_urls = hosp_urls + gen_joto.urls(SITE)
-gen_prefpages.write_all(ROOT, _pp_ctx0, gen_joto.CAT); gen_prefpages.link_national(ROOT, _pp_ctx0, gen_joto.CAT)
-hosp_urls = hosp_urls + gen_prefpages.urls(SITE, gen_joto.CAT)
-gen_joto.write_cities(ROOT, _pp_ctx0)  # 市のページ（/joto/<県>/<市>/、2026-11-14 第2弾）
-hosp_urls = hosp_urls + gen_joto.city_urls(SITE)
+if not paused.is_paused("/joto/"):
+    import gen_joto
+    gen_joto.write_all(ROOT, dict(head=head, e=e, SITE=SITE, emg_regions=emg_regions, emg_opts=emg_opts, area_links=area_links,
+      foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+    hosp_urls = hosp_urls + gen_joto.urls(SITE)
+    gen_prefpages.write_all(ROOT, _pp_ctx0, gen_joto.CAT); gen_prefpages.link_national(ROOT, _pp_ctx0, gen_joto.CAT)
+    hosp_urls = hosp_urls + gen_prefpages.urls(SITE, gen_joto.CAT)
+    gen_joto.write_cities(ROOT, _pp_ctx0)  # 市のページ（/joto/<県>/<市>/、2026-11-14 第2弾）
+    hosp_urls = hosp_urls + gen_joto.city_urls(SITE)
 # [B] SEO：ペット火葬場・霊園の施設ごとのページ（試しの30施設。tools/gen_sougi_fac.py）
 import gen_sougi_fac
 gen_sougi_fac.write_all(ROOT, _pp_ctx0)
@@ -2683,6 +2687,7 @@ for c in CITIES:
 # sitemap / robots / 404
 urls = [SITE + "/"] + [f'{SITE}/{a["slug"]}/' for a in AREAS] + [hub_url] + [f'{SITE}/guide/{g["slug"]}/' for g in GUIDES] + [emg_url] + hosp_urls + [pref_hub_url] + [f'{SITE}/area/{x[0]}/' for x in PREFS] + [terms_url, contact_url, partner_url, pterms_url]
 urls += [SITE + c["path"] for c in CITIES]
+urls = [u for u in urls if not paused.is_paused(u)]
 # [B] 検索に出さないページ（tools/noindex.json。Nori 2026-11-13「全部やって」）。サイトマップから外し、最後に noindex,follow を入れる。
 NOINDEX = json.load(open(os.path.join(ROOT, "tools", "noindex.json"), encoding="utf-8"))["pages"]
 # [B] 薄いページは中身が足りるまで検索に出さない（tools/thin_gate.py。Nori 2026-11-14「じゃあそうしてよ」）。
@@ -2844,7 +2849,6 @@ for _p in NOINDEX:
 print("noindex", len(NOINDEX), "pages")
 # [B] 消えたURLに、いちばん近い上のページへ移す案内（noindex・サイトマップに入れない）を書く。一度消えたURLは tools/moved.json に覚えて毎回書く
 _mv_f = os.path.join(ROOT, "tools", "moved.json")
-import paused  # いったん外した分野（宿・カフェ）は案内を書かず 404 にする（検索から外す）
 try: _MOVED = json.load(open(_mv_f, encoding="utf-8"))
 except Exception: _MOVED = {"_note": "gen_areas.py が作る。前の公開にあって、いまはない（まとめた）ページのURLと、移す先。手で直さない", "pages": {}}
 for _u in _OLD_URLS:
