@@ -44,7 +44,7 @@ body.ux .emg{border:0;padding:0;background:none;box-shadow:none;border-radius:0}
 .ux-w select{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb;background:#fff;color:#2b2622}
 .ux-w input{flex:1 1 100%;min-width:0;font-size:.95rem;padding:10px;border-radius:10px;border:1px solid #d9c9bb}
 .ux-w button{border:1px solid #e3d3c6;background:#fff;border-radius:999px;padding:8px 13px;font-size:.88rem;line-height:1.2;color:#3c2f26;cursor:pointer}
-.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ux-need{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
 .ux-need button{border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:12px 8px;font-size:.93rem;font-weight:700;color:#3c2f26;cursor:pointer}
 .ux-find button[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff;font-weight:700}
 .ux-find button[hidden]{display:none}
@@ -122,11 +122,13 @@ def box(cat, *, q_ph, opts=None, animals=None, who=None, when=None, need=None, m
     if who and who[1]: rows.append(f'<div class="ux-r"><span class="ux-l">{e(who[0])}</span><div class="ux-w">{_b(who[1])}</div></div>')
     det = []
     if when and when[1]: det.append(f'<span class="ux-l">{e(when[0])}</span><div class="ux-w">{_b(when[1])}</div>')
-    if need and need[1]: det.append(f'<span class="ux-l">{e(need[0])}</span><div class="ux-w">{_b(need[1])}</div>')
+    if need and need[1] and 2 <= len(need[1]) <= 6:  # 動物病院と同じ形：「どんな〇〇をお探しですか？」を2列の大きなボタンにして、詳しい条件の手前に出す（Nori 2026-11-26）
+        rows.append(f'<div class="ux-r"><span class="ux-l">{e(need[0])}</span><div class="ux-w"><div class="ux-need">{_b(need[1])}</div></div></div>')
+    elif need and need[1]: det.append(f'<span class="ux-l">{e(need[0])}</span><div class="ux-w">{_b(need[1])}</div>')
     det += [f'<span class="ux-l">{e(t)}</span><div class="ux-w">{_b(it)}</div>' for t, it in more if it]
     if det:
         rows.append(f'<details class="ux-det"><summary>詳しい条件で絞り込む<span></span></summary>{"".join(det)}</details>')
-    rows.append('<div class="ux-r"><span class="ux-l">表示順</span><div class="ux-w"><select id="ffSort" aria-label="表示順"><option value="">情報が多い順（おすすめ）</option><option value="priceAsc">料金が安い順</option><option value="priceDesc">料金が高い順</option><option value="photo">写真がある順</option><option value="name">名前順</option></select></div></div>')
+    rows.append('<div class="ux-r"><span class="ux-l">表示順</span><div class="ux-w"><select id="ffSort" aria-label="表示順"><option value="">標準の並び</option><option value="priceAsc">料金が安い順</option><option value="priceDesc">料金が高い順</option></select></div></div>')
     rows.append('<div class="ux-r"><span class="ux-l">現在地から</span><div class="ux-w"><select id="ffNear" aria-label="現在地からの距離"><option value="">指定なし</option><option value="3">3km以内</option><option value="5">5km以内</option><option value="10">10km以内</option><option value="20">20km以内</option><option value="30">30km以内</option></select></div></div>')
     attrs = f' data-ff="{e(cat)}" data-unit="{e(unit)}" data-noun="{e(noun)}"' + (" data-guess" if guess else "") + (" data-needpref" if needpref else "")
     return (f'<div class="ux-find"{attrs}>' + "".join(rows) + f'<button type="button" class="ux-go" id="ffGo">{e(go)}</button>'
