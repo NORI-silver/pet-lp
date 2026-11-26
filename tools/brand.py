@@ -13,7 +13,7 @@ import re
 
 # 上の名前の横のメニューも、その分野の人が次に見たいところにする（2026-11-14 Nori「ユーザーのインテントをちゃんと理解してよ」）。
 # タクシーの「使い方・料金をくらべる・問い合わせる」はタクシーのページだけ。
-INFO_NAV = ('<nav><a href="/hospital/">動物病院</a><a href="/sougi/">亡くなったら</a><a href="/jichitai/">迷子・登録</a>'
+INFO_NAV = ('<nav><a href="/hospital/">動物病院</a><a href="/sougi/">亡くなったら</a><a href="/jichitai/maigo/">迷子</a><a href="/jichitai/touroku/">犬の登録</a>'
             '<a href="/pet-hotel/">預け先</a><a href="/dogrun/">ドッグラン</a></nav>\n    <a class="mini" href="/emergency/">緊急のとき</a>')
 _TAXI_NAV = re.compile(r'<nav><a href="/#how">使い方</a>.*?</nav>\s*<a class="mini" href="/#form">問い合わせる<span class="lg">（無料）</span></a>', re.S)
 
