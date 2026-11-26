@@ -5,6 +5,7 @@
 # 守ること：公式サイトに書いてある項目が5つ以上の施設だけ。書くのはデータの facts（k・v・src・checked）と、そこから数えたことだけ。
 # 電話番号・個人名・順位・「おすすめ」は書かない。書いていない項目は行ごと出さない（「不明」と書かない）。
 # 宿は予約・申し込みの受付をしない（公式サイトへのリンクだけ）。「手配」「代理」などの言葉は使わない。
+import geodata  # 構造化データに座標（tools/geo.json、国土地理院で取得）を足す
 import json, os, re
 from urllib.parse import quote
 import gen_dogrun
@@ -92,6 +93,10 @@ CSS = ("<style>.emg .tbl{overflow-x:auto;max-width:100%}.pp-tbl th,.pp-tbl td{fo
        ".pp-tbl.cmp td,.pp-tbl.cmp th{white-space:nowrap}.pp-tbl.cmp td:first-child{white-space:normal;min-width:9em}.fac-pts{margin:6px 0 4px;padding-left:1.2em}.fac-pts li{margin:3px 0}</style>")
 
 
+
+def _geo(fname, x):
+    ll, _p = geodata.facility_ll(fname, x)
+    return {"@type": "GeoCoordinates", "latitude": ll[0], "longitude": ll[1]} if ll else None
 def _page(ctx, *, title, desc, url, crumbs, nm, pts, rows, card, cmp, faq, related, note, cta, ld_main, src_url, ck_iso, quick_src=""):
     e, SITE = ctx["e"], ctx["SITE"]
     ld = '<script type="application/ld+json">\n' + json.dumps([
@@ -233,6 +238,8 @@ def render_hosp(ctx, x):
     ld_main = {"@type": "VeterinaryCare", "name": nm, "url": x["url"],
                "address": dict({"@type": "PostalAddress", "addressRegion": pf, "addressCountry": "JP"},
                                **({"addressLocality": x["city"]} if x.get("city") else {}), **({"streetAddress": fact(x, "所在地")} if fact(x, "所在地") else {}))}
+    _g = _geo("night_hospital_facts.json", x)
+    if _g: ld_main["geo"] = _g
     rid = emg.get("id") if emg.get("review_query") else ""
     hdesc = lead + (f"夜間の料金は「{fee}」。" if fee else "") + (f"{fact(x, '来院前の連絡').rstrip('。')}。" if fact(x, "来院前の連絡") else "")
     if len(hdesc) > 160: hdesc = lead
@@ -293,6 +300,8 @@ def render_inn(ctx, x):
     ld_main = {"@type": "LodgingBusiness", "additionalType": f"{with_}と泊まれる宿", "name": nm, "url": x["url"], "petsAllowed": True,
                "address": dict({"@type": "PostalAddress", "addressRegion": pf, "addressCountry": "JP"},
                                **({"addressLocality": x["city"]} if x.get("city") else {}), **({"streetAddress": fact(x, "所在地")} if fact(x, "所在地") else {}))}
+    _g = _geo("inns.json", x)
+    if _g: ld_main["geo"] = _g
     desc = lead + (pts[1] if len(pts) > 1 else "")
     if len(desc) > 150: desc = lead
     crumbs = ([("ペットのくらし窓口", "/"), ("犬と泊まれる宿", "/inu-yado/")] + ([(pf, Y.pref_href(pf))] if pf in Y.PREFS else [])) if dog else \
@@ -350,6 +359,8 @@ def render_cafe(ctx, x):
     ld_main = {"@type": "Restaurant" if kind == "レストラン" else "CafeOrCoffeeShop", "name": nm, "url": x["url"],
                "address": dict({"@type": "PostalAddress", "addressRegion": pf, "addressCountry": "JP"},
                                **({"addressLocality": x["city"]} if x.get("city") else {}), **({"streetAddress": fact(x, "所在地")} if fact(x, "所在地") else {}))}
+    _g = _geo("cafes.json", x)
+    if _g: ld_main["geo"] = _g
     desc = lead if len(lead) <= 150 else lead[:148] + "…"
     return _page(ctx, title=title, desc=desc, url=url,
                  crumbs=[("ペットタクシー予約窓口", "/"), ("犬と一緒に入れるカフェ・ランチ", "/inu-cafe/")],

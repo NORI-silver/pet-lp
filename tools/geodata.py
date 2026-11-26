@@ -29,7 +29,7 @@ def facility_ll(fname, rec):
     """施設レコードの座標 [lat, lng] と精度（"f"=住所の地点、"c"=市区町村の中心）。"""
     g = _load()
     rid = rec.get("id")
-    if rid and rec.get("addr"):
+    if rid:
         ll = g.get(f"F:{fname}:{rid}")
         if ll:
             return ll, "f"
