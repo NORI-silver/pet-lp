@@ -12,6 +12,7 @@ test('five local comparisons show concrete criteria in existing canonical routes
   const h=read(path), start=h.indexOf('id="'+id+'"');
   assert.ok(start>=0,path+' comparison');
   assert.equal(h.indexOf('id="'+id+'"',start+1),-1,path+' single comparison');
+  if (id==='osaka-large-stay'||id==='chiba-cremation-cost') assert.ok(h.slice(0,start).includes('href="#'+id+'"'),path+' links to its comparison from above');
   const block=h.slice(start,start+10500);
   for(const w of words)assert.ok(block.includes(w),path+': '+w);
   assert.ok(h.includes('rel="canonical" href="https://pet.shiokonbu.com'+path+'"'),path+' canonical');
