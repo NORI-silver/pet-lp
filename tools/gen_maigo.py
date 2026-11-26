@@ -133,16 +133,7 @@ def data(ROOT, pref_slug):
         x = {"areas": d["areas"], "near": d["near"]}
         if d["pref_url"]: x["u"] = {pf: d["pref_url"].format(slug=sl) for pf, sl in pref_slug.items()}  # 県ごとのページがある会社
         D.append(x)
-    # City-specific overrides only where the municipality and receiving agency agree.
-    L = {"千葉県佐倉市": {
-        "center": ["千葉県動物愛護センター本所", "https://www.pref.chiba.lg.jp/aigo/sagashimasyou.html",
-                   "https://www.pref.chiba.lg.jp/aigo/pets/animal-info.html"],
-        "city": ["佐倉市 生活環境課", "https://www.city.sakura.lg.jp/soshiki/seikatsukankyoka/146/3573.html"],
-        "police": ["佐倉警察署・最寄りの交番", "https://www.police.pref.chiba.jp/kaikeika/window_lost.html"],
-        "hogo": "県の本所に収容された犬・猫と、個人が保護した動物は別の欄に掲載されます。収容情報は原則翌日更新（土日祝日・年末年始を除く）。掲載を待たず、センターに問い合わせてください。",
-        "return": "県の本所に収容された場合：返還手数料1頭3,890円と飼養管理費1日600円。登録番号が分かるもの・本人確認書類・リードやケージを用意します。",
-    }}
-    return {"c": C, "p": P, "m": M, "d": D, "l": L}
+    return {"c": C, "p": P, "m": M, "d": D}
 
 
 # ---------- 見た目（共通のカード .cs は cardskin.py。ここは手順の線・チェック・チラシ） ----------
@@ -207,20 +198,17 @@ def _faq(e, faq):
 def _ask(kind, label, ph, animal=False):
     an = ('<p class="jc-an-label" aria-hidden="true">さがしているのは？</p><div class="jc-an" role="group" aria-label="どの子？"><button type="button" data-an="dog" aria-pressed="true">犬</button>'
           '<button type="button" data-an="cat" aria-pressed="false">猫</button></div>') if animal else ""
+    local = '<div id="jcLocal" class="jc-local" aria-live="polite" hidden></div>' if kind == "maigo" else ""
     opts = "".join(f'<option>{p["pref"]}</option>' for p in J["prefs"])
     return (f'<div class="jc-q1" data-jc="{kind}"><label for="jcP">都道府県</label>'
             f'<select id="jcP"><option value="">すべての都道府県</option>{opts}</select><label for="jcQ">{label}</label>'
             f'<input id="jcQ" type="text" placeholder="{ph}" autocomplete="address-level2" enterkeyhint="search">'
-            f'<div class="jc-sg" id="jcS" aria-live="polite"></div>{an}<p class="jc-hd" id="jcH" hidden></p></div>')
+            f'<div class="jc-sg" id="jcS" aria-live="polite"></div>{an}<p class="jc-hd" id="jcH" hidden></p>{local}</div>')
 
 def _three(head, steps):
     """最初の画面で「何をすればいいか」が3行で分かる箱（Nori 2026-11-23「迷子登録のページがわかりにくい」）。"""
     li = "".join(f'<li><i>{n}</i><span>{t}<small>{s}</small></span></li>' for n, (t, s) in enumerate(steps, 1))
     return f'<ol class="jc-3" aria-label="{head}">{li}</ol>'
-
-def _official(links, title="公式の受付・連絡方法"):
-    return f'<details class="jc-cite"><summary>{title}</summary><div>{links}</div></details>' if links else ""
-
 
 def _li(slot, title, body, go="", a=""):
     aa = f' data-a="{a}"' if a else ""
@@ -229,20 +217,6 @@ def _li(slot, title, body, go="", a=""):
 
 
 # ============ 迷子 ============
-MAIGO_CSS = """<style>
-.jc-route{list-style:none;margin:1rem 0;padding:0;display:grid;gap:.6rem}
-.jc-route li{margin:0;padding:.8rem;border:1px solid #ead9cc;border-radius:10px;background:#fff}
-.jc-route h3{font-size:1rem;margin:0 0 .3rem}
-.jc-route p,.jc-cite p{margin:.2rem 0}
-.jc-cite{margin:.55rem 0;font-size:.9rem}
-.jc-cite summary{cursor:pointer;font-weight:700;padding:.35rem 0;color:#563f34}
-.jc-cite a,.jc-go .jc-cite a{background:none;border:0;border-radius:0;color:#804015;text-decoration:underline;display:inline-block;padding:.25rem;margin-right:.4rem;font-size:.9rem}
-.jc-cite a:focus-visible{outline:2px solid #a34316}
-.jc-template{margin:.8rem 0}
-.jc-template textarea{width:100%;box-sizing:border-box;margin:.4rem 0;padding:.6rem;border:1px solid #ae9384;border-radius:8px;resize:vertical;font:inherit;color:inherit;background:#fff}
-.jc-template button{border:1px solid #a34316;border-radius:8px;padding:.5rem .7rem;background:#fff;color:#6a351b;font:inherit;cursor:pointer}
-</style>"""
-
 MAIGO_FAQ = [
  ("迷子になった犬・猫は、どこに連絡すればいいですか？", "いなくなった場所の動物愛護センター・保健所（住んでいる所と違えば両方）、警察（遺失届。46道府県は警察庁の共通の受付からオンラインで、東京都は警視庁の受付から出せます）、市区町村、近くの動物病院です。このページで市区町村を入れると、その町の窓口が順番に出ます。"),
  ("保護された子は、何日待ってもらえますか？", "自治体ごとに違います。東京都は収容期限を7日間としています。日数がすぎると譲渡などに回ることがあるので、届け出はその日のうちに出し、問い合わせは7日以上あけないでください。"),
@@ -256,7 +230,7 @@ def maigo(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
     url = f"{SITE}/jichitai/maigo/"
     title = "ペットが迷子になったら：今日やること｜市区町村ごとの届け出先・さがし方・チラシ・ペット探偵の料金｜ペットのくらし窓口"
-    desc = "犬や猫が迷子になったら、いなくなった市区町村を入れるだけで、その町の動物愛護センター・保健所、警察のオンラインの遺失届、市役所、近くの動物病院と、今日・2日目・3日目・7日目にやることが順番に出ます。犬と猫のさがし方のちがい、印刷できる迷子チラシ、ペット探偵の料金のくらべも。"
+    desc = "犬や猫が迷子になったら、いなくなった市区町村を入れるだけで、その町の動物愛護センター・保健所、警察のオンラインの遺失届、市役所、近くの動物病院と、今日・2日目・3日目・7日目にやることが順番に出ます。犬と猫のさがし方のちがい、印刷できる迷子チラシ、ペット探偵の料金のくらべ、猫の迷子捜索に対応するペット探偵も探せます。"
     dets = detectives()
     wait = "".join(f'<tr><th>{e(a)}</th><td>{e(b)} <a class="jc-src" href="{e(u)}" target="_blank" rel="noopener">公式ページ ↗</a></td></tr>' for a, b, u in WAIT)
     def note(d, key):
@@ -266,11 +240,9 @@ def maigo(ctx):
         info = d["comparison"]
         return (note(d, "arrival") + f' <a class="jc-src" href="{e(info["src"])}">出典</a>') if "eta" in d["flags"].split() else ""
     det_rows = "".join(
-        f'<tr data-det="{e(d["flags"])}"><th>{e(d["name"])}{("<br>" + d["review_html"]) if d["review_html"] else ""}</th>'
+        f'<tr data-det="{e(d["flags"])}"><th><a href="{e(d.get("price_url") or d["url"])}" target="_blank" rel="noopener">{e(d["name"])}</a>{("<br>" + d["review_html"]) if d["review_html"] else ""}</th>'
         f'<td>{e(d["plan"])}' + (f'<br><small>{e(d["animals"])}</small>' if d["animals"] else "") + note(d, "total") + '</td>'
-        f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + (f'<br><small><b>捜索方法：</b>{e(d["methods"])}</small>' if d["methods"] else '') + note(d, "reception") + location_note(d)
-        + _official(f'<a data-det-site href="{e(d.get("price_url") or d["url"])}" target="_blank" rel="noopener">料金・連絡先の公式ページ ↗</a>', "公式情報・問い合わせ")
-        + '</td></tr>' for d in dets)
+        f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + (f'<br><small><b>捜索方法：</b>{e(d["methods"])}</small>' if d["methods"] else '') + note(d, "reception") + location_note(d) + '</td></tr>' for d in dets)
     det_tbl = ('<div class="jc-sg" role="group" aria-label="ペット探偵の絞り込み"><span class="jc-sgl">どの子</span><button type="button" data-detf="dg" aria-pressed="false">犬と書いてある</button><button type="button" data-detf="ct" aria-pressed="false">猫と書いてある</button><span class="jc-sgl">よく使用される項目</span><button type="button" data-detf="z" aria-pressed="false">全国対応</button><button type="button" data-detf="p" aria-pressed="false">料金が分かる</button></div>'
                '<details class="jc-det"><summary>詳しい条件で絞り込む</summary><div class="jc-sg" role="group" aria-label="ペット探偵の詳しい条件"><span class="jc-sgl">受ける動物</span><button type="button" data-detf="ex" aria-pressed="false">鳥・小動物・爬虫類と書いてある</button><button type="button" data-detf="un" aria-pressed="false" title="犬・猫・鳥などを選んだときだけ使えます">動物の記載がない事業者も含める</button><span class="jc-sgl">地域</span><button type="button" data-detf="n" aria-pressed="false" title="上で県を選ぶと使えます。会社の記載による。出張費は各社の欄で確認">選んだ県が主な対応地域の会社</button><span class="jc-sgl">料金の書き方</span><button type="button" data-detf="cx" aria-pressed="false">キャンセルの条件が書いてある</button><button type="button" data-detf="ef" aria-pressed="false">別途費用の記載がある</button>'
                + ('<span class="jc-sgl">捜索方法</span>' + "".join(f'<button type="button" data-detf="{k}" aria-pressed="false">{e(v[0])}</button>' for k, v in _mf.METHODS.items() if any(k in d["flags"].split() for d in dets)))
@@ -325,23 +297,7 @@ def maigo(ctx):
     </div>
     <div class="jc-panel" id="report" tabindex="-1">
       <h2>地域の届け先を調べる</h2>
-      <p class="jc-intro" data-slot="intro-t">先に、いなくなった日時と場所、犬・猫の特徴、首輪、写真を確認してください。市区町村を選ぶと、担当の窓口がここに出ます。</p>
-      <div id="jcLocal" aria-live="polite" hidden></div>
-      <p><a href="#first">今日やること</a> ・ <a href="#jcFly">チラシを作る</a> ・ <a href="#pro">ペット探偵を比較する</a></p>
-      <details class="jc-template">
-        <summary>届け出に使う記入例をコピー</summary>
-        <p>写真を添えて各窓口に伝えてください。このサイトから提出はされません。</p>
-        <label for="jcReportText">記入例</label>
-        <textarea id="jcReportText" rows="8" readonly>種別：犬・猫
-いなくなった日時：
-いなくなった場所：
-特徴（毛色・模様・大きさ・性別）：
-首輪・迷子札：
-マイクロチップの有無：
-連絡先（窓口にのみ伝える）：</textarea>
-        <button id="jcReportCopy" type="button">記入例をコピー</button>
-        <span id="jcReportStatus" role="status"></span>
-      </details>
+      <p class="jc-intro" data-slot="intro-t">上の「どこで探しますか？」で選んだ市区町村の届け先が、ここに出ます。</p>
     </div>
     <h2>捜索と届け出のチェックリスト</h2>
     <div id="jcR" class="jc-dog">
@@ -352,14 +308,14 @@ def maigo(ctx):
           <li data-ck="near" data-a="cat"><label><input type="checkbox">まず家の中、次に家のまわりの狭くて暗い場所</label><p>室内飼いの猫は、こわくて動けず、家のすぐ近くでじっとしていることが多いです。押し入れ・家具のすき間・洗濯機の裏、外なら物置・エアコンの室外機の下・植え込み・縁の下・車の下。静かになる夜や早朝に、懐中電灯で目の光をさがし、小さな声で呼びます。</p></li>
           <li data-ck="photo"><label><input type="checkbox">写真を2〜3枚えらび、家族で手分けする</label><p>全身・顔・模様が分かる写真を。届け出とチラシに使います。だれか1人は家に残ります（自分で帰ってくることがあります）。</p></li>
         </ul></li>
-      <li><span class="jc-when">今日のうちに</span><h3>届け出と連絡をする</h3>
-        <p class="jc-src">見つけた人がどこに届けるかは分かりません。センター・警察・市区町村にそれぞれ確認してください。</p>
+      <li><span class="jc-when">今日のうちに</span><h3>5か所に届け出る</h3>
+        <p class="jc-src">見つけた人がどこに届けるかは分かりません。センター・警察・市役所の全部に出しておくのが、いちばんの近道です。</p>
         <ul class="jc-ck">
-          {_li("center", "動物愛護センター・保健所に迷子を知らせる", "迷子登録と、すでに似た犬・猫が保護されていないかを確認します。失踪場所と自宅の担当が違うときは、両方に連絡してください。", '<a href="#report">地域の担当窓口を見る</a>')}
-          {_li("police", "警察に遺失届を出す", "いなくなった日時と場所、首輪などの特徴を伝えます。急ぐときは、オンラインの処理を待たず警察署・交番に相談してください。", _official(f'<a href="{NPA_ONLINE}" target="_blank" rel="noopener">警察のオンライン受付 ↗</a><a href="{POLICE["東京都"]}" target="_blank" rel="noopener">東京都の受付 ↗</a>'))}
-          {_li("city", "市区町村に保護・目撃情報を確認する", "環境・動物担当に保護や目撃の情報が入っていないかを確認します。道路で動物が見つかった場合の問い合わせ先は自治体に確認してください。", '<a href="#report">地域の担当窓口を見る</a>')}
-          {_li("vet", "近くの動物病院に知らせる", "保護した人が動物病院に連れて行くこともあります。写真を添え、特徴を伝えられるか、チラシを掲示できるかを相談します。", '<a href="/hospital/">近くの動物病院をさがす</a>')}
-          {_li("chip", "マイクロチップの登録の連絡先を確かめる", "登録した連絡先が古いままだと、保護されても連絡が届かないことがあります。登録証明書の番号を手元に用意します。", '<a href="/guide/microchip/">登録内容の確認・変更方法を見る</a>')}
+          {_li("center", "動物愛護センター・保健所に迷子の届け出", "いま保護されていないかも、その場で聞けます。住んでいる所といなくなった所が違う市なら、両方に。", '<a href="#jcQ">市区町村を入れると窓口が出ます</a>')}
+          {_li("police", "警察に遺失届を出す", "犬・猫は、法律では「落とし物」として警察に届けられることがあります。46道府県は警察庁の共通の受付から、東京都は警視庁の受付から、オンラインで出せます。", f'<a href="{NPA_ONLINE}" target="_blank" rel="noopener">遺失届をオンラインで出す ↗</a><a class="l" href="{POLICE["東京都"]}" target="_blank" rel="noopener">東京都はこちら ↗</a>')}
+          {_li("city", "市区町村に知らせ、清掃の担当にも確かめる", "道路で亡くなった犬・猫は、市区町村の清掃の担当が引き取っています。つらい確認ですが、首輪の色などを伝えておくと、もしものときに連絡をもらえることがあります。", "")}
+          {_li("vet", "近くの動物病院に知らせる", "けがをした子が運ばれたり、見つけた人がまず動物病院に連れていったりします。チラシを貼らせてもらえることも。", '<a href="/hospital/">近くの動物病院をさがす</a>')}
+          {_li("chip", "マイクロチップの登録の連絡先を確かめる", "保護されると、センターや警察がチップの番号から登録の連絡先に連絡します。引っ越しや電話番号の変更をしていないかを確かめ、古ければ変えます（住所・連絡先の変更は無料）。", f'<a href="{CHIP}" target="_blank" rel="noopener">マイクロチップの登録を確かめる ↗</a>')}
         </ul></li>
       <li><span class="jc-when">今日のうちに</span><h3>迷子チラシを作って、近所に配る</h3>
         <ul class="jc-ck"><li data-ck="flyer"><label><input type="checkbox">チラシを作って、近所と動物病院・お店に</label>
@@ -378,9 +334,9 @@ def maigo(ctx):
           </div></details></li></ul></li>
       <li><span class="jc-when">2日目から毎日</span><h3>保護された子の情報を毎日見て、少しでも似ていたら問い合わせる</h3>
         <ul class="jc-ck">
-          {_li("hogo", "センター・保健所の保護情報を見る", "写真の毛色や年齢は見た目からの目安です。少しでも似ていたら、問い合わせてください。となりの市や県の情報も。", _official(f'<a href="{ENV_LINK}" target="_blank" rel="noopener">全国の自治体の保護情報 ↗</a>', "最新の保護情報・出典"))}
-          {_li("lost", "警察の落とし物の情報も見る", "遺失届と同じ受付で、届けられた落とし物を検索できます。", _official(f'<a href="{NPA_PAGE}" target="_blank" rel="noopener">警察の落とし物検索 ↗</a>', "警察の検索窓口"))}
-          <li data-ck="net"><label><input type="checkbox">迷子の掲示板・地域のSNSに、チラシと同じ内容を出す</label><p>無料で迷子・保護・目撃の情報を出し合える掲示板があります。自宅の住所や個人の電話番号は書かないほうが安心です。保護された子の情報を伝えるときは、画像を転載せず、そのページのURLを伝えます。</p><div class="jc-go">{_official(boards_go, "外部の迷子掲示板に投稿する")}</div></li>
+          {_li("hogo", "センター・保健所の保護情報を見る", "写真の毛色や年齢は見た目からの目安です。少しでも似ていたら、問い合わせてください。となりの市や県の情報も。", f'<a href="{ENV_LINK}" target="_blank" rel="noopener">全国の自治体の保護情報 ↗</a>')}
+          {_li("lost", "警察の落とし物の情報も見る", "遺失届と同じ受付で、届けられた落とし物を検索できます。", f'<a href="{NPA_PAGE}" target="_blank" rel="noopener">落とし物をさがす ↗</a>')}
+          <li data-ck="net"><label><input type="checkbox">迷子の掲示板・地域のSNSに、チラシと同じ内容を出す</label><p>無料で迷子・保護・目撃の情報を出し合える掲示板があります。自宅の住所や個人の電話番号は書かないほうが安心です。保護された子の情報を伝えるときは、画像を転載せず、そのページのURLを伝えます。</p><div class="jc-go">{boards_go}</div></li>
         </ul></li>
       <li><span class="jc-when">3日目</span><h3>見つからなければ、プロの捜索も考える</h3>
         <ul class="jc-ck">{_li("pro", "ペット探偵（迷子捜索の会社）に相談する", "捕獲器やカメラでの見張り、チラシの配り方など、家族だけでは難しいことを頼めます。料金は1日8時間で1万円台後半から6万円台、3日間のまとめで9万円台から17万円台と大きく違い、見つかったときだけの成功報酬（5万円・10万円）がある会社もあるので、交通費・チラシ代・延長をふくめた総額で見くらべます。", '<a class="l" href="#pro">料金をくらべる</a>')}
@@ -398,7 +354,7 @@ def maigo(ctx):
     <div class="sh"><h2>保護された子は、何日待ってもらえる？町によってちがいます</h2></div>
     <p>待ってもらえる日数、迎えるときの費用、猫を収容するかどうかは、自治体ごとにかなり違います。届け出をその日のうちに出し、毎日問い合わせる理由はここにあります。</p>
     <div class="tbl"><table class="jc-cmp"><tbody>{wait}</tbody></table></div>
-    <div class="sh" id="pro" tabindex="-1"><h2>ペット探偵を比較する</h2></div>
+    <div class="sh" id="pro" tabindex="-1"><h2>ペット探偵を比較する（迷子ペットの捜索会社）</h2></div>
     <p>迷子の捜索をしている会社は、料金のしくみ（1日ごと・数日のまとめ）も、交通費やチラシ代が入っているかも違います。<a href="#report">いなくなった市区町村を入力する</a>と、対応地域の会社だけを表示します。</p>
     {ins_box}
     <div id="jcPro">{det_tbl}</div>
@@ -414,13 +370,13 @@ def maigo(ctx):
   <div class="wrap">
     <div class="sh"><h2>保護された子のお迎えや、動物病院への移動に</h2><p>動物愛護センターや動物病院への移動は、ケージごと乗れるペットタクシーも使えます。</p></div>
     <ul class="other"><li><a href="/guide/lost-cat/">迷子の猫のさがし方</a></li><li><a href="/guide/lost-dog/">迷子の犬のさがし方</a></li><li><a href="/guide/lost-flyer/">迷子のチラシの書き方</a></li><li><a href="/guide/microchip/">マイクロチップの登録を確かめる・変更する</a></li></ul>
-    <p class="emg-note">窓口は環境省の地方自治体連絡先一覧の受け持ちに合わせ、各自治体と警察庁・警視庁の公式ページの情報をもとに（{CHECKED}時点）。届出はこのサイトから送信されません。最新の保護情報・受付状況は各窓口でご確認ください。</p>
+    <p class="emg-note">窓口は環境省の地方自治体連絡先一覧の受け持ちに合わせ、各自治体と警察庁・警視庁の公式ページの情報をもとに（{CHECKED}時点）。電話番号は各窓口のページでご確認ください。</p>
   </div>
 </section>
 <div id="jcPrint" aria-hidden="true"></div>
 </main>
 """
-    return ctx["head"](title, desc, url, _ld(SITE, url, "迷子になったら", MAIGO_FAQ)).replace("</head>", CSS + MAIGO_CSS + "</head>", 1) + body + '<script src="/jichitai/jc.js" defer></script>\n' + FORM_JS + ctx["foot_noband"]()
+    return ctx["head"](title, desc, url, _ld(SITE, url, "迷子になったら", MAIGO_FAQ)).replace("</head>", CSS + "</head>", 1) + body + '<script src="/jichitai/jc.js" defer></script>\n' + FORM_JS + ctx["foot_noband"]()
 
 
 # ============ 犬の登録 ============

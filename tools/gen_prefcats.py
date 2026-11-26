@@ -78,7 +78,7 @@ import re
 def _far(h): return bool(re.search(r"（[^）]+[都道府県]）$", h.get("city", "")))
 def _night_facts(rs):
     far = sum(_far(h) for h in rs)
-    out = [f"県の中にある夜間・救急の病院：{len(rs) - far}院"]
+    out = [f"県の中にある夜間動物病院・救急の病院：{len(rs) - far}院"]
     if far: out.append(f"県の中に見つからないため、近くの県の病院も載せています：{far}院（所在地の県をカードに書いています）")
     return out
 
@@ -283,8 +283,8 @@ def _night_title(pf, rs, n):
     if far == n:
         return f"{pf}から行ける夜間・救急動物病院｜近くの県の{n}院{cl}・{mid}"
     if far:
-        return f"{pf}の夜間・救急動物病院{n - far}院と近くの県の{far}院｜{mid}{cl}"
-    return f"{pf}の夜間・救急動物病院{n}院｜{mid}{cl}"
+        return f"{pf}の夜間動物病院・救急動物病院{n - far}院と近くの県の{far}院｜{mid}{cl}"
+    return f"{pf}の夜間動物病院・救急動物病院{n}院｜{mid}{cl}"
 def _night_desc(pf, rs, n):
     hc = _hours_counts(rs); cs = _night_cities(rs); far = sum(_far(h) for h in rs)
     if far == n:
