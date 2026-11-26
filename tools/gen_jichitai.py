@@ -75,7 +75,7 @@ CSS = ("<style>.jc-hub:not(.on) .emg-pref,.jc-hub:not(.on) .emg-region{display:n
  ".jc-br .t.c2{background:#2b211b}"
  ".jc-find{display:flex;gap:6px;margin:10px 0 0}.jc-find input{flex:1;min-width:0;padding:10px 12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
  ".jc-ans{margin:8px 0 0;font-size:.92rem;color:#2b211b}.jc-ans:empty{display:none}.jc-ans button{margin:4px 4px 0 0;padding:8px 12px;border:1px solid #c2410c;border-radius:999px;background:#fff;color:#c2410c;font-weight:700;font-size:.9rem}"
- ".jc-pick{display:grid;gap:8px;margin:0 0 6px}.jc-pk{display:block;background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px;text-decoration:none;color:#2b2622}.jc-pk b{display:block;font-size:1.05rem}.jc-pk span{display:block;font-size:.85rem;color:#4a3d34;line-height:1.55;margin-top:2px}.jc-pk.u{background:#c2410c;border-color:#c2410c;color:#fff}.jc-pk.u span{color:#fff}.jc-pk{position:relative;padding-right:34px}.jc-pk::after{content:'›';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.4rem}.jc-pq{font-size:1rem;font-weight:800;margin:4px 0 8px;color:#2b2622}"
+ ".jc-pick{display:grid;gap:8px;margin:0 0 6px}.jc-pk{display:block;background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px;text-decoration:none;color:#2b2622}.jc-pk b{display:block;font-size:1.05rem}.jc-pk span{display:block;font-size:.85rem;color:#4a3d34;line-height:1.55;margin-top:2px}.jc-pk.u{background:#c2410c;border-color:#c2410c;color:#fff}.jc-pk.u span{color:#fff}.jc-pk{position:relative;padding-right:34px}.jc-pk::after{content:'›';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.4rem}.jc-enb{margin:0 0 14px}.jc-enb h3{font-size:1.05rem;margin:0 0 2px}.jc-enb>p{font-size:.88rem;color:#4a3d34;margin:0 0 8px}.jc-pq{font-size:1rem;font-weight:800;margin:4px 0 8px;color:#2b2622}"
  ".jc-q1{background:#fff;border:2px solid #c2410c;border-radius:16px;padding:12px 14px;margin:6px 0 10px}.jc-q1 label{display:flex;gap:6px;align-items:center;font-weight:700;margin:0 0 6px}.jc-sub{margin:0 0 8px;font-size:.84rem;color:#4a3d34;line-height:1.6}.jc-q1 input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
  ".jc-card{background:#fff;border:1px solid #f1e3d6;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}"
  ".jc-card.hit,.cs.jc-card.hit{border:2px solid #c2410c}"
@@ -229,13 +229,22 @@ def render(ctx):
 </section>
 <section style="padding-top:0">
   <div class="wrap">
-    <h2 class="jc-pq">あてはまる状況を選んでください</h2>
-    <div class="jc-pick">
-      <a class="jc-pk u" href="/jichitai/maigo/"><b>うちの子が迷子になった</b><span>まず何をするか・届け先・チラシ</span></a>
-      <a class="jc-pk" href="/jichitai/maigo/#pro"><b>ペット探偵を探す</b><span>民間の捜索サービスと料金を比較</span></a>
-      <a class="jc-pk" href="/jichitai/maigo/#found"><b>迷子の子を見つけた・保護した</b><span>どこに届けるか</span></a>
-      <a class="jc-pk" href="/jichitai/touroku/"><b>犬を迎えた（登録・予防注射）</b><span>いつまでに・どこで・いくら</span></a>
-      <a class="jc-pk" href="/jichitai/tebanasu/"><b>飼い続けるのが難しくなった</b><span>手放す前にできること</span></a>
+    <h2 class="jc-pq">目的を選んでください。それぞれ、地域と条件を選んで探せます</h2>
+    <div class="jc-ent">
+      <div class="jc-enb"><h3>迷子</h3><p>いなくなった市区町村を入れると、届け先と今日やることが出ます。</p>
+        <div class="jc-pick">
+          <a class="jc-pk u" href="/jichitai/maigo/"><b>迷子を探す・届け出る</b><span>市区町村・状況を選ぶ。届け先・チラシ</span></a>
+          <a class="jc-pk" href="/jichitai/maigo/#pro"><b>ペット探偵を探す</b><span>民間の捜索サービスと料金を比較</span></a>
+          <a class="jc-pk" href="/jichitai/maigo/#found"><b>迷子の子を見つけた・保護した</b><span>どこに届けるか</span></a>
+        </div></div>
+      <div class="jc-enb"><h3>犬の登録・予防注射</h3><p>市区町村と迎えた日で、期限と窓口が出ます。</p>
+        <div class="jc-pick">
+          <a class="jc-pk u" href="/jichitai/touroku/"><b>登録・予防注射の期限と窓口</b><span>市区町村・迎え方を選ぶ。いつまでに・どこで・いくら</span></a>
+        </div></div>
+      <div class="jc-enb"><h3>飼い続けるのが難しいとき</h3>
+        <div class="jc-pick">
+          <a class="jc-pk" href="/jichitai/tebanasu/"><b>手放す前にできること</b><span>相談先と、引き取りの前に考えること</span></a>
+        </div></div>
     </div>
   </div>
 </section>
