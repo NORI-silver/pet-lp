@@ -43,10 +43,11 @@ if (st.state !== "granted") return byNet();
 navigator.geolocation.getCurrentPosition(function(p){ use(at(p.coords.latitude, p.coords.longitude), "いまいる場所"); }, byNet, {maximumAge: 600000, timeout: 5000});
 }).catch(byNet); else byNet();
 }
-var box = document.getElementById("hf");
+var TB = ' target="_blank" rel="noopener"', enc = encodeURIComponent, $id = document.getElementById.bind(document);
+var box = $id("hf");
 if (!box) return;
-var sel = document.getElementById("hospPref"), det = document.getElementById("hfDet"), detN = document.getElementById("hfDetN"),
-list = document.getElementById("hfList"), sum = document.getElementById("hfSum");
+var sel = $id("hospPref"), det = $id("hfDet"), detN = $id("hfDetN"),
+list = $id("hfList"), sum = $id("hfSum");
 var SLUG = {"北海道":"hokkaido","青森県":"aomori","岩手県":"iwate","宮城県":"miyagi","秋田県":"akita","山形県":"yamagata","福島県":"fukushima","茨城県":"ibaraki","栃木県":"tochigi","群馬県":"gunma","新潟県":"niigata","富山県":"toyama","石川県":"ishikawa","福井県":"fukui","山梨県":"yamanashi","長野県":"nagano","岐阜県":"gifu","静岡県":"shizuoka","愛知県":"aichi","三重県":"mie","滋賀県":"shiga","京都府":"kyoto","大阪府":"osaka","兵庫県":"hyogo","奈良県":"nara","和歌山県":"wakayama","鳥取県":"tottori","島根県":"shimane","岡山県":"okayama","広島県":"hiroshima","山口県":"yamaguchi","徳島県":"tokushima","香川県":"kagawa","愛媛県":"ehime","高知県":"kochi","福岡県":"fukuoka","佐賀県":"saga","長崎県":"nagasaki","熊本県":"kumamoto","大分県":"oita","宮崎県":"miyazaki","鹿児島県":"kagoshima","沖縄県":"okinawa","東京都":"tokyo","神奈川県":"kanagawa","埼玉県":"saitama","千葉県":"chiba"}, LABEL = {"dog":"犬","cat":"猫","rabbit":"うさぎ","hamster":"ハムスター・モルモット","ferret":"フェレット","bird":"鳥","reptile":"爬虫類","fish":"魚","open":"いま受付中","night":"夜間・救急","h24":"24時間","late":"19時以降も","early":"朝9時前から","sat":"土曜も","sun":"日曜も","hol":"祝日も","nohol":"年中無休","nolunch":"昼休みなし","visit":"家に来てくれる（往診）","catspec":"猫専門","exospec":"うさぎ・鳥などの専門","large":"大型犬の設備","catroom":"猫用の待合室","noresv":"予約なしでも","resv":"予約できる","park":"駐車場","card":"カード払い","ins":"ペット保険が使える","hotel":"ペットホテル","trim":"トリミング","school":"しつけ教室・パピークラス","ct":"CT・MRI","y:吐く・下痢":"吐く・下痢","y:皮膚のかゆみ":"皮膚のかゆみ","y:咳":"咳","y:歩き方がおかしい":"歩き方がおかしい","y:目・耳の異常":"目・耳の異常","y:元気・食欲がない":"元気・食欲がない"}, REG = [["北海道・東北",[["北海道",391],["青森県",3],["宮城県",48],["秋田県",2],["山形県",41],["福島県",1]]],["関東",[["茨城県",158],["栃木県",38],["群馬県",112],["埼玉県",23],["千葉県",61],["東京都",392],["神奈川県",273]]],["中部",[["新潟県",122],["富山県",40],["石川県",70],["福井県",33],["山梨県",64],["長野県",5],["岐阜県",118],["静岡県",165],["愛知県",17]]],["近畿",[["三重県",70],["滋賀県",63],["京都府",165],["大阪府",284],["兵庫県",11],["奈良県",85],["和歌山県",56]]],["中国・四国",[["鳥取県",4],["島根県",18],["岡山県",111],["広島県",173],["山口県",88],["徳島県",45],["香川県",6],["愛媛県",64],["高知県",43]]],["九州・沖縄",[["福岡県",36],["佐賀県",33],["長崎県",56],["熊本県",42],["大分県",3],["宮崎県",9],["鹿児島県",2],["沖縄県",63]]]], SYM = {"y:吐く・下痢":["消化器科"],"y:皮膚のかゆみ":["皮膚科"],"y:咳":["呼吸器科","循環器科"],"y:歩き方がおかしい":["整形外科","神経科"],"y:目・耳の異常":["眼科","耳鼻科"],"y:元気・食欲がない":["消化器科","内分泌科","腎臓・泌尿器"]}, av = null;
 list.addEventListener("click", function(ev){ var b = ev.target.closest("button[data-pk]"); if (!b) return; pick.set([{p: b.getAttribute("data-pk")}]); box.scrollIntoView({behavior: "smooth", block: "start"}); });
 var NEED = {night:["night"],sunhol:["sun","hol"],h24:["h24"],visit:["visit"],spec:["spec"]}
@@ -121,14 +122,14 @@ if (r.a) b.push('<span>' + esc(r.a.length > 22 ? r.a.slice(0, 22) + "…" : r.a)
 FEAT.forEach(function(f){ if (f[0] === "late" && r.y.indexOf("night") >= 0) return; if (b.length < 6 && r.y.indexOf(f[0]) >= 0) b.push('<span>' + esc(f[1]) + '</span>'); });
 keys().forEach(function(k){ if (k.slice(0, 2) === "d:" && has(r, k)) b.push('<span>' + esc(k.slice(2)) + '</span>'); });
 unk.forEach(function(k){ b.push('<span class="u">' + esc(LABEL[k] || NEEDL[k] || k.slice(2)) + 'は不明</span>'); });
-var top = r.tel ? '<a href="tel:' + esc(r.tel) + '" data-k="tel" data-ga>📞 電話する</a>' : '<a href="' + esc(r.u) + '" target="_blank" rel="noopener" data-k="site" data-ga>公式サイト ↗</a>';
-var route = r.ad ? '<a class="l" href="https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(r.ad) + '" target="_blank" rel="noopener" data-k="route">📍 経路を見る</a>' : '';
+var top = r.tel ? '<a href="tel:' + esc(r.tel) + '" data-k="tel" data-ga>📞 電話する</a>' : '<a href="' + esc(r.u) + '"' + TB + ' data-k="site" data-ga>公式サイト ↗</a>';
+var route = r.ad ? '<a class="l" href="https://www.google.com/maps/dir/?api=1&destination=' + enc(r.ad) + '"' + TB + ' data-k="route">📍 経路を見る</a>' : '';
 var sub = [];
-if (r.tel) sub.push('<a href="' + esc(r.u) + '" target="_blank" rel="noopener" data-k="site" data-ga>公式サイト</a>');
+if (r.tel) sub.push('<a href="' + esc(r.u) + '"' + TB + ' data-k="site" data-ga>公式サイト</a>');
 if (r.pg) sub.push('<a href="' + esc(r.pg) + '">診療内容の詳細</a>');
-if (r.ad && r.y.indexOf("visit") < 0) sub.push('<a href="/?to=' + encodeURIComponent(r.ad) + '#form" data-k="taxi" data-ga>🚕 ペットタクシーの料金</a>');
-sub.push('<a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(r.n + ' ' + (r.ad || '')) + '" target="_blank" rel="noopener" data-k="review">Google Mapsの口コミ</a>');
-return '<div class="hc">' + picHtml(r) + '<a class="hc-n" href="' + esc(r.pg || r.u) + '"' + (r.pg ? '' : ' target="_blank" rel="noopener"') + '>' + esc(r.n) + '</a>'
+if (r.ad && r.y.indexOf("visit") < 0) sub.push('<a href="/?to=' + enc(r.ad) + '#form" data-k="taxi" data-ga>🚕 ペットタクシーの料金</a>');
+sub.push('<a href="https://www.google.com/maps/search/?api=1&query=' + enc(r.n + ' ' + (r.ad || '')) + '"' + TB + ' data-k="review">Google Mapsの口コミ</a>');
+return '<div class="hc">' + picHtml(r) + '<a class="hc-n" href="' + esc(r.pg || r.u) + '"' + (r.pg ? '' : TB) + '>' + esc(r.n) + '</a>'
 + (b.length ? '<p class="hc-b">' + b.join("") + '</p>' : '')
 + ((r.ad || r.c) ? '<p class="hc-l"><i aria-hidden="true">📍</i><span>' + esc(r.ad || r.c) + '</span></p>' : '')
 + (r.h ? '<p class="hc-l"><i aria-hidden="true">🕘</i><span>診療時間：' + esc(r.h) + '</span></p>' : '')
@@ -178,7 +179,7 @@ var rest = ks.filter(function(x){ return x !== k; }), n = match(data.filter(func
 if (n) alt.push('<button type="button" data-drop="' + esc(k) + '">「' + esc(LABEL[k] || NEEDL[k] || (NEEDL[need] && NEED[need].indexOf(k) >= 0 ? NEEDL[need] : k.slice(2))) + '」を外す（' + n + '院）</button>');
 });
 if (places.some(function(p){ return p.c || p.s; }) || t) { var n2 = match(data.filter(function(r){ return !r.far; }), ks, false)[0].length; if (n2) alt.push('<button type="button" data-drop="place">' + esc(prefsOf().join("・")) + 'の全体で見る（' + n2 + '院）</button>'); }
-alt.push('<a href="/emergency/#pref=' + encodeURIComponent(v) + '">緊急のときの連絡先</a>');
+alt.push('<a href="/emergency/#pref=' + enc(v) + '">緊急のときの連絡先</a>');
 html = '<div class="hf-none">' + esc(pl) + "で、この条件に合う病院はまだ見つかっていません。<div class=\"hf-alt\">" + alt.join("") + "</div></div>" + html;
 }
 if (ok.length < 3) {
@@ -256,7 +257,7 @@ if (a) try { window.gtag && gtag("event", {taxi: "facility_taxi", tel: "tel_clic
 });
 var tm, cnt0 = {};
 REG.forEach(function(g){ g[1].forEach(function(x){ cnt0[x[0]] = x[1]; }); });
-pick = PlacePick({root: document.getElementById("hfPlace"), unit: "院", ph: "都道府県・市区町村・駅名",
+pick = PlacePick({root: $id("hfPlace"), unit: "院", ph: "都道府県・市区町村・駅名",
 prefs: [].filter.call(sel.options, function(o){ return o.value; }).map(function(o){ return [o.value, cnt0[o.value] || 0]; }),
 extra: extra,
 cnt: function(p){ var j = cache[p.p]; if (!j) return null; var n = 0; j.forEach(function(r){ if (!r.far && placeOk(r, p)) n++; }); return n; },
@@ -266,7 +267,7 @@ places = ps;
 [].forEach.call(box.querySelectorAll(".pref-guess"), function(g){ g.remove(); });
 var first = ps.length ? ps[0].p : "";
 sel.value = first; if (first) prefPut(first); prefLinks(first);
-if (!box.dataset.pref) try { history.replaceState(null, "", location.pathname + location.search + (first ? "#pref=" + encodeURIComponent(first) : "")); } catch (x) {}
+if (!box.dataset.pref) try { history.replaceState(null, "", location.pathname + location.search + (first ? "#pref=" + enc(first) : "")); } catch (x) {}
 try { window.gtag && gtag("event", "hosp_filter", {key: "place", on: ps.length, pref: prefsOf().join(",") || "all"}); } catch (x) {}
 if (prefsOf().join(",") !== load.k) load(); else { shown = 30; draw(); }
 }});
