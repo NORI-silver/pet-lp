@@ -267,7 +267,7 @@ def render_pref(ctx, cat, pf, rows, city=None):
 <section style="padding-top:0">
   <div class="wrap">
     <div class="sh"><h2>{e(cat['taxi_h'])}</h2><p>{e(cat['taxi_p'])}当日の依頼もできます。</p></div>
-    <ul class="other"><li><a href="/{cat['slug']}/">{e(cat['h1'])}</a></li>{"".join(f'<li><a href="{u}">{e(t)}</a></li>' for t, u in cat['links'])}</ul>
+    <ul class="other"><li><a href="/{cat['slug']}/">{e(seo.get('crumb_h1', cat['h1']))}</a></li>{"".join(f'<li><a href="{u}">{e(t)}</a></li>' for t, u in cat['links'])}</ul>
     {ctx["area_links"]()}
   </div>
 </section>
