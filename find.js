@@ -51,7 +51,7 @@ function each(a, f){ [].forEach.call(a, f); }
 var box = document.querySelector("[data-ff]");
 if (!box) return;
 var cat = at(box,"data-ff"), unit = at(box,"data-unit") || "件";
-var sel = id("ffPref"), q = null, pick = null, places = [];
+var sel = id("ffPref"), pick = null, places = [];
 var sum = id("ffSum"), alt = id("ffAlt"), clr = id("ffClear");
 var res = id("ffRes"), det = box.querySelector(".ux-det");
 var needPref = box.hasAttribute("data-needpref");
@@ -181,7 +181,8 @@ if (pj === 2) return 2;
 if (qs && qs.split(" ").some(function(w){ return it._q.indexOf(w) < 0; })) return 2;
 if (ks.indexOf("a:cat") >= 0 && ks.indexOf("owner_live_dog") >= 0 && ks.indexOf("a:dog") < 0) return 2;
 var r = pj;
-if (cat === "sougi" && ks.indexOf("合同火葬") >= 0 && ks.indexOf("お骨を返してもらえる") >= 0 && it._no.indexOf(" 合同火葬+お骨を返してもらえる ") >= 0) return 2;
+if(cat==="sougi"&&ks.includes("合同火葬"))for(const k of ["立ち会い","お骨を返してもらえる"])if(ks.includes(k)){
+let x=" 合同火葬+"+k+" ";if(it._no.includes(x))return 2;if(!it._k.includes(x))r=1;}
 for (var i = 0; i < ks.length; i++) {
 if (it._no.indexOf(" " + ks[i] + " ") >= 0) return 2;
 if (it._k.indexOf(" " + ks[i] + " ") >= 0) continue;

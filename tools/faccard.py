@@ -196,7 +196,8 @@ def _meta_put(key, fname, r):
         pass
     _META.setdefault(key, {})[r["name"]] = dict(
         yen=_yen_of(r), ll=ll, prec=prec, addr=r.get("addr") or "",
-        city=r.get("city") or "", pref=r.get("pref") or (r.get("prefs") or [""])[0])
+        city=r.get("city") or "", pref=r.get("pref") or (r.get("prefs") or [""])[0],
+        cremation_summary=r.get("cremation_summary"))
 
 def _fit_table():
     """分野ごとに、名前 → data-fit の文字列。"""
@@ -521,6 +522,9 @@ def build_card(card, conf, fit_by_name):
         body.append(f'<p class="fc-line" title="{html.escape(_short(lab))}">{icon(ic)}<span>{html.escape(v)}</span></p>')
     for ic, lab, val in pick:
         if ic == "yen": body.append(f'<p class="fc-price" title="{html.escape(_short(lab))}">{icon("yen")}<span>{html.escape(val)}</span></p>')
+    if meta and meta.get("cremation_summary"):
+        summary = html.escape(meta["cremation_summary"])
+        body.append(f'<p class="fc-line" title="返骨・立ち会い">{icon("badge")}<span>返骨・立ち会い：{summary}</span></p>')
     more = [f'<small>{html.escape(lab)}：{html.escape(val)}</small>' for ic, lab, val in lines[3:]] + more
     if ch: body.append('<ul class="fc-tags">' + "".join(f"<li>{html.escape(c)}</li>" for c in ch[:4]) + "</ul>")
     body.append('<p class="fc-fit" hidden></p>')
