@@ -2820,6 +2820,7 @@ print("keyvisual", keyvisual.build(ROOT), "pages")
 # 県を選んだら全部その場に出すためのデータ（県ページ・市区町村ページのカードを /find-data/ に。tools/find_data.py、Nori 2026-11-24）
 import find_data
 print("find_data", find_data.build(ROOT))
+gen_rojin.apply_public_snippets(ROOT)
 print("ok", len(AREAS), "areas,", len(PREFS), "prefs")
 # [B] 後処理（カードの形・tidy など）で本文が短くなり、薄くなったページも検索に出さない（上で数えたのは後処理の前。
 # 2026-11-23 近畿：三重のシッターのページが後処理のあと 796 字になり、seo_check で止まった）。サイトマップからも外す。

@@ -211,6 +211,10 @@ def render_pref(ctx, cat, pf, rows, city=None):
                       f'</p><p class="emg-tips-note">上の市区町村は、それぞれのページに載せています。下は{e(pf)}のほかの市区町村です。</p></div>')
     title = cat["title_fn"](place, rs, n) if cat.get("title_fn") else f'{place}の{cat["title_word"]}｜{n}{unit}の一覧（{cat["title_tail"]}）｜ペットタクシー予約窓口'
     desc = cat["desc_fn"](place, rs, n) if cat.get("desc_fn") else f'{place}の{name}を{n}{unit}、公式サイトの情報をもとにまとめた無料の一覧です。' + _with_price(cat, rs)
+    import search_meta
+    stable_meta = search_meta.listing(cat["slug"], place)
+    if stable_meta:
+        title, desc = stable_meta
     seo = cat.get("pref_overrides", {}).get(pf, {}) if not city else {}
     if seo.get("title"): title = seo["title"]
     if seo.get("desc"): desc = seo["desc"]
