@@ -1,0 +1,113 @@
+diff --git a/tests/card-policy.test.cjs b/tests/card-policy.test.cjs
+index a1e2692a..8d14c45a 100644
+--- a/tests/card-policy.test.cjs
++++ b/tests/card-policy.test.cjs
+@@ -64,3 +64,27 @@ for (const top of ['rojin-home', 'pet-hotel', 'pet-sitter']) {
+ }
+ assert(rojin > 100 && hotels > 1000 && sitters > 500, `変換されたカードが少ない rojin=${rojin} hotel=${hotels} sitter=${sitters}`);
+ console.log(`card-policy OK cards=${cards} rojin=${rojin} hotel=${hotels} sitter=${sitters}`);
++
++// 「詳しく見る」を持つカードは、すべて出典（公式サイト）を見られる。出典のない詳細を出さない。
++{
++  const fs2 = require("fs"), path2 = require("path");
++  const bare = [];
++  for (const d of ["pet-sitter", "pet-hotel", "rojin-home"]) {
++    const walk = (p) => { for (const e of fs2.readdirSync(p, { withFileTypes: true })) { const q = path2.join(p, e.name); if (e.isDirectory()) walk(q); else if (e.name === "index.html") {
++      const t = fs2.readFileSync(q, "utf8"); const re = /<details class="pc-d">(.*?)<\/details>/gs; let m;
++      while ((m = re.exec(t))) if (!/出典：/.test(m[1])) bare.push(q);
++    } } };
++    walk(path.join(__dirname, "..", d));
++  }
++  assert.strictEqual(bare.length, 0, "出典のない「詳しく見る」: " + bare.slice(0, 3).join(","));
++}
++
++// R-HT003 にゃーご花巻：公式サイトは猫だけ・老猫ホームは現在休止中。犬の対応にしない。
++{
++  const t2 = require("fs").readFileSync(require("path").join(__dirname, "..", "rojin-home", "index.html"), "utf8");
++  const i2 = t2.indexOf('data-fid="R-HT003"');
++  assert(i2 > 0, "R-HT003 のカードがない");
++  const blk = t2.slice(i2, i2 + 4000).split('data-fid="')[1 + 0] !== undefined ? t2.slice(i2, i2 + 3000) : "";
++  assert(!/"a":\["dog"/.test(blk.slice(0, 400)), "R-HT003 が犬の対応になっている");
++  assert(!blk.includes("老犬ホーム・老猫ホーム"), "R-HT003 の古い記載が残っている");
++}
+diff --git a/tools/cardpolicy.py b/tools/cardpolicy.py
+index dd2b7a47..55556f50 100644
+--- a/tools/cardpolicy.py
++++ b/tools/cardpolicy.py
+@@ -380,6 +380,10 @@ def card(blk, h, cat, more=None, compact=False):
+     _tr = h.get("trust") if isinstance(h.get("trust"), dict) else {}
+     _cf += [x for x in (_tr.get("vet"),) if isinstance(x, dict) and x.get("v") and x["v"] in shown]
+     srcs = list(dict.fromkeys([(f_.get("src"), f_.get("checked")) for f_ in _cf if f_.get("src")] + [(s, c) for k, v, s, c in rows if s]))  # 出典と確認日は同じものを1回だけ
++    if not srcs and rows and url and cat == "rojin":  # ろうけんホームの紹介文：公式サイトで内容を確かめたものだけ、公式サイトを出典に（日付は記録の確認日があるときだけ）
++        srcs = [(url, (h.get('web') or {}).get('checked') or None)]
++    elif not srcs and rows:  # ホテル・シッター：項目ごとの出典がない分類データ。公式サイトの出典だと見せない
++        dl += _UNV
+     if srcs:
+         from urllib.parse import urlparse
+         host = urlparse(url).netloc
+@@ -451,8 +455,32 @@ def _fin(h2):
+     return h2.replace("</head>", CSS_LINK + "</head>", 1)  # 見た目は /pc.css（ページごとに重ねない。build が書く）
+ 
+ 
++_UNV = "<small>出典：未確認（登録時の分類）。公式サイトでご確認ください</small>"
++
++
++def _fixbare(h, cat, D):
++    """すでに変換したページで、出典のない「詳しく見る」に公式サイトを出典として足す（日付は記録の確認日があるときだけ）。"""
++    if 'class="pc-d"' not in h: return h
++    parts = re.split(r'(?=<div class="emg-item)', h)
++    for k, b in enumerate(parts):
++        m = re.search(r'<details class="pc-d">(?:(?!</details>).)*?</div></details>', b, re.S)
++        if not m or "出典：" in m.group(0): continue
++        a = re.search(r'<div class="pc-a"><a href="([^"]+)"', b)
++        if not a: continue
++        url = html.unescape(a.group(1))
++        src = _UNV
++        if cat == "rojin":
++            fid = re.search(r' data-fid="([^"]+)"', b)
++            rec = D.get(fid.group(1)) if fid else None
++            c = ((rec or {}).get("web") or {}).get("checked")
++            src = f'<small>出典：<a href="{E(url)}" target="_blank" rel="noopener">公式サイト</a>' + (f"（確認日 {E(c)}）" if c else "") + "</small>"
++        g = m.group(0)
++        parts[k] = b.replace(g, g[:-len("</div></details>")] + src + "</div></details>", 1)
++    return "".join(parts)
++
++
+ def page(h, cat, D):
+-    if 'id="pc-css"' in h or "/pc.css" in h: return h
++    if 'id="pc-css"' in h or "/pc.css" in h: return _fixbare(h, cat, D)
+     h2, n = _convert(h, cat, D, False)
+     if not n: return h
+     if len(h2) > 150000 and _gz(_fin(h2)) > LIMIT:
+diff --git a/tools/hotels.json b/tools/hotels.json
+index bca6cda8..fc64e8ba 100644
+--- a/tools/hotels.json
++++ b/tools/hotels.json
+@@ -7682,10 +7682,10 @@
+     },
+     "report": {
+      "v": "様子をLINEで報告",
+-     "quote": "お預けの間毎日猫ちゃんの様子をお写真を添えてLIN",
++     "quote": "お預けの間毎日猫ちゃんの様子をお写真を添えてLINEまたはメールにてご報告いたします。",
+      "src": "https://nekobeya.pechika.jp/houses/nagoya.html",
+      "by": "site",
+-     "checked": "2026-11-16"
++     "checked": "2026-11-27"
+     },
+     "camera": {
+      "v": "カメラで様子を見られる",
+diff --git a/tools/rojin.json b/tools/rojin.json
+index bc3a0b43..7773bfd8 100644
+--- a/tools/rojin.json
++++ b/tools/rojin.json
+@@ -6022,8 +6022,8 @@
+    "url": "https://nya-go.p-kit.com/userblog/index.php?action=view&blog_id=2158369",
+    "city": "花巻市",
+    "addr": "岩手県花巻市",
+-   "animals": "犬・猫",
+-   "spec": "老犬ホーム・老猫ホーム",
++   "animals": "猫",
++   "spec": "老猫ホーム・猫のペットホテル（猫だけ。老猫ホームは公式サイトで現在休止中）",
+    "checked": "2026-11-23",
+    "web": {
+     "src": "https://nya-go.p-kit.com/userblog/index.php?action=view&blog_id=2158369",
