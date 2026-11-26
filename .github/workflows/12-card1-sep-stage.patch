@@ -1,0 +1,75 @@
+diff --git a/tools/cardskin.py b/tools/cardskin.py
+index 872f66a..ad0d7a3 100644
+--- a/tools/cardskin.py
++++ b/tools/cardskin.py
+@@ -7,7 +7,7 @@
+ #  2. 緊急・エリアページの夜間病院と搬送の会社の .emg-item.emg-co（ピンクの箱・文字のリンク だったもの）
+ #  3. 横に流れる施設カード .fc は形はそのまま、枠・角・影だけそろえる（CSS）
+ # 中身は消さない（表の4行目からは「くわしく」にたたむ）。何度動かしても同じ（cs の印で2回目はしない）。
+-import os, re
++import os, re, json, html as _html
+ from urllib.parse import unquote
+ 
+ 
+@@ -51,6 +51,7 @@ CSS = ('<style id="cs-css">'
+        '.cs .fc-catch{margin:4px 0 2px!important}'
+        '.cs .cs-l.cs-p{font-weight:800;color:#2b2622}'
+        '.cs .cs-l>span{min-width:0}'
++       '.cs .cs-s{display:grid;grid-template-columns:3.2em 1fr;gap:6px;align-items:baseline}.cs .cs-k{font-size:.72rem;font-weight:800;color:#7a5b45;background:#f6ece3;border-radius:6px;padding:1px 0;text-align:center;text-decoration:none}.cs .cs-u>span{color:#8a7d72}'
+        '.fc.cs .ux-c-l>span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}'
+        '.fc.cs .dr-tags{margin:8px 0 0!important}'
+        '.fc.cs .ux-c-a{margin-top:auto;padding-top:10px}'
+@@ -183,6 +184,45 @@ def emg(blk):
+ FC_IC = {"pin": "📍", "clock": "🕒", "car": "🚗", "yen": "¥", "paw": "🐾", "badge": "🏅"}
+ 
+ 
++# --- 共通の行（住所・時間・料金・対応・口コミ。カテゴリ固有の行はその下に残す）---
++STD_LAB = {"📍": "住所", "🕒": "時間", "¥": "料金", "🐾": "対応"}
++STD_ORDER = ["住所", "時間", "料金", "対応"]
++
++
++def _std_rows(b, a0):
++    """カードの本文 b の中のアイコン行を、固定の順番（住所・時間・料金・対応・口コミ）に並べ直す。
++    値が無いものは「未確認」（データに無いだけで、無いとは言わない）。ほかの行は消さずに下へ回す。
++    住所は data-to、対応は data-fit の at（施設のデータ）で補う。"""
++    rows = re.findall(r'<p class="ux-c-l cs-l[^"]*"><i aria-hidden="true">(.*?)</i><span>(.*?)</span></p>', b, flags=re.S)
++    if not rows: return b
++    got, extra = {}, []
++    for ic, body in rows:
++        lab = STD_LAB.get(ic)
++        if lab and lab not in got: got[lab] = body
++        else: extra.append((lab or ("場所" if ic in ("🗺", "・") else ic), body, ic))
++    to = a0.get("data-to", "")
++    if "住所" not in got and to: got["住所"] = _html.escape(to)
++    if "対応" not in got:
++        try: at = json.loads(_html.unescape(a0.get("data-fit", "{}"))).get("at", "")
++        except Exception: at = ""
++        if at: got["対応"] = _html.escape(at)
++    out = []
++    for lab in STD_ORDER:
++        v = got.get(lab)
++        out.append(f'<p class="ux-c-l cs-l cs-s{" cs-u" if not v else ""}"><b class="cs-k">{lab}</b><span>{v or "未確認"}</span></p>')
++    out.append('<p class="ux-c-l cs-l cs-s cs-u"><b class="cs-k">口コミ</b><span>未連携</span></p>')
++    for lab, body, ic in extra:
++        if lab in ("🏅", "🚗", "📋", "🏠", "🐈", "🐕"): out.append(f'<p class="ux-c-l cs-l"><i aria-hidden="true">{lab}</i><span>{body}</span></p>')
++        else: out.append(f'<p class="ux-c-l cs-l cs-s"><b class="cs-k">{lab}</b><span>{body}</span></p>')
++    first = re.search(r'<p class="ux-c-l cs-l', b)
++    last = list(re.finditer(r'<p class="ux-c-l cs-l[^"]*"><i aria-hidden="true">.*?</i><span>.*?</span></p>', b, flags=re.S))[-1]
++    # 行の間に他の要素がある場合は、最初の行の位置に新しい並びを入れ、元の行は取り除く
++    nb = b
++    for m in reversed(list(re.finditer(r'<p class="ux-c-l cs-l[^"]*"><i aria-hidden="true">.*?</i><span>.*?</span></p>', b, flags=re.S))):
++        nb = nb[:m.start()] + nb[m.end():]
++    return nb[:first.start()] + "".join(out) + nb[first.start():]
++
++
+ def fc(blk):
+     """横に流れる施設カード .fc → 共通の形（写真の枠・地域の横スワイプはそのまま）。"""
+     ot = re.match(r"<div[^>]*>", blk).group(0)
+@@ -202,6 +242,7 @@ def fc(blk):
+         cls = " cs-p" if m.group(1) == "price" else ""
+         return f'<p class="ux-c-l cs-l{cls}"><i aria-hidden="true">{ic}</i><span>{m.group(3)}</span></p>'
+     b = re.sub(r'<p class="fc-(line|price)"[^>]*><svg[^>]*><use href="#fci-([a-z]+)"/></svg><span>(.*?)</span></p>', _ln, b, flags=re.S)
++    b = _std_rows(b, a0)
+     b = b.replace('<ul class="fc-tags">', '<ul class="dr-tags">')
+     # 大きいボタン2つ：公式サイト・経路（行き先が分かるときだけ）
+     acts = re.search(r'<div class="fc-acts">', b)
