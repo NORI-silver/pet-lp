@@ -24,6 +24,14 @@ def _pref_slugs():
     return s
 
 
+def _restore(card):
+    try:
+        import faccard
+        return faccard.restore(card)
+    except ImportError:
+        return card
+
+
 def _cards(h):
     """ページの中の [data-ffi] カードを (HTML, 市区町村) で返す。市区町村は data-city、なければ直前の .fr-h の見出し。"""
     out = []
@@ -42,7 +50,7 @@ def _cards(h):
         if not city:
             prev = [t for p, t in heads if p < m.start()]
             city = prev[-1] if prev else ""
-        out.append((h[m.start():i], city))
+        out.append((_restore(h[m.start():i]), city))
     return out
 
 
