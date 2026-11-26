@@ -1,0 +1,61 @@
+# 一時の補助。SEOの事実追記(老犬ホーム9件・葬儀7件)とItemListを最新 main の上に載せて再生成する（確認用の branch だけ）。終わったら消す。
+name: seo-helper
+on:
+  push:
+    branches: ['NORI-silver-repair-trig4']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 足す（データ追記とItemList）
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p /tmp/rpf; for f in gen_dogrun.py faccard.py facility_cards.py ownerfit.py find.js hosp_find.js rojin.json sougi_facilities.json sitters.json; do cp .github/workflows/*rp-$f /tmp/rpf/$f; done
+          git fetch origin main
+          git reset -q --hard origin/main
+          git log -1 --format='base %H'
+          for f in gen_dogrun.py faccard.py facility_cards.py ownerfit.py find.js hosp_find.js rojin.json sougi_facilities.json sitters.json; do cp /tmp/rpf/$f tools/$f; done
+          git status --short | head -20
+          git diff --stat | tail -10
+          echo "- 2026-11-26 / Muse / [E] 共通の生成元とデータの修復：#821 が古い写しから作られ、先に main に入っていた室内ドッグラン一覧（_INDOOR_IDS）・rojin_only・要約ページの取り上げ数の上限・複合施設の口コミの対象表示・一部データ項目が消えていたため、#821 の追加分（web・flags・フィルター・口コミ/タクシーのリンク）を残して戻す / このPR / 11/25 に取り下げた宮城の老犬ホーム1件（R002）は #821 で戻っていたので再び外した。テストと上限は変更なし。" >> docs/ai/handoff.md
+      - name: 作り直し3回
+        run: |
+          for i in 1 2 3; do python3 tools/gen_areas.py . > /tmp/g$i.log 2>&1 || { tail -20 /tmp/g$i.log; exit 1; }; cp tools/lastmod.json /tmp/lm$i.json; git status --porcelain | awk '{print $2}' | sort > /tmp/ch$i.txt; echo "pass $i changed: $(wc -l < /tmp/ch$i.txt)"; done
+          echo "lastmod diff 2vs1: $(diff /tmp/lm1.json /tmp/lm2.json | wc -l)  3vs2: $(diff /tmp/lm2.json /tmp/lm3.json | wc -l)  changed-set 3v2: $(diff /tmp/ch2.txt /tmp/ch3.txt | wc -l)"
+          for p in rojin-home; do echo "AFTER imgs $p: $(grep -o '<img' -r $p --include=index.html | wc -l)"; done
+          for p in rojin-home/index.html sougi/index.html pet-hotel/index.html hospital/index.html; do echo "GZ $p $(gzip -9c $p | wc -c)"; done
+          echo "hosp.js bytes $(wc -c < hosp.js)"
+          git status --porcelain | awk '{print $2}' | awk -F/ '{print $1"/"$2}' | sort | uniq -c | sort -rn | head -8
+      - name: 検査とテスト（各ゲートの終了状態を記録。何も省かない）
+        run: |
+          fail=0
+          run(){ n="$1"; shift; rc=0; "$@" > /tmp/gate_$n.log 2>&1 || rc=$?; echo "GATE $n exit=$rc :: $(tail -2 /tmp/gate_$n.log | tr '\n' ' ' | cut -c1-200)"; if [ $rc -ne 0 ]; then fail=1; fi; }
+          run seo python3 tools/seo_check.py .
+          run rules python3 tools/rules_check.py .
+          run feedback python3 tools/feedback_check.py .
+          run consistency python3 tools/consistency_check.py .
+          tf=0; tn=0
+          for f in tests/*.test.cjs; do tn=$((tn+1)); rc=0; node "$f" > /tmp/one.log 2>&1 || rc=$?; if [ $rc -ne 0 ]; then tf=$((tf+1)); echo "TEST FAIL exit=$rc $f :: $(grep -E 'bytes gzipped|Error|FAIL' /tmp/one.log | head -3 | tr '\n' ' ')"; fi; done
+          echo "TESTS files=$tn failed=$tf"
+          if [ $tf -ne 0 ]; then fail=1; fi
+          echo "ALL_GATES_EXIT=$fail"
+          exit $fail
+      - name: コミット
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git rm -q --cached -f .github/workflows/*seo-helper.yml 2>/dev/null || true
+          git commit -qm "共通の生成元とデータの修復（#821 で消えた分を戻す。生成物を含む）"
+          git push -f origin HEAD:refs/heads/NORI-silver-repair-4
+          git log -1 --format='HEAD %H'
