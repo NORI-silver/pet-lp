@@ -8,6 +8,8 @@ const cards = file => json(file).groups.flatMap(([, entries]) => entries);
 test('oppotoのトリミング送迎はホテル送迎と区別し、カードと比較表に出す', () => {
   const h = json('tools/hotels.json').hotels.find(x => x.id === 'PHk421d80');
   assert.equal(h.pickup, false);
+  assert.deepEqual(json('tools/kinki_add.json').hotels.find(x => x.id === h.id), h,
+    '近畿データの再取り込みで店舗確認済みの送迎条件を上書きしない');
   assert.match(h.facts.find(f => f.k === '送迎').v, /原則月曜日.*10km圏内.*ホテルやしつけ教室のみの利用は対象外/);
   assert.match(read('pet-hotel/shiga/index.html'), /data-l="送迎">トリミングのみ無料/);
   const card = cards('find-data/pet-hotel/shiga.json').find(x => x.includes('data-fid="PHk421d80"'));
