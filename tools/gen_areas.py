@@ -2862,6 +2862,9 @@ for _u, _to in sorted(_MOVED["pages"].items()):
   _nm += 1
 json.dump(_MOVED, open(_mv_f, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print("moved", _nm, "pages")
+# 生成元のない古いページのさがす欄の見出しをそろえる（tools/orphan_labels.py。べき等）
+import orphan_labels
+print("orphan_labels", orphan_labels.normalize(ROOT), "pages")
 # [G] 品質の決まりの点検（tools/rules_check.py、Nori 2026-11-16「指示しなくてもできるようにしたい」）。直った前からの違反を
 # tools/rules_baseline.json から消す（いちばん最後。新しい違反で止めるのは seo-check.yml の rules_check.py）
 import rules_check

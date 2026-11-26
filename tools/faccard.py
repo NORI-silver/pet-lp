@@ -576,7 +576,7 @@ def panel(conf, kinds_used, has_size, has_sen, has_pup, n, fts=(), box=False, dp
     if has_size and "dog" in conf["kinds"]: ex.append('<button type="button" data-v="big" aria-pressed="false">大型犬</button>')
     if has_sen and conf.get("senior"): ex.append('<button type="button" data-v="sen" aria-pressed="false">シニア・介護</button>')
     if has_pup and conf.get("puppy"): ex.append('<button type="button" data-v="pup" aria-pressed="false">子犬</button>')
-    if ex: rows.append('<div class="fp-row"><span class="fp-l">うちの子は</span><div class="fp-btns" data-g="x">' + "".join(ex) + "</div></div>")
+    if ex: rows.append('<div class="fp-row"><span class="fp-l">よく使用される項目</span><div class="fp-btns" data-g="x">' + "".join(ex) + "</div></div>")
     if dps: rows.append('<div class="fp-row"><span class="fp-l">診療科目</span><div class="fp-btns fp-ft" data-g="d">' +
                         "".join(f'<button type="button" data-v="{html.escape(v)}" aria-pressed="false">{html.escape(v)}</button>' for v in dps) + "</div></div>")
     if fts: rows.append('<div class="fp-row"><span class="fp-l">しぼる</span><div class="fp-btns fp-ft" data-g="f">' +
