@@ -200,7 +200,7 @@ def render(ctx, f):
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{faq_html}</dl></div>
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">関連するページ</h2><ul class="other"><li><a href="/sougi/{slug}/">{e(pf)}のペット火葬・霊園と市区の受け付け</a></li><li><a href="/guide/pet-cremation-types/">ペットの火葬の種類と料金</a></li><li><a href="/guide/pet-died-first/">ペットが亡くなったら、すぐにすること</a></li><li><a href="/guide/pet-memorial/">お骨の供養と、ペット霊園・納骨堂の選び方</a></li><li><a href="/guide/farewell/">お別れの日の移動</a></li></ul></div>
       <p class="emg-free">当サイトは{e(nm)}とは別の運営で、施設からお金をもらっていません。おすすめや順位ではありません。内容は変わることがあるので、頼む前に必ず公式サイトでご確認ください。</p>
-      {FC.biz(e, "ペット火葬・霊園")}
+      {FC.biz(e, "ペット葬儀・火葬・霊園")}
       <p class="emg-note">掲載の内容の誤りや、掲載をやめたいご希望は、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
     </div>
   </div>
