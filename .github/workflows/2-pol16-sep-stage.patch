@@ -1,0 +1,79 @@
+diff --git a/tests/card-policy.test.cjs b/tests/card-policy.test.cjs
+index a1e2692a..827dbf6e 100644
+--- a/tests/card-policy.test.cjs
++++ b/tests/card-policy.test.cjs
+@@ -64,3 +64,17 @@ for (const top of ['rojin-home', 'pet-hotel', 'pet-sitter']) {
+ }
+ assert(rojin > 100 && hotels > 1000 && sitters > 500, `変換されたカードが少ない rojin=${rojin} hotel=${hotels} sitter=${sitters}`);
+ console.log(`card-policy OK cards=${cards} rojin=${rojin} hotel=${hotels} sitter=${sitters}`);
++
++// 「詳しく見る」を持つカードは、すべて出典（公式サイト）を見られる。出典のない詳細を出さない。
++{
++  const fs2 = require("fs"), path2 = require("path");
++  const bare = [];
++  for (const d of ["pet-sitter", "pet-hotel", "rojin-home"]) {
++    const walk = (p) => { for (const e of fs2.readdirSync(p, { withFileTypes: true })) { const q = path2.join(p, e.name); if (e.isDirectory()) walk(q); else if (e.name === "index.html") {
++      const t = fs2.readFileSync(q, "utf8"); const re = /<details class="pc-d">(.*?)<\/details>/gs; let m;
++      while ((m = re.exec(t))) if (!/出典：/.test(m[1])) bare.push(q);
++    } } };
++    walk(path.join(__dirname, "..", d));
++  }
++  assert.strictEqual(bare.length, 0, "出典のない「詳しく見る」: " + bare.slice(0, 3).join(","));
++}
+diff --git a/tools/cardpolicy.py b/tools/cardpolicy.py
+index dd2b7a47..591f4c79 100644
+--- a/tools/cardpolicy.py
++++ b/tools/cardpolicy.py
+@@ -380,6 +380,8 @@ def card(blk, h, cat, more=None, compact=False):
+     _tr = h.get("trust") if isinstance(h.get("trust"), dict) else {}
+     _cf += [x for x in (_tr.get("vet"),) if isinstance(x, dict) and x.get("v") and x["v"] in shown]
+     srcs = list(dict.fromkeys([(f_.get("src"), f_.get("checked")) for f_ in _cf if f_.get("src")] + [(s, c) for k, v, s, c in rows if s]))  # 出典と確認日は同じものを1回だけ
++    if not srcs and rows and url:  # 項目ごとの出典がない記録（公式サイトの記載をまとめた紹介文だけ）は、公式サイトを出典にする。確認日は記録にあるもの（web の確認日）だけ。なければ出さない
++        srcs = [(url, (h.get('web') or {}).get('checked') or None)]
+     if srcs:
+         from urllib.parse import urlparse
+         host = urlparse(url).netloc
+@@ -451,8 +453,29 @@ def _fin(h2):
+     return h2.replace("</head>", CSS_LINK + "</head>", 1)  # 見た目は /pc.css（ページごとに重ねない。build が書く）
+ 
+ 
++def _fixbare(h, cat, D):
++    """すでに変換したページで、出典のない「詳しく見る」に公式サイトを出典として足す（日付は記録の確認日があるときだけ）。"""
++    if 'class="pc-d"' not in h: return h
++    parts = re.split(r'(?=<div class="emg-item)', h)
++    for k, b in enumerate(parts):
++        m = re.search(r'<details class="pc-d">(?:(?!</details>).)*?</div></details>', b, re.S)
++        if not m or "出典：" in m.group(0): continue
++        a = re.search(r'<div class="pc-a"><a href="([^"]+)"', b)
++        if not a: continue
++        url = html.unescape(a.group(1))
++        if cat == "hotel": rec = (D.get(url) or [None])[0]
++        else:
++            fid = re.search(r' data-fid="([^"]+)"', b)
++            rec = D.get(fid.group(1)) if fid else None
++        c = ((rec or {}).get("web") or {}).get("checked")
++        src = f'<small>出典：<a href="{E(url)}" target="_blank" rel="noopener">公式サイト</a>' + (f"（確認日 {E(c)}）" if c else "") + "</small>"
++        g = m.group(0)
++        parts[k] = b.replace(g, g[:-len("</div></details>")] + src + "</div></details>", 1)
++    return "".join(parts)
++
++
+ def page(h, cat, D):
+-    if 'id="pc-css"' in h or "/pc.css" in h: return h
++    if 'id="pc-css"' in h or "/pc.css" in h: return _fixbare(h, cat, D)
+     h2, n = _convert(h, cat, D, False)
+     if not n: return h
+     if len(h2) > 150000 and _gz(_fin(h2)) > LIMIT:
+diff --git a/tools/hotels.json b/tools/hotels.json
+index bca6cda8..491e364e 100644
+--- a/tools/hotels.json
++++ b/tools/hotels.json
+@@ -7682,7 +7682,7 @@
+     },
+     "report": {
+      "v": "様子をLINEで報告",
+-     "quote": "お預けの間毎日猫ちゃんの様子をお写真を添えてLIN",
++     "quote": "お預けの間毎日猫ちゃんの様子をお写真を添えてLINEまたはメールにてご報告いたします。",
+      "src": "https://nekobeya.pechika.jp/houses/nagoya.html",
+      "by": "site",
+      "checked": "2026-11-16"
