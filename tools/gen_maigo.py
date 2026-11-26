@@ -9,6 +9,7 @@
 import json, os, re
 from facility_review_links import link as review_link
 import maigo_flags as _mf
+import paused
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT0 = os.path.dirname(HERE)
@@ -114,7 +115,7 @@ def data(ROOT, pref_slug):
                  "r": f"/rojin-home/{sl}/" if has("rojin-home", sl) else "",
                  "o": f"/pet-hotel/{sl}/" if has("pet-hotel", sl) else "",
                  "t": f"/pet-sitter/{sl}/" if has("pet-sitter", sl) else "",
-                 "j": f"/joto/{sl}/" if has("joto", sl) else "",
+                 "j": f"/joto/{sl}/" if not paused.is_paused("/joto/") and has("joto", sl) else "",
                  "sg": f"/sougi/{sl}/" if has("sougi", sl) else "/sougi/"}
     M = []
     for m in MUNIS:
@@ -485,7 +486,7 @@ def tebanasu(ctx):
       <div><h3>入院・出張・介護で、しばらく世話ができない</h3><p>手放さずに、その間だけ預けられます。家族や知人のほか、ペットホテル、家に来てくれるペットシッター。</p><div class="jc-go" data-slot="tmp"><a href="/pet-hotel/">ペットホテル</a><a class="l" href="/pet-sitter/">ペットシッター</a></div></div>
       <div><h3>年をとって、介護が難しくなった</h3><p>老犬ホーム・老猫ホームは、月ごとの預かりから終生の預かりまであります。費用は施設ごとにまったく違うので、見学して見くらべます。かかりつけの動物病院にも相談を。</p><div class="jc-go" data-slot="rojin"><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a class="l" href="/guide/rojin-home-cost/">費用のしくみ</a></div></div>
       <div><h3>ほえる・かむなど、困りごとがある</h3><p>手放す理由が行動なら、直せることがあります。動物病院か、ドッグトレーナーに相談します。</p><div class="jc-go"><a href="/dog-trainer/">ドッグトレーナー</a></div></div>
-      <div><h3>どうしても、新しい家族をさがすしかない</h3><p>まず家族・親せき・友人に。譲渡の活動をしている団体は、団体ごとに受ける条件があります。ネットの里親募集を使うときは、相手と会い、飼う環境を確かめてから。</p><div class="jc-go" data-slot="joto"><a href="/joto/">譲渡の窓口と団体</a></div></div>
+      <div><h3>どうしても、新しい家族をさがすしかない</h3><p>まず家族・親せき・友人に。譲渡の活動をしている団体は、団体ごとに受ける条件があります。ネットの里親募集を使うときは、相手と会い、飼う環境を確かめてから。</p>{'<div class="jc-go" data-slot="joto"><a href="/joto/">譲渡の窓口と団体</a></div>' if not paused.is_paused("/joto/") else ""}</div>
       <div><h3>それでも難しいとき：動物愛護センター・保健所に相談</h3><p>いきなり連れていくのではなく、まず相談から。引き取りは有料のことが多く、次のような理由では断られることがあります。</p><div class="jc-go" data-slot="center"></div></div>
     </div>
     </div>
@@ -508,7 +509,8 @@ def tebanasu(ctx):
     return ctx["head"](title, desc, url, _ld(SITE, url, "飼えなくなったとき", TEBANASU_FAQ)).replace("</head>", CSS + "</head>", 1) + body + '<script src="/jichitai/jc.js" defer></script>\n' + ctx["foot_noband"]()
 
 
-PAGES = {"maigo": maigo, "touroku": touroku, "tebanasu": tebanasu}
+PAGES = {k: f for k, f in (("maigo", maigo), ("touroku", touroku), ("tebanasu", tebanasu))
+         if not paused.is_paused(f"/jichitai/{k}/")}
 
 def urls(SITE):
     return [f"{SITE}/jichitai/{k}/" for k in PAGES]

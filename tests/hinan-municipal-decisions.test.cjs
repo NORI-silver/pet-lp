@@ -51,7 +51,12 @@ for (const [pref, name, answer, condition, place] of cms) {
     assert.equal(row[5].charAt(6), '0', name + ': finder specific cage wording supersedes generic label');
   }
 }
-const izumo = read('joto/shimane/izumo-shi/index.html');
-assert.ok(izumo.includes('譲渡前適正講習会') && izumo.includes('65歳未満') && izumo.includes('出雲保健所の回答'));
-assert.ok(izumo.includes('出雲の募集状況と講習会'));
+const izumoPath = 'joto/shimane/izumo-shi/index.html';
+if (fs.existsSync(izumoPath)) {
+  const izumo = read(izumoPath);
+  assert.ok(izumo.includes('譲渡前適正講習会') && izumo.includes('65歳未満') && izumo.includes('出雲保健所の回答'));
+  assert.ok(izumo.includes('出雲の募集状況と講習会'));
+} else {
+  assert.ok(!read('sitemap.xml').includes('/joto/'), 'paused adoption is not included in the sitemap');
+}
 console.log(cms.length + ' municipality finder/page decisions and Izumo adoption: OK');

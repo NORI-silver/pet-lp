@@ -37,7 +37,7 @@ function pick(m){S.innerHTML='';Q.value=m[1];var PS1=document.getElementById('jc
  else{H.innerHTML='<b>'+esc(pf+city)+'</b>の近くの相談先です。';
   slot('tmp',(P.o?a(P.o,pf+'のペットホテル'):a('/pet-hotel/','ペットホテル'))+(P.t?a(P.t,pf+'のペットシッター',1):a('/pet-sitter/','ペットシッター',1)));
   slot('rojin',(P.r?a(P.r,pf+'の老犬ホーム'):a('/rojin-home/','老犬ホーム・老猫ホーム'))+a('/guide/rojin-home-cost/','費用のしくみ',1));
-  slot('joto',P.j?a(P.j,pf+'の譲渡の窓口と団体'):a('/joto/','譲渡の窓口と団体'));
+  slot('joto',P.j?a(P.j,pf+'の譲渡の窓口と団体'):'');
   slot('center',card(c,c&&c[3]===city?city+'の窓口':pf+'の窓口（'+city+'はこの窓口の受け持ち）'));ev('jichitai_find',{pref:pf,page:K})}}
 function covers(d,pf){var ar=d.areas||[];return ar.indexOf('全国')>=0||ar.indexOf(pf)>=0||(d.near||[]).indexOf(pf)>=0}
 function local(d,pf){return(d.near||[]).indexOf(pf)>=0||!!(d.u&&d.u[pf])||((d.areas||[]).indexOf(pf)>=0&&(d.areas||[])[0]!=='全国')}
