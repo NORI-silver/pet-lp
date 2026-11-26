@@ -9,6 +9,7 @@ gen_areas.py の最後（faccard・portal のあと）に動く。何度動か�
 """
 import html as _h, os, re
 import prefkeep
+import decisionfit
 
 PILOT = ["hospital", "pet-hotel", "dogrun"]
 # 広げる先（2026-11-15 Nori「いいよ公開して」のあと、のこりのカテゴリへ）
@@ -229,7 +230,7 @@ HOTEL = dict(
     animals=("どの子を預けますか？", [("a:dog", "犬"), ("cat", "猫"), ("cat_only", "猫専用")]),
     who=("よく使用される項目", [("big", "大型犬（25kg以上）"), ("sen", "シニア・介護が必要"), ("pup", "子犬・子猫"), ("med", "薬・持病がある"), ("multi", "2頭以上いる"), ("shy", "かむ・ほえる・こわがり")]),
     need=("どんなホテルをお探しですか？", [("vet", "病院が併設"), ("pickup", "送迎あり"), ("night_staff", "夜もスタッフ"), ("staff24", "24時間見守り・スタッフ常駐"), ("private_room", "個室")]),
-    more=[("設備", [("camera", "カメラで見守り"), ("run", "ドッグラン"), ("cagefree", "ケージフリー"), ("walk", "散歩つき"), ("longstay", "長期OK"), ("smallonly", "小型犬のみ")]),
+    more=[("設備", [("camera", "カメラで見守り"), ("run", "ドッグラン"), ("cagefree", "ケージフリー"), ("walk", "散歩つき"), ("longstay", "長期OK"), ("smallonly", "小型犬のみ"), *decisionfit.options("pet-hotel")]),
           ("体重（上限が書いてあるホテルだけ）", [("wb5", "5kg未満"), ("wb10", "5〜10kg"), ("wb25", "10〜25kg")])],
     go="この条件でホテルを探す")
 
@@ -303,16 +304,19 @@ def facility_list(h, conf, hub):
     def card(t, url):
         fl = re.search(r'data-flags="([^"]*)"', t)
         ks = fl.group(1).split() if fl else []
+        ks += _ATTR(t, "data-decision").split()
         ks += [{"large": "big", "senior": "sen"}[k] for k in ks if k in ("large", "senior")]
         y, n = ownerfit.keys(conf["cat"], url)
         blocked = {k for k, v in ownerfit.checked_condition_status(conf["cat"], url).items() if v != 1}
         ks = [k for k in dict.fromkeys(ks + y) if k not in blocked]
         # 猫専用かどうかはデータの項目（cat_only）ではっきり決まる。専用でないホテルは「猫専用ではない」として外す
+        n += _ATTR(t, "data-decision-no").split()
         n = [x for x in n if x not in ks] + (["a:dog"] if "cat_only" in ks else ["cat_only"])
         no = f' data-no="{e(" ".join(n))}"' if n else ""
         ks = _dedupe_k(t, ks)
         return t[:-1] + " data-ffi" + (f' data-k="{e(" ".join(ks))}"' if ks else "") + f"{no}>"
     h = _sub_cards(h, card)
+    h = re.sub(r' data-decision(?:-no)?="[^"]*"', "", h)
     h = re.sub(r'(<div class="fc-name"><a href="([^"]*)"[^>]*>.*?</div>)((?:(?!class="fc-name").)*?)<div class="fc-acts">',
                lambda m: m.group(1) + m.group(3) + f'<div class="fc-acts"><a class="ux-btn" href="{m.group(2)}" target="_blank" rel="noopener">公式サイトを見る ↗</a>', h, flags=re.S)
     # 前の動き（fit.js・条件のチェック）を外して /find.js に
@@ -409,7 +413,8 @@ def _keys(t, cat, url=""):
         if key in raw or raw & set(syn): k.append(key)
     if cat == "dog-trainer" and raw & {"問題行動", "しつけ相談"}: k.append("shy")
     y, n = ownerfit.joto_keys(url) if cat == "joto" else ownerfit.keys(cat, url)
-    k += y
+    k += y + _ATTR(t, "data-decision").split()
+    n += _ATTR(t, "data-decision-no").split()
     blocked = {key for key, val in ownerfit.checked_condition_status(cat, url).items() if val != 1}
     k = [x for x in dict.fromkeys(k) if x not in blocked]
     no = [x for x in no + n if x not in k]
@@ -434,6 +439,7 @@ def generic_list(h, cat, hub):
         if cat == "dog-trainer": t = _dedupe_ft(t)
         return t[:-1] + " data-ffi" + (f' data-k="{e(" ".join(ks))}"' if ks else "") + (f' data-no="{e(" ".join(no))}"' if no else "") + ">"
     h = _sub_cards(h, card)
+    h = re.sub(r' data-decision(?:-no)?="[^"]*"', "", h)
     n, lo = tot[0], (3 if hub else 1)
     use = lambda k: lo <= cnt.get(k, 0) and (cnt.get(k, 0) < n * 0.9 or n <= 3)  # 少なすぎる・ほぼ全部に当てはまる条件は出さない
     animals = None
@@ -473,6 +479,12 @@ def generic_list(h, cat, hub):
         more += [(k, l) for k, l in [("stay", "泊まりの留守番"), ("sameday", "当日も相談できる"), ("regular", "定期利用"),
                                      ("nightcare", "夜間・深夜も対応"), ("earlycare", "早朝も対応"), ("pickup", "送迎あり"),
                                      ("trial", "お試し・トライアル"), ("discount", "割引・回数券がある"), ("longstay", "長期利用")] if use(k)]
+    # 全国入口のカードは県ごとに数件だけ。県選択後の全件にある条件もここに出す。
+    available = {k for r in ownerfit._load(cat).values()
+                 for k, v in decisionfit.evidence(cat, r).items() if v[0] == 1} if hub and decisionfit.options(cat) else set()
+    added = [(k, l) for k, l in decisionfit.options(cat)
+             if k in available or (0 < cnt.get(k, 0) and (cnt[k] < n * 0.9 or n <= 3))]
+    more += added
     if use("fee"): more.append(("fee", "料金の目安が分かる"))
     mgroups = [("そのほかの条件", more)] if more else ()
     if cat in GROUPS:  # 動物病院と同じ形：見える2列ボタン（最大6）＋詳しい条件を小見出しでまとめる。見出しは分野に中立
@@ -480,6 +492,7 @@ def generic_list(h, cat, hub):
         gneed, gdet = GROUPS[cat]
         need = [(k, LAB[k]) for k in gneed if k in LAB and use(k)]
         mgroups = [(h, [(k, LAB[k]) for k in ks if k in LAB and use(k)]) for h, ks in gdet]
+        if added: mgroups.append(("預け方・頼み方", added))
         mgroups = [g for g in mgroups if g[1]]
     bx = box(cat, q_ph="都道府県・市区町村", opts=opts if (hub and opts) else None, animals=animals,
              who=who, when=when, need=(qsv, need), more=mgroups, unit="件", noun=noun, go=go, guess=bool(hub and opts))

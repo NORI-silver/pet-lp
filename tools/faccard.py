@@ -11,6 +11,8 @@
 # - 文字は消さない・隠さない（くわしくは <details> の中。検索・AIにも読める）。電話番号・順位・点数順はなし。
 import os, re, json, html, hashlib
 
+import decisionfit
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 # 分野ごとの設定。kinds＝「どの子？」に出す動物、size＝大きさ（犬）を聞く、senior／puppy＝シニア・介護／子犬を聞く
@@ -441,8 +443,22 @@ def build_card(card, conf, fit_by_name):
     # 安心の材料（ペットホテルの動物取扱業の登録・夜のスタッフなど。Nori 2026-11-16「どこが信用できるかわからない」）：緑のチェックの札で、名前のすぐ下に
     trust = [v for l, v, _ in rows if l == "安心の材料"]
     rows = [r for r in rows if r[0] != "安心の材料"]
+    # 比較に使う具体的な条件は、件数を絞ってカードに直接残す。
+    cat = next((k for k in decisionfit.DISPLAY if CATS[k] is conf), "")
+    decisions = []
+    priorities = decisionfit.DISPLAY.get(cat, ())
+    priorities = tuple(label for _, label in decisionfit.options(cat)) + priorities
+    prices = {val for lab, val, _ in rows if _PRICE.search(lab)} if cat else set()
+    shown_values = set()
+    for lab in priorities:
+        for i, (k, val, _) in enumerate(rows):
+            if k == lab and len(decisions) < 2 and val and val not in shown_values and val not in prices:
+                decisions.append((i, k, val))
+                shown_values.add(val)
+                break
     # 見せる行：場所 → 料金 → 時間 → 動物 → 資格（4行まで）。のこりは「くわしく」
-    pick, used = [], set()
+    pick, used = [], {i for i, (k, val, _) in enumerate(rows)
+                      if val in shown_values or val in prices and any(k == label for _, label in decisionfit.options(cat))}
     def take(rx, ic):
         for i, (lab, val, x) in enumerate(rows):
             if i in used or not rx.search(lab): continue
@@ -538,6 +554,9 @@ def build_card(card, conf, fit_by_name):
         # 併設サービスだけの送迎は、末尾の「ホテルは対象外」をスマホでも省略しない。
         span_attr = ' style="display:block;overflow:visible"' if conf["key"] == "hotel" and lab == "送迎" else ""
         body.append(f'<p class="fc-line" title="{html.escape(lab)}">{icon("list")}<span{span_attr}>{html.escape(lab)}：{html.escape(val)}</span></p>')
+    for _, lab, val in decisions:
+        if (lab, val) in care_rows: continue
+        body.append(f'<p class="fc-line" title="{html.escape(lab)}">{icon("list")}<span style="display:block;overflow:visible">{html.escape(lab)}：{html.escape(val)}</span></p>')
     if meta and meta.get("cremation_summary"):
         summary = html.escape(meta["cremation_summary"])
         body.append(f'<p class="fc-line" title="返骨・立ち会い">{icon("badge")}<span>返骨・立ち会い：{summary}</span></p>')

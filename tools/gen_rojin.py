@@ -37,6 +37,8 @@ def criteria_html(e, pf=None):
     return ('<details class="emg-tips pp-fold"><summary>この一覧について</summary><ul>'
             + "".join(f"<li>{e(t)}</li>" for t in CRITERIA) + "</ul></details>")
 
+import decisionfit
+
 def _card(e, h):
     extra = ""
     if h.get("intro"): extra += f'<small class="emg-intro">{e(h["intro"])}</small>'
@@ -52,13 +54,15 @@ def _card(e, h):
         extra += f'<small>所在地：{e(h["addr"])}</small>'
     # [B] 2026-11-22 Nori「他のサイトにいって追加で調べることがないように」：公式サイトに書いてある料金・条件・時間などもカードに
     for f in h.get("facts", []):
-        if (f["k"] in ("料金", "別料金", "受け入れ条件", "見学・面会", "病院", "用意するもの", "営業・受付時間", "お支払い", "部屋", "お世話", "1泊・日帰り", "定休日", "駐車場") and not (f["k"] == "見学・面会" and h.get("visit"))) or (f.get("show") and not (f["k"] in ("見学", "面会") and h.get("visit"))):
+        if (f["k"] in ("料金", "ふくまれるお世話", "別料金", "受け入れ条件", "見学・面会", "病院", "用意するもの", "営業・受付時間", "お支払い", "部屋", "お世話", "1泊・日帰り", "定休日", "駐車場") and not (f["k"] == "見学・面会" and h.get("visit"))) or (f.get("show") and not (f["k"] in ("見学", "面会") and h.get("visit"))):
             extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
+    for label, value in decisionfit.rows("rojin-home", h):
+        extra += f'<small>{e(label)}：{e(value)}</small>'
     fa = f' data-cat="rojin" data-fid="{e(h["id"])}" data-name="{e(h["name"])}"' + (' data-partner="1"' if h.get("partner") else '')  # facility.js（問い合わせ文・提携先へは当サイトから送る）
     review = RL.link("rojin", h, scope="facility")
     if not review and h.get("review_query"):
         review = f'<div class="emg-score" data-id="{e(h["id"])}"></div>'
-    return (f'<div class="emg-item emg-co"{fa}><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>'
+    return (f'<div class="emg-item emg-co"{decisionfit.attrs("rojin-home", h)}{fa}><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>'
             f'<small>{e(h["city"])}</small>{extra}'
             + review + "</div>")
 

@@ -39,6 +39,8 @@ def points_html():
     import visual as _V
     return _V.checks("ドッグトレーナーを選ぶときに見る5つ", POINTS, POINTS_MORE)
 
+import decisionfit
+
 def _card(e, t):
     extra = ""
     if t.get("spec"): extra += f'<small class="emg-spec">{e(t["spec"])}</small>'
@@ -51,8 +53,8 @@ def _card(e, t):
     # [B] 2026-11-22 Nori「他のサイトにいって追加で調べることがないように」：公式サイトに書いてある料金・時間・休み・対象・出張費・お支払いもカードに
     fx = {}
     for f in t.get("facts", []):
-        if f["k"] in ("料金", "営業・受付時間", "定休日", "対象の犬", "出張費", "お支払い", "初回・体験", "駐車場", "用意するもの") and f["k"] not in fx: fx[f["k"]] = f["v"]
-    for k in ("料金", "初回・体験", "営業・受付時間", "定休日", "対象の犬", "出張費", "お支払い", "駐車場", "用意するもの"):
+        if f["k"] in ("料金", "営業・受付時間", "定休日", "対象の犬", "しつけの方法", "出張費", "お支払い", "初回・体験", "駐車場", "用意するもの") and f["k"] not in fx: fx[f["k"]] = f["v"]
+    for k in ("料金", "初回・体験", "営業・受付時間", "定休日", "対象の犬", "しつけの方法", "出張費", "お支払い", "駐車場", "用意するもの"):
         if fx.get(k): extra += f'<small>{e(k)}：{e(fx[k])}</small>'
     # [B] 11/16 Nori「ドッグトレーナー歴とか」：公式サイトに書いてある教室だけ
     if t.get("career"): extra += f'<small>トレーナー歴：{e(t["career"])}</small>'
@@ -64,8 +66,10 @@ def _card(e, t):
     if t.get("addr") and set(tags) & {"教室・グループ", "幼稚園・保育園", "預かり訓練"}:
         pf = t["prefs"][0]
         to = t.get("venue_addr") or (t["addr"] if t["addr"].startswith(pf) else pf + t["addr"])
+    for label, value in decisionfit.rows("dog-trainer", t):
+        extra += f'<small>{e(label)}：{e(value)}</small>'
     rv = review_link("trainer", t)
-    return (f'<div class="emg-item emg-co"{FC.attrs(e, "trainer", t, tags, t["name"], to, "教室")}><a href="{e(t["url"])}" target="_blank" rel="noopener"><b>{e(t["name"])}</b></a>'
+    return (f'<div class="emg-item emg-co"{decisionfit.attrs("dog-trainer", t)}{FC.attrs(e, "trainer", t, tags, t["name"], to, "教室")}><a href="{e(t["url"])}" target="_blank" rel="noopener"><b>{e(t["name"])}</b></a>'
             f'<small>{e(t["city"])}</small>{extra}'
             + (rv or (f'<div class="emg-score" data-id="{e(t["id"])}"></div>' if t.get("review_query") else "")) + "</div>")
 

@@ -30,19 +30,23 @@ def _tags(g):
     if g.get("max_kg"): t.append(f'{g["max_kg"]}kgまで')
     return t
 
+import decisionfit
+
 def _card(e, g):
     flags = " ".join(k for k, _ in CONDS if g.get(k))
     extra = ""
     if g.get("services"): extra += f'<small>内容：{e(g["services"])}</small>'
     if g.get("area"): extra += f'<small>出張エリア：{e(g["area"])}</small>'
     for f in g.get("facts", []):
-        if f["k"] in ("料金", "出張費", "営業・受付時間", "定休日", "予約", "予約のしかた", "お支払い", "犬・猫・大きさ", "駐車場", "用意するもの"):
+        if f["k"] in ("料金", "出張費", "営業・受付時間", "定休日", "予約", "予約のしかた", "お支払い", "犬・猫・大きさ", "受け入れ条件", "施術の配慮", "送迎", "駐車場", "用意するもの"):
             extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
+    for label, value in decisionfit.rows("trimming", g):
+        extra += f'<small>{e(label)}：{e(value)}</small>'
     tags = _tags(g)
     if tags: extra += '<small class="emg-spec">公式サイトに書いてある条件：' + e("・".join(tags)) + '</small>'
     city = f'<small>{e(g["city"])}</small>' if g.get("city") else ""
     fa = f' data-cat="trim" data-fid="{e(g["id"])}" data-name="{e(g["name"])}"' + (' data-partner="1"' if g.get("partner") else '')  # facility.js
-    return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"{fa}><a href="{e(g["url"])}" target="_blank" rel="noopener"><b>{e(g["name"])}</b></a>'
+    return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"{fa}{decisionfit.attrs("trimming", g)}><a href="{e(g["url"])}" target="_blank" rel="noopener"><b>{e(g["name"])}</b></a>'
             f'{city}{extra}{review_link("trim", g)}</div>')
 
 # 都道府県の選択（prefkeep）と、条件のしぼりこみを合わせて動かす

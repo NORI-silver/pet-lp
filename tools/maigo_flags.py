@@ -37,3 +37,20 @@ def fee_item_is_separate(x):
 def has_separate_fee(d):
     ef = d.get("extra_fees")
     return isinstance(ef, list) and any(fee_item_is_separate(x) for x in ef)
+
+
+METHODS = {
+    "mc": ("捜索用カメラ", r"カメラ"),
+    "mt": ("捕獲器の設置", r"捕獲[器機]|サークルトラップ"),
+    "mf": ("チラシ・ポスター", r"チラシ|ポスター|ポスティング"),
+}
+
+def method_keys(d):
+    keys = []
+    if not (d.get("facts_src") or d.get("src")):
+        return keys
+    for key, (_, rx) in METHODS.items():
+        if any(re.search(rx, row) and not re.search(r"貸し出し|レンタル|使わない|不可|行わない", row)
+               for row in (d.get("methods") or []) if isinstance(row, str)):
+            keys.append(key)
+    return keys

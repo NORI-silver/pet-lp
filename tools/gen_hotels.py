@@ -98,6 +98,8 @@ TODAY = __import__("datetime").date.today().isoformat()
 
 FACT_KEYS = ("料金", "営業・受付時間", "定休日", "駐車場", "送迎", "予約のしかた", "お支払い", "対象の動物", "用意するもの", "受け入れの注意", "預かり期間")
 
+import decisionfit
+
 def _card(e, h):
     flags = " ".join(_flags(h))
     tags = [lab for k, lab in CONDS + EXTRA if h.get(k)]
@@ -115,10 +117,12 @@ def _card(e, h):
             extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
             if f["k"] in ("料金", "受け入れの注意") and h.get("fit_status") and f.get("src"):
                 extra += f'<a class="fc-source" href="{e(f["src"])}" target="_blank" rel="noopener">{e(f["k"])}の案内</a>'
+    for label, value in decisionfit.rows("pet-hotel", h):
+        extra += f'<small>{e(label)}：{e(value)}</small>'
     city = f'<small>{e(h["city"])}</small>' if h.get("city") else ""
     # 条件が限定される送迎情報は、全国ページで県を切り替えても同じカードに残す。
     scope_id = f' data-fid="{e(h["id"])}"' if h.get("pickup_comparison") else ""
-    return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"{scope_id}><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>{city}{extra}{review_link("hotel", h, scope="facility")}</div>')
+    return (f'<div class="emg-item emg-co" data-flags="{e(flags)}"{scope_id}{decisionfit.attrs("pet-hotel", h)}><a href="{e(h["url"])}" target="_blank" rel="noopener"><b>{e(h["name"])}</b></a>{city}{extra}{review_link("hotel", h, scope="facility")}</div>')
 
 def render(ctx):
     e, SITE = ctx["e"], ctx["SITE"]

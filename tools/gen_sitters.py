@@ -24,16 +24,20 @@ BEFORE = [
  ("多頭飼い・小動物・鳥", "頭数で料金が変わる店が多く、うさぎ・鳥・爬虫類を受けるかは店ごとに違います。一覧の「対象」に公式サイトの記載を載せています。"),
 ]
 
+import decisionfit
+
 def _card(e, s):
     ch = J["chains"][s["chain"]]
     extra = f'<small>対応エリア：{e(s["area"])}</small>' if s.get("area") else ''
     if s.get("animals"): extra += f'<small>対象：{e(s["animals"])}</small>'
     for f in s.get("facts", []):
         if f["k"] in ("料金", "追加料金", "交通費・出張費", "初回・契約", "営業・受付時間", "定休日", "お支払い", "用意するもの", "キャンセル料"): extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
+    for label, value in decisionfit.rows("pet-sitter", s):
+        extra += f'<small>{e(label)}：{e(value)}</small>'
     extra += (f'<small>{e(ch["name"])}の店舗一覧より</small>' if s["chain"] != "indie" else '<small>公式サイトより</small>')
     if not s.get("url"):
         return f'<div class="emg-item emg-co"><b>{e(s["name"])}</b>{extra}</div>'
-    return (f'<div class="emg-item emg-co"{FC.attrs(e, "sitter", s, FC.sitter_tags(s, J["chains"]), s["name"])}><a href="{e(s["url"])}" target="_blank" rel="noopener"><b>{e(s["name"])}</b></a>{extra}{review_link("sitter", s)}</div>')
+    return (f'<div class="emg-item emg-co"{decisionfit.attrs("pet-sitter", s)}{FC.attrs(e, "sitter", s, FC.sitter_tags(s, J["chains"]), s["name"])}><a href="{e(s["url"])}" target="_blank" rel="noopener"><b>{e(s["name"])}</b></a>{extra}{review_link("sitter", s)}</div>')
 
 def render(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
