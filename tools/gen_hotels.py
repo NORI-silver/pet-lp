@@ -264,6 +264,7 @@ def _osaka_large_stays(e):
 
 CAT["pref_overrides"] = {
     "大阪府": {
+        "section": '<p class="emg-tips-note"><a href="#osaka-large-stay">大型犬の料金と夜間の見守りを比較する</a></p>',
         "extra_after": _osaka_large_stays,
         "title": "大阪府のペットホテル｜大型犬の料金・夜間スタッフ｜ペットのくらし窓口",
         "desc": "大阪のペットホテルを、大型犬の宿泊料金、初回条件、時間外・繁忙期の加算で比較。夜間にスタッフがいるプランと、夜は施設側がカメラで見守るプランを区別して確認できます。",

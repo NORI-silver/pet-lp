@@ -364,6 +364,7 @@ def _sougi_title(pf, rs, n):
     if pf == "大分県" and {"大分市", "別府市"} <= cities:
         return "大分県のペット葬儀・ペット火葬・霊園｜大分市・別府市の受付と料金｜ペットタクシー予約窓口"
     return f"{pf}のペット葬儀・ペット火葬・ペット霊園｜{n}か所の一覧（個別火葬・立ち会い・お迎え・自治体の受け付け）｜ペットタクシー予約窓口"
+SOUGI["pref_overrides"] = {"千葉県": {"section": '<p class="emg-tips-note"><a href="#chiba-cremation-cost">4kg・8kgの料金と立ち会い・返骨を比較する</a></p>'}}
 SOUGI["title_fn"] = _sougi_title
 SOUGI["desc_fn"] = _sougi_desc
 NIGHT["title_fn"] = _night_title
