@@ -68969,14 +68969,16 @@
     },
     {
      "k": "送迎",
-     "v": "送迎は現在、月曜日限定で承っています。店舗から10km圏内の地域を対象に、無料で送迎いたします。",
+     "v": "トリミングをご利用のわんちゃんを対象に、原則月曜日に店舗から10km圏内で無料送迎を行っています。ペットホテルやしつけ教室のみの利用は対象外です。",
      "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
-     "by": "site",
-     "checked": "2026-11-23"
+     "by": "provider",
+     "checked": "2026-11-26",
+     "show": true
     }
    ],
    "checked": "2026-11-23",
-   "pickup": true
+   "pickup": false,
+   "pickup_comparison": "トリミングのみ無料（原則月曜・10km圏）"
   },
   {
    "id": "PHnk007",

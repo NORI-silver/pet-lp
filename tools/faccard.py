@@ -458,6 +458,11 @@ def build_card(card, conf, fit_by_name):
             if lab in ("大型犬の条件", "予約の条件", "見守りカメラ") or (
                     lab == "見学・面会" and "所在地" in val and "個別" in val):
                 used.add(i); care_rows.append((lab, val))
+    # ホテルの送迎が対象外でも、併設サービスだけの送迎条件はカード上で見せる。
+    if conf["key"] == "hotel":
+        for i, (lab, val, _) in enumerate(rows):
+            if lab == "送迎" and "のみの利用は対象外" in val:
+                used.add(i); care_rows.append((lab, val))
     take(_ANIM, "paw")
     if len(pick) < 4: take(_CERT, "badge")
     if conf["key"] == "trainer": take(_CAREER, "clock")
@@ -530,7 +535,9 @@ def build_card(card, conf, fit_by_name):
     for ic, lab, val in pick:
         if ic == "yen": body.append(f'<p class="fc-price" title="{html.escape(_short(lab))}">{icon("yen")}<span>{html.escape(val)}</span></p>')
     for lab, val in care_rows:
-        body.append(f'<p class="fc-line" title="{html.escape(lab)}">{icon("list")}<span>{html.escape(lab)}：{html.escape(val)}</span></p>')
+        # 併設サービスだけの送迎は、末尾の「ホテルは対象外」をスマホでも省略しない。
+        span_attr = ' style="display:block;overflow:visible"' if conf["key"] == "hotel" and lab == "送迎" else ""
+        body.append(f'<p class="fc-line" title="{html.escape(lab)}">{icon("list")}<span{span_attr}>{html.escape(lab)}：{html.escape(val)}</span></p>')
     if meta and meta.get("cremation_summary"):
         summary = html.escape(meta["cremation_summary"])
         body.append(f'<p class="fc-line" title="返骨・立ち会い">{icon("badge")}<span>返骨・立ち会い：{summary}</span></p>')
