@@ -64,3 +64,36 @@ for (const top of ['rojin-home', 'pet-hotel', 'pet-sitter']) {
 }
 assert(rojin > 100 && hotels > 1000 && sitters > 500, `変換されたカードが少ない rojin=${rojin} hotel=${hotels} sitter=${sitters}`);
 console.log(`card-policy OK cards=${cards} rojin=${rojin} hotel=${hotels} sitter=${sitters}`);
+
+// 「詳しく見る」を持つカードは、すべて出典（公式サイト）を見られる。出典のない詳細を出さない。
+{
+  const fs2 = require("fs"), path2 = require("path");
+  const bare = [];
+  for (const d of ["pet-sitter", "pet-hotel", "rojin-home"]) {
+    const walk = (p) => { for (const e of fs2.readdirSync(p, { withFileTypes: true })) { const q = path2.join(p, e.name); if (e.isDirectory()) walk(q); else if (e.name === "index.html") {
+      const t = fs2.readFileSync(q, "utf8"); const re = /<details class="pc-d">(.*?)<\/details>/gs; let m;
+      while ((m = re.exec(t))) if (!/出典：/.test(m[1])) bare.push(q);
+    } } };
+    walk(path.join(__dirname, "..", d));
+  }
+  assert.strictEqual(bare.length, 0, "出典のない「詳しく見る」: " + bare.slice(0, 3).join(","));
+}
+
+// R-HT003 にゃーご花巻：公式サイトは猫だけ・老猫ホームは現在休止中。犬の対応にしない。
+{
+  const t2 = require("fs").readFileSync(require("path").join(__dirname, "..", "rojin-home", "index.html"), "utf8");
+  const i2 = t2.indexOf('data-fid="R-HT003"');
+  assert(i2 > 0, "R-HT003 のカードがない");
+  const blk = t2.slice(i2, i2 + 4000).split('data-fid="')[1 + 0] !== undefined ? t2.slice(i2, i2 + 3000) : "";
+  assert(!/"a":\["dog"/.test(blk.slice(0, 400)), "R-HT003 が犬の対応になっている");
+  assert(!blk.includes("老犬ホーム・老猫ホーム"), "R-HT003 の古い記載が残っている");
+}
+
+// R-HT003：「現在休止中」は公式サイトのトップで 2026-11-27 に確かめた記載。カードに出典URLと確認日つきで出す。
+{
+  const f2 = require("fs"), p2 = require("path");
+  const t3 = f2.readFileSync(p2.join(__dirname, "..", "rojin-home", "index.html"), "utf8");
+  const i3 = t3.indexOf('data-fid="R-HT003"');
+  const b3 = t3.slice(i3, t3.indexOf('data-fid="', i3 + 20));
+  assert(/現在休止中/.test(b3) && /出典：(<a[^>]*>)?公式サイト/.test(b3) && /確認日 2026-11-27/.test(b3), "R-HT003 の休止中の記載に出典と確認日がない");
+}
