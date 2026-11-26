@@ -25,6 +25,7 @@ function pick(m){S.innerHTML='';Q.value=m[1];var PS1=document.getElementById('jc
   var loc=document.getElementById('jcLocal');
   if(loc){var links=[a(c&&c[1],'動物愛護センター・保健所'),a(P.pol,pf==='東京都'?'警視庁の遺失届':'警察の遺失届'),a(m[3],city+'の公式ページ'),a(m[5]||P.h,'近くの動物病院')].filter(Boolean);
    loc.hidden=false;loc.innerHTML='<h3>選んだ地域の連絡先</h3><ul>'+links.map(function(l){return'<li>'+l+'</li>'}).join('')+'</ul><small><a href="#pro">この地域のペット探偵を見る</a></small>'; }
+  txt('intro',esc(pf+city)+'の届け先を、下に出しました。');
   slot('center',card(c,c&&c[3]===city?city+'の窓口':pf+'の窓口（'+city+'はこの窓口の受け持ち）'));
   slot('police',a(P.pol,pf==='東京都'?'警視庁に遺失届を出す':'警察に遺失届をオンラインで出す'));
   slot('city',a(m[3],city+'のページを開く'));txt('city',city+'のページで「迷子」「犬の登録」と、道路で亡くなった動物の引き取り（清掃の担当）の窓口を見ます。つらい確認ですが、首輪の色などを伝えておくと、もしものときに連絡をもらえることがあります。');
