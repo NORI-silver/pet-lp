@@ -8,6 +8,7 @@
 # 動き：/jichitai/jc.js（元は tools/jichitai.js）、データ：/jichitai/data.json（このファイルが作る）。電話番号は載せない。
 import json, os, re
 from facility_review_links import link as review_link
+import maigo_flags as _mf
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT0 = os.path.dirname(HERE)
@@ -52,8 +53,16 @@ def detectives():
         ar = _areas(d)
         _fl = []
         if ar == ["全国"]: _fl.append("z")
-        if "猫" in d.get("animals", "") or "明記なし" in d.get("animals", ""): _fl.append("c")
         if "円" in txt: _fl.append("p")
+        _an = d.get("animals", "")  # 公式に動物の種類が書いてあるものだけ。書いていない会社は「犬」「猫」「鳥など」のどれにも入れない
+        if "受けていない" in _an: _an = _an.split("（")[0]  # 「猫だけ（犬・亀・鳥は受けていない）」の括弧内は対象外の記載
+        if not _an or "明記なし" in _an: _fl.append("un")  # 動物の種類の記載がない
+        else:
+            if "犬" in _an: _fl.append("dg")
+            if "猫" in _an: _fl.append("ct")
+            if any(x in _an for x in ("鳥", "爬虫", "小動物", "うさぎ", "ハムスター")): _fl.append("ex")
+        if _mf.has_cancel(d): _fl.append("cx")      # キャンセル料が公式に書いてある
+        if _mf.has_separate_fee(d): _fl.append("ef")                          # 追加費用（出張費・経費など）が書いてある（「追加費用なし」ではない）
         out.append({"name": d["name"], "url": d.get("price_url") or d.get("url"), "areas": ar, "plan": txt, "flags": " ".join(_fl),
                     "review_html": review_link("detective", d, "jc-src", scope="company"), "animals": "" if "明記なし" in d.get("animals", "") else d.get("animals", ""), "near": d.get("near") or [], "pref_url": d.get("pref_url") or "", "near_note": d.get("near_note") or "", "area_text": "全国" if ar == ["全国"] else (d.get("area") if d.get("area") not in (None, "", "記載なし") else d.get("base", ""))})
     return out
@@ -130,6 +139,7 @@ CSS = ("<style>"
  ".jc-3 small{display:block;font-weight:400;font-size:.82rem;color:#5a4a3f}"
  ".jc-q1{background:#fff;border:2px solid #c2410c;border-radius:16px;padding:12px 14px;margin:6px 0 12px}"
  ".jc-q1 label{display:block;font-weight:800;margin:0 0 6px}.jc-q1 input[type=text]{width:100%;box-sizing:border-box;padding:12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
+ ".jc-sgl{flex:0 0 100%;font-size:.8rem;font-weight:800;color:#5a4a3f;margin-top:4px}"
  ".jc-sg{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}.jc-sg:empty{display:none}.jc-sg button{padding:8px 12px;border:1px solid #c2410c;border-radius:999px;background:#fff;color:#c2410c;font-weight:700;font-size:.9rem}"
  ".jc-an{display:flex;gap:8px;margin:10px 0 0}.jc-an button{flex:1;padding:10px;border:1px solid #d9c9bb;border-radius:12px;background:#fff;font-weight:800;font-size:.95rem;color:#2b2622}.jc-an button[aria-pressed=true]{background:#2b2622;color:#fff;border-color:#2b2622}"
  ".jc-hd{font-size:.95rem;margin:10px 0 0;color:#2b2622}.jc-hd b{color:#c2410c}"
@@ -215,7 +225,11 @@ def maigo(ctx):
         f'<tr data-det="{e(d["flags"])}"><th><a href="{e(d.get("price_url") or d["url"])}" target="_blank" rel="noopener">{e(d["name"])}</a>{("<br>" + d["review_html"]) if d["review_html"] else ""}</th>'
         f'<td>{e(d["plan"])}' + (f'<br><small>{e(d["animals"])}</small>' if d["animals"] else "") + '</td>'
         f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + '</td></tr>' for d in dets)
-    det_tbl = ('<div class="jc-sg" role="group" aria-label="ペット探偵の絞り込み"><button type="button" data-detf="z" aria-pressed="false">全国対応</button><button type="button" data-detf="c" aria-pressed="false">猫を探せる</button><button type="button" data-detf="p" aria-pressed="false">料金が分かる</button></div>'
+    det_tbl = ('<div class="jc-sg" role="group" aria-label="ペット探偵の絞り込み"><span class="jc-sgl">どの子</span><button type="button" data-detf="dg" aria-pressed="false">犬と書いてある</button><button type="button" data-detf="ct" aria-pressed="false">猫と書いてある</button><button type="button" data-detf="ex" aria-pressed="false">鳥・小動物・爬虫類と書いてある</button>'
+               '<span class="jc-sgl">範囲</span><button type="button" data-detf="z" aria-pressed="false">全国対応</button><button type="button" data-detf="n" aria-pressed="false" title="上で県を選ぶと使えます。会社の記載による。出張費は各社の欄で確認">選んだ県が主な対応地域の会社</button>'
+               '<span class="jc-sgl">料金</span><button type="button" data-detf="p" aria-pressed="false">料金が分かる</button><button type="button" data-detf="cx" aria-pressed="false">キャンセルの条件が書いてある</button><button type="button" data-detf="ef" aria-pressed="false">別途費用の記載がある</button>'
+               '<span class="jc-sgl">そのほか</span><button type="button" data-detf="un" aria-pressed="false" title="犬・猫・鳥などを選んだときだけ使えます">動物の記載がない事業者も含める</button></div>'
+
                f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域</th></tr></thead><tbody>{det_rows}</tbody></table></div>'
                f'<p class="jc-src">金額は税込（税別・税の記載がない会社は印つき）。各社の公式サイトの掲載情報をもとに、最低料金は「〜」で表示しています。順番に意味はありません。発見率など会社の発表の数字は、くらべ方がそろっていないので載せていません。</p>') if dets else ""
     ins = [i for i in PRIV.get("insurance", []) if not i.get("doubt")]
