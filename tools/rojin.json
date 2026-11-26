@@ -340,11 +340,18 @@
    "review_name": "SmileHome",
    "facts": [
     {
+     "k": "営業・受付時間",
+     "v": "年中無休・完全予約制・24時間介護対応",
+     "src": "https://www.smilehomefordog.com/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
      "k": "料金",
-     "v": "お申込み時に医療費￥100,000-をお預かりさせていただきます。",
+     "v": "長期のお預かりでは、お申込み時に医療費￥100,000-をお預かりさせていただきます。",
      "src": "https://www.smilehomefordog.com/blank-7",
      "by": "site",
-     "checked": "2026-11-23"
+     "checked": "2026-11-26"
     }
    ],
    "web": {
