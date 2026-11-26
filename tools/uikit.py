@@ -332,14 +332,14 @@ COND_SYN = {"big": {"大型犬", "大型犬OK"}, "sen": {"シニア", "シニア
 WHO_L = dict(ANIMAL + COND)
 # 分野ごと：(どの動物の質問 or None, サービスの質問, [(key, 表示, 似た言葉)], 詳しい条件 [(key, 表示, 似た言葉)])
 SVC = {
-    "pet-sitter": ("どの子のお世話ですか？", "お願いしたいこと", [("散歩", "犬の散歩も", ["お散歩"]), ("cert", "資格を持っている", [])], []),
+    "pet-sitter": ("どの子のお世話ですか？", "お願いしたいこと", [("散歩", "犬の散歩も", ["お散歩"]), ("cert", "資格を持っている", [])],[("日曜も", "日曜も対応", []), ("カード払い", "カード払いができる", [])]),
     "trimming": ("どの子ですか？", "どこでトリミングしますか？", [("お店で（サロン）", "お店で（サロン）", []), ("トリミングカー", "車の中で（トリミングカー）", []), ("家の中で", "家の中で", []), ("pickup", "送迎あり", ["送迎"])], []),
     "dog-trainer": (None, "どんな形がいいですか？",
                     [("出張・訪問", "家に来てくれる", ["出張トレーニング", "出張訓練", "出張しつけ"]), ("教室・グループ", "教室・グループ", ["しつけ教室", "グループレッスン", "パピー教室", "パピークラス"]),
                      ("幼稚園・保育園", "犬の幼稚園", ["犬の幼稚園", "幼稚園", "デイケア"]), ("預かり訓練", "預かり訓練", ["お預かり", "一時預かり"])],
                     [("オンライン", "オンライン", ["オンラインレッスン"]), ("cert", "資格・認定を持っている", [])]),
     "rojin-home": ("どの子ですか？", "どんなホームをお探しですか？",
-                   [("long", "長期・終身のお預かり", []), ("menkai", "面会できる", []), ("mitori", "看取りまで対応", []), ("pickup", "送迎あり", ["送迎"]), ("staff24", "24時間スタッフがいる", [])], []),
+                   [("long", "長期・終身のお預かり", []), ("menkai", "面会できる", []), ("mitori", "看取りまで対応", []), ("pickup", "送迎あり", ["送迎"]), ("staff24", "24時間スタッフがいる", [])],[("カード払い", "カード払いができる", [])]),
     "sougi": (None, "どんな見送り方をお考えですか？",
               [("個別火葬", "個別に火葬", ["立ち会い火葬"]), ("合同火葬", "合同で火葬", []), ("お迎え・訪問火葬", "家に来てくれる", ["お迎え"]), ("立ち会い", "立ち会える", ["立ち会い火葬"]), ("霊園・納骨", "霊園・納骨堂", ["霊園", "納骨堂", "納骨"])],
               [("お骨を返してもらえる", "お骨を返してもらえる", []), ("料金を公開", "料金が書いてある", []),
@@ -354,6 +354,15 @@ LCONF = {
     "rojin-home": ("ホーム", "この条件でホームを探す"),
     "sougi": ("ところ", "この条件で探す"),
     "joto": ("窓口", "この条件で窓口を探す"),
+}
+# 詳しい条件の見出し（key は SVC・ownerfit の条件）。1つも出ない見出しは出さない
+GROUPS = {
+    "rojin-home": (["long", "mitori", "medical", "menkai", "pickup", "staff24"],
+                   [("預け方", ["trialstay", "tempstay"]), ("設備", ["nurse", "privroom", "dogrun"]), ("お金", ["fee", "カード払い"])]),
+    "pet-sitter": (["散歩", "stay", "nightcare", "earlycare", "sameday", "pickup"],
+                   [("頼み方", ["regular", "trial", "longstay"]), ("日にち", ["日曜も"]), ("お金", ["discount", "fee", "カード払い"]), ("そのほか", ["cert"])]),
+    "sougi": (["個別火葬", "合同火葬", "お迎え・訪問火葬", "立ち会い", "霊園・納骨"],
+              [("お骨", ["お骨を返してもらえる"]), ("料金", ["料金を公開", "p15", "p25", "p40"]), ("そのほか", ["深夜・早朝も受付", "粉骨", "樹木葬", "散骨"])]),
 }
 _ATTR = lambda t, a: html_unescape((re.search(r'\b%s="([^"]*)"' % a, t) or [None, ""])[1])
 def html_unescape(x): return _h.unescape(x)
@@ -465,8 +474,15 @@ def generic_list(h, cat, hub):
                                      ("nightcare", "夜間・深夜も対応"), ("earlycare", "早朝も対応"), ("pickup", "送迎あり"),
                                      ("trial", "お試し・トライアル"), ("discount", "割引・回数券がある"), ("longstay", "長期利用")] if use(k)]
     if use("fee"): more.append(("fee", "料金の目安が分かる"))
+    mgroups = [("そのほかの条件", more)] if more else ()
+    if cat in GROUPS:  # 動物病院と同じ形：見える2列ボタン（最大6）＋詳しい条件を小見出しでまとめる（Nori 2026-11-26）。見出しは分野に中立
+        LAB = dict(need + more)
+        gneed, gdet = GROUPS[cat]
+        need = [(k, LAB[k]) for k in gneed if k in LAB and use(k)]
+        mgroups = [(h, [(k, LAB[k]) for k in ks if k in LAB and use(k)]) for h, ks in gdet]
+        mgroups = [g for g in mgroups if g[1]]
     bx = box(cat, q_ph="都道府県・市区町村", opts=opts if (hub and opts) else None, animals=animals,
-             who=who, when=when, need=(qsv, need), more=[("そのほかの条件", more)] if more else (), unit="件", noun=noun, go=go, guess=bool(hub and opts))
+             who=who, when=when, need=(qsv, need), more=mgroups, unit="件", noun=noun, go=go, guess=bool(hub and opts))
     em = h.find('<div class="emg">')
     h = h[:em + len('<div class="emg">')] + bx + h[em + len('<div class="emg">'):]
     if "/facility.js" not in h:
