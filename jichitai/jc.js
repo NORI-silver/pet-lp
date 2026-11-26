@@ -11,15 +11,15 @@ function a(u,t,l){if(!u)return'';var ext=/^https?:/.test(u);return'<a'+(l?' clas
 function slot(n,html){var el=document.querySelector('[data-slot="'+n+'"]');if(el&&html!=null)el.innerHTML=html}
 function txt(n,s){var el=document.querySelector('[data-slot="'+n+'-t"]');if(el&&s)el.innerHTML=s}
 function kata(s){return s.replace(/[ァ-ヶ]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-96)})}
-function find(v){v=v.replace(/[\s　]/g,'');if(!v)return[];var h=[],kv=kata(v);
- D.m.forEach(function(m){var full=m[0]+m[1];if(m[1]===v||full===v||m[1].indexOf(v)===0||full.indexOf(v)===0||(v.length>=2&&m[2]&&m[2].indexOf(kv)===0))h.push(m)});
+function find(v){v=v.replace(/[\s　]/g,'');var PS=document.getElementById('jcP'),pv=PS?PS.value:'';if(!v)return pv?D.m.filter(function(m){return m[0]===pv}):[];var h=[],kv=kata(v);
+ D.m.forEach(function(m){if(pv&&m[0]!==pv)return;var full=m[0]+m[1];if(m[1]===v||full===v||m[1].indexOf(v)===0||full.indexOf(v)===0||(v.length>=2&&m[2]&&m[2].indexOf(kv)===0))h.push(m)});
  var ex=h.filter(function(m){return m[1]===v||m[0]+m[1]===v});return ex.length===1?ex:h}
-function sug(){var v=Q.value;if(!v.trim()){S.innerHTML='';return}load(function(){if(Q.value!==v)return;var h=find(v);
- if(h.length===1&&(h[0][1]===v.replace(/[\s　]/g,'')||h[0][0]+h[0][1]===v.replace(/[\s　]/g,'')))return pick(h[0]);
- S.innerHTML=h.length?h.slice(0,8).map(function(m,i){return'<button type="button" data-i="'+i+'">'+esc(m[0]+m[1])+'</button>'}).join('')+(h.length>8?'<span class="jc-src">続けて入れるとしぼれます</span>':''):'<span class="jc-src">見つかりません。市区町村の名前で入れてください（例：佐倉市）</span>';
+function sug(){var v=Q.value;var PS=document.getElementById('jcP');if(!v.trim()&&!(PS&&PS.value)){S.innerHTML='';return}load(function(){if(Q.value!==v)return;var h=find(v);if(!v.trim()){S.innerHTML=h.slice(0,12).map(function(m,i){return'<button type="button" data-i="'+i+'">'+esc(m[1])+'</button>'}).join('')+(h.length>12?'<span class="jc-src">続けて市区町村を入れるとしぼれます</span>':'');S.querySelectorAll('button').forEach(function(b){b.onclick=function(){pick(h[+b.getAttribute('data-i')])}});return}
+ var WD=!(PS&&PS.value)&&/区$/.test(v.replace(/[\s　]/g,''));if(!WD&&h.length===1&&(h[0][1]===v.replace(/[\s　]/g,'')||h[0][0]+h[0][1]===v.replace(/[\s　]/g,'')))return pick(h[0]);
+ S.innerHTML=(h.length?h.slice(0,8).map(function(m,i){return'<button type="button" data-i="'+i+'">'+esc(m[0]+m[1])+'</button>'}).join('')+(h.length>8?'<span class="jc-src">続けて入れるとしぼれます</span>':''):'<span class="jc-src">見つかりません。市区町村の名前で入れてください（例：佐倉市）</span>')+(WD?'<span class="jc-src">同じ名前の区が、ほかの市にもあります。政令指定都市（大阪市・横浜市など）の区は、市の名前（例：大阪市）で選んでください。</span>':'');
  S.querySelectorAll('button').forEach(function(b){b.onclick=function(){pick(h[+b.getAttribute('data-i')])}})})}
 function card(c,sub){if(!c)return'';return'<div class="jc-card cs" style="margin:8px 0 0;width:100%"><b class="ux-c-n">'+esc(c[0])+'</b><p class="ux-c-m">'+esc(sub)+'</p><div class="ux-c-a">'+a(c[1],'公式ページ')+(c[2]?a(c[2],'保護情報',1):a('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(c[0]),'地図を見る',1))+'</div></div>'}
-function pick(m){S.innerHTML='';Q.value=m[1];ls('jcMuni',m[0]+'|'+m[1]);var P=D.p[m[0]]||{},c=D.c[m[4]],city=m[1],pf=m[0];
+function pick(m){S.innerHTML='';Q.value=m[1];var PS1=document.getElementById('jcP');if(PS1)PS1.value=m[0];ls('jcMuni',m[0]+'|'+m[1]);var P=D.p[m[0]]||{},c=D.c[m[4]],city=m[1],pf=m[0];
  H.hidden=false;
  if(K==='maigo'){H.innerHTML='<b>'+esc(pf+city)+'</b>を選択中';
   var loc=document.getElementById('jcLocal');
@@ -60,6 +60,7 @@ an.forEach(function(b){b.onclick=function(){setAn(b.getAttribute('data-an'));ev(
 var ck={};try{ck=JSON.parse(ls('jcCk:'+K)||'{}')}catch(e){}
 document.querySelectorAll('.jc-ck>li[data-ck]').forEach(function(li){var k=li.getAttribute('data-ck')+(li.getAttribute('data-a')||''),i=li.querySelector('input');if(!i)return;i.checked=!!ck[k];li.classList.toggle('done',i.checked);
  i.onchange=function(){ck[k]=i.checked?1:0;li.classList.toggle('done',i.checked);ls('jcCk:'+K,JSON.stringify(ck))}});
+var PS0=document.getElementById('jcP');if(PS0)PS0.addEventListener('change',function(){Q.value='';H.hidden=true;var loc=document.getElementById('jcLocal');if(loc)loc.hidden=true;sug()});
 Q.addEventListener('input',function(){var loc=document.getElementById('jcLocal');if(loc){loc.hidden=true} sug()});
 if(K==='maigo'){var flyer=document.getElementById('jcFly');function openFlyer(){if(location.hash==='#jcFly'&&flyer)flyer.open=true}window.addEventListener('hashchange',openFlyer);openFlyer()}Q.addEventListener('focus',function(){load(function(){})},{once:true});
 var last=ls('jcMuni');if(last){var p=last.split('|');load(function(){var h=D.m.filter(function(m){return m[0]===p[0]&&m[1]===p[1]});if(h.length&&!Q.value.trim())pick(h[0])})}
