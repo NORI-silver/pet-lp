@@ -22,7 +22,7 @@ CATS = {
     "rojin-home": dict(key="rojin", noun="老犬ホーム", icon="home", kinds=["dog", "cat"], size=True, label="老犬ホーム・老猫ホーム"),
     "trimming": dict(key="trimming", noun="トリミング", icon="scissors", kinds=["dog", "cat"], size=True, senior=True, label="出張トリミング・トリミングサロン"),
     "pet-hotel": dict(key="hotel", noun="ペットホテル", icon="bed", kinds=["dog", "cat"], size=True, senior=True, label="ペットホテル"),
-    "sougi": dict(key="sougi", noun="ペット火葬・霊園", icon="flower", kinds=[], label="ペット火葬・霊園"),
+    "sougi": dict(key="sougi", noun="ペット葬儀・火葬・霊園", icon="flower", kinds=[], label="ペット葬儀・火葬・霊園"),
     "hospital": dict(key="hospital", noun="動物病院", icon="cross", kinds=["dog", "cat", "small", "bird", "exotic"], size=True, label="動物病院"),
     "joto": dict(key="joto", noun="譲渡の窓口", icon="heart", kinds=["dog", "cat"], want=True, label="譲渡の窓口・保護団体"),
 }

@@ -55,7 +55,7 @@ def _sougi_faq(pf, rs, n):
      ("亡くなってから火葬までに、まずすることは？", "体をきれいにして、保冷剤などで体を冷やし、涼しい部屋で安置します。くわしくは全国のページ「ペットが亡くなったら」にまとめました。"),
     ]
 
-SOUGI = dict(slug="sougi", name="ペット火葬・霊園", unit="か所", h1="ペットが亡くなったら", items=_FAC, card=gen_sougi._fcard,
+SOUGI = dict(slug="sougi", name="ペット葬儀・火葬・霊園", unit="か所", h1="ペットが亡くなったら", items=_FAC, card=gen_sougi._fcard,
   checked=gen_sougi.F.get("checked", gen_sougi.J["checked"]), reviews=True, min=1, css=gen_sougi.CSS,
   free="この一覧は無料の情報です。火葬場・霊園や自治体からお金をもらっていません。おすすめ順や点数順ではありません。料金は公式サイトに書いてある例だけで、体重や内容で変わります。", list_h="民間のペット火葬場・霊園・納骨堂",
   title_word="ペット火葬・ペット霊園", title_tail="個別火葬・立ち会い・お迎え・自治体の受け付け",
@@ -306,7 +306,7 @@ def _fee_min(c):
 def _sougi_desc(pf, rs, n):
     cs = [(v, c) for c in _CITIES.get(pf, []) for v in [_fee_min(c)] if v is not None]
     cs.sort(key=lambda x: x[0])
-    head = f"{pf}のペット火葬・霊園{n}か所と、市の受け付けを公式サイトの情報をもとにまとめた無料の一覧です。"
+    head = f"{pf}のペット葬儀・火葬・霊園{n}か所と、市の受け付けを公式サイトの情報をもとにまとめた無料の一覧です。"
     if cs:
         ex = "、".join(f"{c['city']}は" + ("無料の受け付けあり" if v == 0 else f"{v:,}円から") for v, c in cs[:3])
         head += f"市の火葬・引き取りは{ex}（お骨が返るかも記載）。"
@@ -315,8 +315,8 @@ def _sougi_title(pf, rs, n):
     # 大分市と別府市の自治体の受付を実際に掲載している場合にだけ、検索結果で案内する。
     cities = {c["city"] for c in _CITIES.get(pf, []) if c.get("fee")}
     if pf == "大分県" and {"大分市", "別府市"} <= cities:
-        return "大分県のペット火葬・霊園｜大分市・別府市の受付と料金｜ペットタクシー予約窓口"
-    return f"{pf}のペット火葬・ペット霊園｜{n}か所の一覧（個別火葬・立ち会い・お迎え・自治体の受け付け）｜ペットタクシー予約窓口"
+        return "大分県のペット葬儀・ペット火葬・霊園｜大分市・別府市の受付と料金｜ペットタクシー予約窓口"
+    return f"{pf}のペット葬儀・ペット火葬・ペット霊園｜{n}か所の一覧（個別火葬・立ち会い・お迎え・自治体の受け付け）｜ペットタクシー予約窓口"
 SOUGI["title_fn"] = _sougi_title
 SOUGI["desc_fn"] = _sougi_desc
 NIGHT["title_fn"] = _night_title
@@ -325,4 +325,4 @@ SOUGI["table"] = [("個別火葬", lambda f: "○" if _has(f, "個別火葬") el
 NIGHT["table"] = [("受付時間", lambda h: h.get("hours", "")), ("所在地", lambda h: h.get("city", ""))]
 import facility_cards as _FC
 SOUGI["fac_chips"] = lambda e, pf: _FC.chips(e, _FC.SOUGI_CHIPS, pf)
-SOUGI["fac_biz"] = lambda e: _FC.biz(e, "ペット火葬・霊園")
+SOUGI["fac_biz"] = lambda e: _FC.biz(e, "ペット葬儀・火葬・霊園")
