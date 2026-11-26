@@ -784,7 +784,7 @@ def render_pref(ctx, pf, rs):
     pref_href = ctx["pref_href"]
     indoor_count = sum(d["id"] in _INDOOR_IDS for d in rs)
     indoor_hash = "#chiba" if pf == "千葉県" else "#kanto" if pf in {"神奈川県", "東京都", "埼玉県"} else "#other-regions"
-    indoor_link = (f'<p><a href="/dogrun/indoor/{indoor_hash}">{e(pf)}の室内ドッグラン{indoor_count}か所を料金・予約条件で比べる</a></p>' if indoor_count else "")
+    indoor_link = (f'<p><a href="/dogrun/indoor/{indoor_hash}">{e(pf)}の室内ドッグラン{indoor_count}か所</a></p>' if indoor_count else "")
     if indoor_link: indoor_link = "    " + indoor_link + "\n"
     return ctx["head"](title, desc, url, ld) + f"""
 <main>
