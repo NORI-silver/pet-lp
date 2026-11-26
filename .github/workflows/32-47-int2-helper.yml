@@ -1,0 +1,58 @@
+# 一時の補助。SEOの事実追記(老犬ホーム9件・葬儀7件)とItemListを最新 main の上に載せて再生成する（確認用の branch だけ）。終わったら消す。
+name: seo-helper
+on:
+  push:
+    branches: ['NORI-silver-repair-int2']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 足す（データ追記とItemList）
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp .github/workflows/*sep-stage.patch /tmp/stage.patch
+          git fetch origin main
+          git reset -q --hard origin/main
+          git log -1 --format='base %H'
+          for f in tools/faccard.py tools/ownerfit.py tools/hotels.json tools/kinki_add.json; do echo "baseblob $f $(git rev-parse HEAD:$f)"; done
+          git apply --3way /tmp/stage.patch
+          git status --short | head -20
+          git diff HEAD --stat | tail -10
+      - name: 変えたファイル（生成し直さない。main の他の生成物は1バイトも変えない）
+        run: |
+          git diff HEAD --stat | tail -12
+          echo "changed files: $(git status --porcelain | wc -l)"
+          echo "maigo markers: jcReportText=$(grep -c jcReportText jichitai/maigo/index.html) det-site=$(grep -o 'data-det-site' jichitai/maigo/index.html | wc -l) cite=$(grep -o 'jc-cite' jichitai/maigo/index.html | wc -l) data.json-l=$(python3 -c "import json;print('l' in json.load(open('jichitai/data.json')))")"
+      - name: 検査とテスト（各ゲートの終了状態を記録。何も省かない）
+        run: |
+          fail=0
+          run(){ n="$1"; shift; rc=0; "$@" > /tmp/gate_$n.log 2>&1 || rc=$?; echo "GATE $n exit=$rc :: $(tail -2 /tmp/gate_$n.log | tr '\n' ' ' | cut -c1-200)"; if [ $rc -ne 0 ]; then fail=1; fi; }
+          run seo python3 tools/seo_check.py .
+          run rules python3 tools/rules_check.py .
+          run feedback python3 tools/feedback_check.py .
+          run consistency python3 tools/consistency_check.py .
+          tf=0; tn=0
+          for f in tests/*.test.cjs; do tn=$((tn+1)); rc=0; node "$f" > /tmp/one.log 2>&1 || rc=$?; if [ $rc -ne 0 ]; then tf=$((tf+1)); echo "TEST FAIL exit=$rc $f :: $(grep -E 'bytes gzipped|Error|FAIL' /tmp/one.log | head -3 | tr '\n' ' ')"; fi; done
+          echo "TESTS files=$tn failed=$tf"
+          if [ $tf -ne 0 ]; then fail=1; fi
+          echo "ALL_GATES_EXIT=$fail"
+          exit $fail
+      - name: コミット
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git rm -q --cached -f .github/workflows/*seo-helper.yml 2>/dev/null || true
+          git commit -qm "迷子：地域を選ぶと届け先と探偵の結果を「この条件で探す」の下に出す（迷子関連の7ファイルだけ。登録は公開停止のまま）"
+          git push -f origin HEAD:refs/heads/NORI-silver-int-maigo2
+          git log -1 --format='HEAD %H'
