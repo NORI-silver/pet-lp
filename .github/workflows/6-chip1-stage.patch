@@ -1,0 +1,1081 @@
+diff --git a/tests/chip-evidence.test.cjs b/tests/chip-evidence.test.cjs
+new file mode 100644
+index 0000000..f58aed9
+--- /dev/null
++++ b/tests/chip-evidence.test.cjs
+@@ -0,0 +1,19 @@
++// 「カード払い」「日曜も」の印：実際のカードの文（出どころは各ID）で、肯定の根拠があるものだけに付くことを確かめる
++const cp = require('child_process'), path = require('path');
++const root = path.join(__dirname, '..');
++const py = `
++import sys, json
++sys.path.insert(0, 'tools')
++import chip_evidence as ce
++f = json.load(open('tests/fixtures/chip-evidence.json', encoding='utf-8'))
++out = {'card': [[x['id'], ce.card_ok(x['pay']), x['ok']] for x in f['card']],
++       'sunday': [[x['id'], ce.sunday_ok([(a, b, None) for a, b in x['rows']]), x['ok']] for x in f['sunday']]}
++print(json.dumps(out, ensure_ascii=False))
++`;
++const r = cp.spawnSync('python3', ['-c', py], { cwd: root, encoding: 'utf8' });
++if (r.status !== 0) { console.error(r.stderr); process.exit(1); }
++const o = JSON.parse(r.stdout); let fail = 0;
++for (const k of ['card', 'sunday']) for (const [id, got, want] of o[k]) if (got !== want) { console.error(`FAIL ${k} ${id}: got ${got}, want ${want}`); fail++; }
++if (o.card.length < 15 || o.sunday.length < 15) { console.error('too few fixtures'); fail++; }
++if (fail) process.exit(1);
++console.log('chip-evidence ok', o.card.length + o.sunday.length);
+diff --git a/tests/fixtures/chip-evidence.json b/tests/fixtures/chip-evidence.json
+new file mode 100644
+index 0000000..806b07d
+--- /dev/null
++++ b/tests/fixtures/chip-evidence.json
+@@ -0,0 +1,717 @@
++{
++ "card": [
++  {
++   "id": "sitter:S-ST0410",
++   "why": "現金のみ",
++   "pay": [
++    "お支払い方法は現金のみとなっています。(キャッシュレス決済などは約2〜3%の手数料が発生するためです)"
++   ],
++   "ok": false
++  },
++  {
++   "id": "sitter:S-ST0507",
++   "why": "対応しておりません・導入検討中",
++   "pay": [
++    "A.対応しておりません。今後、クレジットカードのお支払いも導入検討中です。"
++   ],
++   "ok": false
++  },
++  {
++   "id": "sitter:St77b37bf",
++   "why": "カード対応していない",
++   "pay": [
++    "基本的には事前のお支払いをお願いしております。お世話後のお支払やお振込みについてはご相談ください。また、クレジットカードのお支払いは現時点で対応しておりません。"
++   ],
++   "ok": false
++  },
++  {
++   "id": "sitter:St96d2c6f",
++   "why": "カード不可",
++   "pay": [
++    "・料金はサービス前にお支払いをお願いしております。打ち合わせ後に頂くか、サービス日の 2日前までに指定口座にお振込み下さい。※カードはご利用いただけません。"
++   ],
++   "ok": false
++  },
++  {
++   "id": "sitter:St211dc62",
++   "why": "導入準備中",
++   "pay": [
++    "※クレジットカード決済について現在、クレジットカード決済の導入準備を進めております。"
++   ],
++   "ok": false
++  },
++  {
++   "id": "sitter:St42eb559",
++   "why": "調整中",
++   "pay": [
++    "（クレジットカード、電子マネーなどでのお支払いについては現在調整中となります）"
++   ],
++   "ok": false
++  },
++  {
++   "id": "sitter:Stc5d9ada",
++   "why": "カード情報の取り扱い（支払い方法ではない）",
++   "pay": [
++    "・クレジットカード情報、銀行口座情報、電子マネー情報等決済手段に関する情報"
++   ],
++   "ok": false
++  },
++  {
++   "id": "trainer:Tk7282a6",
++   "why": "現金のみ・カード不可",
++   "pay": [
++    "※当店でのお支払いは現金のみとなっております。クレジットカード・電子マネー等はご利用になれません。"
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:GC038",
++   "why": "キャッシュレスだけではカード払いにしない",
++   "pay": [
++    "お支払いはキャッシュレス決済のみ対応しております。現金はご利用いただけません。"
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:Gst4dc2c0a",
++   "why": "カード・電子マネー不可",
++   "pay": [
++    "クレジットカード・電子マネーはご利用いただけません。 現金決済のみとなります。"
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:Gsta5fe220",
++   "why": "カード不可",
++   "pay": [
++    "※カードでのお支払いには対応しておりません。"
++   ],
++   "ok": false
++  },
++  {
++   "id": "sitter:S288",
++   "why": "キャッシュレス決済だけ",
++   "pay": [
++    "〇お支払い方法は、現金・お振込・キャッシュレス決済よりお選びください。"
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:Gst8a19589",
++   "why": "クレジットカード可、ポイントカードは現金のみ",
++   "pay": [
++    "お店では各種クレジットカード 電車マネーお使い頂けます❣️ ポイントカードは現金のみとなりますので"
++   ],
++   "ok": true
++  },
++  {
++   "id": "trim:Gstd2c555e",
++   "why": "現金またはカード（送迎は現金のみ）",
++   "pay": [
++    "お支払方法は現金またはカードです。（送迎の方は現金のみになります）"
++   ],
++   "ok": true
++  },
++  {
++   "id": "trim:G-ST1437",
++   "why": "VISA・MasterCard可",
++   "pay": [
++    "お支払いは現金・クレジットカード(VISA・MasterCard)が ご利用いただけます。"
++   ],
++   "ok": true
++  },
++  {
++   "id": "sitter:Scc00ca5",
++   "why": "クレジットカード可",
++   "pay": [
++    "クレジットカード・PayPay(ペイペイ)が使えます。"
++   ],
++   "ok": true
++  },
++  {
++   "id": "sitter:Sc645b26",
++   "why": "現金またはクレジットカード",
++   "pay": [
++    "早速予約をしていただき、レッスン開始となります。(お支払いは現金、またはクレジットカード、QRコード決済などでお支払いいただけます。)"
++   ],
++   "ok": true
++  },
++  {
++   "id": "sitter:St2816c46",
++   "why": "現金以外に各種クレジットカード",
++   "pay": [
++    "現金以外にも、各種クレジットカード、楽天ペイ、auPay、楽天Edy、交通系電子マネー、nanaco、WAON、PayPayがご利用可能となっております。"
++   ],
++   "ok": true
++  },
++  {
++   "id": "sitter:S281",
++   "why": "クレジットカード利用はお申し出",
++   "pay": [
++    "クレジットカードをご利用の場合は予めその旨お申し出下さい。"
++   ],
++   "ok": true
++  },
++  {
++   "id": "trim:Gst85c9f04",
++   "why": "取り扱っておりません",
++   "pay": [
++    "お支払いは、お迎え時に現金にてお願いいたします。又、クレジットカードはお取り扱っておりません。"
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:GSc88e346",
++   "why": "お取り扱いはございません",
++   "pay": [
++    "● クレジットカードのお取り扱いはございません。ご了承ください。"
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:Gtde14137",
++   "why": "お取り扱いしておりません",
++   "pay": [
++    "●クレジットカード ： お取り扱いしておりません"
++   ],
++   "ok": false
++  },
++  {
++   "id": "trainer:Tt3c1a3d8",
++   "why": "お取り扱い始めました（正）",
++   "pay": [
++    "各種クレジットカードのお取り扱い始めました。"
++   ],
++   "ok": true
++  },
++  {
++   "id": "trim:Gt7a27021",
++   "why": "準備しております（あいまい）",
++   "pay": [
++    "各種クレジットカード、PayPay等の支払いも準備しております。"
++   ],
++   "ok": false
++  },
++  {
++   "id": "synthetic:ご遠慮",
++   "why": "合成",
++   "pay": [
++    "カード決済はご遠慮ください"
++   ],
++   "ok": false
++  },
++  {
++   "id": "synthetic:お受けしておりません",
++   "why": "合成",
++   "pay": [
++    "クレジットカードはお受けしておりません"
++   ],
++   "ok": false
++  },
++  {
++   "id": "synthetic:できかねます",
++   "why": "合成",
++   "pay": [
++    "カードのご利用はできかねます"
++   ],
++   "ok": false
++  },
++  {
++   "id": "synthetic:お断り",
++   "why": "合成",
++   "pay": [
++    "カードはお断りしています"
++   ],
++   "ok": false
++  },
++  {
++   "id": "synthetic:カード及びキャッシュレスのみ",
++   "why": "合成（正）",
++   "pay": [
++    "カード及びキャッシュレスのみ"
++   ],
++   "ok": true
++  }
++ ],
++ "sunday": [
++  {
++   "id": "sitter:S-HT033",
++   "why": "水曜他（他の休みが分からない）",
++   "rows": [
++    [
++     "定休日",
++     "水曜他"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "sitter:Sc5cbe04",
++   "why": "臨時休業日の注記だけ",
++   "rows": [
++    [
++     "営業時間",
++     "営業時間は8:30~19:00となります。"
++    ],
++    [
++     "定休日",
++     "グレーに×印は臨時休業日です。"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "sitter:Sc645b26",
++   "why": "休業日はカレンダー",
++   "rows": [
++    [
++     "営業時間",
++     "09:00 - 19:00"
++    ],
++    [
++     "定休日",
++     "休業日 / 当社カレンダーによります"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:GC137",
++   "why": "木曜定休＋他に臨時休業・カレンダー",
++   "rows": [
++    [
++     "営業時間",
++     "10:00~ 18:00"
++    ],
++    [
++     "定休日",
++     "《定休日》木曜日(他に臨時休業あり・ 営業日カレンダー をご覧ください)"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:G-ST1703",
++   "why": "臨時休業日の注記だけ",
++   "rows": [
++    [
++     "営業時間",
++     "10:00-21:00"
++    ],
++    [
++     "定休日",
++     "連休や年末年始時など、臨時営業日もしくは臨時休業日を設ける場合がございます。"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trainer:T-HT028",
++   "why": "年末年始他、お問合わせください",
++   "rows": [
++    [
++     "営業時間",
++     "8:00～18:00"
++    ],
++    [
++     "定休日",
++     "休業日／年末年始他、お問合わせください。"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:GSk289452",
++   "why": "休みの曜日の一覧だけで営業時間の行がない",
++   "rows": [
++    [
++     "定休日",
++     "火・祝・土(※祝日は営業する場合あり)"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "sitter:St77b37bf",
++   "why": "土・日・祝が定休",
++   "rows": [
++    [
++     "営業時間",
++     "平日9時半から18時半"
++    ],
++    [
++     "定休日",
++     "定休日. 毎週土・日・祝"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "sitter:S-ST0410",
++   "why": "日曜日が定休",
++   "rows": [
++    [
++     "定休日",
++     "定休日：日曜日/予約のない日"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:Gstb86ef67",
++   "why": "定休日の注記だけ",
++   "rows": [
++    [
++     "定休日",
++     "※月曜日(定休日)のご利用は、10％割増とさせて頂きます。"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:Gst13e7df8",
++   "why": "木曜が店舗定休日と受付の案内の文",
++   "rows": [
++    [
++     "営業時間",
++     "9：00～18：00"
++    ],
++    [
++     "定休日",
++     "※３）チェックイン、チェックアウトは、通常の営業時間内のみとなります。木曜の店舗定休日に限り、受付時間を限らせていただいております。"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:Gstd0256fb",
++   "why": "年中無休（臨時休業日の注記は通常の営業を消さない）",
++   "rows": [
++    [
++     "営業時間",
++     "11時〜20時"
++    ],
++    [
++     "定休日",
++     "年中無休 ※臨時休業日あり"
++    ]
++   ],
++   "ok": true
++  },
++  {
++   "id": "sitter:Sta5107f8",
++   "why": "年中無休（臨時のお休みの注記つき）",
++   "rows": [
++    [
++     "定休日",
++     "[定休日] 年中無休 ※基本的には年中無休ですが、臨時にお休みさせていただくことがあります。"
++    ]
++   ],
++   "ok": true
++  },
++  {
++   "id": "sitter:Scc00ca5",
++   "why": "土日祝の営業時間があり、火曜が定休",
++   "rows": [
++    [
++     "営業時間",
++     "平日 10:00-18:00 / 土日祝 10:00-19:00"
++    ],
++    [
++     "定休日",
++     "● 定休日 .....火曜日 ※祝日の場合は営業"
++    ]
++   ],
++   "ok": true
++  },
++  {
++   "id": "sitter:S-HT040",
++   "why": "毎日の営業時間と月曜の定休日（休みの曜日の一覧と営業時間だけでは日曜の営業は書いていない＝分からない）",
++   "rows": [
++    [
++     "営業時間",
++     "13時から24時"
++    ],
++    [
++     "定休日",
++     "定休日：月曜"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "sitter:Sc6fe7f0",
++   "why": "毎日の営業時間と水・木の定休日（休みの曜日の一覧と営業時間だけでは日曜の営業は書いていない＝分からない）",
++   "rows": [
++    [
++     "営業時間",
++     "9:00~18:00 / 定休日:水曜・木曜"
++    ],
++    [
++     "定休日",
++     "営業時間:9:00~18:00 / 定休日:水曜・木曜"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "sitter:Scf95ca1",
++   "why": "定休日なし",
++   "rows": [
++    [
++     "定休日",
++     "定休日:なし"
++    ]
++   ],
++   "ok": true
++  },
++  {
++   "id": "trainer:Tc185f73",
++   "why": "受付時間は「土・日・祝日除く」＝日曜は受け付けない",
++   "rows": [
++    [
++     "営業時間",
++     "お気軽にお問い合わせください。 受付時間 9:00-18:00 [ 土・日・祝日除く ]"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:GSc942d38",
++   "why": "土・日 に営業時間が書いてある（不定休の注記があっても日曜の通常営業は消えない）",
++   "rows": [
++    [
++     "営業時間",
++     "火~金・祝日 9:00~17:00 土・日 9:00~12:00(完全予約制)"
++    ],
++    [
++     "定休日",
++     "定休日 : 月曜日(不定休日有)"
++    ]
++   ],
++   "ok": true
++  },
++  {
++   "id": "trim:Gstb5e815f",
++   "why": "土日祝はお休み",
++   "rows": [
++    [
++     "受付時間",
++     "9:00〜18:00（土日祝はお休み）"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:Gstcf91e49",
++   "why": "定休日：土日祝日（営業時間欄内）",
++   "rows": [
++    [
++     "営業時間",
++     "AM 9:00～PM 5:00 定休日：土日祝日"
++    ],
++    [
++     "定休日",
++     "不定休（店舗に直接確認）"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:GC093",
++   "why": "土日祝日定休",
++   "rows": [
++    [
++     "営業時間",
++     "10:00~18:00(土日祝日定休)"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trainer:TC026",
++   "why": "土日祝を除く",
++   "rows": [
++    [
++     "受付時間",
++     "平日 10:00〜18:00(土日祝・年末年始を除く)"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trainer:Tnk028",
++   "why": "土日・祝日をのぞく（ひらがな）",
++   "rows": [
++    [
++     "営業時間",
++     "預かりトレーニングは8:00〜19:00（土日・祝日をのぞく）"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trainer:Tc3f8dad",
++   "why": "繁忙期の延長案内だけ（通常の日曜営業の記載なし）",
++   "rows": [
++    [
++     "営業時間",
++     "7月18日~8月31日の期間土日祝日と8月13・14日の営業時間が19時まで延長されます。犬も人も熱中症に気をつけて来園してください♪"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "trim:GSc942d38",
++   "why": "土・日に営業時間が書いてある（正のまま）",
++   "rows": [
++    [
++     "営業時間",
++     "火~金・祝日 9:00~17:00 土・日 9:00~12:00(完全予約制)"
++    ],
++    [
++     "定休日",
++     "定休日 : 月曜日(不定休日有)"
++    ]
++   ],
++   "ok": true
++  },
++  {
++   "id": "synthetic:土日休み",
++   "why": "合成",
++   "rows": [
++    [
++     "営業時間",
++     "土日休み 9:00-18:00"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "synthetic:土・日休診",
++   "why": "合成",
++   "rows": [
++    [
++     "営業時間",
++     "土・日休診"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "synthetic:土日祝は営業しておりません",
++   "why": "合成",
++   "rows": [
++    [
++     "営業時間",
++     "9:00-18:00 土日祝は営業しておりません"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "synthetic:日曜は営業時間外",
++   "why": "合成",
++   "rows": [
++    [
++     "営業時間",
++     "日曜は営業時間外(土日祝は対応不可)"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "synthetic:土日祝に時間あり+年末年始を除く",
++   "why": "合成。日曜の営業が書いてある（正）",
++   "rows": [
++    [
++     "営業時間",
++     "土日祝 9:00-17:00 (年末年始を除く)"
++    ]
++   ],
++   "ok": true
++  },
++  {
++   "id": "hotel:FeelGarden流山",
++   "why": "定休日の日は曜日ではない・年中無休(年始を除く)は日曜も営業",
++   "rows": [
++    [
++     "営業・受付時間",
++     "営業時間:10:00〜18:00"
++    ],
++    [
++     "定休日",
++     "定休日:年中無休(年始を除く)"
++    ]
++   ],
++   "ok": true
++  },
++  {
++   "id": "hotel:ラビファー所沢",
++   "why": "営業時間に木〜日曜日、定休は月曜と木曜",
++   "rows": [
++    [
++     "営業・受付時間",
++     "※営業時間:第2火曜日以降の火曜日・木~日曜日 13:00~ 19:00"
++    ],
++    [
++     "定休日",
++     "※小平店の定休日が変更になります。月曜日に加えて、木曜日もお休みいたします。"
++    ]
++   ],
++   "ok": true
++  },
++  {
++   "id": "hotel:シアンドゥローズ",
++   "why": "土日祝を除く受付は日曜に閉まる",
++   "rows": [
++    [
++     "営業・受付時間",
++     "受付時間:9時~17時(土日祝・年末年始を除く)"
++    ]
++   ],
++   "ok": false
++  },
++  {
++   "id": "synthetic:木曜日を除く",
++   "why": "木曜日を除く毎日は日曜も営業",
++   "rows": [
++    [
++     "営業・受付時間",
++     "営業時間 10:00〜18:00 木曜日を除く毎日"
++    ]
++   ],
++   "ok": true
++  },
++  {
++   "id": "synthetic:火曜日定休",
++   "why": "火曜日が定休で営業時間に日曜",
++   "rows": [
++    [
++     "営業・受付時間",
++     "営業時間 日曜日 10:00〜18:00"
++    ],
++    [
++     "定休日",
++     "定休日:火曜日"
++    ]
++   ],
++   "ok": true
++  },
++  {
++   "id": "synthetic:日曜日定休",
++   "why": "日曜日が定休",
++   "rows": [
++    [
++     "営業・受付時間",
++     "営業時間 10:00〜18:00"
++    ],
++    [
++     "定休日",
++     "定休日:日曜日"
++    ]
++   ],
++   "ok": false
++  }
++ ]
++}
+\ No newline at end of file
+diff --git a/tests/oppoto-pickup.test.cjs b/tests/oppoto-pickup.test.cjs
+new file mode 100644
+index 0000000..83b2486
+--- /dev/null
++++ b/tests/oppoto-pickup.test.cjs
+@@ -0,0 +1,39 @@
++// dogsalon oppoto（PHk421d80）の送迎：出典に今は書かれていないので「不明」に戻す（送迎なし、とは書かない）。
++// 元の記載は retired_facts に出どころつきで残す。生成されたページには出さない。
++const fs = require('fs'), path = require('path');
++const root = path.join(__dirname, '..');
++const d = JSON.parse(fs.readFileSync(path.join(root, 'tools/hotels.json'), 'utf8')).hotels.find(h => h.id === 'PHk421d80');
++let fail = 0; const ok = (c, m) => { if (!c) { console.error('FAIL ' + m); fail++; } };
++ok(d, 'レコードがある');
++ok(d.pickup === undefined, 'pickup の印がない（不明）');
++ok(!d.facts.some(f => f.k === '送迎'), '有効な事実に送迎がない');
++ok(d.facts.some(f => f.k === '料金'), '料金の事実は残る（出どころは元のまま）');
++const r = (d.retired_facts || []).find(f => f.k === '送迎');
++ok(r && r.src && r.checked && r.reason && /不明/.test(r.reason), '元の記載が出どころ・確認日・理由つきで残る');
++const web = JSON.parse(fs.readFileSync(path.join(root, 'tools/hotels_web.json'), 'utf8'));
++ok(!('PHk421d80' in web), '送迎の文を含む収集文は有効な文として使わない');
++const html = fs.readFileSync(path.join(root, 'pet-hotel/shiga/index.html'), 'utf8');
++const i = html.indexOf('dogsalon oppoto', html.indexOf('<section class="emg-pref"'));
++ok(i > 0, 'ページにカードが載っている');
++const j = html.indexOf('class="emg-item', i + 10);
++const card = html.slice(i, j > 0 ? j : i + 6000);
++ok(!/10km|送迎/.test(card), 'カードに送迎・10kmの文がない');
++ok(!/data-ft="[^"]*来てくれる・送迎/.test(html.slice(Math.max(0, i - 1200), i + 100)), '送迎のしぼりこみの印がない');
++const row = html.indexOf('dogsalon oppoto', html.indexOf('<table', i));
++ok(row > 0, '比較表に載っている');
++ok(!/×/.test(html.slice(row, row + 800)), '比較欄に×を出さない（不明は空）');
++if (fail) process.exit(1);
++console.log('oppoto-pickup ok');
++
++// 元データのどの写しにも、oppoto の送迎が有効な記載として残っていないこと（kinki_add.py を回しても戻らない）
++{
++  const fs = require('fs'), pth = require('path');
++  for (const f of ['tools/hotels.json', 'tools/kinki_add.json']) {
++    const L = JSON.parse(fs.readFileSync(pth.join(__dirname, '..', f), 'utf8')).hotels;
++    const r = L.find(x => x.id === 'PHk421d80');
++    if (!r) { console.error('missing PHk421d80 in ' + f); process.exit(1); }
++    if ('pickup' in r || (r.facts || []).some(x => x.k === '送迎') || !(r.retired_facts || []).length) {
++      console.error('oppoto pickup still active (or retired record missing) in ' + f); process.exit(1);
++    }
++  }
++}
+diff --git a/tests/provider-reply-conditions.test.cjs b/tests/provider-reply-conditions.test.cjs
+index 95f2232..2458f18 100644
+--- a/tests/provider-reply-conditions.test.cjs
++++ b/tests/provider-reply-conditions.test.cjs
+@@ -5,14 +5,15 @@ const path = require('node:path');
+ const read = file => fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
+ const json = file => JSON.parse(read(file));
+ const cards = file => json(file).groups.flatMap(([, entries]) => entries);
+-test('oppotoのトリミング送迎はホテル送迎と区別し、カードと比較表に出す', () => {
++test('oppotoの送迎は、事業者本人の確認が取れるまで「不明」にしておく（問い合わせフォームの未確認の報告は掲載しない）', () => {
+   const h = json('tools/hotels.json').hotels.find(x => x.id === 'PHk421d80');
+-  assert.equal(h.pickup, false);
+-  assert.match(h.facts.find(f => f.k === '送迎').v, /原則月曜日.*10km圏内.*ホテルやしつけ教室のみの利用は対象外/);
+-  assert.match(read('pet-hotel/shiga/index.html'), /data-l="送迎">トリミングのみ無料/);
++  assert.ok(!('pickup' in h) && !('pickup_comparison' in h));
++  assert.ok(!(h.facts || []).some(f => f.k === '送迎'));
++  assert.ok((h.retired_facts || []).some(f => f.by === 'unverified_report'));
+   const card = cards('find-data/pet-hotel/shiga.json').find(x => x.includes('data-fid="PHk421d80"'));
+-  assert.doesNotMatch(card.match(/data-flags="([^"]*)"/)[1], /\bpickup\b/);
+-  assert.match(card.split('<details')[0], /display:block;overflow:visible[^>]*>送迎：[^<]*ホテルやしつけ教室のみの利用は対象外/);
++  assert.ok(card);
++  assert.doesNotMatch(card, /送迎/);
++  assert.doesNotMatch(read('pet-hotel/shiga/index.html'), /トリミングのみ無料/);
+ });
+ test('青森のわんぷろは公式サイトの1件にだけ施設写真を掲載する', () => {
+   const result = cards('find-data/dog-trainer/aomori.json').filter(x => x.includes('わんぷろ'));
+diff --git a/tools/chip_evidence.py b/tools/chip_evidence.py
+new file mode 100644
+index 0000000..0671e43
+--- /dev/null
++++ b/tools/chip_evidence.py
+@@ -0,0 +1,75 @@
++"""カードの「カード払い」「日曜も」の印を、カードに書いてある文の肯定の根拠だけから決める（純粋な関数）。
++書いていない・あいまい・打ち消し・調整中は印を付けない（「分からない」のまま。否定の印にはしない）。
++"""
++import re
++
++_CARD = re.compile(r"クレジット|カード|VISA|Visa|MasterCard|Master|JCB|Amex|AMEX|アメックス")
++_NOT_CREDIT = re.compile(r"ポイントカード|スタンプカード|会員カード|診察カード|カード情報|情報")
++_NEG = re.compile(r"現金のみ|現金だけ|不可|できません|できない|いただけません|頂けません|なれません|使えません|使えない|利用できません"
++                  r"|対応しておりません|対応していません|対応しません|非対応|導入準備|導入検討|導入予定|調整中|検討中|準備中|予定"
++                  r"|取り?扱(?:い)?(?:は)?(?:して)?(?:おり|い|いた)?(?:ません|ございません|ありません|しておりません)|取り?扱っ(?:て)?(?:おり|い)?ません"
++                  r"|扱っ(?:て)?(?:おり|い)?ません|お断り|ご遠慮|受け付け(?:て)?(?:おり|い)?ません|お受けし(?:て)?(?:おり|い)?ません|かねます|準備(?:し|を)")
++_SPLIT = re.compile(r"[。！!\n／/※\s　]+")
++
++
++def card_ok(pay_values):
++    """支払いの行の文のうち、カード払いができると書いてある（打ち消しのない）文が1つでもあるときだけ True。
++    キャッシュレス・電子マネー・QRだけではカード払いにしない。"""
++    for v in pay_values:
++        for frag in _SPLIT.split(re.sub(r"\s*[：:]\s*", ":", v or "")):
++            if not frag or not _CARD.search(frag) or _NOT_CREDIT.search(frag.replace("クレジットカード情報", "情報")) and not re.search(r"クレジット|VISA|Visa|Master|JCB", frag):
++                continue
++            if "情報" in frag: continue
++            if _NEG.search(frag): continue
++            return True
++    return False
++
++
++_WD = r"[月火水木金土]"
++_SUN_CLOSED = re.compile(r"日曜|日祝|(?<![曜月火水木金土0-9０-９])日(?=[・、,/祝\s]|$)")
++_ALWAYS_OPEN = re.compile(r"^(なし|無し)$|年中無休|無休|定休日?[：:\s]*なし|休み[：:\s]*なし|休業日?[：:\s]*なし|定休なし|不定休なし")
++_UNSURE = re.compile(r"不定|カレンダー|お問合|お問い合|要確認|応相談|ご確認|他[\s）)」]*$|他に|など|等")
++# 営業時間の文に、日曜も営業すると読める書き方
++_SUN_OPEN = re.compile(r"(月\s*[〜~\-ー－]\s*日|毎日|土日祝?|土・日|日曜日?・?祝?日?(?:は|も)?\s*(?:各)?[0-9０-９]{1,2}\s*[:：時]|日曜日?は各|日・祝.{0,6}[0-9０-９]{1,2}\s*[:：時])")
++_SATSUN = r"(?:土[・、]?日|日曜日?|日[・、]?祝|日祝|(?<![毎平本当土祝曜休日0-9０-９月火水木金])日)"
++_SHUT_W = r"(?:お)?(?:定休|休み|休業|休診|休止|休館|営業しておりません|営業していません|営業外|営業時間外|対応不可|対応できません)"
++_SUN_SHUT = re.compile(r"(?<![曜休月火水木金土0-9０-９])日[曜日・祝\s]*[\]］】)）]?\s*(?:を)?除く|日曜[日]?.{0,3}以外|平日のみ|日曜[日]?[\s・、]*(?:定休|休み|休業|お休み|休診)|日祝[定休]|日・祝[定休]|(?:定休|休み|休業)[日]?[：:\s]*[^。]*日曜"
++                       r"|" + _SATSUN + r"[曜日・、祝]*(?:は|も)?" + _SHUT_W +
++                       r"|" + _SATSUN + r"[曜日・、祝]*[^。0-9０-９]{0,8}?(?:を)?(?:除く|除き|のぞく|のぞき|以外)"
++                       r"|(?:定休|休み|休業)日?[：:\s]*[^。]{0,6}?(?:土日|日祝|日曜)")
++
++
++def sunday_ok(rows):
++    """rows: (ラベル, 値, _)。日曜も営業すると読める根拠があるときだけ True。
++    臨時休業の注記は通常の営業日を消さない。通常の営業・休みが読み切れないときは付けない。"""
++    hol = [(l, v) for l, v, _ in rows if re.search(r"休", l)]
++    hours = [v for l, v, _ in rows if re.search(r"時間|営業|受付", l) and not re.search(r"休", l)]
++    inline = []
++    for l, v in hol:
++        m = re.search(r"(営業時間[^/／]*?)\s*[/／]\s*(?:\[?定休日\]?)", v)
++        if m: inline.append(m.group(1))
++    hours += inline
++    allv = " ".join(hours) + " " + " ".join(v for _, v in hol)
++    if _SUN_SHUT.search(allv): return False
++    closed = []
++    for l, v in hol:
++        c = re.sub(r"\(※[^)]*\)|（※[^）]*）|※.*$|＊.*$", "", v)
++        c = re.sub(r"[（(][^）)]*[）)]", lambda m: "" if re.search(r"祝|例外|場合|月[0-9１-９]回|臨時|研修|年に", m.group(0)) and not re.search(r"定休", m.group(0)) else m.group(0), c)
++        c = re.sub(r"[（）()【】\[\]〇◇＊*]", " ", c)
++        if "定休日" in c:
++            left, right = c.split("定休日", 1) if c.count("定休日") == 1 else (c.rsplit("定休日", 1)[0], c.rsplit("定休日", 1)[1])
++            c = right if re.sub(r"[\s:：.\-●]", "", right) else left
++        c = re.sub(r"^[\s:：.\-●]*", "", c).strip()
++        closed.append(c)
++    # 臨時休業・年末年始の注記は、通常の週の営業を消さない（通常の書き方がはっきりあるときだけ別に判断する）
++    reg = [c for c in closed if not re.search(r"臨時", c)]
++    if hol and not reg:
++        return False
++    for c in reg:
++        if _ALWAYS_OPEN.search(c) and not re.search(r"不定|カレンダー", c): return True
++    if any(_SUN_CLOSED.search(c) for c in reg): return False
++    # 営業時間の文に日曜の営業がはっきり書いてあれば、不定休・臨時休業の注記があっても通常の営業は消さない
++    frags = [x for h in hours for x in re.split(r"[。\n]", h)]
++    if any(_SUN_OPEN.search(x) and not re.search(r"延長|期間|臨時|特別|繁忙", x) for x in frags): return True
++    # 休みの曜日の一覧と毎日の営業時間だけでは、日曜も営業とは決めない（書いていないことは「分からない」のまま）
++    return False
+diff --git a/tools/faccard.py b/tools/faccard.py
+index 1ea66b7..9175cb7 100644
+--- a/tools/faccard.py
++++ b/tools/faccard.py
+@@ -326,6 +326,7 @@ DEPTS = [  # 診療科目（ほかの病院さがしのサイトでよく選べ
+ def depts_of(v):
+     return [n for n, rx in DEPTS if re.search(rx, v)]
+ 
++import chip_evidence as _CE
+ _FT_ORDER = ["24時間", "夜も", "日曜も", "駐車場", "カード払い", "来てくれる・送迎", "料金を公開"]
+ 
+ def features(rows, rest, chips):
+@@ -334,11 +335,10 @@ def features(rows, rest, chips):
+     tm = " ".join(v for l, v, _ in rows if _TIME.search(l) and not re.search(r"休", l)) + " " + rest
+     if re.search(r"24時間", tm): f.append("24時間")
+     if re.search(r"翌|2[0-3]時|2[0-3]:\d\d|24時間|夜間|深夜", tm): f.append("夜も")
+-    hol = [v for l, v, _ in rows if re.search(r"休", l)]
+-    if hol and not any(re.search(r"日曜|日・|日祝|日、|・日|^日|、日|日$|不定", v) for v in hol): f.append("日曜も")
++    if _CE.sunday_ok(rows): f.append("日曜も")
++    if _CE.card_ok([v for l, v, _ in rows if re.search(r"支払", l)]): f.append("カード払い")
+     for l, v, _ in rows:
+         if re.search(r"駐車", l) and not re.search(r"なし|ありません|^0|ない", v): f.append("駐車場")
+-        if re.search(r"支払", l) and re.search(r"カード|クレジット|キャッシュレス", v) and not re.search(r"不可|使えない|できない", v): f.append("カード払い")
+         if re.search(r"ほかにしていること|併設", l): f += [x for x in _split_items(v) if 2 <= len(x) <= 8 and not re.search(r"駐車|パーキング|（", x)]
+         if _PRICE.search(l): f.append("料金を公開")
+     if any(re.search(r"送迎|出張|訪問|お迎え|往診", c) for c in chips): f.append("来てくれる・送迎")
+diff --git a/tools/hotels.json b/tools/hotels.json
+index bca6cda..eccf711 100644
+--- a/tools/hotels.json
++++ b/tools/hotels.json
+@@ -68950,36 +68950,6 @@
+    ],
+    "checked": "2026-11-23"
+   },
+-  {
+-   "id": "PHk421d80",
+-   "name": "dogsalon oppoto",
+-   "prefs": [
+-    "滋賀県"
+-   ],
+-   "city": "栗東市",
+-   "url": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
+-   "services": "ペットホテル、トリミング、しつけ",
+-   "facts": [
+-    {
+-     "k": "料金",
+-     "v": "日中預かり(9:30〜17:30) ¥2,500 / わんちゃんのカフェへの同伴入店はご遠慮いただいております。カフェご利用中は、広場でのお預かりをご利用いただけます(1時間660円)。 / お預かりには保育園のチケットを使い、しつけ教室の料金として別途¥15,000をお支払いいただきます。",
+-     "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
+-     "by": "site",
+-     "checked": "2026-11-23"
+-    },
+-    {
+-     "k": "送迎",
+-     "v": "トリミングをご利用のわんちゃんを対象に、原則月曜日に店舗から10km圏内で無料送迎を行っています。ペットホテルやしつけ教室のみの利用は対象外です。",
+-     "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
+-     "by": "provider",
+-     "checked": "2026-11-26",
+-     "show": true
+-    }
+-   ],
+-   "checked": "2026-11-23",
+-   "pickup": false,
+-   "pickup_comparison": "トリミングのみ無料（原則月曜・10km圏）"
+-  },
+   {
+    "id": "PHnk007",
+    "name": "ドッグサロン のあーる",
+@@ -71603,6 +71573,46 @@
+     }
+    ]
+   },
++  {
++   "id": "PHk421d80",
++   "name": "dogsalon oppoto",
++   "prefs": [
++    "滋賀県"
++   ],
++   "city": "栗東市",
++   "url": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
++   "services": "ペットホテル、トリミング、しつけ",
++   "facts": [
++    {
++     "k": "料金",
++     "v": "日中預かり(9:30〜17:30) ¥2,500 / わんちゃんのカフェへの同伴入店はご遠慮いただいております。カフェご利用中は、広場でのお預かりをご利用いただけます(1時間660円)。 / お預かりには保育園のチケットを使い、しつけ教室の料金として別途¥15,000をお支払いいただきます。",
++     "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
++     "by": "site",
++     "checked": "2026-11-23"
++    }
++   ],
++   "checked": "2026-11-23",
++   "retired_facts": [
++    {
++     "k": "送迎",
++     "v": "送迎は現在、月曜日限定で承っています。店舗から10km圏内の地域を対象に、無料で送迎いたします。",
++     "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
++     "by": "site",
++     "checked": "2026-11-23",
++     "web_excerpt_2026_11_25": "日々のお散歩からカフェや旅行まで、その子の個性に合わせて、お出かけに役立つマナーを少しずつ練習。店舗から10km圏内限定・無料送迎 。送迎は現在、月曜日限定で承っています。店舗から10km圏内の地域を対象に、無料で送迎いたします。",
++     "retired": "2026-11-26",
++     "reason": "出典の仮ページ（chatgpt.site）にも、事業者の公式サイト dogsalon-oppoto.com にも、今は送迎の記載を確認できない。送迎の対象サービスの範囲も出典に書かれていない。掲載は「不明」に戻した（送迎なしという意味ではない）。"
++    },
++    {
++     "k": "送迎",
++     "v": "（未確認の報告）お問い合わせフォームに、送迎の対象をトリミング利用のわんちゃんに限る（原則月曜日・店舗から10km圏内・無料）と書いた2026-11-26付けのメッセージが届いた。送信者が事業者本人かは確認できていない。",
++     "src": "問い合わせフォーム経由のメール（2026-11-26 17:33）。事業者の公式サイトや出典の仮ページでは確認できていない。",
++     "by": "unverified_report",
++     "retired": "2026-11-26",
++     "reason": "送信者の身元と内容を独立して確認できないため、掲載せず「不明」のままにする（送迎なしの意味ではない）。確認できたら復活を検討する。"
++    }
++   ]
++  },
+   {
+    "id": "PH001",
+    "name": "Dog Style 本店",
+@@ -82852,4 +82862,4 @@
+    "facts": []
+   }
+  ]
+-}
++}
+\ No newline at end of file
+diff --git a/tools/hotels_web.json b/tools/hotels_web.json
+index 8d50d4d..e568658 100644
+--- a/tools/hotels_web.json
++++ b/tools/hotels_web.json
+@@ -9344,11 +9344,6 @@
+   "checked": "2026-11-25",
+   "text": "べあしーどこれくしょんのペットホテルでは、人がいない環境をなくしたいという想いから夜間でもスタッフが付き添うようにしています。べあしーどこれくしょんでは野生動物に詳しいスタッフもいますのでお気軽にご相談ください。お客様のご希望の時間に散歩へ行きます。いつもと違う時間に散歩に連れて行かれることを嫌がるワンちゃんのために、べあしーどこれくしょんでは飼い主さまよりご指定いただいた時間に散歩させていただくように心がけています。夜間でもスタッフが付き添います。べあしーどこれくしょんのペットホテルは人がいない環境をなくしたいという想いから夜間でもスタッフが付き添うようにしています。"
+  },
+- "PHk421d80": {
+-  "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
+-  "checked": "2026-11-25",
+-  "text": "日々のお散歩からカフェや旅行まで、その子の個性に合わせて、お出かけに役立つマナーを少しずつ練習。店舗から10km圏内限定・無料送迎 。送迎は現在、月曜日限定で承っています。店舗から10km圏内の地域を対象に、無料で送迎いたします。"
+- },
+  "PHnk007": {
+   "src": "http://dogsalonnoir.yukigesho.com/",
+   "checked": "2026-11-25",
+diff --git a/tools/kinki_add.json b/tools/kinki_add.json
+index 9cffc5e..f737891 100644
+--- a/tools/kinki_add.json
++++ b/tools/kinki_add.json
+@@ -16011,17 +16011,20 @@
+      "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
+      "by": "site",
+      "checked": "2026-11-23"
+-    },
++    }
++   ],
++   "checked": "2026-11-23",
++   "retired_facts": [
+     {
+      "k": "送迎",
+      "v": "送迎は現在、月曜日限定で承っています。店舗から10km圏内の地域を対象に、無料で送迎いたします。",
+      "src": "https://oppoto-salon-cafe.gw75dy7m4y.chatgpt.site/",
+      "by": "site",
+-     "checked": "2026-11-23"
++     "checked": "2026-11-23",
++     "retired": "2026-11-26",
++     "reason": "出典の仮ページ（chatgpt.site）にも、事業者の公式サイト dogsalon-oppoto.com にも、今は送迎の記載を確認できない。送迎の対象サービスの範囲も出典に書かれていない。掲載は「不明」に戻した（送迎なしという意味ではない）。"
+     }
+-   ],
+-   "checked": "2026-11-23",
+-   "pickup": true
++   ]
+   },
+   {
+    "id": "PHk178ba0",
+diff --git a/tools/ownerfit.py b/tools/ownerfit.py
+index e074460..449cff4 100644
+--- a/tools/ownerfit.py
++++ b/tools/ownerfit.py
+@@ -176,7 +176,7 @@ def _maxkg(t):
+     kg = [float(x) for x in re.findall(r"(\d+(?:\.\d+)?)\s*(?:kg|ｋｇ|キロ)", t)]
+     return max(kg) if kg else 0
+ 
+-def _text(rec, skip=("url", "u", "id", "review_query", "review_name", "src", "photo_ok", "trust")):
++def _text(rec, skip=("url", "u", "id", "review_query", "review_name", "src", "photo_ok", "trust", "retired_facts")):
+     out = []
+     def walk(x):
+         if isinstance(x, dict):
