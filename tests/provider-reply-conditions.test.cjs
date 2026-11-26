@@ -14,7 +14,8 @@ test('oppotoのトリミング送迎はホテル送迎と区別し、カード�
   assert.match(read('pet-hotel/shiga/index.html'), /data-l="送迎">トリミングのみ無料/);
   const card = cards('find-data/pet-hotel/shiga.json').find(x => x.includes('data-fid="PHk421d80"'));
   assert.doesNotMatch(card.match(/data-flags="([^"]*)"/)[1], /\bpickup\b/);
-  assert.match(card.split('<details')[0], /display:block;overflow:visible[^>]*>送迎：[^<]*ホテルやしつけ教室のみの利用は対象外/);
+  // 共通の形のカード（tools/cardpolicy.py）では、送迎の項目に同じ公式の記載がそのまま出る（旧: 「送迎：」の1行）
+  assert.match(card.split('<details')[0], /<b>送迎<\/b><span>[^<]*トリミング[^<]*10km圏内[^<]*ホテルやしつけ教室のみの利用は対象外/);
 });
 test('青森のわんぷろは公式サイトの1件にだけ施設写真を掲載する', () => {
   const result = cards('find-data/dog-trainer/aomori.json').filter(x => x.includes('わんぷろ'));
