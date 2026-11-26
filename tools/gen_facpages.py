@@ -99,12 +99,15 @@ def _geo(fname, x):
     return {"@type": "GeoCoordinates", "latitude": ll[0], "longitude": ll[1]} if ll else None
 def _page(ctx, *, title, desc, url, crumbs, nm, pts, rows, card, cmp, faq, related, note, cta, ld_main, src_url, ck_iso, quick_src=""):
     e, SITE = ctx["e"], ctx["SITE"]
-    ld = '<script type="application/ld+json">\n' + json.dumps([
+    _lds = [
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + h} for i, (n, h) in enumerate(crumbs + [(nm, url[len(SITE):])])]},
         dict({"@context": "https://schema.org"}, **ld_main),
-        {"@context": "https://schema.org", "@type": "WebPage", "name": nm, "url": url, "dateModified": ck_iso, "isBasedOn": src_url}],
-        ensure_ascii=False, indent=1) + "\n</script>"
+        {"@context": "https://schema.org", "@type": "WebPage", "name": nm, "url": url, "dateModified": ck_iso, "isBasedOn": src_url}]
+    if faq:  # 表示している「よくある質問」を FAQPage 構造化データとしても出す（2026-11-26 SEO強化 第2弾）
+        _lds.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": a, "acceptedAnswer": {"@type": "Answer", "text": b}} for a, b in faq]})
+    ld = '<script type="application/ld+json">\n' + json.dumps(_lds, ensure_ascii=False, indent=1) + "\n</script>"
     crumb = " › ".join(f'<a href="{h}">{e(n)}</a>' for n, h in crumbs) + f" › {e(nm)}"
     faq_html = "".join(f"<dt>{e(a)}</dt><dd>{e(b)}</dd>" for a, b in faq)
     rel = "".join(f'<li><a href="{h}">{e(n)}</a></li>' for n, h in related)
