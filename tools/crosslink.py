@@ -7,7 +7,7 @@ import os, re
 CATS = [  # (フォルダ, ボタンの文字)
     ("hospital/night", "夜間・救急の動物病院"),
     ("dogrun", "ドッグラン"),
-    ("sougi", "ペット火葬・霊園"),
+    ("sougi", "ペット葬儀・火葬・霊園"),
     ("pet-hotel", "ペットホテル"),
     ("pet-sitter", "ペットシッター"),
     ("trimming", "出張トリミング"),
