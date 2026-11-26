@@ -1,0 +1,205 @@
+# 一時の補助。写真ファイル130枚（photos.json に載っているが main に無いもの）を、既にある取り込み枝 photo-hp3 から戻す。
+name: photo-restore-helper
+on:
+  push:
+    branches: ['NORI-silver-repair-trig34']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 戻す（photo-hp3 から、足りない130枚だけ）
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cat > /tmp/list.txt <<'LIST'
+          img/fac/hotel/PH-HT095_1.webp
+          img/fac/hotel/PH-HT095_2.webp
+          img/fac/hotel/PH-HT202_1.webp
+          img/fac/hotel/PH-HT202_2.webp
+          img/fac/hotel/PH-HT202_3.webp
+          img/fac/hotel/PH-HT202_4.webp
+          img/fac/hotel/PH-HT204_1.webp
+          img/fac/hotel/PH-HT204_2.webp
+          img/fac/hotel/PH-HT206_1.webp
+          img/fac/hotel/PH-HT212_1.webp
+          img/fac/hotel/PH-HT212_2.webp
+          img/fac/hotel/PH-HT212_3.webp
+          img/fac/hotel/PH-HT212_4.webp
+          img/fac/hotel/PH-HT215_1.webp
+          img/fac/hotel/PH-HT215_2.webp
+          img/fac/hotel/PH-HT215_3.webp
+          img/fac/hotel/PH-HT226_1.webp
+          img/fac/hotel/PH-HT226_2.webp
+          img/fac/hotel/PH-HT233_1.webp
+          img/fac/hotel/PH-HT233_2.webp
+          img/fac/hotel/PH-HT245_1.webp
+          img/fac/hotel/PH-HT249_1.webp
+          img/fac/hotel/PH-HT254_1.webp
+          img/fac/hotel/PH-HT299_1.webp
+          img/fac/hotel/PH-HT299_2.webp
+          img/fac/hotel/PH063_1.webp
+          img/fac/hotel/PH063_2.webp
+          img/fac/hotel/PH063_3.webp
+          img/fac/hotel/PH063_4.webp
+          img/fac/hotel/PH093_1.webp
+          img/fac/hotel/PH099_1.webp
+          img/fac/hotel/PH102_1.webp
+          img/fac/hotel/PH102_2.webp
+          img/fac/hotel/PH103_1.webp
+          img/fac/hotel/PH103_2.webp
+          img/fac/hotel/PH104_1.webp
+          img/fac/hotel/PH106_1.webp
+          img/fac/hotel/PH106_2.webp
+          img/fac/hotel/PH106_3.webp
+          img/fac/hotel/PH108_1.webp
+          img/fac/hotel/PH110_1.webp
+          img/fac/hotel/PH111_1.webp
+          img/fac/hotel/PH111_2.webp
+          img/fac/hotel/PH112_1.webp
+          img/fac/hotel/PH117_1.webp
+          img/fac/hotel/PH132_1.webp
+          img/fac/hotel/PH132_2.webp
+          img/fac/hotel/PH135_1.webp
+          img/fac/hotel/PH135_2.webp
+          img/fac/hotel/PH145_1.webp
+          img/fac/hotel/PH145_2.webp
+          img/fac/hotel/PH155_1.webp
+          img/fac/hotel/PH155_2.webp
+          img/fac/hotel/PH155_3.webp
+          img/fac/hotel/PH155_4.webp
+          img/fac/hotel/PH156_1.webp
+          img/fac/hotel/PH159_1.webp
+          img/fac/hotel/PH159_2.webp
+          img/fac/hotel/PHc0c3e60_1.webp
+          img/fac/hotel/PHc0c3e60_2.webp
+          img/fac/hotel/PHc0c3e60_3.webp
+          img/fac/hotel/PHc2087b8_1.webp
+          img/fac/hotel/PHc2087b8_2.webp
+          img/fac/hotel/PHc27dd72_1.webp
+          img/fac/hotel/PHc77c7a4_1.webp
+          img/fac/hotel/PHc77c7a4_2.webp
+          img/fac/hotel/PHc77c7a4_3.webp
+          img/fac/hotel/PHc8fcb1a_1.webp
+          img/fac/hotel/PHc8fcb1a_2.webp
+          img/fac/hotel/PHc98048a_1.webp
+          img/fac/hotel/PHc98048a_2.webp
+          img/fac/hotel/PHc98048a_3.webp
+          img/fac/hotel/PHc98048a_4.webp
+          img/fac/hotel/PHc9a3099_1.webp
+          img/fac/hotel/PHc9a3099_2.webp
+          img/fac/hotel/PHca54410_1.webp
+          img/fac/hotel/PHca93842_1.webp
+          img/fac/hotel/PHca93842_2.webp
+          img/fac/hotel/PHca93842_3.webp
+          img/fac/hotel/PHcab2f56_1.webp
+          img/fac/hotel/PHcab2f56_2.webp
+          img/fac/hotel/PHcab2f56_3.webp
+          img/fac/hotel/PHcbae23b_1.webp
+          img/fac/hotel/PHcbae23b_2.webp
+          img/fac/hotel/PHcd2d0e0_1.webp
+          img/fac/hotel/PHcd2d0e0_2.webp
+          img/fac/hotel/PHcfa9126_1.webp
+          img/fac/hotel/PHcfa9126_2.webp
+          img/fac/hotel/PHcfe6b21_1.webp
+          img/fac/hotel/PHcfe6b21_2.webp
+          img/fac/hotel/PHcfe6b21_3.webp
+          img/fac/hotel/PHk0969a2_1.webp
+          img/fac/hotel/PHk0969a2_2.webp
+          img/fac/hotel/PHk1bf9fe_1.webp
+          img/fac/hotel/PHk1bf9fe_2.webp
+          img/fac/hotel/PHk1bf9fe_3.webp
+          img/fac/hotel/PHk260c73_1.webp
+          img/fac/hotel/PHk2b9759_1.webp
+          img/fac/hotel/PHk75001f_1.webp
+          img/fac/hotel/PHk75001f_2.webp
+          img/fac/hotel/PHk80f801_1.webp
+          img/fac/hotel/PHk80f801_2.webp
+          img/fac/hotel/PHk80f801_3.webp
+          img/fac/hotel/PHk8d79a7_1.webp
+          img/fac/hotel/PHk8d79a7_2.webp
+          img/fac/hotel/PHk98564f_1.webp
+          img/fac/hotel/PHkb42f51_1.webp
+          img/fac/hotel/PHkb42f51_2.webp
+          img/fac/hotel/PHkc09d73_1.webp
+          img/fac/hotel/PHkc09d73_2.webp
+          img/fac/hotel/PHkc60567_1.webp
+          img/fac/hotel/PHkc8f8b5_1.webp
+          img/fac/hotel/PHkc8f8b5_2.webp
+          img/fac/hotel/PHkc8f8b5_3.webp
+          img/fac/hotel/PHkc8f8b5_4.webp
+          img/fac/hotel/PHkdb0201_1.webp
+          img/fac/hotel/PHke6c071_1.webp
+          img/fac/hotel/PHnk063_1.webp
+          img/fac/hotel/PHnk063_2.webp
+          img/fac/hotel/PHnk063_3.webp
+          img/fac/hotel/PHnk063_4.webp
+          img/fac/hotel/PHnk112_1.webp
+          img/fac/hotel/PHnk128_1.webp
+          img/fac/hotel/PHnk128_2.webp
+          img/fac/hotel/PHnk128_3.webp
+          img/fac/hotel/PHnk140_1.webp
+          img/fac/hotel/PHnk143_1.webp
+          img/fac/hotel/PHt67bc9ae_1.webp
+          img/fac/hotel/PHtffaa351_1.webp
+          img/fac/hotel/PHtffaa351_2.webp
+          LIST
+          git fetch origin main
+          git reset -q --hard origin/main
+          git log -1 --format='base %H'
+          echo "list $(wc -l < /tmp/list.txt) existing-before $(while read f; do [ -f "$f" ] && echo x; done < /tmp/list.txt | wc -l)"
+          git checkout origin/photo-hp3 -- $(cat /tmp/list.txt)
+          git status --short | awk '{print $1}' | sort | uniq -c
+          git diff --cached --stat | tail -1
+          git diff --cached --name-only | grep -vxFf /tmp/list.txt | wc -l | sed 's/^/outside-list files: /'
+      - name: 確かめる（画像として開ける・photos.json の縦横比と合う・ページの参照が全部ある）
+        run: |
+          pip install -q pillow
+          python3 - <<'PY'
+          import json,os,re,glob,sys
+          from PIL import Image
+          items=json.load(open('tools/photos.json'))['items']
+          bad=0;n=0
+          for x in items:
+              for q,r in zip(x.get('photos',[]),x.get('ratio',[])):
+                  f=q.lstrip('/'); n+=1
+                  if not os.path.isfile(f): bad+=1; print('MISSING',f); continue
+                  try:
+                      im=Image.open(f); im.load()
+                      if abs(im.width/im.height-r)>0.02: bad+=1; print('RATIO',f,round(im.width/im.height,3),r)
+                  except Exception as e: bad+=1; print('DECODE',f,e)
+          print('photos.json files checked',n,'bad',bad)
+          miss=set()
+          for p in glob.glob('**/*.html',recursive=True):
+              if p.startswith(('node_modules','.git')): continue
+              for m in re.findall(r'src="(/img/fac/[^"]+)"',open(p,encoding='utf-8',errors='ignore').read()):
+                  if not os.path.isfile(m.lstrip('/')): miss.add(m)
+          print('html refs to missing files',len(miss)); [print(' ',m) for m in sorted(miss)[:10]]
+          sys.exit(1 if bad or miss else 0)
+          PY
+      - name: 検査（各ゲートの終了状態）
+        run: |
+          fail=0
+          run(){ n="$1"; shift; rc=0; "$@" > /tmp/gate_$n.log 2>&1 || rc=$?; echo "GATE $n exit=$rc :: $(tail -2 /tmp/gate_$n.log | tr '\n' ' ' | cut -c1-200)"; if [ $rc -ne 0 ]; then fail=1; fi; }
+          run seo python3 tools/seo_check.py .
+          run rules python3 tools/rules_check.py .
+          run feedback python3 tools/feedback_check.py .
+          run consistency python3 tools/consistency_check.py .
+          echo "ALL_GATES_EXIT=$fail"
+          exit $fail
+      - name: コミット
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git reset -q .github 2>/dev/null || true
+          git commit -qm "写真ファイル130枚を戻す（photos.json に載っていて、リポジトリに無かったもの。取り込み枝 photo-hp3 から）"
+          git push -f origin HEAD:refs/heads/NORI-silver-photos-restore-2
+          git log -1 --format='HEAD %H'
