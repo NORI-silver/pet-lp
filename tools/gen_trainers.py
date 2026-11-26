@@ -232,3 +232,7 @@ def _title(pf, rs, n):
 CAT["title_fn"] = _title
 CAT["before_html"] = lambda e, pf: points_html()
 CAT["fac_biz"] = lambda e: FC.biz(e, "ドッグトレーナー・しつけ教室")
+
+# 埼玉県だけ、通学・出張の初回料金の違いを比較。
+from pet_sprint_choices import SAITAMA_TRAINING
+CAT.setdefault("pref_overrides", {})["埼玉県"] = {"section": SAITAMA_TRAINING}
