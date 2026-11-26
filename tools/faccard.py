@@ -532,7 +532,7 @@ def build_card(card, conf, fit_by_name):
             hm = re.search(r'href="([^"]*)"', x); hf = hm.group(1) if hm else ""
             full = _txt(x).rstrip(" →")
             if hf.startswith("/?") or "#form" in hf:
-                acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="{hf}" aria-label="{html.escape(full)}">タクシー料金</a>')
+                acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="{hf}" aria-label="{html.escape(full)}">ペットタクシーの料金</a>')
             else:
                 acts.append(f'<a class="emg-taxi fc-a fc-a-info" href="{hf}" aria-label="{html.escape(full)}">くわしく</a>')
         else: acts.append(x)
@@ -543,7 +543,7 @@ def build_card(card, conf, fit_by_name):
     if meta and conf["key"] in ("hotel", "rojin", "sougi", "hospital") and not any("emg-taxi" in x for x in tail):  # 行き先までのタクシー料金（Nori 2026-11-26）
         from urllib.parse import quote as _uq
         _to = meta.get("addr") or ((meta.get("pref") or "") + (meta.get("city") or "") + name)
-        acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="/?to={_uq_compact(_to[:80])}#form" aria-label="{html.escape(name)}のタクシー料金">タクシー料金</a>')
+        acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="/?to={_uq_compact(_to[:80])}#form" aria-label="{html.escape(name)}のタクシー料金">ペットタクシーの料金</a>')
     if more: acts.append('<details class="fc-more"><summary class="fc-a fc-a-more">そのほか</summary><div class="fc-more-b">' + "".join(more) + "</div></details>")
     if acts: body.append('<div class="fc-acts">' + "".join(acts) + "</div>")
     return ot + ph + '<div class="fc-body">' + "".join(body) + "</div></div>"
