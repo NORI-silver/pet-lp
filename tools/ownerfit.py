@@ -176,7 +176,7 @@ def _maxkg(t):
     kg = [float(x) for x in re.findall(r"(\d+(?:\.\d+)?)\s*(?:kg|ｋｇ|キロ)", t)]
     return max(kg) if kg else 0
 
-def _text(rec, skip=("url", "u", "id", "review_query", "review_name", "src", "photo_ok", "trust")):
+def _text(rec, skip=("url", "u", "id", "review_query", "review_name", "src", "photo_ok", "trust", "retired_facts")):
     out = []
     def walk(x):
         if isinstance(x, dict):
