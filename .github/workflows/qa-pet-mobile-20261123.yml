@@ -1,0 +1,55 @@
+name: Isolated Pet mobile QA
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  rendered:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'chatgpt/qa-pet-mobile-20261123'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {kind: photo, sha: 2b7c7a28aefe919b09f9dea18a199e9a1e7be485}
+          - {kind: cta, sha: 2b7c7a28aefe919b09f9dea18a199e9a1e7be485}
+          - {kind: maigo, sha: 2b7c7a28aefe919b09f9dea18a199e9a1e7be485}
+          - {kind: guard, sha: 2b7c7a28aefe919b09f9dea18a199e9a1e7be485}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.sha }}
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install test browser
+        run: |
+          npm install --prefix .mobile --ignore-scripts --no-audit --no-fund playwright@1.62.1
+          test -x /usr/bin/google-chrome
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-match -f '%{family}\n' :lang=ja | grep 'Noto Sans CJK' 
+      - name: Verify exact candidate and render locally
+        env:
+          TEST_SHA: ${{ matrix.sha }}
+          TEST_KIND: ${{ matrix.kind }}
+          CHROME_PATH: /usr/bin/google-chrome
+          NODE_PATH: ${{ github.workspace }}/.mobile/node_modules
+        run: |
+          test "$(git -C candidate rev-parse HEAD)" = "$TEST_SHA"
+          node tests/pet-mobile-qa.cjs candidate "$TEST_KIND" mobile-results
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pet-mobile-${{ matrix.kind }}
+          path: mobile-results/
+          if-no-files-found: ignore
+          retention-days: 1
