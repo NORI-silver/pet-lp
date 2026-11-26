@@ -1146,6 +1146,32 @@
    ]
   },
   {
+   "id": "D220",
+   "kind": "民間",
+   "pref": "神奈川県",
+   "city": "横浜市瀬谷区",
+   "name": "ドッグアイランド瀬谷店",
+   "url": "https://dogisland.studio.site/",
+   "addr": "横浜市瀬谷区橋戸2-2-1",
+   "place": "完全屋内・空調完備。約130㎡",
+   "hours": "6:00〜22:00。通常は50分枠、朝は110分枠",
+   "fee": "1頭50分900円・朝の110分枠1,500円。貸切50分9,000円（各税込）",
+   "size": "大型犬も利用可。サイズ別の予約枠、小型・大型犬の専用時間あり",
+   "reg": "Webで会員登録。承認後に日時を予約しカード決済",
+   "need": "狂犬病・混合ワクチン接種。マナーウェアは公式サイトで推奨",
+   "parking": "駐車場付きの枠をWebで事前予約",
+   "note": "通常枠と貸切あり。来店時は予約サイトの会員証を使う",
+   "src": [
+    "https://dogisland-seya.hacomono.jp/",
+    "https://dogisland-seya.hacomono.jp/api/system/dbfiles/e8dbf7be9ce2241bf1f913a1c4d0e1fec03408ea61a4afe7633ef47be334d9b2.pdf"
+   ],
+   "web": {
+    "src": "https://dogisland.studio.site/",
+    "checked": "2026-11-26",
+    "text": "完全屋内・空調完備。約130㎡。通常枠と貸切あり。来店時は予約サイトの会員証を使う"
+   }
+  },
+  {
    "id": "D017",
    "pref": "埼玉県",
    "name": "川越公園ドッグラン「わんこの遊び場」（県営）",
@@ -2037,6 +2063,31 @@
     "https://www.aeonpet.com/service/dogrun/",
     "https://www.aeonpet.com/shop/p_makuhari/index.html"
    ]
+  },
+  {
+   "id": "D219",
+   "kind": "民間",
+   "pref": "千葉県",
+   "city": "富津市",
+   "name": "マメノキドッグパーク",
+   "url": "https://mamenoki-park.com/dogrun.html",
+   "addr": "富津市志駒1189",
+   "place": "旧環南小学校の校舎3階に室内ラン（約74㎡）。屋外にも複数区画あり",
+   "hours": "4〜10月9:00〜17:00、11〜3月9:00〜16:00。月曜休（祝日なら翌日）。雨や悪天候時は休業",
+   "fee": "犬1頭＋人1人 平日1,000円・土日祝1,200円（税込）。室内のみも同額",
+   "size": "屋外に大型犬エリア。室内の犬種・サイズ条件は施設に確認。指定犬種（セントバーナードなど）は施設全体で貸切のみ",
+   "reg": "初回は店頭で犬1頭ごとに会員登録",
+   "need": "室内はマナーウェア必須。1年以内の狂犬病・混合ワクチンの証明（写真・コピー可）",
+   "note": "貸切ランは要予約。室内区画の貸切可否は施設に確認",
+   "src": [
+    "https://mamenoki-park.com/access.html",
+    "https://mamenoki-park.com/facilities.html"
+   ],
+   "web": {
+    "src": "https://mamenoki-park.com/dogrun.html",
+    "checked": "2026-11-26",
+    "text": "旧環南小学校の校舎3階に室内ラン（約74㎡）。屋外にも複数区画あり。貸切ランは要予約。室内区画の貸切可否は施設に確認"
+   }
   },
   {
    "id": "D217",

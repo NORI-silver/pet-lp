@@ -87,7 +87,8 @@ def ff_keys(d):
     if r == "登録なしで使える": k.append("noreg")
     elif r == "登録がいる": no.append("noreg")
     if is_small(d): k.append("small")
-    if is_large(d): k.append("large")
+    # D200 stops large-dog intake; D219 only confirms a large-dog area outdoors.
+    if is_large(d) and d["id"] not in {"D200", "D219"}: k.append("large")
     pk = d.get("parking", "")
     if pk: (no if _NOPARK.search(pk) else k).append("park")
     if "24時間" in d.get("hours", ""): k.append("h24")
@@ -125,7 +126,7 @@ def ff_card(e, d, full=False):
     acts = f'<a class="ux-btn" href="{e(d["url"])}" target="_blank" rel="noopener">公式ページ ↗</a>'
     if dest: acts += f'<a class="ux-btn l" href="https://www.google.com/maps/dir/?api=1&amp;destination={dest}" target="_blank" rel="noopener" data-route>経路を見る</a>'
     _rl = _review(d)
-    acts += _rl or f'<a class="ux-btn l" href="https://www.google.com/maps/search/?api=1&query={_q(d["name"] + " " + pf + d.get("city", ""))}" target="_blank" rel="noopener">Google Mapsの口コミ</a>'
+    acts += _rl if d["id"] in {"D219", "D220"} else _rl or f'<a class="ux-btn l" href="https://www.google.com/maps/search/?api=1&query={_q(d["name"] + " " + pf + d.get("city", ""))}" target="_blank" rel="noopener">Google Mapsの口コミ</a>'
     _to = d.get("addr") or (pf + d.get("city", "") + d["name"])
     acts += f'<a class="ux-btn l" href="/?to={_q(_to[:80])}#form">ペットタクシーの料金</a>' 
     sub = "" if full else f'<a href="{href(pf)}#{d["id"]}">くわしく見る</a>'
@@ -338,6 +339,9 @@ _INDOOR = [
     ("D218", "千葉県", "千葉市美浜区", "ペテモピアシティ稲毛海岸店", "共通案内では会員カード発行350円（税込）。この店の利用料は店舗に確認",
      "室内ランあり。会員カード、マナーウェア、初回のワクチン証明が必要",
      "https://www.aeonpet.com/shop/pia-city-inagekaigan/", "https://www.aeonpet.com/service/dogrun/"),
+    ("D219", "千葉県", "富津市", "マメノキドッグパーク", "犬1頭と人1人で平日1,000円・土日祝1,200円（税込）。室内だけでも同額",
+     "校舎3階・約74㎡。マナーウェア必須。雨天・悪天候時は休業の案内あり",
+     "https://mamenoki-park.com/dogrun.html", "https://mamenoki-park.com/access.html"),
     ("D214", "埼玉県", "三郷市", "ペットステーションWAN", "通常1頭30分550円、貸切1時間3,300円（各税込）",
      "通常は小・中型犬のみ。大型犬は貸切。貸切は利用日の1週間前まで",
      "https://petstation-wan.com/dog-run/", "https://www.petstation-wan.com/dog-run-status/"),
@@ -350,6 +354,9 @@ _INDOOR = [
     ("D143", "神奈川県", "横浜市", "WANCOTT ドッグパーク", "1頭1時間1,650円（税込）。会員登録が必要",
      "犬種、体格、遊び方などを見て受付がエリアを判断。開催時間も確認",
      "https://www.wancott.com/dogpark/", "https://www.wancott.com/price/"),
+    ("D220", "神奈川県", "横浜市瀬谷区", "ドッグアイランド瀬谷店", "1頭50分900円（税込）。朝の110分枠は1,500円",
+     "完全室内・空調完備。大型犬も利用可。犬の大きさごとの予約枠あり",
+     "https://dogisland.studio.site/", "https://dogisland-seya.hacomono.jp/"),
     ("D194", "愛知県", "長久手市", "Dog with（ドッグウィズ）", "ビジター1頭目2,000円（税込、施設の利用料金）",
      "小型犬用と大型犬用の室内ランを案内。1年以内の狂犬病・混合ワクチンの証明が必要",
      "https://www.dogwith.jp/dogrun/", "https://www.dogwith.jp/"),
@@ -374,6 +381,8 @@ _INDOOR_BOOKING = {
     "D216": "貸切は1か月前〜前日までに電話か公式InstagramのDM。通常利用の年間登録とビジター料金の扱いは受付に確認",
     "D217": "犬のサイズ・利用予約は店舗に確認",
     "D218": "室内ランの利用時間・犬のサイズ・利用予約は店舗に確認",
+    "D219": "施設全体で指定犬種は貸切のみ。貸切ランは要予約。室内区画を貸し切れるか、対象犬種が使えるかは施設に確認",
+    "D220": "Web登録の承認後に予約。50分貸切9,000円（税込）。駐車場付きの枠は予約時に確認",
     "D214": "貸切は利用日の1週間前まで。通常利用は当日の貸切状況を確認",
     "D143": "通常は予約不要。会員登録は必要。貸切は事前予約",
     "D194": "公式の貸切案内は屋外。室内の貸切は施設に確認",
@@ -384,18 +393,30 @@ _INDOOR_BOOKING = {
 }
 
 def _indoor_body(e):
-    rows = []
-    for fid, pf, city, name, fee, rules, url, other in _INDOOR:
-        extra = f' ・ <a href="{e(other)}">関連の公式案内</a>' if other else ""
-        rows.append(f'<tr><th scope="row">{e(name)}<br><small>{e(city)} ・ <a href="{href(pf)}#{e(fid)}">{e(pf)}の施設詳細</a></small></th>'
-                    f'<td>{e(fee)}</td><td>{e(rules)}</td><td>{e(_INDOOR_BOOKING[fid])}</td><td><a href="{e(url)}">公式ページ</a>{extra}</td></tr>')
+    groups = [
+        ("chiba", "千葉の室内ドッグラン", lambda pf: pf == "千葉県"),
+        ("kanto", "東京・埼玉・神奈川の室内ドッグラン", lambda pf: pf in {"東京都", "埼玉県", "神奈川県"}),
+        ("other-regions", "そのほかの地域の室内ドッグラン", lambda pf: pf not in {"千葉県", "東京都", "埼玉県", "神奈川県"}),
+    ]
+    tables = []
+    for slug, label, match in groups:
+        rows = []
+        for fid, pf, city, name, fee, rules, url, other in _INDOOR:
+            if not match(pf): continue
+            extra = f' ・ <a href="{e(other)}">関連の公式案内</a>' if other else ""
+            rows.append(f'<tr><th scope="row">{e(name)}<br><small>{e(city)} ・ <a href="{href(pf)}#{e(fid)}">{e(pf)}の施設詳細</a></small></th>'
+                        f'<td>{e(fee)}</td><td>{e(rules)}</td><td>{e(_INDOOR_BOOKING[fid])}</td><td><a href="{e(url)}">公式ページ</a>{extra}</td></tr>')
+        tables.append(f'<h3 id="{slug}" style="scroll-margin-top:8rem">{e(label)}（{len(rows)}か所）</h3>'
+                      + '<div class="tbl"><table class="dr-tbl"><thead><tr><th scope="col">施設・地域</th><th scope="col">料金例</th><th scope="col">犬のサイズ・利用条件</th><th scope="col">予約・貸切</th><th scope="col">出典</th></tr></thead><tbody>'
+                      + "".join(rows) + '</tbody></table></div>')
+    jumps = ''.join(f'<li><a href="#{slug}">{e(label)}</a></li>' for slug, label, _ in groups)
     return (
-        _h("雨の日に使える室内ドッグランを比べる")
-        + _p("屋内に犬が走れる区画があると運営者が案内している施設を掲載しています。屋根はあるけれど側面が開いている区画や、犬と入れるカフェ・休憩室だけの施設は含めていません。地域ごとの掲載で、全国すべてを網羅した一覧ではありません。")
-        + '<div class="tbl"><table class="dr-tbl"><thead><tr><th scope="col">施設・地域</th><th scope="col">料金例</th><th scope="col">犬のサイズ・利用条件</th><th scope="col">予約・貸切</th><th scope="col">出典</th></tr></thead><tbody>'
-        + "".join(rows) + '</tbody></table></div>'
-        + _h("千葉で探すなら、柏の貸切とペテモの会員利用を比べる")
-        + _p('柏の葉T-SITEの通常利用は10kg以下です。大型犬は貸切だけで、頭数は犬種や体重により制限されることがあります。貸切は<a href="https://www.wag-wan.co.jp/home/dogspace/private/reserve">施設の現在の予約案内</a>から連絡先を確認してください。',
+        _h("室内ドッグランを地域・料金・利用条件で比べる")
+        + _p("屋内に犬が走れる区画があると運営者が案内している施設を掲載しています。屋根付きの屋外や、犬と入れるカフェ・休憩室だけの施設は含めていません。室内区画があっても雨天休業の施設はあるので、当日の営業もご確認ください。")
+        + f'<nav aria-label="室内ドッグランを地域から探す"><ul class="other">{jumps}</ul></nav>'
+        + "".join(tables)
+        + _h("千葉で探すなら、柏の貸切・富津の営業日・ペテモの会員利用を確認")
+        + _p('柏の葉T-SITEは通常利用が10kg以下で、大型犬は貸切のみ。富津のマメノキは室内だけでも同じ入場料ですが、公式では雨や悪天候時の休業を案内しています。セントバーナードなど指定犬種は施設全体の決まりで貸切のみ。室内区画の利用可否は予約前に確認してください。',
              '印西・稲毛海岸・幕張のペテモは会員カードが必要です。カード発行料と利用料は別です。利用料や犬のサイズの条件は店舗ごとに確認してください。ほかの公園や施設は<a href="/dogrun/chiba/">千葉県のドッグラン一覧</a>で探せます。')
         + _h("大型犬なら、室内エリアの条件だけを確認")
         + _p("施設全体では大型犬を受け入れていても、雨の日に使う室内の区画は小型犬だけの場合があります。入口の幅、室内区画に体重上限があるか、同じ時間に別の犬が入るかを確認してください。普段ほかの犬に吠えやすい子や、狭い場所で落ち着かない子は、空いている時間か貸切を相談する方法もあります。")
@@ -410,8 +431,8 @@ def _indoor_body(e):
 ARTICLES = [
  {"slug": "indoor", "short": "室内ドッグラン",
   "title": lambda: f"室内ドッグラン{len(_INDOOR)}か所｜雨の日の料金・犬のサイズと利用条件",
-  "desc": lambda: "雨や暑い日にも使いやすい室内ドッグランを、公式情報から選んで比較。千葉（柏・印西・稲毛海岸・幕張）や東京、大阪などの施設の料金、体重制限、貸切と登録条件を確認できます。",
-  "lede": "雨の日に犬を走らせられる室内ドッグラン。屋根付きの屋外と区別し、実際に屋内で走れると公式に案内された施設の料金・サイズ条件・持ち物を比べます。",
+  "desc": lambda: "雨や暑い日にも使いやすい室内ドッグランを、公式情報から選んで比較。千葉（柏・富津・印西・千葉市）や横浜、東京、大阪などの施設の料金、体重制限、貸切と登録条件を確認できます。",
+  "lede": "雨の日や暑い日に検討できる室内ドッグラン。千葉や横浜など、屋内で走れると公式に案内された施設の料金・大型犬の条件・予約方法を比べます。",
   "list": None, "body": _indoor_body, "checked": "2026年11月26日", "modified": "2026-11-26"},
  {"slug": "free", "short": "無料で使えるドッグラン",
   "title": lambda: f"無料で使えるドッグラン{nfree(RUNS)}か所｜都道府県別の一覧と、別にかかるお金",
@@ -761,6 +782,9 @@ def render_pref(ctx, pf, rs):
         {"@context": "https://schema.org", "@type": "ItemList", "name": f"{pf}のドッグラン", "numberOfItems": n, "itemListElement": items},
         faq_ld(faq)])
     pref_href = ctx["pref_href"]
+    indoor_count = sum(d["id"] in _INDOOR_IDS for d in rs)
+    indoor_hash = "#chiba" if pf == "千葉県" else "#kanto" if pf in {"神奈川県", "東京都", "埼玉県"} else "#other-regions"
+    indoor_link = (f'<p><a href="/dogrun/indoor/{indoor_hash}">{e(pf)}の室内ドッグラン{indoor_count}か所を料金・予約条件で比べる</a></p>' if indoor_count else "")
     return ctx["head"](title, desc, url, ld) + f"""
 <main>
 <section class="area-hero">
@@ -772,6 +796,7 @@ def render_pref(ctx, pf, rs):
 </section>
 <section style="padding-top:8px">
   <div class="wrap"><article class="art">
+    {indoor_link}
     {ff_box(e)}
     {cards}
   </article></div>
