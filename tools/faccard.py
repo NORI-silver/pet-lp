@@ -326,6 +326,7 @@ DEPTS = [  # 診療科目（ほかの病院さがしのサイトでよく選べ�
 def depts_of(v):
     return [n for n, rx in DEPTS if re.search(rx, v)]
 
+import chip_evidence as _CE
 _FT_ORDER = ["24時間", "夜も", "日曜も", "駐車場", "カード払い", "来てくれる・送迎", "料金を公開"]
 
 def features(rows, rest, chips):
@@ -334,11 +335,10 @@ def features(rows, rest, chips):
     tm = " ".join(v for l, v, _ in rows if _TIME.search(l) and not re.search(r"休", l)) + " " + rest
     if re.search(r"24時間", tm): f.append("24時間")
     if re.search(r"翌|2[0-3]時|2[0-3]:\d\d|24時間|夜間|深夜", tm): f.append("夜も")
-    hol = [v for l, v, _ in rows if re.search(r"休", l)]
-    if hol and not any(re.search(r"日曜|日・|日祝|日、|・日|^日|、日|日$|不定", v) for v in hol): f.append("日曜も")
+    if _CE.sunday_ok(rows): f.append("日曜も")
+    if _CE.card_ok([v for l, v, _ in rows if re.search(r"支払", l)]): f.append("カード払い")
     for l, v, _ in rows:
         if re.search(r"駐車", l) and not re.search(r"なし|ありません|^0|ない", v): f.append("駐車場")
-        if re.search(r"支払", l) and re.search(r"カード|クレジット|キャッシュレス", v) and not re.search(r"不可|使えない|できない", v): f.append("カード払い")
         if re.search(r"ほかにしていること|併設", l): f += [x for x in _split_items(v) if 2 <= len(x) <= 8 and not re.search(r"駐車|パーキング|（", x)]
         if _PRICE.search(l): f.append("料金を公開")
     if any(re.search(r"送迎|出張|訪問|お迎え|往診", c) for c in chips): f.append("来てくれる・送迎")
