@@ -451,6 +451,13 @@ def build_card(card, conf, fit_by_name):
     if not take(_AREA, "car"): take(_ADDR, "pin")
     take(_PRICE, "yen"); take(_TIME, "clock")
     if conf["key"] == "hotel": take(re.compile(r"^受け入れの注意$"), "list")
+    # 老犬ホームは見学や預かりの可否、家族が見られるかを変える条件を折りたたまない。
+    care_rows = []
+    if conf["key"] == "rojin":
+        for i, (lab, val, _) in enumerate(rows):
+            if lab in ("大型犬の条件", "予約の条件", "見守りカメラ") or (
+                    lab == "見学・面会" and "所在地" in val and "個別" in val):
+                used.add(i); care_rows.append((lab, val))
     take(_ANIM, "paw")
     if len(pick) < 4: take(_CERT, "badge")
     if conf["key"] == "trainer": take(_CAREER, "clock")
@@ -522,6 +529,8 @@ def build_card(card, conf, fit_by_name):
         body.append(f'<p class="fc-line" title="{html.escape(_short(lab))}">{icon(ic)}<span>{html.escape(v)}</span></p>')
     for ic, lab, val in pick:
         if ic == "yen": body.append(f'<p class="fc-price" title="{html.escape(_short(lab))}">{icon("yen")}<span>{html.escape(val)}</span></p>')
+    for lab, val in care_rows:
+        body.append(f'<p class="fc-line" title="{html.escape(lab)}">{icon("list")}<span>{html.escape(lab)}：{html.escape(val)}</span></p>')
     if meta and meta.get("cremation_summary"):
         summary = html.escape(meta["cremation_summary"])
         body.append(f'<p class="fc-line" title="返骨・立ち会い">{icon("badge")}<span>返骨・立ち会い：{summary}</span></p>')
