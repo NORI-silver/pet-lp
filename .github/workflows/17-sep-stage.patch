@@ -1,0 +1,252 @@
+diff --git a/tools/brand.py b/tools/brand.py
+index 7e1ac1c..e21639e 100644
+--- a/tools/brand.py
++++ b/tools/brand.py
+@@ -13,7 +13,7 @@ import re
+ 
+ # 上の名前の横のメニューも、その分野の人が次に見たいところにする（2026-11-14 Nori「ユーザーのインテントをちゃんと理解してよ」）。
+ # タクシーの「使い方・料金をくらべる・問い合わせる」はタクシーのページだけ。
+-INFO_NAV = ('<nav><a href="/hospital/">動物病院</a><a href="/sougi/">亡くなったら</a><a href="/jichitai/">迷子・登録</a>'
++INFO_NAV = ('<nav><a href="/hospital/">動物病院</a><a href="/sougi/">亡くなったら</a><a href="/jichitai/maigo/">迷子</a><a href="/jichitai/touroku/">犬の登録</a>'
+             '<a href="/pet-hotel/">預け先</a><a href="/dogrun/">ドッグラン</a></nav>\n    <a class="mini" href="/emergency/">緊急のとき</a>')
+ _TAXI_NAV = re.compile(r'<nav><a href="/#how">使い方</a>.*?</nav>\s*<a class="mini" href="/#form">問い合わせる<span class="lg">（無料）</span></a>', re.S)
+ 
+diff --git a/tools/gen_areas.py b/tools/gen_areas.py
+index 9966ac6..5884223 100644
+--- a/tools/gen_areas.py
++++ b/tools/gen_areas.py
+@@ -792,7 +792,7 @@ PARTNER_BAND = '''<aside class="partner-band"><div class="wrap"><p><b>ペット
+ def foot(cta_href, band=True):
+     return (PARTNER_BAND if band else '') + f'''<footer>
+   <div class="wrap">
+-    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/">迷子・犬の登録の窓口</a><a href="/dogrun/">全国のドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/trimming/">出張トリミング</a><a href="/pet-hotel/">ペットホテル</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/about/">運営者と掲載の基準</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
++    <nav><a href="/">トップ</a><a href="/#how">使い方</a><a href="/#price">料金の目安</a><a href="/guide/">ペットの移動ガイド</a><a href="/#faq">よくある質問</a><a href="/emergency/">緊急のときの連絡先</a><a href="/hospital/">条件でさがす動物病院</a><a href="/jichitai/maigo/">迷子</a><a href="/jichitai/touroku/">犬の登録</a><a href="/dogrun/">全国のドッグラン</a><a href="/rojin-home/">老犬ホーム・老猫ホーム</a><a href="/dog-trainer/">ドッグトレーナー・しつけ教室</a><a href="/pet-sitter/">ペットシッター</a><a href="/trimming/">出張トリミング</a><a href="/pet-hotel/">ペットホテル</a><a href="/sougi/">ペットが亡くなったら</a><a href="/area/">全国のペットタクシー情報</a><a href="/#policy">キャンセルについて</a><a href="/#privacy">個人情報の取り扱い</a><a href="/terms/">利用規約</a><a href="/about/">運営者と掲載の基準</a><a href="/contact/">お問い合わせ</a><a href="/partner/">提携をご希望の会社さま</a></nav>
+     <nav><a href="/area/">全国</a>{''.join(f'<a href="/{a["slug"]}/">{e(a["short"])}</a>' for a in AREAS)}</nav>
+     <p>ペットタクシー予約窓口</p>
+     <p>&copy; 2026 ペットタクシー予約窓口</p>
+diff --git a/tools/gen_jichitai.py b/tools/gen_jichitai.py
+index 4220382..92ac890 100644
+--- a/tools/gen_jichitai.py
++++ b/tools/gen_jichitai.py
+@@ -75,7 +75,7 @@ CSS = ("<style>.jc-hub:not(.on) .emg-pref,.jc-hub:not(.on) .emg-region{display:n
+  ".jc-br .t.c2{background:#2b211b}"
+  ".jc-find{display:flex;gap:6px;margin:10px 0 0}.jc-find input{flex:1;min-width:0;padding:10px 12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
+  ".jc-ans{margin:8px 0 0;font-size:.92rem;color:#2b211b}.jc-ans:empty{display:none}.jc-ans button{margin:4px 4px 0 0;padding:8px 12px;border:1px solid #c2410c;border-radius:999px;background:#fff;color:#c2410c;font-weight:700;font-size:.9rem}"
+- ".jc-pick{display:grid;gap:8px;margin:0 0 6px}.jc-pk{display:block;background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px;text-decoration:none;color:#2b2622}.jc-pk b{display:block;font-size:1.05rem}.jc-pk span{display:block;font-size:.85rem;color:#4a3d34;line-height:1.55;margin-top:2px}.jc-pk.u{background:#c2410c;border-color:#c2410c;color:#fff}.jc-pk.u span{color:#fff}.jc-pk{position:relative;padding-right:34px}.jc-pk::after{content:'›';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.4rem}.jc-pq{font-size:1rem;font-weight:800;margin:4px 0 8px;color:#2b2622}"
++ ".jc-pick{display:grid;gap:8px;margin:0 0 6px}.jc-pk{display:block;background:#fff;border:1px solid #efe0d3;border-radius:14px;padding:12px 14px;text-decoration:none;color:#2b2622}.jc-pk b{display:block;font-size:1.05rem}.jc-pk span{display:block;font-size:.85rem;color:#4a3d34;line-height:1.55;margin-top:2px}.jc-pk.u{background:#c2410c;border-color:#c2410c;color:#fff}.jc-pk.u span{color:#fff}.jc-pk{position:relative;padding-right:34px}.jc-pk::after{content:'›';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.4rem}.jc-enb{margin:0 0 14px}.jc-enb h3{font-size:1.05rem;margin:0 0 2px}.jc-enb>p{font-size:.88rem;color:#4a3d34;margin:0 0 8px}.jc-pq{font-size:1rem;font-weight:800;margin:4px 0 8px;color:#2b2622}"
+  ".jc-q1{background:#fff;border:2px solid #c2410c;border-radius:16px;padding:12px 14px;margin:6px 0 10px}.jc-q1 label{display:flex;gap:6px;align-items:center;font-weight:700;margin:0 0 6px}.jc-sub{margin:0 0 8px;font-size:.84rem;color:#4a3d34;line-height:1.6}.jc-q1 input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
+  ".jc-card{background:#fff;border:1px solid #f1e3d6;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}"
+  ".jc-card.hit,.cs.jc-card.hit{border:2px solid #c2410c}"
+@@ -229,13 +229,22 @@ def render(ctx):
+ </section>
+ <section style="padding-top:0">
+   <div class="wrap">
+-    <h2 class="jc-pq">あてはまる状況を選んでください</h2>
+-    <div class="jc-pick">
+-      <a class="jc-pk u" href="/jichitai/maigo/"><b>うちの子が迷子になった</b><span>まず何をするか・届け先・チラシ</span></a>
+-      <a class="jc-pk" href="/jichitai/maigo/#pro"><b>ペット探偵を探す</b><span>民間の捜索サービスと料金を比較</span></a>
+-      <a class="jc-pk" href="/jichitai/maigo/#found"><b>迷子の子を見つけた・保護した</b><span>どこに届けるか</span></a>
+-      <a class="jc-pk" href="/jichitai/touroku/"><b>犬を迎えた（登録・予防注射）</b><span>いつまでに・どこで・いくら</span></a>
+-      <a class="jc-pk" href="/jichitai/tebanasu/"><b>飼い続けるのが難しくなった</b><span>手放す前にできること</span></a>
++    <h2 class="jc-pq">目的を選んでください。それぞれ、地域と条件を選んで探せます</h2>
++    <div class="jc-ent">
++      <div class="jc-enb"><h3>迷子</h3><p>いなくなった市区町村を入れると、届け先と今日やることが出ます。</p>
++        <div class="jc-pick">
++          <a class="jc-pk u" href="/jichitai/maigo/"><b>迷子を探す・届け出る</b><span>市区町村・状況を選ぶ。届け先・チラシ</span></a>
++          <a class="jc-pk" href="/jichitai/maigo/#pro"><b>ペット探偵を探す</b><span>民間の捜索サービスと料金を比較</span></a>
++          <a class="jc-pk" href="/jichitai/maigo/#found"><b>迷子の子を見つけた・保護した</b><span>どこに届けるか</span></a>
++        </div></div>
++      <div class="jc-enb"><h3>犬の登録・予防注射</h3><p>市区町村と迎えた日で、期限と窓口が出ます。</p>
++        <div class="jc-pick">
++          <a class="jc-pk u" href="/jichitai/touroku/"><b>登録・予防注射の期限と窓口</b><span>市区町村・迎え方を選ぶ。いつまでに・どこで・いくら</span></a>
++        </div></div>
++      <div class="jc-enb"><h3>飼い続けるのが難しいとき</h3>
++        <div class="jc-pick">
++          <a class="jc-pk" href="/jichitai/tebanasu/"><b>手放す前にできること</b><span>相談先と、引き取りの前に考えること</span></a>
++        </div></div>
+     </div>
+   </div>
+ </section>
+diff --git a/tools/gen_maigo.py b/tools/gen_maigo.py
+index b28f55c..3ea01dc 100644
+--- a/tools/gen_maigo.py
++++ b/tools/gen_maigo.py
+@@ -133,7 +133,11 @@ def data(ROOT, pref_slug):
+ 
+ 
+ # ---------- 見た目（共通のカード .cs は cardskin.py。ここは手順の線・チェック・チラシ） ----------
+-CSS = ("<style>"
++FORM_JS = '''<script>(function(){var b=document.getElementById('jcGo');if(!b)return;var g=[].slice.call(document.querySelectorAll('.jcf [data-nb]'));
++function set(x){g.forEach(function(y){y.setAttribute('aria-pressed',y===x?'true':'false')});var n=document.getElementById('jcNone');if(n)n.setAttribute('aria-pressed',x?'false':'true');var v=document.querySelector('.jc-vs');if(v&&x&&x.getAttribute('data-vs')){[].forEach.call(v.children,function(c,k){c.style.display=(String(k)===x.getAttribute('data-vs'))?'':'none'})}else if(v){[].forEach.call(v.children,function(c){c.style.display=''})}}
++g.forEach(function(x){x.addEventListener('click',function(e){var on=x.getAttribute('aria-pressed')==='true';if(x.tagName==='A')e.preventDefault();set(on?null:x)})});var n=document.getElementById('jcNone');if(n)n.onclick=function(){set(null)};
++b.onclick=function(){var x=g.filter(function(y){return y.getAttribute('aria-pressed')==='true'})[0];var t=document.getElementById(x?(x.getAttribute('data-to')||'jcR'):(b.getAttribute('data-def')||'jcR'));if(t){if(t.tagName==='DETAILS')t.open=true;t.scrollIntoView({behavior:'smooth',block:'start'});try{t.focus({preventScroll:true})}catch(e){}}}})();</script>'''
++CSS = ("<style>.jcf{background:#fff;border:1px solid #efe0d3;border-radius:18px;padding:14px 14px 12px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin:4px 0 14px}.jcf-r{padding:8px 0;border-top:1px solid #f5ebe2}.jcf-r:first-child{border-top:0;padding-top:0}.jcf-l{display:block;font-weight:800;font-size:.95rem;margin:0 0 6px;color:#2b2622}.jcf .jc-q1{border:0;padding:0;margin:0;background:none}.jcf-need{display:grid;grid-template-columns:1fr 1fr;gap:8px}.jc-nb{display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid #e3d3c6;background:#fff;border-radius:12px;padding:10px 8px;font-size:.92rem;font-weight:700;line-height:1.35;color:#3c2f26;text-decoration:none;cursor:pointer;min-height:48px;font-family:inherit}.jc-nb[aria-pressed=true]{background:#e8590c;border-color:#e8590c;color:#fff}.jcf-det{border-top:1px solid #f5ebe2;padding-top:8px;margin-top:2px}.jcf-det>summary{cursor:pointer;font-weight:800;padding:6px 0}.jcf-go{display:block;width:100%;margin:10px 0 2px;border:0;border-radius:999px;background:#2b2622;color:#fff;font-weight:800;font-size:1rem;padding:13px;cursor:pointer;font-family:inherit}.jcf .jc-ff{margin:0}.jcf select{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #d9c9bb;border-radius:12px;font-size:1rem;background:#fff;margin:0 0 8px;font-family:inherit}"
+  ".jc-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:4px 0 8px}.jc-actions a{display:flex;flex-direction:column;justify-content:center;min-height:64px;padding:8px 5px;text-align:center;border:1px solid #d9c9bb;border-radius:12px;color:#2b2622;background:#fff;text-decoration:none;line-height:1.3;overflow-wrap:anywhere}.jc-actions a.jc-primary{background:#a9390b;color:#fff;border-color:#a9390b}.jc-actions b{font-size:clamp(.8rem,3.4vw,1rem)}.jc-actions small{font-size:.72rem;margin-top:4px}.jc-short{display:flex;flex-wrap:wrap;gap:0 14px;align-items:center;margin-bottom:10px}.jc-short a{display:inline-flex;align-items:center;min-height:44px;font-size:.9rem}.jc-panel,#pro,#found,#jcFly{scroll-margin-top:90px}.jc-panel{margin-bottom:16px}.jc-panel h2{font-size:1.15rem;margin:0 0 7px}.jc-intro{font-size:.88rem;margin:0 0 7px;color:#4a3d34}.jc-local h3{font-size:.97rem;margin:10px 0 4px}.jc-local ul{margin:4px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.jc-local a{display:flex;align-items:center;min-height:44px;line-height:1.35;padding:6px 8px;border:1px solid #e5d5c8;border-radius:8px;font-size:.85rem;overflow-wrap:anywhere}.jc-local small{display:block;margin-top:6px}.jc-an-label{font-size:.85rem;margin:10px 0 0}.jc-an-label+.jc-an{margin-top:4px}@media(max-width:639px){.jc-maigo-hero{padding-top:10px;padding-bottom:10px}.jc-maigo-hero .crumb{margin-top:0;margin-bottom:4px}.jc-maigo-hero h1{margin:3px 0 6px}.jc-panel{margin-bottom:12px}.jc-short{margin-bottom:4px}}@media(min-width:640px){.jc-actions a{min-height:72px;padding:10px}.jc-actions small{font-size:.85rem}.jc-local ul{grid-template-columns:repeat(3,minmax(0,1fr))}}"
+  ".jc-3{list-style:none;margin:4px 0 10px;padding:12px 14px;background:#fff;border:1px solid #efe0d3;border-radius:16px;display:grid;gap:8px}"
+  ".jc-3 li{display:flex;gap:10px;align-items:center;font-size:1rem;line-height:1.45;font-weight:700;color:#2b2622}"
+@@ -142,7 +146,7 @@ CSS = ("<style>"
+  ".jc-q1{background:#fff;border:2px solid #c2410c;border-radius:16px;padding:12px 14px;margin:6px 0 12px}"
+  ".jc-q1 label{display:block;font-weight:800;margin:0 0 6px}.jc-q1 input[type=text]{width:100%;box-sizing:border-box;padding:12px;border:1px solid #e5d5c8;border-radius:10px;font-size:1rem}"
+  ".jc-sgl{flex:0 0 100%;font-size:.8rem;font-weight:800;color:#5a4a3f;margin-top:4px}"
+- ".jc-sg{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}.jc-sg:empty{display:none}.jc-sg button{padding:8px 12px;border:1px solid #c2410c;border-radius:999px;background:#fff;color:#c2410c;font-weight:700;font-size:.9rem}"
++ ".jc-det{margin:10px 0 0}.jc-det>summary{cursor:pointer;font-weight:800;padding:10px 12px;border:1px solid #d9c9bb;border-radius:12px;background:#fff7f0}.jc-det[open]>summary{margin-bottom:6px}.jc-sg{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}.jc-sg:empty{display:none}.jc-sg button{padding:8px 12px;border:1px solid #c2410c;border-radius:999px;background:#fff;color:#c2410c;font-weight:700;font-size:.9rem}"
+  ".jc-an{display:flex;gap:8px;margin:10px 0 0}.jc-an button{flex:1;padding:10px;border:1px solid #d9c9bb;border-radius:12px;background:#fff;font-weight:800;font-size:.95rem;color:#2b2622}.jc-an button[aria-pressed=true]{background:#2b2622;color:#fff;border-color:#2b2622}"
+  ".jc-hd{font-size:.95rem;margin:10px 0 0;color:#2b2622}.jc-hd b{color:#c2410c}"
+  ".jc-tl{list-style:none;margin:8px 0 0;padding:0;border-left:3px solid #f3d3bd;margin-left:9px}"
+@@ -191,7 +195,9 @@ def _ask(kind, label, ph, animal=False):
+     an = ('<p class="jc-an-label" aria-hidden="true">さがしているのは？</p><div class="jc-an" role="group" aria-label="どの子？"><button type="button" data-an="dog" aria-pressed="true">犬</button>'
+           '<button type="button" data-an="cat" aria-pressed="false">猫</button></div>') if animal else ""
+     local = '<div id="jcLocal" class="jc-local" aria-live="polite" hidden></div>' if kind == "maigo" else ""
+-    return (f'<div class="jc-q1" data-jc="{kind}"><label for="jcQ">{label}</label>'
++    opts = "".join(f'<option>{p["pref"]}</option>' for p in J["prefs"])
++    return (f'<div class="jc-q1" data-jc="{kind}"><label for="jcP">都道府県</label>'
++            f'<select id="jcP"><option value="">すべての都道府県</option>{opts}</select><label for="jcQ">{label}</label>'
+             f'<input id="jcQ" type="text" placeholder="{ph}" autocomplete="address-level2" enterkeyhint="search">'
+             f'<div class="jc-sg" id="jcS" aria-live="polite"></div>{an}<p class="jc-hd" id="jcH" hidden></p>{local}</div>')
+ 
+@@ -227,12 +233,10 @@ def maigo(ctx):
+         f'<tr data-det="{e(d["flags"])}"><th><a href="{e(d.get("price_url") or d["url"])}" target="_blank" rel="noopener">{e(d["name"])}</a>{("<br>" + d["review_html"]) if d["review_html"] else ""}</th>'
+         f'<td>{e(d["plan"])}' + (f'<br><small>{e(d["animals"])}</small>' if d["animals"] else "") + '</td>'
+         f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + (f'<br><small><b>捜索方法：</b>{e(d["methods"])}</small>' if d["methods"] else '') + '</td></tr>' for d in dets)
+-    det_tbl = ('<div class="jc-sg" role="group" aria-label="ペット探偵の絞り込み"><span class="jc-sgl">どの子</span><button type="button" data-detf="dg" aria-pressed="false">犬と書いてある</button><button type="button" data-detf="ct" aria-pressed="false">猫と書いてある</button><button type="button" data-detf="ex" aria-pressed="false">鳥・小動物・爬虫類と書いてある</button>'
+-               '<span class="jc-sgl">範囲</span><button type="button" data-detf="z" aria-pressed="false">全国対応</button><button type="button" data-detf="n" aria-pressed="false" title="上で県を選ぶと使えます。会社の記載による。出張費は各社の欄で確認">選んだ県が主な対応地域の会社</button>'
+-               '<span class="jc-sgl">料金</span><button type="button" data-detf="p" aria-pressed="false">料金が分かる</button><button type="button" data-detf="cx" aria-pressed="false">キャンセルの条件が書いてある</button><button type="button" data-detf="ef" aria-pressed="false">別途費用の記載がある</button>'
+-               + '<span class="jc-sgl">捜索方法</span>' + "".join(f'<button type="button" data-detf="{k}" aria-pressed="false">{e(v[0])}</button>' for k, v in _mf.METHODS.items() if any(k in d["flags"].split() for d in dets))
+-               +
+-               '<span class="jc-sgl">そのほか</span><button type="button" data-detf="un" aria-pressed="false" title="犬・猫・鳥などを選んだときだけ使えます">動物の記載がない事業者も含める</button></div>'
++    det_tbl = ('<div class="jc-sg" role="group" aria-label="ペット探偵の絞り込み"><span class="jc-sgl">どの子</span><button type="button" data-detf="dg" aria-pressed="false">犬と書いてある</button><button type="button" data-detf="ct" aria-pressed="false">猫と書いてある</button><span class="jc-sgl">よく使用される項目</span><button type="button" data-detf="z" aria-pressed="false">全国対応</button><button type="button" data-detf="p" aria-pressed="false">料金が分かる</button></div>'
++               '<details class="jc-det"><summary>詳しい条件で絞り込む</summary><div class="jc-sg" role="group" aria-label="ペット探偵の詳しい条件"><span class="jc-sgl">受ける動物</span><button type="button" data-detf="ex" aria-pressed="false">鳥・小動物・爬虫類と書いてある</button><button type="button" data-detf="un" aria-pressed="false" title="犬・猫・鳥などを選んだときだけ使えます">動物の記載がない事業者も含める</button><span class="jc-sgl">地域</span><button type="button" data-detf="n" aria-pressed="false" title="上で県を選ぶと使えます。会社の記載による。出張費は各社の欄で確認">選んだ県が主な対応地域の会社</button><span class="jc-sgl">料金の書き方</span><button type="button" data-detf="cx" aria-pressed="false">キャンセルの条件が書いてある</button><button type="button" data-detf="ef" aria-pressed="false">別途費用の記載がある</button>'
++               + ('<span class="jc-sgl">捜索方法</span>' + "".join(f'<button type="button" data-detf="{k}" aria-pressed="false">{e(v[0])}</button>' for k, v in _mf.METHODS.items() if any(k in d["flags"].split() for d in dets))) +
++               '</div></details>'
+ 
+                f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域・捜索方法</th></tr></thead><tbody>{det_rows}</tbody></table></div>'
+                f'<p class="jc-src">金額は税込（税別・税の記載がない会社は印つき）。各社の公式サイトの掲載情報をもとに、最低料金は「〜」で表示しています。順番に意味はありません。発見率など会社の発表の数字は、くらべ方がそろっていないので載せていません。</p>') if dets else ""
+@@ -250,11 +254,18 @@ def maigo(ctx):
+ </section>
+ <section style="padding-top:4px">
+   <div class="wrap">
+-    <nav class="jc-actions" aria-label="迷子のときにできること">
+-      <a class="jc-primary" href="#first"><b>まず何をするか</b><small>今日やることを確認</small></a>
+-      <a href="#report"><b>地域の届け先</b><small>市区町村から調べる</small></a>
+-      <a href="#pro"><b>ペット探偵</b><small>民間の捜索・料金を比較</small></a>
+-    </nav>
++    <div class="jcf">
++      <div class="jcf-r"><span class="jcf-l">どこで探しますか？</span>
++    {_ask("maigo", "いなくなった場所の市区町村", "例：佐倉市・世田谷区", True)}</div>
++      <div class="jcf-r"><span class="jcf-l">どんな状況ですか？</span>
++        <div class="jcf-need" role="group" aria-label="状況">
++          <a class="jc-nb" data-nb data-to="first" href="#first" aria-pressed="false">うちの子が迷子になった（今日やること）</a>
++          <a class="jc-nb" data-nb data-to="report" href="#report" aria-pressed="false">地域の届け先を調べる</a>
++          <a class="jc-nb" data-nb data-to="pro" href="#pro" aria-pressed="false">ペット探偵を探す</a>
++          <a class="jc-nb" data-nb data-to="found" href="#found" aria-pressed="false">迷子の子を見つけた・保護した</a>
++        </div></div>
++      <button type="button" class="jcf-go" id="jcGo" data-def="report">この条件で探す</button>
++    </div>
+     <div class="jc-short"><a href="#jcFly">チラシを作る</a><a href="#found">迷子の子を保護した方へ</a></div>
+     <div class="jc-panel" id="first" tabindex="-1">
+       <h2>まず、この3つ</h2>
+@@ -262,8 +273,7 @@ def maigo(ctx):
+     </div>
+     <div class="jc-panel" id="report" tabindex="-1">
+       <h2>地域の届け先を調べる</h2>
+-      <p class="jc-intro">いなくなった市区町村を選んでください。</p>
+-    {_ask("maigo", "いなくなった場所の市区町村", "例：佐倉市・世田谷区", True)}
++      <p class="jc-intro">上の「どこで探しますか？」で選んだ市区町村の届け先が、ここに出ます。</p>
+     </div>
+     <h2>捜索と届け出のチェックリスト</h2>
+     <div id="jcR" class="jc-dog">
+@@ -342,7 +352,7 @@ def maigo(ctx):
+ <div id="jcPrint" aria-hidden="true"></div>
+ </main>
+ """
+-    return ctx["head"](title, desc, url, _ld(SITE, url, "迷子になったら", MAIGO_FAQ)).replace("</head>", CSS + "</head>", 1) + body + '<script src="/jichitai/jc.js" defer></script>\n' + ctx["foot_noband"]()
++    return ctx["head"](title, desc, url, _ld(SITE, url, "迷子になったら", MAIGO_FAQ)).replace("</head>", CSS + "</head>", 1) + body + '<script src="/jichitai/jc.js" defer></script>\n' + FORM_JS + ctx["foot_noband"]()
+ 
+ 
+ # ============ 犬の登録 ============
+@@ -371,13 +381,25 @@ def touroku(ctx):
+ <section style="padding-top:4px">
+   <div class="wrap">
+     {_three("やることは3つ", [("30日以内に、市区町村で登録する", "一生に1回。主な市は3,000円"), ("毎年4〜6月に、狂犬病の予防注射", "動物病院か、市区町村の集合注射で"), ("もらった鑑札と注射済票を首輪につける", "迷子のとき、飼い主が分かります")])}
+-    {_ask("touroku", "住んでいる市区町村", "例：佐倉市・世田谷区")}
+-    <div class="jc-q1" style="border-width:1px"><div class="jc-ff" style="margin:0"><label>迎えた日<input id="jcD" type="date"></label><label>生まれた日（生後90日より前に迎えたときだけ）<input id="jcB" type="date"></label></div>
++    <div class="jcf">
++      <div class="jcf-r"><span class="jcf-l">どこで探しますか？</span>
++    {_ask("touroku", "住んでいる市区町村", "例：佐倉市・世田谷区")}</div>
++      <div class="jcf-r"><span class="jcf-l">どこから迎えましたか？</span>
++        <div class="jcf-need" role="group" aria-label="迎え方">
++          <button type="button" class="jc-nb" data-nb data-vs="0" data-to="jcVs" aria-pressed="false">ペットショップ・ブリーダー</button>
++          <button type="button" class="jc-nb" data-nb data-vs="1" data-to="jcVs" aria-pressed="false">保護犬・知人から</button>
++          <button type="button" class="jc-nb" id="jcNone" aria-pressed="true">指定なし</button>
++        </div></div>
++      <details class="jcf-det" id="jcDet"><summary>詳しい条件で絞り込む（期限を知りたいとき）</summary>
++      <div class="jc-q1" style="border-width:1px"><div class="jc-ff" style="margin:0"><label>迎えた日<input id="jcD" type="date"></label><label>生まれた日（生後90日より前に迎えたときだけ）<input id="jcB" type="date"></label></div>
+       <p class="jc-due" id="jcDue" aria-live="polite"></p></div>
++      </details>
++      <button type="button" class="jcf-go" id="jcGo" data-def="jcR">この条件で探す</button>
++    </div>
+     <div id="jcR">
+     <ol class="jc-tl">
+       <li><span class="jc-when">まず確かめる</span><h3>どこから迎えた？で、やることが変わる</h3>
+-        <div class="jc-vs"><div><h4>ペットショップ・ブリーダー</h4><ul><li>マイクロチップが入っている（2022年6月から義務）</li><li>環境省の登録の飼い主の変更をする</li><li>市区町村が特例に参加していれば、窓口の登録はいらない</li></ul></div>
++        <div class="jc-vs" id="jcVs" tabindex="-1"><div><h4>ペットショップ・ブリーダー</h4><ul><li>マイクロチップが入っている（2022年6月から義務）</li><li>環境省の登録の飼い主の変更をする</li><li>市区町村が特例に参加していれば、窓口の登録はいらない</li></ul></div>
+         <div><h4>保護犬・知人から</h4><ul><li>チップが入っていないこともある</li><li>前の飼い主の鑑札があれば、新しい市区町村に届け出</li><li>なければ市区町村の窓口で新しく登録</li></ul></div></div></li>
+       <li><span class="jc-when">30日以内</span><h3>市区町村で登録して、鑑札をもらう</h3>
+         <ul class="jc-ck">
+@@ -407,7 +429,7 @@ def touroku(ctx):
+ </section>
+ </main>
+ """
+-    return ctx["head"](title, desc, url, _ld(SITE, url, "犬の登録と予防注射", TOUROKU_FAQ)).replace("</head>", CSS + "</head>", 1) + body + '<script src="/jichitai/jc.js" defer></script>\n' + ctx["foot_noband"]()
++    return ctx["head"](title, desc, url, _ld(SITE, url, "犬の登録と予防注射", TOUROKU_FAQ)).replace("</head>", CSS + "</head>", 1) + body + '<script src="/jichitai/jc.js" defer></script>\n' + FORM_JS + ctx["foot_noband"]()
+ 
+ 
+ # ============ 飼えなくなったとき ============
+diff --git a/tools/jichitai.js b/tools/jichitai.js
+index 5ea0360..f265883 100644
+--- a/tools/jichitai.js
++++ b/tools/jichitai.js
+@@ -11,15 +11,15 @@ function a(u,t,l){if(!u)return'';var ext=/^https?:/.test(u);return'<a'+(l?' clas
+ function slot(n,html){var el=document.querySelector('[data-slot="'+n+'"]');if(el&&html!=null)el.innerHTML=html}
+ function txt(n,s){var el=document.querySelector('[data-slot="'+n+'-t"]');if(el&&s)el.innerHTML=s}
+ function kata(s){return s.replace(/[ァ-ヶ]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-96)})}
+-function find(v){v=v.replace(/[\s　]/g,'');if(!v)return[];var h=[],kv=kata(v);
+- D.m.forEach(function(m){var full=m[0]+m[1];if(m[1]===v||full===v||m[1].indexOf(v)===0||full.indexOf(v)===0||(v.length>=2&&m[2]&&m[2].indexOf(kv)===0))h.push(m)});
++function find(v){v=v.replace(/[\s　]/g,'');var PS=document.getElementById('jcP'),pv=PS?PS.value:'';if(!v)return pv?D.m.filter(function(m){return m[0]===pv}):[];var h=[],kv=kata(v);
++ D.m.forEach(function(m){if(pv&&m[0]!==pv)return;var full=m[0]+m[1];if(m[1]===v||full===v||m[1].indexOf(v)===0||full.indexOf(v)===0||(v.length>=2&&m[2]&&m[2].indexOf(kv)===0))h.push(m)});
+  var ex=h.filter(function(m){return m[1]===v||m[0]+m[1]===v});return ex.length===1?ex:h}
+-function sug(){var v=Q.value;if(!v.trim()){S.innerHTML='';return}load(function(){if(Q.value!==v)return;var h=find(v);
+- if(h.length===1&&(h[0][1]===v.replace(/[\s　]/g,'')||h[0][0]+h[0][1]===v.replace(/[\s　]/g,'')))return pick(h[0]);
+- S.innerHTML=h.length?h.slice(0,8).map(function(m,i){return'<button type="button" data-i="'+i+'">'+esc(m[0]+m[1])+'</button>'}).join('')+(h.length>8?'<span class="jc-src">続けて入れるとしぼれます</span>':''):'<span class="jc-src">見つかりません。市区町村の名前で入れてください（例：佐倉市）</span>';
++function sug(){var v=Q.value;var PS=document.getElementById('jcP');if(!v.trim()&&!(PS&&PS.value)){S.innerHTML='';return}load(function(){if(Q.value!==v)return;var h=find(v);if(!v.trim()){S.innerHTML=h.slice(0,12).map(function(m,i){return'<button type="button" data-i="'+i+'">'+esc(m[1])+'</button>'}).join('')+(h.length>12?'<span class="jc-src">続けて市区町村を入れるとしぼれます</span>':'');S.querySelectorAll('button').forEach(function(b){b.onclick=function(){pick(h[+b.getAttribute('data-i')])}});return}
++ var WD=!(PS&&PS.value)&&/区$/.test(v.replace(/[\s　]/g,''));if(!WD&&h.length===1&&(h[0][1]===v.replace(/[\s　]/g,'')||h[0][0]+h[0][1]===v.replace(/[\s　]/g,'')))return pick(h[0]);
++ S.innerHTML=(h.length?h.slice(0,8).map(function(m,i){return'<button type="button" data-i="'+i+'">'+esc(m[0]+m[1])+'</button>'}).join('')+(h.length>8?'<span class="jc-src">続けて入れるとしぼれます</span>':''):'<span class="jc-src">見つかりません。市区町村の名前で入れてください（例：佐倉市）</span>')+(WD?'<span class="jc-src">同じ名前の区が、ほかの市にもあります。政令指定都市（大阪市・横浜市など）の区は、市の名前（例：大阪市）で選んでください。</span>':'');
+  S.querySelectorAll('button').forEach(function(b){b.onclick=function(){pick(h[+b.getAttribute('data-i')])}})})}
+ function card(c,sub){if(!c)return'';return'<div class="jc-card cs" style="margin:8px 0 0;width:100%"><b class="ux-c-n">'+esc(c[0])+'</b><p class="ux-c-m">'+esc(sub)+'</p><div class="ux-c-a">'+a(c[1],'公式ページ')+(c[2]?a(c[2],'保護情報',1):a('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(c[0]),'地図を見る',1))+'</div></div>'}
+-function pick(m){S.innerHTML='';Q.value=m[1];ls('jcMuni',m[0]+'|'+m[1]);var P=D.p[m[0]]||{},c=D.c[m[4]],city=m[1],pf=m[0];
++function pick(m){S.innerHTML='';Q.value=m[1];var PS1=document.getElementById('jcP');if(PS1)PS1.value=m[0];ls('jcMuni',m[0]+'|'+m[1]);var P=D.p[m[0]]||{},c=D.c[m[4]],city=m[1],pf=m[0];
+  H.hidden=false;
+  if(K==='maigo'){H.innerHTML='<b>'+esc(pf+city)+'</b>を選択中';
+   var loc=document.getElementById('jcLocal');
+@@ -60,6 +60,7 @@ an.forEach(function(b){b.onclick=function(){setAn(b.getAttribute('data-an'));ev(
+ var ck={};try{ck=JSON.parse(ls('jcCk:'+K)||'{}')}catch(e){}
+ document.querySelectorAll('.jc-ck>li[data-ck]').forEach(function(li){var k=li.getAttribute('data-ck')+(li.getAttribute('data-a')||''),i=li.querySelector('input');if(!i)return;i.checked=!!ck[k];li.classList.toggle('done',i.checked);
+  i.onchange=function(){ck[k]=i.checked?1:0;li.classList.toggle('done',i.checked);ls('jcCk:'+K,JSON.stringify(ck))}});
++var PS0=document.getElementById('jcP');if(PS0)PS0.addEventListener('change',function(){Q.value='';H.hidden=true;var loc=document.getElementById('jcLocal');if(loc)loc.hidden=true;sug()});
+ Q.addEventListener('input',function(){var loc=document.getElementById('jcLocal');if(loc){loc.hidden=true} sug()});
+ if(K==='maigo'){var flyer=document.getElementById('jcFly');function openFlyer(){if(location.hash==='#jcFly'&&flyer)flyer.open=true}window.addEventListener('hashchange',openFlyer);openFlyer()}Q.addEventListener('focus',function(){load(function(){})},{once:true});
+ var last=ls('jcMuni');if(last){var p=last.split('|');load(function(){var h=D.m.filter(function(m){return m[0]===p[0]&&m[1]===p[1]});if(h.length&&!Q.value.trim())pick(h[0])})}
+diff --git a/tools/portal.py b/tools/portal.py
+index 239cd99..bbef966 100644
+--- a/tools/portal.py
++++ b/tools/portal.py
+@@ -27,7 +27,8 @@ CATBAR = [
+     ("犬と泊まれる宿", "/inu-yado/"),
+     ("犬と入れるカフェ", "/inu-cafe/"),
+     ("里親・譲渡", "/joto/"),
+-    ("迷子・登録", "/jichitai/"),
++    ("迷子", "/jichitai/maigo/"),
++    ("犬の登録", "/jichitai/touroku/"),
+     ("ペットと避難", "/hinan/"),
+     ("亡くなったら", "/sougi/"),
+     ("ガイド", "/guide/"),
