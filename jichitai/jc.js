@@ -19,12 +19,26 @@ function sug(){var v=Q.value;var PS=document.getElementById('jcP');if(!v.trim()&
  S.innerHTML=(h.length?h.slice(0,8).map(function(m,i){return'<button type="button" data-i="'+i+'">'+esc(m[0]+m[1])+'</button>'}).join('')+(h.length>8?'<span class="jc-src">続けて入れるとしぼれます</span>':''):'<span class="jc-src">見つかりません。市区町村の名前で入れてください（例：佐倉市）</span>')+(WD?'<span class="jc-src">同じ名前の区が、ほかの市にもあります。政令指定都市（大阪市・横浜市など）の区は、市の名前（例：大阪市）で選んでください。</span>':'');
  S.querySelectorAll('button').forEach(function(b){b.onclick=function(){pick(h[+b.getAttribute('data-i')])}})})}
 function card(c,sub){if(!c)return'';return'<div class="jc-card cs" style="margin:8px 0 0;width:100%"><b class="ux-c-n">'+esc(c[0])+'</b><p class="ux-c-m">'+esc(sub)+'</p><div class="ux-c-a">'+a(c[1],'公式ページ')+(c[2]?a(c[2],'保護情報',1):a('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(c[0]),'地図を見る',1))+'</div></div>'}
+/* 結果（フォームのすぐ下）：届け先のカードと、来てくれるペット探偵のカード。件数は実際に出ているカードの数 */
+var RH=document.getElementById('jcRH'),RH0=RH?RH.textContent:'',RC=document.getElementById('jcRC'),RS={t:'',n:0},DA=false;
+function rcard(k,n,sub,links,cl){var x=cl&&sub.length>70;return'<div class="jc-card cs"><span class="jc-k">'+esc(k)+'</span><b class="ux-c-n">'+esc(n)+'</b>'+(sub?'<p class="ux-c-m'+(x?' jc-cl':'')+'">'+esc(sub)+'</p>'+(x?'<button type="button" class="jc-x" aria-expanded="false">料金・条件をすべて見る</button>':''):'')+'<div class="ux-c-a">'+links+'</div></div>'}
+function resHead(vis){if(!RH)return;if(!RS.t){RH.textContent=RH0;return}RH.textContent=RS.t+RS.n+'件'+(vis==null?'':'・来てくれるペット探偵 '+vis+'社')}
+function resSet(t,html,n){RS.t=t;RS.n=n;if(RC)RC.innerHTML=html;detCards()}
+function resReset(){RS.t='';RS.n=0;if(RC)RC.innerHTML='';detCards()}
+function detCards(){var out=document.getElementById('jcRD'),el=document.getElementById('jcPro');if(!out||!el){resHead(null);return}var rows=[].filter.call(el.querySelectorAll('tbody tr'),function(r){return r.style.display!=='none'}),h='',lim=DA?rows.length:5;
+ rows.slice(0,lim).forEach(function(r){var l=r.querySelector('th a'),td=r.querySelectorAll('td'),f=function(c){return c&&c.firstChild?c.firstChild.textContent.trim():''};if(l)h+=rcard('ペット探偵',l.textContent,'料金：'+f(td[0])+'　対応地域：'+f(td[1]),a(l.getAttribute('href'),'公式サイトで料金を見る'),1)});
+ if(!rows.length)h='<p class="jc-src">この条件に合う会社は見つかりませんでした。条件を減らしてみてください。</p>';
+ else if(rows.length>5)h+='<button type="button" class="jc-more" data-all="1">'+(DA?'最初の5社だけにする':'のこり'+(rows.length-5)+'社も、ここに出す')+'</button>';
+ out.innerHTML=h;var nn=document.getElementById('jcRN'),kk=document.getElementById('jcRK');if(nn)nn.textContent='（'+rows.length+'社）';if(kk)kk.textContent=rows.length?rows.length+'社のうち'+Math.min(lim,rows.length)+'社を表示中。比べやすい一覧表は、このページの下にもあります。':'';resHead(rows.length)}
+document.addEventListener('click',function(e){var t=e.target;if(t.classList&&t.classList.contains('jc-more')){DA=!DA;detCards()}else if(t.classList&&t.classList.contains('jc-x')){var p=t.previousElementSibling,o=p.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');t.textContent=o?'たたむ':'料金・条件をすべて見る'}});
 function pick(m){S.innerHTML='';Q.value=m[1];var PS1=document.getElementById('jcP');if(PS1)PS1.value=m[0];ls('jcMuni',m[0]+'|'+m[1]);var P=D.p[m[0]]||{},c=D.c[m[4]],city=m[1],pf=m[0];
  H.hidden=false;
  if(K==='maigo'){H.innerHTML='<b>'+esc(pf+city)+'</b>を選択中';
-  var loc=document.getElementById('jcLocal');
-  if(loc){var links=[a(c&&c[1],'動物愛護センター・保健所'),a(P.pol,pf==='東京都'?'警視庁の遺失届':'警察の遺失届'),a(m[3],city+'の公式ページ'),a(m[5]||P.h,'近くの動物病院')].filter(Boolean);
-   loc.hidden=false;loc.innerHTML='<h3>選んだ地域の連絡先</h3><ul>'+links.map(function(l){return'<li>'+l+'</li>'}).join('')+'</ul><small><a href="#pro">この地域のペット探偵を見る</a></small>'; }
+  var cs=[];if(c)cs.push(rcard('動物愛護センター・保健所',c[0],c[3]===city?city+'の窓口':pf+'の窓口（'+city+'はこの窓口の受け持ち）',a(c[1],'公式ページを開く')+(c[2]?a(c[2],'保護情報を見る',1):'')));
+  if(P.pol)cs.push(rcard('警察の遺失届',pf==='東京都'?'警視庁':pf+'の警察','遺失届をオンラインで出せます',a(P.pol,pf==='東京都'?'警視庁に遺失届を出す':'遺失届を出す')));
+  if(m[3])cs.push(rcard('市区町村',city+'の公式ページ','「迷子」「犬の登録」と、道路で亡くなった動物の引き取りの窓口を、ページの中で探します',a(m[3],city+'のページを開く')));
+  var rel=(m[5]||P.h)?'<h3 class="jc-rh2">あわせて</h3>'+rcard('近くの動物病院を探す（届け先ではありません）',city+'の近くの動物病院','保護された子が運ばれることもあります',a(m[5]||P.h,'動物病院を見る')+(P.n?a(P.n,'夜間・救急の病院',1):'')):'';
+  resSet(pf+city+'の届け先 ',cs.join('')+rel,cs.length);
   txt('intro',esc(pf+city)+'の届け先を、下に出しました。');
   slot('center',card(c,c&&c[3]===city?city+'の窓口':pf+'の窓口（'+city+'はこの窓口の受け持ち）'));
   slot('police',a(P.pol,pf==='東京都'?'警視庁に遺失届を出す':'警察に遺失届をオンラインで出す'));
@@ -33,7 +47,10 @@ function pick(m){S.innerHTML='';Q.value=m[1];var PS1=document.getElementById('jc
   slot('hogo',(c&&c[2]?a(c[2],c[0].replace(/（.*）/,'')+'の保護情報'):'')+a('https://www.env.go.jp/nature/dobutsu/aigo/shuyo/link.html','となりの市・県の保護情報',1));
   pro(pf);ev('jichitai_find',{pref:pf,page:K})}
  else if(K==='touroku'){H.innerHTML='<b>'+esc(pf+city)+'</b>の犬の登録は、'+esc(city)+'の窓口です。';
-  slot('city',a(m[3],city+'のページで「犬の登録」を見る'));ev('jichitai_find',{pref:pf,page:K})}
+  slot('city',a(m[3],city+'のページで「犬の登録」を見る'));
+  var ts=[];if(m[3])ts.push(rcard('犬の登録の窓口',city+'の公式ページ','犬の登録は、住んでいる市区町村で行います（迎えてから30日以内）。担当の窓口は、公式ページの中で確認してください',a(m[3],city+'のページで「犬の登録」を見る')));
+  var tr=(m[5]||P.h)?'<h3 class="jc-rh2">あわせて</h3>'+rcard('近くの動物病院を探す（登録の窓口ではありません）',city+'の近くの動物病院','予防注射は、動物病院か市区町村の集合注射で受けられます。受け付けの有無・日程は各施設で確認してください',a(m[5]||P.h,'動物病院を見る')):'';
+  resSet(pf+city+'の犬の登録窓口 ',ts.join('')+tr,ts.length);ev('jichitai_find',{pref:pf,page:K})}
  else{H.innerHTML='<b>'+esc(pf+city)+'</b>の近くの相談先です。';
   slot('tmp',(P.o?a(P.o,pf+'のペットホテル'):a('/pet-hotel/','ペットホテル'))+(P.t?a(P.t,pf+'のペットシッター',1):a('/pet-sitter/','ペットシッター',1)));
   slot('rojin',(P.r?a(P.r,pf+'の老犬ホーム'):a('/rojin-home/','老犬ホーム・老猫ホーム'))+a('/guide/rojin-home-cost/','費用のしくみ',1));
@@ -42,7 +59,7 @@ function pick(m){S.innerHTML='';Q.value=m[1];var PS1=document.getElementById('jc
 function covers(d,pf){var ar=d.areas||[];return ar.indexOf('全国')>=0||ar.indexOf(pf)>=0||(d.near||[]).indexOf(pf)>=0}
 function local(d,pf){return(d.near||[]).indexOf(pf)>=0||!!(d.u&&d.u[pf])||((d.areas||[]).indexOf(pf)>=0&&(d.areas||[])[0]!=='全国')}
 /* ペット探偵：その県に来てくれる会社だけを、地元・出張費なしの会社を先にして1つの表に並べる（表は最初の4件と「のこり」に分かれているので、全部の行を集める） */
-var detF={};function detApply(){var el=document.getElementById('jcPro');if(!el)return;var act=Object.keys(detF).filter(function(k){return detF[k]});[].forEach.call(el.querySelectorAll('tbody tr'),function(r){if(r.style.display==='none'&&!r._detH)return;var f=' '+(r.getAttribute('data-det')||'')+' ';var ok=act.every(function(k){if(k==='un')return true;if(k==='dg'||k==='ct'||k==='ex')return f.indexOf(' '+k+' ')>=0||(detF.un&&f.indexOf(' un ')>=0);if(k==='n')return !pro.pf||(r.getAttribute('data-near')||'').split('|').indexOf(pro.pf)>=0;return f.indexOf(' '+k+' ')>=0});if(!ok){r._detH=1;r.style.display='none'}else if(r._detH){r._detH=0;r.style.display=''}})}
+var detF={};function detApply(){var el=document.getElementById('jcPro');if(!el)return;var act=Object.keys(detF).filter(function(k){return detF[k]});[].forEach.call(el.querySelectorAll('tbody tr'),function(r){if(r.style.display==='none'&&!r._detH)return;var f=' '+(r.getAttribute('data-det')||'')+' ';var ok=act.every(function(k){if(k==='un')return true;if(k==='dg'||k==='ct'||k==='ex')return f.indexOf(' '+k+' ')>=0||(detF.un&&f.indexOf(' un ')>=0);if(k==='n')return !pro.pf||(r.getAttribute('data-near')||'').split('|').indexOf(pro.pf)>=0;return f.indexOf(' '+k+' ')>=0});if(!ok){r._detH=1;r.style.display='none'}else if(r._detH){r._detH=0;r.style.display=''}});detCards()}
 function pro(pf){pro.pf=pf;var el=document.getElementById('jcPro');if(!el||!D.d||!D.d.length)return;var tb=el.querySelector('tbody');if(!tb)return;
  var rows=pro.rows||(pro.rows=[].slice.call(el.querySelectorAll('tbody tr'))),more=el.querySelector('details.more'),near=[],far=[],off=[];
  D.d.forEach(function(d,i){var r=rows[i];if(!r)return;if(d.u&&d.u[pf]){var l=r.querySelector('th a');if(l)l.href=d.u[pf]}r.setAttribute('data-near',(d.near||[]).join('|'));(covers(d,pf)?(local(d,pf)?near:far):off).push(r)});
@@ -64,10 +81,10 @@ document.querySelectorAll('.jc-ck>li[data-ck]').forEach(function(li){var k=li.ge
 var DEF=null;function snap(){DEF={};[].forEach.call(document.querySelectorAll('[data-slot]'),function(e){DEF[e.getAttribute('data-slot')]=e.innerHTML})}
 function rs(){if(!DEF)return;[].forEach.call(document.querySelectorAll('[data-slot]'),function(e){var k=e.getAttribute('data-slot');if(k in DEF)e.innerHTML=DEF[k]})}
 if(K==='maigo')snap();
-var PS0=document.getElementById('jcP');if(PS0)PS0.addEventListener('change',function(){Q.value='';H.hidden=true;rs();var loc=document.getElementById('jcLocal');if(loc)loc.hidden=true;sug()});
-Q.addEventListener('input',function(){var loc=document.getElementById('jcLocal');if(loc){loc.hidden=true}rs(); sug()});
+var PS0=document.getElementById('jcP');if(PS0)PS0.addEventListener('change',function(){Q.value='';H.hidden=true;rs();resReset();var loc=document.getElementById('jcLocal');if(loc)loc.hidden=true;sug()});
+Q.addEventListener('input',function(){var loc=document.getElementById('jcLocal');if(loc){loc.hidden=true}rs();resReset(); sug()});
 if(K==='maigo'){var flyer=document.getElementById('jcFly');function openFlyer(){if(location.hash==='#jcFly'&&flyer)flyer.open=true}window.addEventListener('hashchange',openFlyer);openFlyer()}Q.addEventListener('focus',function(){load(function(){})},{once:true});
-var last=ls('jcMuni');if(last){var p=last.split('|');load(function(){var h=D.m.filter(function(m){return m[0]===p[0]&&m[1]===p[1]});if(h.length&&!Q.value.trim())pick(h[0])})}
+detCards();var last=ls('jcMuni');if(last){var p=last.split('|');load(function(){var h=D.m.filter(function(m){return m[0]===p[0]&&m[1]===p[1]});if(h.length&&!Q.value.trim())pick(h[0])})}
 /* 登録の期限 */
 var dd=document.getElementById('jcD'),bd=document.getElementById('jcB'),due=document.getElementById('jcDue');
 function fmt(d){return(d.getMonth()+1)+'月'+d.getDate()+'日'}
