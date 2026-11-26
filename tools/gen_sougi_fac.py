@@ -159,7 +159,8 @@ def render(ctx, f):
     if _has(f, "お迎え") or _has(f, "訪問火葬"):
         pts.append(f"{nm}は、{'家までのお迎え' if _has(f, 'お迎え') else ''}{'・' if _has(f, 'お迎え') and _has(f, '訪問火葬') else ''}{'家の近くでの訪問火葬' if _has(f, '訪問火葬') else ''}を公式サイトに書いています。")
     pts = pts[:5]
-    ld = '<script type="application/ld+json">\n' + json.dumps([
+    fq = _faq(f)
+    _lds = [
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
         {"@type": "ListItem", "position": 2, "name": "ペットが亡くなったら", "item": SITE + "/sougi/"},
@@ -168,8 +169,11 @@ def render(ctx, f):
       dict({"@context": "https://schema.org", "@type": "LocalBusiness", "additionalType": kind, "name": nm, "url": f["u"],
             "address": {"@type": "PostalAddress", "addressRegion": pf, "addressLocality": f["city"], "addressCountry": "JP"}},
            **({"priceRange": f["price"]} if f.get("price") else {})),
-      {"@context": "https://schema.org", "@type": "WebPage", "name": nm, "url": url, "dateModified": _iso(ck), "isBasedOn": f["u"]}],
-      ensure_ascii=False, indent=1) + "\n</script>"
+      {"@context": "https://schema.org", "@type": "WebPage", "name": nm, "url": url, "dateModified": _iso(ck), "isBasedOn": f["u"]}]
+    if fq:  # 表示している「よくある質問」を FAQPage 構造化データとしても出す（2026-11-26 SEO強化 第2弾）
+        _lds.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": a, "acceptedAnswer": {"@type": "Answer", "text": b}} for a, b in fq]})
+    ld = '<script type="application/ld+json">\n' + json.dumps(_lds, ensure_ascii=False, indent=1) + "\n</script>"
     src = f'<a href="{e(f["u"])}" target="_blank" rel="noopener">公式サイト（{e(ck)}に確認）</a>'
     rows = "".join(f"<tr><th scope=\"row\">{e(k)}</th><td>{e(v)}</td><td>{src}</td></tr>" for k, v in facts(f))
     to = f'{nm} {pf}{f["city"]}'
