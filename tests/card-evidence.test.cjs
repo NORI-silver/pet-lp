@@ -24,3 +24,31 @@ print('ok')`;
 const text=execFileSync(process.env.PYTHON || 'python3',['-c',py],{encoding:'utf8'});
 assert.equal(text.trim(),'ok');
 });
+
+test('shared result cards show only selected match tokens, not unknown/no/default dog',()=>{
+const fs=require('node:fs'), vm=require('node:vm');
+const source=fs.readFileSync('tools/find.js','utf8');
+const body=source.slice(source.indexOf('  function matchLabels('),source.indexOf('  function apply('));
+const ctx={LBL:{big:'大型犬',sen:'シニア',pickup:'送迎あり','a:dog':'犬',older:'60歳以上'},
+ el(){return {hidden:false};}};
+vm.createContext(ctx);vm.runInContext(body,ctx);
+const node={querySelector(){return null;},appendChild(){}};
+const it={_k:' big sen older ',_no:' sen ',querySelector(){return node;}};
+ctx.matchLabels(it,['big','sen','pickup','a:dog','older'],true);
+assert.equal(it._matchNote.textContent,'絞り込みに使った条件：大型犬・年齢・同居条件は詳細を確認');
+ctx.matchLabels(it,[],true);
+assert.equal(it._matchNote.hidden,true);
+});
+
+test('hospital result keeps confirmed active feature visible even with many badges',()=>{
+const fs=require('node:fs'), vm=require('node:vm');
+const source=fs.readFileSync('tools/hosp_find.js','utf8');
+const body=source.slice(source.indexOf('  function card('),source.indexOf('  function match('));
+const ctx={LABEL:{late:'19時以降も',open:'いま受付中'},NEEDL:{night:'夜間・救急'},
+ FEAT:[['night','夜間・救急'],['late','19時以降も']],keys:()=>['late','night','open'],
+ TB:'',enc:encodeURIComponent,openNow:()=>null,has:(r,k)=>r.y.includes(k), esc:String,picHtml:()=>''};
+vm.createContext(ctx);vm.runInContext(body,ctx);
+const text=ctx.card({n:'病院',u:'https://example.org',y:['night','late']},['open']);
+assert.equal((text.match(/19時以降も/g)||[]).length,1);
+assert.match(text,/class="u">いま受付中は不明/);
+});

@@ -3,6 +3,98 @@
  "checked": "2026-11-02",
  "hotels": [
   {
+   "id": "PHt475672a",
+   "name": "PET-SPA 調布仙川店",
+   "prefs": [
+    "東京都"
+   ],
+   "city": "調布市",
+   "url": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/",
+   "services": "ペットホテル・一時預かり（犬・猫）",
+   "facts": [
+    {
+     "k": "料金",
+     "v": "24時間：小型犬・猫5,500円、中型犬6,600円、大型犬9,900円、超大型犬11,000円（税込・繁忙期加算）",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/hotel/",
+     "by": "site",
+     "checked": "2026-11-26",
+     "yen": 5500
+    },
+    {
+     "k": "営業・受付時間",
+     "v": "10:00〜19:00。営業時間外はスタッフ不在",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/hotel/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "受け入れの注意",
+     "v": "初回：大型犬8歳未満、小・中型犬と猫10歳未満。直近1年に利用あり：14歳未満。投薬が必要な子は受入不可",
+     "src": "https://www.pet-spa.co.jp/firsttime/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "対象の動物",
+     "v": "犬・猫。大型・超大型犬の料金あり（一部犬種に制限）",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/hotel/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "駐車場",
+     "v": "併設の駐車場あり。利用時はパーキングチケットを発行",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "用意するもの",
+     "v": "犬は狂犬病と5種以上の混合ワクチン、猫は3種以上の混合ワクチンの証明（原則1年以内）",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/hotel/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "お支払い",
+     "v": "ホテル料金は前払い・クレジットカード可",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/",
+     "by": "site",
+     "checked": "2026-11-26"
+    },
+    {
+     "k": "預かり期間",
+     "v": "最長12泊13日。持病がある場合は店舗へ確認",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/hotel/",
+     "by": "site",
+     "checked": "2026-11-26"
+    }
+   ],
+   "checked": "2026-11-26",
+   "addr": "調布市仙川町3-4-1",
+   "cat": true,
+   "large": true,
+   "large_basis": "店舗の宿泊料金表（犬種・年齢制限あり）",
+   "fit_status": {
+    "sen": 0,
+    "med": 0,
+    "pup": 0,
+    "staff24": 2,
+    "night_staff": 2
+   },
+   "trust": {
+    "reg": {
+     "no": "22東京都保第101641号",
+     "kind": "保管",
+     "auth": "東京都",
+     "until": "2027-06-12",
+     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/",
+     "by": "site",
+     "checked": "2026-11-26"
+    }
+   }
+  },
+  {
    "id": "PH-ST1697",
    "name": "大和犬具店",
    "prefs": [
@@ -6786,98 +6878,6 @@
     }
    ],
    "checked": "2026-11-23"
-  },
-  {
-   "id": "PHt475672a",
-   "name": "PET-SPA 調布仙川店",
-   "prefs": [
-    "東京都"
-   ],
-   "city": "調布市",
-   "url": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/",
-   "services": "ペットホテル・一時預かり（犬・猫）",
-   "facts": [
-    {
-     "k": "料金",
-     "v": "24時間：小型犬・猫5,500円、中型犬6,600円、大型犬9,900円、超大型犬11,000円（税込・繁忙期加算）",
-     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/hotel/",
-     "by": "site",
-     "checked": "2026-11-26",
-     "yen": 5500
-    },
-    {
-     "k": "営業・受付時間",
-     "v": "10:00〜19:00。営業時間外はスタッフ不在",
-     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/hotel/",
-     "by": "site",
-     "checked": "2026-11-26"
-    },
-    {
-     "k": "受け入れの注意",
-     "v": "初回：大型犬8歳未満、小・中型犬と猫10歳未満。直近1年に利用あり：14歳未満。投薬が必要な子は受入不可",
-     "src": "https://www.pet-spa.co.jp/firsttime/",
-     "by": "site",
-     "checked": "2026-11-26"
-    },
-    {
-     "k": "対象の動物",
-     "v": "犬・猫。大型・超大型犬の料金あり（一部犬種に制限）",
-     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/hotel/",
-     "by": "site",
-     "checked": "2026-11-26"
-    },
-    {
-     "k": "駐車場",
-     "v": "併設の駐車場あり。利用時はパーキングチケットを発行",
-     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/",
-     "by": "site",
-     "checked": "2026-11-26"
-    },
-    {
-     "k": "用意するもの",
-     "v": "犬は狂犬病と5種以上の混合ワクチン、猫は3種以上の混合ワクチンの証明（原則1年以内）",
-     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/hotel/",
-     "by": "site",
-     "checked": "2026-11-26"
-    },
-    {
-     "k": "お支払い",
-     "v": "ホテル料金は前払い・クレジットカード可",
-     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/",
-     "by": "site",
-     "checked": "2026-11-26"
-    },
-    {
-     "k": "預かり期間",
-     "v": "最長12泊13日。持病がある場合は店舗へ確認",
-     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/hotel/",
-     "by": "site",
-     "checked": "2026-11-26"
-    }
-   ],
-   "checked": "2026-11-26",
-   "addr": "調布市仙川町3-4-1",
-   "cat": true,
-   "large": true,
-   "large_basis": "店舗の宿泊料金表（犬種・年齢制限あり）",
-   "fit_status": {
-    "sen": 0,
-    "med": 0,
-    "pup": 0,
-    "staff24": 2,
-    "night_staff": 2
-   },
-   "trust": {
-    "reg": {
-     "no": "22東京都保第101641号",
-     "kind": "保管",
-     "auth": "東京都",
-     "until": "2027-06-12",
-     "src": "https://www.pet-spa.co.jp/shop/tokyo/sengawa/",
-     "by": "site",
-     "checked": "2026-11-26"
-    }
-   }
   },
   {
    "id": "PHt98ca311",
