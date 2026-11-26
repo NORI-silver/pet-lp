@@ -150,6 +150,10 @@ def _kinds_in(t):
     if re.search(r"エキゾ|爬虫|は虫|カメ|トカゲ|ヘビ", t): a.append("exotic")
     return a
 
+def rojin_only(a, t):
+    """「要確認」「記載なし」「など」は他の動物を断った印にしない。"""
+    return bool(a) and "など" not in t and not re.search(r"要確認|記載なし", t)
+
 def _load(name):
     try: return json.load(open(os.path.join(HERE, name), encoding="utf-8"))
     except Exception: return None
@@ -224,7 +228,7 @@ def _fit_table():
         elif re.search(r"大型|小型・中型・大型", t): sizes = ["s", "m", "l"]
         m = re.search(r"(\d+)kgまで", t)
         if m: kg = int(m.group(1))
-        T["rojin"][h["name"]] = fit_attr(a, bool(a) and "など" not in t, sizes, kg, senior=True, animals_text="・".join(KIND_LABEL[k] for k in a), fee=_fee_of(h))
+        T["rojin"][h["name"]] = fit_attr(a, rojin_only(a, t), sizes, kg, senior=True, animals_text="・".join(KIND_LABEL[k] for k in a), fee=_fee_of(h))
     gr = _load("grooming.json") or {}
     for g in gr.get("groomers", []):
         _meta_put("trimming", "grooming.json", g)
@@ -377,7 +381,10 @@ def _edge_line(ic, lab, val, conf):
     if ic != "paw": return (ic, lab, val)
     ks = _kinds_in(val)
     other = [x for x in _split_items(val) if not re.fullmatch(r"(犬|猫|イヌ|ネコ|ドッグ|キャット|犬猫|わんちゃん|ねこちゃん)(OK|可)?", x)]  # 条件つき（「犬（5kg未満）」など）は残す
-    if other: return (ic, lab, "・".join(other))
+    if other:
+        # 病院の対象動物の行で、犬猫も明記されている場合は省いて誤解させない。
+        prefix = "犬・猫のほか " if conf["key"] == "hospital" and {"犬", "猫"} <= set(_split_items(val)) else ""
+        return (ic, lab, prefix + "・".join(other))
     if ks == ["cat"] and "dog" in conf["kinds"]: return (ic, lab, "猫だけ")
     if ks == ["dog"] and "cat" in conf["kinds"] and len(conf["kinds"]) > 1: return (ic, lab, "犬だけ")
     return None
