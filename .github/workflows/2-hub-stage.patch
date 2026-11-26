@@ -1,0 +1,42 @@
+diff --git a/tools/keyvisual.py b/tools/keyvisual.py
+index e25e0a4aa..63d615e2b 100644
+--- a/tools/keyvisual.py
++++ b/tools/keyvisual.py
+@@ -58,22 +58,33 @@ CSS = ('<style id="kv-css2">'
+        '</style>')
+ 
+ 
++ACTION_FIRST = {"jichitai"}
++ALT_FIX = {"jichitai": "窓口で、職員が犬を連れた飼い主に笑顔で説明している"}
++HUB_CSS = '<style>.kvh .kv-hub{display:none}@media(min-width:760px){.kvh .kv-hub{display:block}}</style>'
++
++
+ def visual(key):
+     p = PHOTOS[key]
+     line, tone, pos, ar = KV[key]
+     tc, flt = TONE[tone]
+     w, h = (int(x) for x in ar.split("/"))
+     ard = "6/1" if tone == "urgent" else "20/7"
+-    cls = "kv" + (" kv-top" if pos == "top" else "") + (" kv-urgent" if tone == "urgent" else "")
++    cls = "kv" + (" kv-top" if pos == "top" else "") + (" kv-urgent" if tone == "urgent" else "") + (" kv-hub" if key in ACTION_FIRST else "")
++    # 入口（/jichitai/）はスマホで写真を出さず、選ぶカードを最初の画面に出す。写真の上の文字は h1 と同じ意味なので入れない。
++    # 写真は画面が広いときだけ出す（スマホでは読みこまない）。Nori 2026-11-26「迷子登録のページもなおってない」（スクショは /jichitai/）
++    fp = 'loading="lazy"' if key in ACTION_FIRST else 'fetchpriority="high"'
++    alt = ALT_FIX.get(key, p["alt"])
+     img = (f'<picture><source srcset="/img/kv/{key}.webp" type="image/webp">'
+-           f'<img src="/img/kv/{key}.jpg" alt="{p["alt"]}" width="1000" height="{1000 * h // w}" fetchpriority="high" decoding="async"></picture>')
++           f'<img src="/img/kv/{key}.jpg" alt="{alt}" width="1000" height="{1000 * h // w}" {fp} decoding="async"></picture>')
++    tt = "" if key in ACTION_FIRST else f'<p class="kv-t">{line}</p>'
++    st = HUB_CSS if key in ACTION_FIRST else ""
+     return (f'<figure class="{cls}" data-kv="{key}" style="--ar:{ar};--ard:{ard};--tc:{tc};--flt:{flt}">{img}'
+-            f'<p class="kv-t">{line}</p></figure>')
++            f'{tt}</figure>{st}')
+ 
+ 
+ def apply(h, key):
+     if 'data-kv="' in h:  # 前の版が残っていれば今の形に置きかえる
+-        h = re.sub(r'<figure class="kv[^"]*" data-kv="[^"]*"[^>]*>.*?</figure>', lambda m: visual(key), h, count=1, flags=re.S)
++        h = re.sub(r'<figure class="kv[^"]*" data-kv="[^"]*"[^>]*>.*?</figure>(?:<style>\.kvh \.kv-hub\{[^<]*</style>)?', lambda m: visual(key), h, count=1, flags=re.S)
+         h = re.sub(r'<style id="kv-css">.*?</style>', "", h, flags=re.S)
+         return h if 'id="kv-css2"' in h else h.replace("</head>", CSS + "</head>", 1)
+     m = re.search(r'<section class="area-hero"([^>]*)>\s*<div class="wrap">', h)
