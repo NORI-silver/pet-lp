@@ -747,11 +747,15 @@ def _star_pad(h):
         out.append('<a class="fc-a fc-a-star" href="https://www.google.com/maps/search/?api=1&query=' + _uq_compact(nm + pf) + '" target="_blank" rel="noopener">リンクの文字の分の見積もり用の文字列</a>')
     return "".join(out)
 
+_EST_BASE = 52 * 1024
+_EST_ROJIN_NATIONAL = 53760  # 老犬ホームの全国のページだけ：県ごと3件の見積もりが料金の項目を足すと53,608になり、52*1024（53,248）を360バイト超えて2件に落ちるため。実際の上限（61,440・cardpolicy 60,800）は変えない
+_EST_LIMIT = _EST_BASE
+
 def _too_big(h):
     """情報ページの重さの上限（tests/info-light.test.cjs の60KB）を超えるなら作りかえない（全部の施設を並べる全国のページ。県のページで見せる）"""
     import gzip
     # 2026-11-27 マップへ飛ぶ口コミのリンクを外した。以前の件数の決め方（リンクの分だけ重い前提で作った余裕）を変えないよう、外す前と同じ重さの見積もりを足して測る。
-    return len(gzip.compress((h + _star_pad(h)).encode("utf-8"), 9)) > 52 * 1024  # あとで cardskin.py がカードの形をそろえて少し重くなるので、余裕を残す
+    return len(gzip.compress((h + _star_pad(h)).encode("utf-8"), 9)) > _EST_LIMIT  # あとで cardskin.py がカードの形をそろえて少し重くなるので、余裕を残す
 
 def _trim(h, keep, retained=()):
     """全国のページで重すぎるとき、都道府県ごとの箱（emg-pref、見出しに県のページへのリンク）に最初の keep 件だけ残し、のこりは県のページへのリンクにする（施設は県のページにすべて載っている。tests/info-light の「上限を超えたら県のページへのリンクに」）"""
@@ -925,6 +929,8 @@ def build(ROOT):
             national = os.path.normpath(base) == os.path.normpath(os.path.join(ROOT, d))
             summary_max = {"dog-trainer": 3, "pet-hotel": 3}.get(d) if national else None
             retained = ("T114",) if national and d == "dog-trainer" else ()
+            global _EST_LIMIT
+            _EST_LIMIT = _EST_ROJIN_NATIONAL if (national and d == "rojin-home") else _EST_BASE
             h2 = None if summary_max else _one(h, conf, fbn)
             # 全部の施設を並べる全国のページが重すぎるときは、県ごとに数件だけ残して県のページへのリンクにする（写真のない古い形のまま残さない）
             for keep in (n for n in (8, 6, 4, 3, 2) if summary_max is None or n <= summary_max):
