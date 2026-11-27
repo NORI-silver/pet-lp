@@ -25,3 +25,31 @@ test('every data-fit in info pages is single-quoted and parses as JSON', ()=>{
   }}})('.');
   assert.ok(n>1000,'only '+n+' data-fit found');
 });
+test('closed (受け入れ休止) homes carry cl=1 and fit.js never counts them as a match', ()=>{
+  const py=`
+import sys,json
+sys.path.insert(0,'tools')
+import faccard
+a=json.loads(faccard.fit_attr_values(faccard.fit_attr(['dog','cat'],False,closed=True))[0])
+assert a['cl']==1 and a['a']==['dog','cat'], a
+assert 'cl' not in json.loads(faccard.fit_attr_values(faccard.fit_attr(['dog']))[0])
+h=[x for x in json.load(open('tools/rojin.json'))['homes'] if x['id']=='R158'][0]
+assert h['closed'] and h['animals']=='犬・猫'
+print('ok')`;
+  assert.equal(execFileSync('python3',['-c',py],{encoding:'utf8'}).trim(),'ok');
+  const js=fs.readFileSync('fit.js','utf8');
+  assert.ok(js.includes('if (f.cl) r.push(["ng"'), 'judge must mark closed homes ng');
+  assert.ok(js.includes('c._fit.cl ? [["ng"'), 'closed chip must show without any filter');
+});
+test('R158 closed: static badge + data-closed in the generated card, and find.js never counts it as an animal match', ()=>{
+  const t=fs.readFileSync('rojin-home/kanagawa/index.html','utf8');
+  const i=t.indexOf('data-fid="R158"'); assert.ok(i>0,'R158 card missing');
+  const open=t.slice(t.lastIndexOf('<div',i),t.indexOf('>',i)+1);
+  assert.ok(/ data-closed="1"/.test(open),'R158 needs data-closed');
+  const blk=t.slice(i,i+6000);
+  assert.ok(/<span class="pc-cl">現在、受け入れを休止中<\/span>/.test(blk),'static 休止 badge missing');
+  assert.ok(/受け入れ<\/b><span>犬・猫 現在、受け入れを休止/.test(blk),'受け入れ row must lead with the suspension');
+  for(const jf of ['tools/find.js','find.js']){const js=fs.readFileSync(jf,'utf8');
+  assert.ok(js.includes('it._cl = it.hasAttribute("data-closed")'));
+  assert.ok(/if \(it\._cl && ks\.length\) \{ if \(ks\.some\(function\(k\)\{ return k\.indexOf\("a:"\) === 0; \}\)\) return 2; r = 1; \}/.test(js),'judge must exclude closed on animal picks and demote on other picks: '+jf);}
+});

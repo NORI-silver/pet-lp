@@ -14,7 +14,8 @@
   var sum = id("ffSum"), alt = id("ffAlt"), clr = id("ffClear");
   var res = id("ffRes"), det = box.querySelector(".ux-det");
   var needPref = box.hasAttribute("data-needpref");
-  var SLUG = __SLUG__; // 都道府県→URLの名前（tools/uikit.py が tools/prefs.py から差し込む。県のページどうしの移動に使う）
+  // 都道府県→URLの名前（tools/uikit.py が tools/prefs.py から差し込む。県のページどうしの移動に使う）
+  var SLUG = __SLUG__;
   var parts = location.pathname.split("/"), pfs = Object.keys(SLUG);
   var routePf = pfs.find(function(p){ return parts[1] === cat && SLUG[p] === parts[2]; }) || "";
   var items = Array.from(qa("[data-ffi]"));
@@ -28,6 +29,7 @@
     var ex = [at(it,"data-ft"), at(it,"data-tags")].join("|").split("|").filter(Boolean).map(function(x){ return x.trim().replace(/ /g, "_"); });
     it._k = " " + (at(it,"data-k") || "") + " " + ex.join(" ") + " ";
     it._no = " " + (at(it,"data-no") || "") + " ";
+it._cl = it.hasAttribute("data-closed");
     var p = it.closest("[data-pref]");
     it._p = at(it,"data-pref") || (p ? at(p,"data-pref") : "") || routePf;
     it._q = (at(it,"data-q") || it.textContent).toLowerCase();
@@ -143,12 +145,15 @@
   }
   function judge(it, ks, pf, qs){
     if (geoKm && geoPos) { if (!it._ll || distKm(geoPos, it._ll) > geoKm) return 2; }
-    if (!(pf && pf.length) && it._near) return 2; // 近くの県の施設（老犬ホームなど）は、その県を選んだときだけ（県を選ばないと同じ施設が2回出るため）
+    // 近くの県の施設（老犬ホームなど）は、その県を選んだときだけ（県を選ばないと同じ施設が2回出るため）
+    if (!(pf && pf.length) && it._near) return 2;
     var pj = placeJ(it, pf || []);
     if (pj === 2) return 2;
     if (qs && qs.split(" ").some(function(w){ return it._q.indexOf(w) < 0; })) return 2;
     if (ks.indexOf("a:cat") >= 0 && ks.indexOf("owner_live_dog") >= 0 && ks.indexOf("a:dog") < 0) return 2;
     var r = pj;
+// 受け入れ休止中：動物で選んだときは出さない。ほかの条件でも「合う」には入れない
+if (it._cl && ks.length) { if (ks.some(function(k){ return k.indexOf("a:") === 0; })) return 2; r = 1; }
     // 別プランの条件が重なっても、同じプランで不可なら一致にしない。
     if(cat==="sougi"&&ks.includes("合同火葬"))for(const k of ["立ち会い","お骨を返してもらえる"])if(ks.includes(k)){
       let x=" 合同火葬+"+k+" ";if(it._no.includes(x))return 2;if(!it._k.includes(x))r=1;}
@@ -198,7 +203,7 @@
       if (j === 1) {
         if (!note) { note = el("p", "ux-unk-n"); var b = it.querySelector(".fc-body") || it; b.insertBefore(note, b.children[1] || null); }
         var miss = ks.filter(function(k){ return it._k.indexOf(" " + k + " ") < 0 && k !== "a:dog"; }).map(function(k){ return LBL[k]; });
-        note.textContent = (placeJ(it, pf) === 1 ? "近くの地域も相談できます（来てくれる地域：" + it._area.slice(0, 40) + "）。" : "") + (miss.length ? "公式サイトに書いていない条件があります（" + miss.join("・") + "）" : "");
+        note.textContent = (it._cl ? "いま受け入れを休止中です。" : "") + (placeJ(it, pf) === 1 ? "近くの地域も相談できます（来てくれる地域：" + it._area.slice(0, 40) + "）。" : "") + (miss.length ? "公式サイトに書いていない条件があります（" + miss.join("・") + "）" : "");
       } else if (note) note.remove();
     });
     // 中身のなくなったまとまり・見出しを隠す
