@@ -9,7 +9,10 @@
 import json as _json, os as _os, re as _re, statistics as _st
 import guides_breed as _GB  # 犬種・体重の「うちの子で見る」（2026-11-14）
 _D = _os.path.dirname(_os.path.abspath(__file__))
-_FAC = _json.load(open(_os.path.join(_D, "sougi_facilities.json"), encoding="utf-8"))["facilities"]
+_ALL_FAC = _json.load(open(_os.path.join(_D, "sougi_facilities.json"), encoding="utf-8"))["facilities"]
+# できること・料金をまだ確認していない掲載だけの施設は、数え上げに入れない（分からないことを「ない」と数えないため）
+_LISTING_ONLY = set(_json.load(open(_os.path.join(_D, "sougi_listing_only.json"), encoding="utf-8"))["ids"])
+_FAC = [f for f in _ALL_FAC if f["id"] not in _LISTING_ONLY]
 _CITY = _json.load(open(_os.path.join(_D, "sougi.json"), encoding="utf-8"))["cities"]
 
 def _typ(seg):
@@ -172,7 +175,7 @@ dict(slug="pet-cremation-types",
    "会社によって呼び方がちがいます（「一任個別火葬」「家族立ち会い火葬」「お別れ火葬」など）。名前ではなく、お骨が返るか、立ち会えるかで比べてください。",
   ]),
   (f"料金の相場：{N_PRICED}施設の公式サイトの料金を並べると", [
-   f"当サイトの「ペットが亡くなったら」の一覧に載せている、全国{N_PREF_FAC}都道府県の民間のペット火葬場・霊園{N_FAC}施設のうち、公式サイトに料金を書いていた{N_PRICED}施設の料金を、火葬の種類ごとに並べました。体重の区分があるときは、いちばん小さい区分（猫・小型犬など）の料金です。",
+   f"当サイトの「ペットが亡くなったら」の一覧のうち、公式サイトの内容を確認し終えた全国{N_PREF_FAC}都道府県の民間のペット火葬場・霊園{N_FAC}施設のうち、公式サイトに料金を書いていた{N_PRICED}施設の料金を、火葬の種類ごとに並べました。体重の区分があるときは、いちばん小さい区分（猫・小型犬など）の料金です。",
    ("table", [["種類", "料金を書いていた施設", "安いほうから4分の1", "真ん中", "高いほうから4分の1", "いちばん安い〜高い"],
               ["合同火葬", f"{SG['n']}施設", SG["q1"], SG["med"], SG["q3"], f"{SG['lo']}〜{SG['hi']}"],
               ["個別火葬（おまかせ）", f"{SK['n']}施設", SK["q1"], SK["med"], SK["q3"], f"{SK['lo']}〜{SK['hi']}"],
@@ -190,7 +193,7 @@ dict(slug="pet-cremation-types",
    ("links", [("大型犬・超大型犬の火葬（40kg・50kgをこえる子）", "/guide/pet-cremation-large-dog/"), ("猫の火葬", "/guide/pet-cremation-cat/"), ("小さな動物の火葬", "/guide/pet-cremation-small/"), ("粉骨・骨つぼ・納骨堂の料金", "/guide/pet-ashes/")]),
   ]),
   ("どの方法を受けている施設が多いか", [
-   f"一覧の{N_FAC}施設が公式サイトに書いている、できることを数えました（ひとつの施設がいくつも受けています）。",
+   f"公式サイトの内容を確認し終えた{N_FAC}施設が書いている、できることを数えました（ひとつの施設がいくつも受けています）。",
    ("table", [["できること", f"{N_FAC}施設のうち"],
               ["個別火葬", f"{N_SV['個別火葬']}施設"],
               ["立ち会い火葬", f"{N_SV['立ち会い火葬']}施設"],
