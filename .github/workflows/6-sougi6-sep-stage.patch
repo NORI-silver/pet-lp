@@ -1,0 +1,1549 @@
+diff --git a/tests/sougi-visit.test.cjs b/tests/sougi-visit.test.cjs
+new file mode 100644
+index 0000000..ea59e63
+--- /dev/null
++++ b/tests/sougi-visit.test.cjs
+@@ -0,0 +1,39 @@
++// 葬儀・火葬：来館して使える場所が公式サイトで確認できている施設（visit=public）だけに、経路・タクシーの行き先を付ける。
++// ほかは理由をカードに書き、経路とタクシーを出さない。確認中の施設（tools/sougi_hold.json）は一覧に出さない。
++const fs = require('node:fs');
++const assert = require('node:assert/strict');
++const D = JSON.parse(fs.readFileSync('tools/sougi_facilities.json', 'utf8')).facilities;
++const H = JSON.parse(fs.readFileSync('tools/sougi_hold.json', 'utf8')).facilities;
++const TXT = { unconfirmed: '来館できる場所（火葬場・霊園）は、このカードでは確認できていません。', none: '訪問での火葬です。来館して使える施設は、このカードでは確認できていません。', office: '受付の事務所です。' };
++const esc = (t) => t.replace(/&/g, '&amp;');
++const pages = {};
++for (const d of fs.readdirSync('sougi', { withFileTypes: true })) if (d.isDirectory() && fs.existsSync(`sougi/${d.name}/index.html`)) pages[d.name] = fs.readFileSync(`sougi/${d.name}/index.html`, 'utf8');
++const all = Object.values(pages).join('\n');
++function card(h, id) {
++  const i = h.indexOf(`data-fid="${id}"`); assert.ok(i > 0, id + ': card exists');
++  const e = h.indexOf('<div class="emg-item', i + 10);
++  return h.slice(i, e > 0 ? e : i + 4000);
++}
++let nPub = 0, nOther = 0, nHold = 0;
++for (const f of D) {
++  if (!f.visit) continue;
++  const b = card(all, f.id);
++  if (f.visit === 'public') {
++    nPub++; assert.ok(f.addr && f.notice && b.includes(esc(f.notice)), f.name + ': 来訪先の住所と注記をカードに書く');
++    assert.ok(/data-route/.test(b) && /emg-taxi/.test(b), f.name + ': 確認済みの来館先には経路とタクシーを出す');
++  } else {
++    nOther++;
++    assert.ok(!/data-route/.test(b), f.name + ': 経路を出さない');
++    assert.ok(!/class="emg-taxi[^"]*"[^>]*href="\/\?to=/.test(b), f.name + ': タクシーの行き先を入れない');
++    assert.ok(b.includes(esc(f.notice || TXT[f.visit])), f.name + ': 理由をカードに書く');
++    assert.ok(b.includes('href="' + f.u.replace(/&/g, '&amp;') + '"') || b.includes('公式サイト'), f.name + ': 公式サイトのリンクは残す');
++  }
++}
++for (const f of H) { nHold++; assert.ok(!all.includes(`data-fid="${f.id}"`), f.name + ': 確認中の施設は一覧に出さない'); }
++assert.ok(nPub > 0 && nOther > 0 && nHold > 0, 'public/other/hold are all present');
++console.log('sougi-visit ok', nPub, nOther, nHold);
++{
++  const audited = D.filter((f) => f.visit).length, legacy = D.filter((f) => !f.visit).length;
++  assert.equal(D.length + H.length, 287, '287 = 一覧 + 確認中');
++  assert.equal(D.length, 286); assert.equal(legacy, 202); assert.equal(audited, 84);
++}
+diff --git a/tools/cardskin.py b/tools/cardskin.py
+index 872f66a..3d7e8df 100644
+--- a/tools/cardskin.py
++++ b/tools/cardskin.py
+@@ -200,7 +200,8 @@ def fc(blk):
+     def _ln(m):
+         ic = FC_IC.get(m.group(2), "・")
+         cls = " cs-p" if m.group(1) == "price" else ""
+-        return f'<p class="ux-c-l cs-l{cls}"><i aria-hidden="true">{ic}</i><span>{m.group(3)}</span></p>'
++        sty = ' style="display:block;overflow:visible"' if 'title="ご利用の前に"' in m.group(0)[:80] else ""  # 来館先の注記は途中で切らずに全部見せる
++        return f'<p class="ux-c-l cs-l{cls}"><i aria-hidden="true">{ic}</i><span{sty}>{m.group(3)}</span></p>'
+     b = re.sub(r'<p class="fc-(line|price)"[^>]*><svg[^>]*><use href="#fci-([a-z]+)"/></svg><span>(.*?)</span></p>', _ln, b, flags=re.S)
+     b = b.replace('<ul class="fc-tags">', '<ul class="dr-tags">')
+     # 大きいボタン2つ：公式サイト・経路（行き先が分かるときだけ）
+diff --git a/tools/faccard.py b/tools/faccard.py
+index 5cf88b4..9afe403 100644
+--- a/tools/faccard.py
++++ b/tools/faccard.py
+@@ -189,6 +189,13 @@ def _yen_of(r):
+     vals = [v for v in vals if 300 <= v <= 1000000]
+     return min(vals) if vals else None
+ 
++# 葬儀・火葬：visit = 来館して使える場所が公式サイトで確認できているか（public＝確認済み。ほかは経路・タクシーを出さずに、理由をカードに書く）
++_VISIT_TXT = {
++    "unconfirmed": "来館できる場所（火葬場・霊園）は、このカードでは確認できていません。行く前に公式サイトでご確認ください。",
++    "none": "訪問での火葬です。来館して使える施設は、このカードでは確認できていません。",
++    "office": "受付の事務所です。来館して使える施設は、このカードでは確認できていません。",
++}
++
+ def _meta_put(key, fname, r):
+     if not r.get("name"): return
+     ll, prec = None, None
+@@ -200,7 +207,7 @@ def _meta_put(key, fname, r):
+     _META.setdefault(key, {})[r["name"]] = dict(
+         yen=_yen_of(r), ll=ll, prec=prec, addr=r.get("addr") or "",
+         city=r.get("city") or "", pref=r.get("pref") or (r.get("prefs") or [""])[0],
+-        cremation_summary=r.get("cremation_summary"))
++        cremation_summary=r.get("cremation_summary"), visit=r.get("visit"), notice=r.get("notice"))
+ 
+ def _fit_table():
+     """分野ごとに、名前 → data-fit の文字列。"""
+@@ -558,6 +565,9 @@ def build_card(card, conf, fit_by_name):
+     for _, lab, val in decisions:
+         if (lab, val) in care_rows: continue
+         body.append(f'<p class="fc-line" title="{html.escape(lab)}">{icon("list")}<span style="display:block;overflow:visible">{html.escape(lab)}：{html.escape(val)}</span></p>')
++    if meta and (meta.get("visit") in _VISIT_TXT or meta.get("notice")):  # 来館できる場所が確認できていない・訪問だけ・受付だけ・休止中などを、カードに見えるように書く
++        _nt = meta.get("notice") or _VISIT_TXT[meta["visit"]]
++        body.append(f'<p class="fc-line" title="ご利用の前に">{icon("badge")}<span>{html.escape(_nt)}</span></p>')
+     if meta and meta.get("cremation_summary"):
+         summary = html.escape(meta["cremation_summary"])
+         body.append(f'<p class="fc-line" title="返骨・立ち会い">{icon("badge")}<span>返骨・立ち会い：{summary}</span></p>')
+@@ -580,7 +590,7 @@ def build_card(card, conf, fit_by_name):
+         from urllib.parse import quote as _uq
+         _q = (name + " " + (meta.get("pref") or "") + (meta.get("city") or city or "")).strip()
+         acts.append(f'<a class="fc-a fc-a-star" href="https://www.google.com/maps/search/?api=1&query={_uq_compact(_q)}" target="_blank" rel="noopener">Google Mapsの口コミ</a>')
+-    if meta and conf["key"] in ("hotel", "rojin", "sougi", "hospital") and not any("emg-taxi" in x for x in tail):  # 行き先までのタクシー料金（Nori 2026-11-26）
++    if meta and conf["key"] in ("hotel", "rojin", "sougi", "hospital") and meta.get("visit", "public") == "public" and not any("emg-taxi" in x for x in tail):  # 行き先までのタクシー料金（Nori 2026-11-26）
+         from urllib.parse import quote as _uq
+         _to = meta.get("addr") or ((meta.get("pref") or "") + (meta.get("city") or "") + name)
+         acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="/?to={_uq_compact(_to[:80])}#form" aria-label="{html.escape(name)}のタクシー料金">ペットタクシーの料金</a>')
+diff --git a/tools/gen_sougi.py b/tools/gen_sougi.py
+index 4d04d18..3f67b49 100644
+--- a/tools/gen_sougi.py
++++ b/tools/gen_sougi.py
+@@ -40,7 +40,8 @@ def _fcard(e, f):
+     tags = "".join(f'<span class="sg-tag">{e(x)}</span>' for x in f.get("kinds", []) + [y for y in f.get("services", []) if y not in f.get("kinds", [])])
+     price = f'<small><b class="sg-k">料金の例</b>{e(f["price"])}（公式サイトの記載）</small>' if f.get("price") else ""
+     hours = f'<small>受付時間：{e(f["reception"])}</small>' if f.get("reception") else ""
+-    to = f'{f["name"]} {f["pref"]}{f["city"]}' if f.get("city") else ""
++    # 来館できる場所が確認できていない施設（visit が public 以外）には、経路・タクシーの行き先を付けない
++    to = (f["addr"] if f.get("addr") else f'{f["name"]} {f["pref"]}{f["city"]}') if f.get("city") and f.get("visit", "public") == "public" else ""
+     import gen_sougi_fac  # 施設ページ（試しの30施設）があれば、カードからつなぐ
+     more = f'<a class="emg-taxi" href="{gen_sougi_fac.href(f)}">{e(f["name"])}のくわしい情報（できること・料金の比較）→</a>' if f["id"] in gen_sougi_fac.IDS else ""
+     # 施設ページのない施設も、公式サイトに書いてあるくわしい項目（more）をカードの中に出す（県のページを濃くする。2026-11-15）
+diff --git a/tools/gen_sougi_fac.py b/tools/gen_sougi_fac.py
+index a2f44af..7f26bab 100644
+--- a/tools/gen_sougi_fac.py
++++ b/tools/gen_sougi_fac.py
+@@ -176,7 +176,7 @@ def render(ctx, f):
+     ld = '<script type="application/ld+json">\n' + json.dumps(_lds, ensure_ascii=False, indent=1) + "\n</script>"
+     src = f'<a href="{e(f["u"])}" target="_blank" rel="noopener">公式サイト（{e(ck)}に確認）</a>'
+     rows = "".join(f"<tr><th scope=\"row\">{e(k)}</th><td>{e(v)}</td><td>{src}</td></tr>" for k, v in facts(f))
+-    to = f'{nm} {pf}{f["city"]}'
++    to = (f["addr"] if f.get("addr") else f'{nm} {pf}{f["city"]}') if f.get("visit", "public") == "public" else ""
+     card = (f'<div class="emg-item emg-co sg-pv" data-pref="{e(pf)}"{FC.attrs(e, "sougi", f, FC.sougi_tags(f), nm, to, "この施設")}>'
+             f'<a href="{e(f["u"])}" target="_blank" rel="noopener"><b>{e(nm)}の公式サイト</b></a><small>{e(pf)}{e(f["city"])}</small>'
+             + (f'<div class="emg-score" data-id="{e(f["id"])}"></div>' if f.get("review_query") else "") + '</div>')
+diff --git a/tools/sougi_facilities.json b/tools/sougi_facilities.json
+index 9b3587b..4175b24 100644
+--- a/tools/sougi_facilities.json
++++ b/tools/sougi_facilities.json
+@@ -8629,7 +8629,9 @@
+    "id": "Sc86270",
+    "review_query": "妙法寺付属大蔵動物霊園 世田谷区",
+    "review_name": "妙法寺付属大蔵動物霊園",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "妙法寺の僧侶による供養は、現在行えない状況とのお知らせが公式サイトに出ています。火葬と霊園は運営と書かれています。 来館できる場所（火葬場・霊園）は、このカードでは確認できていません。行く前に公式サイトでご確認ください。"
+   },
+   {
+    "pref": "東京都",
+@@ -8643,7 +8645,8 @@
+    "id": "Sc139d9",
+    "review_query": "感応寺 世田谷区",
+    "review_name": "感応寺",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed"
+   },
+   {
+    "pref": "東京都",
+@@ -8658,7 +8661,8 @@
+    "id": "S39c9b7",
+    "review_query": "PAWS MEMORY（パウズメモリー） 品川区",
+    "review_name": "PAWS MEMORY",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed"
+   },
+   {
+    "pref": "東京都",
+@@ -8668,12 +8672,17 @@
+     "火葬",
+     "霊園"
+    ],
+-   "services": [],
++   "services": [
++    "お迎え"
++   ],
+    "u": "https://www.sumida-doubutu.com/access/",
+    "id": "S7f4bb0",
+    "review_query": "すみだ動物慰霊堂 墨田区",
+    "review_name": "すみだ動物慰霊堂",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "東京都墨田区横川1-11-4",
++   "notice": "水曜は閉堂です。 公式サイトに書かれた来訪先の住所は東京都墨田区横川1-11-4です。"
+   },
+   {
+    "pref": "東京都",
+@@ -8682,12 +8691,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://12heaven.com/company.html",
+    "id": "S611211",
+    "review_query": "ペットメモリーアニマルハースへぶん 小平市",
+    "review_name": "ペットメモリーアニマルハースへぶん",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "東京都",
+@@ -8696,12 +8708,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://rainbow-memorial.com/",
+    "id": "Sd32de7",
+    "review_query": "ペット火葬 虹の園 杉並区",
+    "review_name": "ペット火葬 虹の園",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "東京都",
+@@ -8711,12 +8726,17 @@
+     "火葬",
+     "霊園"
+    ],
+-   "services": [],
++   "services": [
++    "お迎え"
++   ],
+    "u": "https://www.yamatopetreien.jp/",
+    "id": "Sccfc1e",
+    "review_query": "ヤマトペット霊園 杉並区",
+    "review_name": "ヤマトペット霊園",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "東京都杉並区西荻南2-19-10",
++   "notice": "公式サイトに書かれた来訪先の住所は東京都杉並区西荻南2-19-10です。"
+   },
+   {
+    "pref": "東京都",
+@@ -8731,22 +8751,26 @@
+    "id": "S2d1a33",
+    "review_query": "アート・ペットクラブ 東大和市",
+    "review_name": "アート・ペットクラブ",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "公式サイトに書かれた会場の住所は埼玉県所沢市北野南2-28-19 (所沢営業所・北野斎場内)です。掲載している市と異なるため、確認が済むまで経路は出していません。"
+   },
+   {
+    "pref": "東京都",
+    "name": "ペット火葬板橋",
+    "city": "板橋区",
+    "kinds": [
+-    "火葬",
+-    "霊園"
++    "火葬"
+    ],
+    "services": [],
+    "u": "https://www.petkasou.jp/contact/",
+    "id": "S8ed284",
+    "review_query": "ペット火葬板橋 板橋区",
+    "review_name": "ペット火葬板橋",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "東京都板橋区舟渡4-16-11",
++   "notice": "公式サイトに書かれた来訪先の住所は東京都板橋区舟渡4-16-11です。"
+   },
+   {
+    "pref": "東京都",
+@@ -8762,7 +8786,10 @@
+    "id": "S0c4f9d",
+    "review_query": "武蔵村山ペットメモリアルパーク 武蔵村山市",
+    "review_name": "武蔵村山ペットメモリアルパーク",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "東京都武蔵村山市岸4丁目1-3",
++   "notice": "木曜は火葬の業務をお休みしています。 公式サイトに書かれた来訪先の住所は東京都武蔵村山市岸4丁目1-3です。"
+   },
+   {
+    "pref": "東京都",
+@@ -8778,7 +8805,10 @@
+    "id": "S6acf91",
+    "review_query": "城東動物霊園 江戸川区",
+    "review_name": "城東動物霊園",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "東京都江戸川区春江町4-23",
++   "notice": "公式サイトに書かれた来訪先の住所は東京都江戸川区春江町4-23です。"
+   },
+   {
+    "pref": "東京都",
+@@ -8787,12 +8817,16 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "お迎え"
++   ],
+    "u": "https://iris-pet.jp/",
+    "id": "S7a3167",
+    "review_query": "アイリスペットエンジェル 稲城市",
+    "review_name": "アイリスペットエンジェル",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "来訪先は、このカードでは確認できていません。経路は出していません。"
+   },
+   {
+    "pref": "東京都",
+@@ -8806,7 +8840,9 @@
+    "id": "Sa765be",
+    "review_query": "西信寺別院大泉霊園 練馬区",
+    "review_name": "西信寺別院大泉霊園",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "来訪先は、このカードでは確認できていません。経路は出していません。"
+   },
+   {
+    "pref": "東京都",
+@@ -8815,12 +8851,16 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "お迎え"
++   ],
+    "u": "https://www.jyouman.com/about/",
+    "id": "S89cc48",
+    "review_query": "徐万ペットメモリアル 荒川区",
+    "review_name": "徐万ペットメモリアル",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "来訪先は、このカードでは確認できていません。経路は出していません。"
+   },
+   {
+    "pref": "東京都",
+@@ -8831,12 +8871,16 @@
+     "霊園",
+     "納骨堂"
+    ],
+-   "services": [],
++   "services": [
++    "お迎え"
++   ],
+    "u": "https://candyparkaoto.com/wakaba_index/",
+    "id": "Sc932cd",
+    "review_query": "若葉ペットパーク 葛飾区",
+    "review_name": "若葉ペットパーク",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "来訪先は、このカードでは確認できていません。経路は出していません。"
+   },
+   {
+    "pref": "東京都",
+@@ -8845,12 +8889,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://keiyo-pet.com/about/",
+    "id": "Sb99398",
+    "review_query": "京葉ペットセレモニー 足立区",
+    "review_name": "京葉ペットセレモニー",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "東京都",
+@@ -8865,7 +8912,9 @@
+    "id": "Sb0e8ff",
+    "review_query": "ヘブンパーク 青梅市",
+    "review_name": "ヘブンパーク",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "来訪先は、このカードでは確認できていません。経路は出していません。"
+   },
+   {
+    "pref": "神奈川県",
+@@ -8874,12 +8923,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://pet-isehara.com/",
+    "id": "Sa2a15d",
+    "review_query": "いせはらペットセレモニー 伊勢原市",
+    "review_name": "いせはらペットセレモニー",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed"
+   },
+   {
+    "pref": "神奈川県",
+@@ -8888,12 +8940,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://jpc-yokohama.jp/",
+    "id": "Sd5d20e",
+    "review_query": "横浜ペットセレモニー 横浜市中区",
+    "review_name": "横浜ペットセレモニー",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "神奈川県",
+@@ -8902,12 +8957,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "http://pfshama.jp/company.php",
+    "id": "S1319d6",
+    "review_query": "ピーエフサービス 横浜市南区",
+    "review_name": "ピーエフサービス",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "神奈川県",
+@@ -8921,22 +8979,27 @@
+    "id": "Sddda98",
+    "review_query": "ペットヘブン 横浜市神奈川区",
+    "review_name": "ペットヘブン",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "神奈川県横浜市神奈川区栄町2-5",
++   "notice": "公式サイトに書かれた来訪先の住所は神奈川県横浜市神奈川区栄町2-5です。"
+   },
+   {
+    "pref": "神奈川県",
+    "name": "ペットセレモニーWAVY横浜",
+    "city": "横浜市青葉区",
+    "kinds": [
+-    "火葬",
+-    "霊園"
++    "火葬"
++   ],
++   "services": [
++    "訪問火葬"
+    ],
+-   "services": [],
+    "u": "https://yokohama.wavy-jpn.com/",
+    "id": "Sbc85f5",
+    "review_query": "ペットセレモニーWAVY横浜 横浜市青葉区",
+    "review_name": "ペットセレモニーWAVY横浜",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "神奈川県",
+@@ -8945,26 +9008,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://pet-kanagawa.com/",
+    "id": "Sd30f0e",
+    "review_query": "かながわペットセレモニー 相模原市緑区",
+    "review_name": "かながわペットセレモニー",
+-   "checked": "2026-11-27"
+-  },
+-  {
+-   "pref": "神奈川県",
+-   "name": "株式会社誠行社",
+-   "city": "逗子市",
+-   "kinds": [
+-    "火葬"
+-   ],
+-   "services": [],
+-   "u": "https://www.zushi-seikousha.co.jp/kotsubo/",
+-   "id": "S5493f2",
+-   "review_query": "株式会社誠行社 逗子市",
+-   "review_name": "株式会社誠行社",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "神奈川県",
+@@ -8979,7 +9031,10 @@
+    "id": "Sd0ac1f",
+    "review_query": "鎌倉動物霊園 鎌倉市",
+    "review_name": "鎌倉動物霊園",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "神奈川県鎌倉市腰越5-13-17 (宝善院境内)",
++   "notice": "公式サイトに書かれた来訪先の住所は神奈川県鎌倉市腰越5-13-17 (宝善院境内)です。納骨・墓参で訪れる場所で、火葬への立ち会いは、このカードでは確認できていません。"
+   },
+   {
+    "pref": "埼玉県",
+@@ -8988,12 +9043,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://pet-rainbow.com/",
+    "id": "S100226",
+    "review_query": "訪問ペットセレモニー虹の橋 さいたま市岩槻区",
+    "review_name": "訪問ペットセレモニー虹の橋",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed"
+   },
+   {
+    "pref": "埼玉県",
+@@ -9003,12 +9061,17 @@
+     "火葬",
+     "納骨堂"
+    ],
+-   "services": [],
++   "services": [
++    "お迎え"
++   ],
+    "u": "https://pet-kasou-airi.jp/",
+    "id": "S5ba910",
+    "review_query": "ペットの火葬あいり さいたま市緑区",
+    "review_name": "ペットの火葬あいり",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "埼玉県さいたま市緑区中野田1007-1",
++   "notice": "公式サイトに書かれた来訪先の住所は埼玉県さいたま市緑区中野田1007-1です。"
+   },
+   {
+    "pref": "埼玉県",
+@@ -9022,7 +9085,10 @@
+    "id": "S04bc24",
+    "review_query": "ペットセレモニーねむの木 さいたま市見沼区",
+    "review_name": "ペットセレモニーねむの木",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "埼玉県さいたま市見沼区大谷973-2",
++   "notice": "公式サイトに書かれた来訪先の住所は埼玉県さいたま市見沼区大谷973-2です。"
+   },
+   {
+    "pref": "埼玉県",
+@@ -9032,12 +9098,17 @@
+     "火葬",
+     "霊園"
+    ],
+-   "services": [],
++   "services": [
++    "お迎え"
++   ],
+    "u": "https://aishin2484.jp/",
+    "id": "S9459f3",
+    "review_query": "愛心ペットセレモニー埼玉 ふじみ野市",
+    "review_name": "愛心ペットセレモニー埼玉",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "埼玉県ふじみ野市大井837-23",
++   "notice": "公式サイトに書かれた来訪先の住所は埼玉県ふじみ野市大井837-23です。"
+   },
+   {
+    "pref": "埼玉県",
+@@ -9053,7 +9124,8 @@
+    "id": "S310043",
+    "review_query": "浄土真宗 善源寺 北葛飾郡松伏町",
+    "review_name": "浄土真宗 善源寺",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed"
+   },
+   {
+    "pref": "埼玉県",
+@@ -9062,12 +9134,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://www.pet-syucchou-ceremony.com/company.html",
+    "id": "S1edb26",
+    "review_query": "関東ペットセレモニーユニオン 川口市",
+    "review_name": "関東ペットセレモニーユニオン",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed"
+   },
+   {
+    "pref": "埼玉県",
+@@ -9081,7 +9156,9 @@
+    "id": "S75f237",
+    "review_query": "ディアペット川越 川越市",
+    "review_name": "ディアペット川越",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "公式サイトに書かれた会場の住所は埼玉県比企郡鳩山町大豆戸937-2(鳩山聖地霊園内) / 埼玉県朝霞市根岸241-1です。掲載している市と異なるため、確認が済むまで経路は出していません。"
+   },
+   {
+    "pref": "埼玉県",
+@@ -9090,27 +9167,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://olive-petlife.com/area/shiki.html",
+    "id": "Sdb0d0c",
+    "review_query": "オリーブペットライフサポート 志木市",
+    "review_name": "オリーブペットライフサポート",
+-   "checked": "2026-11-27"
+-  },
+-  {
+-   "pref": "埼玉県",
+-   "name": "ペットメモリアルぽちたま",
+-   "city": "春日部市",
+-   "kinds": [
+-    "火葬",
+-    "霊園"
+-   ],
+-   "services": [],
+-   "u": "https://www.fukumemo.com/aboutus",
+-   "id": "S9c2cde",
+-   "review_query": "ペットメモリアルぽちたま 春日部市",
+-   "review_name": "ペットメモリアルぽちたま",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "埼玉県",
+@@ -9120,12 +9185,17 @@
+     "火葬",
+     "霊園"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://www.dearpet-asaka.jp/",
+    "id": "S54ff62",
+    "review_query": "ディアペット朝霞 朝霞市",
+    "review_name": "ディアペット朝霞",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "埼玉県朝霞市根岸241-1",
++   "notice": "公式サイトに書かれた来訪先の住所は埼玉県朝霞市根岸241-1です。"
+   },
+   {
+    "pref": "埼玉県",
+@@ -9135,12 +9205,17 @@
+     "火葬",
+     "納骨堂"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "http://omokage-pet.com/",
+    "id": "Seb57a2",
+    "review_query": "ペットセレモニーおもかげ 東松山市",
+    "review_name": "ペットセレモニーおもかげ",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "埼玉県東松山市大谷2560-4",
++   "notice": "公式サイトに書かれた来訪先の住所は埼玉県東松山市大谷2560-4です。"
+   },
+   {
+    "pref": "埼玉県",
+@@ -9156,7 +9231,10 @@
+    "id": "Sc0ed0c",
+    "review_query": "ステラ☆ミラ蓮田 蓮田市",
+    "review_name": "ステラ☆ミラ蓮田",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "埼玉県蓮田市根金719-3",
++   "notice": "公式サイトに書かれた来訪先の住所は埼玉県蓮田市根金719-3です。"
+   },
+   {
+    "pref": "千葉県",
+@@ -9171,7 +9249,10 @@
+    "id": "S751c9a",
+    "review_query": "愛ペット霊園 佐倉市",
+    "review_name": "愛ペット霊園",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "千葉県佐倉市高崎941-1",
++   "notice": "公式サイトに書かれた来訪先の住所は千葉県佐倉市高崎941-1です。"
+   },
+   {
+    "pref": "千葉県",
+@@ -9181,19 +9262,22 @@
+     "火葬",
+     "霊園"
+    ],
+-   "services": [],
++   "services": [
++    "お迎え"
++   ],
+    "u": "https://www.petcemetery.jp/",
+    "id": "S501778",
+    "review_query": "リン・ペット・セメタリー 千葉市緑区",
+    "review_name": "リン・ペット・セメタリー",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "来訪先は、このカードでは確認できていません。経路は出していません。"
+   },
+   {
+    "pref": "千葉県",
+    "name": "日蓮宗 法華道場 光胤山 本光寺",
+    "city": "市川市大野町",
+    "kinds": [
+-    "火葬",
+     "霊園"
+    ],
+    "services": [],
+@@ -9201,7 +9285,9 @@
+    "id": "S4ba28d",
+    "review_query": "日蓮宗 法華道場 光胤山 本光寺 市川市大野町",
+    "review_name": "日蓮宗 法華道場 光胤山 本光寺",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "動物供養之塔の新規受付は終了しています。火葬の実施と場所は、このカードでは確認できていません。 来館できる場所（火葬場・霊園）は、このカードでは確認できていません。行く前に公式サイトでご確認ください。"
+   },
+   {
+    "pref": "千葉県",
+@@ -9210,27 +9296,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://tengoku-tobira-chiba.com/",
+    "id": "S36f47a",
+    "review_query": "ペットの訪問火葬 プリエール 木更津市",
+    "review_name": "ペットの訪問火葬 プリエール",
+-   "checked": "2026-11-27"
+-  },
+-  {
+-   "pref": "千葉県",
+-   "name": "メモリアルパークガーデンきさらぎ",
+-   "city": "木更津市",
+-   "kinds": [
+-    "火葬",
+-    "霊園"
+-   ],
+-   "services": [],
+-   "u": "https://mp-gardenkisaragi.com/",
+-   "id": "S2bdcf2",
+-   "review_query": "メモリアルパークガーデンきさらぎ 木更津市",
+-   "review_name": "メモリアルパークガーデンきさらぎ",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "千葉県",
+@@ -9239,12 +9313,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://chiba.pet-stella.com/",
+    "id": "S2be8f0",
+    "review_query": "ペット訪問火葬STELLA千葉 柏市",
+    "review_name": "ペット訪問火葬STELLA千葉",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "千葉県",
+@@ -9259,7 +9336,8 @@
+    "id": "S4342ee",
+    "review_query": "京葉動物保護協会 柏市",
+    "review_name": "京葉動物保護協会",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed"
+   },
+   {
+    "pref": "千葉県",
+@@ -9269,12 +9347,16 @@
+     "火葬",
+     "霊園"
+    ],
+-   "services": [],
++   "services": [
++    "お迎え"
++   ],
+    "u": "https://www.kashiwapet-memorialpark.com/",
+    "id": "S9834fe",
+    "review_query": "柏インターペット霊園 柏市",
+    "review_name": "柏インターペット霊園",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "来訪先は、このカードでは確認できていません。経路は出していません。"
+   },
+   {
+    "pref": "千葉県",
+@@ -9283,12 +9365,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://pet-polaris.com/",
+    "id": "Sb821f7",
+    "review_query": "ペットメモリーポラリス 船橋市",
+    "review_name": "ペットメモリーポラリス",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "茨城県",
+@@ -9297,12 +9382,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://petkasou-tukuba.com/",
+    "id": "S220b89",
+    "review_query": "天国への扉 ペットメモリアル茨城・つくば つくば市",
+    "review_name": "天国への扉 ペットメモリアル茨城・つくば",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "大阪府",
+@@ -9318,7 +9406,10 @@
+    "id": "Seb65c7",
+    "review_query": "ペット葬儀社ペットマザー大阪火葬斎場 大阪市中央区",
+    "review_name": "ペット葬儀社ペットマザー大阪火葬斎場",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "大阪府大阪市中央区谷町8-2-14",
++   "notice": "公式サイトに書かれた来訪先の住所は大阪府大阪市中央区谷町8-2-14です。"
+   },
+   {
+    "pref": "大阪府",
+@@ -9327,12 +9418,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://pet-funeral-tengoku.jp/",
+    "id": "Sc328e1",
+    "review_query": "天国への扉 ペットメモリアル大阪南 大阪市城東区",
+    "review_name": "天国への扉 ペットメモリアル大阪南",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "大阪府",
+@@ -9342,12 +9436,15 @@
+     "火葬",
+     "霊園"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://petsousai-hikaridou.jp/office/index.html",
+    "id": "S62bd74",
+    "review_query": "大阪ペット葬祭・光堂（ひかりどう） 大阪市平野区",
+    "review_name": "大阪ペット葬祭・光堂",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "大阪府",
+@@ -9361,7 +9458,9 @@
+    "id": "Sc65d08",
+    "review_query": "関西動物敬愛社 大阪市浪速区",
+    "review_name": "関西動物敬愛社",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "来訪先は、このカードでは確認できていません。経路は出していません。"
+   },
+   {
+    "pref": "大阪府",
+@@ -9371,12 +9470,15 @@
+     "火葬",
+     "納骨堂"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://www.osaka-kenyusha.com/contact.html",
+    "id": "S11e48f",
+    "review_query": "大阪犬友社 大阪市淀川区",
+    "review_name": "大阪犬友社",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "大阪府",
+@@ -9385,12 +9487,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://www.minato-pet.jp/",
+    "id": "S707991",
+    "review_query": "みなとペット葬儀社 摂津市",
+    "review_name": "みなとペット葬儀社",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "大阪府",
+@@ -9405,21 +9510,27 @@
+    "id": "Se459ec",
+    "review_query": "大阪稲荷山動物霊園（稲荷山ペットパーク） 東大阪市",
+    "review_name": "大阪稲荷山動物霊園",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "大阪府東大阪市善根寺町1丁目1086-2",
++   "notice": "公式サイトに書かれた来訪先の住所は大阪府東大阪市善根寺町1丁目1086-2です。"
+   },
+   {
+    "pref": "大阪府",
+    "name": "阪和動物霊園",
+    "city": "泉佐野市",
+    "kinds": [
+-    "霊園"
++    "火葬"
+    ],
+    "services": [],
+-   "u": "https://www.izumi.coop/shopping/services/lifeservice/other/pet.html",
++   "u": "https://osaka.pet/about",
+    "id": "S3a0faa",
+    "review_query": "阪和動物霊園 泉佐野市",
+    "review_name": "阪和動物霊園",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "大阪府泉佐野市上町1丁目10-39",
++   "notice": "公式サイトに書かれた来訪先の住所は大阪府泉佐野市上町1丁目10-39です。"
+   },
+   {
+    "pref": "大阪府",
+@@ -9435,7 +9546,10 @@
+    "id": "Se247dc",
+    "review_query": "西国ペット浄苑 茨木市",
+    "review_name": "西国ペット浄苑",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "大阪府茨木市上郡2-14-2",
++   "notice": "公式サイトに書かれた来訪先の住所は大阪府茨木市上郡2-14-2です。"
+   },
+   {
+    "pref": "大阪府",
+@@ -9445,12 +9559,17 @@
+     "火葬",
+     "納骨堂"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://cocoromitasu.com/hall/",
+    "id": "Sef79f6",
+    "review_query": "こころみたすペット家族葬ホール 豊中市",
+    "review_name": "こころみたすペット家族葬ホール",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "大阪府豊中市豊南町南6-1-1 ココロニアビル1F",
++   "notice": "立ち会い火葬ができる場所は大阪府豊中市豊南町南6-1-1 ココロニアビル1Fです。 訪問火葬もあります。"
+   },
+   {
+    "pref": "大阪府",
+@@ -9464,7 +9583,8 @@
+    "id": "S5fb225",
+    "review_query": "総合ペットセレモニー 豊中会館 豊中市",
+    "review_name": "総合ペットセレモニー 豊中会館",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed"
+   },
+   {
+    "pref": "大阪府",
+@@ -9479,7 +9599,10 @@
+    "id": "Scf95e2",
+    "review_query": "アイペットメモリアル 貝塚市",
+    "review_name": "アイペットメモリアル",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "大阪府貝塚市蕎原116-2",
++   "notice": "納骨堂は月曜が休みです。 公式サイトに書かれた来訪先の住所は大阪府貝塚市蕎原116-2です。"
+   },
+   {
+    "pref": "大阪府",
+@@ -9493,7 +9616,8 @@
+    "id": "Sef35f9",
+    "review_query": "総合ペットセレモニー 高槻会館 高槻市",
+    "review_name": "総合ペットセレモニー 高槻会館",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed"
+   },
+   {
+    "pref": "兵庫県",
+@@ -9508,36 +9632,26 @@
+    "id": "S66990f",
+    "review_query": "神戸どうぶつセレモニー 神戸市西区",
+    "review_name": "神戸どうぶつセレモニー",
+-   "checked": "2026-11-27"
+-  },
+-  {
+-   "pref": "兵庫県",
+-   "name": "わんにゃんセレモニーエムズ",
+-   "city": "神戸市長田区",
+-   "kinds": [
+-    "火葬"
+-   ],
+-   "services": [],
+-   "u": "https://www.omiseni-go.com/digest/sbc_27/scid_163/digest.html",
+-   "id": "Sef1a4d",
+-   "review_query": "わんにゃんセレモニーエムズ 神戸市長田区",
+-   "review_name": "わんにゃんセレモニーエムズ",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "兵庫県神戸市西区押部谷町木見字下山畑5-1104-1",
++   "notice": "公式サイトに書かれた来訪先の住所は兵庫県神戸市西区押部谷町木見字下山畑5-1104-1です。"
+   },
+   {
+    "pref": "京都府",
+    "name": "ベルナペットセレモニー",
+    "city": "京都市西京区",
+    "kinds": [
+-    "火葬",
+-    "霊園"
++    "火葬"
+    ],
+    "services": [],
+    "u": "http://bellna.com/",
+    "id": "S7f2a9c",
+    "review_query": "ベルナペットセレモニー 京都市西京区",
+    "review_name": "ベルナペットセレモニー",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "気象条件により休業の場合があります。 来訪先は、このカードでは確認できていません。経路は出していません。"
+   },
+   {
+    "pref": "京都府",
+@@ -9552,7 +9666,8 @@
+    "id": "S762c75",
+    "review_query": "城陽動物霊園 城陽市",
+    "review_name": "城陽動物霊園",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed"
+   },
+   {
+    "pref": "奈良県",
+@@ -9561,27 +9676,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://pet-kaso-nara-osaka.jp/about/",
+    "id": "S7e5ac0",
+    "review_query": "天国への扉 ペットメモリアル奈良・大阪 北葛城郡上牧町",
+    "review_name": "天国への扉 ペットメモリアル奈良・大阪",
+-   "checked": "2026-11-27"
+-  },
+-  {
+-   "pref": "愛知県",
+-   "name": "ペットセレモニーリリーフ",
+-   "city": "名古屋市中区",
+-   "kinds": [
+-    "火葬",
+-    "納骨堂"
+-   ],
+-   "services": [],
+-   "u": "https://relief-pet.com/blog/206",
+-   "id": "Se8235c",
+-   "review_query": "ペットセレモニーリリーフ 名古屋市中区",
+-   "review_name": "ペットセレモニーリリーフ",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "愛知県",
+@@ -9590,12 +9693,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://smile-ceremony.jp/",
+    "id": "S12731c",
+    "review_query": "スマイルセレモニー 小牧市",
+    "review_name": "スマイルセレモニー",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed"
+   },
+   {
+    "pref": "愛知県",
+@@ -9611,7 +9717,10 @@
+    "id": "S38d591",
+    "review_query": "蒲郡ペット霊園社 蒲郡市",
+    "review_name": "蒲郡ペット霊園社",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "愛知県蒲郡市旭町3番10号",
++   "notice": "公式サイトに書かれた来訪先の住所は愛知県蒲郡市旭町3番10号です。"
+   },
+   {
+    "pref": "愛知県",
+@@ -9620,12 +9729,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://pet-daisy.net/access/",
+    "id": "S18a436",
+    "review_query": "ペットメモリアル デイジー(豊田市) 豊田市",
+    "review_name": "ペットメモリアル デイジー",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "福岡県",
+@@ -9641,7 +9753,10 @@
+    "id": "S1e7daf",
+    "review_query": "やすらぎの杜きよみず みやま市",
+    "review_name": "やすらぎの杜きよみず",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "福岡県みやま市瀬高町本吉字ハライ965番1",
++   "notice": "公式サイトに書かれた来訪先の住所は福岡県みやま市瀬高町本吉字ハライ965番1です。"
+   },
+   {
+    "pref": "福岡県",
+@@ -9650,12 +9765,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://tengoku-kitakyushu.com/contact.html",
+    "id": "Sad5107",
+    "review_query": "メモリーズ 北九州 北九州市小倉北区",
+    "review_name": "メモリーズ 北九州",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "福岡県",
+@@ -9664,12 +9782,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://tengoku-fukuoka.com/",
+    "id": "S0a13db",
+    "review_query": "天国への扉 ペットメモリアル福岡 太宰府市",
+    "review_name": "天国への扉 ペットメモリアル福岡",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "福岡県",
+@@ -9684,7 +9805,10 @@
+    "id": "S14b5f5",
+    "review_query": "ペット霊園直方 直方市",
+    "review_name": "ペット霊園直方",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "福岡県直方市大字下境1013-1",
++   "notice": "公式サイトに書かれた来訪先の住所は福岡県直方市大字下境1013-1です。"
+   },
+   {
+    "pref": "福岡県",
+@@ -9694,12 +9818,16 @@
+     "火葬",
+     "霊園"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://jpc-fukuoka.jp/",
+    "id": "S72b8ad",
+    "review_query": "福岡ペットセレモニー 福岡市中央区",
+    "review_name": "福岡ペットセレモニー",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "公式サイトに書かれた会場の住所は福岡県那珂川市西畑425-1です。掲載している市と異なるため、確認が済むまで経路は出していません。"
+   },
+   {
+    "pref": "福岡県",
+@@ -9714,7 +9842,9 @@
+    "id": "S366777",
+    "review_query": "動愛園 油山斎場 福岡市南区",
+    "review_name": "動愛園 油山斎場",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "来訪先は、このカードでは確認できていません。経路は出していません。"
+   },
+   {
+    "pref": "福岡県",
+@@ -9723,12 +9853,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://www.petmarch-fukuoka.com/",
+    "id": "S7f164b",
+    "review_query": "ペットマーチ 福岡市早良区",
+    "review_name": "ペットマーチ",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed"
+   },
+   {
+    "pref": "福岡県",
+@@ -9743,7 +9876,10 @@
+    "id": "S14d646",
+    "review_query": "ペット霊園 さわらメモリアルパーク 福岡市早良区",
+    "review_name": "ペット霊園 さわらメモリアルパーク",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "福岡県福岡市早良区西289-4",
++   "notice": "公式サイトに書かれた来訪先の住所は福岡県福岡市早良区西289-4です。"
+   },
+   {
+    "pref": "福岡県",
+@@ -9759,7 +9895,10 @@
+    "id": "Sd95a31",
+    "review_query": "ペットセレモ福岡 福岡市東区",
+    "review_name": "ペットセレモ福岡",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "福岡県福岡市東区筥松2丁目31-10",
++   "notice": "公式サイトに書かれた来訪先の住所は福岡県福岡市東区筥松2丁目31-10です。"
+   },
+   {
+    "pref": "福岡県",
+@@ -9774,7 +9913,9 @@
+    "id": "S5c2ca2",
+    "review_query": "犬眠社 筑紫野市",
+    "review_name": "犬眠社",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "来訪先は、このカードでは確認できていません。経路は出していません。"
+   },
+   {
+    "pref": "福岡県",
+@@ -9783,12 +9924,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://pet-poppy.com/",
+    "id": "Sb25159",
+    "review_query": "ペット訪問火葬ポピー 鞍手郡小竹町",
+    "review_name": "ペット訪問火葬ポピー",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "福岡県",
+@@ -9798,12 +9942,16 @@
+     "火葬",
+     "霊園"
+    ],
+-   "services": [],
++   "services": [
++    "お迎え"
++   ],
+    "u": "https://www.pet-tenshinomori.com/",
+    "id": "Se44fe4",
+    "review_query": "ペット霊園 天使の森 飯塚市",
+    "review_name": "ペット霊園 天使の森",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "来訪先は、このカードでは確認できていません。経路は出していません。"
+   },
+   {
+    "pref": "三重県",
+@@ -9819,7 +9967,10 @@
+    "id": "Se4eee5",
+    "review_query": "桑名ペットメモリアル 四日市",
+    "review_name": "桑名ペットメモリアル",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "三重県四日市市天カ須賀4-6-9",
++   "notice": "公式サイトに書かれた来訪先の住所は三重県四日市市天カ須賀4-6-9です。"
+   },
+   {
+    "pref": "山口県",
+@@ -9834,7 +9985,9 @@
+    "id": "Se37282",
+    "review_query": "酉谷寺ペット霊園 下関市",
+    "review_name": "酉谷寺ペット霊園",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "unconfirmed",
++   "notice": "来訪先は、このカードでは確認できていません。経路は出していません。"
+   },
+   {
+    "pref": "山梨県",
+@@ -9843,12 +9996,15 @@
+    "kinds": [
+     "火葬"
+    ],
+-   "services": [],
++   "services": [
++    "訪問火葬"
++   ],
+    "u": "https://jpc-yamanashi.jp/",
+    "id": "Sfb3759",
+    "review_query": "山梨ペットセレモニー 上野原市",
+    "review_name": "山梨ペットセレモニー",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "none"
+   },
+   {
+    "pref": "岐阜県",
+@@ -9863,7 +10019,86 @@
+    "id": "S11d757",
+    "review_query": "大龍寺動物霊園 多治見市",
+    "review_name": "大龍寺動物霊園",
+-   "checked": "2026-11-27"
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "岐阜県多治見市廿原町225-1",
++   "notice": "公式サイトに書かれた来訪先の住所は岐阜県多治見市廿原町225-1です。"
++  },
++  {
++   "pref": "埼玉県",
++   "name": "ペットメモリアルぽちたま",
++   "city": "春日部市",
++   "kinds": [
++    "火葬",
++    "霊園",
++    "納骨堂"
++   ],
++   "services": [
++    "お迎え"
++   ],
++   "u": "https://potitama.com/",
++   "id": "S9c2cde",
++   "review_query": "ペットメモリアルぽちたま 春日部市",
++   "review_name": "ペットメモリアルぽちたま",
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "埼玉県春日部市永沼688-2",
++   "notice": "立ち会い火葬ができる場所は埼玉県春日部市永沼688-2です。"
++  },
++  {
++   "pref": "兵庫県",
++   "name": "わんにゃんセレモニーエムズ",
++   "city": "神戸市長田区",
++   "kinds": [
++    "火葬"
++   ],
++   "services": [
++    "訪問火葬"
++   ],
++   "u": "https://www.wanwan-nyannyan.com/",
++   "id": "Sef1a4d",
++   "review_query": "わんにゃんセレモニーエムズ 神戸市長田区",
++   "review_name": "わんにゃんセレモニーエムズ",
++   "checked": "2026-11-27",
++   "visit": "none"
++  },
++  {
++   "pref": "神奈川県",
++   "name": "株式会社誠行社",
++   "city": "逗子市",
++   "kinds": [
++    "火葬",
++    "納骨堂"
++   ],
++   "services": [
++    "お迎え"
++   ],
++   "u": "https://www.zushi-seikousha.co.jp/pet/",
++   "id": "S5493f2",
++   "review_query": "株式会社誠行社 逗子市",
++   "review_name": "株式会社誠行社",
++   "checked": "2026-11-27",
++   "visit": "public",
++   "addr": "神奈川県逗子市小坪7-1216",
++   "notice": "立ち会い火葬ができる場所は神奈川県逗子市小坪7-1216です。"
++  },
++  {
++   "pref": "愛知県",
++   "name": "ペットセレモニーリリーフ",
++   "city": "名古屋市中区",
++   "kinds": [
++    "火葬",
++    "納骨堂"
++   ],
++   "services": [
++    "訪問火葬"
++   ],
++   "u": "https://relief-pet.com/",
++   "id": "Se8235c",
++   "review_query": "ペットセレモニーリリーフ 名古屋市中区",
++   "review_name": "ペットセレモニーリリーフ",
++   "checked": "2026-11-27",
++   "visit": "none"
+   }
+  ]
+ }
+diff --git a/tools/sougi_hold.json b/tools/sougi_hold.json
+new file mode 100644
+index 0000000..4eea80a
+--- /dev/null
++++ b/tools/sougi_hold.json
+@@ -0,0 +1,22 @@
++{
++ "note": "出典・場所の確認が済むまで公開から外している施設（記録は残す）",
++ "facilities": [
++  {
++   "pref": "千葉県",
++   "name": "メモリアルパークガーデンきさらぎ",
++   "city": "木更津市",
++   "kinds": [
++    "火葬",
++    "霊園"
++   ],
++   "services": [],
++   "u": "https://mp-gardenkisaragi.com/",
++   "id": "S2bdcf2",
++   "review_query": "メモリアルパークガーデンきさらぎ 木更津市",
++   "review_name": "メモリアルパークガーデンきさらぎ",
++   "checked": "2026-11-27",
++   "hold_reason": "人の霊園（ペット共葬可）で、ペットの火葬・葬儀の記載なし。2026-11-27 公式サイト確認",
++   "hold_since": "2026-11-27"
++  }
++ ]
++}
