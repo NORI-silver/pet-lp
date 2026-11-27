@@ -1,0 +1,26 @@
+diff --git a/facility.js b/facility.js
+index cb900881..d03e8c0a 100644
+--- a/facility.js
++++ b/facility.js
+@@ -184,7 +184,7 @@
+     if (href) { var s = el("a", "fac-site", acts ? "公式サイト ↗" : "公式サイトを見る ↗"); s.setAttribute("data-ga", ""); s.href = siteUrl(href, cat); s.target = "_blank"; s.rel = "noopener"; s.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: fid, pref: prefOf(card), from: "button"}); }); row.appendChild(s); }
+     if (CONF[cat]) { var q = el("button", acts ? "fc-a fc-a-note" : "", acts ? "問い合わせ文" : "問い合わせ文をつくる"); if (acts) q.setAttribute("aria-label", "問い合わせ文をつくる"); q.type = "button"; q.addEventListener("click", function(){ openAsk(card); }); row.appendChild(q); }
+     var to = card.getAttribute("data-to");
+-    if (to) {
++    if (to && !card.querySelector(".emg-taxi:not(.fc-a-info)")) {  // 生成ずみのカードに料金のリンクがあるときは、もう1つ足さない（「くわしく」の案内リンクは数えない）
+       var tl = (card.getAttribute("data-to-label") || "ここ") + "までのペットタクシーの料金をくらべる";
+       var t = el("a", acts ? "fac-taxi fc-a fc-a-car" : "fac-taxi", acts ? "タクシー料金" : tl + " →"); if (acts) t.setAttribute("aria-label", tl);
+       var pf = prefOf(card);
+diff --git a/tools/cardskin.py b/tools/cardskin.py
+index 71852644..dbcc3989 100644
+--- a/tools/cardskin.py
++++ b/tools/cardskin.py
+@@ -227,6 +227,8 @@ def fc(blk):
+         route_label = "事業所への経路" if office_pin else "経路を見る"
+         rt_more = _route_more('<a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination=' + quote(dest) + f'" target="_blank" rel="noopener" data-route>{route_label}</a>')
+     grid = '<div class="ux-c-a">' + "".join(btn) + "</div>" + rt_more
++    if a0.get("data-cat") in ("trim", "trainer") and not (to and re.search(r"[都道府県市区町村郡]", to)):  # 行き先の分かる施設は facility.js が行き先つきのリンクを足す。分からない施設（出張・住所なし）は、行き先を入れない通常の料金ページへ（Nori 2026-11-27 00:05 のカードの決まり：公開の住所がないときは通常の料金ページ）
++        b = b.replace('<div class="fc-acts">', '<div class="fc-acts"><a class="emg-taxi fc-a fc-a-car" href="/#form" aria-label="ペットタクシーの料金（行き先なし）">ペットタクシーの料金</a>', 1)
+     b = b[:acts.start()] + grid + b[acts.start():]
+     return _add_cls(b[:len(ot)]) + b[len(ot):]
+ 
