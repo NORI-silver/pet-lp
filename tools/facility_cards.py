@@ -7,7 +7,7 @@ import re
 
 SCRIPT = '<script src="/facility.js" defer></script>'
 
-SOUGI_CHIPS = ["個別火葬", "立ち会い", "お迎え・訪問火葬", "霊園・納骨", "料金を公開"]
+SOUGI_CHIPS = ["個別火葬", "立ち会い", "お迎えまたは訪問火葬", "霊園・納骨", "料金を公開"]
 TRAINER_CHIPS = ["出張・訪問", "教室・グループ", "パピー", "問題行動", "幼稚園・保育園", "預かり訓練", "オンライン"]
 SITTER_CHIPS = ["猫", "小動物", "鳥", "散歩"]
 
@@ -20,7 +20,7 @@ def sougi_tags(f):
     if "立ち会い火葬" in s: t.append("立ち会い")
     if "お骨を返してもらえる" in s: t.append("お骨を返してもらえる")
 
-    if "お迎え" in s or "訪問火葬" in s: t.append("お迎え・訪問火葬")
+    if "お迎え" in s or "訪問火葬" in s: t.append("お迎えまたは訪問火葬")
     if s & {"霊園", "納骨", "納骨堂"}: t.append("霊園・納骨")
     _wt = (f.get("web") or {}).get("text", "") if isinstance(f.get("web"), dict) else ""
     if _wt:
