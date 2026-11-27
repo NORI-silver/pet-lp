@@ -1,0 +1,43 @@
+diff --git a/tests/dogrun-fee-unconfirmed.test.cjs b/tests/dogrun-fee-unconfirmed.test.cjs
+new file mode 100644
+index 0000000..9906abd
+--- /dev/null
++++ b/tests/dogrun-fee-unconfirmed.test.cjs
+@@ -0,0 +1,11 @@
++// 公式ページに料金が書かれていないドッグランを「無料」にしない（不在は無料の根拠にならない）
++const fs = require('fs'), assert = require('assert');
++const d = JSON.parse(fs.readFileSync('tools/dogrun.json', 'utf8'));
++const L = Array.isArray(d) ? d : Object.values(d).find(Array.isArray);
++for (const r of L) if (r.fee && /記載なし/.test(r.fee)) assert.ok(r.fee.startsWith('未確認'), r.id + ': 記載なしを無料にしている');
++const html = fs.readFileSync('dogrun/saitama/index.html', 'utf8');
++const i = html.indexOf('id="D174"'); assert.ok(i > 0);
++const card = html.slice(i, html.indexOf('id="D', i + 10) > 0 ? html.indexOf('id="D', i + 10) : i + 6000);
++assert.ok(/未確認（公式ページに料金の記載なし/.test(card), 'D174 の料金が未確認になっていない');
++assert.ok(!/料金[^<]{0,40}無料/.test(card), 'D174 が無料と読める');
++console.log('dogrun-fee-unconfirmed ok');
+diff --git a/tools/dogrun.json b/tools/dogrun.json
+index 5e86be0..a99e749 100644
+--- a/tools/dogrun.json
++++ b/tools/dogrun.json
+@@ -619,7 +619,7 @@
+    "src": [
+     "https://www.city.asaka.lg.jp/soshiki/14/hamasaki-dogrun.html"
+    ],
+-   "fee": "無料（公式ページに料金の記載なし）",
++   "fee": "未確認（公式ページに料金の記載なし。無料とは書かれていない）",
+    "limit": "1人2頭まで（同じエリアで使い、犬を残して出ない）",
+    "rules": "鑑札と注射済票を犬に付け、登録証を持つ。中学生以下は保護者と一緒。ノーリードは各エリアの中だけ（なれない犬・指示を聞けない犬はリード、のびるリードは使わない）。おもちゃ・運動用具、競技や練習、飲食・えさやり・ブラッシング・シャンプーはしない。喫煙・火気もだめ。ふんやゴミは持ち帰り、掘った穴は埋めもどす",
+    "equip": "掲示板、手洗い場",
+diff --git a/tools/gen_dogrun.py b/tools/gen_dogrun.py
+index bc80b09..4615eda 100644
+--- a/tools/gen_dogrun.py
++++ b/tools/gen_dogrun.py
+@@ -46,7 +46,7 @@ FIELDS = [("addr", "所在地"), ("place", "場所"), ("hours", "利用時間"),
+ 
+ def fee_tag(d):
+     f = d.get("fee", "")
+-    if not f: return None
++    if not f or f.startswith("未確認"): return None
+     if f.startswith("無料"): return "無料"
+     if f.startswith(("利用は無料", "ドッグランは無料")): return "利用は無料"
+     return "有料"
