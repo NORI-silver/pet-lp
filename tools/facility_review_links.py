@@ -28,6 +28,8 @@ _PLACES = {
 
 
 def link(category, row, cls="fc-a fc-a-star", *, scope=None):
+    # 2026-11-27 利用者の指示：口コミのボタンから Google マップへ飛ばさない。サイト内で口コミを読めるようにする別の作業が終わるまで、外へ出るリンクは出さない。
+    return ""
     # 検索語・住所から自動推測しない。探偵には事業者の正式URL、それ以外は掲載IDを使う。
     index = row.get("url") if category == "detective" else row.get("id")
     hit = _PLACES.get((category, index))
