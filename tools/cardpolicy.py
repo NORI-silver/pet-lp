@@ -332,6 +332,15 @@ def card(blk, h, cat, more=None, compact=False):
     name, url = h["name"], h["url"]
     locv = h.get("addr") or h.get("area") or "".join(h.get("prefs", [])) + h.get("city", "")
     fl = fields(h)
+    # 料金の文が長い施設：カードの上には「代表の料金＋必ずかかる別料金」の要約（facts の sum）、全文は「詳しく見る」の最初に置く（事実は1つも消さない）
+    _full = []
+    _fl2 = []
+    for icn, lab, val, f in fl:
+        if icn == "yen" and isinstance(f, dict) and f.get("sum") and val == f.get("v") and not _nobase_rojin(f["sum"]):  # 上の _guard と同じ判定を要約にもかける（基本の料金が書かれていない文を、基本の料金のように見せない）
+            _full.append(("料金（全文）", val, f.get("src"), f.get("checked")))
+            val = f["sum"]
+        _fl2.append((icn, lab, val, f))
+    fl = _fl2
     loc = "" if any(v == locv for _, _, v, _ in fl) else f'<p class="pc-loc pin"><span>{E(locv)}</span></p>'  # 同じ文を2回出さない
     cl = h.get("closed")  # いま受け入れを休止（公式サイトの表示）。JSなしでも見える札と、さがす箱(find.js)が読む目印
     if cl: ot = ot[:-1] + ' data-closed="1">'
@@ -342,6 +351,7 @@ def card(blk, h, cat, more=None, compact=False):
         li.append(f'<li class="{icn}"><b>{lab}</b><span>{v}</span></li>')  # 項目の絵はCSS（::before）。1枚ずつSVGを置かない（重いページの容量のため。ラベルの文字が意味を持つ）
     shown = " ".join(v for _, _, v, _ in fl)
     rows = [r for r in detail(h) if r[1] not in shown]  # カードの項目にそのまま出した文は、くり返さない
+    rows = _full + [r for r in rows if not any(r[1] == fv for _, fv, _, _ in _full)]  # 全文は1回だけ（上の「料金（全文）」に置いたので、もとの「料金：」の行はくり返さない）
     # もとのカードに書いてあった施設ごとの記載（「そのほか」の中・条件の1行・一覧の行）のうち、新しい項目にも出ていないものは消さずに「詳しく見る」に残す
     _n = lambda x: re.sub(r"[、。，,．・：:／/（）()\s]", "", x)
     have = _n(shown + " " + " ".join(r[1] for r in rows) + " " + locv + " " + " ".join(ov))
