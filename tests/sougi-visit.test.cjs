@@ -14,9 +14,11 @@ function card(h, id) {
   const e = h.indexOf('<div class="emg-item', i + 10);
   return h.slice(i, e > 0 ? e : i + 4000);
 }
-let nPub = 0, nOther = 0, nHold = 0;
+let nPub = 0, nOther = 0, nHold = 0, listed = 0;
 for (const f of D) {
   if (!f.visit) continue;
+  assert.ok(all.includes(`data-fid="${f.id}"`), f.name + ': 一覧に出ている');
+  listed++;
   const b = card(all, f.id);
   if (f.visit === 'public') {
     nPub++; assert.ok(f.addr && f.notice && b.includes(esc(f.notice)), f.name + ': 来訪先の住所と注記をカードに書く');
@@ -24,6 +26,8 @@ for (const f of D) {
   } else {
     nOther++;
     assert.ok(!/data-route/.test(b), f.name + ': 経路を出さない');
+    assert.ok(!/ data-to="/.test(b.slice(0, b.indexOf('>') + 1)), f.name + ': data-to を持たない');
+    assert.ok(!/href="\/\?to=/.test(b), f.name + ': タクシーの行き先を入れない（href で確認）');
     assert.ok(!/class="emg-taxi[^"]*"[^>]*href="\/\?to=/.test(b), f.name + ': タクシーの行き先を入れない');
     assert.ok(b.includes(esc(f.notice || TXT[f.visit])), f.name + ': 理由をカードに書く');
     assert.ok(b.includes('href="' + f.u.replace(/&/g, '&amp;') + '"') || b.includes('公式サイト'), f.name + ': 公式サイトのリンクは残す');
@@ -34,19 +38,35 @@ assert.ok(nPub > 0 && nOther > 0 && nHold > 0, 'public/other/hold are all presen
 console.log('sougi-visit ok', nPub, nOther, nHold);
 {
   const audited = D.filter((f) => f.visit).length, legacy = D.filter((f) => !f.visit).length;
+  assert.equal(legacy, 0, '来館先の状態が未設定の施設はない（未確認は visit=unconfirmed で経路を出さない）');
   assert.equal(D.length + H.length, 287, '287 = 一覧 + 確認中');
-  assert.equal(D.length, 286); assert.equal(legacy, 202); assert.equal(audited, 84);
+  assert.equal(D.length, 286); assert.equal(audited, 286); assert.equal(D.filter((f) => f.visit === 'public').length, 30);
 }
 {
   // お迎えだけの施設は「お迎え対応」だけ、訪問火葬だけの施設は「訪問火葬対応」だけを、カードに書く（一方を他方と読ませない）
   let nP = 0, nV = 0;
   for (const f of D) {
     if (!f.visit) continue;
+    if (!all.includes(`data-fid="${f.id}"`)) continue;
+    if (!f.notice && f.visit === 'unconfirmed') continue; // 未監査の旧データ（来館先は未確認で経路なし）。お迎え/訪問の区別は監査後に書く
     const sv = f.services || [], b = card(all, f.id);
     const pick = sv.includes('お迎え'), vis = sv.includes('訪問火葬');
     if (pick && !vis) { nP++; assert.ok(b.includes('お迎え対応') && !b.includes('訪問火葬対応'), f.name + ': お迎えだけ'); }
     if (vis && !pick) { nV++; assert.ok(b.includes('訪問火葬対応') && !b.includes('お迎え対応'), f.name + ': 訪問火葬だけ'); }
   }
-  assert.ok(nP > 0 && nV > 0, 'pickup-only and visiting-only both present');
+  assert.equal(nP, 15); assert.equal(nV, 34); // 監査済みの84件の内訳（未監査の旧データはこの行を持たない）
   console.log('sougi-visit pickup/visiting ok', nP, nV);
+}
+
+{
+  // 全286件：お迎え・訪問火葬のサービスは、データにある限りカードのタグに残る（来館先の安全対応でサービスを消さない）
+  let n = 0;
+  for (const f of D) {
+    const sv = f.services || [];
+    if (!(sv.includes('お迎え') || sv.includes('訪問火葬'))) continue;
+    const b = card(all, f.id); n++;
+    assert.ok(b.includes('お迎えまたは訪問火葬'), f.name + ': サービスのタグが残る');
+  }
+  assert.equal(listed, 286, '286件すべてが一覧に出ている');
+  assert.ok(n > 100, 'お迎え/訪問の施設が多数ある: ' + n);
 }
