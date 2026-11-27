@@ -200,7 +200,8 @@ def fc(blk):
     def _ln(m):
         ic = FC_IC.get(m.group(2), "・")
         cls = " cs-p" if m.group(1) == "price" else ""
-        return f'<p class="ux-c-l cs-l{cls}"><i aria-hidden="true">{ic}</i><span>{m.group(3)}</span></p>'
+        sty = ' style="display:block;overflow:visible"' if 'title="ご利用の前に"' in m.group(0)[:80] else ""  # 来館先の注記は途中で切らずに全部見せる
+        return f'<p class="ux-c-l cs-l{cls}"><i aria-hidden="true">{ic}</i><span{sty}>{m.group(3)}</span></p>'
     b = re.sub(r'<p class="fc-(line|price)"[^>]*><svg[^>]*><use href="#fci-([a-z]+)"/></svg><span>(.*?)</span></p>', _ln, b, flags=re.S)
     b = b.replace('<ul class="fc-tags">', '<ul class="dr-tags">')
     # 大きいボタン2つ：公式サイト・経路（行き先が分かるときだけ）
