@@ -66,6 +66,11 @@ def _tels():
     return {x["id"]: x for x in its if x.get("tel") and x.get("tel_src") and not x.get("closed")}
 _TEL = _tels()
 
+def has_detail(h):
+    """この病院に、一覧ページより詳しい項目（時間・動物・設備・支払いなど）があるか。ないなら「診療内容の詳細」は出さない。"""
+    return any(h.get(k) for k in ("hours", "closed", "animals", "spec", "services", "pay", "facts", "depts"))
+
+
 def record(h, pref, tags, depts_of):
     """1院を検索用の短い形にする。y＝書いてある（合う）、n＝はっきり合わない。どちらにもない項目は「書いていない」。"""
     y, n = set(tags), set()
@@ -84,6 +89,7 @@ def record(h, pref, tags, depts_of):
     only_dog = re.search(r"犬(のみ|だけ)", animals) and not re.search(r"猫", re.sub(r"犬(のみ|だけ)", "", animals))
     if only_cat: n.add("dog"); y.add("cat")
     elif only_dog: n.add("cat"); y.add("dog")
+    elif h.get("blank") and not (animals or spec or tags): pass  # blank=1（動物・時間などを未確認のまま足した病院）は、犬・猫を「書いてある」にしない（不明のまま。2026-11-27）
     else: y.update(("dog", "cat"))
     for k, rx in _AN_RX.items():
         if re.search(rx, a_txt): y.add(k)
@@ -195,7 +201,7 @@ def build(ROOT, ctx, CONDS, rows_of, hhref_of, vet_by_pref, vet_page_of, pslug, 
         recs = []
         for name, x in m.items():
             r = record(x["h"], pf, x["tags"], depts_of)
-            pg = hhref_of(x["h"]) or vet_page_of(pf, x["h"])
+            pg = hhref_of(x["h"]) or (vet_page_of(pf, x["h"]) if not (x["h"].get("blank") and not has_detail(x["h"])) else "")
             home = x["h"].get("pref") or (x["h"].get("prefs") or [pf])[0]
             if "visit" in x["tags"] and home != pf: r["c"] = ""; r["vz"] = 1  # ほかの県のお店から、この県へも来てくれる往診
             if pg: r["pg"] = pg
