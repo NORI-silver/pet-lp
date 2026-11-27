@@ -17,6 +17,7 @@ function card(h, id) {
 let nPub = 0, nOther = 0, nHold = 0;
 for (const f of D) {
   if (!f.visit) continue;
+  if (!all.includes(`data-fid="${f.id}"`)) continue; // 一覧に出ていない施設は対象外
   const b = card(all, f.id);
   if (f.visit === 'public') {
     nPub++; assert.ok(f.addr && f.notice && b.includes(esc(f.notice)), f.name + ': 来訪先の住所と注記をカードに書く');
@@ -34,14 +35,17 @@ assert.ok(nPub > 0 && nOther > 0 && nHold > 0, 'public/other/hold are all presen
 console.log('sougi-visit ok', nPub, nOther, nHold);
 {
   const audited = D.filter((f) => f.visit).length, legacy = D.filter((f) => !f.visit).length;
+  assert.equal(legacy, 0, '来館先の状態が未設定の施設はない（未確認は visit=unconfirmed で経路を出さない）');
   assert.equal(D.length + H.length, 287, '287 = 一覧 + 確認中');
-  assert.equal(D.length, 286); assert.equal(legacy, 202); assert.equal(audited, 84);
+  assert.equal(D.length, 286); assert.equal(audited, 286); assert.equal(D.filter((f) => f.visit === 'public').length, 30);
 }
 {
   // お迎えだけの施設は「お迎え対応」だけ、訪問火葬だけの施設は「訪問火葬対応」だけを、カードに書く（一方を他方と読ませない）
   let nP = 0, nV = 0;
   for (const f of D) {
     if (!f.visit) continue;
+    if (!all.includes(`data-fid="${f.id}"`)) continue;
+    if (!f.notice && f.visit === 'unconfirmed') continue; // 未監査の旧データ（来館先は未確認で経路なし）。お迎え/訪問の区別は監査後に書く
     const sv = f.services || [], b = card(all, f.id);
     const pick = sv.includes('お迎え'), vis = sv.includes('訪問火葬');
     if (pick && !vis) { nP++; assert.ok(b.includes('お迎え対応') && !b.includes('訪問火葬対応'), f.name + ': お迎えだけ'); }
