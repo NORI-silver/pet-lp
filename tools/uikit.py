@@ -211,10 +211,11 @@ def taxi(h, cat):
         title, href, cta, uls = m.group(1), m.group(2), m.group(3), m.group(4)
         guide, area = _split_links(uls)
         key = cat.replace("-bottom", "")
+        link_txt = "ペットタクシーを探す" if title.startswith("来館先が分かったら") else TX_LINK.get(key, "")
         if key in TX_LINK:
             out = ('<section style="padding-top:0" class="ux-tx-sec">\n  <div class="wrap">\n'
                    f'    <nav class="ux-nav" aria-label="関連のページ"><h2 class="ux-nav-h">{title}</h2><ul class="other">'
-                   f'<li><!--TAXICTA--><a href="{href}" data-taxi-cta="{cta}">{e(TX_LINK[key])}</a><!--/TAXICTA--></li>{"".join(guide)}</ul></nav>\n')
+                   f'<li><!--TAXICTA--><a href="{href}" data-taxi-cta="{cta}">{e(link_txt)}</a><!--/TAXICTA--></li>{"".join(guide)}</ul></nav>\n')
             if area: out += f'    <details class="ux-areas"><summary>地域のペットタクシー</summary><ul class="other">{"".join(area)}</ul></details>\n'
             return out
         out = ('<section style="padding-top:0" class="ux-tx-sec">\n  <div class="wrap">\n'
