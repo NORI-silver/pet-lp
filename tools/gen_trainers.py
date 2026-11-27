@@ -48,7 +48,12 @@ def _card(e, t):
     if t.get("area"): extra += f'<small>対応エリア：{e(t["area"])}</small>'
     if t.get("cert"): extra += f'<small>資格・登録（公式サイトより）：{e(t["cert"])}</small>'
     if t.get("assoc"):
-        extra += '<small>協会の一覧：' + e("・".join(ASSOC.get(a, a) for a in t["assoc"].split("・"))) + '</small>'
+        _al = t.get("assoc_listed") or {}
+        _ls = [a for a in t["assoc"].split("・") if a in _al]
+        _rest = [ASSOC.get(a, a) for a in t["assoc"].split("・") if a not in _al]
+        _LAB = {"JAHA": "JAHAのしつけ教室一覧に掲載", "JAPDT": "JAPDTの会員トレーナー一覧に掲載"}
+        if _ls: extra += '<small>' + e("・".join(_LAB.get(a, a) for a in _ls)) + '（' + e(_al.get("checked", "")) + '確認。一覧に載っているだけで、資格や認定の確認ではありません）</small>'
+        if _rest: extra += '<small>協会の一覧：' + e("・".join(_rest)) + '</small>'
     if t.get("addr"): extra += f'<small>所在地：{e(t["addr"])}</small>'
     # [B] 2026-11-22 Nori「他のサイトにいって追加で調べることがないように」：公式サイトに書いてある料金・時間・休み・対象・出張費・お支払いもカードに
     fx = {}
