@@ -52951,6 +52951,254 @@
      "url": "https://storage.googleapis.com/production-os-assets/assets/372d6df5-b6df-4a0f-907a-42e4fd3e417d"
     }
    ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D025",
+   "name": "県営西公園ドッグラン",
+   "url": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-28",
+   "photos": [
+    "/img/fac/dogrun/D025_1.webp",
+    "/img/fac/dogrun/D025_2.webp"
+   ],
+   "credit": "出典：福岡県公式ホームページ https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+   "ratio": [
+    1.333,
+    1.333
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+     "url": "https://www.pref.fukuoka.lg.jp/uploaded/life/809629_62831123_img.jpg"
+    },
+    {
+     "page": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+     "url": "https://www.pref.fukuoka.lg.jp/uploaded/life/809629_62831129_img.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D055",
+   "name": "蘇南公園ドッグラン広場",
+   "url": "https://www.city.konan.lg.jp/kurashi/pets/1005739/1005789.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-28",
+   "photos": [
+    "/img/fac/dogrun/D055_1.webp"
+   ],
+   "credit": "出典：江南市公式ホームページ https://www.city.konan.lg.jp/kurashi/pets/1005739/1005789.html（縮小・再圧縮あり）",
+   "ratio": [
+    1.25
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.city.konan.lg.jp/kurashi/pets/1005739/1005789.html",
+     "url": "https://www.city.konan.lg.jp/_res/projects/default_project/_page_/001/003/911/r7dogrun6.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D071",
+   "name": "県営春日公園ドッグラン",
+   "url": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-28",
+   "photos": [
+    "/img/fac/dogrun/D071_1.webp",
+    "/img/fac/dogrun/D071_2.webp"
+   ],
+   "credit": "出典：福岡県公式ホームページ https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+   "ratio": [
+    1.338,
+    1.338
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+     "url": "https://www.pref.fukuoka.lg.jp/uploaded/life/809629_62831126_img.jpg"
+    },
+    {
+     "page": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+     "url": "https://www.pref.fukuoka.lg.jp/uploaded/life/809629_62831127_img.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D072",
+   "name": "県営筑後広域公園ドッグラン",
+   "url": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-28",
+   "photos": [
+    "/img/fac/dogrun/D072_1.webp",
+    "/img/fac/dogrun/D072_2.webp"
+   ],
+   "credit": "出典：福岡県公式ホームページ https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+   "ratio": [
+    1.333,
+    1.333
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+     "url": "https://www.pref.fukuoka.lg.jp/uploaded/life/809629_62831132_img.jpg"
+    },
+    {
+     "page": "https://www.pref.fukuoka.lg.jp/contents/dog-run.html",
+     "url": "https://www.pref.fukuoka.lg.jp/uploaded/life/809629_62831134_img.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D144",
+   "name": "えこりん村「SHEEP SHEEP」ドッグラン",
+   "url": "https://www.ecorinvillage.com/facility/dogrun.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-28",
+   "photos": [
+    "/img/fac/dogrun/D144_1.webp",
+    "/img/fac/dogrun/D144_2.webp"
+   ],
+   "credit": "写真：えこりん村「SHEEP SHEEP」ドッグラン",
+   "ratio": [
+    1.51,
+    1.51
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.ecorinvillage.com/facility/dogrun.html",
+     "url": "https://www.ecorinvillage.com/facility/dogrun.html"
+    },
+    {
+     "page": "https://www.ecorinvillage.com/facility/dogrun.html",
+     "url": "https://www.ecorinvillage.com/facility/dogrun.html"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D182",
+   "name": "西部運動公園ドッグラン",
+   "url": "https://seibu-sports-park.com/facility/dogrun/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-28",
+   "photos": [
+    "/img/fac/dogrun/D182_1.webp",
+    "/img/fac/dogrun/D182_2.webp",
+    "/img/fac/dogrun/D182_3.webp",
+    "/img/fac/dogrun/D182_4.webp",
+    "/img/fac/dogrun/D182_5.webp"
+   ],
+   "credit": "写真：西部運動公園ドッグラン",
+   "ratio": [
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5
+   ],
+   "source_photos": [
+    {
+     "page": "https://seibu-sports-park.com/facility/dogrun/",
+     "url": "https://seibu-sports-park.com/facility/dogrun/"
+    },
+    {
+     "page": "https://seibu-sports-park.com/facility/dogrun/",
+     "url": "https://seibu-sports-park.com/facility/dogrun/"
+    },
+    {
+     "page": "https://seibu-sports-park.com/facility/dogrun/",
+     "url": "https://seibu-sports-park.com/facility/dogrun/"
+    },
+    {
+     "page": "https://seibu-sports-park.com/facility/dogrun/",
+     "url": "https://seibu-sports-park.com/facility/dogrun/"
+    },
+    {
+     "page": "https://seibu-sports-park.com/facility/dogrun/",
+     "url": "https://seibu-sports-park.com/facility/dogrun/"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D184",
+   "name": "DogWiller（ドッグウィラー）のドッグラン",
+   "url": "https://www.dogwiller.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-28",
+   "photos": [
+    "/img/fac/dogrun/D184_1.webp"
+   ],
+   "credit": "写真：DogWiller（ドッグウィラー）のドッグラン",
+   "ratio": [
+    1.499
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.dogwiller.com/",
+     "url": "https://www.dogwiller.com/"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D208",
+   "name": "湯布院ドッグラン",
+   "url": "http://yufuin-dogrun.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-28",
+   "photos": [
+    "/img/fac/dogrun/D208_1.webp",
+    "/img/fac/dogrun/D208_2.webp",
+    "/img/fac/dogrun/D208_3.webp",
+    "/img/fac/dogrun/D208_4.webp",
+    "/img/fac/dogrun/D208_5.webp"
+   ],
+   "credit": "写真：湯布院ドッグラン",
+   "ratio": [
+    1.907,
+    1.907,
+    1.907,
+    1.907,
+    1.907
+   ],
+   "source_photos": [
+    {
+     "page": "https://yufuin-dogrun.com/",
+     "url": "https://yufuin-dogrun.com/"
+    },
+    {
+     "page": "https://yufuin-dogrun.com/",
+     "url": "https://yufuin-dogrun.com/"
+    },
+    {
+     "page": "https://yufuin-dogrun.com/",
+     "url": "https://yufuin-dogrun.com/"
+    },
+    {
+     "page": "https://yufuin-dogrun.com/",
+     "url": "https://yufuin-dogrun.com/"
+    },
+    {
+     "page": "https://yufuin-dogrun.com/",
+     "url": "https://yufuin-dogrun.com/"
+    }
+   ]
   }
  ]
 }

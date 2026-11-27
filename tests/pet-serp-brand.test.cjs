@@ -16,9 +16,9 @@ test('検索のページ題は内容を残し、末尾で旧サイト名を使�
     assert.match(h, /<meta property="og:site_name" content="ペットのくらし窓口">/, p);
   }
 });
-test('ホームのサイト名は窓口、ペットタクシーはページの内容として残る', () => {
+test('ホームは総合の窓口、ペットタクシーは分野のひとつとして残る', () => {
   const h=markup('index.html');
-  assert.match(h, /<title>ペットタクシー[^<]*｜ペットのくらし窓口<\/title>/);
+  assert.match(h, /<title>ペットのくらし窓口｜[^<]*ペットタクシー[^<]*<\/title>/);
   for (const name of ['WebSite','Organization']) {
     const meta=[...h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
       .flatMap(([,s]) => {const data=JSON.parse(s);return data['@graph']||data;})
