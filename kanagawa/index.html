@@ -1204,9 +1204,6 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
               <select id="hour" name="hour" required aria-label="時"><option value="">時</option><option value="00">0時</option><option value="01">1時</option><option value="02">2時</option><option value="03">3時</option><option value="04">4時</option><option value="05">5時</option><option value="06">6時</option><option value="07">7時</option><option value="08">8時</option><option value="09">9時</option><option value="10">10時</option><option value="11">11時</option><option value="12">12時</option><option value="13">13時</option><option value="14">14時</option><option value="15">15時</option><option value="16">16時</option><option value="17">17時</option><option value="18">18時</option><option value="19">19時</option><option value="20">20時</option><option value="21">21時</option><option value="22">22時</option><option value="23">23時</option></select>
               <select id="minute" name="minute" required aria-label="分"><option value="">分</option><option value="00">00分</option><option value="05">05分</option><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="25">25分</option><option value="30">30分</option><option value="35">35分</option><option value="40">40分</option><option value="45">45分</option><option value="50">50分</option><option value="55">55分</option></select>
             </div></div>
-          <button type="button" class="btn see-btn" id="seeBtn" aria-describedby="seeBtnHelp">会社と料金を見る</button>
-          <p class="see-sub" id="seeBtnHelp">ペットの条件を下の欄に入れると、条件に合う会社にしぼれます。料金の確認は無料です。まだ問い合わせは送信されません。</p>
-          <div class="est" id="est" hidden aria-live="polite"></div>
         </div>
 
         <div class="refine-bar" id="refineBar" hidden>
@@ -1246,6 +1243,9 @@ table.t2s.t2s.t2s.t2s td:empty,table.t2s.t2s.t2s.t2s td:has(>div:empty){display:
           </div>
           <div class="f opt-lite"><label for="luggage">荷物の量<span class="need">必須</span></label>
             <select id="luggage" name="luggage" required><option value="">選んでください</option><option selected>手荷物くらい</option><option>多め（スーツケース・大きなケージ・カートなど）</option></select></div>
+          <button type="button" class="btn see-btn" id="seeBtn" aria-describedby="seeBtnHelp">会社と料金を見る</button>
+          <p class="see-sub" id="seeBtnHelp">入力した条件で、会社と料金の目安を確認できます。確認は無料で、このボタンでは問い合わせは送信されません。</p>
+          <div class="est" id="est" hidden aria-live="polite"></div>
         </div>
 
         <p class="form-foot s1-hide">場所と日時を入れると、来てくれる会社と料金の目安が出ます（まだ送信されません）。料金は当日の道路事情や待ち時間で変わることがあります。</p>

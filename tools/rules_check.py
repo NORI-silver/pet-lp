@@ -75,6 +75,7 @@ FAC_CATS = ["hospital", "pet-hotel", "dogrun", "pet-sitter", "trimming", "dog-tr
 OWNER_CATS = ["pet-hotel", "pet-sitter", "trimming", "dog-trainer", "rojin-home", "sougi"]  # tools/ownerfit.py の CAT_WHO と同じ
 SEARCH_MARK = re.compile(r'class="(?:[^"]*\s)?(?:ux-find|hf|hn-find|bf|ff-box|fit-box|pref-pick|ux-c|emg-item|fr|jc-pick)(?:\s[^"]*)?"|<select\b|<input\b(?![^>]*type="hidden")')
 REASONS = {
+    "taxicta": "料金を見るボタンがペット情報と乗車条件の直後にない",
     "matchform": "タクシー候補の判定に使う入力欄が初期表示されていない（Nori 11/26）",
     "words": "使わない言葉", "hole": "下書きの穴（◯◯など）", "removed": "消した部品がもどった", "tally": "運営側の集計を見せている", "kv": "キービジュアルがない", "trust": "運営者と掲載の基準への表示がない",
     "prefgrid": f"都道府県のボタンを{PREFGRID_MAX + 1}個以上たたまずに並べている", "intro": f"さがす欄・見出しの前の文が{INTRO_MAX}字を超える",
@@ -284,8 +285,21 @@ def run(root):
         found.append(("matchform", "ワクチン欄が任意の折りたたみ内にあるか、なくなっている"))
     if found:
         res.setdefault("/", []).extend(found)
+    for path in pages(root):
+        if path != "/" and not re.match(r"^/(?:area|tokyo|kanagawa|chiba|saitama)/", path):
+            continue
+        file_path = os.path.join(root, path.lstrip("/"), "index.html")
+        if not os.path.isfile(file_path):
+            continue
+        html = source if path == "/" else open(file_path, encoding="utf-8").read()
+        if path != "/" and 'id="petForm"' not in html:
+            continue
+        keys = ('id="petCount"', 'id="pets"', 'id="luggage"', 'id="seeBtn"', 'id="partnerResults"')
+        order = [html.find(k) for k in keys]
+        if -1 in order or order != sorted(order) or html.count('id="seeBtn"') != 1:
+            found = res.setdefault(path, [])
+            found.append(("taxicta", "会社と料金を見るボタンは、ペット・荷物の入力の後、候補の前に1つ置く"))
     return res
-
 
 def key(path, rule):
     return f"{path} {rule}"
