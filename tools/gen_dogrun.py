@@ -126,7 +126,7 @@ def ff_card(e, d, full=False):
     acts = f'<a class="ux-btn" href="{e(d["url"])}" target="_blank" rel="noopener">公式ページ ↗</a>'
     if dest: acts += f'<a class="ux-btn l" href="https://www.google.com/maps/dir/?api=1&amp;destination={dest}" target="_blank" rel="noopener" data-route>経路を見る</a>'
     _rl = _review(d)
-    acts += _rl if d["id"] in {"D219", "D220"} else _rl or f'<a class="ux-btn l" href="https://www.google.com/maps/search/?api=1&query={_q(d["name"] + " " + pf + d.get("city", ""))}" target="_blank" rel="noopener">Google Mapsの口コミ</a>'
+    acts += _rl
     _to = d.get("addr") or (pf + d.get("city", "") + d["name"])
     acts += f'<a class="ux-btn l" href="/?to={_q(_to[:80])}#form">ペットタクシーの料金</a>' 
     sub = "" if full else f'<a href="{href(pf)}#{d["id"]}">くわしく見る</a>'

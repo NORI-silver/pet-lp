@@ -93,7 +93,6 @@
     if (r.tel) sub.push('<a href="' + esc(r.u) + '"' + TB + ' data-k="site" data-ga>公式サイト</a>');
     if (r.pg) sub.push('<a href="' + esc(r.pg) + '">診療内容の詳細</a>');
     if (r.ad && r.y.indexOf("visit") < 0) sub.push('<a href="/?to=' + enc(r.ad) + '#form" data-k="taxi" data-ga>🚕 ペットタクシーの料金</a>');
-    sub.push('<a href="https://www.google.com/maps/search/?api=1&query=' + enc(r.n + ' ' + (r.ad || '')) + '"' + TB + ' data-k="review">Google Mapsの口コミ</a>');
     return '<div class="hc">' + picHtml(r) + '<a class="hc-n" href="' + esc(r.pg || r.u) + '"' + (r.pg ? '' : TB) + '>' + esc(r.n) + '</a>'
       + (b.length ? '<p class="hc-b">' + b.join("") + '</p>' : '')
       + ((r.ad || r.c) ? '<p class="hc-l"><i aria-hidden="true">📍</i><span>' + esc(r.ad || r.c) + '</span></p>' : '')
