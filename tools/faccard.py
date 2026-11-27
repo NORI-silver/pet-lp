@@ -115,7 +115,7 @@ def fit_single_quote(h):
         return " data-fit='" + v + "'"
     return re.sub(r' data-fit="([^"]*)"', sub, h)
 
-def fit_attr(animals=None, only=False, sizes=None, max_kg=None, senior=None, puppy=None, animals_text="", fee=False):
+def fit_attr(animals=None, only=False, sizes=None, max_kg=None, senior=None, puppy=None, animals_text="", fee=False, closed=False):
     """生成側からカードに足す属性（' data-fit="…"'）。書いていないことは渡さない（＝要確認）。"""
     d = {}
     if animals: d["a"] = list(dict.fromkeys(animals))
@@ -126,6 +126,7 @@ def fit_attr(animals=None, only=False, sizes=None, max_kg=None, senior=None, pup
     if senior: d["sen"] = 1
     if puppy: d["pup"] = 1
     if fee: d["fee"] = 1
+    if closed: d["cl"] = 1  # いま受け入れを休止している（公式サイトの表示）。動物の識別は消さず、「合うところ」では合わない扱い
     if not d: return ""
     return fit_attr_str(d)
 
@@ -234,7 +235,7 @@ def _fit_table():
         elif re.search(r"大型|小型・中型・大型", t): sizes = ["s", "m", "l"]
         m = re.search(r"(\d+)kgまで", t)
         if m: kg = int(m.group(1))
-        T["rojin"][h["name"]] = fit_attr(a, rojin_only(a, t), sizes, kg, senior=True, animals_text="・".join(KIND_LABEL[k] for k in a), fee=_fee_of(h))
+        T["rojin"][h["name"]] = fit_attr(a, rojin_only(a, t), sizes, kg, senior=True, animals_text="・".join(KIND_LABEL[k] for k in a), fee=_fee_of(h), closed=bool(h.get("closed")))
     gr = _load("grooming.json") or {}
     for g in gr.get("groomers", []):
         _meta_put("trimming", "grooming.json", g)

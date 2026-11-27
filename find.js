@@ -55,7 +55,7 @@ var sel = id("ffPref"), pick = null, places = [];
 var sum = id("ffSum"), alt = id("ffAlt"), clr = id("ffClear");
 var res = id("ffRes"), det = box.querySelector(".ux-det");
 var needPref = box.hasAttribute("data-needpref");
-var SLUG = {"北海道":"hokkaido","青森県":"aomori","岩手県":"iwate","宮城県":"miyagi","秋田県":"akita","山形県":"yamagata","福島県":"fukushima","茨城県":"ibaraki","栃木県":"tochigi","群馬県":"gunma","新潟県":"niigata","富山県":"toyama","石川県":"ishikawa","福井県":"fukui","山梨県":"yamanashi","長野県":"nagano","岐阜県":"gifu","静岡県":"shizuoka","愛知県":"aichi","三重県":"mie","滋賀県":"shiga","京都府":"kyoto","大阪府":"osaka","兵庫県":"hyogo","奈良県":"nara","和歌山県":"wakayama","鳥取県":"tottori","島根県":"shimane","岡山県":"okayama","広島県":"hiroshima","山口県":"yamaguchi","徳島県":"tokushima","香川県":"kagawa","愛媛県":"ehime","高知県":"kochi","福岡県":"fukuoka","佐賀県":"saga","長崎県":"nagasaki","熊本県":"kumamoto","大分県":"oita","宮崎県":"miyazaki","鹿児島県":"kagoshima","沖縄県":"okinawa","東京都":"tokyo","神奈川県":"kanagawa","埼玉県":"saitama","千葉県":"chiba"}; // 都道府県→URLの名前（tools/uikit.py が tools/prefs.py から差し込む。県のページどうしの移動に使う）
+var SLUG = {"北海道":"hokkaido","青森県":"aomori","岩手県":"iwate","宮城県":"miyagi","秋田県":"akita","山形県":"yamagata","福島県":"fukushima","茨城県":"ibaraki","栃木県":"tochigi","群馬県":"gunma","新潟県":"niigata","富山県":"toyama","石川県":"ishikawa","福井県":"fukui","山梨県":"yamanashi","長野県":"nagano","岐阜県":"gifu","静岡県":"shizuoka","愛知県":"aichi","三重県":"mie","滋賀県":"shiga","京都府":"kyoto","大阪府":"osaka","兵庫県":"hyogo","奈良県":"nara","和歌山県":"wakayama","鳥取県":"tottori","島根県":"shimane","岡山県":"okayama","広島県":"hiroshima","山口県":"yamaguchi","徳島県":"tokushima","香川県":"kagawa","愛媛県":"ehime","高知県":"kochi","福岡県":"fukuoka","佐賀県":"saga","長崎県":"nagasaki","熊本県":"kumamoto","大分県":"oita","宮崎県":"miyazaki","鹿児島県":"kagoshima","沖縄県":"okinawa","東京都":"tokyo","神奈川県":"kanagawa","埼玉県":"saitama","千葉県":"chiba"};
 var parts = location.pathname.split("/"), pfs = Object.keys(SLUG);
 var routePf = pfs.find(function(p){ return parts[1] === cat && SLUG[p] === parts[2]; }) || "";
 var items = Array.from(qa("[data-ffi]"));
@@ -68,6 +68,7 @@ if (it._idx === undefined) it._idx = idxCtr++;
 var ex = [at(it,"data-ft"), at(it,"data-tags")].join("|").split("|").filter(Boolean).map(function(x){ return x.trim().replace(/ /g, "_"); });
 it._k = " " + (at(it,"data-k") || "") + " " + ex.join(" ") + " ";
 it._no = " " + (at(it,"data-no") || "") + " ";
+it._cl = it.hasAttribute("data-closed");
 var p = it.closest("[data-pref]");
 it._p = at(it,"data-pref") || (p ? at(p,"data-pref") : "") || routePf;
 it._q = (at(it,"data-q") || it.textContent).toLowerCase();
@@ -175,12 +176,13 @@ return 2 * R * Math.asin(Math.sqrt(h));
 }
 function judge(it, ks, pf, qs){
 if (geoKm && geoPos) { if (!it._ll || distKm(geoPos, it._ll) > geoKm) return 2; }
-if (!(pf && pf.length) && it._near) return 2; // 近くの県の施設（老犬ホームなど）は、その県を選んだときだけ（県を選ばないと同じ施設が2回出るため）
+if (!(pf && pf.length) && it._near) return 2;
 var pj = placeJ(it, pf || []);
 if (pj === 2) return 2;
 if (qs && qs.split(" ").some(function(w){ return it._q.indexOf(w) < 0; })) return 2;
 if (ks.indexOf("a:cat") >= 0 && ks.indexOf("owner_live_dog") >= 0 && ks.indexOf("a:dog") < 0) return 2;
 var r = pj;
+if (it._cl && ks.length) { if (ks.some(function(k){ return k.indexOf("a:") === 0; })) return 2; r = 1; }
 if(cat==="sougi"&&ks.includes("合同火葬"))for(const k of ["立ち会い","お骨を返してもらえる"])if(ks.includes(k)){
 let x=" 合同火葬+"+k+" ";if(it._no.includes(x))return 2;if(!it._k.includes(x))r=1;}
 for (var i = 0; i < ks.length; i++) {
@@ -227,7 +229,7 @@ var note = it.querySelector(".ux-unk-n");
 if (j === 1) {
 if (!note) { note = el("p", "ux-unk-n"); var b = it.querySelector(".fc-body") || it; b.insertBefore(note, b.children[1] || null); }
 var miss = ks.filter(function(k){ return it._k.indexOf(" " + k + " ") < 0 && k !== "a:dog"; }).map(function(k){ return LBL[k]; });
-note.textContent = (placeJ(it, pf) === 1 ? "近くの地域も相談できます（来てくれる地域：" + it._area.slice(0, 40) + "）。" : "") + (miss.length ? "公式サイトに書いていない条件があります（" + miss.join("・") + "）" : "");
+note.textContent = (it._cl ? "いま受け入れを休止中です。" : "") + (placeJ(it, pf) === 1 ? "近くの地域も相談できます（来てくれる地域：" + it._area.slice(0, 40) + "）。" : "") + (miss.length ? "公式サイトに書いていない条件があります（" + miss.join("・") + "）" : "");
 } else if (note) note.remove();
 });
 each(qa(".fr, .emg-pref, [data-ffg]"), function(g){

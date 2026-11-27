@@ -20,6 +20,7 @@
   }
   function judge(f, w){
     var r = [];
+    if (f.cl) r.push(["ng", "いま受け入れを休止中"]);
     if (st.a) {
       if (f.a && f.a.indexOf(st.a) >= 0) r.push(["ok", L[st.a] + "OK"]);
       else if (f.a && f.o) r.push(["ng", "診る・受ける動物は" + (f.at || f.a.map(function(k){ return L[k]; }).join("・"))]);
@@ -56,7 +57,7 @@
     if (dogRow) dogRow.hidden = !!st.a && st.a !== "dog";
     var w = kg(), any = !!(st.a || w || st.x.length || dpOn), cnt = {ok: 0, unk: 0, ng: 0};
     cards.forEach(function(c){
-      c._fit._dp = c._dp; var p = c.querySelector(".fc-fit"), r = any ? judge(c._fit, w) : [];
+      c._fit._dp = c._dp; var p = c.querySelector(".fc-fit"), r = any ? judge(c._fit, w) : (c._fit.cl ? [["ng", "いま受け入れを休止中"]] : []);
       var s = !r.length ? "" : r.some(function(x){ return x[0] === "ng"; }) ? "ng" : r.every(function(x){ return x[0] === "ok"; }) ? "ok" : "unk";
       c._rank = s ? RANK[s] : 1;
       c.classList.toggle("fc-ng", s === "ng");

@@ -31,6 +31,7 @@ SPRITE = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"
 CSS = ('/* 事業者カードの共通の形（tools/cardpolicy.py が /pc.css に書く）*/'
        '.pc .fc-body{padding:12px 14px}'
        '.pc .pc-top{margin:0 0 6px}.pc .pc-n{display:block;font-weight:800;font-size:1.02rem;color:#2b2622;text-decoration:none;line-height:1.35}'
+       '.pc .pc-cl{display:inline-block;margin:3px 0 0;padding:1px 8px;border:1px solid #b5651d;border-radius:10px;font-size:.78rem;font-weight:700;color:#8a4a10;background:#fff4e6}'
        '.pc .pc-loc{display:flex;gap:5px;align-items:center;margin:3px 0 0;font-size:.8rem;color:#7a6a5e}.pc .pc-loc::before{content:"";flex:0 0 18px;width:18px;height:18px;background:#5b4a3d;-webkit-mask:var(--i) center/contain no-repeat;mask:var(--i) center/contain no-repeat}'
        '.pc .pc-i{flex:0 0 18px;width:18px;height:18px;fill:none;stroke:#5b4a3d;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}'
        '.pc .pc-f li::before{content:"";width:18px;height:18px;background:#5b4a3d;-webkit-mask:var(--i) center/contain no-repeat;mask:var(--i) center/contain no-repeat}'
@@ -332,7 +333,9 @@ def card(blk, h, cat, more=None, compact=False):
     locv = h.get("addr") or h.get("area") or "".join(h.get("prefs", [])) + h.get("city", "")
     fl = fields(h)
     loc = "" if any(v == locv for _, _, v, _ in fl) else f'<p class="pc-loc pin"><span>{E(locv)}</span></p>'  # 同じ文を2回出さない
-    top = f'<div class="pc-top"><a class="pc-n" href="{E(url)}" target="_blank" rel="noopener"><b>{E(name)}</b></a>{loc}</div>'
+    cl = h.get("closed")  # いま受け入れを休止（公式サイトの表示）。JSなしでも見える札と、さがす箱(find.js)が読む目印
+    if cl: ot = ot[:-1] + ' data-closed="1">'
+    top = f'<div class="pc-top"><a class="pc-n" href="{E(url)}" target="_blank" rel="noopener"><b>{E(name)}</b></a>' + (f'<span class="pc-cl">{E(cl)}中</span>' if cl else "") + f'{loc}</div>'
     li = []
     for icn, lab, val, f in fl:
         v = E(val) if val else '<i>未確認</i>'
