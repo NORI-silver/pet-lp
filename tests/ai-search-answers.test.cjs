@@ -23,3 +23,12 @@ test('大阪：夜間の人・施設カメラ、税込と税抜、上限と料�
   const s=block('pet-hotel/osaka/index.html','osaka-large-stay');
   for (const x of ['24時間11,000円（税込）','大型犬24時間11,000円（税抜）','スタッフは不在','犬の体重上限','https://dogfirst-osaka.com/hotel/','https://blissdog.jp/?page_id=81']) assert.ok(s.includes(x),x);
 });
+test('千葉の老犬ホーム：初月と月額・夜の介助・大型犬の個別相談を区別',()=>{
+  const path='rojin-home/chiba/index.html';
+  const s=read(path);
+  publiclyReadable(s);
+  assert.match(s, /href="#chiba-large-dog-care"/);
+  const answer=s.match(/<section[^>]+id="chiba-large-dog-care"[\s\S]*?<\/section>/)?.[0]||'';
+  for (const x of ['25kg','35kg','合計44万円','合計66万円','検査・治療・特別食','自力で食事や水分補給ができない','大型犬の老犬介護は個別相談','https://lulurh.com/menu','https://wannyanhouse-orange.com/faq.html','https://dog-fumichanti.com/menu/']) assert.ok(answer.includes(x),x);
+  assert.doesNotMatch(read('rojin-home/tokyo/index.html'),/id="chiba-large-dog-care"/);
+});
