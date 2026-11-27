@@ -51,6 +51,7 @@ CSS = ('/* 事業者カードの共通の形（tools/cardpolicy.py が /pc.css �
        '.pc .pc-a .pc-ask{grid-column:1/-1;background:#fff;color:#7a5a3a;border:1px dashed #d9c9bb;border-radius:12px;padding:8px;font-weight:700;font-size:.82rem;cursor:pointer}'
        '.pc .pc-a a.l{background:#fff;color:#2b2622!important;border-color:#d9c9bb}.pc .pc-a a:only-child{grid-column:1/-1}'
        '.pc .cs-ph{position:relative}.pc .pc-ov{position:absolute;left:8px;bottom:26px;display:flex;flex-wrap:wrap;gap:5px;max-width:calc(100% - 16px);pointer-events:none}'
+       '.pc .pc-st{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 8px}.pc .pc-st span{background:#fbf3ea;color:#7a3d12;border:1px solid #ecd5bd;font-size:.76rem;font-weight:800;border-radius:999px;padding:2px 10px;line-height:1.4}'
        '.pc .pc-ov span{background:rgba(43,38,34,.82);color:#fff;font-size:.74rem;font-weight:800;border-radius:999px;padding:3px 10px;line-height:1.3}'
        )
 CSS_LINK = '<link rel="stylesheet" href="/pc.css?v=%s" id="pc-css">' % hashlib.md5(CSS.encode("utf-8")).hexdigest()[:8]
@@ -108,9 +109,13 @@ def rojin_overlay(h):
     out = []
     if _vet_resident(h): out.append("獣医師が常駐")
     cam = _fact(h, "見守りカメラ")
-    if cam: out.append("見守りカメラ")
+    # 「設置なし」「確認用」「公開はありません」のカメラの文は強みにしない（キーワードだけで出さない）
+    if cam and not re.search(r"設置(なし|して(い)?ない)|ありません|確認用|なし|非公開|スタッフ(用|のみ)", _txt(cam)): out.append("見守りカメラ")
+    st = _fact(h, "体制")
+    if st and re.search(r"(24時間.{0,6}(スタッフ|職員)|(スタッフ|職員).{0,6}24時間).{0,4}常駐", _txt(st)) and "獣医" not in _txt(st) and not re.search(r"常駐(では|は)?(ありません|していません|しておりません|いません)|常駐なし|不在", _txt(st)): out.append("スタッフが24時間常駐（公式サイトの記載）")
     tx = _fact(h, "送迎")
-    if tx and re.search(r"無料", _txt(tx)): out.append("送迎無料")
+    # 出どころが老人ホームの紹介サイト（r-guide.jp/sakoujyu）の送迎は、その犬の施設の送迎と確かめられていないので強みにしない
+    if tx and re.search(r"無料", _txt(tx)) and not _PICK_HOLD.search(_txt(tx)) and "r-guide.jp/sakoujyu" not in (tx.get("src") or ""): out.append("送迎無料")
     return out[:2]
 
 
@@ -126,11 +131,22 @@ def rojin_detail(h):
     return rows
 
 
+# 独立の確認で、送迎の条件（対象・期間・予約）が一覧の文だけでは足りない、または出どころが確かでないと分かった施設は、強みの札を出さない
+_PICK_OVERLAY_HOLD = {"PHt2ed3d70", "PHt2263df3", "PHk421d80", "PHk1f2da2", "PHked1389", "PHte77e6ca", "PH-HT040", "PHcc73017", "PH-ST0959", "PHk6d7568", "PH-ST0758", "PHnk146", "PHk30dc58", "PHt01f8cce"}  # 後ろの6件は、その施設のホテルのページ以外（トリミングの利用者向けなど）に書いてある送迎で、ホテルの利用者の送迎と確かめられていない
+_PICK_HOLD = re.compile(r"休止|停止|対象外|頭以上|のみ|限り|曜日|条件")
+
+
 def _pickup_free(h):
+    if h.get("id") in _PICK_OVERLAY_HOLD: return ""
     tx = _txt(_fact(h, "送迎"))
-    if not tx or re.search(r"行っておりません|行っていません|ありません|不可|できません|なし", tx): return ""
+    if not tx or re.search(r"行っておりません|行っていません|ありません|不可|できません|なし", tx) or _PICK_HOLD.search(tx): return ""
     m = re.search(r"([^。、「」（）()\s]{2,10}(?:市内|区内|町内|圏内|エリア内|周辺|以内))[^。]{0,14}無料", tx)
-    return (m.group(1) + "は送迎無料") if m else ""
+    if not m: return ""
+    tok = re.sub(r"^.*(送迎は|[^一-龥ぁ-んァ-ンヶケヵ々A-Za-z0-9ー.])", "", m.group(1))
+    if re.search(r"[、，,・]" + re.escape(tok), tx): return ""  # 地名の並びの一つだけを取り出すと足りなくなるので出さない
+    if len(tok) < 3 or re.fullmatch(r"(市内|区内|町内|圏内|周辺|以内|エリア内)", tok) or re.match(r"(市内|区内|町内|圏内|周辺|以内)", tok): return ""
+    if "隣接区" in tx and tok.endswith("区内"): tok += "・隣接区"  # 公式の文は「〇〇区内及び隣接区」
+    return tok + "は送迎無料" + ("（猫のホテル）" if "猫専用" in tx else "")
 
 
 _ADD = re.compile(r"(?<![\d円,，])[+＋]\s*[\d,，]+\s*円|延長|追加|時間外|割増|オプション|別途|超過|加算|深夜|早朝|繁忙|連休|年末年始|アップ|UP|増し|増|プラス|円増|上乗せ|手数料|出張料|出張費|交通費|初回|引き|OFF|割引|値引|基本料金?\s*[+＋]|基本料金?に|基本料金?(の|より)|鍵|初回登録|登録料|面談|消毒|緊急|投薬|入居金|入所金|入会金|初期費用|予備費|預かり金|預り金|保証金|医療費|治療費")
@@ -223,7 +239,7 @@ def hotel_fields(h):
 
 def hotel_overlay(h):
     out = []
-    if h.get("large") and h.get("max_kg"): out.append(f"大型犬可（{h['max_kg']}kgまで）")
+    # 大型犬の「〜kgまで」は料金表の体重の区分だけでは強みにしない（受け入れの文があるときだけ別に判断する）
     pf = _pickup_free(h)
     if pf: out.append(pf)
     return out[:2]
@@ -270,8 +286,12 @@ def sitter_fields(h):
 
 def sitter_overlay(h):
     out = []
-    if _fact(h, "動物取扱業"): out.append("動物取扱業の登録あり")
-    if _fact(h, "保険"): out.append("シッター保険の記載あり")
+    _reg = _fact(h, "動物取扱業")
+    if _reg and "登録証" not in _txt(_reg): out.append("動物取扱業：登録ありと公式に記載")  # 登録証の画像だけの記載は、画像を見て確かめるまで出さない
+    _ins = _fact(h, "保険")
+    if _ins:
+        _t = _txt(_ins)
+        out.append("保障制度：加入と公式に記載" if "保障制度" in _t else ("グループの保険：加入と公式に記載" if _t.startswith("グループ") else "保険：加入と公式に記載"))
     return out[:2]
 
 
@@ -327,8 +347,11 @@ def card(blk, h, cat, more=None, compact=False):
     ph = re.search(r'<div class="cs-ph.*?(?=<div class="fc-body">)', blk, re.S)
     ph = ph.group(0) if ph else ""
     ov = overlay(h)
-    if ov and ph:
+    chip = ""
+    if ov and ph and 'class="cs-ph-c"' in ph:
         ph = re.sub(r"(<small class=\"cs-ph-c\")", '<div class="pc-ov">' + "".join(f"<span>{E(x)}</span>" for x in ov) + r"</div>\1", ph, count=1)
+    elif ov:  # 写真の説明欄がない（写真なし）カードは、文字の札で見せる（写真の証拠ではなく、公式サイトの記載の札）
+        chip = '<p class="pc-st">' + "".join(f"<span>{E(x)}</span>" for x in ov) + "</p>"
     name, url = h["name"], h["url"]
     locv = h.get("addr") or h.get("area") or "".join(h.get("prefs", [])) + h.get("city", "")
     fl = fields(h)
@@ -416,7 +439,7 @@ def card(blk, h, cat, more=None, compact=False):
     btn.append(f'<a class="l" href="{to}"' + ("" if compact else f' aria-label="{E(name)}までのペットタクシー料金"') + '>タクシー料金</a>')  # 大きいページ（compact）では、ボタンの文字だけにして容量を節約
     score = re.search(r'<div class="emg-score" data-id="[^"]*"></div>', blk)  # サイトの中の口コミ（外へ飛ばさない）
     body = top + f'<ul class="pc-f">{"".join(li)}</ul>' + "" + det + f'<div class="pc-a">{"".join(btn)}</div>'
-    return ot + ph + '<div class="fc-body">' + body + "</div></div>"
+    return ot + ph + '<div class="fc-body">' + chip + body + "</div></div>"
 
 
 def _convert(h, cat, D, lite, compact=False):
