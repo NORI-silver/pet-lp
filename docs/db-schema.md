@@ -83,7 +83,7 @@ SHIOKONBU Pet 構想（`docs/concept.md`）の [C]「共通項目＋サービス
 | シッター `sitter` | `animals`、`walk_only`、`medication`、`key_keep` |
 | 出張トリミング `grooming` | `large`・`cat`・`senior`・`car`・`in_home`・`max_kg`（tools/grooming.json） |
 | ペットホテル `hotel` | `large`・`large_basis`・`large_from_kg`・`max_kg`・`cat_only`・`separate`・`vet`・`pickup`・`senior`・`night_staff`・`camera`・`run`・`private_room`（tools/hotels.json） |
-| 火葬・霊園 `cremation` | `kinds`（火葬・霊園・納骨堂）、`services`（合同・個別・立ち会い・お迎え・訪問火葬・納骨）、`price_example` |
+| 火葬・霊園 `cremation` | `kinds`（火葬・霊園・納骨堂）、`services`（合同・個別・立ち会い・お迎えまたは訪問火葬・納骨）、`price_example` |
 
 ## いまのデータとの対応
 
