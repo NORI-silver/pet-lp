@@ -2513,32 +2513,37 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
   // 口コミの並べ替え（2026-11-28 Nori 11/26「口コミが高い順・低い順」「初期は口コミが高い順」）。
   // 並べるのは、いま読み込み済みの星だけ。星を取り寄せていないところは「未取得」として最後に、元の順のまま並べる（0点とは扱わない）。新しい取り寄せはしない。
   (function(){
-    var sel = document.getElementById("ffSort");
-    if (!sel || !document.querySelector(".emg-score[data-id]")) return;
+    var sel = document.getElementById("ffSort"), hl = document.getElementById("hfList"), own = null;
+    // 病院さがし（/hosp.js）には並び順の欄が無いので、ここで足す。カードは /hosp.js が何度も作り直す
+    if (!sel && hl && hl.parentNode) { own = el("p", "ff-ord"); own.hidden = true; own.style.cssText = "margin:8px 0 4px;font-size:.85rem"; sel = el("select"); sel.id = "rsSort"; sel.setAttribute("aria-label", "表示順"); sel.style.cssText = "margin-left:6px;font-size:1rem;padding:6px"; own.append("表示順", sel); [["", "標準の並び"]].forEach(function(o){ var op = el("option", "", o[1]); op.value = o[0]; sel.appendChild(op); }); hl.parentNode.insertBefore(own, hl); }
+    if (!sel || !(own || document.querySelector(".emg-score[data-id]"))) return;
     var MODE = {ratingDesc: 1, ratingAsc: 1}, note = el("p", "ff-note", "口コミの並べ替えは、星を読み込んだ施設だけが対象です。未取得の施設は最後に、もとの順で並びます。");
     note.style.cssText = "margin:4px 0 0;font-size:.8rem;color:#6b625b";
     [["ratingAsc", "口コミが低い順"], ["ratingDesc", "口コミが高い順"]].forEach(function(o){ var op = el("option", "", o[1]); op.value = o[0]; sel.insertBefore(op, sel.firstChild); });
     sel.value = "ratingDesc";
-    if (sel.parentNode) sel.parentNode.appendChild(note);
+    if (own) own.appendChild(note); else if (sel.parentNode) sel.parentNode.appendChild(note);
     function cid(c){ var b = c.querySelector(".emg-score[data-id]"); return b ? b.dataset.id : ""; }
     function rate(c){ var m = memo[cid(c)]; return m && m.rating > 0 ? m.rating : 0; }
     var busy = false;
     // find.js の「もっと見る」(loadFull) は施設カードを作り直す。作り直した枠には口コミが入らないので、読み込み済みの星は戻し、ほかは「口コミ」ボタンを付ける（新しい取り寄せはしない）
-    function fillBoxes(){ document.querySelectorAll(".emg-score[data-id]").forEach(function(b){ if (b.firstChild) return; var m = memo[b.dataset.id]; if (m && m.rating > 0) paint(b, m); else lazy(b); }); }
+    function fillBoxes(){ document.querySelectorAll(".emg-score[data-id]").forEach(function(b){ var m = memo[b.dataset.id]; if (m && m.rating > 0) { if (!b.querySelector(".stars")) paint(b, m); } else if (!b.firstChild) lazy(b); }); }
     function apply(anchor){
       var mode = sel.value; if (busy) return; busy = true;
       try {
       fillBoxes();
-      if (!MODE[mode]) return;
-      var cards = [].slice.call(document.querySelectorAll(".emg-item.fc[data-ffi], .ux-c.dr-card[data-ffi]"));
+      if (own) own.hidden = !hl.querySelector(".hc");
+      if (!MODE[mode] && !own) return;
+      var cards = [].slice.call(document.querySelectorAll(".emg-item.fc[data-ffi], .ux-c.dr-card[data-ffi], #hfList .hc"));
       var top0 = anchor ? anchor.getBoundingClientRect().top : 0, act = document.activeElement, groups = [], seen = [];
-      cards.forEach(function(c){ var p = c.parentNode, i = seen.indexOf(p); if (i < 0) { seen.push(p); groups.push([p, []]); i = groups.length - 1; } groups[i][1].push(c); });
+      cards.forEach(function(c){ var p = c.parentNode; if (seen.indexOf(p) < 0) seen.push(p); });
+      // 同じ親の中でも、見出しなどで区切られた「つづきのカード」ごとに並べる（見出しの位置は動かさない）
+      seen.forEach(function(p){ var run = []; [].forEach.call(p.children, function(ch){ if (cards.indexOf(ch) >= 0) run.push(ch); else { if (run.length) groups.push([p, run, ch]); run = []; } }); if (run.length) groups.push([p, run, null]); });
       groups.forEach(function(g){
-        var arr = g[1].map(function(c, i){ return {c: c, r: rate(c), i: c._idx != null ? c._idx : i}; });
-        arr.sort(function(a, b){ if ((a.r > 0) !== (b.r > 0)) return a.r > 0 ? -1 : 1; if (a.r !== b.r) return mode === "ratingDesc" ? b.r - a.r : a.r - b.r; return a.i - b.i; });
+        var arr = g[1].map(function(c, i){ if (c._idx == null && c._o == null) c._o = i; return {c: c, r: rate(c), i: c._idx != null ? c._idx : c._o}; });
+        arr.sort(function(a, b){ if (!MODE[mode]) return a.i - b.i; if ((a.r > 0) !== (b.r > 0)) return a.r > 0 ? -1 : 1; if (a.r !== b.r) return mode === "ratingDesc" ? b.r - a.r : a.r - b.r; return a.i - b.i; });
         var same = arr.every(function(x, i){ return x.c === g[1][i]; });
-        if (!same) arr.forEach(function(x){ g[0].appendChild(x.c); });
-        arr.forEach(function(x){ var u = x.c.querySelector(".rs-unk"); if (x.r > 0) { if (u) u.remove(); } else if (!u && cid(x.c)) { var s = el("span", "rs-unk", "口コミ未取得"); s.style.cssText = "display:inline-block;margin:2px 0;font-size:.75rem;color:#6b625b"; var a = x.c.querySelector(".fc-acts"); (a || x.c).appendChild(s); } });
+        if (!same) arr.forEach(function(x){ g[0].insertBefore(x.c, g[2]); });
+        if (MODE[mode]) arr.forEach(function(x){ var u = x.c.querySelector(".rs-unk"); if (x.r > 0) { if (u) u.remove(); } else if (!u && cid(x.c)) { var s = el("span", "rs-unk", "口コミ未取得"); s.style.cssText = "display:inline-block;margin:2px 0;font-size:.75rem;color:#6b625b"; var a = x.c.querySelector(".fc-acts"); (a || x.c).appendChild(s); } });
       });
       if (act && act !== document.activeElement && document.contains(act) && act.focus) act.focus({preventScroll: true});
       if (anchor) { var d = anchor.getBoundingClientRect().top - top0; if (d) window.scrollBy(0, d); }
