@@ -85,3 +85,17 @@ print('ok')`;
 const {execFileSync}=require('node:child_process');
 assert.equal(execFileSync(process.env.PYTHON || 'python3',['-c',py],{encoding:'utf8'}).trim(),'ok');
 });
+
+test('stopped visits and no-pickup wording never match positive filters (R101)',()=>{
+const py=`
+import sys,json
+sys.path.insert(0,'tools')
+import ownerfit
+h=next(h for h in json.load(open('tools/rojin.json',encoding='utf8'))['homes'] if h['id']=='R101')
+yes,no=ownerfit.keys('rojin-home',h['url'])
+assert 'menkai' not in yes and 'pickup' not in yes and 'pickup' in no, (yes,no)
+assert ownerfit._find('送迎は行っておりません','pickup')==2
+assert ownerfit._find('送迎あり','pickup')==1
+print('ok')`;
+assert.equal(execFileSync(process.env.PYTHON || 'python3',['-c',py],{encoding:'utf8'}).trim(),'ok');
+});

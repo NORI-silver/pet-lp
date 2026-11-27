@@ -169,6 +169,8 @@ def _find(t, key):
         if not m: continue
         if re.search(NEG, s[m.start():]) and not re.search(r"相談", s[m.start():]):
             return 2
+        if key == "pickup" and re.search(r"(行っ|して)(て(い)?|ており)ません|行っておらず", s[m.start():]):
+            return 2  # 「送迎は行っておりません」は送迎なし（2026-11-27）
         hit = 1
     return hit
 
