@@ -63,8 +63,17 @@ def render(ctx):
       ("ペットシッターとペットホテルは、どちらがいいですか？", "猫、高齢の子、こわがりな子、多頭飼いは環境が変わらないシッターが向くことが多く、目を離せない持病のある子や子犬はホテルや動物病院の預かりが安心です。長い留守は組み合わせることもできます。くわしくは記事「ペットシッターとペットホテル、どちらがいい？」をどうぞ。"),
       ("留守の何日前に頼めばいいですか？", "初めての店は、シッターが自宅に来る打ち合わせがあるので、出発の2〜3週間前には問い合わせるのが安心です。"),
       ("シッターが来る日に動物病院へ連れて行ってほしいときは？", "通院の付き添いを受ける店舗もあります。受けられるかどうかと料金は店舗ごとに違うので、前もって相談しておくと安心です。"),
+      ("散歩だけを頼むことはできますか？", "散歩代行だけを受けている店舗もあります。留守のお世話と散歩をまとめて頼める店舗も多いので、一覧の店舗ページで対応内容をご確認ください。"),
     ]
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
+    def _scnt(*ws):
+        return sum(1 for s in J["sitters"] if any(w in json.dumps(s, ensure_ascii=False) for w in ws))
+    n_catonly = sum(1 for s in J["sitters"] if "キャットシッター" in json.dumps(s, ensure_ascii=False) or "猫専門" in json.dumps(s, ensure_ascii=False))
+    stats_html = ('<div class="emg-tips"><h4>全国のペットシッターのデータ（公式サイトの記載から集計）</h4><dl>'
+      f'<dt>掲載数</dt><dd>全国{total}店舗です。猫専門のキャットシッターは{n_catonly}店舗あります。</dd>'
+      f'<dt>時間の対応</dt><dd>夜間のお世話にふれている店舗は{_scnt("夜間")}店舗、早朝は{_scnt("早朝")}店舗です。</dd>'
+      f'<dt>送迎と長期</dt><dd>送迎に対応する店舗は{_scnt("送迎")}店舗、長期の留守に対応する店舗は{_scnt("長期")}店舗です。</dd>'
+      '</dl><p class="emg-tips-note">件数は公式サイトの記載をもとに数えた目安です。実際の対応は店舗にご確認ください。</p></div>')
     ld = '<script type="application/ld+json">\n' + json.dumps([
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
@@ -87,6 +96,7 @@ def render(ctx):
       <p class="emg-free">この一覧は無料の情報です。シッターからお金をもらっていません。順番は都道府県ごとで、おすすめ順ではありません。料金は載せていないので、それぞれの店舗ページでご確認ください。</p>
       <div class="emg-tips" style="margin-top:0"><h4>ペットシッターを頼む前に確かめること</h4><dl>{before}</dl>
       <p class="emg-tips-note">ここに書いたのは一般的な目安です。決まりは店舗ごとに違うので、必ず店舗ページでご確認ください。</p></div>
+      {stats_html}
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       {FC.chips(e, FC.SITTER_CHIPS)}
       {body}
