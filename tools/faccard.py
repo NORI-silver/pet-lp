@@ -586,10 +586,6 @@ def build_card(card, conf, fit_by_name):
             else:
                 acts.append(f'<a class="emg-taxi fc-a fc-a-info" href="{hf}" aria-label="{html.escape(full)}">くわしく</a>')
         else: acts.append(x)
-    if meta and "google.com/maps" not in card:  # 全カードに Google マップの口コミへのリンク（点数・件数は持たない。Nori 2026-11-26）
-        from urllib.parse import quote as _uq
-        _q = (name + " " + (meta.get("pref") or "") + (meta.get("city") or city or "")).strip()
-        acts.append(f'<a class="fc-a fc-a-star" href="https://www.google.com/maps/search/?api=1&query={_uq_compact(_q)}" target="_blank" rel="noopener">Google Mapsの口コミ</a>')
     if meta and conf["key"] in ("hotel", "rojin", "sougi", "hospital") and meta.get("visit", "public") == "public" and not any("emg-taxi" in x for x in tail):  # 行き先までのタクシー料金（Nori 2026-11-26）
         from urllib.parse import quote as _uq
         _to = meta.get("addr") or ((meta.get("pref") or "") + (meta.get("city") or "") + name)
@@ -741,10 +737,21 @@ def rows(h):
     out.append(h[pos:])
     return "".join(out)
 
+def _star_pad(h):
+    """外したマップの口コミリンクと同じ長さの見積もり（件数の決め方を変えないためだけに使い、ページには入れない）。"""
+    out = []
+    for m in _OPEN.finditer(h):
+        hd = m.group(0)
+        nm = (re.search(r'data-name="([^"]*)"', hd) or [None, ""])[1]
+        pf = (re.search(r'data-pref="([^"]*)"', hd) or [None, ""])[1]
+        out.append('<a class="fc-a fc-a-star" href="https://www.google.com/maps/search/?api=1&query=' + _uq_compact(nm + pf) + '" target="_blank" rel="noopener">リンクの文字の分の見積もり用の文字列</a>')
+    return "".join(out)
+
 def _too_big(h):
     """情報ページの重さの上限（tests/info-light.test.cjs の60KB）を超えるなら作りかえない（全部の施設を並べる全国のページ。県のページで見せる）"""
     import gzip
-    return len(gzip.compress(h.encode("utf-8"), 9)) > 52 * 1024  # あとで cardskin.py がカードの形をそろえて少し重くなるので、余裕を残す
+    # 2026-11-27 マップへ飛ぶ口コミのリンクを外した。以前の件数の決め方（リンクの分だけ重い前提で作った余裕）を変えないよう、外す前と同じ重さの見積もりを足して測る。
+    return len(gzip.compress((h + _star_pad(h)).encode("utf-8"), 9)) > 52 * 1024  # あとで cardskin.py がカードの形をそろえて少し重くなるので、余裕を残す
 
 def _trim(h, keep, retained=()):
     """全国のページで重すぎるとき、都道府県ごとの箱（emg-pref、見出しに県のページへのリンク）に最初の keep 件だけ残し、のこりは県のページへのリンクにする（施設は県のページにすべて載っている。tests/info-light の「上限を超えたら県のページへのリンクに」）"""
