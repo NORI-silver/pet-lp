@@ -59,7 +59,7 @@ def catbar(path):
     items = CATBAR
     if path in _DETECTIVE_NAV:
         items = [(n,u) if u!="/jichitai/maigo/" else ("ペット探偵","/pet-detective/") for n,u in items]
-        if path=="/": items = [("迷子ガイド","/jichitai/maigo/")] + items
+        if path=="/": items = [("迷子ガイド","/jichitai/maigo/")] + items; act = None  # トップは総合の入口。分野のどれもハイライトしない
         if path=="/pet-detective/": act=path
         if path=="/jichitai/maigo/": act="/guide/"
     a = "".join(f'<a href="{u}"' + (' aria-current="page"' if u == act else "") + f'>{n}</a>' for n, u in items)
@@ -204,7 +204,14 @@ def apply(s, path, hub=None):
     # トップの全分野の入口（トップだけ）
     s = re.sub(r'<!--KURASHI-->.*?<!--/KURASHI-->\n*', '', s, flags=re.S)
     if hub:
-        s = s.replace('<section id="how">', hub + "\n\n" + '<section id="how">', 1)
+        if path == "/" and "<!--/PHERO-->" in s:
+            # トップは総合の入口：検索の下にそのまま全分野（下に同じ一覧をもう一度出さない）
+            hub_home = hub.replace('<span class="eyebrow">PET LIFE</span><h2 id="kurashiTitle">ペットとのくらしの窓口</h2>', '<h2 id="kurashiTitle">分野からえらぶ</h2>')
+            hub_home = re.sub(r'<em>[^<]*件</em>', '', hub_home)  # 件数は出さない（サイト内の集計で、検索の結果とずれうる）
+            hub_home = re.sub(r'<p>ペットタクシーのほかにも.*?</p></div>', '</div>', hub_home, count=1, flags=re.S)
+            s = s.replace("<!--/PHERO-->", "<!--/PHERO-->\n" + hub_home, 1)
+        else:
+            s = s.replace('<section id="how">', hub + "\n\n" + '<section id="how">', 1)
     return s
 
 

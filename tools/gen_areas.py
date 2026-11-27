@@ -592,6 +592,14 @@ def scene_desc(where, pref):
 def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = re.sub(r"\s*<!--NAT_STATS-->.*?<!--/NAT_STATS-->", "", TOP_HTML, flags=re.S)
     t = re.sub(r"\s*<!--KURASHI-->.*?<!--/KURASHI-->", "", t, flags=re.S)  # 全分野の入口はトップだけ（tools/portal.py）
+    # トップは総合の入口。地域のタクシーページには、これまでのタクシーのヘッダー・ヒーローをそのまま戻す（tools/taxi_header.html, taxi_hero.html）
+    _th = open(os.path.join(ROOT, "tools", "taxi_header.html"), encoding="utf-8").read()
+    _tv = open(os.path.join(ROOT, "tools", "taxi_hero.html"), encoding="utf-8").read()
+    t = re.sub(r"<!--PHEAD-->.*?<!--/PHEAD-->", lambda m: _th, t, count=1, flags=re.S)
+    t = re.sub(r"<!--PHERO-->.*?<!--/PHERO-->\s*", lambda m: _tv + "\n\n", t, count=1, flags=re.S)
+    t = re.sub(r"<!--PTAXI-->.*?<!--/PTAXI-->", "", t, count=1, flags=re.S)
+    t = re.sub(r'<!--PTO--><div id="taxiWrap" class="taxi-wrap" hidden>\n', "", t, count=1)
+    t = t.replace("\n</div><!--PTC-->", "", 1)
     t = re.sub(r"<title>.*?</title>", lambda m: f"<title>{e(title)}</title>", t, count=1, flags=re.S)
     t = re.sub(r'<meta name="description" content="[^"]*">', lambda m: f'<meta name="description" content="{e(desc)}">', t, count=1)
     t = re.sub(r'<link rel="canonical" href="[^"]*">', lambda m: f'<link rel="canonical" href="{url}">', t, count=1)
