@@ -107,6 +107,13 @@ def render(ctx):
       ("サロンに連れていきたいけど車がないときは？", "出張トリミングなら、サロンへ行かずに家やトリミングカーで受けられます。送迎をしているサロンもあるので、まずお店にたずねてみてください。"),
     ]
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
+    def _gcnt(*ws):
+        return sum(1 for g in J["groomers"] if any(w in json.dumps(g, ensure_ascii=False) for w in ws))
+    stats_html = ('<div class="emg-tips"><h4>全国の出張トリミング・トリミングサロンのデータ（公式サイトの記載から集計）</h4><dl>'
+      f'<dt>掲載数</dt><dd>全国{total}事業者です。</dd>'
+      f'<dt>出張の形</dt><dd>自宅に来る出張・訪問に対応する事業者は{_gcnt("出張", "訪問")}事業者、トリミングカーで来る事業者は{_gcnt("トリミングカー")}事業者です。</dd>'
+      f'<dt>うちの子の条件</dt><dd>大型犬に対応する事業者は{_gcnt("大型犬")}事業者、シニア犬・介護中の子に対応する事業者は{_gcnt("シニア", "介護")}事業者、猫に対応する事業者は{_gcnt("猫")}事業者です。</dd>'
+      '</dl><p class="emg-tips-note">件数は公式サイトの記載をもとに数えた目安です。対応の実際は事業者にご確認ください。</p></div>')
     ld = '<script type="application/ld+json">\n' + json.dumps([
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
@@ -130,6 +137,7 @@ def render(ctx):
       <p class="emg-free">この一覧は無料の情報です。事業者からお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金は載せていないので、それぞれの事業者に直接おたずねください。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       <div class="f"><span>条件でしぼりこむ（公式サイトに書いてある条件だけで判定しています）</span><div class="trim-cond">{conds}</div><span id="trimCount" aria-live="polite"></span></div>
+      {stats_html}
       {body}
       <div class="emg-tips"><h4>トリミングを頼む前に確かめること</h4><dl>{before}</dl>
       <p class="emg-tips-note">ここに書いたのは一般的な目安です。犬や猫の様子にあわせて、事業者や動物病院に相談してください。</p></div>
