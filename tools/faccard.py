@@ -189,6 +189,13 @@ def _yen_of(r):
     vals = [v for v in vals if 300 <= v <= 1000000]
     return min(vals) if vals else None
 
+# 葬儀・火葬：visit = 来館して使える場所が公式サイトで確認できているか（public＝確認済み。ほかは経路・タクシーを出さずに、理由をカードに書く）
+_VISIT_TXT = {
+    "unconfirmed": "来館できる場所（火葬場・霊園）は、確認した公式サイトのページでは分かりませんでした。行く前に公式サイトでご確認ください。",
+    "none": "訪問での火葬です。来館して使える施設は、確認した公式サイトのページには書かれていません。",
+    "office": "受付の事務所です。来館して使える施設は、確認した公式サイトのページには書かれていません。",
+}
+
 def _meta_put(key, fname, r):
     if not r.get("name"): return
     ll, prec = None, None
@@ -200,7 +207,7 @@ def _meta_put(key, fname, r):
     _META.setdefault(key, {})[r["name"]] = dict(
         yen=_yen_of(r), ll=ll, prec=prec, addr=r.get("addr") or "",
         city=r.get("city") or "", pref=r.get("pref") or (r.get("prefs") or [""])[0],
-        cremation_summary=r.get("cremation_summary"))
+        cremation_summary=r.get("cremation_summary"), visit=r.get("visit"), notice=r.get("notice"))
 
 def _fit_table():
     """分野ごとに、名前 → data-fit の文字列。"""
@@ -558,6 +565,9 @@ def build_card(card, conf, fit_by_name):
     for _, lab, val in decisions:
         if (lab, val) in care_rows: continue
         body.append(f'<p class="fc-line" title="{html.escape(lab)}">{icon("list")}<span style="display:block;overflow:visible">{html.escape(lab)}：{html.escape(val)}</span></p>')
+    if meta and (meta.get("visit") in _VISIT_TXT or meta.get("notice")):  # 来館できる場所が確認できていない・訪問だけ・受付だけ・休止中などを、カードに見えるように書く
+        _nt = meta.get("notice") or _VISIT_TXT[meta["visit"]]
+        body.append(f'<p class="fc-line" title="ご利用の前に">{icon("badge")}<span>{html.escape(_nt)}</span></p>')
     if meta and meta.get("cremation_summary"):
         summary = html.escape(meta["cremation_summary"])
         body.append(f'<p class="fc-line" title="返骨・立ち会い">{icon("badge")}<span>返骨・立ち会い：{summary}</span></p>')
@@ -580,7 +590,7 @@ def build_card(card, conf, fit_by_name):
         from urllib.parse import quote as _uq
         _q = (name + " " + (meta.get("pref") or "") + (meta.get("city") or city or "")).strip()
         acts.append(f'<a class="fc-a fc-a-star" href="https://www.google.com/maps/search/?api=1&query={_uq_compact(_q)}" target="_blank" rel="noopener">Google Mapsの口コミ</a>')
-    if meta and conf["key"] in ("hotel", "rojin", "sougi", "hospital") and not any("emg-taxi" in x for x in tail):  # 行き先までのタクシー料金（Nori 2026-11-26）
+    if meta and conf["key"] in ("hotel", "rojin", "sougi", "hospital") and meta.get("visit", "public") == "public" and not any("emg-taxi" in x for x in tail):  # 行き先までのタクシー料金（Nori 2026-11-26）
         from urllib.parse import quote as _uq
         _to = meta.get("addr") or ((meta.get("pref") or "") + (meta.get("city") or "") + name)
         acts.append(f'<a class="emg-taxi fc-a fc-a-car" href="/?to={_uq_compact(_to[:80])}#form" aria-label="{html.escape(name)}のタクシー料金">ペットタクシーの料金</a>')

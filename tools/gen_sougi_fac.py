@@ -176,7 +176,7 @@ def render(ctx, f):
     ld = '<script type="application/ld+json">\n' + json.dumps(_lds, ensure_ascii=False, indent=1) + "\n</script>"
     src = f'<a href="{e(f["u"])}" target="_blank" rel="noopener">公式サイト（{e(ck)}に確認）</a>'
     rows = "".join(f"<tr><th scope=\"row\">{e(k)}</th><td>{e(v)}</td><td>{src}</td></tr>" for k, v in facts(f))
-    to = f'{nm} {pf}{f["city"]}'
+    to = (f["addr"] if f.get("addr") else f'{nm} {pf}{f["city"]}') if f.get("visit", "public") == "public" else ""
     card = (f'<div class="emg-item emg-co sg-pv" data-pref="{e(pf)}"{FC.attrs(e, "sougi", f, FC.sougi_tags(f), nm, to, "この施設")}>'
             f'<a href="{e(f["u"])}" target="_blank" rel="noopener"><b>{e(nm)}の公式サイト</b></a><small>{e(pf)}{e(f["city"])}</small>'
             + (f'<div class="emg-score" data-id="{e(f["id"])}"></div>' if f.get("review_query") else "") + '</div>')

@@ -40,7 +40,8 @@ def _fcard(e, f):
     tags = "".join(f'<span class="sg-tag">{e(x)}</span>' for x in f.get("kinds", []) + [y for y in f.get("services", []) if y not in f.get("kinds", [])])
     price = f'<small><b class="sg-k">料金の例</b>{e(f["price"])}（公式サイトの記載）</small>' if f.get("price") else ""
     hours = f'<small>受付時間：{e(f["reception"])}</small>' if f.get("reception") else ""
-    to = f'{f["name"]} {f["pref"]}{f["city"]}' if f.get("city") else ""
+    # 来館できる場所が確認できていない施設（visit が public 以外）には、経路・タクシーの行き先を付けない
+    to = (f["addr"] if f.get("addr") else f'{f["name"]} {f["pref"]}{f["city"]}') if f.get("city") and f.get("visit", "public") == "public" else ""
     import gen_sougi_fac  # 施設ページ（試しの30施設）があれば、カードからつなぐ
     more = f'<a class="emg-taxi" href="{gen_sougi_fac.href(f)}">{e(f["name"])}のくわしい情報（できること・料金の比較）→</a>' if f["id"] in gen_sougi_fac.IDS else ""
     # 施設ページのない施設も、公式サイトに書いてあるくわしい項目（more）をカードの中に出す（県のページを濃くする。2026-11-15）
