@@ -122,6 +122,8 @@ def ff_card(e, d, full=False):
     lines = ""
     for ic, f in (("🕒", "hours"), ("¥", "fee"), ("🐕", "size")):
         if d.get(f): lines += f'<p class="ux-c-l"><i aria-hidden="true">{ic}</i><span>{e(_short(d[f]))}</span></p>'
+    # 2026-11-27 面に出す一行（過去の期間しか確認できない施設に、今年度は未確認と書く）。data の face だけ。
+    if d.get("face"): lines += f'<p class="ux-c-l"><i aria-hidden="true">📅</i><span>{e(d["face"])}</span></p>'
     dest = (d.get("addr") or "") and _q(f'{d["name"]} {pf}{d["addr"]}')
     acts = f'<a class="ux-btn" href="{e(d["url"])}" target="_blank" rel="noopener">公式ページ ↗</a>'
     # 2026-11-27 利用者の了承：目立つボタンは「公式ページ」「ペットタクシーの料金」の2つ。経路は「くわしく見る」の中へ（行き先が分かるときだけ、これまでと同じ行き先）。
