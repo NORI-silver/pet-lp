@@ -1,0 +1,491 @@
+diff --git a/fit.js b/fit.js
+index cad76412b..65f133718 100644
+--- a/fit.js
++++ b/fit.js
+@@ -20,6 +20,7 @@
+   }
+   function judge(f, w){
+     var r = [];
++    if (f.cl) r.push(["ng", "いま受け入れを休止中"]);
+     if (st.a) {
+       if (f.a && f.a.indexOf(st.a) >= 0) r.push(["ok", L[st.a] + "OK"]);
+       else if (f.a && f.o) r.push(["ng", "診る・受ける動物は" + (f.at || f.a.map(function(k){ return L[k]; }).join("・"))]);
+@@ -56,7 +57,7 @@
+     if (dogRow) dogRow.hidden = !!st.a && st.a !== "dog";
+     var w = kg(), any = !!(st.a || w || st.x.length || dpOn), cnt = {ok: 0, unk: 0, ng: 0};
+     cards.forEach(function(c){
+-      c._fit._dp = c._dp; var p = c.querySelector(".fc-fit"), r = any ? judge(c._fit, w) : [];
++      c._fit._dp = c._dp; var p = c.querySelector(".fc-fit"), r = any ? judge(c._fit, w) : (c._fit.cl ? [["ng", "いま受け入れを休止中"]] : []);
+       var s = !r.length ? "" : r.some(function(x){ return x[0] === "ng"; }) ? "ng" : r.every(function(x){ return x[0] === "ok"; }) ? "ok" : "unk";
+       c._rank = s ? RANK[s] : 1;
+       c.classList.toggle("fc-ng", s === "ng");
+diff --git a/tests/fit-attr.test.cjs b/tests/fit-attr.test.cjs
+index e38701e4b..a148c9f68 100644
+--- a/tests/fit-attr.test.cjs
++++ b/tests/fit-attr.test.cjs
+@@ -25,3 +25,31 @@ test('every data-fit in info pages is single-quoted and parses as JSON', ()=>{
+   }}})('.');
+   assert.ok(n>1000,'only '+n+' data-fit found');
+ });
++test('closed (受け入れ休止) homes carry cl=1 and fit.js never counts them as a match', ()=>{
++  const py=`
++import sys,json
++sys.path.insert(0,'tools')
++import faccard
++a=json.loads(faccard.fit_attr_values(faccard.fit_attr(['dog','cat'],False,closed=True))[0])
++assert a['cl']==1 and a['a']==['dog','cat'], a
++assert 'cl' not in json.loads(faccard.fit_attr_values(faccard.fit_attr(['dog']))[0])
++h=[x for x in json.load(open('tools/rojin.json'))['homes'] if x['id']=='R158'][0]
++assert h['closed'] and h['animals']=='犬・猫'
++print('ok')`;
++  assert.equal(execFileSync('python3',['-c',py],{encoding:'utf8'}).trim(),'ok');
++  const js=fs.readFileSync('fit.js','utf8');
++  assert.ok(js.includes('if (f.cl) r.push(["ng"'), 'judge must mark closed homes ng');
++  assert.ok(js.includes('c._fit.cl ? [["ng"'), 'closed chip must show without any filter');
++});
++test('R158 closed: static badge + data-closed in the generated card, and find.js never counts it as an animal match', ()=>{
++  const t=fs.readFileSync('rojin-home/kanagawa/index.html','utf8');
++  const i=t.indexOf('data-fid="R158"'); assert.ok(i>0,'R158 card missing');
++  const open=t.slice(t.lastIndexOf('<div',i),t.indexOf('>',i)+1);
++  assert.ok(/ data-closed="1"/.test(open),'R158 needs data-closed');
++  const blk=t.slice(i,i+6000);
++  assert.ok(/<span class="pc-cl">現在、受け入れを休止中<\/span>/.test(blk),'static 休止 badge missing');
++  assert.ok(/受け入れ<\/b><span>犬・猫 現在、受け入れを休止/.test(blk),'受け入れ row must lead with the suspension');
++  for(const jf of ['tools/find.js','find.js']){const js=fs.readFileSync(jf,'utf8');
++  assert.ok(js.includes('it._cl = it.hasAttribute("data-closed")'));
++  assert.ok(/if \(it\._cl && ks\.length\) \{ if \(ks\.some\(function\(k\)\{ return k\.indexOf\("a:"\) === 0; \}\)\) return 2; r = 1; \}/.test(js),'judge must exclude closed on animal picks and demote on other picks: '+jf);}
++});
+diff --git a/tools/cardpolicy.py b/tools/cardpolicy.py
+index 5c9e0a0cd..d13acd355 100644
+--- a/tools/cardpolicy.py
++++ b/tools/cardpolicy.py
+@@ -31,6 +31,7 @@ SPRITE = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"
+ CSS = ('/* 事業者カードの共通の形（tools/cardpolicy.py が /pc.css に書く）*/'
+        '.pc .fc-body{padding:12px 14px}'
+        '.pc .pc-top{margin:0 0 6px}.pc .pc-n{display:block;font-weight:800;font-size:1.02rem;color:#2b2622;text-decoration:none;line-height:1.35}'
++       '.pc .pc-cl{display:inline-block;margin:3px 0 0;padding:1px 8px;border:1px solid #b5651d;border-radius:10px;font-size:.78rem;font-weight:700;color:#8a4a10;background:#fff4e6}'
+        '.pc .pc-loc{display:flex;gap:5px;align-items:center;margin:3px 0 0;font-size:.8rem;color:#7a6a5e}.pc .pc-loc::before{content:"";flex:0 0 18px;width:18px;height:18px;background:#5b4a3d;-webkit-mask:var(--i) center/contain no-repeat;mask:var(--i) center/contain no-repeat}'
+        '.pc .pc-i{flex:0 0 18px;width:18px;height:18px;fill:none;stroke:#5b4a3d;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}'
+        '.pc .pc-f li::before{content:"";width:18px;height:18px;background:#5b4a3d;-webkit-mask:var(--i) center/contain no-repeat;mask:var(--i) center/contain no-repeat}'
+@@ -332,7 +333,9 @@ def card(blk, h, cat, more=None, compact=False):
+     locv = h.get("addr") or h.get("area") or "".join(h.get("prefs", [])) + h.get("city", "")
+     fl = fields(h)
+     loc = "" if any(v == locv for _, _, v, _ in fl) else f'<p class="pc-loc pin"><span>{E(locv)}</span></p>'  # 同じ文を2回出さない
+-    top = f'<div class="pc-top"><a class="pc-n" href="{E(url)}" target="_blank" rel="noopener"><b>{E(name)}</b></a>{loc}</div>'
++    cl = h.get("closed")  # いま受け入れを休止（公式サイトの表示）。JSなしでも見える札と、さがす箱(find.js)が読む目印
++    if cl: ot = ot[:-1] + ' data-closed="1">'
++    top = f'<div class="pc-top"><a class="pc-n" href="{E(url)}" target="_blank" rel="noopener"><b>{E(name)}</b></a>' + (f'<span class="pc-cl">{E(cl)}中</span>' if cl else "") + f'{loc}</div>'
+     li = []
+     for icn, lab, val, f in fl:
+         v = E(val) if val else '<i>未確認</i>'
+diff --git a/tools/faccard.py b/tools/faccard.py
+index b43eef490..5cf88b4cc 100644
+--- a/tools/faccard.py
++++ b/tools/faccard.py
+@@ -115,7 +115,7 @@ def fit_single_quote(h):
+         return " data-fit='" + v + "'"
+     return re.sub(r' data-fit="([^"]*)"', sub, h)
+ 
+-def fit_attr(animals=None, only=False, sizes=None, max_kg=None, senior=None, puppy=None, animals_text="", fee=False):
++def fit_attr(animals=None, only=False, sizes=None, max_kg=None, senior=None, puppy=None, animals_text="", fee=False, closed=False):
+     """生成側からカードに足す属性（' data-fit="…"'）。書いていないことは渡さない（＝要確認）。"""
+     d = {}
+     if animals: d["a"] = list(dict.fromkeys(animals))
+@@ -126,6 +126,7 @@ def fit_attr(animals=None, only=False, sizes=None, max_kg=None, senior=None, pup
+     if senior: d["sen"] = 1
+     if puppy: d["pup"] = 1
+     if fee: d["fee"] = 1
++    if closed: d["cl"] = 1  # いま受け入れを休止している（公式サイトの表示）。動物の識別は消さず、「合うところ」では合わない扱い
+     if not d: return ""
+     return fit_attr_str(d)
+ 
+@@ -234,7 +235,7 @@ def _fit_table():
+         elif re.search(r"大型|小型・中型・大型", t): sizes = ["s", "m", "l"]
+         m = re.search(r"(\d+)kgまで", t)
+         if m: kg = int(m.group(1))
+-        T["rojin"][h["name"]] = fit_attr(a, rojin_only(a, t), sizes, kg, senior=True, animals_text="・".join(KIND_LABEL[k] for k in a), fee=_fee_of(h))
++        T["rojin"][h["name"]] = fit_attr(a, rojin_only(a, t), sizes, kg, senior=True, animals_text="・".join(KIND_LABEL[k] for k in a), fee=_fee_of(h), closed=bool(h.get("closed")))
+     gr = _load("grooming.json") or {}
+     for g in gr.get("groomers", []):
+         _meta_put("trimming", "grooming.json", g)
+diff --git a/tools/find.js b/tools/find.js
+index e4020a8eb..7cfa6cfa7 100644
+--- a/tools/find.js
++++ b/tools/find.js
+@@ -14,7 +14,8 @@
+   var sum = id("ffSum"), alt = id("ffAlt"), clr = id("ffClear");
+   var res = id("ffRes"), det = box.querySelector(".ux-det");
+   var needPref = box.hasAttribute("data-needpref");
+-  var SLUG = __SLUG__; // 都道府県→URLの名前（tools/uikit.py が tools/prefs.py から差し込む。県のページどうしの移動に使う）
++  // 都道府県→URLの名前（tools/uikit.py が tools/prefs.py から差し込む。県のページどうしの移動に使う）
++  var SLUG = __SLUG__;
+   var parts = location.pathname.split("/"), pfs = Object.keys(SLUG);
+   var routePf = pfs.find(function(p){ return parts[1] === cat && SLUG[p] === parts[2]; }) || "";
+   var items = Array.from(qa("[data-ffi]"));
+@@ -28,6 +29,7 @@
+     var ex = [at(it,"data-ft"), at(it,"data-tags")].join("|").split("|").filter(Boolean).map(function(x){ return x.trim().replace(/ /g, "_"); });
+     it._k = " " + (at(it,"data-k") || "") + " " + ex.join(" ") + " ";
+     it._no = " " + (at(it,"data-no") || "") + " ";
++it._cl = it.hasAttribute("data-closed");
+     var p = it.closest("[data-pref]");
+     it._p = at(it,"data-pref") || (p ? at(p,"data-pref") : "") || routePf;
+     it._q = (at(it,"data-q") || it.textContent).toLowerCase();
+@@ -143,12 +145,15 @@
+   }
+   function judge(it, ks, pf, qs){
+     if (geoKm && geoPos) { if (!it._ll || distKm(geoPos, it._ll) > geoKm) return 2; }
+-    if (!(pf && pf.length) && it._near) return 2; // 近くの県の施設（老犬ホームなど）は、その県を選んだときだけ（県を選ばないと同じ施設が2回出るため）
++    // 近くの県の施設（老犬ホームなど）は、その県を選んだときだけ（県を選ばないと同じ施設が2回出るため）
++    if (!(pf && pf.length) && it._near) return 2;
+     var pj = placeJ(it, pf || []);
+     if (pj === 2) return 2;
+     if (qs && qs.split(" ").some(function(w){ return it._q.indexOf(w) < 0; })) return 2;
+     if (ks.indexOf("a:cat") >= 0 && ks.indexOf("owner_live_dog") >= 0 && ks.indexOf("a:dog") < 0) return 2;
+     var r = pj;
++// 受け入れ休止中：動物で選んだときは出さない。ほかの条件でも「合う」には入れない
++if (it._cl && ks.length) { if (ks.some(function(k){ return k.indexOf("a:") === 0; })) return 2; r = 1; }
+     // 別プランの条件が重なっても、同じプランで不可なら一致にしない。
+     if(cat==="sougi"&&ks.includes("合同火葬"))for(const k of ["立ち会い","お骨を返してもらえる"])if(ks.includes(k)){
+       let x=" 合同火葬+"+k+" ";if(it._no.includes(x))return 2;if(!it._k.includes(x))r=1;}
+@@ -198,7 +203,7 @@
+       if (j === 1) {
+         if (!note) { note = el("p", "ux-unk-n"); var b = it.querySelector(".fc-body") || it; b.insertBefore(note, b.children[1] || null); }
+         var miss = ks.filter(function(k){ return it._k.indexOf(" " + k + " ") < 0 && k !== "a:dog"; }).map(function(k){ return LBL[k]; });
+-        note.textContent = (placeJ(it, pf) === 1 ? "近くの地域も相談できます（来てくれる地域：" + it._area.slice(0, 40) + "）。" : "") + (miss.length ? "公式サイトに書いていない条件があります（" + miss.join("・") + "）" : "");
++        note.textContent = (it._cl ? "いま受け入れを休止中です。" : "") + (placeJ(it, pf) === 1 ? "近くの地域も相談できます（来てくれる地域：" + it._area.slice(0, 40) + "）。" : "") + (miss.length ? "公式サイトに書いていない条件があります（" + miss.join("・") + "）" : "");
+       } else if (note) note.remove();
+     });
+     // 中身のなくなったまとまり・見出しを隠す
+diff --git a/tools/rojin.json b/tools/rojin.json
+index 40c057564..02db8d27e 100644
+--- a/tools/rojin.json
++++ b/tools/rojin.json
+@@ -55,6 +55,13 @@
+      "by": "site",
+      "checked": "2026-11-26",
+      "show": true
++    },
++    {
++     "k": "料金",
++     "v": "老犬ハウスの料金は、1泊2日で超小型犬・小型犬（10kgまで）7,000円、中型犬（10〜20kg）7,700円、大型犬（20kg以上）8,400円。デイサービス（9時30分〜17時）は5,500円、6,600円、7,700円。介護度（1〜3）によって料金が異なり、詳しくは問い合わせ時に説明される。延長1時間ごとに500円、大型連休は1回2,000円、夏季と冬季は1日500円の追加（税込）",
++     "src": "https://minto-no-mori.com/price/",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "web": {
+@@ -194,13 +201,21 @@
+      "src": "https://ca-merci.com/menu/",
+      "by": "site",
+      "checked": "2026-11-23"
++    },
++    {
++     "k": "受け入れ",
++     "v": "現在、受け入れを休止（公式サイトの老犬・老猫ホームのページ）",
++     "src": "https://ca-merci.com/menu/",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "web": {
+     "src": "https://ca-merci.com/",
+     "checked": "2026-11-25",
+     "text": "犬や猫はもちろん、うさぎ・鳥・フェレットなど、一緒に暮らす大切な家族の個性に寄り添います。Senior Pet Home 老犬・老猫ホーム。老犬・老猫ホームの詳細を見る 。猫用自動スマートトイレ。トイレ回数や体重の変化を自動測定し、専用アプリで愛猫の健康管理をサポート。獣医師監修のスマートトイレです。犬のお部屋、猫専用フリールーム、猫用ケージ、ガーデンドッグランをご用意しています。犬のお散歩は朝・夕、猫やウサギ・鳥は安全に配慮したお部屋でのお預かりです。料金表（税込） 種別 一時預かり（日帰り・1時間） 1泊目 2泊目以降 要介護 。猫（ケージ） 500円 4,000円 3,500円 要相談 。猫専用フリールーム — 6,000円 5,500円 要相談 。ウサギ・鳥（個室のみ） 800円 3,500円 3,500円 お預かり不可 。犬 ごはん（1回分ずつ小分け）、必要に応じておやつ・介護用品、首輪、胴輪、リード、狂犬病予防注射・ワクチン接種証明書 。猫 ごはん（1回分ずつ小分け）、必要に応じておやつ・介護用品、ワクチン接種証明書、ウイルス検査証明書 。要介護とは、食事・排泄・歩行を自力で行えない場合です。投薬はお受けできません。猫 3,000円 1,000円 500円 。要冷蔵・要冷凍食品の調理加工、投薬はお受けできません。ご自宅への送迎もご相談いただけます。大切な伴侶動物のためのペットフード、猫砂、ペットシートなどを、飼い主さまに代わって購入し、ご自宅へお届けします。老犬・老猫ホーム。医療行為や投薬はお受けできません。犬や猫以外もお願いできますか？ うさぎ、フェレット、ハムスター、鳥、魚などもご相談いただけます。犬・猫は各種予防接種証明書、飼い主さまの身分証明書のコピーも必要です。送迎はお願いできますか？ 真鶴町・湯河原町は片道300円（往復600円）です。医療行為や投薬はお願いできますか？ 医療行為および投薬はお受けできません。"
+-   }
++   },
++   "closed": "現在、受け入れを休止"
+   },
+   {
+    "id": "Rc8b985c",
+@@ -265,6 +280,13 @@
+      "src": "https://pet-dream.jp/hotel",
+      "by": "site",
+      "checked": "2026-11-23"
++    },
++    {
++     "k": "料金",
++     "v": "老犬・老猫ホームの料金（税抜）は、小型犬・猫が1泊4,500円から、中型犬が6,000円から、大型犬が8,000円から。月2回のシャンプー・カットとペットシーツ・おむつ代を含む。フード代と病院代金は別。1か月以上は先払い",
++     "src": "https://pet-dream.jp/nursing/",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "checked": "2026-11-23",
+@@ -1546,6 +1568,13 @@
+      "src": "https://senior-dog1.com/access/",
+      "by": "site",
+      "checked": "2026-11-23"
++    },
++    {
++     "k": "料金",
++     "v": "長期ステイは、月の宿泊費が超小型犬（5kg未満）143,000円、小型犬（5〜10kg）165,000円、中型犬（10〜15kg）198,000円、大型犬（15〜20kg）231,000円（すべて税込）。介護度に応じて軽度60,000円、中度120,000円、重度180,000円が月ごとに加わる。医療予備費50,000円は終了時に精算し、残金は返金。短期ステイは1泊10,000円から18,000円（介護度で3,000〜8,000円加算）。20kg超は要相談",
++     "src": "https://senior-dog1.com/price/",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "web": {
+@@ -1775,6 +1804,13 @@
+      "v": "希望すれば写真やメッセージで毎日の様子を知らせる",
+      "src": "https://www.hidamari-dog-village.com/senior-dog-care.html",
+      "checked": "2026-11-22"
++    },
++    {
++     "k": "料金",
++     "v": "老犬ホームの月額ケアプランは、1か月で小型犬（9.9kgまで）59,500円、中型犬（10〜19.9kg）89,500円、大型犬（20〜39.9kg）104,000円、超大型犬（40kg以上）140,500円。3か月は小型犬171,000円、中型犬261,000円、大型犬303,000円、超大型犬411,000円。会員費550円。医療費預かり（別）は介助なしで月30,000円または50,000円、介助ありで月100,000円または150,000円。食事介助・歩行介助・投薬介助は各1か月15,000円。税込・税別の表記は料金表にない",
++     "src": "https://www.hidamari-dog-village.com/custom_contents/cms_rwd/linkfile/hidamari-price02.pdf",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "review_query": "陽だまりドッグヴィレッジ 芝山町",
+@@ -1903,7 +1939,16 @@
+     "src": "http://www.xn--u9j870rtoo6nh.com/",
+     "checked": "2026-11-25",
+     "text": "「衣食住付きのドッグラン」です。近況報告・面会。面会は前日までにご連絡を。基本的にワンちゃん達は放し飼いで遊ばせていますので、里親施設というよりも 「犬の牧場」 、 「衣食住付きのドッグラン」 といった方がイメージとしては近いかもしれません。いわゆる超長期滞在型のペットホテルです。医療費・トリミング代 実費。介護料金 +2,000円/月（介護が必要になった場合）。介護に係る備品等 実費（おむつ・車イス等）。ワンちゃんの飼い主の方につきましては、日中の明るい時間帯であれば日曜祝日を問わず、いつでも面会することができます（前日までに来園の旨、ご連絡願います）。医療費について教えてください ワンちゃんがケガや病気で獣医さんに診てもらう必要のあるケースが生じた場合は、まずは飼い主さんへ連絡し、ワンちゃんの病状・治療内容等ご相談のうえ病院へ連れていきます。医療費につきましては飼い主さんの負担となります。"
+-   }
++   },
++   "facts": [
++    {
++     "k": "料金",
++     "v": "入園料は36,000円（運送費がかかる場合がある）。入園後の養育費は、小型〜中型犬（20kgまで）が月8,000円、大型犬（20〜30kg）が月8,500円、超大型犬（30kg〜）が月9,000円（12月〜3月は月500円の割増）。狂犬病予防注射は年1回3,700円程度、医療費は実費",
++     "src": "http://www.xn--u9j870rtoo6nh.com/nyuen.htm",
++     "by": "site",
++     "checked": "2026-11-27"
++    }
++   ]
+   },
+   {
+    "id": "R016",
+@@ -1958,6 +2003,20 @@
+      "by": "site",
+      "checked": "2026-11-26",
+      "show": true
++    },
++    {
++     "k": "料金",
++     "v": "老犬ホームの月額（1年以上の利用）は、税込で小型犬（8kgまで）61,600円、中型犬（15kgまで）72,600円、大型犬（30kgまで）89,100円、超大型犬105,600円。半年払い・1年払い・生涯払いもある（小型犬の生涯払いは税込1,981,100円）。お預り金60,000円（治療費。通院しなければ返金）と保証金100,000円（滞りがなければ返金）が別に必要",
++     "src": "https://roukendanka.jp/service/",
++     "by": "site",
++     "checked": "2026-11-27"
++    },
++    {
++     "k": "料金（ショートステイ）",
++     "v": "税込で、日帰り（8時間）は小型犬2,750円から超大型犬5,500円、1泊は小型犬7,700円から超大型犬11,000円、1か月（31日）は小型犬110,000円から超大型犬176,000円。キャンセルは前日の19時までは合計の50%、それ以降は100%",
++     "src": "https://roukendanka.jp/service/",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "web": {
+@@ -2001,6 +2060,13 @@
+      "by": "site",
+      "checked": "2026-11-26",
+      "show": true
++    },
++    {
++     "k": "料金",
++     "v": "老犬ホーム（スイートホテル ケアルーム）の基本料金は6か月で、小型犬（7kgまで）792,000円、中型犬（15kgまで）990,000円、大型犬（30kgまで）1,188,000円、超大型犬1,386,000円。介護度に応じて軽度は6か月で396,000円から、中度495,000円から、重度594,000円からが加わる。医療予備費100,000円",
++     "src": "https://the-kennels.tokyo/price.html",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "web": {
+@@ -2047,6 +2113,13 @@
+      "v": "起き上がることができないご愛犬も抱っこや歩行補助をしてお散歩します",
+      "src": "https://kamalei2018.com/dog-oldhome.html",
+      "checked": "2026-11-17"
++    },
++    {
++     "k": "料金",
++     "v": "老犬ホーム（公式サイトの料金表の画像、税の表示なし）の終生プラン（6か月更新）の表示は、体重7kgまで936,000円、15kgまで1,116,000円、15kg以上1,314,000円（何か月分の金額かは画像に書かれていない）。要介護犬の終生プランの表示は1,116,000円、1,404,000円、1,692,000円。要介護犬の1泊プランは6,400円、8,000円、9,600円。デイサービス（9時〜17時）は4,200円、4,900円、5,600円。治療予備費100,000円は別。送迎は1,100円から。30kg以上は要相談",
++     "src": "https://www.kamalei2018.com/img/price-hotel.jpg",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "web": {
+@@ -2214,6 +2287,13 @@
+      "v": "管理が困難な持病、難しい性格などでも特に問題ありません。／投薬が必要な場合は投薬をするようにいたしますが",
+      "src": "https://konomiah.com/rouken.html",
+      "checked": "2026-11-17"
++    },
++    {
++     "k": "料金（ペットホテル）",
++     "v": "ペットホテルの基本料金は2025年10月から、犬XS（5kgまで）4,500円から、S（5〜10kg）5,000円から、M（10〜20kg）5,500円から、L（20〜30kg）6,500円から、XL（30kg以上）7,500円から（税別）。金土祝前日は1,500円から、3連休以上は3,000円からの割増。老犬ホームの料金は公式サイトの価格表PDFでは確認できない",
++     "src": "https://konomiah.com/wp-content/uploads/2025/08/ペットホテル価格改定2025.10.pdf",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "web": {
+@@ -2297,6 +2377,13 @@
+      "v": "高齢の犬・障がいのある犬を優先。夜鳴き・徘徊など、家での介護がむずかしい子の相談を受けている",
+      "src": "https://pethotel-sunshine.com/",
+      "checked": "2026-11-17"
++    },
++    {
++     "k": "料金",
++     "v": "お預かり料金（税込表記なし、表のまま）は、体重6kgまでの介護なしが1泊6,050円、マンスリーパス（月内何度でも利用可）114,950円。6kg超〜15kgは1泊8,250円、マンスリーパス156,750円。15kg超は1泊10,450円から、マンスリーパス198,550円から。介護A・Bはそれぞれ高くなる（公式の料金表）。初回登録料金（カルテ作成＋トライアル6時間まで）3,300円",
++     "src": "https://pethotel-sunshine.com/price/",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "review_query": "老犬ホテル SUNSHINE 八王子市諏訪町",
+@@ -2360,6 +2447,13 @@
+      "v": "犬・猫。長期・終生のお預かりは相談",
+      "src": "http://pet-care-egao.com/",
+      "checked": "2026-11-17"
++    },
++    {
++     "k": "料金",
++     "v": "お預かりは、日帰り（9〜18時）が小型犬2,500円（10kgまで）、中型犬3,500円（20kgまで）、大型犬4,500円（30kgまで）。お泊まり（17時〜17時）は4,000円（5kgまで）から7,500円（30kgまで）。介助・介護が必要な場合は各1,000円の加算（消費税別）。月単位の老犬ホームの料金は公式の料金表に記載がない",
++     "src": "https://pet-care-egao.com/free/ryoukin2",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "review_query": "ペットケアサロンえがお 佐倉市井野",
+@@ -2389,6 +2483,13 @@
+      "v": "ホスピスケア・看取り",
+      "src": "https://forest-dog.com/",
+      "checked": "2026-11-17"
++    },
++    {
++     "k": "料金",
++     "v": "老犬ホームは入会金100,000円（健康診断・カルテ作成・ケアメニュー作成費を含む）。会員の月額は小型犬（10kgまで）20万円、中型犬（20kgまで）25万円、大型犬（30kgまで）30万円、超大型犬35万円。1日あたりは会員が7,000〜12,000円、非会員が10,000〜15,000円（非会員の月額はなし）。税込・税別の表記は料金表にない",
++     "src": "https://forest-dog.com/guaidance/usagefee/",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "review_query": "フォレスト・ドッグケアセンター 袖ケ浦市",
+@@ -2515,6 +2616,13 @@
+      "by": "site",
+      "checked": "2026-11-26",
+      "show": true
++    },
++    {
++     "k": "料金",
++     "v": "1か月の預かりは、通常で小型犬95,000円、中型犬99,000円、大型犬140,000円、超大型犬160,000円、猫95,000円。介護・シニア（犬猫8歳以上）は小型犬110,000円、中型犬120,000円、大型犬160,000円、超大型犬180,000円、猫110,000円。日帰りは小型犬5,500円から、宿泊は小型犬6,500円から（いずれも税別）。介護が必要な場合は日帰り・宿泊で各1,000円、1か月で15,000円の加算。終身は問い合わせ",
++     "src": "https://pethomeohana.wphp.jp/",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "web": {
+@@ -2610,6 +2718,13 @@
+      "by": "provider",
+      "checked": "2026-11-26",
+      "show": true
++    },
++    {
++     "k": "料金",
++     "v": "老犬ホーム（10歳以上が対象）の料金は、税込の表示があるのは3か月プランの表のみで、6か月・1年・終身一括の表に税の表示はない。小型犬（8kg未満）の入所金は110,000円。3か月プラン（介護が必要な犬に限る）は利用料・介護料215,490円、6か月プランは利用料253,000円（要介護の場合は介護費77,220円が別）、1年プランは利用料396,000円（要介護の場合は介護費118,800円が別）、終身一括プランは利用料950,400円。治療費は3か月・6か月・1年プランで33,000円を前もって預ける（終身一括は「―」）。中型・大型・超大型犬はサイズごとに高くなる（公式の料金表）",
++     "src": "https://rouken-kaigo.co.jp/price/",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "web": {
+@@ -2638,6 +2753,20 @@
+      "src": "https://tokyo-cathome.com/",
+      "by": "site",
+      "checked": "2026-11-23"
++    },
++    {
++     "k": "料金",
++     "v": "老犬・老猫ホームのプランは、1か月プランと6か月プランの2つ。1か月プランは入居一時金0円で飼養費1か月分（税別）が、超小型犬（3kgまで）100,000円（税込110,000円）、小型犬（6kgまで）130,000円（税込143,000円）、中型犬（12kgまで）160,000円（税込176,000円）、大型犬（12kg以上）190,000円（税込209,000円）、猫100,000円（税込110,000円）。更新は1か月分の飼養費のみ。6か月プランは入居一時金と飼養費6か月分が同額で、超小型犬300,000円＋300,000円（税込330,000円ずつ）、小型犬390,000円＋390,000円（税込429,000円ずつ）、中型犬480,000円＋480,000円（税込528,000円ずつ）、大型犬570,000円＋570,000円（税込627,000円ずつ）、猫300,000円＋300,000円（税込330,000円ずつ）。更新は6か月分の飼養費のみ。入居一時金は償却期間6か月。預り金（一口）100,000円",
++     "src": "https://tokyo-cathome.com/pet-home/",
++     "by": "site",
++     "checked": "2026-11-27"
++    },
++    {
++     "k": "介護料金（別料金）",
++     "v": "介護料金は小型犬・中型犬・猫共通の表で、大型犬は含まない。マンスリープランは、軽度（食事・排泄の介助等）が1か月25,000円（税込27,500円）、中度（認知症・歩行困難等）が50,000円（税込55,000円）、重度（夜鳴き・寝たきり等）が75,000円（税込82,500円）。6か月プランは軽度90,000円（税込99,000円）、中度180,000円（税込198,000円）、重度270,000円（税込297,000円）。介護の程度はトライアル後に決まり、更新時に見直される場合がある。入居時に1か月分の初期償却がある。亡くなった場合、飼養費と介護費は返金されず、入居一時金の未償却分と医療予備費の残りは返金される",
++     "src": "https://tokyo-cathome.com/pet-home/",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "web": {
+@@ -2867,6 +2996,13 @@
+      "v": "寝たきりの子もカートで外に連れ出す。看取りまで",
+      "src": "https://www.pethouse-nagaraelle.com/",
+      "checked": "2026-11-17"
++    },
++    {
++     "k": "料金",
++     "v": "老犬ホームの料金（料金表に税の表示はない）は、3か月で小型犬（8kg未満）165,000円、中型犬（20kg未満）198,000円、大型犬（35kg未満）231,000円。6か月は小型犬297,000円、中型犬356,400円、大型犬415,800円。1年は小型犬495,000円、中型犬528,000円、大型犬660,000円。要介護加算料金は、3か月・6か月・1年の各料金表に小型・中型犬11,000円、大型犬16,500円と表示（何か月分の金額かは表に書かれていない）。緊急時医療お預かり金30,000円が別に必要。亡くなった場合の返金はない。オムツ代3,000円（月、税込）とトイレシート代2,000円（月、税込）は料金に含まれない",
++     "src": "https://www.pethouse-nagaraelle.com/olddoghome",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "review_query": "ペットハウス ながらエル 長柄町",
+@@ -3237,6 +3373,13 @@
+      "v": "犬だけ（猫は預からない）。短期から生涯まで、半年ごとに更新",
+      "src": "https://kuwabara-awc.com/",
+      "checked": "2026-11-14"
++    },
++    {
++     "k": "料金",
++     "v": "お預かり（表は全て税込）は、小型犬（5kg未満・13歳以上）の通常が1日4,400円、1週間30,800円、1か月110,000円、6か月550,000円。中型犬（12kg未満・11歳以上）の通常は1日6,600円、1か月176,000円、6か月880,000円。大型犬（25kg未満・10歳以上）の通常は1日8,800円、1か月242,000円、6か月1,210,000円。超大型犬（25kg以上）の通常は1日11,000円、1か月308,000円、6か月1,540,000円。介護の程度（軽度・中軽度・重度）の料金表もある。公式の表では小型犬・重度の6か月が577,500円と表示され、同じ表の軽度（687,500円）や中軽度（825,000円）の6か月より低い（通常は550,000円）。表示のまま載せており、金額は事業者に要確認。6か月以上の契約で医療予備費110,000円。投薬管理料は1日440円",
++     "src": "https://kuwabara-awc.com/price.html",
++     "by": "site",
++     "checked": "2026-11-27"
+     }
+    ],
+    "web": {
+diff --git a/tools/sougi_facilities.json b/tools/sougi_facilities.json
+index 22c411e01..da90a74dc 100644
+--- a/tools/sougi_facilities.json
++++ b/tools/sougi_facilities.json
+@@ -2801,6 +2801,18 @@
+      "k": "体重ごとの料金（合同／個別／立会）",
+      "v": "500g以下 8,800円／13,200円／18,700円、1kg未満 11,000円／18,700円／24,200円、5kg未満 14,300円／24,200円／33,000円、10kg未満 15,400円／27,500円／38,500円、15kg未満 16,500円／30,800円／44,000円、20kg未満 17,600円／34,100円／49,500円、25kg未満 個別37,400円／立会55,000円、40kg未満 個別46,200円／立会63,800円（税込。20kg以上は個別と立会だけ、40kg以上は10kgごとに5,500円たす）"
+     },
++    {
++     "k": "料金表の30kg未満の区分",
++     "v": "25kg以上30kg未満は個別葬40,700円、立会葬59,400円（合同葬はない）（公式サイト https://www.fujipark.info/about/ で2026年11月27日に確認）"
++    },
++    {
++     "k": "料金の注意",
++     "v": "公式サイトの料金は消費税等10%を含み、予告なく変わることがある。各種のお墓の料金は公式サイトの「お墓について」のページに別にある（公式サイト https://www.fujipark.info/about/ で2026年11月27日に確認）"
++    },
++    {
++     "k": "埋葬方法",
++     "v": "個別葬と立会葬では、ペット共用墓、個別墓地、芝生葬、納骨堂、ご返骨（手元供養）、合同碑への埋葬から選べる。合同葬は合同碑への埋葬になる。納骨堂にはお骨つぼのほか、生前の遺品なども納められる（公式サイト https://www.fujipark.info/about/ で2026年11月27日に確認）"
++    },
+     {
+      "k": "火葬のしかた",
+      "v": "合同はほかの子といっしょに火葬して合同碑に埋葬。個別は園がお骨上げをしてお返し。立会は家族がお骨上げ"
+@@ -6080,6 +6092,26 @@
+      "k": "体重ごとの料金（合同のお引取り供養／立会個別火葬・骨つぼつき）",
+      "v": "2kg未満 22,000円／27,500円、4kg未満 25,300円／30,800円、8kg未満 27,500円／33,000円、12kg未満 33,000円／38,500円、20kg未満 38,500円／44,000円、30kg未満 49,500円／55,000円、50kg未満 71,500円／77,000円（税込）"
+     },
++    {
++     "k": "料金表のそのほかの区分（合同のお引取り供養／立会個別火葬・骨つぼつき、税込）",
++     "v": "極小動物（ハムスター・小鳥など）16,500円／22,000円、1kg未満 18,700円／24,200円、25kg未満 44,000円／49,500円、35kg未満 55,000円／60,500円、40kg未満 60,500円／66,000円、45kg未満 66,000円／71,500円（公式サイト https://spc-oasis.com/price と https://spc-oasis.com/ で2026年11月27日に確認）"
++    },
++    {
++     "k": "税抜の表示",
++     "v": "公式の料金表は税込と税抜の両方を載せている。例：4kg未満は、お引取り供養が税込25,300円（税抜23,000円）、立会個別火葬が税込30,800円（税抜28,000円）（公式サイト https://spc-oasis.com/price と https://spc-oasis.com/ で2026年11月27日に確認）"
++    },
++    {
++     "k": "骨壺の標準サイズ",
++     "v": "極小動物は2寸、1kg未満は2.5寸、2kg未満は3寸、4kg未満は3.5寸、8kg・12kg未満は4寸、20kg・25kg未満は5寸、30kg・35kg・40kg未満は6寸、45kg・50kg未満は7寸（公式サイト https://spc-oasis.com/price と https://spc-oasis.com/ で2026年11月27日に確認）"
++    },
++    {
++     "k": "別にかかる費用",
++     "v": "お引取り供養で供養祭まで個別に預かるときは1,000円が加わる。提携寺院での葬儀・火葬・埋葬・納骨を望むときも、別に費用がかかる（公式サイト https://spc-oasis.com/price と https://spc-oasis.com/ で2026年11月27日に確認）"
++    },
++    {
++     "k": "訪問火葬（出張火葬）の受け付け",
++     "v": "移動火葬車による出張火葬の予約は、365日24時間受け付けていて、深夜・早朝の予約もできる（霊園や斎場の開いている時間のことではない）。出張料金は地域で変わり、現金で払うと掲載価格から10%引きになる（上の「お迎え」「支払い」のとおり）（公式サイト https://spc-oasis.com/ で2026年11月27日に確認）"
++    },
+     {
+      "k": "おまかせの個別火葬",
+      "v": "立会個別火葬より2,000円安い"
