@@ -2474,7 +2474,7 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
       fetch(GAS_URL, {method: "POST", body: body}).then(function(r){ return r.json(); }).then(function(j){
         if (j && j.ok && (!(j.rating > 0) || !(j.count > 0))) throw "none"; // Googleマップに口コミがまだない（上限や不具合とは別）
         if (!j || !j.ok) throw 0;
-        memo[id] = {rating: j.rating, count: j.count}; paint(box, memo[id]);
+        memo[id] = {rating: j.rating, count: j.count}; paint(box, memo[id]); if (window.__ratingSort) window.__ratingSort(box);
         var panel = box.querySelector(".review-panel"), open = box.querySelector(".partner-review-open");
         fill(panel, j); panel.hidden = false; open.setAttribute("aria-expanded", "true");
       }).catch(function(e){ if (e === "none") { box.remove(); return; } b.disabled = false; b.textContent = "口コミをもう一度"; });
@@ -2510,6 +2510,41 @@ open(os.path.join(ROOT, "reviews.js"), "w", encoding="utf-8").write("""// 生成
   }
   // 後から並べたカード（/hosp.js の病院さがし）にも「口コミ」を付ける
   window.petReviews = function(root){ root.querySelectorAll(".emg-score[data-id]").forEach(function(b){ if (!b.firstChild) lazy(b); }); };
+  // 口コミの並べ替え（2026-11-28 Nori 11/26「口コミが高い順・低い順」「初期は口コミが高い順」）。
+  // 並べるのは、いま読み込み済みの星だけ。星を取り寄せていないところは「未取得」として最後に、元の順のまま並べる（0点とは扱わない）。新しい取り寄せはしない。
+  (function(){
+    var sel = document.getElementById("ffSort");
+    if (!sel || !document.querySelector(".emg-score[data-id]")) return;
+    var MODE = {ratingDesc: 1, ratingAsc: 1}, note = el("p", "ff-note", "口コミの並べ替えは、星を読み込んだ施設だけが対象です。未取得の施設は最後に、もとの順で並びます。");
+    note.style.cssText = "margin:4px 0 0;font-size:.8rem;color:#6b625b";
+    [["ratingAsc", "口コミが低い順"], ["ratingDesc", "口コミが高い順"]].forEach(function(o){ var op = el("option", "", o[1]); op.value = o[0]; sel.insertBefore(op, sel.firstChild); });
+    sel.value = "ratingDesc";
+    if (sel.parentNode) sel.parentNode.appendChild(note);
+    function cid(c){ var b = c.querySelector(".emg-score[data-id]"); return b ? b.dataset.id : ""; }
+    function rate(c){ var m = memo[cid(c)]; return m && m.rating > 0 ? m.rating : 0; }
+    var busy = false;
+    function apply(anchor){
+      var mode = sel.value; if (!MODE[mode] || busy) return; busy = true;
+      var cards = [].slice.call(document.querySelectorAll(".emg-item.fc[data-ffi], .ux-c.dr-card[data-ffi]"));
+      var top0 = anchor ? anchor.getBoundingClientRect().top : 0, act = document.activeElement, groups = [], seen = [];
+      cards.forEach(function(c){ var p = c.parentNode, i = seen.indexOf(p); if (i < 0) { seen.push(p); groups.push([p, []]); i = groups.length - 1; } groups[i][1].push(c); });
+      groups.forEach(function(g){
+        var arr = g[1].map(function(c, i){ return {c: c, r: rate(c), i: c._idx != null ? c._idx : i}; });
+        arr.sort(function(a, b){ if ((a.r > 0) !== (b.r > 0)) return a.r > 0 ? -1 : 1; if (a.r !== b.r) return mode === "ratingDesc" ? b.r - a.r : a.r - b.r; return a.i - b.i; });
+        var same = arr.every(function(x, i){ return x.c === g[1][i]; });
+        if (!same) arr.forEach(function(x){ g[0].appendChild(x.c); });
+        arr.forEach(function(x){ var u = x.c.querySelector(".rs-unk"); if (x.r > 0) { if (u) u.remove(); } else if (!u && cid(x.c)) { var s = el("span", "rs-unk", "口コミ未取得"); s.style.cssText = "display:inline-block;margin:2px 0;font-size:.75rem;color:#6b625b"; var a = x.c.querySelector(".fc-acts"); (a || x.c).appendChild(s); } });
+      });
+      if (act && act !== document.activeElement && document.contains(act) && act.focus) act.focus({preventScroll: true});
+      if (anchor) { var d = anchor.getBoundingClientRect().top - top0; if (d) window.scrollBy(0, d); }
+      busy = false;
+    }
+    function clear(){ document.querySelectorAll(".rs-unk").forEach(function(u){ u.remove(); }); note.hidden = !MODE[sel.value]; }
+    window.__ratingSort = function(box){ apply(box.closest(".emg-item.fc, .ux-c.dr-card") || box); };
+    // find.js が並べ直したあと（しぼりこみ・並び順の変更）にもういちど口コミ順にする
+    ["change", "click", "input"].forEach(function(t){ document.addEventListener(t, function(e){ if (e.target === sel) clear(); setTimeout(function(){ apply(null); }, 0); }, true); });
+    window.addEventListener("load", function(){ setTimeout(function(){ apply(null); }, 0); });
+  })();
   var boxes = document.querySelectorAll(".emg-score[data-id]");
   if (!boxes.length) return;
   boxes.forEach(photos);
