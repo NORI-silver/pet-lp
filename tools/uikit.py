@@ -130,7 +130,10 @@ def box(cat, *, q_ph, opts=None, animals=None, who=None, when=None, need=None, m
     if det:
         rows.append(f'<details class="ux-det"><summary>詳しい条件で絞り込む<span></span></summary>{"".join(det)}</details>')
     rows.append('<div class="ux-r"><span class="ux-l">表示順</span><div class="ux-w"><select id="ffSort" aria-label="表示順"><option value="">標準の並び</option><option value="priceAsc">料金が安い順</option><option value="priceDesc">料金が高い順</option></select></div></div>')
-    rows.append('<div class="ux-r"><span class="ux-l">現在地から</span><div class="ux-w"><select id="ffNear" aria-label="現在地からの距離"><option value="">指定なし</option><option value="3">3km以内</option><option value="5">5km以内</option><option value="10">10km以内</option><option value="20">20km以内</option><option value="30">30km以内</option></select></div></div>')
+    if cat == "sougi":  # 施設の正確な場所は未確認（市区町村の中心で代用していた）ので、距離での絞り込みは出さない
+        rows.append('<div class="ux-r"><span class="ux-l">現在地から</span><div class="ux-w"><p style="margin:0;font-size:.8rem;color:#7a6a5e;line-height:1.6">施設の正確な場所は確認できていないため、近さでは絞れません。上の「どこで探しますか？」で都道府県・市区町村を選んでください。</p></div></div>')
+    else:
+        rows.append('<div class="ux-r"><span class="ux-l">現在地から</span><div class="ux-w"><select id="ffNear" aria-label="現在地からの距離"><option value="">指定なし</option><option value="3">3km以内</option><option value="5">5km以内</option><option value="10">10km以内</option><option value="20">20km以内</option><option value="30">30km以内</option></select></div></div>')
     attrs = f' data-ff="{e(cat)}" data-unit="{e(unit)}" data-noun="{e(noun)}"' + (" data-guess" if guess else "") + (" data-needpref" if needpref else "")
     return (f'<div class="ux-find"{attrs}>' + "".join(rows) + f'<button type="button" class="ux-go" id="ffGo">{e(go)}</button>'
             '<div class="ux-foot"><p class="ux-sum" id="ffSum" aria-live="polite"></p><button type="button" class="ux-clear" id="ffClear" hidden>条件をクリア</button></div>'
