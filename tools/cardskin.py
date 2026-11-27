@@ -29,6 +29,7 @@ CSS = ('<style id="cs-css">'
        '.cs .ux-c-l i{font-style:normal;flex:0 0 1.2em;text-align:center}'
        '.cs .ux-c-l small{display:inline;color:#7a6a5e;font-size:.76rem;margin-right:4px}'
        '.cs .ux-c-a{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}'
+       '.cs .ux-c-a>a:only-child{grid-column:1/-1}.cs .ux-c-dr{margin-top:8px}.cs .ux-c-rt{margin:6px 0 2px}.cs .ux-c-rt a{color:#a8410a;font-weight:700;font-size:.88rem}'
        '.cs .ux-c-a a{display:flex;align-items:center;justify-content:center;gap:4px;border-radius:12px;padding:10px 6px;font-weight:800;font-size:.88rem;text-decoration:none;background:#2b2622;color:#fff!important;border:1px solid #2b2622;min-width:0}'
        '.cs .ux-c-a a.emg-tel{white-space:nowrap;font-size:.84rem}.cs .ux-c-a a.l{background:#fff;color:#2b2622!important;border-color:#d9c9bb}'
        '.cs .ux-c-a a:only-child{grid-column:1/-1}'
@@ -73,6 +74,11 @@ def _attrs(tag):
 def _route(name, addr):
     return ('<a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination='
             + quote(f"{name} {addr}".strip()) + '" target="_blank" rel="noopener" data-route>経路を見る</a>')
+
+
+def _route_more(a):
+    """経路を見る：目立つボタンから「くわしく見る」の中へ（行き先は今までと同じ。行き先が分かるときだけ）。"""
+    return '<details class="ux-c-d ux-c-dr"><summary>くわしく見る（経路）</summary><p class="ux-c-rt">' + a.replace(">経路を見る</a>", ">経路を見る（地図アプリで開く）</a>").replace(' class="l"', "", 1) + '</p></details>'
 
 
 def _line(ic, body, label=""):
@@ -122,8 +128,8 @@ def yd(blk):
                 t = re.search(r"\?to=([^#&\"]+)", l)
                 if t: addr = unquote(t.group(1))
     btn = [f'<a href="{href}" target="_blank" rel="noopener"{off}>公式サイト ↗</a>']
-    if addr: btn.append(_route(name, addr))
     out.append('<div class="ux-c-a">' + "".join(btn) + "</div>")
+    if addr: out.append(_route_more(_route(name, addr)))
     # 表・ボタン以外の部品（口コミの枠など）は残す
     rest = inner
     for pat in (r'<h3><a [^>]*>.*?</a></h3>', r'<p class="yd-at">.*?</p>', r'<ul class="yd-chips">.*?</ul>', r"<dl>.*?</dl>", r'<p class="yd-go">.*?</p>'):
@@ -173,9 +179,9 @@ def emg(blk):
         if k > 0: num, note = num[:k].strip(), (num[k + 1:-1] if num.endswith("）") else num[k + 1:]).strip()
         if note: out.append(_line("📞", note))
         btn = [tm.group(1) + num + "</a>", f'<a class="l" href="{href}" target="_blank" rel="noopener">公式サイト ↗</a>']
-    elif addr: btn.append(_route(re.sub(r"<[^>]+>", "", name), addr))
     if review: btn.append(review.group(0).replace('class="emg-review-link"', 'class="emg-review-link l"', 1))
     out.append('<div class="ux-c-a">' + "".join(btn) + "</div>")
+    if not tel and addr: out.append(_route_more(_route(re.sub(r"<[^>]+>", "", name), addr)))
     if taxi: out.append(f'<p class="ux-c-s">{taxi.group(0)}</p>')
     return _add_cls(ot) + "".join(out) + "</div>"
 
@@ -213,13 +219,14 @@ def fc(blk):
     lab = "公式ページ ↗" if re.search(r"\.(lg\.jp|go\.jp)|/city\.|\.pref\.", href) else "公式サイト ↗"
     btn = [f'<a href="{href}" target="_blank" rel="noopener">{lab}</a>']
     to = a0.get("data-to", "")
+    rt_more = ""
     if to and re.search(r"[都道府県市区町村郡]", to):
         # 廣瀬さん指定の京都の事業所。店名で検索すると別の教室が選ばれる場合がある。
         office_pin = a0.get("data-cat") == "trainer" and a0.get("data-fid") == "T114"
         dest = to if office_pin or name in to else f"{name} {to}"
         route_label = "事業所への経路" if office_pin else "経路を見る"
-        btn.append('<a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination=' + quote(dest) + f'" target="_blank" rel="noopener" data-route>{route_label}</a>')
-    grid = '<div class="ux-c-a">' + "".join(btn) + "</div>"
+        rt_more = _route_more('<a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination=' + quote(dest) + f'" target="_blank" rel="noopener" data-route>{route_label}</a>')
+    grid = '<div class="ux-c-a">' + "".join(btn) + "</div>" + rt_more
     b = b[:acts.start()] + grid + b[acts.start():]
     return _add_cls(b[:len(ot)]) + b[len(ot):]
 
@@ -248,8 +255,8 @@ def cafe_card(tr, C):
         if f.get(k): out.append(_line(CAFE_IC[k], f[k], k))
     url = c["url"] + ("&" if "?" in c["url"] else "?") + "utm_source=pet.shiokonbu.com&amp;utm_medium=referral&amp;utm_campaign=cafe_cards"
     btn = [f'<a href="{url}" target="_blank" rel="noopener">公式サイト ↗</a>']
-    if f.get("所在地"): btn.append(_route(re.sub(r"<[^>]+>", "", name), f["所在地"]))
     out.append('<div class="ux-c-a">' + "".join(btn) + "</div>")
+    if f.get("所在地"): out.append(_route_more(_route(re.sub(r"<[^>]+>", "", name), f["所在地"])))
     out.append(f'<p class="ux-c-s"><a href="{page}">くわしく見る</a></p>')
     return f'<div class="ux-c cs"{attrs}>' + "".join(out) + "</div>"
 
