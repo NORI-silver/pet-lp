@@ -7,6 +7,7 @@
 import json, os
 import gen_dogrun, gen_sougi
 import facility_cards as FC
+import faccard as _FCARD
 import guides_sougi as GS
 
 PSLUG = gen_dogrun.PSLUG
@@ -180,6 +181,13 @@ def render(ctx, f):
     card = (f'<div class="emg-item emg-co sg-pv" data-pref="{e(pf)}"{FC.attrs(e, "sougi", f, FC.sougi_tags(f), nm, to, "この施設")}>'
             f'<a href="{e(f["u"])}" target="_blank" rel="noopener"><b>{e(nm)}の公式サイト</b></a><small>{e(pf)}{e(f["city"])}</small>'
             + (f'<div class="emg-score" data-id="{e(f["id"])}"></div>' if f.get("review_query") else "") + '</div>')
+    _vis = f.get("visit", "public")
+    _nt = f.get("notice") or (_FCARD._VISIT_TXT.get(_vis, "") if _vis != "public" else "")
+    vis_html = f'<p class="emg-note" data-visit="{e(_vis)}">{e(_nt)}</p>' if _nt else ""
+    if _vis == "public":
+        move_h, move_p = "火葬場や霊園への移動は、ペットタクシーで", "車がないとき、家族と一緒に、家の前から施設の前まで移動できます。当日の依頼もできます。"
+    else:
+        move_h, move_p = "来館先が分かったら、ペットタクシーで", "来館できる場所が確認できたら、その場所まで、家族と一緒にペットタクシーで移動できます。このカードでは来館先が確認できていないため、行き先は入れていません。"
     faq_html = "".join(f"<dt>{e(a)}</dt><dd>{e(b)}</dd>" for a, b in _faq(f))
     css = "<style>.emg .tbl{overflow-x:auto;max-width:100%}.pp-tbl th,.pp-tbl td{font-size:13px;padding:5px 6px;text-align:left;vertical-align:top}.pp-tbl.cmp td,.pp-tbl.cmp th{white-space:nowrap}.pp-tbl.cmp td:first-child{white-space:normal;min-width:9em}.fac-pts{margin:6px 0 4px;padding-left:1.2em}.fac-pts li{margin:3px 0}</style>"
     return ctx["head"](title, desc, url, ld) + css + f"""
@@ -196,6 +204,7 @@ def render(ctx, f):
       <div class="emg-tips" style="margin-top:0"><h2 style="font-size:1.05em;margin:0 0 4px">要点</h2><ul class="fac-pts">{"".join(f"<li>{e(x)}</li>" for x in pts)}</ul></div>
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">基本の情報</h2><div class="tbl"><table class="pp-tbl"><thead><tr><th>項目</th><th>内容</th><th>出どころ</th></tr></thead><tbody>{rows}</tbody></table></div></div>
       {choice + chr(10) + "      " if choice else ""}{card}
+      {vis_html}
       {_cmp(e, f)}
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">よくある質問</h2><dl>{faq_html}</dl></div>
       <div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">関連するページ</h2><ul class="other"><li><a href="/sougi/{slug}/">{e(pf)}のペット火葬・霊園と市区の受け付け</a></li><li><a href="/guide/pet-cremation-types/">ペットの火葬の種類と料金</a></li><li><a href="/guide/pet-died-first/">ペットが亡くなったら、すぐにすること</a></li><li><a href="/guide/pet-memorial/">お骨の供養と、ペット霊園・納骨堂の選び方</a></li><li><a href="/guide/farewell/">お別れの日の移動</a></li></ul></div>
@@ -207,7 +216,7 @@ def render(ctx, f):
 </section>
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sh"><h2>火葬場や霊園への移動は、ペットタクシーで</h2><p>車がないとき、家族と一緒に、家の前から施設の前まで移動できます。当日の依頼もできます。</p></div>
+    <div class="sh"><h2>{move_h}</h2><p>{move_p}</p></div>
   </div>
 </section>
 </main>
