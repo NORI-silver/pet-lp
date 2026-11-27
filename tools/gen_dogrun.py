@@ -124,18 +124,19 @@ def ff_card(e, d, full=False):
         if d.get(f): lines += f'<p class="ux-c-l"><i aria-hidden="true">{ic}</i><span>{e(_short(d[f]))}</span></p>'
     dest = (d.get("addr") or "") and _q(f'{d["name"]} {pf}{d["addr"]}')
     acts = f'<a class="ux-btn" href="{e(d["url"])}" target="_blank" rel="noopener">公式ページ ↗</a>'
-    if dest: acts += f'<a class="ux-btn l" href="https://www.google.com/maps/dir/?api=1&amp;destination={dest}" target="_blank" rel="noopener" data-route>経路を見る</a>'
+    # 2026-11-27 利用者の了承：目立つボタンは「公式ページ」「ペットタクシーの料金」の2つ。経路は「くわしく見る」の中へ（行き先が分かるときだけ、これまでと同じ行き先）。
+    route = f'<p class="ux-c-rt"><a href="https://www.google.com/maps/dir/?api=1&amp;destination={dest}" target="_blank" rel="noopener" data-route>経路を見る（地図アプリで開く）</a></p>' if dest else ""
     _rl = _review(d)
     acts += _rl
     _to = d.get("addr") or (pf + d.get("city", "") + d["name"])
-    acts += f'<a class="ux-btn l" href="/?to={_q(_to[:80])}#form">ペットタクシーの料金</a>' 
+    acts += f'<a class="ux-btn l" href="/?to={_q(_to[:80])}#form">ペットタクシーの<wbr>料金</a>' 
     sub = "" if full else f'<a href="{href(pf)}#{d["id"]}">くわしく見る</a>'
-    det = ""
+    det = "" if (full or not route) else f'<details class="ux-c-d ux-c-dr"><summary>くわしく見る（経路）</summary>{route}</details>'  # 全国の一覧の札：県のページへの「くわしく見る」リンクはそのまま、経路だけ閉じた中に
     if full:
         rows = "".join(f"<dt>{e(lab)}</dt><dd>{e(d[f])}</dd>" for f, lab in FIELDS if d.get(f))
         srcs = [u for u in d.get("src", []) if u != d["url"]]
         more = ("<small>ほかの出どころ：" + "、".join(f'<a href="{e(u)}" target="_blank" rel="noopener">{i + 1}</a>' for i, u in enumerate(srcs)) + "</small>") if srcs else ""
-        det = f'<details class="ux-c-d"><summary>くわしく見る（料金・時間・登録・持ちもの）</summary><dl>{rows}</dl>{more}{_fac_link(e, d)}</details>'
+        det = f'<details class="ux-c-d"><summary>くわしく見る（料金・時間・登録・持ちもの）</summary><dl>{rows}</dl>{route}{more}{_fac_link(e, d)}</details>'
     hd = f'<h3 class="ux-c-n">{e(d["name"])}</h3>' if full else f'<a class="ux-c-n" href="{href(pf)}#{d["id"]}">{e(d["name"])}</a>'
     idattr = f' id="{d["id"]}"' if full else ""
     _yen = None
