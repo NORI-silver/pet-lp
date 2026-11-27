@@ -1,0 +1,83 @@
+# 一時の補助。山形霊園などの火葬・霊園16か所の来訪先と、日立海浜公園の冬のドッグランの表示を直す。終わったら消す。
+name: seo-helper
+on:
+  push:
+    branches: ['NORI-silver-repair-rojin9b']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 足す（データ追記とItemList）
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp .github/workflows/*sep-stage.patch /tmp/stage.patch
+          git fetch origin main
+          git reset -q --hard origin/main
+          git log -1 --format='base %H'
+          for f in tools/faccard.py tools/ownerfit.py tools/hotels.json tools/kinki_add.json; do echo "baseblob $f $(git rev-parse HEAD:$f)"; done
+          git apply --3way /tmp/stage.patch
+          git status --short | head -20
+          git diff HEAD --stat | tail -10
+      - name: 作り直し3回
+        run: |
+          for i in 1 2; do python3 tools/gen_areas.py . > /tmp/g$i.log 2>&1 || { tail -20 /tmp/g$i.log; exit 1; }; cp tools/lastmod.json /tmp/lm$i.json; git status --porcelain | awk '{print $2}' | sort > /tmp/ch$i.txt; echo "pass $i changed: $(wc -l < /tmp/ch$i.txt)"; done
+          echo "lastmod diff 2vs1: $(diff /tmp/lm1.json /tmp/lm2.json | wc -l)  3vs2: $(diff /tmp/lm2.json /tmp/lm3.json | wc -l)  changed-set 3v2: $(diff /tmp/ch2.txt /tmp/ch3.txt | wc -l)"
+          python3 - <<'PY'
+          import json,glob,re,subprocess
+          d=json.load(open('tools/vet_clinics.json',encoding='utf8'))
+          L=d['clinics']
+          print('vet records', len(L))
+          html=''.join(open(f,encoding='utf8').read() for f in glob.glob('hospital/**/index.html',recursive=True))
+          nm=['みにぃ犬猫病院','きよしケ丘ペットクリニック']
+          for n in nm: print('NAME',n,html.count(n))
+          NEW={'みにぃ犬猫病院','きよしケ丘ペットクリニック','こえもん動物病院','大平動物病院'}
+          allnew=[c['name'] for c in d['clinics'] if c.get('blank')]
+          for pf in ('chiba','tokyo'):
+              for r in json.load(open('hospital/data/%s.json'%pf,encoding='utf8')):
+                  if r['n'] in allnew:
+                      assert 'dog' not in r['y'] and 'cat' not in r['y'] and not r.get('pg'), r
+                      print('BLANKOK',pf,r['n'],r['y'],r.get('pg'))
+          ni=sum(1 for f in glob.glob('hospital/**/index.html',recursive=True) if 'noindex' in open(f,encoding='utf8').read())
+          print('hospital pages with noindex', ni, 'of', len(glob.glob('hospital/**/index.html',recursive=True)))
+          PY
+          for p in rojin-home; do echo "AFTER imgs $p: $(grep -o '<img' -r $p --include=index.html | wc -l)"; done
+          for p in rojin-home/index.html rojin-home/chiba/index.html sougi/index.html pet-hotel/index.html pet-hotel/saitama/index.html hospital/index.html; do echo "GZ $p $(gzip -9c $p | wc -c)"; done
+          node -e "const z=require('zlib'),fs=require('fs'),p=require('path');const mx={};function w(d,t){for(const f of fs.readdirSync(d,{withFileTypes:true})){const q=p.join(d,f.name);if(f.isDirectory())w(q,t);else if(f.name==='index.html'){const g=z.gzipSync(fs.readFileSync(q,'utf8'),{level:9}).length;if(!mx[t]||g>mx[t][0])mx[t]=[g,q]}}}['pet-sitter','pet-hotel','rojin-home'].forEach(t=>w(t,t));console.log('NODEGZ '+JSON.stringify(mx))"
+          echo "THIN diff vs main: $(git diff origin/main --stat -- tools/thin_auto.json sitemap.xml sitemaps | tail -1)"
+          git diff origin/main -U0 -- tools/thin_auto.json | grep -E '^[+-] ' | head -20
+          ls -la pc.css
+          echo "hosp.js bytes $(wc -c < hosp.js)"
+          git status --porcelain | awk '{print $2}' | awk -F/ '{print $1"/"$2}' | sort | uniq -c | sort -rn | head -8
+      - name: 検査とテスト（各ゲートの終了状態を記録。何も省かない）
+        run: |
+          fail=0
+          run(){ n="$1"; shift; rc=0; "$@" > /tmp/gate_$n.log 2>&1 || rc=$?; echo "GATE $n exit=$rc :: $(tail -2 /tmp/gate_$n.log | tr '\n' ' ' | cut -c1-200)"; if [ $rc -ne 0 ]; then fail=1; fi; }
+          run seo python3 tools/seo_check.py .
+          run rules python3 tools/rules_check.py .
+          run feedback python3 tools/feedback_check.py .
+          run consistency python3 tools/consistency_check.py .
+          tf=0; tn=0
+          for f in tests/*.test.cjs; do tn=$((tn+1)); rc=0; node "$f" > /tmp/one.log 2>&1 || rc=$?; if [ $rc -ne 0 ]; then tf=$((tf+1)); echo "TEST FAIL exit=$rc $f :: $(grep -E 'bytes gzipped|Error|FAIL' /tmp/one.log | head -3 | tr '\n' ' ')"; fi; done
+          echo "TESTS files=$tn failed=$tf"
+          if [ $tf -ne 0 ]; then fail=1; fi
+          echo "ALL_GATES_EXIT=$fail"
+          exit $fail
+      - name: コミット
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git rm -q --cached -f .github/workflows/*seo-helper.yml 2>/dev/null || true
+          git commit -qm "[B] 火葬・霊園16か所の来訪先を確認済みにして経路を出し、日立海浜公園の冬のドッグランを過去の期間と分かる書き方に直す"
+          git push -f origin HEAD:refs/heads/NORI-silver-sougi-rojin9b
+          git log -1 --format='HEAD %H'
