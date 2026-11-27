@@ -46,7 +46,7 @@ FIELDS = [("addr", "所在地"), ("place", "場所"), ("hours", "利用時間"),
 
 def fee_tag(d):
     f = d.get("fee", "")
-    if not f: return None
+    if not f or f.startswith("未確認"): return None
     if f.startswith("無料"): return "無料"
     if f.startswith(("利用は無料", "ドッグランは無料")): return "利用は無料"
     return "有料"
