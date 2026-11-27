@@ -1,0 +1,511 @@
+diff --git a/tests/card-evidence.test.cjs b/tests/card-evidence.test.cjs
+index 3d8b3e6e5..12d363daf 100644
+--- a/tests/card-evidence.test.cjs
++++ b/tests/card-evidence.test.cjs
+@@ -99,3 +99,24 @@ assert ownerfit._find('送迎あり','pickup')==1
+ print('ok')`;
+ assert.equal(execFileSync(process.env.PYTHON || 'python3',['-c',py],{encoding:'utf8'}).trim(),'ok');
+ });
++
++test('vets added with blank animals are unknown, not dog/cat matches, and get no empty detail link',()=>{
++const py=`
++import sys,json
++sys.path.insert(0,'tools')
++import hosp_find as H
++d=json.load(open('tools/vet_clinics.json',encoding='utf8'))['clinics']
++blank=[c for c in d if c.get('blank')]
++assert len(blank)==23, len(blank)
++for c in blank:
++    assert not any(c.get(k) for k in ('hours','closed','animals','spec','services','pay','facts'))
++    y=H.record(c,c['pref'],set(),lambda *a:[])['y']
++    assert 'dog' not in y and 'cat' not in y, (c['name'],y)
++    assert not H.has_detail(c)
++plain=dict(name='x',city='a',addr='b')
++assert 'dog' in H.record(plain,'千葉県',set(),lambda *a:[])['y']  # 既存の病院の扱いは変えない
++assert 'dog' in H.record(dict(name='x',blank=1,animals='犬・猫'),'千葉県',set(),lambda *a:[])['y']
++assert H.has_detail({'hours':'9:00-18:00'})
++print('ok')`;
++assert.equal(execFileSync(process.env.PYTHON || 'python3',['-c',py],{encoding:'utf8'}).trim(),'ok');
++});
+diff --git a/tools/hosp_find.py b/tools/hosp_find.py
+index 0dd721e9f..df3ce60a3 100644
+--- a/tools/hosp_find.py
++++ b/tools/hosp_find.py
+@@ -66,6 +66,11 @@ def _tels():
+     return {x["id"]: x for x in its if x.get("tel") and x.get("tel_src") and not x.get("closed")}
+ _TEL = _tels()
+ 
++def has_detail(h):
++    """この病院に、一覧ページより詳しい項目（時間・動物・設備・支払いなど）があるか。ないなら「診療内容の詳細」は出さない。"""
++    return any(h.get(k) for k in ("hours", "closed", "animals", "spec", "services", "pay", "facts", "depts"))
++
++
+ def record(h, pref, tags, depts_of):
+     """1院を検索用の短い形にする。y＝書いてある（合う）、n＝はっきり合わない。どちらにもない項目は「書いていない」。"""
+     y, n = set(tags), set()
+@@ -84,6 +89,7 @@ def record(h, pref, tags, depts_of):
+     only_dog = re.search(r"犬(のみ|だけ)", animals) and not re.search(r"猫", re.sub(r"犬(のみ|だけ)", "", animals))
+     if only_cat: n.add("dog"); y.add("cat")
+     elif only_dog: n.add("cat"); y.add("dog")
++    elif h.get("blank") and not (animals or spec or tags): pass  # blank=1（動物・時間などを未確認のまま足した病院）は、犬・猫を「書いてある」にしない（不明のまま。2026-11-27）
+     else: y.update(("dog", "cat"))
+     for k, rx in _AN_RX.items():
+         if re.search(rx, a_txt): y.add(k)
+@@ -195,7 +201,7 @@ def build(ROOT, ctx, CONDS, rows_of, hhref_of, vet_by_pref, vet_page_of, pslug,
+         recs = []
+         for name, x in m.items():
+             r = record(x["h"], pf, x["tags"], depts_of)
+-            pg = hhref_of(x["h"]) or vet_page_of(pf, x["h"])
++            pg = hhref_of(x["h"]) or (vet_page_of(pf, x["h"]) if not (x["h"].get("blank") and not has_detail(x["h"])) else "")
+             home = x["h"].get("pref") or (x["h"].get("prefs") or [pf])[0]
+             if "visit" in x["tags"] and home != pf: r["c"] = ""; r["vz"] = 1  # ほかの県のお店から、この県へも来てくれる往診
+             if pg: r["pg"] = pg
+diff --git a/tools/vet_clinics.json b/tools/vet_clinics.json
+index 5975ff6a1..2f348c788 100644
+--- a/tools/vet_clinics.json
++++ b/tools/vet_clinics.json
+@@ -59608,6 +59608,443 @@
+    "checked": "2026-11-23",
+    "tel": "025-794-2644",
+    "tel_src": "https://www.niigatakenju.or.jp/pages/303/"
++  },
++  {
++   "id": "G13360",
++   "blank": 1,
++   "name": "こえもん動物病院",
++   "pref": "東京都",
++   "city": "足立区",
++   "addr": "東京都足立区中央本町5-12-9",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://koemon-ah.com/",
++   "src": "https://koemon-ah.com/",
++   "checked": "2026-11-27",
++   "tel": "03-3848-3008",
++   "tel_src": "https://koemon-ah.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G13361",
++   "blank": 1,
++   "name": "大平動物病院",
++   "pref": "東京都",
++   "city": "足立区",
++   "addr": "東京都足立区梅田6-1-1",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.ohiravet.com/",
++   "src": "https://www.ohiravet.com/",
++   "checked": "2026-11-27",
++   "tel": "03-3886-3766",
++   "tel_src": "https://www.ohiravet.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12052",
++   "blank": 1,
++   "name": "いなげ動物病院",
++   "pref": "千葉県",
++   "city": "千葉市",
++   "addr": "千葉県千葉市稲毛区穴川4-1-13",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.inage-ahp.jp/",
++   "src": "https://www.inage-ahp.jp/",
++   "checked": "2026-11-27",
++   "tel": "043-284-8368",
++   "tel_src": "https://www.inage-ahp.jp/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12053",
++   "blank": 1,
++   "name": "アミ動物クリニック",
++   "pref": "千葉県",
++   "city": "千葉市",
++   "addr": "千葉県千葉市稲毛区稲丘町15-11",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.inage-ami.com/",
++   "src": "https://www.inage-ami.com/",
++   "checked": "2026-11-27",
++   "tel": "043-238-7958",
++   "tel_src": "https://www.inage-ami.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12054",
++   "blank": 1,
++   "name": "JPB動物病院 おゆみ野",
++   "pref": "千葉県",
++   "city": "千葉市",
++   "addr": "千葉県千葉市緑区おゆみ野南6-12-1",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://oyumino.jpbvet.com/",
++   "src": "https://oyumino.jpbvet.com/",
++   "checked": "2026-11-27",
++   "tel": "043-300-3333",
++   "tel_src": "https://oyumino.jpbvet.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12055",
++   "blank": 1,
++   "name": "美浜どうぶつ病院",
++   "pref": "千葉県",
++   "city": "千葉市",
++   "addr": "千葉県千葉市美浜区高洲1-16-53",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.mihama-ah.com/",
++   "src": "https://www.mihama-ah.com/",
++   "checked": "2026-11-27",
++   "tel": "043-242-8818",
++   "tel_src": "https://www.mihama-ah.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12056",
++   "blank": 1,
++   "name": "幕張ビーンズ・ペットクリニック",
++   "pref": "千葉県",
++   "city": "千葉市",
++   "addr": "千葉県千葉市花見川区幕張町5-417-135",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.m-beans.com/",
++   "src": "https://www.m-beans.com/",
++   "checked": "2026-11-27",
++   "tel": "043-275-9912",
++   "tel_src": "https://www.m-beans.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12057",
++   "blank": 1,
++   "name": "村松獣医科",
++   "pref": "千葉県",
++   "city": "千葉市",
++   "addr": "千葉県千葉市花見川区幕張本郷2-28-4",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.muramatujuika.com/",
++   "src": "https://www.muramatujuika.com/",
++   "checked": "2026-11-27",
++   "tel": "043-272-9969",
++   "tel_src": "https://www.muramatujuika.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12058",
++   "blank": 1,
++   "name": "かやば動物病院",
++   "pref": "千葉県",
++   "city": "我孫子市",
++   "addr": "千葉県我孫子市南新木1-4-3",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.kayaba-ah.com/",
++   "src": "https://www.kayaba-ah.com/",
++   "checked": "2026-11-27",
++   "tel": "04-7100-1012",
++   "tel_src": "https://www.kayaba-ah.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12059",
++   "blank": 1,
++   "name": "なみき動物病院",
++   "pref": "千葉県",
++   "city": "我孫子市",
++   "addr": "千葉県我孫子市緑2-11-53",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.namiki-vet.com/",
++   "src": "https://www.namiki-vet.com/",
++   "checked": "2026-11-27",
++   "tel": "04-7184-8948",
++   "tel_src": "https://www.namiki-vet.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12060",
++   "blank": 1,
++   "name": "ナガイ動物病院",
++   "pref": "千葉県",
++   "city": "我孫子市",
++   "addr": "千葉県我孫子市本町1-3-23 高橋ビル1階",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://ah-nagai.com/",
++   "src": "https://ah-nagai.com/",
++   "checked": "2026-11-27",
++   "tel": "04-7100-8012",
++   "tel_src": "https://ah-nagai.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12061",
++   "blank": 1,
++   "name": "きまち動物病院",
++   "pref": "千葉県",
++   "city": "松戸市",
++   "addr": "千葉県松戸市上本郷4073-2",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://kimachi-ah.com/",
++   "src": "https://kimachi-ah.com/",
++   "checked": "2026-11-27",
++   "tel": "047-363-4728",
++   "tel_src": "https://kimachi-ah.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12062",
++   "blank": 1,
++   "name": "きよしケ丘ペットクリニック",
++   "pref": "千葉県",
++   "city": "松戸市",
++   "addr": "千葉県松戸市小金きよしケ丘3-25-24",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.kiyoshigaoka-pc.com/",
++   "src": "https://www.kiyoshigaoka-pc.com/",
++   "checked": "2026-11-27",
++   "tel": "047-340-3883",
++   "tel_src": "https://www.kiyoshigaoka-pc.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12063",
++   "blank": 1,
++   "name": "ライズ動物病院",
++   "pref": "千葉県",
++   "city": "松戸市",
++   "addr": "千葉県松戸市西馬橋蔵元町163",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.rise-ah.com/",
++   "src": "https://www.rise-ah.com/",
++   "checked": "2026-11-27",
++   "tel": "047-330-4970",
++   "tel_src": "https://www.rise-ah.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12064",
++   "blank": 1,
++   "name": "八柱動物病院",
++   "pref": "千葉県",
++   "city": "松戸市",
++   "addr": "千葉県松戸市日暮2-3-2",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.yabashira-ahp.com/",
++   "src": "https://www.yabashira-ahp.com/",
++   "checked": "2026-11-27",
++   "tel": "047-384-1512",
++   "tel_src": "https://www.yabashira-ahp.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12065",
++   "blank": 1,
++   "name": "松戸うがた動物病院",
++   "pref": "千葉県",
++   "city": "松戸市",
++   "addr": "千葉県松戸市稔台3-36-2",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.matsudo-ugata.com/",
++   "src": "https://www.matsudo-ugata.com/",
++   "checked": "2026-11-27",
++   "tel": "047-712-2064",
++   "tel_src": "https://www.matsudo-ugata.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12066",
++   "blank": 1,
++   "name": "南柏たなか動物病院",
++   "pref": "千葉県",
++   "city": "柏市",
++   "addr": "千葉県柏市今谷上町31-3",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.mkt-ah.jp/",
++   "src": "https://www.mkt-ah.jp/",
++   "checked": "2026-11-27",
++   "tel": "04-7172-8321",
++   "tel_src": "https://www.mkt-ah.jp/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12067",
++   "blank": 1,
++   "name": "ダイスケどうぶつ病院",
++   "pref": "千葉県",
++   "city": "習志野市",
++   "addr": "千葉県習志野市東習志野4-18-24",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.daisuke-vet.com/overview/",
++   "src": "https://www.daisuke-vet.com/overview/",
++   "checked": "2026-11-27",
++   "tel": "047-471-2898",
++   "tel_src": "https://www.daisuke-vet.com/overview/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12068",
++   "blank": 1,
++   "name": "みにぃ犬猫病院",
++   "pref": "千葉県",
++   "city": "船橋市",
++   "addr": "千葉県船橋市宮本2-7-22",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://maimelon.frappe.jp/",
++   "src": "https://maimelon.frappe.jp/",
++   "checked": "2026-11-27",
++   "tel": "047-423-0321",
++   "tel_src": "https://maimelon.frappe.jp/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12069",
++   "blank": 1,
++   "name": "ジェットどうぶつ病院",
++   "pref": "千葉県",
++   "city": "船橋市",
++   "addr": "千葉県船橋市市場4-18-7",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://210-ac.com/",
++   "src": "https://210-ac.com/",
++   "checked": "2026-11-27",
++   "tel": "047-455-3302",
++   "tel_src": "https://210-ac.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12070",
++   "blank": 1,
++   "name": "みずき動物病院",
++   "pref": "千葉県",
++   "city": "野田市",
++   "addr": "千葉県野田市みずき2-9-1",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://mizuki-ah.com/",
++   "src": "https://mizuki-ah.com/",
++   "checked": "2026-11-27",
++   "tel": "04-7121-5512",
++   "tel_src": "https://mizuki-ah.com/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12071",
++   "blank": 1,
++   "name": "アイペット動物病院",
++   "pref": "千葉県",
++   "city": "野田市",
++   "addr": "千葉県野田市七光台4-2",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://aipet.info/",
++   "src": "https://aipet.info/",
++   "checked": "2026-11-27",
++   "tel": "04-7127-1311",
++   "tel_src": "https://aipet.info/",
++   "src_name": "病院の公式サイト"
++  },
++  {
++   "id": "G12072",
++   "blank": 1,
++   "name": "七光台どうぶつ病院",
++   "pref": "千葉県",
++   "city": "野田市",
++   "addr": "千葉県野田市七光台356-5",
++   "hours": "",
++   "closed": "",
++   "animals": "",
++   "services": "",
++   "pay": "",
++   "url": "https://www.nanakodai-animal.com/",
++   "src": "https://www.nanakodai-animal.com/",
++   "checked": "2026-11-27",
++   "tel": "04-7127-1771",
++   "tel_src": "https://www.nanakodai-animal.com/",
++   "src_name": "病院の公式サイト"
+   }
+  ]
+ }
+\ No newline at end of file
