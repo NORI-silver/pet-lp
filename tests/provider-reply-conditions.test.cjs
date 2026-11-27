@@ -5,17 +5,24 @@ const path = require('node:path');
 const read = file => fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
 const json = file => JSON.parse(read(file));
 const cards = file => json(file).groups.flatMap(([, entries]) => entries);
-test('oppotoのトリミング送迎はホテル送迎と区別し、カードと比較表に出す', () => {
+test('oppotoは公式サイトの記載だけを出し、送迎・しつけの条件や第三者ページの内容は出さない', () => {
   const h = json('tools/hotels.json').hotels.find(x => x.id === 'PHk421d80');
+  assert.equal(h.url, 'https://oppoto.com/top');
   assert.equal(h.pickup, false);
-  assert.deepEqual(json('tools/kinki_add.json').hotels.find(x => x.id === h.id), h,
-    '近畿データの再取り込みで店舗確認済みの送迎条件を上書きしない');
-  assert.match(h.facts.find(f => f.k === '送迎').v, /原則月曜日.*10km圏内.*ホテルやしつけ教室のみの利用は対象外/);
-  assert.match(read('pet-hotel/shiga/index.html'), /data-l="送迎">トリミングのみ無料/);
-  const card = cards('find-data/pet-hotel/shiga.json').find(x => x.includes('data-fid="PHk421d80"'));
-  assert.doesNotMatch(card.match(/data-flags="([^"]*)"/)[1], /\bpickup\b/);
-  // 共通の形のカード（tools/cardpolicy.py）では、送迎の項目に同じ公式の記載がそのまま出る（旧: 「送迎：」の1行）
-  assert.match(card.split('<details')[0], /<b>送迎<\/b><span>[^<]*トリミング[^<]*10km圏内[^<]*ホテルやしつけ教室のみの利用は対象外/);
+  assert.equal(h.pickup_comparison, undefined);
+  assert.deepEqual(json('tools/kinki_add.json').hotels.find(x => x.id === h.id), h, '近畿データと同じ内容にする');
+  assert.ok(!h.facts.some(f => f.k === '送迎'), '公式に送迎の記載がないので項目を置かない');
+  assert.ok(h.facts.every(f => f.src === 'https://oppoto.com/top'), '事実の出どころはすべて公式サイト');
+  assert.ok(!/しつけ/.test(h.services));
+  const page = read('pet-hotel/shiga/index.html');
+  assert.ok(!/chatgpt\.site/.test(page) && !/chatgpt\.site/.test(read('find-data/pet-hotel/shiga.json')) && !/chatgpt\.site/.test(read('webmcp/data.json')));
+  const from = page.indexOf('dogsalon oppoto</b></a><p class="pc-loc pin">');
+  assert.ok(from > 0, 'oppotoのカードが見つかる');
+  const card = page.slice(from, page.indexOf('タクシー料金', from));
+  const txt = card.replace(/<[^>]+>/g, ' ');
+  assert.doesNotMatch(txt, /10km|月曜|しつけ|無料送迎/);
+  assert.match(txt, /1泊¥5,500〜/);
+  assert.match(txt, /送迎\s*未確認/);
 });
 test('青森のわんぷろは公式サイトの1件にだけ施設写真を掲載する', () => {
   const result = cards('find-data/dog-trainer/aomori.json').filter(x => x.includes('わんぷろ'));
