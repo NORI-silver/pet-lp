@@ -19,9 +19,8 @@ assert s['police'][0].startswith('佐倉警察署')
 assert s['center'][2].endswith('/pets/animal-info.html')
 assert '3,890円' in s['return'] and '600円' in s['return']
 assert not any('電話0' in str(v) for v in s.values())
-reviews=h[h.index('id="jcPro"'):h.index('id="found"')]
-assert reviews.count('data-det-site')==len(M.detectives())
-assert '<th><a href=' not in reviews
+assert 'data-go-detective href="/pet-detective/"' in h
+assert 'id="jcPro"' not in h and 'data-det-site' not in h
 print('ok')
 `;
  assert.equal(execFileSync(process.env.PYTHON||'python3',['-c',code],{encoding:'utf8'}).trim(),'ok');
