@@ -135,19 +135,31 @@
    "url": "https://www.park-funabashi.or.jp/and/dog_guide.html",
    "by": "permit",
    "src": "https://www.park-funabashi.or.jp/and/dog_guide.html",
-   "checked": "2026-11-23",
+   "checked": "2026-11-27",
    "photos": [
-    "/img/fac/dogrun/D178_1.webp"
+    "/img/fac/dogrun/D178_1.webp",
+    "/img/fac/dogrun/D178_2.webp",
+    "/img/fac/dogrun/D178_3.webp"
    ],
    "source_photos": [
     {
      "page": "https://www.park-funabashi.or.jp/and/dog_guide.html",
      "url": "https://www.park-funabashi.or.jp/and/img/dog3.jpg"
+    },
+    {
+     "page": "https://www.park-funabashi.or.jp/and/dog_guide.html",
+     "url": "https://www.park-funabashi.or.jp/and/img/dog4.jpg"
+    },
+    {
+     "page": "https://www.park-funabashi.or.jp/and/dog_guide.html",
+     "url": "https://www.park-funabashi.or.jp/and/img/dog5.jpg"
     }
    ],
    "credit": "写真：ふなばしアンデルセン公園ドッグラン",
    "ratio": [
-    1.5
+    1.5,
+    1.5,
+    1.502
    ]
   },
   {
@@ -5221,13 +5233,57 @@
    "url": "https://www.doggys-island.jp/facility/dogrun/index.php",
    "by": "permit",
    "src": "2026-11-24",
-   "checked": "2026-11-24",
+   "checked": "2026-11-27",
    "photos": [
-    "/img/fac/dogrun/D142_1.webp"
+    "/img/fac/dogrun/D142_1.webp",
+    "/img/fac/dogrun/D142_2.webp",
+    "/img/fac/dogrun/D142_3.webp",
+    "/img/fac/dogrun/D142_4.webp",
+    "/img/fac/dogrun/D142_5.webp",
+    "/img/fac/dogrun/D142_6.webp",
+    "/img/fac/dogrun/D142_7.webp",
+    "/img/fac/dogrun/D142_8.webp"
    ],
    "credit": "写真：ドギーズアイランドのドッグラン（日帰り）",
    "ratio": [
-    1.498
+    1.498,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.333,
+    1.5,
+    1.5
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.doggys-island.jp/facility/dogrun/index.php",
+     "url": "https://www.doggys-island.jp/assets/images/facility_dogrun/img_dogrun_all.jpg"
+    },
+    {
+     "page": "https://www.doggys-island.jp/facility/dogrun/index.php",
+     "url": "https://www.doggys-island.jp/assets/images/facility_dogrun/img_zenkei.jpg"
+    },
+    {
+     "page": "https://www.doggys-island.jp/facility/dogrun/index.php",
+     "url": "https://www.doggys-island.jp/assets/images/facility_dogrun/img_dogrun_small2.jpg"
+    },
+    {
+     "page": "https://www.doggys-island.jp/facility/dogrun/index.php",
+     "url": "https://www.doggys-island.jp/assets/images/facility_dogrun/img_dogrun_small4.jpg"
+    },
+    {
+     "page": "https://www.doggys-island.jp/facility/dogrun/index.php",
+     "url": "https://www.doggys-island.jp/assets/images/facility_dogrun/img_forrain.jpg"
+    },
+    {
+     "page": "https://www.doggys-island.jp/facility/dogrun/index.php",
+     "url": "https://www.doggys-island.jp/assets/images/facility_dogrun/img_pool.jpg"
+    },
+    {
+     "page": "https://www.doggys-island.jp/facility/dogrun/index.php",
+     "url": "https://www.doggys-island.jp/assets/images/facility_dogrun/img_restspace.jpg"
+    }
    ]
   },
   {
@@ -52386,6 +52442,514 @@
    "credit": "写真：川越公園管理事務所",
    "ratio": [
     3.447
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D013",
+   "name": "相模原公園ドッグラン（県立）",
+   "url": "https://www.pref.kanagawa.jp/docs/n7t/dr.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D013_1.webp"
+   ],
+   "credit": "写真：相模原公園ドッグラン（県立）",
+   "ratio": [
+    1.497
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.pref.kanagawa.jp/docs/n7t/dr.html",
+     "url": "https://www.pref.kanagawa.jp/images/108132/dr-yousu.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D021",
+   "name": "浜寺公園ドッグラン（府営）",
+   "url": "https://hamadera.osaka-park.or.jp/facility/dogrun/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D021_1.webp",
+    "/img/fac/dogrun/D021_2.webp",
+    "/img/fac/dogrun/D021_3.webp"
+   ],
+   "credit": "写真：浜寺公園ドッグラン（府営）",
+   "ratio": [
+    1.333,
+    1.778,
+    1.333
+   ],
+   "source_photos": [
+    {
+     "page": "https://hamadera.osaka-park.or.jp/facility/dogrun/",
+     "url": "https://hamadera.osaka-park.or.jp/wp-content/uploads/2023/06/DSCI0007.jpg"
+    },
+    {
+     "page": "https://hamadera.osaka-park.or.jp/facility/dogrun/",
+     "url": "https://hamadera.osaka-park.or.jp/wp-content/uploads/2023/06/DSCI0007-640x360.jpg"
+    },
+    {
+     "page": "https://hamadera.osaka-park.or.jp/facility/dogrun/",
+     "url": "https://hamadera.osaka-park.or.jp/wp-content/uploads/2023/06/DSCI0078.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D056",
+   "name": "黒鳥山公園ドッグラン",
+   "url": "https://www.city.osaka-izumi.lg.jp/kakukano/dezainbu/kouenryokuti/osirase/18315.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D056_1.webp",
+    "/img/fac/dogrun/D056_2.webp"
+   ],
+   "credit": "写真：黒鳥山公園ドッグラン",
+   "ratio": [
+    1.779,
+    1.779
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.city.osaka-izumi.lg.jp/kakukano/dezainbu/kouenryokuti/osirase/18315.html",
+     "url": "https://www.city.osaka-izumi.lg.jp/material/images/group/40/dogrun.jpg"
+    },
+    {
+     "page": "https://www.city.osaka-izumi.lg.jp/kakukano/dezainbu/kouenryokuti/osirase/18315.html",
+     "url": "https://www.city.osaka-izumi.lg.jp/material/images/group/40/dogrunshasin1.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D067",
+   "name": "鹿公園ドッグラン",
+   "url": "https://www.town.abira.lg.jp/midokoro/shisetsu/park/92",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D067_1.webp",
+    "/img/fac/dogrun/D067_2.webp",
+    "/img/fac/dogrun/D067_3.webp",
+    "/img/fac/dogrun/D067_4.webp"
+   ],
+   "credit": "写真：鹿公園ドッグラン",
+   "ratio": [
+    1.333,
+    1.333,
+    1.333,
+    1.333
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.town.abira.lg.jp/midokoro/shisetsu/park/92",
+     "url": "https://www.town.abira.lg.jp/webopen/content/92/shika-d1.jpg"
+    },
+    {
+     "page": "https://www.town.abira.lg.jp/midokoro/shisetsu/park/92",
+     "url": "https://www.town.abira.lg.jp/webopen/content/92/shika-d2.jpg"
+    },
+    {
+     "page": "https://www.town.abira.lg.jp/midokoro/shisetsu/park/92",
+     "url": "https://www.town.abira.lg.jp/webopen/content/92/shika-d3.jpg"
+    },
+    {
+     "page": "https://www.town.abira.lg.jp/midokoro/shisetsu/park/92",
+     "url": "https://www.town.abira.lg.jp/webopen/content/92/shika-d4.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D080",
+   "name": "飯綱山公園ドッグラン",
+   "url": "https://www.city.komoro.lg.jp/soshikikarasagasu/kensetsusuidoubu/toshikeikakuka/4/2/623.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D080_1.webp"
+   ],
+   "credit": "写真：飯綱山公園ドッグラン",
+   "ratio": [
+    1.5
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.city.komoro.lg.jp/soshikikarasagasu/kensetsusuidoubu/toshikeikakuka/4/2/623.html",
+     "url": "https://www.city.komoro.lg.jp/material/images/group/18/dogrun03.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D081",
+   "name": "武豊中央公園ドッグラン",
+   "url": "https://www.town.taketoyo.lg.jp/chousei/shisetsu/1001535/1004356.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D081_1.webp"
+   ],
+   "credit": "写真：武豊中央公園ドッグラン",
+   "ratio": [
+    1.778
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.town.taketoyo.lg.jp/chousei/shisetsu/1001535/1004356.html",
+     "url": "https://www.town.taketoyo.lg.jp/_res/projects/default_project/_page_/001/004/356/kanban.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D088",
+   "name": "夜越山ドッグラン",
+   "url": "https://www.town.hiranai.aomori.jp/soshiki/suisan/gyoumu_annai/kanko_jouhou/yogoshiyama_forest_park/2225.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D088_1.webp"
+   ],
+   "credit": "写真：夜越山ドッグラン",
+   "ratio": [
+    1.508
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.town.hiranai.aomori.jp/soshiki/suisan/gyoumu_annai/kanko_jouhou/yogoshiyama_forest_park/2225.html",
+     "url": "http://www.town.hiranai.aomori.jp/material/images/group/9/dogrun1.JPG"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D090",
+   "name": "ゆうゆうパーク（鬼怒川河川公園）ドッグラン",
+   "url": "https://www.city.tochigi-sakura.lg.jp/facility/000077/p004073.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D090_1.webp"
+   ],
+   "credit": "写真：ゆうゆうパーク（鬼怒川河川公園）ドッグラン",
+   "ratio": [
+    1.333
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.city.tochigi-sakura.lg.jp/facility/000077/p004073.html",
+     "url": "https://www.city.tochigi-sakura.lg.jp/manage/contents/upload/66503b2f771e7.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D147",
+   "name": "DOG DEPT + CAFE 湘南江ノ島店のドッグラン",
+   "url": "https://www.dogdept.com/shoplist/area03_7.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D147_1.webp",
+    "/img/fac/dogrun/D147_2.webp"
+   ],
+   "credit": "写真：DOG DEPT + CAFE 湘南江ノ島店のドッグラン",
+   "ratio": [
+    1.333,
+    1.333
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.dogdept.com/shoplist/area03_7.html",
+     "url": "https://www.dogdept.com/images/dogrun/shonanenoshima/dogrunphoto_1.jpg"
+    },
+    {
+     "page": "https://www.dogdept.com/shoplist/area03_7.html",
+     "url": "https://www.dogdept.com/images/dogrun/shonanenoshima/dogrunphoto_2.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D148",
+   "name": "DOG DEPT + CAFE 軽井沢プリンス店のドッグラン",
+   "url": "https://www.dogdept.com/shoplist/area07_8.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D148_1.webp",
+    "/img/fac/dogrun/D148_2.webp",
+    "/img/fac/dogrun/D148_3.webp"
+   ],
+   "credit": "写真：DOG DEPT + CAFE 軽井沢プリンス店のドッグラン",
+   "ratio": [
+    1.494,
+    1.777,
+    1.777
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.dogdept.com/shoplist/area07_8.html",
+     "url": "https://www.dogdept.com/images/dogrun/karuizawaprince/karupuri_1.JPG"
+    },
+    {
+     "page": "https://www.dogdept.com/shoplist/area07_8.html",
+     "url": "https://www.dogdept.com/images/dogrun/karuizawaprince/01.jpg"
+    },
+    {
+     "page": "https://www.dogdept.com/shoplist/area07_8.html",
+     "url": "https://www.dogdept.com/images/dogrun/karuizawaprince/02.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D149",
+   "name": "DOG DEPT GARDEN 軽井沢店のドッグラン",
+   "url": "https://www.dogdept.com/shoplist/area02_1.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D149_1.webp",
+    "/img/fac/dogrun/D149_2.webp",
+    "/img/fac/dogrun/D149_3.webp",
+    "/img/fac/dogrun/D149_4.webp"
+   ],
+   "credit": "写真：DOG DEPT GARDEN 軽井沢店のドッグラン",
+   "ratio": [
+    2.003,
+    1.499,
+    1.335,
+    1.333
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.dogdept.com/shoplist/area02_1.html",
+     "url": "https://www.dogdept.com/images/dogrun/karuizawa/karuizawa_photo01.jpg"
+    },
+    {
+     "page": "https://www.dogdept.com/shoplist/area02_1.html",
+     "url": "https://www.dogdept.com/images/dogrun/karuizawa/01.jpg"
+    },
+    {
+     "page": "https://www.dogdept.com/shoplist/area02_1.html",
+     "url": "https://www.dogdept.com/images/dogrun/karuizawa/02.jpg"
+    },
+    {
+     "page": "https://www.dogdept.com/shoplist/area02_1.html",
+     "url": "https://www.dogdept.com/images/dogrun/karuizawa/03.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D163",
+   "name": "彩都なないろ公園ドッグラン",
+   "url": "https://www.city.minoh.lg.jp/midori/kouennsyoukai/dogrun.html",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D163_1.webp",
+    "/img/fac/dogrun/D163_2.webp"
+   ],
+   "credit": "写真：彩都なないろ公園ドッグラン",
+   "ratio": [
+    1.333,
+    1.333
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.city.minoh.lg.jp/midori/kouennsyoukai/dogrun.html",
+     "url": "https://www.city.minoh.lg.jp/midori/kouennsyoukai/images/p8140267.jpg"
+    },
+    {
+     "page": "https://www.city.minoh.lg.jp/midori/kouennsyoukai/dogrun.html",
+     "url": "https://www.city.minoh.lg.jp/midori/kouennsyoukai/images/p8140265.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D189",
+   "name": "GRASS DOG&CAT てんしば店のドッグラン",
+   "url": "https://grass-grass.jp/shop_tenshiba",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D189_1.webp"
+   ],
+   "credit": "写真：GRASS DOG&CAT てんしば店のドッグラン",
+   "ratio": [
+    2.452
+   ],
+   "source_photos": [
+    {
+     "page": "https://grass-grass.jp/shop_tenshiba",
+     "url": "https://grass-grass.jp/img/grass/shop-te_03.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D197",
+   "name": "つくばウェルネスパーク フリースペース・ドッグラン",
+   "url": "https://tsukuba-wp.com/area_D/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D197_1.webp"
+   ],
+   "credit": "写真：つくばウェルネスパーク フリースペース・ドッグラン",
+   "ratio": [
+    1.502
+   ],
+   "source_photos": [
+    {
+     "page": "https://tsukuba-wp.com/area_D/",
+     "url": "https://tsukuba-wp.com/img/free_space_3.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D198",
+   "name": "ドッグラン茨城",
+   "url": "https://www.dogrunibaraki.com/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D198_1.webp",
+    "/img/fac/dogrun/D198_2.webp"
+   ],
+   "credit": "写真：ドッグラン茨城",
+   "ratio": [
+    0.803,
+    0.803
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.dogrunibaraki.com/",
+     "url": "https://static.wixstatic.com/media/6c16eb_0461a0bbb7e3429290f3a49db32aad48~mv2.jpeg"
+    },
+    {
+     "page": "https://www.dogrunibaraki.com/",
+     "url": "https://static.wixstatic.com/media/6c16eb_f0c7a4ebf57749b99a5faad0763b9266~mv2.jpeg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D205",
+   "name": "花と泉の公園 ドッグラン",
+   "url": "https://hanatoizumi.com/%E3%83%89%E3%83%83%E3%82%B0%E3%83%A9%E3%83%B3/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D205_1.webp"
+   ],
+   "credit": "写真：花と泉の公園 ドッグラン",
+   "ratio": [
+    1.333
+   ],
+   "source_photos": [
+    {
+     "page": "https://hanatoizumi.com/%E3%83%89%E3%83%83%E3%82%B0%E3%83%A9%E3%83%B3/",
+     "url": "https://hanatoizumi.com/wp-content/uploads/2022/05/9D44FE4D-5775-4BBD-9F97-ACF9FD8DE285-1000x750.jpeg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D211",
+   "name": "ペットホテル JARVIS Tokyo 室内ドッグラン",
+   "url": "https://www.anicom-sompo.co.jp/news-release/2026/20260612/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D211_1.webp"
+   ],
+   "credit": "写真：ペットホテル JARVIS Tokyo 室内ドッグラン",
+   "ratio": [
+    1.5
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.anicom-sompo.co.jp/news-release/2026/20260612/",
+     "url": "https://www.anicom-sompo.co.jp/news-release/wp-content/uploads/2026/06/4425_01.jpg"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D216",
+   "name": "Wagわん Dog Space（柏の葉T-SITE）",
+   "url": "https://www.wag-wan.co.jp/home/dogspace",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D216_1.webp",
+    "/img/fac/dogrun/D216_2.webp"
+   ],
+   "credit": "写真：Wagわん Dog Space（柏の葉T-SITE）",
+   "ratio": [
+    1.585,
+    1.572
+   ],
+   "source_photos": [
+    {
+     "page": "https://www.wag-wan.co.jp/home/dogspace",
+     "url": "https://lh7-us.googleusercontent.com/sitesv-images-rt/APXyLQds-yebCMLSG0Cbs0UTdyFZ2qNocJOnVzX0kL7v5TfA6b03hx8iBnseOlQT6a4vxUj77pasw7z3-sDkvwsSm7-DzpCY8qa9OU_uhgAosdtioBZaD_pxdYEAOND3s_1u69vIcsybocxfWYeAzyZbfeJ1VGD-G71ju7AS1uYI4mGgM-8iuXyo2U2EZk5bxBhJZG8F969QPpFplw1SOYMY5nCOJzqb1_p1n0Nmzf_MSEY=w1600"
+    },
+    {
+     "page": "https://www.wag-wan.co.jp/home/dogspace",
+     "url": "https://lh7-us.googleusercontent.com/sitesv-images-rt/APXyLQfbBxxD3Qw-DmwP9DPPXxxAL6wMGElp3WaoQFhdvayy2bVk-_adFJ5KtG2dEFbXlOPyJQIryRV3Y0onvEUlOEMJ9IhYmx4lUjNcWpft1UhxPY_RNbHaxUUh0KN4bTirPGVVNyAvoT5z8mJL7TDCZmANcjNC_1-svCOm_k-lVC3Yi5Wz6gG2RVRh9w35v7xyT5qML1n6CeUk0dME5RPysvRfu6UUDRV3Kjo9R2NNRqA=w1600"
+    }
+   ]
+  },
+  {
+   "cat": "dogrun",
+   "id": "D220",
+   "name": "ドッグアイランド瀬谷店",
+   "url": "https://dogisland.studio.site/",
+   "by": "permit",
+   "src": "2026-11-24",
+   "checked": "2026-11-27",
+   "photos": [
+    "/img/fac/dogrun/D220_1.webp"
+   ],
+   "credit": "写真：ドッグアイランド瀬谷店",
+   "ratio": [
+    1.5
+   ],
+   "source_photos": [
+    {
+     "page": "https://dogisland.studio.site/",
+     "url": "https://storage.googleapis.com/production-os-assets/assets/372d6df5-b6df-4a0f-907a-42e4fd3e417d"
+    }
    ]
   }
  ]
