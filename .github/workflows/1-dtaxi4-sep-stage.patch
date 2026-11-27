@@ -1,0 +1,52 @@
+diff --git a/facility.js b/facility.js
+index cb900881..d03e8c0a 100644
+--- a/facility.js
++++ b/facility.js
+@@ -184,7 +184,7 @@
+     if (href) { var s = el("a", "fac-site", acts ? "公式サイト ↗" : "公式サイトを見る ↗"); s.setAttribute("data-ga", ""); s.href = siteUrl(href, cat); s.target = "_blank"; s.rel = "noopener"; s.addEventListener("click", function(){ track("official_site", {company_name: (card.getAttribute("data-name") || "").slice(0, 80), host: hostOf(href), cat: cat, id: fid, pref: prefOf(card), from: "button"}); }); row.appendChild(s); }
+     if (CONF[cat]) { var q = el("button", acts ? "fc-a fc-a-note" : "", acts ? "問い合わせ文" : "問い合わせ文をつくる"); if (acts) q.setAttribute("aria-label", "問い合わせ文をつくる"); q.type = "button"; q.addEventListener("click", function(){ openAsk(card); }); row.appendChild(q); }
+     var to = card.getAttribute("data-to");
+-    if (to) {
++    if (to && !card.querySelector(".emg-taxi:not(.fc-a-info)")) {  // 生成ずみのカードに料金のリンクがあるときは、もう1つ足さない（「くわしく」の案内リンクは数えない）
+       var tl = (card.getAttribute("data-to-label") || "ここ") + "までのペットタクシーの料金をくらべる";
+       var t = el("a", acts ? "fac-taxi fc-a fc-a-car" : "fac-taxi", acts ? "タクシー料金" : tl + " →"); if (acts) t.setAttribute("aria-label", tl);
+       var pf = prefOf(card);
+diff --git a/tools/cardskin.py b/tools/cardskin.py
+index 71852644..d5d4fbe0 100644
+--- a/tools/cardskin.py
++++ b/tools/cardskin.py
+@@ -227,6 +227,8 @@ def fc(blk):
+         route_label = "事業所への経路" if office_pin else "経路を見る"
+         rt_more = _route_more('<a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination=' + quote(dest) + f'" target="_blank" rel="noopener" data-route>{route_label}</a>')
+     grid = '<div class="ux-c-a">' + "".join(btn) + "</div>" + rt_more
++    if a0.get("data-cat") in ("trim", "trainer") and not (to and re.search(r"[都道府県市区町村郡]", to)) and not any("emg-taxi" in a_ and "fc-a-info" not in a_ for a_ in re.findall(r"<a [^>]*>", b)):  # 行き先の分かる施設は facility.js が行き先つきのリンクを足す。分からない施設（出張・住所なし）は、行き先を入れない通常の料金ページへ（Nori 2026-11-27 00:05 のカードの決まり：公開の住所がないときは通常の料金ページ）
++        b = b.replace('<div class="fc-acts">', '<div class="fc-acts"><a class="emg-taxi fc-a fc-a-car" href="/#form" aria-label="ペットタクシーの料金（行き先なし）">ペットタクシーの料金</a>', 1)
+     b = b[:acts.start()] + grid + b[acts.start():]
+     return _add_cls(b[:len(ot)]) + b[len(ot):]
+ 
+diff --git a/tools/orphan_labels.py b/tools/orphan_labels.py
+index cd9052d9..bb685451 100644
+--- a/tools/orphan_labels.py
++++ b/tools/orphan_labels.py
+@@ -1,7 +1,7 @@
+ """[E] 生成元がもう作らない昔のページ（no_page の県、なくなった市のページ）に残っている、さがす欄の見出しだけをそろえる。
+ URL・リンク・robots・ほかの中身には触らない。何度かけても同じ結果（べき等）。gen_areas.py の最後に呼ぶ。
+ 2026-11-26 Nori「うちの子にあてはまるもの」→「よく使用される項目」。"""
+-import os
++import os, re
+ 
+ # （ページ, ）生成元が作らない古いページ。ここに足すのは「生成元がなくて、公開のままのページ」だけ。
+ ORPHANS = ["pet-hotel/aomori", "pet-hotel/yamagata", "trimming/chiba/matsudo-shi"]
+@@ -17,6 +17,12 @@ def normalize(root):
+         h = open(p, encoding="utf-8").read()
+         g = h
+         for a, b in SWAPS: g = g.replace(a, b)
++        if d.startswith("trimming/"):  # 共通のカードの決まり：行き先のわからないトリミングのカードにも、行き先なしの通常のタクシー料金のリンクを1つ（tools/cardskin.py と同じ文。すでにあるカードには足さない＝何度かけても同じ）
++            def _tx(m):
++                b = m.group(0)
++                if any("emg-taxi" in a_ and "fc-a-info" not in a_ for a_ in re.findall(r"<a [^>]*>", b)) or "data-to=" in b.split(">", 1)[0]: return b  # 料金のリンクがあるカードには足さない（「くわしく」の案内リンク fc-a-info は料金のリンクではないので数えない）
++                return b.replace('<div class="fc-acts">', '<div class="fc-acts"><a class="emg-taxi fc-a fc-a-car" href="/#form" aria-label="ペットタクシーの料金（行き先なし）">ペットタクシーの料金</a>', 1)
++            g = re.sub(r'<div class="emg-item emg-co fc cs"[^>]*data-cat="trim"[^>]*>.*?(?=<div class="emg-item|</section>)', _tx, g, flags=re.S)
+         if g != h:
+             open(p, "w", encoding="utf-8").write(g); n += 1
+     return n
