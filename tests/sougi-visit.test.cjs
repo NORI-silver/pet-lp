@@ -40,7 +40,12 @@ console.log('sougi-visit ok', nPub, nOther, nHold);
   const audited = D.filter((f) => f.visit).length, legacy = D.filter((f) => !f.visit).length;
   assert.equal(legacy, 0, '来館先の状態が未設定の施設はない（未確認は visit=unconfirmed で経路を出さない）');
   assert.equal(D.length + H.length, 287, '287 = 一覧 + 確認中');
-  assert.equal(D.length, 287); assert.equal(audited, 287); assert.equal(D.filter((f) => f.visit === 'public').length, 31);
+  assert.equal(D.length, 287); assert.equal(audited, 287); const PUB = D.filter((f) => f.visit === 'public').map((f) => f.id);
+  assert.equal(PUB.length, 47);
+  const PREV31 = ["S04bc24", "S0c4f9d", "S11d757", "S14b5f5", "S14d646", "S1e7daf", "S2bdcf2", "S38d591", "S3a0faa", "S5493f2", "S54ff62", "S5ba910", "S66990f", "S6acf91", "S751c9a", "S7f4bb0", "S8ed284", "S9459f3", "S9c2cde", "Sc0ed0c", "Sccfc1e", "Scf95e2", "Sd0ac1f", "Sd95a31", "Sddda98", "Se247dc", "Se459ec", "Se4eee5", "Seb57a2", "Seb65c7", "Sef79f6"], RESTORED16 = ["S0a98c9", "S1b8c6d", "S2358f8", "S31d6ce", "S50a5de", "S5818be", "S7755d5", "S822672", "S934111", "S9b3bec", "Sa2a9dd", "Sa2fae7", "Sb22bec", "Sd0edb1", "Sece5b2", "Sfd6400"];
+  for (const id of PREV31) assert.ok(PUB.includes(id), id + ': 以前から確認済みの31件は変わらない');
+  for (const id of RESTORED16) assert.ok(PUB.includes(id), id + ': 住所と来館先を確認した16件');
+  for (const id of ['S08b96f', 'Sbd2aea']) assert.ok(!PUB.includes(id), id + ': 確認が終わるまで経路を出さない');
 }
 {
   // お迎えだけの施設は「お迎え対応」だけ、訪問火葬だけの施設は「訪問火葬対応」だけを、カードに書く（一方を他方と読ませない）
@@ -54,7 +59,7 @@ console.log('sougi-visit ok', nPub, nOther, nHold);
     if (pick && !vis) { nP++; assert.ok(b.includes('お迎え対応') && !b.includes('訪問火葬対応'), f.name + ': お迎えだけ'); }
     if (vis && !pick) { nV++; assert.ok(b.includes('訪問火葬対応') && !b.includes('お迎え対応'), f.name + ': 訪問火葬だけ'); }
   }
-  assert.equal(nP, 15); assert.equal(nV, 34); // 監査済みの84件の内訳（未監査の旧データはこの行を持たない）
+  assert.equal(nP, 27); assert.equal(nV, 34); // 監査済み（お迎えは復元12件を足して15→27）のの内訳（未監査の旧データはこの行を持たない）
   console.log('sougi-visit pickup/visiting ok', nP, nV);
 }
 
