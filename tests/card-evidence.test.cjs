@@ -99,3 +99,24 @@ assert ownerfit._find('送迎あり','pickup')==1
 print('ok')`;
 assert.equal(execFileSync(process.env.PYTHON || 'python3',['-c',py],{encoding:'utf8'}).trim(),'ok');
 });
+
+test('vets added with blank animals are unknown, not dog/cat matches, and get no empty detail link',()=>{
+const py=`
+import sys,json
+sys.path.insert(0,'tools')
+import hosp_find as H
+d=json.load(open('tools/vet_clinics.json',encoding='utf8'))['clinics']
+blank=[c for c in d if c.get('blank')]
+assert len(blank)==23, len(blank)
+for c in blank:
+    assert not any(c.get(k) for k in ('hours','closed','animals','spec','services','pay','facts'))
+    y=H.record(c,c['pref'],set(),lambda *a:[])['y']
+    assert 'dog' not in y and 'cat' not in y, (c['name'],y)
+    assert not H.has_detail(c)
+plain=dict(name='x',city='a',addr='b')
+assert 'dog' in H.record(plain,'千葉県',set(),lambda *a:[])['y']  # 既存の病院の扱いは変えない
+assert 'dog' in H.record(dict(name='x',blank=1,animals='犬・猫'),'千葉県',set(),lambda *a:[])['y']
+assert H.has_detail({'hours':'9:00-18:00'})
+print('ok')`;
+assert.equal(execFileSync(process.env.PYTHON || 'python3',['-c',py],{encoding:'utf8'}).trim(),'ok');
+});
