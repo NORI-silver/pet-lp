@@ -750,6 +750,7 @@ def _star_pad(h):
 _EST_BASE = 52 * 1024
 _EST_ROJIN_NATIONAL = 53760  # 老犬ホームの全国のページだけ：県ごと3件の見積もりが料金の項目を足すと53,608になり、52*1024（53,248）を360バイト超えて2件に落ちるため。実際の上限（61,440・cardpolicy 60,800）は変えない
 _EST_LIMIT = _EST_BASE
+_SOUGI_NATIONAL_KEEP = ("S70883b", "S11d757", "S117e63")  # 88件を足したとき、県ごとの2件の枠から押し出された3件（足す前に全国のページに出ていた）
 
 def _too_big(h):
     """情報ページの重さの上限（tests/info-light.test.cjs の60KB）を超えるなら作りかえない（全部の施設を並べる全国のページ。県のページで見せる）"""
@@ -929,6 +930,7 @@ def build(ROOT):
             national = os.path.normpath(base) == os.path.normpath(os.path.join(ROOT, d))
             summary_max = {"dog-trainer": 3, "pet-hotel": 3}.get(d) if national else None
             retained = ("T114",) if national and d == "dog-trainer" else ()
+            if national and d == "sougi": retained = _SOUGI_NATIONAL_KEEP  # 葬儀の全国のページ：取り込みで施設が増えても、すでに見えていた施設を県ごとの2件の枠から押し出さない
             global _EST_LIMIT
             _EST_LIMIT = _EST_ROJIN_NATIONAL if (national and d == "rojin-home") else _EST_BASE
             h2 = None if summary_max else _one(h, conf, fbn)
