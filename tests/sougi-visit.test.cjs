@@ -30,12 +30,12 @@ for (const f of D) {
   }
 }
 for (const f of H) { nHold++; assert.ok(!all.includes(`data-fid="${f.id}"`), f.name + ': 確認中の施設は一覧に出さない'); }
-assert.ok(nPub > 0 && nOther > 0 && nHold > 0, 'public/other/hold are all present');
+assert.ok(nPub > 0 && nOther > 0, 'public/other are both present');
 console.log('sougi-visit ok', nPub, nOther, nHold);
 {
   const audited = D.filter((f) => f.visit).length, legacy = D.filter((f) => !f.visit).length;
   assert.equal(D.length + H.length, 287, '287 = 一覧 + 確認中');
-  assert.equal(D.length, 286); assert.equal(legacy, 202); assert.equal(audited, 84);
+  assert.equal(D.length, 287); assert.equal(legacy, 202); assert.equal(audited, 85);
 }
 {
   // お迎えだけの施設は「お迎え対応」だけ、訪問火葬だけの施設は「訪問火葬対応」だけを、カードに書く（一方を他方と読ませない）
@@ -49,4 +49,28 @@ console.log('sougi-visit ok', nPub, nOther, nHold);
   }
   assert.ok(nP > 0 && nV > 0, 'pickup-only and visiting-only both present');
   console.log('sougi-visit pickup/visiting ok', nP, nV);
+}
+
+{
+  // 火葬車を霊園に置いて行う火葬は、自宅へ来る訪問火葬とは別。
+  const id = 'S2bdcf2', location = '千葉県木更津市中里2-9-15';
+  const official = 'https://mp-gardenkisaragi.com/petkasou/';
+  assert.equal(D.filter((f) => f.id === id).length, 1);
+  assert.ok(!H.some((f) => f.id === id));
+  const filterData = JSON.parse(fs.readFileSync('find-data/sougi/chiba.json', 'utf8'));
+  const cityCards = filterData.groups.find(([city]) => city === '木更津市')[1];
+  const filtered = cityCards.find((html) => html.includes(`data-fid="${id}"`));
+  assert.ok(filtered, '木更津市の絞り込みでも出る');
+  for (const html of [card(pages.chiba, id), filtered]) {
+    assert.ok(html.includes(official));
+    assert.ok(html.includes(`data-to="${location}"`));
+    assert.ok(html.includes('霊園駐車場'));
+    assert.ok(html.includes('17,100円'));
+    assert.ok(html.includes('data-yen="17100"'));
+    assert.match(html, /data-no="[^"]*\bbig\b/);
+    const tags = html.match(/data-tags="([^"]*)"/)?.[1]?.split('|') || [];
+    for (const key of ['訪問火葬','お迎え','お迎えまたは訪問火葬','立ち会い','合同火葬','大型犬','p15']) assert.ok(!tags.includes(key), key);
+  }
+  assert.ok(!card(pages.chiba, 'S36f47a').includes('data-route'));
+  assert.ok(pages.chiba.includes('href="#chiba-cremation-cost"') && pages.chiba.includes('id="chiba-cremation-cost"'));
 }
