@@ -23,7 +23,7 @@ function route(name,what,links){return '<li><h3>'+esc(name)+'</h3><p>'+esc(what)
 function card(c,sub){if(!c)return'';return'<div class="jc-card cs" style="margin:8px 0 0;width:100%"><b class="ux-c-n">'+esc(c[0])+'</b><p class="ux-c-m">'+esc(sub)+'</p><div class="ux-c-a">'+a(c[1],'公式ページ')+(c[2]?a(c[2],'保護情報',1):a('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(c[0]),'地図を見る',1))+'</div></div>'}
 function pick(m){S.innerHTML='';Q.value=m[1];var PS1=document.getElementById('jcP');if(PS1)PS1.value=m[0];ls('jcMuni',m[0]+'|'+m[1]);var P=D.p[m[0]]||{},c=D.c[m[4]],city=m[1],pf=m[0];
  H.hidden=false;
- if(K==='maigo'){H.innerHTML='<b>'+esc(pf+city)+'</b>を選択中';
+ if(K==='maigo'){var det=document.querySelector('[data-go-detective]');if(det)det.href='/pet-detective/?pref='+encodeURIComponent(pf);H.innerHTML='<b>'+esc(pf+city)+'</b>を選択中';
   var loc=document.getElementById('jcLocal'), L=(D.l||{})[pf+city]||{};
   var center=L.center||c, cityName=L.city?L.city[0]:city+'の環境・動物担当', cityUrl=L.city?L.city[1]:m[3], protectedUrl=center&&center[2];
   if(loc){

@@ -51,9 +51,18 @@ def _active(path):
     return best
 
 
+# Top-level discovery surfaces distinguish the paid comparison from the urgent guide.
+_DETECTIVE_NAV = {"/", "/guide/", "/jichitai/maigo/", "/pet-detective/"}
+
 def catbar(path):
     act = _active(path)
-    a = "".join(f'<a href="{u}"' + (' aria-current="page"' if u == act else "") + f'>{n}</a>' for n, u in CATBAR)
+    items = CATBAR
+    if path in _DETECTIVE_NAV:
+        items = [(n,u) if u!="/jichitai/maigo/" else ("ペット探偵","/pet-detective/") for n,u in items]
+        if path=="/": items = [("迷子ガイド","/jichitai/maigo/")] + items
+        if path=="/pet-detective/": act=path
+        if path=="/jichitai/maigo/": act="/guide/"
+    a = "".join(f'<a href="{u}"' + (' aria-current="page"' if u == act else "") + f'>{n}</a>' for n, u in items)
     return f'<!--CATBAR--><nav class="catbar" aria-label="ペットのくらしの分野"><div class="wrap">{a}</div></nav><!--/CATBAR-->'
 
 
@@ -107,7 +116,12 @@ HUB = [(g, [it for it in items if not paused.is_paused(it[1])]) for g, items in 
 def hub_html(root):
     c = _counts(root)
     out = []
-    for g, items in HUB:
+    groups = [(g,items) for g,items in HUB]
+    groups.insert(3, ("ペットが迷子になったら", [
+        ("迷子の初動ガイド", "/jichitai/maigo/", "今日やること・地域の届け先・チラシ作り", None),
+        ("ペット探偵", "/pet-detective/", "対応地域・料金・現地入りの目安で比較", None),
+    ]))
+    for g, items in groups:
         lis = []
         for n, u, d, k in items:
             cnt = f'<em>{c[k]:,}件</em>' if k and c.get(k) else ""
@@ -166,6 +180,11 @@ def apply(s, path, hub=None):
     s = re.sub(r'<!--CATBAR-->.*?<!--/CATBAR-->\n?', '', s, flags=re.S)
     if '<header class="top">' in s:
         s = re.sub(r'(<header class="top">.*?</header>\n?)', lambda m: m.group(1) + catbar(path) + "\n", s, count=1, flags=re.S)
+    if path in _DETECTIVE_NAV:
+        def clean_header(m):
+            return re.sub(r'<a href="([^"]+)">[^<]*</a>', lambda a: "" if paused.is_paused(a[1]) else (
+                '<a href="/jichitai/maigo/">迷子ガイド</a>' if a[1]=="/jichitai/maigo/" else a[0]), m[1])
+        s = re.sub(r'(<header class="top">.*?</header>)', clean_header, s, count=1, flags=re.S)
     # 分野の一覧（下）
     s = re.sub(r'[ \t]*<!--FOOTCATS-->.*?<!--/FOOTCATS-->\n?', '', s, flags=re.S)
     s = re.sub(r'(<footer>\s*<div class="wrap">\n?)', lambda m: m.group(1) + "    " + FOOT + "\n", s, count=1)

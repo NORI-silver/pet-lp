@@ -255,30 +255,9 @@ MAIGO_FAQ = [
 def maigo(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
     url = f"{SITE}/jichitai/maigo/"
-    title = "ペットが迷子になったら：今日やること｜市区町村ごとの届け出先・さがし方・チラシ・ペット探偵の料金｜ペットのくらし窓口"
-    desc = "犬や猫が迷子になったら、いなくなった市区町村を入れるだけで、その町の動物愛護センター・保健所、警察のオンラインの遺失届、市役所、近くの動物病院と、今日・2日目・3日目・7日目にやることが順番に出ます。犬と猫のさがし方のちがい、印刷できる迷子チラシ、ペット探偵の料金のくらべも。"
-    dets = detectives()
+    title = "ペットが迷子になったら：今日やること｜市区町村ごとの届け出先・さがし方・チラシ｜ペットのくらし窓口"
+    desc = "犬や猫が迷子になったら、いなくなった市区町村を入れるだけで、その町の動物愛護センター・保健所、警察のオンラインの遺失届、市役所、近くの動物病院と、今日・2日目・3日目・7日目にやることが順番に出ます。犬と猫のさがし方のちがい、印刷できる迷子チラシと、ペット探偵を頼む前の判断ポイント。"
     wait = "".join(f'<tr><th>{e(a)}</th><td>{e(b)} <a class="jc-src" href="{e(u)}" target="_blank" rel="noopener">公式ページ ↗</a></td></tr>' for a, b, u in WAIT)
-    def note(d, key):
-        info = d["comparison"]
-        return f'<br><small>{e(info[key])}</small>' if info.get(key) and info.get("src") and info.get("checked") else ""
-    def location_note(d):
-        info = d["comparison"]
-        return (note(d, "arrival") + f' <a class="jc-src" href="{e(info["src"])}">出典</a>') if "eta" in d["flags"].split() else ""
-    det_rows = "".join(
-        f'<tr data-det="{e(d["flags"])}"><th>{e(d["name"])}{("<br>" + d["review_html"]) if d["review_html"] else ""}</th>'
-        f'<td>{e(d["plan"])}' + (f'<br><small>{e(d["animals"])}</small>' if d["animals"] else "") + note(d, "total") + '</td>'
-        f'<td>{e(d["area_text"])}' + (f'<br><small>{e(d["near_note"])}</small>' if d["near_note"] else "") + (f'<br><small><b>捜索方法：</b>{e(d["methods"])}</small>' if d["methods"] else '') + note(d, "reception") + location_note(d)
-        + _official(f'<a data-det-site href="{e(d.get("price_url") or d["url"])}" target="_blank" rel="noopener">料金・連絡先の公式ページ ↗</a>', "公式情報・問い合わせ")
-        + '</td></tr>' for d in dets)
-    det_tbl = ('<div class="jc-sg" role="group" aria-label="ペット探偵の絞り込み"><span class="jc-sgl">どの子</span><button type="button" data-detf="dg" aria-pressed="false">犬と書いてある</button><button type="button" data-detf="ct" aria-pressed="false">猫と書いてある</button><span class="jc-sgl">よく使用される項目</span><button type="button" data-detf="z" aria-pressed="false">全国対応</button><button type="button" data-detf="p" aria-pressed="false">料金が分かる</button></div>'
-               '<details class="jc-det"><summary>詳しい条件で絞り込む</summary><div class="jc-sg" role="group" aria-label="ペット探偵の詳しい条件"><span class="jc-sgl">受ける動物</span><button type="button" data-detf="ex" aria-pressed="false">鳥・小動物・爬虫類と書いてある</button><button type="button" data-detf="un" aria-pressed="false" title="犬・猫・鳥などを選んだときだけ使えます">動物の記載がない事業者も含める</button><span class="jc-sgl">地域</span><button type="button" data-detf="n" aria-pressed="false" title="上で県を選ぶと使えます。会社の記載による。出張費は各社の欄で確認">選んだ県が主な対応地域の会社</button><span class="jc-sgl">料金の書き方</span><button type="button" data-detf="cx" aria-pressed="false">キャンセルの条件が書いてある</button><button type="button" data-detf="ef" aria-pressed="false">別途費用の記載がある</button>'
-               + ('<span class="jc-sgl">捜索方法</span>' + "".join(f'<button type="button" data-detf="{k}" aria-pressed="false">{e(v[0])}</button>' for k, v in _mf.METHODS.items() if any(k in d["flags"].split() for d in dets)))
-               + ('<span class="jc-sgl">現地入り</span><button type="button" data-detf="eta" aria-pressed="false">現地入りの目安あり</button>' if any('eta' in d['flags'].split() for d in dets) else '')
-               + '</div></details>'
-
-               f'<div class="tbl"><table class="jc-cmp"><thead><tr><th>会社</th><th>料金と受ける動物</th><th>来てくれる地域・捜索方法</th></tr></thead><tbody>{det_rows}</tbody></table></div>'
-               f'<p class="jc-src">金額は税込（税別・税の記載がない会社は印つき）。各社の公式サイトの掲載情報をもとに、最低料金は「〜」で表示しています。順番に意味はありません。発見率など会社の発表の数字は、くらべ方がそろっていないので載せていません。</p>') if dets else ""
     ins = [i for i in PRIV.get("insurance", []) if not i.get("doubt")]
     def ins_row(i):
         paid = f'（{e(i["paid"])}）' if i.get("paid") else ""
@@ -300,7 +279,7 @@ def maigo(ctx):
 <main>
 <section class="area-hero jc-maigo-hero">
   <div class="wrap">
-    {_crumb(e, "迷子になったら")}
+    <nav class="crumb" aria-label="パンくずリスト"><a href="/">ペットのくらし窓口</a> › <a href="/guide/">ガイド</a> › 迷子になったら</nav>
     <h1>ペットが迷子になったら</h1>
   </div>
 </section>
@@ -313,7 +292,7 @@ def maigo(ctx):
         <div class="jcf-need" role="group" aria-label="状況">
           <a class="jc-nb" data-nb data-to="first" href="#first" aria-pressed="false">うちの子が迷子になった（今日やること）</a>
           <a class="jc-nb" data-nb data-to="report" href="#report" aria-pressed="false">地域の届け先を調べる</a>
-          <a class="jc-nb" data-nb data-to="pro" href="#pro" aria-pressed="false">ペット探偵を探す</a>
+          <a class="jc-nb" href="#pro">ペット探偵を頼むとき</a>
           <a class="jc-nb" data-nb data-to="found" href="#found" aria-pressed="false">迷子の子を見つけた・保護した</a>
         </div></div>
       <button type="button" class="jcf-go" id="jcGo" data-def="report">この条件で探す</button>
@@ -327,7 +306,7 @@ def maigo(ctx):
       <h2>地域の届け先を調べる</h2>
       <p class="jc-intro" data-slot="intro-t">先に、いなくなった日時と場所、犬・猫の特徴、首輪、写真を確認してください。市区町村を選ぶと、担当の窓口がここに出ます。</p>
       <div id="jcLocal" aria-live="polite" hidden></div>
-      <p><a href="#first">今日やること</a> ・ <a href="#jcFly">チラシを作る</a> ・ <a href="#pro">ペット探偵を比較する</a></p>
+      <p><a href="#first">今日やること</a> ・ <a href="#jcFly">チラシを作る</a> ・ <a href="#pro">ペット探偵を頼むとき</a></p>
       <details class="jc-template">
         <summary>届け出に使う記入例をコピー</summary>
         <p>写真を添えて各窓口に伝えてください。このサイトから提出はされません。</p>
@@ -398,10 +377,10 @@ def maigo(ctx):
     <div class="sh"><h2>保護された子は、何日待ってもらえる？町によってちがいます</h2></div>
     <p>待ってもらえる日数、迎えるときの費用、猫を収容するかどうかは、自治体ごとにかなり違います。届け出をその日のうちに出し、毎日問い合わせる理由はここにあります。</p>
     <div class="tbl"><table class="jc-cmp"><tbody>{wait}</tbody></table></div>
-    <div class="sh" id="pro" tabindex="-1"><h2>ペット探偵を比較する</h2></div>
-    <p>迷子の捜索をしている会社は、料金のしくみ（1日ごと・数日のまとめ）も、交通費やチラシ代が入っているかも違います。<a href="#report">いなくなった市区町村を入力する</a>と、対応地域の会社だけを表示します。</p>
+    <div class="sh" id="pro" tabindex="-1"><h2>ペット探偵を頼むとき</h2></div>
+    <p>近所を探しても手がかりがない、捕獲器や夜間の見張りが必要なときは、捜索会社に相談できます。依頼を決める前に、実際に来られる時間と、交通費などを含む総額を確かめます。</p>
     {ins_box}
-    <div id="jcPro">{det_tbl}</div>
+    <p><a class="btn" data-go-detective href="/pet-detective/">ペット探偵を探す・比較する</a></p>
     <div class="sh"><h2>犬と猫で、さがし方がちがう</h2></div>
     <div class="jc-vs"><div><h4>犬</h4><ul><li>いなくなった場所から円をえがくように広げる</li><li>散歩道・公園・駅まで</li><li>大型犬は1日に何十kmも動くことがある</li><li>首輪や鑑札があれば、警察に届けられることもある</li></ul></div>
     <div><h4>猫</h4><ul><li>まず家の中を、もう一度</li><li>家の近くの狭くて暗い場所</li><li>夜や早朝に、小さな声で</li><li>猫を収容しない自治体もある</li></ul></div></div>

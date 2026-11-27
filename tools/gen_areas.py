@@ -1301,6 +1301,7 @@ hub = head("ペットの移動ガイド｜犬・猫の通院、引っ越し、�
     <p class="lede">通院、引っ越し、帰省、お別れのとき。家族の一員だからこそ、移動もその子にとって楽な方法を選んであげたい。そのためのヒントをまとめました。</p>
   </div>
 </section>
+<section style="padding-top:0"><div class="wrap"><div class="emg-tips"><h2>ペットが迷子になったら</h2><p>地域の届け先、今日やること、チラシ作りをまとめています。</p><p><a href="/jichitai/maigo/">迷子の初動ガイドを開く</a> ・ <a href="/pet-detective/">ペット探偵を比較する</a></p></div></div></section>
 {_gh_body()}
 <section style="padding-top:0">
   <div class="wrap">
@@ -2528,6 +2529,10 @@ import gen_maigo
 gen_maigo.write_all(ROOT, dict(head=head, e=e, SITE=SITE, pref_slug=PREF_SLUG,
   foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
 hosp_urls = hosp_urls + gen_maigo.urls(SITE)
+import gen_pet_detective
+gen_pet_detective.write_all(ROOT, dict(head=head, e=e, SITE=SITE,
+  foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
+hosp_urls = hosp_urls + [SITE + gen_pet_detective.PATH]
 # 運営者と掲載の基準（/about/、tools/gen_about.py。どのページの下からも portal.py の TRUST で来られる）
 import gen_about
 gen_about.write_all(ROOT, dict(head=head, e=e, SITE=SITE, foot_noband=lambda: re.sub(r'<div class="sticky">.*?</div>\n', "", foot("/#form", band=False))))
@@ -2734,7 +2739,7 @@ open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
 # 登録数が出るので、分野ごとの登録率（品質の関門）を数えられる。分野はURLの最初のフォルダで決める（ペットタクシーの地域・トップ・規約などは taxi）。
 SITEMAP_CATS = {"guide": "guide", "sougi": "sougi", "dogrun": "dogrun", "hospital": "hospital", "pet-hotel": "pet-hotel",
                 "pet-sitter": "pet-sitter", "dog-trainer": "dog-trainer", "rojin-home": "rojin-home", "trimming": "trimming", "jichitai": "jichitai", "hinan": "hinan", "joto": "joto",
-                "inu-yado": "yado", "pet-yado": "yado"}
+                "inu-yado": "yado", "pet-yado": "yado", "pet-detective": "pet-detective"}
 def _sm_cat(u):
   return SITEMAP_CATS.get(u[len(SITE) + 1:].split("/")[0], "taxi")
 _sm_groups = {}
