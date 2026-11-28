@@ -362,6 +362,7 @@ def card(blk, h, cat, more=None, compact=False):
         if icn == "yen" and isinstance(f, dict) and f.get("sum") and val == f.get("v") and not _nobase_rojin(f["sum"]):  # 上の _guard と同じ判定を要約にもかける（基本の料金が書かれていない文を、基本の料金のように見せない）
             _full.append(("料金（全文）", val, f.get("src"), f.get("checked")))
             val = f["sum"]
+            if more and f.get("nsum"): val = f["nsum"]  # 全国のページ（県のページへのリンクだけが「詳しく」）：金額を条件ぬきで出さない。金額と条件の全文は県のページのカードに、同じ施設の「料金（全文）」としてある
         _fl2.append((icn, lab, val, f))
     fl = _fl2
     loc = "" if any(v == locv for _, _, v, _ in fl) else f'<p class="pc-loc pin"><span>{E(locv)}</span></p>'  # 同じ文を2回出さない

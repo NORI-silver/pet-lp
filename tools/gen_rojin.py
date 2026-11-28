@@ -56,7 +56,7 @@ def _card(e, h):
     # [B] 2026-11-22 Nori「他のサイトにいって追加で調べることがないように」：公式サイトに書いてある料金・条件・時間などもカードに
     for f in h.get("facts", []):
         if (f["k"] in ("料金", "ふくまれるお世話", "別料金", "受け入れ条件", "見学・面会", "病院", "用意するもの", "営業・受付時間", "お支払い", "部屋", "お世話", "1泊・日帰り", "定休日", "駐車場") and not (f["k"] == "見学・面会" and h.get("visit"))) or (f.get("show") and not (f["k"] in ("見学", "面会") and h.get("visit"))):
-            extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
+            extra += f'<small>{e(f["k"])}：{e(f["sum"] if f["k"] == "料金" and f.get("nsum") and f.get("sum") else f["v"])}</small>'  # 長い条件つきの料金（nsum のある施設）：一覧のもとのカードには要約。全文（出典つき）は tools/cardpolicy.py が rojin.json から県のページのカードの「料金（全文）」に置く
     for label, value in decisionfit.rows("rojin-home", h):
         extra += f'<small>{e(label)}：{e(value)}</small>'
     fa = f' data-cat="rojin" data-fid="{e(h["id"])}" data-name="{e(h["name"])}"' + (' data-partner="1"' if h.get("partner") else '')  # facility.js（問い合わせ文・提携先へは当サイトから送る）
