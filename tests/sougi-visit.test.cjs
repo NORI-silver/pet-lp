@@ -65,7 +65,7 @@ console.log('sougi-visit ok', nPub, nOther, nHold);
     if (pick && !vis) { nP++; assert.ok(b.includes('お迎え対応') && !b.includes('訪問火葬対応'), f.name + ': お迎えだけ'); }
     if (vis && !pick) { nV++; assert.ok(b.includes('訪問火葬対応') && !b.includes('お迎え対応'), f.name + ': 訪問火葬だけ'); }
   }
-  assert.equal(nP, 27); assert.equal(nV, 34); // 監査済み（お迎えは復元12件を足して15→27）のの内訳（未監査の旧データはこの行を持たない）
+  assert.equal(nP, 28); assert.equal(nV, 34); // 28 = 27 + 本光寺S4ba28d（公式の火葬ページでお引き取り火葬を確認）。監査済み（お迎えは復元12件を足して15→27）のの内訳（未監査の旧データはこの行を持たない）
   console.log('sougi-visit pickup/visiting ok', nP, nV);
 }
 

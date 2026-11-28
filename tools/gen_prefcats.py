@@ -22,7 +22,7 @@ _TYPES = [("kobetsu", "個別火葬（おまかせ）", _gs.SK), ("tachiai", "�
 def _price_lines(rs):
     out = []
     for k, lab, nat in _TYPES:
-        v = sorted(g[k] for g in (_gs._prices(f.get("price")) for f in rs) if k in g)
+        v = sorted(g[k] for g in (_gs._prices(f.get("price")) for f in rs if not f.get("budget_example_only")) if k in g)
         if len(v) >= 2:
             out.append((lab, len(v), f"{v[0]:,}円〜{v[-1]:,}円", nat["med"]))
     return out
