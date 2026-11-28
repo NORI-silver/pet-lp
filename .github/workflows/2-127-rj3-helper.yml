@@ -1,0 +1,59 @@
+# 一時の補助。行き先が決まらない教室の扱い。終わったら消す。
+name: seo-helper
+on:
+  push:
+    branches: ['NORI-silver-repair-rj3']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 足す
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp .github/workflows/*sep-stage.patch /tmp/stage.patch
+          git fetch origin main
+          git reset -q --hard origin/main
+          git log -1 --format='base %H'
+          for f in tools/faccard.py tools/ownerfit.py tools/hotels.json tools/kinki_add.json; do echo "baseblob $f $(git rev-parse HEAD:$f)"; done
+          git apply --3way /tmp/stage.patch
+          git status --short | head -20
+          git diff HEAD --stat | tail -10
+      - name: 作り直し2回（同じ結果になることを確かめる）
+        run: |
+          for i in 1 2; do python3 tools/gen_areas.py . > /tmp/g$i.log 2>&1 || { tail -20 /tmp/g$i.log; exit 1; }; git status --porcelain | awk '{print $2}' | sort > /tmp/ch$i.txt; git diff HEAD | md5sum > /tmp/dm$i.txt; echo "pass $i changed: $(wc -l < /tmp/ch$i.txt) diffmd5 $(cat /tmp/dm$i.txt)"; done
+          echo "changed-set 2v1: $(diff /tmp/ch1.txt /tmp/ch2.txt | wc -l)  diff-md5 same: $(cmp -s /tmp/dm1.txt /tmp/dm2.txt && echo yes || echo no)"
+          node -e "const z=require('zlib'),fs=require('fs'),p=require('path');const mx={};function w(d,t){for(const f of fs.readdirSync(d,{withFileTypes:true})){const q=p.join(d,f.name);if(f.isDirectory())w(q,t);else if(f.name==='index.html'){const g=z.gzipSync(fs.readFileSync(q,'utf8'),{level:9}).length;if(!mx[t]||g>mx[t][0])mx[t]=[g,q]}}}['trimming','dog-trainer','sougi','pet-hotel','rojin-home','pet-sitter'].forEach(t=>w(t,t));console.log('NODEGZ '+JSON.stringify(mx))"
+          echo "facility.js bytes $(wc -c < facility.js) find.js $(wc -c < find.js) hosp.js $(wc -c < hosp.js)"
+      - name: 検査とテスト（各ゲートの終了状態を記録。何も省かない）
+        run: |
+          fail=0
+          run(){ n="$1"; shift; rc=0; "$@" > /tmp/gate_$n.log 2>&1 || rc=$?; echo "GATE $n exit=$rc :: $(tail -2 /tmp/gate_$n.log | tr '\n' ' ' | cut -c1-200)"; if [ $rc -ne 0 ]; then fail=1; fi; }
+          run seo python3 tools/seo_check.py .
+          run rules python3 tools/rules_check.py .
+          run feedback python3 tools/feedback_check.py .
+          run consistency python3 tools/consistency_check.py .
+          tf=0; tn=0
+          for f in tests/*.test.cjs; do tn=$((tn+1)); rc=0; node "$f" > /tmp/one.log 2>&1 || rc=$?; if [ $rc -ne 0 ]; then tf=$((tf+1)); echo "TEST FAIL exit=$rc $f :: $(grep -E 'bytes gzipped|Error|FAIL' /tmp/one.log | head -3 | tr '\n' ' ')"; fi; done
+          echo "TESTS files=$tn failed=$tf"
+          if [ $tf -ne 0 ]; then fail=1; fi
+          echo "ALL_GATES_EXIT=$fail"
+          exit $fail
+      - name: コミット
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git rm -q --cached -f .github/workflows/*seo-helper.yml 2>/dev/null || true
+          git commit -qm "[B] 行き先が1つに決まらないしつけ教室17件は行き先を入れず、通常の料金ページへ（理由をカードに出す。ページの重さを下げる）"
+          git push -f origin HEAD:refs/heads/NORI-silver-rj3
+          git log -1 --format='HEAD %H'
