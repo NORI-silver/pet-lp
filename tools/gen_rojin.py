@@ -56,7 +56,7 @@ def _card(e, h):
     # [B] 2026-11-22 Nori「他のサイトにいって追加で調べることがないように」：公式サイトに書いてある料金・条件・時間などもカードに
     for f in h.get("facts", []):
         if (f["k"] in ("料金", "ふくまれるお世話", "別料金", "受け入れ条件", "見学・面会", "病院", "用意するもの", "営業・受付時間", "お支払い", "部屋", "お世話", "1泊・日帰り", "定休日", "駐車場") and not (f["k"] == "見学・面会" and h.get("visit"))) or (f.get("show") and not (f["k"] in ("見学", "面会") and h.get("visit"))):
-            extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
+            extra += f'<small>{e(f["k"])}：{e(f["sum"] if f["k"] == "料金" and f.get("cardsum") and f.get("sum") else f["v"])}</small>'  # 長い条件つきの料金（cardsum: true の施設）：一覧のもとのカードには要約。全文（出典つき）は tools/cardpolicy.py が rojin.json から県のページのカードの「料金（全文）」に置く
     for label, value in decisionfit.rows("rojin-home", h):
         extra += f'<small>{e(label)}：{e(value)}</small>'
     fa = f' data-cat="rojin" data-fid="{e(h["id"])}" data-name="{e(h["name"])}"' + (' data-partner="1"' if h.get("partner") else '')  # facility.js（問い合わせ文・提携先へは当サイトから送る）
@@ -235,7 +235,7 @@ def _bf_keys(h):
     a = h["animals"]
     k = ["cat"] if _cat_ok(h) else []
     if not a.startswith("猫"):
-        k += ["s"] if "小型犬5kg未満" in a else ["s", "m", "l"]
+        k += (["s", "m"] if "中型犬15kg未満" in a else ["s"]) if "小型犬5kg未満" in a else ["s", "m", "l"]
     return k
 CAT["bf_keys"] = _bf_keys
 CAT["bf_lead"] = "公式サイトに書いてある「受け入れる動物」で分けています（犬だけ・猫だけ・小型犬だけの施設など）。大きさの決まりを書いていない施設は、犬ならどの大きさでも表示します。"
