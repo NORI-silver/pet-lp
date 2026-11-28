@@ -102,6 +102,13 @@ def render(ctx):
       ("教室や幼稚園への送り迎えが大変なときは？", "送迎をしている教室もあります。家に来てくれる出張トレーニングを選ぶ方法もあります。"),
     ]
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
+    def _tk(ks):
+        return sum(1 for t in J["trainers"] if any((f.get("k") or "") in ks for f in t.get("facts", []) if isinstance(f, dict)))
+    stats_html = ('<div class="emg-tips"><h4>全国のドッグトレーナー・しつけ教室のデータ</h4><dl>'
+      f'<dt>掲載数</dt><dd>全国{total}件です。</dd>'
+      f'<dt>料金</dt><dd>料金の記載がある教室は{_tk(("料金",))}件です。</dd>'
+      f'<dt>出張費と送迎</dt><dd>出張費の記載がある教室は{_tk(("出張費", "交通費・出張費"))}件、送迎の記載がある教室は{_tk(("送迎",))}件です。</dd>'
+      '</dl><p class="emg-tips-note">件数は、公式サイトの記載を項目ごとに整理したデータから、その項目の記載がある教室だけを数えています。トイレのしつけ、吠える・かむなどの困りごとは、<a href="/guide/dog-behavior-help/">問題行動の相談先</a>にもまとめています。</p></div>')
     ld = '<script type="application/ld+json">\n' + json.dumps([
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
@@ -124,6 +131,7 @@ def render(ctx):
       <p class="emg-free">掲載料はいただいていません。都道府県別の一覧で、順位はつけていません。料金は教室にご確認ください。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       {FC.chips(e, FC.TRAINER_CHIPS)}
+      {stats_html}
       {body}
       {points_html()}
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>

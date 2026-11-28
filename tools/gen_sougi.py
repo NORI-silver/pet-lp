@@ -238,6 +238,15 @@ def render(ctx):
         return f'<p>くわしくは：<a href="/guide/{more[i]}/">{e(gt[more[i]])}</a></p>' if i in more else ""
     art = toc + "".join(f'<h2 id="{i}">{e(h)}</h2>{b}{_more(i)}' for i, h, b in S)
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in FAQ)
+    def _sv(val):
+        return sum(1 for f in F["facilities"] if val in (f.get("services") or []))
+    def _kd(val):
+        return sum(1 for f in F["facilities"] if val in (f.get("kinds") or []))
+    sougi_stats = ('<div class="emg-tips"><h4>全国のペット葬儀・火葬・霊園のデータ</h4><dl>'
+      f'<dt>掲載数</dt><dd>民間のペット火葬場・霊園・納骨堂は、全国{len(F["facilities"])}か所です。</dd>'
+      f'<dt>火葬の方法</dt><dd>個別火葬に対応する施設は{_sv("個別火葬")}か所、立ち会い火葬ができる施設は{_sv("立ち会い火葬")}か所、自宅に来る訪問火葬の施設は{_sv("訪問火葬")}か所です。</dd>'
+      f'<dt>その後の供養</dt><dd>納骨ができる施設は{_sv("納骨")}か所、霊園がある施設は{_kd("霊園")}か所です。</dd>'
+      '</dl><p class="emg-tips-note">件数は、各施設でできることの一覧（公式サイトの記載から整理した項目）に、その項目がある施設だけを数えています。対応の実際は施設にご確認ください。</p></div>')
 
     ld = '<script type="application/ld+json">\n' + json.dumps([
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -278,6 +287,7 @@ def render(ctx):
         </dl>
       </details>
       {body}
+      {sougi_stats}
       <div class="emg-tips" id="faq"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
       {FC.biz(e, "ペット葬儀・火葬・霊園")}
       <p class="emg-note">{e(J["checked"])}時点の、各自治体の公式ページに書いてある情報です。受け付けの方法や費用は変わることがあるので、必ずリンク先でご確認ください。掲載の内容の誤りは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
