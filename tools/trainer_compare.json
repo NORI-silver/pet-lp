@@ -269,5 +269,79 @@
     "source": "https://dog-school-spica.com/menu/",
     "contact": "https://dog-school-spica.com/contact/",
     "checked": "2026年11月28日"
+  },
+  {
+    "id": "TC071-trial",
+    "name": "愛犬ハッピートレーニング ハピトレ",
+    "menu": "出張の初回体験",
+    "city": "船橋市",
+    "mode": "visit",
+    "kind": "trial",
+    "price": "4,400円（税込）＋交通費",
+    "priceType": "base",
+    "feeNote": "訪問先と交通手段で交通費が変わります。大型犬の割増なし。総額は事業者へ。",
+    "first": "初回にカウンセリングと短い実技を受けられます。体験だけの利用も可能です。",
+    "needs": "氏名・犬の名前・用件・連絡先を伝えます。初回予約にカウンセリングシートが必要（LINEで項目を伝える方法も可）。",
+    "payment": "支払方法・支払時点は申込先へ。",
+    "source": "https://happy-dog1.com/course/training/",
+    "contact": "https://happy-dog1.com/contact-us/",
+    "checked": "2026年11月28日",
+    "area": [
+      "船橋市",
+      "習志野市",
+      "市川市",
+      "浦安市",
+      "千葉市",
+      "佐倉市",
+      "四街道市",
+      "八千代市"
+    ],
+    "topics": [
+      "bark",
+      "puppy",
+      "walk",
+      "toilet"
+    ],
+    "large": true
+  },
+  {
+    "name": "いぬとれ",
+    "city": "船橋市",
+    "mode": "school",
+    "kind": "counsel",
+    "priceType": "known",
+    "source": "https://www.inutore.net/",
+    "contact": "https://www.inutore.net/",
+    "checked": "2026年11月28日",
+    "id": "T132-free",
+    "menu": "見学・コースの無料相談",
+    "price": "0円",
+    "feeNote": "30分の無料相談の料金です。実技レッスンとは別です。",
+    "first": "教室の見学やコース選びを相談できます。通常レッスン前に必須とは案内されていません。",
+    "needs": "公式サイトの「ご予約・お問合せ」から「30分無料相談希望」と伝えます。予約制です。",
+    "payment": "この相談は無料です。"
+  },
+  {
+    "name": "いぬとれ",
+    "city": "船橋市",
+    "mode": "school",
+    "kind": "counsel",
+    "priceType": "known",
+    "source": "https://www.inutore.net/",
+    "contact": "https://www.inutore.net/",
+    "checked": "2026年11月28日",
+    "id": "T132-counsel",
+    "menu": "しつけの個別相談",
+    "price": "3,300円",
+    "feeNote": "50分のしつけ相談の掲載料金です。",
+    "first": "しつけの困りごとを相談する有料枠です。見学・コースの無料相談とは別です。",
+    "needs": "公式サイトの「ご予約・お問合せ」から有料のしつけ相談を希望する旨と困りごとを伝えます。",
+    "payment": "支払方法・支払時点は申込先へ。",
+    "topics": [
+      "bark",
+      "bite",
+      "walk",
+      "puppy"
+    ]
   }
 ]
