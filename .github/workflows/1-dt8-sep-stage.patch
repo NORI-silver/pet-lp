@@ -1,0 +1,50 @@
+diff --git a/tests/taxi-static-dto.test.cjs b/tests/taxi-static-dto.test.cjs
+new file mode 100644
+index 000000000..0f17c51c9
+--- /dev/null
++++ b/tests/taxi-static-dto.test.cjs
+@@ -0,0 +1,20 @@
++// 行き先（data-to）のあるトリミング・トレーナーのカードは、HTMLに料金リンクが最初から1つだけある（読み込み直しのあとでも消えない）
++const fs = require("fs"), path = require("path");
++let cards = 0, bad = [];
++for (const cat of ["dog-trainer", "trimming"]) {
++  const dir = path.join(__dirname, "..", "find-data", cat);
++  for (const f of fs.readdirSync(dir).filter(x => x.endsWith(".json"))) {
++    const s = JSON.stringify(JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
++    const re = /<div class=\\"emg-item emg-co fc[^>]*?data-to=\\"[^>]*?>.*?(?=<div class=\\"emg-item|$)/g;
++    let m;
++    while ((m = re.exec(s))) {
++      const b = m[0].split(/<div class=\\"emg-item/)[0];
++      cards++;
++      const n = (b.match(/<a class=\\"emg-taxi fc-a fc-a-car\\"/g) || []).length;
++      if (n !== 1) bad.push(cat + "/" + f + " n=" + n);
++    }
++  }
++}
++if (cards < 10) { console.error("FAIL few data-to cards found: " + cards); process.exit(1); }
++if (bad.length) { console.error("FAIL " + bad.length + " data-to cards without exactly 1 static taxi link: " + bad.slice(0, 5).join(", ")); process.exit(1); }
++console.log("ok data-to cards " + cards + " each with 1 static taxi link");
+diff --git a/tools/cardskin.py b/tools/cardskin.py
+index d5d4fbe03..67dd9119a 100644
+--- a/tools/cardskin.py
++++ b/tools/cardskin.py
+@@ -8,6 +8,7 @@
+ #  3. 横に流れる施設カード .fc は形はそのまま、枠・角・影だけそろえる（CSS）
+ # 中身は消さない（表の4行目からは「くわしく」にたたむ）。何度動かしても同じ（cs の印で2回目はしない）。
+ import os, re
++import html as _html
+ from urllib.parse import unquote
+ 
+ 
+@@ -227,8 +228,10 @@ def fc(blk):
+         route_label = "事業所への経路" if office_pin else "経路を見る"
+         rt_more = _route_more('<a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination=' + quote(dest) + f'" target="_blank" rel="noopener" data-route>{route_label}</a>')
+     grid = '<div class="ux-c-a">' + "".join(btn) + "</div>" + rt_more
+-    if a0.get("data-cat") in ("trim", "trainer") and not (to and re.search(r"[都道府県市区町村郡]", to)) and not any("emg-taxi" in a_ and "fc-a-info" not in a_ for a_ in re.findall(r"<a [^>]*>", b)):  # 行き先の分かる施設は facility.js が行き先つきのリンクを足す。分からない施設（出張・住所なし）は、行き先を入れない通常の料金ページへ（Nori 2026-11-27 00:05 のカードの決まり：公開の住所がないときは通常の料金ページ）
++    if a0.get("data-cat") in ("trim", "trainer") and not (to and re.search(r"[都道府県市区町村郡]", to)) and not any(("emg-taxi" in a_ and "fc-a-info" not in a_) or "fac-taxi" in a_ for a_ in re.findall(r"<a [^>]*>", b)):  # 行き先の分かる施設は facility.js が行き先つきのリンクを足す。分からない施設（出張・住所なし）は、行き先を入れない通常の料金ページへ（Nori 2026-11-27 00:05 のカードの決まり：公開の住所がないときは通常の料金ページ）
+         b = b.replace('<div class="fc-acts">', '<div class="fc-acts"><a class="emg-taxi fc-a fc-a-car" href="/#form" aria-label="ペットタクシーの料金（行き先なし）">ペットタクシーの料金</a>', 1)
++    if a0.get("data-cat") in ("trim", "trainer") and to and re.search(r"[都道府県市区町村郡]", to) and not any("emg-taxi" in a_ and "fc-a-info" not in a_ or "fac-taxi" in a_ for a_ in re.findall(r"<a [^>]*>", b)):  # 行き先の分かる施設にも、行き先つきの料金リンクをHTMLに最初から入れる（facility.js が足すリンクと同じ行き先。読み込み直し・全件読み込みのあとでも消えない。すでにあるカードには足さない）
++        b = b.replace('<div class="fc-acts">', '<div class="fc-acts"><a class="emg-taxi fc-a fc-a-car" href="/?to=' + quote(_html.unescape(to)) + '#form" aria-label="' + name + 'のタクシー料金">ペットタクシーの料金</a>', 1)
+     b = b[:acts.start()] + grid + b[acts.start():]
+     return _add_cls(b[:len(ot)]) + b[len(ot):]
+ 
