@@ -40,7 +40,7 @@ CSS = ('/* 事業者カードの共通の形（tools/cardpolicy.py が /pc.css �
        '.pc .pc-f li{display:grid;grid-template-columns:18px 6.2em 1fr;gap:6px;align-items:start;font-size:.85rem;line-height:1.5;color:#4a3f37;margin:0}'
        '.pc .pc-f b{font-weight:700;color:#7a6a5e;font-size:.78rem;line-height:1.7}'
        '.pc .pc-f i{font-style:normal;color:#8f8378}'
-       '.pc .pc-m{margin:10px 0 0;font-size:.85rem}.pc .pc-m a{color:#a8410a;font-weight:700;text-decoration:none}'
+       '.pc .pc-m{margin:10px 0 0;font-size:.85rem}.pc .pc-m a{color:#a8410a;font-weight:700;text-decoration:none}.pc .pc-dt{margin:10px 0 0;font-size:.85rem}.pc .pc-dt a{color:#a8410a;font-weight:700;text-decoration:none}'
        '.pc .pc-d{margin:10px 0 0;border-top:1px solid #f5ebe2;padding-top:2px}'
        '.pc .pc-d summary{list-style:none;cursor:pointer;font-size:.85rem;font-weight:700;color:#a8410a;padding:7px 0}'
        '.pc .pc-d summary::-webkit-details-marker{display:none}.pc .pc-d summary::before{content:"＋ "}.pc .pc-d[open] summary::before{content:"－ "}'
@@ -439,6 +439,11 @@ def card(blk, h, cat, more=None, compact=False):
     btn.append(f'<a class="l" href="{to}"' + ("" if compact else f' aria-label="{E(name)}までのペットタクシー料金"') + '>タクシー料金</a>')  # 大きいページ（compact）では、ボタンの文字だけにして容量を節約
     score = re.search(r'<div class="emg-score" data-id="[^"]*"></div>', blk)  # サイトの中の口コミ（外へ飛ばさない）
     body = top + f'<ul class="pc-f">{"".join(li)}</ul>' + "" + det + f'<div class="pc-a">{"".join(btn)}</div>'
+    if cat == "hotel":  # 施設ページ（tools/gen_facpages.py）があるホテルは、カードからつなぐ（夜間病院のカードのリンクと同じ文）
+        import gen_facpages as _FP
+        _ids = _FP.HOTEL_PAGE_IDS if _FP.HOTEL_PAGE_IDS is not None else _FP.HOTEL_IDS
+        _x = next((y for y in _FP.HOTELS if y["id"] == h.get("id")), None) if h.get("id") in _ids else None
+        if _x: body += f'<p class="pc-dt"><a href="{E(_FP.hthref(_x))}">{E(name)}のくわしい情報（料金・条件・行き方）→</a></p>'  # class は pc-m にしない（_relink が「県のページで詳しく見る」専用に使っているため）
     return ot + ph + '<div class="fc-body">' + chip + body + "</div></div>"
 
 
