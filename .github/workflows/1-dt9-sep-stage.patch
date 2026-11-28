@@ -1,0 +1,79 @@
+diff --git a/tests/taxi-static-dto.test.cjs b/tests/taxi-static-dto.test.cjs
+new file mode 100644
+index 000000000..4a1bcffbc
+--- /dev/null
++++ b/tests/taxi-static-dto.test.cjs
+@@ -0,0 +1,27 @@
++// 行き先（data-to）のあるトリマー・しつけ教室のカードは、/find-data/ のHTMLに料金リンクが最初から1つだけある
++// （全件読み込みでカードが置きかわったあとも消えない）。.emg-taxi（「くわしく」以外）と .fac-taxi の両方を数える。
++const fs = require("fs"), path = require("path"), assert = require("assert");
++let cards = 0; const bad = [], ids = {};
++for (const cat of ["dog-trainer", "trimming"]) {
++  const dir = path.join(__dirname, "..", "find-data", cat);
++  for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".json"))) {
++    const j = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
++    for (const [, hs] of j.groups) for (const h of hs) {
++      const ot = h.slice(0, h.indexOf(">") + 1);
++      const to = (ot.match(/\bdata-to="([^"]*)"/) || [])[1];
++      if (!to || !/[都道府県市区町村郡]/.test(to)) continue;
++      cards++;
++      const links = (h.match(/<a [^>]*>/g) || []).filter((a) => (/emg-taxi/.test(a) && !/fc-a-info/.test(a)) || /fac-taxi/.test(a));
++      const fid = (ot.match(/data-fid="([^"]*)"/) || [])[1];
++      if (links.length !== 1) bad.push(cat + "/" + f + " " + fid + " n=" + links.length);
++      else { ids[fid] = links[0]; const href = (links[0].match(/href="([^"]*)"/) || [])[1]; if (!href.startsWith("/?to=") || !href.endsWith("#form")) bad.push(fid + " href " + href); }
++    }
++  }
++}
++assert.ok(cards >= 13, "data-to cards found: " + cards);
++assert.deepStrictEqual(bad, [], "data-to cards without exactly 1 correct static taxi link: " + bad.slice(0, 5).join(", "));
++// 愛知のしつけ教室で、これまで静的リンクが無かった13件（T050ほか）に出ている
++for (const id of ["T050", "T054", "T185", "T186", "T187", "T188", "T189", "T190", "T191", "T184", "T051", "T055", "T276"]) assert.ok(ids[id], id + ": 静的の料金リンクがある");
++const h50 = decodeURIComponent(ids["T050"].match(/href="([^"]*)"/)[1]);
++assert.ok(h50.includes("愛知県豊川市当古町本郷前6-2"), "T050 の行き先は data-to と同じ: " + h50);
++console.log("ok data-to cards " + cards + " each with exactly 1 static taxi link");
+diff --git a/tools/find_data.py b/tools/find_data.py
+index 332f6d098..62952881a 100644
+--- a/tools/find_data.py
++++ b/tools/find_data.py
+@@ -6,7 +6,7 @@
+ その県のまとまりを全部のカードに置きかえる（県のページへ逃がさない）。
+ 呼び出しは gen_areas.py の最後（uikit.build のあと。カードに data-ffi・data-k が付いたあと）。
+ """
+-import json, os, re
++import html as _html, json, os, re
+ 
+ HERE = os.path.dirname(os.path.abspath(__file__))
+ CATS = ["pet-hotel", "pet-sitter", "trimming", "dog-trainer", "rojin-home", "sougi", "joto"]
+@@ -32,6 +32,23 @@ def _restore(card):
+         return card
+ 
+ 
++def _static_taxi(card):
++    """行き先（data-to）のあるトリマー・しつけ教室のカードに、行き先つきの料金リンクを最初からHTMLに入れる。
++    facility.js が読み込みのあとに足すリンクは、全件読み込みでカードが置きかわると消えるため。
++    すでに料金のリンク（.emg-taxi の「くわしく」以外、または .fac-taxi）があるカードには足さない（何度かけても同じ）。"""
++    ot = card[:card.find(">") + 1]
++    if _ATTR(ot, "data-cat") not in ("trim", "trainer"):
++        return card
++    to = _html.unescape(_ATTR(ot, "data-to"))
++    if not to or not re.search(r"[都道府県市区町村郡]", to) or '<div class="fc-acts">' not in card:
++        return card
++    if any(("emg-taxi" in a and "fc-a-info" not in a) or "fac-taxi" in a for a in re.findall(r"<a [^>]*>", card)):
++        return card
++    q = re.sub(r'[%&#"<>?+\s]', lambda m: "%%%02X" % ord(m.group()), to)
++    name = _html.escape(_html.unescape(_ATTR(ot, "data-name")))
++    return card.replace('<div class="fc-acts">', '<div class="fc-acts"><a class="emg-taxi fc-a fc-a-car" href="/?to=' + q + '#form" aria-label="' + name + 'のタクシー料金">ペットタクシーの料金</a>', 1)
++
++
+ def _cards(h):
+     """ページの中の [data-ffi] カードを (HTML, 市区町村) で返す。市区町村は data-city、なければ直前の .fr-h の見出し。"""
+     out = []
+@@ -50,7 +67,7 @@ def _cards(h):
+         if not city:
+             prev = [t for p, t in heads if p < m.start()]
+             city = prev[-1] if prev else ""
+-        out.append((_restore(h[m.start():i]), city))
++        out.append((_static_taxi(_restore(h[m.start():i])), city))
+     return out
+ 
+ 
