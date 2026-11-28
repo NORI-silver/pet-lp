@@ -1602,6 +1602,22 @@ function checkPending() {
   }
 }
 
+// 締め切りの理由は、事業者からのお返事の履歴で出し分ける。既存の終了状態・時刻は変えない。
+function unbookedOutcome_(r) {
+  var replies = quotesOf_(r);
+  replies = needsChoice_(r) && Array.isArray(replies) ? replies.filter(function (q) { return q && q.pid; }) : [];
+  if (replies.some(function (q) { return !q.withdrawn; })) {
+    return { label: '見積もりあり・予約未確定', subject: '予約が確定しないまま受付が終了しました',
+      copy: 'ペットタクシー会社から空き状況と料金のお返事がありましたが、ご予約が確定しないまま受付が終了しました。以前のお返事の内容では予約できません。' };
+  }
+  if (replies.length) {
+    return { label: 'お返事取り下げ・予約未確定', subject: 'お返事が取り下げられ、受付が終了しました',
+      copy: 'ペットタクシー会社からのお返事が取り下げられ、ご予約は確定しませんでした。' };
+  }
+  return { label: '見つからず', subject: '申し訳ありません、空いている車が見つかりませんでした',
+    copy: 'ご案内できる空き状況と料金のお返事がありませんでした。お力になれず、申し訳ありません。' };
+}
+
 function giveUp_(id) {
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
@@ -1614,13 +1630,14 @@ function giveUp_(id) {
     lock.releaseLock();
   }
   var r = findReq_(id).data;
-  log_(id + ' 見つからず');
+  var outcome = unbookedOutcome_(r);
+  log_(id + ' ' + outcome.label);
   closeOthers_(r, '');
-  toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】申し訳ありません、空いている車が見つかりませんでした（受付番号 ' + id + '）' + legTag_(r),
-    r['お名前'] + ' 様\n\nご依頼ありがとうございました。\n' + whenText_(r) + ' のお迎えについて、' + (r['指定した提携先'] ? r['指定した提携先'] + 'に確認しましたが、あいにくお引き受けできませんでした。' : 'エリアのペットタクシーにお声がけしましたが、あいにく空いている車が見つかりませんでした。') + '\nお力になれず、申し訳ありません。\n\n' +
+  toCustomer_(r, '【' + CONFIG.SERVICE_NAME + '】' + outcome.subject + '（受付番号 ' + id + '）' + legTag_(r),
+    r['お名前'] + ' 様\n\nご依頼ありがとうございました。\n' + whenText_(r) + ' のお迎えについて、' + outcome.copy + '\n\n' +
     (r['ペアの受付番号'] ? 'これは往復の' + legTag_(r).slice(1) + 'のご依頼です。もう片方（受付番号 ' + r['ペアの受付番号'] + '）は、そのまま続いています。取り消す場合は、そちらのメールのリンクからどうぞ。\n\n' : '') +
     '時間を少しずらすと見つかることがあります。下のリンクから開くと、前回の内容が入った状態になるので、日時だけ変えてもう一度お送りいただけます。\n' + retryUrl_(id));
-  notifyAdmin_('見つからず ' + id, 'お客さまにお詫びを送りました。\n\n' + rideText_(r) + '\n\nお名前：' + r['お名前'] + '\n電話：' + r['電話番号']);
+  notifyAdmin_(outcome.label + ' ' + id, 'お客さまに受付終了のお知らせを送りました。\n\n' + rideText_(r) + '\n\nお名前：' + r['お名前'] + '\n電話：' + r['電話番号']);
 }
 
 /* ───────── 送迎のあとの確認（飼い主さんに聞いて、会社の月末の申告と照らし合わせる） ───────── */
