@@ -1,0 +1,215 @@
+diff --git a/tests/rojin-price-facts.test.cjs b/tests/rojin-price-facts.test.cjs
+new file mode 100644
+index 000000000..580f73621
+--- /dev/null
++++ b/tests/rojin-price-facts.test.cjs
+@@ -0,0 +1,102 @@
++// 老犬ホーム R020・R038・R059：料金の事実と、並べ替え・絞り込みの目印を、出来上がったページ全部で確かめる。
++//  1. カードの料金の行は、rojin.json の条件つきの要約（sum）。条件を落とした金額だけの行にしない。全文（v）と出典は同じカードの「詳しく見る」にある。
++//  2. 価格順の目印 data-yen は、公式サイトの料金表の基本の金額だけ。上限・加算・預かり金・面会費の最小値を拾わない。比べる土台にならない料金（永代預りの一時払い）は data-yen を付けない。
++//  3. R020 は中型犬（15kg未満）も受ける。「うちの子」の絞り込みで中型を選んでも出る。
++// 全国のページと県のページの、この施設のカードを1枚ずつ全部調べる（最初の1枚だけではない）。
++const fs = require("fs"), assert = require("assert");
++const root = __dirname + "/..";
++const J = JSON.parse(fs.readFileSync(root + "/tools/rojin.json", "utf8"));
++const plain = s => s.replace(/<[^>]+>/g, "").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/&amp;/g, "&");
++const wantYen = { R020: null, R038: null, R059: null };   // 3施設とも null＝価格順の基準を付けない。R020 は1か月（預かり金込みの合計）、R038 は1日あたり／期間合計（大型は食い違い）、R059 は永代預りの一時払いで、数え方がそろわず、同じ土台で並べると誤解を招く。また explicit な yen を付けると県ごとの料金表・並び順にも入るので、全国の施設の見え方が変わってしまう
++const prefPage = { R020: "aichi", R038: "fukuoka", R059: "miyagi" };
++const forbidden = { R020: [25000, 50000, 10000, 34100, 52000], R038: [300, 3000, 550, 33000], R059: [10000, 12000, 15000, 20000] };
++const pages = [["", fs.readFileSync(root + "/rojin-home/index.html", "utf8")]];
++for (const d of fs.readdirSync(root + "/rojin-home", { withFileTypes: true })) {
++  if (d.isDirectory() && fs.existsSync(root + "/rojin-home/" + d.name + "/index.html")) pages.push([d.name, fs.readFileSync(root + "/rojin-home/" + d.name + "/index.html", "utf8")]);
++}
++function instances(h, fid) {   // この施設のカード全部（開始タグ＋次のカードまで）
++  const out = [], rx = new RegExp('<div[^>]*data-fid="' + fid + '"[^>]*>', "g"); let m;
++  while ((m = rx.exec(h))) { const nx = h.indexOf('<div class="emg-item', m.index + 10); out.push({ tag: m[0], body: h.slice(m.index, nx < 0 ? h.length : nx) }); }
++  return out;
++}
++let total = 0;
++for (const fid of Object.keys(wantYen)) {
++  const home = J.homes.find(h => h.id === fid), fact = home.facts.find(f => f.k === "料金");
++  assert(fact.sum && fact.v && fact.src && fact.checked, fid + " 料金の事実に sum・v・出典・確認日がそろっていない");
++  assert.strictEqual(fact.yen === undefined ? "missing" : fact.yen, null, fid + " rojin.json は yen: null と明記する");
++  let n = 0, inPref = 0;
++  for (const [name, h] of pages) {
++    for (const c of instances(h, fid)) {
++      n++; if (name === prefPage[fid]) inPref++;
++      const ct = plain(c.body);
++      const y = c.body.match(/<li class="yen"><b>料金<\/b><span>(.*?)<\/span>/);
++      assert(y, fid + " " + (name || "全国") + " 料金の行がない");
++      assert.strictEqual(plain(y[1]), fact.sum, fid + " " + (name || "全国") + " 料金の行は条件つきの要約（sum）: " + plain(y[1]));
++      if (ct.includes(fact.v) || name === prefPage[fid]) {   // 全文がカードにある（県のページでは必ず）：出典・確認日も同じカードにある
++        assert(ct.includes(fact.v), fid + " " + (name || "全国") + " 料金の全文（v）が同じカードにない");
++        assert(/出典：/.test(ct) && /確認日 2026-/.test(ct), fid + " " + (name || "全国") + " 出典と確認日がない");
++      } else {      // 全国のページの軽い形のカード：要約（sum）だけ載せ、全文・出典は自分の施設の県のページへの「詳しく見る」リンクで開ける（リンク先に全文があることは県のページの検査で確かめる）
++        const lk = c.body.match(/<a [^>]*href="(\/rojin-home\/[a-z0-9-]+\/)(#[^"]*)?"[^>]*>[^<]*詳しく見る[^<]*/);
++        assert(lk, fid + " 全国 全文へのリンク（県のページで詳しく見る）がない");
++        assert.strictEqual(lk[1], "/rojin-home/" + prefPage[fid] + "/", fid + " 全国 リンク先が自分の施設の県のページではない: " + lk[1]);
++        const pp = root + lk[1] + "index.html"; assert(fs.existsSync(pp), fid + " リンク先のページがない");
++        if (lk[2]) assert(fs.readFileSync(pp, "utf8").includes('id="' + lk[2].slice(1) + '"'), fid + " リンク先に " + lk[2] + " の位置がない");
++      }
++      const dy = c.tag.match(/data-yen="(\d+)"/);
++      if (wantYen[fid] === null) assert(!dy, fid + " 並べ替えの基準にならない料金に data-yen が付いている: " + (dy && dy[1]));
++      else { assert(dy, fid + " data-yen がない"); assert.strictEqual(+dy[1], wantYen[fid], fid + " data-yen"); }
++      if (dy) assert(!forbidden[fid].includes(+dy[1]), fid + " data-yen が上限・加算・預かり金・面会費の金額: " + dy[1]);
++    }
++  }
++  assert(inPref >= 1, fid + " 県のページにカードがない");
++  total += n; console.log(fid, "cards checked:", n, "(pref page", inPref + ")");
++}
++// R020：中型犬（15kg未満）も受ける。絞り込みの目印に中型が入り、公式サイトにない大型は入らない
++{
++  const home = J.homes.find(h => h.id === "R020");
++  assert(/中型犬15kg未満は満12歳以上/.test(home.animals) && /小型犬5kg未満は満10歳以上/.test(home.animals), "R020 受け入れる動物の文が、小型（満10歳以上）・中型（満12歳以上）を書いていない");
++  for (const [name, h] of pages) for (const c of instances(h, "R020")) {
++    const fit = JSON.parse(c.tag.match(/data-fit='([^']*)'/)[1]);
++    assert(fit.s && fit.s.includes("s") && fit.s.includes("m") && !fit.s.includes("l"), "R020 " + (name || "全国") + " data-fit の大きさ: " + JSON.stringify(fit.s));
++  }
++}
++// R020 の返金（A 半額／B 全額／C 残額）と、R038 の食い違いの書き方
++{
++  const v20 = J.homes.find(h => h.id === "R020").facts.find(f => f.k === "料金").v;
++  assert(/短期預かりは何日で[^。]*返金なし/.test(v20) && /7日以内[^。]*半額返金/.test(v20) && /B（死亡時の諸費用）[^。]*全額返金/.test(v20) && /C（予備費）[^。]*残り[^。]*返金/.test(v20), "R020 返金の文（A・B・C）");
++  const f38 = J.homes.find(h => h.id === "R038").facts.find(f => f.k === "料金");
++  assert(/一致しない/.test(f38.v) && /一致しない/.test(f38.sum) && /132,000円/.test(f38.v) && /4,840円/.test(f38.v), "R038 大型1か月の食い違いを書いていない");
++  assert(!/30日分にすると|月は30日/.test(f38.v + f38.sum), "R038 サイトが書いていない期間（30日）を決めつけない");
++}
++// R020 の生涯預かり：公式サイトは生涯預かり（満14歳以上）を案内している。返金の「短期は返金なし」と同じ文に入れて「生涯預かりは対象外」と読まれないよう、文を分けてある。
++//  カードの絞り込みの目印は、生涯（long）が「合う」側（data-k）にあり、「合わない」側（data-no）にない。「生涯預かりを相談できる」の行が見える。
++{
++  const v20 = J.homes.find(h => h.id === "R020").facts.find(f => f.k === "料金");
++  for (const sent of v20.v.split(/[。\n／]/)) assert(!(/返金なし/.test(sent) && /生涯/.test(sent)), "R020 返金なし と 生涯 が同じ文にある（生涯が「対象外」と読まれる）: " + sent.slice(0, 60));
++  for (const sent of v20.sum.split(/[。\n／]/)) assert(!(/不可|できない|なし/.test(sent) && /生涯/.test(sent)), "R020 sum の文に 生涯 と 否定の言葉が同居している: " + sent.slice(0, 60));
++  let seen = 0, seenPref = 0;
++  for (const [name, h] of pages) for (const c of instances(h, "R020")) {
++    seen++;
++    const k = (c.tag.match(/ data-k="([^"]*)"/) || [0, ""])[1].split(" "), no = (c.tag.match(/ data-no="([^"]*)"/) || [0, ""])[1].split(" ");
++    assert(k.includes("long"), "R020 " + (name || "全国") + " data-k に long がない: " + k.join(" "));
++    assert(!no.includes("long") && !no.includes("life_stay"), "R020 " + (name || "全国") + " data-no に long か life_stay がある: " + no.join(" "));
++        assert(k.includes("life_stay"), "R020 " + (name || "全国") + " data-k に life_stay（生涯預かりを相談できる）がない: " + k.join(" "));
++    if (name === "aichi") {
++      seenPref++;
++      assert(/data-k="life_stay"[^>]*>生涯預かりを相談できる</.test(h), "R020 県のページに「生涯預かりを相談できる」の絞り込みがない");
++      assert(plain(c.body).includes("生涯預かり"), "R020 カードに生涯預かりの文がない（受け入れる動物・料金の要約）");
++    }
++  }
++  assert(seen >= 1 && seenPref === 1, "R020 カードの数: " + seen + "/" + seenPref);
++}
++// R038・R059：絞り込みの目印（data-k・data-no）。R038 は取り込み前と同じ。R059 は取り込み前に対し big（大型）だけが足される（公式サイトの料金表に大型・超大型の区分がある）。
++{
++  const want = { R038: ["big sen night med long pickup medical", "a:cat a:small a:bird a:exotic"], R059: ["a:cat sen big bed med menkai pickup medical", ""] };
++  for (const fid of Object.keys(want)) for (const [name, h] of pages) for (const c of instances(h, fid)) {
++    const k = (c.tag.match(/ data-k="([^"]*)"/) || [0, ""])[1], no = (c.tag.match(/ data-no="([^"]*)"/) || [0, ""])[1];
++    assert.strictEqual(k, want[fid][0], fid + " " + (name || "全国") + " data-k が変わった: " + k);
++    assert.strictEqual(no, want[fid][1], fid + " " + (name || "全国") + " data-no が変わった: " + no);
++  }
++}
++assert(total >= Object.keys(wantYen).length * 1 + 2, "カードの数が少なすぎる: " + total);   // 3施設とも県のページに1枚以上（上の inPref）＋全国のページの R059 など。全国のページに出る施設は取り込みで変わるので、数は下限だけ見る
++console.log("ok rojin-price-facts", total);
+diff --git a/tools/faccard.py b/tools/faccard.py
+index 3a8696986..e77f688ce 100644
+--- a/tools/faccard.py
++++ b/tools/faccard.py
+@@ -174,6 +174,7 @@ def _yen_of(r):
+     facts = [f for f in (r.get("facts") or []) if isinstance(f, dict)]
+     base = [f["yen"] for f in facts if f.get("k") == "料金" and isinstance(f.get("yen"), int) and 300 <= f["yen"] <= 1000000]
+     if base: return min(base)
++    if any(f.get("k") == "料金" and "yen" in f and f["yen"] is None for f in facts): return None  # 並べ替えの基準にできる金額がない（「yen: null」と明記した施設）。文中の上限・加算・預かり金・面会費の最小値を拾わない
+     vals = []
+     def walk(v):
+         if isinstance(v, str): vals.extend(int(x.replace(",", "")) for x in re.findall(r"(\d[\d,]*)\s*円", v))
+@@ -238,7 +239,7 @@ def _fit_table():
+         a = _kinds_in(t)
+         if "猫は受けていません" in t: a = [k for k in a if k != "cat"]
+         sizes, kg = None, None
+-        if "小型犬5kg未満" in t: sizes = ["s"]
++        if "小型犬5kg未満" in t: sizes = ["s", "m"] if "中型犬15kg未満" in t else ["s"]  # 中型犬（15kg未満）も受けると公式サイトにあれば、中型の子で絞っても出す
+         elif re.search(r"大型|小型・中型・大型", t): sizes = ["s", "m", "l"]
+         m = re.search(r"(\d+)kgまで", t)
+         if m: kg = int(m.group(1))
+diff --git a/tools/gen_rojin.py b/tools/gen_rojin.py
+index 8dc2ffcc5..b474acc25 100644
+--- a/tools/gen_rojin.py
++++ b/tools/gen_rojin.py
+@@ -56,7 +56,7 @@ def _card(e, h):
+     # [B] 2026-11-22 Nori「他のサイトにいって追加で調べることがないように」：公式サイトに書いてある料金・条件・時間などもカードに
+     for f in h.get("facts", []):
+         if (f["k"] in ("料金", "ふくまれるお世話", "別料金", "受け入れ条件", "見学・面会", "病院", "用意するもの", "営業・受付時間", "お支払い", "部屋", "お世話", "1泊・日帰り", "定休日", "駐車場") and not (f["k"] == "見学・面会" and h.get("visit"))) or (f.get("show") and not (f["k"] in ("見学", "面会") and h.get("visit"))):
+-            extra += f'<small>{e(f["k"])}：{e(f["v"])}</small>'
++            extra += f'<small>{e(f["k"])}：{e(f["sum"] if f["k"] == "料金" and f.get("cardsum") and f.get("sum") else f["v"])}</small>'  # 長い条件つきの料金（cardsum: true の施設）：一覧のもとのカードには要約。全文（出典つき）は tools/cardpolicy.py が rojin.json から県のページのカードの「料金（全文）」に置く
+     for label, value in decisionfit.rows("rojin-home", h):
+         extra += f'<small>{e(label)}：{e(value)}</small>'
+     fa = f' data-cat="rojin" data-fid="{e(h["id"])}" data-name="{e(h["name"])}"' + (' data-partner="1"' if h.get("partner") else '')  # facility.js（問い合わせ文・提携先へは当サイトから送る）
+@@ -235,7 +235,7 @@ def _bf_keys(h):
+     a = h["animals"]
+     k = ["cat"] if _cat_ok(h) else []
+     if not a.startswith("猫"):
+-        k += ["s"] if "小型犬5kg未満" in a else ["s", "m", "l"]
++        k += (["s", "m"] if "中型犬15kg未満" in a else ["s"]) if "小型犬5kg未満" in a else ["s", "m", "l"]
+     return k
+ CAT["bf_keys"] = _bf_keys
+ CAT["bf_lead"] = "公式サイトに書いてある「受け入れる動物」で分けています（犬だけ・猫だけ・小型犬だけの施設など）。大きさの決まりを書いていない施設は、犬ならどの大きさでも表示します。"
+diff --git a/tools/rojin.json b/tools/rojin.json
+index a37ba4f62..c51617de8 100644
+--- a/tools/rojin.json
++++ b/tools/rojin.json
+@@ -4413,7 +4413,7 @@
+    "city": "新城市",
+    "url": "http://www.wanwan-paradise.com/",
+    "addr": "愛知県新城市富岡字下川原82",
+-   "animals": "犬（小型犬5kg未満・10才以上のみ）",
++   "animals": "犬（小型犬5kg未満は満10歳以上、中型犬15kg未満は満12歳以上。生涯預かりは小型・中型とも満14歳以上）",
+    "visit": "施設の公開は控えています（公式サイト）",
+    "reg": "動東第341号",
+    "review_query": "ワンワンパラダイス 新城市富岡",
+@@ -4424,6 +4424,16 @@
+      "v": "歩行出来ない・自力で立ち上がる事が出来ない犬は入所不可／認知症の犬は入所出来ます。",
+      "src": "http://www.wanwan-paradise.com/",
+      "checked": "2026-11-17"
++    },
++    {
++     "k": "料金",
++     "v": "公式サイトの「入所条件・費用」より。入所費用は「A 飼育費・医療費等」「B 死亡時の諸費用（預かり金）」「C 予備費（預かり金）」の合計額（消費税込み）。小型犬（体重5kg未満）の合計：短期の1か月預かりは96,100円（A 52,000円）、3か月197,100円（A 143,000円）、6か月325,100円（A 261,000円）、生涯預かり549,100円（A 475,000円）。B は34,100円、C は10,000〜40,000円。中型犬（体重15kg未満）の合計：1か月113,700円、3か月232,700円、6か月383,700円、生涯660,700円（A 63,000円、172,000円、313,000円、570,000円。B は40,700円、C は10,000〜50,000円）。入所できる年齢：短期は小型犬が満10歳以上、中型犬が満12歳以上、生涯は小型・中型とも満14歳以上（上記以外の犬は特例の問い合わせ可）。入所できない状態：歩行できない、自力で立ち上がれない、介添えなしでは食事できない、自力で排便・排尿できない、攻撃的、噛み癖がある、塀やフェンスをよじ登る。別料金：入所時にすでに治療が必要な病気の治療費、短期預かりの時の各種ワクチン・フィラリア予防薬。予備費が不足した時は追加の支払いが必要。返金（A 飼育費・医療費等）：短期預かりは何日で死亡・退所・解約しても返金なし。生涯預かりは初回入所から7日以内の死亡・退所・解約で半額返金。B（死亡時の諸費用）は、入所期限が過ぎて契約が終わったとき、解約して退所したとき、葬儀等を行わないときは全額返金。C（予備費）は、退所または死亡のとき、支払い済みの額を差し引いた残りを返金すると書かれている。入所時の高速道路料金とペットタクシー料金は、生涯預かりで上限50,000円、6か月預かりで上限25,000円を、施設が負担すると書かれている",
++     "sum": "入所費用の合計（税込）。小型犬は1か月分が96,100円、生涯預かりが549,100円。預かり金を含む。生涯預かりは満14歳以上。立てない犬は入所不可",
++     "yen": null,
++     "cardsum": true,
++     "src": "http://www.wanwan-paradise.com/",
++     "by": "site",
++     "checked": "2026-11-28"
+     }
+    ],
+    "web": {
+@@ -5644,6 +5654,16 @@
+      "v": "夜泣き・介護でお困りの方／投薬が必要な場合／大型　20kg～40kg",
+      "src": "https://www.doghousenagisa.com/rouken/",
+      "checked": "2026-11-17"
++    },
++    {
++     "k": "料金",
++     "v": "公式サイトの老犬ホームの料金表より（体重区分：小型 〜8kg、中型 〜19kg、大型 20〜40kg）。日帰り：3,500円、3,800円、5,500円。1泊2日：4,500円、4,800円、6,500円。1か月：1日あたり2,640円、3,080円、4,840円（期間合計79,200円、92,400円、132,000円）。大型の1か月は、1日あたり4,840円とサイトの期間合計132,000円が一致しない（何日分の合計かはサイトに書かれていない。サイトの表示のまま載せている。小型・中型は、1日あたり×30日が期間合計と一致する）。半年：1日あたり2,310円、2,695円、3,850円（期間合計415,800円、485,100円、693,000円）。1年：1日あたり1,980円、2,310円、3,300円（期間合計712,800円、831,600円、1,188,000円）。これらの金額の税込・税別はサイトに書かれていない。別途必要な費用：カルテ作成費550円（税込）、入所金（医療費の預かり）33,000円（税込）、投薬が必要な場合は1日300円または1か月3,000円（税込）、介助が必要な場合は1日300円または1か月3,000円（税込）。終身の場合は相談、入所時に送迎が必要な方は相談と書かれている",
++     "sum": "1か月の1日あたり 小型2,640円〜大型4,840円（大型は1日あたりと期間合計132,000円が一致しない。サイトの表示のまま。税の表示なし）。別途 入所金33,000円・カルテ550円（税込）",
++     "yen": null,
++     "cardsum": true,
++     "src": "https://www.doghousenagisa.com/rouken/",
++     "by": "site",
++     "checked": "2026-11-28"
+     }
+    ],
+    "web": {
+@@ -5792,6 +5812,16 @@
+      "v": "10歳以上のシニア犬や寝たきりや歩行困難などのワンちゃんネコちゃんのほか",
+      "src": "https://www.sdb.ne.jp/rouken-care.html",
+      "checked": "2026-11-17"
++    },
++    {
++     "k": "料金",
++     "v": "公式サイトの「ご利用案内」より。老犬＆老猫介護ホーム（永代預り）：小型動物（例：チワワ・猫など）120万円、中型動物（例：柴犬など）150万円、大型動物（例：ゴールデンレトリバーなど）200万円、超大型動物（例：セントバーナードなど）300万円。サイトには「治療費・食事代・ワクチン代・狂犬病ワクチン代・火葬・埋葬料込み（諸経費込み）」と書かれている。入金は一年以内で分割可。一年以内に不慮の事故で亡くなった場合は日割り計算。税込・税別の表示はサイトに書かれていない。「犬の状況によって料金が異なる場合があります」「料金については電話でお問い合わせください」とも書かれている。別に「動物との面会について（施設へ動物を連れてきてくれる）」として、小型10,000円・中型12,000円・大型15,000円・超大型20,000円（毎回発生、シャンプー・送迎代込み）と書かれている",
++     "sum": "永代預り 小型120万円〜超大型300万円（治療費・火葬込みと記載。税の表示なし、犬の状況で変わる場合あり）",
++     "yen": null,
++     "cardsum": true,
++     "src": "https://www.sdb.ne.jp/rouken-care.html",
++     "by": "site",
++     "checked": "2026-11-28"
+     }
+    ],
+    "web": {
