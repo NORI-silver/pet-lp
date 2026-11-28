@@ -1,0 +1,116 @@
+diff --git a/tests/taxi-static-dto.test.cjs b/tests/taxi-static-dto.test.cjs
+index 4a1bcffbc..9ba563031 100644
+--- a/tests/taxi-static-dto.test.cjs
++++ b/tests/taxi-static-dto.test.cjs
+@@ -21,7 +21,8 @@ for (const cat of ["dog-trainer", "trimming"]) {
+ assert.ok(cards >= 13, "data-to cards found: " + cards);
+ assert.deepStrictEqual(bad, [], "data-to cards without exactly 1 correct static taxi link: " + bad.slice(0, 5).join(", "));
+ // 愛知のしつけ教室で、これまで静的リンクが無かった13件（T050ほか）に出ている
+-for (const id of ["T050", "T054", "T185", "T186", "T187", "T188", "T189", "T190", "T191", "T184", "T051", "T055", "T276"]) assert.ok(ids[id], id + ": 静的の料金リンクがある");
+-const h50 = decodeURIComponent(ids["T050"].match(/href="([^"]*)"/)[1]);
+-assert.ok(h50.includes("愛知県豊川市当古町本郷前6-2"), "T050 の行き先は data-to と同じ: " + h50);
++// （T050・T185・T184は支店が2つ、T189は町名までなので行き先を入れない。tests/trainer-no-dest.test.cjs）
++for (const id of ["T054", "T186", "T187", "T188", "T190", "T191", "T051", "T055", "T276"]) assert.ok(ids[id], id + ": 静的の料金リンクがある");
++const h54 = decodeURIComponent(ids["T054"].match(/href="([^"]*)"/)[1]);
++assert.ok(h54.includes("愛知県名古屋市緑区鳴海町北浦72-1"), "T054 の行き先は data-to と同じ: " + h54);
+ console.log("ok data-to cards " + cards + " each with exactly 1 static taxi link");
+diff --git a/tests/trainer-no-dest.test.cjs b/tests/trainer-no-dest.test.cjs
+new file mode 100644
+index 000000000..bfabb96a5
+--- /dev/null
++++ b/tests/trainer-no-dest.test.cjs
+@@ -0,0 +1,49 @@
++// 行き先が1つに決まらないしつけ教室のカードには、行き先（data-to）を入れず、通常の料金ページへのリンクと理由を出す。
++// 対象は ID で決める（「／」の入った文字を全部はずすのではない）。値は 2026-11-28 に find-data で確認。
++const fs = require("fs"), path = require("path"), assert = require("assert");
++const BRANCH = ["T050", "T004", "T005", "T023", "T185", "T184", "T015", "T118", "T037"];
++const AREA = ["T029", "T031", "T034", "T060", "T070", "T109", "T145", "T189"];
++const NOTE = { branch: "支店により行き先が異なります", area: "住所未確定のため行き先なし" };
++// find.js は 🚗 の付いた .ux-c-l の行のうち最後のものを「来てくれる地域」として読む。理由の行がそこに入ると地域が上書きされ、市の検索に出なくなる。
++// 値は main（fe5a05b60）の find-data の同じ行（理由の行を足す前）。""は地域の行がない教室。
++const AREA_ROW = {"T060": "出張は大阪北部・京都南部・奈良北部が中心", "T189": "春日井市（出張）、名古屋市守山区（屋外教室）、三重県（四日市市から出張）", "T031": "", "T023": "", "T118": "練馬区・中野区・世田谷区・杉並区のあたり", "T029": "", "T034": "", "T145": "しつけ教室は東京都内と埼玉県南部。出張訓練はほかの地域も相談", "T037": "東京都・富士五湖・甲府・富士宮とその近隣", "T050": "豊橋市・豊川市", "T185": "", "T184": "守山区・名東区・東区・千種区・北区・西区・中区・春日井・尾張旭・北名古屋・長久手など", "T070": "福山市内・近郊、尾道・府中市エリア", "T004": "", "T005": "", "T015": "送迎は軽井沢・御代田・佐久市・安中市・高崎市", "T109": ""};
++function areaOf(h) { // find.js の initItem と同じ読み方
++  let a = "";
++  for (const m of h.matchAll(/<p class="ux-c-l[^"]*"><i[^>]*>([^<]*)<\/i><span[^>]*>(.*?)<\/span><\/p>/g)) if (m[1].indexOf("🚗") >= 0) a = m[2].trim();
++  return a;
++}
++const seen = {}, withTo = {};
++const dir = path.join(__dirname, "..", "find-data", "dog-trainer");
++for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".json"))) {
++  const j = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
++  for (const [, hs] of j.groups) for (const h of hs) {
++    const ot = h.slice(0, h.indexOf(">") + 1);
++    const fid = (ot.match(/data-fid="([^"]*)"/) || [])[1];
++    const to = (ot.match(/\bdata-to="([^"]*)"/) || [])[1];
++    const links = (h.match(/<a [^>]*>/g) || []).filter((a) => (/emg-taxi/.test(a) && !/fc-a-info/.test(a)) || /fac-taxi/.test(a));
++    const kind = BRANCH.includes(fid) ? "branch" : AREA.includes(fid) ? "area" : null;
++    if (kind) {
++      (seen[fid] = seen[fid] || []).push(1);
++      assert.ok(!to, fid + ": 行き先を入れない: " + to);
++      assert.ok(ot.includes('data-to-note="' + kind + '"'), fid + ": 理由の印");
++      assert.ok(!/data-to-label/.test(ot), fid + ": data-to-label もない");
++      assert.strictEqual(links.length, 1, fid + ": 料金リンクは1つ");
++      assert.ok(/href="\/#form"/.test(links[0]), fid + ": 通常の料金ページ（行き先なし）: " + links[0]);
++            assert.ok(h.includes("<span style=\"display:block;overflow:visible\">" + NOTE[kind] + "</span>"), fid + ": カードに理由が見える");
++      assert.ok(!/data-route/.test(h), fid + ": 経路のリンクは出さない");
++      assert.strictEqual(areaOf(h), AREA_ROW[fid], fid + ": 来てくれる地域が理由の行で上書きされない");
++      assert.ok(!h.includes("<i aria-hidden=\"true\">🚗</i><span style=\"display:block"), fid + ": 理由の行に🚗は付けない");
++      if (fid === "T050") assert.ok(areaOf(h).includes("豊川市") && areaOf(h).includes("豊橋市"), "T050 は豊川市・豊橋市の検索に出る");
++    } else if (to) {
++      withTo[fid] = to;
++    }
++  }
++}
++for (const id of BRANCH.concat(AREA)) assert.ok(seen[id], id + ": find-data にある");
++// 対象以外（住所が1つの教室）は今までと同じ：行き先あり、「／」なし、番地などの数字あり
++const rest = Object.entries(withTo);
++assert.strictEqual(rest.length, 225, "対象以外で行き先のある教室は225件: " + rest.length);
++for (const [fid, to] of rest) { assert.ok(!/[／;；]/.test(to), fid + ": 住所が2つ以上のものは残っていない: " + to); assert.ok(/[\d０-９]/.test(to), fid + ": 番地などのない行き先は残っていない: " + to); }
++assert.strictEqual(withTo["T054"], "愛知県名古屋市緑区鳴海町北浦72-1");
++assert.ok(withTo["T114"], "T114（京都の事業所の指定）は行き先のまま");
++console.log("ok no-dest cohort " + (BRANCH.length + AREA.length) + ", other data-to " + rest.length);
+diff --git a/tools/cardskin.py b/tools/cardskin.py
+index d5d4fbe03..80177ca4a 100644
+--- a/tools/cardskin.py
++++ b/tools/cardskin.py
+@@ -228,7 +228,9 @@ def fc(blk):
+         rt_more = _route_more('<a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination=' + quote(dest) + f'" target="_blank" rel="noopener" data-route>{route_label}</a>')
+     grid = '<div class="ux-c-a">' + "".join(btn) + "</div>" + rt_more
+     if a0.get("data-cat") in ("trim", "trainer") and not (to and re.search(r"[都道府県市区町村郡]", to)) and not any("emg-taxi" in a_ and "fc-a-info" not in a_ for a_ in re.findall(r"<a [^>]*>", b)):  # 行き先の分かる施設は facility.js が行き先つきのリンクを足す。分からない施設（出張・住所なし）は、行き先を入れない通常の料金ページへ（Nori 2026-11-27 00:05 のカードの決まり：公開の住所がないときは通常の料金ページ）
++        _why = {"branch": "支店により行き先が異なります", "area": "住所未確定のため行き先なし"}.get(a0.get("data-to-note", ""))  # 理由の行は🚗にしない（find.js が🚗の行を「来てくれる地域」として読むため）。行き先を入れていない理由をカードにも出す（tools/facility_cards.py の NO_DEST）
+         b = b.replace('<div class="fc-acts">', '<div class="fc-acts"><a class="emg-taxi fc-a fc-a-car" href="/#form" aria-label="ペットタクシーの料金（行き先なし）">ペットタクシーの料金</a>', 1)
++        if _why: grid += '<p class="ux-c-l cs-l"><i aria-hidden="true">※</i><span style="display:block;overflow:visible">' + _why + '</span></p>'
+     b = b[:acts.start()] + grid + b[acts.start():]
+     return _add_cls(b[:len(ot)]) + b[len(ot):]
+ 
+diff --git a/tools/facility_cards.py b/tools/facility_cards.py
+index 51d348cd5..52dad01b3 100644
+--- a/tools/facility_cards.py
++++ b/tools/facility_cards.py
+@@ -77,10 +77,25 @@ def sitter_tags(s, chains):
+     return out
+ 
+ 
++# 行き先（data-to）を入れないカード（Nori 2026-11-28：行き先が1つに決まらないときは入れない・通常の料金ページへ）。
++# ID を1件ずつ指定する（「／」の入った文字を全部はずす、のではない）。実際の値は 2026-11-28 に find-data で確認。
++# branch：支店・会場が2つ以上あり、どれに行くか決められない（住所が「／」で2つ以上）。
++# area：町名・市区町村までで、番地や建物がない（行き先の場所として正確でない）。
++NO_DEST = {
++    "T050": "branch", "T004": "branch", "T005": "branch", "T023": "branch", "T185": "branch",
++    "T184": "branch", "T015": "branch", "T118": "branch", "T037": "branch",
++    "T029": "area", "T031": "area", "T034": "area", "T060": "area",
++    "T070": "area", "T109": "area", "T145": "area", "T189": "area",
++}
++NO_DEST_NOTE = {"branch": "支店により行き先が異なります", "area": "住所未確定のため行き先なし"}
++
++
+ def attrs(e, cat, item, tags, name, to="", to_label=""):
+     a = f' data-cat="{e(cat)}" data-fid="{e(item.get("id", ""))}" data-name="{e(name)}" data-tags="{e("|".join(tags))}"'
+     if item.get("partner"): a += ' data-partner="1"'
+-    if to: a += f' data-to="{e(to[:80])}" data-to-label="{e(to_label)}"'
++    why = NO_DEST.get(item.get("id", "")) if cat == "trainer" and to else None
++    if why: a += f' data-to-note="{why}"'
++    elif to: a += f' data-to="{e(to[:80])}" data-to-label="{e(to_label)}"'
+     return a
+ 
+ 
