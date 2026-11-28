@@ -228,7 +228,9 @@ def fc(blk):
         rt_more = _route_more('<a class="l" href="https://www.google.com/maps/dir/?api=1&amp;destination=' + quote(dest) + f'" target="_blank" rel="noopener" data-route>{route_label}</a>')
     grid = '<div class="ux-c-a">' + "".join(btn) + "</div>" + rt_more
     if a0.get("data-cat") in ("trim", "trainer") and not (to and re.search(r"[都道府県市区町村郡]", to)) and not any("emg-taxi" in a_ and "fc-a-info" not in a_ for a_ in re.findall(r"<a [^>]*>", b)):  # 行き先の分かる施設は facility.js が行き先つきのリンクを足す。分からない施設（出張・住所なし）は、行き先を入れない通常の料金ページへ（Nori 2026-11-27 00:05 のカードの決まり：公開の住所がないときは通常の料金ページ）
+        _why = {"branch": "支店により行き先が異なります", "area": "住所が町名までのため行き先なし"}.get(a0.get("data-to-note", ""))  # 行き先を入れていない理由をカードにも出す（tools/facility_cards.py の NO_DEST）
         b = b.replace('<div class="fc-acts">', '<div class="fc-acts"><a class="emg-taxi fc-a fc-a-car" href="/#form" aria-label="ペットタクシーの料金（行き先なし）">ペットタクシーの料金</a>', 1)
+        if _why: grid += '<p class="ux-c-l cs-l"><i aria-hidden="true">🚗</i><span style="display:block;overflow:visible">' + _why + '</span></p>'
     b = b[:acts.start()] + grid + b[acts.start():]
     return _add_cls(b[:len(ot)]) + b[len(ot):]
 
