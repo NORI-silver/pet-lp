@@ -5,6 +5,8 @@
 const fs=require('node:fs'),path=require('node:path'),zlib=require('node:zlib'),assert=require('node:assert/strict');
 const DIRS=['hospital','dogrun','jichitai','sougi','pet-hotel','pet-sitter','trimming','dog-trainer','rojin-home','inu-yado','pet-yado','inu-cafe','hinan','joto'];
 const ALLOW=new Set(['/ga.js','/reviews.js','/facility.js','/fit.js','/hosp.js','/find.js','/place.js','/jichitai/jc.js']);  // jichitai/jc.js＝迷子・登録・飼えなくなったときの手順（tools/jichitai.js、tools/gen_maigo.py）  // place.js＝どこでの入力（県をいくつでも・市区町村の候補。tools/place.js）  // find.js＝共通のさがす箱（tools/uikit.py）  // hosp.js＝動物病院を自分の条件でさがす（tools/hosp_find.py）  // fit.js＝うちの子に合うところをさがす（tools/faccard.py）
+const TRAINER_COMPARE=new Set(['/dog-trainer/first-lesson-data.js','/dog-trainer/first-lesson.js']);
+const compareEntry=p=>p==='dog-trainer/index.html' || p==='dog-trainer/chiba/index.html';
 const MAX_GZ=60*1024, MAX_INLINE=24*1024, MAX_JS=24*1024;
 let pages=0, big=[0,''];
 function walk(d){ for(const f of fs.readdirSync(d,{withFileTypes:true})){ const p=path.join(d,f.name); if(f.isDirectory()) walk(p); else if(f.name==='index.html') check(p); } }
@@ -14,12 +16,12 @@ function check(p){
   pages++;
   const gz=zlib.gzipSync(h,{level:9}).length; if(gz>big[0]) big=[gz,p];
   assert.ok(gz<=MAX_GZ, p+' is '+gz+' bytes gzipped (limit '+MAX_GZ+'): link to prefecture pages instead of listing everything');
-  for(const m of h.matchAll(/<script[^>]*\ssrc="([^"]+)"/g)) assert.ok(ALLOW.has(m[1]), p+' loads '+m[1]+' (info pages must not load the top page scripts)');
+  for(const m of h.matchAll(/<script[^>]*\ssrc="([^"]+)"/g)) assert.ok(ALLOW.has(m[1]) || (compareEntry(p) && TRAINER_COMPARE.has(m[1])), p+' loads '+m[1]+' (info pages must not load the top page scripts)');
   for(const m of h.matchAll(/<script(?![^>]*\ssrc)[^>]*>([\s\S]*?)<\/script>/g)) assert.ok(Buffer.byteLength(m[1])<=MAX_INLINE, p+' has an inline script of '+Buffer.byteLength(m[1])+' bytes');
   assert.ok(!/id="petForm"/.test(h), p+' contains the booking form');
   assert.ok(/data-taxi-cta="/.test(h) || p==='sougi/index.html', p+' has no pet taxi button (tools/taxi_cta.py)');
 }
 DIRS.forEach(d=>{ if(fs.existsSync(d)) walk(d); });
-for(const f of ALLOW){ const n=fs.statSync('.'+f).size; assert.ok(n<=MAX_JS, f+' is '+n+' bytes (limit '+MAX_JS+')'); }
+for(const f of [...ALLOW,...TRAINER_COMPARE]){ const n=fs.statSync('.'+f).size; assert.ok(n<=MAX_JS, f+' is '+n+' bytes (limit '+MAX_JS+')'); }
 assert.ok(pages>100, 'only '+pages+' info pages found');
 console.log('PASS: '+pages+' info pages stay light (largest '+big[1]+' '+Math.round(big[0]/1024)+'KB gz)');
