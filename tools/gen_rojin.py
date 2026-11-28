@@ -11,8 +11,8 @@ J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "roj
 
 SLUG = "rojin-home"
 H1 = "全国の老犬ホーム・老猫ホーム"
-TITLE = "老犬ホーム・老猫ホームを探す｜老犬介護・短期・長期預かりと費用｜ペットのくらし窓口"
-DESC = "老犬ホームは、シニア犬を預かり、食事や排せつの介助、見守りなどを行う施設です。短期・長期・生涯預かりの違いや費用、受け入れ条件を地域別に比較できます。老猫ホームも探せます。犬の介護施設や猫の介護先を探す方にも。"
+TITLE = "老犬ホーム・老猫ホームを探す｜短期・長期預かりと費用｜ペットのくらし窓口"
+DESC = "老犬ホームは、シニア犬を預かり、食事や排せつの介助、見守りなどを行う施設です。短期・長期・生涯預かりの違いや費用、受け入れ条件を地域別に比較できます。老猫ホームも探せます。"
 CHIBA_DESC = "千葉県でシニア犬や猫を預けられる老犬ホーム・老猫ホームを比較。短期・長期・生涯預かり、大型犬や寝たきりの子の受け入れ、入所金・月額、見学の条件を確認できます。料金は公開されている施設のみ掲載しています。"
 
 BEFORE = [
@@ -101,15 +101,6 @@ def render(ctx):
       ("入所の日や面会の日の移動はどうすれば？", "施設によっては送迎をしているところもあるので、まず施設にたずねてみてください。寝たきりの子は、体を支えられるクッションやバスタオルを用意すると安心です。"),
     ]
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
-    def _rcnt(*ws):
-        return sum(1 for h in J["homes"] if any(w in json.dumps(h, ensure_ascii=False) for w in ws))
-    n_cat = sum(1 for h in J["homes"] if _cat_ok(h))
-    stats_html = ('<div class="emg-tips"><h4>全国の老犬ホーム・老猫ホームのデータ（公式サイトの記載から集計）</h4><dl>'
-      f'<dt>掲載数</dt><dd>全国{len(J["homes"])}施設。猫を受け入れる老猫ホームは{n_cat}施設です。</dd>'
-      f'<dt>介護の体制</dt><dd>看護師がいると書いている施設は{_rcnt("看護師")}施設、夜間の見守りにふれている施設は{_rcnt("夜間")}施設です。</dd>'
-      f'<dt>預かり方</dt><dd>一時預かり・短期に対応する施設は{_rcnt("一時預かり", "短期")}施設、終生預かりは{_rcnt("終生", "生涯")}施設です。</dd>'
-      f'<dt>部屋と設備</dt><dd>個室がある施設は{_rcnt("個室")}施設、ドッグランがある施設は{_rcnt("ドッグラン")}施設です。</dd>'
-      '</dl><p class="emg-tips-note">件数は公式サイトの記載をもとに数えた目安です。受け入れの実際は施設にご確認ください。</p></div>')
     ld = '<script type="application/ld+json">\n' + json.dumps([
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ペットのくらし窓口", "item": SITE + "/"},
@@ -145,7 +136,6 @@ def render(ctx):
       </details>
       {body}
       <div class="emg-tips" id="rojin-overview"><h2>老犬ホームとは</h2><p>{e(DESC)}</p></div>
-      {stats_html}
       {criteria_html(e)}
       <div class="emg-tips"><h4>老犬ホームをえらぶときに確かめること</h4><dl>{before}</dl>
       <p class="emg-tips-note">くわしくは<a href="/guide/rojin-home/">老犬ホーム・老猫ホームを見学するときに確かめること</a>にまとめています。</p></div>
