@@ -1,0 +1,76 @@
+diff --git a/find.js b/find.js
+index f8dbd0ca0..689e27364 100644
+--- a/find.js
++++ b/find.js
+@@ -104,15 +104,6 @@ navigator.geolocation.getCurrentPosition(function(p){ geoPos = [p.coords.latitud
+ }
+ apply(false);
+ });
+-var pics = (at(box,"data-pics") || "").split("|");
+-if (pics[1]) {
+-var pf = pics[1].split(",");
+-each(qa(".emg-item.fc[data-ffi], .ux-c.dr-card[data-ffi], .yd-card[data-ffi]"), function(c, i){
+-if (c.querySelector(".ux-img")) return;
+-var d = el("div", "ux-img"), im = document.createElement("img");
+-im.src = pics[0] + pf[i % pf.length]; im.alt = ""; im.loading = "lazy"; d.appendChild(im); c.insertBefore(d, c.firstChild);
+-});
+-}
+ var showUnk = false;
+ var fullState = {};
+ function loadFull(p){
+@@ -274,6 +265,8 @@ mb.textContent = "のこり" + (vis.length - N) + unit + "を見る"; mb.hidden
+ var all0 = count([], pf, qs)[0];
+ btns.forEach(function(b){
+ var k = at(b,"data-k"), n = count([k], pf, qs)[0], an = at(b,"data-g") === "a";
++var t = ks.filter(function(x){ return !(an && x.indexOf("a:") === 0); }).concat(k);
++b.textContent = idle ? LBL[k] : LBL[k] + "（" + count(t, pf, qs)[0] + unit + "）";
+ b.hidden = at(b,"aria-pressed") !== "true" && !idle && (an ? !n : (!n || (n >= all0 && all0 > 3)));
+ });
+ each(box.querySelectorAll(".ux-r, .ux-det"), function(r){ var bs = r.querySelectorAll("button[data-k]"); if (bs.length) r.hidden = ![].some.call(bs, function(b){ return !b.hidden; }); });
+@@ -281,7 +274,7 @@ if (det) { var dn = det.querySelectorAll('button[aria-pressed="true"]').length;
+ sum.textContent = ""; alt.textContent = "";
+ if (idle) { sum.append(el("b", "", "都道府県を選ぶか、市区町村の名前を入れると並びます")); }
+ else {
+-sum.append(el("b", "", c[0] + unit));
++sum.append(el("b", "", "条件に合う掲載先 " + c[0] + unit));
+ var where = pf.map(PlacePick.label).concat(qs ? ["「" + qs + "」"] : []).filter(Boolean).join("・");
+ var mine = ks.map(function(k){ return LBL[k] ? "「" + LBL[k] + "」" : ""; }).filter(Boolean).join("");
+ if (where || mine) sum.append(el("small", "", (where ? where + (mine ? "で、" : "") : "") + (mine ? mine + "に合うところ（公式サイトの情報をもとに）" : "")));
+diff --git a/tools/find.js b/tools/find.js
+index 7cfa6cfa7..95c5976be 100644
+--- a/tools/find.js
++++ b/tools/find.js
+@@ -68,15 +68,6 @@ it._cl = it.hasAttribute("data-closed");
+     apply(false);
+   });
+   // カードのイメージ写真（無料の写真素材。本物の施設の写真ではないので「イメージ」と出し、alt は空）。となりが同じにならないよう順番に回す
+-  var pics = (at(box,"data-pics") || "").split("|");
+-  if (pics[1]) {
+-    var pf = pics[1].split(",");
+-    each(qa(".emg-item.fc[data-ffi], .ux-c.dr-card[data-ffi], .yd-card[data-ffi]"), function(c, i){
+-      if (c.querySelector(".ux-img")) return;
+-      var d = el("div", "ux-img"), im = document.createElement("img");
+-      im.src = pics[0] + pf[i % pf.length]; im.alt = ""; im.loading = "lazy"; d.appendChild(im); c.insertBefore(d, c.firstChild);
+-    });
+-  }
+   var showUnk = false;
+   // 県を選んだら、その県の施設を全部その場に出す（県のページへのリンクで逃がさない。Nori 2026-11-24）。
+   // 全国のページは県ごとに数件だけなので、県ページ・市区町村ページから作った /find-data/ を読み、
+@@ -253,6 +244,8 @@ if (it._cl && ks.length) { if (ks.some(function(k){ return k.indexOf("a:") === 0
+     var all0 = count([], pf, qs)[0];
+     btns.forEach(function(b){
+       var k = at(b,"data-k"), n = count([k], pf, qs)[0], an = at(b,"data-g") === "a";
++      var t = ks.filter(function(x){ return !(an && x.indexOf("a:") === 0); }).concat(k);
++      b.textContent = idle ? LBL[k] : LBL[k] + "（" + count(t, pf, qs)[0] + unit + "）";
+       b.hidden = at(b,"aria-pressed") !== "true" && !idle && (an ? !n : (!n || (n >= all0 && all0 > 3)));
+     });
+     each(box.querySelectorAll(".ux-r, .ux-det"), function(r){ var bs = r.querySelectorAll("button[data-k]"); if (bs.length) r.hidden = ![].some.call(bs, function(b){ return !b.hidden; }); });
+@@ -261,7 +254,7 @@ if (it._cl && ks.length) { if (ks.some(function(k){ return k.indexOf("a:") === 0
+     sum.textContent = ""; alt.textContent = "";
+     if (idle) { sum.append(el("b", "", "都道府県を選ぶか、市区町村の名前を入れると並びます")); }
+     else {
+-      sum.append(el("b", "", c[0] + unit));
++      sum.append(el("b", "", "条件に合う掲載先 " + c[0] + unit));
+       // 「どこで」と「うちの子」を分けて、飼い主さんの言い方で（Nori 2026-11-17「自分の子にあてはまるものを探してる」）
+       var where = pf.map(PlacePick.label).concat(qs ? ["「" + qs + "」"] : []).filter(Boolean).join("・");
+       var mine = ks.map(function(k){ return LBL[k] ? "「" + LBL[k] + "」" : ""; }).filter(Boolean).join("");
