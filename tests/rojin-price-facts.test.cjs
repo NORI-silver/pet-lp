@@ -98,5 +98,40 @@ for (const fid of Object.keys(wantYen)) {
     assert.strictEqual(no, want[fid][1], fid + " " + (name || "全国") + " data-no が変わった: " + no);
   }
 }
+// R027・R036・R142・R122：料金の事実（公式サイトの料金表）。価格順の基準は付けない（yen: null）。カードの料金の行は要約（sum）、県のページには全文（v）と出典。
+//  絞り込みの目印（data-k・data-no）は取り込み前と同じ（料金の文が受け入れの絞り込みを変えない）。税の書き方はサイトのとおり（R036・R122 は税込、R142 は税抜、R027 は表示なし）。
+{
+  const pref2 = { R027: "kyoto", R036: "yamaguchi", R142: "shizuoka", R122: "aichi" };
+  const keep = { R027: ["big sen bed night med long menkai pickup life_stay", "a:cat a:small a:bird a:exotic"], R036: ["sen big night long menkai pickup tempstay", "a:cat a:small a:bird a:exotic"], R142: ["a:cat sen big night med long pickup medical dogrun life_stay", "a:small a:bird a:exotic"], R122: ["a:cat sen bed med care menkai pickup trialstay nurse tempstay", "a:small a:bird a:exotic medical"] };   // 取り込み前に対して足された目印は、公式サイトが書いていることだけ：R027 long・pickup・life_stay（終生お預り・京都市内送迎）、R036 big（大型・超大型の料金。bed は付けない：全介助の加算の料金だけでは立てない犬の受け入れとは言えないため、rojin.json の fit_status で bed を「書いていない」に）、R142 night・life_stay（夜鳴き、終身お預かり）。R142 の返金の文は終身と否定を同じ文に置かない（life_stay が「合わない」側に入るため）
+  const tax = { R027: /税込・税別の表示はサイトに書かれていない/, R036: /料金は全て税込み価格/, R142: /上記すべての料金 税抜表示/, R122: /料金表（税込）/ };
+  for (const fid of Object.keys(pref2)) {
+    const home = J.homes.find(h => h.id === fid), fact = home.facts.filter(f => f.k === "料金");
+    assert.strictEqual(fact.length, 1, fid + " 料金の事実が1つではない");
+    const f = fact[0];
+    assert(f.sum && f.v && f.src && f.checked && f.cardsum === true && f.yen === null, fid + " 料金の事実の形（sum・v・src・checked・cardsum・yen:null）");
+    assert(tax[fid].test(f.v), fid + " 税の書き方がサイトの文と合わない");
+    if (fid === "R142") assert(!/税込/.test(f.v + f.sum), "R142 サイトは税抜表示。税込と書かない");
+    if (fid === "R142") {   // サイトの表は金額の欄を共有する：小型10kg以上＝中型25kg未満、中型25kg以上＝大型30kg未満。「空白＝金額なし」とは書かない。月々・入所金・預かり金は別々に書く
+      assert(/小型犬10kg以上[^。]*と中型犬25kg未満[^。]*：9,000円〜／261,000円〜／300,000円／2,430,000円〜／300,000円/.test(f.v), "R142 小型10kg以上と中型25kg未満は同じ金額欄");
+      assert(/中型犬25kg以上と大型犬30kg未満[^。]*：11,000円〜／319,000円〜／400,000円／2,970,000円〜／400,000円/.test(f.v), "R142 中型25kg以上と大型30kg未満は同じ金額欄");
+      assert(!/空白/.test(f.v + f.sum), "R142 金額の欄が空白だから金額なし、とは書かない（表のセルは結合されている）");
+      assert(/月々/.test(f.sum) && /預かり金/.test(f.sum) && /入所金/.test(f.sum), "R142 sum は月々・預かり金・入所金を分けて書く");
+    }
+    if (fid === "R036" || fid === "R122") assert(/税込/.test(f.sum), fid + " sum に税込（サイトの表示）を残す");
+    if (fid === "R027" || fid === "R142") assert(/税/.test(f.sum), fid + " sum に税の扱い（表示なし／税抜）を残す");
+    let n = 0, inPref = 0;
+    for (const [name, h] of pages) for (const c of instances(h, fid)) {
+      n++; if (name === pref2[fid]) inPref++;
+      const y = c.body.match(/<li class="yen"><b>料金<\/b><span>(.*?)<\/span>/);
+      assert(y && plain(y[1]) === f.sum, fid + " " + (name || "全国") + " 料金の行は要約（sum）");
+      assert(!/data-yen=/.test(c.tag), fid + " " + (name || "全国") + " data-yen を付けない");
+      const k = (c.tag.match(/ data-k="([^"]*)"/) || [0, ""])[1], no = (c.tag.match(/ data-no="([^"]*)"/) || [0, ""])[1];
+      assert.strictEqual(k, keep[fid][0], fid + " " + (name || "全国") + " data-k が変わった: " + k);
+      assert.strictEqual(no, keep[fid][1], fid + " " + (name || "全国") + " data-no が変わった: " + no);
+      if (name === pref2[fid]) { const ct = plain(c.body); assert(ct.includes(f.v) && /出典：/.test(ct) && /確認日 2026-/.test(ct), fid + " 県のページに料金の全文と出典・確認日"); }
+    }
+    assert(inPref >= 1, fid + " 県のページにカードがない");
+  }
+}
 assert(total >= Object.keys(wantYen).length * 1 + 2, "カードの数が少なすぎる: " + total);   // 3施設とも県のページに1枚以上（上の inPref）＋全国のページの R059 など。全国のページに出る施設は取り込みで変わるので、数は下限だけ見る
 console.log("ok rojin-price-facts", total);
