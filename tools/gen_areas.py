@@ -598,6 +598,7 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = re.sub(r"<!--PHEAD-->.*?<!--/PHEAD-->", lambda m: _th, t, count=1, flags=re.S)
     t = re.sub(r"<!--PHERO-->.*?<!--/PHERO-->\s*", lambda m: _tv + "\n\n", t, count=1, flags=re.S)
     t = re.sub(r"<!--PTAXI-->.*?<!--/PTAXI-->", "", t, count=1, flags=re.S)
+    t = re.sub(r"\n?<!--PABOUT-->.*?<!--/PABOUT-->", "", t, count=1, flags=re.S)  # 総合サイトの説明はトップだけ
     t = re.sub(r'<!--PTO--><div id="taxiWrap" class="taxi-wrap" hidden>\n', "", t, count=1)
     t = t.replace("\n</div><!--PTC-->", "", 1)
     t = re.sub(r"<title>.*?</title>", lambda m: f"<title>{e(title)}</title>", t, count=1, flags=re.S)
