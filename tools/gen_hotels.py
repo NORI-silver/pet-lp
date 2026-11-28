@@ -153,15 +153,6 @@ def render(ctx):
       ("ホテルまでの送り迎えはどうすれば？", "送迎をしているホテルもあります（「送迎がある」でしぼりこめます）。送迎の範囲や料金はホテルごとに違うので、公式サイトで確かめてください。"),
     ]
     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
-    def _hcnt(*ws):
-        return sum(1 for h in J["hotels"] if any(w in json.dumps(h, ensure_ascii=False) for w in ws))
-    n_fee = sum(1 for h in J["hotels"] if any("料金" in (f.get("k") or "") for f in h.get("facts", [])))
-    stats_html = ('<div class="emg-tips"><h4>全国のペットホテルのデータ（公式サイトの記載から集計）</h4><dl>'
-      f'<dt>掲載数</dt><dd>全国{total}件。大型犬を泊められるホテルは{nl}件、猫専用・猫を別に預かるホテルは{nc}件です。</dd>'
-      f'<dt>夜のお世話</dt><dd>夜間のスタッフや24時間の見守りにふれているホテルは{_hcnt("夜間", "24時間")}件です。</dd>'
-      f'<dt>部屋と送迎</dt><dd>個室があるホテルは{_hcnt("個室")}件、送迎に対応するホテルは{_hcnt("送迎")}件、動物病院に併設のホテルは{_hcnt("動物病院")}件です。</dd>'
-      f'<dt>料金</dt><dd>料金を公式サイトで公開しているホテルは{n_fee}件です。ペットホテルの料金は大きさ・泊数・お世話の内容で変わるので、預ける前に総額をご確認ください。</dd>'
-      '</dl></div>')
     ld = '<script type="application/ld+json">\n' + json.dumps([
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
@@ -185,7 +176,6 @@ def render(ctx):
       <p class="emg-free">この一覧は無料の情報です。ホテルからお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金は公式サイトに書いてある分だけ載せています。</p>
       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
       <div class="f"><span>条件でしぼりこむ（公式サイトに書いてある条件だけで判定しています）</span><div class="trim-cond">{conds}</div><span id="trimCount" aria-live="polite"></span></div>
-      {stats_html}
       {body}
       {checklist(e)}
       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
