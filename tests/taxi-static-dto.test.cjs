@@ -21,7 +21,8 @@ for (const cat of ["dog-trainer", "trimming"]) {
 assert.ok(cards >= 13, "data-to cards found: " + cards);
 assert.deepStrictEqual(bad, [], "data-to cards without exactly 1 correct static taxi link: " + bad.slice(0, 5).join(", "));
 // 愛知のしつけ教室で、これまで静的リンクが無かった13件（T050ほか）に出ている
-for (const id of ["T050", "T054", "T185", "T186", "T187", "T188", "T189", "T190", "T191", "T184", "T051", "T055", "T276"]) assert.ok(ids[id], id + ": 静的の料金リンクがある");
-const h50 = decodeURIComponent(ids["T050"].match(/href="([^"]*)"/)[1]);
-assert.ok(h50.includes("愛知県豊川市当古町本郷前6-2"), "T050 の行き先は data-to と同じ: " + h50);
+// （T050・T185・T184は支店が2つ、T189は町名までなので行き先を入れない。tests/trainer-no-dest.test.cjs）
+for (const id of ["T054", "T186", "T187", "T188", "T190", "T191", "T051", "T055", "T276"]) assert.ok(ids[id], id + ": 静的の料金リンクがある");
+const h54 = decodeURIComponent(ids["T054"].match(/href="([^"]*)"/)[1]);
+assert.ok(h54.includes("愛知県名古屋市緑区鳴海町北浦72-1"), "T054 の行き先は data-to と同じ: " + h54);
 console.log("ok data-to cards " + cards + " each with exactly 1 static taxi link");
