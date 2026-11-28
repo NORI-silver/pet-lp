@@ -174,6 +174,7 @@ def _yen_of(r):
     facts = [f for f in (r.get("facts") or []) if isinstance(f, dict)]
     base = [f["yen"] for f in facts if f.get("k") == "料金" and isinstance(f.get("yen"), int) and 300 <= f["yen"] <= 1000000]
     if base: return min(base)
+    if any(f.get("k") == "料金" and "yen" in f and f["yen"] is None for f in facts): return None  # 並べ替えの基準にできる金額がない（「yen: null」と明記した施設）。文中の上限・加算・預かり金・面会費の最小値を拾わない
     vals = []
     def walk(v):
         if isinstance(v, str): vals.extend(int(x.replace(",", "")) for x in re.findall(r"(\d[\d,]*)\s*円", v))
@@ -238,7 +239,7 @@ def _fit_table():
         a = _kinds_in(t)
         if "猫は受けていません" in t: a = [k for k in a if k != "cat"]
         sizes, kg = None, None
-        if "小型犬5kg未満" in t: sizes = ["s"]
+        if "小型犬5kg未満" in t: sizes = ["s", "m"] if "中型犬15kg未満" in t else ["s"]  # 中型犬（15kg未満）も受けると公式サイトにあれば、中型の子で絞っても出す
         elif re.search(r"大型|小型・中型・大型", t): sizes = ["s", "m", "l"]
         m = re.search(r"(\d+)kgまで", t)
         if m: kg = int(m.group(1))
