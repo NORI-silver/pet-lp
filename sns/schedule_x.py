@@ -34,7 +34,10 @@ def pick(posts, done, n=1):
     sns/feed.py の4つの形（あるある→クイズ→実用ワザ→調べた数字）を日がわりで出す。写真のない投稿はとばす。
     4つの形の投稿がなくなったら、前の並び（豆知識2本にほかの1本）に戻る。"""
     done = [str(d) for d in done]
-    left = [p for p in posts if str(p["no"]) not in done]
+    # No.281-308 are the current canonical queue; never recycle historical posts.
+    current = [p for p in posts if isinstance(p.get("no"), int) and 281 <= p["no"] <= 308]
+    # Only explicitly verified, newly generated images are eligible; legacy photo paths are not approval.
+    left = [p for p in current if str(p["no"]) not in done and p.get("photo") and p.get("photo_verified_new") is True and not p.get("hold_reason")]
     kind = {str(p["no"]): p.get("kind") for p in posts}
     out = []
     while left and len(out) < n:

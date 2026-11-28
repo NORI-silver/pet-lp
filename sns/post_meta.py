@@ -6,7 +6,7 @@
 - 写真はサイトの写真（https://pet.shiokonbu.com/<photo>）。文字やロゴ入りの画像は使わない（Nori 2026-11-02）。
 - リンクは貼らない（Nori 2026-11-02）。文の決まりは schedule_x.py の BAN で確かめる。
 - キーは GitHub の Secret（META_IG_TOKEN・META_THREADS_TOKEN）。ないときは何もしないで終わる。
-- Instagram と Threads は予約ができないので、毎日20時に GitHub Actions がその場で出す（.github/workflows/sns-meta.yml）。
+- Instagram と Threads は予約ができないので、Threads毎日8時・Instagram月水金19時に GitHub Actions がその場で出す（.github/workflows/sns-meta.yml）。
 
 使い方: python3 sns/post_meta.py [--dry] [--only ig|threads] [--check]
 """
@@ -17,6 +17,13 @@ sys.path.insert(0, HERE)
 from schedule_x import BAN, pick  # noqa: E402
 
 SITE = "https://pet.shiokonbu.com/"
+GITHUB_MEDIA = "https://raw.githubusercontent.com/NORI-silver/pet-lp/main/"
+
+
+def photo_url(p):
+    """SNS専用写真はGitHub rawから配信。サイト掲載写真は従来のURLを使う。"""
+    path = p["photo"].lstrip("/")
+    return (GITHUB_MEDIA if path.startswith("sns/img/") else SITE) + path
 JST = dt.timezone(dt.timedelta(hours=9))
 IG = "https://graph.instagram.com/v21.0"
 TH = "https://graph.threads.net/v1.0"
@@ -40,7 +47,7 @@ def call(method, url, params, fatal=True):
 
 def caption_ig(p, common):
     body = "\n".join(l for l in p["x"].split("\n") if not l.startswith("#"))
-    tags = list(dict.fromkeys(common + p.get("ig_extra", []) + [w for w in p["x"].split() if w.startswith("#")]))
+    tags = [tag for tag in dict.fromkeys(common + p.get("ig_extra", []) + [w for w in p["x"].split() if w.startswith("#")]) if tag != "#ペットタクシー"]
     parts = [body]
     if p.get("ig_add"):
         parts.append(p["ig_add"])
@@ -60,7 +67,7 @@ def post_ig(token, p, common):
         sys.exit(f"Instagram のアカウントが違います: {me.get('username')}")
     cap = caption_ig(p, common)
     check(cap)
-    c = call("POST", f"{IG}/me/media", {"image_url": SITE + p["photo"], "caption": cap,
+    c = call("POST", f"{IG}/me/media", {"image_url": photo_url(p), "caption": cap,
                                          "alt_text": p.get("alt") or p["tag"], "access_token": token})
     for _ in range(30):
         st = call("GET", f"{IG}/{c['id']}", {"fields": "status_code", "access_token": token}).get("status_code")
@@ -75,7 +82,10 @@ def post_ig(token, p, common):
 def text_threads(p):
     """Threads の文。ハッシュタグは最初の1つだけ（Threads はトピックが1つ）。クイズは問いだけ（答えは次の日に返信で）。"""
     lines = p.get("th", p["x"]).split("\n")
-    if p.get("answer") and not any(l.startswith("答えは") for l in lines):
+    if p.get("answer"):
+        # 元のX用文面には正解が書かれている場合がある。Threadsでは翌日の返信まで隠す。
+        # 「答え：」「正解：」から始まる行は削除し、翌日返信の案内を1回だけ付ける。
+        lines = [l for l in lines if not l.strip().startswith(("答え：", "答え:", "正解：", "正解:", "答えは"))]
         lines = [l for l in lines if not l.startswith("#")] + ["答えは、あしたこの投稿への返信で🐾"] + [l for l in lines if l.startswith("#")]
     tags = [w for l in lines if l.startswith("#") for w in l.split() if w.startswith("#")]
     body = "\n".join(l for l in lines if not l.startswith("#"))
@@ -91,7 +101,7 @@ def post_threads(token, p):
     # 写真か動画は必ず入れる（Nori 2026-11-15「写真か動画は絶対いれて」）
     if not p.get("photo"):
         sys.exit(f"投稿{p['no']}に写真がありません")
-    args = {"media_type": "IMAGE", "image_url": SITE + p["photo"], "text": text, "alt_text": p.get("alt") or p["tag"]}
+    args = {"media_type": "IMAGE", "image_url": photo_url(p), "text": text, "alt_text": p.get("alt") or p["tag"]}
     c = call("POST", f"{TH}/me/threads", {**args, "access_token": token})
     for _ in range(30):
         st = call("GET", f"{TH}/{c['id']}", {"fields": "status", "access_token": token}).get("status")
@@ -105,16 +115,29 @@ def post_threads(token, p):
 
 def answer_quiz(token, state):
     """きのうのクイズの答えを、その投稿への返信で出す。うまくいかなくても今日の投稿は止めない。"""
-    q = state.pop("threads_quiz")
+    q = state["threads_quiz"]
     try:
         check(q["answer"])
         c = call("POST", f"{TH}/me/threads", {"media_type": "TEXT", "text": q["answer"], "reply_to_id": q["id"],
                                               "access_token": token}, fatal=False)
-        time.sleep(5)
+        for _ in range(30):
+            st = call("GET", f"{TH}/{c['id']}", {"fields": "status", "access_token": token}, fatal=False).get("status")
+            if st == "FINISHED":
+                break
+            if st in ("ERROR", "EXPIRED"):
+                raise RuntimeError(f"Threads reply container: {st}")
+            time.sleep(2)
+        else:
+            raise RuntimeError("Threads reply container did not finish")
         r = call("POST", f"{TH}/me/threads_publish", {"creation_id": c["id"], "access_token": token}, fatal=False)
-        print("threads クイズの答えを返信", r.get("id"))
+        if not r.get("id"):
+            raise RuntimeError("Threads reply publish returned no id")
+        state.pop("threads_quiz", None)
+        with open(os.path.join(HERE, "state.json"), "w", encoding="utf-8") as f:
+            json.dump(state, f, ensure_ascii=False, indent=1)
+        print("threads クイズの答えを返信", r["id"])
     except Exception as e:  # noqa: BLE001
-        print("threads クイズの答えを返信できませんでした", e)
+        print("threads クイズの答えを返信できませんでした。次回再試行します:", e)
 
 
 def main():
@@ -137,7 +160,7 @@ def main():
             print(kind, "出せる投稿が残っていません（写真のある投稿がない）")
             continue
         if dry:
-            print(f"== {kind} {nxt['no']} {nxt['tag']} {SITE + nxt['photo']}")
+            print(f"== {kind} {nxt['no']} {nxt['tag']} {photo_url(nxt)}")
             print(caption_ig(nxt, data["ig_tags_common"]) if kind == "ig" else text_threads(nxt))
             continue
         if not tokens[kind]:
@@ -150,7 +173,11 @@ def main():
             print(kind, "キーは使えます" if ok else "アカウントが違います", me.get("username"))
             continue
         if kind == "threads" and state.get("threads_quiz"):
+            # 未返信のクイズを次のクイズで上書きしない。返信できなければ新規クイズを保留する。
             answer_quiz(tokens[kind], state)
+            if state.get("threads_quiz") and nxt.get("answer"):
+                print("前のクイズの答えが未返信のため、新しいクイズは保留:", nxt["no"])
+                continue
         pid = post_ig(tokens[kind], nxt, data["ig_tags_common"]) if kind == "ig" else post_threads(tokens[kind], nxt)
         if kind == "threads" and nxt.get("answer"):
             state["threads_quiz"] = {"id": pid, "answer": nxt["answer"]}

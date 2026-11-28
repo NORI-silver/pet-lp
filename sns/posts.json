@@ -2677,7 +2677,7 @@
       "no": 282,
       "key": "quiz:dog-spin",
       "kind": "quiz",
-      "x": "Q. 犬がうんちの前にクルクル回るのはなぜ？\nA. 地面をならしている\nB. 南北の向きをそろえている\nC. まわりを確かめている\nどれだと思いますか？🐕\n答え：どれも説がありますが、Bには研究があります。\n#犬のいる暮らし",
+      "x": "Q. 犬がうんちの前にクルクル回るのはなぜ？\nA. 地面をならしている\nB. 南北の向きをそろえている\nC. まわりを確かめている\nどれだと思いますか？🐕\n#犬のいる暮らし",
       "tag": "quiz・dog-spin",
       "head": "Q. 犬がうんちの前にクルクル回るのはなぜ？",
       "photo_q": "dog sniffing grass",
@@ -2704,7 +2704,8 @@
       "head": "全国のドッグラン194か所の公式ページを、ひとつずつ読みました。",
       "photo_q": "dogs playing in dog park",
       "alt": "dogs playing in dog park",
-      "photo": "sns/img/dogrun-free.jpg"
+      "photo": "sns/img/dogrun-free.jpg",
+      "hold_reason": "過去投稿との内容重複: 過去No.240と同じ無料率・同じ集計。新しい一次情報と切り口を確認して改稿するまで保留"
     },
     {
       "no": 285,
@@ -2720,7 +2721,7 @@
       "no": 286,
       "key": "quiz:cat-ancestor",
       "kind": "quiz",
-      "x": "Q. 猫の祖先といわれる動物は？\nA. ライオン\nB. リビアヤマネコ\nC. トラ\nわかりますか？🐈\n答え：B. リビアヤマネコ\n#猫のいる暮らし",
+      "x": "Q. 猫の祖先といわれる動物は？\nA. ライオン\nB. リビアヤマネコ\nC. トラ\nわかりますか？🐈\n#猫のいる暮らし",
       "tag": "quiz・cat-ancestor",
       "head": "Q. 猫の祖先といわれる動物は？",
       "photo_q": "tabby cat portrait",
@@ -2747,7 +2748,8 @@
       "tag": "data・dogrun-touroku",
       "head": "ドッグランは「行けばすぐ入れる」とは限りません。",
       "photo_q": "dog behind fence dog park",
-      "alt": "dog behind fence dog park"
+      "alt": "dog behind fence dog park",
+      "hold_reason": "過去投稿との内容重複: 過去No.242と同じ登録率・同じ集計。新しい一次情報と切り口を確認して改稿するまで保留"
     },
     {
       "no": 289,
@@ -2764,7 +2766,7 @@
       "no": 290,
       "key": "quiz:dog-sweat",
       "kind": "quiz",
-      "x": "Q. 犬が汗をかくのは、体のどこ？\nA. 全身\nB. 肉球\nC. 舌\n答え：B. 肉球\n#犬のいる暮らし",
+      "x": "Q. 犬が汗をかくのは、体のどこ？\nA. 全身\nB. 肉球\nC. 舌\n答えはあした🐾\n#犬のいる暮らし",
       "tag": "quiz・dog-sweat",
       "head": "Q. 犬が汗をかくのは、体のどこ？",
       "photo_q": "dog paw close up",
@@ -2806,7 +2808,7 @@
       "no": 294,
       "key": "quiz:cat-sweet",
       "kind": "quiz",
-      "x": "Q. 猫は、甘い味を感じる？\nA. 人と同じように感じる\nB. ほとんど感じない\nC. 人より強く感じる\nどっちでしょう🐈\n答え：B. ほとんど感じない\n#猫のいる暮らし",
+      "x": "Q. 猫は、甘い味を感じる？\nA. 人と同じように感じる\nB. ほとんど感じない\nC. 人より強く感じる\nどっちでしょう🐈\n#猫のいる暮らし",
       "tag": "quiz・cat-sweet",
       "head": "Q. 猫は、甘い味を感じる？",
       "photo_q": "cat sniffing food",
@@ -2832,7 +2834,8 @@
       "tag": "data・dogrun-shorui",
       "head": "ドッグランで求められるもの、全国で数えました（必要なものを書いている103か所）。",
       "photo_q": "dog vaccination veterinarian",
-      "alt": "dog vaccination veterinarian"
+      "alt": "dog vaccination veterinarian",
+      "hold_reason": "過去投稿との内容重複: 過去No.244と同じ持ち物集計。新しい一次情報と切り口を確認して改稿するまで保留"
     },
     {
       "no": 297,
@@ -2848,7 +2851,7 @@
       "no": 298,
       "key": "quiz:dog-colors",
       "kind": "quiz",
-      "x": "Q. 犬が見分けにくい色は？\nA. 青\nB. 黄色\nC. 赤と緑\nわかりますか？🐕\n答え：C. 赤と緑\n#犬のいる暮らし",
+      "x": "Q. 犬が見分けにくい色は？\nA. 青\nB. 黄色\nC. 赤と緑\nわかりますか？🐕\n#犬のいる暮らし",
       "tag": "quiz・dog-colors",
       "head": "Q. 犬が見分けにくい色は？",
       "photo_q": "dog with red ball on grass",
@@ -2893,7 +2896,7 @@
       "no": 302,
       "key": "quiz:rabbit-teeth",
       "kind": "quiz",
-      "x": "Q. うさぎの歯は、大人になってものびる？\nA. のびつづける\nB. 子どものうちだけ\nC. 冬だけのびる\nどれでしょう🐇\n答え：A. のびつづける\n#うさぎのいる暮らし",
+      "x": "Q. うさぎの歯は、大人になってものびる？\nA. のびつづける\nB. 子どものうちだけ\nC. 冬だけのびる\nどれでしょう🐇\n#うさぎのいる暮らし",
       "tag": "quiz・rabbit-teeth",
       "head": "Q. うさぎの歯は、大人になってものびる？",
       "photo_q": "rabbit eating hay",
@@ -2919,13 +2922,14 @@
       "tag": "data・dogrun-kogata",
       "head": "小型犬のエリアがあるドッグランは、どれだけある？",
       "photo_q": "small dog running",
-      "alt": "small dog running"
+      "alt": "small dog running",
+      "hold_reason": "過去投稿との内容重複: 過去No.246と同じ小型犬エリア集計。新しい一次情報と切り口を確認して改稿するまで保留"
     },
     {
       "no": 305,
       "key": "aru:photo",
       "kind": "aru",
-      "x": "ペットの写真あるある📷\n・カメラを向けると、目をそらす\n・いちばんいい顔のとき、スマホが手元にない\n・スマホの写真の9割が、うちの子\nうちの子の自慢の1枚、ありますか？\n#ペットのいる暮らし",
+      "x": "ペットの写真あるある📷\n・カメラを向けると、目をそらす\n・いちばんいい顔のとき、スマホが手元にない\n・似たような写真でも、どれも消せない\nうちの子の自慢の1枚、ありますか？\n#ペットのいる暮らし",
       "tag": "aru・photo",
       "head": "ペットの写真あるある📷",
       "photo_q": "dog looking away",
@@ -2936,7 +2940,7 @@
       "no": 306,
       "key": "quiz:hamster",
       "kind": "quiz",
-      "x": "Q. ハムスターのほお袋は、どこまでのびる？\nA. あごまで\nB. 肩のあたりまで\nC. しっぽまで\nどれでしょう🐹\n答え：B. 肩のあたりまで\n#ハムスターのいる暮らし",
+      "x": "Q. ハムスターのほお袋は、どこまでのびる？\nA. あごまで\nB. 肩のあたりまで\nC. しっぽまで\nどれでしょう🐹\n#ハムスターのいる暮らし",
       "tag": "quiz・hamster",
       "head": "Q. ハムスターのほお袋は、どこまでのびる？",
       "photo_q": "hamster cheeks",
@@ -2952,7 +2956,8 @@
       "tag": "howto・winter-room",
       "head": "【保存版】冬の部屋で気をつけたいこと🔥",
       "photo_q": "cat near fireplace",
-      "alt": "cat near fireplace"
+      "alt": "cat near fireplace",
+      "hold_reason": "過去投稿との内容重複: 過去No.280と同じ冬の暖房注意点。新しい一次情報と切り口を確認して改稿するまで保留"
     },
     {
       "no": 308,
@@ -2962,7 +2967,13 @@
       "tag": "data・dogrun-ryokin",
       "head": "お金がかかるドッグランの料金のかたち（料金を書いている146か所）",
       "photo_q": "two dogs running together",
-      "alt": "two dogs running together"
+      "alt": "two dogs running together",
+      "hold_reason": "過去投稿との内容重複: 過去No.248と同じ料金内訳集計。新しい一次情報と切り口を確認して改稿するまで保留"
     }
-  ]
+  ],
+  "x_days": [
+    1,
+    4
+  ],
+  "x_hour": 9
 }
