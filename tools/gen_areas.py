@@ -601,6 +601,8 @@ def clone_top(title, desc, url, ld_html, kicker, lede, pref, area_html, crumb):
     t = re.sub(r"\n?<!--PABOUT-->.*?<!--/PABOUT-->", "", t, count=1, flags=re.S)  # 総合サイトの説明はトップだけ
     _fn = open(os.path.join(ROOT, "tools", "taxi_footernav.html"), encoding="utf-8").read()
     t = re.sub(r"\n    <!--PFNAV-->.*?<!--/PFNAV-->\n    ", lambda m: _fn, t, count=1, flags=re.S)  # 地域のタクシーページの下は元のまま
+    # トップの下の名前は「ペットのくらし窓口」だけにした。地域のタクシーページは従来どおり別名を添える（tools/portal.py）
+    t = t.replace("<p>ペットのくらし窓口</p>\n    <!--TRUST-->", "<p>ペットのくらし窓口（ペットタクシーは「ペットタクシー予約窓口」）</p>\n    <!--TRUST-->", 1)
     t = t.replace("<!--PPB--><!--/PPB-->", '<aside class="partner-band"><div class="wrap"><p><b>ペットタクシー会社の方へ</b>いっしょにペットと飼い主さんをお迎えしてくださる会社を探しています。</p><a href="/partner/">提携のご案内</a></div></aside>', 1)  # 事業者向けの帯は地域のタクシーページだけ（トップは全分野なので外す）
     t = re.sub(r'<!--PTO--><div id="taxiWrap" class="taxi-wrap" hidden>\n', "", t, count=1)
     t = t.replace("\n</div><!--PTC-->", "", 1)
