@@ -2937,6 +2937,16 @@ print("moved", _nm, "pages")
 # 生成元のない古いページのさがす欄の見出しをそろえる（tools/orphan_labels.py。べき等）
 import orphan_labels
 print("orphan_labels", orphan_labels.normalize(ROOT), "pages")
+# [E] 比較欄だけを追加。既存の一覧・絞り込み・検索用情報はそのまま。
+import trainer_compare
+trainer_compare.write_data(ROOT)
+for _tc_path in ("dog-trainer/index.html", "dog-trainer/chiba/index.html"):
+    _tc_file = os.path.join(ROOT, _tc_path)
+    with open(_tc_file, encoding="utf-8") as _tc_in:
+        _tc_html = _tc_in.read()
+    if 'id="first-lesson"' not in _tc_html:
+        with open(_tc_file, "w", encoding="utf-8") as _tc_out:
+            _tc_out.write(trainer_compare.add(_tc_html))
 # [G] 品質の決まりの点検（tools/rules_check.py、Nori 2026-11-16「指示しなくてもできるようにしたい」）。直った前からの違反を
 # tools/rules_baseline.json から消す（いちばん最後。新しい違反で止めるのは seo-check.yml の rules_check.py）
 import rules_check
