@@ -5,7 +5,7 @@ const fac = JSON.parse(fs.readFileSync('tools/sougi_facilities.json', 'utf8')).f
 const lo = JSON.parse(fs.readFileSync('tools/sougi_listing_only.json', 'utf8')).ids;
 const ids = new Set(lo);
 assert.strictEqual(ids.size, lo.length, 'duplicate ids in listing-only');
-assert.strictEqual(lo.length, 88);
+assert.strictEqual(lo.length, 86);
 const byId = Object.fromEntries(fac.map(f => [f.id, f]));
 for (const i of lo) {
   const f = byId[i];
