@@ -10,7 +10,7 @@ assert.equal(m({age:'6'}).length,0);
 assert.ok(m({}).every(e=>e.unknown.includes('対象月齢')));
 assert.equal(m({city:'other'}).length,0);
 assert.deepEqual(m({city:'市原市'}).map(e=>e.m.price),['5,500円（税込）']);
-assert.equal(m({city:'市原市',mode:'visit'}).length,0);
+assert.deepEqual(m({city:'市原市',mode:'visit'}).map(e=>e.m.id),['TC040-visit-trial']);
 assert.ok(m({city:'佐倉市',mode:'visit'}).some(e=>e.m.id==='TC033-trial'));
 assert.ok(m({city:'佐倉市',mode:'visit',weight:'50',issue:'bite',breed:'セントバーナード'}).every(e=>e.unknown.includes('噛みつきの状況と受け入れ可否')));
 assert.ok(m({city:'東金市',mode:'day'}).every(e=>e.m.contact.startsWith('https://') && !e.m.contact.includes('select-type')));
@@ -57,3 +57,15 @@ assert.ok(sakura.some(e=>e.m.id==='TC071-trial' && e.m.kind==='trial' && e.m.pri
 assert.ok(sakura.some(e=>e.m.id==='TC090-counsel' && e.m.kind==='counsel' && e.unknown.includes('大型犬の受け入れ')));
 assert.deepEqual(m({city:'船橋市',mode:'school'}).filter(e=>e.m.id.startsWith('T132-')).map(e=>e.m.price),['0円','3,300円']);
 assert.ok(!m({city:'市原市',mode:'visit'}).some(e=>e.m.id==='TC071-trial'));
+
+for (const city of ['木更津市','袖ケ浦市','君津市']) {
+  const matched = m({city,mode:'visit'});
+  assert.ok(matched.some(e=>e.m.id==='TC040-visit-trial' && e.m.priceType==='base'));
+  assert.ok(!m({city,mode:'school'}).some(e=>e.m.id==='TC040-visit-trial'));
+  for (const file of ['dog-trainer/index.html','dog-trainer/chiba/index.html'])
+    assert.ok(fs.readFileSync(file,'utf8').includes('<option>'+city+'</option>'));
+}
+const move = age=>m({city:'船橋市',mode:'school',age}).filter(e=>e.m.name==='MoveOn').map(e=>e.m.price);
+assert.deepEqual(move('5'),['18,800円（税込）']);
+assert.deepEqual(move('6'),['29,800円（税込）']);
+assert.ok(m({city:'千葉市',mode:'visit'}).some(e=>e.m.id==='T138-intro' && e.m.kind==='counsel' && e.m.checkAvailability));
