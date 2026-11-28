@@ -77,10 +77,25 @@ def sitter_tags(s, chains):
     return out
 
 
+# 行き先（data-to）を入れないカード（Nori 2026-11-28：行き先が1つに決まらないときは入れない・通常の料金ページへ）。
+# ID を1件ずつ指定する（「／」の入った文字を全部はずす、のではない）。実際の値は 2026-11-28 に find-data で確認。
+# branch：支店・会場が2つ以上あり、どれに行くか決められない（住所が「／」で2つ以上）。
+# area：町名・市区町村までで、番地や建物がない（行き先の場所として正確でない）。
+NO_DEST = {
+    "T050": "branch", "T004": "branch", "T005": "branch", "T023": "branch", "T185": "branch",
+    "T184": "branch", "T015": "branch", "T118": "branch", "T037": "branch",
+    "T029": "area", "T031": "area", "T034": "area", "T060": "area",
+    "T070": "area", "T109": "area", "T145": "area", "T189": "area",
+}
+NO_DEST_NOTE = {"branch": "支店により行き先が異なります", "area": "住所未確定のため行き先なし"}
+
+
 def attrs(e, cat, item, tags, name, to="", to_label=""):
     a = f' data-cat="{e(cat)}" data-fid="{e(item.get("id", ""))}" data-name="{e(name)}" data-tags="{e("|".join(tags))}"'
     if item.get("partner"): a += ' data-partner="1"'
-    if to: a += f' data-to="{e(to[:80])}" data-to-label="{e(to_label)}"'
+    why = NO_DEST.get(item.get("id", "")) if cat == "trainer" and to else None
+    if why: a += f' data-to-note="{why}"'
+    elif to: a += f' data-to="{e(to[:80])}" data-to-label="{e(to_label)}"'
     return a
 
 
