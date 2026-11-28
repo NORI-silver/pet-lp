@@ -26,7 +26,7 @@ try { history.replaceState(null, "", location.pathname + location.search + (sel.
 }
 function prefGuess(sel, apply){
 if (sel.value) return;
-var NAMES = ["北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"], LL = [[43.06,141.35],[40.82,140.74],[39.70,141.15],[38.27,140.87],[39.72,140.10],[38.24,140.36],[37.75,140.47],[36.34,140.45],[36.57,139.88],[36.39,139.06],[35.86,139.65],[35.61,140.12],[35.69,139.69],[35.45,139.64],[37.90,139.02],[36.70,137.21],[36.59,136.63],[36.07,136.22],[35.66,138.57],[36.65,138.18],[35.39,136.72],[34.98,138.38],[35.18,136.91],[34.73,136.51],[35.00,135.87],[35.02,135.76],[34.69,135.52],[34.69,135.18],[34.69,135.83],[34.23,135.17],[35.50,134.24],[35.47,133.05],[34.66,133.93],[34.40,132.46],[34.19,131.47],[34.07,134.56],[34.34,134.04],[33.84,132.77],[33.56,133.53],[33.61,130.42],[33.25,130.30],[32.74,129.87],[32.79,130.74],[33.24,131.61],[31.91,131.42],[31.56,130.56],[26.21,127.68]];
+var NAMES = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"], LL = [[43.06,141.35],[40.82,140.74],[39.70,141.15],[38.27,140.87],[39.72,140.10],[38.24,140.36],[37.75,140.47],[36.34,140.45],[36.57,139.88],[36.39,139.06],[35.86,139.65],[35.61,140.12],[35.69,139.69],[35.45,139.64],[37.90,139.02],[36.70,137.21],[36.59,136.63],[36.07,136.22],[35.66,138.57],[36.65,138.18],[35.39,136.72],[34.98,138.38],[35.18,136.91],[34.73,136.51],[35.00,135.87],[35.02,135.76],[34.69,135.52],[34.69,135.18],[34.69,135.83],[34.23,135.17],[35.50,134.24],[35.47,133.05],[34.66,133.93],[34.40,132.46],[34.19,131.47],[34.07,134.56],[34.34,134.04],[33.84,132.77],[33.56,133.53],[33.61,130.42],[33.25,130.30],[32.74,129.87],[32.79,130.74],[33.24,131.61],[31.91,131.42],[31.56,130.56],[26.21,127.68]];
 function at(lat, lng){ var best = -1, bd = Infinity; LL.forEach(function(p, i){ var dy = lat - p[0], dx = (lng - p[1]) * Math.cos((lat + p[0]) * Math.PI / 360), d = dx * dx + dy * dy; if (d < bd) { bd = d; best = i; } }); return best >= 0 && bd < 4 ? NAMES[best] : ""; }
 function use(v, how){
 if (!v || sel.value || ![].some.call(sel.options, function(o){ return o.value === v; })) return;
@@ -53,6 +53,7 @@ if (!box) return;
 var cat = at(box,"data-ff"), unit = at(box,"data-unit") || "件";
 var sel = id("ffPref"), pick = null, places = [];
 var sum = id("ffSum"), alt = id("ffAlt"), clr = id("ffClear");
+sum.parentNode.style.cssText = "position:sticky;bottom:0;background:#fff";
 var res = id("ffRes"), det = box.querySelector(".ux-det");
 var needPref = box.hasAttribute("data-needpref");
 var SLUG = {"北海道":"hokkaido","青森県":"aomori","岩手県":"iwate","宮城県":"miyagi","秋田県":"akita","山形県":"yamagata","福島県":"fukushima","茨城県":"ibaraki","栃木県":"tochigi","群馬県":"gunma","新潟県":"niigata","富山県":"toyama","石川県":"ishikawa","福井県":"fukui","山梨県":"yamanashi","長野県":"nagano","岐阜県":"gifu","静岡県":"shizuoka","愛知県":"aichi","三重県":"mie","滋賀県":"shiga","京都府":"kyoto","大阪府":"osaka","兵庫県":"hyogo","奈良県":"nara","和歌山県":"wakayama","鳥取県":"tottori","島根県":"shimane","岡山県":"okayama","広島県":"hiroshima","山口県":"yamaguchi","徳島県":"tokushima","香川県":"kagawa","愛媛県":"ehime","高知県":"kochi","福岡県":"fukuoka","佐賀県":"saga","長崎県":"nagasaki","熊本県":"kumamoto","大分県":"oita","宮崎県":"miyazaki","鹿児島県":"kagoshima","沖縄県":"okinawa","東京都":"tokyo","神奈川県":"kanagawa","埼玉県":"saitama","千葉県":"chiba"};
@@ -281,10 +282,10 @@ if (det) { var dn = det.querySelectorAll('button[aria-pressed="true"]').length; 
 sum.textContent = ""; alt.textContent = "";
 if (idle) { sum.append(el("b", "", "都道府県を選ぶか、市区町村の名前を入れると並びます")); }
 else {
-sum.append(el("b", "", c[0] + unit));
+sum.append(el("b", "", c[0] + unit + (c[0] ? "掲載" : "")));
 var where = pf.map(PlacePick.label).concat(qs ? ["「" + qs + "」"] : []).filter(Boolean).join("・");
 var mine = ks.map(function(k){ return LBL[k] ? "「" + LBL[k] + "」" : ""; }).filter(Boolean).join("");
-if (where || mine) sum.append(el("small", "", (where ? where + (mine ? "で、" : "") : "") + (mine ? mine + "に合うところ（公式サイトの情報をもとに）" : "")));
+if (where || mine) sum.append(el("small", "", (where ? where + (mine ? "で、" : "") : "") + (mine ? mine + "に合うところ（公式サイトより）" : "")));
 if (c[1]) {
 var cp = items.filter(function(it){ return it.classList.contains("ux-unk") && placeJ(it, pf) === 1; }).length;
 var lab = cp === c[1] ? "近くの地域も相談できる" : "条件が公式サイトに書いていない";
@@ -293,7 +294,7 @@ u.type = "button"; u.onclick = function(){ showUnk = !showUnk; apply(false); };
 alt.append(u);
 }
 if (!c[0]) {
-alt.append(el("p", "ux-none", "この条件に合う" + (at(box,"data-noun") || "ところ") + "は、まだ載せていません。条件を外すと見られます。"));
+alt.append(el("p", "ux-none", "条件に合う" + (at(box,"data-noun") || "ところ") + "は、まだ載せていません。"));
 ks.forEach(function(k){
 var rest = ks.filter(function(x){ return x !== k; }), n = count(rest, pf, qs)[0];
 if (!n) return;

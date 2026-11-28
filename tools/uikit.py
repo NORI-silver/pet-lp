@@ -160,6 +160,7 @@ def write_js(ROOT):
     js = open(os.path.join(HERE, "find.js"), encoding="utf-8").read().replace("__SLUG__", _j.dumps(slug, ensure_ascii=False, separators=(",", ":")))
     # 配信用はコメント行と行頭の空白だけを除き、改行と検索の処理は保つ（24KB 上限）。
     src = prefkeep.FN + prefkeep.GUESS + "\n" + js
+    src = "\n".join(l.replace('", "', '","') if l.lstrip().startswith("var NAMES = ") else l for l in src.split("\n"))  # 県名の配列の区切りの空白だけ詰める（find.js 上限の内側に収める）
     out = "// 生成：tools/uikit.py（元は tools/find.js と tools/prefkeep.py）\n"
     out += "\n".join(line.strip() for line in src.split("\n") if line.strip() and not line.strip().startswith("//")) + "\n"
     open(os.path.join(ROOT, "find.js"), "w", encoding="utf-8").write(out)

@@ -12,6 +12,7 @@
   var cat = at(box,"data-ff"), unit = at(box,"data-unit") || "件";
   var sel = id("ffPref"), pick = null, places = [];
   var sum = id("ffSum"), alt = id("ffAlt"), clr = id("ffClear");
+  sum.parentNode.style.cssText = "position:sticky;bottom:0;background:#fff";
   var res = id("ffRes"), det = box.querySelector(".ux-det");
   var needPref = box.hasAttribute("data-needpref");
   // 都道府県→URLの名前（tools/uikit.py が tools/prefs.py から差し込む。県のページどうしの移動に使う）
@@ -261,11 +262,11 @@ if (it._cl && ks.length) { if (ks.some(function(k){ return k.indexOf("a:") === 0
     sum.textContent = ""; alt.textContent = "";
     if (idle) { sum.append(el("b", "", "都道府県を選ぶか、市区町村の名前を入れると並びます")); }
     else {
-      sum.append(el("b", "", c[0] + unit));
+      sum.append(el("b", "", c[0] + unit + (c[0] ? "掲載" : "")));
       // 「どこで」と「うちの子」を分けて、飼い主さんの言い方で（Nori 2026-11-17「自分の子にあてはまるものを探してる」）
       var where = pf.map(PlacePick.label).concat(qs ? ["「" + qs + "」"] : []).filter(Boolean).join("・");
       var mine = ks.map(function(k){ return LBL[k] ? "「" + LBL[k] + "」" : ""; }).filter(Boolean).join("");
-      if (where || mine) sum.append(el("small", "", (where ? where + (mine ? "で、" : "") : "") + (mine ? mine + "に合うところ（公式サイトの情報をもとに）" : "")));
+      if (where || mine) sum.append(el("small", "", (where ? where + (mine ? "で、" : "") : "") + (mine ? mine + "に合うところ（公式サイトより）" : "")));
       if (c[1]) {
         var cp = items.filter(function(it){ return it.classList.contains("ux-unk") && placeJ(it, pf) === 1; }).length;
         var lab = cp === c[1] ? "近くの地域も相談できる" : "条件が公式サイトに書いていない";
@@ -274,7 +275,7 @@ if (it._cl && ks.length) { if (ks.some(function(k){ return k.indexOf("a:") === 0
         alt.append(u);
       }
       if (!c[0]) {
-        alt.append(el("p", "ux-none", "この条件に合う" + (at(box,"data-noun") || "ところ") + "は、まだ載せていません。条件を外すと見られます。"));
+        alt.append(el("p", "ux-none", "条件に合う" + (at(box,"data-noun") || "ところ") + "は、まだ載せていません。"));
         ks.forEach(function(k){
           var rest = ks.filter(function(x){ return x !== k; }), n = count(rest, pf, qs)[0];
           if (!n) return;
