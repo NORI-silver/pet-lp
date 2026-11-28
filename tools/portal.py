@@ -59,7 +59,12 @@ def catbar(path):
     items = CATBAR
     if path in _DETECTIVE_NAV:
         items = [(n,u) if u!="/jichitai/maigo/" else ("ペット探偵","/pet-detective/") for n,u in items]
-        if path=="/": items = [("迷子ガイド","/jichitai/maigo/")] + items; act = None  # トップは総合の入口。分野のどれもハイライトしない
+        if path=="/":
+            act = None  # トップは総合の入口。分野のどれもハイライトしない
+            # 並びは下の「分野からえらぶ」と同じ（病院、移動、預ける、迷子、手続き、お別れ）。タクシーだけ前に出さない
+            _o = ["/hospital/", "/#form", "/dogrun/", "/pet-hotel/", "/pet-sitter/", "/trimming/", "/dog-trainer/", "/rojin-home/", "/jichitai/maigo/", "/pet-detective/", "/hinan/", "/sougi/", "/guide/"]
+            items = [("迷子ガイド","/jichitai/maigo/")] + items
+            items = sorted(items, key=lambda c: _o.index(c[1]) if c[1] in _o else 99)
         if path=="/pet-detective/": act=path
         if path=="/jichitai/maigo/": act="/guide/"
     a = "".join(f'<a href="{u}"' + (' aria-current="page"' if u == act else "") + f'>{n}</a>' for n, u in items)
@@ -174,8 +179,9 @@ def apply(s, path, hub=None):
     # 下の名前
     s = s.replace(f'<p>{TAXI}</p>\n    <p>&copy; 2026 {TAXI}</p>',
                   f'<p>{INFO}（ペットタクシーは「{TAXI}」）</p>\n    <p>&copy; 2026 {INFO}</p>')
-    s = s.replace(f'<p>{INFO}</p>\n    <p>&copy; 2026 {INFO}</p>',
-                  f'<p>{INFO}（ペットタクシーは「{TAXI}」）</p>\n    <p>&copy; 2026 {INFO}</p>')
+    if path != "/":  # トップは総合の入口：名前はそのまま（タクシーだけ別名を添えない）
+        s = s.replace(f'<p>{INFO}</p>\n    <p>&copy; 2026 {INFO}</p>',
+                      f'<p>{INFO}（ペットタクシーは「{TAXI}」）</p>\n    <p>&copy; 2026 {INFO}</p>')
     # 分野のメニュー（上）
     s = re.sub(r'<!--CATBAR-->.*?<!--/CATBAR-->\n?', '', s, flags=re.S)
     if '<header class="top">' in s:
