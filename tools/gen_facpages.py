@@ -29,6 +29,7 @@ EMG = _load("emergency.json")
 HF = _load("night_hospital_facts.json")
 INN = _load("inns.json")
 CAFE = _load("cafes.json")
+HOTELJ = _load("hotels.json")
 
 
 def _ok(x): return x.get("ok", True) and not x.get("closed") and len(x.get("facts", [])) >= MIN_FACTS
@@ -50,6 +51,36 @@ def fact(x, k):
 
 
 CAFES = [x for x in CAFE.get("cafes", []) if _ok(x) and fact(x, "犬と入れる席")]
+
+
+# ---- ペットホテル（/pet-hotel/<県>/<id>/。AI検索対策の第1弾 2026-11-28） ----
+# hotels.json のレコードは pref でなく prefs（県のリスト。複数県は1件だけ）を持つので、先頭の県を pref にした写しで扱う。
+def _hotel_rec(h):
+    x = dict(h)
+    x["pref"] = h["prefs"][0]
+    x["page"] = True  # write_all が薄さの判定後に直す（宿の x["page"] と同じ扱い）
+    return x
+
+
+HOTELS = [_hotel_rec(h) for h in HOTELJ.get("hotels", []) if _ok(h)]
+HOTEL_IDS = {x["id"] for x in HOTELS}
+HOTEL_PAGE_IDS = None  # write_all が薄さの判定を終えたら、実際にページがある施設の id が入る
+HOTEL_MIN_CHARS = 1050  # サイト全体で数えると県・市のページの表と重なって減る（実測で最大160字ほど）ので、宿の INN_MIN_CHARS(1000) より少し余裕をもたせる
+
+
+def hthref(x): return f"/pet-hotel/{PSLUG[x['pref']]}/{x['id'].lower()}/"
+
+
+_HOTEL_PREF_PAGES = None
+
+
+def _hotel_pref_pages():
+    """県のページ（/pet-hotel/<県>/）がある県。gen_prefpages.by_pref が正（no_page の県・件数の足りない県はページがない）。"""
+    global _HOTEL_PREF_PAGES
+    if _HOTEL_PREF_PAGES is None:
+        import gen_hotels, gen_prefpages
+        _HOTEL_PREF_PAGES = set(gen_prefpages.by_pref(gen_hotels.CAT))
+    return _HOTEL_PREF_PAGES
 
 
 def _jdate(iso):
@@ -375,6 +406,103 @@ def render_cafe(ctx, x):
                  ld_main=ld_main, src_url=x["url"], ck_iso=ck_iso)
 
 
+P_KEYS = ["所在地", "料金", "営業・受付時間", "定休日", "対象の動物", "送迎", "駐車場", "予約のしかた", "お支払い", "用意するもの", "受け入れの注意", "受け入れ条件", "預かり期間", "対応エリア", "予約"]
+
+
+def render_hotel(ctx, x):
+    e, SITE = ctx["e"], ctx["SITE"]
+    pf, slug, nm = x["pref"], PSLUG[x["pref"]], x["name"]
+    ck_iso = _latest(x); ck = _jdate(ck_iso)
+    url = SITE + hthref(x)
+    tparts = [w for w, k in (("料金", "料金"), ("受付時間", "営業・受付時間"), ("送迎", "送迎"), ("駐車場", "駐車場")) if fact(x, k)]
+    title = f"{nm}（{x.get('city', '')}）｜ペットホテルの{'・'.join(tparts) or '条件'}｜ペットタクシー予約窓口"
+    if len(title) > 60: title = f"{nm}（{x.get('city', '') or pf}）｜ペットホテル｜ペットタクシー予約窓口"
+    lead = f"{nm}は、{pf}{x.get('city', '')}のペットホテルです（{ck}時点の公式サイトの情報）。"
+    pts = [lead]
+    # 公式サイトに書いてある条件（データの印。全国の一覧のカードと同じ条件）を、名前を主語にした1文で要点にも出す
+    cond = []
+    if x.get("large"): cond.append("大型犬も泊められます" + (f"（{x['max_kg']}kgまで）" if x.get("max_kg") else ""))
+    if x.get("cat_only"): cond.append("猫専用のホテルです")
+    elif x.get("separate"): cond.append("猫は犬とは別の場所で預かります")
+    elif x.get("cat"): cond.append("猫も泊められます")
+    if x.get("vet"): cond.append("動物病院が併設・運営しています")
+    if x.get("pickup"): cond.append("送迎があります")
+    if x.get("senior"): cond.append("シニア・介護・投薬の子も受けます")
+    if x.get("night_staff"): cond.append("夜もスタッフがいます")
+    if x.get("camera"): cond.append("カメラで様子を見られます")
+    if x.get("run"): cond.append("ドッグランがあります")
+    if x.get("private_room"): cond.append("個室があります")
+    if cond: pts.append(f"{nm}は、" + "。".join(cond) + "。")
+    pts += [_sent(nm, k, fact(x, k), ck) for k in ("料金", "営業・受付時間", "対象の動物", "送迎", "用意するもの", "受け入れの注意", "受け入れ条件") if fact(x, k)]
+    pts = pts[:6]
+    # 同じ県のホテルとくらべる（個別ページがあるホテルだけ。列は全国の一覧と同じ gen_hotels.CAT["table"]）
+    import gen_hotels as GH
+    same = [x] + [y for y in HOTELS if y["pref"] == pf and y["page"] and y is not x][:9]
+    cols = GH.CAT["table"]
+    head = "".join(f"<th>{e(h)}</th>" for h, _ in cols)
+    body = ""
+    for y in same:
+        n = e(y["name"])
+        if y is x: n = f"<b>{n}</b>"
+        elif y["page"]: n = f'<a href="{hthref(y)}">{n}</a>'
+        body += f"<tr><td>{n}</td><td>{e(y.get('city', ''))}</td>" + "".join(f"<td>{e(f(y))}</td>" for _, f in cols) + "</tr>"
+    cmp = (f'<div class="emg-tips"><h2 style="font-size:1.05em;margin:0 0 6px">{e(pf)}のほかのペットホテルとくらべる</h2><div class="tbl"><table class="pp-tbl cmp">'
+           f'<thead><tr><th>名前</th><th>市区町村</th>{head}</tr></thead><tbody>{body}</tbody></table></div>'
+           f'<p class="emg-tips-note">条件は各ホテルの公式サイトの情報です。空欄は公式サイトに載っていないもの（「しない」という意味ではありません）。並びは順位ではありません。</p></div>') if len(same) >= 2 else ""
+    faq = []
+    if fact(x, "料金"): faq.append((f"{nm}の料金はいくらですか？", f"{nm}の公式サイトには「{fact(x, '料金').rstrip('。')}」と書いてあります（{ck}に確認）。体の大きさ・泊まる日数・季節で変わるので、預ける前に公式サイトで確かめてください。"))
+    if fact(x, "営業・受付時間"): faq.append((f"{nm}の受付時間は？", f"{nm}の公式サイトには「{fact(x, '営業・受付時間').rstrip('。')}」と書いてあります（{ck}に確認）。"))
+    if fact(x, "用意するもの"): faq.append((f"{nm}に預けるときに必要なものは？", f"{nm}の公式サイトには「{fact(x, '用意するもの').rstrip('。')}」と書いてあります（{ck}に確認）。"))
+    if fact(x, "受け入れの注意") or fact(x, "受け入れ条件"):
+        a = "".join(f"「{fact(x, k).rstrip('。')}」" for k in ("受け入れの注意", "受け入れ条件") if fact(x, k))
+        faq.append((f"{nm}に預けられない子はいますか？", f"{nm}の公式サイトには{a}と書いてあります（{ck}に確認）。"))
+    if fact(x, "送迎"): faq.append((f"{nm}に送迎はありますか？", f"{nm}の公式サイトには「{fact(x, '送迎').rstrip('。')}」と書いてあります（{ck}に確認）。"))
+    if fact(x, "お支払い"): faq.append((f"{nm}の支払い方法は？", f"{nm}の公式サイトには「{fact(x, 'お支払い').rstrip('。')}」と書いてあります。"))
+    faq = faq[:6]
+    ld_main = {"@type": "LocalBusiness", "additionalType": "ペットホテル", "name": nm, "url": x["url"],
+               "address": dict({"@type": "PostalAddress", "addressRegion": pf, "addressCountry": "JP"},
+                               **({"addressLocality": x["city"]} if x.get("city") else {}), **({"streetAddress": fact(x, "所在地")} if fact(x, "所在地") else {}))}
+    ll, prec = geodata.facility_ll("hotels.json", x)  # 座標は住所の地点が取れた施設だけ（市区町村の中心は入れない。docs/facility-page.md）
+    if ll and prec == "f": ld_main["geo"] = {"@type": "GeoCoordinates", "latitude": ll[0], "longitude": ll[1]}
+    desc = lead + (pts[1] if len(pts) > 1 else "")
+    if len(desc) > 150: desc = lead
+    has_pref = pf in _hotel_pref_pages()
+    crumbs = [("ペットタクシー予約窓口", "/"), ("ペットホテル", "/pet-hotel/")] + ([(pf, f"/pet-hotel/{slug}/")] if has_pref else [])
+    rel = ([(f"{pf}のペットホテル", f"/pet-hotel/{slug}/")] if has_pref else []) + [("全国のペットホテル", "/pet-hotel/"),
+           ("ペットホテルのえらび方（登録・見学・預ける前の準備）", "/guide/choose-pet-hotel/")]
+    if x.get("large"): rel.append(("大型犬を預けられるペットホテルの探し方", "/guide/large-dog-hotel/"))
+    if x.get("cat") or x.get("cat_only"): rel.append(("猫をペットホテルに預けるとき", "/guide/cat-hotel/"))
+    rel.append(("全国のペットシッター", "/pet-sitter/"))
+    return _page(ctx, title=title, desc=desc, url=url, crumbs=crumbs,
+                 nm=nm, pts=pts, rows=_rows(e, x, P_KEYS), card=_card(e, "hotel", x, "ホテル"), cmp=cmp, faq=faq, related=rel,
+                 note=f"当サイトは{e(nm)}とは別の運営で、ホテルからお金をもらっていません。おすすめや順位ではありません。当サイトでは予約は受け付けていません。受け入れの条件や料金は変わることがあるので、預ける前に必ず公式サイトかホテルでご確認ください。",
+                 cta="<h2>ホテルまでの送り迎えは、ペットタクシーで</h2><p>大型犬やキャリーの猫も、飼い主さまと一緒に家の前からホテルの前まで移動できます。送迎をしていないホテルや、送迎の範囲の外のときの行き帰りに使えます。</p>",
+                 ld_main=ld_main, src_url=x["url"], ck_iso=ck_iso)
+
+
+def _write_hotels(ROOT, ctx, w):
+    """ホテルの個別ページを書く。そのページだけの字数（tools/thin_gate.py と同じ数え方）が足りないホテルは作らない（宿と同じ扱い）。"""
+    global HOTEL_PAGE_IDS
+    import thin_gate as TG
+    from collections import Counter
+    for _ in range(3):
+        pages = {x["id"]: render_hotel(ctx, x) for x in HOTELS if x["page"]}
+        segs = {k: set(TG._segments(v)) for k, v in pages.items()}
+        df = Counter(t for v in segs.values() for t in v)
+        short = {k for k, v in segs.items() if sum(len(t) for t in v if df[t] < TG.TEMPLATE_DF) < HOTEL_MIN_CHARS}
+        if not short: break
+        for x in HOTELS:
+            if x["id"] in short: x["page"] = False
+    HOTEL_PAGE_IDS = {x["id"] for x in HOTELS if x["page"]}
+    for x in HOTELS:
+        f = os.path.join(ROOT, hthref(x).strip("/"), "index.html")
+        if x["page"]: w(hthref(x), render_hotel(ctx, x))
+        elif os.path.exists(f):
+            os.remove(f)
+            try: os.rmdir(os.path.dirname(f))
+            except OSError: pass
+
+
 def render_cafe_hub(ctx):
     e, SITE = ctx["e"], ctx["SITE"]
     url = SITE + "/inu-cafe/"
@@ -438,9 +566,10 @@ def render_cafe_hub(ctx):
 
 
 def urls(SITE):
-    if paused.TRAVEL_PAUSED: return [SITE + hhref(x) for x in HOSPS]  # 宿・カフェはいったん外した（tools/paused.py）
+    hotel_urls = [SITE + hthref(x) for x in HOTELS if HOTEL_PAGE_IDS is None or x["id"] in HOTEL_PAGE_IDS]
+    if paused.TRAVEL_PAUSED: return [SITE + hhref(x) for x in HOSPS] + hotel_urls  # 宿・カフェはいったん外した（tools/paused.py）
     return ([SITE + hhref(x) for x in HOSPS] + Y.urls(SITE) + [SITE + ihref(x) for x in INNS if x.get("page", True)]
-            + ([SITE + "/inu-cafe/"] if CAFES else []) + [SITE + chref(x) for x in CAFES])
+            + ([SITE + "/inu-cafe/"] if CAFES else []) + [SITE + chref(x) for x in CAFES] + hotel_urls)
 
 
 def write_all(ROOT, ctx):
@@ -455,6 +584,7 @@ def write_all(ROOT, ctx):
         w(hhref(x), f'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow">'
                     f'<link rel="canonical" href="{ctx["SITE"]}{to}"><meta http-equiv="refresh" content="0; url={to}">'
                     f'<title>{x["pref"]}の夜間・救急の動物病院</title></head><body><p><a href="{to}">{x["pref"]}の夜間・救急の動物病院</a>に移しました。</p></body></html>\n')
+    _write_hotels(ROOT, ctx, w)  # ペットホテルの施設ページ（宿・カフェの一時停止とは別の分野）
     if paused.TRAVEL_PAUSED:
         # 宿・カフェはいったんサイトから外した（Nori 2026-11-16）。前のページは消して 404 にし、検索から外す
         import shutil
