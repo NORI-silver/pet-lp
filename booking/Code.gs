@@ -237,7 +237,7 @@ function doPost(e) {
     try {
       var q = e.parameter;
       var repeated = Object.keys(e.parameters || {}).some(function(k) { return (e.parameters[k] || []).length !== 1; });
-      if (e.queryString || repeated) return page_('未送信', '<p>届いたリンクから内容と規約を確認し、もう一度送ってください。</p>');
+      if (e.queryString || repeated) { log_('提携の確認：未送信として却下（queryString=' + (e.queryString ? 'あり' : 'なし') + '、重複=' + (repeated ? 'あり' : 'なし') + '）'); return page_('未送信', '<p>送信内容を正しく受け取れませんでした。お手数ですが、届いたメールのリンクを開き直して、もう一度送ってください。くり返しこの画面が出る場合は、メールの返信でその旨をお知らせください。</p>'); }
       return pconfPage_(q, true);
     } catch (err) {
       log_('提携の確認：受付エラー');
@@ -2761,7 +2761,7 @@ function pconfValidate_(c, q) {
   return issues;
 }
 function pconfItem_(it, q, error) {
-  var t = PCONF_TAG[it.tag] || PCONF_TAG.need, nm = 'f_' + it.k, html = '<div class="pt"><b>' + esc_(it.l) + '</b> <span style="font-size:.75rem;font-weight:700;color:' + t[1] + ';border:1px solid ' + t[1] + ';border-radius:999px;padding:0 8px;white-space:nowrap">' + t[0] + '</span>';
+  var t = PCONF_TAG[it.tag] || PCONF_TAG.need, nm = 'f_' + it.k, html = '<div class="pt" id="e_' + it.k + '"><b>' + esc_(it.l) + '</b> <span style="font-size:.75rem;font-weight:700;color:' + t[1] + ';border:1px solid ' + t[1] + ';border-radius:999px;padding:0 8px;white-space:nowrap">' + t[0] + '</span>';
   if (it.note) html += '<div class="note">' + esc_(it.note) + '</div>';
   if (error) html += '<p role="alert" style="color:#c0392b;font-weight:700">' + esc_(error) + '</p>';
   if (it.type === 'text') html += '<input name="' + nm + '" maxlength="400" value="' + esc_(q[nm] != null ? q[nm] : it.v || '') + '" placeholder="' + esc_(it.ph || '') + '">';
@@ -2865,14 +2865,23 @@ function pconfPage_(q, fromPost) {
       return page_('ありがとうございました', '<p>' + esc_(coName) + ' さま、お答えを受け付けました。</p><p>いただいた内容で登録し、料金の計算と、お送りするご依頼の条件をそろえます。わからないところがあれば、メールでおうかがいします。</p>');
     }
   }
+  // 送信できなかったとき：不足・不備をフォームの表示順に並べ、先頭の一覧とログに使う
+  var errList = [];
+  if (q.go === '1' && (q.err || termsError || Object.keys(fieldErrors).length)) {
+    if (isNew && fieldErrors.site) errList.push({ id: 'e_site', l: 'ホームページのURL', m: fieldErrors.site });
+    c.sections.forEach(function(s) { s.items.forEach(function(it) { if (fieldErrors[it.k]) errList.push({ id: 'e_' + it.k, l: it.l, m: fieldErrors[it.k] }); }); });
+    if (q.err) errList.push({ id: 'e_name', l: (isNew ? '会社名・メールアドレス・' : '') + 'ご担当のお名前', m: '入れてください。' });
+    if (fieldErrors.intake_email) errList.push({ id: 'e_intake', l: isNew ? 'メールアドレス' : '予約依頼の通知を受け取るメールアドレス', m: fieldErrors.intake_email });
+    if (fieldErrors.details_reviewed) errList.push({ id: 'e_reviewed', l: '入力内容の確認', m: fieldErrors.details_reviewed });
+    if (termsError) errList.push({ id: 'e_terms', l: '提携規約への同意', m: termsError });
+    if (errList.length) log_('提携の確認：送信エラー ' + coName + '：' + errList.map(function(e) { return e.l; }).join('／'));
+  }
   var html = '<p>' + esc_(coName) + ' さま</p>' + (c.site
     ? '<p>公式サイト（<a href="' + esc_(c.site) + '" target="_blank">' + esc_(c.site.replace(/^https?:\/\//, '').replace(/\/$/, '')) + '</a>' + (c.read ? '、' + esc_(c.read) + '時点' : '') + '）の内容を、先に入れておきました。まちがいがあれば直して、「入力してください」のところだけ埋めてください。' + ((c.examples || []).length ? '最後に、この内容で計算した料金の例を確かめてください。' : '') + '</p>'
     : '<p>ご依頼をお送りする条件と、料金の計算に使う内容をうかがいます。選ぶところがほとんどです。</p>') +
-    (q.err ? '<p style="color:#c0392b;font-weight:700">' + (isNew ? '会社名・メールアドレス・' : '') + 'ご担当のお名前を入れてください。</p>' : '') +
-    (termsError ? '<p role="alert" style="color:#c0392b;font-weight:700">' + esc_(termsError) + '</p>' : '') +
-        (Object.keys(fieldErrors).some(function(k) { return k !== 'site' && k !== 'details_reviewed' && k !== 'intake_email'; }) ? '<p role="alert">入力を確認してください。各項目に修正箇所を表示しています。</p>' : '') +
+    (errList.length ? '<div role="alert" style="border:2px solid #c0392b;border-radius:12px;padding:12px 14px;margin:12px 0"><p style="color:#c0392b;font-weight:700;margin:0 0 6px">まだ送信できていません。次の' + errList.length + '件を直して、もう一度送ってください。</p><ul style="margin:0;padding-left:1.2em">' + errList.map(function(e) { return '<li><a href="#' + e.id + '">' + esc_(e.l) + '</a>：' + esc_(e.m) + '</li>'; }).join('') + '</ul></div>' : '') +
     '<form method="post" action="' + esc_(webUrl_()) + '" target="_top">' + hidden_('kind', 'pconf') + (isNew ? hidden_('new', '1') + hidden_('step', '2') + hidden_('co', coName) + hidden_('email', email) : hidden_('t', q.t)) + hidden_('go', '1') +
-    (isNew ? '<label>ホームページのURL（あれば）<input name="site" maxlength="200" value="' + esc_(q.site || '') + '" placeholder="example.jp"></label>' +
+    (isNew ? '<label id="e_site">ホームページのURL（あれば）<input name="site" maxlength="200" value="' + esc_(q.site || '') + '" placeholder="example.jp"></label>' +
       (fieldErrors.site ? '<p role="alert">' + esc_(fieldErrors.site) + '</p>' : '') : '');
   c.sections.forEach(function(s) { html += '<h2>' + esc_(s.h) + '</h2>' + s.items.map(function(it) { return pconfItem_(it, q, fieldErrors[it.k]); }).join(''); });
   if ((c.examples || []).length) html += '<h2>6. 料金の例</h2><p class="note">上の内容で計算しました。高速料金は含みません。</p>' + c.examples.map(function(e, i) {
@@ -2881,19 +2890,20 @@ function pconfPage_(q, fromPost) {
       '<input name="ex' + i + '_fix" maxlength="200" value="' + esc_(q['ex' + i + '_fix'] || '') + '" placeholder="ちがうときは、正しい金額や理由"></div>';
   }).join('');
   html += '<label>ほかに伝えたいこと（あれば）<textarea name="memo" maxlength="2000">' + esc_(q.memo || '') + '</textarea></label>' +
-    '<label>ご担当のお名前（必須）<input name="name" required maxlength="60" value="' + esc_(q.name || '') + '"></label>' +
-    (!isNew ? '<label>予約依頼の通知を受け取るメールアドレス（必須）<input name="intake_email" type="email" autocomplete="email" required maxlength="120" value="' + esc_(String(q.intake_email || '').slice(0, 120)) + '"></label>' +
+    '<label id="e_name">ご担当のお名前（必須）<input name="name" required maxlength="60" value="' + esc_(q.name || '') + '"></label>' +
+    (!isNew ? '<label id="e_intake">予約依頼の通知を受け取るメールアドレス（必須）<input name="intake_email" type="email" autocomplete="email" required maxlength="120" value="' + esc_(String(q.intake_email || '').slice(0, 120)) + '"></label>' +
       '<p class="note">予約受付を始める場合の通知先を確認するために使います。このフォームを送っても、通知先の設定は変わらず、このアドレスにメールは送られません。</p>' +
       (fieldErrors.intake_email ? '<p role="alert">' + esc_(fieldErrors.intake_email) + '</p>' : '') :
-      (fieldErrors.intake_email ? '<p role="alert">' + esc_(fieldErrors.intake_email) + ' 最初の画面で連絡先をご確認ください。</p>' : '')) +
-    (c.auto ? (fieldErrors.details_reviewed ? '<p role="alert">' + esc_(fieldErrors.details_reviewed) + '</p>' : '') +
+      (fieldErrors.intake_email ? '<p role="alert" id="e_intake">' + esc_(fieldErrors.intake_email) + ' 最初の画面で連絡先をご確認ください。</p>' : '')) +
+    (c.auto ? (fieldErrors.details_reviewed ? '<p role="alert" id="e_reviewed">' + esc_(fieldErrors.details_reviewed) + '</p>' : '') +
       '<label><input type="checkbox" name="details_reviewed" value="1" required> 入力内容（事前に入っている項目を含む）に間違いがないか確認しました。</label>' : '') +
-    '<fieldset><legend>提携規約への同意（必須）</legend>' +
+    '<fieldset id="e_terms"><legend>提携規約への同意（必須）</legend>' +
     '<p><a href="' + esc_(pconfTermsUrl_()) + '" target="_blank" rel="noopener noreferrer">提携規約を読む（' + esc_(PTERMS_VER.revised) + '改定・版 ' + esc_(PTERMS_VER.hash) + '）</a></p>' +
     hidden_('terms_version', PTERMS_VER.hash) + hidden_('terms_proof', pconfTermsProof_(q, id)) +
     '<label><input type="checkbox" name="terms_accept" value="1" required> 提携規約を読み、その内容に同意してこの内容を送ります。</label>' +
     '<p class="note">同意した日時・ご担当のお名前・規約の版を記録します。これは本フォームの送信に必要な同意で、提携成立の手続きは別途ご案内します。</p></fieldset>' +
     '<button type="submit">この内容で送る</button></form><p class="note">送っただけでは、まだご依頼は届きません。内容を確かめてから、あらためてメールでご連絡します。</p>';
+  if (errList.length) html += '<script>window.addEventListener("load",function(){var e=document.getElementById("' + errList[0].id + '");if(e)e.scrollIntoView();});</script>';
   return page_(isNew && !id ? '提携のお申し込み' : '公式サイトの内容のご確認', html);
 }
 // 新しい申し込みの最初の画面：会社名・メール・ホームページだけ
