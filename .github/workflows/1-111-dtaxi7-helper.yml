@@ -1,0 +1,35 @@
+# 一時の補助。作り直しを2回して、1回目と2回目で変わる場所を調べる（読むだけ）。終わったら消す。
+name: seo-helper
+on:
+  push:
+    branches: ['NORI-silver-repair-dtaxi7']
+    paths: ['.github/workflows/**']
+permissions:
+  contents: read
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ba70bc8fa682ff28aaef0464db17e4a89a459e85
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 調べる
+        run: |
+          git log -1 --format='HEAD %H'
+          python3 tools/gen_areas.py . > /tmp/g1.log 2>&1 || { tail -20 /tmp/g1.log; exit 1; }
+          echo "pass1 vs HEAD changed: $(git status --porcelain | wc -l)"
+          git status --porcelain | awk '{print $2}' | sort | xargs -r md5sum > /tmp/m1.txt
+          mkdir -p /tmp/snap1 && git status --porcelain | awk '{print $2}' | while read f; do mkdir -p /tmp/snap1/$(dirname $f); cp $f /tmp/snap1/$f; done
+          python3 tools/gen_areas.py . > /tmp/g2.log 2>&1 || { tail -20 /tmp/g2.log; exit 1; }
+          echo "pass2 vs HEAD changed: $(git status --porcelain | wc -l)"
+          git status --porcelain | awk '{print $2}' | sort | xargs -r md5sum > /tmp/m2.txt
+          echo "VARY-LIST (pass1 vs pass2 content differs):"
+          diff /tmp/m1.txt /tmp/m2.txt | grep '^>' | awk '{print $3}' | head -40
+          echo "VARY-COUNT: $(diff /tmp/m1.txt /tmp/m2.txt | grep -c '^>')"
+          for f in $(diff /tmp/m1.txt /tmp/m2.txt | grep '^>' | awk '{print $3}' | head -3); do echo "=== $f"; diff <(tr '>' '>\n' < /tmp/snap1/$f) <(tr '>' '>\n' < $f) | cut -c1-300 | head -12; done
+          echo "FILES-DIFFERING-FROM-HEAD-AFTER-PASS1 (head=pass2 of earlier helper): $(git diff --stat HEAD | tail -1)"
