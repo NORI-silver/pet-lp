@@ -39,11 +39,14 @@ console.log('sougi-visit ok', nPub, nOther, nHold);
 {
   const audited = D.filter((f) => f.visit).length, legacy = D.filter((f) => !f.visit).length;
   assert.equal(legacy, 0, '来館先の状態が未設定の施設はない（未確認は visit=unconfirmed で経路を出さない）');
-  assert.equal(D.length + H.length, 375, '375 = 一覧 + 確認中（287件に、公式サイトで名前・市区町村・できることを確認した88件を足した。来館先は未確認のまま）');
-  assert.equal(D.length, 375); assert.equal(audited, 375);
-  const ADD88 = ["S5a9c04", "S31bdd1", "S61972f", "S700006", "S914b08", "S0e1fbc", "Sc36d29", "S506c06", "Sb8d6d3", "Sd62a6b", "Sfe40ab", "S945602", "S83ff41", "Se12f76", "S9442d8", "Saa5452", "S72450c", "S988c93", "S4687c1", "S2cfc55", "S26181b", "S935237", "S6dbcac", "Scd87c1", "S66beae", "S166aad", "Sf5bb9b", "Sb2450b", "Sba17be", "S2525e3", "S1ba768", "Sbd4890", "Se163c2", "S861624", "S5427f2", "S91cdeb", "S0ab20a", "S1ec0ba", "S95d0f0", "S3179d0", "Sa4ba53", "Sc5525a", "Sf6b48d", "Sea883a", "S91ce9a", "Sdeb88b", "S62d2dd", "S4ba613", "S8d6f0d", "Sf41910", "Sbf2397", "S744f45", "S086402", "Sff6ad1", "Sa91572", "S8a446c", "S8fe9c9", "S235bde", "S709052", "S756e5c", "Sbdae50", "S273f50", "Sc77f93", "Sc0a54f", "S57bb52", "Scd13d6", "Sda8df6", "S4bac65", "Sd695c4", "S9136f2", "Saabf58", "S0c8a7c", "S89c6d8", "Sf45ce2", "S633846", "S992687", "S0d4f89", "Sf74c92", "S52503b", "Sf9d876", "S0780b0", "S908c69", "S6fd14b", "S89cb0a", "S6e8535", "S2bbcbc", "S2e65ad", "S5db1e2"];
+  assert.equal(D.length + H.length, 374, '374 = 一覧 + 確認中（375件から、種類の違う1件を外した。来館先は未確認のまま。田川の1件は公式サイトで同じ店の名前と URL を直した）');
+  assert.equal(D.length, 374); assert.equal(audited, 374);
+  assert.ok(!D.some((x) => x.id === 'Sf41910') && !H.some((x) => x.id === 'Sf41910'), 'Sf41910: 遺骨アクセサリーの通販サイトで種類が違うので外した');
+  { const t = D.find((x) => x.id === 'S0d4f89'); assert.ok(t, 'S0d4f89: 田川の1件は一覧に残す（名前と公式サイトを直した）'); assert.equal(t.name, 'ペット葬儀 永遠（とわ）'); assert.equal(t.u, 'https://pet-sougi-towa.com/'); assert.equal(t.visit, 'unconfirmed', 'S0d4f89: 来館先は未確認のまま'); }
+  assert.equal(D.find((x) => x.id === 'Sf45ce2').u, 'https://onedrip.jp/', 'Sf45ce2: 公式サイトはペット霊園長久手のページ');
+  const ADD88 = ["S5a9c04", "S31bdd1", "S61972f", "S700006", "S914b08", "S0e1fbc", "Sc36d29", "S506c06", "Sb8d6d3", "Sd62a6b", "Sfe40ab", "S945602", "S83ff41", "Se12f76", "S9442d8", "Saa5452", "S72450c", "S988c93", "S4687c1", "S2cfc55", "S26181b", "S935237", "S6dbcac", "Scd87c1", "S66beae", "S166aad", "Sf5bb9b", "Sb2450b", "Sba17be", "S2525e3", "S1ba768", "Sbd4890", "Se163c2", "S861624", "S5427f2", "S91cdeb", "S0ab20a", "S1ec0ba", "S95d0f0", "S3179d0", "Sa4ba53", "Sc5525a", "Sf6b48d", "Sea883a", "S91ce9a", "Sdeb88b", "S62d2dd", "S4ba613", "S8d6f0d", "Sbf2397", "S744f45", "S086402", "Sff6ad1", "Sa91572", "S8a446c", "S8fe9c9", "S235bde", "S709052", "S756e5c", "Sbdae50", "S273f50", "Sc77f93", "Sc0a54f", "S57bb52", "Scd13d6", "Sda8df6", "S4bac65", "Sd695c4", "S9136f2", "Saabf58", "S0c8a7c", "S89c6d8", "Sf45ce2", "S633846", "S992687", "S0d4f89", "Sf74c92", "S52503b", "Sf9d876", "S0780b0", "S908c69", "S6fd14b", "S89cb0a", "S6e8535", "S2bbcbc", "S2e65ad", "S5db1e2"];
   for (const id of ADD88) { const f = D.find((x) => x.id === id); assert.ok(f, id + ': 足した88件に入っている'); assert.equal(f.visit, 'unconfirmed', id + ': 足した施設は来館先を未確認のまま'); assert.ok(!f.addr, id + ': 住所は載せない'); }
-  assert.equal(ADD88.length, 88); const PUB = D.filter((f) => f.visit === 'public').map((f) => f.id);
+  assert.equal(ADD88.length, 87); const PUB = D.filter((f) => f.visit === 'public').map((f) => f.id);
   assert.equal(PUB.length, 47);
   const PREV31 = ["S04bc24", "S0c4f9d", "S11d757", "S14b5f5", "S14d646", "S1e7daf", "S2bdcf2", "S38d591", "S3a0faa", "S5493f2", "S54ff62", "S5ba910", "S66990f", "S6acf91", "S751c9a", "S7f4bb0", "S8ed284", "S9459f3", "S9c2cde", "Sc0ed0c", "Sccfc1e", "Scf95e2", "Sd0ac1f", "Sd95a31", "Sddda98", "Se247dc", "Se459ec", "Se4eee5", "Seb57a2", "Seb65c7", "Sef79f6"], RESTORED16 = ["S0a98c9", "S1b8c6d", "S2358f8", "S31d6ce", "S50a5de", "S5818be", "S7755d5", "S822672", "S934111", "S9b3bec", "Sa2a9dd", "Sa2fae7", "Sb22bec", "Sd0edb1", "Sece5b2", "Sfd6400"];
   for (const id of PREV31) assert.ok(PUB.includes(id), id + ': 以前から確認済みの31件は変わらない');
@@ -98,7 +101,7 @@ console.log('sougi-visit ok', nPub, nOther, nHold);
     const b = card(all, f.id); n++;
     assert.ok(b.includes('お迎えまたは訪問火葬'), f.name + ': サービスのタグが残る');
   }
-  assert.equal(listed, 375, '375件すべてが一覧に出ている');
+  assert.equal(listed, 374, '374件すべてが一覧に出ている');
   assert.ok(n > 100, 'お迎え/訪問の施設が多数ある: ' + n);
 }
 {
