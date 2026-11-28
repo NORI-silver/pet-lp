@@ -1,0 +1,254 @@
+diff --git a/tools/gen_grooming.py b/tools/gen_grooming.py
+index 46b685bad..6c80abdd2 100644
+--- a/tools/gen_grooming.py
++++ b/tools/gen_grooming.py
+@@ -107,13 +107,6 @@ def render(ctx):
+       ("サロンに連れていきたいけど車がないときは？", "出張トリミングなら、サロンへ行かずに家やトリミングカーで受けられます。送迎をしているサロンもあるので、まずお店にたずねてみてください。"),
+     ]
+     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
+-    def _gcnt(*ws):
+-        return sum(1 for g in J["groomers"] if any(w in json.dumps(g, ensure_ascii=False) for w in ws))
+-    stats_html = ('<div class="emg-tips"><h4>全国の出張トリミング・トリミングサロンのデータ（公式サイトの記載から集計）</h4><dl>'
+-      f'<dt>掲載数</dt><dd>全国{total}事業者です。</dd>'
+-      f'<dt>出張の形</dt><dd>自宅に来る出張・訪問に対応する事業者は{_gcnt("出張", "訪問")}事業者、トリミングカーで来る事業者は{_gcnt("トリミングカー")}事業者です。</dd>'
+-      f'<dt>うちの子の条件</dt><dd>大型犬に対応する事業者は{_gcnt("大型犬")}事業者、シニア犬・介護中の子に対応する事業者は{_gcnt("シニア", "介護")}事業者、猫に対応する事業者は{_gcnt("猫")}事業者です。</dd>'
+-      '</dl><p class="emg-tips-note">件数は公式サイトの記載をもとに数えた目安です。対応の実際は事業者にご確認ください。</p></div>')
+     ld = '<script type="application/ld+json">\n' + json.dumps([
+       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+         {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
+@@ -137,7 +130,6 @@ def render(ctx):
+       <p class="emg-free">この一覧は無料の情報です。事業者からお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金は載せていないので、それぞれの事業者に直接おたずねください。</p>
+       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
+       <div class="f"><span>条件でしぼりこむ（公式サイトに書いてある条件だけで判定しています）</span><div class="trim-cond">{conds}</div><span id="trimCount" aria-live="polite"></span></div>
+-      {stats_html}
+       {body}
+       <div class="emg-tips"><h4>トリミングを頼む前に確かめること</h4><dl>{before}</dl>
+       <p class="emg-tips-note">ここに書いたのは一般的な目安です。犬や猫の様子にあわせて、事業者や動物病院に相談してください。</p></div>
+diff --git a/tools/gen_hotels.py b/tools/gen_hotels.py
+index 7f3a1ec63..903e00933 100644
+--- a/tools/gen_hotels.py
++++ b/tools/gen_hotels.py
+@@ -153,15 +153,6 @@ def render(ctx):
+       ("ホテルまでの送り迎えはどうすれば？", "送迎をしているホテルもあります（「送迎がある」でしぼりこめます）。送迎の範囲や料金はホテルごとに違うので、公式サイトで確かめてください。"),
+     ]
+     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
+-    def _hcnt(*ws):
+-        return sum(1 for h in J["hotels"] if any(w in json.dumps(h, ensure_ascii=False) for w in ws))
+-    n_fee = sum(1 for h in J["hotels"] if any("料金" in (f.get("k") or "") for f in h.get("facts", [])))
+-    stats_html = ('<div class="emg-tips"><h4>全国のペットホテルのデータ（公式サイトの記載から集計）</h4><dl>'
+-      f'<dt>掲載数</dt><dd>全国{total}件。大型犬を泊められるホテルは{nl}件、猫専用・猫を別に預かるホテルは{nc}件です。</dd>'
+-      f'<dt>夜のお世話</dt><dd>夜間のスタッフや24時間の見守りにふれているホテルは{_hcnt("夜間", "24時間")}件です。</dd>'
+-      f'<dt>部屋と送迎</dt><dd>個室があるホテルは{_hcnt("個室")}件、送迎に対応するホテルは{_hcnt("送迎")}件、動物病院に併設のホテルは{_hcnt("動物病院")}件です。</dd>'
+-      f'<dt>料金</dt><dd>料金を公式サイトで公開しているホテルは{n_fee}件です。ペットホテルの料金は大きさ・泊数・お世話の内容で変わるので、預ける前に総額をご確認ください。</dd>'
+-      '</dl></div>')
+     ld = '<script type="application/ld+json">\n' + json.dumps([
+       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+         {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
+@@ -185,7 +176,6 @@ def render(ctx):
+       <p class="emg-free">この一覧は無料の情報です。ホテルからお金をもらっていません。順番は都道府県ごとで、おすすめ順や点数順ではありません。料金は公式サイトに書いてある分だけ載せています。</p>
+       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
+       <div class="f"><span>条件でしぼりこむ（公式サイトに書いてある条件だけで判定しています）</span><div class="trim-cond">{conds}</div><span id="trimCount" aria-live="polite"></span></div>
+-      {stats_html}
+       {body}
+       {checklist(e)}
+       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
+diff --git a/tools/gen_pet_detective.py b/tools/gen_pet_detective.py
+index 3f04e36df..1f8c20c8e 100644
+--- a/tools/gen_pet_detective.py
++++ b/tools/gen_pet_detective.py
+@@ -37,7 +37,6 @@ def exists_uri(url):
+ def page(ctx):
+     e, site = ctx["e"], ctx["SITE"]
+     rows = []
+-    n_ops = n_nat = n_cat = n_price = 0
+     for raw, d in zip(M.PRIV.get("detectives", []), M.detectives()):
+         if raw.get("kind") != "operator" or not exists_uri(raw.get("url")):
+             continue
+@@ -71,13 +70,9 @@ def page(ctx):
+                     +line("対象",d["animals"],"paw")+line("料金の例",main_price,"yen")
+                     +line("現地入り",comp.get("arrival"),"clock")
+                     + '</dl>'+more+f'<a class="pd-official" href="{e(raw["url"])}" rel="noopener">公式サイトを開く</a></article>')
+-        n_ops += 1
+-        if "z" in d["flags"].split(): n_nat += 1
+-        if "ct" in d["flags"].split(): n_cat += 1
+-        if main_price: n_price += 1
+     opts = ''.join(f'<option value="{e(pref)}">{e(pref)}</option>' for pref in M.PREF47)
+-    title = "ペット探偵・猫探偵を探す｜迷子ペットの捜索会社を対応地域・料金で比較｜ペットのくらし窓口"
+-    desc = "迷子になった犬や猫を探すペット探偵・猫探偵を、都道府県と対象動物で絞り込めます。全国対応の会社、猫を探せる会社、捜索料金と追加費用、現地入りの目安を公式サイトの記載で比較できます。"
++    title = "ペット探偵を探す｜対応地域・料金・現地入りを比較｜ペットのくらし窓口"
++    desc = "迷子の犬・猫などのペット探偵を都道府県・対象動物で絞り込み。捜索料金と追加費用、現地入りの目安を比較できます。"
+     url=site+PATH
+     s=f"""<main>
+ <section class="area-hero pd-hero"><div class="wrap">
+@@ -100,28 +95,10 @@ def page(ctx):
+ <h2>依頼する前に確かめること</h2>
+ <p>受付時間と、実際に現地へ来られる時刻は別です。開始時刻・捜索時間・出張費・成功報酬・キャンセル料まで含めた総額をお尋ねください。</p>
+ <p>ペット保険の付帯サービスで無料になる場合があります。有料で依頼する前に、<a href="{GUIDE}#pro-insurance">保険の対象条件</a>も確認してください。掲載順はおすすめ順ではありません。</p>
+-<h2>掲載中のペット探偵のデータ</h2>
+-<p>公式サイトで迷子捜索の案内を確認できた会社{n_ops}社を載せています。全国へ出張する会社は{n_nat}社、猫を探せると書いている会社は{n_cat}社、料金を公開している会社は{n_price}社です（公式サイトの記載から集計）。</p>
+-<h2>よくある質問</h2>
+-<dl>
+-<dt>ペット探偵の料金はいくらですか？</dt><dd>捜索は1日8時間で1万円台後半から6万円台、3日間のまとめでは9万円台から17万円台が多く、見つかったときだけ払う成功報酬（5万円・10万円）を設ける会社もあります。交通費・チラシ代・延長料金が別になることがあるので、総額で比べます。</dd>
+-<dt>猫だけを探してくれる探偵はいますか？</dt><dd>猫専門をうたう会社や、猫の捜索に対応する会社があります。猫は家のすぐ近くに隠れていることが多いので、まず近所の捜索と届け出を済ませてから相談すると、捜索の範囲を絞りやすくなります。</dd>
+-<dt>ペット探偵に頼む前にすることは？</dt><dd>動物愛護センター・保健所、警察、市区町村への届け出と、近所へのチラシが先です。ペット保険の付帯サービスで捜索が無料になる場合もあるので、保険の確認も依頼前に済ませます。</dd>
+-</dl>
+ </div></section></main>
+ <script src="/pet-detective/filter.js" defer></script>
+ """
+-    faq_ld = [("ペット探偵の料金はいくらですか？", "捜索は1日8時間で1万円台後半から6万円台、3日間のまとめでは9万円台から17万円台が多く、見つかったときだけ払う成功報酬（5万円・10万円）を設ける会社もあります。交通費・チラシ代・延長料金が別になることがあるので、総額で比べます。"),
+-      ("猫だけを探してくれる探偵はいますか？", "猫専門をうたう会社や、猫の捜索に対応する会社があります。猫は家のすぐ近くに隠れていることが多いので、まず近所の捜索と届け出を済ませてから相談すると、捜索の範囲を絞りやすくなります。"),
+-      ("ペット探偵に頼む前にすることは？", "動物愛護センター・保健所、警察、市区町村への届け出と、近所へのチラシが先です。ペット保険の付帯サービスで捜索が無料になる場合もあるので、保険の確認も依頼前に済ませます。")]
+-    ld = '<script type="application/ld+json">\n' + json.dumps([
+-      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+-        {"@type": "ListItem", "position": 1, "name": "ペットのくらし窓口", "item": site + "/"},
+-        {"@type": "ListItem", "position": 2, "name": "ペット探偵を探す", "item": url}]},
+-      {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+-        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq_ld]}],
+-      ensure_ascii=False, indent=1) + "\n</script>"
+-    return ctx["head"](title,desc,url,ld).replace("</head>",CSS+"</head>",1)+F.sprite_for(s)+s+ctx["foot_noband"]()
++    return ctx["head"](title,desc,url,"").replace("</head>",CSS+"</head>",1)+F.sprite_for(s)+s+ctx["foot_noband"]()
+ 
+ def write_all(root, ctx):
+     p = Path(root) / PATH.strip("/")
+diff --git a/tools/gen_rojin.py b/tools/gen_rojin.py
+index 5a606a20c..8dc2ffcc5 100644
+--- a/tools/gen_rojin.py
++++ b/tools/gen_rojin.py
+@@ -11,8 +11,8 @@ J = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "roj
+ 
+ SLUG = "rojin-home"
+ H1 = "全国の老犬ホーム・老猫ホーム"
+-TITLE = "老犬ホーム・老猫ホームを探す｜老犬介護・短期・長期預かりと費用｜ペットのくらし窓口"
+-DESC = "老犬ホームは、シニア犬を預かり、食事や排せつの介助、見守りなどを行う施設です。短期・長期・生涯預かりの違いや費用、受け入れ条件を地域別に比較できます。老猫ホームも探せます。犬の介護施設や猫の介護先を探す方にも。"
++TITLE = "老犬ホーム・老猫ホームを探す｜短期・長期預かりと費用｜ペットのくらし窓口"
++DESC = "老犬ホームは、シニア犬を預かり、食事や排せつの介助、見守りなどを行う施設です。短期・長期・生涯預かりの違いや費用、受け入れ条件を地域別に比較できます。老猫ホームも探せます。"
+ CHIBA_DESC = "千葉県でシニア犬や猫を預けられる老犬ホーム・老猫ホームを比較。短期・長期・生涯預かり、大型犬や寝たきりの子の受け入れ、入所金・月額、見学の条件を確認できます。料金は公開されている施設のみ掲載しています。"
+ 
+ BEFORE = [
+@@ -101,15 +101,6 @@ def render(ctx):
+       ("入所の日や面会の日の移動はどうすれば？", "施設によっては送迎をしているところもあるので、まず施設にたずねてみてください。寝たきりの子は、体を支えられるクッションやバスタオルを用意すると安心です。"),
+     ]
+     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
+-    def _rcnt(*ws):
+-        return sum(1 for h in J["homes"] if any(w in json.dumps(h, ensure_ascii=False) for w in ws))
+-    n_cat = sum(1 for h in J["homes"] if _cat_ok(h))
+-    stats_html = ('<div class="emg-tips"><h4>全国の老犬ホーム・老猫ホームのデータ（公式サイトの記載から集計）</h4><dl>'
+-      f'<dt>掲載数</dt><dd>全国{len(J["homes"])}施設。猫を受け入れる老猫ホームは{n_cat}施設です。</dd>'
+-      f'<dt>介護の体制</dt><dd>看護師がいると書いている施設は{_rcnt("看護師")}施設、夜間の見守りにふれている施設は{_rcnt("夜間")}施設です。</dd>'
+-      f'<dt>預かり方</dt><dd>一時預かり・短期に対応する施設は{_rcnt("一時預かり", "短期")}施設、終生預かりは{_rcnt("終生", "生涯")}施設です。</dd>'
+-      f'<dt>部屋と設備</dt><dd>個室がある施設は{_rcnt("個室")}施設、ドッグランがある施設は{_rcnt("ドッグラン")}施設です。</dd>'
+-      '</dl><p class="emg-tips-note">件数は公式サイトの記載をもとに数えた目安です。受け入れの実際は施設にご確認ください。</p></div>')
+     ld = '<script type="application/ld+json">\n' + json.dumps([
+       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+         {"@type": "ListItem", "position": 1, "name": "ペットのくらし窓口", "item": SITE + "/"},
+@@ -145,7 +136,6 @@ def render(ctx):
+       </details>
+       {body}
+       <div class="emg-tips" id="rojin-overview"><h2>老犬ホームとは</h2><p>{e(DESC)}</p></div>
+-      {stats_html}
+       {criteria_html(e)}
+       <div class="emg-tips"><h4>老犬ホームをえらぶときに確かめること</h4><dl>{before}</dl>
+       <p class="emg-tips-note">くわしくは<a href="/guide/rojin-home/">老犬ホーム・老猫ホームを見学するときに確かめること</a>にまとめています。</p></div>
+diff --git a/tools/gen_sitters.py b/tools/gen_sitters.py
+index fe6316736..e12381722 100644
+--- a/tools/gen_sitters.py
++++ b/tools/gen_sitters.py
+@@ -63,17 +63,8 @@ def render(ctx):
+       ("ペットシッターとペットホテルは、どちらがいいですか？", "猫、高齢の子、こわがりな子、多頭飼いは環境が変わらないシッターが向くことが多く、目を離せない持病のある子や子犬はホテルや動物病院の預かりが安心です。長い留守は組み合わせることもできます。くわしくは記事「ペットシッターとペットホテル、どちらがいい？」をどうぞ。"),
+       ("留守の何日前に頼めばいいですか？", "初めての店は、シッターが自宅に来る打ち合わせがあるので、出発の2〜3週間前には問い合わせるのが安心です。"),
+       ("シッターが来る日に動物病院へ連れて行ってほしいときは？", "通院の付き添いを受ける店舗もあります。受けられるかどうかと料金は店舗ごとに違うので、前もって相談しておくと安心です。"),
+-      ("散歩だけを頼むことはできますか？", "散歩代行だけを受けている店舗もあります。留守のお世話と散歩をまとめて頼める店舗も多いので、一覧の店舗ページで対応内容をご確認ください。"),
+     ]
+     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
+-    def _scnt(*ws):
+-        return sum(1 for s in J["sitters"] if any(w in json.dumps(s, ensure_ascii=False) for w in ws))
+-    n_catonly = sum(1 for s in J["sitters"] if "キャットシッター" in json.dumps(s, ensure_ascii=False) or "猫専門" in json.dumps(s, ensure_ascii=False))
+-    stats_html = ('<div class="emg-tips"><h4>全国のペットシッターのデータ（公式サイトの記載から集計）</h4><dl>'
+-      f'<dt>掲載数</dt><dd>全国{total}店舗です。猫専門のキャットシッターは{n_catonly}店舗あります。</dd>'
+-      f'<dt>時間の対応</dt><dd>夜間のお世話にふれている店舗は{_scnt("夜間")}店舗、早朝は{_scnt("早朝")}店舗です。</dd>'
+-      f'<dt>送迎と長期</dt><dd>送迎に対応する店舗は{_scnt("送迎")}店舗、長期の留守に対応する店舗は{_scnt("長期")}店舗です。</dd>'
+-      '</dl><p class="emg-tips-note">件数は公式サイトの記載をもとに数えた目安です。実際の対応は店舗にご確認ください。</p></div>')
+     ld = '<script type="application/ld+json">\n' + json.dumps([
+       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+         {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
+@@ -96,7 +87,6 @@ def render(ctx):
+       <p class="emg-free">この一覧は無料の情報です。シッターからお金をもらっていません。順番は都道府県ごとで、おすすめ順ではありません。料金は載せていないので、それぞれの店舗ページでご確認ください。</p>
+       <div class="emg-tips" style="margin-top:0"><h4>ペットシッターを頼む前に確かめること</h4><dl>{before}</dl>
+       <p class="emg-tips-note">ここに書いたのは一般的な目安です。決まりは店舗ごとに違うので、必ず店舗ページでご確認ください。</p></div>
+-      {stats_html}
+       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
+       {FC.chips(e, FC.SITTER_CHIPS)}
+       {body}
+diff --git a/tools/gen_sougi.py b/tools/gen_sougi.py
+index a7a9c5593..3f67b4976 100644
+--- a/tools/gen_sougi.py
++++ b/tools/gen_sougi.py
+@@ -238,13 +238,6 @@ def render(ctx):
+         return f'<p>くわしくは：<a href="/guide/{more[i]}/">{e(gt[more[i]])}</a></p>' if i in more else ""
+     art = toc + "".join(f'<h2 id="{i}">{e(h)}</h2>{b}{_more(i)}' for i, h, b in S)
+     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in FAQ)
+-    def _fcnt(*ws):
+-        return sum(1 for f in F["facilities"] if any(w in json.dumps(f, ensure_ascii=False) for w in ws))
+-    sougi_stats = ('<div class="emg-tips"><h4>全国のペット葬儀・火葬・霊園のデータ（公式サイトの記載から集計）</h4><dl>'
+-      f'<dt>掲載数</dt><dd>民間のペット火葬場・霊園・納骨堂は、全国{len(F["facilities"])}か所です。</dd>'
+-      f'<dt>火葬の方法</dt><dd>個別火葬に対応する施設は{_fcnt("個別火葬")}か所、立ち会いができる施設は{_fcnt("立ち会い")}か所、自宅に来る訪問火葬・移動火葬の施設は{_fcnt("訪問火葬", "移動火葬")}か所です。</dd>'
+-      f'<dt>その後の供養</dt><dd>納骨や霊園での供養にふれている施設は{_fcnt("納骨", "霊園")}か所です。</dd>'
+-      '</dl><p class="emg-tips-note">件数は公式サイトの記載をもとに数えた目安です。対応の実際は施設にご確認ください。</p></div>')
+ 
+     ld = '<script type="application/ld+json">\n' + json.dumps([
+       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+@@ -285,7 +278,6 @@ def render(ctx):
+         </dl>
+       </details>
+       {body}
+-      {sougi_stats}
+       <div class="emg-tips" id="faq"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
+       {FC.biz(e, "ペット葬儀・火葬・霊園")}
+       <p class="emg-note">{e(J["checked"])}時点の、各自治体の公式ページに書いてある情報です。受け付けの方法や費用は変わることがあるので、必ずリンク先でご確認ください。掲載の内容の誤りは、<a href="/contact/">お問い合わせ</a>からお知らせください。</p>
+diff --git a/tools/gen_trainers.py b/tools/gen_trainers.py
+index c41c95c67..378e6038e 100644
+--- a/tools/gen_trainers.py
++++ b/tools/gen_trainers.py
+@@ -102,14 +102,6 @@ def render(ctx):
+       ("教室や幼稚園への送り迎えが大変なときは？", "送迎をしている教室もあります。家に来てくれる出張トレーニングを選ぶ方法もあります。"),
+     ]
+     faq_html = "".join(f"<dt>{e(q)}</dt><dd>{e(a)}</dd>" for q, a in faq)
+-    def _tcnt(*ws):
+-        return sum(1 for t in J["trainers"] if any(w in (t.get("services") or "") for w in ws))
+-    stats_html = ('<div class="emg-tips"><h4>全国のドッグトレーナー・しつけ教室のデータ（公式サイトの記載から集計）</h4><dl>'
+-      f'<dt>掲載数</dt><dd>全国{total}件です。</dd>'
+-      f'<dt>出張・訪問のしつけ</dt><dd>自宅に来る出張・訪問に対応する教室は{_tcnt("出張", "訪問")}件です。</dd>'
+-      f'<dt>子犬のパピークラス</dt><dd>パピークラスや子犬向けの教室は{_tcnt("パピー")}件です。</dd>'
+-      f'<dt>預かり・幼稚園</dt><dd>預かりトレーニングや犬の幼稚園・保育園は{_tcnt("預かり", "幼稚園", "保育園")}件、オンライン相談は{_tcnt("オンライン")}件です。</dd>'
+-      '</dl><p class="emg-tips-note">トイレのしつけ、吠える・かむなどの困りごとは、<a href="/guide/dog-behavior-help/">問題行動の相談先</a>にもまとめています。</p></div>')
+     ld = '<script type="application/ld+json">\n' + json.dumps([
+       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+         {"@type": "ListItem", "position": 1, "name": "ペットタクシー予約窓口", "item": SITE + "/"},
+@@ -132,7 +124,6 @@ def render(ctx):
+       <p class="emg-free">掲載料はいただいていません。都道府県別の一覧で、順位はつけていません。料金は教室にご確認ください。</p>
+       <div class="f"><label for="hospPref">都道府県でしぼりこむ</label><select id="hospPref">{ctx["emg_opts"]}</select></div>
+       {FC.chips(e, FC.TRAINER_CHIPS)}
+-      {stats_html}
+       {body}
+       {points_html()}
+       <div class="emg-tips"><h4>よくある質問</h4><dl>{faq_html}</dl></div>
+diff --git a/tools/search_meta.py b/tools/search_meta.py
+index 0bfd24245..b40be6394 100644
+--- a/tools/search_meta.py
++++ b/tools/search_meta.py
+@@ -9,13 +9,13 @@ LISTINGS = {
+     "pet-hotel": ("ペットホテル", "大型犬・猫・夜間のお世話",
+                   "大型犬や猫の受け入れ、夜間スタッフ、個室・多頭同室、宿泊料金や送迎の条件を比べられます。"),
+     "pet-sitter": ("ペットシッター", "訪問エリア・料金・対応動物",
+-                   "自宅に来て食事や散歩代行、留守中のお世話を頼める事業者を探せます。訪問エリアや料金、犬・猫・小動物への対応を比べられます。猫専門のキャットシッターも探せます。"),
++                   "自宅に来て食事や散歩、留守中のお世話を頼める事業者を探せます。訪問エリアや料金、犬・猫・小動物への対応を比べられます。猫専門のキャットシッターも探せます。"),
+     "trimming": ("出張トリミング・トリミングサロン", "店舗・出張・シニア犬",
+                  "店舗、トリミングカー、自宅に来る施術を比較。犬種・体重・年齢の条件や料金、送迎の有無を確認できます。"),
+     "dog-trainer": ("ドッグトレーナー・犬のしつけ教室", "出張・パピークラス・教室・預かり",
+                     "吠えや散歩の困りごと、子犬のパピークラスを相談できる事業者を探せます。教室・訪問・預かりの違い、体験、資格、公開料金を確認できます。"),
+     "sougi": ("ペット葬儀・火葬・霊園", "個別火葬・立ち会い・返骨",
+-              "犬・猫・小動物の火葬と葬儀に対応する施設で、個別火葬と合同火葬の違い、立ち会い・返骨、体重別の費用や納骨の条件を比較。自治体の受付案内も確認できます。"),
++              "個別火葬と合同火葬の違い、立ち会い・返骨、体重別の費用や納骨の条件を比較。自治体の受付案内も確認できます。"),
+     "dogrun": ("ドッグラン", "室内・料金・犬の大きさ・利用条件",
+                "犬の体重制限、利用・登録料、営業時間、貸切やワクチンの条件を確認できます。雨の日も使える室内・屋内のドッグランも探せます。"),
+     "hospital": ("動物病院", "診療対象・夜間救急・往診",
