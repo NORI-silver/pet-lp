@@ -6,7 +6,7 @@
 その県のまとまりを全部のカードに置きかえる（県のページへ逃がさない）。
 呼び出しは gen_areas.py の最後（uikit.build のあと。カードに data-ffi・data-k が付いたあと）。
 """
-import json, os, re
+import html as _html, json, os, re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CATS = ["pet-hotel", "pet-sitter", "trimming", "dog-trainer", "rojin-home", "sougi", "joto"]
@@ -32,6 +32,23 @@ def _restore(card):
         return card
 
 
+def _static_taxi(card):
+    """行き先（data-to）のあるトリマー・しつけ教室のカードに、行き先つきの料金リンクを最初からHTMLに入れる。
+    facility.js が読み込みのあとに足すリンクは、全件読み込みでカードが置きかわると消えるため。
+    すでに料金のリンク（.emg-taxi の「くわしく」以外、または .fac-taxi）があるカードには足さない（何度かけても同じ）。"""
+    ot = card[:card.find(">") + 1]
+    if _ATTR(ot, "data-cat") not in ("trim", "trainer"):
+        return card
+    to = _html.unescape(_ATTR(ot, "data-to"))
+    if not to or not re.search(r"[都道府県市区町村郡]", to) or '<div class="fc-acts">' not in card:
+        return card
+    if any(("emg-taxi" in a and "fc-a-info" not in a) or "fac-taxi" in a for a in re.findall(r"<a [^>]*>", card)):
+        return card
+    q = re.sub(r'[%&#"<>?+\s]', lambda m: "%%%02X" % ord(m.group()), to)
+    name = _html.escape(_html.unescape(_ATTR(ot, "data-name")))
+    return card.replace('<div class="fc-acts">', '<div class="fc-acts"><a class="emg-taxi fc-a fc-a-car" href="/?to=' + q + '#form" aria-label="' + name + 'のタクシー料金">ペットタクシーの料金</a>', 1)
+
+
 def _cards(h):
     """ページの中の [data-ffi] カードを (HTML, 市区町村) で返す。市区町村は data-city、なければ直前の .fr-h の見出し。"""
     out = []
@@ -50,7 +67,7 @@ def _cards(h):
         if not city:
             prev = [t for p, t in heads if p < m.start()]
             city = prev[-1] if prev else ""
-        out.append((_restore(h[m.start():i]), city))
+        out.append((_static_taxi(_restore(h[m.start():i])), city))
     return out
 
 
