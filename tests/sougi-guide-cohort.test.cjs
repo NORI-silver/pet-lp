@@ -5,7 +5,7 @@ const fac = JSON.parse(fs.readFileSync('tools/sougi_facilities.json', 'utf8')).f
 const lo = JSON.parse(fs.readFileSync('tools/sougi_listing_only.json', 'utf8')).ids;
 const ids = new Set(lo);
 assert.strictEqual(ids.size, lo.length, 'duplicate ids in listing-only');
-assert.strictEqual(lo.length, 87);
+assert.strictEqual(lo.length, 81); // 87 - 6 (料金を公式サイトで確認して外した: S1ba768 Sbd4890 Se163c2 S861624 S5427f2 S91cdeb)
 const byId = Object.fromEntries(fac.map(f => [f.id, f]));
 for (const i of lo) {
   const f = byId[i];
